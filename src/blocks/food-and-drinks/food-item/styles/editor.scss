@@ -85,7 +85,10 @@
 		margin: 0;
 	}
 
-	// leaving styles for blocks that have not yet been deprecated.
+	&__attributes {
+		line-height: 1;
+	}
+
 	&__attribute.components-icon-button {
 		border: 0;
 		border-radius: 2px;
@@ -113,7 +116,7 @@
 		}
 	}
 
-	&__attribute > span {
+	&__attribute {
 		border: 0;
 		border-radius: 2px;
 		box-shadow: none;
@@ -122,27 +125,39 @@
 		line-height: 1;
 		overflow: visible;
 		padding: 0;
+		outline: 0;
+		height: 18px;
+		width: 18px;
 
-		&:not(:disabled):not([aria-disabled="true"]):not(.is-default):hover {
-			box-shadow: none;
+		&:focus {
+				box-shadow: 0 0 0 2px $white, 0 0 0 3px $dark-gray-500;
+				transition: box-shadow .1s linear;
+				background-color: #fff;
+				color: #191e23;
+				
+			span {
+				outline: 2px solid transparent;
+				box-shadow: 0 0 0 2px $white, 0 0 0 3px $dark-gray-500;
+
+			}
+		}
+
+		&.is-toggled {
+			span {
+				opacity: 1;
+			}
 		}
 
 		&:not(.is-toggled):hover {
-			opacity: 0.725;
+			span {
+				opacity: 0.725;
+			}	
 		}
 
 		&:not(.is-toggled) {
-			opacity: 0.55;
-		}
-
-		&:focus {
-			box-shadow: 0 0 0 2px $white, 0 0 0 3px $dark-gray-500;
-		}
-	}
-
-	&__attribute.is-toggled {
-		span {
-			opacity: 1;
+			span {
+				opacity: 0.55;
+			}	
 		}
 	}
 }

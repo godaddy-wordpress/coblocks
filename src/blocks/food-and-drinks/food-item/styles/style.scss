@@ -176,7 +176,6 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenFree);
 	@each $icon in $icons {
 		&__attribute--#{$icon} &__icon {
 			mask-image: url(images/food-attribute/#{$icon}.svg);
-			margin-bottom: 40%;
 
 			&:last-of-type {
 				margin-right: 0;
@@ -187,7 +186,6 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenFree);
 		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 			&__attribute--#{$icon} &__icon {
 				background-image: url(images/food-attribute/#{$icon}.svg);
-				margin-bottom: 40%;
 				color: transparent !important;
 			}
 		}
