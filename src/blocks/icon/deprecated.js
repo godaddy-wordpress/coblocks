@@ -73,9 +73,9 @@ const deprecatedSVGs = ( { attributes, className } ) => {
 			<div className={ innerClasses } style={ innerStyles }>
 				{ href ?
 					( <a href={ href } target={ linkTarget } rel={ rel }>
-						{ icon && deprecatedSvgs[ iconStyle ][ icon ].icon }
+						{ icon && deprecatedSvgs[ iconStyle ][ icon ] && deprecatedSvgs[ iconStyle ][ icon ].icon }
 					</a> ) :
-					icon && deprecatedSvgs[ iconStyle ][ icon ].icon
+					icon && deprecatedSvgs[ iconStyle ][ icon ] && deprecatedSvgs[ iconStyle ][ icon ].icon
 				}
 			</div>
 		</div>
@@ -143,9 +143,9 @@ const deprecated = [
 					<div className={ classes } style={ styles }>
 						{ href ?
 							( <a href={ href } target={ linkTarget } rel={ rel }>
-								{ icon && svgs[ iconStyle ][ icon ].icon }
+								{ icon && svgs[ iconStyle ][ icon ] && svgs[ iconStyle ][ icon ].icon }
 							</a> ) :
-							icon && svgs[ iconStyle ][ icon ].icon
+							icon && svgs[ iconStyle ][ icon ] && svgs[ iconStyle ][ icon ].icon
 						}
 					</div>
 				</div>
