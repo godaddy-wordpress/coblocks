@@ -1,14 +1,14 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.17.3\n"
+"Project-Id-Version: CoBlocks 1.18.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-12-03T16:32:54+00:00\n"
+"POT-Creation-Date: 2019-12-12T20:23:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -466,7 +466,7 @@ msgid "Dynamic HR Settings"
 msgstr ""
 
 #: src/blocks/dynamic-separator/inspector.js:46
-#: src/blocks/gallery-carousel/inspector.js:116
+#: src/blocks/gallery-carousel/inspector.js:114
 #: src/blocks/hero/inspector.js:108
 #: src/blocks/map/inspector.js:132
 msgid "Height in pixels"
@@ -563,13 +563,13 @@ msgid "Margin"
 msgstr ""
 
 #: src/blocks/features/inspector.js:164
-#: src/blocks/gallery-carousel/inspector.js:100
+#: src/blocks/gallery-carousel/inspector.js:98
 #: src/blocks/gallery-collage/inspector.js:84
 #: src/blocks/gallery-offset/inspector.js:117
 #: src/blocks/gallery-stacked/inspector.js:99
 #: src/blocks/row/inspector.js:202
 #: src/components/responsive-tabs-control/index.js:31
-#: src/blocks/gallery-carousel/inspector.js:94
+#: src/blocks/gallery-carousel/inspector.js:92
 #: src/blocks/gallery-offset/inspector.js:115
 msgid "Gutter"
 msgstr ""
@@ -875,78 +875,96 @@ msgstr ""
 
 #. %s: placeholder for an email address
 #. translators: %s: placeholder for an email address
-#: src/blocks/form/edit.js:188
+#: src/blocks/form/edit.js:189
 msgid "%s is not a valid email address."
 msgstr ""
 
 #. %s1: placeholder for an email address. %s2: placeholder for an email address
 #. translators: %s1: placeholder for an email address. %s2: placeholder for an email address
-#: src/blocks/form/edit.js:198
+#: src/blocks/form/edit.js:199
 msgid "%s and %s are not valid email addresses."
 msgstr ""
 
 #. %s1: placeholder for comma separated email addresses
 #. translators: %s1: placeholder for comma separated email addresses
-#: src/blocks/form/edit.js:206
+#: src/blocks/form/edit.js:207
 msgid "%s are not valid email addresses."
 msgstr ""
 
-#: src/blocks/form/edit.js:264
+#: src/blocks/form/edit.js:274
 msgid "Email address"
 msgstr ""
 
-#: src/blocks/form/edit.js:265
+#: src/blocks/form/edit.js:275
 msgid "name@example.com"
 msgstr ""
 
-#: src/blocks/form/edit.js:275
+#: src/blocks/form/edit.js:285
 msgid "Subject"
 msgstr ""
 
-#: src/blocks/form/edit.js:327
+#: src/blocks/form/edit.js:292
+msgid "You may use the following tags in the subject field: "
+msgstr ""
+
+#. block keyword
+#. translators: block keyword
+#: src/blocks/form/edit.js:297
+#: src/blocks/form/fields/name/index.js:53
+#: src/blocks/form/index.js:61
+#: includes/class-coblocks-form.php:954
+msgid "email"
+msgstr ""
+
+#: src/blocks/form/edit.js:303
+#: includes/class-coblocks-form.php:942
+msgid "name"
+msgstr ""
+
+#: src/blocks/form/edit.js:352
 msgid "Form Settings"
 msgstr ""
 
-#: src/blocks/form/edit.js:332
+#: src/blocks/form/edit.js:357
 msgid "Google reCAPTCHA"
 msgstr ""
 
-#: src/blocks/form/edit.js:335
+#: src/blocks/form/edit.js:360
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
 msgstr ""
 
-#: src/blocks/form/edit.js:341
+#: src/blocks/form/edit.js:366
 msgid "Generate keys"
 msgstr ""
 
-#: src/blocks/form/edit.js:342
+#: src/blocks/form/edit.js:367
 msgid "My keys"
 msgstr ""
 
-#: src/blocks/form/edit.js:345
+#: src/blocks/form/edit.js:370
 msgid "Get help"
 msgstr ""
 
-#: src/blocks/form/edit.js:349
+#: src/blocks/form/edit.js:374
 msgid "Site Key"
 msgstr ""
 
-#: src/blocks/form/edit.js:355
+#: src/blocks/form/edit.js:380
 msgid "Secret Key"
 msgstr ""
 
-#: src/blocks/form/edit.js:369
+#: src/blocks/form/edit.js:394
 #: src/blocks/gallery-collage/edit.js:182
 #: src/components/block-gallery/gallery-image.js:226
 msgid "Saving"
 msgstr ""
 
-#: src/blocks/form/edit.js:369
+#: src/blocks/form/edit.js:394
 #: src/blocks/map/inspector.js:231
 msgid "Save"
 msgstr ""
 
-#: src/blocks/form/edit.js:379
+#: src/blocks/form/edit.js:404
 #: src/blocks/map/inspector.js:240
 msgid "Remove"
 msgstr ""
@@ -985,7 +1003,7 @@ msgstr ""
 #. block name
 #. translators: block name
 #: src/blocks/form/fields/date/index.js:34
-#: includes/class-coblocks-form.php:372
+#: includes/class-coblocks-form.php:387
 #: src/blocks/form/fields/date/index.js:21
 msgid "Date"
 msgstr ""
@@ -1027,8 +1045,8 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:208
 #: src/blocks/icon/svgs.js:276
 #: src/blocks/share/inspector.js:177
-#: includes/class-coblocks-form.php:211
-#: includes/class-coblocks-form.php:302
+#: includes/class-coblocks-form.php:221
+#: includes/class-coblocks-form.php:316
 #: src/blocks/form/fields/email/index.js:21
 #: src/blocks/icon/deprecated/svgs.js:202
 #: src/blocks/icon/svgs.js:268
@@ -1096,7 +1114,7 @@ msgstr ""
 #. block name
 #. translators: block name
 #: src/blocks/form/fields/hidden/index.js:34
-#: includes/class-coblocks-form.php:639
+#: includes/class-coblocks-form.php:655
 #: src/blocks/form/fields/hidden/index.js:21
 msgid "Hidden"
 msgstr ""
@@ -1148,19 +1166,19 @@ msgid "Toggle to add a last name field."
 msgstr ""
 
 #: src/blocks/form/fields/name/index.js:33
-#: includes/class-coblocks-form.php:250
+#: includes/class-coblocks-form.php:260
 msgid "First"
 msgstr ""
 
 #: src/blocks/form/fields/name/index.js:37
-#: includes/class-coblocks-form.php:251
+#: includes/class-coblocks-form.php:261
 msgid "Last"
 msgstr ""
 
 #. block name
 #. translators: block name
 #: src/blocks/form/fields/name/index.js:46
-#: includes/class-coblocks-form.php:246
+#: includes/class-coblocks-form.php:256
 #: src/blocks/form/fields/name/index.js:21
 msgid "Name"
 msgstr ""
@@ -1169,13 +1187,6 @@ msgstr ""
 #. translators: block description
 #: src/blocks/form/fields/name/index.js:48
 msgid "A text field for collecting the first and last names."
-msgstr ""
-
-#. block keyword
-#. translators: block keyword
-#: src/blocks/form/fields/name/index.js:53
-#: src/blocks/form/index.js:61
-msgid "email"
 msgstr ""
 
 #. block keyword
@@ -1193,7 +1204,7 @@ msgstr ""
 #. block name
 #. translators: block name
 #: src/blocks/form/fields/phone/index.js:34
-#: includes/class-coblocks-form.php:403
+#: includes/class-coblocks-form.php:418
 #: src/blocks/form/fields/phone/index.js:21
 msgid "Phone"
 msgstr ""
@@ -1235,7 +1246,7 @@ msgid "fax"
 msgstr ""
 
 #: src/blocks/form/fields/radio/index.js:21
-#: includes/class-coblocks-form.php:442
+#: includes/class-coblocks-form.php:457
 msgid "Choose one"
 msgstr ""
 
@@ -1266,8 +1277,8 @@ msgstr ""
 #. block name
 #. translators: block name
 #: src/blocks/form/fields/select/index.js:38
-#: includes/class-coblocks-form.php:503
-#: includes/class-coblocks-form.php:552
+#: includes/class-coblocks-form.php:519
+#: includes/class-coblocks-form.php:568
 #: src/blocks/form/fields/select/index.js:21
 msgid "Select"
 msgstr ""
@@ -1285,7 +1296,7 @@ msgid "dropdown"
 msgstr ""
 
 #: src/blocks/form/fields/textarea/index.js:21
-#: includes/class-coblocks-form.php:331
+#: includes/class-coblocks-form.php:346
 msgid "Message"
 msgstr ""
 
@@ -1316,7 +1327,7 @@ msgstr ""
 #. block name
 #. translators: block name
 #: src/blocks/form/fields/website/index.js:34
-#: includes/class-coblocks-form.php:605
+#: includes/class-coblocks-form.php:621
 #: src/blocks/form/fields/website/index.js:21
 msgid "Website"
 msgstr ""
@@ -1482,7 +1493,7 @@ msgstr ""
 msgid "photos"
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:106
+#: src/blocks/gallery-carousel/inspector.js:104
 #: src/blocks/gallery-masonry/inspector.js:91
 #: src/blocks/gallery-offset/inspector.js:138
 #: src/blocks/gallery-stacked/inspector.js:105
@@ -1492,11 +1503,11 @@ msgstr ""
 msgid "Rounded Corners"
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:142
+#: src/blocks/gallery-carousel/inspector.js:140
 msgid "Thumbnails"
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:148
+#: src/blocks/gallery-carousel/inspector.js:146
 #: src/blocks/gallery-collage/inspector.js:111
 #: src/blocks/gallery-masonry/inspector.js:102
 #: src/blocks/gallery-offset/inspector.js:148
@@ -1504,27 +1515,27 @@ msgstr ""
 msgid "Lightbox"
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:158
+#: src/blocks/gallery-carousel/inspector.js:156
 msgid "Responsive Height"
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:49
+#: src/blocks/gallery-carousel/inspector.js:47
 msgid "Showing thumbnail navigation."
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:49
+#: src/blocks/gallery-carousel/inspector.js:47
 msgid "Toggle to show thumbnails."
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:53
+#: src/blocks/gallery-carousel/inspector.js:51
 msgid "Percentage based height is activated."
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:53
+#: src/blocks/gallery-carousel/inspector.js:51
 msgid "Toggle for percentage based height."
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:57
+#: src/blocks/gallery-carousel/inspector.js:55
 #: src/blocks/gallery-collage/inspector.js:39
 #: src/blocks/gallery-masonry/inspector.js:56
 #: src/blocks/gallery-offset/inspector.js:58
@@ -1532,7 +1543,7 @@ msgstr ""
 msgid "Image lightbox is enabled."
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:57
+#: src/blocks/gallery-carousel/inspector.js:55
 #: src/blocks/gallery-collage/inspector.js:39
 #: src/blocks/gallery-masonry/inspector.js:57
 #: src/blocks/gallery-offset/inspector.js:59
@@ -1540,11 +1551,11 @@ msgstr ""
 msgid "Toggle to enable the image lightbox."
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:84
+#: src/blocks/gallery-carousel/inspector.js:82
 msgid "Carousel Settings"
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:87
+#: src/blocks/gallery-carousel/inspector.js:85
 #: src/blocks/gallery-masonry/inspector.js:81
 #: src/blocks/gallery-offset/inspector.js:108
 #: src/blocks/icon/inspector.js:173
@@ -3502,7 +3513,11 @@ msgstr ""
 msgid "Media area"
 msgstr ""
 
-#: src/blocks/media-card/media-container.js:121
+#: src/blocks/media-card/media-container.js:102
+msgid "Upload a media file or pick one from your media library"
+msgstr ""
+
+#: src/blocks/media-card/media-container.js:122
 msgid "Drop to replace media"
 msgstr ""
 
@@ -5109,19 +5124,24 @@ msgstr ""
 msgid "Leave a Review"
 msgstr ""
 
-#: includes/class-coblocks-form.php:67
+#. translators: placeholder for email shortcode.
+#: includes/class-coblocks-form.php:51
+msgid "Form submission from [%1$s]"
+msgstr ""
+
+#: includes/class-coblocks-form.php:77
 msgid "Google reCaptcha site key for form spam protection"
 msgstr ""
 
-#: includes/class-coblocks-form.php:79
+#: includes/class-coblocks-form.php:89
 msgid "Google reCaptcha secret key for form spam protection"
 msgstr ""
 
-#: includes/class-coblocks-form.php:718
+#: includes/class-coblocks-form.php:734
 msgid "Submit"
 msgstr ""
 
-#: includes/class-coblocks-form.php:921
+#: includes/class-coblocks-form.php:999
 msgid "Your message was sent:"
 msgstr ""
 

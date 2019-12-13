@@ -6,7 +6,7 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-import { createBlock } from '@wordpress/blocks';
+import { createBlock, getBlockAttributes } from '@wordpress/blocks';
 
 const transforms = {
 	from: [
@@ -19,11 +19,11 @@ const transforms = {
 		},
 		{
 			type: 'raw',
-			selector: 'div.wp-block-coblocks-alert',
-			schema: {
-				div: {
-					classes: [ 'wp-block-coblocks-alert' ],
-				},
+			selector: '.wp-block-coblocks-alert',
+			transform( node ) {
+				return createBlock( metadata.name, {
+					...getBlockAttributes( metadata.name, node.outerHTML ),
+				} );
 			},
 		},
 	],
