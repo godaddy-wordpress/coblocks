@@ -76,6 +76,23 @@ class CoBlocks_Block_Assets {
 			COBLOCKS_VERSION
 		);
 
+		/**
+		 * Filters whether to load utilitiy styles.
+		 *
+		 * @param bool $load_utility_styles whether the utility css should be loaded. Default true.
+		 */
+		$load_utility_styles = (bool) apply_filters( 'coblocks_utility_styles_enabled', true );
+
+		if ( $load_utility_styles ) {
+
+			// Mock wp_enqueue_style for utility styles.
+			wp_enqueue_style(
+				$this->slug . '-utilities',
+				$this->url . '/dist/utilities.style.build.css',
+				array(),
+				COBLOCKS_VERSION
+			);
+		};
 	}
 
 	/**
