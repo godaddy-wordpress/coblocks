@@ -58,9 +58,7 @@ Disable CoBlocks utility styes with an optional filter.
 /**
  * Disable block utility styles.
  */
-add_filter( 'coblocks_utility_styles_enabled', function ( $bool ) {
-	return false;
-} );
+add_filter( 'coblocks_utility_styles_enabled', '__return_false' );
 ```
 
 Disable sending of email upon Form block submission.
