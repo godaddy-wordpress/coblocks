@@ -174,13 +174,13 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenFree);
 	}
 
 	@each $icon in $icons {
-		&__attribute--#{$icon} &__icon {
-			mask-image: url(images/food-attribute/#{$icon}.svg);
+		// &__attribute--#{$icon} &__icon {
+		// 	mask-image: url(images/food-attribute/#{$icon}.svg);
 
-			&:last-of-type {
-				margin-right: 0;
-			}
-		}
+		// 	&:last-of-type {
+		// 		margin-right: 0;
+		// 	}
+		// }
 
 		// IE 10+ Support
 		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
