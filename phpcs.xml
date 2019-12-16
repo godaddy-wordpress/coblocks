@@ -7,9 +7,10 @@
     <file>./</file>
 
     <exclude-pattern>*/build/*</exclude-pattern>
+    <exclude-pattern>*/dist/*</exclude-pattern>
     <exclude-pattern>*/vendor/*</exclude-pattern>
     <exclude-pattern>*/node_modules/*</exclude-pattern>
-    <exclude-pattern>*/.dev/*</exclude-pattern>
+    <exclude-pattern>*/\.*</exclude-pattern>
 
 	<arg name="colors"/>
 	<arg value="sp"/>
