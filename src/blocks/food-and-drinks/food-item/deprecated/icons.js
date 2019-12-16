@@ -80,4 +80,4 @@ icons.vegan = (
 	</SVG>
 );
 
-export default icons;
+export { icons as oldIcons };
