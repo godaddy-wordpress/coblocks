@@ -226,7 +226,7 @@ class FoodAndDrinksEdit extends Component {
 								{ ...richTextAttributes }
 							/>
 							<div className="wp-block-coblocks-food-item__attributes">
-								{ ( isSelected && attributes.title ) || ( !! attributes.popular ) ? (
+								{ ( ( isSelected && attributes.title ) || ( !! attributes.popular ) ) && (
 									<span>
 										<button
 											aria-label={ __( 'Popular', 'coblocks' ) }
@@ -246,8 +246,8 @@ class FoodAndDrinksEdit extends Component {
 											/>
 										</button>
 									</span>
-								) : null }
-								{ ( isSelected && attributes.title ) || ( !! attributes.spicy ) ? (
+								) }
+								{ ( ( isSelected && attributes.title ) || ( !! attributes.spicy ) ) && (
 									<span>
 										<button
 											aria-label={ __( 'Spicy', 'coblocks' ) }
@@ -267,8 +267,8 @@ class FoodAndDrinksEdit extends Component {
 											/>
 										</button>
 									</span>
-								) : null }
-								{ ( isSelected && attributes.title && !! attributes.spicy ) || ( !! attributes.spicier ) ? (
+								) }
+								{ ( ( isSelected && attributes.title && !! attributes.spicy ) || ( !! attributes.spicier ) ) && (
 									<span>
 										<button
 											aria-label={ __( 'Hot', 'coblocks' ) }
@@ -289,8 +289,8 @@ class FoodAndDrinksEdit extends Component {
 											/>
 										</button>
 									</span>
-								) : null }
-								{ ( isSelected && attributes.title ) || ( !! attributes.vegetarian ) ? (
+								) }
+								{ ( ( isSelected && attributes.title ) || ( !! attributes.vegetarian ) ) && (
 									<span>
 										<button
 											aria-label={ __( 'Vegetarian', 'coblocks' ) }
@@ -310,8 +310,8 @@ class FoodAndDrinksEdit extends Component {
 											/>
 										</button>
 									</span>
-								) : null }
-								{ ( isSelected && !! attributes.glutenFree ) || ( !! attributes.glutenFree ) ? (
+								) }
+								{ ( ( isSelected && !! attributes.glutenFree ) || ( !! attributes.glutenFree ) ) && (
 									// Only renders if the option is checked within the Settings sidebar.
 									<span>
 										<button
@@ -332,8 +332,8 @@ class FoodAndDrinksEdit extends Component {
 											/>
 										</button>
 									</span>
-								) : null }
-								{ ( isSelected && !! attributes.pescatarian ) || ( !! attributes.pescatarian ) ? (
+								) }
+								{ ( ( isSelected && !! attributes.pescatarian ) || ( !! attributes.pescatarian ) ) && (
 									// Only renders if the option is checked within the Settings sidebar.
 									<span>
 										<button
@@ -354,8 +354,8 @@ class FoodAndDrinksEdit extends Component {
 											/>
 										</button>
 									</span>
-								) : null }
-								{ ( isSelected && !! attributes.vegan ) || ( !! attributes.vegan ) ? (
+								) }
+								{ ( ( isSelected && !! attributes.vegan ) || ( !! attributes.vegan ) ) && (
 									// Only renders if the option is checked within the Settings sidebar.
 									<span>
 										<button
@@ -376,7 +376,7 @@ class FoodAndDrinksEdit extends Component {
 											/>
 										</button>
 									</span>
-								) : null }
+								) }
 							</div>
 						</div>
 						<RichText
