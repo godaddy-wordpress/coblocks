@@ -80,7 +80,7 @@ class CoBlocks_Block_Assets {
 	/**
 	 * Enqueue block assets for use within Gutenberg.
 	 *
-	 * @param array $asset_file
+	 * @param array $asset_file Passed asset file data for unit testing.
 	 *
 	 * @access public
 	 */
