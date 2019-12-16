@@ -33,8 +33,6 @@ describe( 'coblocks/gallery-masonry transforms', () => {
 		expect( transformed[ 0 ].isValid ).toBe( true );
 		expect( transformed[ 0 ].attributes.gutter ).toBe( attributes.gutter );
 		for ( let i = 0; i < attributes.images.length; i++ ) {
-			// console.log( transformed );
-
 			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
 			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
 		}
@@ -42,13 +40,11 @@ describe( 'coblocks/gallery-masonry transforms', () => {
 
 	it( 'should transform from coblocks/gallery-collage block', () => {
 		const galleryCollage = createBlock( 'coblocks/gallery-collage', attributes );
-		// console.log( galleryCollage );
 		const transformed = switchToBlockType( galleryCollage, name );
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
 		expect( transformed[ 0 ].attributes.gutter ).toBe( attributes.gutter );
 		for ( let i = 0; i < attributes.images.length; i++ ) {
-			// console.log( transformed );
 			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
 			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
 		}
