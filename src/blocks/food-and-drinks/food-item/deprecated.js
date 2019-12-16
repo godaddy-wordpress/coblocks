@@ -4,7 +4,7 @@
 import { attributes } from './block.json';
 import { hasEmptyAttributes } from '../../../utils/block-helpers';
 import icons from './deprecated/icons';
-import iconsBackground from './deprecated/iconsBackground';
+import { icons as iconsBackground } from '../icons.js';
 import fromEntries from '../../../js/coblocks-fromEntries';
 
 /**
