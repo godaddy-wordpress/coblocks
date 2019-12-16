@@ -80,10 +80,15 @@ class CoBlocks_Block_Assets {
 	/**
 	 * Enqueue block assets for use within Gutenberg.
 	 *
+	 * @param array $asset_file
+	 *
 	 * @access public
 	 */
-	public function editor_assets() {
-		$asset_file = include COBLOCKS_PLUGIN_DIR . 'dist/blocks.build.asset.php';
+	public function editor_assets( $asset_file = array() ) {
+
+		if ( empty( $asset_file ) ) {
+			$asset_file = include COBLOCKS_PLUGIN_DIR . 'dist/blocks.build.asset.php';
+		}
 
 		// Styles.
 		wp_register_style(

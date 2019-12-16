@@ -120,7 +120,12 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 	 */
 	public function test_editor_assets_styles() {
 
-		$this->coblocks_block_assets->editor_assets();
+		$asset_file = array(
+			'dependencies' => array(),
+			'version' => COBLOCKS_VERSION,
+		);
+
+		$this->coblocks_block_assets->editor_assets( $asset_file );
 
 		global $wp_styles;
 
@@ -133,7 +138,12 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 	 */
 	public function test_editor_assets_scripts() {
 
-		$this->coblocks_block_assets->editor_assets();
+		$asset_file = array(
+			'dependencies' => array(),
+			'version' => COBLOCKS_VERSION,
+		);
+
+		$this->coblocks_block_assets->editor_assets( $asset_file );
 
 		global $wp_scripts;
 
@@ -146,7 +156,12 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 	 */
 	public function test_editor_assets_localized_data() {
 
-		$this->coblocks_block_assets->editor_assets();
+		$asset_file = array(
+			'dependencies' => array(),
+			'version' => COBLOCKS_VERSION,
+		);
+
+		$this->coblocks_block_assets->editor_assets( $asset_file );
 
 		global $wp_scripts;
 
