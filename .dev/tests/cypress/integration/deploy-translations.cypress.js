@@ -29,13 +29,16 @@ describe( 'Deploy .po files from Coblocks to WordPress.org', function() {
 
       var localeSplit = locale.split( /_(.+)/ )[0];
 
+      // Glotpress URLs for zh_CN/zh_TW are zh-cn/zh-tw
+      if ( [ 'zh_CN', 'zh_TW' ].includes( locale ) ) {
+        localeSplit = locale.replace( '_', '-' ).toLowerCase();
+      }
+
       cy.visit( `https://translate.wordpress.org/projects/wp-plugins/coblocks/dev/${localeSplit}/default/import-translations/` );
 
       cy.uploadFile( `coblocks-${locale}.po`, 'text/x-gettext-translation', '#import-file' );
 
       cy.task( 'log', `Uploading ${locale} translations...` );
-
-      cy.wait( 2000 );
 
       /**
        * @todo When translation files are ready for deployment, uncomment the lines

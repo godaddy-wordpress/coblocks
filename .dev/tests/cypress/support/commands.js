@@ -24,7 +24,7 @@ Cypress.Commands.add( 'uploadFile', ( fileName, fileType, selector ) => {
       const dataTransfer = new DataTransfer()
       const el = subject[0]
 
-      dataTransfer.items.add(testFile)
+      dataTransfer.items.add( testFile )
       el.files = dataTransfer.files
     } );
   } );
