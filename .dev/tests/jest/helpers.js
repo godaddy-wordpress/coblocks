@@ -13,11 +13,31 @@ import '../../../src/extensions/colors';
 import '../../../src/extensions/image-crop';
 import '../../../src/extensions/typography';
 
+// Imports used for registerGalleryBlocks().
+import { name as stackedName, settings as stackedSettings } from '../../../src/blocks/gallery-stacked';
+import { name as collageName, settings as collageSettings } from '../../../src/blocks/gallery-collage/';
+import { name as carouselName, settings as carouselSettings } from '../../../src/blocks/gallery-carousel';
+import { name as offsetName, settings as offsetSettings } from '../../../src/blocks/gallery-offset';
+import { name as masonryName, settings as masonrySettings } from '../../../src/blocks/gallery-masonry';
+
 /**
  * WordPress dependencies
  */
 import { sprintf } from '@wordpress/i18n';
 import { registerBlockType, unregisterBlockType, createBlock, getBlockTransforms, serialize, parse } from '@wordpress/blocks';
+
+/**
+ * Register all gallery blocks to be used for transforms testing.
+ *
+ * @returns null;
+ */
+export const registerGalleryBlocks = () => {
+	registerBlockType( stackedName, { category: 'common', ...stackedSettings } ); // Register stacked block
+	registerBlockType( collageName, { category: 'common', ...collageSettings } ); // Register collage block
+	registerBlockType( carouselName, { category: 'common', ...carouselSettings } ); // Register carousel block
+	registerBlockType( offsetName, { category: 'common', ...offsetSettings } ); // Register offset block
+	registerBlockType( masonryName, { category: 'common', ...masonrySettings } ); // Register masonry block
+};
 
 /**
  * A simplified version of the prefix trigger located in the RichText component.
