@@ -259,7 +259,7 @@ jobs:
 
   nightly-translations:
     docker:
-      - image: circleci/php:7.1-node-browsers-legacy
+      - image: circleci/php:latest-node-browsers-legacy
     steps:
       - checkout
       - run:
@@ -268,9 +268,6 @@ jobs:
       - run:
           name: Update npm
           command: sudo npm install -g npm@latest
-      - run:
-          name: Install PHP
-          command: sudo apt-get install php libapache2-mod-php php-mbstring
       - run:
           name: Install gettext
           command: sudo apt-get install gettext
