@@ -20,7 +20,7 @@
 		"babel": "babel src --ignore src/blocks/gist/components/gist.js",
 		"babel:json": "wp i18n make-json languages",
 		"babel:build": "npm run babel && npm run makepot",
-		"test": "jest --config .dev/tests/jest/jest.config.js --silent --noStackTrace",
+		"test": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js",
 		"pot2json": ".dev/bin/pot2json languages/coblocks.pot languages/coblocks.json",
 		"json2po": "cd languages && find . -name \\*.json ! -name 'coblocks*.json' -execdir sh -c '../.dev/bin/json2po coblocks.json \"$0\" coblocks-`basename $0 .json`.po' '{}' \\;",
 		"po2mo": "cd languages && find . -name \\*.po -execdir sh -c 'msgfmt \"$0\" -o `basename $0 .po`.mo' '{}' \\;",
@@ -179,11 +179,5 @@
 	},
 	"eslintConfig": {
 		"extends": "wordpress"
-	},
-	"jest": {
-		"collectCoverage": true,
-		"coverageReporters": [
-			"html"
-		]
 	}
 }
