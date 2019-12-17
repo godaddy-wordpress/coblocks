@@ -294,7 +294,9 @@ jobs:
             npm run json2po
       - run:
           name: "Deploy translations to Glotpress (Cypress.io)"
-          command: ./node_modules/.bin/cypress run --env WP_ORG_USERNAME=${i18n_WP_ORG_USERNAME},WP_ORG_PASSWORD=${i18n_WP_ORG_PASSWORD} --spec "deploy-translations.cypress.js"
+          command: |
+            echo '{"chromeWebSecurity":false,"fixturesFolder":"languages","pluginsFile":".dev/tests/cypress/plugins/index.js","supportFile":".dev/tests/cypress/support/commands.js","screenshotsFolder":".dev/tests/cypress/screenshots","projectId":"sovnn2","integrationFolder":".dev/tests/cypress/integration/","testFiles":"**/*.cypress.js"}' | jq . > cypress.json
+            ./node_modules/.bin/cypress run --env WP_ORG_USERNAME=${i18n_WP_ORG_USERNAME},WP_ORG_PASSWORD=${i18n_WP_ORG_PASSWORD} --spec ".dev/tests/cypress/integration/deploy-translations.cypress.js"
 
   deploy:
     docker:
