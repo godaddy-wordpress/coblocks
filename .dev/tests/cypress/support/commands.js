@@ -8,7 +8,7 @@ before( function() {
 
 // Maintain WordPress logged in state
 Cypress.Cookies.defaults( {
-  whitelist: /wordpress_.*/
+  whitelist: [ /wordpress_.*/, /wporg_.*/ ]
 } );
 
 // Custom uploadFile command
