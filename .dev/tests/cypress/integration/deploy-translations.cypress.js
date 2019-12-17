@@ -18,7 +18,8 @@ describe( 'Deploy .po files from Coblocks to WordPress.org', function() {
         .type( Cypress.env( 'WP_ORG_PASSWORD' ) );
 
       cy.get( '#wp-submit' )
-        .click();
+        .click()
+        .get( 'body#wordpress-org' );
     } );
   } );
 
