@@ -65,17 +65,6 @@ const transforms = {
 		},
 		{
 			type: 'block',
-			blocks: [ 'coblocks/gallery-carousel' ],
-			transform: ( attributes ) => {
-				const newAttributes = Object.assign(
-					GalleryTransforms( attributes ),
-					{ images: attributes.images.filter( image => typeof image.id !== 'undefined' ) }
-				);
-				return createBlock( 'coblocks/gallery-carousel', newAttributes );
-			},
-		},
-		{
-			type: 'block',
 			blocks: [ 'coblocks/gallery-masonry' ],
 			transform: ( attributes ) => {
 				const newAttributes = Object.assign(
