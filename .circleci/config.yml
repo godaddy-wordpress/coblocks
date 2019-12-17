@@ -35,6 +35,16 @@ workflows:
               only: /.*/
             branches:
               ignore: /.*/
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - nightly-translations
 
 version: 2.1
 jobs:
@@ -243,14 +253,7 @@ jobs:
             fi
           path: ~/coblocks
 
-  nightly:
-    triggers:
-      - schedule:
-          cron: "0 0 * * *"
-          filters:
-            branches:
-              only:
-                - master
+  nightly-translations:
     docker:
       - image: circleci/node:latest-browsers-legacy
     steps:
@@ -274,12 +277,12 @@ jobs:
             chmod +x wp-cli.phar
             sudo mv wp-cli.phar /usr/local/bin/wp
       - restore_cache:
-          key: nightly-dependency-cache--{{ checksum "package.json" }}
+          key: nightly-translations-dependency-cache--{{ checksum "package.json" }}
       - run:
           name: Install node packages
           command: npm install
       - save_cache:
-          key: nightly-dependency-cache--{{ checksum "package.json" }}
+          key: nightly-translations-dependency-cache--{{ checksum "package.json" }}
           paths:
             - node_modules
             - ~/.cache
