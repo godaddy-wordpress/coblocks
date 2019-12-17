@@ -71,7 +71,7 @@ class CoBlocks_Block_Assets {
 		// Styles.
 		wp_enqueue_style(
 			$this->slug . '-frontend',
-			$this->url . '/dist/blocks.style.build.css',
+			$this->url . '/dist/coblocks-style.css',
 			array(),
 			COBLOCKS_VERSION
 		);
@@ -87,13 +87,13 @@ class CoBlocks_Block_Assets {
 	public function editor_assets( $asset_file = array() ) {
 
 		if ( empty( $asset_file ) ) {
-			$asset_file = include COBLOCKS_PLUGIN_DIR . 'dist/blocks.build.asset.php';
+			$asset_file = include COBLOCKS_PLUGIN_DIR . 'dist/coblocks.asset.php';
 		}
 
 		// Styles.
 		wp_register_style(
 			$this->slug . '-editor',
-			$this->url . '/dist/blocks.editor.build.css',
+			$this->url . '/dist/coblocks-editor.css',
 			array(),
 			COBLOCKS_VERSION
 		);
@@ -101,7 +101,7 @@ class CoBlocks_Block_Assets {
 		// Scripts.
 		wp_register_script(
 			$this->slug . '-editor',
-			$this->url . '/dist/blocks.build.js',
+			$this->url . '/dist/coblocks.js',
 			$asset_file['dependencies'],
 			$asset_file['version'],
 			true
@@ -156,7 +156,7 @@ class CoBlocks_Block_Assets {
 		if ( has_block( $this->slug . '/gallery-masonry' ) ) {
 			wp_enqueue_script(
 				$this->slug . '-masonry',
-				$dir . $this->slug . '-masonry' . COBLOCKS_ASSET_SUFFIX . '.js',
+				$dir . $this->slug . '-masonry.js',
 				array( 'jquery', 'masonry', 'imagesloaded' ),
 				COBLOCKS_VERSION,
 				true
@@ -185,7 +185,7 @@ class CoBlocks_Block_Assets {
 			);
 			wp_enqueue_script(
 				$this->slug . '-slick-initializer-front',
-				$dir . $this->slug . '-slick-initializer-front' . COBLOCKS_ASSET_SUFFIX . '.js',
+				$dir . $this->slug . '-slick-initializer-front.js',
 				array( 'jquery' ),
 				COBLOCKS_VERSION,
 				true
@@ -196,7 +196,7 @@ class CoBlocks_Block_Assets {
 		if ( has_block( $this->slug . '/gallery-masonry' ) || has_block( $this->slug . '/gallery-stacked' ) || has_block( $this->slug . '/gallery-collage' ) || has_block( $this->slug . '/gallery-carousel' ) || has_block( $this->slug . '/gallery-offset' ) ) {
 			wp_enqueue_script(
 				$this->slug . '-lightbox',
-				$dir . $this->slug . '-lightbox' . COBLOCKS_ASSET_SUFFIX . '.js',
+				$dir . $this->slug . '-lightbox.js',
 				array( 'jquery' ),
 				COBLOCKS_VERSION,
 				true

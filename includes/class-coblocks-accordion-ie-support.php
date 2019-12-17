@@ -84,7 +84,7 @@ class CoBlocks_Accordion_IE_Support {
 
 			wp_enqueue_script(
 				$this->slug . '-accordion-polyfill',
-				$dir . $this->slug . '-accordion-polyfill' . COBLOCKS_ASSET_SUFFIX . '.js',
+				$dir . $this->slug . '-accordion-polyfill.js',
 				array(),
 				COBLOCKS_VERSION,
 				true

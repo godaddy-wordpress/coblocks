@@ -321,7 +321,7 @@ function coblocks_register_post_carousel_block() {
 
 	wp_register_script(
 		'coblocks-slick-initializer',
-		$dir . 'coblocks-slick-initializer' . COBLOCKS_ASSET_SUFFIX . '.js',
+		$dir . 'coblocks-slick-initializer.js',
 		array( 'jquery' ),
 		COBLOCKS_VERSION,
 		true
