@@ -294,7 +294,7 @@ jobs:
             npm run json2po
       - run:
           name: "Deploy translations to Glotpress (Cypress.io)"
-          command: ./node_modules/.bin/cypress run --env WP_ORG_USERNAME=${i18n_WP_ORG_USERNAME},WP_ORG_PASSWORD=${i18n_WP_ORG_PASSWORD} --spec "cypress/integration/deploy-translations.js"
+          command: ./node_modules/.bin/cypress run --env WP_ORG_USERNAME=${i18n_WP_ORG_USERNAME},WP_ORG_PASSWORD=${i18n_WP_ORG_PASSWORD} --spec "deploy-translations.cypress.js"
 
   deploy:
     docker:
