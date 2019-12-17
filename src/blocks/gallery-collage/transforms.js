@@ -57,9 +57,6 @@ const transforms = {
 			'coblocks/gallery-masonry',
 			'coblocks/gallery-stacked',
 			'coblocks/gallery-offset',
-			'blockgallery/carousel',
-			'blockgallery/masonry',
-			'blockgallery/stacked',
 			'core/gallery',
 		].map( x => {
 			return {
