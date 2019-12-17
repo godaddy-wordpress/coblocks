@@ -259,7 +259,7 @@ jobs:
 
   nightly-translations:
     docker:
-      - image: circleci/php:latest-node-browsers-legacy
+      - image: circleci/php:7.1-node-browsers-legacy
     steps:
       - checkout
       - run:
