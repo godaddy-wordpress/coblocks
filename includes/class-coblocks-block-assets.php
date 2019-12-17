@@ -167,7 +167,7 @@ class CoBlocks_Block_Assets {
 		if ( has_block( $this->slug . '/gallery-carousel' ) ) {
 			wp_enqueue_script(
 				$this->slug . '-flickity',
-				$vendors_dir . '/flickity' . COBLOCKS_ASSET_SUFFIX . '.js',
+				$vendors_dir . '/flickity.js',
 				array( 'jquery' ),
 				COBLOCKS_VERSION,
 				true
@@ -178,7 +178,7 @@ class CoBlocks_Block_Assets {
 		if ( has_block( $this->slug . '/post-carousel' ) ) {
 			wp_enqueue_script(
 				$this->slug . '-slick',
-				$vendors_dir . '/slick' . COBLOCKS_ASSET_SUFFIX . '.js',
+				$vendors_dir . '/slick.js',
 				array( 'jquery' ),
 				COBLOCKS_VERSION,
 				true

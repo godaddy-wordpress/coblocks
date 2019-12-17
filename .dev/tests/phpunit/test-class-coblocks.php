@@ -140,15 +140,6 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test the asset suffix returns .min
-	 */
-	public function test_min_asset_suffix() {
-
-		$this->assertEquals( COBLOCKS_ASSET_SUFFIX, '.min' );
-
-	}
-
-	/**
 	 * Test the asset source directory for js assets
 	 */
 	public function test_js_asset_source() {
