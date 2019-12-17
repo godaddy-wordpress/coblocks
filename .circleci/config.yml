@@ -243,6 +243,55 @@ jobs:
             fi
           path: ~/coblocks
 
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    docker:
+      - image: circleci/node:latest-browsers-legacy
+    steps:
+      - checkout
+      - run:
+          name: Disable xdebug PHP extension
+          command: sudo rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - run:
+          name: Update npm
+          command: sudo npm install -g npm@latest
+      - run:
+          name: Install PHP
+          command: sudo apt-get install php libapache2-mod-php php-mbstring
+      - run:
+          name: Install gettext
+          command: sudo apt-get install gettext
+      - run:
+          name: Install WPCLI
+          command: |
+            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+            chmod +x wp-cli.phar
+            sudo mv wp-cli.phar /usr/local/bin/wp
+      - restore_cache:
+          key: nightly-dependency-cache--{{ checksum "package.json" }}
+      - run:
+          name: Install node packages
+          command: npm install
+      - save_cache:
+          key: nightly-dependency-cache--{{ checksum "package.json" }}
+          paths:
+            - node_modules
+            - ~/.cache
+      - run:
+          name: Generate the translations
+          command: |
+            npm run babel:build
+            npm run json2po
+      - run:
+          name: "Deploy translations to Glotpress (Cypress.io)"
+          command: ./node_modules/.bin/cypress run --env WP_ORG_USERNAME=${i18n_WP_ORG_USERNAME},WP_ORG_PASSWORD=${i18n_WP_ORG_PASSWORD} --spec "cypress/integration/deploy-translations.js"
+
   deploy:
     docker:
       - image: circleci/golang:latest-node-browsers-legacy

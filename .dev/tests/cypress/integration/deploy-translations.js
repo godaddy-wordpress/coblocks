@@ -13,10 +13,10 @@ describe( 'Deploy .po files from Coblocks to WordPress.org', function() {
       }
 
       cy.get( '#user_login' )
-        .type( wpCreds.wporg_username );
+        .type( Cypress.env( 'WP_ORG_USERNAME' ) );
 
       cy.get( '#user_pass' )
-        .type( wpCreds.wporg_password );
+        .type( Cypress.env( 'WP_ORG_PASSWORD' ) );
 
       cy.get( '#wp-submit' )
         .click();
