@@ -295,8 +295,7 @@ jobs:
       - run:
           name: "Deploy translations to Glotpress (Cypress.io)"
           command: |
-            export REMOVED_BEFORE_HOOK=$(tail -n +9 .dev/tests/cypress/support/commands.js)
-            echo $REMOVED_BEFORE_HOOK > .dev/tests/cypress/support/commands.js
+            sed -i '1,14d' .dev/tests/cypress/support/commands.js
             echo '{"chromeWebSecurity":false,"fixturesFolder":"languages","pluginsFile":".dev/tests/cypress/plugins/index.js","supportFile":".dev/tests/cypress/support/commands.js","screenshotsFolder":".dev/tests/cypress/screenshots","projectId":"sovnn2","integrationFolder":".dev/tests/cypress/integration/","testFiles":"**/*.cypress.js"}' | jq . > cypress.json
             touch .dev/tests/cypress/wp_creds.json && echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > .dev/tests/cypress/wp_creds.json
             ./node_modules/.bin/cypress run --env WP_ORG_USERNAME=${i18n_WP_ORG_USERNAME},WP_ORG_PASSWORD=${i18n_WP_ORG_PASSWORD} --spec ".dev/tests/cypress/integration/deploy-translations.cypress.js"
