@@ -55,17 +55,23 @@ const transforms = {
 			},
 		},
 	],
-	to: [
-		{
-			type: 'block',
-			blocks: [ 'core/gallery' ],
-			transform: ( attributes ) => (
-				createBlock( 'core/gallery', {
+	to: ( function() {
+		return [
+			'coblocks/gallery-collage',
+			'coblocks/gallery-masonry',
+			'coblocks/gallery-stacked',
+			'coblocks/gallery-offset',
+			'core/gallery',
+		].map( x => {
+			return {
+				type: 'block',
+				blocks: [ x ],
+				transform: ( attributes ) => createBlock( x, {
 					...GalleryTransforms( attributes ),
-				} )
-			),
-		},
-	],
+				} ),
+			};
+		} );
+	}() ),
 };
 
 export default transforms;
