@@ -32,7 +32,7 @@ describe( 'coblocks/gallery-collage transforms', () => {
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
 		expect( transformed[ 0 ].attributes.gutter ).toBe( attributes.gutter );
-		for ( let i; i <= attributes.images.length; i++ ) {
+		for ( let i = 0; i < attributes.images.length; i++ ) {
 			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
 			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
 		}
@@ -44,7 +44,7 @@ describe( 'coblocks/gallery-collage transforms', () => {
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
 		expect( transformed[ 0 ].attributes.gutter ).toBe( attributes.gutter );
-		for ( let i; i <= attributes.images.length; i++ ) {
+		for ( let i = 0; i < attributes.images.length; i++ ) {
 			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
 			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
 		}
@@ -56,7 +56,7 @@ describe( 'coblocks/gallery-collage transforms', () => {
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
 		expect( transformed[ 0 ].attributes.gutter ).toBe( attributes.gutter );
-		for ( let i; i <= attributes.images.length; i++ ) {
+		for ( let i = 0; i < attributes.images.length; i++ ) {
 			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
 			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
 		}
@@ -68,7 +68,7 @@ describe( 'coblocks/gallery-collage transforms', () => {
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
 		expect( transformed[ 0 ].attributes.gutter ).toBe( attributes.gutter );
-		for ( let i; i <= attributes.images.length; i++ ) {
+		for ( let i = 0; i < attributes.images.length; i++ ) {
 			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
 			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
 		}
@@ -79,7 +79,7 @@ describe( 'coblocks/gallery-collage transforms', () => {
 		const transformed = switchToBlockType( coreGallery, name );
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
-		for ( let i; i <= attributes.images.length; i++ ) {
+		for ( let i = 0; i < attributes.images.length; i++ ) {
 			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
 			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
 		}
@@ -90,10 +90,10 @@ describe( 'coblocks/gallery-collage transforms', () => {
 		const transformed = switchToBlockType( coreImage, name );
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
-		for ( let i; i <= attributes.images.length; i++ ) {
-			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
-			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
-		}
+		expect( transformed[ 0 ].attributes.images.length ).toBeGreaterThan( 0 );
+
+		expect( transformed[ 0 ].attributes.images[ 0 ].index ).toBe( coreImage.attributes.id );
+		expect( transformed[ 0 ].attributes.images[ 0 ].url ).toBe( coreImage.attributes.url );
 	} );
 
 	it( 'should transform to coblocks/gallery-stacked block', () => {
@@ -102,7 +102,7 @@ describe( 'coblocks/gallery-collage transforms', () => {
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
 		expect( transformed[ 0 ].attributes.gutter ).toBe( attributes.gutter );
-		for ( let i; i <= attributes.images.length; i++ ) {
+		for ( let i = 0; i < attributes.images.length; i++ ) {
 			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
 			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
 		}
@@ -114,7 +114,7 @@ describe( 'coblocks/gallery-collage transforms', () => {
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
 		expect( transformed[ 0 ].attributes.gutter ).toBe( attributes.gutter );
-		for ( let i; i <= attributes.images.length; i++ ) {
+		for ( let i = 0; i < attributes.images.length; i++ ) {
 			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
 			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
 		}
@@ -126,7 +126,7 @@ describe( 'coblocks/gallery-collage transforms', () => {
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
 		expect( transformed[ 0 ].attributes.gutter ).toBe( attributes.gutter );
-		for ( let i; i <= attributes.images.length; i++ ) {
+		for ( let i = 0; i < attributes.images.length; i++ ) {
 			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
 			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
 		}
@@ -138,7 +138,7 @@ describe( 'coblocks/gallery-collage transforms', () => {
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
 		expect( transformed[ 0 ].attributes.gutter ).toBe( attributes.gutter );
-		for ( let i; i <= attributes.images.length; i++ ) {
+		for ( let i = 0; i < attributes.images.length; i++ ) {
 			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
 			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
 		}
@@ -149,7 +149,7 @@ describe( 'coblocks/gallery-collage transforms', () => {
 		const transformed = switchToBlockType( block, 'core/gallery' );
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
-		for ( let i; i <= attributes.images.length; i++ ) {
+		for ( let i = 0; i < attributes.images.length; i++ ) {
 			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
 			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
 		}
