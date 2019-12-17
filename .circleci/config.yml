@@ -4,37 +4,41 @@ workflows:
     jobs:
       # Support PHP Versions
       # http://php.net/supported-versions.php
-      - php56:
+      # - php56:
+      #     filters:
+      #       tags:
+      #         only: /.*/
+      # - php72: # Will be deprecated on 30 Nov 2020
+      #     filters:
+      #       tags:
+      #         only: /.*/
+      # - jest:
+      #     filters:
+      #       tags:
+      #         only: /.*/
+      # - e2e:
+      #     filters:
+      #       tags:
+      #         only: /.*/
+      - nightly-translations:
           filters:
             tags:
               only: /.*/
-      - php72: # Will be deprecated on 30 Nov 2020
-          filters:
-            tags:
-              only: /.*/
-      - jest:
-          filters:
-            tags:
-              only: /.*/
-      - e2e:
-          filters:
-            tags:
-              only: /.*/
-      - i18n:
-          filters:
-            branches:
-              only: master
-      - deploy:
-          requires:
-            - php56
-            - php72
-            - jest
-            - e2e
-          filters:
-            tags:
-              only: /.*/
-            branches:
-              ignore: /.*/
+      # - i18n:
+      #     filters:
+      #       branches:
+      #         only: master
+      # - deploy:
+      #     requires:
+      #       - php56
+      #       - php72
+      #       - jest
+      #       - e2e
+      #     filters:
+      #       tags:
+      #         only: /.*/
+      #       branches:
+      #         ignore: /.*/
   nightly:
     triggers:
       - schedule:
