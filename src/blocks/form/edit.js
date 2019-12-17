@@ -30,9 +30,9 @@ import { withSelect } from '@wordpress/data';
  * Get settings
  */
 let settings;
-wp.api.loadPromise.then( () => {
-	settings = new wp.api.models.Settings();
-} );
+// wp.api.loadPromise.then( () => {
+// 	settings = new wp.api.models.Settings();
+// } );
 
 /**
  * Block constants
