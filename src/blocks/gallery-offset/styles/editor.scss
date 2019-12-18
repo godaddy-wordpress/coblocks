@@ -66,7 +66,7 @@
 
 // Needed until GB 6.9 is merged into core or backward support.
 // Hide the placeholder when not selected.
-.editor-block-list__block[data-type="coblocks/gallery-offset"]:not(.is-selected):not(.is-selected):not(.is-focused)  {
+.editor-block-list__block[data-type="coblocks/gallery-offset"]:not(.is-selected):not(.is-focused)  {
 	div.components-form-file-upload {
 		display: none;
 	}
