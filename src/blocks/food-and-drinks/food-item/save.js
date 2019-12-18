@@ -18,7 +18,7 @@ const isEmpty = attributes => {
 		attributesToCheck.includes( key )
 	);
 
-	if ( ! Object.fromEntries ) {
+	if ( typeof Object.fromEntries === 'undefined' ) {
 		return hasEmptyAttributes( fromEntries( newAttributes ) );
 	}
 
