@@ -85,6 +85,10 @@
 		margin: 0;
 	}
 
+	&__attributes {
+		line-height: 1;
+	}
+
 	&__attribute.components-icon-button {
 		border: 0;
 		border-radius: 2px;
@@ -109,6 +113,56 @@
 
 		&:focus {
 			box-shadow: 0 0 0 2px $white, 0 0 0 3px $dark-gray-500;
+		}
+	}
+
+	&__attribute {
+		border: 0;
+		border-radius: 2px;
+		box-shadow: none;
+		color: inherit;
+		font-size: inherit;
+		line-height: 1;
+		overflow: visible;
+		padding: 0;
+		outline: 0;
+		height: 18px;
+		width: 18px;
+
+		&:focus {
+			box-shadow: 0 0 0 2px $white, 0 0 0 3px $dark-gray-500;
+			transition: box-shadow .1s linear;
+			background-color: #fff;
+			color: #191e23;	
+			outline: 2px solid transparent;
+		}
+
+		&:hover:not(:focus) {
+			background-color: #fff;
+		}
+
+		&:focus:hover {
+			background-color: #fff;
+			outline: 0;
+			box-shadow: none;
+	}
+
+		&.is-toggled {
+			span {
+				opacity: 1;
+			}
+		}
+
+		&:not(.is-toggled):hover {
+			span {
+				opacity: 0.725;
+			}	
+		}
+
+		&:not(.is-toggled) {
+			span {
+				opacity: 0.55;
+			}	
 		}
 	}
 }
