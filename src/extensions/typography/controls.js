@@ -20,10 +20,7 @@ class Controls extends Component {
 		} = this.props;
 
 		if ( ! coblocksBlockData.disableTypography ) {
-			return (
-				<Fragment>
-				</Fragment>
-			);
+			return null;
 		}
 
 		let hideToolbar = false;
@@ -69,10 +66,7 @@ class Controls extends Component {
 			);
 		}
 
-		return (
-			<Fragment>
-			</Fragment>
-		);
+		return null;
 	}
 }
 
