@@ -19,7 +19,7 @@ class Controls extends Component {
 			attributes,
 		} = this.props;
 
-		if ( ! coblocksBlockData.disableTypography ) {
+		if ( ! coblocksBlockData.typographyControlsEnabled ) {
 			return null;
 		}
 

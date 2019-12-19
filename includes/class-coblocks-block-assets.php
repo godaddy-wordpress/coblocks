@@ -132,10 +132,10 @@ class CoBlocks_Block_Assets {
 		/**
 		 * Filter to disable the typography controls
 		 *
-		 * @param bool    false    Whether or not to disable the controls.
+		 * @param bool    true Whether or not the controls are enabled.
 		 * @param integer $post_id Current post ID.
 		 */
-		$disable_typography = (bool) apply_filters( 'coblocks_disable_typography_controls', false, (int) $post_id );
+		$typography_controls_enabled = (bool) apply_filters( 'coblocks_typography_controls_enabled', true, (int) $post_id );
 
 		$form_subject = ( new CoBlocks_Form() )->default_subject();
 
@@ -150,7 +150,7 @@ class CoBlocks_Block_Assets {
 				'cropSettingsOriginalImageNonce' => wp_create_nonce( 'cropSettingsOriginalImageNonce' ),
 				'cropSettingsNonce'              => wp_create_nonce( 'cropSettingsNonce' ),
 				'customIcons'                    => $this->get_custom_icons(),
-				'disableTypography'              => $disable_typography,
+				'typographyControlsEnabled'      => $typography_controls_enabled,
 			)
 		);
 
