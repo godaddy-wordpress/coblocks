@@ -21,11 +21,18 @@
 			}
 		}
 	}
+
+	//Hide image placeholder - necessary in 5.3 until GB 6.9+ is merged.
+	.wp-block-coblocks-gallery-collage__figure:nth-child(2) {
+		display: none;
+	}
 }
 
 .wp-block[data-type="coblocks/gallery-collage"] {
 	ul {
 		list-style-type: none;
+		margin: 0;
+		padding: 0;
 	}
 
 	&[data-align="full"] .wp-block-coblocks-gallery-collage ul {

@@ -5,7 +5,8 @@
 		margin-bottom: 3px;
 	}
 
-	.coblocks-field {
+	.coblocks-field,
+	select {
 		margin: 0 0 1.25rem 0;
 		width: 100%;
 
@@ -31,6 +32,11 @@
 	.required {
 		color: $alert-red;
 		margin-left: 5px;
+	}
+
+	.coblocks-radio-label + *:not(.coblocks-radio-label),
+	.coblocks-radio-label + .coblocks-field.verify + .coblocks-form__submit {
+		margin-top: 1.25rem;
 	}
 
 	.coblocks-form__inline-fields {
@@ -92,6 +98,17 @@
 
 	.form-errors .form-error-message {
 		color: $alert-red;
+	}
+
+	.coblocks--inline {
+		display: flex;
+		flex-direction: row;
+		flex-flow: row wrap;
+		margin-bottom: 1.25rem;
+
+		label {
+			margin-right: 8px;
+		}
 	}
 }
 

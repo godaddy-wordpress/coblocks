@@ -6,7 +6,7 @@ import applyWithColors from './colors';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
@@ -40,8 +40,10 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ _x( 'Dynamic HR Settings', 'hr is html markup - horizonal rule' ) }>
-						<BaseControl label={ __( 'Height in pixels' ) }>
+					<PanelBody
+						/* translators: hr is html markup (horizonal rule) */
+						title={ __( 'Dynamic HR Settings', 'coblocks' ) }>
+						<BaseControl label={ __( 'Height in pixels', 'coblocks' ) }>
 							<input
 								type="number"
 								onChange={ ( event ) => {
@@ -49,7 +51,7 @@ class Inspector extends Component {
 										height: parseInt( event.target.value, 10 ),
 									} );
 								} }
-								aria-label={ __( 'Height for the dynamic separator element in pixels.' ) }
+								aria-label={ __( 'Height for the dynamic separator element in pixels.', 'coblocks' ) }
 								value={ height }
 								min="20"
 								step="10"
@@ -57,13 +59,13 @@ class Inspector extends Component {
 						</BaseControl>
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
+						title={ __( 'Color Settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: color.color,
 								onChange: setColor,
-								label: __( 'Color' ),
+								label: __( 'Color', 'coblocks' ),
 							},
 						] }
 					>

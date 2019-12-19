@@ -2,28 +2,53 @@
  * Internal dependencies
  */
 import edit from './edit';
-import icons from '../../icons';
-import metadata from './block.json';
+import icon from './icon';
 
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
  */
+const metadata = {
+	name: 'coblocks/field-textarea',
+	category: 'coblocks',
+	attributes: {
+		label: {
+			type: 'string',
+			default: __( 'Message', 'coblocks' ),
+		},
+		required: {
+			type: 'boolean',
+			default: false,
+		},
+	},
+};
+
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Message', 'block name' ),
-	description: __( 'A text box for longer responses.' ),
-	icon: icons.textarea,
-	keywords: [ _x( 'Textarea', 'block keyword' ), 'textarea', _x( 'Multiline text', 'block keyword' ) ],
+	/* translators: block name */
+	title: __( 'Textarea', 'coblocks' ),
+	/* translators: block description */
+	description: __( 'A text box for longer responses.', 'coblocks' ),
+	icon,
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'text', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'message text', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'multiline text', 'coblocks' ),
+	],
+	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,
 		html: false,
-		inserter: false,
+		customClassName: false,
 	},
 	attributes,
 	edit,

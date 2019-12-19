@@ -10,9 +10,10 @@
 *.sublime-workspace
 *.cache
 .ftppass
-coverage
+coverage/
+cypress/
 .dev/tests/cypress/screenshots
-wp_creds.json
+.dev/tests/cypress/wp_creds.json
 sftp.json
 dist/blocks.build.js
 dist/blocks.editor.build.css
@@ -21,5 +22,6 @@ sandbox.json
 /.idea/
 **/.DS_Store
 languages/coblocks-js.pot
-languages/*.json
 languages/*.mo
+languages/*.po
+!languages/coblocks.json

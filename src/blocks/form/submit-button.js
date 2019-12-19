@@ -104,7 +104,7 @@ class SubmitButton extends Component {
 			<Fragment>
 				<div className="coblocks-form__submit wp-block-button">
 					<RichText
-						placeholder={ __( 'Add text…' ) }
+						placeholder={ __( 'Add text…', 'coblocks' ) }
 						value={ attributes.submitButtonText }
 						onChange={ nextValue => setAttributes( { submitButtonText: nextValue } ) }
 						className={ buttonClasses }
@@ -115,7 +115,7 @@ class SubmitButton extends Component {
 				</div>
 				<InspectorControls>
 					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
+						title={ __( 'Color Settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
@@ -124,7 +124,7 @@ class SubmitButton extends Component {
 									setBackgroundButtonColor( nextColour );
 									setAttributes( { customBackgroundButtonColor: nextColour } );
 								},
-								label: __( 'Button Color' ),
+								label: __( 'Button Color', 'coblocks' ),
 							},
 							{
 								value: color,
@@ -132,7 +132,7 @@ class SubmitButton extends Component {
 									setTextButtonColor( nextColour );
 									setAttributes( { customTextButtonColor: nextColour } );
 								},
-								label: __( 'Button Text Color' ),
+								label: __( 'Button Text Color', 'coblocks' ),
 							},
 						] }
 					/>

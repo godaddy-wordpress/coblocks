@@ -3,14 +3,15 @@
  */
 import captionOptions from '../../components/block-gallery/options/caption-options';
 import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
+import OptionSelectorControl from '../../components/option-selector-control';
 
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, ToggleControl, SelectControl, ButtonGroup, Button, BaseControl } from '@wordpress/components';
+import { PanelBody, ToggleControl, SelectControl } from '@wordpress/components';
 
 /**
  * Inspector controls
@@ -27,11 +28,15 @@ class Inspector extends Component {
 	}
 
 	getCaptionsHelp( checked ) {
-		return checked ? __( 'Showing captions for each media item.' ) : __( 'Toggle to show media captions.' );
+		return checked ? __( 'Showing captions for each media item.', 'coblocks' ) : __( 'Toggle to show media captions.', 'coblocks' );
 	}
 
 	setShadowTo( value ) {
 		this.props.setAttributes( { shadow: value } );
+	}
+
+	getLightboxHelp( checked ) {
+		return checked ? __( 'Image lightbox is enabled.', 'coblocks' ) : __( 'Toggle to enable the image lightbox.', 'coblocks' );
 	}
 
 	render() {
@@ -47,114 +52,67 @@ class Inspector extends Component {
 			shadow,
 			captions,
 			captionStyle,
+			lightbox,
 		} = attributes;
-
-		const gutterOptions = [
-			{
-				value: 0,
-				label: _x( 'None', 'label for no gutter option' ),
-				shortName: _x( 'None', 'abbreviation for "Short" size' ),
-			},
-			{
-				value: 1,
-				label: _x( 'Small', 'label for small gutter option' ),
-				shortName: _x( 'S', 'abbreviation for "Small" size' ),
-			},
-			{
-				value: 2,
-				label: _x( 'Medium', 'label for medium gutter option' ),
-				shortName: _x( 'M', 'abbreviation for "Medium" size' ),
-			},
-			{
-				value: 3,
-				label: _x( 'Large', 'label for large gutter option' ),
-				shortName: _x( 'L', 'abbreviation for "Large" size' ),
-			},
-			{
-				value: 4,
-				label: _x( 'Extra Large', 'label for extra large gutter option' ),
-				shortName: _x( 'XL', 'abbreviation for "Extra Large" size' ),
-			},
-		];
 
 		const shadowOptions = [
 			{
-				value: 'none',
-				label: _x( 'None', 'label for no shadow option' ),
-				shortName: _x( 'None', 'abbreviation for "Short" size' ),
-			},
-			{
 				value: 'sm',
-				label: _x( 'Small', 'label for small shadow option' ),
-				shortName: _x( 'S', 'abbreviation for "Small" size' ),
+				/* translators: abbreviation for small size */
+				label: __( 'S', 'coblocks' ),
+				tooltip: __( 'Small', 'coblocks' ),
 			},
 			{
 				value: 'md',
-				label: _x( 'Medium', 'label for medium shadow option' ),
-				shortName: _x( 'M', 'abbreviation for "Medium" size' ),
+				/* translators: abbreviation for medium size */
+				label: __( 'M', 'coblocks' ),
+				tooltip: __( 'Medium', 'coblocks' ),
 			},
 			{
 				value: 'lg',
-				label: _x( 'Large', 'label for large shadow option' ),
-				shortName: _x( 'L', 'abbreviation for "Large" size' ),
+				/* translators: abbreviation for large size */
+				label: __( 'L', 'coblocks' ),
+				tooltip: __( 'Large', 'coblocks' ),
 			},
 		];
 
 		return (
 			<InspectorControls>
-				<PanelBody title={ __( 'Collage Settings' ) }>
-					{ enableGutter &&
-						<BaseControl label={ __( 'Gutter' ) }>
-							<ButtonGroup aria-label={ __( 'Gutter' ) }>
-								{ gutterOptions.map( ( option ) => {
-									const isCurrent = gutter === option.value;
-									return (
-										<Button
-											key={ `option-${ option.value }` }
-											isLarge
-											isPrimary={ isCurrent }
-											aria-pressed={ isCurrent }
-											onClick={ () => setAttributes( { gutter: option.value } ) }
-										>
-											{ option.shortName }
-										</Button>
-									);
-								} ) }
-							</ButtonGroup>
-						</BaseControl>
-					}
-					{ ! enableGutter &&
-						<BaseControl label={ __( 'Shadow' ) }>
-							<ButtonGroup aria-label={ __( 'Shadow' ) }>
-								{ shadowOptions.map( ( option ) => {
-									const isCurrent = shadow === option.value;
-									return (
-										<Button
-											key={ `option-${ option.value }` }
-											isLarge
-											isPrimary={ isCurrent }
-											aria-pressed={ isCurrent }
-											onClick={ () => setAttributes( { shadow: option.value } ) }
-										>
-											{ option.shortName }
-										</Button>
-									);
-								} ) }
-							</ButtonGroup>
-						</BaseControl>
-					}
+				<PanelBody title={ __( 'Collage Settings', 'coblocks' ) }>
+
+					{ enableGutter && <OptionSelectorControl
+						label={ __( 'Gutter', 'coblocks' ) }
+						currentOption={ gutter }
+						showNoneOption
+						onChange={ gutter => setAttributes( { gutter } ) }
+					/> }
+
+					{ ! enableGutter && <OptionSelectorControl
+						label={ __( 'Shadow', 'coblocks' ) }
+						options={ shadowOptions }
+						currentOption={ shadow }
+						showNoneOption
+						onChange={ shadow => setAttributes( { shadow } ) }
+					/> }
+
 					{ enableCaptions && <ToggleControl
-						label={ __( 'Captions' ) }
+						label={ __( 'Captions', 'coblocks' ) }
 						checked={ !! captions }
 						onChange={ () => setAttributes( { captions: ! captions } ) }
 						help={ this.getCaptionsHelp }
 					/> }
 					{ captions && <SelectControl
-						label={ __( 'Caption Style' ) }
+						label={ __( 'Caption Style', 'coblocks' ) }
 						value={ captionStyle }
 						onChange={ this.setCaptionStyleTo }
 						options={ captionOptions }
 					/> }
+					<ToggleControl
+						label={ __( 'Lightbox', 'coblocks' ) }
+						checked={ !! lightbox }
+						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
+						help={ this.getLightboxHelp }
+					/>
 				</PanelBody>
 				<GalleryLinkSettings { ...this.props } />
 			</InspectorControls>

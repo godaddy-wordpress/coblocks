@@ -10,7 +10,7 @@ import './styles/style.scss';
 import edit from './edit';
 import deprecated from './deprecated';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
-import getEditWrapperProps from './getEditWrapperProps';
+import { getEditWrapperProps } from './utilities';
 import icon from './icon';
 import metadata from './block.json';
 import save from './save';
@@ -20,7 +20,7 @@ import { BackgroundAttributes } from '../../components/background';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -34,10 +34,20 @@ const attributes = {
 };
 
 const settings = {
-	title: _x( 'Row', 'block name' ),
-	description: __( 'Add a structured wrapper for column blocks, then add content blocks you’d like to the columns.' ),
+	/* translators: block name */
+	title: __( 'Row', 'coblocks' ),
+	/* translators: block description */
+	description: __( 'Add a structured wrapper for column blocks, then add content blocks you’d like to the columns.', 'coblocks' ),
 	icon,
-	keywords: [	_x( 'rows', 'block keyword' ), _x( 'columns', 'block keyword' ), _x( 'layouts', 'block keyword' )	],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'rows', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'columns', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'layouts', 'coblocks' ),
+	],
 	supports: {
 		align: [ 'wide', 'full' ],
 		anchor: true,

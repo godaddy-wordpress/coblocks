@@ -103,7 +103,7 @@ class Inspector extends Component {
 			setBackgroundColor,
 			setIconColor,
 			className,
-			label = __( 'Size' ),
+			label = __( 'Size', 'coblocks' ),
 			help,
 		} = this.props;
 
@@ -152,7 +152,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Icon Settings' ) }>
+					<PanelBody title={ __( 'Icon Settings', 'coblocks' ) }>
 						{ iconSize === 'advanced' ?
 							<Fragment>
 								<div className="components-base-control components-coblocks-icon-block--advanced-size">
@@ -165,12 +165,12 @@ class Inspector extends Component {
 										} }
 										isSmall
 										isDefault
-										aria-label={ __( 'Reset icon size' ) }
+										aria-label={ __( 'Reset icon size', 'coblocks' ) }
 									>
-										{ __( 'Reset' ) }
+										{ __( 'Reset', 'coblocks' ) }
 									</Button>
 									<RangeControl
-										label={ __( 'Size' ) }
+										label={ __( 'Size', 'coblocks' ) }
 										value={ width }
 										onChange={ ( nextWidth ) => {
 											document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[ 0 ].style.height = 'auto';
@@ -195,10 +195,10 @@ class Inspector extends Component {
 										onClick={ () => this.onChangeSize( 'advanced', '' ) }
 										isDefault
 										isSmall
-										aria-label={ __( 'Apply custom size' ) }
+										aria-label={ __( 'Apply custom size', 'coblocks' ) }
 										isPrimary={ iconSize === 'advanced' }
 									>
-										{ __( 'Custom' ) }
+										{ __( 'Custom', 'coblocks' ) }
 									</Button>
 								</div>
 							</BaseControl>
@@ -206,7 +206,7 @@ class Inspector extends Component {
 						{ backgroundColor.color &&
 							<Fragment>
 								<RangeControl
-									label={ __( 'Radius' ) }
+									label={ __( 'Radius', 'coblocks' ) }
 									value={ borderRadius }
 									onChange={ ( nextBorderRadius ) => setAttributes( { borderRadius: nextBorderRadius } ) }
 									min={ 0 }
@@ -214,7 +214,7 @@ class Inspector extends Component {
 									step={ 1 }
 								/>
 								<RangeControl
-									label={ __( 'Padding' ) }
+									label={ __( 'Padding', 'coblocks' ) }
 									value={ padding }
 									onChange={ ( nextPadding ) => setAttributes( { padding: nextPadding } ) }
 									min={ 5 }
@@ -226,7 +226,7 @@ class Inspector extends Component {
 						<TextControl
 							type="text"
 							autoComplete="off"
-							label={ __( 'Icon Search' ) }
+							label={ __( 'Icon Search', 'coblocks' ) }
 							value={ this.state.searchValue }
 							className="coblocks-icon-types-list__search"
 							onChange={ ( evt ) => {
@@ -245,7 +245,7 @@ class Inspector extends Component {
 											} }
 										>
 											<span className="editor-block-types-list__item-icon">
-												{ svg[ iconStyle ][ icon ].icon }
+												{ icon && svg[ iconStyle ][ icon ].icon }
 											</span>
 										</Button>
 									</li> :
@@ -268,45 +268,45 @@ class Inspector extends Component {
 														} }
 													>
 														<span className="editor-block-types-list__item-icon">
-															{ svg[ iconStyle ][ keyName ].icon }
+															{ icon && svg[ iconStyle ][ keyName ].icon }
 														</span>
 													</Button>
 												</Tooltip>
 											</li>
 										);
 									} ) :
-									<li className="no-results"> { __( 'No results found.' ) } </li>
+									<li className="no-results"> { __( 'No results found.', 'coblocks' ) } </li>
 								}
 							</ul>
 						</div>
 					</PanelBody>
 					<PanelBody
-						title={ __( 'Link Settings' ) }
+						title={ __( 'Link Settings', 'coblocks' ) }
 						initialOpen={ false } >
 						<TextControl
-							label={ __( 'Link URL' ) }
+							label={ __( 'Link URL', 'coblocks' ) }
 							value={ href || '' }
 							onChange={ value => setAttributes( { href: value } ) }
 							placeholder="https://" />
 						<TextControl
-							label={ __( 'Link Rel' ) }
+							label={ __( 'Link Rel', 'coblocks' ) }
 							value={ rel || '' }
 							onChange={ value => setAttributes( { rel: value } ) }
 						/>
 						<ToggleControl
-							label={ !! linkTarget ? __( 'Opening in New Tab' ) : __( 'Open in New Tab' ) }
+							label={ !! linkTarget ? __( 'Opening in New Tab', 'coblocks' ) : __( 'Open in New Tab', 'coblocks' ) }
 							onChange={ this.onSetNewTab }
 							checked={ linkTarget === '_blank' } />
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
+						title={ __( 'Color Settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
 								isLargeText: true,
 								value: iconColor.color,
 								onChange: setIconColor,
-								label: __( 'Icon Color' ),
+								label: __( 'Icon Color', 'coblocks' ),
 							},
 							{
 								value: backgroundColor.color,
@@ -323,7 +323,7 @@ class Inspector extends Component {
 
 									setBackgroundColor( newBackground );
 								},
-								label: __( 'Background Color' ),
+								label: __( 'Background Color', 'coblocks' ),
 							},
 
 						] }

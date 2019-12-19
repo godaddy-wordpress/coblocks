@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/pricing-table-item should render with content 1`] = `
+"<!-- wp:coblocks/pricing-table-item -->
+<div class=\\"wp-block-coblocks-pricing-table-item\\"><span class=\\"wp-block-coblocks-pricing-table-item__title\\">Plan Title</span><div class=\\"wp-block-coblocks-pricing-table-item__price-wrapper\\"><span class=\\"wp-block-coblocks-pricing-table-item__amount\\">49</span></div></div>
+<!-- /wp:coblocks/pricing-table-item -->"
+`;

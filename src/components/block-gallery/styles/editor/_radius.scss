@@ -15,11 +15,6 @@
 			border-top-left-radius: #{$i}px !important;
 		}
 
-		.coblocks-gallery--figure .is-appender,
-		.components-coblocks-gallery-uploader.components-button {
-			border-radius: #{$i}px;
-		}
-
 		figcaption {
 			border-bottom-left-radius: #{$i - 4}px !important;
 			border-bottom-right-radius: #{$i - 4}px !important;

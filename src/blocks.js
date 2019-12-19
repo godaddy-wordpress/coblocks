@@ -21,14 +21,11 @@ import './extensions/list-styles';
 import './extensions/button-styles';
 import './extensions/button-controls';
 import './extensions/image-styles';
+import './extensions/cover-styles';
 import './extensions/image-crop';
 
 // Formats
 import './formats';
-
-// Sidebars
-import './sidebars/block-manager';
-import './sidebars/block-manager/deprecated';
 
 // Block Gallery
 import './components/block-gallery';
@@ -49,9 +46,16 @@ import * as features from './blocks/features';
 import * as foodAndDrinks from './blocks/food-and-drinks';
 import * as foodItem from './blocks/food-and-drinks/food-item';
 import * as form from './blocks/form';
+import * as fieldDate from './blocks/form/fields/date';
 import * as fieldEmail from './blocks/form/fields/email';
 import * as fieldName from './blocks/form/fields/name';
+import * as fieldRadio from './blocks/form/fields/radio';
+import * as fieldTelephone from './blocks/form/fields/phone';
 import * as fieldTextarea from './blocks/form/fields/textarea';
+import * as fieldSelect from './blocks/form/fields/select';
+import * as fieldCheckbox from './blocks/form/fields/checkbox';
+import * as fieldWebsite from './blocks/form/fields/website';
+import * as fieldHidden from './blocks/form/fields/hidden';
 import * as gif from './blocks/gif';
 import * as gist from './blocks/gist';
 import * as hero from './blocks/hero';
@@ -61,6 +65,7 @@ import * as logos from './blocks/logos';
 import * as map from './blocks/map';
 import * as masonry from './blocks/gallery-masonry';
 import * as mediaCard from './blocks/media-card';
+import * as offset from './blocks/gallery-offset';
 import * as posts from './blocks/posts';
 import * as postCarousel from './blocks/post-carousel';
 import * as pricingTable from './blocks/pricing-table';
@@ -109,9 +114,16 @@ export const registerCoBlocksBlocks = () => {
 		dynamicSeparator,
 		feature,
 		features,
+		fieldDate,
 		fieldEmail,
 		fieldName,
+		fieldRadio,
+		fieldTelephone,
 		fieldTextarea,
+		fieldSelect,
+		fieldCheckbox,
+		fieldWebsite,
+		fieldHidden,
 		foodAndDrinks,
 		foodItem,
 		form,
@@ -124,6 +136,7 @@ export const registerCoBlocksBlocks = () => {
 		map,
 		masonry,
 		mediaCard,
+		offset,
 		posts,
 		postCarousel,
 		pricingTable,

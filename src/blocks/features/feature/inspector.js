@@ -65,10 +65,10 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Feature Settings' ) } className="components-coblocks-block-sidebar--features">
+					<PanelBody title={ __( 'Feature Settings', 'coblocks' ) } className="components-coblocks-block-sidebar--features">
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
-							label={ __( 'Padding' ) }
+							label={ __( 'Padding', 'coblocks' ) }
 							valueTop={ paddingTop }
 							valueRight={ paddingRight }
 							valueBottom={ paddingBottom }
@@ -89,7 +89,7 @@ class Inspector extends Component {
 						/>
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
+						title={ __( 'Color Settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
@@ -107,11 +107,11 @@ class Inspector extends Component {
 										setAttributes( { paddingSize: 'no' } );
 									}
 								},
-								label: __( 'Background Color' ),
+								label: __( 'Background Color', 'coblocks' ),
 							}, {
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color' ),
+								label: __( 'Text Color', 'coblocks' ),
 							},
 						] }
 					>

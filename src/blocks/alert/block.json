@@ -4,6 +4,7 @@
 	"attributes": {
 		"title": {
 			"type": "string",
+			"source": "html",
 			"selector": ".wp-block-coblocks-alert__title"
 		},
 		"value": {

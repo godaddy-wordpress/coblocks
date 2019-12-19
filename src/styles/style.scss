@@ -22,6 +22,7 @@
 
 // Utility tooltips
 @import "style/tooltips";
+@import "style/datepicker";
 
 .relative {
 	position: relative;
@@ -45,6 +46,10 @@
 
 .flex {
 	display: flex;
+}
+
+.flex-wrap {
+	flex-wrap: wrap;
 }
 
 .flex-0 {
@@ -73,6 +78,10 @@
 
 .items-stretch {
 	align-items: stretch;
+}
+
+.justify-center {
+	justify-content: center;
 }
 
 .h-full {

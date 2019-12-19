@@ -7,7 +7,7 @@ import map from 'lodash/map';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { withInstanceId } from '@wordpress/compose';
 import { dispatch } from '@wordpress/data';
 import { Component, Fragment } from '@wordpress/element';
@@ -32,26 +32,75 @@ class CSSGridControl extends Component {
 		 * This will make us of existing block instead of creating new one
 		 */
 		let layoutOptions = [
-			{ value: 'top-left', label: _x( 'Top Left', 'block layout' ) },
-			{ value: 'top-center', label: _x( 'Top Center', 'block layout' ) },
-			{ value: 'top-right', label: _x( 'Top Right', 'block layout' ) },
-			{ value: 'center-left', label: _x( 'Center Left', 'block layout' ) },
-			{ value: 'center-center', label: _x( 'Center Center', 'block layout' ) },
-			{ value: 'center-right', label: _x( 'Center Right', 'block layout' ) },
-			{ value: 'bottom-left', label: _x( 'Bottom Left', 'block layout' ) },
-			{ value: 'bottom-center', label: _x( 'Bottom Center', 'block layout' ) },
-			{ value: 'bottom-right', label: _x( 'Bottom Right', 'block layout' ) },
+			{
+				value: 'top-left',
+				/* translators: block layout */
+				label: __( 'Top Left', 'coblocks' ),
+			},
+			{
+				value: 'top-center',
+				/* translators: block layout */
+				label: __( 'Top Center', 'coblocks' ),
+			},
+			{
+				value: 'top-right',
+				/* translators: block layout */
+				label: __( 'Top Right', 'coblocks' ),
+			},
+			{
+				value: 'center-left',
+				/* translators: block layout */
+				label: __( 'Center Left', 'coblocks' ),
+			},
+			{
+				value: 'center-center',
+				/* translators: block layout */
+				label: __( 'Center Center', 'coblocks' ),
+			},
+			{
+				value: 'center-right',
+				/* translators: block layout */
+				label: __( 'Center Right', 'coblocks' ),
+			},
+			{
+				value: 'bottom-left',
+				/* translators: block layout */
+				label: __( 'Bottom Left', 'coblocks' ),
+			},
+			{
+				value: 'bottom-center',
+				/* translators: block layout */
+				label: __( 'Bottom Center', 'coblocks' ),
+			},
+			{
+				value: 'bottom-right',
+				/* translators: block layout */
+				label: __( 'Bottom Right', 'coblocks' ),
+			},
 		];
 
 		if ( ! fullscreen ) {
 			layoutOptions = [
-				{ value: 'center-left', label: _x( 'Center Left', 'block layout' ) },
-				{ value: 'center-center', label: _x( 'Center Center', 'block layout' ) },
-				{ value: 'center-right', label: _x( 'Center Right', 'block layout' ) },
+				{
+					value: 'center-left',
+					/* translators: block layout */
+					label: __( 'Center Left', 'coblocks' ),
+				},
+				{
+					value: 'center-center',
+					/* translators: block layout */
+					label: __( 'Center Center', 'coblocks' ),
+				},
+				{
+					value: 'center-right',
+					/* translators: block layout */
+					label: __( 'Center Right', 'coblocks' ),
+				},
 			];
 		}
 
 		const layoutAttributes = {};
+
 		//top
 		layoutAttributes[ 'top-left' ] = {
 			wrapper: {
@@ -119,8 +168,8 @@ class CSSGridControl extends Component {
 		return (
 			<Fragment>
 				<div className={ classes }>
-					<p className="components-base-control__label">{ __( 'Layout' ) }</p>
-					<ButtonGroup aria-label={ __( 'Select Layout' ) }>
+					<p className="components-base-control__label">{ __( 'Layout', 'coblocks' ) }</p>
+					<ButtonGroup aria-label={ __( 'Select Layout', 'coblocks' ) }>
 						{ map( layoutOptions, ( { label, value }, index ) => {
 							if ( tooltip ) {
 								return (
@@ -158,7 +207,7 @@ class CSSGridControl extends Component {
 					</ButtonGroup>
 				</div>
 				<ToggleControl
-					label={ __( 'Fullscreen' ) }
+					label={ __( 'Fullscreen', 'coblocks' ) }
 					checked={ !! fullscreen }
 					onChange={ () => {
 						if ( fullscreen ) {
@@ -176,7 +225,7 @@ class CSSGridControl extends Component {
 						}
 						setAttributes( { fullscreen: ! fullscreen } );
 					} }
-					help={ !! fullscreen ? __( 'Fullscreen mode is enabled.' ) : __( 'Toggle to enable fullscreen mode.' ) }
+					help={ !! fullscreen ? __( 'Fullscreen mode is enabled.', 'coblocks' ) : __( 'Toggle to enable fullscreen mode.', 'coblocks' ) }
 				/>
 			</Fragment>
 		);

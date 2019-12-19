@@ -2,28 +2,52 @@
  * Internal dependencies
  */
 import edit from './edit';
-import icons from '../../icons';
-import metadata from './block.json';
+import icon from './icon';
 
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
  */
+const metadata = {
+	name: 'coblocks/field-email',
+	category: 'coblocks',
+	attributes: {
+		label: {
+			type: 'string',
+			default: __( 'Email', 'coblocks' ),
+		},
+		required: {
+			type: 'boolean',
+			default: false,
+		},
+	},
+};
+
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Email', 'block name' ),
-	description: __( 'An email address field.' ),
-	icon: icons.email,
-	keywords: [ _x( 'e-mail', 'block keyword' ), _x( 'mail', 'block keyword' ), 'email' ],
+	/* translators: block name */
+	title: __( 'Email', 'coblocks' ),
+	/* translators: block description */
+	description: __( 'A field for collecting a validated email address.', 'coblocks' ),
+	icon,
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'e-mail', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'mail', 'coblocks' ),
+	],
+	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,
 		html: false,
-		inserter: false,
+		multiple: false,
+		customClassName: false,
 	},
 	attributes,
 	edit,

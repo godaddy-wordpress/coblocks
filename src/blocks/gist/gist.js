@@ -6,13 +6,14 @@ import PropTypes from 'prop-types';
 /**
  * Internal dependencies
  */
-import icons from './../../utils/icons';
+import icon from './icon';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
+import { BlockIcon } from '@wordpress/block-editor';
 import { Placeholder, Spinner } from '@wordpress/components';
 
 // -- MAIN --
@@ -133,8 +134,8 @@ export default class Gist extends Component {
 			return (
 				<Placeholder
 					key="placeholder"
-					icon={ icons.github }
-					label={ __( 'Loading Gist' ) }
+					icon={ <BlockIcon icon={ icon } /> }
+					label={ __( 'Loading Gist', 'coblocks' ) }
 				>
 					<Spinner />
 				</Placeholder>

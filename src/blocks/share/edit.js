@@ -110,7 +110,7 @@ class edit extends Component {
 						<li>
 							<span className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--facebook' ) } style={ buttonStyles }>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
-								<span className="wp-block-coblocks-social__text">{ __( 'Share on Facebook' ) }</span>
+								<span className="wp-block-coblocks-social__text">{ __( 'Share on Facebook', 'coblocks' ) }</span>
 							</span>
 						</li>
 						}
@@ -118,7 +118,7 @@ class edit extends Component {
 						<li>
 							<span className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--twitter' ) } style={ buttonStyles }>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
-								<span className="wp-block-coblocks-social__text">{ __( 'Share on Twitter' ) }</span>
+								<span className="wp-block-coblocks-social__text">{ __( 'Share on Twitter', 'coblocks' ) }</span>
 							</span>
 						</li>
 						}
@@ -126,7 +126,7 @@ class edit extends Component {
 						<li>
 							<span className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--pinterest' ) } style={ buttonStyles }>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
-								<span className="wp-block-coblocks-social__text">{ __( 'Share on Pinterest' ) }</span>
+								<span className="wp-block-coblocks-social__text">{ __( 'Share on Pinterest', 'coblocks' ) }</span>
 							</span>
 						</li>
 						}
@@ -134,7 +134,7 @@ class edit extends Component {
 						<li>
 							<span className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--linkedin' ) } style={ buttonStyles }>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
-								<span className="wp-block-coblocks-social__text">{ __( 'Share on LinkedIn' ) }</span>
+								<span className="wp-block-coblocks-social__text">{ __( 'Share on LinkedIn', 'coblocks' ) }</span>
 							</span>
 						</li>
 						}
@@ -142,7 +142,7 @@ class edit extends Component {
 						<li>
 							<span className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--email' ) } style={ buttonStyles }>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
-								<span className="wp-block-coblocks-social__text">{ __( 'Share via Email' ) }</span>
+								<span className="wp-block-coblocks-social__text">{ __( 'Share via Email', 'coblocks' ) }</span>
 							</span>
 						</li>
 						}
@@ -150,7 +150,7 @@ class edit extends Component {
 						<li>
 							<span className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--tumblr' ) } style={ buttonStyles }>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
-								<span className="wp-block-coblocks-social__text">{ __( 'Share on Tumblr' ) }</span>
+								<span className="wp-block-coblocks-social__text">{ __( 'Share on Tumblr', 'coblocks' ) }</span>
 							</span>
 						</li>
 						}
@@ -158,7 +158,7 @@ class edit extends Component {
 						<li>
 							<span className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--google' ) } style={ buttonStyles }>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
-								<span className="wp-block-coblocks-social__text">{ __( 'Share on Google' ) }</span>
+								<span className="wp-block-coblocks-social__text">{ __( 'Share on Google', 'coblocks' ) }</span>
 							</span>
 						</li>
 						}
@@ -166,7 +166,7 @@ class edit extends Component {
 						<li>
 							<span className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--reddit' ) } style={ buttonStyles }>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
-								<span className="wp-block-coblocks-social__text">{ __( 'Share on Reddit' ) }</span>
+								<span className="wp-block-coblocks-social__text">{ __( 'Share on Reddit', 'coblocks' ) }</span>
 							</span>
 						</li>
 						}

@@ -1,6 +1,6 @@
 $gutter: 1em;
 
-.editor-block-list__block[data-type="coblocks/pricing-table"] {
+.wp-block[data-type="coblocks/pricing-table"] {
 	.editor-inner-blocks {
 		width: 100%;
 
@@ -41,9 +41,8 @@ $gutter: 1em;
 		}
 	}
 
-	.editor-block-mover,
 	.block-list-appender {
-		display: none;
+		display: none !important;
 	}
 }
 

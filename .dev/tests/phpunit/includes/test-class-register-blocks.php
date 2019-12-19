@@ -56,7 +56,7 @@ class CoBlocks_Register_Blocks_Tests extends WP_UnitTestCase {
 			'slug' => 'coblocks',
 		];
 
-		$slug = $reflection->getProperty( '_slug' );
+		$slug = $reflection->getProperty( 'slug' );
 
 		$slug->setAccessible( true );
 

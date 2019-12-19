@@ -6,7 +6,7 @@ import linkOptions from './options/link-options';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { SelectControl, ToggleControl, PanelBody, TextControl } from '@wordpress/components';
 
@@ -60,11 +60,11 @@ class GalleryLinkSettings extends Component {
 			<Fragment>
 				{ ! lightbox &&
 					<PanelBody
-						title={ __( 'Link Settings' ) }
+						title={ __( 'Link Settings', 'coblocks' ) }
 						initialOpen={ false }
 					>
 						<SelectControl
-							label={ __( 'Link To' ) }
+							label={ __( 'Link To', 'coblocks' ) }
 							value={ linkTo }
 							options={ linkOptions }
 							onChange={ this.setLinkTo }
@@ -72,12 +72,13 @@ class GalleryLinkSettings extends Component {
 						{ linkTo !== 'none' &&
 							<Fragment>
 								<ToggleControl
-									label={ __( 'Open in New Tab' ) }
+									label={ __( 'Open in New Tab', 'coblocks' ) }
 									onChange={ this.setNewTab }
 									checked={ target === '_blank' }
 								/>
 								<TextControl
-									label={ _x( 'Link Rel', 'HTML attribute that specifies the a relationship between the two pages.' ) }
+									/* translators: html attribute that specifies the relationship between two pages */
+									label={ __( 'Link Rel', 'coblocks' ) }
 									value={ rel }
 									onChange={ ( value ) => setAttributes( { rel: value } ) }
 								/>

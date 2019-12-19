@@ -16,7 +16,7 @@ import save from './save';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Set default icon size equivalent to "Medium".
@@ -29,19 +29,30 @@ export const DEFAULT_ICON_SIZE = 60;
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Icon', 'block name' ),
-	description: __( 'Add a stylized graphic symbol to communicate something more.' ),
+	/* translators: block name */
+	title: __( 'Icon', 'coblocks' ),
+	/* translators: block description */
+	description: __( 'Add a stylized graphic symbol to communicate something more.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'icons', 'block keyword' ), 'svg', 'coblocks' ],
-	styles: [
-		{ name: 'outlined', label: _x( 'Outlined', 'block style' ), isDefault: true },
-		{ name: 'filled', label: _x( 'Filled', 'block style' ) },
+	keywords: [
+		'coblocks',
+		'svg',
+		/* translators: block keyword */
+		__( 'icons', 'coblocks' ),
 	],
-	example: {
-		attributes: {
-			width: 260,
+	styles: [
+		{
+			name: 'outlined',
+			/* translators: block style */
+			label: __( 'Outlined', 'coblocks' ),
+			isDefault: true,
 		},
-	},
+		{
+			name: 'filled',
+			/* translators: block style */
+			label: __( 'Filled', 'coblocks' ),
+		},
+	],
 	attributes,
 	edit,
 	save,

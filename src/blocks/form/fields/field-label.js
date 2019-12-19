@@ -5,7 +5,7 @@ import { __ } from '@wordpress/i18n';
 import { ToggleControl } from '@wordpress/components';
 import { RichText } from '@wordpress/block-editor';
 
-const CoBlocksFieldLabel = ( { setAttributes, label, resetFocus, isSelected, required } ) => {
+const CoBlocksFieldLabel = ( { setAttributes, label, resetFocus, isSelected, required, showRequiredToggle = true } ) => {
 	return (
 		<div className="coblocks-field-label">
 			<div className="coblocks-field-label__input-wrapper">
@@ -19,15 +19,15 @@ const CoBlocksFieldLabel = ( { setAttributes, label, resetFocus, isSelected, req
 						}
 						setAttributes( { label: value } );
 					} }
-					placeholder={ __( 'Add label…' ) }
+					placeholder={ __( 'Add label…', 'coblocks' ) }
 				/>
 				{ required && (
 					<span className="required">*</span>
 				) }
 			</div>
-			{ isSelected && (
+			{ isSelected && showRequiredToggle && (
 				<ToggleControl
-					label={ __( 'Required' ) }
+					label={ __( 'Required', 'coblocks' ) }
 					className="coblocks-field-label__required"
 					checked={ required }
 					onChange={ value => setAttributes( { required: value } ) }

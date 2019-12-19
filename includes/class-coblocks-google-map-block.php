@@ -37,31 +37,23 @@ class CoBlocks_Google_Map_Block {
 	/**
 	 * The base URL path (without trailing slash).
 	 *
-	 * @var string $_url
+	 * @var string $url
 	 */
-	private $_url;
+	private $url;
 
 	/**
-	 * The Plugin version.
+	 * The Plugin slug.
 	 *
-	 * @var string $_version
+	 * @var string $slug
 	 */
-	private $_version;
-
-	/**
-	 * The Plugin version.
-	 *
-	 * @var string $_slug
-	 */
-	private $_slug;
+	private $slug;
 
 	/**
 	 * The Constructor.
 	 */
 	public function __construct() {
-		$this->_version = COBLOCKS_VERSION;
-		$this->_slug    = 'coblocks';
-		$this->_url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
+		$this->slug = 'coblocks';
+		$this->url  = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'map_assets' ) );
 		add_action( 'the_post', array( $this, 'map_assets' ) );
@@ -85,26 +77,28 @@ class CoBlocks_Google_Map_Block {
 		if ( has_block( 'coblocks/map' ) && $key ) {
 
 			wp_enqueue_script(
-				$this->_slug . '-google-maps',
-				$dir . $this->_slug . '-google-maps' . COBLOCKS_ASSET_SUFFIX . '.js',
+				$this->slug . '-google-maps',
+				$dir . $this->slug . '-google-maps' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery' ),
-				$this->_version,
+				COBLOCKS_VERSION,
 				true
 			);
 
 			if ( ! is_admin() ) {
 
+				$locale = explode( '_', get_locale() );
+
 				wp_enqueue_script(
-					$this->_slug . '-google-maps-api',
-					'https://maps.googleapis.com/maps/api/js?key=' . esc_attr( $key ),
-					array( $this->_slug . '-google-maps' ),
-					$this->_version,
+					$this->slug . '-google-maps-api',
+					'https://maps.googleapis.com/maps/api/js?key=' . esc_attr( $key ) . '&language=' . esc_attr( $locale[0] ),
+					array( $this->slug . '-google-maps' ),
+					COBLOCKS_VERSION,
 					true
 				);
 
 			}
 
-			wp_localize_script( $this->_slug . '-google-maps', 'coblocksGoogleMaps', array( 'url' => $this->_url ) );
+			wp_localize_script( $this->slug . '-google-maps', 'coblocksGoogleMaps', array( 'url' => $this->url ) );
 		}
 	}
 

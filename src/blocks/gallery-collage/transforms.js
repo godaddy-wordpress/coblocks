@@ -22,6 +22,7 @@ const transforms = {
 				'coblocks/gallery-carousel',
 				'coblocks/gallery-masonry',
 				'coblocks/gallery-stacked',
+				'coblocks/gallery-offset',
 				'blockgallery/carousel',
 				'blockgallery/masonry',
 				'blockgallery/stacked',
@@ -93,6 +94,17 @@ const transforms = {
 					{ images: attributes.images.filter( image => typeof image.id !== 'undefined' ) }
 				);
 				return createBlock( 'coblocks/gallery-stacked', newAttributes );
+			},
+		},
+		{
+			type: 'block',
+			blocks: [ 'coblocks/gallery-offset' ],
+			transform: ( attributes ) => {
+				const newAttributes = Object.assign(
+					GalleryTransforms( attributes ),
+					{ images: attributes.images.filter( image => typeof image.id !== 'undefined' ) }
+				);
+				return createBlock( 'coblocks/gallery-offset', newAttributes );
 			},
 		},
 	],

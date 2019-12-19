@@ -7,13 +7,14 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import { ALLOWED_MEDIA_TYPES } from './edit';
+import icons from './icons';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { BlockControls, MediaPlaceholder, MediaUpload } from '@wordpress/block-editor';
+import { BlockControls, MediaPlaceholder, MediaUpload, BlockIcon } from '@wordpress/block-editor';
 import { IconButton, ResizableBox, Toolbar, DropZone, Spinner } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
 
@@ -34,7 +35,7 @@ class MediaContainer extends Component {
 						render={ ( { open } ) => (
 							<IconButton
 								className="components-toolbar__control"
-								label={ __( 'Edit media' ) }
+								label={ __( 'Edit media', 'coblocks' ) }
 								icon="edit"
 								onClick={ open }
 							/>
@@ -95,9 +96,10 @@ class MediaContainer extends Component {
 						</figure>
 					</Fragment>				:
 					<MediaPlaceholder
-						icon="format-image"
+						icon={ <BlockIcon icon={ icons.mediaContainer } /> }
 						labels={ {
-							title: __( 'Media' ),
+							title: __( 'Media area', 'coblocks' ),
+							instructions: __( 'Upload a media file or pick one from your media library', 'coblocks' ),
 						} }
 						className={ figureClass }
 						onSelect={ onSelectMedia }
@@ -117,7 +119,7 @@ class MediaContainer extends Component {
 			<Fragment>
 				<DropZone
 					onFilesDrop={ onDropMedia }
-					label={ __( 'Drop to replace media' ) }
+					label={ __( 'Drop to replace media', 'coblocks' ) }
 				/>
 			</Fragment>
 		);

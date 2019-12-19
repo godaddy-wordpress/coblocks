@@ -68,10 +68,10 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 				{ hasFullwidth &&
 					<InspectorAdvancedControls>
 						<ToggleControl
-							label={ __( 'Display Fullwidth' ) }
+							label={ __( 'Display Fullwidth', 'coblocks' ) }
 							checked={ !! isFullwidth }
 							onChange={ () => setAttributes( { isFullwidth: ! isFullwidth } ) }
-							help={ !! isFullwidth ? __( 'Displaying as full width.' ) : __( 'Toggle to display button as full width.' ) }
+							help={ !! isFullwidth ? __( 'Displaying as full width.', 'coblocks' ) : __( 'Toggle to display button as full width.', 'coblocks' ) }
 						/>
 					</InspectorAdvancedControls>
 				}
