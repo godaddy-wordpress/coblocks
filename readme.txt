@@ -116,22 +116,26 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Enhancements
-* Introduce [Offset Gallery](https://github.com/godaddy-wordpress/coblocks/pull/1144) block 🎉
-* Allow [dynamic subject lines](https://github.com/godaddy-wordpress/coblocks/pull/1017) with Form block submissions
-* Use consistent [styling for the next and previous](https://github.com/godaddy-wordpress/coblocks/pull/1166) buttons in the Carousel block and Lightbox
-* Add [keyboard shortcuts](https://github.com/godaddy-wordpress/coblocks/pull/1170) for navigating images in a lightbox
-* Introduce [end-to-end testing](https://github.com/godaddy-wordpress/coblocks/pull/1139) using Cypress
-* Add [Lightbox functionality to the Carousel block](https://github.com/godaddy-wordpress/coblocks/pull/1165)
-* [Remove minimum height limitation](https://github.com/godaddy-wordpress/coblocks/pull/1167) on the Carousel block
-* New shared component: [Option Selector Control](https://github.com/godaddy-wordpress/coblocks/pull/1163)
-* Add [Form block layout templates](https://github.com/godaddy-wordpress/coblocks/pull/1128)
+* Introduce the ability for [themes to provide custom icons](https://github.com/godaddy-wordpress/coblocks/pull/1006) for the Icon block
+* Introduce a filter to [conditionally disable the typography controls](https://github.com/godaddy-wordpress/coblocks/pull/987)
+* Introduce filter to [conditionally load block styles](https://github.com/godaddy-wordpress/coblocks/pull/1173)
 
 ### Bug Fixes
-* Use [descriptive element name](https://github.com/godaddy-wordpress/coblocks/pull/1023) for Form block radio buttons
+* Fix [media placeholder visibility when using Spotlight mode](https://github.com/godaddy-wordpress/coblocks/pull/1208)
+* Fix display issue with [Flickity navigation buttons](https://github.com/godaddy-wordpress/coblocks/pull/1204)
+* Resolve browser [Object.fromEntries compatibility errors](https://github.com/godaddy-wordpress/coblocks/pull/1205)
+* Use [background image SVGs](https://github.com/godaddy-wordpress/coblocks/pull/1171) for the Food & Drinks block item attributes
+* [Serve full size images](https://github.com/godaddy-wordpress/coblocks/pull/1178) with Post Carousel block
+* [Allow editing gallery captions without content](https://github.com/godaddy-wordpress/coblocks/pull/1180)
+* [Localize instructions string for MediaPlaceholder](https://github.com/godaddy-wordpress/coblocks/pull/1179)
 
 ### Misc
-* [Cleanup CoBlocks options](https://github.com/godaddy-wordpress/coblocks/pull/1172) from database on uninstall
-* [Generate translation files on master changes](https://github.com/godaddy-wordpress/coblocks/pull/1164)
-* [Create CONTRIBUTORS.md](https://github.com/godaddy-wordpress/coblocks/pull/1158)
-* Update links to point at the [GoDaddy WordPress GitHub Organization](https://github.com/godaddy-wordpress/coblocks/pull/1159)
-* Update [contributor callout](https://github.com/godaddy-wordpress/coblocks/pull/1126) on README
+* [Clean up code structure of the Row block](https://github.com/godaddy-wordpress/coblocks/pull/1037)
+* [Improve Features block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1189)
+* [Improve Dynamic Separator block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1188)
+* [Improve Gist block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1187)
+* [Improve Buttons block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1186)
+* [Improve Author block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1185)
+* [Improve Click-to-Tweet block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1184)
+* [Improve Alert block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1182)
+* [Improve Accordion block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1181)
