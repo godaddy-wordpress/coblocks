@@ -87,17 +87,6 @@ const transforms = {
 		},
 		{
 			type: 'block',
-			blocks: [ 'coblocks/gallery-stacked' ],
-			transform: ( attributes ) => {
-				const newAttributes = Object.assign(
-					GalleryTransforms( attributes ),
-					{ images: attributes.images.filter( image => typeof image.id !== 'undefined' ) }
-				);
-				return createBlock( 'coblocks/gallery-stacked', newAttributes );
-			},
-		},
-		{
-			type: 'block',
 			blocks: [ 'coblocks/gallery-offset' ],
 			transform: ( attributes ) => {
 				const newAttributes = Object.assign(
