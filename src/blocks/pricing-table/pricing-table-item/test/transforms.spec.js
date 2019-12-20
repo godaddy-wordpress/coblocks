@@ -26,14 +26,14 @@ describe( 'coblocks/pricing-table-item transforms', () => {
 		it( `should transform raw html to ${ index + 1 } item block(s)`, () => {
 			HTML = HTML + `
                 <div class="wp-block-coblocks-pricing-table-item">
-                <span class="wp-block-coblocks-pricing-table-item__title">${ attributes.title[ index ] }</span>
-                <div class="wp-block-coblocks-pricing-table-item__price-wrapper">
-                    <span class="wp-block-coblocks-pricing-table-item__currency">$</span>
-                    <span class="wp-block-coblocks-pricing-table-item__amount">${ attributes.amount[ index ] }</span>
-                </div>
-                <ul class="wp-block-coblocks-pricing-table-item__features"><li>${ attributes.features[ index ] }</li></ul>
-                <div class="wp-block-button"><a class="wp-block-button__link">buy now</a></div>
-            </div>`;
+                    <span class="wp-block-coblocks-pricing-table-item__title">${ attributes.title[ index ] }</span>
+                    <div class="wp-block-coblocks-pricing-table-item__price-wrapper">
+                        <span class="wp-block-coblocks-pricing-table-item__currency">$</span>
+                        <span class="wp-block-coblocks-pricing-table-item__amount">${ attributes.amount[ index ] }</span>
+                    </div>
+                    <ul class="wp-block-coblocks-pricing-table-item__features"><li>${ attributes.features[ index ] }</li></ul>
+                    <div class="wp-block-button"><a class="wp-block-button__link">buy now</a></div>
+                </div>`;
 
 			const block = rawHandler( { HTML } );
 
