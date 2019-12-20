@@ -9,41 +9,42 @@ import { registerBlockType, rawHandler } from '@wordpress/blocks';
 import { name, settings } from '../';
 
 describe( 'coblocks/pricing-table-item transforms', () => {
+	const attributes = {
+		title: [ 'Plan 1', 'Plan 2', 'Plan 3', 'Plan 4' ],
+		amount: [ '99', '66', '33', '00' ],
+		features: [ 'Features 1', 'Features 2', 'Features 3', 'Features 4' ],
+	};
+
+	let HTML = '';
+
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );
 	} );
 
-	it( 'should transform raw html to block', () => {
-		const attributes = {
-			title: [ 'Plan 1', 'Plan 2', 'Plan 3', 'Plan 4' ],
-			amount: [ '99', '66', '33', '00' ],
-			features: [ 'Features 1', 'Features 2', 'Features 3', 'Features 4' ],
-		};
-
-		let HTML = '';
-
-		attributes.title.forEach( ( item, index ) => {
+	attributes.title.forEach( ( item, index ) => {
+		it( `should transform raw html to ${ index + 1 } item block(s)`, () => {
 			HTML = HTML + `
-            <div class="wp-block-coblocks-pricing-table-item">
-            <span class="wp-block-coblocks-pricing-table-item__title">${ attributes.title[ index ] }</span>
-            <div class="wp-block-coblocks-pricing-table-item__price-wrapper">
-                <span class="wp-block-coblocks-pricing-table-item__currency">$</span>
-                <span class="wp-block-coblocks-pricing-table-item__amount">${ attributes.amount[ index ] }</span>
-            </div>
-            <ul class="wp-block-coblocks-pricing-table-item__features"><li>${ attributes.features[ index ] }</li></ul>
-            <div class="wp-block-button"><a class="wp-block-button__link">buy now</a></div>
-        </div>`;
-		} );
+                <div class="wp-block-coblocks-pricing-table-item">
+                <span class="wp-block-coblocks-pricing-table-item__title">${ attributes.title[ index ] }</span>
+                <div class="wp-block-coblocks-pricing-table-item__price-wrapper">
+                    <span class="wp-block-coblocks-pricing-table-item__currency">$</span>
+                    <span class="wp-block-coblocks-pricing-table-item__amount">${ attributes.amount[ index ] }</span>
+                </div>
+                <ul class="wp-block-coblocks-pricing-table-item__features"><li>${ attributes.features[ index ] }</li></ul>
+                <div class="wp-block-button"><a class="wp-block-button__link">buy now</a></div>
+            </div>`;
 
-		const block = rawHandler( { HTML } );
+			const block = rawHandler( { HTML } );
 
-		block.forEach( ( item, index ) => {
-			expect( item.isValid ).toBe( true );
-			expect( item.name ).toBe( name );
-			expect( item.attributes.title[ 0 ] ).toBe( attributes.title[ index ] );
-			expect( item.attributes.features[ 0 ].props.children[ 0 ] ).toBe( attributes.features[ index ] );
-			expect( item.attributes.amount[ 0 ] ).toBe( attributes.amount[ index ] );
+			block.forEach( ( item, index ) => {
+				expect( item.isValid ).toBe( true );
+				expect( item.name ).toBe( name );
+				expect( item.attributes.title[ 0 ] ).toBe( attributes.title[ index ] );
+				expect( item.attributes.features[ 0 ].props.children[ 0 ] ).toBe( attributes.features[ index ] );
+				expect( item.attributes.amount[ 0 ] ).toBe( attributes.amount[ index ] );
+			} );
 		} );
 	} );
 } );
+
