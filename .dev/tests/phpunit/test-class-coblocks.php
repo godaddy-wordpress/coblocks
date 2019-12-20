@@ -242,18 +242,6 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 					"${minfied_asset_string} ${asset_type} asset not found: " . COBLOCKS_PLUGIN_DIR . "${path_to_asset}"
 				);
 
-				// Asset the assets exist when SCRIPT_DEBUG is true
-				// if ( 'js' === $asset_type ) {
-				//
-				// 	$path_to_unminified_js_asset = str_replace( '.min', '', str_replace( 'dist', 'src', $path_to_asset ) );
-				//
-				// 	$this->assertTrue(
-				// 		file_exists( $path_to_unminified_js_asset ),
-				// 		"Unminified ${asset_type} asset not found: ${path_to_unminified_js_asset}"
-				// 	);
-				//
-				// }
-
 			}
 
 		}
