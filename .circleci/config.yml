@@ -20,10 +20,6 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - nightly-translations:
-          filters:
-            tags:
-              only: /.*/
       - i18n:
           filters:
             branches:
