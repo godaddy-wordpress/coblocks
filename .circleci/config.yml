@@ -65,10 +65,6 @@ jobs:
           paths:
             - node_modules
       - run:
-          name: "Install Dependencies"
-          command: |
-            bash .dev/bin/install-dependencies.sh
-      - run:
           name: Install WPCLI
           command: |
             curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
@@ -78,6 +74,11 @@ jobs:
           name: Build the plugin
           command: |
             ./node_modules/.bin/grunt build
+      - run:
+          name: "Install Dependencies"
+          command: |
+            bash .dev/bin/install-dependencies.sh
+            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
           name: "Run PHPCS"
           command: composer run lint -- -v
@@ -122,10 +123,6 @@ jobs:
           paths:
             - node_modules
       - run:
-          name: "Install Dependencies"
-          command: |
-            bash .dev/bin/install-dependencies.sh
-      - run:
           name: Install WPCLI
           command: |
             curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
@@ -135,6 +132,11 @@ jobs:
           name: Build the plugin
           command: |
             ./node_modules/.bin/grunt build
+      - run:
+          name: "Install Dependencies"
+          command: |
+            bash .dev/bin/install-dependencies.sh
+            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
           name: "Run PHPCS"
           command: composer run lint -- -v
