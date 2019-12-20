@@ -40,14 +40,10 @@ describe( 'Deploy .po files from Coblocks to WordPress.org', function() {
 
       cy.task( 'log', `Uploading ${locale} translations...` );
 
-      /**
-       * @todo When translation files are ready for deployment, uncomment the lines
-       *       below, and run `npm run deploy-i18n` or `.dev/node_modules/cypress open`
-       */
-      // cy.get( '#submit' ).click();
+      cy.get( '#submit' ).click();
 
-      // Get the legend in the footer of Glotpress
-      // cy.get( '#legend', { timeout: 30000 } );
+      // Get the legend in the footer of the GlotPress site
+      cy.get( '#legend', { timeout: 30000 } );
 
     }
 
