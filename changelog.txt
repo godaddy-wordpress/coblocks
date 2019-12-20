@@ -1,4 +1,10 @@
 
+1.19.1 / 2019-12-20
+===================
+
+### Bug Fixes
+* [Resolve 404 error](https://github.com/godaddy-wordpress/coblocks/pull/1219) for utility styles
+
 1.19.0 / 2019-12-19
 ===================
 

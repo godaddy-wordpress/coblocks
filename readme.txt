@@ -139,3 +139,6 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 * [Improve Click-to-Tweet block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1184)
 * [Improve Alert block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1182)
 * [Improve Accordion block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1181)
+
+### 1.19.1
+* [Resolve 404 error](https://github.com/godaddy-wordpress/coblocks/pull/1219) for utility styles
