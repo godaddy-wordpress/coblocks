@@ -62,10 +62,12 @@ jobs:
           paths:
             - node_modules
       - run:
+          name: Install gettext
+          command: sudo apt-get install gettext
+      - run:
           name: "Install Dependencies"
           command: |
             bash .dev/bin/install-dependencies.sh
-            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
           name: Install WPCLI
           command: |
@@ -117,10 +119,12 @@ jobs:
           paths:
             - node_modules
       - run:
+          name: Install gettext
+          command: sudo apt-get install gettext
+      - run:
           name: "Install Dependencies"
           command: |
             bash .dev/bin/install-dependencies.sh
-            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
           name: Install WPCLI
           command: |
