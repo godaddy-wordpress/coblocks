@@ -34,6 +34,7 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Buttons Block
 * Carousel Gallery Block
 * Click to Tweet Block
+* Collage Gallery Block
 * Dynamic Separator Block
 * Features Block
 * Food & Drinks Block
@@ -47,6 +48,9 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Map Block
 * Masonry Gallery Block
 * Media Card Block
+* Offset Gallery Block
+* Post Carousel Block
+* Posts Block
 * Pricing Table Block
 * Resizable Row/Columns Blocks
 * Services Block
