@@ -56,12 +56,12 @@ jobs:
           name: Update npm
           command: sudo npm install -g npm@latest
       - restore_cache:
-          key: php56-dependency-cache--{{ checksum "package.json" }}
+          key: php56-build-dependency-cache--{{ checksum "package.json" }}
       - run:
           name: Install node packages
           command: npm install
       - save_cache:
-          key: php56-dependency-cache--{{ checksum "package.json" }}
+          key: php56-build-dependency-cache--{{ checksum "package.json" }}
           paths:
             - node_modules
       - run:
@@ -114,12 +114,12 @@ jobs:
           name: Update npm
           command: sudo npm install -g npm@latest
       - restore_cache:
-          key: php56-dependency-cache--{{ checksum "package.json" }}
+          key: php72-build-dependency-cache--{{ checksum "package.json" }}
       - run:
           name: Install node packages
           command: npm install
       - save_cache:
-          key: php56-dependency-cache--{{ checksum "package.json" }}
+          key: php72-build-dependency-cache--{{ checksum "package.json" }}
           paths:
             - node_modules
       - run:
