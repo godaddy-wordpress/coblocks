@@ -18,6 +18,7 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 -   Buttons Block
 -   Carousel Gallery Block
 -   Click to Tweet Block
+-   Collage Gallery Block
 -   Dynamic Separator Block
 -   Features Block
 -   Food & Drinks Block
@@ -31,6 +32,9 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 -   Map Block
 -   Masonry Gallery Block
 -   Media Card Block
+-   Offset Gallery Block
+-   Post Carousel Block
+-   Posts Block
 -   Pricing Table Block
 -   Resizable Row/Columns Blocks
 -   Services Block

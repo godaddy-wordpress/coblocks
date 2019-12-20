@@ -34,6 +34,7 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Buttons Block
 * Carousel Gallery Block
 * Click to Tweet Block
+* Collage Gallery Block
 * Dynamic Separator Block
 * Features Block
 * Food & Drinks Block
@@ -47,6 +48,9 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Map Block
 * Masonry Gallery Block
 * Media Card Block
+* Offset Gallery Block
+* Post Carousel Block
+* Posts Block
 * Pricing Table Block
 * Resizable Row/Columns Blocks
 * Services Block
@@ -139,3 +143,9 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 * [Improve Click-to-Tweet block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1184)
 * [Improve Alert block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1182)
 * [Improve Accordion block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1181)
+
+### 1.19.1
+* [Resolve 404 error](https://github.com/godaddy-wordpress/coblocks/pull/1219) for utility styles
+* Update PHPUnit tests to [check for build assets](https://github.com/godaddy-wordpress/coblocks/pull/1222)
+* [Remove has-custom-size class](https://github.com/godaddy-wordpress/coblocks/pull/1223) from Typography Controls
+* Add [utility script that audits i18n strings against a wporg glossary](https://github.com/godaddy-wordpress/coblocks/pull/1224)
