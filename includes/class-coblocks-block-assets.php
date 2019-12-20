@@ -77,11 +77,11 @@ class CoBlocks_Block_Assets {
 		);
 
 		/**
-		 * Filters whether to load utilitiy styles.
+		 * Filters whether to load utility styles.
 		 *
-		 * @param bool $load_utility_styles whether the utility css should be loaded. Default true.
+		 * @param bool $load_utility_styles whether the utility css should be loaded. Default false.
 		 */
-		$load_utility_styles = (bool) apply_filters( 'coblocks_utility_styles_enabled', true );
+		$load_utility_styles = (bool) apply_filters( 'coblocks_utility_styles_enabled', false );
 
 		if ( $load_utility_styles ) {
 
