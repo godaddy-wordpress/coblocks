@@ -37,20 +37,6 @@
 	}
 }
 
-.wp-block-cover {
-	&.has-custom-size {
-		p {
-			font-size: inherit !important;
-		}
-	}
-
-	&.has-custom-lineheight {
-		p {
-			line-height: inherit !important;
-		}
-	}
-}
-
 .wp-block-button {
 	&.has-custom-lineheight {
 		.wp-block-button__link {
