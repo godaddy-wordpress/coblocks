@@ -146,3 +146,6 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 ### 1.19.1
 * [Resolve 404 error](https://github.com/godaddy-wordpress/coblocks/pull/1219) for utility styles
+* Update PHPUnit tests to [check for build assets](https://github.com/godaddy-wordpress/coblocks/pull/1222)
+* [Remove has-custom-size class](https://github.com/godaddy-wordpress/coblocks/pull/1223) from Typography Controls
+* Add [utility script that audits i18n strings against a wporg glossary](https://github.com/godaddy-wordpress/coblocks/pull/1224)
