@@ -20,14 +20,26 @@ if ( ! $msgstrs ) {
 	exit;
 }
 
-$locale   = strtolower( pathinfo( str_replace( '_', '-', $argv[2] ), PATHINFO_FILENAME ) );
-$parts    = explode( '-', $locale );
-$locale   = ( ! empty( $parts[1] ) && $parts[0] === $parts[1] ) ? $parts[0] : $locale;
-$csv      = file_get_contents(
-	"https://translate.wordpress.org/locale/{$locale}/default/glossary/-export/",
-	false,
-	stream_context_create( [ 'ssl' => [ 'verify_peer' => false ] ] )
-);
+function __fetch_wporg_glossary_csv( $locale ) {
+	return @file_get_contents(
+		"https://translate.wordpress.org/locale/{$locale}/default/glossary/-export/",
+		false,
+		stream_context_create( [ 'ssl' => [ 'verify_peer' => false ] ] )
+	);
+}
+
+$locale = strtolower( pathinfo( str_replace( '_', '-', $argv[2] ), PATHINFO_FILENAME ) );
+$csv    = __fetch_wporg_glossary_csv( $locale );
+if ( false === $csv ) {
+	$parts  = explode( '-', $locale );
+	$locale = $parts[0];
+	$csv    = __fetch_wporg_glossary_csv( $locale );
+}
+if ( false === $csv ) {
+	echo "Error: No glossary data.\n";
+	exit;
+}
+
 $glossary = array_map( 'str_getcsv', explode( "\n", $csv ) );
 
 array_shift( $glossary );
