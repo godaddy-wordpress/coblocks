@@ -37,13 +37,14 @@ describe( 'coblocks/pricing-table-item transforms', () => {
 
 			const block = rawHandler( { HTML } );
 
-			block.forEach( ( item, index ) => {
-				expect( item.isValid ).toBe( true );
-				expect( item.name ).toBe( name );
-				expect( item.attributes.title[ 0 ] ).toBe( attributes.title[ index ] );
-				expect( item.attributes.features[ 0 ].props.children[ 0 ] ).toBe( attributes.features[ index ] );
-				expect( item.attributes.amount[ 0 ] ).toBe( attributes.amount[ index ] );
-			} );
+			expect( block[ index ].isValid ).toBe( true );
+			expect( block[ index ].name ).toBe( name );
+
+			expect( block ).toHaveLength( index + 1 );
+
+			expect( block[ index ].attributes.title[ 0 ] ).toBe( attributes.title[ index ] );
+			expect( block[ index ].attributes.features[ 0 ].props.children[ 0 ] ).toBe( attributes.features[ index ] );
+			expect( block[ index ].attributes.amount[ 0 ] ).toBe( attributes.amount[ index ] );
 		} );
 	} );
 } );
