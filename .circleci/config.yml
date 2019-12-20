@@ -45,6 +45,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Disable xdebug PHP extension
+          command: sudo rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - run:
           name: "Setup Environment Variables"
           command: |
             echo "export PATH=$HOME/.composer/vendor/bin:$PATH" >> $BASH_ENV
@@ -61,9 +64,6 @@ jobs:
           key: php56-dependency-cache--{{ checksum "package.json" }}
           paths:
             - node_modules
-      - run:
-          name: Install gettext
-          command: sudo apt-get install gettext
       - run:
           name: "Install Dependencies"
           command: |
@@ -102,6 +102,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Disable xdebug PHP extension
+          command: sudo rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - run:
           name: "Setup Environment Variables"
           command: |
             echo "export PATH=$HOME/.composer/vendor/bin:$PATH" >> $BASH_ENV
@@ -118,9 +121,6 @@ jobs:
           key: php56-dependency-cache--{{ checksum "package.json" }}
           paths:
             - node_modules
-      - run:
-          name: Install gettext
-          command: sudo apt-get install gettext
       - run:
           name: "Install Dependencies"
           command: |
