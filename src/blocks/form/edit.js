@@ -25,6 +25,7 @@ import { InspectorControls, InnerBlocks } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
+import { __experimentalRegisterBlockPattern } from '@wordpress/blocks';
 
 /**
  * Get settings
@@ -329,7 +330,7 @@ class FormEdit extends Component {
 
 	supportsExperimentalProps() {
 		let isSupported = true;
-		if ( typeof InnerBlocks.prototype.shouldComponentUpdate === 'undefined' ) {
+		if ( typeof InnerBlocks.prototype.shouldComponentUpdate === 'undefined' || typeof __experimentalRegisterBlockPattern !== 'undefined' ) {
 			isSupported = false;
 		}
 		return isSupported;
