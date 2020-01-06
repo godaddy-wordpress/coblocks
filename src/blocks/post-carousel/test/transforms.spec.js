@@ -10,6 +10,7 @@ registerCoreBlocks();
  * Internal dependencies.
  */
 import metadata from '../block.json';
+import postsMetadata from '../../posts/block.json';
 import { name, settings } from '../index';
 import { name as postsBlockName, settings as postsBlockSettings } from '../../posts/index';
 
@@ -19,12 +20,10 @@ describe( 'coblocks/post-carousel transforms', () => {
 		align: 'center',
 		columns: 3,
 		displayPostContent: true,
-		displayPostContentRadio: 'excerpt',
 		displayPostDate: true,
 		excerptLength: 55,
 		order: 'desc',
 		orderBy: 'date',
-		postLayout: 'list',
 		postsToShow: 14,
 	};
 
@@ -47,6 +46,7 @@ describe( 'coblocks/post-carousel transforms', () => {
 	} );
 
 	it( 'should transform from coblocks/posts block', () => {
+		postsBlockSettings.attributes = postsMetadata.attributes;
 		registerBlockType( postsBlockName, { category: 'common', ...postsBlockSettings } );
 
 		const coblocksPosts = createBlock( 'coblocks/posts', attributes );
@@ -57,6 +57,11 @@ describe( 'coblocks/post-carousel transforms', () => {
 		expect( transformed[ 0 ].attributes.order ).toBe( attributes.order );
 		expect( transformed[ 0 ].attributes.orderBy ).toBe( attributes.orderBy );
 		expect( transformed[ 0 ].attributes.align ).toBe( attributes.align );
+		expect( transformed[ 0 ].attributes.columns ).toBe( attributes.columns );
+		expect( transformed[ 0 ].attributes.excerptLength ).toBe( attributes.excerptLength );
+		expect( transformed[ 0 ].attributes.postsToShow ).toBe( attributes.postsToShow );
+		expect( transformed[ 0 ].attributes.displayPostContent ).toBe( attributes.displayPostContent );
+		expect( transformed[ 0 ].attributes.displayPostDate ).toBe( attributes.displayPostDate );
 	} );
 
 	it( 'should transform to core/latest-posts block', () => {
