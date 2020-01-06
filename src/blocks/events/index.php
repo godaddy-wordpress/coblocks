@@ -69,11 +69,11 @@ function coblocks_render_events_block( $attributes, $content ) {
 			$dtend             = $ical->ical_date_to_date_time( $event->dtend_array[3] );
 			$start_date_string = strtotime( $dtstart->format( 'YmdHis' ) );
 			$end_date_string   = strtotime( $dtend->format( 'YmdHis' ) );
-			$year              = date( 'Y', $start_date_string );
-			$month             = date( 'F', $start_date_string );
-			$day_of_month      = date( 'd', $start_date_string );
-			$start_time        = date( 'g:ia', $start_date_string );
-			$end_time          = date( 'g:ia', $end_date_string );
+			$year              = gmdate( 'Y', $start_date_string );
+			$month             = gmdate( 'F', $start_date_string );
+			$day_of_month      = gmdate( 'd', $start_date_string );
+			$start_time        = gmdate( 'g:ia', $start_date_string );
+			$end_time          = gmdate( 'g:ia', $end_date_string );
 			$time_string       = $start_time . ' - ' . $end_time;
 			$title             = $event->summary;
 			$desctiption       = $event->description;

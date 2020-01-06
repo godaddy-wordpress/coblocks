@@ -17,7 +17,7 @@ import { Toolbar, Placeholder, Button, TextControl, ServerSideRender } from '@wo
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { withSelect, dispatch, select } from '@wordpress/data';
+import { withSelect, dispatch } from '@wordpress/data';
 import { InnerBlocks, BlockControls } from '@wordpress/block-editor';
 
 const ALLOWED_BLOCKS = [ 'coblocks/event-item' ];
@@ -163,8 +163,6 @@ class EventItem extends Component {
 			selectedParentClientId,
 			setAttributes,
 		} = this.props;
-
-		attributes.childrenLength = select( 'core/block-editor' ).getBlock( clientId ).innerBlocks.length;
 
 		const toolbarControls = [
 			{
