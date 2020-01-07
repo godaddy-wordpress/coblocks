@@ -99,11 +99,11 @@ describe( name, () => {
 		expect( serializedBlock ).toContain( JSON.stringify( { email: true } ) );
 	} );
 
-	it( 'should render with YouTube link', () => {
-		block.attributes.youtube = true;
+	it( 'should render with Google link', () => {
+		block.attributes.google = true;
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( JSON.stringify( { youtube: true } ) );
+		expect( serializedBlock ).toContain( JSON.stringify( { google: true } ) );
 	} );
 } );
