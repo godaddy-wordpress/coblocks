@@ -52,7 +52,6 @@ class EventsEdit extends Component {
 						'has-text-color': textColor.color,
 						[ textColor.class ]: textColor.class,
 						'is-empty': isEmpty( attributes ),
-						'page-last-item': attributes.lastItem,
 					}, )
 					}
 					style={ textStyles }
@@ -121,11 +120,6 @@ class EventsEdit extends Component {
 							keepPlaceholderOnFocus
 						/>
 					</div>
-					{ attributes.lastItem &&
-						<div className="event-item-last">
-							<div><span>={ __( 'Page Break', 'coblocks' ) }</span></div>
-						</div>
-					}
 				</div>
 			</Fragment>
 		);

@@ -3,7 +3,6 @@
  */
 import CustomAppender from './appender';
 import InspectorControls from './inspector';
-import { cloneDeep } from 'lodash';
 
 /**
  * External dependencies.
@@ -36,56 +35,8 @@ class EventItem extends Component {
 		};
 
 		this.onSubmitURL = this.onSubmitURL.bind( this );
-		this.updateInnerAttributes = this.updateInnerAttributes.bind( this );
 		this.toggleCalendarLink = this.toggleCalendarLink.bind( this );
-		this.changeVisibleEvents = this.changeVisibleEvents.bind( this );
 		this.insertNewItem = this.insertNewItem.bind( this );
-	}
-
-	componentDidUpdate( prevProps ) {
-		// Here we are checking whether the ordering of items has been changed, in order to put proper item on its page
-		const prevInnerBlocksSorted = cloneDeep( prevProps.innerBlocks );
-		const currentInnerBlockSorted = cloneDeep( this.props.innerBlocks );
-
-		prevInnerBlocksSorted.sort( function( a, b ) {
-			return a.clientId.localeCompare( b.clientId );
-		} );
-
-		currentInnerBlockSorted.sort( function( a, b ) {
-			return a.clientId.localeCompare( b.clientId );
-		} );
-
-		// The purpose of sameSorted check is that we check if content of the items has been changed
-		const sameSorted = JSON.stringify( prevInnerBlocksSorted ) === JSON.stringify( currentInnerBlockSorted );
-		const sameUnsorted = JSON.stringify( prevProps.innerBlocks ) === JSON.stringify( this.props.innerBlocks );
-
-		// Only if the content of the events is the same, and the ordering is different, then we can go through each item
-		// to find its place on the page.
-		if ( sameSorted && ! sameUnsorted ) {
-			const { attributes } = this.props;
-
-			this.props.innerBlocks.map( ( item, key ) => {
-				const lastItemOnPage = key % attributes.eventsToShow === ( attributes.eventsToShow - 1 );
-
-				dispatch( 'core/block-editor' ).updateBlockAttributes(
-					item.clientId,
-					{ pageNum: Math.floor( key / attributes.eventsToShow ), lastItem: lastItemOnPage }
-				);
-			} );
-		}
-	}
-
-	updateInnerAttributes( blockName, newAttributes ) {
-		const innerItems = this.props.innerBlocks;
-
-		innerItems.map( item => {
-			if ( item.name === blockName ) {
-				dispatch( 'core/block-editor' ).updateBlockAttributes(
-					item.clientId,
-					newAttributes
-				);
-			}
-		} );
 	}
 
 	toggleCalendarLink() {
@@ -106,21 +57,6 @@ class EventItem extends Component {
 		if ( externalCalendarUrl ) {
 			this.setState( { editing: false } );
 		}
-	}
-
-	changeVisibleEvents( value ) {
-		const { setAttributes } = this.props;
-
-		setAttributes( { eventsToShow: value } );
-
-		this.props.innerBlocks.map( ( item, key ) => {
-			const lastItemOnPage = key % value === ( value - 1 );
-
-			dispatch( 'core/block-editor' ).updateBlockAttributes(
-				item.clientId,
-				{ pageNum: Math.floor( key / value ), lastItem: lastItemOnPage }
-			);
-		} );
 	}
 
 	insertNewItem() {
@@ -209,22 +145,18 @@ class EventItem extends Component {
 				<InspectorControls
 					{ ...this.props }
 					onToggleCalendarLink={ this.toggleCalendarLink }
-					onChangeVisibleEvents={ this.changeVisibleEvents }
 				/>
 				{ ! attributes.linkACalendar &&
-					<div
-						data-current-page-num={ String( this.state.currentPage ) }
-						className={ classnames( className, {
+					<div className={ classnames( className, 'coblocks-custom-event',
+						{
 							'child-selected': isSelected || clientId === selectedParentClientId,
-						}, 'coblocks-custom-event' ) }
-					>
-						{ ! attributes.linkACalendar &&
-							<InnerBlocks
-								allowedBlocks={ ALLOWED_BLOCKS }
-								template={ TEMPLATE }
-								templateInsertUpdatesSelection={ false }
-							/>
 						}
+					) }>
+						<InnerBlocks
+							allowedBlocks={ ALLOWED_BLOCKS }
+							template={ TEMPLATE }
+							templateInsertUpdatesSelection={ false }
+						/>
 						{ ( isSelected || clientId === selectedParentClientId ) && ! attributes.linkACalendar && (
 							<CustomAppender onClick={ this.insertNewItem } />
 						) }
