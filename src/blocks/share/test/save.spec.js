@@ -37,7 +37,7 @@ describe( name, () => {
 			tumblr: false,
 			reddit: false,
 			email: false,
-			youtube: false,
+			google: false,
 		} );
 		serializedBlock = serialize( block );
 		expect( serializedBlock ).toEqual( `<!-- wp:${ name } ${ JSON.stringify( { twitter: false, facebook: false, pinterest: false } ) } /-->` );
