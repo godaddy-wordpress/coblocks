@@ -30,33 +30,30 @@ class EventItem extends Component {
 		super( ...arguments );
 
 		this.state = {
-			editing: ! this.props.attributes.externalCalendarUrl && this.props.attributes.linkACalendar,
+			isEditing: false,
+			showExternalCalendarControls: !! this.props.attributes.externalCalendarUrl || false,
+			externalCalendarUrl: this.props.attributes.externalCalendarUrl,
 			currentPage: this.props.innerBlocks.length,
 		};
 
-		this.onSubmitURL = this.onSubmitURL.bind( this );
-		this.toggleCalendarLink = this.toggleCalendarLink.bind( this );
+		this.toggleExternalCalendarControls = this.toggleExternalCalendarControls.bind( this );
+		this.saveExternalCalendarUrl = this.saveExternalCalendarUrl.bind( this );
 		this.insertNewItem = this.insertNewItem.bind( this );
 	}
 
-	toggleCalendarLink() {
-		const { attributes, setAttributes } = this.props;
+	toggleExternalCalendarControls() {
+		const { showExternalCalendarControls } = this.state;
 
-		const linkACalendar = ! attributes.linkACalendar;
-		setAttributes( { linkACalendar } );
+		if ( ! showExternalCalendarControls === false ) {
+			this.props.setAttributes( { externalCalendarUrl: '' } );
+		}
 
-		const edit = linkACalendar && attributes.externalCalendarUrl === '';
-		this.setState( { editing: edit } );
+		this.setState( { showExternalCalendarControls: ! showExternalCalendarControls } );
 	}
 
-	onSubmitURL( event ) {
-		event.preventDefault();
-
-		const { externalCalendarUrl } = this.props.attributes;
-
-		if ( externalCalendarUrl ) {
-			this.setState( { editing: false } );
-		}
+	saveExternalCalendarUrl() {
+		this.props.setAttributes( { externalCalendarUrl: this.state.externalCalendarUrl } );
+		this.setState( { isEditing: false } );
 	}
 
 	insertNewItem() {
@@ -97,56 +94,48 @@ class EventItem extends Component {
 			isSelected,
 			clientId,
 			selectedParentClientId,
-			setAttributes,
 		} = this.props;
 
 		const toolbarControls = [
 			{
 				icon: 'edit',
 				title: __( 'Edit Calendar URL', 'coblocks' ),
-				onClick: () => this.setState( { editing: true } ),
+				onClick: () => this.setState( { isEditing: ! this.state.isEditing } ),
 			},
 		];
 
-		if ( this.state.editing ) {
-			return (
-				<Fragment>
-					<InspectorControls
-						{ ...this.props }
-						onToggleCalendarLink={ this.toggleCalendarLink }
-					/>
-					<Placeholder
-						icon="rss"
-						label="Calendar URL"
-					>
-						<form onSubmit={ this.onSubmitURL }>
-							<TextControl
-								placeholder={ __( 'Enter URL here…', 'coblocks' ) }
-								value={ attributes.externalCalendarUrl }
-								onChange={ ( value ) => setAttributes( { externalCalendarUrl: value } ) }
-								className={ 'components-placeholder__input' }
-							/>
-							<Button isLarge type="submit">
-								{ __( 'Use URL', 'coblocks' ) }
-							</Button>
-						</form>
-					</Placeholder>
-				</Fragment>
-			);
-		}
-
 		return (
 			<Fragment>
-				{ attributes.linkACalendar &&
+				<InspectorControls
+					{ ...this.props }
+					toggleExternalCalendarControls={ this.toggleExternalCalendarControls }
+					showExternalCalendarControls={ this.state.showExternalCalendarControls }
+				/>
+
+				{ !! attributes.externalCalendarUrl &&
 					<BlockControls>
 						<Toolbar controls={ toolbarControls } />
 					</BlockControls>
 				}
-				<InspectorControls
-					{ ...this.props }
-					onToggleCalendarLink={ this.toggleCalendarLink }
-				/>
-				{ ! attributes.linkACalendar &&
+
+				{ this.state.showExternalCalendarControls && ( ! attributes.externalCalendarUrl || this.state.isEditing ) &&
+					<Placeholder
+						icon="rss"
+						label="Calendar URL">
+
+						<TextControl
+							placeholder={ __( 'Enter URL here…', 'coblocks' ) }
+							value={ this.state.externalCalendarUrl }
+							onChange={ externalCalendarUrl => this.setState( { externalCalendarUrl } ) }
+							className={ 'components-placeholder__input' }
+						/>
+						<Button isLarge type="button" onClick={ this.saveExternalCalendarUrl } disabled={ ! this.state.externalCalendarUrl }>
+							{ __( 'Use URL', 'coblocks' ) }
+						</Button>
+					</Placeholder>
+				}
+
+				{ ! attributes.externalCalendarUrl &&
 					<div className={ classnames( className, 'coblocks-custom-event',
 						{
 							'child-selected': isSelected || clientId === selectedParentClientId,
@@ -162,7 +151,8 @@ class EventItem extends Component {
 						) }
 					</div>
 				}
-				{ attributes.linkACalendar &&
+
+				{ !! attributes.externalCalendarUrl &&
 					<ServerSideRender
 						block="coblocks/events"
 						attributes={ this.props.attributes }

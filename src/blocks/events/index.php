@@ -15,7 +15,7 @@
  */
 function coblocks_render_events_block( $attributes, $content ) {
 
-	if ( ! $attributes['linkACalendar'] || empty( $attributes['externalCalendarUrl'] ) ) {
+	if ( empty( $attributes['externalCalendarUrl'] ) ) {
 
 		return $content;
 

@@ -8,7 +8,8 @@ import { InspectorControls } from '@wordpress/block-editor';
 const Inspector = props => {
 	const {
 		attributes,
-		onToggleCalendarLink,
+		toggleExternalCalendarControls,
+		showExternalCalendarControls,
 		onChangeVisibleEvents,
 		setAttributes,
 		innerBlocks,
@@ -17,7 +18,6 @@ const Inspector = props => {
 	const {
 		eventsRange,
 		eventsToShow,
-		linkACalendar,
 		externalCalendarUrl,
 	} = attributes;
 
@@ -34,12 +34,12 @@ const Inspector = props => {
 				<ToggleControl
 					label={ __( 'Link a Calendar', 'coblocks' ) }
 					help={
-						linkACalendar ?
+						showExternalCalendarControls ?
 							__( 'Showing public calendar.', 'coblocks' ) :
 							__( 'Toggle to link a public calendar.', 'coblocks' )
 					}
-					checked={ linkACalendar }
-					onChange={ onToggleCalendarLink }
+					checked={ showExternalCalendarControls }
+					onChange={ () => toggleExternalCalendarControls() }
 				/>
 				{ innerBlocks.length > 5 &&
 					<RangeControl
@@ -50,7 +50,7 @@ const Inspector = props => {
 						max={ 15 }
 					/>
 				}
-				{ linkACalendar && externalCalendarUrl &&
+				{ showExternalCalendarControls && externalCalendarUrl &&
 					<SelectControl
 						label={ __( 'Period', 'coblocks' ) }
 						value={ eventsRange }
