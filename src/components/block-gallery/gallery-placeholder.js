@@ -1,7 +1,7 @@
 /**
  * External Dependencies
  */
-import { every, forEach, map } from 'lodash';
+import { every, forEach, map, find } from 'lodash';
 
 /**
  * Internal dependencies
@@ -22,11 +22,67 @@ class GalleryPlaceholder extends Component {
 		super( ...arguments );
 		this.onSelectImages = this.onSelectImages.bind( this );
 		this.onUploadError = this.onUploadError.bind( this );
+
+		this.state = {
+			attachmentCaptions: null,
+		};
 	}
 
-	onSelectImages( images ) {
-		this.props.setAttributes( {
-			images: images.map( ( image ) => helper.pickRelevantMediaFiles( image ) ),
+	setAttributes( attributes ) {
+		if ( attributes.ids ) {
+			throw new Error( 'The "ids" attribute should not be changed directly. It is managed automatically when "images" attribute changes' );
+		}
+
+		if ( attributes.images ) {
+			attributes = {
+				...attributes,
+				ids: map( attributes.images, 'id' ),
+			};
+		}
+
+		this.props.setAttributes( attributes );
+	}
+
+	selectCaption( newImage, images, attachmentCaptions ) {
+		const currentImage = find(
+			images, { id: newImage.id.toString() || newImage.id }
+		);
+
+		const currentImageCaption = currentImage ? currentImage.caption : newImage.caption;
+
+		if ( ! attachmentCaptions ) {
+			return currentImageCaption;
+		}
+
+		const attachment = find(
+			attachmentCaptions, { id: newImage.id }
+		);
+
+		// if the attachment caption is updated
+		if ( attachment && ( attachment.caption !== newImage.caption ) ) {
+			return newImage.caption;
+		}
+
+		return currentImageCaption;
+	}
+
+	onSelectImages( newImages ) {
+		const { images } = this.props.attributes;
+		const { attachmentCaptions } = this.state;
+
+		this.setState(
+			{
+				attachmentCaptions: newImages.map( ( newImage ) => ( {
+					id: newImage.id,
+					caption: newImage.caption,
+				} ) ),
+			}
+		);
+		this.setAttributes( {
+			images: newImages.map( ( image ) => ( {
+				...helper.pickRelevantMediaFiles( image ),
+				caption: this.selectCaption( image, images, attachmentCaptions ),
+			} ) ),
 		} );
 	}
 
