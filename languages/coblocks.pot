@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-01-09T18:14:28+00:00\n"
+"POT-Creation-Date: 2020-01-09T21:29:45+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -188,9 +188,12 @@ msgstr ""
 msgid "notice"
 msgstr ""
 
-#. block keyword
+#. icon keyword
 #. translators: block keyword
+#. translators: icon keyword
 #: src/blocks/alert/index.js:38
+#: src/blocks/icon/deprecated/svgs.js:732
+#: src/blocks/icon/svgs.js:750
 msgid "message"
 msgstr ""
 
@@ -754,10 +757,13 @@ msgstr ""
 msgid "A food and drink item within the Food & Drinks block."
 msgstr ""
 
-#. block keyword
+#. icon keyword
 #. translators: block keyword
+#. translators: icon keyword
 #: src/blocks/food-and-drinks/food-item/index.js:35
 #: src/blocks/food-and-drinks/index.js:36
+#: src/blocks/icon/deprecated/svgs.js:900
+#: src/blocks/icon/svgs.js:921
 msgid "menu"
 msgstr ""
 
@@ -837,9 +843,12 @@ msgstr ""
 msgid "Display a menu or price list."
 msgstr ""
 
-#. block keyword
+#. icon keyword
 #. translators: block keyword
+#. translators: icon keyword
 #: src/blocks/food-and-drinks/index.js:34
+#: src/blocks/icon/deprecated/svgs.js:902
+#: src/blocks/icon/svgs.js:919
 msgid "restaurant"
 msgstr ""
 
@@ -881,96 +890,105 @@ msgstr ""
 
 #. %s: placeholder for an email address
 #. translators: %s: placeholder for an email address
-#: src/blocks/form/edit.js:189
+#: src/blocks/form/edit.js:190
 msgid "%s is not a valid email address."
 msgstr ""
 
 #. %s1: placeholder for an email address. %s2: placeholder for an email address
 #. translators: %s1: placeholder for an email address. %s2: placeholder for an email address
-#: src/blocks/form/edit.js:199
+#: src/blocks/form/edit.js:200
 msgid "%s and %s are not valid email addresses."
 msgstr ""
 
 #. %s1: placeholder for comma separated email addresses
 #. translators: %s1: placeholder for comma separated email addresses
-#: src/blocks/form/edit.js:207
+#: src/blocks/form/edit.js:208
 msgid "%s are not valid email addresses."
 msgstr ""
 
-#: src/blocks/form/edit.js:274
+#: src/blocks/form/edit.js:275
 msgid "Email address"
 msgstr ""
 
-#: src/blocks/form/edit.js:275
+#: src/blocks/form/edit.js:276
 msgid "name@example.com"
 msgstr ""
 
-#: src/blocks/form/edit.js:285
+#: src/blocks/form/edit.js:286
 msgid "Subject"
 msgstr ""
 
-#: src/blocks/form/edit.js:292
+#: src/blocks/form/edit.js:293
 msgid "You may use the following tags in the subject field: "
 msgstr ""
 
-#. block keyword
+#. icon keyword
 #. translators: block keyword
-#: src/blocks/form/edit.js:297
+#. translators: icon keyword
+#: src/blocks/form/edit.js:298
 #: src/blocks/form/fields/name/index.js:53
 #: src/blocks/form/index.js:61
+#: src/blocks/icon/deprecated/svgs.js:747
+#: src/blocks/icon/svgs.js:769
 #: includes/class-coblocks-form.php:954
+#: src/blocks/icon/deprecated/svgs.js:691
+#: src/blocks/icon/deprecated/svgs.js:709
+#: src/blocks/icon/deprecated/svgs.js:728
+#: src/blocks/icon/svgs.js:711
+#: src/blocks/icon/svgs.js:729
+#: src/blocks/icon/svgs.js:754
 msgid "email"
 msgstr ""
 
-#: src/blocks/form/edit.js:303
+#: src/blocks/form/edit.js:304
 #: includes/class-coblocks-form.php:942
 msgid "name"
 msgstr ""
 
-#: src/blocks/form/edit.js:352
+#: src/blocks/form/edit.js:353
 msgid "Form Settings"
 msgstr ""
 
-#: src/blocks/form/edit.js:357
+#: src/blocks/form/edit.js:358
 msgid "Google reCAPTCHA"
 msgstr ""
 
-#: src/blocks/form/edit.js:360
+#: src/blocks/form/edit.js:361
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
 msgstr ""
 
-#: src/blocks/form/edit.js:366
+#: src/blocks/form/edit.js:367
 msgid "Generate keys"
 msgstr ""
 
-#: src/blocks/form/edit.js:367
+#: src/blocks/form/edit.js:368
 msgid "My keys"
 msgstr ""
 
-#: src/blocks/form/edit.js:370
+#: src/blocks/form/edit.js:371
 msgid "Get help"
 msgstr ""
 
-#: src/blocks/form/edit.js:374
+#: src/blocks/form/edit.js:375
 msgid "Site Key"
 msgstr ""
 
-#: src/blocks/form/edit.js:380
+#: src/blocks/form/edit.js:381
 msgid "Secret Key"
 msgstr ""
 
-#: src/blocks/form/edit.js:394
+#: src/blocks/form/edit.js:395
 #: src/blocks/gallery-collage/edit.js:182
 #: src/components/block-gallery/gallery-image.js:226
 msgid "Saving"
 msgstr ""
 
-#: src/blocks/form/edit.js:394
+#: src/blocks/form/edit.js:395
 #: src/blocks/map/inspector.js:231
 msgid "Save"
 msgstr ""
 
-#: src/blocks/form/edit.js:404
+#: src/blocks/form/edit.js:405
 #: src/blocks/map/inspector.js:240
 msgid "Remove"
 msgstr ""
@@ -1045,17 +1063,16 @@ msgid "year"
 msgstr ""
 
 #. translators: block name
-#. translators: label.
 #. translators: icon label
 #: src/blocks/form/fields/email/index.js:34
-#: src/blocks/icon/deprecated/svgs.js:208
-#: src/blocks/icon/svgs.js:279
+#: src/blocks/icon/deprecated/svgs.js:706
+#: src/blocks/icon/svgs.js:726
 #: src/blocks/share/inspector.js:177
 #: includes/class-coblocks-form.php:221
 #: includes/class-coblocks-form.php:316
 #: src/blocks/form/fields/email/index.js:21
-#: src/blocks/icon/deprecated/svgs.js:202
-#: src/blocks/icon/svgs.js:271
+#: src/blocks/icon/deprecated/svgs.js:688
+#: src/blocks/icon/svgs.js:708
 msgid "Email"
 msgstr ""
 
@@ -1071,9 +1088,18 @@ msgstr ""
 msgid "e-mail"
 msgstr ""
 
-#. block keyword
+#. icon keyword
 #. translators: block keyword
+#. translators: icon keyword
 #: src/blocks/form/fields/email/index.js:43
+#: src/blocks/icon/deprecated/svgs.js:749
+#: src/blocks/icon/svgs.js:767
+#: src/blocks/icon/deprecated/svgs.js:695
+#: src/blocks/icon/deprecated/svgs.js:713
+#: src/blocks/icon/deprecated/svgs.js:730
+#: src/blocks/icon/svgs.js:713
+#: src/blocks/icon/svgs.js:731
+#: src/blocks/icon/svgs.js:756
 msgid "mail"
 msgstr ""
 
@@ -1137,11 +1163,14 @@ msgstr ""
 msgid "input"
 msgstr ""
 
-#. block keyword
+#. icon keyword
 #. translators: block keyword
+#. translators: icon keyword
 #: src/blocks/form/fields/hidden/index.js:43
 #: src/blocks/form/fields/textarea/index.js:41
 #: src/blocks/highlight/index.js:35
+#: src/blocks/icon/deprecated/svgs.js:500
+#: src/blocks/icon/svgs.js:520
 msgid "text"
 msgstr ""
 
@@ -1368,9 +1397,12 @@ msgstr ""
 msgid "Add a contact form to your page."
 msgstr ""
 
-#. block keyword
+#. icon keyword
 #. translators: block keyword
+#. translators: icon keyword
 #: src/blocks/form/index.js:63
+#: src/blocks/icon/deprecated/svgs.js:796
+#: src/blocks/icon/svgs.js:820
 msgid "about"
 msgstr ""
 
@@ -1484,18 +1516,21 @@ msgstr ""
 #: src/blocks/gallery-carousel/index.js:43
 #: src/blocks/gallery-collage/index.js:41
 #: src/blocks/gallery-masonry/index.js:42
-#: src/blocks/gallery-offset/index.js:41
+#: src/blocks/gallery-offset/index.js:42
 #: src/blocks/gallery-stacked/index.js:42
 msgid "gallery"
 msgstr ""
 
-#. block keyword
+#. icon keyword
 #. translators: block keyword
+#. translators: icon keyword
 #: src/blocks/gallery-carousel/index.js:45
 #: src/blocks/gallery-collage/index.js:43
 #: src/blocks/gallery-masonry/index.js:44
-#: src/blocks/gallery-offset/index.js:43
+#: src/blocks/gallery-offset/index.js:44
 #: src/blocks/gallery-stacked/index.js:44
+#: src/blocks/icon/deprecated/svgs.js:204
+#: src/blocks/icon/svgs.js:201
 msgid "photos"
 msgstr ""
 
@@ -1716,13 +1751,13 @@ msgstr ""
 #. block name
 #. translators: block name
 #: src/blocks/gallery-offset/edit.js:199
-#: src/blocks/gallery-offset/index.js:34
+#: src/blocks/gallery-offset/index.js:35
 msgid "Offset"
 msgstr ""
 
 #. block description
 #. translators: block description
-#: src/blocks/gallery-offset/index.js:36
+#: src/blocks/gallery-offset/index.js:37
 msgid "Display images in an offset brick pattern gallery."
 msgstr ""
 
@@ -1864,9 +1899,12 @@ msgstr ""
 msgid "Embed GitHub gists by adding a gist link."
 msgstr ""
 
-#. block keyword
+#. icon keyword
 #. translators: block keyword
+#. translators: icon keyword
 #: src/blocks/gist/index.js:37
+#: src/blocks/icon/deprecated/svgs.js:462
+#: src/blocks/icon/svgs.js:482
 msgid "code"
 msgstr ""
 
@@ -2056,991 +2094,2072 @@ msgstr ""
 msgid "Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative."
 msgstr ""
 
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:102
-#: src/blocks/icon/svgs.js:135
-msgid "Add Circle"
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1001
+#: src/blocks/icon/svgs.js:1022
+#: src/blocks/icon/deprecated/svgs.js:780
+#: src/blocks/icon/svgs.js:800
+msgid "boxes"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1005
+#: src/blocks/icon/svgs.js:1024
+#: src/blocks/icon/deprecated/svgs.js:784
+#: src/blocks/icon/svgs.js:802
+msgid "square"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1007
+#: src/blocks/icon/svgs.js:1028
+#: src/blocks/icon/deprecated/svgs.js:786
+#: src/blocks/icon/svgs.js:806
+msgid "widgets"
 msgstr ""
 
 #. icon label
-#. translators: label.
 #. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:108
-#: src/blocks/icon/svgs.js:143
-msgid "Minus Circle"
+#: src/blocks/icon/deprecated/svgs.js:1014
+#: src/blocks/icon/svgs.js:1035
+msgid "Credit Card"
 msgstr ""
 
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:109
-#: src/blocks/icon/svgs.js:145
-#: src/blocks/icon/deprecated/svgs.js:103
-#: src/blocks/icon/svgs.js:137
-msgid "add minus circle insert plus round math"
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1017
+#: src/blocks/icon/svgs.js:1040
+msgid "cash"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1019
+#: src/blocks/icon/svgs.js:1042
+msgid "checkout"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1021
+#: src/blocks/icon/svgs.js:1046
+msgid "commerce"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1023
+#: src/blocks/icon/svgs.js:1048
+msgid "ecommerce"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1025
+#: src/blocks/icon/svgs.js:1038
+msgid "money"
 msgstr ""
 
 #. icon label
-#. translators: label.
 #. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:114
-#: src/blocks/icon/svgs.js:151
-msgid "Pie Chart"
+#: src/blocks/icon/deprecated/svgs.js:1033
+#: src/blocks/icon/svgs.js:1054
+msgid "Extension"
 msgstr ""
 
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:115
-#: src/blocks/icon/svgs.js:153
-msgid "stats round circle pie chart graph"
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1036
+#: src/blocks/icon/svgs.js:1059
+msgid "plugin"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1038
+#: src/blocks/icon/svgs.js:1057
+msgid "puzzle"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1040
+#: src/blocks/icon/svgs.js:1063
+msgid "team"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1042
+#: src/blocks/icon/svgs.js:1065
+msgid "together"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1044
+#: src/blocks/icon/svgs.js:1061
+msgid "widget"
 msgstr ""
 
 #. icon label
-#. translators: label.
 #. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:119
-#: src/blocks/icon/svgs.js:158
-msgid "Scatter Plot"
+#: src/blocks/icon/deprecated/svgs.js:1051
+#: src/blocks/icon/svgs.js:1072
+msgid "Fingerprint"
 msgstr ""
 
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1054
+#: src/blocks/icon/svgs.js:1077
+msgid "bio"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1056
+#: src/blocks/icon/svgs.js:1081
+msgid "biometric"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1058
+#: src/blocks/icon/svgs.js:1079
+msgid "defense"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1060
+#: src/blocks/icon/svgs.js:1083
+msgid "safe"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1062
+#: src/blocks/icon/svgs.js:1085
+msgid "secure"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1064
+#: src/blocks/icon/svgs.js:1075
+msgid "security"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:1070
+#: src/blocks/icon/svgs.js:1091
+msgid "Translate"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1075
+#: src/blocks/icon/svgs.js:1094
+msgid "language"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1077
+#: src/blocks/icon/svgs.js:1100
+msgid "speech"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1079
+#: src/blocks/icon/svgs.js:1098
+#: src/blocks/icon/deprecated/svgs.js:863
+#: src/blocks/icon/svgs.js:873
+msgid "world"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:1085
+#: src/blocks/icon/svgs.js:1106
+msgid "New"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1090
+#: src/blocks/icon/svgs.js:1121
+#: src/blocks/icon/deprecated/svgs.js:37
+#: src/blocks/icon/deprecated/svgs.js:61
+#: src/blocks/icon/deprecated/svgs.js:81
+#: src/blocks/icon/deprecated/svgs.js:100
 #: src/blocks/icon/deprecated/svgs.js:120
-#: src/blocks/icon/svgs.js:160
-msgid "stats round circle pie chart graph dots data"
+#: src/blocks/icon/svgs.js:52
+#: src/blocks/icon/svgs.js:74
+#: src/blocks/icon/svgs.js:86
+#: src/blocks/icon/svgs.js:113
+#: src/blocks/icon/svgs.js:143
+msgid "audio"
 msgstr ""
 
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:125
-#: src/blocks/icon/svgs.js:166
-msgid "Poll"
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1092
+#: src/blocks/icon/svgs.js:1123
+msgid "badge"
 msgstr ""
 
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:126
-#: src/blocks/icon/svgs.js:168
-msgid "chart graph stats data graph"
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1096
+#: src/blocks/icon/svgs.js:1119
+#: src/blocks/icon/deprecated/svgs.js:41
+#: src/blocks/icon/deprecated/svgs.js:65
+#: src/blocks/icon/deprecated/svgs.js:104
+#: src/blocks/icon/deprecated/svgs.js:128
+#: src/blocks/icon/deprecated/svgs.js:154
+#: src/blocks/icon/deprecated/svgs.js:178
+#: src/blocks/icon/deprecated/svgs.js:202
+#: src/blocks/icon/deprecated/svgs.js:220
+#: src/blocks/icon/deprecated/svgs.js:244
+#: src/blocks/icon/deprecated/svgs.js:272
+#: src/blocks/icon/deprecated/svgs.js:301
+#: src/blocks/icon/deprecated/svgs.js:321
+#: src/blocks/icon/svgs.js:50
+#: src/blocks/icon/svgs.js:72
+#: src/blocks/icon/svgs.js:111
+#: src/blocks/icon/svgs.js:141
+#: src/blocks/icon/svgs.js:165
+#: src/blocks/icon/svgs.js:189
+#: src/blocks/icon/svgs.js:205
+#: src/blocks/icon/svgs.js:229
+#: src/blocks/icon/svgs.js:249
+#: src/blocks/icon/svgs.js:281
+#: src/blocks/icon/svgs.js:303
+#: src/blocks/icon/svgs.js:323
+#: src/blocks/icon/svgs.js:343
+msgid "media"
 msgstr ""
 
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:131
-#: src/blocks/icon/svgs.js:174
-msgid "Emoticon"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1098
+#: src/blocks/icon/svgs.js:1111
+#: src/blocks/icon/deprecated/svgs.js:43
+#: src/blocks/icon/deprecated/svgs.js:67
+#: src/blocks/icon/deprecated/svgs.js:89
+#: src/blocks/icon/deprecated/svgs.js:106
+#: src/blocks/icon/deprecated/svgs.js:130
 #: src/blocks/icon/deprecated/svgs.js:132
-#: src/blocks/icon/svgs.js:176
-msgid "happy emotion emoticon smile fun joy"
+#: src/blocks/icon/svgs.js:40
+#: src/blocks/icon/svgs.js:64
+#: src/blocks/icon/svgs.js:84
+#: src/blocks/icon/svgs.js:103
+#: src/blocks/icon/svgs.js:123
+#: src/blocks/icon/svgs.js:133
+msgid "microphone"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1100
+#: src/blocks/icon/svgs.js:1109
+#: src/blocks/icon/deprecated/svgs.js:45
+#: src/blocks/icon/deprecated/svgs.js:69
+#: src/blocks/icon/deprecated/svgs.js:108
+#: src/blocks/icon/deprecated/svgs.js:134
+#: src/blocks/icon/svgs.js:38
+#: src/blocks/icon/svgs.js:62
+#: src/blocks/icon/svgs.js:101
+#: src/blocks/icon/svgs.js:131
+msgid "music"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1102
+#: src/blocks/icon/svgs.js:1113
+#: src/blocks/icon/deprecated/svgs.js:49
+#: src/blocks/icon/deprecated/svgs.js:71
+#: src/blocks/icon/deprecated/svgs.js:110
+#: src/blocks/icon/deprecated/svgs.js:138
+#: src/blocks/icon/svgs.js:44
+#: src/blocks/icon/svgs.js:66
+#: src/blocks/icon/svgs.js:105
+#: src/blocks/icon/svgs.js:135
+msgid "song"
 msgstr ""
 
 #. icon label
-#. translators: label.
 #. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:137
-#: src/blocks/icon/svgs.js:182
-msgid "Functions"
+#: src/blocks/icon/deprecated/svgs.js:1109
+#: src/blocks/icon/svgs.js:1130
+msgid "Flare"
 msgstr ""
 
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:138
-#: src/blocks/icon/svgs.js:184
-msgid "code greek math"
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1112
+#: src/blocks/icon/svgs.js:1139
+#: src/blocks/icon/deprecated/svgs.js:35
+#: src/blocks/icon/deprecated/svgs.js:59
+#: src/blocks/icon/deprecated/svgs.js:98
+#: src/blocks/icon/deprecated/svgs.js:264
+#: src/blocks/icon/deprecated/svgs.js:293
+#: src/blocks/icon/deprecated/svgs.js:313
+#: src/blocks/icon/deprecated/svgs.js:977
+#: src/blocks/icon/deprecated/svgs.js:1088
+#: src/blocks/icon/svgs.js:46
+#: src/blocks/icon/svgs.js:68
+#: src/blocks/icon/svgs.js:107
+#: src/blocks/icon/svgs.js:137
+#: src/blocks/icon/svgs.js:275
+#: src/blocks/icon/svgs.js:297
+#: src/blocks/icon/svgs.js:319
+#: src/blocks/icon/svgs.js:339
+#: src/blocks/icon/svgs.js:1004
+#: src/blocks/icon/svgs.js:1115
+msgid "artist"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1114
+#: src/blocks/icon/svgs.js:1135
+#: src/blocks/icon/deprecated/svgs.js:148
+#: src/blocks/icon/deprecated/svgs.js:172
+#: src/blocks/icon/deprecated/svgs.js:196
+#: src/blocks/icon/deprecated/svgs.js:238
+#: src/blocks/icon/deprecated/svgs.js:979
+#: src/blocks/icon/svgs.js:159
+#: src/blocks/icon/svgs.js:181
+#: src/blocks/icon/svgs.js:207
+#: src/blocks/icon/svgs.js:253
+#: src/blocks/icon/svgs.js:1000
+msgid "camera"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1118
+#: src/blocks/icon/svgs.js:1133
+#: src/blocks/icon/deprecated/svgs.js:983
+#: src/blocks/icon/svgs.js:998
+msgid "flower"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1120
+#: src/blocks/icon/svgs.js:1137
+#: src/blocks/icon/deprecated/svgs.js:160
+#: src/blocks/icon/deprecated/svgs.js:182
+#: src/blocks/icon/deprecated/svgs.js:248
+#: src/blocks/icon/deprecated/svgs.js:985
+#: src/blocks/icon/svgs.js:157
+#: src/blocks/icon/svgs.js:179
+#: src/blocks/icon/svgs.js:257
+#: src/blocks/icon/svgs.js:1002
+msgid "photography"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:1126
+#: src/blocks/icon/svgs.js:1147
+msgid "Layers"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1129
+#: src/blocks/icon/svgs.js:1154
+#: src/blocks/icon/deprecated/svgs.js:22
+#: src/blocks/icon/deprecated/svgs.js:782
+#: src/blocks/icon/deprecated/svgs.js:1003
+#: src/blocks/icon/svgs.js:25
+#: src/blocks/icon/svgs.js:804
+#: src/blocks/icon/svgs.js:1026
+msgid "build"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1131
+#: src/blocks/icon/svgs.js:1152
+#: src/blocks/icon/deprecated/svgs.js:39
+#: src/blocks/icon/deprecated/svgs.js:63
+#: src/blocks/icon/deprecated/svgs.js:102
+#: src/blocks/icon/deprecated/svgs.js:124
+#: src/blocks/icon/deprecated/svgs.js:150
+#: src/blocks/icon/deprecated/svgs.js:174
+#: src/blocks/icon/deprecated/svgs.js:216
+#: src/blocks/icon/deprecated/svgs.js:240
+#: src/blocks/icon/deprecated/svgs.js:268
+#: src/blocks/icon/deprecated/svgs.js:297
+#: src/blocks/icon/deprecated/svgs.js:317
+#: src/blocks/icon/deprecated/svgs.js:477
+#: src/blocks/icon/deprecated/svgs.js:981
+#: src/blocks/icon/deprecated/svgs.js:1094
+#: src/blocks/icon/deprecated/svgs.js:1116
+#: src/blocks/icon/svgs.js:48
+#: src/blocks/icon/svgs.js:70
+#: src/blocks/icon/svgs.js:109
+#: src/blocks/icon/svgs.js:139
+#: src/blocks/icon/svgs.js:163
+#: src/blocks/icon/svgs.js:187
+#: src/blocks/icon/svgs.js:231
+#: src/blocks/icon/svgs.js:251
+#: src/blocks/icon/svgs.js:279
+#: src/blocks/icon/svgs.js:301
+#: src/blocks/icon/svgs.js:321
+#: src/blocks/icon/svgs.js:341
+#: src/blocks/icon/svgs.js:501
+#: src/blocks/icon/svgs.js:1006
+#: src/blocks/icon/svgs.js:1117
+#: src/blocks/icon/svgs.js:1141
+msgid "creative"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1135
+#: src/blocks/icon/svgs.js:1156
+msgid "develop"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1137
+#: src/blocks/icon/svgs.js:1158
+msgid "engineer"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:1143
+#: src/blocks/icon/svgs.js:1164
+msgid "Shipping"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1146
+#: src/blocks/icon/svgs.js:1175
+msgid "cart"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1148
+#: src/blocks/icon/svgs.js:1169
+msgid "commence"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1150
+#: src/blocks/icon/svgs.js:1171
+msgid "ecommence"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1152
+#: src/blocks/icon/svgs.js:1177
+msgid "ship"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1154
+#: src/blocks/icon/svgs.js:1167
+#: src/blocks/icon/deprecated/svgs.js:1027
+#: src/blocks/icon/svgs.js:1044
+msgid "shop"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1156
+#: src/blocks/icon/svgs.js:1173
+msgid "woo"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:1162
+#: src/blocks/icon/svgs.js:1183
+msgid "Snowflake"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1165
+#: src/blocks/icon/svgs.js:1192
+#: src/blocks/icon/deprecated/svgs.js:917
+#: src/blocks/icon/svgs.js:938
+msgid "chill"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1167
+#: src/blocks/icon/svgs.js:1186
+msgid "cold"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1169
+#: src/blocks/icon/svgs.js:1190
+msgid "frozen"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:117
+#: src/blocks/icon/svgs.js:120
+msgid "Voice"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1171
+#: src/blocks/icon/svgs.js:1198
+#: src/blocks/icon/deprecated/svgs.js:855
+#: src/blocks/icon/deprecated/svgs.js:1073
+#: src/blocks/icon/svgs.js:877
+#: src/blocks/icon/svgs.js:1096
+msgid "global"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1173
+#: src/blocks/icon/svgs.js:1188
+msgid "ice"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1175
+#: src/blocks/icon/svgs.js:1196
+msgid "season"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1177
+#: src/blocks/icon/svgs.js:1194
+msgid "winter"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:1183
+#: src/blocks/icon/svgs.js:1204
+msgid "School"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1186
+#: src/blocks/icon/svgs.js:1217
+msgid "college"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1188
+#: src/blocks/icon/svgs.js:1213
+msgid "degree"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1190
+#: src/blocks/icon/svgs.js:1215
+msgid "diploma"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1192
+#: src/blocks/icon/svgs.js:1207
+msgid "education"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1194
+#: src/blocks/icon/svgs.js:1209
+msgid "graduate"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1196
+#: src/blocks/icon/svgs.js:1211
+msgid "graduation"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:1202
+#: src/blocks/icon/svgs.js:1223
+msgid "Fire"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1205
+#: src/blocks/icon/svgs.js:1232
+#: src/blocks/icon/deprecated/svgs.js:24
+#: src/blocks/icon/deprecated/svgs.js:270
+#: src/blocks/icon/deprecated/svgs.js:299
+#: src/blocks/icon/deprecated/svgs.js:319
+#: src/blocks/icon/deprecated/svgs.js:1133
+#: src/blocks/icon/svgs.js:29
+#: src/blocks/icon/svgs.js:271
+#: src/blocks/icon/svgs.js:293
+#: src/blocks/icon/svgs.js:315
+#: src/blocks/icon/svgs.js:335
+#: src/blocks/icon/svgs.js:1150
+msgid "design"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1207
+#: src/blocks/icon/svgs.js:1226
+msgid "hot"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1209
+#: src/blocks/icon/svgs.js:1228
+msgid "trending"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1211
+#: src/blocks/icon/svgs.js:1230
+msgid "trendy"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:1217
+#: src/blocks/icon/svgs.js:1238
+msgid "Update"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1220
+#: src/blocks/icon/svgs.js:1243
+#: src/blocks/icon/deprecated/svgs.js:337
+#: src/blocks/icon/deprecated/svgs.js:359
+#: src/blocks/icon/svgs.js:357
+#: src/blocks/icon/svgs.js:379
+msgid "add"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1222
+#: src/blocks/icon/svgs.js:1241
+msgid "improve"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1224
+#: src/blocks/icon/svgs.js:1247
+msgid "software"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:1226
+#: src/blocks/icon/svgs.js:1245
+msgid "upload"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:136
+#: src/blocks/icon/svgs.js:125
+#: src/blocks/icon/deprecated/svgs.js:47
+#: src/blocks/icon/svgs.js:42
+msgid "podcast"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:145
+#: src/blocks/icon/svgs.js:150
+msgid "Aperture"
 msgstr ""
 
 #. icon label
 #. Plugin Name of the plugin
-#. translators: label.
 #. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:14
+#: src/blocks/icon/deprecated/svgs.js:15
 #: src/blocks/icon/svgs.js:18
 msgid "CoBlocks"
 msgstr ""
 
 #. icon label
-#. translators: label.
 #. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:142
-#: src/blocks/icon/svgs.js:189
+#: src/blocks/icon/deprecated/svgs.js:167
+#: src/blocks/icon/svgs.js:172
+msgid "Camera"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:191
+#: src/blocks/icon/svgs.js:196
+msgid "Gallery"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:198
+#: src/blocks/icon/svgs.js:211
+msgid "collection"
+msgstr ""
+
+#. block keyword
+#. translators: icon keyword
+#. translators: block keyword
+#: src/blocks/icon/deprecated/svgs.js:200
+#: src/blocks/icon/svgs.js:203
+#: src/blocks/media-card/index.js:43
+msgid "image"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:206
+#: src/blocks/icon/svgs.js:199
+#: src/blocks/icon/deprecated/svgs.js:156
+#: src/blocks/icon/deprecated/svgs.js:184
+#: src/blocks/icon/svgs.js:153
+#: src/blocks/icon/svgs.js:175
+msgid "photo"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:213
+#: src/blocks/icon/svgs.js:218
+msgid "Video"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:226
+#: src/blocks/icon/svgs.js:221
+#: src/blocks/icon/deprecated/svgs.js:152
+#: src/blocks/icon/deprecated/svgs.js:176
+#: src/blocks/icon/svgs.js:161
+#: src/blocks/icon/svgs.js:185
+msgid "film"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:233
+#: src/blocks/icon/svgs.js:238
+msgid "Film"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:236
+#: src/blocks/icon/svgs.js:259
+#: src/blocks/icon/deprecated/svgs.js:170
+#: src/blocks/icon/deprecated/svgs.js:194
+#: src/blocks/icon/svgs.js:183
+#: src/blocks/icon/svgs.js:209
+msgid "aperture"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:242
+#: src/blocks/icon/svgs.js:245
+#: src/blocks/icon/deprecated/svgs.js:218
+#: src/blocks/icon/svgs.js:225
+msgid "director"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:246
+#: src/blocks/icon/svgs.js:255
+#: src/blocks/icon/deprecated/svgs.js:158
+#: src/blocks/icon/deprecated/svgs.js:180
+#: src/blocks/icon/svgs.js:155
+#: src/blocks/icon/svgs.js:177
+msgid "photographer"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:250
+#: src/blocks/icon/svgs.js:247
+#: src/blocks/icon/deprecated/svgs.js:222
+#: src/blocks/icon/svgs.js:227
+msgid "producer"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:252
+#: src/blocks/icon/svgs.js:243
+#: src/blocks/icon/deprecated/svgs.js:224
+#: src/blocks/icon/svgs.js:223
+msgid "videography"
+msgstr ""
+
+#. block keyword
+#. translators: icon keyword
+#. translators: block keyword
+#: src/blocks/icon/deprecated/svgs.js:254
+#: src/blocks/icon/svgs.js:241
+#: src/blocks/media-card/index.js:45
+msgid "video"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:26
+#: src/blocks/icon/svgs.js:27
+msgid "gutenberg"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:261
+#: src/blocks/icon/svgs.js:266
+msgid "Color Lens"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:283
+#: src/blocks/icon/svgs.js:288
+msgid "Color Picker"
+msgstr ""
+
+#. tags.
+#. translators: tags.
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:284
+msgid "palette design colors artist paint creative media"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:290
+#: src/blocks/icon/svgs.js:310
+msgid "Paint"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:310
+#: src/blocks/icon/svgs.js:330
+msgid "Brush"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:315
+#: src/blocks/icon/svgs.js:337
+#: src/blocks/icon/deprecated/svgs.js:266
+#: src/blocks/icon/deprecated/svgs.js:295
+#: src/blocks/icon/svgs.js:273
+#: src/blocks/icon/svgs.js:295
+#: src/blocks/icon/svgs.js:317
+msgid "colors"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:32
+#: src/blocks/icon/svgs.js:35
+msgid "Audio"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:323
+#: src/blocks/icon/svgs.js:345
+#: src/blocks/icon/deprecated/svgs.js:274
+#: src/blocks/icon/svgs.js:277
+#: src/blocks/icon/svgs.js:299
+msgid "paint"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:325
+#: src/blocks/icon/svgs.js:347
+msgid "paintbrush"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:327
+#: src/blocks/icon/svgs.js:333
+#: src/blocks/icon/deprecated/svgs.js:276
+#: src/blocks/icon/deprecated/svgs.js:303
+#: src/blocks/icon/svgs.js:269
+#: src/blocks/icon/svgs.js:291
+#: src/blocks/icon/svgs.js:313
+msgid "palette"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:334
+#: src/blocks/icon/svgs.js:354
+msgid "Add Circle"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:356
+#: src/blocks/icon/svgs.js:376
+msgid "Minus Circle"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:363
+#: src/blocks/icon/svgs.js:385
+#: src/blocks/icon/deprecated/svgs.js:341
+#: src/blocks/icon/svgs.js:363
+msgid "insert"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:367
+#: src/blocks/icon/svgs.js:381
+#: src/blocks/icon/deprecated/svgs.js:345
+#: src/blocks/icon/svgs.js:359
+msgid "minus"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:378
+#: src/blocks/icon/svgs.js:398
+msgid "Pie Chart"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:397
+#: src/blocks/icon/svgs.js:417
+msgid "Scatter Plot"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:402
+#: src/blocks/icon/svgs.js:424
+#: src/blocks/icon/deprecated/svgs.js:339
+#: src/blocks/icon/deprecated/svgs.js:361
+#: src/blocks/icon/deprecated/svgs.js:383
+#: src/blocks/icon/svgs.js:361
+#: src/blocks/icon/svgs.js:383
+#: src/blocks/icon/svgs.js:405
+msgid "circle"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:406
+#: src/blocks/icon/svgs.js:432
+msgid "dots"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:410
+#: src/blocks/icon/svgs.js:426
+#: src/blocks/icon/deprecated/svgs.js:387
+#: src/blocks/icon/svgs.js:407
+msgid "pie"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:412
+#: src/blocks/icon/svgs.js:422
+#: src/blocks/icon/deprecated/svgs.js:349
+#: src/blocks/icon/deprecated/svgs.js:371
+#: src/blocks/icon/deprecated/svgs.js:389
+#: src/blocks/icon/svgs.js:367
+#: src/blocks/icon/svgs.js:389
+#: src/blocks/icon/svgs.js:403
+msgid "round"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:421
+#: src/blocks/icon/svgs.js:441
+msgid "Poll"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:424
+#: src/blocks/icon/svgs.js:444
+#: src/blocks/icon/deprecated/svgs.js:381
+#: src/blocks/icon/deprecated/svgs.js:400
+#: src/blocks/icon/svgs.js:409
+#: src/blocks/icon/svgs.js:428
+msgid "chart"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:426
+#: src/blocks/icon/svgs.js:450
+#: src/blocks/icon/deprecated/svgs.js:404
+#: src/blocks/icon/svgs.js:434
+msgid "data"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:430
+#: src/blocks/icon/svgs.js:452
+#: src/blocks/icon/deprecated/svgs.js:385
+#: src/blocks/icon/deprecated/svgs.js:408
+#: src/blocks/icon/deprecated/svgs.js:428
+#: src/blocks/icon/svgs.js:411
+#: src/blocks/icon/svgs.js:430
+#: src/blocks/icon/svgs.js:446
+msgid "graph"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:432
+#: src/blocks/icon/svgs.js:448
+#: src/blocks/icon/deprecated/svgs.js:391
+#: src/blocks/icon/deprecated/svgs.js:414
+#: src/blocks/icon/svgs.js:401
+#: src/blocks/icon/svgs.js:420
+msgid "stats"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:439
+#: src/blocks/icon/svgs.js:459
+msgid "Emoticon"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:442
+#: src/blocks/icon/svgs.js:466
+msgid "emoticon"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:444
+#: src/blocks/icon/svgs.js:464
+msgid "emotion"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:450
+#: src/blocks/icon/svgs.js:472
+msgid "joy"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:452
+#: src/blocks/icon/svgs.js:468
+msgid "smile"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:459
+#: src/blocks/icon/svgs.js:479
+msgid "Functions"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:464
+#: src/blocks/icon/svgs.js:484
+msgid "greek"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:466
+#: src/blocks/icon/svgs.js:486
+#: src/blocks/icon/deprecated/svgs.js:343
+#: src/blocks/icon/deprecated/svgs.js:365
+#: src/blocks/icon/svgs.js:369
+#: src/blocks/icon/svgs.js:391
+msgid "math"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:472
+#: src/blocks/icon/svgs.js:492
 msgid "Doodle"
 msgstr ""
 
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:143
-#: src/blocks/icon/svgs.js:191
-msgid "drawing doodle art creative type font pencil marker"
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:475
+#: src/blocks/icon/svgs.js:499
+msgid "art"
 msgstr ""
 
-#. translators: label.
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:479
+#: src/blocks/icon/svgs.js:497
+msgid "doodle"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:481
+#: src/blocks/icon/svgs.js:495
+msgid "drawing"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:485
+#: src/blocks/icon/svgs.js:509
+msgid "marker"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:487
+#: src/blocks/icon/svgs.js:507
+msgid "pencil"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:489
+#: src/blocks/icon/svgs.js:503
+msgid "type"
+msgstr ""
+
 #. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:147
-#: src/blocks/icon/svgs.js:196
+#: src/blocks/icon/deprecated/svgs.js:495
+#: src/blocks/icon/svgs.js:515
 #: src/components/typography-controls/index.js:172
 msgid "Font"
 msgstr ""
 
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:148
-#: src/blocks/icon/svgs.js:198
-msgid "font text typography"
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:498
+#: src/blocks/icon/svgs.js:518
+#: src/blocks/icon/deprecated/svgs.js:483
+#: src/blocks/icon/svgs.js:505
+msgid "font"
 msgstr ""
 
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:15
-#: src/blocks/icon/svgs.js:20
-msgid "blocks block build gutenberg design"
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:502
+#: src/blocks/icon/svgs.js:522
+msgid "typography"
 msgstr ""
 
 #. icon label
-#. translators: label.
 #. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:153
-#: src/blocks/icon/svgs.js:204
+#: src/blocks/icon/deprecated/svgs.js:509
+#: src/blocks/icon/svgs.js:529
 msgid "Heart"
 msgstr ""
 
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:154
-#: src/blocks/icon/svgs.js:206
-msgid "love shape valentine kiss"
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:512
+#: src/blocks/icon/svgs.js:538
+msgid "kiss"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:514
+#: src/blocks/icon/svgs.js:532
+msgid "love"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:516
+#: src/blocks/icon/svgs.js:534
+msgid "shape"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:518
+#: src/blocks/icon/svgs.js:536
+msgid "valentine"
 msgstr ""
 
 #. icon label
-#. translators: label.
 #. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:159
-#: src/blocks/icon/svgs.js:212
+#: src/blocks/icon/deprecated/svgs.js:525
+#: src/blocks/icon/svgs.js:545
 msgid "Star"
 msgstr ""
 
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:160
-#: src/blocks/icon/svgs.js:214
-msgid "rate vote plus favorite like"
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:528
+#: src/blocks/icon/svgs.js:554
+msgid "favorite"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:530
+#: src/blocks/icon/svgs.js:556
+msgid "like"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:532
+#: src/blocks/icon/svgs.js:552
+#: src/blocks/icon/deprecated/svgs.js:347
+#: src/blocks/icon/deprecated/svgs.js:369
+#: src/blocks/icon/svgs.js:365
+#: src/blocks/icon/svgs.js:387
+msgid "plus"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:534
+#: src/blocks/icon/svgs.js:548
+msgid "rate"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:536
+#: src/blocks/icon/svgs.js:550
+msgid "vote"
 msgstr ""
 
 #. icon label
-#. translators: label.
 #. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:165
-#: src/blocks/icon/svgs.js:220
+#: src/blocks/icon/deprecated/svgs.js:543
+#: src/blocks/icon/svgs.js:563
 msgid "Desktop"
 msgstr ""
 
 #. icon label
-#. translators: label.
 #. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:171
-#: src/blocks/icon/svgs.js:228
-msgid "Devices"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:176
-#: src/blocks/icon/svgs.js:235
-msgid "Laptop"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:177
-#: src/blocks/icon/svgs.js:237
-#: src/blocks/icon/deprecated/svgs.js:166
-#: src/blocks/icon/svgs.js:222
-msgid "computer apple montior device pc desk office"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:181
-#: src/blocks/icon/svgs.js:242
-msgid "Tablet"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:182
-#: src/blocks/icon/svgs.js:244
-msgid "computer ipad surface apple montior device pc desk office"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:186
-#: src/blocks/icon/svgs.js:249
-msgid "Watch"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:187
-#: src/blocks/icon/svgs.js:251
-msgid "device apple mac"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:19
-#: src/blocks/icon/svgs.js:25
-msgid "Audio"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:192
-#: src/blocks/icon/svgs.js:257
-msgid "Keyboard"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:193
-#: src/blocks/icon/svgs.js:259
-#: src/blocks/icon/deprecated/svgs.js:172
-#: src/blocks/icon/svgs.js:230
-msgid "computer ipad surface apple device pc desk office"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:197
-#: src/blocks/icon/svgs.js:264
-msgid "Hub"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:198
-#: src/blocks/icon/svgs.js:266
-msgid "usb connect hub device social"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:20
-#: src/blocks/icon/svgs.js:27
-msgid "music microphone podcast song artist creative media audio"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:209
-#: src/blocks/icon/svgs.js:281
-#: src/blocks/icon/deprecated/svgs.js:203
-#: src/blocks/icon/svgs.js:273
-msgid "email mail os read letter"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:213
-#: src/blocks/icon/svgs.js:286
-msgid "Reply"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:214
-#: src/blocks/icon/svgs.js:288
-msgid "reply respond message comment email mail"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:218
-#: src/blocks/icon/svgs.js:293
-msgid "Send"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:219
-#: src/blocks/icon/svgs.js:295
-msgid "send mail email deliver"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:224
-#: src/blocks/icon/svgs.js:301
-msgid "Signal"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:225
-#: src/blocks/icon/svgs.js:303
-msgid "wifi radio waves"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:229
-#: src/blocks/icon/svgs.js:308
-msgid "Blocks"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:235
-#: src/blocks/icon/svgs.js:316
-msgid "Marker"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:236
-#: src/blocks/icon/svgs.js:318
-msgid "map directions about check checkbox"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:241
-#: src/blocks/icon/svgs.js:324
-msgid "Mountains"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:242
-#: src/blocks/icon/svgs.js:326
-msgid "hills landscape minimal outdoors outside"
-msgstr ""
-
-#. block style
-#. translators: label.
-#. translators: icon label
-#. translators: block style
-#: src/blocks/icon/deprecated/svgs.js:247
-#: src/blocks/icon/svgs.js:332
-#: src/blocks/shape-divider/index.js:59
-msgid "Waves"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:248
-#: src/blocks/icon/svgs.js:334
-msgid "ocean outside outdoors water fun summer minimal"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:25
-#: src/blocks/icon/svgs.js:33
+#: src/blocks/icon/deprecated/svgs.js:56
+#: src/blocks/icon/svgs.js:59
 msgid "Album"
 msgstr ""
 
 #. icon label
-#. translators: label.
 #. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:252
-#: src/blocks/icon/svgs.js:339
+#: src/blocks/icon/deprecated/svgs.js:565
+#: src/blocks/icon/svgs.js:585
+msgid "Devices"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:588
+#: src/blocks/icon/svgs.js:608
+msgid "Laptop"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:609
+#: src/blocks/icon/svgs.js:629
+msgid "Tablet"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:622
+#: src/blocks/icon/svgs.js:640
+#: src/blocks/icon/deprecated/svgs.js:554
+#: src/blocks/icon/deprecated/svgs.js:599
+#: src/blocks/icon/svgs.js:570
+#: src/blocks/icon/svgs.js:615
+msgid "montior"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:634
+#: src/blocks/icon/svgs.js:654
+msgid "Watch"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:641
+#: src/blocks/icon/svgs.js:661
+msgid "mac"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:648
+#: src/blocks/icon/svgs.js:668
+msgid "Keyboard"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:651
+#: src/blocks/icon/svgs.js:677
+#: src/blocks/icon/deprecated/svgs.js:546
+#: src/blocks/icon/deprecated/svgs.js:568
+#: src/blocks/icon/deprecated/svgs.js:591
+#: src/blocks/icon/deprecated/svgs.js:612
+#: src/blocks/icon/deprecated/svgs.js:637
+#: src/blocks/icon/svgs.js:568
+#: src/blocks/icon/svgs.js:594
+#: src/blocks/icon/svgs.js:613
+#: src/blocks/icon/svgs.js:638
+#: src/blocks/icon/svgs.js:659
+msgid "apple"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:653
+#: src/blocks/icon/svgs.js:671
+#: src/blocks/icon/deprecated/svgs.js:122
+#: src/blocks/icon/deprecated/svgs.js:548
+#: src/blocks/icon/deprecated/svgs.js:570
+#: src/blocks/icon/deprecated/svgs.js:593
+#: src/blocks/icon/deprecated/svgs.js:614
+#: src/blocks/icon/svgs.js:127
+#: src/blocks/icon/svgs.js:566
+#: src/blocks/icon/svgs.js:588
+#: src/blocks/icon/svgs.js:611
+#: src/blocks/icon/svgs.js:632
+msgid "computer"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:655
+#: src/blocks/icon/svgs.js:683
+#: src/blocks/icon/deprecated/svgs.js:550
+#: src/blocks/icon/deprecated/svgs.js:572
+#: src/blocks/icon/deprecated/svgs.js:595
+#: src/blocks/icon/deprecated/svgs.js:616
+#: src/blocks/icon/svgs.js:576
+#: src/blocks/icon/svgs.js:600
+#: src/blocks/icon/svgs.js:621
+#: src/blocks/icon/svgs.js:646
+msgid "desk"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:659
+#: src/blocks/icon/svgs.js:673
+#: src/blocks/icon/deprecated/svgs.js:576
+#: src/blocks/icon/deprecated/svgs.js:620
+#: src/blocks/icon/svgs.js:590
+#: src/blocks/icon/svgs.js:634
+msgid "ipad"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:661
+#: src/blocks/icon/svgs.js:685
+#: src/blocks/icon/deprecated/svgs.js:556
+#: src/blocks/icon/deprecated/svgs.js:578
+#: src/blocks/icon/deprecated/svgs.js:601
+#: src/blocks/icon/deprecated/svgs.js:624
+#: src/blocks/icon/svgs.js:578
+#: src/blocks/icon/svgs.js:602
+#: src/blocks/icon/svgs.js:623
+#: src/blocks/icon/svgs.js:648
+msgid "office"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:663
+#: src/blocks/icon/svgs.js:681
+#: src/blocks/icon/deprecated/svgs.js:558
+#: src/blocks/icon/deprecated/svgs.js:580
+#: src/blocks/icon/deprecated/svgs.js:603
+#: src/blocks/icon/deprecated/svgs.js:626
+#: src/blocks/icon/svgs.js:574
+#: src/blocks/icon/svgs.js:598
+#: src/blocks/icon/svgs.js:619
+#: src/blocks/icon/svgs.js:644
+msgid "pc"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:665
+#: src/blocks/icon/svgs.js:675
+#: src/blocks/icon/deprecated/svgs.js:582
+#: src/blocks/icon/deprecated/svgs.js:628
+#: src/blocks/icon/svgs.js:592
+#: src/blocks/icon/svgs.js:636
+msgid "surface"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:671
+#: src/blocks/icon/svgs.js:691
+msgid "Hub"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:674
+#: src/blocks/icon/svgs.js:696
+msgid "connect"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:676
+#: src/blocks/icon/svgs.js:700
+#: src/blocks/icon/deprecated/svgs.js:126
+#: src/blocks/icon/deprecated/svgs.js:552
+#: src/blocks/icon/deprecated/svgs.js:574
+#: src/blocks/icon/deprecated/svgs.js:597
+#: src/blocks/icon/deprecated/svgs.js:618
+#: src/blocks/icon/deprecated/svgs.js:639
+#: src/blocks/icon/deprecated/svgs.js:657
+#: src/blocks/icon/svgs.js:129
+#: src/blocks/icon/svgs.js:572
+#: src/blocks/icon/svgs.js:596
+#: src/blocks/icon/svgs.js:617
+#: src/blocks/icon/svgs.js:642
+#: src/blocks/icon/svgs.js:657
+#: src/blocks/icon/svgs.js:679
+msgid "device"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:678
+#: src/blocks/icon/svgs.js:698
+msgid "hub"
+msgstr ""
+
+#. block keyword
+#. translators: icon keyword
+#. translators: block keyword
+#: src/blocks/icon/deprecated/svgs.js:680
+#: src/blocks/icon/svgs.js:702
+#: src/blocks/share/index.js:33
+msgid "social"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:682
+#: src/blocks/icon/svgs.js:694
+msgid "usb"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:711
+#: src/blocks/icon/svgs.js:737
+#: src/blocks/icon/deprecated/svgs.js:693
+#: src/blocks/icon/svgs.js:719
+msgid "letter"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:715
+#: src/blocks/icon/svgs.js:733
+#: src/blocks/icon/deprecated/svgs.js:697
+#: src/blocks/icon/svgs.js:715
+msgid "os"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:717
+#: src/blocks/icon/svgs.js:735
+#: src/blocks/icon/deprecated/svgs.js:699
+#: src/blocks/icon/svgs.js:717
+msgid "read"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:723
+#: src/blocks/icon/svgs.js:743
+msgid "Reply"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:726
+#: src/blocks/icon/svgs.js:752
+msgid "comment"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:734
+#: src/blocks/icon/svgs.js:746
+msgid "reply"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:736
+#: src/blocks/icon/svgs.js:748
+msgid "respond"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:742
+#: src/blocks/icon/svgs.js:762
+msgid "Send"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:745
+#: src/blocks/icon/svgs.js:771
+msgid "deliver"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:751
+#: src/blocks/icon/svgs.js:765
+msgid "send"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:758
+#: src/blocks/icon/svgs.js:778
+msgid "Signal"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:761
+#: src/blocks/icon/svgs.js:783
+msgid "radio"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:763
+#: src/blocks/icon/svgs.js:785
+msgid "waves"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:765
+#: src/blocks/icon/svgs.js:781
+msgid "wifi"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:771
+#: src/blocks/icon/svgs.js:791
+msgid "Blocks"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:78
+#: src/blocks/icon/svgs.js:81
+msgid "Headset"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:793
+#: src/blocks/icon/svgs.js:813
+msgid "Marker"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:798
+#: src/blocks/icon/svgs.js:822
+msgid "check"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:800
+#: src/blocks/icon/svgs.js:824
+msgid "checkbox"
+msgstr ""
+
+#. block keyword
+#. translators: icon keyword
+#. translators: block keyword
+#: src/blocks/icon/deprecated/svgs.js:802
+#: src/blocks/icon/svgs.js:818
+#: src/blocks/map/index.js:41
+msgid "directions"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:811
+#: src/blocks/icon/svgs.js:831
+msgid "Mountains"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:814
+#: src/blocks/icon/svgs.js:834
+msgid "hills"
+msgstr ""
+
+#. block style
+#. translators: icon label
+#. translators: block style
+#: src/blocks/icon/deprecated/svgs.js:829
+#: src/blocks/icon/svgs.js:849
+#: src/blocks/shape-divider/index.js:59
+msgid "Waves"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:83
+#: src/blocks/icon/svgs.js:88
+msgid "beats"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:834
+#: src/blocks/icon/svgs.js:864
+#: src/blocks/icon/deprecated/svgs.js:818
+#: src/blocks/icon/svgs.js:838
+msgid "minimal"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:836
+#: src/blocks/icon/svgs.js:852
+msgid "ocean"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:842
+#: src/blocks/icon/svgs.js:862
+msgid "summer"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:844
+#: src/blocks/icon/svgs.js:858
+msgid "water"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:85
+#: src/blocks/icon/svgs.js:90
+msgid "bose"
+msgstr ""
+
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:850
+#: src/blocks/icon/svgs.js:870
 msgid "Globe"
 msgstr ""
 
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:253
-#: src/blocks/icon/svgs.js:341
-msgid "world public global earth location map"
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:853
+#: src/blocks/icon/svgs.js:879
+msgid "earth"
 msgstr ""
 
 #. icon label
-#. translators: label.
 #. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:257
-#: src/blocks/icon/svgs.js:346
+#: src/blocks/icon/deprecated/svgs.js:869
+#: src/blocks/icon/svgs.js:889
 msgid "City"
 msgstr ""
 
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:258
-#: src/blocks/icon/svgs.js:348
-msgid "location map public business corporation building town skyscraper"
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:87
+#: src/blocks/icon/svgs.js:92
+msgid "headphones"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:872
+#: src/blocks/icon/svgs.js:902
+msgid "building"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:874
+#: src/blocks/icon/svgs.js:898
+msgid "business"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:876
+#: src/blocks/icon/svgs.js:900
+msgid "corporation"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:877
+#: src/blocks/icon/svgs.js:892
+#: src/blocks/icon/deprecated/svgs.js:857
+#: src/blocks/icon/svgs.js:881
+msgid "location"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:879
+#: src/blocks/icon/svgs.js:894
+#: src/blocks/icon/deprecated/svgs.js:804
+#: src/blocks/icon/deprecated/svgs.js:859
+#: src/blocks/icon/svgs.js:816
+#: src/blocks/icon/svgs.js:883
+msgid "map"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:881
+#: src/blocks/icon/svgs.js:896
+#: src/blocks/icon/deprecated/svgs.js:861
+#: src/blocks/icon/svgs.js:875
+msgid "public"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:883
+#: src/blocks/icon/svgs.js:906
+msgid "skyscraper"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:885
+#: src/blocks/icon/svgs.js:904
+msgid "town"
 msgstr ""
 
 #. icon label
-#. translators: label.
 #. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:262
-#: src/blocks/icon/svgs.js:353
+#: src/blocks/icon/deprecated/svgs.js:891
+#: src/blocks/icon/svgs.js:912
 msgid "Dining"
 msgstr ""
 
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:263
-#: src/blocks/icon/svgs.js:355
-msgid "food drink restaurant menu fork spoon taste"
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:894
+#: src/blocks/icon/svgs.js:917
+msgid "drink"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:898
+#: src/blocks/icon/svgs.js:923
+msgid "fork"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:904
+#: src/blocks/icon/svgs.js:925
+msgid "spoon"
 msgstr ""
 
 #. icon label
-#. translators: label.
 #. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:267
-#: src/blocks/icon/svgs.js:360
+#: src/blocks/icon/deprecated/svgs.js:912
+#: src/blocks/icon/svgs.js:933
 msgid "Couch"
 msgstr ""
 
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:268
-#: src/blocks/icon/svgs.js:362
-msgid "weekend chill relax chair"
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:915
+#: src/blocks/icon/svgs.js:942
+msgid "chair"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:921
+#: src/blocks/icon/svgs.js:936
+msgid "weekend"
 msgstr ""
 
 #. icon label
-#. translators: label.
 #. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:273
-#: src/blocks/icon/svgs.js:368
+#: src/blocks/icon/deprecated/svgs.js:928
+#: src/blocks/icon/svgs.js:949
 msgid "Cake"
 msgstr ""
 
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:274
-#: src/blocks/icon/svgs.js:370
-msgid "fun party happy celebration taste food"
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:931
+#: src/blocks/icon/svgs.js:958
+msgid "celebration"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:933
+#: src/blocks/icon/svgs.js:962
+#: src/blocks/icon/deprecated/svgs.js:896
+#: src/blocks/icon/svgs.js:915
+msgid "food"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:935
+#: src/blocks/icon/svgs.js:952
+#: src/blocks/icon/deprecated/svgs.js:446
+#: src/blocks/icon/deprecated/svgs.js:832
+#: src/blocks/icon/svgs.js:470
+#: src/blocks/icon/svgs.js:860
+msgid "fun"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:937
+#: src/blocks/icon/svgs.js:956
+#: src/blocks/icon/deprecated/svgs.js:448
+#: src/blocks/icon/svgs.js:462
+msgid "happy"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:939
+#: src/blocks/icon/svgs.js:954
+msgid "party"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:941
+#: src/blocks/icon/svgs.js:960
+#: src/blocks/icon/deprecated/svgs.js:906
+#: src/blocks/icon/svgs.js:927
+msgid "taste"
 msgstr ""
 
 #. icon label
-#. translators: label.
 #. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:279
-#: src/blocks/icon/svgs.js:376
+#: src/blocks/icon/deprecated/svgs.js:948
+#: src/blocks/icon/svgs.js:969
 msgid "Flower"
 msgstr ""
 
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:280
-#: src/blocks/icon/svgs.js:378
-msgid "petal scent smell nice relax landscape gardening outdoors outside"
+#. icon label
+#. translators: icon label
+#: src/blocks/icon/deprecated/svgs.js:95
+#: src/blocks/icon/svgs.js:98
+msgid "Volume"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:951
+#: src/blocks/icon/svgs.js:984
+msgid "gardening"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:953
+#: src/blocks/icon/svgs.js:982
+#: src/blocks/icon/deprecated/svgs.js:816
+#: src/blocks/icon/svgs.js:836
+msgid "landscape"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:955
+#: src/blocks/icon/svgs.js:978
+msgid "nice"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:957
+#: src/blocks/icon/svgs.js:986
+#: src/blocks/icon/deprecated/svgs.js:820
+#: src/blocks/icon/deprecated/svgs.js:838
+#: src/blocks/icon/svgs.js:840
+#: src/blocks/icon/svgs.js:856
+msgid "outdoors"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:959
+#: src/blocks/icon/svgs.js:988
+#: src/blocks/icon/deprecated/svgs.js:822
+#: src/blocks/icon/deprecated/svgs.js:840
+#: src/blocks/icon/svgs.js:842
+#: src/blocks/icon/svgs.js:854
+msgid "outside"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:961
+#: src/blocks/icon/svgs.js:972
+msgid "petal"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:963
+#: src/blocks/icon/svgs.js:980
+#: src/blocks/icon/deprecated/svgs.js:919
+#: src/blocks/icon/svgs.js:940
+msgid "relax"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:965
+#: src/blocks/icon/svgs.js:974
+msgid "scent"
+msgstr ""
+
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:967
+#: src/blocks/icon/svgs.js:976
+msgid "smell"
 msgstr ""
 
 #. image style
-#. translators: label.
 #. translators: icon label
 #. translators: image style
-#: src/blocks/icon/deprecated/svgs.js:285
-#: src/blocks/icon/svgs.js:384
+#: src/blocks/icon/deprecated/svgs.js:974
+#: src/blocks/icon/svgs.js:995
 #: src/components/media-filter-control/index.js:77
 msgid "Vintage Filter"
 msgstr ""
 
 #. icon label
-#. translators: label.
 #. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:291
-#: src/blocks/icon/svgs.js:392
+#: src/blocks/icon/deprecated/svgs.js:992
+#: src/blocks/icon/svgs.js:1013
 msgid "Build"
 msgstr ""
 
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:292
-#: src/blocks/icon/svgs.js:394
-#: src/blocks/icon/deprecated/svgs.js:230
-#: src/blocks/icon/svgs.js:310
-msgid "blocks block box boxes square build widgets"
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:995
+#: src/blocks/icon/svgs.js:1018
+#: src/blocks/icon/deprecated/svgs.js:18
+#: src/blocks/icon/deprecated/svgs.js:774
+#: src/blocks/icon/svgs.js:23
+#: src/blocks/icon/svgs.js:796
+msgid "block"
 msgstr ""
 
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:297
-#: src/blocks/icon/svgs.js:400
-msgid "Credit Card"
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:997
+#: src/blocks/icon/svgs.js:1016
+#: src/blocks/icon/deprecated/svgs.js:20
+#: src/blocks/icon/deprecated/svgs.js:776
+#: src/blocks/icon/svgs.js:21
+#: src/blocks/icon/svgs.js:794
+msgid "blocks"
 msgstr ""
 
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:298
-#: src/blocks/icon/svgs.js:402
-msgid "money cash checkout shop commerce ecommerce"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:302
-#: src/blocks/icon/svgs.js:407
-msgid "Extension"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:303
-#: src/blocks/icon/svgs.js:409
-msgid "puzzle plugin widget team together"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:308
-#: src/blocks/icon/svgs.js:415
-msgid "Fingerprint"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:309
-#: src/blocks/icon/svgs.js:417
-msgid "security bio defense biometric safe secure"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:31
-#: src/blocks/icon/svgs.js:41
-msgid "Headset"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:313
-#: src/blocks/icon/svgs.js:422
-msgid "Translate"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:314
-#: src/blocks/icon/svgs.js:424
-msgid "language global world speech"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:318
-#: src/blocks/icon/svgs.js:429
-msgid "New"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:319
-#: src/blocks/icon/svgs.js:431
-msgid "music microphone song artist creative media audio badge"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:32
-#: src/blocks/icon/svgs.js:43
-msgid "microphone audio beats bose headphones"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:324
-#: src/blocks/icon/svgs.js:437
-msgid "Flare"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:325
-#: src/blocks/icon/svgs.js:439
-#: src/blocks/icon/deprecated/svgs.js:286
-#: src/blocks/icon/svgs.js:386
-msgid "flower camera photography artist creative"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:329
-#: src/blocks/icon/svgs.js:444
-msgid "Layers"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:330
-#: src/blocks/icon/svgs.js:446
-msgid "design creative build develop engineer"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:334
-#: src/blocks/icon/svgs.js:451
-msgid "Shipping"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:335
-#: src/blocks/icon/svgs.js:453
-msgid "shop commence ecommence woo cart ship"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:339
-#: src/blocks/icon/svgs.js:458
-msgid "Snowflake"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:340
-#: src/blocks/icon/svgs.js:460
-msgid "cold ice frozen chill winter season global"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:344
-#: src/blocks/icon/svgs.js:465
-msgid "School"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:345
-#: src/blocks/icon/svgs.js:467
-msgid "education graduate graduation degree diploma college"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:349
-#: src/blocks/icon/svgs.js:472
-msgid "Fire"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:350
-#: src/blocks/icon/svgs.js:474
-msgid "hot trending trendy design"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:354
-#: src/blocks/icon/svgs.js:479
-msgid "Update"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:355
-#: src/blocks/icon/svgs.js:481
-msgid "improve add upload software"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:36
-#: src/blocks/icon/svgs.js:48
-msgid "Volume"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:37
-#: src/blocks/icon/svgs.js:50
-#: src/blocks/icon/deprecated/svgs.js:26
-#: src/blocks/icon/svgs.js:35
-msgid "music microphone song artist creative media audio"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:42
-#: src/blocks/icon/svgs.js:56
-msgid "Voice"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:43
-#: src/blocks/icon/svgs.js:58
-msgid "microphone podcast computer device music microphone song artist creative media audio"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:48
-#: src/blocks/icon/svgs.js:64
-msgid "Aperture"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:49
-#: src/blocks/icon/svgs.js:66
-msgid "photo photographer photography camera film creative media"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:54
-#: src/blocks/icon/svgs.js:72
-msgid "Camera"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:55
-#: src/blocks/icon/svgs.js:74
-msgid "photo photographer photography camera aperture film creative media"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:60
-#: src/blocks/icon/svgs.js:80
-msgid "Gallery"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:61
-#: src/blocks/icon/svgs.js:82
-msgid "photo photos image media camera aperture collection"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:66
-#: src/blocks/icon/svgs.js:88
-msgid "Video"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:67
-#: src/blocks/icon/svgs.js:90
-msgid "film videography director producer media creative"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:72
-#: src/blocks/icon/svgs.js:96
-msgid "Film"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:73
-#: src/blocks/icon/svgs.js:98
-msgid "video videography director producer media creative camera photographer photography aperture"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:78
-#: src/blocks/icon/svgs.js:104
-msgid "Color Lens"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:84
-#: src/blocks/icon/svgs.js:112
-msgid "Color Picker"
-msgstr ""
-
-#. tags.
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:85
-#: src/blocks/icon/svgs.js:113
-#: src/blocks/icon/deprecated/svgs.js:79
-#: src/blocks/icon/svgs.js:106
-msgid "palette design colors artist paint creative media"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:90
-#: src/blocks/icon/svgs.js:119
-msgid "Paint"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:91
-#: src/blocks/icon/svgs.js:121
-msgid "palette design colors artist creative media"
-msgstr ""
-
-#. icon label
-#. translators: label.
-#. translators: icon label
-#: src/blocks/icon/deprecated/svgs.js:96
-#: src/blocks/icon/svgs.js:127
-msgid "Brush"
-msgstr ""
-
-#. icon keywords
-#. translators: label.
-#. translators: tags.
-#. translators: icon keywords
-#: src/blocks/icon/deprecated/svgs.js:97
-#: src/blocks/icon/svgs.js:129
-msgid "palette design colors artist creative media paint paintbrush"
+#. icon keyword
+#. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:999
+#: src/blocks/icon/svgs.js:1020
+#: src/blocks/icon/deprecated/svgs.js:778
+#: src/blocks/icon/svgs.js:798
+msgid "box"
 msgstr ""
 
 #: src/blocks/icon/icon-size-select.js:30
@@ -3282,12 +4401,6 @@ msgstr ""
 msgid "google"
 msgstr ""
 
-#. block keyword
-#. translators: block keyword
-#: src/blocks/map/index.js:41
-msgid "directions"
-msgstr ""
-
 #: src/blocks/map/inspector.js:109
 msgid "Select Map Style"
 msgstr ""
@@ -3463,18 +4576,6 @@ msgstr ""
 #. translators: block description
 #: src/blocks/media-card/index.js:38
 msgid "Add an image or video with an offset card side-by-side."
-msgstr ""
-
-#. block keyword
-#. translators: block keyword
-#: src/blocks/media-card/index.js:43
-msgid "image"
-msgstr ""
-
-#. block keyword
-#. translators: block keyword
-#: src/blocks/media-card/index.js:45
-msgid "video"
 msgstr ""
 
 #: src/blocks/media-card/inspector.js:109
@@ -3822,7 +4923,7 @@ msgstr ""
 msgid "A pricing table to help visitors compare products and plans."
 msgstr ""
 
-#: src/blocks/row/column/edit.js:90
+#: src/blocks/row/column/edit.js:91
 msgid "Add background to column"
 msgstr ""
 
@@ -4218,12 +5319,6 @@ msgstr ""
 #. translators: block description
 #: src/blocks/share/index.js:28
 msgid "Add social sharing links to help you get likes and shares."
-msgstr ""
-
-#. block keyword
-#. translators: block keyword
-#: src/blocks/share/index.js:33
-msgid "social"
 msgstr ""
 
 #. block style
