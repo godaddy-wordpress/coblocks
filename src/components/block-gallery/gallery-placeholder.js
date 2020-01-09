@@ -28,25 +28,8 @@ class GalleryPlaceholder extends Component {
 		};
 	}
 
-	setAttributes( attributes ) {
-		if ( attributes.ids ) {
-			throw new Error( 'The "ids" attribute should not be changed directly. It is managed automatically when "images" attribute changes' );
-		}
-
-		if ( attributes.images ) {
-			attributes = {
-				...attributes,
-				ids: map( attributes.images, 'id' ),
-			};
-		}
-
-		this.props.setAttributes( attributes );
-	}
-
 	selectCaption( newImage, images, attachmentCaptions ) {
-		const currentImage = find(
-			images, { id: newImage.id.toString() || newImage.id }
-		);
+		const currentImage = find( images, { id: newImage.id.toString() } ) ||	find( images, { id: newImage.id } );
 
 		const currentImageCaption = currentImage ? currentImage.caption : newImage.caption;
 
@@ -78,7 +61,7 @@ class GalleryPlaceholder extends Component {
 				} ) ),
 			}
 		);
-		this.setAttributes( {
+		this.props.setAttributes( {
 			images: newImages.map( ( image ) => ( {
 				...helper.pickRelevantMediaFiles( image ),
 				caption: this.selectCaption( image, images, attachmentCaptions ),
