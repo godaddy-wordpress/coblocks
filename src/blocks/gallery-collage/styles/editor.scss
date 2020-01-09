@@ -114,7 +114,7 @@
 	}
 
 	// Captions.
-	.editor-rich-text {
+	.block-editor-rich-text {
 		bottom: 0;
 		left: 0;
 		max-height: 100%;
@@ -130,7 +130,7 @@
 		}
 	}
 
-	.editor-rich-text figcaption:not([data-is-placeholder-visible="true"]) {
+	.block-editor-rich-text figcaption:not([data-is-placeholder-visible="true"]) {
 		overflow: hidden;
 		position: relative !important;
 	}
