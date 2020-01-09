@@ -873,7 +873,8 @@ const icons = {
 			/* translators: icon keyword */
 			__( 'business', 'coblocks' ),
 			/* translators: icon keyword */
-			__( 'corporation', 'coblocks' ),			/* translators: icon keyword */
+			__( 'corporation', 'coblocks' ),
+			/* translators: icon keyword */
 			__( 'location', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'map', 'coblocks' ),
@@ -1244,4 +1245,3 @@ Object.entries( icons ).filter( function( item ) {
 } );
 
 export default svgs;
-
