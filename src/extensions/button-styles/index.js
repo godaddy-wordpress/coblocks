@@ -8,7 +8,6 @@ import { registerBlockStyle } from '@wordpress/blocks';
  * Internal Dependencies
  */
 import './styles/style.scss';
-import './styles/editor.scss';
 
 // Register custom styles for the core list block.
 registerBlockStyle( 'core/button', {
