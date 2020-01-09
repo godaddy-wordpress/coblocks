@@ -6,14 +6,15 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import { GalleryClasses } from '../../components/block-gallery/shared';
+import { GalleryClasses, GalleryAttributes } from '../../components/block-gallery/shared';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
  */
 import { RichText } from '@wordpress/block-editor';
 
-const save = ( { attributes, className } ) => {
+const deprecatedCustomImageLinks = ( { attributes, className } ) => {
 	const {
 		captions,
 		gutter,
@@ -86,7 +87,7 @@ const save = ( { attributes, className } ) => {
 							break;
 					}
 
-					const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ imgClasses } />;
+					const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ imgClasses } />;
 
 					return (
 						<li key={ image.id || image.url } className="coblocks-gallery--item">
@@ -104,4 +105,15 @@ const save = ( { attributes, className } ) => {
 	);
 };
 
-export default save;
+//prepare attributes
+const deprecatedAttributes = { ...GalleryAttributes, ...metadata.attributes };
+Object.assign( deprecatedAttributes.images.query, {	imgLink: { source: 'attribute', selector: 'a', attribute: 'href' } } );
+
+const deprecated = [
+	{
+		attributes: deprecatedAttributes,
+		save: deprecatedCustomImageLinks,
+	},
+];
+
+export default deprecated;
