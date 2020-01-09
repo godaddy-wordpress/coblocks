@@ -16,7 +16,7 @@
 	}
 
 	// Tweak the position of the figcaption if Custom URL is set.
-	.components-coblocks-gallery-item__image-link + img + .editor-rich-text {
+	.components-coblocks-gallery-item__image-link + img + .block-editor-rich-text {
 		margin-bottom: 35px;
 	}
 
@@ -41,8 +41,8 @@
 
 // Needed until GB 6.9 is merged into core or backward support.
 // Hide the placeholder when not selected.
-.editor-block-list__block[data-type="coblocks/gallery-stacked"]:not(.is-selected):not(.is-focused)  {
+.block-editor-block-list__block[data-type="coblocks/gallery-stacked"]:not(.is-selected):not(.is-focused)  {
 	div.components-form-file-upload {
 		display: none;
-	} 
+	}
 }

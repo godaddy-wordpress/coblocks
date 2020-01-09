@@ -234,9 +234,9 @@ class Inspector extends Component {
 							} }
 						/>
 						<div className="coblocks-icon-types-list-wrapper">
-							<ul className="editor-block-types-list coblocks-icon-types-list">
+							<ul className="block-editor-block-types-list coblocks-icon-types-list">
 								{ ! this.state.isSearching ?
-									<li className="editor-block-types-list__list-item selected-svg">
+									<li className="block-editor-block-types-list__list-item selected-svg">
 										<Button
 											isLarge
 											className="editor-block-list-item-button"
@@ -244,7 +244,7 @@ class Inspector extends Component {
 												return false;
 											} }
 										>
-											<span className="editor-block-types-list__item-icon">
+											<span className="block-editor-block-types-list__item-icon">
 												{ icon && svg[ iconStyle ][ icon ].icon }
 											</span>
 										</Button>
@@ -255,7 +255,7 @@ class Inspector extends Component {
 									Object.keys( this.state.filteredIcons[ iconStyle ] ).map( ( keyName, i ) => {
 										return (
 											<li key={ `editor-pblock-types-list-item-${ i }` } className={ classnames(
-												'editor-block-types-list__list-item', {
+												'block-editor-block-types-list__list-item', {
 													'is-selected': icon && ( icon === keyName ),
 												},
 											) }>
@@ -267,7 +267,7 @@ class Inspector extends Component {
 															setAttributes( { icon: keyName } );
 														} }
 													>
-														<span className="editor-block-types-list__item-icon">
+														<span className="block-editor-block-types-list__item-icon">
 															{ icon && svg[ iconStyle ][ keyName ].icon }
 														</span>
 													</Button>
