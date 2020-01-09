@@ -5,12 +5,15 @@
  */
 import classnames from 'classnames';
 import emailValidator from 'email-validator';
+import map from 'lodash/map';
+import isEqual from 'lodash/isEqual';
 
 /**
  * Internal dependencies
  */
 import Notice from './notice';
 import SubmitButton from './submit-button';
+import { TEMPLATE_OPTIONS } from './layouts';
 
 /**
  * WordPress dependencies
@@ -20,17 +23,8 @@ import { Component, Fragment } from '@wordpress/element';
 import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/components';
 import { InspectorControls, InnerBlocks } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
-
-/**
- * Block constants
- */
-// Note: Child form blocks are automatically allowed
-const ALLOWED_BLOCKS = [
-	'core/heading',
-	'core/paragraph',
-	'core/separator',
-	'core/spacer',
-];
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
 
 /**
  * Get settings
@@ -40,14 +34,13 @@ wp.api.loadPromise.then( () => {
 	settings = new wp.api.models.Settings();
 } );
 
-const FORM_TEMPLATE = [
-	[ 'coblocks/field-name', { required: false } ],
-	[ 'coblocks/field-email', { required: true } ],
-	[ 'coblocks/field-textarea', { required: true } ],
-];
-
+/**
+ * Block constants
+ */
 const RETRIEVE_KEY_URL = 'https://g.co/recaptcha/v3';
 const HELP_URL = 'https://developers.google.com/recaptcha/docs/v3';
+// Note: Child form blocks are automatically allowed
+const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/separator', 'core/spacer' ];
 
 class FormEdit extends Component {
 	constructor() {
@@ -63,6 +56,9 @@ class FormEdit extends Component {
 		this.hasEmailError = this.hasEmailError.bind( this );
 		this.saveRecaptchaKey = this.saveRecaptchaKey.bind( this );
 		this.removeRecaptchaKey = this.removeRecaptchaKey.bind( this );
+		this.setTemplate = this.setTemplate.bind( this );
+		this.supportsExperimentalProps = this.supportsExperimentalProps.bind( this );
+		this.appendTagsToSubject = this.appendTagsToSubject.bind( this );
 
 		this.state = {
 			toError: error && error.length ? error : null,
@@ -70,6 +66,7 @@ class FormEdit extends Component {
 			isSavedKey: false,
 			isSaving: false,
 			keySaved: false,
+			template: null,
 		};
 
 		const to = arguments[ 0 ].attributes.to ? arguments[ 0 ].attributes.to : '';
@@ -78,46 +75,68 @@ class FormEdit extends Component {
 			.map( this.getToValidationError )
 			.filter( Boolean );
 
-		settings.on( 'change:coblocks_google_recaptcha_site_key', model => {
-			const recaptchaSiteKey = model.get( 'coblocks_google_recaptcha_site_key' );
-			this.setState( {
-				recaptchaSiteKey: settings.get( 'coblocks_google_recaptcha_site_key' ),
-				isSavedKey: recaptchaSiteKey === '' ? false : true,
+		if ( typeof settings !== 'undefined' ) {
+			settings.on( 'change:coblocks_google_recaptcha_site_key', model => {
+				const recaptchaSiteKey = model.get( 'coblocks_google_recaptcha_site_key' );
+				this.setState( {
+					recaptchaSiteKey: settings.get( 'coblocks_google_recaptcha_site_key' ),
+					isSavedKey: recaptchaSiteKey === '' ? false : true,
+				} );
 			} );
-		} );
 
-		settings.on( 'change:coblocks_google_recaptcha_secret_key', model => {
-			const recaptchaSecretKey = model.get(
-				'coblocks_google_recaptcha_secret_key'
-			);
-			this.setState( {
-				recaptchaSecretKey: settings.get(
+			settings.on( 'change:coblocks_google_recaptcha_secret_key', model => {
+				const recaptchaSecretKey = model.get(
 					'coblocks_google_recaptcha_secret_key'
-				),
-				isSavedKey: recaptchaSecretKey === '' ? false : true,
+				);
+				this.setState( {
+					recaptchaSecretKey: settings.get(
+						'coblocks_google_recaptcha_secret_key'
+					),
+					isSavedKey: recaptchaSecretKey === '' ? false : true,
+				} );
 			} );
-		} );
 
-		settings.fetch().then( response => {
-			this.setState( {
-				recaptchaSiteKey: response.coblocks_google_recaptcha_site_key,
+			settings.fetch().then( response => {
+				this.setState( {
+					recaptchaSiteKey: response.coblocks_google_recaptcha_site_key,
+				} );
+				if ( this.state.recaptchaSiteKey && this.state.recaptchaSiteKey !== '' ) {
+					this.setState( { isSavedKey: true } );
+				}
 			} );
-			if ( this.state.recaptchaSiteKey && this.state.recaptchaSiteKey !== '' ) {
-				this.setState( { isSavedKey: true } );
-			}
-		} );
 
-		settings.fetch().then( response => {
-			this.setState( {
-				recaptchaSecretKey: response.coblocks_google_recaptcha_secret_key,
+			settings.fetch().then( response => {
+				this.setState( {
+					recaptchaSecretKey: response.coblocks_google_recaptcha_secret_key,
+				} );
+				if (
+					this.state.recaptchaSecretKey &&
+					this.state.recaptchaSecretKey !== ''
+				) {
+					this.setState( { isSavedKey: true } );
+				}
 			} );
-			if (
-				this.state.recaptchaSecretKey &&
-				this.state.recaptchaSecretKey !== ''
-			) {
-				this.setState( { isSavedKey: true } );
-			}
-		} );
+		}
+	}
+
+	componentDidMount() {
+		const { innerBlockCount, innerBlocks } = this.props;
+		if ( innerBlockCount > 0 ) {
+			this.setState( { template: innerBlocks } );
+		}
+
+		if ( ! this.supportsExperimentalProps() && innerBlockCount === 0 ) {
+			this.setTemplate( TEMPLATE_OPTIONS[ 0 ].template );
+		}
+	}
+
+	componentDidUpdate( prevProps ) {
+		const { innerBlockCount, innerBlocks } = this.props;
+
+		// Store the selected innerBlocks layout in state so that undo and redo functions work properly.
+		if ( prevProps.innerBlockCount !== innerBlockCount ) {
+			this.setState( { template: innerBlockCount ? innerBlocks : null } );
+		}
 	}
 
 	onChangeSubject( subject ) {
@@ -215,6 +234,15 @@ class FormEdit extends Component {
 		} );
 	}
 
+	appendTagsToSubject( event ) {
+		const { attributes } = this.props;
+		let { subject } = attributes;
+		if ( null === subject ) {
+			subject = jQuery( event.target ).closest( 'div.components-base-control' ).find( 'input[type="text"]' ).val();
+		}
+		this.onChangeSubject( subject + event.target.innerHTML );
+	}
+
 	removeRecaptchaKey() {
 		this.setState( {
 			recaptchaSiteKey: '',
@@ -261,7 +289,22 @@ class FormEdit extends Component {
 							coblocksBlockData.form.emailSubject
 					}
 					onChange={ this.onChangeSubject }
+					help={ <Fragment> { __( 'You may use the following tags in the subject field: ', 'coblocks' ) }
+						<Button
+							isLink
+							onClick={ this.appendTagsToSubject }
+						>
+							[{ __( 'email', 'coblocks' ) }]
+						</Button>
+						<Button
+							isLink
+							onClick={ this.appendTagsToSubject }
+						>
+							[{ __( 'name', 'coblocks' ) }]
+						</Button></Fragment> }
+
 				/>
+
 			</Fragment>
 		);
 	}
@@ -271,95 +314,131 @@ class FormEdit extends Component {
 		return fieldEmailError && fieldEmailError.length > 0;
 	}
 
+	setTemplate( layout ) {
+		const { setAttributes } = this.props;
+		let submitButtonText;
+		map( TEMPLATE_OPTIONS, ( elem ) => {
+			if ( isEqual( elem.template, layout ) ) {
+				submitButtonText = elem.submitButtonText;
+			}
+		} );
+
+		this.setState( { template: layout } );
+		setAttributes( { submitButtonText } );
+	}
+
+	supportsExperimentalProps() {
+		let isSupported = true;
+		if ( typeof InnerBlocks.prototype.shouldComponentUpdate === 'undefined' ) {
+			isSupported = false;
+		}
+		return isSupported;
+	}
+
 	render() {
-		const {
-			className,
-		} = this.props;
+		const { className } = this.props;
 
 		const classes = classnames(
 			className,
 			'coblocks-form',
 		);
 
+		const showTemplateSelector = this.props.innerBlockCount === 0;
+
 		return (
 			<Fragment>
-				<InspectorControls>
-					<PanelBody title={ __( 'Form Settings', 'coblocks' ) }>
-						{ this.renderToAndSubjectFields() }
-						{ applyFilters( 'coblocks.advanced_forms_cta' ) }
-					</PanelBody>
-					<PanelBody
-						title={ __( 'Google reCAPTCHA', 'coblocks' ) }
-						initialOpen={ this.state.recaptchaSecretKey ? false : true }
-					>
-						<p>{ __( 'Add your reCAPTCHA site and secret keys to protect your form from spam.', 'coblocks' ) }</p>
-						<p>
-							<Fragment>
-								<ExternalLink href={ RETRIEVE_KEY_URL }>
-									{ this.state.recaptchaSiteKey === '' &&
-									this.state.recaptchaSecretKey === '' ?
-										__( 'Generate keys', 'coblocks' ) :
-										__( 'My keys', 'coblocks' ) }
-								</ExternalLink>
-								|&nbsp;
-								<ExternalLink href={ HELP_URL }>{ __( 'Get help', 'coblocks' ) }</ExternalLink>
-							</Fragment>
-						</p>
-						<TextControl
-							label={ __( 'Site Key', 'coblocks' ) }
-							value={ this.state.recaptchaSiteKey }
-							onChange={ value => this.setState( { recaptchaSiteKey: value } ) }
-							className="components-block-coblocks-form-recaptcha-key__custom-input"
-						/>
-						<TextControl
-							label={ __( 'Secret Key', 'coblocks' ) }
-							value={ this.state.recaptchaSecretKey }
-							onChange={ value => this.setState( { recaptchaSecretKey: value } ) }
-							className="components-block-coblocks-form-recaptcha-key__custom-input"
-						/>
-						<div className="components-base-control components-block-coblocks-form-recaptcha-buttons">
-							<Button
-								isPrimary
-								onClick={ this.saveRecaptchaKey }
-								disabled={
-									this.state.recaptchaSiteKey === '' ||
-									this.state.recaptchaSecretKey === ''
-								}
-							>
-								{ this.state.isSaving ? __( 'Saving', 'coblocks' ) : __( 'Save', 'coblocks' ) }
-							</Button>
-							{ this.state.recaptchaSiteKey !== '' &&
-								this.state.recaptchaSecretKey !== '' && (
+				{ ! showTemplateSelector && (
+					<InspectorControls>
+						<PanelBody title={ __( 'Form Settings', 'coblocks' ) }>
+							{ this.renderToAndSubjectFields() }
+							{ applyFilters( 'coblocks.advanced_forms_cta' ) }
+						</PanelBody>
+						<PanelBody
+							title={ __( 'Google reCAPTCHA', 'coblocks' ) }
+							initialOpen={ this.state.recaptchaSecretKey ? false : true }
+						>
+							<p>{ __( 'Add your reCAPTCHA site and secret keys to protect your form from spam.', 'coblocks' ) }</p>
+							<p>
 								<Fragment>
-										&nbsp;
+									<ExternalLink href={ RETRIEVE_KEY_URL }>
+										{ this.state.recaptchaSiteKey === '' &&
+											this.state.recaptchaSecretKey === '' ?
+											__( 'Generate keys', 'coblocks' ) :
+											__( 'My keys', 'coblocks' ) }
+									</ExternalLink>
+									|&nbsp;
+									<ExternalLink href={ HELP_URL }>{ __( 'Get help', 'coblocks' ) }</ExternalLink>
+								</Fragment>
+							</p>
+							<TextControl
+								label={ __( 'Site Key', 'coblocks' ) }
+								value={ this.state.recaptchaSiteKey }
+								onChange={ value => this.setState( { recaptchaSiteKey: value } ) }
+								className="components-block-coblocks-form-recaptcha-key__custom-input"
+							/>
+							<TextControl
+								label={ __( 'Secret Key', 'coblocks' ) }
+								value={ this.state.recaptchaSecretKey }
+								onChange={ value => this.setState( { recaptchaSecretKey: value } ) }
+								className="components-block-coblocks-form-recaptcha-key__custom-input"
+							/>
+							<div className="components-base-control components-block-coblocks-form-recaptcha-buttons">
+								<Button
+									isPrimary
+									onClick={ this.saveRecaptchaKey }
+									disabled={
+										this.state.recaptchaSiteKey === '' ||
+										this.state.recaptchaSecretKey === ''
+									}
+								>
+									{ this.state.isSaving ? __( 'Saving', 'coblocks' ) : __( 'Save', 'coblocks' ) }
+								</Button>
+								{ this.state.recaptchaSiteKey !== '' &&
+									this.state.recaptchaSecretKey !== '' && (
 									<Button
 										className="components-block-coblocks-form-recaptcha-key-remove__button"
 										isDefault
 										onClick={ this.removeRecaptchaKey }
-										disabled={
-											this.state.recaptchaSiteKey === '' ||
-												this.state.recaptchaSecretKey === ''
-										}
+										disabled={ this.state.recaptchaSiteKey === '' || this.state.recaptchaSecretKey === '' }
 									>
 										{ __( 'Remove', 'coblocks' ) }
 									</Button>
-								</Fragment>
-							) }
-						</div>
-					</PanelBody>
-				</InspectorControls>
+								) }
+							</div>
+						</PanelBody>
+					</InspectorControls>
+				) }
 				<div className={ classes }>
 					<InnerBlocks
+						__experimentalTemplateOptions={ TEMPLATE_OPTIONS }
+						__experimentalOnSelectTemplateOption={ ( chosenTemplate ) => {
+							if ( chosenTemplate === undefined ) {
+								chosenTemplate = TEMPLATE_OPTIONS[ 0 ].template;
+							}
+							this.setTemplate( chosenTemplate );
+						} }
+						__experimentalAllowTemplateOptionSkip
+						template={ this.supportsExperimentalProps() ? this.state.template : TEMPLATE_OPTIONS[ 0 ].template }
 						allowedBlocks={ ALLOWED_BLOCKS }
-						templateInsertUpdatesSelection={ false }
 						renderAppender={ () => null }
-						template={ FORM_TEMPLATE }
+						templateInsertUpdatesSelection={ false }
 					/>
-					<SubmitButton { ...this.props } />
+					{ ! showTemplateSelector && <SubmitButton { ...this.props } /> }
 				</div>
 			</Fragment>
 		);
 	}
 }
 
-export default FormEdit;
+const applyWithSelect = withSelect( ( select, props ) => {
+	const { getBlocks } = select( 'core/block-editor' );
+	const innerBlocks = getBlocks( props.clientId );
+
+	return {
+		// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
+		innerBlockCount: innerBlocks.length,
+		innerBlocks,
+	};
+} );
+
+export default compose( applyWithSelect )( FormEdit );

@@ -18,7 +18,7 @@ import { createHigherOrderComponent } from '@wordpress/compose';
  * @return {Object} Settings for the Settings Sidebar.
  */
 const Inspector = props => {
-	const allowedBlocks = [ 'core/heading', 'core/cover', 'core/button', 'core/list', 'core/quote' ];
+	const allowedBlocks = [ 'core/cover', 'core/button', 'core/list', 'core/quote' ];
 
 	// Display on the allowedBlocks only.
 	if ( ! allowedBlocks.includes( props.name ) ) {
@@ -28,7 +28,7 @@ const Inspector = props => {
 	}
 
 	// Show line height on appropriate blocks.
-	if ( ! [ 'core/heading', 'core/paragraph', 'core/cover', 'core/button' ].includes( props.name ) ) {
+	if ( ! [ 'core/paragraph', 'core/cover', 'core/button' ].includes( props.name ) ) {
 		props.attributes.textPanelLineHeight = true;
 	}
 
@@ -49,7 +49,7 @@ const Inspector = props => {
  * @return {Object} Filtered block settings.
  */
 function addAttributes( settings ) {
-	const allowedBlocks = [ 'core/heading', 'core/list', 'core/quote' ];
+	const allowedBlocks = [ 'core/list', 'core/quote' ];
 	// Use Lodash's assign to gracefully handle if attributes are undefined
 	if ( allowedBlocks.includes( settings.name ) ) {
 		settings.attributes = Object.assign( settings.attributes, ColorSettingsAttributes );
@@ -66,7 +66,7 @@ function addAttributes( settings ) {
  */
 const withInspectorControl = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-		const allowedBlocks = [ 'core/heading', 'core/list', 'core/quote' ];
+		const allowedBlocks = [ 'core/list', 'core/quote' ];
 		return (
 			<Fragment>
 				<BlockEdit { ...props } />

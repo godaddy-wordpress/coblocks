@@ -117,34 +117,34 @@ function coblocks_post_carousel( $posts, $attributes ) {
 				 */
 				(array) apply_filters(
 					'coblocks_post_carousel_settings',
-					[
+					array(
 						'slidesToScroll' => 1,
 						'arrow'          => true,
 						'slidesToShow'   => $attributes['columns'],
 						'infinite'       => true,
 						'adaptiveHeight' => false,
 						'draggable'      => true,
-						'responsive'     => [
-							[
+						'responsive'     => array(
+							array(
 								'breakpoint' => 1024,
-								'settings'   => [
+								'settings'   => array(
 									'slidesToShow' => 3,
-								],
-							],
-							[
+								),
+							),
+							array(
 								'breakpoint' => 600,
-								'settings'   => [
+								'settings'   => array(
 									'slidesToShow' => 2,
-								],
-							],
-							[
+								),
+							),
+							array(
 								'breakpoint' => 480,
-								'settings'   => [
+								'settings'   => array(
 									'slidesToShow' => 1,
-								],
-							],
-						],
-					]
+								),
+							),
+						),
+					)
 				),
 				true
 			)
@@ -235,13 +235,13 @@ function coblocks_post_carousel( $posts, $attributes ) {
  */
 function coblocks_get_post_carousel_info( $posts ) {
 
-	$formatted_posts = [];
+	$formatted_posts = array();
 
 	foreach ( $posts as $post ) {
 
 		$formatted_post = null;
 
-		$formatted_post['thumbnailURL'] = get_the_post_thumbnail_url( $post );
+		$formatted_post['thumbnailURL'] = get_the_post_thumbnail_url( $post, 'full' );
 		$formatted_post['date']         = esc_attr( get_the_date( 'c', $post ) );
 		$formatted_post['dateReadable'] = esc_html( get_the_date( '', $post ) );
 		$formatted_post['title']        = get_the_title( $post );
@@ -274,7 +274,7 @@ function coblocks_get_post_carousel_info( $posts ) {
  */
 function coblocks_get_rss_post_carousel_info( $posts ) {
 
-	$formatted_posts = [];
+	$formatted_posts = array();
 
 	foreach ( $posts as $post ) {
 
@@ -333,7 +333,7 @@ function coblocks_register_post_carousel_block() {
 	$metadata = json_decode( ob_get_clean(), true );
 
 	register_block_type(
-		$metadata['name'],
+		'coblocks/post-carousel',
 		array(
 			'attributes'      => $metadata['attributes'],
 			'render_callback' => 'coblocks_render_post_carousel_block',

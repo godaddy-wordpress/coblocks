@@ -272,7 +272,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	 */
 	public function test_render_field_name() {
 
-		$this->expectOutputRegex( '/<input type="text" id="name" name="field-name\[value\]" class="coblocks-field coblocks-field--name" required \/>/' );
+		$this->expectOutputRegex( '/<input type="text" id="name-2" name="field-name-2\[value\]" class="coblocks-field coblocks-field--name" required \/>/' );
 
 		$atts = [
 			'label'       => 'Name',
@@ -319,7 +319,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	 */
 	public function test_render_field_textarea() {
 
-		$this->expectOutputRegex( '/<textarea name="field-message\[value\]" id="message" class="coblocks-field coblocks-textarea" rows="20" ><\/textarea>/' );
+		$this->expectOutputRegex( '/<textarea name="field-message-2\[value\]" id="message-2" class="coblocks-field coblocks-textarea" rows="20" ><\/textarea>/' );
 
 		echo $this->coblocks_form->render_field_textarea( [], '' );
 
@@ -343,7 +343,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	 */
 	public function test_render_field_date() {
 
-		$this->expectOutputRegex( '/<input type="text" id="date" name="field-date\[value\]" class="coblocks-field coblocks-field--date"  \/>/' );
+		$this->expectOutputRegex( '/<input type="text" id="date-2" name="field-date-2\[value\]" class="coblocks-field coblocks-field--date"  \/>/' );
 
 		echo $this->coblocks_form->render_field_date( [], '' );
 
@@ -382,7 +382,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	 */
 	public function test_render_field_radio() {
 
-		$this->expectOutputRegex( '/<input type="radio" name="field-choose-one\[value\]" value="Option 2" class="radio"> Option 2/' );
+		$this->expectOutputRegex( '/<input type="radio" name="field-radio\[value\]" value="Option 2" class="radio"> Option 2/' );
 
 		echo $this->coblocks_form->render_field_radio(
 			[

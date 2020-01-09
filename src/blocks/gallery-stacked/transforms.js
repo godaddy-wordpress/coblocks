@@ -90,6 +90,15 @@ const transforms = {
 		},
 		{
 			type: 'block',
+			blocks: [ 'blockgallery/offset' ],
+			transform: ( attributes ) => (
+				createBlock( metadata.name, {
+					...GalleryTransforms( attributes ),
+				} )
+			),
+		},
+		{
+			type: 'block',
 			blocks: [ 'core/gallery' ],
 			transform: ( attributes ) => (
 				createBlock( metadata.name, {

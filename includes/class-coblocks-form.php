@@ -42,14 +42,24 @@ class CoBlocks_Form {
 	const GCAPTCHA_VERIFY_URL = 'https://www.google.com/recaptcha/api/siteverify';
 
 	/**
+	 * Default email subject line
+	 *
+	 * @var string
+	 */
+	public function default_subject() {
+		// translators: placeholder for email shortcode.
+		return sprintf( __( 'Form submission from [%1$s]', 'coblocks' ), 'email' );
+	}
+
+	/**
 	 * The Constructor.
 	 */
 	public function __construct() {
 
-		add_action( 'init', [ $this, 'register_settings' ] );
-		add_action( 'init', [ $this, 'register_form_blocks' ] );
+		add_action( 'init', array( $this, 'register_settings' ) );
+		add_action( 'init', array( $this, 'register_form_blocks' ) );
 
-		add_action( 'wp_enqueue_scripts', [ $this, 'form_recaptcha_assets' ] );
+		add_action( 'wp_enqueue_scripts', array( $this, 'form_recaptcha_assets' ) );
 
 	}
 
@@ -113,9 +123,9 @@ class CoBlocks_Form {
 			wp_localize_script(
 				'coblocks-google-recaptcha',
 				'coblocksFormBlockAtts',
-				[
+				array(
 					'recaptchaSiteKey' => $recaptcha_site_key,
-				]
+				)
 			);
 
 		}
@@ -129,12 +139,12 @@ class CoBlocks_Form {
 
 		register_block_type(
 			'coblocks/form',
-			[
-				'render_callback' => [ $this, 'render_form' ],
-			]
+			array(
+				'render_callback' => array( $this, 'render_form' ),
+			)
 		);
 
-		$form_blocks = [
+		$form_blocks = array(
 			'name',
 			'email',
 			'textarea',
@@ -145,16 +155,16 @@ class CoBlocks_Form {
 			'checkbox',
 			'website',
 			'hidden',
-		];
+		);
 
 		foreach ( $form_blocks as $form_block ) {
 
 			register_block_type(
 				"coblocks/field-${form_block}",
-				[
-					'parent'          => [ 'coblocks/form' ],
-					'render_callback' => [ $this, "render_field_${form_block}" ],
-				]
+				array(
+					'parent'          => array( 'coblocks/form' ),
+					'render_callback' => array( $this, "render_field_${form_block}" ),
+				)
 			);
 
 		}
@@ -241,8 +251,10 @@ class CoBlocks_Form {
 	 */
 	public function render_field_name( $atts ) {
 
+		static $name_count = 1;
+
 		$label            = isset( $atts['label'] ) ? $atts['label'] : __( 'Name', 'coblocks' );
-		$label_slug       = sanitize_title( $label );
+		$label_slug       = $name_count > 1 ? sanitize_title( $label . '-' . $name_count ) : sanitize_title( $label );
 		$required_attr    = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
 		$has_last_name    = ( isset( $atts['hasLastName'] ) && $atts['hasLastName'] );
 		$label_first_name = isset( $atts['labelFirstName'] ) ? $atts['labelFirstName'] : __( 'First', 'coblocks' );
@@ -250,7 +262,11 @@ class CoBlocks_Form {
 
 		ob_start();
 
-		$this->render_field_label( $atts, $label );
+		$this->render_field_label( $atts, $label, $name_count );
+
+		?>
+		<input type="hidden" id="name-field-id" name="name-field-id" class="coblocks-name-field-id" value="field-<?php echo esc_attr( $label_slug ); ?>" />
+		<?php
 
 		if ( $has_last_name ) {
 
@@ -258,17 +274,19 @@ class CoBlocks_Form {
 
 			<div class="coblocks-form__inline-fields">
 				<div class="coblocks-form__inline-field">
-					<input type="text" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value][first-name]" class="coblocks-field coblocks-field--name first" <?php echo esc_attr( $required_attr ); ?> />
+					<input type="text" id="<?php echo esc_attr( $label_slug ); ?>-firstname" name="field-<?php echo esc_attr( $label_slug ); ?>[value][first-name]" class="coblocks-field coblocks-field--name first" <?php echo esc_attr( $required_attr ); ?> />
 					<small class="coblocks-form__subtext"><?php echo esc_html( $label_first_name ); ?></small>
 				</div>
 
 				<div class="coblocks-form__inline-field">
-					<input type="text" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value][last-name]" class="coblocks-field coblocks-field--name last" <?php echo esc_attr( $required_attr ); ?> />
+					<input type="text" id="<?php echo esc_attr( $label_slug ); ?>-lastname" name="field-<?php echo esc_attr( $label_slug ); ?>[value][last-name]" class="coblocks-field coblocks-field--name last" <?php echo esc_attr( $required_attr ); ?> />
 					<small class="coblocks-form__subtext"><?php echo esc_html( $label_last_name ); ?></small>
 				</div>
 			</div>
 
 			<?php
+
+			$name_count++;
 
 			return ob_get_clean();
 
@@ -276,9 +294,11 @@ class CoBlocks_Form {
 
 		?>
 
-		<input type="text" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--name" <?php echo esc_attr( $required_attr ); ?> />
+		<input type="text" id="<?php echo esc_attr( $label_slug ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--name" <?php echo esc_attr( $required_attr ); ?> />
 
 		<?php
+
+		$name_count++;
 
 		return ob_get_clean();
 
@@ -303,6 +323,7 @@ class CoBlocks_Form {
 
 		?>
 
+		<input type="hidden" id="email-field-id" name="email-field-id" class="coblocks-email-field-id" value="field-<?php echo esc_attr( $label_slug ); ?>" />
 		<input type="email" id="<?php echo esc_attr( $label_slug ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--email" <?php echo esc_attr( $required_attr ); ?> />
 
 		<?php
@@ -320,19 +341,23 @@ class CoBlocks_Form {
 	 */
 	public function render_field_textarea( $atts ) {
 
+		static $textarea_count = 1;
+
 		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Message', 'coblocks' );
-		$label_slug    = sanitize_title( $label );
+		$label_slug    = $textarea_count > 1 ? sanitize_title( $label . '-' . $textarea_count ) : sanitize_title( $label );
 		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
 
 		ob_start();
 
-		$this->render_field_label( $atts, $label );
+		$this->render_field_label( $atts, $label, $textarea_count );
 
 		?>
 
 		<textarea name="field-<?php echo esc_attr( $label_slug ); ?>[value]" id="<?php echo esc_attr( $label_slug ); ?>" class="coblocks-field coblocks-textarea" rows="20" <?php echo esc_attr( $required_attr ); ?>></textarea>
 
 		<?php
+
+		$textarea_count++;
 
 		return ob_get_clean();
 
@@ -347,6 +372,8 @@ class CoBlocks_Form {
 	 */
 	public function render_field_date( $atts ) {
 
+		static $date_count = 1;
+
 		wp_enqueue_script(
 			'coblocks-datepicker',
 			CoBlocks()->asset_source( 'js' ) . 'coblocks-datepicker' . COBLOCKS_ASSET_SUFFIX . '.js',
@@ -358,18 +385,20 @@ class CoBlocks_Form {
 		wp_localize_jquery_ui_datepicker();
 
 		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Date', 'coblocks' );
-		$label_slug    = sanitize_title( $label );
+		$label_slug    = $date_count > 1 ? sanitize_title( $label . '-' . $date_count ) : sanitize_title( $label );
 		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
 
 		ob_start();
 
-		$this->render_field_label( $atts, $label );
+		$this->render_field_label( $atts, $label, $date_count );
 
 		?>
 
-		<input type="text" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--date" <?php echo esc_attr( $required_attr ); ?> />
+		<input type="text" id="<?php echo esc_attr( $label_slug ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--date" <?php echo esc_attr( $required_attr ); ?> />
 
 		<?php
+
+		$date_count++;
 
 		return ob_get_clean();
 
@@ -384,19 +413,23 @@ class CoBlocks_Form {
 	 */
 	public function render_field_phone( $atts ) {
 
+		static $phone_count = 1;
+
 		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Phone', 'coblocks' );
-		$label_slug    = sanitize_title( $label );
+		$label_slug    = $phone_count > 1 ? sanitize_title( $label . '-' . $phone_count ) : sanitize_title( $label );
 		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
 
 		ob_start();
 
-		$this->render_field_label( $atts, $label );
+		$this->render_field_label( $atts, $label, $phone_count );
 
 		?>
 
 		<input type="tel" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--telephone" <?php echo esc_attr( $required_attr ); ?> />
 
 		<?php
+
+		$phone_count++;
 
 		return ob_get_clean();
 
@@ -417,16 +450,19 @@ class CoBlocks_Form {
 
 		}
 
+		static $radio_count = 1;
+
 		$the_options = array_filter( $atts['options'] );
 
 		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Choose one', 'coblocks' );
-		$label_slug = sanitize_title( $label );
+		$label_desc = sanitize_title( $label ) !== 'choose-one' ? sanitize_title( $label ) : 'radio';
+		$label_slug = $radio_count > 1 ? sanitize_title( $label_desc . '-' . $radio_count ) : sanitize_title( $label_desc );
 
 		ob_start();
 
 		print( '<div class="coblocks-field">' );
 
-		$this->render_field_label( $atts, $label );
+		$this->render_field_label( $atts, $label, $radio_count );
 
 		if ( isset( $atts['isInline'] ) ) {
 
@@ -455,6 +491,8 @@ class CoBlocks_Form {
 
 		print( '</div>' );
 
+		$radio_count++;
+
 		return ob_get_clean();
 
 	}
@@ -474,14 +512,16 @@ class CoBlocks_Form {
 
 		}
 
+		static $select_count = 1;
+
 		$the_options = array_filter( $atts['options'] );
 
 		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Select', 'coblocks' );
-		$label_slug = sanitize_title( $label );
+		$label_slug = $select_count > 1 ? sanitize_title( $label . '-' . $select_count ) : sanitize_title( $label );
 
 		ob_start();
 
-		$this->render_field_label( $atts, $label );
+		$this->render_field_label( $atts, $label, $select_count );
 
 		printf(
 			'<select class="select coblocks-field" name="field-%1$s[value]">',
@@ -499,6 +539,8 @@ class CoBlocks_Form {
 		}
 
 		print( '</select>' );
+
+		$select_count++;
 
 		return ob_get_clean();
 
@@ -519,16 +561,18 @@ class CoBlocks_Form {
 
 		}
 
+		static $checkbox_count = 1;
+
 		$the_options = array_filter( $atts['options'] );
 
 		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Select', 'coblocks' );
-		$label_slug = sanitize_title( $label );
+		$label_slug = $checkbox_count > 1 ? sanitize_title( $label . '-' . $checkbox_count ) : sanitize_title( $label );
 
 		ob_start();
 
 		print( '<div class="coblocks-field">' );
 
-		$this->render_field_label( $atts, $label );
+		$this->render_field_label( $atts, $label, $checkbox_count );
 
 		if ( isset( $atts['isInline'] ) ) {
 
@@ -557,6 +601,8 @@ class CoBlocks_Form {
 
 		print( '</div>' );
 
+		$checkbox_count++;
+
 		return ob_get_clean();
 
 	}
@@ -570,19 +616,23 @@ class CoBlocks_Form {
 	 */
 	public function render_field_website( $atts ) {
 
+		static $website_count = 1;
+
 		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Website', 'coblocks' );
-		$label_slug    = sanitize_title( $label );
+		$label_slug    = $website_count > 1 ? sanitize_title( $label . '-' . $website_count ) : sanitize_title( $label );
 		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
 
 		ob_start();
 
-		$this->render_field_label( $atts, $label );
+		$this->render_field_label( $atts, $label, $website_count );
 
 		?>
 
 		<input type="url" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--website" <?php echo esc_attr( $required_attr ); ?> />
 
 		<?php
+
+		$website_count++;
 
 		return ob_get_clean();
 
@@ -597,21 +647,25 @@ class CoBlocks_Form {
 	 */
 	public function render_field_hidden( $atts ) {
 
+		static $hidden_count = 1;
+
 		$atts['hidden'] = true;
 
 		$value      = isset( $atts['value'] ) ? $atts['value'] : '';
 		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Hidden', 'coblocks' );
-		$label_slug = sanitize_title( $label );
+		$label_slug = $hidden_count > 1 ? sanitize_title( $label . '-' . $hidden_count ) : sanitize_title( $label );
 
 		ob_start();
 
-		$this->render_field_label( $atts, $label );
+		$this->render_field_label( $atts, $label, $hidden_count );
 
 		?>
 
 		<input type="hidden" value="<?php echo esc_attr( $value ); ?>" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--hidden" />
 
 		<?php
+
+		$hidden_count++;
 
 		return ob_get_clean();
 
@@ -620,15 +674,16 @@ class CoBlocks_Form {
 	/**
 	 * Generate the form field label.
 	 *
-	 * @param  array $atts Block attributes.
+	 * @param  array $atts        Block attributes.
 	 * @param  mixed $field_label Block content.
+	 * @param  int   $count       Number of times the field has been rendered in the form.
 	 *
 	 * @return mixed Form field label markup.
 	 */
-	public function render_field_label( $atts, $field_label ) {
+	public function render_field_label( $atts, $field_label, $count = 1 ) {
 
 		$label      = isset( $atts['label'] ) ? $atts['label'] : $field_label;
-		$label_slug = sanitize_title( $label );
+		$label_slug = $count > 1 ? sanitize_title( $label . '-' . $count ) : sanitize_title( $label );
 
 		/**
 		 * Filter the required text in the field label.
@@ -758,13 +813,14 @@ class CoBlocks_Form {
 
 		}
 
-		$post_id    = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
-		$post_title = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
+		$post_id        = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
+		$post_title     = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
+		$email_field_id = isset( $_POST['email-field-id'] ) ? esc_html( $_POST['email-field-id'] ) : 'field-email';
+		$name_field_id  = isset( $_POST['name-field-id'] ) ? esc_html( $_POST['name-field-id'] ) : 'field-name';
 
-		$to      = isset( $atts['to'] ) ? sanitize_email( $atts['to'] ) : get_option( 'admin_email' );
-		$subject = isset( $atts['subject'] ) ? sanitize_text_field( $atts['subject'] ) : $post_title;
+		$to = isset( $atts['to'] ) ? sanitize_email( $atts['to'] ) : get_option( 'admin_email' );
 
-		unset( $_POST['form-submit'], $_POST['_wp_http_referer'], $_POST['action'], $_POST['form-hash'], $_POST['coblocks-verify-email'] );
+		unset( $_POST['form-submit'], $_POST['_wp_http_referer'], $_POST['action'], $_POST['form-hash'], $_POST['coblocks-verify-email'], $_POST['email-field-id'], $_POST['name-field-id'] );
 
 		if ( isset( $_POST['g-recaptcha-token'] ) ) {
 
@@ -808,11 +864,10 @@ class CoBlocks_Form {
 		/**
 		 * Filter the email subject
 		 *
-		 * @param string  $subject Email subject.
-		 * @param array   $_POST   Submitted form data.
-		 * @param integer $post_id Current post ID.
+		 * @param string $subject Email subject.
+		 * @param array  $_POST   Submitted form data.
 		 */
-		$subject = (string) apply_filters( 'coblocks_form_email_subject', $subject, $_POST, $post_id );
+		$subject = (string) apply_filters( 'coblocks_form_email_subject', $this->setup_email_subject( $atts, $email_field_id, $name_field_id ), $_POST );
 
 		/**
 		 * Filter the form email content.
@@ -823,6 +878,8 @@ class CoBlocks_Form {
 		 */
 		$email_content = (string) apply_filters( 'coblocks_form_email_content', $this->email_content, $_POST, $post_id );
 
+		$reply_to = isset( $_POST[ $email_field_id ]['value'] ) ? esc_html( $_POST[ $email_field_id ]['value'] ) : esc_html( get_bloginfo( 'admin_email' ) );
+
 		/**
 		 * Filter the form email headers.
 		 *
@@ -832,18 +889,18 @@ class CoBlocks_Form {
 		 */
 		$email_headers = (array) apply_filters(
 			'coblocks_form_email_headers',
-			[
-				"Reply-To: {$_POST['field-email']['value']}",
-			],
+			array(
+				"Reply-To: {$reply_to}",
+			),
 			$_POST,
 			$post_id
 		);
 
-		add_filter( 'wp_mail_content_type', [ $this, 'enable_html_email' ] );
+		add_filter( 'wp_mail_content_type', array( $this, 'enable_html_email' ) );
 
 		$email = wp_mail( $to, $subject, $email_content, $email_headers );
 
-		remove_filter( 'wp_mail_content_type', [ $this, 'enable_html_email' ] );
+		remove_filter( 'wp_mail_content_type', array( $this, 'enable_html_email' ) );
 
 		/**
 		 * Fires when a form is submitted.
@@ -855,6 +912,66 @@ class CoBlocks_Form {
 		do_action( 'coblocks_form_submit', $_POST, $atts, $email );
 
 		return $email;
+
+	}
+
+	/**
+	 * Setup the email subject line, replacing any found shortcodes.
+	 * Note: [email] will be replaced with the value of field-email
+	 *       [name] will be replaced with the value of field-name etc.
+	 *
+	 * @param  array  $atts           Block attributes array.
+	 * @param  string $email_field_id Email field ID.
+	 * @param  string $name_field_id  Nane field ID.
+	 * @return string Email subject.
+	 */
+	private function setup_email_subject( $atts, $email_field_id, $name_field_id ) {
+
+		$subject = isset( $atts['subject'] ) ? sanitize_text_field( $atts['subject'] ) : self::default_subject();
+
+		preg_match_all( '/\[(.*?)\]/i', $subject, $matches );
+
+		if ( isset( $matches[1] ) ) {
+
+			array_walk(
+				$matches[1],
+				function( $match, $key ) use ( $matches, &$subject, &$email_field_id, &$name_field_id ) {
+					$slug_match = strtolower( str_replace( ' ', '', $match ) );
+
+					// phpcs:disable WordPress.Security.NonceVerification.Missing
+					if ( __( 'name', 'coblocks' ) === $slug_match ) {
+
+						if ( isset( $_POST[ $name_field_id ]['value'] ) ) {
+
+							$name_field_value = is_array( $_POST[ $name_field_id ]['value'] ) ? sanitize_text_field( implode( ' ', $_POST[ $name_field_id ]['value'] ) ) : sanitize_text_field( $_POST[ $name_field_id ]['value'] );
+							$value            = empty( $name_field_value ) ? $matches[0][ $key ] : $name_field_value;
+
+						} else {
+
+							$value = $matches[0][ $key ];
+
+						}
+					} elseif ( __( 'email', 'coblocks' ) === $slug_match ) {
+
+						$value = isset( $_POST[ $email_field_id ]['value'] ) ? sanitize_text_field( $_POST[ $email_field_id ]['value'] ) : $matches[0][ $key ];
+
+					}
+
+					/**
+					 * Filter the matched shortcode value.
+					 *
+					 * @param string  $value      Email content.
+					 * @param string  $slug_match Matched string.
+					 */
+					$replacement = (string) apply_filters( 'coblocks_form_shortcode_match', $value, $slug_match );
+
+					$subject = str_replace( $matches[0][ $key ], $replacement, $subject );
+				}
+			);
+
+		}
+
+		return $subject;
 
 	}
 
@@ -933,13 +1050,13 @@ class CoBlocks_Form {
 
 		$verify_token_request = wp_remote_post(
 			self::GCAPTCHA_VERIFY_URL,
-			[
+			array(
 				'timeout' => 30,
-				'body'    => [
+				'body'    => array(
 					'secret'   => get_option( 'coblocks_google_recaptcha_secret_key' ),
 					'response' => $recaptcha_token,
-				],
-			]
+				),
+			)
 		);
 
 		if ( is_wp_error( $verify_token_request ) ) {

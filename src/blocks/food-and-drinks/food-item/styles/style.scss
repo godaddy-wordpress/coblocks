@@ -1,4 +1,6 @@
-.wp-block-coblocks-food-item {
+$icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenFree);
+
+.wp-block-coblocks-food-item { 
 	flex-grow: 1;
 	margin-top: 2.75em;
 	width: 50%;
@@ -145,5 +147,47 @@
 		margin: 0.5em 0 0 0;
 		opacity: 0.7;
 		order: 2;
+	}
+
+	&__icon {
+		background-color: currentColor;
+		background-repeat: no-repeat;
+		background-size: cover;
+		display: inline-block;
+		height: 18px;
+		width: 18px;
+	}
+
+	&__attributes {
+		display: flex;
+		margin-left: 0.4em;
+	}
+
+	&__attribute {
+		background: none;
+		border:none;
+		padding:0;
+	}
+	
+	&__attribute.spicier {
+		margin-left: -0.25em !important;
+	}
+
+	@each $icon in $icons {
+		&__attribute--#{$icon} &__icon {
+			mask-image: url(images/food-attribute/#{$icon}.svg);
+
+			&:last-of-type {
+				margin-right: 0;
+			}
+		}
+
+		// IE 10+ Support
+		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+			&__attribute--#{$icon} &__icon {
+				background-image: url(images/food-attribute/#{$icon}.svg);
+				color: transparent !important;
+			}
+		}
 	}
 }

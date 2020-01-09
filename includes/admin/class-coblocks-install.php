@@ -28,7 +28,7 @@ class CoBlocks_Install {
 	public function register_defaults() {
 		if ( is_admin() ) {
 			if ( ! get_option( 'coblocks_date_installed' ) ) {
-				add_option( 'coblocks_date_installed', date( 'Y-m-d h:i:s' ) );
+				add_option( 'coblocks_date_installed', gmdate( 'Y-m-d h:i:s' ) );
 			}
 		}
 	}

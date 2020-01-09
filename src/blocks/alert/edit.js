@@ -26,7 +26,7 @@ class Edit extends Component {
 		const { attributes, setAttributes } = this.props;
 
 		// Convert is-{type}-alert to is-style-{type}.
-		// See: https://github.com/godaddy/coblocks/pull/781
+		// See: https://github.com/godaddy-wordpress/coblocks/pull/781
 		if ( /is-\w+-alert/.test( attributes.className ) ) {
 			let newClassName = attributes.className;
 
@@ -92,7 +92,7 @@ class Edit extends Component {
 					{ ( ! RichText.isEmpty( title ) || isSelected ) && (
 						<RichText
 							/* translators: placeholder text for input box */
-							placeholder={ __( 'Write title...', 'coblocks' ) }
+							placeholder={ __( 'Write title…', 'coblocks' ) }
 							value={ title }
 							className="wp-block-coblocks-alert__title"
 							onChange={ ( value ) => setAttributes( { title: value } ) }
@@ -101,7 +101,7 @@ class Edit extends Component {
 					) }
 					<RichText
 						/* translators: placeholder text for input box */
-						placeholder={ __( 'Write text...', 'coblocks' ) }
+						placeholder={ __( 'Write text…', 'coblocks' ) }
 						value={ value }
 						className="wp-block-coblocks-alert__text"
 						onChange={ ( value ) => setAttributes( { value: value } ) }

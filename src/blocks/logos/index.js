@@ -48,8 +48,8 @@ const settings = {
 		attributes: {
 			align: 'full',
 			images: [
-				{ url: '/wp-content/plugins/coblocks/dist/images/examples/logo-1.jpg', width: 420 },
-				{ url: '/wp-content/plugins/coblocks/dist/images/examples/logo-2.jpg', width: 340 },
+				{ url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Wordpress-Logo.svg/600px-Wordpress-Logo.svg.png', width: 420 },
+				{ url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/WordPress.svg/640px-WordPress.svg.png', width: 340 },
 			],
 		},
 	},

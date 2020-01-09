@@ -55,8 +55,8 @@ const settings = {
 			fullwidth: false,
 			gutter: 5,
 			images: [
-				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-6.jpg' },
-				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-2.jpg' },
+				{ index: 0, url: 'https://s.w.org/images/core/5.3/Windbuchencom.jpg' },
+				{ index: 1, url: 'https://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg' },
 			],
 		},
 	},

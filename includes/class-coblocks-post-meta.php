@@ -34,7 +34,7 @@ class CoBlocks_Post_Meta {
 			array(
 				'show_in_rest'  => true,
 				'single'        => true,
-				'auth_callback' => [ $this, 'auth_callback' ],
+				'auth_callback' => array( $this, 'auth_callback' ),
 			)
 		);
 
@@ -44,7 +44,7 @@ class CoBlocks_Post_Meta {
 			array(
 				'show_in_rest'  => true,
 				'single'        => true,
-				'auth_callback' => [ $this, 'auth_callback' ],
+				'auth_callback' => array( $this, 'auth_callback' ),
 			)
 		);
 
@@ -54,7 +54,7 @@ class CoBlocks_Post_Meta {
 			array(
 				'show_in_rest'  => true,
 				'single'        => true,
-				'auth_callback' => [ $this, 'auth_callback' ],
+				'auth_callback' => array( $this, 'auth_callback' ),
 			)
 		);
 
@@ -64,7 +64,7 @@ class CoBlocks_Post_Meta {
 			array(
 				'show_in_rest'  => true,
 				'single'        => true,
-				'auth_callback' => [ $this, 'auth_callback' ],
+				'auth_callback' => array( $this, 'auth_callback' ),
 			)
 		);
 	}

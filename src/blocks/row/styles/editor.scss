@@ -6,7 +6,7 @@
 	}
 
 	.wp-block-coblocks-row__inner.has-no-gutter {
-		> .editor-inner-blocks > .editor-block-list__layout > .wp-block > .editor-block-list__block-edit {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block > .block-editor-block-list__block-edit {
 			@include break-small() {
 				margin-left: -43px;
 				margin-right: -43px;
@@ -16,7 +16,7 @@
 
 	.wp-block[data-type="coblocks/row"][data-columns="1"] & &__inner {
 		.wp-block-coblocks-column__inner {
-			.editor-block-list__layout {
+			.block-editor-block-list__layout {
 				> .wp-block {
 					margin-left: auto;
 					margin-right: auto;
@@ -43,7 +43,7 @@
 		}
 	}
 
-	.wp-block-coblocks-row__inner > .editor-inner-blocks > .editor-block-list__layout {
+	.wp-block-coblocks-row__inner > .block-editor-inner-blocks > .block-editor-block-list__layout {
 		display: flex;
 		margin-left: -15px;
 		margin-right: -15px;
@@ -62,25 +62,25 @@
 
 			// Hide column dropzones if there is no room to drop background images.
 			&[data-background-dropzone="false"] {
-				> .editor-block-list__block-edit > div > .components-drop-zone {
+				> .block-editor-block-list__block-edit > div > .components-drop-zone {
 					display: none;
 				}
 			}
 
 			// Ensure the column drop zone is properly indexed.
-			> .editor-block-list__block-edit > div > .components-drop-zone {
+			> .block-editor-block-list__block-edit > div > .components-drop-zone {
 				z-index: 9999;
 			}
 
 			// The Columns block is a child of the Row block and a passthrough.
 			// Therefore it shouldn't add additional paddings and margins..
 			// so we reset these, and compensate for margins.
-			> .editor-block-list__block-edit > div > .editor-inner-blocks {
+			> .block-editor-block-list__block-edit > div > .block-editor-inner-blocks {
 				margin-bottom: -$block-padding - $block-padding;
 				margin-top: -$block-padding - $block-padding;
 			}
 
-			> .editor-block-list__block-edit {
+			> .block-editor-block-list__block-edit {
 				margin-bottom: 0;
 				margin-top: 0;
 
@@ -90,15 +90,15 @@
 				}
 			}
 
-			> .editor-block-list__block-edit
+			> .block-editor-block-list__block-edit
 				> div
 				> .wp-block-coblocks-column
 				> .wp-block-coblocks-column
 				> .wp-block-coblocks-column__inner
-				> .editor-inner-blocks
-				> .editor-block-list__layout
+				> .block-editor-inner-blocks
+				> .block-editor-block-list__layout
 				> .wp-block:first-of-type
-				> .editor-block-list__block-edit {
+				> .block-editor-block-list__block-edit {
 				margin-top: 0;
 
 				p {
@@ -106,39 +106,39 @@
 				}
 			}
 
-			> .editor-block-list__block-edit
+			> .block-editor-block-list__block-edit
 				> div
 				> .wp-block-coblocks-column
 				> .wp-block-coblocks-column
 				> .wp-block-coblocks-column__inner
-				> .editor-inner-blocks
-				> .editor-block-list__layout
+				> .block-editor-inner-blocks
+				> .block-editor-block-list__layout
 				> .wp-block
-				> .editor-block-list__block-edit {
+				> .block-editor-block-list__block-edit {
 				margin-bottom: 0;
 			}
 
 			// Zero out margin from the default block appender.
-			> .editor-block-list__block-edit
+			> .block-editor-block-list__block-edit
 				> div
 				> .wp-block-coblocks-column
 				> .wp-block-coblocks-column
 				> .wp-block-coblocks-column__inner
-				> .editor-inner-blocks
-				> .editor-block-list__layout
+				> .block-editor-inner-blocks
+				> .block-editor-block-list__layout
 				> div
-				> .editor-default-block-appender
-				.editor-default-block-appender__content {
+				> .block-editor-default-block-appender
+				.block-editor-default-block-appender__content {
 				margin-bottom: 0;
 				margin-top: 0;
 			}
 
 			// Make the column selected border dashed so we can tell it apart.
-			&.is-resizing > .editor-block-list__block-edit::before {
+			&.is-resizing > .block-editor-block-list__block-edit::before {
 				outline-width: 0 !important;
 			}
 
-			> .editor-block-list__block-edit > .editor-block-contextual-toolbar {
+			> .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar {
 				margin-left: -$border-width;
 			}
 
@@ -158,12 +158,12 @@
 	}
 
 	// Child blocks should be 100% wide.
-	.editor-inner-blocks {
+	.block-editor-inner-blocks {
 		width: 100%;
 	}
 
 	// This max-width is used to constrain the main editor column, not children.
-	.editor-block-list__block {
+	.wp-block {
 		max-width: none;
 	}
 
@@ -226,14 +226,14 @@
 .wp-block[data-type="coblocks/row"] {
 	background: transparent !important;
 
-	> .editor-block-list__block-edit .components-drop-zone {
+	> .block-editor-block-list__block-edit .components-drop-zone {
 		z-index: 159999;
 	}
 }
 
 .wp-block-coblocks-row {
 	.wp-block-coblocks-row__inner {
-		&.has-no-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/column"] {
+		&.has-no-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"] {
 			@include break-small() {
 				&:nth-child(odd) {
 					margin-right: 0;
@@ -253,7 +253,7 @@
 			}
 		}
 
-		&.has-small-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/column"] {
+		&.has-small-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"] {
 			@media (max-width: #{ ($break-small) }) {
 				&:not(:last-child) {
 					margin-bottom: $gutter--small * 2;
@@ -279,7 +279,7 @@
 			}
 		}
 
-		&.has-medium-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/column"] {
+		&.has-medium-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"] {
 			@media (max-width: #{ ($break-small) }) {
 				&:not(:last-child) {
 					margin-bottom: $gutter--medium * 2;
@@ -305,7 +305,7 @@
 			}
 		}
 
-		&.has-large-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/column"] {
+		&.has-large-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"] {
 			@media (max-width: #{ ($break-small) }) {
 				&:not(:last-child) {
 					margin-bottom: $gutter--large * 2;
@@ -331,7 +331,7 @@
 			}
 		}
 
-		&.has-huge-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/column"] {
+		&.has-huge-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"] {
 			@media (max-width: #{ ($break-small) }) {
 				&:not(:last-child) {
 					margin-bottom: $gutter--huge * 2;
@@ -363,22 +363,22 @@
 .wp-block-coblocks-row [data-type="coblocks/column"] {
 	background: transparent !important;
 
-	.editor-block-list__breadcrumb {
+	.block-editor-block-list__breadcrumb {
 		display: none;
 	}
 
 	&.is-hovered {
-		> .editor-block-list__block-edit::before {
+		> .block-editor-block-list__block-edit::before {
 			content: none;
 		}
 
-		.editor-block-list__breadcrumb {
+		.block-editor-block-list__breadcrumb {
 			display: none;
 		}
 	}
 
 	// Hide the block mover if the column is selected.
-	&.is-selected .editor-block-mover {
+	&.is-selected .block-editor-block-mover {
 		display: none !important;
 		opacity: 0 !important;
 	}
@@ -490,7 +490,7 @@ div[data-type="coblocks/row"].is-resizing .has-huge-gutter .components-resizable
 }
 
 .wp-block[data-type="coblocks/row"][data-columns="1"] {
-	.editor-block-list__block {
+	.wp-block {
 		max-width: 100% !important;
 	}
 }
@@ -498,11 +498,11 @@ div[data-type="coblocks/row"].is-resizing .has-huge-gutter .components-resizable
 // Our custom inserter.
 .wp-block-coblocks-column {
 	> .wp-block-coblocks-column__inner {
-		> .editor-inner-blocks {
-			> .editor-block-list__layout {
+		> .block-editor-inner-blocks {
+			> .block-editor-block-list__layout {
 				> div:not(.wp-block) {
-					> .editor-default-block-appender {
-						> .editor-inserter {
+					> .block-editor-default-block-appender {
+						> .block-editor-inserter {
 							display: none !important;
 							position: relative;
 						}
@@ -511,7 +511,7 @@ div[data-type="coblocks/row"].is-resizing .has-huge-gutter .components-resizable
 
 				> .block-list-appender {
 					> div:not(.wp-block) {
-						> .editor-default-block-appender {
+						> .block-editor-default-block-appender {
 							display: none !important;
 							position: relative;
 						}
@@ -522,8 +522,8 @@ div[data-type="coblocks/row"].is-resizing .has-huge-gutter .components-resizable
 	}
 
 	&.wp-block-coblocks-column-placeholder {
-		.editor-default-block-appender {
-			.editor-default-block-appender__content {
+		.block-editor-default-block-appender {
+			.block-editor-default-block-appender__content {
 				display: none;
 			}
 		}
@@ -534,7 +534,7 @@ div[data-type="coblocks/row"].is-resizing .has-huge-gutter .components-resizable
 div[data-type="coblocks/column"] {
 	.wp-block-coblocks-column {
 		> .wp-block-coblocks-column__inner {
-			> .editor-inserter {
+			> .block-editor-inserter {
 				display: block;
 				position: relative;
 
@@ -569,7 +569,7 @@ div[data-type="coblocks/column"] {
 		}
 
 		&.wp-block-coblocks-column-placeholder {
-			.editor-inserter {
+			.block-editor-inserter {
 				.components-button {
 					margin-top: 0;
 				}

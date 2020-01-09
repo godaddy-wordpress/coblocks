@@ -21,14 +21,11 @@ import './extensions/list-styles';
 import './extensions/button-styles';
 import './extensions/button-controls';
 import './extensions/image-styles';
+import './extensions/cover-styles';
 import './extensions/image-crop';
 
 // Formats
 import './formats';
-
-// Sidebars
-import './sidebars/block-manager';
-import './sidebars/block-manager/deprecated';
 
 // Block Gallery
 import './components/block-gallery';
@@ -68,6 +65,7 @@ import * as logos from './blocks/logos';
 import * as map from './blocks/map';
 import * as masonry from './blocks/gallery-masonry';
 import * as mediaCard from './blocks/media-card';
+import * as offset from './blocks/gallery-offset';
 import * as posts from './blocks/posts';
 import * as postCarousel from './blocks/post-carousel';
 import * as pricingTable from './blocks/pricing-table';
@@ -138,6 +136,7 @@ export const registerCoBlocksBlocks = () => {
 		map,
 		masonry,
 		mediaCard,
+		offset,
 		posts,
 		postCarousel,
 		pricingTable,

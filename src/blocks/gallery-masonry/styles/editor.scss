@@ -1,21 +1,10 @@
-.editor-block-list__block[data-type="coblocks/gallery-masonry"] {
+.wp-block[data-type="coblocks/gallery-masonry"] {
 	// Fixes issue where figures are set to display 100% if alignfull is set.
 	.coblocks-gallery--figure {
 		width: auto !important;
 
 		img {
 			vertical-align: bottom;
-		}
-	}
-
-	// Fixes issue where the outline does not fully render due to the outside nature of the core outline style applied.
-	.is-appender,
-	.components-coblocks-gallery-uploader {
-		border: 1px dashed $dark-gray-150;
-		outline: none;
-
-		&:hover {
-			border-color: $dark-gray-500;
 		}
 	}
 
@@ -27,7 +16,7 @@
 	}
 
 	// Captions.
-	.editor-rich-text {
+	.block-editor-rich-text {
 		bottom: 0;
 		left: 0;
 		max-height: 100%;
@@ -53,12 +42,12 @@
 		}
 	}
 
-	.editor-rich-text figcaption:not([data-is-placeholder-visible="true"]) {
+	.block-editor-rich-text figcaption:not([data-is-placeholder-visible="true"]) {
 		overflow: hidden;
 		position: relative !important;
 	}
 
-	.is-selected .editor-rich-text {
+	.is-selected .block-editor-rich-text {
 		// IE calculates this incorrectly, so leave it to modern browsers.
 		@supports (position: sticky) {
 			bottom: 4px;
@@ -85,7 +74,7 @@
 	}
 
 	// Tweak the position of the figcaption if Custom URL is set.
-	.components-coblocks-gallery-item__image-link + img + .editor-rich-text {
+	.components-coblocks-gallery-item__image-link + img + .block-editor-rich-text {
 		margin-bottom: 34px;
 	}
 }
@@ -105,5 +94,13 @@
 .has-lightbox {
 	.coblocks-gallery--figure:hover {
 		cursor: default !important;
+	}
+}
+
+// Needed until GB 6.9 is merged into core or backward support.
+// Hide the placeholder when not selected.
+.block-editor-block-list__block[data-type="coblocks/gallery-masonry"]:not(.is-selected):not(.is-focused)  {
+	div.components-form-file-upload {
+		display: none;
 	}
 }

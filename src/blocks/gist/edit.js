@@ -126,7 +126,7 @@ class Edit extends Component {
 							<PlainText
 								className="input-control"
 								value={ url }
-								placeholder={ __( 'Add GitHub Gist URL...', 'coblocks' ) }
+								placeholder={ __( 'Add GitHub Gist URL…', 'coblocks' ) }
 								onChange={ this.updateURL }
 							/>
 						</div>
