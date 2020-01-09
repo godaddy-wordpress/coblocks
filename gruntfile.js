@@ -82,7 +82,7 @@ module.exports = function( grunt ) {
 			all: {
 				expand: true,
 				cwd: 'src/js/',
-				src: '**/*.js',
+				src: [ '**/*.js', '!deprecations/*.js' ],
 				dest: 'dist/js/',
 				ext: '.min.js',
 			},
