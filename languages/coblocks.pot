@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-12-23T23:33:31+00:00\n"
+"POT-Creation-Date: 2020-01-09T17:39:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -1674,7 +1674,7 @@ msgstr ""
 #. block style
 #. translators: block style
 #: src/blocks/gallery-collage/inspector.js:91
-#: src/extensions/button-styles/index.js:31
+#: src/extensions/button-styles/index.js:30
 msgid "Shadow"
 msgstr ""
 
@@ -4251,7 +4251,7 @@ msgstr ""
 #. translators: block style
 #: src/blocks/share/index.js:60
 #: src/blocks/social-profiles/index.js:64
-#: src/extensions/button-styles/index.js:17
+#: src/extensions/button-styles/index.js:16
 msgid "Circular"
 msgstr ""
 
@@ -5073,7 +5073,7 @@ msgstr ""
 
 #. block style
 #. translators: block style
-#: src/extensions/button-styles/index.js:24
+#: src/extensions/button-styles/index.js:23
 msgid "3D"
 msgstr ""
 
