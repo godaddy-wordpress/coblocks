@@ -8,8 +8,7 @@ import domReady from '@wordpress/dom-ready';
  * Prevents the CoBlocks Buttons block from being insertable.
  */
 function deprecateCoBlocksButtonsSettings() {
-	const coreButtons = getBlockType( 'core/buttons ' );
-	console.log( coreButtons );
+	const coreButtons = getBlockType( 'core/buttons' );
 	if ( ! coreButtons ) {
 		return;
 	}
