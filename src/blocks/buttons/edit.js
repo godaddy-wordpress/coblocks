@@ -16,7 +16,8 @@ import Controls from './controls';
  */
 import { Component, Fragment } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
-import { createBlock } from '@wordpress/blocks';
+import { createBlock, getBlockType } from '@wordpress/blocks';
+import { select, dispatch } from '@wordpress/data';
 
 /**
  * Constants
@@ -35,12 +36,21 @@ const getCount = memoize( ( count ) => {
 } );
 
 class ButtonsEdit extends Component {
+	componentDidMount() {
+		const { clientId } = this.props;
+		if ( ! getBlockType( 'core/buttons' ) ) {
+			return;
+		}
+		const thisBlock = select( 'core/block-editor' ).getBlock( clientId );
+		const coreButtons = createBlock( 'core/buttons', { align: thisBlock.attributes.contentAlign }, thisBlock.innerBlocks );
+		dispatch( 'core/block-editor' ).replaceBlock( clientId, coreButtons );
+	}
+
 	render() {
 		const {
 			attributes,
 			className,
 			isSelected,
-			clientId,
 		} = this.props;
 
 		const {
@@ -55,12 +65,6 @@ class ButtonsEdit extends Component {
 				'is-stacked-on-mobile': isStackedOnMobile,
 			}
 		);
-
-		if ( wp.data.select( 'core/block-editor' ).canInsertBlockType( 'core/buttons', clientId ) ) {
-			const thisBlock = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId )[ 0 ];
-			const coreButtons = createBlock( 'core/buttons', { align: thisBlock.attributes.contentAlign }, thisBlock.innerBlocks );
-			wp.data.dispatch( 'core/block-editor' ).replaceBlocks( clientId, coreButtons );
-		}
 
 		return (
 			<Fragment>
