@@ -31,7 +31,7 @@ const Inspector = props => {
 		<InspectorControls>
 			<PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
 				<div className={ classnames(
-					'editor-block-styles',
+					'block-editor-block-styles',
 					'block-editor-block-styles',
 					'coblocks-editor-block-styles',
 				) } >
@@ -39,7 +39,7 @@ const Inspector = props => {
 						<div
 							key={ `style-${ style.name }` }
 							className={ classnames(
-								'editor-block-styles__item block-editor-block-styles__item',
+								'block-editor-block-styles__item block-editor-block-styles__item',
 								{ 'is-active': activeStyle === style },
 								`align-${ ( typeof attributes.alignment === 'undefined' || attributes.alignment === 'none' ) ? style.defaultAlign : attributes.alignment }`
 							) }
@@ -54,10 +54,10 @@ const Inspector = props => {
 							tabIndex="0"
 							aria-label={ style.label || style.name }
 						>
-							<div className="editor-block-styles__item-preview block-editor-block-styles__item-preview">
+							<div className="block-editor-block-styles__item-preview block-editor-block-styles__item-preview">
 								{ style.icon }
 							</div>
-							<div className="editor-block-styles__item-label block-editor-block-styles__item-label">
+							<div className="block-editor-block-styles__item-label block-editor-block-styles__item-label">
 								{ style.label || style.name }
 							</div>
 						</div>

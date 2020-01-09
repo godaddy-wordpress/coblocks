@@ -117,7 +117,7 @@ class Inspector extends Component {
 												} }
 											>
 											</Button>
-											<div className="editor-block-styles__item-label">
+											<div className="block-editor-block-styles__item-label">
 												{ label }
 											</div>
 										</div>

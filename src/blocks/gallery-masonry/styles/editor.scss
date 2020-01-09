@@ -16,7 +16,7 @@
 	}
 
 	// Captions.
-	.editor-rich-text {
+	.block-editor-rich-text {
 		bottom: 0;
 		left: 0;
 		max-height: 100%;
@@ -42,12 +42,12 @@
 		}
 	}
 
-	.editor-rich-text figcaption:not([data-is-placeholder-visible="true"]) {
+	.block-editor-rich-text figcaption:not([data-is-placeholder-visible="true"]) {
 		overflow: hidden;
 		position: relative !important;
 	}
 
-	.is-selected .editor-rich-text {
+	.is-selected .block-editor-rich-text {
 		// IE calculates this incorrectly, so leave it to modern browsers.
 		@supports (position: sticky) {
 			bottom: 4px;
@@ -74,7 +74,7 @@
 	}
 
 	// Tweak the position of the figcaption if Custom URL is set.
-	.components-coblocks-gallery-item__image-link + img + .editor-rich-text {
+	.components-coblocks-gallery-item__image-link + img + .block-editor-rich-text {
 		margin-bottom: 34px;
 	}
 }
@@ -99,8 +99,8 @@
 
 // Needed until GB 6.9 is merged into core or backward support.
 // Hide the placeholder when not selected.
-.editor-block-list__block[data-type="coblocks/gallery-masonry"]:not(.is-selected):not(.is-focused)  {
+.block-editor-block-list__block[data-type="coblocks/gallery-masonry"]:not(.is-selected):not(.is-focused)  {
 	div.components-form-file-upload {
 		display: none;
-	} 
+	}
 }
