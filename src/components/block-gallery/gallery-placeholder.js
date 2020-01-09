@@ -41,7 +41,6 @@ class GalleryPlaceholder extends Component {
 			attachmentCaptions, { id: newImage.id }
 		);
 
-		// if the attachment caption is updated
 		if ( attachment && ( attachment.caption !== newImage.caption ) ) {
 			return newImage.caption;
 		}
