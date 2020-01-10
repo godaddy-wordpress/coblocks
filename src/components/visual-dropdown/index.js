@@ -95,7 +95,7 @@ control.icon
 
 										</Button>
 										{ control.label &&
-										<div className="editor-block-styles__item-label">
+										<div className="block-editor-block-styles__item-label">
 											{ control.label }
 										</div>
 										}

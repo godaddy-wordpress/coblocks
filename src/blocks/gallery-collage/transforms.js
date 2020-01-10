@@ -35,10 +35,10 @@ const transforms = {
 			isMultiBlock: true,
 			blocks: [ 'core/image' ],
 			transform: ( attributes ) => {
-				const validImages = filter( attributes, ( { id, url } ) => id && url );
+				const validImages = filter( attributes, ( { id, url } ) => Number.isInteger( id ) && url );
 				if ( validImages.length > 0 ) {
 					return createBlock( metadata.name, {
-						images: validImages.map( ( { id, url, alt, caption }, index ) => ( { id, url, alt, caption, index } ) ),
+						images: validImages.map( ( { id, url, alt, caption } ) => ( { index: id, url, alt: alt || '', caption: caption || '' } ) ),
 						ids: validImages.map( ( { id } ) => id ),
 					} );
 				}
@@ -47,56 +47,27 @@ const transforms = {
 		},
 		{
 			type: 'prefix',
-			prefix: ':masonry',
+			prefix: ':collage',
 			transform: ( content ) => createBlock( metadata.name, { content } ),
 		},
 	],
-	to: [
-		{
-			type: 'block',
-			blocks: [ 'core/gallery' ],
-			transform: ( attributes ) => {
-				const newAttributes = Object.assign(
-					GalleryTransforms( attributes ),
-					{ images: attributes.images.filter( image => typeof image.id !== 'undefined' ) }
-				);
-				return createBlock( 'core/gallery', newAttributes );
-			},
-		},
-		{
-			type: 'block',
-			blocks: [ 'coblocks/gallery-carousel' ],
-			transform: ( attributes ) => {
-				const newAttributes = Object.assign(
-					GalleryTransforms( attributes ),
-					{ images: attributes.images.filter( image => typeof image.id !== 'undefined' ) }
-				);
-				return createBlock( 'coblocks/gallery-carousel', newAttributes );
-			},
-		},
-		{
-			type: 'block',
-			blocks: [ 'coblocks/gallery-masonry' ],
-			transform: ( attributes ) => {
-				const newAttributes = Object.assign(
-					GalleryTransforms( attributes ),
-					{ images: attributes.images.filter( image => typeof image.id !== 'undefined' ) }
-				);
-				return createBlock( 'coblocks/gallery-masonry', newAttributes );
-			},
-		},
-		{
-			type: 'block',
-			blocks: [ 'coblocks/gallery-offset' ],
-			transform: ( attributes ) => {
-				const newAttributes = Object.assign(
-					GalleryTransforms( attributes ),
-					{ images: attributes.images.filter( image => typeof image.id !== 'undefined' ) }
-				);
-				return createBlock( 'coblocks/gallery-offset', newAttributes );
-			},
-		},
-	],
+	to: ( function() {
+		return [
+			'coblocks/gallery-carousel',
+			'coblocks/gallery-masonry',
+			'coblocks/gallery-stacked',
+			'coblocks/gallery-offset',
+			'core/gallery',
+		].map( x => {
+			return {
+				type: 'block',
+				blocks: [ x ],
+				transform: ( attributes ) => createBlock( x, {
+					...GalleryTransforms( attributes ),
+				} ),
+			};
+		} );
+	}() ),
 };
 
 export default transforms;

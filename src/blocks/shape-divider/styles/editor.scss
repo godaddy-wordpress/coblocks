@@ -1,5 +1,5 @@
 .wp-block[data-type="coblocks/shape-divider"] {
-	.has-fixed-toolbar & .editor-block-list__block-edit::before {
+	.has-fixed-toolbar & .block-editor-block-list__block-edit::before {
 		display: none;
 	}
 
@@ -81,7 +81,7 @@
 }
 
 .editor-block-preview,
-.editor-block-styles__item-preview {
+.block-editor-block-styles__item-preview {
 	.wp-block-coblocks-shape-divider {
 		height: 60px !important;
 		transform: scale(1.45);

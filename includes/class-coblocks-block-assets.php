@@ -77,11 +77,11 @@ class CoBlocks_Block_Assets {
 		);
 
 		/**
-		 * Filters whether to load utilitiy styles.
+		 * Filters whether to load utility styles.
 		 *
-		 * @param bool $load_utility_styles whether the utility css should be loaded. Default true.
+		 * @param bool $load_utility_styles whether the utility css should be loaded. Default false.
 		 */
-		$load_utility_styles = (bool) apply_filters( 'coblocks_utility_styles_enabled', true );
+		$load_utility_styles = (bool) apply_filters( 'coblocks_utility_styles_enabled', false );
 
 		if ( $load_utility_styles ) {
 
@@ -127,7 +127,15 @@ class CoBlocks_Block_Assets {
 		 * @param string  $to      Admin email.
 		 * @param integer $post_id Current post ID.
 		 */
-		$email_to = (string) apply_filters( 'coblocks_form_default_email', get_option( 'admin_email' ), $post_id );
+		$email_to = (string) apply_filters( 'coblocks_form_default_email', get_option( 'admin_email' ), (int) $post_id );
+
+		/**
+		 * Filter to disable the typography controls
+		 *
+		 * @param bool    true Whether or not the controls are enabled.
+		 * @param integer $post_id Current post ID.
+		 */
+		$typography_controls_enabled = (bool) apply_filters( 'coblocks_typography_controls_enabled', true, (int) $post_id );
 
 		$form_subject = ( new CoBlocks_Form() )->default_subject();
 
@@ -142,6 +150,7 @@ class CoBlocks_Block_Assets {
 				'cropSettingsOriginalImageNonce' => wp_create_nonce( 'cropSettingsOriginalImageNonce' ),
 				'cropSettingsNonce'              => wp_create_nonce( 'cropSettingsNonce' ),
 				'customIcons'                    => $this->get_custom_icons(),
+				'typographyControlsEnabled'      => $typography_controls_enabled,
 			)
 		);
 
