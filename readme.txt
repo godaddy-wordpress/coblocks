@@ -120,13 +120,4 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Bug Fixes
-* Fix the [Form block template selector](https://github.com/godaddy-wordpress/coblocks/pull/1232) when the Gutenberg plugin is active
-* Fix issue where [gallery captions were resetting](https://github.com/godaddy-wordpress/coblocks/pull/1243)
-* Fix [custom links added to images](https://github.com/godaddy-wordpress/coblocks/pull/1239) in the Offset Gallery block
-
-### Misc
-* [Replace legacy "editor-" classes](https://github.com/godaddy-wordpress/coblocks/pull/1242) with "block-editor-"
-* Use the new InnerBlocks [renderAppender on the Row block](https://github.com/godaddy-wordpress/coblocks/pull/1244)
-* Break [each icon keyword into its own i18n wrapper](https://github.com/godaddy-wordpress/coblocks/pull/1225)
-* [Add change log contents to GitHub release notes](https://github.com/godaddy-wordpress/coblocks/pull/1240)
-* [Add media-card block transform tests](https://github.com/godaddy-wordpress/coblocks/pull/1218)
+* Fix gallery blocks not rendering properly within the editor
