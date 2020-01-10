@@ -15,7 +15,7 @@
 	}
 
 	&--open &__title {
-		border-radius: $accordion-border-radius $accordion-border-radius 0 0;
+		border-radius: 4px 4px 0 0;
 	}
 
 	// Set proper margin for the first and last item within the accordion item for < Gutenberg 6.3.

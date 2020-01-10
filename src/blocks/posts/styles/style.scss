@@ -1,6 +1,6 @@
 .wp-block-coblocks-posts {
 	& + & {
-		margin-top: map-get($margin, 2);
+		margin-top: map-get($spacing, 2);
 	}
 
 	&.columns-1 > div:first-child {

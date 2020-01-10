@@ -1,5 +1,5 @@
 .wp-block-coblocks-accordion-item {
-	border-radius: $accordion-border-radius;
+	border-radius: 4px;
 	margin: 0 0 1em;
 
 	p:first-of-type {
@@ -12,12 +12,12 @@
 
 	&__title {
 		background: hsla(240, 5%, 57%, 0.1);
-		border-radius: $accordion-border-radius;
+		border-radius: 4px;
 		padding: 10px 15px;
 		position: relative;
 
 		&::after {
-			border-radius: $accordion-border-radius;
+			border-radius: 4px;
 			bottom: 0;
 			content: "";
 			left: 0;
@@ -38,13 +38,13 @@
 	}
 
 	details[open] summary {
-		border-radius: $accordion-border-radius $accordion-border-radius 0 0;
+		border-radius: 4px 4px 0 0;
 	}
 
 	&__content {
 		border: 1px solid hsla(240, 5%, 57%, 0.1);
 		border-top: 0;
-		border-radius: 0 0 $accordion-border-radius $accordion-border-radius;
+		border-radius: 0 0 4px 4px;
 		padding: 15px 20px;
 
 		> div {

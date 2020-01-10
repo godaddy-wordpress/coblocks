@@ -5,7 +5,7 @@
 @import "styles/editor/core/mixins";
 
 // Margin Utility
-$margin: (
+$spacing: (
 	0: 0,
 	1: 0.5em,
 	2: 1em,
@@ -15,35 +15,6 @@ $margin: (
 	6: 3em,
 	7: 3.5em,
 	8: 4em
-);
-
-// Padding Utility
-$padding: (
-	0: 0,
-	1: 0.5em,
-	2: 1em,
-	3: 1.5em,
-	4: 2em,
-	5: 2.5em,
-	6: 3em,
-	7: 3.5em,
-	8: 4em
-);
-
-$padding__sm: (
-	0: 0,
-	1: 0.5em,
-	2: 1em,
-	3: 1.5em,
-	4: 1.75em
-);
-
-$padding__lg: (
-	0: 0,
-	1: 1em,
-	2: 1.5em,
-	3: 2em,
-	4: 2.75em
 );
 
 // Gutters
@@ -52,11 +23,8 @@ $gutter--medium: 22px;
 $gutter--large: 33px;
 $gutter--huge: 60px;
 
-// Accordion
-$accordion-border-radius: 4px;
-$accordion-background: #f2f2f2;
-
-// Alert
+// Colors
+$color-twitter: #1da1f2;
 $alert-default-background-color: #d6efee;
 $alert-default-color: #094264;
 $alert-warning-background-color: #fbe7dd;
@@ -66,28 +34,10 @@ $alert-error-color: #8b343c;
 $alert-success-background-color: #d0eac4;
 $alert-success-color: #154a28;
 
-// Click to Tweet
-$twitter: #1da1f2;
 
 // Media Card
 $break-small-twentynineteen: 1024px;
 $break-small-twentynineteen--min: 768px;
 $break-small-mediacard: 660px;
 
-@mixin break-small-mediacard() {
-	@media (min-width: #{ ($break-small-mediacard) }) {
-		@content;
-	}
-}
 
-// Get all gallery blocks
-@mixin coblocksGalleryEditorBlocks {
-	.wp-block[data-type="coblocks/offset"],
-	.wp-block[data-type="coblocks/masonry"],
-	.wp-block[data-type="coblocks/stacked"],
-	.wp-block[data-type="coblocks/carousel"],
-	.wp-block[data-type="coblocks/thumbnails"],
-	.wp-block[data-type="coblocks/auto-height"] {
-		@content;
-	}
-}

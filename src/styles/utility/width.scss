@@ -22,6 +22,10 @@
 	width: 14.285%;
 }
 
+.w-full {
+	width: 100%;
+}
+
 // 600px +
 @include break-small() {
 	.sm\:w-1\/3 {

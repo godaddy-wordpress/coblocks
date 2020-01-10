@@ -9,7 +9,7 @@
 
 .slick-list {
 	display: block;
-	margin: 0 map-get($margin, -2);
+	margin: 0 map-get($spacing, -2);
 	overflow: hidden;
 	padding: 0;
 	position: relative;
@@ -55,7 +55,7 @@
 	display: none;
 	float: left;
 	height: auto;
-	margin: 0 map-get($margin, 2);
+	margin: 0 map-get($spacing, 2);
 	min-height: 1px;
 	outline: none;
 }
@@ -108,12 +108,12 @@
 	cursor: pointer;
 	display: inline-block;
 	font-size: initial;
-	height: map-get($margin, 8);
+	height: map-get($spacing, 8);
 	line-height: 0;
 	outline: none;
 	padding: 0.5em;
 	position: absolute;
-	width: map-get($margin, 8);
+	width: map-get($spacing, 8);
 
 	&:hover,
 	&:focus {

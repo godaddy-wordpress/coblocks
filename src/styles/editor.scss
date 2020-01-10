@@ -1,7 +1,5 @@
-@import "style/mixins";
-
-// Common
 @import "../common";
+@import "style/mixins";
 
 // Style various inspector region and block toolbar controls
 @import "editor/is-transient";
@@ -16,108 +14,108 @@
 // @todo, this should be moved into the editor styles.
 .editor-styles-wrapper {
 	.m {
-		@include utilities($margin, "margin", "-");
+		@include utilities($spacing, "margin", "-");
 	}
 	.mt {
-		@include utilities($margin, "margin-top", "-");
+		@include utilities($spacing, "margin-top", "-");
 	}
 	.mb {
-		@include utilities($margin, "margin-bottom", "-");
+		@include utilities($spacing, "margin-bottom", "-");
 	}
 	.mr {
-		@include utilities($margin, "margin-right", "-");
+		@include utilities($spacing, "margin-right", "-");
 	}
 	.ml {
-		@include utilities($margin, "margin-left", "-");
+		@include utilities($spacing, "margin-left", "-");
 	}
 
 	// 600px +
 	@include break-small() {
 		.sm\:m {
-			@include utilities($margin, "margin", "-");
+			@include utilities($spacing, "margin", "-");
 		}
 
 		.sm\:mt {
-			@include utilities($margin, "margin-top", "-");
+			@include utilities($spacing, "margin-top", "-");
 		}
 
 		.sm\:mb {
-			@include utilities($margin, "margin-bottom", "-");
+			@include utilities($spacing, "margin-bottom", "-");
 		}
 
 		.sm\:mr {
-			@include utilities($margin, "margin-right", "-");
+			@include utilities($spacing, "margin-right", "-");
 		}
 
 		.sm\:ml {
-			@include utilities($margin, "margin-left", "-");
+			@include utilities($spacing, "margin-left", "-");
 		}
 	}
 
 	// 782px+
 	@include break-medium() {
 		.md\:m {
-			@include utilities($margin, "margin", "-");
+			@include utilities($spacing, "margin", "-");
 		}
 
 		.md\:mt {
-			@include utilities($margin, "margin-top", "-");
+			@include utilities($spacing, "margin-top", "-");
 		}
 
 		.md\:mb {
-			@include utilities($margin, "margin-bottom", "-");
+			@include utilities($spacing, "margin-bottom", "-");
 		}
 
 		.md\:mr {
-			@include utilities($margin, "margin-right", "-");
+			@include utilities($spacing, "margin-right", "-");
 		}
 
 		.md\:ml {
-			@include utilities($margin, "margin-left", "-");
+			@include utilities($spacing, "margin-left", "-");
 		}
 	}
 
 	// 1280px+
 	@include break-wide() {
 		.lg\:m {
-			@include utilities($margin, "margin", "-");
+			@include utilities($spacing, "margin", "-");
 		}
 
 		.lg\:mt {
-			@include utilities($margin, "margin-top", "-");
+			@include utilities($spacing, "margin-top", "-");
 		}
 
 		.lg\:mb {
-			@include utilities($margin, "margin-bottom", "-");
+			@include utilities($spacing, "margin-bottom", "-");
 		}
 
 		.lg\:mr {
-			@include utilities($margin, "margin-right", "-");
+			@include utilities($spacing, "margin-right", "-");
 		}
 
 		.lg\:ml {
-			@include utilities($margin, "margin-left", "-");
+			@include utilities($spacing, "margin-left", "-");
 		}
 	}
 
 	.p {
-		@include utilities($padding, "padding", "-");
+		@include utilities($spacing, "padding", "-");
 	}
 
 	.pt {
-		@include utilities($padding, "padding-top", "-");
+		@include utilities($spacing, "padding-top", "-");
 	}
 
 	.pr {
-		@include utilities($padding, "padding-right", "-");
+		@include utilities($spacing, "padding-right", "-");
 	}
 
 	.pb {
-		@include utilities($padding, "padding-bottom", "-");
+		@include utilities($spacing, "padding-bottom", "-");
 	}
 
 	.pl {
-		@include utilities($padding, "padding-left", "-");
+		@include utilities($spacing, "padding-left", "-");
 	}
 }
 
@@ -184,20 +182,20 @@
 }
 
 .wp-block[data-align="full"] > .block-editor-block-list__block-edit [data-block] > div > .columns {
-	padding-left: map-get($padding, 2);
-	padding-right: map-get($padding, 2);
+	padding-left: map-get($spacing, 2);
+	padding-right: map-get($spacing, 2);
 
 	@media (min-width: 480px) {
-		padding-left: map-get($padding, 3);
-		padding-right: map-get($padding, 3);
+		padding-left: map-get($spacing, 3);
+		padding-right: map-get($spacing, 3);
 	}
 
 	&.columns-3,
 	&.columns-4 {
 		// 1280px+
 		@include break-medium() {
-			padding-left: map-get($padding, 4);
-			padding-right: map-get($padding, 4);
+			padding-left: map-get($spacing, 4);
+			padding-right: map-get($spacing, 4);
 		}
 	}
 }
