@@ -1,7 +1,7 @@
 /**
  * External Dependencies
  */
-import { every, forEach, map } from 'lodash';
+import { every, forEach, map, find } from 'lodash';
 
 /**
  * Internal dependencies
@@ -22,11 +22,49 @@ class GalleryPlaceholder extends Component {
 		super( ...arguments );
 		this.onSelectImages = this.onSelectImages.bind( this );
 		this.onUploadError = this.onUploadError.bind( this );
+
+		this.state = {
+			attachmentCaptions: null,
+		};
 	}
 
-	onSelectImages( images ) {
+	selectCaption( newImage, images, attachmentCaptions ) {
+		const currentImage = find( images, { id: newImage.id.toString() } ) ||	find( images, { id: newImage.id } );
+
+		const currentImageCaption = currentImage ? currentImage.caption : newImage.caption;
+
+		if ( ! attachmentCaptions ) {
+			return currentImageCaption;
+		}
+
+		const attachment = find(
+			attachmentCaptions, { id: newImage.id }
+		);
+
+		if ( attachment && ( attachment.caption !== newImage.caption ) ) {
+			return newImage.caption;
+		}
+
+		return currentImageCaption;
+	}
+
+	onSelectImages( newImages ) {
+		const { images } = this.props.attributes;
+		const { attachmentCaptions } = this.state;
+
+		this.setState(
+			{
+				attachmentCaptions: newImages.map( ( newImage ) => ( {
+					id: newImage.id,
+					caption: newImage.caption,
+				} ) ),
+			}
+		);
 		this.props.setAttributes( {
-			images: images.map( ( image ) => helper.pickRelevantMediaFiles( image ) ),
+			images: newImages.map( ( image ) => ( {
+				...helper.pickRelevantMediaFiles( image ),
+				caption: this.selectCaption( image, images, attachmentCaptions ),
+			} ) ),
 		} );
 	}
 

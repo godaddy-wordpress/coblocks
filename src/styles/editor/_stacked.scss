@@ -1,15 +1,15 @@
 @media (max-width: $break-small) {
 	div[class*="wp-block-coblocks-"] {
 		&.is-stacked-on-mobile {
-			> .editor-inner-blocks {
-				> .editor-block-list__layout {
+			> .block-editor-inner-blocks {
+				> .block-editor-block-list__layout {
 					flex-direction: column;
 
 					> .wp-block {
 						width: 100% !important;
 
 						// Hide the vertical resizer on mobile
-						> .editor-block-list__block-edit {
+						> .block-editor-block-list__block-edit {
 							> div {
 								.components-resizable-box__container {
 									> span,

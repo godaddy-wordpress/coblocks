@@ -18,6 +18,7 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 -   Buttons Block
 -   Carousel Gallery Block
 -   Click to Tweet Block
+-   Collage Gallery Block
 -   Dynamic Separator Block
 -   Features Block
 -   Food & Drinks Block
@@ -31,6 +32,9 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 -   Map Block
 -   Masonry Gallery Block
 -   Media Card Block
+-   Offset Gallery Block
+-   Post Carousel Block
+-   Posts Block
 -   Pricing Table Block
 -   Resizable Row/Columns Blocks
 -   Services Block
@@ -50,6 +54,36 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 
 1. You'll need to install the [Gutenberg](https://wordpress.org/plugins/gutenberg/) plugin if you are not running WordPress 5.0+
 2. Download CoBlocks from the [WordPress plugin directory](https://wordpress.org/plugins/coblocks/).
+
+### Advanced Controls
+
+Disable CoBlocks utility styes with an optional filter.
+```php
+/**
+ * Disable block utility styles.
+ */
+add_filter( 'coblocks_utility_styles_enabled', '__return_false' );
+```
+
+Disable sending of email upon Form block submission.
+```php
+/**
+ * Disable form submission emails.
+ */
+add_filter( 'coblocks_form_disable_emails', '__return_true' );
+
+/**
+ * Set a custom success message to mimic a successful form submission
+ *
+ * @return string Form submission success message
+ */
+function coblocks_form_sent_message() {
+
+	return __( 'Your message was sent.', 'textdomain' );
+
+}
+add_filter( 'coblocks_form_sent_notice', 'coblocks_form_sent_message' );
+```
 
 ## Development
 

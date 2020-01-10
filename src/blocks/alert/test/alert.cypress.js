@@ -69,28 +69,28 @@ describe( 'Test CoBlocks Alert Block', function() {
 
     helpers.openSettingsPanel( 'Styles' );
 
-    cy.get( '.editor-block-styles__item-label' )
+    cy.get( '.block-editor-block-styles__item-label' )
       .contains( 'Info' )
       .click();
 
     cy.get( '.wp-block-coblocks-alert' )
       .should( 'have.class', 'is-style-info' );
 
-    cy.get( '.editor-block-styles__item-label' )
+    cy.get( '.block-editor-block-styles__item-label' )
       .contains( 'Success' )
       .click();
 
     cy.get( '.wp-block-coblocks-alert' )
       .should( 'have.class', 'is-style-success' );
 
-    cy.get( '.editor-block-styles__item-label' )
+    cy.get( '.block-editor-block-styles__item-label' )
       .contains( 'Warning' )
       .click();
 
     cy.get( '.wp-block-coblocks-alert' )
       .should( 'have.class', 'is-style-warning' );
 
-    cy.get( '.editor-block-styles__item-label' )
+    cy.get( '.block-editor-block-styles__item-label' )
       .contains( 'Error' )
       .click();
 

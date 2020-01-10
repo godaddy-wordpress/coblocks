@@ -72,14 +72,43 @@
 			}
 		}
 
-		&.previous::after {
-			left: -1px;
-			mask-image: url(images/lightbox/arrow-left.svg);
+		&.previous {
+			width: 62px;
+			height: 62px;
+			&::after {
+				width: 32px;
+				height: 32px;
+				left: -1px;
+				mask-image: url(images/lightbox/arrow-left.svg);
+			}
 		}
 
-		&.next::after {
-			mask-image: url(images/lightbox/arrow-right.svg);
-			right: -1px;
+		&.next {
+			width: 62px;
+			height: 62px;
+			&::after{
+				width: 32px;
+				height: 32px;
+				mask-image: url(images/lightbox/arrow-right.svg);
+				right: -1px;
+			}
+		}
+
+		// IE 10+ Support
+		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+
+			&.previous::after{
+				background-image: url(images/lightbox/arrow-left.svg);
+				color: transparent !important;
+				background-color: transparent !important;
+			}
+
+			&.next::after {
+				background-image:  url(images/lightbox/arrow-right.svg);
+				color: transparent !important;
+				background-color: transparent !important;
+
+			}
 		}
 	}
 
