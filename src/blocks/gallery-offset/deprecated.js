@@ -106,11 +106,12 @@ const deprecatedCustomImageLinks = ( { attributes, className } ) => {
 };
 
 //prepare attributes
-const deprecatedAttributes = { ...GalleryAttributes, ...metadata.attributes };
+const clonedAttributes = JSON.parse( JSON.stringify( GalleryAttributes ) );
+Object.assign( clonedAttributes.images.query.imgLink, { source: 'attribute', selector: 'a', attribute: 'href' } );
 
 const deprecated = [
 	{
-		attributes: deprecatedAttributes,
+		attributes: { ...clonedAttributes, ...metadata.attributes },
 		save: deprecatedCustomImageLinks,
 	},
 ];
