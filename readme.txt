@@ -6,7 +6,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 1.18.0
+Stable tag: 1.19.3
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,7 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Buttons Block
 * Carousel Gallery Block
 * Click to Tweet Block
+* Collage Gallery Block
 * Dynamic Separator Block
 * Features Block
 * Food & Drinks Block
@@ -47,6 +48,9 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Map Block
 * Masonry Gallery Block
 * Media Card Block
+* Offset Gallery Block
+* Post Carousel Block
+* Posts Block
 * Pricing Table Block
 * Resizable Row/Columns Blocks
 * Services Block
@@ -115,23 +119,5 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-### Enhancements
-* Introduce [Offset Gallery](https://github.com/godaddy-wordpress/coblocks/pull/1144) block 🎉
-* Allow [dynamic subject lines](https://github.com/godaddy-wordpress/coblocks/pull/1017) with Form block submissions
-* Use consistent [styling for the next and previous](https://github.com/godaddy-wordpress/coblocks/pull/1166) buttons in the Carousel block and Lightbox
-* Add [keyboard shortcuts](https://github.com/godaddy-wordpress/coblocks/pull/1170) for navigating images in a lightbox
-* Introduce [end-to-end testing](https://github.com/godaddy-wordpress/coblocks/pull/1139) using Cypress
-* Add [Lightbox functionality to the Carousel block](https://github.com/godaddy-wordpress/coblocks/pull/1165)
-* [Remove minimum height limitation](https://github.com/godaddy-wordpress/coblocks/pull/1167) on the Carousel block
-* New shared component: [Option Selector Control](https://github.com/godaddy-wordpress/coblocks/pull/1163)
-* Add [Form block layout templates](https://github.com/godaddy-wordpress/coblocks/pull/1128)
-
 ### Bug Fixes
-* Use [descriptive element name](https://github.com/godaddy-wordpress/coblocks/pull/1023) for Form block radio buttons
-
-### Misc
-* [Cleanup CoBlocks options](https://github.com/godaddy-wordpress/coblocks/pull/1172) from database on uninstall
-* [Generate translation files on master changes](https://github.com/godaddy-wordpress/coblocks/pull/1164)
-* [Create CONTRIBUTORS.md](https://github.com/godaddy-wordpress/coblocks/pull/1158)
-* Update links to point at the [GoDaddy WordPress GitHub Organization](https://github.com/godaddy-wordpress/coblocks/pull/1159)
-* Update [contributor callout](https://github.com/godaddy-wordpress/coblocks/pull/1126) on README
+* Fix gallery blocks not rendering properly within the editor

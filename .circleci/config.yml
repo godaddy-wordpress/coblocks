@@ -40,15 +40,40 @@ version: 2.1
 jobs:
   php56:
     docker:
-      - image: circleci/php:5.6
+      - image: circleci/php:5.6-node
       - image: circleci/mysql:5.7
     steps:
       - checkout
+      - run:
+          name: Disable xdebug PHP extension
+          command: sudo rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
       - run:
           name: "Setup Environment Variables"
           command: |
             echo "export PATH=$HOME/.composer/vendor/bin:$PATH" >> $BASH_ENV
             source /home/circleci/.bashrc
+      - run:
+          name: Update npm
+          command: sudo npm install -g npm@latest
+      - restore_cache:
+          key: php56-build-dependency-cache--{{ checksum "package.json" }}
+      - run:
+          name: Install node packages
+          command: npm install
+      - save_cache:
+          key: php56-build-dependency-cache--{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Install WPCLI
+          command: |
+            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+            chmod +x wp-cli.phar
+            sudo mv wp-cli.phar /usr/local/bin/wp
+      - run:
+          name: Build the plugin
+          command: |
+            ./node_modules/.bin/grunt build
       - run:
           name: "Install Dependencies"
           command: |
@@ -73,15 +98,40 @@ jobs:
 
   php72:
     docker:
-      - image: circleci/php:7.2
+      - image: circleci/php:7.2-node
       - image: circleci/mysql:5.7
     steps:
       - checkout
+      - run:
+          name: Disable xdebug PHP extension
+          command: sudo rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
       - run:
           name: "Setup Environment Variables"
           command: |
             echo "export PATH=$HOME/.composer/vendor/bin:$PATH" >> $BASH_ENV
             source /home/circleci/.bashrc
+      - run:
+          name: Update npm
+          command: sudo npm install -g npm@latest
+      - restore_cache:
+          key: php72-build-dependency-cache--{{ checksum "package.json" }}
+      - run:
+          name: Install node packages
+          command: npm install
+      - save_cache:
+          key: php72-build-dependency-cache--{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Install WPCLI
+          command: |
+            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+            chmod +x wp-cli.phar
+            sudo mv wp-cli.phar /usr/local/bin/wp
+      - run:
+          name: Build the plugin
+          command: |
+            ./node_modules/.bin/grunt build
       - run:
           name: "Install Dependencies"
           command: |

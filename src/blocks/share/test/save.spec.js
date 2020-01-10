@@ -37,7 +37,7 @@ describe( name, () => {
 			tumblr: false,
 			reddit: false,
 			email: false,
-			youtube: false,
+			google: false,
 		} );
 		serializedBlock = serialize( block );
 		expect( serializedBlock ).toEqual( `<!-- wp:${ name } ${ JSON.stringify( { twitter: false, facebook: false, pinterest: false } ) } /-->` );
@@ -99,11 +99,11 @@ describe( name, () => {
 		expect( serializedBlock ).toContain( JSON.stringify( { email: true } ) );
 	} );
 
-	it( 'should render with YouTube link', () => {
-		block.attributes.youtube = true;
+	it( 'should render with Google link', () => {
+		block.attributes.google = true;
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( JSON.stringify( { youtube: true } ) );
+		expect( serializedBlock ).toContain( JSON.stringify( { google: true } ) );
 	} );
 } );

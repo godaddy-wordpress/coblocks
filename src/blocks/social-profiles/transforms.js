@@ -101,7 +101,11 @@ export const transforms = {
 						'houzz',
 						attributes
 					),
-					yelp: getPreviousAttributes( 'social-profiles', 'yelp', attributes ),
+					yelp: getPreviousAttributes(
+						'social-profiles',
+						'yelp',
+						attributes
+					),
 					youtube: getPreviousAttributes(
 						'social-profiles',
 						'youtube',
