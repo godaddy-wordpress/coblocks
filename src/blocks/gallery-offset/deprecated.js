@@ -105,13 +105,23 @@ const deprecatedCustomImageLinks = ( { attributes, className } ) => {
 	);
 };
 
-//prepare attributes
-const clonedAttributes = JSON.parse( JSON.stringify( GalleryAttributes ) );
-Object.assign( clonedAttributes.images.query.imgLink, { source: 'attribute', selector: 'a', attribute: 'href' } );
-
 const deprecated = [
 	{
-		attributes: { ...clonedAttributes, ...metadata.attributes },
+		attributes: {
+			...GalleryAttributes,
+			...metadata.attributes,
+			images: {
+				...GalleryAttributes.images,
+				query: {
+					...GalleryAttributes.images.query,
+					imgLink: {
+						source: 'attribute',
+						selector: 'a',
+						attribute: 'href',
+					},
+				},
+			},
+		},
 		save: deprecatedCustomImageLinks,
 	},
 ];
