@@ -78,7 +78,7 @@
 			"type": "boolean",
 			"default": false
 		},
-		"youtube": {
+		"google": {
 			"type": "boolean",
 			"default": false
 		}
