@@ -1,9 +1,10 @@
 .wp-block-coblocks-accordion-item {
+
 	p {
 		margin-top: 0;
 	}
 
-	// Remove hover and focus, as the title is now a text field.
+	// Remove hover and focus, as the title is a text field.
 	&__title {
 		&::after {
 			display: none;
