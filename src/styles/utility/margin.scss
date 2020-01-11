@@ -18,6 +18,7 @@
 	@include utilities($spacing, "margin-left", "-");
 }
 
+// Negatives are being used by the offset gallery block right now.
 .-mb-1 {
 	margin-bottom: -#{map-get($spacing, 1)};
 }

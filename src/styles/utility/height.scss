@@ -22,10 +22,6 @@
 	height: 14.285%;
 }
 
-.h-full {
-	height: 100%;
-}
-
 // 600px +
 @include break-small() {
 	.sm\:h-1\/3 {
