@@ -1,12 +1,25 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * WordPress dependencies.
  */
 import { InnerBlocks } from '@wordpress/block-editor';
 
 export default function save( { className, attributes } ) {
+	const classes = classnames( 'columns', {
+		[ `columns-${ attributes.columns }` ]: attributes.columns,
+		'columns-responsive': attributes.columns > 1,
+		[ `has-${ attributes.gutter }-gutter` ]: attributes.gutter,
+	} );
+
 	return (
-		<div className={ className } data-columns={ attributes.columns }>
-			<InnerBlocks.Content />
+		<div className={ className }>
+			<div className={ classes }>
+				<InnerBlocks.Content />
+			</div>
 		</div>
 	);
 }

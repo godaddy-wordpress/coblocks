@@ -2,6 +2,7 @@
  * External dependencies.
  */
 import { find } from 'lodash';
+import classnames from 'classnames';
 
 /**
  * Internal dependencies.
@@ -20,6 +21,7 @@ import {
 	InnerBlocks,
 } from '@wordpress/block-editor';
 import { dispatch, select } from '@wordpress/data';
+
 const TokenList = wp.tokenList;
 
 /**
@@ -178,6 +180,14 @@ class Edit extends Component {
 	render() {
 		const { className, attributes, setAttributes } = this.props;
 
+		const classes = classnames(
+			'columns', {
+				[ `columns-${ attributes.columns }` ]: attributes.columns,
+				'columns-responsive': attributes.columns > 1,
+				[ `has-${ attributes.gutter }-gutter` ]: attributes.gutter,
+			}
+		);
+
 		const activeStyle = getActiveStyle( layoutOptions, className );
 
 		return (
@@ -198,20 +208,22 @@ class Edit extends Component {
 					onUpdateStyle={ this.updateStyle }
 					onSetColumns={ this.setColumns }
 				/>
-				<div className={ className } data-columns={ attributes.columns }>
-					<InnerBlocks
-						allowedBlocks={ ALLOWED_BLOCKS }
-						template={ Array( attributes.columns ).fill( [
-							'coblocks/service',
-							{
-								showCta: attributes.buttons,
-								headingLevel: attributes.headingLevel,
-								alignment: attributes.alignment,
-							},
-						] ) }
-						templateLock="all"
-						templateInsertUpdatesSelection={ false }
-					/>
+				<div className={ className }>
+					<div className={ classes }>
+						<InnerBlocks
+							allowedBlocks={ ALLOWED_BLOCKS }
+							template={ Array( attributes.columns ).fill( [
+								'coblocks/service',
+								{
+									showCta: attributes.buttons,
+									headingLevel: attributes.headingLevel,
+									alignment: attributes.alignment,
+								},
+							] ) }
+							templateLock="all"
+							templateInsertUpdatesSelection={ false }
+						/>
+					</div>
 				</div>
 			</Fragment>
 		);
