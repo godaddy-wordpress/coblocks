@@ -1,10 +1,10 @@
-// Core Gutenberg modules
+// Gutenberg modules
 @import "styles/editor/core/colors";
 @import "styles/editor/core/variables";
 @import "styles/editor/core/breakpoints";
 @import "styles/editor/core/mixins";
 
-// Margin Utility
+// Spacing utility
 $spacing: (
 	0: 0,
 	1: 0.5em,
@@ -17,27 +17,26 @@ $spacing: (
 	8: 4em
 );
 
-// Gutters
-$gutter--small: 18px;
-$gutter--medium: 22px;
-$gutter--large: 33px;
-$gutter--huge: 60px;
-
 // Colors
 $color-twitter: #1da1f2;
-$alert-default-background-color: #d6efee;
-$alert-default-color: #094264;
-$alert-warning-background-color: #fbe7dd;
-$alert-warning-color: #8a4b30;
-$alert-error-background-color: #ffdede;
-$alert-error-color: #8b343c;
-$alert-success-background-color: #d0eac4;
-$alert-success-color: #154a28;
-
+$color-alert-default-bg: #d6efee;
+$color-alert-default-color: #094264;
+$color-alert-warning-bg: #fbe7dd;
+$color-alert-warning-color: #8a4b30;
+$color-alert-error-bg: #ffdede;
+$color-alert-error-color: #8b343c;
+$color-alert-success-bg: #d0eac4;
+$color-alert-success-color: #154a28;
 
 // Media Card
 $break-small-twentynineteen: 1024px;
 $break-small-twentynineteen--min: 768px;
 $break-small-mediacard: 660px;
 
+// Row block gutter
+$gutter--small: 18px;
+$gutter--medium: 22px;
+$gutter--large: 33px;
+$gutter--huge: 60px;
 
+@import "styles/mixins";
