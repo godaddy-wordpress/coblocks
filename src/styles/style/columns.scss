@@ -1,0 +1,37 @@
+.columns {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 100%;
+
+	&.columns-2 > *:not(.block-editor-inner-blocks),
+	&.columns-3 > *:not(.block-editor-inner-blocks),
+	&.columns-4 > *:not(.block-editor-inner-blocks) {
+		@include break-small() {
+			flex-basis: 50%;
+		}
+	}
+
+	&.columns-3 > *:not(.block-editor-inner-blocks),
+	&.columns-4 > *:not(.block-editor-inner-blocks) {
+		@include break-medium() {
+			flex-basis: 33.33%;
+		}
+	}
+
+	&.columns-4 > *:not(.block-editor-inner-blocks) {
+		@include break-wide() {
+			flex-basis: 25%;
+		}
+	}
+
+	.alignfull & {
+		padding-left: map-get($spacing, 2);
+		padding-right: map-get($spacing, 2);
+
+		@include break-small() {
+			padding-left: map-get($spacing, 4);
+			padding-right: map-get($spacing, 4);
+		}
+	}
+}

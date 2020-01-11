@@ -1,23 +1,31 @@
 @import "../common";
-@import "style/mixins";
 
 // Background
-@import "style/background-overlay"; //older utilities
-@import "style/background-parallax"; //older utilities
+@import "style/background-classes";
+@import "style/background-overlay";
+@import "style/background-parallax";
 
-// Editor formatting
-@import "style/formatting";
-
-// Mobile classes
-@import "style/stacked";
-
-// Utility classes
-@import "style/padding"; //older utilities
-@import "style/margin"; //older utilities
+// Utilities
+@import "style/flex";
+@import "style/has-padding";
+@import "style/has-margin";
 @import "style/columns";
-@import "style/gutter";
+@import "style/columns-responsive";
+@import "style/columns-gutter";
 @import "style/shadow";
-
-// Utility tooltips
 @import "style/tooltips";
 @import "style/datepicker";
+
+// Import utilities
+@import "utility/text-formatting";
+
+
+@import "utility/margin";
+@import "utility/padding";
+@import "utility/height";
+@import "utility/width";
+
+.relative {
+	position: relative;
+}
+
