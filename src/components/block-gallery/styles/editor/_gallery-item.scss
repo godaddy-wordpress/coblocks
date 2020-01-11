@@ -1,6 +1,14 @@
 .coblocks-gallery--item {
 	margin: 0;
 
+	> .components-spinner {
+		left: 50%;
+		margin-left: -9px;
+		margin-top: -9px;
+		position: absolute;
+		top: 50%;
+	}
+
 	figure:focus {
 		outline: none;
 	}
@@ -10,18 +18,16 @@
 		outline: none;
 	}
 
-	.is-selected {
-		&::after {
-			bottom: 0;
-			box-shadow: inset 0 0 0 4px theme(primary);
-			content: "";
-			left: 0;
-			position: absolute;
-			right: 0;
-			top: 0;
-			z-index: 1;
-			pointer-events: none;
-		}
+	.is-selected::after {
+		bottom: 0;
+		box-shadow: inset 0 0 0 4px theme(primary);
+		content: "";
+		left: 0;
+		pointer-events: none;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 1;
 	}
 
 	.is-transient img {
@@ -31,18 +37,8 @@
 	.block-editor-rich-text {
 		z-index: 2;
 	}
-
-	> .components-spinner {
-		left: 50%;
-		margin-left: -9px;
-		margin-top: -9px;
-		position: absolute;
-		top: 50%;
-	}
 }
 
-.has-caption-color .coblocks-gallery--caption {
-	a {
-		color: inherit !important;
-	}
+.has-caption-color .coblocks-gallery--caption a {
+	color: inherit !important;
 }
