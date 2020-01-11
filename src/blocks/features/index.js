@@ -38,8 +38,6 @@ const settings = {
 	icon,
 	keywords: [
 		'coblocks',
-		/* translators: block keyword */
-		__( 'services', 'coblocks' ),
 	],
 	supports: {
 		align: [ 'wide', 'full' ],
