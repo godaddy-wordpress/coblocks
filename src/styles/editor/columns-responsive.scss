@@ -1,0 +1,30 @@
+@include break-small-max() {
+	.columns-responsive > .block-editor-inner-blocks > .block-editor-block-list__layout {
+		flex-direction: column;
+
+		> .wp-block {
+			max-width: 100% !important;
+			width: 100% !important;
+		}
+	}
+
+	.columns-responsive.has-no-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [class*="wp-block"]:not(:last-child) {
+		margin-bottom: 0;
+	}
+
+	.columns-responsive.has-small-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [class*="wp-block"]:not(:last-child) {
+		margin-bottom: map-get($spacing, 1) * 2.35;
+	}
+
+	.columns-responsive.has-medium-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [class*="wp-block"]:not(:last-child) {
+		margin-bottom: map-get($spacing, 2) * 2.35;
+	}
+
+	.columns-responsive.has-large-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [class*="wp-block"]:not(:last-child) {
+		margin-bottom: map-get($spacing, 3) * 2.35;
+	}
+
+	.columns-responsive.has-huge-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [class*="wp-block"]:not(:last-child) {
+		margin-bottom: map-get($spacing, 4) * 2.35;
+	}
+}
