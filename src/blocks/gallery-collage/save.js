@@ -57,19 +57,19 @@ const save = ( { attributes } ) => {
 
 					switch ( index ) {
 						case 0:
-							gutterClasses = `pb-${ gutter } sm:pb-${ gutter } lg:pb-${ gutter }`;
+							gutterClasses = `pb-${ gutter }`;
 							break;
 						case 1:
-							gutterClasses = `pb-${ gutter } sm:pb-${ gutter } lg:pb-${ gutter } pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
+							gutterClasses = `pb-${ gutter } pl-${ gutter }`;
 							break;
 						case 2:
-							gutterClasses = `pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
+							gutterClasses = `pl-${ gutter }`;
 							break;
 						case 3:
-							gutterClasses = `pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
+							gutterClasses = `pl-${ gutter }`;
 							break;
 						case 4:
-							gutterClasses = `pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
+							gutterClasses = `pl-${ gutter }`;
 							break;
 					}
 
@@ -80,13 +80,13 @@ const save = ( { attributes } ) => {
 									gutterClasses = '';
 									break;
 								case 1:
-									gutterClasses = `pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
+									gutterClasses = `pl-${ gutter }`;
 									break;
 								case 2:
-									gutterClasses = `pt-${ gutter } sm:pt-${ gutter } lg:pt-${ gutter } pr-${ gutter } sm:pr-${ gutter } lg:pr-${ gutter }`;
+									gutterClasses = `pt-${ gutter } pr-${ gutter }`;
 									break;
 								case 3:
-									gutterClasses = `pt-${ gutter } sm:pt-${ gutter } lg:pt-${ gutter }`;
+									gutterClasses = `pt-${ gutter }`;
 									break;
 							}
 						}
