@@ -1,59 +1,59 @@
 .has-small-gutter {
 
-	&.columns-2 > *:not(.block-editor-inner-blocks) {
+	&.has-2-columns > *:not(.block-editor-inner-blocks) {
 		max-width: calc(100% / 2.015 - #{map-get($spacing, 1)});
 	}
 
-	&.columns-3 > *:not(.block-editor-inner-blocks) {
+	&.has-3-columns > *:not(.block-editor-inner-blocks) {
 		max-width: calc(100% / 3 - #{map-get($spacing, 2)});
 	}
 
-	&.columns-4 > *:not(.block-editor-inner-blocks) {
+	&.has-4-columns > *:not(.block-editor-inner-blocks) {
 		max-width: calc(100% / 4 - #{map-get($spacing, 2)});
 	}
 }
 
 .has-medium-gutter {
 
-	&.columns-2 > *:not(.block-editor-inner-blocks) {
+	&.has-2-columns > *:not(.block-editor-inner-blocks) {
 		max-width: calc(100% / 2 - #{map-get($spacing, 2)});
 	}
 
-	&.columns-3 > *:not(.block-editor-inner-blocks) {
+	&.has-3-columns > *:not(.block-editor-inner-blocks) {
 		max-width: calc(100% / 2.975 - #{map-get($spacing, 3)});
 	}
 
-	&.columns-4 > *:not(.block-editor-inner-blocks) {
+	&.has-4-columns > *:not(.block-editor-inner-blocks) {
 		max-width: calc(100% / 4 - #{map-get($spacing, 3)});
 	}
 }
 
 .has-large-gutter {
 
-	&.columns-2 > *:not(.block-editor-inner-blocks) {
+	&.has-2-columns > *:not(.block-editor-inner-blocks) {
 		max-width: calc(100% / 2.01 - #{map-get($spacing, 3)});
 	}
 
-	&.columns-3 > *:not(.block-editor-inner-blocks) {
+	&.has-3-columns > *:not(.block-editor-inner-blocks) {
 		max-width: calc(100% / 3.03 - #{map-get($spacing, 4)});
 	}
 
-	&.columns-4 > *:not(.block-editor-inner-blocks) {
+	&.has-4-columns > *:not(.block-editor-inner-blocks) {
 		max-width: calc(100% / 4.08 - #{map-get($spacing, 4)});
 	}
 }
 
 .has-huge-gutter {
 
-	&.columns-2 > *:not(.block-editor-inner-blocks) {
+	&.has-2-columns > *:not(.block-editor-inner-blocks) {
 		max-width: calc(100% / 2.02 - #{map-get($spacing, 4)});
 	}
 
-	&.columns-3 > *:not(.block-editor-inner-blocks) {
+	&.has-3-columns > *:not(.block-editor-inner-blocks) {
 		max-width: calc(100% / 3.09 - #{map-get($spacing, 5)});
 	}
 
-	&.columns-4 > *:not(.block-editor-inner-blocks) {
+	&.has-4-columns > *:not(.block-editor-inner-blocks) {
 		max-width: calc(100% / 4.15 - #{map-get($spacing, 5)});
 	}
 }
