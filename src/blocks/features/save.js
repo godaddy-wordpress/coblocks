@@ -37,9 +37,9 @@ const save = ( { attributes, className } ) => {
 	const innerClasses = classnames(
 		'wp-block-coblocks-features__inner',
 		...BackgroundClasses( attributes ),
-		'columns', {
-			[ `columns-${ columns }` ]: columns,
-			'columns-responsive': columns > 1,
+		'has-columns', {
+			[ `has-${ columns }-columns` ]: columns,
+			'has-responsive-columns': columns > 1,
 			'has-text-color': textColor || customTextColor,
 			[ textClass ]: textClass,
 			'has-padding': paddingSize && paddingSize !== 'no',

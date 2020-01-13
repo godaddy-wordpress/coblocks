@@ -1,15 +1,15 @@
-.columns-responsive {
+.has-responsive-columns {
 
 	@include break-small-max() {
 		flex-direction: column;
 
-		> [class*="wp-block"] {
+		> * {
 			max-width: 100% !important;
 			width: 100% !important;
+		}
 
-			&:last-child {
-				margin-bottom: 0;
-			}
+		> [class*="wp-block"]:last-child {
+			margin-bottom: 0;
 		}
 
 		&.has-no-gutter > [class*="wp-block"]:not(:last-child) {

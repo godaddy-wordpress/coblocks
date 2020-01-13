@@ -9,9 +9,9 @@ import classnames from 'classnames';
 import { InnerBlocks } from '@wordpress/block-editor';
 
 export default function save( { className, attributes } ) {
-	const classes = classnames( 'columns', {
-		[ `columns-${ attributes.columns }` ]: attributes.columns,
-		'columns-responsive': attributes.columns > 1,
+	const classes = classnames( 'has-columns', {
+		[ `has-${ attributes.columns }-columns` ]: attributes.columns,
+		'has-responsive-columns': attributes.columns > 1,
 		[ `has-${ attributes.gutter }-gutter` ]: attributes.gutter,
 	} );
 

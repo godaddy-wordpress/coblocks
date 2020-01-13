@@ -1,4 +1,4 @@
-.columns {
+.has-columns {
 
 	> .block-editor-inner-blocks {
 		width: 100%;
@@ -14,32 +14,26 @@
 		margin: 0;
 	}
 
-	&.columns-2 > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block,
-	&.columns-3 > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block,
-	&.columns-4 > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+	&.has-2-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block,
+	&.has-3-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block,
+	&.has-4-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
 		@include break-small() {
 			flex-basis: 50%;
 		}
 	}
 
-	&.columns-3 > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block,
-	&.columns-4 > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+	&.has-3-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block,
+	&.has-4-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
 		@include break-medium() {
 			flex-basis: 33.33%;
 		}
 	}
 
-	&.columns-4 > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+	&.has-4-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
 		@include break-wide() {
 			flex-basis: 25%;
 		}
 	}
-}
-
-// Ensure editor .columns does not flex, as we have innerBlocks
-[data-block] > [class*="coblocks"] > .columns {
-	display: inherit;
-	width: inherit;
 }
 
 // Fullwidth alignment

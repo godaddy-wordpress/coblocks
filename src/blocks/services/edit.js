@@ -181,9 +181,9 @@ class Edit extends Component {
 		const { className, attributes, setAttributes } = this.props;
 
 		const classes = classnames(
-			'columns', {
-				[ `columns-${ attributes.columns }` ]: attributes.columns,
-				'columns-responsive': attributes.columns > 1,
+			'has-columns', {
+				[ `has-${ attributes.columns }-columns` ]: attributes.columns,
+				'has-responsive-columns': attributes.columns > 1,
 				[ `has-${ attributes.gutter }-gutter` ]: attributes.gutter,
 			}
 		);

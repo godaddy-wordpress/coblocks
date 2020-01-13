@@ -2,6 +2,6 @@
 
 exports[`coblocks/features should render 1`] = `
 "<!-- wp:coblocks/features -->
-<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner columns columns-2 columns-responsive has-medium-gutter has-center-content\\"></div></div>
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-center-content\\"></div></div>
 <!-- /wp:coblocks/features -->"
 `;
