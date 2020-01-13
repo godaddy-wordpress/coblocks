@@ -12,6 +12,19 @@
 @import "style/tooltips";
 @import "style/datepicker";
 
-// Spacing utilities
-@import "utility/style/margin";
-@import "utility/style/padding";
+// In collage block
+.pt {
+	@include utilities($spacing, "padding-top", "-");
+}
+
+.pr {
+	@include utilities($spacing, "padding-right", "-");
+}
+
+.pb {
+	@include utilities($spacing, "padding-bottom", "-");
+}
+
+.pl {
+	@include utilities($spacing, "padding-left", "-");
+}

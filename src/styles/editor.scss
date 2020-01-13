@@ -4,8 +4,3 @@
 @import "editor/columns-gutter";
 @import "editor/columns-responsive";
 @import "editor/is-transient";
-
-// Spacing utilities
-.editor-styles-wrapper {
-	@import "utility/editor/margin";
-}

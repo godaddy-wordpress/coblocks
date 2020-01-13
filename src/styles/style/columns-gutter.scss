@@ -1,7 +1,7 @@
 .has-small-gutter {
 
 	&.has-2-columns > *:not(.block-editor-inner-blocks) {
-		max-width: calc(100% / 2.015 - #{map-get($spacing, 1)});
+		max-width: calc(100% / 2 - #{map-get($spacing, 1)});
 	}
 
 	&.has-3-columns > *:not(.block-editor-inner-blocks) {
