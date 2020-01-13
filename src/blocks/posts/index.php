@@ -106,6 +106,10 @@ function coblocks_posts( $posts, $attributes ) {
 		array_push( $class, 'has-image-right' );
 	}
 
+	if ( isset( $attributes['imageSize'] ) && 'horizontal' === $block_style ) {
+		array_push( $class, $attributes['imageSize'] );
+	}
+
 	$block_content = sprintf(
 		'<div class="%1$s"><div class="%2$s">',
 		esc_attr( implode( ' ', $class_name ) ),
@@ -128,15 +132,9 @@ function coblocks_posts( $posts, $attributes ) {
 				$image_class .= ' mr-2 sm:mr-3';
 			} else {
 
-				$image_class .= ' ml-3 sm:ml-3';
+				$image_class .= ' ml-2 sm:ml-3';
 
 			}
-		}
-
-		if ( isset( $attributes['imageSize'] ) && 'horizontal' === $block_style ) {
-
-			$image_class .= ' ' . $attributes['imageSize'];
-
 		}
 
 		$list_items_markup .= sprintf(

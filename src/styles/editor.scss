@@ -1,112 +1,12 @@
 @import "../common";
 
-@import "editor/is-transient";
 @import "editor/columns";
 @import "editor/columns-gutter";
 @import "editor/columns-responsive";
+@import "editor/is-transient";
 
-// Shim as Gutenberg removes margin-bottom from lists.
-// @todo, this should be moved into the editor styles.
+// Spacing utilities
 .editor-styles-wrapper {
-	.m {
-		@include utilities($spacing, "margin", "-");
-	}
-	.mt {
-		@include utilities($spacing, "margin-top", "-");
-	}
-	.mb {
-		@include utilities($spacing, "margin-bottom", "-");
-	}
-	.mr {
-		@include utilities($spacing, "margin-right", "-");
-	}
-	.ml {
-		@include utilities($spacing, "margin-left", "-");
-	}
-
-	@include break-small() {
-		.sm\:m {
-			@include utilities($spacing, "margin", "-");
-		}
-
-		.sm\:mt {
-			@include utilities($spacing, "margin-top", "-");
-		}
-
-		.sm\:mb {
-			@include utilities($spacing, "margin-bottom", "-");
-		}
-
-		.sm\:mr {
-			@include utilities($spacing, "margin-right", "-");
-		}
-
-		.sm\:ml {
-			@include utilities($spacing, "margin-left", "-");
-		}
-	}
-
-	@include break-medium() {
-		.md\:m {
-			@include utilities($spacing, "margin", "-");
-		}
-
-		.md\:mt {
-			@include utilities($spacing, "margin-top", "-");
-		}
-
-		.md\:mb {
-			@include utilities($spacing, "margin-bottom", "-");
-		}
-
-		.md\:mr {
-			@include utilities($spacing, "margin-right", "-");
-		}
-
-		.md\:ml {
-			@include utilities($spacing, "margin-left", "-");
-		}
-	}
-
-	@include break-wide() {
-		.lg\:m {
-			@include utilities($spacing, "margin", "-");
-		}
-
-		.lg\:mt {
-			@include utilities($spacing, "margin-top", "-");
-		}
-
-		.lg\:mb {
-			@include utilities($spacing, "margin-bottom", "-");
-		}
-
-		.lg\:mr {
-			@include utilities($spacing, "margin-right", "-");
-		}
-
-		.lg\:ml {
-			@include utilities($spacing, "margin-left", "-");
-		}
-	}
-
-	.p {
-		@include utilities($spacing, "padding", "-");
-	}
-
-	.pt {
-		@include utilities($spacing, "padding-top", "-");
-	}
-
-	.pr {
-		@include utilities($spacing, "padding-right", "-");
-	}
-
-	.pb {
-		@include utilities($spacing, "padding-bottom", "-");
-	}
-
-	.pl {
-		@include utilities($spacing, "padding-left", "-");
-	}
+	@import "utility/editor/padding";
+	@import "utility/editor/margin";
 }

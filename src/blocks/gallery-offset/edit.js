@@ -227,7 +227,7 @@ class Edit extends Component {
 										url={ img.url }
 										alt={ img.alt }
 										id={ img.id }
-										gutterUtility={ this.gutterClasses() }
+										// gutterUtility={ this.gutterClasses() }
 										isSelected={ isSelected && this.state.selectedImage === index }
 										onRemove={ this.onRemoveImage( index ) }
 										onSelect={ this.onSelectImage( index ) }

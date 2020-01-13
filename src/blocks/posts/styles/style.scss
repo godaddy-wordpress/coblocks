@@ -38,7 +38,9 @@
 .wp-block-coblocks-posts__image {
 	display: table;
 	flex: 0 0 auto;
+	height: 14.285%;
 	position: relative;
+	width: 14.285%;
 
 	a {
 		display: block;
@@ -48,6 +50,35 @@
 
 	.is-style-stacked & {
 		width: 100%;
+	}
+
+	.has-medium-image & {
+
+		@include break-small() {
+			height: 20%;
+			width: 20%;
+		}
+	}
+
+	.has-large-image & {
+
+		@include break-small() {
+			height: 33.33%;
+			width: 33.33%;
+		}
+	}
+
+	.has-larger-image & {
+
+		@include break-small() {
+			height: 33.33%;
+			width: 33.33%;
+		}
+
+		@include break-medium() {
+			height: 50%;
+			width: 50%;
+		}
 	}
 }
 

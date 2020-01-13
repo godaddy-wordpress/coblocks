@@ -239,7 +239,6 @@ class PostsEdit extends Component {
 			'mr-3': isHorizontalStyle && listPosition === 'left',
 			'mb-2': isStackedStyle,
 			'ml-3': isHorizontalStyle && listPosition === 'right',
-			[ imageSize ]: isHorizontalStyle,
 		} );
 
 		const editToolbarControls = [
@@ -391,6 +390,7 @@ class PostsEdit extends Component {
 							'has-responsive-columns': columns,
 							'has-medium-gutter': columns,
 							'has-image-right': isHorizontalStyle && listPosition === 'right',
+							[ imageSize ]: isHorizontalStyle,
 						} ) }>
 							{ displayPosts.map( ( post, i ) => {
 								const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
