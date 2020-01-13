@@ -7,8 +7,8 @@
 			"default": "sml"
 		},
 		"gutter": {
-			"type": "number",
-			"default": 1
+			"type": "string",
+			"default": "medium"
 		}
 	}
 }
