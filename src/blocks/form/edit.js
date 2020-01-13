@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /*global coblocksBlockData*/
 
 /**
@@ -5,6 +6,7 @@
  */
 import classnames from 'classnames';
 import emailValidator from 'email-validator';
+import get from 'lodash/get';
 import map from 'lodash/map';
 import isEqual from 'lodash/isEqual';
 
@@ -13,7 +15,6 @@ import isEqual from 'lodash/isEqual';
  */
 import Notice from './notice';
 import SubmitButton from './submit-button';
-import { TEMPLATE_OPTIONS } from './layouts';
 
 /**
  * WordPress dependencies
@@ -24,8 +25,8 @@ import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/compone
 import { InspectorControls, InnerBlocks } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
 import { compose } from '@wordpress/compose';
-import { withSelect } from '@wordpress/data';
-import { __experimentalRegisterBlockPattern } from '@wordpress/blocks';
+import { withSelect, useDispatch } from '@wordpress/data';
+import { __experimentalRegisterBlockPattern, __experimentalBlockPatternPicker, createBlock } from '@wordpress/blocks';
 
 /**
  * Get settings
@@ -121,13 +122,14 @@ class FormEdit extends Component {
 	}
 
 	componentDidMount() {
-		const { innerBlockCount, innerBlocks } = this.props;
+		const { innerBlockCount, innerBlocks, defaultPattern } = this.props;
+		console.log( this.props );
 		if ( innerBlockCount > 0 ) {
 			this.setState( { template: innerBlocks } );
 		}
 
 		if ( ! this.supportsExperimentalProps() && innerBlockCount === 0 ) {
-			this.setTemplate( TEMPLATE_OPTIONS[ 0 ].template );
+			this.setTemplate( defaultPattern );
 		}
 	}
 
@@ -316,9 +318,9 @@ class FormEdit extends Component {
 	}
 
 	setTemplate( layout ) {
-		const { setAttributes } = this.props;
+		const { setAttributes, patterns } = this.props;
 		let submitButtonText;
-		map( TEMPLATE_OPTIONS, ( elem ) => {
+		map( patterns, ( elem ) => {
 			if ( isEqual( elem.template, layout ) ) {
 				submitButtonText = elem.submitButtonText;
 			}
@@ -326,6 +328,12 @@ class FormEdit extends Component {
 
 		this.setState( { template: layout } );
 		setAttributes( { submitButtonText } );
+	}
+
+	createBlocksFromInnerBlocksTemplate( innerBlocksTemplate ) {
+		// const { name, attributes, innerBlocks } = this.props;
+		console.log( innerBlocksTemplate );
+		return map(	innerBlocksTemplate, ( { name, attributes, innerBlocks } ) => createBlock( name, attributes, this.createBlocksFromInnerBlocksTemplate( innerBlocks ) ) );
 	}
 
 	supportsExperimentalProps() {
@@ -337,7 +345,12 @@ class FormEdit extends Component {
 	}
 
 	render() {
-		const { className } = this.props;
+		// const { className, blockType, defaultPattern, patterns } = this.props;
+		const { className, blockType, defaultPattern, patterns } = this.props;
+
+		// const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
+
+		console.log( blockType, defaultPattern, patterns );
 
 		const classes = classnames(
 			className,
@@ -410,7 +423,7 @@ class FormEdit extends Component {
 					</InspectorControls>
 				) }
 				<div className={ classes }>
-					<InnerBlocks
+					{ /* <InnerBlocks
 						__experimentalTemplateOptions={ TEMPLATE_OPTIONS }
 						__experimentalOnSelectTemplateOption={ ( chosenTemplate ) => {
 							if ( chosenTemplate === undefined ) {
@@ -423,6 +436,23 @@ class FormEdit extends Component {
 						allowedBlocks={ ALLOWED_BLOCKS }
 						renderAppender={ () => null }
 						templateInsertUpdatesSelection={ false }
+					/> */ }
+					<__experimentalBlockPatternPicker
+						icon={ get( blockType, [ 'icon', 'src' ] ) }
+						label={ get( blockType, [ 'title' ] ) }
+						// label="label goes here"
+						patterns={ patterns }
+						// onSelect={ ( nextPattern = defaultPattern ) => {
+						// 	if ( nextPattern.attributes ) {
+						// 		this.props.setAttributes( nextPattern.attributes );
+						// 	}
+						// 	if ( nextPattern.innerBlocks ) {
+						// 		replaceInnerBlocks(
+						// 			this.props.clientId,
+						// 			this.createBlocksFromInnerBlocksTemplate( nextPattern.innerBlocks )
+						// 		);
+						// 	}
+						// } }
 					/>
 					{ ! showTemplateSelector && <SubmitButton { ...this.props } /> }
 				</div>
@@ -433,12 +463,23 @@ class FormEdit extends Component {
 
 const applyWithSelect = withSelect( ( select, props ) => {
 	const { getBlocks } = select( 'core/block-editor' );
+	const {
+		__experimentalGetBlockPatterns,
+		getBlockType,
+		__experimentalGetDefaultBlockPattern,
+	} = select( 'core/blocks' );
 	const innerBlocks = getBlocks( props.clientId );
+
+	console.log( getBlockType( props.name ), __experimentalGetDefaultBlockPattern( props.name ), __experimentalGetBlockPatterns( props.name ),  );
 
 	return {
 		// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
 		innerBlockCount: innerBlocks.length,
 		innerBlocks,
+
+		blockType: getBlockType( props.name ),
+		defaultPattern: __experimentalGetDefaultBlockPattern( props.name ),
+		patterns: __experimentalGetBlockPatterns( props.name ),
 	};
 } );
 
