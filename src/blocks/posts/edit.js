@@ -239,7 +239,6 @@ class PostsEdit extends Component {
 			'mr-3': isHorizontalStyle && listPosition === 'left',
 			'mb-2': isStackedStyle,
 			'ml-3': isHorizontalStyle && listPosition === 'right',
-			'w-full': isStackedStyle,
 			[ imageSize ]: isHorizontalStyle,
 		} );
 
@@ -386,22 +385,20 @@ class PostsEdit extends Component {
 				{ postFeedType === 'internal' &&
 
 					<div className={ className }>
-						<div className={ classnames( 'ml-0', 'pl-0', 'has-medium-gutter', {
+						<div className={ classnames( 'wp-block-coblocks-posts__inner', {
 							'has-columns': columns,
 							[ `has-${ columns }-columns` ]: columns,
 							'has-responsive-columns': columns,
+							'has-medium-gutter': columns,
+							'has-image-right': isHorizontalStyle && listPosition === 'right',
 						} ) }>
 							{ displayPosts.map( ( post, i ) => {
 								const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
 								const featuredImageStyle = 'url(' + featuredImageUrl + ')';
 
-								const listClasses = classnames( 'flex', 'flex-auto', 'items-stretch', 'w-full', 'mt-0', 'mb-3', 'ml-0', 'pl-0', {
-									'flex-row-reverse': isHorizontalStyle && listPosition === 'right',
-									'flex-col': isStackedStyle,
-									'has-featured-image': featuredImageUrl,
-								} );
+								const listClasses = classnames( 'wp-block-coblocks-posts__item', 'mb-3', {} );
 
-								const contentClasses = classnames( 'wp-block-coblocks-posts__content', 'flex', 'flex-col', 'w-full', {
+								const contentClasses = classnames( 'wp-block-coblocks-posts__content', {
 									'self-center': isHorizontalStyle && ! displayPostContent && columns <= 2,
 								} );
 
@@ -419,7 +416,7 @@ class PostsEdit extends Component {
 									<div key={ i } className={ listClasses }>
 										{ featuredImageUrl &&
 											<div className={ imageClasses }>
-												<div className="w-full bg-cover bg-center-center pt-full" style={ { backgroundImage: featuredImageStyle } }></div>
+												<div className="bg-cover bg-center-center" style={ { backgroundImage: featuredImageStyle } }></div>
 											</div>
 										}
 										<div className={ contentClasses }>

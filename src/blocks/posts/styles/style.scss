@@ -12,6 +12,29 @@
 	}
 }
 
+.wp-block-coblocks-posts__inner {
+	margin-left: 0;
+	padding-left: 0;
+}
+
+.wp-block-coblocks-posts__item {
+	align-items: stretch;
+	display: flex;
+	flex: 1 1 auto;
+	margin-left: 0;
+	margin-top: 0;
+	padding-left: 0;
+	width: 100%;
+
+	.is-style-stacked & {
+		flex-direction: column;
+	}
+
+	.is-style-horizontal .has-image-right  & {
+		flex-direction: row-reverse;
+	}
+}
+
 .wp-block-coblocks-posts__image {
 	display: table;
 	flex: 0 0 auto;
@@ -21,6 +44,20 @@
 		display: block;
 		padding-top: 100%;
 		width: 100%;
+	}
+
+	.is-style-stacked & {
+		width: 100%;
+	}
+}
+
+.wp-block-coblocks-posts__content {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+
+	.self-center {
+		align-self: center;
 	}
 }
 
@@ -35,50 +72,5 @@
 	display: block;
 }
 
-// Theme specific.
-.is-twentynineteen {
-	.wp-block-coblocks-posts {
-		line-height: 1.6;
-
-		&__content a {
-			font-family: $default-font;
-			font-size: calc(22px * 1.125);
-			font-weight: 700;
-			line-height: 1.2;
-			margin-bottom: 0.5rem;
-			margin-top: 0.5rem;
-			text-decoration: none !important;
-		}
-
-		&__date {
-			font-family: $default-font;
-			font-weight: 700;
-		}
-	}
-}
-
-.is-twentytwenty {
-	.wp-block-coblocks-posts .has-columns {
-		margin-bottom: 0.5em;
-	}
-
-	.wp-block-coblocks-posts a {
-		font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
-		font-weight: 700;
-		letter-spacing: -0.025em;
-		text-decoration: none;
-
-		&:hover {
-			text-decoration: underline;
-		}
-	}
-
-	.wp-block-coblocks-posts__date {
-		color: #6d6d6d;
-		font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
-		font-size: 0.7em;
-		font-weight: 600;
-		letter-spacing: normal;
-		margin-bottom: 0.2em;
-	}
-}
+// Import style tweaks for core WordPress themes
+@import "themes";

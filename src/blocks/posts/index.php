@@ -86,8 +86,8 @@ function coblocks_render_posts_block( $attributes ) {
  * @return string Returns the block content for the list and grid styles.
  */
 function coblocks_posts( $posts, $attributes ) {
-	$class       = array( 'ml-0', 'pl-0', 'pt-3' );
-	$class_name  = array( 'wp-block-coblocks-posts' );
+	$class_name  = array();
+	$class       = array( 'wp-block-coblocks-posts__inner' );
 	$block_style = strpos( $attributes['className'], 'is-style-stacked' ) !== false ? 'stacked' : 'horizontal';
 
 	if ( isset( $attributes['className'] ) ) {
@@ -102,6 +102,10 @@ function coblocks_posts( $posts, $attributes ) {
 		array_push( $class, 'has-columns has-' . $attributes['columns'] . '-columns has-responsive-columns has-medium-gutter' );
 	}
 
+	if ( isset( $attributes['listPosition'] ) && 'right' === $attributes['listPosition'] && 'horizontal' === $block_style ) {
+		array_push( $class, 'has-image-right' );
+	}
+
 	$block_content = sprintf(
 		'<div class="%1$s"><div class="%2$s">',
 		esc_attr( implode( ' ', $class_name ) ),
@@ -110,12 +114,6 @@ function coblocks_posts( $posts, $attributes ) {
 
 	$list_items_markup = '';
 	$list_items_class  = '';
-
-	if ( 'horizontal' !== $block_style ) {
-
-		$list_items_class .= 'flex-col';
-
-	}
 
 	foreach ( $posts as $post ) {
 
@@ -130,8 +128,7 @@ function coblocks_posts( $posts, $attributes ) {
 				$image_class .= ' mr-2 sm:mr-3';
 			} else {
 
-				$image_class     .= ' ml-3 sm:ml-3';
-				$list_items_class = 'flex-row-reverse';
+				$image_class .= ' ml-3 sm:ml-3';
 
 			}
 		}
@@ -140,14 +137,10 @@ function coblocks_posts( $posts, $attributes ) {
 
 			$image_class .= ' ' . $attributes['imageSize'];
 
-		} else {
-
-			$image_class .= 'w-full relative';
-
 		}
 
 		$list_items_markup .= sprintf(
-			'<div class="flex flex-auto %1$s items-stretch w-full mt-0 mb-3 ml-0 pl-0">',
+			'<div class="wp-block-coblocks-posts__item %1$s mb-3">',
 			$list_items_class
 		);
 
@@ -175,7 +168,7 @@ function coblocks_posts( $posts, $attributes ) {
 		}
 
 		$list_items_markup .= sprintf(
-			'<div class="wp-block-coblocks-posts__content flex flex-col %s w-full">',
+			'<div class="wp-block-coblocks-posts__content %s">',
 			esc_attr( $align_self_class )
 		);
 
