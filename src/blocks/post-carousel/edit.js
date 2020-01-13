@@ -115,7 +115,7 @@ class PostCarousel extends Component {
 			align,
 		} = attributes;
 
-		const imageClasses = classnames( 'wp-block-coblocks-post-carousel__image', 'table', 'relative', 'flex-0', 'mb-2', 'w-full', {} );
+		const imageClasses = classnames( 'wp-block-coblocks-post-carousel__image', 'mb-2', {} );
 
 		const editToolbarControls = [
 			{
@@ -251,7 +251,7 @@ class PostCarousel extends Component {
 					<ServerSideRender
 						block="coblocks/post-carousel"
 						attributes={ this.props.attributes }
-						className="coblocks-slick pb-7"
+						className="coblocks-slick pb-8"
 					/>
 				}
 				{ postFeedType === 'internal' &&
@@ -279,7 +279,7 @@ class PostCarousel extends Component {
 										<div className="wp-block-coblocks-post-carousel__item" key={ i }>
 											{ featuredImageUrl &&
 												<div className={ imageClasses }>
-													<div className="block w-full bg-cover bg-center-center pt-full" style={ { backgroundImage: featuredImageStyle } }></div>
+													<div className="bg-cover bg-center-center" style={ { backgroundImage: featuredImageStyle } }></div>
 												</div>
 											}
 											<div className={ classnames( 'wp-block-coblocks-post-carousel__content', {
