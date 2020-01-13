@@ -28,15 +28,4 @@ $color-alert-error-color: #8b343c;
 $color-alert-success-bg: #d0eac4;
 $color-alert-success-color: #154a28;
 
-// Media Card
-$break-small-twentynineteen: 1024px;
-$break-small-twentynineteen--min: 768px;
-$break-small-mediacard: 660px;
-
-// Row block gutter
-$gutter--small: 18px;
-$gutter--medium: 22px;
-$gutter--large: 33px;
-$gutter--huge: 60px;
-
 @import "styles/mixins";

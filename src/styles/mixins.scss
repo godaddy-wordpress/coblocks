@@ -21,10 +21,3 @@
 		}
 	}
 }
-
-// Specific break point for the Media Card block
-@mixin break-small-mediacard() {
-	@media (min-width: #{ ($break-small-mediacard) }) {
-		@content;
-	}
-}
