@@ -21,6 +21,7 @@
 	align-items: stretch;
 	display: flex;
 	flex: 1 1 auto;
+	margin-bottom: map-get($spacing, 3);
 	margin-left: 0;
 	margin-top: 0;
 	padding-left: 0;
@@ -39,8 +40,22 @@
 	display: table;
 	flex: 0 0 auto;
 	height: 14.285%;
+	margin-right: map-get($spacing, 2);
 	position: relative;
 	width: 14.285%;
+
+	@include break-small() {
+		margin-right: map-get($spacing, 3);
+	}
+
+	.has-image-right & {
+		margin-left: map-get($spacing, 2);
+		margin-right: 0;
+
+		@include break-small() {
+			margin-left: map-get($spacing, 3);
+		}
+	}
 
 	a {
 		display: block;
@@ -49,6 +64,7 @@
 	}
 
 	.is-style-stacked & {
+		margin-bottom: map-get($spacing, 2);
 		width: 100%;
 	}
 
@@ -87,7 +103,7 @@
 	flex-direction: column;
 	width: 100%;
 
-	.self-center {
+	&.self-center {
 		align-self: center;
 	}
 }
@@ -96,6 +112,11 @@
 	color: $dark-gray-300;
 	display: block;
 	font-size: $editor-font-size;
+	margin-top: map-get($spacing, 1);
+}
+
+.wp-block-coblocks-posts__excerpt {
+	margin-top: map-get($spacing, 1);
 }
 
 .wp-block-coblocks-posts__more-link {

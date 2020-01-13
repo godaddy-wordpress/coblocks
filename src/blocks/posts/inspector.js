@@ -54,22 +54,22 @@ const Inspector = props => {
 
 	const sizeOptions = [
 		{
-			value: 'has-small-image',
+			value: 'small',
 			label: /* translators: abbreviation for small size */ __( 'S', 'coblocks' ),
 			tooltip: /* translators: label for small size option */ __( 'Small', 'coblocks' ),
 		},
 		{
-			value: 'has-medium-image',
+			value: 'medium',
 			label: /* translators: abbreviation for medium size */ __( 'M', 'coblocks' ),
 			tooltip: /* translators: label for medium size option */ __( 'Medium', 'coblocks' ),
 		},
 		{
-			value: 'has-large-image',
+			value: 'large',
 			label: /* translators: abbreviation for large size */ __( 'L', 'coblocks' ),
 			tooltip: /* translators: label for large size option */ __( 'Large', 'coblocks' ),
 		},
 		{
-			value: 'has-larger-image',
+			value: 'larger',
 			label: /* translators: abbreviation for extra large size */ __( 'XL', 'coblocks' ),
 			tooltip: /* translators: label for extra large size option */ __( 'Extra Large', 'coblocks' ),
 		},

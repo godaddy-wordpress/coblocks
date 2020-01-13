@@ -235,12 +235,6 @@ class PostsEdit extends Component {
 			imageSize,
 		} = attributes;
 
-		const imageClasses = classnames( 'wp-block-coblocks-posts__image', {
-			'mr-3': isHorizontalStyle && listPosition === 'left',
-			'mb-2': isStackedStyle,
-			'ml-3': isHorizontalStyle && listPosition === 'right',
-		} );
-
 		const editToolbarControls = [
 			{
 				icon: 'edit',
@@ -390,13 +384,11 @@ class PostsEdit extends Component {
 							'has-responsive-columns': columns,
 							'has-medium-gutter': columns,
 							'has-image-right': isHorizontalStyle && listPosition === 'right',
-							[ imageSize ]: isHorizontalStyle,
+							[ `has-${ imageSize }-image` ]: isHorizontalStyle,
 						} ) }>
 							{ displayPosts.map( ( post, i ) => {
 								const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
 								const featuredImageStyle = 'url(' + featuredImageUrl + ')';
-
-								const listClasses = classnames( 'wp-block-coblocks-posts__item', 'mb-3', {} );
 
 								const contentClasses = classnames( 'wp-block-coblocks-posts__content', {
 									'self-center': isHorizontalStyle && ! displayPostContent && columns <= 2,
@@ -413,15 +405,15 @@ class PostsEdit extends Component {
 								excerpt = excerptElement.textContent || excerptElement.innerText || '';
 
 								return (
-									<div key={ i } className={ listClasses }>
+									<div key={ i } className="wp-block-coblocks-posts__item">
 										{ featuredImageUrl &&
-											<div className={ imageClasses }>
+											<div className="wp-block-coblocks-posts__image">
 												<div className="bg-cover bg-center-center" style={ { backgroundImage: featuredImageStyle } }></div>
 											</div>
 										}
 										<div className={ contentClasses }>
 											{ isStackedStyle && displayPostDate && post.date_gmt &&
-												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-posts__date mb-1">
+												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-posts__date">
 													{ dateI18n( dateFormat, post.date_gmt ) }
 												</time>
 											}
@@ -438,12 +430,12 @@ class PostsEdit extends Component {
 												</a>
 											</Disabled>
 											{ isHorizontalStyle && displayPostDate && post.date_gmt &&
-												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-posts__date mt-1">
+												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-posts__date">
 													{ dateI18n( dateFormat, post.date_gmt ) }
 												</time>
 											}
 											{ displayPostContent &&
-												<div className="wp-block-coblocks-posts__post-excerpt mt-1">
+												<div className="wp-block-coblocks-posts__excerpt">
 													<RawHTML
 														key="html"
 													>
@@ -456,7 +448,7 @@ class PostsEdit extends Component {
 											{ displayPostLink &&
 												<RichText
 													tagName="a"
-													className="wp-block-coblocks-posts__more-link mt-3"
+													className="wp-block-coblocks-posts__more-link"
 													onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
 													value={ postLink }
 													placeholder={ __( 'Read more', 'coblocks' ) }
