@@ -115,8 +115,6 @@ class PostCarousel extends Component {
 			align,
 		} = attributes;
 
-		const imageClasses = classnames( 'wp-block-coblocks-post-carousel__image', 'mb-2', {} );
-
 		const editToolbarControls = [
 			{
 				icon: 'edit',
@@ -278,7 +276,7 @@ class PostCarousel extends Component {
 									return (
 										<div className="wp-block-coblocks-post-carousel__item" key={ i }>
 											{ featuredImageUrl &&
-												<div className={ imageClasses }>
+												<div className="wp-block-coblocks-post-carousel__image">
 													<div className="bg-cover bg-center-center" style={ { backgroundImage: featuredImageStyle } }></div>
 												</div>
 											}
@@ -303,7 +301,7 @@ class PostCarousel extends Component {
 													</a>
 												</Disabled>
 												{ displayPostContent &&
-													<div className="wp-block-coblocks-post-carousel__post-excerpt mt-1">
+													<div className="wp-block-coblocks-post-carousel__excerpt">
 														<RawHTML
 															key="html"
 														>

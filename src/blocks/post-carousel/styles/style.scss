@@ -21,6 +21,7 @@
 
 .wp-block-coblocks-post-carousel__image {
 	display: table;
+	margin-bottom: map-get($spacing, 2);
 	position: relative;
 	width: 100%;
 
@@ -42,10 +43,16 @@
 	color: $dark-gray-300;
 	display: block;
 	font-size: $editor-font-size;
+	margin-bottom: map-get($spacing, 1);
 }
 
 .wp-block-coblocks-post-carousel__more-link {
 	align-self: self-start;
+	margin-top: map-get($spacing, 2);
+}
+
+.wp-block-coblocks-post-carousel__excerpt {
+	margin-top: map-get($spacing, 1);
 }
 
 // Carousel navigation
