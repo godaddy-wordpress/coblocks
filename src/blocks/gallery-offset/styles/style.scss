@@ -1,4 +1,12 @@
 .wp-block-coblocks-gallery-offset {
+
+	.coblocks-gallery {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin-bottom: 0;
+	}
+
 	img {
 		max-height: 22vw;
 		width: auto;
