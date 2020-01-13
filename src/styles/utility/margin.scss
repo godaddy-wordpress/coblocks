@@ -35,7 +35,6 @@
 	margin-bottom: -#{map-get($spacing, 4)};
 }
 
-// 600px +
 @include break-small() {
 	.sm\:mt {
 		@include utilities($spacing, "margin-top", "-");
@@ -70,7 +69,6 @@
 	}
 }
 
-// 782px+
 @include break-medium() {
 	.md\:mt {
 		@include utilities($spacing, "margin-top", "-");
@@ -105,7 +103,6 @@
 	}
 }
 
-// 1280px+
 @include break-wide() {
 	.lg\:mt {
 		@include utilities($spacing, "margin-top", "-");

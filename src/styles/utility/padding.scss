@@ -18,11 +18,6 @@
 	@include utilities($spacing, "padding-left", "-");
 }
 
-.pt-full {
-	padding-top: 100%;
-}
-
-// 600px +
 @include break-small() {
 	.sm\:pt {
 		@include utilities($spacing, "padding-top", "-");
@@ -41,7 +36,6 @@
 	}
 }
 
-// 1280px+
 @include break-wide() {
 	.lg\:pt {
 		@include utilities($spacing, "padding-top", "-");
