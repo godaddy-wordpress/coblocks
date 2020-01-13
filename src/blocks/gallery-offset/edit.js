@@ -180,9 +180,6 @@ class Edit extends Component {
 
 		const innerClasses = classnames(
 			...GalleryClasses( attributes ),
-			'flex',
-			'flex-wrap',
-			'justify-center',
 			'ml-1',
 			'-mb-1', {
 				[ `sm:ml-${ gutter }` ]: gutter,
