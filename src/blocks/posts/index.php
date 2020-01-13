@@ -86,7 +86,7 @@ function coblocks_render_posts_block( $attributes ) {
  * @return string Returns the block content for the list and grid styles.
  */
 function coblocks_posts( $posts, $attributes ) {
-	$class       = array( 'list-none', 'ml-0', 'pl-0', 'pt-3' );
+	$class       = array( 'ml-0', 'pl-0', 'pt-3' );
 	$class_name  = array( 'wp-block-coblocks-posts' );
 	$block_style = strpos( $attributes['className'], 'is-style-stacked' ) !== false ? 'stacked' : 'horizontal';
 
@@ -99,7 +99,7 @@ function coblocks_posts( $posts, $attributes ) {
 	}
 
 	if ( isset( $attributes['columns'] ) ) {
-		array_push( $class, 'columns columns-' . $attributes['columns'] );
+		array_push( $class, 'has-columns has-' . $attributes['columns'] . '-columns has-responsive-columns has-medium-gutter' );
 	}
 
 	$block_content = sprintf(
@@ -160,7 +160,7 @@ function coblocks_posts( $posts, $attributes ) {
 			}
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-posts__image table flex-0 %1$s"><a href="%2$s" class="block w-full bg-cover bg-center-center pt-full" style="background-image:url(%3$s)"></a></div>',
+				'<div class="wp-block-coblocks-posts__image %1$s"><a href="%2$s" class="bg-cover bg-center-center" style="background-image:url(%3$s)"></a></div>',
 				esc_attr( $image_class ),
 				esc_url( $post['postLink'] ),
 				esc_url( $post['thumbnailURL'] )

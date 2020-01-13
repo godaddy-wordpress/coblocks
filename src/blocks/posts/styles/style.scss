@@ -3,12 +3,24 @@
 		margin-top: map-get($spacing, 2);
 	}
 
-	&.columns-1 > div:first-child {
+	&.has-1-columns > div:first-child {
 		margin-top: 0;
 	}
 
-	&.columns-1 > div:last-child {
+	&.has-1-columns > div:last-child {
 		margin-bottom: 0;
+	}
+}
+
+.wp-block-coblocks-posts__image {
+	display: table;
+	flex: 0 0 auto;
+	position: relative;
+
+	a {
+		display: block;
+		padding-top: 100%;
+		width: 100%;
 	}
 }
 
@@ -18,6 +30,12 @@
 	font-size: $editor-font-size;
 }
 
+.wp-block-coblocks-posts__more-link {
+	align-self: self-start;
+	display: block;
+}
+
+// Theme specific.
 .is-twentynineteen {
 	.wp-block-coblocks-posts {
 		line-height: 1.6;
@@ -40,7 +58,7 @@
 }
 
 .is-twentytwenty {
-	.wp-block-coblocks-posts .columns {
+	.wp-block-coblocks-posts .has-columns {
 		margin-bottom: 0.5em;
 	}
 
