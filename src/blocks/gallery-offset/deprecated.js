@@ -19,13 +19,14 @@ const deprecated =
 	attributes: {
 		...GalleryAttributes,
 		...metadata.attributes,
+		gutter: {
+			type: 'number',
+			default: 1,
+		},
 	},
-	migrate() {
+	migrate( { gutter } ) {
 		return {
-			gutter: {
-				type: 'number',
-				default: 1,
-			},
+			gutter: gutter,
 		};
 	},
 	save( { attributes, className } ) {
