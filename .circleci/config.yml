@@ -351,7 +351,7 @@ jobs:
           name: Deploy the plugin
           command: |
             # Deploy a Coblocks Github pre-release
-            ghr -t ${GH_ACCESS_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "${CHANGELOG}" -delete -prerelease -replace CoBlocks-canary /tmp/artifacts/coblocks-canary.zip
+            ghr -t ${GH_ACCESS_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "Latest build of the `master` branch." -delete -prerelease -replace CoBlocks-canary /tmp/artifacts/coblocks-canary.zip
 
   deploy:
     docker:
