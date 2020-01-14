@@ -1,4 +1,12 @@
 .wp-block-coblocks-gallery-offset {
+
+	.coblocks-gallery {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin-bottom: 0;
+	}
+
 	img {
 		max-height: 22vw;
 		width: auto;
@@ -16,7 +24,7 @@
 		text-align: center;
 		width: 100%;
 
-		@media screen and (max-width: 699px) {
+		@mixin break-small-max() {
 			display: none;
 		}
 	}
@@ -58,6 +66,55 @@
 
 		@include break-large() {
 			max-height: 30vw;
+		}
+	}
+
+	.has-small-gutter,
+	.has-medium-gutter,
+	.has-large-gutter,
+	.has-larger-gutter {
+		margin-bottom: calc(#{map-get($spacing, 1)} * -1 * 2);
+		margin-left: calc(#{map-get($spacing, 1)} * -0.5 * 2);
+
+		figure {
+			margin-bottom: calc(#{map-get($spacing, 1)} * 2);
+			margin-left: calc(#{map-get($spacing, 1)} * 2);
+		}
+	}
+
+	.has-medium-gutter {
+		@include break-small() {
+			margin-bottom: calc(#{map-get($spacing, 2)} * -1 * 2);
+			margin-left: calc(#{map-get($spacing, 2)} * -0.5 * 2);
+
+			figure {
+				margin-bottom: calc(#{map-get($spacing, 2)} * 2);
+				margin-left: calc(#{map-get($spacing, 2)} * 2);
+			}
+		}
+	}
+
+	.has-large-gutter {
+		@include break-small() {
+			margin-bottom: calc(#{map-get($spacing, 3)} * -1 * 2);
+			margin-left: calc(#{map-get($spacing, 3)} * -0.5 * 2);
+
+			figure {
+				margin-bottom: calc(#{map-get($spacing, 3)} * 2);
+				margin-left: calc(#{map-get($spacing, 3)} * 2);
+			}
+		}
+	}
+
+	.has-larger-gutter {
+		@include break-small() {
+			margin-bottom: calc(#{map-get($spacing, 4)} * -1 * 2);
+			margin-left: calc(#{map-get($spacing, 4)} * -0.5 * 2);
+
+			figure {
+				margin-bottom: calc(#{map-get($spacing, 4)} * 2);
+				margin-left: calc(#{map-get($spacing, 4)} * 2);
+			}
 		}
 	}
 }

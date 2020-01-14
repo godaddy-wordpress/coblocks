@@ -36,13 +36,16 @@ const save = ( { attributes, className } ) => {
 
 	const innerClasses = classnames(
 		'wp-block-coblocks-features__inner',
-		...BackgroundClasses( attributes ), {
+		...BackgroundClasses( attributes ),
+		'has-columns', {
+			[ `has-${ columns }-columns` ]: columns,
+			'has-responsive-columns': columns > 1,
 			'has-text-color': textColor || customTextColor,
 			[ textClass ]: textClass,
 			'has-padding': paddingSize && paddingSize !== 'no',
-			[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' ),
+			[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' && paddingSize !== 'no' ),
 			'has-margin': marginSize && marginSize !== 'no',
-			[ `has-${ marginSize }-margin` ]: marginSize && ( marginSize !== 'advanced' ),
+			[ `has-${ marginSize }-margin` ]: marginSize && ( marginSize !== 'advanced' && marginSize !== 'no' ),
 			[ `has-${ gutter }-gutter` ]: gutter,
 			[ `has-${ contentAlign }-content` ]: contentAlign,
 		} );
@@ -53,7 +56,7 @@ const save = ( { attributes, className } ) => {
 	};
 
 	return (
-		<div className={ classes } data-columns={ columns }>
+		<div className={ classes }>
 			<div className={ innerClasses } style={ innerStyles }>
 				{ BackgroundVideo( attributes ) }
 				<InnerBlocks.Content />

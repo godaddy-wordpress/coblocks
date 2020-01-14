@@ -87,12 +87,15 @@ class Edit extends Component {
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-features__inner',
-			...BackgroundClasses( attributes ), {
+			...BackgroundClasses( attributes ),
+			'has-columns',
+			'has-responsive-columns', {
+				[ `has-${ columns }-columns` ]: columns,
 				[ `has-${ gutter }-gutter` ]: gutter,
-				'has-padding': paddingSize && paddingSize !== 'no',
+				'has-padding': paddingSize && paddingSize !== 'no' && paddingSize !== 'no',
 				[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
 				'has-margin': marginSize && marginSize !== 'no',
-				[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'advanced',
+				[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'no' && marginSize !== 'advanced',
 				[ `has-${ contentAlign }-content` ]: contentAlign,
 			}
 		);

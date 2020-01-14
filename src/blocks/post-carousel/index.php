@@ -160,18 +160,18 @@ function coblocks_post_carousel( $posts, $attributes ) {
 		if ( null !== $post['thumbnailURL'] && $post['thumbnailURL'] ) {
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-post-carousel__image table relative flex-0 mb-2 w-full"><a href="%1$s" class="block w-full bg-cover bg-center-center pt-full" style="background-image:url(%2$s)"></a></div>',
+				'<div class="wp-block-coblocks-post-carousel__image"><a href="%1$s" class="bg-cover bg-center-center" style="background-image:url(%2$s)"></a></div>',
 				esc_url( $post['postLink'] ),
 				esc_url( $post['thumbnailURL'] )
 			);
 		}
 
-		$list_items_markup .= '<div class="wp-block-coblocks-post-carousel__content flex flex-col w-full">';
+		$list_items_markup .= '<div class="wp-block-coblocks-post-carousel__content">';
 
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 
 			$list_items_markup .= sprintf(
-				'<time datetime="%1$s" class="wp-block-coblocks-post-carousel__date mb-1">%2$s</time>',
+				'<time datetime="%1$s" class="wp-block-coblocks-post-carousel__date">%2$s</time>',
 				$post['date'],
 				$post['dateReadable']
 			);
@@ -198,7 +198,7 @@ function coblocks_post_carousel( $posts, $attributes ) {
 			$trimmed_excerpt = esc_html( wp_trim_words( $post_excerpt, $attributes['excerptLength'], ' &hellip; ' ) );
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-post-carousel__post-excerpt mt-1">%1$s</div>',
+				'<div class="wp-block-coblocks-post-carousel__excerpt">%1$s</div>',
 				$trimmed_excerpt
 			);
 
@@ -207,7 +207,7 @@ function coblocks_post_carousel( $posts, $attributes ) {
 		if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
 
 			$list_items_markup .= sprintf(
-				'<a href="%1$s" class="wp-block-coblocks-post-carousel__more-link self-start mt-2">%2$s</a>',
+				'<a href="%1$s" class="wp-block-coblocks-post-carousel__more-link">%2$s</a>',
 				esc_url( $post['postLink'] ),
 				esc_html( $attributes['postLink'] )
 			);
