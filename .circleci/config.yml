@@ -304,10 +304,13 @@ jobs:
       - checkout
       - run:
           name: Add test server to the known hosts file
-          command: ssh-keyscan a90.8f7.myftpupload.com >> ~/.ssh/known_hosts
+          command: ssh-keyscan ${STAGING_SITE_PORT} >> ~/.ssh/known_hosts
       - run:
           name: Update npm
           command: sudo npm install -g npm@latest
+      - run:
+          name: Install rsync
+          command: sudo apt install rsync
       - run:
           name: Install Grunt.js
           command: sudo npm install -g grunt-cli
