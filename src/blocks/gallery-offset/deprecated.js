@@ -68,6 +68,9 @@ const deprecated =
 
 		const innerClasses = classnames(
 			...GalleryClasses( attributes ),
+			'flex',
+			'flex-wrap',
+			'justify-center',
 			'mb-0',
 			'ml-1',
 			'-mb-1', {
