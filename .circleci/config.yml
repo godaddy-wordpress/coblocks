@@ -306,6 +306,9 @@ jobs:
             - "0e:f8:0a:19:88:42:c3:5a:b9:82:17:34:6b:40:68:21"
       - checkout
       - run:
+          name: Add Heroku to known_hosts
+          command: ssh-keyscan -H a90.8f7.myftpupload.com >> ~/.ssh/known_hosts
+      - run:
           name: Update npm
           command: sudo npm install -g npm@latest
       - run:
