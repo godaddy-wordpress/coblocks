@@ -32,9 +32,16 @@ const save = ( { attributes, className } ) => {
 	);
 
 	const innerClasses = classnames(
-		...GalleryClasses( attributes ), {
+		...GalleryClasses( attributes ),
+		'flex',
+		'flex-wrap',
+		'justify-center',
+		'mb-0',
+		'ml-1',
+		'-mb-1', {
+			[ `sm:ml-${ gutter }` ]: gutter,
+			[ `sm:-mb-${ gutter }` ]: gutter,
 			[ `coblocks-gallery--${ gridSize }` ]: gridSize,
-			[ `has-${ gutter }-gutter` ]: gutter,
 		},
 	);
 
@@ -62,11 +69,28 @@ const save = ( { attributes, className } ) => {
 						image.id ? [ `wp-image-${ image.id }` ] : null, {}
 					);
 
+					let gutterClasses;
+
+					switch ( gutter ) {
+						case 0:
+							gutterClasses = 'm-0';
+							break;
+						case 1:
+							gutterClasses = 'mr-1 mb-1';
+							break;
+						case 2:
+							gutterClasses = 'mr-1 sm:mr-2 md:mr-3 mb-1 sm:mb-2 md:mb-3';
+							break;
+						case 3:
+							gutterClasses = 'mr-1 sm:mr-2 md:mr-3 lg:mr-4 mb-1 sm:mb-2 md:mb-3 lg:mb-4';
+							break;
+					}
+
 					const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ imgClasses } />;
 
 					return (
 						<li key={ image.id || image.url } className="coblocks-gallery--item">
-							<figure className="wp-block-coblocks-gallery-offset__figure">
+							<figure className={ classnames( 'wp-block-coblocks-gallery-offset__figure', gutterClasses ) }>
 								{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
 								{ captions && image.caption && image.caption.length > 0 && (
 									<RichText.Content tagName="figcaption" className="coblocks-gallery--caption" value={ image.caption } />
