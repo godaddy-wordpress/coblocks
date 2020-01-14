@@ -99,8 +99,8 @@ class Inspector extends Component {
 				shortName: __( 'L', 'coblocks' ),
 			},
 			{
-				value: 'larger',
-				label: __( 'Larger', 'coblocks' ),
+				value: 'huge',
+				label: __( 'Huge', 'coblocks' ),
 				/* translators: abbreviation for largest size */
 				shortName: __( 'XL', 'coblocks' ),
 			},

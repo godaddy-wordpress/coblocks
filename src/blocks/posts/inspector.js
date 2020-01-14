@@ -69,9 +69,9 @@ const Inspector = props => {
 			tooltip: /* translators: label for large size option */ __( 'Large', 'coblocks' ),
 		},
 		{
-			value: 'larger',
+			value: 'huge',
 			label: /* translators: abbreviation for extra large size */ __( 'XL', 'coblocks' ),
-			tooltip: /* translators: label for extra large size option */ __( 'Extra Large', 'coblocks' ),
+			tooltip: /* translators: label for extra large size option */ __( 'Huge', 'coblocks' ),
 		},
 	];
 

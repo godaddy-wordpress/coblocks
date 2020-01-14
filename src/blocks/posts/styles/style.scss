@@ -84,7 +84,7 @@
 		}
 	}
 
-	.has-larger-image & {
+	.has-huge-image & {
 
 		@include break-small() {
 			height: 33.33%;
