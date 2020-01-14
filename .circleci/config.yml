@@ -336,12 +336,12 @@ jobs:
             mkdir -p /tmp/artifacts
             grunt build
             grunt compress
-            mv build/*.zip /tmp/artifacts/go-canary.zip
+            mv build/*.zip /tmp/artifacts/coblocks-canary.zip
       - deploy:
           name: Deploy the plugin
           command: |
             # Deploy a Coblocks Github pre-release
-            ghr -t ${GH_ACCESS_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "${CHANGELOG}" -delete -prerelease -replace go-canary /tmp/artifacts/go-canary.zip
+            ghr -t ${GH_ACCESS_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "${CHANGELOG}" -delete -prerelease -replace CoBlocks-canary /tmp/artifacts/coblocks-canary.zip
 
   deploy:
     docker:
