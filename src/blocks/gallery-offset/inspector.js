@@ -139,7 +139,7 @@ class Inspector extends Component {
 						</PanelRow>
 					</BaseControl>
 
-					{ gutter !== 'none' &&
+					{ gutter !== 'no' &&
 						<RangeControl
 							label={ __( 'Rounded Corners' ) }
 							value={ radius }
