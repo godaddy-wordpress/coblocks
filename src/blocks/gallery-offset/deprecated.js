@@ -19,14 +19,29 @@ const deprecated =
 	attributes: {
 		...GalleryAttributes,
 		...metadata.attributes,
-		gutter: {
-			type: 'number',
-			default: 1,
-		},
 	},
-	migrate( { gutter } ) {
+	migrate( { attributes } ) {
+		let newGutter = '';
+		switch ( attributes.gutter ) {
+			case 0:
+				newGutter = 'xsmall';
+				break;
+			case 1:
+				newGutter = 'small';
+				break;
+			case 2:
+				newGutter = 'medium';
+				break;
+			case 3:
+				newGutter = 'large';
+				break;
+			case 4:
+				newGutter = 'huge';
+				break;
+		}
 		return {
-			gutter: gutter,
+			...attributes,
+			gutter: newGutter,
 		};
 	},
 	save( { attributes, className } ) {
