@@ -7,7 +7,8 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import metadata from './block.json';
-import { BackgroundStyles, BackgroundClasses, BackgroundVideo } from '../../components/background';
+import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundAttributes } from '../../components/background';
+import DimensionsAttributes from '../../components/dimensions-control/attributes';
 
 /**
  * WordPress dependencies
@@ -17,6 +18,8 @@ import { InnerBlocks, getColorClassName } from '@wordpress/block-editor';
 const deprecated =
 [ {
 	attributes: {
+		...DimensionsAttributes,
+		...BackgroundAttributes,
 		...metadata.attributes,
 	},
 	save( { attributes, className } ) {
