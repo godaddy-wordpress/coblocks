@@ -301,10 +301,10 @@ jobs:
     docker:
       - image: circleci/golang:latest-node-browsers-legacy
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "73:17:41:85:6e:96:47:ff:85:73:df:c0:bf:06:85:9f"
       - checkout
-      - run:
-          name: Add test server to the known hosts file
-          command: ssh-keyscan 198.71.233.109 >> ~/.ssh/known_hosts
       - run:
           name: Update npm
           command: sudo npm install -g npm@latest
