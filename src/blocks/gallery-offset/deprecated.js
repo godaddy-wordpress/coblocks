@@ -20,6 +20,14 @@ const deprecated =
 		...GalleryAttributes,
 		...metadata.attributes,
 	},
+	migrate() {
+		return {
+			gutter: {
+				type: 'number',
+				default: 1,
+			},
+		};
+	},
 	save( { attributes, className } ) {
 		const {
 			captions,
