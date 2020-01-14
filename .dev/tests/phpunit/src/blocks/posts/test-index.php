@@ -63,7 +63,7 @@ class CoBlocks_Posts_Index_Tests extends WP_UnitTestCase {
 		global $post;
 		$post = get_post( $post_id );
 
-		$this->assertEquals( '<div class="wp-block-coblocks-posts test-class-name"><div class="wp-block-coblocks-posts__inner has-columns has-2-columns has-responsive-columns has-medium-gutter"></div></div>', coblocks_render_posts_block( $attributes ) );
+		$this->assertEquals( '<div class="test-class-name"><div class="wp-block-coblocks-posts__inner"></div></div>', coblocks_render_posts_block( $attributes ) );
 	}
 
 	/**
