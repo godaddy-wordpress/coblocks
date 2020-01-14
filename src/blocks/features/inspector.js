@@ -86,6 +86,7 @@ class Inspector extends Component {
 			{ value: 'small', label: __( 'Small', 'coblocks' ) },
 			{ value: 'medium', label: __( 'Medium', 'coblocks' ) },
 			{ value: 'large', label: __( 'Large', 'coblocks' ) },
+			{ value: 'huge', label: __( 'Huge', 'coblocks' ) },
 		];
 
 		return (
