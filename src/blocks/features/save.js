@@ -43,9 +43,9 @@ const save = ( { attributes, className } ) => {
 			'has-text-color': textColor || customTextColor,
 			[ textClass ]: textClass,
 			'has-padding': paddingSize && paddingSize !== 'no',
-			[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' && paddingSize !== 'no' ),
+			[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' ),
 			'has-margin': marginSize && marginSize !== 'no',
-			[ `has-${ marginSize }-margin` ]: marginSize && ( marginSize !== 'advanced' && marginSize !== 'no' ),
+			[ `has-${ marginSize }-margin` ]: marginSize && ( marginSize !== 'advanced' ),
 			[ `has-${ gutter }-gutter` ]: gutter,
 			[ `has-${ contentAlign }-content` ]: contentAlign,
 		} );
