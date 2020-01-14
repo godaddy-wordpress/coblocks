@@ -24,7 +24,7 @@ const deprecated =
 			default: 1,
 		},
 	},
-	migrate( { attributes } ) {
+	migrate( attributes ) {
 		let newGutter = '';
 		switch ( attributes.gutter ) {
 			case 0:
