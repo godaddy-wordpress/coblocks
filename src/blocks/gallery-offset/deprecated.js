@@ -19,6 +19,10 @@ const deprecated =
 	attributes: {
 		...GalleryAttributes,
 		...metadata.attributes,
+		gutter: {
+			type: 'number',
+			default: 1,
+		},
 	},
 	migrate( { attributes } ) {
 		let newGutter = '';
