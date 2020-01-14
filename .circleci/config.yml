@@ -303,6 +303,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Add test server to the known hosts file
+          command: ssh-keyscan a90.8f7.myftpupload.com >> ~/.ssh/known_hosts
+      - run:
           name: Update npm
           command: sudo npm install -g npm@latest
       - run:
@@ -337,6 +340,10 @@ jobs:
             grunt build
             grunt compress
             mv build/*.zip /tmp/artifacts/coblocks-canary.zip
+      - run:
+          name: Deploy CoBlocks to the test server
+          command: |
+            rsync --stats --delete -avz -e "ssh -p22" ./build/ ${STAGING_SITE_SSH_CREDS}:${STAGING_SITE_PLUGIN_PATH}
       - deploy:
           name: Deploy the plugin
           command: |
@@ -348,6 +355,12 @@ jobs:
       - image: circleci/golang:latest-node-browsers-legacy
     steps:
       - checkout
+      - run:
+          name: Determine if this is a canary build
+          command: |
+            if [[ ${CIRCLE_TAG} == *"canary"* ]]; then
+              circleci-agent step halt
+            fi
       - run:
           name: Update npm
           command: sudo npm install -g npm@latest
