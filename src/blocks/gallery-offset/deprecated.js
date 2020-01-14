@@ -24,7 +24,7 @@ const deprecated =
 		let newGutter = '';
 		switch ( attributes.gutter ) {
 			case 0:
-				newGutter = 'xsmall';
+				newGutter = 'no';
 				break;
 			case 1:
 				newGutter = 'small';
