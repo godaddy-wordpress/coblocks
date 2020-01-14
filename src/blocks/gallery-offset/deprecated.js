@@ -6,7 +6,6 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import { BackgroundAttributes } from '../../components/background';
 import { GalleryAttributes, GalleryClasses } from '../../components/block-gallery/shared';
 import metadata from './block.json';
 
@@ -19,7 +18,6 @@ const deprecated =
 [ {
 	attributes: {
 		...GalleryAttributes,
-		...BackgroundAttributes,
 		...metadata.attributes,
 	},
 	save( { attributes, className } ) {
