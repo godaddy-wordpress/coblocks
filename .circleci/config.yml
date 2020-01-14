@@ -304,7 +304,7 @@ jobs:
       - checkout
       - run:
           name: Add test server to the known hosts file
-          command: ssh-keyscan ${STAGING_SITE_PORT} >> ~/.ssh/known_hosts
+          command: ssh-keyscan 198.71.233.109 >> ~/.ssh/known_hosts
       - run:
           name: Update npm
           command: sudo npm install -g npm@latest
