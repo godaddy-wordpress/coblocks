@@ -340,9 +340,8 @@ jobs:
       - deploy:
           name: Deploy the plugin
           command: |
-            PLUGIN_VERSION=$(grep '"version":' package.json -m1 | cut -d\" -f4)
             # Deploy a Coblocks Github pre-release
-            ghr -t ${GH_ACCESS_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "${CHANGELOG}" -delete ${PLUGIN_VERSION}-canary /tmp/artifacts/go-canary.zip
+            ghr -t ${GH_ACCESS_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "${CHANGELOG}" -delete go-canary -prerelease -replace /tmp/artifacts/go-canary.zip
 
   deploy:
     docker:
