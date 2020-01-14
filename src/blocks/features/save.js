@@ -36,17 +36,17 @@ const save = ( { attributes, className } ) => {
 
 	const innerClasses = classnames(
 		'wp-block-coblocks-features__inner',
-		...BackgroundClasses( attributes ),
-		'has-columns', {
+		...BackgroundClasses( attributes ), {
+			'has-columns': columns > 1,
 			[ `has-${ columns }-columns` ]: columns,
 			'has-responsive-columns': columns > 1,
+			[ `has-${ gutter }-gutter` ]: gutter,
 			'has-text-color': textColor || customTextColor,
 			[ textClass ]: textClass,
 			'has-padding': paddingSize && paddingSize !== 'no',
 			[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' ),
 			'has-margin': marginSize && marginSize !== 'no',
 			[ `has-${ marginSize }-margin` ]: marginSize && ( marginSize !== 'advanced' ),
-			[ `has-${ gutter }-gutter` ]: gutter,
 			[ `has-${ contentAlign }-content` ]: contentAlign,
 		} );
 

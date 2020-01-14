@@ -87,8 +87,8 @@ class Edit extends Component {
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-features__inner',
-			...BackgroundClasses( attributes ),
-			'has-columns', {
+			...BackgroundClasses( attributes ), {
+				'has-columns': columns > 1,
 				[ `has-${ columns }-columns` ]: columns,
 				'has-responsive-columns': columns > 1,
 				[ `has-${ gutter }-gutter` ]: gutter,
