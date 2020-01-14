@@ -20,6 +20,10 @@ workflows:
           filters:
             tags:
               only: /.*/
+      - canary-release:
+          filters:
+            branches:
+              only: canary-release
       - i18n:
           filters:
             branches:
@@ -292,6 +296,53 @@ jobs:
               git push origin master --quiet
             fi
           path: ~/coblocks
+
+  canary-release:
+    docker:
+      - image: circleci/golang:latest-node-browsers-legacy
+    steps:
+      - checkout
+      - run:
+          name: Update npm
+          command: sudo npm install -g npm@latest
+      - run:
+          name: Install Grunt.js
+          command: sudo npm install -g grunt-cli
+      - run:
+          name: Install SVN
+          command: sudo apt-get update && sudo apt-get install subversion
+      - run:
+          name: Install PHP
+          command: sudo apt-get install php libapache2-mod-php php-mbstring
+      - run:
+          name: Install gettext
+          command: sudo apt-get install gettext
+      - run:
+          name: Install WPCLI
+          command: |
+            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+            chmod +x wp-cli.phar
+            sudo mv wp-cli.phar /usr/local/bin/wp
+      - run:
+          name: Install ghr
+          command: |
+            go get -u github.com/tcnksm/ghr
+      - run:
+          name: Install node packages
+          command: npm install
+      - run:
+          name: Build the plugin
+          command: |
+            mkdir -p /tmp/artifacts
+            grunt build
+            grunt compress
+            mv build/*.zip /tmp/artifacts/go-canary.zip
+      - deploy:
+          name: Deploy the plugin
+          command: |
+            PLUGIN_VERSION=$(grep '"version":' package.json -m1 | cut -d\" -f4)
+            # Deploy a Coblocks Github pre-release
+            ghr -t ${GH_ACCESS_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "${CHANGELOG}" -delete ${PLUGIN_VERSION}-canary /tmp/artifacts/go-canary.zip
 
   deploy:
     docker:
