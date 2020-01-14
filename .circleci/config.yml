@@ -303,7 +303,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "73:17:41:85:6e:96:47:ff:85:73:df:c0:bf:06:85:9f"
+            - "73:17:41:85:6e:96:47:ff:85:73:df:c0:bf:06:85:9f" 
       - checkout
       - run:
           name: Update npm
