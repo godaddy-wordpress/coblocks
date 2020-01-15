@@ -29,7 +29,7 @@
 		}
 	}
 
-	.coblocks-gallery--sml img {
+	.has-small-images img {
 		@include break-small() {
 			max-height: 22vw;
 		}
@@ -39,7 +39,7 @@
 		}
 	}
 
-	.coblocks-gallery--med img {
+	.has-medium-images img {
 		@include break-small() {
 			max-height: 28vw;
 		}
@@ -49,7 +49,7 @@
 		}
 	}
 
-	.coblocks-gallery--lrg img {
+	.has-large-images img {
 		@include break-small() {
 			max-height: 40vw;
 		}
@@ -59,7 +59,7 @@
 		}
 	}
 
-	.coblocks-gallery--xlrg img {
+	.has-huge-images img {
 		@include break-small() {
 			max-height: 40vw;
 		}

@@ -19,6 +19,10 @@ const deprecated =
 	attributes: {
 		...GalleryAttributes,
 		...metadata.attributes,
+		gridSize: {
+			type: 'string',
+			default: 'sml',
+		},
 		gutter: {
 			type: 'number',
 			default: 1,
@@ -43,9 +47,22 @@ const deprecated =
 				newGutter = 'huge';
 				break;
 		}
+		let newGridSize = '';
+		switch ( attributes.gutter ) {
+			case 'sml':
+				newGridSize = 'small';
+				break;
+			case 'med':
+				newGridSize = 'medium';
+				break;
+			case 'lrg':
+				newGridSize = 'large';
+				break;
+		}
 		return {
 			...attributes,
 			gutter: newGutter,
+			gridSize: newGridSize,
 		};
 	},
 	save( { attributes, className } ) {

@@ -33,8 +33,8 @@ const save = ( { attributes, className } ) => {
 
 	const innerClasses = classnames(
 		...GalleryClasses( attributes ), {
+			[ `has-${ gridSize }-images` ]: gridSize,
 			[ `has-${ gutter }-gutter` ]: gutter,
-			[ `coblocks-gallery--${ gridSize }` ]: gridSize,
 		},
 	);
 
