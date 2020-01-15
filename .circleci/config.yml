@@ -349,7 +349,7 @@ jobs:
       - run:
           name: Deploy CoBlocks to the test server
           command: |
-            rsync --stats --delete -avz -e "ssh -p22" ./build/ ${STAGING_SITE_SSH_CREDS}:${STAGING_SITE_PLUGIN_PATH}
+            rsync --stats --delete -avz -e "ssh -p22" ./build/coblocks/ ${STAGING_SITE_SSH_CREDS}:${STAGING_SITE_PLUGIN_PATH}
       - deploy:
           name: Create a canary release on Github
           command: ghr -t ${GH_ACCESS_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "Latest build of the master branch." -delete -prerelease -replace canary /tmp/artifacts/coblocks-canary.zip
