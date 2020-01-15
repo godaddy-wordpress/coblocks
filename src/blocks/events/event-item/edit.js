@@ -47,7 +47,6 @@ class EventsEdit extends Component {
 				<InspectorControls { ...this.props }
 				/>
 				<div
-					data-page={ String( attributes.pageNum ) }
 					className={ classnames( className, 'w-full', 'md:flex', 'mb-2', 'justify-between', {
 						'has-text-color': textColor.color,
 						[ textColor.class ]: textColor.class,

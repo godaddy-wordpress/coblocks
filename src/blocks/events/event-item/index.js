@@ -28,7 +28,6 @@ const settings = {
 	icon,
 	attributes,
 	supports: {
-		inserter: false,
 		reusable: false,
 		html: false,
 	},

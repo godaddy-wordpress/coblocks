@@ -16,9 +16,7 @@
 function coblocks_render_events_block( $attributes, $content ) {
 
 	if ( empty( $attributes['externalCalendarUrl'] ) ) {
-
 		return $content;
-
 	}
 
 	try {
@@ -48,7 +46,6 @@ function coblocks_render_events_block( $attributes, $content ) {
 
 		$text_color_class  = is_array( $attributes ) && isset( $attributes['textColor'] ) ? "has-{$attributes['textColor']}-color" : false;
 		$custom_text_color = is_array( $attributes ) && isset( $attributes['customTextColor'] ) && isset( $attributes['hasColors'] ) && ( ! $attributes['hasColors'] && ! isset( $attributes['textColor'] ) ) ? "color: {$attributes['customTextColor']};" : '';
-		$align             = is_array( $attributes ) && isset( $attributes['align'] ) ? "align{$attributes['align']} " : '';
 
 		$class = 'wp-block-coblocks-events';
 		if ( isset( $attributes['className'] ) ) {
@@ -56,14 +53,17 @@ function coblocks_render_events_block( $attributes, $content ) {
 		}
 
 		if ( isset( $attributes['align'] ) ) {
-			$class .= ' align' . $align;
+			$class .= ' align' . $attributes['align'];
 		}
 
-		$events_layout = sprintf( '<div class="%1$s">', esc_attr( $class ) );
+		$events_layout = sprintf(
+			'<div class="%1$s" data-per-page="%2$s">',
+			esc_attr( $class ),
+			esc_attr( $attributes['eventsToShow'] )
+		);
 
-		foreach ( $events as $i => $event ) {
-			$page_num       = (int) ( $i / $attributes['eventsToShow'] );
-			$events_layout .= sprintf( '<div class="wp-block-coblocks-event-item w-full md:flex mb-2" data-page="%1$s">', $page_num );
+		foreach ( $events as $event ) {
+			$events_layout .= '<div class="wp-block-coblocks-event-item w-full md:flex mb-2">';
 
 			$dtstart           = $ical->ical_date_to_date_time( $event->dtstart_array[3] );
 			$dtend             = $ical->ical_date_to_date_time( $event->dtend_array[3] );
@@ -113,13 +113,6 @@ function coblocks_render_events_block( $attributes, $content ) {
 			$events_layout .= '</div>';
 		}
 
-		if ( count( $events ) > $attributes['eventsToShow'] ) {
-			$events_layout .= sprintf(
-				'<div class="wp-block-coblocks-events__more-events-wrapper flex %1$s"><p>%1$s</p></div>',
-				__( 'More Events', 'coblocks' )
-			);
-		}
-
 		$events_layout .= '</div>';
 
 		return $events_layout;
@@ -143,16 +136,6 @@ function coblocks_register_events_block() {
 
 	}
 
-	$dir = CoBlocks()->asset_source( 'js' );
-
-	wp_register_script(
-		'coblocks-events',
-		$dir . 'coblocks-events' . COBLOCKS_ASSET_SUFFIX . '.js',
-		array( 'jquery' ),
-		COBLOCKS_VERSION,
-		true
-	);
-
 	// Load attributes from block.json.
 	ob_start();
 	include COBLOCKS_PLUGIN_DIR . 'src/blocks/events/block.json';
@@ -163,7 +146,6 @@ function coblocks_register_events_block() {
 		array(
 			'attributes'      => $metadata['attributes'],
 			'render_callback' => 'coblocks_render_events_block',
-			'editor_script'   => 'coblocks-events',
 		)
 	);
 }

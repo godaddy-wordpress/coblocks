@@ -10,23 +10,15 @@ const Inspector = props => {
 		attributes,
 		toggleExternalCalendarControls,
 		showExternalCalendarControls,
-		onChangeVisibleEvents,
-		setAttributes,
-		innerBlocks,
+		eventsRangeOptions,
+		onChangeEventsToShow,
+		onChangeEventsRange,
 	} = props;
 
 	const {
-		eventsRange,
 		eventsToShow,
-		externalCalendarUrl,
+		eventsRange,
 	} = attributes;
-
-	const eventsRangeOptions = [
-		{ value: '1 week', label: __( '1 Week', 'coblocks' ) },
-		{ value: '2 weeks', label: __( '2 Weeks', 'coblocks' ) },
-		{ value: '1 month', label: __( '1 Month', 'coblocks' ) },
-		{ value: 'all', label: __( 'Fetch all', 'coblocks' ) },
-	];
 
 	return (
 		<InspectorControls>
@@ -41,22 +33,22 @@ const Inspector = props => {
 					checked={ showExternalCalendarControls }
 					onChange={ () => toggleExternalCalendarControls() }
 				/>
-				{ innerBlocks.length > 5 &&
+				{ showExternalCalendarControls &&
 					<RangeControl
 						label={ __( 'Events per page', 'coblocks' ) }
 						value={ eventsToShow }
-						onChange={ onChangeVisibleEvents }
-						min={ 5 }
+						onChange={ value => onChangeEventsToShow( value ) }
+						min={ 1 }
 						max={ 15 }
 					/>
 				}
-				{ showExternalCalendarControls && externalCalendarUrl &&
+				{ showExternalCalendarControls &&
 					<SelectControl
 						label={ __( 'Period', 'coblocks' ) }
 						value={ eventsRange }
 						options={ eventsRangeOptions }
 						help={ __( 'Show events from the period (100 events max).', 'coblocks' ) }
-						onChange={ ( value ) => setAttributes( { eventsRange: value } ) }
+						onChange={ value => onChangeEventsRange( value ) }
 					/>
 				}
 			</PanelBody>

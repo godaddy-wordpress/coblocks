@@ -1,3 +1,5 @@
+/*global MutationObserver, jQuery*/
+
 /**
  * Internal dependencies.
  */
@@ -14,6 +16,7 @@ import classnames from 'classnames';
  */
 import { Toolbar, Placeholder, Button, TextControl, ServerSideRender } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import { createBlock } from '@wordpress/blocks';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withSelect, dispatch } from '@wordpress/data';
@@ -25,6 +28,13 @@ const TEMPLATE = [
 	[ 'coblocks/event-item' ],
 ];
 
+const EVENTS_RANGE_OPTIONS = [
+	{ value: '1 week', label: __( '1 Week', 'coblocks' ) },
+	{ value: '2 weeks', label: __( '2 Weeks', 'coblocks' ) },
+	{ value: '1 month', label: __( '1 Month', 'coblocks' ) },
+	{ value: 'all', label: __( 'Fetch all', 'coblocks' ) },
+];
+
 class EventItem extends Component {
 	constructor() {
 		super( ...arguments );
@@ -33,12 +43,69 @@ class EventItem extends Component {
 			isEditing: false,
 			showExternalCalendarControls: !! this.props.attributes.externalCalendarUrl || false,
 			externalCalendarUrl: this.props.attributes.externalCalendarUrl,
-			currentPage: this.props.innerBlocks.length,
 		};
 
 		this.toggleExternalCalendarControls = this.toggleExternalCalendarControls.bind( this );
 		this.saveExternalCalendarUrl = this.saveExternalCalendarUrl.bind( this );
 		this.insertNewItem = this.insertNewItem.bind( this );
+
+		this.mutationObserverCallback = this.mutationObserverCallback.bind( this );
+	}
+
+	/**
+	 * Setup the MutationObserver.
+	 */
+	componentDidMount() {
+		this.observer = new MutationObserver( this.mutationObserverCallback );
+		this.observer.observe( this.el, { childList: true } );
+	}
+
+	/**
+	 * Refresh Slick to prevent display oddities when the block isSelected prop changes.
+	 */
+	componentDidUpdate() {
+		if ( this.slickTarget ) {
+			jQuery( this.slickTarget ).slick( 'slickSetOption', 'infinite', false, true );
+		}
+	}
+
+	/**
+	 * Disconnect the MutationObserver and remove Slick carousels.
+	 */
+	componentWillUnmount() {
+		this.observer.disconnect();
+		jQuery( this.slickTarget ).slick( 'unslick' );
+	}
+
+	/**
+	 * The callback for our MutationObserver.
+	 *
+	 * A React Ref is used to track changes to our ServerSideRender component
+	 * in order to initialize Slick Carousel for the rendered content.
+	 *
+	 * @param {Array} mutationsList List of objects describing each change that occurred.
+	 */
+	mutationObserverCallback( mutationsList ) {
+		for ( const mutation of mutationsList ) {
+			if ( mutation.type === 'childList' && mutation.addedNodes.length > 0 ) {
+				if ( mutation.addedNodes[ 0 ].outerHTML.match( 'wp-block-coblocks-events' ) ) {
+					this.slickTarget = mutation.addedNodes[ 0 ].children[ 0 ];
+
+					// jQuery( this.slickTarget ).slick( 'unslick' );
+
+					jQuery( this.slickTarget ).slick( {
+						infinite: false,
+						rows: this.slickTarget.dataset.perPage,
+
+						// Slick settings to disable within the Block Editor to prevent conflicts.
+						accessibility: false, // Disable tabbing and arrow key navigation.
+						draggable: false, // Disable mouse dragging slides.
+						swipe: false, // Disable swiping slides.
+						touchMove: false, // Disable touch swiping slides.
+					} );
+				}
+			}
+		}
 	}
 
 	toggleExternalCalendarControls() {
@@ -57,43 +124,16 @@ class EventItem extends Component {
 	}
 
 	insertNewItem() {
-		const { clientId, attributes } = this.props;
-
-		const newItemPageNumber = Math.floor( this.props.innerBlocks.length / attributes.eventsToShow );
-
-		const lastItemOnPage = this.props.innerBlocks.length % attributes.eventsToShow === ( attributes.eventsToShow - 1 );
-
-		const newEventBlock = TEMPLATE.map( ( [ blockName, blockAttributes ] ) =>
-			wp.blocks.createBlock(
-				blockName,
-				Object.assign( {}, blockAttributes, {
-					pageNum: newItemPageNumber,
-					lastItem: lastItemOnPage,
-				} )
-			)
-		);
-
-		this.setState( { currentPage: newItemPageNumber } );
-
-		this.props.innerBlocks.push( newEventBlock[ 0 ] );
-
-		dispatch( 'core/block-editor' ).insertBlock( newEventBlock[ 0 ], this.props.innerBlocks.length, clientId );
-
-		this.props.innerBlocks.map( ( key ) => {
-			key.originalContent = '';
-			if ( key.attributes.pageNum !== newItemPageNumber ) {
-				key.originalContent = key.originalContent.replace( 'wp-block-coblocks-event-item', 'wp-block-coblocks-event-item hide-item' );
-			}
-		} );
+		const { clientId, innerBlocks } = this.props;
+		const newEvent = createBlock( 'coblocks/event-item' );
+		dispatch( 'core/block-editor' ).insertBlock( newEvent, innerBlocks.length, clientId );
 	}
 
 	render() {
 		const {
 			className,
 			attributes,
-			isSelected,
-			clientId,
-			selectedParentClientId,
+			setAttributes,
 		} = this.props;
 
 		const toolbarControls = [
@@ -107,9 +147,12 @@ class EventItem extends Component {
 		return (
 			<Fragment>
 				<InspectorControls
-					{ ...this.props }
+					attributes={ attributes }
 					toggleExternalCalendarControls={ this.toggleExternalCalendarControls }
 					showExternalCalendarControls={ this.state.showExternalCalendarControls }
+					eventsRangeOptions={ EVENTS_RANGE_OPTIONS }
+					onChangeEventsToShow={ eventsToShow => setAttributes( { eventsToShow } ) }
+					onChangeEventsRange={ eventsRange => setAttributes( { eventsRange } ) }
 				/>
 
 				{ !! attributes.externalCalendarUrl &&
@@ -135,41 +178,32 @@ class EventItem extends Component {
 					</Placeholder>
 				}
 
-				{ ! attributes.externalCalendarUrl &&
-					<div className={ classnames( className, 'coblocks-custom-event',
-						{
-							'child-selected': isSelected || clientId === selectedParentClientId,
-						}
-					) }>
+				{ ! attributes.externalCalendarUrl && ! this.state.showExternalCalendarControls &&
+					<div className={ classnames( className, 'coblocks-custom-event' ) }>
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
 							template={ TEMPLATE }
 							templateInsertUpdatesSelection={ false }
+							renderAppender={ () => <CustomAppender onClick={ this.insertNewItem } /> }
 						/>
-						{ ( isSelected || clientId === selectedParentClientId ) && ! attributes.linkACalendar && (
-							<CustomAppender onClick={ this.insertNewItem } />
-						) }
 					</div>
 				}
 
-				{ !! attributes.externalCalendarUrl &&
-					<ServerSideRender
-						block="coblocks/events"
-						attributes={ this.props.attributes }
-					/>
-				}
+				<div ref={ el => this.el = el }>
+					{ !! attributes.externalCalendarUrl &&
+						<ServerSideRender
+							block="coblocks/events"
+							attributes={ this.props.attributes }
+						/>
+					}
+				</div>
 			</Fragment>
 		);
 	}
 }
 
 const applyWithSelect = withSelect( ( select, blockData ) => {
-	const selectedClientId = select( 'core/block-editor' ).getBlockSelectionStart();
-	const parentClientId = select( 'core/block-editor' ).getBlockRootClientId(
-		selectedClientId
-	);
 	return {
-		selectedParentClientId: parentClientId,
 		innerBlocks: select( 'core/block-editor' ).getBlocks( blockData.clientId ),
 	};
 } );

@@ -1,10 +1,7 @@
 .wp-block-coblocks-event-item {
 	flex: 1 100%;
 	line-height: 1;
-
-	.show-more-details::before {
-		content: "+ ";
-	}
+	display: flex !important;
 }
 
 .wp-block-coblocks-events__date {
