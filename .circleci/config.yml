@@ -23,7 +23,7 @@ workflows:
       - canary-release:
           filters:
             branches:
-              only: master
+              only: canary-release
       - i18n:
           filters:
             branches:
