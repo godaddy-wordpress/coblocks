@@ -36,7 +36,7 @@ const deprecated =
 				newGutter = 'small';
 				break;
 			case 2:
-				newGutter = 'medium';
+				newGutter = 'small';
 				break;
 			case 3:
 				newGutter = 'large';
