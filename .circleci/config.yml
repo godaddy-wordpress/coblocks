@@ -7,23 +7,23 @@ workflows:
       - php56:
           filters:
             tags:
-              only: /.*/
+              only: /^(?!canary).*$/
       - php72: # Will be deprecated on 30 Nov 2020
           filters:
             tags:
-              only: /.*/
+              only: /^(?!canary).*$/
       - jest:
           filters:
             tags:
-              only: /.*/
+              only: /^(?!canary).*$/
       - e2e:
           filters:
             tags:
-              only: /.*/
+              only: /^(?!canary).*$/
       - canary-release:
           filters:
             branches:
-              only: canary-release
+              only: master
       - i18n:
           filters:
             branches:
