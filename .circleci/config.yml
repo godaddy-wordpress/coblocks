@@ -351,8 +351,8 @@ jobs:
             npm run po2mo
             npm run po2jed
             cp -r languages/ build/coblocks/languages/
-            grunt compress
-            mv build/*.zip /tmp/artifacts/coblocks-canary.zip
+            cd build && zip -r coblocks-canary.zip coblocks
+            mv coblocks-canary.zip /tmp/artifacts/coblocks-canary.zip
       - run:
           name: Deploy CoBlocks to the test server
           command: |
