@@ -36,7 +36,7 @@ workflows:
             - e2e
           filters:
             tags:
-              only: /.*/
+              only: /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*)?(\+[0-9-]+(\.[0-9]+)*)?/ # Run on semantic version tags only
             branches:
               ignore: /.*/
 
@@ -359,12 +359,6 @@ jobs:
       - image: circleci/golang:latest-node-browsers-legacy
     steps:
       - checkout
-      - run:
-          name: Determine if this is a canary build
-          command: |
-            if [[ ${CIRCLE_TAG} == *"canary"* ]]; then
-              circleci-agent step halt
-            fi
       - run:
           name: Update npm
           command: sudo npm install -g npm@latest
