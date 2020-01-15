@@ -8,18 +8,18 @@ import classnames from 'classnames';
  */
 import { RichText } from '@wordpress/block-editor';
 
-const save = ( { attributes } ) => {
+const save = ( { attributes, className } ) => {
 	const {
-		captionStyle,
 		captions,
-		gutter,
+		captionStyle,
 		filter,
+		gutter,
 		images,
+		lightbox,
 		linkTo,
 		rel,
-		target,
 		shadow,
-		lightbox,
+		target,
 	} = attributes;
 
 	const classes = classnames( 'wp-block-coblocks-gallery-collage__figure', {
@@ -27,7 +27,8 @@ const save = ( { attributes } ) => {
 	} );
 
 	return (
-		<div className={ classnames( attributes.className, {
+		<div className={ classnames( className, {
+			[ `has-${ gutter }-gutter` ]: gutter,
 			[ `has-filter-${ filter }` ]: filter !== 'none',
 			[ `has-caption-style-${ captionStyle }` ]: captionStyle !== undefined,
 			'has-lightbox': lightbox,
@@ -53,55 +54,10 @@ const save = ( { attributes } ) => {
 					const imgClasses = classnames( image.id && [ `wp-image-${ image.id }` ] );
 					const img = typeof image.url === 'undefined' ? null : ( <img src={ image.url } alt={ image.alt } data-index={ image.index } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ imgClasses } /> );
 
-					let gutterClasses;
-
-					switch ( index ) {
-						case 0:
-							gutterClasses = `pb-${ gutter }`;
-							break;
-						case 1:
-							gutterClasses = `pb-${ gutter } pl-${ gutter }`;
-							break;
-						case 2:
-							gutterClasses = `pl-${ gutter }`;
-							break;
-						case 3:
-							gutterClasses = `pl-${ gutter }`;
-							break;
-						case 4:
-							gutterClasses = `pl-${ gutter }`;
-							break;
-					}
-
-					if ( attributes.className ) {
-						if ( attributes.className.includes( 'is-style-tiled' ) ) {
-							switch ( index ) {
-								case 0:
-									gutterClasses = '';
-									break;
-								case 1:
-									gutterClasses = `pl-${ gutter }`;
-									break;
-								case 2:
-									gutterClasses = `pt-${ gutter } pr-${ gutter }`;
-									break;
-								case 3:
-									gutterClasses = `pt-${ gutter }`;
-									break;
-							}
-						}
-					}
-
-					if ( attributes.className ) {
-						if ( attributes.className.includes( 'is-style-layered' ) ) {
-							gutterClasses = null;
-						}
-					}
-
 					return (
 						<li
 							key={ `image-${ index }` }
-							className={ classnames( 'wp-block-coblocks-gallery-collage__item', gutterClasses ) }
+							className={ classnames( 'wp-block-coblocks-gallery-collage__item', `item-${ index + 1 }` ) }
 						>
 							{ img &&
 								<figure className={ classes }>
