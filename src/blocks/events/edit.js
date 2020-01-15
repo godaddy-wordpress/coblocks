@@ -56,10 +56,8 @@ class EventsEdit extends Component {
 	 * Setup the MutationObserver.
 	 */
 	componentDidMount() {
-		if ( !! this.props.attributes.externalCalendarUrl ) {
-			this.observer = new MutationObserver( this.mutationObserverCallback );
-			this.observer.observe( this.el, { childList: true } );
-		}
+		this.observer = new MutationObserver( this.mutationObserverCallback );
+		this.observer.observe( this.el, { childList: true } );
 	}
 
 	/**
@@ -76,9 +74,10 @@ class EventsEdit extends Component {
 	 */
 	componentWillUnmount() {
 		if ( !! this.props.attributes.externalCalendarUrl ) {
-			this.observer.disconnect();
 			jQuery( this.slickTarget ).slick( 'unslick' );
 		}
+
+		this.observer.disconnect();
 	}
 
 	/**
@@ -94,8 +93,6 @@ class EventsEdit extends Component {
 			if ( mutation.type === 'childList' && mutation.addedNodes.length > 0 ) {
 				if ( mutation.addedNodes[ 0 ].outerHTML.match( 'wp-block-coblocks-events' ) ) {
 					this.slickTarget = mutation.addedNodes[ 0 ].children[ 0 ];
-
-					// jQuery( this.slickTarget ).slick( 'unslick' );
 
 					jQuery( this.slickTarget ).slick( {
 						infinite: false,

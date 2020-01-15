@@ -131,10 +131,18 @@ function coblocks_register_events_block() {
 
 	// Return early if this function does not exist.
 	if ( ! function_exists( 'register_block_type' ) ) {
-
 		return;
-
 	}
+
+	$vendors_dir = CoBlocks()->asset_source( 'js', 'vendors' );
+
+	wp_enqueue_script(
+		'coblocks-slick',
+		$vendors_dir . '/slick' . COBLOCKS_ASSET_SUFFIX . '.js',
+		array( 'jquery' ),
+		COBLOCKS_VERSION,
+		true
+	);
 
 	// Load attributes from block.json.
 	ob_start();
