@@ -30,7 +30,7 @@ const save = ( { attributes, className } ) => {
 		<div className={ classnames( className, {
 			[ `has-${ gutter }-gutter` ]: gutter,
 			[ `has-filter-${ filter }` ]: filter !== 'none',
-			[ `has-caption-style-${ captionStyle }` ]: captionStyle !== undefined,
+			[ `has-caption-style-${ captionStyle }` ]: captions && captionStyle !== undefined,
 			'has-lightbox': lightbox,
 		} ) }>
 			<ul>

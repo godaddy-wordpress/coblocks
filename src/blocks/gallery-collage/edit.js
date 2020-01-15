@@ -235,6 +235,7 @@ class GalleryCollageEdit extends Component {
 		} = this.props;
 
 		const {
+			captions,
 			captionStyle,
 			filter,
 			gutter,
@@ -252,7 +253,7 @@ class GalleryCollageEdit extends Component {
 				<div className={ classnames( className, {
 					[ `has-${ gutter }-gutter` ]: gutter,
 					[ `has-filter-${ filter }` ]: filter !== 'none',
-					[ `has-caption-style-${ captionStyle }` ]: captionStyle !== undefined,
+					[ `has-caption-style-${ captionStyle }` ]: captions && captionStyle !== undefined,
 					'has-lightbox': lightbox,
 				} ) }
 				>
