@@ -150,8 +150,8 @@ class Edit extends Component {
 
 		const innerClasses = classnames(
 			...GalleryClasses( attributes ), {
-				[ `coblocks-gallery--${ gridSize }` ]: gridSize,
 				[ `has-${ gutter }-gutter` ]: gutter,
+				[ `coblocks-gallery--${ gridSize }` ]: gridSize,
 			}
 		);
 
