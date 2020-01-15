@@ -114,7 +114,7 @@ class CoBlocks_Block_Assets {
 		wp_register_script(
 			$this->slug . '-editor',
 			$this->url . '/dist/blocks.build.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api', 'wp-rich-text', 'wp-editor' ),
+			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api', 'wp-rich-text', 'wp-editor', 'wp-data' ),
 			COBLOCKS_VERSION,
 			false
 		);
