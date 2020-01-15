@@ -6,7 +6,6 @@ import classnames from 'classnames';
 /**
  * Internal dependencies.
  */
-import { hasEmptyAttributes } from '../../../utils/block-helpers';
 import applyWithColors from './colors';
 import InspectorControls from './inspector';
 
@@ -18,19 +17,10 @@ import { RichText } from '@wordpress/block-editor';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 
-const isEmpty = attributes => {
-	const attributesToCheck = [ 'title', 'description', 'eventDay', 'eventMonth', 'eventYear', 'eventTime', 'eventLocation' ];
-	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
-		attributesToCheck.includes( key )
-	);
-
-	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
-};
-
-class EventsEdit extends Component {
+class EventItemEdit extends Component {
 	componentDidUpdate() {
 		if ( ( this.props.attributes.externalChange ) ) {
-			this.props.setAttributes( { textColor: this.props.attributes.textColor, externalChange: false } );
+			this.props.setAttributes( { textColor: this.props.attributes.textColor } );
 			this.props.setTextColor( this.props.attributes.textColor );
 		}
 	}
@@ -47,12 +37,12 @@ class EventsEdit extends Component {
 				<InspectorControls { ...this.props }
 				/>
 				<div
-					className={ classnames( className, 'w-full', 'md:flex', 'mb-2', 'justify-between', {
-						'has-text-color': textColor.color,
-						[ textColor.class ]: textColor.class,
-						'is-empty': isEmpty( attributes ),
-					}, )
-					}
+					className={ classnames( className, 'w-full', 'md:flex', 'mb-2', 'justify-between',
+						{
+							'has-text-color': textColor.color,
+							[ textColor.class ]: textColor.class,
+						}
+					) }
 					style={ textStyles }
 				>
 					<div className="wp-block-coblocks-events__date md:flex mb-2 md:mb-0 md:display-block">
@@ -127,4 +117,4 @@ class EventsEdit extends Component {
 
 export default compose( [
 	applyWithColors,
-] )( EventsEdit );
+] )( EventItemEdit );

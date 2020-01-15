@@ -35,7 +35,7 @@ const EVENTS_RANGE_OPTIONS = [
 	{ value: 'all', label: __( 'Fetch all', 'coblocks' ) },
 ];
 
-class EventItem extends Component {
+class EventsEdit extends Component {
 	constructor() {
 		super( ...arguments );
 
@@ -208,4 +208,4 @@ const applyWithSelect = withSelect( ( select, blockData ) => {
 	};
 } );
 
-export default compose( [ applyWithSelect ] )( EventItem );
+export default compose( [ applyWithSelect ] )( EventsEdit );
