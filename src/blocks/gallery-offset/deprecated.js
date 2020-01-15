@@ -48,7 +48,7 @@ const deprecated =
 				break;
 		}
 		let newGridSize = '';
-		switch ( attributes.gutter ) {
+		switch ( attributes.gridSize ) {
 			case 'sml':
 				newGridSize = 'small';
 				break;
