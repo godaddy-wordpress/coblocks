@@ -88,6 +88,7 @@
 		"eslint": "^4.19.1",
 		"eslint-config-wordpress": "^2.0.0",
 		"eslint-loader": "^3.0.2",
+		"eslint-plugin-cypress": "^2.8.1",
 		"eslint-plugin-jest": "^21.6.1",
 		"eslint-plugin-jsx-a11y": "^6.0.3",
 		"eslint-plugin-react": "^7.17.0",
