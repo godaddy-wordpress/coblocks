@@ -21,6 +21,10 @@ const deprecated =
 		...DimensionsAttributes,
 		...BackgroundAttributes,
 		...metadata.attributes,
+		gutter: {
+			type: 'string',
+			default: 'large',
+		},
 	},
 	save( { attributes, className } ) {
 		const {
