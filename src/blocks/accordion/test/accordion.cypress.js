@@ -267,12 +267,21 @@ describe( 'Test CoBlocks Accordion Block', function() {
 		cy.get( '.wp-block-coblocks-accordion-item p.wp-block-paragraph' )
 			.type( accordionData[ 0 ].text );
 
-		cy.get( '.components-font-size-picker' )
-			.contains( /default/i )
-			.click()
+		cy.get( '.edit-post-sidebar' )
+			.contains( /default|regular/i )
 			.parent()
-			.contains( /large/i )
-			.click();
+			.then( ( $parentElm ) => {
+				if ( $parentElm[ 0 ].type === 'select-one' ) {
+					cy.get( $parentElm[ 0 ] )
+						.select( 'large' );
+				} else {
+					cy.get( $parentElm[ 0 ] )
+						.click()
+						.parent()
+						.contains( /large/i )
+						.click();
+				}
+			} );
 
 		cy.get( '.wp-block-coblocks-accordion-item p.wp-block-paragraph' )
 			.should( 'have.class', 'has-large-font-size' );
