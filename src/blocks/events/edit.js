@@ -56,15 +56,17 @@ class EventsEdit extends Component {
 	 * Setup the MutationObserver.
 	 */
 	componentDidMount() {
-		this.observer = new MutationObserver( this.mutationObserverCallback );
-		this.observer.observe( this.el, { childList: true } );
+		if ( !! this.props.attributes.externalCalendarUrl ) {
+			this.observer = new MutationObserver( this.mutationObserverCallback );
+			this.observer.observe( this.el, { childList: true } );
+		}
 	}
 
 	/**
 	 * Refresh Slick to prevent display oddities when the block isSelected prop changes.
 	 */
 	componentDidUpdate() {
-		if ( this.slickTarget ) {
+		if ( !! this.props.attributes.externalCalendarUrl && this.slickTarget ) {
 			jQuery( this.slickTarget ).slick( 'slickSetOption', 'infinite', false, true );
 		}
 	}
@@ -73,8 +75,10 @@ class EventsEdit extends Component {
 	 * Disconnect the MutationObserver and remove Slick carousels.
 	 */
 	componentWillUnmount() {
-		this.observer.disconnect();
-		jQuery( this.slickTarget ).slick( 'unslick' );
+		if ( !! this.props.attributes.externalCalendarUrl ) {
+			this.observer.disconnect();
+			jQuery( this.slickTarget ).slick( 'unslick' );
+		}
 	}
 
 	/**

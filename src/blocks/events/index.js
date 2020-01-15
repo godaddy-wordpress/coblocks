@@ -11,6 +11,7 @@ import edit from './edit';
 import icon from './icon';
 import metadata from './block.json';
 import save from './save';
+import transforms from './transforms';
 
 /**
  * WordPress dependencies.
@@ -30,6 +31,7 @@ const settings = {
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
+	transforms,
 	edit,
 	save,
 };
