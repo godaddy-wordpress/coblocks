@@ -360,7 +360,7 @@ jobs:
             ssh ${STAGING_SITE_SSH_CREDS} 'cd html/wp-content && wp plugin install coblocks-canary.zip --force --activate --skip-themes --skip-plugins && rm -rf coblocks-canary.zip languages/plugins/coblocks-*'
       - deploy:
           name: Create a canary release on Github
-          command: ghr -t ${GH_ACCESS_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "Latest build of the master branch." -delete -prerelease -replace canary /tmp/artifacts/coblocks-canary.zip
+          command: ghr -t ${GH_ACCESS_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "Latest build of the master branch. This bleeding edge version is for testing purposes only and should not be used in production." -delete -prerelease -replace canary /tmp/artifacts/coblocks-canary.zip
 
   deploy:
     docker:
