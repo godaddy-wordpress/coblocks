@@ -11,7 +11,9 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 		fileName: '150x150.png',
 		imageBase: '150x150',
 		pathToFixtures: '../.dev/tests/cypress/fixtures/images/',
+		caption: 'Caption Here',
 	};
+
 	/**
 	   * Test that we can add a gallery-carousel block to the content, not add any images or
 	   * alter any settings, and are able to successfuly save the block without errors.
@@ -31,9 +33,9 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 	} );
 
 	/**
-   * Test that we can upload images to block and are able
-   * to successfuly save the block without errors.
-   */
+	   * Test that we can upload images to block and are able
+	   * to successfuly save the block without errors.
+	   */
 	it( 'Test carousel block saves with images.', function() {
 		const { fileName, imageBase, pathToFixtures } = galleryData;
 		helpers.addCoBlocksBlockToPage( true, 'gallery-carousel' );
@@ -65,9 +67,9 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 	} );
 
 	/**
-   * Test that we can add image from library and are able
-   * to successfuly save the block without errors.
-   */
+	   * Test that we can add image from library and are able
+	   * to successfuly save the block without errors.
+	   */
 	it( 'Test carousel block saves with images from media library.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'gallery-carousel' );
 
@@ -94,6 +96,43 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 
 		cy.get( '.wp-block-coblocks-gallery-carousel' ).should( 'exist' );
 		cy.get( '.wp-block-coblocks-gallery-carousel' ).find( 'img' ).should( 'have.attr', 'src' );
+
+		helpers.editPage();
+	} );
+
+	/**
+       * Test that we can add image captions
+       * to successfuly save the block without errors.
+       */
+	it( 'Test carousel block saves with images captions.', function() {
+		const { caption } = galleryData;
+		helpers.addCoBlocksBlockToPage( true, 'gallery-carousel' );
+
+		cy.get( '.wp-block[data-type="coblocks/gallery-carousel"]' )
+			.click()
+			.contains( /media/i )
+			.click();
+
+		cy.get( '.media-modal-content' ).contains( /media/i ).click();
+
+		cy.get( '.media-modal-content' ).find( 'li.attachment' )
+			.first( 'li' )
+			.click();
+
+		cy.get( 'button' ).contains( /create a new gallery/i ).click();
+
+		cy.get( 'button' ).contains( /insert gallery/i ).click();
+
+		cy.get( '.wp-block[data-type="coblocks/gallery-carousel"]' ).find( 'figcaption' ).click().type( caption );
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'gallery-carousel' );
+
+		helpers.viewPage();
+
+		cy.get( '.wp-block-coblocks-gallery-carousel' ).should( 'exist' );
+		cy.get( '.wp-block-coblocks-gallery-carousel' ).contains( caption );
 
 		helpers.editPage();
 	} );
