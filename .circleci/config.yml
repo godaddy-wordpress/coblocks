@@ -350,7 +350,7 @@ jobs:
             npm run json2po
             npm run po2mo
             npm run po2jed
-            rm -f *.po *.pot coblocks.json
+            rm -f languages/*.po languages/*.pot languages/coblocks.json
             find languages/ -type f ! -name 'coblocks*' -exec rm {} \;
             cp -r languages/ build/coblocks/languages/
             cd build && zip -r coblocks-canary.zip coblocks
