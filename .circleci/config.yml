@@ -63,7 +63,9 @@ jobs:
           key: php56-build-dependency-cache--{{ checksum "package.json" }}
       - run:
           name: Install node packages
-          command: npm install
+          command: |
+            npm uninstall cypress
+            npm install
       - save_cache:
           key: php56-build-dependency-cache--{{ checksum "package.json" }}
           paths:
@@ -121,7 +123,9 @@ jobs:
           key: php73-build-dependency-cache--{{ checksum "package.json" }}
       - run:
           name: Install node packages
-          command: npm install
+          command: |
+            npm uninstall cypress
+            npm install
       - save_cache:
           key: php73-build-dependency-cache--{{ checksum "package.json" }}
           paths:
@@ -170,7 +174,9 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Install node packages
-          command: npm install
+          command: |
+            npm uninstall cypress
+            npm install
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
