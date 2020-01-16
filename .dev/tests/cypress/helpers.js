@@ -88,6 +88,8 @@ export function addCoBlocksBlockToPage( clearEditor = true, blockID = '' ) {
 		blockID = getBlockSlug();
 	}
 
+	const isGalleryBlock = RegExp('gallery-').test(blockID);
+
 	cy.get( '.block-list-appender .wp-block .block-editor-inserter__toggle' )
 		.click();
 
@@ -101,9 +103,9 @@ export function addCoBlocksBlockToPage( clearEditor = true, blockID = '' ) {
 			}
 		} );
 
-	// Show CoBlocks panel
+	// Show Block panel
 	cy.get( '.components-panel__body-title' )
-		.contains( 'CoBlocks' )
+		.contains( isGalleryBlock ? 'CoBlocks Galleries' : 'CoBlocks' )
 		.then( ( $coblocksPanel ) => {
 			const $parentPanel = Cypress.$( $coblocksPanel ).closest( 'div.components-panel__body' );
 			if ( ! $parentPanel.hasClass( 'is-opened' ) ) {
