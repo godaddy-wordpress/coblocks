@@ -117,7 +117,7 @@ export function addCoBlocksBlockToPage( clearEditor = true, blockID = '' ) {
 		.click();
 
 	// Make sure the block was added to our page
-	cy.get( '.wp-block-coblocks-' + blockID ).should( 'exist' );
+	cy.get( isGalleryBlock ? `div[data-type="coblocks/${ blockID }"]` : `.wp-block-coblocks-${ blockID }` ).should( 'exist' );
 }
 
 /**
