@@ -78,8 +78,7 @@ jobs:
             sudo mv wp-cli.phar /usr/local/bin/wp
       - run:
           name: Build the plugin
-          command: |
-            ./node_modules/.bin/grunt build
+          command: npm run build
       - run:
           name: "Install Dependencies"
           command: |
@@ -138,8 +137,7 @@ jobs:
             sudo mv wp-cli.phar /usr/local/bin/wp
       - run:
           name: Build the plugin
-          command: |
-            ./node_modules/.bin/grunt build
+          command: npm run build
       - run:
           name: "Install Dependencies"
           command: |
@@ -236,7 +234,7 @@ jobs:
       - run:
           name: Build the plugin
           command: |
-            ./node_modules/.bin/grunt build
+            npm run build
             cp -a ./build/coblocks /tmp/wordpress/wp-content/plugins/
       - run:
           name: "Install WordPress"
