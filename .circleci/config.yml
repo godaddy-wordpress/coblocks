@@ -271,7 +271,9 @@ jobs:
           command: sudo apt-get install gettext
       - run:
           name: Install node packages
-          command: npm install
+          command: |
+            npm uninstall cypress
+            npm install
       - run:
           name: Install WP-CLI
           command: |
