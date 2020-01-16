@@ -76,3 +76,6 @@
 		margin-bottom: 0 !important;
 	}
 }
+
+// Import legacy styles for older versions of CoBlocks
+@import "legacy";
