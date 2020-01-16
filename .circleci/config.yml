@@ -78,7 +78,7 @@ jobs:
             sudo mv wp-cli.phar /usr/local/bin/wp
       - run:
           name: Build the plugin
-          command: npm run build
+          command: npx wp-scripts build --config .dev/config/webpack.ci.config.js
       - run:
           name: "Install Dependencies"
           command: |
@@ -137,7 +137,7 @@ jobs:
             sudo mv wp-cli.phar /usr/local/bin/wp
       - run:
           name: Build the plugin
-          command: npm run build
+          command: npx wp-scripts build --config .dev/config/webpack.ci.config.js
       - run:
           name: "Install Dependencies"
           command: |
@@ -234,7 +234,7 @@ jobs:
       - run:
           name: Build the plugin
           command: |
-            npm run build
+            npx wp-scripts build --config .dev/config/webpack.ci.config.js
             cp -a ./build/coblocks /tmp/wordpress/wp-content/plugins/
       - run:
           name: "Install WordPress"
