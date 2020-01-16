@@ -1,15 +1,12 @@
 .wp-block-coblocks-services {
 
-	&:not(.has-responsive-columns) {
+	&[data-columns=""] {
 		@include break-small() {
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
 			justify-content: space-between;
 		}
-	}
-
-	&:not(.has-responsive-columns) {
 
 		@include break-small() {
 			&[data-columns="2"] > .wp-block-coblocks-service {
