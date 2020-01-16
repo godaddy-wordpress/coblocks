@@ -177,7 +177,7 @@
 		opacity: 0;
 		padding: 0.415em 0.5em 0.445em;
 		position: absolute;
-		right: -17px;
+		right: -54px;
 		text-align: center;
 		top: -17px;
 		transform: scale(0);
@@ -212,11 +212,11 @@
 		}
 
 		// Only show if the column is actively being resized.
-		&.is-resizing {
-			opacity: 1;
-			transform: scale(1);
-			transition: opacity 100ms cubic-bezier(0.39, 0.575, 0.565, 1), transform 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
-		}
+		// &.is-resizing {
+		// 	opacity: 1;
+		// 	transform: scale(1);
+		// 	transition: opacity 100ms cubic-bezier(0.39, 0.575, 0.565, 1), transform 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
+		// }
 	}
 }
 
@@ -241,76 +241,76 @@
 .has-small-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"] {
 
 	&:nth-child(odd) {
-		margin-right: map-get($spacing, 1) - 0.5em;
+		margin-right: map-get($spacing, 1) - 0.6em;
 	}
 
 	&:nth-child(even) {
-		margin-left: map-get($spacing, 1) - 0.5em;
+		margin-left: map-get($spacing, 1) - 0.6em;
 	}
 
 	&:not(:first-child) {
-		margin-left: map-get($spacing, 1) - 0.5em;
+		margin-left: map-get($spacing, 1) - 0.6em;
 	}
 
 	&:not(:last-child) {
-		margin-right: map-get($spacing, 1) - 0.5em;
+		margin-right: map-get($spacing, 1) - 0.6em;
 	}
 }
 
 .has-medium-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"] {
 
 	&:nth-child(odd) {
-		margin-right: map-get($spacing, 2) - 0.25em;
+		margin-right: map-get($spacing, 2) - 0.75em;
 	}
 
 	&:nth-child(even) {
-		margin-left: map-get($spacing, 2) - 0.25em;
+		margin-left: map-get($spacing, 2) - 0.75em;
 	}
 
 	&:not(:first-child) {
-		margin-left: map-get($spacing, 2) - 0.25em;
+		margin-left: map-get($spacing, 2) - 0.75em;
 	}
 
 	&:not(:last-child) {
-		margin-right: map-get($spacing, 2) - 0.25em;
+		margin-right: map-get($spacing, 2) - 0.75em;
 	}
 }
 
 .has-large-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"] {
 
 	&:nth-child(odd) {
-		margin-right: map-get($spacing, 3) - 0.15em;
+		margin-right: map-get($spacing, 3) - 0.75em;
 	}
 
 	&:nth-child(even) {
-		margin-left: map-get($spacing, 3) - 0.15em;
+		margin-left: map-get($spacing, 3) - 0.75em;
 	}
 
 	&:not(:first-child) {
-		margin-left: map-get($spacing, 3) - 0.15em;
+		margin-left: map-get($spacing, 3) - 0.75em;
 	}
 
 	&:not(:last-child) {
-		margin-right: map-get($spacing, 3) - 0.15em;
+		margin-right: map-get($spacing, 3) - 0.75em;
 	}
 }
 
 .has-huge-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"] {
 
 	&:nth-child(odd) {
-		margin-right: map-get($spacing, 4) + 0.25em;
+		margin-right: map-get($spacing, 4);
 	}
 
 	&:nth-child(even) {
-		margin-left: map-get($spacing, 4) + 0.25em;
+		margin-left: map-get($spacing, 4);
 	}
 
 	&:not(:first-child) {
-		margin-left: map-get($spacing, 4) + 0.25em;
+		margin-left: map-get($spacing, 4);
 	}
 
 	&:not(:last-child) {
-		margin-right: map-get($spacing, 4) + 0.25em;
+		margin-right: map-get($spacing, 4);
 	}
 }
 
@@ -370,7 +370,7 @@
 		}
 
 		.has-small-gutter & {
-			right: -1.5 * map-get($spacing, 1) - 0.5em;
+			right: -1.4 * map-get($spacing, 1) - 0.5em;
 		}
 
 		.has-medium-gutter & {
@@ -411,3 +411,31 @@ div[data-type="coblocks/column"]:last-child {
 		}
 	}
 }
+
+// Added for Gutenberg 6.3+
+.block-editor-block-list__block[data-type="coblocks/row"] .wp-block:first-child {
+	[data-block] {
+		margin-top: 0;
+	}
+}
+
+.block-editor-block-list__block[data-type="coblocks/row"] .wp-block:nth-last-child(2) {
+	[data-block] {
+		margin-bottom: 0;
+	}
+}
+// Add padding when the block is selected
+.block-editor-block-list__block[data-type="coblocks/row"].has-child-selected .wp-block-coblocks-row,
+.block-editor-block-list__block[data-type="coblocks/row"].is-selected .wp-block-coblocks-row {
+	padding: 14px;
+}
+
+.block-editor-block-list__block[data-type="coblocks/row"].is-selected
+	[data-type="coblocks/column"]:not(.is-selected)
+	> .block-editor-block-list__block-edit::before,
+.block-editor-block-list__block[data-type="coblocks/row"].has-child-selected
+	[data-type="coblocks/column"]:not(.is-selected)
+	> .block-editor-block-list__block-edit::before {
+	border: 1px dashed rgba(123, 134, 162, 0.3);
+}
+
