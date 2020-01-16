@@ -13,7 +13,7 @@
 	},
 	"scripts": {
 		"start": "wp-scripts start --config .dev/config/webpack.config.js --progress",
-		"build": "wp-scripts build --config .dev/config/webpack.config.js",
+		"build": "wp-scripts build --config .dev/config/webpack.config.js --progress",
 		"version": "grunt version && npm run babel:build && git add -A .",
 		"postversion": "git push && git push --tags",
 		"makepot": "wp i18n make-pot . --merge=languages/coblocks-js.pot --skip-audit --exclude=build,dist --headers='{\"Last-Translator\":\"plugins@godaddy.com\",\"Report-Msgid-Bugs-To\":\"https://github.com/godaddy-wordpress/coblocks/issues\"}' --file-comment='Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.' && rm -f languages/coblocks-js.pot && grunt replace:languages && npm run pot2json",
