@@ -1,6 +1,6 @@
 .wp-block-coblocks-services {
 
-	&[data-columns=""] {
+	&[data-columns] {
 		@include break-small() {
 			display: flex;
 			flex-direction: row;
