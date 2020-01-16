@@ -36,7 +36,7 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 	   * Test that we can upload images to block and are able
 	   * to successfuly save the block without errors.
 	   */
-	it( 'Test carousel block saves with images.', function() {
+	it( 'Test carousel block saves with image upload.', function() {
 		const { fileName, imageBase, pathToFixtures } = galleryData;
 		helpers.addCoBlocksBlockToPage( true, 'gallery-carousel' );
 
@@ -75,10 +75,10 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 
 		cy.get( '.wp-block[data-type="coblocks/gallery-carousel"]' )
 			.click()
-			.contains( /media/i )
+			.contains( /media library/i )
 			.click();
 
-		cy.get( '.media-modal-content' ).contains( /media/i ).click();
+		cy.get( '.media-modal-content' ).contains( /media library/i ).click();
 
 		cy.get( '.media-modal-content' ).find( 'li.attachment' )
 			.first( 'li' )
@@ -110,10 +110,10 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 
 		cy.get( '.wp-block[data-type="coblocks/gallery-carousel"]' )
 			.click()
-			.contains( /media/i )
+			.contains( /media library/i )
 			.click();
 
-		cy.get( '.media-modal-content' ).contains( /media/i ).click();
+		cy.get( '.media-modal-content' ).contains( /media library/i ).click();
 
 		cy.get( '.media-modal-content' ).find( 'li.attachment' )
 			.first( 'li' )
