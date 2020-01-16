@@ -45,7 +45,7 @@ class CoBlocks_Block_Assets {
 	 * The Constructor.
 	 */
 	public function __construct() {
-		$this->url  = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
+		$this->url = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 		add_action( 'init', array( $this, 'editor_assets' ) );
