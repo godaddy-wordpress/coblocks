@@ -10,7 +10,6 @@ import TypographyControls from './../../components/typography-controls';
  */
 import { Component, Fragment } from '@wordpress/element';
 import { BlockControls } from '@wordpress/block-editor';
-import { Toolbar } from '@wordpress/components';
 
 class Controls extends Component {
 	render() {
@@ -24,7 +23,7 @@ class Controls extends Component {
 		}
 
 		let hideToolbar = false;
-		const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/pricing-table', 'coblocks/highlight', 'coblocks/features' ];
+		const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/pricing-table', 'coblocks/highlight', 'coblocks/features' ];
 
 		attributes.textPanelHideColor = true;
 		attributes.textPanelShowSpacingControls = true;
@@ -58,9 +57,7 @@ class Controls extends Component {
 			return (
 				<Fragment>
 					<BlockControls>
-						<Toolbar>
-							<TypographyControls { ...this.props } />
-						</Toolbar>
+						<TypographyControls { ...this.props } />
 					</BlockControls>
 				</Fragment>
 			);
