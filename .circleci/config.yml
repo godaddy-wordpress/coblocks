@@ -8,7 +8,7 @@ workflows:
           filters:
             tags:
               only: /^(?!canary).*$/
-      - php72: # Will be deprecated on 30 Nov 2020
+      - php73:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -31,7 +31,7 @@ workflows:
       - deploy:
           requires:
             - php56
-            - php72
+            - php73
             - jest
             - e2e
           filters:
@@ -100,9 +100,9 @@ jobs:
           command: WP_MULTISITE=1 composer run test
           working_directory: /tmp/wordpress/wp-content/plugins/coblocks
 
-  php72:
+  php73:
     docker:
-      - image: circleci/php:7.2-node
+      - image: circleci/php:7.3-node
       - image: circleci/mysql:5.7
     steps:
       - checkout
@@ -118,12 +118,12 @@ jobs:
           name: Update npm
           command: sudo npm install -g npm@latest
       - restore_cache:
-          key: php72-build-dependency-cache--{{ checksum "package.json" }}
+          key: php73-build-dependency-cache--{{ checksum "package.json" }}
       - run:
           name: Install node packages
           command: npm install
       - save_cache:
-          key: php72-build-dependency-cache--{{ checksum "package.json" }}
+          key: php73-build-dependency-cache--{{ checksum "package.json" }}
           paths:
             - node_modules
       - run:
