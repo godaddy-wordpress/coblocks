@@ -23,63 +23,63 @@
 		.block-editor-media-placeholder {
 			padding: 0;
 		}
-	}
 
-	.item-1 {
-		align-self: flex-end;
-		width: 75%;
+		&:nth-child(1) {
+			align-self: flex-end;
+			width: 75%;
 
-		figure,
-		.block-editor-media-placeholder {
-			padding-top: calc(330 / 495 * 100%);
+			figure,
+			.block-editor-media-placeholder {
+				padding-top: calc(330 / 495 * 100%);
+			}
 		}
-	}
 
-	.item-2 {
-		align-self: flex-end;
-		margin-right: auto !important;
-		width: 25%;
+		&:nth-child(2) {
+			align-self: flex-end;
+			margin-right: auto !important;
+			width: 25%;
 
-		figure,
-		.block-editor-media-placeholder {
-			padding-top: 100%;
+			figure,
+			.block-editor-media-placeholder {
+				padding-top: 100%;
+			}
 		}
-	}
 
-	.item-3 {
-		align-self: flex-start;
-		margin-left: auto !important;
-		width: 25%;
+		&:nth-child(3) {
+			align-self: flex-start;
+			margin-left: auto !important;
+			width: 25%;
 
-		figure,
-		.block-editor-media-placeholder {
-			padding-top: 100%;
+			figure,
+			.block-editor-media-placeholder {
+				padding-top: 100%;
+			}
 		}
-	}
 
-	.item-4 {
-		align-self: flex-start;
-		width: 25%;
+		&:nth-child(4) {
+			align-self: flex-start;
+			width: 25%;
 
-		figure,
-		.block-editor-media-placeholder {
-			padding-top: 100%;
+			figure,
+			.block-editor-media-placeholder {
+				padding-top: 100%;
+			}
 		}
-	}
 
-	.item-5 {
-		align-self: flex-start;
-		width: 25%;
+		&:nth-child(5) {
+			align-self: flex-start;
+			width: 25%;
 
-		figure,
-		.block-editor-media-placeholder {
-			padding-top: 150%;
+			figure,
+			.block-editor-media-placeholder {
+				padding-top: 150%;
+			}
 		}
 	}
 
 	.is-style-tiled &__item {
-		&.item-1,
-		&.item-4 {
+		&:nth-child(1),
+		&:nth-child(4) {
 			width: 66.66%;
 
 			figure,
@@ -88,8 +88,8 @@
 			}
 		}
 
-		&.item-2,
-		&.item-3 {
+		&:nth-child(2),
+		&:nth-child(3) {
 			width: 33.33%;
 
 			figure,
@@ -102,7 +102,7 @@
 	.is-style-layered &__item {
 		align-self: flex-start;
 
-		&.item-1 {
+		&:nth-child(1) {
 			margin-left: calc(150 / 890 * 100%) !important;
 			width: calc(358 / 890 * 100%);
 			z-index: 4;
@@ -113,7 +113,7 @@
 			}
 		}
 
-		&.item-2 {
+		&:nth-child(2) {
 			margin-left: calc(175 / 850 * 100%) !important;
 			margin-top: calc(117 / 990 * 100%) !important;
 			width: calc(198 / 890 * 100%);
@@ -125,7 +125,7 @@
 			}
 		}
 
-		&.item-3 {
+		&:nth-child(3) {
 			margin-left: calc(328 / 890 * 100%) !important;
 			margin-top: calc(249 / 890 * 100% * -1) !important;
 			width: calc(492 / 890 * 100%);
@@ -137,7 +137,7 @@
 			}
 		}
 
-		&.item-4 {
+		&:nth-child(4) {
 			margin-top: calc(189 / 890 * 100% * -1) !important;
 			width: calc(492 / 890 * 100%);
 			z-index: 1;
@@ -194,27 +194,27 @@
 
 .wp-block-coblocks-gallery-collage:not([class*="is-style"]) {
 
-	.item-1,
-	.item-2 {
+	.wp-block-coblocks-gallery-collage__item:nth-child(1),
+	.wp-block-coblocks-gallery-collage__item:nth-child(2) {
 		padding-bottom: calc(#{map-get($spacing, 1)} * 2);
 	}
 
-	&.has-medium-gutter .item-1,
-	&.has-medium-gutter .item-2 {
+	&.has-medium-gutter .wp-block-coblocks-gallery-collage__item:nth-child(1),
+	&.has-medium-gutter .wp-block-coblocks-gallery-collage__item:nth-child(2) {
 		@include break-small() {
 			padding-bottom: calc(#{map-get($spacing, 2)} * 2);
 		}
 	}
 
-	&.has-large-gutter .item-1,
-	&.has-large-gutter .item-2 {
+	&.has-large-gutter .wp-block-coblocks-gallery-collage__item:nth-child(1),
+	&.has-large-gutter .wp-block-coblocks-gallery-collage__item:nth-child(2) {
 		@include break-small() {
 			padding-bottom: calc(#{map-get($spacing, 3)} * 2);
 		}
 	}
 
-	&.has-huge-gutter .item-1,
-	&.has-huge-gutter .item-2 {
+	&.has-huge-gutter .wp-block-coblocks-gallery-collage__item:nth-child(1),
+	&.has-huge-gutter .wp-block-coblocks-gallery-collage__item:nth-child(2) {
 		@include break-small() {
 			padding-bottom: calc(#{map-get($spacing, 4)} * 2);
 		}
@@ -245,71 +245,71 @@
 
 .is-style-tiled {
 
-	.item-2 {
+	.wp-block-coblocks-gallery-collage__item:nth-child(2) {
 		padding-left: calc(#{map-get($spacing, 1)} * 2);
 	}
 
-	&.has-medium-gutter .item-2 {
+	&.has-medium-gutter .wp-block-coblocks-gallery-collage__item:nth-child(2) {
 		@include break-small() {
 			padding-left: calc(#{map-get($spacing, 2)} * 2);
 		}
 	}
 
-	&.has-large-gutter .item-2 {
+	&.has-large-gutter .wp-block-coblocks-gallery-collage__item:nth-child(2) {
 		@include break-small() {
 			padding-left: calc(#{map-get($spacing, 3)} * 2);
 		}
 	}
 
-	&.has-huge-gutter .item-2 {
+	&.has-huge-gutter .wp-block-coblocks-gallery-collage__item:nth-child(2) {
 		@include break-small() {
 			padding-left: calc(#{map-get($spacing, 4)} * 2);
 		}
 	}
 
-	.item-3 {
+	.wp-block-coblocks-gallery-collage__item:nth-child(3) {
 		padding-right: calc(#{map-get($spacing, 1)} * 2);
 		padding-top: calc(#{map-get($spacing, 1)} * 2);
 	}
 
-	&.has-medium-gutter .item-3 {
+	&.has-medium-gutter .wp-block-coblocks-gallery-collage__item:nth-child(3) {
 		@include break-small() {
 			padding-right: calc(#{map-get($spacing, 2)} * 2);
 			padding-top: calc(#{map-get($spacing, 2)} * 2);
 		}
 	}
 
-	&.has-large-gutter .item-3 {
+	&.has-large-gutter .wp-block-coblocks-gallery-collage__item:nth-child(3) {
 		@include break-small() {
 			padding-right: calc(#{map-get($spacing, 3)} * 2);
 			padding-top: calc(#{map-get($spacing, 3)} * 2);
 		}
 	}
 
-	&.has-huge-gutter .item-3 {
+	&.has-huge-gutter .wp-block-coblocks-gallery-collage__item:nth-child(3) {
 		@include break-small() {
 			padding-right: calc(#{map-get($spacing, 4)} * 2);
 			padding-top: calc(#{map-get($spacing, 4)} * 2);
 		}
 	}
 
-	.item-4 {
+	.wp-block-coblocks-gallery-collage__item:nth-child(4) {
 		padding-top: calc(#{map-get($spacing, 1)} * 2);
 	}
 
-	&.has-medium-gutter .item-4 {
+	&.has-medium-gutter .wp-block-coblocks-gallery-collage__item:nth-child(4) {
 		@include break-small() {
 			padding-top: calc(#{map-get($spacing, 2)} * 2);
 		}
 	}
 
-	&.has-large-gutter .item-4 {
+	&.has-large-gutter .wp-block-coblocks-gallery-collage__item:nth-child(4) {
 		@include break-small() {
 			padding-top: calc(#{map-get($spacing, 3)} * 2);
 		}
 	}
 
-	&.has-huge-gutter .item-4 {
+	&.has-huge-gutter .wp-block-coblocks-gallery-collage__item:nth-child(4) {
 		@include break-small() {
 			padding-top: calc(#{map-get($spacing, 4)} * 2);
 		}
