@@ -62,6 +62,25 @@ class CoBlocks_Block_Assets {
 	}
 
 	/**
+	 * Loads the asset file for the given script or style.
+	 * Returns a default if the asset file is not found.
+	 *
+	 * @param string $filepath The name of the file without the extension.
+	 *
+	 * @return array The asset file contents.
+	 */
+	public function get_asset_file( $filepath ) {
+		$asset_path = COBLOCKS_PLUGIN_DIR . $filepath . '.asset.php';
+
+		return file_exists( $asset_path )
+			? include $asset_path
+			: array(
+				'dependencies' => array(),
+				'version'      => COBLOCKS_VERSION,
+			);
+	}
+
+	/**
 	 * Enqueue block assets for use within Gutenberg.
 	 *
 	 * @access public
@@ -69,11 +88,14 @@ class CoBlocks_Block_Assets {
 	public function block_assets() {
 
 		// Styles.
+		$name       = $this->slug . '-style';
+		$asset_file = $this->get_asset_file( 'dist/' . $name );
+
 		wp_enqueue_style(
 			$this->slug . '-frontend',
-			$this->url . '/dist/coblocks-style.css',
+			$this->url . '/dist/' . $name . '.css',
 			array(),
-			COBLOCKS_VERSION
+			$asset_file['version']
 		);
 
 		/**
@@ -98,28 +120,27 @@ class CoBlocks_Block_Assets {
 	/**
 	 * Enqueue block assets for use within Gutenberg.
 	 *
-	 * @param array $asset_file Passed asset file data for unit testing.
-	 *
 	 * @access public
 	 */
-	public function editor_assets( $asset_file = array() ) {
-
-		if ( empty( $asset_file ) ) {
-			$asset_file = include COBLOCKS_PLUGIN_DIR . 'dist/coblocks.asset.php';
-		}
-
+	public function editor_assets() {
 		// Styles.
+		$name       = $this->slug . '-editor';
+		$asset_file = $this->get_asset_file( 'dist/' . $name );
+
 		wp_register_style(
 			$this->slug . '-editor',
-			$this->url . '/dist/coblocks-editor.css',
+			$this->url . '/dist/' . $name . '.css',
 			array(),
-			COBLOCKS_VERSION
+			$asset_file['version']
 		);
 
 		// Scripts.
+		$name       = $this->slug;
+		$asset_file = $this->get_asset_file( 'dist/' . $name );
+
 		wp_register_script(
 			$this->slug . '-editor',
-			$this->url . '/dist/coblocks.js',
+			$this->url . '/dist/' . $name . '.js',
 			$asset_file['dependencies'],
 			$asset_file['version'],
 			true
