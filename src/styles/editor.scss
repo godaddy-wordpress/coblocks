@@ -4,3 +4,7 @@
 @import "editor/columns-gutter";
 @import "editor/columns-responsive";
 @import "editor/is-transient";
+
+// Legacy styling
+@import "legacy/margin-editor";
+@import "legacy/padding-editor";
