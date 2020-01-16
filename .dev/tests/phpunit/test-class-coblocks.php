@@ -195,30 +195,33 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 
 		$expected_assets = [
 			'js'  => [
-				'dist/js/coblocks-accordion-polyfill.min.js',
+				'dist/coblocks.js',
+				'dist/js/coblocks-accordion-polyfill.js',
+				'dist/js/coblocks-datepicker.js',
+				'dist/js/coblocks-fromEntries.js',
+				'dist/js/coblocks-google-maps.js',
+				'dist/js/coblocks-google-recaptcha.js',
+				'dist/js/coblocks-lightbox.js',
+				'dist/js/coblocks-masonry.js',
+				'dist/js/coblocks-slick-initializer-front.js',
+				'dist/js/coblocks-slick-initializer.js',
+				'dist/js/vendors/flickity.js',
+				'dist/js/vendors/slick.js',
 				'src/js/coblocks-accordion-polyfill.js',
-				'dist/blocks.build.js',
-				'dist/js/coblocks-masonry.min.js',
-				'src/js/coblocks-masonry.js',
-				'dist/js/vendors/flickity.min.js',
-				'src/js/vendors/flickity.js',
-				'dist/js/vendors/slick.min.js',
-				'src/js/vendors/slick.js',
-				'dist/js/coblocks-slick-initializer-front.min.js',
-				'src/js/coblocks-slick-initializer-front.js',
-				'dist/js/coblocks-lightbox.min.js',
-				'src/js/coblocks-lightbox.js',
-				'dist/js/coblocks-google-recaptcha.min.js',
-				'src/js/coblocks-google-recaptcha.js',
-				'dist/js/coblocks-datepicker.min.js',
 				'src/js/coblocks-datepicker.js',
-				'dist/js/coblocks-google-maps.min.js',
+				'src/js/coblocks-fromEntries.js',
 				'src/js/coblocks-google-maps.js',
+				'src/js/coblocks-google-recaptcha.js',
+				'src/js/coblocks-lightbox.js',
+				'src/js/coblocks-masonry.js',
+				'src/js/coblocks-slick-initializer-front.js',
+				'src/js/coblocks-slick-initializer.js',
+				'src/js/vendors/flickity.js',
+				'src/js/vendors/slick.js',
 			],
 			'css' => [
-				'dist/blocks.style.build.css',
-				'dist/blocks.editor.build.css',
-				// 'dist/utilities.style.build.css',
+				'dist/coblocks-editor.css',
+				'dist/coblocks-style.css',
 			],
 		];
 
@@ -226,7 +229,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 
 			foreach ( $assets as $path_to_asset ) {
 
-				$minfied_asset_string = ( false !== strpos( $path_to_asset, '.min' ) ) ? 'Minified' : 'Unminified';
+				$minfied_asset_string = ( false !== strpos( $path_to_asset, 'dist/' ) ) ? 'Minified' : 'Unminified';
 
 				$this->assertTrue(
 					file_exists( COBLOCKS_PLUGIN_DIR . $path_to_asset ),
