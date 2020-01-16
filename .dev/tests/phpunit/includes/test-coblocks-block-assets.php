@@ -53,18 +53,14 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 		$new_reflection = new CoBlocks_Block_Assets();
 
 		$expected = [
-			'slug' => 'coblocks',
 			'url'  => str_replace( '/.dev/tests/phpunit', '', untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) ) ), // Fix inconsistencies path between plugin and unit tests
 		];
 
-		$slug = $reflection->getProperty( 'slug' );
 		$url  = $reflection->getProperty( 'url' );
 
-		$slug->setAccessible( true );
 		$url->setAccessible( true );
 
 		$check = [
-			'slug' => $slug->getValue( $new_reflection ),
 			'url'  => $url->getValue( $new_reflection ),
 		];
 

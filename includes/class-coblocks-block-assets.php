@@ -42,17 +42,9 @@ class CoBlocks_Block_Assets {
 	private $url;
 
 	/**
-	 * The plugin version.
-	 *
-	 * @var string $slug
-	 */
-	private $slug;
-
-	/**
 	 * The Constructor.
 	 */
 	public function __construct() {
-		$this->slug = 'coblocks';
 		$this->url  = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
@@ -88,11 +80,11 @@ class CoBlocks_Block_Assets {
 	public function block_assets() {
 
 		// Styles.
-		$name       = $this->slug . '-style';
+		$name       = 'coblocks-style';
 		$asset_file = $this->get_asset_file( 'dist/' . $name );
 
 		wp_enqueue_style(
-			$this->slug . '-frontend',
+			'coblocks-frontend',
 			$this->url . '/dist/' . $name . '.css',
 			array(),
 			$asset_file['version']
@@ -109,7 +101,7 @@ class CoBlocks_Block_Assets {
 
 			// Mock wp_enqueue_style for utility styles.
 			wp_enqueue_style(
-				$this->slug . '-utilities',
+				'coblocks-utilities',
 				$this->url . '/dist/utilities.style.build.css',
 				array(),
 				COBLOCKS_VERSION
@@ -124,22 +116,22 @@ class CoBlocks_Block_Assets {
 	 */
 	public function editor_assets() {
 		// Styles.
-		$name       = $this->slug . '-editor';
+		$name       = 'coblocks-editor';
 		$asset_file = $this->get_asset_file( 'dist/' . $name );
 
 		wp_register_style(
-			$this->slug . '-editor',
+			'coblocks-editor',
 			$this->url . '/dist/' . $name . '.css',
 			array(),
 			$asset_file['version']
 		);
 
 		// Scripts.
-		$name       = $this->slug;
+		$name       = 'coblocks';
 		$asset_file = $this->get_asset_file( 'dist/' . $name );
 
 		wp_register_script(
-			$this->slug . '-editor',
+			'coblocks-editor',
 			$this->url . '/dist/' . $name . '.js',
 			$asset_file['dependencies'],
 			$asset_file['version'],
@@ -167,7 +159,7 @@ class CoBlocks_Block_Assets {
 		$form_subject = ( new CoBlocks_Form() )->default_subject();
 
 		wp_localize_script(
-			$this->slug . '-editor',
+			'coblocks-editor',
 			'coblocksBlockData',
 			array(
 				'form'                           => array(
@@ -278,10 +270,10 @@ class CoBlocks_Block_Assets {
 		$vendors_dir = CoBlocks()->asset_source( 'js', 'vendors' );
 
 		// Masonry block.
-		if ( has_block( $this->slug . '/gallery-masonry' ) ) {
+		if ( has_block( 'coblocks/gallery-masonry' ) ) {
 			wp_enqueue_script(
-				$this->slug . '-masonry',
-				$dir . $this->slug . '-masonry.js',
+				'coblocks-masonry',
+				$dir . 'coblocks-masonry.js',
 				array( 'jquery', 'masonry', 'imagesloaded' ),
 				COBLOCKS_VERSION,
 				true
@@ -289,10 +281,10 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Carousel block.
-		if ( has_block( $this->slug . '/gallery-carousel' ) ) {
+		if ( has_block( 'coblocks/gallery-carousel' ) ) {
 
 			wp_enqueue_script(
-				$this->slug . '-flickity',
+				'coblocks-flickity',
 				$vendors_dir . '/flickity.js',
 				array( 'jquery' ),
 				COBLOCKS_VERSION,
@@ -302,17 +294,17 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Post Carousel block.
-		if ( has_block( $this->slug . '/post-carousel' ) ) {
+		if ( has_block( 'coblocks/post-carousel' ) ) {
 			wp_enqueue_script(
-				$this->slug . '-slick',
+				'coblocks-slick',
 				$vendors_dir . '/slick.js',
 				array( 'jquery' ),
 				COBLOCKS_VERSION,
 				true
 			);
 			wp_enqueue_script(
-				$this->slug . '-slick-initializer-front',
-				$dir . $this->slug . '-slick-initializer-front.js',
+				'coblocks-slick-initializer-front',
+				$dir . 'coblocks-slick-initializer-front.js',
 				array( 'jquery' ),
 				COBLOCKS_VERSION,
 				true
@@ -320,10 +312,10 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Lightbox.
-		if ( has_block( $this->slug . '/gallery-masonry' ) || has_block( $this->slug . '/gallery-stacked' ) || has_block( $this->slug . '/gallery-collage' ) || has_block( $this->slug . '/gallery-carousel' ) || has_block( $this->slug . '/gallery-offset' ) ) {
+		if ( has_block( 'coblocks/gallery-masonry' ) || has_block( 'coblocks/gallery-stacked' ) || has_block( 'coblocks/gallery-collage' ) || has_block( 'coblocks/gallery-carousel' ) || has_block( 'coblocks/gallery-offset' ) ) {
 			wp_enqueue_script(
-				$this->slug . '-lightbox',
-				$dir . $this->slug . '-lightbox.js',
+				'coblocks-lightbox',
+				$dir . 'coblocks-lightbox.js',
 				array( 'jquery' ),
 				COBLOCKS_VERSION,
 				true
