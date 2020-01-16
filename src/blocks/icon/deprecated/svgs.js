@@ -551,7 +551,7 @@ const icons = {
 			/* translators: icon keyword */
 			__( 'device', 'coblocks' ),
 			/* translators: icon keyword */
-			__( 'montior', 'coblocks' ),
+			__( 'monitor', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'office', 'coblocks' ),
 			/* translators: icon keyword */
@@ -596,7 +596,7 @@ const icons = {
 			/* translators: icon keyword */
 			__( 'device', 'coblocks' ),
 			/* translators: icon keyword */
-			__( 'montior', 'coblocks' ),
+			__( 'monitor', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'office', 'coblocks' ),
 			/* translators: icon keyword */
@@ -619,7 +619,7 @@ const icons = {
 			/* translators: icon keyword */
 			__( 'ipad', 'coblocks' ),
 			/* translators: icon keyword */
-			__( 'montior', 'coblocks' ),
+			__( 'monitor', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'office', 'coblocks' ),
 			/* translators: icon keyword */
@@ -1146,9 +1146,9 @@ const icons = {
 			/* translators: icon keyword */
 			__( 'cart', 'coblocks' ),
 			/* translators: icon keyword */
-			__( 'commence', 'coblocks' ),
+			__( 'commerce', 'coblocks' ),
 			/* translators: icon keyword */
-			__( 'ecommence', 'coblocks' ),
+			__( 'ecommerce', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'ship', 'coblocks' ),
 			/* translators: icon keyword */
