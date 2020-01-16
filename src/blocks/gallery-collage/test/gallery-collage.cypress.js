@@ -39,7 +39,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	   * Test that we can upload images to block and are able
 	   * to successfuly save the block without errors.
 	   */
-	it( 'Test collage block allows image upload and saves.', function() {
+	it( 'Test collage block saves with image upload.', function() {
 		const { fileName, imageBase, pathToFixtures } = galleryData;
 		helpers.addCoBlocksBlockToPage( true, 'gallery-collage' );
 
