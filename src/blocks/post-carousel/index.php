@@ -241,7 +241,7 @@ function coblocks_get_post_carousel_info( $posts ) {
 
 		$formatted_post = null;
 
-		$formatted_post['thumbnailURL'] = get_the_post_thumbnail_url( $post );
+		$formatted_post['thumbnailURL'] = get_the_post_thumbnail_url( $post, 'full' );
 		$formatted_post['date']         = esc_attr( get_the_date( 'c', $post ) );
 		$formatted_post['dateReadable'] = esc_html( get_the_date( '', $post ) );
 		$formatted_post['title']        = get_the_title( $post );

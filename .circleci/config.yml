@@ -7,19 +7,23 @@ workflows:
       - php56:
           filters:
             tags:
-              only: /.*/
-      - php72: # Will be deprecated on 30 Nov 2020
+              only: /^(?!canary).*$/
+      - php73:
           filters:
             tags:
-              only: /.*/
+              only: /^(?!canary).*$/
       - jest:
           filters:
             tags:
-              only: /.*/
+              only: /^(?!canary).*$/
       - e2e:
           filters:
             tags:
-              only: /.*/
+              only: /^(?!canary).*$/
+      - canary-release:
+          filters:
+            branches:
+              only: master
       - i18n:
           filters:
             branches:
@@ -27,12 +31,12 @@ workflows:
       - deploy:
           requires:
             - php56
-            - php72
+            - php73
             - jest
             - e2e
           filters:
             tags:
-              only: /.*/
+              only: /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*)?(\+[0-9-]+(\.[0-9]+)*)?/ # Run on semantic version tags only
             branches:
               ignore: /.*/
 
@@ -40,15 +44,40 @@ version: 2.1
 jobs:
   php56:
     docker:
-      - image: circleci/php:5.6
+      - image: circleci/php:5.6-node
       - image: circleci/mysql:5.7
     steps:
       - checkout
+      - run:
+          name: Disable xdebug PHP extension
+          command: sudo rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
       - run:
           name: "Setup Environment Variables"
           command: |
             echo "export PATH=$HOME/.composer/vendor/bin:$PATH" >> $BASH_ENV
             source /home/circleci/.bashrc
+      - run:
+          name: Update npm
+          command: sudo npm install -g npm@latest
+      - restore_cache:
+          key: php56-build-dependency-cache--{{ checksum "package.json" }}
+      - run:
+          name: Install node packages
+          command: npm install
+      - save_cache:
+          key: php56-build-dependency-cache--{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Install WP-CLI
+          command: |
+            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+            chmod +x wp-cli.phar
+            sudo mv wp-cli.phar /usr/local/bin/wp
+      - run:
+          name: Build the plugin
+          command: |
+            ./node_modules/.bin/grunt build
       - run:
           name: "Install Dependencies"
           command: |
@@ -71,17 +100,42 @@ jobs:
           command: WP_MULTISITE=1 composer run test
           working_directory: /tmp/wordpress/wp-content/plugins/coblocks
 
-  php72:
+  php73:
     docker:
-      - image: circleci/php:7.2
+      - image: circleci/php:7.3-node
       - image: circleci/mysql:5.7
     steps:
       - checkout
+      - run:
+          name: Disable xdebug PHP extension
+          command: sudo rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
       - run:
           name: "Setup Environment Variables"
           command: |
             echo "export PATH=$HOME/.composer/vendor/bin:$PATH" >> $BASH_ENV
             source /home/circleci/.bashrc
+      - run:
+          name: Update npm
+          command: sudo npm install -g npm@latest
+      - restore_cache:
+          key: php73-build-dependency-cache--{{ checksum "package.json" }}
+      - run:
+          name: Install node packages
+          command: npm install
+      - save_cache:
+          key: php73-build-dependency-cache--{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Install WP-CLI
+          command: |
+            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+            chmod +x wp-cli.phar
+            sudo mv wp-cli.phar /usr/local/bin/wp
+      - run:
+          name: Build the plugin
+          command: |
+            ./node_modules/.bin/grunt build
       - run:
           name: "Install Dependencies"
           command: |
@@ -168,7 +222,7 @@ jobs:
             bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
-          name: Install WPCLI
+          name: Install WP-CLI
           command: |
             curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
             chmod +x wp-cli.phar
@@ -213,13 +267,21 @@ jobs:
           name: Install PHP
           command: sudo apt-get install php libapache2-mod-php php-mbstring
       - run:
+          name: Disable xdebug PHP extension
+          command: |
+            sudo rm -f /etc/php/*/mods-available/xdebug.ini
+            sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
+            sudo rm -f /etc/php/*/conf.d/*xdebug.ini
+      - run:
           name: Install gettext
           command: sudo apt-get install gettext
       - run:
           name: Install node packages
-          command: npm install
+          command: |
+            npm uninstall cypress
+            npm install
       - run:
-          name: Install WPCLI
+          name: Install WP-CLI
           command: |
             curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
             chmod +x wp-cli.phar
@@ -230,15 +292,87 @@ jobs:
             mv ../project ../coblocks
             npm run babel:build
       - run:
-          name: Deploy coblocks.pot/coblocks.json back to Github
+          name: Deploy coblocks.pot/coblocks.json back to GitHub
           command: |
-            git config --global user.email "plugins@godaddy.com"
-            git config --global user.name "GoDaddy Translator"
-            git add languages/coblocks.json
-            git add languages/coblocks.pot
-            git commit -m "Update coblocks.pot/coblocks.json files [skip ci]"
-            git push origin master --force --quiet
+            export GIT_COMMIT_DESC=$(git log --format=oneline -n 1 $CIRCLE_SHA1)
+            if [[ $GIT_COMMIT_DESC != *"skip i18n"* ]]; then
+              git config --global user.email "plugins@godaddy.com"
+              git config --global user.name "GoDaddy Translator"
+              git add languages/coblocks.json
+              git add languages/coblocks.pot
+              git commit -m "Update coblocks.pot/coblocks.json files [skip i18n]"
+              git push origin master --quiet
+            fi
           path: ~/coblocks
+
+  canary-release:
+    docker:
+      - image: circleci/golang:latest-node-browsers-legacy
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "0e:f8:0a:19:88:42:c3:5a:b9:82:17:34:6b:40:68:21"
+      - checkout
+      - run:
+          name: Add CoBlocks i18n staging site to known_hosts
+          command: ssh-keyscan -H a90.8f7.myftpupload.com >> ~/.ssh/known_hosts
+      - run:
+          name: Update npm
+          command: sudo npm install -g npm@latest
+      - run:
+          name: Install Grunt.js
+          command: sudo npm install -g grunt-cli
+      - run:
+          name: Install PHP
+          command: sudo apt-get install php libapache2-mod-php php-mbstring
+      - run:
+          name: Disable xdebug PHP extension
+          command: |
+            sudo rm -f /etc/php/*/mods-available/xdebug.ini
+            sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
+            sudo rm -f /etc/php/*/conf.d/*xdebug.ini
+      - run:
+          name: Install gettext
+          command: sudo apt-get install gettext
+      - run:
+          name: Install WP-CLI
+          command: |
+            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+            chmod +x wp-cli.phar
+            sudo mv wp-cli.phar /usr/local/bin/wp
+      - run:
+          name: Install ghr
+          command: |
+            go get -u github.com/tcnksm/ghr
+      - run:
+          name: Install node packages
+          command: |
+            npm uninstall cypress
+            npm install
+      - run:
+          name: Build the plugin
+          command: |
+            mkdir -p /tmp/artifacts
+            grunt build
+            COBLOCKS_VERSION_LINE=$(awk '/\* Version:/{ print NR; exit }' build/coblocks/class-coblocks.php)
+            COBLOCKS_COMMIT_HASH=$(git rev-parse --verify HEAD | head -c 7)
+            sed -i -e "${COBLOCKS_VERSION_LINE}s/$/-${COBLOCKS_COMMIT_HASH}/" build/coblocks/class-coblocks.php
+            npm run json2po
+            npm run po2mo
+            npm run po2jed
+            rm -f languages/*.po languages/*.pot languages/coblocks.json
+            find languages/ -type f ! -name 'coblocks*' -exec rm {} \;
+            cp -r languages/ build/coblocks/languages/
+            cd build && zip -r coblocks-canary.zip coblocks
+            mv coblocks-canary.zip /tmp/artifacts/coblocks-canary.zip
+      - run:
+          name: Deploy plugin to the CoBlocks i18n staging site
+          command: |
+            scp -r /tmp/artifacts/coblocks-canary.zip ${STAGING_SITE_SSH_CREDS}:html/wp-content/
+            ssh ${STAGING_SITE_SSH_CREDS} 'cd html/wp-content && wp plugin install coblocks-canary.zip --force --activate --skip-themes --skip-plugins && rm -rf coblocks-canary.zip languages/plugins/coblocks-*'
+      - deploy:
+          name: Create a canary release on GitHub
+          command: ghr -t ${GH_ACCESS_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "Latest build of the master branch. This bleeding edge version is for testing purposes only and should not be used in production." -delete -prerelease -replace canary /tmp/artifacts/coblocks-canary.zip
 
   deploy:
     docker:
@@ -258,10 +392,16 @@ jobs:
           name: Install PHP
           command: sudo apt-get install php libapache2-mod-php php-mbstring
       - run:
+          name: Disable xdebug PHP extension
+          command: |
+            sudo rm -f /etc/php/*/mods-available/xdebug.ini
+            sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
+            sudo rm -f /etc/php/*/conf.d/*xdebug.ini
+      - run:
           name: Install gettext
           command: sudo apt-get install gettext
       - run:
-          name: Install WPCLI
+          name: Install WP-CLI
           command: |
             curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
             chmod +x wp-cli.phar
@@ -272,7 +412,9 @@ jobs:
             go get -u github.com/tcnksm/ghr
       - run:
           name: Install node packages
-          command: npm install
+          command: |
+            npm uninstall cypress
+            npm install
       - run:
           name: Build the plugin
           command: |

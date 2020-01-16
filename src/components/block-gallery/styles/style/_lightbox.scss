@@ -152,7 +152,7 @@
 	}
 }
 
-.has-lightbox {
+.has-lightbox > :not(.carousel-nav) {
 	figure:hover {
 		cursor: zoom-in;
 	}

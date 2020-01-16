@@ -142,11 +142,7 @@ function applyFontSettings( extraProps, blockType, attributes ) {
 			extraProps.style = applyStyle( attributes, blockType.name );
 		}
 
-		const { customFontSize, fontFamily, lineHeight, fontWeight, letterSpacing, textTransform, noBottomSpacing, noTopSpacing } = attributes;
-
-		if ( customFontSize ) {
-			extraProps.className = classnames( extraProps.className, 'has-custom-size' );
-		}
+		const { fontFamily, lineHeight, fontWeight, letterSpacing, textTransform, noBottomSpacing, noTopSpacing } = attributes;
 
 		if ( fontFamily ) {
 			extraProps.className = classnames( extraProps.className, 'has-custom-font' );

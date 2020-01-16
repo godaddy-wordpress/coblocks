@@ -166,7 +166,7 @@ class edit extends Component {
 											onSubmit={ event => event.preventDefault() }
 										>
 											<Dashicon icon="admin-links" />
-											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
+											<div className="block-editor-url-input block-editor-url-input editor-url-input--coblocks">
 												<TextControl
 													value={ facebook }
 													/* eslint-disable jsx-a11y/no-autofocus */
@@ -212,7 +212,7 @@ class edit extends Component {
 											onSubmit={ event => event.preventDefault() }
 										>
 											<Dashicon icon="admin-links" />
-											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
+											<div className="block-editor-url-input block-editor-url-input editor-url-input--coblocks">
 												<TextControl
 													value={ twitter }
 													/* eslint-disable jsx-a11y/no-autofocus */
@@ -258,7 +258,7 @@ class edit extends Component {
 											onSubmit={ event => event.preventDefault() }
 										>
 											<Dashicon icon="admin-links" />
-											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
+											<div className="block-editor-url-input block-editor-url-input editor-url-input--coblocks">
 												<TextControl
 													value={ instagram }
 													/* eslint-disable jsx-a11y/no-autofocus */
@@ -306,7 +306,7 @@ class edit extends Component {
 											onSubmit={ event => event.preventDefault() }
 										>
 											<Dashicon icon="admin-links" />
-											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
+											<div className="block-editor-url-input block-editor-url-input editor-url-input--coblocks">
 												<TextControl
 													value={ pinterest }
 													/* eslint-disable jsx-a11y/no-autofocus */
@@ -354,7 +354,7 @@ class edit extends Component {
 											onSubmit={ event => event.preventDefault() }
 										>
 											<Dashicon icon="admin-links" />
-											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
+											<div className="block-editor-url-input block-editor-url-input editor-url-input--coblocks">
 												<TextControl
 													value={ linkedin }
 													/* eslint-disable jsx-a11y/no-autofocus */
@@ -400,7 +400,7 @@ class edit extends Component {
 											onSubmit={ event => event.preventDefault() }
 										>
 											<Dashicon icon="admin-links" />
-											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
+											<div className="block-editor-url-input block-editor-url-input editor-url-input--coblocks">
 												<TextControl
 													value={ youtube }
 													/* eslint-disable jsx-a11y/no-autofocus */
@@ -446,7 +446,7 @@ class edit extends Component {
 											onSubmit={ event => event.preventDefault() }
 										>
 											<Dashicon icon="admin-links" />
-											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
+											<div className="block-editor-url-input block-editor-url-input editor-url-input--coblocks">
 												<TextControl
 													value={ yelp }
 													/* eslint-disable jsx-a11y/no-autofocus */
@@ -492,7 +492,7 @@ class edit extends Component {
 											onSubmit={ event => event.preventDefault() }
 										>
 											<Dashicon icon="admin-links" />
-											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
+											<div className="block-editor-url-input block-editor-url-input editor-url-input--coblocks">
 												<TextControl
 													value={ houzz }
 													/* eslint-disable jsx-a11y/no-autofocus */

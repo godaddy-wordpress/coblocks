@@ -65,11 +65,13 @@ const save = ( { attributes, className } ) => {
 	return (
 		<div className={ classes }>
 			<div className={ innerClasses } style={ innerStyles }>
-				{ href ?
-					( <a href={ href } target={ linkTarget } rel={ rel }>
-						{ icon && svgs[ iconStyle ][ icon ].icon }
-					</a> ) :
-					icon && svgs[ iconStyle ][ icon ].icon
+				{ typeof icon !== 'undefined' &&
+					( href ?
+						<a href={ href } target={ linkTarget } rel={ rel }>
+							{ svgs[ iconStyle ][ icon ] && svgs[ iconStyle ][ icon ].icon }
+						</a> :
+						svgs[ iconStyle ][ icon ] && svgs[ iconStyle ][ icon ].icon
+					)
 				}
 			</div>
 		</div>
