@@ -268,7 +268,10 @@ jobs:
           command: sudo apt-get install php libapache2-mod-php php-mbstring
       - run:
           name: Disable xdebug PHP extension
-          command: sudo rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+          command: |
+            sudo rm -f /etc/php/*/mods-available/xdebug.ini
+            sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
+            sudo rm -f /etc/php/*/conf.d/*xdebug.ini
       - run:
           name: Install gettext
           command: sudo apt-get install gettext
@@ -324,7 +327,10 @@ jobs:
           command: sudo apt-get install php libapache2-mod-php php-mbstring
       - run:
           name: Disable xdebug PHP extension
-          command: sudo rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+          command: |
+            sudo rm -f /etc/php/*/mods-available/xdebug.ini
+            sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
+            sudo rm -f /etc/php/*/conf.d/*xdebug.ini
       - run:
           name: Install gettext
           command: sudo apt-get install gettext
@@ -387,7 +393,10 @@ jobs:
           command: sudo apt-get install php libapache2-mod-php php-mbstring
       - run:
           name: Disable xdebug PHP extension
-          command: sudo rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+          command: |
+            sudo rm -f /etc/php/*/mods-available/xdebug.ini
+            sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
+            sudo rm -f /etc/php/*/conf.d/*xdebug.ini
       - run:
           name: Install gettext
           command: sudo apt-get install gettext
