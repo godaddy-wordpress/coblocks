@@ -157,7 +157,6 @@ class Inspector extends Component {
 							<Fragment>
 								<div className="components-base-control components-coblocks-icon-block--advanced-size">
 									<Button
-										className="components-color-palette__clear"
 										type="button"
 										onClick={ () => {
 											document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[ 0 ].style.height = 'auto';
@@ -165,6 +164,7 @@ class Inspector extends Component {
 										} }
 										isSmall
 										isDefault
+										isSecondary
 										aria-label={ __( 'Reset icon size', 'coblocks' ) }
 									>
 										{ __( 'Reset', 'coblocks' ) }
@@ -190,11 +190,11 @@ class Inspector extends Component {
 										width={ width }
 									/>
 									<Button
-										className="components-color-palette__clear"
 										type="button"
 										onClick={ () => this.onChangeSize( 'advanced', '' ) }
 										isDefault
 										isSmall
+										isSecondary
 										aria-label={ __( 'Apply custom size', 'coblocks' ) }
 										isPrimary={ iconSize === 'advanced' }
 									>
@@ -256,12 +256,13 @@ class Inspector extends Component {
 										return (
 											<li key={ `editor-pblock-types-list-item-${ i }` } className={ classnames(
 												'block-editor-block-types-list__list-item', {
-													'is-selected': icon && ( icon === keyName ),
 												},
 											) }>
 												<Tooltip text={ ( svg[ iconStyle ][ keyName ].label ) ? svg[ iconStyle ][ keyName ].label : keyName }>
 													<Button
 														isLarge
+														isSecondary
+														isPrimary={ icon && icon === keyName }
 														className="editor-block-list-item-button"
 														onClick={ () => {
 															setAttributes( { icon: keyName } );
