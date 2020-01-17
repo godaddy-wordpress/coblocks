@@ -1,10 +1,4 @@
 .bg {
-	// Background transparency
-	&-transparent {
-		background-color: transparent !important;
-	}
-
-	// Background repeat
 	&-repeat {
 		background-repeat: repeat;
 	}
@@ -21,7 +15,6 @@
 		background-repeat: repeat-y;
 	}
 
-	// Background size
 	&-cover {
 		background-size: cover;
 	}
@@ -34,7 +27,6 @@
 		background-size: contain;
 	}
 
-	// Background position
 	&-top-left {
 		background-position: top left;
 	}
