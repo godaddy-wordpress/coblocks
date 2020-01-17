@@ -207,47 +207,60 @@ export function getBlockSlug() {
 }
 
 /**
+ * Click on a style button within the style panel
+ *
+ * @param string style   Name of the style to apply
+ */
+export function setBlockStyle( style ) {
+	openSettingsPanel( RegExp( 'styles', 'i' ) );
+
+	cy.get( '.edit-post-sidebar' )
+		.contains( RegExp( style, 'i' ) )
+		.click( { force: true } );
+}
+
+/**
+ * Set a value within the input box
+ *
+ * @param string panelName   Name of the panel to open
+ * @param string settingName The setting to update. shape height|background height
+ * @param string value    	 The value to set in the input
+ */
+export function setInputValue( panelName, settingName, value ) {
+	openSettingsPanel( RegExp( panelName, 'i' ) );
+
+	cy.get( '.edit-post-sidebar' )
+		.contains( RegExp( settingName, 'i' ) )
+		.then( $settingSection => {
+			cy.get( Cypress.$( $settingSection ).parent() )
+				.find( 'input' )
+				.clear()
+				.click()
+				.type( value );
+		} );
+}
+
+/**
  * Set a Color Setting value to a custom hex color
  *
  * @param string settingName The setting to update. background|text
  * @param string hexColor    The custom hex color to set. eg: #55e7ff
  */
 export function setColorSetting( settingName, hexColor ) {
-	openSettingsPanel( 'Color Settings' );
-
-	switch ( settingName ) {
-		case 'background':
-			cy.get( '.components-base-control__field' )
-				.contains( /background color/i )
-				.then( $backgroundPanel => {
-					cy.get( Cypress.$( $backgroundPanel ).parent() )
-						.contains( /custom color/i )
-						.click();
-					cy.get( '.components-color-picker__inputs-field input[type="text"]' )
-						.clear()
-						.type( hexColor );
-					cy.get( Cypress.$( $backgroundPanel ).parent() )
-						.contains( /custom color/i )
-						.click();
-				} );
-			break;
-
-		case 'text':
-			cy.get( '.components-base-control__field' )
-				.contains( /text color/i )
-				.then( $backgroundPanel => {
-					cy.get( Cypress.$( $backgroundPanel ).parent() )
-						.contains( /custom color/i )
-						.click();
-					cy.get( '.components-color-picker__inputs-field input[type="text"]' )
-						.clear()
-						.type( hexColor );
-					cy.get( Cypress.$( $backgroundPanel ).parent() )
-						.contains( /custom color/i )
-						.click();
-				} );
-			break;
-	}
+	openSettingsPanel( /color settings/i );
+	cy.get( '.components-base-control__field' )
+		.contains( RegExp( settingName, 'i' ) )
+		.then( $backgroundPanel => {
+			cy.get( Cypress.$( $backgroundPanel ).parent() )
+				.contains( /custom color/i )
+				.click();
+			cy.get( '.components-color-picker__inputs-field input[type="text"]' )
+				.clear()
+				.type( hexColor );
+			cy.get( Cypress.$( $backgroundPanel ).parent() )
+				.contains( /custom color/i )
+				.click();
+		} );
 }
 
 /**
