@@ -53,13 +53,6 @@ module.exports = function( grunt ) {
 			},
 		},
 
-		eslint: {
-			target: [
-				'src/**/*.js',
-				'!src/js/vendors/**/*.js',
-			],
-		},
-
 		compress: {
 			coblocks: {
 				options: {
@@ -72,37 +65,6 @@ module.exports = function( grunt ) {
 						src: [ '**' ],
 					},
 				],
-			},
-		},
-
-		uglify: {
-			options: {
-				ASCIIOnly: true,
-			},
-			all: {
-				expand: true,
-				cwd: 'src/js/',
-				src: '**/*.js',
-				dest: 'dist/js/',
-				ext: '.min.js',
-			},
-		},
-
-		imagemin: {
-			options: {
-				optimizationLevel: 3,
-			},
-			assets: {
-				expand: true,
-				cwd: 'dist/images/',
-				src: [ '**/*.{gif,jpeg,jpg,png,svg}' ],
-				dest: 'build/<%= pkg.name %>/dist/images/',
-			},
-			wp_org_assets: {
-				expand: true,
-				cwd: '.wordpress-org/',
-				src: [ '**/*.{gif,jpeg,jpg,png,svg}' ],
-				dest: '.wordpress-org/',
 			},
 		},
 
@@ -188,9 +150,9 @@ module.exports = function( grunt ) {
 
 	require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
-	grunt.registerTask( 'default', [ 'uglify', 'shell:cgb_start' ] );
+	grunt.registerTask( 'default', [ 'shell:cgb_start' ] );
 	grunt.registerTask( 'check', [ 'devUpdate' ] );
-	grunt.registerTask( 'build', [ 'shell:cgb_build', 'uglify', 'imagemin', 'update-pot', 'replace', 'clean:build', 'copy:build' ] );
+	grunt.registerTask( 'build', [ 'shell:cgb_build', 'update-pot', 'replace', 'clean:build', 'copy:build' ] );
 	grunt.registerTask( 'update-pot', [ 'shell:translations' ] );
 	grunt.registerTask( 'version', [ 'replace' ] );
 };

@@ -74,7 +74,6 @@
 		"@wordpress/postcss-themes": "^2.2.0",
 		"@wordpress/scripts": "^6.0.0",
 		"autoprefixer": "^9.7.3",
-		"babel-eslint": "^8.2.1",
 		"babel-loader": "^8.0.6",
 		"babel-preset-cgb": "^1.6.0",
 		"cgb-dev-utils": "^1.5.0",
@@ -88,13 +87,6 @@
 		"cypress": "^3.7.0",
 		"delete-empty": "^2.0.0",
 		"email-validator": "^2.0.4",
-		"eslint": "^4.19.1",
-		"eslint-config-wordpress": "^2.0.0",
-		"eslint-loader": "^3.0.3",
-		"eslint-plugin-jest": "^21.6.1",
-		"eslint-plugin-jsx-a11y": "^6.0.3",
-		"eslint-plugin-react": "^7.17.0",
-		"eslint-plugin-wordpress": "^0.1.0",
 		"extract-loader": "^3.1.0",
 		"extract-text-webpack-plugin": "^3.0.2",
 		"file-loader": "^5.0.2",
@@ -105,11 +97,8 @@
 		"grunt-contrib-clean": "^1.0.0",
 		"grunt-contrib-compress": "^1.4.1",
 		"grunt-contrib-copy": "^1.0.0",
-		"grunt-contrib-imagemin": "^3.1.0",
 		"grunt-contrib-jshint": "^1.1.0",
-		"grunt-contrib-uglify-es": "github:gruntjs/grunt-contrib-uglify#harmony",
 		"grunt-dev-update": "^2.3.0",
-		"grunt-eslint": "^21.0.0",
 		"grunt-shell": "^2.1.0",
 		"grunt-text-replace": "^0.4.0",
 		"grunt-wp-readme-to-markdown": "^2.0.1",
@@ -161,7 +150,6 @@
 	},
 	"lint-staged": {
 		"*.js": [
-			"eslint",
 			"jest --config .dev/tests/jest/jest.config.js --silent --findRelatedTests"
 		]
 	},
@@ -178,8 +166,5 @@
 			"no-descending-specificity": null,
 			"order/properties-alphabetical-order": true
 		}
-	},
-	"eslintConfig": {
-		"extends": "wordpress"
 	}
 }
