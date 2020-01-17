@@ -45,30 +45,6 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test the constructor constants are set correctly
-	 */
-	public function test_construct_constants() {
-
-		$reflection     = new ReflectionClass( $this->coblocks_block_assets );
-		$new_reflection = new CoBlocks_Block_Assets();
-
-		$expected = [
-			'url'  => str_replace( '/.dev/tests/phpunit', '', untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) ) ), // Fix inconsistencies path between plugin and unit tests
-		];
-
-		$url  = $reflection->getProperty( 'url' );
-
-		$url->setAccessible( true );
-
-		$check = [
-			'url'  => $url->getValue( $new_reflection ),
-		];
-
-		$this->assertEquals( $expected, $check );
-
-	}
-
-	/**
 	 * Test the constructor actions
 	 */
 	public function test_construct_actions() {

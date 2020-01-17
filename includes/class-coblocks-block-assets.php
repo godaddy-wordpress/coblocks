@@ -35,18 +35,9 @@ class CoBlocks_Block_Assets {
 	}
 
 	/**
-	 * The base URL path (without trailing slash).
-	 *
-	 * @var string $url
-	 */
-	private $url;
-
-	/**
 	 * The Constructor.
 	 */
 	public function __construct() {
-		$this->url = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
-
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 		add_action( 'init', array( $this, 'editor_assets' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
@@ -81,11 +72,12 @@ class CoBlocks_Block_Assets {
 
 		// Styles.
 		$name       = 'coblocks-style';
-		$asset_file = $this->get_asset_file( 'dist/' . $name );
+		$filepath   = 'dist/' . $name;
+		$asset_file = $this->get_asset_file( $filepath );
 
 		wp_enqueue_style(
 			'coblocks-frontend',
-			$this->url . '/dist/' . $name . '.css',
+			COBLOCKS_PLUGIN_URL . $filepath . '.css',
 			array(),
 			$asset_file['version']
 		);
@@ -102,7 +94,7 @@ class CoBlocks_Block_Assets {
 			// Mock wp_enqueue_style for utility styles.
 			wp_enqueue_style(
 				'coblocks-utilities',
-				$this->url . '/dist/utilities.style.build.css',
+				COBLOCKS_PLUGIN_URL . 'dist/utilities.style.build.css',
 				array(),
 				COBLOCKS_VERSION
 			);
@@ -117,22 +109,24 @@ class CoBlocks_Block_Assets {
 	public function editor_assets() {
 		// Styles.
 		$name       = 'coblocks-editor';
-		$asset_file = $this->get_asset_file( 'dist/' . $name );
+		$filepath   = 'dist/' . $name;
+		$asset_file = $this->get_asset_file( $filepath );
 
 		wp_register_style(
 			'coblocks-editor',
-			$this->url . '/dist/' . $name . '.css',
+			COBLOCKS_PLUGIN_URL . $filepath . '.css',
 			array(),
 			$asset_file['version']
 		);
 
 		// Scripts.
 		$name       = 'coblocks';
-		$asset_file = $this->get_asset_file( 'dist/' . $name );
+		$filepath   = 'dist/' . $name;
+		$asset_file = $this->get_asset_file( $filepath );
 
 		wp_register_script(
 			'coblocks-editor',
-			$this->url . '/dist/' . $name . '.js',
+			COBLOCKS_PLUGIN_URL . $filepath . '.js',
 			$asset_file['dependencies'],
 			$asset_file['version'],
 			true
