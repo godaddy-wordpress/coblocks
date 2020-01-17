@@ -5,6 +5,5 @@
 build
 coverage
 cypress
-**/*.cypress.js
 node_modules
 vendor
