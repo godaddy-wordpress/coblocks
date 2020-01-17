@@ -131,13 +131,14 @@ class Edit extends Component {
 						className={ 'components-coblocks-visual-dropdown' }
 					>
 						{ ! columns ?
-							<ButtonGroup aria-label={ __( 'Select Row Columns', 'coblocks' ) }>
+							<ButtonGroup aria-label={ __( 'Select Row Columns', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
 								{ map( columnOptions, ( { name, key, icon, columns } ) => (
 									<Tooltip text={ name }>
 										<div className="components-coblocks-visual-dropdown__button-wrapper">
 											<Button
-												className="components-coblocks-visual-dropdown__button"
-												isSmall
+												className="components-coblocks-visual-dropdown__button block-editor-block-pattern-picker__pattern"
+												isLarge
+												isSecondary
 												onClick={ () => {
 													setAttributes( {
 														columns: columns,
@@ -156,7 +157,7 @@ class Edit extends Component {
 								) ) }
 							</ButtonGroup> :
 							<Fragment>
-								<ButtonGroup aria-label={ __( 'Select Row Layout', 'coblocks' ) }>
+								<ButtonGroup aria-label={ __( 'Select Row Layout', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
 									<IconButton
 										icon="exit"
 										className="components-coblocks-visual-dropdown__back"
@@ -173,8 +174,9 @@ class Edit extends Component {
 											<div className="components-coblocks-visual-dropdown__button-wrapper">
 												<Button
 													key={ key }
-													className="components-coblocks-visual-dropdown__button"
-													isSmall
+													className="components-coblocks-visual-dropdown__button block-editor-block-pattern-picker__pattern"
+													isLarge
+													isSecondary
 													onClick={ () => {
 														setAttributes( {
 															layout: key,
