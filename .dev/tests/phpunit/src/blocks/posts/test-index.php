@@ -44,10 +44,10 @@ class CoBlocks_Posts_Index_Tests extends WP_UnitTestCase {
 	 */
 	public function test_coblocks_render_posts_block() {
 		$attributes = [
-			'className' => 'test-class-name',
-			'postsToShow' => 4,
-			'order' => 'date',
-			'orderBy' => 'desc',
+			'className'    => 'test-class-name',
+			'postsToShow'  => 4,
+			'order'        => 'date',
+			'orderBy'      => 'desc',
 			'postFeedType' => 'internal',
 		];
 
@@ -63,7 +63,7 @@ class CoBlocks_Posts_Index_Tests extends WP_UnitTestCase {
 		global $post;
 		$post = get_post( $post_id );
 
-		$this->assertEquals( '<div class="wp-block-coblocks-posts test-class-name"><div class="list-none ml-0 pl-0 pt-3"></div></div>', coblocks_render_posts_block( $attributes ) );
+		$this->assertEquals( '<div class="test-class-name"><div class="wp-block-coblocks-posts__inner"></div></div>', coblocks_render_posts_block( $attributes ) );
 	}
 
 	/**

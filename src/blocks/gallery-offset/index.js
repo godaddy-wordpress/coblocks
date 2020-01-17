@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import edit from './edit';
+import deprecated from './deprecated';
 import save from './save';
 import icon from './icon';
 import transforms from './transforms';
@@ -54,6 +55,7 @@ const settings = {
 	transforms,
 	edit,
 	save,
+	deprecated,
 };
 
 export { name, category, metadata, settings };
