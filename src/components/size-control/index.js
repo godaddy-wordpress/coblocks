@@ -185,6 +185,7 @@ class SizeControl extends Component {
 					{ reset &&
 						<Button
 							isSmall
+							isSecondary
 							onClick={ () => onChange( resetValue ) }
 						>
 							{ __( 'Reset', 'coblocks' ) }
