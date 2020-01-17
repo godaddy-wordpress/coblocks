@@ -302,7 +302,13 @@ class Edit extends Component {
 							onChange={ nextAddress => this.setState( { address: nextAddress } ) }
 							onKeyDown={ ( { keyCode } ) => handleKeyDown( keyCode ) }
 						/>
-						<Button isLarge type="button" onClick={ renderMap } disabled={ ! this.state.address }>
+						<Button
+							isLarge
+							isSecondary
+							type="button"
+							onClick={ renderMap }
+							disabled={ ! this.state.address }
+						>
 							{ __( 'Apply', 'coblocks' ) }
 						</Button>
 
