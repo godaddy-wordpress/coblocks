@@ -27,8 +27,14 @@
 		"po2jed": "cd languages && find . -name \\*.po -execdir sh -c 'po2json \"$0\" `basename $0 .po`-coblocks-editor.json -f jed' '{}' \\;",
 		"deploy-i18n": "./node_modules/.bin/cypress run -s './.dev/tests/cypress/integration/deploy-translations.js'",
 		"test-e2e": "cypress run --config video=false --browser chrome",
-		"test-e2e:record": "cypress run --browser chrome"
+		"test-e2e:record": "cypress run --browser chrome",
+		"env": "wp-scripts env"
 	},
+	"wp-env": {
+        "plugin-dir": "coblocks",
+        "plugin-name": "CoBlocks",
+        "welcome-build-command": "npm run start"
+    },
 	"locales": {
 		"da_DK": "Dansk",
 		"de_DE": "Deutsch",
