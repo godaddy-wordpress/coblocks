@@ -173,6 +173,7 @@ class SizeControl extends Component {
 							<Button
 								key={ size }
 								isLarge
+								isSecondary
 								isPrimary={ value === size }
 								aria-pressed={ value === size }
 								onClick={ () => onChange( size ) }

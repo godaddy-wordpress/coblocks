@@ -121,6 +121,7 @@ class Inspector extends Component {
 										<Button
 											key={ `option-${ option.value }` }
 											isLarge
+											isSecondary={ ! isCurrent }
 											isPrimary={ isCurrent }
 											aria-pressed={ isCurrent }
 											onClick={ () => setAttributes( { gutter: option.value } ) }
