@@ -4,7 +4,7 @@
 	"attributes": {
 		"gutter": {
 			"type": "string",
-			"default": "large"
+			"default": "medium"
 		},
 		"columns": {
 			"type": "number",

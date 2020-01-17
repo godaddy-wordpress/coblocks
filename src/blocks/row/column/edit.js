@@ -22,7 +22,8 @@ import {
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { InnerBlocks, Inserter } from '@wordpress/block-editor';
+import { withSelect } from '@wordpress/data';
+import { InnerBlocks } from '@wordpress/block-editor';
 import { ResizableBox, Spinner } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
 
@@ -52,6 +53,7 @@ class Edit extends Component {
 			setAttributes,
 			backgroundColor,
 			textColor,
+			hasInnerBlocks,
 		} = this.props;
 
 		const {
@@ -71,7 +73,6 @@ class Edit extends Component {
 			marginSize,
 			paddingSize,
 			contentAlign,
-			showInserter,
 		} = attributes;
 
 		const parentId = wp.data
@@ -172,10 +173,7 @@ class Edit extends Component {
 						<div className="wp-block-coblocks-column">
 							<div className={ innerClasses } style={ innerStyles }>
 								{ BackgroundVideo( attributes ) }
-								<InnerBlocks templateLock={ false } />
-								{ showInserter ? (
-									<Inserter rootClientId={ clientId } isAppender />
-								) : null }
+								<InnerBlocks templateLock={ false } renderAppender={ ! hasInnerBlocks && InnerBlocks.ButtonBlockAppender } />
 							</div>
 						</div>
 					</div>
@@ -282,10 +280,7 @@ class Edit extends Component {
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						{ BackgroundVideo( attributes ) }
 						<div className={ innerClasses } style={ innerStyles }>
-							<InnerBlocks templateLock={ false } renderAppender={ () => null } />
-							{ showInserter ? (
-								<Inserter rootClientId={ clientId } isAppender />
-							) : null }
+							<InnerBlocks templateLock={ false } renderAppender={ ! hasInnerBlocks && InnerBlocks.ButtonBlockAppender } />
 						</div>
 					</div>
 				</ResizableBox>
@@ -294,4 +289,12 @@ class Edit extends Component {
 	}
 }
 
-export default compose( [ applyWithColors ] )( Edit );
+export default compose( [
+	applyWithColors,
+	withSelect( ( select, { clientId } ) => {
+		const block = select( 'core/block-editor' ).getBlock( clientId );
+		return {
+			hasInnerBlocks: !! ( block && block.innerBlocks.length ),
+		};
+	} ),
+] )( Edit );

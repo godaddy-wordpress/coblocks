@@ -6,7 +6,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 1.19.1
+Stable tag: 1.19.3
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -119,33 +119,5 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-### Enhancements
-* Introduce the ability for [themes to provide custom icons](https://github.com/godaddy-wordpress/coblocks/pull/1006) for the Icon block
-* Introduce a filter to [conditionally disable the typography controls](https://github.com/godaddy-wordpress/coblocks/pull/987)
-* Introduce filter to [conditionally load block styles](https://github.com/godaddy-wordpress/coblocks/pull/1173)
-
 ### Bug Fixes
-* Fix [media placeholder visibility when using Spotlight mode](https://github.com/godaddy-wordpress/coblocks/pull/1208)
-* Fix display issue with [Flickity navigation buttons](https://github.com/godaddy-wordpress/coblocks/pull/1204)
-* Resolve browser [Object.fromEntries compatibility errors](https://github.com/godaddy-wordpress/coblocks/pull/1205)
-* Use [background image SVGs](https://github.com/godaddy-wordpress/coblocks/pull/1171) for the Food & Drinks block item attributes
-* [Serve full size images](https://github.com/godaddy-wordpress/coblocks/pull/1178) with Post Carousel block
-* [Allow editing gallery captions without content](https://github.com/godaddy-wordpress/coblocks/pull/1180)
-* [Localize instructions string for MediaPlaceholder](https://github.com/godaddy-wordpress/coblocks/pull/1179)
-
-### Misc
-* [Clean up code structure of the Row block](https://github.com/godaddy-wordpress/coblocks/pull/1037)
-* [Improve Features block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1189)
-* [Improve Dynamic Separator block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1188)
-* [Improve Gist block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1187)
-* [Improve Buttons block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1186)
-* [Improve Author block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1185)
-* [Improve Click-to-Tweet block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1184)
-* [Improve Alert block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1182)
-* [Improve Accordion block stability through transforms testing](https://github.com/godaddy-wordpress/coblocks/pull/1181)
-
-### 1.19.1
-* [Resolve 404 error](https://github.com/godaddy-wordpress/coblocks/pull/1219) for utility styles
-* Update PHPUnit tests to [check for build assets](https://github.com/godaddy-wordpress/coblocks/pull/1222)
-* [Remove has-custom-size class](https://github.com/godaddy-wordpress/coblocks/pull/1223) from Typography Controls
-* Add [utility script that audits i18n strings against a wporg glossary](https://github.com/godaddy-wordpress/coblocks/pull/1224)
+* Fix gallery blocks not rendering properly within the editor

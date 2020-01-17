@@ -1,9 +1,10 @@
 .wp-block-coblocks-accordion-item {
+
 	p {
 		margin-top: 0;
 	}
 
-	// Remove hover and focus, as the title is now a text field.
+	// Remove hover and focus, as the title is a text field.
 	&__title {
 		&::after {
 			display: none;
@@ -15,15 +16,15 @@
 	}
 
 	&--open &__title {
-		border-radius: $accordion-border-radius $accordion-border-radius 0 0;
+		border-radius: 4px 4px 0 0;
 	}
 
 	// Set proper margin for the first and last item within the accordion item for < Gutenberg 6.3.
-	.wp-block:first-of-type .editor-block-list__block-edit {
+	.wp-block:first-of-type .block-editor-block-list__block-edit {
 		margin-top: 4px;
 	}
 
-	.wp-block:nth-last-child(2) .editor-block-list__block-edit {
+	.wp-block:nth-last-child(2) .block-editor-block-list__block-edit {
 		margin-bottom: 4px;
 	}
 
@@ -37,10 +38,10 @@
 }
 
 .wp-block-coblocks-accordion
-	> .editor-inner-blocks
-	> .editor-block-list__layout
+	> .block-editor-inner-blocks
+	> .block-editor-block-list__layout
 	> [data-type="coblocks/accordion-item"]
-	> .editor-block-list__block-edit
+	> .block-editor-block-list__block-edit
 	> [data-block] {
 	margin-top: 0;
 }
@@ -74,37 +75,37 @@
 
 .has-child-selected
 	.wp-block-coblocks-accordion
-	> .editor-inner-blocks
-	> .editor-block-list__layout
+	> .block-editor-inner-blocks
+	> .block-editor-block-list__layout
 	> [data-type="coblocks/accordion-item"]
-	> .editor-block-list__block-edit
+	> .block-editor-block-list__block-edit
 	> [data-block],
 .is-selected
 	.wp-block-coblocks-accordion
-	> .editor-inner-blocks
-	> .editor-block-list__layout
+	> .block-editor-inner-blocks
+	> .block-editor-block-list__layout
 	> [data-type="coblocks/accordion-item"]
-	> .editor-block-list__block-edit
+	> .block-editor-block-list__block-edit
 	> [data-block] {
 	margin-bottom: 42px;
 	margin-top: 0;
 }
 
 .wp-block-coblocks-accordion
-	> .editor-inner-blocks
-	> .editor-block-list__layout
+	> .block-editor-inner-blocks
+	> .block-editor-block-list__layout
 	> [data-type="coblocks/accordion-item"].is-selected:nth-last-child(2)
-	> .editor-block-list__block-edit
+	> .block-editor-block-list__block-edit
 	> [data-block] {
 	margin-bottom: 0;
 }
 
 .has-child-selected
 	.wp-block-coblocks-accordion
-	> .editor-inner-blocks
-	> .editor-block-list__layout
+	> .block-editor-inner-blocks
+	> .block-editor-block-list__layout
 	> [data-type="coblocks/accordion-item"]:nth-last-child(2)
-	> .editor-block-list__block-edit
+	> .block-editor-block-list__block-edit
 	> [data-block] {
 	margin-bottom: -21px;
 }

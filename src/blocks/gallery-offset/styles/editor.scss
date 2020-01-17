@@ -1,6 +1,11 @@
-.editor-block-list__block[data-type="coblocks/gallery-offset"] {
+.wp-block[data-type="coblocks/gallery-offset"] {
+
+	.components-form-file-upload .components-placeholder {
+		margin-top: 20px;
+	}
+
 	// Captions.
-	.editor-rich-text {
+	.block-editor-rich-text {
 		bottom: 0;
 		left: 0;
 		max-height: 100%;
@@ -30,12 +35,12 @@
 		width: auto !important;
 	}
 
-	.editor-rich-text figcaption:not([data-is-placeholder-visible="true"]) {
+	.block-editor-rich-text figcaption:not([data-is-placeholder-visible="true"]) {
 		overflow: hidden;
 		position: relative !important;
 	}
 
-	.is-selected .editor-rich-text {
+	.is-selected .block-editor-rich-text {
 		// IE calculates this incorrectly, so leave it to modern browsers.
 		@supports (position: sticky) {
 			bottom: 3px;
@@ -55,18 +60,14 @@
 		}
 	}
 
-	// .coblocks-gallery--item img {
-	// 	vertical-align: middle;
-	// }
-
 	.coblocks-gallery .coblocks-gallery--item figcaption {
 		margin: 0 !important;
 	}
 }
 
-// Needed until GB 6.9 is merged into core or backward support.
+// @todo Needed until GB 6.9 is merged into core or backward support.
 // Hide the placeholder when not selected.
-.editor-block-list__block[data-type="coblocks/gallery-offset"]:not(.is-selected):not(.is-focused)  {
+.block-editor-block-list__block[data-type="coblocks/gallery-offset"]:not(.is-selected):not(.is-focused)  {
 	div.components-form-file-upload {
 		display: none;
 	}

@@ -54,24 +54,24 @@ const Inspector = props => {
 
 	const sizeOptions = [
 		{
-			value: 'w-1/7 h-1/7',
+			value: 'small',
 			label: /* translators: abbreviation for small size */ __( 'S', 'coblocks' ),
 			tooltip: /* translators: label for small size option */ __( 'Small', 'coblocks' ),
 		},
 		{
-			value: 'w-1/7 sm:w-1/5 h-1/7 sm:h-1/5',
+			value: 'medium',
 			label: /* translators: abbreviation for medium size */ __( 'M', 'coblocks' ),
 			tooltip: /* translators: label for medium size option */ __( 'Medium', 'coblocks' ),
 		},
 		{
-			value: 'w-1/7 sm:w-1/3 h-1/7 sm:h-1/3',
+			value: 'large',
 			label: /* translators: abbreviation for large size */ __( 'L', 'coblocks' ),
 			tooltip: /* translators: label for large size option */ __( 'Large', 'coblocks' ),
 		},
 		{
-			value: 'w-1/7 sm:w-1/3 md:w-1/2 h-1/7 sm:h-1/3 md:h-1/2',
+			value: 'huge',
 			label: /* translators: abbreviation for extra large size */ __( 'XL', 'coblocks' ),
-			tooltip: /* translators: label for extra large size option */ __( 'Extra Large', 'coblocks' ),
+			tooltip: /* translators: label for extra large size option */ __( 'Huge', 'coblocks' ),
 		},
 	];
 
@@ -189,12 +189,12 @@ const Inspector = props => {
 		<InspectorControls>
 			{ hasPosts ?
 				<PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
-					<div className="editor-block-styles block-editor-block-styles coblocks-editor-block-styles">
+					<div className="block-editor-block-styles block-editor-block-styles coblocks-editor-block-styles">
 						{ styleOptions.map( style => (
 							<div
 								key={ `style-${ style.name }` }
 								className={ classnames(
-									'editor-block-styles__item block-editor-block-styles__item',
+									'block-editor-block-styles__item block-editor-block-styles__item',
 									{
 										'is-active': activeStyle === style,
 									}
@@ -210,10 +210,10 @@ const Inspector = props => {
 								tabIndex="0"
 								aria-label={ style.label || style.name }
 							>
-								<div className="editor-block-styles__item-preview block-editor-block-styles__item-preview">
+								<div className="block-editor-block-styles__item-preview block-editor-block-styles__item-preview">
 									{ listPosition === 'left' && style.iconAlt ? style.iconAlt : style.icon }
 								</div>
-								<div className="editor-block-styles__item-label block-editor-block-styles__item-label">
+								<div className="block-editor-block-styles__item-label block-editor-block-styles__item-label">
 									{ style.label || style.name }
 								</div>
 							</div>

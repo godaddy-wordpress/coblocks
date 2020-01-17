@@ -18,97 +18,16 @@ const transforms = {
 	from: [
 		{
 			type: 'block',
-			blocks: [ 'coblocks/gallery-stacked' ],
-			transform: ( attributes ) => (
-				createBlock( metadata.name, {
-					...GalleryTransforms( attributes ),
-					gridSize: 'lrg',
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'coblocks/gallery-masonry' ],
-			transform: ( attributes ) => (
-				createBlock( metadata.name, {
-					...GalleryTransforms( attributes ),
-					gridSize: 'lrg',
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'coblocks/gallery-thumbnails' ],
-			transform: ( attributes ) => (
-				createBlock( metadata.name, {
-					...GalleryTransforms( attributes ),
-					gridSize: 'lrg',
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'coblocks/gallery-offset' ],
-			transform: ( attributes ) => (
-				createBlock( metadata.name, {
-					...GalleryTransforms( attributes ),
-					gridSize: 'lrg',
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'coblocks/gallery-auto-height' ],
-			transform: ( attributes ) => (
-				createBlock( metadata.name, {
-					...GalleryTransforms( attributes ),
-					gridSize: 'lrg',
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'blockgallery/stacked' ],
-			transform: ( attributes ) => (
-				createBlock( metadata.name, {
-					...GalleryTransforms( attributes ),
-					gridSize: 'lrg',
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'blockgallery/masonry' ],
-			transform: ( attributes ) => (
-				createBlock( metadata.name, {
-					...GalleryTransforms( attributes ),
-					gridSize: 'lrg',
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'blockgallery/carousel' ],
-			transform: ( attributes ) => (
-				createBlock( metadata.name, {
-					...GalleryTransforms( attributes ),
-					gridSize: 'lrg',
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'blockgallery/offset' ],
-			transform: ( attributes ) => (
-				createBlock( metadata.name, {
-					...GalleryTransforms( attributes ),
-					gridSize: 'lrg',
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'core/gallery' ],
+			blocks: [
+				'coblocks/gallery-collage',
+				'coblocks/gallery-masonry',
+				'coblocks/gallery-stacked',
+				'coblocks/gallery-offset',
+				'blockgallery/carousel',
+				'blockgallery/masonry',
+				'blockgallery/stacked',
+				'core/gallery',
+			],
 			transform: ( attributes ) => (
 				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
@@ -121,10 +40,10 @@ const transforms = {
 			isMultiBlock: true,
 			blocks: [ 'core/image' ],
 			transform: ( attributes ) => {
-				const validImages = filter( attributes, ( { id, url } ) => id && url );
+				const validImages = filter( attributes, ( { id, url } ) => Number.isInteger( id ) && url );
 				if ( validImages.length > 0 ) {
 					return createBlock( metadata.name, {
-						images: validImages.map( ( { id, url, alt, caption } ) => ( { id, url, alt, caption } ) ),
+						images: validImages.map( ( { id, url, alt, caption } ) => ( { index: id, url, alt: alt || '', caption: caption || '' } ) ),
 						ids: validImages.map( ( { id } ) => id ),
 					} );
 				}
@@ -141,17 +60,23 @@ const transforms = {
 			},
 		},
 	],
-	to: [
-		{
-			type: 'block',
-			blocks: [ 'core/gallery' ],
-			transform: ( attributes ) => (
-				createBlock( 'core/gallery', {
+	to: ( function() {
+		return [
+			'coblocks/gallery-collage',
+			'coblocks/gallery-masonry',
+			'coblocks/gallery-stacked',
+			'coblocks/gallery-offset',
+			'core/gallery',
+		].map( x => {
+			return {
+				type: 'block',
+				blocks: [ x ],
+				transform: ( attributes ) => createBlock( x, {
 					...GalleryTransforms( attributes ),
-				} )
-			),
-		},
-	],
+				} ),
+			};
+		} );
+	}() ),
 };
 
 export default transforms;
