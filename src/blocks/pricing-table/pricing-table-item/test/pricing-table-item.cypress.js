@@ -11,7 +11,8 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 		title: 'Plan 1',
 		currency: '$',
 		amount: '33',
-		features: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+		features: 'Lorem ipsum dolor.',
+		buttonText: 'Consectetur.',
 		backgroundColor: '#ff0000',
 		textColor: '#ffffff',
 		backgroundColorRGB: 'rgb(255, 0, 0)',
@@ -41,7 +42,7 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 	   * adjust colors and are able to successfully save the block without errors.
 	   */
 	it( 'Test pricing-table block saves with color values set.', function() {
-		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB, title, currency, amount, features } = pricingTableItemData;
+		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB, title, currency, amount, features, buttonText } = pricingTableItemData;
 		helpers.addCoBlocksBlockToPage( true, 'pricing-table' );
 
 		cy.get( '.wp-block-coblocks-pricing-table-item' ).first().click().then( $firstItem => {
@@ -49,6 +50,7 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 			cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__currency' ).click( { force: true } ).clear().type( currency );
 			cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__amount' ).click( { force: true } ).clear().type( amount );
 			cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__features' ).click( { force: true } ).clear().type( features );
+			cy.get( $firstItem ).find( '.wp-block-button' ).find( 'div[role="textbox"]' ).click( { force: true } ).clear().type( buttonText );
 
 			cy.get( $firstItem ).click();
 			helpers.setColorSetting( 'background color', backgroundColor );
@@ -62,10 +64,18 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 		helpers.viewPage();
 
 		cy.get( '.wp-block-coblocks-pricing-table' ).should( 'exist' );
-		cy.get( '.wp-block-coblocks-pricing-table-item' )
-			.first()
+		cy.get( '.wp-block-coblocks-pricing-table-item' ).first()
 			.should( 'have.css', 'background-color', backgroundColorRGB )
 			.should( 'have.css', 'color', textColorRGB );
+
+		cy.get( '.wp-block-coblocks-pricing-table-item' ).first()
+			.then( $firstItem => {
+				cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__title' ).should( 'have.html', title );
+				cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__currency' ).should( 'have.html', currency );
+				cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__amount' ).should( 'have.html', amount );
+				cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__features > li' ).should( 'have.html', features );
+				cy.get( $firstItem ).find( '.wp-block-button > a' ).should( 'have.html', buttonText );
+			} );
 
 		helpers.editPage();
 	} );
