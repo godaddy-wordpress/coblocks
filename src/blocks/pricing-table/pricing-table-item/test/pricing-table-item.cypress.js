@@ -41,7 +41,7 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 	   * Test that we can add a pricing-table block to the content, add text
 	   * adjust colors and are able to successfully save the block without errors.
 	   */
-	it( 'Test pricing-table block saves with color values set.', function() {
+	it( 'Test pricing-table block saves with content values set.', function() {
 		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB, title, currency, amount, features, buttonText } = pricingTableItemData;
 		helpers.addCoBlocksBlockToPage( true, 'pricing-table' );
 
