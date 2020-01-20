@@ -231,7 +231,7 @@ export function setInputValue( panelName, settingName, value, ignoreCase = true 
 	openSettingsPanel( ignoreCase ? RegExp( panelName, 'i' ) : panelName );
 
 	cy.get( '.edit-post-sidebar' )
-		.contains( ignoreCase ? RegExp( settingName, 'i' ) : settingName ).not('.block-editor-block-card__description')
+		.contains( ignoreCase ? RegExp( settingName, 'i' ) : settingName ).not( '.block-editor-block-card__description' )
 		.then( $settingSection => {
 			cy.get( Cypress.$( $settingSection ).parent() )
 				.find( 'input[type="number"]' )
@@ -306,7 +306,7 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 	}
 
 	cy.get( '.wp-block[data-type="coblocks/' + blockID + '"]' )
-		.dblclick( 'right' );
+		.dblclick( 'right', {force: true});
 
 	cy.get( '.components-panel__body' )
 		.contains( 'Advanced' )
