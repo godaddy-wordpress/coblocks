@@ -225,15 +225,16 @@ export function setBlockStyle( style ) {
  * @param string panelName   Name of the panel to open
  * @param string settingName The setting to update. shape height|background height
  * @param string value    	 The value to set in the input
+ * @param bool 	 ignoreCase  Optional case sensitivity. Default will ignore case.
  */
-export function setInputValue( panelName, settingName, value ) {
-	openSettingsPanel( RegExp( panelName, 'i' ) );
+export function setInputValue( panelName, settingName, value, ignoreCase = true ) {
+	openSettingsPanel( ignoreCase ? RegExp( panelName, 'i' ) : panelName );
 
 	cy.get( '.edit-post-sidebar' )
-		.contains( RegExp( settingName, 'i' ) )
+		.contains( ignoreCase ? RegExp( settingName, 'i' ) : settingName ).not('.block-editor-block-card__description')
 		.then( $settingSection => {
 			cy.get( Cypress.$( $settingSection ).parent() )
-				.find( 'input' )
+				.find( 'input[type="number"]' )
 				.clear()
 				.click()
 				.type( value );
