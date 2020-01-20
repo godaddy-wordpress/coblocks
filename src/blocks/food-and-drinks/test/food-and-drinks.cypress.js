@@ -31,7 +31,7 @@ describe( 'Test CoBlocks Food and Drinks Block', function() {
 
 		helpers.viewPage();
 
-		cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'exist' );
+		cy.get( '.wp-block-coblocks-food-and-drinks' ).children().should( 'have.length', 1 );
 		cy.get( '.wp-block-coblocks-food-and-drinks > h3' ).should( 'be.empty' );
 
 		helpers.editPage();
