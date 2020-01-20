@@ -306,7 +306,7 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 	}
 
 	cy.get( '.wp-block[data-type="coblocks/' + blockID + '"]' )
-		.dblclick( 'right', {force: true});
+		.dblclick( 'right', { force: true } );
 
 	cy.get( '.components-panel__body' )
 		.contains( 'Advanced' )
