@@ -482,7 +482,7 @@ class DimensionsControl extends Component {
 										type="button"
 										onClick={ () => this.onChangeSize( 'no', -1 ) }
 										isSmall
-										isDefault
+										isSecondary
 										aria-label={ sprintf(
 											/* translators: %s: a texual label  */
 											__( 'Turn off advanced %s settings', 'coblocks' ),
@@ -776,7 +776,7 @@ class DimensionsControl extends Component {
 									type="button"
 									onClick={ () => this.onChangeSize( 'advanced', '' ) }
 									isSmall
-									isDefault
+									isSecondary
 									aria-label={ sprintf(
 										/* translators: %s: a texual label */
 										__( 'Advanced %s settings', 'coblocks' ),
