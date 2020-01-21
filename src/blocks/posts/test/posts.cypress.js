@@ -39,13 +39,13 @@ describe( 'Test CoBlocks posts Block', function() {
 		helpers.checkForBlockErrors( 'posts' );
 
 		cy.get( '.wp-block-coblocks-posts' ).click( { force: true } ).then( () => {
-			helpers.setInputValue( 'feed settings', 'number of posts', 1 );
+			helpers.setInputValue( 'feed settings', 'number of posts', 3 );
 
 			helpers.setInputValue( 'feed settings', 'number of posts', 2 );
 
-			helpers.setInputValue( 'feed settings', 'number of posts', 3 );
+			helpers.setInputValue( 'feed settings', 'number of posts', 1 );
 
-			cy.get( '.wp-block-coblocks-posts  > .columns' ).children().should( 'have.length', 3 );
+			cy.get( '.wp-block-coblocks-posts  > .columns' ).children().should( 'have.length', 1 );
 		} );
 
 		helpers.savePage();
@@ -54,7 +54,7 @@ describe( 'Test CoBlocks posts Block', function() {
 
 		helpers.viewPage();
 
-		cy.get( '.wp-block-coblocks-posts  > .columns' ).children().should( 'have.length', 3 );
+		cy.get( '.wp-block-coblocks-posts  > .columns' ).children().should( 'have.length', 1 );
 
 		helpers.editPage();
 	} );

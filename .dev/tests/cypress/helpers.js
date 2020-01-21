@@ -314,6 +314,7 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 
 	cy.get( 'div.edit-post-sidebar' )
 		.contains( /Additional CSS/i )
+		.scrollIntoView()
 		.should( 'be.visible' )
 		.parent( '.components-base-control__field' )
 		.find( '.components-text-control__input' )
