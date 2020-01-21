@@ -383,7 +383,7 @@ class FormEdit extends Component {
 								onChange={ value => this.setState( { recaptchaSecretKey: value } ) }
 								className="components-block-coblocks-form-recaptcha-key__custom-input"
 							/>
-							<div className="components-base-control components-block-coblocks-form-recaptcha-buttons">
+							<div className="components-base-control">
 								<Button
 									isPrimary
 									onClick={ this.saveRecaptchaKey }
@@ -399,6 +399,7 @@ class FormEdit extends Component {
 									<Button
 										className="components-block-coblocks-form-recaptcha-key-remove__button"
 										isDefault
+										isSecondary
 										onClick={ this.removeRecaptchaKey }
 										disabled={ this.state.recaptchaSiteKey === '' || this.state.recaptchaSecretKey === '' }
 									>
