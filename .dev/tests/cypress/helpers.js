@@ -214,7 +214,7 @@ export function getBlockSlug() {
 export function setBlockStyle( style ) {
 	openSettingsPanel( RegExp( 'styles', 'i' ) );
 
-	cy.get( '.edit-post-sidebar' )
+	cy.get( '.edit-post-sidebar' ).find('.coblocks-editor-block-styles')
 		.contains( RegExp( style, 'i' ) )
 		.click( { force: true } );
 }
@@ -317,7 +317,15 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 		.should( 'be.visible' )
 		.parent( '.components-base-control__field' )
 		.find( '.components-text-control__input' )
-		.type( classes );
+		.then( $inputElem => {
+			cy.get( $inputElem ).invoke( 'val' ).then( ( val ) => {
+				if ( val.length > 0 ) {
+					cy.get( $inputElem ).type( [ val, classes ].join( ' ' ) );
+				} else {
+					cy.get( $inputElem ).type( classes );
+				}
+			} );
+		} );
 
 	cy.get( '.wp-block-coblocks-' + blockID )
 		.should( 'have.class', classes );
