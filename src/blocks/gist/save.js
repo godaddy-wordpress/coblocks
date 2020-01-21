@@ -9,6 +9,8 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 
+// test
+
 const save = ( { attributes } ) => {
 	const { url, file, meta, caption } = attributes;
 

@@ -13,8 +13,7 @@
 		"node": true,
 		"mocha": true,
 		"jest/globals": true,
-		"jquery": true,
-		"cypress/globals": true
+		"jquery": true
 	},
 	"parserOptions": {
 		"sourceType": "module",
@@ -28,7 +27,7 @@
 		"window": true,
 		"document": true
 	},
-	"plugins": ["react", "jsx-a11y", "jest", "cypress"],
+	"plugins": ["react", "jsx-a11y", "jest"],
 	"settings": {
 		"react": {
 			"pragma": "wp"
