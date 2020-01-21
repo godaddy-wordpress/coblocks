@@ -69,7 +69,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 	   * Test that we can add image from library and are able
 	   * to successfully save the block without errors.
 	   */
-	it( 'Test logos block saves with images from media library.', function() {
+	it( 'Test logos block saves with image from media library.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'logos' );
 
 		cy.get( '.wp-block[data-type="coblocks/logos"]' )
