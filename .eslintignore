@@ -1,10 +1,6 @@
-**/*.min.js
-**/*.build.js
-**/node_modules/**
-**/vendor/**
 build
-coverage
-cypress
-**/*.cypress.js
+dist
 node_modules
+test
 vendor
+wordpress

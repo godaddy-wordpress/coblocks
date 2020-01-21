@@ -20,7 +20,6 @@
 		"babel": "babel src --ignore src/blocks/gist/components/gist.js",
 		"babel:json": "wp i18n make-json languages",
 		"babel:build": "npm run babel && npm run makepot",
-		"test": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js",
 		"pot2json": ".dev/bin/pot2json languages/coblocks.pot languages/coblocks.json",
 		"json2po": "cd languages && find . -name \\*.json ! -name 'coblocks*.json' -execdir sh -c '../.dev/bin/json2po coblocks.json \"$0\" coblocks-`basename $0 .json`.po' '{}' \\;",
 		"po2mo": "cd languages && find . -name \\*.po -execdir sh -c 'msgfmt \"$0\" -o `basename $0 .po`.mo' '{}' \\;",
@@ -28,13 +27,17 @@
 		"deploy-i18n": "./node_modules/.bin/cypress run -s './.dev/tests/cypress/integration/deploy-translations.js'",
 		"test-e2e": "cypress run --config video=false --browser chrome",
 		"test-e2e:record": "cypress run --browser chrome",
-		"env": "wp-scripts env"
+		"env": "wp-scripts env",
+		"lint:js": "wp-scripts lint-js",
+		"lint:php": "wp-scripts env lint-php",
+		"test:php": "wp-scripts env test-php",
+		"test:unit": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js"
 	},
 	"wp-env": {
-        "plugin-dir": "coblocks",
-        "plugin-name": "CoBlocks",
-        "welcome-build-command": "npm run start"
-    },
+		"plugin-dir": "coblocks",
+		"plugin-name": "CoBlocks",
+		"welcome-build-command": "npm run start"
+	},
 	"locales": {
 		"da_DK": "Dansk",
 		"de_DE": "Deutsch",
@@ -78,11 +81,9 @@
 		"@wordpress/i18n": "3.6.0",
 		"@wordpress/plugins": "2.6.0",
 		"@wordpress/postcss-themes": "^2.2.0",
-		"@wordpress/scripts": "^6.0.0",
+		"@wordpress/scripts": "^6.2.0",
 		"autoprefixer": "^9.7.3",
 		"babel-loader": "^8.0.6",
-		"babel-preset-cgb": "^1.6.0",
-		"cgb-dev-utils": "^1.5.0",
 		"chalk": "^2.3.0",
 		"classnames": "^2.2.6",
 		"compose": "^0.1.2",
