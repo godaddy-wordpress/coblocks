@@ -45,9 +45,9 @@
 	}
 
 	.components-placeholder__cancel-button.is-link {
+		display: block;
 		margin-left: 33%;
 		margin-right: 33%;
-		display: block;
 	}
 }
 
@@ -99,13 +99,10 @@ $styles: (standard), (silver), (retro), (dark), (night), (aubergine);
 	}
 }
 
-.edit-post-settings-sidebar__panel-block .components-panel__body {
-	.components-base-control {
-		&.components-block-coblocks-map-api-key__custom-input {
-			margin-bottom: 5px;
-		}
-	}
-	.components-block-coblocks-map-api-key-remove__button {
-		margin-left: 5px;
-	}
+.components-block-coblocks-map-api-key-remove__button {
+	margin-left: 6px;
+}
+
+.components-block-coblocks-map-api-key__custom-input {
+	margin-bottom: 5px !important;
 }
