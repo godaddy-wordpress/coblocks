@@ -163,7 +163,6 @@ class Inspector extends Component {
 											this.onChangeSize( 'medium', DEFAULT_ICON_SIZE );
 										} }
 										isSmall
-										isDefault
 										isSecondary
 										aria-label={ __( 'Reset icon size', 'coblocks' ) }
 									>
@@ -192,7 +191,6 @@ class Inspector extends Component {
 									<Button
 										type="button"
 										onClick={ () => this.onChangeSize( 'advanced', '' ) }
-										isDefault
 										isSmall
 										isSecondary
 										aria-label={ __( 'Apply custom size', 'coblocks' ) }
