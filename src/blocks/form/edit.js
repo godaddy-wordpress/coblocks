@@ -386,6 +386,7 @@ class FormEdit extends Component {
 							<div className="components-base-control">
 								<Button
 									isPrimary
+									isLarge
 									onClick={ this.saveRecaptchaKey }
 									disabled={
 										this.state.recaptchaSiteKey === '' ||
@@ -398,7 +399,7 @@ class FormEdit extends Component {
 									this.state.recaptchaSecretKey !== '' && (
 									<Button
 										className="components-block-coblocks-form-recaptcha-key-remove__button"
-										isDefault
+										isLarge
 										isSecondary
 										onClick={ this.removeRecaptchaKey }
 										disabled={ this.state.recaptchaSiteKey === '' || this.state.recaptchaSecretKey === '' }
