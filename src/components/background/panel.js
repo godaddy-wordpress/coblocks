@@ -267,9 +267,9 @@ class BackgroundPanel extends Component {
 							/>
 						) }
 						<Button
-							className="components-button--coblocks-remove-background-image"
 							type="button"
-							isDefault
+							isSmall
+							isSecondary
 							label={ __( 'Remove background', 'coblocks' ) }
 							onClick={ () => {
 								setAttributes( {
@@ -291,7 +291,7 @@ class BackgroundPanel extends Component {
 								}
 							} }
 						>
-							{ __( 'Remove ' + backgroundType, 'coblocks' ) }
+							{ __( 'Clear Media', 'coblocks' ) }
 						</Button>
 					</PanelBody>
 				) }
