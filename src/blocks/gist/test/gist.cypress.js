@@ -52,7 +52,7 @@ describe( 'Test CoBlocks gist Block', function() {
 	/**
 	* Test the Gist block saves with custom classes
 	*/
-	it( 'Test the gist block custom classes.', function() {
+	it( 'Test gist block saves with custom classes.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'gist' );
 
 		cy.get( '.wp-block-coblocks-gist' ).click( { force: true } );
