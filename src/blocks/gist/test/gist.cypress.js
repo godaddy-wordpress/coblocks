@@ -22,7 +22,7 @@ describe( 'Test CoBlocks gist Block', function() {
 
 		helpers.viewPage();
 
-		cy.get( '.wp-block-coblocks-gist' ).should( 'exist' );
+		cy.get( '.wp-block-coblocks-gist' ).should( 'not.exist' );
 
 		helpers.editPage();
 	} );
