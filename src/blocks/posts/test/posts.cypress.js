@@ -25,7 +25,7 @@ describe( 'Test CoBlocks posts Block', function() {
 	/**
 	* Test the posts block column and post count controls
 	*/
-	it( 'Test the posts block column and post count controls.', function() {
+	it( 'Test posts block column and post count controls.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'posts' );
 
 		cy.get( '.wp-block-coblocks-posts' ).find( '.columns-2' ).then( () => {
@@ -62,7 +62,7 @@ describe( 'Test CoBlocks posts Block', function() {
 	/**
 	* Test the posts block saves with custom classes
 	*/
-	it( 'Test the posts block custom classes.', function() {
+	it( 'Test posts block custom classes.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'posts' );
 
 		cy.get( '.edit-post-sidebar' ).contains( /posts settings/i ).click( { force: true } );
