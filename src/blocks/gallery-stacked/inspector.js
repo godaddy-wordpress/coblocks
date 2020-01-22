@@ -111,17 +111,6 @@ class Inspector extends Component {
 						/>
 					}
 
-					{ ! fullwidth &&
-						<SizeControl { ...this.props }
-							onChange={ this.setShadowTo }
-							value={ shadow }
-							label={ __( 'Box Shadow', 'coblocks' ) }
-							reset={ false }
-							className={ 'components-coblocks-size-control--shadow' }
-
-						/>
-					}
-
 					<ToggleControl
 						label={ __( 'Lightbox', 'coblocks' ) }
 						checked={ !! lightbox }
@@ -140,6 +129,15 @@ class Inspector extends Component {
 						<FontSizePicker
 							value={ fontSize.size }
 							onChange={ setFontSize }
+						/>
+					}
+
+					{ ! fullwidth &&
+						<SizeControl { ...this.props }
+							onChange={ this.setShadowTo }
+							value={ shadow }
+							label={ __( 'Box Shadow', 'coblocks' ) }
+							reset={ false }
 						/>
 					}
 

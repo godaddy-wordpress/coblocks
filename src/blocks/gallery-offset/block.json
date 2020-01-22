@@ -4,11 +4,11 @@
 	"attributes": {
 		"gridSize": {
 			"type": "string",
-			"default": "sml"
+			"default": "small"
 		},
 		"gutter": {
-			"type": "number",
-			"default": 1
+			"type": "string",
+ 			"default": "medium"
 		}
 	}
 }
