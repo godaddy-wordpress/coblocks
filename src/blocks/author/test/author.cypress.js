@@ -8,6 +8,13 @@ describe( 'Test CoBlocks Author Block', function() {
 	const fileName = '../dist/images/map/dark.jpg';
 
 	before( function() {
+		cy.visit( testURL + '/wp-admin/upload.php' );
+		cy.get( 'html' ).then( ( $html ) => {
+			if ( $html.find( '.mode-grid' ).length ) {
+				cy.get( 'a.view-list' ).click();
+				cy.get( '.wp-list-table' );
+			}
+		} );
 		cy.visit( testURL + '/wp-admin/media-new.php' );
 		cy.get( 'html' ).then( ( $html ) => {
 			if ( $html.find( '.upload-flash-bypass' ).is( ':visible' ) ) {
