@@ -57,3 +57,61 @@
 .components-block-coblocks-map-api-key__custom-input {
 	margin-bottom: 5px !important;
 }
+
+// Map styles.
+$styles: (standard), (silver), (retro), (dark), (night), (aubergine);
+
+// Style the custom styles component buttons.
+.components-coblocks-map-styles__button-wrapper {
+	.components-button {
+		@each $style in $styles {
+			&--#{$style} {
+				background-image: url(images/map/#{$style}.jpg) !important;
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: cover !important;
+			}
+		}
+	}
+}
+
+// Style the clickable areas for the map Styles panel.
+.components-coblocks-map-styles {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	text-align: left;
+
+	.components-button-group {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		width: 100%;
+	}
+
+	.components-coblocks-map-styles__button-wrapper {
+		border-radius: 4px;
+		display: flex;
+		flex-direction: column;
+		flex-shrink: 0;
+		list-style: none;
+		margin: 4px 0;
+		padding: 5px;
+		width: calc(50% - 8px);
+
+		&.is-selected {
+			box-shadow: 0 0 0 2px $dark-gray-500;
+		}
+	}
+
+	.components-coblocks-map-styles__button {
+		align-items: center;
+		background: $white;
+		border: 1px solid rgba(25, 30, 35, 0.2);
+		border-radius: 3px !important;
+		height: auto;
+		margin: 0;
+		padding: 0 0 80px 0;
+		width: 100%;
+	}
+}

@@ -105,12 +105,12 @@ class Inspector extends Component {
 				<InspectorControls>
 					{ !! apiKey && address && pinned &&
 						<PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
-							<div className="components-coblocks-visual-dropdown">
+							<div className="components-coblocks-map-styles">
 								<ButtonGroup aria-label={ __( 'Select Map Style', 'coblocks' ) }>
 									{ map( styleOptions, ( { label, value } ) => (
-										<div className={ value === skin ? 'components-coblocks-visual-dropdown__button-wrapper components-button--${ value } is-selected' : 'components-coblocks-visual-dropdown__button-wrapper components-button--${ value }' }>
+										<div className={ value === skin ? 'components-coblocks-map-styles__button-wrapper components-button--${ value } is-selected' : 'components-coblocks-map-styles__button-wrapper components-button--${ value }' }>
 											<Button
-												className={ value === skin ? `components-coblocks-visual-dropdown__button components-button--${ value } components-coblocks-visual-dropdown__button--selected` : `components-button--${ value } components-coblocks-visual-dropdown__button` }
+												className={ value === skin ? `components-coblocks-map-styles__button components-button--${ value } components-coblocks-map-styles__button--selected` : `components-button--${ value } components-coblocks-map-styles__button` }
 												isSmall
 												onClick={ () => {
 													setAttributes( { skin: value } );
