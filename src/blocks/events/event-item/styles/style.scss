@@ -2,11 +2,12 @@
 	flex: 1 100%;
 	justify-content: space-between;
 	line-height: 1;
-	margin-bottom: map-get($spacing, 3);
+	margin-bottom: map-get($spacing, 5);
 	width: 100%;
 
 	@include break-medium() {
-		display: flex;
+		display: flex !important;
+		margin-bottom: map-get($spacing, 3);
 	}
 }
 
@@ -14,7 +15,7 @@
 	margin-bottom: map-get($spacing, 3);
 
 	@include break-medium() {
-		flex-basis: 20%;
+		flex-basis: 15%;
 		margin-bottom: 0;
 	}
 }
@@ -37,7 +38,7 @@
 
 .wp-block-coblocks-events__details {
 	@include break-medium() {
-		flex-basis: 15%;
+		flex-basis: 20%;
 		text-align: right;
 	}
 }
@@ -62,8 +63,8 @@
 
 	@include break-medium() {
 		display: block;
-		margin-right: 0;
 		margin-bottom: 5px;
+		margin-right: 0;
 	}
 }
 
