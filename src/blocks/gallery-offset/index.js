@@ -8,11 +8,11 @@ import './styles/style.scss';
  * Internal dependencies
  */
 import edit from './edit';
+import deprecated from './deprecated';
 import save from './save';
 import icon from './icon';
 import transforms from './transforms';
 import metadata from './block.json';
-import deprecated from './deprecated';
 import { GalleryAttributes } from '../../components/block-gallery/shared';
 
 /**

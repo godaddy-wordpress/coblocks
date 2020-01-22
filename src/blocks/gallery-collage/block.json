@@ -47,8 +47,8 @@
 			}
 		},
 		"gutter": {
-			"type": "number",
-			"default": 2
+			"type": "string",
+			"default": "small"
 		},
 		"shadow": {
 			"type": "string",
