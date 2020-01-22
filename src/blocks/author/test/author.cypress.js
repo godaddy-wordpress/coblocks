@@ -21,11 +21,9 @@ describe( 'Test CoBlocks Author Block', function() {
 				cy.get( '.upload-flash-bypass' ).click();
 			}
 		} );
-		cy.fixture( fileName ).then( fileContent => {
-			cy.get( 'input[id="async-upload"]' ).upload( { fileContent, fileName, mimeType: 'application/json' } );
-			cy.get( '#html-upload' ).click();
-			cy.get( '.has-media-icon' ).contains( 'dark' );
-		} );
+		cy.uploadFile( '../dist/images/map/dark.jpg', 'image/jpg', 'input[id="async-upload"]' );
+		cy.get( '#html-upload' ).click();
+		cy.get( '.has-media-icon' ).contains( 'dark' );
 		helpers.createNewPost();
 		helpers.disableGutenbergFeatures();
 	} );
