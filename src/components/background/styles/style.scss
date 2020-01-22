@@ -15,3 +15,22 @@
 		position: relative;
 	}
 }
+
+.coblocks-video-bg {
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	overflow: hidden;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100%;
+
+	> video {
+		background-position: center center;
+		height: 100%;
+		object-fit: cover;
+		object-position: 50% 50%;
+		width: 100%;
+	}
+}
