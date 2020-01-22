@@ -26,18 +26,18 @@
 		border-radius: 3px !important;
 		height: auto;
 		margin: 0;
-		padding: 8px;
+		padding: 0 0 80px 0;
 	}
 
 	&__button-wrapper {
+		display: flex;
+		flex-direction: column;
 		flex-shrink: 1;
 		list-style: none;
 		margin: 0 8px 0 0;
-		max-width: 100px;
 	}
 
 	.block-editor-block-styles__item-label {
-		margin-top: 4px;
 		text-align: center;
 	}
 
@@ -53,12 +53,17 @@
 		text-align: left;
 
 		.components-button-group {
+			display: flex;
+			flex-wrap: wrap;
 			justify-content: space-between;
+			width: 100%;
 
 			.components-coblocks-visual-dropdown__button-wrapper {
+				border-radius: 4px;
 				flex-shrink: 0;
 				margin: 4px 0;
-				width: calc(50% - 4px);
+				padding: 5px;
+				width: calc(50% - 8px);
 
 				&:focus,
 				&:active,
@@ -77,6 +82,7 @@
 			}
 
 			.components-coblocks-visual-dropdown__button {
+				border: 1px solid rgba(25, 30, 35, 0.2);
 				width: 100%;
 
 				&:active:enabled {

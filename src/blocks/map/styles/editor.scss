@@ -33,8 +33,7 @@
 		}
 	}
 
-	// Fix z-index, for when this block has margin bottom removed,
-	// and the next has margin-top removed.
+	// Fix z-index, for when this block has margin bottom removed, and the next has margin-top removed.
 	&.is-selected .components-resizable-box__handle {
 		z-index: 30;
 	}
@@ -48,54 +47,6 @@
 		display: block;
 		margin-left: 33%;
 		margin-right: 33%;
-	}
-}
-
-// Map styles.
-$styles: (standard), (silver), (retro), (dark), (night), (aubergine);
-
-// Style the VisualDropdown component buttons.
-.components-coblocks-visual-dropdown__button-wrapper {
-	.components-button {
-		@each $style in $styles {
-			&--#{$style} {
-				background-image: url(images/map/#{$style}.jpg) !important;
-				background-position: center center;
-				background-repeat: no-repeat;
-				background-size: cover !important;
-			}
-		}
-	}
-}
-
-// Inspector control panel UI tweaks
-.components-block-coblocks-map-zoom__custom-input {
-	svg {
-		position: relative;
-		top: -1px;
-	}
-
-	.components-range-control__slider + .dashicon {
-		height: 25px;
-		top: -3px;
-		width: 25px;
-	}
-}
-
-.components-block-coblocks-map-icon-size__custom-input {
-	.components-range-control__slider + .dashicon {
-		height: 26px;
-		width: 26px;
-	}
-}
-
-.components-block-coblocks-height__custom-input {
-	svg {
-		height: 18px;
-		position: relative;
-		right: -2px;
-		top: -1px;
-		width: 18px;
 	}
 }
 

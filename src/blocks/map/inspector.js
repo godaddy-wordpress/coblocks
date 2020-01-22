@@ -133,7 +133,6 @@ class Inspector extends Component {
 									<input
 										type="number"
 										aria-label={ __( 'Height for the map in pixels', 'coblocks' ) }
-										className="components-block-coblocks-height__custom-input"
 										onChange={ ( event ) => setAttributes( { height: parseInt( event.target.value, 10 ) } ) }
 										value={ height }
 										min={ 200 }
@@ -144,7 +143,6 @@ class Inspector extends Component {
 									label={ __( 'Zoom Level', 'coblocks' ) }
 									value={ zoom }
 									onChange={ ( nextZoom ) => setAttributes( { zoom: nextZoom } ) }
-									className="components-block-coblocks-map-zoom__custom-input"
 									min={ 5 }
 									max={ 20 }
 									step={ 1 }
@@ -155,7 +153,6 @@ class Inspector extends Component {
 										label={ __( 'Marker Size', 'coblocks' ) }
 										value={ iconSize }
 										onChange={ ( nextIconSize ) => setAttributes( { iconSize: nextIconSize } ) }
-										className="components-block-coblocks-map-icon-size__custom-input"
 										min={ 20 }
 										max={ 100 }
 										step={ 2 }
