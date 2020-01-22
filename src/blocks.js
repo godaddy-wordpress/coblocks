@@ -30,6 +30,9 @@ import './formats';
 // Block Gallery
 import './components/block-gallery';
 
+// Deprecate Blocks
+import './js/deprecations/deprecate-coblocks-buttons.js';
+
 // Register Blocks
 import * as accordion from './blocks/accordion';
 import * as accordionItem from './blocks/accordion/accordion-item';
