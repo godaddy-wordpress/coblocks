@@ -63,7 +63,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 		);
 
 		foreach ( $events as $event ) {
-			$events_layout .= '<div class="wp-block-coblocks-event-item w-full md:flex mb-2">';
+			$events_layout .= '<div class="wp-block-coblocks-event-item">';
 
 			$dtstart           = $ical->ical_date_to_date_time( $event->dtstart_array[3] );
 			$dtend             = $ical->ical_date_to_date_time( $event->dtend_array[3] );
@@ -80,11 +80,11 @@ function coblocks_render_events_block( $attributes, $content ) {
 			$location          = $event->location;
 			$events_layout    .= sprintf(
 				'
-				<div class="wp-block-coblocks-events__date md:flex mb-2 md:mb-0 md:display-block">
-					<span class="wp-block-coblocks-events__day display-block font-bold">%1$s</span>
+				<div class="wp-block-coblocks-events__date">
+					<span class="wp-block-coblocks-events__day">%1$s</span>
 					<div>
-						<span class="wp-block-coblocks-events__month md:display-block mb-1">%2$s</span>
-						<span class="wp-block-coblocks-events__year md:display-block mb-0">%3$s</span>
+						<span class="wp-block-coblocks-events__month">%2$s</span>
+						<span class="wp-block-coblocks-events__year">%3$s</span>
 					</div>
 				</div>',
 				$day_of_month,
@@ -93,18 +93,18 @@ function coblocks_render_events_block( $attributes, $content ) {
 			);
 
 			$events_layout .= sprintf(
-				'<div class="wp-block-coblocks-events__content mb-2 md:mb-0">
-					<span class="wp-block-coblocks-events__title display-block font-bold mb-1">%1$s</span>
-					<span class="wp-block-coblocks-events__description display-block">%2$s</span>
+				'<div class="wp-block-coblocks-events__content">
+					<span class="wp-block-coblocks-events__title">%1$s</span>
+					<span class="wp-block-coblocks-events__description">%2$s</span>
 				</div>',
 				$title,
 				$desctiption
 			);
 
 			$events_layout .= sprintf(
-				'<div class="wp-block-coblocks-events__details md:text-right">
-					<span class="wp-block-coblocks-events__time font-bold display-block mb-1">%1$s</span>
-					<span class="wp-block-coblocks-events__location display-block">%2$s</span>
+				'<div class="wp-block-coblocks-events__details">
+					<span class="wp-block-coblocks-events__time">%1$s</span>
+					<span class="wp-block-coblocks-events__location">%2$s</span>
 				</div>',
 				$time_string,
 				$location

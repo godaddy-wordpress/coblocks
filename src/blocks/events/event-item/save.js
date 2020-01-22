@@ -25,7 +25,7 @@ const isEmpty = attributes => {
 export default function save( { attributes } ) {
 	const colorClass = getColorClassName( 'color', attributes.textColor );
 
-	const classes = classnames( attributes.className, 'w-full', 'md:flex', 'mb-2', 'justify-between', {
+	const classes = classnames( attributes.className, {
 		'has-text-color': attributes.textColor || attributes.customTextColor,
 		[ colorClass ]: colorClass,
 	} );
@@ -36,48 +36,48 @@ export default function save( { attributes } ) {
 			data-page={ String( attributes.pageNum ) }
 			style={ { color: colorClass ? undefined : attributes.customTextColor } }
 		>
-			<div className="wp-block-coblocks-events__date md:flex mb-2 md:mb-0 md:display-block">
+			<div className="wp-block-coblocks-events__date">
 				<RichText.Content
 					tagName="span"
-					className="wp-block-coblocks-events__day display-block font-bold"
+					className="wp-block-coblocks-events__day"
 					value={ attributes.eventDay }
 				/>
 				<div>
 					<RichText.Content
 						value={ attributes.eventMonth }
 						tagName="span"
-						className="wp-block-coblocks-events__month md:display-block mb-1"
+						className="wp-block-coblocks-events__month"
 					/>
 					<RichText.Content
 						value={ attributes.eventYear }
 						tagName="span"
-						className="wp-block-coblocks-events__year md:display-block mb-0"
+						className="wp-block-coblocks-events__year"
 					/>
 				</div>
 			</div>
-			<div className="wp-block-coblocks-events__content mb-2 md:mb-0">
+			<div className="wp-block-coblocks-events__content">
 				<RichText.Content
 					value={ attributes.title }
 					tagName="span"
-					className="wp-block-coblocks-events__title display-block font-bold mb-1"
+					className="wp-block-coblocks-events__title"
 				/>
 				<RichText.Content
 					value={ attributes.description }
 					tagName="span"
-					className="wp-block-coblocks-events__description display-block"
+					className="wp-block-coblocks-events__description"
 					itemprop="description"
 				/>
 			</div>
-			<div className="wp-block-coblocks-events__details md:text-right">
+			<div className="wp-block-coblocks-events__details">
 				<RichText.Content
 					value={ attributes.eventTime }
 					tagName="span"
-					className="wp-block-coblocks-events__time font-bold display-block mb-1"
+					className="wp-block-coblocks-events__time"
 				/>
 				<RichText.Content
 					value={ attributes.eventLocation }
 					tagName="span"
-					className="wp-block-coblocks-events__location display-block"
+					className="wp-block-coblocks-events__location"
 				/>
 			</div>
 		</div>

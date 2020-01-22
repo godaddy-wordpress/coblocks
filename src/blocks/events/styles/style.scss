@@ -1,17 +1,17 @@
 .wp-block-coblocks-events {
-	/* Slider */
+
 	&.slick-slider {
 		box-sizing: border-box;
 		display: block;
+		padding-bottom: 4em;
 		position: relative;
 		touch-action: pan-y;
 		user-select: none;
-		padding-bottom: map-get($margin, 6);
 	}
 
 	.slick-list {
 		display: block;
-		margin: 0 map-get($margin, -2);
+		margin: 0 -2em;
 		overflow: hidden;
 		padding: 0;
 		position: relative;
@@ -56,7 +56,7 @@
 	.slick-slide {
 		float: left;
 		height: auto;
-		margin: 0 map-get($margin, 2);
+		margin: 0 2em;
 		min-height: 1px;
 		outline: none;
 	}
@@ -109,12 +109,12 @@
 		cursor: pointer;
 		display: inline-block;
 		font-size: initial;
-		height: map-get($margin, 8);
+		height: 4em;
 		line-height: 0;
 		outline: none;
 		padding: 0.5em;
 		position: absolute;
-		width: map-get($margin, 8);
+		width: 4em;
 		z-index: 1;
 
 		&:hover,

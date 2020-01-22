@@ -27,7 +27,13 @@ const settings = {
 	title: _x( 'Events', 'block name', 'coblocks' ),
 	description: __( 'Add a list of events or display events from a public calendar.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'calendar', 'block keyword', 'coblocks' ) ],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'calendar', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'date', 'coblocks' ),
+	],
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
