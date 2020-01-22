@@ -118,6 +118,7 @@ class Edit extends Component {
 					) }
 					<Placeholder
 						key="placeholder"
+						className="components-coblocks-row-placeholder"
 						icon={ <BlockIcon icon={ columns ? rowIcons.layout : rowIcons.row } /> }
 						label={ columns ? __( 'Row Layout', 'coblocks' ) : __( 'Row', 'coblocks' ) }
 						instructions={ columns ?
@@ -128,15 +129,14 @@ class Edit extends Component {
 							) :
 							__( 'Select the number of columns for this row.', 'coblocks' )
 						}
-						className={ 'components-coblocks-visual-dropdown' }
 					>
 						{ ! columns ?
 							<ButtonGroup aria-label={ __( 'Select Row Columns', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
 								{ map( columnOptions, ( { name, key, icon, columns } ) => (
 									<Tooltip text={ name }>
-										<div className="components-coblocks-visual-dropdown__button-wrapper">
+										<div className="components-coblocks-row-placeholder__button-wrapper">
 											<Button
-												className="components-coblocks-visual-dropdown__button block-editor-inner-blocks__template-picker-option block-editor-block-pattern-picker__pattern"
+												className="components-coblocks-row-placeholder__button block-editor-inner-blocks__template-picker-option block-editor-block-pattern-picker__pattern"
 												isLarge
 												isSecondary
 												onClick={ () => {
@@ -160,7 +160,7 @@ class Edit extends Component {
 								<ButtonGroup aria-label={ __( 'Select Row Layout', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
 									<IconButton
 										icon="exit"
-										className="components-coblocks-visual-dropdown__back"
+										className="components-coblocks-row-placeholder__back"
 										onClick={ () => {
 											setAttributes( {
 												columns: null,
@@ -171,10 +171,10 @@ class Edit extends Component {
 									/>
 									{ map( layoutOptions[ selectedRows ], ( { name, key, icon } ) => (
 										<Tooltip text={ name }>
-											<div className="components-coblocks-visual-dropdown__button-wrapper">
+											<div className="components-coblocks-row-placeholder__button-wrapper">
 												<Button
 													key={ key }
-													className="components-coblocks-visual-dropdown__button block-editor-inner-blocks__template-picker-option block-editor-block-pattern-picker__pattern"
+													className="components-coblocks-row-placeholder__button block-editor-inner-blocks__template-picker-option block-editor-block-pattern-picker__pattern"
 													isLarge
 													isSecondary
 													onClick={ () => {
