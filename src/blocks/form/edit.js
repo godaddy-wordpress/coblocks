@@ -15,6 +15,7 @@ import isEqual from 'lodash/isEqual';
  */
 import Notice from './notice';
 import SubmitButton from './submit-button';
+import { TEMPLATE_OPTIONS } from './deprecatedTemplates/layouts';
 
 /**
  * WordPress dependencies
@@ -58,8 +59,11 @@ class FormEdit extends Component {
 		this.saveRecaptchaKey = this.saveRecaptchaKey.bind( this );
 		this.removeRecaptchaKey = this.removeRecaptchaKey.bind( this );
 		this.setTemplate = this.setTemplate.bind( this );
-		this.supportsExperimentalProps = this.supportsExperimentalProps.bind( this );
 		this.appendTagsToSubject = this.appendTagsToSubject.bind( this );
+		this.supportsBlockPatternPicker = this.supportsBlockPatternPicker.bind( this );
+		this.supportsInnerBlocksPicker = this.supportsInnerBlocksPicker.bind( this );
+		this.innerBlocksPatternPicker = this.innerBlocksPatternPicker.bind( this );
+		this.blockPatternPicker = this.blockPatternPicker.bind( this );
 
 		this.state = {
 			toError: error && error.length ? error : null,
@@ -126,7 +130,7 @@ class FormEdit extends Component {
 			this.setState( { template: innerBlocks } );
 		}
 
-		if ( ! this.supportsExperimentalProps() && hasInnerBlocks === false ) {
+		if ( ! this.supportsInnerBlocksPicker() && ! this.supportsBlockPatternPicker() && hasInnerBlocks === false ) {
 			this.setTemplate( defaultPattern );
 		}
 	}
@@ -329,26 +333,61 @@ class FormEdit extends Component {
 	}
 
 	createBlocksFromInnerBlocksTemplate( innerBlocksTemplate ) {
-		return map(	innerBlocksTemplate, ( [ name, attributes, innerBlocks = [] ] ) => createBlock( name, attributes, this.createBlocksFromInnerBlocksTemplate( innerBlocks ) ) );
+		return map( innerBlocksTemplate, ( [ name, attributes, innerBlocks = [] ] ) => createBlock( name, attributes, this.createBlocksFromInnerBlocksTemplate( innerBlocks ) ) );
 	}
 
-	supportsExperimentalProps() {
-		let isSupported = true;
-		if ( typeof InnerBlocks.prototype.shouldComponentUpdate === 'undefined' || typeof __experimentalRegisterBlockPattern !== 'undefined' ) {
-			isSupported = false;
-		}
-		return isSupported;
+	supportsInnerBlocksPicker() {
+		return typeof InnerBlocks.prototype.shouldComponentUpdate === 'undefined' ? false : true;
 	}
 
-	render() {
-		const { className, blockType, defaultPattern, patterns, replaceInnerBlocks, hasInnerBlocks } = this.props;
+	supportsBlockPatternPicker() {
+		return typeof __experimentalRegisterBlockPattern === 'undefined' ? false : true;
+	}
 
+	blockPatternPicker( ) {
+		const { className } = this.props;
 		const classes = classnames(
 			className,
 			'coblocks-form',
 		);
+		return (
+			<div className={ classes }>
+				<InnerBlocks templateLock="all" allowedBlocks={ ALLOWED_BLOCKS } />
+				<SubmitButton { ...this.props } />
+			</div>
+		);
+	}
 
-		if ( hasInnerBlocks ) {
+	innerBlocksPatternPicker( ) {
+		const { className, hasInnerBlocks } = this.props;
+		const classes = classnames(
+			className,
+			'coblocks-form',
+		);
+		return ( <div className={ classes }>
+			<InnerBlocks
+				__experimentalTemplateOptions={ TEMPLATE_OPTIONS }
+				__experimentalOnSelectTemplateOption={ ( chosenTemplate ) => {
+					if ( chosenTemplate === undefined ) {
+						chosenTemplate = TEMPLATE_OPTIONS[ 0 ].template;
+					}
+					this.setTemplate( chosenTemplate );
+				} }
+				__experimentalAllowTemplateOptionSkip
+				template={ this.supportsInnerBlocksPicker() ? this.state.template : TEMPLATE_OPTIONS[ 0 ].template }
+				allowedBlocks={ ALLOWED_BLOCKS }
+				renderAppender={ () => null }
+				templateInsertUpdatesSelection={ false }
+			/>
+			{ hasInnerBlocks && <SubmitButton { ...this.props } /> }
+		</div>
+		);
+	}
+
+	render() {
+		const { blockType, defaultPattern, patterns, replaceInnerBlocks, hasInnerBlocks } = this.props;
+
+		if ( hasInnerBlocks || ! this.supportsBlockPatternPicker() ) {
 			return (
 				<Fragment>
 
@@ -411,12 +450,8 @@ class FormEdit extends Component {
 							</div>
 						</PanelBody>
 					</InspectorControls>
-					<div className={ classes }>
-						<InnerBlocks
-							templateLock="all"
-							allowedBlocks={ ALLOWED_BLOCKS } />
-						<SubmitButton { ...this.props } />
-					</div>
+					{ this.supportsBlockPatternPicker() && this.blockPatternPicker() }
+					{ ! this.supportsBlockPatternPicker() && this.innerBlocksPatternPicker() }
 				</Fragment>
 			);
 		}
@@ -448,7 +483,7 @@ class FormEdit extends Component {
 
 const applyWithSelect = withSelect( ( select, props ) => {
 	const { getBlocks } = select( 'core/block-editor' );
-	const {	__experimentalGetBlockPatterns, getBlockType, __experimentalGetDefaultBlockPattern } = select( 'core/blocks' );
+	const { __experimentalGetBlockPatterns, getBlockType, __experimentalGetDefaultBlockPattern } = select( 'core/blocks' );
 	const innerBlocks = getBlocks( props.clientId );
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 
@@ -458,8 +493,8 @@ const applyWithSelect = withSelect( ( select, props ) => {
 		hasInnerBlocks: select( 'core/block-editor' ).getBlocks( props.clientId ).length > 0,
 
 		blockType: getBlockType( props.name ),
-		defaultPattern: __experimentalGetDefaultBlockPattern( props.name ),
-		patterns: __experimentalGetBlockPatterns( props.name ),
+		defaultPattern: typeof __experimentalGetDefaultBlockPattern === 'undefined' ? null : __experimentalGetDefaultBlockPattern( props.name ),
+		patterns: typeof __experimentalGetBlockPatterns === 'undefined' ? null : __experimentalGetBlockPatterns( props.name ),
 		replaceInnerBlocks,
 	};
 } );
