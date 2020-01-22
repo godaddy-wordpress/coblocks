@@ -1,5 +1,4 @@
-// Utility class for adding margin-bottom to the figure elements.
-@media (min-width: 700px) {
+@include break-small() {
 	// For desktop.
 	@for $i from 1 through 10 {
 
@@ -9,7 +8,7 @@
 	}
 }
 
-@media (max-width: 699px) {
+@include break-small-max() {
 	// For desktop.
 	@for $i from 1 through 10 {
 

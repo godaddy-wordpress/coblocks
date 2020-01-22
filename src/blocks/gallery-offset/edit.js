@@ -36,7 +36,6 @@ class Edit extends Component {
 		this.onMoveForward = this.onMoveForward.bind( this );
 		this.onMoveBackward = this.onMoveBackward.bind( this );
 		this.setImageAttributes = this.setImageAttributes.bind( this );
-		this.gutterClasses = this.gutterClasses.bind( this );
 
 		this.state = {
 			selectedImage: null,
@@ -124,35 +123,6 @@ class Edit extends Component {
 		} );
 	}
 
-	gutterClasses() {
-		const {
-			attributes,
-		} = this.props;
-
-		const {
-			gutter,
-		} = attributes;
-
-		let gutterClasses;
-
-		switch ( gutter ) {
-			case 0:
-				gutterClasses = 'm-0';
-				break;
-			case 1:
-				gutterClasses = 'mr-1 mb-1';
-				break;
-			case 2:
-				gutterClasses = 'mr-1 sm:mr-2 md:mr-3 mb-1 sm:mb-2 md:mb-3';
-				break;
-			case 3:
-				gutterClasses = 'mr-1 sm:mr-2 md:mr-3 lg:mr-4 mb-1 sm:mb-2 md:mb-3 lg:mb-4';
-				break;
-		}
-
-		return gutterClasses;
-	}
-
 	render() {
 		const {
 			attributes,
@@ -179,15 +149,9 @@ class Edit extends Component {
 		);
 
 		const innerClasses = classnames(
-			...GalleryClasses( attributes ),
-			'flex',
-			'flex-wrap',
-			'justify-center',
-			'ml-1',
-			'-mb-1', {
-				[ `sm:ml-${ gutter }` ]: gutter,
-				[ `sm:-mb-${ gutter }` ]: gutter,
-				[ `coblocks-gallery--${ gridSize }` ]: gridSize,
+			...GalleryClasses( attributes ), {
+				[ `has-${ gridSize }-images` ]: gridSize,
+				[ `has-${ gutter }-gutter` ]: gutter,
 			}
 		);
 
@@ -198,7 +162,6 @@ class Edit extends Component {
 					{ ...this.props }
 					label={ __( 'Offset', 'coblocks' ) }
 					icon={ icon }
-					gutter={ gutter === 0 ? 14 : 0 }
 				/>
 			</Fragment>
 		);
@@ -230,7 +193,6 @@ class Edit extends Component {
 										url={ img.url }
 										alt={ img.alt }
 										id={ img.id }
-										gutterUtility={ this.gutterClasses() }
 										isSelected={ isSelected && this.state.selectedImage === index }
 										onRemove={ this.onRemoveImage( index ) }
 										onSelect={ this.onSelectImage( index ) }
