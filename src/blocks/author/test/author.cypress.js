@@ -5,8 +5,6 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 import { testURL } from '../../../../.dev/tests/cypress/constants';
 
 describe( 'Test CoBlocks Author Block', function() {
-	const fileName = '../dist/images/map/dark.jpg';
-
 	before( function() {
 		cy.visit( testURL + '/wp-admin/upload.php' );
 		cy.get( 'html' ).then( ( $html ) => {
