@@ -6,27 +6,7 @@ const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const FixStyleOnlyEntriesPlugin = require( "webpack-fix-style-only-entries" );
 const nodeSassGlobImporter = require( 'node-sass-glob-importer' );
 
-const styleExtractConfig = [
-	MiniCssExtractPlugin.loader,
-	{
-		loader: 'css-loader',
-		options: {
-			url: false,
-		},
-	},
-	{
-		loader: 'postcss-loader',
-		options: postcssConfig,
-	},
-	{
-		loader: 'sass-loader',
-		options: {
-			sassOptions: {
-				importer: nodeSassGlobImporter(),
-			}
-		}
-	}
-];
+const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
 	...defaultConfig,
@@ -61,15 +41,34 @@ module.exports = {
 			...defaultConfig.module.rules,
 
 			{
-				test: /style\.scss$/,
-				use: styleExtractConfig,
+				test: /\.scss$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					{
+						loader: 'css-loader',
+						options: {
+							url: false,
+							sourceMap: ! isProduction,
+						},
+					},
+					{
+						loader: 'postcss-loader',
+						options: {
+							...postcssConfig,
+							sourceMap: ! isProduction,
+						},
+					},
+					{
+						loader: 'sass-loader',
+						options: {
+							sourceMap: ! isProduction,
+							sassOptions: {
+								importer: nodeSassGlobImporter(),
+							}
+						}
+					}
+				],
 			},
-
-			{
-				test: /editor\.scss$/,
-				use: styleExtractConfig,
-			},
-
 		],
 	},
 
