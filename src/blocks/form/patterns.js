@@ -16,7 +16,8 @@ import { __ } from '@wordpress/i18n';
  */
 const patterns = [
 	{
-		title: __( 'Contact', 'coblocks' ),
+		name: 'contact-form',
+		label: __( 'Contact', 'coblocks' ),
 		icon: icons.layoutContact,
 		isDefault: true,
 		innerBlocks: [
@@ -24,10 +25,11 @@ const patterns = [
 			[ 'coblocks/field-email', { required: true } ],
 			[ 'coblocks/field-textarea', { required: true } ],
 		],
-		// submitButtonText: __( 'Contact Us', 'coblocks' ),
+		submitButtonText: __( 'Contact Us', 'coblocks' ),
 	},
 	{
-		title: __( 'RSVP', 'coblocks' ),
+		name: 'rsvp-form',
+		label: __( 'RSVP', 'coblocks' ),
 		icon: icons.layoutRSVP,
 		innerBlocks: [
 			[ 'coblocks/field-name', { required: true, hasLastName: true } ],
@@ -38,10 +40,11 @@ const patterns = [
 			[ 'coblocks/field-textarea', { label: __( 'Notes?', 'coblocks' ) } ],
 		],
 		/* translators: RSVP is an initialism derived from the French phrase Répondez s'il vous plaît, meaning "Please respond" to require confirmation of an invitation */
-		// submitButtonText: __( 'RSVP', 'coblocks' ),
+		submitButtonText: __( 'RSVP', 'coblocks' ),
 	},
 	{
-		title: __( 'Appointment', 'coblocks' ),
+		name: 'appointment-form',
+		label: __( 'Appointment', 'coblocks' ),
 		icon: icons.layoutAppointment,
 		innerBlocks: [
 			[ 'coblocks/field-name', { required: true, hasLastName: true } ],
@@ -52,7 +55,7 @@ const patterns = [
 			[ 'coblocks/field-textarea', { label: __( 'Special Notes', 'coblocks' ) } ],
 
 		],
-		// submitButtonText: __( 'Book Appointment', 'coblocks' ),
+		submitButtonText: __( 'Book Appointment', 'coblocks' ),
 	},
 ];
 

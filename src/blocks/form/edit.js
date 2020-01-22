@@ -22,12 +22,11 @@ import SubmitButton from './submit-button';
 import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/components';
-import { InspectorControls, InnerBlocks } from '@wordpress/block-editor';
+import { InspectorControls, InnerBlocks, __experimentalBlockPatternPicker } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
 import { compose } from '@wordpress/compose';
 import { withSelect, useDispatch } from '@wordpress/data';
-import { __experimentalRegisterBlockPattern, __experimentalBlockPatternPicker, createBlock } from '@wordpress/blocks';
-
+import { __experimentalRegisterBlockPattern, createBlock } from '@wordpress/blocks';
 /**
  * Get settings
  */
@@ -122,13 +121,12 @@ class FormEdit extends Component {
 	}
 
 	componentDidMount() {
-		const { innerBlockCount, innerBlocks, defaultPattern } = this.props;
-		console.log( this.props );
-		if ( innerBlockCount > 0 ) {
+		const { hasInnerBlocks, innerBlocks, defaultPattern } = this.props;
+		if ( hasInnerBlocks ) {
 			this.setState( { template: innerBlocks } );
 		}
 
-		if ( ! this.supportsExperimentalProps() && innerBlockCount === 0 ) {
+		if ( ! this.supportsExperimentalProps() && hasInnerBlocks === false ) {
 			this.setTemplate( defaultPattern );
 		}
 	}
@@ -331,9 +329,7 @@ class FormEdit extends Component {
 	}
 
 	createBlocksFromInnerBlocksTemplate( innerBlocksTemplate ) {
-		// const { name, attributes, innerBlocks } = this.props;
-		console.log( innerBlocksTemplate );
-		return map(	innerBlocksTemplate, ( { name, attributes, innerBlocks } ) => createBlock( name, attributes, this.createBlocksFromInnerBlocksTemplate( innerBlocks ) ) );
+		return map(	innerBlocksTemplate, ( [ name, attributes, innerBlocks = [] ] ) => createBlock( name, attributes, this.createBlocksFromInnerBlocksTemplate( innerBlocks ) ) );
 	}
 
 	supportsExperimentalProps() {
@@ -345,23 +341,17 @@ class FormEdit extends Component {
 	}
 
 	render() {
-		// const { className, blockType, defaultPattern, patterns } = this.props;
-		const { className, blockType, defaultPattern, patterns } = this.props;
-
-		// const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
-
-		console.log( blockType, defaultPattern, patterns );
+		const { className, blockType, defaultPattern, patterns, replaceInnerBlocks, hasInnerBlocks } = this.props;
 
 		const classes = classnames(
 			className,
 			'coblocks-form',
 		);
 
-		const showTemplateSelector = this.props.innerBlockCount === 0;
+		if ( hasInnerBlocks ) {
+			return (
+				<Fragment>
 
-		return (
-			<Fragment>
-				{ ! showTemplateSelector && (
 					<InspectorControls>
 						<PanelBody title={ __( 'Form Settings', 'coblocks' ) }>
 							{ this.renderToAndSubjectFields() }
@@ -421,41 +411,36 @@ class FormEdit extends Component {
 							</div>
 						</PanelBody>
 					</InspectorControls>
-				) }
-				<div className={ classes }>
-					{ /* <InnerBlocks
-						__experimentalTemplateOptions={ TEMPLATE_OPTIONS }
-						__experimentalOnSelectTemplateOption={ ( chosenTemplate ) => {
-							if ( chosenTemplate === undefined ) {
-								chosenTemplate = TEMPLATE_OPTIONS[ 0 ].template;
-							}
-							this.setTemplate( chosenTemplate );
-						} }
-						__experimentalAllowTemplateOptionSkip
-						template={ this.supportsExperimentalProps() ? this.state.template : TEMPLATE_OPTIONS[ 0 ].template }
-						allowedBlocks={ ALLOWED_BLOCKS }
-						renderAppender={ () => null }
-						templateInsertUpdatesSelection={ false }
-					/> */ }
-					<__experimentalBlockPatternPicker
-						icon={ get( blockType, [ 'icon', 'src' ] ) }
-						label={ get( blockType, [ 'title' ] ) }
-						// label="label goes here"
-						patterns={ patterns }
-						// onSelect={ ( nextPattern = defaultPattern ) => {
-						// 	if ( nextPattern.attributes ) {
-						// 		this.props.setAttributes( nextPattern.attributes );
-						// 	}
-						// 	if ( nextPattern.innerBlocks ) {
-						// 		replaceInnerBlocks(
-						// 			this.props.clientId,
-						// 			this.createBlocksFromInnerBlocksTemplate( nextPattern.innerBlocks )
-						// 		);
-						// 	}
-						// } }
-					/>
-					{ ! showTemplateSelector && <SubmitButton { ...this.props } /> }
-				</div>
+					<div className={ classes }>
+						<InnerBlocks
+							templateLock="all"
+							allowedBlocks={ ALLOWED_BLOCKS } />
+						<SubmitButton { ...this.props } />
+					</div>
+				</Fragment>
+			);
+		}
+
+		return (
+			<Fragment>
+				<__experimentalBlockPatternPicker
+					icon={ get( blockType, [ 'icon', 'src' ] ) }
+					label={ get( blockType, [ 'title' ] ) }
+					instructions={ __( 'Select a pattern to start with.' ) }
+					patterns={ patterns }
+					allowSkip
+					onSelect={ ( nextPattern = defaultPattern ) => {
+						if ( nextPattern.attributes ) {
+							this.props.setAttributes( nextPattern.attributes );
+						}
+						if ( nextPattern.innerBlocks ) {
+							replaceInnerBlocks(
+								this.props.clientId,
+								this.createBlocksFromInnerBlocksTemplate( nextPattern.innerBlocks )
+							);
+						}
+					} }
+				/>
 			</Fragment>
 		);
 	}
@@ -463,23 +448,19 @@ class FormEdit extends Component {
 
 const applyWithSelect = withSelect( ( select, props ) => {
 	const { getBlocks } = select( 'core/block-editor' );
-	const {
-		__experimentalGetBlockPatterns,
-		getBlockType,
-		__experimentalGetDefaultBlockPattern,
-	} = select( 'core/blocks' );
+	const {	__experimentalGetBlockPatterns, getBlockType, __experimentalGetDefaultBlockPattern } = select( 'core/blocks' );
 	const innerBlocks = getBlocks( props.clientId );
-
-	console.log( getBlockType( props.name ), __experimentalGetDefaultBlockPattern( props.name ), __experimentalGetBlockPatterns( props.name ),  );
+	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 
 	return {
 		// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
-		innerBlockCount: innerBlocks.length,
 		innerBlocks,
+		hasInnerBlocks: select( 'core/block-editor' ).getBlocks( props.clientId ).length > 0,
 
 		blockType: getBlockType( props.name ),
 		defaultPattern: __experimentalGetDefaultBlockPattern( props.name ),
 		patterns: __experimentalGetBlockPatterns( props.name ),
+		replaceInnerBlocks,
 	};
 } );
 
