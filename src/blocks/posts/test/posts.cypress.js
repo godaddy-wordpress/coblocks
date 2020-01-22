@@ -28,11 +28,11 @@ describe( 'Test CoBlocks posts Block', function() {
 	it( 'Test posts block column and post count controls.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'posts' );
 
-		cy.get( '.wp-block-coblocks-posts' ).find( '.columns-2' ).then( () => {
+		cy.get( '.wp-block-coblocks-posts' ).find( '.has-2-columns' ).then( () => {
 			helpers.setInputValue( 'posts settings', 'columns', 1 );
 		} );
 
-		cy.get( '.wp-block-coblocks-posts' ).find( '.columns-1' ).should( 'exist' );
+		cy.get( '.wp-block-coblocks-posts' ).find( '.has-1-columns' ).should( 'exist' );
 
 		helpers.savePage();
 
@@ -45,7 +45,7 @@ describe( 'Test CoBlocks posts Block', function() {
 
 			helpers.setInputValue( 'feed settings', 'number of posts', 1 );
 
-			cy.get( '.wp-block-coblocks-posts  > .columns' ).children().should( 'have.length', 1 );
+			cy.get( '.wp-block-coblocks-posts  > .has-columns' ).children().should( 'have.length', 1 );
 		} );
 
 		helpers.savePage();
@@ -54,7 +54,7 @@ describe( 'Test CoBlocks posts Block', function() {
 
 		helpers.viewPage();
 
-		cy.get( '.wp-block-coblocks-posts  > .columns' ).children().should( 'have.length', 1 );
+		cy.get( '.wp-block-coblocks-posts  > .has-columns' ).children().should( 'have.length', 1 );
 
 		helpers.editPage();
 	} );
@@ -93,7 +93,7 @@ describe( 'Test CoBlocks posts Block', function() {
 	it( 'Test posts block saves with non-default style.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'posts' );
 
-		cy.get( '.wp-block-coblocks-posts' ).find( '.columns-2' ).should( 'exist' );
+		cy.get( '.wp-block-coblocks-posts' ).find( '.has-2-columns' ).should( 'exist' );
 
 		helpers.setBlockStyle( 'horizontal' );
 
