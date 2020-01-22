@@ -1,0 +1,35 @@
+.has-responsive-columns {
+
+	@include break-small-max() {
+		flex-direction: column;
+
+		> * {
+			max-width: 100% !important;
+			width: 100% !important;
+		}
+
+		> [class*="wp-block"]:last-child {
+			margin-bottom: 0;
+		}
+
+		&.has-no-gutter > [class*="wp-block"]:not(:last-child) {
+			margin-bottom: 0;
+		}
+
+		&.has-small-gutter > [class*="wp-block"]:not(:last-child) {
+			margin-bottom: map-get($spacing, 1) * 2.35;
+		}
+
+		&.has-medium-gutter > [class*="wp-block"]:not(:last-child) {
+			margin-bottom: map-get($spacing, 2) * 2.35;
+		}
+
+		&.has-large-gutter > [class*="wp-block"]:not(:last-child) {
+			margin-bottom: map-get($spacing, 3) * 2.35;
+		}
+
+		&.has-huge-gutter > [class*="wp-block"]:not(:last-child) {
+			margin-bottom: map-get($spacing, 4) * 2.35;
+		}
+	}
+}

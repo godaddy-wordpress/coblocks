@@ -86,8 +86,8 @@ function coblocks_render_posts_block( $attributes ) {
  * @return string Returns the block content for the list and grid styles.
  */
 function coblocks_posts( $posts, $attributes ) {
-	$class       = array( 'list-none', 'ml-0', 'pl-0', 'pt-3' );
-	$class_name  = array( 'wp-block-coblocks-posts' );
+	$class_name  = array();
+	$class       = array( 'wp-block-coblocks-posts__inner' );
 	$block_style = strpos( $attributes['className'], 'is-style-stacked' ) !== false ? 'stacked' : 'horizontal';
 
 	if ( isset( $attributes['className'] ) ) {
@@ -99,7 +99,15 @@ function coblocks_posts( $posts, $attributes ) {
 	}
 
 	if ( isset( $attributes['columns'] ) ) {
-		array_push( $class, 'columns columns-' . $attributes['columns'] );
+		array_push( $class, 'has-columns has-' . $attributes['columns'] . '-columns has-responsive-columns has-medium-gutter' );
+	}
+
+	if ( isset( $attributes['listPosition'] ) && 'right' === $attributes['listPosition'] && 'horizontal' === $block_style ) {
+		array_push( $class, 'has-image-right' );
+	}
+
+	if ( isset( $attributes['imageSize'] ) && 'horizontal' === $block_style ) {
+		array_push( $class, 'has-' . $attributes['imageSize'] . '-image' );
 	}
 
 	$block_content = sprintf(
@@ -109,59 +117,18 @@ function coblocks_posts( $posts, $attributes ) {
 	);
 
 	$list_items_markup = '';
-	$list_items_class  = '';
-
-	if ( 'horizontal' !== $block_style ) {
-
-		$list_items_class .= 'flex-col';
-
-	}
 
 	foreach ( $posts as $post ) {
 
 		$list_class       = '';
-		$image_class      = '';
 		$align_self_class = '';
 
-		if ( isset( $attributes['listPosition'] ) && 'horizontal' === $block_style ) {
-
-			if ( 'left' === $attributes['listPosition'] ) {
-
-				$image_class .= ' mr-2 sm:mr-3';
-			} else {
-
-				$image_class     .= ' ml-3 sm:ml-3';
-				$list_items_class = 'flex-row-reverse';
-
-			}
-		}
-
-		if ( isset( $attributes['imageSize'] ) && 'horizontal' === $block_style ) {
-
-			$image_class .= ' ' . $attributes['imageSize'];
-
-		} else {
-
-			$image_class .= 'w-full relative';
-
-		}
-
-		$list_items_markup .= sprintf(
-			'<div class="flex flex-auto %1$s items-stretch w-full mt-0 mb-3 ml-0 pl-0">',
-			$list_items_class
-		);
+		$list_items_markup .= '<div class="wp-block-coblocks-posts__item">';
 
 		if ( null !== $post['thumbnailURL'] && $post['thumbnailURL'] ) {
 
-			if ( 'stacked' === $block_style ) {
-
-				$image_class .= ' mb-2';
-
-			}
-
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-posts__image table flex-0 %1$s"><a href="%2$s" class="block w-full bg-cover bg-center-center pt-full" style="background-image:url(%3$s)"></a></div>',
-				esc_attr( $image_class ),
+				'<div class="wp-block-coblocks-posts__image"><a href="%1$s" class="bg-cover bg-center-center" style="background-image:url(%2$s)"></a></div>',
 				esc_url( $post['postLink'] ),
 				esc_url( $post['thumbnailURL'] )
 			);
@@ -171,18 +138,18 @@ function coblocks_posts( $posts, $attributes ) {
 				$align_self_class = 'self-center';
 			}
 		} else {
-			$align_self_class = 'flex-start';
+			$align_self_class = ' flex-start';
 		}
 
 		$list_items_markup .= sprintf(
-			'<div class="wp-block-coblocks-posts__content flex flex-col %s w-full">',
+			'<div class="wp-block-coblocks-posts__content%s">',
 			esc_attr( $align_self_class )
 		);
 
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] && 'stacked' === $block_style ) {
 
 			$list_items_markup .= sprintf(
-				'<time datetime="%1$s" class="wp-block-coblocks-posts__date mb-1">%2$s</time>',
+				'<time datetime="%1$s" class="wp-block-coblocks-posts__date">%2$s</time>',
 				esc_url( $post['date'] ),
 				esc_html( $post['dateReadable'] )
 			);
@@ -206,7 +173,7 @@ function coblocks_posts( $posts, $attributes ) {
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] && 'horizontal' === $block_style ) {
 
 			$list_items_markup .= sprintf(
-				'<time datetime="%1$s" class="wp-block-coblocks-posts__date mt-2">%2$s</time>',
+				'<time datetime="%1$s" class="wp-block-coblocks-posts__date">%2$s</time>',
 				esc_url( $post['date'] ),
 				esc_html( $post['dateReadable'] )
 			);
@@ -219,7 +186,7 @@ function coblocks_posts( $posts, $attributes ) {
 			$trimmed_excerpt = esc_html( wp_trim_words( $post_excerpt, $attributes['excerptLength'], ' &hellip; ' ) );
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-posts__post-excerpt mt-1">%1$s</div>',
+				'<div class="wp-block-coblocks-posts__excerpt">%1$s</div>',
 				esc_html( $trimmed_excerpt )
 			);
 
