@@ -189,10 +189,8 @@ class DimensionsControl extends Component {
 			if ( typeof dimensions[ id ] === 'undefined' ) {
 				dimensions[ id ] = {};
 				dimensions[ id ][ this.props.type ] = {};
-			} else {
-				if ( typeof dimensions[ id ][ this.props.type ] === 'undefined' ) {
-					dimensions[ id ][ this.props.type ] = {};
-				}
+			} else if ( typeof dimensions[ id ][ this.props.type ] === 'undefined' ) {
+				dimensions[ id ][ this.props.type ] = {};
 			}
 
 			if ( this.props.dimensionSize === 'advanced' ) {

@@ -45,10 +45,8 @@ class ResponsiveBaseControl extends Component {
 			if ( typeof dimensions[ id ] === 'undefined' ) {
 				dimensions[ id ] = {};
 				dimensions[ id ][ this.props.type ] = {};
-			} else {
-				if ( typeof dimensions[ id ][ this.props.type ] === 'undefined' ) {
-					dimensions[ id ][ this.props.type ] = {};
-				}
+			} else if ( typeof dimensions[ id ][ this.props.type ] === 'undefined' ) {
+				dimensions[ id ][ this.props.type ] = {};
 			}
 
 			dimensions[ id ][ this.props.type ] = height;
@@ -176,7 +174,7 @@ class ResponsiveBaseControl extends Component {
 													<BaseControl>
 														<input
 															type="number"
-															onChange={ ( newValue ) =>{
+															onChange={ ( newValue ) => {
 																onChangeTablet( newValue );
 																this.saveMeta();
 															} }

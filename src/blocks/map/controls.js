@@ -43,7 +43,7 @@ function Controls( { attributes, setAttributes, apiKey } ) {
 						controls={ [
 							map( styleOptions, ( { value, label } ) => ( {
 								title: label,
-								label: label,
+								label,
 								key: value,
 								value: skin,
 								onClick: () => {

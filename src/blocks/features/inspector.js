@@ -106,12 +106,10 @@ class Inspector extends Component {
 									setAttributes( {
 										gutter: 'no',
 									} );
-								} else {
-									if ( gutter === 'no' ) {
-										setAttributes( {
-											gutter: 'large',
-										} );
-									}
+								} else if ( gutter === 'no' ) {
+									setAttributes( {
+										gutter: 'large',
+									} );
 								}
 
 								wp.data.dispatch( 'core/block-editor' ).selectBlock( clientId );

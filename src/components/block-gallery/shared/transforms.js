@@ -7,7 +7,7 @@ import * as helper from './../../../utils/helper';
  * Set global transforms that every block uses.
  *
  * @param {Object} props The passed props.
- * @returns {Object} The transforms.
+ * @return {Object} The transforms.
  */
 function GalleryTransforms( props ) {
 	const transforms = {

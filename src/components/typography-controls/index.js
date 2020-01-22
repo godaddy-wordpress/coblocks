@@ -39,7 +39,7 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	const { textColor, fontSize, customFontSize } = ownProps.attributes;
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
 	//verify if editableNode is available, before using getComputedStyle.
-	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
+	const computedStyles = editableNode ? getComputedStyle( editableNode ) : undefined;
 	return {
 		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
 		fallbackFontSize: fontSize || customFontSize || ! computedStyles ? undefined : parseInt( computedStyles.fontSize ) || undefined,
@@ -116,7 +116,7 @@ class TypographyControls extends Component {
 		];
 
 		if ( typeof googleFonts[ fontFamily ] !== 'undefined' && typeof googleFonts[ fontFamily ].weight !== 'undefined' ) {
-			googleFonts[ fontFamily ].weight.map( ( k ) => {
+			googleFonts[ fontFamily ].weight.forEach( ( k ) => {
 				weight.push(
 					{ value: k, label: k }
 				);
@@ -128,7 +128,7 @@ class TypographyControls extends Component {
 
 			if ( typeof googleFonts[ value ] !== 'undefined' && typeof googleFonts[ value ].weight !== 'undefined' ) {
 				if ( fontWeight && Object.values( googleFonts[ fontFamily ].weight ).indexOf( fontWeight ) < 0 ) {
-					setAttributes( { fontWeight: '' } );
+					setAttributes( { fontWeight: undefined } );
 				}
 			}
 
@@ -194,7 +194,7 @@ class TypographyControls extends Component {
 								{ ( ( typeof attributes.textPanelHideSize === 'undefined' || ( typeof attributes.textPanelHideSize !== 'undefined' && typeof attributes.textPanelHideSize === 'undefined' ) ) ) ?
 									<RangeControl
 										label={ __( 'Size', 'coblocks' ) }
-										value={ parseFloat( customFontSize ) || null }
+										value={ parseFloat( customFontSize ) || undefined }
 										onChange={ ( nextFontSize ) => setAttributes( { customFontSize: nextFontSize } ) }
 										min={ 1 }
 										max={ 100 }
@@ -205,7 +205,7 @@ class TypographyControls extends Component {
 								{ ( ( typeof attributes.textPanelLineHeight === 'undefined' || ( typeof attributes.textPanelLineHeight !== 'undefined' && typeof attributes.textPanelLineHeight === 'undefined' ) ) ) ?
 									<RangeControl
 										label={ __( 'Line Height', 'coblocks' ) }
-										value={ parseFloat( lineHeight ) || null }
+										value={ parseFloat( lineHeight ) || undefined }
 										onChange={ ( nextLineHeight ) => setAttributes( { lineHeight: nextLineHeight } ) }
 										min={ 1 }
 										max={ 3 }
@@ -216,7 +216,7 @@ class TypographyControls extends Component {
 								{ ( ( typeof attributes.textPanelLetterSpacing === 'undefined' || ( typeof attributes.textPanelLetterSpacing !== 'undefined' && typeof attributes.textPanelLetterSpacing === 'undefined' ) ) ) ?
 									<RangeControl
 										label={ __( 'Letter Spacing', 'coblocks' ) }
-										value={ parseFloat( letterSpacing ) || null }
+										value={ parseFloat( letterSpacing ) || undefined }
 										onChange={ ( nextLetterSpacing ) => setAttributes( { letterSpacing: nextLetterSpacing } ) }
 										min={ -1 }
 										max={ 3 }n

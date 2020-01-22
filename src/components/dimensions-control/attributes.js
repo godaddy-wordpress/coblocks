@@ -1,5 +1,6 @@
 /**
  * Set the attributes for the Dimension Control
+ *
  * @type {Object}
  */
 const DimensionsAttributes = {

@@ -104,7 +104,7 @@ class Edit extends Component {
 						placeholder={ __( 'Write text…', 'coblocks' ) }
 						value={ value }
 						className="wp-block-coblocks-alert__text"
-						onChange={ ( value ) => setAttributes( { value: value } ) }
+						onChange={ ( value ) => setAttributes( { value } ) }
 						keepPlaceholderOnFocus
 					/>
 				</div>

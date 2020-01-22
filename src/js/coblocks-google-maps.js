@@ -1,16 +1,18 @@
 'use strict';
 
+import jQuery from 'jquery';
+
 /*global google coblocksGoogleMaps*/
 
 const coblocksMap = {
-	init: function() {
+	init() {
 		const self = this;
 		self.elem = jQuery( '.wp-block-coblocks-map' );
 
 		self.renderMap();
 	},
 
-	renderMap: function() {
+	renderMap() {
 		const self = this;
 		self.elem.each( function( index, Element ) {
 			let mapAttributes = jQuery( this ).attr( 'data-map-attr' );
@@ -70,7 +72,7 @@ const coblocksMap = {
 
 			new google.maps.Marker( {
 				position: new google.maps.LatLng( gmapAttr.lat, gmapAttr.lng ),
-				map: map,
+				map,
 				icon: {
 					url: coblocksGoogleMaps.url + '/dist/images/markers/' + gmapAttr.skin + '.svg',
 					scaledSize: new google.maps.Size(
@@ -83,7 +85,7 @@ const coblocksMap = {
 		} );
 	},
 
-	mapStyles: function( key ) {
+	mapStyles( key ) {
 		const GMapStyles = {};
 
 		GMapStyles.silver = [

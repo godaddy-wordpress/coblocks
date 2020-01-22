@@ -24,7 +24,7 @@ const transforms = {
 		{
 			type: 'prefix',
 			prefix: ':pricing',
-			transform: function( content ) {
+			transform( content ) {
 				return createBlock( metadata.name, {
 					content,
 				} );

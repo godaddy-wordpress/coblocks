@@ -32,7 +32,7 @@ const deprecated = [
 
 			if ( name ) {
 				return (
-					<div style={ { textAlign: textAlign } }>
+					<div style={ { textAlign } }>
 						{ imgUrl && (
 							<div className={ 'wp-block-coblocks-author__avatar' }>
 								<img

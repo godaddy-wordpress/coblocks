@@ -54,7 +54,7 @@ class SizeControl extends Component {
 			},
 		];
 
-		const standardSizes = [
+		let standardSizes = [
 			{
 				shortName: ( wideControlsEnabled === true && 'wide' === align ) || 'full' === align ? 'L' : __( 'Large', 'coblocks' ),
 				size: 'lrg',
@@ -65,14 +65,14 @@ class SizeControl extends Component {
 			},
 		];
 
-		const wideSizes = [
+		let wideSizes = [
 			{
 				shortName: 'M',
 				size: 'med',
 			},
 		];
 
-		const fullSizes = [
+		let fullSizes = [
 			{
 				shortName: 'S',
 				size: 'sml',
@@ -81,7 +81,7 @@ class SizeControl extends Component {
 
 		// If this is a standard size settings, not a complex grid sizer.
 		if ( 'smlx' === type ) {
-			const standardSizes = [
+			standardSizes = [
 				{
 					shortName: 'S',
 					size: 'sml',
@@ -105,7 +105,7 @@ class SizeControl extends Component {
 
 		// If this is a standard size settings, not a complex grid sizer.
 		if ( 'reverse-grid' === type ) {
-			const standardSizes = [
+			standardSizes = [
 				{
 					shortName: ( wideControlsEnabled === true && 'wide' === align ) || 'full' === align ? 'S' : __( 'Small', 'coblocks' ),
 					size: 'small',
@@ -116,14 +116,14 @@ class SizeControl extends Component {
 				},
 			];
 
-			const wideSizes = [
+			wideSizes = [
 				{
 					shortName: 'L',
 					size: 'large',
 				},
 			];
 
-			const fullSizes = [
+			fullSizes = [
 				{
 					shortName: 'XL',
 					size: 'huge',
@@ -161,7 +161,7 @@ class SizeControl extends Component {
 		} = this.props;
 
 		return (
-			<BaseControl label={ label }>
+			<BaseControl id="coblocks-select-size" label={ label }>
 				<PanelRow>
 					<ButtonGroup aria-label={ __( 'Select Size', 'coblocks' ) }>
 						{ map( this.getSizes(), ( { size, shortName } ) => (

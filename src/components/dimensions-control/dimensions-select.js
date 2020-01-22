@@ -47,7 +47,7 @@ export default class DimensionsSelect extends Component {
 	getSelectValuesFromUtilitySizes( listOfSizes, value ) {
 		let selectedPreset;
 		if ( typeof value === 'string' ) {
-			selectedPreset = listOfSizes.find( choice => choice.slug === value );
+			selectedPreset = listOfSizes.find( ( choice ) => choice.slug === value );
 			return selectedPreset ? selectedPreset.slug : 'custom';
 		}
 	}
@@ -77,7 +77,7 @@ export default class DimensionsSelect extends Component {
 	}
 
 	onChangeValue( event ) {
-		const selectedUtil = utilitySizes.find( util => util.slug === event );
+		const selectedUtil = utilitySizes.find( ( util ) => util.slug === event );
 		if ( selectedUtil ) {
 			this.setCurrentSelectValue(
 				this.getSelectValuesFromUtilitySizes( utilitySizes, selectedUtil.slug )
@@ -87,7 +87,7 @@ export default class DimensionsSelect extends Component {
 
 	getSelectOptions( optionsArray ) {
 		return [
-			...optionsArray.map( option => ( {
+			...optionsArray.map( ( option ) => ( {
 				value: option.slug,
 				label: option.name,
 			} ) ),

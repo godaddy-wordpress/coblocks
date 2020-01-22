@@ -12,7 +12,7 @@ import { getColorClassName } from '@wordpress/block-editor';
  * Background Classes.
  *
  * @param {Object} attributes The attributes.
- * @returns {Array} The background classes.
+ * @return {Array} The background classes.
  */
 function BackgroundClasses( attributes ) {
 	const backgroundClass = getColorClassName( 'background-color', attributes.backgroundColor );

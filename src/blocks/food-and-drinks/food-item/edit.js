@@ -26,7 +26,7 @@ import { isBlobURL } from '@wordpress/blob';
  * Handle creation and removal of placeholder elements so that we always have one available to use.
  *
  * @param {Integer} childClientId The child block's ClientId.
- * @param {String} blockName The block to insert.
+ * @param {string} blockName The block to insert.
  * @param {Object} blockAttributes The attributes for the placeholder block.
  */
 const handlePlaceholderPlacement = (
@@ -43,17 +43,17 @@ const handlePlaceholderPlacement = (
 	)[ 0 ].innerBlocks;
 
 	const filledFoodItems = foodItems.filter(
-		item => item.name === 'coblocks/food-item' && ! isEmpty( item.attributes ) );
+		( item ) => item.name === 'coblocks/food-item' && ! isEmpty( item.attributes ) );
 
 	const placeholders = foodItems.filter(
-		item => item.name === blockName && isEmpty( item.attributes )
+		( item ) => item.name === blockName && isEmpty( item.attributes )
 	);
 
 	// Remove trailing placholders if there are more than two.
 	dispatch( 'core/block-editor' ).removeBlocks(
 		placeholders
 			.filter( ( item, index ) => item.clientId !== childClientId && index !== 0 && filledFoodItems.length >= 1 )
-			.map( item => item.clientId ),
+			.map( ( item ) => item.clientId ),
 		false
 	);
 
@@ -69,7 +69,7 @@ const handlePlaceholderPlacement = (
 	}
 };
 
-const isEmpty = attributes => {
+const isEmpty = ( attributes ) => {
 	const attributesToCheck = [ 'url', 'title', 'description', 'price' ];
 	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
 		attributesToCheck.includes( key )
@@ -189,7 +189,7 @@ class FoodAndDrinksEdit extends Component {
 				labels={ {
 					title: ' ',
 				} }
-				onSelect={ el => setAttributes( { url: el.url, alt: el.alt } ) }
+				onSelect={ ( el ) => setAttributes( { url: el.url, alt: el.alt } ) }
 			/>
 		);
 	}
@@ -223,7 +223,7 @@ class FoodAndDrinksEdit extends Component {
 								tagName="h4"
 								wrapperClassName="wp-block-coblocks-food-item__heading"
 								placeholder={ __( 'Add title…', 'coblocks' ) }
-								onChange={ title => setAttributes( { title } ) }
+								onChange={ ( title ) => setAttributes( { title } ) }
 								{ ...richTextAttributes }
 							/>
 							<div className="wp-block-coblocks-food-item__attributes">
@@ -316,7 +316,7 @@ class FoodAndDrinksEdit extends Component {
 							tagName="p"
 							wrapperClassName="wp-block-coblocks-food-item__description"
 							placeholder={ __( 'Add description…', 'coblocks' ) }
-							onChange={ description => setAttributes( { description } ) }
+							onChange={ ( description ) => setAttributes( { description } ) }
 							{ ...richTextAttributes }
 						/>
 						{ !! attributes.showPrice && ( attributes.price || isSelected ) && (
@@ -325,7 +325,7 @@ class FoodAndDrinksEdit extends Component {
 								tagName="p"
 								wrapperClassName="wp-block-coblocks-food-item__price"
 								placeholder={ __( '$0.00', 'coblocks' ) }
-								onChange={ price => setAttributes( { price } ) }
+								onChange={ ( price ) => setAttributes( { price } ) }
 								{ ...richTextAttributes }
 							/>
 						) }

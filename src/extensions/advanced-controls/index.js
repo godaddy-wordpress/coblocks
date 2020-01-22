@@ -81,11 +81,11 @@ function addAttributes( settings ) {
 /**
  * Add custom CoBlocks attributes to selected blocks
  *
- * @param {function|Component} BlockEdit Original component.
+ * @param {Function} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
-const withAdvancedControls = createHigherOrderComponent( BlockEdit => {
-	return props => {
+const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
+	return ( props ) => {
 		const { name, clientId, attributes, setAttributes, isSelected } = props;
 
 		const { isStackedOnMobile, noBottomMargin, noTopMargin } = attributes;
@@ -206,19 +206,19 @@ const enhance = compose(
 	 * "original" block is not the current one. Thus, an inexisting
 	 * `originalBlockClientId` prop signals that the block is valid.
 	 *
-	 * @param {Component} WrappedBlockEdit A filtered BlockEdit instance.
+	 * @param {Function} WrappedBlockEdit A filtered BlockEdit instance.
 	 *
-	 * @return {Component} Enhanced component with merged state data props.
+	 * @return {Function} Enhanced component with merged state data props.
 	 */
-	withSelect( select => {
+	withSelect( ( select ) => {
 		return {
 			selected: select( 'core/block-editor' ).getSelectedBlock(),
-			select: select,
+			select,
 		};
 	} )
 );
 
-const addEditorBlockAttributes = createHigherOrderComponent( BlockListBlock => {
+const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
 	return enhance( ( { select, ...props } ) => {
 		let wrapperProps = props.wrapperProps;
 		let customData = {};

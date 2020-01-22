@@ -29,7 +29,7 @@ import { isBlobURL } from '@wordpress/blob';
  *
  * @constant
  * @type {string[]}
-*/
+ */
 const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list', 'core/image', 'coblocks/alert', 'coblocks/gif', 'coblocks/social', 'coblocks/row', 'coblocks/column', 'coblocks/buttons' ];
 const TEMPLATE = [
 	[
@@ -133,10 +133,8 @@ export class Edit extends Component {
 			if ( typeof dimensions[ id ] === 'undefined' ) {
 				dimensions[ id ] = {};
 				dimensions[ id ][ type ] = {};
-			} else {
-				if ( typeof dimensions[ id ][ type ] === 'undefined' ) {
-					dimensions[ id ][ type ] = {};
-				}
+			} else if ( typeof dimensions[ id ][ type ] === 'undefined' ) {
+				dimensions[ id ][ type ] = {};
 			}
 
 			dimensions[ id ][ type ] = height;

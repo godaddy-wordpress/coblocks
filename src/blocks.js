@@ -85,7 +85,7 @@ const registerBlock = ( block ) => {
 	const { name, category, settings } = block;
 
 	registerBlockType( name, {
-		category: category,
+		category,
 		...settings,
 	} );
 };

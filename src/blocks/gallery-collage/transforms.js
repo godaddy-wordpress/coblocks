@@ -58,7 +58,7 @@ const transforms = {
 			'coblocks/gallery-stacked',
 			'coblocks/gallery-offset',
 			'core/gallery',
-		].map( x => {
+		].map( ( x ) => {
 			return {
 				type: 'block',
 				blocks: [ x ],

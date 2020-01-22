@@ -14,7 +14,7 @@ const transforms = {
 			type: 'block',
 			blocks: [ 'core/spacer' ],
 			transform: ( { height } ) => createBlock( metadata.name, {
-				height: height,
+				height,
 			} ),
 		},
 		{
@@ -28,7 +28,7 @@ const transforms = {
 			type: 'block',
 			blocks: [ 'core/spacer' ],
 			transform: ( { height } ) => createBlock( 'core/spacer', {
-				height: height,
+				height,
 			} ),
 		},
 		{

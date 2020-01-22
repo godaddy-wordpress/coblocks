@@ -13,8 +13,8 @@ import { createBlock } from '@wordpress/blocks';
  * The number of ::  the number of columns to input.
  * We fallback to the standard divided column layouts.
  *
- * @param {int} columns The number of columns.
- * @return {String} defaultLayout
+ * @param {number} columns The number of columns.
+ * @return {string} defaultLayout
  */
 function generateLayout( columns ) {
 	let defaultLayout;
@@ -40,7 +40,7 @@ const transforms = {
 		{
 			type: 'prefix',
 			prefix: ':row',
-			transform: function( content ) {
+			transform( content ) {
 				return createBlock( metadata.name, {
 					content,
 				} );

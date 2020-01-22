@@ -42,7 +42,7 @@ const deprecatedIframeEmbed = ( { attributes } ) => {
 	};
 
 	const attr = Object.keys( mapAttributes )
-		.map( key => `/q${ key }/q:/q${ mapAttributes[ key ] }/q` )
+		.map( ( key ) => `/q${ key }/q:/q${ mapAttributes[ key ] }/q` )
 		.join( '||' );
 
 	const dataMap = { 'data-map-attr': attr };
@@ -84,7 +84,7 @@ const deprecatedUserLocale = ( { attributes } ) => {
 	};
 
 	const attr = Object.keys( mapAttributes )
-		.map( key => `/q${ key }/q:/q${ mapAttributes[ key ] }/q` )
+		.map( ( key ) => `/q${ key }/q:/q${ mapAttributes[ key ] }/q` )
 		.join( '||' );
 
 	const dataMap = { 'data-map-attr': attr };

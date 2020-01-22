@@ -38,7 +38,7 @@ function addAttributes( settings ) {
 /**
  * Override the default edit UI to include a new block toolbar control
  *
- * @param {function|Component} BlockEdit Original component.
+ * @param {Function} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
 const withControls = createHigherOrderComponent( ( BlockEdit ) => {
@@ -67,12 +67,12 @@ const enhance = compose(
 	 * "original" block is not the current one. Thus, an inexisting
 	 * `originalBlockClientId` prop signals that the block is valid.
 	 *
-	 * @param {Component} WrappedBlockEdit A filtered BlockEdit instance.
+	 * @param {Function} WrappedBlockEdit A filtered BlockEdit instance.
 	 *
-	 * @return {Component} Enhanced component with merged state data props.
+	 * @return {Function} Enhanced component with merged state data props.
 	 */
 	withSelect( ( select ) => {
-		return { selected: select( 'core/block-editor' ).getSelectedBlock(), select: select };
+		return { selected: select( 'core/block-editor' ).getSelectedBlock(), select };
 	} )
 );
 

@@ -140,7 +140,7 @@ class Edit extends Component {
 												isSmall
 												onClick={ () => {
 													setAttributes( {
-														columns: columns,
+														columns,
 														layout: columns === 1 ? key : null,
 													} );
 

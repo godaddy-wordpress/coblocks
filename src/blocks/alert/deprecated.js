@@ -62,7 +62,7 @@ const deprecated = [
 			const backgroundStyles = {
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				borderColor: customBorderColor,
-				textAlign: textAlign,
+				textAlign,
 			};
 
 			// Title color class and styles.

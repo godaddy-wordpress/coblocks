@@ -29,7 +29,7 @@ class HeadingToolbar extends Component {
 		const { minLevel, maxLevel, selectedLevel, onChange } = this.props;
 		return (
 			<Toolbar
-				controls={ range( minLevel, maxLevel ).map( index =>
+				controls={ range( minLevel, maxLevel ).map( ( index ) =>
 					this.createLevelControl( index, selectedLevel, onChange )
 				) }
 			/>

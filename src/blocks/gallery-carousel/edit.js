@@ -208,8 +208,8 @@ class GalleryCarouselEdit extends Component {
 				x2: 65, y2: 45,
 				x3: 20,
 			},
-			responsiveHeight: responsiveHeight,
-			thumbnails: thumbnails,
+			responsiveHeight,
+			thumbnails,
 		};
 
 		const navOptions = {
@@ -266,7 +266,7 @@ class GalleryCarouselEdit extends Component {
 				{ noticeUI }
 				<ResizableBox
 					size={ {
-						height: height,
+						height,
 						width: '100%',
 					} }
 					className={ classnames( {
@@ -295,7 +295,7 @@ class GalleryCarouselEdit extends Component {
 							<Flickity
 								className={ flickityClasses }
 								disableImagesLoaded={ false }
-								flickityRef={ c => this.flkty = c }
+								flickityRef={ ( c ) => this.flkty = c }
 								options={ flickityOptions }
 								reloadOnUpdate={ true }
 								updateOnEachImageLoad={ true }
@@ -345,7 +345,7 @@ class GalleryCarouselEdit extends Component {
 								options={ navOptions }
 								disableImagesLoaded={ false }
 								reloadOnUpdate={ true }
-								flickityRef={ c => this.flkty = c }
+								flickityRef={ ( c ) => this.flkty = c }
 								updateOnEachImageLoad={ true }
 							>
 								{ images.map( ( image ) => {

@@ -4,6 +4,7 @@
  * External dependencies
  */
 import _, { assign } from 'lodash';
+import jQuery from 'jquery';
 
 /**
  * Internal dependencies

@@ -72,21 +72,21 @@ const save = ( { attributes, className } ) => {
 
 	const flickityOptions = {
 		autoPlay: autoPlay && autoPlaySpeed ? parseFloat( autoPlaySpeed ) : false,
-		draggable: draggable,
-		pageDots: pageDots,
-		prevNextButtons: prevNextButtons,
+		draggable,
+		pageDots,
+		prevNextButtons,
 		wrapAround: true,
 		cellAlign: alignCells ? 'left' : 'center',
 		pauseAutoPlayOnHover: pauseHover,
-		freeScroll: freeScroll,
+		freeScroll,
 		arrowShape: {
 			x0: 10,
 			x1: 60, y1: 50,
 			x2: 65, y2: 45,
 			x3: 20,
 		},
-		thumbnails: thumbnails,
-		responsiveHeight: responsiveHeight,
+		thumbnails,
+		responsiveHeight,
 	};
 
 	const captionClasses = classnames(
@@ -121,7 +121,7 @@ const save = ( { attributes, className } ) => {
 		cellAlign: 'left',
 		pageDots: false,
 		thumbnails: false,
-		draggable: draggable,
+		draggable,
 		prevNextButtons: false,
 		wrapAround: false,
 	};

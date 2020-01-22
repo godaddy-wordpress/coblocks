@@ -286,12 +286,12 @@ class Inspector extends Component {
 						<TextControl
 							label={ __( 'Link URL', 'coblocks' ) }
 							value={ href || '' }
-							onChange={ value => setAttributes( { href: value } ) }
+							onChange={ ( value ) => setAttributes( { href: value } ) }
 							placeholder="https://" />
 						<TextControl
 							label={ __( 'Link Rel', 'coblocks' ) }
 							value={ rel || '' }
-							onChange={ value => setAttributes( { rel: value } ) }
+							onChange={ ( value ) => setAttributes( { rel: value } ) }
 						/>
 						<ToggleControl
 							label={ !! linkTarget ? __( 'Opening in New Tab', 'coblocks' ) : __( 'Open in New Tab', 'coblocks' ) }
