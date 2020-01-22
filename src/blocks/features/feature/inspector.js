@@ -65,7 +65,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Feature Settings', 'coblocks' ) } className="components-coblocks-block-sidebar--features">
+					<PanelBody title={ __( 'Feature Settings', 'coblocks' ) }>
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
 							label={ __( 'Padding', 'coblocks' ) }

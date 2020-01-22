@@ -1,6 +1,6 @@
 .wp-block[data-type="coblocks/post-carousel"] {
+
 	.wp-block-coblocks-post-carousel__more-link {
-		// Remove the core link focus styling
 		&:focus {
 			box-shadow: none;
 			color: inherit;
@@ -11,4 +11,9 @@
 	.components-placeholder__cancel-button {
 		margin-top: 10px;
 	}
+}
+
+.wp-block-coblocks-post-carousel__image div {
+	padding-top: 100%;
+	width: 100%;
 }

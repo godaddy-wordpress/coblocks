@@ -1,6 +1,4 @@
-// Utility class for adding margin-right to the figure elements.
-@media (min-width: 700px) {
-	// For desktop.
+@include break-small() {
 	@for $i from 1 through 10 {
 
 		&.has-negative-margin-right-#{ $i * 5 } {
@@ -9,8 +7,7 @@
 	}
 }
 
-@media (max-width: 699px) {
-	// For desktop.
+@include break-small-max() {
 	@for $i from 1 through 10 {
 
 		&.has-negative-margin-right-mobile-#{ $i * 5 } {
