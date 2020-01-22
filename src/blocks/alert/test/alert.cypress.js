@@ -4,99 +4,91 @@
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Alert Block', function() {
-
-  /**
+	/**
    * Test that we can add a alert block to the content, not add any text or
    * alter any settings, and are able to successfuly save the block without errors.
    */
-  it( 'Test alert block saves with empty values.', function() {
+	it( 'Test alert block saves with empty values.', function() {
+		helpers.addCoBlocksBlockToPage( true, 'alert' );
 
-    helpers.addCoBlocksBlockToPage();
+		helpers.savePage();
 
-    helpers.savePage();
+		helpers.checkForBlockErrors( 'alert' );
 
-    helpers.checkForBlockErrors();
+		helpers.viewPage();
 
-    helpers.viewPage();
+		cy.get( '.wp-block-coblocks-alert' )
+			.should( 'be.empty' );
 
-    cy.get( '.wp-block-coblocks-alert' )
-      .should( 'be.empty' );
+		helpers.editPage();
+	} );
 
-    helpers.editPage();
-
-  } );
-
-  /**
+	/**
    * Test that alert data saves
    */
-  it( 'Test alert block saves and displays properly.', function() {
+	it( 'Test alert block saves and displays properly.', function() {
+		helpers.addCoBlocksBlockToPage( true, 'alert' );
 
-    helpers.addCoBlocksBlockToPage();
+		cy.get( '.wp-block-coblocks-alert__title' )
+			.type( 'Test Title' );
 
-    cy.get( '.wp-block-coblocks-alert__title' )
-      .type( 'Test Title' );
+		cy.get( '.wp-block-coblocks-alert__text' )
+			.type( 'Test text' );
 
-    cy.get( '.wp-block-coblocks-alert__text' )
-      .type( 'Test text' );
+		helpers.savePage();
 
-    helpers.savePage();
+		helpers.checkForBlockErrors( 'alert' );
 
-    helpers.checkForBlockErrors();
+		helpers.viewPage();
 
-    helpers.viewPage();
+		cy.get( '.wp-block-coblocks-alert__title' )
+			.should( 'not.be.empty' )
+			.contains( 'Test Title' );
 
-    cy.get( '.wp-block-coblocks-alert__title' )
-      .should( 'not.be.empty' )
-      .contains( 'Test Title' );
+		cy.get( '.wp-block-coblocks-alert__text' )
+			.should( 'not.be.empty' )
+			.contains( 'Test text' );
 
-    cy.get( '.wp-block-coblocks-alert__text' )
-      .should( 'not.be.empty' )
-      .contains( 'Test text' );
+		helpers.editPage();
+	} );
 
-    helpers.editPage();
-
-  } );
-
-  /**
+	/**
    * Test that the alert style classes are applied in the editor
    */
-  it( 'Test alert style classes are applied in the editor.', function() {
+	it( 'Test alert style classes are applied in the editor.', function() {
+		helpers.addCoBlocksBlockToPage( true, 'alert' );
 
-    helpers.addCoBlocksBlockToPage();
+		cy.get( '.wp-block[data-type="coblocks/alert"]' )
+			.click( 'right' );
 
-    cy.get( '.wp-block[data-type="coblocks/alert"]' )
-      .click( 'right' );
+		helpers.openSettingsPanel( 'Styles' );
 
-    helpers.openSettingsPanel( 'Styles' );
+		cy.get( '.block-editor-block-styles__item-label' )
+			.contains( 'Info' )
+			.click();
 
-    cy.get( '.block-editor-block-styles__item-label' )
-      .contains( 'Info' )
-      .click();
+		cy.get( '.wp-block-coblocks-alert' )
+			.should( 'have.class', 'is-style-info' );
 
-    cy.get( '.wp-block-coblocks-alert' )
-      .should( 'have.class', 'is-style-info' );
+		cy.get( '.block-editor-block-styles__item-label' )
+			.contains( 'Success' )
+			.click();
 
-    cy.get( '.block-editor-block-styles__item-label' )
-      .contains( 'Success' )
-      .click();
+		cy.get( '.wp-block-coblocks-alert' )
+			.should( 'have.class', 'is-style-success' );
 
-    cy.get( '.wp-block-coblocks-alert' )
-      .should( 'have.class', 'is-style-success' );
+		cy.get( '.block-editor-block-styles__item-label' )
+			.contains( 'Warning' )
+			.click();
 
-    cy.get( '.block-editor-block-styles__item-label' )
-      .contains( 'Warning' )
-      .click();
+		cy.get( '.wp-block-coblocks-alert' )
+			.should( 'have.class', 'is-style-warning' );
 
-    cy.get( '.wp-block-coblocks-alert' )
-      .should( 'have.class', 'is-style-warning' );
+		cy.get( '.block-editor-block-styles__item-label' )
+			.contains( 'Error' )
+			.click();
 
-    cy.get( '.block-editor-block-styles__item-label' )
-      .contains( 'Error' )
-      .click();
-
-    cy.get( '.wp-block-coblocks-alert' )
-      .should( 'have.class', 'is-style-error' );
-
-  } );
-
+		cy.get( '.wp-block-coblocks-alert' )
+			.should( 'have.class', 'is-style-error' );
+	} );
 } );
