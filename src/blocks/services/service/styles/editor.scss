@@ -23,7 +23,6 @@
 	}
 }
 
-
 .wp-block-coblocks-service {
 
 	.components-placeholder.components-placeholder {
@@ -47,10 +46,6 @@
 		padding-top: 100%;
 	}
 
-}
-
-.wp-block-coblocks-service {
-
 	.block-editor-media-placeholder {
 		background: $dark-opacity-light-200;
 		min-height: inherit;
@@ -63,8 +58,8 @@
 		.components-placeholder__fieldset {
 			align-content: center;
 			align-items: center;
-			justify-content: center;
 			height: 100%;
+			justify-content: center;
 			left: 0;
 			max-width: 100%;
 			position: absolute;
@@ -73,6 +68,11 @@
 
 			.components-button {
 				margin-bottom: 0 !important;
+				margin-left: auto;
+			}
+
+			.components-form-file-upload {
+				margin-bottom: 6px;
 			}
 		}
 
