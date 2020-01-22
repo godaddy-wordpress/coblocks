@@ -1,0 +1,15 @@
+.has-small-padding {
+	padding: map-get($spacing, 1);
+}
+
+.has-medium-padding {
+	padding: map-get($spacing, 2);
+}
+
+.has-large-padding {
+	padding: map-get($spacing, 3);
+}
+
+.has-huge-padding {
+	padding: map-get($spacing, 4);
+}

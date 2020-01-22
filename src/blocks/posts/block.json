@@ -42,7 +42,7 @@
 		},
 		"imageSize": {
 			"type": "string",
-			"default": "w-1/7 sm:w-1/5 h-1/7 sm:h-1/5"
+			"default": "medium"
 		},
 		"listPosition": {
 			"type": "string",
