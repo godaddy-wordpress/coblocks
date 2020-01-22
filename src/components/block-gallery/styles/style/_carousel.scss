@@ -64,7 +64,7 @@
 	.has-carousel-med.has-aligned-cells & {
 		width: 100%;
 
-		@media (min-width: 600px) {
+		@include break-small() {
 			width: 50%;
 		}
 
@@ -80,7 +80,7 @@
 	.has-carousel-lrg & {
 		width: 80%;
 
-		@media (min-width: 600px) {
+		@include break-small() {
 			width: 70%;
 		}
 
@@ -92,7 +92,7 @@
 	.has-carousel-lrg.has-aligned-cells & {
 		width: 100%;
 
-		@media (min-width: 600px) {
+		@include break-small() {
 			width: 50%;
 		}
 

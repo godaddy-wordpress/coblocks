@@ -117,7 +117,7 @@ export function addCoBlocksBlockToPage( clearEditor = true, blockID = '' ) {
 		.click();
 
 	// Make sure the block was added to our page
-	cy.get( isGalleryBlock ? `div[data-type="coblocks/${ blockID }"]` : `.wp-block-coblocks-${ blockID }` ).should( 'exist' );
+	cy.get( `div[data-type="coblocks/${ blockID }"]` ).should( 'exist' );
 }
 
 /**
@@ -214,7 +214,7 @@ export function getBlockSlug() {
 export function setBlockStyle( style ) {
 	openSettingsPanel( RegExp( 'styles', 'i' ) );
 
-	cy.get( '.edit-post-sidebar' )
+	cy.get( '.edit-post-sidebar' ).find( '.coblocks-editor-block-styles' )
 		.contains( RegExp( style, 'i' ) )
 		.click( { force: true } );
 }
@@ -225,15 +225,16 @@ export function setBlockStyle( style ) {
  * @param string panelName   Name of the panel to open
  * @param string settingName The setting to update. shape height|background height
  * @param string value    	 The value to set in the input
+ * @param bool 	 ignoreCase  Optional case sensitivity. Default will ignore case.
  */
-export function setInputValue( panelName, settingName, value ) {
-	openSettingsPanel( RegExp( panelName, 'i' ) );
+export function setInputValue( panelName, settingName, value, ignoreCase = true ) {
+	openSettingsPanel( ignoreCase ? RegExp( panelName, 'i' ) : panelName );
 
 	cy.get( '.edit-post-sidebar' )
-		.contains( RegExp( settingName, 'i' ) )
+		.contains( ignoreCase ? RegExp( settingName, 'i' ) : settingName ).not( '.block-editor-block-card__description' )
 		.then( $settingSection => {
 			cy.get( Cypress.$( $settingSection ).parent() )
-				.find( 'input' )
+				.find( 'input[type="number"]' )
 				.clear()
 				.click()
 				.type( value );
@@ -250,14 +251,14 @@ export function setColorSetting( settingName, hexColor ) {
 	openSettingsPanel( /color settings/i );
 	cy.get( '.components-base-control__field' )
 		.contains( RegExp( settingName, 'i' ) )
-		.then( $backgroundPanel => {
-			cy.get( Cypress.$( $backgroundPanel ).parent() )
+		.then( $subColorPanel => {
+			cy.get( Cypress.$( $subColorPanel ).parent() )
 				.contains( /custom color/i )
 				.click();
 			cy.get( '.components-color-picker__inputs-field input[type="text"]' )
 				.clear()
 				.type( hexColor );
-			cy.get( Cypress.$( $backgroundPanel ).parent() )
+			cy.get( Cypress.$( $subColorPanel ).parent() )
 				.contains( /custom color/i )
 				.click();
 		} );
@@ -296,7 +297,7 @@ export function toggleSettingCheckbox( checkboxLabelText ) {
  * @param string classes Custom classe(s) to add to the block
  * @param string blockID Optional ID to check for in the DOM.
  *               Note: If no blockID is specified, getBlockSlug() attempts to
- *               retreive the block from the spec file.
+ *               retrieve the block from the spec file.
  *               eg: accordion => div[data-type="coblocks/accordion"]
  */
 export function addCustomBlockClass( classes, blockID = '' ) {
@@ -305,7 +306,7 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 	}
 
 	cy.get( '.wp-block[data-type="coblocks/' + blockID + '"]' )
-		.dblclick( 'right' );
+		.dblclick( 'right', { force: true } );
 
 	cy.get( '.components-panel__body' )
 		.contains( 'Advanced' )
@@ -313,10 +314,19 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 
 	cy.get( 'div.edit-post-sidebar' )
 		.contains( /Additional CSS/i )
+		.scrollIntoView()
 		.should( 'be.visible' )
 		.parent( '.components-base-control__field' )
 		.find( '.components-text-control__input' )
-		.type( classes );
+		.then( $inputElem => {
+			cy.get( $inputElem ).invoke( 'val' ).then( ( val ) => {
+				if ( val.length > 0 ) {
+					cy.get( $inputElem ).type( [ val, classes ].join( ' ' ) );
+				} else {
+					cy.get( $inputElem ).type( classes );
+				}
+			} );
+		} );
 
 	cy.get( '.wp-block-coblocks-' + blockID )
 		.should( 'have.class', classes );
