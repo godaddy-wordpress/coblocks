@@ -1,0 +1,86 @@
+#!/usr/bin/env php
+<?php
+
+if ( ! isset( $argv[1], $argv[2] ) ) {
+	echo "Error: Missing required parameters.\n";
+	exit;
+}
+
+$msgids = json_decode( file_get_contents( $argv[1] ), true );
+
+if ( ! $msgids ) {
+	echo "Error: No msgid input data.\n";
+	exit;
+}
+
+$msgstrs = json_decode( file_get_contents( $argv[2] ), true );
+
+if ( ! $msgstrs ) {
+	echo "Error: No msgstr input data.\n";
+	exit;
+}
+
+function __fetch_wporg_glossary_csv( $locale ) {
+	return @file_get_contents(
+		"https://translate.wordpress.org/locale/{$locale}/default/glossary/-export/",
+		false,
+		stream_context_create( [ 'ssl' => [ 'verify_peer' => false ] ] )
+	);
+}
+
+$locale = strtolower( pathinfo( str_replace( '_', '-', $argv[2] ), PATHINFO_FILENAME ) );
+$csv    = __fetch_wporg_glossary_csv( $locale );
+if ( false === $csv ) {
+	$parts  = explode( '-', $locale );
+	$locale = $parts[0];
+	$csv    = __fetch_wporg_glossary_csv( $locale );
+}
+if ( false === $csv ) {
+	echo "Error: No glossary data.\n";
+	exit;
+}
+
+$glossary = array_map( 'str_getcsv', explode( "\n", $csv ) );
+
+array_shift( $glossary );
+
+$output = [];
+
+foreach ( $msgids as $hash => $msgid ) {
+	$output[ $hash ] = [
+		'en'    => $msgid,
+		$locale => $msgstrs[ $hash ],
+	];
+	foreach ( $glossary as $i => $rule ) {
+		if ( empty( $rule[0] ) || empty( $rule[1] ) || $msgid == $msgstrs[ $hash ] ) {
+			continue;
+		}
+		$pattern_1 = sprintf( '~\b%s\b~i', preg_quote( $rule[0] ) );
+		$word_list = array_map( 'preg_quote', array_map( 'trim', explode( '/', $rule[1] ) ) );
+		$pattern_2 = sprintf( '~\b%s\b~i', implode( '|', $word_list ) );
+		if ( preg_match( $pattern_1, strip_tags( $msgid ) ) && ! preg_match( $pattern_2, strip_tags( $msgstrs[ $hash ] ) ) ) {
+			$output[ $hash ]['glossary'][] = [
+				'en'    => $rule[0],
+				$locale => $rule[1],
+				'pos'   => $rule[2],
+				'info'  => $rule[3],
+			];
+		}
+	}
+}
+
+$output = array_filter( $output, function ( $v ) {
+	return ! empty( $v['glossary'] );
+} );
+
+$json = preg_replace_callback(
+	'/^ +/m',
+	function ( $m ) {
+		return str_repeat( ' ', strlen( $m[0] ) / 2 );
+	},
+	json_encode( $output, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT )
+);
+
+echo $json . "\n\n";
+printf( "Done. %d strings flagged.\n", count( $output ) );
+exit;

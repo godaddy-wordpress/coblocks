@@ -6,7 +6,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 1.17.3
+Stable tag: 1.19.3
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,7 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Buttons Block
 * Carousel Gallery Block
 * Click to Tweet Block
+* Collage Gallery Block
 * Dynamic Separator Block
 * Features Block
 * Food & Drinks Block
@@ -47,6 +48,9 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Map Block
 * Masonry Gallery Block
 * Media Card Block
+* Offset Gallery Block
+* Post Carousel Block
+* Posts Block
 * Pricing Table Block
 * Resizable Row/Columns Blocks
 * Services Block
@@ -115,22 +119,5 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-### Enhancements
-* [Update Gallery blocks](https://github.com/godaddy-wordpress/coblocks/pull/1142) to use core UX patterns
-* [Hide avatar placeholder](https://github.com/godaddy-wordpress/coblocks/pull/1074) on Author block when not in use
-* Add [top and bottom wave style](https://github.com/godaddy-wordpress/coblocks/pull/1123) to core Cover block
-* Add [lightbox support to the Collage block](https://github.com/godaddy-wordpress/coblocks/pull/1141)
-
 ### Bug Fixes
-* Explicitly set block classnames instead of using the generated className prop ([#1152](https://github.com/godaddy-wordpress/coblocks/pull/1152) and [#1150](https://github.com/godaddy-wordpress/coblocks/pull/1150))
-* Allow fields to have identical [display labels](https://github.com/godaddy-wordpress/coblocks/pull/1146)
-* Ensure avatar image [styles override core styles](https://github.com/godaddy-wordpress/coblocks/pull/1137)
-* Ensure all __() functions [use a text domain](https://github.com/godaddy-wordpress/coblocks/pull/1135)
-
-### Misc
-* [Remove excess admin styles from src](https://github.com/godaddy-wordpress/coblocks/pull/1118)
-* [Update example images](https://github.com/godaddy-wordpress/coblocks/pull/1134) to use those from WordPress core
-* Update [classes used in editor styling](https://github.com/godaddy-wordpress/coblocks/pull/1138) for consistency
-* [Remove CoBlocks Block Manager](https://github.com/godaddy-wordpress/coblocks/pull/1110)
-* [Remove unused constant](https://github.com/godaddy-wordpress/coblocks/pull/1148)
-* [Ignore externals on `svn co`](https://github.com/godaddy-wordpress/coblocks/pull/1147)
+* Fix gallery blocks not rendering properly within the editor

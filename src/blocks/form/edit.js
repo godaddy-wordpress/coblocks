@@ -25,6 +25,7 @@ import { InspectorControls, InnerBlocks } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
+import { __experimentalRegisterBlockPattern } from '@wordpress/blocks';
 
 /**
  * Get settings
@@ -58,6 +59,7 @@ class FormEdit extends Component {
 		this.removeRecaptchaKey = this.removeRecaptchaKey.bind( this );
 		this.setTemplate = this.setTemplate.bind( this );
 		this.supportsExperimentalProps = this.supportsExperimentalProps.bind( this );
+		this.appendTagsToSubject = this.appendTagsToSubject.bind( this );
 
 		this.state = {
 			toError: error && error.length ? error : null,
@@ -233,6 +235,15 @@ class FormEdit extends Component {
 		} );
 	}
 
+	appendTagsToSubject( event ) {
+		const { attributes } = this.props;
+		let { subject } = attributes;
+		if ( null === subject ) {
+			subject = jQuery( event.target ).closest( 'div.components-base-control' ).find( 'input[type="text"]' ).val();
+		}
+		this.onChangeSubject( subject + event.target.innerHTML );
+	}
+
 	removeRecaptchaKey() {
 		this.setState( {
 			recaptchaSiteKey: '',
@@ -279,7 +290,22 @@ class FormEdit extends Component {
 							coblocksBlockData.form.emailSubject
 					}
 					onChange={ this.onChangeSubject }
+					help={ <Fragment> { __( 'You may use the following tags in the subject field: ', 'coblocks' ) }
+						<Button
+							isLink
+							onClick={ this.appendTagsToSubject }
+						>
+							[{ __( 'email', 'coblocks' ) }]
+						</Button>
+						<Button
+							isLink
+							onClick={ this.appendTagsToSubject }
+						>
+							[{ __( 'name', 'coblocks' ) }]
+						</Button></Fragment> }
+
 				/>
+
 			</Fragment>
 		);
 	}
@@ -304,7 +330,7 @@ class FormEdit extends Component {
 
 	supportsExperimentalProps() {
 		let isSupported = true;
-		if ( typeof InnerBlocks.prototype.shouldComponentUpdate === 'undefined' ) {
+		if ( typeof InnerBlocks.prototype.shouldComponentUpdate === 'undefined' || typeof __experimentalRegisterBlockPattern !== 'undefined' ) {
 			isSupported = false;
 		}
 		return isSupported;

@@ -6,6 +6,10 @@
 			"type": "integer",
 			"default": 2
 		},
+		"gutter": {
+			"type": "string",
+			"default": "medium"
+		},
 		"alignment": {
 			"type": "string",
 			"default": "none"

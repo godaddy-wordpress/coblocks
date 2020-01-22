@@ -99,6 +99,7 @@ class MediaContainer extends Component {
 						icon={ <BlockIcon icon={ icons.mediaContainer } /> }
 						labels={ {
 							title: __( 'Media area', 'coblocks' ),
+							instructions: __( 'Upload a media file or pick one from your media library', 'coblocks' ),
 						} }
 						className={ figureClass }
 						onSelect={ onSelectMedia }

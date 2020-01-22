@@ -1,155 +1,17 @@
-@import "style/mixins";
+@import "../common";
 
-// Background
+@import "style/columns";
+@import "style/columns-responsive";
+@import "style/columns-gutter";
 @import "style/background-classes";
 @import "style/background-overlay";
 @import "style/background-parallax";
-
-// Editor formatting
-@import "style/formatting";
-
-// Mobile classes
-@import "style/stacked";
-
-// Utility classes
-@import "style/padding";
-@import "style/margin";
-@import "style/columns";
-@import "style/height";
-@import "style/width";
-@import "style/gutter";
+@import "style/has-padding";
+@import "style/has-margin";
 @import "style/shadow";
-
-// Utility tooltips
 @import "style/tooltips";
 @import "style/datepicker";
 
-.display-block {
-	display: block;
-}
-
-.font-bold {
-	font-weight: 700;
-}
-
-.relative {
-	position: relative;
-}
-
-.has-text-align-right {
-	text-align: right;
-}
-
-.has-text-align-left {
-	text-align: left;
-}
-
-.has-text-align-center {
-	text-align: center;
-}
-
-.list-none {
-	list-style: none;
-}
-
-.flex {
-	display: flex;
-}
-
-@include break-medium() {
-	.md\:flex {
-		display: flex;
-	}
-
-	.md\:display-block {
-		display: block;
-	}
-
-	.md\:text-right {
-		text-align: right;
-	}
-}
-
-.flex-wrap {
-	flex-wrap: wrap;
-}
-
-.flex-0 {
-	flex: 0 0 auto;
-}
-
-.flex-auto {
-	flex: 1 1 auto;
-}
-
-.flex-row-reverse {
-	flex-direction: row-reverse;
-}
-
-.flex-col {
-	flex-direction: column;
-}
-
-.self-start {
-	align-self: self-start;
-}
-
-.self-center {
-	align-self: center;
-}
-
-.items-stretch {
-	align-items: stretch;
-}
-
-.justify-center {
-	justify-content: center;
-}
-
-.h-full {
-	height: 100%;
-}
-
-.w-full {
-	width: 100%;
-}
-
-.pin-t {
-	top: 0;
-}
-
-.pin-r {
-	right: 0;
-}
-
-.pin-b {
-	bottom: 0;
-}
-
-.pin-l {
-	left: 0;
-}
-
-.overflow-hidden {
-	overflow: hidden;
-}
-
-.position-absolute {
-	position: absolute;
-}
-
-.block {
-	display: block;
-}
-
-.table {
-	display: table;
-}
-
-.object-cover {
-	object-fit: cover;
-}
-
-.object-position {
-	object-position: 50% 50%;
-}
+// Legacy styling
+@import "legacy/margin";
+@import "legacy/padding";

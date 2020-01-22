@@ -6,7 +6,7 @@ import map from 'lodash/map';
 /**
  * Internal dependencies
  */
-import { layoutOptions } from './layouts';
+import { layoutOptions } from './utilities';
 import applyWithColors from './colors';
 import { BackgroundPanel } from '../../components/background';
 import DimensionsControl from '../../components/dimensions-control';
@@ -151,6 +151,15 @@ class Inspector extends Component {
 							{ layout &&
 								<Fragment>
 									<PanelBody title={ __( 'Row Settings', 'coblocks' ) }>
+										{ selectedRows >= 2 &&
+											<SelectControl
+												label={ __( 'Gutter', 'coblocks' ) }
+												value={ gutter }
+												options={ gutterOptions }
+												help={ __( 'Space between each column.', 'coblocks' ) }
+												onChange={ ( value ) => setAttributes( { gutter: value } ) }
+											/>
+										}
 										{ hasMarginControl &&
 											<DimensionsControl { ...this.props }
 												type={ 'margin' }
@@ -197,15 +206,6 @@ class Inspector extends Component {
 											syncUnitsMobile={ paddingSyncUnitsMobile }
 											dimensionSize={ paddingSize }
 										/>
-										{ selectedRows >= 2 &&
-											<SelectControl
-												label={ __( 'Gutter', 'coblocks' ) }
-												value={ gutter }
-												options={ gutterOptions }
-												help={ __( 'Space between each column.', 'coblocks' ) }
-												onChange={ ( value ) => setAttributes( { gutter: value } ) }
-											/>
-										}
 									</PanelBody>
 									<PanelColorSettings
 										title={ __( 'Color Settings', 'coblocks' ) }

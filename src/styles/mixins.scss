@@ -1,0 +1,22 @@
+// Grab all gallery blocks
+@mixin coblocksGalleryEditorBlocks {
+	.wp-block[data-type="coblocks/carousel"],
+	.wp-block[data-type="coblocks/collage"],
+	.wp-block[data-type="coblocks/masonry"],
+	.wp-block[data-type="coblocks/offset"],
+	.wp-block[data-type="coblocks/stacked"] {
+		@content;
+	}
+}
+
+@mixin utilities($map, $attribute, $prefix: "-", $separator: "-", $base: "base") {
+	@each $key, $value in $map {
+		&#{if($key != $base, #{$prefix}#{$key}, '')} {
+			@if type-of($value) == "map" {
+				@include utilities($value, $attribute, $separator);
+			} @else {
+				#{$attribute}: $value;
+			}
+		}
+	}
+}

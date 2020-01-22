@@ -1,6 +1,6 @@
 .wp-block[data-type="coblocks/author"] {
-	.editor-inner-blocks {
-		.editor-block-list__block-edit {
+	.block-editor-inner-blocks {
+		.block-editor-block-list__block-edit {
 			margin-bottom: 0;
 			margin-top: 0;
 		}
@@ -33,6 +33,7 @@
 }
 
 .wp-block-coblocks-author {
+
 	&__avatar {
 		background: $white;
 		position: relative;
@@ -74,7 +75,7 @@
 		width: 110px;
 	}
 
-	.editor-block-list__layout {
+	.block-editor-block-list__layout {
 		margin-left: 0;
 	}
 }

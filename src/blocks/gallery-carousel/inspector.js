@@ -13,8 +13,6 @@ import { Component, Fragment } from '@wordpress/element';
 import { InspectorControls, InspectorAdvancedControls } from '@wordpress/block-editor';
 import { PanelBody, RangeControl, ToggleControl, BaseControl } from '@wordpress/components';
 
-const carouselMin = 200;
-
 /**
  * Inspector controls
  */
@@ -53,6 +51,10 @@ class Inspector extends Component {
 		return checked ? __( 'Percentage based height is activated.', 'coblocks' ) : __( 'Toggle for percentage based height.', 'coblocks' );
 	}
 
+	getLightboxHelp( checked ) {
+		return checked ? __( 'Image lightbox is enabled.', 'coblocks' ) : __( 'Toggle to enable the image lightbox.', 'coblocks' );
+	}
+
 	render() {
 		const {
 			attributes,
@@ -68,6 +70,7 @@ class Inspector extends Component {
 			radius,
 			thumbnails,
 			responsiveHeight,
+			lightbox,
 		} = attributes;
 
 		const { temporaryInput } = this.state;
@@ -119,16 +122,16 @@ class Inspector extends Component {
 										const inputValue = unprocessedValue !== '' ?
 											parseInt( event.target.value, 10 ) :
 											undefined;
-										if ( ( inputValue < carouselMin ) && inputValue !== undefined ) {
+										if ( ( inputValue < 0 ) && inputValue !== undefined ) {
 											this.setTemporayInput( inputValue );
-											this.setHeightTo( carouselMin );
+											this.setHeightTo( 0 );
 											return;
 										}
 										this.setTemporayInput( null );
 										this.setHeightTo( inputValue );
 									} }
 									value={ temporaryInput || height }
-									min={ carouselMin }
+									min={ 0 }
 									step="10"
 								/>
 							</BaseControl>
@@ -138,6 +141,12 @@ class Inspector extends Component {
 								checked={ !! thumbnails }
 								onChange={ () => setAttributes( { thumbnails: ! thumbnails } ) }
 								help={ this.getThumbnailNavigationHelp }
+							/>
+							<ToggleControl
+								label={ __( 'Lightbox', 'coblocks' ) }
+								checked={ !! lightbox }
+								onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
+								help={ this.getLightboxHelp }
 							/>
 						</PanelBody>
 						<SliderPanel { ...this.props } />

@@ -3,6 +3,7 @@
  */
 import captionOptions from '../../components/block-gallery/options/caption-options';
 import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
+import OptionSelectorControl from '../../components/option-selector-control';
 
 /**
  * WordPress dependencies
@@ -10,7 +11,7 @@ import GalleryLinkSettings from '../../components/block-gallery/gallery-link-set
 import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, ToggleControl, SelectControl, ButtonGroup, Button, BaseControl } from '@wordpress/components';
+import { PanelBody, ToggleControl, SelectControl } from '@wordpress/components';
 
 /**
  * Inspector controls
@@ -56,109 +57,73 @@ class Inspector extends Component {
 
 		const gutterOptions = [
 			{
-				value: 0,
+				value: 'no',
 				label: __( 'None', 'coblocks' ),
 				shortName: __( 'None', 'coblocks' ),
 			},
 			{
-				value: 1,
-				label: __( 'Small', 'coblocks' ),
+				value: 'small',
 				/* translators: abbreviation for small size */
-				shortName: __( 'S', 'coblocks' ),
+				label: __( 'S', 'coblocks' ),
+				tooltip: __( 'Small', 'coblocks' ),
 			},
 			{
-				value: 2,
-				label: __( 'Medium', 'coblocks' ),
+				value: 'medium',
 				/* translators: abbreviation for medium size */
-				shortName: __( 'M', 'coblocks' ),
+				label: __( 'M', 'coblocks' ),
+				tooltip: __( 'Medium', 'coblocks' ),
 			},
 			{
-				value: 3,
-				label: __( 'Large', 'coblocks' ),
+				value: 'large',
 				/* translators: abbreviation for large size */
-				shortName: __( 'L', 'coblocks' ),
+				label: __( 'L', 'coblocks' ),
+				tooltip: __( 'Large', 'coblocks' ),
 			},
 			{
-				value: 4,
-				label: __( 'Extra Large', 'coblocks' ),
-				/* translators: abbreviation for extra large size */
-				shortName: __( 'XL', 'coblocks' ),
+				value: 'huge',
+				/* translators: abbreviation for largest size */
+				label: __( 'XL', 'coblocks' ),
+				tooltip: __( 'Huge', 'coblocks' ),
 			},
 		];
 
 		const shadowOptions = [
 			{
-				value: 'none',
-				label: __( 'None', 'coblocks' ),
-				shortName: __( 'None', 'coblocks' ),
-			},
-			{
 				value: 'sm',
-				label: __( 'Small', 'coblocks' ),
 				/* translators: abbreviation for small size */
-				shortName: __( 'S', 'coblocks' ),
+				label: __( 'S', 'coblocks' ),
+				tooltip: __( 'Small', 'coblocks' ),
 			},
 			{
 				value: 'md',
-				label: __( 'Medium', 'coblocks' ),
 				/* translators: abbreviation for medium size */
-				shortName: __( 'M', 'coblocks' ),
+				label: __( 'M', 'coblocks' ),
+				tooltip: __( 'Medium', 'coblocks' ),
 			},
 			{
 				value: 'lg',
-				label: __( 'Large', 'coblocks' ),
 				/* translators: abbreviation for large size */
-				shortName: __( 'L', 'coblocks' ),
+				label: __( 'L', 'coblocks' ),
+				tooltip: __( 'Large', 'coblocks' ),
 			},
 		];
 
 		return (
 			<InspectorControls>
 				<PanelBody title={ __( 'Collage Settings', 'coblocks' ) }>
-					{ enableGutter &&
-						<BaseControl label={ __( 'Gutter', 'coblocks' ) }>
-							<PanelRow>
-								<ButtonGroup aria-label={ __( 'Gutter', 'coblocks' ) }>
-									{ gutterOptions.map( ( option ) => {
-										const isCurrent = gutter === option.value;
-										return (
-											<Button
-												key={ `option-${ option.value }` }
-												isLarge
-												isPrimary={ isCurrent }
-												aria-pressed={ isCurrent }
-												onClick={ () => setAttributes( { gutter: option.value } ) }
-											>
-												{ option.shortName }
-											</Button>
-										);
-									} ) }
-								</ButtonGroup>
-							</PanelRow>
-						</BaseControl>
-					}
-					{ ! enableGutter &&
-						<BaseControl label={ __( 'Shadow', 'coblocks' ) }>
-							<PanelRow>
-								<ButtonGroup aria-label={ __( 'Shadow', 'coblocks' ) }>
-									{ shadowOptions.map( ( option ) => {
-										const isCurrent = shadow === option.value;
-										return (
-											<Button
-												key={ `option-${ option.value }` }
-												isLarge
-												isPrimary={ isCurrent }
-												aria-pressed={ isCurrent }
-												onClick={ () => setAttributes( { shadow: option.value } ) }
-											>
-												{ option.shortName }
-											</Button>
-										);
-									} ) }
-								</ButtonGroup>
-							</PanelRow>
-						</BaseControl>
-					}
+					{ enableGutter && <OptionSelectorControl
+						label={ __( 'Gutter', 'coblocks' ) }
+						currentOption={ gutter }
+						options={ gutterOptions }
+						onChange={ gutter => setAttributes( { gutter } ) }
+					/> }
+					{ ! enableGutter && <OptionSelectorControl
+						label={ __( 'Shadow', 'coblocks' ) }
+						options={ shadowOptions }
+						currentOption={ shadow }
+						showNoneOption
+						onChange={ shadow => setAttributes( { shadow } ) }
+					/> }
 					{ enableCaptions && <ToggleControl
 						label={ __( 'Captions', 'coblocks' ) }
 						checked={ !! captions }

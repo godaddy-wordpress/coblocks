@@ -6,17 +6,19 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-import { createBlock } from '@wordpress/blocks';
+import { createBlock, getBlockAttributes } from '@wordpress/blocks';
 
 const transforms = {
 	from: [
 		{
 			type: 'raw',
-			selector: 'div.wp-block-coblocks-pricing-table',
-			schema: {
-				div: {
-					classes: [ 'wp-block-coblocks-pricing-table' ],
-				},
+			selector: '.wp-block-coblocks-pricing-table',
+			transform( node ) {
+				const blockAttributes = getBlockAttributes( metadata.name, node.outerHTML );
+				return createBlock( metadata.name, {
+					...blockAttributes,
+					count: blockAttributes.className ? parseInt( blockAttributes.className.match( /(\d+)/ )[ 0 ] ) : 2,
+				} );
 			},
 		},
 		{

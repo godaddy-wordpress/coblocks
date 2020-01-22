@@ -7,6 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import { hasEmptyAttributes } from '../../utils/block-helpers';
+import fromEntries from '../../js/coblocks-fromEntries';
 
 /**
  * WordPress dependencies
@@ -18,6 +19,10 @@ const isEmpty = attributes => {
 	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
 		attributesToCheck.includes( key )
 	);
+
+	if ( typeof Object.fromEntries === 'undefined' ) {
+		return hasEmptyAttributes( fromEntries( newAttributes ) );
+	}
 
 	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
 };

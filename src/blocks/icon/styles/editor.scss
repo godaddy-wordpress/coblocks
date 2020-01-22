@@ -1,5 +1,5 @@
 // Hide the border when the fixed toolbar is in use.
-.has-fixed-toolbar .wp-block[data-type="coblocks/icon"] .editor-block-list__block-edit::before {
+.has-fixed-toolbar .wp-block[data-type="coblocks/icon"] .block-editor-block-list__block-edit::before {
 	display: none;
 }
 
@@ -28,7 +28,7 @@
 	width: calc(100% + 6px);
 
 	// Hides the vertical scroll-bar.
-	> .coblocks-icon-types-list.editor-block-types-list {
+	> .coblocks-icon-types-list.block-editor-block-types-list {
 		box-sizing: content-box; /* So the width will be 100% + 17px */
 		height: 100%;
 		margin-bottom: 0.3em;
@@ -49,7 +49,7 @@
 	margin-bottom: 0.7em !important;
 }
 
-.coblocks-icon-types-list.editor-block-types-list {
+.coblocks-icon-types-list.block-editor-block-types-list {
 	display: flex;
 	flex-wrap: wrap;
 	list-style: none;
@@ -59,7 +59,7 @@
 	overflow-y: scroll;
 	padding: 4px 0 0 0;
 
-	.editor-block-types-list__list-item {
+	.block-editor-block-types-list__list-item {
 		display: block;
 		margin: 0 0 8px;
 		padding: 0 4px;
@@ -110,7 +110,7 @@
 			}
 		}
 
-		.editor-block-types-list__item-icon {
+		.block-editor-block-types-list__item-icon {
 			line-height: 0;
 			padding: 0;
 		}
@@ -159,7 +159,7 @@
 
 // Editor style preview.
 .editor-block-preview,
-.editor-block-styles__item-preview {
+.block-editor-block-styles__item-preview {
 	.wp-block-coblocks-icon__inner {
 		align-items: center;
 		background: transparent !important;
@@ -230,7 +230,7 @@
 	align-items: center;
 	display: flex;
 	justify-content: center;
-	
+
 	svg {
 		transform: scale(4);
 	}

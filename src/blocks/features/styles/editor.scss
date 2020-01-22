@@ -1,23 +1,18 @@
 .wp-block[data-type="coblocks/features"] {
-	background: transparent !important;
-
-	.block-list-appender {
-		display: none !important;
-	}
 
 	.wp-block-coblocks-features {
 		width: 100%;
 
 		&__inner {
-			> .editor-inner-blocks {
+			> .block-editor-inner-blocks {
 				width: 100%;
 
-				> .editor-block-list__layout {
-					@media (min-width: 600px) {
+				> .block-editor-block-list__layout {
+					@include break-small() {
 						display: flex;
 					}
 
-					> .wp-block > .editor-block-list__block-edit {
+					> .wp-block > .block-editor-block-list__block-edit {
 						margin-bottom: 0;
 						margin-top: 0;
 					}
@@ -26,123 +21,10 @@
 
 			// Fixes single feature full width issue.
 			&.has-1-columns {
-				.editor-inner-blocks {
+				.block-editor-inner-blocks {
 					width: 100%;
 				}
 			}
-
-			&.has-small-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/feature"] {
-				@media (max-width: #{ ($break-small) }) {
-					&:not(:last-child) {
-						margin-bottom: $gutter--small * 2;
-					}
-				}
-
-				@include break-small() {
-					&:nth-child(odd) {
-						margin-right: $gutter--small - 16px;
-					}
-
-					&:nth-child(even) {
-						margin-left: $gutter--small - 16px;
-					}
-
-					&:not(:first-child) {
-						margin-left: $gutter--small - 16px;
-					}
-
-					&:not(:last-child) {
-						margin-right: $gutter--small - 16px;
-					}
-				}
-			}
-
-			&.has-medium-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/feature"] {
-				@media (max-width: #{ ($break-small) }) {
-					&:not(:last-child) {
-						margin-bottom: $gutter--medium * 2;
-					}
-				}
-
-				@include break-small() {
-					&:nth-child(odd) {
-						margin-right: $gutter--medium - 16px;
-					}
-
-					&:nth-child(even) {
-						margin-left: $gutter--medium - 16px;
-					}
-
-					&:not(:first-child) {
-						margin-left: $gutter--medium - 16px;
-					}
-
-					&:not(:last-child) {
-						margin-right: $gutter--medium - 16px;
-					}
-				}
-			}
-
-			&.has-large-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/feature"] {
-				@media (max-width: #{ ($break-small) }) {
-					&:not(:last-child) {
-						margin-bottom: $gutter--large * 2;
-					}
-				}
-
-				@include break-small() {
-					&:nth-child(odd) {
-						margin-right: $gutter--large - 16px;
-					}
-
-					&:nth-child(even) {
-						margin-left: $gutter--large - 16px;
-					}
-
-					&:not(:first-child) {
-						margin-left: $gutter--large - 16px;
-					}
-
-					&:not(:last-child) {
-						margin-right: $gutter--large - 16px;
-					}
-				}
-			}
-
-			&.has-huge-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/feature"] {
-				@media (max-width: #{ ($break-small) }) {
-					&:not(:last-child) {
-						margin-bottom: $gutter--huge * 2;
-					}
-				}
-
-				@include break-small() {
-					&:nth-child(odd) {
-						margin-right: $gutter--huge - 16px;
-					}
-
-					&:nth-child(even) {
-						margin-left: $gutter--huge - 16px;
-					}
-
-					&:not(:first-child) {
-						margin-left: $gutter--huge - 16px;
-					}
-
-					&:not(:last-child) {
-						margin-right: $gutter--huge - 16px;
-					}
-				}
-			}
-		}
-	}
-
-	.wp-block[data-type="core/heading"],
-	.wp-block[data-type="coblocks/icon"],
-	.wp-block[data-type="core/paragraph"] {
-		.editor-block-list__insertion-point {
-			display: none;
-			position: relative;
 		}
 	}
 
@@ -153,11 +35,10 @@
 		}
 	}
 
-	//one column improvements
 	&[data-columns="1"] {
 		.wp-block-coblocks-features {
 			&__inner {
-				> .editor-inner-blocks {
+				> .block-editor-inner-blocks {
 					width: 100%;
 				}
 			}
@@ -165,7 +46,7 @@
 	}
 
 	.wp-block[data-type="coblocks/feature"] {
-		@media (min-width: 600px) {
+		@include break-small() {
 			display: flex;
 			flex-direction: column;
 			min-width: 0;
@@ -174,44 +55,32 @@
 			word-break: break-word;
 		}
 
-		.editor-default-block-appender {
+		.block-editor-default-block-appender {
 			display: none;
 		}
 
-		.wp-block-image figcaption {
-			display: none;
-		}
-
-		.wp-block-coblocks-icon {
-			margin-bottom: 30px;
-
-			.components-resizable-box__handle-left {
-				display: none;
-			}
-		}
-
-		// Remove editor margins that do not exist on the frontend.
+		// Remove editor margins that do not exist on the frontend
 		.wp-block-coblocks-feature__inner {
-			> .editor-inner-blocks {
-				> .editor-block-list__layout {
+			> .block-editor-inner-blocks {
+				> .block-editor-block-list__layout {
 					> .wp-block {
 						&:first-child {
-							> .editor-block-list__block-edit {
+							> .block-editor-block-list__block-edit {
 								margin-bottom: 0;
 								margin-top: 0;
 							}
-							> .editor-block-list__insertion-point {
+							> .block-editor-block-list__insertion-point {
 								display: none;
 							}
 						}
 
-						> .editor-block-list__block-edit {
+						> .block-editor-block-list__block-edit {
 							margin-bottom: 0;
 							margin-top: 0;
 						}
 					}
 					> div {
-						> .editor-default-block-appender {
+						> .block-editor-default-block-appender {
 							display: none !important;
 						}
 					}
@@ -221,9 +90,21 @@
 	}
 }
 
-.components-coblocks-block-sidebar--features {
-	.components-range-control {
-		margin-bottom: 0 !important;
+// Remove excess spacing due to InnerBlocks blocks
+.wp-block[data-type="coblocks/feature"] {
+
+	> .block-editor-block-list__block-edit {
+		margin-bottom: 0;
+		margin-top: 0;
+
+		> [data-block] {
+			margin-bottom: 0;
+			margin-top: 0;
+		}
+	}
+
+	.wp-block:nth-last-child(2) [data-block] {
+		margin-bottom: 0;
 	}
 }
 
