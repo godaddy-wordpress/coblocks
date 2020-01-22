@@ -4,7 +4,7 @@
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks gist Block', function() {
-	//setup gist block data.
+	// setup gist block data.
 	const gistUrl = 'https://gist.github.com/AnthonyLedesma/33ad1a8cd86da3b6bddbdefa432cb51d';
 
 	/**
@@ -34,7 +34,9 @@ describe( 'Test CoBlocks gist Block', function() {
 	it( 'Test gist block saves with url.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'gist' );
 
-		cy.get( '.wp-block-coblocks-gist' ).find( 'textarea[placeholder="Add GitHub Gist URL…"]' ).clear().invoke( 'val', gistUrl ).type( '#' );
+		cy.get( '.wp-block-coblocks-gist textarea' ).invoke( 'val', gistUrl ).type( '{enter}' );
+
+		cy.get( '.wp-block-coblocks-gist .gist' ).should( 'exist' );
 
 		cy.get( '.wp-block-coblocks-gist' ).find( '.gist-file' ).should( 'exist' );
 
@@ -54,6 +56,10 @@ describe( 'Test CoBlocks gist Block', function() {
 	*/
 	it( 'Test gist block saves with custom classes.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'gist' );
+
+		cy.get( '.wp-block-coblocks-gist textarea' ).invoke( 'val', gistUrl ).type( '{enter}' );
+
+		cy.get( '.wp-block-coblocks-gist .gist' ).should( 'exist' );
 
 		cy.get( '.wp-block-coblocks-gist' ).click( { force: true } );
 
