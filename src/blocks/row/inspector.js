@@ -2,6 +2,7 @@
  * External dependencies
  */
 import map from 'lodash/map';
+import classnames from 'classnames';
 
 /**
  * Internal dependencies
@@ -18,7 +19,7 @@ import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
-import { PanelBody, SelectControl, ButtonGroup, Button, Tooltip, withFallbackStyles } from '@wordpress/components';
+import { PanelBody, SelectControl, withFallbackStyles } from '@wordpress/components';
 
 /**
  * Fallback styles
@@ -117,34 +118,39 @@ class Inspector extends Component {
 						<Fragment>
 							{ selectedRows > 1 &&
 								<PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
-									<div className="components-coblocks-visual-dropdown">
-										<ButtonGroup aria-label={ __( 'Select Row Layout', 'coblocks' ) }>
-											{ map( layoutOptions[ selectedRows ], ( { name, key, icon } ) => (
-												<Tooltip text={ name }>
-													<div className={ ( key === layout ) ? 'components-coblocks-visual-dropdown__button-wrapper is-selected' : 'components-coblocks-visual-dropdown__button-wrapper' }>
-														<Button
-															className={ ( key === layout ) ? 'components-coblocks-visual-dropdown__button components-coblocks-visual-dropdown__button--selected' : 'components-coblocks-visual-dropdown__button' }
-															isSmall
-															onClick={ () => {
-																const selectedWidth = key.toString().split( '-' );
-																const children = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId );
-																setAttributes( {
-																	layout: key,
-																} );
+									<div className={ classnames(
+										'block-editor-block-styles',
+										'coblocks-editor-block-styles',
+									) } >
+										{ map( layoutOptions[ selectedRows ], ( { name, key, icon } ) => (
+											<div
+												key={ `style-${ name }` }
+												className={ classnames(
+													'block-editor-block-styles__item',
+													{ 'is-active': layout === key },
+												) }
+												onClick={ () => {
+													const selectedWidth = key.toString().split( '-' );
+													const children = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId );
+													setAttributes( {
+														layout: key,
+													} );
 
-																if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
-																	map( children[ 0 ].innerBlocks, ( { clientId }, index ) => (
-																		wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { width: selectedWidth[ index ] } )
-																	) );
-																}
-															} }
-														>
-															{ icon }
-														</Button>
-													</div>
-												</Tooltip>
-											) ) }
-										</ButtonGroup>
+													if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
+														map( children[ 0 ].innerBlocks, ( { clientId }, index ) => (
+															wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { width: selectedWidth[ index ] } )
+														) );
+													}
+												} }
+												role="button"
+												tabIndex="0"
+												aria-label={ name }
+											>
+												<div className="block-editor-block-styles__item-preview">
+													{ icon }
+												</div>
+											</div>
+										) ) }
 									</div>
 								</PanelBody>
 							}
