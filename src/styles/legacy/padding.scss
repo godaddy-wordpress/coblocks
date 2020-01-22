@@ -1,0 +1,61 @@
+.p {
+	@include utilities($spacing, "padding", "-");
+}
+
+.pt {
+	@include utilities($spacing, "padding-top", "-");
+}
+
+.pr {
+	@include utilities($spacing, "padding-right", "-");
+}
+
+.pb {
+	@include utilities($spacing, "padding-bottom", "-");
+}
+
+.pl {
+	@include utilities($spacing, "padding-left", "-");
+}
+
+.pt-full {
+	padding-top: 100%;
+}
+
+// 600px +
+@include break-small() {
+	.sm\:pt {
+		@include utilities($spacing, "padding-top", "-");
+	}
+
+	.sm\:pr {
+		@include utilities($spacing, "padding-right", "-");
+	}
+
+	.sm\:pb {
+		@include utilities($spacing, "padding-bottom", "-");
+	}
+
+	.sm\:pl {
+		@include utilities($spacing, "padding-left", "-");
+	}
+}
+
+// 1280px+
+@include break-wide() {
+	.lg\:pt {
+		@include utilities($spacing, "padding-top", "-");
+	}
+
+	.lg\:pr {
+		@include utilities($spacing, "padding-right", "-");
+	}
+
+	.lg\:pb {
+		@include utilities($spacing, "padding-bottom", "-");
+	}
+
+	.lg\:pl {
+		@include utilities($spacing, "padding-left", "-");
+	}
+}

@@ -1,6 +1,6 @@
 .wp-block-coblocks-media-card {
 	&__wrapper {
-		@media (max-width: #{ ($break-small-mediacard) }) {
+		@include break-small-max() {
 			display: block !important;
 		}
 	}
@@ -112,7 +112,7 @@
 		.editor-media-container__resizer .components-resizable-box__handle {
 			display: block;
 		}
-		@media (max-width: $break-small-mediacard) {
+		@include break-small-max() {
 			&.is-stacked-on-mobile {
 				.editor-media-container__resizer .components-resizable-box__handle {
 					display: none;
@@ -121,14 +121,15 @@
 		}
 	}
 
-	@include break-small-mediacard {
+	@include break-small-max() {
 		&.is-selected.is-style-right {
 			.editor-media-container__resizer .components-resizable-box__handle {
 				display: block;
 			}
 		}
 	}
-	@media (max-width: $break-small-mediacard) {
+
+	@include break-small-max() {
 		&.is-stacked-on-mobile {
 			.wp-block-coblocks-media-card__wrapper {
 				.wp-block-coblocks-media-card__content {

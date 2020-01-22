@@ -12,7 +12,7 @@ import classnames from 'classnames';
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { PanelBody, ToggleControl, RangeControl } from '@wordpress/components';
+import { PanelBody, ToggleControl, RangeControl, SelectControl } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 import { ENTER, SPACE } from '@wordpress/keycodes';
 
@@ -26,6 +26,13 @@ const Inspector = props => {
 		onToggleCtas,
 		onUpdateStyle,
 	} = props;
+
+	const gutterOptions = [
+		{ value: 'small', label: __( 'Small', 'coblocks' ) },
+		{ value: 'medium', label: __( 'Medium', 'coblocks' ) },
+		{ value: 'large', label: __( 'Large', 'coblocks' ) },
+		{ value: 'huge', label: __( 'Huge', 'coblocks' ) },
+	];
 
 	return (
 		<InspectorControls>
@@ -72,6 +79,15 @@ const Inspector = props => {
 					max={ 4 }
 					onChange={ columns => setAttributes( { columns } ) }
 				/>
+				{ attributes.columns >= 2 &&
+					<SelectControl
+						label={ __( 'Gutter', 'coblocks' ) }
+						value={ attributes.gutter }
+						options={ gutterOptions }
+						help={ __( 'Space between each column.', 'coblocks' ) }
+						onChange={ ( value ) => setAttributes( { gutter: value } ) }
+					/>
+				}
 				<p>{ __( 'Heading Level', 'coblocks' ) }</p>
 				<HeadingToolbar
 					minLevel={ 1 }
