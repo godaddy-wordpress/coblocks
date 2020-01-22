@@ -13,12 +13,7 @@
 	}
 }
 
-.components-coblocks-size-control--shadow {
-	margin-bottom: 2.85em;
-}
-
-.wp-block[data-type*="coblocks/gallery"] {
-	.is-appender {
-		outline-offset: -1px;
-	}
+// Fix overflowing appender outline
+[data-type*="coblocks/gallery"] .is-appender {
+	outline-offset: -1px;
 }

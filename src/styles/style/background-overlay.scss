@@ -1,6 +1,11 @@
 .has-background-overlay {
 	position: relative;
 
+	// Set a default overlay background color.
+	&:not(.has-background) {
+		background-color: $black;
+	}
+
 	&::before {
 		background-color: inherit;
 		bottom: 0;
@@ -17,8 +22,4 @@
 	.has-background-overlay-#{ $i * 10 }::before {
 		opacity: $i * 0.1;
 	}
-}
-
-.has-background-overlay:not(.has-background) {
-	background-color: #000;
 }

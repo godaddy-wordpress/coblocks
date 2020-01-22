@@ -1,11 +1,8 @@
-.coblocks-gallery {
-	&.has-gutter {
-		overflow: hidden;
-	}
+.coblocks-gallery.has-gutter {
+	overflow: hidden;
 }
 
-// For desktop.
-@media (min-width: 700px) {
+@include break-small() {
 	// Add negative margin to the parent ul to offset the gutter.
 	@for $i from 1 through 10 {
 		.has-gutter-#{ $i * 5 } {
@@ -24,8 +21,7 @@
 	}
 }
 
-// For desktop.
-@media (max-width: 699px) {
+@include break-small-max() {
 	// Add gutter margin to the figure elements.
 	@for $i from 1 through 10 {
 		.has-gutter-mobile-#{ $i * 5 } {

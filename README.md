@@ -57,14 +57,6 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 
 ### Advanced Controls
 
-Disable CoBlocks utility styes with an optional filter.
-```php
-/**
- * Disable block utility styles.
- */
-add_filter( 'coblocks_utility_styles_enabled', '__return_false' );
-```
-
 Disable sending of email upon Form block submission.
 ```php
 /**
