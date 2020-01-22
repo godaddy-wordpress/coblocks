@@ -7,12 +7,13 @@ import './styles/style.scss';
 /**
  * Internal dependencies
  */
-import DimensionsAttributes from '../../components/dimensions-control/attributes';
+import deprecated from './deprecated';
 import edit from './edit';
 import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
+import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import { BackgroundAttributes } from '../../components/background';
 
 /**
@@ -34,12 +35,10 @@ const settings = {
 	/* translators: block name */
 	title: __( 'Features', 'coblocks' ),
 	/* translators: block description */
-	description: __( 'Add up to three columns of small notes for your product or service.', 'coblocks' ),
+	description: __( 'Add up to four columns of small notes for your product or service.', 'coblocks' ),
 	icon,
 	keywords: [
 		'coblocks',
-		/* translators: block keyword */
-		__( 'services', 'coblocks' ),
 	],
 	supports: {
 		align: [ 'wide', 'full' ],
@@ -64,6 +63,7 @@ const settings = {
 		return { 'data-id': id, 'data-columns': columns };
 	},
 	save,
+	deprecated,
 };
 
 export { name, category, metadata, settings };

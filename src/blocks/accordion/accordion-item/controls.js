@@ -35,7 +35,7 @@ class Controls extends Component {
 		return (
 			<Fragment>
 				<BlockControls>
-					<Toolbar className="components-toolbar__block-coblocks-accordion" controls={ customControls } />
+					<Toolbar controls={ customControls } />
 				</BlockControls>
 			</Fragment>
 		);

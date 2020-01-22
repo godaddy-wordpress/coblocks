@@ -1,44 +1,13 @@
 .wp-block-coblocks-service {
-	flex: 1 100%;
-	margin: 0 0 3em;
+	margin: 0 0 map-get($spacing, 3);
 	max-width: 100%;
 
 	@include break-small() {
 		margin: 0;
 	}
 
-	&__figure {
-		display: flex;
-		margin: 0 0 1.5em;
-		padding: calc(3 / 4 * 100%) 0 0;
-		position: relative;
-		width: 100%;
-
-		.is-style-sixbynine & {
-			padding-top: calc(9 / 16 * 100%);
-		}
-
-		.is-style-circle & {
-			border-radius: 100%;
-			padding-top: 100%;
-
-			img {
-				border-radius: 100%;
-			}
-		}
-
-		.is-style-square & {
-			padding-top: 100%;
-		}
-
-		> img {
-			height: 100%;
-			object-fit: cover;
-			position: absolute;
-			top: 0;
-			vertical-align: middle;
-			width: 100%;
-		}
+	&:last-child {
+		margin-bottom: 0;
 	}
 
 	h2,
@@ -63,5 +32,39 @@
 	.wp-block-button {
 		margin-bottom: 0;
 		margin-top: 1.5em;
+	}
+}
+
+.wp-block-coblocks-service__figure {
+	display: flex;
+	margin: 0 0 1.5em;
+	padding: calc(3 / 4 * 100%) 0 0;
+	position: relative;
+	width: 100%;
+
+	.is-style-sixbynine & {
+		padding-top: calc(9 / 16 * 100%);
+	}
+
+	.is-style-circle & {
+		border-radius: 100%;
+		padding-top: 100%;
+
+		img {
+			border-radius: 100%;
+		}
+	}
+
+	.is-style-square & {
+		padding-top: 100%;
+	}
+
+	> img {
+		height: 100%;
+		object-fit: cover;
+		position: absolute;
+		top: 0;
+		vertical-align: middle;
+		width: 100%;
 	}
 }
