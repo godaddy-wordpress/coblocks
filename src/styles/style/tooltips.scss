@@ -29,17 +29,17 @@
 	border-radius: 2px;
 	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 	color: $white;
+	font-family: $default-font;
 	font-size: 12px;
 	line-height: 11px;
 	padding: 6px 8px 7px 9px;
 	white-space: nowrap;
-	font-family: $default-font;
 }
 
 [class*="hint--"]:hover::before,
 [class*="hint--"]:hover::after {
-	visibility: visible;
 	opacity: 1;
+	visibility: visible;
 }
 
 [class*="hint--"][aria-label]::after {

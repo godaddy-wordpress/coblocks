@@ -1,4 +1,9 @@
 /**
+ * Styles
+ */
+import './style.scss';
+
+/**
  * Internal dependencies
  */
 import formatIcons from './icons';

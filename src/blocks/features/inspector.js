@@ -83,6 +83,7 @@ class Inspector extends Component {
 		} = attributes;
 
 		const gutterOptions = [
+			{ value: 'no', label: __( 'None', 'coblocks' ) },
 			{ value: 'small', label: __( 'Small', 'coblocks' ) },
 			{ value: 'medium', label: __( 'Medium', 'coblocks' ) },
 			{ value: 'large', label: __( 'Large', 'coblocks' ) },
@@ -92,7 +93,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Features Settings', 'coblocks' ) } className="components-coblocks-block-sidebar--features">
+					<PanelBody title={ __( 'Features Settings', 'coblocks' ) }>
 						<RangeControl
 							label={ __( 'Columns', 'coblocks' ) }
 							value={ columns }
@@ -118,6 +119,15 @@ class Inspector extends Component {
 							min={ 1 }
 							max={ 4 }
 						/>
+						{ columns >= 2 &&
+							<SelectControl
+								label={ __( 'Gutter', 'coblocks' ) }
+								value={ gutter }
+								options={ gutterOptions }
+								help={ __( 'Space between each column.', 'coblocks' ) }
+								onChange={ ( value ) => setAttributes( { gutter: value } ) }
+							/>
+						}
 						<DimensionsControl { ...this.props }
 							type={ 'margin' }
 							label={ __( 'Margin', 'coblocks' ) }
@@ -160,15 +170,6 @@ class Inspector extends Component {
 							syncUnitsMobile={ paddingSyncUnitsMobile }
 							dimensionSize={ paddingSize }
 						/>
-						{ columns >= 2 &&
-						<SelectControl
-							label={ __( 'Gutter', 'coblocks' ) }
-							value={ gutter }
-							options={ gutterOptions }
-							help={ __( 'Space between each column.', 'coblocks' ) }
-							onChange={ ( value ) => setAttributes( { gutter: value } ) }
-						/>
-						}
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color Settings', 'coblocks' ) }

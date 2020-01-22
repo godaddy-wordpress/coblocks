@@ -35,7 +35,7 @@
 		height: 100%;
 
 		> [data-block] {
-			@media (min-width: 600px) {
+			@include break-small() {
 				display: flex;
 				height: 100%;
 				justify-content: center;
