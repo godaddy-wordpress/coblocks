@@ -27,13 +27,10 @@
 }
 
 .flickity-enabled.is-draggable .flickity-viewport {
-	cursor: move;
-	cursor: -webkit-grab;
 	cursor: grab;
 }
 
 .flickity-enabled.is-draggable .flickity-viewport.is-pointer-down {
-	cursor: -webkit-grabbing;
 	cursor: grabbing;
 }
 
@@ -101,7 +98,7 @@
 .flickity-prev-next-button.previous {
 	left: 10px;
 
-	@media (min-width: 600px) {
+	@include break-small() {
 		left: 20px;
 	}
 }
@@ -109,7 +106,7 @@
 .flickity-prev-next-button.next {
 	right: 10px;
 
-	@media (min-width: 600px) {
+	@include break-small() {
 		right: 20px;
 	}
 }
@@ -118,7 +115,7 @@
 	left: auto;
 	right: 10px;
 
-	@media (min-width: 600px) {
+	@include break-small() {
 		right: 20px;
 	}
 }
@@ -127,7 +124,7 @@
 	left: 10px;
 	right: auto;
 
-	@media (min-width: 600px) {
+	@include break-small() {
 		left: 20px;
 	}
 }

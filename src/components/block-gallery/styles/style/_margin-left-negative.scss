@@ -1,6 +1,4 @@
-// Utility class for adding margin-left to the figure elements.
-@media (min-width: 700px) {
-	// For desktop.
+@include break-small() {
 	@for $i from 1 through 10 {
 		&.has-negative-margin-left-#{ $i * 5 } {
 			margin-left: -#{round($i * 5 / 2)}px !important;
@@ -8,8 +6,7 @@
 	}
 }
 
-@media (max-width: 699px) {
-	// For desktop.
+@include break-small-max() {
 	@for $i from 1 through 10 {
 		&.has-negative-margin-left-mobile-#{ $i * 5 } {
 			margin-left: -#{round($i * 5 / 2)}px !important;
@@ -17,9 +14,7 @@
 	}
 }
 
-// Utility class for adding margin-left to the figure elements.
-@media (min-width: 700px) {
-	// For desktop.
+@include break-small() {
 	@for $i from 1 through 10 {
 		&.has-negative-margin-#{ $i * 5 } {
 			margin: -#{round($i * 5 / 2)}px !important;
@@ -27,8 +22,7 @@
 	}
 }
 
-@media (max-width: 699px) {
-	// For desktop.
+@include break-small-max() {
 	@for $i from 1 through 10 {
 		&.has-negative-margin-mobile-#{ $i * 5 } {
 			margin: -#{round($i * 5 / 2)}px !important;
