@@ -320,9 +320,9 @@ class FormEdit extends Component {
 	}
 
 	setTemplate( layout ) {
-		const { setAttributes, patterns } = this.props;
+		const { setAttributes } = this.props;
 		let submitButtonText;
-		map( patterns, ( elem ) => {
+		map( TEMPLATE_OPTIONS, ( elem ) => {
 			if ( isEqual( elem.template, layout ) ) {
 				submitButtonText = elem.submitButtonText;
 			}
@@ -345,52 +345,48 @@ class FormEdit extends Component {
 	}
 
 	blockPatternPicker( ) {
-		const { className } = this.props;
-		const classes = classnames(
-			className,
-			'coblocks-form',
-		);
 		return (
-			<div className={ classes }>
+			<Fragment>
 				<InnerBlocks templateLock="all" allowedBlocks={ ALLOWED_BLOCKS } />
 				<SubmitButton { ...this.props } />
-			</div>
+			</Fragment>
 		);
 	}
 
 	innerBlocksPatternPicker( ) {
-		const { className, hasInnerBlocks } = this.props;
-		const classes = classnames(
-			className,
-			'coblocks-form',
-		);
-		return ( <div className={ classes }>
-			<InnerBlocks
-				__experimentalTemplateOptions={ TEMPLATE_OPTIONS }
-				__experimentalOnSelectTemplateOption={ ( chosenTemplate ) => {
-					if ( chosenTemplate === undefined ) {
-						chosenTemplate = TEMPLATE_OPTIONS[ 0 ].template;
-					}
-					this.setTemplate( chosenTemplate );
-				} }
-				__experimentalAllowTemplateOptionSkip
-				template={ this.supportsInnerBlocksPicker() ? this.state.template : TEMPLATE_OPTIONS[ 0 ].template }
-				allowedBlocks={ ALLOWED_BLOCKS }
-				renderAppender={ () => null }
-				templateInsertUpdatesSelection={ false }
-			/>
-			{ hasInnerBlocks && <SubmitButton { ...this.props } /> }
-		</div>
+		const { hasInnerBlocks } = this.props;
+		return (
+			<Fragment>
+				<InnerBlocks
+					__experimentalTemplateOptions={ TEMPLATE_OPTIONS }
+					__experimentalOnSelectTemplateOption={ ( chosenTemplate ) => {
+						if ( chosenTemplate === undefined ) {
+							chosenTemplate = TEMPLATE_OPTIONS[ 0 ].template;
+						}
+						this.setTemplate( chosenTemplate );
+					} }
+					__experimentalAllowTemplateOptionSkip
+					template={ this.supportsInnerBlocksPicker() ? this.state.template : TEMPLATE_OPTIONS[ 0 ].template }
+					allowedBlocks={ ALLOWED_BLOCKS }
+					renderAppender={ () => null }
+					templateInsertUpdatesSelection={ false }
+				/>
+				{ hasInnerBlocks && <SubmitButton { ...this.props } /> }
+			</Fragment>
 		);
 	}
 
 	render() {
-		const { blockType, defaultPattern, patterns, replaceInnerBlocks, hasInnerBlocks } = this.props;
+		const { className, blockType, defaultPattern, patterns, replaceInnerBlocks, hasInnerBlocks } = this.props;
+
+		const classes = classnames(
+			className,
+			'coblocks-form',
+		);
 
 		if ( hasInnerBlocks || ! this.supportsBlockPatternPicker() ) {
 			return (
 				<Fragment>
-
 					<InspectorControls>
 						<PanelBody title={ __( 'Form Settings', 'coblocks' ) }>
 							{ this.renderToAndSubjectFields() }
@@ -450,8 +446,9 @@ class FormEdit extends Component {
 							</div>
 						</PanelBody>
 					</InspectorControls>
-					{ this.supportsBlockPatternPicker() && this.blockPatternPicker() }
-					{ ! this.supportsBlockPatternPicker() && this.innerBlocksPatternPicker() }
+					<div className={ classes }>
+						{ this.supportsBlockPatternPicker() ? this.blockPatternPicker() : this.innerBlocksPatternPicker() }
+					</div>
 				</Fragment>
 			);
 		}
@@ -468,6 +465,14 @@ class FormEdit extends Component {
 						if ( nextPattern.attributes ) {
 							this.props.setAttributes( nextPattern.attributes );
 						}
+
+						const submitButtonText = map( patterns, ( elem ) => {
+							if ( isEqual( elem.innerBlocks, nextPattern.innerBlocks ) ) {
+								return elem.submitButtonText;
+							}
+						} );
+
+						this.props.setAttributes( { submitButtonText } );
 						if ( nextPattern.innerBlocks ) {
 							replaceInnerBlocks(
 								this.props.clientId,
