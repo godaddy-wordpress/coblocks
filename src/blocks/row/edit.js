@@ -123,7 +123,7 @@ class Edit extends Component {
 						instructions={ columns ?
 							sprintf(
 								/* translators: %s: 'one' 'two' 'three' and 'four' */
-								__( 'Now select a layout for this %s column row.', 'coblocks' ),
+								__( 'Select a layout for this %s column row.', 'coblocks' ),
 								this.numberToText( columns )
 							) :
 							__( 'Select the number of columns for this row.', 'coblocks' )
@@ -136,7 +136,7 @@ class Edit extends Component {
 									<Tooltip text={ name }>
 										<div className="components-coblocks-visual-dropdown__button-wrapper">
 											<Button
-												className="components-coblocks-visual-dropdown__button block-editor-block-pattern-picker__pattern"
+												className="components-coblocks-visual-dropdown__button block-editor-inner-blocks__template-picker-option block-editor-block-pattern-picker__pattern"
 												isLarge
 												isSecondary
 												onClick={ () => {
@@ -174,7 +174,7 @@ class Edit extends Component {
 											<div className="components-coblocks-visual-dropdown__button-wrapper">
 												<Button
 													key={ key }
-													className="components-coblocks-visual-dropdown__button block-editor-block-pattern-picker__pattern"
+													className="components-coblocks-visual-dropdown__button block-editor-inner-blocks__template-picker-option block-editor-block-pattern-picker__pattern"
 													isLarge
 													isSecondary
 													onClick={ () => {
