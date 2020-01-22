@@ -1,8 +1,5 @@
 .wp-block-coblocks-features {
-	&,
-	&__inner {
-		position: relative;
-	}
+	position: relative;
 
 	.has-left-content {
 		text-align: left;
@@ -30,69 +27,55 @@
 			margin-right: 0;
 		}
 	}
+}
 
-	.wp-block-coblocks-feature {
-		display: flex;
-		flex-basis: 40%;
-		flex-direction: column;
-		flex-grow: 1;
-		justify-content: center;
-		margin: 0;
-		max-width: 100%;
-		position: relative;
-		width: 100%;
-		word-break: break-word;
+.wp-block-coblocks-features__inner {
+	position: relative;
+}
 
-		&:nth-of-type(1) {
-			margin-left: 0;
-		}
+.wp-block-coblocks-feature {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0;
+	max-width: 100%;
+	position: relative;
+	width: 100%;
+	word-break: break-word;
 
-		&:nth-of-type(3) {
-			margin-right: 0;
-		}
-
-		.wp-block-coblocks-icon {
-			margin-bottom: 30px;
-		}
-
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
-			margin-top: 0;
-			padding: 0;
-		}
-
-		p {
-			margin-top: 0;
-
-			&:not(.has-background) {
-				padding-top: 0;
-			}
-		}
+	.wp-block-coblocks-icon {
+		margin-bottom: map-get($spacing, 3);
 	}
 
-	&__inner {
-		@media (min-width: 600px) {
-			align-items: flex-start;
-			display: flex;
-		}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin-top: 0 !important;
+		padding: 0 !important;
 	}
 
-	.wp-block-coblocks-feature__inner {
-		// Add padding so the feature does not run into the viewport edge on mobile.
-		&.has-no-padding {
-			padding: 0 10px;
-		}
+	p {
+		margin-top: 0;
 
-		> * {
-			position: relative;
-		}
-
-		> *:last-child {
-			margin-bottom: 0 !important;
+		&:not(.has-background) {
+			padding-top: 0;
 		}
 	}
 }
+
+.wp-block-coblocks-feature__inner {
+
+	> * {
+		position: relative;
+	}
+
+	> *:last-child {
+		margin-bottom: 0 !important;
+	}
+}
+
+// Import legacy styles for older versions of CoBlocks
+@import "legacy";
