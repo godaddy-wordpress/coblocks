@@ -4,225 +4,220 @@
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Highlight Block', function() {
-
-  /**
+	/**
    * Setup accordion data to be used
    */
-  var highlightData = [
-    {
-      'text': 'We are closed today from 2PM to 4PM.',
-      'backgroundColor': '#ff0000',
-      'textColor': '#ffffff',
-      'backgroundColorRGB': 'rgb(255, 0, 0)',
-      'textColorRGB': 'rgb(255, 255, 255)',
-    },
-    {
-      'text': 'Due to Server Maintenance, the Server will be down for a few hours.',
-      'backgroundColor': '#cce5ff',
-      'textColor': '#004085',
-      'backgroundColorRGB': 'rgb(204, 229, 255)',
-      'textColorRGB': 'rgb(0, 64, 133)',
-    },
-  ];
+	const highlightData = [
+		{
+			text: 'We are closed today from 2PM to 4PM.',
+			backgroundColor: '#ff0000',
+			textColor: '#ffffff',
+			backgroundColorRGB: 'rgb(255, 0, 0)',
+			textColorRGB: 'rgb(255, 255, 255)',
+		},
+		{
+			text: 'Due to Server Maintenance, the Server will be down for a few hours.',
+			backgroundColor: '#cce5ff',
+			textColor: '#004085',
+			backgroundColorRGB: 'rgb(204, 229, 255)',
+			textColorRGB: 'rgb(0, 64, 133)',
+		},
+	];
+
+	/**
+	 * Test that we can add a highlight block to the content, not add any text or
+	 * alter any settings, and are able to successfuly save the block without errors.
+	 */
+	it( 'Test highlight block saves with empty values.', function() {
+		helpers.addCoBlocksBlockToPage( true, 'highlight' );
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'highlight' );
 
-  /**
-   * Test that we can add a highlight block to the content, not add any text or
-   * alter any settings, and are able to successfuly save the block without errors.
-   */
-  it( 'Test highlight block saves with empty values.', function() {
+		helpers.viewPage();
 
-    helpers.addCoBlocksBlockToPage();
+		cy.get( '.wp-block-coblocks-highlight' )
+			.should( 'have.length', 0 );
 
-    helpers.savePage();
+		helpers.editPage();
+	} );
 
-    helpers.checkForBlockErrors();
+	/**
+	 * Test that we can add a hightlight block to the page, add text to it,
+	 * save and it displays properly without errors.
+	 */
+	it( 'Test highlight block saves and displays correctly.', function() {
+		helpers.addCoBlocksBlockToPage( true, 'highlight' );
 
-    helpers.viewPage();
+		cy.get( 'p.wp-block-coblocks-highlight' )
+			.type( highlightData[ 0 ].text );
 
-    cy.get( '.wp-block-coblocks-highlight' )
-      .should( 'have.length', 0 );
+		helpers.savePage();
 
-    helpers.editPage();
+		helpers.checkForBlockErrors( 'highlight' );
 
-  } );
+		helpers.viewPage();
 
-  /**
-   * Test that we can add a hightlight block to the page, add text to it,
-   * save and it displays properly without errors.
-   */
-  it( 'Test highlight block saves and displays correctly.', function() {
+		cy.get( 'p.wp-block-coblocks-highlight' )
+			.contains( highlightData[ 0 ].text );
 
-    helpers.addCoBlocksBlockToPage();
+		helpers.editPage();
+	} );
 
-    cy.get( 'p.wp-block-coblocks-highlight' )
-      .type( highlightData[0].text );
+	/**
+	 * Test the accordion block content font settings
+	 */
+	it( 'Test highlight block font size setting.', function() {
+		helpers.addCoBlocksBlockToPage( true, 'highlight' );
 
-    helpers.savePage();
+		cy.get( 'p.wp-block-coblocks-highlight' )
+			.type( highlightData[ 0 ].text );
 
-    helpers.checkForBlockErrors();
+		cy.get( '.edit-post-sidebar' )
+			.contains( /default|regular/i )
+			.parent()
+			.then( ( $parentElm ) => {
+				if ( $parentElm[ 0 ].type === 'select-one' ) {
+					cy.get( $parentElm[ 0 ] )
+						.select( 'large' );
+				} else {
+					cy.get( $parentElm[ 0 ] )
+						.click()
+						.parent()
+						.contains( /large/i )
+						.click();
+				}
+			} );
 
-    helpers.viewPage();
+		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
+			.should( 'have.class', 'has-large-font-size' );
 
-    cy.get( 'p.wp-block-coblocks-highlight' )
-      .contains( highlightData[0].text );
+		helpers.savePage();
 
-    helpers.editPage();
+		helpers.checkForBlockErrors( 'highlight' );
 
-  } );
+		helpers.viewPage();
 
-  /**
-   * Test the accordion block content font settings
-   */
-  it( 'Test highlight block font size setting.', function() {
+		cy.get( 'p.wp-block-coblocks-highlight' )
+			.contains( highlightData[ 0 ].text );
 
-    helpers.addCoBlocksBlockToPage();
+		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
+			.should( 'have.class', 'has-large-font-size' );
 
-    cy.get( 'p.wp-block-coblocks-highlight' )
-      .type( highlightData[0].text );
+		helpers.editPage();
+	} );
 
-    cy.get( '.components-font-size-picker__select select' )
-      .select( 'large' );
+	/**
+	 * Test the highlight block color settings
+	 */
+	it( 'Test highlight block color settings.', function() {
+		helpers.addCoBlocksBlockToPage( true, 'highlight' );
 
-    cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
-      .should( 'have.class', 'has-large-font-size' );
+		cy.get( 'p.wp-block-coblocks-highlight' )
+			.type( highlightData[ 0 ].text );
 
-    helpers.savePage();
+		helpers.setColorSetting( 'background', highlightData[ 0 ].backgroundColor );
+		helpers.setColorSetting( 'text', highlightData[ 0 ].textColor );
 
-    helpers.checkForBlockErrors();
+		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
+			.should( 'have.class', 'has-background' );
 
-    helpers.viewPage();
+		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
+			.should( 'have.css', 'background-color', highlightData[ 0 ].backgroundColorRGB );
 
-    cy.get( 'p.wp-block-coblocks-highlight' )
-      .contains( highlightData[0].text );
+		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
+			.should( 'have.class', 'has-text-color' );
 
-    cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
-      .should( 'have.class', 'has-large-font-size' );
+		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
+			.should( 'have.css', 'color', highlightData[ 0 ].textColorRGB );
 
-    helpers.editPage();
+		helpers.savePage();
 
-  } );
+		helpers.checkForBlockErrors( 'highlight' );
 
-  /**
-   * Test the highlight block color settings
-   */
-  it( 'Test highlight block color settings.', function() {
+		helpers.viewPage();
 
-    helpers.addCoBlocksBlockToPage();
+		cy.get( 'p.wp-block-coblocks-highlight' )
+			.contains( highlightData[ 0 ].text );
 
-    cy.get( 'p.wp-block-coblocks-highlight' )
-      .type( highlightData[0].text );
+		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' ).invoke( 'attr', 'style' ).should( 'contain', 'background-color:' + highlightData[ 0 ].backgroundColor + ';' );
+		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' ).invoke( 'attr', 'style' ).should( 'contain', 'color:' + highlightData[ 0 ].textColor );
 
-    helpers.setColorSetting( 'background', highlightData[0].backgroundColor );
-    helpers.setColorSetting( 'text', highlightData[0].textColor );
+		helpers.editPage();
+	} );
 
-    cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
-      .should( 'have.class', 'has-background' );
+	/**
+	 * Test multiple highlight blocks with custom color settings on each
+	 */
+	it( 'Test multiple highlight blocks with custom color settings.', function() {
+		cy.wrap( highlightData ).each( ( text, index ) => {
+			const nthChild = ( index + 1 );
 
-    cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
-      .should( 'have.css', 'background-color', highlightData[0].backgroundColorRGB );
+			// Only clear the editor window on the first block
+			helpers.addCoBlocksBlockToPage( ( 0 === index ), 'highlight' );
 
-    cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
-      .should( 'have.class', 'has-text-color' );
+			cy.get( '.wp-block[data-type="coblocks/highlight"]:nth-child(' + nthChild + ') p.wp-block-coblocks-highlight' )
+				.type( highlightData[ index ].text );
 
-    cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
-      .should( 'have.css', 'color', highlightData[0].textColorRGB );
+			helpers.setColorSetting( 'background', highlightData[ index ].backgroundColor );
+			helpers.setColorSetting( 'text', highlightData[ index ].textColor );
 
-    helpers.savePage();
+			cy.get( '.wp-block[data-type="coblocks/highlight"]:nth-child(' + nthChild + ') p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
+				.should( 'have.class', 'has-background' );
 
-    helpers.checkForBlockErrors();
+			cy.get( '.wp-block[data-type="coblocks/highlight"]:nth-child(' + nthChild + ') p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
+				.should( 'have.css', 'background-color', highlightData[ index ].backgroundColorRGB );
 
-    helpers.viewPage();
+			cy.get( '.wp-block[data-type="coblocks/highlight"]:nth-child(' + nthChild + ') p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
+				.should( 'have.class', 'has-text-color' );
 
-    cy.get( 'p.wp-block-coblocks-highlight' )
-      .contains( highlightData[0].text );
+			cy.get( '.wp-block[data-type="coblocks/highlight"]:nth-child(' + nthChild + ') p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
+				.should( 'have.css', 'color', highlightData[ index ].textColorRGB );
+		} );
 
-    cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' ).invoke( 'attr', 'style' ).should( 'contain', 'background-color:' + highlightData[0].backgroundColor + ';' );
-    cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' ).invoke( 'attr', 'style' ).should( 'contain', 'color:' + highlightData[0].textColor );
+		helpers.savePage();
 
-    helpers.editPage();
+		helpers.checkForBlockErrors( 'highlight' );
 
-  } );
+		helpers.viewPage();
 
-  /**
-   * Test multiple highlight blocks with custom color settings on each
-   */
-  it( 'Test multiple highlight blocks with custom color settings.', function() {
+		cy.wrap( highlightData ).each( ( text, index ) => {
+			const nthChild = ( index + 1 );
 
-    cy.wrap( highlightData ).each( ( text, index ) => {
+			cy.get( 'p.wp-block-coblocks-highlight:nth-child(' + nthChild + ') mark.wp-block-coblocks-highlight__content' )
+				.should( 'contain', highlightData[ index ].text );
 
-      var nthChild = ( index + 1 );
+			cy.get( 'p.wp-block-coblocks-highlight:nth-child(' + nthChild + ') mark.wp-block-coblocks-highlight__content' ).invoke( 'attr', 'style' ).should( 'contain', 'background-color:' + highlightData[ index ].backgroundColor + ';' );
+			cy.get( 'p.wp-block-coblocks-highlight:nth-child(' + nthChild + ') mark.wp-block-coblocks-highlight__content' ).invoke( 'attr', 'style' ).should( 'contain', 'color:' + highlightData[ index ].textColor );
+		} );
 
-      // Only clear the editor window on the first block
-      helpers.addCoBlocksBlockToPage( ( 0 === index ) );
+		helpers.editPage();
+	} );
 
-      cy.get( '.wp-block[data-type="coblocks/highlight"]:nth-child(' + nthChild + ') p.wp-block-coblocks-highlight' )
-        .type( highlightData[ index ].text );
-
-      helpers.setColorSetting( 'background', highlightData[ index ].backgroundColor );
-      helpers.setColorSetting( 'text', highlightData[ index ].textColor );
-
-      cy.get( '.wp-block[data-type="coblocks/highlight"]:nth-child(' + nthChild + ') p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
-        .should( 'have.class', 'has-background' );
-
-      cy.get( '.wp-block[data-type="coblocks/highlight"]:nth-child(' + nthChild + ') p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
-        .should( 'have.css', 'background-color', highlightData[ index ].backgroundColorRGB );
-
-      cy.get( '.wp-block[data-type="coblocks/highlight"]:nth-child(' + nthChild + ') p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
-        .should( 'have.class', 'has-text-color' );
-
-      cy.get( '.wp-block[data-type="coblocks/highlight"]:nth-child(' + nthChild + ') p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
-        .should( 'have.css', 'color', highlightData[ index ].textColorRGB );
-
-    } );
-
-    helpers.savePage();
-
-    helpers.checkForBlockErrors();
-
-    helpers.viewPage();
-
-    cy.wrap( highlightData ).each( ( text, index ) => {
-
-      var nthChild = ( index + 1 );
-
-      cy.get( 'p.wp-block-coblocks-highlight:nth-child(' + nthChild + ') mark.wp-block-coblocks-highlight__content' )
-        .should( 'contain', highlightData[ index ].text );
-
-      cy.get( 'p.wp-block-coblocks-highlight:nth-child(' + nthChild + ') mark.wp-block-coblocks-highlight__content' ).invoke( 'attr', 'style' ).should( 'contain', 'background-color:' + highlightData[ index ].backgroundColor + ';' );
-      cy.get( 'p.wp-block-coblocks-highlight:nth-child(' + nthChild + ') mark.wp-block-coblocks-highlight__content' ).invoke( 'attr', 'style' ).should( 'contain', 'color:' + highlightData[ index ].textColor );
-
-
-    } );
-
-    helpers.editPage();
-
-  } );
-
-  /**
+	/**
    * Test the highlight block custom classes
    */
-  it( 'Test the highlight block custom classes.', function() {
+	it( 'Test the highlight block custom classes.', function() {
+		helpers.addCoBlocksBlockToPage( true, 'highlight' );
 
-    helpers.addCoBlocksBlockToPage();
+		cy.get( 'p.wp-block-coblocks-highlight' )
+			.type( highlightData[ 0 ].text );
 
-    cy.get( 'p.wp-block-coblocks-highlight' )
-      .type( highlightData[0].text );
+		helpers.addCustomBlockClass( 'my-custom-class', 'highlight' );
 
-    helpers.addCustomBlockClass( 'my-custom-class' );
+		helpers.savePage();
 
-    helpers.savePage();
+		helpers.checkForBlockErrors( 'highlight' );
 
-    helpers.checkForBlockErrors();
+		cy.get( '.wp-block-coblocks-highlight' )
+			.should( 'have.class', 'my-custom-class' );
 
-    cy.get( '.wp-block-coblocks-highlight' )
-      .should( 'have.class', 'my-custom-class' );
+		helpers.viewPage();
 
-    helpers.viewPage();
+		cy.get( '.wp-block-coblocks-highlight' )
+			.should( 'have.class', 'my-custom-class' );
 
-    cy.get( '.wp-block-coblocks-highlight' )
-      .should( 'have.class', 'my-custom-class' );
-
-    helpers.editPage();
-
-  } );
+		helpers.editPage();
+	} );
 } );
