@@ -13,9 +13,6 @@
 	}
 
 	.wp-block-coblocks-gif {
-		margin: 0;
-		padding: 50px 0;
-		width: inherit;
 
 		form,
 		.components-placeholder__fieldset {
@@ -40,10 +37,11 @@
 			justify-content: flex-start;
 			line-height: 1;
 			list-style: none;
+			margin-left: 0;
 			max-width: 430px;
+			padding-left: 0;
 
 			li {
-				border-radius: 4px;
 				display: block;
 				flex: 0 0 auto;
 				height: 86px;
