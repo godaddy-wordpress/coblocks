@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-01-23T18:15:23+00:00\n"
+"POT-Creation-Date: 2020-01-23T22:15:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -1763,7 +1763,7 @@ msgstr ""
 #: src/blocks/gallery-masonry/inspector.js:81
 #: src/blocks/gallery-offset/inspector.js:114
 #: src/blocks/icon/inspector.js:173
-#: src/components/typography-controls/index.js:204
+#: src/components/typography-controls/index.js:205
 #: src/blocks/icon/inspector.js:106
 msgid "Size"
 msgstr ""
@@ -1798,11 +1798,11 @@ msgstr ""
 #. translators: typography style
 #: src/blocks/gallery-collage/index.js:50
 #: src/components/font-family/index.js:16
-#: src/components/typography-controls/index.js:102
+#: src/components/typography-controls/index.js:103
 #: src/extensions/cover-styles/index.js:16
 #: src/extensions/image-styles/index.js:16
 #: src/extensions/list-styles/index.js:16
-#: src/components/typography-controls/index.js:84
+#: src/components/typography-controls/index.js:85
 msgid "Default"
 msgstr ""
 
@@ -3443,7 +3443,7 @@ msgstr ""
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:495
 #: src/blocks/icon/svgs.js:513
-#: src/components/typography-controls/index.js:179
+#: src/components/typography-controls/index.js:180
 msgid "Font"
 msgstr ""
 
@@ -6189,7 +6189,7 @@ msgid "Pause on Hover"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:107
+#: src/components/typography-controls/index.js:108
 #: src/formats/uppercase/index.js:40
 #: src/formats/uppercase/index.js:25
 msgid "Uppercase"
@@ -6197,54 +6197,54 @@ msgstr ""
 
 #. typography style
 #. translators: typography style
-#: src/components/typography-controls/index.js:112
+#: src/components/typography-controls/index.js:113
 msgid "Lowercase"
 msgstr ""
 
 #. typography style
 #. translators: typography style
-#: src/components/typography-controls/index.js:117
+#: src/components/typography-controls/index.js:118
 msgid "Capitalize"
 msgstr ""
 
 #. typography style
 #. translators: typography style
-#: src/components/typography-controls/index.js:122
-#: src/components/typography-controls/index.js:89
+#: src/components/typography-controls/index.js:123
+#: src/components/typography-controls/index.js:90
 msgid "Normal"
 msgstr ""
 
-#: src/components/typography-controls/index.js:186
+#: src/components/typography-controls/index.js:187
 msgid "Weight"
 msgstr ""
 
-#: src/components/typography-controls/index.js:195
+#: src/components/typography-controls/index.js:196
 msgid "Transform"
 msgstr ""
 
-#: src/components/typography-controls/index.js:215
+#: src/components/typography-controls/index.js:216
 msgid "Line Height"
 msgstr ""
 
-#: src/components/typography-controls/index.js:226
+#: src/components/typography-controls/index.js:227
 msgid "Letter Spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:238
+#: src/components/typography-controls/index.js:239
 msgid "No Top Spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:243
+#: src/components/typography-controls/index.js:244
 msgid "No Bottom Spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:61
+#: src/components/typography-controls/index.js:62
 msgid "Change typography"
 msgstr ""
 
 #. typography style
 #. translators: typography style
-#: src/components/typography-controls/index.js:94
+#: src/components/typography-controls/index.js:95
 msgid "Bold"
 msgstr ""
 
