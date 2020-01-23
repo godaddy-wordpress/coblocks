@@ -1,0 +1,47 @@
+{
+	"name": "coblocks/event-item",
+	"category": "coblocks",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-coblocks-events__title"
+		},
+		"description": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-coblocks-events__description"
+		},
+		"eventDay": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-coblocks-events__day"
+		},
+		"eventMonth": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-coblocks-events__month"
+		},
+		"eventYear": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-coblocks-events__year"
+		},
+		"eventTime": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-coblocks-events__time"
+		},
+		"eventLocation": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-coblocks-events__location"
+		},
+		"textColor": {
+			"type": "string"
+		},
+		"customTextColor": {
+			"type": "string"
+		}
+	}
+}
