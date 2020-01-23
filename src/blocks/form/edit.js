@@ -347,7 +347,7 @@ class FormEdit extends Component {
 	blockPatternPicker( ) {
 		return (
 			<Fragment>
-				<InnerBlocks templateLock="all" allowedBlocks={ ALLOWED_BLOCKS } />
+				<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
 				<SubmitButton { ...this.props } />
 			</Fragment>
 		);
