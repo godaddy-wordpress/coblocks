@@ -5,7 +5,7 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Dynamic Seperator Block', function() {
 	/**
-   * Test that we can add a dynamic separator block tot he page
+   * Test that we can add a dynamic separator block to the page
    */
 	it( 'Test dynamic separator block saves properly.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'dynamic-separator' );
