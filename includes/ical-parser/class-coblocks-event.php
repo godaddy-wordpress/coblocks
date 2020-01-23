@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Events Block iCal event.
  *
- * @since NEXT
+ * @since 1.20.0
  */
 class CoBlocks_ICal_Event {
 
