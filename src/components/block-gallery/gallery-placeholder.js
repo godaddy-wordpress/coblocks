@@ -29,6 +29,9 @@ class GalleryPlaceholder extends Component {
 	}
 
 	selectCaption( newImage, images, attachmentCaptions ) {
+		if ( ! newImage.caption ) {
+			return '';
+		}
 		const currentImage = find( images, { id: newImage.id.toString() } ) ||	find( images, { id: newImage.id } );
 
 		const currentImageCaption = currentImage ? currentImage.caption : newImage.caption;

@@ -166,6 +166,28 @@ class Inspector extends Component {
 												onChange={ ( value ) => setAttributes( { gutter: value } ) }
 											/>
 										}
+										<DimensionsControl { ...this.props }
+											type={ 'padding' }
+											label={ __( 'Padding', 'coblocks' ) }
+											help={ __( 'Space inside of the container.', 'coblocks' ) }
+											valueTop={ paddingTop }
+											valueRight={ paddingRight }
+											valueBottom={ paddingBottom }
+											valueLeft={ paddingLeft }
+											valueTopTablet={ paddingTopTablet }
+											valueRightTablet={ paddingRightTablet }
+											valueBottomTablet={ paddingBottomTablet }
+											valueLeftTablet={ paddingLeftTablet }
+											valueTopMobile={ paddingTopMobile }
+											valueRightMobile={ paddingRightMobile }
+											valueBottomMobile={ paddingBottomMobile }
+											valueLeftMobile={ paddingLeftMobile }
+											unit={ paddingUnit }
+											syncUnits={ paddingSyncUnits }
+											syncUnitsTablet={ paddingSyncUnitsTablet }
+											syncUnitsMobile={ paddingSyncUnitsMobile }
+											dimensionSize={ paddingSize }
+										/>
 										{ hasMarginControl &&
 											<DimensionsControl { ...this.props }
 												type={ 'margin' }
@@ -190,28 +212,6 @@ class Inspector extends Component {
 												dimensionSize={ marginSize }
 											/>
 										}
-										<DimensionsControl { ...this.props }
-											type={ 'padding' }
-											label={ __( 'Padding', 'coblocks' ) }
-											help={ __( 'Space inside of the container.', 'coblocks' ) }
-											valueTop={ paddingTop }
-											valueRight={ paddingRight }
-											valueBottom={ paddingBottom }
-											valueLeft={ paddingLeft }
-											valueTopTablet={ paddingTopTablet }
-											valueRightTablet={ paddingRightTablet }
-											valueBottomTablet={ paddingBottomTablet }
-											valueLeftTablet={ paddingLeftTablet }
-											valueTopMobile={ paddingTopMobile }
-											valueRightMobile={ paddingRightMobile }
-											valueBottomMobile={ paddingBottomMobile }
-											valueLeftMobile={ paddingLeftMobile }
-											unit={ paddingUnit }
-											syncUnits={ paddingSyncUnits }
-											syncUnitsTablet={ paddingSyncUnitsTablet }
-											syncUnitsMobile={ paddingSyncUnitsMobile }
-											dimensionSize={ paddingSize }
-										/>
 									</PanelBody>
 									<PanelColorSettings
 										title={ __( 'Color Settings', 'coblocks' ) }
