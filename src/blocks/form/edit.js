@@ -368,7 +368,6 @@ class FormEdit extends Component {
 					__experimentalAllowTemplateOptionSkip
 					template={ this.supportsInnerBlocksPicker() ? this.state.template : TEMPLATE_OPTIONS[ 0 ].template }
 					allowedBlocks={ ALLOWED_BLOCKS }
-					renderAppender={ () => null }
 					templateInsertUpdatesSelection={ false }
 				/>
 				{ hasInnerBlocks && <SubmitButton { ...this.props } /> }
