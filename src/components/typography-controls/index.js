@@ -52,7 +52,8 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  */
 class TypographyControls extends Component {
 	render() {
-		const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/pricing-table', 'coblocks/highlight', 'coblocks/features' ];
+		// Blocks that should be allowed to display TypographyControls
+		const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/pricing-table', 'coblocks/highlight' ];
 
 		const {
 			attributes,
