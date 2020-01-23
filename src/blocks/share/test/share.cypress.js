@@ -142,6 +142,8 @@ describe( 'Test CoBlocks Share Block', function() {
 		helpers.viewPage();
 
 		cy.get( '.wp-block-coblocks-social li:nth-child(1) .wp-block-coblocks-social__text' ).contains( 'Share on Reddit' );
+
+		helpers.editPage();
 	} );
 
 	/**
