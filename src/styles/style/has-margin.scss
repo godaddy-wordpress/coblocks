@@ -1,0 +1,19 @@
+.has-small-margin {
+	margin-bottom: map-get($spacing, 1);
+	margin-top: map-get($spacing, 1);
+}
+
+.has-medium-margin {
+	margin-bottom: map-get($spacing, 2);
+	margin-top: map-get($spacing, 2);
+}
+
+.has-large-margin {
+	margin-bottom: map-get($spacing, 3);
+	margin-top: map-get($spacing, 3);
+}
+
+.has-huge-margin {
+	margin-bottom: map-get($spacing, 4);
+	margin-top: map-get($spacing, 4);
+}

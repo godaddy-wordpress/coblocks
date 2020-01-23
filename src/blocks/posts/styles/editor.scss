@@ -18,6 +18,13 @@
 	}
 }
 
+.wp-block-coblocks-posts__image {
+
+	> div {
+		padding-top: 100%;
+	}
+}
+
 .edit-post-settings-sidebar__panel-block .components-base-control.components-coblocks-posts-thumbnail-size {
 	margin-top: -10px;
 
