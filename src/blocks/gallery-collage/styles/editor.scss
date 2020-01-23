@@ -41,13 +41,13 @@
 	}
 
 	.block-editor-media-placeholder__upload-button {
-		@media (max-width: 699px) {
+		@include break-small-max() {
 			display: none;
 		}
 	}
 
 	.editor-media-placeholder__media-library-button {
-		@media (max-width: 699px) {
+		@include break-small-max() {
 			background: transparent;
 			border: 0;
 			box-shadow: none !important;
