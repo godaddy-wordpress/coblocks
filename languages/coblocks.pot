@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-01-23T17:04:47+00:00\n"
+"POT-Creation-Date: 2020-01-23T18:15:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -81,6 +81,7 @@ msgstr ""
 #: src/blocks/author/inspector.js:50
 #: src/blocks/click-to-tweet/inspector.js:60
 #: src/blocks/dynamic-separator/inspector.js:62
+#: src/blocks/events/event-item/inspector.js:30
 #: src/blocks/features/feature/inspector.js:92
 #: src/blocks/features/inspector.js:175
 #: src/blocks/form/submit-button.js:118
@@ -232,6 +233,7 @@ msgstr ""
 #: src/blocks/alert/inspector.js:60
 #: src/blocks/author/inspector.js:61
 #: src/blocks/click-to-tweet/inspector.js:66
+#: src/blocks/events/event-item/inspector.js:23
 #: src/blocks/features/feature/inspector.js:114
 #: src/blocks/features/inspector.js:197
 #: src/blocks/hero/inspector.js:155
@@ -481,6 +483,118 @@ msgstr ""
 
 #: src/blocks/dynamic-separator/inspector.js:68
 msgid "Color"
+msgstr ""
+
+#: src/blocks/events/appender.js:22
+#: src/blocks/events/appender.js:17
+msgid "Add Event"
+msgstr ""
+
+#: src/blocks/events/edit.js:143
+msgid "Edit Calendar URL"
+msgstr ""
+
+#: src/blocks/events/edit.js:171
+msgid "Enter URL here…"
+msgstr ""
+
+#: src/blocks/events/edit.js:177
+#: src/blocks/post-carousel/edit.js:223
+#: src/blocks/posts/edit.js:335
+msgid "Use URL"
+msgstr ""
+
+#: src/blocks/events/edit.js:32
+msgid "1 Week"
+msgstr ""
+
+#: src/blocks/events/edit.js:33
+msgid "2 Weeks"
+msgstr ""
+
+#: src/blocks/events/edit.js:34
+msgid "1 Month"
+msgstr ""
+
+#: src/blocks/events/edit.js:35
+msgid "Fetch all"
+msgstr ""
+
+#: src/blocks/events/event-item/edit.js:107
+msgid "Location…"
+msgstr ""
+
+#: src/blocks/events/event-item/edit.js:53
+msgid "Day…"
+msgstr ""
+
+#: src/blocks/events/event-item/edit.js:62
+msgid "Month…"
+msgstr ""
+
+#: src/blocks/events/event-item/edit.js:70
+msgid "Year…"
+msgstr ""
+
+#: src/blocks/events/event-item/edit.js:81
+msgid "Write event title…"
+msgstr ""
+
+#: src/blocks/events/event-item/edit.js:89
+msgid "Write event description…"
+msgstr ""
+
+#: src/blocks/events/event-item/edit.js:99
+msgid "Time…"
+msgstr ""
+
+#: src/blocks/events/event-item/index.js:26
+msgid "An event within the events block."
+msgstr ""
+
+#: src/blocks/events/index.js:28
+msgid "Add a list of events or display events from a public calendar."
+msgstr ""
+
+#. block keyword
+#. translators: block keyword
+#: src/blocks/events/index.js:33
+#: src/blocks/form/fields/date/index.js:41
+msgid "calendar"
+msgstr ""
+
+#. block keyword
+#. translators: block keyword
+#: src/blocks/events/index.js:35
+msgid "date"
+msgstr ""
+
+#: src/blocks/events/inspector.js:25
+msgid "Events Settings"
+msgstr ""
+
+#: src/blocks/events/inspector.js:27
+msgid "Link a Calendar"
+msgstr ""
+
+#: src/blocks/events/inspector.js:30
+msgid "Showing public calendar."
+msgstr ""
+
+#: src/blocks/events/inspector.js:31
+msgid "Toggle to link a public calendar."
+msgstr ""
+
+#: src/blocks/events/inspector.js:38
+msgid "Events per page"
+msgstr ""
+
+#: src/blocks/events/inspector.js:47
+msgid "Period"
+msgstr ""
+
+#: src/blocks/events/inspector.js:50
+msgid "Show events from the period (100 events max)."
 msgstr ""
 
 #: src/blocks/features/edit.js:78
@@ -1153,25 +1267,22 @@ msgstr ""
 
 #. block keyword
 #. translators: block keyword
-#: src/blocks/form/fields/date/index.js:41
-msgid "calendar"
-msgstr ""
-
-#. block keyword
-#. translators: block keyword
 #: src/blocks/form/fields/date/index.js:43
+#: includes/ical-parser/class-coblocks-ical.php:548
 msgid "day"
 msgstr ""
 
 #. block keyword
 #. translators: block keyword
 #: src/blocks/form/fields/date/index.js:45
+#: includes/ical-parser/class-coblocks-ical.php:550
 msgid "month"
 msgstr ""
 
 #. block keyword
 #. translators: block keyword
 #: src/blocks/form/fields/date/index.js:47
+#: includes/ical-parser/class-coblocks-ical.php:551
 msgid "year"
 msgstr ""
 
@@ -4707,11 +4818,6 @@ msgstr ""
 msgid "https://example.com/feed…"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:223
-#: src/blocks/posts/edit.js:335
-msgid "Use URL"
-msgstr ""
-
 #. placeholder when a post has no title
 #. translators: placeholder when a post has no title
 #: src/blocks/post-carousel/edit.js:299
@@ -6004,6 +6110,7 @@ msgid "seconds"
 msgstr ""
 
 #: src/components/slider-panel/index.js:24
+#: includes/ical-parser/class-coblocks-ical.php:514
 msgid "second"
 msgstr ""
 
@@ -6219,6 +6326,16 @@ msgstr ""
 msgid "%s Galleries"
 msgstr ""
 
+#: src/blocks/events/event-item/index.js:25
+msgctxt "block name"
+msgid "Event Item"
+msgstr ""
+
+#: src/blocks/events/index.js:27
+msgctxt "block name"
+msgid "Events"
+msgstr ""
+
 #. Plugin URI of the plugin
 msgid "https://coblocks.com"
 msgstr ""
@@ -6271,6 +6388,114 @@ msgstr ""
 
 #: includes/class-coblocks-google-map-block.php:116
 msgid "Google Map API key for map rendering"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:513
+msgid "first"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:515
+msgid "third"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:516
+msgid "fourth"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:517
+msgid "fifth"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:521
+msgid "sunday of"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:522
+msgid "monday of"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:523
+msgid "tuesday of"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:524
+msgid "wednesday of"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:525
+msgid "thursday of"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:526
+msgid "friday of"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:527
+msgid "saturday of"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:528
+msgid "day of"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:529
+msgid "weekday"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:533
+msgid "January"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:534
+msgid "February"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:535
+msgid "March"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:536
+msgid "April"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:537
+msgid "May"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:538
+msgid "June"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:539
+msgid "July"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:540
+msgid "August"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:541
+msgid "September"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:542
+msgid "October"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:543
+msgid "November"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:544
+msgid "December"
+msgstr ""
+
+#: includes/ical-parser/class-coblocks-ical.php:549
+msgid "week"
+msgstr ""
+
+#: src/blocks/events/index.php:122
+msgid "An error has occurred, check for calendar privileges to make sure it is public or try again later."
 msgstr ""
 
 #: src/blocks/post-carousel/index.php:40
