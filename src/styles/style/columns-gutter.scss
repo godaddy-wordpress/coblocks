@@ -1,0 +1,59 @@
+.has-small-gutter {
+
+	&.has-2-columns > *:not(.block-editor-inner-blocks) {
+		max-width: calc(100% / 2 - #{map-get($spacing, 1)});
+	}
+
+	&.has-3-columns > *:not(.block-editor-inner-blocks) {
+		max-width: calc(100% / 3 - #{map-get($spacing, 2)});
+	}
+
+	&.has-4-columns > *:not(.block-editor-inner-blocks) {
+		max-width: calc(100% / 4 - #{map-get($spacing, 2)});
+	}
+}
+
+.has-medium-gutter {
+
+	&.has-2-columns > *:not(.block-editor-inner-blocks) {
+		max-width: calc(100% / 2 - #{map-get($spacing, 2)});
+	}
+
+	&.has-3-columns > *:not(.block-editor-inner-blocks) {
+		max-width: calc(100% / 2.975 - #{map-get($spacing, 3)});
+	}
+
+	&.has-4-columns > *:not(.block-editor-inner-blocks) {
+		max-width: calc(100% / 4 - #{map-get($spacing, 3)});
+	}
+}
+
+.has-large-gutter {
+
+	&.has-2-columns > *:not(.block-editor-inner-blocks) {
+		max-width: calc(100% / 2.01 - #{map-get($spacing, 3)});
+	}
+
+	&.has-3-columns > *:not(.block-editor-inner-blocks) {
+		max-width: calc(100% / 3.03 - #{map-get($spacing, 4)});
+	}
+
+	&.has-4-columns > *:not(.block-editor-inner-blocks) {
+		max-width: calc(100% / 4.08 - #{map-get($spacing, 4)});
+	}
+}
+
+.has-huge-gutter {
+
+	&.has-2-columns > *:not(.block-editor-inner-blocks) {
+		max-width: calc(100% / 2.02 - #{map-get($spacing, 4)});
+	}
+
+	&.has-3-columns > *:not(.block-editor-inner-blocks) {
+		max-width: calc(100% / 3.09 - #{map-get($spacing, 5)});
+	}
+
+	&.has-4-columns > *:not(.block-editor-inner-blocks) {
+		max-width: calc(100% / 4.15 - #{map-get($spacing, 5)});
+	}
+}
