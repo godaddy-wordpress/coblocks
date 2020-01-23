@@ -1,9 +1,4 @@
 /**
- * Internal dependencies
- */
-import icons from '../../utils/icons';
-
-/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
