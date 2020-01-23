@@ -2,7 +2,6 @@
  * Include our constants
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
-import { testURL } from '../../../../.dev/tests/cypress/constants';
 
 describe( 'Test CoBlocks Click to Tweet Block', function() {
 	/**
