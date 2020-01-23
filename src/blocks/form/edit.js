@@ -347,7 +347,7 @@ class FormEdit extends Component {
 	blockPatternPicker( ) {
 		return (
 			<Fragment>
-				<InnerBlocks templateLock="all" allowedBlocks={ ALLOWED_BLOCKS } />
+				<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
 				<SubmitButton { ...this.props } />
 			</Fragment>
 		);
@@ -368,7 +368,6 @@ class FormEdit extends Component {
 					__experimentalAllowTemplateOptionSkip
 					template={ this.supportsInnerBlocksPicker() ? this.state.template : TEMPLATE_OPTIONS[ 0 ].template }
 					allowedBlocks={ ALLOWED_BLOCKS }
-					renderAppender={ () => null }
 					templateInsertUpdatesSelection={ false }
 				/>
 				{ hasInnerBlocks && <SubmitButton { ...this.props } /> }
@@ -421,9 +420,10 @@ class FormEdit extends Component {
 								onChange={ value => this.setState( { recaptchaSecretKey: value } ) }
 								className="components-block-coblocks-form-recaptcha-key__custom-input"
 							/>
-							<div className="components-base-control components-block-coblocks-form-recaptcha-buttons">
+							<div className="components-base-control">
 								<Button
 									isPrimary
+									isLarge
 									onClick={ this.saveRecaptchaKey }
 									disabled={
 										this.state.recaptchaSiteKey === '' ||
@@ -436,7 +436,8 @@ class FormEdit extends Component {
 									this.state.recaptchaSecretKey !== '' && (
 									<Button
 										className="components-block-coblocks-form-recaptcha-key-remove__button"
-										isDefault
+										isLarge
+										isSecondary
 										onClick={ this.removeRecaptchaKey }
 										disabled={ this.state.recaptchaSiteKey === '' || this.state.recaptchaSecretKey === '' }
 									>

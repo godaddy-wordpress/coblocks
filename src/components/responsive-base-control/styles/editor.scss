@@ -19,19 +19,8 @@
 	}
 
 	.components-coblocks-dimensions-control__mobile-controls-item {
-		border-radius: 4px;
-		margin-top: 1px;
+		border-radius: 3px;
 		top: initial;
 		width: 30px;
-
-		&:focus {
-			box-shadow: inset 0 0 0 1px $white;
-			outline: 2px solid transparent;
-			outline-offset: -2px;
-
-			svg {
-				fill: $white;
-			}
-		}
 	}
 }
