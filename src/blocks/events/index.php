@@ -140,7 +140,7 @@ function coblocks_register_events_block() {
 	$metadata = json_decode( ob_get_clean(), true );
 
 	register_block_type(
-		$metadata['name'],
+		'coblocks/events',
 		array(
 			'attributes'      => $metadata['attributes'],
 			'render_callback' => 'coblocks_render_events_block',
