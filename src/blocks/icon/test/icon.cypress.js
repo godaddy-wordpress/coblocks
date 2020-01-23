@@ -7,46 +7,46 @@ describe( 'Test CoBlocks Icon Block', function() {
 	/**
    * Test the coblocks icon block.
    */
-	// it( 'Test the icon block saves.', function() {
-	// 	helpers.addCoBlocksBlockToPage( true, 'icon' );
-	//
-	// 	helpers.savePage();
-	//
-	// 	helpers.checkForBlockErrors( 'icon' );
-	//
-	// 	helpers.viewPage();
-	//
-	// 	cy.get( '.wp-block-coblocks-icon' )
-	// 		.should( 'exist' );
-	//
-	// 	helpers.editPage();
-	// } );
-	//
-	// /**
-  //  * Test the coblocks icon block style.
-  //  */
-	// it( 'Test the icon block style.', function() {
-	// 	helpers.addCoBlocksBlockToPage( true, 'icon' );
-	//
-	// 	helpers.openSettingsPanel( 'Styles' );
-	//
-	// 	cy.get( '.editor-block-styles__item[aria-label="Filled"]' ).click();
-	//
-	// 	cy.get( '.wp-block-coblocks-icon' ).should( 'have.class', 'is-style-filled' );
-	//
-	// 	helpers.savePage();
-	//
-	// 	helpers.checkForBlockErrors( 'icon' );
-	//
-	// 	helpers.viewPage();
-	//
-	// 	cy.get( '.wp-block-coblocks-icon' )
-	// 		.should( 'exist' );
-	//
-	// 	cy.get( '.wp-block-coblocks-icon' ).should( 'have.class', 'is-style-filled' );
-	//
-	// 	helpers.editPage();
-	// } );
+	it( 'Test the icon block saves.', function() {
+		helpers.addCoBlocksBlockToPage( true, 'icon' );
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'icon' );
+
+		helpers.viewPage();
+
+		cy.get( '.wp-block-coblocks-icon' )
+			.should( 'exist' );
+
+		helpers.editPage();
+	} );
+
+	/**
+   * Test the coblocks icon block style.
+   */
+	it( 'Test the icon block style.', function() {
+		helpers.addCoBlocksBlockToPage( true, 'icon' );
+
+		helpers.openSettingsPanel( 'Styles' );
+
+		cy.get( '.editor-block-styles__item[aria-label="Filled"]' ).click();
+
+		cy.get( '.wp-block-coblocks-icon' ).should( 'have.class', 'is-style-filled' );
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'icon' );
+
+		helpers.viewPage();
+
+		cy.get( '.wp-block-coblocks-icon' )
+			.should( 'exist' );
+
+		cy.get( '.wp-block-coblocks-icon' ).should( 'have.class', 'is-style-filled' );
+
+		helpers.editPage();
+	} );
 
 	/**
    * Test the coblocks icon block resize.
