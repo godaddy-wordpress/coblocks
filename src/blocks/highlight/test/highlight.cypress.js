@@ -204,7 +204,7 @@ describe( 'Test CoBlocks Highlight Block', function() {
 		cy.get( 'p.wp-block-coblocks-highlight' )
 			.type( highlightData[ 0 ].text );
 
-		helpers.addCustomBlockClass( 'my-custom-class' );
+		helpers.addCustomBlockClass( 'my-custom-class', 'highlight' );
 
 		helpers.savePage();
 

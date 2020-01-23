@@ -1,32 +1,31 @@
-/* Slider */
 .slick-slider {
 	box-sizing: border-box;
 	display: block;
 	position: relative;
 	touch-action: pan-y;
 	user-select: none;
+
+	.slick-track,
+	.slick-list {
+		transform: translate3d(0, 0, 0);
+	}
 }
 
 .slick-list {
 	display: block;
-	margin: 0 map-get($margin, -2);
+	margin: 0 map-get($spacing, -2);
 	overflow: hidden;
 	padding: 0;
 	position: relative;
-}
 
-.slick-list:focus {
-	outline: none;
-}
+	&:focus {
+		outline: none;
+	}
 
-.slick-list.dragging {
-	cursor: pointer;
-	cursor: hand;
-}
-
-.slick-slider .slick-track,
-.slick-slider .slick-list {
-	transform: translate3d(0, 0, 0);
+	&.dragging {
+		cursor: pointer;
+		cursor: hand;
+	}
 }
 
 .slick-track {
@@ -36,66 +35,49 @@
 	margin-right: auto;
 	position: relative;
 	top: 0;
-}
 
-.slick-track::before,
-.slick-track::after {
-	content: "";
-	display: table;
-}
+	&::before,
+	&::after {
+		content: "";
+		display: table;
+	}
 
-.slick-track::after {
-	clear: both;
-}
-.slick-loading .slick-track {
-	visibility: hidden;
+	&::after {
+		clear: both;
+	}
+
+	.slick-loading & {
+		visibility: hidden;
+	}
 }
 
 .slick-slide {
 	display: none;
 	float: left;
 	height: auto;
-	margin: 0 map-get($margin, 2);
+	margin: 0 map-get($spacing, 2);
 	min-height: 1px;
 	outline: none;
-}
 
-[dir="rtl"] .slick-slide {
-	float: right;
-}
+	[dir="rtl"] & {
+		float: right;
+	}
 
-.slick-slide img {
-	display: block;
-}
+	img {
+		display: block;
+	}
 
-.slick-slide.slick-loading img {
-	display: none;
-}
+	&.slick-loading img {
+		display: none;
+	}
 
-.slick-slide.dragging img {
-	pointer-events: none;
+	&.dragging img {
+		pointer-events: none;
+	}
 }
 
 .slick-initialized .slick-slide {
 	display: block;
-}
-
-.slick-loading .slick-slide {
-	visibility: hidden;
-}
-
-.slick-vertical .slick-slide {
-	border: 1px solid transparent;
-	display: block;
-	height: auto;
-}
-
-.slick-arrow.slick-hidden {
-	display: none;
-}
-
-.arrows {
-	text-align: center;
 }
 
 /* Arrows */
@@ -108,12 +90,12 @@
 	cursor: pointer;
 	display: inline-block;
 	font-size: initial;
-	height: map-get($margin, 8);
+	height: map-get($spacing, 8);
 	line-height: 0;
 	outline: none;
 	padding: 0.5em;
 	position: absolute;
-	width: map-get($margin, 8);
+	width: map-get($spacing, 8);
 
 	&:hover,
 	&:focus {

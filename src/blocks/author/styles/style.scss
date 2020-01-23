@@ -1,11 +1,11 @@
 .wp-block-coblocks-author {
 	align-items: flex-start;
-	background: $accordion-background;
+	background: $dark-opacity-light-200;
 	display: flex;
 	padding: 30px 25px;
 	position: relative;
 
-	@media (min-width: 600px) {
+	@include break-small() {
 		padding: 40px 35px;
 	}
 
@@ -17,7 +17,7 @@
 		position: relative;
 		width: 70px;
 
-		@media (min-width: 600px) {
+		@include break-small() {
 			height: 150px;
 			margin-right: 35px;
 			width: 150px;
