@@ -48,7 +48,6 @@ describe( 'Test CoBlocks Click to Tweet Block', function() {
 		cy.get( '.wp-block-coblocks-click-to-tweet__twitter-btn' )
 			.should( 'have.attr', 'href' )
 			.and( 'match', /Some\%20custom%20data%20here/ )
-			.and( 'match', /coblocks-click-to-tweet-tests/ )
 			.and( 'match', /&via\=TestUsername/ );
 
 		helpers.editPage();
