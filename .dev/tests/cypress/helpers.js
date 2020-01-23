@@ -186,9 +186,9 @@ export function clearBlocks() {
  * eg: accordion.js => Accordion
  */
 export function getBlockName() {
-	let specFile = Cypress.spec.name,
-		fileBase = ( specFile.split( '/' ).pop().replace( '.cypress.js', '' ) ),
-		blockName = fileBase.charAt( 0 ).toUpperCase() + fileBase.slice( 1 );
+	let specFile  = Cypress.spec.name,
+	    fileBase  = capitalize( specFile.split( '/' ).pop().replace( '.cypress.js', '' ).replace( '-', ' ' ) ),
+	    blockName = fileBase.charAt( 0 ).toUpperCase() + fileBase.slice( 1 );
 
 	return blockName;
 }
@@ -233,14 +233,30 @@ export function setColorSetting( settingName, hexColor ) {
 		case 'text':
 			cy.get( '.components-base-control__field' )
 				.contains( /text color/i )
-				.then( $backgroundPanel => {
-					cy.get( Cypress.$( $backgroundPanel ).parent() )
+				.then( $textPanel => {
+					cy.get( Cypress.$( $textPanel ).parent() )
 						.contains( /custom color/i )
 						.click();
 					cy.get( '.components-color-picker__inputs-field input[type="text"]' )
 						.clear()
 						.type( hexColor );
-					cy.get( Cypress.$( $backgroundPanel ).parent() )
+					cy.get( Cypress.$( $textPanel ).parent() )
+						.contains( /custom color/i )
+						.click();
+				} );
+			break;
+
+		case 'color':
+			cy.get( '.components-base-control__field' )
+				.contains( /color/i )
+				.then( $colorPanel => {
+					cy.get( Cypress.$( $colorPanel ).parent() )
+						.contains( /custom color/i )
+						.click();
+					cy.get( '.components-color-picker__inputs-field input[type="text"]' )
+						.clear()
+						.type( hexColor );
+					cy.get( Cypress.$( $colorPanel ).parent() )
 						.contains( /custom color/i )
 						.click();
 				} );
@@ -306,3 +322,40 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 	cy.get( '.wp-block-coblocks-' + blockID )
 		.should( 'have.class', classes );
 }
+
+/**
+ * Helper method to convert a hex value to an RGB value
+ *
+ * @param  string hex Hex string. eg: #55e7ff
+ *
+ * @return string RGB string.
+ */
+export function hexToRGB( hex ) {
+	let r = 0, g = 0, b = 0;
+
+	// 3 digits
+	if ( hex.length == 4 ) {
+		r = "0x" + hex[1] + hex[1];
+		g = "0x" + hex[2] + hex[2];
+		b = "0x" + hex[3] + hex[3];
+	// 6 digits
+	} else if ( hex.length == 7 ) {
+		r = "0x" + hex[1] + hex[2];
+		g = "0x" + hex[3] + hex[4];
+		b = "0x" + hex[5] + hex[6];
+	}
+
+	return "rgb("+ +r + ", " + +g + ", " + +b + ")";
+}
+
+/**
+ * Capitalize the first letter of each word in a string.
+ * eg: hello world => Hello World
+ *
+ * @param string string The text to capitalize.
+ *
+ * @return string Altered string with capitalized letters.
+ */
+export function capitalize( string ) {
+	return string.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
+};
