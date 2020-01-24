@@ -16,7 +16,7 @@
 		"build": "wp-scripts build --config .dev/config/webpack.config.js",
 		"version": "grunt version && npm run babel:build && git add -A .",
 		"postversion": "git push && git push --tags",
-		"makepot": "./vendor/bin/wp i18n make-pot . --skip-audit --exclude=build,dist --headers='{\"Last-Translator\":\"plugins@godaddy.com\",\"Report-Msgid-Bugs-To\":\"https://github.com/godaddy-wordpress/coblocks/issues\"}' --file-comment='Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.' && grunt replace:languages && npm run pot2json",
+		"makepot": "./vendor/bin/wp i18n make-pot . --skip-audit --exclude=build,dist,vendor,node_modules,wordpress --headers='{\"Last-Translator\":\"plugins@godaddy.com\",\"Report-Msgid-Bugs-To\":\"https://github.com/godaddy-wordpress/coblocks/issues\"}' --file-comment='Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.' && npm run pot2json",
 		"pot2json": ".dev/bin/pot2json languages/coblocks.pot languages/coblocks.json",
 		"json2po": "cd languages && find . -name \\*.json ! -name 'coblocks*.json' -execdir sh -c '../.dev/bin/json2po coblocks.json \"$0\" coblocks-`basename $0 .json`.po' '{}' \\;",
 		"po2mo": "cd languages && find . -name \\*.po -execdir sh -c 'msgfmt \"$0\" -o `basename $0 .po`.mo' '{}' \\;",
