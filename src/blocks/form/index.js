@@ -3,6 +3,7 @@
  */
 import edit from './edit';
 import icon from './icon';
+import patterns from './patterns';
 
 /**
  * WordPress dependencies
@@ -69,6 +70,7 @@ const settings = {
 		},
 	},
 	attributes,
+	patterns,
 	edit,
 	save: InnerBlocks.Content,
 };

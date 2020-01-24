@@ -37,19 +37,6 @@ const Inspector = ( props ) => {
 		hasFeaturedImage,
 	} = props;
 
-	// const {
-	// 	order,
-	// 	orderBy,
-	// 	postFeedType,
-	// 	postsToShow,
-	// 	excerptLength,
-	// 	displayPostDate,
-	// 	displayPostContent,
-	// 	columns,
-	// 	listPosition,
-	// 	imageSize,
-	// } = attributes;
-
 	const isHorizontalStyle = ( 'horizontal' === activeStyle.name );
 
 	const sizeOptions = [
@@ -190,12 +177,12 @@ const Inspector = ( props ) => {
 		<InspectorControls>
 			{ hasPosts ?
 				<PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
-					<div className="block-editor-block-styles block-editor-block-styles coblocks-editor-block-styles">
-						{ styleOptions.map( ( style ) => (
+					<div className="block-editor-block-styles coblocks-editor-block-styles">
+						{ styleOptions.map( style => (
 							<div
 								key={ `style-${ style.name }` }
 								className={ classnames(
-									'block-editor-block-styles__item block-editor-block-styles__item',
+									'block-editor-block-styles__item',
 									{
 										'is-active': activeStyle === style,
 									}
@@ -211,10 +198,10 @@ const Inspector = ( props ) => {
 								tabIndex="0"
 								aria-label={ style.label || style.name }
 							>
-								<div className="block-editor-block-styles__item-preview block-editor-block-styles__item-preview">
+								<div className="block-editor-block-styles__item-preview">
 									{ attributes.listPosition === 'left' && style.iconAlt ? style.iconAlt : style.icon }
 								</div>
-								<div className="block-editor-block-styles__item-label block-editor-block-styles__item-label">
+								<div className="block-editor-block-styles__item-label">
 									{ style.label || style.name }
 								</div>
 							</div>

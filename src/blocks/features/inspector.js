@@ -127,27 +127,6 @@ class Inspector extends Component {
 							/>
 						}
 						<DimensionsControl { ...this.props }
-							type={ 'margin' }
-							label={ __( 'Margin', 'coblocks' ) }
-							valueTop={ marginTop }
-							valueRight={ marginRight }
-							valueBottom={ marginBottom }
-							valueLeft={ marginLeft }
-							valueTopTablet={ marginTopTablet }
-							valueRightTablet={ marginRightTablet }
-							valueBottomTablet={ marginBottomTablet }
-							valueLeftTablet={ marginLeftTablet }
-							valueTopMobile={ marginTopMobile }
-							valueRightMobile={ marginRightMobile }
-							valueBottomMobile={ marginBottomMobile }
-							valueLeftMobile={ marginLeftMobile }
-							unit={ marginUnit }
-							syncUnits={ marginSyncUnits }
-							syncUnitsTablet={ marginSyncUnitsTablet }
-							syncUnitsMobile={ marginSyncUnitsMobile }
-							dimensionSize={ marginSize }
-						/>
-						<DimensionsControl { ...this.props }
 							type={ 'padding' }
 							label={ __( 'Padding', 'coblocks' ) }
 							valueTop={ paddingTop }
@@ -167,6 +146,27 @@ class Inspector extends Component {
 							syncUnitsTablet={ paddingSyncUnitsTablet }
 							syncUnitsMobile={ paddingSyncUnitsMobile }
 							dimensionSize={ paddingSize }
+						/>
+						<DimensionsControl { ...this.props }
+							type={ 'margin' }
+							label={ __( 'Margin', 'coblocks' ) }
+							valueTop={ marginTop }
+							valueRight={ marginRight }
+							valueBottom={ marginBottom }
+							valueLeft={ marginLeft }
+							valueTopTablet={ marginTopTablet }
+							valueRightTablet={ marginRightTablet }
+							valueBottomTablet={ marginBottomTablet }
+							valueLeftTablet={ marginLeftTablet }
+							valueTopMobile={ marginTopMobile }
+							valueRightMobile={ marginRightMobile }
+							valueBottomMobile={ marginBottomMobile }
+							valueLeftMobile={ marginLeftMobile }
+							unit={ marginUnit }
+							syncUnits={ marginSyncUnits }
+							syncUnitsTablet={ marginSyncUnitsTablet }
+							syncUnitsMobile={ marginSyncUnitsMobile }
+							dimensionSize={ marginSize }
 						/>
 					</PanelBody>
 					<PanelColorSettings

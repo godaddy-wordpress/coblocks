@@ -461,6 +461,7 @@ class DimensionsControl extends Component {
 													className={ 'components-coblocks-dimensions-control__units--' + name }
 													isSmall
 													isPrimary={ unit === unitValue }
+													isSecondary={ unit !== unitValue }
 													aria-pressed={ unit === unitValue }
 													aria-label={ sprintf(
 														/* translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
@@ -475,11 +476,10 @@ class DimensionsControl extends Component {
 										) ) }
 									</ButtonGroup>
 									<Button
-										className="components-color-palette__clear"
 										type="button"
 										onClick={ () => this.onChangeSize( 'no', -1 ) }
 										isSmall
-										isDefault
+										isSecondary
 										aria-label={ sprintf(
 											/* translators: %s: a texual label  */
 											__( 'Turn off advanced %s settings', 'coblocks' ),
@@ -499,22 +499,22 @@ class DimensionsControl extends Component {
 									{
 										name: 'default',
 										title: icons.desktopChrome,
-										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default components-coblocks-dimensions-control__mobile-controls-item--default components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--default`,
+										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--default components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--default`,
 									},
 									{
 										name: 'desktop',
 										title: icons.mobile,
-										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default components-coblocks-dimensions-control__mobile-controls-item--desktop components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--desktop`,
+										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--desktop components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--desktop`,
 									},
 									{
 										name: 'tablet',
 										title: icons.desktopChrome,
-										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default components-coblocks-dimensions-control__mobile-controls-item--tablet components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--tablet`,
+										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--tablet components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--tablet`,
 									},
 									{
 										name: 'mobile',
 										title: icons.tablet,
-										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default components-coblocks-dimensions-control__mobile-controls-item--mobile components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--mobile`,
+										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--mobile components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--mobile`,
 									},
 								] }>
 								{
@@ -584,6 +584,7 @@ class DimensionsControl extends Component {
 																className="components-coblocks-dimensions-control_sync"
 																aria-label={ __( 'Sync Units', 'coblocks' ) }
 																isPrimary={ syncUnitsMobile ? syncUnitsMobile : false }
+																isSecondary={ syncUnitsMobile ? syncUnitsMobile : true }
 																aria-pressed={ syncUnitsMobile ? syncUnitsMobile : false }
 																onClick={ ( value ) => this.syncUnits( value, 'Mobile' ) }
 																data-device-type="Mobile"
@@ -660,6 +661,7 @@ class DimensionsControl extends Component {
 																className="components-coblocks-dimensions-control_sync"
 																aria-label={ __( 'Sync Units', 'coblocks' ) }
 																isPrimary={ syncUnitsTablet ? syncUnitsTablet : false }
+																isSecondary={ syncUnitsTablet ? syncUnitsTablet : true }
 																aria-pressed={ syncUnitsTablet ? syncUnitsTablet : false }
 																onClick={ ( value ) => this.syncUnits( value, 'Tablet' ) }
 																data-device-type="Tablet"
@@ -735,6 +737,7 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control_sync"
 															aria-label={ __( 'Sync Units', 'coblocks' ) }
 															isPrimary={ syncUnits ? syncUnits : false }
+															isSecondary={ syncUnits ? syncUnits : true }
 															aria-pressed={ syncUnits ? syncUnits : false }
 															onClick={ ( value ) => this.syncUnits( value, '' ) }
 															data-device-type=""
@@ -767,11 +770,10 @@ class DimensionsControl extends Component {
 								/>
 
 								<Button
-									className="components-color-palette__clear"
 									type="button"
 									onClick={ () => this.onChangeSize( 'advanced', '' ) }
-
-									isDefault
+									isSmall
+									isSecondary
 									aria-label={ sprintf(
 										/* translators: %s: a texual label */
 										__( 'Advanced %s settings', 'coblocks' ),

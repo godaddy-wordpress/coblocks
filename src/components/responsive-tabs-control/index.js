@@ -40,18 +40,18 @@ class ResponsiveTabsControl extends Component {
 			<Fragment>
 				<TabPanel
 					className="components-base-control components-coblocks-responsive__tabs"
-					activeClass="is-active"
+					activeClass="is-primary"
 					initialTabName="desk"
 					tabs={ [
 						{
 							name: 'desk',
 							title: icons.desktopChrome,
-							className: 'components-coblocks-responsive__tabs-item components-coblocks-responsive__tabs-item--desktop',
+							className: 'components-coblocks-responsive__tabs-item components-coblocks-responsive__tabs-item--desktop components-button is-button is-default is-secondary',
 						},
 						{
 							name: 'mobile',
 							title: icons.mobile,
-							className: 'components-coblocks-responsive__tabs-item components-coblocks-responsive__tabs-item--mobile',
+							className: 'components-coblocks-responsive__tabs-item components-coblocks-responsive__tabs-item--mobile components-button is-button is-default is-secondary',
 						},
 					] }>
 					{

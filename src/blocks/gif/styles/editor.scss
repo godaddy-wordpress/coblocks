@@ -6,16 +6,13 @@
 		}
 	}
 
-	&[data-align="center"] .wp-block-coblocks-gif,
-	&[data-align="center"][data-resized="false"] .wp-block-coblocks-gif > div {
+	&[data-align="center"] .wp-block-coblocks-gif:not(.components-placeholder),
+	&[data-align="center"][data-resized="false"] .wp-block-coblocks-gif:not(.components-placeholder) > div {
 		margin-left: auto;
 		margin-right: auto;
 	}
 
 	.wp-block-coblocks-gif {
-		margin: 0;
-		padding: 50px 0;
-		width: inherit;
 
 		form,
 		.components-placeholder__fieldset {
@@ -40,10 +37,11 @@
 			justify-content: flex-start;
 			line-height: 1;
 			list-style: none;
+			margin: 0;
 			max-width: 430px;
+			padding: 0;
 
 			li {
-				border-radius: 4px;
 				display: block;
 				flex: 0 0 auto;
 				height: 86px;
@@ -62,7 +60,6 @@
 				}
 
 				img {
-					border-radius: 4px;
 					height: 100%;
 					width: 100%;
 				}
@@ -78,12 +75,12 @@
 	}
 
 	&[data-align="center"] {
-		.wp-block-coblocks-gif {
+		.wp-block-coblocks-gif:not(.components-placeholder) {
 			margin-left: auto !important;
 			margin-right: auto !important;
 		}
 
-		&[data-resized="false"] .wp-block-coblocks-gif > div {
+		&[data-resized="false"] .wp-block-coblocks-gif:not(.components-placeholder) > div {
 			margin-left: auto !important;
 			margin-right: auto !important;
 		}

@@ -287,6 +287,24 @@ class CoBlocks_Block_Assets {
 			);
 		}
 
+		// Events block.
+		if ( has_block( $this->slug . '/events' ) ) {
+			wp_enqueue_script(
+				'coblocks-slick',
+				$vendors_dir . '/slick.js',
+				array( 'jquery' ),
+				COBLOCKS_VERSION,
+				true
+			);
+			wp_enqueue_script(
+				'coblocks-events',
+				$dir . 'coblocks-events.js',
+				array( 'jquery' ),
+				COBLOCKS_VERSION,
+				true
+			);
+		}
+
 		// Lightbox.
 		if ( has_block( 'coblocks/gallery-masonry' ) || has_block( 'coblocks/gallery-stacked' ) || has_block( 'coblocks/gallery-collage' ) || has_block( 'coblocks/gallery-carousel' ) || has_block( 'coblocks/gallery-offset' ) ) {
 			wp_enqueue_script(

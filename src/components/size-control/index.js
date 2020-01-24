@@ -168,6 +168,7 @@ class SizeControl extends Component {
 							<Button
 								key={ size }
 								isLarge
+								isSecondary
 								isPrimary={ value === size }
 								aria-pressed={ value === size }
 								onClick={ () => onChange( size ) }
@@ -179,6 +180,7 @@ class SizeControl extends Component {
 					{ reset &&
 						<Button
 							isSmall
+							isSecondary
 							onClick={ () => onChange( resetValue ) }
 						>
 							{ __( 'Reset', 'coblocks' ) }
