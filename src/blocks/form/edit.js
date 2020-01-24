@@ -32,9 +32,9 @@ import { __experimentalRegisterBlockPattern, createBlock } from '@wordpress/bloc
  * Get settings
  */
 let settings;
-// wp.api.loadPromise.then( () => {
-// 	settings = new wp.api.models.Settings();
-// } );
+wp.api.loadPromise.then( () => {
+	settings = new wp.api.models.Settings();
+} );
 
 /**
  * Block constants
