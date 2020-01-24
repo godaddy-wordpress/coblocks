@@ -7,22 +7,6 @@ module.exports = function( grunt ) {
 
 		pkg,
 
-		devUpdate: {
-			packages: {
-				options: {
-					packageJson: null,
-					packages: {
-						devDependencies: true,
-						dependencies: false,
-					},
-					reportOnlyPkgs: [],
-					reportUpdated: false,
-					semver: true,
-					updateType: 'force',
-				},
-			},
-		},
-
 		clean: {
 			build: [ 'build/' ],
 		},
@@ -134,24 +118,15 @@ module.exports = function( grunt ) {
 		},
 
 		shell: {
-			cgb_start: [
-				'npm run start',
-			].join( ' && ' ),
-			cgb_build: [
-				'npm run build',
-			].join( ' && ' ),
-			translations: [
-				'npm run babel:build',
-			].join( ' && ' ),
+			build: [ 'npm run build' ].join( ' && ' ),
+			translations: [ 'npm run makepot' ].join( ' && ' ),
 		},
 
 	} );
 
 	require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
-	grunt.registerTask( 'default', [ 'shell:cgb_start' ] );
-	grunt.registerTask( 'check', [ 'devUpdate' ] );
-	grunt.registerTask( 'build', [ 'shell:cgb_build', 'update-pot', 'replace', 'clean:build', 'copy:build' ] );
+	grunt.registerTask( 'build', [ 'shell:build', 'update-pot', 'replace', 'clean:build', 'copy:build' ] );
 	grunt.registerTask( 'update-pot', [ 'shell:translations' ] );
 	grunt.registerTask( 'version', [ 'replace' ] );
 };
