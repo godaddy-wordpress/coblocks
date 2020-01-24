@@ -27,5 +27,10 @@
 				margin-right: map-get($spacing, 3);
 			}
 		}
+
+		&.has-1-columns .wp-block-coblocks-feature {
+			margin-left: 0;
+			margin-right: 0;
+		}
 	}
 }

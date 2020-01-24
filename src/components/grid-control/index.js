@@ -177,6 +177,8 @@ class CSSGridControl extends Component {
 										<div className={ ( value === layout ) ? 'is-selected' : null }>
 											<Button
 												isSmall
+												isSecondary={ value !== layout }
+												isPrimary={ value === layout }
 												onClick={ () => {
 													setAttributes( { layout: value } );
 													if ( layoutAttributes[ value ].wrapper ) {
@@ -193,6 +195,8 @@ class CSSGridControl extends Component {
 								<div className={ ( value === layout ) ? 'is-selected' : null }>
 									<Button
 										isSmall
+										isSecondary={ value !== layout }
+										isPrimary={ value === layout }
 										onClick={ () => {
 											setAttributes( { layout: value } );
 											if ( layoutAttributes[ value ].wrapper ) {

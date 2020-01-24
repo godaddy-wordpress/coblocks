@@ -21,7 +21,7 @@ import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { DOWN } from '@wordpress/keycodes';
-import { RangeControl, withFallbackStyles, ToggleControl, Dropdown, IconButton, SelectControl } from '@wordpress/components';
+import { RangeControl, withFallbackStyles, ToggleControl, Dropdown, IconButton, SelectControl, Toolbar } from '@wordpress/components';
 
 /**
  * Export
@@ -52,12 +52,20 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  */
 class TypographyControls extends Component {
 	render() {
+		// Blocks that should be allowed to display TypographyControls
+		const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/pricing-table', 'coblocks/highlight' ];
+
 		const {
 			attributes,
 			setAttributes,
 			icon = icons.typography,
 			label = __( 'Change typography', 'coblocks' ),
 		} = this.props;
+
+		// Show line height on appropriate blocks.
+		if ( ! allowedBlocks.includes( this.props.name ) ) {
+			return null;
+		}
 
 		const {
 			customFontSize,
@@ -137,7 +145,7 @@ class TypographyControls extends Component {
 		};
 
 		return (
-			<Fragment>
+			<Toolbar>
 				<Dropdown
 					className={ classnames( 'components-dropdown-menu', 'components-coblocks-typography-dropdown' ) }
 					contentClassName="components-dropdown-menu__popover components-coblocks-typography-dropdown"
@@ -243,7 +251,7 @@ class TypographyControls extends Component {
 						</Fragment>
 					) }
 				/>
-			</Fragment>
+			</Toolbar>
 		);
 	}
 }
