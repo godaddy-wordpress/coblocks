@@ -14,7 +14,7 @@
 	"scripts": {
 		"start": "wp-scripts start --config .dev/config/webpack.config.js --progress",
 		"build": "wp-scripts build --config .dev/config/webpack.config.js",
-		"version": "grunt version && npm run babel:build && git add -A .",
+		"version": "grunt version && grunt update-pot && git add -A .",
 		"postversion": "git push && git push --tags",
 		"makepot": "./vendor/bin/wp i18n make-pot . --skip-audit --exclude=build,dist,vendor,node_modules,wordpress --headers='{\"Last-Translator\":\"plugins@godaddy.com\",\"Report-Msgid-Bugs-To\":\"https://github.com/godaddy-wordpress/coblocks/issues\"}' --file-comment='Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.' && npm run pot2json",
 		"pot2json": ".dev/bin/pot2json languages/coblocks.pot languages/coblocks.json",
