@@ -1,13 +1,7 @@
-// Hide the border when the fixed toolbar is in use.
-.has-fixed-toolbar .wp-block[data-type="coblocks/icon"] .block-editor-block-list__block-edit::before {
-	display: none;
-}
-
 .components-coblocks-icon-block--advanced-size {
-	margin-bottom: 1.5em;
 	position: relative;
 
-	.components-color-palette__clear {
+	.is-small {
 		bottom: 3px;
 		position: absolute;
 		right: 0;
@@ -21,9 +15,10 @@
 		}
 	}
 }
+
 .coblocks-icon-types-list-wrapper {
 	height: 100%;
-	margin-left: -3px;
+	margin-left: -2px;
 	overflow: hidden;
 	width: calc(100% + 6px);
 
@@ -31,7 +26,6 @@
 	> .coblocks-icon-types-list.block-editor-block-types-list {
 		box-sizing: content-box; /* So the width will be 100% + 17px */
 		height: 100%;
-		margin-bottom: 0.3em;
 		overflow-y: scroll;
 		padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
 		width: 100%;
@@ -46,7 +40,7 @@
 }
 
 .coblocks-icon-types-list__search.components-base-control {
-	margin-bottom: 0.7em !important;
+	margin-bottom: 10px !important;
 }
 
 .coblocks-icon-types-list.block-editor-block-types-list {
@@ -54,10 +48,9 @@
 	flex-wrap: wrap;
 	list-style: none;
 	margin-top: 0;
-	max-height: 170px;
+	max-height: 140px;
 	overflow: hidden;
 	overflow-y: scroll;
-	padding: 4px 0 0 0;
 
 	.block-editor-block-types-list__list-item {
 		display: block;
@@ -75,9 +68,6 @@
 
 		.components-button {
 			align-items: center;
-			background: transparent;
-			border: 1px solid rgba(25, 30, 35, 0.2);
-			border-radius: 3px;
 			box-shadow: none;
 			display: flex;
 			height: auto;
@@ -85,23 +75,8 @@
 			padding: 14px 0;
 			width: 100%;
 
-			&:hover {
-				background: $light-gray-100;
-
-				svg {
-					fill: $dark-gray-900;
-				}
-			}
-
-			&:focus,
-			&:active:enabled {
-				background: $light-gray-100;
-				box-shadow: 0 0 0 3px $light-gray-100;
-				outline: none;
-			}
-
 			svg {
-				fill: $dark-gray-500;
+				fill: currentColor;
 				height: 20px;
 				margin: 0;
 				overflow: hidden;
@@ -111,6 +86,7 @@
 		}
 
 		.block-editor-block-types-list__item-icon {
+			color: inherit;
 			line-height: 0;
 			padding: 0;
 		}
@@ -127,15 +103,15 @@
 			}
 		}
 
-		&.is-selected {
-			.components-button {
-				&,
-				&:focus {
-					background: transparent;
-					box-shadow: 0 0 0 2px $white, 0 0 0 4px $dark-gray-500;
-				}
-			}
-		}
+		// &.is-selected {
+		// 	.components-button {
+		// 		&,
+		// 		&:focus {
+		// 			background: transparent;
+		// 			box-shadow: 0 0 0 2px $white, 0 0 0 4px $dark-gray-500;
+		// 		}
+		// 	}
+		// }
 	}
 }
 
