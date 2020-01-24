@@ -23,9 +23,6 @@ import './extensions/image-crop';
 // Formats
 import './formats';
 
-// Block Gallery
-import './components/block-gallery';
-
 // Deprecate Blocks
 import './js/deprecations/deprecate-coblocks-buttons.js';
 
