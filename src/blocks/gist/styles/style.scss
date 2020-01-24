@@ -1,11 +1,14 @@
 .wp-block-coblocks-gist {
+
 	.gist {
+
 		&-file {
 			border-color: rgba(0, 0, 0, 0.125) !important;
 			border-radius: 4px !important;
 			margin-bottom: 0 !important;
 
 			a {
+
 				&,
 				&:hover {
 					box-shadow: none;
@@ -40,6 +43,7 @@
 	}
 
 	&.no-meta {
+
 		.gist .gist-data {
 			border-bottom: 0;
 			border-radius: 3px;

@@ -1,4 +1,5 @@
 .wp-block-coblocks-posts {
+
 	& + & {
 		margin-top: map-get($spacing, 2);
 	}

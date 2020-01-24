@@ -1,6 +1,7 @@
 .wp-block-coblocks-features__inner {
 
 	&:not(.has-responsive-columns) {
+
 		@include break-small() {
 			align-items: flex-start;
 			display: flex;

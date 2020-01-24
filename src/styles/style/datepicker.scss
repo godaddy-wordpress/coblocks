@@ -80,7 +80,7 @@
 
 .ui-datepicker .ui-datepicker-prev::before,
 .ui-datepicker .ui-datepicker-next::before {
-	font: 400 20px/34px 'dashicons';
+	font: 400 20px/34px "dashicons";
 	height: 34px;
 	padding-left: 7px;
 	speak: none;
@@ -88,11 +88,11 @@
 }
 
 .ui-datepicker .ui-datepicker-prev::before {
-	content: '\f341';
+	content: "\f341";
 }
 
 .ui-datepicker .ui-datepicker-next::before {
-	content: '\f345';
+	content: "\f345";
 }
 
 .ui-datepicker .ui-datepicker-prev-hover::before,
@@ -133,7 +133,7 @@
 }
 
 .ui-datepicker td.ui-datepicker-current-day {
-	background: #bbdd88;
+	background: #bd8;
 }
 
 .ui-datepicker td .ui-state-default {

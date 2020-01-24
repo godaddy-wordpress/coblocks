@@ -3,9 +3,13 @@ $break-small-twentynineteen--min: 768px;
 
 //Fix background color contrast issue
 .is-twentynineteen {
+
 	.entry .entry-content {
+
 		.wp-block-coblocks-media-card {
+
 			@media (min-width: #{ ($break-small-twentynineteen--min) }) and (max-width: #{ ($break-small-twentynineteen) }) {
+
 				&.is-stacked-on-mobile {
 					flex-direction: column;
 				}
@@ -16,6 +20,7 @@ $break-small-twentynineteen--min: 768px;
 				}
 
 				&.is-stacked-on-mobile .wp-block-coblocks-media-card__media {
+
 					@include break-small-max() {
 						position: inherit;
 					}

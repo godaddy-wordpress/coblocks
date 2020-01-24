@@ -1,5 +1,7 @@
 .block-editor-block-list__block[data-custom-fontsize="1"] {
+
 	.wp-block-heading {
+
 		h1,
 		h2,
 		h3,
@@ -11,6 +13,7 @@
 	}
 
 	.wp-block-button {
+
 		.wp-block-button__link {
 			font-size: inherit;
 		}
@@ -21,6 +24,7 @@
 	}
 
 	.block-editor-rich-text {
+
 		.wp-block-cover-text,
 		.wp-block-paragraph {
 			font-size: inherit;
@@ -29,7 +33,9 @@
 }
 
 .block-editor-block-list__block[data-coblocks-font="1"] {
+
 	.wp-block-heading {
+
 		h1,
 		h2,
 		h3,
@@ -41,7 +47,9 @@
 	}
 
 	&:not([data-type="coblocks/pricing-table"]) {
+
 		.wp-block-button {
+
 			.wp-block-button__link {
 				font-family: inherit;
 			}
@@ -49,21 +57,27 @@
 	}
 
 	.block-editor-rich-text {
+
 		.wp-block-cover-text,
 		.wp-block-paragraph {
 			font-family: inherit;
 		}
 	}
+
 	.wp-block-pullquote,
 	.wp-block-quote {
+
 		.editor-rich-text__tinymce {
+
 			&,
 			p {
 				font-family: inherit;
 			}
 		}
 	}
+
 	.wp-block-coblocks-pricing-table {
+
 		.wp-block-coblocks-pricing-table-item__title,
 		.wp-block-coblocks-pricing-table-item__amount {
 			font-family: inherit;
@@ -72,7 +86,9 @@
 }
 
 .block-editor-block-list__block[data-custom-fontweight="1"] {
+
 	.wp-block-heading {
+
 		h1,
 		h2,
 		h3,
@@ -82,20 +98,27 @@
 			font-weight: inherit;
 		}
 	}
+
 	.wp-block-button {
+
 		.wp-block-button__link {
 			font-weight: inherit;
 		}
 	}
+
 	.block-editor-rich-text {
+
 		.wp-block-cover-text,
 		.wp-block-paragraph {
 			font-weight: inherit;
 		}
 	}
+
 	.wp-block-pullquote,
 	.wp-block-quote {
+
 		.editor-rich-text__tinymce {
+
 			&,
 			p {
 				font-weight: inherit;
@@ -105,7 +128,9 @@
 }
 
 .block-editor-block-list__block[data-custom-texttransform="1"] {
+
 	.wp-block-heading {
+
 		h1,
 		h2,
 		h3,
@@ -117,12 +142,14 @@
 	}
 
 	.wp-block-button {
+
 		.wp-block-button__link {
 			text-transform: inherit;
 		}
 	}
 
 	.block-editor-rich-text {
+
 		.wp-block-cover-text,
 		.wp-block-paragraph {
 			text-transform: inherit;
@@ -131,7 +158,9 @@
 
 	.wp-block-pullquote,
 	.wp-block-quote {
+
 		.editor-rich-text__tinymce {
+
 			&,
 			p {
 				text-transform: inherit;
@@ -146,7 +175,9 @@
 }
 
 .block-editor-block-list__block[data-custom-textcolor="1"] {
+
 	.wp-block-heading {
+
 		h1,
 		h2,
 		h3,
@@ -159,6 +190,7 @@
 }
 
 .block-editor-block-list__block[data-custom-fontweight="1"] {
+
 	.block-library-button__inline-link,
 	.block-editor-block-list__breadcrumb {
 		font-weight: normal;
@@ -166,6 +198,7 @@
 }
 
 .block-editor-block-list__block[data-custom-letterspacing="1"] {
+
 	.block-library-button__inline-link,
 	.block-editor-block-list__breadcrumb {
 		letter-spacing: normal;
@@ -173,8 +206,11 @@
 }
 
 body {
+
 	.block-editor-block-list__block[data-custom-lineheight="1"] {
+
 		.wp-block-heading {
+
 			h1,
 			h2,
 			h3,
@@ -186,12 +222,14 @@ body {
 		}
 
 		.wp-block-button {
+
 			.wp-block-button__link {
 				line-height: inherit;
 			}
 		}
 
 		.block-library-list {
+
 			ul,
 			li {
 				line-height: inherit;
@@ -199,6 +237,7 @@ body {
 		}
 
 		.block-editor-rich-text {
+
 			p {
 				line-height: inherit !important;
 			}

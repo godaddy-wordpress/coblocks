@@ -1,9 +1,11 @@
 .wp-block[data-type="coblocks/shape-divider"] {
+
 	.has-fixed-toolbar & .block-editor-block-list__block-edit::before {
 		display: none;
 	}
 
 	.wp-block-coblocks-shape-divider {
+
 		svg {
 			bottom: 0;
 			fill: currentColor;
@@ -14,6 +16,7 @@
 		}
 
 		&.is-style-pointed {
+
 			.wp-block-coblocks-shape-divider__svg-wrapper .components-resizable-box__handle {
 				left: calc(73.78% - 12px);
 			}
@@ -82,6 +85,7 @@
 
 .editor-block-preview,
 .block-editor-block-styles__item-preview {
+
 	.wp-block-coblocks-shape-divider {
 		height: 60px !important;
 		transform: scale(1.45);
@@ -96,6 +100,7 @@
 		}
 
 		&.is-vertically-flipped {
+
 			svg {
 				bottom: inherit;
 				top: -1px;
@@ -153,9 +158,11 @@
 }
 
 .editor-block-preview {
+
 	&__content {
 		overflow: hidden;
 	}
+
 	.wp-block-coblocks-shape-divider {
 		height: 90px !important;
 		margin-top: -30px;
@@ -172,6 +179,7 @@
 
 // Shim to fix styles in the previewer.
 .block-editor-inserter__preview-content .wp-block-coblocks-shape-divider {
+
 	.wp-block-coblocks-shape-divider__alt-wrapper {
 		margin-top: -1px;
 	}

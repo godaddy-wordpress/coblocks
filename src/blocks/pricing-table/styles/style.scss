@@ -1,7 +1,9 @@
 $gutter: 0.75em;
 
 .wp-block-coblocks-pricing-table {
+
 	&__inner {
+
 		@include break-small() {
 			display: flex;
 			flex-direction: row;
@@ -11,6 +13,7 @@ $gutter: 0.75em;
 	}
 
 	@include break-small() {
+
 		&.has-2-columns .wp-block-coblocks-pricing-table-item {
 			flex-basis: 50%;
 			max-width: calc(100% / 2 - #{$gutter});
@@ -23,6 +26,7 @@ $gutter: 0.75em;
 	}
 
 	&.has-4-columns .wp-block-coblocks-pricing-table-item {
+
 		@include break-small() {
 			flex-basis: 25%;
 			max-width: calc(100% / 4 - #{$gutter});
@@ -50,6 +54,7 @@ $gutter: 0.75em;
 	}
 
 	.has-4-columns &:not(:last-child):not(:nth-last-child(2)) {
+
 		@media (min-width: 600px) and (max-width: 1200px) {
 			margin-bottom: $gutter * 2;
 		}

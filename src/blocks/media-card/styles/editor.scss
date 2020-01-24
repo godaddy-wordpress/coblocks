@@ -1,5 +1,7 @@
 .wp-block-coblocks-media-card {
+
 	&__wrapper {
+
 		@include break-small-max() {
 			display: block !important;
 		}
@@ -56,6 +58,7 @@
 
 		// Moves the handle.
 		.components-resizable-box__side-handle {
+
 			&::after {
 				top: -7px;
 			}
@@ -77,6 +80,7 @@
 
 	// Create a fake circular handle point.
 	&:not(.has-no-media) .wp-block-coblocks-media-card__media-container {
+
 		&::after {
 			background: theme(primary);
 			border: 2px solid $white;
@@ -109,11 +113,15 @@
 	}
 
 	&.is-selected {
+
 		.editor-media-container__resizer .components-resizable-box__handle {
 			display: block;
 		}
+
 		@include break-small-max() {
+
 			&.is-stacked-on-mobile {
+
 				.editor-media-container__resizer .components-resizable-box__handle {
 					display: none;
 				}
@@ -122,7 +130,9 @@
 	}
 
 	@include break-small-max() {
+
 		&.is-selected.is-style-right {
+
 			.editor-media-container__resizer .components-resizable-box__handle {
 				display: block;
 			}
@@ -130,8 +140,11 @@
 	}
 
 	@include break-small-max() {
+
 		&.is-stacked-on-mobile {
+
 			.wp-block-coblocks-media-card__wrapper {
+
 				.wp-block-coblocks-media-card__content {
 					margin-left: 5%;
 					margin-right: 5%;
@@ -154,6 +167,7 @@
 
 	&[data-align="wide"],
 	&[data-align="full"] {
+
 		.has-no-media .components-placeholder {
 			max-height: 700px;
 		}
@@ -194,25 +208,33 @@
 
 	// Remove editor margins that do not exist on the frontend.
 	.wp-block-coblocks-media-card__content {
+
 		[data-block] {
 			margin-bottom: 0;
 			margin-top: 0;
 		}
 
 		> .block-editor-inner-blocks {
+
 			> .block-editor-block-list__layout {
+
 				> .wp-block {
+
 					&:first-child {
+
 						> .block-editor-block-list__block-edit {
 							margin-bottom: 0;
 							margin-top: 0;
 						}
+
 						> .block-editor-block-list__insertion-point {
 							display: none;
 						}
 					}
 				}
+
 				> div {
+
 					> .block-editor-default-block-appender {
 						display: none;
 					}
@@ -224,6 +246,7 @@
 
 // Hide the wide and full alignment settings on the row.
 .wp-block-coblocks-media-card {
+
 	.block-editor-block-toolbar .components-toolbar:nth-child(2) {
 		display: none;
 	}
@@ -235,6 +258,7 @@
 
 // IE 10+ Support
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+
 	.wp-block-coblocks-media-card.is-style-right {
 		display: flex;
 		flex-grow: 1;
@@ -252,6 +276,7 @@
 
 // Shim to fix styles in the previewer.
 .block-editor-inserter__preview-content .wp-block-coblocks-media-card {
+
 	.block-editor-inserter {
 		display: none !important;
 	}

@@ -24,8 +24,10 @@
 	}
 
 	&.is-cropped {
+
 		.coblocks-gallery--item,
 		.coblocks-gallery--item-thumbnail {
+
 			a,
 			img {
 				// IE11 doesn't support object-fit, so just make sure images aren't skewed.
@@ -46,6 +48,7 @@
 
 .alignfull,
 .alignwide {
+
 	ul.coblocks-gallery {
 		max-width: 100%;
 	}

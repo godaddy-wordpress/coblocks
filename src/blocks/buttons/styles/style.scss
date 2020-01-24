@@ -1,6 +1,7 @@
 $gutter: 1.35em;
 
 .wp-block-coblocks-buttons {
+
 	&__inner {
 		align-items: center;
 		display: flex;
@@ -26,7 +27,9 @@ $gutter: 1.35em;
 	}
 
 	.is-stacked-on-mobile {
+
 		.wp-block-button + .wp-block-button {
+
 			@media (max-width: #{ ($break-small) }) {
 				margin-left: 0;
 				margin-top: $gutter;

@@ -1,4 +1,5 @@
 .wp-block[data-type="coblocks/form"] {
+
 	.components-base-control,
 	.coblocks-option__input {
 		font-family: inherit;
@@ -32,6 +33,7 @@
 		}
 
 		.components-base-control {
+
 			&.coblocks-field-label__required {
 				color: $dark-gray-500;
 				margin-top: -5px;
@@ -67,6 +69,7 @@
 	}
 
 	.coblocks-field {
+
 		input,
 		textarea {
 			margin-bottom: 0;
@@ -116,6 +119,7 @@
 	div[data-type="coblocks/field-radio"].is-selected,
 	div[data-type="coblocks/field-checkbox"].is-typing,
 	div[data-type="coblocks/field-radio"].is-typing {
+
 		.is-inline {
 			display: block;
 
@@ -174,12 +178,14 @@
 
 // Advanced forms filter.
 .components-coblocks-advanced-forms-cta {
+
 	h3 {
 		margin-bottom: 0.5em;
 	}
 }
 
 .edit-post-settings-sidebar__panel-block {
+
 	.components-block-coblocks-form-recaptcha-key__custom-input {
 		margin-bottom: 15px !important;
 	}
@@ -187,6 +193,7 @@
 
 // Shim to fix styles in the previewer.
 .block-editor-inserter__preview-content .wp-block-coblocks-form {
+
 	.block-editor-block-list__layout {
 		margin-left: 0;
 		margin-right: 0;
@@ -199,7 +206,9 @@
 
 // Core themes.
 .is-twentynineteen {
+
 	.coblocks-form {
+
 		.components-text-control__input,
 		.components-textarea-control__input {
 			border-color: #ccc;
@@ -218,6 +227,7 @@
 }
 
 .is-twentyseventeen {
+
 	.coblocks-label {
 		font-weight: 800;
 	}
@@ -228,7 +238,9 @@
 }
 
 .is-twentysixteen {
+
 	.coblocks-form {
+
 		.components-text-control__input,
 		.components-textarea-control__input {
 			background-color: #f7f7f7;
@@ -254,7 +266,9 @@
 // Added for Gutenberg 6.3+
 .block-editor-block-list__layout .block-editor-block-list__block[data-type="coblocks/form"].is-selected,
 .block-editor-block-list__layout .block-editor-block-list__block[data-type="coblocks/form"].has-child-selected {
+
 	.coblocks-form {
+
 		[data-block] {
 			margin-bottom: 42px;
 		}
@@ -262,23 +276,17 @@
 }
 
 .block-editor-block-list__layout .block-editor-block-list__block[data-type="coblocks/form"] .wp-block:first-child {
+
 	[data-block] {
 		margin-top: 2px;
 	}
 }
 
 .block-editor-block-list__layout
-	.block-editor-block-list__block[data-type="coblocks/form"].has-child-selected
-	> .block-editor-block-list__block-edit
-	> [data-block]
-	> div
-	.block-editor-inner-blocks,
-.block-editor-block-list__block[data-type="coblocks/form"].is-selected
-	> .block-editor-block-list__block-edit
-	> [data-block]
-	> div
-	> .block-editor-inner-blocks
-	.block-editor-block-list__layout {
+.block-editor-block-list__block[data-type="coblocks/form"].has-child-selected > .block-editor-block-list__block-edit > [data-block] > div
+.block-editor-inner-blocks,
+.block-editor-block-list__block[data-type="coblocks/form"].is-selected > .block-editor-block-list__block-edit > [data-block] > div > .block-editor-inner-blocks
+.block-editor-block-list__layout {
 	padding: 14px;
 	padding-bottom: 0;
 }

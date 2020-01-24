@@ -93,6 +93,7 @@
 	.wp-block-coblocks-service__figure {
 
 		&.is-selected {
+
 			&::after {
 				bottom: 0;
 				box-shadow: inset 0 0 0 4px theme(primary);
@@ -115,6 +116,7 @@
 	h4,
 	h5,
 	h6 {
+
 		&.rich-text {
 			margin-bottom: 0.5em;
 		}

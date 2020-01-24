@@ -1,4 +1,5 @@
 @include break-small-max() {
+
 	.has-responsive-columns > .block-editor-inner-blocks > .block-editor-block-list__layout {
 		flex-direction: column;
 

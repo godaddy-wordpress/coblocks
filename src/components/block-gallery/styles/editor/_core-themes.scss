@@ -2,6 +2,7 @@
 .is-twentyseventeen,
 .is-twentythirteen,
 .is-twentytwelve {
+
 	.coblocks-gallery--primary-caption.editor-rich-text__tinymce {
 		font-style: italic;
 		margin-bottom: 0;
@@ -10,6 +11,7 @@
 }
 
 .is-twentynineteen {
+
 	@include coblocksGalleryEditorBlocks {
 		margin-bottom: 48px;
 		margin-top: 50px;
@@ -21,6 +23,7 @@
 }
 
 .is-twentyfifteen {
+
 	@include coblocksGalleryEditorBlocks {
 		margin-bottom: 42px;
 		margin-top: 42px;
@@ -56,6 +59,7 @@
 }
 
 .is-twentyfourteen {
+
 	.coblocks-gallery--primary-caption.editor-rich-text__tinymce {
 		font-style: italic;
 		margin-bottom: -7px;
@@ -66,6 +70,7 @@
 }
 
 .is-twentythirteen {
+
 	@include coblocksGalleryEditorBlocks {
 		margin-bottom: 40px;
 		margin-top: 40px;
