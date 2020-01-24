@@ -12,6 +12,7 @@
 		"url": "https://github.com/godaddy-wordpress/coblocks/issues"
 	},
 	"scripts": {
+		"install": "composer install && npm install && npm run build && wp-scripts env install",
 		"start": "wp-scripts start --config .dev/config/webpack.config.js --progress",
 		"build": "wp-scripts build --config .dev/config/webpack.config.js",
 		"version": "grunt version && grunt update-pot && git add -A .",
