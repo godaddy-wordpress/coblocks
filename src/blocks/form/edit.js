@@ -459,7 +459,7 @@ class FormEdit extends Component {
 				<__experimentalBlockPatternPicker
 					icon={ get( blockType, [ 'icon', 'src' ] ) }
 					label={ get( blockType, [ 'title' ] ) }
-					instructions={ __( 'Select a pattern to start with.' ) }
+					instructions={ __( 'Select a pattern to start with.', 'coblocks' ) }
 					patterns={ patterns }
 					allowSkip
 					onSelect={ ( nextPattern = defaultPattern ) => {

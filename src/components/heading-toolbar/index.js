@@ -22,7 +22,7 @@ class HeadingToolbar extends Component {
 		return {
 			icon: <HeadingLevelIcon level={ targetLevel } isPressed={ isActive } />,
 			// translators: %s: heading level e.g: "1", "2", "3"
-			title: sprintf( __( 'Heading %d' ), targetLevel ),
+			title: sprintf( __( 'Heading %d', 'coblocks' ), targetLevel ),
 			isActive,
 			onClick: () => onChange( targetLevel ),
 		};
@@ -34,7 +34,7 @@ class HeadingToolbar extends Component {
 			<Toolbar
 				// isCollapsed={ isCollapsed }
 				icon={ <HeadingLevelIcon level={ selectedLevel } /> }
-				controls={ range( minLevel, maxLevel ).map( index =>
+				controls={ range( minLevel, maxLevel ).map( ( index ) =>
 					this.createLevelControl( index, selectedLevel, onChange )
 				) }
 			/>
