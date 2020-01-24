@@ -25,6 +25,7 @@
 		"test-e2e": "cypress run --config video=false --browser chrome",
 		"test-e2e:record": "cypress run --browser chrome",
 		"env": "wp-scripts env",
+		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
 		"lint:php": "wp-scripts env lint-php",
 		"test:php": "wp-scripts env test-php",
@@ -111,10 +112,6 @@
 		"sass-loader": "^8.0.0",
 		"slick-carousel": "^1.8.1",
 		"style-loader": "^0.19.1",
-		"stylelint": "^9.10.1",
-		"stylelint-config-prettier": "^3.1.0",
-		"stylelint-config-wordpress": "^13.1.0",
-		"stylelint-order": "^0.8.1",
 		"webpack-fix-style-only-entries": "^0.4.0"
 	},
 	"husky": {
@@ -126,19 +123,5 @@
 		"*.js": [
 			"jest --config .dev/tests/jest/jest.config.js --silent --findRelatedTests"
 		]
-	},
-	"stylelint": {
-		"extends": [
-			"stylelint-config-wordpress/scss",
-			"stylelint-config-prettier"
-		],
-		"plugins": [
-			"stylelint-order"
-		],
-		"rules": {
-			"at-rule-empty-line-before": null,
-			"no-descending-specificity": null,
-			"order/properties-alphabetical-order": true
-		}
 	}
 }
