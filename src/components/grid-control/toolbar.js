@@ -24,8 +24,8 @@ function CSSGridToolbar( {
 } ) {
 	return (
 		<Dropdown
-			className={ classnames( 'components-dropdown-menu', 'components-coblocks-visual-dropdown', className ) }
-			contentClassName="components-dropdown-menu__popover components-coblocks-visual-dropdown__popover"
+			className={ classnames( 'components-dropdown-menu', className ) }
+			contentClassName="components-dropdown-menu__popover"
 			renderToggle={ ( { isOpen, onToggle } ) => {
 				const openOnArrowDown = ( event ) => {
 					if ( ! isOpen && event.keyCode === DOWN ) {
