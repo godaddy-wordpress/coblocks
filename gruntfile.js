@@ -127,6 +127,6 @@ module.exports = function( grunt ) {
 	require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
 	grunt.registerTask( 'build', [ 'shell:build', 'update-pot', 'replace', 'clean:build', 'copy:build' ] );
-	grunt.registerTask( 'update-pot', [ 'shell:translations' ] );
+	grunt.registerTask( 'update-pot', [ 'shell:translations', 'replace:languages' ] );
 	grunt.registerTask( 'version', [ 'replace' ] );
 };
