@@ -71,12 +71,6 @@ jobs:
           paths:
             - node_modules
       - run:
-          name: Install WP-CLI
-          command: |
-            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-            chmod +x wp-cli.phar
-            sudo mv wp-cli.phar /usr/local/bin/wp
-      - run:
           name: Build the plugin
           command: npx wp-scripts build --config .dev/config/webpack.ci.config.js
       - run:
@@ -129,12 +123,6 @@ jobs:
           key: php73-build-dependency-cache--{{ checksum "package.json" }}
           paths:
             - node_modules
-      - run:
-          name: Install WP-CLI
-          command: |
-            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-            chmod +x wp-cli.phar
-            sudo mv wp-cli.phar /usr/local/bin/wp
       - run:
           name: Build the plugin
           command: npx wp-scripts build --config .dev/config/webpack.ci.config.js
@@ -223,12 +211,6 @@ jobs:
             bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
-          name: Install WP-CLI
-          command: |
-            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-            chmod +x wp-cli.phar
-            sudo mv wp-cli.phar /usr/local/bin/wp
-      - run:
           name: Build the plugin
           command: |
             npx wp-scripts build --config .dev/config/webpack.ci.config.js
@@ -236,13 +218,13 @@ jobs:
       - run:
           name: "Install WordPress"
           command: |
-            wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass=''
-            wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email
-            wp plugin activate coblocks
+            ./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass=''
+            ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email
+            ./vendor/bin/wp plugin activate coblocks
           path: /tmp/wordpress
       - run:
           name: "Start WPCLI Server"
-          command: sudo wp server --host=0.0.0.0 --port=80 --allow-root
+          command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root
           path: /tmp/wordpress
           background: true
       - run:
@@ -291,7 +273,7 @@ jobs:
           name: Generate the translations
           command: |
             mv ../project ../coblocks
-            npm run babel:build
+            npx grunt update-pot
       - run:
           name: Deploy coblocks.pot/coblocks.json back to GitHub
           command: |
