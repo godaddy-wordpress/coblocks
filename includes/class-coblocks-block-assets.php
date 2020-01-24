@@ -288,7 +288,7 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Events block.
-		if ( has_block( $this->slug . '/events' ) ) {
+		if ( has_block( 'coblocks/events' ) ) {
 			wp_enqueue_script(
 				'coblocks-slick',
 				$vendors_dir . '/slick.js',
