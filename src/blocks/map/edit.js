@@ -38,9 +38,9 @@ import { BlockIcon } from '@wordpress/block-editor';
  * Get settings.
  */
 let settings;
-// wp.api.loadPromise.then( () => {
-// 	settings = new wp.api.models.Settings();
-// } );
+wp.api.loadPromise.then( () => {
+	settings = new wp.api.models.Settings();
+} );
 
 class Edit extends Component {
 	constructor() {
