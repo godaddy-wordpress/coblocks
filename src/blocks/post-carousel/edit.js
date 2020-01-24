@@ -182,7 +182,8 @@ class PostCarousel extends Component {
 								<Button
 									className="components-placeholder__cancel-button"
 									title={ __( 'Retrieve an External Feed', 'coblocks' ) }
-									isLink
+									isLarge
+									isSecondary
 									onClick={ () => {
 										setAttributes( { postFeedType: 'external' } );
 									} }

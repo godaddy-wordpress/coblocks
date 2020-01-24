@@ -15,7 +15,7 @@
 			position: absolute;
 			text-align: center;
 			text-shadow: none;
-			top: 23px;
+			top: 25px;
 			width: 26px;
 			z-index: 1;
 
@@ -123,29 +123,17 @@
 			top: -2px;
 		}
 
-		.components-coblocks-dimensions-control__header .components-color-palette__clear {
-			height: 22px;
-			line-height: 20px;
-			margin-left: 10px;
-			padding-left: 6px;
-			padding-right: 6px;
-			position: relative;
-			top: -1px;
-		}
-
 		&__units {
+			margin-right: 3px;
+
 			.components-button {
 				font-size: 10px;
-				height: 22px;
 				justify-content: center;
-				line-height: 20px;
 				padding: 0;
-				position: relative;
 				text-align: center;
 				text-shadow: none;
 				text-transform: uppercase;
-				top: -1px;
-				width: 24px;
+				width: 25px;
 			}
 		}
 
@@ -204,11 +192,16 @@
 .components-panel__body {
 	.components-coblocks-dimensions-control {
 		.components-font-size-picker__select {
-			width: 115px;
 			margin-bottom: 0 !important;
+			width: 115px;
+
+			.components-base-control__field {
+				margin-bottom: 0;
+			}
 		}
 
 		.components-font-size-picker__controls {
+			align-items: center;
 			display: flex;
 			justify-content: space-between;
 			max-width: $sidebar-width - (2 * $panel-padding);

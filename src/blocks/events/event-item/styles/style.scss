@@ -1,0 +1,86 @@
+.wp-block-coblocks-event-item {
+	flex: 1 100%;
+	justify-content: space-between;
+	line-height: 1;
+	margin-bottom: map-get($spacing, 5);
+	width: 100%;
+
+	@include break-medium() {
+		display: flex !important;
+		margin-bottom: map-get($spacing, 3);
+	}
+}
+
+.wp-block-coblocks-events__date {
+	margin-bottom: map-get($spacing, 3);
+
+	@include break-medium() {
+		flex-basis: 15%;
+		margin-bottom: 0;
+	}
+}
+
+.wp-block-coblocks-events__content {
+	margin-bottom: map-get($spacing, 3);
+
+	@include break-medium() {
+		flex-basis: 65%;
+		margin-bottom: 0;
+		padding: 0 1em;
+	}
+}
+
+.wp-block-coblocks-events__title,
+.wp-block-coblocks-events__description,
+.wp-block-coblocks-events__time {
+	display: block;
+}
+
+.wp-block-coblocks-events__details {
+	@include break-medium() {
+		flex-basis: 20%;
+		text-align: right;
+	}
+}
+
+
+.wp-block-coblocks-events__title {
+	font-weight: 700;
+	margin-bottom: map-get($spacing, 1);
+}
+
+
+.wp-block-coblocks-events__day {
+	display: block;
+	font-size: 1.75em;
+	font-weight: 700;
+	margin-bottom: 5px;
+}
+
+.wp-block-coblocks-events__month {
+	margin-right: 5px;
+	margin-top: map-get($spacing, 1);
+
+	@include break-medium() {
+		display: block;
+		margin-bottom: 5px;
+		margin-right: 0;
+	}
+}
+
+.wp-block-coblocks-events__time {
+	font-weight: 700;
+	margin-bottom: map-get($spacing, 1);
+}
+
+.wp-block-coblocks-events__year,
+.wp-block-coblocks-events__month,
+.wp-block-coblocks-events__time,
+.wp-block-coblocks-events__location,
+.wp-block-coblocks-events__description {
+	font-size: 0.75em;
+}
+
+.wp-block-coblocks-events__description {
+	line-height: 1.476;
+}
