@@ -33,7 +33,7 @@
 	"wp-env": {
 		"plugin-dir": "coblocks",
 		"plugin-name": "CoBlocks",
-		"welcome-build-command": "npm run start"
+		"welcome-build-command": "npm start"
 	},
 	"locales": {
 		"da_DK": "Dansk",
