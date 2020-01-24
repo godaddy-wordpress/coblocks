@@ -141,3 +141,7 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 * [Remove the enqueing of the utilities stylesheet](https://github.com/godaddy-wordpress/coblocks/pull/1260)
 * [Pass block name to custom class helper](https://github.com/godaddy-wordpress/coblocks/pull/1294)
 * [E2E Compatibility Refactor](https://github.com/godaddy-wordpress/coblocks/pull/1261)
+
+### 1.20.1
+* Fix Slick carousel not being enqueued for the Events block
+* Fix block.json file missing for the Events block
