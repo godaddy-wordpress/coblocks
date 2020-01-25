@@ -6,7 +6,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 1.19.3
+Stable tag: 1.20.1
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,7 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Click to Tweet Block
 * Collage Gallery Block
 * Dynamic Separator Block
+* Events Block (New!)
 * Features Block
 * Food & Drinks Block
 * Form Block
@@ -119,5 +120,28 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+### Enhancements
+* Introduce the [Events block](https://github.com/godaddy-wordpress/coblocks/pull/883) 🎉
+* [Add support for Gutenberg 7.2](https://github.com/godaddy-wordpress/coblocks/pull/1272)
+* Tweak Map block ["Edit location" icon](https://github.com/godaddy-wordpress/coblocks/pull/1300)
+* [Refactor to use proper spacing utilities](https://github.com/godaddy-wordpress/coblocks/pull/1253)
+
 ### Bug Fixes
-* Fix gallery blocks not rendering properly within the editor
+* Fix [template selector in the Form block](https://github.com/godaddy-wordpress/coblocks/pull/1292) when Gutenberg is active
+* [Explicitly pass the block type name](https://github.com/godaddy-wordpress/coblocks/pull/1302) when registering on the server side
+* Fix Gallery blocks when [uploading images](https://github.com/godaddy-wordpress/coblocks/pull/1262)
+* Fix [custom links added to images](https://github.com/godaddy-wordpress/coblocks/pull/1250) in the Offset Gallery block
+
+### Misc
+* [Remove typography controls](https://github.com/godaddy-wordpress/coblocks/pull/1299) from Features block
+* [Switch padding and margin](https://github.com/godaddy-wordpress/coblocks/pull/1281) DimensionsControls
+* [Remove Typography controls](https://github.com/godaddy-wordpress/coblocks/pull/1259) from the core Cover block
+* When the core/buttons block is registered, [migrate from the coblocks/buttons block](https://github.com/godaddy-wordpress/coblocks/pull/1241)
+* [Removed unused class](https://github.com/godaddy-wordpress/coblocks/pull/1271) from Accordion inspector
+* [Remove the enqueing of the utilities stylesheet](https://github.com/godaddy-wordpress/coblocks/pull/1260)
+* [Pass block name to custom class helper](https://github.com/godaddy-wordpress/coblocks/pull/1294)
+* [E2E Compatibility Refactor](https://github.com/godaddy-wordpress/coblocks/pull/1261)
+
+### 1.20.1
+* Fix Slick carousel not being enqueued for the Events block
+* Fix block.json file missing for the Events block

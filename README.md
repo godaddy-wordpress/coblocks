@@ -20,6 +20,7 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 -   Click to Tweet Block
 -   Collage Gallery Block
 -   Dynamic Separator Block
+-   Events Block (New!)
 -   Features Block
 -   Food & Drinks Block
 -   Form Block
