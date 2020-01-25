@@ -8,9 +8,8 @@ import TypographyControls from './../../components/typography-controls';
 /**
  * WordPress dependencies
  */
-import { Component, Fragment } from '@wordpress/element';
+import { Component } from '@wordpress/element';
 import { BlockControls } from '@wordpress/block-editor';
-import { Toolbar } from '@wordpress/components';
 
 class Controls extends Component {
 	render() {
@@ -56,13 +55,9 @@ class Controls extends Component {
 
 		if ( ! hideToolbar ) {
 			return (
-				<Fragment>
-					<BlockControls>
-						<Toolbar>
-							<TypographyControls { ...this.props } />
-						</Toolbar>
-					</BlockControls>
-				</Fragment>
+				<BlockControls>
+					<TypographyControls { ...this.props } />
+				</BlockControls>
 			);
 		}
 
