@@ -231,18 +231,21 @@ class FoodAndDrinksEdit extends Component {
 									<IconButton
 										icon={ icons.popular }
 										label={ __( 'Popular', 'coblocks' ) }
-										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--popular"
+										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--popular', {
+											'is-toggled': attributes.popular,
+										} ) }
 										onClick={ () =>
 											setAttributes( { popular: ! attributes.popular } )
 										}
-										isToggled={ attributes.popular }
 									/>
 								) }
 								{ ( ( isSelected && attributes.title ) || ( !! attributes.spicy ) ) && (
 									<IconButton
 										icon={ icons.spicy }
 										label={ __( 'Spicy', 'coblocks' ) }
-										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicy"
+										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--spicy', {
+											'is-toggled': attributes.spicy,
+										} ) }
 										onClick={ this.setSpicyTo }
 										isToggled={ attributes.spicy }
 									/>
@@ -251,7 +254,9 @@ class FoodAndDrinksEdit extends Component {
 									<IconButton
 										icon={ icons.spicy }
 										label={ __( 'Hot', 'coblocks' ) }
-										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicier"
+										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--spicier', {
+											'is-toggled': attributes.spicier,
+										} ) }
 										onClick={ () =>
 											setAttributes( { spicier: ! attributes.spicier } )
 										}
@@ -261,7 +266,9 @@ class FoodAndDrinksEdit extends Component {
 								{ ( ( isSelected && attributes.title ) || ( !! attributes.vegetarian ) ) && (
 									<IconButton
 										icon={ icons.vegetarian }
-										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--vegetarian"
+										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--vegetarian', {
+											'is-toggled': attributes.vegetarian,
+										} ) }
 										label={ __( 'Vegetarian', 'coblocks' ) }
 										onClick={ () =>
 											setAttributes( {
@@ -275,7 +282,9 @@ class FoodAndDrinksEdit extends Component {
 									// Only renders if the option is checked within the Settings sidebar.
 									<IconButton
 										icon={ icons.glutenFree }
-										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--glutenFree"
+										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--glutenFree', {
+											'is-toggled': attributes.glutenFree,
+										} ) }
 										onClick={ () =>
 											setAttributes( {
 												glutenFree: ! attributes.glutenFree,
@@ -289,7 +298,9 @@ class FoodAndDrinksEdit extends Component {
 									<IconButton
 										icon={ icons.pescatarian }
 										label={ __( 'Pescatarian', 'coblocks' ) }
-										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--pescatarian"
+										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--pescatarian', {
+											'is-toggled': attributes.pescatarian,
+										} ) }
 										onClick={ () =>
 											setAttributes( {
 												pescatarian: ! attributes.pescatarian,
@@ -302,7 +313,9 @@ class FoodAndDrinksEdit extends Component {
 									// Only renders if the option is checked within the Settings sidebar.
 									<IconButton
 										icon={ icons.vegan }
-										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--vegan"
+										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--vegan', {
+											'is-toggled': attributes.vegan,
+										} ) }
 										onClick={ () =>
 											setAttributes( { vegan: ! attributes.vegan } )
 										}

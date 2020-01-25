@@ -107,28 +107,6 @@ class Inspector extends Component {
 				<InspectorControls>
 					<PanelBody title={ __( 'Column Settings', 'coblocks' ) } className="components-panel__body--column-settings">
 						<DimensionsControl { ...this.props }
-							type={ 'margin' }
-							label={ __( 'Margin', 'coblocks' ) }
-							help={ __( 'Space around the container.', 'coblocks' ) }
-							valueTop={ marginTop }
-							valueRight={ marginRight }
-							valueBottom={ marginBottom }
-							valueLeft={ marginLeft }
-							valueTopTablet={ marginTopTablet }
-							valueRightTablet={ marginRightTablet }
-							valueBottomTablet={ marginBottomTablet }
-							valueLeftTablet={ marginLeftTablet }
-							valueTopMobile={ marginTopMobile }
-							valueRightMobile={ marginRightMobile }
-							valueBottomMobile={ marginBottomMobile }
-							valueLeftMobile={ marginLeftMobile }
-							unit={ marginUnit }
-							syncUnits={ marginSyncUnits }
-							syncUnitsTablet={ marginSyncUnitsTablet }
-							syncUnitsMobile={ marginSyncUnitsMobile }
-							dimensionSize={ marginSize }
-						/>
-						<DimensionsControl { ...this.props }
 							type={ 'padding' }
 							label={ __( 'Padding', 'coblocks' ) }
 							help={ __( 'Space inside of the container.', 'coblocks' ) }
@@ -149,6 +127,28 @@ class Inspector extends Component {
 							syncUnitsTablet={ paddingSyncUnitsTablet }
 							syncUnitsMobile={ paddingSyncUnitsMobile }
 							dimensionSize={ paddingSize }
+						/>
+						<DimensionsControl { ...this.props }
+							type={ 'margin' }
+							label={ __( 'Margin', 'coblocks' ) }
+							help={ __( 'Space around the container.', 'coblocks' ) }
+							valueTop={ marginTop }
+							valueRight={ marginRight }
+							valueBottom={ marginBottom }
+							valueLeft={ marginLeft }
+							valueTopTablet={ marginTopTablet }
+							valueRightTablet={ marginRightTablet }
+							valueBottomTablet={ marginBottomTablet }
+							valueLeftTablet={ marginLeftTablet }
+							valueTopMobile={ marginTopMobile }
+							valueRightMobile={ marginRightMobile }
+							valueBottomMobile={ marginBottomMobile }
+							valueLeftMobile={ marginLeftMobile }
+							unit={ marginUnit }
+							syncUnits={ marginSyncUnits }
+							syncUnitsTablet={ marginSyncUnitsTablet }
+							syncUnitsMobile={ marginSyncUnitsMobile }
+							dimensionSize={ marginSize }
 						/>
 						{ ( lastId !== clientId ) ?
 							<RangeControl
