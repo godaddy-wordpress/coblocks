@@ -12,7 +12,6 @@ import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { Placeholder, Spinner, ResizableBox } from '@wordpress/components';
-import { withViewportMatch } from '@wordpress/viewport';
 import { withSelect } from '@wordpress/data';
 import { BlockIcon, RichText } from '@wordpress/block-editor';
 
@@ -33,11 +32,13 @@ const MIN_SIZE = 20;
 
 const applyWithSelect = withSelect( ( select ) => {
 	const { getEditorSettings } = select( 'core/editor' );
+	const { isViewportMatch } = select( 'core/viewport' );
 	const { maxWidth, isRTL } = getEditorSettings();
 
 	return {
 		maxWidth,
 		isRTL,
+		isLargeViewport: isViewportMatch( 'medium' ),
 	};
 } );
 
@@ -304,5 +305,4 @@ class Edit extends Component {
 
 export default compose( [
 	applyWithSelect,
-	withViewportMatch( { isLargeViewport: 'medium' } ),
 ] )( Edit );
