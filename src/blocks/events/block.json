@@ -1,0 +1,27 @@
+{
+	"name": "coblocks/events",
+	"category": "coblocks",
+	"attributes": {
+		"align": {
+			"type": "string"
+		},
+		"externalCalendarUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"eventsRange": {
+			"type": "string",
+			"default": "all"
+		},
+		"eventsToShow": {
+			"type": "number",
+			"default": 5
+		},
+		"textColor": {
+			"type": "string"
+		},
+		"customTextColor": {
+			"type": "string"
+		}
+	}
+}

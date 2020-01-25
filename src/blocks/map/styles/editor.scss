@@ -33,8 +33,7 @@
 		}
 	}
 
-	// Fix z-index, for when this block has margin bottom removed,
-	// and the next has margin-top removed.
+	// Fix z-index, for when this block has margin bottom removed, and the next has margin-top removed.
 	&.is-selected .components-resizable-box__handle {
 		z-index: 30;
 	}
@@ -45,17 +44,25 @@
 	}
 
 	.components-placeholder__cancel-button.is-link {
+		display: block;
 		margin-left: 33%;
 		margin-right: 33%;
-		display: block;
 	}
+}
+
+.components-block-coblocks-map-api-key-remove__button {
+	margin-left: 6px;
+}
+
+.components-block-coblocks-map-api-key__custom-input {
+	margin-bottom: 5px !important;
 }
 
 // Map styles.
 $styles: (standard), (silver), (retro), (dark), (night), (aubergine);
 
-// Style the VisualDropdown component buttons.
-.components-coblocks-visual-dropdown__button-wrapper {
+// Style the custom styles component buttons.
+.components-coblocks-map-styles__button-wrapper {
 	.components-button {
 		@each $style in $styles {
 			&--#{$style} {
@@ -68,44 +75,43 @@ $styles: (standard), (silver), (retro), (dark), (night), (aubergine);
 	}
 }
 
-// Inspector control panel UI tweaks
-.components-block-coblocks-map-zoom__custom-input {
-	svg {
-		position: relative;
-		top: -1px;
+// Style the clickable areas for the map Styles panel.
+.components-coblocks-map-styles {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	text-align: left;
+
+	.components-button-group {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		width: 100%;
 	}
 
-	.components-range-control__slider + .dashicon {
-		height: 25px;
-		top: -3px;
-		width: 25px;
-	}
-}
+	.components-coblocks-map-styles__button-wrapper {
+		border-radius: 4px;
+		display: flex;
+		flex-direction: column;
+		flex-shrink: 0;
+		list-style: none;
+		margin: 4px 0;
+		padding: 5px;
+		width: calc(50% - 8px);
 
-.components-block-coblocks-map-icon-size__custom-input {
-	.components-range-control__slider + .dashicon {
-		height: 26px;
-		width: 26px;
-	}
-}
-
-.components-block-coblocks-height__custom-input {
-	svg {
-		height: 18px;
-		position: relative;
-		right: -2px;
-		top: -1px;
-		width: 18px;
-	}
-}
-
-.edit-post-settings-sidebar__panel-block .components-panel__body {
-	.components-base-control {
-		&.components-block-coblocks-map-api-key__custom-input {
-			margin-bottom: 5px;
+		&.is-selected {
+			box-shadow: 0 0 0 2px $dark-gray-500;
 		}
 	}
-	.components-block-coblocks-map-api-key-remove__button {
-		margin-left: 5px;
+
+	.components-coblocks-map-styles__button {
+		align-items: center;
+		background: $white;
+		border: 1px solid rgba(25, 30, 35, 0.2);
+		border-radius: 3px !important;
+		height: auto;
+		margin: 0;
+		padding: 0 0 80px 0;
+		width: 100%;
 	}
 }
