@@ -126,7 +126,7 @@ export function addCoBlocksBlockToPage( clearEditor = true, blockID = '' ) {
 export function savePage() {
 	cy.get( '.edit-post-header__settings button.is-primary' ).click();
 
-	cy.get( '.components-snackbar-list__notice-container' ).should( 'be.visible' );
+	cy.get( '.components-snackbar-list__notice-container', { timeout: 10000 } ).should( 'be.visible' );
 
 	// Reload the page to ensure that we're not hitting any block errors
 	cy.reload();
@@ -213,7 +213,7 @@ export function getBlockSlug() {
  */
 export function setBlockStyle( style ) {
 	openSettingsPanel( RegExp( 'styles', 'i' ) );
-  
+
 	cy.get( '.edit-post-sidebar' ).find( '.editor-block-styles' )
 		.contains( RegExp( style, 'i' ) )
 		.click( { force: true } );
