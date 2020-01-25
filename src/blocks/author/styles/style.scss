@@ -9,7 +9,8 @@
 		padding: 40px 35px;
 	}
 
-	&__avatar {
+	&__avatar,
+	& figure.wp-block-coblocks-author__avatar {
 		border-radius: 100%;
 		flex: 0 0 auto;
 		height: 70px;

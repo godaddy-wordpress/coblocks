@@ -13,7 +13,16 @@
 		}
 	}
 
+	.components-placeholder__fieldset {
+		flex-direction: column;
+	}
+
+	.editor-block-list__block-edit .components-placeholder__fieldset {
+		flex-direction: row;
+	}
+
 	.components-placeholder__cancel-button {
+		align-self: flex-start;
 		margin-top: 10px;
 	}
 }
