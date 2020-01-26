@@ -439,3 +439,30 @@ div[data-type="coblocks/column"]:last-child {
 	border: 1px dashed rgba(123, 134, 162, 0.3);
 }
 
+// Style the Row block placeholder state.
+.components-coblocks-row-placeholder {
+
+	.components-coblocks-row-placeholder__button-wrapper {
+		display: flex;
+		flex-direction: column;
+		flex-shrink: 1;
+		list-style: none;
+		margin: 0 8px 0 0;
+	}
+
+	.components-coblocks-row-placeholder__button {
+		align-items: center;
+		background: $white;
+		border-radius: 3px !important;
+		height: auto;
+		margin: 0;
+		padding: 16px 10px;
+	}
+
+	.components-coblocks-row-placeholder__back {
+		align-self: center;
+		border-radius: 3px !important;
+		margin-bottom: 0;
+		margin-right: 4px;
+	}
+}

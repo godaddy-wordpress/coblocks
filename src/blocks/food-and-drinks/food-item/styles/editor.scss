@@ -7,13 +7,7 @@
 	.block-editor-media-placeholder {
 		margin: 0 0 1.65em !important;
 		min-height: 264px;
-		outline: 1px dashed $dark-gray-150;
 		padding: 100% 0 0 0;
-		position: relative;
-
-		&:hover {
-			outline: 1px dashed $dark-gray-500;
-		}
 
 		.components-placeholder__label,
 		.components-placeholder__instructions {
@@ -23,13 +17,19 @@
 		.components-placeholder__fieldset {
 			align-items: center;
 			height: 100%;
+			justify-content: center;
 			left: 0;
 			position: absolute;
 			top: 0;
 			width: 100%;
 
+			.components-form-file-upload {
+				margin-bottom: 8px;
+			}
+
 			.components-button {
 				margin-bottom: 0 !important;
+				margin-right: 0 !important;
 			}
 		}
 
@@ -89,7 +89,8 @@
 		line-height: 1;
 	}
 
-	&__attribute.components-icon-button {
+	&__attribute.components-icon-button,
+	&__attribute.components-button {
 		border: 0;
 		border-radius: 2px;
 		box-shadow: none;
@@ -283,7 +284,7 @@
 	margin-bottom: 6px;
 }
 
-.edit-post-settings-sidebar__panel-block .components-food-item-attributes {
+.components-food-item-attributes {
 	.components-base-control {
 		margin-bottom: 8px;
 	}
