@@ -29,14 +29,6 @@ Cypress.Commands.add( 'uploadFile', ( fileName, fileType, selector ) => {
   } );
 } );
 
-// custom Drag and Drop command
-Cypress.Commands.add( 'dragAndDrop', ( selector, x, y ) => {
-  cy.get( selector )
-    .trigger( 'mousedown', { which: 1 } )
-    .trigger( 'mousemove', { clientX: x, clientY: y } )
-    .trigger( 'mouseup', { force: true } );
-} );
-
 // Utilities
 function hexStringToByte( str ) {
   if ( ! str ) {
