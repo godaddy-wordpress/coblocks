@@ -105,12 +105,12 @@ class Inspector extends Component {
 				<InspectorControls>
 					{ !! apiKey && address && pinned &&
 						<PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
-							<div className="components-coblocks-visual-dropdown">
+							<div className="components-coblocks-map-styles">
 								<ButtonGroup aria-label={ __( 'Select Map Style', 'coblocks' ) }>
 									{ map( styleOptions, ( { label, value } ) => (
-										<div className={ value === skin ? 'components-coblocks-visual-dropdown__button-wrapper components-button--${ value } is-selected' : 'components-coblocks-visual-dropdown__button-wrapper components-button--${ value }' }>
+										<div className={ value === skin ? 'components-coblocks-map-styles__button-wrapper components-button--${ value } is-selected' : 'components-coblocks-map-styles__button-wrapper components-button--${ value }' }>
 											<Button
-												className={ value === skin ? `components-coblocks-visual-dropdown__button components-button--${ value } components-coblocks-visual-dropdown__button--selected` : `components-button--${ value } components-coblocks-visual-dropdown__button` }
+												className={ value === skin ? `components-coblocks-map-styles__button components-button--${ value } components-coblocks-map-styles__button--selected` : `components-button--${ value } components-coblocks-map-styles__button` }
 												isSmall
 												onClick={ () => {
 													setAttributes( { skin: value } );
@@ -133,7 +133,6 @@ class Inspector extends Component {
 									<input
 										type="number"
 										aria-label={ __( 'Height for the map in pixels', 'coblocks' ) }
-										className="components-block-coblocks-height__custom-input"
 										onChange={ ( event ) => setAttributes( { height: parseInt( event.target.value, 10 ) } ) }
 										value={ height }
 										min={ 200 }
@@ -144,7 +143,6 @@ class Inspector extends Component {
 									label={ __( 'Zoom Level', 'coblocks' ) }
 									value={ zoom }
 									onChange={ ( nextZoom ) => setAttributes( { zoom: nextZoom } ) }
-									className="components-block-coblocks-map-zoom__custom-input"
 									min={ 5 }
 									max={ 20 }
 									step={ 1 }
@@ -155,7 +153,6 @@ class Inspector extends Component {
 										label={ __( 'Marker Size', 'coblocks' ) }
 										value={ iconSize }
 										onChange={ ( nextIconSize ) => setAttributes( { iconSize: nextIconSize } ) }
-										className="components-block-coblocks-map-icon-size__custom-input"
 										min={ 20 }
 										max={ 100 }
 										step={ 2 }
@@ -225,6 +222,7 @@ class Inspector extends Component {
 						/>
 						<Button
 							isPrimary
+							isLarge
 							onClick={ this.updateApiKey }
 							disabled={ ( this.state.apiKey === '' ) || ( this.state.apiKey === this.props.apiKey ) }
 						>
@@ -233,7 +231,8 @@ class Inspector extends Component {
 						{ apiKey &&
 						<Button
 							className="components-block-coblocks-map-api-key-remove__button"
-							isDefault
+							isSecondary
+							isLarge
 							onClick={ this.removeApiKey }
 							disabled={ this.state.apiKey !== this.props.apiKey || ! this.state.apiKey }
 						>

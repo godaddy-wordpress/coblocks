@@ -113,25 +113,25 @@ class SizeControl extends Component {
 			const standardSizes = [
 				{
 					shortName: ( wideControlsEnabled === true && 'wide' === align ) || 'full' === align ? 'S' : __( 'Small', 'coblocks' ),
-					size: 'sml',
+					size: 'small',
 				},
 				{
 					shortName: ( wideControlsEnabled === true && 'wide' === align ) || 'full' === align ? 'M' : __( 'Medium', 'coblocks' ),
-					size: 'med',
+					size: 'medium',
 				},
 			];
 
 			const wideSizes = [
 				{
 					shortName: 'L',
-					size: 'lrg',
+					size: 'large',
 				},
 			];
 
 			const fullSizes = [
 				{
 					shortName: 'XL',
-					size: 'xlrg',
+					size: 'huge',
 				},
 			];
 
@@ -173,6 +173,7 @@ class SizeControl extends Component {
 							<Button
 								key={ size }
 								isLarge
+								isSecondary
 								isPrimary={ value === size }
 								aria-pressed={ value === size }
 								onClick={ () => onChange( size ) }
@@ -184,6 +185,7 @@ class SizeControl extends Component {
 					{ reset &&
 						<Button
 							isSmall
+							isSecondary
 							onClick={ () => onChange( resetValue ) }
 						>
 							{ __( 'Reset', 'coblocks' ) }

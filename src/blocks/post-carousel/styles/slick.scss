@@ -1,0 +1,150 @@
+.slick-slider {
+	box-sizing: border-box;
+	display: block;
+	position: relative;
+	touch-action: pan-y;
+	user-select: none;
+
+	.slick-track,
+	.slick-list {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.slick-list {
+	display: block;
+	margin: 0 map-get($spacing, -2);
+	overflow: hidden;
+	padding: 0;
+	position: relative;
+
+	&:focus {
+		outline: none;
+	}
+
+	&.dragging {
+		cursor: pointer;
+		cursor: hand;
+	}
+}
+
+.slick-track {
+	display: flex;
+	left: 0;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top: 0;
+
+	&::before,
+	&::after {
+		content: "";
+		display: table;
+	}
+
+	&::after {
+		clear: both;
+	}
+
+	.slick-loading & {
+		visibility: hidden;
+	}
+}
+
+.slick-slide {
+	display: none;
+	float: left;
+	height: auto;
+	margin: 0 map-get($spacing, 2);
+	min-height: 1px;
+	outline: none;
+
+	[dir="rtl"] & {
+		float: right;
+	}
+
+	img {
+		display: block;
+	}
+
+	&.slick-loading img {
+		display: none;
+	}
+
+	&.dragging img {
+		pointer-events: none;
+	}
+}
+
+.slick-initialized .slick-slide {
+	display: block;
+}
+
+/* Arrows */
+.slick-prev,
+.slick-next {
+	background: transparent;
+	border: none;
+	bottom: 0;
+	color: transparent;
+	cursor: pointer;
+	display: inline-block;
+	font-size: initial;
+	height: map-get($spacing, 8);
+	line-height: 0;
+	outline: none;
+	padding: 0.5em;
+	position: absolute;
+	width: map-get($spacing, 8);
+
+	&:hover,
+	&:focus {
+		cursor: pointer;
+		opacity: 0.5;
+		outline: none;
+	}
+
+	&:hover::before,
+	&:focus::before {
+		opacity: 1;
+	}
+}
+
+.slick-prev {
+	left: 50%;
+	transform: translateX(-100%);
+}
+
+
+.slick-next {
+	right: 50%;
+	transform: translateX(100%);
+}
+
+.slick-prev.slick-disabled::before,
+.slick-next.slick-disabled::before {
+	opacity: 0.25;
+}
+
+.slick-prev::before,
+.slick-next::before {
+	background-image: url(images/lightbox/arrow-left.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+	content: " ";
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+
+.slick-next::before {
+	background-image: url(images/lightbox/arrow-right.svg);
+}
+
+[dir="rtl"] .slick-prev::before {
+	background-image: url(images/lightbox/arrow-right.svg);
+}
+
+[dir="rtl"] .slick-next::before {
+	background-image: url(images/lightbox/arrow-left.svg);
+}

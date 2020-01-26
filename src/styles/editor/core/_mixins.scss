@@ -30,6 +30,12 @@
 	}
 }
 
+@mixin break-small-max() {
+	@media (max-width: #{ ($break-small-max) }) {
+		@content;
+	}
+}
+
 @mixin break-mobile() {
 	@media (min-width: #{ ($break-mobile) }) {
 		@content;

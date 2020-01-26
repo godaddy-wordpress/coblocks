@@ -12,6 +12,10 @@ import { RichText } from '@wordpress/block-editor';
 const save = ( { attributes } ) => {
 	const { url, file, meta, caption } = attributes;
 
+	if ( 'undefined' === typeof url ) {
+		return;
+	}
+
 	const classes = classnames( {
 		'no-meta': ! meta,
 	} );

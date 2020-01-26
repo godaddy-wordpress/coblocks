@@ -41,13 +41,13 @@
 	}
 
 	.block-editor-media-placeholder__upload-button {
-		@media (max-width: 699px) {
+		@include break-small-max() {
 			display: none;
 		}
 	}
 
 	.editor-media-placeholder__media-library-button {
-		@media (max-width: 699px) {
+		@include break-small-max() {
 			background: transparent;
 			border: 0;
 			box-shadow: none !important;
@@ -58,18 +58,18 @@
 		}
 	}
 
+	.block-editor-media-placeholder .components-placeholder__fieldset .components-button {
+		margin-bottom: 0 !important;
+		margin-right: 0 !important;
+	}
+
 	.block-editor-media-placeholder {
 		background: $dark-opacity-light-200;
 		min-height: inherit;
-		outline: 1px dashed $dark-gray-150;
 		outline-offset: -1px;
 
 		.is-dark-theme & {
 			background: $light-opacity-light-200;
-		}
-
-		&:hover {
-			outline: 1px dashed $dark-gray-500;
 		}
 
 		.components-placeholder__label,
@@ -81,6 +81,7 @@
 			align-content: center;
 			align-items: center;
 			height: 100%;
+			justify-content: center;
 			left: 0;
 			max-width: 100%;
 			position: absolute;

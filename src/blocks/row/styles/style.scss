@@ -1,42 +1,40 @@
 .wp-block-coblocks-row {
 	position: relative;
-}
 
-.wp-block-coblocks-row:not([data-columns="1"]) {
 	// Don't use flexbox if the row is 1 column, 100% wide.
-	.wp-block-coblocks-row__inner {
+	&:not([data-columns="1"]) .wp-block-coblocks-row__inner {
 		display: flex;
 	}
 }
 
-.wp-block-coblocks-row[data-columns="1"] {
-	.wp-block-coblocks-column__inner {
-		> [class*="wp-block-"] {
-			margin-left: auto;
-			margin-right: auto;
-			max-width: calc(6 * (100vw / 12.5));
+.wp-block-coblocks-row[data-columns="1"] .wp-block-coblocks-column__inner {
 
-			&.alignwide {
-				max-width: calc(6 * (100vw / 8.5));
-			}
+	> [class*="wp-block-"] {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: calc(6 * (100vw / 12.5));
 
-			&.alignfull {
-				max-width: 100%;
-			}
+		&.alignwide {
+			max-width: calc(6 * (100vw / 8.5));
+		}
 
-			&[data-columns="1"] {
-				.wp-block-coblocks-column__inner {
-					> :not([class*="wp-block-"]) {
-						max-width: 100%;
-					}
+		&.alignfull {
+			max-width: 100%;
+		}
+
+		&[data-columns="1"] {
+			.wp-block-coblocks-column__inner {
+				> :not([class*="wp-block-"]) {
+					max-width: 100%;
 				}
 			}
 		}
-		> :not([class*="wp-block-"]) {
-			margin-left: auto;
-			margin-right: auto;
-			max-width: 100%;
-		}
+	}
+
+	> :not([class*="wp-block-"]) {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 100%;
 	}
 }
 
@@ -57,47 +55,141 @@
 	word-break: break-word; // For back-compat.
 
 	p {
-		margin-bottom: 2em;
 		margin-top: 0;
 
 		&:last-of-type {
 			margin-bottom: 0;
 		}
-
-		&:not(.has-background):not(.wp-block-coblocks-click-to-tweet__text) {
-			padding: 0;
-		}
 	}
 
-	&__inner {
-		&.has-background-overlay {
-			> * {
-				position: relative;
-			}
+	&__inner.has-background-overlay * {
+		position: relative;
+	}
+}
+
+.has-small-gutter {
+
+	> [class*="wp-block-coblocks-column"] {
+
+		&:nth-child(odd) {
+			margin-right: map-get($spacing, 1);
+		}
+
+		&:nth-child(even) {
+			margin-left: map-get($spacing, 1);
+		}
+
+		&:not(:first-child) {
+			margin-left: map-get($spacing, 1);
+		}
+
+		&:not(:last-child) {
+			margin-right: map-get($spacing, 1);
 		}
 	}
 }
 
-//Fix background color contrast issue
-.is-twentynineteen {
-	.entry .entry-content {
-		.wp-block-coblocks-column {
-			p,
-			a,
-			h1,
-			h2,
-			h3,
-			h4,
-			h5,
-			h6 {
-				color: inherit;
-			}
+.has-medium-gutter {
 
-			&__inner {
-				img {
-					max-width: 100% !important;
-				}
-			}
+	> [class*="wp-block-coblocks-column"] {
+
+		&:nth-child(odd) {
+			margin-right: map-get($spacing, 2);
+		}
+
+		&:nth-child(even) {
+			margin-left: map-get($spacing, 2);
+		}
+
+		&:not(:first-child) {
+			margin-left: map-get($spacing, 2);
+		}
+
+		&:not(:last-child) {
+			margin-right: map-get($spacing, 2);
 		}
 	}
 }
+
+.has-large-gutter {
+
+	> [class*="wp-block-coblocks-column"] {
+
+		&:nth-child(odd) {
+			margin-right: map-get($spacing, 3);
+		}
+
+		&:nth-child(even) {
+			margin-left: map-get($spacing, 3);
+		}
+
+		&:not(:first-child) {
+			margin-left: map-get($spacing, 3);
+		}
+
+		&:not(:last-child) {
+			margin-right: map-get($spacing, 3);
+		}
+	}
+}
+
+.has-huge-gutter {
+
+	> [class*="wp-block-coblocks-column"] {
+
+		&:nth-child(odd) {
+			margin-right: map-get($spacing, 4);
+		}
+
+		&:nth-child(even) {
+			margin-left: map-get($spacing, 4);
+		}
+
+		&:not(:first-child) {
+			margin-left: map-get($spacing, 4);
+		}
+
+		&:not(:last-child) {
+			margin-right: map-get($spacing, 4);
+		}
+	}
+}
+
+.wp-block-coblocks-row__inner.is-stacked-on-mobile {
+
+	@include break-small-max() {
+		flex-direction: column;
+
+		> .wp-block-coblocks-column {
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+			max-width: 100% !important;
+			width: 100% !important;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		&.has-no-gutter > [class*="wp-block"]:not(:last-child) {
+			margin-bottom: 0;
+		}
+
+		&.has-small-gutter > [class*="wp-block"]:not(:last-child) {
+			margin-bottom: map-get($spacing, 1) * 2;
+		}
+
+		&.has-medium-gutter > [class*="wp-block"]:not(:last-child) {
+			margin-bottom: map-get($spacing, 2) * 2;
+		}
+
+		&.has-large-gutter > [class*="wp-block"]:not(:last-child) {
+			margin-bottom: map-get($spacing, 3) * 2;
+		}
+
+		&.has-huge-gutter > [class*="wp-block"]:not(:last-child) {
+			margin-bottom: map-get($spacing, 4) * 2;
+		}
+	}
+}
+
