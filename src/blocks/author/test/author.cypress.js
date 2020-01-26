@@ -2,29 +2,16 @@
  * Include our constants
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
-import { testURL } from '../../../../.dev/tests/cypress/constants';
 
 describe( 'Test CoBlocks Author Block', function() {
-	before( function() {
-		cy.visit( testURL + '/wp-admin/upload.php' );
-		cy.get( 'html' ).then( ( $html ) => {
-			if ( $html.find( '.mode-grid' ).length ) {
-				cy.get( 'a.view-list' ).click();
-				cy.get( '.wp-list-table' );
-			}
-		} );
-		cy.visit( testURL + '/wp-admin/media-new.php' );
-		cy.get( 'html' ).then( ( $html ) => {
-			if ( $html.find( '.upload-flash-bypass' ).is( ':visible' ) ) {
-				cy.get( '.upload-flash-bypass' ).click();
-			}
-		} );
-		cy.uploadFile( '../dist/images/map/dark.jpg', 'image/jpg', 'input[id="async-upload"]' );
-		cy.get( '#html-upload' ).click();
-		cy.get( '.has-media-icon' ).contains( 'dark' );
-		helpers.createNewPost();
-		helpers.disableGutenbergFeatures();
-	} );
+	/**
+	 * Setup author image data
+	 */
+	const authorImageData = {
+		fileName: '150x150.png',
+		imageBase: '150x150',
+		pathToFixtures: '../.dev/tests/cypress/fixtures/images/',
+	};
 
 	/**
 	 * Test that we can add a author block to the content, not add any text or
@@ -74,16 +61,21 @@ describe( 'Test CoBlocks Author Block', function() {
 	 * Test that we can add a author block with author info content
 	 */
 	it( 'Test author block saves with author information.', function() {
+		const { fileName, imageBase, pathToFixtures } = authorImageData;
 		helpers.addCoBlocksBlockToPage();
 
 		cy.get( '.wp-block-coblocks-author' ).click( { force: true } );
 
 		// Upload the author avatar
-		cy.get( '.wp-block-coblocks-author__avatar' ).click();
-		cy.get( '.media-frame-router .media-router #menu-item-browse' ).click();
-		cy.get( '.attachments li:first-child' ).click();
-		cy.get( '.media-frame-toolbar .media-button-select' ).click();
-		cy.get( '.wp-block-coblocks-author__avatar-img' ).should( 'have.attr', 'src' ).and( 'match', /dark/ );
+		cy.fixture( pathToFixtures + fileName, 'base64' ).then( fileContent => {
+			cy.get( 'div[data-type="coblocks/author"]' )
+				.find( 'div.components-drop-zone' ).first()
+				.upload(
+					{ fileContent, fileName, mimeType: 'image/png' },
+					{ subjectType: 'drag-n-drop', force: true, events: [ 'dragstart', 'dragover', 'drop' ] },
+				);
+			cy.get( '.wp-block-coblocks-author__avatar img' ).should( 'exist' ); // Wati for upload to finish.
+		} );
 
 		cy.get( '.wp-block-coblocks-author__name' ).type( 'Randall Lewis' );
 
@@ -104,7 +96,7 @@ describe( 'Test CoBlocks Author Block', function() {
 
 		cy.get( '.wp-block-coblocks-author__avatar-img' )
 			.should( 'have.attr', 'src' )
-			.and( 'match', /dark/ );
+			.and( 'contains', imageBase );
 
 		cy.get( '.wp-block-coblocks-author__name' )
 			.contains( 'Randall Lewis' );
