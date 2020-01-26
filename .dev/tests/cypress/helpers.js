@@ -211,57 +211,20 @@ export function getBlockSlug() {
  * @param string hexColor    The custom hex color to set. eg: #55e7ff
  */
 export function setColorSetting( settingName, hexColor ) {
-	openSettingsPanel( 'Color Settings' );
-
-	switch ( settingName ) {
-		case 'background':
-			cy.get( '.components-base-control__field' )
-				.contains( /background color/i )
-				.then( $backgroundPanel => {
-					cy.get( Cypress.$( $backgroundPanel ).parent() )
-						.contains( /custom color/i )
-						.click();
-					cy.get( '.components-color-picker__inputs-field input[type="text"]' )
-						.clear()
-						.type( hexColor );
-					cy.get( Cypress.$( $backgroundPanel ).parent() )
-						.contains( /custom color/i )
-						.click();
-				} );
-			break;
-
-		case 'text':
-			cy.get( '.components-base-control__field' )
-				.contains( /text color/i )
-				.then( $textPanel => {
-					cy.get( Cypress.$( $textPanel ).parent() )
-						.contains( /custom color/i )
-						.click();
-					cy.get( '.components-color-picker__inputs-field input[type="text"]' )
-						.clear()
-						.type( hexColor );
-					cy.get( Cypress.$( $textPanel ).parent() )
-						.contains( /custom color/i )
-						.click();
-				} );
-			break;
-
-		case 'color':
-			cy.get( '.components-base-control__field' )
-				.contains( /color/i )
-				.then( $colorPanel => {
-					cy.get( Cypress.$( $colorPanel ).parent() )
-						.contains( /custom color/i )
-						.click();
-					cy.get( '.components-color-picker__inputs-field input[type="text"]' )
-						.clear()
-						.type( hexColor );
-					cy.get( Cypress.$( $colorPanel ).parent() )
-						.contains( /custom color/i )
-						.click();
-				} );
-			break;
-	}
+	openSettingsPanel( /color settings/i );
+	cy.get( '.components-base-control__field' )
+		.contains( RegExp( settingName, 'i' ) )
+		.then( $subColorPanel => {
+			cy.get( Cypress.$( $subColorPanel ).parent() )
+				.contains( /custom color/i )
+				.click();
+			cy.get( '.components-color-picker__inputs-field input[type="text"]' ) 
+				.clear()
+				.type( hexColor );
+			cy.get( Cypress.$( $subColorPanel ).parent() )
+				.contains( /custom color/i )
+				.click();
+			} );
 }
 
 /**
