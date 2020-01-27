@@ -1,0 +1,86 @@
+.editor-styles-wrapper {
+	.m {
+		@include utilities($spacing, "margin", "-");
+	}
+	.mt {
+		@include utilities($spacing, "margin-top", "-");
+	}
+	.mb {
+		@include utilities($spacing, "margin-bottom", "-");
+	}
+	.mr {
+		@include utilities($spacing, "margin-right", "-");
+	}
+	.ml {
+		@include utilities($spacing, "margin-left", "-");
+	}
+
+	// 600px +
+	@include break-small() {
+		.sm\:m {
+			@include utilities($spacing, "margin", "-");
+		}
+
+		.sm\:mt {
+			@include utilities($spacing, "margin-top", "-");
+		}
+
+		.sm\:mb {
+			@include utilities($spacing, "margin-bottom", "-");
+		}
+
+		.sm\:mr {
+			@include utilities($spacing, "margin-right", "-");
+		}
+
+		.sm\:ml {
+			@include utilities($spacing, "margin-left", "-");
+		}
+	}
+
+	// 782px+
+	@include break-medium() {
+		.md\:m {
+			@include utilities($spacing, "margin", "-");
+		}
+
+		.md\:mt {
+			@include utilities($spacing, "margin-top", "-");
+		}
+
+		.md\:mb {
+			@include utilities($spacing, "margin-bottom", "-");
+		}
+
+		.md\:mr {
+			@include utilities($spacing, "margin-right", "-");
+		}
+
+		.md\:ml {
+			@include utilities($spacing, "margin-left", "-");
+		}
+	}
+
+	// 1280px+
+	@include break-wide() {
+		.lg\:m {
+			@include utilities($spacing, "margin", "-");
+		}
+
+		.lg\:mt {
+			@include utilities($spacing, "margin-top", "-");
+		}
+
+		.lg\:mb {
+			@include utilities($spacing, "margin-bottom", "-");
+		}
+
+		.lg\:mr {
+			@include utilities($spacing, "margin-right", "-");
+		}
+
+		.lg\:ml {
+			@include utilities($spacing, "margin-left", "-");
+		}
+	}
+}

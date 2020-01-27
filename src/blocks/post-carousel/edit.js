@@ -115,8 +115,6 @@ class PostCarousel extends Component {
 			align,
 		} = attributes;
 
-		const imageClasses = classnames( 'wp-block-coblocks-post-carousel__image', 'table', 'relative', 'flex-0', 'mb-2', 'w-full', {} );
-
 		const editToolbarControls = [
 			{
 				icon: 'edit',
@@ -184,7 +182,8 @@ class PostCarousel extends Component {
 								<Button
 									className="components-placeholder__cancel-button"
 									title={ __( 'Retrieve an External Feed', 'coblocks' ) }
-									isLink
+									isLarge
+									isSecondary
 									onClick={ () => {
 										setAttributes( { postFeedType: 'external' } );
 									} }
@@ -251,7 +250,7 @@ class PostCarousel extends Component {
 					<ServerSideRender
 						block="coblocks/post-carousel"
 						attributes={ this.props.attributes }
-						className="coblocks-slick pb-7"
+						className="coblocks-slick pb-8"
 					/>
 				}
 				{ postFeedType === 'internal' &&
@@ -278,8 +277,8 @@ class PostCarousel extends Component {
 									return (
 										<div className="wp-block-coblocks-post-carousel__item" key={ i }>
 											{ featuredImageUrl &&
-												<div className={ imageClasses }>
-													<div className="block w-full bg-cover bg-center-center pt-full" style={ { backgroundImage: featuredImageStyle } }></div>
+												<div className="wp-block-coblocks-post-carousel__image">
+													<div className="bg-cover bg-center-center" style={ { backgroundImage: featuredImageStyle } }></div>
 												</div>
 											}
 											<div className={ classnames( 'wp-block-coblocks-post-carousel__content', {
@@ -303,7 +302,7 @@ class PostCarousel extends Component {
 													</a>
 												</Disabled>
 												{ displayPostContent &&
-													<div className="wp-block-coblocks-post-carousel__post-excerpt mt-1">
+													<div className="wp-block-coblocks-post-carousel__excerpt">
 														<RawHTML
 															key="html"
 														>

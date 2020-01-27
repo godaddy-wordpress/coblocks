@@ -1,5 +1,5 @@
 .wp-block-coblocks-click-to-tweet {
-	border-radius: $accordion-border-radius;
+	border-radius: 4px;
 	margin-bottom: 1.9em;
 	position: relative;
 	border: 1px solid transparent;
@@ -30,12 +30,12 @@
 	}
 
 	&__twitter-btn:not(.has-button-color) {
-		background: $twitter;
+		background: $color-twitter;
 	}
 
 	&__twitter-btn {
 		appearance: none;
-		border-radius: $accordion-border-radius;
+		border-radius: 4px;
 		border: none;
 		box-shadow: none !important;
 		color: $white !important;

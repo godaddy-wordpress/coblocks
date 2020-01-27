@@ -309,12 +309,14 @@ class CropSettings extends Component {
 					<ButtonGroup >
 						<IconButton
 							isLarge
+							isSecondary
 							icon={ icons.rotateLeft }
 							label={ __( 'Rotate counter-clockwise', 'coblocks' ) }
 							onClick={ () => this.applyRotation( self.state.r - 90 ) }
 						/>
 						<IconButton
 							isLarge
+							isSecondary
 							icon={ icons.rotateRight }
 							label={ __( 'Rotate clockwise', 'coblocks' ) }
 							onClick={ () => this.applyRotation( self.state.r + 90 ) }
@@ -324,10 +326,10 @@ class CropSettings extends Component {
 						type="button"
 						onClick={ () => this.resetControl() }
 						isSmall
-						isDefault
+						isSecondary
 						aria-label={ __( 'Reset image cropping options', 'coblocks' ) }
 					>
-						{ __( 'Reset All', 'coblocks' ) }
+						{ __( 'Reset', 'coblocks' ) }
 					</Button>
 				</div>
 			</div>

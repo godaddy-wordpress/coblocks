@@ -75,24 +75,6 @@ class CoBlocks_Block_Assets {
 			array(),
 			COBLOCKS_VERSION
 		);
-
-		/**
-		 * Filters whether to load utility styles.
-		 *
-		 * @param bool $load_utility_styles whether the utility css should be loaded. Default false.
-		 */
-		$load_utility_styles = (bool) apply_filters( 'coblocks_utility_styles_enabled', false );
-
-		if ( $load_utility_styles ) {
-
-			// Mock wp_enqueue_style for utility styles.
-			wp_enqueue_style(
-				$this->slug . '-utilities',
-				$this->url . '/dist/utilities.style.build.css',
-				array(),
-				COBLOCKS_VERSION
-			);
-		};
 	}
 
 	/**
@@ -114,7 +96,7 @@ class CoBlocks_Block_Assets {
 		wp_register_script(
 			$this->slug . '-editor',
 			$this->url . '/dist/blocks.build.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api', 'wp-rich-text', 'wp-editor' ),
+			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api', 'wp-rich-text', 'wp-editor', 'wp-data' ),
 			COBLOCKS_VERSION,
 			false
 		);
@@ -286,6 +268,24 @@ class CoBlocks_Block_Assets {
 			wp_enqueue_script(
 				$this->slug . '-slick-initializer-front',
 				$dir . $this->slug . '-slick-initializer-front' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery' ),
+				COBLOCKS_VERSION,
+				true
+			);
+		}
+
+		// Events block.
+		if ( has_block( $this->slug . '/events' ) ) {
+			wp_enqueue_script(
+				$this->slug . '-slick',
+				$vendors_dir . '/slick' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery' ),
+				COBLOCKS_VERSION,
+				true
+			);
+			wp_enqueue_script(
+				$this->slug . '-events',
+				$dir . $this->slug . '-events' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery' ),
 				COBLOCKS_VERSION,
 				true

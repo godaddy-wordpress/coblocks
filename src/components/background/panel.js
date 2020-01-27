@@ -176,7 +176,6 @@ class BackgroundPanel extends Component {
 					<PanelBody
 						title={ __( 'Background Settings', 'coblocks' ) }
 						initialOpen={ false }
-						className="components-panel__body--coblocks-background-panel"
 					>
 						{ backgroundType === 'image' && (
 							<ToggleControl
@@ -230,7 +229,6 @@ class BackgroundPanel extends Component {
 						{ backgroundType === 'image' && (
 							<SelectControl
 								label={ __( 'Repeat', 'coblocks' ) }
-								className="components-background-display-select--coblocks"
 								value={ backgroundRepeat ? backgroundRepeat : 'no-repeat' }
 								options={ backgroundRepeatOptions }
 								onChange={ ( nextbackgroundRepeat ) => this.onSelectRepeat( nextbackgroundRepeat ) }
@@ -269,9 +267,9 @@ class BackgroundPanel extends Component {
 							/>
 						) }
 						<Button
-							className="components-button--coblocks-remove-background-image"
 							type="button"
-							isDefault
+							isSmall
+							isSecondary
 							label={ __( 'Remove background', 'coblocks' ) }
 							onClick={ () => {
 								setAttributes( {
@@ -293,7 +291,7 @@ class BackgroundPanel extends Component {
 								}
 							} }
 						>
-							{ __( 'Remove ' + backgroundType, 'coblocks' ) }
+							{ __( 'Clear Media', 'coblocks' ) }
 						</Button>
 					</PanelBody>
 				) }

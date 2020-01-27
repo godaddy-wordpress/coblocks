@@ -1,18 +1,18 @@
 /**
- * Internal dependencies
- */
-import HeadingToolbar from '../../components/heading-toolbar';
-
-/**
  * External dependencies.
  */
 import classnames from 'classnames';
 
 /**
+ * Internal dependencies
+ */
+import HeadingToolbar from '../../components/heading-toolbar';
+
+/**
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { PanelBody, ToggleControl, RangeControl } from '@wordpress/components';
+import { PanelBody, ToggleControl, RangeControl, SelectControl } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 import { ENTER, SPACE } from '@wordpress/keycodes';
 
@@ -27,11 +27,17 @@ const Inspector = props => {
 		onUpdateStyle,
 	} = props;
 
+	const gutterOptions = [
+		{ value: 'small', label: __( 'Small', 'coblocks' ) },
+		{ value: 'medium', label: __( 'Medium', 'coblocks' ) },
+		{ value: 'large', label: __( 'Large', 'coblocks' ) },
+		{ value: 'huge', label: __( 'Huge', 'coblocks' ) },
+	];
+
 	return (
 		<InspectorControls>
 			<PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
 				<div className={ classnames(
-					'block-editor-block-styles',
 					'block-editor-block-styles',
 					'coblocks-editor-block-styles',
 				) } >
@@ -39,7 +45,7 @@ const Inspector = props => {
 						<div
 							key={ `style-${ style.name }` }
 							className={ classnames(
-								'block-editor-block-styles__item block-editor-block-styles__item',
+								'block-editor-block-styles__item',
 								{ 'is-active': activeStyle === style },
 								`align-${ ( typeof attributes.alignment === 'undefined' || attributes.alignment === 'none' ) ? style.defaultAlign : attributes.alignment }`
 							) }
@@ -54,10 +60,10 @@ const Inspector = props => {
 							tabIndex="0"
 							aria-label={ style.label || style.name }
 						>
-							<div className="block-editor-block-styles__item-preview block-editor-block-styles__item-preview">
+							<div className="block-editor-block-styles__item-preview">
 								{ style.icon }
 							</div>
-							<div className="block-editor-block-styles__item-label block-editor-block-styles__item-label">
+							<div className="block-editor-block-styles__item-label">
 								{ style.label || style.name }
 							</div>
 						</div>
@@ -72,6 +78,15 @@ const Inspector = props => {
 					max={ 4 }
 					onChange={ columns => setAttributes( { columns } ) }
 				/>
+				{ attributes.columns >= 2 &&
+					<SelectControl
+						label={ __( 'Gutter', 'coblocks' ) }
+						value={ attributes.gutter }
+						options={ gutterOptions }
+						help={ __( 'Space between each column.', 'coblocks' ) }
+						onChange={ ( value ) => setAttributes( { gutter: value } ) }
+					/>
+				}
 				<p>{ __( 'Heading Level', 'coblocks' ) }</p>
 				<HeadingToolbar
 					minLevel={ 1 }

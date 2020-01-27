@@ -1,6 +1,4 @@
 .wp-block[data-type="coblocks/service"] {
-	flex: 1 100%;
-	max-width: 100%;
 
 	> .block-editor-block-list__block-edit {
 		margin-bottom: 0;
@@ -26,17 +24,31 @@
 }
 
 .wp-block-coblocks-service {
-	display: block;
-	flex: 1 100%;
+
+	.components-placeholder.components-placeholder {
+		padding: calc(3 / 4 * 100%) 0 0;
+	}
+
+	.is-style-sixbynine & .components-placeholder.components-placeholder {
+		padding-top: calc(9 / 16 * 100%);
+	}
+
+	.is-style-circle & .components-placeholder.components-placeholder {
+		border-radius: 100%;
+		padding-top: 100%;
+
+		img {
+			border-radius: 100%;
+		}
+	}
+
+	.is-style-square & .components-placeholder.components-placeholder {
+		padding-top: 100%;
+	}
 
 	.block-editor-media-placeholder {
 		background: $dark-opacity-light-200;
 		min-height: inherit;
-		border: 1px dashed $dark-gray-150;
-
-		&:hover {
-			border-color: $dark-gray-500;
-		}
 
 		.components-placeholder__label,
 		.components-placeholder__instructions {
@@ -46,7 +58,9 @@
 		.components-placeholder__fieldset {
 			align-content: center;
 			align-items: center;
+			flex-direction: column;
 			height: 100%;
+			justify-content: center;
 			left: 0;
 			max-width: 100%;
 			position: absolute;
@@ -55,6 +69,12 @@
 
 			.components-button {
 				margin-bottom: 0 !important;
+				margin-left: 0;
+				margin-right: 0;
+			}
+
+			.components-form-file-upload {
+				margin-bottom: 6px;
 			}
 		}
 
@@ -70,8 +90,7 @@
 		}
 	}
 
-	&__figure {
-		margin-bottom: 0;
+	.wp-block-coblocks-service__figure {
 
 		&.is-selected {
 			&::after {

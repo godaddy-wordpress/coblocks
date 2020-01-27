@@ -20,6 +20,7 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 -   Click to Tweet Block
 -   Collage Gallery Block
 -   Dynamic Separator Block
+-   Events Block (New!)
 -   Features Block
 -   Food & Drinks Block
 -   Form Block
@@ -56,14 +57,6 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 2. Download CoBlocks from the [WordPress plugin directory](https://wordpress.org/plugins/coblocks/).
 
 ### Advanced Controls
-
-Disable CoBlocks utility styes with an optional filter.
-```php
-/**
- * Disable block utility styles.
- */
-add_filter( 'coblocks_utility_styles_enabled', '__return_false' );
-```
 
 Disable sending of email upon Form block submission.
 ```php

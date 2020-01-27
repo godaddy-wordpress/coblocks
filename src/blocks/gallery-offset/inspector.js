@@ -76,27 +76,33 @@ class Inspector extends Component {
 
 		const gutterOptions = [
 			{
-				value: 0,
+				value: 'no',
 				label: __( 'None', 'coblocks' ),
 				shortName: __( 'None', 'coblocks' ),
 			},
 			{
-				value: 1,
+				value: 'small',
 				label: __( 'Small', 'coblocks' ),
 				/* translators: abbreviation for small size */
 				shortName: __( 'S', 'coblocks' ),
 			},
 			{
-				value: 2,
+				value: 'medium',
 				label: __( 'Medium', 'coblocks' ),
 				/* translators: abbreviation for medium size */
 				shortName: __( 'M', 'coblocks' ),
 			},
 			{
-				value: 3,
+				value: 'large',
 				label: __( 'Large', 'coblocks' ),
 				/* translators: abbreviation for large size */
 				shortName: __( 'L', 'coblocks' ),
+			},
+			{
+				value: 'huge',
+				label: __( 'Huge', 'coblocks' ),
+				/* translators: abbreviation for largest size */
+				shortName: __( 'XL', 'coblocks' ),
 			},
 		];
 
@@ -121,6 +127,7 @@ class Inspector extends Component {
 										<Button
 											key={ `option-${ option.value }` }
 											isLarge
+											isSecondary={ ! isCurrent }
 											isPrimary={ isCurrent }
 											aria-pressed={ isCurrent }
 											onClick={ () => setAttributes( { gutter: option.value } ) }
@@ -133,7 +140,7 @@ class Inspector extends Component {
 						</PanelRow>
 					</BaseControl>
 
-					{ gutter > 0 &&
+					{ gutter !== 'no' &&
 						<RangeControl
 							label={ __( 'Rounded Corners' ) }
 							value={ radius }
