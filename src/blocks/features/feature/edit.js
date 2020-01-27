@@ -20,6 +20,7 @@ import { Component, Fragment } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { Spinner } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
+import { dispatch, select } from '@wordpress/data';
 
 /**
  * Constants
@@ -58,6 +59,37 @@ const TEMPLATE = [
  * Block edit function
  */
 class Edit extends Component {
+	constructor() {
+		super( ...arguments );
+
+		this.updateInnerAttributes = this.updateInnerAttributes.bind( this );
+	}
+
+	componentDidUpdate( prevProps ) {
+		if (
+			this.props.attributes.headingLevel !== prevProps.attributes.headingLevel
+		) {
+			this.updateInnerAttributes( 'core/heading', {
+				level: this.props.attributes.headingLevel,
+			} );
+		}
+	}
+
+	updateInnerAttributes( blockName, newAttributes ) {
+		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
+			this.props.clientId
+		)[ 0 ].innerBlocks;
+
+		innerItems.map( item => {
+			if ( item.name === blockName ) {
+				dispatch( 'core/block-editor' ).updateBlockAttributes(
+					item.clientId,
+					newAttributes
+				);
+			}
+		} );
+	}
+
 	render() {
 		const {
 			attributes,
