@@ -14,28 +14,6 @@ describe( 'Test CoBlocks Row Block', function() {
 
 	/**
 	* Test that we can add a row block to the content, select
-	* a single column and save content without errors.
-	*/
-	it( 'Test row block saves with one column.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'row' );
-
-		cy.get( 'div[aria-label="Select Row Columns"]' ).find( 'div:nth-child(1)' ).click();
-
-		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 1 );
-
-		helpers.savePage();
-
-		helpers.checkForBlockErrors( 'row' );
-
-		helpers.viewPage();
-
-		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 1 );
-
-		helpers.editPage();
-	} );
-
-	/**
-	* Test that we can add a row block to the content, select
 	* two columns and save content without errors.
 	*/
 	it( 'Test row block saves with two columns.', function() {
