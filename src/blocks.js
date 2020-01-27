@@ -23,6 +23,7 @@ import './extensions/button-controls';
 import './extensions/image-styles';
 import './extensions/cover-styles';
 import './extensions/image-crop';
+import './extensions/coblocks-options/';
 
 // Formats
 import './formats';
