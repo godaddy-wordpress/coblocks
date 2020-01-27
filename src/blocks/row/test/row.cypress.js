@@ -19,7 +19,7 @@ describe( 'Test CoBlocks Row Block', function() {
 	it( 'Test row block saves with two columns.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'row' );
 
-		cy.get( 'div[aria-label="Select Row Columns"]' ).find( 'div:nth-child(2)' ).click();
+		cy.get( 'div[aria-label="Select Row Columns"]' ).find( 'div:nth-child(1)' ).click();
 		cy.get( 'div[aria-label="Select Row Layout"]' ).find( 'div > button' ).first().click( { force: true } );
 
 		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 2 );
@@ -42,7 +42,7 @@ describe( 'Test CoBlocks Row Block', function() {
 	it( 'Test row block saves with three columns.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'row' );
 
-		cy.get( 'div[aria-label="Select Row Columns"]' ).find( 'div:nth-child(3)' ).click();
+		cy.get( 'div[aria-label="Select Row Columns"]' ).find( 'div:nth-child(2)' ).click();
 		cy.get( 'div[aria-label="Select Row Layout"]' ).find( 'div > button' ).first().click( { force: true } );
 
 		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 3 );
@@ -65,7 +65,7 @@ describe( 'Test CoBlocks Row Block', function() {
 	it( 'Test row block saves with four columns.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'row' );
 
-		cy.get( 'div[aria-label="Select Row Columns"]' ).find( 'div:nth-child(4)' ).click();
+		cy.get( 'div[aria-label="Select Row Columns"]' ).find( 'div:nth-child(3)' ).click();
 		cy.get( 'div[aria-label="Select Row Layout"]' ).find( 'div > button' ).first().click( { force: true } );
 
 		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 4 );
