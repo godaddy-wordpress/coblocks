@@ -34,7 +34,7 @@ describe( 'Test CoBlocks Features Block', function() {
 
 	/**
 	   * Test that we can add a features block to the content, change
-       * column count and  are able to successfully save the block without errors.
+	   * column count and  are able to successfully save the block without errors.
 	   */
 	it( 'Test features block allows up to four feature columns.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'features' );
@@ -92,8 +92,6 @@ describe( 'Test CoBlocks Features Block', function() {
    */
 	it( 'Test the features block custom classes.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'features' );
-
-		cy.get( '.edit-post-sidebar' ).contains( /features settings/i ).click(); //close feature settings panel
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'features' );
 
