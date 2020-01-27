@@ -90,6 +90,7 @@ describe( 'Test CoBlocks Row Block', function() {
 		helpers.addCoBlocksBlockToPage( true, 'row' );
 
 		cy.get( 'div[aria-label="Select Row Columns"]' ).find( 'div:nth-child(1)' ).click();
+		cy.get( 'div[aria-label="Select Row Layout"]' ).find( 'div > button' ).first().click( { force: true } );
 
 		cy.get( '.wp-block-coblocks-row' ).click( { force: true } );
 
@@ -117,6 +118,7 @@ describe( 'Test CoBlocks Row Block', function() {
 		helpers.addCoBlocksBlockToPage( true, 'row' );
 
 		cy.get( 'div[aria-label="Select Row Columns"]' ).find( 'div:nth-child(1)' ).click();
+		cy.get( 'div[aria-label="Select Row Layout"]' ).find( 'div > button' ).first().click( { force: true } );
 
 		cy.get( '.wp-block-coblocks-row' ).click( { force: true } );
 
