@@ -308,16 +308,11 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 	cy.get( '.wp-block[data-type="coblocks/' + blockID + '"]' )
 		.dblclick( 'right', { force: true } );
 
-	cy.get( '.components-panel__body' )
-		.contains( 'Advanced' )
-		.click();
+	cy.get( '.block-editor-block-inspector__advanced' ).find( 'button' ).click();
 
 	cy.get( 'div.edit-post-sidebar' )
 		.contains( /Additional CSS/i )
-		.scrollIntoView()
-		.should( 'be.visible' )
-		.parent( '.components-base-control__field' )
-		.find( '.components-text-control__input' )
+		.next( 'input' )
 		.then( $inputElem => {
 			cy.get( $inputElem ).invoke( 'val' ).then( ( val ) => {
 				if ( val.length > 0 ) {
