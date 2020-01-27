@@ -47,30 +47,3 @@
 // 	} ),
 // ] )( CoBlocksOptionsModal );
 
-import { Button, Modal, Fragment } from '@wordpress/components';
-import { useState } from '@wordpress/element';
-import { PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
-
-export const MyModal = () => {
-	const [ isOpen, setOpen ] = useState( false );
-	const openModal = () => setOpen( true );
-	const closeModal = () => setOpen( false );
-
-	return (
-		<PluginSidebarMoreMenuItem onClick={ openModal }>
-			{ isOpen && (
-				<Modal
-					title="This is my modal"
-					onRequestClose={ closeModal }>
-					<Button isSecondary onClick={ closeModal }>
-						My custom close button
-					</Button>
-				</Modal>
-			) }
-
-            CoBlocks Options
-
-		</PluginSidebarMoreMenuItem>
-	);
-}
-;
