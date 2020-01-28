@@ -1,18 +1,12 @@
 .components-coblocks-icon-block--advanced-size {
-	position: relative;
+	align-items: center;
+	display: flex;
+	justify-content: center;
 
 	.is-small {
-		bottom: 3px;
-		position: absolute;
-		right: 0;
-	}
-
-	.components-range-control {
-		width: calc(100% - 60px);
-
-		.components-range-control__number {
-			margin-left: 12px;
-		}
+		margin-left: 6px;
+		margin-top: 5px;
+		order: 1;
 	}
 }
 
