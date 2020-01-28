@@ -1,49 +1,89 @@
-// /**
-//  * WordPress dependencies
-//  */
-// import { Modal } from '@wordpress/components';
-// import { __ } from '@wordpress/i18n';
-// import { withSelect, withDispatch } from '@wordpress/data';
-// import { compose } from '@wordpress/compose';
+/**
+ * WordPress dependencies
+ */
+import { __ } from '@wordpress/i18n';
+import { compose } from '@wordpress/compose';
+import { Component, Fragment } from '@wordpress/element';
+import { InspectorControls, PanelColorSettings, ContrastChecker } from '@wordpress/block-editor';
+import { RangeControl, ToggleControl, SelectControl, CheckboxControl, Button, Modal, Panel, PanelBody, PanelRow, HorizontalRule } from '@wordpress/components';
 
-// /**
-//  * Unique identifier for Manage Blocks modal.
-//  *
-//  * @type {string}
-//  */
-// const MODAL_NAME = 'coblocks-options';
+/**
+ * Inspector controls
+ */
+class CoBlocksOptionsModal extends Component {
+	constructor( props ) {
+		super( props );
+		this.state = {
+			advanced: false,
+			colors: true,
+			gradient: true,
+			typography: true,
+			utilities: true,
+		};
+	}
 
-// export function CoBlocksOptionsModal( { isActive, closeModal } ) {
-// 	if ( ! isActive ) {
-// 		return null;
-// 	}
+	render() {
+		const { isOpen, closeModal, openModal } = this.props;
+		const { advanced, colors, gradient, typography, utilities } = this.state;
 
-// 	return (
-// 		<Modal
-// 			className="edit-post-manage-blocks-modal"
-// 			title={ __( 'CoBlocks Options' ) }
-// 			closeLabel={ __( 'Close' ) }
-// 			onRequestClose={ closeModal }
-// 		>
-//             Here is some sample content.
-// 		</Modal>
-// 	);
-// }
+		if ( ! isOpen ) {
+			return null;
+		}
 
-// export default compose( [
-// 	withSelect( ( select ) => {
-// 		const { isModalActive } = select( 'core/edit-post' );
+		return (
+			<Modal
+				title="CoBlocks Settings"
+				onRequestClose={ closeModal }>
+				<h3>General</h3>
+				<HorizontalRule />
+				<CheckboxControl
+					label={ __( 'Custom Colors', 'coblocks' ) }
+					onChange={ () => this.setState( { colors: ! colors } ) }
+					checked={ !! colors }
+				/>
+				{ ! advanced && ( <span>{ __( 'Apply custom colors to blocks that support colors', 'coblocks' ) }</span> ) }
 
-// 		return {
-// 			isActive: isModalActive( MODAL_NAME ),
-// 		};
-// 	} ),
-// 	withDispatch( ( dispatch ) => {
-// 		const { closeModal } = dispatch( 'core/edit-post' );
+				<HorizontalRule />
+				<CheckboxControl
+					label={ __( 'Gradient Presets', 'coblocks' ) }
+					onChange={ () => this.setState( { gradient: ! gradient } ) }
+					checked={ !! gradient }
+				/>
+				{ ! advanced && ( <span>{ __( 'Apply gradient styles to blocks that support gradients', 'coblocks' ) }</span> ) }
 
-// 		return {
-// 			closeModal,
-// 		};
-// 	} ),
-// ] )( CoBlocksOptionsModal );
+				<HorizontalRule />
+				<CheckboxControl
+					label={ __( 'Typography Controls', 'coblocks' ) }
+					onChange={ () => this.setState( { typography: ! typography } ) }
+					checked={ !! typography }
+				/>
+				{ ! advanced && ( <span>{ __( 'Change fonts, adjust font sizes and line-height with block-level typography controls', 'coblocks' ) }</span> ) }
+
+				<HorizontalRule />
+
+				<h3>Advanced</h3>
+
+				<CheckboxControl
+					label={ __( 'Advanced Mode', 'coblocks' ) }
+					onChange={ () => this.setState( { advanced: ! advanced } ) }
+					checked={ !! advanced }
+				/>
+				{ !! advanced && ( <span>{ __( 'Build with advanced tooling to fine-tune block settings throughout CoBlocks', 'coblocks' ) }</span> ) }
+				{ !! advanced && (
+					<Fragment>
+						<HorizontalRule />
+						<CheckboxControl
+							label={ __( 'Load Utility Stylesheet', 'coblocks' ) }
+							onChange={ () => this.setState( { utilities: ! utilities } ) }
+							checked={ !! utilities }
+						/>
+						<span>{ __( 'Build with advanced tooling to fine-tune block settings throughout CoBlocks', 'coblocks' ) }</span>
+					</Fragment>
+				) }
+			</Modal>
+		);
+	}
+}
+
+export default CoBlocksOptionsModal;
 

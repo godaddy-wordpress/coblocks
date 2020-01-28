@@ -1,63 +1,40 @@
 // Using ESNext syntax
-import { PluginSidebarMoreMenuItem, PluginMoreMenuItem } from '@wordpress/edit-post';
-import { registerPlugin, getPlugins, getPlugin } from '@wordpress/plugins';
+import { PluginMoreMenuItem } from '@wordpress/edit-post';
 import { Fragment, useState } from '@wordpress/element';
+import { registerPlugin } from '@wordpress/plugins';
+import { Button, Modal, Panel, PanelBody, PanelRow, HorizontalRule } from '@wordpress/components';
 
 /**
  * Internal dependencies
  */
-import MyModal from './coblocks-options-modal';
-
-import { Button, Modal } from '@wordpress/components';
-
-// console.log( CoBlocksOptionsMenuItem() );
+import { icon } from './icon';
+import CoBlocksOptionsModal from './coblocks-options-modal';
 
 const CoBlocksOptionsMenuItem = () => {
 	const [ isOpen, setOpen ] = useState( false );
 	const openModal = () => setOpen( true );
 	const closeModal = () => setOpen( false );
 
+	const props = {
+		isOpen,
+		openModal,
+		closeModal,
+	};
+
 	return (
 		<Fragment>
 			<PluginMoreMenuItem onClick={ openModal }>
-            CoBlocks Options
+            CoBlocks Settings
 			</PluginMoreMenuItem>
-			{ /* { isOpen && (
-				<Modal
-					title="This is my modal"
-					onRequestClose={ closeModal }>
-					<Button onClick={ closeModal }>
-						My custom close button
-					</Button>
-				</Modal>
-            ) } */ }
-			<Button onClick={ openModal }>Open Modal</Button>
-			{ isOpen && (
-				<Modal
-					title="This is my modal"
-					onRequestClose={ closeModal }>
-					<Button onClick={ closeModal }>
-						My custom close button
-					</Button>
-				</Modal>
-			) }
+			<CoBlocksOptionsModal { ...props } />
+
 		</Fragment>
 
 	);
 }
 ;
 
-// const CoBlocksOptions = () => (
-// 	<Fragment>
-// 		<PluginSidebarMoreMenuItem
-// 		>
-// 			CoBlocks Options
-// 		</PluginSidebarMoreMenuItem>
-// 		<MyModal />
-// 	</Fragment>
-// );
-
 registerPlugin( 'coblocks-options', {
-	// icon: 'coblocks',
+	icon,
 	render: CoBlocksOptionsMenuItem,
 } );
