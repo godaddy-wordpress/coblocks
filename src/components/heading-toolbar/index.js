@@ -13,7 +13,7 @@ import HeadingLevelIcon from './icon';
  */
 import { __, sprintf } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
-import { Toolbar } from '@wordpress/components';
+import { BaseControl, Toolbar } from '@wordpress/components';
 
 class HeadingToolbar extends Component {
 	createLevelControl( targetLevel, selectedLevel, onChange ) {
@@ -31,13 +31,18 @@ class HeadingToolbar extends Component {
 	render() {
 		const { minLevel, maxLevel, selectedLevel, onChange } = this.props;
 		return (
-			<Toolbar
-				// isCollapsed={ isCollapsed }
-				icon={ <HeadingLevelIcon level={ selectedLevel } /> }
-				controls={ range( minLevel, maxLevel ).map( ( index ) =>
-					this.createLevelControl( index, selectedLevel, onChange )
-				) }
-			/>
+			<BaseControl
+				label={ __( 'Heading Level', 'coblocks' ) }
+				id="components-coblocks-heading-level"
+				className="components-coblocks-heading-toolbar"
+			>
+				<Toolbar
+					icon={ <HeadingLevelIcon level={ selectedLevel } /> }
+					controls={ range( minLevel, maxLevel ).map( ( index ) =>
+						this.createLevelControl( index, selectedLevel, onChange )
+					) }
+				/>
+			</BaseControl>
 		);
 	}
 }

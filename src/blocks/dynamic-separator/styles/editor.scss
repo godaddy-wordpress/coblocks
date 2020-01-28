@@ -15,25 +15,6 @@
 .block-editor-block-styles__item-preview {
 
 	.wp-block-coblocks-dynamic-separator {
-		height: 60px !important;
-	}
-
-	.block-list-appender {
-		display: none !important;
-	}
-
-	.wp-block-coblocks-dynamic-separator.is-style-line::before {
-		width: 4vw;
-	}
-}
-
-.block-editor-block-preview {
-
-	.block-list-appender {
-		display: none !important;
-	}
-
-	.wp-block-coblocks-dynamic-separator {
 		height: 90px !important;
 
 		&::before {
@@ -41,6 +22,7 @@
 		}
 
 		&.is-style-line::before {
+			width: 4vw;
 			top: 71% !important;
 		}
 

@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-01-24T01:53:37+00:00\n"
+"POT-Creation-Date: 2020-01-28T17:08:51+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -83,7 +83,7 @@ msgstr ""
 #: src/blocks/dynamic-separator/inspector.js:62
 #: src/blocks/events/event-item/inspector.js:30
 #: src/blocks/features/feature/inspector.js:92
-#: src/blocks/features/inspector.js:175
+#: src/blocks/features/inspector.js:183
 #: src/blocks/form/submit-button.js:118
 #: src/blocks/hero/inspector.js:137
 #: src/blocks/highlight/inspector.js:43
@@ -103,7 +103,7 @@ msgstr ""
 #: src/blocks/alert/inspector.js:55
 #: src/blocks/author/inspector.js:56
 #: src/blocks/features/feature/inspector.js:110
-#: src/blocks/features/inspector.js:193
+#: src/blocks/features/inspector.js:201
 #: src/blocks/hero/inspector.js:150
 #: src/blocks/highlight/inspector.js:49
 #: src/blocks/icon/inspector.js:325
@@ -235,7 +235,7 @@ msgstr ""
 #: src/blocks/click-to-tweet/inspector.js:66
 #: src/blocks/events/event-item/inspector.js:23
 #: src/blocks/features/feature/inspector.js:114
-#: src/blocks/features/inspector.js:197
+#: src/blocks/features/inspector.js:205
 #: src/blocks/hero/inspector.js:155
 #: src/blocks/highlight/inspector.js:54
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:58
@@ -597,33 +597,33 @@ msgstr ""
 msgid "Show events from the period (100 events max)."
 msgstr ""
 
-#: src/blocks/features/edit.js:78
-#: src/blocks/features/feature/edit.js:85
+#: src/blocks/features/edit.js:108
+#: src/blocks/features/feature/edit.js:117
 #: src/blocks/media-card/edit.js:206
 msgid "Add as background"
 msgstr ""
 
 #. content placeholder
 #. translators: content placeholder
-#: src/blocks/features/feature/edit.js:40
+#: src/blocks/features/feature/edit.js:41
 msgid "Add feature title…"
 msgstr ""
 
 #. content placeholder
 #. translators: content placeholder
-#: src/blocks/features/feature/edit.js:42
+#: src/blocks/features/feature/edit.js:43
 msgid "Feature Title"
 msgstr ""
 
 #. content placeholder
 #. translators: content placeholder
-#: src/blocks/features/feature/edit.js:50
+#: src/blocks/features/feature/edit.js:51
 msgid "Add feature content"
 msgstr ""
 
 #. content placeholder
 #. translators: content placeholder
-#: src/blocks/features/feature/edit.js:52
+#: src/blocks/features/feature/edit.js:53
 msgid "This is a feature block that you can use to highlight features."
 msgstr ""
 
@@ -644,7 +644,7 @@ msgid "Feature Settings"
 msgstr ""
 
 #: src/blocks/features/feature/inspector.js:71
-#: src/blocks/features/inspector.js:133
+#: src/blocks/features/inspector.js:141
 #: src/blocks/hero/inspector.js:84
 #: src/blocks/icon/inspector.js:215
 #: src/blocks/media-card/inspector.js:62
@@ -666,7 +666,14 @@ msgstr ""
 msgid "Add up to four columns of small notes for your product or service."
 msgstr ""
 
-#: src/blocks/features/inspector.js:124
+#: src/blocks/features/inspector.js:100
+#: src/blocks/post-carousel/inspector.js:86
+#: src/blocks/posts/inspector.js:131
+#: src/blocks/services/inspector.js:75
+msgid "Columns"
+msgstr ""
+
+#: src/blocks/features/inspector.js:126
 #: src/blocks/gallery-carousel/inspector.js:98
 #: src/blocks/gallery-collage/inspector.js:115
 #: src/blocks/gallery-offset/inspector.js:123
@@ -679,13 +686,13 @@ msgstr ""
 msgid "Gutter"
 msgstr ""
 
-#: src/blocks/features/inspector.js:127
+#: src/blocks/features/inspector.js:129
 #: src/blocks/row/inspector.js:165
 #: src/blocks/services/inspector.js:86
 msgid "Space between each column."
 msgstr ""
 
-#: src/blocks/features/inspector.js:154
+#: src/blocks/features/inspector.js:162
 #: src/blocks/row/column/inspector.js:133
 #: src/blocks/row/inspector.js:194
 #: src/components/dimensions-control/index.js:295
@@ -695,7 +702,7 @@ msgstr ""
 #. block style
 #. translators: visual style option
 #. translators: block style
-#: src/blocks/features/inspector.js:86
+#: src/blocks/features/inspector.js:88
 #: src/blocks/gallery-collage/inspector.js:62
 #: src/blocks/gallery-offset/inspector.js:81
 #: src/blocks/row/inspector.js:99
@@ -712,7 +719,7 @@ msgstr ""
 
 #. translators: abbreviation for small size
 #. translators: label for small size option
-#: src/blocks/features/inspector.js:87
+#: src/blocks/features/inspector.js:89
 #: src/blocks/gallery-collage/inspector.js:95
 #: src/blocks/gallery-offset/inspector.js:85
 #: src/blocks/icon/icon-size-select.js:16
@@ -730,7 +737,7 @@ msgstr ""
 
 #. translators: abbreviation for medium size
 #. translators: label for medium size option
-#: src/blocks/features/inspector.js:88
+#: src/blocks/features/inspector.js:90
 #: src/blocks/gallery-collage/inspector.js:101
 #: src/blocks/gallery-offset/inspector.js:91
 #: src/blocks/icon/icon-size-select.js:21
@@ -748,7 +755,7 @@ msgstr ""
 
 #. translators: abbreviation for large size
 #. translators: label for large size option
-#: src/blocks/features/inspector.js:89
+#: src/blocks/features/inspector.js:91
 #: src/blocks/gallery-collage/inspector.js:107
 #: src/blocks/gallery-offset/inspector.js:97
 #: src/blocks/icon/icon-size-select.js:26
@@ -766,7 +773,7 @@ msgstr ""
 
 #. translators: abbreviation for extra large size
 #. translators: label for extra large size option
-#: src/blocks/features/inspector.js:90
+#: src/blocks/features/inspector.js:92
 #: src/blocks/gallery-collage/inspector.js:86
 #: src/blocks/gallery-offset/inspector.js:103
 #: src/blocks/icon/icon-size-select.js:30
@@ -777,15 +784,8 @@ msgstr ""
 msgid "Huge"
 msgstr ""
 
-#: src/blocks/features/inspector.js:96
-msgid "Features Settings"
-msgstr ""
-
 #: src/blocks/features/inspector.js:98
-#: src/blocks/post-carousel/inspector.js:86
-#: src/blocks/posts/inspector.js:131
-#: src/blocks/services/inspector.js:75
-msgid "Columns"
+msgid "Features Settings"
 msgstr ""
 
 #: src/blocks/food-and-drinks/appender.js:22
@@ -2031,7 +2031,7 @@ msgid "Edit %s URL"
 msgstr ""
 
 #: src/blocks/gist/deprecated.js:36
-#: src/blocks/gist/save.js:29
+#: src/blocks/gist/save.js:33
 msgid "View this gist on GitHub"
 msgstr ""
 
@@ -5077,36 +5077,36 @@ msgstr ""
 msgid "Change row block layout"
 msgstr ""
 
-#: src/blocks/row/edit.js:123
+#: src/blocks/row/edit.js:122
 msgid "Row Layout"
 msgstr ""
 
 #. block name
 #. translators: block name
-#: src/blocks/row/edit.js:123
+#: src/blocks/row/edit.js:122
 #: src/blocks/row/index.js:38
 msgid "Row"
 msgstr ""
 
 #. %s: 'one' 'two' 'three' and 'four'
 #. translators: %s: 'one' 'two' 'three' and 'four'
-#: src/blocks/row/edit.js:127
+#: src/blocks/row/edit.js:126
 msgid "Select a layout for this %s column row."
 msgstr ""
 
-#: src/blocks/row/edit.js:130
+#: src/blocks/row/edit.js:129
 msgid "Select the number of columns for this row."
 msgstr ""
 
-#: src/blocks/row/edit.js:134
+#: src/blocks/row/edit.js:133
 msgid "Select Row Columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:160
+#: src/blocks/row/edit.js:159
 msgid "Select Row Layout"
 msgstr ""
 
-#: src/blocks/row/edit.js:170
+#: src/blocks/row/edit.js:169
 msgid "Back to Columns"
 msgstr ""
 
@@ -5131,18 +5131,14 @@ msgid "Add background to row"
 msgstr ""
 
 #: src/blocks/row/edit.js:94
-msgid "One Column"
-msgstr ""
-
-#: src/blocks/row/edit.js:95
 msgid "Two Columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:96
+#: src/blocks/row/edit.js:95
 msgid "Three Columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:97
+#: src/blocks/row/edit.js:96
 msgid "Four Columns"
 msgstr ""
 
@@ -5252,11 +5248,11 @@ msgstr ""
 msgid "features"
 msgstr ""
 
-#: src/blocks/services/inspector.js:102
+#: src/blocks/services/inspector.js:103
 msgid "Showing the call to action buttons."
 msgstr ""
 
-#: src/blocks/services/inspector.js:103
+#: src/blocks/services/inspector.js:104
 msgid "Toggle to show call to action buttons."
 msgstr ""
 
@@ -5264,11 +5260,7 @@ msgstr ""
 msgid "Services Settings"
 msgstr ""
 
-#: src/blocks/services/inspector.js:90
-msgid "Heading Level"
-msgstr ""
-
-#: src/blocks/services/inspector.js:98
+#: src/blocks/services/inspector.js:99
 msgid "Action Buttons"
 msgstr ""
 
@@ -5977,6 +5969,10 @@ msgstr ""
 #. %s: heading level e.g: "1", "2", "3"
 #: src/components/heading-toolbar/index.js:25
 msgid "Heading %d"
+msgstr ""
+
+#: src/components/heading-toolbar/index.js:35
+msgid "Heading Level"
 msgstr ""
 
 #: src/components/inline-color-picker/index.js:30

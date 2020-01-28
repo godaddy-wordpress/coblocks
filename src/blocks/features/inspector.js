@@ -4,6 +4,7 @@
 import applyWithColors from './colors';
 import { BackgroundPanel } from '../../components/background';
 import DimensionsControl from '../../components/dimensions-control/';
+import HeadingToolbar from '../../components/heading-toolbar';
 
 /**
  * WordPress dependencies
@@ -34,51 +35,52 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 class Inspector extends Component {
 	render() {
 		const {
-			clientId,
 			attributes,
 			backgroundColor,
+			clientId,
+			onChangeHeadingLevel,
 			setAttributes,
 			setBackgroundColor,
-			textColor,
 			setTextColor,
+			textColor,
 		} = this.props;
 
 		const {
 			columns,
 			gutter,
 			marginBottom,
-			marginLeft,
-			marginRight,
-			marginSize,
-			marginTop,
-			marginBottomTablet,
-			marginLeftTablet,
-			marginRightTablet,
-			marginTopTablet,
 			marginBottomMobile,
+			marginBottomTablet,
+			marginLeft,
 			marginLeftMobile,
+			marginLeftTablet,
+			marginRight,
 			marginRightMobile,
-			marginTopMobile,
+			marginRightTablet,
+			marginSize,
 			marginSyncUnits,
-			marginSyncUnitsTablet,
 			marginSyncUnitsMobile,
+			marginSyncUnitsTablet,
+			marginTop,
+			marginTopMobile,
+			marginTopTablet,
 			marginUnit,
 			paddingBottom,
-			paddingLeft,
-			paddingRight,
-			paddingSize,
-			paddingTop,
-			paddingBottomTablet,
-			paddingLeftTablet,
-			paddingRightTablet,
-			paddingTopTablet,
 			paddingBottomMobile,
+			paddingBottomTablet,
+			paddingLeft,
 			paddingLeftMobile,
+			paddingLeftTablet,
+			paddingRight,
 			paddingRightMobile,
-			paddingTopMobile,
+			paddingRightTablet,
+			paddingSize,
 			paddingSyncUnits,
-			paddingSyncUnitsTablet,
 			paddingSyncUnitsMobile,
+			paddingSyncUnitsTablet,
+			paddingTop,
+			paddingTopMobile,
+			paddingTopTablet,
 			paddingUnit,
 		} = attributes;
 
@@ -126,6 +128,12 @@ class Inspector extends Component {
 								onChange={ ( value ) => setAttributes( { gutter: value } ) }
 							/>
 						}
+						<HeadingToolbar
+							minLevel={ 1 }
+							maxLevel={ 7 }
+							selectedLevel={ attributes.headingLevel }
+							onChange={ onChangeHeadingLevel }
+						/>
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
 							label={ __( 'Padding', 'coblocks' ) }

@@ -87,13 +87,14 @@ const Inspector = ( props ) => {
 						onChange={ ( value ) => setAttributes( { gutter: value } ) }
 					/>
 				}
-				<p>{ __( 'Heading Level', 'coblocks' ) }</p>
+
 				<HeadingToolbar
 					minLevel={ 1 }
 					maxLevel={ 7 }
 					selectedLevel={ attributes.headingLevel }
 					onChange={ onChangeHeadingLevel }
 				/>
+
 				<ToggleControl
 					label={ __( 'Action Buttons', 'coblocks' ) }
 					className="components-toggle-control--services-action-button"
