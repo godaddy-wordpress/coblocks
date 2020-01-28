@@ -5,8 +5,8 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Features Block', function() {
 	/**
-	* Setup Features data
-	*/
+	 * Setup Features data
+	 */
 	const featuresData = {
 		backgroundColor: '#ff0000',
 		textColor: '#ffffff',
@@ -15,9 +15,9 @@ describe( 'Test CoBlocks Features Block', function() {
 	};
 
 	/**
-	   * Test that we can add a features block to the content, not alter
-	   * any settings, and are able to successfully save the block without errors.
-	   */
+	 * Test that we can add a features block to the content, not alter
+	 * any settings, and are able to successfully save the block without errors.
+	 */
 	it( 'Test features block saves with empty values.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'features' );
 
@@ -33,9 +33,9 @@ describe( 'Test CoBlocks Features Block', function() {
 	} );
 
 	/**
-	   * Test that we can add a features block to the content, change
-	   * column count and  are able to successfully save the block without errors.
-	   */
+	 * Test that we can add a features block to the content, change
+	 * column count and  are able to successfully save the block without errors.
+	 */
 	it( 'Test features block allows up to four feature columns.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'features' );
 
@@ -61,9 +61,9 @@ describe( 'Test CoBlocks Features Block', function() {
 	} );
 
 	/**
-	   * Test that we can add a features block to the content, add text
-	   * adjust colors and are able to successfully save the block without errors.
-	   */
+	 * Test that we can add a features block to the content, add text
+	 * adjust colors and are able to successfully save the block without errors.
+	 */
 	it( 'Test features block saves with content values set.', function() {
 		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB } = featuresData;
 		helpers.addCoBlocksBlockToPage( true, 'features' );
@@ -88,8 +88,8 @@ describe( 'Test CoBlocks Features Block', function() {
 	} );
 
 	/**
-   * Test the features block saves with custom classes
-   */
+	 * Test the features block saves with custom classes
+	 */
 	it( 'Test the features block custom classes.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'features' );
 
@@ -108,5 +108,17 @@ describe( 'Test CoBlocks Features Block', function() {
 			.should( 'have.class', 'my-custom-class' );
 
 		helpers.editPage();
+	} );
+
+	it( 'Updates the inner core/heading blocks when the "Heading Level" control is changed.', function() {
+		helpers.addCoBlocksBlockToPage( true, 'features' );
+
+		helpers.openSettingsPanel( /features settings/i );
+
+		cy.get( '.components-coblocks-heading-toolbar [aria-label="Heading 6"]' ).click( { force: true } );
+		cy.get( '[data-type="coblocks/feature"] [data-type="core/heading"] h6' ).should( 'have.length', 2 );
+
+		helpers.savePage();
+		helpers.checkForBlockErrors( 'features' );
 	} );
 } );
