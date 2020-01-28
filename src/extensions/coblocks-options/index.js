@@ -2,7 +2,6 @@
 import { PluginMoreMenuItem } from '@wordpress/edit-post';
 import { Fragment, useState } from '@wordpress/element';
 import { registerPlugin } from '@wordpress/plugins';
-import { Button, Modal, Panel, PanelBody, PanelRow, HorizontalRule } from '@wordpress/components';
 
 /**
  * Internal dependencies
@@ -31,8 +30,7 @@ const CoBlocksOptionsMenuItem = () => {
 		</Fragment>
 
 	);
-}
-;
+};
 
 registerPlugin( 'coblocks-options', {
 	icon,
