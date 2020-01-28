@@ -61,7 +61,7 @@ describe( 'Test CoBlocks Accordion Block', function() {
 			.should( 'not.have.attr', 'open' );
 
 		cy.get( '.wp-block-coblocks-accordion-item__title' )
-			.click();
+			.click( { force: true } );
 
 		cy.get( '.wp-block-coblocks-accordion-item__title' )
 			.parent()
@@ -102,7 +102,7 @@ describe( 'Test CoBlocks Accordion Block', function() {
 			.should( 'have.attr', 'open' );
 
 		cy.get( '.wp-block-coblocks-accordion-item__title' )
-			.click();
+			.click( { force: true } );
 
 		cy.get( '.wp-block-coblocks-accordion-item__title' )
 			.parent()
@@ -155,7 +155,7 @@ describe( 'Test CoBlocks Accordion Block', function() {
 			cy.get( '.wp-block-coblocks-accordion-item:nth-child(' + iteration + ') .wp-block-coblocks-accordion-item__title' )
 				.contains( accordionData[ index ].title );
 
-			$accordionItem.click();
+			$accordionItem.click( { force: true } );
 
 			$accordionItem.parent()
 				.should( 'have.attr', 'open' );
@@ -194,7 +194,7 @@ describe( 'Test CoBlocks Accordion Block', function() {
 			cy.get( '.wp-block-coblocks-accordion-item:nth-child(' + iteration + ') .wp-block-coblocks-accordion-item__title' )
 				.contains( reverseAccordionData[ index ].title );
 
-			$accordionItem.click();
+			$accordionItem.click( { force: true } );
 
 			$accordionItem.parent()
 				.should( 'have.attr', 'open' );
@@ -240,7 +240,7 @@ describe( 'Test CoBlocks Accordion Block', function() {
 			.should( 'have.attr', 'style', 'background-color:#8589bd;color:#350745' );
 
 		cy.get( '.wp-block-coblocks-accordion-item__title' )
-			.click();
+			.click( { force: true } );
 
 		cy.get( '.wp-block-coblocks-accordion-item__title' )
 			.parent()
@@ -306,7 +306,7 @@ describe( 'Test CoBlocks Accordion Block', function() {
 			.should( 'not.have.attr', 'open' );
 
 		cy.get( '.wp-block-coblocks-accordion-item__title' )
-			.click();
+			.click( { force: true } );
 
 		cy.get( '.wp-block-coblocks-accordion-item__title' )
 			.parent()

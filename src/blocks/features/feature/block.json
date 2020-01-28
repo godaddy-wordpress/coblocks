@@ -2,6 +2,10 @@
 	"name": "coblocks/feature",
 	"category": "coblocks",
 	"attributes": {
+		"headingLevel": {
+			"type": "integer",
+			"default": 4
+		},
 		"textColor": {
 			"type": "string"
 		},
