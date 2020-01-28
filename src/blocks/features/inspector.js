@@ -130,14 +130,12 @@ class Inspector extends Component {
 								onChange={ ( value ) => setAttributes( { gutter: value } ) }
 							/>
 						}
-
 						<HeadingToolbar
 							minLevel={ 1 }
 							maxLevel={ 7 }
 							selectedLevel={ attributes.headingLevel }
 							onChange={ onChangeHeadingLevel }
 						/>
-
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
 							label={ __( 'Padding', 'coblocks' ) }
