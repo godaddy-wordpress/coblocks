@@ -43,15 +43,15 @@ describe( 'Test CoBlocks Features Block', function() {
 
 		cy.get( '.wp-block-coblocks-feature' ).should( 'have.length', 2 );
 
-		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"]' ).click().clear().type( 1 );
+		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"]' ).click( { force: true } ).clear().type( 1 );
 
 		cy.get( '.wp-block-coblocks-feature' ).should( 'have.length', 1 );
 
-		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"]' ).click().clear().type( 3 );
+		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"]' ).click( { force: true } ).clear().type( 3 );
 
 		cy.get( '.wp-block-coblocks-feature' ).should( 'have.length', 3 );
 
-		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"]' ).click().clear().type( 4 );
+		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"]' ).click( { force: true } ).clear().type( 4 );
 
 		cy.get( '.wp-block-coblocks-feature' ).should( 'have.length', 4 );
 
@@ -68,7 +68,7 @@ describe( 'Test CoBlocks Features Block', function() {
 		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB } = featuresData;
 		helpers.addCoBlocksBlockToPage( true, 'features' );
 
-		cy.get( '.wp-block-coblocks-features' ).click( { force: true } ).click();
+		cy.get( '.wp-block-coblocks-features' ).click( { force: true } ).click( { force: true } );
 
 		helpers.setColorSetting( 'background color', backgroundColor );
 		helpers.setColorSetting( 'text color', textColor );
