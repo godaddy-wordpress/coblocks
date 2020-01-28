@@ -252,13 +252,13 @@ export function setColorSetting( settingName, hexColor ) {
 	cy.get( '.components-base-control__field' )
 		.contains( RegExp( settingName, 'i' ) )
 		.then( $subColorPanel => {
-			cy.get( Cypress.$( $subColorPanel ).parent() )
+			cy.get( Cypress.$( $subColorPanel ).closest( '.components-base-control' ) )
 				.contains( /custom color/i )
 				.click();
 			cy.get( '.components-color-picker__inputs-field input[type="text"]' )
 				.clear()
 				.type( hexColor );
-			cy.get( Cypress.$( $subColorPanel ).parent() )
+			cy.get( Cypress.$( $subColorPanel ).closest( '.components-base-control' ) )
 				.contains( /custom color/i )
 				.click();
 		} );
@@ -270,12 +270,14 @@ export function setColorSetting( settingName, hexColor ) {
  * @param string panelText The panel label text to open. eg: Color Settings
  */
 export function openSettingsPanel( panelText ) {
-	cy.get( '.components-panel__body-title' ).contains( panelText ).then( ( $panelTop ) => {
-		const $parentPanel = Cypress.$( $panelTop ).closest( 'div.components-panel__body' );
-		if ( ! $parentPanel.hasClass( 'is-opened' ) ) {
-			$panelTop.click();
-		}
-	} );
+	cy.get( '.components-panel__body-title' )
+		.contains( panelText )
+		.then( ( $panelTop ) => {
+			const $parentPanel = Cypress.$( $panelTop ).closest( 'div.components-panel__body' );
+			if ( !$parentPanel.hasClass( 'is-opened' ) ) {
+				$panelTop.click();
+			}
+		} );
 }
 
 /**
