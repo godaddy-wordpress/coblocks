@@ -131,7 +131,6 @@ class Inspector extends Component {
 							/>
 						}
 
-						<p>{ __( 'Heading Level', 'coblocks' ) }</p>
 						<HeadingToolbar
 							minLevel={ 1 }
 							maxLevel={ 7 }
