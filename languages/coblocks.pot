@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-01-27T20:49:23+00:00\n"
+"POT-Creation-Date: 2020-01-28T16:24:45+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -5077,36 +5077,36 @@ msgstr ""
 msgid "Change row block layout"
 msgstr ""
 
-#: src/blocks/row/edit.js:123
+#: src/blocks/row/edit.js:122
 msgid "Row Layout"
 msgstr ""
 
 #. block name
 #. translators: block name
-#: src/blocks/row/edit.js:123
+#: src/blocks/row/edit.js:122
 #: src/blocks/row/index.js:38
 msgid "Row"
 msgstr ""
 
 #. %s: 'one' 'two' 'three' and 'four'
 #. translators: %s: 'one' 'two' 'three' and 'four'
-#: src/blocks/row/edit.js:127
+#: src/blocks/row/edit.js:126
 msgid "Select a layout for this %s column row."
 msgstr ""
 
-#: src/blocks/row/edit.js:130
+#: src/blocks/row/edit.js:129
 msgid "Select the number of columns for this row."
 msgstr ""
 
-#: src/blocks/row/edit.js:134
+#: src/blocks/row/edit.js:133
 msgid "Select Row Columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:160
+#: src/blocks/row/edit.js:159
 msgid "Select Row Layout"
 msgstr ""
 
-#: src/blocks/row/edit.js:170
+#: src/blocks/row/edit.js:169
 msgid "Back to Columns"
 msgstr ""
 
@@ -5131,18 +5131,14 @@ msgid "Add background to row"
 msgstr ""
 
 #: src/blocks/row/edit.js:94
-msgid "One Column"
-msgstr ""
-
-#: src/blocks/row/edit.js:95
 msgid "Two Columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:96
+#: src/blocks/row/edit.js:95
 msgid "Three Columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:97
+#: src/blocks/row/edit.js:96
 msgid "Four Columns"
 msgstr ""
 
