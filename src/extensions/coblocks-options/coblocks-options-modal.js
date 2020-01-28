@@ -58,8 +58,6 @@ class CoBlocksOptionsModal extends Component {
 					/>
 					<span>{ __( 'Change fonts, adjust font sizes and line-height with block-level typography controls', 'coblocks' ) }</span>
 
-					<HorizontalRule />
-
 				</div>
 			</Modal>
 		);
