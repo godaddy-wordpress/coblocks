@@ -1,5 +1,3 @@
-/*global coblocksBlockData*/
-
 /**
  * External dependencies
  */
@@ -24,7 +22,7 @@ import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { DOWN } from '@wordpress/keycodes';
 import { RangeControl, withFallbackStyles, ToggleControl, Dropdown, IconButton, SelectControl, Toolbar } from '@wordpress/components';
-import apiFetch from '@wordpress/api-fetch';
+import { withSelect, select } from '@wordpress/data';
 
 /**
  * Export
@@ -57,41 +55,24 @@ class TypographyControls extends Component {
 	constructor( props ) {
 		super( props );
 		this.state = {
-			apiCallPending: true,
 			allowedBlocks: [],
 		};
-		this.settingsNonce = coblocksBlockData.coblocksSettingsNonce;
-		apiFetch.use( apiFetch.createNonceMiddleware( this.settingsNonce ) );
 	}
 
 	componentDidMount() {
-		apiFetch( {
-			path: '/wp-json/wp/v2/settings',
-			method: 'GET',
-			headers: {
-				'X-WP-Nonce': this.settingsNonce,
-			},
-		} ).then( ( res ) => {
-			if ( ! res.coblocks_typography_controls_enabled ) {
-				this.setState( {
-					apiCallPending: false,
-					allowedBlocks: [],
-				} );
-			} else {
-				this.setState( {
-					apiCallPending: false,
-					allowedBlocks: [ 'core/paragraph', 'core/heading', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/pricing-table', 'coblocks/highlight' ],
-				} );
-			}
-		} );
+		if ( this.props.typographyEnabled ) {
+			this.setState( {
+				allowedBlocks: [ 'core/paragraph', 'core/heading', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/pricing-table', 'coblocks/highlight' ],
+			} );
+		}
 	}
 
 	render() {
-		const { apiCallPending, allowedBlocks } = this.state;
-
-		if ( apiCallPending ) {
+		if ( ! this.props.typographyEnabled ) {
 			return null;
 		}
+
+		const { allowedBlocks } = this.state;
 
 		const {
 			attributes,
@@ -294,6 +275,15 @@ class TypographyControls extends Component {
 	}
 }
 
+const applyWithSelect = withSelect( () => {
+	const { getTypography } = select( 'coblocks-settings' );
+
+	return {
+		typographyEnabled: getTypography(),
+	};
+} );
+
 export default compose( [
 	applyFallbackStyles,
+	applyWithSelect,
 ] )( TypographyControls );

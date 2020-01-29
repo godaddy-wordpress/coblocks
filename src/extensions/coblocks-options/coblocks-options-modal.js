@@ -1,12 +1,11 @@
-/*global coblocksBlockData*/
-
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
 import { CheckboxControl, Modal, HorizontalRule } from '@wordpress/components';
-import apiFetch from '@wordpress/api-fetch';
+import { compose } from '@wordpress/compose';
+import { withDispatch, withSelect, select } from '@wordpress/data';
 
 import './style.scss';
 
@@ -19,54 +18,15 @@ class CoBlocksOptionsModal extends Component {
 		this.state = {
 			colors: true,
 			gradient: true,
-			typography: true,
-			apiCallPending: true,
+			// typography: this.props.typography,
 		};
-		this.settingsNonce = coblocksBlockData.coblocksSettingsNonce;
-		apiFetch.use( apiFetch.createNonceMiddleware( this.settingsNonce ) );
-	}
-
-	componentDidMount() {
-		apiFetch( {
-			path: '/wp-json/wp/v2/settings/',
-			method: 'GET',
-			headers: {
-				'X-WP-Nonce': this.settingsNonce,
-			},
-		} ).then( ( res ) => {
-			this.setState( {
-				typography: res.coblocks_typography_controls_enabled || false,
-				apiCallPending: false,
-			} );
-		} );
-	}
-
-	typographyToggle( toggle ) {
-		const { typography } = this.state;
-
-		apiFetch( {
-			path: '/wp-json/wp/v2/settings/',
-			method: 'POST',
-			headers: {
-				'X-WP-Nonce': this.settingsNonce,
-			},
-			data: {
-				coblocks_typography_controls_enabled: toggle,
-			},
-		} ).then( () => {
-			this.setState( { typography: ! typography } );
-		} );
 	}
 
 	render() {
-		const { isOpen, closeModal } = this.props;
-		const { colors, gradient, typography, apiCallPending } = this.state;
+		const { isOpen, closeModal, setTypography, typography } = this.props;
+		const { colors, gradient } = this.state;
 
 		if ( ! isOpen ) {
-			return null;
-		}
-
-		if ( apiCallPending ) {
 			return null;
 		}
 
@@ -95,7 +55,7 @@ class CoBlocksOptionsModal extends Component {
 					<HorizontalRule />
 					<CheckboxControl
 						label={ __( 'Typography Controls', 'coblocks' ) }
-						onChange={ () => this.typographyToggle( ! typography ) }
+						onChange={ () => setTypography( ) }
 						checked={ !! typography }
 					/>
 					<span>{ __( 'Change fonts, adjust font sizes and line-height with block-level typography controls', 'coblocks' ) }</span>
@@ -106,5 +66,22 @@ class CoBlocksOptionsModal extends Component {
 	}
 }
 
-export default CoBlocksOptionsModal;
+const applyWithSelect = withSelect( () => {
+	const { getTypography } = select( 'coblocks-settings' );
 
+	return {
+		typography: getTypography(),
+	};
+} );
+
+const applyWithDispatch = withDispatch( ( dispatch ) => {
+	const { setTypography } = dispatch( 'coblocks-settings' );
+	return {
+		setTypography,
+	};
+} );
+
+export default compose( [
+	applyWithSelect,
+	applyWithDispatch,
+] )( CoBlocksOptionsModal );
