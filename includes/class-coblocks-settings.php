@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 2.0.0
  */
 class CoBlocks_Settings {
-    /**
+	/**
 	 * This plugin's instance.
 	 *
 	 * @var CoBlocks_Settings
@@ -54,13 +54,13 @@ class CoBlocks_Settings {
 			'coblocks_typography_controls_enabled',
 			array(
 				'type'              => 'boolean',
-                'description'       => __( 'Setting use to disable or enable typography controls across the site.', 'coblocks' ),
-                'sanitize_callback' => null,
+				'description'       => __( 'Setting use to disable or enable typography controls across the site.', 'coblocks' ),
+				'sanitize_callback' => null,
 				'show_in_rest'      => true,
 				'default'           => true,
 			)
-        );
-    }
+		);
+	}
 }
 
 CoBlocks_Settings::register();

@@ -1,3 +1,5 @@
+/*global coblocksBlockData*/
+
 /**
  * External dependencies
  */
@@ -21,8 +23,8 @@ import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { DOWN } from '@wordpress/keycodes';
-import { RangeControl, withFallbackStyles, ToggleControl, Dropdown, IconButton, SelectControl, Toolbar, withFilters } from '@wordpress/components';
-import { createHooks } from '@wordpress/hooks';
+import { RangeControl, withFallbackStyles, ToggleControl, Dropdown, IconButton, SelectControl, Toolbar } from '@wordpress/components';
+import apiFetch from '@wordpress/api-fetch';
 
 /**
  * Export
@@ -52,19 +54,44 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  * Typography Component
  */
 class TypographyControls extends Component {
+	constructor( props ) {
+		super( props );
+		this.state = {
+			apiCallPending: true,
+			allowedBlocks: [],
+		};
+		this.settingsNonce = coblocksBlockData.coblocksSettingsNonce;
+		apiFetch.use( apiFetch.createNonceMiddleware( this.settingsNonce ) );
+	}
+
+	componentDidMount() {
+		apiFetch( {
+			path: '/wp-json/wp/v2/settings',
+			method: 'GET',
+			headers: {
+				'X-WP-Nonce': this.settingsNonce,
+			},
+		} ).then( ( res ) => {
+			if ( ! res.coblocks_typography_controls_enabled ) {
+				this.setState( {
+					apiCallPending: false,
+					allowedBlocks: [],
+				} );
+			} else {
+				this.setState( {
+					apiCallPending: false,
+					allowedBlocks: [ 'core/paragraph', 'core/heading', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/pricing-table', 'coblocks/highlight' ],
+				} );
+			}
+		} );
+	}
+
 	render() {
-		TypographyControls.hooks = createHooks();
-		TypographyControls.hooks.addAction( 'typography.enabled', 'coblocks-actions', disabledTypographyControls, 100 );
+		const { apiCallPending, allowedBlocks } = this.state;
 
-		// Blocks that should be allowed to display TypographyControls
-		let allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/pricing-table', 'coblocks/highlight' ];
-
-		function disabledTypographyControls() {
-			allowedBlocks = [];
-			console.log( 'filter callback has been run' );
+		if ( apiCallPending ) {
+			return null;
 		}
-
-		// TypographyControls.hooks.applyFilters( 'typography.enabled' );
 
 		const {
 			attributes,

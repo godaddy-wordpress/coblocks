@@ -5,8 +5,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
-import { CheckboxControl, Modal, HorizontalRule, withFilters } from '@wordpress/components';
-import { applyFilters, doAction, createHooks } from '@wordpress/hooks';
+import { CheckboxControl, Modal, HorizontalRule } from '@wordpress/components';
 import apiFetch from '@wordpress/api-fetch';
 
 import './style.scss';
@@ -21,37 +20,53 @@ class CoBlocksOptionsModal extends Component {
 			colors: true,
 			gradient: true,
 			typography: true,
+			apiCallPending: true,
 		};
+		this.settingsNonce = coblocksBlockData.coblocksSettingsNonce;
+		apiFetch.use( apiFetch.createNonceMiddleware( this.settingsNonce ) );
 	}
 
 	componentDidMount() {
-		console.log( coblocksBlockData.coblocksSettingsNonce );
-		const settingsNonce = coblocksBlockData.coblocksSettingsNonce;
-		apiFetch.use( apiFetch.createNonceMiddleware( settingsNonce ) );
-
 		apiFetch( {
-			path: '/wp-json/wp/v2/settings',
+			path: '/wp-json/wp/v2/settings/',
 			method: 'GET',
 			headers: {
-				'X-WP-Nonce': settingsNonce,
+				'X-WP-Nonce': this.settingsNonce,
 			},
-		} ).then( res => {
-			console.log( res );
+		} ).then( ( res ) => {
+			this.setState( {
+				typography: res.coblocks_typography_controls_enabled || false,
+				apiCallPending: false,
+			} );
 		} );
-		// apiFetch( {
-		// 	path: '/wp-json/wp/v2/settings/title',
-		// 	parse: false,
-		// } )
-		// 	.then( ( response ) => {
-		// 		console.log( response.json() );
-		// 	} );
+	}
+
+	typographyToggle( toggle ) {
+		const { typography } = this.state;
+
+		apiFetch( {
+			path: '/wp-json/wp/v2/settings/',
+			method: 'POST',
+			headers: {
+				'X-WP-Nonce': this.settingsNonce,
+			},
+			data: {
+				coblocks_typography_controls_enabled: toggle,
+			},
+		} ).then( () => {
+			this.setState( { typography: ! typography } );
+		} );
 	}
 
 	render() {
 		const { isOpen, closeModal } = this.props;
-		const { colors, gradient, typography } = this.state;
+		const { colors, gradient, typography, apiCallPending } = this.state;
 
 		if ( ! isOpen ) {
+			return null;
+		}
+
+		if ( apiCallPending ) {
 			return null;
 		}
 
@@ -80,7 +95,7 @@ class CoBlocksOptionsModal extends Component {
 					<HorizontalRule />
 					<CheckboxControl
 						label={ __( 'Typography Controls', 'coblocks' ) }
-						onChange={ () => this.setState( { typography: ! typography } ) }
+						onChange={ () => this.typographyToggle( ! typography ) }
 						checked={ !! typography }
 					/>
 					<span>{ __( 'Change fonts, adjust font sizes and line-height with block-level typography controls', 'coblocks' ) }</span>

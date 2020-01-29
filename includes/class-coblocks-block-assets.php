@@ -129,7 +129,7 @@ class CoBlocks_Block_Assets {
 					'adminEmail'   => $email_to,
 					'emailSubject' => $form_subject,
 				),
-				'coblocksSettingsNonce'			 => wp_create_nonce( 'wp_rest' ),
+				'coblocksSettingsNonce'          => wp_create_nonce( 'wp_rest' ),
 				'cropSettingsOriginalImageNonce' => wp_create_nonce( 'cropSettingsOriginalImageNonce' ),
 				'cropSettingsNonce'              => wp_create_nonce( 'cropSettingsNonce' ),
 				'customIcons'                    => $this->get_custom_icons(),
