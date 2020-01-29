@@ -11,14 +11,32 @@ export default function createCoBlocksStore() {
 
 	let storeChanged = () => {};
 	const settings = {
-		colors: true,
+		customColors: apiFetch( {
+			path: '/wp-json/wp/v2/settings/',
+			method: 'GET',
+			headers: {
+				'X-WP-Nonce': settingsNonce,
+			} } ).then( ( res ) => {
+			return res.coblocks_custom_colors_controls_enabled;
+		} ),
+
 		gradient: true,
-		typography: true,
+		typography: apiFetch( {
+			path: '/wp-json/wp/v2/settings/',
+			method: 'GET',
+			headers: {
+				'X-WP-Nonce': settingsNonce,
+			} } ).then( ( res ) => {
+			return res.coblocks_typography_controls_enabled;
+		} ),
 	};
 
 	const selectors = {
 		getTypography( ) {
 			return settings.typography;
+		},
+		getCustomColors( ) {
+			return settings.customColors;
 		},
 	};
 
@@ -35,6 +53,21 @@ export default function createCoBlocksStore() {
 				},
 				data: {
 					coblocks_typography_controls_enabled: toggle,
+				},
+			} );
+		},
+		setCustomColors( ) {
+			const toggle = ! settings.customColors;
+			settings.customColors = toggle;
+			storeChanged();
+			apiFetch( {
+				path: '/wp-json/wp/v2/settings/',
+				method: 'POST',
+				headers: {
+					'X-WP-Nonce': settingsNonce,
+				},
+				data: {
+					coblocks_custom_colors_controls_enabled: toggle,
 				},
 			} );
 		},

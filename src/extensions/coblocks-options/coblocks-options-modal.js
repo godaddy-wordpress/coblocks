@@ -16,15 +16,26 @@ class CoBlocksOptionsModal extends Component {
 	constructor( props ) {
 		super( props );
 		this.state = {
-			colors: true,
+			// colors: true,
 			gradient: true,
 			// typography: this.props.typography,
 		};
 	}
 
+	updateCustomColorsSetting() {
+		const { customColors, updateSettings, setCustomColors } = this.props;
+		updateSettings( { disableCustomColors: customColors } );
+		setCustomColors();
+	}
+
+	updateTypographyControlsSetting() {
+		const { setTypography } = this.props;
+		setTypography();
+	}
+
 	render() {
-		const { isOpen, closeModal, setTypography, typography } = this.props;
-		const { colors, gradient } = this.state;
+		const { isOpen, closeModal, typography, customColors } = this.props;
+		const { gradient } = this.state;
 
 		if ( ! isOpen ) {
 			return null;
@@ -40,8 +51,8 @@ class CoBlocksOptionsModal extends Component {
 					<HorizontalRule />
 					<CheckboxControl
 						label={ __( 'Custom Colors', 'coblocks' ) }
-						onChange={ () => this.setState( { colors: ! colors } ) }
-						checked={ !! colors }
+						onChange={ () => this.updateCustomColorsSetting() }
+						checked={ !! customColors }
 					/>
 					<span>{ __( 'Apply custom colors to blocks that support colors', 'coblocks' ) }</span>
 					<HorizontalRule />
@@ -55,7 +66,7 @@ class CoBlocksOptionsModal extends Component {
 					<HorizontalRule />
 					<CheckboxControl
 						label={ __( 'Typography Controls', 'coblocks' ) }
-						onChange={ () => setTypography( ) }
+						onChange={ () => this.updateTypographyControlsSetting() }
 						checked={ !! typography }
 					/>
 					<span>{ __( 'Change fonts, adjust font sizes and line-height with block-level typography controls', 'coblocks' ) }</span>
@@ -67,17 +78,23 @@ class CoBlocksOptionsModal extends Component {
 }
 
 const applyWithSelect = withSelect( () => {
-	const { getTypography } = select( 'coblocks-settings' );
+	const { getTypography, getCustomColors } = select( 'coblocks-settings' );
 
 	return {
 		typography: getTypography(),
+		customColors: getCustomColors(),
+
 	};
 } );
 
 const applyWithDispatch = withDispatch( ( dispatch ) => {
-	const { setTypography } = dispatch( 'coblocks-settings' );
+	const { setTypography, setCustomColors } = dispatch( 'coblocks-settings' );
+	const { updateSettings } = dispatch( 'core/block-editor' );
+
 	return {
 		setTypography,
+		setCustomColors,
+		updateSettings,
 	};
 } );
 
