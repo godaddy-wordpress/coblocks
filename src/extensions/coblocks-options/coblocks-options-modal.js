@@ -1,9 +1,13 @@
+/*global coblocksBlockData*/
+
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
-import { CheckboxControl, Modal, HorizontalRule } from '@wordpress/components';
+import { CheckboxControl, Modal, HorizontalRule, withFilters } from '@wordpress/components';
+import { applyFilters, doAction, createHooks } from '@wordpress/hooks';
+import apiFetch from '@wordpress/api-fetch';
 
 import './style.scss';
 
@@ -18,6 +22,29 @@ class CoBlocksOptionsModal extends Component {
 			gradient: true,
 			typography: true,
 		};
+	}
+
+	componentDidMount() {
+		console.log( coblocksBlockData.coblocksSettingsNonce );
+		const settingsNonce = coblocksBlockData.coblocksSettingsNonce;
+		apiFetch.use( apiFetch.createNonceMiddleware( settingsNonce ) );
+
+		apiFetch( {
+			path: '/wp-json/wp/v2/settings',
+			method: 'GET',
+			headers: {
+				'X-WP-Nonce': settingsNonce,
+			},
+		} ).then( res => {
+			console.log( res );
+		} );
+		// apiFetch( {
+		// 	path: '/wp-json/wp/v2/settings/title',
+		// 	parse: false,
+		// } )
+		// 	.then( ( response ) => {
+		// 		console.log( response.json() );
+		// 	} );
 	}
 
 	render() {

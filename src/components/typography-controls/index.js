@@ -21,7 +21,8 @@ import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { DOWN } from '@wordpress/keycodes';
-import { RangeControl, withFallbackStyles, ToggleControl, Dropdown, IconButton, SelectControl, Toolbar } from '@wordpress/components';
+import { RangeControl, withFallbackStyles, ToggleControl, Dropdown, IconButton, SelectControl, Toolbar, withFilters } from '@wordpress/components';
+import { createHooks } from '@wordpress/hooks';
 
 /**
  * Export
@@ -52,8 +53,18 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  */
 class TypographyControls extends Component {
 	render() {
+		TypographyControls.hooks = createHooks();
+		TypographyControls.hooks.addAction( 'typography.enabled', 'coblocks-actions', disabledTypographyControls, 100 );
+
 		// Blocks that should be allowed to display TypographyControls
-		const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/pricing-table', 'coblocks/highlight' ];
+		let allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/pricing-table', 'coblocks/highlight' ];
+
+		function disabledTypographyControls() {
+			allowedBlocks = [];
+			console.log( 'filter callback has been run' );
+		}
+
+		// TypographyControls.hooks.applyFilters( 'typography.enabled' );
 
 		const {
 			attributes,
