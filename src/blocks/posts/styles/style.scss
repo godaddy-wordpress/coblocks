@@ -18,11 +18,11 @@
 
 	// Square images
 	&.image-style-square div.wp-block-coblocks-posts__image .bg-cover {
-		padding-top: 100%; /* 1:! Aspect Ratio */
+		padding-top: 100%; /* 1:1 Aspect Ratio */
 	}
 
 	// 4:3 images
-	&.image-style-four-to-six div.wp-block-coblocks-posts__image .bg-cover {
+	&.image-style-four-to-three div.wp-block-coblocks-posts__image .bg-cover {
 		padding-top: 75%; /* 4:3 Aspect Ratio */
 	}
 

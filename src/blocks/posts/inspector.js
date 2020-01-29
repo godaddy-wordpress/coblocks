@@ -83,9 +83,9 @@ const Inspector = props => {
 			tooltip: __( 'Square', 'coblocks' ),
 		},
 		{
-			value: 'four-to-six',
-			label: '4:6',
-			tooltip: '4:6',
+			value: 'four-to-three',
+			label: '4:3',
+			tooltip: '4:3',
 		},
 		{
 			value: 'sixteen-to-nine',
