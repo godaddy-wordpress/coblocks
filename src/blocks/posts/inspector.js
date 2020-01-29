@@ -48,6 +48,7 @@ const Inspector = props => {
 		columns,
 		listPosition,
 		imageSize,
+		imageStyle,
 	} = attributes;
 
 	const isHorizontalStyle = ( 'horizontal' === activeStyle.name );
@@ -72,6 +73,29 @@ const Inspector = props => {
 			value: 'huge',
 			label: /* translators: abbreviation for extra large size */ __( 'XL', 'coblocks' ),
 			tooltip: /* translators: label for extra large size option */ __( 'Huge', 'coblocks' ),
+		},
+	];
+
+	const imageStyleOptions = [
+		{
+			value: 'square',
+			label: __( 'Square', 'coblocks' ),
+			tooltip: __( 'Square', 'coblocks' ),
+		},
+		{
+			value: 'four-to-six',
+			label: '4:6',
+			tooltip: '4:6',
+		},
+		{
+			value: 'sixteen-to-nine',
+			label: '16:9',
+			tooltip: '16:9',
+		},
+		{
+			value: 'circle',
+			label: __( 'Circle', 'coblocks' ),
+			tooltip: __( 'Circle', 'coblocks' ),
 		},
 	];
 
@@ -145,6 +169,15 @@ const Inspector = props => {
 						options={ sizeOptions }
 						currentOption={ imageSize }
 						onChange={ imageSize => setAttributes( { imageSize } ) }
+					/>
+				}
+
+				{ isHorizontalStyle && hasFeaturedImage &&
+					<OptionSelectorControl
+						label={ __( 'Thumbnail Style', 'coblocks' ) }
+						options={ imageStyleOptions }
+						currentOption={ imageStyle }
+						onChange={ imageStyle => setAttributes( { imageStyle } ) }
 					/>
 				}
 

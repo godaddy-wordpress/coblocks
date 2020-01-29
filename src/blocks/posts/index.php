@@ -110,6 +110,10 @@ function coblocks_posts( $posts, $attributes ) {
 		array_push( $class, 'has-' . $attributes['imageSize'] . '-image' );
 	}
 
+	if ( isset( $attributes['imageStyle'] ) && 'horizontal' === $block_style ) {
+		array_push( $class, 'image-style-' . $attributes['imageStyle'] );
+	}
+
 	$block_content = sprintf(
 		'<div class="%1$s"><div class="%2$s">',
 		esc_attr( implode( ' ', $class_name ) ),
