@@ -1,4 +1,6 @@
-// Using ESNext syntax
+/**
+ * External dependencies
+ */
 import { PluginMoreMenuItem } from '@wordpress/edit-post';
 import { Fragment, useState } from '@wordpress/element';
 import { registerPlugin } from '@wordpress/plugins';
@@ -7,7 +9,6 @@ import { registerGenericStore } from '@wordpress/data';
 /**
  * Internal dependencies
  */
-import { icon } from './icon';
 import CoBlocksOptionsModal from './coblocks-options-modal';
 import createCoBlocksStore from './coblocks-settings-store.js';
 
@@ -35,7 +36,7 @@ const CoBlocksOptionsMenuItem = () => {
 };
 
 registerPlugin( 'coblocks-options', {
-	icon,
+	icon: '',
 	render: CoBlocksOptionsMenuItem,
 } );
 
