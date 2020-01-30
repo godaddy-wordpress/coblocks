@@ -11,51 +11,38 @@ export default function createCoBlocksStore() {
 
 	let storeChanged = () => {};
 	const settings = {
-		customColors: apiFetch( {
-			path: '/wp-json/wp/v2/settings/',
-			method: 'GET',
-			headers: {
-				'X-WP-Nonce': settingsNonce,
-			} } ).then( ( res ) => {
-			return res.coblocks_custom_colors_controls_enabled;
-		} ),
-
-		gradient: true,
-		typography: apiFetch( {
-			path: '/wp-json/wp/v2/settings/',
-			method: 'GET',
-			headers: {
-				'X-WP-Nonce': settingsNonce,
-			} } ).then( ( res ) => {
-			return res.coblocks_typography_controls_enabled;
-		} ),
+		customColors: true,
+		gradients: true,
+		typography: true,
 	};
 
+	apiFetch( {
+		path: '/wp-json/wp/v2/settings/',
+		method: 'GET',
+		headers: {
+			'X-WP-Nonce': settingsNonce,
+		} } ).then( ( res ) => {
+		console.log( res );
+		settings.customColors = res.coblocks_custom_colors_controls_enabled || false;
+		settings.gradients = res.coblocks_gradient_presets_enabled || false;
+		settings.typography = res.coblocks_typography_controls_enabled || false;
+		storeChanged();
+	} );
+
 	const selectors = {
-		getTypography( ) {
-			return settings.typography;
-		},
 		getCustomColors( ) {
 			return settings.customColors;
+		},
+		getGradients() {
+			return settings.gradients;
+		},
+		getTypography( ) {
+			return settings.typography;
 		},
 	};
 
 	const actions = {
-		setTypography( ) {
-			const toggle = ! settings.typography;
-			settings.typography = toggle;
-			storeChanged();
-			apiFetch( {
-				path: '/wp-json/wp/v2/settings/',
-				method: 'POST',
-				headers: {
-					'X-WP-Nonce': settingsNonce,
-				},
-				data: {
-					coblocks_typography_controls_enabled: toggle,
-				},
-			} );
-		},
+
 		setCustomColors( ) {
 			const toggle = ! settings.customColors;
 			settings.customColors = toggle;
@@ -68,6 +55,36 @@ export default function createCoBlocksStore() {
 				},
 				data: {
 					coblocks_custom_colors_controls_enabled: toggle,
+				},
+			} );
+		},
+		setGradients( ) {
+			const toggle = ! settings.gradients;
+			settings.gradients = toggle;
+			storeChanged();
+			apiFetch( {
+				path: '/wp-json/wp/v2/settings/',
+				method: 'POST',
+				headers: {
+					'X-WP-Nonce': settingsNonce,
+				},
+				data: {
+					coblocks_gradient_presets_enabled: toggle,
+				},
+			} );
+		},
+		setTypography( ) {
+			const toggle = ! settings.typography;
+			settings.typography = toggle;
+			storeChanged();
+			apiFetch( {
+				path: '/wp-json/wp/v2/settings/',
+				method: 'POST',
+				headers: {
+					'X-WP-Nonce': settingsNonce,
+				},
+				data: {
+					coblocks_typography_controls_enabled: toggle,
 				},
 			} );
 		},

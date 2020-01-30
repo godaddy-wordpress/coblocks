@@ -41,8 +41,12 @@ class CoBlocks_Settings {
 	public function __construct() {
 
 		add_action( 'init', array( $this, 'register_settings' ) );
-		if( false === get_option( 'coblocks_custom_colors_controls_enabled' ) ) {
+		if ( false === get_option( 'coblocks_custom_colors_controls_enabled' ) ) {
 			add_theme_support( 'disable-custom-colors' );
+		}
+		if ( false === get_option( 'coblocks_gradient_presets_enabled' ) ) {
+			add_theme_support( '__experimental-editor-gradient-presets', array() );
+			add_theme_support( '__experimental-disable-custom-gradients', true );
 		}
 	}
 
@@ -70,6 +74,18 @@ class CoBlocks_Settings {
 			array(
 				'type'              => 'boolean',
 				'description'       => __( 'Setting use to disable or enable custom color controls across the site.', 'coblocks' ),
+				'sanitize_callback' => null,
+				'show_in_rest'      => true,
+				'default'           => true,
+			)
+		);
+
+		register_setting(
+			'coblocks_gradient_presets_enabled',
+			'coblocks_gradient_presets_enabled',
+			array(
+				'type'              => 'boolean',
+				'description'       => __( 'Setting use to disable or enable gradient controls and presets across the site.', 'coblocks' ),
 				'sanitize_callback' => null,
 				'show_in_rest'      => true,
 				'default'           => true,
