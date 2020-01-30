@@ -53,6 +53,9 @@ class GalleryPlaceholder extends Component {
 	}
 
 	selectImgLink( newImage, images, imgLinks ) {
+		if ( ! newImage.id ) {
+			return '';
+		}
 		const currentImage = find( images, { id: newImage.id.toString() } ) ||	find( images, { id: newImage.id } );
 
 		const currentImageImgLink = currentImage ? currentImage.imgLink : newImage.imgLink;
@@ -86,15 +89,14 @@ class GalleryPlaceholder extends Component {
 					id: newImage.id,
 					imgLink: newImage.imgLink,
 				} ) ),
-			}, () => {
-				this.props.setAttributes( {
-					images: newImages.map( ( image ) => ( {
-						...helper.pickRelevantMediaFiles( image ),
-						caption: this.selectCaption( image, images, attachmentCaptions ),
-						imgLink: this.selectImgLink( image, images, imgLinks ),
-					} ) ),
-				} );
-			}
+			} );
+		this.props.setAttributes( {
+			images: newImages.map( ( image ) => ( {
+				...helper.pickRelevantMediaFiles( image ),
+				caption: this.selectCaption( image, images, attachmentCaptions ),
+				imgLink: this.selectImgLink( image, images, imgLinks ),
+			} ) ),
+		}
 		);
 	}
 
