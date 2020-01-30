@@ -14,13 +14,16 @@ import OptionSelectorControl from '../../components/option-selector-control';
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
-import { ENTER, SPACE } from '@wordpress/keycodes';
+import {
+	ENTER,
+	SPACE,
+} from '@wordpress/keycodes';
 import {
 	PanelBody,
-	ToggleControl,
-	RangeControl,
 	QueryControls,
 	RadioControl,
+	RangeControl,
+	ToggleControl,
 } from '@wordpress/components';
 
 const Inspector = props => {
@@ -97,13 +100,13 @@ const Inspector = props => {
 		},
 		{
 			value: 'four-to-three',
-			label: '4:3',
-			tooltip: '4:3',
+			label: __( '4:3', 'coblocks' ),
+			tooltip: __( '4:3 Aspect ratio', 'coblocks' ),
 		},
 		{
 			value: 'sixteen-to-nine',
-			label: '16:9',
-			tooltip: '16:9',
+			label: __( '16:9', 'coblocks' ),
+			tooltip: __( '16:9 Aspect ratio', 'coblocks' ),
 		},
 		{
 			value: 'circle',
