@@ -84,6 +84,8 @@
 		"cross-spawn": "^5.1.0",
 		"cypress": "^3.7.0",
 		"cypress-file-upload": "^3.5.3",
+		"cypress-image-snapshot": "^3.1.1",
+		"cypress-plugin-snapshots": "^1.2.9",
 		"delete-empty": "^2.0.0",
 		"email-validator": "2.0.4",
 		"eslint": "^4.19.1",
