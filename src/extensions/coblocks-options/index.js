@@ -42,7 +42,7 @@ const CoBlocksOptionsMenuItem = () => {
 				{
 					sprintf(
 						/* translators: %s: Plugin name */
-						__( '%s Settings', 'coblocks' ),
+						__( '%s settings', 'coblocks' ),
 						'CoBlocks'
 					)
 				}
