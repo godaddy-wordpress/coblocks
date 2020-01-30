@@ -20,6 +20,7 @@ function CoBlocksField( {
 	required,
 	label,
 	setAttributes,
+	labelsAsPlaceholders,
 } ) {
 	return (
 		<Fragment>
@@ -29,8 +30,13 @@ function CoBlocksField( {
 					label={ label }
 					setAttributes={ setAttributes }
 					isSelected={ isSelected }
+					labelsAsPlaceholders={ labelsAsPlaceholders }
+					placeholder={ labelsAsPlaceholders ? label : '' }
 				/>
-				<TextControl type={ type } />
+				<TextControl
+					type={ type }
+					placeholder={ labelsAsPlaceholders ? label : '' }
+				/>
 			</div>
 		</Fragment>
 	);

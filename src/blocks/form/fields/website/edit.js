@@ -11,7 +11,7 @@ import { TextControl } from '@wordpress/components';
 
 function CoBlocksFieldWebsite( props ) {
 	const { attributes, setAttributes, isSelected } = props;
-	const { required, label } = attributes;
+	const { required, label, labelsAsPlaceholders } = attributes;
 
 	return (
 		<Fragment>
@@ -20,9 +20,11 @@ function CoBlocksFieldWebsite( props ) {
 				label={ label }
 				setAttributes={ setAttributes }
 				isSelected={ isSelected }
+				labelsAsPlaceholders={ labelsAsPlaceholders }
 			/>
 			<TextControl
 				type="url"
+				placeholder={ labelsAsPlaceholders ? label : '' }
 			/>
 		</Fragment>
 	);

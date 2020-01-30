@@ -5,7 +5,7 @@ import CoBlocksField from '../field';
 
 function CoBlocksFieldDate( props ) {
 	const { attributes, setAttributes, isSelected } = props;
-	const { required, label } = attributes;
+	const { required, label, labelsAsPlaceholders } = attributes;
 
 	return (
 		<CoBlocksField
@@ -14,6 +14,7 @@ function CoBlocksFieldDate( props ) {
 			required={ required }
 			setAttributes={ setAttributes }
 			isSelected={ isSelected }
+			labelsAsPlaceholders={ labelsAsPlaceholders }
 		/>
 	);
 }

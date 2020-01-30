@@ -18,7 +18,7 @@ import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
 
 function CoBlocksFieldName( props ) {
 	const { attributes, setAttributes, isSelected } = props;
-	const { required, label, hasLastName, labelFirstName, labelLastName } = attributes;
+	const { required, label, hasLastName, labelFirstName, labelLastName, labelsAsPlaceholders } = attributes;
 
 	return (
 		<Fragment>
@@ -34,11 +34,15 @@ function CoBlocksFieldName( props ) {
 					label={ label }
 					setAttributes={ setAttributes }
 					isSelected={ isSelected }
+					labelsAsPlaceholders={ labelsAsPlaceholders }
 				/>
 				{ hasLastName ?
 					<div className="coblocks-form__inline-fields">
 						<div className="coblocks-form__inline-field">
-							<TextControl className="coblocks-field" />
+							<TextControl
+								className="coblocks-field"
+								placeholder={ labelsAsPlaceholders ? labelFirstName : '' }
+							/>
 							<RichText
 								tagName="small"
 								className="coblocks-form__subtext"
@@ -50,7 +54,10 @@ function CoBlocksFieldName( props ) {
 							/>
 						</div>
 						<div className="coblocks-form__inline-field">
-							<TextControl className="coblocks-field" />
+							<TextControl
+								className="coblocks-field"
+								placeholder={ labelsAsPlaceholders ? labelLastName : '' }
+							/>
 							<RichText
 								tagName="small"
 								className="coblocks-form__subtext"
@@ -62,7 +69,9 @@ function CoBlocksFieldName( props ) {
 							/>
 						</div>
 					</div>				:
-					<TextControl />
+					<TextControl
+						placeholder={ labelsAsPlaceholders ? labelFirstName : '' }
+					/>
 				}
 			</div>
 			<InspectorControls>

@@ -36,6 +36,10 @@ const metadata = {
 			type: 'string',
 			default: null,
 		},
+		labelsAsPlaceholders: {
+			type: 'boolean',
+			default: false,
+		},
 		customBackgroundButtonColor: {
 			type: 'string',
 		},

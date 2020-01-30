@@ -22,7 +22,7 @@ import { TEMPLATE_OPTIONS } from './deprecatedTemplates/layouts';
  */
 import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/components';
+import { Button, PanelBody, TextControl, ExternalLink, ToggleControl } from '@wordpress/components';
 import { InspectorControls, InnerBlocks, __experimentalBlockPatternPicker } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
 import { compose } from '@wordpress/compose';
@@ -52,6 +52,7 @@ class FormEdit extends Component {
 		this.onBlurTo = this.onBlurTo.bind( this );
 		this.onChangeTo = this.onChangeTo.bind( this );
 		this.onChangeSubmit = this.onChangeSubmit.bind( this );
+		this.onChangeLabelsAsPlaceholders = this.onChangeLabelsAsPlaceholders.bind( this );
 		this.getToValidationError = this.getToValidationError.bind( this );
 		this.renderToAndSubjectFields = this.renderToAndSubjectFields.bind( this );
 		this.preventEnterSubmittion = this.preventEnterSubmittion.bind( this );
@@ -125,10 +126,14 @@ class FormEdit extends Component {
 	}
 
 	componentDidMount() {
-		const { hasInnerBlocks, innerBlocks, defaultPattern } = this.props;
+		const { attributes, hasInnerBlocks, innerBlocks, defaultPattern } = this.props;
+		const { labelsAsPlaceholders } = attributes;
+
 		if ( hasInnerBlocks ) {
 			this.setState( { template: innerBlocks } );
 		}
+
+		this.updateInnerAttributes( { labelsAsPlaceholders } );
 
 		if ( ! this.supportsInnerBlocksPicker() && ! this.supportsBlockPatternPicker() && hasInnerBlocks === false ) {
 			this.setTemplate( defaultPattern );
@@ -183,6 +188,11 @@ class FormEdit extends Component {
 
 	onChangeSubmit( submitButtonText ) {
 		this.props.setAttributes( { submitButtonText } );
+	}
+
+	onChangeLabelsAsPlaceholders( labelsAsPlaceholders ) {
+		this.props.setAttributes( { labelsAsPlaceholders } );
+		this.updateInnerAttributes( { labelsAsPlaceholders } );
 	}
 
 	getfieldEmailError( errors ) {
@@ -268,8 +278,8 @@ class FormEdit extends Component {
 
 	renderToAndSubjectFields() {
 		const fieldEmailError = this.state.toError;
-		const { instanceId, attributes } = this.props;
-		const { subject, to } = attributes;
+		const { instanceId, attributes, setAttributes } = this.props;
+		const { subject, to, labelsAsPlaceholders } = attributes;
 		return (
 			<Fragment>
 				<TextControl
@@ -308,6 +318,12 @@ class FormEdit extends Component {
 							[{ __( 'name', 'coblocks' ) }]
 						</Button></Fragment> }
 
+				/>
+				<ToggleControl
+					label={ __( 'Labels as Placeholder', 'coblocks' ) }
+					checked={ labelsAsPlaceholders }
+					onChange={ this.onChangeLabelsAsPlaceholders }
+					help={ !! labelsAsPlaceholders ? __( 'Use field labels as placeholders.', 'coblocks' ) : __( 'Do not use field labels as placeholders.', 'coblocks' ) }
 				/>
 
 			</Fragment>
@@ -353,8 +369,21 @@ class FormEdit extends Component {
 		);
 	}
 
+	updateInnerAttributes( newAttributes ) {
+		const innerItems = wp.data.select( 'core/block-editor' ).getBlocksByClientId(
+			this.props.clientId
+		)[ 0 ].innerBlocks;
+
+		innerItems.map( item => {
+			wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes(
+				item.clientId,
+				newAttributes
+			);
+		} );
+	}
+
 	innerBlocksPatternPicker( ) {
-		const { hasInnerBlocks } = this.props;
+		const { hasInnerBlocks, labelsAsPlaceholders, clientId } = this.props;
 		return (
 			<Fragment>
 				<InnerBlocks

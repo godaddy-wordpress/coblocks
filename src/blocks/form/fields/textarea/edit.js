@@ -11,7 +11,7 @@ import { TextareaControl } from '@wordpress/components';
 
 function CoBlocksFieldTextarea( props ) {
 	const { attributes, setAttributes, isSelected } = props;
-	const { required, label } = attributes;
+	const { required, label, labelsAsPlaceholders } = attributes;
 
 	return (
 		<Fragment>
@@ -21,8 +21,11 @@ function CoBlocksFieldTextarea( props ) {
 					label={ label }
 					setAttributes={ setAttributes }
 					isSelected={ isSelected }
+					labelsAsPlaceholders={ labelsAsPlaceholders }
 				/>
-				<TextareaControl />
+				<TextareaControl
+					placeholder={ labelsAsPlaceholders ? label : '' }
+				/>
 			</div>
 		</Fragment>
 	);
