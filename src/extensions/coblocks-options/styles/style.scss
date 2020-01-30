@@ -1,0 +1,11 @@
+.coblocks-modal__content {
+	max-width: 310px;
+
+	.components-base-control__help {
+		color: $dark-gray-500;
+		display: block;
+		font-style: normal;
+		padding-left: 28px;
+		padding-top: 2px;
+	}
+}

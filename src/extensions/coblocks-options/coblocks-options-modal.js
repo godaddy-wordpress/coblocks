@@ -1,17 +1,28 @@
 /**
- * WordPress dependencies
+ * Internal dependencies
  */
-import { __ } from '@wordpress/i18n';
-import { Component } from '@wordpress/element';
-import { CheckboxControl, Modal, HorizontalRule } from '@wordpress/components';
-import { compose } from '@wordpress/compose';
-import { withDispatch, withSelect, select } from '@wordpress/data';
-
-import './style.scss';
+import Section from './section';
 
 /**
- * Inspector controls
+ * WordPress dependencies
  */
+import { Component } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import {
+	CheckboxControl,
+	Modal,
+	HorizontalRule,
+} from '@wordpress/components';
+import {
+	withDispatch,
+	withSelect,
+	select,
+} from '@wordpress/data';
+import {
+	__,
+	sprintf,
+} from '@wordpress/i18n';
+
 class CoBlocksOptionsModal extends Component {
 	processGradientPresets( newSetting ) {
 		const { getSettings } = this.props;
@@ -59,34 +70,38 @@ class CoBlocksOptionsModal extends Component {
 
 		return (
 			<Modal
-				title="CoBlocks Settings"
-				onRequestClose={ closeModal }>
+				title={ sprintf(
+					/* translators: %s: Plugin name */
+					__( '%s Settings', 'coblocks' ),
+					'CoBlocks'
+				) }
+				onRequestClose={ closeModal }
+			>
 				<div className="coblocks-modal__content">
-
-					<h3>General</h3>
-					<HorizontalRule />
-					<CheckboxControl
-						label={ __( 'Custom Colors', 'coblocks' ) }
-						onChange={ () => this.updateCustomColorsSetting( !! customColors ) }
-						checked={ !! customColors }
-					/>
-					<span>{ __( 'Apply custom colors to blocks that support colors', 'coblocks' ) }</span>
-					<HorizontalRule />
-					<CheckboxControl
-						label={ __( 'Gradient Presets', 'coblocks' ) }
-						onChange={ () => this.updateGradientsControlsSetting( !! gradientControls ) }
-						checked={ !! gradientControls }
-					/>
-					<span>{ __( 'Apply gradient styles to blocks that support gradients', 'coblocks' ) }</span>
-
-					<HorizontalRule />
-					<CheckboxControl
-						label={ __( 'Typography Controls', 'coblocks' ) }
-						onChange={ () => this.updateTypographyControlsSetting() }
-						checked={ !! typography }
-					/>
-					<span>{ __( 'Change fonts, adjust font sizes and line-height with block-level typography controls', 'coblocks' ) }</span>
-
+					<Section title={ __( 'General' ) }>
+						<HorizontalRule />
+						<CheckboxControl
+							label={ __( 'Custom colors', 'coblocks' ) }
+							help={ __( 'Apply custom colors to blocks that support colors.', 'coblocks' ) }
+							onChange={ () => this.updateCustomColorsSetting( !! customColors ) }
+							checked={ !! customColors }
+						/>
+						<HorizontalRule />
+						<CheckboxControl
+							label={ __( 'Gradient presets', 'coblocks' ) }
+							help={ __( 'Apply gradient styles to blocks that support gradients.', 'coblocks' ) }
+							onChange={ () => this.updateGradientsControlsSetting( !! gradientControls ) }
+							checked={ !! gradientControls }
+						/>
+						<HorizontalRule />
+						<CheckboxControl
+							label={ __( 'Typography controls', 'coblocks' ) }
+							help={ __( 'Change fonts, adjust font sizes and line-height with block-level typography controls.', 'coblocks' ) }
+							onChange={ () => this.updateTypographyControlsSetting() }
+							checked={ !! typography }
+						/>
+						<HorizontalRule />
+					</Section>
 				</div>
 			</Modal>
 		);
