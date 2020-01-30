@@ -158,7 +158,7 @@ export function checkForBlockErrors( blockID = '' ) {
  * View the currently edited page on the front of site
  */
 export function viewPage() {
-	cy.get( '#wpadminbar' ).then( ( $adminBar ) => {
+	return cy.get( '#wpadminbar' ).then( ( $adminBar ) => {
 		if ( Cypress.$( '#wp-admin-bar-view' ).length ) {
 			cy.get( '#wp-admin-bar-view' )
 				.click();
