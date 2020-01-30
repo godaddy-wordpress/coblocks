@@ -248,7 +248,12 @@ const Inspector = props => {
 										'is-active': activeStyle === style,
 									}
 								) }
-								onClick={ () => onUpdateStyle( style ) }
+								onClick={ () => {
+									if ( 'horizontal' === style.name && [ 'four-to-three', 'sixteen-to-nine' ].includes( imageStyle ) ) {
+										setAttributes( { imageStyle: 'square' } );
+									}
+									onUpdateStyle( style );
+								} }
 								onKeyDown={ event => {
 									if ( ENTER === event.keyCode || SPACE === event.keyCode ) {
 										event.preventDefault();
