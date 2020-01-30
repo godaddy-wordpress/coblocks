@@ -4,11 +4,11 @@
 import { Component } from '@wordpress/element';
 import {
 	BaseControl,
-	PanelRow,
-	ButtonGroup,
 	Button,
-	Tooltip,
+	ButtonGroup,
+	PanelRow,
 	RangeControl,
+	Tooltip,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
@@ -51,7 +51,10 @@ const NONE_OPTION = {
 export default class OptionSelectorControl extends Component {
 	render() {
 		const {
-			label, options, currentOption,
+			label,
+			options,
+			currentOption,
+			showIcons,
 			showNoneOption,
 			showAdvancedControls,
 			advancedMinValue,
@@ -92,7 +95,7 @@ export default class OptionSelectorControl extends Component {
 									onClick={ () => onChange( option.value ) }
 									aria-label={ option.tooltip }>
 
-									{ option.label }
+									{ showIcons ? option.icon : option.label }
 
 								</Button>
 
