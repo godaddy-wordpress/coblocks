@@ -25,6 +25,7 @@ class GalleryPlaceholder extends Component {
 
 		this.state = {
 			attachmentCaptions: null,
+			imgLinks: null,
 		};
 	}
 
@@ -51,9 +52,29 @@ class GalleryPlaceholder extends Component {
 		return currentImageCaption;
 	}
 
+	selectImgLink( newImage, images, imgLinks ) {
+		const currentImage = find( images, { id: newImage.id.toString() } ) ||	find( images, { id: newImage.id } );
+
+		const currentImageImgLink = currentImage ? currentImage.imgLink : newImage.imgLink;
+
+		if ( ! imgLinks ) {
+			return currentImageImgLink;
+		}
+
+		const link = find(
+			imgLinks, { id: newImage.id }
+		);
+
+		if ( link && ( link.imgLink !== newImage.imgLink ) ) {
+			return newImage.imgLink;
+		}
+
+		return currentImageImgLink;
+	}
+
 	onSelectImages( newImages ) {
 		const { images } = this.props.attributes;
-		const { attachmentCaptions } = this.state;
+		const { attachmentCaptions, imgLinks } = this.state;
 
 		this.setState(
 			{
@@ -61,14 +82,20 @@ class GalleryPlaceholder extends Component {
 					id: newImage.id,
 					caption: newImage.caption,
 				} ) ),
+				imgLinks: newImages.map( ( newImage ) => ( {
+					id: newImage.id,
+					imgLink: newImage.imgLink,
+				} ) ),
+			}, () => {
+				this.props.setAttributes( {
+					images: newImages.map( ( image ) => ( {
+						...helper.pickRelevantMediaFiles( image ),
+						caption: this.selectCaption( image, images, attachmentCaptions ),
+						imgLink: this.selectImgLink( image, images, imgLinks ),
+					} ) ),
+				} );
 			}
 		);
-		this.props.setAttributes( {
-			images: newImages.map( ( image ) => ( {
-				...helper.pickRelevantMediaFiles( image ),
-				caption: this.selectCaption( image, images, attachmentCaptions ),
-			} ) ),
-		} );
 	}
 
 	onUploadError( message ) {
