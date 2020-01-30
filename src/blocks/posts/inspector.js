@@ -76,7 +76,20 @@ const Inspector = props => {
 		},
 	];
 
-	const imageStyleOptions = [
+	const imageStyleHorizontalOptions = [
+		{
+			value: 'square',
+			label: __( 'Square', 'coblocks' ),
+			tooltip: __( 'Square', 'coblocks' ),
+		},
+		{
+			value: 'circle',
+			label: __( 'Circle', 'coblocks' ),
+			tooltip: __( 'Circle', 'coblocks' ),
+		},
+	];
+
+	const imageStyleStackedOptions = [
 		{
 			value: 'square',
 			label: __( 'Square', 'coblocks' ),
@@ -163,21 +176,21 @@ const Inspector = props => {
 					required
 				/>
 
+				{ hasFeaturedImage &&
+					<OptionSelectorControl
+						label={ __( 'Thumbnail Style', 'coblocks' ) }
+						options={ isHorizontalStyle ? imageStyleHorizontalOptions : imageStyleStackedOptions }
+						currentOption={ imageStyle }
+						onChange={ imageStyle => setAttributes( { imageStyle } ) }
+					/>
+				}
+
 				{ isHorizontalStyle && hasFeaturedImage &&
 					<OptionSelectorControl
 						label={ __( 'Thumbnail Size', 'coblocks' ) }
 						options={ sizeOptions }
 						currentOption={ imageSize }
 						onChange={ imageSize => setAttributes( { imageSize } ) }
-					/>
-				}
-
-				{ isHorizontalStyle && hasFeaturedImage &&
-					<OptionSelectorControl
-						label={ __( 'Thumbnail Style', 'coblocks' ) }
-						options={ imageStyleOptions }
-						currentOption={ imageStyle }
-						onChange={ imageStyle => setAttributes( { imageStyle } ) }
 					/>
 				}
 
