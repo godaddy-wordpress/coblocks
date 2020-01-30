@@ -4,12 +4,8 @@
 import * as helpers from '../../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Feature Block', function() {
-	before( function() {
+	beforeEach( function() {
 		helpers.addCoBlocksBlockToPage( true, 'features' );
-	} );
-
-	afterEach( function() {
-		helpers.checkForBlockErrors( 'features' );
 	} );
 
 	/**
@@ -18,6 +14,7 @@ describe( 'Test CoBlocks Feature Block', function() {
 	   */
 	it( 'Test feature block saves with empty values.', function() {
 		cy.get( '.wp-block-coblocks-feature' ).should( 'exist' );
+		helpers.checkForBlockErrors( 'feature' );
 	} );
 
 	/**
@@ -35,6 +32,8 @@ describe( 'Test CoBlocks Feature Block', function() {
 		cy.get( '.wp-block-coblocks-feature__inner' )
 			.should( 'have.css', 'background-color', 'rgb(255, 0, 0)' )
 			.should( 'have.css', 'color', 'rgb(255, 255, 255)' );
+
+		helpers.checkForBlockErrors( 'feature' );
 	} );
 
 	/**
@@ -48,5 +47,16 @@ describe( 'Test CoBlocks Feature Block', function() {
 
 		cy.get( '.wp-block-coblocks-feature' )
 			.should( 'have.class', 'my-custom-class' );
+
+		helpers.checkForBlockErrors( 'feature' );
+	} );
+
+	it( 'Matches snapshot', function() {
+		helpers.savePage();
+
+		helpers.viewPage().then( () => {
+			Cypress.$( '#wpadminbar' ).hide();
+			cy.get( '.hentry' ).toMatchImageSnapshot();
+		} );
 	} );
 } );
