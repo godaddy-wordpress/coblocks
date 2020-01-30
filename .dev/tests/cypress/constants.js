@@ -1,5 +1,5 @@
-const fs = require( 'fs' );
-const path = require( 'path' );
+const { readFileSync } = require( 'fs' );
+const { hasProjectFile } = require( '@wordpress/scripts/utils' );
 
 // Default login for Docker environment.
 let wpCreds = {
@@ -8,11 +8,10 @@ let wpCreds = {
 	wpPassword: 'password',
 };
 
-try {
-	const configFilePath = path.resolve( process.cwd(), 'wp_creds.json' );
+const configFilePath = '.dev/tests/cypress/wp_creds.json';
 
-	fs.accessSync( configFilePath, fs.constants.R_OK );
-	wpCreds = require( configFilePath );
-} catch ( err ) {}
+if ( hasProjectFile( configFilePath ) ) {
+	wpCreds = JSON.parse( readFileSync( configFilePath ) );
+}
 
 export default wpCreds;
