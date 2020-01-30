@@ -13,21 +13,6 @@ import './style.scss';
  * Inspector controls
  */
 class CoBlocksOptionsModal extends Component {
-	componentDidMount() {
-		const { getSettings, customColors, gradientControls, updateSettings } = this.props;
-		const { disableCustomColors, disableCustomGradients } = getSettings();
-
-		if ( !! disableCustomColors !== customColors ) {
-			updateSettings( { disableCustomColors: customColors } );
-		}
-		if ( !! disableCustomGradients !== gradientControls ) {
-			updateSettings( {
-				disableCustomGradients: gradientControls,
-				gradients: this.processGradientPresets( gradientControls ),
-			} );
-		}
-	}
-
 	processGradientPresets( newSetting ) {
 		const { getSettings } = this.props;
 		let gradientPresets = getSettings( ).gradients;
