@@ -41,10 +41,10 @@ class CoBlocks_Settings {
 	public function __construct() {
 
 		add_action( 'init', array( $this, 'register_settings' ) );
-		if ( false === get_option( 'coblocks_custom_colors_controls_enabled' ) ) {
+		if ( null === get_option( 'coblocks_custom_colors_controls_enabled' ) || false === get_option( 'coblocks_custom_colors_controls_enabled' ) ) {
 			add_theme_support( 'disable-custom-colors' );
 		}
-		if ( false === get_option( 'coblocks_gradient_presets_enabled' ) ) {
+		if ( null === get_option( 'coblocks_custom_colors_controls_enabled' ) || false === get_option( 'coblocks_gradient_presets_enabled' ) ) {
 			add_theme_support( '__experimental-editor-gradient-presets', array() );
 			add_theme_support( '__experimental-disable-custom-gradients', true );
 		}

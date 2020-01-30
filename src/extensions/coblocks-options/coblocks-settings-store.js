@@ -22,7 +22,6 @@ export default function createCoBlocksStore() {
 		headers: {
 			'X-WP-Nonce': settingsNonce,
 		} } ).then( ( res ) => {
-		console.log( res );
 		settings.customColors = res.coblocks_custom_colors_controls_enabled || false;
 		settings.gradients = res.coblocks_gradient_presets_enabled || false;
 		settings.typography = res.coblocks_typography_controls_enabled || false;

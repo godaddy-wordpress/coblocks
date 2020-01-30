@@ -13,25 +13,26 @@ import './style.scss';
  * Inspector controls
  */
 class CoBlocksOptionsModal extends Component {
-	componentDidUpdate() {
-		const { getSettings, customColors, gradientControls } = this.props;
+	componentDidMount() {
+		const { getSettings, customColors, gradientControls, updateSettings } = this.props;
 		const { disableCustomColors, disableCustomGradients } = getSettings();
 
-		console.log( disableCustomColors, customColors );
-		console.log( disableCustomGradients, gradientControls );
-		if ( !! disableCustomColors === customColors ) {
-			this.updateCustomColorsSetting( true );
+		if ( !! disableCustomColors !== customColors ) {
+			updateSettings( { disableCustomColors: customColors } );
 		}
-		if ( !! disableCustomGradients === gradientControls ) {
-			this.updateGradientsControlsSetting( true );
+		if ( !! disableCustomGradients !== gradientControls ) {
+			updateSettings( {
+				disableCustomGradients: gradientControls,
+				gradients: this.processGradientPresets( gradientControls ),
+			} );
 		}
 	}
 
-	processGradientPresets() {
-		const { getSettings, gradientControls } = this.props;
+	processGradientPresets( newSetting ) {
+		const { getSettings } = this.props;
 		let gradientPresets = getSettings( ).gradients;
 
-		if ( gradientPresets.length > 0 && gradientControls ) {
+		if ( newSetting ) {
 			localStorage.setItem( 'gradientsPresets', JSON.stringify( gradientPresets ) );
 			gradientPresets = [];
 		} else {
@@ -43,24 +44,20 @@ class CoBlocksOptionsModal extends Component {
 		return gradientPresets;
 	}
 
-	updateCustomColorsSetting( shallow = false ) {
-		const { customColors, updateSettings, setCustomColors } = this.props;
-		updateSettings( { disableCustomColors: customColors } );
-		if ( ! shallow ) {
-			setCustomColors();
-		}
+	updateCustomColorsSetting( newSetting ) {
+		const { updateSettings, setCustomColors } = this.props;
+		updateSettings( { disableCustomColors: newSetting } );
+		setCustomColors();
 	}
 
-	updateGradientsControlsSetting( shallow = false ) {
-		const { setGradients, gradientControls, updateSettings } = this.props;
+	updateGradientsControlsSetting( newSetting ) {
+		const { setGradients, updateSettings } = this.props;
 
 		updateSettings( {
-			disableCustomGradients: gradientControls,
-			gradients: this.processGradientPresets(),
+			disableCustomGradients: newSetting,
+			gradients: this.processGradientPresets( newSetting ),
 		} );
-		if ( ! shallow ) {
-			setGradients();
-		}
+		setGradients();
 	}
 
 	updateTypographyControlsSetting() {
@@ -85,14 +82,14 @@ class CoBlocksOptionsModal extends Component {
 					<HorizontalRule />
 					<CheckboxControl
 						label={ __( 'Custom Colors', 'coblocks' ) }
-						onChange={ () => this.updateCustomColorsSetting() }
+						onChange={ () => this.updateCustomColorsSetting( !! customColors ) }
 						checked={ !! customColors }
 					/>
 					<span>{ __( 'Apply custom colors to blocks that support colors', 'coblocks' ) }</span>
 					<HorizontalRule />
 					<CheckboxControl
 						label={ __( 'Gradient Presets', 'coblocks' ) }
-						onChange={ () => this.updateGradientsControlsSetting() }
+						onChange={ () => this.updateGradientsControlsSetting( !! gradientControls ) }
 						checked={ !! gradientControls }
 					/>
 					<span>{ __( 'Apply gradient styles to blocks that support gradients', 'coblocks' ) }</span>
