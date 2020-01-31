@@ -303,12 +303,6 @@ jobs:
           name: Add CoBlocks i18n staging site to known_hosts
           command: ssh-keyscan -H a90.8f7.myftpupload.com >> ~/.ssh/known_hosts
       - run:
-          name: Update npm
-          command: sudo npm install -g npm@latest
-      - run:
-          name: Install Grunt.js
-          command: sudo npm install -g grunt-cli
-      - run:
           name: Install PHP
           command: sudo apt-get install php libapache2-mod-php php-mbstring
       - run:
@@ -317,29 +311,45 @@ jobs:
             sudo rm -f /etc/php/*/mods-available/xdebug.ini
             sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
             sudo rm -f /etc/php/*/conf.d/*xdebug.ini
+            sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
       - run:
-          name: Install gettext
-          command: sudo apt-get install gettext
+          name: Install Composer
+          command: /
+            /bin/sh -c php -r "copy('https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer', 'composer-setup.php');"
+            php composer-setup.php
+            php -r "unlink('composer-setup.php');"
+            mv composer.phar /usr/local/bin/composer
+      - restore_cache:
+          key: i18n-npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run:
-          name: Install WP-CLI
+          name: Install node dependencies
           command: |
-            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-            chmod +x wp-cli.phar
-            sudo mv wp-cli.phar /usr/local/bin/wp
+            npm uninstall cypress
+            npm install
+      - save_cache:
+          key: i18n-npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          paths:
+          - /home/circleci/project/node_modules
+          - /home/circleci/.npm
+      - restore_cache:
+          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+      - run:
+          name: Install composer dependencies
+          command: |
+            composer install
+      - save_cache:
+          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+          paths:
+          - /home/circleci/project/vendor
       - run:
           name: Install ghr
           command: |
             go get -u github.com/tcnksm/ghr
       - run:
-          name: Install node packages
-          command: |
-            npm uninstall cypress
-            npm install
-      - run:
           name: Build the plugin
           command: |
             mkdir -p /tmp/artifacts
-            grunt build
+            npm run build
             COBLOCKS_VERSION_LINE=$(awk '/\* Version:/{ print NR; exit }' build/coblocks/class-coblocks.php)
             COBLOCKS_COMMIT_HASH=$(git rev-parse --verify HEAD | head -c 7)
             sed -i -e "${COBLOCKS_VERSION_LINE}s/$/-${COBLOCKS_COMMIT_HASH}/" build/coblocks/class-coblocks.php
