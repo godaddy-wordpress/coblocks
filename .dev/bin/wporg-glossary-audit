@@ -20,6 +20,8 @@ if ( ! $msgstrs ) {
 	exit;
 }
 
+$ignore_terms = array_map( 'trim', explode( ',', $argv[3] ?? null ) );
+
 function __fetch_wporg_glossary_csv( $locale ) {
 	return @file_get_contents(
 		"https://translate.wordpress.org/locale/{$locale}/default/glossary/-export/",
@@ -53,6 +55,10 @@ foreach ( $msgids as $hash => $msgid ) {
 	];
 	foreach ( $glossary as $i => $rule ) {
 		if ( empty( $rule[0] ) || empty( $rule[1] ) || $msgid == $msgstrs[ $hash ] ) {
+			continue;
+		}
+		$check = str_ireplace( $ignore_terms, 'FOUNDIT', $rule[0] );
+		if ( false !== strpos( $check, 'FOUNDIT' ) ) {
 			continue;
 		}
 		$pattern_1 = sprintf( '~\b%s\b~i', preg_quote( $rule[0] ) );
