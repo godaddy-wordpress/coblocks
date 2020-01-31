@@ -214,6 +214,8 @@ jobs:
           name: Build the plugin
           command: |
             npx wp-scripts build --config .dev/config/webpack.ci.config.js
+            npx grunt clean:build
+            npx grunt copy:build
             cp -a ./build/coblocks /tmp/wordpress/wp-content/plugins/
       - run:
           name: "Install WordPress"
