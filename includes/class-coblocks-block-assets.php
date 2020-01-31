@@ -109,7 +109,7 @@ class CoBlocks_Block_Assets {
 		wp_register_script(
 			'coblocks-editor',
 			COBLOCKS_PLUGIN_URL . $filepath . '.js',
-			$asset_file['dependencies'],
+			array_merge( $asset_file['dependencies'], array( 'wp-api' ) ),
 			$asset_file['version'],
 			true
 		);
