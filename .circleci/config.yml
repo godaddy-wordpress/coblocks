@@ -239,7 +239,7 @@ jobs:
 
   i18n:
     docker:
-      - image: circleci/node:latest-browsers-legacy
+      - image: circleci/php:7.3-node-browsers-legacy
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -249,28 +249,20 @@ jobs:
           name: Update npm
           command: sudo npm install -g npm@latest
       - run:
-          name: Install PHP
-          command: sudo apt-get install php libapache2-mod-php php-mbstring
-      - run:
           name: Disable xdebug PHP extension
           command: |
             sudo rm -f /etc/php/*/mods-available/xdebug.ini
             sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
             sudo rm -f /etc/php/*/conf.d/*xdebug.ini
       - run:
-          name: Install gettext
-          command: sudo apt-get install gettext
-      - run:
           name: Install node packages
           command: |
             npm uninstall cypress
             npm install
       - run:
-          name: Install WP-CLI
+          name: Install composer dependencies
           command: |
-            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-            chmod +x wp-cli.phar
-            sudo mv wp-cli.phar /usr/local/bin/wp
+            composer install
       - run:
           name: Generate the translations
           command: |
