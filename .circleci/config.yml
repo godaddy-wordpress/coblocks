@@ -257,7 +257,6 @@ jobs:
       - run:
           name: Install node dependencies
           command: |
-            npm uninstall cypress
             npm install
       - save_cache:
           key: i18n-npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
@@ -324,7 +323,6 @@ jobs:
       - run:
           name: Install node dependencies
           command: |
-            npm uninstall cypress
             npm install
       - save_cache:
           key: i18n-npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
