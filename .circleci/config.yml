@@ -253,14 +253,14 @@ jobs:
             sudo rm -f /etc/php/*/conf.d/*xdebug.ini
             sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
       - restore_cache:
-          key: i18n-npm-deps-{{ checksum "package-lock.json" }}
+          key: i18n-npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run:
           name: Install node dependencies
           command: |
             npm uninstall cypress
             npm install
       - save_cache:
-          key: i18n-npm-deps-{{ checksum "package-lock.json" }}
+          key: i18n-npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
           - /home/circleci/project/node_modules
           - /home/circleci/.npm
