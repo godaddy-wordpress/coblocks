@@ -18,7 +18,7 @@ import {
 /**
  * Internal dependencies
  */
-import CoBlocksOptionsModal from './coblocks-options-modal';
+import CoBlocksOptionsModal from './coblocks-settings-modal';
 import createCoBlocksStore from './coblocks-settings-store.js';
 
 const CoBlocksOptionsMenuItem = () => {
