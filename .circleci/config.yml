@@ -266,7 +266,6 @@ jobs:
       - run:
           name: Generate the translations
           command: |
-            mv ../project ../coblocks
             npx grunt update-pot
       - run:
           name: Deploy coblocks.pot/coblocks.json back to GitHub
