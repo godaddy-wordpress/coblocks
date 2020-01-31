@@ -254,6 +254,7 @@ jobs:
             sudo rm -f /etc/php/*/mods-available/xdebug.ini
             sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
             sudo rm -f /etc/php/*/conf.d/*xdebug.ini
+            sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
       - run:
           name: Install node packages
           command: |
