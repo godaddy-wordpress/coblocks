@@ -37,8 +37,8 @@ const settings = {
 	},
 	attributes,
 	edit,
-	getEditWrapperProps( attributes ) {
-		const { paddingSize } = attributes;
+	getEditWrapperProps( blockAttributes ) {
+		const { paddingSize } = blockAttributes;
 
 		// If the column block has children, return the following.
 		if ( paddingSize !== 'advanced' && paddingSize === 'no' ) {

@@ -163,7 +163,7 @@ class edit extends Component {
 									<Popover>
 										<form
 											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
-											onSubmit={ event => event.preventDefault() }
+											onSubmit={ ( event ) => event.preventDefault() }
 										>
 											<Dashicon icon="admin-links" />
 											<div className="block-editor-url-input block-editor-url-input editor-url-input--coblocks">
@@ -173,7 +173,7 @@ class edit extends Component {
 													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
 													placeholder={ __( 'https://facebook.com/', 'coblocks' ) }
 													/* eslint-enable jsx-a11y/no-autofocus */
-													onChange={ value => setAttributes( { facebook: value } ) }
+													onChange={ ( value ) => setAttributes( { facebook: value } ) }
 												/>
 											</div>
 										</form>
@@ -209,7 +209,7 @@ class edit extends Component {
 									<Popover>
 										<form
 											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
-											onSubmit={ event => event.preventDefault() }
+											onSubmit={ ( event ) => event.preventDefault() }
 										>
 											<Dashicon icon="admin-links" />
 											<div className="block-editor-url-input block-editor-url-input editor-url-input--coblocks">
@@ -219,7 +219,7 @@ class edit extends Component {
 													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
 													placeholder={ __( 'https://twitter.com/', 'coblocks' ) }
 													/* eslint-enable jsx-a11y/no-autofocus */
-													onChange={ value => setAttributes( { twitter: value } ) }
+													onChange={ ( value ) => setAttributes( { twitter: value } ) }
 												/>
 											</div>
 										</form>
@@ -255,7 +255,7 @@ class edit extends Component {
 									<Popover>
 										<form
 											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
-											onSubmit={ event => event.preventDefault() }
+											onSubmit={ ( event ) => event.preventDefault() }
 										>
 											<Dashicon icon="admin-links" />
 											<div className="block-editor-url-input block-editor-url-input editor-url-input--coblocks">
@@ -265,7 +265,7 @@ class edit extends Component {
 													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
 													placeholder={ __( 'https://instagram.com/', 'coblocks' ) }
 													/* eslint-enable jsx-a11y/no-autofocus */
-													onChange={ value =>
+													onChange={ ( value ) =>
 														setAttributes( { instagram: value } )
 													}
 												/>
@@ -303,7 +303,7 @@ class edit extends Component {
 									<Popover>
 										<form
 											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
-											onSubmit={ event => event.preventDefault() }
+											onSubmit={ ( event ) => event.preventDefault() }
 										>
 											<Dashicon icon="admin-links" />
 											<div className="block-editor-url-input block-editor-url-input editor-url-input--coblocks">
@@ -313,7 +313,7 @@ class edit extends Component {
 													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
 													placeholder={ __( 'https://pinterest.com/', 'coblocks' ) }
 													/* eslint-enable jsx-a11y/no-autofocus */
-													onChange={ value =>
+													onChange={ ( value ) =>
 														setAttributes( { pinterest: value } )
 													}
 												/>
@@ -351,7 +351,7 @@ class edit extends Component {
 									<Popover>
 										<form
 											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
-											onSubmit={ event => event.preventDefault() }
+											onSubmit={ ( event ) => event.preventDefault() }
 										>
 											<Dashicon icon="admin-links" />
 											<div className="block-editor-url-input block-editor-url-input editor-url-input--coblocks">
@@ -361,7 +361,7 @@ class edit extends Component {
 													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
 													placeholder={ __( 'https://linkedin.com/', 'coblocks' ) }
 													/* eslint-enable jsx-a11y/no-autofocus */
-													onChange={ value => setAttributes( { linkedin: value } ) }
+													onChange={ ( value ) => setAttributes( { linkedin: value } ) }
 												/>
 											</div>
 										</form>
@@ -397,7 +397,7 @@ class edit extends Component {
 									<Popover>
 										<form
 											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
-											onSubmit={ event => event.preventDefault() }
+											onSubmit={ ( event ) => event.preventDefault() }
 										>
 											<Dashicon icon="admin-links" />
 											<div className="block-editor-url-input block-editor-url-input editor-url-input--coblocks">
@@ -407,7 +407,7 @@ class edit extends Component {
 													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
 													placeholder={ __( 'https://youtube.com/', 'coblocks' ) }
 													/* eslint-enable jsx-a11y/no-autofocus */
-													onChange={ value => setAttributes( { youtube: value } ) }
+													onChange={ ( value ) => setAttributes( { youtube: value } ) }
 												/>
 											</div>
 										</form>
@@ -443,7 +443,7 @@ class edit extends Component {
 									<Popover>
 										<form
 											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
-											onSubmit={ event => event.preventDefault() }
+											onSubmit={ ( event ) => event.preventDefault() }
 										>
 											<Dashicon icon="admin-links" />
 											<div className="block-editor-url-input block-editor-url-input editor-url-input--coblocks">
@@ -453,7 +453,7 @@ class edit extends Component {
 													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
 													placeholder={ __( 'https://yelp.com/', 'coblocks' ) }
 													/* eslint-enable jsx-a11y/no-autofocus */
-													onChange={ value => setAttributes( { yelp: value } ) }
+													onChange={ ( value ) => setAttributes( { yelp: value } ) }
 												/>
 											</div>
 										</form>
@@ -489,7 +489,7 @@ class edit extends Component {
 									<Popover>
 										<form
 											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
-											onSubmit={ event => event.preventDefault() }
+											onSubmit={ ( event ) => event.preventDefault() }
 										>
 											<Dashicon icon="admin-links" />
 											<div className="block-editor-url-input block-editor-url-input editor-url-input--coblocks">
@@ -499,7 +499,7 @@ class edit extends Component {
 													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
 													placeholder={ __( 'https://houzz.com/', 'coblocks' ) }
 													/* eslint-enable jsx-a11y/no-autofocus */
-													onChange={ value => setAttributes( { houzz: value } ) }
+													onChange={ ( value ) => setAttributes( { houzz: value } ) }
 												/>
 											</div>
 										</form>

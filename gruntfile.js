@@ -1,5 +1,3 @@
-/* global module, require */
-
 module.exports = function( grunt ) {
 	'use strict';
 
@@ -7,23 +5,7 @@ module.exports = function( grunt ) {
 
 	grunt.initConfig( {
 
-		pkg: pkg,
-
-		devUpdate: {
-			packages: {
-				options: {
-					packageJson: null,
-					packages: {
-						devDependencies: true,
-						dependencies: false,
-					},
-					reportOnlyPkgs: [],
-					reportUpdated: false,
-					semver: true,
-					updateType: 'force',
-				},
-			},
-		},
+		pkg,
 
 		clean: {
 			build: [ 'build/' ],
@@ -54,13 +36,6 @@ module.exports = function( grunt ) {
 			},
 		},
 
-		eslint: {
-			target: [
-				'src/**/*.js',
-				'!src/js/vendors/**/*.js',
-			],
-		},
-
 		compress: {
 			coblocks: {
 				options: {
@@ -73,37 +48,6 @@ module.exports = function( grunt ) {
 						src: [ '**' ],
 					},
 				],
-			},
-		},
-
-		uglify: {
-			options: {
-				ASCIIOnly: true,
-			},
-			all: {
-				expand: true,
-				cwd: 'src/js/',
-				src: [ '**/*.js', '!deprecations/*.js' ],
-				dest: 'dist/js/',
-				ext: '.min.js',
-			},
-		},
-
-		imagemin: {
-			options: {
-				optimizationLevel: 3,
-			},
-			assets: {
-				expand: true,
-				cwd: 'dist/images/',
-				src: [ '**/*.{gif,jpeg,jpg,png,svg}' ],
-				dest: 'build/<%= pkg.name %>/dist/images/',
-			},
-			wp_org_assets: {
-				expand: true,
-				cwd: '.wordpress-org/',
-				src: [ '**/*.{gif,jpeg,jpg,png,svg}' ],
-				dest: '.wordpress-org/',
 			},
 		},
 
@@ -174,24 +118,15 @@ module.exports = function( grunt ) {
 		},
 
 		shell: {
-			cgb_start: [
-				'npm run start',
-			].join( ' && ' ),
-			cgb_build: [
-				'npm run build',
-			].join( ' && ' ),
-			translations: [
-				'npm run babel:build',
-			].join( ' && ' ),
+			build: [ 'npm run build' ].join( ' && ' ),
+			translations: [ 'npm run makepot' ].join( ' && ' ),
 		},
 
 	} );
 
 	require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
-	grunt.registerTask( 'default', [ 'uglify', 'shell:cgb_start' ] );
-	grunt.registerTask( 'check', [ 'devUpdate' ] );
-	grunt.registerTask( 'build', [ 'shell:cgb_build', 'uglify', 'imagemin', 'update-pot', 'replace', 'clean:build', 'copy:build' ] );
-	grunt.registerTask( 'update-pot', [ 'shell:translations' ] );
+	grunt.registerTask( 'build', [ 'shell:build', 'update-pot', 'replace', 'clean:build', 'copy:build' ] );
+	grunt.registerTask( 'update-pot', [ 'shell:translations', 'replace:languages' ] );
 	grunt.registerTask( 'version', [ 'replace' ] );
 };

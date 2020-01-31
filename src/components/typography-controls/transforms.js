@@ -2,7 +2,7 @@
  * Set the attributes for the Text Panel transformations.
  *
  * @param {Object} props The passed props.
- * @returns {Object} The transforms.
+ * @return {Object} The transforms.
  */
 function TypographyTransforms( props ) {
 	const transforms = {

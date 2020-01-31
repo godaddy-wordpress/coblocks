@@ -13,7 +13,7 @@ const CoBlocksFieldLabel = ( { setAttributes, label, resetFocus, isSelected, req
 					tagName="label"
 					className="coblocks-label coblocks-field-label__input"
 					value={ label }
-					onChange={ value => {
+					onChange={ ( value ) => {
 						if ( resetFocus ) {
 							resetFocus();
 						}
@@ -30,7 +30,7 @@ const CoBlocksFieldLabel = ( { setAttributes, label, resetFocus, isSelected, req
 					label={ __( 'Required', 'coblocks' ) }
 					className="coblocks-field-label__required"
 					checked={ required }
-					onChange={ value => setAttributes( { required: value } ) }
+					onChange={ ( value ) => setAttributes( { required: value } ) }
 				/>
 			) }
 		</div>

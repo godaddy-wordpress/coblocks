@@ -62,8 +62,8 @@ const deprecatedSVGs = ( { attributes, className } ) => {
 		backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 		color: textClass ? undefined : customIconColor,
 		fill: textClass ? undefined : customIconColor,
-		height: height,
-		width: width,
+		height,
+		width,
 		borderRadius: borderRadius ? borderRadius + 'px' : undefined,
 		padding: padding ? padding + 'px' : undefined,
 	};
@@ -132,8 +132,8 @@ const deprecated = [
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				color: textClass ? undefined : customIconColor,
 				fill: textClass ? undefined : customIconColor,
-				height: height,
-				width: width,
+				height,
+				width,
 				borderRadius: borderRadius ? borderRadius + 'px' : undefined,
 				padding: padding ? padding + 'px' : undefined,
 			};

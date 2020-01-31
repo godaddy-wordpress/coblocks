@@ -10,7 +10,7 @@ import fromEntries from '../../../js/coblocks-fromEntries';
  */
 import { RichText, getColorClassName, InnerBlocks } from '@wordpress/block-editor';
 
-const isEmpty = attributes => {
+const isEmpty = ( attributes ) => {
 	const attributesToCheck = [ 'title', 'features', 'currency', 'amount' ];
 	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
 		attributesToCheck.includes( key )

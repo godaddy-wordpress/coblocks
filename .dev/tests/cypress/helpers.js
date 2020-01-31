@@ -1,4 +1,4 @@
-/*
+/**
  * Include our constants
  */
 import { wpUsername, wpPassword, testURL } from './constants';

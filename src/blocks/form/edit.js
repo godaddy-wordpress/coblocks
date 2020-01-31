@@ -81,7 +81,7 @@ class FormEdit extends Component {
 			.filter( Boolean );
 
 		if ( typeof settings !== 'undefined' ) {
-			settings.on( 'change:coblocks_google_recaptcha_site_key', model => {
+			settings.on( 'change:coblocks_google_recaptcha_site_key', ( model ) => {
 				const recaptchaSiteKey = model.get( 'coblocks_google_recaptcha_site_key' );
 				this.setState( {
 					recaptchaSiteKey: settings.get( 'coblocks_google_recaptcha_site_key' ),
@@ -89,7 +89,7 @@ class FormEdit extends Component {
 				} );
 			} );
 
-			settings.on( 'change:coblocks_google_recaptcha_secret_key', model => {
+			settings.on( 'change:coblocks_google_recaptcha_secret_key', ( model ) => {
 				const recaptchaSecretKey = model.get(
 					'coblocks_google_recaptcha_secret_key'
 				);
@@ -101,7 +101,7 @@ class FormEdit extends Component {
 				} );
 			} );
 
-			settings.fetch().then( response => {
+			settings.fetch().then( ( response ) => {
 				this.setState( {
 					recaptchaSiteKey: response.coblocks_google_recaptcha_site_key,
 				} );
@@ -110,7 +110,7 @@ class FormEdit extends Component {
 				}
 			} );
 
-			settings.fetch().then( response => {
+			settings.fetch().then( ( response ) => {
 				this.setState( {
 					recaptchaSecretKey: response.coblocks_google_recaptcha_secret_key,
 				} );
@@ -206,7 +206,7 @@ class FormEdit extends Component {
 					errors[ 1 ].email
 				);
 			}
-			const inValidEmails = errors.map( error => error.email );
+			const inValidEmails = errors.map( ( error ) => error.email );
 			return sprintf(
 				/* translators: %s1: placeholder for comma separated email addresses */
 				__( '%s are not valid email addresses.', 'coblocks' ),
@@ -411,13 +411,13 @@ class FormEdit extends Component {
 							<TextControl
 								label={ __( 'Site Key', 'coblocks' ) }
 								value={ this.state.recaptchaSiteKey }
-								onChange={ value => this.setState( { recaptchaSiteKey: value } ) }
+								onChange={ ( value ) => this.setState( { recaptchaSiteKey: value } ) }
 								className="components-block-coblocks-form-recaptcha-key__custom-input"
 							/>
 							<TextControl
 								label={ __( 'Secret Key', 'coblocks' ) }
 								value={ this.state.recaptchaSecretKey }
-								onChange={ value => this.setState( { recaptchaSecretKey: value } ) }
+								onChange={ ( value ) => this.setState( { recaptchaSecretKey: value } ) }
 								className="components-block-coblocks-form-recaptcha-key__custom-input"
 							/>
 							<div className="components-base-control">
@@ -459,7 +459,7 @@ class FormEdit extends Component {
 				<__experimentalBlockPatternPicker
 					icon={ get( blockType, [ 'icon', 'src' ] ) }
 					label={ get( blockType, [ 'title' ] ) }
-					instructions={ __( 'Select a pattern to start with.' ) }
+					instructions={ __( 'Select a pattern to start with.', 'coblocks' ) }
 					patterns={ patterns }
 					allowSkip
 					onSelect={ ( nextPattern = defaultPattern ) => {

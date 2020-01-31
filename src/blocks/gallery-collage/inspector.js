@@ -115,14 +115,14 @@ class Inspector extends Component {
 						label={ __( 'Gutter', 'coblocks' ) }
 						currentOption={ gutter }
 						options={ gutterOptions }
-						onChange={ gutter => setAttributes( { gutter } ) }
+						onChange={ ( gutter ) => setAttributes( { gutter } ) }
 					/> }
 					{ ! enableGutter && <OptionSelectorControl
 						label={ __( 'Shadow', 'coblocks' ) }
 						options={ shadowOptions }
 						currentOption={ shadow }
 						showNoneOption
-						onChange={ shadow => setAttributes( { shadow } ) }
+						onChange={ ( shadow ) => setAttributes( { shadow } ) }
 					/> }
 					{ enableCaptions && <ToggleControl
 						label={ __( 'Captions', 'coblocks' ) }

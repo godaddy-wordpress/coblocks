@@ -35,7 +35,7 @@ export default function save( { attributes, className } ) {
 
 	return (
 		<div className={ classes }>
-			{ Object.keys( imageChunks ).map( keyOuter => {
+			{ Object.keys( imageChunks ).map( ( keyOuter ) => {
 				const images = imageChunks[ keyOuter ];
 				return (
 					<div className="wp-block-coblocks-logos__row" key={ 'wrapper-' + keyOuter }>

@@ -41,6 +41,7 @@
 	}
 
 	&:not(.has-background) {
+
 		&::before {
 			color: rgb(41, 41, 41);
 		}
@@ -48,6 +49,7 @@
 
 	&.is-style-line:not(.has-background),
 	&.is-style-fullwidth:not(.has-background) {
+
 		&::before {
 			background: rgba(0, 0, 0, 0.15);
 		}

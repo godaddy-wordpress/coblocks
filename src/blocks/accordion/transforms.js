@@ -13,7 +13,7 @@ const transforms = {
 		{
 			type: 'prefix',
 			prefix: ':accordion',
-			transform: function( content ) {
+			transform( content ) {
 				return createBlock( metadata.name, {
 					content,
 				} );

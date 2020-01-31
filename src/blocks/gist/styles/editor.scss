@@ -1,10 +1,12 @@
 .wp-block-coblocks-gist {
+
 	&.wp-block-shortcode {
 		display: flex;
 		flex-direction: row;
 	}
 
 	> label {
+
 		svg {
 			margin-right: 1ch;
 		}

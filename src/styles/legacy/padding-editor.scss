@@ -1,21 +1,27 @@
 .editor-styles-wrapper {
+
 	.p {
+
 		@include utilities($spacing, "padding", "-");
 	}
 
 	.pt {
+
 		@include utilities($spacing, "padding-top", "-");
 	}
 
 	.pr {
+
 		@include utilities($spacing, "padding-right", "-");
 	}
 
 	.pb {
+
 		@include utilities($spacing, "padding-bottom", "-");
 	}
 
 	.pl {
+
 		@include utilities($spacing, "padding-left", "-");
 	}
 }

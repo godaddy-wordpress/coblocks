@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-import './styles/editor.scss';
 import icons from './icons';
 
 /**
@@ -28,14 +27,13 @@ class ResponsiveTabsControl extends Component {
 
 	render() {
 		const {
+			attributes,
 			label = __( 'Gutter', 'coblocks' ),
 			max = 50,
 			min = 0,
 			onChange = this.setGutterTo,
 			onChangeMobile = this.setGutterMobileTo,
 			step = 5,
-			value = this.props.attributes.gutter,
-			valueMobile = this.props.attributes.gutterMobile,
 		} = this.props;
 
 		return (
@@ -66,7 +64,7 @@ class ResponsiveTabsControl extends Component {
 											__( 'Mobile %s', 'coblocks' ),
 											label
 										) }
-										value={ valueMobile }
+										value={ attributes.valueMobile }
 										onChange={ ( valueMobile ) => onChangeMobile( valueMobile ) }
 										min={ min }
 										max={ max }
@@ -77,7 +75,7 @@ class ResponsiveTabsControl extends Component {
 							return (
 								<RangeControl
 									label={ label }
-									value={ value }
+									value={ attributes.value }
 									onChange={ ( value ) => onChange( value ) }
 									min={ min }
 									max={ max }

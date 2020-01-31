@@ -1,6 +1,8 @@
 // Utility class for adding a border-radius to the figure elements.
 @for $i from 2 through 20 {
+
 	.has-border-radius-#{ $i } {
+
 		.coblocks-gallery--figure::after {
 			border-radius: #{$i}px;
 		}
@@ -23,7 +25,9 @@
 }
 
 @for $i from 13 through 20 {
+
 	.has-border-radius-#{ $i } {
+
 		.components-coblocks-gallery-item__remove-menu,
 		.components-coblocks-gallery-item__move-menu {
 			padding: 6px;

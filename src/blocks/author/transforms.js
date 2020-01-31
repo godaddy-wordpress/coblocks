@@ -22,7 +22,7 @@ const transforms = {
 		{
 			type: 'prefix',
 			prefix: ':author',
-			transform: function( content ) {
+			transform( content ) {
 				return createBlock( metadata.name, {
 					content,
 				} );

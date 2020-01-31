@@ -1,4 +1,5 @@
 .is-style-checkbox {
+
 	li {
 		list-style-type: none !important;
 		padding-left: 10px;
@@ -38,11 +39,15 @@
 }
 
 .is-style-none {
-	&, li{
+
+	&,
+ li {
 		list-style-type: none !important;
 		padding-left: 0 !important;
 	}
-	li{
+
+	li {
+
 		&::before {
 			content: "\200B";
 		}

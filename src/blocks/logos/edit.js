@@ -30,7 +30,7 @@ class Edit extends Component {
 
 	onSelectImages( images ) {
 		this.props.setAttributes( {
-			images: images.map( image => pickRelevantMediaFiles( image ) ),
+			images: images.map( ( image ) => pickRelevantMediaFiles( image ) ),
 		} );
 	}
 

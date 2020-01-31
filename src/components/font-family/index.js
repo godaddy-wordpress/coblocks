@@ -22,13 +22,13 @@ function FontFamilyPicker( { label, value, help, instanceId, onChange, className
 	const fonts = [];
 
 	// Add Google Fonts
-	Object.keys( googleFonts ).map( ( k ) => {
+	Object.keys( googleFonts ).forEach( ( k ) => {
 		fonts.push(
 			{ value: k, label: k }
 		);
 	} );
 
-	systemFonts.reverse().map( ( font ) => {
+	systemFonts.reverse().forEach( ( font ) => {
 		fonts.unshift( font );
 	} );
 
@@ -86,7 +86,7 @@ function FontFamilyPicker( { label, value, help, instanceId, onChange, className
 					<option
 						key={ `${ option.label }-${ option.value }-${ index }` }
 						value={ option.value }
-						selected={ value === option.value ? 'selected' : '' }
+						defaultValue={ value === option.value ? 'selected' : '' }
 					>
 						{ option.label }
 					</option>

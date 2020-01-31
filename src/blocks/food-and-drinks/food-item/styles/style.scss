@@ -1,6 +1,6 @@
-$icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenFree);
+$icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenfree);
 
-.wp-block-coblocks-food-item { 
+.wp-block-coblocks-food-item {
 	flex-grow: 1;
 	margin-top: 2.75em;
 	width: 50%;
@@ -15,6 +15,7 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenFree);
 	}
 
 	.wp-block-coblocks-food-and-drinks[data-columns="2"]:not(.is-style-list) & {
+
 		&:nth-child(even) {
 			padding-right: 20px;
 
@@ -33,6 +34,7 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenFree);
 	}
 
 	.wp-block-coblocks-food-and-drinks[data-columns="3"]:not(.is-style-list) & {
+
 		&:nth-child(3n - 1) {
 			padding-right: 12px;
 
@@ -61,6 +63,7 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenFree);
 	}
 
 	.wp-block-coblocks-food-and-drinks:not(.is-style-list) & {
+
 		.wp-block-coblocks-food-item__content {
 			display: block;
 		}
@@ -165,15 +168,16 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenFree);
 
 	&__attribute {
 		background: none;
-		border:none;
-		padding:0;
+		border: none;
+		padding: 0;
 	}
-	
+
 	&__attribute.spicier {
 		margin-left: -0.25em !important;
 	}
 
 	@each $icon in $icons {
+
 		&__attribute--#{$icon} &__icon {
 			mask-image: url(images/food-attribute/#{$icon}.svg);
 
@@ -184,6 +188,7 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenFree);
 
 		// IE 10+ Support
 		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+
 			&__attribute--#{$icon} &__icon {
 				background-image: url(images/food-attribute/#{$icon}.svg);
 				color: transparent !important;

@@ -13,11 +13,11 @@ const transforms = {
 		{
 			type: 'raw',
 			priority: 1,
-			isMatch: node =>
+			isMatch: ( node ) =>
 				node.nodeName === 'P' &&
                 /^\s*(https?:\/\/\S+)\s*$/i.test( node.textContent ) &&
                 node.textContent.match( /^https?:\/\/(www\.)?gist\.github\.com\/.+/i ),
-			transform: node => {
+			transform: ( node ) => {
 				// Check for a file within the URL.
 				const file = node.textContent
 					.trim()
@@ -34,7 +34,7 @@ const transforms = {
 		{
 			type: 'prefix',
 			prefix: ':gist',
-			transform: function( content ) {
+			transform( content ) {
 				return createBlock( metadata.name, {
 					content,
 				} );

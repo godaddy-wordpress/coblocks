@@ -13,7 +13,7 @@ class Controls extends Component {
 	render() {
 		const { attributes } = this.props;
 		const { images } = attributes;
-		const hasImages = !! images.filter( image => typeof image.id !== 'undefined' ).length;
+		const hasImages = !! images.filter( ( image ) => typeof image.id !== 'undefined' ).length;
 
 		return (
 			<BlockControls>

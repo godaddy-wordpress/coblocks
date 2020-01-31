@@ -1,4 +1,6 @@
 /* global: Image */
+import jQuery from 'jquery';
+
 ( function( $ ) {
 	'use strict';
 
@@ -37,12 +39,12 @@
 
 		const imagePreloader = {};
 
-		images.each( function( index, img ) {
-			imagePreloader[ `img-${ index }` ] = new window.Image();
-			imagePreloader[ `img-${ index }` ].src = img.attributes.src.value;
+		images.each( function( imgIndex, img ) {
+			imagePreloader[ `img-${ imgIndex }` ] = new window.Image();
+			imagePreloader[ `img-${ imgIndex }` ].src = img.attributes.src.value;
 
 			$( img ).click( function() {
-				changeImage( index );
+				changeImage( imgIndex );
 			} );
 		} );
 

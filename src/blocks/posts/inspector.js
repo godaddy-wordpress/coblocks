@@ -17,13 +17,13 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { ENTER, SPACE } from '@wordpress/keycodes';
 import {
 	PanelBody,
-	ToggleControl,
-	RangeControl,
 	QueryControls,
 	RadioControl,
+	RangeControl,
+	ToggleControl,
 } from '@wordpress/components';
 
-const Inspector = props => {
+const Inspector = ( props ) => {
 	const {
 		attributes,
 		activeStyle,
@@ -36,19 +36,6 @@ const Inspector = props => {
 		hasPosts,
 		hasFeaturedImage,
 	} = props;
-
-	const {
-		order,
-		orderBy,
-		postFeedType,
-		postsToShow,
-		excerptLength,
-		displayPostDate,
-		displayPostContent,
-		columns,
-		listPosition,
-		imageSize,
-	} = attributes;
 
 	const isHorizontalStyle = ( 'horizontal' === activeStyle.name );
 
@@ -91,7 +78,7 @@ const Inspector = props => {
 		setAttributes( changedAttributes );
 	};
 
-	if ( isHorizontalStyle && columns > 2 ) {
+	if ( isHorizontalStyle && attributes.columns > 2 ) {
 		columnsCountOnChange( 2 );
 	}
 
@@ -100,28 +87,28 @@ const Inspector = props => {
 			<Fragment>
 				<ToggleControl
 					label={ __( 'Post Date', 'coblocks' ) }
-					checked={ displayPostDate }
+					checked={ attributes.displayPostDate }
 					help={
-						displayPostDate ?
+						attributes.displayPostDate ?
 							__( 'Showing the publish date.', 'coblocks' ) :
 							__( 'Toggle to show the publish date.', 'coblocks' )
 					}
-					onChange={ () => setAttributes( { displayPostDate: ! displayPostDate } ) }
+					onChange={ () => setAttributes( { displayPostDate: ! attributes.displayPostDate } ) }
 				/>
 				<ToggleControl
 					label={ __( 'Post Content', 'coblocks' ) }
-					checked={ displayPostContent }
+					checked={ attributes.displayPostContent }
 					help={
-						displayPostContent ?
+						attributes.displayPostContent ?
 							__( 'Showing the post content.', 'coblocks' ) :
 							__( 'Toggle to show the post content.', 'coblocks' )
 					}
-					onChange={ () => setAttributes( { displayPostContent: ! displayPostContent } ) }
+					onChange={ () => setAttributes( { displayPostContent: ! attributes.displayPostContent } ) }
 				/>
-				{ displayPostContent &&
+				{ attributes.displayPostContent &&
 					<RangeControl
 						label={ __( 'Max words in content', 'coblocks' ) }
-						value={ excerptLength }
+						value={ attributes.excerptLength }
 						onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
 						min={ 5 }
 						max={ 75 }
@@ -129,7 +116,7 @@ const Inspector = props => {
 				}
 				<RangeControl
 					label={ __( 'Columns', 'coblocks' ) }
-					value={ columns }
+					value={ attributes.columns }
 					onChange={ ( value ) => {
 						onUserModifiedColumn();
 						columnsCountOnChange( value );
@@ -143,8 +130,8 @@ const Inspector = props => {
 					<OptionSelectorControl
 						label={ __( 'Thumbnail Size', 'coblocks' ) }
 						options={ sizeOptions }
-						currentOption={ imageSize }
-						onChange={ imageSize => setAttributes( { imageSize } ) }
+						currentOption={ attributes.imageSize }
+						onChange={ ( imageSize ) => setAttributes( { imageSize } ) }
 					/>
 				}
 
@@ -155,7 +142,7 @@ const Inspector = props => {
 	const feedSettings = (
 		<PanelBody title={ __( 'Feed Settings', 'coblocks' ) } initialOpen={ ! hasPosts ? true : false }>
 			<RadioControl
-				selected={ postFeedType }
+				selected={ attributes.postFeedType }
 				options={ [
 					{ label: __( 'My Blog', 'coblocks' ), value: 'internal' },
 					{ label: __( 'External Feed', 'coblocks' ), value: 'external' },
@@ -164,9 +151,10 @@ const Inspector = props => {
 			/>
 			{ hasPosts ?
 				<Fragment>
-					{ postFeedType === 'internal' &&
+					{ attributes.postFeedType === 'internal' &&
 						<QueryControls
-							{ ...{ order, orderBy } }
+							order={ attributes.order }
+							orderBy={ attributes.orderBy }
 							categoriesList={ categoriesList }
 							selectedCategoryId={ categoriesList.categories }
 							onOrderChange={ ( value ) => setAttributes( { order: value } ) }
@@ -176,7 +164,7 @@ const Inspector = props => {
 					}
 					<RangeControl
 						label={ __( 'Number of posts', 'coblocks' ) }
-						value={ postsToShow }
+						value={ attributes.postsToShow }
 						onChange={ ( value ) => postsCountOnChange( value ) }
 						min={ 1 }
 						max={ 20 }
@@ -200,7 +188,7 @@ const Inspector = props => {
 									}
 								) }
 								onClick={ () => onUpdateStyle( style ) }
-								onKeyDown={ event => {
+								onKeyDown={ ( event ) => {
 									if ( ENTER === event.keyCode || SPACE === event.keyCode ) {
 										event.preventDefault();
 										onUpdateStyle( style );
@@ -211,7 +199,7 @@ const Inspector = props => {
 								aria-label={ style.label || style.name }
 							>
 								<div className="block-editor-block-styles__item-preview">
-									{ listPosition === 'left' && style.iconAlt ? style.iconAlt : style.icon }
+									{ attributes.listPosition === 'left' && style.iconAlt ? style.iconAlt : style.icon }
 								</div>
 								<div className="block-editor-block-styles__item-label">
 									{ style.label || style.name }
