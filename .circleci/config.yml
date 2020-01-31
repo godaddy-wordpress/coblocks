@@ -318,7 +318,7 @@ jobs:
       - run:
           name: Install Composer
           command: |
-            /bin/sh -c php -r "copy('https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer', 'composer-setup.php');"
+            wget https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer -O composer-setup.php
             php composer-setup.php
             php -r "unlink('composer-setup.php');"
             sudo mv composer.phar /usr/local/bin/composer
