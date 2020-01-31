@@ -253,20 +253,20 @@ jobs:
             sudo rm -f /etc/php/*/conf.d/*xdebug.ini
             sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
       - restore_cache:
-          key:
-            - i18n-npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
-            - i18n-npm-deps-{{ .Branch }}
+          keys:
+            - npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - npm-deps-{{ .Branch }}
       - run:
           name: Install node dependencies
           command: |
             npm install
       - save_cache:
-          key: i18n-npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
           - /home/circleci/project/node_modules
           - /home/circleci/.npm
       - restore_cache:
-          key:
+          keys:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
             - composer-deps-{{ .Branch }}
       - run:
@@ -323,20 +323,20 @@ jobs:
             php -r "unlink('composer-setup.php');"
             sudo mv composer.phar /usr/local/bin/composer
       - restore_cache:
-          key:
-            - i18n-npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
-            - i18n-npm-deps-{{ .Branch }}
+          keys:
+            - npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - npm-deps-{{ .Branch }}
       - run:
           name: Install node dependencies
           command: |
             npm install
       - save_cache:
-          key: i18n-npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
           - /home/circleci/project/node_modules
           - /home/circleci/.npm
       - restore_cache:
-          key:
+          keys:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
             - composer-deps-{{ .Branch }}
       - run:
