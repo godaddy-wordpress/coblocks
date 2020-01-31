@@ -303,7 +303,7 @@ jobs:
           command: ssh-keyscan -H a90.8f7.myftpupload.com >> ~/.ssh/known_hosts
       - run:
           name: Install PHP
-          command: sudo apt-get install php libapache2-mod-php php-mbstring
+          command: sudo apt-get install php libapache2-mod-php php-mbstring php-xml php-curl
       - run:
           name: Disable xdebug PHP extension
           command: |
@@ -317,7 +317,7 @@ jobs:
             /bin/sh -c php -r "copy('https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer', 'composer-setup.php');"
             php composer-setup.php
             php -r "unlink('composer-setup.php');"
-            mv composer.phar /usr/local/bin/composer
+            sudo mv composer.phar /usr/local/bin/composer
       - restore_cache:
           key: i18n-npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run:
