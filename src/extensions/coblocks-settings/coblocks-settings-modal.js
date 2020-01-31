@@ -23,7 +23,7 @@ import {
 	sprintf,
 } from '@wordpress/i18n';
 
-class CoBlocksOptionsModal extends Component {
+class CoBlocksSettingsModal extends Component {
 	processGradientPresets( newSetting ) {
 		const { getSettings } = this.props;
 		let gradientPresets = getSettings( ).gradients;
@@ -135,4 +135,4 @@ const applyWithDispatch = withDispatch( ( dispatch ) => {
 export default compose( [
 	applyWithSelect,
 	applyWithDispatch,
-] )( CoBlocksOptionsModal );
+] )( CoBlocksSettingsModal );

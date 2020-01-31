@@ -1,3 +1,5 @@
+/*global coblocksSettingsEnabled*/
+
 /**
  * Styles
  */
@@ -8,7 +10,7 @@ import './styles/style.scss';
  */
 import { PluginMoreMenuItem } from '@wordpress/edit-post';
 import { Fragment, useState } from '@wordpress/element';
-import { registerPlugin } from '@wordpress/plugins';
+import { registerPlugin, getPlugin, unregisterPlugin } from '@wordpress/plugins';
 import { registerGenericStore } from '@wordpress/data';
 import {
 	__,
@@ -21,41 +23,52 @@ import {
 import CoBlocksOptionsModal from './coblocks-settings-modal';
 import createCoBlocksStore from './coblocks-settings-store.js';
 
-const CoBlocksOptionsMenuItem = () => {
-	const [
-		isOpen,
-		setOpen,
-	] = useState( false );
+if ( typeof coblocksSettingsEnabled === 'undefined' ) {
+	coblocksSettingsEnabled.coblocksSettings = '1';
+}
 
-	const openModal = () => setOpen( true );
-	const closeModal = () => setOpen( false );
+if ( coblocksSettingsEnabled.coblocksSettings === '1' ) {
+	const CoBlocksSettingsMenuItem = () => {
+		const [
+			isOpen,
+			setOpen,
+		] = useState( false );
 
-	const props = {
-		isOpen,
-		openModal,
-		closeModal,
+		const openModal = () => setOpen( true );
+		const closeModal = () => setOpen( false );
+
+		const props = {
+			isOpen,
+			openModal,
+			closeModal,
+		};
+
+		return (
+			<Fragment>
+				<PluginMoreMenuItem onClick={ openModal }>
+					{
+						sprintf(
+							/* translators: %s: Plugin name */
+							__( '%s settings', 'coblocks' ),
+							'CoBlocks'
+						)
+					}
+				</PluginMoreMenuItem>
+				<CoBlocksOptionsModal { ...props } />
+			</Fragment>
+
+		);
 	};
 
-	return (
-		<Fragment>
-			<PluginMoreMenuItem onClick={ openModal }>
-				{
-					sprintf(
-						/* translators: %s: Plugin name */
-						__( '%s settings', 'coblocks' ),
-						'CoBlocks'
-					)
-				}
-			</PluginMoreMenuItem>
-			<CoBlocksOptionsModal { ...props } />
-		</Fragment>
+	registerPlugin( 'coblocks-settings', {
+		icon: '',
+		render: CoBlocksSettingsMenuItem,
+	} );
 
-	);
-};
+	registerGenericStore( 'coblocks-settings', createCoBlocksStore() );
+} else {
+	if ( getPlugin( 'coblocks-settings' ) ) {
+		unregisterPlugin( 'coblocks-settings' );
+	}
+}
 
-registerPlugin( 'coblocks-options', {
-	icon: '',
-	render: CoBlocksOptionsMenuItem,
-} );
-
-registerGenericStore( 'coblocks-settings', createCoBlocksStore() );
