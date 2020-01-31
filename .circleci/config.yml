@@ -265,13 +265,13 @@ jobs:
           - /home/circleci/project/node_modules
           - /home/circleci/.npm
       - restore_cache:
-          key: composer-deps-{{ .Branch }}-{{ checksum "composer-lock.json" }}
+          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
       - run:
           name: Install composer dependencies
           command: |
             composer install
       - save_cache:
-          key: composer-deps-{{ .Branch }}-{{ checksum "composer-lock.json" }}
+          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
           paths:
           - /home/circleci/project/vendor
       - run:
