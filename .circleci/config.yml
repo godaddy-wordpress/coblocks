@@ -355,7 +355,7 @@ jobs:
           name: Build the plugin
           command: |
             mkdir -p /tmp/artifacts
-            npm run build
+            npx grunt build
             COBLOCKS_VERSION_LINE=$(awk '/\* Version:/{ print NR; exit }' build/coblocks/class-coblocks.php)
             COBLOCKS_COMMIT_HASH=$(git rev-parse --verify HEAD | head -c 7)
             sed -i -e "${COBLOCKS_VERSION_LINE}s/$/-${COBLOCKS_COMMIT_HASH}/" build/coblocks/class-coblocks.php
