@@ -72,7 +72,7 @@ class CoBlocksOptionsModal extends Component {
 			<Modal
 				title={ sprintf(
 					/* translators: %s: Plugin name */
-					__( '%s Settings', 'coblocks' ),
+					__( '%s Editor Settings', 'coblocks' ),
 					'CoBlocks'
 				) }
 				onRequestClose={ closeModal }
