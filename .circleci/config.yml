@@ -290,7 +290,6 @@ jobs:
               git commit -m "Update coblocks.pot/coblocks.json files [skip i18n]"
               git push origin master --quiet
             fi
-          path: ~/coblocks
 
   canary-release:
     docker:
