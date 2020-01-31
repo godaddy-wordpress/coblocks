@@ -246,24 +246,34 @@ jobs:
             - "14:ee:bc:31:0f:50:7e:fe:8b:56:87:f8:56:db:48:5b"
       - checkout
       - run:
-          name: Update npm
-          command: sudo npm install -g npm@latest
-      - run:
           name: Disable xdebug PHP extension
           command: |
             sudo rm -f /etc/php/*/mods-available/xdebug.ini
             sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
             sudo rm -f /etc/php/*/conf.d/*xdebug.ini
             sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
+      - restore_cache:
+          key: i18n-npm-deps-{{ checksum "package-lock.json" }}
       - run:
-          name: Install node packages
+          name: Install node dependencies
           command: |
             npm uninstall cypress
             npm install
+      - save_cache:
+          key: i18n-npm-deps-{{ checksum "package-lock.json" }}
+          paths:
+          - /home/circleci/project/node_modules
+          - /home/circleci/.npm
+      - restore_cache:
+          key: composer-deps-{{ .Branch }}-{{ checksum "composer-lock.json" }}
       - run:
           name: Install composer dependencies
           command: |
             composer install
+      - save_cache:
+          key: composer-deps-{{ .Branch }}-{{ checksum "composer-lock.json" }}
+          paths:
+          - /home/circleci/project/vendor
       - run:
           name: Generate the translations
           command: |
