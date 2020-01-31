@@ -1,4 +1,4 @@
-/*global coblocksSettingsEnabled*/
+/*global coblocksSettings*/
 
 /**
  * Styles
@@ -23,11 +23,11 @@ import {
 import CoBlocksOptionsModal from './coblocks-settings-modal';
 import createCoBlocksStore from './coblocks-settings-store.js';
 
-if ( typeof coblocksSettingsEnabled === 'undefined' ) {
-	coblocksSettingsEnabled.coblocksSettings = '1';
+if ( typeof coblocksSettings === 'undefined' ) {
+	coblocksSettings.coblocksSettings = '0';
 }
 
-if ( coblocksSettingsEnabled.coblocksSettings === '1' ) {
+if ( coblocksSettings.coblocksSettings === '1' ) {
 	const CoBlocksSettingsMenuItem = () => {
 		const [
 			isOpen,

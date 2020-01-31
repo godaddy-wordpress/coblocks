@@ -45,12 +45,12 @@ class CoBlocks_Settings {
 		if ( ! get_option( 'coblocks_custom_colors_controls_enabled' ) ) {
 			add_theme_support( 'disable-custom-colors' );
 		}
-		
+
 		if ( ! get_option( 'coblocks_gradient_presets_enabled' ) ) {
 			add_theme_support( '__experimental-editor-gradient-presets', array() );
 			add_theme_support( '__experimental-disable-custom-gradients', true );
 		}
-		
+
 		add_action( 'init', array( $this, 'coblocks_settings_assets' ) );
 
 	}
@@ -63,9 +63,10 @@ class CoBlocks_Settings {
 	public function coblocks_settings_assets() {
 		wp_localize_script(
 			'coblocks-editor',
-			'coblocksSettingsEnabled',
+			'coblocksSettings',
 			array(
-				'coblocksSettings' => get_option( 'coblocks_settings_panel_enabled' ),
+				'coblocksSettings'      => get_option( 'coblocks_settings_panel_enabled' ),
+				'coblocksSettingsNonce' => wp_create_nonce( 'wp_rest' ),
 			)
 		);
 	}

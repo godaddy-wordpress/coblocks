@@ -1,4 +1,4 @@
-/*global coblocksBlockData*/
+/*global coblocksSettings*/
 
 /**
  * WordPress dependencies
@@ -6,7 +6,7 @@
 import apiFetch from '@wordpress/api-fetch';
 
 export default function createCoBlocksStore() {
-	const settingsNonce = coblocksBlockData.coblocksSettingsNonce;
+	const settingsNonce = coblocksSettings.coblocksSettingsNonce;
 	apiFetch.use( apiFetch.createNonceMiddleware( settingsNonce ) );
 
 	let storeChanged = () => {};
