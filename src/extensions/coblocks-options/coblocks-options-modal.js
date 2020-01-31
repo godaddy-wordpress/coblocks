@@ -82,21 +82,21 @@ class CoBlocksOptionsModal extends Component {
 						<HorizontalRule />
 						<CheckboxControl
 							label={ __( 'Custom colors', 'coblocks' ) }
-							help={ __( 'Apply custom colors to blocks that support colors.', 'coblocks' ) }
+							help={ __( 'Allow styling with the custom color picker.', 'coblocks' ) }
 							onChange={ () => this.updateCustomColorsSetting( !! customColors ) }
 							checked={ !! customColors }
 						/>
 						<HorizontalRule />
 						<CheckboxControl
-							label={ __( 'Gradient presets', 'coblocks' ) }
-							help={ __( 'Apply gradient styles to blocks that support gradients.', 'coblocks' ) }
+							label={ __( 'Gradient styles', 'coblocks' ) }
+							help={ __( 'Allow styling with gradient fills.', 'coblocks' ) }
 							onChange={ () => this.updateGradientsControlsSetting( !! gradientControls ) }
 							checked={ !! gradientControls }
 						/>
 						<HorizontalRule />
 						<CheckboxControl
 							label={ __( 'Typography controls', 'coblocks' ) }
-							help={ __( 'Change fonts, adjust font sizes and line-height with block-level typography controls.', 'coblocks' ) }
+							help={ __( 'Allow block-level typography controls.', 'coblocks' ) }
 							onChange={ () => this.updateTypographyControlsSetting() }
 							checked={ !! typography }
 						/>
