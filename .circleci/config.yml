@@ -314,7 +314,7 @@ jobs:
             sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
       - run:
           name: Install Composer
-          command: /
+          command: |
             /bin/sh -c php -r "copy('https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer', 'composer-setup.php');"
             php composer-setup.php
             php -r "unlink('composer-setup.php');"
