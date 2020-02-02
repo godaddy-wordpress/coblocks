@@ -7,6 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import HeadingToolbar from '../../components/heading-toolbar';
+import OptionSelectorControl from '../../components/option-selector-control';
 
 /**
  * WordPress dependencies.
@@ -28,10 +29,30 @@ const Inspector = ( props ) => {
 	} = props;
 
 	const gutterOptions = [
-		{ value: 'small', label: __( 'Small', 'coblocks' ) },
-		{ value: 'medium', label: __( 'Medium', 'coblocks' ) },
-		{ value: 'large', label: __( 'Large', 'coblocks' ) },
-		{ value: 'huge', label: __( 'Huge', 'coblocks' ) },
+		{
+			value: 'small',
+			/* translators: abbreviation for small size */
+			label: __( 'S', 'coblocks' ),
+			tooltip: __( 'Small', 'coblocks' ),
+		},
+		{
+			value: 'medium',
+			/* translators: abbreviation for medium size */
+			label: __( 'M', 'coblocks' ),
+			tooltip: __( 'Medium', 'coblocks' ),
+		},
+		{
+			value: 'large',
+			/* translators: abbreviation for large size */
+			label: __( 'L', 'coblocks' ),
+			tooltip: __( 'Large', 'coblocks' ),
+		},
+		{
+			value: 'huge',
+			/* translators: abbreviation for largest size */
+			label: __( 'XL', 'coblocks' ),
+			tooltip: __( 'Huge', 'coblocks' ),
+		},
 	];
 
 	return (
@@ -78,16 +99,12 @@ const Inspector = ( props ) => {
 					max={ 4 }
 					onChange={ ( columns ) => setAttributes( { columns } ) }
 				/>
-				{ attributes.columns >= 2 &&
-					<SelectControl
-						label={ __( 'Gutter', 'coblocks' ) }
-						value={ attributes.gutter }
-						options={ gutterOptions }
-						help={ __( 'Space between each column.', 'coblocks' ) }
-						onChange={ ( value ) => setAttributes( { gutter: value } ) }
-					/>
-				}
-
+				{ attributes.columns >= 2 && <OptionSelectorControl
+					label={ __( 'Gutter', 'coblocks' ) }
+					currentOption={ attributes.gutter }
+					options={ gutterOptions }
+					onChange={ ( gutter ) => setAttributes( { gutter } ) }
+				/> }
 				<HeadingToolbar
 					minLevel={ 1 }
 					maxLevel={ 7 }
