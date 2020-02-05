@@ -233,6 +233,7 @@ class PostsEdit extends Component {
 			excerptLength,
 			listPosition,
 			imageSize,
+			gutter,
 		} = attributes;
 
 		const editToolbarControls = [
@@ -383,7 +384,7 @@ class PostsEdit extends Component {
 							'has-columns': columns,
 							[ `has-${ columns }-columns` ]: columns,
 							'has-responsive-columns': columns,
-							'has-medium-gutter': columns,
+							[ `has-${ gutter }-gutter` ]: gutter && columns,
 							'has-image-right': isHorizontalStyle && listPosition === 'right',
 							[ `has-${ imageSize }-image` ]: isHorizontalStyle,
 						} ) }>
