@@ -2,7 +2,7 @@
  * CSS classes.
  *
  * @param {Object} attributes The passed attributes.
- * @returns {Array} The gallery classes.
+ * @return {Array} The gallery classes.
  */
 function GalleryClasses( attributes ) {
 	const {

@@ -1,5 +1,6 @@
 /**
  * Set attributes
+ *
  * @type {Object}
  */
 const ColorSettingsAttributes = {

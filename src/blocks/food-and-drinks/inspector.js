@@ -11,7 +11,7 @@ import { PanelBody, ToggleControl } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 import { ENTER, SPACE } from '@wordpress/keycodes';
 
-const Inspector = props => {
+const Inspector = ( props ) => {
 	const {
 		attributes,
 		activeStyle,
@@ -25,7 +25,7 @@ const Inspector = props => {
 		<InspectorControls>
 			<PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
 				<div className="block-editor-block-styles block-editor-block-styles coblocks-editor-block-styles">
-					{ layoutOptions.map( style => (
+					{ layoutOptions.map( ( style ) => (
 						<div
 							key={ `style-${ style.name }` }
 							className={ classnames(
@@ -35,7 +35,7 @@ const Inspector = props => {
 								}
 							) }
 							onClick={ () => onUpdateStyle( style ) }
-							onKeyDown={ event => {
+							onKeyDown={ ( event ) => {
 								if ( ENTER === event.keyCode || SPACE === event.keyCode ) {
 									event.preventDefault();
 									onUpdateStyle( style );

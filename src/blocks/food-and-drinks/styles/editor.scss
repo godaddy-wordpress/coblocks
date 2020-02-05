@@ -1,4 +1,5 @@
 .wp-block-coblocks-food-and-drinks {
+
 	.block-editor-inner-blocks {
 		width: 100%;
 	}
@@ -36,6 +37,7 @@
 	}
 
 	&.is-style-list {
+
 		.block-editor-block-list__layout {
 			flex-direction: column;
 		}
@@ -105,16 +107,8 @@
 }
 
 // Added for Gutenberg 6.3+
-.block-editor-block-list__block[data-type="coblocks/food-and-drinks"].has-child-selected
-	> .block-editor-block-list__block-edit
-	> [data-block]
-	> div
-	> .block-editor-inner-blocks,
-.block-editor-block-list__block[data-type="coblocks/food-and-drinks"].is-selected
-	> .block-editor-block-list__block-edit
-	> [data-block]
-	> div
-	> .block-editor-inner-blocks {
+.block-editor-block-list__block[data-type="coblocks/food-and-drinks"].has-child-selected > .block-editor-block-list__block-edit > [data-block] > div > .block-editor-inner-blocks,
+.block-editor-block-list__block[data-type="coblocks/food-and-drinks"].is-selected > .block-editor-block-list__block-edit > [data-block] > div > .block-editor-inner-blocks {
 	padding: 14px;
 	padding-bottom: 0;
 }

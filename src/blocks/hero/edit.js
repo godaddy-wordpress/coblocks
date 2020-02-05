@@ -133,10 +133,8 @@ export class Edit extends Component {
 			if ( typeof dimensions[ id ] === 'undefined' ) {
 				dimensions[ id ] = {};
 				dimensions[ id ][ type ] = {};
-			} else {
-				if ( typeof dimensions[ id ][ type ] === 'undefined' ) {
-					dimensions[ id ][ type ] = {};
-				}
+			} else if ( typeof dimensions[ id ][ type ] === 'undefined' ) {
+				dimensions[ id ][ type ] = {};
 			}
 
 			dimensions[ id ][ type ] = height;

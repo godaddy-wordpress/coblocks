@@ -41,7 +41,7 @@ $json = preg_replace_callback(
 	function ( $m ) {
 		return str_repeat( ' ', strlen( $m[0] ) / 2 );
 	},
-	json_encode( $output, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT )
+	json_encode( $output, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT )
 );
 
 file_put_contents( $argv[2], $json, LOCK_EX );

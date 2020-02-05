@@ -32,7 +32,6 @@ define( 'COBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'COBLOCKS_PLUGIN_FILE', __FILE__ );
 define( 'COBLOCKS_PLUGIN_BASE', plugin_basename( __FILE__ ) );
 define( 'COBLOCKS_REVIEW_URL', 'https://wordpress.org/support/plugin/coblocks/reviews/?filter=5' );
-define( 'COBLOCKS_ASSET_SUFFIX', SCRIPT_DEBUG ? null : '.min' );
 
 if ( ! class_exists( 'CoBlocks' ) ) :
 	/**
@@ -144,7 +143,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		public function asset_source( $type = 'js', $directory = null ) {
 
 			if ( 'js' === $type ) {
-				return SCRIPT_DEBUG ? COBLOCKS_PLUGIN_URL . 'src/' . $type . '/' . $directory : COBLOCKS_PLUGIN_URL . 'dist/' . $type . '/' . $directory;
+				return COBLOCKS_PLUGIN_URL . 'dist/' . $type . '/' . $directory;
 			} else {
 				return COBLOCKS_PLUGIN_URL . 'dist/css/' . $directory;
 			}

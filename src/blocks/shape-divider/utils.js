@@ -12,7 +12,7 @@ import dividers from './dividers';
  * Return the appropriate SVG for the block style.
  *
  * @param {Array} className The class names.
- * @returns {String} The divider.
+ * @return {string} The divider.
  */
 export function getDividerFromStyle( className ) {
 	const angled = includes( className, 'is-style-angled' );

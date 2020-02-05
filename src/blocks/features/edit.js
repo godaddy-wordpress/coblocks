@@ -22,6 +22,7 @@ import { compose } from '@wordpress/compose';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { isBlobURL } from '@wordpress/blob';
 import { Spinner } from '@wordpress/components';
+import { dispatch, select } from '@wordpress/data';
 
 /**
  * Constants
@@ -43,6 +44,35 @@ const getCount = memoize( ( count ) => {
  * Block edit function
  */
 class Edit extends Component {
+	constructor() {
+		super( ...arguments );
+
+		this.updateInnerAttributes = this.updateInnerAttributes.bind( this );
+		this.onChangeHeadingLevel = this.onChangeHeadingLevel.bind( this );
+	}
+
+	updateInnerAttributes( blockName, newAttributes ) {
+		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
+			this.props.clientId
+		)[ 0 ].innerBlocks;
+
+		innerItems.map( item => {
+			if ( item.name === blockName ) {
+				dispatch( 'core/block-editor' ).updateBlockAttributes(
+					item.clientId,
+					newAttributes
+				);
+			}
+		} );
+	}
+
+	onChangeHeadingLevel( headingLevel ) {
+		const { setAttributes } = this.props;
+
+		setAttributes( { headingLevel } );
+		this.updateInnerAttributes( 'coblocks/feature', { headingLevel } );
+	}
+
 	render() {
 		const {
 			attributes,
@@ -125,6 +155,7 @@ class Edit extends Component {
 				{ isSelected && (
 					<Inspector
 						{ ...this.props }
+						onChangeHeadingLevel={ this.onChangeHeadingLevel }
 					/>
 				) }
 				<div

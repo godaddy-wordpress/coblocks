@@ -215,7 +215,7 @@ class Inspector extends Component {
 						}
 						<TextControl
 							value={ this.state.apiKey }
-							onChange={ value => this.setState( { apiKey: value } ) }
+							onChange={ ( value ) => this.setState( { apiKey: value } ) }
 							placeholder={ __( 'Enter Google API Key…', 'coblocks' ) }
 							onKeyDown={ ( { keyCode } ) => this.handleKeyDown( keyCode ) }
 							className="components-block-coblocks-map-api-key__custom-input"

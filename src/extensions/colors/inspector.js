@@ -17,7 +17,7 @@ import { createHigherOrderComponent } from '@wordpress/compose';
  * @param {Object} props Block props.
  * @return {Object} Settings for the Settings Sidebar.
  */
-const Inspector = props => {
+const Inspector = ( props ) => {
 	const allowedBlocks = [ 'core/cover', 'core/button', 'core/list', 'core/quote' ];
 
 	// Display on the allowedBlocks only.
@@ -61,7 +61,7 @@ function addAttributes( settings ) {
 /**
  * Override the default edit UI to include a new block inspector control
  *
- * @param {function|Component} BlockEdit Original component.
+ * @param {Function} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
 const withInspectorControl = createHigherOrderComponent( ( BlockEdit ) => {

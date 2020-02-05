@@ -78,7 +78,7 @@ icons.vegan = (
 	</SVG>
 );
 
-const isEmpty = attributes => {
+const isEmpty = ( attributes ) => {
 	const attributesToCheck = [ 'url', 'title', 'description', 'price' ];
 	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
 		attributesToCheck.includes( key )

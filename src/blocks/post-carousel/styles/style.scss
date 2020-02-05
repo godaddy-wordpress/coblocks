@@ -11,6 +11,7 @@
 	}
 
 	&:not(.alignwide) .coblocks-slick {
+
 		@include break-medium() {
 			padding-bottom: 0;
 		}
@@ -60,6 +61,7 @@
 
 	.slick-next,
 	.slick-prev {
+
 		@include break-medium() {
 			bottom: 50%;
 			transform: translateY(-50%);
@@ -67,12 +69,14 @@
 	}
 
 	.slick-prev {
+
 		@include break-medium() {
 			left: -5em;
 		}
 	}
 
 	.slick-next {
+
 		@include break-medium() {
 			right: -5em;
 		}

@@ -24,13 +24,16 @@
 	}
 
 	&:not(.is-style-list) {
+
 		.wp-block-coblocks-food-item {
+
 			@media all and (min-width: 515px) {
 				text-align: center;
 			}
 		}
 
 		.wp-block-coblocks-food-item__heading-wrapper {
+
 			@media all and (min-width: 515px) {
 				justify-content: center;
 			}
@@ -38,6 +41,7 @@
 	}
 
 	&.is-style-list {
+
 		.wp-block-coblocks-food-item {
 			display: flex;
 			flex: 1 100%;

@@ -47,7 +47,7 @@ export const transforms = {
 		{
 			type: 'block',
 			blocks: [ 'coblocks/social' ],
-			transform: attributes => {
+			transform: ( attributes ) => {
 				storePreviousAttributes( 'share', attributes );
 				return createBlock( 'coblocks/social', {
 					...attributes,
@@ -67,7 +67,7 @@ export const transforms = {
 		{
 			type: 'block',
 			blocks: [ 'coblocks/social' ],
-			transform: attributes => {
+			transform: ( attributes ) => {
 				storePreviousAttributes( 'social-profiles', attributes );
 				return createBlock( 'coblocks/social-profiles', {
 					...attributes,

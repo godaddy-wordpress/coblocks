@@ -10,10 +10,10 @@ import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
 import {
-	BackgroundStyles,
 	BackgroundClasses,
-	BackgroundVideo,
 	BackgroundDropZone,
+	BackgroundStyles,
+	BackgroundVideo,
 } from '../../../components/background';
 
 /**

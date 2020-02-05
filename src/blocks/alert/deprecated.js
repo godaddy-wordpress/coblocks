@@ -11,12 +11,12 @@ import { RichText, getColorClassName } from '@wordpress/block-editor';
 /**
  * Internal dependencies
  */
-import { attributes } from './block.json';
+import { blockAttributes } from './block.json';
 
 const deprecated = [
 	{
 		attributes: {
-			...attributes,
+			...blockAttributes,
 			borderColor: {
 				type: 'string',
 			},
@@ -62,7 +62,7 @@ const deprecated = [
 			const backgroundStyles = {
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				borderColor: customBorderColor,
-				textAlign: textAlign,
+				textAlign,
 			};
 
 			// Title color class and styles.
@@ -118,7 +118,7 @@ const deprecated = [
 		},
 	},
 	{
-		attributes,
+		blockAttributes,
 		save( { attributes } ) {
 			const {
 				backgroundColor,

@@ -1,9 +1,6 @@
 /**
  * Internal dependencies
  */
-import './styles/style.scss';
-import './styles/editor.scss';
-
 import BackgroundAttributes from './attributes';
 import BackgroundClasses from './classes';
 import BackgroundControls from './controls';

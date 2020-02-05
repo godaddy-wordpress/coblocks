@@ -102,7 +102,7 @@ class Edit extends Component {
 									tagName="figcaption"
 									placeholder={ __( 'Write caption…', 'coblocks' ) }
 									value={ caption }
-									onChange={ value => setAttributes( { caption: value } ) }
+									onChange={ ( value ) => setAttributes( { caption: value } ) }
 									keepPlaceholderOnFocus
 									inlineToolbar
 								/>

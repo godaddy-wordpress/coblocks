@@ -4,11 +4,6 @@
 import { __ } from '@wordpress/i18n';
 import { registerBlockStyle } from '@wordpress/blocks';
 
-/**
- * Internal Dependencies
- */
-import './styles/style.scss';
-
 // Default list style for reset.
 registerBlockStyle( 'core/list', {
 	name: 'default',

@@ -6,7 +6,6 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import './styles/editor.scss';
 import CSSGridControl from './';
 
 /**

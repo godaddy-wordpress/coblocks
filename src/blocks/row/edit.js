@@ -51,37 +51,9 @@ class Edit extends Component {
 	render() {
 		const {
 			attributes,
-			className,
 			isSelected,
 			setAttributes,
-			backgroundColor,
-			textColor,
 		} = this.props;
-
-		const {
-			coblocks,
-			backgroundImg,
-			id,
-			columns,
-			layout,
-			gutter,
-			paddingTop,
-			paddingRight,
-			paddingBottom,
-			paddingLeft,
-			marginTop,
-			marginRight,
-			marginBottom,
-			marginLeft,
-			paddingUnit,
-			marginUnit,
-			marginSize,
-			paddingSize,
-			isStackedOnMobile,
-			focalPoint,
-			hasParallax,
-			backgroundType,
-		} = attributes;
 
 		const dropZone = (
 			<BackgroundDropZone
@@ -91,7 +63,6 @@ class Edit extends Component {
 		);
 
 		const columnOptions = [
-			{ columns: 1, name: __( 'One Column', 'coblocks' ), icon: rowIcons.colOne, key: '100' },
 			{ columns: 2, name: __( 'Two Columns', 'coblocks' ), icon: rowIcons.colTwo },
 			{ columns: 3, name: __( 'Three Columns', 'coblocks' ), icon: rowIcons.colThree },
 			{ columns: 4, name: __( 'Four Columns', 'coblocks' ), icon: rowIcons.colFour },
@@ -99,11 +70,11 @@ class Edit extends Component {
 
 		let selectedRows = 1;
 
-		if ( columns ) {
-			selectedRows = parseInt( columns.toString().split( '-' ) );
+		if ( attributes.columns ) {
+			selectedRows = parseInt( attributes.columns.toString().split( '-' ) );
 		}
 
-		if ( ! layout && this.state.layoutSelection ) {
+		if ( ! attributes.layout && this.state.layoutSelection ) {
 			return (
 				<Fragment>
 					{ isSelected && (
@@ -141,7 +112,7 @@ class Edit extends Component {
 												isSecondary
 												onClick={ () => {
 													setAttributes( {
-														columns: columns,
+														columns,
 														layout: columns === 1 ? key : null,
 													} );
 
@@ -198,41 +169,41 @@ class Edit extends Component {
 		}
 
 		let classes = classnames(
-			className, {
-				[ `coblocks-row--${ id }` ]: id,
+			this.props.className, {
+				[ `coblocks-row--${ attributes.id }` ]: attributes.id,
 			}
 		);
 
-		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
-			classes = classnames( classes, `coblocks-row-${ coblocks.id }` );
+		if ( attributes.coblocks && ( typeof attributes.coblocks.id !== 'undefined' ) ) {
+			classes = classnames( classes, `coblocks-row-${ attributes.coblocks.id }` );
 		}
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-row__inner',
 			...BackgroundClasses( attributes ), {
-				'has-text-color': textColor.color,
-				[ `has-${ gutter }-gutter` ]: gutter,
-				'has-padding': paddingSize && paddingSize !== 'no',
-				[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
-				'has-margin': marginSize && marginSize !== 'no',
-				[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'advanced',
-				'is-stacked-on-mobile': isStackedOnMobile,
+				'has-text-color': this.props.textColor.color,
+				[ `has-${ attributes.gutter }-gutter` ]: attributes.gutter,
+				'has-padding': attributes.paddingSize && attributes.paddingSize !== 'no',
+				[ `has-${ attributes.paddingSize }-padding` ]: attributes.paddingSize && attributes.paddingSize !== 'advanced',
+				'has-margin': attributes.marginSize && attributes.marginSize !== 'no',
+				[ `has-${ attributes.marginSize }-margin` ]: attributes.marginSize && attributes.marginSize !== 'advanced',
+				'is-stacked-on-mobile': attributes.isStackedOnMobile,
 			}
 		);
 
 		const innerStyles = {
-			backgroundColor: backgroundColor.color,
-			backgroundImage: backgroundImg && backgroundType === 'image' ? `url(${ backgroundImg })` : undefined,
-			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
-			color: textColor.color,
-			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
-			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
-			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
-			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
-			marginTop: marginSize === 'advanced' && marginTop ? marginTop + marginUnit : undefined,
-			marginRight: marginSize === 'advanced' && marginRight ? marginRight + marginUnit : undefined,
-			marginBottom: marginSize === 'advanced' && marginBottom ? marginBottom + marginUnit : undefined,
-			marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
+			backgroundColor: this.props.backgroundColor.color,
+			backgroundImage: attributes.backgroundImg && attributes.backgroundType === 'image' ? `url(${ attributes.backgroundImg })` : undefined,
+			backgroundPosition: attributes.focalPoint && ! attributes.hasParallax ? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y * 100 }%` : undefined,
+			color: this.props.textColor.color,
+			paddingTop: attributes.paddingSize === 'advanced' && attributes.paddingTop ? attributes.paddingTop + attributes.paddingUnit : undefined,
+			paddingRight: attributes.paddingSize === 'advanced' && attributes.paddingRight ? attributes.paddingRight + attributes.paddingUnit : undefined,
+			paddingBottom: attributes.paddingSize === 'advanced' && attributes.paddingBottom ? attributes.paddingBottom + attributes.paddingUnit : undefined,
+			paddingLeft: attributes.paddingSize === 'advanced' && attributes.paddingLeft ? attributes.paddingLeft + attributes.paddingUnit : undefined,
+			marginTop: attributes.marginSize === 'advanced' && attributes.marginTop ? attributes.marginTop + attributes.marginUnit : undefined,
+			marginRight: attributes.marginSize === 'advanced' && attributes.marginRight ? attributes.marginRight + attributes.marginUnit : undefined,
+			marginBottom: attributes.marginSize === 'advanced' && attributes.marginBottom ? attributes.marginBottom + attributes.marginUnit : undefined,
+			marginLeft: attributes.marginSize === 'advanced' && attributes.marginLeft ? attributes.marginLeft + attributes.marginUnit : undefined,
 		};
 
 		return (
@@ -249,14 +220,14 @@ class Edit extends Component {
 					/>
 				) }
 				<div className={ classes }>
-					{ isBlobURL( backgroundImg ) && <Spinner /> }
+					{ isBlobURL( attributes.backgroundImg ) && <Spinner /> }
 					<div className={ innerClasses } style={ innerStyles }>
 						{ BackgroundVideo( attributes ) }
 						<InnerBlocks
-							template={ template[ layout ] }
+							template={ template[ attributes.layout ] }
 							templateLock="all"
 							allowedBlocks={ allowedBlocks }
-							templateInsertUpdatesSelection={ columns === 1 }
+							templateInsertUpdatesSelection={ attributes.columns === 1 }
 							renderAppender={ () => ( null ) } />
 					</div>
 				</div>

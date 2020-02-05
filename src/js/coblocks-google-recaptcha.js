@@ -1,9 +1,10 @@
 /*global grecaptcha coblocksFormBlockAtts*/
+import jQuery from 'jquery';
 
 ( function( $ ) {
 	const coblocksRecaptcha = {
 
-		init: function() {
+		init() {
 			const recaptchaFields = $( '.g-recaptcha-token' );
 
 			if ( ! recaptchaFields.length ) {

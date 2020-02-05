@@ -8,10 +8,6 @@ import {
 // Register block category
 import './utils/block-category';
 
-// Editor and Frontend Styles
-import './styles/editor.scss';
-import './styles/style.scss';
-
 // Extensions
 import './extensions/colors/inspector';
 import './extensions/typography';
@@ -27,9 +23,6 @@ import './extensions/coblocks-settings/';
 
 // Formats
 import './formats';
-
-// Block Gallery
-import './components/block-gallery';
 
 // Deprecate Blocks
 import './js/deprecations/deprecate-coblocks-buttons.js';
@@ -98,7 +91,7 @@ const registerBlock = ( block ) => {
 	const { name, category, settings } = block;
 
 	registerBlockType( name, {
-		category: category,
+		category,
 		...settings,
 	} );
 };

@@ -3,7 +3,6 @@
  * Internal dependencies
  */
 import autoPlayOptions from './autoplay-options';
-import './styles/editor.scss';
 
 /**
  * WordPress dependencies

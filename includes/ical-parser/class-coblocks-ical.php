@@ -1232,6 +1232,7 @@ class CoBlocks_ICal {
 			$event_keys_to_remove = array();
 
 			foreach ( $events as $key => $event ) {
+				$checks   = array();
 				$checks[] = ! isset( $event['RECURRENCE-ID'] );
 				$checks[] = isset( $event['UID'] );
 				$checks[] = isset( $event['UID'] ) && isset( $this->altered_recurrence_instances[ $event['UID'] ] );
