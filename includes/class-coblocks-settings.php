@@ -117,18 +117,6 @@ class CoBlocks_Settings {
 				'default'           => true,
 			)
 		);
-
-		register_setting(
-			'coblocks_settings_panel_enabled',
-			'coblocks_settings_panel_enabled',
-			array(
-				'type'              => 'boolean',
-				'description'       => __( 'Setting use to disable or enable the CoBlock setting panel.', 'coblocks' ),
-				'sanitize_callback' => null,
-				'show_in_rest'      => true,
-				'default'           => true,
-			)
-		);
 	}
 }
 
