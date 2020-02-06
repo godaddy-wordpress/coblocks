@@ -1,5 +1,4 @@
 /*global coblocksSettings*/
-console.log( coblocksSettings );
 
 /**
  * Styles
