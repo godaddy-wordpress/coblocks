@@ -62,7 +62,9 @@ class CoBlocksSettingsModal extends Component {
 	}
 
 	render() {
-		const { isOpen, closeModal, typography, customColors, gradientControls } = this.props;
+		const { isOpen, closeModal, typography, customColors, gradientControls, getSettings } = this.props;
+
+		const supportsGradients = getSettings().gradients !== undefined;
 
 		if ( ! isOpen ) {
 			return null;
@@ -87,13 +89,17 @@ class CoBlocksSettingsModal extends Component {
 							checked={ !! customColors }
 						/>
 						<HorizontalRule />
-						<CheckboxControl
-							label={ __( 'Gradient styles', 'coblocks' ) }
-							help={ __( 'Allow styling with gradient fills.', 'coblocks' ) }
-							onChange={ () => this.updateGradientsControlsSetting( !! gradientControls ) }
-							checked={ !! gradientControls }
-						/>
-						<HorizontalRule />
+						{ supportsGradients &&
+						<>
+							<CheckboxControl
+								label={ __( 'Gradient styles', 'coblocks' ) }
+								help={ __( 'Allow styling with gradient fills.', 'coblocks' ) }
+								onChange={ () => this.updateGradientsControlsSetting( !! gradientControls ) }
+								checked={ !! gradientControls }
+							/>
+							<HorizontalRule />
+						</>
+						}
 						<CheckboxControl
 							label={ __( 'Typography controls', 'coblocks' ) }
 							help={ __( 'Allow block-level typography controls.', 'coblocks' ) }
