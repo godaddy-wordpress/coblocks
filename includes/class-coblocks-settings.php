@@ -54,7 +54,7 @@ class CoBlocks_Settings {
 			'coblocks-editor',
 			'coblocksSettings',
 			array(
-				'coblocksSettingsEnabled' => get_option( 'coblocks_settings_panel_enabled' ),
+				'coblocksSettingsEnabled' => (bool) apply_filters( 'coblocks_show_settings_panel', true ),
 				'coblocksSettingsNonce'   => wp_create_nonce( 'wp_rest' ),
 			)
 		);

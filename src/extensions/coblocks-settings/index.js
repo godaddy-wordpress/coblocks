@@ -27,7 +27,7 @@ if ( typeof coblocksSettings === 'undefined' ) {
 	coblocksSettings.coblocksSettingsEnabled = '0';
 }
 
-if ( coblocksSettings.coblocksSettingsEnabled === '1' ) {
+if ( coblocksSettings.coblocksSettingsEnabled ) {
 	const CoBlocksSettingsMenuItem = () => {
 		const [
 			isOpen,
@@ -69,4 +69,3 @@ if ( coblocksSettings.coblocksSettingsEnabled === '1' ) {
 } else if ( getPlugin( 'coblocks-settings' ) ) {
 	unregisterPlugin( 'coblocks-settings' );
 }
-
