@@ -1,4 +1,5 @@
 /*global coblocksSettings*/
+console.log( coblocksSettings );
 
 /**
  * Styles
@@ -24,10 +25,10 @@ import CoBlocksOptionsModal from './coblocks-settings-modal';
 import createCoBlocksStore from './coblocks-settings-store.js';
 
 if ( typeof coblocksSettings === 'undefined' ) {
-	coblocksSettings.coblocksSettings = '0';
+	coblocksSettings.coblocksSettingsEnabled = '0';
 }
 
-if ( coblocksSettings.coblocksSettings === '1' ) {
+if ( coblocksSettings.coblocksSettingsEnabled === '1' ) {
 	const CoBlocksSettingsMenuItem = () => {
 		const [
 			isOpen,
@@ -66,9 +67,7 @@ if ( coblocksSettings.coblocksSettings === '1' ) {
 	} );
 
 	registerGenericStore( 'coblocks-settings', createCoBlocksStore() );
-} else {
-	if ( getPlugin( 'coblocks-settings' ) ) {
-		unregisterPlugin( 'coblocks-settings' );
-	}
+} else if ( getPlugin( 'coblocks-settings' ) ) {
+	unregisterPlugin( 'coblocks-settings' );
 }
 

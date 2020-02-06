@@ -17,7 +17,7 @@ export default function createCoBlocksStore() {
 	};
 
 	apiFetch( {
-		path: '/wp-json/wp/v2/settings/',
+		path: '/wp/v2/settings/',
 		method: 'GET',
 		headers: {
 			'X-WP-Nonce': settingsNonce,
@@ -47,7 +47,7 @@ export default function createCoBlocksStore() {
 			settings.customColors = toggle;
 			storeChanged();
 			apiFetch( {
-				path: '/wp-json/wp/v2/settings/',
+				path: '/wp/v2/settings/',
 				method: 'POST',
 				headers: {
 					'X-WP-Nonce': settingsNonce,
@@ -62,7 +62,7 @@ export default function createCoBlocksStore() {
 			settings.gradients = toggle;
 			storeChanged();
 			apiFetch( {
-				path: '/wp-json/wp/v2/settings/',
+				path: '/wp/v2/settings/',
 				method: 'POST',
 				headers: {
 					'X-WP-Nonce': settingsNonce,
@@ -77,7 +77,7 @@ export default function createCoBlocksStore() {
 			settings.typography = toggle;
 			storeChanged();
 			apiFetch( {
-				path: '/wp-json/wp/v2/settings/',
+				path: '/wp/v2/settings/',
 				method: 'POST',
 				headers: {
 					'X-WP-Nonce': settingsNonce,
