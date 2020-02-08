@@ -128,9 +128,6 @@ jobs:
     docker:
       - image: circleci/php:5.6
       - image: circleci/mysql:5.7
-        environment:
-          MYSQL_ROOT_PASSWORD: ''
-          MYSQL_DATABASE: wordpress_test
     steps:
       - attach_workspace:
           at: /home/circleci
@@ -174,9 +171,6 @@ jobs:
     docker:
       - image: circleci/php:7.3
       - image: circleci/mysql:5.7
-        environment:
-          MYSQL_ROOT_PASSWORD: ''
-          MYSQL_DATABASE: wordpress_test
     steps:
       - attach_workspace:
           at: /home/circleci
