@@ -86,14 +86,10 @@ jobs:
       - run:
           name: Build the plugin
           command: npx wp-scripts build --config .dev/config/webpack.ci.config.js
-      - run:
-          name: Output
-          command: |
-            ls -la
-            pwd
       - persist_to_workspace:
+          root: /home/circleci/
           paths:
-            - /home/circleci/project
+          - /
   php56:
     docker:
       - image: circleci/php:5.6-node
