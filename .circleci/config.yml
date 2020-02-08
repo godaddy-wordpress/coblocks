@@ -2,6 +2,10 @@ workflows:
   version: 2.1
   main:
     jobs:
+      - build:
+        filters:
+          tags:
+            only: /^(?!canary).*$/
       # Support PHP Versions
       # http://php.net/supported-versions.php
       - php56:
@@ -42,6 +46,54 @@ workflows:
 
 version: 2.1
 jobs:
+  build:
+    docker:
+      - image: circleci/php:7.3-node
+    steps:
+      - checkout
+      - run:
+          name: Disable xdebug PHP extension
+          command: |
+            sudo rm -f /etc/php/*/mods-available/xdebug.ini
+            sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
+            sudo rm -f /etc/php/*/conf.d/*xdebug.ini
+            sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
+      - restore_cache:
+          keys:
+            - npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - npm-deps-{{ .Branch }}
+      - run:
+          name: Install node dependencies
+          command: |
+            npm install
+      - save_cache:
+          key: npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          paths:
+          - /home/circleci/project/node_modules
+          - /home/circleci/.npm
+      - restore_cache:
+          keys:
+            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Branch }}
+      - run:
+          name: Install composer dependencies
+          command: |
+            composer install
+      - save_cache:
+          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+          paths:
+          - /home/circleci/project/vendor
+      - run:
+          name: Build the plugin
+          command: npx wp-scripts build --config .dev/config/webpack.ci.config.js
+      - run:
+          name: Output
+          command: |
+            ls -la
+            pwd
+      - persist_to_workspace:
+          paths:
+            - /home/circleci/project
   php56:
     docker:
       - image: circleci/php:5.6-node
