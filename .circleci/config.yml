@@ -6,6 +6,12 @@ workflows:
         filters:
           tags:
             only: /^(?!canary).*$/
+      - lint_php:
+          requires:
+            - build
+      - lint_js:
+          requires:
+            - build
       # Support PHP Versions
       # http://php.net/supported-versions.php
       - php56:
@@ -90,6 +96,30 @@ jobs:
           root: /home/circleci/
           paths:
           - ./
+
+  lint_php:
+    docker:
+      - image: circleci/php:7.3
+    steps:
+      - attach_workspace
+          at: /home/circleci
+      - run:
+          name: Disable xdebug PHP extension
+          command: sudo rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - run:
+          name: "Linting PHP"
+          command: composer run lint -- -v
+
+  lint_js:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - attach_workspace
+          at: /home/circleci
+      - run:
+          name: "Linting JS"
+          command: npm run lint:js
+
   php56:
     docker:
       - image: circleci/php:5.6-node
