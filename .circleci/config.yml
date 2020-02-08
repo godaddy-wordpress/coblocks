@@ -89,7 +89,7 @@ jobs:
       - persist_to_workspace:
           root: /home/circleci/
           paths:
-          - /
+          - ./
   php56:
     docker:
       - image: circleci/php:5.6-node
