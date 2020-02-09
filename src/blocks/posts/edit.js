@@ -3,13 +3,11 @@
  */
 import classnames from 'classnames';
 import includes from 'lodash/includes';
-
 import { find, isUndefined, pickBy, some } from 'lodash';
 
 /**
  * Internal dependencies
  */
-
 import InspectorControls from './inspector';
 import icons from './icons';
 import icon from './icon';
