@@ -30,10 +30,14 @@ workflows:
           filters:
             tags:
               only: /^(?!canary).*$/
+          requires:
+            - build
       - e2e:
           filters:
             tags:
               only: /^(?!canary).*$/
+          requires:
+            - build
       - canary-release:
           filters:
             branches:
@@ -214,21 +218,8 @@ jobs:
     docker:
       - image: circleci/node:latest-browsers-legacy
     steps:
-      - checkout
-      - run:
-          name: Update npm
-          command: sudo npm install -g npm@latest
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - run:
-          name: Install node packages
-          command: |
-            npm uninstall cypress
-            npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - node_modules
+      - attach_workspace:
+          at: /home/circleci
       - run:
           name: Run jest tests
           command: JEST_JUNIT_OUTPUT_DIR="/tmp/artifacts/code-coverage/jest/" JEST_JUNIT_OUTPUT_NAME="results.xml" npm run test:unit -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html
@@ -244,41 +235,31 @@ jobs:
       - image: circleci/mysql:5.7
     parallelism: 4
     steps:
-      - checkout
+      - attach_workspace:
+          at: /home/circleci
       - run:
           name: Setup spec files to run based on git diff-tree
           command: bash .dev/bin/setup-test-specs.sh
       - run:
           name: Disable xdebug PHP extension
-          command: sudo rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+          command: |
+            sudo rm -f /etc/php/*/mods-available/xdebug.ini
+            sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
+            sudo rm -f /etc/php/*/conf.d/*xdebug.ini
+            sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
+      - run:
+          name: Waiting for MySQL to be ready
+          command: |
+            for i in `seq 1 10`;
+            do
+              nc -z 127.0.0.1 3306 && echo Success && exit 0
+              echo -n .
+              sleep 1
+            done
+            echo Failed waiting for MySQL && exit 1
       - run:
           name: Update hosts
           command: echo 127.0.0.1 coblocks.test | sudo tee -a /etc/hosts
-      - run:
-          name: Update npm
-          command: sudo npm install -g npm@latest
-      - restore_cache:
-          key: e2e-dependency-cache--{{ checksum "package.json" }}
-      - run:
-          name: Install node packages
-          command: npm install
-      - save_cache:
-          key: e2e-dependency-cache--{{ checksum "package.json" }}
-          paths:
-            - node_modules
-            - ~/.cache
-      - run:
-          name: "Install Dependencies"
-          command: |
-            bash .dev/bin/install-dependencies.sh
-            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
-      - run:
-          name: Build the plugin
-          command: |
-            npx wp-scripts build --config .dev/config/webpack.ci.config.js
-            npx grunt clean:build
-            npx grunt copy:build
-            cp -a ./build/coblocks /tmp/wordpress/wp-content/plugins/
       - run:
           name: "Install WordPress"
           command: |
