@@ -160,6 +160,7 @@ export class Edit extends Component {
 
 		const {
 			coblocks,
+			className,
 			layout,
 			fullscreen,
 			maxWidth,
@@ -183,7 +184,7 @@ export class Edit extends Component {
 			/>
 		);
 
-		let classes = 'wp-block-coblocks-hero';
+		let classes = classnames( 'wp-block-coblocks-hero', className );
 
 		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
 			classes = classnames( classes, `coblocks-hero-${ coblocks.id }` );
