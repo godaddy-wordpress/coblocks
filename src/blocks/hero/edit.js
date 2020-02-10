@@ -20,7 +20,7 @@ import { Component, Fragment } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { ResizableBox, Spinner } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
- 
+
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
  * The contents of the array should never change.
