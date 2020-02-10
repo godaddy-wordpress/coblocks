@@ -126,7 +126,13 @@ jobs:
           at: /home/circleci
       - run:
           name: "Linting JS"
-          command: npm run lint:js
+          command: |
+            FILES=$(git diff HEAD^ --name-only '*.js')
+            if [ -z $FILES ]; then
+              circleci-agent step halt
+            else
+              npm run lint:js
+            fi
 
   php56:
     docker:
