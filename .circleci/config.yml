@@ -269,22 +269,19 @@ jobs:
       - run:
           name: "Install WordPress"
           command: |
-            ./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass=''
-            ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email
-            ./vendor/bin/wp plugin activate coblocks
-          path: /tmp/wordpress
+            ./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass='' --path=/tmp/wordpress
+            ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=/tmp/wordpress
+            ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
       - run:
           name: "Start WPCLI Server"
-          command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root
-          path: /tmp/wordpress
+          command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root  --path=/tmp/wordpress
           background: true
       - run:
           name: "Run end to end tests (Cypress.io)"
           command: |
-            touch .dev/tests/cypress/wp_creds.json
-            echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > .dev/tests/cypress/wp_creds.json
+            touch cypress.env.json
+            echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
             ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel --spec "$(cat /tmp/specstring)"
-          path: /tmp/wordpress/wp-content/plugins/coblocks
 
   i18n:
     docker:
