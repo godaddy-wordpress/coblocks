@@ -566,10 +566,7 @@ class CoBlocks_ICal {
 			$this->default_time_zone = date_default_timezone_get();
 		}
 
-		// Ideally you would use `PHP_INT_MIN` from PHP 7
-		$php_int_min = -2147483648;
-
-		$this->window_min_timestamp = is_null( $this->filter_days_before ) ? $php_int_min : ( new \DateTime( 'now' ) )->sub( new \DateInterval( 'P' . $this->filter_days_before . 'D' ) )->getTimestamp();
+		$this->window_min_timestamp = is_null( $this->filter_days_before ) ? ~PHP_INT_MAX : ( new \DateTime( 'now' ) )->sub( new \DateInterval( 'P' . $this->filter_days_before . 'D' ) )->getTimestamp();
 		$this->window_max_timestamp = is_null( $this->filter_days_after ) ? PHP_INT_MAX : ( new \DateTime( 'now' ) )->add( new \DateInterval( 'P' . $this->filter_days_after . 'D' ) )->getTimestamp();
 
 		$this->should_filter_by_window = ! is_null( $this->filter_days_before ) || ! is_null( $this->filter_days_after );
