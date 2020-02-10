@@ -83,8 +83,8 @@ jobs:
       - save_cache:
           key: npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
-          - /home/circleci/project/node_modules
-          - /home/circleci/.npm
+            - /home/circleci/project/node_modules
+            - /home/circleci/.npm
       - restore_cache:
           keys:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
@@ -96,14 +96,14 @@ jobs:
       - save_cache:
           key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
           paths:
-          - /home/circleci/project/vendor
+            - /home/circleci/project/vendor
       - run:
           name: Build the plugin
           command: npx wp-scripts build --config .dev/config/webpack.ci.config.js
       - persist_to_workspace:
           root: /home/circleci/
           paths:
-          - ./
+            - ./
 
   lint_php:
     docker:
