@@ -35,7 +35,7 @@ const transforms = {
 		{
 			type: 'prefix',
 			prefix: ':highlight',
-			transform: function( content ) {
+			transform( content ) {
 				return createBlock( metadata.name, {
 					content,
 				} );
@@ -53,7 +53,7 @@ const transforms = {
 				}
 				// transforming a block with content
 				return createBlock( 'core/paragraph', {
-					content: content,
+					content,
 				} );
 			},
 		},

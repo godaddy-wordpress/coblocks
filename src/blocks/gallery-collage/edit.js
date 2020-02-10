@@ -73,7 +73,7 @@ class GalleryCollageEdit extends Component {
 		const imageLocations = [];
 
 		for ( let index = 0; index < placeholderCount; index++ ) {
-			imageLocations.push( theImages.find( image => parseInt( image.index ) === parseInt( index ) ) || {} );
+			imageLocations.push( theImages.find( ( image ) => parseInt( image.index ) === parseInt( index ) ) || {} );
 		}
 
 		this.props.setAttributes( { images: imageLocations } );
@@ -105,7 +105,7 @@ class GalleryCollageEdit extends Component {
 		const { attributes } = this.props;
 
 		const images = [
-			...attributes.images.filter( image => parseInt( image.index ) !== parseInt( index ) ),
+			...attributes.images.filter( ( image ) => parseInt( image.index ) !== parseInt( index ) ),
 			{ ...helper.pickRelevantMediaFiles( image ), index },
 		];
 		this.setupImageLocations( images );
@@ -115,17 +115,17 @@ class GalleryCollageEdit extends Component {
 		const { attributes } = this.props;
 
 		const images = [
-			...attributes.images.filter( image => parseInt( image.index ) !== parseInt( index ) ),
+			...attributes.images.filter( ( image ) => parseInt( image.index ) !== parseInt( index ) ),
 		];
 		this.setupImageLocations( images );
 	}
 
 	updateImageAttributes( index, newAttributes ) {
 		const { attributes } = this.props;
-		const image = attributes.images.filter( image => parseInt( image.index ) === parseInt( index ) ).pop();
+		const image = attributes.images.filter( ( image ) => parseInt( image.index ) === parseInt( index ) ).pop();
 
 		const images = [
-			...attributes.images.filter( image => parseInt( image.index ) !== parseInt( index ) ),
+			...attributes.images.filter( ( image ) => parseInt( image.index ) !== parseInt( index ) ),
 			Object.assign( {}, image, newAttributes ),
 		];
 
@@ -137,13 +137,13 @@ class GalleryCollageEdit extends Component {
 	}
 
 	renderImage( index ) {
-		const image = this.props.attributes.images.filter( image => parseInt( image.index ) === parseInt( index ) ).pop() || {};
+		const image = this.props.attributes.images.filter( ( image ) => parseInt( image.index ) === parseInt( index ) ).pop() || {};
 		const isSelected = this.props.isSelected && this.state.selectedImage === image.index;
 		const enableCaptions = ! this.props.className.includes( 'is-style-layered' );
 
 		const dropZone = (
 			<DropZone
-				onFilesDrop={ files => this.uploadImage( files, index ) }
+				onFilesDrop={ ( files ) => this.uploadImage( files, index ) }
 				label={ __( 'Drop image to replace', 'coblocks' ) }
 			/>
 		);
@@ -202,7 +202,7 @@ class GalleryCollageEdit extends Component {
 	}
 
 	renderPlaceholder( index ) {
-		const image = this.props.attributes.images.filter( image => parseInt( image.index ) === parseInt( index ) ).pop() || false;
+		const image = this.props.attributes.images.filter( ( image ) => parseInt( image.index ) === parseInt( index ) ).pop() || false;
 		const hasImage = !! image;
 
 		return (
@@ -221,7 +221,7 @@ class GalleryCollageEdit extends Component {
 					title: ' ',
 					instructions: ' ',
 				} }
-				onSelect={ image => this.replaceImage( image, index ) }
+				onSelect={ ( image ) => this.replaceImage( image, index ) }
 				onError={ this.onUploadError }
 			/>
 		);

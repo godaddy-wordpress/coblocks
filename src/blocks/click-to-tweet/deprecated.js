@@ -63,7 +63,7 @@ const deprecated = [
 
 			return (
 				! RichText.isEmpty( content ) && (
-					<blockquote style={ { textAlign: textAlign } }>
+					<blockquote style={ { textAlign } }>
 						<RichText.Content
 							tagName="p"
 							className={ textClasses }

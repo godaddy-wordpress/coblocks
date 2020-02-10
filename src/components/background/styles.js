@@ -8,7 +8,7 @@ import { getColorClassName } from '@wordpress/block-editor';
  *
  * @param {Object} attributes      The attributes.
  * @param {Object} backgroundColor The selected background color.
- * @returns {Object} styles.
+ * @return {Object} styles.
  */
 const BackgroundStyles = ( attributes, backgroundColor ) => {
 	const backgroundClass = attributes && getColorClassName( 'background-color', attributes.backgroundColor );

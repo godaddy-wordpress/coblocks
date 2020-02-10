@@ -49,8 +49,8 @@ class Inspector extends Component {
 
 	getCaptionsHelp( checked ) {
 		return checked ?
-			__( 'Showing captions for each media item.' ) :
-			__( 'Toggle to show media captions.' );
+			__( 'Showing captions for each media item.', 'coblocks' ) :
+			__( 'Toggle to show media captions.', 'coblocks' );
 	}
 
 	getLightboxHelp( checked ) {
@@ -108,10 +108,10 @@ class Inspector extends Component {
 
 		return (
 			<InspectorControls>
-				<PanelBody title={ __( 'Offset Settings' ) }>
+				<PanelBody title={ __( 'Offset Settings', 'coblocks' ) }>
 
 					<SizeControl { ...this.props }
-						label={ __( 'Size' ) }
+						label={ __( 'Size', 'coblocks' ) }
 						type={ 'reverse-grid' }
 						onChange={ this.setSizeControl }
 						value={ gridSize }
@@ -142,7 +142,7 @@ class Inspector extends Component {
 
 					{ gutter !== 'no' &&
 						<RangeControl
-							label={ __( 'Rounded Corners' ) }
+							label={ __( 'Rounded Corners', 'coblocks' ) }
 							value={ radius }
 							onChange={ this.setRadiusTo }
 							min={ 0 }

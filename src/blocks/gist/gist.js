@@ -108,7 +108,7 @@ export default class Gist extends Component {
 	_buildGist() {
 		const { _handleError } = this;
 		const gistCallback = Gist.__nextGist();
-		window[ gistCallback ] = gist => {
+		window[ gistCallback ] = ( gist ) => {
 			Gist.__addStylesheet( gist.stylesheet );
 			this.setState( {
 				loading: false,

@@ -16,7 +16,7 @@ import { PanelBody, ToggleControl, RangeControl, SelectControl } from '@wordpres
 import { InspectorControls } from '@wordpress/block-editor';
 import { ENTER, SPACE } from '@wordpress/keycodes';
 
-const Inspector = props => {
+const Inspector = ( props ) => {
 	const {
 		attributes,
 		setAttributes,
@@ -41,7 +41,7 @@ const Inspector = props => {
 					'block-editor-block-styles',
 					'coblocks-editor-block-styles',
 				) } >
-					{ layoutOptions.map( style => (
+					{ layoutOptions.map( ( style ) => (
 						<div
 							key={ `style-${ style.name }` }
 							className={ classnames(
@@ -50,7 +50,7 @@ const Inspector = props => {
 								`align-${ ( typeof attributes.alignment === 'undefined' || attributes.alignment === 'none' ) ? style.defaultAlign : attributes.alignment }`
 							) }
 							onClick={ () => onUpdateStyle( style ) }
-							onKeyDown={ event => {
+							onKeyDown={ ( event ) => {
 								if ( ENTER === event.keyCode || SPACE === event.keyCode ) {
 									event.preventDefault();
 									onUpdateStyle( style );
@@ -76,7 +76,7 @@ const Inspector = props => {
 					value={ attributes.columns }
 					min={ 1 }
 					max={ 4 }
-					onChange={ columns => setAttributes( { columns } ) }
+					onChange={ ( columns ) => setAttributes( { columns } ) }
 				/>
 				{ attributes.columns >= 2 &&
 					<SelectControl

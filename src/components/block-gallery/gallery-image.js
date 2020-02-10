@@ -180,7 +180,7 @@ class GalleryImage extends Component {
 		};
 
 		// Disable reason: Each block can be selected by clicking on it and we should keep the same saved markup
-		/* eslint-disable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/onclick-has-role, jsx-a11y/click-events-have-key-events */
+		/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 		return (
 			<figure className={ className } tabIndex="-1" onKeyDown={ this.onKeyDown } ref={ this.bindContainer }>
 				{ isSelected &&
@@ -244,7 +244,7 @@ class GalleryImage extends Component {
 				) : null }
 			</figure>
 		);
-		/* eslint-enable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/onclick-has-role, jsx-a11y/click-events-have-key-events */
+		/* eslint-enable jsx-a11y/no-noninteractive-element-interactions */
 	}
 }
 

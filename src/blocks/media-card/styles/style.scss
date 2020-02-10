@@ -1,4 +1,5 @@
 .wp-block-coblocks-media-card {
+
 	&__wrapper {
 		align-items: center;
 		display: grid;
@@ -101,18 +102,21 @@
 	}
 
 	@include break-small-max() {
+
 		&.is-stacked-on-mobile &__wrapper {
 			grid-template-areas: "media-text-media" "media-text-content";
 			grid-template-columns: 100% !important;
 		}
 
 		&.is-stacked-on-mobile.is-style-right &__content {
+
 			@include break-small() {
 				margin-right: -100px;
 			}
 		}
 
 		&.is-stacked-on-mobile &__media {
+
 			@include break-small() {
 				position: inherit;
 			}
@@ -137,7 +141,9 @@
 
 // IE 10+ Support
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+
 	.wp-block-coblocks-media-card {
+
 		.wp-block-coblocks-media-card__wrapper {
 			display: flex;
 
@@ -147,9 +153,11 @@
 		}
 
 		&.is-style-right {
+
 			figure {
 				order: 2;
 			}
+
 			.wp-block-coblocks-row__inner {
 				order: 1;
 			}

@@ -46,6 +46,7 @@
 	}
 
 	&__figure {
+
 		.wp-block-coblocks-food-item__remove-menu {
 			background-color: theme(primary);
 			display: inline-flex;
@@ -62,6 +63,7 @@
 		}
 
 		&.is-selected {
+
 			&::after {
 				bottom: 0;
 				box-shadow: inset 0 0 0 4px theme(primary);
@@ -132,7 +134,7 @@
 
 		&:focus {
 			box-shadow: 0 0 0 2px $white, 0 0 0 3px $dark-gray-500;
-			transition: box-shadow .1s linear;
+			transition: box-shadow 0.1s linear;
 			background-color: #fff;
 			color: #191e23;
 			outline: 2px solid transparent;
@@ -146,21 +148,24 @@
 			background-color: #fff;
 			outline: 0;
 			box-shadow: none;
-	}
+		}
 
 		&.is-toggled {
+
 			span {
 				opacity: 1;
 			}
 		}
 
 		&:not(.is-toggled):hover {
+
 			span {
 				opacity: 0.725;
 			}
 		}
 
 		&:not(.is-toggled) {
+
 			span {
 				opacity: 0.55;
 			}
@@ -169,6 +174,7 @@
 }
 
 .is-style-list .wp-block-coblocks-food-item {
+
 	.block-editor-media-placeholder {
 		height: 100px;
 		min-height: 100px;
@@ -192,6 +198,7 @@
 		}
 
 		.components-drop-zone__content {
+
 			.dashicon {
 				height: 20px;
 				margin: 0 auto 5px;
@@ -251,12 +258,14 @@
 
 	// Two columns.
 	@media all and (max-width: 514px) {
+
 		[data-columns="2"] .wp-block-coblocks-food-and-drinks:not(.is-style-list) &:nth-child(-n + 2) .wp-block-coblocks-food-item {
 			margin-top: 0;
 		}
 	}
 
 	@media all and (min-width: 515px) {
+
 		[data-columns="2"] .wp-block-coblocks-food-and-drinks:not(.is-style-list) &:nth-child(-n + 3) .wp-block-coblocks-food-item {
 			margin-top: 0;
 		}
@@ -264,12 +273,14 @@
 
 	// Three columns.
 	@media all and (max-width: 514px) {
+
 		[data-columns="3"] .wp-block-coblocks-food-and-drinks:not(.is-style-list) &:nth-child(-n + 3) .wp-block-coblocks-food-item {
 			margin-top: 0;
 		}
 	}
 
 	@media all and (min-width: 515px) {
+
 		[data-columns="3"] .wp-block-coblocks-food-and-drinks:not(.is-style-list) &:nth-child(-n + 4) .wp-block-coblocks-food-item {
 			margin-top: 0;
 		}
@@ -285,6 +296,7 @@
 }
 
 .components-food-item-attributes {
+
 	.components-base-control {
 		margin-bottom: 8px;
 	}

@@ -48,7 +48,7 @@ class CoBlocksFieldMultiple extends Component {
 			inFocus = key + 1;
 		}
 
-		this.setState( { inFocus: inFocus } );
+		this.setState( { inFocus } );
 		this.props.setAttributes( { options: newOptions } );
 	}
 

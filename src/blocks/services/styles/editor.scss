@@ -13,19 +13,23 @@
 
 // CoBlocks style previewer
 .coblocks-editor-block-styles {
+
 	.align-center {
+
 		.service-svg-moving-path {
 			transform: translateX(4px);
 		}
 	}
 
 	.align-left {
+
 		.service-svg-moving-path {
 			transform: translateX(0);
 		}
 	}
 
 	.align-right {
+
 		.service-svg-moving-path {
 			transform: translateX(8px);
 		}
@@ -49,10 +53,8 @@
 }
 
 .block-editor-block-list__block[data-type="coblocks/services"].is-selected
-	[data-type="coblocks/service"]:not(.is-selected)
-	> .block-editor-block-list__block-edit::before,
+[data-type="coblocks/service"]:not(.is-selected) > .block-editor-block-list__block-edit::before,
 .block-editor-block-list__block[data-type="coblocks/services"].has-child-selected
-	[data-type="coblocks/service"]:not(.is-selected)
-	> .block-editor-block-list__block-edit::before {
+[data-type="coblocks/service"]:not(.is-selected) > .block-editor-block-list__block-edit::before {
 	border: 1px dashed rgba(123, 134, 162, 0.3);
 }

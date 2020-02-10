@@ -56,35 +56,14 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 1. You'll need to install the [Gutenberg](https://wordpress.org/plugins/gutenberg/) plugin if you are not running WordPress 5.0+
 2. Download CoBlocks from the [WordPress plugin directory](https://wordpress.org/plugins/coblocks/).
 
-### Advanced Controls
-
-Disable sending of email upon Form block submission.
-```php
-/**
- * Disable form submission emails.
- */
-add_filter( 'coblocks_form_disable_emails', '__return_true' );
-
-/**
- * Set a custom success message to mimic a successful form submission
- *
- * @return string Form submission success message
- */
-function coblocks_form_sent_message() {
-
-	return __( 'Your message was sent.', 'textdomain' );
-
-}
-add_filter( 'coblocks_form_sent_notice', 'coblocks_form_sent_message' );
-```
-
 ## Development
 
 1. Clone the GitHub repository: `https://github.com/godaddy-wordpress/coblocks.git`
 2. Browse to the folder in the command line.
 3. Run the `npm install` command to install the plugin's dependencies within a /node_modules/ folder.
-4. Run the `npm start` command for development.
-5. Run the `build` gulp task to process build files and generate a zip.
+4. Run the `npm start` command to compile and watch source files for changes while developing.
+
+Check out the [Getting Started](docs/contributors/getting-started.md) guide for additional development information.
 
 ## Support
 
@@ -92,13 +71,13 @@ Need help? This is a developer's portal for CoBlocks and should not be used for 
 
 ## Contributors
 
-CoBlocks is built by [contributors and volunteers](https://github.com/godaddy-wordpress/coblocks/blob/master/CONTRIBUTORS.md) around the globe.
+CoBlocks is built by [contributors and volunteers](CONTRIBUTORS.md) around the globe.
 
 ## How You Can Contribute
 
 Well first off, thank you for your contributions to CoBlocks; every contribution counts. And if you are feeling a little lost, know that you are welcome to submit an issue on any topic, or even submit a pull request on any issue. The worst that can happen is that you'll be politely directed to the best location to ask your question.
 
-We appreciate all contributions and don't want a wall of rules to get in the way of that. That saying, please read our [Contributing Guidelines](https://github.com/godaddy-wordpress/coblocks/blob/master/.github/CONTRIBUTING.md) and know that you're expected to follow our [Code of Conduct](https://github.com/godaddy-wordpress/coblocks/blob/master/CODE_OF_CONDUCT.md).
+We appreciate all contributions and don't want a wall of rules to get in the way of that. That saying, please read our [Contributing Guidelines](.github/CONTRIBUTING.md) and know that you're expected to follow our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 **Ways to contribute:**
 

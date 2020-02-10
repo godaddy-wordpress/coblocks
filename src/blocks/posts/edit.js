@@ -494,7 +494,7 @@ export default compose( [
 		}
 
 		return {
-			latestPosts: latestPosts,
+			latestPosts,
 		};
 	} ),
 ] )( PostsEdit );

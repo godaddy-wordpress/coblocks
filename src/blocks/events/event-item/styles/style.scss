@@ -37,6 +37,7 @@
 }
 
 .wp-block-coblocks-events__details {
+
 	@include break-medium() {
 		flex-basis: 20%;
 		text-align: right;

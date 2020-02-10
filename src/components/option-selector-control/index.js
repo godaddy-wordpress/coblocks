@@ -1,4 +1,9 @@
 /**
+ * External dependencies.
+ */
+import { kebabCase } from 'lodash';
+
+/**
  * WordPress dependencies
  */
 import { Component } from '@wordpress/element';
@@ -59,7 +64,11 @@ export default class OptionSelectorControl extends Component {
 			showAdvancedControls,
 			advancedMinValue,
 			advancedMaxValue,
+			advancedMinValue,
+			label, options, currentOption,
 			onChange,
+			showAdvancedControls,
+			showNoneOption,
 		} = this.props;
 
 		let buttons = options || DEFAULT_OPTIONS;
@@ -73,16 +82,16 @@ export default class OptionSelectorControl extends Component {
 			<RangeControl
 				label={ label }
 				value={ currentOption }
-				onChange={ value => onChange( value ) }
+				onChange={ ( value ) => onChange( value ) }
 				min={ advancedMinValue }
 				max={ advancedMaxValue }
 			/> :
 
-			<BaseControl label={ label }>
+			<BaseControl id={ `coblocks-option-selector-${ kebabCase( label ) }` } label={ label }>
 				<PanelRow>
 					<ButtonGroup aria-label={ label }>
 
-						{ buttons.map( option => (
+						{ buttons.map( ( option ) => (
 							<Tooltip
 								key={ `option-${ option.value }` }
 								text={ option.tooltip }>

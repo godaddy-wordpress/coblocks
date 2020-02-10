@@ -1,9 +1,4 @@
 /**
- * Styles.
- */
-import './styles/editor.scss';
-
-/**
  * Internal dependencies
  */
 import edit from './edit';

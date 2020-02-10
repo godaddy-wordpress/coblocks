@@ -1,10 +1,12 @@
 .wp-block[data-type="coblocks/buttons"] {
+
 	[data-block] {
 		margin-bottom: 0;
 		margin-top: 0;
 	}
 
 	.block-editor-inner-blocks {
+
 		> .block-editor-block-list__layout {
 			display: flex;
 			justify-content: center;
@@ -12,7 +14,9 @@
 	}
 
 	.flex-align-left {
+
 		> .block-editor-inner-blocks {
+
 			> .block-editor-block-list__layout {
 				justify-content: flex-start;
 			}
@@ -20,7 +24,9 @@
 	}
 
 	.flex-align-right {
+
 		> .block-editor-inner-blocks {
+
 			> .block-editor-block-list__layout {
 				justify-content: flex-end;
 			}

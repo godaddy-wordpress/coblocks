@@ -1,6 +1,8 @@
 // Utility class for adding a border-radius to the figure elements.
 @for $i from 2 through 20 {
+
 	&.has-border-radius-#{ $i } {
+
 		.coblocks-gallery--item img {
 			border-radius: #{$i}px;
 		}

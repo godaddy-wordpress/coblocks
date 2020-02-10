@@ -1,5 +1,6 @@
 /**
  * Set the attributes for the Background Image Panel
+ *
  * @type {Object}
  */
 const CSSGridAttributes = {

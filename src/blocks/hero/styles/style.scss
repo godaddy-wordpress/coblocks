@@ -47,9 +47,11 @@
 		&[class*="hero-top"] {
 			align-items: flex-start;
 		}
+
 		&[class*="hero-center"] {
 			align-items: center;
 		}
+
 		&[class*="hero-bottom"] {
 			align-items: flex-end;
 		}
@@ -57,9 +59,11 @@
 		&[class*="left-align"] {
 			justify-content: flex-start;
 		}
+
 		&[class*="center-align"] {
 			justify-content: center;
 		}
+
 		&[class*="right-align"] {
 			justify-content: flex-end;
 		}

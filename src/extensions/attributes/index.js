@@ -26,11 +26,11 @@ function addAttributes( settings ) {
 /**
  * Add custom CoBlocks attributes to selected blocks
  *
- * @param {function|Component} BlockEdit Original component.
+ * @param {Function} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
 const withAttributes = createHigherOrderComponent(
-	BlockEdit => props => {
+	( BlockEdit ) => ( props ) => {
 		const { name: blockName } = props;
 
 		if ( allowedBlocks.includes( blockName ) ) {
