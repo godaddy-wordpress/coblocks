@@ -520,13 +520,13 @@ class CoBlocks_ICal {
 
 		// Used only for strtotime(), i18n not needed.
 		$this->weekdays  = array(
-			'SU'      => 'sunday of',
-			'MO'      => 'monday of',
-			'TU'      => 'tuesday of',
-			'WE'      => 'wednesday of',
-			'TH'      => 'thursday of',
-			'FR'      => 'friday of',
-			'SA'      => 'saturday of',
+			'SU'      => 'Sunday of',
+			'MO'      => 'Monday of',
+			'TU'      => 'Tuesday of',
+			'WE'      => 'Wednesday of',
+			'TH'      => 'Thursday of',
+			'FR'      => 'Friday of',
+			'SA'      => 'Saturday of',
 			'day'     => 'day of',
 			'weekday' => 'weekday',
 		);
