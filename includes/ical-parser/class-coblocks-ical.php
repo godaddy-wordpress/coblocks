@@ -509,46 +509,50 @@ class CoBlocks_ICal {
 	public function __construct( $files = false, array $options = array() ) {
 		ini_set( 'auto_detect_line_endings', '1' );
 
+		// Used only for strtotime(), i18n not needed.
 		$this->day_ordinals = array(
-			1 => __('first', 'coblocks'),
-			2 => __('second', 'coblocks'),
-			3 => __('third', 'coblocks'),
-			4 => __('fourth', 'coblocks'),
-			5 => __('fifth', 'coblocks'),
+			1 => 'first',
+			2 => 'second',
+			3 => 'third',
+			4 => 'fourth',
+			5 => 'fifth',
 		);
 
+		// Used only for strtotime(), i18n not needed.
 		$this->weekdays  = array(
-			'SU'      => __('sunday of', 'coblocks'),
-			'MO'      => __('monday of', 'coblocks'),
-			'TU'      => __('tuesday of', 'coblocks'),
-			'WE'      => __('wednesday of', 'coblocks'),
-			'TH'      => __('thursday of', 'coblocks'),
-			'FR'      => __('friday of', 'coblocks'),
-			'SA'      => __('saturday of', 'coblocks'),
-			'day'     => __('day of', 'coblocks'),
-			'weekday' => __('weekday', 'coblocks'),
+			'SU'      => 'sunday of',
+			'MO'      => 'monday of',
+			'TU'      => 'tuesday of',
+			'WE'      => 'wednesday of',
+			'TH'      => 'thursday of',
+			'FR'      => 'friday of',
+			'SA'      => 'saturday of',
+			'day'     => 'day of',
+			'weekday' => 'weekday',
 		);
 
+		// Used only for strtotime(), i18n not needed.
 		$this->month_names = array(
-			1  => __('January', 'coblocks'),
-			2  => __('February', 'coblocks'),
-			3  => __('March', 'coblocks'),
-			4  => __('April', 'coblocks'),
-			5  => __('May', 'coblocks'),
-			6  => __('June', 'coblocks'),
-			7  => __('July', 'coblocks'),
-			8  => __('August', 'coblocks'),
-			9  => __('September', 'coblocks'),
-			10 => __('October', 'coblocks'),
-			11 => __('November', 'coblocks'),
-			12 => __('December', 'coblocks'),
+			1  => 'January',
+			2  => 'February',
+			3  => 'March',
+			4  => 'April',
+			5  => 'May',
+			6  => 'June',
+			7  => 'July',
+			8  => 'August',
+			9  => 'September',
+			10 => 'October',
+			11 => 'November',
+			12 => 'December',
 		);
 
+		// Used only for strtotime(), i18n not needed.
 		$this->frequency_conversion = array(
-			'DAILY'   => __('day', 'coblocks'),
-			'WEEKLY'  => __('week', 'coblocks'),
-			'MONTHLY' => __('month', 'coblocks'),
-			'YEARLY'  => __('year', 'coblocks'),
+			'DAILY'   => 'day',
+			'WEEKLY'  => 'week',
+			'MONTHLY' => 'month',
+			'YEARLY'  => 'year',
 		);
 
 		foreach ( $options as $option => $value ) {
