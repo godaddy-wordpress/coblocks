@@ -24,3 +24,4 @@ languages/*.mo
 languages/*.po
 !languages/coblocks.json
 wp_creds.json
+cypress.env.json
