@@ -131,7 +131,7 @@ jobs:
             if [ -z $FILES ]; then
               circleci-agent step halt
             else
-              npm run lint:js
+              npm run lint:js $FILES
             fi
 
   php56:
