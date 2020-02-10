@@ -56,18 +56,14 @@ const NONE_OPTION = {
 export default class OptionSelectorControl extends Component {
 	render() {
 		const {
-			label,
-			options,
-			currentOption,
-			showIcons,
-			showNoneOption,
-			showAdvancedControls,
-			advancedMinValue,
 			advancedMaxValue,
 			advancedMinValue,
-			label, options, currentOption,
+			currentOption,
+			label,
 			onChange,
+			options,
 			showAdvancedControls,
+			showIcons,
 			showNoneOption,
 		} = this.props;
 
