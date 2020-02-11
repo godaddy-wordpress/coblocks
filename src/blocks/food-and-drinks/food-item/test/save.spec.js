@@ -33,7 +33,7 @@ describe( name, () => {
 		block.attributes.price = '$1.00';
 		block.attributes.url = 'https://www.google.com';
 		block.attributes.alt = 'Alt Tag';
-		// block.attributes.focalPoint = { 0, 100 };
+		block.attributes.focalPoint = { x: 0, y: 100 };
 		block.attributes.glutenFree = 1;
 		block.attributes.pescatarian = 1;
 		block.attributes.popular = 1;
@@ -49,7 +49,7 @@ describe( name, () => {
 		expect( serializedBlock ).toContain( 'Food item title' );
 		expect( serializedBlock ).toContain( 'Food item description' );
 		expect( serializedBlock ).toContain( '<span itemprop="price">$1.00</span>' );
-		expect( serializedBlock ).toContain( '<img src="https://www.google.com" alt="Alt Tag" itemprop="image"/>' );
+		expect( serializedBlock ).toContain( '<img src="https://www.google.com" alt="Alt Tag" itemprop="image" style="object-position:0% 10000%"/>' );
 		expect( serializedBlock ).toContain( 'wp-block-coblocks-food-item__attribute--glutenFree' );
 		expect( serializedBlock ).toContain( 'wp-block-coblocks-food-item__attribute--pescatarian' );
 		expect( serializedBlock ).toContain( 'wp-block-coblocks-food-item__attribute--popular' );
