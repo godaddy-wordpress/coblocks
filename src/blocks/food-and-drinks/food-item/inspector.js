@@ -17,6 +17,7 @@ const Inspector = ( props ) => {
 	const {
 		alt,
 		description,
+		focalPoint,
 		glutenFree,
 		pescatarian,
 		popular,
@@ -27,7 +28,6 @@ const Inspector = ( props ) => {
 		spicy,
 		title,
 		url,
-		focalPoint,
 		vegan,
 		vegetarian,
 	} = attributes;
