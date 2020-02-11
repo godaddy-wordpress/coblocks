@@ -76,3 +76,6 @@
 - name: "[Type] Design"
   color: "dd2c55"
   description: "Issues/PRs related to improving design"
+- name: "[Type] Gutenberg"
+  color: "617afc"
+  description: "Issues/PRs related to the current version of the Gutenberg plugin"
