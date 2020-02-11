@@ -14,7 +14,6 @@ import { registerPlugin, getPlugin, unregisterPlugin } from '@wordpress/plugins'
 import { registerGenericStore } from '@wordpress/data';
 import {
 	__,
-	sprintf,
 } from '@wordpress/i18n';
 
 /**
@@ -46,13 +45,7 @@ if ( coblocksSettings.coblocksSettingsEnabled ) {
 		return (
 			<Fragment>
 				<PluginMoreMenuItem onClick={ openModal }>
-					{
-						sprintf(
-							/* translators: %s: Plugin name */
-							__( '%s editor settings', 'coblocks' ),
-							'CoBlocks'
-						)
-					}
+					{ __( 'Editor settings', 'coblocks' ) }
 				</PluginMoreMenuItem>
 				<CoBlocksSettingsModal { ...props } />
 			</Fragment>

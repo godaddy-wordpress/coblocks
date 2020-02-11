@@ -20,7 +20,6 @@ import {
 } from '@wordpress/data';
 import {
 	__,
-	sprintf,
 } from '@wordpress/i18n';
 
 class CoBlocksSettingsModal extends Component {
@@ -112,11 +111,7 @@ class CoBlocksSettingsModal extends Component {
 
 		return (
 			<Modal
-				title={ sprintf(
-					/* translators: %s: Plugin name */
-					__( '%s editor settings', 'coblocks' ),
-					'CoBlocks'
-				) }
+				title={ __( 'Editor settings', 'coblocks' ) }
 				onRequestClose={ closeModal }
 			>
 				<div className="coblocks-modal__content">
