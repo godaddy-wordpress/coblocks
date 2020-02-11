@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-02-11T19:08:33+00:00\n"
+"POT-Creation-Date: 2020-02-11T19:15:04+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -171,133 +171,6 @@ msgstr ""
 
 #: includes/class-coblocks-google-map-block.php:116
 msgid "Google Map API key for map rendering"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:513
-msgid "first"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:514
-#: src/components/slider-panel/index.js:23
-msgid "second"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:515
-msgid "third"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:516
-msgid "fourth"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:517
-msgid "fifth"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:521
-msgid "sunday of"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:522
-msgid "monday of"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:523
-msgid "tuesday of"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:524
-msgid "wednesday of"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:525
-msgid "thursday of"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:526
-msgid "friday of"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:527
-msgid "saturday of"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:528
-msgid "day of"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:529
-msgid "weekday"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:533
-msgid "January"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:534
-msgid "February"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:535
-msgid "March"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:536
-msgid "April"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:537
-msgid "May"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:538
-msgid "June"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:539
-msgid "July"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:540
-msgid "August"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:541
-msgid "September"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:542
-msgid "October"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:543
-msgid "November"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:544
-msgid "December"
-msgstr ""
-
-#. translators: block keyword
-#: includes/ical-parser/class-coblocks-ical.php:548
-#: src/blocks/form/fields/date/index.js:43
-msgid "day"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:549
-msgid "week"
-msgstr ""
-
-#. translators: block keyword
-#: includes/ical-parser/class-coblocks-ical.php:550
-#: src/blocks/form/fields/date/index.js:45
-msgid "month"
-msgstr ""
-
-#. translators: block keyword
-#: includes/ical-parser/class-coblocks-ical.php:551
-#: src/blocks/form/fields/date/index.js:47
-msgid "year"
 msgstr ""
 
 #: src/blocks/events/index.php:122
@@ -1553,6 +1426,21 @@ msgstr ""
 #. translators: block description
 #: src/blocks/form/fields/date/index.js:36
 msgid "A field for requesting date selections with a date picker."
+msgstr ""
+
+#. translators: block keyword
+#: src/blocks/form/fields/date/index.js:43
+msgid "day"
+msgstr ""
+
+#. translators: block keyword
+#: src/blocks/form/fields/date/index.js:45
+msgid "month"
+msgstr ""
+
+#. translators: block keyword
+#: src/blocks/form/fields/date/index.js:47
+msgid "year"
 msgstr ""
 
 #. translators: block description
@@ -5756,6 +5644,10 @@ msgstr ""
 
 #: src/components/slider-panel/index.js:23
 msgid "seconds"
+msgstr ""
+
+#: src/components/slider-panel/index.js:23
+msgid "second"
 msgstr ""
 
 #. translators: %1$d: Speed of the slider, %2$d: Time until the slide advances
