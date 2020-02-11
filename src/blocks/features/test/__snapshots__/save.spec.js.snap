@@ -5,3 +5,33 @@ exports[`coblocks/features should render 1`] = `
 <div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-center-content\\"></div></div>
 <!-- /wp:coblocks/features -->"
 `;
+
+exports[`coblocks/features should render gutter 3 columns 1`] = `
+"<!-- wp:coblocks/features {\\"columns\\":3} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-3-columns has-responsive-columns has-medium-gutter has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render gutter large 1`] = `
+"<!-- wp:coblocks/features {\\"gutter\\":\\"large\\"} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-large-gutter has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render heading h3 1`] = `
+"<!-- wp:coblocks/features {\\"headingLevel\\":3} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render margin huge 1`] = `
+"<!-- wp:coblocks/features {\\"marginSize\\":\\"huge\\"} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-margin has-huge-margin has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render padding large 1`] = `
+"<!-- wp:coblocks/features {\\"paddingSize\\":\\"large\\"} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-padding has-large-padding has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
