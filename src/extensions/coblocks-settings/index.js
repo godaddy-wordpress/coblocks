@@ -20,7 +20,7 @@ import {
 /**
  * Internal dependencies
  */
-import CoBlocksOptionsModal from './coblocks-settings-modal';
+import CoBlocksSettingsModal from './coblocks-settings-modal';
 import createCoBlocksStore from './coblocks-settings-store.js';
 
 if ( typeof coblocksSettings === 'undefined' ) {
@@ -54,7 +54,7 @@ if ( coblocksSettings.coblocksSettingsEnabled ) {
 						)
 					}
 				</PluginMoreMenuItem>
-				<CoBlocksOptionsModal { ...props } />
+				<CoBlocksSettingsModal { ...props } />
 			</Fragment>
 
 		);
