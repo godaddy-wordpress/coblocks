@@ -17,9 +17,3 @@ exports[`coblocks/pricing-table should render 3 columns 1`] = `
 <div class=\\"wp-block-coblocks-pricing-table has-3-columns has-text-align-center\\"><div class=\\"wp-block-coblocks-pricing-table__inner\\"></div></div>
 <!-- /wp:coblocks/pricing-table -->"
 `;
-
-exports[`coblocks/pricing-table should render with content 1`] = `
-"<!-- wp:coblocks/pricing-table {\\"count\\":3} -->
-<div class=\\"wp-block-coblocks-pricing-table has-3-columns has-text-align-center\\"><div class=\\"wp-block-coblocks-pricing-table__inner\\"></div></div>
-<!-- /wp:coblocks/pricing-table -->"
-`;
