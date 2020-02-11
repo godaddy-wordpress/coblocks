@@ -25,16 +25,16 @@ const isEmpty = attributes => {
 export default function save( { className, attributes } ) {
 
 	const {
-		textColor,
 		customTextColor,
-		pageNum,
-		eventDay,
-		eventMonth,
-		eventYear,
-		title,
 		description,
-		eventTime,
+		eventDay,
 		eventLocation,
+		eventMonth,
+		eventTime,
+		eventYear,
+		pageNum,
+		textColor,
+		title,
 	} = attributes;
 
 	const colorClass = getColorClassName( 'color', textColor );
