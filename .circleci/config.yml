@@ -3,22 +3,18 @@ workflows:
   main:
     jobs:
       - lint_php:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
-      - lint_js:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
-      - lint_css:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
-      - build:
           requires:
-            - lint_css
-            - lint_js
-            - lint_php
+            - build
+      - lint_js:
+          requires:
+            - build
+      - lint_css:
+          requires:
+            - build
+      - build:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
       # Support PHP Versions
       # http://php.net/supported-versions.php
       # - php56:
@@ -75,14 +71,30 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Linting PHP"
+          name: "Linting pre-check"
           command: |
             FILES=$(git diff HEAD^ --name-only --diff-filter=M '*.php')
             if [ -z $FILES ]; then
+              echo "Changes do not require linting."
               circleci-agent step halt
-            else
-              composer run lint $FILES
             fi
+      - attach_workspace:
+          at: /home/circleci
+      - restore_cache:
+          keys:
+            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Branch }}
+      - run:
+          name: Install composer dependencies
+          command: |
+            composer install
+      - save_cache:
+          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+          paths:
+            - ~/project/vendor
+      - run:
+          name: "Linting PHP"
+          command: composer run lint $FILES
 
   # Run eslint on changed javascript files only.
   lint_js:
@@ -91,14 +103,31 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Linting JS"
+          name: "Linting pre-check"
           command: |
             FILES=$(git diff HEAD^ --name-only --diff-filter=M '*.js')
             if [ -z $FILES ]; then
+              echo "Changes do not require linting."
               circleci-agent step halt
-            else
-              npm run lint:js $FILES
             fi
+      - attach_workspace:
+          at: /home/circleci
+      - restore_cache:
+          keys:
+            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-{{ .Branch }}
+      - run:
+          name: Install node dependencies
+          command: |
+            yarn install --frozen-lockfile
+      - save_cache:
+          key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/project/node_modules
+            - ~/.cache/yarn
+      - run:
+          name: "Linting JS"
+          command: npm run lint:js $FILES
 
   # Run stylelint on changed stylesheet files only.
   lint_css:
@@ -107,15 +136,33 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Linting CSS"
+          name: "Linting pre-check"
           command: |
             FILES=$(git diff HEAD^ --name-only --diff-filter=M '*.scss')
             if [ -z $FILES ]; then
+              echo "Changes do not require linting."
               circleci-agent step halt
-            else
-              npm run lint:css $FILES
             fi
+      - restore_cache:
+          keys:
+            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-{{ .Branch }}
+      - run:
+          name: Install node dependencies
+          command: |
+            yarn install --frozen-lockfile
+      - save_cache:
+          key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/project/node_modules
+            - ~/.cache/yarn
+      - run:
+          name: "Linting CSS"
+          command: npm run lint:css $FILES
 
+  # 1. Download and cache node and composer dependencies.
+  # 2. Build deployable plugin folder.
+  # 3. Persist deployable plugin folder to workspace for other jobs.
   build:
     docker:
       - image: circleci/php:7.3-node
@@ -152,14 +199,17 @@ jobs:
       - save_cache:
           key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
           paths:
-            - /home/circleci/project/vendor
+            - ~/project/vendor
       - run:
           name: Build the plugin
-          command: npx wp-scripts build --config .dev/config/webpack.ci.config.js
+          command: |
+            npx wp-scripts build --config .dev/config/webpack.ci.config.js
+            npx grunt clean:build copy:build
       - persist_to_workspace:
           root: /home/circleci/
           paths:
-            - ./
+            - ./build/coblocks
+            - ./dist
 
   php56:
     docker:
@@ -349,7 +399,7 @@ jobs:
       - save_cache:
           key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
           paths:
-          - /home/circleci/project/vendor
+            - /home/circleci/project/vendor
       - run:
           name: Generate the translations
           command: |
@@ -419,7 +469,7 @@ jobs:
       - save_cache:
           key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
           paths:
-          - /home/circleci/project/vendor
+            - /home/circleci/project/vendor
       - run:
           name: Install ghr
           command: |
