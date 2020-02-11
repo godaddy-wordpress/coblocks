@@ -206,10 +206,10 @@ jobs:
             npx wp-scripts build --config .dev/config/webpack.ci.config.js
             npx grunt clean:build copy:build
       - persist_to_workspace:
-          root: /home/circleci/
+          root: ~/project
           paths:
-            - ./build/coblocks
-            - ./dist
+            - build/coblocks
+            - dist
 
   php56:
     docker:
