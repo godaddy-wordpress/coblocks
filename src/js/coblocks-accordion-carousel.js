@@ -1,4 +1,6 @@
-var flickiyTimer;
+/*global jQuery*/
+
+let flickiyTimer;
 
 ( function( $ ) {
 	$( '.wp-block-coblocks-accordion-item__content' ).each( function() {
@@ -20,11 +22,11 @@ var flickiyTimer;
 /**
  * Reinitialize the flickity carousel when it becomes visible.
  *
- * @param {object} target e.target from the click handler.
+ * @param {Object} target e.target from the click handler.
  */
 function reInitFlickityCarousel( target ) {
-	var $targetCarousel = jQuery( target ).next().find( '.has-carousel' );
-	if ( jQuery( target ).next().find( '.has-carousel' ).is( ':visible' ) && ! $targetCarousel.attr( 'data-reinit' ) ) {
+	const $targetCarousel = jQuery( target ).next().find( '.has-carousel' );
+	if ( jQuery( target ).next().find( '.has-carousel' ).is( ':visible' ) && !$targetCarousel.attr( 'data-reinit' ) ) {
 		$targetCarousel.attr( 'data-reinit', 1 ).flickity( 'destroy' ).flickity( JSON.parse( $targetCarousel.attr( 'data-flickity' ) ) ).flickity( 'resize' );
 		clearInterval( flickiyTimer );
 	}
