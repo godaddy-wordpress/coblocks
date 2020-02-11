@@ -5,6 +5,10 @@
 		color: $dark-gray-900;
 	}
 
+	.components-placeholder__fieldset {
+		max-width: 100%;
+	}
+
 	.wp-block-coblocks-row__inner.has-no-gutter {
 
 		> .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block > .block-editor-block-list__block-edit {
