@@ -99,7 +99,11 @@ function coblocks_posts( $posts, $attributes ) {
 	}
 
 	if ( isset( $attributes['columns'] ) ) {
-		array_push( $class, 'has-columns has-' . $attributes['columns'] . '-columns has-responsive-columns has-medium-gutter' );
+		array_push( $class, 'has-columns has-' . $attributes['columns'] . '-columns has-responsive-columns' );
+	}
+
+	if ( isset( $attributes['columns'] ) && isset( $attributes['gutter'] ) ) {
+		array_push( $class, 'has-' . $attributes['gutter'] . '-gutter' );
 	}
 
 	if ( isset( $attributes['listPosition'] ) && 'right' === $attributes['listPosition'] && 'horizontal' === $block_style ) {
