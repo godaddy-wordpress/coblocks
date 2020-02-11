@@ -77,14 +77,14 @@ jobs:
             sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
       - restore_cache:
           keys:
-            - npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
-            - npm-deps-{{ .Branch }}
+            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-{{ .Branch }}
       - run:
           name: Install node dependencies
           command: |
-            npm install
+            yarn install
       - save_cache:
-          key: npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - /home/circleci/project/node_modules
             - /home/circleci/.npm
@@ -325,14 +325,14 @@ jobs:
             sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
       - restore_cache:
           keys:
-            - npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
-            - npm-deps-{{ .Branch }}
+            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-{{ .Branch }}
       - run:
           name: Install node dependencies
           command: |
-            npm install
+            yarn install
       - save_cache:
-          key: npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
           - /home/circleci/project/node_modules
           - /home/circleci/.npm
@@ -395,14 +395,14 @@ jobs:
             sudo mv composer.phar /usr/local/bin/composer
       - restore_cache:
           keys:
-            - npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
-            - npm-deps-{{ .Branch }}
+            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-{{ .Branch }}
       - run:
           name: Install node dependencies
           command: |
-            npm install
+            yarn install
       - save_cache:
-          key: npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
           - /home/circleci/project/node_modules
           - /home/circleci/.npm
@@ -454,10 +454,10 @@ jobs:
       - checkout
       - run:
           name: Update npm
-          command: sudo npm install -g npm@latest
+          command: sudo yarn install -g npm@latest
       - run:
           name: Install Grunt.js
-          command: sudo npm install -g grunt-cli
+          command: sudo yarn install -g grunt-cli
       - run:
           name: Install SVN
           command: sudo apt-get update && sudo apt-get install subversion
@@ -487,7 +487,7 @@ jobs:
           name: Install node packages
           command: |
             npm uninstall cypress
-            npm install
+            yarn install
       - run:
           name: Build the plugin
           command: |
