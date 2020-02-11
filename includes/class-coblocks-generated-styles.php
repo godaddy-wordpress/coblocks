@@ -87,7 +87,7 @@ class CoBlocks_Generated_Styles {
 							foreach ( $block as $key => $style ) {
 								if ( ! empty( $style ) ) {
 									foreach ( $style as $ky => $value ) {
-										if ( ! empty( $value ) ) {
+										if ( ! empty( $value ) && ! preg_match( '/^(NaN)?(px|em|vw|vh|%)$/', $value ) ) {
 											if ( strpos( $ky, 'Mobile' ) !== false ) {
 												$mobile[] = strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', str_replace( 'Mobile', '', $ky ) ) ) . ':' . esc_attr( $value ) . $important . ';';
 											} elseif ( strpos( $ky, 'Tablet' ) !== false ) {
