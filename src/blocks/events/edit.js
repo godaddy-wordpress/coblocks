@@ -1,4 +1,4 @@
-/*global MutationObserver, jQuery*/
+/*global jQuery*/
 
 /**
  * Internal dependencies.
@@ -46,7 +46,7 @@ class EventsEdit extends Component {
 		this.state = {
 			isEditing: false,
 			showExternalCalendarControls: !! externalCalendarUrl || false,
-			externalCalendarUrl: externalCalendarUrl,
+			externalCalendarUrl,
 		};
 
 		this.toggleExternalCalendarControls = this.toggleExternalCalendarControls.bind( this );
@@ -160,8 +160,8 @@ class EventsEdit extends Component {
 					toggleExternalCalendarControls={ this.toggleExternalCalendarControls }
 					showExternalCalendarControls={ this.state.showExternalCalendarControls }
 					eventsRangeOptions={ EVENTS_RANGE_OPTIONS }
-					onChangeEventsToShow={ eventsToShow => setAttributes( { eventsToShow } ) }
-					onChangeEventsRange={ eventsRange => setAttributes( { eventsRange } ) }
+					onChangeEventsToShow={ ( eventsToShow ) => setAttributes( { eventsToShow } ) }
+					onChangeEventsRange={ ( eventsRange ) => setAttributes( { eventsRange } ) }
 				/>
 
 				{ !! externalCalendarUrl &&
@@ -178,7 +178,7 @@ class EventsEdit extends Component {
 						<TextControl
 							placeholder={ __( 'Enter URL here…', 'coblocks' ) }
 							value={ this.state.externalCalendarUrl }
-							onChange={ externalCalendarUrl => this.setState( { externalCalendarUrl } ) }
+							onChange={ ( newExternalCalendarUrl ) => this.setState( { externalCalendarUrl: newExternalCalendarUrl } ) }
 							className={ 'components-placeholder__input' }
 						/>
 						<Button isLarge type="button" onClick={ this.saveExternalCalendarUrl } disabled={ ! this.state.externalCalendarUrl }>
@@ -198,7 +198,7 @@ class EventsEdit extends Component {
 					</div>
 				}
 
-				<div ref={ el => this.el = el }>
+				<div ref={ ( el ) => this.el = el }>
 					{ !! externalCalendarUrl &&
 						<ServerSideRender
 							block="coblocks/events"

@@ -76,14 +76,12 @@ const Inspector = ( props ) => {
 	];
 
 	const columnsCountOnChange = ( selectedColumns ) => {
-		const { postsToShow } = attributes;
 		setAttributes( { columns:
 			( selectedColumns > postsToShow ) ? postsToShow : selectedColumns,
 		} );
 	};
 
 	const postsCountOnChange = ( selectedPosts ) => {
-		const { columns } = attributes;
 		const changedAttributes = { postsToShow: selectedPosts };
 		if ( columns > selectedPosts || ( selectedPosts === 1 && columns !== 1 ) ) {
 			Object.assign( changedAttributes, { columns: selectedPosts } );
@@ -144,7 +142,7 @@ const Inspector = ( props ) => {
 						label={ __( 'Thumbnail Size', 'coblocks' ) }
 						options={ sizeOptions }
 						currentOption={ imageSize }
-						onChange={ ( imageSize ) => setAttributes( { imageSize } ) }
+						onChange={ ( newImageSize ) => setAttributes( { imageSize: newImageSize } ) }
 					/>
 				}
 
@@ -191,7 +189,7 @@ const Inspector = ( props ) => {
 			{ hasPosts ?
 				<PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
 					<div className="block-editor-block-styles coblocks-editor-block-styles">
-						{ styleOptions.map( style => (
+						{ styleOptions.map( ( style ) => (
 							<div
 								key={ `style-${ style.name }` }
 								className={ classnames(

@@ -13,7 +13,7 @@ import { hasEmptyAttributes } from '../../../utils/block-helpers';
  */
 import { RichText, getColorClassName } from '@wordpress/block-editor';
 
-const isEmpty = attributes => {
+const isEmpty = ( attributes ) => {
 	const attributesToCheck = [ 'title', 'description', 'eventDay', 'eventMonth', 'eventYear', 'eventTime', 'eventLocation' ];
 	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
 		attributesToCheck.includes( key )
@@ -23,7 +23,6 @@ const isEmpty = attributes => {
 };
 
 export default function save( { className, attributes } ) {
-
 	const {
 		customTextColor,
 		description,

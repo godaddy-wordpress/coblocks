@@ -29,7 +29,6 @@ const isEmpty = ( attributes ) => {
 };
 
 export default function save( { attributes, className } ) {
-
 	const {
 		alt,
 		description,

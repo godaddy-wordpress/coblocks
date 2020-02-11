@@ -25,7 +25,7 @@ import { isBlobURL } from '@wordpress/blob';
 /**
  * Handle creation and removal of placeholder elements so that we always have one available to use.
  *
- * @param {Integer} childClientId The child block's ClientId.
+ * @param {number} childClientId The child block's ClientId.
  * @param {string} blockName The block to insert.
  * @param {Object} blockAttributes The attributes for the placeholder block.
  */
@@ -222,7 +222,6 @@ class FoodAndDrinksEdit extends Component {
 		} = this.props;
 
 		const {
-			alt,
 			description,
 			glutenFree,
 			pescatarian,
@@ -264,7 +263,7 @@ class FoodAndDrinksEdit extends Component {
 								tagName="h4"
 								wrapperClassName="wp-block-coblocks-food-item__heading"
 								placeholder={ __( 'Add title…', 'coblocks' ) }
-								onChange={ ( title ) => setAttributes( { title } ) }
+								onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
 								{ ...richTextAttributes }
 							/>
 							<div className="wp-block-coblocks-food-item__attributes">
@@ -370,7 +369,7 @@ class FoodAndDrinksEdit extends Component {
 							tagName="p"
 							wrapperClassName="wp-block-coblocks-food-item__description"
 							placeholder={ __( 'Add description…', 'coblocks' ) }
-							onChange={ ( description ) => setAttributes( { description } ) }
+							onChange={ ( newDescription ) => setAttributes( { description: newDescription } ) }
 							{ ...richTextAttributes }
 						/>
 						{ !! showPrice && ( price || isSelected ) && (
@@ -379,7 +378,7 @@ class FoodAndDrinksEdit extends Component {
 								tagName="p"
 								wrapperClassName="wp-block-coblocks-food-item__price"
 								placeholder={ __( '$0.00', 'coblocks' ) }
-								onChange={ ( price ) => setAttributes( { price } ) }
+								onChange={ ( newPrice ) => setAttributes( { price: newPrice } ) }
 								{ ...richTextAttributes }
 							/>
 						) }

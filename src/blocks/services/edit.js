@@ -231,8 +231,8 @@ class Edit extends Component {
 								'coblocks/service',
 								{
 									showCta: buttons,
-									headingLevel: headingLevel,
-									alignment: alignment,
+									headingLevel,
+									alignment,
 								},
 							] ) }
 							templateLock="all"

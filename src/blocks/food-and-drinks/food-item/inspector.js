@@ -16,17 +16,14 @@ const Inspector = ( props ) => {
 
 	const {
 		alt,
-		description,
 		focalPoint,
 		glutenFree,
 		pescatarian,
 		popular,
-		price,
 		showImage,
 		showPrice,
 		spicier,
 		spicy,
-		title,
 		url,
 		vegan,
 		vegetarian,
