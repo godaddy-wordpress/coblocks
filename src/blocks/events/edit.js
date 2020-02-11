@@ -39,10 +39,14 @@ class EventsEdit extends Component {
 	constructor() {
 		super( ...arguments );
 
+		const {
+			externalCalendarUrl,
+		} = this.props.attributes;
+
 		this.state = {
 			isEditing: false,
-			showExternalCalendarControls: !! this.props.attributes.externalCalendarUrl || false,
-			externalCalendarUrl: this.props.attributes.externalCalendarUrl,
+			showExternalCalendarControls: !! externalCalendarUrl || false,
+			externalCalendarUrl: externalCalendarUrl,
 		};
 
 		this.toggleExternalCalendarControls = this.toggleExternalCalendarControls.bind( this );
@@ -137,6 +141,10 @@ class EventsEdit extends Component {
 			setAttributes,
 		} = this.props;
 
+		const {
+			externalCalendarUrl,
+		} = attributes;
+
 		const toolbarControls = [
 			{
 				icon: 'edit',
@@ -156,13 +164,13 @@ class EventsEdit extends Component {
 					onChangeEventsRange={ eventsRange => setAttributes( { eventsRange } ) }
 				/>
 
-				{ !! attributes.externalCalendarUrl &&
+				{ !! externalCalendarUrl &&
 					<BlockControls>
 						<Toolbar controls={ toolbarControls } />
 					</BlockControls>
 				}
 
-				{ this.state.showExternalCalendarControls && ( ! attributes.externalCalendarUrl || this.state.isEditing ) &&
+				{ this.state.showExternalCalendarControls && ( ! externalCalendarUrl || this.state.isEditing ) &&
 					<Placeholder
 						icon="rss"
 						label="Calendar URL">
@@ -179,7 +187,7 @@ class EventsEdit extends Component {
 					</Placeholder>
 				}
 
-				{ ! attributes.externalCalendarUrl && ! this.state.showExternalCalendarControls &&
+				{ ! externalCalendarUrl && ! this.state.showExternalCalendarControls &&
 					<div className={ classnames( className, 'coblocks-custom-event' ) }>
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
@@ -191,7 +199,7 @@ class EventsEdit extends Component {
 				}
 
 				<div ref={ el => this.el = el }>
-					{ !! attributes.externalCalendarUrl &&
+					{ !! externalCalendarUrl &&
 						<ServerSideRender
 							block="coblocks/events"
 							attributes={ this.props.attributes }
