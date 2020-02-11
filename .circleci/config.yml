@@ -82,12 +82,12 @@ jobs:
       - run:
           name: Install node dependencies
           command: |
-            yarn install
+            yarn install --frozen-lockfile
       - save_cache:
           key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
-            - /home/circleci/project/node_modules
-            - /home/circleci/.npm
+            - ~/project/node_modules
+            - ~/.cache/yarn
       - restore_cache:
           keys:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
@@ -330,12 +330,12 @@ jobs:
       - run:
           name: Install node dependencies
           command: |
-            yarn install
+            yarn install --frozen-lockfile
       - save_cache:
           key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
-          - /home/circleci/project/node_modules
-          - /home/circleci/.npm
+            - ~/project/node_modules
+            - ~/.cache/yarn
       - restore_cache:
           keys:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
@@ -400,12 +400,12 @@ jobs:
       - run:
           name: Install node dependencies
           command: |
-            yarn install
+            yarn install --frozen-lockfile
       - save_cache:
           key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
-          - /home/circleci/project/node_modules
-          - /home/circleci/.npm
+            - ~/project/node_modules
+            - ~/.cache/yarn
       - restore_cache:
           keys:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
@@ -454,10 +454,10 @@ jobs:
       - checkout
       - run:
           name: Update npm
-          command: sudo yarn install -g npm@latest
+          command: sudo yarn install --frozen-lockfile -g npm@latest
       - run:
           name: Install Grunt.js
-          command: sudo yarn install -g grunt-cli
+          command: sudo yarn install --frozen-lockfile -g grunt-cli
       - run:
           name: Install SVN
           command: sudo apt-get update && sudo apt-get install subversion
@@ -487,7 +487,7 @@ jobs:
           name: Install node packages
           command: |
             npm uninstall cypress
-            yarn install
+            yarn install --frozen-lockfile
       - run:
           name: Build the plugin
           command: |
