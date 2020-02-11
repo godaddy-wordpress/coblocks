@@ -21,6 +21,11 @@ const Inspector = ( props ) => {
 		onUpdateStyle,
 	} = props;
 
+	const {
+		showImages,
+		showPrices,
+	} = attributes;
+
 	return (
 		<InspectorControls>
 			<PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
@@ -46,7 +51,7 @@ const Inspector = ( props ) => {
 							aria-label={ style.label || style.name }
 						>
 							<div className="block-editor-block-styles__item-preview block-editor-block-styles__item-preview">
-								{ attributes.showImages ? style.iconWithImages : style.icon }
+								{ showImages ? style.iconWithImages : style.icon }
 							</div>
 							<div className="block-editor-block-styles__item-label block-editor-block-styles__item-label">
 								{ style.label || style.name }
@@ -60,21 +65,21 @@ const Inspector = ( props ) => {
 				<ToggleControl
 					label={ __( 'Images', 'coblocks' ) }
 					help={
-						attributes.showImages ?
+						showImages ?
 							__( 'Showing images for each item', 'coblocks' ) :
 							__( 'Toggle to show images for each item.', 'coblocks' )
 					}
-					checked={ attributes.showImages }
+					checked={ showImages }
 					onChange={ onToggleImages }
 				/>
 				<ToggleControl
 					label={ __( 'Prices', 'coblocks' ) }
 					help={
-						attributes.showPrices ?
+						showPrices ?
 							__( 'Showing the price of each item', 'coblocks' ) :
 							__( 'Toggle to show the price of each item.', 'coblocks' )
 					}
-					checked={ attributes.showPrices }
+					checked={ showPrices }
 					onChange={ onTogglePrices }
 				/>
 			</PanelBody>
