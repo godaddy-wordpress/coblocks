@@ -21,49 +21,49 @@ workflows:
             - lint_php
       # Support PHP Versions
       # http://php.net/supported-versions.php
-      - php56:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
-          requires:
-            - lint_php
-      - php73:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
-          requires:
-            - lint_php
-      - jest:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
-          requires:
-            - build
-      - e2e:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
-          requires:
-            - build
-      - canary-release:
-          filters:
-            branches:
-              only: master
-      - i18n:
-          filters:
-            branches:
-              only: master
-      - deploy:
-          requires:
-            - php56
-            - php73
-            - jest
-            - e2e
-          filters:
-            tags:
-              only: /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*)?(\+[0-9-]+(\.[0-9]+)*)?/ # Run on semantic version tags only
-            branches:
-              ignore: /.*/
+      # - php56:
+      #     filters:
+      #       tags:
+      #         only: /^(?!canary).*$/
+      #     requires:
+      #       - lint_php
+      # - php73:
+      #     filters:
+      #       tags:
+      #         only: /^(?!canary).*$/
+      #     requires:
+      #       - lint_php
+      # - jest:
+      #     filters:
+      #       tags:
+      #         only: /^(?!canary).*$/
+      #     requires:
+      #       - build
+      # - e2e:
+      #     filters:
+      #       tags:
+      #         only: /^(?!canary).*$/
+      #     requires:
+      #       - build
+      # - canary-release:
+      #     filters:
+      #       branches:
+      #         only: master
+      # - i18n:
+      #     filters:
+      #       branches:
+      #         only: master
+      # - deploy:
+      #     requires:
+      #       - php56
+      #       - php73
+      #       - jest
+      #       - e2e
+      #     filters:
+      #       tags:
+      #         only: /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*)?(\+[0-9-]+(\.[0-9]+)*)?/ # Run on semantic version tags only
+      #       branches:
+      #         ignore: /.*/
 
 version: 2.1
 jobs:
