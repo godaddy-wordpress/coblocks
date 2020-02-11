@@ -20,7 +20,7 @@ var flickiyTimer;
 /**
  * Reinitialize the flickity carousel when it becomes visible.
  *
- * @param  {object} target e.target from the click handler.
+ * @param {object} target e.target from the click handler.
  */
 function reInitFlickityCarousel( target ) {
 	var $targetCarousel = jQuery( target ).next().find( '.has-carousel' );
