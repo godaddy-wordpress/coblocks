@@ -49,7 +49,7 @@ if ( coblocksSettings.coblocksSettingsEnabled ) {
 					{
 						sprintf(
 							/* translators: %s: Plugin name */
-							__( '%s settings', 'coblocks' ),
+							__( '%s editor settings', 'coblocks' ),
 							'CoBlocks'
 						)
 					}

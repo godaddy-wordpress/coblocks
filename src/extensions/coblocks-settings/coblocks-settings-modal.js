@@ -114,7 +114,7 @@ class CoBlocksSettingsModal extends Component {
 			<Modal
 				title={ sprintf(
 					/* translators: %s: Plugin name */
-					__( '%s Editor Settings', 'coblocks' ),
+					__( '%s editor settings', 'coblocks' ),
 					'CoBlocks'
 				) }
 				onRequestClose={ closeModal }
@@ -123,8 +123,15 @@ class CoBlocksSettingsModal extends Component {
 					<Section title={ __( 'General' ) }>
 						<HorizontalRule />
 						<CheckboxControl
-							label={ __( 'Colors panel', 'coblocks' ) }
-							help={ __( 'Allow color settings for blocks.', 'coblocks' ) }
+							label={ __( 'Typography controls', 'coblocks' ) }
+							help={ __( 'Allow block-level typography controls.', 'coblocks' ) }
+							onChange={ () => this.updateTypographyControlsSetting() }
+							checked={ !! typography }
+						/>
+						<HorizontalRule />
+						<CheckboxControl
+							label={ __( 'Color settings', 'coblocks' ) }
+							help={ __( 'Allow color settings throughout the editor.', 'coblocks' ) }
 							onChange={ () => this.updateColorPanel( !! colorPanel ) }
 							checked={ !! colorPanel }
 						/>
@@ -151,13 +158,6 @@ class CoBlocksSettingsModal extends Component {
 							<HorizontalRule />
 						</>
 						}
-						<CheckboxControl
-							label={ __( 'Typography controls', 'coblocks' ) }
-							help={ __( 'Allow block-level typography controls.', 'coblocks' ) }
-							onChange={ () => this.updateTypographyControlsSetting() }
-							checked={ !! typography }
-						/>
-						<HorizontalRule />
 					</Section>
 				</div>
 			</Modal>
