@@ -78,8 +78,6 @@ jobs:
               echo "Changes do not require linting."
               circleci-agent step halt
             fi
-      - attach_workspace:
-          at: /home/circleci
       - restore_cache:
           keys:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
@@ -110,8 +108,6 @@ jobs:
               echo "Changes do not require linting."
               circleci-agent step halt
             fi
-      - attach_workspace:
-          at: /home/circleci
       - restore_cache:
           keys:
             - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
