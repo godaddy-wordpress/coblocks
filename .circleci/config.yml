@@ -249,7 +249,7 @@ jobs:
           name: "Install Dependencies"
           command: |
             bash .dev/bin/install-dependencies.sh
-            cp -a $HOME/project/dist/coblocks /tmp/wordpress/wp-content/plugins/coblocks
+            cp -a $HOME/project/build/coblocks /tmp/wordpress/wp-content/plugins/coblocks
       - run:
           name: "Run PHPUnit - Single Site - Generate Coverage Reports"
           command: composer run test -- --coverage-html=/tmp/artifacts/code-coverage/phpunit/html --log-junit=/tmp/artifacts/code-coverage/phpunit/results.xml
