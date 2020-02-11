@@ -150,7 +150,7 @@ jobs:
       - attach_workspace:
           at: /home/circleci
       - run:
-          name: "Linting JS"
+          name: "Linting CSS"
           command: |
             FILES=$(git diff HEAD^ --name-only '*.scss')
             if [ -z $FILES ]; then
