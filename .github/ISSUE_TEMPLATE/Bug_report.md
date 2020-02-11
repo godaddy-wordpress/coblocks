@@ -1,9 +1,10 @@
 ---
 name: "\U0001F41E Bug report"
 about: Report a bug if something isn't working as expected in CoBlocks.
-title: ""
-labels: ""
-assignees: ""
+title: ''
+labels: ''
+assignees: ''
+
 ---
 
 **Describe the bug**

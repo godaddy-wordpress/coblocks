@@ -1,9 +1,11 @@
 ---
 name: "\U0001F680 Feature request"
-about: "Suggest a new feature. We'll consider building it if it receives sufficient interest."
-title: ""
-labels: ""
-assignees: ""
+about: Suggest a new feature. We'll consider building it if it receives sufficient
+  interest.
+title: ''
+labels: ''
+assignees: ''
+
 ---
 
 **Is your feature request related to a problem? Please describe.**
