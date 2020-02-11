@@ -120,7 +120,7 @@ jobs:
       - run:
           name: "Linting PHP"
           command: |
-            FILES=$(git diff HEAD^ --name-only '*.php')
+            FILES=$(git diff HEAD^ --name-only --diff-filter=M '*.php')
             if [ -z $FILES ]; then
               circleci-agent step halt
             else
@@ -136,7 +136,7 @@ jobs:
       - run:
           name: "Linting JS"
           command: |
-            FILES=$(git diff HEAD^ --name-only '*.js')
+            FILES=$(git diff HEAD^ --name-only --diff-filter=M '*.js')
             if [ -z $FILES ]; then
               circleci-agent step halt
             else
@@ -152,7 +152,7 @@ jobs:
       - run:
           name: "Linting CSS"
           command: |
-            FILES=$(git diff HEAD^ --name-only '*.scss')
+            FILES=$(git diff HEAD^ --name-only --diff-filter=M '*.scss')
             if [ -z $FILES ]; then
               circleci-agent step halt
             else
