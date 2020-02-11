@@ -40,6 +40,37 @@ class CoBlocksSettingsModal extends Component {
 		return gradientPresets;
 	}
 
+	processColorPresets( newSetting ) {
+		const { getSettings } = this.props;
+		let colorPresets = getSettings( ).colors;
+
+		if ( newSetting ) {
+			localStorage.setItem( 'colorPresets', JSON.stringify( colorPresets ) );
+			colorPresets = [];
+		} else {
+			const storedPresets = localStorage.getItem( 'colorPresets' );
+			if ( storedPresets ) {
+				colorPresets = JSON.parse( storedPresets );
+			}
+		}
+		return colorPresets;
+	}
+
+	updateColorPanel( newSetting ) {
+		const { updateSettings, setColorPanel, setCustomColors, setGradients } = this.props;
+
+		updateSettings( {
+			colors: this.processColorPresets( newSetting ),
+			disableCustomColors: newSetting,
+			disableCustomGradients: newSetting,
+			gradients: this.processGradientPresets( newSetting ),
+		} );
+
+		setCustomColors();
+		setGradients();
+		setColorPanel();
+	}
+
 	updateCustomColorsSetting( newSetting ) {
 		const { updateSettings, setCustomColors } = this.props;
 		updateSettings( { disableCustomColors: newSetting } );
@@ -62,9 +93,10 @@ class CoBlocksSettingsModal extends Component {
 	}
 
 	render() {
-		const { isOpen, closeModal, typography, customColors, gradientControls, getSettings } = this.props;
+		const { isOpen, closeModal, typography, customColors, gradientControls, getSettings, colorPanel } = this.props;
 
 		const supportsGradients = getSettings().gradients !== undefined;
+		const colorPanelEnabled = !! colorPanel;
 
 		if ( ! isOpen ) {
 			return null;
@@ -83,13 +115,24 @@ class CoBlocksSettingsModal extends Component {
 					<Section title={ __( 'General' ) }>
 						<HorizontalRule />
 						<CheckboxControl
-							label={ __( 'Custom colors', 'coblocks' ) }
-							help={ __( 'Allow styling with the custom color picker.', 'coblocks' ) }
-							onChange={ () => this.updateCustomColorsSetting( !! customColors ) }
-							checked={ !! customColors }
+							label={ __( 'Colors panel', 'coblocks' ) }
+							help={ __( 'Allow color settings for blocks.', 'coblocks' ) }
+							onChange={ () => this.updateColorPanel( !! colorPanel ) }
+							checked={ !! colorPanel }
 						/>
+						{ colorPanelEnabled &&
+						<>
+							<HorizontalRule />
+							<CheckboxControl
+								label={ __( 'Custom colors', 'coblocks' ) }
+								help={ __( 'Allow styling with the custom color picker.', 'coblocks' ) }
+								onChange={ () => this.updateCustomColorsSetting( !! customColors ) }
+								checked={ !! customColors }
+							/>
+						</>
+						}
 						<HorizontalRule />
-						{ supportsGradients &&
+						{ colorPanelEnabled && supportsGradients &&
 						<>
 							<CheckboxControl
 								label={ __( 'Gradient styles', 'coblocks' ) }
@@ -115,22 +158,24 @@ class CoBlocksSettingsModal extends Component {
 }
 
 const applyWithSelect = withSelect( () => {
-	const { getTypography, getCustomColors, getGradients } = select( 'coblocks-settings' );
+	const { getTypography, getCustomColors, getGradients, getColorPanel } = select( 'coblocks-settings' );
 	const { getSettings } = select( 'core/block-editor' );
 
 	return {
 		typography: getTypography(),
 		customColors: getCustomColors(),
 		gradientControls: getGradients(),
+		colorPanel: getColorPanel(),
 		getSettings,
 	};
 } );
 
 const applyWithDispatch = withDispatch( ( dispatch ) => {
-	const { setTypography, setCustomColors, setGradients } = dispatch( 'coblocks-settings' );
+	const { setTypography, setCustomColors, setGradients, setColorPanel } = dispatch( 'coblocks-settings' );
 	const { updateSettings } = dispatch( 'core/block-editor' );
 
 	return {
+		setColorPanel,
 		setCustomColors,
 		setTypography,
 		setGradients,

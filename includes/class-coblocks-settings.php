@@ -74,6 +74,13 @@ class CoBlocks_Settings {
 			add_theme_support( '__experimental-editor-gradient-presets', array() );
 			add_theme_support( '__experimental-disable-custom-gradients', true );
 		}
+
+		if( ! get_option( 'coblocks_color_panel_controls_enabled' ) ) {
+			add_theme_support( 'editor-color-palette', array() );
+			add_theme_support( '__experimental-editor-gradient-presets', array() );
+			add_theme_support( '__experimental-disable-custom-gradients', true );
+			add_theme_support( 'disable-custom-colors' );
+		}
 	}
 
 	/**
@@ -100,6 +107,18 @@ class CoBlocks_Settings {
 			array(
 				'type'              => 'boolean',
 				'description'       => __( 'Setting use to disable or enable custom color controls across the site.', 'coblocks' ),
+				'sanitize_callback' => null,
+				'show_in_rest'      => true,
+				'default'           => true,
+			)
+		);
+
+		register_setting(
+			'coblocks_color_panel_controls_enabled',
+			'coblocks_color_panel_controls_enabled',
+			array(
+				'type'              => 'boolean',
+				'description'       => __( 'Setting use to disable or enable all color controls across the site.', 'coblocks' ),
 				'sanitize_callback' => null,
 				'show_in_rest'      => true,
 				'default'           => true,

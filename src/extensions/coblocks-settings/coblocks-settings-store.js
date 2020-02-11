@@ -12,6 +12,7 @@ export default function createCoBlocksStore() {
 	let storeChanged = () => {};
 	const settings = {
 		customColors: true,
+		colorsPanel: true,
 		gradients: true,
 		typography: true,
 	};
@@ -25,6 +26,7 @@ export default function createCoBlocksStore() {
 		settings.customColors = res.coblocks_custom_colors_controls_enabled || false;
 		settings.gradients = res.coblocks_gradient_presets_enabled || false;
 		settings.typography = res.coblocks_typography_controls_enabled || false;
+		settings.colorsPanel = res.coblocks_color_panel_controls_enabled || false;
 		storeChanged();
 	} );
 
@@ -37,6 +39,9 @@ export default function createCoBlocksStore() {
 		},
 		getTypography( ) {
 			return settings.typography;
+		},
+		getColorPanel() {
+			return settings.colorsPanel;
 		},
 	};
 
@@ -56,6 +61,25 @@ export default function createCoBlocksStore() {
 					coblocks_custom_colors_controls_enabled: toggle,
 				},
 			} );
+		},
+		setColorPanel( ) {
+			const toggle = ! settings.colorsPanel;
+			settings.colorsPanel = toggle;
+			apiFetch( {
+				path: '/wp/v2/settings/',
+				method: 'POST',
+				headers: {
+					'X-WP-Nonce': settingsNonce,
+				},
+				data: {
+					coblocks_color_panel_controls_enabled: toggle,
+					coblocks_gradient_presets_enabled: toggle,
+					coblocks_custom_colors_controls_enabled: toggle,
+				},
+			} );
+			settings.gradients = toggle;
+			settings.customColors = toggle;
+			storeChanged();
 		},
 		setGradients( ) {
 			const toggle = ! settings.gradients;
