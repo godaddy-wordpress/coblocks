@@ -17,12 +17,13 @@ workflows:
               only: /^(?!canary).*$/
       # Support PHP Versions
       # http://php.net/supported-versions.php
-      # - php56:
-      #     filters:
-      #       tags:
-      #         only: /^(?!canary).*$/
-      #     requires:
-      #       - lint_php
+      - php56:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - build
+            - lint_php
       # - php73:
       #     filters:
       #       tags:
@@ -212,8 +213,21 @@ jobs:
       - image: circleci/php:5.6
       - image: circleci/mysql:5.7
     steps:
+      - checkout
       - attach_workspace:
-          at: /home/circleci
+          at: ~/project
+      - restore_cache:
+          keys:
+            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Branch }}
+      - run:
+          name: Install composer dependencies
+          command: |
+            composer install
+      - save_cache:
+          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+          paths:
+            - ~/project/vendor
       - run:
           name: Disable xdebug PHP extension
           command: |
@@ -235,7 +249,7 @@ jobs:
           name: "Install Dependencies"
           command: |
             bash .dev/bin/install-dependencies.sh
-            cp -a $HOME/project/ /tmp/wordpress/wp-content/plugins/coblocks
+            cp -a $HOME/project/dist/coblocks /tmp/wordpress/wp-content/plugins/coblocks
       - run:
           name: "Run PHPUnit - Single Site - Generate Coverage Reports"
           command: composer run test -- --coverage-html=/tmp/artifacts/code-coverage/phpunit/html --log-junit=/tmp/artifacts/code-coverage/phpunit/results.xml
