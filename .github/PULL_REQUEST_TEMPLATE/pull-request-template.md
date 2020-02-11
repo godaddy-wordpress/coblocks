@@ -1,18 +1,19 @@
-## Description
+### Description
 <!-- Please describe what you have changed or added -->
 
-## Screenshots <!-- if applicable -->
+### Screenshots
+<!-- if applicable -->
 
-## Types of changes
+### Types of changes
 <!-- What types of changes does your code introduce?  -->
 <!-- Bug fix (non-breaking change which fixes an issue) -->
 <!-- New feature (non-breaking change which adds functionality) -->
 <!-- Breaking change -->
 
-## How has this been tested?
+### How has this been tested?
 <!-- Please describe in detail how you tested your changes. -->
 
-## Checklist:
+### Checklist:
 - [ ] My code is tested
 - [ ] My code follows accessibility standards <!-- Guidelines: https://make.wordpress.org/core/handbook/best-practices/coding-standards/accessibility-coding-standards/ -->
 - [ ] My code has proper inline documentation <!-- Guidelines: https://make.wordpress.org/core/handbook/best-practices/inline-documentation-standards/javascript/ -->
