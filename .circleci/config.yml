@@ -12,6 +12,9 @@ workflows:
       - lint_js:
           requires:
             - build
+      - lint_css:
+          requires:
+            - build
       # Support PHP Versions
       # http://php.net/supported-versions.php
       - php56:
@@ -132,6 +135,22 @@ jobs:
               circleci-agent step halt
             else
               npm run lint:js $FILES
+            fi
+
+  lint_css:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - attach_workspace:
+          at: /home/circleci
+      - run:
+          name: "Linting JS"
+          command: |
+            FILES=$(git diff HEAD^ --name-only '*.scss')
+            if [ -z $FILES ]; then
+              circleci-agent step halt
+            else
+              npm run lint:css $FILES
             fi
 
   php56:
