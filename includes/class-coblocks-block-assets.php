@@ -258,7 +258,6 @@ class CoBlocks_Block_Assets {
 
 		// Carousel block.
 		if ( has_block( 'coblocks/gallery-carousel' ) ) {
-
 			wp_enqueue_script(
 				'coblocks-flickity',
 				$vendors_dir . '/flickity.js',
@@ -276,7 +275,6 @@ class CoBlocks_Block_Assets {
 					true
 				);
 			}
-
 		}
 
 		// Post Carousel block.
