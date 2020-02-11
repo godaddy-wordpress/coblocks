@@ -57,14 +57,22 @@ class CoBlocksSettingsModal extends Component {
 	}
 
 	updateColorPanel( newSetting ) {
-		const { updateSettings, setColorPanel, setCustomColors, setGradients } = this.props;
+		const { updateSettings, setColorPanel, setCustomColors, setGradients, getSettings } = this.props;
 
-		updateSettings( {
-			colors: this.processColorPresets( newSetting ),
-			disableCustomColors: newSetting,
-			disableCustomGradients: newSetting,
-			gradients: this.processGradientPresets( newSetting ),
-		} );
+		const supportsGradients = getSettings().gradients !== undefined;
+		if ( supportsGradients ) {
+			updateSettings( {
+				colors: this.processColorPresets( newSetting ),
+				disableCustomColors: newSetting,
+				disableCustomGradients: newSetting,
+				gradients: this.processGradientPresets( newSetting ),
+			} );
+		} else {
+			updateSettings( {
+				colors: this.processColorPresets( newSetting ),
+				disableCustomColors: newSetting,
+			} );
+		}
 
 		setCustomColors();
 		setGradients();
