@@ -2,19 +2,23 @@ workflows:
   version: 2.1
   main:
     jobs:
-      - build:
-        filters:
-          tags:
-            only: /^(?!canary).*$/
       - lint_php:
-          requires:
-            - build
+          filters:
+            tags:
+              only: /^(?!canary).*$/
       - lint_js:
-          requires:
-            - build
+          filters:
+            tags:
+              only: /^(?!canary).*$/
       - lint_css:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+      - build:
           requires:
-            - build
+            - lint_css
+            - lint_js
+            - lint_php
       # Support PHP Versions
       # http://php.net/supported-versions.php
       - php56:
@@ -63,6 +67,55 @@ workflows:
 
 version: 2.1
 jobs:
+
+  # Run phpcs on changed php files only.
+  lint_php:
+    docker:
+      - image: circleci/php:7.3
+    steps:
+      - checkout
+      - run:
+          name: "Linting PHP"
+          command: |
+            FILES=$(git diff HEAD^ --name-only --diff-filter=M '*.php')
+            if [ -z $FILES ]; then
+              circleci-agent step halt
+            else
+              composer run lint $FILES
+            fi
+
+  # Run eslint on changed javascript files only.
+  lint_js:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run:
+          name: "Linting JS"
+          command: |
+            FILES=$(git diff HEAD^ --name-only --diff-filter=M '*.js')
+            if [ -z $FILES ]; then
+              circleci-agent step halt
+            else
+              npm run lint:js $FILES
+            fi
+
+  # Run stylelint on changed stylesheet files only.
+  lint_css:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run:
+          name: "Linting CSS"
+          command: |
+            FILES=$(git diff HEAD^ --name-only --diff-filter=M '*.scss')
+            if [ -z $FILES ]; then
+              circleci-agent step halt
+            else
+              npm run lint:css $FILES
+            fi
+
   build:
     docker:
       - image: circleci/php:7.3-node
@@ -107,57 +160,6 @@ jobs:
           root: /home/circleci/
           paths:
             - ./
-
-  lint_php:
-    docker:
-      - image: circleci/php:7.3
-    steps:
-      - attach_workspace:
-          at: /home/circleci
-      - run:
-          name: Disable xdebug PHP extension
-          command: sudo rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-      - run:
-          name: "Linting PHP"
-          command: |
-            FILES=$(git diff HEAD^ --name-only --diff-filter=M '*.php')
-            if [ -z $FILES ]; then
-              circleci-agent step halt
-            else
-              composer run lint $FILES
-            fi
-
-  lint_js:
-    docker:
-      - image: circleci/node:latest
-    steps:
-      - attach_workspace:
-          at: /home/circleci
-      - run:
-          name: "Linting JS"
-          command: |
-            FILES=$(git diff HEAD^ --name-only --diff-filter=M '*.js')
-            if [ -z $FILES ]; then
-              circleci-agent step halt
-            else
-              npm run lint:js $FILES
-            fi
-
-  lint_css:
-    docker:
-      - image: circleci/node:latest
-    steps:
-      - attach_workspace:
-          at: /home/circleci
-      - run:
-          name: "Linting CSS"
-          command: |
-            FILES=$(git diff HEAD^ --name-only --diff-filter=M '*.scss')
-            if [ -z $FILES ]; then
-              circleci-agent step halt
-            else
-              npm run lint:css $FILES
-            fi
 
   php56:
     docker:
