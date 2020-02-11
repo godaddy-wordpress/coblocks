@@ -267,6 +267,16 @@ class CoBlocks_Block_Assets {
 				true
 			);
 
+			if ( has_block( 'coblocks/accordion' ) ) {
+				wp_enqueue_script(
+					'coblocks-accordion-carousel',
+					$dir . 'coblocks-accordion-carousel.js',
+					array( 'coblocks-flickity' ),
+					COBLOCKS_VERSION,
+					true
+				);
+			}
+
 		}
 
 		// Post Carousel block.
