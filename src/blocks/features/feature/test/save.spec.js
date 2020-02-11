@@ -60,4 +60,13 @@ describe( name, () => {
 		expect( serializedBlock ).toContain( 'color:#b4d455' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
+
+	it( 'should render content align', () => {
+		block.attributes.contentAlign = 'center';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'has-center-content' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
 } );

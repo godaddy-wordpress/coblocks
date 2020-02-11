@@ -6,6 +6,12 @@ exports[`coblocks/feature should render 1`] = `
 <!-- /wp:coblocks/feature -->"
 `;
 
+exports[`coblocks/feature should render content align 1`] = `
+"<!-- wp:coblocks/feature {\\"contentAlign\\":\\"center\\"} -->
+<div class=\\"wp-block-coblocks-feature has-center-content\\"><div class=\\"wp-block-coblocks-feature__inner has-no-padding\\"></div></div>
+<!-- /wp:coblocks/feature -->"
+`;
+
 exports[`coblocks/feature should render custom text color 1`] = `
 "<!-- wp:coblocks/feature {\\"customTextColor\\":\\"#b4d455\\"} -->
 <div class=\\"wp-block-coblocks-feature\\"><div class=\\"wp-block-coblocks-feature__inner has-text-color has-no-padding\\" style=\\"color:#b4d455\\"></div></div>
