@@ -5,3 +5,21 @@ exports[`coblocks/feature should render 1`] = `
 <div class=\\"wp-block-coblocks-feature\\"><div class=\\"wp-block-coblocks-feature__inner has-no-padding\\"></div></div>
 <!-- /wp:coblocks/feature -->"
 `;
+
+exports[`coblocks/feature should render custom text color 1`] = `
+"<!-- wp:coblocks/feature {\\"customTextColor\\":\\"#b4d455\\"} -->
+<div class=\\"wp-block-coblocks-feature\\"><div class=\\"wp-block-coblocks-feature__inner has-text-color has-no-padding\\" style=\\"color:#b4d455\\"></div></div>
+<!-- /wp:coblocks/feature -->"
+`;
+
+exports[`coblocks/feature should render h3 heading level 1`] = `
+"<!-- wp:coblocks/feature {\\"headingLevel\\":3} -->
+<div class=\\"wp-block-coblocks-feature\\"><div class=\\"wp-block-coblocks-feature__inner has-no-padding\\"></div></div>
+<!-- /wp:coblocks/feature -->"
+`;
+
+exports[`coblocks/feature should render text color 1`] = `
+"<!-- wp:coblocks/feature {\\"textColor\\":\\"#333333\\"} -->
+<div class=\\"wp-block-coblocks-feature\\"><div class=\\"wp-block-coblocks-feature__inner has-text-color has-333333-color has-no-padding\\"></div></div>
+<!-- /wp:coblocks/feature -->"
+`;

@@ -33,4 +33,31 @@ describe( name, () => {
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
+
+	it( 'should render h3 heading level', () => {
+		block.attributes.headingLevel = 3;
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '{\"headingLevel\":3}' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render text color', () => {
+		block.attributes.textColor = '#333333';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'has-333333-color' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render custom text color', () => {
+		block.attributes.customTextColor = '#b4d455';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'color:#b4d455' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
 } );
