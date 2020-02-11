@@ -209,7 +209,7 @@ export function getBlockSlug() {
 export function setBlockStyle( style ) {
 	openSettingsPanel( RegExp( 'styles', 'i' ) );
 
-	cy.get( '.edit-post-sidebar' ).find( '.block-editor-block-styles' )
+	cy.get( '.edit-post-sidebar [class*="editor-block-styles"]' )
 		.contains( RegExp( style, 'i' ) )
 		.click( { force: true } );
 }
