@@ -12,7 +12,7 @@ $ echo '{
   "testURL": "https://coblocks.test",
   "wpUsername": "admin",
   "wpPassword": "password",
-}' > .dev/tests/cypress/wp_creds.json
+}' > cypress.env.json
 ```
 
 ### Open Cypress to run individual block tests
