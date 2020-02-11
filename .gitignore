@@ -12,7 +12,6 @@ wordpress/
 coverage/
 cypress/
 .dev/tests/cypress/screenshots
-.dev/tests/cypress/wp_creds.json
 sftp.json
 dist/*
 !dist/images/
@@ -23,5 +22,4 @@ languages/coblocks-js.pot
 languages/*.mo
 languages/*.po
 !languages/coblocks.json
-wp_creds.json
 cypress.env.json
