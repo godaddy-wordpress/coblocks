@@ -5,3 +5,21 @@ exports[`coblocks/food-and-drinks should render 1`] = `
 <div class=\\"wp-block-coblocks-food-and-drinks\\" data-columns=\\"2\\" itemscope itemtype=\\"http://schema.org/Menu\\"></div>
 <!-- /wp:coblocks/food-and-drinks -->"
 `;
+
+exports[`coblocks/food-and-drinks should render 3 columns 1`] = `
+"<!-- wp:coblocks/food-and-drinks {\\"columns\\":3} -->
+<div class=\\"wp-block-coblocks-food-and-drinks\\" data-columns=\\"3\\" itemscope itemtype=\\"http://schema.org/Menu\\"></div>
+<!-- /wp:coblocks/food-and-drinks -->"
+`;
+
+exports[`coblocks/food-and-drinks should render hide images 1`] = `
+"<!-- wp:coblocks/food-and-drinks {\\"showImages\\":0} -->
+<div class=\\"wp-block-coblocks-food-and-drinks\\" data-columns=\\"2\\" itemscope itemtype=\\"http://schema.org/Menu\\"></div>
+<!-- /wp:coblocks/food-and-drinks -->"
+`;
+
+exports[`coblocks/food-and-drinks should render hide prices 1`] = `
+"<!-- wp:coblocks/food-and-drinks {\\"showPrices\\":0} -->
+<div class=\\"wp-block-coblocks-food-and-drinks\\" data-columns=\\"2\\" itemscope itemtype=\\"http://schema.org/Menu\\"></div>
+<!-- /wp:coblocks/food-and-drinks -->"
+`;
