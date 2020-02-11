@@ -26,7 +26,22 @@ class EventItemEdit extends Component {
 	}
 
 	render() {
-		const { className, attributes, setAttributes, textColor } = this.props;
+		const {
+			className,
+			attributes,
+			setAttributes,
+			textColor,
+		} = this.props;
+
+		const {
+			description,
+			eventDay,
+			eventLocation,
+			eventMonth,
+			eventTime,
+			eventYear,
+			title,
+		} = attributes;
 
 		const textStyles = {
 			color: textColor.color,
@@ -47,7 +62,7 @@ class EventItemEdit extends Component {
 				>
 					<div className="wp-block-coblocks-events__date">
 						<RichText
-							value={ attributes.eventDay }
+							value={ eventDay }
 							tagName="span"
 							className="wp-block-coblocks-events__day"
 							placeholder={ __( 'Day…', 'coblocks' ) }
@@ -56,7 +71,7 @@ class EventItemEdit extends Component {
 						/>
 						<div>
 							<RichText
-								value={ attributes.eventMonth }
+								value={ eventMonth }
 								tagName="span"
 								className="wp-block-coblocks-events__month"
 								placeholder={ __( 'Month…', 'coblocks' ) }
@@ -64,7 +79,7 @@ class EventItemEdit extends Component {
 								keepPlaceholderOnFocus
 							/>
 							<RichText
-								value={ attributes.eventYear }
+								value={ eventYear }
 								tagName="span"
 								className="wp-block-coblocks-events__year"
 								placeholder={ __( 'Year…', 'coblocks' ) }
@@ -75,7 +90,7 @@ class EventItemEdit extends Component {
 					</div>
 					<div className="wp-block-coblocks-events__content">
 						<RichText
-							value={ attributes.title }
+							value={ title }
 							tagName="span"
 							className="wp-block-coblocks-events__title"
 							placeholder={ __( 'Write event title…', 'coblocks' ) }
@@ -83,7 +98,7 @@ class EventItemEdit extends Component {
 							keepPlaceholderOnFocus
 						/>
 						<RichText
-							value={ attributes.description }
+							value={ description }
 							tagName="span"
 							className="wp-block-coblocks-events__description"
 							placeholder={ __( 'Write event description…', 'coblocks' ) }
@@ -93,7 +108,7 @@ class EventItemEdit extends Component {
 					</div>
 					<div className="wp-block-coblocks-events__details">
 						<RichText
-							value={ attributes.eventTime }
+							value={ eventTime }
 							tagName="span"
 							className="wp-block-coblocks-events__time"
 							placeholder={ __( 'Time…', 'coblocks' ) }
@@ -101,7 +116,7 @@ class EventItemEdit extends Component {
 							keepPlaceholderOnFocus
 						/>
 						<RichText
-							value={ attributes.eventLocation }
+							value={ eventLocation }
 							tagName="span"
 							className="wp-block-coblocks-events__location"
 							placeholder={ __( 'Location…', 'coblocks' ) }
