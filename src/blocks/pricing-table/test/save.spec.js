@@ -33,4 +33,22 @@ describe( name, () => {
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
+
+	it( 'should render 2 columns', () => {
+		block.attributes.count = 2;
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'has-2-columns' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render 3 columns', () => {
+		block.attributes.count = 3;
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'has-3-columns' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
 } );

@@ -42,4 +42,19 @@ describe( name, () => {
 		serializedBlock = serialize( createBlock( name ) );
 		expect( serializedBlock ).toEqual( `<!-- wp:${ name } /-->` );
 	} );
+
+	it( 'should render with content', () => {
+		block.attributes.title = 'Plan Title';
+		block.attributes.features = '- Feature 1';
+		block.attributes.currency = '$';
+		block.attributes.amount = '49';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'Plan Title' );
+		expect( serializedBlock ).toContain( '- Feature 1' );
+		expect( serializedBlock ).toContain( '$' );
+		expect( serializedBlock ).toContain( '49' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
 } );
