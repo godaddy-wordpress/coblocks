@@ -31,7 +31,7 @@
   color: "000000"
   description: "Issues/PRs that should not be merged (yet)"
 - name: "[Status] Needs Review"
-  color: "017117"
+  color: "005042"
   description: "Tracking pull requests that need another set of eyes"
 - name: "[Status] Ready to Merge"
   color: "005042"
