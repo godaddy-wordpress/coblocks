@@ -112,7 +112,7 @@ class CoBlocksSettingsModal extends Component {
 
 		return (
 			<Modal
-				title={ applyFilters( 'coblocks-settings-panel-title', __( 'Editor settings', 'coblocks' ) ) }
+				title={ applyFilters( 'coblocks-settings-title', __( 'Editor settings', 'coblocks' ) ) }
 				onRequestClose={ closeModal }
 			>
 				<div className="coblocks-modal__content">

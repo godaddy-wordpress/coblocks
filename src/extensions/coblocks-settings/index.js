@@ -8,14 +8,12 @@ import './styles/style.scss';
 /**
  * External dependencies
  */
-import { PluginMoreMenuItem } from '@wordpress/edit-post';
-import { Fragment, useState } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 import { applyFilters } from '@wordpress/hooks';
-import { registerPlugin, getPlugin, unregisterPlugin } from '@wordpress/plugins';
+import { Fragment, useState } from '@wordpress/element';
+import { PluginMoreMenuItem } from '@wordpress/edit-post';
 import { registerGenericStore } from '@wordpress/data';
-import {
-	__,
-} from '@wordpress/i18n';
+import { registerPlugin, getPlugin, unregisterPlugin } from '@wordpress/plugins';
 
 /**
  * Internal dependencies
@@ -47,7 +45,7 @@ if ( coblocksSettings.coblocksSettingsEnabled ) {
 			<Fragment>
 				<PluginMoreMenuItem onClick={ openModal }>
 					{
-						applyFilters( 'coblocks-settings-panel-title', __( 'Editor settings', 'coblocks' ) )
+						applyFilters( 'coblocks-settings-title', __( 'Editor settings', 'coblocks' ) )
 					}
 				</PluginMoreMenuItem>
 				<CoBlocksSettingsModal { ...props } />
