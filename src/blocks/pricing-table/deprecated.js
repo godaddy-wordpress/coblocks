@@ -11,11 +11,11 @@ import { InnerBlocks } from '@wordpress/block-editor';
 /**
  * Internal dependencies
  */
-import { attributes } from './block.json';
+import { currentBlockAttributes } from './block.json';
 
 const deprecated = [
 	{
-		attributes,
+		attributes: currentBlockAttributes,
 		save( { attributes } ) {
 			const {
 				contentAlign,

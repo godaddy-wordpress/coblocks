@@ -2,7 +2,7 @@
  * Set the attributes for the Background transformations.
  *
  * @param {Object} props The passed props.
- * @returns {Object} The background transforms.
+ * @return {Object} The background transforms.
  */
 function BackgroundTransforms( props ) {
 	const transforms = {

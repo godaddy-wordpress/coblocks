@@ -17,13 +17,13 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { ENTER, SPACE } from '@wordpress/keycodes';
 import {
 	PanelBody,
-	ToggleControl,
-	RangeControl,
 	QueryControls,
 	RadioControl,
+	RangeControl,
+	ToggleControl,
 } from '@wordpress/components';
 
-const Inspector = props => {
+const Inspector = ( props ) => {
 	const {
 		attributes,
 		activeStyle,
@@ -38,16 +38,16 @@ const Inspector = props => {
 	} = props;
 
 	const {
+		columns,
+		displayPostContent,
+		displayPostDate,
+		excerptLength,
+		imageSize,
+		listPosition,
 		order,
 		orderBy,
 		postFeedType,
 		postsToShow,
-		excerptLength,
-		displayPostDate,
-		displayPostContent,
-		columns,
-		listPosition,
-		imageSize,
 	} = attributes;
 
 	const isHorizontalStyle = ( 'horizontal' === activeStyle.name );
@@ -76,14 +76,12 @@ const Inspector = props => {
 	];
 
 	const columnsCountOnChange = ( selectedColumns ) => {
-		const { postsToShow } = attributes;
 		setAttributes( { columns:
 			( selectedColumns > postsToShow ) ? postsToShow : selectedColumns,
 		} );
 	};
 
 	const postsCountOnChange = ( selectedPosts ) => {
-		const { columns } = attributes;
 		const changedAttributes = { postsToShow: selectedPosts };
 		if ( columns > selectedPosts || ( selectedPosts === 1 && columns !== 1 ) ) {
 			Object.assign( changedAttributes, { columns: selectedPosts } );
@@ -94,6 +92,33 @@ const Inspector = props => {
 	if ( isHorizontalStyle && columns > 2 ) {
 		columnsCountOnChange( 2 );
 	}
+
+	const gutterOptions = [
+		{
+			value: 'small',
+			/* translators: abbreviation for small size */
+			label: __( 'S', 'coblocks' ),
+			tooltip: __( 'Small', 'coblocks' ),
+		},
+		{
+			value: 'medium',
+			/* translators: abbreviation for medium size */
+			label: __( 'M', 'coblocks' ),
+			tooltip: __( 'Medium', 'coblocks' ),
+		},
+		{
+			value: 'large',
+			/* translators: abbreviation for large size */
+			label: __( 'L', 'coblocks' ),
+			tooltip: __( 'Large', 'coblocks' ),
+		},
+		{
+			value: 'huge',
+			/* translators: abbreviation for largest size */
+			label: __( 'XL', 'coblocks' ),
+			tooltip: __( 'Huge', 'coblocks' ),
+		},
+	];
 
 	const settings = (
 		<PanelBody title={ __( 'Posts Settings', 'coblocks' ) }>
@@ -138,13 +163,20 @@ const Inspector = props => {
 					max={ isHorizontalStyle ? Math.min( 2, postCount ) : Math.min( 4, postCount ) }
 					required
 				/>
-
+				{ attributes.columns >= 2 &&
+					<OptionSelectorControl
+						label={ __( 'Gutter', 'coblocks' ) }
+						currentOption={ attributes.gutter }
+						options={ gutterOptions }
+						onChange={ ( gutter ) => setAttributes( { gutter } ) }
+					/>
+				}
 				{ isHorizontalStyle && hasFeaturedImage &&
 					<OptionSelectorControl
 						label={ __( 'Thumbnail Size', 'coblocks' ) }
 						options={ sizeOptions }
 						currentOption={ imageSize }
-						onChange={ imageSize => setAttributes( { imageSize } ) }
+						onChange={ ( newImageSize ) => setAttributes( { imageSize: newImageSize } ) }
 					/>
 				}
 
@@ -166,7 +198,8 @@ const Inspector = props => {
 				<Fragment>
 					{ postFeedType === 'internal' &&
 						<QueryControls
-							{ ...{ order, orderBy } }
+							order={ order }
+							orderBy={ orderBy }
 							categoriesList={ categoriesList }
 							selectedCategoryId={ categoriesList.categories }
 							onOrderChange={ ( value ) => setAttributes( { order: value } ) }
@@ -190,7 +223,7 @@ const Inspector = props => {
 			{ hasPosts ?
 				<PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
 					<div className="block-editor-block-styles coblocks-editor-block-styles">
-						{ styleOptions.map( style => (
+						{ styleOptions.map( ( style ) => (
 							<div
 								key={ `style-${ style.name }` }
 								className={ classnames(
@@ -200,7 +233,7 @@ const Inspector = props => {
 									}
 								) }
 								onClick={ () => onUpdateStyle( style ) }
-								onKeyDown={ event => {
+								onKeyDown={ ( event ) => {
 									if ( ENTER === event.keyCode || SPACE === event.keyCode ) {
 										event.preventDefault();
 										onUpdateStyle( style );

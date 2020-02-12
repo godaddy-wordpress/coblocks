@@ -2,7 +2,7 @@
  * Background Video.
  *
  * @param {Object} attributes The attributes.
- * @returns {string} html content.
+ * @return {string} html content.
  */
 function BackgroundVideo( attributes ) {
 	const {

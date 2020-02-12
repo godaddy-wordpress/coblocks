@@ -6,5 +6,10 @@
   "screenshotsFolder": ".dev/tests/cypress/screenshots",
   "projectId": "sovnn2",
   "integrationFolder": "./",
-  "testFiles": "**/*.cypress.js"
+	"testFiles": "**/*.cypress.js",
+	"env": {
+		"testURL": "http://localhost:8889",
+		"wpUsername": "admin",
+		"wpPassword": "password"
+	}
 }

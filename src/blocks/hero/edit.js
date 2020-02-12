@@ -20,7 +20,7 @@ import { Component, Fragment } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { ResizableBox, Spinner } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
-
+ 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
  * The contents of the array should never change.
@@ -133,10 +133,8 @@ export class Edit extends Component {
 			if ( typeof dimensions[ id ] === 'undefined' ) {
 				dimensions[ id ] = {};
 				dimensions[ id ][ type ] = {};
-			} else {
-				if ( typeof dimensions[ id ][ type ] === 'undefined' ) {
-					dimensions[ id ][ type ] = {};
-				}
+			} else if ( typeof dimensions[ id ][ type ] === 'undefined' ) {
+				dimensions[ id ][ type ] = {};
 			}
 
 			dimensions[ id ][ type ] = height;
@@ -162,6 +160,7 @@ export class Edit extends Component {
 
 		const {
 			coblocks,
+			className,
 			layout,
 			fullscreen,
 			maxWidth,
@@ -185,7 +184,7 @@ export class Edit extends Component {
 			/>
 		);
 
-		let classes = 'wp-block-coblocks-hero';
+		let classes = classnames( 'wp-block-coblocks-hero', className );
 
 		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
 			classes = classnames( classes, `coblocks-hero-${ coblocks.id }` );

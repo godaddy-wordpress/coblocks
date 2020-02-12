@@ -7,6 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import HeadingToolbar from '../../components/heading-toolbar';
+import OptionSelectorControl from '../../components/option-selector-control';
 
 /**
  * WordPress dependencies.
@@ -16,7 +17,7 @@ import { PanelBody, ToggleControl, RangeControl, SelectControl } from '@wordpres
 import { InspectorControls } from '@wordpress/block-editor';
 import { ENTER, SPACE } from '@wordpress/keycodes';
 
-const Inspector = props => {
+const Inspector = ( props ) => {
 	const {
 		attributes,
 		setAttributes,
@@ -28,10 +29,30 @@ const Inspector = props => {
 	} = props;
 
 	const gutterOptions = [
-		{ value: 'small', label: __( 'Small', 'coblocks' ) },
-		{ value: 'medium', label: __( 'Medium', 'coblocks' ) },
-		{ value: 'large', label: __( 'Large', 'coblocks' ) },
-		{ value: 'huge', label: __( 'Huge', 'coblocks' ) },
+		{
+			value: 'small',
+			/* translators: abbreviation for small size */
+			label: __( 'S', 'coblocks' ),
+			tooltip: __( 'Small', 'coblocks' ),
+		},
+		{
+			value: 'medium',
+			/* translators: abbreviation for medium size */
+			label: __( 'M', 'coblocks' ),
+			tooltip: __( 'Medium', 'coblocks' ),
+		},
+		{
+			value: 'large',
+			/* translators: abbreviation for large size */
+			label: __( 'L', 'coblocks' ),
+			tooltip: __( 'Large', 'coblocks' ),
+		},
+		{
+			value: 'huge',
+			/* translators: abbreviation for largest size */
+			label: __( 'XL', 'coblocks' ),
+			tooltip: __( 'Huge', 'coblocks' ),
+		},
 	];
 
 	return (
@@ -41,7 +62,7 @@ const Inspector = props => {
 					'block-editor-block-styles',
 					'coblocks-editor-block-styles',
 				) } >
-					{ layoutOptions.map( style => (
+					{ layoutOptions.map( ( style ) => (
 						<div
 							key={ `style-${ style.name }` }
 							className={ classnames(
@@ -50,7 +71,7 @@ const Inspector = props => {
 								`align-${ ( typeof attributes.alignment === 'undefined' || attributes.alignment === 'none' ) ? style.defaultAlign : attributes.alignment }`
 							) }
 							onClick={ () => onUpdateStyle( style ) }
-							onKeyDown={ event => {
+							onKeyDown={ ( event ) => {
 								if ( ENTER === event.keyCode || SPACE === event.keyCode ) {
 									event.preventDefault();
 									onUpdateStyle( style );
@@ -76,18 +97,14 @@ const Inspector = props => {
 					value={ attributes.columns }
 					min={ 1 }
 					max={ 4 }
-					onChange={ columns => setAttributes( { columns } ) }
+					onChange={ ( columns ) => setAttributes( { columns } ) }
 				/>
-				{ attributes.columns >= 2 &&
-					<SelectControl
-						label={ __( 'Gutter', 'coblocks' ) }
-						value={ attributes.gutter }
-						options={ gutterOptions }
-						help={ __( 'Space between each column.', 'coblocks' ) }
-						onChange={ ( value ) => setAttributes( { gutter: value } ) }
-					/>
-				}
-
+				{ attributes.columns >= 2 && <OptionSelectorControl
+					label={ __( 'Gutter', 'coblocks' ) }
+					currentOption={ attributes.gutter }
+					options={ gutterOptions }
+					onChange={ ( gutter ) => setAttributes( { gutter } ) }
+				/> }
 				<HeadingToolbar
 					minLevel={ 1 }
 					maxLevel={ 7 }

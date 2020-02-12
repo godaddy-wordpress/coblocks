@@ -1253,8 +1253,8 @@ if ( typeof coblocksBlockData !== 'undefined' && Object.keys( coblocksBlockData.
 		const customIcon = ( coblocksBlockData.customIcons[ key ].icon ).replace( '<svg', '<svg data-coblocks-custom-icon="true" role="img" aria-hidden="true" focusable="false"' );
 		coblocksBlockData.customIcons[ key ].icon = parse( customIcon );
 		if ( 'icon_outlined' in coblocksBlockData.customIcons[ key ] ) {
-			const outlinedIcon = ( coblocksBlockData.customIcons[ key ][ 'icon_outlined' ] ).replace( '<svg', '<svg data-coblocks-custom-icon="true" role="img" aria-hidden="true" focusable="false"' );
-			coblocksBlockData.customIcons[ key ][ 'icon_outlined' ] = parse( outlinedIcon );
+			const outlinedIcon = ( coblocksBlockData.customIcons[ key ].icon_outlined ).replace( '<svg', '<svg data-coblocks-custom-icon="true" role="img" aria-hidden="true" focusable="false"' );
+			coblocksBlockData.customIcons[ key ].icon_outlined = parse( outlinedIcon );
 		}
 	} );
 	icons = { ...icons, ...coblocksBlockData.customIcons };

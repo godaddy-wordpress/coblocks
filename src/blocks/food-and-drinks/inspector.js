@@ -11,7 +11,7 @@ import { PanelBody, ToggleControl } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 import { ENTER, SPACE } from '@wordpress/keycodes';
 
-const Inspector = props => {
+const Inspector = ( props ) => {
 	const {
 		attributes,
 		activeStyle,
@@ -21,11 +21,16 @@ const Inspector = props => {
 		onUpdateStyle,
 	} = props;
 
+	const {
+		showImages,
+		showPrices,
+	} = attributes;
+
 	return (
 		<InspectorControls>
 			<PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
 				<div className="block-editor-block-styles block-editor-block-styles coblocks-editor-block-styles">
-					{ layoutOptions.map( style => (
+					{ layoutOptions.map( ( style ) => (
 						<div
 							key={ `style-${ style.name }` }
 							className={ classnames(
@@ -35,7 +40,7 @@ const Inspector = props => {
 								}
 							) }
 							onClick={ () => onUpdateStyle( style ) }
-							onKeyDown={ event => {
+							onKeyDown={ ( event ) => {
 								if ( ENTER === event.keyCode || SPACE === event.keyCode ) {
 									event.preventDefault();
 									onUpdateStyle( style );
@@ -46,7 +51,7 @@ const Inspector = props => {
 							aria-label={ style.label || style.name }
 						>
 							<div className="block-editor-block-styles__item-preview block-editor-block-styles__item-preview">
-								{ attributes.showImages ? style.iconWithImages : style.icon }
+								{ showImages ? style.iconWithImages : style.icon }
 							</div>
 							<div className="block-editor-block-styles__item-label block-editor-block-styles__item-label">
 								{ style.label || style.name }
@@ -60,21 +65,21 @@ const Inspector = props => {
 				<ToggleControl
 					label={ __( 'Images', 'coblocks' ) }
 					help={
-						attributes.showImages ?
+						showImages ?
 							__( 'Showing images for each item', 'coblocks' ) :
 							__( 'Toggle to show images for each item.', 'coblocks' )
 					}
-					checked={ attributes.showImages }
+					checked={ showImages }
 					onChange={ onToggleImages }
 				/>
 				<ToggleControl
 					label={ __( 'Prices', 'coblocks' ) }
 					help={
-						attributes.showPrices ?
+						showPrices ?
 							__( 'Showing the price of each item', 'coblocks' ) :
 							__( 'Toggle to show the price of each item.', 'coblocks' )
 					}
-					checked={ attributes.showPrices }
+					checked={ showPrices }
 					onChange={ onTogglePrices }
 				/>
 			</PanelBody>

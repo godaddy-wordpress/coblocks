@@ -1,5 +1,7 @@
 .wp-block-coblocks-gallery-collage {
+
 	&__figure {
+
 		img {
 			transition: opacity 0.1s linear;
 		}
@@ -9,6 +11,7 @@
 		}
 
 		&.is-selected {
+
 			&::after {
 				bottom: 0;
 				box-shadow: inset 0 0 0 4px theme(primary);
@@ -29,6 +32,7 @@
 }
 
 .wp-block[data-type="coblocks/gallery-collage"] {
+
 	ul {
 		list-style-type: none;
 		margin: 0;
@@ -41,12 +45,14 @@
 	}
 
 	.block-editor-media-placeholder__upload-button {
+
 		@include break-small-max() {
 			display: none;
 		}
 	}
 
 	.editor-media-placeholder__media-library-button {
+
 		@include break-small-max() {
 			background: transparent;
 			border: 0;
@@ -95,6 +101,7 @@
 	}
 
 	.is-style-layered {
+
 		.block-editor-media-placeholder {
 			background: $light-gray-200;
 		}
@@ -138,6 +145,7 @@
 }
 
 .block-editor-block-preview__content .wp-block-coblocks-gallery-collage {
+
 	ul {
 		list-style-type: none;
 	}

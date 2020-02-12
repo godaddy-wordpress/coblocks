@@ -13,7 +13,7 @@ const transforms = {
 		{
 			type: 'prefix',
 			prefix: ':card',
-			transform: function() {
+			transform() {
 				return createBlock( metadata.name );
 			},
 		},
@@ -45,11 +45,11 @@ const transforms = {
 			blocks: [ 'core/media-text' ],
 			transform: ( { mediaAlt, mediaUrl, mediaId, mediaType, mediaPosition } ) => (
 				createBlock( metadata.name, {
-					mediaAlt: mediaAlt,
-					mediaId: mediaId,
-					mediaUrl: mediaUrl,
-					mediaType: mediaType,
-					mediaPosition: mediaPosition,
+					mediaAlt,
+					mediaId,
+					mediaUrl,
+					mediaType,
+					mediaPosition,
 				} )
 			),
 		},
@@ -87,11 +87,11 @@ const transforms = {
 			blocks: [ 'core/media-text' ],
 			transform: ( { mediaAlt, mediaUrl, mediaId, mediaType, mediaPosition } ) => (
 				createBlock( 'core/media-text', {
-					mediaAlt: mediaAlt,
-					mediaId: mediaId,
-					mediaUrl: mediaUrl,
-					mediaType: mediaType,
-					mediaPosition: mediaPosition,
+					mediaAlt,
+					mediaId,
+					mediaUrl,
+					mediaType,
+					mediaPosition,
 				} )
 			),
 		},

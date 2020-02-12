@@ -123,7 +123,7 @@ class Inspector extends Component {
 							<RangeControl
 								label={ __( 'Rounded Corners', 'coblocks' ) }
 								value={ borderRadius }
-								onChange={ value => setAttributes( { borderRadius: value } ) }
+								onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
 								min={ 0 }
 								max={ 50 }
 							/>
@@ -132,7 +132,7 @@ class Inspector extends Component {
 							<RangeControl
 								label={ __( 'Icon Size', 'coblocks' ) }
 								value={ iconSize }
-								onChange={ value => setAttributes( { iconSize: value } ) }
+								onChange={ ( value ) => setAttributes( { iconSize: value } ) }
 								min={ 16 }
 								max={ 60 }
 							/>
@@ -141,7 +141,7 @@ class Inspector extends Component {
 							<RangeControl
 								label={ __( 'Circle Size', 'coblocks' ) }
 								value={ padding }
-								onChange={ value => setAttributes( { padding: value } ) }
+								onChange={ ( value ) => setAttributes( { padding: value } ) }
 								min={ 10 }
 								max={ 50 }
 							/>
@@ -151,7 +151,7 @@ class Inspector extends Component {
 								label={ __( 'Button Size', 'coblocks' ) }
 								value={ size }
 								options={ options }
-								onChange={ value => setAttributes( { size: value } ) }
+								onChange={ ( value ) => setAttributes( { size: value } ) }
 								className="components-coblocks-inspector__social-button-size"
 							/>
 						) }
@@ -161,42 +161,42 @@ class Inspector extends Component {
 							<TextControl
 								label="Facebook"
 								value={ facebook }
-								onChange={ value => setAttributes( { facebook: escape( value ) } ) }
+								onChange={ ( value ) => setAttributes( { facebook: escape( value ) } ) }
 							/>
 							<TextControl
 								label="Twitter"
 								value={ twitter }
-								onChange={ value => setAttributes( { twitter: escape( value ) } ) }
+								onChange={ ( value ) => setAttributes( { twitter: escape( value ) } ) }
 							/>
 							<TextControl
 								label="Instagram"
 								value={ instagram }
-								onChange={ value => setAttributes( { instagram: escape( value ) } ) }
+								onChange={ ( value ) => setAttributes( { instagram: escape( value ) } ) }
 							/>
 							<TextControl
 								label="Pinterest"
 								value={ pinterest }
-								onChange={ value => setAttributes( { pinterest: escape( value ) } ) }
+								onChange={ ( value ) => setAttributes( { pinterest: escape( value ) } ) }
 							/>
 							<TextControl
 								label="LinkedIn"
 								value={ linkedin }
-								onChange={ value => setAttributes( { linkedin: escape( value ) } ) }
+								onChange={ ( value ) => setAttributes( { linkedin: escape( value ) } ) }
 							/>
 							<TextControl
 								label="YouTube"
 								value={ youtube }
-								onChange={ value => setAttributes( { youtube: escape( value ) } ) }
+								onChange={ ( value ) => setAttributes( { youtube: escape( value ) } ) }
 							/>
 							<TextControl
 								label="Yelp"
 								value={ yelp }
-								onChange={ value => setAttributes( { yelp: escape( value ) } ) }
+								onChange={ ( value ) => setAttributes( { yelp: escape( value ) } ) }
 							/>
 							<TextControl
 								label="Houzz"
 								value={ houzz }
-								onChange={ value => setAttributes( { houzz: escape( value ) } ) }
+								onChange={ ( value ) => setAttributes( { houzz: escape( value ) } ) }
 							/>
 						</div>
 					</PanelBody>

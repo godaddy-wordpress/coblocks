@@ -8,7 +8,6 @@ import { find, isUndefined, pickBy, some } from 'lodash';
 /**
  * Internal dependencies
  */
-
 import InspectorControls from './inspector';
 import icons from './icons';
 import icon from './icon';
@@ -216,9 +215,6 @@ class PostsEdit extends Component {
 
 		const { categoriesList } = this.state;
 
-		const isHorizontalStyle = includes( className, 'is-style-horizontal' );
-		const isStackedStyle = includes( className, 'is-style-stacked' );
-
 		const activeStyle = getActiveStyle( styleOptions, className );
 
 		const {
@@ -233,6 +229,7 @@ class PostsEdit extends Component {
 			excerptLength,
 			listPosition,
 			imageSize,
+			gutter,
 		} = attributes;
 
 		const editToolbarControls = [
@@ -341,6 +338,9 @@ class PostsEdit extends Component {
 			);
 		}
 
+		const isHorizontalStyle = includes( className, 'is-style-horizontal' );
+		const isStackedStyle = includes( className, 'is-style-stacked' );
+
 		return (
 			<Fragment>
 				<InspectorControls
@@ -383,7 +383,7 @@ class PostsEdit extends Component {
 							'has-columns': columns,
 							[ `has-${ columns }-columns` ]: columns,
 							'has-responsive-columns': columns,
-							'has-medium-gutter': columns,
+							[ `has-${ gutter }-gutter` ]: gutter && columns,
 							'has-image-right': isHorizontalStyle && listPosition === 'right',
 							[ `has-${ imageSize }-image` ]: isHorizontalStyle,
 						} ) }>
@@ -492,7 +492,7 @@ export default compose( [
 		}
 
 		return {
-			latestPosts: latestPosts,
+			latestPosts,
 		};
 	} ),
 ] )( PostsEdit );

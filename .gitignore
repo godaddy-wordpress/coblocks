@@ -2,10 +2,9 @@
 **/*.build.js
 **/node_modules/**
 **/vendor/**
-**/dist/blocks.build.js
-**/dist/blocks.editor.build.css
-**/dist/*.css
 **/build/**
+wordpress/
+.vscode/
 *.sublime-project
 *.sublime-workspace
 *.cache
@@ -13,11 +12,9 @@
 coverage/
 cypress/
 .dev/tests/cypress/screenshots
-.dev/tests/cypress/wp_creds.json
 sftp.json
-dist/blocks.build.js
-dist/blocks.editor.build.css
-dist/blocks.style.build.css
+dist/*
+!dist/images/
 sandbox.json
 /.idea/
 **/.DS_Store
@@ -25,3 +22,4 @@ languages/coblocks-js.pot
 languages/*.mo
 languages/*.po
 !languages/coblocks.json
+cypress.env.json

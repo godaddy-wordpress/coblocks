@@ -106,7 +106,7 @@ class SubmitButton extends Component {
 					<RichText
 						placeholder={ __( 'Add text…', 'coblocks' ) }
 						value={ attributes.submitButtonText }
-						onChange={ nextValue => setAttributes( { submitButtonText: nextValue } ) }
+						onChange={ ( nextValue ) => setAttributes( { submitButtonText: nextValue } ) }
 						className={ buttonClasses }
 						style={ buttonStyle }
 						formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
@@ -120,7 +120,7 @@ class SubmitButton extends Component {
 						colorSettings={ [
 							{
 								value: backgroundColor,
-								onChange: nextColour => {
+								onChange: ( nextColour ) => {
 									setBackgroundButtonColor( nextColour );
 									setAttributes( { customBackgroundButtonColor: nextColour } );
 								},
@@ -128,7 +128,7 @@ class SubmitButton extends Component {
 							},
 							{
 								value: color,
-								onChange: nextColour => {
+								onChange: ( nextColour ) => {
 									setTextButtonColor( nextColour );
 									setAttributes( { customTextButtonColor: nextColour } );
 								},

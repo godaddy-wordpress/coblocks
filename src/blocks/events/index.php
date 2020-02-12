@@ -138,7 +138,7 @@ function coblocks_register_events_block() {
 
 	wp_enqueue_script(
 		'coblocks-slick',
-		$vendors_dir . '/slick' . COBLOCKS_ASSET_SUFFIX . '.js',
+		$vendors_dir . '/slick.js',
 		array( 'jquery' ),
 		COBLOCKS_VERSION,
 		true

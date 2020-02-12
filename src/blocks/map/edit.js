@@ -56,7 +56,7 @@ class Edit extends Component {
 			keySaved: false,
 		};
 
-		settings.on( 'change:coblocks_google_maps_api_key', model => {
+		settings.on( 'change:coblocks_google_maps_api_key', ( model ) => {
 			const apiKey = model.get( 'coblocks_google_maps_api_key' );
 			this.setState( {
 				apiKey: settings.get( 'coblocks_google_maps_api_key' ),
@@ -64,7 +64,7 @@ class Edit extends Component {
 			} );
 		} );
 
-		settings.fetch().then( response => {
+		settings.fetch().then( ( response ) => {
 			this.setState( { apiKey: response.coblocks_google_maps_api_key } );
 			if ( this.state.apiKey && this.state.apiKey !== '' ) {
 				this.setState( { isSavedKey: true } );
@@ -156,7 +156,7 @@ class Edit extends Component {
 			setAttributes( { address: this.state.address, pinned: true } );
 		};
 
-		const handleKeyDown = keyCode => {
+		const handleKeyDown = ( keyCode ) => {
 			if ( keyCode !== ENTER ) {
 				return;
 			}
@@ -187,7 +187,7 @@ class Edit extends Component {
 				componentDidMount() {
 					const geocoder = new window.google.maps.Geocoder();
 					geocoder.geocode(
-						{ address: address },
+						{ address },
 						function( results, status ) {
 							if ( status !== 'OK' ) {
 								this.props.props.setAttributes( {
@@ -210,7 +210,7 @@ class Edit extends Component {
 					);
 				},
 			} )
-		)( props => [
+		)( ( props ) => [
 			props.coords ? (
 				<GoogleMap
 					isMarkerShown={ true }
@@ -219,10 +219,10 @@ class Edit extends Component {
 					defaultOptions={ {
 						styles: GMapStyles[ skin ],
 						draggable: false,
-						mapTypeControl: mapTypeControl,
-						zoomControl: zoomControl,
-						streetViewControl: streetViewControl,
-						fullscreenControl: fullscreenControl,
+						mapTypeControl,
+						zoomControl,
+						streetViewControl,
+						fullscreenControl,
 					} }
 				>
 					<Marker
@@ -260,7 +260,7 @@ class Edit extends Component {
 				{ pinned ? (
 					<ResizableBox
 						size={ {
-							height: height,
+							height,
 							width: '100%',
 						} }
 						className={ classnames( { 'is-selected': isSelected } ) }
@@ -297,7 +297,7 @@ class Edit extends Component {
 							className="components-placeholder__input"
 							value={ this.state.address }
 							placeholder={ __( 'Search for a place or address…', 'coblocks' ) }
-							onChange={ nextAddress => this.setState( { address: nextAddress } ) }
+							onChange={ ( nextAddress ) => this.setState( { address: nextAddress } ) }
 							onKeyDown={ ( { keyCode } ) => handleKeyDown( keyCode ) }
 						/>
 						<Button

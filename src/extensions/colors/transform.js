@@ -2,7 +2,7 @@
  * Set the attributes for the Text Panel transformations.
  *
  * @param {Object} props Passed props.
- * @returns {Object} transforms.
+ * @return {Object} transforms.
  */
 function ColorTransforms( props ) {
 	const transforms = {

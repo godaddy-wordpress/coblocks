@@ -2,7 +2,7 @@
  * Set inline CSS classes.
  *
  * @param {Object} props The passed props.
- * @returns {Array} The classes.
+ * @return {Array} The classes.
  */
 function TypograpyClasses( props ) {
 	return [

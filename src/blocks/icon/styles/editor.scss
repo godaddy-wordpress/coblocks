@@ -86,6 +86,7 @@
 		}
 
 		&.selected-svg {
+
 			.components-button {
 				background: $light-gray-500;
 				border-color: $light-gray-500;
@@ -111,6 +112,7 @@
 
 //Add styling for resizableBox handles when a parent div is positioning the icon.
 .has-center-content .wp-block-coblocks-icon__inner.is-selected {
+
 	.components-resizable-box__handle-left,
 	.components-resizable-box__handle-right {
 		display: block !important;
@@ -118,6 +120,7 @@
 }
 
 .has-right-content .wp-block-coblocks-icon__inner.is-selected {
+
 	.components-resizable-box__handle-left {
 		display: block !important;
 	}
@@ -130,6 +133,7 @@
 // Editor style preview.
 .editor-block-preview,
 .block-editor-block-styles__item-preview {
+
 	.wp-block-coblocks-icon__inner {
 		align-items: center;
 		background: transparent !important;
@@ -150,6 +154,7 @@
 }
 
 .editor-block-preview {
+
 	.wp-block-coblocks-icon__inner {
 		margin-top: 3px;
 	}
@@ -173,6 +178,7 @@
 
 // Hide screen reader label for Gutenberg < 6.4
 .components-coblocks-icon-size__controls {
+
 	.components-base-control .components-base-control__label {
 		border: 0;
 		clip: rect(1px, 1px, 1px, 1px);
@@ -189,6 +195,7 @@
 
 // Shim to center buttons in the inserter preview.
 .block-editor-inserter__preview-content {
+
 	.wp-block-coblocks-icon {
 		text-align: center;
 	}

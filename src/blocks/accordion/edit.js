@@ -22,7 +22,7 @@ import { createBlock } from '@wordpress/blocks';
  *
  * @constant
  * @type {string[]}
-*/
+ */
 const ALLOWED_BLOCKS = [ 'coblocks/accordion-item' ];
 
 /**

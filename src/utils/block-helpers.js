@@ -2,9 +2,9 @@
  * Determine if the block attributes are empty.
  *
  * @param {Object} attributes The block attributes to check.
- * @returns {Boolean} The empty state of the attributes passed.
+ * @return {boolean} The empty state of the attributes passed.
  */
-export const hasEmptyAttributes = attributes => {
+export const hasEmptyAttributes = ( attributes ) => {
 	return ! Object.entries( attributes )
 		.map( ( [ , value ] ) => {
 			if ( typeof value === 'string' ) {
@@ -21,5 +21,5 @@ export const hasEmptyAttributes = attributes => {
 
 			return !! value;
 		} )
-		.filter( value => value === true ).length;
+		.filter( ( value ) => value === true ).length;
 };

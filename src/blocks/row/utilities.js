@@ -38,7 +38,7 @@ export const layoutOptions = {
  *
  * @constant
  * @type {string[]}
-*/
+ */
 export const allowedBlocks = [ 'coblocks/column' ];
 
 export const template = {

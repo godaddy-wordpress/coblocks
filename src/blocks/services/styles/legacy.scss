@@ -1,6 +1,7 @@
 .wp-block-coblocks-services {
 
 	&[data-columns] {
+
 		@include break-small() {
 			display: flex;
 			flex-direction: row;
@@ -9,6 +10,7 @@
 		}
 
 		@include break-small() {
+
 			&[data-columns="2"] > .wp-block-coblocks-service {
 				flex-basis: 50%;
 				max-width: calc(100% / 2 - #{map-get($spacing, 2)});
@@ -21,6 +23,7 @@
 		}
 
 		@media (min-width: #{ ($break-small) }) and (max-width: #{ ($break-wide) }) {
+
 			&[data-columns="4"] > .wp-block-coblocks-service {
 				flex-basis: 50%;
 				margin-bottom: 3em;
@@ -44,6 +47,7 @@
 		}
 
 		@include break-wide() {
+
 			&[data-columns="4"] > .wp-block-coblocks-service {
 				flex-basis: 25%;
 				max-width: calc(100% / 4 - #{map-get($spacing, 2)});

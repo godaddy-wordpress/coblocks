@@ -51,36 +51,34 @@ class Edit extends Component {
 	render() {
 		const {
 			attributes,
-			className,
 			isSelected,
 			setAttributes,
-			backgroundColor,
-			textColor,
+			className,
 		} = this.props;
 
 		const {
-			coblocks,
-			backgroundImg,
-			id,
 			columns,
 			layout,
+			id,
+			backgroundImg,
+			coblocks,
 			gutter,
-			paddingTop,
-			paddingRight,
-			paddingBottom,
-			paddingLeft,
+			paddingSize,
+			marginSize,
+			marginUnit,
 			marginTop,
 			marginRight,
 			marginBottom,
 			marginLeft,
 			paddingUnit,
-			marginUnit,
-			marginSize,
-			paddingSize,
-			isStackedOnMobile,
-			focalPoint,
-			hasParallax,
+			paddingTop,
 			backgroundType,
+			hasParallax,
+			focalPoint,
+			paddingRight,
+			paddingBottom,
+			isStackedOnMobile,
+			paddingLeft,
 		} = attributes;
 
 		const dropZone = (
@@ -131,8 +129,8 @@ class Edit extends Component {
 					>
 						{ ! columns ?
 							<ButtonGroup aria-label={ __( 'Select Row Columns', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
-								{ map( columnOptions, ( { name, key, icon, columns } ) => (
-									<Tooltip text={ name }>
+								{ map( columnOptions, ( option ) => (
+									<Tooltip text={ option.name }>
 										<div className="components-coblocks-row-placeholder__button-wrapper">
 											<Button
 												className="components-coblocks-row-placeholder__button block-editor-inner-blocks__template-picker-option block-editor-block-pattern-picker__pattern"
@@ -140,16 +138,16 @@ class Edit extends Component {
 												isSecondary
 												onClick={ () => {
 													setAttributes( {
-														columns: columns,
-														layout: columns === 1 ? key : null,
+														columns: option.columns,
+														layout: option.columns === 1 ? option.key : null,
 													} );
 
-													if ( columns === 1 ) {
+													if ( option.columns === 1 ) {
 														this.setState( { layoutSelection: false } );
 													}
 												} }
 											>
-												{ icon }
+												{ option.icon }
 											</Button>
 										</div>
 									</Tooltip>
@@ -209,7 +207,7 @@ class Edit extends Component {
 		const innerClasses = classnames(
 			'wp-block-coblocks-row__inner',
 			...BackgroundClasses( attributes ), {
-				'has-text-color': textColor.color,
+				'has-text-color': this.props.textColor.color,
 				[ `has-${ gutter }-gutter` ]: gutter,
 				'has-padding': paddingSize && paddingSize !== 'no',
 				[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
@@ -220,10 +218,10 @@ class Edit extends Component {
 		);
 
 		const innerStyles = {
-			backgroundColor: backgroundColor.color,
+			backgroundColor: this.props.backgroundColor.color,
 			backgroundImage: backgroundImg && backgroundType === 'image' ? `url(${ backgroundImg })` : undefined,
 			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
-			color: textColor.color,
+			color: this.props.textColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
 			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,

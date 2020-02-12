@@ -1,5 +1,7 @@
 .wp-block[data-type="coblocks/gif"] {
+
 	.components-placeholder.wp-block-coblocks-gif {
+
 		.dashicon {
 			position: relative;
 			top: -2px;
@@ -75,6 +77,7 @@
 	}
 
 	&[data-align="center"] {
+
 		.wp-block-coblocks-gif:not(.components-placeholder) {
 			margin-left: auto !important;
 			margin-right: auto !important;

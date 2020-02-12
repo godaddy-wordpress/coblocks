@@ -43,7 +43,7 @@ function CoBlocksFieldName( props ) {
 								tagName="small"
 								className="coblocks-form__subtext"
 								value={ labelFirstName }
-								onChange={ value => {
+								onChange={ ( value ) => {
 									setAttributes( { labelFirstName: value } );
 								} }
 								placeholder={ __( 'Add label…', 'coblocks' ) }
@@ -55,7 +55,7 @@ function CoBlocksFieldName( props ) {
 								tagName="small"
 								className="coblocks-form__subtext"
 								value={ labelLastName }
-								onChange={ value => {
+								onChange={ ( value ) => {
 									setAttributes( { labelLastName: value } );
 								} }
 								placeholder={ __( 'Add label…', 'coblocks' ) }
@@ -71,7 +71,7 @@ function CoBlocksFieldName( props ) {
 						label={ __( 'Last Name', 'coblocks' ) }
 						className="coblocks-field-label__required"
 						checked={ hasLastName }
-						onChange={ value => setAttributes( { hasLastName: value } ) }
+						onChange={ ( value ) => setAttributes( { hasLastName: value } ) }
 						help={ !! hasLastName ? __( 'Showing both first and last name fields.', 'coblocks' ) : __( 'Toggle to add a last name field.', 'coblocks' ) }
 					/>
 				</PanelBody>

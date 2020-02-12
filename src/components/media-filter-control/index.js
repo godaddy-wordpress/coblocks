@@ -2,7 +2,6 @@
  * Internal dependencies
  */
 import icons from './icons';
-import './styles/style.scss';
 
 /**
  * WordPress dependencies

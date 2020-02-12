@@ -114,7 +114,7 @@ class CoBlocks_Form {
 
 			wp_enqueue_script(
 				'coblocks-google-recaptcha',
-				CoBlocks()->asset_source( 'js' ) . 'coblocks-google-recaptcha' . COBLOCKS_ASSET_SUFFIX . '.js',
+				CoBlocks()->asset_source( 'js' ) . 'coblocks-google-recaptcha.js',
 				array( 'jquery', 'google-recaptcha' ),
 				COBLOCKS_VERSION,
 				true
@@ -376,7 +376,7 @@ class CoBlocks_Form {
 
 		wp_enqueue_script(
 			'coblocks-datepicker',
-			CoBlocks()->asset_source( 'js' ) . 'coblocks-datepicker' . COBLOCKS_ASSET_SUFFIX . '.js',
+			CoBlocks()->asset_source( 'js' ) . 'coblocks-datepicker.js',
 			array( 'jquery', 'jquery-ui-datepicker' ),
 			COBLOCKS_VERSION,
 			true

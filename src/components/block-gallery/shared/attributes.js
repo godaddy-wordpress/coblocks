@@ -1,5 +1,6 @@
 /**
  * Set global attributes that every block uses.
+ *
  * @type {Object}
  */
 const GalleryAttributes = {

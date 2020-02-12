@@ -75,10 +75,8 @@ class Edit extends Component {
 			if ( typeof dimensions[ id ] === 'undefined' ) {
 				dimensions[ id ] = {};
 				dimensions[ id ][ type ] = {};
-			} else {
-				if ( typeof dimensions[ id ][ type ] === 'undefined' ) {
-					dimensions[ id ][ type ] = {};
-				}
+			} else if ( typeof dimensions[ id ][ type ] === 'undefined' ) {
+				dimensions[ id ][ type ] = {};
 			}
 
 			dimensions[ id ][ type ] = height;
@@ -100,7 +98,6 @@ class Edit extends Component {
 			isSelected,
 			setAttributes,
 			backgroundColor,
-			color,
 		} = this.props;
 
 		const {
@@ -187,7 +184,7 @@ class Edit extends Component {
 				) }
 				<div
 					className={ classes }
-					style={ { backgroundColor: backgroundColor.color, color: color.color } }
+					style={ { backgroundColor: backgroundColor.color, color: this.props.color.color } }
 				>
 					<ResizableBox
 						className={ classnames(
@@ -294,7 +291,7 @@ class Edit extends Component {
 					>
 						{ isSelected && (
 							<InlineColorPicker
-								value={ color.color }
+								value={ this.props.color.color }
 								onChange={ ( color ) => setAttributes( { color: null, customColor: color } ) }
 							/>
 						) }

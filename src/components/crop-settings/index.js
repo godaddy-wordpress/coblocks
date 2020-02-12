@@ -1,12 +1,8 @@
 /**
- * Styles
- */
-import './styles/editor.scss';
-
-/**
  * External dependencies
  */
 import classnames from 'classnames';
+import jQuery from 'jquery';
 
 /**
  * Internal dependencies
@@ -17,7 +13,7 @@ import icons from './icons';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, createRef } from '@wordpress/element';
+import { Component, Fragment, createRef } from '@wordpress/element';
 import { TextControl,
 	RangeControl,
 	ButtonGroup,
@@ -264,10 +260,10 @@ class CropSettings extends Component {
 			height: imageHeight + 'px',
 		};
 
+		/* eslint-disable jsx-a11y/no-static-element-interactions */
 		return (
-			<div>
-				<div ref={ this.imageContainer } className={ mainClass } onMouseDown={ this.mouseDownListener }
-					style={ containerStyle }>
+			<Fragment>
+				<div ref={ this.imageContainer } className={ mainClass } onMouseDown={ this.mouseDownListener } style={ containerStyle }>
 					<div>
 						<img ref={ this.imageReference } src={ imageUrl } style={ style } alt={ __( 'Crop settings image placeholder', 'coblocks' ) } onLoad={ this.handleImageLoaded } />
 					</div>
@@ -332,8 +328,9 @@ class CropSettings extends Component {
 						{ __( 'Reset', 'coblocks' ) }
 					</Button>
 				</div>
-			</div>
+			</Fragment>
 		);
+		/* eslint-enable jsx-a11y/no-static-element-interactions */
 	}
 }
 

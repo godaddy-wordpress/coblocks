@@ -13,7 +13,7 @@ const transforms = {
 		{
 			type: 'prefix',
 			prefix: ':divider',
-			transform: function() {
+			transform() {
 				return createBlock( metadata.name );
 			},
 		},
@@ -21,14 +21,14 @@ const transforms = {
 			type: 'block',
 			blocks: [ 'core/spacer' ],
 			transform: ( { height } ) => createBlock( metadata.name, {
-				height: height,
+				height,
 			} ),
 		},
 		{
 			type: 'block',
 			blocks: [ 'coblocks/dynamic-separator' ],
 			transform: ( { height } ) => createBlock( metadata.name, {
-				height: height,
+				height,
 			} ),
 		},
 		{

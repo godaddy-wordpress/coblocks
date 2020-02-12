@@ -6,7 +6,7 @@ import { Fragment } from '@wordpress/element';
 import { PanelBody, ToggleControl, TextareaControl, ExternalLink, FocalPointPicker } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 
-const Inspector = props => {
+const Inspector = ( props ) => {
 	const {
 		attributes,
 		setAttributes,
