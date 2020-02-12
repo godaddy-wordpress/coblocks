@@ -1,12 +1,15 @@
+[data-type="coblocks/row"] {
+
+	.components-placeholder__fieldset {
+		max-width: 100%;
+	}
+}
+
 .wp-block-coblocks-row {
 	display: block;
 
 	.components-placeholder {
 		color: $dark-gray-900;
-	}
-
-	.components-placeholder__fieldset {
-		max-width: 100%;
 	}
 
 	.wp-block-coblocks-row__inner.has-no-gutter {
