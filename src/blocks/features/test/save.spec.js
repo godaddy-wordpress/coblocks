@@ -34,48 +34,57 @@ describe( name, () => {
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
-	it( 'should render heading h3', () => {
-		block.attributes.headingLevel = 3;
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '{\"headingLevel\":3}' );
-		expect( serializedBlock ).toMatchSnapshot();
+	it( 'should render heading levels', () => {
+		[ 1, 2, 3, 4, 5, 6 ].forEach( headingLevel => {
+			block.attributes.headingLevel = headingLevel;
+			serializedBlock = serialize( block );
+			expect( serializedBlock ).toBeDefined();
+			if ( 4 !== headingLevel ) {
+				expect( serializedBlock ).toContain( '{"headingLevel":' + headingLevel + '}' );
+			} else {
+				expect( serializedBlock ).not.toContain( '{"headingLevel":' + headingLevel + '}' );
+			}
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
 	} );
 
-	it( 'should render gutter 3 columns', () => {
-		block.attributes.columns = 3;
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'has-3-columns' );
-		expect( serializedBlock ).toMatchSnapshot();
+	it( 'should render gutter classes', () => {
+		[ 'none', 'small', 'medium', 'large', 'huge' ].forEach( gutterSize => {
+			block.attributes.gutter = gutterSize;
+			serializedBlock = serialize( block );
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( 'has-' + gutterSize + '-gutter' );
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
 	} );
 
-	it( 'should render gutter large', () => {
-		block.attributes.gutter = 'large';
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'has-large-gutter' );
-		expect( serializedBlock ).toMatchSnapshot();
+	it( 'should render column classes', () => {
+		[ 1, 2, 3, 4 ].forEach( columnSize => {
+			block.attributes.columns = columnSize;
+			serializedBlock = serialize( block );
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( 'has-' + columnSize + '-columns' );
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
 	} );
 
-	it( 'should render padding large', () => {
-		block.attributes.paddingSize = 'large';
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'has-large-padding' );
-		expect( serializedBlock ).toMatchSnapshot();
+	it( 'should render padding classes', () => {
+		[ 'none', 'small', 'medium', 'large', 'huge' ].forEach( paddingSize => {
+			block.attributes.paddingSize = paddingSize;
+			serializedBlock = serialize( block );
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( 'has-' + paddingSize + '-padding' );
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
 	} );
 
-	it( 'should render margin huge', () => {
-		block.attributes.marginSize = 'huge';
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'has-huge-margin' );
-		expect( serializedBlock ).toMatchSnapshot();
+	it( 'should render margin classes', () => {
+		[ 'none', 'small', 'medium', 'large', 'huge' ].forEach( marginSize => {
+			block.attributes.marginSize = marginSize;
+			serializedBlock = serialize( block );
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( 'has-' + marginSize + '-margin' );
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
 	} );
 } );

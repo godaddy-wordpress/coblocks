@@ -34,13 +34,18 @@ describe( name, () => {
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
-	it( 'should render h3 heading level', () => {
-		block.attributes.headingLevel = 3;
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '{\"headingLevel\":3}' );
-		expect( serializedBlock ).toMatchSnapshot();
+	it( 'should render heading levels', () => {
+		[ 1, 2, 3, 4, 5, 6 ].forEach( headingLevel => {
+			block.attributes.headingLevel = headingLevel;
+			serializedBlock = serialize( block );
+			expect( serializedBlock ).toBeDefined();
+			if ( 4 !== headingLevel ) {
+				expect( serializedBlock ).toContain( '{"headingLevel":' + headingLevel + '}' );
+			} else {
+				expect( serializedBlock ).not.toContain( '{"headingLevel":' + headingLevel + '}' );
+			}
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
 	} );
 
 	it( 'should render text color', () => {
@@ -61,12 +66,13 @@ describe( name, () => {
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
-	it( 'should render content align', () => {
-		block.attributes.contentAlign = 'center';
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'has-center-content' );
-		expect( serializedBlock ).toMatchSnapshot();
+	it( 'should render content align classes', () => {
+		[ 'left', 'center', 'right' ].forEach( alignment => {
+			block.attributes.contentAlign = alignment;
+			serializedBlock = serialize( block );
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( 'has-' + alignment + '-content' );
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
 	} );
 } );

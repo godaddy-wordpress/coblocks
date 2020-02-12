@@ -6,32 +6,152 @@ exports[`coblocks/features should render 1`] = `
 <!-- /wp:coblocks/features -->"
 `;
 
-exports[`coblocks/features should render gutter 3 columns 1`] = `
+exports[`coblocks/features should render column classes 1`] = `
+"<!-- wp:coblocks/features {\\"columns\\":1} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-1-columns has-medium-gutter has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render column classes 2`] = `
+"<!-- wp:coblocks/features -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render column classes 3`] = `
 "<!-- wp:coblocks/features {\\"columns\\":3} -->
 <div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-3-columns has-responsive-columns has-medium-gutter has-center-content\\"></div></div>
 <!-- /wp:coblocks/features -->"
 `;
 
-exports[`coblocks/features should render gutter large 1`] = `
+exports[`coblocks/features should render column classes 4`] = `
+"<!-- wp:coblocks/features {\\"columns\\":4} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-4-columns has-responsive-columns has-medium-gutter has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render gutter classes 1`] = `
+"<!-- wp:coblocks/features {\\"gutter\\":\\"none\\"} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-none-gutter has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render gutter classes 2`] = `
+"<!-- wp:coblocks/features {\\"gutter\\":\\"small\\"} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-small-gutter has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render gutter classes 3`] = `
+"<!-- wp:coblocks/features -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render gutter classes 4`] = `
 "<!-- wp:coblocks/features {\\"gutter\\":\\"large\\"} -->
 <div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-large-gutter has-center-content\\"></div></div>
 <!-- /wp:coblocks/features -->"
 `;
 
-exports[`coblocks/features should render heading h3 1`] = `
+exports[`coblocks/features should render gutter classes 5`] = `
+"<!-- wp:coblocks/features {\\"gutter\\":\\"huge\\"} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-huge-gutter has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render heading levels 1`] = `
+"<!-- wp:coblocks/features {\\"headingLevel\\":1} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render heading levels 2`] = `
+"<!-- wp:coblocks/features {\\"headingLevel\\":2} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render heading levels 3`] = `
 "<!-- wp:coblocks/features {\\"headingLevel\\":3} -->
 <div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-center-content\\"></div></div>
 <!-- /wp:coblocks/features -->"
 `;
 
-exports[`coblocks/features should render margin huge 1`] = `
+exports[`coblocks/features should render heading levels 4`] = `
+"<!-- wp:coblocks/features -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render heading levels 5`] = `
+"<!-- wp:coblocks/features {\\"headingLevel\\":5} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render heading levels 6`] = `
+"<!-- wp:coblocks/features {\\"headingLevel\\":6} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render margin classes 1`] = `
+"<!-- wp:coblocks/features {\\"marginSize\\":\\"none\\"} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-margin has-none-margin has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render margin classes 2`] = `
+"<!-- wp:coblocks/features {\\"marginSize\\":\\"small\\"} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-margin has-small-margin has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render margin classes 3`] = `
+"<!-- wp:coblocks/features {\\"marginSize\\":\\"medium\\"} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-margin has-medium-margin has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render margin classes 4`] = `
+"<!-- wp:coblocks/features {\\"marginSize\\":\\"large\\"} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-margin has-large-margin has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render margin classes 5`] = `
 "<!-- wp:coblocks/features {\\"marginSize\\":\\"huge\\"} -->
 <div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-margin has-huge-margin has-center-content\\"></div></div>
 <!-- /wp:coblocks/features -->"
 `;
 
-exports[`coblocks/features should render padding large 1`] = `
+exports[`coblocks/features should render padding classes 1`] = `
+"<!-- wp:coblocks/features {\\"paddingSize\\":\\"none\\"} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-padding has-none-padding has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render padding classes 2`] = `
+"<!-- wp:coblocks/features {\\"paddingSize\\":\\"small\\"} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-padding has-small-padding has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render padding classes 3`] = `
+"<!-- wp:coblocks/features {\\"paddingSize\\":\\"medium\\"} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-padding has-medium-padding has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render padding classes 4`] = `
 "<!-- wp:coblocks/features {\\"paddingSize\\":\\"large\\"} -->
 <div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-padding has-large-padding has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render padding classes 5`] = `
+"<!-- wp:coblocks/features {\\"paddingSize\\":\\"huge\\"} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-padding has-huge-padding has-center-content\\"></div></div>
 <!-- /wp:coblocks/features -->"
 `;

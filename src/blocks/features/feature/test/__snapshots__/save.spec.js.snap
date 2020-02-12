@@ -6,9 +6,21 @@ exports[`coblocks/feature should render 1`] = `
 <!-- /wp:coblocks/feature -->"
 `;
 
-exports[`coblocks/feature should render content align 1`] = `
+exports[`coblocks/feature should render content align classes 1`] = `
+"<!-- wp:coblocks/feature {\\"contentAlign\\":\\"left\\"} -->
+<div class=\\"wp-block-coblocks-feature has-left-content\\"><div class=\\"wp-block-coblocks-feature__inner has-no-padding\\"></div></div>
+<!-- /wp:coblocks/feature -->"
+`;
+
+exports[`coblocks/feature should render content align classes 2`] = `
 "<!-- wp:coblocks/feature {\\"contentAlign\\":\\"center\\"} -->
 <div class=\\"wp-block-coblocks-feature has-center-content\\"><div class=\\"wp-block-coblocks-feature__inner has-no-padding\\"></div></div>
+<!-- /wp:coblocks/feature -->"
+`;
+
+exports[`coblocks/feature should render content align classes 3`] = `
+"<!-- wp:coblocks/feature {\\"contentAlign\\":\\"right\\"} -->
+<div class=\\"wp-block-coblocks-feature has-right-content\\"><div class=\\"wp-block-coblocks-feature__inner has-no-padding\\"></div></div>
 <!-- /wp:coblocks/feature -->"
 `;
 
@@ -18,8 +30,38 @@ exports[`coblocks/feature should render custom text color 1`] = `
 <!-- /wp:coblocks/feature -->"
 `;
 
-exports[`coblocks/feature should render h3 heading level 1`] = `
+exports[`coblocks/feature should render heading levels 1`] = `
+"<!-- wp:coblocks/feature {\\"headingLevel\\":1} -->
+<div class=\\"wp-block-coblocks-feature\\"><div class=\\"wp-block-coblocks-feature__inner has-no-padding\\"></div></div>
+<!-- /wp:coblocks/feature -->"
+`;
+
+exports[`coblocks/feature should render heading levels 2`] = `
+"<!-- wp:coblocks/feature {\\"headingLevel\\":2} -->
+<div class=\\"wp-block-coblocks-feature\\"><div class=\\"wp-block-coblocks-feature__inner has-no-padding\\"></div></div>
+<!-- /wp:coblocks/feature -->"
+`;
+
+exports[`coblocks/feature should render heading levels 3`] = `
 "<!-- wp:coblocks/feature {\\"headingLevel\\":3} -->
+<div class=\\"wp-block-coblocks-feature\\"><div class=\\"wp-block-coblocks-feature__inner has-no-padding\\"></div></div>
+<!-- /wp:coblocks/feature -->"
+`;
+
+exports[`coblocks/feature should render heading levels 4`] = `
+"<!-- wp:coblocks/feature -->
+<div class=\\"wp-block-coblocks-feature\\"><div class=\\"wp-block-coblocks-feature__inner has-no-padding\\"></div></div>
+<!-- /wp:coblocks/feature -->"
+`;
+
+exports[`coblocks/feature should render heading levels 5`] = `
+"<!-- wp:coblocks/feature {\\"headingLevel\\":5} -->
+<div class=\\"wp-block-coblocks-feature\\"><div class=\\"wp-block-coblocks-feature__inner has-no-padding\\"></div></div>
+<!-- /wp:coblocks/feature -->"
+`;
+
+exports[`coblocks/feature should render heading levels 6`] = `
+"<!-- wp:coblocks/feature {\\"headingLevel\\":6} -->
 <div class=\\"wp-block-coblocks-feature\\"><div class=\\"wp-block-coblocks-feature__inner has-no-padding\\"></div></div>
 <!-- /wp:coblocks/feature -->"
 `;

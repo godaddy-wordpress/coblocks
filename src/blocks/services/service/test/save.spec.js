@@ -31,12 +31,14 @@ describe( name, () => {
 		block.attributes.imageUrl = 'https://website.com/wp-content/uploads/1234/56/image.jpg';
 		block.attributes.imageAlt = 'alt text';
 		block.attributes.focalPoint = { x: 100, y: 0 };
+		block.attributes.showCta = 1;
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'src="https://website.com/wp-content/uploads/1234/56/image.jpg"' );
 		expect( serializedBlock ).toContain( 'alt="alt text"' );
 		expect( serializedBlock ).toContain( 'style="object-position:10000% 0%"' );
+		expect( serializedBlock ).toContain( '"showCta":1' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 } );
