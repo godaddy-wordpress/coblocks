@@ -87,4 +87,22 @@ describe( name, () => {
 			expect( serializedBlock ).toMatchSnapshot();
 		} );
 	} );
+
+	it( 'should render content align classes', () => {
+		[ 'left', 'center', 'right' ].forEach( alignment => {
+			block.attributes.contentAlign = alignment;
+			serializedBlock = serialize( block );
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( 'has-' + alignment + '-content' );
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
+	} );
+
+	it( 'should render text color', () => {
+		block.attributes.textColor = '#333333';
+		serializedBlock = serialize( block );
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'has-333333-color' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
 } );

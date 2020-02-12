@@ -30,6 +30,24 @@ exports[`coblocks/features should render column classes 4`] = `
 <!-- /wp:coblocks/features -->"
 `;
 
+exports[`coblocks/features should render content align classes 1`] = `
+"<!-- wp:coblocks/features {\\"contentAlign\\":\\"left\\"} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-left-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render content align classes 2`] = `
+"<!-- wp:coblocks/features -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render content align classes 3`] = `
+"<!-- wp:coblocks/features {\\"contentAlign\\":\\"right\\"} -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-right-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
 exports[`coblocks/features should render gutter classes 1`] = `
 "<!-- wp:coblocks/features {\\"gutter\\":\\"none\\"} -->
 <div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-none-gutter has-center-content\\"></div></div>
@@ -153,5 +171,11 @@ exports[`coblocks/features should render padding classes 4`] = `
 exports[`coblocks/features should render padding classes 5`] = `
 "<!-- wp:coblocks/features {\\"paddingSize\\":\\"huge\\"} -->
 <div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-padding has-huge-padding has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
+
+exports[`coblocks/features should render text color 1`] = `
+"<!-- wp:coblocks/features -->
+<div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-medium-gutter has-text-color has-333333-color has-center-content\\"></div></div>
 <!-- /wp:coblocks/features -->"
 `;
