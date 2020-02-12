@@ -10,6 +10,7 @@ import './styles/style.scss';
  */
 import { PluginMoreMenuItem } from '@wordpress/edit-post';
 import { Fragment, useState } from '@wordpress/element';
+import { applyFilters, addFilter } from '@wordpress/hooks';
 import { registerPlugin, getPlugin, unregisterPlugin } from '@wordpress/plugins';
 import { registerGenericStore } from '@wordpress/data';
 import {
@@ -47,11 +48,11 @@ if ( coblocksSettings.coblocksSettingsEnabled ) {
 			<Fragment>
 				<PluginMoreMenuItem onClick={ openModal }>
 					{
-						sprintf(
+						applyFilters( 'coblocks-settings-panel-title', sprintf(
 							/* translators: %s: Plugin name */
 							__( '%s editor settings', 'coblocks' ),
 							'CoBlocks'
-						)
+						) )
 					}
 				</PluginMoreMenuItem>
 				<CoBlocksSettingsModal { ...props } />
