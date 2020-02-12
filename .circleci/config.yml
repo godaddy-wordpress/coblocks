@@ -116,6 +116,7 @@ jobs:
       - run:
           name: Install node dependencies
           command: |
+            PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
             yarn install --frozen-lockfile
       - save_cache:
           key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
@@ -147,6 +148,7 @@ jobs:
       - run:
           name: Install node dependencies
           command: |
+            PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
             yarn install --frozen-lockfile
       - save_cache:
           key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
@@ -179,6 +181,7 @@ jobs:
       - run:
           name: Install node dependencies
           command: |
+            PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
             yarn install --frozen-lockfile
       - save_cache:
           key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
