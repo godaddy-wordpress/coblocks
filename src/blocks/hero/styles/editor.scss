@@ -1,10 +1,4 @@
 .wp-block[data-type="coblocks/hero"] {
-	background: transparent !important;
-
-	&[data-align="full"],
-	&[data-align="wide"] {
-		z-index: 60;
-	}
 
 	.wp-block-coblocks-hero {
 		width: 100%;

@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-02-11T15:32:30+00:00\n"
+"POT-Creation-Date: 2020-02-11T21:49:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -173,133 +173,6 @@ msgstr ""
 msgid "Google Map API key for map rendering"
 msgstr ""
 
-#: includes/ical-parser/class-coblocks-ical.php:513
-msgid "first"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:514
-#: src/components/slider-panel/index.js:23
-msgid "second"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:515
-msgid "third"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:516
-msgid "fourth"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:517
-msgid "fifth"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:521
-msgid "sunday of"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:522
-msgid "monday of"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:523
-msgid "tuesday of"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:524
-msgid "wednesday of"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:525
-msgid "thursday of"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:526
-msgid "friday of"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:527
-msgid "saturday of"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:528
-msgid "day of"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:529
-msgid "weekday"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:533
-msgid "January"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:534
-msgid "February"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:535
-msgid "March"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:536
-msgid "April"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:537
-msgid "May"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:538
-msgid "June"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:539
-msgid "July"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:540
-msgid "August"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:541
-msgid "September"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:542
-msgid "October"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:543
-msgid "November"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:544
-msgid "December"
-msgstr ""
-
-#. translators: block keyword
-#: includes/ical-parser/class-coblocks-ical.php:548
-#: src/blocks/form/fields/date/index.js:43
-msgid "day"
-msgstr ""
-
-#: includes/ical-parser/class-coblocks-ical.php:549
-msgid "week"
-msgstr ""
-
-#. translators: block keyword
-#: includes/ical-parser/class-coblocks-ical.php:550
-#: src/blocks/form/fields/date/index.js:45
-msgid "month"
-msgstr ""
-
-#. translators: block keyword
-#: includes/ical-parser/class-coblocks-ical.php:551
-#: src/blocks/form/fields/date/index.js:47
-msgid "year"
-msgstr ""
-
 #: src/blocks/events/index.php:122
 msgid "An error has occurred, check for calendar privileges to make sure it is public or try again later."
 msgstr ""
@@ -315,7 +188,7 @@ msgid "An error has occurred, which probably means the feed is down. Try again l
 msgstr ""
 
 #: src/blocks/post-carousel/index.php:185
-#: src/blocks/posts/index.php:163
+#: src/blocks/posts/index.php:167
 msgctxt "placeholder when a post has no title"
 msgid "(no title)"
 msgstr ""
@@ -1030,6 +903,7 @@ msgstr ""
 #: src/blocks/gallery-offset/inspector.js:85
 #: src/blocks/icon/icon-size-select.js:16
 #: src/blocks/posts/inspector.js:46
+#: src/blocks/posts/inspector.js:90
 #: src/blocks/row/inspector.js:100
 #: src/blocks/services/inspector.js:31
 #: src/blocks/share/inspector.js:72
@@ -1048,6 +922,7 @@ msgstr ""
 #: src/blocks/gallery-offset/inspector.js:91
 #: src/blocks/icon/icon-size-select.js:21
 #: src/blocks/posts/inspector.js:51
+#: src/blocks/posts/inspector.js:96
 #: src/blocks/row/inspector.js:101
 #: src/blocks/services/inspector.js:32
 #: src/blocks/share/inspector.js:73
@@ -1066,6 +941,7 @@ msgstr ""
 #: src/blocks/gallery-offset/inspector.js:97
 #: src/blocks/icon/icon-size-select.js:26
 #: src/blocks/posts/inspector.js:56
+#: src/blocks/posts/inspector.js:102
 #: src/blocks/row/inspector.js:102
 #: src/blocks/services/inspector.js:33
 #: src/blocks/share/inspector.js:74
@@ -1083,6 +959,7 @@ msgstr ""
 #: src/blocks/gallery-offset/inspector.js:103
 #: src/blocks/icon/icon-size-select.js:30
 #: src/blocks/posts/inspector.js:61
+#: src/blocks/posts/inspector.js:108
 #: src/blocks/row/inspector.js:103
 #: src/blocks/services/inspector.js:34
 #: src/components/dimensions-control/dimensions-select.js:30
@@ -1095,7 +972,7 @@ msgstr ""
 
 #: src/blocks/features/inspector.js:100
 #: src/blocks/post-carousel/inspector.js:86
-#: src/blocks/posts/inspector.js:118
+#: src/blocks/posts/inspector.js:145
 #: src/blocks/services/inspector.js:75
 msgid "Columns"
 msgstr ""
@@ -1107,6 +984,7 @@ msgstr ""
 #: src/blocks/gallery-offset/inspector.js:121
 #: src/blocks/gallery-offset/inspector.js:123
 #: src/blocks/gallery-stacked/inspector.js:99
+#: src/blocks/posts/inspector.js:157
 #: src/blocks/row/inspector.js:162
 #: src/blocks/services/inspector.js:83
 #: src/components/responsive-tabs-control/index.js:31
@@ -1331,7 +1209,7 @@ msgstr ""
 
 #: src/blocks/food-and-drinks/inspector.js:26
 #: src/blocks/map/inspector.js:107
-#: src/blocks/posts/inspector.js:179
+#: src/blocks/posts/inspector.js:213
 #: src/blocks/row/inspector.js:120
 #: src/blocks/services/inspector.js:39
 msgid "Styles"
@@ -1553,6 +1431,21 @@ msgstr ""
 #. translators: block description
 #: src/blocks/form/fields/date/index.js:36
 msgid "A field for requesting date selections with a date picker."
+msgstr ""
+
+#. translators: block keyword
+#: src/blocks/form/fields/date/index.js:43
+msgid "day"
+msgstr ""
+
+#. translators: block keyword
+#: src/blocks/form/fields/date/index.js:45
+msgid "month"
+msgstr ""
+
+#. translators: block keyword
+#: src/blocks/form/fields/date/index.js:47
+msgid "year"
 msgstr ""
 
 #. translators: block description
@@ -1986,6 +1879,7 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:94
 #: src/blocks/gallery-offset/inspector.js:87
 #: src/blocks/posts/inspector.js:45
+#: src/blocks/posts/inspector.js:89
 #: src/components/option-selector-control/index.js:27
 msgid "S"
 msgstr ""
@@ -1995,6 +1889,7 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:100
 #: src/blocks/gallery-offset/inspector.js:93
 #: src/blocks/posts/inspector.js:50
+#: src/blocks/posts/inspector.js:95
 #: src/components/option-selector-control/index.js:33
 msgid "M"
 msgstr ""
@@ -2004,6 +1899,7 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:106
 #: src/blocks/gallery-offset/inspector.js:99
 #: src/blocks/posts/inspector.js:55
+#: src/blocks/posts/inspector.js:101
 #: src/components/option-selector-control/index.js:39
 msgid "L"
 msgstr ""
@@ -2013,6 +1909,7 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:85
 #: src/blocks/gallery-offset/inspector.js:105
 #: src/blocks/posts/inspector.js:60
+#: src/blocks/posts/inspector.js:107
 #: src/components/option-selector-control/index.js:45
 msgid "XL"
 msgstr ""
@@ -2084,7 +1981,7 @@ msgstr ""
 #. translators: block style
 #: src/blocks/gallery-stacked/edit.js:168
 #: src/blocks/gallery-stacked/index.js:29
-#: src/blocks/posts/edit.js:50
+#: src/blocks/posts/edit.js:49
 msgid "Stacked"
 msgstr ""
 
@@ -4698,62 +4595,62 @@ msgid "Post Carousel Settings"
 msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:57
-#: src/blocks/posts/inspector.js:89
+#: src/blocks/posts/inspector.js:116
 msgid "Post Date"
 msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:61
-#: src/blocks/posts/inspector.js:93
+#: src/blocks/posts/inspector.js:120
 msgid "Showing the publish date."
 msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:62
-#: src/blocks/posts/inspector.js:94
+#: src/blocks/posts/inspector.js:121
 msgid "Toggle to show the publish date."
 msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:67
-#: src/blocks/posts/inspector.js:99
+#: src/blocks/posts/inspector.js:126
 msgid "Post Content"
 msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:71
-#: src/blocks/posts/inspector.js:103
+#: src/blocks/posts/inspector.js:130
 msgid "Showing the post content."
 msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:72
-#: src/blocks/posts/inspector.js:104
+#: src/blocks/posts/inspector.js:131
 msgid "Toggle to show the post content."
 msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:78
-#: src/blocks/posts/inspector.js:110
+#: src/blocks/posts/inspector.js:137
 msgid "Max words in content"
 msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:100
-#: src/blocks/posts/inspector.js:143
+#: src/blocks/posts/inspector.js:177
 msgid "Feed Settings"
 msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:104
-#: src/blocks/posts/inspector.js:147
+#: src/blocks/posts/inspector.js:181
 msgid "My Blog"
 msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:105
-#: src/blocks/posts/inspector.js:148
+#: src/blocks/posts/inspector.js:182
 msgid "External Feed"
 msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:122
-#: src/blocks/posts/inspector.js:166
+#: src/blocks/posts/inspector.js:200
 msgid "Number of posts"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/posts/edit.js:57
+#: src/blocks/posts/edit.js:56
 msgid "Horizontal"
 msgstr ""
 
@@ -4779,11 +4676,11 @@ msgstr ""
 msgid "Display posts or an RSS feed as stacked or horizontal cards."
 msgstr ""
 
-#: src/blocks/posts/inspector.js:86
+#: src/blocks/posts/inspector.js:113
 msgid "Posts Settings"
 msgstr ""
 
-#: src/blocks/posts/inspector.js:131
+#: src/blocks/posts/inspector.js:165
 msgid "Thumbnail Size"
 msgstr ""
 
@@ -5756,6 +5653,10 @@ msgstr ""
 
 #: src/components/slider-panel/index.js:23
 msgid "seconds"
+msgstr ""
+
+#: src/components/slider-panel/index.js:23
+msgid "second"
 msgstr ""
 
 #. translators: %1$d: Speed of the slider, %2$d: Time until the slide advances
