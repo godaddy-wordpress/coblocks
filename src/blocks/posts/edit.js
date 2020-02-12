@@ -229,6 +229,7 @@ class PostsEdit extends Component {
 			excerptLength,
 			listPosition,
 			imageSize,
+			imageStyle,
 			gutter,
 		} = attributes;
 
@@ -386,6 +387,7 @@ class PostsEdit extends Component {
 							[ `has-${ gutter }-gutter` ]: gutter && columns,
 							'has-image-right': isHorizontalStyle && listPosition === 'right',
 							[ `has-${ imageSize }-image` ]: isHorizontalStyle,
+							[ `has-${ imageStyle }-image` ]: imageStyle,
 						} ) }>
 							{ displayPosts.map( ( post, i ) => {
 								const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;

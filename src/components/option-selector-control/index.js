@@ -9,11 +9,11 @@ import { kebabCase } from 'lodash';
 import { Component } from '@wordpress/element';
 import {
 	BaseControl,
-	PanelRow,
-	ButtonGroup,
 	Button,
-	Tooltip,
+	ButtonGroup,
+	PanelRow,
 	RangeControl,
+	Tooltip,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
@@ -58,9 +58,12 @@ export default class OptionSelectorControl extends Component {
 		const {
 			advancedMaxValue,
 			advancedMinValue,
-			label, options, currentOption,
+			currentOption,
+			label,
 			onChange,
+			options,
 			showAdvancedControls,
+			showIcons,
 			showNoneOption,
 		} = this.props;
 
@@ -97,7 +100,7 @@ export default class OptionSelectorControl extends Component {
 									onClick={ () => onChange( option.value ) }
 									aria-label={ option.tooltip }>
 
-									{ option.label }
+									{ showIcons ? option.icon : option.label }
 
 								</Button>
 
