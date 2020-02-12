@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-02-11T21:49:37+00:00\n"
+"POT-Creation-Date: 2020-02-12T17:30:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -336,7 +336,7 @@ msgstr ""
 #: src/blocks/dynamic-separator/inspector.js:62
 #: src/blocks/events/event-item/inspector.js:30
 #: src/blocks/features/feature/inspector.js:92
-#: src/blocks/features/inspector.js:181
+#: src/blocks/features/inspector.js:203
 #: src/blocks/form/submit-button.js:118
 #: src/blocks/hero/inspector.js:137
 #: src/blocks/highlight/inspector.js:43
@@ -344,7 +344,7 @@ msgstr ""
 #: src/blocks/media-card/inspector.js:141
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:48
 #: src/blocks/row/column/inspector.js:165
-#: src/blocks/row/inspector.js:217
+#: src/blocks/row/inspector.js:234
 #: src/blocks/shape-divider/inspector.js:92
 #: src/blocks/share/inspector.js:200
 #: src/blocks/social-profiles/inspector.js:206
@@ -356,14 +356,14 @@ msgstr ""
 #: src/blocks/alert/inspector.js:55
 #: src/blocks/author/inspector.js:56
 #: src/blocks/features/feature/inspector.js:110
-#: src/blocks/features/inspector.js:199
+#: src/blocks/features/inspector.js:221
 #: src/blocks/hero/inspector.js:150
 #: src/blocks/highlight/inspector.js:49
 #: src/blocks/icon/inspector.js:325
 #: src/blocks/media-card/inspector.js:155
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:53
 #: src/blocks/row/column/inspector.js:171
-#: src/blocks/row/inspector.js:233
+#: src/blocks/row/inspector.js:250
 #: src/blocks/shape-divider/inspector.js:103
 #: src/blocks/share/inspector.js:81
 #: src/blocks/share/inspector.js:99
@@ -475,12 +475,12 @@ msgstr ""
 #: src/blocks/click-to-tweet/inspector.js:66
 #: src/blocks/events/event-item/inspector.js:23
 #: src/blocks/features/feature/inspector.js:114
-#: src/blocks/features/inspector.js:203
+#: src/blocks/features/inspector.js:225
 #: src/blocks/hero/inspector.js:155
 #: src/blocks/highlight/inspector.js:54
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:58
 #: src/blocks/row/column/inspector.js:176
-#: src/blocks/row/inspector.js:238
+#: src/blocks/row/inspector.js:255
 #: src/blocks/share/inspector.js:66
 #: src/blocks/social-profiles/inspector.js:95
 #: src/extensions/colors/index.js:54
@@ -858,12 +858,12 @@ msgid "Feature Settings"
 msgstr ""
 
 #: src/blocks/features/feature/inspector.js:71
-#: src/blocks/features/inspector.js:139
+#: src/blocks/features/inspector.js:161
 #: src/blocks/hero/inspector.js:84
 #: src/blocks/icon/inspector.js:215
 #: src/blocks/media-card/inspector.js:62
 #: src/blocks/row/column/inspector.js:111
-#: src/blocks/row/inspector.js:171
+#: src/blocks/row/inspector.js:188
 #: src/components/background/panel.js:209
 msgid "Padding"
 msgstr ""
@@ -880,12 +880,12 @@ msgstr ""
 
 #. translators: visual style option
 #. translators: block style
-#: src/blocks/features/inspector.js:88
+#: src/blocks/features/inspector.js:91
+#: src/blocks/features/inspector.js:92
 #: src/blocks/gallery-collage/inspector.js:61
 #: src/blocks/gallery-collage/inspector.js:62
-#: src/blocks/gallery-offset/inspector.js:80
 #: src/blocks/gallery-offset/inspector.js:81
-#: src/blocks/row/inspector.js:99
+#: src/blocks/gallery-offset/inspector.js:82
 #: src/components/block-gallery/options/caption-options.js:23
 #: src/components/block-gallery/options/link-options.js:10
 #: src/components/dimensions-control/dimensions-select.js:10
@@ -896,16 +896,29 @@ msgid "None"
 msgstr ""
 
 #. translators: abbreviation for small size
+#: src/blocks/features/inspector.js:97
+#: src/blocks/gallery-collage/inspector.js:67
+#: src/blocks/gallery-collage/inspector.js:94
+#: src/blocks/gallery-offset/inspector.js:87
+#: src/blocks/posts/inspector.js:45
+#: src/blocks/posts/inspector.js:89
+#: src/blocks/row/inspector.js:103
+#: src/blocks/services/inspector.js:35
+#: src/components/option-selector-control/index.js:27
+msgid "S"
+msgstr ""
+
+#. translators: abbreviation for small size
 #. translators: label for small size option
-#: src/blocks/features/inspector.js:89
+#: src/blocks/features/inspector.js:98
 #: src/blocks/gallery-collage/inspector.js:68
 #: src/blocks/gallery-collage/inspector.js:95
-#: src/blocks/gallery-offset/inspector.js:85
+#: src/blocks/gallery-offset/inspector.js:88
 #: src/blocks/icon/icon-size-select.js:16
 #: src/blocks/posts/inspector.js:46
 #: src/blocks/posts/inspector.js:90
-#: src/blocks/row/inspector.js:100
-#: src/blocks/services/inspector.js:31
+#: src/blocks/row/inspector.js:104
+#: src/blocks/services/inspector.js:36
 #: src/blocks/share/inspector.js:72
 #: src/blocks/social-profiles/inspector.js:76
 #: src/components/dimensions-control/dimensions-select.js:15
@@ -915,16 +928,29 @@ msgid "Small"
 msgstr ""
 
 #. translators: abbreviation for medium size
+#: src/blocks/features/inspector.js:103
+#: src/blocks/gallery-collage/inspector.js:73
+#: src/blocks/gallery-collage/inspector.js:100
+#: src/blocks/gallery-offset/inspector.js:93
+#: src/blocks/posts/inspector.js:50
+#: src/blocks/posts/inspector.js:95
+#: src/blocks/row/inspector.js:109
+#: src/blocks/services/inspector.js:41
+#: src/components/option-selector-control/index.js:33
+msgid "M"
+msgstr ""
+
+#. translators: abbreviation for medium size
 #. translators: label for medium size option
-#: src/blocks/features/inspector.js:90
+#: src/blocks/features/inspector.js:104
 #: src/blocks/gallery-collage/inspector.js:74
 #: src/blocks/gallery-collage/inspector.js:101
-#: src/blocks/gallery-offset/inspector.js:91
+#: src/blocks/gallery-offset/inspector.js:94
 #: src/blocks/icon/icon-size-select.js:21
 #: src/blocks/posts/inspector.js:51
 #: src/blocks/posts/inspector.js:96
-#: src/blocks/row/inspector.js:101
-#: src/blocks/services/inspector.js:32
+#: src/blocks/row/inspector.js:110
+#: src/blocks/services/inspector.js:42
 #: src/blocks/share/inspector.js:73
 #: src/blocks/social-profiles/inspector.js:77
 #: src/components/dimensions-control/dimensions-select.js:20
@@ -934,16 +960,29 @@ msgid "Medium"
 msgstr ""
 
 #. translators: abbreviation for large size
+#: src/blocks/features/inspector.js:109
+#: src/blocks/gallery-collage/inspector.js:79
+#: src/blocks/gallery-collage/inspector.js:106
+#: src/blocks/gallery-offset/inspector.js:99
+#: src/blocks/posts/inspector.js:55
+#: src/blocks/posts/inspector.js:101
+#: src/blocks/row/inspector.js:115
+#: src/blocks/services/inspector.js:47
+#: src/components/option-selector-control/index.js:39
+msgid "L"
+msgstr ""
+
+#. translators: abbreviation for large size
 #. translators: label for large size option
-#: src/blocks/features/inspector.js:91
+#: src/blocks/features/inspector.js:110
 #: src/blocks/gallery-collage/inspector.js:80
 #: src/blocks/gallery-collage/inspector.js:107
-#: src/blocks/gallery-offset/inspector.js:97
+#: src/blocks/gallery-offset/inspector.js:100
 #: src/blocks/icon/icon-size-select.js:26
 #: src/blocks/posts/inspector.js:56
 #: src/blocks/posts/inspector.js:102
-#: src/blocks/row/inspector.js:102
-#: src/blocks/services/inspector.js:33
+#: src/blocks/row/inspector.js:116
+#: src/blocks/services/inspector.js:48
 #: src/blocks/share/inspector.js:74
 #: src/blocks/social-profiles/inspector.js:78
 #: src/components/dimensions-control/dimensions-select.js:25
@@ -952,54 +991,60 @@ msgstr ""
 msgid "Large"
 msgstr ""
 
+#. translators: abbreviation for largest size
+#. translators: abbreviation for extra large size
+#: src/blocks/features/inspector.js:115
+#: src/blocks/gallery-collage/inspector.js:85
+#: src/blocks/gallery-offset/inspector.js:105
+#: src/blocks/posts/inspector.js:60
+#: src/blocks/posts/inspector.js:107
+#: src/blocks/row/inspector.js:121
+#: src/blocks/services/inspector.js:53
+#: src/components/option-selector-control/index.js:45
+msgid "XL"
+msgstr ""
+
 #. translators: abbreviation for extra large size
 #. translators: label for extra large size option
-#: src/blocks/features/inspector.js:92
+#: src/blocks/features/inspector.js:116
 #: src/blocks/gallery-collage/inspector.js:86
-#: src/blocks/gallery-offset/inspector.js:103
+#: src/blocks/gallery-offset/inspector.js:106
 #: src/blocks/icon/icon-size-select.js:30
 #: src/blocks/posts/inspector.js:61
 #: src/blocks/posts/inspector.js:108
-#: src/blocks/row/inspector.js:103
-#: src/blocks/services/inspector.js:34
+#: src/blocks/row/inspector.js:122
+#: src/blocks/services/inspector.js:54
 #: src/components/dimensions-control/dimensions-select.js:30
 msgid "Huge"
 msgstr ""
 
-#: src/blocks/features/inspector.js:98
+#: src/blocks/features/inspector.js:123
 msgid "Features Settings"
 msgstr ""
 
-#: src/blocks/features/inspector.js:100
+#: src/blocks/features/inspector.js:125
 #: src/blocks/post-carousel/inspector.js:86
 #: src/blocks/posts/inspector.js:145
-#: src/blocks/services/inspector.js:75
+#: src/blocks/services/inspector.js:96
 msgid "Columns"
 msgstr ""
 
-#: src/blocks/features/inspector.js:124
+#: src/blocks/features/inspector.js:148
 #: src/blocks/gallery-carousel/inspector.js:92
 #: src/blocks/gallery-carousel/inspector.js:98
 #: src/blocks/gallery-collage/inspector.js:115
 #: src/blocks/gallery-offset/inspector.js:121
-#: src/blocks/gallery-offset/inspector.js:123
 #: src/blocks/gallery-stacked/inspector.js:99
 #: src/blocks/posts/inspector.js:157
-#: src/blocks/row/inspector.js:162
-#: src/blocks/services/inspector.js:83
+#: src/blocks/row/inspector.js:181
+#: src/blocks/services/inspector.js:103
 #: src/components/responsive-tabs-control/index.js:31
 msgid "Gutter"
 msgstr ""
 
-#: src/blocks/features/inspector.js:127
-#: src/blocks/row/inspector.js:165
-#: src/blocks/services/inspector.js:86
-msgid "Space between each column."
-msgstr ""
-
-#: src/blocks/features/inspector.js:160
+#: src/blocks/features/inspector.js:182
 #: src/blocks/row/column/inspector.js:133
-#: src/blocks/row/inspector.js:194
+#: src/blocks/row/inspector.js:211
 #: src/components/dimensions-control/index.js:292
 msgid "Margin"
 msgstr ""
@@ -1210,8 +1255,8 @@ msgstr ""
 #: src/blocks/food-and-drinks/inspector.js:26
 #: src/blocks/map/inspector.js:107
 #: src/blocks/posts/inspector.js:213
-#: src/blocks/row/inspector.js:120
-#: src/blocks/services/inspector.js:39
+#: src/blocks/row/inspector.js:140
+#: src/blocks/services/inspector.js:60
 msgid "Styles"
 msgstr ""
 
@@ -1763,7 +1808,7 @@ msgstr ""
 #: src/blocks/gallery-carousel/inspector.js:55
 #: src/blocks/gallery-collage/inspector.js:39
 #: src/blocks/gallery-masonry/inspector.js:56
-#: src/blocks/gallery-offset/inspector.js:58
+#: src/blocks/gallery-offset/inspector.js:59
 #: src/blocks/gallery-stacked/inspector.js:61
 msgid "Image lightbox is enabled."
 msgstr ""
@@ -1771,7 +1816,7 @@ msgstr ""
 #: src/blocks/gallery-carousel/inspector.js:55
 #: src/blocks/gallery-collage/inspector.js:39
 #: src/blocks/gallery-masonry/inspector.js:57
-#: src/blocks/gallery-offset/inspector.js:59
+#: src/blocks/gallery-offset/inspector.js:60
 #: src/blocks/gallery-stacked/inspector.js:62
 msgid "Toggle to enable the image lightbox."
 msgstr ""
@@ -1791,7 +1836,7 @@ msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:104
 #: src/blocks/gallery-masonry/inspector.js:91
-#: src/blocks/gallery-offset/inspector.js:145
+#: src/blocks/gallery-offset/inspector.js:127
 #: src/blocks/gallery-stacked/inspector.js:105
 #: src/blocks/share/inspector.js:120
 #: src/blocks/social-profiles/inspector.js:124
@@ -1806,7 +1851,7 @@ msgstr ""
 #: src/blocks/gallery-carousel/inspector.js:146
 #: src/blocks/gallery-collage/inspector.js:140
 #: src/blocks/gallery-masonry/inspector.js:102
-#: src/blocks/gallery-offset/inspector.js:155
+#: src/blocks/gallery-offset/inspector.js:135
 #: src/blocks/gallery-stacked/inspector.js:115
 msgid "Lightbox"
 msgstr ""
@@ -1862,56 +1907,16 @@ msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:31
 #: src/blocks/gallery-masonry/inspector.js:50
-#: src/blocks/gallery-offset/inspector.js:52
+#: src/blocks/gallery-offset/inspector.js:53
 #: src/blocks/gallery-stacked/inspector.js:55
 msgid "Showing captions for each media item."
 msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:31
 #: src/blocks/gallery-masonry/inspector.js:51
-#: src/blocks/gallery-offset/inspector.js:53
+#: src/blocks/gallery-offset/inspector.js:54
 #: src/blocks/gallery-stacked/inspector.js:56
 msgid "Toggle to show media captions."
-msgstr ""
-
-#. translators: abbreviation for small size
-#: src/blocks/gallery-collage/inspector.js:67
-#: src/blocks/gallery-collage/inspector.js:94
-#: src/blocks/gallery-offset/inspector.js:87
-#: src/blocks/posts/inspector.js:45
-#: src/blocks/posts/inspector.js:89
-#: src/components/option-selector-control/index.js:27
-msgid "S"
-msgstr ""
-
-#. translators: abbreviation for medium size
-#: src/blocks/gallery-collage/inspector.js:73
-#: src/blocks/gallery-collage/inspector.js:100
-#: src/blocks/gallery-offset/inspector.js:93
-#: src/blocks/posts/inspector.js:50
-#: src/blocks/posts/inspector.js:95
-#: src/components/option-selector-control/index.js:33
-msgid "M"
-msgstr ""
-
-#. translators: abbreviation for large size
-#: src/blocks/gallery-collage/inspector.js:79
-#: src/blocks/gallery-collage/inspector.js:106
-#: src/blocks/gallery-offset/inspector.js:99
-#: src/blocks/posts/inspector.js:55
-#: src/blocks/posts/inspector.js:101
-#: src/components/option-selector-control/index.js:39
-msgid "L"
-msgstr ""
-
-#. translators: abbreviation for largest size
-#. translators: abbreviation for extra large size
-#: src/blocks/gallery-collage/inspector.js:85
-#: src/blocks/gallery-offset/inspector.js:105
-#: src/blocks/posts/inspector.js:60
-#: src/blocks/posts/inspector.js:107
-#: src/components/option-selector-control/index.js:45
-msgid "XL"
 msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:113
@@ -1926,14 +1931,14 @@ msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:128
 #: src/blocks/gallery-masonry/inspector.js:109
-#: src/blocks/gallery-offset/inspector.js:162
+#: src/blocks/gallery-offset/inspector.js:141
 #: src/blocks/gallery-stacked/inspector.js:122
 msgid "Captions"
 msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:134
 #: src/blocks/gallery-masonry/inspector.js:117
-#: src/blocks/gallery-offset/inspector.js:170
+#: src/blocks/gallery-offset/inspector.js:147
 msgid "Caption Style"
 msgstr ""
 
@@ -1973,7 +1978,7 @@ msgstr ""
 msgid "Display images in an offset brick pattern gallery."
 msgstr ""
 
-#: src/blocks/gallery-offset/inspector.js:111
+#: src/blocks/gallery-offset/inspector.js:112
 msgid "Offset Settings"
 msgstr ""
 
@@ -1987,7 +1992,7 @@ msgstr ""
 
 #. translators: block description
 #: src/blocks/gallery-stacked/index.js:31
-msgid "Display multiple images in an single column stacked gallery."
+msgid "Display multiple images in a single column stacked gallery."
 msgstr ""
 
 #: src/blocks/gallery-stacked/inspector.js:49
@@ -2165,7 +2170,7 @@ msgstr ""
 #: src/blocks/hero/inspector.js:85
 #: src/blocks/media-card/inspector.js:63
 #: src/blocks/row/column/inspector.js:112
-#: src/blocks/row/inspector.js:172
+#: src/blocks/row/inspector.js:189
 msgid "Space inside of the container."
 msgstr ""
 
@@ -4777,7 +4782,7 @@ msgid "Column Settings"
 msgstr ""
 
 #: src/blocks/row/column/inspector.js:134
-#: src/blocks/row/inspector.js:195
+#: src/blocks/row/inspector.js:212
 msgid "Space around the container."
 msgstr ""
 
@@ -4872,7 +4877,7 @@ msgstr ""
 msgid "layouts"
 msgstr ""
 
-#: src/blocks/row/inspector.js:159
+#: src/blocks/row/inspector.js:179
 msgid "Row Settings"
 msgstr ""
 
@@ -4951,19 +4956,19 @@ msgstr ""
 msgid "features"
 msgstr ""
 
-#: src/blocks/services/inspector.js:73
+#: src/blocks/services/inspector.js:94
 msgid "Services Settings"
 msgstr ""
 
-#: src/blocks/services/inspector.js:99
+#: src/blocks/services/inspector.js:116
 msgid "Action Buttons"
 msgstr ""
 
-#: src/blocks/services/inspector.js:103
+#: src/blocks/services/inspector.js:120
 msgid "Showing the call to action buttons."
 msgstr ""
 
-#: src/blocks/services/inspector.js:104
+#: src/blocks/services/inspector.js:121
 msgid "Toggle to show call to action buttons."
 msgstr ""
 
