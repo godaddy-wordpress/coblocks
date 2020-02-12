@@ -49,6 +49,7 @@ class Inspector extends Component {
 		const {
 			columns,
 			gutter,
+			headingLevel,
 			marginBottom,
 			marginBottomMobile,
 			marginBottomTablet,
@@ -153,7 +154,7 @@ class Inspector extends Component {
 						<HeadingToolbar
 							minLevel={ 1 }
 							maxLevel={ 7 }
-							selectedLevel={ attributes.headingLevel }
+							selectedLevel={ headingLevel }
 							onChange={ onChangeHeadingLevel }
 						/>
 						<DimensionsControl { ...this.props }

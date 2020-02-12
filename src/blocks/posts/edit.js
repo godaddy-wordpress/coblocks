@@ -215,9 +215,6 @@ class PostsEdit extends Component {
 
 		const { categoriesList } = this.state;
 
-		const isHorizontalStyle = includes( className, 'is-style-horizontal' );
-		const isStackedStyle = includes( className, 'is-style-stacked' );
-
 		const activeStyle = getActiveStyle( styleOptions, className );
 
 		const {
@@ -340,6 +337,9 @@ class PostsEdit extends Component {
 				</Fragment>
 			);
 		}
+
+		const isHorizontalStyle = includes( className, 'is-style-horizontal' );
+		const isStackedStyle = includes( className, 'is-style-stacked' );
 
 		return (
 			<Fragment>
