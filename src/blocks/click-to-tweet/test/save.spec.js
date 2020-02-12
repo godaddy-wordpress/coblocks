@@ -40,6 +40,69 @@ describe( name, () => {
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
+	it( 'should render with textAlign', () => {
+		block.attributes.textAlign = 'center';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '{"textAlign":"center"}' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with via', () => {
+		block.attributes.via = 'username';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '{"via":"username"}' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with buttonColor', () => {
+		block.attributes.buttonColor = 'accent';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '{"buttonColor":"accent"}' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with customButtonColor', () => {
+		block.attributes.customButtonColor = '#7b3749';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '{"customButtonColor":"#7b3749"}' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with textColor', () => {
+		block.attributes.textColor = 'primary';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '{"textColor":"primary"}' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with customTextColor', () => {
+		block.attributes.customTextColor = '#da5d5d';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '{"customTextColor":"#da5d5d"}' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with className', () => {
+		block.attributes.className = 'my-custom-class';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '{"className":"my-custom-class"}' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
 	it( 'should not render without content', () => {
 		serializedBlock = serialize( createBlock( name ) );
 		expect( serializedBlock ).toEqual( `<!-- wp:${ name } /-->` );
