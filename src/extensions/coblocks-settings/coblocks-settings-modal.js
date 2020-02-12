@@ -135,8 +135,8 @@ class CoBlocksSettingsModal extends Component {
 						<>
 							<HorizontalRule />
 							<CheckboxControl
-								label={ __( 'Custom colors', 'coblocks' ) }
-								help={ __( 'Allow styling with the custom color picker.', 'coblocks' ) }
+								label={ __( 'Custom color pickers', 'coblocks' ) }
+								help={ __( 'Allow styling with custom colors.', 'coblocks' ) }
 								onChange={ () => this.updateCustomColorsSetting( !! customColors ) }
 								checked={ !! customColors }
 							/>
