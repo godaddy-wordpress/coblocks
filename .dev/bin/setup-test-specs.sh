@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CHANGEDFILES=$(git diff-tree --no-commit-id --name-only -r HEAD)
+CHANGEDFILES=$(git diff --name-only origin/master)
 SPECS=()
 SPECSTRING=''
 

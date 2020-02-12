@@ -8,7 +8,6 @@ import { find, isUndefined, pickBy, some } from 'lodash';
 /**
  * Internal dependencies
  */
-
 import InspectorControls from './inspector';
 import icons from './icons';
 import icon from './icon';
@@ -234,6 +233,7 @@ class PostsEdit extends Component {
 			listPosition,
 			imageSize,
 			imageStyle,
+			gutter,
 		} = attributes;
 
 		const editToolbarControls = [
@@ -384,7 +384,7 @@ class PostsEdit extends Component {
 							'has-columns': columns,
 							[ `has-${ columns }-columns` ]: columns,
 							'has-responsive-columns': columns,
-							'has-medium-gutter': columns,
+							[ `has-${ gutter }-gutter` ]: gutter && columns,
 							'has-image-right': isHorizontalStyle && listPosition === 'right',
 							[ `has-${ imageSize }-image` ]: isHorizontalStyle,
 							[ `has-${ imageStyle }-image` ]: imageStyle,

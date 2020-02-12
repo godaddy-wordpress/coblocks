@@ -1,9 +1,4 @@
 /**
- * Include our constants
- */
-import { wpUsername, wpPassword, testURL } from './constants';
-
-/**
  * Login to our test WordPress site
  */
 export function loginToSite() {
@@ -12,17 +7,17 @@ export function loginToSite() {
 		if ( $html.find( '.block-editor-page' ).length ) {
 
 		} else {
-			cy.visit( testURL + '/wp-admin' );
+			cy.visit( Cypress.env( 'testURL' ) + '/wp-admin' );
 
 			cy.url().then( ( $url ) => {
 				if ( $url.includes( '/wp-login.php' ) ) {
 					cy.wait( 2000 );
 
 					cy.get( '#user_login' )
-						.type( wpUsername );
+						.type( Cypress.env( 'wpUsername' ) );
 
 					cy.get( '#user_pass' )
-						.type( wpPassword );
+						.type( Cypress.env( 'wpPassword' ) );
 
 					cy.get( '#wp-submit' )
 						.click();
@@ -39,7 +34,7 @@ export function loginToSite() {
  * Create a new post to add blocks to
  */
 export function createNewPost() {
-	cy.visit( testURL + '/wp-admin/post-new.php?post_type=page' );
+	cy.visit( Cypress.env( 'testURL' ) + '/wp-admin/post-new.php?post_type=page' );
 
 	disableGutenbergFeatures();
 
@@ -214,7 +209,7 @@ export function getBlockSlug() {
 export function setBlockStyle( style ) {
 	openSettingsPanel( RegExp( 'styles', 'i' ) );
 
-	cy.get( '.edit-post-sidebar' ).find( '.block-editor-block-styles' )
+	cy.get( '.edit-post-sidebar [class*="editor-block-styles"]' )
 		.contains( RegExp( style, 'i' ) )
 		.click( { force: true } );
 }

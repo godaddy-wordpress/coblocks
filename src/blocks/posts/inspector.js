@@ -53,7 +53,7 @@ const Inspector = ( props ) => {
 		imageSize,
 		imageStyle,
 	} = attributes;
-  
+
 	const isHorizontalStyle = ( 'horizontal' === activeStyle.name );
 
 	const sizeOptions = [
@@ -135,6 +135,33 @@ const Inspector = ( props ) => {
 		columnsCountOnChange( 2 );
 	}
 
+	const gutterOptions = [
+		{
+			value: 'small',
+			/* translators: abbreviation for small size */
+			label: __( 'S', 'coblocks' ),
+			tooltip: __( 'Small', 'coblocks' ),
+		},
+		{
+			value: 'medium',
+			/* translators: abbreviation for medium size */
+			label: __( 'M', 'coblocks' ),
+			tooltip: __( 'Medium', 'coblocks' ),
+		},
+		{
+			value: 'large',
+			/* translators: abbreviation for large size */
+			label: __( 'L', 'coblocks' ),
+			tooltip: __( 'Large', 'coblocks' ),
+		},
+		{
+			value: 'huge',
+			/* translators: abbreviation for largest size */
+			label: __( 'XL', 'coblocks' ),
+			tooltip: __( 'Huge', 'coblocks' ),
+		},
+	];
+
 	const settings = (
 		<PanelBody title={ __( 'Posts Settings', 'coblocks' ) }>
 			<Fragment>
@@ -178,7 +205,14 @@ const Inspector = ( props ) => {
 					max={ isHorizontalStyle ? Math.min( 2, postCount ) : Math.min( 4, postCount ) }
 					required
 				/>
-
+				{ attributes.columns >= 2 &&
+					<OptionSelectorControl
+						label={ __( 'Gutter', 'coblocks' ) }
+						currentOption={ attributes.gutter }
+						options={ gutterOptions }
+						onChange={ ( gutter ) => setAttributes( { gutter } ) }
+					/>
+				}
 				{ hasFeaturedImage &&
 					<OptionSelectorControl
 						label={ __( 'Thumbnail Style', 'coblocks' ) }
@@ -187,7 +221,6 @@ const Inspector = ( props ) => {
 						onChange={ imageStyle => setAttributes( { imageStyle } ) }
 					/>
 				}
-
 				{ isHorizontalStyle && hasFeaturedImage &&
 					<OptionSelectorControl
 						label={ __( 'Thumbnail Size', 'coblocks' ) }
