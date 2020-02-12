@@ -44,6 +44,10 @@
 			"type": "string",
 			"default": "medium"
 		},
+		"imageStyle": {
+			"type": "string",
+			"default": "square"
+		},
 		"listPosition": {
 			"type": "string",
 			"default": "right"
@@ -51,6 +55,10 @@
 		"columns": {
 			"type": "number",
 			"default": 2
+		},
+		"gutter": {
+			"type": "string",
+			"default": "medium"
 		},
 		"order": {
 			"type": "string",

@@ -13,7 +13,7 @@ import { hasEmptyAttributes } from '../../../utils/block-helpers';
  */
 import { RichText, getColorClassName } from '@wordpress/block-editor';
 
-const isEmpty = attributes => {
+const isEmpty = ( attributes ) => {
 	const attributesToCheck = [ 'title', 'description', 'eventDay', 'eventMonth', 'eventYear', 'eventTime', 'eventLocation' ];
 	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
 		attributesToCheck.includes( key )
@@ -22,34 +22,47 @@ const isEmpty = attributes => {
 	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
 };
 
-export default function save( { attributes } ) {
-	const colorClass = getColorClassName( 'color', attributes.textColor );
+export default function save( { className, attributes } ) {
+	const {
+		customTextColor,
+		description,
+		eventDay,
+		eventLocation,
+		eventMonth,
+		eventTime,
+		eventYear,
+		pageNum,
+		textColor,
+		title,
+	} = attributes;
 
-	const classes = classnames( attributes.className, {
-		'has-text-color': attributes.textColor || attributes.customTextColor,
+	const colorClass = getColorClassName( 'color', textColor );
+
+	const classes = classnames( className, {
+		'has-text-color': textColor || customTextColor,
 		[ colorClass ]: colorClass,
 	} );
 
 	return isEmpty( attributes ) ? null : (
 		<div
 			className={ classes }
-			data-page={ String( attributes.pageNum ) }
-			style={ { color: colorClass ? undefined : attributes.customTextColor } }
+			data-page={ String( pageNum ) }
+			style={ { color: colorClass ? undefined : customTextColor } }
 		>
 			<div className="wp-block-coblocks-events__date">
 				<RichText.Content
 					tagName="span"
 					className="wp-block-coblocks-events__day"
-					value={ attributes.eventDay }
+					value={ eventDay }
 				/>
 				<div>
 					<RichText.Content
-						value={ attributes.eventMonth }
+						value={ eventMonth }
 						tagName="span"
 						className="wp-block-coblocks-events__month"
 					/>
 					<RichText.Content
-						value={ attributes.eventYear }
+						value={ eventYear }
 						tagName="span"
 						className="wp-block-coblocks-events__year"
 					/>
@@ -57,12 +70,12 @@ export default function save( { attributes } ) {
 			</div>
 			<div className="wp-block-coblocks-events__content">
 				<RichText.Content
-					value={ attributes.title }
+					value={ title }
 					tagName="span"
 					className="wp-block-coblocks-events__title"
 				/>
 				<RichText.Content
-					value={ attributes.description }
+					value={ description }
 					tagName="span"
 					className="wp-block-coblocks-events__description"
 					itemprop="description"
@@ -70,12 +83,12 @@ export default function save( { attributes } ) {
 			</div>
 			<div className="wp-block-coblocks-events__details">
 				<RichText.Content
-					value={ attributes.eventTime }
+					value={ eventTime }
 					tagName="span"
 					className="wp-block-coblocks-events__time"
 				/>
 				<RichText.Content
-					value={ attributes.eventLocation }
+					value={ eventLocation }
 					tagName="span"
 					className="wp-block-coblocks-events__location"
 				/>

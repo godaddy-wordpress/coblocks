@@ -14,7 +14,10 @@ import OptionSelectorControl from '../../components/option-selector-control';
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
-import { ENTER, SPACE } from '@wordpress/keycodes';
+import {
+	ENTER,
+	SPACE,
+} from '@wordpress/keycodes';
 import {
 	PanelBody,
 	QueryControls,
@@ -36,6 +39,20 @@ const Inspector = ( props ) => {
 		hasPosts,
 		hasFeaturedImage,
 	} = props;
+
+	const {
+		columns,
+		displayPostContent,
+		displayPostDate,
+		excerptLength,
+		imageSize,
+		imageStyle,
+		listPosition,
+		order,
+		orderBy,
+		postFeedType,
+		postsToShow,
+	} = attributes;
 
 	const isHorizontalStyle = ( 'horizontal' === activeStyle.name );
 
@@ -62,15 +79,49 @@ const Inspector = ( props ) => {
 		},
 	];
 
+	const imageStyleHorizontalOptions = [
+		{
+			value: 'square',
+			label: __( 'Square', 'coblocks' ),
+			tooltip: __( 'Square', 'coblocks' ),
+		},
+		{
+			value: 'circle',
+			label: __( 'Circle', 'coblocks' ),
+			tooltip: __( 'Circle', 'coblocks' ),
+		},
+	];
+
+	const imageStyleStackedOptions = [
+		{
+			value: 'square',
+			label: __( 'Square', 'coblocks' ),
+			tooltip: __( 'Square', 'coblocks' ),
+		},
+		{
+			value: 'four-to-three',
+			label: __( '4:3', 'coblocks' ),
+			tooltip: __( '4:3 Aspect ratio', 'coblocks' ),
+		},
+		{
+			value: 'sixteen-to-nine',
+			label: __( '16:9', 'coblocks' ),
+			tooltip: __( '16:9 Aspect ratio', 'coblocks' ),
+		},
+		{
+			value: 'circle',
+			label: __( 'Circle', 'coblocks' ),
+			tooltip: __( 'Circle', 'coblocks' ),
+		},
+	];
+
 	const columnsCountOnChange = ( selectedColumns ) => {
-		const { postsToShow } = attributes;
 		setAttributes( { columns:
 			( selectedColumns > postsToShow ) ? postsToShow : selectedColumns,
 		} );
 	};
 
 	const postsCountOnChange = ( selectedPosts ) => {
-		const { columns } = attributes;
 		const changedAttributes = { postsToShow: selectedPosts };
 		if ( columns > selectedPosts || ( selectedPosts === 1 && columns !== 1 ) ) {
 			Object.assign( changedAttributes, { columns: selectedPosts } );
@@ -78,37 +129,64 @@ const Inspector = ( props ) => {
 		setAttributes( changedAttributes );
 	};
 
-	if ( isHorizontalStyle && attributes.columns > 2 ) {
+	if ( isHorizontalStyle && columns > 2 ) {
 		columnsCountOnChange( 2 );
 	}
+
+	const gutterOptions = [
+		{
+			value: 'small',
+			/* translators: abbreviation for small size */
+			label: __( 'S', 'coblocks' ),
+			tooltip: __( 'Small', 'coblocks' ),
+		},
+		{
+			value: 'medium',
+			/* translators: abbreviation for medium size */
+			label: __( 'M', 'coblocks' ),
+			tooltip: __( 'Medium', 'coblocks' ),
+		},
+		{
+			value: 'large',
+			/* translators: abbreviation for large size */
+			label: __( 'L', 'coblocks' ),
+			tooltip: __( 'Large', 'coblocks' ),
+		},
+		{
+			value: 'huge',
+			/* translators: abbreviation for largest size */
+			label: __( 'XL', 'coblocks' ),
+			tooltip: __( 'Huge', 'coblocks' ),
+		},
+	];
 
 	const settings = (
 		<PanelBody title={ __( 'Posts Settings', 'coblocks' ) }>
 			<Fragment>
 				<ToggleControl
 					label={ __( 'Post Date', 'coblocks' ) }
-					checked={ attributes.displayPostDate }
+					checked={ displayPostDate }
 					help={
-						attributes.displayPostDate ?
+						displayPostDate ?
 							__( 'Showing the publish date.', 'coblocks' ) :
 							__( 'Toggle to show the publish date.', 'coblocks' )
 					}
-					onChange={ () => setAttributes( { displayPostDate: ! attributes.displayPostDate } ) }
+					onChange={ () => setAttributes( { displayPostDate: ! displayPostDate } ) }
 				/>
 				<ToggleControl
 					label={ __( 'Post Content', 'coblocks' ) }
-					checked={ attributes.displayPostContent }
+					checked={ displayPostContent }
 					help={
-						attributes.displayPostContent ?
+						displayPostContent ?
 							__( 'Showing the post content.', 'coblocks' ) :
 							__( 'Toggle to show the post content.', 'coblocks' )
 					}
-					onChange={ () => setAttributes( { displayPostContent: ! attributes.displayPostContent } ) }
+					onChange={ () => setAttributes( { displayPostContent: ! displayPostContent } ) }
 				/>
-				{ attributes.displayPostContent &&
+				{ displayPostContent &&
 					<RangeControl
 						label={ __( 'Max words in content', 'coblocks' ) }
-						value={ attributes.excerptLength }
+						value={ excerptLength }
 						onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
 						min={ 5 }
 						max={ 75 }
@@ -116,7 +194,7 @@ const Inspector = ( props ) => {
 				}
 				<RangeControl
 					label={ __( 'Columns', 'coblocks' ) }
-					value={ attributes.columns }
+					value={ columns }
 					onChange={ ( value ) => {
 						onUserModifiedColumn();
 						columnsCountOnChange( value );
@@ -125,13 +203,28 @@ const Inspector = ( props ) => {
 					max={ isHorizontalStyle ? Math.min( 2, postCount ) : Math.min( 4, postCount ) }
 					required
 				/>
-
+				{ attributes.columns >= 2 &&
+					<OptionSelectorControl
+						label={ __( 'Gutter', 'coblocks' ) }
+						currentOption={ attributes.gutter }
+						options={ gutterOptions }
+						onChange={ ( gutter ) => setAttributes( { gutter } ) }
+					/>
+				}
+				{ hasFeaturedImage &&
+					<OptionSelectorControl
+						label={ __( 'Thumbnail Style', 'coblocks' ) }
+						options={ isHorizontalStyle ? imageStyleHorizontalOptions : imageStyleStackedOptions }
+						currentOption={ imageStyle }
+						onChange={ imageStyle => setAttributes( { imageStyle } ) }
+					/>
+				}
 				{ isHorizontalStyle && hasFeaturedImage &&
 					<OptionSelectorControl
 						label={ __( 'Thumbnail Size', 'coblocks' ) }
 						options={ sizeOptions }
-						currentOption={ attributes.imageSize }
-						onChange={ ( imageSize ) => setAttributes( { imageSize } ) }
+						currentOption={ imageSize }
+						onChange={ ( newImageSize ) => setAttributes( { imageSize: newImageSize } ) }
 					/>
 				}
 
@@ -142,7 +235,7 @@ const Inspector = ( props ) => {
 	const feedSettings = (
 		<PanelBody title={ __( 'Feed Settings', 'coblocks' ) } initialOpen={ ! hasPosts ? true : false }>
 			<RadioControl
-				selected={ attributes.postFeedType }
+				selected={ postFeedType }
 				options={ [
 					{ label: __( 'My Blog', 'coblocks' ), value: 'internal' },
 					{ label: __( 'External Feed', 'coblocks' ), value: 'external' },
@@ -151,10 +244,10 @@ const Inspector = ( props ) => {
 			/>
 			{ hasPosts ?
 				<Fragment>
-					{ attributes.postFeedType === 'internal' &&
+					{ postFeedType === 'internal' &&
 						<QueryControls
-							order={ attributes.order }
-							orderBy={ attributes.orderBy }
+							order={ order }
+							orderBy={ orderBy }
 							categoriesList={ categoriesList }
 							selectedCategoryId={ categoriesList.categories }
 							onOrderChange={ ( value ) => setAttributes( { order: value } ) }
@@ -164,7 +257,7 @@ const Inspector = ( props ) => {
 					}
 					<RangeControl
 						label={ __( 'Number of posts', 'coblocks' ) }
-						value={ attributes.postsToShow }
+						value={ postsToShow }
 						onChange={ ( value ) => postsCountOnChange( value ) }
 						min={ 1 }
 						max={ 20 }
@@ -178,7 +271,7 @@ const Inspector = ( props ) => {
 			{ hasPosts ?
 				<PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
 					<div className="block-editor-block-styles coblocks-editor-block-styles">
-						{ styleOptions.map( style => (
+						{ styleOptions.map( ( style ) => (
 							<div
 								key={ `style-${ style.name }` }
 								className={ classnames(
@@ -187,7 +280,12 @@ const Inspector = ( props ) => {
 										'is-active': activeStyle === style,
 									}
 								) }
-								onClick={ () => onUpdateStyle( style ) }
+								onClick={ () => {
+									if ( 'horizontal' === style.name && [ 'four-to-three', 'sixteen-to-nine' ].includes( imageStyle ) ) {
+										setAttributes( { imageStyle: 'square' } );
+									}
+									onUpdateStyle( style );
+								} }
 								onKeyDown={ ( event ) => {
 									if ( ENTER === event.keyCode || SPACE === event.keyCode ) {
 										event.preventDefault();
@@ -199,7 +297,7 @@ const Inspector = ( props ) => {
 								aria-label={ style.label || style.name }
 							>
 								<div className="block-editor-block-styles__item-preview">
-									{ attributes.listPosition === 'left' && style.iconAlt ? style.iconAlt : style.icon }
+									{ listPosition === 'left' && style.iconAlt ? style.iconAlt : style.icon }
 								</div>
 								<div className="block-editor-block-styles__item-label">
 									{ style.label || style.name }

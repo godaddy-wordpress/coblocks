@@ -1,0 +1,22 @@
+@import "../../../styles/editor/core/colors";
+@import "../../../styles/editor/core/variables";
+@import "../../../styles/editor/core/breakpoints";
+@import "../../../styles/editor/core/mixins";
+
+.coblocks-modal__content {
+	@include break-small() {
+		max-width: 310px;
+	}
+
+	.components-base-control__help {
+		color: $dark-gray-500;
+		display: block;
+		font-style: normal;
+		padding-left: 37px;
+		padding-top: 2px;
+
+		@include break-small() {
+			padding-left: 28px;
+		}
+	}
+}

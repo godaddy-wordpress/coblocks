@@ -1,4 +1,4 @@
-/*global MutationObserver, jQuery*/
+/*global jQuery*/
 
 /**
  * Internal dependencies.
@@ -39,10 +39,14 @@ class EventsEdit extends Component {
 	constructor() {
 		super( ...arguments );
 
+		const {
+			externalCalendarUrl,
+		} = this.props.attributes;
+
 		this.state = {
 			isEditing: false,
-			showExternalCalendarControls: !! this.props.attributes.externalCalendarUrl || false,
-			externalCalendarUrl: this.props.attributes.externalCalendarUrl,
+			showExternalCalendarControls: !! externalCalendarUrl || false,
+			externalCalendarUrl,
 		};
 
 		this.toggleExternalCalendarControls = this.toggleExternalCalendarControls.bind( this );
@@ -137,6 +141,10 @@ class EventsEdit extends Component {
 			setAttributes,
 		} = this.props;
 
+		const {
+			externalCalendarUrl,
+		} = attributes;
+
 		const toolbarControls = [
 			{
 				icon: 'edit',
@@ -152,17 +160,17 @@ class EventsEdit extends Component {
 					toggleExternalCalendarControls={ this.toggleExternalCalendarControls }
 					showExternalCalendarControls={ this.state.showExternalCalendarControls }
 					eventsRangeOptions={ EVENTS_RANGE_OPTIONS }
-					onChangeEventsToShow={ eventsToShow => setAttributes( { eventsToShow } ) }
-					onChangeEventsRange={ eventsRange => setAttributes( { eventsRange } ) }
+					onChangeEventsToShow={ ( eventsToShow ) => setAttributes( { eventsToShow } ) }
+					onChangeEventsRange={ ( eventsRange ) => setAttributes( { eventsRange } ) }
 				/>
 
-				{ !! attributes.externalCalendarUrl &&
+				{ !! externalCalendarUrl &&
 					<BlockControls>
 						<Toolbar controls={ toolbarControls } />
 					</BlockControls>
 				}
 
-				{ this.state.showExternalCalendarControls && ( ! attributes.externalCalendarUrl || this.state.isEditing ) &&
+				{ this.state.showExternalCalendarControls && ( ! externalCalendarUrl || this.state.isEditing ) &&
 					<Placeholder
 						icon="rss"
 						label="Calendar URL">
@@ -170,7 +178,7 @@ class EventsEdit extends Component {
 						<TextControl
 							placeholder={ __( 'Enter URL here…', 'coblocks' ) }
 							value={ this.state.externalCalendarUrl }
-							onChange={ externalCalendarUrl => this.setState( { externalCalendarUrl } ) }
+							onChange={ ( newExternalCalendarUrl ) => this.setState( { externalCalendarUrl: newExternalCalendarUrl } ) }
 							className={ 'components-placeholder__input' }
 						/>
 						<Button isLarge type="button" onClick={ this.saveExternalCalendarUrl } disabled={ ! this.state.externalCalendarUrl }>
@@ -179,7 +187,7 @@ class EventsEdit extends Component {
 					</Placeholder>
 				}
 
-				{ ! attributes.externalCalendarUrl && ! this.state.showExternalCalendarControls &&
+				{ ! externalCalendarUrl && ! this.state.showExternalCalendarControls &&
 					<div className={ classnames( className, 'coblocks-custom-event' ) }>
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
@@ -190,8 +198,8 @@ class EventsEdit extends Component {
 					</div>
 				}
 
-				<div ref={ el => this.el = el }>
-					{ !! attributes.externalCalendarUrl &&
+				<div ref={ ( el ) => this.el = el }>
+					{ !! externalCalendarUrl &&
 						<ServerSideRender
 							block="coblocks/events"
 							attributes={ this.props.attributes }

@@ -7,7 +7,7 @@
   "projectId": "sovnn2",
   "integrationFolder": "./",
 	"testFiles": "**/*.cypress.js",
-		"env": {
+	"env": {
 		"testURL": "http://localhost:8889",
 		"wpUsername": "admin",
 		"wpPassword": "password"
