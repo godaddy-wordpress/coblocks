@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-02-12T17:30:31+00:00\n"
+"POT-Creation-Date: 2020-02-12T17:50:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -171,6 +171,22 @@ msgstr ""
 
 #: includes/class-coblocks-google-map-block.php:116
 msgid "Google Map API key for map rendering"
+msgstr ""
+
+#: includes/class-coblocks-settings.php:97
+msgid "Setting use to disable or enable typography controls across the site."
+msgstr ""
+
+#: includes/class-coblocks-settings.php:109
+msgid "Setting use to disable or enable custom color controls across the site."
+msgstr ""
+
+#: includes/class-coblocks-settings.php:121
+msgid "Setting use to disable or enable all color controls across the site."
+msgstr ""
+
+#: includes/class-coblocks-settings.php:133
+msgid "Setting use to disable or enable gradient controls and presets across the site."
 msgstr ""
 
 #: src/blocks/events/index.php:122
@@ -1830,7 +1846,7 @@ msgstr ""
 #: src/blocks/gallery-offset/inspector.js:114
 #: src/blocks/icon/inspector.js:106
 #: src/blocks/icon/inspector.js:172
-#: src/components/typography-controls/index.js:204
+#: src/components/typography-controls/index.js:223
 msgid "Size"
 msgstr ""
 
@@ -1887,8 +1903,8 @@ msgstr ""
 #. translators: typography style
 #: src/blocks/gallery-collage/index.js:44
 #: src/components/font-family/index.js:16
-#: src/components/typography-controls/index.js:84
-#: src/components/typography-controls/index.js:102
+#: src/components/typography-controls/index.js:103
+#: src/components/typography-controls/index.js:121
 #: src/extensions/cover-styles/index.js:11
 #: src/extensions/image-styles/index.js:11
 #: src/extensions/list-styles/index.js:11
@@ -3047,7 +3063,7 @@ msgstr ""
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:495
 #: src/blocks/icon/svgs.js:513
-#: src/components/typography-controls/index.js:179
+#: src/components/typography-controls/index.js:198
 msgid "Font"
 msgstr ""
 
@@ -5757,59 +5773,59 @@ msgstr ""
 msgid "Align Cells"
 msgstr ""
 
-#: src/components/typography-controls/index.js:61
+#: src/components/typography-controls/index.js:80
 msgid "Change typography"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:89
-#: src/components/typography-controls/index.js:122
+#: src/components/typography-controls/index.js:108
+#: src/components/typography-controls/index.js:141
 msgid "Normal"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:94
+#: src/components/typography-controls/index.js:113
 msgid "Bold"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:107
+#: src/components/typography-controls/index.js:126
 #: src/formats/uppercase/index.js:25
 #: src/formats/uppercase/index.js:40
 msgid "Uppercase"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:112
+#: src/components/typography-controls/index.js:131
 msgid "Lowercase"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:117
+#: src/components/typography-controls/index.js:136
 msgid "Capitalize"
 msgstr ""
 
-#: src/components/typography-controls/index.js:186
+#: src/components/typography-controls/index.js:205
 msgid "Weight"
 msgstr ""
 
-#: src/components/typography-controls/index.js:195
+#: src/components/typography-controls/index.js:214
 msgid "Transform"
 msgstr ""
 
-#: src/components/typography-controls/index.js:215
+#: src/components/typography-controls/index.js:234
 msgid "Line Height"
 msgstr ""
 
-#: src/components/typography-controls/index.js:226
+#: src/components/typography-controls/index.js:245
 msgid "Letter Spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:238
+#: src/components/typography-controls/index.js:257
 msgid "No Top Spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:243
+#: src/components/typography-controls/index.js:262
 msgid "No Bottom Spacing"
 msgstr ""
 
@@ -5864,6 +5880,43 @@ msgstr ""
 #. translators: block style
 #: src/extensions/button-styles/index.js:18
 msgid "3D"
+msgstr ""
+
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:115
+#: src/extensions/coblocks-settings/index.js:48
+msgid "Editor settings"
+msgstr ""
+
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:122
+msgid "Typography controls"
+msgstr ""
+
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:123
+msgid "Allow block-level typography controls."
+msgstr ""
+
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:129
+msgid "Color settings"
+msgstr ""
+
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:130
+msgid "Allow color settings throughout the editor."
+msgstr ""
+
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:138
+msgid "Custom color pickers"
+msgstr ""
+
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:139
+msgid "Allow styling with custom colors."
+msgstr ""
+
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:149
+msgid "Gradient styles"
+msgstr ""
+
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:150
+msgid "Allow styling with gradient fills."
 msgstr ""
 
 #. translators: block style
