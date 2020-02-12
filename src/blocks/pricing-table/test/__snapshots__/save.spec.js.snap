@@ -6,12 +6,6 @@ exports[`coblocks/pricing-table should render 1`] = `
 <!-- /wp:coblocks/pricing-table -->"
 `;
 
-exports[`coblocks/pricing-table should render center align 1`] = `
-"<!-- wp:coblocks/pricing-table -->
-<div class=\\"wp-block-coblocks-pricing-table has-2-columns has-text-align-center\\"><div class=\\"wp-block-coblocks-pricing-table__inner\\"></div></div>
-<!-- /wp:coblocks/pricing-table -->"
-`;
-
 exports[`coblocks/pricing-table should render column classes 1`] = `
 "<!-- wp:coblocks/pricing-table {\\"count\\":1} -->
 <div class=\\"wp-block-coblocks-pricing-table has-1-columns has-text-align-center\\"><div class=\\"wp-block-coblocks-pricing-table__inner\\"></div></div>
@@ -49,12 +43,6 @@ exports[`coblocks/pricing-table should render content align classes 2`] = `
 `;
 
 exports[`coblocks/pricing-table should render content align classes 3`] = `
-"<!-- wp:coblocks/pricing-table {\\"contentAlign\\":\\"right\\"} -->
-<div class=\\"wp-block-coblocks-pricing-table has-2-columns has-text-align-right\\"><div class=\\"wp-block-coblocks-pricing-table__inner\\"></div></div>
-<!-- /wp:coblocks/pricing-table -->"
-`;
-
-exports[`coblocks/pricing-table should render right align 1`] = `
 "<!-- wp:coblocks/pricing-table {\\"contentAlign\\":\\"right\\"} -->
 <div class=\\"wp-block-coblocks-pricing-table has-2-columns has-text-align-right\\"><div class=\\"wp-block-coblocks-pricing-table__inner\\"></div></div>
 <!-- /wp:coblocks/pricing-table -->"
