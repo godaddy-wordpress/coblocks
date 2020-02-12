@@ -4,7 +4,6 @@
 import applyWithColors from './colors';
 import { BackgroundPanel } from '../../components/background';
 import DimensionsControl from '../../components/dimensions-control/';
-import HeadingToolbar from '../../components/heading-toolbar';
 import OptionSelectorControl from '../../components/option-selector-control';
 
 /**
@@ -39,7 +38,6 @@ class Inspector extends Component {
 			attributes,
 			backgroundColor,
 			clientId,
-			onChangeHeadingLevel,
 			setAttributes,
 			setBackgroundColor,
 			setTextColor,
@@ -150,12 +148,6 @@ class Inspector extends Component {
 							options={ gutterOptions }
 							onChange={ ( gutter ) => setAttributes( { gutter } ) }
 						/> }
-						<HeadingToolbar
-							minLevel={ 1 }
-							maxLevel={ 7 }
-							selectedLevel={ attributes.headingLevel }
-							onChange={ onChangeHeadingLevel }
-						/>
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
 							label={ __( 'Padding', 'coblocks' ) }
