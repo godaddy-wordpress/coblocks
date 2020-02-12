@@ -225,7 +225,7 @@ const Inspector = ( props ) => {
 					<OptionSelectorControl
 						label={ __( 'Thumbnail Size', 'coblocks' ) }
 						options={ sizeOptions }
-						currentOption={ attributes.imageSize }
+						currentOption={ imageSize }
 						onChange={ ( imageSize ) => setAttributes( { imageSize } ) }
 					/>
 				}
@@ -273,7 +273,7 @@ const Inspector = ( props ) => {
 			{ hasPosts ?
 				<PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
 					<div className="block-editor-block-styles coblocks-editor-block-styles">
-						{ styleOptions.map( style => (
+						{ styleOptions.map( ( style ) => (
 							<div
 								key={ `style-${ style.name }` }
 								className={ classnames(
@@ -288,7 +288,7 @@ const Inspector = ( props ) => {
 									}
 									onUpdateStyle( style );
 								} }
-								onKeyDown={ event => {
+								onKeyDown={ ( event ) => {
 									if ( ENTER === event.keyCode || SPACE === event.keyCode ) {
 										event.preventDefault();
 										onUpdateStyle( style );
