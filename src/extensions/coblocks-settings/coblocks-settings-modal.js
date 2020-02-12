@@ -8,6 +8,7 @@ import Section from './section';
  */
 import { Component } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
+import { applyFilters } from '@wordpress/hooks';
 import {
 	CheckboxControl,
 	Modal,
@@ -111,7 +112,7 @@ class CoBlocksSettingsModal extends Component {
 
 		return (
 			<Modal
-				title={ __( 'Editor settings', 'coblocks' ) }
+				title={ applyFilters( 'coblocks-settings-panel-title', __( 'Editor settings', 'coblocks' ) ) }
 				onRequestClose={ closeModal }
 			>
 				<div className="coblocks-modal__content">
