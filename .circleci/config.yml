@@ -24,12 +24,13 @@ workflows:
           requires:
             - build
             - lint_php
-      # - php73:
-      #     filters:
-      #       tags:
-      #         only: /^(?!canary).*$/
-      #     requires:
-      #       - lint_php
+      - php73:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - build
+            - lint_php
       # - jest:
       #     filters:
       #       tags:
@@ -252,10 +253,11 @@ jobs:
           name: "Install Dependencies"
           command: |
             bash .dev/bin/install-dependencies.sh
-            cp -a $HOME/project/build/coblocks /tmp/wordpress/wp-content/plugins/coblocks
+            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
           name: "Run PHPUnit - Single Site - Generate Coverage Reports"
           command: composer run test -- --coverage-html=/tmp/artifacts/code-coverage/phpunit/html --log-junit=/tmp/artifacts/code-coverage/phpunit/results.xml
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
       - store_artifacts:
           path: /tmp/artifacts/code-coverage/
           destination: phpunit-coverage
@@ -264,14 +266,28 @@ jobs:
       - run:
           name: "Run PHPUnit - Multi Site"
           command: WP_MULTISITE=1 composer run test
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
 
   php73:
     docker:
       - image: circleci/php:7.3
       - image: circleci/mysql:5.7
     steps:
+      - checkout
       - attach_workspace:
-          at: /home/circleci
+          at: ~/project
+      - restore_cache:
+          keys:
+            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Branch }}
+      - run:
+          name: Install composer dependencies
+          command: |
+            composer install
+      - save_cache:
+          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+          paths:
+            - ~/project/vendor
       - run:
           name: Disable xdebug PHP extension
           command: |
@@ -293,7 +309,7 @@ jobs:
           name: "Install Dependencies"
           command: |
             bash .dev/bin/install-dependencies.sh
-            cp -a $HOME/project/ /tmp/wordpress/wp-content/plugins/coblocks
+            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
           name: "Run PHPUnit - Single Site - Generate Coverage Reports"
           command: composer run test -- --coverage-html=/tmp/artifacts/code-coverage/phpunit/html --log-junit=/tmp/artifacts/code-coverage/phpunit/results.xml
