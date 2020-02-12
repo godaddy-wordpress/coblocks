@@ -5,3 +5,4 @@ dist
 test
 vendor
 wordpress
+*.js
