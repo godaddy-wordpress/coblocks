@@ -104,4 +104,57 @@ describe( name, () => {
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( JSON.stringify( { houzz: url } ) );
 	} );
+
+	it( 'should render with styles', () => {
+		const styleClasses = [
+			'is-style-circular',
+			'is-style-icon-and-text',
+			'is-style-text',
+			'is-style-icon',
+			'is-style-mask',
+		];
+		styleClasses.forEach( styleClass => {
+			block.attributes.className = styleClass;
+			serializedBlock = serialize( block );
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( styleClass );
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
+	} );
+
+	it( 'should render with className', () => {
+		block.attributes.className = 'my-custom-class';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '{"className":"my-custom-class"}' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with hasColors', () => {
+		block.attributes.hasColors = false;
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '{"hasColors":false}' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with iconSize', () => {
+		block.attributes.iconSize = '22';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '{"iconSize":"22"}' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with textAlign', () => {
+		block.attributes.textAlign = 'left';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '{"textAlign":"left"}' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
 } );
