@@ -345,8 +345,17 @@ jobs:
             - ~/project/node_modules
             - ~/.cache/yarn
       - run:
-          name: Run jest tests
-          command: JEST_JUNIT_OUTPUT_DIR="/tmp/artifacts/code-coverage/jest/" JEST_JUNIT_OUTPUT_NAME="results.xml" npm run test:unit -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html
+          name: Run Jest tests
+          command: |
+            JEST_JUNIT_OUTPUT_DIR="/tmp/artifacts/code-coverage/jest/"
+            JEST_JUNIT_OUTPUT_NAME="results.xml"
+
+            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
+              npm run test:unit -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html
+            else
+              FILES=$(git diff HEAD^ --name-only --diff-filter=M '*.js')
+              npm run test:unit -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html --findRelatedTests $FILES
+            fi
       - store_artifacts:
           path: /tmp/artifacts/code-coverage/
           destination: jest-coverage
