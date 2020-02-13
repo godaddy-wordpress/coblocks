@@ -1,6 +1,7 @@
 /**
  * Internal dependencies
  */
+import deprecated from './deprecated';
 import edit from './edit';
 import icon from './icon';
 import metadata from './block.json';
@@ -35,6 +36,24 @@ const settings = {
 		/* translators: block keyword */
 		__( 'seal', 'coblocks' ),
 	],
+	styles: [
+		{
+			name: 'default',
+			/* translators: block style */
+			label: __( 'Default', 'coblocks' ),
+			isDefault: true,
+		},
+		{
+			name: 'black-and-white',
+			/* translators: block style */
+			label: __( 'Black & White', 'coblocks' ),
+		},
+		{
+			name: 'grayscale',
+			/* translators: block style */
+			label: __( 'Grayscale', 'coblocks' ),
+		},
+	],
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
@@ -50,6 +69,7 @@ const settings = {
 	attributes,
 	edit,
 	save,
+	deprecated,
 };
 
 export { name, category, metadata, settings, icon };
