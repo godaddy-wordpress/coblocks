@@ -38,7 +38,7 @@ describe( name, () => {
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
-	it( 'should render background color', () => {
+	it( 'should render with background color', () => {
 		block.attributes.textColor = 'primary';
 		serializedBlock = serialize( block );
 
@@ -47,7 +47,7 @@ describe( name, () => {
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
-	it( 'should render custom background color', () => {
+	it( 'should render with custom background color', () => {
 		block.attributes.customBackgroundColor = '#745151';
 		serializedBlock = serialize( block );
 
@@ -56,7 +56,7 @@ describe( name, () => {
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
-	it( 'should render text color', () => {
+	it( 'should render with text color', () => {
 		block.attributes.textColor = 'background';
 		serializedBlock = serialize( block );
 
@@ -65,7 +65,7 @@ describe( name, () => {
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
-	it( 'should render custom text color', () => {
+	it( 'should render with custom text color', () => {
 		block.attributes.customTextColor = '#ffda7c';
 		serializedBlock = serialize( block );
 
