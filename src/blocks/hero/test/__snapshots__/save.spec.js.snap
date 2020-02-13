@@ -6,6 +6,48 @@ exports[`coblocks/hero should render 1`] = `
 <!-- /wp:coblocks/hero -->"
 `;
 
+exports[`coblocks/hero should render with backgroundColor attribute 1`] = `
+"<!-- wp:coblocks/hero {\\"backgroundColor\\":\\"accent\\"} -->
+<div class=\\"wp-block-coblocks-hero alignfull\\"><div class=\\"wp-block-coblocks-hero__inner has-accent-background-color has-background hero-center-left-align has-padding has-huge-padding has-accent-background-color\\" style=\\"min-height:500px\\"><div class=\\"wp-block-coblocks-hero__content-wrapper\\"><div class=\\"wp-block-coblocks-hero__content\\" style=\\"max-width:560px\\"></div></div></div></div>
+<!-- /wp:coblocks/hero -->"
+`;
+
+exports[`coblocks/hero should render with className attribute 1`] = `
+"<!-- wp:coblocks/hero {\\"className\\":\\"my-custom-class\\"} -->
+<div class=\\"wp-block-coblocks-hero alignfull my-custom-class\\"><div class=\\"wp-block-coblocks-hero__inner hero-center-left-align has-padding has-huge-padding\\" style=\\"min-height:500px\\"><div class=\\"wp-block-coblocks-hero__content-wrapper\\"><div class=\\"wp-block-coblocks-hero__content\\" style=\\"max-width:560px\\"></div></div></div></div>
+<!-- /wp:coblocks/hero -->"
+`;
+
+exports[`coblocks/hero should render with contentAlign attribute 1`] = `
+"<!-- wp:coblocks/hero {\\"contentAlign\\":\\"left\\"} -->
+<div class=\\"wp-block-coblocks-hero alignfull\\"><div class=\\"wp-block-coblocks-hero__inner hero-center-left-align has-padding has-huge-padding has-left-content\\" style=\\"min-height:500px\\"><div class=\\"wp-block-coblocks-hero__content-wrapper\\"><div class=\\"wp-block-coblocks-hero__content\\" style=\\"max-width:560px\\"></div></div></div></div>
+<!-- /wp:coblocks/hero -->"
+`;
+
+exports[`coblocks/hero should render with contentAlign attribute 2`] = `
+"<!-- wp:coblocks/hero {\\"contentAlign\\":\\"center\\"} -->
+<div class=\\"wp-block-coblocks-hero alignfull\\"><div class=\\"wp-block-coblocks-hero__inner hero-center-left-align has-padding has-huge-padding has-center-content\\" style=\\"min-height:500px\\"><div class=\\"wp-block-coblocks-hero__content-wrapper\\"><div class=\\"wp-block-coblocks-hero__content\\" style=\\"max-width:560px\\"></div></div></div></div>
+<!-- /wp:coblocks/hero -->"
+`;
+
+exports[`coblocks/hero should render with contentAlign attribute 3`] = `
+"<!-- wp:coblocks/hero {\\"contentAlign\\":\\"right\\"} -->
+<div class=\\"wp-block-coblocks-hero alignfull\\"><div class=\\"wp-block-coblocks-hero__inner hero-center-left-align has-padding has-huge-padding has-right-content\\" style=\\"min-height:500px\\"><div class=\\"wp-block-coblocks-hero__content-wrapper\\"><div class=\\"wp-block-coblocks-hero__content\\" style=\\"max-width:560px\\"></div></div></div></div>
+<!-- /wp:coblocks/hero -->"
+`;
+
+exports[`coblocks/hero should render with customBackgroundColor attribute 1`] = `
+"<!-- wp:coblocks/hero {\\"customBackgroundColor\\":\\"#5a4a4f\\"} -->
+<div class=\\"wp-block-coblocks-hero alignfull\\"><div class=\\"wp-block-coblocks-hero__inner has-background hero-center-left-align has-padding has-huge-padding\\" style=\\"background-color:#5a4a4f;min-height:500px\\"><div class=\\"wp-block-coblocks-hero__content-wrapper\\"><div class=\\"wp-block-coblocks-hero__content\\" style=\\"max-width:560px\\"></div></div></div></div>
+<!-- /wp:coblocks/hero -->"
+`;
+
+exports[`coblocks/hero should render with customTextColor attribute 1`] = `
+"<!-- wp:coblocks/hero {\\"customTextColor\\":\\"#5a4a4f\\"} -->
+<div class=\\"wp-block-coblocks-hero alignfull has-text-color\\" style=\\"color:#5a4a4f\\"><div class=\\"wp-block-coblocks-hero__inner hero-center-left-align has-padding has-huge-padding\\" style=\\"min-height:500px\\"><div class=\\"wp-block-coblocks-hero__content-wrapper\\"><div class=\\"wp-block-coblocks-hero__content\\" style=\\"max-width:560px\\"></div></div></div></div>
+<!-- /wp:coblocks/hero -->"
+`;
+
 exports[`coblocks/hero should render with fullscreen & layout attributes 1`] = `
 "<!-- wp:coblocks/hero {\\"layout\\":\\"top-left\\",\\"fullscreen\\":\\"true\\"} -->
 <div class=\\"wp-block-coblocks-hero alignfull\\"><div class=\\"wp-block-coblocks-hero__inner hero-top-left-align has-padding has-huge-padding is-fullscreen\\"><div class=\\"wp-block-coblocks-hero__content-wrapper\\"><div class=\\"wp-block-coblocks-hero__content\\" style=\\"max-width:560px\\"></div></div></div></div>
@@ -57,5 +99,11 @@ exports[`coblocks/hero should render with fullscreen & layout attributes 8`] = `
 exports[`coblocks/hero should render with fullscreen & layout attributes 9`] = `
 "<!-- wp:coblocks/hero {\\"layout\\":\\"bottom-right\\",\\"fullscreen\\":\\"true\\"} -->
 <div class=\\"wp-block-coblocks-hero alignfull\\"><div class=\\"wp-block-coblocks-hero__inner hero-bottom-right-align has-padding has-huge-padding is-fullscreen\\"><div class=\\"wp-block-coblocks-hero__content-wrapper\\"><div class=\\"wp-block-coblocks-hero__content\\" style=\\"max-width:560px\\"></div></div></div></div>
+<!-- /wp:coblocks/hero -->"
+`;
+
+exports[`coblocks/hero should render with textColor attribute 1`] = `
+"<!-- wp:coblocks/hero {\\"textColor\\":\\"accent\\"} -->
+<div class=\\"wp-block-coblocks-hero alignfull has-text-color has-accent-color\\"><div class=\\"wp-block-coblocks-hero__inner hero-center-left-align has-padding has-huge-padding\\" style=\\"min-height:500px\\"><div class=\\"wp-block-coblocks-hero__content-wrapper\\"><div class=\\"wp-block-coblocks-hero__content\\" style=\\"max-width:560px\\"></div></div></div></div>
 <!-- /wp:coblocks/hero -->"
 `;
