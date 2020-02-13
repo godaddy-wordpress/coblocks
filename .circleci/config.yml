@@ -87,7 +87,7 @@ jobs:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
             - composer-deps-{{ .Branch }}
       - run:
-          name: Install composer dependencies
+          name: Install Composer dependencies
           command: |
             composer install
       - save_cache:
@@ -117,7 +117,7 @@ jobs:
             - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
             - yarn-deps-{{ .Branch }}
       - run:
-          name: Install node dependencies
+          name: Install Node dependencies
           command: |
             PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
             yarn install --frozen-lockfile
@@ -149,7 +149,7 @@ jobs:
             - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
             - yarn-deps-{{ .Branch }}
       - run:
-          name: Install node dependencies
+          name: Install Node dependencies
           command: |
             PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
             yarn install --frozen-lockfile
@@ -182,7 +182,7 @@ jobs:
             - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
             - yarn-deps-{{ .Branch }}
       - run:
-          name: Install node dependencies
+          name: Install Node dependencies
           command: |
             PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
             yarn install --frozen-lockfile
@@ -196,7 +196,7 @@ jobs:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
             - composer-deps-{{ .Branch }}
       - run:
-          name: Install composer dependencies
+          name: Install Composer dependencies
           command: |
             composer install
       - save_cache:
@@ -227,7 +227,7 @@ jobs:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
             - composer-deps-{{ .Branch }}
       - run:
-          name: Install composer dependencies
+          name: Install Composer dependencies
           command: |
             composer install
       - save_cache:
@@ -283,7 +283,7 @@ jobs:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
             - composer-deps-{{ .Branch }}
       - run:
-          name: Install composer dependencies
+          name: Install Composer dependencies
           command: |
             composer install
       - save_cache:
@@ -336,7 +336,7 @@ jobs:
             - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
             - yarn-deps-{{ .Branch }}
       - run:
-          name: Install node dependencies
+          name: Install Node dependencies
           command: |
             yarn install --frozen-lockfile
       - save_cache:
@@ -368,8 +368,9 @@ jobs:
       - image: circleci/mysql:5.7
     parallelism: 4
     steps:
+      - checkout
       - attach_workspace:
-          at: /home/circleci
+          at: ~/project
       - run:
           name: Setup spec files to run based on git diff-tree
           command: bash .dev/bin/setup-test-specs.sh
@@ -430,7 +431,7 @@ jobs:
             - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
             - yarn-deps-{{ .Branch }}
       - run:
-          name: Install node dependencies
+          name: Install Node dependencies
           command: |
             yarn install --frozen-lockfile
       - save_cache:
@@ -443,7 +444,7 @@ jobs:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
             - composer-deps-{{ .Branch }}
       - run:
-          name: Install composer dependencies
+          name: Install Composer dependencies
           command: |
             composer install
       - save_cache:
@@ -500,7 +501,7 @@ jobs:
             - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
             - yarn-deps-{{ .Branch }}
       - run:
-          name: Install node dependencies
+          name: Install Node dependencies
           command: |
             yarn install --frozen-lockfile
       - save_cache:
@@ -513,7 +514,7 @@ jobs:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
             - composer-deps-{{ .Branch }}
       - run:
-          name: Install composer dependencies
+          name: Install Composer dependencies
           command: |
             composer install
       - save_cache:
