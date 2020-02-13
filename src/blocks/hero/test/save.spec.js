@@ -86,4 +86,23 @@ describe( 'coblocks/hero', () => {
 			blockDOM.window.document.querySelector( '.wp-block-coblocks-hero__content' )
 		).toHaveStyle( 'max-width: 750px' );
 	} );
+
+	it( 'should render with fullscreen & layout attributes', () => {
+		let layoutOptions = [
+			'top-left', 'top-center', 'top-right',
+			'center-left', 'center-center', 'center-right',
+			'bottom-left', 'bottom-center', 'bottom-right',
+		]
+		layoutOptions.forEach( ( layoutOption ) => {
+			block.attributes.fullscreen = 'true';
+			block.attributes.layout = layoutOption;
+			serializedBlock = serialize( block );
+			expect( serializedBlock ).toBeDefined();		
+			expect( serializedBlock ).toContain( '"fullscreen":"true"' );
+			expect( serializedBlock ).toContain( 'is-fullscreen' );
+			layoutOption !== 'center-left' && expect( serializedBlock ).toContain( `"layout":"${layoutOption}"` ); // Attribute not in markup for default layout
+			expect( serializedBlock ).toContain( `hero-${layoutOption}-align` );
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
+	} );
 } );
