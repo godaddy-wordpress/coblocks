@@ -35,26 +35,23 @@ export default function save( { attributes, className } ) {
 
 	return (
 		<div className={ classes }>
-			{ Object.keys( imageChunks ).map( ( keyOuter ) => {
-				const images = imageChunks[ keyOuter ];
-				return (
-					<div className="wp-block-coblocks-logos__row" key={ 'wrapper-' + keyOuter }>
-						{ images.map( ( img, index ) => {
-							return (
-								<div style={ { width: img.width || ( 100 / images.length ) + '%' } } key={ 'logo-' + keyOuter }>
-									<img
-										key={ 'img-' + index }
-										src={ img.url }
-										alt={ img.alt }
-										data-id={ img.id }
-										data-width={ img.width || ( 100 / images.length ) + '%' }
-									/>
-								</div>
-							);
-						} ) }
-					</div>
-				);
-			} ) }
+			{ Object.keys( imageChunks ).map( ( keyOuter ) => (
+				<div className="wp-block-coblocks-logos__row" key={ 'wrapper-' + keyOuter }>
+					{ imageChunks[ keyOuter ].map( ( img, index ) => {
+						return (
+							<div style={ { width: img.width || ( 100 / images.length ) + '%' } } key={ 'logo-' + keyOuter }>
+								<img
+									key={ 'img-' + index }
+									src={ img.url }
+									alt={ img.alt }
+									data-id={ img.id }
+									data-width={ img.width || ( 100 / images.length ) + '%' }
+								/>
+							</div>
+						);
+					} ) }
+				</div>
+			) ) }
 		</div>
 	);
 }
