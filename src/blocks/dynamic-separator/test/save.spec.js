@@ -35,7 +35,7 @@ describe( name, () => {
 	} );
 
 	it( 'should render with styles', () => {
-		[ 'is-style-dots', 'is-style-fullwidth', 'is-style-line' ].forEach( styleClass => {
+		[ 'is-style-dots', 'is-style-fullwidth', 'is-style-line' ].forEach( ( styleClass ) => {
 			block.attributes.className = styleClass;
 			serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();

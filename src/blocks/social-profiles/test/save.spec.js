@@ -113,7 +113,7 @@ describe( name, () => {
 			'is-style-icon',
 			'is-style-mask',
 		];
-		styleClasses.forEach( styleClass => {
+		styleClasses.forEach( ( styleClass ) => {
 			block.attributes.className = styleClass;
 			serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();

@@ -28,7 +28,7 @@ describe( name, () => {
 	} );
 
 	it( 'should render up to 4 buttons', () => {
-		[ 1, 2, 3, 4 ].forEach( items => {
+		[ 1, 2, 3, 4 ].forEach( ( items ) => {
 			block.attributes.items = items;
 			serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();
