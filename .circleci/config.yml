@@ -386,9 +386,34 @@ jobs:
             sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
             sudo rm -f /etc/php/*/conf.d/*xdebug.ini
             sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
+      - restore_cache:
+          keys:
+            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-{{ .Branch }}
+      - run:
+          name: Install Node dependencies
+          command: |
+            PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+            yarn install --frozen-lockfile
+      - save_cache:
+          key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/project/node_modules
+            - ~/.cache/yarn
+      - restore_cache:
+          keys:
+            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Branch }}
+      - run:
+          name: Install Composer dependencies
+          command: |
+            composer install
+      - save_cache:
+          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+          paths:
+            - ~/project/vendor
       - run:
           name: Install dependencies
-            composer install
             bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
