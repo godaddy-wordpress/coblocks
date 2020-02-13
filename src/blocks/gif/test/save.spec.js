@@ -46,4 +46,20 @@ describe( name, () => {
 		expect( serializedBlock ).toContain( 'alt text' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
+
+	it( 'should render with align attribute', () => {
+		let alignOptions = [
+			'left', 'center', 'right', 'full', 'wide',
+		]
+		alignOptions.forEach( ( alignOption ) => {
+			block.attributes.url = 'https://wordpress.com/wp-content/uploads/1234/56/image-1.gif';
+			block.attributes.align = alignOption;
+			serializedBlock = serialize( block );
+			expect( serializedBlock ).toBeDefined();		
+			expect( serializedBlock ).toContain( 'src="https://wordpress.com/wp-content/uploads/1234/56/image-1.gif"' );
+			expect( serializedBlock ).toContain( `{"align":"${alignOption}"` );
+			expect( serializedBlock ).toContain( `align${alignOption}` );
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
+	} );
 } );
