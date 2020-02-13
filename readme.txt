@@ -6,7 +6,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 1.20.1
+Stable tag: 1.21.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -121,27 +121,63 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Enhancements
-* Introduce the [Events block](https://github.com/godaddy-wordpress/coblocks/pull/883) 🎉
-* [Add support for Gutenberg 7.2](https://github.com/godaddy-wordpress/coblocks/pull/1272)
-* Tweak Map block ["Edit location" icon](https://github.com/godaddy-wordpress/coblocks/pull/1300)
-* [Refactor to use proper spacing utilities](https://github.com/godaddy-wordpress/coblocks/pull/1253)
+* Add gutter support to Posts block [#1325](https://github.com/godaddy-wordpress/coblocks/pull/1325)
+* Add heading level control to Features block [#1309](https://github.com/godaddy-wordpress/coblocks/pull/1309)
+* Add styles to Post block featured images [#1315](https://github.com/godaddy-wordpress/coblocks/pull/1315)
+* Introduce CoBlocks editor settings panel [#1313](https://github.com/godaddy-wordpress/coblocks/pull/1313)
+* Migration from CGB to @wordpress/scripts [#1183](https://github.com/godaddy-wordpress/coblocks/pull/1183)
+* Remove one column option from the Row block [#1308](https://github.com/godaddy-wordpress/coblocks/pull/1308)
+* Replace ButtonGroup controls with OptionSelectorControl for improved UX [#1323](https://github.com/godaddy-wordpress/coblocks/pull/1323)
 
 ### Bug Fixes
-* Fix [template selector in the Form block](https://github.com/godaddy-wordpress/coblocks/pull/1292) when Gutenberg is active
-* [Explicitly pass the block type name](https://github.com/godaddy-wordpress/coblocks/pull/1302) when registering on the server side
-* Fix Gallery blocks when [uploading images](https://github.com/godaddy-wordpress/coblocks/pull/1262)
-* Fix [custom links added to images](https://github.com/godaddy-wordpress/coblocks/pull/1250) in the Offset Gallery block
+* Don't translate date strings in the iCal parser [#1337](https://github.com/godaddy-wordpress/coblocks/pull/1337)
+* Ensure hero block custom classes are applied [#1335](https://github.com/godaddy-wordpress/coblocks/pull/1335)
+* Fix Gluten Free attribute display on Food & Drinks block [#1347](https://github.com/godaddy-wordpress/coblocks/pull/1347)
+* Fix Icon block reset button for improved i18n support [#1310](https://github.com/godaddy-wordpress/coblocks/pull/1310)
+* Fix block toolbar interactions within the Hero block [#1329](https://github.com/godaddy-wordpress/coblocks/pull/1329)
+* Fix gallery block custom link persistence [#1320](https://github.com/godaddy-wordpress/coblocks/pull/1320)
+* Fix navigation arrow position on Carousel block [#1353](https://github.com/godaddy-wordpress/coblocks/pull/1353)
+* Fix typo in the Stacked gallery block description [#1351](https://github.com/godaddy-wordpress/coblocks/pull/1351)
+* Reinitialize Flickity carousel when used inside an Accordion block [#1341](https://github.com/godaddy-wordpress/coblocks/pull/1341)
+* Skip empty values in generated styles from the DimensionsControl [#1333](https://github.com/godaddy-wordpress/coblocks/pull/1333)
+* Stack Buttons block on mobile [#1334](https://github.com/godaddy-wordpress/coblocks/pull/1334)
 
 ### Misc
-* [Remove typography controls](https://github.com/godaddy-wordpress/coblocks/pull/1299) from Features block
-* [Switch padding and margin](https://github.com/godaddy-wordpress/coblocks/pull/1281) DimensionsControls
-* [Remove Typography controls](https://github.com/godaddy-wordpress/coblocks/pull/1259) from the core Cover block
-* When the core/buttons block is registered, [migrate from the coblocks/buttons block](https://github.com/godaddy-wordpress/coblocks/pull/1241)
-* [Removed unused class](https://github.com/godaddy-wordpress/coblocks/pull/1271) from Accordion inspector
-* [Remove the enqueing of the utilities stylesheet](https://github.com/godaddy-wordpress/coblocks/pull/1260)
-* [Pass block name to custom class helper](https://github.com/godaddy-wordpress/coblocks/pull/1294)
-* [E2E Compatibility Refactor](https://github.com/godaddy-wordpress/coblocks/pull/1261)
-
-### 1.20.1
-* Fix Slick carousel not being enqueued for the Events block
-* Fix block.json file missing for the Events block
+* Add consistent labels [#1330](https://github.com/godaddy-wordpress/coblocks/pull/1330)
+* CI: Fix E2E job not finding WP-CLI binary [#1338](https://github.com/godaddy-wordpress/coblocks/pull/1338)
+* Fix WPCS error [#1311](https://github.com/godaddy-wordpress/coblocks/pull/1311)
+* Improve Author block stability through E2E testing [#1291](https://github.com/godaddy-wordpress/coblocks/pull/1291)
+* Improve Buttons block stability through E2E testing [#1293](https://github.com/godaddy-wordpress/coblocks/pull/1293)
+* Improve Click to Tweet block stability through E2E testing [#1295](https://github.com/godaddy-wordpress/coblocks/pull/1295)
+* Improve Dynamic HR block stability through E2E testing [#1296](https://github.com/godaddy-wordpress/coblocks/pull/1296)
+* Improve Events block stability through E2E testing [#1306](https://github.com/godaddy-wordpress/coblocks/pull/1306)
+* Improve Features block stability through E2E testing [#1274](https://github.com/godaddy-wordpress/coblocks/pull/1274)
+* Improve Food and Drinks block stability through E2E testing [#1278](https://github.com/godaddy-wordpress/coblocks/pull/1278)
+* Improve Form block stability through E2E testing [#1297](https://github.com/godaddy-wordpress/coblocks/pull/1297)
+* Improve Gallery Carousel block stability through E2E testing [#1265](https://github.com/godaddy-wordpress/coblocks/pull/1265)
+* Improve Gallery Collage block stability through E2E testing [#1266](https://github.com/godaddy-wordpress/coblocks/pull/1266)
+* Improve Gallery Masonry block stability through E2E testing [#1267](https://github.com/godaddy-wordpress/coblocks/pull/1267)
+* Improve Gallery Offset block stability through E2E testing [#1268](https://github.com/godaddy-wordpress/coblocks/pull/1268)
+* Improve Gallery Stacked block stability through E2E testing [#1269](https://github.com/godaddy-wordpress/coblocks/pull/1269)
+* Improve Gif block stability through E2E testing [#1289](https://github.com/godaddy-wordpress/coblocks/pull/1289)
+* Improve Gist block stability through E2E testing [#1288](https://github.com/godaddy-wordpress/coblocks/pull/1288)
+* Improve Hero block stability through E2E testing [#1287](https://github.com/godaddy-wordpress/coblocks/pull/1287)
+* Improve Icon block stability through E2E testing [#1298](https://github.com/godaddy-wordpress/coblocks/pull/1298)
+* Improve Logos block stability through E2E testing [#1286](https://github.com/godaddy-wordpress/coblocks/pull/1286)
+* Improve Map block stability through E2E testing [#1285](https://github.com/godaddy-wordpress/coblocks/pull/1285)
+* Improve Media Card block stability through E2E testing [#1284](https://github.com/godaddy-wordpress/coblocks/pull/1284)
+* Improve Post Carousel block stability through E2E testing [#1283](https://github.com/godaddy-wordpress/coblocks/pull/1283)
+* Improve Posts block stability through E2E testing [#1282](https://github.com/godaddy-wordpress/coblocks/pull/1282)
+* Improve Pricing Table block stability through E2E testing [#1273](https://github.com/godaddy-wordpress/coblocks/pull/1273)
+* Improve Row block stability through E2E testing [#1280](https://github.com/godaddy-wordpress/coblocks/pull/1280)
+* Improve Services block stability through E2E testing [#1279](https://github.com/godaddy-wordpress/coblocks/pull/1279)
+* Improve Shape Divider block stability through E2E testing [#1270](https://github.com/godaddy-wordpress/coblocks/pull/1270)
+* Improve Shape Divider style previews for WordPress 5.3 [#1111](https://github.com/godaddy-wordpress/coblocks/pull/1111)
+* Improve Share block stability through E2E testing [#1301](https://github.com/godaddy-wordpress/coblocks/pull/1301)
+* Improve Social Profiles block stability through E2E testing [#1304](https://github.com/godaddy-wordpress/coblocks/pull/1304)
+* Move pull request template [#1346](https://github.com/godaddy-wordpress/coblocks/pull/1346)
+* Rename pull-request-template to pull_request_template [#1345](https://github.com/godaddy-wordpress/coblocks/pull/1345)
+* Tweak attribute formatting for consistency [#1344](https://github.com/godaddy-wordpress/coblocks/pull/1344)
+* Update issue templates [#1342](https://github.com/godaddy-wordpress/coblocks/pull/1342)
+* Update plugin assets with new GoDaddy Branding [#1321](https://github.com/godaddy-wordpress/coblocks/pull/1321)
+* Use new banner on the README [#1343](https://github.com/godaddy-wordpress/coblocks/pull/1343)

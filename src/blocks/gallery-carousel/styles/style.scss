@@ -76,8 +76,9 @@
 		}
 
 		&.previous {
-			width: 62px;
 			height: 62px;
+			left: 0;
+			width: 62px;
 
 			&::after {
 				width: 32px;

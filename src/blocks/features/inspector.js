@@ -5,6 +5,7 @@ import applyWithColors from './colors';
 import { BackgroundPanel } from '../../components/background';
 import DimensionsControl from '../../components/dimensions-control/';
 import HeadingToolbar from '../../components/heading-toolbar';
+import OptionSelectorControl from '../../components/option-selector-control';
 
 /**
  * WordPress dependencies
@@ -48,6 +49,7 @@ class Inspector extends Component {
 		const {
 			columns,
 			gutter,
+			headingLevel,
 			marginBottom,
 			marginBottomMobile,
 			marginBottomTablet,
@@ -85,11 +87,35 @@ class Inspector extends Component {
 		} = attributes;
 
 		const gutterOptions = [
-			{ value: 'no', label: __( 'None', 'coblocks' ) },
-			{ value: 'small', label: __( 'Small', 'coblocks' ) },
-			{ value: 'medium', label: __( 'Medium', 'coblocks' ) },
-			{ value: 'large', label: __( 'Large', 'coblocks' ) },
-			{ value: 'huge', label: __( 'Huge', 'coblocks' ) },
+			{
+				value: 'no',
+				label: __( 'None', 'coblocks' ),
+				shortName: __( 'None', 'coblocks' ),
+			},
+			{
+				value: 'small',
+				/* translators: abbreviation for small size */
+				label: __( 'S', 'coblocks' ),
+				tooltip: __( 'Small', 'coblocks' ),
+			},
+			{
+				value: 'medium',
+				/* translators: abbreviation for medium size */
+				label: __( 'M', 'coblocks' ),
+				tooltip: __( 'Medium', 'coblocks' ),
+			},
+			{
+				value: 'large',
+				/* translators: abbreviation for large size */
+				label: __( 'L', 'coblocks' ),
+				tooltip: __( 'Large', 'coblocks' ),
+			},
+			{
+				value: 'huge',
+				/* translators: abbreviation for largest size */
+				label: __( 'XL', 'coblocks' ),
+				tooltip: __( 'Huge', 'coblocks' ),
+			},
 		];
 
 		return (
@@ -119,19 +145,16 @@ class Inspector extends Component {
 							min={ 1 }
 							max={ 4 }
 						/>
-						{ columns >= 2 &&
-							<SelectControl
-								label={ __( 'Gutter', 'coblocks' ) }
-								value={ gutter }
-								options={ gutterOptions }
-								help={ __( 'Space between each column.', 'coblocks' ) }
-								onChange={ ( value ) => setAttributes( { gutter: value } ) }
-							/>
-						}
+						{ columns >= 2 && <OptionSelectorControl
+							label={ __( 'Gutter', 'coblocks' ) }
+							currentOption={ gutter }
+							options={ gutterOptions }
+							onChange={ ( gutter ) => setAttributes( { gutter } ) }
+						/> }
 						<HeadingToolbar
 							minLevel={ 1 }
 							maxLevel={ 7 }
-							selectedLevel={ attributes.headingLevel }
+							selectedLevel={ headingLevel }
 							onChange={ onChangeHeadingLevel }
 						/>
 						<DimensionsControl { ...this.props }
