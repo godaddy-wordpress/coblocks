@@ -380,47 +380,60 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Update npm
-          command: sudo npm install -g npm@latest
-      - run:
-          name: Install Grunt.js
-          command: sudo npm install -g grunt-cli
-      - run:
           name: Install SVN
           command: sudo apt-get update && sudo apt-get install subversion
       - run:
           name: Install PHP
-          command: sudo apt-get install php libapache2-mod-php php-mbstring
+          command: sudo apt-get install php libapache2-mod-php php-mbstring php-xml php-curl
       - run:
           name: Disable xdebug PHP extension
           command: |
             sudo rm -f /etc/php/*/mods-available/xdebug.ini
             sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
             sudo rm -f /etc/php/*/conf.d/*xdebug.ini
+            sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
       - run:
-          name: Install gettext
-          command: sudo apt-get install gettext
-      - run:
-          name: Install WP-CLI
+          name: Install Composer
           command: |
-            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-            chmod +x wp-cli.phar
-            sudo mv wp-cli.phar /usr/local/bin/wp
+            wget https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer -O composer-setup.php
+            php composer-setup.php
+            php -r "unlink('composer-setup.php');"
+            sudo mv composer.phar /usr/local/bin/composer
       - run:
           name: Install ghr
           command: |
             go get -u github.com/tcnksm/ghr
+      - restore_cache:
+          keys:
+            - npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - npm-deps-{{ .Branch }}
       - run:
-          name: Install node packages
+          name: Install node dependencies
           command: |
-            npm uninstall cypress
             npm install
+      - save_cache:
+          key: npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          paths:
+            - /home/circleci/project/node_modules
+            - /home/circleci/.npm
+      - restore_cache:
+          keys:
+            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Branch }}
+      - run:
+          name: Install composer dependencies
+          command: |
+            composer install
+      - save_cache:
+          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+          paths:
+            - /home/circleci/project/vendor
       - run:
           name: Build the plugin
           command: |
             mkdir -p /tmp/artifacts
-            grunt build
-            grunt compress
+            npx grunt build
+            npx grunt compress
             mv build/*.zip /tmp/artifacts
       - deploy:
           name: Deploy the plugin

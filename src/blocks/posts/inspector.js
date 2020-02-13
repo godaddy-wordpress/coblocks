@@ -14,7 +14,10 @@ import OptionSelectorControl from '../../components/option-selector-control';
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
-import { ENTER, SPACE } from '@wordpress/keycodes';
+import {
+	ENTER,
+	SPACE,
+} from '@wordpress/keycodes';
 import {
 	PanelBody,
 	QueryControls,
@@ -43,6 +46,7 @@ const Inspector = ( props ) => {
 		displayPostDate,
 		excerptLength,
 		imageSize,
+		imageStyle,
 		listPosition,
 		order,
 		orderBy,
@@ -72,6 +76,42 @@ const Inspector = ( props ) => {
 			value: 'huge',
 			label: /* translators: abbreviation for extra large size */ __( 'XL', 'coblocks' ),
 			tooltip: /* translators: label for extra large size option */ __( 'Huge', 'coblocks' ),
+		},
+	];
+
+	const imageStyleHorizontalOptions = [
+		{
+			value: 'square',
+			label: __( 'Square', 'coblocks' ),
+			tooltip: __( 'Square', 'coblocks' ),
+		},
+		{
+			value: 'circle',
+			label: __( 'Circle', 'coblocks' ),
+			tooltip: __( 'Circle', 'coblocks' ),
+		},
+	];
+
+	const imageStyleStackedOptions = [
+		{
+			value: 'square',
+			label: __( 'Square', 'coblocks' ),
+			tooltip: __( 'Square', 'coblocks' ),
+		},
+		{
+			value: 'four-to-three',
+			label: __( '4:3', 'coblocks' ),
+			tooltip: __( '4:3 Aspect ratio', 'coblocks' ),
+		},
+		{
+			value: 'sixteen-to-nine',
+			label: __( '16:9', 'coblocks' ),
+			tooltip: __( '16:9 Aspect ratio', 'coblocks' ),
+		},
+		{
+			value: 'circle',
+			label: __( 'Circle', 'coblocks' ),
+			tooltip: __( 'Circle', 'coblocks' ),
 		},
 	];
 
@@ -171,6 +211,14 @@ const Inspector = ( props ) => {
 						onChange={ ( gutter ) => setAttributes( { gutter } ) }
 					/>
 				}
+				{ hasFeaturedImage &&
+					<OptionSelectorControl
+						label={ __( 'Thumbnail Style', 'coblocks' ) }
+						options={ isHorizontalStyle ? imageStyleHorizontalOptions : imageStyleStackedOptions }
+						currentOption={ imageStyle }
+						onChange={ imageStyle => setAttributes( { imageStyle } ) }
+					/>
+				}
 				{ isHorizontalStyle && hasFeaturedImage &&
 					<OptionSelectorControl
 						label={ __( 'Thumbnail Size', 'coblocks' ) }
@@ -232,7 +280,12 @@ const Inspector = ( props ) => {
 										'is-active': activeStyle === style,
 									}
 								) }
-								onClick={ () => onUpdateStyle( style ) }
+								onClick={ () => {
+									if ( 'horizontal' === style.name && [ 'four-to-three', 'sixteen-to-nine' ].includes( imageStyle ) ) {
+										setAttributes( { imageStyle: 'square' } );
+									}
+									onUpdateStyle( style );
+								} }
 								onKeyDown={ ( event ) => {
 									if ( ENTER === event.keyCode || SPACE === event.keyCode ) {
 										event.preventDefault();
