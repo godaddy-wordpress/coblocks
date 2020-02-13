@@ -375,7 +375,7 @@ jobs:
           name: Setup spec files to run based on git diff-tree
           command: |
             bash .dev/bin/setup-test-specs.sh
-            if [ ! -s /tmp/specstring ]; then
+            if [ ! -s /tmp/specstring ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ]; then
               echo "Changes do not require testing."
               circleci-agent step halt
             fi
@@ -414,7 +414,12 @@ jobs:
           command: |
             touch cypress.env.json
             echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
-            ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel --spec "$(cat /tmp/specstring)"
+
+            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
+              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel
+            else
+              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel --spec "$(cat /tmp/specstring)"
+            fi
 
   i18n:
     docker:
