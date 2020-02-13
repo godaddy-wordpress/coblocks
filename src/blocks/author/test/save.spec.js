@@ -43,7 +43,7 @@ describe( name, () => {
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'primary' );
+		expect( serializedBlock ).toContain( '{"textColor":"primary"}' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
@@ -52,7 +52,7 @@ describe( name, () => {
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '#745151' );
+		expect( serializedBlock ).toContain( '{"customBackgroundColor":"#745151"}' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
@@ -61,7 +61,7 @@ describe( name, () => {
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'background' );
+		expect( serializedBlock ).toContain( '{"textColor":"background"}' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
@@ -70,7 +70,7 @@ describe( name, () => {
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '#ffda7c' );
+		expect( serializedBlock ).toContain( '{"customTextColor":"#ffda7c"}' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
@@ -79,7 +79,7 @@ describe( name, () => {
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '150x150.png' );
+		expect( serializedBlock ).toContain( 'src="150x150.png"' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
@@ -88,7 +88,7 @@ describe( name, () => {
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'large' );
+		expect( serializedBlock ).toContain( '{"fontSize":"large"}' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
@@ -97,7 +97,7 @@ describe( name, () => {
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '34.25' );
+		expect( serializedBlock ).toContain( '{"customFontSize":"34.25"}' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
@@ -106,16 +106,7 @@ describe( name, () => {
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'my-custom-class' );
-		expect( serializedBlock ).toMatchSnapshot();
-	} );
-
-	it( 'should not render with fake attribute', () => {
-		block.attributes.fakeAttribute = 'alpha';
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toEqual( `<!-- wp:${ name } /-->` );
+		expect( serializedBlock ).toContain( '{"className":"my-custom-class"}' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 

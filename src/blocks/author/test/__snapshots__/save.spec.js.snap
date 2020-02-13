@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`coblocks/author should not render with fake attribute 1`] = `"<!-- wp:coblocks/author /-->"`;
-
 exports[`coblocks/author should render background color 1`] = `"<!-- wp:coblocks/author {\\"textColor\\":\\"primary\\"} /-->"`;
 
 exports[`coblocks/author should render custom background color 1`] = `"<!-- wp:coblocks/author {\\"customBackgroundColor\\":\\"#745151\\"} /-->"`;
