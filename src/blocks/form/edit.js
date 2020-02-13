@@ -377,7 +377,7 @@ class FormEdit extends Component {
 	}
 
 	render() {
-		const { className, blockType, defaultPattern, patterns, replaceInnerBlocks, hasInnerBlocks, variations } = this.props;
+		const { className, blockType, defaultPattern, replaceInnerBlocks, hasInnerBlocks, variations } = this.props;
 
 		const classes = classnames(
 			className,
@@ -460,7 +460,7 @@ class FormEdit extends Component {
 				this.props.setAttributes( nextVariation.attributes );
 			}
 
-			const submitButtonText = map( patterns || variations, ( elem ) => {
+			const submitButtonText = map( variations, ( elem ) => {
 				if ( isEqual( elem.innerBlocks, nextVariation.innerBlocks ) ) {
 					return elem.submitButtonText;
 				}
@@ -481,7 +481,6 @@ class FormEdit extends Component {
 					icon={ get( blockType, [ 'icon', 'src' ] ) }
 					label={ get( blockType, [ 'title' ] ) }
 					instructions={ __( 'Select a pattern to start with.', 'coblocks' ) }
-					patterns={ patterns }
 					variations={ variations }
 					allowSkip
 					onSelect={ ( nextVariation ) => blockVariationPickerOnSelect( nextVariation ) }
