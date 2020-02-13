@@ -17,32 +17,34 @@ workflows:
               only: /^(?!canary).*$/
       # Support PHP Versions
       # http://php.net/supported-versions.php
-      - php56:
+      - unit_testing_php_56:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
             - build
             - lint_php
-      - php73:
+      - unit_testing_php_73:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
             - build
             - lint_php
-      # - jest:
-      #     filters:
-      #       tags:
-      #         only: /^(?!canary).*$/
-      #     requires:
-      #       - build
-      # - e2e:
-      #     filters:
-      #       tags:
-      #         only: /^(?!canary).*$/
-      #     requires:
-      #       - build
+      - unit_testing_js:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - build
+            - lint_js
+      - end_to_end_testing:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - build
+            - lint_js
       # - canary-release:
       #     filters:
       #       branches:
@@ -212,7 +214,7 @@ jobs:
             - build/coblocks
             - dist
 
-  php56:
+  unit_testing_php_56:
     docker:
       - image: circleci/php:5.6
       - image: circleci/mysql:5.7
@@ -268,7 +270,7 @@ jobs:
           command: WP_MULTISITE=1 composer run test
           working_directory: /tmp/wordpress/wp-content/plugins/coblocks
 
-  php73:
+  unit_testing_php_73:
     docker:
       - image: circleci/php:7.3
       - image: circleci/mysql:5.7
@@ -324,12 +326,24 @@ jobs:
           command: WP_MULTISITE=1 composer run test
           working_directory: /tmp/wordpress/wp-content/plugins/coblocks
 
-  jest:
+  unit_testing_js:
     docker:
       - image: circleci/node:latest-browsers-legacy
     steps:
-      - attach_workspace:
-          at: /home/circleci
+      - checkout
+      - restore_cache:
+          keys:
+            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-{{ .Branch }}
+      - run:
+          name: Install node dependencies
+          command: |
+            yarn install --frozen-lockfile
+      - save_cache:
+          key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/project/node_modules
+            - ~/.cache/yarn
       - run:
           name: Run jest tests
           command: JEST_JUNIT_OUTPUT_DIR="/tmp/artifacts/code-coverage/jest/" JEST_JUNIT_OUTPUT_NAME="results.xml" npm run test:unit -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html
@@ -339,7 +353,7 @@ jobs:
       - store_test_results:
           path: /tmp/artifacts/code-coverage/
 
-  e2e:
+  end_to_end_testing:
     docker:
       - image: circleci/php:latest-node-browsers-legacy
       - image: circleci/mysql:5.7
