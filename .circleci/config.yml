@@ -349,12 +349,15 @@ jobs:
           command: |
             JEST_JUNIT_OUTPUT_DIR="/tmp/artifacts/code-coverage/jest/"
             JEST_JUNIT_OUTPUT_NAME="results.xml"
+            FILES=$(git diff HEAD^ --name-only --diff-filter=M '*.js')
 
             if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
               npm run test:unit -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html
-            else
-              FILES=$(git diff HEAD^ --name-only --diff-filter=M '*.js')
+            elif [ -s "$FILES" ]; then
               npm run test:unit -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html --findRelatedTests $FILES
+            else
+              echo "Changes do not require testing."
+              circleci-agent step halt
             fi
       - store_artifacts:
           path: /tmp/artifacts/code-coverage/
