@@ -480,7 +480,7 @@ class FormEdit extends Component {
 				<__experimentalBlockVariationPicker
 					icon={ get( blockType, [ 'icon', 'src' ] ) }
 					label={ get( blockType, [ 'title' ] ) }
-					instructions={ __( 'Select a pattern to start with.', 'coblocks' ) }
+					instructions={ __( 'Select a variation to start with.', 'coblocks' ) }
 					variations={ variations }
 					allowSkip
 					onSelect={ ( nextVariation ) => blockVariationPickerOnSelect( nextVariation ) }
