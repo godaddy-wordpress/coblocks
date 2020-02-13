@@ -27,12 +27,23 @@ describe( name, () => {
 		serializedBlock = '';
 	} );
 
-	it( 'should render', () => {
+	it( 'should render with url attribute', () => {
 		block.attributes.url = 'https://wordpress.com/wp-content/uploads/1234/56/image-1.gif';
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'https://wordpress.com/wp-content/uploads/1234/56/image-1.gif' );
+		expect( serializedBlock ).toContain( 'src="https://wordpress.com/wp-content/uploads/1234/56/image-1.gif"' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with alt attribute', () => {
+		block.attributes.url = 'https://wordpress.com/wp-content/uploads/1234/56/image-1.gif';
+		block.attributes.alt = 'alt text'
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'src="https://wordpress.com/wp-content/uploads/1234/56/image-1.gif"' );
+		expect( serializedBlock ).toContain( 'alt text' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 } );
