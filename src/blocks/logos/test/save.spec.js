@@ -3,6 +3,7 @@
  */
 import '@testing-library/jest-dom/extend-expect';
 import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
+import { replaceActiveStyle } from '@wordpress/block-editor/build/components/block-styles';
 
 /**
  * Internal dependencies.
@@ -27,6 +28,11 @@ describe( name, () => {
 		serializedBlock = '';
 	} );
 
+	afterEach( () => {
+		// Make a snapshot for each save function test to better detect deprecation needs.
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
 	it( 'should render', () => {
 		block.attributes.images = [
 			{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', id: 1 },
@@ -36,6 +42,37 @@ describe( name, () => {
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg' );
 		expect( serializedBlock ).toContain( 'data-id="1"' );
-		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with style "Black & White"', () => {
+		block.attributes.className = '';
+		block.attributes.images = [
+			{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', id: 1 },
+		];
+
+		const activeStyle = undefined;
+		const newStyle = { name: 'black-and-white' };
+		block.attributes.className = replaceActiveStyle( block.attributes.className, activeStyle, newStyle );
+
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'is-style-black-and-white' );
+	} );
+
+	it( 'should render with style "Grayscale"', () => {
+		block.attributes.className = '';
+		block.attributes.images = [
+			{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', id: 1 },
+		];
+
+		const activeStyle = undefined;
+		const newStyle = { name: 'grayscale' };
+		block.attributes.className = replaceActiveStyle( block.attributes.className, activeStyle, newStyle );
+
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'is-style-grayscale' );
 	} );
 } );
