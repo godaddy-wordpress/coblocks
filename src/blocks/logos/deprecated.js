@@ -11,7 +11,7 @@ import metadata from './block.json';
 
 const deprecated = [
 	{
-		isEligible: ( attributes ) => attributes.className.indexOf( 'has-filter-grayscale' ) !== -1,
+		isEligible: ( attributes ) => attributes.className && attributes.className.indexOf( 'has-filter-grayscale' ) !== -1,
 		attributes: {
 			...metadata.attributes,
 			grayscale: {
