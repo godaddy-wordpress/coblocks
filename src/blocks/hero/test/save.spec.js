@@ -91,7 +91,7 @@ describe( 'coblocks/hero', () => {
 		block.attributes.backgroundColor = 'accent';
 		serializedBlock = serialize( block );
 
-		expect( serializedBlock ).toBeDefined();		
+		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '"backgroundColor":"accent"' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
@@ -100,7 +100,7 @@ describe( 'coblocks/hero', () => {
 		block.attributes.customBackgroundColor = '#5a4a4f';
 		serializedBlock = serialize( block );
 
-		expect( serializedBlock ).toBeDefined();		
+		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '"customBackgroundColor":"#5a4a4f"' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
@@ -109,7 +109,7 @@ describe( 'coblocks/hero', () => {
 		block.attributes.textColor = 'accent';
 		serializedBlock = serialize( block );
 
-		expect( serializedBlock ).toBeDefined();		
+		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '"textColor":"accent"' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
@@ -118,7 +118,7 @@ describe( 'coblocks/hero', () => {
 		block.attributes.customTextColor = '#5a4a4f';
 		serializedBlock = serialize( block );
 
-		expect( serializedBlock ).toBeDefined();		
+		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '"customTextColor":"#5a4a4f"' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
@@ -127,42 +127,39 @@ describe( 'coblocks/hero', () => {
 		block.attributes.className = 'my-custom-class';
 		serializedBlock = serialize( block );
 
-		expect( serializedBlock ).toBeDefined();		
+		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '"className":"my-custom-class"' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	it( 'should render with contentAlign attribute', () => {
-
-		let alignOptions = ['left', 'center', 'right'];
+		const alignOptions = [ 'left', 'center', 'right' ];
 		alignOptions.forEach( ( alignOption ) => {
 			block.attributes.contentAlign = alignOption;
 			serializedBlock = serialize( block );
 
-			expect( serializedBlock ).toBeDefined();		
-			expect( serializedBlock ).toContain( `"contentAlign":"${alignOption}"` );
-			expect( serializedBlock ).toContain( `has-${alignOption}-content` );
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( `"contentAlign":"${ alignOption }"` );
+			expect( serializedBlock ).toContain( `has-${ alignOption }-content` );
 			expect( serializedBlock ).toMatchSnapshot();
 		} );
 	} );
 
-	
-
 	it( 'should render with fullscreen & layout attributes', () => {
-		let layoutOptions = [
+		const layoutOptions = [
 			'top-left', 'top-center', 'top-right',
 			'center-left', 'center-center', 'center-right',
 			'bottom-left', 'bottom-center', 'bottom-right',
-		]
+		];
 		layoutOptions.forEach( ( layoutOption ) => {
 			block.attributes.fullscreen = 'true';
 			block.attributes.layout = layoutOption;
 			serializedBlock = serialize( block );
-			expect( serializedBlock ).toBeDefined();		
+			expect( serializedBlock ).toBeDefined();
 			expect( serializedBlock ).toContain( '"fullscreen":"true"' );
 			expect( serializedBlock ).toContain( 'is-fullscreen' );
-			layoutOption !== 'center-left' && expect( serializedBlock ).toContain( `"layout":"${layoutOption}"` ); // Attribute not in markup for default layout
-			expect( serializedBlock ).toContain( `hero-${layoutOption}-align` );
+			layoutOption !== 'center-left' && expect( serializedBlock ).toContain( `"layout":"${ layoutOption }"` ); // Attribute not in markup for default layout
+			expect( serializedBlock ).toContain( `hero-${ layoutOption }-align` );
 			expect( serializedBlock ).toMatchSnapshot();
 		} );
 	} );

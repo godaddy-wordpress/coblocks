@@ -38,7 +38,7 @@ describe( name, () => {
 
 	it( 'should render with alt attribute', () => {
 		block.attributes.url = 'https://wordpress.com/wp-content/uploads/1234/56/image-1.gif';
-		block.attributes.alt = 'alt text'
+		block.attributes.alt = 'alt text';
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
@@ -48,17 +48,17 @@ describe( name, () => {
 	} );
 
 	it( 'should render with align attribute', () => {
-		let alignOptions = [
+		const alignOptions = [
 			'left', 'center', 'right', 'full', 'wide',
-		]
+		];
 		alignOptions.forEach( ( alignOption ) => {
 			block.attributes.url = 'https://wordpress.com/wp-content/uploads/1234/56/image-1.gif';
 			block.attributes.align = alignOption;
 			serializedBlock = serialize( block );
-			expect( serializedBlock ).toBeDefined();		
+			expect( serializedBlock ).toBeDefined();
 			expect( serializedBlock ).toContain( 'src="https://wordpress.com/wp-content/uploads/1234/56/image-1.gif"' );
-			expect( serializedBlock ).toContain( `{"align":"${alignOption}"` );
-			expect( serializedBlock ).toContain( `align${alignOption}` );
+			expect( serializedBlock ).toContain( `{"align":"${ alignOption }"` );
+			expect( serializedBlock ).toContain( `align${ alignOption }` );
 			expect( serializedBlock ).toMatchSnapshot();
 		} );
 	} );

@@ -41,7 +41,7 @@ describe( name, () => {
 
 	it( 'should render with images.width attribute', () => {
 		block.attributes.images = [
-			{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', id: 1, width: "60.6897%" },
+			{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', id: 1, width: '60.6897%' },
 		];
 		serializedBlock = serialize( block );
 
@@ -71,7 +71,7 @@ describe( name, () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '"className":"my-custom-class"' );
-		expect( serializedBlock ).toContain( 'my-custom-class');
+		expect( serializedBlock ).toContain( 'my-custom-class' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 } );

@@ -35,9 +35,9 @@ describe( 'coblocks/posts', () => {
 	} );
 
 	it( 'should render with className attribute', () => {
-        block.attributes.className = "my-custom-class";
-        
+		block.attributes.className = 'my-custom-class';
+
 		serializedBlock = serialize( block );
-		expect(serializedBlock).toContain('my-custom-class')
+		expect( serializedBlock ).toContain( 'my-custom-class' );
 	} );
 } );
