@@ -16,14 +16,16 @@ describe( 'Test CoBlocks Logos Block', function () {
 	const selectFromMediaLibrary = () => {
 		cy.get( '@targetElement' ).contains( /media library/i ).click();
 
-		// 1. Select Media Library tab.
-		cy.get( '.media-modal-content' ).find( '#menu-item-browse' ).click();
-		// 2. Select first item in Media Library list.
-		cy.get( '.attachments .attachment' ).first().click();
-		// 3. Click "Create New Gallery" or "Add to Gallery" button.
-		cy.get( '.media-toolbar-primary .media-button.button-primary' ).click();
-		// 4. Click "Insert Gallery" or "Update Gallery" button.
-		cy.get( '.media-toolbar-primary .media-button.button-primary' ).click();
+		cy.get( '.media-modal-content' ).within( $mediaModal => {
+			// 1. Select Media Library tab.
+			$mediaModal.find( '#menu-item-browse' ).click();
+			// 2. Select first item in Media Library list.
+			cy.get( '.attachments .attachment.save-ready' ).first().click();
+			// 3. Click "Create New Gallery" or "Add to Gallery" button.
+			cy.get( '.media-toolbar-primary .media-button.button-primary' ).click();
+			// 4. Click "Insert Gallery" or "Update Gallery" button.
+			cy.get( '.media-toolbar-primary .media-button.button-primary' ).click();
+		} );
 	};
 
 	before( () => {
@@ -50,15 +52,15 @@ describe( 'Test CoBlocks Logos Block', function () {
 	it( 'Test logos block saves with image upload.', function () {
 		const { fileName, imageBase, pathToFixtures } = logosData;
 
-		cy.get( '@targetElement' ).click();
+		cy.get('@targetElement').click();
 
 		cy.fixture( pathToFixtures + fileName, 'base64' ).then( async fileContent => {
-			await cy.get( '@targetElement' ).find( '.components-drop-zone' ).first()
+			await cy.get('@targetElement').find( '.components-drop-zone' ).first()
 				.upload(
 					{ fileContent, fileName, mimeType: 'image/png' },
 					{ subjectType: 'drag-n-drop', force: true, events: [ 'dragstart', 'dragover', 'drop' ] },
 				);
-			cy.get( '@targetElement' ).find( '.wp-block-coblocks-logos img' )
+			cy.get('@targetElement').find( '.wp-block-coblocks-logos img' )
 				.should( 'have.attr', 'src' )
 				.should( 'include', imageBase );
 		} );
