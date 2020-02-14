@@ -13,7 +13,7 @@ import { name, settings } from '../index';
 let block;
 let serializedBlock;
 
-describe( 'coblocks/hero', () => {
+describe( 'coblocks/posts', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );
@@ -23,6 +23,7 @@ describe( 'coblocks/hero', () => {
 		// Create the block with the minimum attributes.
 		block = createBlock( name );
 
+		// Reset the reused variables.
 		serializedBlock = '';
 	} );
 
