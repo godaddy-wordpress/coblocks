@@ -13,7 +13,7 @@ import { name, settings } from '../index';
 let block;
 let serializedBlock;
 
-describe( name, () => {
+describe( 'coblocks/media-card', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );

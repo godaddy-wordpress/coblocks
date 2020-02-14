@@ -13,7 +13,7 @@ import { name, settings } from '../index';
 let block;
 let serializedBlock;
 
-describe( name, () => {
+describe( 'coblocks/logos', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );
