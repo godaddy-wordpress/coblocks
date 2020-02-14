@@ -19,7 +19,7 @@ describe( 'Test CoBlocks Logos Block', function () {
 		// 1. Select Media Library tab.
 		cy.get( '.media-modal-content' ).find( '#menu-item-browse' ).click();
 		// 2. Select first item in Media Library list.
-		cy.get( '.media-modal-content' ).find( 'li.attachment' ).first( 'li' ).click();
+		cy.get( '.media-modal-content' ).find( '.attachment' ).first().click();
 		// 3. Click "Create New Gallery" or "Add to Gallery" button.
 		cy.get( '.media-toolbar-primary .media-button.button-primary' ).click();
 		// 4. Click "Insert Gallery" or "Update Gallery" button.
