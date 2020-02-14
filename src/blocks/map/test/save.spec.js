@@ -27,7 +27,7 @@ describe( name, () => {
 		serializedBlock = '';
 	} );
 
-	it( 'should render', () => {
+	it( 'should render with address attribute', () => {
 		block.attributes.address = 'New York';
 		serializedBlock = serialize( block );
 
