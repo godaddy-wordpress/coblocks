@@ -307,6 +307,9 @@ jobs:
           name: Install PHP
           command: sudo apt-get install php libapache2-mod-php php-mbstring php-xml php-curl
       - run:
+          name: Install gettext
+          command: sudo apt-get install gettext
+      - run:
           name: Disable xdebug PHP extension
           command: |
             sudo rm -f /etc/php/*/mods-available/xdebug.ini
@@ -357,7 +360,6 @@ jobs:
             COBLOCKS_VERSION_LINE=$(awk '/\* Version:/{ print NR; exit }' build/coblocks/class-coblocks.php)
             COBLOCKS_COMMIT_HASH=$(git rev-parse --verify HEAD | head -c 7)
             sed -i -e "${COBLOCKS_VERSION_LINE}s/$/-${COBLOCKS_COMMIT_HASH}/" build/coblocks/class-coblocks.php
-            sudo apt-get update && sudo apt-get install gettext
             npm run json2po
             npm run po2mo
             npm run po2jed
