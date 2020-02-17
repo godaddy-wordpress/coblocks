@@ -285,7 +285,7 @@ jobs:
             export GIT_COMMIT_DESC=$(git log --format=oneline -n 1 $CIRCLE_SHA1)
             if [[ $GIT_COMMIT_DESC != *"skip i18n"* ]]; then
               git config --global user.email "plugins@godaddy.com"
-              git config --global user.name "GoDaddy Translator"
+              git config --global user.name "GoDaddy Translator Bot"
               git add languages/coblocks.json
               git add languages/coblocks.pot
               git commit -m "Update coblocks.pot/coblocks.json files [skip i18n]"
@@ -306,6 +306,9 @@ jobs:
       - run:
           name: Install PHP
           command: sudo apt-get install php libapache2-mod-php php-mbstring php-xml php-curl
+      - run:
+          name: Install gettext
+          command: sudo apt-get install gettext
       - run:
           name: Disable xdebug PHP extension
           command: |
