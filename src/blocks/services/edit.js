@@ -170,7 +170,10 @@ class Edit extends Component {
 	}
 
 	toggleCtas() {
-		const { attributes, setAttributes } = this.props;
+		const {
+			attributes,
+			setAttributes,
+		} = this.props;
 
 		const buttons = ! attributes.buttons;
 		setAttributes( { buttons } );
@@ -179,13 +182,25 @@ class Edit extends Component {
 	}
 
 	render() {
-		const { className, attributes, setAttributes } = this.props;
+		const {
+			className,
+			attributes,
+			setAttributes,
+		} = this.props;
+
+		const {
+			alignment,
+			buttons,
+			columns,
+			gutter,
+			headingLevel,
+		} = attributes;
 
 		const classes = classnames(
 			'has-columns', {
-				[ `has-${ attributes.columns }-columns` ]: attributes.columns,
-				'has-responsive-columns': attributes.columns > 1,
-				[ `has-${ attributes.gutter }-gutter` ]: attributes.gutter,
+				[ `has-${ columns }-columns` ]: columns,
+				'has-responsive-columns': columns > 1,
+				[ `has-${ gutter }-gutter` ]: gutter,
 			}
 		);
 
@@ -201,7 +216,7 @@ class Edit extends Component {
 						onChange={ this.onChangeHeadingLevel }
 					/>
 					<AlignmentToolbar
-						value={ attributes.alignment }
+						value={ alignment }
 						onChange={ this.onChangeAlignment }
 					/>
 				</BlockControls>
@@ -218,12 +233,12 @@ class Edit extends Component {
 					<div className={ classes }>
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
-							template={ Array( attributes.columns ).fill( [
+							template={ Array( columns ).fill( [
 								'coblocks/service',
 								{
-									showCta: attributes.buttons,
-									headingLevel: attributes.headingLevel,
-									alignment: attributes.alignment,
+									showCta: buttons,
+									headingLevel,
+									alignment,
 								},
 							] ) }
 							templateLock="all"

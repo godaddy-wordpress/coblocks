@@ -5,9 +5,9 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks posts Block', function() {
 	/**
-	   * Test that we can add a posts block to the content, not alter
-	   * any settings, and are able to successfully save the block without errors.
-	   */
+	 * Test that we can add a posts block to the content, not alter
+	 * any settings, and are able to successfully save the block without errors.
+	 */
 	it( 'Test posts block saves with empty values.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'posts' );
 
@@ -23,8 +23,8 @@ describe( 'Test CoBlocks posts Block', function() {
 	} );
 
 	/**
-	* Test the posts block column and post count controls
-	*/
+	 * Test the posts block column and post count controls
+	 */
 	it( 'Test posts block column and post count controls.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'posts' );
 
@@ -60,8 +60,8 @@ describe( 'Test CoBlocks posts Block', function() {
 	} );
 
 	/**
-	* Test the posts block saves with custom classes
-	*/
+	 * Test the posts block saves with custom classes
+	 */
 	it( 'Test posts block custom classes.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'posts' );
 
@@ -87,9 +87,9 @@ describe( 'Test CoBlocks posts Block', function() {
 	} );
 
 	/**
-	   * Test that we can add a posts block to the content, change style
-	   * and are able to successfully save the block without errors.
-	   */
+	 * Test that we can add a posts block to the content, change style
+	 * and are able to successfully save the block without errors.
+	 */
 	it( 'Test posts block saves with non-default style.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'posts' );
 

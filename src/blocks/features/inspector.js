@@ -13,7 +13,7 @@ import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
-import { PanelBody, RangeControl, SelectControl, withFallbackStyles } from '@wordpress/components';
+import { PanelBody, RangeControl, withFallbackStyles } from '@wordpress/components';
 
 /**
  * Fallback styles
@@ -146,7 +146,7 @@ class Inspector extends Component {
 							label={ __( 'Gutter', 'coblocks' ) }
 							currentOption={ gutter }
 							options={ gutterOptions }
-							onChange={ ( gutter ) => setAttributes( { gutter } ) }
+							onChange={ ( newGutter ) => setAttributes( { gutter: newGutter } ) }
 						/> }
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }

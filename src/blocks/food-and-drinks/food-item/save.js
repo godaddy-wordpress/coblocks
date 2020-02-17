@@ -28,23 +28,40 @@ const isEmpty = ( attributes ) => {
 	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
 };
 
-export default function save( { attributes } ) {
+export default function save( { attributes, className } ) {
+	const {
+		alt,
+		description,
+		glutenFree,
+		pescatarian,
+		popular,
+		price,
+		showImage,
+		showPrice,
+		spicier,
+		spicy,
+		title,
+		url,
+		vegan,
+		vegetarian,
+		focalPoint,
+	} = attributes;
+
 	return isEmpty( attributes ) ? null : (
 		<div
-			className={ attributes.className }
+			className={ className }
 			itemScope
 			itemType="http://schema.org/MenuItem"
 		>
-			{ !! attributes.showImage && attributes.url && (
+			{ !! showImage && url && (
 				<figure className="wp-block-coblocks-food-item__figure">
 					<img
-						src={ attributes.url }
-						alt={ attributes.alt }
+						src={ url }
+						alt={ alt }
 						itemProp="image"
 						style={ {
-							objectPosition: attributes.focalPoint ?
-								`${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y *
-										100 }%` :
+							objectPosition: focalPoint ?
+								`${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` :
 								undefined,
 						} }
 					/>
@@ -55,17 +72,17 @@ export default function save( { attributes } ) {
 					<RichText.Content
 						tagName="h4"
 						className="wp-block-coblocks-food-item__heading"
-						value={ attributes.title }
+						value={ title }
 						itemprop="name"
 					/>
-					{ ( !! attributes.spicy ||
-						!! attributes.vegetarian ||
-						!! attributes.glutenFree ||
-						!! attributes.pescatarian ||
-						!! attributes.popular ||
-						!! attributes.vegan ) && (
+					{ ( !! spicy ||
+						!! vegetarian ||
+						!! glutenFree ||
+						!! pescatarian ||
+						!! popular ||
+						!! vegan ) && (
 						<div className="wp-block-coblocks-food-item__attributes">
-							{ !! attributes.popular && (
+							{ !! popular && (
 								<span
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
@@ -78,7 +95,7 @@ export default function save( { attributes } ) {
 									/>
 								</span>
 							) }
-							{ !! attributes.spicy && (
+							{ !! spicy && (
 								<span
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
@@ -91,7 +108,7 @@ export default function save( { attributes } ) {
 									/>
 								</span>
 							) }
-							{ !! attributes.spicier && !! attributes.spicy && (
+							{ !! spicier && !! spicy && (
 								<span
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
@@ -104,7 +121,7 @@ export default function save( { attributes } ) {
 									/>
 								</span>
 							) }
-							{ !! attributes.vegetarian && (
+							{ !! vegetarian && (
 								<span
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
@@ -117,7 +134,7 @@ export default function save( { attributes } ) {
 									/>
 								</span>
 							) }
-							{ !! attributes.glutenFree && (
+							{ !! glutenFree && (
 								<span
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
@@ -130,7 +147,7 @@ export default function save( { attributes } ) {
 									/>
 								</span>
 							) }
-							{ !! attributes.pescatarian && (
+							{ !! pescatarian && (
 								<span
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
@@ -143,7 +160,7 @@ export default function save( { attributes } ) {
 									/>
 								</span>
 							) }
-							{ !! attributes.vegan && (
+							{ !! vegan && (
 								<span
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
@@ -162,10 +179,10 @@ export default function save( { attributes } ) {
 				<RichText.Content
 					tagName="p"
 					className="wp-block-coblocks-food-item__description"
-					value={ attributes.description }
+					value={ description }
 					itemprop="description"
 				/>
-				{ !! attributes.showPrice && attributes.price && (
+				{ !! showPrice && price && (
 					<p
 						className="wp-block-coblocks-food-item__price"
 						itemProp="offers"
@@ -174,7 +191,7 @@ export default function save( { attributes } ) {
 					>
 						<RichText.Content
 							tagName="span"
-							value={ attributes.price }
+							value={ price }
 							itemprop="price"
 						/>
 					</p>
