@@ -223,7 +223,7 @@ jobs:
           command: |
             ./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass='' --path=/tmp/wordpress
             ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=/tmp/wordpress
-            ./vendor/bin/wp post generate --count=5
+            ./vendor/bin/wp post generate --count=5 --path=/tmp/wordpress
             ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
       - run:
           name: "Start WPCLI Server"
