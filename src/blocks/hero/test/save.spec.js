@@ -164,7 +164,7 @@ describe( 'coblocks/hero', () => {
 			expect( serializedBlock ).toContain( `hero-${ layoutOption }-align` );
 
 			if ( layoutOption !== 'center-left' ) { // center-left === default layout
-				expect( serializedBlock ).toContain( `"layout":"${ layoutOption }"` ); 
+				expect( serializedBlock ).toContain( `"layout":"${ layoutOption }"` );
 			}
 			expect( serializedBlock ).toMatchSnapshot();
 		} );
