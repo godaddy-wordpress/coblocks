@@ -93,6 +93,7 @@ describe( 'coblocks/hero', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '"backgroundColor":"accent"' );
+		expect( serializedBlock ).toContain( 'has-accent-background' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
@@ -102,6 +103,7 @@ describe( 'coblocks/hero', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '"customBackgroundColor":"#5a4a4f"' );
+		expect( serializedBlock ).toContain( 'has-background' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
@@ -120,6 +122,7 @@ describe( 'coblocks/hero', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '"customTextColor":"#5a4a4f"' );
+		expect( serializedBlock ).toContain( 'has-text-color' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
@@ -158,8 +161,11 @@ describe( 'coblocks/hero', () => {
 			expect( serializedBlock ).toBeDefined();
 			expect( serializedBlock ).toContain( '"fullscreen":"true"' );
 			expect( serializedBlock ).toContain( 'is-fullscreen' );
-			layoutOption !== 'center-left' && expect( serializedBlock ).toContain( `"layout":"${ layoutOption }"` ); // Attribute not in markup for default layout
 			expect( serializedBlock ).toContain( `hero-${ layoutOption }-align` );
+
+			if ( layoutOption !== 'center-left' ) { // center-left === default layout
+				expect( serializedBlock ).toContain( `"layout":"${ layoutOption }"` ); 
+			}
 			expect( serializedBlock ).toMatchSnapshot();
 		} );
 	} );
