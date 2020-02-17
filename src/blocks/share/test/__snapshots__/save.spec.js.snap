@@ -17,3 +17,7 @@ exports[`coblocks/social should render with styles 4`] = `"<!-- wp:coblocks/soci
 exports[`coblocks/social should render with styles 5`] = `"<!-- wp:coblocks/social {\\"className\\":\\"is-style-mask\\"} /-->"`;
 
 exports[`coblocks/social should render with textAlign 1`] = `"<!-- wp:coblocks/social {\\"textAlign\\":\\"left\\"} /-->"`;
+
+exports[`coblocks/social should render with textAlign 2`] = `"<!-- wp:coblocks/social {\\"textAlign\\":\\"center\\"} /-->"`;
+
+exports[`coblocks/social should render with textAlign 3`] = `"<!-- wp:coblocks/social {\\"textAlign\\":\\"right\\"} /-->"`;

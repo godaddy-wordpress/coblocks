@@ -13,7 +13,7 @@ import { name, settings } from '../index';
 let block;
 let serializedBlock;
 
-describe( name, () => {
+describe( 'coblocks/click-to-tweet', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );
@@ -41,12 +41,13 @@ describe( name, () => {
 	} );
 
 	it( 'should render with textAlign', () => {
-		block.attributes.textAlign = 'center';
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '{"textAlign":"center"}' );
-		expect( serializedBlock ).toMatchSnapshot();
+		[ 'left', 'center', 'right' ].forEach( ( alignment ) => {
+			block.attributes.textAlign = alignment;
+			serializedBlock = serialize( block );
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( `"textAlign":"${ alignment }"` );
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
 	} );
 
 	it( 'should render with via', () => {

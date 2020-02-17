@@ -25,8 +25,20 @@ exports[`coblocks/buttons should render up to 4 buttons 4`] = `
 `;
 
 exports[`coblocks/buttons should render with contentAlign set 1`] = `
+"<!-- wp:coblocks/buttons -->
+<div class=\\"wp-block-coblocks-buttons\\"><div class=\\"wp-block-coblocks-buttons__inner flex-align-left\\"></div></div>
+<!-- /wp:coblocks/buttons -->"
+`;
+
+exports[`coblocks/buttons should render with contentAlign set 2`] = `
 "<!-- wp:coblocks/buttons {\\"contentAlign\\":\\"center\\"} -->
 <div class=\\"wp-block-coblocks-buttons\\"><div class=\\"wp-block-coblocks-buttons__inner flex-align-center\\"></div></div>
+<!-- /wp:coblocks/buttons -->"
+`;
+
+exports[`coblocks/buttons should render with contentAlign set 3`] = `
+"<!-- wp:coblocks/buttons {\\"contentAlign\\":\\"right\\"} -->
+<div class=\\"wp-block-coblocks-buttons\\"><div class=\\"wp-block-coblocks-buttons__inner flex-align-right\\"></div></div>
 <!-- /wp:coblocks/buttons -->"
 `;
 

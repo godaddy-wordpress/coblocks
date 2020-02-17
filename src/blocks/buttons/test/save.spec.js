@@ -13,7 +13,7 @@ import { name, settings } from '../index';
 let block;
 let serializedBlock;
 
-describe( name, () => {
+describe( 'coblocks/buttons', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );
@@ -47,12 +47,13 @@ describe( name, () => {
 	} );
 
 	it( 'should render with contentAlign set', () => {
-		block.attributes.contentAlign = 'center';
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'flex-align-center' );
-		expect( serializedBlock ).toMatchSnapshot();
+		[ 'left', 'center', 'right' ].forEach( ( alignment ) => {
+			block.attributes.contentAlign = alignment;
+			serializedBlock = serialize( block );
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( `flex-align-${ alignment }` );
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
 	} );
 
 	it( 'should render with custom class name', () => {

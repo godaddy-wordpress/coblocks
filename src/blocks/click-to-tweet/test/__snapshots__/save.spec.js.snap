@@ -14,7 +14,11 @@ exports[`coblocks/click-to-tweet should render with customButtonColor 1`] = `"<!
 
 exports[`coblocks/click-to-tweet should render with customTextColor 1`] = `"<!-- wp:coblocks/click-to-tweet {\\"customTextColor\\":\\"#da5d5d\\"} /-->"`;
 
-exports[`coblocks/click-to-tweet should render with textAlign 1`] = `"<!-- wp:coblocks/click-to-tweet {\\"textAlign\\":\\"center\\"} /-->"`;
+exports[`coblocks/click-to-tweet should render with textAlign 1`] = `"<!-- wp:coblocks/click-to-tweet {\\"textAlign\\":\\"left\\"} /-->"`;
+
+exports[`coblocks/click-to-tweet should render with textAlign 2`] = `"<!-- wp:coblocks/click-to-tweet {\\"textAlign\\":\\"center\\"} /-->"`;
+
+exports[`coblocks/click-to-tweet should render with textAlign 3`] = `"<!-- wp:coblocks/click-to-tweet {\\"textAlign\\":\\"right\\"} /-->"`;
 
 exports[`coblocks/click-to-tweet should render with textColor 1`] = `"<!-- wp:coblocks/click-to-tweet {\\"textColor\\":\\"primary\\"} /-->"`;
 

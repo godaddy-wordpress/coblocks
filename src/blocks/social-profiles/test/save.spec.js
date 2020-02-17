@@ -14,7 +14,7 @@ import { name, settings } from '../index';
 let block;
 let serializedBlock;
 
-describe( name, () => {
+describe( 'coblocks/social-profiles', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings, attributes: metadata.attributes } );
@@ -150,11 +150,12 @@ describe( name, () => {
 	} );
 
 	it( 'should render with textAlign', () => {
-		block.attributes.textAlign = 'left';
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '{"textAlign":"left"}' );
-		expect( serializedBlock ).toMatchSnapshot();
+		[ 'left', 'center', 'right' ].forEach( ( alignment ) => {
+			block.attributes.textAlign = alignment;
+			serializedBlock = serialize( block );
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( `{"textAlign":"${ alignment }"}` );
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
 	} );
 } );
