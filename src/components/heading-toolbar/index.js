@@ -44,6 +44,7 @@ class HeadingToolbar extends Component {
 				controls={ range( minLevel, maxLevel ).map( ( index ) =>
 					this.createLevelControl( index, selectedLevel, onChange )
 				) }
+				label={ __( 'Change heading level' ) }
 			/>
 		);
 	}
