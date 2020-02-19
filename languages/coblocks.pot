@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-02-17T19:44:20+00:00\n"
+"POT-Creation-Date: 2020-02-19T02:13:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -352,7 +352,7 @@ msgstr ""
 #: src/blocks/dynamic-separator/inspector.js:62
 #: src/blocks/events/event-item/inspector.js:30
 #: src/blocks/features/feature/inspector.js:92
-#: src/blocks/features/inspector.js:204
+#: src/blocks/features/inspector.js:195
 #: src/blocks/form/submit-button.js:118
 #: src/blocks/hero/inspector.js:137
 #: src/blocks/highlight/inspector.js:43
@@ -372,7 +372,7 @@ msgstr ""
 #: src/blocks/alert/inspector.js:55
 #: src/blocks/author/inspector.js:56
 #: src/blocks/features/feature/inspector.js:110
-#: src/blocks/features/inspector.js:222
+#: src/blocks/features/inspector.js:213
 #: src/blocks/hero/inspector.js:150
 #: src/blocks/highlight/inspector.js:49
 #: src/blocks/icon/inspector.js:325
@@ -491,7 +491,7 @@ msgstr ""
 #: src/blocks/click-to-tweet/inspector.js:66
 #: src/blocks/events/event-item/inspector.js:23
 #: src/blocks/features/feature/inspector.js:114
-#: src/blocks/features/inspector.js:226
+#: src/blocks/features/inspector.js:217
 #: src/blocks/hero/inspector.js:155
 #: src/blocks/highlight/inspector.js:54
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:58
@@ -874,7 +874,7 @@ msgid "Feature Settings"
 msgstr ""
 
 #: src/blocks/features/feature/inspector.js:71
-#: src/blocks/features/inspector.js:162
+#: src/blocks/features/inspector.js:153
 #: src/blocks/hero/inspector.js:84
 #: src/blocks/icon/inspector.js:215
 #: src/blocks/media-card/inspector.js:62
@@ -896,8 +896,8 @@ msgstr ""
 
 #. translators: visual style option
 #. translators: block style
-#: src/blocks/features/inspector.js:92
-#: src/blocks/features/inspector.js:93
+#: src/blocks/features/inspector.js:89
+#: src/blocks/features/inspector.js:90
 #: src/blocks/gallery-collage/inspector.js:61
 #: src/blocks/gallery-collage/inspector.js:62
 #: src/blocks/gallery-offset/inspector.js:81
@@ -912,7 +912,7 @@ msgid "None"
 msgstr ""
 
 #. translators: abbreviation for small size
-#: src/blocks/features/inspector.js:98
+#: src/blocks/features/inspector.js:95
 #: src/blocks/gallery-collage/inspector.js:67
 #: src/blocks/gallery-collage/inspector.js:94
 #: src/blocks/gallery-offset/inspector.js:87
@@ -926,7 +926,7 @@ msgstr ""
 
 #. translators: abbreviation for small size
 #. translators: label for small size option
-#: src/blocks/features/inspector.js:99
+#: src/blocks/features/inspector.js:96
 #: src/blocks/gallery-collage/inspector.js:68
 #: src/blocks/gallery-collage/inspector.js:95
 #: src/blocks/gallery-offset/inspector.js:88
@@ -944,7 +944,7 @@ msgid "Small"
 msgstr ""
 
 #. translators: abbreviation for medium size
-#: src/blocks/features/inspector.js:104
+#: src/blocks/features/inspector.js:101
 #: src/blocks/gallery-collage/inspector.js:73
 #: src/blocks/gallery-collage/inspector.js:100
 #: src/blocks/gallery-offset/inspector.js:93
@@ -958,7 +958,7 @@ msgstr ""
 
 #. translators: abbreviation for medium size
 #. translators: label for medium size option
-#: src/blocks/features/inspector.js:105
+#: src/blocks/features/inspector.js:102
 #: src/blocks/gallery-collage/inspector.js:74
 #: src/blocks/gallery-collage/inspector.js:101
 #: src/blocks/gallery-offset/inspector.js:94
@@ -976,7 +976,7 @@ msgid "Medium"
 msgstr ""
 
 #. translators: abbreviation for large size
-#: src/blocks/features/inspector.js:110
+#: src/blocks/features/inspector.js:107
 #: src/blocks/gallery-collage/inspector.js:79
 #: src/blocks/gallery-collage/inspector.js:106
 #: src/blocks/gallery-offset/inspector.js:99
@@ -990,7 +990,7 @@ msgstr ""
 
 #. translators: abbreviation for large size
 #. translators: label for large size option
-#: src/blocks/features/inspector.js:111
+#: src/blocks/features/inspector.js:108
 #: src/blocks/gallery-collage/inspector.js:80
 #: src/blocks/gallery-collage/inspector.js:107
 #: src/blocks/gallery-offset/inspector.js:100
@@ -1009,7 +1009,7 @@ msgstr ""
 
 #. translators: abbreviation for largest size
 #. translators: abbreviation for extra large size
-#: src/blocks/features/inspector.js:116
+#: src/blocks/features/inspector.js:113
 #: src/blocks/gallery-collage/inspector.js:85
 #: src/blocks/gallery-offset/inspector.js:105
 #: src/blocks/posts/inspector.js:77
@@ -1022,7 +1022,7 @@ msgstr ""
 
 #. translators: abbreviation for extra large size
 #. translators: label for extra large size option
-#: src/blocks/features/inspector.js:117
+#: src/blocks/features/inspector.js:114
 #: src/blocks/gallery-collage/inspector.js:86
 #: src/blocks/gallery-offset/inspector.js:106
 #: src/blocks/icon/icon-size-select.js:30
@@ -1034,18 +1034,18 @@ msgstr ""
 msgid "Huge"
 msgstr ""
 
-#: src/blocks/features/inspector.js:124
+#: src/blocks/features/inspector.js:121
 msgid "Features Settings"
 msgstr ""
 
-#: src/blocks/features/inspector.js:126
+#: src/blocks/features/inspector.js:123
 #: src/blocks/post-carousel/inspector.js:86
 #: src/blocks/posts/inspector.js:196
 #: src/blocks/services/inspector.js:96
 msgid "Columns"
 msgstr ""
 
-#: src/blocks/features/inspector.js:149
+#: src/blocks/features/inspector.js:146
 #: src/blocks/gallery-carousel/inspector.js:92
 #: src/blocks/gallery-carousel/inspector.js:98
 #: src/blocks/gallery-collage/inspector.js:115
@@ -1058,7 +1058,7 @@ msgstr ""
 msgid "Gutter"
 msgstr ""
 
-#: src/blocks/features/inspector.js:183
+#: src/blocks/features/inspector.js:174
 #: src/blocks/row/column/inspector.js:133
 #: src/blocks/row/inspector.js:211
 #: src/components/dimensions-control/index.js:292
@@ -4701,7 +4701,7 @@ msgstr ""
 #: src/blocks/posts/inspector.js:86
 #: src/blocks/posts/inspector.js:98
 #: src/blocks/posts/inspector.js:99
-#: src/blocks/services/edit.js:46
+#: src/blocks/services/edit.js:47
 msgid "Square"
 msgstr ""
 
@@ -4709,7 +4709,7 @@ msgstr ""
 #: src/blocks/posts/inspector.js:91
 #: src/blocks/posts/inspector.js:113
 #: src/blocks/posts/inspector.js:114
-#: src/blocks/services/edit.js:51
+#: src/blocks/services/edit.js:52
 msgid "Circle"
 msgstr ""
 
@@ -5004,15 +5004,15 @@ msgstr ""
 msgid "Services Settings"
 msgstr ""
 
-#: src/blocks/services/inspector.js:116
+#: src/blocks/services/inspector.js:109
 msgid "Action Buttons"
 msgstr ""
 
-#: src/blocks/services/inspector.js:120
+#: src/blocks/services/inspector.js:113
 msgid "Showing the call to action buttons."
 msgstr ""
 
-#: src/blocks/services/inspector.js:121
+#: src/blocks/services/inspector.js:114
 msgid "Toggle to show call to action buttons."
 msgstr ""
 
@@ -5603,10 +5603,6 @@ msgstr ""
 #. translators: %s: heading level e.g: "1", "2", "3"
 #: src/components/heading-toolbar/index.js:25
 msgid "Heading %d"
-msgstr ""
-
-#: src/components/heading-toolbar/index.js:35
-msgid "Heading Level"
 msgstr ""
 
 #: src/components/inline-color-picker/index.js:25
