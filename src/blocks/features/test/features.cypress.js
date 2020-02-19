@@ -112,11 +112,23 @@ describe( 'Test CoBlocks Features Block', function() {
 
 	it( 'Updates the inner core/heading blocks when the "Heading Level" control is changed.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'features' );
+		cy.get( 'div[data-type="core/heading"]' ).find( 'h4[aria-label="Add feature title…"]' );
 
-		helpers.openSettingsPanel( /features settings/i );
+		cy.get( '.wp-block-coblocks-features' ).click();
+		helpers.openHeadingToolbarAndSelect( 2 );
+		cy.get( 'div[data-type="core/heading"]' ).find( 'h2[aria-label="Add feature title…"]' );
 
-		cy.get( '.components-coblocks-heading-toolbar [aria-label="Heading 6"]' ).click( { force: true } );
-		cy.get( '[data-type="coblocks/feature"] [data-type="core/heading"] h6' ).should( 'have.length', 2 );
+		cy.get( '.wp-block-coblocks-features' ).click();
+		helpers.openHeadingToolbarAndSelect( 3 );
+		cy.get( 'div[data-type="core/heading"]' ).find( 'h3[aria-label="Add feature title…"]' );
+
+		cy.get( '.wp-block-coblocks-features' ).click();
+		helpers.openHeadingToolbarAndSelect( 4 );
+		cy.get( 'div[data-type="core/heading"]' ).find( 'h4[aria-label="Add feature title…"]' );
+
+		cy.get( '.wp-block-coblocks-features' ).click();
+		helpers.openHeadingToolbarAndSelect( 5 );
+		cy.get( 'div[data-type="core/heading"]' ).find( 'h5[aria-label="Add feature title…"]' );
 
 		helpers.savePage();
 		helpers.checkForBlockErrors( 'features' );

@@ -5,9 +5,9 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Services Block', function() {
 	/**
-	* Test that we can add a services block to the content, not alter
-	* any settings, and are able to successfully save the block without errors.
-	*/
+	 * Test that we can add a services block to the content, not alter
+	 * any settings, and are able to successfully save the block without errors.
+	 */
 	it( 'Test services block saves with empty values.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'services' );
 
@@ -23,9 +23,9 @@ describe( 'Test CoBlocks Services Block', function() {
 	} );
 
 	/**
-	* Test that we can add a services block to the content, change
-	* column count and  are able to successfully save the block without errors.
-	*/
+	 * Test that we can add a services block to the content, change
+	 * column count and  are able to successfully save the block without errors.
+	 */
 	it( 'Test services block saves with columns attribute.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'services' );
 
@@ -61,28 +61,41 @@ describe( 'Test CoBlocks Services Block', function() {
 	} );
 
 	/**
-	* Test that we can add a services block to the content, change
-	* heading level and  are able to successfully save the block without errors.
-	*/
+	 * Test that we can add a services block to the content, change
+	 * heading level and  are able to successfully save the block without errors.
+	 */
 	it( 'Test services block saves with heading level set.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'services' );
 
 		cy.get( '.wp-block-coblocks-services' ).click( { force: true } );
 
-		cy.get( '.edit-post-sidebar' ).find( 'button[aria-label="Heading 1"]' ).parent().parent().children().each( ( $hLevelToggle, $i ) => {
-			cy.get( $hLevelToggle ).click();
-			cy.get( '.wp-block-coblocks-service' ).first().find( `h${ $i + 1 }[aria-label="Write title…"]` ).should( 'exist' );
-		} );
+		helpers.addCoBlocksBlockToPage( true, 'services' );
+		cy.get( 'div[data-type="core/heading"]' ).find( 'h3[aria-label="Write title…"]' );
+
+		cy.get( '.wp-block-coblocks-services' ).click();
+		helpers.openHeadingToolbarAndSelect( 2 );
+		cy.get( 'div[data-type="core/heading"]' ).find( 'h2[aria-label="Write title…"]' );
+
+		cy.get( '.wp-block-coblocks-services' ).click();
+		helpers.openHeadingToolbarAndSelect( 3 );
+		cy.get( 'div[data-type="core/heading"]' ).find( 'h3[aria-label="Write title…"]' );
+
+		cy.get( '.wp-block-coblocks-services' ).click();
+		helpers.openHeadingToolbarAndSelect( 4 );
+		cy.get( 'div[data-type="core/heading"]' ).find( 'h4[aria-label="Write title…"]' );
+
+		cy.get( '.wp-block-coblocks-services' ).click();
+		helpers.openHeadingToolbarAndSelect( 5 );
+		cy.get( 'div[data-type="core/heading"]' ).find( 'h5[aria-label="Write title…"]' );
 
 		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'services' );
 	} );
 
 	/**
-	* Test that we can add a services block to the content, enable
-	* action buttons and  are able to successfully save the block without errors.
-	*/
+	 * Test that we can add a services block to the content, enable
+	 * action buttons and  are able to successfully save the block without errors.
+	 */
 	it( 'Test services block saves with action buttons enabled.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'services' );
 
@@ -98,8 +111,8 @@ describe( 'Test CoBlocks Services Block', function() {
 	} );
 
 	/**
-    * Test the services block saves with custom classes
-    */
+	 * Test the services block saves with custom classes
+	 */
 	it( 'Test the services block custom classes.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'services' );
 

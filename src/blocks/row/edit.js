@@ -89,6 +89,7 @@ class Edit extends Component {
 		);
 
 		const columnOptions = [
+			{ columns: 1, name: __( 'One Column', 'coblocks' ), icon: rowIcons.colOne, key: '100' },
 			{ columns: 2, name: __( 'Two Columns', 'coblocks' ), icon: rowIcons.colTwo },
 			{ columns: 3, name: __( 'Three Columns', 'coblocks' ), icon: rowIcons.colThree },
 			{ columns: 4, name: __( 'Four Columns', 'coblocks' ), icon: rowIcons.colFour },
