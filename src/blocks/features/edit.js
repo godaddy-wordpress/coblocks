@@ -150,13 +150,11 @@ class Edit extends Component {
 				{ isSelected && (
 					<Controls
 						{ ...this.props }
+						onChangeHeadingLevel={ this.onChangeHeadingLevel }
 					/>
 				) }
 				{ isSelected && (
-					<Inspector
-						{ ...this.props }
-						onChangeHeadingLevel={ this.onChangeHeadingLevel }
-					/>
+					<Inspector { ...this.props } />
 				) }
 				<div
 					className={ classes }

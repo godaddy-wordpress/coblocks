@@ -9,12 +9,12 @@ import icons from './icons';
 import { __ } from '@wordpress/i18n';
 
 /**
- * Template option choices for predefined columns layouts.
+ * Template option choices for predefined form layouts.
  *
  * @constant
  * @type {Array}
  */
-const patterns = [
+const variations = [
 	{
 		name: 'contact-form',
 		label: __( 'Contact', 'coblocks' ),
@@ -26,6 +26,7 @@ const patterns = [
 			[ 'coblocks/field-textarea', { required: true } ],
 		],
 		submitButtonText: __( 'Contact Us', 'coblocks' ),
+		scope: [ 'block' ],
 	},
 	{
 		name: 'rsvp-form',
@@ -41,6 +42,7 @@ const patterns = [
 		],
 		/* translators: RSVP is an initialism derived from the French phrase Répondez s'il vous plaît, meaning "Please respond" to require confirmation of an invitation */
 		submitButtonText: __( 'RSVP', 'coblocks' ),
+		scope: [ 'block' ],
 	},
 	{
 		name: 'appointment-form',
@@ -56,7 +58,8 @@ const patterns = [
 
 		],
 		submitButtonText: __( 'Book Appointment', 'coblocks' ),
+		scope: [ 'block' ],
 	},
 ];
 
-export default patterns;
+export default variations;
