@@ -16,16 +16,14 @@ describe( 'Test CoBlocks Logos Block', function () {
 	const selectFromMediaLibrary = () => {
 		cy.get( '@targetElement' ).contains( /media library/i ).click();
 
-		cy.get( '.media-modal-content' ).within( $mediaModal => {
-			// 1. Select Media Library tab.
-			$mediaModal.find( '#menu-item-browse' ).click();
-			// 2. Select first item in Media Library list.
-			cy.get( '.attachments .attachment' ).first().click();
-			// 3. Click "Create New Gallery" or "Add to Gallery" button.
-			cy.get( '.media-toolbar-primary .media-button.button-primary' ).click();
-			// 4. Click "Insert Gallery" or "Update Gallery" button.
-			cy.get( '.media-toolbar-primary .media-button.button-primary' ).click();
-		} );
+		// 1. Select Media Library tab.
+		cy.get( '.media-modal-content' ).find( '#menu-item-browse' ).click();
+		// 2. Select first item in Media Library list.
+		cy.get( '.media-modal-content' ).find( 'li.attachment' ).first( 'li' ).click();
+		// 3. Click "Create New Gallery" or "Add to Gallery" button.
+		cy.get( '.media-toolbar-primary .media-button.button-primary' ).click();
+		// 4. Click "Insert Gallery" or "Update Gallery" button.
+		cy.get( '.media-toolbar-primary .media-button.button-primary' ).click();
 	};
 
 	before( () => {
