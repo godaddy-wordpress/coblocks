@@ -1,4 +1,4 @@
-# Editor Settings modal
+# Editor Settings
 
 ## Customize labels
 
@@ -8,11 +8,15 @@ label and panel titles:
 ```javascript
 import { addFilter } from '@wordpress/hooks';
 
-addFilter( 'coblocks-settings-title', 'coblocks-settings-title', updateSettingsTitle );
-
 function updateSettingsTitle() {
 	return __( 'Here is a new title!', 'textdomain' );
 }
+
+addFilter(
+	'coblocks-settings-title',
+	'coblocks-settings-title',
+	updateSettingsTitle,
+);
 ```
 
 ## Disable the modal entirely
