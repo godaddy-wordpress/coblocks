@@ -3,7 +3,13 @@
  */
 import {
 	registerBlockType,
+	registerBlockCollection,
 } from '@wordpress/blocks';
+
+/**
+ * Internal dependencies
+ */
+import brandAssets from './utils/brand-assets';
 
 // Register block category
 import './utils/block-category';
@@ -153,3 +159,11 @@ export const registerCoBlocksBlocks = () => {
 };
 
 registerCoBlocksBlocks();
+
+/**
+ * Function to register a block collection for our blocks.
+ */
+registerBlockCollection( 'coblocks', {
+	title: 'CoBlocks',
+	icon: brandAssets.categoryIcon,
+} );
