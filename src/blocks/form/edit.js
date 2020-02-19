@@ -21,7 +21,7 @@ import { TEMPLATE_OPTIONS } from './deprecatedTemplates/layouts';
  * WordPress dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
+import { Component, Fragment, createRef } from '@wordpress/element';
 import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/components';
 import { InspectorControls, InnerBlocks, __experimentalBlockPatternPicker } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
@@ -64,6 +64,7 @@ class FormEdit extends Component {
 		this.supportsInnerBlocksPicker = this.supportsInnerBlocksPicker.bind( this );
 		this.innerBlocksPatternPicker = this.innerBlocksPatternPicker.bind( this );
 		this.blockPatternPicker = this.blockPatternPicker.bind( this );
+		this.subjectField = createRef();
 
 		this.state = {
 			toError: error && error.length ? error : null,
@@ -243,7 +244,7 @@ class FormEdit extends Component {
 		const { attributes } = this.props;
 		let { subject } = attributes;
 		if ( null === subject ) {
-			subject = jQuery( event.target ).closest( 'div.components-base-control' ).find( 'input[type="text"]' ).val();
+			subject = this.subjectField.current.props.value;
 		}
 		this.onChangeSubject( subject + event.target.innerHTML );
 	}
@@ -288,6 +289,7 @@ class FormEdit extends Component {
 				</Notice>
 				<TextControl
 					label={ __( 'Subject', 'coblocks' ) }
+					ref={ this.subjectField }
 					value={
 						subject || '' === subject ?
 							subject :
