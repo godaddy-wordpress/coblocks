@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/logos",
-	"category": "coblocks",
+	"category": "layout",
 	"attributes": {
 		"align": {
 			"type": "string"

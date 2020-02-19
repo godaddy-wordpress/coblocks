@@ -16,7 +16,7 @@ import { InnerBlocks } from '@wordpress/block-editor';
  */
 const metadata = {
 	name: 'coblocks/form',
-	category: 'coblocks',
+	category: 'layout',
 	attributes: {
 		subject: {
 			type: 'string',

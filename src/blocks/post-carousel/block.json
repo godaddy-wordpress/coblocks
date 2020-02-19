@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/post-carousel",
-	"category": "coblocks",
+	"category": "layout",
 	"attributes": {
 		"className": {
 			"type": "string"

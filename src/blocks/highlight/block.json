@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/highlight",
-	"category": "coblocks",
+	"category": "formatting",
 	"attributes": {
 		"content": {
 			"type": "string",

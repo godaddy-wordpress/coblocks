@@ -10,11 +10,11 @@ import { __, sprintf } from '@wordpress/i18n';
 import brandAssets from './brand-assets';
 
 setCategories( [
-	{
-		slug: 'coblocks',
-		title: 'CoBlocks',
-		icon: brandAssets.categoryIcon,
-	},
+	// {
+	// 	slug: 'coblocks',
+	// 	title: 'CoBlocks',
+	// 	icon: brandAssets.categoryIcon,
+	// },
 	{
 		slug: 'coblocks-galleries',
 		title: sprintf(
