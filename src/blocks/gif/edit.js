@@ -266,19 +266,17 @@ class Edit extends Component {
 
 			setAttributes( { fetching: true } );
 
-			const request = new XMLHttpRequest();
-			request.open( 'GET', GIPHY_URL + encodeURI( search ), true );
-			request.onload = function() {
-				if ( this.status >= 200 && this.status < 400 ) {
-					// Success!
-					const data = JSON.parse( this.response );
+			fetch( GIPHY_URL + encodeURI( search ),
+				{ method: 'GET' }
+			)
+				.then( ( response ) => {
+					return response.json();
+				} )
+				.then( ( data ) => {
 					setAttributes( { fetching: false, matches: data.data } );
-				}
-			};
-			request.onerror = function() {
-				setAttributes( { fetching: false } );
-			};
-			request.send();
+				} ).catch( ( ) => {
+					setAttributes( { fetching: false } );
+				} );
 		}, 1000 );
 
 		return (
