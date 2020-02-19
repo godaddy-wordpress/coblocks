@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-syntax */
-/*global coblocksBlockData*/
+/*global coblocksBlockData, jQuery*/
 
 /**
  * External dependencies
@@ -23,11 +23,12 @@ import { TEMPLATE_OPTIONS } from './deprecatedTemplates/layouts';
 import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/components';
-import { InspectorControls, InnerBlocks, __experimentalBlockPatternPicker } from '@wordpress/block-editor';
+import { InspectorControls, InnerBlocks, __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
 import { compose } from '@wordpress/compose';
 import { withSelect, useDispatch } from '@wordpress/data';
-import { __experimentalRegisterBlockPattern, createBlock } from '@wordpress/blocks';
+import { createBlock, registerBlockVariation } from '@wordpress/blocks';
+
 /**
  * Get settings
  */
@@ -79,7 +80,9 @@ class FormEdit extends Component {
 			.split( ',' )
 			.map( this.getToValidationError )
 			.filter( Boolean );
+	}
 
+	componentDidMount() {
 		if ( typeof settings !== 'undefined' ) {
 			settings.on( 'change:coblocks_google_recaptcha_site_key', ( model ) => {
 				const recaptchaSiteKey = model.get( 'coblocks_google_recaptcha_site_key' );
@@ -122,9 +125,7 @@ class FormEdit extends Component {
 				}
 			} );
 		}
-	}
 
-	componentDidMount() {
 		const { hasInnerBlocks, innerBlocks, defaultPattern } = this.props;
 		if ( hasInnerBlocks ) {
 			this.setState( { template: innerBlocks } );
@@ -341,7 +342,7 @@ class FormEdit extends Component {
 	}
 
 	supportsBlockPatternPicker() {
-		return typeof __experimentalRegisterBlockPattern === 'undefined' ? false : true;
+		return !! registerBlockVariation;
 	}
 
 	blockPatternPicker( ) {
@@ -376,7 +377,7 @@ class FormEdit extends Component {
 	}
 
 	render() {
-		const { className, blockType, defaultPattern, patterns, replaceInnerBlocks, hasInnerBlocks } = this.props;
+		const { className, blockType, defaultPattern, replaceInnerBlocks, hasInnerBlocks, variations } = this.props;
 
 		const classes = classnames(
 			className,
@@ -454,33 +455,35 @@ class FormEdit extends Component {
 			);
 		}
 
+		const blockVariationPickerOnSelect = ( nextVariation = defaultPattern ) => {
+			if ( nextVariation.attributes ) {
+				this.props.setAttributes( nextVariation.attributes );
+			}
+
+			const submitButtonText = map( variations, ( elem ) => {
+				if ( isEqual( elem.innerBlocks, nextVariation.innerBlocks ) ) {
+					return elem.submitButtonText;
+				}
+			} );
+
+			this.props.setAttributes( { submitButtonText } );
+			if ( nextVariation.innerBlocks ) {
+				replaceInnerBlocks(
+					this.props.clientId,
+					this.createBlocksFromInnerBlocksTemplate( nextVariation.innerBlocks )
+				);
+			}
+		};
+
 		return (
 			<Fragment>
-				<__experimentalBlockPatternPicker
+				<__experimentalBlockVariationPicker
 					icon={ get( blockType, [ 'icon', 'src' ] ) }
 					label={ get( blockType, [ 'title' ] ) }
-					instructions={ __( 'Select a pattern to start with.', 'coblocks' ) }
-					patterns={ patterns }
+					instructions={ __( 'Select a variation to start with.', 'coblocks' ) }
+					variations={ variations }
 					allowSkip
-					onSelect={ ( nextPattern = defaultPattern ) => {
-						if ( nextPattern.attributes ) {
-							this.props.setAttributes( nextPattern.attributes );
-						}
-
-						const submitButtonText = map( patterns, ( elem ) => {
-							if ( isEqual( elem.innerBlocks, nextPattern.innerBlocks ) ) {
-								return elem.submitButtonText;
-							}
-						} );
-
-						this.props.setAttributes( { submitButtonText } );
-						if ( nextPattern.innerBlocks ) {
-							replaceInnerBlocks(
-								this.props.clientId,
-								this.createBlocksFromInnerBlocksTemplate( nextPattern.innerBlocks )
-							);
-						}
-					} }
+					onSelect={ ( nextVariation ) => blockVariationPickerOnSelect( nextVariation ) }
 				/>
 			</Fragment>
 		);
@@ -489,7 +492,7 @@ class FormEdit extends Component {
 
 const applyWithSelect = withSelect( ( select, props ) => {
 	const { getBlocks } = select( 'core/block-editor' );
-	const { __experimentalGetBlockPatterns, getBlockType, __experimentalGetDefaultBlockPattern } = select( 'core/blocks' );
+	const { getBlockType, getBlockVariations, getDefaultBlockVariation } = select( 'core/blocks' );
 	const innerBlocks = getBlocks( props.clientId );
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 
@@ -499,8 +502,8 @@ const applyWithSelect = withSelect( ( select, props ) => {
 		hasInnerBlocks: select( 'core/block-editor' ).getBlocks( props.clientId ).length > 0,
 
 		blockType: getBlockType( props.name ),
-		defaultPattern: typeof __experimentalGetDefaultBlockPattern === 'undefined' ? null : __experimentalGetDefaultBlockPattern( props.name ),
-		patterns: typeof __experimentalGetBlockPatterns === 'undefined' ? null : __experimentalGetBlockPatterns( props.name ),
+		defaultPattern: typeof getDefaultBlockVariation === 'undefined' ? null : getDefaultBlockVariation( props.name ),
+		variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( props.name ),
 		replaceInnerBlocks,
 	};
 } );
