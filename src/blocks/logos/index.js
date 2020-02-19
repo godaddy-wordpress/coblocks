@@ -44,14 +44,14 @@ const settings = {
 			isDefault: true,
 		},
 		{
-			name: 'black-and-white',
-			/* translators: block style */
-			label: __( 'Black & White', 'coblocks' ),
-		},
-		{
 			name: 'grayscale',
 			/* translators: block style */
 			label: __( 'Grayscale', 'coblocks' ),
+		},
+		{
+			name: 'black-and-white',
+			/* translators: block style */
+			label: __( 'Black & White', 'coblocks' ),
 		},
 	],
 	supports: {
