@@ -1,9 +1,8 @@
-/*global jQuery*/
-
 /**
  * External dependencies
  */
 import classnames from 'classnames';
+import { debounce, map } from 'lodash';
 
 /**
  * WordPress dependencies
@@ -108,22 +107,6 @@ class Edit extends Component {
 
 		let results = [];
 
-		const fetchGifs = _.debounce( function fetchGifs( search ) {
-			if ( attributes.fetching ) {
-				return;
-			}
-
-			setAttributes( { fetching: true } );
-
-			jQuery.getJSON( GIPHY_URL + encodeURI( search ) )
-				.success( function fetchSuccess( data ) {
-					setAttributes( { fetching: false, matches: data.data } );
-				} )
-				.fail( function fetchFail() {
-					setAttributes( { fetching: false } );
-				} );
-		}, 1000 );
-
 		if ( url ) {
 			return (
 				<Fragment>
@@ -156,7 +139,7 @@ class Edit extends Component {
 
 								// Disable reason: Image itself is not meant to be
 								// interactive, but should direct focus to block
-								// eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
+								// eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
 								const img = <img src={ url } alt={ defaultedAlt } onClick={ this.onImageClick } />;
 
 								if ( ! isResizable || ! imageWidthWithinContainer ) {
@@ -256,7 +239,7 @@ class Edit extends Component {
 		}
 		// If there are results, create thumbnails to select from.
 		if ( attributes.matches && attributes.matches.length ) {
-			results = _.map( attributes.matches, function mapSearchResults( gif ) {
+			results = map( attributes.matches, function mapSearchResults( gif ) {
 				const gifImage = wp.element.createElement( 'img', {
 					key: gif.id + '-img',
 					src: gif.images.fixed_height_small.url,
@@ -275,6 +258,28 @@ class Edit extends Component {
 		if ( ! results.length && attributes.fetching ) {
 			results = <Spinner />;
 		}
+
+		const fetchGifs = debounce( function fetchGifs( search ) {
+			if ( attributes.fetching ) {
+				return;
+			}
+
+			setAttributes( { fetching: true } );
+
+			const request = new XMLHttpRequest();
+			request.open( 'GET', GIPHY_URL + encodeURI( search ), true );
+			request.onload = function() {
+				if ( this.status >= 200 && this.status < 400 ) {
+					// Success!
+					const data = JSON.parse( this.response );
+					setAttributes( { fetching: false, matches: data.data } );
+				}
+			};
+			request.onerror = function() {
+				setAttributes( { fetching: false } );
+			};
+			request.send();
+		}, 1000 );
 
 		return (
 			<Fragment>
