@@ -1,4 +1,4 @@
-## Editor Settings modal
+# Editor Settings modal
 
 ## Customize settings labels
 
