@@ -13,36 +13,22 @@ describe( 'Test CoBlocks Logos Block', function () {
 		pathToFixtures: '../.dev/tests/cypress/fixtures/images/',
 	};
 
-	const selectFromMediaLibrary = () => {
-		cy.get( '@targetElement' ).contains( /media library/i ).click();
-
-		cy.get( '.media-modal-content' ).within( $mediaModal => {
-			// 1. Select Media Library tab.
-			$mediaModal.find( '#menu-item-browse' ).click();
-			// 2. Select first item in Media Library list.
-			cy.get( '.attachments .attachment' ).first().click();
-			// 3. Click "Create New Gallery" or "Add to Gallery" button.
-			cy.get( '.media-toolbar-primary .media-button.button-primary' ).click();
-			// 4. Click "Insert Gallery" or "Update Gallery" button.
-			cy.get( '.media-toolbar-primary .media-button.button-primary' ).click();
-		} );
-	};
-
-	before( () => {
-		helpers.addCoBlocksBlockToPage( true, 'logos' );
-	} );
-
-	beforeEach( () => {
-		cy.get( '.wp-block[data-type="coblocks/logos"]' ).first().as( 'targetElement' );
-	} );
-
 	/**
 	 * Test that we can add a logos block to the content, not add any images or
 	 * alter any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'Test logos block saves with empty values.', function () {
-		cy.get( '.wp-block-coblocks-logos' ).should( 'exist' );
+		helpers.addCoBlocksBlockToPage( true, 'logos' );
+
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'logos' );
+
+		helpers.viewPage();
+
+		cy.get( '.wp-block-coblocks-logos' ).should( 'not.exist' );
+
+		helpers.editPage();
 	} );
 
 	/**
@@ -51,21 +37,32 @@ describe( 'Test CoBlocks Logos Block', function () {
 	 */
 	it( 'Test logos block saves with image upload.', function () {
 		const { fileName, imageBase, pathToFixtures } = logosData;
+		helpers.addCoBlocksBlockToPage( true, 'logos' );
 
-		cy.get('@targetElement').click();
+		cy.get( '.wp-block[data-type="coblocks/logos"]' )
+			.click();
 
-		cy.fixture( pathToFixtures + fileName, 'base64' ).then( async fileContent => {
-			await cy.get('@targetElement').find( '.components-drop-zone' ).first()
+		cy.fixture( pathToFixtures + fileName, 'base64' ).then( fileContent => {
+			cy.get( 'div[data-type="coblocks/logos"]' )
+				.find( 'div.components-drop-zone' ).first()
 				.upload(
 					{ fileContent, fileName, mimeType: 'image/png' },
 					{ subjectType: 'drag-n-drop', force: true, events: [ 'dragstart', 'dragover', 'drop' ] },
-				);
-			cy.get('@targetElement').find( '.wp-block-coblocks-logos img' )
-				.should( 'have.attr', 'src' )
-				.should( 'include', imageBase );
-		} );
+				)
+				.wait( 2000 ); // Allow upload to finish.
 
-		helpers.checkForBlockErrors( 'logos' );
+			cy.get( '.wp-block-coblocks-logos' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
+
+			helpers.savePage();
+
+			helpers.checkForBlockErrors( 'logos' );
+
+			helpers.viewPage();
+
+			cy.get( '.wp-block-coblocks-logos' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
+
+			helpers.editPage();
+		} );
 	} );
 
 	/**
@@ -73,12 +70,33 @@ describe( 'Test CoBlocks Logos Block', function () {
 	 * to successfully save the block without errors.
 	 */
 	it( 'Test logos block saves with image from media library.', function () {
-		selectFromMediaLibrary();
+		helpers.addCoBlocksBlockToPage( true, 'logos' );
+
+		cy.get( '.wp-block[data-type="coblocks/logos"]' )
+			.click()
+			.contains( /media library/i )
+			.click();
+
+		cy.get( '.media-modal-content' ).contains( /media library/i ).click();
+
+		cy.get( '.media-modal-content' ).find( 'li.attachment' )
+			.first( 'li' )
+			.click();
+
+		cy.get( 'button' ).contains( /create a new gallery/i ).click();
+
+		cy.get( 'button' ).contains( /insert gallery/i ).click();
+
+		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'logos' );
 
-		cy.get( '@targetElement' ).find( '.wp-block-coblocks-logos' ).should( 'exist' );
-		cy.get( '@targetElement' ).find( '.wp-block-coblocks-logos img' ).should( 'have.attr', 'src' );
+		helpers.viewPage();
+
+		cy.get( '.wp-block-coblocks-logos' ).should( 'exist' );
+		cy.get( '.wp-block-coblocks-logos' ).find( 'img' ).should( 'have.attr', 'src' );
+
+		helpers.editPage();
 	} );
 
 	/**
@@ -86,10 +104,36 @@ describe( 'Test CoBlocks Logos Block', function () {
 	 * successfully save the block without errors.
 	 */
 	it( 'Test logos block saves with black and white filter.', function () {
+		helpers.addCoBlocksBlockToPage( true, 'logos' );
+
+		cy.get( '.wp-block[data-type="coblocks/logos"]' )
+			.click()
+			.contains( /media library/i )
+			.click();
+
+		cy.get( '.media-modal-content' ).contains( /media library/i ).click();
+
+		cy.get( '.media-modal-content' ).find( 'li.attachment' )
+			.first( 'li' )
+			.click();
+
+		cy.get( 'button' ).contains( /create a new gallery/i ).click();
+
+		cy.get( 'button' ).contains( /insert gallery/i ).click();
+
 		helpers.setBlockStyle( /black & white/i );
 
 		cy.get( '.wp-block-coblocks-logos' ).should( 'have.class', 'is-style-black-and-white' );
+
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'logos' );
+
+		helpers.viewPage();
+
+		cy.get( '.wp-block-coblocks-logos' ).should( 'have.class', 'is-style-black-and-white' );
+
+		helpers.editPage();
 	} );
 
 	/**
@@ -97,10 +141,36 @@ describe( 'Test CoBlocks Logos Block', function () {
 	 * successfully save the block without errors.
 	 */
 	it( 'Test logos block saves with grayscale filter.', function () {
+		helpers.addCoBlocksBlockToPage( true, 'logos' );
+
+		cy.get( '.wp-block[data-type="coblocks/logos"]' )
+			.click()
+			.contains( /media library/i )
+			.click();
+
+		cy.get( '.media-modal-content' ).contains( /media library/i ).click();
+
+		cy.get( '.media-modal-content' ).find( 'li.attachment' )
+			.first( 'li' )
+			.click();
+
+		cy.get( 'button' ).contains( /create a new gallery/i ).click();
+
+		cy.get( 'button' ).contains( /insert gallery/i ).click();
+
 		helpers.setBlockStyle( /grayscale/i );
 
 		cy.get( '.wp-block-coblocks-logos' ).should( 'have.class', 'is-style-grayscale' );
+
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'logos' );
+
+		helpers.viewPage();
+
+		cy.get( '.wp-block-coblocks-logos' ).should( 'have.class', 'is-style-grayscale' );
+
+		helpers.editPage();
 	} );
 
 	/**
@@ -108,9 +178,35 @@ describe( 'Test CoBlocks Logos Block', function () {
 	 * successfully save the block without errors.
 	 */
 	it( 'Test logos block saves with default filter.', function () {
+		helpers.addCoBlocksBlockToPage( true, 'logos' );
+
+		cy.get( '.wp-block[data-type="coblocks/logos"]' )
+			.click()
+			.contains( /media library/i )
+			.click();
+
+		cy.get( '.media-modal-content' ).contains( /media library/i ).click();
+
+		cy.get( '.media-modal-content' ).find( 'li.attachment' )
+			.first( 'li' )
+			.click();
+
+		cy.get( 'button' ).contains( /create a new gallery/i ).click();
+
+		cy.get( 'button' ).contains( /insert gallery/i ).click();
+
 		helpers.setBlockStyle( /default/i );
 
 		cy.get( '.wp-block-coblocks-logos' ).should( 'have.class', 'is-style-default' );
+
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'logos' );
+
+		helpers.viewPage();
+
+		cy.get( '.wp-block-coblocks-logos' ).should( 'have.class', 'is-style-default' );
+
+		helpers.editPage();
 	} );
 } );
