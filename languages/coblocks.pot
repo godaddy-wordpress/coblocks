@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-02-19T18:30:41+00:00\n"
+"POT-Creation-Date: 2020-02-19T23:01:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -1902,6 +1902,7 @@ msgstr ""
 #. translators: block style
 #. translators: typography style
 #: src/blocks/gallery-collage/index.js:44
+#: src/blocks/logos/index.js:43
 #: src/components/font-family/index.js:16
 #: src/components/typography-controls/index.js:103
 #: src/components/typography-controls/index.js:121
@@ -4197,61 +4198,59 @@ msgstr ""
 msgid "Icon Color"
 msgstr ""
 
-#: src/blocks/logos/controls.js:51
+#: src/blocks/logos/controls.js:50
 msgid "Edit logos"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/logos/edit.js:69
-#: src/blocks/logos/index.js:21
+#: src/blocks/logos/edit.js:61
+#: src/blocks/logos/index.js:22
 msgid "Logos & Badges"
 msgstr ""
 
-#: src/blocks/logos/edit.js:70
+#: src/blocks/logos/edit.js:62
 #: src/components/block-gallery/gallery-placeholder.js:154
 msgid "Drag images, upload new ones or select files from your library."
 msgstr ""
 
 #. translators: block description
-#: src/blocks/logos/index.js:23
+#: src/blocks/logos/index.js:24
 msgid "Add logos, badges, or certifications to build credibility."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/logos/index.js:28
+#: src/blocks/logos/index.js:29
 msgid "clients"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/logos/index.js:30
+#: src/blocks/logos/index.js:31
 msgid "proof"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/logos/index.js:32
+#: src/blocks/logos/index.js:33
 msgid "testimonials"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/logos/index.js:34
+#: src/blocks/logos/index.js:35
 msgid "awards"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/logos/index.js:36
+#: src/blocks/logos/index.js:37
 msgid "seal"
 msgstr ""
 
-#: src/blocks/logos/inspector.js:21
-msgid "Logos Settings"
+#. translators: block style
+#: src/blocks/logos/index.js:49
+msgid "Grayscale"
 msgstr ""
 
-#: src/blocks/logos/inspector.js:24
+#. translators: block style
+#: src/blocks/logos/index.js:54
 msgid "Black & White"
-msgstr ""
-
-#: src/blocks/logos/inspector.js:25
-msgid "Toggle to add a black and white filter."
 msgstr ""
 
 #: src/blocks/map/controls.js:17
