@@ -14,7 +14,7 @@ import { name, settings } from '../index';
 let block;
 let serializedBlock;
 
-describe( name, () => {
+describe( 'coblocks/logos', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );
@@ -33,7 +33,7 @@ describe( name, () => {
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
-	it( 'should render', () => {
+	it( 'should render with images attribute', () => {
 		block.attributes.images = [
 			{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', id: 1 },
 		];
@@ -74,5 +74,26 @@ describe( name, () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'is-style-grayscale' );
+	} );
+
+	it( 'should render with images.width attribute', () => {
+		block.attributes.images = [
+			{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', id: 1, width: '60.6897%' },
+		];
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg' );
+		expect( serializedBlock ).toContain( 'data-width="60.6897%"' );
+		expect( serializedBlock ).toContain( 'style="width:60.6897%"' );
+	} );
+
+	it( 'should render with className attribute', () => {
+		block.attributes.className = 'my-custom-class';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '"className":"my-custom-class"' );
+		expect( serializedBlock ).toContain( 'my-custom-class' );
 	} );
 } );
