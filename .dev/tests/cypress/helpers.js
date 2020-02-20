@@ -276,6 +276,20 @@ export function openSettingsPanel( panelText ) {
 }
 
 /**
+ * Open a block heading controls located in block toolbar
+ *
+ * @param number headingLevel The button that should be located and clicked
+ */
+export function openHeadingToolbarAndSelect( headingLevel ) {
+	cy.get( '.block-editor-block-toolbar' ).find('.block-editor-block-toolbar__slot').first().find('button').each( ( button, index ) => {
+		if( index === 1 ) { // represents the second position in the toolbar
+			cy.get(button).click( { force: true } );
+		}
+	} )
+	cy.get('.components-popover__content').find('div[role="menu"]').find('button').contains( headingLevel ).click();
+}
+
+/**
  * Toggle an checkbox in the settings panel of the block editor
  *
  * @param  string checkboxLabelText The checkbox label text. eg: Drop Cap
