@@ -40,10 +40,11 @@ class Edit extends Component {
 	}
 
 	componentDidUpdate( prevProps ) {
+		const { setAttributes, hasInnerBlocks } = this.props;
 		// Store the selected innerBlocks layout in state so that undo and redo functions work properly.
-		if ( prevProps.hasInnerBlocks && ! this.props.hasInnerBlocks ) {
+		if ( prevProps.hasInnerBlocks && ! hasInnerBlocks ) {
 			this.setState( { layoutSelection: true } );
-			this.props.setAttributes( { layout: null } );
+			setAttributes( { layout: null, columns: null } );
 		}
 	}
 
@@ -75,7 +76,7 @@ class Edit extends Component {
 			className,
 			variations,
 			hasInnerBlocks,
-			defaultPattern,
+			defaultVariation,
 			replaceInnerBlocks,
 			blockType,
 		} = this.props;
@@ -302,7 +303,7 @@ class Edit extends Component {
 			);
 		}
 
-		const blockVariationPickerOnSelect = ( nextVariation = defaultPattern ) => {
+		const blockVariationPickerOnSelect = ( nextVariation = defaultVariation ) => {
 			if ( nextVariation.attributes ) {
 				this.props.setAttributes( nextVariation.attributes );
 			}
@@ -350,7 +351,7 @@ const applyWithSelect = withSelect( ( select, props ) => {
 		hasInnerBlocks: select( 'core/block-editor' ).getBlocks( props.clientId ).length > 0,
 
 		blockType: getBlockType( props.name ),
-		defaultPattern: typeof getDefaultBlockVariation === 'undefined' ? null : getDefaultBlockVariation( props.name ),
+		defaultVariation: typeof getDefaultBlockVariation === 'undefined' ? null : getDefaultBlockVariation( props.name ),
 		variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( props.name ),
 		replaceInnerBlocks,
 
