@@ -1,4 +1,16 @@
 
+1.21.1 / 2020-02-20
+===================
+
+### Bug Fixes
+* Fix some images being completely black when filtered in the Logos block [#1358](https://github.com/godaddy-wordpress/coblocks/pull/1358)
+* Implement blockVariationPicker with Form block [#1355](https://github.com/godaddy-wordpress/coblocks/pull/1355)
+
+### Misc
+* Bring back one column variation to the Row block by popular demand [#1368](https://github.com/godaddy-wordpress/coblocks/pull/1368)
+* Add documentation for editor settings hooks [#1366](https://github.com/godaddy-wordpress/coblocks/pull/1366)
+* Move Features/Services HeadingToolbar controls to block toolbar [#1352](https://github.com/godaddy-wordpress/coblocks/pull/1352)
+
 1.21.0 / 2020-02-13
 ===================
 
