@@ -3,6 +3,8 @@
  */
 import classnames from 'classnames';
 import map from 'lodash/map';
+import get from 'lodash/get';
+import isEqual from 'lodash/isEqual';
 
 /**
  * Internal dependencies
@@ -12,6 +14,7 @@ import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
 import rowIcons from './icons';
+import { createBlock, registerBlockVariation } from '@wordpress/blocks';
 import { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../components/background';
 
 /**
@@ -20,7 +23,8 @@ import { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../co
 import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { BlockIcon, InnerBlocks } from '@wordpress/block-editor';
+import { withSelect, useDispatch } from '@wordpress/data';
+import { BlockIcon, InnerBlocks, __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 import { ButtonGroup, Button, IconButton, Tooltip, Placeholder, Spinner } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
 
@@ -36,6 +40,14 @@ class Edit extends Component {
 		};
 	}
 
+	componentDidUpdate( prevProps ) {
+		// Store the selected innerBlocks layout in state so that undo and redo functions work properly.
+		if ( prevProps.hasInnerBlocks && ! this.props.hasInnerBlocks ) {
+			this.setState( { layoutSelection: true } );
+			this.props.setAttributes( { layout: null } );
+		}
+	}
+
 	numberToText( columns ) {
 		if ( columns === 1 ) {
 			return __( 'one', 'coblocks' );
@@ -48,12 +60,25 @@ class Edit extends Component {
 		}
 	}
 
+	createBlocksFromInnerBlocksTemplate( innerBlocksTemplate ) {
+		return map( innerBlocksTemplate, ( [ name, attributes, innerBlocks = [] ] ) => createBlock( name, attributes, this.createBlocksFromInnerBlocksTemplate( innerBlocks ) ) );
+	}
+
+	supportsBlockVariationPicker() {
+		return !! registerBlockVariation;
+	}
+
 	render() {
 		const {
 			attributes,
 			isSelected,
 			setAttributes,
 			className,
+			variations,
+			hasInnerBlocks,
+			defaultPattern,
+			replaceInnerBlocks,
+			blockType,
 		} = this.props;
 
 		const {
@@ -101,7 +126,7 @@ class Edit extends Component {
 			selectedRows = parseInt( columns.toString().split( '-' ) );
 		}
 
-		if ( ! layout && this.state.layoutSelection ) {
+		if ( ! layout && this.state.layoutSelection && ! this.supportsBlockVariationPicker() ) {
 			return (
 				<Fragment>
 					{ isSelected && (
@@ -233,36 +258,95 @@ class Edit extends Component {
 			marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
 		};
 
+		if ( hasInnerBlocks || !! layout ) {
+			const deprecatedInnerBlocks = () => (
+				<InnerBlocks
+					template={ template[ layout ] }
+					templateLock="all"
+					allowedBlocks={ allowedBlocks }
+					templateInsertUpdatesSelection={ columns === 1 }
+					renderAppender={ () => ( null ) }
+				/>
+			);
+
+			const variationInnerBlocks = () => (
+				<InnerBlocks
+					allowedBlocks={ allowedBlocks }
+					templateInsertUpdatesSelection={ columns === 1 }
+					renderAppender={ () => ( null ) }
+					templateLock="all" />
+			);
+
+			return (
+				<Fragment>
+					{ dropZone }
+					{ isSelected && (
+						<Controls
+							{ ...this.props }
+						/>
+					) }
+					{ isSelected && (
+						<Inspector
+							{ ...this.props }
+						/>
+					) }
+					<div className={ classes }>
+						{ isBlobURL( backgroundImg ) && <Spinner /> }
+						<div className={ innerClasses } style={ innerStyles }>
+							{ BackgroundVideo( attributes ) }
+							{ this.supportsBlockVariationPicker() ?
+								variationInnerBlocks() :
+								deprecatedInnerBlocks() }
+						</div>
+					</div>
+				</Fragment>
+			);
+		}
+
+		const blockVariationPickerOnSelect = ( nextVariation = defaultPattern ) => {
+			if ( nextVariation.attributes ) {
+				this.props.setAttributes( nextVariation.attributes );
+			}
+
+			if ( nextVariation.innerBlocks ) {
+				replaceInnerBlocks(
+					this.props.clientId,
+					this.createBlocksFromInnerBlocksTemplate( nextVariation.innerBlocks )
+				);
+			}
+		};
+
 		return (
 			<Fragment>
-				{ dropZone }
-				{ isSelected && (
-					<Controls
-						{ ...this.props }
-					/>
-				) }
-				{ isSelected && (
-					<Inspector
-						{ ...this.props }
-					/>
-				) }
-				<div className={ classes }>
-					{ isBlobURL( backgroundImg ) && <Spinner /> }
-					<div className={ innerClasses } style={ innerStyles }>
-						{ BackgroundVideo( attributes ) }
-						<InnerBlocks
-							template={ template[ layout ] }
-							templateLock="all"
-							allowedBlocks={ allowedBlocks }
-							templateInsertUpdatesSelection={ columns === 1 }
-							renderAppender={ () => ( null ) } />
-					</div>
-				</div>
+				<__experimentalBlockVariationPicker
+					icon={ get( blockType, [ 'icon', 'src' ] ) }
+					label={ get( blockType, [ 'title' ] ) }
+					instructions={ __( 'Select a variation to start with.', 'coblocks' ) }
+					variations={ variations }
+					allowSkip
+					onSelect={ ( nextVariation ) => blockVariationPickerOnSelect( nextVariation ) }
+				/>
 			</Fragment>
 		);
 	}
 }
 
-export default compose( [
-	applyWithColors,
-] )( Edit );
+const applyWithSelect = withSelect( ( select, props ) => {
+	const { getBlocks } = select( 'core/block-editor' );
+	const { getBlockType, getBlockVariations, getDefaultBlockVariation } = select( 'core/blocks' );
+	const innerBlocks = getBlocks( props.clientId );
+	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
+
+	return {
+		// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
+		innerBlocks,
+		hasInnerBlocks: select( 'core/block-editor' ).getBlocks( props.clientId ).length > 0,
+
+		blockType: getBlockType( props.name ),
+		defaultPattern: typeof getDefaultBlockVariation === 'undefined' ? null : getDefaultBlockVariation( props.name ),
+		variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( props.name ),
+		replaceInnerBlocks,
+	};
+} );
+
+export default compose( applyWithSelect, applyWithColors )( Edit );
