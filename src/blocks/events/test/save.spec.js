@@ -7,16 +7,17 @@ import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
 /**
  * Internal dependencies.
  */
+import metadata from '../block.json';
 import { name, settings } from '../index';
 
 // Make variables accessible for all tests.
 let block;
 let serializedBlock;
 
-describe( 'coblocks/dynamic-separator', () => {
+describe( 'coblocks/events', () => {
 	beforeAll( () => {
 		// Register the block.
-		registerBlockType( name, { category: 'common', ...settings } );
+		registerBlockType( name, { category: 'common', ...settings, attributes: metadata.attributes } );
 	} );
 
 	beforeEach( () => {
@@ -27,47 +28,9 @@ describe( 'coblocks/dynamic-separator', () => {
 		serializedBlock = '';
 	} );
 
-	it( 'should render', () => {
-		serializedBlock = serialize( block );
-
+	it( 'should render without content', () => {
+		serializedBlock = serialize( createBlock( name ) );
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toMatchSnapshot();
-	} );
-
-	it( 'should render with styles', () => {
-		[ 'is-style-dots', 'is-style-fullwidth', 'is-style-line' ].forEach( ( styleClass ) => {
-			block.attributes.className = styleClass;
-			serializedBlock = serialize( block );
-			expect( serializedBlock ).toBeDefined();
-			expect( serializedBlock ).toContain( styleClass );
-			expect( serializedBlock ).toMatchSnapshot();
-		} );
-	} );
-
-	it( 'should render with height', () => {
-		block.attributes.height = '200';
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '{"height":"200"}' );
-		expect( serializedBlock ).toMatchSnapshot();
-	} );
-
-	it( 'should render with color', () => {
-		block.attributes.color = 'primary';
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '{"color":"primary"}' );
-		expect( serializedBlock ).toMatchSnapshot();
-	} );
-
-	it( 'should render with customColor', () => {
-		block.attributes.customColor = '#da5d5d';
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '{"customColor":"#da5d5d"}' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
@@ -77,6 +40,33 @@ describe( 'coblocks/dynamic-separator', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '{"className":"my-custom-class"}' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with externalCalendarUrl', () => {
+		block.attributes.externalCalendarUrl = 'wordpress.org';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '{"externalCalendarUrl":"wordpress.org"}' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with eventsRange', () => {
+		block.attributes.eventsRange = '1 month';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '{"eventsRange":"1 month"}' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with eventsToShow', () => {
+		block.attributes.eventsToShow = '8';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '{"eventsToShow":"8"}' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 } );
