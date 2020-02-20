@@ -4,7 +4,6 @@
 import classnames from 'classnames';
 import map from 'lodash/map';
 import get from 'lodash/get';
-import isEqual from 'lodash/isEqual';
 
 /**
  * Internal dependencies

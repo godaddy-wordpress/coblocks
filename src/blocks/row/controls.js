@@ -85,8 +85,8 @@ class Controls extends Component {
 											layout: key,
 										} );
 										if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
-											map( children[ 0 ].innerBlocks, ( { innerBlocksClientId }, index ) => (
-												wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( innerBlocksClientId, { width: selectedWidth[ index ] } )
+											map( children[ 0 ].innerBlocks, ( blockProps, index ) => (
+												wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( blockProps.clientId, { width: selectedWidth[ index ] } )
 											) );
 										}
 									},
