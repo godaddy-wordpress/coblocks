@@ -282,18 +282,25 @@ class Edit extends Component {
 }
 
 const applyWithSelect = withSelect( ( select, { clientId } ) => {
-	const { getBlock, getBlockRootClientId, getNextBlockClientId, getPreviousBlockClientId } = select( 'core/block-editor' );
+	const { getBlock, getBlockRootClientId, getNextBlockClientId, getPreviousBlockClientId, getBlocksByClientId } = select( 'core/block-editor' );
 	const parentId = getBlockRootClientId( clientId );
 	const columnBlocks = getBlock( clientId );
 
 	const nextBlockClientId = getNextBlockClientId( clientId ) || getPreviousBlockClientId( clientId );
 	const nextBlockClient = getBlock( nextBlockClientId );
 
+	const parentBlocks = getBlocksByClientId( parentId );
+	const lastId = ( parentBlocks[ 0 ].innerBlocks !== 'undefined' ) ? parentBlocks[ 0 ].innerBlocks[ parentBlocks[ 0 ].innerBlocks.length - 1 ].clientId : clientId;
+
 	return {
 		hasInnerBlocks: !! ( columnBlocks && columnBlocks.innerBlocks.length ),
 		parentId,
 		nextBlockClient,
 		nextBlockClientId,
+
+		// Used in inspector
+		lastId,
+		parentBlocks,
 	};
 } );
 

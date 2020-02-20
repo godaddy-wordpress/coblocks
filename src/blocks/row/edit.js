@@ -22,7 +22,7 @@ import { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../co
 import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { withSelect, useDispatch } from '@wordpress/data';
+import { withSelect, useDispatch, withDispatch } from '@wordpress/data';
 import { BlockIcon, InnerBlocks, __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 import { ButtonGroup, Button, IconButton, Tooltip, Placeholder, Spinner } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
@@ -330,8 +330,16 @@ class Edit extends Component {
 	}
 }
 
+const applyWithDispatch = withDispatch( ( dispatch ) => {
+	const { updateBlockAttributes } = dispatch( 'core/block-editor' );
+
+	return {
+		updateBlockAttributes, // passed to controls & inspector
+	};
+} );
+
 const applyWithSelect = withSelect( ( select, props ) => {
-	const { getBlocks } = select( 'core/block-editor' );
+	const { getBlocks, getBlocksByClientId } = select( 'core/block-editor' );
 	const { getBlockType, getBlockVariations, getDefaultBlockVariation } = select( 'core/blocks' );
 	const innerBlocks = getBlocks( props.clientId );
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
@@ -345,7 +353,9 @@ const applyWithSelect = withSelect( ( select, props ) => {
 		defaultPattern: typeof getDefaultBlockVariation === 'undefined' ? null : getDefaultBlockVariation( props.name ),
 		variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( props.name ),
 		replaceInnerBlocks,
+
+		getBlocksByClientId, // passed to controls & inspector
 	};
 } );
 
-export default compose( applyWithSelect, applyWithColors )( Edit );
+export default compose( applyWithColors, applyWithSelect, applyWithDispatch )( Edit );

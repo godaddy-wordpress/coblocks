@@ -46,6 +46,12 @@ class Inspector extends Component {
 			setBackgroundColor,
 			setTextColor,
 			textColor,
+			parentId,
+			parentBlocks,
+			nextBlockClient,
+			nextBlockClientId,
+			lastId,
+			updateBlockAttributes,
 		} = this.props;
 
 		const {
@@ -86,19 +92,13 @@ class Inspector extends Component {
 			paddingSize,
 		} = attributes;
 
-		const parentId = wp.data.select( 'core/block-editor' ).getBlockRootClientId( clientId );
-		const parentBlocks = wp.data.select( 'core/block-editor' ).getBlocksByClientId( parentId );
-		const nextBlockClientId = wp.data.select( 'core/block-editor' ).getNextBlockClientId( clientId );
-		const nextBlockClient = wp.data.select( 'core/block-editor' ).getBlock( nextBlockClientId );
-		const lastId = ( parentBlocks[ 0 ].innerBlocks !== 'undefined' ) ? parentBlocks[ 0 ].innerBlocks[ parentBlocks[ 0 ].innerBlocks.length - 1 ].clientId : clientId;
-
 		const onChangeWidth = ( newWidth ) => {
 			const diff = parseFloat( width ) - newWidth;
 			const nextBlockWidth = parseFloat( nextBlockClient.attributes.width ) + diff;
 
 			if ( nextBlockWidth > 9 ) {
 				setAttributes( { width: parseFloat( newWidth ).toFixed( 2 ) } );
-				wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( nextBlockClientId, { width: parseFloat( nextBlockWidth ).toFixed( 2 ) } );
+				updateBlockAttributes( nextBlockClientId, { width: parseFloat( nextBlockWidth ).toFixed( 2 ) } );
 			}
 		};
 
