@@ -124,7 +124,7 @@ describe( 'Test CoBlocks Accordion Block', function() {
 			.type( accordionData[ 0 ].text );
 
 		cy.get( '.wp-block[data-type="coblocks/accordion"]' )
-			.dblclick( 'right' );
+			.dblclick( { force: true } );
 
 		cy.get( '.components-coblocks-add-accordion-item__button' )
 			.should( 'be.visible' )
