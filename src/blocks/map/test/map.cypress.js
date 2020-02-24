@@ -3,7 +3,7 @@
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
-describe( 'Test CoBlocks map Block', function() {
+describe( 'Test CoBlocks Map Block', function() {
 	//setup map block data.
 	const mapAddress = '10 First Street, SE Washington, DC 20540';
 

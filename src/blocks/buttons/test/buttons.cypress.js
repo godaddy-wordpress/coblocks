@@ -8,7 +8,7 @@ describe( 'Test CoBlocks Buttons Block', function() {
 	 * Test a custom class for the buttons block.
 	 */
 	it( 'Test buttons style classes are applied in the editor.', function() {
-		helpers.addCoBlocksBlockToPage();
+		helpers.addCoBlocksBlockToPage( true, 'buttons' );
 
 		cy.get( '.edit-post-visual-editor' ).click( { force: true } );
 
@@ -22,7 +22,7 @@ describe( 'Test CoBlocks Buttons Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors();
+		helpers.checkForBlockErrors( 'buttons' );
 
 		helpers.viewPage();
 
@@ -36,7 +36,7 @@ describe( 'Test CoBlocks Buttons Block', function() {
 	 * Test that we can add a buttons block to the content.
 	 */
 	it( 'Test buttons block is not visible when empty values are saved.', function() {
-		helpers.addCoBlocksBlockToPage();
+		helpers.addCoBlocksBlockToPage( true, 'buttons' );
 
 		cy.get( '.edit-post-visual-editor' ).click( { force: true } );
 
@@ -48,7 +48,7 @@ describe( 'Test CoBlocks Buttons Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors();
+		helpers.checkForBlockErrors( 'buttons' );
 
 		helpers.viewPage();
 
@@ -72,7 +72,7 @@ describe( 'Test CoBlocks Buttons Block', function() {
 	 * Test that we can add 4 buttons in the button block to the content.
 	 */
 	it( 'Test buttons block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage();
+		helpers.addCoBlocksBlockToPage( true, 'buttons' );
 
 		cy.get( '.wp-block-coblocks-buttons' ).click( { force: true } );
 
@@ -91,7 +91,7 @@ describe( 'Test CoBlocks Buttons Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors();
+		helpers.checkForBlockErrors( 'buttons' );
 
 		helpers.viewPage();
 

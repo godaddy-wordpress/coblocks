@@ -3,7 +3,7 @@
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
-describe( 'Test CoBlocks gist Block', function() {
+describe( 'Test CoBlocks Gist Block', function() {
 	// setup gist block data.
 	const gistUrl = 'https://gist.github.com/AnthonyLedesma/33ad1a8cd86da3b6bddbdefa432cb51d';
 
