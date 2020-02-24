@@ -33,4 +33,50 @@ describe( name, () => {
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
+
+	it( 'should render padding classes', () => {
+		[ 'none', 'small', 'medium', 'large', 'huge' ].forEach( paddingSize => {
+			block.attributes.paddingSize = paddingSize;
+			serializedBlock = serialize( block );
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( 'has-' + paddingSize + '-padding' );
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
+	} );
+
+	it( 'should render margin classes', () => {
+		[ 'none', 'small', 'medium', 'large', 'huge' ].forEach( marginSize => {
+			block.attributes.marginSize = marginSize;
+			serializedBlock = serialize( block );
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( 'has-' + marginSize + '-margin' );
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
+	} );
+
+	it( 'should render content align classes', () => {
+		[ 'left', 'center', 'right' ].forEach( alignment => {
+			block.attributes.contentAlign = alignment;
+			serializedBlock = serialize( block );
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( 'has-text-align-' + alignment );
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
+	} );
+
+	it( 'should render text color', () => {
+		block.attributes.textColor = '#333333';
+		serializedBlock = serialize( block );
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'has-333333-color' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render custom text color', () => {
+		block.attributes.customTextColor = '#b4d455';
+		serializedBlock = serialize( block );
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'color:#b4d455' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
 } );

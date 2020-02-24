@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/events should render with className 1`] = `
+"<!-- wp:coblocks/events {\\"className\\":\\"my-custom-class\\"} -->
+<div class=\\"wp-block-coblocks-events my-custom-class\\"></div>
+<!-- /wp:coblocks/events -->"
+`;
+
+exports[`coblocks/events should render with eventsRange 1`] = `
+"<!-- wp:coblocks/events {\\"eventsRange\\":\\"1 month\\"} -->
+<div class=\\"wp-block-coblocks-events\\"></div>
+<!-- /wp:coblocks/events -->"
+`;
+
+exports[`coblocks/events should render with eventsToShow 1`] = `
+"<!-- wp:coblocks/events {\\"eventsToShow\\":\\"8\\"} -->
+<div class=\\"wp-block-coblocks-events\\"></div>
+<!-- /wp:coblocks/events -->"
+`;
+
+exports[`coblocks/events should render with externalCalendarUrl 1`] = `"<!-- wp:coblocks/events {\\"externalCalendarUrl\\":\\"wordpress.org\\"} /-->"`;
+
+exports[`coblocks/events should render without content 1`] = `
+"<!-- wp:coblocks/events -->
+<div class=\\"wp-block-coblocks-events\\"></div>
+<!-- /wp:coblocks/events -->"
+`;
