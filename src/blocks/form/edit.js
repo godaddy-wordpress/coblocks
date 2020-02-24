@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-syntax */
-/*global coblocksBlockData, jQuery*/
+/*global coblocksBlockData*/
 
 /**
  * External dependencies
