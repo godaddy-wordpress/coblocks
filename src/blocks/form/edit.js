@@ -326,7 +326,7 @@ class FormEdit extends Component {
 		map( TEMPLATE_OPTIONS, ( elem ) => {
 			if ( isEqual( elem.template, layout ) ) {
 				submitButtonText = elem.submitButtonText;
-				if ( typeof submitButtonText === Array ) {
+				if ( Array.isArray( submitButtonText ) ) {
 					submitButtonText = submitButtonText.join( '' );
 				}
 			}
