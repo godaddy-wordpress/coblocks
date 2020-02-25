@@ -13,7 +13,7 @@ import { __ } from '@wordpress/i18n';
  * Block constants
  */
 const metadata = {
-	name: 'coblocks/submit-button',
+	name: 'coblocks/field-submit-button',
 	category: 'coblocks',
 	attributes: {
 		label: {
@@ -27,6 +27,15 @@ const metadata = {
 		submitButtonText: {
 			type: 'string',
 			default: null,
+		},
+		customBackgroundButtonColor: {
+			type: 'string',
+		},
+		customTextButtonColor: {
+			type: 'string',
+		},
+		submitButtonClasses: {
+			type: 'string',
 		},
 	},
 };

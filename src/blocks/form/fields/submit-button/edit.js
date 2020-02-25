@@ -92,8 +92,6 @@ class CoBlocksSubmitButton extends Component {
 			setTextButtonColor,
 		} = this.props;
 
-		console.log( attributes );
-
 		const backgroundColor = attributes.customBackgroundButtonColor || fallbackBackgroundColor;
 
 		const color = attributes.customTextButtonColor || fallbackTextColor;
