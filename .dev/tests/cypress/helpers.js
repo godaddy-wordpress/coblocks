@@ -72,7 +72,9 @@ export function disableGutenbergFeatures() {
  *                           adding a new block to the page.
  * @param string blockID     Optional ID to check for in the DOM.
  *                           Note: If no blockID is specified, getBlockSlug()
- *                           attempts to retreive the block from the spec file.
+ *                           attempts to retrieve the block from the spec file.
+ * @returns bool			 Returns false if the block cannot be found, true if
+ * 							 added correctly.
  */
 export function addCoBlocksBlockToPage( clearEditor = true, blockID = '' ) {
 	if ( clearEditor ) {
@@ -84,6 +86,7 @@ export function addCoBlocksBlockToPage( clearEditor = true, blockID = '' ) {
 	}
 
 	const isGalleryBlock = RegExp( 'gallery-' ).test( blockID );
+	let blockIsDeprecated = false;
 
 	cy.get( '.block-list-appender .wp-block .block-editor-inserter__toggle' )
 		.click();
@@ -105,14 +108,24 @@ export function addCoBlocksBlockToPage( clearEditor = true, blockID = '' ) {
 			const $parentPanel = Cypress.$( $coblocksPanel ).closest( 'div.components-panel__body' );
 			if ( ! $parentPanel.hasClass( 'is-opened' ) ) {
 				$coblocksPanel.click();
+
+				if ( ! document.getElementsByClassName(`.editor-block-list-item-coblocks-${blockID}`) ) {
+					blockIsDeprecated = true;
+				}
 			}
 		} );
 
-	cy.get( '.components-panel__body.is-opened .editor-block-list-item-coblocks-' + blockID )
-		.click();
+	if( blockIsDeprecated ) {
+		cy.get( '.components-panel__body.is-opened .editor-block-list-item-coblocks-' + blockID ).click();
 
-	// Make sure the block was added to our page
-	cy.get( `div[data-type="coblocks/${ blockID }"]` ).should( 'exist' );
+		// Make sure the block was added to our page
+		cy.get( `div[data-type="coblocks/${ blockID }"]` ).should( 'exist' );
+		return true;
+	} else {
+		cy.get( '.block-list-appender .wp-block .block-editor-inserter__toggle' )
+			.click();
+		return false
+	}
 }
 
 /**
@@ -132,8 +145,9 @@ export function savePage() {
  *
  * @param string blockID Optional ID to check for in the DOM.
  *               Note: If no blockID is specified, getBlockSlug() attempts to
- *               retreive the block from the spec file.
+ *               retrieve the block from the spec file.
  *               eg: accordion => div[data-type="coblocks/accordion"]
+ * @returns {bool}
  */
 export function checkForBlockErrors( blockID = '' ) {
 	if ( ! blockID.length ) {

@@ -8,35 +8,35 @@ describe( 'Test CoBlocks Buttons Block', function() {
 	 * Test a custom class for the buttons block.
 	 */
 	it( 'Test buttons style classes are applied in the editor.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'buttons' );
+		if ( helpers.addCoBlocksBlockToPage( true, 'buttons' ) ) {
+			cy.get( '.edit-post-visual-editor' ).click( { force: true } );
 
-		cy.get( '.edit-post-visual-editor' ).click( { force: true } );
-
-		cy.get( '.wp-block-coblocks-buttons .block-editor-block-list__block:first-child .block-editor-rich-text__editable' ).type( 'Button 1' );
-		cy.get( '.wp-block-coblocks-buttons .block-editor-block-list__block:first-child input[aria-label="URL"]' ).type( 'https://www.google.com/1' );
-
-		cy.get( '.wp-block-coblocks-buttons .block-editor-block-list__block:last-child .block-editor-rich-text__editable' ).type( 'Button 2' );
-		cy.get( '.wp-block-coblocks-buttons .block-editor-block-list__block:last-child input[aria-label="URL"]' ).type( 'https://www.google.com/2' );
-
-		helpers.addCustomBlockClass( 'my-custom-class', 'buttons' );
-
-		helpers.savePage();
-
-		helpers.checkForBlockErrors( 'buttons' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-buttons' )
-			.should( 'have.class', 'my-custom-class' );
-
-		helpers.editPage();
+			cy.get( '.wp-block-coblocks-buttons .block-editor-block-list__block:first-child .block-editor-rich-text__editable' ).type( 'Button 1' );
+			cy.get( '.wp-block-coblocks-buttons .block-editor-block-list__block:first-child input[aria-label="URL"]' ).type( 'https://www.google.com/1' );
+	
+			cy.get( '.wp-block-coblocks-buttons .block-editor-block-list__block:last-child .block-editor-rich-text__editable' ).type( 'Button 2' );
+			cy.get( '.wp-block-coblocks-buttons .block-editor-block-list__block:last-child input[aria-label="URL"]' ).type( 'https://www.google.com/2' );
+	
+			helpers.addCustomBlockClass( 'my-custom-class', 'buttons' );
+	
+			helpers.savePage();
+	
+			helpers.checkForBlockErrors( 'buttons' );
+	
+			helpers.viewPage();
+	
+			cy.get( '.wp-block-coblocks-buttons' )
+				.should( 'have.class', 'my-custom-class' );
+	
+			helpers.editPage();
+		}
 	} );
 
 	/**
 	 * Test that we can add a buttons block to the content.
 	 */
 	it( 'Test buttons block is not visible when empty values are saved.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'buttons' );
+		if ( helpers.addCoBlocksBlockToPage( true, 'buttons' ) ) {
 
 		cy.get( '.edit-post-visual-editor' ).click( { force: true } );
 
@@ -66,13 +66,14 @@ describe( 'Test CoBlocks Buttons Block', function() {
 			.and( 'match', /https:\/\/www.google.com\/2/ );
 
 		helpers.editPage();
+	}
 	} );
 
 	/**
 	 * Test that we can add 4 buttons in the button block to the content.
 	 */
 	it( 'Test buttons block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'buttons' );
+		if ( helpers.addCoBlocksBlockToPage( true, 'buttons' ) ) {
 
 		cy.get( '.wp-block-coblocks-buttons' ).click( { force: true } );
 
@@ -114,5 +115,6 @@ describe( 'Test CoBlocks Buttons Block', function() {
 			.and( 'match', /https:\/\/www.google.com\/3/ );
 
 		helpers.editPage();
+	}
 	} );
 } );
