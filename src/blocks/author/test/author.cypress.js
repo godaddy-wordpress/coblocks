@@ -67,7 +67,7 @@ describe( 'Test CoBlocks Author Block', function() {
 		cy.get( '.wp-block-coblocks-author' ).click( { force: true } );
 
 		// Upload the author avatar
-		cy.fixture( pathToFixtures + fileName, 'base64' ).then( fileContent => {
+		cy.fixture( pathToFixtures + fileName, 'base64' ).then( ( fileContent ) => {
 			cy.get( 'div[data-type="coblocks/author"]' )
 				.find( 'div.components-drop-zone' ).first()
 				.upload(
@@ -83,17 +83,17 @@ describe( 'Test CoBlocks Author Block', function() {
 
 		cy.get( '.wp-block-coblocks-author .wp-block-button__link' ).type( 'Read My Bio' );
 
-		cy.get( '.wp-block-coblocks-author' ).then( (author) => {
-			if (author.toString().includes('input[aria-label="URL"]')){
-				cy.get(author).find('input[aria-label="URL"]').type( 'https://www.google.com' );
+		cy.get( '.wp-block-coblocks-author' ).then( ( author ) => {
+			if ( author.toString().includes( 'input[aria-label="URL"]' ) ) {
+				cy.get( author ).find( 'input[aria-label="URL"]' ).type( 'https://www.google.com' );
 			} else {
-				cy.get(author).find('.wp-block-button__link').click();
+				cy.get( author ).find( '.wp-block-button__link' ).click();
 				cy.get( '.block-editor-block-toolbar' )
-				.find ( 'button.components-button[aria-label="Link"]' )
-				.click();
-				cy.get('input[aria-label="URL"]').type( 'https://www.google.com{enter}', )
+					.find( 'button.components-button[aria-label="Link"]' )
+					.click();
+				cy.get( 'input[aria-label="URL"]' ).type( 'https://www.google.com{enter}', );
 			}
-		} )
+		} );
 
 		helpers.savePage();
 

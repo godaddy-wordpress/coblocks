@@ -10,7 +10,7 @@ describe( 'Test CoBlocks Gist Block', function() {
 	/**
 	 * Test that we can add a gist block to the content, not add any text or
 	 * alter any settings, and are able to successfully save the block without errors.
-	*/
+	 */
 	it( 'Test gist block saves with color values set.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'gist' );
 
@@ -30,7 +30,7 @@ describe( 'Test CoBlocks Gist Block', function() {
 	/**
 	 * Test that we can add a gist block to the content, add a Gist
 	 * URL and save without any errors.
-	*/
+	 */
 	it( 'Test gist block saves with url.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'gist' );
 
@@ -52,8 +52,8 @@ describe( 'Test CoBlocks Gist Block', function() {
 	} );
 
 	/**
-	* Test the Gist block saves with custom classes
-	*/
+	 * Test the Gist block saves with custom classes
+	 */
 	it( 'Test gist block saves with custom classes.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'gist' );
 

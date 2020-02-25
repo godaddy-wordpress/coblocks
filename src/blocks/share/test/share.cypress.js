@@ -5,8 +5,8 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Share Block', function() {
 	/**
-   * Test the coblocks share block.
-   */
+	 * Test the coblocks share block.
+	 */
 	it( 'Test the share block saves.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'social' );
 
@@ -23,8 +23,8 @@ describe( 'Test CoBlocks Share Block', function() {
 	} );
 
 	/**
-   * Test the coblocks share block colors.
-   */
+	 * Test the coblocks share block colors.
+	 */
 	it( 'Test the share block colors.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'social' );
 
@@ -46,8 +46,8 @@ describe( 'Test CoBlocks Share Block', function() {
 	} );
 
 	/**
-   * Test the coblocks share block rounded corners.
-   */
+	 * Test the coblocks share block rounded corners.
+	 */
 	it( 'Test the share block rounded corners.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'social' );
 
@@ -73,8 +73,8 @@ describe( 'Test CoBlocks Share Block', function() {
 	} );
 
 	/**
-   * Test the coblocks share block button size.
-   */
+	 * Test the coblocks share block button size.
+	 */
 	it( 'Test the share block button size.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'social' );
 
@@ -99,8 +99,8 @@ describe( 'Test CoBlocks Share Block', function() {
 	} );
 
 	/**
-   * Test the coblocks share block social network visibility.
-   */
+	 * Test the coblocks share block social network visibility.
+	 */
 	it( 'Test the share block social network visibility.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'social' );
 
@@ -147,8 +147,8 @@ describe( 'Test CoBlocks Share Block', function() {
 	} );
 
 	/**
-   * Test the coblocks share block custom classes & top/bottom spacing.
-   */
+	 * Test the coblocks share block custom classes & top/bottom spacing.
+	 */
 	it( 'Test the share block custom classes and top/bottom spacing.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'social' );
 

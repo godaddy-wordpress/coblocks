@@ -5,8 +5,8 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Shape Divider Block', function() {
 	/**
-	   * Setup Shape Divider data
-	   */
+	 * Setup Shape Divider data
+	 */
 	const shapeDividerData = {
 		shapeHeight: 200,
 		backgroundHeight: 100,
@@ -18,9 +18,9 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 	};
 
 	/**
-	   * Test that we can add a shape-divider block to the content, not alter
-	   * any settings, and are able to successfully save the block without errors.
-	   */
+	 * Test that we can add a shape-divider block to the content, not alter
+	 * any settings, and are able to successfully save the block without errors.
+	 */
 	it( 'Test shape-divider block saves with empty values.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'shape-divider' );
 
@@ -36,9 +36,9 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 	} );
 
 	/**
-	   * Test that we can add a shape-divider block to the content, adjust height
-	   * and are able to successfully save the block without errors.
-	   */
+	 * Test that we can add a shape-divider block to the content, adjust height
+	 * and are able to successfully save the block without errors.
+	 */
 	it( 'Test shape-divider block saves with height values set.', function() {
 		const { shapeHeight, backgroundHeight } = shapeDividerData;
 		helpers.addCoBlocksBlockToPage( true, 'shape-divider' );
@@ -62,9 +62,9 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 	} );
 
 	/**
-	   * Test that we can add a shape-divider block to the content, adjust colors
-	   * and are able to successfully save the block without errors.
-	   */
+	 * Test that we can add a shape-divider block to the content, adjust colors
+	 * and are able to successfully save the block without errors.
+	 */
 	it( 'Test shape-divider block saves with color values set.', function() {
 		const { shapeColor, backgroundColor, shapeColorRGB, backgroundColorRGB } = shapeDividerData;
 		helpers.addCoBlocksBlockToPage( true, 'shape-divider' );
@@ -88,9 +88,9 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 	} );
 
 	/**
-	   * Test that we can add a shape-divider block to the content, change style
-	   * and are able to successfully save the block without errors.
-	   */
+	 * Test that we can add a shape-divider block to the content, change style
+	 * and are able to successfully save the block without errors.
+	 */
 	it( 'Test shape-divider block saves with non-default style.', function() {
 		const { style } = shapeDividerData;
 		helpers.addCoBlocksBlockToPage( true, 'shape-divider' );

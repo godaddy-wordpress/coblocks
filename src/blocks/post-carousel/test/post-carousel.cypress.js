@@ -5,9 +5,9 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Post Carousel Block', function() {
 	/**
-	   * Test that we can add a post-carousel block to the content, not alter
-       * any settings, and are able to successfully save the block without errors.
-	   */
+	 * Test that we can add a post-carousel block to the content, not alter
+	 * any settings, and are able to successfully save the block without errors.
+	 */
 	it( 'Test post-carousel block saves with empty values.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'post-carousel' );
 
@@ -23,8 +23,8 @@ describe( 'Test CoBlocks Post Carousel Block', function() {
 	} );
 
 	/**
-	* Test the post-carousel block column and post count controls
-	*/
+	 * Test the post-carousel block column and post count controls
+	 */
 	it( 'Test the post-carousel block column and post count controls.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'post-carousel' );
 
@@ -62,8 +62,8 @@ describe( 'Test CoBlocks Post Carousel Block', function() {
 	} );
 
 	/**
-	* Test the post-carousel block saves with custom classes
-	*/
+	 * Test the post-carousel block saves with custom classes
+	 */
 	it( 'Test the post-carousel block custom classes.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'post-carousel' );
 

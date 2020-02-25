@@ -5,8 +5,8 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Accordion Block', function() {
 	/**
-   * Setup accordion data to be used
-   */
+	 * Setup accordion data to be used
+	 */
 	const accordionData = [
 		{
 			title: 'What is the best way to contact you?',
@@ -19,9 +19,9 @@ describe( 'Test CoBlocks Accordion Block', function() {
 	];
 
 	/**
-   * Test that we can add an accordion item to the content, not add any text or
-   * alter any settings, and are able to successfully save the block without errors.
-   */
+	 * Test that we can add an accordion item to the content, not add any text or
+	 * alter any settings, and are able to successfully save the block without errors.
+	 */
 	it( 'Test accordion block saves with empty values.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'accordion' );
 
@@ -38,9 +38,9 @@ describe( 'Test CoBlocks Accordion Block', function() {
 	} );
 
 	/**
-   * Test that we can add an accordion item to the page, add content to it,
-   * save and it displays properly without errors.
-   */
+	 * Test that we can add an accordion item to the page, add content to it,
+	 * save and it displays properly without errors.
+	 */
 	it( 'Test accordion block saves and displays correctly.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'accordion' );
 
@@ -78,8 +78,8 @@ describe( 'Test CoBlocks Accordion Block', function() {
 	} );
 
 	/**
-   * Test 'Display Open' attribute works
-   */
+	 * Test 'Display Open' attribute works
+	 */
 	it( 'Test accordion block "Display Open" attribute works.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'accordion' );
 
@@ -112,8 +112,8 @@ describe( 'Test CoBlocks Accordion Block', function() {
 	} );
 
 	/**
-   * Test that multiple accordion items display as expected, including a re-order
-   */
+	 * Test that multiple accordion items display as expected, including a re-order
+	 */
 	it( 'Test multiple accordion items display as expected.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'accordion' );
 
@@ -207,8 +207,8 @@ describe( 'Test CoBlocks Accordion Block', function() {
 	} );
 
 	/**
-   * Test the accordion block color settings
-   */
+	 * Test the accordion block color settings
+	 */
 	it( 'Test the accordion block color settings.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'accordion' );
 
@@ -256,8 +256,8 @@ describe( 'Test CoBlocks Accordion Block', function() {
 	} );
 
 	/**
-   * Test the accordion block content font settings
-   */
+	 * Test the accordion block content font settings
+	 */
 	it( 'Test the accordion block text settings.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'accordion' );
 
@@ -323,8 +323,8 @@ describe( 'Test CoBlocks Accordion Block', function() {
 	} );
 
 	/**
-   * Test the accordion block custom classes
-   */
+	 * Test the accordion block custom classes
+	 */
 	it( 'Test the accordion block custom classes.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'accordion' );
 

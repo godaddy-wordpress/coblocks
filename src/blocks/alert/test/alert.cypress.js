@@ -5,9 +5,9 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Alert Block', function() {
 	/**
-   * Test that we can add a alert block to the content, not add any text or
-   * alter any settings, and are able to successfully save the block without errors.
-   */
+	 * Test that we can add a alert block to the content, not add any text or
+	 * alter any settings, and are able to successfully save the block without errors.
+	 */
 	it( 'Test alert block saves with empty values.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'alert' );
 
@@ -24,8 +24,8 @@ describe( 'Test CoBlocks Alert Block', function() {
 	} );
 
 	/**
-   * Test that alert data saves
-   */
+	 * Test that alert data saves
+	 */
 	it( 'Test alert block saves and displays properly.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'alert' );
 
@@ -53,8 +53,8 @@ describe( 'Test CoBlocks Alert Block', function() {
 	} );
 
 	/**
-   * Test that the alert style classes are applied in the editor
-   */
+	 * Test that the alert style classes are applied in the editor
+	 */
 	it( 'Test alert style classes are applied in the editor.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'alert' );
 
