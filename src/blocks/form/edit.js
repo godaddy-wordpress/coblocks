@@ -330,7 +330,7 @@ class FormEdit extends Component {
 		} );
 
 		this.setState( { template: layout } );
-		setAttributes( { submitButtonText } );
+		setAttributes( { submitButtonText: submitButtonText.join( '' ) } );
 	}
 
 	createBlocksFromInnerBlocksTemplate( innerBlocksTemplate ) {
@@ -466,7 +466,7 @@ class FormEdit extends Component {
 				}
 			} );
 
-			this.props.setAttributes( { submitButtonText } );
+			this.props.setAttributes( { submitButtonText: submitButtonText.join( '' ) } );
 			if ( nextVariation.innerBlocks ) {
 				replaceInnerBlocks(
 					this.props.clientId,
