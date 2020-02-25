@@ -15,7 +15,7 @@ describe( 'Test CoBlocks Author Block', function() {
 
 	/**
 	 * Test that we can add a author block to the content, not add any text or
-	 * alter any settings, and are able to successfuly save the block without errors.
+	 * alter any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'Test author block saves with empty values.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'author' );

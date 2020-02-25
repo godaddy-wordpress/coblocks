@@ -17,7 +17,7 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 
 	/**
 	   * Test that we can add a gallery-offset block to the content, not add any images or
-	   * alter any settings, and are able to successfuly save the block without errors.
+	   * alter any settings, and are able to successfully save the block without errors.
 	   */
 	it( 'Test offset block saves with empty values.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'gallery-offset' );
@@ -35,7 +35,7 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 
 	/**
 	   * Test that we can upload images to block and are able
-	   * to successfuly save the block without errors.
+	   * to successfully save the block without errors.
 	   */
 	it( 'Test offset block saves with image upload.', function() {
 		const { fileName, imageBase, pathToFixtures } = galleryData;
@@ -69,7 +69,7 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 
 	/**
 	   * Test that we can add image from library and are able
-	   * to successfuly save the block without errors.
+	   * to successfully save the block without errors.
 	   */
 	it( 'Test offset block saves with images from media library.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'gallery-offset' );
@@ -103,7 +103,7 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 
 	/**
        * Test that we can add image captions
-       * to successfuly save the block without errors.
+       * to successfully save the block without errors.
        */
 	it( 'Test offset block saves with images captions.', function() {
 		const { caption } = galleryData;

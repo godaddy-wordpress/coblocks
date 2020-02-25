@@ -6,7 +6,7 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 describe( 'Test CoBlocks Alert Block', function() {
 	/**
    * Test that we can add a alert block to the content, not add any text or
-   * alter any settings, and are able to successfuly save the block without errors.
+   * alter any settings, and are able to successfully save the block without errors.
    */
 	it( 'Test alert block saves with empty values.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'alert' );
