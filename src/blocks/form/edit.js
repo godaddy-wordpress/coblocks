@@ -326,11 +326,14 @@ class FormEdit extends Component {
 		map( TEMPLATE_OPTIONS, ( elem ) => {
 			if ( isEqual( elem.template, layout ) ) {
 				submitButtonText = elem.submitButtonText;
+				if ( typeof submitButtonText === Array ) {
+					submitButtonText = submitButtonText.join( '' );
+				}
 			}
 		} );
 
 		this.setState( { template: layout } );
-		setAttributes( { submitButtonText: submitButtonText.join( '' ) } );
+		setAttributes( { submitButtonText } );
 	}
 
 	createBlocksFromInnerBlocksTemplate( innerBlocksTemplate ) {
