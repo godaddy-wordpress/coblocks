@@ -6,8 +6,8 @@ import 'cypress-file-upload';
 
 describe( 'Test CoBlocks Gallery Offset Block', function() {
 	/**
-	   * Setup Gallery data
-	   */
+	 * Setup Gallery data
+	 */
 	const galleryData = {
 		fileName: '150x150.png',
 		imageBase: '150x150',
@@ -16,9 +16,9 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 	};
 
 	/**
-	   * Test that we can add a gallery-offset block to the content, not add any images or
-	   * alter any settings, and are able to successfully save the block without errors.
-	   */
+	 * Test that we can add a gallery-offset block to the content, not add any images or
+	 * alter any settings, and are able to successfully save the block without errors.
+	 */
 	it( 'Test offset block saves with empty values.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'gallery-offset' );
 
@@ -34,9 +34,9 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 	} );
 
 	/**
-	   * Test that we can upload images to block and are able
-	   * to successfully save the block without errors.
-	   */
+	 * Test that we can upload images to block and are able
+	 * to successfully save the block without errors.
+	 */
 	it( 'Test offset block saves with image upload.', function() {
 		const { fileName, imageBase, pathToFixtures } = galleryData;
 		helpers.addCoBlocksBlockToPage( true, 'gallery-offset' );
@@ -44,7 +44,7 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 		cy.get( '.wp-block[data-type="coblocks/gallery-offset"]' )
 			.click();
 
-		cy.fixture( pathToFixtures + fileName, 'base64' ).then( fileContent => {
+		cy.fixture( pathToFixtures + fileName, 'base64' ).then( ( fileContent ) => {
 			cy.get( 'div[data-type="coblocks/gallery-offset"]' )
 				.find( 'div.components-drop-zone' ).first()
 				.upload(
@@ -68,9 +68,9 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 	} );
 
 	/**
-	   * Test that we can add image from library and are able
-	   * to successfully save the block without errors.
-	   */
+	 * Test that we can add image from library and are able
+	 * to successfully save the block without errors.
+	 */
 	it( 'Test offset block saves with images from media library.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'gallery-offset' );
 
@@ -85,9 +85,14 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 			.first( 'li' )
 			.click();
 
-		cy.get( 'button' ).contains( /create a new gallery/i ).click();
-
-		cy.get( 'button' ).contains( /insert gallery/i ).click();
+		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
+			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			} else { // pre wp 5.4
+				cy.get( 'button' ).contains( /create a new gallery/i ).click();
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			}
+		} );
 
 		helpers.savePage();
 
@@ -102,9 +107,9 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 	} );
 
 	/**
-       * Test that we can add image captions
-       * to successfully save the block without errors.
-       */
+	 * Test that we can add image captions
+	 * to successfully save the block without errors.
+	 */
 	it( 'Test offset block saves with images captions.', function() {
 		const { caption } = galleryData;
 		helpers.addCoBlocksBlockToPage( true, 'gallery-offset' );
@@ -120,9 +125,14 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 			.first( 'li' )
 			.click();
 
-		cy.get( 'button' ).contains( /create a new gallery/i ).click();
-
-		cy.get( 'button' ).contains( /insert gallery/i ).click();
+		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
+			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			} else { // pre wp 5.4
+				cy.get( 'button' ).contains( /create a new gallery/i ).click();
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			}
+		} );
 
 		helpers.toggleSettingCheckbox( /captions/i );
 
