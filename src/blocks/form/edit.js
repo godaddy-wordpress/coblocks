@@ -14,7 +14,6 @@ import isEqual from 'lodash/isEqual';
  * Internal dependencies
  */
 import Notice from './notice';
-import SubmitButton from './submit-button';
 import { TEMPLATE_OPTIONS } from './deprecatedTemplates/layouts';
 
 /**
@@ -51,7 +50,6 @@ class FormEdit extends Component {
 		this.onChangeSubject = this.onChangeSubject.bind( this );
 		this.onBlurTo = this.onBlurTo.bind( this );
 		this.onChangeTo = this.onChangeTo.bind( this );
-		this.onChangeSubmit = this.onChangeSubmit.bind( this );
 		this.getToValidationError = this.getToValidationError.bind( this );
 		this.renderToAndSubjectFields = this.renderToAndSubjectFields.bind( this );
 		this.preventEnterSubmittion = this.preventEnterSubmittion.bind( this );
@@ -179,10 +177,6 @@ class FormEdit extends Component {
 
 		this.setState( { toError: null } );
 		this.props.setAttributes( { to } );
-	}
-
-	onChangeSubmit( submitButtonText ) {
-		this.props.setAttributes( { submitButtonText } );
 	}
 
 	getfieldEmailError( errors ) {
@@ -322,14 +316,19 @@ class FormEdit extends Component {
 	setTemplate( layout ) {
 		const { setAttributes } = this.props;
 		let submitButtonText;
+		let clientID = this.props.clientId;
 		map( TEMPLATE_OPTIONS, ( elem ) => {
 			if ( isEqual( elem.template, layout ) ) {
+				// // Update the child block's attributes
 				submitButtonText = elem.submitButtonText;
+				setTimeout( function() {
+					let childBlocks = wp.data.select( 'core/editor' ).getBlocksByClientId( clientID )[0].innerBlocks;
+					wp.data.dispatch('core/editor').updateBlockAttributes( childBlocks[ childBlocks.length - 1 ].clientId, { submitButtonText: submitButtonText } );
+				}, 100 );
 			}
 		} );
 
 		this.setState( { template: layout } );
-		setAttributes( { submitButtonText } );
 	}
 
 	createBlocksFromInnerBlocksTemplate( innerBlocksTemplate ) {
@@ -348,13 +347,11 @@ class FormEdit extends Component {
 		return (
 			<Fragment>
 				<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
-				<SubmitButton { ...this.props } />
 			</Fragment>
 		);
 	}
 
 	innerBlocksPatternPicker( ) {
-		const { hasInnerBlocks } = this.props;
 		return (
 			<Fragment>
 				<InnerBlocks
@@ -370,7 +367,6 @@ class FormEdit extends Component {
 					allowedBlocks={ ALLOWED_BLOCKS }
 					templateInsertUpdatesSelection={ false }
 				/>
-				{ hasInnerBlocks && <SubmitButton { ...this.props } /> }
 			</Fragment>
 		);
 	}
@@ -467,13 +463,6 @@ class FormEdit extends Component {
 							this.props.setAttributes( nextPattern.attributes );
 						}
 
-						const submitButtonText = map( patterns, ( elem ) => {
-							if ( isEqual( elem.innerBlocks, nextPattern.innerBlocks ) ) {
-								return elem.submitButtonText;
-							}
-						} );
-
-						this.props.setAttributes( { submitButtonText } );
 						if ( nextPattern.innerBlocks ) {
 							replaceInnerBlocks(
 								this.props.clientId,
@@ -487,7 +476,7 @@ class FormEdit extends Component {
 	}
 }
 
-const applyWithSelect = withSelect( ( select, props ) => {
+const applyWithSelect = withSelect( ( select, props, attributes ) => {
 	const { getBlocks } = select( 'core/block-editor' );
 	const { __experimentalGetBlockPatterns, getBlockType, __experimentalGetDefaultBlockPattern } = select( 'core/blocks' );
 	const innerBlocks = getBlocks( props.clientId );
@@ -497,7 +486,6 @@ const applyWithSelect = withSelect( ( select, props ) => {
 		// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
 		innerBlocks,
 		hasInnerBlocks: select( 'core/block-editor' ).getBlocks( props.clientId ).length > 0,
-
 		blockType: getBlockType( props.name ),
 		defaultPattern: typeof __experimentalGetDefaultBlockPattern === 'undefined' ? null : __experimentalGetDefaultBlockPattern( props.name ),
 		patterns: typeof __experimentalGetBlockPatterns === 'undefined' ? null : __experimentalGetBlockPatterns( props.name ),

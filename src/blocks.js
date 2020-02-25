@@ -52,6 +52,7 @@ import * as fieldRadio from './blocks/form/fields/radio';
 import * as fieldTelephone from './blocks/form/fields/phone';
 import * as fieldTextarea from './blocks/form/fields/textarea';
 import * as fieldSelect from './blocks/form/fields/select';
+import * as fieldSubmitButton from './blocks/form/fields/submit-button';
 import * as fieldCheckbox from './blocks/form/fields/checkbox';
 import * as fieldWebsite from './blocks/form/fields/website';
 import * as fieldHidden from './blocks/form/fields/hidden';
@@ -122,6 +123,7 @@ export const registerCoBlocksBlocks = () => {
 		fieldTelephone,
 		fieldTextarea,
 		fieldSelect,
+		fieldSubmitButton,
 		fieldCheckbox,
 		fieldWebsite,
 		fieldHidden,

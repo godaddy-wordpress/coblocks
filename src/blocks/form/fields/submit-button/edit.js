@@ -56,7 +56,7 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	};
 } );
 
-class SubmitButton extends Component {
+class CoBlocksSubmitButton extends Component {
 	componentDidUpdate( prevProps ) {
 		if (
 			! isEqual( this.props.textButtonColor, prevProps.textButtonColor ) ||
@@ -91,6 +91,8 @@ class SubmitButton extends Component {
 			setBackgroundButtonColor,
 			setTextButtonColor,
 		} = this.props;
+
+		console.log( attributes );
 
 		const backgroundColor = attributes.customBackgroundButtonColor || fallbackBackgroundColor;
 
@@ -146,4 +148,4 @@ class SubmitButton extends Component {
 export default compose( [
 	withColors( 'backgroundButtonColor', { textButtonColor: 'color' } ),
 	applyFallbackStyles,
-] )( SubmitButton );
+] )( CoBlocksSubmitButton );
