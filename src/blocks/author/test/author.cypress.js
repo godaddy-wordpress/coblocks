@@ -84,7 +84,7 @@ describe( 'Test CoBlocks Author Block', function() {
 		cy.get( '.wp-block-coblocks-author .wp-block-button__link' ).type( 'Read My Bio' );
 
 		cy.get( '.wp-block-coblocks-author' ).then( ( author ) => {
-			if ( author.toString().includes( 'input[aria-label="URL"]' ) ) {
+			if ( author.prop( 'outerHTML' ).includes( 'input[aria-label="URL"]' ) ) {
 				cy.get( author ).find( 'input[aria-label="URL"]' ).type( 'https://www.google.com' );
 			} else {
 				cy.get( author ).find( '.wp-block-button__link' ).click();
