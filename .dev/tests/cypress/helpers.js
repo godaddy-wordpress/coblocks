@@ -110,22 +110,23 @@ export function addCoBlocksBlockToPage( clearEditor = true, blockID = '' ) {
 			const $parentPanel = Cypress.$( $coblocksPanel ).closest( 'div.components-panel__body' );
 			if ( ! $parentPanel.hasClass( 'is-opened' ) ) {
 				$coblocksPanel.click();
-
-				if ( ! document.getElementsByClassName( `.editor-block-list-item-coblocks-${ blockID }` ) ) {
-					blockIsDeprecated = true;
-				}
+			}
+			if ( ! document.getElementsByClassName( `.editor-block-list-item-coblocks-${ blockID }` ) ) {
+				blockIsDeprecated = true;
 			}
 		} );
 
 	if ( blockIsDeprecated ) {
-		cy.get( '.components-panel__body.is-opened .editor-block-list-item-coblocks-' + blockID ).click();
-
-		// Make sure the block was added to our page
-		cy.get( `div[data-type="coblocks/${ blockID }"]` ).should( 'exist' );
+		cy.get( '.block-list-appender .wp-block .block-editor-inserter__toggle' )
+		.click();
+		
 		return true;
 	}
-	cy.get( '.block-list-appender .wp-block .block-editor-inserter__toggle' )
-		.click();
+	cy.get( '.components-panel__body.is-opened .editor-block-list-item-coblocks-' + blockID ).click();
+
+	// Make sure the block was added to our page
+	cy.get( `div[data-type="coblocks/${ blockID }"]` ).should( 'exist' );
+
 	return false;
 }
 
