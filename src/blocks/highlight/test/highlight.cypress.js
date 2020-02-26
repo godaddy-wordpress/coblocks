@@ -50,7 +50,7 @@ describe( 'Test CoBlocks Highlight Block', function() {
 	it( 'Test highlight block saves and displays correctly.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'highlight' );
 
-		cy.get( 'p.wp-block-coblocks-highlight' )
+		cy.get( 'p.wp-block-coblocks-highlight mark' )
 			.type( highlightData[ 0 ].text );
 
 		helpers.savePage();
@@ -71,7 +71,7 @@ describe( 'Test CoBlocks Highlight Block', function() {
 	it( 'Test highlight block font size setting.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'highlight' );
 
-		cy.get( 'p.wp-block-coblocks-highlight' )
+		cy.get( 'p.wp-block-coblocks-highlight mark' )
 			.type( highlightData[ 0 ].text );
 
 		cy.get( '.edit-post-sidebar' )
@@ -114,7 +114,7 @@ describe( 'Test CoBlocks Highlight Block', function() {
 	it( 'Test highlight block color settings.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'highlight' );
 
-		cy.get( 'p.wp-block-coblocks-highlight' )
+		cy.get( 'p.wp-block-coblocks-highlight mark' )
 			.type( highlightData[ 0 ].text );
 
 		helpers.setColorSetting( 'background', highlightData[ 0 ].backgroundColor );
@@ -157,7 +157,7 @@ describe( 'Test CoBlocks Highlight Block', function() {
 			// Only clear the editor window on the first block
 			helpers.addCoBlocksBlockToPage( ( 0 === index ), 'highlight' );
 
-			cy.get( '.wp-block[data-type="coblocks/highlight"]:nth-child(' + nthChild + ') p.wp-block-coblocks-highlight' )
+			cy.get( '.wp-block[data-type="coblocks/highlight"]:nth-child(' + nthChild + ') p.wp-block-coblocks-highlight mark' )
 				.type( highlightData[ index ].text );
 
 			helpers.setColorSetting( 'background', highlightData[ index ].backgroundColor );
@@ -201,7 +201,7 @@ describe( 'Test CoBlocks Highlight Block', function() {
 	it( 'Test the highlight block custom classes.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'highlight' );
 
-		cy.get( 'p.wp-block-coblocks-highlight' )
+		cy.get( 'p.wp-block-coblocks-highlight mark' )
 			.type( highlightData[ 0 ].text );
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'highlight' );
