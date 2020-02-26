@@ -25,3 +25,4 @@ This list is manually curated to include valuable contributions by volunteers th
 | @broken8        | @adomenico             |
 | @andreilupu     | @euthelup              |
 | @alexdenning    | @alexdenning           |
+| @p-jackson      |                        |
