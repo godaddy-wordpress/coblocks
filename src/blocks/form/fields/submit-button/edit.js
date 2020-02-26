@@ -70,15 +70,13 @@ class CoBlocksSubmitButton extends Component {
 	getButtonClasses() {
 		const { textButtonColor, backgroundButtonColor } = this.props;
 
-		const textClass = get( textButtonColor, 'class' );
-
 		const backgroundClass = get( backgroundButtonColor, 'class' );
 
 		return classnames( 'wp-block-button__link', {
 			'has-background': backgroundButtonColor,
 			[ backgroundClass ]: backgroundClass,
 			'has-text-color': textButtonColor,
-			[ textClass ]: textClass,
+			[ this.props.className ]: this.props.className,
 		} );
 	}
 
@@ -120,17 +118,17 @@ class CoBlocksSubmitButton extends Component {
 						colorSettings={ [
 							{
 								value: backgroundColor,
-								onChange: ( nextColour ) => {
-									setBackgroundButtonColor( nextColour );
-									setAttributes( { customBackgroundButtonColor: nextColour } );
+								onChange: ( nextColor ) => {
+									setBackgroundButtonColor( nextColor );
+									setAttributes( { customBackgroundButtonColor: nextColor } );
 								},
 								label: __( 'Button Color', 'coblocks' ),
 							},
 							{
 								value: color,
-								onChange: ( nextColour ) => {
-									setTextButtonColor( nextColour );
-									setAttributes( { customTextButtonColor: nextColour } );
+								onChange: ( nextColor ) => {
+									setTextButtonColor( nextColor );
+									setAttributes( { customTextButtonColor: nextColor } );
 								},
 								label: __( 'Button Text Color', 'coblocks' ),
 							},
