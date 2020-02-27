@@ -20,6 +20,7 @@ import './extensions/image-styles';
 import './extensions/cover-styles';
 import './extensions/image-crop';
 import './extensions/coblocks-settings/';
+import './extensions/remove-image';
 
 // Formats
 import './formats';
