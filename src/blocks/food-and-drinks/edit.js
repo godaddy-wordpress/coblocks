@@ -108,16 +108,6 @@ class FoodItem extends Component {
 		this.onChangeHeadingLevel = this.onChangeHeadingLevel.bind( this );
 	}
 
-	componentDidUpdate( prevProps ) {
-		if (
-			this.props.attributes.headingLevel !== prevProps.attributes.headingLevel
-		) {
-			this.updateInnerAttributes( 'core/heading', {
-				level: this.props.attributes.headingLevel,
-			} );
-		}
-	}
-
 	updateInnerAttributes( blockName, newAttributes ) {
 		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
 			this.props.clientId

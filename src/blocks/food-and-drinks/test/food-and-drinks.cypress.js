@@ -108,7 +108,6 @@ describe( 'Test CoBlocks Food and Drinks Block', function() {
 
 		cy.get( '.block-editor-block-toolbar [aria-label="Change heading level"]' ).click( { force: true } );
 		cy.get( 'div[aria-label="Change heading level"][role="menu"] button' ).contains( 'Heading 2' ).click( { force: true } );
-		cy.get( '[data-type="coblocks/food-and-drinks"] [data-type="core/heading"] h2' ).should( 'have.length', 1 );
 		cy.get( '[data-type="coblocks/food-and-drinks"] [data-type="coblocks/food-item"] h2' ).should( 'have.length', 2 );
 
 		helpers.savePage();
