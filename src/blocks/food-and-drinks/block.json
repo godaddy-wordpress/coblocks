@@ -13,6 +13,10 @@
 		"columns": {
 			"type": "number",
 			"default": 2
+		},
+		"gutter": {
+			"type": "string",
+			"default": "medium"
 		}
 	}
 }

@@ -1,55 +1,34 @@
-.wp-block-coblocks-food-and-drinks {
+[data-type="coblocks/food-and-drinks"] {
 
-	.block-editor-inner-blocks {
-		width: 100%;
-	}
-
-	.block-editor-block-list__layout {
-		display: flex;
-		flex-flow: row wrap;
-		justify-content: space-between;
-
-		// On small screens, we are no longer using row direction but column.
-		@media all and (max-width: 514px) {
-			flex-direction: column;
-		}
-
-		.wp-block[data-type="core/heading"] {
-			align-content: center;
-			flex: 1 100%;
-			max-width: 100%;
-			width: 100%;
-
-			[data-block],
-			.block-editor-block-list__block-edit {
-				margin-top: 0;
-			}
-
-			h1,
-			h2,
-			h3,
-			h4,
-			h5,
-			h6 {
-				margin-top: 0;
-			}
-		}
-	}
-
-	&.is-style-list {
-
-		.block-editor-block-list__layout {
-			flex-direction: column;
-		}
-
-		.wp-block[data-type="coblocks/food-item"] {
-			flex: 1 100%;
-			max-width: 100% !important;
-		}
+	.has-columns > .block-editor-inner-blocks [data-type="core/heading"],
+	.block-editor-inner-blocks [data-type="core/heading"] {
+		max-width: 100% !important;
+		flex-basis: 100% !important;
 	}
 
 	.coblocks-list-appender {
 		flex: 1 100%;
+		max-width: 100% !important;
+
+		&__toggle {
+			align-items: center;
+			background: rgba(139, 139, 150, 0.1) !important;
+			border-radius: 0;
+			box-shadow: none;
+			color: $dark-gray-500;
+			display: flex;
+			height: auto;
+			justify-content: center;
+			margin-top: 14px;
+			outline: 1px dashed $dark-gray-150;
+			padding: 16px;
+			width: 100%;
+
+			&:hover {
+				box-shadow: none !important;
+				outline: 1px dashed $dark-gray-500;
+			}
+		}
 	}
 
 	// Hide this on Gutenberg 5.9+
@@ -57,37 +36,26 @@
 		display: none !important;
 	}
 
-	.coblocks-list-appender__toggle {
-		align-items: center;
-		background: rgba(139, 139, 150, 0.1) !important;
-		border-radius: 0;
-		box-shadow: none;
-		color: $dark-gray-500;
-		display: flex;
-		height: auto;
-		justify-content: center;
-		margin-top: 14px;
-		outline: 1px dashed $dark-gray-150;
-		padding: 16px;
-		width: 100%;
+	.is-style-list {
 
-		&:hover {
-			box-shadow: none !important;
-			outline: 1px dashed $dark-gray-500;
+		[data-type="coblocks/food-item"] {
+			flex: 1 100%;
+			max-width: 100% !important;
 		}
 	}
 
 	// Hides the food item placeholder if it's not the first two blocks.
-	&:not(.child-selected) .wp-block[data-type="coblocks/food-item"] .is-empty {
+	&:not(.is-selected):not(.has-child-selected) .wp-block[data-type="coblocks/food-item"] .is-empty {
 		display: none;
 	}
 
-	&:not(.child-selected) .wp-block[data-type="coblocks/food-item"]:nth-child(-n + 3) .is-empty {
-		display: block;
+	> .block-editor-block-list__block-edit > [data-block] {
+		margin-bottom: 0;
 	}
 
-	&.is-style-list:not(.child-selected) .wp-block[data-type="coblocks/food-item"]:nth-child(-n + 3) .is-empty {
-		display: flex;
+	&.is-selected > .block-editor-block-list__block-edit > [data-block] > div > .block-editor-inner-blocks {
+		padding: 14px;
+		padding-bottom: 0;
 	}
 }
 
@@ -100,15 +68,4 @@
 	svg {
 		fill: $dark-gray-500;
 	}
-}
-
-.wp-block[data-type="coblocks/food-and-drinks"] > .block-editor-block-list__block-edit > [data-block] {
-	margin-bottom: 0;
-}
-
-// Added for Gutenberg 6.3+
-.block-editor-block-list__block[data-type="coblocks/food-and-drinks"].has-child-selected > .block-editor-block-list__block-edit > [data-block] > div > .block-editor-inner-blocks,
-.block-editor-block-list__block[data-type="coblocks/food-and-drinks"].is-selected > .block-editor-block-list__block-edit > [data-block] > div > .block-editor-inner-blocks {
-	padding: 14px;
-	padding-bottom: 0;
 }

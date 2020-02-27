@@ -17,7 +17,7 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { withSelect, dispatch, select } from '@wordpress/data';
+import { withDispatch, withSelect } from '@wordpress/data';
 import { InnerBlocks } from '@wordpress/block-editor';
 const TokenList = wp.tokenList;
 
@@ -97,22 +97,39 @@ class FoodItem extends Component {
 	constructor( ) {
 		super( ...arguments );
 
-		this.updateInnerAttributes = this.updateInnerAttributes.bind( this );
+		this.insertNewItem = this.insertNewItem.bind( this );
+		this.setColumns = this.setColumns.bind( this );
+		this.setGutter = this.setGutter.bind( this );
 		this.toggleImages = this.toggleImages.bind( this );
 		this.togglePrices = this.togglePrices.bind( this );
-		this.setColumns = this.setColumns.bind( this );
+		this.updateInnerAttributes = this.updateInnerAttributes.bind( this );
 		this.updateStyle = this.updateStyle.bind( this );
-		this.insertNewItem = this.insertNewItem.bind( this );
+	}
+
+	componentDidUpdate( prevProps ) {
+		const { attributes } = this.props;
+		const activeStyle = getActiveStyle( layoutOptions, attributes.className );
+		const lastActiveStyle = getActiveStyle( layoutOptions, prevProps.attributes.className );
+
+		if ( activeStyle !== lastActiveStyle ) {
+			if ( 'list' === activeStyle.name ) {
+				this.setColumns( 1 );
+			}
+
+			if ( 'grid' === activeStyle.name ) {
+				this.setColumns( 2 );
+			}
+		}
 	}
 
 	updateInnerAttributes( blockName, newAttributes ) {
-		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
+		const innerItems = this.props.getBlocksByClientId(
 			this.props.clientId
 		)[ 0 ].innerBlocks;
 
-		innerItems.map( ( item ) => {
+		innerItems.forEach( ( item ) => {
 			if ( item.name === blockName ) {
-				dispatch( 'core/block-editor' ).updateBlockAttributes(
+				this.props.updateBlockAttributes(
 					item.clientId,
 					newAttributes
 				);
@@ -144,6 +161,12 @@ class FoodItem extends Component {
 		setAttributes( { columns: parseInt( value ) } );
 	}
 
+	setGutter( value ) {
+		const { setAttributes } = this.props;
+
+		setAttributes( { gutter: value } );
+	}
+
 	updateStyle( style ) {
 		const { className, attributes, setAttributes } = this.props;
 
@@ -160,7 +183,7 @@ class FoodItem extends Component {
 	insertNewItem() {
 		const { clientId, attributes } = this.props;
 
-		const blockOrder = select( 'core/block-editor' ).getBlockOrder();
+		const blockOrder = this.props.getBlockOrder();
 		const insertAtIndex = blockOrder.indexOf( clientId ) + 1;
 
 		const innerBlocks = TEMPLATE.map( ( [ blockName, blockAttributes ] ) =>
@@ -179,7 +202,7 @@ class FoodItem extends Component {
 			innerBlocks
 		);
 
-		dispatch( 'core/block-editor' ).insertBlock( newItem, insertAtIndex );
+		this.props.insertBlock( newItem, insertAtIndex );
 	}
 
 	render() {
@@ -187,11 +210,21 @@ class FoodItem extends Component {
 			className,
 			attributes,
 			isSelected,
-			clientId,
-			selectedParentClientId,
 		} = this.props;
 
 		const activeStyle = getActiveStyle( layoutOptions, className );
+
+		const {
+			columns,
+			gutter,
+		} = attributes;
+
+		const classes = classnames( className, {
+			'has-columns': columns > 1,
+			'has-responsive-columns': columns > 1,
+			[ `has-${ columns }-columns` ]: columns > 1,
+			[ `has-${ gutter }-gutter` ]: gutter,
+		} );
 
 		return (
 			<Fragment>
@@ -203,35 +236,53 @@ class FoodItem extends Component {
 					onTogglePrices={ this.togglePrices }
 					onUpdateStyle={ this.updateStyle }
 					onSetColumns={ this.setColumns }
+					onSetGutter={ this.setGutter }
 				/>
-				<div
-					className={ classnames( className, {
-						'child-selected': isSelected || clientId === selectedParentClientId,
-					} ) }
-				>
+				<div className={ classes }>
 					<InnerBlocks
 						allowedBlocks={ ALLOWED_BLOCKS }
 						template={ TEMPLATE }
 						templateInsertUpdatesSelection={ false }
 					/>
-					{ ( isSelected || clientId === selectedParentClientId ) && (
+					{ isSelected &&
 						<CustomAppender onClick={ this.insertNewItem } />
-					) }
+					}
 				</div>
 			</Fragment>
 		);
 	}
 }
 
-const applyWithSelect = withSelect( () => {
-	const selectedClientId = select( 'core/block-editor' ).getBlockSelectionStart();
-	const parentClientId = select( 'core/block-editor' ).getBlockRootClientId(
-		selectedClientId
-	);
+export default compose( [
 
-	return {
-		selectedParentClientId: parentClientId,
-	};
-} );
+	withSelect( ( select, props ) => {
+		const {
+			getBlockOrder,
+			getBlockRootClientId,
+			getBlockSelectionStart,
+			getBlocksByClientId,
+		} = select( 'core/block-editor' );
 
-export default compose( applyWithSelect )( FoodItem );
+		// Get clientId of the parent block.
+		const parentClientId = getBlockRootClientId( getBlockSelectionStart() );
+
+		return {
+			getBlockOrder,
+			getBlocksByClientId,
+			isSelected: props.isSelected || props.clientId === parentClientId,
+		};
+	} ),
+
+	withDispatch( ( dispatch ) => {
+		const {
+			insertBlock,
+			updateBlockAttributes,
+		} = dispatch( 'core/block-editor' );
+
+		return {
+			insertBlock,
+			updateBlockAttributes,
+		};
+	} ),
+
+] )( FoodItem );

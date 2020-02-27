@@ -4,18 +4,26 @@
 import classnames from 'classnames';
 
 /**
+ * Internal dependencies
+ */
+import OptionSelectorControl from '../../components/option-selector-control';
+
+/**
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { PanelBody, ToggleControl } from '@wordpress/components';
+import { Fragment } from '@wordpress/element';
+import { PanelBody, ToggleControl, RangeControl } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 import { ENTER, SPACE } from '@wordpress/keycodes';
 
 const Inspector = ( props ) => {
 	const {
-		attributes,
 		activeStyle,
+		attributes,
 		layoutOptions,
+		onSetColumns,
+		onSetGutter,
 		onToggleImages,
 		onTogglePrices,
 		onUpdateStyle,
@@ -25,6 +33,33 @@ const Inspector = ( props ) => {
 		showImages,
 		showPrices,
 	} = attributes;
+
+	const gutterOptions = [
+		{
+			value: 'small',
+			/* translators: abbreviation for small size */
+			label: __( 'S', 'coblocks' ),
+			tooltip: __( 'Small', 'coblocks' ),
+		},
+		{
+			value: 'medium',
+			/* translators: abbreviation for medium size */
+			label: __( 'M', 'coblocks' ),
+			tooltip: __( 'Medium', 'coblocks' ),
+		},
+		{
+			value: 'large',
+			/* translators: abbreviation for large size */
+			label: __( 'L', 'coblocks' ),
+			tooltip: __( 'Large', 'coblocks' ),
+		},
+		{
+			value: 'huge',
+			/* translators: abbreviation for largest size */
+			label: __( 'XL', 'coblocks' ),
+			tooltip: __( 'Huge', 'coblocks' ),
+		},
+	];
 
 	return (
 		<InspectorControls>
@@ -62,6 +97,23 @@ const Inspector = ( props ) => {
 			</PanelBody>
 
 			<PanelBody title={ __( 'Food & Drinks Settings', 'coblocks' ) } initialOpen={ true }>
+				{ activeStyle.name === 'grid' &&
+					<Fragment>
+						<RangeControl
+							label={ __( 'Columns', 'coblocks' ) }
+							value={ attributes.columns }
+							min={ 2 }
+							max={ 4 }
+							onChange={ ( newColumns ) => onSetColumns( newColumns ) }
+						/>
+						<OptionSelectorControl
+							label={ __( 'Gutter', 'coblocks' ) }
+							currentOption={ attributes.gutter }
+							options={ gutterOptions }
+							onChange={ ( newGutter ) => onSetGutter( newGutter ) }
+						/>
+					</Fragment>
+				}
 				<ToggleControl
 					label={ __( 'Images', 'coblocks' ) }
 					help={

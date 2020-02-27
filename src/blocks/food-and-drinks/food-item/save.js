@@ -113,6 +113,7 @@ export default function save( { attributes, className } ) {
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
 										'wp-block-coblocks-food-item__attribute--spicy',
+										'wp-block-coblocks-food-item__attribute--spicier',
 										'hint--top' ) }
 									aria-label={ __( 'Spicier', 'coblocks' ) }
 								>
