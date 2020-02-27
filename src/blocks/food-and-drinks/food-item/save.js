@@ -139,7 +139,7 @@ export default function save( { attributes, className } ) {
 								<span
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
-										'wp-block-coblocks-food-item__attribute--glutenFree',
+										'wp-block-coblocks-food-item__attribute--gluten-free',
 										'hint--top' ) }
 									aria-label={ __( 'Gluten Free', 'coblocks' ) }
 								>

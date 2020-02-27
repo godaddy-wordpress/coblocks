@@ -322,7 +322,7 @@ class FoodAndDrinksEdit extends Component {
 									// Only renders if the option is checked within the Settings sidebar.
 									<IconButton
 										icon={ icons.glutenFree }
-										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--glutenFree', {
+										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--gluten-free', {
 											'is-toggled': glutenFree,
 										} ) }
 										onClick={ () =>
