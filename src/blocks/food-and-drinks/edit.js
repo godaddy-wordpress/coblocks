@@ -2,7 +2,8 @@
  * Internal dependencies.
  */
 import CustomAppender from './appender';
-import InspectorControls from './inspector';
+import Inspector from './inspector';
+import Controls from './controls';
 import icons from './icons';
 
 /**
@@ -103,6 +104,18 @@ class FoodItem extends Component {
 		this.setColumns = this.setColumns.bind( this );
 		this.updateStyle = this.updateStyle.bind( this );
 		this.insertNewItem = this.insertNewItem.bind( this );
+		this.updateInnerAttributes = this.updateInnerAttributes.bind( this );
+		this.onChangeHeadingLevel = this.onChangeHeadingLevel.bind( this );
+	}
+
+	componentDidUpdate( prevProps ) {
+		if (
+			this.props.attributes.headingLevel !== prevProps.attributes.headingLevel
+		) {
+			this.updateInnerAttributes( 'core/heading', {
+				level: this.props.attributes.headingLevel,
+			} );
+		}
 	}
 
 	updateInnerAttributes( blockName, newAttributes ) {
@@ -110,7 +123,7 @@ class FoodItem extends Component {
 			this.props.clientId
 		)[ 0 ].innerBlocks;
 
-		innerItems.map( ( item ) => {
+		innerItems.forEach( ( item ) => {
 			if ( item.name === blockName ) {
 				dispatch( 'core/block-editor' ).updateBlockAttributes(
 					item.clientId,
@@ -118,6 +131,13 @@ class FoodItem extends Component {
 				);
 			}
 		} );
+	}
+
+	onChangeHeadingLevel( headingLevel ) {
+		const { setAttributes } = this.props;
+
+		setAttributes( { headingLevel } );
+		this.updateInnerAttributes( 'coblocks/food-item', { headingLevel } );
 	}
 
 	toggleImages() {
@@ -195,7 +215,11 @@ class FoodItem extends Component {
 
 		return (
 			<Fragment>
-				<InspectorControls
+				<Controls
+					{ ...this.props }
+					onChangeHeadingLevel={ this.onChangeHeadingLevel }
+				/>
+				<Inspector
 					attributes={ attributes }
 					activeStyle={ activeStyle }
 					layoutOptions={ layoutOptions }
