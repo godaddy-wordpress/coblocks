@@ -88,7 +88,7 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 		// Unregister the registered block.
 		unregisterBlockType( blockName );
 
-		describe( `${ blockName } deprecation ${ index }`, () => {
+		describe( `${blockName} deprecation ${index}`, () => {
 			beforeEach( () => {
 				// Register the deprecated block.
 				deprecatedBlockType = registerBlockType( blockName, deprecatedSettings );
@@ -114,18 +114,36 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 				const blocks = parse( deprecatedSerialized );
 
 				expect(
-					blocks.filter( block => ! block.isValid ).map( filterBlockObjectResult )
-				).toEqual( [ ] );
+					blocks.filter( block => !block.isValid ).map( filterBlockObjectResult )
+				).toEqual( [] );
 			} );
 
 			Object.keys( deprecatedBlockType.attributes ).map( ( attribute ) => {
 				// This test helps expose attributes we need variations for.
-				it( `should have variations for attribute.${ attribute }`, () => {
+				it( `should have variations for attribute.${attribute}`, () => {
 					expect( blockVariations.hasOwnProperty( attribute ) ).toBe( true );
 				} );
 
-				blockVariations[ attribute ] && blockVariations[ attribute ].map( variation => {
-					it( `should support attribute.${ attribute } set to '${ JSON.stringify( variation ) }'`, () => {
+				// Allow each attribute test to pre-set block attributes before testing the attributes deprecation.
+				let testVariations;
+				let testBaseAttributes = {};
+
+				if ( blockVariations[ attribute ] && Array.isArray( blockVariations[ attribute ] ) ) {
+					testVariations = blockVariations[ attribute ];
+				} else {
+					testVariations = blockVariations[ attribute ].values;
+					testBaseAttributes = blockVariations[ attribute ].baseAttributes || {};
+				}
+
+				testVariations.map( variation => {
+					it( `should support attribute.${attribute} set to '${JSON.stringify( variation )}'`, () => {
+						// Allow baseAttributes defined in the test to override deprecated attribute defaults.
+						deprecatedBlock.attributes = {
+							...deprecatedBlock.attributes,
+							...testBaseAttributes,
+						};
+
+						// Allow variations to override the baseAttributes defined in the test.
 						deprecatedBlock.attributes[ attribute ] = variation;
 						const deprecatedSerialized = serialize( deprecatedBlock );
 
@@ -138,8 +156,8 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 						const blocks = parse( deprecatedSerialized );
 
 						expect(
-							blocks.filter( block => ! block.isValid ).map( filterBlockObjectResult )
-						).toEqual( [ ] );
+							blocks.filter( block => !block.isValid ).map( filterBlockObjectResult )
+						).toEqual( [] );
 					} );
 				} );
 			} );
