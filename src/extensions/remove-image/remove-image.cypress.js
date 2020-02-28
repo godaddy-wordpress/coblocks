@@ -21,6 +21,8 @@ describe( 'Test CoBlocks Replace Image extension', function() {
 		const { fileName, fileBase, pathToFixtures } = imageData;
 		helpers.addCoreBlockToPage( true, 'image' );
 
+		cy.get( '.replace-image-button' ).should( 'not.exist' );
+
 		cy.fixture( pathToFixtures + fileName, 'base64' ).then( ( fileContent ) => {
 			cy.get( 'div[data-type="core/image"]' )
 				.find( 'div.components-drop-zone' ).first()

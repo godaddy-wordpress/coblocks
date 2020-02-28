@@ -16,7 +16,7 @@ const supportedBlocks = [
 
 const withReplaceImage = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-		if ( props.name.includes( supportedBlocks ) ) {
+		if ( props.name.includes( supportedBlocks ) && !! props.attributes.url ) {
 			const {
 				setAttributes,
 				url,
