@@ -16,22 +16,26 @@ import Controls from './controls';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
 import { InnerBlocks, RichText } from '@wordpress/block-editor';
 
 /**
  * Constants
  */
-const TEMPLATE = [ [ 'core/paragraph', { placeholder: __( 'Add content…', 'coblocks' ) } ] ];
+const TEMPLATE = [
+	[ 'core/paragraph', { placeholder: __( 'Add content…', 'coblocks' ) } ],
+];
 
 /**
  * Block edit function
  */
-class Edit extends Component {
+class AccordionItemEdit extends Component {
 	render() {
 		const {
 			attributes,
 			backgroundColor,
 			className,
+			isEditing,
 			isSelected,
 			onReplace,
 			setAttributes,
@@ -85,15 +89,15 @@ class Edit extends Component {
 							}
 						} }
 					/>
-					<div
-						className="wp-block-coblocks-accordion-item__content"
-						style={ { borderColor: backgroundColor.color } }
-					>
-						<InnerBlocks
-							template={ TEMPLATE }
-							templateInsertUpdatesSelection={ false }
-						/>
-					</div>
+
+					{ ( isEditing === true || attributes.open ) &&
+						<div className="wp-block-coblocks-accordion-item__content" style={ { borderColor: backgroundColor.color } }>
+							<InnerBlocks
+								template={ TEMPLATE }
+								templateInsertUpdatesSelection={ false }
+							/>
+						</div>
+					}
 				</div>
 			</Fragment>
 		);
@@ -101,5 +105,22 @@ class Edit extends Component {
 }
 
 export default compose( [
+
+	withSelect( ( select, props ) => {
+		const {
+			getBlockHierarchyRootClientId,
+			getSelectedBlockClientId,
+		} = select( 'core/block-editor' );
+
+		// Get clientID of the parent block.
+		const rootClientId = getBlockHierarchyRootClientId( props.clientId );
+		const selectedRootClientId = getBlockHierarchyRootClientId( getSelectedBlockClientId() );
+
+		return {
+			isEditing: rootClientId === selectedRootClientId,
+		};
+	} ),
+
 	applyWithColors,
-] )( Edit );
+
+] )( AccordionItemEdit );
