@@ -294,9 +294,6 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 	}
 
 	cy.get( '.wp-block[data-type="coblocks/' + blockID + '"]' ).last().click();
-	// cy.get( '.block-editor-block-navigation' ).click();
-	// cy.get( '.block-editor-block-navigation__container' ).find( '.block-editor-block-navigation__item' ).first().click();
-		// .dblclick( 'right', { force: true } );
 
 	cy.get( '.block-editor-block-inspector__advanced' ).scrollIntoView().find( 'button' ).click();
 
@@ -312,9 +309,6 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 				}
 			} );
 		} );
-
-	cy.get( '.wp-block-coblocks-' + blockID )
-		.should( 'have.class', classes );
 }
 
 /**
