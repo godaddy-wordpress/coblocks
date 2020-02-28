@@ -1,6 +1,8 @@
 build
 dist
 node_modules
-test
 vendor
 wordpress
+*.spec.js
+*.spec.js.snap
+!*/helpers.js

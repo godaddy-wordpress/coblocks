@@ -116,6 +116,39 @@ export function addCoBlocksBlockToPage( clearEditor = true, blockID = '' ) {
 }
 
 /**
+ * From inside the WordPress editor open the core Gutenberg editor panel
+ *
+ * @param bool   clearEditor Whether or not to clear all blocks on the page before
+ *                           adding a new block to the page.
+ * @param string blockID     ID to check for in the DOM.
+ */
+export function addCoreBlockToPage( clearEditor = true, blockID = '' ) {
+	if ( clearEditor ) {
+		clearBlocks();
+	}
+
+	if ( ! blockID.length ) {
+		return;
+	}
+	console.log('should be running')
+
+
+	cy.get( '.block-list-appender .wp-block .block-editor-inserter__toggle' )
+		.click();
+
+	// Close find search input and type blockID
+	cy.get( 'input.block-editor-inserter__search' )
+		.click()
+		.type(blockID);
+
+	cy.get( '.components-panel__body.is-opened .editor-block-list-item-' + blockID )
+		.click();
+
+	// Make sure the block was added to our page
+	cy.get( `div[data-type="core/${ blockID }"]` ).should( 'exist' );
+}
+
+/**
  * From inside the WordPress editor open the CoBlocks Gutenberg editor panel
  */
 export function savePage() {
@@ -134,8 +167,9 @@ export function savePage() {
  *               Note: If no blockID is specified, getBlockSlug() attempts to
  *               retreive the block from the spec file.
  *               eg: accordion => div[data-type="coblocks/accordion"]
+ * @param string slug Optional control to use if we are testing with core blocks.
  */
-export function checkForBlockErrors( blockID = '' ) {
+export function checkForBlockErrors( blockID = '', slug = 'coblocks' ) {
 	if ( ! blockID.length ) {
 		blockID = getBlockSlug();
 	}
@@ -145,7 +179,7 @@ export function checkForBlockErrors( blockID = '' ) {
 
 		cy.get( '.block-editor-warning' ).should( 'not.exist' );
 
-		cy.get( 'div[data-type="coblocks/' + blockID + '"]' ).should( 'exist' );
+		cy.get( `div[data-type="${slug}/${blockID}"]` ).should( 'exist' );
 	} );
 }
 
