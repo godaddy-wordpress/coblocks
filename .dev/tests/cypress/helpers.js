@@ -174,7 +174,9 @@ export function editPage() {
  */
 export function clearBlocks() {
 	cy.window().then( ( win ) => {
-		win.wp.data.dispatch( 'core/editor' ).resetBlocks( [] );
+		win.wp.data.dispatch( 'core/block-editor' ).removeBlocks(
+			win.wp.data.select( 'core/block-editor' ).getBlocks().map( block => block.clientId )
+		);
 	} );
 }
 
