@@ -1,102 +1,105 @@
-/*
+/**
  * Include our constants
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 import 'cypress-file-upload';
 
-describe( 'Test CoBlocks Food and Drinks Block', function() {
-	/**
-	* Setup food-and-drinks data
-	*/
-	const foodData = {
-		price: 33.33,
-		image: {
-			fileName: '150x150.png',
-			imageBase: '150x150',
-			pathToFixtures: '../.dev/tests/cypress/fixtures/images/',
-			caption: 'Caption Here',
-		},
-	};
+describe( 'Block: Food and Drinks', function () {
 
-	/**
-	   * Test that we can add a food-and-drinks block to the content, not alter
-	   * any settings, and are able to successfully save the block without errors.
-	   */
-	it( 'Test food-and-drinks block saves with empty values.', function() {
+	beforeEach( () => {
 		helpers.addCoBlocksBlockToPage( true, 'food-and-drinks' );
-
-		helpers.savePage();
-
-		helpers.checkForBlockErrors( 'food-and-drinks' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-food-and-drinks' ).children().should( 'have.length', 1 );
-		cy.get( '.wp-block-coblocks-food-and-drinks > h3' ).should( 'be.empty' );
-
-		helpers.editPage();
 	} );
 
 	/**
-	   * Test that we can add a food-and-drinks block to the content,
-	   * and can trigger images attribute on items
-	   */
-	it( 'Test food-and-drinks block saves with image attribute.', function() {
-		const { fileName, imageBase, pathToFixtures } = foodData.image;
+	 * Test that we can add a food-and-drinks block to the content, not alter
+	 * any settings, and are able to successfully save the block without errors.
+	 */
+	it( 'can be inserted without errors', function () {
+		cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'exist' );
+		helpers.checkForBlockErrors( 'food-and-drinks' );
+	} );
 
-		helpers.addCoBlocksBlockToPage( true, 'food-and-drinks' );
+	/**
+	 * Test the food-and-drinks block saves with custom classes
+	 */
+	it( 'can set custom classes', () => {
+		helpers.addCustomBlockClass( 'my-custom-class', 'food-and-drinks' );
+		cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'have.class', 'my-custom-class' );
 
-		helpers.toggleSettingCheckbox( /images/i );
+		helpers.checkForBlockErrors( 'food-and-drinks' );
+	} );
 
-		cy.get( '.wp-block-coblocks-food-item' ).contains( /media library/i ).should( 'exist' );
+	it( 'can the number of columns between 2 and 4', () => {
+		helpers.setBlockStyle( 'grid' );
 
-		cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().click( 'bottom' );
+		helpers.openSettingsPanel( /food & drinks settings/i );
 
-		cy.fixture( pathToFixtures + fileName, 'base64' ).then( fileContent => {
-			cy.get( 'div[data-type="coblocks/food-item"]' ).not( 'div[role="toolbar"]' ).first()
-				.find( 'div.components-drop-zone' ).first()
-				.upload(
-					{ fileContent, fileName, mimeType: 'image/png' },
-					{ subjectType: 'drag-n-drop', force: true, events: [ 'dragstart', 'dragover', 'drop' ] },
-				)
-				.wait( 2000 ); // Allow upload to finish.
-
-			cy.get( 'div[data-type="coblocks/food-item"]' ).not( 'div[role="toolbar"]' ).first()
-				.find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
+		[ 2, 3, 4 ].forEach( ( columns ) => {
+			cy.get( '.components-range-control' ).contains( /columns/i ).parent().find( '.components-range-control__number' ).type( `{selectall}${columns}` );
+			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', 'has-columns' );
+			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', `has-${columns}-columns` );
 		} );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'food-and-drinks' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-food-item' ).should( 'exist' );
-		cy.get( '.wp-block-coblocks-food-item' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
-
-		helpers.editPage();
 	} );
 
-	/**
-   * Test the food-and-drinks block saves with custom classes
-   */
-	it( 'Test the food-and-drinks block custom classes.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'food-and-drinks' );
+	it( 'can toggle images for inner food-item blocks', () => {
+		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
+			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().click( 'left' );
+			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'not.exist' );
+		} );
 
-		helpers.addCustomBlockClass( 'my-custom-class', 'food-and-drinks' );
+		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).first().click();
 
-		helpers.savePage();
+		helpers.openSettingsPanel( /food & drinks settings/i );
+		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /images/i ).click();
+
+		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
+			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().click( 'left' );
+			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'exist' );
+		} );
 
 		helpers.checkForBlockErrors( 'food-and-drinks' );
+	} );
 
-		cy.get( '.wp-block-coblocks-food-and-drinks' )
-			.should( 'have.class', 'my-custom-class' );
+	it( 'can toggle prices for inner food-item blocks', () => {
+		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
+			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().click( 'left' );
+			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'exist' );
+		} );
 
-		helpers.viewPage();
+		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).first().click();
 
-		cy.get( '.wp-block-coblocks-food-and-drinks' )
-			.should( 'have.class', 'my-custom-class' );
+		helpers.openSettingsPanel( /food & drinks settings/i );
+		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /prices/i ).click();
 
-		helpers.editPage();
+		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
+			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().click( 'left' );
+			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'not.exist' );
+		} );
+
+		helpers.checkForBlockErrors( 'food-and-drinks' );
+	} );
+
+	it( 'can insert menu section with the same attributes', () => {
+		helpers.openSettingsPanel( /food & drinks settings/i );
+
+		// Set a couple attributes.
+		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /images/i ).click();
+		helpers.addCustomBlockClass( 'my-custom-class', 'food-and-drinks' );
+
+		// Click "Add Menu Section" and verify two blocks exist on the page.
+		cy.get( '.wp-block-coblocks-food-and-drinks' ).find( '.coblocks-list-appender__toggle' ).click( { multiple: true } ).click();
+		cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'have.length', 2 );
+
+		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).last().within( () => {
+			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().click( 'left' );
+			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'exist' );
+			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'exist' );
+
+			cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'have.class', 'my-custom-class' );
+		} );
+
+		helpers.checkForBlockErrors( 'food-and-drinks' );
 	} );
 } );
