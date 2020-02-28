@@ -85,8 +85,7 @@ export function addCoBlocksBlockToPage( clearEditor = true, blockID = '' ) {
 
 	const isGalleryBlock = RegExp( 'gallery-' ).test( blockID );
 
-	cy.get( '.block-list-appender .wp-block .block-editor-inserter__toggle' )
-		.click();
+	cy.get( '.edit-post-header-toolbar' ).find( '.block-editor-inserter__toggle' ).click();
 
 	// Close 'Most Used' panel
 	cy.get( '.components-panel__body-title' )
@@ -318,10 +317,12 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 		blockID = getBlockSlug();
 	}
 
-	cy.get( '.wp-block[data-type="coblocks/' + blockID + '"]' )
-		.dblclick( 'right', { force: true } );
+	cy.get( '.wp-block[data-type="coblocks/' + blockID + '"]' ).last().click();
+	// cy.get( '.block-editor-block-navigation' ).click();
+	// cy.get( '.block-editor-block-navigation__container' ).find( '.block-editor-block-navigation__item' ).first().click();
+		// .dblclick( 'right', { force: true } );
 
-	cy.get( '.block-editor-block-inspector__advanced' ).find( 'button' ).click();
+	cy.get( '.block-editor-block-inspector__advanced' ).scrollIntoView().find( 'button' ).click();
 
 	cy.get( 'div.edit-post-sidebar' )
 		.contains( /Additional CSS/i )
