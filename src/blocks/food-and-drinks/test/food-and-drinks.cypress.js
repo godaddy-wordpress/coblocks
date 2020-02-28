@@ -89,7 +89,8 @@ describe( 'Block: Food and Drinks', function () {
 		helpers.addCustomBlockClass( 'my-custom-class', 'food-and-drinks' );
 
 		// Click "Add Menu Section" and verify two blocks exist on the page.
-		cy.get( '.wp-block-coblocks-food-and-drinks' ).find( '.coblocks-list-appender__toggle' ).click( { multiple: true } ).click();
+		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).click();
+		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).find( '.coblocks-list-appender__toggle' ).click();
 		cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'have.length', 2 );
 
 		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).last().within( () => {
