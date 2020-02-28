@@ -2,44 +2,20 @@
  * Login to our test WordPress site
  */
 export function loginToSite() {
-	cy.get( 'html' ).then( ( $html ) => {
-		// Editor page, do nothing.
-		if ( $html.find( '.block-editor-page' ).length ) {
+	cy.visit( Cypress.env( 'testURL' ) + '/wp-admin/post-new.php?post_type=page' )
+		.then( ( window ) => {
+			if ( window.location.pathname === '/wp-login.php' ) {
+				// WordPress has a wp_attempt_focus() function that fires 200ms after the wp-login.php page loads.
+				// We need to wait a short time before trying to login.
+				cy.wait( 250 );
 
-		} else {
-			cy.visit( Cypress.env( 'testURL' ) + '/wp-admin' );
+				cy.get( '#user_login' ).type( Cypress.env( 'wpUsername' ) );
+				cy.get( '#user_pass' ).type( Cypress.env( 'wpPassword' ) );
+				cy.get( '#wp-submit' ).click();
+			}
+		} );
 
-			cy.url().then( ( $url ) => {
-				if ( $url.includes( '/wp-login.php' ) ) {
-					cy.wait( 2000 );
-
-					cy.get( '#user_login' )
-						.type( Cypress.env( 'wpUsername' ) );
-
-					cy.get( '#user_pass' )
-						.type( Cypress.env( 'wpPassword' ) );
-
-					cy.get( '#wp-submit' )
-						.click();
-
-					cy.get( '.wrap h1' )
-						.should( 'contain', 'Dashboard' );
-				}
-			} );
-		}
-	} );
-}
-
-/**
- * Create a new post to add blocks to
- */
-export function createNewPost() {
-	cy.visit( Cypress.env( 'testURL' ) + '/wp-admin/post-new.php?post_type=page' );
-
-	disableGutenbergFeatures();
-
-	cy.get( 'textarea.editor-post-title__input' )
-		.type( 'CoBlocks ' + getBlockName() + ' Tests' );
+		cy.get( '.block-editor-page' ).should( 'exist' );
 }
 
 /**
