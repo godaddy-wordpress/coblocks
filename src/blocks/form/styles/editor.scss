@@ -168,25 +168,31 @@
 	.coblocks-field-multiple__add-option svg {
 		margin-right: 5px;
 	}
+}
 
-	.coblocks-form__submit.wp-block-button .wp-block-button__link {
+.block-editor-block-preview__container .coblocks-form__submit.wp-block-button {
+	font-size: 3rem;
+	text-align: center;
+}
 
-		&.is-style-outline {
-			background-color: transparent;
-			border: 2px solid !important;
-		}
+.wp-block[data-type="coblocks/form"] .coblocks-form__submit.wp-block-button .wp-block-button__link,
+.block-editor-block-preview__container .wp-block-button__link {
 
-		&.is-style-circular {
-			border-radius: 100px !important;
-		}
+	&.is-style-outline {
+		background-color: transparent;
+		border: 2px solid !important;
+	}
 
-		&.is-style-3d {
-			box-shadow: inset 0 -3px 0 0 rgba(0, 0, 0, 0.25);
-		}
+	&.is-style-circular {
+		border-radius: 100px !important;
+	}
 
-		&.is-style-shadow {
-			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.11), 0 1px 3px rgba(0, 0, 0, 0.075);
-		}
+	&.is-style-3d {
+		box-shadow: inset 0 -3px 0 0 rgba(0, 0, 0, 0.25);
+	}
+
+	&.is-style-shadow {
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.11), 0 1px 3px rgba(0, 0, 0, 0.075);
 	}
 }
 
