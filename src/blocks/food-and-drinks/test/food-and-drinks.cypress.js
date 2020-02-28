@@ -29,7 +29,7 @@ describe( 'Block: Food and Drinks', function () {
 		helpers.checkForBlockErrors( 'food-and-drinks' );
 	} );
 
-	it( 'can the number of columns between 2 and 4', () => {
+	it( 'can set the number of columns between 2 and 4', () => {
 		helpers.setBlockStyle( 'grid' );
 
 		helpers.openSettingsPanel( /food & drinks settings/i );
@@ -38,6 +38,20 @@ describe( 'Block: Food and Drinks', function () {
 			cy.get( '.components-range-control' ).contains( /columns/i ).parent().find( '.components-range-control__number' ).type( `{selectall}${columns}` );
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', 'has-columns' );
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', `has-${columns}-columns` );
+		} );
+
+		helpers.checkForBlockErrors( 'food-and-drinks' );
+	} );
+
+
+	it.only( 'can set the gutter to small, medium, large, and huge', () => {
+		helpers.setBlockStyle( 'grid' );
+
+		helpers.openSettingsPanel( /food & drinks settings/i );
+
+		[ 'Small', 'Medium', 'Large', 'Huge' ].forEach( ( gutter ) => {
+			cy.get( '.components-base-control' ).contains( /gutter/i ).parent().find( `.components-button[aria-label="${gutter}"]` ).click();
+			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', `has-${gutter.toLowerCase()}-gutter` );
 		} );
 
 		helpers.checkForBlockErrors( 'food-and-drinks' );
