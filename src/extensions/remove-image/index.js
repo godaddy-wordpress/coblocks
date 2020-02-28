@@ -2,11 +2,12 @@
 /**
  * WordPress dependencies
  */
-import { ToolbarGroup, Button } from '@wordpress/components';
 import { addFilter } from '@wordpress/hooks';
+import { BlockControls, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
+import { Button, ToolbarGroup } from '@wordpress/components';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { Fragment } from '@wordpress/element';
-import { BlockControls, MediaUpload } from '@wordpress/block-editor';
+
 import { __ } from '@wordpress/i18n';
 
 const supportedBlocks = [
@@ -17,40 +18,46 @@ const withReplaceImage = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		if ( props.name.includes( supportedBlocks ) ) {
 			const {
-				mediaURL,
-				mediaId,
-				allowedTypes,
-				accept,
-				onSelect,
-				onSelectURL,
-				onError,
+				setAttributes,
+				url,
 			} = props;
-			console.log( props );
+
+			const onUploadImage = ( media ) => setAttributes( { url: media.url, id: media.id } );
+
+			const supportsToolbarGroup = !! ToolbarGroup;
+
+			const ToolbarElement = ( { children } ) => {
+				if ( supportsToolbarGroup ) {
+					return <ToolbarGroup className="replace-image-button">{ children }</ToolbarGroup>;
+				}
+				return <div className="replace-image-button">{ children }</div>;
+			};
+
 			return (
 				<Fragment>
 					<BlockEdit { ...props } />
 					<BlockControls>
-						<ToolbarGroup className="replace-image-button">
-							<MediaUpload
-								value={ mediaId }
-								onSelect={ ( media ) => selectMedia( media ) }
-								allowedTypes={ allowedTypes }
-								render={ ( { open } ) => (
-									<Button
-										onClick={ () => open }
-									>
-										{ __( 'Replace Image', 'coblocks' ) }
-									</Button>
-								) }
-							/>
-
-						</ToolbarGroup>
+						<ToolbarElement>
+							<MediaUploadCheck>
+								<MediaUpload
+									allowedTypes={ [ 'image' ] }
+									onSelect={ onUploadImage }
+									value={ url }
+									render={ ( { open } ) => (
+										<Button onClick={ open }>
+											{ __( 'Replace Image', 'coblocks' ) }
+										</Button>
+									) }
+								>
+								</MediaUpload>
+							</MediaUploadCheck>
+						</ToolbarElement>
 					</BlockControls>
 				</Fragment>
 			);
 		}
 		return 	<BlockEdit { ...props } />;
 	};
-}, 'withInspectorControl' );
+}, 'withReplaceImage' );
 
 addFilter( 'editor.BlockEdit', 'coblocks/replace-image-button', withReplaceImage );

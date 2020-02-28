@@ -1,3 +1,19 @@
-.components-toolbar.replace-image-button {
-    display: ruby;
+.block-editor-block-toolbar .replace-image-button {
+	background-color: #fff;
+	border-color: rgb(181, 188, 194) rgb(181, 188, 194) rgb(181, 188, 194) currentColor;
+	border-image: none 100% / 1 / 0 stretch;
+	border-style: solid solid solid none;
+	border-width: 1px 1px 1px 0;
+	display: ruby;
+	line-height: 0;
+	margin: 0;
+
+	button {
+		display: block;
+		height: 100%;
+	}
+}
+
+.editor-block-toolbar .replace-image-button button:hover { // Pre GB 7.6 and WP 5.4 only
+	text-decoration: underline;
 }
