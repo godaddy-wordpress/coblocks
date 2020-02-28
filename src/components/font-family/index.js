@@ -19,7 +19,7 @@ function FontFamilyPicker( { label, value, help, instanceId, onChange, className
 		{ value: 'Times New Roman', label: 'Times New Roman' },
 		{ value: 'Georgia', label: 'Georgia' },
 	];
-	const fonts = [];
+	let fonts = [];
 
 	// Add Google Fonts
 	Object.keys( googleFonts ).forEach( ( k ) => {
@@ -31,6 +31,8 @@ function FontFamilyPicker( { label, value, help, instanceId, onChange, className
 	systemFonts.reverse().forEach( ( font ) => {
 		fonts.unshift( font );
 	} );
+
+	fonts = wp.hooks.applyFilters( 'coblocks.google_fonts', fonts );
 
 	const onChangeValue = ( event ) => {
 		const meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
