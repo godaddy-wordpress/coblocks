@@ -32,6 +32,11 @@ function FontFamilyPicker( { label, value, help, instanceId, onChange, className
 		fonts.unshift( font );
 	} );
 
+	/**
+	 * Filter the available list of Google fonts
+	 *
+	 * @type {array}
+	 */
 	fonts = wp.hooks.applyFilters( 'coblocks.google_fonts', fonts );
 
 	const onChangeValue = ( event ) => {
