@@ -44,7 +44,7 @@ describe( 'Block: Food and Drinks', function () {
 	} );
 
 
-	it.only( 'can set the gutter to small, medium, large, and huge', () => {
+	it( 'can set the gutter to small, medium, large, and huge', () => {
 		helpers.setBlockStyle( 'grid' );
 
 		helpers.openSettingsPanel( /food & drinks settings/i );
