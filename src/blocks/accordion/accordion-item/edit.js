@@ -59,7 +59,8 @@ class AccordionItemEdit extends Component {
 				<div
 					className={ classnames(
 						className,
-						`${ className }--open`, {
+						{
+							[ `${ className }--open` ]: isEditing === true || attributes.open,
 							'is-selected': isSelected,
 						}
 					) }
