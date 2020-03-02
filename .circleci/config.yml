@@ -74,13 +74,13 @@ jobs:
           name: Build the plugin
           command: npx wp-scripts build --config .dev/config/webpack.ci.config.js
       - run:
+          name: "Validate Composer configuration"
+          command: composer validate --strict
+      - run:
           name: "Install Dependencies"
           command: |
             bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
-      - run:
-          name: "Validate Composer configuration"
-          command: composer validate --strict
       - run:
           name: "Run PHPCS"
           command: composer run lint -- -v
