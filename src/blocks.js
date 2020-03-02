@@ -9,18 +9,18 @@ import {
 import './utils/block-category';
 
 // Extensions
-import './extensions/advanced-controls';
-import './extensions/attributes';
-import './extensions/button-controls';
-import './extensions/button-styles';
-import './extensions/coblocks-settings/';
 import './extensions/colors/inspector';
+import './extensions/typography';
+import './extensions/attributes';
+import './extensions/advanced-controls';
+import './extensions/list-styles';
+import './extensions/button-styles';
+import './extensions/button-controls';
+import './extensions/image-styles';
 import './extensions/cover-styles';
 import './extensions/remove-image';
 import './extensions/image-crop';
-import './extensions/image-styles';
-import './extensions/list-styles';
-import './extensions/typography';
+import './extensions/coblocks-settings/';
 
 // Formats
 import './formats';
