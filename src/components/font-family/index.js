@@ -35,7 +35,7 @@ function FontFamilyPicker( { label, value, help, instanceId, onChange, className
 	/**
 	 * Filter the available list of Google fonts
 	 *
-	 * @type {array}
+	 * @type {Array}
 	 */
 	fonts = wp.hooks.applyFilters( 'coblocks.google_fonts', fonts );
 
