@@ -123,15 +123,22 @@ class AccordionEdit extends Component {
 
 export default compose( [
 
-	withSelect( ( select ) => {
+	withSelect( ( select, props ) => {
 		const {
 			getBlockAttributes,
 			getBlocksByClientId,
+			getBlockHierarchyRootClientId,
+			getSelectedBlockClientId,
 		} = select( 'core/block-editor' );
+
+		// Get clientID of the parent block.
+		const rootClientId = getBlockHierarchyRootClientId( props.clientId );
+		const selectedRootClientId = getBlockHierarchyRootClientId( getSelectedBlockClientId() );
 
 		return {
 			getBlockAttributes,
 			getBlocksByClientId,
+			isSelected: props.isSelected || rootClientId === selectedRootClientId,
 		};
 	} ),
 
