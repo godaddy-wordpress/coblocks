@@ -3,8 +3,9 @@
  * WordPress dependencies
  */
 import { addFilter } from '@wordpress/hooks';
-import { BlockControls, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
-import { Button, ToolbarGroup } from '@wordpress/components';
+import { MediaUpload, MediaUploadCheck, InspectorControls } from '@wordpress/block-editor';
+import { Button } from '@wordpress/components';
+
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { Fragment } from '@wordpress/element';
 
@@ -24,35 +25,26 @@ const withReplaceImage = createHigherOrderComponent( ( BlockEdit ) => {
 
 			const onUploadImage = ( media ) => setAttributes( { url: media.url, id: media.id } );
 
-			const supportsToolbarGroup = !! ToolbarGroup;
-
-			const ToolbarElement = ( { children } ) => {
-				if ( supportsToolbarGroup ) {
-					return <ToolbarGroup className="replace-image-button">{ children }</ToolbarGroup>;
-				}
-				return <div className="replace-image-button">{ children }</div>;
-			};
-
 			return (
 				<Fragment>
 					<BlockEdit { ...props } />
-					<BlockControls>
-						<ToolbarElement>
+					<InspectorControls>
+						<div className="replace-image-button">
 							<MediaUploadCheck>
 								<MediaUpload
 									allowedTypes={ [ 'image' ] }
 									onSelect={ onUploadImage }
 									value={ url }
 									render={ ( { open } ) => (
-										<Button onClick={ open }>
+										<Button className="is-secondary" onClick={ open }>
 											{ __( 'Replace Image', 'coblocks' ) }
 										</Button>
 									) }
 								>
 								</MediaUpload>
 							</MediaUploadCheck>
-						</ToolbarElement>
-					</BlockControls>
+						</div>
+					</InspectorControls>
 				</Fragment>
 			);
 		}

@@ -1,26 +1,24 @@
-.edit-post-header-toolbar__block-toolbar .block-editor-block-toolbar .replace-image-button {
-	padding: 10px 4px 9px;
-	border-top: none;
-	border-bottom: none;
-	border-color: #e2e4e7;
-}
 
-.block-editor-block-toolbar .replace-image-button {
-	background-color: #fff;
-	border-color: rgb(181, 188, 194) rgb(181, 188, 194) rgb(181, 188, 194) currentColor;
-	border-image: none 100% / 1 / 0 stretch;
-	border-style: solid solid solid none;
-	border-width: 1px 1px 1px 0;
-	display: ruby;
-	line-height: 0;
-	margin: 0;
+.edit-post-sidebar .replace-image-button {
+	margin: 0px;
+	padding: 0px;
+	padding-bottom: 16px;
 
 	button {
 		display: block;
-		height: 100%;
+		width: 100%;
+		height: 36px;
+		white-space: nowrap;
+		color: #0075af;
+		border: 1px solid #0075af;
+		background: #f3f5f6;
+		border-radius: 3px;
+		padding: 0px;
+	
 	}
 }
 
-.editor-block-toolbar .replace-image-button button:hover { // Pre GB 7.6 and WP 5.4 only
-	text-decoration: underline;
+.edit-post-sidebar .block-editor-block-inspector .replace-image-button { // WP 5.4
+	padding: 16px;
+	padding-top: 0px;
 }
