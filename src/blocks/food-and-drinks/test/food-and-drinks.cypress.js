@@ -104,7 +104,7 @@ describe( 'Test CoBlocks Food and Drinks Block', function() {
 	 * Test the food-and-drinks block saves heading levels set
 	 */
 	it( 'Updates the inner blocks when the "Heading Level" control is changed.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'food-and-drinks' );
+		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
 
 		// Assert headings levels are set to default (h4)
 		cy.get( '[data-type="coblocks/food-and-drinks"] [data-type="coblocks/food-item"] h4' ).should( 'have.length', 2 );
@@ -115,6 +115,6 @@ describe( 'Test CoBlocks Food and Drinks Block', function() {
 
 		cy.get( '[data-type="coblocks/food-and-drinks"] [data-type="coblocks/food-item"] h2' ).should( 'have.length', 2 );
 
-		helpers.checkForBlockErrors( 'food-and-drinks' );
+		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
 	} );
 } );
