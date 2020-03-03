@@ -21,11 +21,11 @@ With additional blocks and true row and column building, CoBlocks gives you a tr
 CoBlocks is powerful but lightweight: it adds functionality to the WordPress editor without bloat. This is the plugin you've been waiting for, and it will make you rethink what WordPress is capable of.
 
 
-= See for yourself =
+= See For Yourself =
 https://www.youtube.com/watch?v=SfWoVX_uJ0M
 
 
-## Make beautiful web pages with Gutenberg, and CoBlocks
+## Make Beautiful Web Pages With Gutenberg & CoBlocks
 [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the last page builder you’ll ever need: you get a winning mix of additional WordPress blocks, and page builder functionality. With CoBlocks you have everything you need to make beautiful web pages with the new block editor:
 
 * Accordion Block
@@ -74,7 +74,10 @@ Each of the WordPress blocks within CoBlocks have been precisely fined tuned to 
 ## Custom Typography Controls
 The breakthrough Typography Control Panel within CoBlocks lets you design web pages with alluring typographic elements. <strong>Set fonts, sizes, weights, transformations and more</strong>, in our CoBlocks blocks, <em>and</em> in core WordPress blocks.
 
-## Going beyond Gutenberg blocks
+## Free Companion Theme
+CoBlocks is built to show off the best of Gutenberg, but it requires a Gutenberg-first theme to unlock its full potential. We also created the free [Go theme](https://wordpress.org/themes/go/) in the WordPress theme repository as the perfect companion for CoBlocks.
+
+## Going Beyond Gutenberg Blocks
 The vision for CoBlocks is to create a suite of Gutenberg blocks to help folks make beautiful websites easily. These newest releases of CoBlocks is the ultimate expression of that vision.
 
 <strong>Join us</strong> in welcoming the future of WordPress blocks:
@@ -84,7 +87,7 @@ The vision for CoBlocks is to create a suite of Gutenberg blocks to help folks m
 * [Join our new Community](https://facebook.com/groups/coblocks)
 * [Like us on Facebook](https://www.facebook.com/coblocks/)
 
-## Built with developers in mind
+## Built With Developers in Mind
 Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're intersted to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks on GitHub](https://github.com/godaddy-wordpress/coblocks) and join the party. 🎉
 
 
@@ -105,18 +108,18 @@ Extensible, adaptable, and open source — CoBlocks is created with theme and pl
 == Frequently Asked Questions ==
 
 = Is CoBlocks free? =
-Yes! CoBlock's core features are absolutely free.
+Yes! CoBlocks is 100% free and always will be.
 
 = How do I start using Gutenberg? =
-To get the full experience of the next-generation WordPress block editor, it helps to have a properly Gutenberg-optizied WordPress theme, like [this one](https://themebeans.com/themes/tabor?utm_medium=coblocks-lite&utm_source=readme&utm_campaign=readme&utm_content=tabor). Then install either WordPress 5.0+, or the offical Gutenberg [WordPress plugin](https://wordpress.org/plugins/gutenberg/).
+To get the full experience of the next-generation WordPress block editor, it helps to have a properly Gutenberg-optizied WordPress theme, like [this one](https://wordpress.org/themes/go/). Then install either WordPress 5.0+, or the offical Gutenberg [WordPress plugin](https://wordpress.org/plugins/gutenberg/).
 
 = How do I use my first CoBlocks Gutenberg blocks? =
 CoBlocks adds its Gutenberg blocks to the new WordPress editor, so you can use them exactly how you would any other WordPress blocks. Once the plugin is installed, create or edit a WordPress page or post, add a new block using the plus icon, and you'll find all of CoBlocks' WordPress blocks available.
 
 = What WordPress themes work with CoBlocks? =
-Any properly developed WordPress theme will work with CoBlocks, though if you're looking for an exceptional theme, check out [Tabor](https://themebeans.com/themes/tabor?utm_medium=coblocks-lite&utm_source=readme&utm_campaign=readme&utm_content=tabor).
+Any properly developed WordPress theme will work with CoBlocks, though if you're looking for an exceptional free theme, check out [Go](https://wordpress.org/themes/go/).
 
-Developers can also apply minor style touch-ups to their themes if necessary. If you're a developer and you need help, don't hesitate to [reach out](https://coblocks.com).
+Developers can also apply minor style touch-ups to their themes if necessary. If you're a developer and you need help, don't hesitate to [reach out](https://wordpress.org/support/plugin/coblocks/).
 
 == Changelog ==
 

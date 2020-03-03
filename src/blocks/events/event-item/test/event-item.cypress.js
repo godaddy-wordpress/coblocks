@@ -3,7 +3,7 @@
  */
 import * as helpers from '../../../../../.dev/tests/cypress/helpers';
 
-describe( 'Test CoBlocks event-item Block', function() {
+describe( 'Test CoBlocks Event Item Block', function() {
 	// Setup event-item data.
 	const eventItemData = {
 		date: {
