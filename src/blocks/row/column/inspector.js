@@ -46,8 +46,6 @@ class Inspector extends Component {
 			setBackgroundColor,
 			setTextColor,
 			textColor,
-			parentId,
-			parentBlocks,
 			nextBlockClient,
 			nextBlockClientId,
 			lastId,

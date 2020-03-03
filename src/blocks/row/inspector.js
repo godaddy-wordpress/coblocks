@@ -20,7 +20,7 @@ import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
-import { PanelBody, SelectControl, withFallbackStyles } from '@wordpress/components';
+import { PanelBody, withFallbackStyles } from '@wordpress/components';
 
 /**
  * Fallback styles
