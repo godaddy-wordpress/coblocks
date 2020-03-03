@@ -3,6 +3,7 @@ dist
 node_modules
 vendor
 wordpress
+test
 
 #  allow lint for tests
 *.spec.js.snap

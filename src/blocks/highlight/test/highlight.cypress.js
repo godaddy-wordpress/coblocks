@@ -29,11 +29,11 @@ describe( 'Test CoBlocks Highlight Block', function() {
 	 * alter any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'Test highlight block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'highlight' );
+		helpers.addBlockToPost( 'coblocks/highlight', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'highlight' );
+		helpers.checkForBlockErrors( 'coblocks/highlight' );
 
 		helpers.viewPage();
 
@@ -48,14 +48,14 @@ describe( 'Test CoBlocks Highlight Block', function() {
 	 * save and it displays properly without errors.
 	 */
 	it( 'Test highlight block saves and displays correctly.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'highlight' );
+		helpers.addBlockToPost( 'coblocks/highlight', true );
 
 		cy.get( 'p.wp-block-coblocks-highlight' ).find( 'mark' )
 			.type( highlightData[ 0 ].text );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'highlight' );
+		helpers.checkForBlockErrors( 'coblocks/highlight' );
 
 		helpers.viewPage();
 
@@ -69,7 +69,7 @@ describe( 'Test CoBlocks Highlight Block', function() {
 	 * Test the accordion block content font settings
 	 */
 	it( 'Test highlight block font size setting.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'highlight' );
+		helpers.addBlockToPost( 'coblocks/highlight', true );
 
 		cy.get( 'p.wp-block-coblocks-highlight' ).find( 'mark' )
 			.type( highlightData[ 0 ].text );
@@ -95,7 +95,7 @@ describe( 'Test CoBlocks Highlight Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'highlight' );
+		helpers.checkForBlockErrors( 'coblocks/highlight' );
 
 		helpers.viewPage();
 
@@ -112,7 +112,7 @@ describe( 'Test CoBlocks Highlight Block', function() {
 	 * Test the highlight block color settings
 	 */
 	it( 'Test highlight block color settings.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'highlight' );
+		helpers.addBlockToPost( 'coblocks/highlight', true );
 
 		cy.get( 'p.wp-block-coblocks-highlight' ).find( 'mark' )
 			.type( highlightData[ 0 ].text );
@@ -134,7 +134,7 @@ describe( 'Test CoBlocks Highlight Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'highlight' );
+		helpers.checkForBlockErrors( 'coblocks/highlight' );
 
 		helpers.viewPage();
 
@@ -155,7 +155,7 @@ describe( 'Test CoBlocks Highlight Block', function() {
 			const nthChild = ( index + 1 );
 
 			// Only clear the editor window on the first block
-			helpers.addCoBlocksBlockToPage( ( 0 === index ), 'highlight' );
+			helpers.addBlockToPost( 'highlight', ( 0 === index ) );
 
 			cy.get( '.wp-block[data-type="coblocks/highlight"]:nth-child(' + nthChild + ') p.wp-block-coblocks-highlight' ).find( 'mark' )
 				.type( highlightData[ index ].text );
@@ -178,7 +178,7 @@ describe( 'Test CoBlocks Highlight Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'highlight' );
+		helpers.checkForBlockErrors( 'coblocks/highlight' );
 
 		helpers.viewPage();
 
@@ -199,7 +199,7 @@ describe( 'Test CoBlocks Highlight Block', function() {
 	 * Test the highlight block custom classes
 	 */
 	it( 'Test the highlight block custom classes.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'highlight' );
+		helpers.addBlockToPost( 'coblocks/highlight', true );
 
 		cy.get( 'p.wp-block-coblocks-highlight' ).find( 'mark' )
 			.type( highlightData[ 0 ].text );
@@ -208,7 +208,7 @@ describe( 'Test CoBlocks Highlight Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'highlight' );
+		helpers.checkForBlockErrors( 'coblocks/highlight' );
 
 		cy.get( '.wp-block-coblocks-highlight' )
 			.should( 'have.class', 'my-custom-class' );

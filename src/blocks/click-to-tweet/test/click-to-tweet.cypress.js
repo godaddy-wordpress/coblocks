@@ -8,11 +8,11 @@ describe( 'Test CoBlocks Click to Tweet Block', function() {
 	 * Test that we can save a Click to Tweet block with empty values
 	 */
 	it( 'Test Click to Tweet block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'click-to-tweet' );
+		helpers.addBlockToPost( 'coblocks/click-to-tweet', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'click-to-tweet' );
+		helpers.checkForBlockErrors( 'coblocks/click-to-tweet' );
 
 		helpers.viewPage();
 
@@ -26,7 +26,7 @@ describe( 'Test CoBlocks Click to Tweet Block', function() {
 	 * Test that we can save a Click to Tweet block with custom data
 	 */
 	it( 'Test Click to Tweet block saves with custom data.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'click-to-tweet' );
+		helpers.addBlockToPost( 'coblocks/click-to-tweet', true );
 
 		cy.get( '.wp-block-coblocks-click-to-tweet' ).click( { force: true } );
 
@@ -35,7 +35,7 @@ describe( 'Test CoBlocks Click to Tweet Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'click-to-tweet' );
+		helpers.checkForBlockErrors( 'coblocks/click-to-tweet' );
 
 		helpers.viewPage();
 

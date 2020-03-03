@@ -19,7 +19,7 @@ describe( 'Test CoBlocks Replace Image extension', function() {
 	 */
 	it( 'Test core/image block extends with Replace Image component.', function() {
 		const { fileName, fileBase, pathToFixtures } = imageData;
-		helpers.addCoreBlockToPage( true, 'image' );
+		helpers.addBlockToPost( 'core/image', true );
 
 		cy.get( '.replace-image-button' ).should( 'not.exist' );
 

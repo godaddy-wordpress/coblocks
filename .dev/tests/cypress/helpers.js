@@ -218,7 +218,7 @@ export function setBlockStyle( style ) {
  * Set a value within the input box
  *
  * @param {string} panelName   Name of the panel to open
- * @param {string} settingName The name of the setting to seach for
+ * @param {string} settingName The name of the setting to search for
  * @param {string} value The value to type
  * @param {boolean} ignoreCase  Optional case sensitivity. Default will ignore case.
  */
