@@ -3,6 +3,12 @@ dist
 node_modules
 vendor
 wordpress
-*.spec.js
+
+#  allow lint for tests
 *.spec.js.snap
-!*/helpers.js
+!**.spec.js
+!**.cypress.js
+
+# lint top level dot files
+!.*
+/node_modules/.*
