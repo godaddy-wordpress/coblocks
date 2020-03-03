@@ -10,7 +10,7 @@ describe( 'Test CoBlocks Gif Block', function() {
 	/**
 	 * Test that we can add a gif block to the content, not add any text or
 	 * alter any settings, and are able to successfully save the block without errors.
-	*/
+	 */
 	it( 'Test gif block saves without content.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'gif' );
 
@@ -30,7 +30,7 @@ describe( 'Test CoBlocks Gif Block', function() {
 	/**
 	 * Test that we can add a gif block to the content, choose a Gif
 	 * set alt and are able to successfully save the block without errors.
-    */
+	 */
 	it( 'Test gif block saves with img and alt text.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'gif' );
 

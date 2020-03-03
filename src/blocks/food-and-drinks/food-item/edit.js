@@ -2,7 +2,8 @@
  * Internal dependencies.
  */
 import { hasEmptyAttributes } from '../../../utils/block-helpers';
-import InspectorControls from './inspector';
+import Inspector from './inspector';
+import Controls from '../controls';
 import fromEntries from '../../../js/coblocks-fromEntries';
 import icons from './icons';
 
@@ -89,6 +90,29 @@ class FoodAndDrinksEdit extends Component {
 		this.replaceImage = this.replaceImage.bind( this );
 		this.setSpicyTo = this.setSpicyTo.bind( this );
 		this.setHotTo = this.setHotTo.bind( this );
+		this.updateInnerAttributes = this.updateInnerAttributes.bind( this );
+		this.onChangeHeadingLevel = this.onChangeHeadingLevel.bind( this );
+	}
+
+	updateInnerAttributes( blockName, newAttributes ) {
+		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
+			this.props.clientId
+		)[ 0 ].innerBlocks;
+
+		innerItems.forEach( ( item ) => {
+			if ( item.name === blockName ) {
+				dispatch( 'core/block-editor' ).updateBlockAttributes(
+					item.clientId,
+					newAttributes
+				);
+			}
+		} );
+	}
+
+	onChangeHeadingLevel( headingLevel ) {
+		const { setAttributes } = this.props;
+
+		setAttributes( { headingLevel } );
 	}
 
 	componentDidUpdate( prevProps ) {
@@ -235,6 +259,7 @@ class FoodAndDrinksEdit extends Component {
 			url,
 			vegan,
 			vegetarian,
+			headingLevel,
 		} = attributes;
 
 		const richTextAttributes = {
@@ -244,7 +269,11 @@ class FoodAndDrinksEdit extends Component {
 
 		return (
 			<Fragment>
-				<InspectorControls
+				<Controls
+					{ ...this.props }
+					onChangeHeadingLevel={ this.onChangeHeadingLevel }
+				/>
+				<Inspector
 					{ ...this.props }
 					setSpicyTo={ this.setSpicyTo }
 					setHotTo={ this.setHotTo }
@@ -260,7 +289,7 @@ class FoodAndDrinksEdit extends Component {
 						<div className="wp-block-coblocks-food-item__heading-wrapper">
 							<RichText
 								value={ title }
-								tagName="h4"
+								tagName={ `h${ headingLevel }` }
 								wrapperClassName="wp-block-coblocks-food-item__heading"
 								placeholder={ __( 'Add title…', 'coblocks' ) }
 								onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }

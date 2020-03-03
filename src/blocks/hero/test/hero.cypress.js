@@ -15,7 +15,7 @@ describe( 'Test CoBlocks Hero Block', function() {
 	/**
 	 * Test that we can add a hero block to the content, not add any text or
 	 * alter any settings, and are able to successfully save the block without errors.
-	*/
+	 */
 	it( 'Test hero block saves without content.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'hero' );
 
@@ -33,9 +33,9 @@ describe( 'Test CoBlocks Hero Block', function() {
 	} );
 
 	/**
-	* Test that we can add a hero block to the content, adjust colors
-	* and are able to successfully save the block without errors.
-	*/
+	 * Test that we can add a hero block to the content, adjust colors
+	 * and are able to successfully save the block without errors.
+	 */
 	it( 'Test hero block saves with color values set.', function() {
 		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB } = heroData;
 		helpers.addCoBlocksBlockToPage( true, 'hero' );
@@ -60,9 +60,9 @@ describe( 'Test CoBlocks Hero Block', function() {
 	} );
 
 	/**
-	* Test that we can add a hero block to the content, toggle fullscreen
-	* and are able to successfully save the block in fullscreen mode without errors.
-	*/
+	 * Test that we can add a hero block to the content, toggle fullscreen
+	 * and are able to successfully save the block in fullscreen mode without errors.
+	 */
 	it( 'Test hero block saves with full screen set.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'hero' );
 
@@ -70,7 +70,7 @@ describe( 'Test CoBlocks Hero Block', function() {
 
 		cy.get( '.wp-block-coblocks-hero' ).find( '.is-fullscreen' ).should( 'exist' );
 
-		cy.get( '.edit-post-sidebar' ).find( 'div[aria-label="Select Layout"]' ).children().each( $layoutButton => {
+		cy.get( '.edit-post-sidebar' ).find( 'div[aria-label="Select Layout"]' ).children().each( ( $layoutButton ) => {
 			cy.get( $layoutButton ).click();
 		} );
 
