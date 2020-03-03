@@ -1476,6 +1476,138 @@ let icons = {
 		icon: <SVG xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><Path d="M0 0h24v24H0V0zm13.97 21.49c-.63.23-1.29.4-1.97.51.68-.12 1.33-.29 1.97-.51zM12 22c-.68-.12-1.33-.29-1.97-.51.64.22 1.29.39 1.97.51z" fill="none"/><Path d="M8.55 12c-1.07-.71-2.25-1.27-3.53-1.61 1.28.34 2.46.9 3.53 1.61zm10.43-1.61c-1.29.34-2.49.91-3.57 1.64 1.08-.73 2.28-1.3 3.57-1.64z"/><Path d="M15.49 9.63c-.18-2.79-1.31-5.51-3.43-7.63-2.14 2.14-3.32 4.86-3.55 7.63 1.28.68 2.46 1.56 3.49 2.63 1.03-1.06 2.21-1.94 3.49-2.63zm-6.5 2.65c-.14-.1-.3-.19-.45-.29.15.11.31.19.45.29zm6.42-.25c-.13.09-.27.16-.4.26.13-.1.27-.17.4-.26zM12 15.45C9.85 12.17 6.18 10 2 10c0 5.32 3.36 9.82 8.03 11.49.63.23 1.29.4 1.97.51.68-.12 1.33-.29 1.97-.51C18.64 19.82 22 15.32 22 10c-4.18 0-7.85 2.17-10 5.45z"/></SVG>,
 		icon_outlined: <SVG xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><Path d="M0 0h24v24H0V0z" fill="none"/><Path d="M15.49 9.63c-.18-2.79-1.31-5.51-3.43-7.63-2.14 2.14-3.32 4.86-3.55 7.63 1.28.68 2.46 1.56 3.49 2.63 1.03-1.06 2.21-1.94 3.49-2.63zm-3.44-4.44c.63 1.03 1.07 2.18 1.3 3.38-.47.3-.91.63-1.34.98-.42-.34-.87-.67-1.33-.97.25-1.2.71-2.35 1.37-3.39zM12 15.45c-.82-1.25-1.86-2.34-3.06-3.2-.13-.09-.27-.16-.4-.26.13.09.27.17.39.25C6.98 10.83 4.59 10 2 10c0 5.32 3.36 9.82 8.03 11.49.63.23 1.29.4 1.97.51.68-.12 1.33-.29 1.97-.51C18.64 19.82 22 15.32 22 10c-4.18 0-7.85 2.17-10 5.45zm1.32 4.15c-.44.15-.88.27-1.33.37-.44-.09-.87-.21-1.28-.36-3.29-1.18-5.7-3.99-6.45-7.35 1.1.26 2.15.71 3.12 1.33l-.02.01c.13.09.26.18.39.25l.07.04c.99.72 1.84 1.61 2.51 2.65L12 19.1l1.67-2.55c.69-1.05 1.55-1.95 2.53-2.66l.07-.05c.09-.05.18-.11.27-.17l-.01-.02c.98-.65 2.07-1.13 3.21-1.4-.75 3.37-3.15 6.18-6.42 7.35zm-4.33-7.32c-.02-.01-.04-.03-.05-.04 0 0 .01 0 .01.01.01.01.02.02.04.03z"/></SVG>,
 	},
+	groupadd: {
+		/* translators: icon label */
+		label: __( 'Group Add', 'coblocks' ),
+		keywords: [
+			/* translators: icon keyword */
+			__( 'group', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'add', 'coblocks' ),
+		],
+		icon: <SVG xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><Path d="M0 0h24v24H0z" fill="none"/><Path d="M8 10H5V7H3v3H0v2h3v3h2v-3h3v-2zm10 1c1.66 0 2.99-1.34 2.99-3S19.66 5 18 5c-.32 0-.63.05-.91.14.57.81.9 1.79.9 2.86s-.34 2.04-.9 2.86c.28.09.59.14.91.14zm-5 0c1.66 0 2.99-1.34 2.99-3S14.66 5 13 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm6.62 2.16c.83.73 1.38 1.66 1.38 2.84v2h3v-2c0-1.54-2.37-2.49-4.38-2.84zM13 13c-2 0-6 1-6 3v2h12v-2c0-2-4-3-6-3z"/></SVG>,
+		icon_outlined: <SVG xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><Path d="M0 0h24v24H0V0z" fill="none"/><Path d="M5 15v-3h3v-2H5V7H3v3H0v2h3v3zm7-1.25c-2.34 0-7 1.17-7 3.5V19h14v-1.75c0-2.33-4.66-3.5-7-3.5zM7.34 17c.84-.58 2.87-1.25 4.66-1.25s3.82.67 4.66 1.25H7.34zM12 12c1.93 0 3.5-1.57 3.5-3.5S13.93 5 12 5 8.5 6.57 8.5 8.5 10.07 12 12 12zm0-5c.83 0 1.5.67 1.5 1.5S12.83 10 12 10s-1.5-.67-1.5-1.5S11.17 7 12 7zm5 5c1.93 0 3.5-1.57 3.5-3.5S18.93 5 17 5c-.24 0-.48.02-.71.07.76.94 1.21 2.13 1.21 3.43 0 1.3-.47 2.48-1.23 3.42.24.05.48.08.73.08zm2.32 2.02c1 .81 1.68 1.87 1.68 3.23V19h3v-1.75c0-1.69-2.44-2.76-4.68-3.23z"/></SVG>,
+	},
+	livetv: {
+		/* translators: icon label */
+		label: __( 'Live TV', 'coblocks' ),
+		keywords: [
+			/* translators: icon keyword */
+			__( 'live', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'tv', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'television', 'coblocks' ),
+		],
+		icon: <SVG xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><Path d="M0 0h24v24H0V0z" fill="none"/><Path d="M21 6h-7.59l3.29-3.29L16 2l-4 4-4-4-.71.71L10.59 6H3c-1.1 0-2 .89-2 2v12c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.11-.9-2-2-2zm0 14H3V8h18v12zM9 10v8l7-4z"/></SVG>,
+	},
+	confirmationnumber: {
+		/* translators: icon label */
+		label: __( 'Confirmation Number', 'coblocks' ),
+		keywords: [
+			/* translators: icon keyword */
+			__( 'confirmation', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'number', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'ticket', 'coblocks' ),
+		],
+		icon: <SVG xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24"><G><Rect fill="none" height="24" width="24" x="0"/></G><G><G><G><Path d="M22,10V6c0-1.11-0.9-2-2-2H4C2.9,4,2.01,4.89,2.01,6v4C3.11,10,4,10.9,4,12s-0.89,2-2,2v4c0,1.1,0.9,2,2,2h16 c1.1,0,2-0.9,2-2v-4c-1.1,0-2-0.9-2-2S20.9,10,22,10z M13,17.5h-2v-2h2V17.5z M13,13h-2v-2h2V13z M13,8.5h-2v-2h2V8.5z"/></G></G></G></SVG>,
+		icon_outlined: <SVG xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><Path d="M0 0h24v24H0z" fill="none"/><Path d="M22 10V6c0-1.11-.9-2-2-2H4c-1.1 0-1.99.89-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-2-1.46c-1.19.69-2 1.99-2 3.46s.81 2.77 2 3.46V18H4v-2.54c1.19-.69 2-1.99 2-3.46 0-1.48-.8-2.77-1.99-3.46L4 6h16v2.54zM11 15h2v2h-2zm0-4h2v2h-2zm0-4h2v2h-2z"/></SVG>,
+	},
+	offlinebolt: {
+		/* translators: icon label */
+		label: __( 'Offline Bolt', 'coblocks' ),
+		keywords: [
+			/* translators: icon keyword */
+			__( 'offline', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'bolt', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'circle', 'coblocks' ),
+		],
+		icon: <SVG xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><Path d="M0 0h24v24H0z" fill="none"/><Path d="M12 2.02c-5.51 0-9.98 4.47-9.98 9.98s4.47 9.98 9.98 9.98 9.98-4.47 9.98-9.98S17.51 2.02 12 2.02zM11.48 20v-6.26H8L13 4v6.26h3.35L11.48 20z"/></SVG>,
+		icon_outlined: <SVG xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><Path d="M0 0h24v24H0z" fill="none"/><Path d="M12 2.02c-5.51 0-9.98 4.47-9.98 9.98s4.47 9.98 9.98 9.98 9.98-4.47 9.98-9.98S17.51 2.02 12 2.02zm0 17.96c-4.4 0-7.98-3.58-7.98-7.98S7.6 4.02 12 4.02 19.98 7.6 19.98 12 16.4 19.98 12 19.98zM12.75 5l-4.5 8.5h3.14V19l4.36-8.5h-3z"/></SVG>,
+	},
+	https: {
+		/* translators: icon label */
+		label: __( 'HTTPS', 'coblocks' ),
+		keywords: [
+			/* translators: icon keyword */
+			__( 'https', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'lock', 'coblocks' ),
+		],
+		icon: <SVG xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><Path d="M0 0h24v24H0z" fill="none"/><Path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></SVG>,
+		icon_outlined: <SVG xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><Path d="M0 0h24v24H0V0z" fill="none"/><Path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></SVG>,
+	},
+	lockopen: {
+		/* translators: icon label */
+		label: __( 'Lock Open', 'coblocks' ),
+		keywords: [
+			/* translators: icon keyword */
+			__( 'lock', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'open', 'coblocks' ),
+		],
+		icon: <SVG xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><Path d="M0 0h24v24H0z" fill="none"/><Path d="M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6-9h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h1.9c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10z"/></SVG>,
+	},
+	devicesalternate: {
+		/* translators: icon label */
+		label: __( 'Devices Alternate', 'coblocks' ),
+		keywords: [
+			/* translators: icon keyword */
+			__( 'apple', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'computer', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'desk', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'device', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'ipad', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'office', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'pc', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'surface', 'coblocks' ),
+		],
+		icon: <SVG xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><Path d="M0 0h24v24H0z" fill="none"/><Path d="M3 6h18V4H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4v-2H3V6zm10 6H9v1.78c-.61.55-1 1.33-1 2.22s.39 1.67 1 2.22V20h4v-1.78c.61-.55 1-1.34 1-2.22s-.39-1.67-1-2.22V12zm-2 5.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM22 8h-6c-.5 0-1 .5-1 1v10c0 .5.5 1 1 1h6c.5 0 1-.5 1-1V9c0-.5-.5-1-1-1zm-1 10h-4v-8h4v8z"/></SVG>,
+	},
+	cast: {
+		/* translators: icon label */
+		label: __( 'Cast', 'coblocks' ),
+		keywords: [
+			/* translators: icon keyword */
+			__( 'chrome', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'cast', 'coblocks' ),
+		],
+		icon: <SVG xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><Path d="M0 0h24v24H0z" fill="none" opacity=".1"/><Path d="M0 0h24v24H0z" fill="none"/><Path d="M21 3H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11z"/></SVG>,
+	},
+	merge: {
+		/* translators: icon label */
+		label: __( 'Merge', 'coblocks' ),
+		keywords: [
+			/* translators: icon keyword */
+			__( 'merge', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'arrows', 'coblocks' ),
+		],
+		icon: <SVG xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><Path d="M0 0h24v24H0z" fill="none"/><Path d="M17 20.41L18.41 19 15 15.59 13.59 17 17 20.41zM7.5 8H11v5.59L5.59 19 7 20.41l6-6V8h3.5L12 3.5 7.5 8z"/></SVG>,
+	},
+	formatshapes: {
+		/* translators: icon label */
+		label: __( 'Format Shapes', 'coblocks' ),
+		keywords: [
+			/* translators: icon keyword */
+			__( 'format', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'shapes', 'coblocks' ),
+		],
+		icon: <SVG xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><Path d="M23 7V1h-6v2H7V1H1v6h2v10H1v6h6v-2h10v2h6v-6h-2V7h2zM3 3h2v2H3V3zm2 18H3v-2h2v2zm12-2H7v-2H5V7h2V5h10v2h2v10h-2v2zm4 2h-2v-2h2v2zM19 5V3h2v2h-2zm-5.27 9h-3.49l-.73 2H7.89l3.4-9h1.4l3.41 9h-1.63l-.74-2zm-3.04-1.26h2.61L12 8.91l-1.31 3.83z"/><Path d="M0 0h24v24H0z" fill="none"/></SVG>,
+	},
 };
 
 if ( typeof coblocksBlockData !== 'undefined' && Object.keys( coblocksBlockData.customIcons ).length ) {
