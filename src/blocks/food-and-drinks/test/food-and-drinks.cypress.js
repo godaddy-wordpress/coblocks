@@ -103,7 +103,7 @@ describe( 'Test CoBlocks Food and Drinks Block', function() {
 	/**
 	 * Test the food-and-drinks block saves heading levels set
 	 */
-	it.only( 'Updates the inner blocks when the "Heading Level" control is changed.', function() {
+	it( 'Updates the inner blocks when the "Heading Level" control is changed.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'food-and-drinks' );
 
 		// Assert headings levels are set to default (h4)
