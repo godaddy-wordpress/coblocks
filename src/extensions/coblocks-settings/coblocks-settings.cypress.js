@@ -3,8 +3,6 @@
  */
 import * as helpers from '../../../.dev/tests/cypress/helpers';
 
-import { addFilter } from '@wordpress/hooks';
-
 describe( 'Extension: CoBlocks Settings', function() {
 	let supportsGradients = false;
 	beforeEach( function() {
