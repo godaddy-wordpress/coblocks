@@ -5,8 +5,8 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Social Profiles Block', function() {
 	/**
-   * Test the coblocks social profiles block saves.
-   */
+	 * Test the coblocks social profiles block saves.
+	 */
 	it( 'Test the social profiles block saves.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'social-profiles' );
 
@@ -72,8 +72,8 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	} );
 
 	/**
-   * Test the coblocks social profiles block styles.
-   */
+	 * Test the coblocks social profiles block styles.
+	 */
 	it( 'Test the social profiles block styles.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'social-profiles' );
 
@@ -87,7 +87,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 			}
 		} );
 
-		cy.get( '.block-editor-block-styles .editor-block-styles__item:nth-child(1)' ).click();
+		cy.get( '.block-editor-block-styles__item:nth-child(1)' ).click();
 		cy.get( '.wp-block-coblocks-social-profiles' )
 			.should( 'have.class', 'is-style-mask' );
 
@@ -111,7 +111,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 			}
 		} );
 
-		cy.get( '.block-editor-block-styles .editor-block-styles__item:nth-child(2)' ).click();
+		cy.get( '.block-editor-block-styles__item:nth-child(2)' ).click();
 		cy.get( '.wp-block-coblocks-social-profiles' )
 			.should( 'have.class', 'is-style-icon' );
 
@@ -135,7 +135,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 			}
 		} );
 
-		cy.get( '.block-editor-block-styles .editor-block-styles__item:nth-child(3)' ).click();
+		cy.get( '.block-editor-block-styles__item:nth-child(3)' ).click();
 		cy.get( '.wp-block-coblocks-social-profiles' )
 			.should( 'have.class', 'is-style-text' );
 
@@ -159,7 +159,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 			}
 		} );
 
-		cy.get( '.block-editor-block-styles .editor-block-styles__item:nth-child(4)' ).click();
+		cy.get( '.block-editor-block-styles__item:nth-child(4)' ).click();
 		cy.get( '.wp-block-coblocks-social-profiles' )
 			.should( 'have.class', 'is-style-icon-and-text' );
 
@@ -183,7 +183,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 			}
 		} );
 
-		cy.get( '.block-editor-block-styles .editor-block-styles__item:nth-child(5)' ).click();
+		cy.get( '.block-editor-block-styles__item:nth-child(5)' ).click();
 		cy.get( '.wp-block-coblocks-social-profiles' )
 			.should( 'have.class', 'is-style-circular' );
 
@@ -200,8 +200,8 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	} );
 
 	/**
-   * Test the coblocks social profiles colors.
-   */
+	 * Test the coblocks social profiles colors.
+	 */
 	it( 'Test the social profiles colors.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'social-profiles' );
 
@@ -234,8 +234,8 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	} );
 
 	/**
-   * Test the coblocks social profiles rounded corners.
-   */
+	 * Test the coblocks social profiles rounded corners.
+	 */
 	it( 'Test the social profiles rounded corners.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'social-profiles' );
 
@@ -271,8 +271,8 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	} );
 
 	/**
-   * Test the coblocks social profiles button size.
-   */
+	 * Test the coblocks social profiles button size.
+	 */
 	it( 'Test the social profiles button size.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'social-profiles' );
 
@@ -307,8 +307,8 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	} );
 
 	/**
-   * Test the coblocks social profiles links input fields.
-   */
+	 * Test the coblocks social profiles links input fields.
+	 */
 	it( 'Test the social profiles links input fields.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'social-profiles' );
 
@@ -344,8 +344,8 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	} );
 
 	/**
-   * Test the coblocks social profiles custom classes & top/bottom spacing.
-   */
+	 * Test the coblocks social profiles custom classes & top/bottom spacing.
+	 */
 	it( 'Test the social profiles custom classes and top/bottom spacing.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'social-profiles' );
 

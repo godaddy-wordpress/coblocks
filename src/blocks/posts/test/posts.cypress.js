@@ -3,7 +3,7 @@
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
-describe( 'Test CoBlocks posts Block', function() {
+describe( 'Test CoBlocks Posts Block', function() {
 	/**
 	 * Test that we can add a posts block to the content, not alter
 	 * any settings, and are able to successfully save the block without errors.
