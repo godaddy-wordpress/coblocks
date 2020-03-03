@@ -119,7 +119,7 @@ export function addCoBlocksBlockToPage( clearEditor = true, blockID = '' ) {
 	if ( blockIsDeprecated ) {
 		cy.get( '.block-list-appender .wp-block .block-editor-inserter__toggle' )
 		.click();
-		
+
 		return true;
 	}
 	cy.get( '.components-panel__body.is-opened .editor-block-list-item-coblocks-' + blockID ).click();
@@ -250,9 +250,8 @@ export function setInputValue( panelName, settingName, value, ignoreCase = true 
 		.then( ( $settingSection ) => {
 			cy.get( Cypress.$( $settingSection ).parent() )
 				.find( 'input[type="number"]' )
-				.clear()
 				.click()
-				.type( value );
+				.type( `{selectall}${value}` );
 		} );
 }
 
