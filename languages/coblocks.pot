@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-03-03T22:15:07+00:00\n"
+"POT-Creation-Date: 2020-03-03T22:32:56+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -5980,7 +5980,6 @@ msgstr ""
 msgid "Crop Settings"
 msgstr ""
 
-#. translators: %s: Plugin title "CoBlocks"
-#: src/utils/block-category.js:22
-msgid "%s Galleries"
+#: src/utils/block-category.js:16
+msgid "Galleries"
 msgstr ""
