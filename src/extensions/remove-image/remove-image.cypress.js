@@ -29,8 +29,7 @@ describe( 'Test CoBlocks Replace Image extension', function() {
 				.upload(
 					{ fileContent, fileName, mimeType: 'image/png' },
 					{ subjectType: 'drag-n-drop', force: true, events: [ 'dragstart', 'dragover', 'drop' ] },
-				)
-				.wait( 2000 ); // Allow upload to finish.
+				);
 
 			cy.get( 'figure.wp-block-image' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', fileBase );
 
