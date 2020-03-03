@@ -65,6 +65,10 @@
 		"showPrice": {
 			"type": "boolean",
 			"default": true
+		},
+		"headingLevel": {
+			"type": "integer",
+			"default": 4
 		}
 	}
 }
