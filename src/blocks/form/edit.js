@@ -326,6 +326,9 @@ class FormEdit extends Component {
 		map( TEMPLATE_OPTIONS, ( elem ) => {
 			if ( isEqual( elem.template, layout ) ) {
 				submitButtonText = elem.submitButtonText;
+				if ( Array.isArray( submitButtonText ) ) {
+					submitButtonText = submitButtonText.join( '' );
+				}
 			}
 		} );
 
@@ -466,7 +469,7 @@ class FormEdit extends Component {
 				}
 			} );
 
-			this.props.setAttributes( { submitButtonText } );
+			this.props.setAttributes( { submitButtonText: submitButtonText.join( '' ) } );
 			if ( nextVariation.innerBlocks ) {
 				replaceInnerBlocks(
 					this.props.clientId,

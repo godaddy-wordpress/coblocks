@@ -5,8 +5,8 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Highlight Block', function() {
 	/**
-   * Setup accordion data to be used
-   */
+	 * Setup accordion data to be used
+	 */
 	const highlightData = [
 		{
 			text: 'We are closed today from 2PM to 4PM.',
@@ -26,7 +26,7 @@ describe( 'Test CoBlocks Highlight Block', function() {
 
 	/**
 	 * Test that we can add a highlight block to the content, not add any text or
-	 * alter any settings, and are able to successfuly save the block without errors.
+	 * alter any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'Test highlight block saves with empty values.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'highlight' );
@@ -50,7 +50,7 @@ describe( 'Test CoBlocks Highlight Block', function() {
 	it( 'Test highlight block saves and displays correctly.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'highlight' );
 
-		cy.get( 'p.wp-block-coblocks-highlight' )
+		cy.get( 'p.wp-block-coblocks-highlight' ).find( 'mark' )
 			.type( highlightData[ 0 ].text );
 
 		helpers.savePage();
@@ -71,7 +71,7 @@ describe( 'Test CoBlocks Highlight Block', function() {
 	it( 'Test highlight block font size setting.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'highlight' );
 
-		cy.get( 'p.wp-block-coblocks-highlight' )
+		cy.get( 'p.wp-block-coblocks-highlight' ).find( 'mark' )
 			.type( highlightData[ 0 ].text );
 
 		cy.get( '.edit-post-sidebar' )
@@ -114,7 +114,7 @@ describe( 'Test CoBlocks Highlight Block', function() {
 	it( 'Test highlight block color settings.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'highlight' );
 
-		cy.get( 'p.wp-block-coblocks-highlight' )
+		cy.get( 'p.wp-block-coblocks-highlight' ).find( 'mark' )
 			.type( highlightData[ 0 ].text );
 
 		helpers.setColorSetting( 'background', highlightData[ 0 ].backgroundColor );
@@ -157,7 +157,7 @@ describe( 'Test CoBlocks Highlight Block', function() {
 			// Only clear the editor window on the first block
 			helpers.addCoBlocksBlockToPage( ( 0 === index ), 'highlight' );
 
-			cy.get( '.wp-block[data-type="coblocks/highlight"]:nth-child(' + nthChild + ') p.wp-block-coblocks-highlight' )
+			cy.get( '.wp-block[data-type="coblocks/highlight"]:nth-child(' + nthChild + ') p.wp-block-coblocks-highlight' ).find( 'mark' )
 				.type( highlightData[ index ].text );
 
 			helpers.setColorSetting( 'background', highlightData[ index ].backgroundColor );
@@ -196,12 +196,12 @@ describe( 'Test CoBlocks Highlight Block', function() {
 	} );
 
 	/**
-   * Test the highlight block custom classes
-   */
+	 * Test the highlight block custom classes
+	 */
 	it( 'Test the highlight block custom classes.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'highlight' );
 
-		cy.get( 'p.wp-block-coblocks-highlight' )
+		cy.get( 'p.wp-block-coblocks-highlight' ).find( 'mark' )
 			.type( highlightData[ 0 ].text );
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'highlight' );

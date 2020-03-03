@@ -13,14 +13,14 @@ describe( 'Test CoBlocks column Block', function() {
 	};
 
 	/**
-    * Test that we can add a column block to the content, adjust colors
-    * and are able to successfully save the block without errors.
-	*/
+	 * Test that we can add a column block to the content, adjust colors
+	 * and are able to successfully save the block without errors.
+	 */
 	it( 'Test column block saves with color values set.', function() {
 		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB } = columnData;
 		helpers.addCoBlocksBlockToPage( true, 'row' );
 
-		cy.get( 'div[aria-label="Select Row Columns"]' ).find( 'div:nth-child(1)' ).click();
+		cy.get( 'div[aria-label="Select Row Columns"]' ).find( 'div:nth-child(1) button' ).click( { force: true } );
 
 		cy.get( '.wp-block-coblocks-column' ).last().click( { force: true } );
 
