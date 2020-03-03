@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/map",
-	"category": "coblocks",
+	"category": "layout",
 	"attributes": {
 		"address": {
 			"type": "string"

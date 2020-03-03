@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/row",
-	"category": "coblocks",
+	"category": "layout",
 	"attributes": {
 		"id": {
 			"type": "number"

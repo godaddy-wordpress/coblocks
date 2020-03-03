@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/media-card",
-	"category": "coblocks",
+	"category": "layout",
 	"attributes": {
 		"mediaPosition": {
 			"type": "string",

@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/hero",
-	"category": "coblocks",
+	"category": "layout",
 	"attributes": {
 		"align": {
 			"type": "string",
