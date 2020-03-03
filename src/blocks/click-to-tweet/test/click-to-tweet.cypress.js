@@ -5,8 +5,8 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Click to Tweet Block', function() {
 	/**
-   * Test that we can save a Click to Tweet block with empty values
-   */
+	 * Test that we can save a Click to Tweet block with empty values
+	 */
 	it( 'Test Click to Tweet block saves with empty values.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'click-to-tweet' );
 
@@ -23,8 +23,8 @@ describe( 'Test CoBlocks Click to Tweet Block', function() {
 	} );
 
 	/**
-   * Test that we can save a Click to Tweet block with custom data
-   */
+	 * Test that we can save a Click to Tweet block with custom data
+	 */
 	it( 'Test Click to Tweet block saves with custom data.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'click-to-tweet' );
 
