@@ -4,19 +4,6 @@
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Block: Accordion', () => {
-	/**
-	 * Setup accordion data to be used
-	 */
-	const accordionData = [
-		{
-			title: 'What is the best way to contact you?',
-			text: 'You can reach us by calling (123) 456-7890.',
-		},
-		{
-			title: 'What are your hours of operation?',
-			text: 'We are open 24 hours a day, 7 days a week, 365 days a year.',
-		},
-	];
 
 	beforeEach( () => {
 		helpers.addCoBlocksBlockToPage( true, 'accordion' );
@@ -60,7 +47,6 @@ describe( 'Block: Accordion', () => {
 	 * Test that multiple accordion items display as expected
 	 */
 	it( 'can add multiple accordion item blocks', () => {
-		cy.get( '[data-type="coblocks/accordion"] .components-coblocks-add-accordion-item' ).click();
 		cy.get( '[data-type="coblocks/accordion"] .components-coblocks-add-accordion-item__button' ).click();
 		cy.get( '[data-type="coblocks/accordion"]' ).find( '[data-type="coblocks/accordion-item"]' ).should( 'have.length', 2 );
 
@@ -81,7 +67,7 @@ describe( 'Block: Accordion', () => {
 		helpers.setColorSetting( 'text', '#FFFFFF' );
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__title' ).should( 'have.css', 'color', `rgb(255, 255, 255)` );
 
-		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-paragraph' ).type( 'Content' );
+		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-paragraph' ).click().type( 'Content' );
 
 		// Content - Background Color
 		helpers.setColorSetting( 'background', '#000000' );
