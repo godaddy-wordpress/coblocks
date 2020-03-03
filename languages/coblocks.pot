@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-03-03T17:11:16+00:00\n"
+"POT-Creation-Date: 2020-03-03T19:48:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -1409,55 +1409,55 @@ msgstr ""
 msgid "You may use the following tags in the subject field: "
 msgstr ""
 
-#: src/blocks/form/edit.js:391
+#: src/blocks/form/edit.js:394
 msgid "Form Settings"
 msgstr ""
 
-#: src/blocks/form/edit.js:396
+#: src/blocks/form/edit.js:399
 msgid "Google reCAPTCHA"
 msgstr ""
 
-#: src/blocks/form/edit.js:399
+#: src/blocks/form/edit.js:402
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
 msgstr ""
 
-#: src/blocks/form/edit.js:405
+#: src/blocks/form/edit.js:408
 msgid "Generate keys"
 msgstr ""
 
-#: src/blocks/form/edit.js:406
+#: src/blocks/form/edit.js:409
 msgid "My keys"
 msgstr ""
 
-#: src/blocks/form/edit.js:409
+#: src/blocks/form/edit.js:412
 msgid "Get help"
 msgstr ""
 
-#: src/blocks/form/edit.js:413
+#: src/blocks/form/edit.js:416
 msgid "Site Key"
 msgstr ""
 
-#: src/blocks/form/edit.js:419
+#: src/blocks/form/edit.js:422
 msgid "Secret Key"
 msgstr ""
 
-#: src/blocks/form/edit.js:434
+#: src/blocks/form/edit.js:437
 #: src/blocks/gallery-collage/edit.js:181
 #: src/components/block-gallery/gallery-image.js:226
 msgid "Saving"
 msgstr ""
 
-#: src/blocks/form/edit.js:434
+#: src/blocks/form/edit.js:437
 #: src/blocks/map/inspector.js:229
 msgid "Save"
 msgstr ""
 
-#: src/blocks/form/edit.js:445
+#: src/blocks/form/edit.js:448
 #: src/blocks/map/inspector.js:239
 msgid "Remove"
 msgstr ""
 
-#: src/blocks/form/edit.js:483
+#: src/blocks/form/edit.js:486
 msgid "Select a variation to start with."
 msgstr ""
 
