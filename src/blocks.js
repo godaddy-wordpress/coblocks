@@ -25,6 +25,9 @@ import './extensions/coblocks-settings/';
 // Formats
 import './formats';
 
+// Categories Helper
+import { supportsCollections } from './utils/block-helpers';
+
 // Deprecate Blocks
 import './js/deprecations/deprecate-coblocks-buttons.js';
 
@@ -89,7 +92,13 @@ const registerBlock = ( block ) => {
 		return;
 	}
 
-	const { name, category, settings } = block;
+	let { category } = block;
+
+	const { name, settings } = block;
+
+	if ( ! supportsCollections() && ! name.includes( 'gallery' ) ) {
+		category = 'coblocks';
+	}
 
 	registerBlockType( name, {
 		category,

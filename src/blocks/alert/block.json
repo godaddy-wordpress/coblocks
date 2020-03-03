@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/alert",
-	"category": "coblocks",
+	"category": "formatting",
 	"attributes": {
 		"title": {
 			"type": "string",

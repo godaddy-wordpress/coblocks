@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/buttons",
-	"category": "coblocks",
+	"category": "layout",
 	"attributes": {
 		"items": {
 			"type": "number",

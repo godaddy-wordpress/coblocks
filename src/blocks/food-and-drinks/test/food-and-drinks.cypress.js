@@ -99,4 +99,22 @@ describe( 'Test CoBlocks Food and Drinks Block', function() {
 
 		helpers.editPage();
 	} );
+
+	/**
+	 * Test the food-and-drinks block saves heading levels set
+	 */
+	it( 'Updates the inner blocks when the "Heading Level" control is changed.', function() {
+		helpers.addCoBlocksBlockToPage( true, 'food-and-drinks' );
+
+		// Assert headings levels are set to default (h4)
+		cy.get( '[data-type="coblocks/food-and-drinks"] [data-type="coblocks/food-item"] h4' ).should( 'have.length', 2 );
+
+		// Modify the heading level
+		cy.get( '.block-editor-block-toolbar [aria-label="Change heading level"]' ).click();
+		cy.get( 'div[aria-label="Change heading level"][role="menu"] button' ).contains( 'Heading 2' ).click();
+
+		cy.get( '[data-type="coblocks/food-and-drinks"] [data-type="coblocks/food-item"] h2' ).should( 'have.length', 2 );
+
+		helpers.checkForBlockErrors( 'food-and-drinks' );
+	} );
 } );

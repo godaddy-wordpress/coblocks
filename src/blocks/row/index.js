@@ -7,6 +7,7 @@ import DimensionsAttributes from '../../components/dimensions-control/attributes
 import { getEditWrapperProps } from './utilities';
 import icon from './icon';
 import metadata from './block.json';
+import variations from './variations';
 import save from './save';
 import transforms from './transforms';
 import { BackgroundAttributes } from '../../components/background';
@@ -49,6 +50,7 @@ const settings = {
 		coBlocksSpacing: true,
 	},
 	attributes,
+	variations,
 	transforms,
 	edit,
 	getEditWrapperProps,

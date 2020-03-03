@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/food-and-drinks",
-	"category": "coblocks",
+	"category": "layout",
 	"attributes": {
 		"showImages": {
 			"type": "boolean",
@@ -13,6 +13,10 @@
 		"columns": {
 			"type": "number",
 			"default": 2
+		},
+		"headingLevel": {
+			"type": "integer",
+			"default": 4
 		}
 	}
 }

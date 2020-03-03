@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/pricing-table",
-	"category": "coblocks",
+	"category": "layout",
 	"attributes": {
 		"count": {
 			"type": "number",

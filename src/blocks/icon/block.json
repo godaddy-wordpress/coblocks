@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/icon",
-	"category": "coblocks",
+	"category": "common",
 	"attributes": {
 		"icon": {
 			"type": "string",

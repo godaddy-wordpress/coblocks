@@ -352,6 +352,7 @@
 
 		> span > .components-resizable-box__handle {
 			display: block;
+			right: -0.7em !important;
 		}
 	}
 
@@ -385,6 +386,7 @@
 		div[data-type="coblocks/row"].is-selected &,
 		div[data-type="coblocks/row"].is-resizing & {
 			display: block;
+			right: -0.7em;
 		}
 	}
 }
