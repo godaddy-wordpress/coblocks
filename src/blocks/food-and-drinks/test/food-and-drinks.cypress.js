@@ -6,8 +6,8 @@ import 'cypress-file-upload';
 
 describe( 'Test CoBlocks Food and Drinks Block', function() {
 	/**
-	* Setup food-and-drinks data
-	*/
+	 * Setup food-and-drinks data
+	 */
 	const foodData = {
 		price: 33.33,
 		image: {
@@ -19,9 +19,9 @@ describe( 'Test CoBlocks Food and Drinks Block', function() {
 	};
 
 	/**
-	   * Test that we can add a food-and-drinks block to the content, not alter
-	   * any settings, and are able to successfully save the block without errors.
-	   */
+	 * Test that we can add a food-and-drinks block to the content, not alter
+	 * any settings, and are able to successfully save the block without errors.
+	 */
 	it( 'Test food-and-drinks block saves with empty values.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'food-and-drinks' );
 
@@ -38,9 +38,9 @@ describe( 'Test CoBlocks Food and Drinks Block', function() {
 	} );
 
 	/**
-	   * Test that we can add a food-and-drinks block to the content,
-	   * and can trigger images attribute on items
-	   */
+	 * Test that we can add a food-and-drinks block to the content,
+	 * and can trigger images attribute on items
+	 */
 	it( 'Test food-and-drinks block saves with image attribute.', function() {
 		const { fileName, imageBase, pathToFixtures } = foodData.image;
 
@@ -52,7 +52,7 @@ describe( 'Test CoBlocks Food and Drinks Block', function() {
 
 		cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().click( 'bottom' );
 
-		cy.fixture( pathToFixtures + fileName, 'base64' ).then( fileContent => {
+		cy.fixture( pathToFixtures + fileName, 'base64' ).then( ( fileContent ) => {
 			cy.get( 'div[data-type="coblocks/food-item"]' ).not( 'div[role="toolbar"]' ).first()
 				.find( 'div.components-drop-zone' ).first()
 				.upload(
@@ -78,8 +78,8 @@ describe( 'Test CoBlocks Food and Drinks Block', function() {
 	} );
 
 	/**
-   * Test the food-and-drinks block saves with custom classes
-   */
+	 * Test the food-and-drinks block saves with custom classes
+	 */
 	it( 'Test the food-and-drinks block custom classes.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'food-and-drinks' );
 

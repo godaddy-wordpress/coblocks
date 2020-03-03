@@ -3,7 +3,7 @@
  */
 import * as helpers from '../../../../../.dev/tests/cypress/helpers';
 
-describe( 'Test CoBlocks feature Block', function() {
+describe( 'Test CoBlocks Feature Block', function() {
 	/**
 	* Setup feature data
 	*/

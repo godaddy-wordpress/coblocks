@@ -16,7 +16,7 @@ describe( 'Test CoBlocks Events Block', function() {
 	/**
 	 * Test that we can add a events block to the content, not add any text or
 	 * alter any settings, and are able to successfully save the block without errors.
-	*/
+	 */
 	it( 'Test events block saves without content.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'events' );
 
@@ -36,7 +36,7 @@ describe( 'Test CoBlocks Events Block', function() {
 	/**
 	 * Test that we can add a events block to the content, and
 	 * import a calendar from a public ICS Google calendar
-	*/
+	 */
 	it( 'Test events block saves with imported ICS calendar.', function() {
 		const { ical } = eventsData;
 		helpers.addCoBlocksBlockToPage( true, 'events' );
@@ -62,8 +62,8 @@ describe( 'Test CoBlocks Events Block', function() {
 	} );
 
 	/**
-	* Test the events block saves with custom classes
-	*/
+	 * Test the events block saves with custom classes
+	 */
 	it( 'Test events block saves with custom classes.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'events' );
 
