@@ -3,6 +3,8 @@
  */
 import * as helpers from '../../../.dev/tests/cypress/helpers';
 
+import { addFilter } from '@wordpress/hooks';
+
 describe( 'Extension: CoBlocks Settings', function() {
 	let supportsGradients = false;
 	beforeEach( function() {
@@ -19,24 +21,6 @@ describe( 'Extension: CoBlocks Settings', function() {
 		} );
 		cy.get( '.components-modal__header' ).find( 'button[aria-label="Close dialog"]' ).click();
 	} );
-
-	// /**
-	//  * Test that the CoBlocks panel may be hidden
-	//  */
-	// it( 'Can be filtered to be hidden.', function() {
-	// 	helpers.addCoreBlockToPage( true, 'image' );
-
-	// 	cy.get( '.replace-image-button' ).should( 'not.exist' );
-	// } );
-
-	// /**
-	//  * Test that the CoBlocks panel may be renamed
-	//  */
-	// it( 'Can be filtered with a new title.', function() {
-	// 	helpers.addCoreBlockToPage( true, 'image' );
-
-	// 	cy.get( '.replace-image-button' ).should( 'not.exist' );
-	// } );
 
 	/**
 	 * Test that the CoBlocks panel typography controls function as expected.
