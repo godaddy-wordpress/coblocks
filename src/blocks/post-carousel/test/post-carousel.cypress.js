@@ -25,40 +25,24 @@ describe( 'Test CoBlocks Post Carousel Block', function() {
 	/**
 	 * Test the post-carousel block column and post count controls
 	 */
-	it( 'Test the post-carousel block column and post count controls.', function() {
+	it.only( 'Test the post-carousel block column and post count controls.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'post-carousel' );
 
-		cy.get( '.coblocks-slick' ).then( () => {
-			helpers.setInputValue( 'post carousel settings', 'columns', 1 );
+		cy.get( '.wp-block[data-type="coblocks/post-carousel"]' ).click();
 
-			helpers.setInputValue( 'post carousel settings', 'columns', 3 );
-
-			helpers.setInputValue( 'post carousel settings', 'columns', 4 );
+		[ 1, 2, 3, 4 ].forEach( ( columns ) => {
+			helpers.setInputValue( 'post carousel settings', 'columns', columns );
+			cy.get( '[data-type="coblocks/post-carousel"]' ).find( '.slick-slide[aria-hidden="false"]' ).should( 'have.length', columns );
 		} );
-
-		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'post-carousel' );
 
-		cy.get( '.coblocks-slick' ).click( { force: true } ).then( () => {
-			helpers.setInputValue( 'feed settings', 'number of posts', 1 );
-
-			helpers.setInputValue( 'feed settings', 'number of posts', 2 );
-
-			helpers.setInputValue( 'feed settings', 'number of posts', 3 );
-
-			cy.get( '.slick-track' ).children().should( 'have.length', 3 );
+		[ 1, 2, 3, 4 ].forEach( ( number_of_posts ) => {
+			helpers.setInputValue( 'feed settings', 'number of posts', number_of_posts );
+			cy.get( '[data-type="coblocks/post-carousel"]' ).find( '.slick-slide:not(.slick-cloned)' ).should( 'have.length', number_of_posts );
 		} );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'post-carousel' );
-
-		helpers.viewPage();
-
-		cy.get( '.slick-track' ).children().should( 'have.length', 3 );
-
-		helpers.editPage();
 	} );
 
 	/**
