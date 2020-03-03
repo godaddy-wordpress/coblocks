@@ -55,17 +55,20 @@ describe( 'Extension: CoBlocks Settings', function() {
 			cy.get( '.block-editor-color-gradient-control button' ).contains( 'Gradient' ).should( 'exist' );
 			cy.get( '.coblocks-modal__content' ).contains( 'Gradient styles' ).click();
 			cy.get( '.block-editor-color-gradient-control button' ).contains( 'Gradient' ).should( 'not.exist' );
+			cy.get( '.coblocks-modal__content' ).contains( 'Gradient styles' ).click(); // Re-enable
 		}
 
 		// Custom Color Picker
 		cy.get( 'button[aria-label="Custom color picker"]' ).should( 'exist' );
 		cy.get( '.coblocks-modal__content' ).contains( 'Custom color pickers' ).click();
 		cy.get( 'button[aria-label="Custom color picker"]' ).should( 'not.exist' );
+		cy.get( '.coblocks-modal__content' ).contains( 'Custom color pickers' ).click();// Re-enable
 
 		// Color Settings
 		cy.get( '.components-panel__body-title' ).contains( /background & text color/i ).should( 'exist' );
 		cy.get( '.coblocks-modal__content' ).contains( 'Color settings' ).click();
 		cy.get( '.components-panel__body-title' ).contains( /background & text color/i ).should( 'not.exist' );
+		cy.get( '.coblocks-modal__content' ).contains( 'Color settings' ).click(); // Re-enable
 
 		cy.get( '.components-modal__header' ).find( 'button[aria-label="Close dialog"]' ).click();
 	} );
