@@ -2,38 +2,12 @@
 	margin-top: 0;
 
 	.block-editor-media-placeholder {
-		margin: 0 0 1.65em !important;
-		min-height: 264px;
-		padding: 100% 0 0 0;
-
-		.components-placeholder__label,
-		.components-placeholder__instructions {
-			display: none;
-		}
-
-		.components-placeholder__fieldset {
-			align-items: center;
-			height: 100%;
-			justify-content: center;
-			left: 0;
-			position: absolute;
-			top: 0;
-			width: 100%;
-
-			.components-form-file-upload {
-				margin-right: 8px;
-
-				@include break-small() {
-					margin-right: 0;
-					margin-bottom: 8px;
-				}
-			}
-
-			.components-button {
-				margin-bottom: 0 !important;
-				margin-right: 0 !important;
-			}
-		}
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		margin-bottom: 0;
 	}
 
 	.components-spinner {

@@ -201,15 +201,17 @@ class FoodAndDrinksEdit extends Component {
 		} = this.props;
 
 		return (
-			<MediaPlaceholder
-				allowedTypes={ [ 'image' ] }
-				multiple={ false }
-				icon="format-image"
-				labels={ {
-					title: ' ',
-				} }
-				onSelect={ ( el ) => setAttributes( { url: el.url, alt: el.alt } ) }
-			/>
+			<div className="wp-block-coblocks-food-item__figure">
+				<MediaPlaceholder
+					allowedTypes={ [ 'image' ] }
+					multiple={ false }
+					icon="format-image"
+					labels={ {
+						title: ' ',
+					} }
+					onSelect={ ( el ) => setAttributes( { url: el.url, alt: el.alt } ) }
+				/>
+			</div>
 		);
 	}
 
