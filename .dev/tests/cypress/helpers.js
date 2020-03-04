@@ -44,65 +44,25 @@ export function disableGutenbergFeatures() {
 /**
  * From inside the WordPress editor open the CoBlocks Gutenberg editor panel
  *
- * @param bool clearEditor Whether or not to clear all blocks on the page before
- * adding a new block to the page.
+ * @param bool clearEditor Whether or not to clear all blocks on the page before adding a new block to the page.
  * @param clearEditor
  * @param blockID
- * @param string blockID     Optional ID to check for in the DOM.
- * Note: If no blockID is specified, getBlockSlug()
- * attempts to retrieve the block from the spec file.
- * @return bool			 Returns false if the block cannot be found, true if
- * added correctly.
+ * @param string blockID Optional ID to check for in the DOM. Note: If no blockID is specified, getBlockSlug() attempts to retrieve the block from the spec file.
  */
 export function addCoBlocksBlockToPage( clearEditor = true, blockID = '' ) {
 	if ( clearEditor ) {
 		clearBlocks();
 	}
 
-	if ( ! blockID.length ) {
-		blockID = getBlockSlug();
-	}
-
-	const isGalleryBlock = RegExp( 'gallery-' ).test( blockID );
-	let blockIsDeprecated = false;
-
 	cy.get( '.edit-post-header-toolbar' ).find( '.block-editor-inserter__toggle' ).click();
+	cy.get( '.block-editor-inserter__search' ).click().type(
+		blockID.split( '-' )[ 0 ]
+	);
 
-	// Close 'Most Used' panel
-	cy.get( '.components-panel__body-title' )
-		.contains( /most used/i ) // Regex to handle case difference WP 5.4
-		.then( ( $mostUsedPanel ) => {
-			const $parentPanel = Cypress.$( $mostUsedPanel ).closest( 'div.components-panel__body' );
-			if ( $parentPanel.hasClass( 'is-opened' ) ) {
-				$mostUsedPanel.click();
-			}
-		} );
-
-	// Show Block panel
-	cy.get( '.components-panel__body-title' )
-		.contains( isGalleryBlock ? 'CoBlocks Galleries' : 'CoBlocks' )
-		.then( ( $coblocksPanel ) => {
-			const $parentPanel = Cypress.$( $coblocksPanel ).closest( 'div.components-panel__body' );
-			if ( ! $parentPanel.hasClass( 'is-opened' ) ) {
-				$coblocksPanel.click();
-			}
-			if ( ! document.getElementsByClassName( `.editor-block-list-item-coblocks-${ blockID }` ) ) {
-				blockIsDeprecated = true;
-			}
-		} );
-
-	if ( blockIsDeprecated ) {
-		cy.get( '.block-list-appender .wp-block .block-editor-inserter__toggle' )
-		.click();
-
-		return true;
-	}
-	cy.get( '.components-panel__body.is-opened .editor-block-list-item-coblocks-' + blockID ).click();
+	cy.get( '.components-panel__body.is-opened .editor-block-list-item-coblocks-' + blockID ).first().click();
 
 	// Make sure the block was added to our page
 	cy.get( `div[data-type="coblocks/${ blockID }"]` ).should( 'exist' );
-
-	return false;
 }
 
 /**
