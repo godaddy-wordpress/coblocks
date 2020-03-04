@@ -25,7 +25,7 @@ describe( 'Test CoBlocks Post Carousel Block', function() {
 	/**
 	 * Test the post-carousel block column and post count controls
 	 */
-	it.only( 'Test the post-carousel block column and post count controls.', function() {
+	it( 'Test the post-carousel block column and post count controls.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'post-carousel' );
 
 		cy.get( '.wp-block[data-type="coblocks/post-carousel"]' ).click();
