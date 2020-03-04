@@ -238,6 +238,8 @@ class FoodAndDrinksEdit extends Component {
 	}
 
 	render() {
+		console.log( this.props );
+
 		const {
 			attributes,
 			className,

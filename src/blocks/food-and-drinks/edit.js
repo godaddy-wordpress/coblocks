@@ -109,9 +109,7 @@ class FoodItem extends Component {
 	}
 
 	updateInnerAttributes( blockName, newAttributes ) {
-		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
-			this.props.clientId
-		)[ 0 ].innerBlocks;
+		const { innerItems } = this.props;
 
 		innerItems.forEach( ( item ) => {
 			if ( item.name === blockName ) {
@@ -137,6 +135,17 @@ class FoodItem extends Component {
 		setAttributes( { showImages } );
 
 		this.updateInnerAttributes( 'coblocks/food-item', { showImage: showImages } );
+
+		if ( ! showImages ) {
+			this.updateInnerAttributes( 'coblocks/food-item', {
+				showImage: false,
+				url: '',
+			} );
+		} else {
+			this.updateInnerAttributes( 'coblocks/food-item', {
+				showImage: true,
+			} );
+		}
 	}
 
 	togglePrices() {
@@ -145,7 +154,16 @@ class FoodItem extends Component {
 		const showPrices = ! attributes.showPrices;
 		setAttributes( { showPrices } );
 
-		this.updateInnerAttributes( 'coblocks/food-item', { showPrice: showPrices } );
+		if ( ! showPrices ) {
+			this.updateInnerAttributes( 'coblocks/food-item', {
+				showPrice: false,
+				price: '',
+			} );
+		} else {
+			this.updateInnerAttributes( 'coblocks/food-item', {
+				showPrice: true,
+			} );
+		}
 	}
 
 	setColumns( value ) {
@@ -237,14 +255,16 @@ class FoodItem extends Component {
 	}
 }
 
-const applyWithSelect = withSelect( () => {
+const applyWithSelect = withSelect( ( select, props ) => {
 	const selectedClientId = select( 'core/block-editor' ).getBlockSelectionStart();
 	const parentClientId = select( 'core/block-editor' ).getBlockRootClientId(
 		selectedClientId
 	);
+	const innerItems = select( 'core/block-editor' ).getBlocksByClientId( props.clientId )[ 0 ].innerBlocks;
 
 	return {
 		selectedParentClientId: parentClientId,
+		innerItems,
 	};
 } );
 
