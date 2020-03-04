@@ -15,7 +15,7 @@ describe( 'Block: Highlight', function () {
 	};
 
 	beforeEach( () => {
-		helpers.addBlockToPost( 'highlight', true );
+		helpers.addBlockToPost( 'coblocks/highlight', true );
 	} );
 
 	/**
@@ -24,7 +24,7 @@ describe( 'Block: Highlight', function () {
 	 */
 	it( 'can be inserted without errors', function () {
 		cy.get( '.wp-block-coblocks-highlight' ).should( 'exist' );
-		helpers.checkForBlockErrors( 'highlight' );
+		helpers.checkForBlockErrors( 'coblocks/highlight' );
 	} );
 
 	/**
@@ -33,7 +33,7 @@ describe( 'Block: Highlight', function () {
 	 */
 	it( 'can have content', function () {
 		cy.get( '.wp-block-coblocks-highlight' ).find( 'mark' ).click().type( 'highlighted text' );
-		helpers.checkForBlockErrors( 'highlight' );
+		helpers.checkForBlockErrors( 'coblocks/highlight' );
 	} );
 
 	/**
@@ -62,7 +62,7 @@ describe( 'Block: Highlight', function () {
 		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
 			.should( 'have.class', 'has-large-font-size' );
 
-		helpers.checkForBlockErrors( 'highlight' );
+		helpers.checkForBlockErrors( 'coblocks/highlight' );
 	} );
 
 	/**
@@ -87,7 +87,7 @@ describe( 'Block: Highlight', function () {
 		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
 			.should( 'have.css', 'color', highlightData.textColorRGB );
 
-		helpers.checkForBlockErrors( 'highlight' );
+		helpers.checkForBlockErrors( 'coblocks/highlight' );
 	} );
 
 	/**
@@ -100,6 +100,6 @@ describe( 'Block: Highlight', function () {
 		helpers.addCustomBlockClass( 'my-custom-class', 'highlight' );
 		cy.get( '.wp-block-coblocks-highlight' ).should( 'have.class', 'my-custom-class' );
 
-		helpers.checkForBlockErrors( 'highlight' );
+		helpers.checkForBlockErrors( 'coblocks/highlight' );
 	} );
 } );
