@@ -18,6 +18,7 @@ import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withDispatch, withSelect } from '@wordpress/data';
+import { createBlock } from '@wordpress/blocks';
 import { InnerBlocks } from '@wordpress/block-editor';
 const TokenList = wp.tokenList;
 
@@ -186,8 +187,8 @@ class FoodItem extends Component {
 		const blockOrder = this.props.getBlockOrder();
 		const insertAtIndex = blockOrder.indexOf( clientId ) + 1;
 
-		const innerBlocks = TEMPLATE.map( ( [ blockName, blockAttributes ] ) =>
-			wp.blocks.createBlock(
+		const innerBlocks = this.props.innerBlocks.map( ( [ blockName, blockAttributes ] ) =>
+			createBlock(
 				blockName,
 				Object.assign( {}, blockAttributes, {
 					showImage: attributes.showImages,
@@ -196,7 +197,7 @@ class FoodItem extends Component {
 			)
 		);
 
-		const newItem = wp.blocks.createBlock(
+		const newItem = createBlock(
 			'coblocks/food-and-drinks',
 			attributes,
 			innerBlocks
@@ -260,6 +261,7 @@ export default compose( [
 			getBlockOrder,
 			getBlockRootClientId,
 			getBlockSelectionStart,
+			getBlocks,
 			getBlocksByClientId,
 		} = select( 'core/block-editor' );
 
@@ -270,19 +272,46 @@ export default compose( [
 			getBlockOrder,
 			getBlocksByClientId,
 			isSelected: props.isSelected || props.clientId === parentClientId,
+			innerBlocks: getBlocks( props.clientId ),
 		};
 	} ),
 
 	withDispatch( ( dispatch ) => {
 		const {
 			insertBlock,
+			insertBlocks,
 			updateBlockAttributes,
 		} = dispatch( 'core/block-editor' );
 
 		return {
 			insertBlock,
+			insertBlocks,
 			updateBlockAttributes,
 		};
 	} ),
+
+	// Ensure there is a minimum of one coblocks/food-item innerBlock per column set.
+	( WrappedComponent ) => ( ownProps ) => {
+		// This is a newly added block if we have zero innerBlocks. We want the TEMPLATE definition to be used in this case.
+		if ( ownProps.innerBlocks.length > 0 ) {
+			const foodItemBlocksCount = ownProps.innerBlocks.reduce( ( acc, cur ) => acc + ( cur.name === 'coblocks/food-item' ), 0 );
+
+			// Add a new block if the count is less than the columns set.
+			// We don't need a loop here because this will trigger a component update as soon as we insert a block (triggering this HOC again).
+			if ( foodItemBlocksCount < ownProps.attributes.columns ) {
+				ownProps.insertBlock(
+					createBlock( 'coblocks/food-item', {
+						showImage: ownProps.attributes.showImages,
+						showPrice: ownProps.attributes.showPrices,
+					} ),
+					ownProps.innerBlocks.length,
+					ownProps.clientId,
+					false
+				);
+			}
+		}
+
+		return <WrappedComponent { ...ownProps } />;
+	},
 
 ] )( FoodItem );
