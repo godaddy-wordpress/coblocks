@@ -49,8 +49,11 @@ describe( 'Block: Events', function () {
 	* Test the events block saves with custom classes
 	*/
 	it( 'can set custom classes', function () {
+		// Workaround for the advanced panel not loading consistently.
+		cy.get( '.editor-post-title' ).click();
+
 		helpers.addCustomBlockClass( 'my-custom-class', 'events' );
-		cy.get( '.wp-block-coblocks-event-item' ).should( 'have.class', 'my-custom-class' );
+		cy.get( '.wp-block-coblocks-event-item' ).last().should( 'have.class', 'my-custom-class' );
 
 		helpers.checkForBlockErrors( 'events' );
 	} );

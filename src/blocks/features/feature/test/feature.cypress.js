@@ -66,11 +66,12 @@ describe( 'Test CoBlocks Feature Block', function() {
 	it( 'Test the feature block custom classes.', function () {
 		helpers.addCoBlocksBlockToPage( true, 'features' );
 
+		// Workaround for the advanced panel not loading consistently.
+		cy.get( '.editor-post-title' ).click();
+
 		helpers.addCustomBlockClass( 'my-custom-class', 'feature' );
+		cy.get( '.wp-block-coblocks-feature' ).last().should( 'have.class', 'my-custom-class' );
 
 		helpers.checkForBlockErrors( 'feature' );
-
-		cy.get( '.wp-block-coblocks-feature' )
-			.should( 'have.class', 'my-custom-class' );
 	} );
 } );
