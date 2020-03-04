@@ -187,7 +187,7 @@ class FoodItem extends Component {
 		const blockOrder = this.props.getBlockOrder();
 		const insertAtIndex = blockOrder.indexOf( clientId ) + 1;
 
-		const innerBlocks = this.props.innerBlocks.map( ( [ blockName, blockAttributes ] ) =>
+		const innerBlocks = TEMPLATE.map( ( [ blockName, blockAttributes ] ) =>
 			createBlock(
 				blockName,
 				Object.assign( {}, blockAttributes, {
