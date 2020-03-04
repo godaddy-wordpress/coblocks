@@ -63,29 +63,14 @@ describe( 'Test CoBlocks Feature Block', function() {
    * Test the feature block saves with custom classes
    * Use one column to avoid confusion in the DOM.
    */
-	it( 'Test the feature block custom classes.', function() {
+	it( 'Test the feature block custom classes.', function () {
 		helpers.addCoBlocksBlockToPage( true, 'features' );
 
-		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"]' ).click().clear().type( 1 );
-
-		cy.get( '.wp-block-coblocks-feature' ).click( { force: true } );
-
-		cy.get( '.edit-post-sidebar' ).contains( /feature settings/i ).click(); //close feature settings panel
-
 		helpers.addCustomBlockClass( 'my-custom-class', 'feature' );
-
-		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'feature' );
 
 		cy.get( '.wp-block-coblocks-feature' )
 			.should( 'have.class', 'my-custom-class' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-feature' )
-			.should( 'have.class', 'my-custom-class' );
-
-		helpers.editPage();
 	} );
 } );
