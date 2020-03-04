@@ -5,8 +5,8 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Dynamic Seperator Block', function() {
 	/**
-   * Test that we can add a dynamic separator block to the page
-   */
+	 * Test that we can add a dynamic separator block to the page
+	 */
 	it( 'Test dynamic separator block saves properly.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'dynamic-separator' );
 
@@ -23,8 +23,8 @@ describe( 'Test CoBlocks Dynamic Seperator Block', function() {
 	} );
 
 	/**
-   * Test dynamic separator styles
-   */
+	 * Test dynamic separator styles
+	 */
 	it( 'Test dynamic separator styles.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'dynamic-separator' );
 
@@ -64,8 +64,8 @@ describe( 'Test CoBlocks Dynamic Seperator Block', function() {
 	} );
 
 	/**
-   * Test dynamic separator styles
-   */
+	 * Test dynamic separator styles
+	 */
 	it( 'Test dynamic separator colors.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'dynamic-separator' );
 
@@ -96,8 +96,8 @@ describe( 'Test CoBlocks Dynamic Seperator Block', function() {
 	} );
 
 	/**
-   * Test that we can add a dynamic separator block to the page and alter it's height
-   */
+	 * Test that we can add a dynamic separator block to the page and alter it's height
+	 */
 	it( 'Test dynamic separator height increase.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'dynamic-separator' );
 
@@ -125,8 +125,8 @@ describe( 'Test CoBlocks Dynamic Seperator Block', function() {
 	} );
 
 	/**
-   * Test dynamic separator custom class
-   */
+	 * Test dynamic separator custom class
+	 */
 	it( 'Test dynamic separator custom class.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'dynamic-separator' );
 

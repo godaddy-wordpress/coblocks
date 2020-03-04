@@ -3,7 +3,7 @@
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
-describe( 'Test CoBlocks Logos Block', function () {
+describe( 'Test CoBlocks Logos Block', function() {
 	/**
 	 * Setup Logos data
 	 */
@@ -17,7 +17,7 @@ describe( 'Test CoBlocks Logos Block', function () {
 	 * Test that we can add a logos block to the content, not add any images or
 	 * alter any settings, and are able to successfully save the block without errors.
 	 */
-	it( 'Test logos block saves with empty values.', function () {
+	it( 'Test logos block saves with empty values.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'logos' );
 
 		helpers.savePage();
@@ -35,14 +35,14 @@ describe( 'Test CoBlocks Logos Block', function () {
 	 * Test that we can upload images to block and are able
 	 * to successfully save the block without errors.
 	 */
-	it( 'Test logos block saves with image upload.', function () {
+	it( 'Test logos block saves with image upload.', function() {
 		const { fileName, imageBase, pathToFixtures } = logosData;
 		helpers.addCoBlocksBlockToPage( true, 'logos' );
 
 		cy.get( '.wp-block[data-type="coblocks/logos"]' )
 			.click();
 
-		cy.fixture( pathToFixtures + fileName, 'base64' ).then( fileContent => {
+		cy.fixture( pathToFixtures + fileName, 'base64' ).then( ( fileContent ) => {
 			cy.get( 'div[data-type="coblocks/logos"]' )
 				.find( 'div.components-drop-zone' ).first()
 				.upload(
@@ -69,7 +69,7 @@ describe( 'Test CoBlocks Logos Block', function () {
 	 * Test that we can add image from library and are able
 	 * to successfully save the block without errors.
 	 */
-	it( 'Test logos block saves with image from media library.', function () {
+	it( 'Test logos block saves with image from media library.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'logos' );
 
 		cy.get( '.wp-block[data-type="coblocks/logos"]' )
@@ -83,9 +83,14 @@ describe( 'Test CoBlocks Logos Block', function () {
 			.first( 'li' )
 			.click();
 
-		cy.get( 'button' ).contains( /create a new gallery/i ).click();
-
-		cy.get( 'button' ).contains( /insert gallery/i ).click();
+		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
+			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			} else { // pre wp 5.4
+				cy.get( 'button' ).contains( /create a new gallery/i ).click();
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			}
+		} );
 
 		helpers.savePage();
 
@@ -103,7 +108,7 @@ describe( 'Test CoBlocks Logos Block', function () {
 	 * Test that we can add "black and white" image filter and
 	 * successfully save the block without errors.
 	 */
-	it( 'Test logos block saves with black and white filter.', function () {
+	it( 'Test logos block saves with black and white filter.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'logos' );
 
 		cy.get( '.wp-block[data-type="coblocks/logos"]' )
@@ -117,9 +122,14 @@ describe( 'Test CoBlocks Logos Block', function () {
 			.first( 'li' )
 			.click();
 
-		cy.get( 'button' ).contains( /create a new gallery/i ).click();
-
-		cy.get( 'button' ).contains( /insert gallery/i ).click();
+		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
+			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			} else { // pre wp 5.4
+				cy.get( 'button' ).contains( /create a new gallery/i ).click();
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			}
+		} );
 
 		helpers.setBlockStyle( /black & white/i );
 
@@ -140,7 +150,7 @@ describe( 'Test CoBlocks Logos Block', function () {
 	 * Test that we can add image "grayscale" filter and
 	 * successfully save the block without errors.
 	 */
-	it( 'Test logos block saves with grayscale filter.', function () {
+	it( 'Test logos block saves with grayscale filter.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'logos' );
 
 		cy.get( '.wp-block[data-type="coblocks/logos"]' )
@@ -154,9 +164,14 @@ describe( 'Test CoBlocks Logos Block', function () {
 			.first( 'li' )
 			.click();
 
-		cy.get( 'button' ).contains( /create a new gallery/i ).click();
-
-		cy.get( 'button' ).contains( /insert gallery/i ).click();
+		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
+			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			} else { // pre wp 5.4
+				cy.get( 'button' ).contains( /create a new gallery/i ).click();
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			}
+		} );
 
 		helpers.setBlockStyle( /grayscale/i );
 
@@ -177,7 +192,7 @@ describe( 'Test CoBlocks Logos Block', function () {
 	 * Test that we can add image "default" filter and
 	 * successfully save the block without errors.
 	 */
-	it( 'Test logos block saves with default filter.', function () {
+	it( 'Test logos block saves with default filter.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'logos' );
 
 		cy.get( '.wp-block[data-type="coblocks/logos"]' )
@@ -191,9 +206,14 @@ describe( 'Test CoBlocks Logos Block', function () {
 			.first( 'li' )
 			.click();
 
-		cy.get( 'button' ).contains( /create a new gallery/i ).click();
-
-		cy.get( 'button' ).contains( /insert gallery/i ).click();
+		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
+			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			} else { // pre wp 5.4
+				cy.get( 'button' ).contains( /create a new gallery/i ).click();
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			}
+		} );
 
 		helpers.setBlockStyle( /default/i );
 

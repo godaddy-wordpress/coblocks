@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/events",
-	"category": "coblocks",
+	"category": "layout",
 	"attributes": {
 		"align": {
 			"type": "string"

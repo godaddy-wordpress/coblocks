@@ -24,6 +24,7 @@ const variations = {
 	vegan: [ undefined, true, false ],
 	showImage: [ undefined, true, false ],
 	showPrice: [ undefined, true, false ],
+	headingLevel: [ 2, 3, 4 ],
 };
 
 helpers.testDeprecatedBlockVariations( name, settings, variations );

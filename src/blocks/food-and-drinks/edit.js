@@ -2,7 +2,8 @@
  * Internal dependencies.
  */
 import CustomAppender from './appender';
-import InspectorControls from './inspector';
+import Inspector from './inspector';
+import Controls from './controls';
 import icons from './icons';
 
 /**
@@ -99,6 +100,7 @@ class FoodItem extends Component {
 		super( ...arguments );
 
 		this.insertNewItem = this.insertNewItem.bind( this );
+		this.onChangeHeadingLevel = this.onChangeHeadingLevel.bind( this );
 		this.setColumns = this.setColumns.bind( this );
 		this.setGutter = this.setGutter.bind( this );
 		this.toggleImages = this.toggleImages.bind( this );
@@ -136,6 +138,13 @@ class FoodItem extends Component {
 				);
 			}
 		} );
+	}
+
+	onChangeHeadingLevel( headingLevel ) {
+		const { setAttributes } = this.props;
+
+		setAttributes( { headingLevel } );
+		this.updateInnerAttributes( 'coblocks/food-item', { headingLevel } );
 	}
 
 	toggleImages() {
@@ -229,7 +238,11 @@ class FoodItem extends Component {
 
 		return (
 			<Fragment>
-				<InspectorControls
+				<Controls
+					{ ...this.props }
+					onChangeHeadingLevel={ this.onChangeHeadingLevel }
+				/>
+				<Inspector
 					attributes={ attributes }
 					activeStyle={ activeStyle }
 					layoutOptions={ layoutOptions }

@@ -96,6 +96,25 @@ describe( 'Block: Food and Drinks', function () {
 		helpers.checkForBlockErrors( 'food-and-drinks' );
 	} );
 
+	/**
+	 * Test the food-and-drinks block saves with custom classes
+	 */
+	it( 'Test the food-and-drinks block custom classes.', function() {
+		helpers.addCoBlocksBlockToPage( true, 'food-and-drinks' );
+
+		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).first().click();
+
+		helpers.openSettingsPanel( /food & drinks settings/i );
+		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /prices/i ).click();
+
+		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
+			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().click( 'left' );
+			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'not.exist' );
+		} );
+
+		helpers.checkForBlockErrors( 'food-and-drinks' );
+	} );
+
 	it( 'can insert menu section with the same attributes', () => {
 		helpers.openSettingsPanel( /food & drinks settings/i );
 
@@ -115,6 +134,24 @@ describe( 'Block: Food and Drinks', function () {
 
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'have.class', 'my-custom-class' );
 		} );
+
+		helpers.checkForBlockErrors( 'food-and-drinks' );
+	} );
+
+	/**
+	 * Test the food-and-drinks block saves heading levels set
+	 */
+	it( 'Updates the inner blocks when the "Heading Level" control is changed.', function() {
+		helpers.addCoBlocksBlockToPage( true, 'food-and-drinks' );
+
+		// Assert headings levels are set to default (h4)
+		cy.get( '[data-type="coblocks/food-and-drinks"] [data-type="coblocks/food-item"] h4' ).should( 'have.length', 2 );
+
+		// Modify the heading level
+		cy.get( '.block-editor-block-toolbar [aria-label="Change heading level"]' ).click();
+		cy.get( 'div[aria-label="Change heading level"][role="menu"] button' ).contains( 'Heading 2' ).click();
+
+		cy.get( '[data-type="coblocks/food-and-drinks"] [data-type="coblocks/food-item"] h2' ).should( 'have.length', 2 );
 
 		helpers.checkForBlockErrors( 'food-and-drinks' );
 	} );

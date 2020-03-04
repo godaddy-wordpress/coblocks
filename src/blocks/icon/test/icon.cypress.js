@@ -5,8 +5,8 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Icon Block', function() {
 	/**
-   * Test the coblocks icon block.
-   */
+	 * Test the coblocks icon block.
+	 */
 	it( 'Test the icon block saves.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'icon' );
 
@@ -23,14 +23,14 @@ describe( 'Test CoBlocks Icon Block', function() {
 	} );
 
 	/**
-   * Test the coblocks icon block style.
-   */
+	 * Test the coblocks icon block style.
+	 */
 	it( 'Test the icon block style.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'icon' );
 
 		helpers.openSettingsPanel( 'Styles' );
 
-		cy.get( '.editor-block-styles__item[aria-label="Filled"]' ).click();
+		cy.get( '.block-editor-block-styles__item[aria-label="Filled"]' ).click();
 
 		cy.get( '.wp-block-coblocks-icon' ).should( 'have.class', 'is-style-filled' );
 
@@ -49,8 +49,8 @@ describe( 'Test CoBlocks Icon Block', function() {
 	} );
 
 	/**
-   * Test the coblocks icon block resize.
-   */
+	 * Test the coblocks icon block resize.
+	 */
 	it( 'Test the icon block resize and change icon.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'icon' );
 
@@ -81,8 +81,8 @@ describe( 'Test CoBlocks Icon Block', function() {
 	} );
 
 	/**
-   * Test the coblocks icon block link settings.
-   */
+	 * Test the coblocks icon block link settings.
+	 */
 	it( 'Test the icon block link settings.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'icon' );
 
@@ -115,8 +115,8 @@ describe( 'Test CoBlocks Icon Block', function() {
 	} );
 
 	/**
-   * Test the coblocks icon block color settings.
-   */
+	 * Test the coblocks icon block color settings.
+	 */
 	it( 'Test the icon block color settings.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'icon' );
 
@@ -124,28 +124,28 @@ describe( 'Test CoBlocks Icon Block', function() {
 
 		cy.get( '.components-base-control__field' )
 			.contains( /icon color/i )
-			.then( $backgroundPanel => {
-				cy.get( Cypress.$( $backgroundPanel ).parent() )
+			.then( ( $backgroundPanel ) => {
+				cy.get( Cypress.$( $backgroundPanel ).parents( '.components-base-control__field' ) )
 					.contains( /custom color/i )
 					.click();
 				cy.get( '.components-color-picker__inputs-field input[type="text"]' )
 					.clear()
 					.type( '#55e7ff' );
-				cy.get( Cypress.$( $backgroundPanel ).parent() )
+				cy.get( Cypress.$( $backgroundPanel ).parents( '.components-base-control__field' ) )
 					.contains( /custom color/i )
 					.click();
 			} );
 
 		cy.get( '.components-base-control__field' )
 			.contains( /background color/i )
-			.then( $backgroundPanel => {
-				cy.get( Cypress.$( $backgroundPanel ).parent() )
+			.then( ( $backgroundPanel ) => {
+				cy.get( Cypress.$( $backgroundPanel ).parents( '.components-base-control__field' ) )
 					.contains( /custom color/i )
 					.click();
 				cy.get( '.components-color-picker__inputs-field input[type="text"]' )
 					.clear()
 					.type( '#e60099' );
-				cy.get( Cypress.$( $backgroundPanel ).parent() )
+				cy.get( Cypress.$( $backgroundPanel ).parents( '.components-base-control__field' ) )
 					.contains( /custom color/i )
 					.click();
 			} );

@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/accordion-item",
-	"category": "coblocks",
+	"category": "common",
 	"attributes": {
 		"title": {
 			"type": "string",

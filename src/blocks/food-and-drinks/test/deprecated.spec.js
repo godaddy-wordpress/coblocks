@@ -11,6 +11,7 @@ const variations = {
 	gutter: [ 'small', 'medium', 'large', 'xlarge' ],
 	showImages: [ undefined, true, false ],
 	showPrices: [ undefined, true, false ],
+	headingLevel: [ 2, 3, 4 ],
 };
 
 helpers.testDeprecatedBlockVariations( name, settings, variations );

@@ -12,6 +12,8 @@ import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { IconButton } from '@wordpress/components';
+import { compose } from '@wordpress/compose';
+import { withDispatch, withSelect } from '@wordpress/data';
 import { createBlock } from '@wordpress/blocks';
 
 /**
@@ -39,7 +41,7 @@ const getCount = memoize( ( count ) => {
 /**
  * Block edit function
  */
-class Edit extends Component {
+class AccordionEdit extends Component {
 	render() {
 		const {
 			clientId,
@@ -52,7 +54,7 @@ class Edit extends Component {
 			count,
 		} = attributes;
 
-		const items = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId );
+		const items = this.props.getBlocksByClientId( clientId );
 
 		return (
 			<Fragment>
@@ -80,7 +82,7 @@ class Edit extends Component {
 										let copyAttributes = {};
 
 										if ( lastId ) {
-											const lastBlockClient 	= wp.data.select( 'core/block-editor' ).getBlockAttributes( lastId );
+											const lastBlockClient = this.props.getBlockAttributes( lastId );
 											if ( lastBlockClient.backgroundColor ) {
 												copyAttributes = Object.assign( copyAttributes, {
 													backgroundColor: lastBlockClient.backgroundColor,
@@ -107,7 +109,7 @@ class Edit extends Component {
 										}
 
 										const created = createBlock( 'coblocks/accordion-item', copyAttributes );
-										wp.data.dispatch( 'core/block-editor' ).insertBlock( created, undefined, clientId );
+										this.props.insertBlock( created, undefined, clientId );
 									}
 								} } >
 							</IconButton>
@@ -119,4 +121,35 @@ class Edit extends Component {
 	}
 }
 
-export default Edit;
+export default compose( [
+
+	withSelect( ( select, props ) => {
+		const {
+			getBlockAttributes,
+			getBlocksByClientId,
+			getBlockHierarchyRootClientId,
+			getSelectedBlockClientId,
+		} = select( 'core/block-editor' );
+
+		// Get clientID of the parent block.
+		const rootClientId = getBlockHierarchyRootClientId( props.clientId );
+		const selectedRootClientId = getBlockHierarchyRootClientId( getSelectedBlockClientId() );
+
+		return {
+			getBlockAttributes,
+			getBlocksByClientId,
+			isSelected: props.isSelected || rootClientId === selectedRootClientId,
+		};
+	} ),
+
+	withDispatch( ( dispatch ) => {
+		const {
+			insertBlock,
+		} = dispatch( 'core/block-editor' );
+
+		return {
+			insertBlock,
+		};
+	} ),
+
+] )( AccordionEdit );

@@ -134,16 +134,6 @@ function coblocks_register_events_block() {
 		return;
 	}
 
-	$vendors_dir = CoBlocks()->asset_source( 'js', 'vendors' );
-
-	wp_enqueue_script(
-		'coblocks-slick',
-		$vendors_dir . '/slick.js',
-		array( 'jquery' ),
-		COBLOCKS_VERSION,
-		true
-	);
-
 	// Load attributes from block.json.
 	ob_start();
 	include COBLOCKS_PLUGIN_DIR . 'src/blocks/events/block.json';
