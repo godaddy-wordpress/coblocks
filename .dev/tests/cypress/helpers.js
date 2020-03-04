@@ -274,7 +274,7 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 		blockID = getBlockSlug();
 	}
 
-	cy.get( '.wp-block[data-type="coblocks/' + blockID + '"]' ).last().click( 'topRight' );
+	cy.get( '.wp-block[data-type="coblocks/' + blockID + '"]' ).last().click( 'right' );
 
 	cy.get( '.block-editor-block-inspector__advanced' ).scrollIntoView().find( 'button' ).click();
 

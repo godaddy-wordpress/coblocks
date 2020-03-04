@@ -53,7 +53,7 @@ describe( 'Block: Events', function () {
 		cy.get( '.editor-post-title' ).click();
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'events' );
-		cy.get( '.wp-block-coblocks-event-item' ).last().should( 'have.class', 'my-custom-class' );
+		cy.get( '.wp-block-coblocks-events' ).last().should( 'have.class', 'my-custom-class' );
 
 		helpers.checkForBlockErrors( 'events' );
 	} );
