@@ -1,6 +1,10 @@
 [data-type="coblocks/food-item"] {
 	margin-top: 0;
 
+	.is-empty .wp-block-coblocks-food-item__figure {
+		margin-bottom: 0;
+	}
+
 	.block-editor-media-placeholder {
 		position: absolute;
 		top: 0;
