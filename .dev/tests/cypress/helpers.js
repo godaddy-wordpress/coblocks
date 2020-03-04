@@ -118,7 +118,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	// Make sure the block was added to our page
 	cy.get( `div[data-type="${ blockName }"]` ).should( 'exist' );
 
-	return false;
+	return true;
 }
 
 /**
