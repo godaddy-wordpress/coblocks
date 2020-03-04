@@ -38,6 +38,7 @@ describe( 'Block: Food and Drinks', function () {
 			cy.get( '.components-range-control' ).contains( /columns/i ).parent().find( '.components-range-control__number' ).type( `{selectall}${columns}` );
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', 'has-columns' );
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', `has-${columns}-columns` );
+			cy.get( '.wp-block-coblocks-food-and-drinks' ).find( '.wp-block[data-type="coblocks/food-item"]' ).should( 'have.length', columns );
 		} );
 
 		helpers.checkForBlockErrors( 'food-and-drinks' );
