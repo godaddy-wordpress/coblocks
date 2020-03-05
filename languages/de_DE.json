@@ -837,6 +837,10 @@
   "5ecde7e225f74dcdd7b55a349f16bb92": "Viertel",
   "b1a1d01584349ef77228813f30bc3a65": "Zwei Fünftel:ein Fünftel:ein Fünftel:ein Fünftel",
   "3c6197e2f4851c496e7b8883f61aa6d5": "Ein Fünftel:ein Fünftel:ein Fünftel:zwei Fünftel",
+  "0640d72f560d1bb51d1ba0f3b7e04e15": "Two Column Equal",
+  "38e5ee42ef9355c62c7e7913086e1bff": "Two Column Thirds",
+  "a47c116114fd77e8bfa475840ab85aa2": "Three Column",
+  "4b6fb25f015e595cb274615be73dfab0": "Four Column",
   "992a0f0542384f1ee5ef51b7cf4ae6c4": "Dienste",
   "17b2ff45b650a5d5d38a41264c5785bd": "Füge bis zu vier Spalten für die Darstellung von Dienste hinzu.",
   "9f034b63948763d489f944319c2eb3de": "Funktionen",
@@ -1054,5 +1058,5 @@
   "687860835846b90d140dfea3d3854344": "Welle unten",
   "22fafef9f27284e1919cf4f587b3321e": "Welle oben",
   "563d6aae16024e55556351466524efa5": "Zuschnitteinstellungen",
-  "4ec85568f66b2ba39494a9d52ff706e2": "%s-Galerien"
+  "1cdfaaf3776ecdc58afa4b9e93dca980": "Galerien"
 }
