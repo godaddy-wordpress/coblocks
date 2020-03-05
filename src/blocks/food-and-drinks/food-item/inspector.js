@@ -34,13 +34,11 @@ const Inspector = ( props ) => {
 		if ( ! showImage ) {
 			setAttributes( {
 				showImage: true,
-				url: JSON.parse( localStorage.getItem( 'urlAttribute' ) ) || url,
 			} );
 		} else {
 			localStorage.setItem( 'urlAttribute', JSON.stringify( url ) );
 			setAttributes( {
 				showImage: false,
-				url: '',
 			} );
 		}
 	};
@@ -49,13 +47,10 @@ const Inspector = ( props ) => {
 		if ( ! showPrice ) {
 			setAttributes( {
 				showPrice: true,
-				price: JSON.parse( localStorage.getItem( 'priceAttribute' ) ) || price,
 			} );
 		} else {
-			localStorage.setItem( 'priceAttribute', JSON.stringify( price ) );
 			setAttributes( {
 				showPrice: false,
-				price: '',
 			} );
 		}
 	};
