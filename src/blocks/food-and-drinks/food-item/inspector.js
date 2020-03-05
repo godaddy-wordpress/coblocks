@@ -27,33 +27,7 @@ const Inspector = ( props ) => {
 		url,
 		vegan,
 		vegetarian,
-		price,
 	} = attributes;
-
-	const showImageOnChange = () => {
-		if ( ! showImage ) {
-			setAttributes( {
-				showImage: true,
-			} );
-		} else {
-			localStorage.setItem( 'urlAttribute', JSON.stringify( url ) );
-			setAttributes( {
-				showImage: false,
-			} );
-		}
-	};
-
-	const showPriceOnChange = () => {
-		if ( ! showPrice ) {
-			setAttributes( {
-				showPrice: true,
-			} );
-		} else {
-			setAttributes( {
-				showPrice: false,
-			} );
-		}
-	};
 
 	return (
 		<InspectorControls>
@@ -66,7 +40,7 @@ const Inspector = ( props ) => {
 							__( 'Toggle to show an image for this item.', 'coblocks' )
 					}
 					checked={ showImage }
-					onChange={ () => showImageOnChange() }
+					onChange={ () => setAttributes( { showImage: ! showImage } ) }
 				/>
 				<ToggleControl
 					label={ __( 'Price', 'coblocks' ) }
@@ -76,7 +50,7 @@ const Inspector = ( props ) => {
 							__( 'Toggle to show the price for this item.', 'coblocks' )
 					}
 					checked={ showPrice }
-					onChange={ () => showPriceOnChange() }
+					onChange={ () => setAttributes( { showPrice: ! showPrice } ) }
 				/>
 				<div className="components-food-item-attributes">
 					<p className="components-food-item-attributes__label">

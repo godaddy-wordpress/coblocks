@@ -137,16 +137,6 @@ class FoodAndDrinksEdit extends Component {
 		setAttributes( { showImages } );
 
 		this.updateInnerAttributes( 'coblocks/food-item', { showImage: showImages } );
-
-		if ( ! showImages ) {
-			this.updateInnerAttributes( 'coblocks/food-item', {
-				showImage: false,
-			} );
-		} else {
-			this.updateInnerAttributes( 'coblocks/food-item', {
-				showImage: true,
-			} );
-		}
 	}
 
 	togglePrices() {
@@ -155,15 +145,7 @@ class FoodAndDrinksEdit extends Component {
 		const showPrices = ! attributes.showPrices;
 		setAttributes( { showPrices } );
 
-		if ( ! showPrices ) {
-			this.updateInnerAttributes( 'coblocks/food-item', {
-				showPrice: false,
-			} );
-		} else {
-			this.updateInnerAttributes( 'coblocks/food-item', {
-				showPrice: true,
-			} );
-		}
+		this.updateInnerAttributes( 'coblocks/food-item', {	showPrice: showPrices } );
 	}
 
 	setColumns( value ) {
