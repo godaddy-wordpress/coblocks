@@ -108,8 +108,11 @@ const withReplaceImage = createHigherOrderComponent( ( BlockEdit ) => {
 									onSelect={ onSelectImage }
 									value={ props.url }
 									render={ ( { open } ) => (
-										<Button className="is-secondary" onClick={ open }>
-											{ __( 'Replace Image', 'coblocks' ) }
+										<Button
+										isSmall
+										isSecondary
+										onClick={ open }>
+											{ __( 'Replace image', 'coblocks' ) }
 										</Button>
 									) }
 								>
