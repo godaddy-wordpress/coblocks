@@ -12,7 +12,9 @@ const svgs = {
 	filled: {},
 };
 
-let icons = ( typeof coblocksBlockData !== 'undefined' && coblocksBlockData.bundledIconsDisabled ) ? {} : {
+const disableBundledIcons = ( typeof coblocksBlockData !== 'undefined' && coblocksBlockData.bundledIconsDisabled );
+
+let icons = disableBundledIcons ? {} : {
 	coblocks: {
 		/* translators: icon label */
 		label: __( 'CoBlocks', 'coblocks' ),
