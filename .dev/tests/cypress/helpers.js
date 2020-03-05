@@ -274,7 +274,8 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 		blockID = getBlockSlug();
 	}
 
-	cy.get( '.wp-block[data-type="coblocks/' + blockID + '"]' ).last().click( 'right' );
+	// Force click the target element so that we don't select any innerBlocks by mistake.
+	cy.get( '.wp-block[data-type="coblocks/' + blockID + '"]' ).last().click( { force: true } );
 
 	cy.get( '.block-editor-block-inspector__advanced' ).scrollIntoView().find( 'button' ).click();
 
