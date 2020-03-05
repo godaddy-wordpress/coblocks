@@ -113,7 +113,6 @@ class FoodItem extends Component {
 		const { attributes, setAttributes, clientId } = this.props;
 		const { showPrice, price } = attributes;
 
-		// Handle price attribute
 		if ( showPrice !== previousShowPrice ) {
 			const storedAttributes = JSON.parse( localStorage.getItem( 'menuItemPrices' ) ) || {};
 			const storedPrice = storedAttributes[ clientId ] && storedAttributes[ clientId ].price;
@@ -141,7 +140,6 @@ class FoodItem extends Component {
 		const { attributes, setAttributes, clientId } = this.props;
 		const { showImage, url } = attributes;
 
-		// Handle url attribute
 		if ( showImage !== previousShowUrl ) {
 			const storedAttributes = JSON.parse( localStorage.getItem( 'menuItemImages' ) ) || {};
 			const storedUrl = storedAttributes[ clientId ] && storedAttributes[ clientId ].url;
