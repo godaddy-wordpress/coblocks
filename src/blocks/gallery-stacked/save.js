@@ -93,7 +93,7 @@ const save = ( { attributes, className } ) => {
 							<figure className={ figureClasses }>
 								{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
 								{ captions && image.caption && image.caption.length > 0 && (
-									<RichText.Content tagName="figcaption" className={ captionClasses } value={ image.caption } styles={ captionStyles } />
+									<RichText.Content tagName="figcaption" className={ captionClasses } value={ image.caption } style={ captionStyles } />
 								) }
 							</figure>
 						</li>

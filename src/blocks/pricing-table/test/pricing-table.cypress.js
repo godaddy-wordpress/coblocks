@@ -5,9 +5,9 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Pricing Table Block', function() {
 	/**
-	   * Test that we can add a pricing-table block to the content, not alter
-	   * any settings, and are able to successfully save the block without errors.
-	   */
+	 * Test that we can add a pricing-table block to the content, not alter
+	 * any settings, and are able to successfully save the block without errors.
+	 */
 	it( 'Test pricing-table block saves with empty values.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'pricing-table' );
 
@@ -23,9 +23,9 @@ describe( 'Test CoBlocks Pricing Table Block', function() {
 	} );
 
 	/**
-	   * Test that we can add a pricing-table block to the content, change
-       * column count and  are able to successfully save the block without errors.
-	   */
+	 * Test that we can add a pricing-table block to the content, change
+	 * column count and  are able to successfully save the block without errors.
+	 */
 	it( 'Test pricing-table block saves with text values set.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'pricing-table' );
 
@@ -57,8 +57,8 @@ describe( 'Test CoBlocks Pricing Table Block', function() {
 	} );
 
 	/**
-   * Test the pricing-table block saves with custom classes
-   */
+	 * Test the pricing-table block saves with custom classes
+	 */
 	it( 'Test the pricing-table block custom classes.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'pricing-table' );
 

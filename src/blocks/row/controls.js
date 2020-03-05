@@ -47,6 +47,8 @@ class Controls extends Component {
 			clientId,
 			attributes,
 			setAttributes,
+			getBlocksByClientId,
+			updateBlockAttributes,
 		} = this.props;
 
 		const {
@@ -80,13 +82,13 @@ class Controls extends Component {
 									isActive: key === layout,
 									onClick: () => {
 										const selectedWidth = key.toString().split( '-' );
-										const children = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId );
+										const children = getBlocksByClientId( clientId );
 										setAttributes( {
 											layout: key,
 										} );
 										if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
-											map( children[ 0 ].innerBlocks, ( { innerBlocksClientId }, index ) => (
-												wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( innerBlocksClientId, { width: selectedWidth[ index ] } )
+											map( children[ 0 ].innerBlocks, ( blockProps, index ) => (
+												updateBlockAttributes( blockProps.clientId, { width: selectedWidth[ index ] } )
 											) );
 										}
 									},

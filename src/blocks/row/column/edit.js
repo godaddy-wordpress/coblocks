@@ -22,7 +22,7 @@ import {
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { withSelect } from '@wordpress/data';
+import { withSelect, withDispatch } from '@wordpress/data';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { ResizableBox, Spinner } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
@@ -46,7 +46,7 @@ class Edit extends Component {
 
 	render() {
 		const {
-			clientId,
+			columnBlocks,
 			attributes,
 			className,
 			isSelected,
@@ -54,6 +54,10 @@ class Edit extends Component {
 			backgroundColor,
 			textColor,
 			hasInnerBlocks,
+			parentId,
+			nextBlockClient,
+			nextBlockClientId,
+			updateBlockAttributes,
 		} = this.props;
 
 		const {
@@ -75,16 +79,6 @@ class Edit extends Component {
 			contentAlign,
 		} = attributes;
 
-		const parentId = wp.data
-			.select( 'core/block-editor' )
-			.getBlockRootClientId( clientId );
-		const columnBlocks = wp.data.select( 'core/block-editor' ).getBlock( clientId );
-		const nextBlockClientId = wp.data
-			.select( 'core/block-editor' )
-			.getNextBlockClientId( clientId );
-		const nextBlockClient = wp.data
-			.select( 'core/block-editor' )
-			.getBlock( nextBlockClientId );
 		const dropZone = (
 			<BackgroundDropZone
 				{ ...this.props }
@@ -247,11 +241,9 @@ class Edit extends Component {
 							)[ 0 ].style.width = 'auto';
 
 						if ( nextBlockWidth > 10 && currentBlockWidthPercent > 10 ) {
-							wp.data
-								.dispatch( 'core/block-editor' )
-								.updateBlockAttributes( nextBlockClientId, {
-									width: parseFloat( nextBlockWidth ).toFixed( 2 ),
-								} );
+							updateBlockAttributes( nextBlockClientId, {
+								width: parseFloat( nextBlockWidth ).toFixed( 2 ),
+							} );
 							setAttributes( {
 								width: parseFloat( currentBlockWidthPercent ).toFixed( 2 ),
 							} );
@@ -289,12 +281,35 @@ class Edit extends Component {
 	}
 }
 
-export default compose( [
-	applyWithColors,
-	withSelect( ( select, { clientId } ) => {
-		const block = select( 'core/block-editor' ).getBlock( clientId );
-		return {
-			hasInnerBlocks: !! ( block && block.innerBlocks.length ),
-		};
-	} ),
-] )( Edit );
+const applyWithSelect = withSelect( ( select, { clientId } ) => {
+	const { getBlock, getBlockRootClientId, getNextBlockClientId, getPreviousBlockClientId, getBlocksByClientId } = select( 'core/block-editor' );
+	const parentId = getBlockRootClientId( clientId );
+	const columnBlocks = getBlock( clientId );
+
+	const nextBlockClientId = getNextBlockClientId( clientId ) || getPreviousBlockClientId( clientId );
+	const nextBlockClient = getBlock( nextBlockClientId );
+
+	const parentBlocks = getBlocksByClientId( parentId );
+	const lastId = ( parentBlocks[ 0 ].innerBlocks !== 'undefined' ) ? parentBlocks[ 0 ].innerBlocks[ parentBlocks[ 0 ].innerBlocks.length - 1 ].clientId : clientId;
+
+	return {
+		hasInnerBlocks: !! ( columnBlocks && columnBlocks.innerBlocks.length ),
+		parentId,
+		nextBlockClient,
+		nextBlockClientId,
+
+		// Used in inspector
+		lastId,
+		parentBlocks,
+	};
+} );
+
+const applyWithDispatch = withDispatch( ( dispatch ) => {
+	const { updateBlockAttributes } = dispatch( 'core/block-editor' );
+
+	return {
+		updateBlockAttributes,
+	};
+} );
+
+export default compose( [ applyWithColors, applyWithSelect, applyWithDispatch ] )( Edit );
