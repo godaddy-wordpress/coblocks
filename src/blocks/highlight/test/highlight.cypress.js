@@ -44,19 +44,11 @@ describe( 'Block: Highlight', function () {
 			.type( 'highlighted text' );
 
 		cy.get( '.edit-post-sidebar' )
-			.contains( /default|regular/i )
-			.parent()
-			.then( ( $parentElm ) => {
-				if ( $parentElm[ 0 ].type === 'select-one' ) {
-					cy.get( $parentElm[ 0 ] )
-						.select( 'large' );
-				} else {
-					cy.get( $parentElm[ 0 ] )
-						.click()
-						.parent()
-						.contains( /large/i )
-						.click();
-				}
+			.contains( RegExp( 'Text Settings', 'i' ) )
+			.then( $settingSection => {
+				cy.get( Cypress.$( $settingSection ).closest( '.components-panel__body' ) )
+					.find( '.components-select-control__input' )
+					.select( 'large' );
 			} );
 
 		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )

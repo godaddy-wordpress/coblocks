@@ -1,14 +1,14 @@
 # Copyright (c) 2020 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.21.1\n"
+"Project-Id-Version: CoBlocks 1.22.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-03-03T22:32:56+00:00\n"
+"POT-Creation-Date: 2020-03-05T15:45:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -1183,6 +1183,7 @@ msgstr ""
 #: src/blocks/food-and-drinks/index.js:30
 #: src/blocks/icon/deprecated/svgs.js:901
 #: src/blocks/icon/svgs.js:919
+#: src/blocks/icon/svgs.js:1440
 msgid "menu"
 msgstr ""
 
@@ -1265,6 +1266,7 @@ msgstr ""
 #: src/blocks/food-and-drinks/index.js:28
 #: src/blocks/icon/deprecated/svgs.js:903
 #: src/blocks/icon/svgs.js:921
+#: src/blocks/icon/svgs.js:1442
 msgid "restaurant"
 msgstr ""
 
@@ -2562,6 +2564,7 @@ msgstr ""
 #: src/blocks/icon/svgs.js:611
 #: src/blocks/icon/svgs.js:632
 #: src/blocks/icon/svgs.js:671
+#: src/blocks/icon/svgs.js:1562
 msgid "computer"
 msgstr ""
 
@@ -2582,6 +2585,7 @@ msgstr ""
 #: src/blocks/icon/svgs.js:657
 #: src/blocks/icon/svgs.js:675
 #: src/blocks/icon/svgs.js:694
+#: src/blocks/icon/svgs.js:1566
 msgid "device"
 msgstr ""
 
@@ -2811,6 +2815,7 @@ msgstr ""
 #: src/blocks/icon/svgs.js:355
 #: src/blocks/icon/svgs.js:377
 #: src/blocks/icon/svgs.js:1239
+#: src/blocks/icon/svgs.js:1486
 msgid "add"
 msgstr ""
 
@@ -2823,6 +2828,9 @@ msgstr ""
 #: src/blocks/icon/svgs.js:379
 #: src/blocks/icon/svgs.js:401
 #: src/blocks/icon/svgs.js:420
+#: src/blocks/icon/svgs.js:1310
+#: src/blocks/icon/svgs.js:1324
+#: src/blocks/icon/svgs.js:1527
 msgid "circle"
 msgstr ""
 
@@ -2985,6 +2993,7 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:938
 #: src/blocks/icon/svgs.js:466
 #: src/blocks/icon/svgs.js:956
+#: src/blocks/icon/svgs.js:1258
 msgid "happy"
 msgstr ""
 
@@ -2997,6 +3006,7 @@ msgstr ""
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:452
 #: src/blocks/icon/svgs.js:470
+#: src/blocks/icon/svgs.js:1256
 msgid "smile"
 msgstr ""
 
@@ -3154,6 +3164,7 @@ msgstr ""
 #: src/blocks/icon/svgs.js:630
 #: src/blocks/icon/svgs.js:655
 #: src/blocks/icon/svgs.js:669
+#: src/blocks/icon/svgs.js:1560
 msgid "apple"
 msgstr ""
 
@@ -3168,6 +3179,7 @@ msgstr ""
 #: src/blocks/icon/svgs.js:613
 #: src/blocks/icon/svgs.js:634
 #: src/blocks/icon/svgs.js:673
+#: src/blocks/icon/svgs.js:1564
 msgid "desk"
 msgstr ""
 
@@ -3192,6 +3204,7 @@ msgstr ""
 #: src/blocks/icon/svgs.js:619
 #: src/blocks/icon/svgs.js:642
 #: src/blocks/icon/svgs.js:679
+#: src/blocks/icon/svgs.js:1570
 msgid "office"
 msgstr ""
 
@@ -3206,6 +3219,7 @@ msgstr ""
 #: src/blocks/icon/svgs.js:621
 #: src/blocks/icon/svgs.js:644
 #: src/blocks/icon/svgs.js:681
+#: src/blocks/icon/svgs.js:1572
 msgid "pc"
 msgstr ""
 
@@ -3222,6 +3236,7 @@ msgstr ""
 #: src/blocks/icon/svgs.js:594
 #: src/blocks/icon/svgs.js:638
 #: src/blocks/icon/svgs.js:677
+#: src/blocks/icon/svgs.js:1568
 msgid "ipad"
 msgstr ""
 
@@ -3232,6 +3247,7 @@ msgstr ""
 #: src/blocks/icon/svgs.js:600
 #: src/blocks/icon/svgs.js:646
 #: src/blocks/icon/svgs.js:683
+#: src/blocks/icon/svgs.js:1574
 msgid "surface"
 msgstr ""
 
@@ -3890,6 +3906,7 @@ msgstr ""
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1065
 #: src/blocks/icon/svgs.js:1083
+#: src/blocks/icon/svgs.js:1347
 msgid "security"
 msgstr ""
 
@@ -4197,6 +4214,405 @@ msgstr ""
 #: src/blocks/social-profiles/inspector.js:95
 #: src/blocks/social-profiles/inspector.js:108
 msgid "Icon Color"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1251
+msgid "Face"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1254
+msgid "face"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1265
+msgid "Explore"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1268
+msgid "explore"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1270
+msgid "compass"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1277
+msgid "Groupwork"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1280
+#: src/blocks/icon/svgs.js:1484
+msgid "group"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1282
+msgid "work"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1289
+msgid "Record Voice Over"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1292
+msgid "record"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1294
+msgid "voice"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1296
+msgid "over"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1303
+msgid "Swap Vertical"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1306
+#: src/blocks/icon/svgs.js:1320
+msgid "swap"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1308
+msgid "vertical"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1317
+#: src/blocks/icon/svgs.js:1331
+msgid "Swap Horizontal"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1322
+msgid "horizontal"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1334
+msgid "accessible"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1336
+msgid "wheelchair"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1338
+msgid "handicapped"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1344
+msgid "Security"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1349
+msgid "shield"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1355
+msgid "Track Changes"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1358
+msgid "track"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1360
+msgid "changes"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1366
+msgid "Verified User"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1369
+msgid "verified"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1371
+msgid "user"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1378
+msgid "New Releases"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1381
+msgid "new"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1383
+msgid "release"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1390
+msgid "Games"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1393
+msgid "games"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1395
+msgid "video games"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1397
+msgid "d-pad"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1404
+msgid "Cloud"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1407
+msgid "cloud"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1409
+msgid "weather"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1416
+msgid "Blur On"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1419
+msgid "blur"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1425
+msgid "Style"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1428
+msgid "style"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1430
+msgid "cards"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1437
+msgid "Menu"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1448
+msgid "Account Tree"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1451
+msgid "account"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1453
+msgid "tree"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1460
+msgid "All Inclusive"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1463
+msgid "inclusive"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1465
+msgid "infinite"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1471
+msgid "Spa"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1474
+msgid "spa"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1481
+msgid "Group Add"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1493
+msgid "Live TV"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1496
+msgid "live"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1498
+msgid "tv"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1500
+msgid "television"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1506
+msgid "Confirmation Number"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1509
+msgid "confirmation"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1511
+msgid "number"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1513
+msgid "ticket"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1520
+msgid "Offline Bolt"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1523
+msgid "offline"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1525
+msgid "bolt"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1534
+msgid "HTTPS"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1537
+msgid "https"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1539
+#: src/blocks/icon/svgs.js:1549
+msgid "lock"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1546
+msgid "Lock Open"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1551
+msgid "open"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1557
+msgid "Devices Alternate"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1580
+msgid "Cast"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1583
+msgid "chrome"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1585
+msgid "cast"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1591
+msgid "Merge"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1594
+msgid "merge"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1596
+msgid "arrows"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1602
+msgid "Format Shapes"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1605
+msgid "format"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1607
+msgid "shapes"
 msgstr ""
 
 #: src/blocks/logos/controls.js:50

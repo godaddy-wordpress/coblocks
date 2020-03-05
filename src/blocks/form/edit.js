@@ -61,10 +61,10 @@ class FormEdit extends Component {
 		this.removeRecaptchaKey = this.removeRecaptchaKey.bind( this );
 		this.setTemplate = this.setTemplate.bind( this );
 		this.appendTagsToSubject = this.appendTagsToSubject.bind( this );
-		this.supportsBlockPatternPicker = this.supportsBlockPatternPicker.bind( this );
+		this.supportsBlockVariationPicker = this.supportsBlockVariationPicker.bind( this );
 		this.supportsInnerBlocksPicker = this.supportsInnerBlocksPicker.bind( this );
-		this.innerBlocksPatternPicker = this.innerBlocksPatternPicker.bind( this );
-		this.blockPatternPicker = this.blockPatternPicker.bind( this );
+		this.innerBlocksPicker = this.innerBlocksPicker.bind( this );
+		this.blockVariationPicker = this.blockVariationPicker.bind( this );
 
 		this.state = {
 			toError: error && error.length ? error : null,
@@ -126,13 +126,13 @@ class FormEdit extends Component {
 			} );
 		}
 
-		const { hasInnerBlocks, innerBlocks, defaultPattern } = this.props;
+		const { hasInnerBlocks, innerBlocks, defaultVariation } = this.props;
 		if ( hasInnerBlocks ) {
 			this.setState( { template: innerBlocks } );
 		}
 
-		if ( ! this.supportsInnerBlocksPicker() && ! this.supportsBlockPatternPicker() && hasInnerBlocks === false ) {
-			this.setTemplate( defaultPattern );
+		if ( ! this.supportsInnerBlocksPicker() && ! this.supportsBlockVariationPicker() && hasInnerBlocks === false ) {
+			this.setTemplate( defaultVariation );
 		}
 	}
 
@@ -344,11 +344,11 @@ class FormEdit extends Component {
 		return typeof InnerBlocks.prototype.shouldComponentUpdate === 'undefined' ? false : true;
 	}
 
-	supportsBlockPatternPicker() {
+	supportsBlockVariationPicker() {
 		return !! registerBlockVariation;
 	}
 
-	blockPatternPicker( ) {
+	blockVariationPicker( ) {
 		return (
 			<Fragment>
 				<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
@@ -357,7 +357,7 @@ class FormEdit extends Component {
 		);
 	}
 
-	innerBlocksPatternPicker( ) {
+	innerBlocksPicker( ) {
 		const { hasInnerBlocks } = this.props;
 		return (
 			<Fragment>
@@ -380,14 +380,14 @@ class FormEdit extends Component {
 	}
 
 	render() {
-		const { className, blockType, defaultPattern, replaceInnerBlocks, hasInnerBlocks, variations } = this.props;
+		const { className, blockType, defaultVariation, replaceInnerBlocks, hasInnerBlocks, variations } = this.props;
 
 		const classes = classnames(
 			className,
 			'coblocks-form',
 		);
 
-		if ( hasInnerBlocks || ! this.supportsBlockPatternPicker() ) {
+		if ( hasInnerBlocks || ! this.supportsBlockVariationPicker() ) {
 			return (
 				<Fragment>
 					<InspectorControls>
@@ -452,13 +452,13 @@ class FormEdit extends Component {
 						</PanelBody>
 					</InspectorControls>
 					<div className={ classes }>
-						{ this.supportsBlockPatternPicker() ? this.blockPatternPicker() : this.innerBlocksPatternPicker() }
+						{ this.supportsBlockVariationPicker() ? this.blockVariationPicker() : this.innerBlocksPicker() }
 					</div>
 				</Fragment>
 			);
 		}
 
-		const blockVariationPickerOnSelect = ( nextVariation = defaultPattern ) => {
+		const blockVariationPickerOnSelect = ( nextVariation = defaultVariation ) => {
 			if ( nextVariation.attributes ) {
 				this.props.setAttributes( nextVariation.attributes );
 			}
@@ -505,7 +505,7 @@ const applyWithSelect = withSelect( ( select, props ) => {
 		hasInnerBlocks: select( 'core/block-editor' ).getBlocks( props.clientId ).length > 0,
 
 		blockType: getBlockType( props.name ),
-		defaultPattern: typeof getDefaultBlockVariation === 'undefined' ? null : getDefaultBlockVariation( props.name ),
+		defaultVariation: typeof getDefaultBlockVariation === 'undefined' ? null : getDefaultBlockVariation( props.name ),
 		variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( props.name ),
 		replaceInnerBlocks,
 	};
