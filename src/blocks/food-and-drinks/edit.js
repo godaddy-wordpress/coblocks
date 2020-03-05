@@ -21,8 +21,7 @@ import { compose } from '@wordpress/compose';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { createBlock } from '@wordpress/blocks';
-
-const TokenList = wp.tokenList;
+import TokenList from '@wordpress/token-list';
 
 const ALLOWED_BLOCKS = [ 'coblocks/food-item' ];
 
@@ -145,7 +144,7 @@ class FoodAndDrinksEdit extends Component {
 		const showPrices = ! attributes.showPrices;
 		setAttributes( { showPrices } );
 
-		this.updateInnerAttributes( 'coblocks/food-item', {	showPrice: showPrices } );
+		this.updateInnerAttributes( 'coblocks/food-item', { showPrice: showPrices } );
 	}
 
 	setColumns( value ) {
