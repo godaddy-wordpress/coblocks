@@ -65,7 +65,6 @@ class FormEdit extends Component {
 		this.supportsInnerBlocksPicker = this.supportsInnerBlocksPicker.bind( this );
 		this.innerBlocksPicker = this.innerBlocksPicker.bind( this );
 		this.blockVariationPicker = this.blockVariationPicker.bind( this );
-		this.subjectField = createRef();
 
 		this.state = {
 			toError: error && error.length ? error : null,
@@ -74,6 +73,9 @@ class FormEdit extends Component {
 			isSaving: false,
 			keySaved: false,
 			template: null,
+			subjectValue: this.props.attributes.subject || '' === this.props.attributes.subject ?
+				this.props.attributes.subject :
+				coblocksBlockData.form.emailSubject,
 		};
 
 		const to = arguments[ 0 ].attributes.to ? arguments[ 0 ].attributes.to : '';
@@ -147,6 +149,7 @@ class FormEdit extends Component {
 	}
 
 	onChangeSubject( subject ) {
+		this.setState( { subjectValue: subject } );
 		this.props.setAttributes( { subject } );
 	}
 
@@ -242,12 +245,7 @@ class FormEdit extends Component {
 	}
 
 	appendTagsToSubject( event ) {
-		const { attributes } = this.props;
-		let { subject } = attributes;
-		if ( null === subject ) {
-			subject = this.subjectField.current.props.value;
-		}
-		this.onChangeSubject( subject + event.target.innerHTML );
+		this.onChangeSubject( this.state.subjectValue + event.target.innerHTML );
 	}
 
 	removeRecaptchaKey() {
@@ -271,7 +269,8 @@ class FormEdit extends Component {
 	renderToAndSubjectFields() {
 		const fieldEmailError = this.state.toError;
 		const { instanceId, attributes } = this.props;
-		const { subject, to } = attributes;
+		const { to } = attributes;
+		const { subjectValue } = this.state;
 		return (
 			<Fragment>
 				<TextControl
@@ -290,12 +289,7 @@ class FormEdit extends Component {
 				</Notice>
 				<TextControl
 					label={ __( 'Subject', 'coblocks' ) }
-					ref={ this.subjectField }
-					value={
-						subject || '' === subject ?
-							subject :
-							coblocksBlockData.form.emailSubject
-					}
+					value={ subjectValue }
 					onChange={ this.onChangeSubject }
 					help={ <Fragment> { __( 'You may use the following tags in the subject field: ', 'coblocks' ) }
 						<Button
