@@ -12,7 +12,7 @@ const svgs = {
 	filled: {},
 };
 
-const bundledIconsEnabled = ( typeof coblocksBlockData !== 'undefined' && coblocksBlockData.bundledIconsEnabled );
+const bundledIconsEnabled = ( typeof coblocksBlockData === 'undefined' || coblocksBlockData.bundledIconsEnabled );
 
 let icons = bundledIconsEnabled ? {
 	coblocks: {
