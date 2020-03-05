@@ -91,7 +91,7 @@ class FoodItem extends Component {
 
 	updateInnerAttributes( blockName, newAttributes ) {
 		const { getBlocksByClientId, updateBlockAttributes } = this.props;
-		const innerItems = getBlocksByClientId(	this.props.clientId	)[ 0 ].innerBlocks;
+		const innerItems = getBlocksByClientId(	this.props.clientId )[ 0 ].innerBlocks;
 
 		innerItems.forEach( ( item ) => {
 			if ( item.name === blockName ) {
@@ -118,20 +118,14 @@ class FoodItem extends Component {
 			const storedPrice = storedAttributes[ clientId ] && storedAttributes[ clientId ].price;
 
 			if ( price === '' ) {
-				setAttributes( {
-					price: storedPrice ? storedPrice : price,
-				} );
+				setAttributes( { price: storedPrice ? storedPrice : price } );
 			} else if ( price !== '' ) {
 				localStorage.setItem( 'menuItemPrices', JSON.stringify( {
 					...storedAttributes,
-					[ clientId ]: {
-						price,
-					},
+					[ clientId ]: {	price },
 				} ) );
 
-				setAttributes( {
-					price: '',
-				} );
+				setAttributes( { price: '' } );
 			}
 		}
 	}
@@ -145,20 +139,14 @@ class FoodItem extends Component {
 			const storedUrl = storedAttributes[ clientId ] && storedAttributes[ clientId ].url;
 
 			if ( url === '' ) {
-				setAttributes( {
-					url: storedUrl ? storedUrl : url,
-				} );
+				setAttributes( { url: storedUrl ? storedUrl : url } );
 			} else if ( url !== '' ) {
 				localStorage.setItem( 'menuItemImages', JSON.stringify( {
 					...storedAttributes,
-					[ clientId ]: {
-						url,
-					},
+					[ clientId ]: {	url	},
 				} ) );
 
-				setAttributes( {
-					url: '',
-				} );
+				setAttributes( { url: '' } );
 			}
 		}
 	}
