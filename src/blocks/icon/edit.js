@@ -29,10 +29,14 @@ export { MIN_ICON_SIZE, MAX_ICON_SIZE };
 
 class Edit extends Component {
 	componentDidMount() {
+		const bundledIconsEnabled = ( typeof coblocksBlockData === 'undefined' || coblocksBlockData.bundledIconsEnabled );
 		// Check if the icon is the default.
 		if ( this.props.attributes.icon === '' ) {
 			// Randomized the default icon when first added.
-			const defaultIcons = [ 'aperture', 'gesture', 'scatter_plot', 'waves', 'blocks', 'coblocks', 'drafts', 'device_hub', 'marker' ];
+			let defaultIcons = [ 'aperture', 'gesture', 'scatter_plot', 'waves', 'blocks', 'coblocks', 'drafts', 'device_hub', 'marker' ];
+			if ( ! bundledIconsEnabled && Object.keys( coblocksBlockData.customIcons ).length ) {
+				defaultIcons = Object.keys( coblocksBlockData.customIcons );
+			}
 			const rand = defaultIcons[ Math.floor( Math.random() * defaultIcons.length ) ];
 			this.props.setAttributes( { icon: rand } );
 		}
