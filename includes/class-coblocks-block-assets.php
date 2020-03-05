@@ -136,9 +136,9 @@ class CoBlocks_Block_Assets {
 		/**
 		 * Filter to disable all bundled CoBlocks svg icons
 		 *
-		 * @param bool    true Whether or not the bundled icons are displayed.
+		 * @param bool true Whether or not the bundled icons are displayed.
 		 */
-		$bundled_icons_disabled = (bool) apply_filters( 'coblocks_bundled_icons_disabled', false );
+		$bundled_icons_enabled = (bool) apply_filters( 'coblocks_bundled_icons_enabled', true );
 
 		$form_subject = ( new CoBlocks_Form() )->default_subject();
 
@@ -152,7 +152,7 @@ class CoBlocks_Block_Assets {
 				),
 				'cropSettingsOriginalImageNonce' => wp_create_nonce( 'cropSettingsOriginalImageNonce' ),
 				'cropSettingsNonce'              => wp_create_nonce( 'cropSettingsNonce' ),
-				'bundledIconsDisabled'           => $bundled_icons_disabled,
+				'bundledIconsEnabled'            => $bundled_icons_enabled,
 				'customIcons'                    => $this->get_custom_icons(),
 				'typographyControlsEnabled'      => $typography_controls_enabled,
 			)
