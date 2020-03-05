@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-03-05T15:45:33+00:00\n"
+"POT-Creation-Date: 2020-03-05T18:55:19+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -1849,7 +1849,7 @@ msgstr ""
 #: src/blocks/gallery-offset/inspector.js:114
 #: src/blocks/icon/inspector.js:106
 #: src/blocks/icon/inspector.js:172
-#: src/components/typography-controls/index.js:223
+#: src/components/typography-controls/index.js:221
 msgid "Size"
 msgstr ""
 
@@ -3075,7 +3075,7 @@ msgstr ""
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:495
 #: src/blocks/icon/svgs.js:513
-#: src/components/typography-controls/index.js:198
+#: src/components/typography-controls/index.js:196
 msgid "Font"
 msgstr ""
 
@@ -6266,27 +6266,27 @@ msgstr ""
 msgid "Capitalize"
 msgstr ""
 
-#: src/components/typography-controls/index.js:205
+#: src/components/typography-controls/index.js:203
 msgid "Weight"
 msgstr ""
 
-#: src/components/typography-controls/index.js:214
+#: src/components/typography-controls/index.js:212
 msgid "Transform"
 msgstr ""
 
-#: src/components/typography-controls/index.js:234
+#: src/components/typography-controls/index.js:232
 msgid "Line Height"
 msgstr ""
 
-#: src/components/typography-controls/index.js:245
+#: src/components/typography-controls/index.js:243
 msgid "Letter Spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:257
+#: src/components/typography-controls/index.js:255
 msgid "No Top Spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:262
+#: src/components/typography-controls/index.js:260
 msgid "No Bottom Spacing"
 msgstr ""
 
