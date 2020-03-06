@@ -182,7 +182,7 @@ export default compose( [
 	} ),
 ] )( Edit );
 
-if ( typeof wp.domReady === "function" ) {
+if ( 'function' === typeof wp.domReady ) {
 	wp.domReady( () => {
 		// Remove the icon styles when bundled icons are disabled and no custom icon config exists.
 		if ( ! bundledIconsEnabled && ! coblocksBlockData.customIconConfigExists ) {
