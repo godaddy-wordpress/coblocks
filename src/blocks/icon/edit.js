@@ -18,6 +18,7 @@ import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { ResizableBox } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
+import { domReady } from '@wordpress/dom-ready';
 
 /**
  * Set and export block values.
@@ -27,9 +28,10 @@ const MAX_ICON_SIZE = 400;
 
 export { MIN_ICON_SIZE, MAX_ICON_SIZE };
 
+const bundledIconsEnabled = ( typeof coblocksBlockData === 'undefined' || coblocksBlockData.bundledIconsEnabled );
+
 class Edit extends Component {
 	componentDidMount() {
-		const bundledIconsEnabled = ( typeof coblocksBlockData === 'undefined' || coblocksBlockData.bundledIconsEnabled );
 		// Check if the icon is the default.
 		if ( this.props.attributes.icon === '' ) {
 			// Randomized the default icon when first added.
@@ -179,3 +181,13 @@ export default compose( [
 		};
 	} ),
 ] )( Edit );
+
+if ( typeof wp.domReady === "function" ) {
+	wp.domReady( () => {
+		// Remove the icon styles when bundled icons are disabled and no custom icon config exists.
+		if ( ! bundledIconsEnabled && ! coblocksBlockData.customIconConfigExists ) {
+			wp.blocks.unregisterBlockStyle( 'coblocks/icon', 'filled' );
+			wp.blocks.unregisterBlockStyle( 'coblocks/icon', 'outlined' );
+		}
+	} );
+}
