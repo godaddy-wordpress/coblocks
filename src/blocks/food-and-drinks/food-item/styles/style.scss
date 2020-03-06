@@ -14,6 +14,23 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenFree);
 		width: 33.33%;
 	}
 
+	[data-columns="4"] & {
+		flex-grow: 1;
+		width: 25%;
+	}
+
+	[data-columns="3"] &,
+	[data-columns="4"] & {
+		.wp-block-coblocks-food-item__heading-wrapper {
+			display: block;
+		}
+
+		.wp-block-coblocks-food-item__attributes {
+			display: inline-block;
+			margin: 0;
+		}
+	}
+
 	.wp-block-coblocks-food-and-drinks[data-columns="2"]:not(.is-style-list) & {
 
 		&:nth-child(even) {

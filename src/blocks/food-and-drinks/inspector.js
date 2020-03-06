@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { PanelBody, ToggleControl } from '@wordpress/components';
+import { PanelBody, ToggleControl, RangeControl } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 import { ENTER, SPACE } from '@wordpress/keycodes';
 
@@ -19,11 +19,13 @@ const Inspector = ( props ) => {
 		onToggleImages,
 		onTogglePrices,
 		onUpdateStyle,
+		onSetColumns,
 	} = props;
 
 	const {
 		showImages,
 		showPrices,
+		columns,
 	} = attributes;
 
 	return (
@@ -81,6 +83,13 @@ const Inspector = ( props ) => {
 					}
 					checked={ showPrices }
 					onChange={ onTogglePrices }
+				/>
+				<RangeControl
+					label={ __( 'Columns', 'coblocks' ) }
+					value={ columns }
+					onChange={ onSetColumns }
+					min={ 2 }
+					max={ 4 }
 				/>
 			</PanelBody>
 		</InspectorControls>
