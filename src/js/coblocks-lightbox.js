@@ -25,6 +25,7 @@ import jQuery from 'jquery';
 		const arrowLeft = $( '<div/>', { class: 'arrow-left' } );
 
 		const images = $( `.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure img` );
+		const captions = $( `.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure figcaption` );
 		let index;
 
 		modalHeading.append( counter, close );
@@ -35,6 +36,14 @@ import jQuery from 'jquery';
 
 		if ( images.length > 0 ) {
 			$( 'body' ).append( wrapper );
+		}
+
+		if ( captions.length > 0 ) {
+			captions.each( function( captionIndex, caption ) {
+				$( caption ).click( function() {
+					changeImage( captionIndex );
+				} );
+			} );
 		}
 
 		const imagePreloader = {};
