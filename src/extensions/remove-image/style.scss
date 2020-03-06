@@ -1,5 +1,10 @@
 
 .edit-post-sidebar .replace-image-button {
+	display: none;
+}
+.edit-post-sidebar .is-opened + .replace-image-button {
 	display: flex;
 	justify-content: flex-end;
+	padding: 0px 16px 32px 16px;
+	margin-top: -8px;
 }
