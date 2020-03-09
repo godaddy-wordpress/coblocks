@@ -63,7 +63,7 @@ class Inspector extends Component {
 					<PanelBody title={ __( 'Accordion Item settings', 'coblocks' ) }>
 						<ToggleControl
 							/* translators: visually display open as opposed to closed */
-							label={ __( 'Display Open', 'coblocks' ) }
+							label={ __( 'Display as open', 'coblocks' ) }
 							checked={ !! open }
 							help={ this.getDisplayOpenHelp }
 							onChange={ () => setAttributes( { open: ! open } ) }
