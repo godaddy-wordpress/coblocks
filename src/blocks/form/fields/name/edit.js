@@ -66,7 +66,7 @@ function CoBlocksFieldName( props ) {
 				}
 			</div>
 			<InspectorControls>
-				<PanelBody title={ __( 'Name field settings', 'coblocks' ) }>
+				<PanelBody title={ __( 'Name Field settings', 'coblocks' ) }>
 					<ToggleControl
 						label={ __( 'Last Name', 'coblocks' ) }
 						className="coblocks-field-label__required"
