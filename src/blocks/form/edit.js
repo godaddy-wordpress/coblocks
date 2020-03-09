@@ -1,5 +1,4 @@
-/* eslint-disable no-restricted-syntax */
-/*global coblocksBlockData, jQuery*/
+/*global coblocksBlockData*/
 
 /**
  * External dependencies
@@ -21,21 +20,14 @@ import { TEMPLATE_OPTIONS } from './deprecatedTemplates/layouts';
  * WordPress dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
+import { Component, Fragment, createRef } from '@wordpress/element';
 import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/components';
 import { InspectorControls, InnerBlocks, __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
 import { compose } from '@wordpress/compose';
 import { withSelect, useDispatch } from '@wordpress/data';
 import { createBlock, registerBlockVariation } from '@wordpress/blocks';
-
-/**
- * Get settings
- */
-let settings;
-wp.api.loadPromise.then( () => {
-	settings = new wp.api.models.Settings();
-} );
+import apiFetch from '@wordpress/api-fetch';
 
 /**
  * Block constants
@@ -55,7 +47,7 @@ class FormEdit extends Component {
 		this.onChangeSubmit = this.onChangeSubmit.bind( this );
 		this.getToValidationError = this.getToValidationError.bind( this );
 		this.renderToAndSubjectFields = this.renderToAndSubjectFields.bind( this );
-		this.preventEnterSubmittion = this.preventEnterSubmittion.bind( this );
+		this.preventEnterSubmission = this.preventEnterSubmission.bind( this );
 		this.hasEmailError = this.hasEmailError.bind( this );
 		this.saveRecaptchaKey = this.saveRecaptchaKey.bind( this );
 		this.removeRecaptchaKey = this.removeRecaptchaKey.bind( this );
@@ -73,6 +65,9 @@ class FormEdit extends Component {
 			isSaving: false,
 			keySaved: false,
 			template: null,
+			subjectValue: this.props.attributes.subject || '' === this.props.attributes.subject ?
+				this.props.attributes.subject :
+				coblocksBlockData.form.emailSubject,
 		};
 
 		const to = arguments[ 0 ].attributes.to ? arguments[ 0 ].attributes.to : '';
@@ -83,48 +78,13 @@ class FormEdit extends Component {
 	}
 
 	componentDidMount() {
-		if ( typeof settings !== 'undefined' ) {
-			settings.on( 'change:coblocks_google_recaptcha_site_key', ( model ) => {
-				const recaptchaSiteKey = model.get( 'coblocks_google_recaptcha_site_key' );
-				this.setState( {
-					recaptchaSiteKey: settings.get( 'coblocks_google_recaptcha_site_key' ),
-					isSavedKey: recaptchaSiteKey === '' ? false : true,
-				} );
+		apiFetch( { path: '/wp/v2/settings' } ).then( ( res ) => {
+			this.setState( {
+				recaptchaSiteKey: res.coblocks_google_recaptcha_site_key,
+				recaptchaSecretKey: res.coblocks_google_recaptcha_secret_key,
+				isSavedKey: res.coblocks_google_recaptcha_site_key === '' || res.coblocks_google_recaptcha_secret_key === '' ? false : true,
 			} );
-
-			settings.on( 'change:coblocks_google_recaptcha_secret_key', ( model ) => {
-				const recaptchaSecretKey = model.get(
-					'coblocks_google_recaptcha_secret_key'
-				);
-				this.setState( {
-					recaptchaSecretKey: settings.get(
-						'coblocks_google_recaptcha_secret_key'
-					),
-					isSavedKey: recaptchaSecretKey === '' ? false : true,
-				} );
-			} );
-
-			settings.fetch().then( ( response ) => {
-				this.setState( {
-					recaptchaSiteKey: response.coblocks_google_recaptcha_site_key,
-				} );
-				if ( this.state.recaptchaSiteKey && this.state.recaptchaSiteKey !== '' ) {
-					this.setState( { isSavedKey: true } );
-				}
-			} );
-
-			settings.fetch().then( ( response ) => {
-				this.setState( {
-					recaptchaSecretKey: response.coblocks_google_recaptcha_secret_key,
-				} );
-				if (
-					this.state.recaptchaSecretKey &&
-					this.state.recaptchaSecretKey !== ''
-				) {
-					this.setState( { isSavedKey: true } );
-				}
-			} );
-		}
+		} );
 
 		const { hasInnerBlocks, innerBlocks, defaultVariation } = this.props;
 		if ( hasInnerBlocks ) {
@@ -146,6 +106,7 @@ class FormEdit extends Component {
 	}
 
 	onChangeSubject( subject ) {
+		this.setState( { subjectValue: subject } );
 		this.props.setAttributes( { subject } );
 	}
 
@@ -217,7 +178,7 @@ class FormEdit extends Component {
 		return null;
 	}
 
-	preventEnterSubmittion( event ) {
+	preventEnterSubmission( event ) {
 		if ( event.key === 'Enter' ) {
 			event.preventDefault();
 			event.stopPropagation();
@@ -225,28 +186,23 @@ class FormEdit extends Component {
 	}
 
 	saveRecaptchaKey() {
+		const { recaptchaSiteKey, recaptchaSecretKey } = this.state;
 		this.setState( { isSaving: true } );
-
-		const model = new wp.api.models.Settings( {
-			coblocks_google_recaptcha_site_key: this.state.recaptchaSiteKey,
-			coblocks_google_recaptcha_secret_key: this.state.recaptchaSecretKey,
-		} );
-		model.save().then( () => {
-			this.setState( { isSavedKey: true, keySaved: true } );
-			setTimeout( () => {
-				this.setState( { isSaving: false } );
-			}, 1000 );
-			settings.fetch();
+		apiFetch( {
+			path: '/wp/v2/settings',
+			method: 'POST',
+			data: { coblocks_google_recaptcha_site_key: recaptchaSiteKey, coblocks_google_recaptcha_secret_key: recaptchaSecretKey },
+		} ).then( () => {
+			this.setState( {
+				isSavedKey: true,
+				keySaved: true,
+				isSaving: false,
+			} );
 		} );
 	}
 
 	appendTagsToSubject( event ) {
-		const { attributes } = this.props;
-		let { subject } = attributes;
-		if ( null === subject ) {
-			subject = jQuery( event.target ).closest( 'div.components-base-control' ).find( 'input[type="text"]' ).val();
-		}
-		this.onChangeSubject( subject + event.target.innerHTML );
+		this.onChangeSubject( this.state.subjectValue + event.target.innerHTML );
 	}
 
 	removeRecaptchaKey() {
@@ -256,13 +212,16 @@ class FormEdit extends Component {
 		} );
 		if ( this.state.isSavedKey ) {
 			this.setState( { isSaving: true } );
-			const model = new wp.api.models.Settings( {
-				coblocks_google_recaptcha_site_key: '',
-				coblocks_google_recaptcha_secret_key: '',
-			} );
-			model.save().then( () => {
-				this.setState( { isSavedKey: false, isSaving: false, keySaved: false } );
-				settings.fetch();
+			apiFetch( {
+				path: '/wp/v2/settings',
+				method: 'POST',
+				data: { coblocks_google_recaptcha_site_key: '', coblocks_google_recaptcha_secret_key: '' },
+			} ).then( () => {
+				this.setState( {
+					isSavedKey: true,
+					keySaved: true,
+					isSaving: false,
+				} );
 			} );
 		}
 	}
@@ -270,7 +229,8 @@ class FormEdit extends Component {
 	renderToAndSubjectFields() {
 		const fieldEmailError = this.state.toError;
 		const { instanceId, attributes } = this.props;
-		const { subject, to } = attributes;
+		const { to } = attributes;
+		const { subjectValue } = this.state;
 		return (
 			<Fragment>
 				<TextControl
@@ -279,7 +239,7 @@ class FormEdit extends Component {
 					}` }
 					label={ __( 'Email address', 'coblocks' ) }
 					placeholder={ __( 'name@example.com', 'coblocks' ) }
-					onKeyDown={ this.preventEnterSubmittion }
+					onKeyDown={ this.preventEnterSubmission }
 					value={ to || '' === to ? to : coblocksBlockData.form.adminEmail }
 					onBlur={ this.onBlurTo }
 					onChange={ this.onChangeTo }
@@ -289,11 +249,7 @@ class FormEdit extends Component {
 				</Notice>
 				<TextControl
 					label={ __( 'Subject', 'coblocks' ) }
-					value={
-						subject || '' === subject ?
-							subject :
-							coblocksBlockData.form.emailSubject
-					}
+					value={ subjectValue }
 					onChange={ this.onChangeSubject }
 					help={ <Fragment> { __( 'You may use the following tags in the subject field: ', 'coblocks' ) }
 						<Button

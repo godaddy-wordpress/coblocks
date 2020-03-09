@@ -17,13 +17,13 @@ describe( 'Test CoBlocks Hero Block', function() {
 	 * alter any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'Test hero block saves without content.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'hero' );
+		helpers.addBlockToPost( 'coblocks/hero', true );
 
 		cy.get( '.wp-block-coblocks-hero' ).should( 'exist' );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'hero' );
+		helpers.checkForBlockErrors( 'coblocks/hero' );
 
 		helpers.viewPage();
 
@@ -38,7 +38,7 @@ describe( 'Test CoBlocks Hero Block', function() {
 	 */
 	it( 'Test hero block saves with color values set.', function() {
 		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB } = heroData;
-		helpers.addCoBlocksBlockToPage( true, 'hero' );
+		helpers.addBlockToPost( 'coblocks/hero', true );
 
 		cy.get( '.wp-block-coblocks-hero' ).click( { force: true } );
 
@@ -47,7 +47,7 @@ describe( 'Test CoBlocks Hero Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'hero' );
+		helpers.checkForBlockErrors( 'coblocks/hero' );
 
 		helpers.viewPage();
 
@@ -64,7 +64,7 @@ describe( 'Test CoBlocks Hero Block', function() {
 	 * and are able to successfully save the block in fullscreen mode without errors.
 	 */
 	it( 'Test hero block saves with full screen set.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'hero' );
+		helpers.addBlockToPost( 'coblocks/hero', true );
 
 		helpers.toggleSettingCheckbox( /fullscreen/i );
 
@@ -76,7 +76,7 @@ describe( 'Test CoBlocks Hero Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'hero' );
+		helpers.checkForBlockErrors( 'coblocks/hero' );
 
 		helpers.viewPage();
 
