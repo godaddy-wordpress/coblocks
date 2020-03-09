@@ -100,7 +100,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 					<InspectorAdvancedControls>
 						{ hasStackedControl && (
 							<ToggleControl
-								label={ __( 'Stack on Mobile', 'coblocks' ) }
+								label={ __( 'Stack on mobile', 'coblocks' ) }
 								checked={ !! isStackedOnMobile }
 								onChange={ () =>
 									setAttributes( { isStackedOnMobile: ! isStackedOnMobile } )

@@ -144,7 +144,7 @@ class Inspector extends Component {
 						help={ this.getCaptionsHelp }
 					/>
 					{ captions && <SelectControl
-						label={ __( 'Caption Style', 'coblocks' ) }
+						label={ __( 'Caption style', 'coblocks' ) }
 						value={ captionStyle }
 						onChange={ this.setCaptionStyleTo }
 						options={ captionOptions }

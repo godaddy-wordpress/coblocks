@@ -24,7 +24,7 @@ const Inspector = props => {
 		<InspectorControls>
 			<PanelBody title={ __( 'Events settings', 'coblocks' ) } initialOpen={ true }>
 				<ToggleControl
-					label={ __( 'Link a Calendar', 'coblocks' ) }
+					label={ __( 'Link a calendar', 'coblocks' ) }
 					help={
 						showExternalCalendarControls ?
 							__( 'Showing public calendar.', 'coblocks' ) :

@@ -54,7 +54,7 @@ const Inspector = ( props ) => {
 				/>
 				<div className="components-food-item-attributes">
 					<p className="components-food-item-attributes__label">
-						{ __( 'Item Attributes', 'coblocks' ) }
+						{ __( 'Item attributes', 'coblocks' ) }
 					</p>
 					<CheckboxControl
 						label={ __( 'Popular', 'coblocks' ) }
@@ -109,7 +109,7 @@ const Inspector = ( props ) => {
 						}
 					/>
 					<FocalPointPicker
-						label={ __( 'Focal Point', 'coblocks' ) }
+						label={ __( 'Focal point', 'coblocks' ) }
 						url={ url }
 						value={ focalPoint }
 						onChange={ ( value ) => setAttributes( { focalPoint: value } ) }

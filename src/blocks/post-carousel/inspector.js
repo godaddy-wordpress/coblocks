@@ -54,7 +54,7 @@ class Inspector extends Component {
 			<PanelBody title={ __( 'Post Carousel settings', 'coblocks' ) }>
 				<Fragment>
 					<ToggleControl
-						label={ __( 'Post Date', 'coblocks' ) }
+						label={ __( 'Post date', 'coblocks' ) }
 						checked={ displayPostDate }
 						help={
 							displayPostDate ?
@@ -64,7 +64,7 @@ class Inspector extends Component {
 						onChange={ () => setAttributes( { displayPostDate: ! displayPostDate } ) }
 					/>
 					<ToggleControl
-						label={ __( 'Post Content', 'coblocks' ) }
+						label={ __( 'Post content', 'coblocks' ) }
 						checked={ displayPostContent }
 						help={
 							displayPostContent ?
@@ -101,8 +101,8 @@ class Inspector extends Component {
 					<RadioControl
 						selected={ postFeedType }
 						options={ [
-							{ label: __( 'My Blog', 'coblocks' ), value: 'internal' },
-							{ label: __( 'External Feed', 'coblocks' ), value: 'external' },
+							{ label: __( 'My blog', 'coblocks' ), value: 'internal' },
+							{ label: __( 'External feed', 'coblocks' ), value: 'external' },
 						] }
 						onChange={ ( value ) => setAttributes( { postFeedType: value } ) }
 					/>

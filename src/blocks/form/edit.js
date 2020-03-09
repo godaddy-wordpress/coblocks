@@ -413,13 +413,13 @@ class FormEdit extends Component {
 								</Fragment>
 							</p>
 							<TextControl
-								label={ __( 'Site Key', 'coblocks' ) }
+								label={ __( 'Site key', 'coblocks' ) }
 								value={ this.state.recaptchaSiteKey }
 								onChange={ ( value ) => this.setState( { recaptchaSiteKey: value } ) }
 								className="components-block-coblocks-form-recaptcha-key__custom-input"
 							/>
 							<TextControl
-								label={ __( 'Secret Key', 'coblocks' ) }
+								label={ __( 'Secret key', 'coblocks' ) }
 								value={ this.state.recaptchaSecretKey }
 								onChange={ ( value ) => this.setState( { recaptchaSecretKey: value } ) }
 								className="components-block-coblocks-form-recaptcha-key__custom-input"

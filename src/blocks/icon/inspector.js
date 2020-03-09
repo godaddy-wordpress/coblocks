@@ -293,7 +293,7 @@ class Inspector extends Component {
 							onChange={ ( value ) => setAttributes( { rel: value } ) }
 						/>
 						<ToggleControl
-							label={ !! linkTarget ? __( 'Opening in New Tab', 'coblocks' ) : __( 'Open in New Tab', 'coblocks' ) }
+							label={ !! linkTarget ? __( 'Opening in new tab', 'coblocks' ) : __( 'Open in new tab', 'coblocks' ) }
 							onChange={ this.onSetNewTab }
 							checked={ linkTarget === '_blank' } />
 					</PanelBody>

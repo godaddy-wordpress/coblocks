@@ -152,7 +152,7 @@ describe( 'Test CoBlocks Share Block', function() {
 	it( 'Test the share block custom classes and top/bottom spacing.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'social' );
 
-		cy.get( '.components-panel__body-title' ).contains( 'Icon Settings' ).then( ( $panelTop ) => {
+		cy.get( '.components-panel__body-title' ).contains( 'Icon settings' ).then( ( $panelTop ) => {
 			const $parentPanel = Cypress.$( $panelTop ).closest( 'div.components-panel__body' );
 			if ( $parentPanel.hasClass( 'is-opened' ) ) {
 				$panelTop.click();

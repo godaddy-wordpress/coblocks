@@ -81,7 +81,7 @@ class Inspector extends Component {
 						/>
 						{ ( 'full' === align || 'wide' === align ) && (
 							<RangeControl
-								label={ __( 'Max Width', 'coblocks' ) }
+								label={ __( 'Max width', 'coblocks' ) }
 								className="components-block-coblocks-media-card-maxwidth-range"
 								value={ parseFloat( maxWidth ) }
 								onChange={ ( nextMaxWidth ) => setAttributes( { maxWidth: nextMaxWidth } ) }
@@ -106,7 +106,7 @@ class Inspector extends Component {
 							/>
 						) }
 						<ToggleControl
-							label={ __( 'Card Shadow', 'coblocks' ) }
+							label={ __( 'Card shadow', 'coblocks' ) }
 							checked={ !! hasCardShadow }
 							onChange={ () => setAttributes( { hasCardShadow: ! hasCardShadow } ) }
 							help={ !! hasCardShadow ? __( 'Showing card shadow.', 'coblocks' ) : __( 'Toggle to add a card shadow.', 'coblocks' ) }
@@ -116,7 +116,7 @@ class Inspector extends Component {
 								label={
 									sprintf(
 										/* translators: %s: Placeholder is either 'Card, or 'Image' */
-										__( ' %s Shadow', 'coblocks' ),
+										__( ' %s shadow', 'coblocks' ),
 										mediaType.charAt( 0 ).toUpperCase() + mediaType.slice( 1 )
 									)
 								}

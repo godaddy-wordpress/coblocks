@@ -33,15 +33,15 @@ describe( 'Test CoBlocks Services Block', function() {
 
 		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 2 );
 
-		helpers.setInputValue( 'Services Settings', 'Columns', 1, false );
+		helpers.setInputValue( 'Services settings', 'Columns', 1, false );
 
 		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 1 );
 
-		helpers.setInputValue( 'Services Settings', 'Columns', 3, false );
+		helpers.setInputValue( 'Services settings', 'Columns', 3, false );
 
 		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 3 );
 
-		helpers.setInputValue( 'Services Settings', 'Columns', 4, false );
+		helpers.setInputValue( 'Services settings', 'Columns', 4, false );
 
 		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 4 );
 

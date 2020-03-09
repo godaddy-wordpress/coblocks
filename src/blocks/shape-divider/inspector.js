@@ -52,7 +52,7 @@ class Inspector extends Component {
 				<InspectorControls>
 					<PanelBody title={ __( 'Divider settings', 'coblocks' ) }>
 						<ResponsiveBaseControl { ...this.props }
-							label={ __( 'Shape Height in pixels', 'coblocks' ) }
+							label={ __( 'Shape height in pixels', 'coblocks' ) }
 							height={ shapeHeight }
 							heightTablet={ shapeHeightTablet }
 							heightMobile={ shapeHeightMobile }
@@ -70,7 +70,7 @@ class Inspector extends Component {
 							min="40"
 						/>
 						<ResponsiveBaseControl { ...this.props }
-							label={ __( 'Background Height in pixels', 'coblocks' ) }
+							label={ __( 'Background height in pixels', 'coblocks' ) }
 							height={ backgroundHeight }
 							heightTablet={ backgroundHeightTablet }
 							heightMobile={ backgroundHeightMobile }
@@ -95,7 +95,7 @@ class Inspector extends Component {
 							{
 								value: color.color,
 								onChange: setColor,
-								label: __( 'Shape Color', 'coblocks' ),
+								label: __( 'Shape color', 'coblocks' ),
 							},
 							{
 								value: backgroundColor.color,

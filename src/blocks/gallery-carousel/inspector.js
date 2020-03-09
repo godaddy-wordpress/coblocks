@@ -153,7 +153,7 @@ class Inspector extends Component {
 					</InspectorControls>
 					<InspectorAdvancedControls>
 						<ToggleControl
-							label={ __( 'Responsive Height', 'coblocks' ) }
+							label={ __( 'Responsive height', 'coblocks' ) }
 							checked={ !! responsiveHeight }
 							onChange={ () => setAttributes( { responsiveHeight: ! responsiveHeight } ) }
 							help={ this.getResponsiveHeightHelp }

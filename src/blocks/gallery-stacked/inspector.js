@@ -87,7 +87,7 @@ class Inspector extends Component {
 
 					{ wideControlsEnabled &&
 						<ToggleControl
-							label={ images.length > 1 ? __( 'Fullwidth Images', 'coblocks' ) : __( 'Fullwidth Image', 'coblocks' ) }
+							label={ images.length > 1 ? __( 'Fullwidth images', 'coblocks' ) : __( 'Fullwidth image', 'coblocks' ) }
 							checked={ !! fullwidth }
 							help={ this.getFullwidthImagesHelp }
 							onChange={ this.setFullwidthTo }
@@ -136,7 +136,7 @@ class Inspector extends Component {
 						<SizeControl { ...this.props }
 							onChange={ this.setShadowTo }
 							value={ shadow }
-							label={ __( 'Box Shadow', 'coblocks' ) }
+							label={ __( 'Shadow', 'coblocks' ) }
 							reset={ false }
 						/>
 					}

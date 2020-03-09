@@ -44,7 +44,7 @@ describe( 'Block: Highlight', function () {
 			.type( 'highlighted text' );
 
 		cy.get( '.edit-post-sidebar' )
-			.contains( RegExp( 'Text Settings', 'i' ) )
+			.contains( RegExp( 'Highlight settings', 'i' ) )
 			.then( $settingSection => {
 				cy.get( Cypress.$( $settingSection ).closest( '.components-panel__body' ) )
 					.find( '.components-select-control__input' )

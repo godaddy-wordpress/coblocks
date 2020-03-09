@@ -114,10 +114,10 @@ class Edit extends Component {
 		);
 
 		const columnOptions = [
-			{ columns: 1, name: __( 'One Column', 'coblocks' ), icon: rowIcons.colOne, key: '100' },
-			{ columns: 2, name: __( 'Two Columns', 'coblocks' ), icon: rowIcons.colTwo },
-			{ columns: 3, name: __( 'Three Columns', 'coblocks' ), icon: rowIcons.colThree },
-			{ columns: 4, name: __( 'Four Columns', 'coblocks' ), icon: rowIcons.colFour },
+			{ columns: 1, name: __( 'One column', 'coblocks' ), icon: rowIcons.colOne, key: '100' },
+			{ columns: 2, name: __( 'Two columns', 'coblocks' ), icon: rowIcons.colTwo },
+			{ columns: 3, name: __( 'Three columns', 'coblocks' ), icon: rowIcons.colThree },
+			{ columns: 4, name: __( 'Four columns', 'coblocks' ), icon: rowIcons.colFour },
 		];
 
 		let selectedRows = 1;
@@ -143,7 +143,7 @@ class Edit extends Component {
 						key="placeholder"
 						className="components-coblocks-row-placeholder"
 						icon={ <BlockIcon icon={ columns ? rowIcons.layout : rowIcons.row } /> }
-						label={ columns ? __( 'Row Layout', 'coblocks' ) : __( 'Row', 'coblocks' ) }
+						label={ columns ? __( 'Row layout', 'coblocks' ) : __( 'Row', 'coblocks' ) }
 						instructions={ columns ?
 							sprintf(
 								/* translators: %s: 'one' 'two' 'three' and 'four' */
@@ -154,7 +154,7 @@ class Edit extends Component {
 						}
 					>
 						{ ! columns ?
-							<ButtonGroup aria-label={ __( 'Select Row Columns', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
+							<ButtonGroup aria-label={ __( 'Select row columns', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
 								{ map( columnOptions, ( option ) => (
 									<Tooltip text={ option.name }>
 										<div className="components-coblocks-row-placeholder__button-wrapper">
@@ -180,7 +180,7 @@ class Edit extends Component {
 								) ) }
 							</ButtonGroup> :
 							<Fragment>
-								<ButtonGroup aria-label={ __( 'Select Row Layout', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
+								<ButtonGroup aria-label={ __( 'Select row layout', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
 									<IconButton
 										icon="exit"
 										className="components-coblocks-row-placeholder__back"
@@ -190,7 +190,7 @@ class Edit extends Component {
 											} );
 											this.setState( { layoutSelection: true } );
 										} }
-										label={ __( 'Back to Columns', 'coblocks' ) }
+										label={ __( 'Back to columns', 'coblocks' ) }
 									/>
 									{ map( layoutOptions[ selectedRows ], ( { name, key, icon } ) => (
 										<Tooltip text={ name }>

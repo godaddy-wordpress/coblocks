@@ -164,7 +164,7 @@ class GalleryCollageEdit extends Component {
 									icon="no-alt"
 									onClick={ () => this.removeImage( index ) }
 									className="coblocks-gallery-item__button"
-									label={ __( 'Remove Image', 'coblocks' ) }
+									label={ __( 'Remove image', 'coblocks' ) }
 									disabled={ ! isSelected }
 								/>
 							</div>

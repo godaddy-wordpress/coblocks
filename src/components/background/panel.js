@@ -83,47 +83,47 @@ class BackgroundPanel extends Component {
 			{
 				value: 'top left',
 				/* translators: block layout */
-				label: __( 'Top Left', 'coblocks' ),
+				label: __( 'Top left', 'coblocks' ),
 			},
 			{
 				value: 'top center',
 				/* translators: block layout */
-				label: __( 'Top Center', 'coblocks' ),
+				label: __( 'Top center', 'coblocks' ),
 			},
 			{
 				value: 'top right',
 				/* translators: block layout */
-				label: __( 'Top Right', 'coblocks' ),
+				label: __( 'Top right', 'coblocks' ),
 			},
 			{
 				value: 'center left',
 				/* translators: block layout */
-				label: __( 'Center Left', 'coblocks' ),
+				label: __( 'Center left', 'coblocks' ),
 			},
 			{
 				value: 'center center',
 				/* translators: block layout */
-				label: __( 'Center Center', 'coblocks' ),
+				label: __( 'Center center', 'coblocks' ),
 			},
 			{
 				value: 'center right',
 				/* translators: block layout */
-				label: __( 'Center Right', 'coblocks' ),
+				label: __( 'Center right', 'coblocks' ),
 			},
 			{
 				value: 'bottom left',
 				/* translators: block layout */
-				label: __( 'Bottom Left', 'coblocks' ),
+				label: __( 'Bottom left', 'coblocks' ),
 			},
 			{
 				value: 'bottom center',
 				/* translators: block layout */
-				label: __( 'Bottom Center', 'coblocks' ),
+				label: __( 'Bottom center', 'coblocks' ),
 			},
 			{
 				value: 'bottom right',
 				/* translators: block layout */
-				label: __( 'Bottom Right', 'coblocks' ),
+				label: __( 'Bottom right', 'coblocks' ),
 			},
 		];
 
@@ -131,7 +131,7 @@ class BackgroundPanel extends Component {
 			{
 				value: 'no-repeat',
 				/* translators: block layout */
-				label: __( 'No Repeat', 'coblocks' ),
+				label: __( 'No repeat', 'coblocks' ),
 			},
 			{
 				value: 'repeat',
@@ -141,12 +141,12 @@ class BackgroundPanel extends Component {
 			{
 				value: 'repeat-x',
 				/* translators: block layout */
-				label: __( 'Repeat Horizontally', 'coblocks' ),
+				label: __( 'Repeat horizontally', 'coblocks' ),
 			},
 			{
 				value: 'repeat-y',
 				/* translators: block layout */
-				label: __( 'Repeat Vertically', 'coblocks' ),
+				label: __( 'Repeat vertically', 'coblocks' ),
 			},
 		];
 
@@ -179,14 +179,14 @@ class BackgroundPanel extends Component {
 					>
 						{ backgroundType === 'image' && (
 							<ToggleControl
-								label={ __( 'Fixed Background', 'coblocks' ) }
+								label={ __( 'Fixed background', 'coblocks' ) }
 								checked={ !! hasParallax }
 								onChange={ () => setAttributes( { hasParallax: ! hasParallax } ) }
 							/>
 						) }
 						{ ! hasParallax && FocalPointPicker && backgroundType === 'image' && backgroundRepeat !== 'repeat' && (
 							<FocalPointPicker
-								label={ __( 'Focal Point', 'coblocks' ) }
+								label={ __( 'Focal point', 'coblocks' ) }
 								url={ backgroundImg }
 								value={ focalPoint }
 								onChange={ ( value ) => setAttributes( { focalPoint: value } ) }
@@ -195,7 +195,7 @@ class BackgroundPanel extends Component {
 						) }
 						{ hasOverlay && (
 							<RangeControl
-								label={ __( 'Background Opacity', 'coblocks' ) }
+								label={ __( 'Background opacity', 'coblocks' ) }
 								value={ backgroundOverlay }
 								onChange={ ( nextBackgroundOverlay ) => setAttributes( { backgroundOverlay: nextBackgroundOverlay } ) }
 								min={ 0 }
@@ -252,7 +252,7 @@ class BackgroundPanel extends Component {
 						) }
 						{ backgroundType === 'video' && (
 							<ToggleControl
-								label={ __( 'Mute Video', 'coblocks' ) }
+								label={ __( 'Mute video', 'coblocks' ) }
 								help={ videoMuted ? __( 'Muting the background video.', 'coblocks' ) : __( 'Toggle to mute the video.', 'coblocks' ) }
 								checked={ !! videoMuted }
 								onChange={ () => setAttributes( { videoMuted: ! videoMuted } ) }
@@ -260,7 +260,7 @@ class BackgroundPanel extends Component {
 						) }
 						{ backgroundType === 'video' && (
 							<ToggleControl
-								label={ __( 'Loop Video', 'coblocks' ) }
+								label={ __( 'Loop video', 'coblocks' ) }
 								help={ videoLoop ? __( 'Looping the background video.', 'coblocks' ) : __( 'Toggle to loop the video.', 'coblocks' ) }
 								checked={ !! videoLoop }
 								onChange={ () => setAttributes( { videoLoop: ! videoLoop } ) }
