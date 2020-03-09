@@ -18,11 +18,11 @@ describe( 'Test CoBlocks Logos Block', function() {
 	 * alter any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'Test logos block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'logos' );
+		helpers.addBlockToPost( 'coblocks/logos', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'logos' );
+		helpers.checkForBlockErrors( 'coblocks/logos' );
 
 		helpers.viewPage();
 
@@ -37,7 +37,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 	 */
 	it( 'Test logos block saves with image upload.', function() {
 		const { fileName, imageBase, pathToFixtures } = logosData;
-		helpers.addCoBlocksBlockToPage( true, 'logos' );
+		helpers.addBlockToPost( 'coblocks/logos', true );
 
 		cy.get( '.wp-block[data-type="coblocks/logos"]' )
 			.click();
@@ -55,7 +55,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 
 			helpers.savePage();
 
-			helpers.checkForBlockErrors( 'logos' );
+			helpers.checkForBlockErrors( 'coblocks/logos' );
 
 			helpers.viewPage();
 
@@ -70,7 +70,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 	 * to successfully save the block without errors.
 	 */
 	it( 'Test logos block saves with image from media library.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'logos' );
+		helpers.addBlockToPost( 'coblocks/logos', true );
 
 		cy.get( '.wp-block[data-type="coblocks/logos"]' )
 			.click()
@@ -94,7 +94,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'logos' );
+		helpers.checkForBlockErrors( 'coblocks/logos' );
 
 		helpers.viewPage();
 
@@ -109,7 +109,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 	 * successfully save the block without errors.
 	 */
 	it( 'Test logos block saves with black and white filter.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'logos' );
+		helpers.addBlockToPost( 'coblocks/logos', true );
 
 		cy.get( '.wp-block[data-type="coblocks/logos"]' )
 			.click()
@@ -137,7 +137,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'logos' );
+		helpers.checkForBlockErrors( 'coblocks/logos' );
 
 		helpers.viewPage();
 
@@ -151,7 +151,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 	 * successfully save the block without errors.
 	 */
 	it( 'Test logos block saves with grayscale filter.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'logos' );
+		helpers.addBlockToPost( 'coblocks/logos', true );
 
 		cy.get( '.wp-block[data-type="coblocks/logos"]' )
 			.click()
@@ -179,7 +179,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'logos' );
+		helpers.checkForBlockErrors( 'coblocks/logos' );
 
 		helpers.viewPage();
 
@@ -193,7 +193,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 	 * successfully save the block without errors.
 	 */
 	it( 'Test logos block saves with default filter.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'logos' );
+		helpers.addBlockToPost( 'coblocks/logos', true );
 
 		cy.get( '.wp-block[data-type="coblocks/logos"]' )
 			.click()
@@ -221,7 +221,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'logos' );
+		helpers.checkForBlockErrors( 'coblocks/logos' );
 
 		helpers.viewPage();
 

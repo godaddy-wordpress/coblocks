@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-03-09T18:20:21+00:00\n"
+"POT-Creation-Date: 2020-03-09T21:58:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -144,14 +144,14 @@ msgid "Submit"
 msgstr ""
 
 #: includes/class-coblocks-form.php:942
-#: src/blocks/form/edit.js:309
+#: src/blocks/form/edit.js:305
 msgid "name"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
 #: includes/class-coblocks-form.php:954
-#: src/blocks/form/edit.js:303
+#: src/blocks/form/edit.js:299
 #: src/blocks/form/fields/name/index.js:53
 #: src/blocks/form/index.js:56
 #: src/blocks/icon/deprecated/svgs.js:691
@@ -1381,17 +1381,17 @@ msgid "Book Appointment"
 msgstr ""
 
 #. translators: %s: placeholder for an email address
-#: src/blocks/form/edit.js:195
+#: src/blocks/form/edit.js:199
 msgid "%s is not a valid email address."
 msgstr ""
 
 #. translators: %s1: placeholder for an email address. %s2: placeholder for an email address
-#: src/blocks/form/edit.js:205
+#: src/blocks/form/edit.js:209
 msgid "%s and %s are not valid email addresses."
 msgstr ""
 
 #. translators: %s1: placeholder for comma separated email addresses
-#: src/blocks/form/edit.js:213
+#: src/blocks/form/edit.js:217
 msgid "%s are not valid email addresses."
 msgstr ""
 
@@ -1407,59 +1407,59 @@ msgstr ""
 msgid "Subject"
 msgstr ""
 
-#: src/blocks/form/edit.js:298
+#: src/blocks/form/edit.js:294
 msgid "You may use the following tags in the subject field: "
 msgstr ""
 
-#: src/blocks/form/edit.js:394
+#: src/blocks/form/edit.js:390
 msgid "Form Settings"
 msgstr ""
 
-#: src/blocks/form/edit.js:399
+#: src/blocks/form/edit.js:395
 msgid "Google reCAPTCHA"
 msgstr ""
 
-#: src/blocks/form/edit.js:402
+#: src/blocks/form/edit.js:398
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
 msgstr ""
 
-#: src/blocks/form/edit.js:408
+#: src/blocks/form/edit.js:404
 msgid "Generate keys"
 msgstr ""
 
-#: src/blocks/form/edit.js:409
+#: src/blocks/form/edit.js:405
 msgid "My keys"
 msgstr ""
 
-#: src/blocks/form/edit.js:412
+#: src/blocks/form/edit.js:408
 msgid "Get help"
 msgstr ""
 
-#: src/blocks/form/edit.js:416
+#: src/blocks/form/edit.js:412
 msgid "Site Key"
 msgstr ""
 
-#: src/blocks/form/edit.js:422
+#: src/blocks/form/edit.js:418
 msgid "Secret Key"
 msgstr ""
 
-#: src/blocks/form/edit.js:437
+#: src/blocks/form/edit.js:433
 #: src/blocks/gallery-collage/edit.js:181
 #: src/components/block-gallery/gallery-image.js:226
 msgid "Saving"
 msgstr ""
 
-#: src/blocks/form/edit.js:437
+#: src/blocks/form/edit.js:433
 #: src/blocks/map/inspector.js:229
 msgid "Save"
 msgstr ""
 
-#: src/blocks/form/edit.js:448
+#: src/blocks/form/edit.js:444
 #: src/blocks/map/inspector.js:239
 msgid "Remove"
 msgstr ""
 
-#: src/blocks/form/edit.js:486
+#: src/blocks/form/edit.js:482
 #: src/blocks/row/edit.js:324
 msgid "Select a variation to start with."
 msgstr ""
@@ -1886,7 +1886,7 @@ msgid "Apply"
 msgstr ""
 
 #: src/blocks/gallery-collage/edit.js:190
-#: src/blocks/gif/edit.js:245
+#: src/blocks/gif/edit.js:228
 #: src/blocks/gist/edit.js:103
 #: src/components/block-gallery/gallery-image.js:235
 msgid "Write caption…"
@@ -2043,15 +2043,15 @@ msgstr ""
 msgid "Remove gif"
 msgstr ""
 
-#: src/blocks/gif/edit.js:154
+#: src/blocks/gif/edit.js:137
 msgid "This gif has an empty alt attribute"
 msgstr ""
 
-#: src/blocks/gif/edit.js:285
+#: src/blocks/gif/edit.js:288
 msgid "Search for that perfect gif on Giphy"
 msgstr ""
 
-#: src/blocks/gif/edit.js:291
+#: src/blocks/gif/edit.js:294
 msgid "Search for gifs"
 msgstr ""
 
@@ -4158,7 +4158,7 @@ msgid "Reset icon size"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:169
-#: src/components/crop-settings/index.js:328
+#: src/components/crop-settings/index.js:327
 #: src/components/dimensions-control/index.js:489
 #: src/components/size-control/index.js:186
 msgid "Reset"
@@ -5867,39 +5867,39 @@ msgstr ""
 msgid "Custom URL"
 msgstr ""
 
-#: src/components/crop-settings/index.js:268
-#: src/components/crop-settings/index.js:271
+#: src/components/crop-settings/index.js:267
+#: src/components/crop-settings/index.js:270
 msgid "Crop settings image placeholder"
 msgstr ""
 
 #. translators: label for horizontal positioning input
-#: src/components/crop-settings/index.js:277
+#: src/components/crop-settings/index.js:276
 msgid "Horizontal Pos."
 msgstr ""
 
 #. translators: label for vertical positioning input
-#: src/components/crop-settings/index.js:286
+#: src/components/crop-settings/index.js:285
 msgid "Vertical Pos."
 msgstr ""
 
 #. translators: label for the control that allows zooming in on the image
-#: src/components/crop-settings/index.js:296
+#: src/components/crop-settings/index.js:295
 msgid "Image Zoom"
 msgstr ""
 
-#: src/components/crop-settings/index.js:303
+#: src/components/crop-settings/index.js:302
 msgid "Image Orientation"
 msgstr ""
 
-#: src/components/crop-settings/index.js:310
+#: src/components/crop-settings/index.js:309
 msgid "Rotate counter-clockwise"
 msgstr ""
 
-#: src/components/crop-settings/index.js:317
+#: src/components/crop-settings/index.js:316
 msgid "Rotate clockwise"
 msgstr ""
 
-#: src/components/crop-settings/index.js:326
+#: src/components/crop-settings/index.js:325
 msgid "Reset image cropping options"
 msgstr ""
 
@@ -6392,8 +6392,12 @@ msgstr ""
 msgid "Top Wave"
 msgstr ""
 
-#: src/extensions/image-crop/index.js:168
+#: src/extensions/image-crop/index.js:171
 msgid "Crop Settings"
+msgstr ""
+
+#: src/extensions/replace-image/index.js:115
+msgid "Replace Image"
 msgstr ""
 
 #: src/utils/block-category.js:16

@@ -1,4 +1,4 @@
-/*global coblocksBlockData, jQuery*/
+/*global coblocksBlockData*/
 
 /**
  * External dependencies
@@ -20,7 +20,7 @@ import { TEMPLATE_OPTIONS } from './deprecatedTemplates/layouts';
  * WordPress dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
+import { Component, Fragment, createRef } from '@wordpress/element';
 import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/components';
 import { InspectorControls, InnerBlocks, __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
@@ -47,7 +47,7 @@ class FormEdit extends Component {
 		this.onChangeSubmit = this.onChangeSubmit.bind( this );
 		this.getToValidationError = this.getToValidationError.bind( this );
 		this.renderToAndSubjectFields = this.renderToAndSubjectFields.bind( this );
-		this.preventEnterSubmittion = this.preventEnterSubmittion.bind( this );
+		this.preventEnterSubmission = this.preventEnterSubmission.bind( this );
 		this.hasEmailError = this.hasEmailError.bind( this );
 		this.saveRecaptchaKey = this.saveRecaptchaKey.bind( this );
 		this.removeRecaptchaKey = this.removeRecaptchaKey.bind( this );
@@ -65,6 +65,9 @@ class FormEdit extends Component {
 			isSaving: false,
 			keySaved: false,
 			template: null,
+			subjectValue: this.props.attributes.subject || '' === this.props.attributes.subject ?
+				this.props.attributes.subject :
+				coblocksBlockData.form.emailSubject,
 		};
 
 		const to = arguments[ 0 ].attributes.to ? arguments[ 0 ].attributes.to : '';
@@ -103,6 +106,7 @@ class FormEdit extends Component {
 	}
 
 	onChangeSubject( subject ) {
+		this.setState( { subjectValue: subject } );
 		this.props.setAttributes( { subject } );
 	}
 
@@ -174,7 +178,7 @@ class FormEdit extends Component {
 		return null;
 	}
 
-	preventEnterSubmittion( event ) {
+	preventEnterSubmission( event ) {
 		if ( event.key === 'Enter' ) {
 			event.preventDefault();
 			event.stopPropagation();
@@ -198,12 +202,7 @@ class FormEdit extends Component {
 	}
 
 	appendTagsToSubject( event ) {
-		const { attributes } = this.props;
-		let { subject } = attributes;
-		if ( null === subject ) {
-			subject = jQuery( event.target ).closest( 'div.components-base-control' ).find( 'input[type="text"]' ).val();
-		}
-		this.onChangeSubject( subject + event.target.innerHTML );
+		this.onChangeSubject( this.state.subjectValue + event.target.innerHTML );
 	}
 
 	removeRecaptchaKey() {
@@ -230,7 +229,8 @@ class FormEdit extends Component {
 	renderToAndSubjectFields() {
 		const fieldEmailError = this.state.toError;
 		const { instanceId, attributes } = this.props;
-		const { subject, to } = attributes;
+		const { to } = attributes;
+		const { subjectValue } = this.state;
 		return (
 			<Fragment>
 				<TextControl
@@ -239,7 +239,7 @@ class FormEdit extends Component {
 					}` }
 					label={ __( 'Email address', 'coblocks' ) }
 					placeholder={ __( 'name@example.com', 'coblocks' ) }
-					onKeyDown={ this.preventEnterSubmittion }
+					onKeyDown={ this.preventEnterSubmission }
 					value={ to || '' === to ? to : coblocksBlockData.form.adminEmail }
 					onBlur={ this.onBlurTo }
 					onChange={ this.onChangeTo }
@@ -249,11 +249,7 @@ class FormEdit extends Component {
 				</Notice>
 				<TextControl
 					label={ __( 'Subject', 'coblocks' ) }
-					value={
-						subject || '' === subject ?
-							subject :
-							coblocksBlockData.form.emailSubject
-					}
+					value={ subjectValue }
 					onChange={ this.onChangeSubject }
 					help={ <Fragment> { __( 'You may use the following tags in the subject field: ', 'coblocks' ) }
 						<Button

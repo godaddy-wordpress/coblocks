@@ -28,13 +28,13 @@ describe( 'Test CoBlocks Event Item Block', function() {
 	 * alter any settings, and are able to successfully save the block without errors.
 	*/
 	it( 'Test event-item block saves without content.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'events' );
+		helpers.addBlockToPost( 'coblocks/events', true );
 
 		cy.get( '.wp-block-coblocks-event-item' ).should( 'exist' );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'event-item' );
+		helpers.checkForBlockErrors( 'coblocks/event-item' );
 
 		helpers.viewPage();
 
@@ -50,7 +50,7 @@ describe( 'Test CoBlocks Event Item Block', function() {
 	it( 'Test event-item block saves with custom content.', function() {
 		const { date, event, time, location } = eventItemData;
 
-		helpers.addCoBlocksBlockToPage( true, 'events' );
+		helpers.addBlockToPost( 'coblocks/events', true );
 
 		cy.get( '.wp-block-coblocks-events' ).should( 'exist' );
 
@@ -64,7 +64,7 @@ describe( 'Test CoBlocks Event Item Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'events' );
+		helpers.checkForBlockErrors( 'coblocks/events' );
 
 		helpers.viewPage();
 
@@ -91,7 +91,7 @@ describe( 'Test CoBlocks Event Item Block', function() {
 		const { textColor, textColorRGB } = eventItemData.color;
 		const { date } = eventItemData;
 
-		helpers.addCoBlocksBlockToPage( true, 'events' );
+		helpers.addBlockToPost( 'coblocks/events', true );
 
 		cy.get( '.wp-block-coblocks-event-item' ).click( { force: true } );
 
@@ -102,7 +102,7 @@ describe( 'Test CoBlocks Event Item Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'event-item' );
+		helpers.checkForBlockErrors( 'coblocks/event-item' );
 
 		helpers.viewPage();
 
@@ -119,7 +119,7 @@ describe( 'Test CoBlocks Event Item Block', function() {
 	it( 'Test event-item block saves with custom classes.', function() {
 		const { date } = eventItemData;
 
-		helpers.addCoBlocksBlockToPage( true, 'events' );
+		helpers.addBlockToPost( 'coblocks/events', true );
 
 		cy.get( '.wp-block-coblocks-event-item' ).click( { force: true } );
 
@@ -129,7 +129,7 @@ describe( 'Test CoBlocks Event Item Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'event-item' );
+		helpers.checkForBlockErrors( 'coblocks/event-item' );
 
 		cy.get( '.wp-block-coblocks-event-item' )
 			.should( 'have.class', 'my-custom-class' );
