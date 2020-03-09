@@ -54,7 +54,7 @@ class PostCarousel extends Component {
 	componentDidMount() {
 		this.isStillMounted = true;
 		this.fetchRequest = apiFetch( {
-			path: addQueryArgs( '/wp-json/wp/v2/categories', CATEGORIES_LIST_QUERY ),
+			path: addQueryArgs( '/wp/v2/categories', CATEGORIES_LIST_QUERY ),
 		} ).then(
 			( categoriesList ) => {
 				if ( this.isStillMounted ) {

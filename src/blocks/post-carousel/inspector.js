@@ -112,7 +112,7 @@ class Inspector extends Component {
 								<QueryControls
 									{ ...{ order, orderBy } }
 									categoriesList={ categoriesList }
-									selectedCategoryId={ categoriesList.categories }
+									selectedCategoryId={ attributes.categories }
 									onOrderChange={ ( value ) => setAttributes( { order: value } ) }
 									onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
 									onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
