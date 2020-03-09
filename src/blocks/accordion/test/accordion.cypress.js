@@ -5,7 +5,7 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Block: Accordion', () => {
 	beforeEach( () => {
-		helpers.addCoBlocksBlockToPage( true, 'accordion' );
+		helpers.addBlockToPost( 'coblocks/accordion', true );
 	} );
 
 	/**
@@ -14,7 +14,7 @@ describe( 'Block: Accordion', () => {
 	 */
 	it( 'can be inserted without errors', () => {
 		cy.get( '[data-type="coblocks/accordion"]' ).should( 'exist' );
-		helpers.checkForBlockErrors( 'accordion' );
+		helpers.checkForBlockErrors( 'coblocks/accordion' );
 	} );
 
 	/**
@@ -23,7 +23,7 @@ describe( 'Block: Accordion', () => {
 	 */
 	it( 'can be modifed without errors', () => {
 		cy.get( '[data-type="coblocks/accordion"] .wp-block-coblocks-accordion-item__title' ).type( 'title' );
-		helpers.checkForBlockErrors( 'accordion' );
+		helpers.checkForBlockErrors( 'coblocks/accordion' );
 	} );
 
 	/**
@@ -39,7 +39,7 @@ describe( 'Block: Accordion', () => {
 		cy.get( '.editor-post-title__input' ).click();
 		cy.get( '[data-type="coblocks/accordion"] .wp-block-coblocks-accordion-item__content' ).should( 'exist' );
 
-		helpers.checkForBlockErrors( 'accordion' );
+		helpers.checkForBlockErrors( 'coblocks/accordion' );
 	} );
 
 	/**
@@ -49,7 +49,7 @@ describe( 'Block: Accordion', () => {
 		cy.get( '[data-type="coblocks/accordion"]' ).click( { force: true } ).find( '.components-coblocks-add-accordion-item__button' ).click( );
 		cy.get( '[data-type="coblocks/accordion"]' ).find( '[data-type="coblocks/accordion-item"]' ).should( 'have.length', 2 );
 
-		helpers.checkForBlockErrors( 'accordion' );
+		helpers.checkForBlockErrors( 'coblocks/accordion' );
 	} );
 
 	/**
@@ -76,7 +76,7 @@ describe( 'Block: Accordion', () => {
 		helpers.setColorSetting( 'text', '#FFFFFF' );
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-paragraph' ).should( 'have.css', 'color', `rgb(255, 255, 255)` );
 
-		helpers.checkForBlockErrors( 'accordion' );
+		helpers.checkForBlockErrors( 'coblocks/accordion' );
 	} );
 
 	/**
@@ -86,7 +86,7 @@ describe( 'Block: Accordion', () => {
 		cy.get( '[data-type="coblocks/accordion-item"]' ).first().click();
 		helpers.addCustomBlockClass( 'my-custom-class', 'accordion-item' );
 
-		helpers.checkForBlockErrors( 'accordion' );
+		helpers.checkForBlockErrors( 'coblocks/accordion' );
 
 		cy.get( '.wp-block-coblocks-accordion-item' )
 			.should( 'have.class', 'my-custom-class' );

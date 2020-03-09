@@ -23,11 +23,11 @@ describe( 'Test CoBlocks Food and Drinks Block', function() {
 	 * any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'Test food-and-drinks block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'food-and-drinks' );
+		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'food-and-drinks' );
+		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
 
 		helpers.viewPage();
 
@@ -44,7 +44,7 @@ describe( 'Test CoBlocks Food and Drinks Block', function() {
 	it( 'Test food-and-drinks block saves with image attribute.', function() {
 		const { fileName, imageBase, pathToFixtures } = foodData.image;
 
-		helpers.addCoBlocksBlockToPage( true, 'food-and-drinks' );
+		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
 
 		helpers.toggleSettingCheckbox( /images/i );
 
@@ -67,7 +67,7 @@ describe( 'Test CoBlocks Food and Drinks Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'food-and-drinks' );
+		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
 
 		helpers.viewPage();
 
@@ -81,13 +81,13 @@ describe( 'Test CoBlocks Food and Drinks Block', function() {
 	 * Test the food-and-drinks block saves with custom classes
 	 */
 	it( 'Test the food-and-drinks block custom classes.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'food-and-drinks' );
+		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'food-and-drinks' );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'food-and-drinks' );
+		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
 
 		cy.get( '.wp-block-coblocks-food-and-drinks' )
 			.should( 'have.class', 'my-custom-class' );
@@ -104,7 +104,7 @@ describe( 'Test CoBlocks Food and Drinks Block', function() {
 	 * Test the food-and-drinks block saves heading levels set
 	 */
 	it( 'Updates the inner blocks when the "Heading Level" control is changed.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'food-and-drinks' );
+		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
 
 		// Assert headings levels are set to default (h4)
 		cy.get( '[data-type="coblocks/food-and-drinks"] [data-type="coblocks/food-item"] h4' ).should( 'have.length', 2 );
@@ -115,6 +115,6 @@ describe( 'Test CoBlocks Food and Drinks Block', function() {
 
 		cy.get( '[data-type="coblocks/food-and-drinks"] [data-type="coblocks/food-item"] h2' ).should( 'have.length', 2 );
 
-		helpers.checkForBlockErrors( 'food-and-drinks' );
+		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
 	} );
 } );

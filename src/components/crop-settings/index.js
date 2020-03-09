@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import jQuery from 'jquery';
 
 /**
  * Internal dependencies
@@ -53,7 +52,7 @@ class CropSettings extends Component {
 
 	componentDidMount() {
 		this.setState( {
-			containerWidth: ( jQuery( this.imageContainer.current ).width() - 28 ),
+			containerWidth: ( this.imageContainer.current.clientWidth - 28 ),
 		} );
 
 		this.selectedAreaReference.current.addEventListener( 'wheel', this.handleMouseWheel );
