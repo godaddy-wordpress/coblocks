@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-syntax */
 /*global coblocksBlockData*/
 
 /**
@@ -28,14 +27,7 @@ import { applyFilters } from '@wordpress/hooks';
 import { compose } from '@wordpress/compose';
 import { withSelect, useDispatch } from '@wordpress/data';
 import { createBlock, registerBlockVariation } from '@wordpress/blocks';
-
-/**
- * Get settings
- */
-let settings;
-wp.api.loadPromise.then( () => {
-	settings = new wp.api.models.Settings();
-} );
+import apiFetch from '@wordpress/api-fetch';
 
 /**
  * Block constants
@@ -86,48 +78,13 @@ class FormEdit extends Component {
 	}
 
 	componentDidMount() {
-		if ( typeof settings !== 'undefined' ) {
-			settings.on( 'change:coblocks_google_recaptcha_site_key', ( model ) => {
-				const recaptchaSiteKey = model.get( 'coblocks_google_recaptcha_site_key' );
-				this.setState( {
-					recaptchaSiteKey: settings.get( 'coblocks_google_recaptcha_site_key' ),
-					isSavedKey: recaptchaSiteKey === '' ? false : true,
-				} );
+		apiFetch( { path: '/wp/v2/settings' } ).then( ( res ) => {
+			this.setState( {
+				recaptchaSiteKey: res.coblocks_google_recaptcha_site_key,
+				recaptchaSecretKey: res.coblocks_google_recaptcha_secret_key,
+				isSavedKey: res.coblocks_google_recaptcha_site_key === '' || res.coblocks_google_recaptcha_secret_key === '' ? false : true,
 			} );
-
-			settings.on( 'change:coblocks_google_recaptcha_secret_key', ( model ) => {
-				const recaptchaSecretKey = model.get(
-					'coblocks_google_recaptcha_secret_key'
-				);
-				this.setState( {
-					recaptchaSecretKey: settings.get(
-						'coblocks_google_recaptcha_secret_key'
-					),
-					isSavedKey: recaptchaSecretKey === '' ? false : true,
-				} );
-			} );
-
-			settings.fetch().then( ( response ) => {
-				this.setState( {
-					recaptchaSiteKey: response.coblocks_google_recaptcha_site_key,
-				} );
-				if ( this.state.recaptchaSiteKey && this.state.recaptchaSiteKey !== '' ) {
-					this.setState( { isSavedKey: true } );
-				}
-			} );
-
-			settings.fetch().then( ( response ) => {
-				this.setState( {
-					recaptchaSecretKey: response.coblocks_google_recaptcha_secret_key,
-				} );
-				if (
-					this.state.recaptchaSecretKey &&
-					this.state.recaptchaSecretKey !== ''
-				) {
-					this.setState( { isSavedKey: true } );
-				}
-			} );
-		}
+		} );
 
 		const { hasInnerBlocks, innerBlocks, defaultVariation } = this.props;
 		if ( hasInnerBlocks ) {
@@ -229,18 +186,18 @@ class FormEdit extends Component {
 	}
 
 	saveRecaptchaKey() {
+		const { recaptchaSiteKey, recaptchaSecretKey } = this.state;
 		this.setState( { isSaving: true } );
-
-		const model = new wp.api.models.Settings( {
-			coblocks_google_recaptcha_site_key: this.state.recaptchaSiteKey,
-			coblocks_google_recaptcha_secret_key: this.state.recaptchaSecretKey,
-		} );
-		model.save().then( () => {
-			this.setState( { isSavedKey: true, keySaved: true } );
-			setTimeout( () => {
-				this.setState( { isSaving: false } );
-			}, 1000 );
-			settings.fetch();
+		apiFetch( {
+			path: '/wp/v2/settings',
+			method: 'POST',
+			data: { coblocks_google_recaptcha_site_key: recaptchaSiteKey, coblocks_google_recaptcha_secret_key: recaptchaSecretKey },
+		} ).then( () => {
+			this.setState( {
+				isSavedKey: true,
+				keySaved: true,
+				isSaving: false,
+			} );
 		} );
 	}
 
@@ -255,13 +212,16 @@ class FormEdit extends Component {
 		} );
 		if ( this.state.isSavedKey ) {
 			this.setState( { isSaving: true } );
-			const model = new wp.api.models.Settings( {
-				coblocks_google_recaptcha_site_key: '',
-				coblocks_google_recaptcha_secret_key: '',
-			} );
-			model.save().then( () => {
-				this.setState( { isSavedKey: false, isSaving: false, keySaved: false } );
-				settings.fetch();
+			apiFetch( {
+				path: '/wp/v2/settings',
+				method: 'POST',
+				data: { coblocks_google_recaptcha_site_key: '', coblocks_google_recaptcha_secret_key: '' },
+			} ).then( () => {
+				this.setState( {
+					isSavedKey: true,
+					keySaved: true,
+					isSaving: false,
+				} );
 			} );
 		}
 	}

@@ -1,14 +1,7 @@
 
 // TODO: Utilize the REST API without the global.
 // Backbone REST API client
-global.wp = {
-	api: {
-		loadPromise: {
-			then: () => { },
-		},
-		models: {},
-	},
-};
+global.wp = {};
 
 // Prevent console messages when running tests.
 console = {
