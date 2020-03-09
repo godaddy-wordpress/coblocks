@@ -72,7 +72,7 @@ class SliderPanel extends Component {
 
 		return (
 			<Fragment>
-				<PanelBody title={ __( 'Slider Settings', 'coblocks' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Slider settings', 'coblocks' ) } initialOpen={ false }>
 					<ToggleControl
 						label={ __( 'Autoplay', 'coblocks' ) }
 						checked={ !! autoPlay }

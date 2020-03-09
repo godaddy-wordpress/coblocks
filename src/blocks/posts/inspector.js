@@ -161,7 +161,7 @@ const Inspector = ( props ) => {
 	];
 
 	const settings = (
-		<PanelBody title={ __( 'Posts Settings', 'coblocks' ) }>
+		<PanelBody title={ __( 'Posts settings', 'coblocks' ) }>
 			<Fragment>
 				<ToggleControl
 					label={ __( 'Post Date', 'coblocks' ) }
@@ -233,7 +233,7 @@ const Inspector = ( props ) => {
 	);
 
 	const feedSettings = (
-		<PanelBody title={ __( 'Feed Settings', 'coblocks' ) } initialOpen={ ! hasPosts ? true : false }>
+		<PanelBody title={ __( 'Feed settings', 'coblocks' ) } initialOpen={ ! hasPosts ? true : false }>
 			<RadioControl
 				selected={ postFeedType }
 				options={ [

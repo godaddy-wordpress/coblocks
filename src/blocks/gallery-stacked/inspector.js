@@ -83,7 +83,7 @@ class Inspector extends Component {
 
 		return (
 			<InspectorControls>
-				<PanelBody title={ __( 'Stacked Settings', 'coblocks' ) }>
+				<PanelBody title={ __( 'Stacked settings', 'coblocks' ) }>
 
 					{ wideControlsEnabled &&
 						<ToggleControl

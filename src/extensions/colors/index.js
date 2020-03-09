@@ -56,7 +56,7 @@ class ColorSettings extends Component {
 
 		return (
 			<PanelColorSettings
-				title={ __( 'Color Settings', 'coblocks' ) }
+				title={ __( 'Color settings', 'coblocks' ) }
 				initialOpen={ false }
 				colorSettings={ colorSettings }
 			>

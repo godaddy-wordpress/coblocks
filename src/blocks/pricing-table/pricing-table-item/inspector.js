@@ -45,7 +45,7 @@ class Inspector extends Component {
 			<Fragment>
 				<InspectorControls>
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'coblocks' ) }
+						title={ __( 'Color settings', 'coblocks' ) }
 						colorSettings={ [
 							{
 								value: backgroundColor.color,

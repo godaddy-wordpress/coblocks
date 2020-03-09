@@ -46,7 +46,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Gist Settings', 'coblocks' ) }>
+					<PanelBody title={ __( 'Gist settings', 'coblocks' ) }>
 						<TextControl
 							label={ __( 'Gist URL', 'coblocks' ) }
 							value={ url }

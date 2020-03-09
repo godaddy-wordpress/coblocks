@@ -174,7 +174,7 @@ class BackgroundPanel extends Component {
 			<Fragment>
 				{ backgroundImg && (
 					<PanelBody
-						title={ __( 'Background Settings', 'coblocks' ) }
+						title={ __( 'Background settings', 'coblocks' ) }
 						initialOpen={ false }
 					>
 						{ backgroundType === 'image' && (

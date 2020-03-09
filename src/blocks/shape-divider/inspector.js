@@ -50,7 +50,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Divider Settings', 'coblocks' ) }>
+					<PanelBody title={ __( 'Divider settings', 'coblocks' ) }>
 						<ResponsiveBaseControl { ...this.props }
 							label={ __( 'Shape Height in pixels', 'coblocks' ) }
 							height={ shapeHeight }
@@ -89,7 +89,7 @@ class Inspector extends Component {
 						/>
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'coblocks' ) }
+						title={ __( 'Color settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{

@@ -31,7 +31,7 @@ const Inspector = ( props ) => {
 
 	return (
 		<InspectorControls>
-			<PanelBody title={ __( 'Item Settings', 'coblocks' ) } initialOpen={ true }>
+			<PanelBody title={ __( 'Item settings', 'coblocks' ) } initialOpen={ true }>
 				<ToggleControl
 					label={ __( 'Image', 'coblocks' ) }
 					help={
@@ -94,7 +94,7 @@ const Inspector = ( props ) => {
 				</div>
 			</PanelBody>
 			{ url &&
-				<PanelBody title={ __( 'Image Settings', 'coblocks' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Image settings', 'coblocks' ) } initialOpen={ false }>
 					<TextareaControl
 						label={ __( 'Alt Text (Alternative Text)', 'coblocks' ) }
 						value={ alt }

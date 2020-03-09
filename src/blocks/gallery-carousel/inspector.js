@@ -79,7 +79,7 @@ class Inspector extends Component {
 			isSelected && (
 				<Fragment>
 					<InspectorControls>
-						<PanelBody title={ __( 'Carousel Settings', 'coblocks' ) } >
+						<PanelBody title={ __( 'Carousel settings', 'coblocks' ) } >
 							<SizeControl { ...this.props }
 								type={ 'grid' }
 								label={ __( 'Size', 'coblocks' ) }

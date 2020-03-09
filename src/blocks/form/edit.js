@@ -391,7 +391,7 @@ class FormEdit extends Component {
 			return (
 				<Fragment>
 					<InspectorControls>
-						<PanelBody title={ __( 'Form Settings', 'coblocks' ) }>
+						<PanelBody title={ __( 'Form settings', 'coblocks' ) }>
 							{ this.renderToAndSubjectFields() }
 							{ applyFilters( 'coblocks.advanced_forms_cta' ) }
 						</PanelBody>

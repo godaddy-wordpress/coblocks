@@ -152,7 +152,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Icon Settings', 'coblocks' ) }>
+					<PanelBody title={ __( 'Icon settings', 'coblocks' ) }>
 						{ iconSize === 'advanced' ?
 							<Fragment>
 								<div className="components-base-control components-coblocks-icon-block--advanced-size">
@@ -280,7 +280,7 @@ class Inspector extends Component {
 						</div>
 					</PanelBody>
 					<PanelBody
-						title={ __( 'Link Settings', 'coblocks' ) }
+						title={ __( 'Link settings', 'coblocks' ) }
 						initialOpen={ false } >
 						<TextControl
 							label={ __( 'Link URL', 'coblocks' ) }
@@ -298,7 +298,7 @@ class Inspector extends Component {
 							checked={ linkTarget === '_blank' } />
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'coblocks' ) }
+						title={ __( 'Color settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{

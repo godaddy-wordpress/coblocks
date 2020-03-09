@@ -110,7 +110,7 @@ class Inspector extends Component {
 
 		return (
 			<InspectorControls>
-				<PanelBody title={ __( 'Collage Settings', 'coblocks' ) }>
+				<PanelBody title={ __( 'Collage settings', 'coblocks' ) }>
 					{ enableGutter && <OptionSelectorControl
 						label={ __( 'Gutter', 'coblocks' ) }
 						currentOption={ gutter }

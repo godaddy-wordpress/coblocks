@@ -108,7 +108,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Icon Settings', 'coblocks' ) }>
+					<PanelBody title={ __( 'Icon settings', 'coblocks' ) }>
 						<ToggleControl
 							label={ __( 'Social Colors', 'coblocks' ) }
 							checked={ !! hasColors }
@@ -197,7 +197,7 @@ class Inspector extends Component {
 					</PanelBody>
 					{ ! hasColors &&
 						<PanelColorSettings
-							title={ __( 'Color Settings', 'coblocks' ) }
+							title={ __( 'Color settings', 'coblocks' ) }
 							initialOpen={ false }
 							colorSettings={ ! isMaskStyle ? defaultColors : maskColors }
 						>

@@ -118,7 +118,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Features Settings', 'coblocks' ) }>
+					<PanelBody title={ __( 'Features settings', 'coblocks' ) }>
 						<RangeControl
 							label={ __( 'Columns', 'coblocks' ) }
 							value={ columns }
@@ -192,7 +192,7 @@ class Inspector extends Component {
 						/>
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'coblocks' ) }
+						title={ __( 'Color settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{

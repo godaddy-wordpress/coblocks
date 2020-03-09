@@ -74,7 +74,7 @@ class Inspector extends Component {
 
 		return (
 			<InspectorControls>
-				<PanelBody title={ __( 'Masonry Settings', 'coblocks' ) }>
+				<PanelBody title={ __( 'Masonry settings', 'coblocks' ) }>
 
 					<SizeControl { ...this.props }
 						type={ 'grid' }

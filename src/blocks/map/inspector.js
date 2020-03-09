@@ -127,7 +127,7 @@ class Inspector extends Component {
 						</PanelBody>
 					}
 					{ address &&
-						<PanelBody title={ __( 'Map Settings', 'coblocks' ) }>
+						<PanelBody title={ __( 'Map settings', 'coblocks' ) }>
 							<Fragment>
 								<BaseControl label={ __( 'Height in pixels', 'coblocks' ) }>
 									<input

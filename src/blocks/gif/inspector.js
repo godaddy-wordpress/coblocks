@@ -26,7 +26,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Gif Settings', 'coblocks' ) }>
+					<PanelBody title={ __( 'Gif settings', 'coblocks' ) }>
 						<TextareaControl
 							label={ __( 'Alt Text (Alternative Text)', 'coblocks' ) }
 							value={ alt }

@@ -51,7 +51,7 @@ class Inspector extends Component {
 		};
 
 		const settings = (
-			<PanelBody title={ __( 'Post Carousel Settings', 'coblocks' ) }>
+			<PanelBody title={ __( 'Post Carousel settings', 'coblocks' ) }>
 				<Fragment>
 					<ToggleControl
 						label={ __( 'Post Date', 'coblocks' ) }
@@ -97,7 +97,7 @@ class Inspector extends Component {
 		return (
 			<InspectorControls>
 				{ hasPosts ? settings : null }
-				<PanelBody title={ __( 'Feed Settings', 'coblocks' ) } initialOpen={ ! hasPosts ? true : false }>
+				<PanelBody title={ __( 'Feed settings', 'coblocks' ) } initialOpen={ ! hasPosts ? true : false }>
 					<RadioControl
 						selected={ postFeedType }
 						options={ [

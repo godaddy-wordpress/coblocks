@@ -60,7 +60,7 @@ class GalleryLinkSettings extends Component {
 			<Fragment>
 				{ ! lightbox &&
 					<PanelBody
-						title={ __( 'Link Settings', 'coblocks' ) }
+						title={ __( 'Link settings', 'coblocks' ) }
 						initialOpen={ false }
 					>
 						<SelectControl

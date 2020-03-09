@@ -27,7 +27,7 @@ const Inspector = props => {
 	return (
 		<InspectorControls>
 			<PanelColorSettings
-				title={ __( 'Color Settings', 'coblocks' ) }
+				title={ __( 'Color settings', 'coblocks' ) }
 				initialOpen={ false }
 				colorSettings={ defaultColors }
 			>

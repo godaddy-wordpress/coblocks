@@ -60,7 +60,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Accordion Item Settings', 'coblocks' ) }>
+					<PanelBody title={ __( 'Accordion Item settings', 'coblocks' ) }>
 						<ToggleControl
 							/* translators: visually display open as opposed to closed */
 							label={ __( 'Display Open', 'coblocks' ) }
@@ -70,7 +70,7 @@ class Inspector extends Component {
 						/>
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'coblocks' ) }
+						title={ __( 'Color settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{

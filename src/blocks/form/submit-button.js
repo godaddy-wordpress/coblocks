@@ -115,7 +115,7 @@ class SubmitButton extends Component {
 				</div>
 				<InspectorControls>
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'coblocks' ) }
+						title={ __( 'Color settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{

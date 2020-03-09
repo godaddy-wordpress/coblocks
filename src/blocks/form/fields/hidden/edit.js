@@ -27,7 +27,7 @@ function CoBlocksFieldHidden( props ) {
 				value={ value }
 			/>
 			<InspectorControls>
-				<PanelBody title={ __( 'Hidden Field Settings', 'coblocks' ) }>
+				<PanelBody title={ __( 'Hidden field settings', 'coblocks' ) }>
 					<TextControl
 						value={ value }
 						label={ __( 'Field Value', 'coblocks' ) }

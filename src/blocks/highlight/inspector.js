@@ -32,7 +32,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Text Settings', 'coblocks' ) } className="blocks-font-size">
+					<PanelBody title={ __( 'Text settings', 'coblocks' ) } className="blocks-font-size">
 						<FontSizePicker
 							fallbackFontSize={ fallbackFontSize }
 							value={ fontSize.size }
@@ -40,7 +40,7 @@ class Inspector extends Component {
 						/>
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'coblocks' ) }
+						title={ __( 'Color settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{

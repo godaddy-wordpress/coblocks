@@ -24,9 +24,9 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Accordion Settings', 'coblocks' ) }>
+					<PanelBody title={ __( 'Accordion settings', 'coblocks' ) }>
 						<ToggleControl
-							label={ __( 'Internet Explorer Support', 'coblocks' ) }
+							label={ __( 'Internet Explorer support', 'coblocks' ) }
 							checked={ !! polyfill }
 							help={ ! polyfill ? __( 'Add support for Internet Explorer by loading a JavaScript polyfill.', 'coblocks' ) : __( 'Supporting Internet Explorer by loading a JavaScript polyfill on this page.', 'coblocks' ) }
 							onChange={ () => {

@@ -22,7 +22,7 @@ const Inspector = props => {
 
 	return (
 		<InspectorControls>
-			<PanelBody title={ __( 'Events Settings', 'coblocks' ) } initialOpen={ true }>
+			<PanelBody title={ __( 'Events settings', 'coblocks' ) } initialOpen={ true }>
 				<ToggleControl
 					label={ __( 'Link a Calendar', 'coblocks' ) }
 					help={

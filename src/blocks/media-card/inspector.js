@@ -56,7 +56,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Media Card Settings', 'coblocks' ) } className="block-coblocks__inspector-block-settings-panel-body">
+					<PanelBody title={ __( 'Media Card settings', 'coblocks' ) } className="block-coblocks__inspector-block-settings-panel-body">
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
 							label={ __( 'Padding', 'coblocks' ) }
@@ -138,7 +138,7 @@ class Inspector extends Component {
 						) }
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'coblocks' ) }
+						title={ __( 'Color settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{

@@ -91,7 +91,7 @@ const Inspector = ( props ) => {
 					) ) }
 				</div>
 			</PanelBody>
-			<PanelBody title={ __( 'Services Settings', 'coblocks' ) }>
+			<PanelBody title={ __( 'Services settings', 'coblocks' ) }>
 				<RangeControl
 					label={ __( 'Columns', 'coblocks' ) }
 					value={ attributes.columns }
