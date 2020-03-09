@@ -210,7 +210,7 @@ class Inspector extends Component {
 										setAttributes( { paddingSize: 'no' } );
 									}
 								},
-								label: __( 'Background Color', 'coblocks' ),
+								label: __( 'Background color', 'coblocks' ),
 							}, {
 								value: textColor.color,
 								onChange: setTextColor,

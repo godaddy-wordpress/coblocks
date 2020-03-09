@@ -322,7 +322,7 @@ class Inspector extends Component {
 
 									setBackgroundColor( newBackground );
 								},
-								label: __( 'Background Color', 'coblocks' ),
+								label: __( 'Background color', 'coblocks' ),
 							},
 
 						] }

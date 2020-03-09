@@ -58,7 +58,7 @@ describe( 'Block: Accordion', () => {
 	it( 'can apply color settings', () => {
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__title' ).type( 'Accordion Title' );
 
-		// Title - Background Color
+		// Title - Background color
 		helpers.setColorSetting( 'background', '#000000' );
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__title' ).should( 'have.css', 'background-color', `rgb(0, 0, 0)` );
 
@@ -68,7 +68,7 @@ describe( 'Block: Accordion', () => {
 
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-paragraph' ).click().type( 'Content' );
 
-		// Content - Background Color
+		// Content - Background color
 		helpers.setColorSetting( 'background', '#000000' );
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-paragraph' ).should( 'have.css', 'background-color', `rgb(0, 0, 0)` );
 

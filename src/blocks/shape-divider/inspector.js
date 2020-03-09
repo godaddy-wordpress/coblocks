@@ -100,7 +100,7 @@ class Inspector extends Component {
 							{
 								value: backgroundColor.color,
 								onChange: setBackgroundColor,
-								label: __( 'Background Color', 'coblocks' ),
+								label: __( 'Background color', 'coblocks' ),
 							},
 						] }
 					>
