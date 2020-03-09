@@ -10,11 +10,11 @@ describe( 'Test CoBlocks Food Item Block', function() {
 	   * any settings, and are able to successfully save the block without errors.
 	   */
 	it( 'Test food-item block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'food-and-drinks' );
+		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'food-item' );
+		helpers.checkForBlockErrors( 'coblocks/food-item' );
 
 		helpers.viewPage();
 
@@ -28,7 +28,7 @@ describe( 'Test CoBlocks Food Item Block', function() {
 	   * and can save with food item attributes enabled.
 	   */
 	it( 'Test food-item block saves with food item attributes.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'food-and-drinks' );
+		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
 
 		cy.get( '.wp-block-coblocks-food-item' ).first().click( { force: true } );
 
@@ -42,7 +42,7 @@ describe( 'Test CoBlocks Food Item Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'food-item' );
+		helpers.checkForBlockErrors( 'coblocks/food-item' );
 
 		helpers.viewPage();
 
