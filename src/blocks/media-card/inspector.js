@@ -56,7 +56,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Media Card Settings', 'coblocks' ) } className="block-coblocks__inspector-block-settings-panel-body">
+					<PanelBody title={ __( 'Media Card settings', 'coblocks' ) } className="block-coblocks__inspector-block-settings-panel-body">
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
 							label={ __( 'Padding', 'coblocks' ) }
@@ -81,7 +81,7 @@ class Inspector extends Component {
 						/>
 						{ ( 'full' === align || 'wide' === align ) && (
 							<RangeControl
-								label={ __( 'Max Width', 'coblocks' ) }
+								label={ __( 'Max width', 'coblocks' ) }
 								className="components-block-coblocks-media-card-maxwidth-range"
 								value={ parseFloat( maxWidth ) }
 								onChange={ ( nextMaxWidth ) => setAttributes( { maxWidth: nextMaxWidth } ) }
@@ -92,7 +92,7 @@ class Inspector extends Component {
 						) }
 						{ mediaUrl && mediaType === 'image' && (
 							<TextareaControl
-								label={ __( 'Alt Text (Alternative Text)', 'coblocks' ) }
+								label={ __( 'Alt text (alternative text)', 'coblocks' ) }
 								value={ mediaAlt }
 								onChange={ ( nextMediaAlt ) => setAttributes( { mediaAlt: nextMediaAlt } ) }
 								help={
@@ -106,7 +106,7 @@ class Inspector extends Component {
 							/>
 						) }
 						<ToggleControl
-							label={ __( 'Card Shadow', 'coblocks' ) }
+							label={ __( 'Card shadow', 'coblocks' ) }
 							checked={ !! hasCardShadow }
 							onChange={ () => setAttributes( { hasCardShadow: ! hasCardShadow } ) }
 							help={ !! hasCardShadow ? __( 'Showing card shadow.', 'coblocks' ) : __( 'Toggle to add a card shadow.', 'coblocks' ) }
@@ -116,7 +116,7 @@ class Inspector extends Component {
 								label={
 									sprintf(
 										/* translators: %s: Placeholder is either 'Card, or 'Image' */
-										__( ' %s Shadow', 'coblocks' ),
+										__( ' %s shadow', 'coblocks' ),
 										mediaType.charAt( 0 ).toUpperCase() + mediaType.slice( 1 )
 									)
 								}
@@ -138,7 +138,7 @@ class Inspector extends Component {
 						) }
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'coblocks' ) }
+						title={ __( 'Color settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
@@ -152,7 +152,7 @@ class Inspector extends Component {
 										setAttributes( { paddingSize: 'no' } );
 									}
 								},
-								label: __( 'Background Color', 'coblocks' ),
+								label: __( 'Background color', 'coblocks' ),
 							},
 						] }
 					>

@@ -48,7 +48,7 @@ export const TEMPLATE_OPTIONS = [
 			[ 'coblocks/field-email', { required: true } ],
 			[ 'coblocks/field-date', { required: true } ],
 			[ 'coblocks/field-radio', { label: __( 'Time', 'coblocks' ), required: true, options: [ __( 'Morning', 'coblocks' ), __( 'Afternoon', 'coblocks' ) ], isInline: true } ],
-			[ 'coblocks/field-textarea', { label: __( 'Special Notes', 'coblocks' ) } ],
+			[ 'coblocks/field-textarea', { label: __( 'Special notes', 'coblocks' ) } ],
 
 		],
 		submitButtonText: __( 'Book Appointment', 'coblocks' ),

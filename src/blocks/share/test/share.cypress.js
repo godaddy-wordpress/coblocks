@@ -28,7 +28,7 @@ describe( 'Test CoBlocks Share Block', function() {
 	it( 'Test the share block colors.', function() {
 		helpers.addBlockToPost( 'coblocks/social', true );
 
-		helpers.toggleSettingCheckbox( 'Social Colors' );
+		helpers.toggleSettingCheckbox( 'Social colors' );
 
 		cy.get( '.wp-block-coblocks-social li:first-child .wp-block-coblocks-social__button' )
 			.should( 'have.css', 'background-color', 'rgb(49, 55, 60)' );
@@ -51,9 +51,9 @@ describe( 'Test CoBlocks Share Block', function() {
 	it( 'Test the share block rounded corners.', function() {
 		helpers.addBlockToPost( 'coblocks/social', true );
 
-		helpers.toggleSettingCheckbox( 'Social Colors' );
+		helpers.toggleSettingCheckbox( 'Social colors' );
 
-		cy.get( 'input[aria-label="Rounded Corners"]' )
+		cy.get( 'input[aria-label="Rounded corners"]' )
 			.clear()
 			.type( '10' );
 
@@ -78,7 +78,7 @@ describe( 'Test CoBlocks Share Block', function() {
 	it( 'Test the share block button size.', function() {
 		helpers.addBlockToPost( 'coblocks/social', true );
 
-		helpers.toggleSettingCheckbox( 'Social Colors' );
+		helpers.toggleSettingCheckbox( 'Social colors' );
 
 		cy.get( '.components-coblocks-inspector__social-button-size select' )
 			.select( 'lrg' );
@@ -152,7 +152,7 @@ describe( 'Test CoBlocks Share Block', function() {
 	it( 'Test the share block custom classes and top/bottom spacing.', function() {
 		helpers.addBlockToPost( 'coblocks/social', true );
 
-		cy.get( '.components-panel__body-title' ).contains( 'Icon Settings' ).then( ( $panelTop ) => {
+		cy.get( '.components-panel__body-title' ).contains( 'Icon settings' ).then( ( $panelTop ) => {
 			const $parentPanel = Cypress.$( $panelTop ).closest( 'div.components-panel__body' );
 			if ( $parentPanel.hasClass( 'is-opened' ) ) {
 				$panelTop.click();
@@ -161,8 +161,8 @@ describe( 'Test CoBlocks Share Block', function() {
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'social' );
 
-		helpers.toggleSettingCheckbox( 'Remove Top Spacing' );
-		helpers.toggleSettingCheckbox( 'Remove Bottom Spacing' );
+		helpers.toggleSettingCheckbox( 'Remove top spacing' );
+		helpers.toggleSettingCheckbox( 'Remove bottom spacing' );
 
 		helpers.savePage();
 

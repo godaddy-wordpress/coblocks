@@ -181,7 +181,7 @@ class PostCarousel extends Component {
 								{ __( 'No posts found. Start publishing or add posts from an RSS feed.', 'coblocks' ) }
 								<Button
 									className="components-placeholder__cancel-button"
-									title={ __( 'Retrieve an External Feed', 'coblocks' ) }
+									title={ __( 'Retrieve an external feed', 'coblocks' ) }
 									isLarge
 									isSecondary
 									onClick={ () => {

@@ -191,7 +191,7 @@ class GalleryImage extends Component {
 									icon={ verticalMoving ? 'arrow-up' : 'arrow-left' }
 									onClick={ ! isFirstItem && onMoveBackward }
 									className="coblocks-gallery-item__button"
-									label={ __( 'Move Image Backward', 'coblocks' ) }
+									label={ __( 'Move image backward', 'coblocks' ) }
 									aria-disabled={ isFirstItem }
 									disabled={ ! isSelected }
 								/>
@@ -199,7 +199,7 @@ class GalleryImage extends Component {
 									icon={ verticalMoving ? 'arrow-down' : 'arrow-right' }
 									onClick={ ! isLastItem && onMoveForward }
 									className="coblocks-gallery-item__button"
-									label={ __( 'Move Image Forward', 'coblocks' ) }
+									label={ __( 'Move image forward', 'coblocks' ) }
 									aria-disabled={ isLastItem }
 									disabled={ ! isSelected }
 								/>
@@ -210,7 +210,7 @@ class GalleryImage extends Component {
 								icon="no-alt"
 								onClick={ onRemove }
 								className="coblocks-gallery-item__button"
-								label={ __( 'Remove Image', 'coblocks' ) }
+								label={ __( 'Remove image', 'coblocks' ) }
 								disabled={ ! isSelected }
 							/>
 						</div>

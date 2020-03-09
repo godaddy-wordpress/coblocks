@@ -229,7 +229,7 @@ class TypographyControls extends Component {
 								}
 								{ ( ( typeof attributes.textPanelLineHeight === 'undefined' || ( typeof attributes.textPanelLineHeight !== 'undefined' && typeof attributes.textPanelLineHeight === 'undefined' ) ) ) ?
 									<RangeControl
-										label={ __( 'Line Height', 'coblocks' ) }
+										label={ __( 'Line height', 'coblocks' ) }
 										value={ parseFloat( lineHeight ) || undefined }
 										onChange={ ( nextLineHeight ) => setAttributes( { lineHeight: nextLineHeight } ) }
 										min={ 1 }
@@ -240,7 +240,7 @@ class TypographyControls extends Component {
 								}
 								{ ( ( typeof attributes.textPanelLetterSpacing === 'undefined' || ( typeof attributes.textPanelLetterSpacing !== 'undefined' && typeof attributes.textPanelLetterSpacing === 'undefined' ) ) ) ?
 									<RangeControl
-										label={ __( 'Letter Spacing', 'coblocks' ) }
+										label={ __( 'Letter spacing', 'coblocks' ) }
 										value={ parseFloat( letterSpacing ) || undefined }
 										onChange={ ( nextLetterSpacing ) => setAttributes( { letterSpacing: nextLetterSpacing } ) }
 										min={ -1 }
@@ -252,12 +252,12 @@ class TypographyControls extends Component {
 								{ ( ( typeof attributes.textPanelShowSpacingControls !== 'undefined' && attributes.textPanelShowSpacingControls ) ) &&
 									<div className="components-coblocks-typography-dropdown__footer">
 										<ToggleControl
-											label={ __( 'No Top Spacing', 'coblocks' ) }
+											label={ __( 'No top spacing', 'coblocks' ) }
 											checked={ !! noTopSpacing }
 											onChange={ () => setAttributes( { noTopSpacing: ! noTopSpacing } ) }
 										/>
 										<ToggleControl
-											label={ __( 'No Bottom Spacing', 'coblocks' ) }
+											label={ __( 'No bottom spacing', 'coblocks' ) }
 											checked={ !! noBottomSpacing }
 											onChange={ () => setAttributes( { noBottomSpacing: ! noBottomSpacing } ) }
 										/>

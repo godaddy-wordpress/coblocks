@@ -74,7 +74,7 @@ class Inspector extends Component {
 
 		return (
 			<InspectorControls>
-				<PanelBody title={ __( 'Masonry Settings', 'coblocks' ) }>
+				<PanelBody title={ __( 'Masonry settings', 'coblocks' ) }>
 
 					<SizeControl { ...this.props }
 						type={ 'grid' }
@@ -88,7 +88,7 @@ class Inspector extends Component {
 
 					{ gutter > 0 &&
 						<RangeControl
-							label={ __( 'Rounded Corners', 'coblocks' ) }
+							label={ __( 'Rounded corners', 'coblocks' ) }
 							aria-label={ __( 'Add rounded corners to the gallery items.', 'coblocks' ) }
 							value={ radius }
 							onChange={ this.setRadiusTo }
@@ -114,7 +114,7 @@ class Inspector extends Component {
 
 					{ captions &&
 						<SelectControl
-							label={ __( 'Caption Style', 'coblocks' ) }
+							label={ __( 'Caption style', 'coblocks' ) }
 							value={ captionStyle }
 							onChange={ this.setCaptionStyleTo }
 							options={ captionOptions }

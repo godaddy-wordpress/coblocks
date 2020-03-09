@@ -267,7 +267,7 @@ class Edit extends Component {
 				) : (
 					<Placeholder
 						icon={ <BlockIcon icon={ icon } /> }
-						label={ __( 'Google Map', 'coblocks' ) }
+						label={ __( 'Google map', 'coblocks' ) }
 						instructions={ __( 'Enter a location or address to drop a pin on a Google map.', 'coblocks' ) }
 					>
 						<TextControl

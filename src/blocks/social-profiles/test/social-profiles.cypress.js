@@ -10,28 +10,28 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	it( 'Test the social profiles block saves.', function() {
 		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
-		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook Profile"]' ).click();
+		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook profile"]' ).click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.facebook.com/test' );
 
-		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Twitter Profile"]' ).click();
+		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Twitter profile"]' ).click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.twitter.com/test' );
 
-		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Instagram Profile"]' ).click();
+		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Instagram profile"]' ).click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.instagram.com/test' );
 
-		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Pinterest Profile"]' ).click();
+		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Pinterest profile"]' ).click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.pinterest.com/test' );
 
-		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add LinkedIn Profile"]' ).click();
+		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add LinkedIn profile"]' ).click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.linkedin.com/test' );
 
-		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add YouTube Profile"]' ).click();
+		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add YouTube profile"]' ).click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.youtube.com/test' );
 
-		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Yelp Profile"]' ).click();
+		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Yelp profile"]' ).click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.yelp.com/test' );
 
-		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Houzz Profile"]' ).click();
+		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Houzz profile"]' ).click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.houzz.com/test' );
 
 		helpers.savePage();
@@ -77,7 +77,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	it( 'Test the social profiles block styles.', function() {
 		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
-		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook Profile"]' ).click();
+		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook profile"]' ).click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.facebook.com/test' );
 
 		cy.get( '.components-panel__body-title' ).contains( 'Styles' ).then( ( $panelTop ) => {
@@ -205,7 +205,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	it( 'Test the social profiles colors.', function() {
 		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
-		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook Profile"]' ).click();
+		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook profile"]' ).click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.facebook.com/test' );
 
 		cy.get( '.components-panel__body-title' ).contains( 'Styles' ).then( ( $panelTop ) => {
@@ -215,10 +215,10 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 			}
 		} );
 
-		helpers.openSettingsPanel( 'Icon Settings' );
-		helpers.toggleSettingCheckbox( 'Social Colors' );
+		helpers.openSettingsPanel( 'Icon settings' );
+		helpers.toggleSettingCheckbox( 'Social colors' );
 
-		cy.get( 'button[aria-label="Add Facebook Profile"]' )
+		cy.get( 'button[aria-label="Add Facebook profile"]' )
 			.should( 'have.css', 'background-color', 'rgb(49, 55, 60)' );
 
 		helpers.savePage();
@@ -239,7 +239,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	it( 'Test the social profiles rounded corners.', function() {
 		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
-		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook Profile"]' ).click();
+		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook profile"]' ).click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.facebook.com/test' );
 
 		cy.get( '.components-panel__body-title' ).contains( 'Styles' ).then( ( $panelTop ) => {
@@ -249,13 +249,13 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 			}
 		} );
 
-		helpers.openSettingsPanel( 'Icon Settings' );
+		helpers.openSettingsPanel( 'Icon settings' );
 
-		cy.get( 'input[aria-label="Rounded Corners"]' )
+		cy.get( 'input[aria-label="Rounded corners"]' )
 			.clear()
 			.type( '10' );
 
-		cy.get( 'button[aria-label="Add Facebook Profile"]' )
+		cy.get( 'button[aria-label="Add Facebook profile"]' )
 			.should( 'have.css', 'border-radius', '10px' );
 
 		helpers.savePage();
@@ -276,7 +276,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	it( 'Test the social profiles button size.', function() {
 		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
-		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook Profile"]' ).click();
+		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook profile"]' ).click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.facebook.com/test' );
 
 		cy.get( '.components-panel__body-title' ).contains( 'Styles' ).then( ( $panelTop ) => {
@@ -286,12 +286,12 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 			}
 		} );
 
-		helpers.openSettingsPanel( 'Icon Settings' );
+		helpers.openSettingsPanel( 'Icon settings' );
 
 		cy.get( '.components-coblocks-inspector__social-button-size select' )
 			.select( 'lrg' );
 
-		cy.get( 'button[aria-label="Add Facebook Profile"]' )
+		cy.get( 'button[aria-label="Add Facebook profile"]' )
 			.should( 'have.css', 'width', '84px' );
 
 		helpers.savePage();
@@ -312,7 +312,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	it( 'Test the social profiles links input fields.', function() {
 		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
-		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook Profile"]' ).click();
+		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook profile"]' ).click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.facebook.com/test' );
 
 		cy.get( '.components-panel__body-title' ).contains( 'Styles' ).then( ( $panelTop ) => {
@@ -322,12 +322,12 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 			}
 		} );
 
-		helpers.openSettingsPanel( 'Profile Links' );
+		helpers.openSettingsPanel( 'Profiles' );
 
 		cy.get( '.components-social-links-list .components-base-control:nth-child(5) input' )
 			.type( 'https://www.linkedin.com/test' );
 
-		cy.get( 'button[aria-label="Add LinkedIn Profile"]' )
+		cy.get( 'button[aria-label="Add LinkedIn profile"]' )
 			.should( 'not.have.class', 'is-empty' );
 
 		helpers.savePage();
@@ -349,7 +349,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	it( 'Test the social profiles custom classes and top/bottom spacing.', function() {
 		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
-		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook Profile"]' ).click();
+		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook profile"]' ).click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.facebook.com/test' );
 
 		cy.get( '.components-panel__body-title' ).contains( 'Styles' ).then( ( $panelTop ) => {
@@ -361,8 +361,8 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'social-profiles' );
 
-		helpers.toggleSettingCheckbox( 'Remove Top Spacing' );
-		helpers.toggleSettingCheckbox( 'Remove Bottom Spacing' );
+		helpers.toggleSettingCheckbox( 'Remove top spacing' );
+		helpers.toggleSettingCheckbox( 'Remove bottom spacing' );
 
 		helpers.savePage();
 

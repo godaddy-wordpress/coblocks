@@ -273,7 +273,7 @@ class CropSettings extends Component {
 				<div className={ offsetClass }>
 					<TextControl
 						/* translators: label for horizontal positioning input */
-						label={ __( 'Horizontal Pos.', 'coblocks' ) }
+						label={ __( 'Horizontal pos.', 'coblocks' ) }
 						value={ self.state.x }
 						type={ 'number' }
 						min={ 0 }
@@ -282,7 +282,7 @@ class CropSettings extends Component {
 					/>
 					<TextControl
 						/* translators: label for vertical positioning input */
-						label={ __( 'Vertical Pos.', 'coblocks' ) }
+						label={ __( 'Vertical pos.', 'coblocks' ) }
 						value={ self.state.y }
 						type={ 'number' }
 						min={ 0 }
@@ -292,14 +292,14 @@ class CropSettings extends Component {
 				</div>
 				<RangeControl
 					/* translators: label for the control that allows zooming in on the image */
-					label={ __( 'Image Zoom', 'coblocks' ) }
+					label={ __( 'Image zoom', 'coblocks' ) }
 					className="components-coblocks-zoom-control"
 					value={ this.getCurrentScale() }
 					onChange={ ( val ) => this.setNewZoom( val, self.state.r ) }
 					min={ 100 }
 					max={ 1000 }
 				/>
-				<p>{ __( 'Image Orientation', 'coblocks' ) }</p>
+				<p>{ __( 'Image orientation', 'coblocks' ) }</p>
 				<div className="components-coblocks-rotate-control">
 					<ButtonGroup >
 						<IconButton

@@ -161,10 +161,10 @@ const Inspector = ( props ) => {
 	];
 
 	const settings = (
-		<PanelBody title={ __( 'Posts Settings', 'coblocks' ) }>
+		<PanelBody title={ __( 'Posts settings', 'coblocks' ) }>
 			<Fragment>
 				<ToggleControl
-					label={ __( 'Post Date', 'coblocks' ) }
+					label={ __( 'Post date', 'coblocks' ) }
 					checked={ displayPostDate }
 					help={
 						displayPostDate ?
@@ -174,7 +174,7 @@ const Inspector = ( props ) => {
 					onChange={ () => setAttributes( { displayPostDate: ! displayPostDate } ) }
 				/>
 				<ToggleControl
-					label={ __( 'Post Content', 'coblocks' ) }
+					label={ __( 'Post content', 'coblocks' ) }
 					checked={ displayPostContent }
 					help={
 						displayPostContent ?
@@ -213,7 +213,7 @@ const Inspector = ( props ) => {
 				}
 				{ hasFeaturedImage &&
 					<OptionSelectorControl
-						label={ __( 'Thumbnail Style', 'coblocks' ) }
+						label={ __( 'Thumbnail style', 'coblocks' ) }
 						options={ isHorizontalStyle ? imageStyleHorizontalOptions : imageStyleStackedOptions }
 						currentOption={ imageStyle }
 						onChange={ imageStyle => setAttributes( { imageStyle } ) }
@@ -221,7 +221,7 @@ const Inspector = ( props ) => {
 				}
 				{ isHorizontalStyle && hasFeaturedImage &&
 					<OptionSelectorControl
-						label={ __( 'Thumbnail Size', 'coblocks' ) }
+						label={ __( 'Thumbnail size', 'coblocks' ) }
 						options={ sizeOptions }
 						currentOption={ imageSize }
 						onChange={ ( newImageSize ) => setAttributes( { imageSize: newImageSize } ) }
@@ -233,12 +233,12 @@ const Inspector = ( props ) => {
 	);
 
 	const feedSettings = (
-		<PanelBody title={ __( 'Feed Settings', 'coblocks' ) } initialOpen={ ! hasPosts ? true : false }>
+		<PanelBody title={ __( 'Feed settings', 'coblocks' ) } initialOpen={ ! hasPosts ? true : false }>
 			<RadioControl
 				selected={ postFeedType }
 				options={ [
-					{ label: __( 'My Blog', 'coblocks' ), value: 'internal' },
-					{ label: __( 'External Feed', 'coblocks' ), value: 'external' },
+					{ label: __( 'My blog', 'coblocks' ), value: 'internal' },
+					{ label: __( 'External feed', 'coblocks' ), value: 'external' },
 				] }
 				onChange={ ( value ) => setAttributes( { postFeedType: value } ) }
 			/>

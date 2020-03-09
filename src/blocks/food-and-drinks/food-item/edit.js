@@ -197,7 +197,7 @@ class FoodAndDrinksEdit extends Component {
 								icon="no-alt"
 								onClick={ () => setAttributes( { url: '' } ) }
 								className="coblocks-gallery-item__button"
-								label={ __( 'Remove Image', 'coblocks' ) }
+								label={ __( 'Remove image', 'coblocks' ) }
 								disabled={ ! isSelected }
 							/>
 						</div>
@@ -358,7 +358,7 @@ class FoodAndDrinksEdit extends Component {
 											setAttributes( {
 												glutenFree: ! glutenFree,
 											} ) }
-										label={ __( 'Gluten Free', 'coblocks' ) }
+										label={ __( 'Gluten free', 'coblocks' ) }
 										isToggled={ glutenFree }
 									/>
 								) }

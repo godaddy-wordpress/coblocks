@@ -181,7 +181,7 @@ class Inspector extends Component {
 							}
 							{ layout &&
 								<Fragment>
-									<PanelBody title={ __( 'Row Settings', 'coblocks' ) }>
+									<PanelBody title={ __( 'Row settings', 'coblocks' ) }>
 										{ selectedRows >= 2 && <OptionSelectorControl
 											label={ __( 'Gutter', 'coblocks' ) }
 											currentOption={ gutter }
@@ -236,7 +236,7 @@ class Inspector extends Component {
 										}
 									</PanelBody>
 									<PanelColorSettings
-										title={ __( 'Color Settings', 'coblocks' ) }
+										title={ __( 'Color settings', 'coblocks' ) }
 										initialOpen={ false }
 										colorSettings={ [
 											{
@@ -252,12 +252,12 @@ class Inspector extends Component {
 														setAttributes( { paddingSize: 'no' } );
 													}
 												},
-												label: __( 'Background Color', 'coblocks' ),
+												label: __( 'Background color', 'coblocks' ),
 											},
 											{
 												value: textColor.color,
 												onChange: setTextColor,
-												label: __( 'Text Color', 'coblocks' ),
+												label: __( 'Text color', 'coblocks' ),
 											},
 										] }
 									>

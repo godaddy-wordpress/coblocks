@@ -17,7 +17,7 @@ import { __ } from '@wordpress/i18n';
 const variations = [
 	{
 		name: 'one-column',
-		label: __( 'One Column', 'coblocks' ),
+		label: __( 'One column', 'coblocks' ),
 		icon: rowIcons.colOne,
 		attributes: {
 			columns: 1,
@@ -31,7 +31,7 @@ const variations = [
 	},
 	{
 		name: 'two-column-split',
-		label: __( 'Two Column Equal', 'coblocks' ),
+		label: __( 'Two columns; equal split', 'coblocks' ),
 		icon: rowIcons.layout5050,
 		attributes: {
 			columns: 2,
@@ -45,7 +45,7 @@ const variations = [
 	},
 	{
 		name: 'two-column-third',
-		label: __( 'Two Column Thirds', 'coblocks' ),
+		label: __( 'Two columns; two thirds, one third split', 'coblocks' ),
 		icon: rowIcons.layout6633,
 		attributes: {
 			columns: 2,
@@ -59,7 +59,7 @@ const variations = [
 	},
 	{
 		name: 'three-column',
-		label: __( 'Three Column', 'coblocks' ),
+		label: __( 'Three columns; equal split', 'coblocks' ),
 		icon: rowIcons.layout502525,
 		attributes: {
 			columns: 3,
@@ -75,7 +75,7 @@ const variations = [
 	},
 	{
 		name: 'four-column',
-		label: __( 'Four Column', 'coblocks' ),
+		label: __( 'Four columns; equal split', 'coblocks' ),
 		icon: rowIcons.layout25252525,
 		attributes: {
 			columns: 4,
