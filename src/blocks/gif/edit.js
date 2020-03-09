@@ -10,7 +10,7 @@ import { debounce, map } from 'lodash';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { Placeholder, Spinner, ResizableBox, Button } from '@wordpress/components';
+import { Placeholder, Spinner, ResizableBox } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
 import { BlockIcon, RichText } from '@wordpress/block-editor';
 
@@ -138,12 +138,9 @@ class Edit extends Component {
 								}
 
 								const img = (
-									<Button
-										onClick={ this.onImageClick }
-										isLink
-									>
+									<button onClick={ this.onImageClick }>
 										<img src={ url } alt={ defaultedAlt } />
-									</Button> );
+									</button> );
 
 								if ( ! isResizable || ! imageWidthWithinContainer ) {
 									return img;
