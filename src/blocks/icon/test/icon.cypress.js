@@ -60,7 +60,7 @@ describe( 'Test CoBlocks Icon Block', function() {
 
 		cy.get( '.wp-block-coblocks-icon__inner' ).should( 'have.css', 'width', '200px' );
 
-		cy.get( '.components-base-control__label' ).contains( 'Icon Search' ).then( ( $settingLabel ) => {
+		cy.get( '.components-base-control__label' ).contains( 'Icon search' ).then( ( $settingLabel ) => {
 			cy.get( Cypress.$( $settingLabel ).next() ).type( 'world' );
 		} );
 

@@ -224,7 +224,7 @@ class Inspector extends Component {
 						<TextControl
 							type="text"
 							autoComplete="off"
-							label={ __( 'Icon Search', 'coblocks' ) }
+							label={ __( 'Icon search', 'coblocks' ) }
 							value={ this.state.searchValue }
 							className="coblocks-icon-types-list__search"
 							onChange={ ( evt ) => {
@@ -305,7 +305,7 @@ class Inspector extends Component {
 								isLargeText: true,
 								value: iconColor.color,
 								onChange: setIconColor,
-								label: __( 'Icon Color', 'coblocks' ),
+								label: __( 'Icon color', 'coblocks' ),
 							},
 							{
 								value: backgroundColor.color,

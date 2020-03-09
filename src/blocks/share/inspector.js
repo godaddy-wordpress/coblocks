@@ -65,7 +65,7 @@ class Inspector extends Component {
 			if ( isTextStyle || isIconTextStyle ) {
 				return __( 'Text color', 'coblocks' );
 			}
-			return __( 'Icon Color', 'coblocks' );
+			return __( 'Icon color', 'coblocks' );
 		};
 
 		const options = [
@@ -101,7 +101,7 @@ class Inspector extends Component {
 			{
 				value: backgroundColor.color,
 				onChange: setBackgroundColor,
-				label: __( 'Icon Color', 'coblocks' ),
+				label: __( 'Icon color', 'coblocks' ),
 			},
 		];
 
