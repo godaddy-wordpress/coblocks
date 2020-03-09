@@ -161,8 +161,8 @@ describe( 'Test CoBlocks Share Block', function() {
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'social' );
 
-		helpers.toggleSettingCheckbox( 'Remove Top Spacing' );
-		helpers.toggleSettingCheckbox( 'Remove Bottom Spacing' );
+		helpers.toggleSettingCheckbox( 'Remove top spacing' );
+		helpers.toggleSettingCheckbox( 'Remove bottom spacing' );
 
 		helpers.savePage();
 

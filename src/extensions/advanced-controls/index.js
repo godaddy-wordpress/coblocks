@@ -116,7 +116,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 						) }
 						{ withBlockSpacing && (
 							<ToggleControl
-								label={ __( 'Remove Top Spacing', 'coblocks' ) }
+								label={ __( 'Remove top spacing', 'coblocks' ) }
 								checked={ !! noTopMargin }
 								onChange={ () =>
 									setAttributes( {
@@ -131,7 +131,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 						) }
 						{ withBlockSpacing && (
 							<ToggleControl
-								label={ __( 'Remove Bottom Spacing', 'coblocks' ) }
+								label={ __( 'Remove bottom spacing', 'coblocks' ) }
 								checked={ !! noBottomMargin }
 								onChange={ () => {
 									setAttributes( {

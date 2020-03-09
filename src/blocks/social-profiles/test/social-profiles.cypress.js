@@ -361,8 +361,8 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'social-profiles' );
 
-		helpers.toggleSettingCheckbox( 'Remove Top Spacing' );
-		helpers.toggleSettingCheckbox( 'Remove Bottom Spacing' );
+		helpers.toggleSettingCheckbox( 'Remove top spacing' );
+		helpers.toggleSettingCheckbox( 'Remove bottom spacing' );
 
 		helpers.savePage();
 
