@@ -216,7 +216,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 		} );
 
 		helpers.openSettingsPanel( 'Icon Settings' );
-		helpers.toggleSettingCheckbox( 'Social Colors' );
+		helpers.toggleSettingCheckbox( 'Social colors' );
 
 		cy.get( 'button[aria-label="Add Facebook Profile"]' )
 			.should( 'have.css', 'background-color', 'rgb(49, 55, 60)' );
@@ -251,7 +251,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		helpers.openSettingsPanel( 'Icon Settings' );
 
-		cy.get( 'input[aria-label="Rounded Corners"]' )
+		cy.get( 'input[aria-label="Rounded corners"]' )
 			.clear()
 			.type( '10' );
 

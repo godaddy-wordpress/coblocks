@@ -28,7 +28,7 @@ describe( 'Test CoBlocks Share Block', function() {
 	it( 'Test the share block colors.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'social' );
 
-		helpers.toggleSettingCheckbox( 'Social Colors' );
+		helpers.toggleSettingCheckbox( 'Social colors' );
 
 		cy.get( '.wp-block-coblocks-social li:first-child .wp-block-coblocks-social__button' )
 			.should( 'have.css', 'background-color', 'rgb(49, 55, 60)' );
@@ -51,9 +51,9 @@ describe( 'Test CoBlocks Share Block', function() {
 	it( 'Test the share block rounded corners.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'social' );
 
-		helpers.toggleSettingCheckbox( 'Social Colors' );
+		helpers.toggleSettingCheckbox( 'Social colors' );
 
-		cy.get( 'input[aria-label="Rounded Corners"]' )
+		cy.get( 'input[aria-label="Rounded corners"]' )
 			.clear()
 			.type( '10' );
 
@@ -78,7 +78,7 @@ describe( 'Test CoBlocks Share Block', function() {
 	it( 'Test the share block button size.', function() {
 		helpers.addCoBlocksBlockToPage( true, 'social' );
 
-		helpers.toggleSettingCheckbox( 'Social Colors' );
+		helpers.toggleSettingCheckbox( 'Social colors' );
 
 		cy.get( '.components-coblocks-inspector__social-button-size select' )
 			.select( 'lrg' );

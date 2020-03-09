@@ -110,14 +110,14 @@ class Inspector extends Component {
 				<InspectorControls>
 					<PanelBody title={ __( 'Icon settings', 'coblocks' ) }>
 						<ToggleControl
-							label={ __( 'Social Colors', 'coblocks' ) }
+							label={ __( 'Social colors', 'coblocks' ) }
 							checked={ !! hasColors }
 							onChange={ () => setAttributes( { hasColors: ! hasColors } ) }
 							help={ this.getHasColorsHelp }
 						/>
 						{ ! isMaskStyle && ! isCircularStyle &&
 							<RangeControl
-								label={ __( 'Rounded Corners', 'coblocks' ) }
+								label={ __( 'Rounded corners', 'coblocks' ) }
 								value={ borderRadius }
 								onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
 								min={ 0 }
@@ -126,7 +126,7 @@ class Inspector extends Component {
 						}
 						{ ( isMaskStyle || isCircularStyle ) &&
 							<RangeControl
-								label={ __( 'Icon Size', 'coblocks' ) }
+								label={ __( 'Icon size', 'coblocks' ) }
 								value={ iconSize }
 								onChange={ ( value ) => setAttributes( { iconSize: value } ) }
 								min={ 16 }
@@ -135,7 +135,7 @@ class Inspector extends Component {
 						}
 						{ isCircularStyle &&
 							<RangeControl
-								label={ __( 'Circle Size', 'coblocks' ) }
+								label={ __( 'Circle size', 'coblocks' ) }
 								value={ padding }
 								onChange={ ( value ) => setAttributes( { padding: value } ) }
 								min={ 10 }
@@ -144,7 +144,7 @@ class Inspector extends Component {
 						}
 						{ ! isMaskStyle && ! isCircularStyle &&
 							<SelectControl
-								label={ __( 'Button Size', 'coblocks' ) }
+								label={ __( 'Button size', 'coblocks' ) }
 								value={ size }
 								options={ options }
 								onChange={ ( value ) => setAttributes( { size: value } ) }
