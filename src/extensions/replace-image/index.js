@@ -101,7 +101,7 @@ const withReplaceImage = createHigherOrderComponent( ( BlockEdit ) => {
 				<Fragment>
 					<BlockEdit { ...props } />
 					<InspectorControls>
-						<div className="replace-image-button">
+						<div className="components-coblocks-replace-image">
 							<MediaUploadCheck>
 								<MediaUpload
 									allowedTypes={ [ 'image' ] }
@@ -127,4 +127,4 @@ const withReplaceImage = createHigherOrderComponent( ( BlockEdit ) => {
 	};
 }, 'withReplaceImage' );
 
-addFilter( 'editor.BlockEdit', 'coblocks/replace-image-button', withReplaceImage );
+addFilter( 'editor.BlockEdit', 'coblocks/components-coblocks-replace-image', withReplaceImage );

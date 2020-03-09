@@ -21,7 +21,7 @@ describe( 'Test CoBlocks Replace Image extension', function() {
 		const { fileName, fileBase, pathToFixtures } = imageData;
 		helpers.addBlockToPost( 'core/image', true );
 
-		cy.get( '.replace-image-button' ).should( 'not.exist' );
+		cy.get( '.components-coblocks-replace-image' ).should( 'not.exist' );
 
 		cy.fixture( pathToFixtures + fileName, 'base64' ).then( ( fileContent ) => {
 			cy.get( 'div[data-type="core/image"]' )
@@ -33,7 +33,7 @@ describe( 'Test CoBlocks Replace Image extension', function() {
 
 			cy.get( 'figure.wp-block-image' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', fileBase );
 
-			cy.get( '.replace-image-button' ).should( 'exist' ).click();
+			cy.get( '.components-coblocks-replace-image' ).should( 'exist' ).click();
 
 			cy.get( '.media-modal-content' ).contains( /upload files/i );
 			cy.get( '.media-modal-content' ).contains( /media library/i );
