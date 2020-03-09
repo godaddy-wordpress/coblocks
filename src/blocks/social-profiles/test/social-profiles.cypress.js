@@ -8,7 +8,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	 * Test the coblocks social profiles block saves.
 	 */
 	it( 'Test the social profiles block saves.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'social-profiles' );
+		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
 		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook Profile"]' ).click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.facebook.com/test' );
@@ -36,7 +36,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'social-profiles' );
+		helpers.checkForBlockErrors( 'coblocks/social-profiles' );
 
 		helpers.viewPage();
 
@@ -75,7 +75,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	 * Test the coblocks social profiles block styles.
 	 */
 	it( 'Test the social profiles block styles.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'social-profiles' );
+		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
 		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook Profile"]' ).click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.facebook.com/test' );
@@ -93,7 +93,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'social-profiles' );
+		helpers.checkForBlockErrors( 'coblocks/social-profiles' );
 
 		helpers.viewPage();
 
@@ -117,7 +117,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'social-profiles' );
+		helpers.checkForBlockErrors( 'coblocks/social-profiles' );
 
 		helpers.viewPage();
 
@@ -141,7 +141,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'social-profiles' );
+		helpers.checkForBlockErrors( 'coblocks/social-profiles' );
 
 		helpers.viewPage();
 
@@ -165,7 +165,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'social-profiles' );
+		helpers.checkForBlockErrors( 'coblocks/social-profiles' );
 
 		helpers.viewPage();
 
@@ -189,7 +189,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'social-profiles' );
+		helpers.checkForBlockErrors( 'coblocks/social-profiles' );
 
 		helpers.viewPage();
 
@@ -203,7 +203,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	 * Test the coblocks social profiles colors.
 	 */
 	it( 'Test the social profiles colors.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'social-profiles' );
+		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
 		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook Profile"]' ).click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.facebook.com/test' );
@@ -223,7 +223,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'social-profiles' );
+		helpers.checkForBlockErrors( 'coblocks/social-profiles' );
 
 		helpers.viewPage();
 
@@ -237,7 +237,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	 * Test the coblocks social profiles rounded corners.
 	 */
 	it( 'Test the social profiles rounded corners.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'social-profiles' );
+		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
 		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook Profile"]' ).click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.facebook.com/test' );
@@ -260,7 +260,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'social-profiles' );
+		helpers.checkForBlockErrors( 'coblocks/social-profiles' );
 
 		helpers.viewPage();
 
@@ -274,7 +274,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	 * Test the coblocks social profiles button size.
 	 */
 	it( 'Test the social profiles button size.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'social-profiles' );
+		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
 		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook Profile"]' ).click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.facebook.com/test' );
@@ -296,7 +296,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'social-profiles' );
+		helpers.checkForBlockErrors( 'coblocks/social-profiles' );
 
 		helpers.viewPage();
 
@@ -310,7 +310,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	 * Test the coblocks social profiles links input fields.
 	 */
 	it( 'Test the social profiles links input fields.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'social-profiles' );
+		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
 		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook Profile"]' ).click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.facebook.com/test' );
@@ -332,7 +332,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'social-profiles' );
+		helpers.checkForBlockErrors( 'coblocks/social-profiles' );
 
 		helpers.viewPage();
 
@@ -347,7 +347,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	 * Test the coblocks social profiles custom classes & top/bottom spacing.
 	 */
 	it( 'Test the social profiles custom classes and top/bottom spacing.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'social-profiles' );
+		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
 		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook Profile"]' ).click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.facebook.com/test' );
@@ -366,7 +366,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'social-profiles' );
+		helpers.checkForBlockErrors( 'coblocks/social-profiles' );
 
 		helpers.viewPage();
 

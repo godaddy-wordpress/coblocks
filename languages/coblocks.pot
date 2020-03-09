@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-03-09T18:57:44+00:00\n"
+"POT-Creation-Date: 2020-03-09T20:57:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -6394,6 +6394,10 @@ msgstr ""
 
 #: src/extensions/image-crop/index.js:168
 msgid "Crop Settings"
+msgstr ""
+
+#: src/extensions/replace-image/index.js:115
+msgid "Replace Image"
 msgstr ""
 
 #: src/utils/block-category.js:16

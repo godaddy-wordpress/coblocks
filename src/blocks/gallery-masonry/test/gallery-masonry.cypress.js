@@ -20,11 +20,11 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 	 * alter any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'Test masonry block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'gallery-masonry' );
+		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'gallery-masonry' );
+		helpers.checkForBlockErrors( 'coblocks/gallery-masonry' );
 
 		helpers.viewPage();
 
@@ -39,7 +39,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 	 */
 	it( 'Test masonry block saves with image upload.', function() {
 		const { fileName, imageBase, pathToFixtures } = galleryData;
-		helpers.addCoBlocksBlockToPage( true, 'gallery-masonry' );
+		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
 		cy.get( '.wp-block[data-type="coblocks/gallery-masonry"]' )
 			.click();
@@ -57,7 +57,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 
 			helpers.savePage();
 
-			helpers.checkForBlockErrors( 'gallery-masonry' );
+			helpers.checkForBlockErrors( 'coblocks/gallery-masonry' );
 
 			helpers.viewPage();
 
@@ -72,7 +72,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 	 * to successfully save the block without errors.
 	 */
 	it( 'Test masonry block saves with images from media library.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'gallery-masonry' );
+		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
 		cy.get( '.wp-block[data-type="coblocks/gallery-masonry"]' )
 			.click()
@@ -96,7 +96,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'gallery-masonry' );
+		helpers.checkForBlockErrors( 'coblocks/gallery-masonry' );
 
 		helpers.viewPage();
 
@@ -112,7 +112,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 	 */
 	it( 'Test masonry block saves with images captions.', function() {
 		const { caption } = galleryData;
-		helpers.addCoBlocksBlockToPage( true, 'gallery-masonry' );
+		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
 		cy.get( '.wp-block[data-type="coblocks/gallery-masonry"]' )
 			.click()
@@ -141,7 +141,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'gallery-masonry' );
+		helpers.checkForBlockErrors( 'coblocks/gallery-masonry' );
 
 		helpers.viewPage();
 

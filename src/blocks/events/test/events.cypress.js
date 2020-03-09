@@ -18,13 +18,13 @@ describe( 'Test CoBlocks Events Block', function() {
 	 * alter any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'Test events block saves without content.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'events' );
+		helpers.addBlockToPost( 'coblocks/events', true );
 
 		cy.get( '.wp-block-coblocks-events' ).should( 'exist' );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'events' );
+		helpers.checkForBlockErrors( 'coblocks/events' );
 
 		helpers.viewPage();
 
@@ -39,7 +39,7 @@ describe( 'Test CoBlocks Events Block', function() {
 	 */
 	it( 'Test events block saves with imported ICS calendar.', function() {
 		const { ical } = eventsData;
-		helpers.addCoBlocksBlockToPage( true, 'events' );
+		helpers.addBlockToPost( 'coblocks/events', true );
 
 		cy.get( '.wp-block-coblocks-events' ).click( { force: true } ).should( 'exist' );
 
@@ -52,7 +52,7 @@ describe( 'Test CoBlocks Events Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'events' );
+		helpers.checkForBlockErrors( 'coblocks/events' );
 
 		helpers.viewPage();
 
@@ -65,7 +65,7 @@ describe( 'Test CoBlocks Events Block', function() {
 	 * Test the events block saves with custom classes
 	 */
 	it( 'Test events block saves with custom classes.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'events' );
+		helpers.addBlockToPost( 'coblocks/events', true );
 
 		cy.get( '.wp-block-coblocks-events' ).click( { force: true } );
 
@@ -73,7 +73,7 @@ describe( 'Test CoBlocks Events Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'events' );
+		helpers.checkForBlockErrors( 'coblocks/events' );
 
 		cy.get( '.wp-block-coblocks-events' )
 			.should( 'have.class', 'my-custom-class' );

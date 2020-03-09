@@ -20,11 +20,11 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 	 * alter any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'Test stacked block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'gallery-stacked' );
+		helpers.addBlockToPost( 'coblocks/gallery-stacked', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'gallery-stacked' );
+		helpers.checkForBlockErrors( 'coblocks/gallery-stacked' );
 
 		helpers.viewPage();
 
@@ -39,7 +39,7 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 	 */
 	it( 'Test stacked block saves with image upload.', function() {
 		const { fileName, imageBase, pathToFixtures } = galleryData;
-		helpers.addCoBlocksBlockToPage( true, 'gallery-stacked' );
+		helpers.addBlockToPost( 'coblocks/gallery-stacked', true );
 
 		cy.get( '.wp-block[data-type="coblocks/gallery-stacked"]' )
 			.click();
@@ -57,7 +57,7 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 
 			helpers.savePage();
 
-			helpers.checkForBlockErrors( 'gallery-stacked' );
+			helpers.checkForBlockErrors( 'coblocks/gallery-stacked' );
 
 			helpers.viewPage();
 
@@ -72,7 +72,7 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 	 * to successfully save the block without errors.
 	 */
 	it( 'Test stacked block saves with images from media library.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'gallery-stacked' );
+		helpers.addBlockToPost( 'coblocks/gallery-stacked', true );
 
 		cy.get( '.wp-block[data-type="coblocks/gallery-stacked"]' )
 			.click()
@@ -96,7 +96,7 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'gallery-stacked' );
+		helpers.checkForBlockErrors( 'coblocks/gallery-stacked' );
 
 		helpers.viewPage();
 
@@ -112,7 +112,7 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 	 */
 	it( 'Test stacked block saves with images captions.', function() {
 		const { caption } = galleryData;
-		helpers.addCoBlocksBlockToPage( true, 'gallery-stacked' );
+		helpers.addBlockToPost( 'coblocks/gallery-stacked', true );
 
 		cy.get( '.wp-block[data-type="coblocks/gallery-stacked"]' )
 			.click()
@@ -141,7 +141,7 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'gallery-stacked' );
+		helpers.checkForBlockErrors( 'coblocks/gallery-stacked' );
 
 		helpers.viewPage();
 

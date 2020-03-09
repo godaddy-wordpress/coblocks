@@ -12,11 +12,11 @@ describe( 'Test CoBlocks Map Block', function() {
 	 * alter any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'Test map block saves without content values set.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'map' );
+		helpers.addBlockToPost( 'coblocks/map', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'map' );
+		helpers.checkForBlockErrors( 'coblocks/map' );
 
 		helpers.viewPage();
 
@@ -30,7 +30,7 @@ describe( 'Test CoBlocks Map Block', function() {
 	 * URL and save without any errors.
 	 */
 	it( 'Test map block saves with address.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'map' );
+		helpers.addBlockToPost( 'coblocks/map', true );
 
 		cy.get( 'input[placeholder="Search for a place or address…"]' )
 			.type( mapAddress )
@@ -39,7 +39,7 @@ describe( 'Test CoBlocks Map Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'map' );
+		helpers.checkForBlockErrors( 'coblocks/map' );
 
 		helpers.viewPage();
 
@@ -52,7 +52,7 @@ describe( 'Test CoBlocks Map Block', function() {
 	 * Test the map block saves height set
 	 */
 	it( 'Test the map block height controls.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'map' );
+		helpers.addBlockToPost( 'coblocks/map', true );
 
 		cy.get( 'input[placeholder="Search for a place or address…"]' )
 			.type( mapAddress )
@@ -65,7 +65,7 @@ describe( 'Test CoBlocks Map Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'map' );
+		helpers.checkForBlockErrors( 'coblocks/map' );
 
 		helpers.viewPage();
 
