@@ -106,7 +106,7 @@ const Inspector = ( props ) => {
 					onChange={ ( gutter ) => setAttributes( { gutter } ) }
 				/> }
 				<ToggleControl
-					label={ __( 'Action Buttons', 'coblocks' ) }
+					label={ __( 'Display buttons', 'coblocks' ) }
 					className="components-toggle-control--services-action-button"
 					help={
 						attributes.buttons ?

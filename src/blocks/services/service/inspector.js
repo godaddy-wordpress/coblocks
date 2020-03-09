@@ -17,7 +17,7 @@ const Inspector = ( props ) => {
 		<InspectorControls>
 			<PanelBody title={ __( 'Service settings', 'coblocks' ) }>
 				<ToggleControl
-					label={ __( 'Action Button', 'coblocks' ) }
+					label={ __( 'Display button', 'coblocks' ) }
 					help={
 						attributes.showCta ?
 							__( 'Showing the call to action button.', 'coblocks' ) :
@@ -43,7 +43,7 @@ const Inspector = ( props ) => {
 						}
 					/>
 					<FocalPointPicker
-						label={ __( 'Focal Point', 'coblocks' ) }
+						label={ __( 'Focal point', 'coblocks' ) }
 						url={ attributes.imageUrl }
 						value={ attributes.focalPoint }
 						onChange={ ( value ) => setAttributes( { focalPoint: value } ) }
