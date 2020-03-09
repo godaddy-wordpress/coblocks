@@ -150,7 +150,7 @@ class TypographyControls extends Component {
 			} );
 		}
 
-		const onFontChange = ( value, onClose ) => {
+		const onFontChange = ( value ) => {
 			setAttributes( { fontFamily: value } );
 
 			if ( typeof googleFonts[ value ] !== 'undefined' && typeof googleFonts[ value ].weight !== 'undefined' ) {
@@ -158,8 +158,6 @@ class TypographyControls extends Component {
 					setAttributes( { fontWeight: undefined } );
 				}
 			}
-
-			onClose();
 		};
 
 		return (
@@ -191,13 +189,13 @@ class TypographyControls extends Component {
 							</IconButton>
 						);
 					} }
-					renderContent={ ( { onClose } ) => (
+					renderContent={ () => (
 						<Fragment>
 							<div className="components-coblocks-typography-dropdown__inner">
 								<FontFamilyPicker
 									label={ __( 'Font', 'coblocks' ) }
 									value={ fontFamily }
-									onChange={ ( nextFontFamily ) => onFontChange( nextFontFamily, onClose ) }
+									onChange={ ( nextFontFamily ) => onFontChange( nextFontFamily ) }
 									className="components-base-control--with-flex components-coblocks-typography-dropdown__inner--font"
 								/>
 								{ ( ( typeof attributes.textPanelFontWeight === 'undefined' || ( typeof attributes.textPanelFontWeight !== 'undefined' && typeof attributes.textPanelFontWeight === 'undefined' ) ) ) ?

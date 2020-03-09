@@ -87,13 +87,13 @@ function FontFamilyPicker( { label, value, help, instanceId, onChange, className
 				className="components-select-control__input components-select-control__input--coblocks-fontfamily"
 				onChange={ onChangeValue }
 				aria-describedby={ !! help ? `${ id }__help` : undefined }
+				value={ value }
 				{ ...props }
 			>
 				{ fonts.map( ( option, index ) =>
 					<option
 						key={ `${ option.label }-${ option.value }-${ index }` }
 						value={ option.value }
-						defaultValue={ value === option.value ? 'selected' : '' }
 					>
 						{ option.label }
 					</option>
