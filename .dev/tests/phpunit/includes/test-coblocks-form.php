@@ -382,7 +382,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	 */
 	public function test_render_field_radio() {
 
-		$this->expectOutputRegex( '/<input type="radio" name="field-radio\[value\]" value="Option 2" class="radio"> Option 2/' );
+		$this->expectOutputRegex( '/<label class="coblocks-radio-label" for="radio-option-1">Option 1<\/label><input id="radio-option-2" type="radio" name="field-radio\[value\]" value="Option 2" class="radio">/' );
 
 		echo $this->coblocks_form->render_field_radio(
 			[
@@ -474,7 +474,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	 */
 	public function test_render_field_checkbox() {
 
-		$this->expectOutputRegex( '/<input type="checkbox" name="field-select\[value\]\[\]" value="Option 2" class="checkbox"> Option 2/' );
+		$this->expectOutputRegex( '/<label class="coblocks-checkbox-label" for="select-option-1">Option 1<\/label><input id="select-option-2" type="checkbox" name="field-select\[value\]\[\]" value="Option 2" class="checkbox">/' );
 
 		echo $this->coblocks_form->render_field_checkbox(
 			[
