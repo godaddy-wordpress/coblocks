@@ -27,8 +27,6 @@ class Inspector extends Component {
 		this.state = {
 			apiKey: props.apiKey,
 			isSavedKey: false,
-			isLoading: true,
-			isSaving: false,
 			keySaved: false,
 			address: props.attributes.address,
 		};
@@ -129,7 +127,7 @@ class Inspector extends Component {
 					{ address &&
 						<PanelBody title={ __( 'Map Settings', 'coblocks' ) }>
 							<Fragment>
-								<BaseControl label={ __( 'Height in pixels', 'coblocks' ) }>
+								<BaseControl label={ __( 'Height in pixels', 'coblocks' ) } id="map-height-control">
 									<input
 										type="number"
 										aria-label={ __( 'Height for the map in pixels', 'coblocks' ) }
