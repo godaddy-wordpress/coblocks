@@ -101,7 +101,7 @@ class Inspector extends Component {
 							}
 							{ gutter > 0 &&
 								<RangeControl
-									label={ __( 'Rounded Corners', 'coblocks' ) }
+									label={ __( 'Rounded corners', 'coblocks' ) }
 									value={ radius }
 									onChange={ this.setRadiusTo }
 									min={ 0 }

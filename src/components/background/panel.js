@@ -216,7 +216,7 @@ class BackgroundPanel extends Component {
 								/>
 								{ ( ( ! isEmpty( backgroundImg ) || ! isEmpty( backgroundColor.color ) ) && backgroundPadding > 0 ) && align !== 'full' &&
 									<RangeControl
-										label={ __( 'Rounded Corners', 'coblocks' ) }
+										label={ __( 'Rounded corners', 'coblocks' ) }
 										value={ backgroundRadius }
 										onChange={ ( nextBackgroundRadius ) => setAttributes( { backgroundRadius: nextBackgroundRadius } ) }
 										min={ 0 }

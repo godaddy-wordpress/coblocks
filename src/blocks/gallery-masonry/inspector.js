@@ -88,7 +88,7 @@ class Inspector extends Component {
 
 					{ gutter > 0 &&
 						<RangeControl
-							label={ __( 'Rounded Corners', 'coblocks' ) }
+							label={ __( 'Rounded corners', 'coblocks' ) }
 							aria-label={ __( 'Add rounded corners to the gallery items.', 'coblocks' ) }
 							value={ radius }
 							onChange={ this.setRadiusTo }
