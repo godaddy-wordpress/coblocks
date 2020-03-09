@@ -30,7 +30,7 @@ const Inspector = ( props ) => {
 			{ attributes.imageUrl &&
 				<PanelBody title={ __( 'Image settings', 'coblocks' ) } initialOpen={ false }>
 					<TextareaControl
-						label={ __( 'Alt Text (Alternative Text)', 'coblocks' ) }
+						label={ __( 'Alt text (alternative text)', 'coblocks' ) }
 						value={ attributes.imageAlt }
 						onChange={ ( value ) => setAttributes( { imageAlt: value } ) }
 						help={

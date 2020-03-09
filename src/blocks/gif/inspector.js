@@ -28,7 +28,7 @@ class Inspector extends Component {
 				<InspectorControls>
 					<PanelBody title={ __( 'Gif settings', 'coblocks' ) }>
 						<TextareaControl
-							label={ __( 'Alt Text (Alternative Text)', 'coblocks' ) }
+							label={ __( 'Alt text (alternative text)', 'coblocks' ) }
 							value={ alt }
 							onChange={ this.updateAlt }
 							help={

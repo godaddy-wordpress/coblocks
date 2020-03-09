@@ -92,7 +92,7 @@ class Inspector extends Component {
 						) }
 						{ mediaUrl && mediaType === 'image' && (
 							<TextareaControl
-								label={ __( 'Alt Text (Alternative Text)', 'coblocks' ) }
+								label={ __( 'Alt text (alternative text)', 'coblocks' ) }
 								value={ mediaAlt }
 								onChange={ ( nextMediaAlt ) => setAttributes( { mediaAlt: nextMediaAlt } ) }
 								help={

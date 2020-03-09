@@ -96,7 +96,7 @@ const Inspector = ( props ) => {
 			{ url &&
 				<PanelBody title={ __( 'Image settings', 'coblocks' ) } initialOpen={ false }>
 					<TextareaControl
-						label={ __( 'Alt Text (Alternative Text)', 'coblocks' ) }
+						label={ __( 'Alt text (alternative text)', 'coblocks' ) }
 						value={ alt }
 						onChange={ ( value ) => setAttributes( { alt: value } ) }
 						help={
