@@ -20,7 +20,7 @@ const Inspector = props => {
 		{
 			value: textColor.color,
 			onChange: setTextColor,
-			label: __( 'Text Color', 'coblocks' ),
+			label: __( 'Text color', 'coblocks' ),
 		},
 	];
 

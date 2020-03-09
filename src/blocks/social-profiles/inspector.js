@@ -92,7 +92,7 @@ class Inspector extends Component {
 			{
 				value: textColor.color,
 				onChange: setTextColor,
-				label: ! isTextStyle ? __( 'Icon Color', 'coblocks' ) : __( 'Text Color', 'coblocks' ),
+				label: ! isTextStyle ? __( 'Icon Color', 'coblocks' ) : __( 'Text color', 'coblocks' ),
 			},
 		];
 

@@ -51,7 +51,7 @@ class ColorSettings extends Component {
 		colorSettings.push( {
 			value: customTextColor,
 			onChange: ( nextcustomTextColor ) => setAttributes( { customTextColor: nextcustomTextColor } ),
-			label: __( 'Text Color', 'coblocks' ),
+			label: __( 'Text color', 'coblocks' ),
 		} );
 
 		return (

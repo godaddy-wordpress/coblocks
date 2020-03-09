@@ -63,7 +63,7 @@ class Inspector extends Component {
 
 		const textColorLabel = () => {
 			if ( isTextStyle || isIconTextStyle ) {
-				return __( 'Text Color', 'coblocks' );
+				return __( 'Text color', 'coblocks' );
 			}
 			return __( 'Icon Color', 'coblocks' );
 		};
