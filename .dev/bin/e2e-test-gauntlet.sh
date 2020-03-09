@@ -44,12 +44,15 @@ $WP_CLI theme activate gutenberg-starter-theme
 echo "Starting the WP-CLI server."
 $WP_CLI server --host=0.0.0.0 --port=8080 --allow-root &> /dev/null &
 
-if [ -n "$SPECS" ]; then
+if [ "$SPECS" = "open" ]; then
+	echo "Opening Cypress..."
+	npx cypress open --env testURL='http://localhost:8080' --config video=false,screenshotsFolder="cypress/wordpress_$WP_VERSION/screenshots",videosFolder="cypress/wordpress_$WP_VERSION/videos"
+elif [ -n "$SPECS" ]; then
 	echo "Running defined specs..."
-	npm run test-e2e -- --spec $SPECS --env testURL='http://localhost:8080' --config screenshotsFolder="cypress/wordpress_$WP_VERSION/screenshots",videosFolder="cypress/wordpress_$WP_VERSION/videos"
+	npm run test-e2e -- --spec $SPECS --env testURL='http://localhost:8080' --config video=false,screenshotsFolder="cypress/wordpress_$WP_VERSION/screenshots",videosFolder="cypress/wordpress_$WP_VERSION/videos"
 else
 	echo "Running all specs..."
-	npm run test-e2e -- --env testURL='http://localhost:8080' --config screenshotsFolder="cypress/wordpress_$WP_VERSION/screenshots",videosFolder="cypress/wordpress_$WP_VERSION/videos"
+	npm run test-e2e -- --env testURL='http://localhost:8080' --config video=false,screenshotsFolder="cypress/wordpress_$WP_VERSION/screenshots",videosFolder="cypress/wordpress_$WP_VERSION/videos"
 fi
 
 # Kill the webserver
