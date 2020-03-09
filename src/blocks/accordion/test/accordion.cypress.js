@@ -34,7 +34,7 @@ describe( 'Block: Accordion', () => {
 		cy.get( '[data-type="coblocks/accordion"] .wp-block-coblocks-accordion-item__content' ).should( 'not.exist' );
 
 		cy.get( '[data-type="coblocks/accordion"]' ).click();
-		helpers.toggleSettingCheckbox( 'Display Open' );
+		helpers.toggleSettingCheckbox( 'Display as open' );
 
 		cy.get( '.editor-post-title__input' ).click();
 		cy.get( '[data-type="coblocks/accordion"] .wp-block-coblocks-accordion-item__content' ).should( 'exist' );
@@ -56,7 +56,7 @@ describe( 'Block: Accordion', () => {
 	 * Test the accordion block color settings
 	 */
 	it( 'can apply color settings', () => {
-		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__title' ).type( 'Accordion Title' );
+		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__title' ).type( 'Accordion title' );
 
 		// Title - Background color
 		helpers.setColorSetting( 'background', '#000000' );

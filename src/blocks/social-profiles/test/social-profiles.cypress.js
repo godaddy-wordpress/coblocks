@@ -322,7 +322,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 			}
 		} );
 
-		helpers.openSettingsPanel( 'Profile links' );
+		helpers.openSettingsPanel( 'Profiles' );
 
 		cy.get( '.components-social-links-list .components-base-control:nth-child(5) input' )
 			.type( 'https://www.linkedin.com/test' );
