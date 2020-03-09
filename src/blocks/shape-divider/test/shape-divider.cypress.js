@@ -22,11 +22,11 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 	 * any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'Test shape-divider block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'shape-divider' );
+		helpers.addBlockToPost( 'coblocks/shape-divider', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'shape-divider' );
+		helpers.checkForBlockErrors( 'coblocks/shape-divider' );
 
 		helpers.viewPage();
 
@@ -41,7 +41,7 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 	 */
 	it( 'Test shape-divider block saves with height values set.', function() {
 		const { shapeHeight, backgroundHeight } = shapeDividerData;
-		helpers.addCoBlocksBlockToPage( true, 'shape-divider' );
+		helpers.addBlockToPost( 'coblocks/shape-divider', true );
 
 		cy.get( '.wp-block-coblocks-shape-divider' ).click();
 
@@ -50,7 +50,7 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'shape-divider' );
+		helpers.checkForBlockErrors( 'coblocks/shape-divider' );
 
 		helpers.viewPage();
 
@@ -67,7 +67,7 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 	 */
 	it( 'Test shape-divider block saves with color values set.', function() {
 		const { shapeColor, backgroundColor, shapeColorRGB, backgroundColorRGB } = shapeDividerData;
-		helpers.addCoBlocksBlockToPage( true, 'shape-divider' );
+		helpers.addBlockToPost( 'coblocks/shape-divider', true );
 
 		cy.get( '.wp-block-coblocks-shape-divider' ).click();
 		helpers.setColorSetting( 'shape color', shapeColor );
@@ -75,7 +75,7 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'shape-divider' );
+		helpers.checkForBlockErrors( 'coblocks/shape-divider' );
 
 		helpers.viewPage();
 
@@ -93,7 +93,7 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 	 */
 	it( 'Test shape-divider block saves with non-default style.', function() {
 		const { style } = shapeDividerData;
-		helpers.addCoBlocksBlockToPage( true, 'shape-divider' );
+		helpers.addBlockToPost( 'coblocks/shape-divider', true );
 
 		cy.get( '.wp-block-coblocks-shape-divider' ).click();
 
@@ -101,7 +101,7 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'shape-divider' );
+		helpers.checkForBlockErrors( 'coblocks/shape-divider' );
 
 		helpers.viewPage();
 
