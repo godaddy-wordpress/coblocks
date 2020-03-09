@@ -22,11 +22,11 @@ describe( 'Test CoBlocks Media Card Block', function() {
 	 * alter any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'Test media-card block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'media-card' );
+		helpers.addBlockToPost( 'coblocks/media-card', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'media-card' );
+		helpers.checkForBlockErrors( 'coblocks/media-card' );
 
 		helpers.viewPage();
 
@@ -41,7 +41,7 @@ describe( 'Test CoBlocks Media Card Block', function() {
 	 */
 	it( 'Test media-card block saves with image upload.', function() {
 		const { fileName, imageBase, pathToFixtures } = mediaData;
-		helpers.addCoBlocksBlockToPage( true, 'media-card' );
+		helpers.addBlockToPost( 'coblocks/media-card', true );
 
 		cy.get( '.wp-block[data-type="coblocks/media-card"]' )
 			.click();
@@ -59,7 +59,7 @@ describe( 'Test CoBlocks Media Card Block', function() {
 
 			helpers.savePage();
 
-			helpers.checkForBlockErrors( 'media-card' );
+			helpers.checkForBlockErrors( 'coblocks/media-card' );
 
 			helpers.viewPage();
 
@@ -74,7 +74,7 @@ describe( 'Test CoBlocks Media Card Block', function() {
 	 * to successfully save the block without errors.
 	 */
 	it( 'Test media-card block saves with images from media library.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'media-card' );
+		helpers.addBlockToPost( 'coblocks/media-card', true );
 
 		cy.get( '.wp-block[data-type="coblocks/media-card"]' )
 			.click()
@@ -92,7 +92,7 @@ describe( 'Test CoBlocks Media Card Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'media-card' );
+		helpers.checkForBlockErrors( 'coblocks/media-card' );
 
 		helpers.viewPage();
 
@@ -108,13 +108,13 @@ describe( 'Test CoBlocks Media Card Block', function() {
 	 */
 	it( 'Test media-card block saves with color values set.', function() {
 		const { backgroundColor, backgroundColorRGB } = mediaData.colorData;
-		helpers.addCoBlocksBlockToPage( true, 'media-card' );
+		helpers.addBlockToPost( 'coblocks/media-card', true );
 
 		helpers.setColorSetting( 'background color', backgroundColor );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'media-card' );
+		helpers.checkForBlockErrors( 'coblocks/media-card' );
 
 		helpers.viewPage();
 

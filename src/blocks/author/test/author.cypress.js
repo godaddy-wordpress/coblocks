@@ -18,11 +18,11 @@ describe( 'Test CoBlocks Author Block', function() {
 	 * alter any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'Test author block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'author' );
+		helpers.addBlockToPost( 'coblocks/author', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'author' );
+		helpers.checkForBlockErrors( 'coblocks/author' );
 
 		helpers.viewPage();
 
@@ -36,7 +36,7 @@ describe( 'Test CoBlocks Author Block', function() {
 	 * Test that we can add a custom class to the author block
 	 */
 	it( 'Test author block custom class.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'author' );
+		helpers.addBlockToPost( 'coblocks/author', true );
 
 		cy.get( '.wp-block-coblocks-author' ).click( { force: true } );
 
@@ -46,7 +46,7 @@ describe( 'Test CoBlocks Author Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'author' );
+		helpers.checkForBlockErrors( 'coblocks/author' );
 
 		helpers.viewPage();
 
@@ -62,7 +62,7 @@ describe( 'Test CoBlocks Author Block', function() {
 	 */
 	it( 'Test author block saves with author information.', function() {
 		const { fileName, imageBase, pathToFixtures } = authorImageData;
-		helpers.addCoBlocksBlockToPage( true, 'author' );
+		helpers.addBlockToPost( 'coblocks/author', true );
 
 		cy.get( '.wp-block-coblocks-author' ).click( { force: true } );
 
@@ -97,7 +97,7 @@ describe( 'Test CoBlocks Author Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'author' );
+		helpers.checkForBlockErrors( 'coblocks/author' );
 
 		helpers.viewPage();
 

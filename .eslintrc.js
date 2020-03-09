@@ -3,6 +3,11 @@ module.exports = {
         'plugin:@wordpress/eslint-plugin/recommended',
     ],
     env: {
-		browser: true,
-	},
+        browser: true,
+        "cypress/globals": true
+    },
+    plugins: [
+        "cypress",
+        "chai-friendly"
+    ],
 };
