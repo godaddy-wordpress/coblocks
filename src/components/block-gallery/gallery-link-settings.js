@@ -78,7 +78,7 @@ class GalleryLinkSettings extends Component {
 								/>
 								<TextControl
 									/* translators: html attribute that specifies the relationship between two pages */
-									label={ __( 'Link Rel', 'coblocks' ) }
+									label={ __( 'Link rel', 'coblocks' ) }
 									value={ rel }
 									onChange={ ( value ) => setAttributes( { rel: value } ) }
 								/>

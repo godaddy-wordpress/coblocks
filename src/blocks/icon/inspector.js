@@ -288,7 +288,7 @@ class Inspector extends Component {
 							onChange={ ( value ) => setAttributes( { href: value } ) }
 							placeholder="https://" />
 						<TextControl
-							label={ __( 'Link Rel', 'coblocks' ) }
+							label={ __( 'Link rel', 'coblocks' ) }
 							value={ rel || '' }
 							onChange={ ( value ) => setAttributes( { rel: value } ) }
 						/>

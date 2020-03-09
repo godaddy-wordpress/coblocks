@@ -92,8 +92,8 @@ describe( 'Test CoBlocks Icon Block', function() {
 			cy.get( Cypress.$( $settingLabel ).next() ).type( 'https://www.google.com' );
 		} );
 
-		cy.get( '.components-base-control__label' ).contains( 'Link Rel' ).then( ( $settingLabel ) => {
-			cy.get( Cypress.$( $settingLabel ).next() ).type( 'Link Rel' );
+		cy.get( '.components-base-control__label' ).contains( 'Link rel' ).then( ( $settingLabel ) => {
+			cy.get( Cypress.$( $settingLabel ).next() ).type( 'Link rel' );
 		} );
 
 		cy.get( '.components-toggle-control__label' ).contains( 'Open in New Tab' ).then( ( $settingLabel ) => {
@@ -108,7 +108,7 @@ describe( 'Test CoBlocks Icon Block', function() {
 
 		cy.get( '.wp-block-coblocks-icon__inner a' )
 			.should( 'have.attr', 'href', 'https://www.google.com' )
-			.and( 'have.attr', 'rel', 'Link Rel noopener noreferrer' )
+			.and( 'have.attr', 'rel', 'Link rel noopener noreferrer' )
 			.and( 'have.attr', 'target', '_blank' );
 
 		helpers.editPage();
