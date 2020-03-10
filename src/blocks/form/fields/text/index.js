@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import edit from './edit';
+import icon from './icon';
 
 /**
  * WordPress dependencies
@@ -17,7 +18,7 @@ const metadata = {
 	attributes: {
 		label: {
 			type: 'string',
-			default: __( 'Custom response', 'coblocks' ),
+			default: __( 'Text', 'coblocks' ),
 		},
 		required: {
 			type: 'boolean',
@@ -33,7 +34,7 @@ const settings = {
 	title: __( 'Text', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'A text box for custom responses.', 'coblocks' ),
-	// icon,
+	icon,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

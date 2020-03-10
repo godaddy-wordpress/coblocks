@@ -375,7 +375,7 @@ class CoBlocks_Form {
 
 		static $text_count = 1;
 
-		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Custom response', 'coblocks' );
+		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Text', 'coblocks' );
 		$label_slug    = $text_count > 1 ? sanitize_title( $label . '-' . $text_count ) : sanitize_title( $label );
 		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
 
