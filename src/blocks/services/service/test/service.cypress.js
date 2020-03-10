@@ -31,7 +31,7 @@ describe( 'Test CoBlocks Service Block', function() {
 
 		cy.get( 'div.wp-block-button' ).should( 'not.exist' );
 
-		helpers.toggleSettingCheckbox( /action buttons/i );
+		helpers.toggleSettingCheckbox( /display buttons/i );
 
 		cy.get( 'div.wp-block-button' ).should( 'exist' );
 

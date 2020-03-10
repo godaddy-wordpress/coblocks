@@ -139,7 +139,7 @@ class edit extends Component {
 							<li>
 								<button
 									aria-expanded={ this.state.currentIcon === 'facebook' }
-									aria-label={ __( 'Add Facebook Profile', 'coblocks' ) }
+									aria-label={ __( 'Add Facebook profile', 'coblocks' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--facebook',
@@ -185,7 +185,7 @@ class edit extends Component {
 							<li>
 								<button
 									aria-expanded={ this.state.currentIcon === 'twitter' }
-									aria-label={ __( 'Add Twitter Profile', 'coblocks' ) }
+									aria-label={ __( 'Add Twitter profile', 'coblocks' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--twitter',
@@ -231,7 +231,7 @@ class edit extends Component {
 							<li>
 								<button
 									aria-expanded={ this.state.currentIcon === 'instagram' }
-									aria-label={ __( 'Add Instagram Profile', 'coblocks' ) }
+									aria-label={ __( 'Add Instagram profile', 'coblocks' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--instagram',
@@ -279,7 +279,7 @@ class edit extends Component {
 							<li>
 								<button
 									aria-expanded={ this.state.currentIcon === 'pinterest' }
-									aria-label={ __( 'Add Pinterest Profile', 'coblocks' ) }
+									aria-label={ __( 'Add Pinterest profile', 'coblocks' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--pinterest',
@@ -327,7 +327,7 @@ class edit extends Component {
 							<li>
 								<button
 									aria-expanded={ this.state.currentIcon === 'linkedin' }
-									aria-label={ __( 'Add LinkedIn Profile', 'coblocks' ) }
+									aria-label={ __( 'Add LinkedIn profile', 'coblocks' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--linkedin',
@@ -373,7 +373,7 @@ class edit extends Component {
 							<li>
 								<button
 									aria-expanded={ this.state.currentIcon === 'youtube' }
-									aria-label={ __( 'Add YouTube Profile', 'coblocks' ) }
+									aria-label={ __( 'Add YouTube profile', 'coblocks' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--youtube',
@@ -419,7 +419,7 @@ class edit extends Component {
 							<li>
 								<button
 									aria-expanded={ this.state.currentIcon === 'yelp' }
-									aria-label={ __( 'Add Yelp Profile', 'coblocks' ) }
+									aria-label={ __( 'Add Yelp profile', 'coblocks' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--yelp',
@@ -465,7 +465,7 @@ class edit extends Component {
 							<li>
 								<button
 									aria-expanded={ this.state.currentIcon === 'twitter' }
-									aria-label={ __( 'Add Houzz Profile', 'coblocks' ) }
+									aria-label={ __( 'Add Houzz profile', 'coblocks' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--houzz',

@@ -295,8 +295,8 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 			'label'          => 'Name',
 			'required'       => true,
 			'hasLastName'    => true,
-			'labelFirstName' => 'First Name',
-			'labelLastName'  => 'Last Name',
+			'labelFirstName' => 'First name',
+			'labelLastName'  => 'Last name',
 		];
 
 		echo $this->coblocks_form->render_field_name( $atts, '' );

@@ -60,7 +60,7 @@ describe( 'Test CoBlocks Icon Block', function() {
 
 		cy.get( '.wp-block-coblocks-icon__inner' ).should( 'have.css', 'width', '200px' );
 
-		cy.get( '.components-base-control__label' ).contains( 'Icon Search' ).then( ( $settingLabel ) => {
+		cy.get( '.components-base-control__label' ).contains( 'Icon search' ).then( ( $settingLabel ) => {
 			cy.get( Cypress.$( $settingLabel ).next() ).type( 'world' );
 		} );
 
@@ -86,17 +86,17 @@ describe( 'Test CoBlocks Icon Block', function() {
 	it( 'Test the icon block link settings.', function() {
 		helpers.addBlockToPost( 'coblocks/icon', true );
 
-		helpers.openSettingsPanel( 'Link Settings' );
+		helpers.openSettingsPanel( 'Link settings' );
 
 		cy.get( '.components-base-control__label' ).contains( 'Link URL' ).then( ( $settingLabel ) => {
 			cy.get( Cypress.$( $settingLabel ).next() ).type( 'https://www.google.com' );
 		} );
 
-		cy.get( '.components-base-control__label' ).contains( 'Link Rel' ).then( ( $settingLabel ) => {
-			cy.get( Cypress.$( $settingLabel ).next() ).type( 'Link Rel' );
+		cy.get( '.components-base-control__label' ).contains( 'Link rel' ).then( ( $settingLabel ) => {
+			cy.get( Cypress.$( $settingLabel ).next() ).type( 'Link rel' );
 		} );
 
-		cy.get( '.components-toggle-control__label' ).contains( 'Open in New Tab' ).then( ( $settingLabel ) => {
+		cy.get( '.components-toggle-control__label' ).contains( 'Open in new tab' ).then( ( $settingLabel ) => {
 			cy.get( Cypress.$( $settingLabel ).closest( '.components-base-control__field' ).find( '.components-form-toggle' ) ).click();
 		} );
 
@@ -108,7 +108,7 @@ describe( 'Test CoBlocks Icon Block', function() {
 
 		cy.get( '.wp-block-coblocks-icon__inner a' )
 			.should( 'have.attr', 'href', 'https://www.google.com' )
-			.and( 'have.attr', 'rel', 'Link Rel noopener noreferrer' )
+			.and( 'have.attr', 'rel', 'Link rel noopener noreferrer' )
 			.and( 'have.attr', 'target', '_blank' );
 
 		helpers.editPage();
@@ -120,7 +120,7 @@ describe( 'Test CoBlocks Icon Block', function() {
 	it( 'Test the icon block color settings.', function() {
 		helpers.addBlockToPost( 'coblocks/icon', true );
 
-		helpers.openSettingsPanel( 'Color Settings' );
+		helpers.openSettingsPanel( 'Color settings' );
 
 		cy.get( '.components-base-control__field' )
 			.contains( /icon color/i )
@@ -166,7 +166,7 @@ describe( 'Test CoBlocks Icon Block', function() {
 	it( 'Test the icon block custom class.', function() {
 		helpers.addBlockToPost( 'coblocks/icon', true );
 
-		cy.get( '.components-panel__body-title' ).contains( 'Icon Settings' ).then( ( $panelTop ) => {
+		cy.get( '.components-panel__body-title' ).contains( 'Icon settings' ).then( ( $panelTop ) => {
 			const $parentPanel = Cypress.$( $panelTop ).closest( 'div.components-panel__body' );
 			if ( $parentPanel.hasClass( 'is-opened' ) ) {
 				$panelTop.click();

@@ -34,7 +34,7 @@ describe( 'Block: Accordion', () => {
 		cy.get( '[data-type="coblocks/accordion"] .wp-block-coblocks-accordion-item__content' ).should( 'not.exist' );
 
 		cy.get( '[data-type="coblocks/accordion"]' ).click();
-		helpers.toggleSettingCheckbox( 'Display Open' );
+		helpers.toggleSettingCheckbox( 'Display as open' );
 
 		cy.get( '.editor-post-title__input' ).click();
 		cy.get( '[data-type="coblocks/accordion"] .wp-block-coblocks-accordion-item__content' ).should( 'exist' );
@@ -56,23 +56,23 @@ describe( 'Block: Accordion', () => {
 	 * Test the accordion block color settings
 	 */
 	it( 'can apply color settings', () => {
-		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__title' ).type( 'Accordion Title' );
+		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__title' ).type( 'Accordion title' );
 
-		// Title - Background Color
+		// Title - Background color
 		helpers.setColorSetting( 'background', '#000000' );
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__title' ).should( 'have.css', 'background-color', `rgb(0, 0, 0)` );
 
-		// Title - Text Color
+		// Title - Text color
 		helpers.setColorSetting( 'text', '#FFFFFF' );
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__title' ).should( 'have.css', 'color', `rgb(255, 255, 255)` );
 
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-paragraph' ).click().type( 'Content' );
 
-		// Content - Background Color
+		// Content - Background color
 		helpers.setColorSetting( 'background', '#000000' );
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-paragraph' ).should( 'have.css', 'background-color', `rgb(0, 0, 0)` );
 
-		// Content - Text Color
+		// Content - Text color
 		helpers.setColorSetting( 'text', '#FFFFFF' );
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-paragraph' ).should( 'have.css', 'color', `rgb(255, 255, 255)` );
 

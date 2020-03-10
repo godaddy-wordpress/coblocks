@@ -61,7 +61,7 @@ const Inspector = ( props ) => {
 				</div>
 			</PanelBody>
 
-			<PanelBody title={ __( 'Food & Drinks Settings', 'coblocks' ) } initialOpen={ true }>
+			<PanelBody title={ __( 'Food & Drinks settings', 'coblocks' ) } initialOpen={ true }>
 				<ToggleControl
 					label={ __( 'Images', 'coblocks' ) }
 					help={
