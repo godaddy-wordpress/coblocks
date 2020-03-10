@@ -91,7 +91,7 @@ const Inspector = ( props ) => {
 					) ) }
 				</div>
 			</PanelBody>
-			<PanelBody title={ __( 'Services Settings', 'coblocks' ) }>
+			<PanelBody title={ __( 'Services settings', 'coblocks' ) }>
 				<RangeControl
 					label={ __( 'Columns', 'coblocks' ) }
 					value={ attributes.columns }
@@ -105,15 +105,8 @@ const Inspector = ( props ) => {
 					options={ gutterOptions }
 					onChange={ ( gutter ) => setAttributes( { gutter } ) }
 				/> }
-				<HeadingToolbar
-					minLevel={ 1 }
-					maxLevel={ 7 }
-					selectedLevel={ attributes.headingLevel }
-					onChange={ onChangeHeadingLevel }
-				/>
-
 				<ToggleControl
-					label={ __( 'Action Buttons', 'coblocks' ) }
+					label={ __( 'Display buttons', 'coblocks' ) }
 					className="components-toggle-control--services-action-button"
 					help={
 						attributes.buttons ?

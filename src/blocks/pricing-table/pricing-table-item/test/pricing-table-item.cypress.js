@@ -24,11 +24,11 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 	   * any settings, and are able to successfully save the block without errors.
 	   */
 	it( 'Test pricing-table-item block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'pricing-table' );
+		helpers.addBlockToPost( 'coblocks/pricing-table', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'pricing-table-item' );
+		helpers.checkForBlockErrors( 'coblocks/pricing-table-item' );
 
 		helpers.viewPage();
 
@@ -43,7 +43,7 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 	   */
 	it( 'Test pricing-table block saves with content values set.', function() {
 		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB, title, currency, amount, features, buttonText } = pricingTableItemData;
-		helpers.addCoBlocksBlockToPage( true, 'pricing-table' );
+		helpers.addBlockToPost( 'coblocks/pricing-table', true );
 
 		cy.get( '.wp-block-coblocks-pricing-table-item' ).first().click().then( $firstItem => {
 			cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__title' ).click( { force: true } ).clear().type( title );
@@ -59,7 +59,7 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'pricing-table' );
+		helpers.checkForBlockErrors( 'coblocks/pricing-table' );
 
 		helpers.viewPage();
 

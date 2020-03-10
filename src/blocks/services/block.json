@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/services",
-	"category": "coblocks",
+	"category": "layout",
 	"attributes": {
 		"columns": {
 			"type": "integer",

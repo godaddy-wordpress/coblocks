@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-syntax */
 /*global coblocksBlockData*/
 
 /**
@@ -20,20 +19,14 @@ import { TEMPLATE_OPTIONS } from './deprecatedTemplates/layouts';
  * WordPress dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
+import { Component, Fragment, createRef } from '@wordpress/element';
 import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/components';
-import { InspectorControls, InnerBlocks, __experimentalBlockPatternPicker } from '@wordpress/block-editor';
+import { InspectorControls, InnerBlocks, __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
 import { compose } from '@wordpress/compose';
 import { withSelect, useDispatch } from '@wordpress/data';
-import { __experimentalRegisterBlockPattern, createBlock } from '@wordpress/blocks';
-/**
- * Get settings
- */
-let settings;
-wp.api.loadPromise.then( () => {
-	settings = new wp.api.models.Settings();
-} );
+import { createBlock, registerBlockVariation } from '@wordpress/blocks';
+import apiFetch from '@wordpress/api-fetch';
 
 /**
  * Block constants
@@ -52,16 +45,16 @@ class FormEdit extends Component {
 		this.onChangeTo = this.onChangeTo.bind( this );
 		this.getToValidationError = this.getToValidationError.bind( this );
 		this.renderToAndSubjectFields = this.renderToAndSubjectFields.bind( this );
-		this.preventEnterSubmittion = this.preventEnterSubmittion.bind( this );
+		this.preventEnterSubmission = this.preventEnterSubmission.bind( this );
 		this.hasEmailError = this.hasEmailError.bind( this );
 		this.saveRecaptchaKey = this.saveRecaptchaKey.bind( this );
 		this.removeRecaptchaKey = this.removeRecaptchaKey.bind( this );
 		this.setTemplate = this.setTemplate.bind( this );
 		this.appendTagsToSubject = this.appendTagsToSubject.bind( this );
-		this.supportsBlockPatternPicker = this.supportsBlockPatternPicker.bind( this );
+		this.supportsBlockVariationPicker = this.supportsBlockVariationPicker.bind( this );
 		this.supportsInnerBlocksPicker = this.supportsInnerBlocksPicker.bind( this );
-		this.innerBlocksPatternPicker = this.innerBlocksPatternPicker.bind( this );
-		this.blockPatternPicker = this.blockPatternPicker.bind( this );
+		this.innerBlocksPicker = this.innerBlocksPicker.bind( this );
+		this.blockVariationPicker = this.blockVariationPicker.bind( this );
 
 		this.state = {
 			toError: error && error.length ? error : null,
@@ -70,6 +63,9 @@ class FormEdit extends Component {
 			isSaving: false,
 			keySaved: false,
 			template: null,
+			subjectValue: this.props.attributes.subject || '' === this.props.attributes.subject ?
+				this.props.attributes.subject :
+				coblocksBlockData.form.emailSubject,
 		};
 
 		const to = arguments[ 0 ].attributes.to ? arguments[ 0 ].attributes.to : '';
@@ -77,59 +73,24 @@ class FormEdit extends Component {
 			.split( ',' )
 			.map( this.getToValidationError )
 			.filter( Boolean );
-
-		if ( typeof settings !== 'undefined' ) {
-			settings.on( 'change:coblocks_google_recaptcha_site_key', ( model ) => {
-				const recaptchaSiteKey = model.get( 'coblocks_google_recaptcha_site_key' );
-				this.setState( {
-					recaptchaSiteKey: settings.get( 'coblocks_google_recaptcha_site_key' ),
-					isSavedKey: recaptchaSiteKey === '' ? false : true,
-				} );
-			} );
-
-			settings.on( 'change:coblocks_google_recaptcha_secret_key', ( model ) => {
-				const recaptchaSecretKey = model.get(
-					'coblocks_google_recaptcha_secret_key'
-				);
-				this.setState( {
-					recaptchaSecretKey: settings.get(
-						'coblocks_google_recaptcha_secret_key'
-					),
-					isSavedKey: recaptchaSecretKey === '' ? false : true,
-				} );
-			} );
-
-			settings.fetch().then( ( response ) => {
-				this.setState( {
-					recaptchaSiteKey: response.coblocks_google_recaptcha_site_key,
-				} );
-				if ( this.state.recaptchaSiteKey && this.state.recaptchaSiteKey !== '' ) {
-					this.setState( { isSavedKey: true } );
-				}
-			} );
-
-			settings.fetch().then( ( response ) => {
-				this.setState( {
-					recaptchaSecretKey: response.coblocks_google_recaptcha_secret_key,
-				} );
-				if (
-					this.state.recaptchaSecretKey &&
-					this.state.recaptchaSecretKey !== ''
-				) {
-					this.setState( { isSavedKey: true } );
-				}
-			} );
-		}
 	}
 
 	componentDidMount() {
-		const { hasInnerBlocks, innerBlocks, defaultPattern } = this.props;
+		apiFetch( { path: '/wp/v2/settings' } ).then( ( res ) => {
+			this.setState( {
+				recaptchaSiteKey: res.coblocks_google_recaptcha_site_key,
+				recaptchaSecretKey: res.coblocks_google_recaptcha_secret_key,
+				isSavedKey: res.coblocks_google_recaptcha_site_key === '' || res.coblocks_google_recaptcha_secret_key === '' ? false : true,
+			} );
+		} );
+
+		const { hasInnerBlocks, innerBlocks, defaultVariation } = this.props;
 		if ( hasInnerBlocks ) {
 			this.setState( { template: innerBlocks } );
 		}
 
-		if ( ! this.supportsInnerBlocksPicker() && ! this.supportsBlockPatternPicker() && hasInnerBlocks === false ) {
-			this.setTemplate( defaultPattern );
+		if ( ! this.supportsInnerBlocksPicker() && ! this.supportsBlockVariationPicker() && hasInnerBlocks === false ) {
+			this.setTemplate( defaultVariation );
 		}
 	}
 
@@ -143,6 +104,7 @@ class FormEdit extends Component {
 	}
 
 	onChangeSubject( subject ) {
+		this.setState( { subjectValue: subject } );
 		this.props.setAttributes( { subject } );
 	}
 
@@ -210,7 +172,7 @@ class FormEdit extends Component {
 		return null;
 	}
 
-	preventEnterSubmittion( event ) {
+	preventEnterSubmission( event ) {
 		if ( event.key === 'Enter' ) {
 			event.preventDefault();
 			event.stopPropagation();
@@ -218,28 +180,23 @@ class FormEdit extends Component {
 	}
 
 	saveRecaptchaKey() {
+		const { recaptchaSiteKey, recaptchaSecretKey } = this.state;
 		this.setState( { isSaving: true } );
-
-		const model = new wp.api.models.Settings( {
-			coblocks_google_recaptcha_site_key: this.state.recaptchaSiteKey,
-			coblocks_google_recaptcha_secret_key: this.state.recaptchaSecretKey,
-		} );
-		model.save().then( () => {
-			this.setState( { isSavedKey: true, keySaved: true } );
-			setTimeout( () => {
-				this.setState( { isSaving: false } );
-			}, 1000 );
-			settings.fetch();
+		apiFetch( {
+			path: '/wp/v2/settings',
+			method: 'POST',
+			data: { coblocks_google_recaptcha_site_key: recaptchaSiteKey, coblocks_google_recaptcha_secret_key: recaptchaSecretKey },
+		} ).then( () => {
+			this.setState( {
+				isSavedKey: true,
+				keySaved: true,
+				isSaving: false,
+			} );
 		} );
 	}
 
 	appendTagsToSubject( event ) {
-		const { attributes } = this.props;
-		let { subject } = attributes;
-		if ( null === subject ) {
-			subject = jQuery( event.target ).closest( 'div.components-base-control' ).find( 'input[type="text"]' ).val();
-		}
-		this.onChangeSubject( subject + event.target.innerHTML );
+		this.onChangeSubject( this.state.subjectValue + event.target.innerHTML );
 	}
 
 	removeRecaptchaKey() {
@@ -249,13 +206,16 @@ class FormEdit extends Component {
 		} );
 		if ( this.state.isSavedKey ) {
 			this.setState( { isSaving: true } );
-			const model = new wp.api.models.Settings( {
-				coblocks_google_recaptcha_site_key: '',
-				coblocks_google_recaptcha_secret_key: '',
-			} );
-			model.save().then( () => {
-				this.setState( { isSavedKey: false, isSaving: false, keySaved: false } );
-				settings.fetch();
+			apiFetch( {
+				path: '/wp/v2/settings',
+				method: 'POST',
+				data: { coblocks_google_recaptcha_site_key: '', coblocks_google_recaptcha_secret_key: '' },
+			} ).then( () => {
+				this.setState( {
+					isSavedKey: true,
+					keySaved: true,
+					isSaving: false,
+				} );
 			} );
 		}
 	}
@@ -263,7 +223,8 @@ class FormEdit extends Component {
 	renderToAndSubjectFields() {
 		const fieldEmailError = this.state.toError;
 		const { instanceId, attributes } = this.props;
-		const { subject, to } = attributes;
+		const { to } = attributes;
+		const { subjectValue } = this.state;
 		return (
 			<Fragment>
 				<TextControl
@@ -272,7 +233,7 @@ class FormEdit extends Component {
 					}` }
 					label={ __( 'Email address', 'coblocks' ) }
 					placeholder={ __( 'name@example.com', 'coblocks' ) }
-					onKeyDown={ this.preventEnterSubmittion }
+					onKeyDown={ this.preventEnterSubmission }
 					value={ to || '' === to ? to : coblocksBlockData.form.adminEmail }
 					onBlur={ this.onBlurTo }
 					onChange={ this.onChangeTo }
@@ -282,11 +243,7 @@ class FormEdit extends Component {
 				</Notice>
 				<TextControl
 					label={ __( 'Subject', 'coblocks' ) }
-					value={
-						subject || '' === subject ?
-							subject :
-							coblocksBlockData.form.emailSubject
-					}
+					value={ subjectValue }
 					onChange={ this.onChangeSubject }
 					help={ <Fragment> { __( 'You may use the following tags in the subject field: ', 'coblocks' ) }
 						<Button
@@ -321,6 +278,9 @@ class FormEdit extends Component {
 			if ( isEqual( elem.template, layout ) ) {
 				// // Update the child block's attributes
 				submitButtonText = elem.submitButtonText;
+				if ( Array.isArray( submitButtonText ) ) {
+					submitButtonText = submitButtonText.join( '' );
+				}
 				setTimeout( function() {
 					let childBlocks = wp.data.select( 'core/editor' ).getBlocksByClientId( clientID )[0].innerBlocks;
 					wp.data.dispatch('core/editor').updateBlockAttributes( childBlocks[ childBlocks.length - 1 ].clientId, { submitButtonText: submitButtonText } );
@@ -339,11 +299,11 @@ class FormEdit extends Component {
 		return typeof InnerBlocks.prototype.shouldComponentUpdate === 'undefined' ? false : true;
 	}
 
-	supportsBlockPatternPicker() {
-		return typeof __experimentalRegisterBlockPattern === 'undefined' ? false : true;
+	supportsBlockVariationPicker() {
+		return !! registerBlockVariation;
 	}
 
-	blockPatternPicker( ) {
+	blockVariationPicker( ) {
 		return (
 			<Fragment>
 				<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
@@ -351,7 +311,8 @@ class FormEdit extends Component {
 		);
 	}
 
-	innerBlocksPatternPicker( ) {
+	innerBlocksPicker( ) {
+		const { hasInnerBlocks } = this.props;
 		return (
 			<Fragment>
 				<InnerBlocks
@@ -372,18 +333,18 @@ class FormEdit extends Component {
 	}
 
 	render() {
-		const { className, blockType, defaultPattern, patterns, replaceInnerBlocks, hasInnerBlocks } = this.props;
+		const { className, blockType, defaultVariation, replaceInnerBlocks, hasInnerBlocks, variations } = this.props;
 
 		const classes = classnames(
 			className,
 			'coblocks-form',
 		);
 
-		if ( hasInnerBlocks || ! this.supportsBlockPatternPicker() ) {
+		if ( hasInnerBlocks || ! this.supportsBlockVariationPicker() ) {
 			return (
 				<Fragment>
 					<InspectorControls>
-						<PanelBody title={ __( 'Form Settings', 'coblocks' ) }>
+						<PanelBody title={ __( 'Form settings', 'coblocks' ) }>
 							{ this.renderToAndSubjectFields() }
 							{ applyFilters( 'coblocks.advanced_forms_cta' ) }
 						</PanelBody>
@@ -405,13 +366,13 @@ class FormEdit extends Component {
 								</Fragment>
 							</p>
 							<TextControl
-								label={ __( 'Site Key', 'coblocks' ) }
+								label={ __( 'Site key', 'coblocks' ) }
 								value={ this.state.recaptchaSiteKey }
 								onChange={ ( value ) => this.setState( { recaptchaSiteKey: value } ) }
 								className="components-block-coblocks-form-recaptcha-key__custom-input"
 							/>
 							<TextControl
-								label={ __( 'Secret Key', 'coblocks' ) }
+								label={ __( 'Secret key', 'coblocks' ) }
 								value={ this.state.recaptchaSecretKey }
 								onChange={ ( value ) => this.setState( { recaptchaSecretKey: value } ) }
 								className="components-block-coblocks-form-recaptcha-key__custom-input"
@@ -444,32 +405,41 @@ class FormEdit extends Component {
 						</PanelBody>
 					</InspectorControls>
 					<div className={ classes }>
-						{ this.supportsBlockPatternPicker() ? this.blockPatternPicker() : this.innerBlocksPatternPicker() }
+						{ this.supportsBlockVariationPicker() ? this.blockVariationPicker() : this.innerBlocksPicker() }
 					</div>
 				</Fragment>
 			);
 		}
 
+		const blockVariationPickerOnSelect = ( nextVariation = defaultVariation ) => {
+			if ( nextVariation.attributes ) {
+				this.props.setAttributes( nextVariation.attributes );
+			}
+
+			const submitButtonText = map( variations, ( elem ) => {
+				if ( isEqual( elem.innerBlocks, nextVariation.innerBlocks ) ) {
+					return elem.submitButtonText;
+				}
+			} );
+
+			this.props.setAttributes( { submitButtonText: submitButtonText.join( '' ) } );
+			if ( nextVariation.innerBlocks ) {
+				replaceInnerBlocks(
+					this.props.clientId,
+					this.createBlocksFromInnerBlocksTemplate( nextVariation.innerBlocks )
+				);
+			}
+		};
+
 		return (
 			<Fragment>
-				<__experimentalBlockPatternPicker
+				<__experimentalBlockVariationPicker
 					icon={ get( blockType, [ 'icon', 'src' ] ) }
 					label={ get( blockType, [ 'title' ] ) }
-					instructions={ __( 'Select a pattern to start with.', 'coblocks' ) }
-					patterns={ patterns }
+					instructions={ __( 'Select a variation to start with.', 'coblocks' ) }
+					variations={ variations }
 					allowSkip
-					onSelect={ ( nextPattern = defaultPattern ) => {
-						if ( nextPattern.attributes ) {
-							this.props.setAttributes( nextPattern.attributes );
-						}
-
-						if ( nextPattern.innerBlocks ) {
-							replaceInnerBlocks(
-								this.props.clientId,
-								this.createBlocksFromInnerBlocksTemplate( nextPattern.innerBlocks )
-							);
-						}
-					} }
+					onSelect={ ( nextVariation ) => blockVariationPickerOnSelect( nextVariation ) }
 				/>
 			</Fragment>
 		);
@@ -478,7 +448,7 @@ class FormEdit extends Component {
 
 const applyWithSelect = withSelect( ( select, props, attributes ) => {
 	const { getBlocks } = select( 'core/block-editor' );
-	const { __experimentalGetBlockPatterns, getBlockType, __experimentalGetDefaultBlockPattern } = select( 'core/blocks' );
+	const { getBlockType, getBlockVariations, getDefaultBlockVariation } = select( 'core/blocks' );
 	const innerBlocks = getBlocks( props.clientId );
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 
@@ -487,8 +457,8 @@ const applyWithSelect = withSelect( ( select, props, attributes ) => {
 		innerBlocks,
 		hasInnerBlocks: select( 'core/block-editor' ).getBlocks( props.clientId ).length > 0,
 		blockType: getBlockType( props.name ),
-		defaultPattern: typeof __experimentalGetDefaultBlockPattern === 'undefined' ? null : __experimentalGetDefaultBlockPattern( props.name ),
-		patterns: typeof __experimentalGetBlockPatterns === 'undefined' ? null : __experimentalGetBlockPatterns( props.name ),
+		defaultVariation: typeof getDefaultBlockVariation === 'undefined' ? null : getDefaultBlockVariation( props.name ),
+		variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( props.name ),
 		replaceInnerBlocks,
 	};
 } );

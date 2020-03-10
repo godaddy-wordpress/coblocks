@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/dynamic-separator",
-	"category": "coblocks",
+	"category": "layout",
 	"attributes": {
 		"height": {
 			"type": "number",

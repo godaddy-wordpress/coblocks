@@ -113,7 +113,7 @@ class CoBlocksSubmitButton extends Component {
 				</div>
 				<InspectorControls>
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'coblocks' ) }
+						title={ __( 'Color settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
@@ -122,7 +122,7 @@ class CoBlocksSubmitButton extends Component {
 									setBackgroundButtonColor( nextColor );
 									setAttributes( { customBackgroundButtonColor: nextColor } );
 								},
-								label: __( 'Button Color', 'coblocks' ),
+								label: __( 'Button color', 'coblocks' ),
 							},
 							{
 								value: color,
@@ -130,7 +130,7 @@ class CoBlocksSubmitButton extends Component {
 									setTextButtonColor( nextColor );
 									setAttributes( { customTextButtonColor: nextColor } );
 								},
-								label: __( 'Button Text Color', 'coblocks' ),
+								label: __( 'Button text color', 'coblocks' ),
 							},
 						] }
 					/>

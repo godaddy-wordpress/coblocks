@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/column",
-	"category": "coblocks",
+	"category": "layout",
 	"attributes": {
 		"width": {
 			"type": "string"

@@ -13,7 +13,7 @@ import { name, settings } from '../index';
 let block;
 let serializedBlock;
 
-describe( name, () => {
+describe( 'coblocks/form', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );
@@ -35,7 +35,6 @@ describe( name, () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'Form subject' );
-		expect( serializedBlock ).toContain( 'Form submit button text' );
 		expect( serializedBlock ).toContain( 'Form to text' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );

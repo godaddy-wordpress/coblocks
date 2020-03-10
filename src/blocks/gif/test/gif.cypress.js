@@ -10,15 +10,15 @@ describe( 'Test CoBlocks Gif Block', function() {
 	/**
 	 * Test that we can add a gif block to the content, not add any text or
 	 * alter any settings, and are able to successfully save the block without errors.
-	*/
+	 */
 	it( 'Test gif block saves without content.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'gif' );
+		helpers.addBlockToPost( 'coblocks/gif', true );
 
 		cy.get( '.wp-block-coblocks-gif' ).should( 'exist' );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'gif' );
+		helpers.checkForBlockErrors( 'coblocks/gif' );
 
 		helpers.viewPage();
 
@@ -30,9 +30,9 @@ describe( 'Test CoBlocks Gif Block', function() {
 	/**
 	 * Test that we can add a gif block to the content, choose a Gif
 	 * set alt and are able to successfully save the block without errors.
-    */
+	 */
 	it( 'Test gif block saves with img and alt text.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'gif' );
+		helpers.addBlockToPost( 'coblocks/gif', true );
 
 		cy.get( '.wp-block-coblocks-gif' ).should( 'exist' );
 
@@ -42,11 +42,11 @@ describe( 'Test CoBlocks Gif Block', function() {
 
 		cy.get( '.wp-block-coblocks-gif' ).find( 'img' ).should( 'have.length', 1 );
 
-		cy.get( '.edit-post-sidebar' ).contains( /Alt Text/ ).parent().find( 'textarea' ).type( gifText );
+		cy.get( '.edit-post-sidebar' ).contains( /Alt text/ ).parent().find( 'textarea' ).type( gifText );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'gif' );
+		helpers.checkForBlockErrors( 'coblocks/gif' );
 
 		helpers.viewPage();
 

@@ -13,7 +13,7 @@ import { name, settings } from '../index';
 let block;
 let serializedBlock;
 
-describe( name, () => {
+describe( 'coblocks/gif', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );
@@ -27,12 +27,39 @@ describe( name, () => {
 		serializedBlock = '';
 	} );
 
-	it( 'should render', () => {
+	it( 'should render with url attribute', () => {
 		block.attributes.url = 'https://wordpress.com/wp-content/uploads/1234/56/image-1.gif';
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'https://wordpress.com/wp-content/uploads/1234/56/image-1.gif' );
+		expect( serializedBlock ).toContain( 'src="https://wordpress.com/wp-content/uploads/1234/56/image-1.gif"' );
 		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with alt attribute', () => {
+		block.attributes.url = 'https://wordpress.com/wp-content/uploads/1234/56/image-1.gif';
+		block.attributes.alt = 'alt text';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'src="https://wordpress.com/wp-content/uploads/1234/56/image-1.gif"' );
+		expect( serializedBlock ).toContain( 'alt text' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with align attribute', () => {
+		const alignOptions = [
+			'left', 'center', 'right', 'full', 'wide',
+		];
+		alignOptions.forEach( ( alignOption ) => {
+			block.attributes.url = 'https://wordpress.com/wp-content/uploads/1234/56/image-1.gif';
+			block.attributes.align = alignOption;
+			serializedBlock = serialize( block );
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( 'src="https://wordpress.com/wp-content/uploads/1234/56/image-1.gif"' );
+			expect( serializedBlock ).toContain( `{"align":"${ alignOption }"` );
+			expect( serializedBlock ).toContain( `align${ alignOption }` );
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
 	} );
 } );
