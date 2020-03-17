@@ -297,7 +297,7 @@ class FormEdit extends Component {
 	}
 
 	supportsInnerBlocksPicker() {
-		return typeof InnerBlocks.prototype.shouldComponentUpdate === 'undefined' ? false : true;
+		return typeof InnerBlocks.prototype === 'undefined' ? false : true;
 	}
 
 	supportsBlockVariationPicker() {
