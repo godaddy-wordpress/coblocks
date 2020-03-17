@@ -172,7 +172,7 @@ body.rtl {
 		.wp-block-coblocks-media-card {
 
 			&__wrapper {
-				grid-template-areas: "media-text-content media-text-media" "resizer resizer";
+				grid-template-areas: "media-text-content media-text-media" "resizer resizer" !important;
 				grid-template-columns: auto 55% !important;
 
 			}
