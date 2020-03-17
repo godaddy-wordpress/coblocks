@@ -114,7 +114,6 @@
 		"react-slick": "^0.25.2",
 		"react-test-renderer": "^16.12.0",
 		"recompose": "^0.30.0",
-		"rtlcss": "^2.5.0",
 		"rtlcss-webpack-plugin": "^4.0.3",
 		"sass-loader": "^8.0.0",
 		"slick-carousel": "^1.8.1",
