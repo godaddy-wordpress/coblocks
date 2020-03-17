@@ -165,5 +165,34 @@
 	}
 }
 
+body.rtl {
+
+	.wp-block-coblocks-media-card.is-style-left {
+
+		.wp-block-coblocks-media-card__wrapper {
+		  grid-template-areas: "media-text-content media-text-media" "resizer resizer";
+		  grid-template-columns: auto 55% !important; 
+		}
+
+		.wp-block-coblocks-media-card__content {
+			margin-right: -100px;
+			margin-left: 0px;
+		}
+	}
+	
+	.wp-block-coblocks-media-card.is-style-right {
+		
+		.wp-block-coblocks-media-card__wrapper {
+			grid-template-areas: "media-text-media media-text-content" "resizer resizer" !important;
+			grid-template-columns: 55% auto !important;
+		}
+
+		.wp-block-coblocks-media-card__content {
+			margin-left: -100px;
+			margin-right: 0px;
+		}
+	}
+}
+
 // Import style tweaks for core WordPress themes
 @import "theme";

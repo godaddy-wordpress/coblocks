@@ -286,3 +286,12 @@
 		display: none;
 	}
 }
+
+.wp-block-coblocks-media-card__media-container {
+	text-align: center !important;
+	align-items: center !important;
+
+	.components-placeholder__fieldset {
+		justify-content: center;
+	}
+}
