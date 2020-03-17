@@ -27,8 +27,8 @@
 		height: 100%;
 		margin: 0;
 		width: 100%;
-		text-align: center;
-		align-items: center;
+		text-align: center !important;
+		align-items: center !important;
 
 		.components-placeholder__fieldset {
 			justify-content: center;
