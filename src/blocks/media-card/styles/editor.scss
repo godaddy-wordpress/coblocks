@@ -27,6 +27,12 @@
 		height: 100%;
 		margin: 0;
 		width: 100%;
+		text-align: center;
+		align-items: center;
+
+		.components-placeholder__fieldset {
+			justify-content: center;
+		}
 
 		img,
 		video {
@@ -284,14 +290,5 @@
 	.wp-block-coblocks-media-card__media-container::after,
 	.components-resizable-box__side-handle {
 		display: none;
-	}
-}
-
-.wp-block-coblocks-media-card__media-container {
-	text-align: center !important;
-	align-items: center !important;
-
-	.components-placeholder__fieldset {
-		justify-content: center;
 	}
 }
