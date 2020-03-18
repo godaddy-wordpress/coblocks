@@ -3,7 +3,7 @@
 **/node_modules/**
 **/vendor/**
 **/build/**
-wordpress/
+wordpress*/
 .vscode/
 *.sublime-project
 *.sublime-workspace
