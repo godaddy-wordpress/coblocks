@@ -19,6 +19,7 @@ import jQuery from 'jquery';
 		const counter = $( '<span/>', { class: 'coblocks-lightbox__count' } );
 		const imageContainer = $( '<div/>', { class: 'coblocks-lightbox__image' } );
 		const image = $( '<img/>' );
+		const caption = $( '<figcaption />', { class: 'coblocks-lightbox__caption' } );
 		const arrowLeftContainer = $( '<button/>', { class: 'coblocks-lightbox__arrow coblocks-lightbox__arrow--left' } );
 		const arrowRightContainer = $( '<button/>', { class: 'coblocks-lightbox__arrow coblocks-lightbox__arrow--right' } );
 		const arrowRight = $( '<div/>', { class: 'arrow-right' } );
@@ -29,6 +30,7 @@ import jQuery from 'jquery';
 
 		modalHeading.append( counter, close );
 		imageContainer.append( image );
+		imageContainer.append( caption );
 		arrowLeftContainer.append( arrowLeft );
 		arrowRightContainer.append( arrowRight );
 		wrapper.append( wrapperBackground, modalHeading, imageContainer, arrowLeftContainer, arrowRightContainer );
@@ -42,6 +44,7 @@ import jQuery from 'jquery';
 		images.each( function( imgIndex, img ) {
 			imagePreloader[ `img-${ imgIndex }` ] = new window.Image();
 			imagePreloader[ `img-${ imgIndex }` ].src = img.attributes.src.value;
+			imagePreloader[ `img-${ imgIndex }` ]['data-caption'] = $( images[ imgIndex ] ).next().text();
 
 			$( img ).click( function() {
 				changeImage( imgIndex );
@@ -71,6 +74,7 @@ import jQuery from 'jquery';
 			wrapper.css( 'display', 'flex' );
 			wrapperBackground.css( 'background-image', 'url(' + imagePreloader[ `img-${ index }` ].src + ')' );
 			image.attr( 'src', imagePreloader[ `img-${ index }` ].src );
+			$( '.coblocks-lightbox__caption' ).text( imagePreloader[ `img-${ index }` ]['data-caption'] );
 			counter.html( ( index + 1 ) + ' / ' + images.length );
 		}
 
