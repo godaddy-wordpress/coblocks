@@ -33,7 +33,7 @@ describe( 'Test CoBlocks Replace Image extension', function() {
 
 			cy.get( 'figure.wp-block-image' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', fileBase );
 
-			cy.get( '.components-coblocks-replace-image' ).should( 'exist' ).click();
+			cy.get( '.components-coblocks-replace-image button' ).click();
 
 			cy.get( '.media-modal-content' ).contains( /upload files/i );
 			cy.get( '.media-modal-content' ).contains( /media library/i );
