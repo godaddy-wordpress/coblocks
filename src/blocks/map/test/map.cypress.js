@@ -69,7 +69,7 @@ describe( 'Test CoBlocks Map Block', function() {
 
 		helpers.viewPage();
 
-		cy.get( '.wp-block-coblocks-map' ).should( 'have.css', 'height', '800px' );
+		cy.get( '.wp-block-coblocks-map' ).should( 'have.css', 'min-height', '800px' );
 
 		helpers.editPage();
 	} );
