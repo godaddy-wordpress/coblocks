@@ -41,7 +41,10 @@ const isEmpty = ( attributes ) => {
 class FoodItem extends Component {
 	constructor() {
 		super( ...arguments );
-
+		this.state = {
+			url: this.props.attributes.url ||'',
+			price: this.props.attributes.price || '',
+		}
 		this.replaceImage = this.replaceImage.bind( this );
 		this.setSpicyTo = this.setSpicyTo.bind( this );
 		this.setHotTo = this.setHotTo.bind( this );
@@ -69,7 +72,7 @@ class FoodItem extends Component {
 			( item ) => item.name === blockName && isEmpty( item.attributes )
 		);
 
-		// Remove trailing placholders if there are more than two.
+		// Remove trailing placeholders if there are more than two.
 		removeBlocks(
 			placeholders
 				.filter( ( item, index ) => item.clientId !== childClientId && index !== 0 && filledFoodItems.length >= 1 )
@@ -109,50 +112,8 @@ class FoodItem extends Component {
 		setAttributes( { headingLevel } );
 	}
 
-	handleShowPriceAttribute( previousShowPrice ) {
-		const { attributes, setAttributes, clientId } = this.props;
-		const { showPrice, price } = attributes;
-
-		if ( showPrice !== previousShowPrice ) {
-			const storedAttributes = JSON.parse( localStorage.getItem( 'menuItemPrices' ) ) || {};
-			const storedPrice = storedAttributes[ clientId ] && storedAttributes[ clientId ].price;
-
-			if ( price === '' ) {
-				setAttributes( { price: storedPrice ? storedPrice : price } );
-			} else if ( price !== '' ) {
-				localStorage.setItem( 'menuItemPrices', JSON.stringify( {
-					...storedAttributes,
-					[ clientId ]: {	price },
-				} ) );
-
-				setAttributes( { price: '' } );
-			}
-		}
-	}
-
-	handleShowUrlAttribute( previousShowUrl ) {
-		const { attributes, setAttributes, clientId } = this.props;
-		const { showImage, url } = attributes;
-
-		if ( showImage !== previousShowUrl ) {
-			const storedAttributes = JSON.parse( localStorage.getItem( 'menuItemImages' ) ) || {};
-			const storedUrl = storedAttributes[ clientId ] && storedAttributes[ clientId ].url;
-
-			if ( url === '' ) {
-				setAttributes( { url: storedUrl ? storedUrl : url } );
-			} else if ( url !== '' ) {
-				localStorage.setItem( 'menuItemImages', JSON.stringify( {
-					...storedAttributes,
-					[ clientId ]: {	url	},
-				} ) );
-
-				setAttributes( { url: '' } );
-			}
-		}
-	}
-
 	componentDidUpdate( prevProps ) {
-		const { attributes, clientId, isSelected } = this.props;
+		const { attributes, clientId, isSelected, setAttributes } = this.props;
 		const { showPrice, showImage } = attributes;
 
 		// Handle placeholder
@@ -166,16 +127,23 @@ class FoodItem extends Component {
 			} );
 		}
 
-		this.handleShowPriceAttribute( prevProps.attributes.showPrice );
-		this.handleShowUrlAttribute( prevProps.attributes.showImage );
+		if ( showPrice !== prevProps.attributes.showPrice ) {
+			setAttributes( { price: showPrice ? this.state.price : '' } );
+		}
+
+		if ( showImage !== prevProps.attributes.showImage ) {
+			setAttributes( { url: showImage ? this.state.url : '' } );
+		}
 	}
 
 	replaceImage( files ) {
 		mediaUpload( {
 			allowedTypes: [ 'image' ],
 			filesList: files,
-			onFileChange: ( [ media ] ) =>
-				this.props.setAttributes( { url: media.url, alt: media.alt } ),
+			onFileChange: ( [ media ] ) => {
+				this.setState( { url: media.url } );
+				this.props.setAttributes( { url: media.url, alt: media.alt } );
+			}
 		} );
 	}
 
@@ -237,7 +205,10 @@ class FoodItem extends Component {
 						<div className="wp-block-coblocks-food-item__remove-menu">
 							<IconButton
 								icon="no-alt"
-								onClick={ () => setAttributes( { url: '' } ) }
+								onClick={ () => {
+									setAttributes( { url: '' } )
+									this.setState( { url: '' } );
+								} }
 								className="coblocks-gallery-item__button"
 								label={ __( 'Remove Image', 'coblocks' ) }
 								disabled={ ! isSelected }
@@ -449,7 +420,10 @@ class FoodItem extends Component {
 								tagName="p"
 								wrapperClassName="wp-block-coblocks-food-item__price"
 								placeholder={ __( '$0.00', 'coblocks' ) }
-								onChange={ ( newPrice ) => setAttributes( { price: newPrice } ) }
+								onChange={ ( newPrice ) => {
+									this.setState( { price: newPrice } );
+									this.props.setAttributes( { price : newPrice}) 
+								} }
 								{ ...richTextAttributes }
 							/>
 						) }

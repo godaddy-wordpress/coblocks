@@ -167,9 +167,9 @@ class FoodAndDrinksEdit extends Component {
 	}
 
 	insertNewItem() {
-		const { clientId, attributes, insertBlock } = this.props;
+		const { clientId, attributes, insertBlock, getBlockOrder } = this.props;
 
-		const blockOrder = select( 'core/block-editor' ).getBlockOrder();
+		const blockOrder = getBlockOrder();
 		const insertAtIndex = blockOrder.indexOf( clientId ) + 1;
 
 		const innerBlocks = TEMPLATE.map( ( [ blockName, blockAttributes ] ) =>
