@@ -51,10 +51,10 @@ class Inspector extends Component {
 		};
 
 		const settings = (
-			<PanelBody title={ __( 'Post Carousel Settings', 'coblocks' ) }>
+			<PanelBody title={ __( 'Post Carousel settings', 'coblocks' ) }>
 				<Fragment>
 					<ToggleControl
-						label={ __( 'Post Date', 'coblocks' ) }
+						label={ __( 'Post date', 'coblocks' ) }
 						checked={ displayPostDate }
 						help={
 							displayPostDate ?
@@ -64,7 +64,7 @@ class Inspector extends Component {
 						onChange={ () => setAttributes( { displayPostDate: ! displayPostDate } ) }
 					/>
 					<ToggleControl
-						label={ __( 'Post Content', 'coblocks' ) }
+						label={ __( 'Post content', 'coblocks' ) }
 						checked={ displayPostContent }
 						help={
 							displayPostContent ?
@@ -97,12 +97,12 @@ class Inspector extends Component {
 		return (
 			<InspectorControls>
 				{ hasPosts ? settings : null }
-				<PanelBody title={ __( 'Feed Settings', 'coblocks' ) } initialOpen={ ! hasPosts ? true : false }>
+				<PanelBody title={ __( 'Feed settings', 'coblocks' ) } initialOpen={ ! hasPosts ? true : false }>
 					<RadioControl
 						selected={ postFeedType }
 						options={ [
-							{ label: __( 'My Blog', 'coblocks' ), value: 'internal' },
-							{ label: __( 'External Feed', 'coblocks' ), value: 'external' },
+							{ label: __( 'My blog', 'coblocks' ), value: 'internal' },
+							{ label: __( 'External feed', 'coblocks' ), value: 'external' },
 						] }
 						onChange={ ( value ) => setAttributes( { postFeedType: value } ) }
 					/>
@@ -112,7 +112,7 @@ class Inspector extends Component {
 								<QueryControls
 									{ ...{ order, orderBy } }
 									categoriesList={ categoriesList }
-									selectedCategoryId={ categoriesList.categories }
+									selectedCategoryId={ attributes.categories }
 									onOrderChange={ ( value ) => setAttributes( { order: value } ) }
 									onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
 									onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }

@@ -166,7 +166,7 @@ class Edit extends Component {
 								icon="no-alt"
 								onClick={ () => setAttributes( { imageUrl: '' } ) }
 								className="coblocks-gallery-item__button"
-								label={ __( 'Remove Image', 'coblocks' ) }
+								label={ __( 'Remove image', 'coblocks' ) }
 								disabled={ ! isSelected }
 							/>
 						</div>

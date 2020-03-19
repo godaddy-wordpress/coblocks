@@ -9,11 +9,11 @@ describe( 'Test CoBlocks Pricing Table Block', function() {
 	 * any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'Test pricing-table block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'pricing-table' );
+		helpers.addBlockToPost( 'coblocks/pricing-table', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'pricing-table' );
+		helpers.checkForBlockErrors( 'coblocks/pricing-table' );
 
 		helpers.viewPage();
 
@@ -27,7 +27,7 @@ describe( 'Test CoBlocks Pricing Table Block', function() {
 	 * column count and  are able to successfully save the block without errors.
 	 */
 	it( 'Test pricing-table block saves with text values set.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'pricing-table' );
+		helpers.addBlockToPost( 'coblocks/pricing-table', true );
 
 		cy.get( '.wp-block-coblocks-pricing-table' ).click( { force: true } );
 
@@ -53,20 +53,20 @@ describe( 'Test CoBlocks Pricing Table Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'pricing-table' );
+		helpers.checkForBlockErrors( 'coblocks/pricing-table' );
 	} );
 
 	/**
 	 * Test the pricing-table block saves with custom classes
 	 */
 	it( 'Test the pricing-table block custom classes.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'pricing-table' );
+		helpers.addBlockToPost( 'coblocks/pricing-table', true );
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'pricing-table' );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'pricing-table' );
+		helpers.checkForBlockErrors( 'coblocks/pricing-table' );
 
 		cy.get( '.wp-block-coblocks-pricing-table' )
 			.should( 'have.class', 'my-custom-class' );

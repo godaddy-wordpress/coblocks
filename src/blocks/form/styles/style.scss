@@ -22,6 +22,20 @@
 		}
 	}
 
+	.coblocks-field {
+
+		input[type="radio"] {
+			float: left;
+			margin: 5px 5px 0 0;
+			display: inline-block;
+		}
+
+		.coblocks-checkbox-label {
+			display: inline-flex;
+			width: 95%;
+		}
+	}
+
 	textarea {
 		float: none;
 		height: 200px;
@@ -35,7 +49,6 @@
 		margin-left: 5px;
 	}
 
-	.coblocks-radio-label + *:not(.coblocks-radio-label),
 	.coblocks-radio-label + .coblocks-field.verify + .coblocks-form__submit {
 		margin-top: 1.25rem;
 	}
@@ -108,7 +121,19 @@
 		margin-bottom: 1.25rem;
 
 		label {
-			margin-right: 8px;
+			margin-right: 10px;
+		}
+
+		input[type="radio"] {
+			margin-top: 5px;
+		}
+
+		.coblocks-checkbox-label {
+			width: auto;
+		}
+
+		input[type="checkbox"] {
+			margin-top: 2px;
 		}
 	}
 }

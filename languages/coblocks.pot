@@ -1,14 +1,14 @@
 # Copyright (c) 2020 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.21.1\n"
+"Project-Id-Version: CoBlocks 1.22.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-03-04T16:03:59+00:00\n"
+"POT-Creation-Date: 2020-03-19T14:42:55+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -16,7 +16,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:15
-#: src/blocks/icon/svgs.js:18
+#: src/blocks/icon/svgs.js:20
 msgid "CoBlocks"
 msgstr ""
 
@@ -64,108 +64,118 @@ msgstr ""
 
 #. translators: block name
 #. translators: icon label
-#: includes/class-coblocks-form.php:221
-#: includes/class-coblocks-form.php:316
+#: includes/class-coblocks-form.php:222
+#: includes/class-coblocks-form.php:317
 #: src/blocks/form/fields/email/index.js:21
 #: src/blocks/form/fields/email/index.js:34
 #: src/blocks/icon/deprecated/svgs.js:688
 #: src/blocks/icon/deprecated/svgs.js:706
-#: src/blocks/icon/svgs.js:706
-#: src/blocks/icon/svgs.js:724
+#: src/blocks/icon/svgs.js:708
+#: src/blocks/icon/svgs.js:726
 #: src/blocks/share/inspector.js:177
 msgid "Email"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:256
+#: includes/class-coblocks-form.php:257
 #: src/blocks/form/fields/name/index.js:21
 #: src/blocks/form/fields/name/index.js:46
 msgid "Name"
 msgstr ""
 
-#: includes/class-coblocks-form.php:260
+#: includes/class-coblocks-form.php:261
 #: src/blocks/form/fields/name/index.js:33
 msgid "First"
 msgstr ""
 
-#: includes/class-coblocks-form.php:261
+#: includes/class-coblocks-form.php:262
 #: src/blocks/form/fields/name/index.js:37
 msgid "Last"
 msgstr ""
 
-#: includes/class-coblocks-form.php:346
+#: includes/class-coblocks-form.php:347
 #: src/blocks/form/fields/textarea/index.js:21
 msgid "Message"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:387
+#. translators: block style
+#: includes/class-coblocks-form.php:378
+#: src/blocks/form/fields/text/index.js:21
+#: src/blocks/form/fields/text/index.js:34
+#: src/blocks/share/index.js:44
+#: src/blocks/social-profiles/index.js:49
+msgid "Text"
+msgstr ""
+
+#. translators: block name
+#: includes/class-coblocks-form.php:419
 #: src/blocks/form/fields/date/index.js:21
 #: src/blocks/form/fields/date/index.js:34
 msgid "Date"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:418
+#: includes/class-coblocks-form.php:450
 #: src/blocks/form/fields/phone/index.js:21
 #: src/blocks/form/fields/phone/index.js:34
 msgid "Phone"
 msgstr ""
 
-#: includes/class-coblocks-form.php:457
+#: includes/class-coblocks-form.php:489
 #: src/blocks/form/fields/radio/index.js:21
 msgid "Choose one"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:519
-#: includes/class-coblocks-form.php:568
+#: includes/class-coblocks-form.php:551
+#: includes/class-coblocks-form.php:600
 #: src/blocks/form/fields/select/index.js:21
 #: src/blocks/form/fields/select/index.js:38
 msgid "Select"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:621
+#: includes/class-coblocks-form.php:653
 #: src/blocks/form/fields/website/index.js:21
 #: src/blocks/form/fields/website/index.js:34
 msgid "Website"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:655
+#: includes/class-coblocks-form.php:687
 #: src/blocks/form/fields/hidden/index.js:21
 #: src/blocks/form/fields/hidden/index.js:34
 msgid "Hidden"
 msgstr ""
 
-#: includes/class-coblocks-form.php:734
+#: includes/class-coblocks-form.php:766
 msgid "Submit"
 msgstr ""
 
-#: includes/class-coblocks-form.php:942
-#: src/blocks/form/edit.js:309
+#: includes/class-coblocks-form.php:974
+#: src/blocks/form/edit.js:265
 msgid "name"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: includes/class-coblocks-form.php:954
-#: src/blocks/form/edit.js:303
+#: includes/class-coblocks-form.php:986
+#: src/blocks/form/edit.js:259
 #: src/blocks/form/fields/name/index.js:53
 #: src/blocks/form/index.js:56
 #: src/blocks/icon/deprecated/svgs.js:691
 #: src/blocks/icon/deprecated/svgs.js:709
 #: src/blocks/icon/deprecated/svgs.js:728
 #: src/blocks/icon/deprecated/svgs.js:747
-#: src/blocks/icon/svgs.js:709
-#: src/blocks/icon/svgs.js:727
-#: src/blocks/icon/svgs.js:746
-#: src/blocks/icon/svgs.js:765
+#: src/blocks/icon/svgs.js:711
+#: src/blocks/icon/svgs.js:729
+#: src/blocks/icon/svgs.js:748
+#: src/blocks/icon/svgs.js:767
 msgid "email"
 msgstr ""
 
-#: includes/class-coblocks-form.php:999
+#: includes/class-coblocks-form.php:1031
 msgid "Your message was sent:"
 msgstr ""
 
@@ -195,7 +205,7 @@ msgstr ""
 
 #: src/blocks/post-carousel/index.php:40
 #: src/blocks/posts/index.php:40
-msgid "RSS Error:"
+msgid "RSS error:"
 msgstr ""
 
 #: src/blocks/post-carousel/index.php:51
@@ -291,8 +301,10 @@ msgid "Houzz"
 msgstr ""
 
 #. translators: toggle label to display the accordion open
+#. translators: visually display open as opposed to closed
 #: src/blocks/accordion/accordion-item/controls.js:29
-msgid "Display open"
+#: src/blocks/accordion/accordion-item/inspector.js:66
+msgid "Display as open"
 msgstr ""
 
 #. translators: content placeholder
@@ -337,12 +349,7 @@ msgid "Toggle to set this accordion item to be open by default."
 msgstr ""
 
 #: src/blocks/accordion/accordion-item/inspector.js:63
-msgid "Accordion Item Settings"
-msgstr ""
-
-#. translators: visually display open as opposed to closed
-#: src/blocks/accordion/accordion-item/inspector.js:66
-msgid "Display Open"
+msgid "Accordion Item settings"
 msgstr ""
 
 #: src/blocks/accordion/accordion-item/inspector.js:73
@@ -364,13 +371,15 @@ msgstr ""
 #: src/blocks/shape-divider/inspector.js:92
 #: src/blocks/share/inspector.js:200
 #: src/blocks/social-profiles/inspector.js:206
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:129
 #: src/extensions/colors/index.js:59
-msgid "Color Settings"
+msgid "Color settings"
 msgstr ""
 
 #: src/blocks/accordion/accordion-item/inspector.js:79
 #: src/blocks/alert/inspector.js:55
 #: src/blocks/author/inspector.js:56
+#: src/blocks/dynamic-separator/inspector.js:68
 #: src/blocks/features/feature/inspector.js:110
 #: src/blocks/features/inspector.js:213
 #: src/blocks/hero/inspector.js:150
@@ -386,16 +395,30 @@ msgstr ""
 #: src/blocks/social-profiles/inspector.js:85
 #: src/blocks/social-profiles/inspector.js:103
 #: src/extensions/colors/index.js:47
-msgid "Background Color"
+msgid "Background color"
 msgstr ""
 
 #: src/blocks/accordion/accordion-item/inspector.js:84
-msgid "Title Text Color"
+#: src/blocks/alert/inspector.js:60
+#: src/blocks/author/inspector.js:61
+#: src/blocks/click-to-tweet/inspector.js:66
+#: src/blocks/events/event-item/inspector.js:23
+#: src/blocks/features/feature/inspector.js:114
+#: src/blocks/features/inspector.js:217
+#: src/blocks/hero/inspector.js:155
+#: src/blocks/highlight/inspector.js:54
+#: src/blocks/pricing-table/pricing-table-item/inspector.js:58
+#: src/blocks/row/column/inspector.js:174
+#: src/blocks/row/inspector.js:260
+#: src/blocks/share/inspector.js:66
+#: src/blocks/social-profiles/inspector.js:95
+#: src/extensions/colors/index.js:54
+msgid "Text color"
 msgstr ""
 
 #. translators: Add a child element for the Accordion block
 #: src/blocks/accordion/edit.js:77
-msgid "Add Accordion Item"
+msgid "Add accordion item"
 msgstr ""
 
 #. translators: block name
@@ -409,11 +432,11 @@ msgid "Organize content within collapsable accordion items."
 msgstr ""
 
 #: src/blocks/accordion/inspector.js:27
-msgid "Accordion Settings"
+msgid "Accordion settings"
 msgstr ""
 
 #: src/blocks/accordion/inspector.js:29
-msgid "Internet Explorer Support"
+msgid "Internet Explorer support"
 msgstr ""
 
 #: src/blocks/accordion/inspector.js:31
@@ -454,7 +477,7 @@ msgstr ""
 #. translators: icon keyword
 #: src/blocks/alert/index.js:32
 #: src/blocks/icon/deprecated/svgs.js:732
-#: src/blocks/icon/svgs.js:750
+#: src/blocks/icon/svgs.js:752
 msgid "message"
 msgstr ""
 
@@ -484,23 +507,6 @@ msgstr ""
 
 #: src/blocks/alert/index.js:65
 msgid "An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action."
-msgstr ""
-
-#: src/blocks/alert/inspector.js:60
-#: src/blocks/author/inspector.js:61
-#: src/blocks/click-to-tweet/inspector.js:66
-#: src/blocks/events/event-item/inspector.js:23
-#: src/blocks/features/feature/inspector.js:114
-#: src/blocks/features/inspector.js:217
-#: src/blocks/hero/inspector.js:155
-#: src/blocks/highlight/inspector.js:54
-#: src/blocks/pricing-table/pricing-table-item/inspector.js:58
-#: src/blocks/row/column/inspector.js:174
-#: src/blocks/row/inspector.js:260
-#: src/blocks/share/inspector.js:66
-#: src/blocks/social-profiles/inspector.js:95
-#: src/extensions/colors/index.js:54
-msgid "Text Color"
 msgstr ""
 
 #: src/blocks/author/controls.js:36
@@ -558,7 +564,7 @@ msgid "Born to express, not to impress. A maker making the world I want."
 msgstr ""
 
 #: src/blocks/author/inspector.js:41
-msgid "Author Settings"
+msgid "Author settings"
 msgstr ""
 
 #. translators: block name
@@ -592,11 +598,12 @@ msgstr ""
 
 #. translators: block settings
 #: src/blocks/buttons/inspector.js:30
-msgid "Buttons Settings"
+msgid "Buttons settings"
 msgstr ""
 
 #. translators: visually stack buttons one on top of another
 #: src/blocks/buttons/inspector.js:46
+#: src/extensions/advanced-controls/index.js:103
 msgid "Stack on mobile"
 msgstr ""
 
@@ -652,13 +659,10 @@ msgid "The easiest way to promote and advertise your blog, website, and business
 msgstr ""
 
 #: src/blocks/click-to-tweet/inspector.js:52
-#: src/blocks/highlight/inspector.js:35
-msgid "Text Settings"
+msgid "Text settings"
 msgstr ""
 
 #: src/blocks/click-to-tweet/inspector.js:71
-#: src/blocks/form/submit-button.js:127
-#: src/blocks/share/inspector.js:86
 #: src/blocks/social-profiles/inspector.js:90
 msgid "Button Color"
 msgstr ""
@@ -695,13 +699,13 @@ msgstr ""
 
 #. translators: hr is html markup (horizonal rule)
 #: src/blocks/dynamic-separator/inspector.js:45
-msgid "Dynamic HR Settings"
+msgid "Dynamic HR settings"
 msgstr ""
 
 #: src/blocks/dynamic-separator/inspector.js:46
 #: src/blocks/gallery-carousel/inspector.js:114
 #: src/blocks/hero/inspector.js:108
-#: src/blocks/map/inspector.js:132
+#: src/blocks/map/inspector.js:130
 msgid "Height in pixels"
 msgstr ""
 
@@ -709,25 +713,21 @@ msgstr ""
 msgid "Height for the dynamic separator element in pixels."
 msgstr ""
 
-#: src/blocks/dynamic-separator/inspector.js:68
-msgid "Color"
-msgstr ""
-
 #: src/blocks/events/appender.js:17
 #: src/blocks/events/appender.js:22
-msgid "Add Event"
+msgid "Add event"
 msgstr ""
 
 #: src/blocks/events/edit.js:32
-msgid "1 Week"
+msgid "1 week"
 msgstr ""
 
 #: src/blocks/events/edit.js:33
-msgid "2 Weeks"
+msgid "2 weeks"
 msgstr ""
 
 #: src/blocks/events/edit.js:34
-msgid "1 Month"
+msgid "1 month"
 msgstr ""
 
 #: src/blocks/events/edit.js:35
@@ -735,7 +735,11 @@ msgid "Fetch all"
 msgstr ""
 
 #: src/blocks/events/edit.js:151
-msgid "Edit Calendar URL"
+msgid "Edit calendar URL"
+msgstr ""
+
+#: src/blocks/events/edit.js:176
+msgid "Calendar URL"
 msgstr ""
 
 #: src/blocks/events/edit.js:179
@@ -806,11 +810,11 @@ msgid "date"
 msgstr ""
 
 #: src/blocks/events/inspector.js:25
-msgid "Events Settings"
+msgid "Events settings"
 msgstr ""
 
 #: src/blocks/events/inspector.js:27
-msgid "Link a Calendar"
+msgid "Link a calendar"
 msgstr ""
 
 #: src/blocks/events/inspector.js:30
@@ -870,7 +874,7 @@ msgid "A singular child column within a parent features block."
 msgstr ""
 
 #: src/blocks/features/feature/inspector.js:68
-msgid "Feature Settings"
+msgid "Feature settings"
 msgstr ""
 
 #: src/blocks/features/feature/inspector.js:71
@@ -1035,7 +1039,7 @@ msgid "Huge"
 msgstr ""
 
 #: src/blocks/features/inspector.js:121
-msgid "Features Settings"
+msgid "Features settings"
 msgstr ""
 
 #: src/blocks/features/inspector.js:123
@@ -1067,7 +1071,7 @@ msgstr ""
 
 #: src/blocks/food-and-drinks/appender.js:17
 #: src/blocks/food-and-drinks/appender.js:22
-msgid "Add Menu Section"
+msgid "Add menu section"
 msgstr ""
 
 #: src/blocks/food-and-drinks/edit.js:28
@@ -1117,9 +1121,7 @@ msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:174
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:164
-#: src/blocks/food-and-drinks/food-item/edit.js:361
 #: src/blocks/food-and-drinks/food-item/inspector.js:65
-#: src/blocks/food-and-drinks/food-item/save.js:143
 msgid "Gluten Free"
 msgstr ""
 
@@ -1148,7 +1150,7 @@ msgstr ""
 #: src/blocks/gallery-collage/edit.js:167
 #: src/blocks/services/service/edit.js:169
 #: src/components/block-gallery/gallery-image.js:213
-msgid "Remove Image"
+msgid "Remove image"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:294
@@ -1157,6 +1159,11 @@ msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:325
 msgid "Hot"
+msgstr ""
+
+#: src/blocks/food-and-drinks/food-item/edit.js:361
+#: src/blocks/food-and-drinks/food-item/save.js:143
+msgid "Gluten free"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:400
@@ -1182,12 +1189,13 @@ msgstr ""
 #: src/blocks/food-and-drinks/food-item/index.js:29
 #: src/blocks/food-and-drinks/index.js:30
 #: src/blocks/icon/deprecated/svgs.js:901
-#: src/blocks/icon/svgs.js:919
+#: src/blocks/icon/svgs.js:921
+#: src/blocks/icon/svgs.js:1442
 msgid "menu"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:34
-msgid "Item Settings"
+msgid "Item settings"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:36
@@ -1215,19 +1223,19 @@ msgid "Toggle to show the price for this item."
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:57
-msgid "Item Attributes"
+msgid "Item attributes"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:97
 #: src/blocks/services/service/inspector.js:31
-msgid "Image Settings"
+msgid "Image settings"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:99
 #: src/blocks/gif/inspector.js:31
 #: src/blocks/media-card/inspector.js:95
 #: src/blocks/services/service/inspector.js:33
-msgid "Alt Text (Alternative Text)"
+msgid "Alt text (alternative text)"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:105
@@ -1247,7 +1255,7 @@ msgstr ""
 #: src/blocks/food-and-drinks/food-item/inspector.js:112
 #: src/blocks/services/service/inspector.js:46
 #: src/components/background/panel.js:189
-msgid "Focal Point"
+msgid "Focal point"
 msgstr ""
 
 #. translators: block name
@@ -1264,12 +1272,13 @@ msgstr ""
 #. translators: icon keyword
 #: src/blocks/food-and-drinks/index.js:28
 #: src/blocks/icon/deprecated/svgs.js:903
-#: src/blocks/icon/svgs.js:921
+#: src/blocks/icon/svgs.js:923
+#: src/blocks/icon/svgs.js:1444
 msgid "restaurant"
 msgstr ""
 
 #: src/blocks/food-and-drinks/inspector.js:31
-#: src/blocks/map/inspector.js:107
+#: src/blocks/map/inspector.js:105
 #: src/blocks/posts/inspector.js:272
 #: src/blocks/row/inspector.js:156
 #: src/blocks/services/inspector.js:60
@@ -1277,7 +1286,7 @@ msgid "Styles"
 msgstr ""
 
 #: src/blocks/food-and-drinks/inspector.js:64
-msgid "Food & Drinks Settings"
+msgid "Food & Drinks settings"
 msgstr ""
 
 #: src/blocks/food-and-drinks/inspector.js:66
@@ -1370,7 +1379,7 @@ msgstr ""
 
 #: src/blocks/form/deprecatedTemplates/layouts.js:51
 #: src/blocks/form/variations.js:57
-msgid "Special Notes"
+msgid "Special notes"
 msgstr ""
 
 #: src/blocks/form/deprecatedTemplates/layouts.js:54
@@ -1379,85 +1388,85 @@ msgid "Book Appointment"
 msgstr ""
 
 #. translators: %s: placeholder for an email address
-#: src/blocks/form/edit.js:195
+#: src/blocks/form/edit.js:156
 msgid "%s is not a valid email address."
 msgstr ""
 
 #. translators: %s1: placeholder for an email address. %s2: placeholder for an email address
-#: src/blocks/form/edit.js:205
+#: src/blocks/form/edit.js:166
 msgid "%s and %s are not valid email addresses."
 msgstr ""
 
 #. translators: %s1: placeholder for comma separated email addresses
-#: src/blocks/form/edit.js:213
+#: src/blocks/form/edit.js:174
 msgid "%s are not valid email addresses."
 msgstr ""
 
-#: src/blocks/form/edit.js:280
+#: src/blocks/form/edit.js:240
 msgid "Email address"
 msgstr ""
 
-#: src/blocks/form/edit.js:281
+#: src/blocks/form/edit.js:241
 msgid "name@example.com"
 msgstr ""
 
-#: src/blocks/form/edit.js:291
+#: src/blocks/form/edit.js:251
 msgid "Subject"
 msgstr ""
 
-#: src/blocks/form/edit.js:298
+#: src/blocks/form/edit.js:254
 msgid "You may use the following tags in the subject field: "
 msgstr ""
 
-#: src/blocks/form/edit.js:394
-msgid "Form Settings"
+#: src/blocks/form/edit.js:350
+msgid "Form settings"
 msgstr ""
 
-#: src/blocks/form/edit.js:399
+#: src/blocks/form/edit.js:355
 msgid "Google reCAPTCHA"
 msgstr ""
 
-#: src/blocks/form/edit.js:402
+#: src/blocks/form/edit.js:358
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
 msgstr ""
 
-#: src/blocks/form/edit.js:408
+#: src/blocks/form/edit.js:364
 msgid "Generate keys"
 msgstr ""
 
-#: src/blocks/form/edit.js:409
+#: src/blocks/form/edit.js:365
 msgid "My keys"
 msgstr ""
 
-#: src/blocks/form/edit.js:412
+#: src/blocks/form/edit.js:368
 msgid "Get help"
 msgstr ""
 
-#: src/blocks/form/edit.js:416
-msgid "Site Key"
+#: src/blocks/form/edit.js:372
+msgid "Site key"
 msgstr ""
 
-#: src/blocks/form/edit.js:422
-msgid "Secret Key"
+#: src/blocks/form/edit.js:378
+msgid "Secret key"
 msgstr ""
 
-#: src/blocks/form/edit.js:437
+#: src/blocks/form/edit.js:393
 #: src/blocks/gallery-collage/edit.js:181
 #: src/components/block-gallery/gallery-image.js:226
 msgid "Saving"
 msgstr ""
 
-#: src/blocks/form/edit.js:437
-#: src/blocks/map/inspector.js:229
+#: src/blocks/form/edit.js:393
+#: src/blocks/map/inspector.js:227
 msgid "Save"
 msgstr ""
 
-#: src/blocks/form/edit.js:448
-#: src/blocks/map/inspector.js:239
+#: src/blocks/form/edit.js:404
+#: src/blocks/map/inspector.js:237
 msgid "Remove"
 msgstr ""
 
-#: src/blocks/form/edit.js:486
+#: src/blocks/form/edit.js:442
 #: src/blocks/row/edit.js:324
 msgid "Select a variation to start with."
 msgstr ""
@@ -1527,10 +1536,10 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:713
 #: src/blocks/icon/deprecated/svgs.js:730
 #: src/blocks/icon/deprecated/svgs.js:749
-#: src/blocks/icon/svgs.js:713
-#: src/blocks/icon/svgs.js:731
-#: src/blocks/icon/svgs.js:748
-#: src/blocks/icon/svgs.js:767
+#: src/blocks/icon/svgs.js:715
+#: src/blocks/icon/svgs.js:733
+#: src/blocks/icon/svgs.js:750
+#: src/blocks/icon/svgs.js:769
 msgid "mail"
 msgstr ""
 
@@ -1545,7 +1554,7 @@ msgid "Required"
 msgstr ""
 
 #: src/blocks/form/fields/helpers.js:27
-msgid "Display Settings"
+msgid "Display settings"
 msgstr ""
 
 #. translators: field type eg: checkbox
@@ -1564,11 +1573,11 @@ msgid "Toggle to display the %s inline."
 msgstr ""
 
 #: src/blocks/form/fields/hidden/edit.js:30
-msgid "Hidden Field Settings"
+msgid "Hidden Field settings"
 msgstr ""
 
 #: src/blocks/form/fields/hidden/edit.js:33
-msgid "Field Value"
+msgid "Field value"
 msgstr ""
 
 #. translators: block description
@@ -1578,6 +1587,7 @@ msgstr ""
 
 #. translators: block keyword
 #: src/blocks/form/fields/hidden/index.js:41
+#: src/blocks/form/fields/text/index.js:45
 msgid "input"
 msgstr ""
 
@@ -1587,26 +1597,26 @@ msgstr ""
 #: src/blocks/form/fields/textarea/index.js:41
 #: src/blocks/highlight/index.js:29
 #: src/blocks/icon/deprecated/svgs.js:500
-#: src/blocks/icon/svgs.js:518
+#: src/blocks/icon/svgs.js:520
 msgid "text"
 msgstr ""
 
 #: src/blocks/form/fields/multi-field.js:112
 #: src/blocks/form/fields/multi-field.js:115
-msgid "Add Option"
+msgid "Add option"
 msgstr ""
 
 #: src/blocks/form/fields/multi-field.js:112
 #: src/blocks/form/fields/multi-field.js:115
-msgid "Add Checkbox"
+msgid "Add checkbox"
 msgstr ""
 
 #: src/blocks/form/fields/name/edit.js:69
-msgid "Name Field Settings"
+msgid "Name Field settings"
 msgstr ""
 
 #: src/blocks/form/fields/name/edit.js:71
-msgid "Last Name"
+msgid "Last name"
 msgstr ""
 
 #: src/blocks/form/fields/name/edit.js:75
@@ -1692,6 +1702,21 @@ msgstr ""
 msgid "dropdown"
 msgstr ""
 
+#. translators: block description
+#: src/blocks/form/fields/text/index.js:36
+msgid "A text box for custom responses."
+msgstr ""
+
+#. translators: block keyword
+#: src/blocks/form/fields/text/index.js:41
+msgid "text control"
+msgstr ""
+
+#. translators: block keyword
+#: src/blocks/form/fields/text/index.js:43
+msgid "text box"
+msgstr ""
+
 #. translators: block name
 #: src/blocks/form/fields/textarea/index.js:34
 msgid "Textarea"
@@ -1741,7 +1766,7 @@ msgstr ""
 #. translators: icon keyword
 #: src/blocks/form/index.js:58
 #: src/blocks/icon/deprecated/svgs.js:796
-#: src/blocks/icon/svgs.js:814
+#: src/blocks/icon/svgs.js:816
 msgid "about"
 msgstr ""
 
@@ -1758,8 +1783,13 @@ msgstr ""
 msgid "Add text…"
 msgstr ""
 
+#: src/blocks/form/submit-button.js:127
+#: src/blocks/share/inspector.js:86
+msgid "Button color"
+msgstr ""
+
 #: src/blocks/form/submit-button.js:135
-msgid "Button Text Color"
+msgid "Button text color"
 msgstr ""
 
 #. translators: block name
@@ -1802,7 +1832,7 @@ msgstr ""
 #: src/blocks/gallery-offset/index.js:38
 #: src/blocks/gallery-stacked/index.js:38
 #: src/blocks/icon/deprecated/svgs.js:204
-#: src/blocks/icon/svgs.js:207
+#: src/blocks/icon/svgs.js:209
 msgid "photos"
 msgstr ""
 
@@ -1839,7 +1869,7 @@ msgid "Toggle to enable the image lightbox."
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:82
-msgid "Carousel Settings"
+msgid "Carousel settings"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:85
@@ -1847,7 +1877,7 @@ msgstr ""
 #: src/blocks/gallery-offset/inspector.js:114
 #: src/blocks/icon/inspector.js:106
 #: src/blocks/icon/inspector.js:172
-#: src/components/typography-controls/index.js:223
+#: src/components/typography-controls/index.js:221
 msgid "Size"
 msgstr ""
 
@@ -1858,7 +1888,7 @@ msgstr ""
 #: src/blocks/share/inspector.js:120
 #: src/blocks/social-profiles/inspector.js:124
 #: src/components/background/panel.js:219
-msgid "Rounded Corners"
+msgid "Rounded corners"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:140
@@ -1874,17 +1904,17 @@ msgid "Lightbox"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:156
-msgid "Responsive Height"
+msgid "Responsive height"
 msgstr ""
 
 #: src/blocks/gallery-collage/edit.js:181
-#: src/blocks/map/edit.js:310
+#: src/blocks/map/edit.js:287
 #: src/components/block-gallery/gallery-image.js:226
 msgid "Apply"
 msgstr ""
 
 #: src/blocks/gallery-collage/edit.js:190
-#: src/blocks/gif/edit.js:245
+#: src/blocks/gif/edit.js:228
 #: src/blocks/gist/edit.js:103
 #: src/components/block-gallery/gallery-image.js:235
 msgid "Write caption…"
@@ -1938,11 +1968,12 @@ msgid "Toggle to show media captions."
 msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:113
-msgid "Collage Settings"
+msgid "Collage settings"
 msgstr ""
 
 #. translators: block style
 #: src/blocks/gallery-collage/inspector.js:121
+#: src/blocks/gallery-stacked/inspector.js:139
 #: src/extensions/button-styles/index.js:25
 msgid "Shadow"
 msgstr ""
@@ -1957,7 +1988,7 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:134
 #: src/blocks/gallery-masonry/inspector.js:117
 #: src/blocks/gallery-offset/inspector.js:147
-msgid "Caption Style"
+msgid "Caption style"
 msgstr ""
 
 #. translators: block name
@@ -1978,7 +2009,7 @@ msgid "lightbox"
 msgstr ""
 
 #: src/blocks/gallery-masonry/inspector.js:77
-msgid "Masonry Settings"
+msgid "Masonry settings"
 msgstr ""
 
 #: src/blocks/gallery-masonry/inspector.js:92
@@ -1997,7 +2028,7 @@ msgid "Display images in an offset brick pattern gallery."
 msgstr ""
 
 #: src/blocks/gallery-offset/inspector.js:112
-msgid "Offset Settings"
+msgid "Offset settings"
 msgstr ""
 
 #. translators: block name
@@ -2022,34 +2053,30 @@ msgid "Toggle to fill the available gallery area with completely fullwidth image
 msgstr ""
 
 #: src/blocks/gallery-stacked/inspector.js:86
-msgid "Stacked Settings"
+msgid "Stacked settings"
 msgstr ""
 
 #: src/blocks/gallery-stacked/inspector.js:90
-msgid "Fullwidth Images"
+msgid "Fullwidth images"
 msgstr ""
 
 #: src/blocks/gallery-stacked/inspector.js:90
-msgid "Fullwidth Image"
-msgstr ""
-
-#: src/blocks/gallery-stacked/inspector.js:139
-msgid "Box Shadow"
+msgid "Fullwidth image"
 msgstr ""
 
 #: src/blocks/gif/controls.js:44
 msgid "Remove gif"
 msgstr ""
 
-#: src/blocks/gif/edit.js:154
+#: src/blocks/gif/edit.js:137
 msgid "This gif has an empty alt attribute"
 msgstr ""
 
-#: src/blocks/gif/edit.js:285
+#: src/blocks/gif/edit.js:288
 msgid "Search for that perfect gif on Giphy"
 msgstr ""
 
-#: src/blocks/gif/edit.js:291
+#: src/blocks/gif/edit.js:294
 msgid "Search for gifs"
 msgstr ""
 
@@ -2069,7 +2096,7 @@ msgid "animated"
 msgstr ""
 
 #: src/blocks/gif/inspector.js:29
-msgid "Gif Settings"
+msgid "Gif settings"
 msgstr ""
 
 #. translators: %s: "Gist", the name of a code sharing platform
@@ -2114,7 +2141,7 @@ msgstr ""
 #. translators: icon keyword
 #: src/blocks/gist/index.js:31
 #: src/blocks/icon/deprecated/svgs.js:462
-#: src/blocks/icon/svgs.js:480
+#: src/blocks/icon/svgs.js:482
 msgid "code"
 msgstr ""
 
@@ -2127,7 +2154,7 @@ msgid "Toggle to show the gist meta data."
 msgstr ""
 
 #: src/blocks/gist/inspector.js:49
-msgid "Gist Settings"
+msgid "Gist settings"
 msgstr ""
 
 #: src/blocks/gist/inspector.js:56
@@ -2182,7 +2209,7 @@ msgid "button"
 msgstr ""
 
 #: src/blocks/hero/inspector.js:81
-msgid "Hero Settings"
+msgid "Hero settings"
 msgstr ""
 
 #: src/blocks/hero/inspector.js:85
@@ -2196,69 +2223,39 @@ msgstr ""
 msgid "Content width in pixels"
 msgstr ""
 
-#. translators: block layout
 #: src/blocks/hero/layouts.js:12
-#: src/components/background/panel.js:86
-#: src/components/grid-control/index.js:38
 msgid "Top Left"
 msgstr ""
 
-#. translators: block layout
 #: src/blocks/hero/layouts.js:13
-#: src/components/background/panel.js:91
-#: src/components/grid-control/index.js:43
 msgid "Top Center"
 msgstr ""
 
-#. translators: block layout
 #: src/blocks/hero/layouts.js:14
-#: src/components/background/panel.js:96
-#: src/components/grid-control/index.js:48
 msgid "Top Right"
 msgstr ""
 
-#. translators: block layout
 #: src/blocks/hero/layouts.js:15
-#: src/components/background/panel.js:101
-#: src/components/grid-control/index.js:53
-#: src/components/grid-control/index.js:87
 msgid "Center Left"
 msgstr ""
 
-#. translators: block layout
 #: src/blocks/hero/layouts.js:16
-#: src/components/background/panel.js:106
-#: src/components/grid-control/index.js:58
-#: src/components/grid-control/index.js:92
 msgid "Center Center"
 msgstr ""
 
-#. translators: block layout
 #: src/blocks/hero/layouts.js:17
-#: src/components/background/panel.js:111
-#: src/components/grid-control/index.js:63
-#: src/components/grid-control/index.js:97
 msgid "Center Right"
 msgstr ""
 
-#. translators: block layout
 #: src/blocks/hero/layouts.js:18
-#: src/components/background/panel.js:116
-#: src/components/grid-control/index.js:68
 msgid "Bottom Left"
 msgstr ""
 
-#. translators: block layout
 #: src/blocks/hero/layouts.js:19
-#: src/components/background/panel.js:121
-#: src/components/grid-control/index.js:73
 msgid "Bottom Center"
 msgstr ""
 
-#. translators: block layout
 #: src/blocks/hero/layouts.js:20
-#: src/components/background/panel.js:126
-#: src/components/grid-control/index.js:78
 msgid "Bottom Right"
 msgstr ""
 
@@ -2285,13 +2282,17 @@ msgstr ""
 msgid "Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative."
 msgstr ""
 
+#: src/blocks/highlight/inspector.js:35
+msgid "Highlight settings"
+msgstr ""
+
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:18
 #: src/blocks/icon/deprecated/svgs.js:774
 #: src/blocks/icon/deprecated/svgs.js:996
-#: src/blocks/icon/svgs.js:21
-#: src/blocks/icon/svgs.js:792
-#: src/blocks/icon/svgs.js:1014
+#: src/blocks/icon/svgs.js:23
+#: src/blocks/icon/svgs.js:794
+#: src/blocks/icon/svgs.js:1016
 msgid "block"
 msgstr ""
 
@@ -2299,9 +2300,9 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:20
 #: src/blocks/icon/deprecated/svgs.js:776
 #: src/blocks/icon/deprecated/svgs.js:998
-#: src/blocks/icon/svgs.js:23
-#: src/blocks/icon/svgs.js:794
-#: src/blocks/icon/svgs.js:1016
+#: src/blocks/icon/svgs.js:25
+#: src/blocks/icon/svgs.js:796
+#: src/blocks/icon/svgs.js:1018
 msgid "blocks"
 msgstr ""
 
@@ -2310,10 +2311,10 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:782
 #: src/blocks/icon/deprecated/svgs.js:1004
 #: src/blocks/icon/deprecated/svgs.js:1130
-#: src/blocks/icon/svgs.js:25
-#: src/blocks/icon/svgs.js:800
-#: src/blocks/icon/svgs.js:1022
-#: src/blocks/icon/svgs.js:1148
+#: src/blocks/icon/svgs.js:27
+#: src/blocks/icon/svgs.js:802
+#: src/blocks/icon/svgs.js:1024
+#: src/blocks/icon/svgs.js:1150
 msgid "build"
 msgstr ""
 
@@ -2324,25 +2325,25 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:319
 #: src/blocks/icon/deprecated/svgs.js:1134
 #: src/blocks/icon/deprecated/svgs.js:1206
-#: src/blocks/icon/svgs.js:27
-#: src/blocks/icon/svgs.js:273
-#: src/blocks/icon/svgs.js:295
-#: src/blocks/icon/svgs.js:317
-#: src/blocks/icon/svgs.js:337
-#: src/blocks/icon/svgs.js:1152
-#: src/blocks/icon/svgs.js:1224
+#: src/blocks/icon/svgs.js:29
+#: src/blocks/icon/svgs.js:275
+#: src/blocks/icon/svgs.js:297
+#: src/blocks/icon/svgs.js:319
+#: src/blocks/icon/svgs.js:339
+#: src/blocks/icon/svgs.js:1154
+#: src/blocks/icon/svgs.js:1226
 msgid "design"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:26
-#: src/blocks/icon/svgs.js:29
+#: src/blocks/icon/svgs.js:31
 msgid "gutenberg"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:32
-#: src/blocks/icon/svgs.js:35
+#: src/blocks/icon/svgs.js:37
 msgid "Audio"
 msgstr ""
 
@@ -2356,17 +2357,17 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:978
 #: src/blocks/icon/deprecated/svgs.js:1089
 #: src/blocks/icon/deprecated/svgs.js:1113
-#: src/blocks/icon/svgs.js:38
-#: src/blocks/icon/svgs.js:62
-#: src/blocks/icon/svgs.js:101
-#: src/blocks/icon/svgs.js:123
-#: src/blocks/icon/svgs.js:267
-#: src/blocks/icon/svgs.js:289
-#: src/blocks/icon/svgs.js:311
-#: src/blocks/icon/svgs.js:331
-#: src/blocks/icon/svgs.js:996
-#: src/blocks/icon/svgs.js:1107
-#: src/blocks/icon/svgs.js:1131
+#: src/blocks/icon/svgs.js:40
+#: src/blocks/icon/svgs.js:64
+#: src/blocks/icon/svgs.js:103
+#: src/blocks/icon/svgs.js:125
+#: src/blocks/icon/svgs.js:269
+#: src/blocks/icon/svgs.js:291
+#: src/blocks/icon/svgs.js:313
+#: src/blocks/icon/svgs.js:333
+#: src/blocks/icon/svgs.js:998
+#: src/blocks/icon/svgs.js:1109
+#: src/blocks/icon/svgs.js:1133
 msgid "artist"
 msgstr ""
 
@@ -2377,12 +2378,12 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:100
 #: src/blocks/icon/deprecated/svgs.js:120
 #: src/blocks/icon/deprecated/svgs.js:1091
-#: src/blocks/icon/svgs.js:40
-#: src/blocks/icon/svgs.js:64
-#: src/blocks/icon/svgs.js:84
-#: src/blocks/icon/svgs.js:103
-#: src/blocks/icon/svgs.js:125
-#: src/blocks/icon/svgs.js:1109
+#: src/blocks/icon/svgs.js:42
+#: src/blocks/icon/svgs.js:66
+#: src/blocks/icon/svgs.js:86
+#: src/blocks/icon/svgs.js:105
+#: src/blocks/icon/svgs.js:127
+#: src/blocks/icon/svgs.js:1111
 msgid "audio"
 msgstr ""
 
@@ -2403,23 +2404,23 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:1095
 #: src/blocks/icon/deprecated/svgs.js:1117
 #: src/blocks/icon/deprecated/svgs.js:1132
-#: src/blocks/icon/svgs.js:42
-#: src/blocks/icon/svgs.js:66
-#: src/blocks/icon/svgs.js:105
-#: src/blocks/icon/svgs.js:129
-#: src/blocks/icon/svgs.js:153
-#: src/blocks/icon/svgs.js:177
-#: src/blocks/icon/svgs.js:219
-#: src/blocks/icon/svgs.js:243
-#: src/blocks/icon/svgs.js:271
-#: src/blocks/icon/svgs.js:293
-#: src/blocks/icon/svgs.js:315
-#: src/blocks/icon/svgs.js:335
-#: src/blocks/icon/svgs.js:495
-#: src/blocks/icon/svgs.js:1000
-#: src/blocks/icon/svgs.js:1113
-#: src/blocks/icon/svgs.js:1135
-#: src/blocks/icon/svgs.js:1150
+#: src/blocks/icon/svgs.js:44
+#: src/blocks/icon/svgs.js:68
+#: src/blocks/icon/svgs.js:107
+#: src/blocks/icon/svgs.js:131
+#: src/blocks/icon/svgs.js:155
+#: src/blocks/icon/svgs.js:179
+#: src/blocks/icon/svgs.js:221
+#: src/blocks/icon/svgs.js:245
+#: src/blocks/icon/svgs.js:273
+#: src/blocks/icon/svgs.js:295
+#: src/blocks/icon/svgs.js:317
+#: src/blocks/icon/svgs.js:337
+#: src/blocks/icon/svgs.js:497
+#: src/blocks/icon/svgs.js:1002
+#: src/blocks/icon/svgs.js:1115
+#: src/blocks/icon/svgs.js:1137
+#: src/blocks/icon/svgs.js:1152
 msgid "creative"
 msgstr ""
 
@@ -2437,20 +2438,20 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:301
 #: src/blocks/icon/deprecated/svgs.js:321
 #: src/blocks/icon/deprecated/svgs.js:1097
-#: src/blocks/icon/svgs.js:44
-#: src/blocks/icon/svgs.js:68
-#: src/blocks/icon/svgs.js:107
-#: src/blocks/icon/svgs.js:133
-#: src/blocks/icon/svgs.js:157
-#: src/blocks/icon/svgs.js:181
-#: src/blocks/icon/svgs.js:205
-#: src/blocks/icon/svgs.js:223
-#: src/blocks/icon/svgs.js:247
-#: src/blocks/icon/svgs.js:275
-#: src/blocks/icon/svgs.js:297
-#: src/blocks/icon/svgs.js:319
-#: src/blocks/icon/svgs.js:339
-#: src/blocks/icon/svgs.js:1115
+#: src/blocks/icon/svgs.js:46
+#: src/blocks/icon/svgs.js:70
+#: src/blocks/icon/svgs.js:109
+#: src/blocks/icon/svgs.js:135
+#: src/blocks/icon/svgs.js:159
+#: src/blocks/icon/svgs.js:183
+#: src/blocks/icon/svgs.js:207
+#: src/blocks/icon/svgs.js:225
+#: src/blocks/icon/svgs.js:249
+#: src/blocks/icon/svgs.js:277
+#: src/blocks/icon/svgs.js:299
+#: src/blocks/icon/svgs.js:321
+#: src/blocks/icon/svgs.js:341
+#: src/blocks/icon/svgs.js:1117
 msgid "media"
 msgstr ""
 
@@ -2462,12 +2463,12 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:130
 #: src/blocks/icon/deprecated/svgs.js:132
 #: src/blocks/icon/deprecated/svgs.js:1099
-#: src/blocks/icon/svgs.js:46
-#: src/blocks/icon/svgs.js:70
-#: src/blocks/icon/svgs.js:92
-#: src/blocks/icon/svgs.js:109
-#: src/blocks/icon/svgs.js:135
-#: src/blocks/icon/svgs.js:1117
+#: src/blocks/icon/svgs.js:48
+#: src/blocks/icon/svgs.js:72
+#: src/blocks/icon/svgs.js:94
+#: src/blocks/icon/svgs.js:111
+#: src/blocks/icon/svgs.js:137
+#: src/blocks/icon/svgs.js:1119
 msgid "microphone"
 msgstr ""
 
@@ -2477,19 +2478,19 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:108
 #: src/blocks/icon/deprecated/svgs.js:134
 #: src/blocks/icon/deprecated/svgs.js:1101
-#: src/blocks/icon/svgs.js:48
-#: src/blocks/icon/svgs.js:72
-#: src/blocks/icon/svgs.js:111
-#: src/blocks/icon/svgs.js:137
-#: src/blocks/icon/svgs.js:1119
+#: src/blocks/icon/svgs.js:50
+#: src/blocks/icon/svgs.js:74
+#: src/blocks/icon/svgs.js:113
+#: src/blocks/icon/svgs.js:139
+#: src/blocks/icon/svgs.js:1121
 msgid "music"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:47
 #: src/blocks/icon/deprecated/svgs.js:136
-#: src/blocks/icon/svgs.js:50
-#: src/blocks/icon/svgs.js:139
+#: src/blocks/icon/svgs.js:52
+#: src/blocks/icon/svgs.js:141
 msgid "podcast"
 msgstr ""
 
@@ -2499,53 +2500,53 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:110
 #: src/blocks/icon/deprecated/svgs.js:138
 #: src/blocks/icon/deprecated/svgs.js:1103
-#: src/blocks/icon/svgs.js:52
-#: src/blocks/icon/svgs.js:74
-#: src/blocks/icon/svgs.js:113
-#: src/blocks/icon/svgs.js:141
-#: src/blocks/icon/svgs.js:1121
+#: src/blocks/icon/svgs.js:54
+#: src/blocks/icon/svgs.js:76
+#: src/blocks/icon/svgs.js:115
+#: src/blocks/icon/svgs.js:143
+#: src/blocks/icon/svgs.js:1123
 msgid "song"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:56
-#: src/blocks/icon/svgs.js:59
+#: src/blocks/icon/svgs.js:61
 msgid "Album"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:78
-#: src/blocks/icon/svgs.js:81
+#: src/blocks/icon/svgs.js:83
 msgid "Headset"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:83
-#: src/blocks/icon/svgs.js:86
+#: src/blocks/icon/svgs.js:88
 msgid "beats"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:85
-#: src/blocks/icon/svgs.js:88
+#: src/blocks/icon/svgs.js:90
 msgid "bose"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:87
-#: src/blocks/icon/svgs.js:90
+#: src/blocks/icon/svgs.js:92
 msgid "headphones"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:95
-#: src/blocks/icon/svgs.js:98
+#: src/blocks/icon/svgs.js:100
 msgid "Volume"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:117
-#: src/blocks/icon/svgs.js:120
+#: src/blocks/icon/svgs.js:122
 msgid "Voice"
 msgstr ""
 
@@ -2556,12 +2557,13 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:593
 #: src/blocks/icon/deprecated/svgs.js:614
 #: src/blocks/icon/deprecated/svgs.js:653
-#: src/blocks/icon/svgs.js:127
-#: src/blocks/icon/svgs.js:566
-#: src/blocks/icon/svgs.js:588
-#: src/blocks/icon/svgs.js:611
-#: src/blocks/icon/svgs.js:632
-#: src/blocks/icon/svgs.js:671
+#: src/blocks/icon/svgs.js:129
+#: src/blocks/icon/svgs.js:568
+#: src/blocks/icon/svgs.js:590
+#: src/blocks/icon/svgs.js:613
+#: src/blocks/icon/svgs.js:634
+#: src/blocks/icon/svgs.js:673
+#: src/blocks/icon/svgs.js:1564
 msgid "computer"
 msgstr ""
 
@@ -2574,20 +2576,21 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:639
 #: src/blocks/icon/deprecated/svgs.js:657
 #: src/blocks/icon/deprecated/svgs.js:676
-#: src/blocks/icon/svgs.js:131
-#: src/blocks/icon/svgs.js:570
-#: src/blocks/icon/svgs.js:592
-#: src/blocks/icon/svgs.js:615
-#: src/blocks/icon/svgs.js:636
-#: src/blocks/icon/svgs.js:657
-#: src/blocks/icon/svgs.js:675
-#: src/blocks/icon/svgs.js:694
+#: src/blocks/icon/svgs.js:133
+#: src/blocks/icon/svgs.js:572
+#: src/blocks/icon/svgs.js:594
+#: src/blocks/icon/svgs.js:617
+#: src/blocks/icon/svgs.js:638
+#: src/blocks/icon/svgs.js:659
+#: src/blocks/icon/svgs.js:677
+#: src/blocks/icon/svgs.js:696
+#: src/blocks/icon/svgs.js:1568
 msgid "device"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:145
-#: src/blocks/icon/svgs.js:148
+#: src/blocks/icon/svgs.js:150
 msgid "Aperture"
 msgstr ""
 
@@ -2598,12 +2601,12 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:238
 #: src/blocks/icon/deprecated/svgs.js:980
 #: src/blocks/icon/deprecated/svgs.js:1115
-#: src/blocks/icon/svgs.js:151
-#: src/blocks/icon/svgs.js:175
-#: src/blocks/icon/svgs.js:199
-#: src/blocks/icon/svgs.js:241
-#: src/blocks/icon/svgs.js:998
-#: src/blocks/icon/svgs.js:1133
+#: src/blocks/icon/svgs.js:153
+#: src/blocks/icon/svgs.js:177
+#: src/blocks/icon/svgs.js:201
+#: src/blocks/icon/svgs.js:243
+#: src/blocks/icon/svgs.js:1000
+#: src/blocks/icon/svgs.js:1135
 msgid "camera"
 msgstr ""
 
@@ -2611,9 +2614,9 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:152
 #: src/blocks/icon/deprecated/svgs.js:176
 #: src/blocks/icon/deprecated/svgs.js:226
-#: src/blocks/icon/svgs.js:155
-#: src/blocks/icon/svgs.js:179
-#: src/blocks/icon/svgs.js:229
+#: src/blocks/icon/svgs.js:157
+#: src/blocks/icon/svgs.js:181
+#: src/blocks/icon/svgs.js:231
 msgid "film"
 msgstr ""
 
@@ -2621,9 +2624,9 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:156
 #: src/blocks/icon/deprecated/svgs.js:184
 #: src/blocks/icon/deprecated/svgs.js:206
-#: src/blocks/icon/svgs.js:159
-#: src/blocks/icon/svgs.js:187
-#: src/blocks/icon/svgs.js:209
+#: src/blocks/icon/svgs.js:161
+#: src/blocks/icon/svgs.js:189
+#: src/blocks/icon/svgs.js:211
 msgid "photo"
 msgstr ""
 
@@ -2631,9 +2634,9 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:158
 #: src/blocks/icon/deprecated/svgs.js:180
 #: src/blocks/icon/deprecated/svgs.js:246
-#: src/blocks/icon/svgs.js:161
-#: src/blocks/icon/svgs.js:183
-#: src/blocks/icon/svgs.js:249
+#: src/blocks/icon/svgs.js:163
+#: src/blocks/icon/svgs.js:185
+#: src/blocks/icon/svgs.js:251
 msgid "photographer"
 msgstr ""
 
@@ -2643,17 +2646,17 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:248
 #: src/blocks/icon/deprecated/svgs.js:986
 #: src/blocks/icon/deprecated/svgs.js:1121
-#: src/blocks/icon/svgs.js:163
-#: src/blocks/icon/svgs.js:185
-#: src/blocks/icon/svgs.js:251
-#: src/blocks/icon/svgs.js:1004
-#: src/blocks/icon/svgs.js:1139
+#: src/blocks/icon/svgs.js:165
+#: src/blocks/icon/svgs.js:187
+#: src/blocks/icon/svgs.js:253
+#: src/blocks/icon/svgs.js:1006
+#: src/blocks/icon/svgs.js:1141
 msgid "photography"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:167
-#: src/blocks/icon/svgs.js:170
+#: src/blocks/icon/svgs.js:172
 msgid "Camera"
 msgstr ""
 
@@ -2661,79 +2664,79 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:170
 #: src/blocks/icon/deprecated/svgs.js:194
 #: src/blocks/icon/deprecated/svgs.js:236
-#: src/blocks/icon/svgs.js:173
-#: src/blocks/icon/svgs.js:197
-#: src/blocks/icon/svgs.js:239
+#: src/blocks/icon/svgs.js:175
+#: src/blocks/icon/svgs.js:199
+#: src/blocks/icon/svgs.js:241
 msgid "aperture"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:191
-#: src/blocks/icon/svgs.js:194
+#: src/blocks/icon/svgs.js:196
 msgid "Gallery"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:198
-#: src/blocks/icon/svgs.js:201
+#: src/blocks/icon/svgs.js:203
 msgid "collection"
 msgstr ""
 
 #. translators: icon keyword
 #. translators: block keyword
 #: src/blocks/icon/deprecated/svgs.js:200
-#: src/blocks/icon/svgs.js:203
+#: src/blocks/icon/svgs.js:205
 #: src/blocks/media-card/index.js:37
 msgid "image"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:213
-#: src/blocks/icon/svgs.js:216
+#: src/blocks/icon/svgs.js:218
 msgid "Video"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:218
 #: src/blocks/icon/deprecated/svgs.js:242
-#: src/blocks/icon/svgs.js:221
-#: src/blocks/icon/svgs.js:245
+#: src/blocks/icon/svgs.js:223
+#: src/blocks/icon/svgs.js:247
 msgid "director"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:222
 #: src/blocks/icon/deprecated/svgs.js:250
-#: src/blocks/icon/svgs.js:225
-#: src/blocks/icon/svgs.js:253
+#: src/blocks/icon/svgs.js:227
+#: src/blocks/icon/svgs.js:255
 msgid "producer"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:224
 #: src/blocks/icon/deprecated/svgs.js:252
-#: src/blocks/icon/svgs.js:227
-#: src/blocks/icon/svgs.js:255
+#: src/blocks/icon/svgs.js:229
+#: src/blocks/icon/svgs.js:257
 msgid "videography"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:233
-#: src/blocks/icon/svgs.js:236
+#: src/blocks/icon/svgs.js:238
 msgid "Film"
 msgstr ""
 
 #. translators: icon keyword
 #. translators: block keyword
 #: src/blocks/icon/deprecated/svgs.js:254
-#: src/blocks/icon/svgs.js:257
+#: src/blocks/icon/svgs.js:259
 #: src/blocks/media-card/index.js:39
 msgid "video"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:261
-#: src/blocks/icon/svgs.js:264
+#: src/blocks/icon/svgs.js:266
 msgid "Color Lens"
 msgstr ""
 
@@ -2741,19 +2744,19 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:266
 #: src/blocks/icon/deprecated/svgs.js:295
 #: src/blocks/icon/deprecated/svgs.js:315
-#: src/blocks/icon/svgs.js:269
-#: src/blocks/icon/svgs.js:291
-#: src/blocks/icon/svgs.js:313
-#: src/blocks/icon/svgs.js:333
+#: src/blocks/icon/svgs.js:271
+#: src/blocks/icon/svgs.js:293
+#: src/blocks/icon/svgs.js:315
+#: src/blocks/icon/svgs.js:335
 msgid "colors"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:274
 #: src/blocks/icon/deprecated/svgs.js:323
-#: src/blocks/icon/svgs.js:277
-#: src/blocks/icon/svgs.js:299
-#: src/blocks/icon/svgs.js:341
+#: src/blocks/icon/svgs.js:279
+#: src/blocks/icon/svgs.js:301
+#: src/blocks/icon/svgs.js:343
 msgid "paint"
 msgstr ""
 
@@ -2761,16 +2764,16 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:276
 #: src/blocks/icon/deprecated/svgs.js:303
 #: src/blocks/icon/deprecated/svgs.js:327
-#: src/blocks/icon/svgs.js:279
-#: src/blocks/icon/svgs.js:301
-#: src/blocks/icon/svgs.js:321
-#: src/blocks/icon/svgs.js:345
+#: src/blocks/icon/svgs.js:281
+#: src/blocks/icon/svgs.js:303
+#: src/blocks/icon/svgs.js:323
+#: src/blocks/icon/svgs.js:347
 msgid "palette"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:283
-#: src/blocks/icon/svgs.js:286
+#: src/blocks/icon/svgs.js:288
 msgid "Color Picker"
 msgstr ""
 
@@ -2782,25 +2785,25 @@ msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:290
-#: src/blocks/icon/svgs.js:308
+#: src/blocks/icon/svgs.js:310
 msgid "Paint"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:310
-#: src/blocks/icon/svgs.js:328
+#: src/blocks/icon/svgs.js:330
 msgid "Brush"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:325
-#: src/blocks/icon/svgs.js:343
+#: src/blocks/icon/svgs.js:345
 msgid "paintbrush"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:334
-#: src/blocks/icon/svgs.js:352
+#: src/blocks/icon/svgs.js:354
 msgid "Add Circle"
 msgstr ""
 
@@ -2808,9 +2811,10 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:337
 #: src/blocks/icon/deprecated/svgs.js:359
 #: src/blocks/icon/deprecated/svgs.js:1221
-#: src/blocks/icon/svgs.js:355
-#: src/blocks/icon/svgs.js:377
-#: src/blocks/icon/svgs.js:1239
+#: src/blocks/icon/svgs.js:357
+#: src/blocks/icon/svgs.js:379
+#: src/blocks/icon/svgs.js:1241
+#: src/blocks/icon/svgs.js:1488
 msgid "add"
 msgstr ""
 
@@ -2819,18 +2823,21 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:361
 #: src/blocks/icon/deprecated/svgs.js:383
 #: src/blocks/icon/deprecated/svgs.js:402
-#: src/blocks/icon/svgs.js:357
-#: src/blocks/icon/svgs.js:379
-#: src/blocks/icon/svgs.js:401
-#: src/blocks/icon/svgs.js:420
+#: src/blocks/icon/svgs.js:359
+#: src/blocks/icon/svgs.js:381
+#: src/blocks/icon/svgs.js:403
+#: src/blocks/icon/svgs.js:422
+#: src/blocks/icon/svgs.js:1312
+#: src/blocks/icon/svgs.js:1326
+#: src/blocks/icon/svgs.js:1529
 msgid "circle"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:341
 #: src/blocks/icon/deprecated/svgs.js:363
-#: src/blocks/icon/svgs.js:359
-#: src/blocks/icon/svgs.js:381
+#: src/blocks/icon/svgs.js:361
+#: src/blocks/icon/svgs.js:383
 msgid "insert"
 msgstr ""
 
@@ -2838,17 +2845,17 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:343
 #: src/blocks/icon/deprecated/svgs.js:365
 #: src/blocks/icon/deprecated/svgs.js:466
-#: src/blocks/icon/svgs.js:361
-#: src/blocks/icon/svgs.js:383
-#: src/blocks/icon/svgs.js:484
+#: src/blocks/icon/svgs.js:363
+#: src/blocks/icon/svgs.js:385
+#: src/blocks/icon/svgs.js:486
 msgid "math"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:345
 #: src/blocks/icon/deprecated/svgs.js:367
-#: src/blocks/icon/svgs.js:363
-#: src/blocks/icon/svgs.js:385
+#: src/blocks/icon/svgs.js:365
+#: src/blocks/icon/svgs.js:387
 msgid "minus"
 msgstr ""
 
@@ -2856,9 +2863,9 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:347
 #: src/blocks/icon/deprecated/svgs.js:369
 #: src/blocks/icon/deprecated/svgs.js:532
-#: src/blocks/icon/svgs.js:365
-#: src/blocks/icon/svgs.js:387
-#: src/blocks/icon/svgs.js:550
+#: src/blocks/icon/svgs.js:367
+#: src/blocks/icon/svgs.js:389
+#: src/blocks/icon/svgs.js:552
 msgid "plus"
 msgstr ""
 
@@ -2867,22 +2874,22 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:371
 #: src/blocks/icon/deprecated/svgs.js:389
 #: src/blocks/icon/deprecated/svgs.js:412
-#: src/blocks/icon/svgs.js:367
-#: src/blocks/icon/svgs.js:389
-#: src/blocks/icon/svgs.js:407
-#: src/blocks/icon/svgs.js:430
+#: src/blocks/icon/svgs.js:369
+#: src/blocks/icon/svgs.js:391
+#: src/blocks/icon/svgs.js:409
+#: src/blocks/icon/svgs.js:432
 msgid "round"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:356
-#: src/blocks/icon/svgs.js:374
+#: src/blocks/icon/svgs.js:376
 msgid "Minus Circle"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:378
-#: src/blocks/icon/svgs.js:396
+#: src/blocks/icon/svgs.js:398
 msgid "Pie Chart"
 msgstr ""
 
@@ -2890,9 +2897,9 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:381
 #: src/blocks/icon/deprecated/svgs.js:400
 #: src/blocks/icon/deprecated/svgs.js:424
-#: src/blocks/icon/svgs.js:399
-#: src/blocks/icon/svgs.js:418
-#: src/blocks/icon/svgs.js:442
+#: src/blocks/icon/svgs.js:401
+#: src/blocks/icon/svgs.js:420
+#: src/blocks/icon/svgs.js:444
 msgid "chart"
 msgstr ""
 
@@ -2901,18 +2908,18 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:408
 #: src/blocks/icon/deprecated/svgs.js:428
 #: src/blocks/icon/deprecated/svgs.js:430
-#: src/blocks/icon/svgs.js:403
-#: src/blocks/icon/svgs.js:426
-#: src/blocks/icon/svgs.js:446
+#: src/blocks/icon/svgs.js:405
+#: src/blocks/icon/svgs.js:428
 #: src/blocks/icon/svgs.js:448
+#: src/blocks/icon/svgs.js:450
 msgid "graph"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:387
 #: src/blocks/icon/deprecated/svgs.js:410
-#: src/blocks/icon/svgs.js:405
-#: src/blocks/icon/svgs.js:428
+#: src/blocks/icon/svgs.js:407
+#: src/blocks/icon/svgs.js:430
 msgid "pie"
 msgstr ""
 
@@ -2920,53 +2927,53 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:391
 #: src/blocks/icon/deprecated/svgs.js:414
 #: src/blocks/icon/deprecated/svgs.js:432
-#: src/blocks/icon/svgs.js:409
-#: src/blocks/icon/svgs.js:432
-#: src/blocks/icon/svgs.js:450
+#: src/blocks/icon/svgs.js:411
+#: src/blocks/icon/svgs.js:434
+#: src/blocks/icon/svgs.js:452
 msgid "stats"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:397
-#: src/blocks/icon/svgs.js:415
+#: src/blocks/icon/svgs.js:417
 msgid "Scatter Plot"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:404
 #: src/blocks/icon/deprecated/svgs.js:426
-#: src/blocks/icon/svgs.js:422
-#: src/blocks/icon/svgs.js:444
+#: src/blocks/icon/svgs.js:424
+#: src/blocks/icon/svgs.js:446
 msgid "data"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:406
-#: src/blocks/icon/svgs.js:424
+#: src/blocks/icon/svgs.js:426
 msgid "dots"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:421
-#: src/blocks/icon/svgs.js:439
+#: src/blocks/icon/svgs.js:441
 msgid "Poll"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:439
-#: src/blocks/icon/svgs.js:457
+#: src/blocks/icon/svgs.js:459
 msgid "Emoticon"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:442
-#: src/blocks/icon/svgs.js:460
+#: src/blocks/icon/svgs.js:462
 msgid "emoticon"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:444
-#: src/blocks/icon/svgs.js:462
+#: src/blocks/icon/svgs.js:464
 msgid "emotion"
 msgstr ""
 
@@ -2974,170 +2981,172 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:446
 #: src/blocks/icon/deprecated/svgs.js:832
 #: src/blocks/icon/deprecated/svgs.js:936
-#: src/blocks/icon/svgs.js:464
-#: src/blocks/icon/svgs.js:850
-#: src/blocks/icon/svgs.js:954
+#: src/blocks/icon/svgs.js:466
+#: src/blocks/icon/svgs.js:852
+#: src/blocks/icon/svgs.js:956
 msgid "fun"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:448
 #: src/blocks/icon/deprecated/svgs.js:938
-#: src/blocks/icon/svgs.js:466
-#: src/blocks/icon/svgs.js:956
+#: src/blocks/icon/svgs.js:468
+#: src/blocks/icon/svgs.js:958
+#: src/blocks/icon/svgs.js:1260
 msgid "happy"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:450
-#: src/blocks/icon/svgs.js:468
+#: src/blocks/icon/svgs.js:470
 msgid "joy"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:452
-#: src/blocks/icon/svgs.js:470
+#: src/blocks/icon/svgs.js:472
+#: src/blocks/icon/svgs.js:1258
 msgid "smile"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:459
-#: src/blocks/icon/svgs.js:477
+#: src/blocks/icon/svgs.js:479
 msgid "Functions"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:464
-#: src/blocks/icon/svgs.js:482
+#: src/blocks/icon/svgs.js:484
 msgid "greek"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:472
-#: src/blocks/icon/svgs.js:490
+#: src/blocks/icon/svgs.js:492
 msgid "Doodle"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:475
-#: src/blocks/icon/svgs.js:493
+#: src/blocks/icon/svgs.js:495
 msgid "art"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:479
-#: src/blocks/icon/svgs.js:497
+#: src/blocks/icon/svgs.js:499
 msgid "doodle"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:481
-#: src/blocks/icon/svgs.js:499
+#: src/blocks/icon/svgs.js:501
 msgid "drawing"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:483
 #: src/blocks/icon/deprecated/svgs.js:498
-#: src/blocks/icon/svgs.js:501
-#: src/blocks/icon/svgs.js:516
+#: src/blocks/icon/svgs.js:503
+#: src/blocks/icon/svgs.js:518
 msgid "font"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:485
-#: src/blocks/icon/svgs.js:503
+#: src/blocks/icon/svgs.js:505
 msgid "marker"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:487
-#: src/blocks/icon/svgs.js:505
+#: src/blocks/icon/svgs.js:507
 msgid "pencil"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:489
-#: src/blocks/icon/svgs.js:507
+#: src/blocks/icon/svgs.js:509
 msgid "type"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:495
-#: src/blocks/icon/svgs.js:513
-#: src/components/typography-controls/index.js:198
+#: src/blocks/icon/svgs.js:515
+#: src/components/typography-controls/index.js:196
 msgid "Font"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:502
-#: src/blocks/icon/svgs.js:520
+#: src/blocks/icon/svgs.js:522
 msgid "typography"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:509
-#: src/blocks/icon/svgs.js:527
+#: src/blocks/icon/svgs.js:529
 msgid "Heart"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:512
-#: src/blocks/icon/svgs.js:530
+#: src/blocks/icon/svgs.js:532
 msgid "kiss"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:514
-#: src/blocks/icon/svgs.js:532
+#: src/blocks/icon/svgs.js:534
 msgid "love"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:516
-#: src/blocks/icon/svgs.js:534
+#: src/blocks/icon/svgs.js:536
 msgid "shape"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:518
-#: src/blocks/icon/svgs.js:536
+#: src/blocks/icon/svgs.js:538
 msgid "valentine"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:525
-#: src/blocks/icon/svgs.js:543
+#: src/blocks/icon/svgs.js:545
 msgid "Star"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:528
-#: src/blocks/icon/svgs.js:546
+#: src/blocks/icon/svgs.js:548
 msgid "favorite"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:530
-#: src/blocks/icon/svgs.js:548
+#: src/blocks/icon/svgs.js:550
 msgid "like"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:534
-#: src/blocks/icon/svgs.js:552
+#: src/blocks/icon/svgs.js:554
 msgid "rate"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:536
-#: src/blocks/icon/svgs.js:554
+#: src/blocks/icon/svgs.js:556
 msgid "vote"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:543
-#: src/blocks/icon/svgs.js:561
+#: src/blocks/icon/svgs.js:563
 msgid "Desktop"
 msgstr ""
 
@@ -3148,12 +3157,13 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:612
 #: src/blocks/icon/deprecated/svgs.js:637
 #: src/blocks/icon/deprecated/svgs.js:651
-#: src/blocks/icon/svgs.js:564
-#: src/blocks/icon/svgs.js:586
-#: src/blocks/icon/svgs.js:609
-#: src/blocks/icon/svgs.js:630
-#: src/blocks/icon/svgs.js:655
-#: src/blocks/icon/svgs.js:669
+#: src/blocks/icon/svgs.js:566
+#: src/blocks/icon/svgs.js:588
+#: src/blocks/icon/svgs.js:611
+#: src/blocks/icon/svgs.js:632
+#: src/blocks/icon/svgs.js:657
+#: src/blocks/icon/svgs.js:671
+#: src/blocks/icon/svgs.js:1562
 msgid "apple"
 msgstr ""
 
@@ -3163,11 +3173,12 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:595
 #: src/blocks/icon/deprecated/svgs.js:616
 #: src/blocks/icon/deprecated/svgs.js:655
-#: src/blocks/icon/svgs.js:568
-#: src/blocks/icon/svgs.js:590
-#: src/blocks/icon/svgs.js:613
-#: src/blocks/icon/svgs.js:634
-#: src/blocks/icon/svgs.js:673
+#: src/blocks/icon/svgs.js:570
+#: src/blocks/icon/svgs.js:592
+#: src/blocks/icon/svgs.js:615
+#: src/blocks/icon/svgs.js:636
+#: src/blocks/icon/svgs.js:675
+#: src/blocks/icon/svgs.js:1566
 msgid "desk"
 msgstr ""
 
@@ -3175,9 +3186,9 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:554
 #: src/blocks/icon/deprecated/svgs.js:599
 #: src/blocks/icon/deprecated/svgs.js:622
-#: src/blocks/icon/svgs.js:572
-#: src/blocks/icon/svgs.js:617
-#: src/blocks/icon/svgs.js:640
+#: src/blocks/icon/svgs.js:574
+#: src/blocks/icon/svgs.js:619
+#: src/blocks/icon/svgs.js:642
 msgid "monitor"
 msgstr ""
 
@@ -3187,11 +3198,12 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:601
 #: src/blocks/icon/deprecated/svgs.js:624
 #: src/blocks/icon/deprecated/svgs.js:661
-#: src/blocks/icon/svgs.js:574
-#: src/blocks/icon/svgs.js:596
-#: src/blocks/icon/svgs.js:619
-#: src/blocks/icon/svgs.js:642
-#: src/blocks/icon/svgs.js:679
+#: src/blocks/icon/svgs.js:576
+#: src/blocks/icon/svgs.js:598
+#: src/blocks/icon/svgs.js:621
+#: src/blocks/icon/svgs.js:644
+#: src/blocks/icon/svgs.js:681
+#: src/blocks/icon/svgs.js:1572
 msgid "office"
 msgstr ""
 
@@ -3201,17 +3213,18 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:603
 #: src/blocks/icon/deprecated/svgs.js:626
 #: src/blocks/icon/deprecated/svgs.js:663
-#: src/blocks/icon/svgs.js:576
-#: src/blocks/icon/svgs.js:598
-#: src/blocks/icon/svgs.js:621
-#: src/blocks/icon/svgs.js:644
-#: src/blocks/icon/svgs.js:681
+#: src/blocks/icon/svgs.js:578
+#: src/blocks/icon/svgs.js:600
+#: src/blocks/icon/svgs.js:623
+#: src/blocks/icon/svgs.js:646
+#: src/blocks/icon/svgs.js:683
+#: src/blocks/icon/svgs.js:1574
 msgid "pc"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:565
-#: src/blocks/icon/svgs.js:583
+#: src/blocks/icon/svgs.js:585
 msgid "Devices"
 msgstr ""
 
@@ -3219,9 +3232,10 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:576
 #: src/blocks/icon/deprecated/svgs.js:620
 #: src/blocks/icon/deprecated/svgs.js:659
-#: src/blocks/icon/svgs.js:594
-#: src/blocks/icon/svgs.js:638
-#: src/blocks/icon/svgs.js:677
+#: src/blocks/icon/svgs.js:596
+#: src/blocks/icon/svgs.js:640
+#: src/blocks/icon/svgs.js:679
+#: src/blocks/icon/svgs.js:1570
 msgid "ipad"
 msgstr ""
 
@@ -3229,224 +3243,225 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:582
 #: src/blocks/icon/deprecated/svgs.js:628
 #: src/blocks/icon/deprecated/svgs.js:665
-#: src/blocks/icon/svgs.js:600
-#: src/blocks/icon/svgs.js:646
-#: src/blocks/icon/svgs.js:683
+#: src/blocks/icon/svgs.js:602
+#: src/blocks/icon/svgs.js:648
+#: src/blocks/icon/svgs.js:685
+#: src/blocks/icon/svgs.js:1576
 msgid "surface"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:588
-#: src/blocks/icon/svgs.js:606
+#: src/blocks/icon/svgs.js:608
 msgid "Laptop"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:609
-#: src/blocks/icon/svgs.js:627
+#: src/blocks/icon/svgs.js:629
 msgid "Tablet"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:634
-#: src/blocks/icon/svgs.js:652
+#: src/blocks/icon/svgs.js:654
 msgid "Watch"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:641
-#: src/blocks/icon/svgs.js:659
+#: src/blocks/icon/svgs.js:661
 msgid "mac"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:648
-#: src/blocks/icon/svgs.js:666
+#: src/blocks/icon/svgs.js:668
 msgid "Keyboard"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:671
-#: src/blocks/icon/svgs.js:689
+#: src/blocks/icon/svgs.js:691
 msgid "Hub"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:674
-#: src/blocks/icon/svgs.js:692
+#: src/blocks/icon/svgs.js:694
 msgid "connect"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:678
-#: src/blocks/icon/svgs.js:696
+#: src/blocks/icon/svgs.js:698
 msgid "hub"
 msgstr ""
 
 #. translators: icon keyword
 #. translators: block keyword
 #: src/blocks/icon/deprecated/svgs.js:680
-#: src/blocks/icon/svgs.js:698
+#: src/blocks/icon/svgs.js:700
 #: src/blocks/share/index.js:27
 msgid "social"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:682
-#: src/blocks/icon/svgs.js:700
+#: src/blocks/icon/svgs.js:702
 msgid "usb"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:693
 #: src/blocks/icon/deprecated/svgs.js:711
-#: src/blocks/icon/svgs.js:711
-#: src/blocks/icon/svgs.js:729
+#: src/blocks/icon/svgs.js:713
+#: src/blocks/icon/svgs.js:731
 msgid "letter"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:697
 #: src/blocks/icon/deprecated/svgs.js:715
-#: src/blocks/icon/svgs.js:715
-#: src/blocks/icon/svgs.js:733
+#: src/blocks/icon/svgs.js:717
+#: src/blocks/icon/svgs.js:735
 msgid "os"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:699
 #: src/blocks/icon/deprecated/svgs.js:717
-#: src/blocks/icon/svgs.js:717
-#: src/blocks/icon/svgs.js:735
+#: src/blocks/icon/svgs.js:719
+#: src/blocks/icon/svgs.js:737
 msgid "read"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:723
-#: src/blocks/icon/svgs.js:741
+#: src/blocks/icon/svgs.js:743
 msgid "Reply"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:726
-#: src/blocks/icon/svgs.js:744
+#: src/blocks/icon/svgs.js:746
 msgid "comment"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:734
-#: src/blocks/icon/svgs.js:752
+#: src/blocks/icon/svgs.js:754
 msgid "reply"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:736
-#: src/blocks/icon/svgs.js:754
+#: src/blocks/icon/svgs.js:756
 msgid "respond"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:742
-#: src/blocks/icon/svgs.js:760
+#: src/blocks/icon/svgs.js:762
 msgid "Send"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:745
-#: src/blocks/icon/svgs.js:763
+#: src/blocks/icon/svgs.js:765
 msgid "deliver"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:751
-#: src/blocks/icon/svgs.js:769
+#: src/blocks/icon/svgs.js:771
 msgid "send"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:758
-#: src/blocks/icon/svgs.js:776
+#: src/blocks/icon/svgs.js:778
 msgid "Signal"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:761
-#: src/blocks/icon/svgs.js:779
+#: src/blocks/icon/svgs.js:781
 msgid "radio"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:763
-#: src/blocks/icon/svgs.js:781
+#: src/blocks/icon/svgs.js:783
 msgid "waves"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:765
-#: src/blocks/icon/svgs.js:783
+#: src/blocks/icon/svgs.js:785
 msgid "wifi"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:771
-#: src/blocks/icon/svgs.js:789
+#: src/blocks/icon/svgs.js:791
 msgid "Blocks"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:778
 #: src/blocks/icon/deprecated/svgs.js:1000
-#: src/blocks/icon/svgs.js:796
-#: src/blocks/icon/svgs.js:1018
+#: src/blocks/icon/svgs.js:798
+#: src/blocks/icon/svgs.js:1020
 msgid "box"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:780
 #: src/blocks/icon/deprecated/svgs.js:1002
-#: src/blocks/icon/svgs.js:798
-#: src/blocks/icon/svgs.js:1020
+#: src/blocks/icon/svgs.js:800
+#: src/blocks/icon/svgs.js:1022
 msgid "boxes"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:784
 #: src/blocks/icon/deprecated/svgs.js:1006
-#: src/blocks/icon/svgs.js:802
-#: src/blocks/icon/svgs.js:1024
+#: src/blocks/icon/svgs.js:804
+#: src/blocks/icon/svgs.js:1026
 msgid "square"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:786
 #: src/blocks/icon/deprecated/svgs.js:1008
-#: src/blocks/icon/svgs.js:804
-#: src/blocks/icon/svgs.js:1026
+#: src/blocks/icon/svgs.js:806
+#: src/blocks/icon/svgs.js:1028
 msgid "widgets"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:793
-#: src/blocks/icon/svgs.js:811
+#: src/blocks/icon/svgs.js:813
 msgid "Marker"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:798
-#: src/blocks/icon/svgs.js:816
+#: src/blocks/icon/svgs.js:818
 msgid "check"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:800
-#: src/blocks/icon/svgs.js:818
+#: src/blocks/icon/svgs.js:820
 msgid "checkbox"
 msgstr ""
 
 #. translators: icon keyword
 #. translators: block keyword
 #: src/blocks/icon/deprecated/svgs.js:802
-#: src/blocks/icon/svgs.js:820
+#: src/blocks/icon/svgs.js:822
 #: src/blocks/map/index.js:36
 msgid "directions"
 msgstr ""
@@ -3455,37 +3470,37 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:804
 #: src/blocks/icon/deprecated/svgs.js:859
 #: src/blocks/icon/deprecated/svgs.js:880
-#: src/blocks/icon/svgs.js:822
-#: src/blocks/icon/svgs.js:877
-#: src/blocks/icon/svgs.js:898
+#: src/blocks/icon/svgs.js:824
+#: src/blocks/icon/svgs.js:879
+#: src/blocks/icon/svgs.js:900
 msgid "map"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:811
-#: src/blocks/icon/svgs.js:829
+#: src/blocks/icon/svgs.js:831
 msgid "Mountains"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:814
-#: src/blocks/icon/svgs.js:832
+#: src/blocks/icon/svgs.js:834
 msgid "hills"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:816
 #: src/blocks/icon/deprecated/svgs.js:954
-#: src/blocks/icon/svgs.js:834
-#: src/blocks/icon/svgs.js:972
+#: src/blocks/icon/svgs.js:836
+#: src/blocks/icon/svgs.js:974
 msgid "landscape"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:818
 #: src/blocks/icon/deprecated/svgs.js:834
-#: src/blocks/icon/svgs.js:836
-#: src/blocks/icon/svgs.js:852
+#: src/blocks/icon/svgs.js:838
+#: src/blocks/icon/svgs.js:854
 msgid "minimal"
 msgstr ""
 
@@ -3493,9 +3508,9 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:820
 #: src/blocks/icon/deprecated/svgs.js:838
 #: src/blocks/icon/deprecated/svgs.js:958
-#: src/blocks/icon/svgs.js:838
-#: src/blocks/icon/svgs.js:856
-#: src/blocks/icon/svgs.js:976
+#: src/blocks/icon/svgs.js:840
+#: src/blocks/icon/svgs.js:858
+#: src/blocks/icon/svgs.js:978
 msgid "outdoors"
 msgstr ""
 
@@ -3503,47 +3518,47 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:822
 #: src/blocks/icon/deprecated/svgs.js:840
 #: src/blocks/icon/deprecated/svgs.js:960
-#: src/blocks/icon/svgs.js:840
-#: src/blocks/icon/svgs.js:858
-#: src/blocks/icon/svgs.js:978
+#: src/blocks/icon/svgs.js:842
+#: src/blocks/icon/svgs.js:860
+#: src/blocks/icon/svgs.js:980
 msgid "outside"
 msgstr ""
 
 #. translators: icon label
 #. translators: block style
 #: src/blocks/icon/deprecated/svgs.js:829
-#: src/blocks/icon/svgs.js:847
+#: src/blocks/icon/svgs.js:849
 #: src/blocks/shape-divider/index.js:53
 msgid "Waves"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:836
-#: src/blocks/icon/svgs.js:854
+#: src/blocks/icon/svgs.js:856
 msgid "ocean"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:842
-#: src/blocks/icon/svgs.js:860
+#: src/blocks/icon/svgs.js:862
 msgid "summer"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:844
-#: src/blocks/icon/svgs.js:862
+#: src/blocks/icon/svgs.js:864
 msgid "water"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:850
-#: src/blocks/icon/svgs.js:868
+#: src/blocks/icon/svgs.js:870
 msgid "Globe"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:853
-#: src/blocks/icon/svgs.js:871
+#: src/blocks/icon/svgs.js:873
 msgid "earth"
 msgstr ""
 
@@ -3551,549 +3566,548 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:855
 #: src/blocks/icon/deprecated/svgs.js:1074
 #: src/blocks/icon/deprecated/svgs.js:1172
-#: src/blocks/icon/svgs.js:873
-#: src/blocks/icon/svgs.js:1092
-#: src/blocks/icon/svgs.js:1190
+#: src/blocks/icon/svgs.js:875
+#: src/blocks/icon/svgs.js:1094
+#: src/blocks/icon/svgs.js:1192
 msgid "global"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:857
 #: src/blocks/icon/deprecated/svgs.js:878
-#: src/blocks/icon/svgs.js:875
-#: src/blocks/icon/svgs.js:896
+#: src/blocks/icon/svgs.js:877
+#: src/blocks/icon/svgs.js:898
 msgid "location"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:861
 #: src/blocks/icon/deprecated/svgs.js:882
-#: src/blocks/icon/svgs.js:879
-#: src/blocks/icon/svgs.js:900
+#: src/blocks/icon/svgs.js:881
+#: src/blocks/icon/svgs.js:902
 msgid "public"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:863
 #: src/blocks/icon/deprecated/svgs.js:1080
-#: src/blocks/icon/svgs.js:881
-#: src/blocks/icon/svgs.js:1098
+#: src/blocks/icon/svgs.js:883
+#: src/blocks/icon/svgs.js:1100
 msgid "world"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:869
-#: src/blocks/icon/svgs.js:887
+#: src/blocks/icon/svgs.js:889
 msgid "City"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:872
-#: src/blocks/icon/svgs.js:890
+#: src/blocks/icon/svgs.js:892
 msgid "building"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:874
-#: src/blocks/icon/svgs.js:892
+#: src/blocks/icon/svgs.js:894
 msgid "business"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:876
-#: src/blocks/icon/svgs.js:894
+#: src/blocks/icon/svgs.js:896
 msgid "corporation"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:884
-#: src/blocks/icon/svgs.js:902
+#: src/blocks/icon/svgs.js:904
 msgid "skyscraper"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:886
-#: src/blocks/icon/svgs.js:904
+#: src/blocks/icon/svgs.js:906
 msgid "town"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:892
-#: src/blocks/icon/svgs.js:910
+#: src/blocks/icon/svgs.js:912
 msgid "Dining"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:895
-#: src/blocks/icon/svgs.js:913
+#: src/blocks/icon/svgs.js:915
 msgid "drink"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:897
 #: src/blocks/icon/deprecated/svgs.js:934
-#: src/blocks/icon/svgs.js:915
-#: src/blocks/icon/svgs.js:952
+#: src/blocks/icon/svgs.js:917
+#: src/blocks/icon/svgs.js:954
 msgid "food"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:899
-#: src/blocks/icon/svgs.js:917
+#: src/blocks/icon/svgs.js:919
 msgid "fork"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:905
-#: src/blocks/icon/svgs.js:923
+#: src/blocks/icon/svgs.js:925
 msgid "spoon"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:907
 #: src/blocks/icon/deprecated/svgs.js:942
-#: src/blocks/icon/svgs.js:925
-#: src/blocks/icon/svgs.js:960
+#: src/blocks/icon/svgs.js:927
+#: src/blocks/icon/svgs.js:962
 msgid "taste"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:913
-#: src/blocks/icon/svgs.js:931
+#: src/blocks/icon/svgs.js:933
 msgid "Couch"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:916
-#: src/blocks/icon/svgs.js:934
+#: src/blocks/icon/svgs.js:936
 msgid "chair"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:918
 #: src/blocks/icon/deprecated/svgs.js:1166
-#: src/blocks/icon/svgs.js:936
-#: src/blocks/icon/svgs.js:1184
+#: src/blocks/icon/svgs.js:938
+#: src/blocks/icon/svgs.js:1186
 msgid "chill"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:920
 #: src/blocks/icon/deprecated/svgs.js:964
-#: src/blocks/icon/svgs.js:938
-#: src/blocks/icon/svgs.js:982
+#: src/blocks/icon/svgs.js:940
+#: src/blocks/icon/svgs.js:984
 msgid "relax"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:922
-#: src/blocks/icon/svgs.js:940
+#: src/blocks/icon/svgs.js:942
 msgid "weekend"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:929
-#: src/blocks/icon/svgs.js:947
+#: src/blocks/icon/svgs.js:949
 msgid "Cake"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:932
-#: src/blocks/icon/svgs.js:950
+#: src/blocks/icon/svgs.js:952
 msgid "celebration"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:940
-#: src/blocks/icon/svgs.js:958
+#: src/blocks/icon/svgs.js:960
 msgid "party"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:949
-#: src/blocks/icon/svgs.js:967
+#: src/blocks/icon/svgs.js:969
 msgid "Flower"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:952
-#: src/blocks/icon/svgs.js:970
+#: src/blocks/icon/svgs.js:972
 msgid "gardening"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:956
-#: src/blocks/icon/svgs.js:974
+#: src/blocks/icon/svgs.js:976
 msgid "nice"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:962
-#: src/blocks/icon/svgs.js:980
+#: src/blocks/icon/svgs.js:982
 msgid "petal"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:966
-#: src/blocks/icon/svgs.js:984
+#: src/blocks/icon/svgs.js:986
 msgid "scent"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:968
-#: src/blocks/icon/svgs.js:986
+#: src/blocks/icon/svgs.js:988
 msgid "smell"
 msgstr ""
 
 #. translators: icon label
-#. translators: image style
 #: src/blocks/icon/deprecated/svgs.js:975
-#: src/blocks/icon/svgs.js:993
-#: src/components/media-filter-control/index.js:76
+#: src/blocks/icon/svgs.js:995
 msgid "Vintage Filter"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:984
 #: src/blocks/icon/deprecated/svgs.js:1119
-#: src/blocks/icon/svgs.js:1002
-#: src/blocks/icon/svgs.js:1137
+#: src/blocks/icon/svgs.js:1004
+#: src/blocks/icon/svgs.js:1139
 msgid "flower"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:993
-#: src/blocks/icon/svgs.js:1011
+#: src/blocks/icon/svgs.js:1013
 msgid "Build"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:1015
-#: src/blocks/icon/svgs.js:1033
+#: src/blocks/icon/svgs.js:1035
 msgid "Credit Card"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1018
-#: src/blocks/icon/svgs.js:1036
+#: src/blocks/icon/svgs.js:1038
 msgid "cash"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1020
-#: src/blocks/icon/svgs.js:1038
+#: src/blocks/icon/svgs.js:1040
 msgid "checkout"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1022
 #: src/blocks/icon/deprecated/svgs.js:1149
-#: src/blocks/icon/svgs.js:1040
-#: src/blocks/icon/svgs.js:1167
+#: src/blocks/icon/svgs.js:1042
+#: src/blocks/icon/svgs.js:1169
 msgid "commerce"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1024
 #: src/blocks/icon/deprecated/svgs.js:1151
-#: src/blocks/icon/svgs.js:1042
-#: src/blocks/icon/svgs.js:1169
+#: src/blocks/icon/svgs.js:1044
+#: src/blocks/icon/svgs.js:1171
 msgid "ecommerce"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1026
-#: src/blocks/icon/svgs.js:1044
+#: src/blocks/icon/svgs.js:1046
 msgid "money"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1028
 #: src/blocks/icon/deprecated/svgs.js:1155
-#: src/blocks/icon/svgs.js:1046
-#: src/blocks/icon/svgs.js:1173
+#: src/blocks/icon/svgs.js:1048
+#: src/blocks/icon/svgs.js:1175
 msgid "shop"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:1034
-#: src/blocks/icon/svgs.js:1052
+#: src/blocks/icon/svgs.js:1054
 msgid "Extension"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1037
-#: src/blocks/icon/svgs.js:1055
+#: src/blocks/icon/svgs.js:1057
 msgid "plugin"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1039
-#: src/blocks/icon/svgs.js:1057
+#: src/blocks/icon/svgs.js:1059
 msgid "puzzle"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1041
-#: src/blocks/icon/svgs.js:1059
+#: src/blocks/icon/svgs.js:1061
 msgid "team"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1043
-#: src/blocks/icon/svgs.js:1061
+#: src/blocks/icon/svgs.js:1063
 msgid "together"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1045
-#: src/blocks/icon/svgs.js:1063
+#: src/blocks/icon/svgs.js:1065
 msgid "widget"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:1052
-#: src/blocks/icon/svgs.js:1070
+#: src/blocks/icon/svgs.js:1072
 msgid "Fingerprint"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1055
-#: src/blocks/icon/svgs.js:1073
+#: src/blocks/icon/svgs.js:1075
 msgid "bio"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1057
-#: src/blocks/icon/svgs.js:1075
+#: src/blocks/icon/svgs.js:1077
 msgid "biometric"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1059
-#: src/blocks/icon/svgs.js:1077
+#: src/blocks/icon/svgs.js:1079
 msgid "defense"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1061
-#: src/blocks/icon/svgs.js:1079
+#: src/blocks/icon/svgs.js:1081
 msgid "safe"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1063
-#: src/blocks/icon/svgs.js:1081
+#: src/blocks/icon/svgs.js:1083
 msgid "secure"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1065
-#: src/blocks/icon/svgs.js:1083
+#: src/blocks/icon/svgs.js:1085
+#: src/blocks/icon/svgs.js:1349
 msgid "security"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:1071
-#: src/blocks/icon/svgs.js:1089
+#: src/blocks/icon/svgs.js:1091
 msgid "Translate"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1076
-#: src/blocks/icon/svgs.js:1094
+#: src/blocks/icon/svgs.js:1096
 msgid "language"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1078
-#: src/blocks/icon/svgs.js:1096
+#: src/blocks/icon/svgs.js:1098
 msgid "speech"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:1086
-#: src/blocks/icon/svgs.js:1104
+#: src/blocks/icon/svgs.js:1106
 msgid "New"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1093
-#: src/blocks/icon/svgs.js:1111
+#: src/blocks/icon/svgs.js:1113
 msgid "badge"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:1110
-#: src/blocks/icon/svgs.js:1128
+#: src/blocks/icon/svgs.js:1130
 msgid "Flare"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:1127
-#: src/blocks/icon/svgs.js:1145
+#: src/blocks/icon/svgs.js:1147
 msgid "Layers"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1136
-#: src/blocks/icon/svgs.js:1154
+#: src/blocks/icon/svgs.js:1156
 msgid "develop"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1138
-#: src/blocks/icon/svgs.js:1156
+#: src/blocks/icon/svgs.js:1158
 msgid "engineer"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:1144
-#: src/blocks/icon/svgs.js:1162
+#: src/blocks/icon/svgs.js:1164
 msgid "Shipping"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1147
-#: src/blocks/icon/svgs.js:1165
+#: src/blocks/icon/svgs.js:1167
 msgid "cart"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1153
-#: src/blocks/icon/svgs.js:1171
+#: src/blocks/icon/svgs.js:1173
 msgid "ship"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1157
-#: src/blocks/icon/svgs.js:1175
+#: src/blocks/icon/svgs.js:1177
 msgid "woo"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:1163
-#: src/blocks/icon/svgs.js:1181
+#: src/blocks/icon/svgs.js:1183
 msgid "Snowflake"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1168
-#: src/blocks/icon/svgs.js:1186
+#: src/blocks/icon/svgs.js:1188
 msgid "cold"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1170
-#: src/blocks/icon/svgs.js:1188
+#: src/blocks/icon/svgs.js:1190
 msgid "frozen"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1174
-#: src/blocks/icon/svgs.js:1192
+#: src/blocks/icon/svgs.js:1194
 msgid "ice"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1176
-#: src/blocks/icon/svgs.js:1194
+#: src/blocks/icon/svgs.js:1196
 msgid "season"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1178
-#: src/blocks/icon/svgs.js:1196
+#: src/blocks/icon/svgs.js:1198
 msgid "winter"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:1184
-#: src/blocks/icon/svgs.js:1202
+#: src/blocks/icon/svgs.js:1204
 msgid "School"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1187
-#: src/blocks/icon/svgs.js:1205
+#: src/blocks/icon/svgs.js:1207
 msgid "college"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1189
-#: src/blocks/icon/svgs.js:1207
+#: src/blocks/icon/svgs.js:1209
 msgid "degree"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1191
-#: src/blocks/icon/svgs.js:1209
+#: src/blocks/icon/svgs.js:1211
 msgid "diploma"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1193
-#: src/blocks/icon/svgs.js:1211
+#: src/blocks/icon/svgs.js:1213
 msgid "education"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1195
-#: src/blocks/icon/svgs.js:1213
+#: src/blocks/icon/svgs.js:1215
 msgid "graduate"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1197
-#: src/blocks/icon/svgs.js:1215
+#: src/blocks/icon/svgs.js:1217
 msgid "graduation"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:1203
-#: src/blocks/icon/svgs.js:1221
+#: src/blocks/icon/svgs.js:1223
 msgid "Fire"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1208
-#: src/blocks/icon/svgs.js:1226
+#: src/blocks/icon/svgs.js:1228
 msgid "hot"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1210
-#: src/blocks/icon/svgs.js:1228
+#: src/blocks/icon/svgs.js:1230
 msgid "trending"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1212
-#: src/blocks/icon/svgs.js:1230
+#: src/blocks/icon/svgs.js:1232
 msgid "trendy"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:1218
-#: src/blocks/icon/svgs.js:1236
+#: src/blocks/icon/svgs.js:1238
 msgid "Update"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1223
-#: src/blocks/icon/svgs.js:1241
+#: src/blocks/icon/svgs.js:1243
 msgid "improve"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1225
-#: src/blocks/icon/svgs.js:1243
+#: src/blocks/icon/svgs.js:1245
 msgid "software"
 msgstr ""
 
 #. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:1227
-#: src/blocks/icon/svgs.js:1245
+#: src/blocks/icon/svgs.js:1247
 msgid "upload"
 msgstr ""
 
@@ -4133,7 +4147,7 @@ msgstr ""
 #: src/blocks/icon/inspector.js:155
 #: src/blocks/share/inspector.js:111
 #: src/blocks/social-profiles/inspector.js:115
-msgid "Icon Settings"
+msgid "Icon settings"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:167
@@ -4141,7 +4155,7 @@ msgid "Reset icon size"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:169
-#: src/components/crop-settings/index.js:328
+#: src/components/crop-settings/index.js:327
 #: src/components/dimensions-control/index.js:489
 #: src/components/size-control/index.js:186
 msgid "Reset"
@@ -4160,7 +4174,7 @@ msgid "Radius"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:227
-msgid "Icon Search"
+msgid "Icon search"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:277
@@ -4169,7 +4183,7 @@ msgstr ""
 
 #: src/blocks/icon/inspector.js:283
 #: src/components/block-gallery/gallery-link-settings.js:63
-msgid "Link Settings"
+msgid "Link settings"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:286
@@ -4179,16 +4193,16 @@ msgstr ""
 #. translators: html attribute that specifies the relationship between two pages
 #: src/blocks/icon/inspector.js:291
 #: src/components/block-gallery/gallery-link-settings.js:81
-msgid "Link Rel"
+msgid "Link rel"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:296
-msgid "Opening in New Tab"
+msgid "Opening in new tab"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:296
 #: src/components/block-gallery/gallery-link-settings.js:75
-msgid "Open in New Tab"
+msgid "Open in new tab"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:308
@@ -4196,7 +4210,406 @@ msgstr ""
 #: src/blocks/share/inspector.js:104
 #: src/blocks/social-profiles/inspector.js:95
 #: src/blocks/social-profiles/inspector.js:108
-msgid "Icon Color"
+msgid "Icon color"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1253
+msgid "Face"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1256
+msgid "face"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1267
+msgid "Explore"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1270
+msgid "explore"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1272
+msgid "compass"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1279
+msgid "Groupwork"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1282
+#: src/blocks/icon/svgs.js:1486
+msgid "group"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1284
+msgid "work"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1291
+msgid "Record Voice Over"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1294
+msgid "record"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1296
+msgid "voice"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1298
+msgid "over"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1305
+msgid "Swap Vertical"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1308
+#: src/blocks/icon/svgs.js:1322
+msgid "swap"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1310
+msgid "vertical"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1319
+#: src/blocks/icon/svgs.js:1333
+msgid "Swap Horizontal"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1324
+msgid "horizontal"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1336
+msgid "accessible"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1338
+msgid "wheelchair"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1340
+msgid "handicapped"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1346
+msgid "Security"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1351
+msgid "shield"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1357
+msgid "Track Changes"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1360
+msgid "track"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1362
+msgid "changes"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1368
+msgid "Verified User"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1371
+msgid "verified"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1373
+msgid "user"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1380
+msgid "New Releases"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1383
+msgid "new"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1385
+msgid "release"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1392
+msgid "Games"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1395
+msgid "games"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1397
+msgid "video games"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1399
+msgid "d-pad"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1406
+msgid "Cloud"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1409
+msgid "cloud"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1411
+msgid "weather"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1418
+msgid "Blur On"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1421
+msgid "blur"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1427
+msgid "Style"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1430
+msgid "style"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1432
+msgid "cards"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1439
+msgid "Menu"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1450
+msgid "Account Tree"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1453
+msgid "account"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1455
+msgid "tree"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1462
+msgid "All Inclusive"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1465
+msgid "inclusive"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1467
+msgid "infinite"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1473
+msgid "Spa"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1476
+msgid "spa"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1483
+msgid "Group Add"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1495
+msgid "Live TV"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1498
+msgid "live"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1500
+msgid "tv"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1502
+msgid "television"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1508
+msgid "Confirmation Number"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1511
+msgid "confirmation"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1513
+msgid "number"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1515
+msgid "ticket"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1522
+msgid "Offline Bolt"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1525
+msgid "offline"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1527
+msgid "bolt"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1536
+msgid "HTTPS"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1539
+msgid "https"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1541
+#: src/blocks/icon/svgs.js:1551
+msgid "lock"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1548
+msgid "Lock Open"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1553
+msgid "open"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1559
+msgid "Devices Alternate"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1582
+msgid "Cast"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1585
+msgid "chrome"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1587
+msgid "cast"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1593
+msgid "Merge"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1596
+msgid "merge"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1598
+msgid "arrows"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs.js:1604
+msgid "Format Shapes"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1607
+msgid "format"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs.js:1609
+msgid "shapes"
 msgstr ""
 
 #: src/blocks/logos/controls.js:50
@@ -4259,26 +4672,29 @@ msgid "Edit Location"
 msgstr ""
 
 #: src/blocks/map/deprecated.js:96
-#: src/blocks/map/edit.js:241
-#: src/blocks/map/edit.js:293
+#: src/blocks/map/edit.js:158
 #: src/blocks/map/save.js:50
 msgid "Google Map"
 msgstr ""
 
-#: src/blocks/map/edit.js:195
+#: src/blocks/map/edit.js:225
 msgid "Invalid API key, or too many requests"
 msgstr ""
 
-#: src/blocks/map/edit.js:294
+#: src/blocks/map/edit.js:270
+msgid "Google map"
+msgstr ""
+
+#: src/blocks/map/edit.js:271
 msgid "Enter a location or address to drop a pin on a Google map."
 msgstr ""
 
-#: src/blocks/map/edit.js:299
+#: src/blocks/map/edit.js:276
 msgid "Search for a place or address…"
 msgstr ""
 
-#: src/blocks/map/edit.js:316
-#: src/blocks/map/edit.js:324
+#: src/blocks/map/edit.js:293
+#: src/blocks/map/edit.js:301
 msgid "Cancel"
 msgstr ""
 
@@ -4307,108 +4723,108 @@ msgstr ""
 msgid "google"
 msgstr ""
 
-#: src/blocks/map/inspector.js:109
-msgid "Select Map Style"
+#: src/blocks/map/inspector.js:107
+msgid "Select map style"
 msgstr ""
 
-#: src/blocks/map/inspector.js:130
-msgid "Map Settings"
+#: src/blocks/map/inspector.js:128
+msgid "Map settings"
 msgstr ""
 
-#: src/blocks/map/inspector.js:135
+#: src/blocks/map/inspector.js:133
 msgid "Height for the map in pixels"
 msgstr ""
 
-#: src/blocks/map/inspector.js:143
+#: src/blocks/map/inspector.js:141
 msgid "Zoom Level"
 msgstr ""
 
-#: src/blocks/map/inspector.js:153
-msgid "Marker Size"
+#: src/blocks/map/inspector.js:151
+msgid "Marker size"
 msgstr ""
 
-#: src/blocks/map/inspector.js:164
-#: src/blocks/map/inspector.js:175
-msgid "Map Controls"
+#: src/blocks/map/inspector.js:162
+#: src/blocks/map/inspector.js:173
+msgid "Map controls"
 msgstr ""
 
-#: src/blocks/map/inspector.js:167
+#: src/blocks/map/inspector.js:165
 msgid "Fine control options are enabled."
 msgstr ""
 
-#: src/blocks/map/inspector.js:167
+#: src/blocks/map/inspector.js:165
 msgid "Toggle to enable map control options."
 msgstr ""
 
-#: src/blocks/map/inspector.js:179
-msgid "Map Type"
+#: src/blocks/map/inspector.js:177
+msgid "Map type"
 msgstr ""
 
-#: src/blocks/map/inspector.js:182
+#: src/blocks/map/inspector.js:180
 msgid "Switching between standard and satellite map views is enabled."
 msgstr ""
 
-#: src/blocks/map/inspector.js:182
+#: src/blocks/map/inspector.js:180
 msgid "Toggle to enable switching between standard and satellite maps."
 msgstr ""
 
-#: src/blocks/map/inspector.js:185
-msgid "Zoom Controls"
+#: src/blocks/map/inspector.js:183
+msgid "Zoom controls"
 msgstr ""
 
-#: src/blocks/map/inspector.js:188
+#: src/blocks/map/inspector.js:186
 msgid "Showing map zoom controls."
 msgstr ""
 
-#: src/blocks/map/inspector.js:188
+#: src/blocks/map/inspector.js:186
 msgid "Toggle to enable zooming in and out on the map with zoom controls."
 msgstr ""
 
-#: src/blocks/map/inspector.js:191
-msgid "Street View"
+#: src/blocks/map/inspector.js:189
+msgid "Street view"
 msgstr ""
 
-#: src/blocks/map/inspector.js:194
+#: src/blocks/map/inspector.js:192
 msgid "Showing the street view map control."
 msgstr ""
 
-#: src/blocks/map/inspector.js:194
+#: src/blocks/map/inspector.js:192
 msgid "Toggle to show the street view control at the bottom right."
 msgstr ""
 
-#: src/blocks/map/inspector.js:197
-msgid "Fullscreen Toggle"
+#: src/blocks/map/inspector.js:195
+msgid "Fullscreen toggle"
 msgstr ""
 
-#: src/blocks/map/inspector.js:200
+#: src/blocks/map/inspector.js:198
 msgid "Showing the fullscreen map control."
 msgstr ""
 
-#: src/blocks/map/inspector.js:200
+#: src/blocks/map/inspector.js:198
 msgid "Toggle to show the fullscreen map control."
 msgstr ""
 
-#: src/blocks/map/inspector.js:205
-msgid "Google Maps API Key"
+#: src/blocks/map/inspector.js:203
+msgid "Google Maps API key"
 msgstr ""
 
-#: src/blocks/map/inspector.js:209
+#: src/blocks/map/inspector.js:207
 msgid "Add a Google Maps API key. Updating this API key will set all your maps to use the new key."
 msgstr ""
 
-#: src/blocks/map/inspector.js:212
+#: src/blocks/map/inspector.js:210
 msgid "Get a key"
 msgstr ""
 
-#: src/blocks/map/inspector.js:213
+#: src/blocks/map/inspector.js:211
 msgid "Need help?"
 msgstr ""
 
-#: src/blocks/map/inspector.js:219
-msgid "Enter Google API Key…"
+#: src/blocks/map/inspector.js:217
+msgid "Add Google API key…"
 msgstr ""
 
-#: src/blocks/map/inspector.js:229
+#: src/blocks/map/inspector.js:227
 msgid "Saved"
 msgstr ""
 
@@ -4475,15 +4891,15 @@ msgid "Add an image or video with an offset card side-by-side."
 msgstr ""
 
 #: src/blocks/media-card/inspector.js:59
-msgid "Media Card Settings"
+msgid "Media Card settings"
 msgstr ""
 
 #: src/blocks/media-card/inspector.js:84
-msgid "Max Width"
+msgid "Max width"
 msgstr ""
 
 #: src/blocks/media-card/inspector.js:109
-msgid "Card Shadow"
+msgid "Card shadow"
 msgstr ""
 
 #: src/blocks/media-card/inspector.js:112
@@ -4496,7 +4912,7 @@ msgstr ""
 
 #. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:119
-msgid " %s Shadow"
+msgid " %s shadow"
 msgstr ""
 
 #. translators: %s: placeholder is either 'Card, or 'Image'
@@ -4542,8 +4958,7 @@ msgid "No posts found. Start publishing or add posts from an RSS feed."
 msgstr ""
 
 #: src/blocks/post-carousel/edit.js:184
-#: src/blocks/posts/edit.js:289
-msgid "Retrieve an External Feed"
+msgid "Retrieve an external feed"
 msgstr ""
 
 #: src/blocks/post-carousel/edit.js:191
@@ -4612,12 +5027,12 @@ msgid "rss"
 msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:54
-msgid "Post Carousel Settings"
+msgid "Post Carousel settings"
 msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:57
 #: src/blocks/posts/inspector.js:167
-msgid "Post Date"
+msgid "Post date"
 msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:61
@@ -4632,7 +5047,7 @@ msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:67
 #: src/blocks/posts/inspector.js:177
-msgid "Post Content"
+msgid "Post content"
 msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:71
@@ -4652,17 +5067,17 @@ msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:100
 #: src/blocks/posts/inspector.js:236
-msgid "Feed Settings"
+msgid "Feed settings"
 msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:104
 #: src/blocks/posts/inspector.js:240
-msgid "My Blog"
+msgid "My blog"
 msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:105
 #: src/blocks/posts/inspector.js:241
-msgid "External Feed"
+msgid "External feed"
 msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:122
@@ -4685,6 +5100,10 @@ msgstr ""
 
 #: src/blocks/posts/edit.js:281
 msgid "Blog Posts"
+msgstr ""
+
+#: src/blocks/posts/edit.js:289
+msgid "Retrieve an External Feed"
 msgstr ""
 
 #. translators: block name
@@ -4730,15 +5149,15 @@ msgid "16:9 Aspect ratio"
 msgstr ""
 
 #: src/blocks/posts/inspector.js:164
-msgid "Posts Settings"
+msgid "Posts settings"
 msgstr ""
 
 #: src/blocks/posts/inspector.js:216
-msgid "Thumbnail Style"
+msgid "Thumbnail style"
 msgstr ""
 
 #: src/blocks/posts/inspector.js:224
-msgid "Thumbnail Size"
+msgid "Thumbnail size"
 msgstr ""
 
 #: src/blocks/pricing-table/controls.js:17
@@ -4830,7 +5249,7 @@ msgid "An immediate child of a row."
 msgstr ""
 
 #: src/blocks/row/column/inspector.js:106
-msgid "Column Settings"
+msgid "Column settings"
 msgstr ""
 
 #: src/blocks/row/column/inspector.js:132
@@ -4868,23 +5287,23 @@ msgstr ""
 
 #: src/blocks/row/edit.js:117
 #: src/blocks/row/variations.js:20
-msgid "One Column"
+msgid "One column"
 msgstr ""
 
 #: src/blocks/row/edit.js:118
-msgid "Two Columns"
+msgid "Two columns"
 msgstr ""
 
 #: src/blocks/row/edit.js:119
-msgid "Three Columns"
+msgid "Three columns"
 msgstr ""
 
 #: src/blocks/row/edit.js:120
-msgid "Four Columns"
+msgid "Four columns"
 msgstr ""
 
 #: src/blocks/row/edit.js:146
-msgid "Row Layout"
+msgid "Row layout"
 msgstr ""
 
 #. translators: block name
@@ -4903,15 +5322,15 @@ msgid "Select the number of columns for this row."
 msgstr ""
 
 #: src/blocks/row/edit.js:157
-msgid "Select Row Columns"
+msgid "Select row columns"
 msgstr ""
 
 #: src/blocks/row/edit.js:183
-msgid "Select Row Layout"
+msgid "Select row layout"
 msgstr ""
 
 #: src/blocks/row/edit.js:193
-msgid "Back to Columns"
+msgid "Back to columns"
 msgstr ""
 
 #. translators: block description
@@ -4935,27 +5354,27 @@ msgid "layouts"
 msgstr ""
 
 #: src/blocks/row/inspector.js:184
-msgid "Row Settings"
+msgid "Row settings"
 msgstr ""
 
 #: src/blocks/row/utilities.js:13
-msgid "Equal Split"
+msgid "Equal split"
 msgstr ""
 
 #: src/blocks/row/utilities.js:14
-msgid "Two Thirds / One Third"
+msgid "Two thirds / one third"
 msgstr ""
 
 #: src/blocks/row/utilities.js:15
-msgid "One Third / Two Thirds"
+msgid "One third / two thirds"
 msgstr ""
 
 #: src/blocks/row/utilities.js:16
-msgid "Three Quarters / Quarter"
+msgid "Three quarters / quarter"
 msgstr ""
 
 #: src/blocks/row/utilities.js:17
-msgid "Quarter / Three Quarters"
+msgid "Quarter / three quarters"
 msgstr ""
 
 #: src/blocks/row/utilities.js:20
@@ -4963,19 +5382,19 @@ msgid "Thirds"
 msgstr ""
 
 #: src/blocks/row/utilities.js:21
-msgid "Half / Quarter / Quarter"
+msgid "Half / quarter / quarter"
 msgstr ""
 
 #: src/blocks/row/utilities.js:22
-msgid "Quarter / Quarter/ Half"
+msgid "Quarter / quarter/ half"
 msgstr ""
 
 #: src/blocks/row/utilities.js:23
-msgid "Quarter / Half / Quarter"
+msgid "Quarter / half / quarter"
 msgstr ""
 
 #: src/blocks/row/utilities.js:24
-msgid "One Fifth/ Three Fifths / One Fifth"
+msgid "One fifth/ three fifths / one fifth"
 msgstr ""
 
 #: src/blocks/row/utilities.js:27
@@ -4983,27 +5402,27 @@ msgid "Quarters"
 msgstr ""
 
 #: src/blocks/row/utilities.js:28
-msgid "Two Fifths / Fifth / Fifth / Fifth"
+msgid "Two fifths / fifth / fifth / fifth"
 msgstr ""
 
 #: src/blocks/row/utilities.js:29
-msgid "Fifth / Fifth / Fifth / Two Fifths"
+msgid "Fifth / fifth / fifth / two fifths"
 msgstr ""
 
 #: src/blocks/row/variations.js:34
-msgid "Two Column Equal"
+msgid "Two columns; equal split"
 msgstr ""
 
 #: src/blocks/row/variations.js:48
-msgid "Two Column Thirds"
+msgid "Two columns; two thirds, one third split"
 msgstr ""
 
 #: src/blocks/row/variations.js:62
-msgid "Three Column"
+msgid "Three columns; equal split"
 msgstr ""
 
 #: src/blocks/row/variations.js:78
-msgid "Four Column"
+msgid "Four columns; equal split"
 msgstr ""
 
 #. translators: block name
@@ -5022,11 +5441,11 @@ msgid "features"
 msgstr ""
 
 #: src/blocks/services/inspector.js:94
-msgid "Services Settings"
+msgid "Services settings"
 msgstr ""
 
 #: src/blocks/services/inspector.js:109
-msgid "Action Buttons"
+msgid "Display buttons"
 msgstr ""
 
 #: src/blocks/services/inspector.js:113
@@ -5053,11 +5472,11 @@ msgid "A single service item within a services block."
 msgstr ""
 
 #: src/blocks/services/service/inspector.js:18
-msgid "Service Settings"
+msgid "Service settings"
 msgstr ""
 
 #: src/blocks/services/service/inspector.js:20
-msgid "Action Button"
+msgid "Display button"
 msgstr ""
 
 #: src/blocks/services/service/inspector.js:23
@@ -5127,19 +5546,19 @@ msgid "Pointed"
 msgstr ""
 
 #: src/blocks/shape-divider/inspector.js:53
-msgid "Divider Settings"
+msgid "Divider settings"
 msgstr ""
 
 #: src/blocks/shape-divider/inspector.js:55
-msgid "Shape Height in pixels"
+msgid "Shape height in pixels"
 msgstr ""
 
 #: src/blocks/shape-divider/inspector.js:73
-msgid "Background Height in pixels"
+msgid "Background height in pixels"
 msgstr ""
 
 #: src/blocks/shape-divider/inspector.js:98
-msgid "Shape Color"
+msgid "Shape color"
 msgstr ""
 
 #: src/blocks/share/edit.js:137
@@ -5160,12 +5579,6 @@ msgstr ""
 #: src/blocks/share/index.js:33
 #: src/blocks/social-profiles/index.js:38
 msgid "Mask"
-msgstr ""
-
-#. translators: block style
-#: src/blocks/share/index.js:44
-#: src/blocks/social-profiles/index.js:49
-msgid "Text"
 msgstr ""
 
 #. translators: block style
@@ -5193,22 +5606,22 @@ msgstr ""
 
 #: src/blocks/share/inspector.js:113
 #: src/blocks/social-profiles/inspector.js:117
-msgid "Social Colors"
+msgid "Social colors"
 msgstr ""
 
 #: src/blocks/share/inspector.js:129
 #: src/blocks/social-profiles/inspector.js:133
-msgid "Icon Size"
+msgid "Icon size"
 msgstr ""
 
 #: src/blocks/share/inspector.js:138
 #: src/blocks/social-profiles/inspector.js:142
-msgid "Circle Size"
+msgid "Circle size"
 msgstr ""
 
 #: src/blocks/share/inspector.js:147
 #: src/blocks/social-profiles/inspector.js:151
-msgid "Button Size"
+msgid "Button size"
 msgstr ""
 
 #: src/blocks/share/inspector.js:155
@@ -5233,7 +5646,7 @@ msgid "Reddit"
 msgstr ""
 
 #: src/blocks/social-profiles/edit.js:142
-msgid "Add Facebook Profile"
+msgid "Add Facebook profile"
 msgstr ""
 
 #: src/blocks/social-profiles/edit.js:174
@@ -5241,7 +5654,7 @@ msgid "https://facebook.com/"
 msgstr ""
 
 #: src/blocks/social-profiles/edit.js:188
-msgid "Add Twitter Profile"
+msgid "Add Twitter profile"
 msgstr ""
 
 #: src/blocks/social-profiles/edit.js:220
@@ -5249,7 +5662,7 @@ msgid "https://twitter.com/"
 msgstr ""
 
 #: src/blocks/social-profiles/edit.js:234
-msgid "Add Instagram Profile"
+msgid "Add Instagram profile"
 msgstr ""
 
 #: src/blocks/social-profiles/edit.js:266
@@ -5257,7 +5670,7 @@ msgid "https://instagram.com/"
 msgstr ""
 
 #: src/blocks/social-profiles/edit.js:282
-msgid "Add Pinterest Profile"
+msgid "Add Pinterest profile"
 msgstr ""
 
 #: src/blocks/social-profiles/edit.js:314
@@ -5265,7 +5678,7 @@ msgid "https://pinterest.com/"
 msgstr ""
 
 #: src/blocks/social-profiles/edit.js:330
-msgid "Add LinkedIn Profile"
+msgid "Add LinkedIn profile"
 msgstr ""
 
 #: src/blocks/social-profiles/edit.js:362
@@ -5273,7 +5686,7 @@ msgid "https://linkedin.com/"
 msgstr ""
 
 #: src/blocks/social-profiles/edit.js:376
-msgid "Add YouTube Profile"
+msgid "Add YouTube profile"
 msgstr ""
 
 #: src/blocks/social-profiles/edit.js:408
@@ -5281,7 +5694,7 @@ msgid "https://youtube.com/"
 msgstr ""
 
 #: src/blocks/social-profiles/edit.js:422
-msgid "Add Yelp Profile"
+msgid "Add Yelp profile"
 msgstr ""
 
 #: src/blocks/social-profiles/edit.js:454
@@ -5289,7 +5702,7 @@ msgid "https://yelp.com/"
 msgstr ""
 
 #: src/blocks/social-profiles/edit.js:468
-msgid "Add Houzz Profile"
+msgid "Add Houzz profile"
 msgstr ""
 
 #: src/blocks/social-profiles/edit.js:500
@@ -5312,26 +5725,87 @@ msgid "links"
 msgstr ""
 
 #: src/blocks/social-profiles/inspector.js:159
-msgid "Profile Links"
+msgid "Profiles"
 msgstr ""
 
 #: src/components/background/controls.js:53
-msgid "Edit Background"
+msgid "Edit background"
 msgstr ""
 
 #: src/components/background/controls.js:72
-msgid "Remove Background"
+#: src/components/background/panel.js:273
+msgid "Remove background"
 msgstr ""
 
 #: src/components/background/controls.js:81
 #: src/components/background/controls.js:82
+msgid "Edit background image"
+msgstr ""
+
 #: src/components/background/controls.js:96
-msgid "Background"
+msgid "Add background image"
+msgstr ""
+
+#. translators: block layout
+#: src/components/background/panel.js:86
+#: src/components/grid-control/index.js:38
+msgid "Top left"
+msgstr ""
+
+#. translators: block layout
+#: src/components/background/panel.js:91
+#: src/components/grid-control/index.js:43
+msgid "Top center"
+msgstr ""
+
+#. translators: block layout
+#: src/components/background/panel.js:96
+#: src/components/grid-control/index.js:48
+msgid "Top right"
+msgstr ""
+
+#. translators: block layout
+#: src/components/background/panel.js:101
+#: src/components/grid-control/index.js:53
+#: src/components/grid-control/index.js:87
+msgid "Center left"
+msgstr ""
+
+#. translators: block layout
+#: src/components/background/panel.js:106
+#: src/components/grid-control/index.js:58
+#: src/components/grid-control/index.js:92
+msgid "Center center"
+msgstr ""
+
+#. translators: block layout
+#: src/components/background/panel.js:111
+#: src/components/grid-control/index.js:63
+#: src/components/grid-control/index.js:97
+msgid "Center right"
+msgstr ""
+
+#. translators: block layout
+#: src/components/background/panel.js:116
+#: src/components/grid-control/index.js:68
+msgid "Bottom left"
+msgstr ""
+
+#. translators: block layout
+#: src/components/background/panel.js:121
+#: src/components/grid-control/index.js:73
+msgid "Bottom center"
+msgstr ""
+
+#. translators: block layout
+#: src/components/background/panel.js:126
+#: src/components/grid-control/index.js:78
+msgid "Bottom right"
 msgstr ""
 
 #. translators: block layout
 #: src/components/background/panel.js:134
-msgid "No Repeat"
+msgid "No repeat"
 msgstr ""
 
 #. translators: block layout
@@ -5342,12 +5816,12 @@ msgstr ""
 
 #. translators: block layout
 #: src/components/background/panel.js:144
-msgid "Repeat Horizontally"
+msgid "Repeat horizontally"
 msgstr ""
 
 #. translators: block layout
 #: src/components/background/panel.js:149
-msgid "Repeat Vertically"
+msgid "Repeat vertically"
 msgstr ""
 
 #. translators: block layout
@@ -5366,15 +5840,15 @@ msgid "Contain"
 msgstr ""
 
 #: src/components/background/panel.js:177
-msgid "Background Settings"
+msgid "Background settings"
 msgstr ""
 
 #: src/components/background/panel.js:182
-msgid "Fixed Background"
+msgid "Fixed background"
 msgstr ""
 
 #: src/components/background/panel.js:198
-msgid "Background Opacity"
+msgid "Background opacity"
 msgstr ""
 
 #: src/components/background/panel.js:239
@@ -5386,7 +5860,7 @@ msgid "Display"
 msgstr ""
 
 #: src/components/background/panel.js:255
-msgid "Mute Video"
+msgid "Mute video"
 msgstr ""
 
 #: src/components/background/panel.js:256
@@ -5398,7 +5872,7 @@ msgid "Toggle to mute the video."
 msgstr ""
 
 #: src/components/background/panel.js:263
-msgid "Loop Video"
+msgid "Loop video"
 msgstr ""
 
 #: src/components/background/panel.js:264
@@ -5409,24 +5883,20 @@ msgstr ""
 msgid "Toggle to loop the video."
 msgstr ""
 
-#: src/components/background/panel.js:273
-msgid "Remove background"
-msgstr ""
-
 #: src/components/background/panel.js:294
 msgid "Clear Media"
 msgstr ""
 
 #: src/components/block-gallery/gallery-image.js:194
-msgid "Move Image Backward"
+msgid "Move image backward"
 msgstr ""
 
 #: src/components/block-gallery/gallery-image.js:202
-msgid "Move Image Forward"
+msgid "Move image forward"
 msgstr ""
 
 #: src/components/block-gallery/gallery-link-settings.js:67
-msgid "Link To"
+msgid "Link to"
 msgstr ""
 
 #. translators: %s: Type of gallery
@@ -5440,50 +5910,50 @@ msgid "Light"
 msgstr ""
 
 #: src/components/block-gallery/options/link-options.js:11
-msgid "Media File"
+msgid "Media file"
 msgstr ""
 
 #: src/components/block-gallery/options/link-options.js:12
-msgid "Attachment Page"
+msgid "Attachment page"
 msgstr ""
 
 #: src/components/block-gallery/options/link-options.js:13
 msgid "Custom URL"
 msgstr ""
 
-#: src/components/crop-settings/index.js:268
-#: src/components/crop-settings/index.js:271
+#: src/components/crop-settings/index.js:267
+#: src/components/crop-settings/index.js:270
 msgid "Crop settings image placeholder"
 msgstr ""
 
 #. translators: label for horizontal positioning input
-#: src/components/crop-settings/index.js:277
-msgid "Horizontal Pos."
+#: src/components/crop-settings/index.js:276
+msgid "Horizontal pos."
 msgstr ""
 
 #. translators: label for vertical positioning input
-#: src/components/crop-settings/index.js:286
-msgid "Vertical Pos."
+#: src/components/crop-settings/index.js:285
+msgid "Vertical pos."
 msgstr ""
 
 #. translators: label for the control that allows zooming in on the image
-#: src/components/crop-settings/index.js:296
-msgid "Image Zoom"
+#: src/components/crop-settings/index.js:295
+msgid "Image zoom"
 msgstr ""
 
-#: src/components/crop-settings/index.js:303
-msgid "Image Orientation"
+#: src/components/crop-settings/index.js:302
+msgid "Image orientation"
 msgstr ""
 
-#: src/components/crop-settings/index.js:310
+#: src/components/crop-settings/index.js:309
 msgid "Rotate counter-clockwise"
 msgstr ""
 
-#: src/components/crop-settings/index.js:317
+#: src/components/crop-settings/index.js:316
 msgid "Rotate clockwise"
 msgstr ""
 
-#: src/components/crop-settings/index.js:326
+#: src/components/crop-settings/index.js:325
 msgid "Reset image cropping options"
 msgstr ""
 
@@ -5499,12 +5969,12 @@ msgstr ""
 
 #. translators: a unit of size (vw) for css markup
 #: src/components/dimensions-control/index.js:397
-msgid "Viewport Width"
+msgid "Viewport width"
 msgstr ""
 
 #. translators: a unit of size (vh) for css markup
 #: src/components/dimensions-control/index.js:402
-msgid "Viewport Height"
+msgid "Viewport height"
 msgstr ""
 
 #. translators: a unit of size for css markup
@@ -5519,7 +5989,7 @@ msgstr ""
 #. translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
 #: src/components/dimensions-control/index.js:456
 #: src/components/dimensions-control/index.js:468
-msgid "%s Units"
+msgid "%s units"
 msgstr ""
 
 #. translators: %s: a texual label
@@ -5532,14 +6002,14 @@ msgstr ""
 #: src/components/dimensions-control/index.js:532
 #: src/components/dimensions-control/index.js:609
 #: src/components/dimensions-control/index.js:686
-msgid "%s Top"
+msgid "%s top"
 msgstr ""
 
 #. translators: %s: values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:546
 #: src/components/dimensions-control/index.js:623
 #: src/components/dimensions-control/index.js:700
-msgid "%s Right"
+msgid "%s right"
 msgstr ""
 
 #. translators: %s: values associated with CSS syntax, 'Margin', 'Padding'
@@ -5547,7 +6017,7 @@ msgstr ""
 #: src/components/dimensions-control/index.js:560
 #: src/components/dimensions-control/index.js:637
 #: src/components/dimensions-control/index.js:714
-msgid "%s Bottom"
+msgid "%s bottom"
 msgstr ""
 
 #. translators: %s: values associated with CSS syntax, 'Margin', 'Padding'
@@ -5555,7 +6025,7 @@ msgstr ""
 #: src/components/dimensions-control/index.js:574
 #: src/components/dimensions-control/index.js:651
 #: src/components/dimensions-control/index.js:728
-msgid "%s Left"
+msgid "%s left"
 msgstr ""
 
 #: src/components/dimensions-control/index.js:582
@@ -5573,7 +6043,7 @@ msgstr ""
 #: src/components/dimensions-control/index.js:585
 #: src/components/dimensions-control/index.js:662
 #: src/components/dimensions-control/index.js:738
-msgid "Sync Units"
+msgid "Sync units"
 msgstr ""
 
 #: src/components/dimensions-control/index.js:756
@@ -5606,7 +6076,7 @@ msgid "Layout"
 msgstr ""
 
 #: src/components/grid-control/index.js:172
-msgid "Select Layout"
+msgid "Select layout"
 msgstr ""
 
 #: src/components/grid-control/index.js:214
@@ -5637,22 +6107,27 @@ msgstr ""
 
 #. translators: image style
 #: src/components/media-filter-control/index.js:40
-msgid "Grayscale Filter"
+msgid "Grayscale filter"
 msgstr ""
 
 #. translators: image style
 #: src/components/media-filter-control/index.js:49
-msgid "Sepia Filter"
+msgid "Sepia filter"
 msgstr ""
 
 #. translators: image style
 #: src/components/media-filter-control/index.js:58
-msgid "Saturation Filter"
+msgid "Saturation filter"
 msgstr ""
 
 #. translators: image style
 #: src/components/media-filter-control/index.js:67
-msgid "Dim Filter"
+msgid "Dim filter"
+msgstr ""
+
+#. translators: image style
+#: src/components/media-filter-control/index.js:76
+msgid "Vintage filter"
 msgstr ""
 
 #: src/components/media-filter-control/index.js:89
@@ -5674,7 +6149,7 @@ msgid "Mobile %s"
 msgstr ""
 
 #: src/components/size-control/index.js:166
-msgid "Select Size"
+msgid "Select size"
 msgstr ""
 
 #: src/components/slider-panel/autoplay-options.js:10
@@ -5783,7 +6258,7 @@ msgid "Toggle to scroll without fixed slides."
 msgstr ""
 
 #: src/components/slider-panel/index.js:75
-msgid "Slider Settings"
+msgid "Slider settings"
 msgstr ""
 
 #: src/components/slider-panel/index.js:77
@@ -5791,11 +6266,11 @@ msgid "Autoplay"
 msgstr ""
 
 #: src/components/slider-panel/index.js:84
-msgid "Transition Speed"
+msgid "Transition speed"
 msgstr ""
 
 #: src/components/slider-panel/index.js:91
-msgid "Pause on Hover"
+msgid "Pause on hover"
 msgstr ""
 
 #: src/components/slider-panel/index.js:99
@@ -5803,19 +6278,19 @@ msgid "Draggable"
 msgstr ""
 
 #: src/components/slider-panel/index.js:105
-msgid "Free Scroll"
+msgid "Free scroll"
 msgstr ""
 
 #: src/components/slider-panel/index.js:111
-msgid "Arrow Navigation"
+msgid "Arrow navigation"
 msgstr ""
 
 #: src/components/slider-panel/index.js:117
-msgid "Dot Navigation"
+msgid "Dot navigation"
 msgstr ""
 
 #: src/components/slider-panel/index.js:123
-msgid "Align Cells"
+msgid "Align cells"
 msgstr ""
 
 #: src/components/typography-controls/index.js:80
@@ -5850,32 +6325,28 @@ msgstr ""
 msgid "Capitalize"
 msgstr ""
 
-#: src/components/typography-controls/index.js:205
+#: src/components/typography-controls/index.js:203
 msgid "Weight"
 msgstr ""
 
-#: src/components/typography-controls/index.js:214
+#: src/components/typography-controls/index.js:212
 msgid "Transform"
 msgstr ""
 
-#: src/components/typography-controls/index.js:234
-msgid "Line Height"
+#: src/components/typography-controls/index.js:232
+msgid "Line height"
 msgstr ""
 
-#: src/components/typography-controls/index.js:245
-msgid "Letter Spacing"
+#: src/components/typography-controls/index.js:243
+msgid "Letter spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:257
-msgid "No Top Spacing"
+#: src/components/typography-controls/index.js:255
+msgid "No top spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:262
-msgid "No Bottom Spacing"
-msgstr ""
-
-#: src/extensions/advanced-controls/index.js:103
-msgid "Stack on Mobile"
+#: src/components/typography-controls/index.js:260
+msgid "No bottom spacing"
 msgstr ""
 
 #: src/extensions/advanced-controls/index.js:110
@@ -5887,7 +6358,7 @@ msgid "Toggle to stack elements on top of each other on smaller viewports."
 msgstr ""
 
 #: src/extensions/advanced-controls/index.js:119
-msgid "Remove Top Spacing"
+msgid "Remove top spacing"
 msgstr ""
 
 #: src/extensions/advanced-controls/index.js:129
@@ -5899,7 +6370,7 @@ msgid "Toggle to remove any top margin."
 msgstr ""
 
 #: src/extensions/advanced-controls/index.js:134
-msgid "Remove Bottom Spacing"
+msgid "Remove bottom spacing"
 msgstr ""
 
 #: src/extensions/advanced-controls/index.js:157
@@ -5911,7 +6382,7 @@ msgid "Toggle to remove any bottom margin."
 msgstr ""
 
 #: src/extensions/button-controls/index.js:65
-msgid "Display Fullwidth"
+msgid "Display fullwidth"
 msgstr ""
 
 #: src/extensions/button-controls/index.js:68
@@ -5938,10 +6409,6 @@ msgstr ""
 
 #: src/extensions/coblocks-settings/coblocks-settings-modal.js:123
 msgid "Allow block-level typography controls."
-msgstr ""
-
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:129
-msgid "Color settings"
 msgstr ""
 
 #: src/extensions/coblocks-settings/coblocks-settings-modal.js:130
@@ -5976,8 +6443,12 @@ msgstr ""
 msgid "Top Wave"
 msgstr ""
 
-#: src/extensions/image-crop/index.js:168
-msgid "Crop Settings"
+#: src/extensions/image-crop/index.js:171
+msgid "Crop settings"
+msgstr ""
+
+#: src/extensions/replace-image/index.js:115
+msgid "Replace Image"
 msgstr ""
 
 #: src/utils/block-category.js:16

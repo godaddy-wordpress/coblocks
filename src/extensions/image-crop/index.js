@@ -4,7 +4,6 @@
  * External dependencies
  */
 import _, { assign } from 'lodash';
-import jQuery from 'jquery';
 
 /**
  * Internal dependencies
@@ -109,40 +108,44 @@ const positioningControl = createHigherOrderComponent( ( BlockEdit ) => {
 			positioningControlData.editing = false;
 			++positioningControlData.loadingCount;
 
-			jQuery.post( global.ajaxurl, {
-				action: 'coblocks_crop_settings',
-				nonce: coblocksBlockData.cropSettingsNonce,
-				id: currentAttributes.id,
-				cropX: currentAttributes.cropX,
-				cropY: currentAttributes.cropY,
-				cropWidth: currentAttributes.cropWidth,
-				cropHeight: currentAttributes.cropHeight,
-				cropRotation: currentAttributes.cropRotation,
-			}, function( response ) {
-				--positioningControlData.loadingCount;
+			fetch( global.ajaxurl,
+				{
+					method: 'POST',
+					headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+					body: [
+						`action=${ 'coblocks_crop_settings' }`,
+						`nonce=${ coblocksBlockData.cropSettingsNonce }`,
+						`id=${ currentAttributes.id }`,
+						`cropX=${ currentAttributes.cropX }`,
+						`cropY=${ currentAttributes.cropY }`,
+						`cropWidth=${ currentAttributes.cropWidth }`,
+						`cropHeight=${ currentAttributes.cropHeight }`,
+						`cropRotation=${ currentAttributes.cropRotation }`,
+					].join( '&' ),
+				} )
+				.then( ( response ) => {
+					return response.json();
+				} )
+				.then( ( response ) => {
+					--positioningControlData.loadingCount;
+					const data = response.data;
 
-				if ( ! response.success ) {
-					return;
-				}
+					if ( ! data ) {
+						return;
+					}
 
-				const data = response.data;
+					if ( positioningControlData.loadingCount > 0 || positioningControlData.editing ) {
+						return;
+					}
 
-				if ( ! data ) {
-					return;
-				}
+					const removedCrop = removeCropClass( currentAttributes.className );
 
-				if ( positioningControlData.loadingCount > 0 || positioningControlData.editing ) {
-					return;
-				}
-
-				const removedCrop = removeCropClass( currentAttributes.className );
-
-				setAttributes( {
-					id: data.id,
-					url: data.url,
-					className: removedCrop !== '' ? removedCrop : null,
+					setAttributes( {
+						id: data.id,
+						url: data.url,
+						className: removedCrop !== '' ? removedCrop : null,
+					} );
 				} );
-			} );
 		};
 
 		const applyAttributes = function( changeAttributes ) {
@@ -165,7 +168,7 @@ const positioningControl = createHigherOrderComponent( ( BlockEdit ) => {
 			<Fragment>
 				<BlockEdit { ...props } />
 				<InspectorControls>
-					<PanelBody title={ __( 'Crop Settings', 'coblocks' ) } initialOpen={ false }>
+					<PanelBody title={ __( 'Crop settings', 'coblocks' ) } initialOpen={ false }>
 						<CropControl
 							attachmentId={ currentAttributes.id }
 							offsetX={ cropX }

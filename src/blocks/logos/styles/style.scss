@@ -1,6 +1,6 @@
 .wp-block-coblocks-logos {
 
-	&.has-filter-grayscale img, // deprecated style class
+	&.has-filter-grayscale img,
 	&.is-style-black-and-white img {
 		filter: grayscale(1) brightness(0);
 	}

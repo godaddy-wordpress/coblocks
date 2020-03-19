@@ -4,9 +4,9 @@ Plugin URI: https://www.coblocks.com
 Contributors: coblocks, godaddy, richtabor, phpbits, eherman24, jonathanbardo, jrtashjian, sbalakr2, dmatuszak, paranoia1906
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
-Tested up to: 5.3
+Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 1.21.1
+Stable tag: 1.22.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,11 +123,20 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+### Enhancements
+* Control Food Item block headings from the parent Food and Drinks block [#1381](https://github.com/godaddy-wordpress/coblocks/pull/1381)
+* Introduce 29 new icons into the icon block [#1398](https://github.com/godaddy-wordpress/coblocks/pull/1398)
+* Make the available Google Fonts filterable [#1386](https://github.com/godaddy-wordpress/coblocks/pull/1386)
+* Migrate Row block to variations API [#1372](https://github.com/godaddy-wordpress/coblocks/pull/1372)
+* Persist Accordion block open state when editing a post [#1393](https://github.com/godaddy-wordpress/coblocks/pull/1393)
+* Support new block collection functionality in WordPress 5.4 [#1367](https://github.com/godaddy-wordpress/coblocks/pull/1367)
+* WordPress 5.4 compatibility changes to CoBlocks [#1380](https://github.com/godaddy-wordpress/coblocks/pull/1380)
+
 ### Bug Fixes
-* Fix some images being completely black when filtered in the Logos block [#1358](https://github.com/godaddy-wordpress/coblocks/pull/1358)
-* Implement blockVariationPicker with Form block [#1355](https://github.com/godaddy-wordpress/coblocks/pull/1355)
+* Conditionally enqueue slick.js for Events block [#1379](https://github.com/godaddy-wordpress/coblocks/pull/1379)
+* Fix Row block placeholder spacing [#1400](https://github.com/godaddy-wordpress/coblocks/pull/1400)
 
 ### Misc
-* Bring back one column variation to the Row block by popular demand [#1368](https://github.com/godaddy-wordpress/coblocks/pull/1368)
-* Add documentation for editor settings hooks [#1366](https://github.com/godaddy-wordpress/coblocks/pull/1366)
-* Move Features/Services HeadingToolbar controls to block toolbar [#1352](https://github.com/godaddy-wordpress/coblocks/pull/1352)
+* Add automated testing of block save functions [#1350](https://github.com/godaddy-wordpress/coblocks/pull/1350), [#1378](https://github.com/godaddy-wordpress/coblocks/pull/1378), [#1357](https://github.com/godaddy-wordpress/coblocks/pull/1357), [#1348](https://github.com/godaddy-wordpress/coblocks/pull/1348)
+* Callout Go as a companion theme in the readme [#1382](https://github.com/godaddy-wordpress/coblocks/pull/1382)
+* Update Form block variable names [#1373](https://github.com/godaddy-wordpress/coblocks/pull/1373)

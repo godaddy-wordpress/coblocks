@@ -5,7 +5,7 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Block: Accordion', () => {
 	beforeEach( () => {
-		helpers.addCoBlocksBlockToPage( true, 'accordion' );
+		helpers.addBlockToPost( 'coblocks/accordion', true );
 	} );
 
 	/**
@@ -14,7 +14,7 @@ describe( 'Block: Accordion', () => {
 	 */
 	it( 'can be inserted without errors', () => {
 		cy.get( '[data-type="coblocks/accordion"]' ).should( 'exist' );
-		helpers.checkForBlockErrors( 'accordion' );
+		helpers.checkForBlockErrors( 'coblocks/accordion' );
 	} );
 
 	/**
@@ -23,7 +23,7 @@ describe( 'Block: Accordion', () => {
 	 */
 	it( 'can be modifed without errors', () => {
 		cy.get( '[data-type="coblocks/accordion"] .wp-block-coblocks-accordion-item__title' ).type( 'title' );
-		helpers.checkForBlockErrors( 'accordion' );
+		helpers.checkForBlockErrors( 'coblocks/accordion' );
 	} );
 
 	/**
@@ -34,12 +34,12 @@ describe( 'Block: Accordion', () => {
 		cy.get( '[data-type="coblocks/accordion"] .wp-block-coblocks-accordion-item__content' ).should( 'not.exist' );
 
 		cy.get( '[data-type="coblocks/accordion"]' ).click();
-		helpers.toggleSettingCheckbox( 'Display Open' );
+		helpers.toggleSettingCheckbox( 'Display as open' );
 
 		cy.get( '.editor-post-title__input' ).click();
 		cy.get( '[data-type="coblocks/accordion"] .wp-block-coblocks-accordion-item__content' ).should( 'exist' );
 
-		helpers.checkForBlockErrors( 'accordion' );
+		helpers.checkForBlockErrors( 'coblocks/accordion' );
 	} );
 
 	/**
@@ -49,34 +49,34 @@ describe( 'Block: Accordion', () => {
 		cy.get( '[data-type="coblocks/accordion"]' ).click( { force: true } ).find( '.components-coblocks-add-accordion-item__button' ).click( );
 		cy.get( '[data-type="coblocks/accordion"]' ).find( '[data-type="coblocks/accordion-item"]' ).should( 'have.length', 2 );
 
-		helpers.checkForBlockErrors( 'accordion' );
+		helpers.checkForBlockErrors( 'coblocks/accordion' );
 	} );
 
 	/**
 	 * Test the accordion block color settings
 	 */
 	it( 'can apply color settings', () => {
-		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__title' ).type( 'Accordion Title' );
+		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__title' ).type( 'Accordion title' );
 
-		// Title - Background Color
+		// Title - Background color
 		helpers.setColorSetting( 'background', '#000000' );
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__title' ).should( 'have.css', 'background-color', `rgb(0, 0, 0)` );
 
-		// Title - Text Color
+		// Title - Text color
 		helpers.setColorSetting( 'text', '#FFFFFF' );
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__title' ).should( 'have.css', 'color', `rgb(255, 255, 255)` );
 
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-paragraph' ).click().type( 'Content' );
 
-		// Content - Background Color
+		// Content - Background color
 		helpers.setColorSetting( 'background', '#000000' );
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-paragraph' ).should( 'have.css', 'background-color', `rgb(0, 0, 0)` );
 
-		// Content - Text Color
+		// Content - Text color
 		helpers.setColorSetting( 'text', '#FFFFFF' );
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-paragraph' ).should( 'have.css', 'color', `rgb(255, 255, 255)` );
 
-		helpers.checkForBlockErrors( 'accordion' );
+		helpers.checkForBlockErrors( 'coblocks/accordion' );
 	} );
 
 	/**
@@ -86,7 +86,7 @@ describe( 'Block: Accordion', () => {
 		cy.get( '[data-type="coblocks/accordion-item"]' ).first().click();
 		helpers.addCustomBlockClass( 'my-custom-class', 'accordion-item' );
 
-		helpers.checkForBlockErrors( 'accordion' );
+		helpers.checkForBlockErrors( 'coblocks/accordion' );
 
 		cy.get( '.wp-block-coblocks-accordion-item' )
 			.should( 'have.class', 'my-custom-class' );

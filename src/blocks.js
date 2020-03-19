@@ -18,6 +18,7 @@ import './extensions/button-styles';
 import './extensions/button-controls';
 import './extensions/image-styles';
 import './extensions/cover-styles';
+import './extensions/replace-image';
 import './extensions/image-crop';
 import './extensions/coblocks-settings/';
 
@@ -54,6 +55,7 @@ import * as fieldName from './blocks/form/fields/name';
 import * as fieldRadio from './blocks/form/fields/radio';
 import * as fieldTelephone from './blocks/form/fields/phone';
 import * as fieldTextarea from './blocks/form/fields/textarea';
+import * as fieldText from './blocks/form/fields/text';
 import * as fieldSelect from './blocks/form/fields/select';
 import * as fieldCheckbox from './blocks/form/fields/checkbox';
 import * as fieldWebsite from './blocks/form/fields/website';
@@ -130,6 +132,7 @@ export const registerCoBlocksBlocks = () => {
 		fieldRadio,
 		fieldTelephone,
 		fieldTextarea,
+		fieldText,
 		fieldSelect,
 		fieldCheckbox,
 		fieldWebsite,

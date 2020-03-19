@@ -75,10 +75,11 @@ class CoBlocks_Block_Assets {
 		$name       = 'coblocks-style';
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
+		$rtl        = ! is_rtl() ? '' : '-rtl';
 
 		wp_enqueue_style(
 			'coblocks-frontend',
-			COBLOCKS_PLUGIN_URL . $filepath . '.css',
+			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
 			array(),
 			$asset_file['version']
 		);
@@ -94,10 +95,11 @@ class CoBlocks_Block_Assets {
 		$name       = 'coblocks-editor';
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
+		$rtl        = ! is_rtl() ? '' : '-rtl';
 
 		wp_register_style(
 			'coblocks-editor',
-			COBLOCKS_PLUGIN_URL . $filepath . '.css',
+			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
 			array(),
 			$asset_file['version']
 		);
@@ -133,6 +135,13 @@ class CoBlocks_Block_Assets {
 		 */
 		$typography_controls_enabled = (bool) apply_filters( 'coblocks_typography_controls_enabled', true, (int) $post_id );
 
+		/**
+		 * Filter to disable all bundled CoBlocks svg icons
+		 *
+		 * @param bool true Whether or not the bundled icons are displayed.
+		 */
+		$bundled_icons_enabled = (bool) apply_filters( 'coblocks_bundled_icons_enabled', true );
+
 		$form_subject = ( new CoBlocks_Form() )->default_subject();
 
 		wp_localize_script(
@@ -145,7 +154,9 @@ class CoBlocks_Block_Assets {
 				),
 				'cropSettingsOriginalImageNonce' => wp_create_nonce( 'cropSettingsOriginalImageNonce' ),
 				'cropSettingsNonce'              => wp_create_nonce( 'cropSettingsNonce' ),
+				'bundledIconsEnabled'            => $bundled_icons_enabled,
 				'customIcons'                    => $this->get_custom_icons(),
+				'customIconConfigExists'         => file_exists( get_stylesheet_directory() . '/coblocks/icons/config.json' ),
 				'typographyControlsEnabled'      => $typography_controls_enabled,
 			)
 		);

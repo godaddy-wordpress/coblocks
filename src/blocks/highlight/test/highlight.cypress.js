@@ -15,7 +15,7 @@ describe( 'Block: Highlight', function () {
 	};
 
 	beforeEach( () => {
-		helpers.addCoBlocksBlockToPage( true, 'highlight' );
+		helpers.addBlockToPost( 'coblocks/highlight', true );
 	} );
 
 	/**
@@ -24,16 +24,16 @@ describe( 'Block: Highlight', function () {
 	 */
 	it( 'can be inserted without errors', function () {
 		cy.get( '.wp-block-coblocks-highlight' ).should( 'exist' );
-		helpers.checkForBlockErrors( 'highlight' );
+		helpers.checkForBlockErrors( 'coblocks/highlight' );
 	} );
 
 	/**
-	 * Test that we can add a hightlight block to the page, add text to it,
+	 * Test that we can add a highlight block to the page, add text to it,
 	 * save and it displays properly without errors.
 	 */
 	it( 'can have content', function () {
 		cy.get( '.wp-block-coblocks-highlight' ).find( 'mark' ).click().type( 'highlighted text' );
-		helpers.checkForBlockErrors( 'highlight' );
+		helpers.checkForBlockErrors( 'coblocks/highlight' );
 	} );
 
 	/**
@@ -44,25 +44,17 @@ describe( 'Block: Highlight', function () {
 			.type( 'highlighted text' );
 
 		cy.get( '.edit-post-sidebar' )
-			.contains( /default|regular/i )
-			.parent()
-			.then( ( $parentElm ) => {
-				if ( $parentElm[ 0 ].type === 'select-one' ) {
-					cy.get( $parentElm[ 0 ] )
-						.select( 'large' );
-				} else {
-					cy.get( $parentElm[ 0 ] )
-						.click()
-						.parent()
-						.contains( /large/i )
-						.click();
-				}
+			.contains( RegExp( 'Highlight settings', 'i' ) )
+			.then( $settingSection => {
+				cy.get( Cypress.$( $settingSection ).closest( '.components-panel__body' ) )
+					.find( '.components-select-control__input' )
+					.select( 'large' );
 			} );
 
 		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
 			.should( 'have.class', 'has-large-font-size' );
 
-		helpers.checkForBlockErrors( 'highlight' );
+		helpers.checkForBlockErrors( 'coblocks/highlight' );
 	} );
 
 	/**
@@ -87,7 +79,7 @@ describe( 'Block: Highlight', function () {
 		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
 			.should( 'have.css', 'color', highlightData.textColorRGB );
 
-		helpers.checkForBlockErrors( 'highlight' );
+		helpers.checkForBlockErrors( 'coblocks/highlight' );
 	} );
 
 	/**
@@ -100,6 +92,6 @@ describe( 'Block: Highlight', function () {
 		helpers.addCustomBlockClass( 'my-custom-class', 'highlight' );
 		cy.get( '.wp-block-coblocks-highlight' ).should( 'have.class', 'my-custom-class' );
 
-		helpers.checkForBlockErrors( 'highlight' );
+		helpers.checkForBlockErrors( 'coblocks/highlight' );
 	} );
 } );

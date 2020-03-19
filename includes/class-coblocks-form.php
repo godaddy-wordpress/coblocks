@@ -148,6 +148,7 @@ class CoBlocks_Form {
 			'name',
 			'email',
 			'textarea',
+			'text',
 			'date',
 			'phone',
 			'radio',
@@ -364,6 +365,37 @@ class CoBlocks_Form {
 	}
 
 	/**
+	 * Render the text field
+	 *
+	 * @param  array $atts    Block attributes.
+	 *
+	 * @return mixed Markup for the text field.
+	 */
+	public function render_field_text( $atts ) {
+
+		static $text_count = 1;
+
+		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Text', 'coblocks' );
+		$label_slug    = $text_count > 1 ? sanitize_title( $label . '-' . $text_count ) : sanitize_title( $label );
+		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
+
+		ob_start();
+
+		$this->render_field_label( $atts, $label, $text_count );
+
+		?>
+
+		<input type="text" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" id="<?php echo esc_attr( $label_slug ); ?>" class="coblocks-field coblocks-text" <?php echo esc_attr( $required_attr ); ?>>
+
+		<?php
+
+		$text_count++;
+
+		return ob_get_clean();
+
+	}
+
+	/**
 	 * Render the date field
 	 *
 	 * @param  array $atts Block attributes.
@@ -473,9 +505,9 @@ class CoBlocks_Form {
 		foreach ( $the_options as $value ) {
 
 			printf(
-				'<label class="coblocks-radio-label">
-					<input type="radio" name="field-%1$s[value]" value="%2$s" class="radio"> %3$s
-				</label>',
+				'<input id="%1$s" type="radio" name="field-%2$s[value]" value="%3$s" class="radio">
+				<label class="coblocks-radio-label" for="%1$s">%4$s</label>',
+				esc_attr( $label_slug . '-' . sanitize_title( $value ) ),
 				esc_attr( $label_slug ),
 				esc_attr( $value ),
 				esc_html( $value )
@@ -583,9 +615,9 @@ class CoBlocks_Form {
 		foreach ( $the_options as $value ) {
 
 			printf(
-				'<label class="coblocks-checkbox-label">
-					<input type="checkbox" name="field-%1$s[value][]" value="%2$s" class="checkbox"> %3$s
-				</label>',
+				'<input id="%1$s" type="checkbox" name="field-%2$s[value][]" value="%3$s" class="checkbox">
+				<label class="coblocks-checkbox-label" for="%1$s">%4$s</label>',
+				esc_attr( $label_slug . '-' . sanitize_title( $value ) ),
 				esc_attr( $label_slug ),
 				esc_attr( $value ),
 				esc_html( $value )
