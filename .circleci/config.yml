@@ -158,13 +158,13 @@ jobs:
       - checkout
       - changed_files_with_extension:
           ext: ".scss"
-    - run:
-        name: "Pre-Check"
-        command: |
-          if [ -z $FILES ]; then
-            echo "Changes do not require linting."
-            circleci-agent step halt
-          fi
+      - run:
+          name: "Pre-Check"
+          command: |
+            if [ -z $FILES ]; then
+              echo "Changes do not require linting."
+              circleci-agent step halt
+            fi
       - restore_cache:
           keys:
             - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
