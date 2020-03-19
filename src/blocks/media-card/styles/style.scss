@@ -165,5 +165,43 @@
 	}
 }
 
+body.rtl {
+
+	.is-style-left {
+
+		.wp-block-coblocks-media-card {
+
+			&__wrapper {
+				grid-template-areas: "media-text-content media-text-media" "resizer resizer" !important;
+				grid-template-columns: auto 55% !important;
+
+			}
+
+			&__content {
+				margin-right: -100px;
+				margin-left: 0;
+
+			}
+		}
+	}
+
+	.is-style-right {
+
+		.wp-block-coblocks-media-card {
+
+			&__wrapper {
+				grid-template-areas: "media-text-media media-text-content" "resizer resizer" !important;
+				grid-template-columns: 55% auto !important;
+			}
+
+			&__content {
+				margin-left: -100px;
+				margin-right: 0;
+
+			}
+		}
+	}
+}
+
 // Import style tweaks for core WordPress themes
 @import "theme";
