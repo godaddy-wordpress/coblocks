@@ -18,57 +18,12 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { IconButton, DropZone, Spinner } from '@wordpress/components';
-import { dispatch, select } from '@wordpress/data';
+import { withSelect, withDispatch } from '@wordpress/data';
 import { RichText, MediaPlaceholder } from '@wordpress/block-editor';
 import { mediaUpload } from '@wordpress/editor';
 import { isBlobURL } from '@wordpress/blob';
-
-/**
- * Handle creation and removal of placeholder elements so that we always have one available to use.
- *
- * @param {number} childClientId The child block's ClientId.
- * @param {string} blockName The block to insert.
- * @param {Object} blockAttributes The attributes for the placeholder block.
- */
-const handlePlaceholderPlacement = (
-	childClientId,
-	blockName,
-	blockAttributes = {}
-) => {
-	const itemClientId = select( 'core/block-editor' ).getBlockRootClientId(
-		childClientId
-	);
-
-	const foodItems = select( 'core/block-editor' ).getBlocksByClientId(
-		itemClientId
-	)[ 0 ].innerBlocks;
-
-	const filledFoodItems = foodItems.filter(
-		( item ) => item.name === 'coblocks/food-item' && ! isEmpty( item.attributes ) );
-
-	const placeholders = foodItems.filter(
-		( item ) => item.name === blockName && isEmpty( item.attributes )
-	);
-
-	// Remove trailing placholders if there are more than two.
-	dispatch( 'core/block-editor' ).removeBlocks(
-		placeholders
-			.filter( ( item, index ) => item.clientId !== childClientId && index !== 0 && filledFoodItems.length >= 1 )
-			.map( ( item ) => item.clientId ),
-		false
-	);
-
-	// Add a placeholder if there are none.
-	if ( placeholders.length === 0 ) {
-		const newFoodItem = wp.blocks.createBlock( blockName, blockAttributes );
-		dispatch( 'core/block-editor' ).insertBlocks(
-			newFoodItem,
-			foodItems.length,
-			itemClientId,
-			false
-		);
-	}
-};
+import { createBlock } from '@wordpress/blocks';
+import { compose } from '@wordpress/compose';
 
 const isEmpty = ( attributes ) => {
 	const attributesToCheck = [ 'url', 'title', 'description', 'price' ];
@@ -83,10 +38,13 @@ const isEmpty = ( attributes ) => {
 	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
 };
 
-class FoodAndDrinksEdit extends Component {
+class FoodItem extends Component {
 	constructor() {
 		super( ...arguments );
-
+		this.state = {
+			url: this.props.attributes.url ||'',
+			price: this.props.attributes.price || '',
+		}
 		this.replaceImage = this.replaceImage.bind( this );
 		this.setSpicyTo = this.setSpicyTo.bind( this );
 		this.setHotTo = this.setHotTo.bind( this );
@@ -94,14 +52,53 @@ class FoodAndDrinksEdit extends Component {
 		this.onChangeHeadingLevel = this.onChangeHeadingLevel.bind( this );
 	}
 
+	/**
+	 * Handle creation and removal of placeholder elements so that we always have one available to use.
+	 *
+	 * @param {number} childClientId The child block's ClientId.
+	 * @param {string} blockName The block to insert.
+	 * @param {Object} blockAttributes The attributes for the placeholder block.
+	 */
+	handlePlaceholderPlacement( childClientId, blockName, blockAttributes = {} ) {
+		const { getBlockRootClientId, getBlocksByClientId, removeBlocks, insertBlocks } = this.props;
+
+		const itemClientId = getBlockRootClientId( childClientId );
+		const foodItems = getBlocksByClientId( itemClientId )[ 0 ].innerBlocks;
+
+		const filledFoodItems = foodItems.filter(
+			( item ) => item.name === 'coblocks/food-item' && ! isEmpty( item.attributes )
+		);
+		const placeholders = foodItems.filter(
+			( item ) => item.name === blockName && isEmpty( item.attributes )
+		);
+
+		// Remove trailing placeholders if there are more than two.
+		removeBlocks(
+			placeholders
+				.filter( ( item, index ) => item.clientId !== childClientId && index !== 0 && filledFoodItems.length >= 1 )
+				.map( ( item ) => item.clientId ),
+			false
+		);
+
+		// Add a placeholder if there are none.
+		if ( placeholders.length === 0 ) {
+			const newFoodItem = createBlock( blockName, blockAttributes );
+			insertBlocks(
+				newFoodItem,
+				foodItems.length,
+				itemClientId,
+				false
+			);
+		}
+	}
+
 	updateInnerAttributes( blockName, newAttributes ) {
-		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
-			this.props.clientId
-		)[ 0 ].innerBlocks;
+		const { getBlocksByClientId, updateBlockAttributes } = this.props;
+		const innerItems = getBlocksByClientId(	this.props.clientId )[ 0 ].innerBlocks;
 
 		innerItems.forEach( ( item ) => {
 			if ( item.name === blockName ) {
-				dispatch( 'core/block-editor' ).updateBlockAttributes(
+				updateBlockAttributes(
 					item.clientId,
 					newAttributes
 				);
@@ -116,15 +113,26 @@ class FoodAndDrinksEdit extends Component {
 	}
 
 	componentDidUpdate( prevProps ) {
+		const { attributes, clientId, isSelected, setAttributes } = this.props;
+		const { showPrice, showImage } = attributes;
+
+		// Handle placeholder
 		if (
-			isEmpty( prevProps.attributes ) !== isEmpty( this.props.attributes ) ||
-			( ! prevProps.isSelected && this.props.isSelected )
+			isEmpty( prevProps.attributes ) !== isEmpty( attributes ) ||
+			( ! prevProps.isSelected && isSelected )
 		) {
-			const { showImage, showPrice } = this.props.attributes;
-			handlePlaceholderPlacement( this.props.clientId, 'coblocks/food-item', {
+			this.handlePlaceholderPlacement( clientId, 'coblocks/food-item', {
 				showImage,
 				showPrice,
 			} );
+		}
+
+		if ( showPrice !== prevProps.attributes.showPrice ) {
+			setAttributes( { price: showPrice ? this.state.price : '' } );
+		}
+
+		if ( showImage !== prevProps.attributes.showImage ) {
+			setAttributes( { url: showImage ? this.state.url : '' } );
 		}
 	}
 
@@ -132,8 +140,10 @@ class FoodAndDrinksEdit extends Component {
 		mediaUpload( {
 			allowedTypes: [ 'image' ],
 			filesList: files,
-			onFileChange: ( [ media ] ) =>
-				this.props.setAttributes( { url: media.url, alt: media.alt } ),
+			onFileChange: ( [ media ] ) => {
+				this.setState( { url: media.url } );
+				this.props.setAttributes( { url: media.url, alt: media.alt } );
+			}
 		} );
 	}
 
@@ -195,7 +205,10 @@ class FoodAndDrinksEdit extends Component {
 						<div className="wp-block-coblocks-food-item__remove-menu">
 							<IconButton
 								icon="no-alt"
-								onClick={ () => setAttributes( { url: '' } ) }
+								onClick={ () => {
+									setAttributes( { url: '' } )
+									this.setState( { url: '' } );
+								} }
 								className="coblocks-gallery-item__button"
 								label={ __( 'Remove image', 'coblocks' ) }
 								disabled={ ! isSelected }
@@ -407,7 +420,10 @@ class FoodAndDrinksEdit extends Component {
 								tagName="p"
 								wrapperClassName="wp-block-coblocks-food-item__price"
 								placeholder={ __( '$0.00', 'coblocks' ) }
-								onChange={ ( newPrice ) => setAttributes( { price: newPrice } ) }
+								onChange={ ( newPrice ) => {
+									this.setState( { price: newPrice } );
+									this.props.setAttributes( { price : newPrice}) 
+								} }
 								{ ...richTextAttributes }
 							/>
 						) }
@@ -418,4 +434,38 @@ class FoodAndDrinksEdit extends Component {
 	}
 }
 
-export default FoodAndDrinksEdit;
+const applyWithSelect = withSelect( ( select, props ) => {
+	const {
+		getBlockRootClientId,
+		getBlockSelectionStart,
+		getBlocksByClientId,
+	} = select( 'core/block-editor' );
+
+	const selectedClientId = getBlockSelectionStart();
+	const parentClientId = getBlockRootClientId( selectedClientId );
+	const innerItems = getBlocksByClientId( props.clientId )[ 0 ].innerBlocks;
+
+	return {
+		selectedParentClientId: parentClientId,
+		innerItems,
+		getBlockRootClientId,
+		getBlockSelectionStart,
+		getBlocksByClientId,
+	};
+} );
+
+const applyWithDispatch = withDispatch( ( dispatch ) => {
+	const {
+		insertBlocks,
+		removeBlocks,
+		updateBlockAttributes,
+	} = dispatch( 'core/block-editor' );
+
+	return {
+		insertBlocks,
+		removeBlocks,
+		updateBlockAttributes,
+	};
+} );
+
+export default compose( [ applyWithSelect, applyWithDispatch ] )( FoodItem );
