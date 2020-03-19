@@ -1,4 +1,68 @@
 
+1.23.0 / 2020-03-19
+===================
+
+### Enhancements
+* Add 'Replace Image' button to core/image InspectorControls [#1385](https://github.com/godaddy-wordpress/coblocks/pull/1385)
+* Add Form block Text field [#1417](https://github.com/godaddy-wordpress/coblocks/pull/1417)
+* Introduce RTL support [#1420](https://github.com/godaddy-wordpress/coblocks/pull/1420)
+* Introduce a filter to disable the CoBlocks bundled SVG icons within the Icon Block [#1403](https://github.com/godaddy-wordpress/coblocks/pull/1403)
+* Remove jQuery from Form, Gif, Crop Settings [#1376](https://github.com/godaddy-wordpress/coblocks/pull/1376)
+* Show gallery image captions in lightbox [#1409](https://github.com/godaddy-wordpress/coblocks/pull/1409)
+
+### Bug Fixes
+* Clicking captions opens the lightbox [#1407](https://github.com/godaddy-wordpress/coblocks/pull/1407)
+* Fix Form block for Gutenberg 7.7 [#1419](https://github.com/godaddy-wordpress/coblocks/pull/1419)
+* Fix Map block error in editor + refactor wp.api global [#1411](https://github.com/godaddy-wordpress/coblocks/pull/1411)
+* Fix Posts and Post Carousel block categories control [#1406](https://github.com/godaddy-wordpress/coblocks/pull/1406)
+* Fix image and price toggle behavior on the Food and Drinks block [#1402](https://github.com/godaddy-wordpress/coblocks/pull/1402)
+* Fix selected font family option in the typography controls [#1404](https://github.com/godaddy-wordpress/coblocks/pull/1404)
+
+### Misc
+* Add CoBlocks icon to docs [#1412](https://github.com/godaddy-wordpress/coblocks/pull/1412)
+* Add docs for CoBlocks features [#1418](https://github.com/godaddy-wordpress/coblocks/pull/1418)
+* E2E Gauntlet Testing Script [#1415](https://github.com/godaddy-wordpress/coblocks/pull/1415)
+* Introduce E2E tests for CoBlocks Settings panel [#1395](https://github.com/godaddy-wordpress/coblocks/pull/1395)
+* Minor style specificity clean-up [#1424](https://github.com/godaddy-wordpress/coblocks/pull/1424)
+* Refactor form radio and checkbox labels [#1416](https://github.com/godaddy-wordpress/coblocks/pull/1416)
+* Tweak UI to support sentence case [#1414](https://github.com/godaddy-wordpress/coblocks/pull/1414)
+* Update Tested up to value to WordPress 5.4 [#1422](https://github.com/godaddy-wordpress/coblocks/pull/1422)
+* Update npm and composer development dependencies [#1413](https://github.com/godaddy-wordpress/coblocks/pull/1413)
+
+
+1.22.0 / 2020-03-04
+===================
+
+### Enhancements
+* Control Food Item block headings from the parent Food and Drinks block [#1381](https://github.com/godaddy-wordpress/coblocks/pull/1381)
+* Introduce 29 new icons into the icon block [#1398](https://github.com/godaddy-wordpress/coblocks/pull/1398)
+* Make the available Google Fonts filterable [#1386](https://github.com/godaddy-wordpress/coblocks/pull/1386)
+* Migrate Row block to variations API [#1372](https://github.com/godaddy-wordpress/coblocks/pull/1372)
+* Persist Accordion block open state when editing a post [#1393](https://github.com/godaddy-wordpress/coblocks/pull/1393)
+* Support new block collection functionality in WordPress 5.4 [#1367](https://github.com/godaddy-wordpress/coblocks/pull/1367)
+* WordPress 5.4 compatibility changes to CoBlocks [#1380](https://github.com/godaddy-wordpress/coblocks/pull/1380)
+
+### Bug Fixes
+* Conditionally enqueue slick.js for Events block [#1379](https://github.com/godaddy-wordpress/coblocks/pull/1379)
+* Fix Row block placeholder spacing [#1400](https://github.com/godaddy-wordpress/coblocks/pull/1400)
+
+### Misc
+* Add automated testing of block save functions [#1350](https://github.com/godaddy-wordpress/coblocks/pull/1350), [#1378](https://github.com/godaddy-wordpress/coblocks/pull/1378), [#1357](https://github.com/godaddy-wordpress/coblocks/pull/1357), [#1348](https://github.com/godaddy-wordpress/coblocks/pull/1348)
+* Callout Go as a companion theme in the readme [#1382](https://github.com/godaddy-wordpress/coblocks/pull/1382)
+* Update Form block variable names [#1373](https://github.com/godaddy-wordpress/coblocks/pull/1373)
+
+1.21.1 / 2020-02-20
+===================
+
+### Bug Fixes
+* Fix some images being completely black when filtered in the Logos block [#1358](https://github.com/godaddy-wordpress/coblocks/pull/1358)
+* Implement blockVariationPicker with Form block [#1355](https://github.com/godaddy-wordpress/coblocks/pull/1355)
+
+### Misc
+* Bring back one column variation to the Row block by popular demand [#1368](https://github.com/godaddy-wordpress/coblocks/pull/1368)
+* Add documentation for editor settings hooks [#1366](https://github.com/godaddy-wordpress/coblocks/pull/1366)
+* Move Features/Services HeadingToolbar controls to block toolbar [#1352](https://github.com/godaddy-wordpress/coblocks/pull/1352)
+
 1.21.0 / 2020-02-13
 ===================
 

@@ -1,4 +1,9 @@
 /**
+ * WordPress dependencies
+ */
+import { registerBlockCollection } from '@wordpress/blocks';
+
+/**
  * Determine if the block attributes are empty.
  *
  * @param {Object} attributes The block attributes to check.
@@ -23,3 +28,16 @@ export const hasEmptyAttributes = ( attributes ) => {
 		} )
 		.filter( ( value ) => value === true ).length;
 };
+
+/**
+ * Return bool depending on registerBlockCollection compatibility.
+ *
+ * @return {boolean} Value to indicate function support.
+ */
+export const supportsCollections = () => {
+	if ( typeof registerBlockCollection === 'function' ) {
+		return true;
+	}
+	return false;
+};
+

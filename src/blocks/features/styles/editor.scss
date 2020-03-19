@@ -1,112 +1,3 @@
-.wp-block[data-type="coblocks/features"] {
-
-	.wp-block-coblocks-features {
-		width: 100%;
-
-		&__inner {
-
-			> .block-editor-inner-blocks {
-				width: 100%;
-
-				> .block-editor-block-list__layout {
-
-					@include break-small() {
-						display: flex;
-					}
-
-					> .wp-block > .block-editor-block-list__block-edit {
-						margin-bottom: 0;
-						margin-top: 0;
-					}
-				}
-			}
-
-			// Fixes single feature full width issue.
-			&.has-1-columns {
-
-				.block-editor-inner-blocks {
-					width: 100%;
-				}
-			}
-		}
-	}
-
-	&[data-align="wide"],
-	&[data-align="full"] {
-
-		.wp-block {
-			max-width: none;
-		}
-	}
-
-	&[data-columns="1"] {
-
-		.wp-block-coblocks-features {
-
-			&__inner {
-
-				> .block-editor-inner-blocks {
-					width: 100%;
-				}
-			}
-		}
-	}
-
-	.wp-block[data-type="coblocks/feature"] {
-
-		@include break-small() {
-			display: flex;
-			flex-direction: column;
-			min-width: 0;
-			overflow-wrap: break-word;
-			width: 100%;
-			word-break: break-word;
-		}
-
-		.block-editor-default-block-appender {
-			display: none;
-		}
-
-		// Remove editor margins that do not exist on the frontend
-		.wp-block-coblocks-feature__inner {
-
-			> .block-editor-inner-blocks {
-
-				> .block-editor-block-list__layout {
-
-					> .wp-block {
-
-						&:first-child {
-
-							> .block-editor-block-list__block-edit {
-								margin-bottom: 0;
-								margin-top: 0;
-							}
-
-							> .block-editor-block-list__insertion-point {
-								display: none;
-							}
-						}
-
-						> .block-editor-block-list__block-edit {
-							margin-bottom: 0;
-							margin-top: 0;
-						}
-					}
-
-					> div {
-
-						> .block-editor-default-block-appender {
-							display: none !important;
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-// Remove excess spacing due to InnerBlocks blocks
 .wp-block[data-type="coblocks/feature"] {
 
 	> .block-editor-block-list__block-edit {
@@ -121,6 +12,43 @@
 
 	.wp-block:nth-last-child(2) [data-block] {
 		margin-bottom: 0;
+	}
+
+	// Remove editor margins that do not exist on the frontend
+	.wp-block-coblocks-feature__inner {
+
+		> .block-editor-inner-blocks {
+
+			> .block-editor-block-list__layout {
+
+				> .wp-block {
+
+					&:first-child {
+
+						> .block-editor-block-list__block-edit {
+							margin-bottom: 0;
+							margin-top: 0;
+						}
+
+						> .block-editor-block-list__insertion-point {
+							display: none;
+						}
+					}
+
+					> .block-editor-block-list__block-edit {
+						margin-bottom: 0;
+						margin-top: 0;
+					}
+				}
+
+				> div {
+
+					> .block-editor-default-block-appender {
+						display: none !important;
+					}
+				}
+			}
+		}
 	}
 }
 

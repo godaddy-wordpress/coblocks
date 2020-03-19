@@ -24,7 +24,7 @@ export const editMultiField = ( type ) => ( props ) => {
 			/>
 			{ 'select' !== type && (
 				<InspectorControls>
-					<PanelBody title={ __( 'Display Settings', 'coblocks' ) }>
+					<PanelBody title={ __( 'Display settings', 'coblocks' ) }>
 						<ToggleControl
 							label={ sprintf(
 								/* translators: field type eg: checkbox */

@@ -29,9 +29,8 @@ class Controls extends Component {
 
 	render() {
 		const { attributes } = this.props;
-		const { images } = attributes;
 
-		const hasImages = !! images.length;
+		const hasImages = !! attributes.images.length;
 
 		return (
 			<BlockControls>
@@ -44,7 +43,7 @@ class Controls extends Component {
 									allowedTypes={ [ 'image' ] }
 									multiple
 									gallery
-									value={ images.map( ( img ) => img.id ) }
+									value={ attributes.images.map( ( img ) => img.id ) }
 									render={ ( { open } ) => (
 										<IconButton
 											className="components-toolbar__control"

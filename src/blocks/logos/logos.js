@@ -105,9 +105,9 @@ class Logos extends Component {
 										} }
 										onKeyDown={ ( event ) => {
 											if ( BACKSPACE === event.keyCode ) {
-												const images = this.props.images.filter( ( image ) => image.id !== img.id );
+												const remainingImages = this.props.images.filter( ( image ) => image.id !== img.id );
 												this.setState( { selectedImage: null } );
-												this.props.setAttributes( { images } );
+												this.props.setAttributes( { images: remainingImages } );
 											}
 										} }
 									>

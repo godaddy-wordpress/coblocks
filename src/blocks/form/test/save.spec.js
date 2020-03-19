@@ -13,7 +13,7 @@ import { name, settings } from '../index';
 let block;
 let serializedBlock;
 
-describe( name, () => {
+describe( 'coblocks/form', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );
@@ -37,6 +37,24 @@ describe( name, () => {
 		expect( serializedBlock ).toContain( 'Form subject' );
 		expect( serializedBlock ).toContain( 'Form submit button text' );
 		expect( serializedBlock ).toContain( 'Form to text' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with customBackgroundButtonColor', () => {
+		block.attributes.customBackgroundButtonColor = '#da5d5d';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '{"customBackgroundButtonColor":"#da5d5d"}' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with customTextButtonColor', () => {
+		block.attributes.customTextButtonColor = '#da5d5d';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '{"customTextButtonColor":"#da5d5d"}' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 } );

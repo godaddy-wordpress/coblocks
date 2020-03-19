@@ -438,6 +438,7 @@ jobs:
           command: |
             ./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass='' --path=/tmp/wordpress
             ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=/tmp/wordpress
+            ./vendor/bin/wp post generate --count=5 --path=/tmp/wordpress
             ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
       - run:
           name: "Start WPCLI Server"
@@ -505,7 +506,7 @@ jobs:
             export GIT_COMMIT_DESC=$(git log --format=oneline -n 1 $CIRCLE_SHA1)
             if [[ $GIT_COMMIT_DESC != *"skip i18n"* ]]; then
               git config --global user.email "plugins@godaddy.com"
-              git config --global user.name "GoDaddy Translator"
+              git config --global user.name "GoDaddy Translator Bot"
               git add languages/coblocks.json
               git add languages/coblocks.pot
               git commit -m "Update coblocks.pot/coblocks.json files [skip i18n]"
@@ -526,6 +527,9 @@ jobs:
       - run:
           name: Install PHP
           command: sudo apt-get install php libapache2-mod-php php-mbstring php-xml php-curl
+      - run:
+          name: Install gettext
+          command: sudo apt-get install gettext
       - run:
           name: Disable xdebug PHP extension
           command: |

@@ -163,7 +163,7 @@ class SizeControl extends Component {
 		return (
 			<BaseControl id="coblocks-select-size" label={ label }>
 				<PanelRow>
-					<ButtonGroup aria-label={ __( 'Select Size', 'coblocks' ) }>
+					<ButtonGroup aria-label={ __( 'Select size', 'coblocks' ) }>
 						{ map( this.getSizes(), ( { size, shortName } ) => (
 							<Button
 								key={ size }

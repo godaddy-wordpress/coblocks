@@ -18,6 +18,7 @@ import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { ResizableBox } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
+import { domReady } from '@wordpress/dom-ready';
 
 /**
  * Set and export block values.
@@ -27,12 +28,17 @@ const MAX_ICON_SIZE = 400;
 
 export { MIN_ICON_SIZE, MAX_ICON_SIZE };
 
+const bundledIconsEnabled = ( typeof coblocksBlockData === 'undefined' || coblocksBlockData.bundledIconsEnabled );
+
 class Edit extends Component {
 	componentDidMount() {
 		// Check if the icon is the default.
 		if ( this.props.attributes.icon === '' ) {
 			// Randomized the default icon when first added.
-			const defaultIcons = [ 'aperture', 'gesture', 'scatter_plot', 'waves', 'blocks', 'coblocks', 'drafts', 'device_hub', 'marker' ];
+			let defaultIcons = [ 'aperture', 'gesture', 'scatter_plot', 'waves', 'blocks', 'coblocks', 'drafts', 'device_hub', 'marker' ];
+			if ( ! bundledIconsEnabled && Object.keys( coblocksBlockData.customIcons ).length ) {
+				defaultIcons = Object.keys( coblocksBlockData.customIcons );
+			}
 			const rand = defaultIcons[ Math.floor( Math.random() * defaultIcons.length ) ];
 			this.props.setAttributes( { icon: rand } );
 		}
@@ -175,3 +181,13 @@ export default compose( [
 		};
 	} ),
 ] )( Edit );
+
+if ( 'function' === typeof wp.domReady ) {
+	wp.domReady( () => {
+		// Remove the icon styles when bundled icons are disabled and no custom icon config exists.
+		if ( ! bundledIconsEnabled && ! coblocksBlockData.customIconConfigExists ) {
+			wp.blocks.unregisterBlockStyle( 'coblocks/icon', 'filled' );
+			wp.blocks.unregisterBlockStyle( 'coblocks/icon', 'outlined' );
+		}
+	} );
+}

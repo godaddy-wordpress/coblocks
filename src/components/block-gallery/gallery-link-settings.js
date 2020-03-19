@@ -60,11 +60,11 @@ class GalleryLinkSettings extends Component {
 			<Fragment>
 				{ ! lightbox &&
 					<PanelBody
-						title={ __( 'Link Settings', 'coblocks' ) }
+						title={ __( 'Link settings', 'coblocks' ) }
 						initialOpen={ false }
 					>
 						<SelectControl
-							label={ __( 'Link To', 'coblocks' ) }
+							label={ __( 'Link to', 'coblocks' ) }
 							value={ linkTo }
 							options={ linkOptions }
 							onChange={ this.setLinkTo }
@@ -72,13 +72,13 @@ class GalleryLinkSettings extends Component {
 						{ linkTo !== 'none' &&
 							<Fragment>
 								<ToggleControl
-									label={ __( 'Open in New Tab', 'coblocks' ) }
+									label={ __( 'Open in new tab', 'coblocks' ) }
 									onChange={ this.setNewTab }
 									checked={ target === '_blank' }
 								/>
 								<TextControl
 									/* translators: html attribute that specifies the relationship between two pages */
-									label={ __( 'Link Rel', 'coblocks' ) }
+									label={ __( 'Link rel', 'coblocks' ) }
 									value={ rel }
 									onChange={ ( value ) => setAttributes( { rel: value } ) }
 								/>

@@ -9,6 +9,7 @@ import classnames from 'classnames';
  */
 import InspectorControls from './inspector';
 import icons from './icons';
+import HeadingToolbar from '../../components/heading-toolbar';
 
 /**
  * WordPress dependencies
@@ -208,6 +209,12 @@ class Edit extends Component {
 		return (
 			<Fragment>
 				<BlockControls>
+					<HeadingToolbar
+						minLevel={ 2 }
+						maxLevel={ 6 }
+						selectedLevel={ attributes.headingLevel }
+						onChange={ this.onChangeHeadingLevel }
+					/>
 					<AlignmentToolbar
 						value={ alignment }
 						onChange={ this.onChangeAlignment }
@@ -218,7 +225,6 @@ class Edit extends Component {
 					setAttributes={ setAttributes }
 					activeStyle={ activeStyle }
 					layoutOptions={ layoutOptions }
-					onChangeHeadingLevel={ this.onChangeHeadingLevel }
 					onToggleCtas={ this.toggleCtas }
 					onUpdateStyle={ this.updateStyle }
 					onSetColumns={ this.setColumns }

@@ -16,6 +16,13 @@
 
 	.wp-block-coblocks-gif {
 
+		button {
+			border: none !important;
+			background: none !important;
+			height: auto !important;
+			width: 100% !important;
+		}
+
 		form,
 		.components-placeholder__fieldset {
 			display: block;

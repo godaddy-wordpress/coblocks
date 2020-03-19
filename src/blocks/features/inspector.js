@@ -4,7 +4,6 @@
 import applyWithColors from './colors';
 import { BackgroundPanel } from '../../components/background';
 import DimensionsControl from '../../components/dimensions-control/';
-import HeadingToolbar from '../../components/heading-toolbar';
 import OptionSelectorControl from '../../components/option-selector-control';
 
 /**
@@ -14,7 +13,7 @@ import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
-import { PanelBody, RangeControl, SelectControl, withFallbackStyles } from '@wordpress/components';
+import { PanelBody, RangeControl, withFallbackStyles } from '@wordpress/components';
 
 /**
  * Fallback styles
@@ -39,7 +38,6 @@ class Inspector extends Component {
 			attributes,
 			backgroundColor,
 			clientId,
-			onChangeHeadingLevel,
 			setAttributes,
 			setBackgroundColor,
 			setTextColor,
@@ -49,7 +47,6 @@ class Inspector extends Component {
 		const {
 			columns,
 			gutter,
-			headingLevel,
 			marginBottom,
 			marginBottomMobile,
 			marginBottomTablet,
@@ -121,7 +118,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Features Settings', 'coblocks' ) }>
+					<PanelBody title={ __( 'Features settings', 'coblocks' ) }>
 						<RangeControl
 							label={ __( 'Columns', 'coblocks' ) }
 							value={ columns }
@@ -149,14 +146,8 @@ class Inspector extends Component {
 							label={ __( 'Gutter', 'coblocks' ) }
 							currentOption={ gutter }
 							options={ gutterOptions }
-							onChange={ ( gutter ) => setAttributes( { gutter } ) }
+							onChange={ ( newGutter ) => setAttributes( { gutter: newGutter } ) }
 						/> }
-						<HeadingToolbar
-							minLevel={ 1 }
-							maxLevel={ 7 }
-							selectedLevel={ headingLevel }
-							onChange={ onChangeHeadingLevel }
-						/>
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
 							label={ __( 'Padding', 'coblocks' ) }
@@ -201,7 +192,7 @@ class Inspector extends Component {
 						/>
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'coblocks' ) }
+						title={ __( 'Color settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
@@ -219,11 +210,11 @@ class Inspector extends Component {
 										setAttributes( { paddingSize: 'no' } );
 									}
 								},
-								label: __( 'Background Color', 'coblocks' ),
+								label: __( 'Background color', 'coblocks' ),
 							}, {
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color', 'coblocks' ),
+								label: __( 'Text color', 'coblocks' ),
 							},
 						] }
 					>

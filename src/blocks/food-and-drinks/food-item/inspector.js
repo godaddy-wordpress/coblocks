@@ -31,7 +31,7 @@ const Inspector = ( props ) => {
 
 	return (
 		<InspectorControls>
-			<PanelBody title={ __( 'Item Settings', 'coblocks' ) } initialOpen={ true }>
+			<PanelBody title={ __( 'Item settings', 'coblocks' ) } initialOpen={ true }>
 				<ToggleControl
 					label={ __( 'Image', 'coblocks' ) }
 					help={
@@ -54,7 +54,7 @@ const Inspector = ( props ) => {
 				/>
 				<div className="components-food-item-attributes">
 					<p className="components-food-item-attributes__label">
-						{ __( 'Item Attributes', 'coblocks' ) }
+						{ __( 'Item attributes', 'coblocks' ) }
 					</p>
 					<CheckboxControl
 						label={ __( 'Popular', 'coblocks' ) }
@@ -94,9 +94,9 @@ const Inspector = ( props ) => {
 				</div>
 			</PanelBody>
 			{ url &&
-				<PanelBody title={ __( 'Image Settings', 'coblocks' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Image settings', 'coblocks' ) } initialOpen={ false }>
 					<TextareaControl
-						label={ __( 'Alt Text (Alternative Text)', 'coblocks' ) }
+						label={ __( 'Alt text (alternative text)', 'coblocks' ) }
 						value={ alt }
 						onChange={ ( value ) => setAttributes( { alt: value } ) }
 						help={
@@ -109,7 +109,7 @@ const Inspector = ( props ) => {
 						}
 					/>
 					<FocalPointPicker
-						label={ __( 'Focal Point', 'coblocks' ) }
+						label={ __( 'Focal point', 'coblocks' ) }
 						url={ url }
 						value={ focalPoint }
 						onChange={ ( value ) => setAttributes( { focalPoint: value } ) }

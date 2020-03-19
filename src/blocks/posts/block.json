@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/posts",
-	"category": "coblocks",
+	"category": "layout",
 	"attributes": {
 		"className": {
 			"type": "string"
