@@ -66,16 +66,15 @@ workflows:
       #         ignore: /.*/
 
 version: 2.1
-jobs:
 
-  # Run phpcs on changed php files only.
-  lint_php:
-    docker:
-      - image: circleci/php:7.3
+commands:
+  changed_files_with_extension:
+    description: ""
+    parameters:
+      ext:
+        type: string
     steps:
-      - checkout
       - run:
-          name: "Linting pre-check"
           command: |
             if [ -n "$CIRCLE_PULL_REQUEST" ]; then
               GH_API_ENDPOINT="${CIRCLE_PULL_REQUEST/github.com/api.github.com/repos}"
@@ -84,7 +83,20 @@ jobs:
             else
               BASE_BRANCH="master"
             fi
-            FILES=$(git diff HEAD..BASE_BRANCH --name-only --diff-filter=M '*.php')
+      - run: FILES=$(git diff HEAD..$BASE_BRANCH --name-only --diff-filter=M '*<< parameters.ext >>')
+
+jobs:
+  # Run phpcs on changed php files only.
+  lint_php:
+    docker:
+      - image: circleci/php:7.3
+    steps:
+      - checkout
+      - changed_files_with_extension:
+          ext: ".php"
+      - run:
+          name: "Pre-Check"
+          command: |
             if [ -z $FILES ]; then
               echo "Changes do not require linting."
               circleci-agent step halt
@@ -111,17 +123,11 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
+      - changed_files_with_extension:
+          ext: ".js"
       - run:
-          name: "Linting pre-check"
+          name: "Pre-Check"
           command: |
-            if [ -n "$CIRCLE_PULL_REQUEST" ]; then
-              GH_API_ENDPOINT="${CIRCLE_PULL_REQUEST/github.com/api.github.com/repos}"
-              GH_API_ENDPOINT="${GH_API_ENDPOINT/pull/pulls}"
-              BASE_BRANCH=$(curl -s $GH_API_ENDPOINT | jq -r '.base.ref')
-            else
-              BASE_BRANCH="master"
-            fi
-            FILES=$(git diff HEAD..$BASE_BRANCH --name-only --diff-filter=M '*.js')
             if [ -z $FILES ]; then
               echo "Changes do not require linting."
               circleci-agent step halt
@@ -150,21 +156,15 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run:
-          name: "Linting pre-check"
-          command: |
-            if [ -n "$CIRCLE_PULL_REQUEST" ]; then
-              GH_API_ENDPOINT="${CIRCLE_PULL_REQUEST/github.com/api.github.com/repos}"
-              GH_API_ENDPOINT="${GH_API_ENDPOINT/pull/pulls}"
-              BASE_BRANCH=$(curl -s $GH_API_ENDPOINT | jq -r '.base.ref')
-            else
-              BASE_BRANCH="master"
-            fi
-            FILES=$(git diff HEAD..$BASE_BRANCH --name-only --diff-filter=M '*.scss')
-            if [ -z $FILES ]; then
-              echo "Changes do not require linting."
-              circleci-agent step halt
-            fi
+      - changed_files_with_extension:
+          ext: ".scss"
+    - run:
+        name: "Pre-Check"
+        command: |
+          if [ -z $FILES ]; then
+            echo "Changes do not require linting."
+            circleci-agent step halt
+          fi
       - restore_cache:
           keys:
             - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
@@ -352,6 +352,15 @@ jobs:
       - image: circleci/node:latest-browsers-legacy
     steps:
       - checkout
+      - changed_files_with_extension:
+          ext: ".js"
+      - run:
+          name: "Pre-Check"
+          command: |
+            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ]; then
+              echo "Changes do not require testing."
+              circleci-agent step halt
+            fi
       - restore_cache:
           keys:
             - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
@@ -370,15 +379,11 @@ jobs:
           command: |
             JEST_JUNIT_OUTPUT_DIR="/tmp/artifacts/code-coverage/jest/"
             JEST_JUNIT_OUTPUT_NAME="results.xml"
-            FILES=$(git diff HEAD^ --name-only --diff-filter=M '*.js')
 
             if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
               npm run test:unit -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html
-            elif [ -s "$FILES" ]; then
-              npm run test:unit -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html --findRelatedTests $FILES
             else
-              echo "Changes do not require testing."
-              circleci-agent step halt
+              npm run test:unit -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html --findRelatedTests $FILES
             fi
       - store_artifacts:
           path: /tmp/artifacts/code-coverage/
