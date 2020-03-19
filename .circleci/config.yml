@@ -77,7 +77,14 @@ jobs:
       - run:
           name: "Linting pre-check"
           command: |
-            FILES=$(git diff HEAD^ --name-only --diff-filter=M '*.php')
+            if [ -n "$CIRCLE_PULL_REQUEST" ]; then
+              GH_API_ENDPOINT="${CIRCLE_PULL_REQUEST/github.com/api.github.com/repos}"
+              GH_API_ENDPOINT="${GH_API_ENDPOINT/pull/pulls}"
+              BASE_BRANCH=$(curl -s $GH_API_ENDPOINT | jq -r '.base.ref')
+            else
+              BASE_BRANCH="master"
+            fi
+            FILES=$(git diff HEAD..BASE_BRANCH --name-only --diff-filter=M '*.php')
             if [ -z $FILES ]; then
               echo "Changes do not require linting."
               circleci-agent step halt
@@ -107,7 +114,14 @@ jobs:
       - run:
           name: "Linting pre-check"
           command: |
-            FILES=$(git diff HEAD^ --name-only --diff-filter=M '*.js')
+            if [ -n "$CIRCLE_PULL_REQUEST" ]; then
+              GH_API_ENDPOINT="${CIRCLE_PULL_REQUEST/github.com/api.github.com/repos}"
+              GH_API_ENDPOINT="${GH_API_ENDPOINT/pull/pulls}"
+              BASE_BRANCH=$(curl -s $GH_API_ENDPOINT | jq -r '.base.ref')
+            else
+              BASE_BRANCH="master"
+            fi
+            FILES=$(git diff HEAD..$BASE_BRANCH --name-only --diff-filter=M '*.js')
             if [ -z $FILES ]; then
               echo "Changes do not require linting."
               circleci-agent step halt
@@ -139,7 +153,14 @@ jobs:
       - run:
           name: "Linting pre-check"
           command: |
-            FILES=$(git diff HEAD^ --name-only --diff-filter=M '*.scss')
+            if [ -n "$CIRCLE_PULL_REQUEST" ]; then
+              GH_API_ENDPOINT="${CIRCLE_PULL_REQUEST/github.com/api.github.com/repos}"
+              GH_API_ENDPOINT="${GH_API_ENDPOINT/pull/pulls}"
+              BASE_BRANCH=$(curl -s $GH_API_ENDPOINT | jq -r '.base.ref')
+            else
+              BASE_BRANCH="master"
+            fi
+            FILES=$(git diff HEAD..$BASE_BRANCH --name-only --diff-filter=M '*.scss')
             if [ -z $FILES ]; then
               echo "Changes do not require linting."
               circleci-agent step halt
