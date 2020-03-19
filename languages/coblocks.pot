@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-03-19T18:15:54+00:00\n"
+"POT-Creation-Date: 2020-03-19T18:21:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -1074,23 +1074,23 @@ msgstr ""
 msgid "Add menu section"
 msgstr ""
 
-#: src/blocks/food-and-drinks/edit.js:28
+#: src/blocks/food-and-drinks/edit.js:29
 msgid "Menu title…"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/food-and-drinks/edit.js:37
+#: src/blocks/food-and-drinks/edit.js:38
 msgid "Grid"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/food-and-drinks/edit.js:45
+#: src/blocks/food-and-drinks/edit.js:46
 msgid "List"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:142
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:132
-#: src/blocks/food-and-drinks/food-item/edit.js:302
+#: src/blocks/food-and-drinks/food-item/edit.js:315
 #: src/blocks/food-and-drinks/food-item/inspector.js:60
 #: src/blocks/food-and-drinks/food-item/save.js:91
 msgid "Popular"
@@ -1098,7 +1098,7 @@ msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:150
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:140
-#: src/blocks/food-and-drinks/food-item/edit.js:314
+#: src/blocks/food-and-drinks/food-item/edit.js:327
 #: src/blocks/food-and-drinks/food-item/inspector.js:75
 #: src/blocks/food-and-drinks/food-item/save.js:104
 msgid "Spicy"
@@ -1113,7 +1113,7 @@ msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:166
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:156
-#: src/blocks/food-and-drinks/food-item/edit.js:341
+#: src/blocks/food-and-drinks/food-item/edit.js:354
 #: src/blocks/food-and-drinks/food-item/inspector.js:90
 #: src/blocks/food-and-drinks/food-item/save.js:130
 msgid "Vegetarian"
@@ -1127,7 +1127,7 @@ msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:182
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:172
-#: src/blocks/food-and-drinks/food-item/edit.js:369
+#: src/blocks/food-and-drinks/food-item/edit.js:382
 #: src/blocks/food-and-drinks/food-item/inspector.js:70
 #: src/blocks/food-and-drinks/food-item/save.js:156
 msgid "Pescatarian"
@@ -1140,37 +1140,37 @@ msgstr ""
 msgid "Vegan"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:187
+#: src/blocks/food-and-drinks/food-item/edit.js:197
 #: src/blocks/gallery-collage/edit.js:147
 #: src/blocks/services/service/edit.js:156
 msgid "Drop image to replace"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:200
+#: src/blocks/food-and-drinks/food-item/edit.js:213
 #: src/blocks/gallery-collage/edit.js:167
 #: src/blocks/services/service/edit.js:169
 #: src/components/block-gallery/gallery-image.js:213
 msgid "Remove image"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:294
+#: src/blocks/food-and-drinks/food-item/edit.js:307
 msgid "Add title…"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:325
+#: src/blocks/food-and-drinks/food-item/edit.js:338
 msgid "Hot"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:361
+#: src/blocks/food-and-drinks/food-item/edit.js:374
 #: src/blocks/food-and-drinks/food-item/save.js:143
 msgid "Gluten free"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:400
+#: src/blocks/food-and-drinks/food-item/edit.js:413
 msgid "Add description…"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:409
+#: src/blocks/food-and-drinks/food-item/edit.js:422
 msgid "$0.00"
 msgstr ""
 
