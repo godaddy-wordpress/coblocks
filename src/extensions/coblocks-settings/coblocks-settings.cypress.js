@@ -24,7 +24,7 @@ describe( 'Extension: CoBlocks Settings', function() {
 	 * Test that the CoBlocks panel typography controls function as expected.
 	 */
 	it( 'Can control typography settings as expected.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'row' );
+		helpers.addBlockToPost( 'coblocks/row', true );
 		cy.get( 'div[aria-label="Select Row Columns"]' ).find( 'div:nth-child(1) button' ).click( { force: true } );
 		cy.get( '.wp-block-coblocks-row' ).click( { force: true } );
 
@@ -43,7 +43,7 @@ describe( 'Extension: CoBlocks Settings', function() {
 	 * Test that the CoBlocks panel colors controls function as expected.
 	 */
 	it( 'Can control color settings as expected.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'hero' );
+		helpers.addBlockToPost( 'coblocks/hero', true );
 		cy.get( '.wp-block-button' ).first().click( { force: true } );
 		helpers.openSettingsPanel( /background & text color/i );
 
