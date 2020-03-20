@@ -373,7 +373,7 @@ jobs:
           name: Create a canary release on GitHub
           command: ghr -t ${GH_ACCESS_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "Latest build of the master branch. This bleeding edge version is for testing purposes only and should not be used in production." -delete -prerelease -replace canary /tmp/artifacts/coblocks-canary.zip
       - deploy:
-          name: Deploy CoBlocks theme to the staging site
+          name: Deploy CoBlocks to the staging site
           command: |
             curl -X POST https://a90.8f7.myftpupload.com/webhook-wp-cli.php \
             -H 'Content-Type: application/json' \
