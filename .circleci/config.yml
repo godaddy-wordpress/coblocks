@@ -380,7 +380,6 @@ jobs:
             -H "X-Authorization: Bearer ${STAGING_SITE_X_AUTHORIZATION}" \
             -d '[ ["plugin", "install"], ["https://github.com/godaddy-wordpress/coblocks/releases/download/canary/coblocks-canary.zip"], ["force"] ]'
 
-
   deploy:
     docker:
       - image: circleci/golang:latest-node-browsers-legacy
