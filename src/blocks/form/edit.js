@@ -19,12 +19,12 @@ import { TEMPLATE_OPTIONS } from './deprecatedTemplates/layouts';
  * WordPress dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import { Component, Fragment, createRef } from '@wordpress/element';
+import { Component, Fragment } from '@wordpress/element';
 import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/components';
 import { InspectorControls, InnerBlocks, __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
 import { compose } from '@wordpress/compose';
-import { withSelect, useDispatch } from '@wordpress/data';
+import { withSelect, withDispatch } from '@wordpress/data';
 import { createBlock, registerBlockVariation } from '@wordpress/blocks';
 import apiFetch from '@wordpress/api-fetch';
 
@@ -89,17 +89,32 @@ class FormEdit extends Component {
 			this.setState( { template: innerBlocks } );
 		}
 
-		if ( ! this.supportsInnerBlocksPicker() && ! this.supportsBlockVariationPicker() && hasInnerBlocks === false ) {
+		if ( !this.supportsInnerBlocksPicker() && !this.supportsBlockVariationPicker() && hasInnerBlocks === false ) {
 			this.setTemplate( defaultVariation );
 		}
 	}
 
 	componentDidUpdate( prevProps ) {
-		const { innerBlockCount, innerBlocks } = this.props;
+		const {
+			clientId,
+			innerBlockCount,
+			innerBlocks,
+			insertBlock,
+		} = this.props;
 
 		// Store the selected innerBlocks layout in state so that undo and redo functions work properly.
 		if ( prevProps.innerBlockCount !== innerBlockCount ) {
 			this.setState( { template: innerBlockCount ? innerBlocks : null } );
+		}
+
+		// Add field-submit-button block to the end of innerBlocks if it doesn't already exist.
+		if ( prevProps.innerBlocks.filter( block => block.name === 'coblocks/field-submit-button' ).length < 1 ) {
+			insertBlock(
+				createBlock( 'coblocks/field-submit-button', { submitButtonText: __( 'Submit Button', 'coblocks' ) } ),
+				innerBlocks.length,
+				clientId,
+				false
+			);
 		}
 	}
 
@@ -113,7 +128,7 @@ class FormEdit extends Component {
 		if ( email.length === 0 ) {
 			return false; // ignore the empty emails
 		}
-		if ( ! emailValidator.validate( email ) ) {
+		if ( !emailValidator.validate( email ) ) {
 			return { email };
 		}
 		return false;
@@ -228,9 +243,9 @@ class FormEdit extends Component {
 		return (
 			<Fragment>
 				<TextControl
-					aria-describedby={ `contact-form-${ instanceId }-email-${
+					aria-describedby={ `contact-form-${instanceId}-email-${
 						this.hasEmailError() ? 'error' : 'help'
-					}` }
+						}` }
 					label={ __( 'Email address', 'coblocks' ) }
 					placeholder={ __( 'name@example.com', 'coblocks' ) }
 					onKeyDown={ this.preventEnterSubmission }
@@ -238,7 +253,7 @@ class FormEdit extends Component {
 					onBlur={ this.onBlurTo }
 					onChange={ this.onChangeTo }
 				/>
-				<Notice isError id={ `contact-form-${ instanceId }-email-error` }>
+				<Notice isError id={ `contact-form-${instanceId}-email-error` }>
 					{ this.getfieldEmailError( fieldEmailError ) }
 				</Notice>
 				<TextControl
@@ -271,19 +286,24 @@ class FormEdit extends Component {
 	}
 
 	setTemplate( layout ) {
-		const { setAttributes } = this.props;
+		const {
+			getBlocksByClientId,
+			updateBlockAttributes,
+		} = this.props;
+
 		let submitButtonText;
-		let clientID = this.props.clientId;
+		const clientID = this.props.clientId;
+
 		map( TEMPLATE_OPTIONS, ( elem ) => {
 			if ( isEqual( elem.template, layout ) ) {
-				// // Update the child block's attributes
+				// Update the child block's attributes
 				submitButtonText = elem.submitButtonText;
 				if ( Array.isArray( submitButtonText ) ) {
 					submitButtonText = submitButtonText.join( '' );
 				}
-				setTimeout( function() {
-					let childBlocks = wp.data.select( 'core/editor' ).getBlocksByClientId( clientID )[0].innerBlocks;
-					wp.data.dispatch('core/editor').updateBlockAttributes( childBlocks[ childBlocks.length - 1 ].clientId, { submitButtonText: submitButtonText } );
+				setTimeout( function () {
+					const childBlocks = getBlocksByClientId( clientID )[ 0 ].innerBlocks;
+					updateBlockAttributes( childBlocks[ childBlocks.length - 1 ].clientId, { submitButtonText } );
 				}, 100 );
 			}
 		} );
@@ -300,10 +320,10 @@ class FormEdit extends Component {
 	}
 
 	supportsBlockVariationPicker() {
-		return !! registerBlockVariation;
+		return !!registerBlockVariation;
 	}
 
-	blockVariationPicker( ) {
+	blockVariationPicker() {
 		return (
 			<Fragment>
 				<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
@@ -311,7 +331,7 @@ class FormEdit extends Component {
 		);
 	}
 
-	innerBlocksPicker( ) {
+	innerBlocksPicker() {
 		const { hasInnerBlocks } = this.props;
 		return (
 			<Fragment>
@@ -340,7 +360,7 @@ class FormEdit extends Component {
 			'coblocks-form',
 		);
 
-		if ( hasInnerBlocks || ! this.supportsBlockVariationPicker() ) {
+		if ( hasInnerBlocks || !this.supportsBlockVariationPicker() ) {
 			return (
 				<Fragment>
 					<InspectorControls>
@@ -391,16 +411,16 @@ class FormEdit extends Component {
 								</Button>
 								{ this.state.recaptchaSiteKey !== '' &&
 									this.state.recaptchaSecretKey !== '' && (
-									<Button
-										className="components-block-coblocks-form-recaptcha-key-remove__button"
-										isLarge
-										isSecondary
-										onClick={ this.removeRecaptchaKey }
-										disabled={ this.state.recaptchaSiteKey === '' || this.state.recaptchaSecretKey === '' }
-									>
-										{ __( 'Remove', 'coblocks' ) }
-									</Button>
-								) }
+										<Button
+											className="components-block-coblocks-form-recaptcha-key-remove__button"
+											isLarge
+											isSecondary
+											onClick={ this.removeRecaptchaKey }
+											disabled={ this.state.recaptchaSiteKey === '' || this.state.recaptchaSecretKey === '' }
+										>
+											{ __( 'Remove', 'coblocks' ) }
+										</Button>
+									) }
 							</div>
 						</PanelBody>
 					</InspectorControls>
@@ -446,21 +466,38 @@ class FormEdit extends Component {
 	}
 }
 
-const applyWithSelect = withSelect( ( select, props, attributes ) => {
+const applyWithSelect = withSelect( ( select, props ) => {
 	const { getBlocks } = select( 'core/block-editor' );
+	const { getBlocksByClientId } = select( 'core/editor' );
 	const { getBlockType, getBlockVariations, getDefaultBlockVariation } = select( 'core/blocks' );
 	const innerBlocks = getBlocks( props.clientId );
-	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 
 	return {
 		// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
-		innerBlocks,
-		hasInnerBlocks: select( 'core/block-editor' ).getBlocks( props.clientId ).length > 0,
 		blockType: getBlockType( props.name ),
 		defaultVariation: typeof getDefaultBlockVariation === 'undefined' ? null : getDefaultBlockVariation( props.name ),
+		getBlocksByClientId,
+		hasInnerBlocks: select( 'core/block-editor' ).getBlocks( props.clientId ).length > 0,
+		innerBlocks,
 		variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( props.name ),
-		replaceInnerBlocks,
 	};
 } );
 
-export default compose( applyWithSelect )( FormEdit );
+const applyWithDispatch = withDispatch( ( dispatch ) => {
+	const {
+		insertBlock,
+		replaceInnerBlocks,
+	} = dispatch( 'core/block-editor' );
+
+	const {
+		updateBlockAttributes,
+	} = dispatch( 'core/editor' );
+
+	return {
+		insertBlock,
+		replaceInnerBlocks,
+		updateBlockAttributes,
+	};
+} );
+
+export default compose( [ applyWithSelect, applyWithDispatch ] )( FormEdit );
