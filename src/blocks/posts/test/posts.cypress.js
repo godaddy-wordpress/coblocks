@@ -9,11 +9,11 @@ describe( 'Test CoBlocks Posts Block', function() {
 	 * any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'Test posts block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'posts' );
+		helpers.addBlockToPost( 'coblocks/posts', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'posts' );
+		helpers.checkForBlockErrors( 'coblocks/posts' );
 
 		helpers.viewPage();
 
@@ -26,7 +26,7 @@ describe( 'Test CoBlocks Posts Block', function() {
 	 * Test the posts block column and post count controls
 	 */
 	it( 'Test posts block column and post count controls.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'posts' );
+		helpers.addBlockToPost( 'coblocks/posts', true );
 
 		cy.get( '.wp-block-coblocks-posts' ).find( '.has-2-columns' ).then( () => {
 			helpers.setInputValue( 'posts settings', 'columns', 1 );
@@ -36,7 +36,7 @@ describe( 'Test CoBlocks Posts Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'posts' );
+		helpers.checkForBlockErrors( 'coblocks/posts' );
 
 		cy.get( '.wp-block-coblocks-posts' ).click( { force: true } ).then( () => {
 			helpers.setInputValue( 'feed settings', 'number of posts', 3 );
@@ -50,7 +50,7 @@ describe( 'Test CoBlocks Posts Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'posts' );
+		helpers.checkForBlockErrors( 'coblocks/posts' );
 
 		helpers.viewPage();
 
@@ -63,7 +63,7 @@ describe( 'Test CoBlocks Posts Block', function() {
 	 * Test the posts block saves with custom classes
 	 */
 	it( 'Test posts block custom classes.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'posts' );
+		helpers.addBlockToPost( 'coblocks/posts', true );
 
 		cy.get( '.edit-post-sidebar' ).contains( /posts settings/i ).click( { force: true } );
 
@@ -73,7 +73,7 @@ describe( 'Test CoBlocks Posts Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'posts' );
+		helpers.checkForBlockErrors( 'coblocks/posts' );
 
 		cy.get( '.wp-block-coblocks-posts' )
 			.should( 'have.class', 'my-custom-class' );
@@ -91,7 +91,7 @@ describe( 'Test CoBlocks Posts Block', function() {
 	 * and are able to successfully save the block without errors.
 	 */
 	it( 'Test posts block saves with non-default style.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'posts' );
+		helpers.addBlockToPost( 'coblocks/posts', true );
 
 		cy.get( '.wp-block-coblocks-posts' ).find( '.has-2-columns' ).should( 'exist' );
 
@@ -99,7 +99,7 @@ describe( 'Test CoBlocks Posts Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'posts' );
+		helpers.checkForBlockErrors( 'coblocks/posts' );
 
 		helpers.viewPage();
 

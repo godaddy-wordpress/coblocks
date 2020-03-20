@@ -20,11 +20,11 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	 * alter any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'Test collage block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'gallery-collage' );
+		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'gallery-collage' );
+		helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
 
 		helpers.viewPage();
 
@@ -41,7 +41,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	 */
 	it( 'Test collage block saves with image upload.', function() {
 		const { fileName, imageBase, pathToFixtures } = galleryData;
-		helpers.addCoBlocksBlockToPage( true, 'gallery-collage' );
+		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
 
 		cy.get( '.wp-block[data-type="coblocks/gallery-collage"]' )
 			.click();
@@ -59,7 +59,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 
 			helpers.savePage();
 
-			helpers.checkForBlockErrors( 'gallery-collage' );
+			helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
 
 			helpers.viewPage();
 
@@ -74,7 +74,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	 * to successfully save the block without errors.
 	 */
 	it( 'Test collage block saves with images from media library.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'gallery-collage' );
+		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
 
 		cy.get( '.wp-block[data-type="coblocks/gallery-collage"]' )
 			.click()
@@ -91,7 +91,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'gallery-collage' );
+		helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
 
 		helpers.viewPage();
 
@@ -107,7 +107,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	 */
 	it( 'Test collage block saves with images captions.', function() {
 		const { caption } = galleryData;
-		helpers.addCoBlocksBlockToPage( true, 'gallery-collage' );
+		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
 
 		cy.get( '.wp-block[data-type="coblocks/gallery-collage"]' )
 			.click()
@@ -129,7 +129,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'gallery-collage' );
+		helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
 
 		helpers.viewPage();
 

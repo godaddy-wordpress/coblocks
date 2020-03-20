@@ -111,7 +111,7 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #e60023), (linkedin
 		color: $white;
 	}
 
-	// Social Colors.
+	// Social colors.
 	&.has-colors {
 
 		@each $icon, $color in $icons {

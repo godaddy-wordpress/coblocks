@@ -1,4 +1,9 @@
 /**
+ * External dependencies.
+ */
+import { kebabCase } from 'lodash';
+
+/**
  * Login to our test WordPress site
  */
 export function loginToSite() {
@@ -23,6 +28,12 @@ export function loginToSite() {
  */
 export function disableGutenbergFeatures() {
 	cy.window().then( ( win ) => {
+
+		// Enable "Top Toolbar"
+		if ( ! win.wp.data.select( 'core/edit-post' ).isFeatureActive( 'fixedToolbar' ) ) {
+			win.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'fixedToolbar' );
+		}
+
 		if ( !! win.wp.data.select( 'core/nux' ) ) { // < GB 7.2 || < WP 5.4
 			if ( ! win.wp.data.select( 'core/nux' ).areTipsEnabled() ) {
 				return;
@@ -44,12 +55,20 @@ export function disableGutenbergFeatures() {
 /**
  * From inside the WordPress editor open the CoBlocks Gutenberg editor panel
  *
- * @param bool clearEditor Whether or not to clear all blocks on the page before adding a new block to the page.
- * @param clearEditor
- * @param blockID
- * @param string blockID Optional ID to check for in the DOM. Note: If no blockID is specified, getBlockSlug() attempts to retrieve the block from the spec file.
+ * @param {string} blockName The name to find in the block inserter
+ * e.g 'core/image' or 'coblocks/accordion'.
+ * @param {boolean} clearEditor Should clear editor of all blocks
+ * @return {boolean} Returns false if the block cannot be found, true if
+ * added correctly.
  */
-export function addCoBlocksBlockToPage( clearEditor = true, blockID = '' ) {
+export function addBlockToPost( blockName, clearEditor = false ) {
+	const blockCategory = blockName.split( '/' )[ 0 ] || false;
+	const blockID = blockName.split( '/' )[ 1 ] || false;
+
+	if ( ! blockCategory || ! blockID ) {
+		return false;
+	}
+
 	if ( clearEditor ) {
 		clearBlocks();
 	}
@@ -59,10 +78,36 @@ export function addCoBlocksBlockToPage( clearEditor = true, blockID = '' ) {
 		blockID.split( '-' )[ 0 ]
 	);
 
-	cy.get( '.components-panel__body.is-opened .editor-block-list-item-coblocks-' + blockID ).first().click();
+	// cy.get( '.components-panel__body.is-opened .editor-block-list-item-coblocks-' + blockID ).first().click();
+
+	const inserterClassTarget = `.editor-block-list-item-${ kebabCase( blockName ).replace( 'core-', '' ) }`;
+	const inserterSearch = blockID.split( '-' ) ? blockID.split( '-' )[ 0 ] : blockID;
+
+	let blockIsDeprecated = false;
+
+	cy.get( '.block-list-appender .wp-block .block-editor-inserter__toggle' )
+		.click();
+
+	cy.get( '.block-editor-inserter__menu input' ).type( inserterSearch );
+
+	// deprecated block check
+	if ( ! document.getElementsByClassName( inserterClassTarget ) ) {
+		blockIsDeprecated = true;
+	}
+
+	cy.get( '.block-editor-inserter__menu' ).find( inserterClassTarget ).first().click();
+
+	if ( blockIsDeprecated ) {
+		cy.get( '.block-list-appender .wp-block .block-editor-inserter__toggle' )
+			.click();
+
+		return false;
+	}
 
 	// Make sure the block was added to our page
-	cy.get( `div[data-type="coblocks/${ blockID }"]` ).should( 'exist' );
+	cy.get( `div[data-type="${ blockName }"]` ).should( 'exist' );
+
+	return true;
 }
 
 /**
@@ -80,24 +125,17 @@ export function savePage() {
 /**
  * Check the page for block errors
  *
- * @param blockID
- * @param string blockID Optional ID to check for in the DOM.
- * Note: If no blockID is specified, getBlockSlug() attempts to
- * retrieve the block from the spec file.
- * eg: accordion => div[data-type="coblocks/accordion"]
- * @return {bool}
+ * @param {string} blockName blockName the block to check for
+ * e.g 'core/image' or 'coblocks/accordion'.
  */
-export function checkForBlockErrors( blockID = '' ) {
-	if ( ! blockID.length ) {
-		blockID = getBlockSlug();
-	}
 
-	cy.get( '#editor' ).then( ( $editor ) => {
+export function checkForBlockErrors( blockName ) {
+	cy.get( '#editor' ).then( () => {
 		disableGutenbergFeatures();
 
 		cy.get( '.block-editor-warning' ).should( 'not.exist' );
 
-		cy.get( 'div[data-type="coblocks/' + blockID + '"]' ).should( 'exist' );
+		cy.get( `div[data-type="${ blockName }"]` ).should( 'exist' );
 	} );
 }
 
@@ -105,7 +143,7 @@ export function checkForBlockErrors( blockID = '' ) {
  * View the currently edited page on the front of site
  */
 export function viewPage() {
-	cy.get( '#wpadminbar' ).then( ( $adminBar ) => {
+	cy.get( '#wpadminbar' ).then( ( ) => {
 		if ( Cypress.$( '#wp-admin-bar-view' ).length ) {
 			cy.get( '#wp-admin-bar-view' )
 				.click();
@@ -138,8 +176,8 @@ export function clearBlocks() {
  */
 export function getBlockName() {
 	const specFile = Cypress.spec.name,
-	    fileBase = capitalize( specFile.split( '/' ).pop().replace( '.cypress.js', '' ).replace( '-', ' ' ) ),
-	    blockName = fileBase.charAt( 0 ).toUpperCase() + fileBase.slice( 1 );
+		fileBase = capitalize( specFile.split( '/' ).pop().replace( '.cypress.js', '' ).replace( '-', ' ' ) ),
+		blockName = fileBase.charAt( 0 ).toUpperCase() + fileBase.slice( 1 );
 
 	return blockName;
 }
@@ -158,8 +196,7 @@ export function getBlockSlug() {
 /**
  * Click on a style button within the style panel
  *
- * @param style
- * @param string style   Name of the style to apply
+ * @param {string} style   Name of the style to apply
  */
 export function setBlockStyle( style ) {
 	openSettingsPanel( RegExp( 'styles', 'i' ) );
@@ -172,12 +209,10 @@ export function setBlockStyle( style ) {
 /**
  * Set a value within the input box
  *
- * @param string panelName   Name of the panel to open
- * @param panelName
- * @param settingName
- * @param value
- * @param ignoreCase
- * @param bool ignoreCase  Optional case sensitivity. Default will ignore case.
+ * @param {string} panelName   Name of the panel to open
+ * @param {string} settingName The name of the setting to search for
+ * @param {string} value The value to type
+ * @param {boolean} ignoreCase  Optional case sensitivity. Default will ignore case.
  */
 export function setInputValue( panelName, settingName, value, ignoreCase = true ) {
 	openSettingsPanel( ignoreCase ? RegExp( panelName, 'i' ) : panelName );
@@ -188,16 +223,15 @@ export function setInputValue( panelName, settingName, value, ignoreCase = true 
 			cy.get( Cypress.$( $settingSection ).parent() )
 				.find( 'input[type="number"]' )
 				.click()
-				.type( `{selectall}${value}` );
+				.type( `{selectall}${ value }` );
 		} );
 }
 
 /**
  * Set a Color Setting value to a custom hex color
  *
- * @param string settingName The setting to update. background|text
- * @param settingName
- * @param hexColor
+ * @param {string} settingName The setting to update. background|text
+ * @param {string} hexColor
  */
 export function setColorSetting( settingName, hexColor ) {
 	openSettingsPanel( /color settings/i );
@@ -219,8 +253,7 @@ export function setColorSetting( settingName, hexColor ) {
 /**
  * Open a certain settings panel in the right hand sidebar of the editor
  *
- * @param panelText
- * @param string panelText The panel label text to open. eg: Color Settings
+ * @param {string} panelText The panel label text to open. eg: Color Settings
  */
 export function openSettingsPanel( panelText ) {
 	cy.get( '.components-panel__body-title' )
@@ -236,8 +269,7 @@ export function openSettingsPanel( panelText ) {
 /**
  * Open a block heading controls located in block toolbar
  *
- * @param headingLevel
- * @param number headingLevel The button that should be located and clicked
+ * @param {number} headingLevel The button that should be located and clicked
  */
 export function openHeadingToolbarAndSelect( headingLevel ) {
 	cy.get( '.block-editor-block-toolbar' ).find( '.block-editor-block-toolbar__slot' ).first().find( 'button' ).each( ( button, index ) => {
@@ -251,8 +283,7 @@ export function openHeadingToolbarAndSelect( headingLevel ) {
 /**
  * Toggle an checkbox in the settings panel of the block editor
  *
- * @param checkboxLabelText
- * @param string checkboxLabelText The checkbox label text. eg: Drop Cap
+ * @param {string} checkboxLabelText The checkbox label text. eg: Drop Cap
  */
 export function toggleSettingCheckbox( checkboxLabelText ) {
 	cy.get( '.components-toggle-control__label' )
@@ -265,9 +296,8 @@ export function toggleSettingCheckbox( checkboxLabelText ) {
 /**
  * Add custom classes to a block
  *
- * @param string classes Custom classe(s) to add to the block
- * @param classes
- * @param blockID
+ * @param {string} classes Custom classe(s) to add to the block
+ * @param {string} blockID The name of the block e.g. (accordion, alert, map)
  */
 export function addCustomBlockClass( classes, blockID = '' ) {
 	if ( ! blockID.length ) {
@@ -296,9 +326,8 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 /**
  * Helper method to convert a hex value to an RGB value
  *
- * @param hex
- * @param string hex Hex string. eg: #55e7ff
- * @return string RGB string.
+ * @param {string} hex Hex string. eg: #55e7ff
+ * @return {string} RGB string.
  */
 export function hexToRGB( hex ) {
 	let r = 0,
@@ -306,12 +335,12 @@ export function hexToRGB( hex ) {
 		b = 0;
 
 	// 3 digits
-	if ( hex.length == 4 ) {
+	if ( hex.length === 4 ) {
 		r = '0x' + hex[ 1 ] + hex[ 1 ];
 		g = '0x' + hex[ 2 ] + hex[ 2 ];
 		b = '0x' + hex[ 3 ] + hex[ 3 ];
 	// 6 digits
-	} else if ( hex.length == 7 ) {
+	} else if ( hex.length === 7 ) {
 		r = '0x' + hex[ 1 ] + hex[ 2 ];
 		g = '0x' + hex[ 3 ] + hex[ 4 ];
 		b = '0x' + hex[ 5 ] + hex[ 6 ];
@@ -324,9 +353,9 @@ export function hexToRGB( hex ) {
  * Capitalize the first letter of each word in a string.
  * eg: hello world => Hello World
  *
- * @param string string The text to capitalize.
+ * @param {string} string The text to capitalize.
  *
- * @return string Altered string with capitalized letters.
+ * @return {string} Altered string with capitalized letters.
  */
 export function capitalize( string ) {
 	return string.replace( /(?:^|\s)\S/g, function( a ) {

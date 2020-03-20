@@ -24,7 +24,7 @@ describe( 'Block: Event Item', () => {
 	};
 
 	beforeEach( () => {
-		helpers.addCoBlocksBlockToPage( true, 'events' );
+		helpers.addBlockToPost( 'coblocks/events', true);
 	} );
 
 	/**
@@ -33,7 +33,7 @@ describe( 'Block: Event Item', () => {
 	 */
 	it( 'can be inserted without errors', () => {
 		cy.get( '.wp-block-coblocks-event-item' ).should( 'exist' );
-		helpers.checkForBlockErrors( 'event-item' );
+		helpers.checkForBlockErrors( 'coblocks/event-item' );
 	} );
 
 	/**
@@ -71,7 +71,7 @@ describe( 'Block: Event Item', () => {
 		helpers.setColorSetting( 'text color', textColor );
 		cy.get( '.wp-block-coblocks-event-item' ).should( 'have.css', 'color', textColorRGB );
 
-		helpers.checkForBlockErrors( 'event-item' );
+		helpers.checkForBlockErrors( 'coblocks/event-item' );
 	} );
 
 	/**
@@ -86,7 +86,7 @@ describe( 'Block: Event Item', () => {
 		helpers.addCustomBlockClass( 'my-custom-class', 'event-item' );
 		cy.get( '.wp-block-coblocks-event-item' ).should( 'have.class', 'my-custom-class' );
 
-		helpers.checkForBlockErrors( 'event-item' );
+		helpers.checkForBlockErrors( 'coblocks/event-item' );
 	} );
 } );
 

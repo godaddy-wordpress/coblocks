@@ -4,9 +4,9 @@ Plugin URI: https://www.coblocks.com
 Contributors: coblocks, godaddy, richtabor, phpbits, eherman24, jonathanbardo, jrtashjian, sbalakr2, dmatuszak, paranoia1906
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
-Tested up to: 5.3
+Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 1.21.1
+Stable tag: 1.23.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,11 +123,29 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+### Enhancements
+* Add 'Replace Image' button to core/image InspectorControls [#1385](https://github.com/godaddy-wordpress/coblocks/pull/1385)
+* Add Form block Text field [#1417](https://github.com/godaddy-wordpress/coblocks/pull/1417)
+* Introduce RTL support [#1420](https://github.com/godaddy-wordpress/coblocks/pull/1420)
+* Introduce a filter to disable the CoBlocks bundled SVG icons within the Icon Block [#1403](https://github.com/godaddy-wordpress/coblocks/pull/1403)
+* Remove jQuery from Form, Gif, Crop Settings [#1376](https://github.com/godaddy-wordpress/coblocks/pull/1376)
+* Show gallery image captions in lightbox [#1409](https://github.com/godaddy-wordpress/coblocks/pull/1409)
+
 ### Bug Fixes
-* Fix some images being completely black when filtered in the Logos block [#1358](https://github.com/godaddy-wordpress/coblocks/pull/1358)
-* Implement blockVariationPicker with Form block [#1355](https://github.com/godaddy-wordpress/coblocks/pull/1355)
+* Clicking captions opens the lightbox [#1407](https://github.com/godaddy-wordpress/coblocks/pull/1407)
+* Fix Form block for Gutenberg 7.7 [#1419](https://github.com/godaddy-wordpress/coblocks/pull/1419)
+* Fix Map block error in editor + refactor wp.api global [#1411](https://github.com/godaddy-wordpress/coblocks/pull/1411)
+* Fix Posts and Post Carousel block categories control [#1406](https://github.com/godaddy-wordpress/coblocks/pull/1406)
+* Fix image and price toggle behavior on the Food and Drinks block [#1402](https://github.com/godaddy-wordpress/coblocks/pull/1402)
+* Fix selected font family option in the typography controls [#1404](https://github.com/godaddy-wordpress/coblocks/pull/1404)
 
 ### Misc
-* Bring back one column variation to the Row block by popular demand [#1368](https://github.com/godaddy-wordpress/coblocks/pull/1368)
-* Add documentation for editor settings hooks [#1366](https://github.com/godaddy-wordpress/coblocks/pull/1366)
-* Move Features/Services HeadingToolbar controls to block toolbar [#1352](https://github.com/godaddy-wordpress/coblocks/pull/1352)
+* Add CoBlocks icon to docs [#1412](https://github.com/godaddy-wordpress/coblocks/pull/1412)
+* Add docs for CoBlocks features [#1418](https://github.com/godaddy-wordpress/coblocks/pull/1418)
+* E2E Gauntlet Testing Script [#1415](https://github.com/godaddy-wordpress/coblocks/pull/1415)
+* Introduce E2E tests for CoBlocks Settings panel [#1395](https://github.com/godaddy-wordpress/coblocks/pull/1395)
+* Minor style specificity clean-up [#1424](https://github.com/godaddy-wordpress/coblocks/pull/1424)
+* Refactor form radio and checkbox labels [#1416](https://github.com/godaddy-wordpress/coblocks/pull/1416)
+* Tweak UI to support sentence case [#1414](https://github.com/godaddy-wordpress/coblocks/pull/1414)
+* Update Tested up to value to WordPress 5.4 [#1422](https://github.com/godaddy-wordpress/coblocks/pull/1422)
+* Update npm and composer development dependencies [#1413](https://github.com/godaddy-wordpress/coblocks/pull/1413)

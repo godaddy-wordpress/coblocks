@@ -14,7 +14,7 @@ describe( 'Block: Events', function () {
 	};
 
 	beforeEach( () => {
-		helpers.addCoBlocksBlockToPage( true, 'events' );
+		helpers.addBlockToPost( 'coblocks/events', true);
 	} );
 
 	/**

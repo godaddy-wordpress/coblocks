@@ -29,9 +29,9 @@ const TEMPLATE = [
 ];
 
 const EVENTS_RANGE_OPTIONS = [
-	{ value: '1 week', label: __( '1 Week', 'coblocks' ) },
-	{ value: '2 weeks', label: __( '2 Weeks', 'coblocks' ) },
-	{ value: '1 month', label: __( '1 Month', 'coblocks' ) },
+	{ value: '1 week', label: __( '1 week', 'coblocks' ) },
+	{ value: '2 weeks', label: __( '2 weeks', 'coblocks' ) },
+	{ value: '1 month', label: __( '1 month', 'coblocks' ) },
 	{ value: 'all', label: __( 'Fetch all', 'coblocks' ) },
 ];
 
@@ -148,7 +148,7 @@ class EventsEdit extends Component {
 		const toolbarControls = [
 			{
 				icon: 'edit',
-				title: __( 'Edit Calendar URL', 'coblocks' ),
+				title: __( 'Edit calendar URL', 'coblocks' ),
 				onClick: () => this.setState( { isEditing: ! this.state.isEditing } ),
 			},
 		];
@@ -173,7 +173,7 @@ class EventsEdit extends Component {
 				{ this.state.showExternalCalendarControls && ( ! externalCalendarUrl || this.state.isEditing ) &&
 					<Placeholder
 						icon="rss"
-						label="Calendar URL">
+						label={ __( 'Calendar URL', 'coblocks' ) }>
 
 						<TextControl
 							placeholder={ __( 'Enter URL here…', 'coblocks' ) }

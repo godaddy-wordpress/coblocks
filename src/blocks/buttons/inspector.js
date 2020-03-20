@@ -27,7 +27,7 @@ class Inspector extends Component {
 				<InspectorControls>
 					<PanelBody
 						/* translators: block settings */
-						title={ __( 'Buttons Settings', 'coblocks' ) }>
+						title={ __( 'Buttons settings', 'coblocks' ) }>
 						<RangeControl
 							label={ __( 'Buttons', 'coblocks' ) }
 							value={ items }

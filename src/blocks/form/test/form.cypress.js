@@ -8,7 +8,7 @@ describe( 'Test CoBlocks Form Block', function() {
 	 * Test the coblock contact template.
 	 */
 	it( 'Test the form block contact template.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'form' );
+		helpers.addBlockToPost( 'coblocks/form', true );
 
 		cy.get( 'div.wp-block[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
 			if ( placeholder.prop( 'outerHTML' ).includes( 'block-editor-block-variation-picker' ) ) {
@@ -35,7 +35,7 @@ describe( 'Test CoBlocks Form Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'form' );
+		helpers.checkForBlockErrors( 'coblocks/form' );
 
 		helpers.viewPage();
 
@@ -78,7 +78,7 @@ describe( 'Test CoBlocks Form Block', function() {
 	 * Test the coblock RSVP template.
 	 */
 	it( 'Test the form block RSVP template.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'form' );
+		helpers.addBlockToPost( 'coblocks/form', true );
 
 		cy.get( 'div.wp-block[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
 			if ( placeholder.prop( 'outerHTML' ).includes( 'block-editor-block-variation-picker' ) ) {
@@ -109,7 +109,7 @@ describe( 'Test CoBlocks Form Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'form' );
+		helpers.checkForBlockErrors( 'coblocks/form' );
 
 		helpers.viewPage();
 
@@ -172,7 +172,7 @@ describe( 'Test CoBlocks Form Block', function() {
 	 * Test the coblock appointment template.
 	 */
 	it( 'Test the form block appointment template.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'form' );
+		helpers.addBlockToPost( 'coblocks/form', true );
 
 		cy.get( 'div.wp-block[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
 			if ( placeholder.prop( 'outerHTML' ).includes( 'block-editor-block-variation-picker' ) ) {
@@ -211,7 +211,7 @@ describe( 'Test CoBlocks Form Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'form' );
+		helpers.checkForBlockErrors( 'coblocks/form' );
 
 		helpers.viewPage();
 
@@ -242,7 +242,7 @@ describe( 'Test CoBlocks Form Block', function() {
 					break;
 
 				case 5:
-					cy.get( $element ).contains( 'Special Notes' );
+					cy.get( $element ).contains( 'Special notes' );
 					break;
 			}
 		} );

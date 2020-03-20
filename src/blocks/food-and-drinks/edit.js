@@ -21,7 +21,7 @@ import { compose } from '@wordpress/compose';
 import { withDispatch, withSelect } from '@wordpress/data';
 import { createBlock } from '@wordpress/blocks';
 import { InnerBlocks } from '@wordpress/block-editor';
-const TokenList = wp.tokenList;
+import TokenList from '@wordpress/token-list';
 
 const ALLOWED_BLOCKS = [ 'coblocks/food-item' ];
 
@@ -95,8 +95,8 @@ function replaceActiveStyle( className, activeStyle, newStyle ) {
 	return list.value;
 }
 
-class FoodItem extends Component {
-	constructor( ) {
+class FoodAndDrinksEdit extends Component {
+	constructor() {
 		super( ...arguments );
 
 		this.insertNewItem = this.insertNewItem.bind( this );
@@ -126,13 +126,11 @@ class FoodItem extends Component {
 	}
 
 	updateInnerAttributes( blockName, newAttributes ) {
-		const innerItems = this.props.getBlocksByClientId(
-			this.props.clientId
-		)[ 0 ].innerBlocks;
+		const { innerBlocks, updateBlockAttributes } = this.props;
 
-		innerItems.forEach( ( item ) => {
+		innerBlocks.forEach( ( item ) => {
 			if ( item.name === blockName ) {
-				this.props.updateBlockAttributes(
+				updateBlockAttributes(
 					item.clientId,
 					newAttributes
 				);
@@ -150,7 +148,7 @@ class FoodItem extends Component {
 	toggleImages() {
 		const { attributes, setAttributes } = this.props;
 
-		const showImages = ! attributes.showImages;
+		const showImages = !attributes.showImages;
 		setAttributes( { showImages } );
 
 		this.updateInnerAttributes( 'coblocks/food-item', { showImage: showImages } );
@@ -159,7 +157,7 @@ class FoodItem extends Component {
 	togglePrices() {
 		const { attributes, setAttributes } = this.props;
 
-		const showPrices = ! attributes.showPrices;
+		const showPrices = !attributes.showPrices;
 		setAttributes( { showPrices } );
 
 		this.updateInnerAttributes( 'coblocks/food-item', { showPrice: showPrices } );
@@ -191,9 +189,9 @@ class FoodItem extends Component {
 	}
 
 	insertNewItem() {
-		const { clientId, attributes } = this.props;
+		const { clientId, attributes, insertBlock, getBlockOrder } = this.props;
 
-		const blockOrder = this.props.getBlockOrder();
+		const blockOrder = getBlockOrder();
 		const insertAtIndex = blockOrder.indexOf( clientId ) + 1;
 
 		const innerBlocks = TEMPLATE.map( ( [ blockName, blockAttributes ] ) =>
@@ -212,7 +210,7 @@ class FoodItem extends Component {
 			innerBlocks
 		);
 
-		this.props.insertBlock( newItem, insertAtIndex );
+		insertBlock( newItem, insertAtIndex );
 	}
 
 	render() {
@@ -232,8 +230,8 @@ class FoodItem extends Component {
 		const classes = classnames( className, {
 			'has-columns': columns > 1,
 			'has-responsive-columns': columns > 1,
-			[ `has-${ columns }-columns` ]: columns > 1,
-			[ `has-${ gutter }-gutter` ]: gutter,
+			[ `has-${columns}-columns` ]: columns > 1,
+			[ `has-${gutter}-gutter` ]: gutter,
 		} );
 
 		return (
@@ -327,4 +325,4 @@ export default compose( [
 		return <WrappedComponent { ...ownProps } />;
 	},
 
-] )( FoodItem );
+] )( FoodAndDrinksEdit );

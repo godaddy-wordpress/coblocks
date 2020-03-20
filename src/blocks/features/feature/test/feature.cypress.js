@@ -19,11 +19,11 @@ describe( 'Test CoBlocks Feature Block', function() {
 	   * any settings, and are able to successfully save the block without errors.
 	   */
 	it( 'Test feature block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'features' );
+		helpers.addBlockToPost( 'coblocks/features', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'feature' );
+		helpers.checkForBlockErrors( 'coblocks/feature' );
 
 		helpers.viewPage();
 
@@ -38,7 +38,7 @@ describe( 'Test CoBlocks Feature Block', function() {
 	   */
 	it( 'Test feature block saves with color values set.', function() {
 		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB } = featureData;
-		helpers.addCoBlocksBlockToPage( true, 'features' );
+		helpers.addBlockToPost( 'coblocks/features', true );
 
 		cy.get( '.wp-block-coblocks-feature' ).first().click( { force: true } );
 
@@ -47,7 +47,7 @@ describe( 'Test CoBlocks Feature Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'feature' );
+		helpers.checkForBlockErrors( 'coblocks/feature' );
 
 		helpers.viewPage();
 
@@ -63,8 +63,8 @@ describe( 'Test CoBlocks Feature Block', function() {
    * Test the feature block saves with custom classes
    * Use one column to avoid confusion in the DOM.
    */
-	it( 'Test the feature block custom classes.', function () {
-		helpers.addCoBlocksBlockToPage( true, 'features' );
+	it( 'Test the feature block custom classes.', function() {
+		helpers.addBlockToPost( 'coblocks/features', true );
 
 		// Workaround for the advanced panel not loading consistently.
 		cy.get( '.editor-post-title' ).click();
@@ -72,6 +72,6 @@ describe( 'Test CoBlocks Feature Block', function() {
 		helpers.addCustomBlockClass( 'my-custom-class', 'feature' );
 		cy.get( '.wp-block-coblocks-feature' ).last().should( 'have.class', 'my-custom-class' );
 
-		helpers.checkForBlockErrors( 'feature' );
+		helpers.checkForBlockErrors( 'coblocks/feature' );
 	} );
 } );

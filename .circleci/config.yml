@@ -372,7 +372,7 @@ jobs:
       - run:
           name: Deploy plugin to the CoBlocks i18n staging site
           command: |
-            scp -i ~/.ssh/id_rsa -r /tmp/artifacts/coblocks-canary.zip ${STAGING_SITE_SSH_CREDS}:html/wp-content/
+            scp -r /tmp/artifacts/coblocks-canary.zip ${STAGING_SITE_SSH_CREDS}:html/wp-content/
             ssh ${STAGING_SITE_SSH_CREDS} 'cd html/wp-content && wp plugin install coblocks-canary.zip --force --activate --skip-themes --skip-plugins && rm -rf coblocks-canary.zip languages/plugins/coblocks-*'
       - deploy:
           name: Create a canary release on GitHub

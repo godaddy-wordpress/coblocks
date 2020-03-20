@@ -7,7 +7,7 @@ import 'cypress-file-upload';
 describe( 'Block: Food and Drinks', function () {
 
 	beforeEach( () => {
-		helpers.addCoBlocksBlockToPage( true, 'food-and-drinks' );
+		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
 	} );
 
 	/**
@@ -16,7 +16,7 @@ describe( 'Block: Food and Drinks', function () {
 	 */
 	it( 'can be inserted without errors', function () {
 		cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'exist' );
-		helpers.checkForBlockErrors( 'food-and-drinks' );
+		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
 	} );
 
 	/**
@@ -26,7 +26,7 @@ describe( 'Block: Food and Drinks', function () {
 		helpers.addCustomBlockClass( 'my-custom-class', 'food-and-drinks' );
 		cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'have.class', 'my-custom-class' );
 
-		helpers.checkForBlockErrors( 'food-and-drinks' );
+		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
 	} );
 
 	it( 'can set the number of columns between 2 and 4', () => {
@@ -41,9 +41,8 @@ describe( 'Block: Food and Drinks', function () {
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).find( '.wp-block[data-type="coblocks/food-item"]' ).should( 'have.length', columns );
 		} );
 
-		helpers.checkForBlockErrors( 'food-and-drinks' );
+		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
 	} );
-
 
 	it( 'can set the gutter to small, medium, large, and huge', () => {
 		helpers.setBlockStyle( 'grid' );
@@ -55,7 +54,7 @@ describe( 'Block: Food and Drinks', function () {
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', `has-${gutter.toLowerCase()}-gutter` );
 		} );
 
-		helpers.checkForBlockErrors( 'food-and-drinks' );
+		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
 	} );
 
 	it( 'can toggle images for inner food-item blocks', () => {
@@ -74,7 +73,7 @@ describe( 'Block: Food and Drinks', function () {
 			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'exist' );
 		} );
 
-		helpers.checkForBlockErrors( 'food-and-drinks' );
+		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
 	} );
 
 	it( 'can toggle prices for inner food-item blocks', () => {
@@ -93,14 +92,14 @@ describe( 'Block: Food and Drinks', function () {
 			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'not.exist' );
 		} );
 
-		helpers.checkForBlockErrors( 'food-and-drinks' );
+		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
 	} );
 
 	/**
 	 * Test the food-and-drinks block saves with custom classes
 	 */
 	it( 'Test the food-and-drinks block custom classes.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'food-and-drinks' );
+		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
 
 		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).first().click();
 
@@ -112,7 +111,7 @@ describe( 'Block: Food and Drinks', function () {
 			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'not.exist' );
 		} );
 
-		helpers.checkForBlockErrors( 'food-and-drinks' );
+		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
 	} );
 
 	it( 'can insert menu section with the same attributes', () => {
@@ -135,14 +134,14 @@ describe( 'Block: Food and Drinks', function () {
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'have.class', 'my-custom-class' );
 		} );
 
-		helpers.checkForBlockErrors( 'food-and-drinks' );
+		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
 	} );
 
 	/**
 	 * Test the food-and-drinks block saves heading levels set
 	 */
 	it( 'Updates the inner blocks when the "Heading Level" control is changed.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'food-and-drinks' );
+		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
 
 		// Assert headings levels are set to default (h4)
 		cy.get( '[data-type="coblocks/food-and-drinks"] [data-type="coblocks/food-item"] h4' ).should( 'have.length', 2 );
@@ -153,6 +152,6 @@ describe( 'Block: Food and Drinks', function () {
 
 		cy.get( '[data-type="coblocks/food-and-drinks"] [data-type="coblocks/food-item"] h2' ).should( 'have.length', 2 );
 
-		helpers.checkForBlockErrors( 'food-and-drinks' );
+		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
 	} );
 } );

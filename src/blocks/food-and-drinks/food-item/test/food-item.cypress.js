@@ -7,12 +7,12 @@ import 'cypress-file-upload';
 describe( 'Block: Food Item', () => {
 
 	beforeEach( () => {
-		helpers.addCoBlocksBlockToPage( true, 'food-and-drinks' );
+		helpers.addCoBlocksBlockToPage( 'coblocks/food-and-drinks', true );
 	} );
 
 	it( 'can be inserted without errors', () => {
 		cy.get( '.wp-block-coblocks-food-item' ).should( 'exist' );
-		helpers.checkForBlockErrors( 'food-item' );
+		helpers.checkForBlockErrors( 'coblocks/food-item' );
 	} );
 
 	it( 'removes .is-empty when the \'title\', \'description\', \'price\' attributes have content', () => {
@@ -47,7 +47,7 @@ describe( 'Block: Food Item', () => {
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /image/i ).click();
 		cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'exist' );
 
-		helpers.checkForBlockErrors( 'food-item' );
+		helpers.checkForBlockErrors( 'coblocks/food-item' );
 	} );
 
 	it( 'can toggle price', () => {
@@ -59,7 +59,7 @@ describe( 'Block: Food Item', () => {
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /price/i ).click();
 		cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'not.exist' );
 
-		helpers.checkForBlockErrors( 'food-item' );
+		helpers.checkForBlockErrors( 'coblocks/food-item' );
 	} );
 
 	it( 'can toggle attributes', () => {
@@ -80,7 +80,7 @@ describe( 'Block: Food Item', () => {
 			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( `.wp-block-coblocks-food-item__attribute--${className}` ).should( 'exist' );
 		} );
 
-		helpers.checkForBlockErrors( 'food-item' );
+		helpers.checkForBlockErrors( 'coblocks/food-item' );
 	} );
 
 	it( 'can upload image with drag-and-drop', () => {
@@ -107,6 +107,6 @@ describe( 'Block: Food Item', () => {
 			.should( 'have.attr', 'src' )
 			.should( 'include', '150x150' );
 
-		helpers.checkForBlockErrors( 'food-item' );
+		helpers.checkForBlockErrors( 'coblocks/food-item' );
 	} );
 } );
