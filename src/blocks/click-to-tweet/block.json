@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/click-to-tweet",
-	"category": "coblocks",
+	"category": "formatting",
 	"attributes": {
 		"content": {
 			"type": "string",

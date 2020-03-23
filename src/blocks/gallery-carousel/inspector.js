@@ -79,7 +79,7 @@ class Inspector extends Component {
 			isSelected && (
 				<Fragment>
 					<InspectorControls>
-						<PanelBody title={ __( 'Carousel Settings', 'coblocks' ) } >
+						<PanelBody title={ __( 'Carousel settings', 'coblocks' ) } >
 							<SizeControl { ...this.props }
 								type={ 'grid' }
 								label={ __( 'Size', 'coblocks' ) }
@@ -101,7 +101,7 @@ class Inspector extends Component {
 							}
 							{ gutter > 0 &&
 								<RangeControl
-									label={ __( 'Rounded Corners', 'coblocks' ) }
+									label={ __( 'Rounded corners', 'coblocks' ) }
 									value={ radius }
 									onChange={ this.setRadiusTo }
 									min={ 0 }
@@ -153,7 +153,7 @@ class Inspector extends Component {
 					</InspectorControls>
 					<InspectorAdvancedControls>
 						<ToggleControl
-							label={ __( 'Responsive Height', 'coblocks' ) }
+							label={ __( 'Responsive height', 'coblocks' ) }
 							checked={ !! responsiveHeight }
 							onChange={ () => setAttributes( { responsiveHeight: ! responsiveHeight } ) }
 							help={ this.getResponsiveHeightHelp }

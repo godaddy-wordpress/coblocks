@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/gist",
-	"category": "coblocks",
+	"category": "formatting",
 	"attributes": {
 		"url": {
 			"type": "string"

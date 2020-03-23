@@ -10,13 +10,13 @@ describe( 'Test CoBlocks Map Block', function() {
 	/**
 	 * Test that we can add a map block to the content, not add any text or
 	 * alter any settings, and are able to successfully save the block without errors.
-	*/
+	 */
 	it( 'Test map block saves without content values set.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'map' );
+		helpers.addBlockToPost( 'coblocks/map', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'map' );
+		helpers.checkForBlockErrors( 'coblocks/map' );
 
 		helpers.viewPage();
 
@@ -28,9 +28,9 @@ describe( 'Test CoBlocks Map Block', function() {
 	/**
 	 * Test that we can add a map block to the content, add a map
 	 * URL and save without any errors.
-	*/
+	 */
 	it( 'Test map block saves with address.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'map' );
+		helpers.addBlockToPost( 'coblocks/map', true );
 
 		cy.get( 'input[placeholder="Search for a place or address…"]' )
 			.type( mapAddress )
@@ -39,7 +39,7 @@ describe( 'Test CoBlocks Map Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'map' );
+		helpers.checkForBlockErrors( 'coblocks/map' );
 
 		helpers.viewPage();
 
@@ -49,10 +49,10 @@ describe( 'Test CoBlocks Map Block', function() {
 	} );
 
 	/**
-	* Test the map block saves height set
-	*/
+	 * Test the map block saves height set
+	 */
 	it( 'Test the map block height controls.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'map' );
+		helpers.addBlockToPost( 'coblocks/map', true );
 
 		cy.get( 'input[placeholder="Search for a place or address…"]' )
 			.type( mapAddress )
@@ -65,11 +65,11 @@ describe( 'Test CoBlocks Map Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'map' );
+		helpers.checkForBlockErrors( 'coblocks/map' );
 
 		helpers.viewPage();
 
-		cy.get( '.wp-block-coblocks-map' ).should( 'have.css', 'height', '800px' );
+		cy.get( '.wp-block-coblocks-map' ).should( 'have.css', 'min-height', '800px' );
 
 		helpers.editPage();
 	} );

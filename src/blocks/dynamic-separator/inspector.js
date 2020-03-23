@@ -42,7 +42,7 @@ class Inspector extends Component {
 				<InspectorControls>
 					<PanelBody
 						/* translators: hr is html markup (horizonal rule) */
-						title={ __( 'Dynamic HR Settings', 'coblocks' ) }>
+						title={ __( 'Dynamic HR settings', 'coblocks' ) }>
 						<BaseControl label={ __( 'Height in pixels', 'coblocks' ) }>
 							<input
 								type="number"
@@ -59,13 +59,13 @@ class Inspector extends Component {
 						</BaseControl>
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'coblocks' ) }
+						title={ __( 'Color settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: color.color,
 								onChange: setColor,
-								label: __( 'Color', 'coblocks' ),
+								label: __( 'Background color', 'coblocks' ),
 							},
 						] }
 					>

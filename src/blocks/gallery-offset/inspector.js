@@ -109,7 +109,7 @@ class Inspector extends Component {
 
 		return (
 			<InspectorControls>
-				<PanelBody title={ __( 'Offset Settings', 'coblocks' ) }>
+				<PanelBody title={ __( 'Offset settings', 'coblocks' ) }>
 					<SizeControl { ...this.props }
 						label={ __( 'Size', 'coblocks' ) }
 						type={ 'reverse-grid' }
@@ -124,7 +124,7 @@ class Inspector extends Component {
 						onChange={ ( gutter ) => setAttributes( { gutter } ) }
 					/>
 					{ gutter !== 'no' && <RangeControl
-						label={ __( 'Rounded Corners', 'coblocks' ) }
+						label={ __( 'Rounded corners', 'coblocks' ) }
 						value={ radius }
 						onChange={ this.setRadiusTo }
 						min={ 0 }
@@ -144,7 +144,7 @@ class Inspector extends Component {
 						help={ this.getCaptionsHelp }
 					/>
 					{ captions && <SelectControl
-						label={ __( 'Caption Style', 'coblocks' ) }
+						label={ __( 'Caption style', 'coblocks' ) }
 						value={ captionStyle }
 						onChange={ this.setCaptionStyleTo }
 						options={ captionOptions }

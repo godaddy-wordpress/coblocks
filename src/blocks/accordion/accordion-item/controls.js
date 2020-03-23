@@ -26,7 +26,7 @@ class Controls extends Component {
 			{
 				icon: icons.open,
 				/* translators: toggle label to display the accordion open */
-				title: __( 'Display open', 'coblocks' ),
+				title: __( 'Display as open', 'coblocks' ),
 				onClick: () => setAttributes( { open: ! open } ),
 				isActive: open === true,
 			},

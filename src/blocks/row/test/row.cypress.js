@@ -17,15 +17,15 @@ describe( 'Test CoBlocks Row Block', function() {
 	 * a single column and save content without errors.
 	 */
 	it( 'Test row block saves with one column.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'row' );
+		helpers.addBlockToPost( 'coblocks/row', true );
 
-		cy.get( 'div[aria-label="Select Row Columns"]' ).find( 'div:nth-child(1)' ).click();
+		cy.get( 'div[aria-label="Select row columns"]' ).find( 'div:nth-child(1) button' ).click( { force: true } );
 
 		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 1 );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'row' );
+		helpers.checkForBlockErrors( 'coblocks/row' );
 
 		helpers.viewPage();
 
@@ -39,16 +39,16 @@ describe( 'Test CoBlocks Row Block', function() {
 	 * two columns and save content without errors.
 	 */
 	it( 'Test row block saves with two columns.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'row' );
+		helpers.addBlockToPost( 'coblocks/row', true );
 
-		cy.get( 'div[aria-label="Select Row Columns"]' ).find( 'div:nth-child(2)' ).click();
-		cy.get( 'div[aria-label="Select Row Layout"]' ).find( 'div > button' ).first().click( { force: true } );
+		cy.get( 'div[aria-label="Select row columns"]' ).find( 'div:nth-child(2) button' ).click( { force: true } );
+		cy.get( 'div[aria-label="Select row layout"]' ).find( 'div > button' ).first().click( { force: true } );
 
 		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 2 );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'row' );
+		helpers.checkForBlockErrors( 'coblocks/row' );
 
 		helpers.viewPage();
 
@@ -62,16 +62,16 @@ describe( 'Test CoBlocks Row Block', function() {
 	 * three columns and save content without errors.
 	 */
 	it( 'Test row block saves with three columns.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'row' );
+		helpers.addBlockToPost( 'coblocks/row', true );
 
-		cy.get( 'div[aria-label="Select Row Columns"]' ).find( 'div:nth-child(3)' ).click();
-		cy.get( 'div[aria-label="Select Row Layout"]' ).find( 'div > button' ).first().click( { force: true } );
+		cy.get( 'div[aria-label="Select row columns"]' ).find( 'div:nth-child(3) button' ).click( { force: true } );
+		cy.get( 'div[aria-label="Select row layout"]' ).find( 'div > button' ).first().click( { force: true } );
 
 		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 3 );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'row' );
+		helpers.checkForBlockErrors( 'coblocks/row' );
 
 		helpers.viewPage();
 
@@ -85,16 +85,16 @@ describe( 'Test CoBlocks Row Block', function() {
 	 * four columns and save content without errors.
 	 */
 	it( 'Test row block saves with four columns.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'row' );
+		helpers.addBlockToPost( 'coblocks/row', true );
 
-		cy.get( 'div[aria-label="Select Row Columns"]' ).find( 'div:nth-child(4)' ).click();
-		cy.get( 'div[aria-label="Select Row Layout"]' ).find( 'div > button' ).first().click( { force: true } );
+		cy.get( 'div[aria-label="Select row columns"]' ).find( 'div:nth-child(4) button' ).click( { force: true } );
+		cy.get( 'div[aria-label="Select row layout"]' ).find( 'div > button' ).first().click( { force: true } );
 
 		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 4 );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'row' );
+		helpers.checkForBlockErrors( 'coblocks/row' );
 
 		helpers.viewPage();
 
@@ -109,9 +109,9 @@ describe( 'Test CoBlocks Row Block', function() {
 	 */
 	it( 'Test row block saves with color values set.', function() {
 		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB } = rowData;
-		helpers.addCoBlocksBlockToPage( true, 'row' );
+		helpers.addBlockToPost( 'coblocks/row', true );
 
-		cy.get( 'div[aria-label="Select Row Columns"]' ).find( 'div:nth-child(1)' ).click();
+		cy.get( 'div[aria-label="Select row columns"]' ).find( 'div:nth-child(1) button' ).click( { force: true } );
 
 		cy.get( '.wp-block-coblocks-row' ).click( { force: true } );
 
@@ -120,7 +120,7 @@ describe( 'Test CoBlocks Row Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'row' );
+		helpers.checkForBlockErrors( 'coblocks/row' );
 
 		helpers.viewPage();
 
@@ -136,9 +136,9 @@ describe( 'Test CoBlocks Row Block', function() {
 	 * Test the row block saves with custom classes
 	 */
 	it( 'Test the row block custom classes.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'row' );
+		helpers.addBlockToPost( 'coblocks/row', true );
 
-		cy.get( 'div[aria-label="Select Row Columns"]' ).find( 'div:nth-child(1)' ).click();
+		cy.get( 'div[aria-label="Select row columns"]' ).find( 'div:nth-child(1) button' ).click( { force: true } );
 
 		cy.get( '.wp-block-coblocks-row' ).click( { force: true } );
 
@@ -148,7 +148,7 @@ describe( 'Test CoBlocks Row Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'row' );
+		helpers.checkForBlockErrors( 'coblocks/row' );
 
 		cy.get( '.wp-block-coblocks-row' )
 			.should( 'have.class', 'my-custom-class' );

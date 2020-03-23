@@ -5,8 +5,8 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Media Card Block', function() {
 	/**
-	   * Setup media-card data
-	   */
+	 * Setup media-card data
+	 */
 	const mediaData = {
 		fileName: '150x150.png',
 		imageBase: '150x150',
@@ -18,15 +18,15 @@ describe( 'Test CoBlocks Media Card Block', function() {
 	};
 
 	/**
-	   * Test that we can add a media-card block to the content, not add any images or
-	   * alter any settings, and are able to successfully save the block without errors.
-	   */
+	 * Test that we can add a media-card block to the content, not add any images or
+	 * alter any settings, and are able to successfully save the block without errors.
+	 */
 	it( 'Test media-card block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'media-card' );
+		helpers.addBlockToPost( 'coblocks/media-card', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'media-card' );
+		helpers.checkForBlockErrors( 'coblocks/media-card' );
 
 		helpers.viewPage();
 
@@ -36,17 +36,17 @@ describe( 'Test CoBlocks Media Card Block', function() {
 	} );
 
 	/**
-	   * Test that we can upload images to block and are able
-	   * to successfully save the block without errors.
-	   */
+	 * Test that we can upload images to block and are able
+	 * to successfully save the block without errors.
+	 */
 	it( 'Test media-card block saves with image upload.', function() {
 		const { fileName, imageBase, pathToFixtures } = mediaData;
-		helpers.addCoBlocksBlockToPage( true, 'media-card' );
+		helpers.addBlockToPost( 'coblocks/media-card', true );
 
 		cy.get( '.wp-block[data-type="coblocks/media-card"]' )
 			.click();
 
-		cy.fixture( pathToFixtures + fileName, 'base64' ).then( fileContent => {
+		cy.fixture( pathToFixtures + fileName, 'base64' ).then( ( fileContent ) => {
 			cy.get( 'div[data-type="coblocks/media-card"]' )
 				.find( 'div.components-drop-zone' ).first()
 				.upload(
@@ -59,7 +59,7 @@ describe( 'Test CoBlocks Media Card Block', function() {
 
 			helpers.savePage();
 
-			helpers.checkForBlockErrors( 'media-card' );
+			helpers.checkForBlockErrors( 'coblocks/media-card' );
 
 			helpers.viewPage();
 
@@ -70,11 +70,11 @@ describe( 'Test CoBlocks Media Card Block', function() {
 	} );
 
 	/**
-	   * Test that we can add image from library and are able
-	   * to successfully save the block without errors.
-	   */
+	 * Test that we can add image from library and are able
+	 * to successfully save the block without errors.
+	 */
 	it( 'Test media-card block saves with images from media library.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'media-card' );
+		helpers.addBlockToPost( 'coblocks/media-card', true );
 
 		cy.get( '.wp-block[data-type="coblocks/media-card"]' )
 			.click()
@@ -92,7 +92,7 @@ describe( 'Test CoBlocks Media Card Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'media-card' );
+		helpers.checkForBlockErrors( 'coblocks/media-card' );
 
 		helpers.viewPage();
 
@@ -103,18 +103,18 @@ describe( 'Test CoBlocks Media Card Block', function() {
 	} );
 
 	/**
-       * Test that we can add a media-card block to the content, adjust colors
-       * and are able to successfully save the block without errors.
-	   */
+	 * Test that we can add a media-card block to the content, adjust colors
+	 * and are able to successfully save the block without errors.
+	 */
 	it( 'Test media-card block saves with color values set.', function() {
 		const { backgroundColor, backgroundColorRGB } = mediaData.colorData;
-		helpers.addCoBlocksBlockToPage( true, 'media-card' );
+		helpers.addBlockToPost( 'coblocks/media-card', true );
 
 		helpers.setColorSetting( 'background color', backgroundColor );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'media-card' );
+		helpers.checkForBlockErrors( 'coblocks/media-card' );
 
 		helpers.viewPage();
 
