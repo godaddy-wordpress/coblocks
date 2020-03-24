@@ -78,36 +78,10 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 		blockID.split( '-' )[ 0 ]
 	);
 
-	// cy.get( '.components-panel__body.is-opened .editor-block-list-item-coblocks-' + blockID ).first().click();
-
-	const inserterClassTarget = `.editor-block-list-item-${ kebabCase( blockName ).replace( 'core-', '' ) }`;
-	const inserterSearch = blockID.split( '-' ) ? blockID.split( '-' )[ 0 ] : blockID;
-
-	let blockIsDeprecated = false;
-
-	cy.get( '.block-list-appender .wp-block .block-editor-inserter__toggle' )
-		.click();
-
-	cy.get( '.block-editor-inserter__menu input' ).type( inserterSearch );
-
-	// deprecated block check
-	if ( ! document.getElementsByClassName( inserterClassTarget ) ) {
-		blockIsDeprecated = true;
-	}
-
-	cy.get( '.block-editor-inserter__menu' ).find( inserterClassTarget ).first().click();
-
-	if ( blockIsDeprecated ) {
-		cy.get( '.block-list-appender .wp-block .block-editor-inserter__toggle' )
-			.click();
-
-		return false;
-	}
+	cy.get( '.components-panel__body.is-opened .editor-block-list-item-coblocks-' + blockID ).first().click();
 
 	// Make sure the block was added to our page
 	cy.get( `div[data-type="${ blockName }"]` ).should( 'exist' );
-
-	return true;
 }
 
 /**
