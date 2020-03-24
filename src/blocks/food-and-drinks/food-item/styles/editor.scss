@@ -12,6 +12,27 @@
 		width: 100%;
 		height: 100%;
 		margin-bottom: 0;
+		align-items: center;
+
+		.components-placeholder__instructions {
+			text-align: center;
+		}
+
+		.components-placeholder__fieldset {
+			justify-content: center;
+		}
+
+		&.is-medium {
+
+			.components-placeholder__fieldset {
+				align-items: center;
+			}
+
+			.components-placeholder__label .dashicon,
+			.components-button {
+				margin-right: 0;
+			}
+		}
 	}
 
 	.components-spinner {

@@ -30,34 +30,6 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (gluten-free);
 		}
 	}
 
-	.components-placeholder {
-
-		.components-placeholder__label {
-			display: block;
-			width: 100%;
-			text-align: center;
-
-			svg {
-				margin: 0;
-			}
-		}
-
-		.components-placeholder__instructions {
-			text-align: center;
-			width: 100%;
-		}
-
-		.components-placeholder__fieldset {
-			text-align: center;
-			align-content: center;
-			justify-content: center;
-		}
-	}
-
-	.components-placeholder.is-small {
-		display: block;
-	}
-
 	&__heading-wrapper {
 		align-items: center;
 		display: flex;
