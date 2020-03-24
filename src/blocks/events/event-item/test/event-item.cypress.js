@@ -54,7 +54,7 @@ describe( 'Block: Event Item', () => {
 		} );
 
 		helpers.savePage();
-		helpers.checkForBlockErrors( 'events' );
+		helpers.checkForBlockErrors( 'coblocks/events' );
 	} );
 
 	/**

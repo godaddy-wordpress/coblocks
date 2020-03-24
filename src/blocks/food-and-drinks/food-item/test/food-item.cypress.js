@@ -7,7 +7,7 @@ import 'cypress-file-upload';
 describe( 'Block: Food Item', () => {
 
 	beforeEach( () => {
-		helpers.addCoBlocksBlockToPage( 'coblocks/food-and-drinks', true );
+		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
 	} );
 
 	it( 'can be inserted without errors', () => {

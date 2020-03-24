@@ -23,7 +23,7 @@ describe( 'Block: Events', function () {
 	 */
 	it( 'can be inserted without errors', function () {
 		cy.get( '.wp-block-coblocks-events' ).should( 'exist' );
-		helpers.checkForBlockErrors( 'events' );
+		helpers.checkForBlockErrors( 'coblocks/events' );
 	} );
 
 	/**
@@ -42,7 +42,7 @@ describe( 'Block: Events', function () {
 
 		cy.get( '.wp-block-coblocks-event-item', { timeout: 10000 } ).should( 'exist' );
 
-		helpers.checkForBlockErrors( 'events' );
+		helpers.checkForBlockErrors( 'coblocks/events' );
 	} );
 
 	/**
@@ -55,6 +55,6 @@ describe( 'Block: Events', function () {
 		helpers.addCustomBlockClass( 'my-custom-class', 'events' );
 		cy.get( '.wp-block-coblocks-events' ).last().should( 'have.class', 'my-custom-class' );
 
-		helpers.checkForBlockErrors( 'events' );
+		helpers.checkForBlockErrors( 'coblocks/events' );
 	} );
 } );
