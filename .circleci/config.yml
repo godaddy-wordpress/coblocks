@@ -242,7 +242,7 @@ jobs:
           command: |
             touch cypress.env.json
             echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
-            ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel --group linux/chrome --spec "$(cat /tmp/specstring)"
+            ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel --group e2e-chrome --spec "$(cat /tmp/specstring)"
 
   e2e-firefox:
     docker:
@@ -303,7 +303,7 @@ jobs:
           command: |
             touch cypress.env.json
             echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
-            ./node_modules/.bin/cypress run --config integrationFolder=./ --browser firefox --record --parallel --group linux/firefox --spec "$(cat /tmp/specstring)"
+            ./node_modules/.bin/cypress run --config integrationFolder=./ --browser firefox --record --parallel --group e2e-firefox --spec "$(cat /tmp/specstring)"
 
   i18n:
     docker:
