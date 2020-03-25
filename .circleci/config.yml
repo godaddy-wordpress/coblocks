@@ -243,7 +243,7 @@ jobs:
 
   e2e-firefox:
     docker:
-      - image: circleci/php:latest-node-browsers-legacy
+      - image: circleci/php:latest-node-browsers
       - image: circleci/mysql:5.7
     parallelism: 4
     steps:
