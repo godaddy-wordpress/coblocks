@@ -82,8 +82,6 @@ export function disableGutenbergFeatures() {
  * @param {string} blockName The name to find in the block inserter
  * e.g 'core/image' or 'coblocks/accordion'.
  * @param {boolean} clearEditor Should clear editor of all blocks
- * @return {boolean} Returns false if the block cannot be found, true if
- * added correctly.
  */
 export function addBlockToPost( blockName, clearEditor = false ) {
 	if ( clearEditor ) {
@@ -94,13 +92,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	const blockID = blockName.split( '/' )[ 1 ] || false;
 
 	if ( ! blockCategory || ! blockID ) {
-		return false;
-	}
-
-	// Deprecation check
-	const deprecateBlocksAgainst = 'core/buttons'; 
-	if ( deprecateBlocksAgainst.includes( blockID ) ) {
-		return false;
+		return;
 	}
 
 	const inserterClassTarget = `.editor-block-list-item-${ kebabCase( blockName ).replace( 'core-', '' ) }`;
@@ -111,13 +103,12 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 
 	cy.get( '.block-editor-inserter__menu input' ).type( inserterSearch );
 
-
 	cy.get( '.block-editor-inserter__menu' ).find( inserterClassTarget ).first().click();
 
 	// Make sure the block was added to our page
 	cy.get( `div[data-type="${ blockName }"]` ).should( 'exist' );
 
-	return true;
+	
 }
 
 /**
