@@ -155,7 +155,7 @@ export function checkForBlockErrors( blockName ) {
  */
 export function viewPage() {
 	cy.get( 'button[aria-label="Settings"]' ).then( ( settingsButton ) => {
-		if ( ! Cypress.$( settingsButton ).hasClass( 'is-pressed' ) ) {
+		if ( ! Cypress.$( settingsButton ).hasClass( 'is-pressed' ) && ! Cypress.$( settingsButton ).hasClass('is-toggled') ) {
 			cy.get( settingsButton ).click()
 		}
 	})
