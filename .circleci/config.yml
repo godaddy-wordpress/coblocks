@@ -230,11 +230,16 @@ jobs:
           command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root  --path=/tmp/wordpress
           background: true
       - run:
-          name: "Run end to end tests (Cypress.io)"
+          name: "Run end to end tests (Cypress.io) - Chrome"
           command: |
             touch cypress.env.json
             echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
             ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel --spec "$(cat /tmp/specstring)"
+      - run:
+          name: "Run end to end tests (Cypress.io) - Firefox"
+          command: |
+            touch cypress.env.json
+            echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
             ./node_modules/.bin/cypress run --config integrationFolder=./ --browser firefox --record --parallel --spec "$(cat /tmp/specstring)"
 
   i18n:
