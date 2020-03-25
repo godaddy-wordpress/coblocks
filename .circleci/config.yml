@@ -16,7 +16,11 @@ workflows:
           filters:
             tags:
               only: /^(?!canary).*$/
-      - e2e:
+      - e2e-chrome:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+      - e2e-firefox:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -33,7 +37,8 @@ workflows:
             - php56
             - php73
             - jest
-            - e2e
+            - e2e-chrome
+            - e2e-firefox
           filters:
             tags:
               only: /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*)?(\+[0-9-]+(\.[0-9]+)*)?/ # Run on semantic version tags only
