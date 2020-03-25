@@ -36,24 +36,18 @@ const save = ( { attributes } ) => {
 	const textClass = getColorClassName( 'color', textColor );
 	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
-	let classes = classnames( {
-		'has-text-color': textColor || customTextColor,
-		[ textClass ]: textClass,
-	} );
+	let classes;
 
 	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
 		classes = classnames( classnames, `coblocks-hero-${ coblocks.id }` );
 	}
 
-	const styles = {
-		color: textClass ? undefined : customTextColor,
-	};
-
 	const innerClasses = classnames(
 		'wp-block-coblocks-hero__inner',
 		...BackgroundClasses( attributes ), {
 			[ `hero-${ layout }-align` ]: layout,
-			'has-text-color': textColor && textColor.color,
+			'has-text-color': textColor || customTextColor,
+			[ textClass ]: textClass,
 			'has-padding': paddingSize && paddingSize !== 'no',
 			[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
 			[ backgroundClass ]: backgroundClass,
@@ -64,13 +58,13 @@ const save = ( { attributes } ) => {
 	const innerStyles = {
 		backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 		backgroundImage: backgroundImg && backgroundType === 'image' ? `url(${ backgroundImg })` : undefined,
-		color: textColor ? textColor.color : undefined,
+		color: textClass ? undefined : customTextColor,
 		backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 		minHeight: fullscreen ? undefined : height,
 	};
 
 	return (
-		<div className={ classes } style={ styles } >
+		<div className={ classes } >
 			<div className={ innerClasses } style={ innerStyles }>
 				{ BackgroundVideo( attributes ) }
 				<div className="wp-block-coblocks-hero__content-wrapper">

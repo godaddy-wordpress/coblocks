@@ -47,8 +47,8 @@ describe( 'Block: Highlight', function () {
 			.contains( RegExp( 'Highlight settings', 'i' ) )
 			.then( $settingSection => {
 				cy.get( Cypress.$( $settingSection ).closest( '.components-panel__body' ) )
-					.find( '.components-select-control__input' )
-					.select( 'large' );
+					.find( 'button[aria-label="Preset size"]' ).click();
+				cy.get( '.components-custom-select-control__item' ).contains(/large/i).click();
 			} );
 
 		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )

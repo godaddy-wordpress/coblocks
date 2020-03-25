@@ -43,15 +43,15 @@ describe( 'Test CoBlocks Features Block', function() {
 
 		cy.get( '.wp-block-coblocks-feature' ).should( 'have.length', 2 );
 
-		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"]' ).click( { force: true } ).clear().type( 1 );
+		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"][type="number"]' ).click( { force: true } ).clear().type( 1 );
 
 		cy.get( '.wp-block-coblocks-feature' ).should( 'have.length', 1 );
 
-		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"]' ).click( { force: true } ).clear().type( 3 );
+		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"][type="number"]' ).click( { force: true } ).clear().type( 3 );
 
 		cy.get( '.wp-block-coblocks-feature' ).should( 'have.length', 3 );
 
-		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"]' ).click( { force: true } ).clear().type( 4 );
+		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"][type="number"]' ).click( { force: true } ).clear().type( 4 );
 
 		cy.get( '.wp-block-coblocks-feature' ).should( 'have.length', 4 );
 
@@ -112,23 +112,23 @@ describe( 'Test CoBlocks Features Block', function() {
 
 	it( 'Updates the inner core/heading blocks when the "Heading Level" control is changed.', function() {
 		helpers.addBlockToPost( 'coblocks/features', true );
-		cy.get( 'div[data-type="core/heading"]' ).find( 'h4[aria-label="Add feature title…"]' );
+		cy.get( '.wp-block-coblocks-feature h4' ).should('exist');
 
 		cy.get( '.wp-block-coblocks-features' ).click();
 		helpers.openHeadingToolbarAndSelect( 2 );
-		cy.get( 'div[data-type="core/heading"]' ).find( 'h2[aria-label="Add feature title…"]' );
+		cy.get( '.wp-block-coblocks-feature h2' ).should('exist');
 
 		cy.get( '.wp-block-coblocks-features' ).click();
 		helpers.openHeadingToolbarAndSelect( 3 );
-		cy.get( 'div[data-type="core/heading"]' ).find( 'h3[aria-label="Add feature title…"]' );
+		cy.get( '.wp-block-coblocks-feature h3' ).should('exist');
 
 		cy.get( '.wp-block-coblocks-features' ).click();
 		helpers.openHeadingToolbarAndSelect( 4 );
-		cy.get( 'div[data-type="core/heading"]' ).find( 'h4[aria-label="Add feature title…"]' );
+		cy.get( '.wp-block-coblocks-feature h4' ).should('exist');
 
 		cy.get( '.wp-block-coblocks-features' ).click();
 		helpers.openHeadingToolbarAndSelect( 5 );
-		cy.get( 'div[data-type="core/heading"]' ).find( 'h5[aria-label="Add feature title…"]' );
+		cy.get( '.wp-block-coblocks-feature h5' ).should('exist');
 
 		helpers.savePage();
 		helpers.checkForBlockErrors( 'coblocks/features' );

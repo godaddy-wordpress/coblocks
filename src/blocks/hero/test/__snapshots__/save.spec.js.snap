@@ -44,7 +44,7 @@ exports[`coblocks/hero should render with customBackgroundColor attribute 1`] = 
 
 exports[`coblocks/hero should render with customTextColor attribute 1`] = `
 "<!-- wp:coblocks/hero {\\"customTextColor\\":\\"#5a4a4f\\"} -->
-<div class=\\"wp-block-coblocks-hero alignfull has-text-color\\" style=\\"color:#5a4a4f\\"><div class=\\"wp-block-coblocks-hero__inner hero-center-left-align has-padding has-huge-padding\\" style=\\"min-height:500px\\"><div class=\\"wp-block-coblocks-hero__content-wrapper\\"><div class=\\"wp-block-coblocks-hero__content\\" style=\\"max-width:560px\\"></div></div></div></div>
+<div class=\\"wp-block-coblocks-hero alignfull\\"><div class=\\"wp-block-coblocks-hero__inner hero-center-left-align has-text-color has-padding has-huge-padding\\" style=\\"color:#5a4a4f;min-height:500px\\"><div class=\\"wp-block-coblocks-hero__content-wrapper\\"><div class=\\"wp-block-coblocks-hero__content\\" style=\\"max-width:560px\\"></div></div></div></div>
 <!-- /wp:coblocks/hero -->"
 `;
 
@@ -104,6 +104,6 @@ exports[`coblocks/hero should render with fullscreen & layout attributes 9`] = `
 
 exports[`coblocks/hero should render with textColor attribute 1`] = `
 "<!-- wp:coblocks/hero {\\"textColor\\":\\"accent\\"} -->
-<div class=\\"wp-block-coblocks-hero alignfull has-text-color has-accent-color\\"><div class=\\"wp-block-coblocks-hero__inner hero-center-left-align has-padding has-huge-padding\\" style=\\"min-height:500px\\"><div class=\\"wp-block-coblocks-hero__content-wrapper\\"><div class=\\"wp-block-coblocks-hero__content\\" style=\\"max-width:560px\\"></div></div></div></div>
+<div class=\\"wp-block-coblocks-hero alignfull\\"><div class=\\"wp-block-coblocks-hero__inner hero-center-left-align has-text-color has-accent-color has-padding has-huge-padding\\" style=\\"min-height:500px\\"><div class=\\"wp-block-coblocks-hero__content-wrapper\\"><div class=\\"wp-block-coblocks-hero__content\\" style=\\"max-width:560px\\"></div></div></div></div>
 <!-- /wp:coblocks/hero -->"
 `;
