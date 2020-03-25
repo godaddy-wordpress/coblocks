@@ -38,7 +38,7 @@ describe( 'Test CoBlocks Alert Block', function() {
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/alert' );
-		
+
 		helpers.viewPage();
 
 		cy.get( '.wp-block-coblocks-alert__title' )

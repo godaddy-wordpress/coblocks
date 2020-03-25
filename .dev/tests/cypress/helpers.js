@@ -105,7 +105,6 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 
 	const inserterClassTarget = `.editor-block-list-item-${ kebabCase( blockName ).replace( 'core-', '' ) }`;
 	const inserterSearch = blockID.split( '-' ) ? blockID.split( '-' )[ 0 ] : blockID;
-	
 
 	cy.get( '.block-list-appender .wp-block .block-editor-inserter__toggle' )
 		.click();
