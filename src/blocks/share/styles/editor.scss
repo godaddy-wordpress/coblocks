@@ -1,9 +1,14 @@
 .wp-block-coblocks-social {
+	background: transparent !important;
 
 	&__button {
 
 		&:active {
 			animation: none !important;
+		}
+
+		&.is-empty {
+			opacity: 0.4 !important;
 		}
 	}
 }

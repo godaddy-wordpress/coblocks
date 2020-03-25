@@ -99,9 +99,9 @@ describe( 'Test CoBlocks Share Block', function() {
 	} );
 
 	/**
-	 * Test the coblocks share block social network visibility.
+	 * Test the coblocks share block social network visibility using sidebar toggle.
 	 */
-	it( 'Test the share block social network visibility.', function() {
+	it( 'Test the share block social network visibility using sidebar toggle.', function() {
 		helpers.addBlockToPost( 'coblocks/social', true );
 
 		toggleSocialNetwork( 'LinkedIn' );
@@ -136,6 +136,54 @@ describe( 'Test CoBlocks Share Block', function() {
 		toggleSocialNetwork( 'Email' );
 		toggleSocialNetwork( 'Tumblr' );
 		toggleSocialNetwork( 'Google' );
+
+		helpers.savePage();
+
+		helpers.viewPage();
+
+		cy.get( '.wp-block-coblocks-social li:nth-child(1) .wp-block-coblocks-social__text' ).contains( 'Share on Reddit' );
+
+		helpers.editPage();
+	} );
+
+	/**
+	 * Test the coblocks share block social network visibility using click toggle.
+	 */
+	it( 'Test the share block social network visibility using click toggle.', function() {
+		helpers.addBlockToPost( 'coblocks/social', true );
+
+		cy.get( '.wp-block-coblocks-social__button--linkedin' ).click();
+		cy.get( '.wp-block-coblocks-social__button--email' ).click();
+		cy.get( '.wp-block-coblocks-social__button--tumblr' ).click();
+		cy.get( '.wp-block-coblocks-social__button--google' ).click();
+		cy.get( '.wp-block-coblocks-social__button--reddit' ).click();
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/social' );
+
+		helpers.viewPage();
+
+		cy.get( '.wp-block-coblocks-social li:nth-child(1) .wp-block-coblocks-social__text' ).contains( 'Share on Facebook' );
+		cy.get( '.wp-block-coblocks-social li:nth-child(2) .wp-block-coblocks-social__text' ).contains( 'Share on Twitter' );
+		cy.get( '.wp-block-coblocks-social li:nth-child(3) .wp-block-coblocks-social__text' ).contains( 'Share on Pinterest' );
+		cy.get( '.wp-block-coblocks-social li:nth-child(4) .wp-block-coblocks-social__text' ).contains( 'Share on Linkedin' );
+		cy.get( '.wp-block-coblocks-social li:nth-child(5) .wp-block-coblocks-social__text' ).contains( 'Share via Email' );
+		cy.get( '.wp-block-coblocks-social li:nth-child(6) .wp-block-coblocks-social__text' ).contains( 'Share on Tumblr' );
+		cy.get( '.wp-block-coblocks-social li:nth-child(7) .wp-block-coblocks-social__text' ).contains( 'Share on Google' );
+		cy.get( '.wp-block-coblocks-social li:nth-child(8) .wp-block-coblocks-social__text' ).contains( 'Share on Reddit' );
+
+		helpers.editPage();
+
+		cy.get( '.wp-block-coblocks-social' ).click( { force: true } );
+
+		cy.get( '.wp-block-coblocks-social__button--twitter' ).click();
+		cy.get( '.wp-block-coblocks-social__button--facebook' ).click();
+		cy.get( '.wp-block-coblocks-social__button--pinterest' ).click();
+		cy.get( '.wp-block-coblocks-social__button--linkedin' ).click();
+		cy.get( '.wp-block-coblocks-social__button--email' ).click();
+		cy.get( '.wp-block-coblocks-social__button--tumblr' ).click();
+		cy.get( '.wp-block-coblocks-social__button--google' ).click();
 
 		helpers.savePage();
 
