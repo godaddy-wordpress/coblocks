@@ -76,6 +76,7 @@ jobs:
       - run:
           name: "Install Dependencies"
           command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
@@ -129,6 +130,7 @@ jobs:
       - run:
           name: "Install Dependencies"
           command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
@@ -208,6 +210,7 @@ jobs:
       - run:
           name: "Install Dependencies"
           command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             composer install
             bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
@@ -271,6 +274,7 @@ jobs:
       - run:
           name: Install composer dependencies
           command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             composer install
       - save_cache:
           key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
@@ -344,6 +348,7 @@ jobs:
       - run:
           name: Install composer dependencies
           command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             composer install
       - save_cache:
           key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
@@ -429,6 +434,7 @@ jobs:
       - run:
           name: Install composer dependencies
           command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             composer install
       - save_cache:
           key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
