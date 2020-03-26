@@ -94,12 +94,14 @@ class FormEdit extends Component {
 		}
 	}
 
-	componentDidUpdate( prevProps ) {
+	componentDidUpdate( prevProps, prevState ) {
 		const {
 			clientId,
 			innerBlockCount,
 			innerBlocks,
 			insertBlock,
+			getBlocksByClientId,
+			updateBlockAttributes,
 		} = this.props;
 
 		// Store the selected innerBlocks layout in state so that undo and redo functions work properly.
@@ -107,8 +109,23 @@ class FormEdit extends Component {
 			this.setState( { template: innerBlockCount ? innerBlocks : null } );
 		}
 
+		let submitButtonText;
+		const clientID = this.props.clientId;
+
+		map( TEMPLATE_OPTIONS, ( elem ) => {
+			if ( isEqual( elem.template, this.state.template ) ) {
+				// Update the child block's attributes
+				submitButtonText = elem.submitButtonText;
+				if ( Array.isArray( submitButtonText ) ) {
+					submitButtonText = submitButtonText.join( '' );
+				}
+				const childBlocks = getBlocksByClientId( clientID )[ 0 ].innerBlocks;
+				updateBlockAttributes( childBlocks[ childBlocks.length - 1 ].clientId, { submitButtonText } );
+			}
+		} );
+
 		// Add field-submit-button block to the end of innerBlocks if it doesn't already exist.
-		if ( prevProps.innerBlocks.filter( block => block.name === 'coblocks/field-submit-button' ).length < 1 ) {
+		if ( prevState.template !== this.state.template && Object.keys( prevProps.innerBlocks ).length && prevProps.innerBlocks.filter( block => block.name === 'coblocks/field-submit-button' ).length < 1 ) {
 			insertBlock(
 				createBlock( 'coblocks/field-submit-button', { submitButtonText: __( 'Submit Button', 'coblocks' ) } ),
 				innerBlocks.length,
@@ -286,28 +303,6 @@ class FormEdit extends Component {
 	}
 
 	setTemplate( layout ) {
-		const {
-			getBlocksByClientId,
-			updateBlockAttributes,
-		} = this.props;
-
-		let submitButtonText;
-		const clientID = this.props.clientId;
-
-		map( TEMPLATE_OPTIONS, ( elem ) => {
-			if ( isEqual( elem.template, layout ) ) {
-				// Update the child block's attributes
-				submitButtonText = elem.submitButtonText;
-				if ( Array.isArray( submitButtonText ) ) {
-					submitButtonText = submitButtonText.join( '' );
-				}
-				setTimeout( function () {
-					const childBlocks = getBlocksByClientId( clientID )[ 0 ].innerBlocks;
-					updateBlockAttributes( childBlocks[ childBlocks.length - 1 ].clientId, { submitButtonText } );
-				}, 100 );
-			}
-		} );
-
 		this.setState( { template: layout } );
 	}
 

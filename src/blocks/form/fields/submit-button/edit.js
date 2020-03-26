@@ -51,31 +51,30 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	}
 
 	return {
-		fallbackBackgroundColor: backgroundColorValue || fallbackBackgroundColor,
-		fallbackTextColor: textColorValue || fallbackTextColor,
+		fallbackBackgroundColor: backgroundColorValue || false,
+		fallbackTextColor: textColorValue || false,
 	};
 } );
 
 class CoBlocksSubmitButton extends Component {
 	componentDidUpdate( prevProps ) {
 		if (
-			! isEqual( this.props.textButtonColor, prevProps.textButtonColor ) ||
-			! isEqual( this.props.backgroundButtonColor, prevProps.backgroundButtonColor )
+			! isEqual( this.props.customTextButtonColor, prevProps.customTextButtonColor ) ||
+			! isEqual( this.props.customBackgroundButtonColor, prevProps.customBackgroundButtonColor )
 		) {
-			const buttonClasses = this.getButtonClasses();
-			this.props.setAttributes( { submitButtonClasses: buttonClasses } );
+			this.props.setAttributes( { submitButtonClasses: this.getButtonClasses() } );
 		}
 	}
 
 	getButtonClasses() {
-		const { textButtonColor, backgroundButtonColor } = this.props;
+		const { customTextButtonColor, customBackgroundButtonColor } = this.props;
 
-		const backgroundClass = get( backgroundButtonColor, 'class' );
+		const backgroundClass = get( customBackgroundButtonColor, 'class' );
 
 		return classnames( 'wp-block-button__link', {
-			'has-background': backgroundButtonColor,
+			'has-background': customBackgroundButtonColor,
 			[ backgroundClass ]: backgroundClass,
-			'has-text-color': textButtonColor,
+			'has-text-color': customTextButtonColor,
 			[ this.props.className ]: this.props.className,
 		} );
 	}
@@ -96,8 +95,6 @@ class CoBlocksSubmitButton extends Component {
 
 		const buttonStyle = { border: 'none', backgroundColor, color };
 
-		const buttonClasses = this.getButtonClasses();
-
 		return (
 			<Fragment>
 				<div className="coblocks-form__submit wp-block-button">
@@ -105,7 +102,7 @@ class CoBlocksSubmitButton extends Component {
 						placeholder={ __( 'Add text…', 'coblocks' ) }
 						value={ attributes.submitButtonText }
 						onChange={ ( nextValue ) => setAttributes( { submitButtonText: nextValue } ) }
-						className={ buttonClasses }
+						className={ this.getButtonClasses() }
 						style={ buttonStyle }
 						formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
 						keepPlaceholderOnFocus
