@@ -104,6 +104,7 @@ class Edit extends Component {
 			paddingBottom,
 			isStackedOnMobile,
 			paddingLeft,
+			verticalAlignment,
 		} = attributes;
 
 		const dropZone = (
@@ -240,6 +241,7 @@ class Edit extends Component {
 				'has-margin': marginSize && marginSize !== 'no',
 				[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'advanced',
 				'is-stacked-on-mobile': isStackedOnMobile,
+				[ `are-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment,
 			}
 		);
 

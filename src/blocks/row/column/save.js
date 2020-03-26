@@ -21,6 +21,7 @@ const save = ( { attributes } ) => {
 		marginSize,
 		paddingSize,
 		contentAlign,
+		verticalAlignment,
 	} = attributes;
 	const textClass = getColorClassName( 'color', textColor );
 
@@ -39,6 +40,7 @@ const save = ( { attributes } ) => {
 			'has-margin': marginSize && marginSize !== 'no',
 			[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' ),
 			[ `has-${ marginSize }-margin` ]: marginSize && ( marginSize !== 'advanced' ),
+			[ `is-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment,
 		} );
 
 	const innerStyles = {

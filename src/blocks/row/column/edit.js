@@ -77,6 +77,7 @@ class Edit extends Component {
 			marginSize,
 			paddingSize,
 			contentAlign,
+			verticalAlignment,
 		} = attributes;
 
 		const dropZone = (
@@ -107,6 +108,8 @@ class Edit extends Component {
 				[ `has-${ paddingSize }-padding` ]:
 					paddingSize && paddingSize !== 'advanced',
 				[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'advanced',
+				[ `is-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment,
+				'is-placeholder' : ! hasInnerBlocks
 			}
 		);
 
@@ -297,6 +300,9 @@ const applyWithSelect = withSelect( ( select, { clientId } ) => {
 		parentId,
 		nextBlockClient,
 		nextBlockClientId,
+
+		// Used in controls
+		getBlockRootClientId,
 
 		// Used in inspector
 		lastId,
