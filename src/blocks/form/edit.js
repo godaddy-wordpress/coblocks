@@ -125,7 +125,18 @@ class FormEdit extends Component {
 		} );
 
 		// Add field-submit-button block to the end of innerBlocks if it doesn't already exist.
-		if ( prevState.template !== this.state.template && Object.keys( prevProps.innerBlocks ).length && prevProps.innerBlocks.filter( block => block.name === 'coblocks/field-submit-button' ).length < 1 ) {
+		if (
+			(
+				// Check if the template does not include the submit button.
+				prevState.template !== this.state.template &&
+				Object.keys( prevProps.innerBlocks ).length &&
+				innerBlocks.filter( block => block.name === 'coblocks/field-submit-button' ).length < 1
+			) || (
+				// Check if a submit button exists when a block has been removed.
+				Object.keys( innerBlocks ).length < Object.keys( prevProps.innerBlocks ).length &&
+				innerBlocks.filter( block => block.name === 'coblocks/field-submit-button' ).length < 1
+			)
+		) {
 			insertBlock(
 				createBlock( 'coblocks/field-submit-button', { submitButtonText: __( 'Submit', 'coblocks' ) } ),
 				innerBlocks.length,
