@@ -18,7 +18,7 @@ const metadata = {
 	attributes: {
 		label: {
 			type: 'string',
-			default: __( 'Submit Button', 'coblocks' ),
+			default: __( 'Submit', 'coblocks' ),
 		},
 		required: {
 			type: 'boolean',
@@ -26,7 +26,7 @@ const metadata = {
 		},
 		submitButtonText: {
 			type: 'string',
-			default: __( 'Submit Button', 'coblocks' ),
+			default: __( 'Submit', 'coblocks' ),
 		},
 		customBackgroundButtonColor: {
 			type: 'string',
