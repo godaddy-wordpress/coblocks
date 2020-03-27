@@ -2,7 +2,7 @@ build
 dist
 node_modules
 vendor
-wordpress
+wordpress*
 test
 
 #  allow lint for tests

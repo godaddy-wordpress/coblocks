@@ -1,14 +1,14 @@
 # Copyright (c) 2020 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.22.0\n"
+"Project-Id-Version: CoBlocks 1.23.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-03-10T01:09:32+00:00\n"
+"POT-Creation-Date: 2020-03-23T16:32:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -64,8 +64,8 @@ msgstr ""
 
 #. translators: block name
 #. translators: icon label
-#: includes/class-coblocks-form.php:221
-#: includes/class-coblocks-form.php:316
+#: includes/class-coblocks-form.php:222
+#: includes/class-coblocks-form.php:317
 #: src/blocks/form/fields/email/index.js:21
 #: src/blocks/form/fields/email/index.js:34
 #: src/blocks/icon/deprecated/svgs.js:688
@@ -77,80 +77,90 @@ msgid "Email"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:256
+#: includes/class-coblocks-form.php:257
 #: src/blocks/form/fields/name/index.js:21
 #: src/blocks/form/fields/name/index.js:46
 msgid "Name"
 msgstr ""
 
-#: includes/class-coblocks-form.php:260
+#: includes/class-coblocks-form.php:261
 #: src/blocks/form/fields/name/index.js:33
 msgid "First"
 msgstr ""
 
-#: includes/class-coblocks-form.php:261
+#: includes/class-coblocks-form.php:262
 #: src/blocks/form/fields/name/index.js:37
 msgid "Last"
 msgstr ""
 
-#: includes/class-coblocks-form.php:346
+#: includes/class-coblocks-form.php:347
 #: src/blocks/form/fields/textarea/index.js:21
 msgid "Message"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:387
+#. translators: block style
+#: includes/class-coblocks-form.php:378
+#: src/blocks/form/fields/text/index.js:21
+#: src/blocks/form/fields/text/index.js:34
+#: src/blocks/share/index.js:44
+#: src/blocks/social-profiles/index.js:49
+msgid "Text"
+msgstr ""
+
+#. translators: block name
+#: includes/class-coblocks-form.php:419
 #: src/blocks/form/fields/date/index.js:21
 #: src/blocks/form/fields/date/index.js:34
 msgid "Date"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:418
+#: includes/class-coblocks-form.php:450
 #: src/blocks/form/fields/phone/index.js:21
 #: src/blocks/form/fields/phone/index.js:34
 msgid "Phone"
 msgstr ""
 
-#: includes/class-coblocks-form.php:457
+#: includes/class-coblocks-form.php:489
 #: src/blocks/form/fields/radio/index.js:21
 msgid "Choose one"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:519
-#: includes/class-coblocks-form.php:568
+#: includes/class-coblocks-form.php:551
+#: includes/class-coblocks-form.php:600
 #: src/blocks/form/fields/select/index.js:21
 #: src/blocks/form/fields/select/index.js:38
 msgid "Select"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:621
+#: includes/class-coblocks-form.php:653
 #: src/blocks/form/fields/website/index.js:21
 #: src/blocks/form/fields/website/index.js:34
 msgid "Website"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:655
+#: includes/class-coblocks-form.php:687
 #: src/blocks/form/fields/hidden/index.js:21
 #: src/blocks/form/fields/hidden/index.js:34
 msgid "Hidden"
 msgstr ""
 
-#: includes/class-coblocks-form.php:734
+#: includes/class-coblocks-form.php:766
 msgid "Submit"
 msgstr ""
 
-#: includes/class-coblocks-form.php:942
+#: includes/class-coblocks-form.php:974
 #: src/blocks/form/edit.js:265
 msgid "name"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: includes/class-coblocks-form.php:954
+#: includes/class-coblocks-form.php:986
 #: src/blocks/form/edit.js:259
 #: src/blocks/form/fields/name/index.js:53
 #: src/blocks/form/index.js:56
@@ -165,7 +175,7 @@ msgstr ""
 msgid "email"
 msgstr ""
 
-#: includes/class-coblocks-form.php:999
+#: includes/class-coblocks-form.php:1031
 msgid "Your message was sent:"
 msgstr ""
 
@@ -1064,23 +1074,23 @@ msgstr ""
 msgid "Add menu section"
 msgstr ""
 
-#: src/blocks/food-and-drinks/edit.js:28
+#: src/blocks/food-and-drinks/edit.js:29
 msgid "Menu title…"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/food-and-drinks/edit.js:37
+#: src/blocks/food-and-drinks/edit.js:38
 msgid "Grid"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/food-and-drinks/edit.js:45
+#: src/blocks/food-and-drinks/edit.js:46
 msgid "List"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:142
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:132
-#: src/blocks/food-and-drinks/food-item/edit.js:302
+#: src/blocks/food-and-drinks/food-item/edit.js:315
 #: src/blocks/food-and-drinks/food-item/inspector.js:60
 #: src/blocks/food-and-drinks/food-item/save.js:91
 msgid "Popular"
@@ -1088,7 +1098,7 @@ msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:150
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:140
-#: src/blocks/food-and-drinks/food-item/edit.js:314
+#: src/blocks/food-and-drinks/food-item/edit.js:327
 #: src/blocks/food-and-drinks/food-item/inspector.js:75
 #: src/blocks/food-and-drinks/food-item/save.js:104
 msgid "Spicy"
@@ -1103,7 +1113,7 @@ msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:166
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:156
-#: src/blocks/food-and-drinks/food-item/edit.js:341
+#: src/blocks/food-and-drinks/food-item/edit.js:354
 #: src/blocks/food-and-drinks/food-item/inspector.js:90
 #: src/blocks/food-and-drinks/food-item/save.js:130
 msgid "Vegetarian"
@@ -1117,7 +1127,7 @@ msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:182
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:172
-#: src/blocks/food-and-drinks/food-item/edit.js:369
+#: src/blocks/food-and-drinks/food-item/edit.js:382
 #: src/blocks/food-and-drinks/food-item/inspector.js:70
 #: src/blocks/food-and-drinks/food-item/save.js:156
 msgid "Pescatarian"
@@ -1130,37 +1140,37 @@ msgstr ""
 msgid "Vegan"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:187
+#: src/blocks/food-and-drinks/food-item/edit.js:197
 #: src/blocks/gallery-collage/edit.js:147
 #: src/blocks/services/service/edit.js:156
 msgid "Drop image to replace"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:200
+#: src/blocks/food-and-drinks/food-item/edit.js:213
 #: src/blocks/gallery-collage/edit.js:167
 #: src/blocks/services/service/edit.js:169
 #: src/components/block-gallery/gallery-image.js:213
 msgid "Remove image"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:294
+#: src/blocks/food-and-drinks/food-item/edit.js:307
 msgid "Add title…"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:325
+#: src/blocks/food-and-drinks/food-item/edit.js:338
 msgid "Hot"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:361
+#: src/blocks/food-and-drinks/food-item/edit.js:374
 #: src/blocks/food-and-drinks/food-item/save.js:143
 msgid "Gluten free"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:400
+#: src/blocks/food-and-drinks/food-item/edit.js:413
 msgid "Add description…"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:409
+#: src/blocks/food-and-drinks/food-item/edit.js:422
 msgid "$0.00"
 msgstr ""
 
@@ -1577,6 +1587,7 @@ msgstr ""
 
 #. translators: block keyword
 #: src/blocks/form/fields/hidden/index.js:41
+#: src/blocks/form/fields/text/index.js:45
 msgid "input"
 msgstr ""
 
@@ -1689,6 +1700,21 @@ msgstr ""
 #. translators: block keyword
 #: src/blocks/form/fields/select/index.js:45
 msgid "dropdown"
+msgstr ""
+
+#. translators: block description
+#: src/blocks/form/fields/text/index.js:36
+msgid "A text box for custom responses."
+msgstr ""
+
+#. translators: block keyword
+#: src/blocks/form/fields/text/index.js:41
+msgid "text control"
+msgstr ""
+
+#. translators: block keyword
+#: src/blocks/form/fields/text/index.js:43
+msgid "text box"
 msgstr ""
 
 #. translators: block name
@@ -5553,12 +5579,6 @@ msgstr ""
 #: src/blocks/share/index.js:33
 #: src/blocks/social-profiles/index.js:38
 msgid "Mask"
-msgstr ""
-
-#. translators: block style
-#: src/blocks/share/index.js:44
-#: src/blocks/social-profiles/index.js:49
-msgid "Text"
 msgstr ""
 
 #. translators: block style

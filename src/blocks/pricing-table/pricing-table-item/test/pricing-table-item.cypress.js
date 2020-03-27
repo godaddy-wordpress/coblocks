@@ -46,13 +46,13 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 		helpers.addBlockToPost( 'coblocks/pricing-table', true );
 
 		cy.get( '.wp-block-coblocks-pricing-table-item' ).first().click().then( $firstItem => {
-			cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__title' ).click( { force: true } ).clear().type( title );
-			cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__currency' ).click( { force: true } ).clear().type( currency );
-			cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__amount' ).click( { force: true } ).clear().type( amount );
-			cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__features' ).click( { force: true } ).clear().type( features );
-			cy.get( $firstItem ).find( '.wp-block-button' ).find( 'div[role="textbox"]' ).click( { force: true } ).clear().type( buttonText );
+			cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__title' ).click().type( `{selectall}${title}` );
+			cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__currency' ).click().type( `{selectall}${currency}` );
+			cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__amount' ).click().type( `{selectall}${amount}` );
+			cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__features' ).click().type( `{selectall}${features}` );
+			cy.get( $firstItem ).find( '.wp-block-button' ).find( 'div[role="textbox"]' ).click().type( `{selectall}${buttonText}` );
 
-			cy.get( $firstItem ).click();
+			cy.get( $firstItem ).click( 'topRight' );
 			helpers.setColorSetting( 'background color', backgroundColor );
 			helpers.setColorSetting( 'text color', textColor );
 		} );

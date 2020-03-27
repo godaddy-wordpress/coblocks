@@ -52,6 +52,12 @@ export function createNewPost() {
  */
 export function disableGutenbergFeatures() {
 	cy.window().then( ( win ) => {
+
+		// Enable "Top Toolbar"
+		if ( ! win.wp.data.select( 'core/edit-post' ).isFeatureActive( 'fixedToolbar' ) ) {
+			win.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'fixedToolbar' );
+		}
+
 		if ( !! win.wp.data.select( 'core/nux' ) ) { // < GB 7.2 || < WP 5.4
 			if ( ! win.wp.data.select( 'core/nux' ).areTipsEnabled() ) {
 				return;
