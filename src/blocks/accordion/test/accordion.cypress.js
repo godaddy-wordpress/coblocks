@@ -10,7 +10,7 @@ describe( 'Block: Accordion', () => {
 
 	/**
 	 * Test that we can add an accordion item to the content, not add any text or
-	 * alter any settings, and are able to successfuly save the block without errors.
+	 * alter any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'can be inserted without errors', () => {
 		cy.get( '[data-type="coblocks/accordion"]' ).should( 'exist' );
@@ -21,7 +21,7 @@ describe( 'Block: Accordion', () => {
 	 * Test that we can add an accordion item to the page, add content to it,
 	 * save and it displays properly without errors.
 	 */
-	it( 'can be modifed without errors', () => {
+	it( 'can be modified without errors', () => {
 		cy.get( '[data-type="coblocks/accordion"] .wp-block-coblocks-accordion-item__title' ).type( 'title' );
 		helpers.checkForBlockErrors( 'coblocks/accordion' );
 	} );
@@ -66,15 +66,15 @@ describe( 'Block: Accordion', () => {
 		helpers.setColorSetting( 'text', '#FFFFFF' );
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__title' ).should( 'have.css', 'color', `rgb(255, 255, 255)` );
 
-		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-paragraph' ).click().type( 'Content' );
+		cy.get( '[data-type="coblocks/accordion-item"] p.wp-block-paragraph' ).click().type( 'Content' );
 
 		// Content - Background color
 		helpers.setColorSetting( 'background', '#000000' );
-		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-paragraph' ).should( 'have.css', 'background-color', `rgb(0, 0, 0)` );
+		cy.get( '[data-type="coblocks/accordion-item"] p.wp-block-paragraph' ).should( 'have.css', 'background-color', `rgb(0, 0, 0)` );
 
 		// Content - Text color
 		helpers.setColorSetting( 'text', '#FFFFFF' );
-		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-paragraph' ).should( 'have.css', 'color', `rgb(255, 255, 255)` );
+		cy.get( '[data-type="coblocks/accordion-item"] p.wp-block-paragraph' ).should( 'have.css', 'color', `rgb(255, 255, 255)` );
 
 		helpers.checkForBlockErrors( 'coblocks/accordion' );
 	} );

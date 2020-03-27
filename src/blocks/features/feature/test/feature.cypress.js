@@ -66,7 +66,7 @@ describe( 'Test CoBlocks Feature Block', function() {
 	it( 'Test the feature block custom classes.', function() {
 		helpers.addBlockToPost( 'coblocks/features', true );
 
-		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"]' ).click().clear().type( 1 );
+		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"][type="number"]' ).click().clear().type( 1 );
 
 		cy.get( '.wp-block-coblocks-feature' ).click( { force: true } );
 
