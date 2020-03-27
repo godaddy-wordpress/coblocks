@@ -73,7 +73,9 @@
 		Array.from(images).forEach( function( img, imgIndex ) {
 			imagePreloader[ `img-${ imgIndex }` ] = new window.Image();
 			imagePreloader[ `img-${ imgIndex }` ].src = img.attributes.src.value;
-			imagePreloader[ `img-${ imgIndex }` ]['data-caption'] = images[ imgIndex ].nextElementSibling.innerHTML;
+			imagePreloader[ `img-${ imgIndex }` ]['data-caption'] = 
+				( images[ imgIndex ] && images[ imgIndex ].nextElementSibling ) ? 
+					images[ imgIndex ].nextElementSibling.innerHTML : '';
 
 			img.addEventListener('click', function(){
 				changeImage( imgIndex );
