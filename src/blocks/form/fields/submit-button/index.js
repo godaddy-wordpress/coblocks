@@ -44,9 +44,9 @@ const { name, category, attributes } = metadata;
 
 const settings = {
 	/* translators: block name */
-	title: __( 'Submit Button', 'coblocks' ),
+	title: __( 'Submit', 'coblocks' ),
 	/* translators: block description */
-	description: __( 'A field for collecting a validated email address.', 'coblocks' ),
+	description: __( 'A button for submitting form data.', 'coblocks' ),
 	icon,
 	keywords: [
 		'coblocks',
