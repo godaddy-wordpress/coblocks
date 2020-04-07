@@ -7,8 +7,19 @@ describe( 'Test CoBlocks Buttons Block', function() {
 	/**
 	 * Test a custom class for the buttons block.
 	 */
+	let buttonsBlockIsDeprecated = false;
+
+	before(function() {
+		cy.get( '.block-list-appender .wp-block .block-editor-inserter__toggle' ).click()
+		cy.get( '.block-editor-inserter__menu input' ).type( 'buttons' ).then( () => {
+			buttonsBlockIsDeprecated = Cypress.$('.editor-block-list-item-coblocks-buttons').length === 0;
+			cy.get( 'textarea[aria-label="Add block"]' ).click();
+		} );
+	})
+
 	it( 'Test buttons style classes are applied in the editor.', function() {
-		if ( helpers.addBlockToPost( 'coblocks/buttons', true ) ) {
+		if ( ! buttonsBlockIsDeprecated ) {
+			helpers.addBlockToPost( 'coblocks/buttons', true )
 			cy.get( '.edit-post-visual-editor' ).click( { force: true } );
 
 			cy.get( '.wp-block-coblocks-buttons .block-editor-block-list__block:first-child .block-editor-rich-text__editable' ).type( 'Button 1' );
@@ -36,7 +47,8 @@ describe( 'Test CoBlocks Buttons Block', function() {
 	 * Test that we can add a buttons block to the content.
 	 */
 	it( 'Test buttons block is not visible when empty values are saved.', function() {
-		if ( helpers.addBlockToPost( 'coblocks/buttons', true ) ) {
+		if ( ! buttonsBlockIsDeprecated ) {
+			helpers.addBlockToPost( 'coblocks/buttons', true )
 			cy.get( '.edit-post-visual-editor' ).click( { force: true } );
 
 			cy.get( '.wp-block-coblocks-buttons .block-editor-block-list__block:first-child .block-editor-rich-text__editable' ).type( 'Button 1' );
@@ -72,7 +84,8 @@ describe( 'Test CoBlocks Buttons Block', function() {
 	 * Test that we can add 4 buttons in the button block to the content.
 	 */
 	it( 'Test buttons block saves with empty values.', function() {
-		if ( helpers.addBlockToPost( 'coblocks/buttons', true ) ) {
+		if ( ! buttonsBlockIsDeprecated ) {
+			helpers.addBlockToPost( 'coblocks/buttons', true )
 			cy.get( '.wp-block-coblocks-buttons' ).click( { force: true } );
 
 			cy.get( '.components-range-control__number' ).clear().type( '3' );

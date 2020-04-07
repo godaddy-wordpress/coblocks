@@ -22,8 +22,9 @@ export const TEMPLATE_OPTIONS = [
 			[ 'coblocks/field-name', { required: false } ],
 			[ 'coblocks/field-email', { required: true } ],
 			[ 'coblocks/field-textarea', { required: true } ],
+			[ 'coblocks/field-submit-button', {} ],
 		],
-		submitButtonText: __( 'Contact Us', 'coblocks' ),
+		submitButtonText: __( 'Contact Us', 'coblocks' )
 	},
 	{
 		title: __( 'RSVP', 'coblocks' ),
@@ -35,6 +36,7 @@ export const TEMPLATE_OPTIONS = [
 			[ 'coblocks/field-email', { required: true } ],
 			[ 'coblocks/field-radio', { label: __( 'Will you be attending?', 'coblocks' ), required: true, options: [ __( 'Yes', 'coblocks' ), __( 'No', 'coblocks' ) ], isInline: true } ],
 			[ 'coblocks/field-textarea', { label: __( 'Notes?', 'coblocks' ) } ],
+			[ 'coblocks/field-submit-button', {} ],
 		],
 		/* translators: RSVP is an initialism derived from the French phrase Répondez s'il vous plaît, meaning "Please respond" to require confirmation of an invitation */
 		submitButtonText: __( 'RSVP', 'coblocks' ),
@@ -48,8 +50,8 @@ export const TEMPLATE_OPTIONS = [
 			[ 'coblocks/field-email', { required: true } ],
 			[ 'coblocks/field-date', { required: true } ],
 			[ 'coblocks/field-radio', { label: __( 'Time', 'coblocks' ), required: true, options: [ __( 'Morning', 'coblocks' ), __( 'Afternoon', 'coblocks' ) ], isInline: true } ],
-			[ 'coblocks/field-textarea', { label: __( 'Special notes', 'coblocks' ) } ],
-
+			[ 'coblocks/field-textarea', { label: __( 'Special Notes', 'coblocks' ) } ],
+			[ 'coblocks/field-submit-button', {} ],
 		],
 		submitButtonText: __( 'Book Appointment', 'coblocks' ),
 	},
