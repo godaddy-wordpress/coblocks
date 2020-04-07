@@ -157,8 +157,6 @@
 			}
 		}
 
-		&:not(.is-row-placeholder) {
-
 			.block-editor-block-list__layout {
 				height: 100%;
 				width: 100%;
@@ -196,7 +194,6 @@
 					}
 				}
 			}
-		}
 	}
 	
 	.wp-block-coblocks-row__inner {
@@ -255,9 +252,13 @@
 		.block-editor-block-list__layout {
 			align-items: center;
 		}
+	}
 
-		.wp-block-coblocks-column__inner &.is-placeholder {
-			display: flex;
+	.wp-block-coblocks-column__inner.is-placeholder {
+		display: flex;
+
+		.block-editor-block-list__layout {
+			width: 100%;
 		}
 	}
 
