@@ -26,19 +26,6 @@ const metadata = {
 			type: 'string',
 			default: null,
 		},
-		submitButtonText: {
-			type: 'string',
-			default: null,
-		},
-		customBackgroundButtonColor: {
-			type: 'string',
-		},
-		customTextButtonColor: {
-			type: 'string',
-		},
-		submitButtonClasses: {
-			type: 'string',
-		},
 	},
 };
 

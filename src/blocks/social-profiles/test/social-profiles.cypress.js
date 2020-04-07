@@ -255,8 +255,16 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 			.clear()
 			.type( '10' );
 
-		cy.get( 'button[aria-label="Add Facebook profile"]' )
-			.should( 'have.css', 'border-radius', '10px' );
+		if ( Cypress.browser.name === 'chrome' ) {
+			cy.get( 'button[aria-label="Add Facebook profile"]' )
+				.should( 'have.css', 'border-radius', '10px' );
+		} else if ( Cypress.browser.name === 'firefox' ) {
+			cy.get( 'button[aria-label="Add Facebook profile"]' )
+				.should( 'have.css', 'border-bottom-left-radius', '10px' )
+				.should( 'have.css', 'border-bottom-right-radius', '10px' )
+				.should( 'have.css', 'border-top-right-radius', '10px' )
+				.should( 'have.css', 'border-top-left-radius', '10px' );
+		}
 
 		helpers.savePage();
 
@@ -264,8 +272,16 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		helpers.viewPage();
 
-		cy.get( '.wp-block-coblocks-social-profiles ul li:first-child a' )
-			.should( 'have.css', 'border-radius', '10px' );
+		if ( Cypress.browser.name === 'chrome' ) {
+			cy.get( '.wp-block-coblocks-social-profiles ul li:first-child a' )
+				.should( 'have.css', 'border-radius', '10px' );
+		} else if ( Cypress.browser.name === 'firefox' ) {
+			cy.get( '.wp-block-coblocks-social-profiles ul li:first-child a' )
+				.should( 'have.css', 'border-bottom-left-radius', '10px' )
+				.should( 'have.css', 'border-bottom-right-radius', '10px' )
+				.should( 'have.css', 'border-top-right-radius', '10px' )
+				.should( 'have.css', 'border-top-left-radius', '10px' );
+		}
 
 		helpers.editPage();
 	} );
