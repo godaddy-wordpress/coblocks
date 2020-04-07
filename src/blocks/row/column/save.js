@@ -25,7 +25,10 @@ const save = ( { attributes } ) => {
 	} = attributes;
 	const textClass = getColorClassName( 'color', textColor );
 
-	let classes = classnames( { [ `has-text-align-${ contentAlign }` ]: contentAlign } );
+	let classes = classnames( { 
+		[ `has-text-align-${ contentAlign }` ]: contentAlign,
+		[ `is-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment, 
+	} );
 
 	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
 		classes = classnames( classes, `coblocks-column-${ coblocks.id }` );
@@ -40,7 +43,6 @@ const save = ( { attributes } ) => {
 			'has-margin': marginSize && marginSize !== 'no',
 			[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' ),
 			[ `has-${ marginSize }-margin` ]: marginSize && ( marginSize !== 'advanced' ),
-			[ `is-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment,
 		} );
 
 	const innerStyles = {

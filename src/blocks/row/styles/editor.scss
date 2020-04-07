@@ -192,7 +192,6 @@
 	}
 	
 	.wp-block-coblocks-row__inner {
-		// margin-right: -25px;
 
 		&.are-vertically-aligned-top {
 			.wp-block-coblocks-column__inner .block-editor-block-list__layout {
@@ -213,24 +212,24 @@
 		}
 	}
 	
-	.wp-block-coblocks-column__inner {
+	.wp-block-coblocks-column {
 		&.is-vertically-aligned-top {
 			.block-editor-block-list__layout {
-				display: inline-flex;
+				display: inline-grid;
 				align-items: flex-start;
 			}
 		}
 	
 		&.is-vertically-aligned-center {
 			.block-editor-block-list__layout {
-				display: inline-flex;
+				display: inline-grid;
 				align-items: center;
 			}
 		}
 	
 		&.is-vertically-aligned-bottom {
 			.block-editor-block-list__layout {
-				display: inline-flex;
+				display: inline-grid;
 				align-items: flex-end;
 			}
 		}

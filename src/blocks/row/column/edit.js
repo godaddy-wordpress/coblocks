@@ -92,7 +92,10 @@ class Edit extends Component {
 				columnBlocks &&
 				columnBlocks.innerBlocks &&
 				Object.keys( columnBlocks.innerBlocks ).length < 1,
-		}, { [ `has-text-align-${ contentAlign }` ]: contentAlign } );
+		}, { 
+			[ `has-text-align-${ contentAlign }` ]: contentAlign,
+			[ `is-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment,
+		} );
 
 		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
 			classes = classnames( classes, `coblocks-column-${ coblocks.id }` );
@@ -108,7 +111,6 @@ class Edit extends Component {
 				[ `has-${ paddingSize }-padding` ]:
 					paddingSize && paddingSize !== 'advanced',
 				[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'advanced',
-				[ `is-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment,
 				'is-placeholder' : ! hasInnerBlocks
 			}
 		);

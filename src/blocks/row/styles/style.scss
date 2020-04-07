@@ -196,3 +196,42 @@
 	}
 }
 
+.wp-block-coblocks-row__inner {
+
+	&.are-vertically-aligned-top {
+		.wp-block-coblocks-column {
+			align-self: flex-start;
+		}
+	}
+
+	&.are-vertically-aligned-center {
+		.wp-block-coblocks-column{
+			align-self: center;
+		}
+	}
+
+	&.are-vertically-aligned-bottom {
+		.wp-block-coblocks-column {
+			align-self: flex-end;
+		}
+	}
+}
+
+.wp-block-coblocks-column {
+	&.is-vertically-aligned-top {
+			display: inline-flex;
+			align-self: flex-start;
+	}
+
+	&.is-vertically-aligned-center {
+			display: inline-flex;
+			align-self: center;
+	}
+
+	&.is-vertically-aligned-bottom {
+			display: inline-flex;
+			align-self: flex-end;
+	}
+
+}
+
