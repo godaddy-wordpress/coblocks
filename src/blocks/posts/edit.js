@@ -192,12 +192,11 @@ class PostsEdit extends Component {
 	}
 
 	updateStyle( style ) {
-		const { className, setAttributes } = this.props;
+		const { setAttributes, attributes, className } = this.props;
 
 		const activeStyle = getActiveStyle( styleOptions, className );
-
 		const updatedClassName = replaceActiveStyle(
-			className,
+			attributes.className,
 			activeStyle,
 			style
 		);
@@ -209,8 +208,8 @@ class PostsEdit extends Component {
 		const {
 			attributes,
 			setAttributes,
-			className,
 			latestPosts,
+			className,
 		} = this.props;
 
 		const { categoriesList } = this.state;
@@ -378,7 +377,6 @@ class PostsEdit extends Component {
 					</Disabled>
 				}
 				{ postFeedType === 'internal' &&
-
 					<div className={ className }>
 						<div className={ classnames( 'wp-block-coblocks-posts__inner', {
 							'has-columns': columns,
