@@ -26,7 +26,6 @@ import { compose } from '@wordpress/compose';
 import {
 	Placeholder,
 	Button,
-	TextControl,
 	ResizableBox,
 	withNotices,
 } from '@wordpress/components';
@@ -283,13 +282,6 @@ class Edit extends Component {
 								onChange={ ( nextAddress ) => this.setState( { address: nextAddress.target.value } ) }
 								onKeyDown={ ( { keyCode } ) => handleKeyDown( keyCode ) }
 							/>
-							{ /* <TextControl
-								className="components-placeholder__input"
-								value={ this.state.address }
-								placeholder={ __( 'Search for a place or address…', 'coblocks' ) }
-								onChange={  }
-								
-							/> */ }
 							<Button
 								isLarge
 								isSecondary
@@ -298,8 +290,6 @@ class Edit extends Component {
 							>
 								{ __( 'Apply', 'coblocks' ) }
 							</Button>
-
-							
 						</form>
 						{ attributes.lng && attributes.hasError && (
 							<span className="invalid-google-maps-api-key">
