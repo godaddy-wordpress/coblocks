@@ -208,8 +208,8 @@ class PostsEdit extends Component {
 		const {
 			attributes,
 			setAttributes,
-			latestPosts,
 			className,
+			latestPosts,
 		} = this.props;
 
 		const { categoriesList } = this.state;
@@ -377,6 +377,7 @@ class PostsEdit extends Component {
 					</Disabled>
 				}
 				{ postFeedType === 'internal' &&
+
 					<div className={ className }>
 						<div className={ classnames( 'wp-block-coblocks-posts__inner', {
 							'has-columns': columns,
