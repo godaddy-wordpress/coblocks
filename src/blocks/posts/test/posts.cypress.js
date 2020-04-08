@@ -75,8 +75,6 @@ describe( 'Test CoBlocks Posts Block', function() {
 
 		helpers.checkForBlockErrors( 'coblocks/posts' );
 
-		cy.get( 'div[data-type="coblocks/posts"]').find( '.components-placeholder' );
-		
 		cy.get( '.wp-block-coblocks-posts' )
 			.should( 'have.class', 'my-custom-class' );
 
