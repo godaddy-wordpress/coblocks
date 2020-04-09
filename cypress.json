@@ -14,5 +14,9 @@
 		"wpUsername": "admin",
 		"wpPassword": "password"
 	},
-	"firefoxGcInterval": null
+	"firefoxGcInterval": {
+		"runMode": 3,
+		"openMode": null
+	},
+	"defaultCommandTimeout": 5000
 }
