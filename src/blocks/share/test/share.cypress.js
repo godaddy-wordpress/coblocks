@@ -57,19 +57,34 @@ describe( 'Test CoBlocks Share Block', function() {
 			.clear()
 			.type( '10' );
 
-		cy.get( '.wp-block-coblocks-social li:first-child .wp-block-coblocks-social__button' )
-			.should( 'have.css', 'border-radius', '10px' );
-
+		if ( Cypress.browser.name === 'chrome' ) {
+			cy.get( '.wp-block-coblocks-social li:first-child .wp-block-coblocks-social__button' )
+				.should( 'have.css', 'border-radius', '10px' );
+		} else if ( Cypress.browser.name === 'firefox' ) {
+			cy.get( '.wp-block-coblocks-social li:first-child .wp-block-coblocks-social__button' )
+				.should( 'have.css', 'border-bottom-left-radius', '10px' )
+				.should( 'have.css', 'border-bottom-right-radius', '10px' )
+				.should( 'have.css', 'border-top-right-radius', '10px' )
+				.should( 'have.css', 'border-top-left-radius', '10px' );
+		}
+		
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/social' );
 
 		helpers.viewPage();
 
-		cy.get( '.wp-block-coblocks-social li:first-child .wp-block-coblocks-social__button' )
+		if ( Cypress.browser.name === 'chrome' ) {
+			cy.get( '.wp-block-coblocks-social li:first-child .wp-block-coblocks-social__button' )
 			.should( 'have.css', 'border-radius', '10px' );
-
-		helpers.editPage();
+		} else if ( Cypress.browser.name === 'firefox' ) {
+			cy.get( '.wp-block-coblocks-social li:first-child .wp-block-coblocks-social__button' )
+				.should( 'have.css', 'border-bottom-left-radius', '10px' )
+				.should( 'have.css', 'border-bottom-right-radius', '10px' )
+				.should( 'have.css', 'border-top-right-radius', '10px' )
+				.should( 'have.css', 'border-top-left-radius', '10px' );
+		}
+			helpers.editPage();
 	} );
 
 	/**

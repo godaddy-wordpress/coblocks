@@ -1,4 +1,4 @@
-/*
+/**
  * Include our constants
  */
 import * as helpers from '../../../../../.dev/tests/cypress/helpers';

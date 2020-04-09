@@ -28,7 +28,9 @@ describe( 'Test CoBlocks Post Carousel Block', function() {
 	it( 'Test the post-carousel block column and post count controls.', function() {
 		helpers.addBlockToPost( 'coblocks/post-carousel', true );
 
-		cy.get( '.wp-block[data-type="coblocks/post-carousel"]' ).click();
+		helpers.selectBlock('post-carousel');
+
+		cy.get( '.wp-block-coblocks-post-carousel__item' );
 
 		[ 1, 2, 3, 4 ].forEach( ( columns ) => {
 			helpers.setInputValue( 'post carousel settings', 'columns', columns );
