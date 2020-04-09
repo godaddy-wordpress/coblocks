@@ -97,10 +97,17 @@
 
 	.is-style-list & {
 
+		.wp-block-coblocks-food-item__figure {
+			padding-top: 0;
+			max-width: 100px;
+			margin-right: 20px;
+		}
+
 		.block-editor-media-placeholder {
 			height: 75px;
 			min-height: 75px;
 			position: relative;
+			padding: 0 !important;
 
 			@include break-small() {
 				height: 100px;
