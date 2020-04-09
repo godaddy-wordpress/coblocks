@@ -11,7 +11,7 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (gluten-free);
 		position: relative;
 		width: 100%;
 
-		img {
+		img, img[itemprop="image"] {
 			height: 100%;
 			object-fit: cover;
 			position: absolute;
@@ -38,7 +38,7 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (gluten-free);
 		order: 1;
 	}
 
-	&__heading {
+	&__heading, &__heading[itemprop="name"] {
 		margin: 0;
 		padding: 0;
 	}
