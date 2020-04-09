@@ -15,8 +15,8 @@
 		"wpPassword": "password"
 	},
 	"firefoxGcInterval": {
-		"runMode": 3,
+		"runMode": null,
 		"openMode": null
-	},
+	  },
 	"defaultCommandTimeout": 5000
 }
