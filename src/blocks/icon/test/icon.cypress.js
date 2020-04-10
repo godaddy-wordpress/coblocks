@@ -5,14 +5,14 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Icon Block', function() {
 	/**
-   * Test the coblocks icon block.
-   */
+	 * Test the coblocks icon block.
+	 */
 	it( 'Test the icon block saves.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'icon' );
+		helpers.addBlockToPost( 'coblocks/icon', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'icon' );
+		helpers.checkForBlockErrors( 'coblocks/icon' );
 
 		helpers.viewPage();
 
@@ -23,20 +23,20 @@ describe( 'Test CoBlocks Icon Block', function() {
 	} );
 
 	/**
-   * Test the coblocks icon block style.
-   */
+	 * Test the coblocks icon block style.
+	 */
 	it( 'Test the icon block style.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'icon' );
+		helpers.addBlockToPost( 'coblocks/icon', true );
 
 		helpers.openSettingsPanel( 'Styles' );
 
-		cy.get( '.editor-block-styles__item[aria-label="Filled"]' ).click();
+		cy.get( '.block-editor-block-styles__item[aria-label="Filled"]' ).click();
 
 		cy.get( '.wp-block-coblocks-icon' ).should( 'have.class', 'is-style-filled' );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'icon' );
+		helpers.checkForBlockErrors( 'coblocks/icon' );
 
 		helpers.viewPage();
 
@@ -49,10 +49,10 @@ describe( 'Test CoBlocks Icon Block', function() {
 	} );
 
 	/**
-   * Test the coblocks icon block resize.
-   */
+	 * Test the coblocks icon block resize.
+	 */
 	it( 'Test the icon block resize and change icon.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'icon' );
+		helpers.addBlockToPost( 'coblocks/icon', true );
 
 		cy.get( '.components-base-control__label' ).contains( 'Size' ).then( ( $settingLabel ) => {
 			cy.get( Cypress.$( $settingLabel ).next().find( 'select' ) ).select( 'huge' );
@@ -60,7 +60,7 @@ describe( 'Test CoBlocks Icon Block', function() {
 
 		cy.get( '.wp-block-coblocks-icon__inner' ).should( 'have.css', 'width', '200px' );
 
-		cy.get( '.components-base-control__label' ).contains( 'Icon Search' ).then( ( $settingLabel ) => {
+		cy.get( '.components-base-control__label' ).contains( 'Icon search' ).then( ( $settingLabel ) => {
 			cy.get( Cypress.$( $settingLabel ).next() ).type( 'world' );
 		} );
 
@@ -70,7 +70,7 @@ describe( 'Test CoBlocks Icon Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'icon' );
+		helpers.checkForBlockErrors( 'coblocks/icon' );
 
 		helpers.viewPage();
 
@@ -81,78 +81,78 @@ describe( 'Test CoBlocks Icon Block', function() {
 	} );
 
 	/**
-   * Test the coblocks icon block link settings.
-   */
+	 * Test the coblocks icon block link settings.
+	 */
 	it( 'Test the icon block link settings.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'icon' );
+		helpers.addBlockToPost( 'coblocks/icon', true );
 
-		helpers.openSettingsPanel( 'Link Settings' );
+		helpers.openSettingsPanel( 'Link settings' );
 
 		cy.get( '.components-base-control__label' ).contains( 'Link URL' ).then( ( $settingLabel ) => {
 			cy.get( Cypress.$( $settingLabel ).next() ).type( 'https://www.google.com' );
 		} );
 
-		cy.get( '.components-base-control__label' ).contains( 'Link Rel' ).then( ( $settingLabel ) => {
-			cy.get( Cypress.$( $settingLabel ).next() ).type( 'Link Rel' );
+		cy.get( '.components-base-control__label' ).contains( 'Link rel' ).then( ( $settingLabel ) => {
+			cy.get( Cypress.$( $settingLabel ).next() ).type( 'Link rel' );
 		} );
 
-		cy.get( '.components-toggle-control__label' ).contains( 'Open in New Tab' ).then( ( $settingLabel ) => {
+		cy.get( '.components-toggle-control__label' ).contains( 'Open in new tab' ).then( ( $settingLabel ) => {
 			cy.get( Cypress.$( $settingLabel ).closest( '.components-base-control__field' ).find( '.components-form-toggle' ) ).click();
 		} );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'icon' );
+		helpers.checkForBlockErrors( 'coblocks/icon' );
 
 		helpers.viewPage();
 
 		cy.get( '.wp-block-coblocks-icon__inner a' )
 			.should( 'have.attr', 'href', 'https://www.google.com' )
-			.and( 'have.attr', 'rel', 'Link Rel noopener noreferrer' )
+			.and( 'have.attr', 'rel', 'Link rel noopener noreferrer' )
 			.and( 'have.attr', 'target', '_blank' );
 
 		helpers.editPage();
 	} );
 
 	/**
-   * Test the coblocks icon block color settings.
-   */
+	 * Test the coblocks icon block color settings.
+	 */
 	it( 'Test the icon block color settings.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'icon' );
+		helpers.addBlockToPost( 'coblocks/icon', true );
 
-		helpers.openSettingsPanel( 'Color Settings' );
+		helpers.openSettingsPanel( 'Color settings' );
 
 		cy.get( '.components-base-control__field' )
 			.contains( /icon color/i )
-			.then( $backgroundPanel => {
-				cy.get( Cypress.$( $backgroundPanel ).parent() )
+			.then( ( $backgroundPanel ) => {
+				cy.get( Cypress.$( $backgroundPanel ).parents( '.components-base-control__field' ) )
 					.contains( /custom color/i )
 					.click();
 				cy.get( '.components-color-picker__inputs-field input[type="text"]' )
 					.clear()
 					.type( '#55e7ff' );
-				cy.get( Cypress.$( $backgroundPanel ).parent() )
+				cy.get( Cypress.$( $backgroundPanel ).parents( '.components-base-control__field' ) )
 					.contains( /custom color/i )
 					.click();
 			} );
 
 		cy.get( '.components-base-control__field' )
 			.contains( /background color/i )
-			.then( $backgroundPanel => {
-				cy.get( Cypress.$( $backgroundPanel ).parent() )
+			.then( ( $backgroundPanel ) => {
+				cy.get( Cypress.$( $backgroundPanel ).parents( '.components-base-control__field' ) )
 					.contains( /custom color/i )
 					.click();
 				cy.get( '.components-color-picker__inputs-field input[type="text"]' )
 					.clear()
 					.type( '#e60099' );
-				cy.get( Cypress.$( $backgroundPanel ).parent() )
+				cy.get( Cypress.$( $backgroundPanel ).parents( '.components-base-control__field' ) )
 					.contains( /custom color/i )
 					.click();
 			} );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'icon' );
+		helpers.checkForBlockErrors( 'coblocks/icon' );
 
 		helpers.viewPage();
 
@@ -164,9 +164,9 @@ describe( 'Test CoBlocks Icon Block', function() {
 	} );
 
 	it( 'Test the icon block custom class.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'icon' );
+		helpers.addBlockToPost( 'coblocks/icon', true );
 
-		cy.get( '.components-panel__body-title' ).contains( 'Icon Settings' ).then( ( $panelTop ) => {
+		cy.get( '.components-panel__body-title' ).contains( 'Icon settings' ).then( ( $panelTop ) => {
 			const $parentPanel = Cypress.$( $panelTop ).closest( 'div.components-panel__body' );
 			if ( $parentPanel.hasClass( 'is-opened' ) ) {
 				$panelTop.click();
@@ -177,7 +177,7 @@ describe( 'Test CoBlocks Icon Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'icon' );
+		helpers.checkForBlockErrors( 'coblocks/icon' );
 
 		helpers.viewPage();
 

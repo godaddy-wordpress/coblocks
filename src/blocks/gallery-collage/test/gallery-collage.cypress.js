@@ -6,8 +6,8 @@ import 'cypress-file-upload';
 
 describe( 'Test CoBlocks Gallery Collage Block', function() {
 	/**
-	   * Setup Gallery data
-	   */
+	 * Setup Gallery data
+	 */
 	const galleryData = {
 		fileName: '150x150.png',
 		imageBase: '150x150',
@@ -16,19 +16,19 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	};
 
 	/**
-	   * Test that we can add a gallery-collage block to the content, not add any images or
-	   * alter any settings, and are able to successfuly save the block without errors.
-	   */
+	 * Test that we can add a gallery-collage block to the content, not add any images or
+	 * alter any settings, and are able to successfully save the block without errors.
+	 */
 	it( 'Test collage block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'gallery-collage' );
+		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'gallery-collage' );
+		helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
 
 		helpers.viewPage();
 
-		cy.get( '.wp-block-coblocks-gallery-collage' ).find( 'ul>li' ).each( $item => {
+		cy.get( '.wp-block-coblocks-gallery-collage' ).find( 'ul>li' ).each( ( $item ) => {
 			cy.get( $item ).should( 'be.empty' );
 		} );
 
@@ -36,17 +36,17 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	} );
 
 	/**
-	   * Test that we can upload images to block and are able
-	   * to successfuly save the block without errors.
-	   */
+	 * Test that we can upload images to block and are able
+	 * to successfully save the block without errors.
+	 */
 	it( 'Test collage block saves with image upload.', function() {
 		const { fileName, imageBase, pathToFixtures } = galleryData;
-		helpers.addCoBlocksBlockToPage( true, 'gallery-collage' );
+		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
 
 		cy.get( '.wp-block[data-type="coblocks/gallery-collage"]' )
 			.click();
 
-		cy.fixture( pathToFixtures + fileName, 'base64' ).then( fileContent => {
+		cy.fixture( pathToFixtures + fileName, 'base64' ).then( ( fileContent ) => {
 			cy.get( 'div[data-type="coblocks/gallery-collage"]' )
 				.find( 'div.components-drop-zone' ).first()
 				.upload(
@@ -59,7 +59,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 
 			helpers.savePage();
 
-			helpers.checkForBlockErrors( 'gallery-collage' );
+			helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
 
 			helpers.viewPage();
 
@@ -70,11 +70,11 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	} );
 
 	/**
-	   * Test that we can add image from library and are able
-	   * to successfuly save the block without errors.
-	   */
+	 * Test that we can add image from library and are able
+	 * to successfully save the block without errors.
+	 */
 	it( 'Test collage block saves with images from media library.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'gallery-collage' );
+		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
 
 		cy.get( '.wp-block[data-type="coblocks/gallery-collage"]' )
 			.click()
@@ -91,7 +91,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'gallery-collage' );
+		helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
 
 		helpers.viewPage();
 
@@ -102,12 +102,12 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	} );
 
 	/**
-       * Test that we can add image captions
-       * to successfuly save the block without errors.
-       */
+	 * Test that we can add image captions
+	 * to successfully save the block without errors.
+	 */
 	it( 'Test collage block saves with images captions.', function() {
 		const { caption } = galleryData;
-		helpers.addCoBlocksBlockToPage( true, 'gallery-collage' );
+		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
 
 		cy.get( '.wp-block[data-type="coblocks/gallery-collage"]' )
 			.click()
@@ -129,7 +129,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'gallery-collage' );
+		helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
 
 		helpers.viewPage();
 

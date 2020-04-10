@@ -38,7 +38,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Author Settings', 'coblocks' ) } className="blocks-font-size">
+					<PanelBody title={ __( 'Author settings', 'coblocks' ) } className="blocks-font-size">
 						<FontSizePicker
 							label={ 'test' }
 							fallbackFontSize={ fallbackFontSize }
@@ -47,18 +47,18 @@ class Inspector extends Component {
 						/>
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'coblocks' ) }
+						title={ __( 'Color settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: backgroundColor.color,
 								onChange: setBackgroundColor,
-								label: __( 'Background Color', 'coblocks' ),
+								label: __( 'Background color', 'coblocks' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color', 'coblocks' ),
+								label: __( 'Text color', 'coblocks' ),
 							},
 						] }
 					>

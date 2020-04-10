@@ -37,7 +37,7 @@ function coblocks_render_post_carousel_block( $attributes ) {
 
 		if ( is_wp_error( $recent_posts ) ) {
 
-			return '<div class="components-placeholder"><div class="notice notice-error"><strong>' . __( 'RSS Error:', 'coblocks' ) . '</strong> ' . $recent_posts->get_error_message() . '</div></div>';
+			return '<div class="components-placeholder"><div class="notice notice-error"><strong>' . __( 'RSS error:', 'coblocks' ) . '</strong> ' . $recent_posts->get_error_message() . '</div></div>';
 
 		}
 
@@ -145,8 +145,7 @@ function coblocks_post_carousel( $posts, $attributes ) {
 							),
 						),
 					)
-				),
-				true
+				)
 			)
 		)
 	);

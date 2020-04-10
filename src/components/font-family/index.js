@@ -19,7 +19,7 @@ function FontFamilyPicker( { label, value, help, instanceId, onChange, className
 		{ value: 'Times New Roman', label: 'Times New Roman' },
 		{ value: 'Georgia', label: 'Georgia' },
 	];
-	const fonts = [];
+	let fonts = [];
 
 	// Add Google Fonts
 	Object.keys( googleFonts ).forEach( ( k ) => {
@@ -31,6 +31,13 @@ function FontFamilyPicker( { label, value, help, instanceId, onChange, className
 	systemFonts.reverse().forEach( ( font ) => {
 		fonts.unshift( font );
 	} );
+
+	/**
+	 * Filter the available list of Google fonts
+	 *
+	 * @type {Array}
+	 */
+	fonts = wp.hooks.applyFilters( 'coblocks.google_fonts', fonts );
 
 	const onChangeValue = ( event ) => {
 		const meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
@@ -80,13 +87,13 @@ function FontFamilyPicker( { label, value, help, instanceId, onChange, className
 				className="components-select-control__input components-select-control__input--coblocks-fontfamily"
 				onChange={ onChangeValue }
 				aria-describedby={ !! help ? `${ id }__help` : undefined }
+				value={ value }
 				{ ...props }
 			>
 				{ fonts.map( ( option, index ) =>
 					<option
 						key={ `${ option.label }-${ option.value }-${ index }` }
 						value={ option.value }
-						defaultValue={ value === option.value ? 'selected' : '' }
 					>
 						{ option.label }
 					</option>

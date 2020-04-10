@@ -1,6 +1,15 @@
 build
 dist
 node_modules
-test
 vendor
-wordpress
+wordpress*
+test
+
+#  allow lint for tests
+*.spec.js.snap
+!**.spec.js
+!**.cypress.js
+
+# lint top level dot files
+!.*
+/node_modules/.*

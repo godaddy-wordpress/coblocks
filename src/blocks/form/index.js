@@ -16,7 +16,7 @@ import { InnerBlocks } from '@wordpress/block-editor';
  */
 const metadata = {
 	name: 'coblocks/form',
-	category: 'coblocks',
+	category: 'layout',
 	attributes: {
 		subject: {
 			type: 'string',
@@ -25,19 +25,6 @@ const metadata = {
 		to: {
 			type: 'string',
 			default: null,
-		},
-		submitButtonText: {
-			type: 'string',
-			default: null,
-		},
-		customBackgroundButtonColor: {
-			type: 'string',
-		},
-		customTextButtonColor: {
-			type: 'string',
-		},
-		submitButtonClasses: {
-			type: 'string',
 		},
 	},
 };

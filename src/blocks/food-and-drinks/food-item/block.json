@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/food-item",
-	"category": "coblocks",
+	"category": "layout",
 	"attributes": {
 		"title": {
 			"type": "string",
@@ -65,6 +65,10 @@
 		"showPrice": {
 			"type": "boolean",
 			"default": true
+		},
+		"headingLevel": {
+			"type": "integer",
+			"default": 4
 		}
 	}
 }
