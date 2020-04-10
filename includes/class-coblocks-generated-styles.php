@@ -27,11 +27,15 @@ class CoBlocks_Generated_Styles {
 
 	/**
 	 * Registers the plugin.
+	 *
+	 * @return CoBlocks_Generated_Styles
 	 */
 	public static function register() {
 		if ( null === self::$instance ) {
 			self::$instance = new CoBlocks_Generated_Styles();
 		}
+
+		return self::$instance;
 	}
 
 	/**

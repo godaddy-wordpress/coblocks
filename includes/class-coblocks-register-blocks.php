@@ -27,11 +27,15 @@ class CoBlocks_Register_Blocks {
 
 	/**
 	 * Registers the plugin.
+	 *
+	 * @return CoBlocks_Register_Blocks
 	 */
 	public static function register() {
 		if ( null === self::$instance ) {
 			self::$instance = new CoBlocks_Register_Blocks();
 		}
+
+		return self::$instance;
 	}
 
 	/**

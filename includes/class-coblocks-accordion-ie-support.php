@@ -27,11 +27,15 @@ class CoBlocks_Accordion_IE_Support {
 
 	/**
 	 * Registers the plugin.
+	 *
+	 * @return CoBlocks_Accordion_IE_Support
 	 */
 	public static function register() {
 		if ( null === self::$instance ) {
 			self::$instance = new CoBlocks_Accordion_IE_Support();
 		}
+
+		return self::$instance;
 	}
 
 	/**

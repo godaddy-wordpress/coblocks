@@ -9,7 +9,7 @@
  * Renders the `events` block on server.
  *
  * @param array  $attributes The block attributes.
- * @param string $content   The post content.
+ * @param string $content    The post content.
  *
  * @return string Returns the events content.
  */
