@@ -77,10 +77,6 @@ let icons = bundledIconsEnabled ? {
 			/* translators: icon keyword */
 			__( 'audio', 'coblocks' ),
 			/* translators: icon keyword */
-			__( 'beats', 'coblocks' ),
-			/* translators: icon keyword */
-			__( 'bose', 'coblocks' ),
-			/* translators: icon keyword */
 			__( 'headphones', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'music', 'coblocks' ),
@@ -533,8 +529,6 @@ let icons = bundledIconsEnabled ? {
 		label: __( 'Desktop', 'coblocks' ),
 		keywords: [
 			/* translators: icon keyword */
-			__( 'apple', 'coblocks' ),
-			/* translators: icon keyword */
 			__( 'computer', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'device', 'coblocks' ),
@@ -555,8 +549,6 @@ let icons = bundledIconsEnabled ? {
 		label: __( 'Devices', 'coblocks' ),
 		keywords: [
 			/* translators: icon keyword */
-			__( 'apple', 'coblocks' ),
-			/* translators: icon keyword */
 			__( 'computer', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'ipad', 'coblocks' ),
@@ -576,8 +568,6 @@ let icons = bundledIconsEnabled ? {
 		label: __( 'Laptop', 'coblocks' ),
 		keywords: [
 			/* translators: icon keyword */
-			__( 'apple', 'coblocks' ),
-			/* translators: icon keyword */
 			__( 'computer', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'device', 'coblocks' ),
@@ -596,8 +586,6 @@ let icons = bundledIconsEnabled ? {
 		/* translators: icon label */
 		label: __( 'Tablet', 'coblocks' ),
 		keywords: [
-			/* translators: icon keyword */
-			__( 'apple', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'computer', 'coblocks' ),
 			/* translators: icon keyword */
@@ -622,15 +610,11 @@ let icons = bundledIconsEnabled ? {
 		label: __( 'Watch', 'coblocks' ),
 		keywords: [
 			/* translators: icon keyword */
-			__( 'apple', 'coblocks' ),
-			/* translators: icon keyword */
 			__( 'clock', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'device', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'hour', 'coblocks' ),
-			/* translators: icon keyword */
-			__( 'mac', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'time', 'coblocks' ),
 			/* translators: icon keyword */
@@ -643,8 +627,6 @@ let icons = bundledIconsEnabled ? {
 		/* translators: icon label */
 		label: __( 'Keyboard', 'coblocks' ),
 		keywords: [
-			/* translators: icon keyword */
-			__( 'apple', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'computer', 'coblocks' ),
 			/* translators: icon keyword */
@@ -1767,8 +1749,6 @@ let icons = bundledIconsEnabled ? {
 		/* translators: icon label */
 		label: __( 'Devices Alternate', 'coblocks' ),
 		keywords: [
-			/* translators: icon keyword */
-			__( 'apple', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'computer', 'coblocks' ),
 			/* translators: icon keyword */
