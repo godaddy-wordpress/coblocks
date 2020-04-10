@@ -35,19 +35,17 @@ let icons = bundledIconsEnabled ? {
 		label: __( 'Audio', 'coblocks' ),
 		keywords: [
 			/* translators: icon keyword */
-			__( 'artist', 'coblocks' ),
-			/* translators: icon keyword */
-			__( 'creative', 'coblocks' ),
-			/* translators: icon keyword */
 			__( 'media', 'coblocks' ),
-			/* translators: icon keyword */
-			__( 'microphone', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'music', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'podcast', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'song', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'sound', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'tune', 'coblocks' ),
 		],
 		icon: <SVG viewBox="0 0 14 20" xmlns="http://www.w3.org/2000/svg"><Path d="m10 0v11.7222222c-.65555556-.3777778-1.41111111-.6111111-2.22222222-.6111111-2.45555556 0-4.44444445 1.9888889-4.44444445 4.4444445 0 2.4555555 1.98888889 4.4444444 4.44444445 4.4444444 2.45555552 0 4.44444442-1.9888889 4.44444442-4.4444444v-11.11111116h4.4444445v-4.44444444z" transform="translate(-3)" /></SVG>,
 		icon_outlined: <SVG viewBox="0 0 14 20" xmlns="http://www.w3.org/2000/svg"><Path d="m10 0v11.7222222c-.65555556-.3777778-1.41111111-.6111111-2.22222222-.6111111-2.45555556 0-4.44444445 1.9888889-4.44444445 4.4444445 0 2.4555555 1.98888889 4.4444444 4.44444445 4.4444444 2.45555552 0 4.44444442-1.9888889 4.44444442-4.4444444v-11.11111116h4.4444445v-4.44444444zm-2.22222222 17.7777778c-1.22222222 0-2.22222222-1-2.22222222-2.2222222 0-1.2222223 1-2.2222223 2.22222222-2.2222223s2.22222222 1 2.22222222 2.2222223c0 1.2222222-1 2.2222222-2.22222222 2.2222222z" transform="translate(-3)" /></SVG>,
@@ -57,19 +55,17 @@ let icons = bundledIconsEnabled ? {
 		label: __( 'Album', 'coblocks' ),
 		keywords: [
 			/* translators: icon keyword */
-			__( 'artist', 'coblocks' ),
-			/* translators: icon keyword */
 			__( 'audio', 'coblocks' ),
 			/* translators: icon keyword */
-			__( 'creative', 'coblocks' ),
+			__( 'bullseye', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'media', 'coblocks' ),
-			/* translators: icon keyword */
-			__( 'microphone', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'music', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'song', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'target', 'coblocks' ),
 		],
 		icon: <SVG viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><Path d="m10 0c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5s2.01-4.5 4.5-4.5 4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z" /></SVG>,
 		icon_outlined: <SVG viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><Path d="m10.2895508.29378255c-5.52000002 0-10.00000002 4.48-10.00000002 10.00000005 0 5.52 4.48 10 10.00000002 10 5.52 0 10-4.48 10-10 0-5.52000005-4.48-10.00000005-10-10.00000005zm0 18.00000005c-4.41000002 0-8.00000002-3.59-8.00000002-8 0-4.41000005 3.59-8.00000005 8.00000002-8.00000005 4.41 0 8 3.59 8 8.00000005 0 4.41-3.59 8-8 8zm0-12.50000005c-2.49000002 0-4.50000002 2.01-4.50000002 4.50000005 0 2.49 2.01 4.5 4.50000002 4.5 2.49 0 4.5-2.01 4.5-4.5 0-2.49000005-2.01-4.50000005-4.5-4.50000005zm0 5.50000005c-.55000002 0-1.00000002-.45-1.00000002-1 0-.55000005.45-1.00000005 1.00000002-1.00000005.55 0 1 .45 1 1.00000005 0 .55-.45 1-1 1z" transform="translate(-.289551 -.293783)" /></SVG>,
@@ -87,7 +83,11 @@ let icons = bundledIconsEnabled ? {
 			/* translators: icon keyword */
 			__( 'headphones', 'coblocks' ),
 			/* translators: icon keyword */
-			__( 'microphone', 'coblocks' ),
+			__( 'music', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'song', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'sound', 'coblocks' ),
 		],
 		icon: <SVG viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><Path d="m10.0384629.01236979c-5.23157899 0-9.47368425 4.24210526-9.47368425 9.47368421v7.3684211c0 1.7473684 1.41052631 3.1578947 3.15789473 3.1578947h3.15789474v-8.4210526h-4.21052632v-2.1052632c0-4.07368421 3.29473685-7.36842105 7.3684211-7.36842105 4.0736842 0 7.368421 3.29473684 7.368421 7.36842105v2.1052632h-4.2105263v8.4210526h3.1578947c1.7473685 0 3.1578948-1.4105263 3.1578948-3.1578947v-7.3684211c0-5.23157895-4.2421053-9.47368421-9.4736842-9.47368421z" fillRule="evenodd" /></SVG>,
 	},
@@ -96,47 +96,35 @@ let icons = bundledIconsEnabled ? {
 		label: __( 'Volume', 'coblocks' ),
 		keywords: [
 			/* translators: icon keyword */
-			__( 'artist', 'coblocks' ),
-			/* translators: icon keyword */
 			__( 'audio', 'coblocks' ),
 			/* translators: icon keyword */
-			__( 'creative', 'coblocks' ),
-			/* translators: icon keyword */
 			__( 'media', 'coblocks' ),
-			/* translators: icon keyword */
-			__( 'microphone', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'music', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'song', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'sound', 'coblocks' ),
 		],
 		icon: <SVG viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><Path d="m0 6.66666667v6.66666663h4.44444444l5.55555556 5.5555556v-17.77777779l-5.55555556 5.55555556zm15 3.33333333c0-1.96666667-1.1333333-3.65555556-2.7777778-4.47777778v8.94444448c1.6444445-.8111111 2.7777778-2.5 2.7777778-4.4666667zm-2.7777778-9.74444444v2.28888888c3.2111111.95555556 5.5555556 3.93333334 5.5555556 7.45555556 0 3.5222222-2.3444445 6.5-5.5555556 7.4555556v2.2888888c4.4555556-1.0111111 7.7777778-4.9888888 7.7777778-9.7444444 0-4.75555556-3.3222222-8.73333333-7.7777778-9.74444444z" /></SVG>,
 		icon_outlined: <SVG viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><Path d="m.99267578 6.72328559v6.66666671h4.44444445l5.55555557 5.5555555v-17.77777777l-5.55555557 5.55555556zm7.77777778-.18888889v7.0444444l-2.41111111-2.4111111h-3.14444445v-2.22222219h3.14444445zm7.22222224 3.5222222c0-1.96666664-1.1333334-3.65555553-2.7777778-4.47777775v8.94444445c1.6444444-.8111111 2.7777778-2.5 2.7777778-4.4666667zm-2.7777778-9.74444442v2.28888889c3.2111111.95555555 5.5555556 3.93333333 5.5555556 7.45555553s-2.3444445 6.5-5.5555556 7.4555556v2.2888889c4.4555556-1.0111111 7.7777778-4.9888889 7.7777778-9.7444445 0-4.75555553-3.3222222-8.73333331-7.7777778-9.74444442z" transform="translate(-1)" /></SVG>,
 	},
 	keyboard_voice: {
 		/* translators: icon label */
-		label: __( 'Voice', 'coblocks' ),
+		label: __( 'Microphone', 'coblocks' ),
 		keywords: [
-			/* translators: icon keyword */
-			__( 'artist', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'audio', 'coblocks' ),
 			/* translators: icon keyword */
-			__( 'computer', 'coblocks' ),
-			/* translators: icon keyword */
-			__( 'creative', 'coblocks' ),
-			/* translators: icon keyword */
-			__( 'device', 'coblocks' ),
-			/* translators: icon keyword */
 			__( 'media', 'coblocks' ),
-			/* translators: icon keyword */
-			__( 'microphone', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'music', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'podcast', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'song', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'voice', 'coblocks' ),
 		],
 		icon: <SVG viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><G fill="currentColor" fillRule="nonzero"><Path d="m10 12.6315789c1.7473684 0 3.1473684-1.4105263 3.1473684-3.15789469l.0105263-6.31578947c0-1.74736842-1.4105263-3.15789474-3.1578947-3.15789474-1.74736842 0-3.15789474 1.41052632-3.15789474 3.15789474v6.31578947c0 1.74736839 1.41052632 3.15789469 3.15789474 3.15789469zm-1.26315789-9.57894732c0-.69473684.56842105-1.2631579 1.26315789-1.2631579.6947368 0 1.2631579.56842106 1.2631579 1.2631579l-.0105263 6.52631579c0 .69473683-.5578948 1.26315793-1.2526316 1.26315793-.69473684 0-1.26315789-.5684211-1.26315789-1.26315793zm6.84210529 6.42105263c0 3.15789469-2.6736842 5.36842109-5.5789474 5.36842109-2.90526316 0-5.57894737-2.2105264-5.57894737-5.36842109h-1.78947368c0 3.58947369 2.86315789 6.55789469 6.31578947 7.07368419v3.4526316h2.10526318v-3.4526316c3.4526316-.5052631 6.3157895-3.4736842 6.3157895-7.07368419z" /><Path d="m10 12.6315789c1.7473684 0 3.1473684-1.4105263 3.1473684-3.15789469l.0105263-6.31578947c0-1.74736842-1.4105263-3.15789474-3.1578947-3.15789474-1.74736842 0-3.15789474 1.41052632-3.15789474 3.15789474v6.31578947c0 1.74736839 1.41052632 3.15789469 3.15789474 3.15789469zm5.5789474-3.15789469c0 3.15789469-2.6736842 5.36842109-5.5789474 5.36842109-2.90526316 0-5.57894737-2.2105264-5.57894737-5.36842109h-1.78947368c0 3.58947369 2.86315789 6.55789469 6.31578947 7.07368419v3.4526316h2.10526318v-3.4526316c3.4526316-.5052631 6.3157895-3.4736842 6.3157895-7.07368419z" /></G></SVG>,
 		icon_outlined: <SVG viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><Path d="m10 12.6315789c1.7473684 0 3.1473684-1.4105263 3.1473684-3.15789469l.0105263-6.31578947c0-1.74736842-1.4105263-3.15789474-3.1578947-3.15789474-1.74736842 0-3.15789474 1.41052632-3.15789474 3.15789474v6.31578947c0 1.74736839 1.41052632 3.15789469 3.15789474 3.15789469zm-1.26315789-9.57894732c0-.69473684.56842105-1.2631579 1.26315789-1.2631579.6947368 0 1.2631579.56842106 1.2631579 1.2631579l-.0105263 6.52631579c0 .69473683-.5578948 1.26315793-1.2526316 1.26315793-.69473684 0-1.26315789-.5684211-1.26315789-1.26315793zm6.84210529 6.42105263c0 3.15789469-2.6736842 5.36842109-5.5789474 5.36842109-2.90526316 0-5.57894737-2.2105264-5.57894737-5.36842109h-1.78947368c0 3.58947369 2.86315789 6.55789469 6.31578947 7.07368419v3.4526316h2.10526318v-3.4526316c3.4526316-.5052631 6.3157895-3.4736842 6.3157895-7.07368419z" /></SVG>,
@@ -1369,7 +1357,7 @@ let icons = bundledIconsEnabled ? {
 	},
 	recordvoiceover: {
 		/* translators: icon label */
-		label: __( 'Speak', 'coblocks' ),
+		label: __( 'Voice', 'coblocks' ),
 		keywords: [
 			/* translators: icon keyword */
 			__( 'accouncement', 'coblocks' ),
@@ -1387,6 +1375,8 @@ let icons = bundledIconsEnabled ? {
 			__( 'shout', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'sing', 'coblocks' ),
+			/* translators: icon keyword */
+			__( 'speak', 'coblocks' ),
 			/* translators: icon keyword */
 			__( 'talk', 'coblocks' ),
 			/* translators: icon keyword */
