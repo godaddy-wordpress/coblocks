@@ -35,7 +35,7 @@ class CoBlocks_Settings {
 		if ( null === self::$instance ) {
 			self::$instance = new CoBlocks_Settings();
 		}
-		
+
 		return self::$instance;
 	}
 
