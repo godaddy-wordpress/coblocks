@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-04-10T16:31:44+00:00\n"
+"POT-Creation-Date: 2020-04-10T17:46:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -184,23 +184,23 @@ msgstr ""
 msgid "Your message was sent:"
 msgstr ""
 
-#: includes/class-coblocks-google-map-block.php:116
+#: includes/class-coblocks-google-map-block.php:120
 msgid "Google Map API key for map rendering"
 msgstr ""
 
-#: includes/class-coblocks-settings.php:97
+#: includes/class-coblocks-settings.php:101
 msgid "Setting use to disable or enable typography controls across the site."
 msgstr ""
 
-#: includes/class-coblocks-settings.php:109
+#: includes/class-coblocks-settings.php:113
 msgid "Setting use to disable or enable custom color controls across the site."
 msgstr ""
 
-#: includes/class-coblocks-settings.php:121
+#: includes/class-coblocks-settings.php:125
 msgid "Setting use to disable or enable all color controls across the site."
 msgstr ""
 
-#: includes/class-coblocks-settings.php:133
+#: includes/class-coblocks-settings.php:137
 msgid "Setting use to disable or enable gradient controls and presets across the site."
 msgstr ""
 
