@@ -19,11 +19,11 @@ describe( 'Test CoBlocks Features Block', function() {
 	 * any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'Test features block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'features' );
+		helpers.addBlockToPost( 'coblocks/features', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'features' );
+		helpers.checkForBlockErrors( 'coblocks/features' );
 
 		helpers.viewPage();
 
@@ -37,27 +37,27 @@ describe( 'Test CoBlocks Features Block', function() {
 	 * column count and  are able to successfully save the block without errors.
 	 */
 	it( 'Test features block allows up to four feature columns.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'features' );
+		helpers.addBlockToPost( 'coblocks/features', true );
 
 		cy.get( '.wp-block-coblocks-features' ).click( { force: true } );
 
 		cy.get( '.wp-block-coblocks-feature' ).should( 'have.length', 2 );
 
-		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"]' ).click( { force: true } ).clear().type( 1 );
+		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"][type="number"]' ).click( { force: true } ).clear().type( 1 );
 
 		cy.get( '.wp-block-coblocks-feature' ).should( 'have.length', 1 );
 
-		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"]' ).click( { force: true } ).clear().type( 3 );
+		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"][type="number"]' ).click( { force: true } ).clear().type( 3 );
 
 		cy.get( '.wp-block-coblocks-feature' ).should( 'have.length', 3 );
 
-		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"]' ).click( { force: true } ).clear().type( 4 );
+		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"][type="number"]' ).click( { force: true } ).clear().type( 4 );
 
 		cy.get( '.wp-block-coblocks-feature' ).should( 'have.length', 4 );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'features' );
+		helpers.checkForBlockErrors( 'coblocks/features' );
 	} );
 
 	/**
@@ -66,7 +66,7 @@ describe( 'Test CoBlocks Features Block', function() {
 	 */
 	it( 'Test features block saves with content values set.', function() {
 		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB } = featuresData;
-		helpers.addCoBlocksBlockToPage( true, 'features' );
+		helpers.addBlockToPost( 'coblocks/features', true );
 
 		cy.get( '.wp-block-coblocks-features' ).click( { force: true } ).click( { force: true } );
 
@@ -75,7 +75,7 @@ describe( 'Test CoBlocks Features Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'features' );
+		helpers.checkForBlockErrors( 'coblocks/features' );
 
 		helpers.viewPage();
 
@@ -91,13 +91,13 @@ describe( 'Test CoBlocks Features Block', function() {
 	 * Test the features block saves with custom classes
 	 */
 	it( 'Test the features block custom classes.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'features' );
+		helpers.addBlockToPost( 'coblocks/features', true );
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'features' );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'features' );
+		helpers.checkForBlockErrors( 'coblocks/features' );
 
 		cy.get( '.wp-block-coblocks-features' )
 			.should( 'have.class', 'my-custom-class' );
@@ -111,26 +111,26 @@ describe( 'Test CoBlocks Features Block', function() {
 	} );
 
 	it( 'Updates the inner core/heading blocks when the "Heading Level" control is changed.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'features' );
-		cy.get( 'div[data-type="core/heading"]' ).find( 'h4[aria-label="Add feature title…"]' );
+		helpers.addBlockToPost( 'coblocks/features', true );
+		cy.get( '.wp-block-coblocks-feature h4' ).should('exist');
 
 		cy.get( '.wp-block-coblocks-features' ).click();
 		helpers.openHeadingToolbarAndSelect( 2 );
-		cy.get( 'div[data-type="core/heading"]' ).find( 'h2[aria-label="Add feature title…"]' );
+		cy.get( '.wp-block-coblocks-feature h2' ).should('exist');
 
 		cy.get( '.wp-block-coblocks-features' ).click();
 		helpers.openHeadingToolbarAndSelect( 3 );
-		cy.get( 'div[data-type="core/heading"]' ).find( 'h3[aria-label="Add feature title…"]' );
+		cy.get( '.wp-block-coblocks-feature h3' ).should('exist');
 
 		cy.get( '.wp-block-coblocks-features' ).click();
 		helpers.openHeadingToolbarAndSelect( 4 );
-		cy.get( 'div[data-type="core/heading"]' ).find( 'h4[aria-label="Add feature title…"]' );
+		cy.get( '.wp-block-coblocks-feature h4' ).should('exist');
 
 		cy.get( '.wp-block-coblocks-features' ).click();
 		helpers.openHeadingToolbarAndSelect( 5 );
-		cy.get( 'div[data-type="core/heading"]' ).find( 'h5[aria-label="Add feature title…"]' );
+		cy.get( '.wp-block-coblocks-feature h5' ).should('exist');
 
 		helpers.savePage();
-		helpers.checkForBlockErrors( 'features' );
+		helpers.checkForBlockErrors( 'coblocks/features' );
 	} );
 } );

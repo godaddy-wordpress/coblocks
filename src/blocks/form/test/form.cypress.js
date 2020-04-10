@@ -5,16 +5,24 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Form Block', function() {
 	/**
-   * Test the coblock contact template.
-   */
+	 * Test the coblock contact template.
+	 */
 	it( 'Test the form block contact template.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'form' );
+		helpers.addBlockToPost( 'coblocks/form', true );
 
-		cy.get( '.block-editor-inner-blocks__template-picker-options li:first-child' )
-			.click();
+		cy.get( 'div.wp-block[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
+			if ( placeholder.prop( 'outerHTML' ).includes( 'block-editor-block-variation-picker' ) ) {
+				cy.get( placeholder )
+					.find( '.block-editor-block-variation-picker__variations li:first-child' )
+					.find( 'button' ).click( { force: true } );
+			} else {
+				cy.get( '.block-editor-inner-blocks__template-picker-options li:first-child' )
+					.click();
 
-		cy.get( '.block-editor-inner-blocks__template-picker-options' )
-			.should( 'not.exist' );
+				cy.get( '.block-editor-inner-blocks__template-picker-options' )
+					.should( 'not.exist' );
+			}
+		} );
 
 		cy.get( 'div[data-type="coblocks/field-name"]' )
 			.should( 'exist' );
@@ -27,7 +35,7 @@ describe( 'Test CoBlocks Form Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'form' );
+		helpers.checkForBlockErrors( 'coblocks/form' );
 
 		helpers.viewPage();
 
@@ -67,16 +75,24 @@ describe( 'Test CoBlocks Form Block', function() {
 	} );
 
 	/**
-   * Test the coblock RSVP template.
-   */
+	 * Test the coblock RSVP template.
+	 */
 	it( 'Test the form block RSVP template.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'form' );
+		helpers.addBlockToPost( 'coblocks/form', true );
 
-		cy.get( '.block-editor-inner-blocks__template-picker-options li:nth-child(2)' )
-			.click();
+		cy.get( 'div.wp-block[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
+			if ( placeholder.prop( 'outerHTML' ).includes( 'block-editor-block-variation-picker' ) ) {
+				cy.get( placeholder )
+					.find( '.block-editor-block-variation-picker__variations li:nth-child(2)' )
+					.find( 'button' ).click( { force: true } );
+			} else {
+				cy.get( '.block-editor-inner-blocks__template-picker-options li:nth-child(2)' )
+					.click();
 
-		cy.get( '.block-editor-inner-blocks__template-picker-options' )
-			.should( 'not.exist' );
+				cy.get( '.block-editor-inner-blocks__template-picker-options' )
+					.should( 'not.exist' );
+			}
+		} );
 
 		cy.get( '.coblocks-field--name' )
 			.its( 'length' )
@@ -93,7 +109,7 @@ describe( 'Test CoBlocks Form Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'form' );
+		helpers.checkForBlockErrors( 'coblocks/form' );
 
 		helpers.viewPage();
 
@@ -153,16 +169,24 @@ describe( 'Test CoBlocks Form Block', function() {
 	} );
 
 	/**
-   * Test the coblock appointment template.
-   */
+	 * Test the coblock appointment template.
+	 */
 	it( 'Test the form block appointment template.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'form' );
+		helpers.addBlockToPost( 'coblocks/form', true );
 
-		cy.get( '.block-editor-inner-blocks__template-picker-options li:nth-child(3)' )
-			.click();
+		cy.get( 'div.wp-block[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
+			if ( placeholder.prop( 'outerHTML' ).includes( 'block-editor-block-variation-picker' ) ) {
+				cy.get( placeholder )
+					.find( '.block-editor-block-variation-picker__variations li:nth-child(3)' )
+					.find( 'button' ).click( { force: true } );
+			} else {
+				cy.get( '.block-editor-inner-blocks__template-picker-options li:nth-child(3)' )
+					.click();
 
-		cy.get( '.block-editor-inner-blocks__template-picker-options' )
-			.should( 'not.exist' );
+				cy.get( '.block-editor-inner-blocks__template-picker-options' )
+					.should( 'not.exist' );
+			}
+		} );
 
 		cy.get( '.coblocks-field--name' )
 			.should( 'exist' );
@@ -187,7 +211,7 @@ describe( 'Test CoBlocks Form Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'form' );
+		helpers.checkForBlockErrors( 'coblocks/form' );
 
 		helpers.viewPage();
 

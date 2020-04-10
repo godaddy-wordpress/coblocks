@@ -9,11 +9,11 @@ describe( 'Test CoBlocks Services Block', function() {
 	 * any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'Test services block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'services' );
+		helpers.addBlockToPost( 'coblocks/services', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'services' );
+		helpers.checkForBlockErrors( 'coblocks/services' );
 
 		helpers.viewPage();
 
@@ -27,21 +27,21 @@ describe( 'Test CoBlocks Services Block', function() {
 	 * column count and  are able to successfully save the block without errors.
 	 */
 	it( 'Test services block saves with columns attribute.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'services' );
+		helpers.addBlockToPost( 'coblocks/services', true );
 
 		cy.get( '.wp-block-coblocks-services' ).click( { force: true } );
 
 		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 2 );
 
-		helpers.setInputValue( 'Services Settings', 'Columns', 1, false );
+		helpers.setInputValue( 'Services settings', 'Columns', 1, false );
 
 		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 1 );
 
-		helpers.setInputValue( 'Services Settings', 'Columns', 3, false );
+		helpers.setInputValue( 'Services settings', 'Columns', 3, false );
 
 		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 3 );
 
-		helpers.setInputValue( 'Services Settings', 'Columns', 4, false );
+		helpers.setInputValue( 'Services settings', 'Columns', 4, false );
 
 		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 4 );
 
@@ -51,7 +51,7 @@ describe( 'Test CoBlocks Services Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'services' );
+		helpers.checkForBlockErrors( 'coblocks/services' );
 
 		helpers.viewPage();
 
@@ -65,11 +65,11 @@ describe( 'Test CoBlocks Services Block', function() {
 	 * heading level and  are able to successfully save the block without errors.
 	 */
 	it( 'Test services block saves with heading level set.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'services' );
+		helpers.addBlockToPost( 'coblocks/services', true );
 
 		cy.get( '.wp-block-coblocks-services' ).click( { force: true } );
 
-		helpers.addCoBlocksBlockToPage( true, 'services' );
+		helpers.addBlockToPost( 'coblocks/services', true );
 		cy.get( 'div[data-type="core/heading"]' ).find( 'h3[aria-label="Write title…"]' );
 
 		cy.get( '.wp-block-coblocks-services' ).click();
@@ -89,7 +89,7 @@ describe( 'Test CoBlocks Services Block', function() {
 		cy.get( 'div[data-type="core/heading"]' ).find( 'h5[aria-label="Write title…"]' );
 
 		helpers.savePage();
-		helpers.checkForBlockErrors( 'services' );
+		helpers.checkForBlockErrors( 'coblocks/services' );
 	} );
 
 	/**
@@ -97,30 +97,30 @@ describe( 'Test CoBlocks Services Block', function() {
 	 * action buttons and  are able to successfully save the block without errors.
 	 */
 	it( 'Test services block saves with action buttons enabled.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'services' );
+		helpers.addBlockToPost( 'coblocks/services', true );
 
 		cy.get( 'div.wp-block-button' ).should( 'not.exist' );
 
-		helpers.toggleSettingCheckbox( /action buttons/i );
+		helpers.toggleSettingCheckbox( /display buttons/i );
 
 		cy.get( 'div.wp-block-button' ).should( 'exist' );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'services' );
+		helpers.checkForBlockErrors( 'coblocks/services' );
 	} );
 
 	/**
 	 * Test the services block saves with custom classes
 	 */
 	it( 'Test the services block custom classes.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'services' );
+		helpers.addBlockToPost( 'coblocks/services', true );
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'services' );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'services' );
+		helpers.checkForBlockErrors( 'coblocks/services' );
 
 		cy.get( '.wp-block-coblocks-services' )
 			.should( 'have.class', 'my-custom-class' );

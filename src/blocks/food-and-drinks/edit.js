@@ -2,7 +2,8 @@
  * Internal dependencies.
  */
 import CustomAppender from './appender';
-import InspectorControls from './inspector';
+import Inspector from './inspector';
+import Controls from './controls';
 import icons from './icons';
 
 /**
@@ -17,9 +18,10 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { withSelect, dispatch, select } from '@wordpress/data';
+import { withSelect, withDispatch } from '@wordpress/data';
 import { InnerBlocks } from '@wordpress/block-editor';
-const TokenList = wp.tokenList;
+import { createBlock } from '@wordpress/blocks';
+import TokenList from '@wordpress/token-list';
 
 const ALLOWED_BLOCKS = [ 'coblocks/food-item' ];
 
@@ -93,7 +95,7 @@ function replaceActiveStyle( className, activeStyle, newStyle ) {
 	return list.value;
 }
 
-class FoodItem extends Component {
+class FoodAndDrinksEdit extends Component {
 	constructor( ) {
 		super( ...arguments );
 
@@ -103,21 +105,28 @@ class FoodItem extends Component {
 		this.setColumns = this.setColumns.bind( this );
 		this.updateStyle = this.updateStyle.bind( this );
 		this.insertNewItem = this.insertNewItem.bind( this );
+		this.updateInnerAttributes = this.updateInnerAttributes.bind( this );
+		this.onChangeHeadingLevel = this.onChangeHeadingLevel.bind( this );
 	}
 
 	updateInnerAttributes( blockName, newAttributes ) {
-		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
-			this.props.clientId
-		)[ 0 ].innerBlocks;
+		const { innerItems, updateBlockAttributes } = this.props;
 
-		innerItems.map( ( item ) => {
+		innerItems.forEach( ( item ) => {
 			if ( item.name === blockName ) {
-				dispatch( 'core/block-editor' ).updateBlockAttributes(
+				updateBlockAttributes(
 					item.clientId,
 					newAttributes
 				);
 			}
 		} );
+	}
+
+	onChangeHeadingLevel( headingLevel ) {
+		const { setAttributes } = this.props;
+
+		setAttributes( { headingLevel } );
+		this.updateInnerAttributes( 'coblocks/food-item', { headingLevel } );
 	}
 
 	toggleImages() {
@@ -158,13 +167,13 @@ class FoodItem extends Component {
 	}
 
 	insertNewItem() {
-		const { clientId, attributes } = this.props;
+		const { clientId, attributes, insertBlock, getBlockOrder } = this.props;
 
-		const blockOrder = select( 'core/block-editor' ).getBlockOrder();
+		const blockOrder = getBlockOrder();
 		const insertAtIndex = blockOrder.indexOf( clientId ) + 1;
 
 		const innerBlocks = TEMPLATE.map( ( [ blockName, blockAttributes ] ) =>
-			wp.blocks.createBlock(
+			createBlock(
 				blockName,
 				Object.assign( {}, blockAttributes, {
 					showImage: attributes.showImages,
@@ -173,13 +182,13 @@ class FoodItem extends Component {
 			)
 		);
 
-		const newItem = wp.blocks.createBlock(
+		const newItem = createBlock(
 			'coblocks/food-and-drinks',
 			attributes,
 			innerBlocks
 		);
 
-		dispatch( 'core/block-editor' ).insertBlock( newItem, insertAtIndex );
+		insertBlock( newItem, insertAtIndex );
 	}
 
 	render() {
@@ -195,7 +204,11 @@ class FoodItem extends Component {
 
 		return (
 			<Fragment>
-				<InspectorControls
+				<Controls
+					{ ...this.props }
+					onChangeHeadingLevel={ this.onChangeHeadingLevel }
+				/>
+				<Inspector
 					attributes={ attributes }
 					activeStyle={ activeStyle }
 					layoutOptions={ layoutOptions }
@@ -223,15 +236,30 @@ class FoodItem extends Component {
 	}
 }
 
-const applyWithSelect = withSelect( () => {
-	const selectedClientId = select( 'core/block-editor' ).getBlockSelectionStart();
-	const parentClientId = select( 'core/block-editor' ).getBlockRootClientId(
-		selectedClientId
-	);
+const applyWithSelect = withSelect( ( select, props ) => {
+	const { getBlockOrder, getBlockSelectionStart, getBlockRootClientId, getBlocksByClientId } = select( 'core/block-editor' );
+
+	const selectedClientId = getBlockSelectionStart();
+	const parentClientId = getBlockRootClientId( selectedClientId );
+	const innerItems = getBlocksByClientId( props.clientId )[ 0 ].innerBlocks;
 
 	return {
 		selectedParentClientId: parentClientId,
+		innerItems,
+		getBlockOrder,
 	};
 } );
 
-export default compose( applyWithSelect )( FoodItem );
+const applyWithDispatch = withDispatch( ( dispatch ) => {
+	const {
+		insertBlocks,
+		updateBlockAttributes,
+	} = dispatch( 'core/block-editor' );
+
+	return {
+		insertBlocks,
+		updateBlockAttributes,
+	};
+} );
+
+export default compose( [ applyWithSelect, applyWithDispatch ] )( FoodAndDrinksEdit );

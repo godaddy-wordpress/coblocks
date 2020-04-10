@@ -35,47 +35,47 @@ class CSSGridControl extends Component {
 			{
 				value: 'top-left',
 				/* translators: block layout */
-				label: __( 'Top Left', 'coblocks' ),
+				label: __( 'Top left', 'coblocks' ),
 			},
 			{
 				value: 'top-center',
 				/* translators: block layout */
-				label: __( 'Top Center', 'coblocks' ),
+				label: __( 'Top center', 'coblocks' ),
 			},
 			{
 				value: 'top-right',
 				/* translators: block layout */
-				label: __( 'Top Right', 'coblocks' ),
+				label: __( 'Top right', 'coblocks' ),
 			},
 			{
 				value: 'center-left',
 				/* translators: block layout */
-				label: __( 'Center Left', 'coblocks' ),
+				label: __( 'Center left', 'coblocks' ),
 			},
 			{
 				value: 'center-center',
 				/* translators: block layout */
-				label: __( 'Center Center', 'coblocks' ),
+				label: __( 'Center center', 'coblocks' ),
 			},
 			{
 				value: 'center-right',
 				/* translators: block layout */
-				label: __( 'Center Right', 'coblocks' ),
+				label: __( 'Center right', 'coblocks' ),
 			},
 			{
 				value: 'bottom-left',
 				/* translators: block layout */
-				label: __( 'Bottom Left', 'coblocks' ),
+				label: __( 'Bottom left', 'coblocks' ),
 			},
 			{
 				value: 'bottom-center',
 				/* translators: block layout */
-				label: __( 'Bottom Center', 'coblocks' ),
+				label: __( 'Bottom center', 'coblocks' ),
 			},
 			{
 				value: 'bottom-right',
 				/* translators: block layout */
-				label: __( 'Bottom Right', 'coblocks' ),
+				label: __( 'Bottom right', 'coblocks' ),
 			},
 		];
 
@@ -84,17 +84,17 @@ class CSSGridControl extends Component {
 				{
 					value: 'center-left',
 					/* translators: block layout */
-					label: __( 'Center Left', 'coblocks' ),
+					label: __( 'Center left', 'coblocks' ),
 				},
 				{
 					value: 'center-center',
 					/* translators: block layout */
-					label: __( 'Center Center', 'coblocks' ),
+					label: __( 'Center center', 'coblocks' ),
 				},
 				{
 					value: 'center-right',
 					/* translators: block layout */
-					label: __( 'Center Right', 'coblocks' ),
+					label: __( 'Center right', 'coblocks' ),
 				},
 			];
 		}
@@ -169,7 +169,7 @@ class CSSGridControl extends Component {
 			<Fragment>
 				<div className={ classes }>
 					<p className="components-base-control__label">{ __( 'Layout', 'coblocks' ) }</p>
-					<ButtonGroup aria-label={ __( 'Select Layout', 'coblocks' ) }>
+					<ButtonGroup aria-label={ __( 'Select layout', 'coblocks' ) }>
 						{ map( layoutOptions, ( { label, value }, index ) => {
 							if ( tooltip ) {
 								return (

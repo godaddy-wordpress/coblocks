@@ -3,7 +3,7 @@
  */
 import * as helpers from '../../../../../.dev/tests/cypress/helpers';
 
-describe( 'Test CoBlocks feature Block', function() {
+describe( 'Test CoBlocks Feature Block', function() {
 	/**
 	* Setup feature data
 	*/
@@ -19,11 +19,11 @@ describe( 'Test CoBlocks feature Block', function() {
 	   * any settings, and are able to successfully save the block without errors.
 	   */
 	it( 'Test feature block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'features' );
+		helpers.addBlockToPost( 'coblocks/features', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'feature' );
+		helpers.checkForBlockErrors( 'coblocks/feature' );
 
 		helpers.viewPage();
 
@@ -38,7 +38,7 @@ describe( 'Test CoBlocks feature Block', function() {
 	   */
 	it( 'Test feature block saves with color values set.', function() {
 		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB } = featureData;
-		helpers.addCoBlocksBlockToPage( true, 'features' );
+		helpers.addBlockToPost( 'coblocks/features', true );
 
 		cy.get( '.wp-block-coblocks-feature' ).first().click( { force: true } );
 
@@ -47,7 +47,7 @@ describe( 'Test CoBlocks feature Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'feature' );
+		helpers.checkForBlockErrors( 'coblocks/feature' );
 
 		helpers.viewPage();
 
@@ -64,9 +64,9 @@ describe( 'Test CoBlocks feature Block', function() {
    * Use one column to avoid confusion in the DOM.
    */
 	it( 'Test the feature block custom classes.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'features' );
+		helpers.addBlockToPost( 'coblocks/features', true );
 
-		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"]' ).click().clear().type( 1 );
+		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"][type="number"]' ).click().clear().type( 1 );
 
 		cy.get( '.wp-block-coblocks-feature' ).click( { force: true } );
 
@@ -76,7 +76,7 @@ describe( 'Test CoBlocks feature Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'feature' );
+		helpers.checkForBlockErrors( 'coblocks/feature' );
 
 		cy.get( '.wp-block-coblocks-feature' )
 			.should( 'have.class', 'my-custom-class' );

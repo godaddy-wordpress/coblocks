@@ -9,11 +9,11 @@ describe( 'Test CoBlocks Service Block', function() {
 	* any settings, and are able to successfully save the block without errors.
 	*/
 	it( 'Test service block saves with empty values.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'services' );
+		helpers.addBlockToPost( 'coblocks/services', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'service' );
+		helpers.checkForBlockErrors( 'coblocks/service' );
 
 		helpers.viewPage();
 
@@ -27,30 +27,30 @@ describe( 'Test CoBlocks Service Block', function() {
 	* action buttons and  are able to successfully save the block without errors.
 	*/
 	it( 'Test service block saves with action buttons enabled.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'services' );
+		helpers.addBlockToPost( 'coblocks/services', true );
 
 		cy.get( 'div.wp-block-button' ).should( 'not.exist' );
 
-		helpers.toggleSettingCheckbox( /action buttons/i );
+		helpers.toggleSettingCheckbox( /display buttons/i );
 
 		cy.get( 'div.wp-block-button' ).should( 'exist' );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'service' );
+		helpers.checkForBlockErrors( 'coblocks/service' );
 	} );
 
 	/**
     * Test the service block saves with custom classes
     */
 	it( 'Test the service block custom classes.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'services' );
+		helpers.addBlockToPost( 'coblocks/services', true );
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'service' );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'service' );
+		helpers.checkForBlockErrors( 'coblocks/service' );
 
 		cy.get( '.wp-block-coblocks-service' )
 			.should( 'have.class', 'my-custom-class' );

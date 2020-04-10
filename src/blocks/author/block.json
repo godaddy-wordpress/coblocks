@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/author",
-	"category": "coblocks",
+	"category": "layout",
 	"attributes": {
 		"biography": {
 			"type": "array",

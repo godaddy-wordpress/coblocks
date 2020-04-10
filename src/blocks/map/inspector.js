@@ -27,8 +27,6 @@ class Inspector extends Component {
 		this.state = {
 			apiKey: props.apiKey,
 			isSavedKey: false,
-			isLoading: true,
-			isSaving: false,
 			keySaved: false,
 			address: props.attributes.address,
 		};
@@ -106,7 +104,7 @@ class Inspector extends Component {
 					{ !! apiKey && address && pinned &&
 						<PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
 							<div className="components-coblocks-map-styles">
-								<ButtonGroup aria-label={ __( 'Select Map Style', 'coblocks' ) }>
+								<ButtonGroup aria-label={ __( 'Select map style', 'coblocks' ) }>
 									{ map( styleOptions, ( { label, value } ) => (
 										<div className={ value === skin ? 'components-coblocks-map-styles__button-wrapper components-button--${ value } is-selected' : 'components-coblocks-map-styles__button-wrapper components-button--${ value }' }>
 											<Button
@@ -127,9 +125,9 @@ class Inspector extends Component {
 						</PanelBody>
 					}
 					{ address &&
-						<PanelBody title={ __( 'Map Settings', 'coblocks' ) }>
+						<PanelBody title={ __( 'Map settings', 'coblocks' ) }>
 							<Fragment>
-								<BaseControl label={ __( 'Height in pixels', 'coblocks' ) }>
+								<BaseControl label={ __( 'Height in pixels', 'coblocks' ) } id="map-height-control">
 									<input
 										type="number"
 										aria-label={ __( 'Height for the map in pixels', 'coblocks' ) }
@@ -150,7 +148,7 @@ class Inspector extends Component {
 								{
 									!! apiKey &&
 									<RangeControl
-										label={ __( 'Marker Size', 'coblocks' ) }
+										label={ __( 'Marker size', 'coblocks' ) }
 										value={ iconSize }
 										onChange={ ( nextIconSize ) => setAttributes( { iconSize: nextIconSize } ) }
 										min={ 20 }
@@ -161,7 +159,7 @@ class Inspector extends Component {
 								{
 									!! apiKey &&
 									<ToggleControl
-										label={ __( 'Map Controls', 'coblocks' ) }
+										label={ __( 'Map controls', 'coblocks' ) }
 										checked={ !! controls }
 										onChange={ this.setControls }
 										help={ !! controls ? __( 'Fine control options are enabled.', 'coblocks' ) : __( 'Toggle to enable map control options.', 'coblocks' ) }
@@ -172,29 +170,29 @@ class Inspector extends Component {
 					}
 					{ !! apiKey && address && pinned && controls &&
 						<PanelBody
-							title={ __( 'Map Controls', 'coblocks' ) }
+							title={ __( 'Map controls', 'coblocks' ) }
 							initialOpen={ false }
 						>
 							<ToggleControl
-								label={ __( 'Map Type', 'coblocks' ) }
+								label={ __( 'Map type', 'coblocks' ) }
 								checked={ !! mapTypeControl }
 								onChange={ () => setAttributes( { mapTypeControl: ! mapTypeControl } ) }
 								help={ !! mapTypeControl ? __( 'Switching between standard and satellite map views is enabled.', 'coblocks' ) : __( 'Toggle to enable switching between standard and satellite maps.', 'coblocks' ) }
 							/>
 							<ToggleControl
-								label={ __( 'Zoom Controls', 'coblocks' ) }
+								label={ __( 'Zoom controls', 'coblocks' ) }
 								checked={ !! zoomControl }
 								onChange={ () => setAttributes( { zoomControl: ! zoomControl } ) }
 								help={ !! zoomControl ? __( 'Showing map zoom controls.', 'coblocks' ) : __( 'Toggle to enable zooming in and out on the map with zoom controls.', 'coblocks' ) }
 							/>
 							<ToggleControl
-								label={ __( 'Street View', 'coblocks' ) }
+								label={ __( 'Street view', 'coblocks' ) }
 								checked={ !! streetViewControl }
 								onChange={ () => setAttributes( { streetViewControl: ! streetViewControl } ) }
 								help={ !! streetViewControl ? __( 'Showing the street view map control.', 'coblocks' ) : __( 'Toggle to show the street view control at the bottom right.', 'coblocks' ) }
 							/>
 							<ToggleControl
-								label={ __( 'Fullscreen Toggle', 'coblocks' ) }
+								label={ __( 'Fullscreen toggle', 'coblocks' ) }
 								checked={ !! fullscreenControl }
 								onChange={ () => setAttributes( { fullscreenControl: ! fullscreenControl } ) }
 								help={ !! fullscreenControl ? __( 'Showing the fullscreen map control.', 'coblocks' ) : __( 'Toggle to show the fullscreen map control.', 'coblocks' ) }
@@ -202,7 +200,7 @@ class Inspector extends Component {
 						</PanelBody>
 					}
 					<PanelBody
-						title={ __( 'Google Maps API Key', 'coblocks' ) }
+						title={ __( 'Google Maps API key', 'coblocks' ) }
 						initialOpen={ false }
 						className="components-coblocks-block-settings-sidebar"
 					>
@@ -216,7 +214,7 @@ class Inspector extends Component {
 						<TextControl
 							value={ this.state.apiKey }
 							onChange={ ( value ) => this.setState( { apiKey: value } ) }
-							placeholder={ __( 'Enter Google API Key…', 'coblocks' ) }
+							placeholder={ __( 'Add Google API key…', 'coblocks' ) }
 							onKeyDown={ ( { keyCode } ) => this.handleKeyDown( keyCode ) }
 							className="components-block-coblocks-map-api-key__custom-input"
 						/>
