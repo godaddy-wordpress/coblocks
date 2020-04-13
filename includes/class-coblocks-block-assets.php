@@ -27,11 +27,15 @@ class CoBlocks_Block_Assets {
 
 	/**
 	 * Registers the plugin.
+	 *
+	 * @return CoBlocks_Block_Assets
 	 */
 	public static function register() {
 		if ( null === self::$instance ) {
 			self::$instance = new CoBlocks_Block_Assets();
 		}
+
+		return self::$instance;
 	}
 
 	/**

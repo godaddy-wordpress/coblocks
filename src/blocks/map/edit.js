@@ -26,7 +26,6 @@ import { compose } from '@wordpress/compose';
 import {
 	Placeholder,
 	Button,
-	TextControl,
 	ResizableBox,
 	withNotices,
 } from '@wordpress/components';
@@ -133,7 +132,11 @@ class Edit extends Component {
 
 		const locale = document.documentElement.lang;
 
-		const renderMap = () => {
+		const renderMap = (event) => {
+			if ( event ) {
+				event.preventDefault();
+			}
+			
 			setAttributes( { address: this.state.address, pinned: true } );
 		};
 
@@ -270,42 +273,45 @@ class Edit extends Component {
 						label={ __( 'Google map', 'coblocks' ) }
 						instructions={ __( 'Enter a location or address to drop a pin on a Google map.', 'coblocks' ) }
 					>
-						<TextControl
-							className="components-placeholder__input"
-							value={ this.state.address }
-							placeholder={ __( 'Search for a place or address…', 'coblocks' ) }
-							onChange={ ( nextAddress ) => this.setState( { address: nextAddress } ) }
-							onKeyDown={ ( { keyCode } ) => handleKeyDown( keyCode ) }
-						/>
-						<Button
-							isLarge
-							isSecondary
-							type="button"
-							onClick={ renderMap }
-							disabled={ ! this.state.address }
-						>
-							{ __( 'Apply', 'coblocks' ) }
-						</Button>
-
-						{ address && (
+						<form onSubmit={ renderMap }>
+							<input
+								type="text"
+								value={ this.state.address || '' }
+								className="components-placeholder__input"
+								placeholder={ __( 'Search for a place or address…', 'coblocks' ) }
+								onChange={ ( nextAddress ) => this.setState( { address: nextAddress.target.value } ) }
+								onKeyDown={ ( { keyCode } ) => handleKeyDown( keyCode ) }
+							/>
 							<Button
-								className="components-placeholder__cancel-button"
-								title={ __( 'Cancel', 'coblocks' ) }
-								isLink
-								onClick={ () => {
-									setAttributes( { pinned: ! pinned } );
-									this.setState( { address: this.props.attributes.address } );
-								} }
-								disabled={ ! address }
+								isLarge
+								isSecondary
+								type="submit"
+								disabled={ ! this.state.address }
 							>
-								{ __( 'Cancel', 'coblocks' ) }
+								{ __( 'Apply', 'coblocks' ) }
 							</Button>
-						) }
+						</form>
 						{ attributes.lng && attributes.hasError && (
 							<span className="invalid-google-maps-api-key">
 								{ attributes.hasError }
 							</span>
 						) }
+						<div className="components-placeholder__learn-more">
+							{ address && (
+								<Button
+									className="components-placeholder__cancel-button"
+									title={ __( 'Cancel', 'coblocks' ) }
+									isLink
+									onClick={ () => {
+										setAttributes( { pinned: ! pinned } );
+										this.setState( { address: this.props.attributes.address } );
+									} }
+									disabled={ ! address }
+								>
+									{ __( 'Cancel', 'coblocks' ) }
+								</Button>
+							) }
+						</div>
 					</Placeholder>
 				) }
 			</Fragment>
