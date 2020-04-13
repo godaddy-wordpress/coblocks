@@ -79,6 +79,9 @@ jobs:
           name: Build the plugin
           command: npx wp-scripts build --config .dev/config/webpack.ci.config.js
       - run:
+          name: "Validate Composer configuration"
+          command: composer validate --strict
+      - run:
           name: "Install Dependencies"
           command: |
             composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
