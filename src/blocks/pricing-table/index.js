@@ -37,8 +37,29 @@ const settings = {
 	},
 	example: {
 		attributes: {
-			count: 1,
+			count: 2,
+			contentAlign: 'center',
 		},
+		innerBlocks: [
+			{
+				name: 'coblocks/pricing-table-item',
+				attributes: {
+					title: __( 'Plan 1', 'coblocks' ),
+					currency: '$',
+					amount: '29',
+					features: '',
+				},
+			},
+			{
+				name: 'coblocks/pricing-table-item',
+				attributes: {
+					title: __( 'Plan 2', 'coblocks' ),
+					currency: '$',
+					amount: '39',
+					features: '',
+				},
+			},
+		],
 	},
 	attributes,
 	transforms,
