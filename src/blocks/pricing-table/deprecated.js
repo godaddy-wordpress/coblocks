@@ -11,7 +11,7 @@ import { InnerBlocks } from '@wordpress/block-editor';
 /**
  * Internal dependencies
  */
-import { currentBlockAttributes } from './block.json';
+import { attributes as currentBlockAttributes } from './block.json';
 
 const deprecated = [
 	{
