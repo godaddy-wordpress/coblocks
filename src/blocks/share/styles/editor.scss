@@ -8,6 +8,20 @@
 		&.is-empty {
 			opacity: 0.4 !important;
 		}
+
+		&.is-selected {
+			opacity: 1;
+		}
+
+		&:not(.is-selected):hover {
+			opacity: 100;
+		}
+
+		&:focus {
+			box-shadow: 0 0 0 1px $white, 0 0 0 3px theme(primary) !important;
+			outline: 2px solid transparent;
+			outline-offset: -2px;
+		}
 	}
 }
 
