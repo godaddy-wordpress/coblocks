@@ -16,7 +16,11 @@ workflows:
           filters:
             tags:
               only: /^(?!canary).*$/
-      - e2e:
+      - e2e-chrome:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+      - e2e-firefox:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -33,7 +37,8 @@ workflows:
             - php56
             - php73
             - jest
-            - e2e
+            - e2e-chrome
+            - e2e-firefox
           filters:
             tags:
               only: /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*)?(\+[0-9-]+(\.[0-9]+)*)?/ # Run on semantic version tags only
@@ -74,8 +79,12 @@ jobs:
           name: Build the plugin
           command: npx wp-scripts build --config .dev/config/webpack.ci.config.js
       - run:
+          name: "Validate Composer configuration"
+          command: composer validate --strict
+      - run:
           name: "Install Dependencies"
           command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
@@ -129,6 +138,7 @@ jobs:
       - run:
           name: "Install Dependencies"
           command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
@@ -176,7 +186,7 @@ jobs:
       - store_test_results:
           path: /tmp/artifacts/code-coverage/
 
-  e2e:
+  e2e-chrome:
     docker:
       - image: circleci/php:latest-node-browsers-legacy
       - image: circleci/mysql:5.7
@@ -208,6 +218,7 @@ jobs:
       - run:
           name: "Install Dependencies"
           command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             composer install
             bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
@@ -230,11 +241,72 @@ jobs:
           command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root  --path=/tmp/wordpress
           background: true
       - run:
-          name: "Run end to end tests (Cypress.io)"
+          name: "Run end to end tests (Cypress.io) - Chrome"
           command: |
             touch cypress.env.json
             echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
-            ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel --spec "$(cat /tmp/specstring)"
+            ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel --group e2e-chrome --spec "$(cat /tmp/specstring)"
+
+  e2e-firefox:
+    docker:
+      - image: circleci/php:latest-node-browsers
+      - image: circleci/mysql:5.7
+    parallelism: 4
+    steps:
+      - checkout
+      - run:
+          name: Setup spec files to run based on git diff-tree
+          command: bash .dev/bin/setup-test-specs.sh
+      - run:
+          name: Disable xdebug PHP extension
+          command: sudo rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - run:
+          name: Update hosts
+          command: echo 127.0.0.1 coblocks.test | sudo tee -a /etc/hosts
+      - run:
+          name: Update npm
+          command: sudo npm install -g npm@latest
+      - restore_cache:
+          key: e2e-dependency-cache--{{ checksum "package.json" }}
+      - run:
+          name: Install node packages
+          command: npm install
+      - save_cache:
+          key: e2e-dependency-cache--{{ checksum "package.json" }}
+          paths:
+            - node_modules
+            - ~/.cache
+      - run:
+          name: "Install Dependencies"
+          command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
+            composer install
+            bash .dev/bin/install-dependencies.sh
+            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
+      - run:
+          name: Build the plugin
+          command: |
+            npx wp-scripts build --config .dev/config/webpack.ci.config.js
+            npx grunt clean:build
+            npx grunt copy:build
+            cp -a ./build/coblocks /tmp/wordpress/wp-content/plugins/
+      - run:
+          name: "Install WordPress"
+          command: |
+            ./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass='' --path=/tmp/wordpress
+            ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=/tmp/wordpress
+            ./vendor/bin/wp post generate --count=5 --path=/tmp/wordpress
+            ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
+      - run:
+          name: "Start WPCLI Server"
+          command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root  --path=/tmp/wordpress
+          background: true
+      - run:
+          name: "Run end to end tests (Cypress.io) - Firefox"
+          command: |
+            touch cypress.env.json
+            echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
+            ./node_modules/.bin/cypress run --config integrationFolder=./ --browser firefox --record --parallel --group e2e-firefox --spec "$(cat /tmp/specstring)"
 
   i18n:
     docker:
@@ -271,6 +343,7 @@ jobs:
       - run:
           name: Install composer dependencies
           command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             composer install
       - save_cache:
           key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
@@ -344,6 +417,7 @@ jobs:
       - run:
           name: Install composer dependencies
           command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             composer install
       - save_cache:
           key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
@@ -429,6 +503,7 @@ jobs:
       - run:
           name: Install composer dependencies
           command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             composer install
       - save_cache:
           key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}

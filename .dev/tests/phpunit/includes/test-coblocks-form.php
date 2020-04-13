@@ -555,9 +555,9 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	/**
 	 * Test the field label markup is as expected
 	 */
-	public function test_render_submit_button() {
+	public function test_render_field_submit_button() {
 
-		$this->expectOutputRegex( '/<button type="submit" class="wp-block-button__link custom-button-class" style="background-color: #B4D455;color: #333333;">Submit<\/button>/' );
+		$this->expectOutputRegex( '/<button type="submit" class="wp-block-button__link custom-button-class" style="background-color: #B4D455; color: #333333;">Submit<\/button>/' );
 
 		$atts = [
 			'submitButtonClasses'         => 'custom-button-class',
@@ -567,7 +567,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 
 		$object    = new CoBlocks_Form();
 		$reflector = new ReflectionClass( 'CoBlocks_Form' );
-		$method    = $reflector->getMethod( 'render_submit_button' );
+		$method    = $reflector->getMethod( 'render_field_submit_button' );
 
 		$method->setAccessible( true );
 

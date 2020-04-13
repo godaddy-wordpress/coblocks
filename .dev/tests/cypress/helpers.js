@@ -1,7 +1,7 @@
 /**
  * External dependencies.
  */
-import { kebabCase } from 'lodash';
+import { kebabCase, startCase } from 'lodash';
 
 /**
  * Login to our test WordPress site
@@ -82,8 +82,6 @@ export function disableGutenbergFeatures() {
  * @param {string} blockName The name to find in the block inserter
  * e.g 'core/image' or 'coblocks/accordion'.
  * @param {boolean} clearEditor Should clear editor of all blocks
- * @return {boolean} Returns false if the block cannot be found, true if
- * added correctly.
  */
 export function addBlockToPost( blockName, clearEditor = false ) {
 	if ( clearEditor ) {
@@ -94,37 +92,23 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	const blockID = blockName.split( '/' )[ 1 ] || false;
 
 	if ( ! blockCategory || ! blockID ) {
-		return false;
+		return;
 	}
 
 	const inserterClassTarget = `.editor-block-list-item-${ kebabCase( blockName ).replace( 'core-', '' ) }`;
 	const inserterSearch = blockID.split( '-' ) ? blockID.split( '-' )[ 0 ] : blockID;
-
-	let blockIsDeprecated = false;
 
 	cy.get( '.block-list-appender .wp-block .block-editor-inserter__toggle' )
 		.click();
 
 	cy.get( '.block-editor-inserter__menu input' ).type( inserterSearch );
 
-	// deprecated block check
-	if ( ! document.getElementsByClassName( inserterClassTarget ) ) {
-		blockIsDeprecated = true;
-	}
-
 	cy.get( '.block-editor-inserter__menu' ).find( inserterClassTarget ).first().click();
-
-	if ( blockIsDeprecated ) {
-		cy.get( '.block-list-appender .wp-block .block-editor-inserter__toggle' )
-			.click();
-
-		return false;
-	}
 
 	// Make sure the block was added to our page
 	cy.get( `div[data-type="${ blockName }"]` ).should( 'exist' );
 
-	return true;
+	
 }
 
 /**
@@ -160,12 +144,24 @@ export function checkForBlockErrors( blockName ) {
  * View the currently edited page on the front of site
  */
 export function viewPage() {
-	cy.get( '#wpadminbar' ).then( ( ) => {
-		if ( Cypress.$( '#wp-admin-bar-view' ).length ) {
-			cy.get( '#wp-admin-bar-view' )
-				.click();
+	cy.get( 'button[aria-label="Settings"]' ).then( ( settingsButton ) => {
+		if ( ! Cypress.$( settingsButton ).hasClass( 'is-pressed' ) && ! Cypress.$( settingsButton ).hasClass('is-toggled') ) {
+			cy.get( settingsButton ).click()
 		}
-	} );
+	})
+
+	cy.get( 'button[data-label="Document"]' ).then( ( documentButton ) => {
+		if ( ! Cypress.$( documentButton ).hasClass('is-active') ) {
+			cy.get( documentButton ).click()
+		}
+	})
+
+	openSettingsPanel( /permalink/i );
+
+	cy.get( '.edit-post-post-link__link' ).then( ( pageLink ) => {
+		const linkAddress = Cypress.$( pageLink ).attr( 'href' );
+		cy.visit( linkAddress );
+	})
 }
 
 /**
@@ -219,6 +215,17 @@ export function setBlockStyle( style ) {
 	cy.get( '.edit-post-sidebar [class*="editor-block-styles"]' )
 		.contains( RegExp( style, 'i' ) )
 		.click( { force: true } );
+}
+
+/**
+ * Select the block using the Block navigation component.
+ * Input parameter is the name of the block to select.
+ *
+ * @param {string} name The name of the block to select eg: highlight or click-to-tweet
+ */
+export function selectBlock( name ) {
+	cy.get( '.edit-post-header__toolbar button[aria-label="Block navigation"]' ).click();
+	cy.get( '.block-editor-block-navigation__container button' ).contains( startCase( name ) ).click();
 }
 
 /**
