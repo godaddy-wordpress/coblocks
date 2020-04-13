@@ -249,6 +249,7 @@ jobs:
 
   e2e-firefox:
     docker:
+      - image: cypress/browsers:ff72
       - image: circleci/php:latest-node-browsers-ff74
       - image: circleci/mysql:5.7
     parallelism: 4
