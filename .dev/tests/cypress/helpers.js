@@ -7,44 +7,20 @@ import { kebabCase, startCase } from 'lodash';
  * Login to our test WordPress site
  */
 export function loginToSite() {
-	cy.get( 'html' ).then( ( $html ) => {
-		// Editor page, do nothing.
-		if ( $html.find( '.block-editor-page' ).length ) {
+	cy.visit( Cypress.env( 'testURL' ) + '/wp-admin/post-new.php?post_type=page' )
+		.then( ( window ) => {
+			if ( window.location.pathname === '/wp-login.php' ) {
+				// WordPress has a wp_attempt_focus() function that fires 200ms after the wp-login.php page loads.
+				// We need to wait a short time before trying to login.
+				cy.wait( 250 );
 
-		} else {
-			cy.visit( Cypress.env( 'testURL' ) + '/wp-admin' );
+				cy.get( '#user_login' ).type( Cypress.env( 'wpUsername' ) );
+				cy.get( '#user_pass' ).type( Cypress.env( 'wpPassword' ) );
+				cy.get( '#wp-submit' ).click();
+			}
+		} );
 
-			cy.url().then( ( $url ) => {
-				if ( $url.includes( '/wp-login.php' ) ) {
-					cy.wait( 2000 );
-
-					cy.get( '#user_login' )
-						.type( Cypress.env( 'wpUsername' ) );
-
-					cy.get( '#user_pass' )
-						.type( Cypress.env( 'wpPassword' ) );
-
-					cy.get( '#wp-submit' )
-						.click();
-
-					cy.get( '.wrap h1' )
-						.should( 'contain', 'Dashboard' );
-				}
-			} );
-		}
-	} );
-}
-
-/**
- * Create a new post to add blocks to
- */
-export function createNewPost() {
-	cy.visit( Cypress.env( 'testURL' ) + '/wp-admin/post-new.php?post_type=page' );
-
-	disableGutenbergFeatures();
-
-	cy.get( 'textarea.editor-post-title__input' )
-		.type( 'CoBlocks ' + getBlockName() + ' Tests' );
+		cy.get( '.block-editor-page' ).should( 'exist' );
 }
 
 /**
@@ -84,10 +60,6 @@ export function disableGutenbergFeatures() {
  * @param {boolean} clearEditor Should clear editor of all blocks
  */
 export function addBlockToPost( blockName, clearEditor = false ) {
-	if ( clearEditor ) {
-		clearBlocks();
-	}
-
 	const blockCategory = blockName.split( '/' )[ 0 ] || false;
 	const blockID = blockName.split( '/' )[ 1 ] || false;
 
@@ -95,20 +67,19 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 		return;
 	}
 
-	const inserterClassTarget = `.editor-block-list-item-${ kebabCase( blockName ).replace( 'core-', '' ) }`;
-	const inserterSearch = blockID.split( '-' ) ? blockID.split( '-' )[ 0 ] : blockID;
+	if ( clearEditor ) {
+		clearBlocks();
+	}
 
-	cy.get( '.block-list-appender .wp-block .block-editor-inserter__toggle' )
-		.click();
+	cy.get( '.edit-post-header-toolbar' ).find( '.block-editor-inserter__toggle' ).click();
+	cy.get( '.block-editor-inserter__search' ).click().type(
+		blockID.split( '-' )[ 0 ]
+	);
 
-	cy.get( '.block-editor-inserter__menu input' ).type( inserterSearch );
-
-	cy.get( '.block-editor-inserter__menu' ).find( inserterClassTarget ).first().click();
+	cy.get( '.components-panel__body.is-opened .editor-block-list-item-coblocks-' + blockID ).first().click();
 
 	// Make sure the block was added to our page
 	cy.get( `div[data-type="${ blockName }"]` ).should( 'exist' );
-
-	
 }
 
 /**
@@ -177,7 +148,9 @@ export function editPage() {
  */
 export function clearBlocks() {
 	cy.window().then( ( win ) => {
-		win.wp.data.dispatch( 'core/editor' ).resetBlocks( [] );
+		win.wp.data.dispatch( 'core/block-editor' ).removeBlocks(
+			win.wp.data.select( 'core/block-editor' ).getBlocks().map( block => block.clientId )
+		);
 	} );
 }
 
@@ -326,10 +299,10 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 		blockID = getBlockSlug();
 	}
 
-	cy.get( '.wp-block[data-type="coblocks/' + blockID + '"]' )
-		.dblclick( 'right', { force: true } );
+	// Force click the target element so that we don't select any innerBlocks by mistake.
+	cy.get( '.wp-block[data-type="coblocks/' + blockID + '"]' ).last().click( { force: true } );
 
-	cy.get( '.block-editor-block-inspector__advanced' ).find( 'button' ).click();
+	cy.get( '.block-editor-block-inspector__advanced' ).scrollIntoView().find( 'button' ).click();
 
 	cy.get( 'div.edit-post-sidebar' )
 		.contains( /Additional CSS/i )
@@ -343,9 +316,6 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 				}
 			} );
 		} );
-
-	cy.get( '.wp-block-coblocks-' + blockID )
-		.should( 'have.class', classes );
 }
 
 /**

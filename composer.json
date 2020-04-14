@@ -1,6 +1,8 @@
 {
 	"name": "godaddy-wordpress/coblocks",
+	"description": "CoBlocks is a suite of professional page building content blocks for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.",
 	"type": "wordpress-plugin",
+	"license": "GPL-2.0-only",
 	"require": {
 		"php": ">=5.6"
 	},
