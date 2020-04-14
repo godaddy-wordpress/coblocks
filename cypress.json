@@ -7,12 +7,12 @@
   "projectId": "sovnn2",
   "firefoxGcInterval": null,
   "integrationFolder": "./",
-	"testFiles": "**/*.cypress.js",
-	"viewportWidth": 1920,
-	"viewportHeight": 1080,
-	"env": {
-		"testURL": "http://localhost:8889",
-		"wpUsername": "admin",
-		"wpPassword": "password"
-	}
+  "testFiles": "**/*.cypress.js",
+  "viewportWidth": 1920,
+  "viewportHeight": 1080,
+  "env": {
+    "testURL": "http://localhost:8889",
+    "wpUsername": "admin",
+    "wpPassword": "password"
+  }
 }
