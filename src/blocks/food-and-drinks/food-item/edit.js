@@ -238,15 +238,17 @@ class FoodItem extends Component {
 		} = this.props;
 
 		return (
-			<MediaPlaceholder
-				allowedTypes={ [ 'image' ] }
-				multiple={ false }
-				icon="format-image"
-				labels={ {
-					title: ' ',
-				} }
-				onSelect={ ( el ) => setAttributes( { url: el.url, alt: el.alt } ) }
-			/>
+			<div className="wp-block-coblocks-food-item__figure">
+				<MediaPlaceholder
+					allowedTypes={ [ 'image' ] }
+					multiple={ false }
+					icon="format-image"
+					labels={ {
+						title: ' ',
+					} }
+					onSelect={ ( el ) => setAttributes( { url: el.url, alt: el.alt } ) }
+				/>
+			</div>
 		);
 	}
 
@@ -364,7 +366,7 @@ class FoodItem extends Component {
 									// Only renders if the option is checked within the Settings sidebar.
 									<IconButton
 										icon={ icons.glutenFree }
-										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--glutenFree', {
+										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--gluten-free', {
 											'is-toggled': glutenFree,
 										} ) }
 										onClick={ () =>

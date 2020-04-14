@@ -25,7 +25,7 @@ describe( 'Test CoBlocks Post Carousel Block', function() {
 	/**
 	 * Test the post-carousel block column and post count controls
 	 */
-	it.only( 'Test the post-carousel block column and post count controls.', function() {
+	it( 'Test the post-carousel block column and post count controls.', function() {
 		helpers.addBlockToPost( 'coblocks/post-carousel', true );
 
 		helpers.selectBlock('post-carousel');

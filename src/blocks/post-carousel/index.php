@@ -145,8 +145,7 @@ function coblocks_post_carousel( $posts, $attributes ) {
 							),
 						),
 					)
-				),
-				true
+				)
 			)
 		)
 	);
