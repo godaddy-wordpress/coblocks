@@ -248,11 +248,8 @@ jobs:
             ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel --group e2e-chrome --spec "$(cat /tmp/specstring)"
 
   e2e-firefox:
-    orbs:
-      circleci-images: circleci/circleci-images@0.7.0
-        - run: firefox-version 74.0
     docker:
-      - image: circleci/php:latest-node-browsers-ff74
+      - image: circleci/php:latest-node-browsers
       - image: circleci/mysql:5.7
     parallelism: 4
     steps:
