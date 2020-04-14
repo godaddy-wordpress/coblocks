@@ -5,18 +5,14 @@
 	"supportFile": ".dev/tests/cypress/support/commands.js",
 	"screenshotsFolder": ".dev/tests/cypress/screenshots",
 	"projectId": "sovnn2",
+	"firefoxGcInterval": null,
 	"integrationFolder": "./",
 	"testFiles": "**/*.cypress.js",
 	"viewportWidth": 1920,
 	"viewportHeight": 1080,
 	"env": {
-		"testURL": "http://localhost:8889",
-		"wpUsername": "admin",
-		"wpPassword": "password"
-	},
-	"firefoxGcInterval": {
-		"runMode": null,
-		"openMode": null
-	  },
-	"defaultCommandTimeout": 5000
-}
+	  "testURL": "http://localhost:8889",
+	  "wpUsername": "admin",
+	  "wpPassword": "password"
+	}
+  }
