@@ -1,5 +1,5 @@
 /**
-* WordPress dependencies
+ * WordPress dependencies
 */
 import { __ } from '@wordpress/i18n';
 
@@ -21,6 +21,14 @@ const example = {
 				props: {
 					children: [
 						__( 'Feature one', 'coblocks' ),
+					]
+				}
+			},
+			{
+				type: 'li',
+				props: {
+					children: [
+						__( 'Feature two', 'coblocks' ),
 					]
 				}
 			}
@@ -47,6 +55,14 @@ const example = {
 				props: {
 					children: [
 						__( 'Feature one', 'coblocks' ),
+					]
+				}
+			},
+			{
+				type: 'li',
+				props: {
+					children: [
+						__( 'Feature two', 'coblocks' ),
 					]
 				}
 			}
