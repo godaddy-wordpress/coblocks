@@ -74,6 +74,24 @@ class CoBlocks_Block_Assets {
 	 * @access public
 	 */
 	public function block_assets() {
+		
+		// Only load the front end CSS if a Coblock is in use.
+		$has_coblock = false;
+
+		// This is similar to has_block() in core, but will match anything
+		// in the coblocks/* namespace.
+		$wp_post = get_post( $post );
+		if ( $wp_post instanceof WP_Post ) {
+			$post = $wp_post->post_content;
+		}
+
+		if ( false !== strpos( $post, '<!-- wp:coblocks/' ) ) {
+			$has_coblock = true;
+		}
+
+		if ( !$has_coblock ) {
+			return;
+		}
 
 		// Styles.
 		$name       = 'coblocks-style';
