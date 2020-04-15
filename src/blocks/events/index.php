@@ -42,7 +42,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 			$events = $ical->events_from_interval( $attributes['eventsRange'] );
 		}
 
-		if ( 0 === sizeof($events) ) {
+		if ( 0 === count( $events ) ) {
 			return '<div class="components-placeholder"><div class="notice notice-error">' . __( 'An error has occurred, either no events were found or an unsupported URL was used.', 'coblocks' ) . '</div></div>';
 		}
 
