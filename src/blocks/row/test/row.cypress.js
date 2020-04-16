@@ -196,4 +196,69 @@ describe( 'Test CoBlocks Row Block', function() {
 
 		helpers.editPage();
 	} );
+
+		/**
+	 * Test the row block saves with alignment classes
+	 */
+	it( 'Test the row block alignment controls.', function() {
+		helpers.addBlockToPost( 'coblocks/row', true );
+
+		if (testAgainstVariationsPicker) {
+			cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(1) button' ).click( { force: true } );
+		} else {
+			cy.get( 'div[aria-label="Select row columns"]' ).find( 'div:nth-child(1) button' ).click( { force: true } );
+		}
+
+		cy.get( '.wp-block-coblocks-row' ).click( { force: true } );
+
+		cy.get( 'button[aria-label="Change vertical alignment"]' ).click();
+
+		cy.get( 'div[aria-label="Change vertical alignment"]').find('button').contains(/top/i).click();
+
+		cy.get( '.wp-block-coblocks-row__inner' )
+			.should( 'have.class', 'are-vertically-aligned-top' );
+
+		cy.get( '.wp-block-coblocks-column' )
+			.should( 'have.class', 'is-vertically-aligned-top' );
+
+		cy.get( 'button[aria-label="Change vertical alignment"]' ).click();
+
+		cy.get( 'div[aria-label="Change vertical alignment"]').find('button').contains(/middle/i).click();
+
+		cy.get( '.wp-block-coblocks-row__inner' )
+			.should( 'have.class', 'are-vertically-aligned-center' );
+
+		cy.get( '.wp-block-coblocks-column' )
+			.should( 'have.class', 'is-vertically-aligned-center' );
+
+		cy.get( 'button[aria-label="Change vertical alignment"]' ).click();
+
+		cy.get( 'div[aria-label="Change vertical alignment"]').find('button').contains(/bottom/i).click();
+
+		cy.get( '.wp-block-coblocks-row__inner' )
+			.should( 'have.class', 'are-vertically-aligned-bottom' );
+
+		cy.get( '.wp-block-coblocks-column' )
+			.should( 'have.class', 'is-vertically-aligned-bottom' );
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/row' );
+
+		cy.get( '.wp-block-coblocks-row__inner' )
+			.should( 'have.class', 'are-vertically-aligned-bottom' );
+
+		cy.get( '.wp-block-coblocks-column' )
+			.should( 'have.class', 'is-vertically-aligned-bottom' );
+
+		helpers.viewPage();
+
+		cy.get( '.wp-block-coblocks-row__inner' )
+			.should( 'have.class', 'are-vertically-aligned-bottom' );
+
+		cy.get( '.wp-block-coblocks-column' )
+			.should( 'have.class', 'is-vertically-aligned-bottom' );
+
+		helpers.editPage();
+	} );
 } );
