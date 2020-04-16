@@ -46,6 +46,7 @@ class edit extends Component {
 			backgroundColor,
 			blockBackgroundColor,
 			textColor,
+			setAttributes,
 		} = this.props;
 
 		const {
@@ -99,81 +100,155 @@ class edit extends Component {
 			width: ( isMaskStyle || isCircularStyle ) && iconSize + 'px',
 		};
 
-		return [
-			// eslint-disable-next-line react/jsx-key
+		const placeholder = ! (
+			facebook ||
+			twitter ||
+			pinterest ||
+			linkedin ||
+			email ||
+			tumblr ||
+			google ||
+			reddit
+		);
+
+		return (
 			<Fragment>
 				{ isSelected && <Controls { ...this.props } /> }
 				{ isSelected && <Inspector { ...this.props } /> }
 				<div className={ classes } style={ { backgroundColor: blockBackgroundColor.color || '' } }>
 					<ul>
-						{ facebook &&
+						{ ( placeholder || ( facebook || isSelected ) ) && (
 						<li>
-							<span className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--facebook' ) } style={ buttonStyles }>
+							<button
+								className={ classnames( 
+									buttonClasses, 
+									'wp-block-coblocks-social__button--facebook', 
+									{ 'is-empty': ! facebook } ) }
+								style={ buttonStyles }
+								aria-label={ __( 'Add Facebook share button', 'coblocks' ) }
+								onClick={ () => setAttributes( { facebook: ! facebook } ) }
+								>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Facebook', 'coblocks' ) }</span>
-							</span>
+							</button> 
 						</li>
-						}
-						{ twitter &&
+						) }
+						{ ( placeholder || ( twitter || isSelected ) ) && (
 						<li>
-							<span className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--twitter' ) } style={ buttonStyles }>
+							<button 
+								className={ classnames( 
+									buttonClasses, 
+									'wp-block-coblocks-social__button--twitter', 
+									{ 'is-empty': ! twitter }  ) } 
+								style={ buttonStyles }
+								aria-label={ __( 'Add Twitter share button', 'coblocks' ) }
+								onClick={ () => setAttributes( { twitter: ! twitter } ) }
+								>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Twitter', 'coblocks' ) }</span>
-							</span>
+							</button>
 						</li>
-						}
-						{ pinterest &&
+						) }
+						{ ( placeholder || ( pinterest || isSelected ) ) && (
 						<li>
-							<span className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--pinterest' ) } style={ buttonStyles }>
+							<button 
+								className={ classnames( 
+									buttonClasses, 
+									'wp-block-coblocks-social__button--pinterest', 
+									{ 'is-empty': ! pinterest }  ) } 
+								style={ buttonStyles }
+								aria-label={ __( 'Add Pinterest share button', 'coblocks' ) }
+								onClick={ () => setAttributes( { pinterest: ! pinterest } ) }
+								>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Pinterest', 'coblocks' ) }</span>
-							</span>
+							</button>
 						</li>
-						}
-						{ linkedin &&
+						) }
+						{ ( placeholder || ( linkedin || isSelected ) ) && (
 						<li>
-							<span className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--linkedin' ) } style={ buttonStyles }>
+							<button 
+								className={ classnames( 
+									buttonClasses, 
+									'wp-block-coblocks-social__button--linkedin', 
+									{ 'is-empty': ! linkedin }  ) } 
+								style={ buttonStyles }
+								aria-label={ __( 'Add Linkedin share button', 'coblocks' ) }
+								onClick={ () => setAttributes( { linkedin: ! linkedin } ) }
+							>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on LinkedIn', 'coblocks' ) }</span>
-							</span>
+							</button>
 						</li>
-						}
-						{ email &&
+						) }
+						{ ( placeholder || ( email || isSelected ) ) && (
 						<li>
-							<span className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--email' ) } style={ buttonStyles }>
+							<button 
+								className={ classnames( 
+									buttonClasses, 
+									'wp-block-coblocks-social__button--email', 
+									{ 'is-empty': ! email }  ) } 
+								style={ buttonStyles }
+								aria-label={ __( 'Add Email share button', 'coblocks' ) }
+								onClick={ () => setAttributes( { email: ! email } ) }
+								>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share via Email', 'coblocks' ) }</span>
-							</span>
+							</button>
 						</li>
-						}
-						{ tumblr &&
+						) }
+						{ ( placeholder || ( tumblr || isSelected ) ) && (
 						<li>
-							<span className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--tumblr' ) } style={ buttonStyles }>
+							<button 
+								className={ classnames( 
+									buttonClasses, 
+									'wp-block-coblocks-social__button--tumblr', 
+									{ 'is-empty': ! tumblr }  ) } 
+								style={ buttonStyles }
+								aria-label={ __( 'Add Tumblr share button', 'coblocks' ) }
+								onClick={ () => setAttributes( { tumblr: ! tumblr } ) }
+								>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Tumblr', 'coblocks' ) }</span>
-							</span>
+							</button>
 						</li>
-						}
-						{ google &&
+						) }
+						{ ( placeholder || ( google || isSelected ) ) && (
 						<li>
-							<span className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--google' ) } style={ buttonStyles }>
+							<button 
+								className={ classnames( 
+									buttonClasses, 
+									'wp-block-coblocks-social__button--google', 
+									{ 'is-empty': ! google }  ) } 
+								style={ buttonStyles }
+								aria-label={ __( 'Add Google share button', 'coblocks' ) }
+								onClick={ () => setAttributes( { google: ! google } ) }
+								>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Google', 'coblocks' ) }</span>
-							</span>
+							</button>
 						</li>
-						}
-						{ reddit &&
+						) }
+						{ ( placeholder || ( reddit || isSelected ) ) && (
 						<li>
-							<span className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--reddit' ) } style={ buttonStyles }>
+							<button 
+								className={ classnames( 
+								buttonClasses, 
+								'wp-block-coblocks-social__button--reddit', 
+								{ 'is-empty': ! reddit }  ) } 
+								style={ buttonStyles }
+								aria-label={ __( 'Add Reddit share button', 'coblocks' ) }
+								onClick={ () => setAttributes( { reddit: ! reddit } ) }
+								>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Reddit', 'coblocks' ) }</span>
-							</span>
+							</button>
 						</li>
-						}
+						) }
 					</ul>
 				</div>
-			</Fragment>,
-		];
+			</Fragment>
+		);
 	}
 }
 

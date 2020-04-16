@@ -1,8 +1,8 @@
 /**
  * Internal dependencies.
  */
-import { hasEmptyAttributes } from '../../../utils/block-helpers';
-import fromEntries from '../../../js/coblocks-fromEntries';
+import { hasEmptyAttributes } from '../../../../utils/block-helpers';
+import fromEntries from '../../../../js/coblocks-fromEntries';
 
 /**
  * External dependencies.
@@ -28,7 +28,7 @@ const isEmpty = ( attributes ) => {
 	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
 };
 
-export default function save( { attributes, className } ) {
+export default function migrateToColumnUtilityClasses( { attributes, className } ) {
 	const {
 		alt,
 		description,
@@ -113,7 +113,6 @@ export default function save( { attributes, className } ) {
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
 										'wp-block-coblocks-food-item__attribute--spicy',
-										'wp-block-coblocks-food-item__attribute--spicier',
 										'hint--top' ) }
 									aria-label={ __( 'Spicier', 'coblocks' ) }
 								>
@@ -139,9 +138,9 @@ export default function save( { attributes, className } ) {
 								<span
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
-										'wp-block-coblocks-food-item__attribute--gluten-free',
+										'wp-block-coblocks-food-item__attribute--glutenFree',
 										'hint--top' ) }
-									aria-label={ __( 'Gluten free', 'coblocks' ) }
+									aria-label={ __( 'Gluten Free', 'coblocks' ) }
 								>
 									<span
 										className="wp-block-coblocks-food-item__icon"

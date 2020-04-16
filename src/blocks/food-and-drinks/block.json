@@ -14,6 +14,10 @@
 			"type": "number",
 			"default": 2
 		},
+		"gutter": {
+			"type": "string",
+			"default": "medium"
+		},
 		"headingLevel": {
 			"type": "integer",
 			"default": 4

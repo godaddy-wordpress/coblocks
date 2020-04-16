@@ -1,14 +1,14 @@
 # Copyright (c) 2020 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.23.0\n"
+"Project-Id-Version: CoBlocks 1.24.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-04-10T20:29:48+00:00\n"
+"POT-Creation-Date: 2020-04-16T17:04:15+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -219,23 +219,23 @@ msgid "An error has occurred, which probably means the feed is down. Try again l
 msgstr ""
 
 #: src/blocks/post-carousel/index.php:184
-#: src/blocks/posts/index.php:171
+#: src/blocks/posts/index.php:173
 msgctxt "placeholder when a post has no title"
 msgid "(no title)"
 msgstr ""
 
 #: src/blocks/share/index.php:132
-#: src/blocks/share/edit.js:113
+#: src/blocks/share/edit.js:132
 msgid "Share on Facebook"
 msgstr ""
 
 #: src/blocks/share/index.php:136
-#: src/blocks/share/edit.js:121
+#: src/blocks/share/edit.js:148
 msgid "Share on Twitter"
 msgstr ""
 
 #: src/blocks/share/index.php:140
-#: src/blocks/share/edit.js:129
+#: src/blocks/share/edit.js:164
 msgid "Share on Pinterest"
 msgstr ""
 
@@ -244,22 +244,22 @@ msgid "Share on Linkedin"
 msgstr ""
 
 #: src/blocks/share/index.php:148
-#: src/blocks/share/edit.js:145
+#: src/blocks/share/edit.js:196
 msgid "Share via Email"
 msgstr ""
 
 #: src/blocks/share/index.php:152
-#: src/blocks/share/edit.js:153
+#: src/blocks/share/edit.js:212
 msgid "Share on Tumblr"
 msgstr ""
 
 #: src/blocks/share/index.php:156
-#: src/blocks/share/edit.js:161
+#: src/blocks/share/edit.js:228
 msgid "Share on Google"
 msgstr ""
 
 #: src/blocks/share/index.php:160
-#: src/blocks/share/edit.js:169
+#: src/blocks/share/edit.js:244
 msgid "Share on Reddit"
 msgstr ""
 
@@ -753,7 +753,7 @@ msgstr ""
 
 #: src/blocks/events/edit.js:185
 #: src/blocks/post-carousel/edit.js:224
-#: src/blocks/posts/edit.js:334
+#: src/blocks/posts/edit.js:333
 msgid "Use URL"
 msgstr ""
 
@@ -908,6 +908,7 @@ msgid "Features settings"
 msgstr ""
 
 #: src/blocks/features/inspector.js:92
+#: src/blocks/food-and-drinks/inspector.js:103
 #: src/blocks/post-carousel/inspector.js:86
 #: src/blocks/posts/inspector.js:170
 #: src/blocks/services/inspector.js:70
@@ -915,6 +916,7 @@ msgid "Columns"
 msgstr ""
 
 #: src/blocks/features/inspector.js:115
+#: src/blocks/food-and-drinks/inspector.js:110
 #: src/blocks/gallery-carousel/inspector.js:92
 #: src/blocks/gallery-carousel/inspector.js:98
 #: src/blocks/gallery-collage/inspector.js:84
@@ -955,7 +957,8 @@ msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:142
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:132
-#: src/blocks/food-and-drinks/food-item/edit.js:315
+#: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:91
+#: src/blocks/food-and-drinks/food-item/edit.js:317
 #: src/blocks/food-and-drinks/food-item/inspector.js:60
 #: src/blocks/food-and-drinks/food-item/save.js:91
 msgid "Popular"
@@ -963,7 +966,8 @@ msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:150
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:140
-#: src/blocks/food-and-drinks/food-item/edit.js:327
+#: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:104
+#: src/blocks/food-and-drinks/food-item/edit.js:329
 #: src/blocks/food-and-drinks/food-item/inspector.js:75
 #: src/blocks/food-and-drinks/food-item/save.js:104
 msgid "Spicy"
@@ -971,37 +975,42 @@ msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:158
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:148
+#: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:117
 #: src/blocks/food-and-drinks/food-item/inspector.js:80
-#: src/blocks/food-and-drinks/food-item/save.js:117
+#: src/blocks/food-and-drinks/food-item/save.js:118
 msgid "Spicier"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:166
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:156
-#: src/blocks/food-and-drinks/food-item/edit.js:354
+#: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:130
+#: src/blocks/food-and-drinks/food-item/edit.js:356
 #: src/blocks/food-and-drinks/food-item/inspector.js:90
-#: src/blocks/food-and-drinks/food-item/save.js:130
+#: src/blocks/food-and-drinks/food-item/save.js:131
 msgid "Vegetarian"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:174
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:164
+#: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:143
 #: src/blocks/food-and-drinks/food-item/inspector.js:65
 msgid "Gluten Free"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:182
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:172
-#: src/blocks/food-and-drinks/food-item/edit.js:382
+#: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:156
+#: src/blocks/food-and-drinks/food-item/edit.js:384
 #: src/blocks/food-and-drinks/food-item/inspector.js:70
-#: src/blocks/food-and-drinks/food-item/save.js:156
+#: src/blocks/food-and-drinks/food-item/save.js:157
 msgid "Pescatarian"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:190
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:180
+#: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:169
 #: src/blocks/food-and-drinks/food-item/inspector.js:85
-#: src/blocks/food-and-drinks/food-item/save.js:169
+#: src/blocks/food-and-drinks/food-item/save.js:170
 msgid "Vegan"
 msgstr ""
 
@@ -1018,24 +1027,24 @@ msgstr ""
 msgid "Remove image"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:307
+#: src/blocks/food-and-drinks/food-item/edit.js:309
 msgid "Add title…"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:338
+#: src/blocks/food-and-drinks/food-item/edit.js:340
 msgid "Hot"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:374
-#: src/blocks/food-and-drinks/food-item/save.js:143
+#: src/blocks/food-and-drinks/food-item/edit.js:376
+#: src/blocks/food-and-drinks/food-item/save.js:144
 msgid "Gluten free"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:413
+#: src/blocks/food-and-drinks/food-item/edit.js:415
 msgid "Add description…"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:422
+#: src/blocks/food-and-drinks/food-item/edit.js:424
 msgid "$0.00"
 msgstr ""
 
@@ -1052,7 +1061,7 @@ msgstr ""
 #. translators: block keyword
 #. translators: icon keyword
 #: src/blocks/food-and-drinks/food-item/index.js:29
-#: src/blocks/food-and-drinks/index.js:30
+#: src/blocks/food-and-drinks/index.js:31
 #: src/blocks/icon/deprecated/svgs.js:901
 #: src/blocks/icon/svgs.js:921
 #: src/blocks/icon/svgs.js:1442
@@ -1124,25 +1133,116 @@ msgid "Focal point"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/food-and-drinks/index.js:21
+#: src/blocks/food-and-drinks/index.js:22
 msgid "Food & Drinks"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/food-and-drinks/index.js:23
+#: src/blocks/food-and-drinks/index.js:24
 msgid "Display a menu or price list."
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/food-and-drinks/index.js:28
+#: src/blocks/food-and-drinks/index.js:29
 #: src/blocks/icon/deprecated/svgs.js:903
 #: src/blocks/icon/svgs.js:923
 #: src/blocks/icon/svgs.js:1444
 msgid "restaurant"
 msgstr ""
 
-#: src/blocks/food-and-drinks/inspector.js:31
+#. translators: abbreviation for small size
+#: src/blocks/food-and-drinks/inspector.js:41
+#: src/blocks/gallery-collage/inspector.js:63
+#: src/blocks/posts/inspector.js:63
+#: src/components/option-selector-control/index.js:27
+#: src/utils/gutter-options.js:15
+msgid "S"
+msgstr ""
+
+#. translators: abbreviation for small size
+#. translators: label for small size option
+#: src/blocks/food-and-drinks/inspector.js:42
+#: src/blocks/gallery-collage/inspector.js:64
+#: src/blocks/icon/icon-size-select.js:16
+#: src/blocks/posts/inspector.js:64
+#: src/blocks/share/inspector.js:72
+#: src/blocks/social-profiles/inspector.js:76
+#: src/components/dimensions-control/dimensions-select.js:15
+#: src/components/option-selector-control/index.js:28
+#: src/components/size-control/index.js:110
+#: src/utils/gutter-options.js:16
+msgid "Small"
+msgstr ""
+
+#. translators: abbreviation for medium size
+#: src/blocks/food-and-drinks/inspector.js:47
+#: src/blocks/gallery-collage/inspector.js:69
+#: src/blocks/posts/inspector.js:68
+#: src/components/option-selector-control/index.js:33
+#: src/utils/gutter-options.js:21
+msgid "M"
+msgstr ""
+
+#. translators: abbreviation for medium size
+#. translators: label for medium size option
+#: src/blocks/food-and-drinks/inspector.js:48
+#: src/blocks/gallery-collage/inspector.js:70
+#: src/blocks/icon/icon-size-select.js:21
+#: src/blocks/posts/inspector.js:69
+#: src/blocks/share/inspector.js:73
+#: src/blocks/social-profiles/inspector.js:77
+#: src/components/dimensions-control/dimensions-select.js:20
+#: src/components/option-selector-control/index.js:34
+#: src/components/size-control/index.js:114
+#: src/utils/gutter-options.js:22
+msgid "Medium"
+msgstr ""
+
+#. translators: abbreviation for large size
+#: src/blocks/food-and-drinks/inspector.js:53
+#: src/blocks/gallery-collage/inspector.js:75
+#: src/blocks/posts/inspector.js:73
+#: src/components/option-selector-control/index.js:39
+#: src/utils/gutter-options.js:27
+msgid "L"
+msgstr ""
+
+#. translators: abbreviation for large size
+#. translators: label for large size option
+#: src/blocks/food-and-drinks/inspector.js:54
+#: src/blocks/gallery-collage/inspector.js:76
+#: src/blocks/icon/icon-size-select.js:26
+#: src/blocks/posts/inspector.js:74
+#: src/blocks/share/inspector.js:74
+#: src/blocks/social-profiles/inspector.js:78
+#: src/components/dimensions-control/dimensions-select.js:25
+#: src/components/option-selector-control/index.js:40
+#: src/components/size-control/index.js:59
+#: src/utils/gutter-options.js:28
+msgid "Large"
+msgstr ""
+
+#. translators: abbreviation for largest size
+#. translators: abbreviation for extra large size
+#: src/blocks/food-and-drinks/inspector.js:59
+#: src/blocks/posts/inspector.js:78
+#: src/components/option-selector-control/index.js:45
+#: src/utils/gutter-options.js:33
+msgid "XL"
+msgstr ""
+
+#. translators: abbreviation for extra large size
+#. translators: label for extra large size option
+#: src/blocks/food-and-drinks/inspector.js:60
+#: src/blocks/icon/icon-size-select.js:30
+#: src/blocks/posts/inspector.js:79
+#: src/components/dimensions-control/dimensions-select.js:30
+#: src/utils/gutter-options.js:34
+msgid "Huge"
+msgstr ""
+
+#: src/blocks/food-and-drinks/inspector.js:66
 #: src/blocks/map/inspector.js:105
 #: src/blocks/posts/inspector.js:246
 #: src/blocks/row/inspector.js:130
@@ -1150,31 +1250,31 @@ msgstr ""
 msgid "Styles"
 msgstr ""
 
-#: src/blocks/food-and-drinks/inspector.js:64
-msgid "Food & Drinks settings"
+#: src/blocks/food-and-drinks/inspector.js:99
+msgid "Food & Drinks Settings"
 msgstr ""
 
-#: src/blocks/food-and-drinks/inspector.js:66
+#: src/blocks/food-and-drinks/inspector.js:118
 msgid "Images"
 msgstr ""
 
-#: src/blocks/food-and-drinks/inspector.js:69
+#: src/blocks/food-and-drinks/inspector.js:121
 msgid "Showing images for each item"
 msgstr ""
 
-#: src/blocks/food-and-drinks/inspector.js:70
+#: src/blocks/food-and-drinks/inspector.js:122
 msgid "Toggle to show images for each item."
 msgstr ""
 
-#: src/blocks/food-and-drinks/inspector.js:76
+#: src/blocks/food-and-drinks/inspector.js:128
 msgid "Prices"
 msgstr ""
 
-#: src/blocks/food-and-drinks/inspector.js:79
+#: src/blocks/food-and-drinks/inspector.js:131
 msgid "Showing the price of each item"
 msgstr ""
 
-#: src/blocks/food-and-drinks/inspector.js:80
+#: src/blocks/food-and-drinks/inspector.js:132
 msgid "Toggle to show the price of each item."
 msgstr ""
 
@@ -1849,72 +1949,6 @@ msgstr ""
 #: src/blocks/gallery-offset/inspector.js:55
 #: src/blocks/gallery-stacked/inspector.js:56
 msgid "Toggle to show media captions."
-msgstr ""
-
-#. translators: abbreviation for small size
-#: src/blocks/gallery-collage/inspector.js:63
-#: src/blocks/posts/inspector.js:63
-#: src/components/option-selector-control/index.js:27
-#: src/utils/gutter-options.js:15
-msgid "S"
-msgstr ""
-
-#. translators: abbreviation for small size
-#. translators: label for small size option
-#: src/blocks/gallery-collage/inspector.js:64
-#: src/blocks/icon/icon-size-select.js:16
-#: src/blocks/posts/inspector.js:64
-#: src/blocks/share/inspector.js:72
-#: src/blocks/social-profiles/inspector.js:76
-#: src/components/dimensions-control/dimensions-select.js:15
-#: src/components/option-selector-control/index.js:28
-#: src/components/size-control/index.js:110
-#: src/utils/gutter-options.js:16
-msgid "Small"
-msgstr ""
-
-#. translators: abbreviation for medium size
-#: src/blocks/gallery-collage/inspector.js:69
-#: src/blocks/posts/inspector.js:68
-#: src/components/option-selector-control/index.js:33
-#: src/utils/gutter-options.js:21
-msgid "M"
-msgstr ""
-
-#. translators: abbreviation for medium size
-#. translators: label for medium size option
-#: src/blocks/gallery-collage/inspector.js:70
-#: src/blocks/icon/icon-size-select.js:21
-#: src/blocks/posts/inspector.js:69
-#: src/blocks/share/inspector.js:73
-#: src/blocks/social-profiles/inspector.js:77
-#: src/components/dimensions-control/dimensions-select.js:20
-#: src/components/option-selector-control/index.js:34
-#: src/components/size-control/index.js:114
-#: src/utils/gutter-options.js:22
-msgid "Medium"
-msgstr ""
-
-#. translators: abbreviation for large size
-#: src/blocks/gallery-collage/inspector.js:75
-#: src/blocks/posts/inspector.js:73
-#: src/components/option-selector-control/index.js:39
-#: src/utils/gutter-options.js:27
-msgid "L"
-msgstr ""
-
-#. translators: abbreviation for large size
-#. translators: label for large size option
-#: src/blocks/gallery-collage/inspector.js:76
-#: src/blocks/icon/icon-size-select.js:26
-#: src/blocks/posts/inspector.js:74
-#: src/blocks/share/inspector.js:74
-#: src/blocks/social-profiles/inspector.js:78
-#: src/components/dimensions-control/dimensions-select.js:25
-#: src/components/option-selector-control/index.js:40
-#: src/components/size-control/index.js:59
-#: src/utils/gutter-options.js:28
-msgid "Large"
 msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:82
@@ -4056,15 +4090,6 @@ msgstr ""
 msgid "upload"
 msgstr ""
 
-#. translators: abbreviation for extra large size
-#. translators: label for extra large size option
-#: src/blocks/icon/icon-size-select.js:30
-#: src/blocks/posts/inspector.js:79
-#: src/components/dimensions-control/dimensions-select.js:30
-#: src/utils/gutter-options.js:34
-msgid "Huge"
-msgstr ""
-
 #: src/blocks/icon/icon-size-select.js:79
 msgid "Choose icon size preset"
 msgstr ""
@@ -4896,7 +4921,7 @@ msgid "Drop to replace media"
 msgstr ""
 
 #: src/blocks/post-carousel/edit.js:121
-#: src/blocks/posts/edit.js:239
+#: src/blocks/posts/edit.js:238
 msgid "Edit RSS URL"
 msgstr ""
 
@@ -4907,7 +4932,7 @@ msgid "Post Carousel"
 msgstr ""
 
 #: src/blocks/post-carousel/edit.js:181
-#: src/blocks/posts/edit.js:286
+#: src/blocks/posts/edit.js:285
 msgid "No posts found. Start publishing or add posts from an RSS feed."
 msgstr ""
 
@@ -4916,33 +4941,33 @@ msgid "Retrieve an external feed"
 msgstr ""
 
 #: src/blocks/post-carousel/edit.js:191
-#: src/blocks/posts/edit.js:296
+#: src/blocks/posts/edit.js:295
 msgid "Use External Feed"
 msgstr ""
 
 #: src/blocks/post-carousel/edit.js:213
-#: src/blocks/posts/edit.js:323
+#: src/blocks/posts/edit.js:322
 msgid "RSS Feed"
 msgstr ""
 
 #: src/blocks/post-carousel/edit.js:214
-#: src/blocks/posts/edit.js:324
+#: src/blocks/posts/edit.js:323
 msgid "RSS URLs are generally located at the /feed/ directory of a site."
 msgstr ""
 
 #: src/blocks/post-carousel/edit.js:218
-#: src/blocks/posts/edit.js:328
+#: src/blocks/posts/edit.js:327
 msgid "https://example.com/feed…"
 msgstr ""
 
 #. translators: placeholder when a post has no title
 #: src/blocks/post-carousel/edit.js:300
-#: src/blocks/posts/edit.js:431
+#: src/blocks/posts/edit.js:430
 msgid "(no title)"
 msgstr ""
 
 #: src/blocks/post-carousel/edit.js:318
-#: src/blocks/posts/edit.js:457
+#: src/blocks/posts/edit.js:456
 msgid "Read more"
 msgstr ""
 
@@ -5044,19 +5069,19 @@ msgstr ""
 msgid "Horizontal"
 msgstr ""
 
-#: src/blocks/posts/edit.js:252
+#: src/blocks/posts/edit.js:251
 msgid "Image on left"
 msgstr ""
 
-#: src/blocks/posts/edit.js:257
+#: src/blocks/posts/edit.js:256
 msgid "Image on right"
 msgstr ""
 
-#: src/blocks/posts/edit.js:281
+#: src/blocks/posts/edit.js:280
 msgid "Blog Posts"
 msgstr ""
 
-#: src/blocks/posts/edit.js:289
+#: src/blocks/posts/edit.js:288
 msgid "Retrieve an External Feed"
 msgstr ""
 
@@ -5068,14 +5093,6 @@ msgstr ""
 #. translators: block description
 #: src/blocks/posts/index.js:23
 msgid "Display posts or an RSS feed as stacked or horizontal cards."
-msgstr ""
-
-#. translators: abbreviation for extra large size
-#. translators: abbreviation for largest size
-#: src/blocks/posts/inspector.js:78
-#: src/components/option-selector-control/index.js:45
-#: src/utils/gutter-options.js:33
-msgid "XL"
 msgstr ""
 
 #: src/blocks/posts/inspector.js:86
@@ -5523,8 +5540,40 @@ msgstr ""
 msgid "Shape color"
 msgstr ""
 
-#: src/blocks/share/edit.js:137
+#: src/blocks/share/edit.js:128
+msgid "Add Facebook share button"
+msgstr ""
+
+#: src/blocks/share/edit.js:144
+msgid "Add Twitter share button"
+msgstr ""
+
+#: src/blocks/share/edit.js:160
+msgid "Add Pinterest share button"
+msgstr ""
+
+#: src/blocks/share/edit.js:176
+msgid "Add Linkedin share button"
+msgstr ""
+
+#: src/blocks/share/edit.js:180
 msgid "Share on LinkedIn"
+msgstr ""
+
+#: src/blocks/share/edit.js:192
+msgid "Add Email share button"
+msgstr ""
+
+#: src/blocks/share/edit.js:208
+msgid "Add Tumblr share button"
+msgstr ""
+
+#: src/blocks/share/edit.js:224
+msgid "Add Google share button"
+msgstr ""
+
+#: src/blocks/share/edit.js:240
+msgid "Add Reddit share button"
 msgstr ""
 
 #. translators: block name
@@ -6374,7 +6423,7 @@ msgid "3D"
 msgstr ""
 
 #: src/extensions/coblocks-settings/coblocks-settings-modal.js:115
-#: src/extensions/coblocks-settings/index.js:48
+#: src/extensions/coblocks-settings/index.js:44
 msgid "Editor settings"
 msgstr ""
 
