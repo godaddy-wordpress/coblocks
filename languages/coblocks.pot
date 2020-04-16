@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-04-16T19:37:58+00:00\n"
+"POT-Creation-Date: 2020-04-16T19:50:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -5165,24 +5165,47 @@ msgstr ""
 msgid "Plan %d"
 msgstr ""
 
+#: src/blocks/pricing-table/example.js:15
+msgid "Basic"
+msgstr ""
+
+#: src/blocks/pricing-table/example.js:23
+#: src/blocks/pricing-table/example.js:57
+msgid "Feature one"
+msgstr ""
+
+#: src/blocks/pricing-table/example.js:31
+#: src/blocks/pricing-table/example.js:65
+msgid "Feature two"
+msgstr ""
+
+#: src/blocks/pricing-table/example.js:41
+#: src/blocks/pricing-table/example.js:75
+msgid "Buy now"
+msgstr ""
+
+#: src/blocks/pricing-table/example.js:49
+msgid "Pro"
+msgstr ""
+
 #. translators: block name
-#: src/blocks/pricing-table/index.js:23
+#: src/blocks/pricing-table/index.js:24
 msgid "Pricing Table"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/pricing-table/index.js:25
+#: src/blocks/pricing-table/index.js:26
 msgid "Add pricing tables to help visitors compare products and plans."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/pricing-table/index.js:30
+#: src/blocks/pricing-table/index.js:31
 #: src/blocks/pricing-table/pricing-table-item/index.js:29
 msgid "landing"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/pricing-table/index.js:32
+#: src/blocks/pricing-table/index.js:33
 #: src/blocks/pricing-table/pricing-table-item/index.js:31
 msgid "comparison"
 msgstr ""
