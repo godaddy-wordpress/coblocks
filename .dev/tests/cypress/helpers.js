@@ -310,7 +310,7 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 		.then( ( $inputElem ) => {
 			cy.get( $inputElem ).invoke( 'val' ).then( ( val ) => {
 				if ( val.length > 0 ) {
-					cy.get( $inputElem ).type( [ val, classes ].join( ' ' ) );
+					cy.get( $inputElem ).type( `{selectall}${[ val, classes ].join( ' ' )}` );
 				} else {
 					cy.get( $inputElem ).type( classes );
 				}
