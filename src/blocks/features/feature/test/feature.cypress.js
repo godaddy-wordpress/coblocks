@@ -1,4 +1,4 @@
-/*
+/**
  * Include our constants
  */
 import * as helpers from '../../../../../.dev/tests/cypress/helpers';
@@ -66,26 +66,12 @@ describe( 'Test CoBlocks Feature Block', function() {
 	it( 'Test the feature block custom classes.', function() {
 		helpers.addBlockToPost( 'coblocks/features', true );
 
-		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"][type="number"]' ).click().clear().type( 1 );
-
-		cy.get( '.wp-block-coblocks-feature' ).click( { force: true } );
-
-		cy.get( '.edit-post-sidebar' ).contains( /feature settings/i ).click(); //close feature settings panel
+		// Workaround for the advanced panel not loading consistently.
+		cy.get( '.editor-post-title' ).click();
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'feature' );
-
-		helpers.savePage();
+		cy.get( '.wp-block-coblocks-feature' ).last().should( 'have.class', 'my-custom-class' );
 
 		helpers.checkForBlockErrors( 'coblocks/feature' );
-
-		cy.get( '.wp-block-coblocks-feature' )
-			.should( 'have.class', 'my-custom-class' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-feature' )
-			.should( 'have.class', 'my-custom-class' );
-
-		helpers.editPage();
 	} );
 } );
