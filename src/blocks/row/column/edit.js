@@ -77,6 +77,7 @@ class Edit extends Component {
 			marginSize,
 			paddingSize,
 			contentAlign,
+			verticalAlignment,
 		} = attributes;
 
 		const dropZone = (
@@ -91,7 +92,10 @@ class Edit extends Component {
 				columnBlocks &&
 				columnBlocks.innerBlocks &&
 				Object.keys( columnBlocks.innerBlocks ).length < 1,
-		}, { [ `has-text-align-${ contentAlign }` ]: contentAlign } );
+		}, { 
+			[ `has-text-align-${ contentAlign }` ]: contentAlign,
+			[ `is-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment,
+		} );
 
 		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
 			classes = classnames( classes, `coblocks-column-${ coblocks.id }` );
@@ -297,6 +301,9 @@ const applyWithSelect = withSelect( ( select, { clientId } ) => {
 		parentId,
 		nextBlockClient,
 		nextBlockClientId,
+
+		// Used in controls
+		getBlockRootClientId,
 
 		// Used in inspector
 		lastId,

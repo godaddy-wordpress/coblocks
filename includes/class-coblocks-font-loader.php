@@ -27,11 +27,15 @@ class CoBlocks_Font_Loader {
 
 	/**
 	 * Registers the plugin.
+	 *
+	 * @return CoBlocks_Font_Loader
 	 */
 	public static function register() {
 		if ( null === self::$instance ) {
 			self::$instance = new CoBlocks_Font_Loader();
 		}
+
+		return self::$instance;
 	}
 
 	/**
