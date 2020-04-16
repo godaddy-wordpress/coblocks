@@ -7,6 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import OptionSelectorControl from '../../components/option-selector-control';
+import gutterOptions from '../../utils/gutter-options';
 
 /**
  * WordPress dependencies
@@ -132,33 +133,6 @@ const Inspector = ( props ) => {
 	if ( isHorizontalStyle && columns > 2 ) {
 		columnsCountOnChange( 2 );
 	}
-
-	const gutterOptions = [
-		{
-			value: 'small',
-			/* translators: abbreviation for small size */
-			label: __( 'S', 'coblocks' ),
-			tooltip: __( 'Small', 'coblocks' ),
-		},
-		{
-			value: 'medium',
-			/* translators: abbreviation for medium size */
-			label: __( 'M', 'coblocks' ),
-			tooltip: __( 'Medium', 'coblocks' ),
-		},
-		{
-			value: 'large',
-			/* translators: abbreviation for large size */
-			label: __( 'L', 'coblocks' ),
-			tooltip: __( 'Large', 'coblocks' ),
-		},
-		{
-			value: 'huge',
-			/* translators: abbreviation for largest size */
-			label: __( 'XL', 'coblocks' ),
-			tooltip: __( 'Huge', 'coblocks' ),
-		},
-	];
 
 	const settings = (
 		<PanelBody title={ __( 'Posts settings', 'coblocks' ) }>

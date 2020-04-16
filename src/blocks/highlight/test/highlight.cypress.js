@@ -46,9 +46,15 @@ describe( 'Block: Highlight', function () {
 		cy.get( '.edit-post-sidebar' )
 			.contains( RegExp( 'Highlight settings', 'i' ) )
 			.then( $settingSection => {
-				cy.get( Cypress.$( $settingSection ).closest( '.components-panel__body' ) )
-					.find( '.components-select-control__input' )
-					.select( 'large' );
+				if ( Cypress.$('.components-select-control__input').length > 0 ) {
+					cy.get( Cypress.$( $settingSection ).closest( '.components-panel__body' ) )
+						.find( '.components-select-control__input' )
+						.select( 'large' );
+				} else {
+					cy.get( Cypress.$( $settingSection ).closest( '.components-panel__body' ) )
+						.find( 'button[aria-label="Preset size"]' ).click();
+					cy.get( '.components-custom-select-control__item' ).contains(/large/i).click();
+				}
 			} );
 
 		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )

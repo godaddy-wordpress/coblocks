@@ -51,34 +51,31 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	}
 
 	return {
-		fallbackBackgroundColor: backgroundColorValue || fallbackBackgroundColor,
-		fallbackTextColor: textColorValue || fallbackTextColor,
+		fallbackBackgroundColor: backgroundColorValue || false,
+		fallbackTextColor: textColorValue || false,
 	};
 } );
 
-class SubmitButton extends Component {
+class CoBlocksSubmitButton extends Component {
 	componentDidUpdate( prevProps ) {
 		if (
-			! isEqual( this.props.textButtonColor, prevProps.textButtonColor ) ||
-			! isEqual( this.props.backgroundButtonColor, prevProps.backgroundButtonColor )
+			! isEqual( this.props.customTextButtonColor, prevProps.customTextButtonColor ) ||
+			! isEqual( this.props.customBackgroundButtonColor, prevProps.customBackgroundButtonColor )
 		) {
-			const buttonClasses = this.getButtonClasses();
-			this.props.setAttributes( { submitButtonClasses: buttonClasses } );
+			this.props.setAttributes( { submitButtonClasses: this.getButtonClasses() } );
 		}
 	}
 
 	getButtonClasses() {
-		const { textButtonColor, backgroundButtonColor } = this.props;
+		const { customTextButtonColor, customBackgroundButtonColor } = this.props;
 
-		const textClass = get( textButtonColor, 'class' );
-
-		const backgroundClass = get( backgroundButtonColor, 'class' );
+		const backgroundClass = get( customBackgroundButtonColor, 'class' );
 
 		return classnames( 'wp-block-button__link', {
-			'has-background': backgroundButtonColor,
+			'has-background': customBackgroundButtonColor,
 			[ backgroundClass ]: backgroundClass,
-			'has-text-color': textButtonColor,
-			[ textClass ]: textClass,
+			'has-text-color': customTextButtonColor,
+			[ this.props.className ]: this.props.className,
 		} );
 	}
 
@@ -98,8 +95,6 @@ class SubmitButton extends Component {
 
 		const buttonStyle = { border: 'none', backgroundColor, color };
 
-		const buttonClasses = this.getButtonClasses();
-
 		return (
 			<Fragment>
 				<div className="coblocks-form__submit wp-block-button">
@@ -107,7 +102,7 @@ class SubmitButton extends Component {
 						placeholder={ __( 'Add text…', 'coblocks' ) }
 						value={ attributes.submitButtonText }
 						onChange={ ( nextValue ) => setAttributes( { submitButtonText: nextValue } ) }
-						className={ buttonClasses }
+						className={ this.getButtonClasses() }
 						style={ buttonStyle }
 						formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
 						keepPlaceholderOnFocus
@@ -120,17 +115,17 @@ class SubmitButton extends Component {
 						colorSettings={ [
 							{
 								value: backgroundColor,
-								onChange: ( nextColour ) => {
-									setBackgroundButtonColor( nextColour );
-									setAttributes( { customBackgroundButtonColor: nextColour } );
+								onChange: ( nextColor ) => {
+									setBackgroundButtonColor( nextColor );
+									setAttributes( { customBackgroundButtonColor: nextColor } );
 								},
 								label: __( 'Button color', 'coblocks' ),
 							},
 							{
 								value: color,
-								onChange: ( nextColour ) => {
-									setTextButtonColor( nextColour );
-									setAttributes( { customTextButtonColor: nextColour } );
+								onChange: ( nextColor ) => {
+									setTextButtonColor( nextColor );
+									setAttributes( { customTextButtonColor: nextColor } );
 								},
 								label: __( 'Button text color', 'coblocks' ),
 							},
@@ -146,4 +141,4 @@ class SubmitButton extends Component {
 export default compose( [
 	withColors( 'backgroundButtonColor', { textButtonColor: 'color' } ),
 	applyFallbackStyles,
-] )( SubmitButton );
+] )( CoBlocksSubmitButton );
