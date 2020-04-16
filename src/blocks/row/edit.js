@@ -230,7 +230,7 @@ class Edit extends Component {
 		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
 			classes = classnames( classes, `coblocks-row-${ coblocks.id }` );
 		}
-			
+
 		const innerClasses = classnames(
 			'wp-block-coblocks-row__inner',
 			...BackgroundClasses( attributes ), {
