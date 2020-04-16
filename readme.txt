@@ -6,7 +6,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 1.23.0
+Stable tag: 1.24.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -124,28 +124,22 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Enhancements
-* Add 'Replace Image' button to core/image InspectorControls [#1385](https://github.com/godaddy-wordpress/coblocks/pull/1385)
-* Add Form block Text field [#1417](https://github.com/godaddy-wordpress/coblocks/pull/1417)
-* Introduce RTL support [#1420](https://github.com/godaddy-wordpress/coblocks/pull/1420)
-* Introduce a filter to disable the CoBlocks bundled SVG icons within the Icon Block [#1403](https://github.com/godaddy-wordpress/coblocks/pull/1403)
-* Remove jQuery from Form, Gif, Crop Settings [#1376](https://github.com/godaddy-wordpress/coblocks/pull/1376)
-* Show gallery image captions in lightbox [#1409](https://github.com/godaddy-wordpress/coblocks/pull/1409)
+* Improve Share block UX [#1433](https://github.com/godaddy-wordpress/coblocks/pull/1433)
+* Use column and gutter utility classes within the Food and Drinks block [#1384](https://github.com/godaddy-wordpress/coblocks/pull/1384)
+* Migrate the Form block's submit button to a child block [#1397](https://github.com/godaddy-wordpress/coblocks/pull/1397)
+* Introduce cross browser E2E testing [#1375](https://github.com/godaddy-wordpress/coblocks/pull/1375)
 
 ### Bug Fixes
-* Clicking captions opens the lightbox [#1407](https://github.com/godaddy-wordpress/coblocks/pull/1407)
-* Fix Form block for Gutenberg 7.7 [#1419](https://github.com/godaddy-wordpress/coblocks/pull/1419)
-* Fix Map block error in editor + refactor wp.api global [#1411](https://github.com/godaddy-wordpress/coblocks/pull/1411)
-* Fix Posts and Post Carousel block categories control [#1406](https://github.com/godaddy-wordpress/coblocks/pull/1406)
-* Fix image and price toggle behavior on the Food and Drinks block [#1402](https://github.com/godaddy-wordpress/coblocks/pull/1402)
-* Fix selected font family option in the typography controls [#1404](https://github.com/godaddy-wordpress/coblocks/pull/1404)
+* Fix duplicate classes with Posts block [#1443](https://github.com/godaddy-wordpress/coblocks/pull/1443)
+* Do not register if coblocksSettings is undefined [#1451](https://github.com/godaddy-wordpress/coblocks/pull/1451)
+* Fix Map block placeholder styles [#1442](https://github.com/godaddy-wordpress/coblocks/pull/1442)
+* Fix Icon block spacing when using custom links [#1430](https://github.com/godaddy-wordpress/coblocks/pull/1430)
+* Remove 100% height on front of site gallery carousels [#1436](https://github.com/godaddy-wordpress/coblocks/pull/1436)
 
 ### Misc
-* Add CoBlocks icon to docs [#1412](https://github.com/godaddy-wordpress/coblocks/pull/1412)
-* Add docs for CoBlocks features [#1418](https://github.com/godaddy-wordpress/coblocks/pull/1418)
-* E2E Gauntlet Testing Script [#1415](https://github.com/godaddy-wordpress/coblocks/pull/1415)
-* Introduce E2E tests for CoBlocks Settings panel [#1395](https://github.com/godaddy-wordpress/coblocks/pull/1395)
-* Minor style specificity clean-up [#1424](https://github.com/godaddy-wordpress/coblocks/pull/1424)
-* Refactor form radio and checkbox labels [#1416](https://github.com/godaddy-wordpress/coblocks/pull/1416)
-* Tweak UI to support sentence case [#1414](https://github.com/godaddy-wordpress/coblocks/pull/1414)
-* Update Tested up to value to WordPress 5.4 [#1422](https://github.com/godaddy-wordpress/coblocks/pull/1422)
-* Update npm and composer development dependencies [#1413](https://github.com/godaddy-wordpress/coblocks/pull/1413)
+* Return class instance on register [#1444](https://github.com/godaddy-wordpress/coblocks/pull/1444)
+* Refactor gutter options functionality across blocks [#1445](https://github.com/godaddy-wordpress/coblocks/pull/1445)
+* Validate Composer configuration [#1388](https://github.com/godaddy-wordpress/coblocks/pull/1388)
+* Remove the options parameter passed into wp_json_encode [#1390](https://github.com/godaddy-wordpress/coblocks/pull/1390)
+* Fix variable type in coblocks_render_events_block [#1389](https://github.com/godaddy-wordpress/coblocks/pull/1389)
+* Update Canary release CircleCI deployment [#1431](https://github.com/godaddy-wordpress/coblocks/pull/1431)
