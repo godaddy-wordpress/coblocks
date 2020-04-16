@@ -79,7 +79,6 @@ class Edit extends Component {
 			defaultVariation,
 			replaceInnerBlocks,
 			blockType,
-			innerBlocks,
 		} = this.props;
 
 		const {
@@ -231,14 +230,6 @@ class Edit extends Component {
 		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
 			classes = classnames( classes, `coblocks-row-${ coblocks.id }` );
 		}
-
-
-		const isRowPlaceholder = innerBlocks &&	! innerBlocks.map( ( childBlock ) => {
-				if ( childBlock && childBlock.innerBlocks && childBlock.innerBlocks.length > 0) {
-					return true;
-				}
-				return false;
-			} ).includes(true);
 			
 		const innerClasses = classnames(
 			'wp-block-coblocks-row__inner',
@@ -251,7 +242,6 @@ class Edit extends Component {
 				[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'advanced',
 				'is-stacked-on-mobile': isStackedOnMobile,
 				[ `are-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment,
-				'is-row-placeholder': isRowPlaceholder,
 			}
 		);
 

@@ -111,7 +111,6 @@ class Edit extends Component {
 				[ `has-${ paddingSize }-padding` ]:
 					paddingSize && paddingSize !== 'advanced',
 				[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'advanced',
-				'is-placeholder' : ! hasInnerBlocks
 			}
 		);
 
