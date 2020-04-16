@@ -2,8 +2,13 @@
 	position: relative;
 
 	// Don't use flexbox if the row is 1 column, 100% wide.
-	&:not([data-columns="1"]) .wp-block-coblocks-row__inner {
+	&:not([data-columns="1"]) {
 		display: flex;
+
+		.wp-block-coblocks-row__inner {
+			display: flex;
+			flex: 1;
+		}
 	}
 }
 
@@ -41,6 +46,7 @@
 }
 
 .wp-block-coblocks-column {
+	height: 100%;
 	margin-bottom: $grid-size-large * 2;
 
 	// Beyond mobile, allow 2 columns.
@@ -195,3 +201,66 @@
 	}
 }
 
+/**
+ * Row and Column Alignment
+ */
+ .wp-block-coblocks-row__inner {
+	.wp-block[data-type="coblocks/column"] {
+		display: flex;
+		margin-top: 0;
+		margin-bottom: 0;
+
+		.wp-block-coblocks-column,
+		.wp-block-coblocks-column__inner {
+			flex: 1;
+		}
+	}
+
+	&.are-vertically-aligned-top {
+		align-items: flex-start;
+	}
+
+	&.are-vertically-aligned-center {
+		align-items: center;
+	}
+
+	&.are-vertically-aligned-bottom {
+		align-items: flex-end;
+	}
+
+	.wp-block-coblocks-column {
+		&.is-vertically-aligned-top {
+			display: flex;
+
+			.wp-block-coblocks-column__inner {
+				align-self: flex-start;
+			}
+		}
+	
+		&.is-vertically-aligned-center {
+			display: flex;
+
+			.wp-block-coblocks-column__inner {
+				align-self: center;
+			}
+		}
+	
+		&.is-vertically-aligned-bottom {
+			display: flex;
+
+			.wp-block-coblocks-column__inner {
+				align-self: flex-end;
+			}
+		}
+
+		.wp-block-coblocks-column__inner {
+			flex: 1;
+		}
+	
+		&.is-vertically-aligned-top,
+		&.is-vertically-aligned-center,
+		&.is-vertically-aligned-bottom {
+			width: 100%;
+		}
+	}
+}
