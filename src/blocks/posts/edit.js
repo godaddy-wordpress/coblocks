@@ -192,12 +192,11 @@ class PostsEdit extends Component {
 	}
 
 	updateStyle( style ) {
-		const { className, setAttributes } = this.props;
+		const { setAttributes, attributes, className } = this.props;
 
 		const activeStyle = getActiveStyle( styleOptions, className );
-
 		const updatedClassName = replaceActiveStyle(
-			className,
+			attributes.className,
 			activeStyle,
 			style
 		);
