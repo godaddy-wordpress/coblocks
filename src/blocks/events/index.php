@@ -43,7 +43,11 @@ function coblocks_render_events_block( $attributes, $content ) {
 		}
 
 		if ( 0 === count( $events ) ) {
-			return '<div class="components-placeholder"><div class="notice notice-error">' . __( 'An error has occurred, either no events were found or an unsupported URL was used.', 'coblocks' ) . '</div></div>';
+			$default_error = __( 'An error has occurred, either no events were found or an unsupported URL was used.', 'coblocks' );
+
+			return '<div class="components-placeholder"><div class="notice notice-error">' .
+				(string) apply_filters( 'coblocks_events_error_message', $default_error )
+				. '</div></div>';
 		}
 
 		// Limit to 100 events.
