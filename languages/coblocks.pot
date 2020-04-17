@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-04-16T17:04:15+00:00\n"
+"POT-Creation-Date: 2020-04-17T01:05:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -1431,7 +1431,7 @@ msgid "Remove"
 msgstr ""
 
 #: src/blocks/form/edit.js:465
-#: src/blocks/row/edit.js:324
+#: src/blocks/row/edit.js:326
 msgid "Select a variation to start with."
 msgstr ""
 
@@ -5165,24 +5165,47 @@ msgstr ""
 msgid "Plan %d"
 msgstr ""
 
+#: src/blocks/pricing-table/example.js:15
+msgid "Basic"
+msgstr ""
+
+#: src/blocks/pricing-table/example.js:23
+#: src/blocks/pricing-table/example.js:57
+msgid "Feature one"
+msgstr ""
+
+#: src/blocks/pricing-table/example.js:31
+#: src/blocks/pricing-table/example.js:65
+msgid "Feature two"
+msgstr ""
+
+#: src/blocks/pricing-table/example.js:41
+#: src/blocks/pricing-table/example.js:75
+msgid "Buy now"
+msgstr ""
+
+#: src/blocks/pricing-table/example.js:49
+msgid "Pro"
+msgstr ""
+
 #. translators: block name
-#: src/blocks/pricing-table/index.js:23
+#: src/blocks/pricing-table/index.js:24
 msgid "Pricing Table"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/pricing-table/index.js:25
+#: src/blocks/pricing-table/index.js:26
 msgid "Add pricing tables to help visitors compare products and plans."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/pricing-table/index.js:30
+#: src/blocks/pricing-table/index.js:31
 #: src/blocks/pricing-table/pricing-table-item/index.js:29
 msgid "landing"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/pricing-table/index.js:32
+#: src/blocks/pricing-table/index.js:33
 #: src/blocks/pricing-table/pricing-table-item/index.js:31
 msgid "comparison"
 msgstr ""
@@ -5213,7 +5236,7 @@ msgstr ""
 msgid "A pricing table to help visitors compare products and plans."
 msgstr ""
 
-#: src/blocks/row/column/edit.js:85
+#: src/blocks/row/column/edit.js:86
 msgid "Add background to column"
 msgstr ""
 
@@ -5240,7 +5263,7 @@ msgstr ""
 msgid "Width"
 msgstr ""
 
-#: src/blocks/row/controls.js:76
+#: src/blocks/row/controls.js:77
 msgid "Change row block layout"
 msgstr ""
 
@@ -5260,55 +5283,55 @@ msgstr ""
 msgid "four"
 msgstr ""
 
-#: src/blocks/row/edit.js:112
+#: src/blocks/row/edit.js:113
 msgid "Add background to row"
 msgstr ""
 
-#: src/blocks/row/edit.js:117
+#: src/blocks/row/edit.js:118
 #: src/blocks/row/variations.js:20
 msgid "One column"
 msgstr ""
 
-#: src/blocks/row/edit.js:118
+#: src/blocks/row/edit.js:119
 msgid "Two columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:119
+#: src/blocks/row/edit.js:120
 msgid "Three columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:120
+#: src/blocks/row/edit.js:121
 msgid "Four columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:146
+#: src/blocks/row/edit.js:147
 msgid "Row layout"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/row/edit.js:146
+#: src/blocks/row/edit.js:147
 #: src/blocks/row/index.js:33
 msgid "Row"
 msgstr ""
 
 #. translators: %s: 'one' 'two' 'three' and 'four'
-#: src/blocks/row/edit.js:150
+#: src/blocks/row/edit.js:151
 msgid "Select a layout for this %s column row."
 msgstr ""
 
-#: src/blocks/row/edit.js:153
+#: src/blocks/row/edit.js:154
 msgid "Select the number of columns for this row."
 msgstr ""
 
-#: src/blocks/row/edit.js:157
+#: src/blocks/row/edit.js:158
 msgid "Select row columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:183
+#: src/blocks/row/edit.js:184
 msgid "Select row layout"
 msgstr ""
 
-#: src/blocks/row/edit.js:193
+#: src/blocks/row/edit.js:194
 msgid "Back to columns"
 msgstr ""
 
