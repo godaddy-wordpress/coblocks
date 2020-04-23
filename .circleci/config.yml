@@ -360,7 +360,9 @@ jobs:
             if [[ $GIT_COMMIT_DESC != *"skip i18n"* ]]; then
               git config --global user.email "plugins@godaddy.com"
               git config --global user.name "GoDaddy Translator Bot"
+              git stash
               git pull --rebase
+              git stash pop
               git add languages/coblocks.json
               git add languages/coblocks.pot
               git commit -m "Update coblocks.pot/coblocks.json files [skip i18n]"
