@@ -239,6 +239,9 @@ jobs:
       - run:
           name: "Install Mailhog"
           command: bash .dev/bin/install-mailhog.sh
+      - run:
+          name: "Start Mailhog"
+          command: "MailHog"
           background: true
       - run:
           name: "Start WPCLI Server"

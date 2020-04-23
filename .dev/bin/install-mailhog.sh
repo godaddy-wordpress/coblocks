@@ -7,8 +7,6 @@ echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
 
 brew install mailhog
 
-MailHog
-
 mkdir /tmp/wordpress/wp-content/mu-plugins
 
 # Setup the Mailhog MU plugin
