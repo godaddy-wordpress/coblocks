@@ -27,11 +27,15 @@ class CoBlocks_Google_Map_Block {
 
 	/**
 	 * Registers the plugin.
+	 *
+	 * @return CoBlocks_Google_Map_Block
 	 */
 	public static function register() {
 		if ( null === self::$instance ) {
 			self::$instance = new CoBlocks_Google_Map_Block();
 		}
+
+		return self::$instance;
 	}
 
 	/**

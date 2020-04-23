@@ -21,11 +21,7 @@ import { registerPlugin, getPlugin, unregisterPlugin } from '@wordpress/plugins'
 import CoBlocksSettingsModal from './coblocks-settings-modal';
 import createCoBlocksStore from './coblocks-settings-store.js';
 
-if ( typeof coblocksSettings === 'undefined' ) {
-	coblocksSettings.coblocksSettingsEnabled = '0';
-}
-
-if ( coblocksSettings.coblocksSettingsEnabled ) {
+if ( typeof coblocksSettings !== 'undefined' && coblocksSettings.coblocksSettingsEnabled ) {
 	const CoBlocksSettingsMenuItem = () => {
 		const [
 			isOpen,

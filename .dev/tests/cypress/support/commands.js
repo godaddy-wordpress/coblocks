@@ -1,9 +1,8 @@
-import { loginToSite, createNewPost, disableGutenbergFeatures } from '../helpers';
+import { loginToSite, disableGutenbergFeatures } from '../helpers';
 import 'cypress-file-upload';
 
 before( function() {
   loginToSite();
-  createNewPost();
   disableGutenbergFeatures();
 } );
 
