@@ -242,7 +242,7 @@ describe( 'Test CoBlocks Form Block', function() {
 					break;
 
 				case 5:
-					cy.get( $element ).contains( 'Special Notes' );
+					cy.get( $element ).contains( 'Special notes' );
 					break;
 			}
 		} );
