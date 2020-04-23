@@ -61,6 +61,16 @@ class CoBlocks_Form {
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'form_recaptcha_assets' ) );
 
+		// define the wp_mail_failed callback
+
+
+// add the action
+add_action('wp_mail_failed', function($wp_error)
+{
+		wp_die( print_r( $wp_error ) );
+}, 10, 1);
+
+
 	}
 
 	/**
