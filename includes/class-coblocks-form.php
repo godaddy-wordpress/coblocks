@@ -199,6 +199,11 @@ class CoBlocks_Form {
 
 			<?php
 
+			echo 'Submitted Hash: ' . $submitted_hash . ' <br />';
+			echo '$this->form_hash: ' . $this->form_hash;
+
+			echo '<hr />';
+
 			if ( $submitted_hash === $this->form_hash ) {
 
 				$submit_form = $this->process_form_submission( $atts );
@@ -212,10 +217,6 @@ class CoBlocks_Form {
 					return ob_get_clean();
 
 				}
-			} else {
-
-				wp_die( 'Form hashes do not match... Submitted: ' . $submitted_hash . ' || Form Hash: ' . $this->form_hash );
-
 			}
 
 			?>
