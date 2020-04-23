@@ -212,6 +212,10 @@ class CoBlocks_Form {
 					return ob_get_clean();
 
 				}
+			} else {
+
+				wp_die( 'Form hashes do not match... Submitted: ' . $submitted_hash . ' || Form Hash: ' . $this->form_hash );
+
 			}
 
 			?>
@@ -820,6 +824,8 @@ class CoBlocks_Form {
 
 		if ( ! $form_submission || 'coblocks-form-submit' !== $form_submission ) {
 
+			wp_die( 'Error 1' );
+
 			return;
 
 		}
@@ -827,6 +833,8 @@ class CoBlocks_Form {
 		$nonce = filter_input( INPUT_POST, 'form-submit', FILTER_SANITIZE_STRING );
 
 		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'coblocks-form-submit' ) ) {
+
+			wp_die( 'Error 2' );
 
 			return;
 

@@ -278,7 +278,7 @@ describe( 'Test CoBlocks Form Block', function() {
 	/**
 	 * Test the coblock contact template.
 	 */
-	it( 'Test the form block contact template.', function() {
+	it( 'Test the form block email is sent and received.', function() {
 		helpers.addBlockToPost( 'coblocks/form', true );
 
 		cy.get( 'div.wp-block[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
