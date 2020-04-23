@@ -305,6 +305,13 @@ jobs:
             ./vendor/bin/wp post generate --count=5 --path=/tmp/wordpress
             ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
       - run:
+          name: "Install Mailhog"
+          command: bash .dev/bin/install-mailhog.sh
+      - run:
+          name: "Start Mailhog"
+          command: "MailHog"
+          background: true
+      - run:
           name: "Start WPCLI Server"
           command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root  --path=/tmp/wordpress
           background: true
