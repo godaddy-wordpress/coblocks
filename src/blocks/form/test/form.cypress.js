@@ -325,5 +325,6 @@ describe( 'Test CoBlocks Form Block', function() {
 			.should( 'contain', 'Email: email@example.com' )
 			.should( 'contain', 'Message: My message for you.' );
 
+		helpers.editPage();
 	} );
 } );
