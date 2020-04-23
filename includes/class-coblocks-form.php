@@ -61,15 +61,6 @@ class CoBlocks_Form {
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'form_recaptcha_assets' ) );
 
-		// define the wp_mail_failed callback
-
-
-// add the action
-add_action('wp_mail_failed', function($wp_error)
-{
-		wp_die( print_r( $wp_error ) );
-}, 10, 1);
-
 
 	}
 
@@ -208,11 +199,6 @@ add_action('wp_mail_failed', function($wp_error)
 		<div class="coblocks-form" id="<?php echo esc_attr( $this->form_hash ); ?>">
 
 			<?php
-
-			echo 'Submitted Hash: ' . $submitted_hash . ' <br />';
-			echo '$this->form_hash: ' . $this->form_hash;
-
-			echo '<hr />';
 
 			if ( $submitted_hash === $this->form_hash ) {
 
@@ -835,8 +821,6 @@ add_action('wp_mail_failed', function($wp_error)
 
 		if ( ! $form_submission || 'coblocks-form-submit' !== $form_submission ) {
 
-			wp_die( 'Error 1' );
-
 			return;
 
 		}
@@ -844,8 +828,6 @@ add_action('wp_mail_failed', function($wp_error)
 		$nonce = filter_input( INPUT_POST, 'form-submit', FILTER_SANITIZE_STRING );
 
 		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'coblocks-form-submit' ) ) {
-
-			wp_die( 'Error 2' );
 
 			return;
 

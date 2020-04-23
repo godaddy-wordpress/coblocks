@@ -190,7 +190,7 @@ jobs:
     docker:
       - image: circleci/php:latest-node-browsers-legacy
       - image: circleci/mysql:5.7
-    parallelism: 1
+    parallelism: 4
     steps:
       - checkout
       - run:
