@@ -10,4 +10,4 @@ brew install mailhog
 mkdir /tmp/wordpress/wp-content/mu-plugins
 
 # Setup the Mailhog MU plugin
-cp ../mailhog.php /tmp/wordpress/wp-content/mu-plugins/mailhog.php
+cp /home/circleci/project/.dev/mailhog.php /tmp/wordpress/wp-content/mu-plugins/mailhog.php
