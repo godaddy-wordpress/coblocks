@@ -61,7 +61,6 @@ class CoBlocks_Form {
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'form_recaptcha_assets' ) );
 
-
 	}
 
 	/**
