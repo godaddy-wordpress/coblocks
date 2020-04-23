@@ -329,7 +329,7 @@ describe( 'Test CoBlocks Form Block', function() {
 	} );
 
 	/**
-	 * Test the coblock contact template.
+	 * Test the [email] and [name] links work and that the custom subject line field is used in the email.
 	 */
 	it( 'Test the form block custom subject line sends as intended.', function() {
 		helpers.addBlockToPost( 'coblocks/form', true );
