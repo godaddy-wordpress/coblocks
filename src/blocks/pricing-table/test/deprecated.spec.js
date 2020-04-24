@@ -21,6 +21,7 @@ const variations = {
 	textTransform: [ undefined, '', 'uppercase', 'lowercase', 'capitalize', 'initial' ],
 	noBottomSpacing: [ undefined, true, false ],
 	noTopSpacing: [ undefined, true, false ],
+	gutter: [ undefined, 'no', 'small', 'medium', 'large', 'huge' ],
 };
 
 helpers.testDeprecatedBlockVariations( name, settings, variations );
