@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-04-23T18:44:12+00:00\n"
+"POT-Creation-Date: 2020-04-24T19:19:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -923,6 +923,7 @@ msgstr ""
 #: src/blocks/gallery-offset/inspector.js:90
 #: src/blocks/gallery-stacked/inspector.js:99
 #: src/blocks/posts/inspector.js:182
+#: src/blocks/pricing-table/inspector.js:66
 #: src/blocks/row/inspector.js:160
 #: src/blocks/services/inspector.js:77
 #: src/components/responsive-tabs-control/index.js:31
@@ -1155,6 +1156,7 @@ msgstr ""
 #: src/blocks/food-and-drinks/inspector.js:41
 #: src/blocks/gallery-collage/inspector.js:63
 #: src/blocks/posts/inspector.js:63
+#: src/blocks/pricing-table/inspector.js:38
 #: src/components/option-selector-control/index.js:27
 #: src/utils/gutter-options.js:15
 msgid "S"
@@ -1166,6 +1168,7 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:64
 #: src/blocks/icon/icon-size-select.js:16
 #: src/blocks/posts/inspector.js:64
+#: src/blocks/pricing-table/inspector.js:39
 #: src/blocks/share/inspector.js:72
 #: src/blocks/social-profiles/inspector.js:76
 #: src/components/dimensions-control/dimensions-select.js:15
@@ -1179,6 +1182,7 @@ msgstr ""
 #: src/blocks/food-and-drinks/inspector.js:47
 #: src/blocks/gallery-collage/inspector.js:69
 #: src/blocks/posts/inspector.js:68
+#: src/blocks/pricing-table/inspector.js:44
 #: src/components/option-selector-control/index.js:33
 #: src/utils/gutter-options.js:21
 msgid "M"
@@ -1190,6 +1194,7 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:70
 #: src/blocks/icon/icon-size-select.js:21
 #: src/blocks/posts/inspector.js:69
+#: src/blocks/pricing-table/inspector.js:45
 #: src/blocks/share/inspector.js:73
 #: src/blocks/social-profiles/inspector.js:77
 #: src/components/dimensions-control/dimensions-select.js:20
@@ -1203,6 +1208,7 @@ msgstr ""
 #: src/blocks/food-and-drinks/inspector.js:53
 #: src/blocks/gallery-collage/inspector.js:75
 #: src/blocks/posts/inspector.js:73
+#: src/blocks/pricing-table/inspector.js:50
 #: src/components/option-selector-control/index.js:39
 #: src/utils/gutter-options.js:27
 msgid "L"
@@ -1214,6 +1220,7 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:76
 #: src/blocks/icon/icon-size-select.js:26
 #: src/blocks/posts/inspector.js:74
+#: src/blocks/pricing-table/inspector.js:51
 #: src/blocks/share/inspector.js:74
 #: src/blocks/social-profiles/inspector.js:78
 #: src/components/dimensions-control/dimensions-select.js:25
@@ -1227,6 +1234,7 @@ msgstr ""
 #. translators: abbreviation for extra large size
 #: src/blocks/food-and-drinks/inspector.js:59
 #: src/blocks/posts/inspector.js:78
+#: src/blocks/pricing-table/inspector.js:56
 #: src/components/option-selector-control/index.js:45
 #: src/utils/gutter-options.js:33
 msgid "XL"
@@ -1237,6 +1245,7 @@ msgstr ""
 #: src/blocks/food-and-drinks/inspector.js:60
 #: src/blocks/icon/icon-size-select.js:30
 #: src/blocks/posts/inspector.js:79
+#: src/blocks/pricing-table/inspector.js:57
 #: src/components/dimensions-control/dimensions-select.js:30
 #: src/utils/gutter-options.js:34
 msgid "Huge"
@@ -5160,8 +5169,8 @@ msgid "Change pricing table count"
 msgstr ""
 
 #. translators: %d: a digit 1-3
-#: src/blocks/pricing-table/edit.js:43
-#: src/blocks/pricing-table/edit.js:114
+#: src/blocks/pricing-table/edit.js:44
+#: src/blocks/pricing-table/edit.js:131
 msgid "Plan %d"
 msgstr ""
 
@@ -5208,6 +5217,25 @@ msgstr ""
 #: src/blocks/pricing-table/index.js:33
 #: src/blocks/pricing-table/pricing-table-item/index.js:31
 msgid "comparison"
+msgstr ""
+
+#. translators: visual style option
+#. translators: block style
+#: src/blocks/pricing-table/inspector.js:32
+#: src/blocks/pricing-table/inspector.js:33
+#: src/components/block-gallery/options/caption-options.js:23
+#: src/components/block-gallery/options/link-options.js:10
+#: src/components/dimensions-control/dimensions-select.js:10
+#: src/components/option-selector-control/index.js:52
+#: src/components/option-selector-control/index.js:53
+#: src/extensions/list-styles/index.js:18
+#: src/utils/gutter-options.js:9
+#: src/utils/gutter-options.js:10
+msgid "None"
+msgstr ""
+
+#: src/blocks/pricing-table/inspector.js:64
+msgid "Pricing Table settings"
 msgstr ""
 
 #: src/blocks/pricing-table/pricing-table-item/edit.js:30
@@ -5941,19 +5969,6 @@ msgstr ""
 #. translators: visual style option
 #: src/components/block-gallery/options/caption-options.js:18
 msgid "Light"
-msgstr ""
-
-#. translators: visual style option
-#. translators: block style
-#: src/components/block-gallery/options/caption-options.js:23
-#: src/components/block-gallery/options/link-options.js:10
-#: src/components/dimensions-control/dimensions-select.js:10
-#: src/components/option-selector-control/index.js:52
-#: src/components/option-selector-control/index.js:53
-#: src/extensions/list-styles/index.js:18
-#: src/utils/gutter-options.js:9
-#: src/utils/gutter-options.js:10
-msgid "None"
 msgstr ""
 
 #: src/components/block-gallery/options/link-options.js:11
