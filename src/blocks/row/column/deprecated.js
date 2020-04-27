@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundAttributes } from '../../../components/background';
-import { currentBlockAttributes } from './block.json';
+import { attributes as currentBlockAttributes } from './block.json';
 import DimensionsAttributes from '../../../components/dimensions-control/attributes';
 
 /**

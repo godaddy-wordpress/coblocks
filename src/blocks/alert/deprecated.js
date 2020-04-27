@@ -11,7 +11,7 @@ import { RichText, getColorClassName } from '@wordpress/block-editor';
 /**
  * Internal dependencies
  */
-import { blockAttributes } from './block.json';
+import { attributes as blockAttributes } from './block.json';
 
 const deprecated = [
 	{
@@ -118,7 +118,7 @@ const deprecated = [
 		},
 	},
 	{
-		blockAttributes,
+		attributes: blockAttributes,
 		save( { attributes } ) {
 			const {
 				backgroundColor,

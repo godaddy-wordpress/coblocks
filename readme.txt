@@ -6,7 +6,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 1.24.0
+Stable tag: 1.25.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -111,7 +111,7 @@ Extensible, adaptable, and open source — CoBlocks is created with theme and pl
 Yes! CoBlocks is 100% free and always will be.
 
 = How do I start using Gutenberg? =
-To get the full experience of the next-generation WordPress block editor, it helps to have a properly Gutenberg-optizied WordPress theme, like [this one](https://wordpress.org/themes/go/). Then install either WordPress 5.0+, or the offical Gutenberg [WordPress plugin](https://wordpress.org/plugins/gutenberg/).
+To get the full experience of the next-generation WordPress block editor, it helps to have a properly Gutenberg-optizied WordPress theme, like [this one](https://wordpress.org/themes/go/) and install WordPress 5.0 or higher.
 
 = How do I use my first CoBlocks Gutenberg blocks? =
 CoBlocks adds its Gutenberg blocks to the new WordPress editor, so you can use them exactly how you would any other WordPress blocks. Once the plugin is installed, create or edit a WordPress page or post, add a new block using the plus icon, and you'll find all of CoBlocks' WordPress blocks available.
@@ -124,22 +124,19 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Enhancements
-* Improve Share block UX [#1433](https://github.com/godaddy-wordpress/coblocks/pull/1433)
-* Use column and gutter utility classes within the Food and Drinks block [#1384](https://github.com/godaddy-wordpress/coblocks/pull/1384)
-* Migrate the Form block's submit button to a child block [#1397](https://github.com/godaddy-wordpress/coblocks/pull/1397)
-* Introduce cross browser E2E testing [#1375](https://github.com/godaddy-wordpress/coblocks/pull/1375)
+* Improve logic to handle Accordion block open state [#1458](https://github.com/godaddy-wordpress/coblocks/pull/1458)
+* Introduce Vertical Alignment controls to Row block [#1437](https://github.com/godaddy-wordpress/coblocks/pull/1437)
 
 ### Bug Fixes
-* Fix duplicate classes with Posts block [#1443](https://github.com/godaddy-wordpress/coblocks/pull/1443)
-* Do not register if coblocksSettings is undefined [#1451](https://github.com/godaddy-wordpress/coblocks/pull/1451)
-* Fix Map block placeholder styles [#1442](https://github.com/godaddy-wordpress/coblocks/pull/1442)
-* Fix Icon block spacing when using custom links [#1430](https://github.com/godaddy-wordpress/coblocks/pull/1430)
-* Remove 100% height on front of site gallery carousels [#1436](https://github.com/godaddy-wordpress/coblocks/pull/1436)
+* Fix accordion display across IE/Edge browsers [#1456](https://github.com/godaddy-wordpress/coblocks/pull/1456)
+* Fix checkbox icon SVG to display properly [#1461](https://github.com/godaddy-wordpress/coblocks/pull/1461)
+* Fix Contact Form block submissions not sending [#1467](https://github.com/godaddy-wordpress/coblocks/pull/1467)
+* Fix Row block alignment bug with Go theme [#1459](https://github.com/godaddy-wordpress/coblocks/pull/1459)
 
 ### Misc
-* Return class instance on register [#1444](https://github.com/godaddy-wordpress/coblocks/pull/1444)
-* Refactor gutter options functionality across blocks [#1445](https://github.com/godaddy-wordpress/coblocks/pull/1445)
-* Validate Composer configuration [#1388](https://github.com/godaddy-wordpress/coblocks/pull/1388)
-* Remove the options parameter passed into wp_json_encode [#1390](https://github.com/godaddy-wordpress/coblocks/pull/1390)
-* Fix variable type in coblocks_render_events_block [#1389](https://github.com/godaddy-wordpress/coblocks/pull/1389)
-* Update Canary release CircleCI deployment [#1431](https://github.com/godaddy-wordpress/coblocks/pull/1431)
+* Add proper example to the Pricing Table block [#1450](https://github.com/godaddy-wordpress/coblocks/pull/1450)
+* Deploy canary build to wpnux [#1452](https://github.com/godaddy-wordpress/coblocks/pull/1452)
+* Improve WP.org FAQs [#1464](https://github.com/godaddy-wordpress/coblocks/pull/1464)
+* Properly scope the datepicker to prevent conflicts [#1447](https://github.com/godaddy-wordpress/coblocks/pull/1447)
+* Refactor lightbox to remove jQuery requirement [#1429](https://github.com/godaddy-wordpress/coblocks/pull/1429)
+* Update CONTRIBUTORS.md [#1462](https://github.com/godaddy-wordpress/coblocks/pull/1462)

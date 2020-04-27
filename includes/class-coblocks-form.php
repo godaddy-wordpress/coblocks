@@ -188,7 +188,7 @@ class CoBlocks_Form {
 	 */
 	public function render_form( $atts, $content ) {
 
-		$this->form_hash = sha1( wp_json_encode( $atts ) . $content );
+		$this->form_hash = sha1( $content );
 		$submitted_hash  = filter_input( INPUT_POST, 'form-hash', FILTER_SANITIZE_STRING );
 
 		ob_start();
@@ -216,9 +216,10 @@ class CoBlocks_Form {
 
 			?>
 
-			<form action="<?php echo esc_url( sprintf( '%1$s#%2$s', set_url_scheme( untrailingslashit( get_the_permalink() ) ), $this->form_hash ) ); ?>" method="post">
+			<form action="<?php echo esc_url( sprintf( '%1$s#%2$s', set_url_scheme( get_the_permalink() ), $this->form_hash ) ); ?>" method="post">
 				<?php echo do_blocks( $content ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				<input class="coblocks-field verify" type="email" name="coblocks-verify-email" autocomplete="off" placeholder="<?php esc_attr_e( 'Email', 'coblocks' ); ?>" tabindex="-1">
+				<input type="hidden" name="form-hash" value="<?php echo esc_attr( $this->form_hash ); ?>">
 			</form>
 
 		</div>
@@ -791,7 +792,6 @@ class CoBlocks_Form {
 			<button type="submit" class="wp-block-button__link<?php echo esc_attr( $btn_class ); ?>" style="<?php echo esc_attr( implode( ' ', $styles ) ); ?>"><?php echo esc_html( $btn_text ); ?></button>
 			<?php wp_nonce_field( 'coblocks-form-submit', 'form-submit' ); ?>
 			<input type="hidden" name="action" value="coblocks-form-submit">
-			<input type="hidden" name="form-hash" value="<?php echo esc_attr( $this->form_hash ); ?>">
 			<?php
 			if ( $recaptcha_site_key && $recaptcha_secret_key ) {
 				?>
