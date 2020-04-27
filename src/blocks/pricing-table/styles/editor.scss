@@ -44,8 +44,16 @@
 		}
 	}
 
-	.block-list-appender {
+	.wp-block-shortcode textarea {
 		width: 100%;
+	}
+
+	.block-list-appender {
+		display: block;
+
+		.block-list-appender__toggle {
+			margin-left: 0;
+		}
 	}
 }
 
