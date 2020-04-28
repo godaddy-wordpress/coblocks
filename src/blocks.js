@@ -28,6 +28,9 @@ import './formats';
 // Categories Helper
 import { supportsCollections } from './utils/block-helpers';
 
+// Features
+import './layout-selector';
+
 // Deprecate Blocks
 import './js/deprecations/deprecate-coblocks-buttons.js';
 
