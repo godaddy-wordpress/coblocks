@@ -1,0 +1,250 @@
+$color-highlight: #00a4a6;
+
+.coblocks-layout-selector__layout .block-editor-block-preview__container {
+	--go--font-size: 10px;
+	--go--heading-size: 8px;
+	--go--viewport-basis: 1800;
+	--editor-max-w-base: 400px;
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+}
+
+.coblocks-layout-selector-modal {
+	width: 1200px;
+	height: 85vh;
+	position: relative;
+
+	.components-modal__content {
+		height: auto;
+		padding: 0 36px 36px;
+	}
+
+	.components-modal__header {
+		height: 96px;
+		padding: 0 24px;
+		border-bottom: none;
+
+		.components-modal__header-heading {
+			font-size: 1.25rem;
+			margin-top: 10px;
+
+			> em {
+				display: block;
+				font-style: normal;
+				font-weight: normal;
+				font-size: 13px;
+				margin-top: 0.8em;
+				margin-bottom: 13px;
+			}
+		}
+	}
+
+	.editor-styles-wrapper .wp-block {
+		max-width: none;
+	}
+}
+
+.wp-block[data-type="core/buttons"] {
+
+	.block-list-appender {
+		top: -10px;
+		margin-bottom: 0;
+		position: relative;
+	}
+}
+
+.wp-block[data-type="core/buttons"]:not(.is-selected):not(.has-child-selected) {
+
+	.block-list-appender {
+		display: none !important;
+	}
+}
+
+.coblocks-layout-selector-confirm-button {
+	position: absolute;
+	position: sticky;
+	z-index: 1000;
+	top: 1.4em;
+	right: 5.5em;
+	background-color: #555;
+	color: #fff;
+	font-size: 0.9rem;
+	border: 0;
+	padding: 0.7em 1.5em;
+	transition: background-color 0.2s;
+
+	&:hover,
+	&:focus {
+		background-color: $color-highlight;
+		cursor: pointer;
+	}
+}
+
+.coblocks-layout-selector {
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+
+	@media (max-width: 782px) {
+		flex-direction: column;
+	}
+
+	&__sidebar {
+		width: 200px;
+		top: 119px;
+		position: -webkit-sticky;
+		position: sticky;
+
+		@media (max-width: 782px) {
+			display: none;
+		}
+
+		&__items {
+			font-size: 15px;
+			font-weight: 400;
+			margin-bottom: 1.75em;
+		}
+
+		&__item {
+			margin-bottom: 0.75em;
+
+			> a {
+				color: #000;
+				text-decoration: none;
+				transition: color 0.2s;
+
+				&:hover,
+				&:focus,
+				&.is-selected {
+					color: $color-highlight;
+					outline: none;
+					box-shadow: none;
+				}
+			}
+		}
+	}
+
+	&__topbar {
+		display: none;
+
+		@media (max-width: 782px) {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+			margin-bottom: 1em;
+
+			.components-dropdown-menu__toggle {
+				&:hover {
+					border: 0;
+					box-shadow: none !important;
+				}
+			}
+
+			&__left {
+				display: flex;
+				align-items: center;
+
+				> strong {
+					display: inline-block;
+					margin-right: 0.5em;
+				}
+			}
+		}
+	}
+
+	&__add-button {
+		color: #000 !important;
+		text-decoration: none !important;
+		font-weight: 500;
+		display: inline-flex;
+		vertical-align: middle;
+		transition: color 0.2s;
+		align-items: center;
+
+		> span {
+			display: inline-block;
+			position: relative;
+			background-color: #000;
+			color: #fff;
+			padding: 7px 5px 0;
+			margin-right: 0.65em;
+			border-radius: 2px;
+			vertical-align: middle;
+			transition: all 0.1s;
+		}
+
+		&:hover,
+		&:focus {
+			outline: none;
+			box-shadow: none;
+			color: $color-highlight !important;
+
+			> span {
+				background-color: $color-highlight;
+				color: #fff;
+			}
+		}
+	}
+
+	&__content {
+		flex-grow: 1;
+		overflow-y: auto;
+	}
+
+	&__layouts {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		justify-content: space-between;
+	}
+
+	&__layouts-column {
+		width:50%;
+	}
+
+	&__layout {
+		background-color: #f1f1f1;
+		display: flex;
+		flex-basis: 50%;
+		flex-grow: 1;
+		margin: 0 0 6% 6%;
+		text-decoration: none;
+		transition: all 0.2s;
+		position: relative;
+
+		@media (max-width: 1024px) {
+			flex-basis: 100%;
+			max-width: 100%;
+			margin-right: 0;
+		}
+
+		&::after {
+			border: 1px solid rgba(0, 0, 0, 0.15);
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			z-index: 1;
+			content: "";
+		}
+
+		&.is-selected::after {
+			border-width: 4px;
+			border-color: $color-highlight;
+		}
+
+		&:hover,
+		&:focus {
+			outline: none;
+			box-shadow: none;
+		}
+	}
+}
