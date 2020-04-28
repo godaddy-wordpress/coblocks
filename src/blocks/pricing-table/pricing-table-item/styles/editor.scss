@@ -105,6 +105,10 @@
 			width: 100%;
 		}
 	}
+
+	.components-placeholder.components-placeholder {
+		min-height: 120px;
+	}
 }
 
 .has-text-align-left .wp-block-coblocks-pricing-table-item .wp-block[data-type="core/button"] {
