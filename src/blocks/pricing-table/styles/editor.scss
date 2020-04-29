@@ -1,7 +1,15 @@
 .wp-block[data-type="coblocks/pricing-table"] {
 
+	.wp-block-shortcode textarea {
+		width: 100%;
+	}
+
 	.block-list-appender {
 		display: none !important;
+
+		.block-list-appender__toggle {
+			margin-left: 0;
+		}
 	}
 }
 
