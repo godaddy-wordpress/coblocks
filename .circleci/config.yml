@@ -194,6 +194,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: "Setup Environment Variables"
+          command: |
+            echo "export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH" >> $BASH_ENV
+            source /home/circleci/.bashrc
+      - run:
           name: Setup spec files to run based on git diff-tree
           command: bash .dev/bin/setup-test-specs.sh
       - run:
@@ -236,6 +241,13 @@ jobs:
             ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=/tmp/wordpress
             ./vendor/bin/wp post generate --count=5 --path=/tmp/wordpress
             ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
+      - run:
+          name: "Install Mailhog"
+          command: bash .dev/bin/install-mailhog.sh
+      - run:
+          name: "Start Mailhog"
+          command: "MailHog"
+          background: true
       - run:
           name: "Start WPCLI Server"
           command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root  --path=/tmp/wordpress
@@ -255,6 +267,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: "Setup Environment Variables"
+          command: |
+            echo "export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH" >> $BASH_ENV
+            source /home/circleci/.bashrc
+      - run:
           name: Setup spec files to run based on git diff-tree
           command: bash .dev/bin/setup-test-specs.sh
       - run:
@@ -297,6 +314,13 @@ jobs:
             ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=/tmp/wordpress
             ./vendor/bin/wp post generate --count=5 --path=/tmp/wordpress
             ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
+      - run:
+          name: "Install Mailhog"
+          command: bash .dev/bin/install-mailhog.sh
+      - run:
+          name: "Start Mailhog"
+          command: "MailHog"
+          background: true
       - run:
           name: "Start WPCLI Server"
           command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root  --path=/tmp/wordpress
