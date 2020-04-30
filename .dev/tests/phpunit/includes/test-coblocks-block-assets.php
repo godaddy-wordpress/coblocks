@@ -126,6 +126,44 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 
 	}
 
+	public function test_block_assets_not_loaded_when_no_coblocks_block() {
+		global $post, $wp_styles;
+		unset( $GLOBALS['current_screen'] );
+
+		$post_id = wp_insert_post( [
+			'post_author'  => 1,
+			'post_content' => 'NoBlocks',
+			'post_title'   => 'NoBlocks',
+			'post_status'  => 'publish',
+		] );
+
+		$post = get_post( $post_id );
+
+		$this->coblocks_block_assets->block_assets();
+		do_action( 'enqueue_block_assets' );
+
+		$this->assertNotContains( 'coblocks-frontend', $wp_styles->queue );
+	}
+
+	public function test_block_assets_loaded_with_coblocks_block() {
+		global $post, $wp_styles;
+		unset( $GLOBALS['current_screen'] );
+
+		$post_id = wp_insert_post( [
+			'post_author'  => 1,
+			'post_content' => '<!-- wp:coblocks/hasblocks --><!-- /wp:coblocks/hasblocks -->',
+			'post_title'   => 'CoBlocks',
+			'post_status'  => 'publish',
+		] );
+
+		$post = get_post( $post_id );
+
+		$this->coblocks_block_assets->block_assets();
+		do_action( 'enqueue_block_assets' );
+
+		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
+	}
+
 	/**
 	 * Test the frontend scripts masonry are enqueued correctly
 	 */
