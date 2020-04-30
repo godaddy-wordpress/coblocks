@@ -90,7 +90,7 @@ class CoBlocks_Block_Assets {
 			$has_coblock = true;
 		}
 
-		if ( ! $has_coblock ) {
+		if ( ! $has_coblock && ! $this->is_page_gutenberg() ) {
 			return;
 		}
 
@@ -378,6 +378,46 @@ class CoBlocks_Block_Assets {
 			COBLOCKS_VERSION,
 			true
 		);
+	}
+
+	/**
+	 * Return whether a post type should display the Block Editor.
+	 *
+	 * @param string $post_type The post_type slug to check.
+	 */
+	protected function is_post_type_gutenberg( $post_type ) {
+		return use_block_editor_for_post_type( $post_type );
+	}
+
+	/**
+	 * Return whether the page we are on is loading the Block Editor.
+	 */
+	protected function is_page_gutenberg() {
+		$page = wp_basename( esc_url( $_SERVER['REQUEST_URI'] ) );
+
+		if ( false !== strpos( $page, 'post-new.php' ) && empty( $_GET['post_type'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			return true;
+		}
+
+		if ( false !== strpos( $page, 'post-new.php' ) && isset( $_GET['post_type'] ) && $this->is_post_type_gutenberg( $_GET['post_type'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			return true;
+		}
+
+		if ( false !== strpos( $page, 'post.php' ) ) {
+			$post = get_post( $_GET['post'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			if ( isset( $post ) && isset( $post->post_type ) && $this->is_post_type_gutenberg( $post->post_type ) ) {
+				return true;
+			}
+		}
+
+		if ( false !== strpos( $page, 'revision.php' ) ) {
+			$post   = get_post( $_GET['revision'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$parent = get_post( $post->post_parent );
+			if ( isset( $parent ) && isset( $parent->post_type ) && $this->is_post_type_gutenberg( $parent->post_type ) ) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
 
