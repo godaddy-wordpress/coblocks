@@ -74,7 +74,8 @@ class CoBlocks_Block_Assets {
 	 * @access public
 	 */
 	public function block_assets() {
-		
+		global $post;
+
 		// Only load the front end CSS if a Coblock is in use.
 		$has_coblock = false;
 
@@ -82,14 +83,14 @@ class CoBlocks_Block_Assets {
 		// in the coblocks/* namespace.
 		$wp_post = get_post( $post );
 		if ( $wp_post instanceof WP_Post ) {
-			$post = $wp_post->post_content;
+			$post_content = $wp_post->post_content;
 		}
 
-		if ( false !== strpos( $post, '<!-- wp:coblocks/' ) ) {
+		if ( false !== strpos( $post_content, '<!-- wp:coblocks/' ) ) {
 			$has_coblock = true;
 		}
 
-		if ( !$has_coblock ) {
+		if ( ! $has_coblock ) {
 			return;
 		}
 
