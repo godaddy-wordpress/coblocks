@@ -124,19 +124,14 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Enhancements
-* Improve logic to handle Accordion block open state [#1458](https://github.com/godaddy-wordpress/coblocks/pull/1458)
-* Introduce Vertical Alignment controls to Row block [#1437](https://github.com/godaddy-wordpress/coblocks/pull/1437)
+* Allow core/shortcode block in the Pricing Table block [#1465](https://github.com/godaddy-wordpress/coblocks/pull/1465)
+* Use columns/gutter utilities on the Pricing Table block [#1440](https://github.com/godaddy-wordpress/coblocks/pull/1440)
+* Only load front end CSS when it is needed [#1455](https://github.com/godaddy-wordpress/coblocks/pull/1455)
 
 ### Bug Fixes
-* Fix accordion display across IE/Edge browsers [#1456](https://github.com/godaddy-wordpress/coblocks/pull/1456)
-* Fix checkbox icon SVG to display properly [#1461](https://github.com/godaddy-wordpress/coblocks/pull/1461)
-* Fix Contact Form block submissions not sending [#1467](https://github.com/godaddy-wordpress/coblocks/pull/1467)
-* Fix Row block alignment bug with Go theme [#1459](https://github.com/godaddy-wordpress/coblocks/pull/1459)
+* Maintain Masonry block gutter as browser viewport resizes [#1469](https://github.com/godaddy-wordpress/coblocks/pull/1469)
+* Propagate Hero alignment to children [#1463](https://github.com/godaddy-wordpress/coblocks/pull/1463)
 
 ### Misc
-* Add proper example to the Pricing Table block [#1450](https://github.com/godaddy-wordpress/coblocks/pull/1450)
-* Deploy canary build to wpnux [#1452](https://github.com/godaddy-wordpress/coblocks/pull/1452)
-* Improve WP.org FAQs [#1464](https://github.com/godaddy-wordpress/coblocks/pull/1464)
-* Properly scope the datepicker to prevent conflicts [#1447](https://github.com/godaddy-wordpress/coblocks/pull/1447)
-* Refactor lightbox to remove jQuery requirement [#1429](https://github.com/godaddy-wordpress/coblocks/pull/1429)
-* Update CONTRIBUTORS.md [#1462](https://github.com/godaddy-wordpress/coblocks/pull/1462)
+* Add form block e2e test to confirm emails are being sent [#1468](https://github.com/godaddy-wordpress/coblocks/pull/1468)
+* Improve keywords for icons [#1448](https://github.com/godaddy-wordpress/coblocks/pull/1448)
