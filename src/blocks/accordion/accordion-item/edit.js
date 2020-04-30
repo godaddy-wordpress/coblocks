@@ -109,16 +109,14 @@ export default compose( [
 
 	withSelect( ( select, props ) => {
 		const {
-			getBlockHierarchyRootClientId,
 			getSelectedBlockClientId,
+			getBlocks,
 		} = select( 'core/block-editor' );
 
-		// Get clientID of the parent block.
-		const rootClientId = getBlockHierarchyRootClientId( props.clientId );
-		const selectedRootClientId = getBlockHierarchyRootClientId( getSelectedBlockClientId() );
+		const hasSelectedChildren = getBlocks( props.clientId ).filter( ( elem ) => elem.clientId === getSelectedBlockClientId() );
 
 		return {
-			isEditing: rootClientId === selectedRootClientId,
+			isEditing: getSelectedBlockClientId() === props.clientId || hasSelectedChildren.length > 0,
 		};
 	} ),
 

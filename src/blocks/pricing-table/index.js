@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import edit from './edit';
+import example from './example';
 import icon from './icon';
 import metadata from './block.json';
 import save from './save';
@@ -35,11 +36,7 @@ const settings = {
 		align: [ 'wide', 'full' ],
 		html: false,
 	},
-	example: {
-		attributes: {
-			count: 1,
-		},
-	},
+	example,
 	attributes,
 	transforms,
 	edit,

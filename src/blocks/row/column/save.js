@@ -21,10 +21,14 @@ const save = ( { attributes } ) => {
 		marginSize,
 		paddingSize,
 		contentAlign,
+		verticalAlignment,
 	} = attributes;
 	const textClass = getColorClassName( 'color', textColor );
 
-	let classes = classnames( { [ `has-text-align-${ contentAlign }` ]: contentAlign } );
+	let classes = classnames( { 
+		[ `has-text-align-${ contentAlign }` ]: contentAlign,
+		[ `is-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment, 
+	} );
 
 	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
 		classes = classnames( classes, `coblocks-column-${ coblocks.id }` );

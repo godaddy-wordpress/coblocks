@@ -12,17 +12,28 @@ const save = ( { attributes } ) => {
 	const {
 		contentAlign,
 		count,
+		gutter,
 	} = attributes;
 
 	const classes = classnames(
-		`has-${ count }-columns`,
-		{ [ `has-text-align-${ contentAlign }` ]: contentAlign }
+		{
+			[ `has-text-align-${ contentAlign }` ]: contentAlign,
+		}
+	);
+
+	const innerClasses = classnames( 'wp-block-coblocks-pricing-table__inner',
+		{
+			'has-columns': count > 1,
+			[ `has-${ count }-columns` ]: count,
+			'has-responsive-columns': count > 1,
+			[ `has-${ gutter }-gutter` ]: gutter,
+		}
 	);
 
 	return (
 
 		<div className={ classes }>
-			<div className="wp-block-coblocks-pricing-table__inner">
+			<div className={ innerClasses }>
 				<InnerBlocks.Content />
 			</div>
 		</div>

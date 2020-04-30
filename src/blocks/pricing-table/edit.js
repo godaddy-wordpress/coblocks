@@ -10,6 +10,7 @@ import times from 'lodash/times';
  * Internal dependencies
  */
 import Controls from './controls';
+import Inspector from './inspector';
 
 /**
  * WordPress dependencies
@@ -58,13 +59,24 @@ class PricingTableEdit extends Component {
 
 		const {
 			count,
+			gutter,
 			contentAlign,
 		} = attributes;
 
 		const classes = classnames(
 			className,
-			`has-${ count }-columns`,
-			{ [ `has-text-align-${ contentAlign }` ]: contentAlign }
+			{
+				[ `has-text-align-${ contentAlign }` ]: contentAlign,
+			}
+		);
+
+		const innerClasses = classnames( 'wp-block-coblocks-pricing-table__inner',
+			{
+				'has-columns': count > 1,
+				[ `has-${ count }-columns` ]: count,
+				'has-responsive-columns': count > 1,
+				[ `has-${ gutter }-gutter` ]: gutter,
+			}
 		);
 
 		return (
@@ -74,10 +86,15 @@ class PricingTableEdit extends Component {
 						{ ...this.props }
 					/>
 				) }
+				{ isSelected && (
+					<Inspector
+						{ ...this.props }
+					/>
+				) }
 				<div
 					className={ classes }
 				>
-					<div className={ `${ className }__inner` }>
+					<div className={ innerClasses }>
 						<InnerBlocks
 							template={ getCount( count ) }
 							templateLock="insert"

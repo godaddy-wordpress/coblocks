@@ -13,6 +13,9 @@
 		},
 		"customTextColor": {
 			"type": "string"
+		},
+		"verticalAlignment": {
+			"type": "string"
 		}
 	}
 }
