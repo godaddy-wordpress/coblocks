@@ -252,7 +252,7 @@ class LayoutSelector extends Component {
 				title={ (
 					<Fragment>
 						{ __( 'Add new page', 'coblocks' ) }
-						<em>{ __( 'Pick one of these layouts or start with a blank page.', 'coblocks' ) }</em>
+						<span>{ __( 'Pick one of these layouts or start with a blank page.', 'coblocks' ) }</span>
 					</Fragment>
 				) }
 				onRequestClose={ () => {

@@ -18,8 +18,8 @@ $color-highlight: #00a4a6;
 }
 
 .coblocks-layout-selector-modal {
-	width: 1200px;
-	height: 85vh;
+	width: 1120px;
+	height: 80vh;
 	position: relative;
 
 	.components-modal__content {
@@ -36,13 +36,12 @@ $color-highlight: #00a4a6;
 			font-size: 1.25rem;
 			margin-top: 10px;
 
-			> em {
+			> span {
 				display: block;
-				font-style: normal;
-				font-weight: normal;
 				font-size: 13px;
-				margin-top: 0.8em;
+				font-weight: normal;
 				margin-bottom: 13px;
+				margin-top: 0.8em;
 			}
 		}
 	}
@@ -65,26 +64,6 @@ $color-highlight: #00a4a6;
 
 	.block-list-appender {
 		display: none !important;
-	}
-}
-
-.coblocks-layout-selector-confirm-button {
-	position: absolute;
-	position: sticky;
-	z-index: 1000;
-	top: 1.4em;
-	right: 5.5em;
-	background-color: #555;
-	color: #fff;
-	font-size: 0.9rem;
-	border: 0;
-	padding: 0.7em 1.5em;
-	transition: background-color 0.2s;
-
-	&:hover,
-	&:focus {
-		background-color: $color-highlight;
-		cursor: pointer;
 	}
 }
 
@@ -124,7 +103,7 @@ $color-highlight: #00a4a6;
 				&:hover,
 				&:focus,
 				&.is-selected {
-					color: $color-highlight;
+					color: theme(primary);
 					outline: none;
 					box-shadow: none;
 				}
@@ -143,6 +122,7 @@ $color-highlight: #00a4a6;
 			margin-bottom: 1em;
 
 			.components-dropdown-menu__toggle {
+
 				&:hover {
 					border: 0;
 					box-shadow: none !important;
@@ -186,10 +166,10 @@ $color-highlight: #00a4a6;
 		&:focus {
 			outline: none;
 			box-shadow: none;
-			color: $color-highlight !important;
+			color: theme(primary) !important;
 
 			> span {
-				background-color: $color-highlight;
+				background-color: theme(primary);
 				color: #fff;
 			}
 		}
@@ -208,18 +188,18 @@ $color-highlight: #00a4a6;
 	}
 
 	&__layouts-column {
-		width:50%;
+		width: 50%;
 	}
 
 	&__layout {
-		background-color: #f1f1f1;
+		background-color: hsla(240, 5%, 57%, 0.1);
 		display: flex;
 		flex-basis: 50%;
 		flex-grow: 1;
 		margin: 0 0 6% 6%;
+		position: relative;
 		text-decoration: none;
 		transition: all 0.2s;
-		position: relative;
 
 		@media (max-width: 1024px) {
 			flex-basis: 100%;
@@ -238,7 +218,7 @@ $color-highlight: #00a4a6;
 
 		&.is-selected::after {
 			border-width: 4px;
-			border-color: $color-highlight;
+			border-color: theme(primary);
 		}
 
 		&:hover,
