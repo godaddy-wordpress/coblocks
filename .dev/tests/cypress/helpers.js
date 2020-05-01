@@ -21,6 +21,10 @@ export function loginToSite() {
 		} );
 
 		cy.get( '.block-editor-page' ).should( 'exist' );
+
+		cy.get( '#editor' ).then( () => {
+			disableGutenbergFeatures();
+		} );
 }
 
 /**
@@ -49,6 +53,9 @@ export function disableGutenbergFeatures() {
 			win.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
 			win.wp.data.dispatch( 'core/editor' ).disablePublishSidebar();
 		}
+
+		// Close the Layout Selector
+		cy.get( '.coblocks-layout-selector__sidebar' ).find( '.coblocks-layout-selector__add-button' ).click();
 	} );
 }
 
