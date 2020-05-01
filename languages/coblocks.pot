@@ -1,14 +1,14 @@
 # Copyright (c) 2020 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.25.0\n"
+"Project-Id-Version: CoBlocks 1.26.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-04-27T16:30:09+00:00\n"
+"POT-Creation-Date: 2020-04-30T20:45:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -2168,26 +2168,26 @@ msgid "Change layout"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/hero/edit.js:39
+#: src/blocks/hero/edit.js:40
 msgid "Add hero heading…"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/hero/edit.js:47
+#: src/blocks/hero/edit.js:48
 msgid "Add hero content, which is typically an introductory area of a page accompanied by call to action or two."
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/hero/edit.js:62
+#: src/blocks/hero/edit.js:63
 msgid "Primary button…"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/hero/edit.js:69
+#: src/blocks/hero/edit.js:70
 msgid "Secondary button…"
 msgstr ""
 
-#: src/blocks/hero/edit.js:183
+#: src/blocks/hero/edit.js:185
 msgid "Add background to hero"
 msgstr ""
 
@@ -6490,58 +6490,58 @@ msgstr ""
 
 #. translators: block layout
 #: src/components/background/panel.js:86
-#: src/components/grid-control/index.js:38
+#: src/components/grid-control/index.js:60
 msgid "Top left"
 msgstr ""
 
 #. translators: block layout
 #: src/components/background/panel.js:91
-#: src/components/grid-control/index.js:43
+#: src/components/grid-control/index.js:65
 msgid "Top center"
 msgstr ""
 
 #. translators: block layout
 #: src/components/background/panel.js:96
-#: src/components/grid-control/index.js:48
+#: src/components/grid-control/index.js:70
 msgid "Top right"
 msgstr ""
 
 #. translators: block layout
 #: src/components/background/panel.js:101
-#: src/components/grid-control/index.js:53
-#: src/components/grid-control/index.js:87
+#: src/components/grid-control/index.js:75
+#: src/components/grid-control/index.js:109
 msgid "Center left"
 msgstr ""
 
 #. translators: block layout
 #: src/components/background/panel.js:106
-#: src/components/grid-control/index.js:58
-#: src/components/grid-control/index.js:92
+#: src/components/grid-control/index.js:80
+#: src/components/grid-control/index.js:114
 msgid "Center center"
 msgstr ""
 
 #. translators: block layout
 #: src/components/background/panel.js:111
-#: src/components/grid-control/index.js:63
-#: src/components/grid-control/index.js:97
+#: src/components/grid-control/index.js:85
+#: src/components/grid-control/index.js:119
 msgid "Center right"
 msgstr ""
 
 #. translators: block layout
 #: src/components/background/panel.js:116
-#: src/components/grid-control/index.js:68
+#: src/components/grid-control/index.js:90
 msgid "Bottom left"
 msgstr ""
 
 #. translators: block layout
 #: src/components/background/panel.js:121
-#: src/components/grid-control/index.js:73
+#: src/components/grid-control/index.js:95
 msgid "Bottom center"
 msgstr ""
 
 #. translators: block layout
 #: src/components/background/panel.js:126
-#: src/components/grid-control/index.js:78
+#: src/components/grid-control/index.js:100
 msgid "Bottom right"
 msgstr ""
 
@@ -6813,23 +6813,23 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
-#: src/components/grid-control/index.js:171
+#: src/components/grid-control/index.js:193
 msgid "Layout"
 msgstr ""
 
-#: src/components/grid-control/index.js:172
+#: src/components/grid-control/index.js:194
 msgid "Select layout"
 msgstr ""
 
-#: src/components/grid-control/index.js:214
+#: src/components/grid-control/index.js:238
 msgid "Fullscreen"
 msgstr ""
 
-#: src/components/grid-control/index.js:232
+#: src/components/grid-control/index.js:261
 msgid "Fullscreen mode is enabled."
 msgstr ""
 
-#: src/components/grid-control/index.js:232
+#: src/components/grid-control/index.js:261
 msgid "Toggle to enable fullscreen mode."
 msgstr ""
 
