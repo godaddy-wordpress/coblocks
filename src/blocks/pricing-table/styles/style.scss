@@ -151,7 +151,7 @@
 	&:nth-of-type(2) {
 
 		@include break-large-max() {
-			max-width: calc(100% / 2.02 - #{map-get($spacing, 4)});
+			max-width: calc(100% / 2.02 - var(--coblocks-spacing--4, #{map-get($spacing, 4)}));
 			flex-basis: 50%;
 		}
 	}
@@ -160,7 +160,7 @@
 
 		@include break-large-max() {
 			max-width: 100%;
-			margin-top: calc(2 * #{map-get($spacing, 4)});
+			margin-top: calc(2 * var(--coblocks-spacing--4, #{map-get($spacing, 4)}));
 			flex-basis: 100%;
 		}
 

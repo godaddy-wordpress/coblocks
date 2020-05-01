@@ -59,14 +59,14 @@
 	}
 
 	&.has-3-columns > *:not(.block-editor-inner-blocks) {
-		max-width: calc(100% / 3.03 - #{map-get($spacing, 4)});
+		max-width: calc(100% / 3.03 - var(--coblocks-spacing--4, #{map-get($spacing, 4)}));
 	}
 
 	&.has-4-columns > *:not(.block-editor-inner-blocks) {
 		max-width: calc(100% / 2 - var(--coblocks-spacing--3, #{map-get($spacing, 3)}));
 
 		@include break-large() {
-			max-width: calc(100% / 4.08 - #{map-get($spacing, 4)});
+			max-width: calc(100% / 4.08 - var(--coblocks-spacing--4, #{map-get($spacing, 4)}));
 		}
 
 		&:nth-of-type(1),
@@ -82,7 +82,7 @@
 .has-huge-gutter {
 
 	&.has-2-columns > *:not(.block-editor-inner-blocks) {
-		max-width: calc(100% / 2.02 - #{map-get($spacing, 4)});
+		max-width: calc(100% / 2.02 - var(--coblocks-spacing--4, #{map-get($spacing, 4)}));
 	}
 
 	&.has-3-columns > *:not(.block-editor-inner-blocks) {
@@ -90,7 +90,7 @@
 	}
 
 	&.has-4-columns > *:not(.block-editor-inner-blocks) {
-		max-width: calc(100% / 2 - #{map-get($spacing, 4)});
+		max-width: calc(100% / 2 - var(--coblocks-spacing--4, #{map-get($spacing, 4)}));
 
 		@include break-large() {
 			max-width: calc(100% / 4.15 - #{map-get($spacing, 5)});
@@ -100,7 +100,7 @@
 		&:nth-of-type(2) {
 
 			@include break-large-max() {
-				margin-bottom: calc(2 * #{map-get($spacing, 4)});
+				margin-bottom: calc(2 * var(--coblocks-spacing--4, #{map-get($spacing, 4)}));
 			}
 		}
 	}
