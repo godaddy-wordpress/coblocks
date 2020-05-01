@@ -23,22 +23,6 @@
 	@include utilities($spacing, "margin-left", "-");
 }
 
-.-mb-1 {
-	margin-bottom: -#{map-get($spacing, 1)};
-}
-
-.-mb-2 {
-	margin-bottom: -#{map-get($spacing, 2)};
-}
-
-.-mb-3 {
-	margin-bottom: -#{map-get($spacing, 3)};
-}
-
-.-mb-4 {
-	margin-bottom: -#{map-get($spacing, 4)};
-}
-
 // 600px +
 @include break-small() {
 
@@ -60,22 +44,6 @@
 	.sm\:ml {
 
 		@include utilities($spacing, "margin-left", "-");
-	}
-
-	.sm\:-mb-1 {
-		margin-bottom: -#{map-get($spacing, 1)};
-	}
-
-	.sm\:-mb-2 {
-		margin-bottom: -#{map-get($spacing, 2)};
-	}
-
-	.sm\:-mb-3 {
-		margin-bottom: -#{map-get($spacing, 3)};
-	}
-
-	.sm\:-mb-4 {
-		margin-bottom: -#{map-get($spacing, 4)};
 	}
 }
 
@@ -101,22 +69,6 @@
 
 		@include utilities($spacing, "margin-left", "-");
 	}
-
-	.md\:-mb-1 {
-		margin-bottom: -#{map-get($spacing, 1)};
-	}
-
-	.md\:-mb-2 {
-		margin-bottom: -#{map-get($spacing, 2)};
-	}
-
-	.md\:-mb-3 {
-		margin-bottom: -#{map-get($spacing, 3)};
-	}
-
-	.md\:-mb-4 {
-		margin-bottom: -#{map-get($spacing, 4)};
-	}
 }
 
 // 1280px+
@@ -140,21 +92,5 @@
 	.lg\:ml {
 
 		@include utilities($spacing, "margin-left", "-");
-	}
-
-	.lg\:-mb-1 {
-		margin-bottom: -#{map-get($spacing, 1)};
-	}
-
-	.lg\:-mb-2 {
-		margin-bottom: -#{map-get($spacing, 2)};
-	}
-
-	.lg\:-mb-3 {
-		margin-bottom: -#{map-get($spacing, 3)};
-	}
-
-	.lg\:-mb-4 {
-		margin-bottom: -#{map-get($spacing, 4)};
 	}
 }
