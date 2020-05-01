@@ -84,11 +84,7 @@ class CoBlocks_Block_Assets {
 			// in the coblocks/* namespace.
 			$wp_post = get_post( $post );
 			if ( $wp_post instanceof WP_Post ) {
-				$post_content = $wp_post->post_content;
-			}
-
-			if ( false !== strpos( $post_content, '<!-- wp:coblocks/' ) ) {
-				$has_coblock = true;
+				$has_coblock = false !== strpos( $wp_post->post_content, '<!-- wp:coblocks/' );
 			}
 		}
 
