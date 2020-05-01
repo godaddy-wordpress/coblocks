@@ -5,14 +5,14 @@
 	}
 
 	&.has-3-columns > *:not(.block-editor-inner-blocks) {
-		max-width: calc(100% / 3 - #{map-get($spacing, 2)});
+		max-width: calc(100% / 3 - var(--coblocks-spacing--2, #{map-get($spacing, 2)}));
 	}
 
 	&.has-4-columns > *:not(.block-editor-inner-blocks) {
 		max-width: calc(100% / 2 - var(--coblocks-spacing--1, #{map-get($spacing, 1)});
 
 		@include break-large() {
-			max-width: calc(100% / 4 - #{map-get($spacing, 2)});
+			max-width: calc(100% / 4 - var(--coblocks-spacing--2, #{map-get($spacing, 2)}));
 		}
 
 		&:nth-of-type(1),
@@ -28,25 +28,25 @@
 .has-medium-gutter {
 
 	&.has-2-columns > *:not(.block-editor-inner-blocks) {
-		max-width: calc(100% / 2 - #{map-get($spacing, 2)});
+		max-width: calc(100% / 2 - var(--coblocks-spacing--2, #{map-get($spacing, 2)}));
 	}
 
 	&.has-3-columns > *:not(.block-editor-inner-blocks) {
-		max-width: calc(100% / 2.975 - #{map-get($spacing, 3)});
+		max-width: calc(100% / 2.975 - var(--coblocks-spacing--3, #{map-get($spacing, 3)}));
 	}
 
 	&.has-4-columns > *:not(.block-editor-inner-blocks) {
-		max-width: calc(100% / 2 - #{map-get($spacing, 2)});
+		max-width: calc(100% / 2 - var(--coblocks-spacing--2, #{map-get($spacing, 2)}));
 
 		@include break-large() {
-			max-width: calc(100% / 4 - #{map-get($spacing, 3)});
+			max-width: calc(100% / 4 - var(--coblocks-spacing--3, #{map-get($spacing, 3)}));
 		}
 
 		&:nth-of-type(1),
 		&:nth-of-type(2) {
 
 			@include break-large-max() {
-				margin-bottom: calc(2 * #{map-get($spacing, 2)});
+				margin-bottom: calc(2 * var(--coblocks-spacing--2, #{map-get($spacing, 2)}));
 			}
 		}
 	}
@@ -55,7 +55,7 @@
 .has-large-gutter {
 
 	&.has-2-columns > *:not(.block-editor-inner-blocks) {
-		max-width: calc(100% / 2.01 - #{map-get($spacing, 3)});
+		max-width: calc(100% / 2.01 - var(--coblocks-spacing--3, #{map-get($spacing, 3)}));
 	}
 
 	&.has-3-columns > *:not(.block-editor-inner-blocks) {
@@ -63,7 +63,7 @@
 	}
 
 	&.has-4-columns > *:not(.block-editor-inner-blocks) {
-		max-width: calc(100% / 2 - #{map-get($spacing, 3)});
+		max-width: calc(100% / 2 - var(--coblocks-spacing--3, #{map-get($spacing, 3)}));
 
 		@include break-large() {
 			max-width: calc(100% / 4.08 - #{map-get($spacing, 4)});
@@ -73,7 +73,7 @@
 		&:nth-of-type(2) {
 
 			@include break-large-max() {
-				margin-bottom: calc(2 * #{map-get($spacing, 3)});
+				margin-bottom: calc(2 * var(--coblocks-spacing--3, #{map-get($spacing, 3)}));
 			}
 		}
 	}

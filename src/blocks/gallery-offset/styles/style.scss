@@ -89,12 +89,12 @@
 	.has-medium-gutter {
 
 		@include break-small() {
-			margin-bottom: calc(#{map-get($spacing, 2)} * -1 * 2);
-			margin-left: calc(#{map-get($spacing, 2)} * -0.5 * 2);
+			margin-bottom: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * -1 * 2);
+			margin-left: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * -0.5 * 2);
 
 			figure {
-				margin-bottom: calc(#{map-get($spacing, 2)} * 2);
-				margin-left: calc(#{map-get($spacing, 2)} * 2);
+				margin-bottom: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * 2);
+				margin-left: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * 2);
 			}
 		}
 	}

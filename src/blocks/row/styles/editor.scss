@@ -263,19 +263,19 @@
 .has-medium-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"] {
 
 	&:nth-child(odd) {
-		margin-right: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) - 0.75em);
+		margin-right: calc(var(--coblocks-spacing--2, var(--coblocks-spacing--2, #{map-get($spacing, 2)})) - 0.75em);
 	}
 
 	&:nth-child(even) {
-		margin-left: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) - 0.75em);
+		margin-left: calc(var(--coblocks-spacing--2, var(--coblocks-spacing--2, #{map-get($spacing, 2)})) - 0.75em);
 	}
 
 	&:not(:first-child) {
-		margin-left: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) - 0.75em);
+		margin-left: calc(var(--coblocks-spacing--2, var(--coblocks-spacing--2, #{map-get($spacing, 2)})) - 0.75em);
 	}
 
 	&:not(:last-child) {
-		margin-right: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) - 0.75em);
+		margin-right: calc(var(--coblocks-spacing--2, var(--coblocks-spacing--2, #{map-get($spacing, 2)})) - 0.75em);
 	}
 }
 
@@ -382,7 +382,7 @@
 		}
 
 		.has-medium-gutter & {
-			right: calc(-0.8 * var(--coblocks-spacing--2, #{map-get($spacing, 2)}) - 0.75em);
+			right: calc(-0.8 * var(--coblocks-spacing--2, var(--coblocks-spacing--2, #{map-get($spacing, 2)})) - 0.75em);
 		}
 
 		.has-large-gutter & {

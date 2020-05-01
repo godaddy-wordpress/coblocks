@@ -188,7 +188,7 @@
 		}
 
 		&.has-medium-gutter > [class*="wp-block"]:not(:last-child) {
-			margin-bottom: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * 2);
+			margin-bottom: calc(var(--coblocks-spacing--2, var(--coblocks-spacing--2, #{map-get($spacing, 2)})) * 2);
 		}
 
 		&.has-large-gutter > [class*="wp-block"]:not(:last-child) {

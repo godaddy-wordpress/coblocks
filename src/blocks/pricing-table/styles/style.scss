@@ -76,7 +76,7 @@
 	&:nth-of-type(2) {
 
 		@include break-large-max() {
-			max-width: calc(100% / 2 - var(--coblocks-spacing--1, #{map-get($spacing, 1)});
+			max-width: calc(100% / 2 - var(--coblocks-spacing--1, #{map-get($spacing, 1)}));
 			flex-basis: 50%;
 		}
 	}
@@ -85,7 +85,7 @@
 
 		@include break-large-max() {
 			max-width: 100%;
-			margin-top: calc(2 * var(--coblocks-spacing--1, #{map-get($spacing, 1)});
+			margin-top: calc(2 * var(--coblocks-spacing--1, #{map-get($spacing, 1)}));
 			flex-basis: 100%;
 		}
 
@@ -101,7 +101,7 @@
 	&:nth-of-type(2) {
 
 		@include break-large-max() {
-			max-width: calc(100% / 2 - #{map-get($spacing, 2)});
+			max-width: calc(100% / 2 - var(--coblocks-spacing--2, #{map-get($spacing, 2)}));
 			flex-basis: 50%;
 		}
 	}
@@ -110,7 +110,7 @@
 
 		@include break-large-max() {
 			max-width: 100%;
-			margin-top: calc(2 * #{map-get($spacing, 2)});
+			margin-top: calc(2 * var(--coblocks-spacing--2, #{map-get($spacing, 2)}));
 			flex-basis: 100%;
 		}
 
