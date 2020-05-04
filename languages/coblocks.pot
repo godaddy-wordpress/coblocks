@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-05-01T21:43:50+00:00\n"
+"POT-Creation-Date: 2020-05-04T19:14:10+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -64,8 +64,8 @@ msgstr ""
 
 #. translators: block name
 #. translators: icon label
-#: includes/class-coblocks-form.php:221
-#: includes/class-coblocks-form.php:304
+#: includes/class-coblocks-form.php:217
+#: includes/class-coblocks-form.php:306
 #: src/blocks/form/fields/email/index.js:21
 #: src/blocks/form/fields/email/index.js:34
 #: src/blocks/icon/deprecated/svgs.js:688
@@ -76,30 +76,30 @@ msgid "Email"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:244
+#: includes/class-coblocks-form.php:246
 #: src/blocks/form/fields/name/index.js:21
 #: src/blocks/form/fields/name/index.js:46
 msgid "Name"
 msgstr ""
 
-#: includes/class-coblocks-form.php:248
+#: includes/class-coblocks-form.php:250
 #: src/blocks/form/fields/name/index.js:33
 msgid "First"
 msgstr ""
 
-#: includes/class-coblocks-form.php:249
+#: includes/class-coblocks-form.php:251
 #: src/blocks/form/fields/name/index.js:37
 msgid "Last"
 msgstr ""
 
-#: includes/class-coblocks-form.php:334
+#: includes/class-coblocks-form.php:336
 #: src/blocks/form/fields/textarea/index.js:21
 msgid "Message"
 msgstr ""
 
 #. translators: block name
 #. translators: block style
-#: includes/class-coblocks-form.php:365
+#: includes/class-coblocks-form.php:367
 #: src/blocks/form/fields/text/index.js:21
 #: src/blocks/form/fields/text/index.js:34
 #: src/blocks/share/index.js:44
@@ -108,48 +108,48 @@ msgid "Text"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:406
+#: includes/class-coblocks-form.php:408
 #: src/blocks/form/fields/date/index.js:21
 #: src/blocks/form/fields/date/index.js:34
 msgid "Date"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:437
+#: includes/class-coblocks-form.php:439
 #: src/blocks/form/fields/phone/index.js:21
 #: src/blocks/form/fields/phone/index.js:34
 msgid "Phone"
 msgstr ""
 
-#: includes/class-coblocks-form.php:476
+#: includes/class-coblocks-form.php:478
 #: src/blocks/form/fields/radio/index.js:21
 msgid "Choose one"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:538
-#: includes/class-coblocks-form.php:587
+#: includes/class-coblocks-form.php:540
+#: includes/class-coblocks-form.php:589
 #: src/blocks/form/fields/select/index.js:21
 #: src/blocks/form/fields/select/index.js:38
 msgid "Select"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:640
+#: includes/class-coblocks-form.php:642
 #: src/blocks/form/fields/website/index.js:21
 #: src/blocks/form/fields/website/index.js:34
 msgid "Website"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:674
+#: includes/class-coblocks-form.php:676
 #: src/blocks/form/fields/hidden/index.js:21
 #: src/blocks/form/fields/hidden/index.js:34
 msgid "Hidden"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:753
+#: includes/class-coblocks-form.php:755
 #: src/blocks/form/edit.js:141
 #: src/blocks/form/fields/submit-button/index.js:21
 #: src/blocks/form/fields/submit-button/index.js:29
@@ -157,14 +157,14 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
-#: includes/class-coblocks-form.php:995
+#: includes/class-coblocks-form.php:986
 #: src/blocks/form/edit.js:302
 msgid "name"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: includes/class-coblocks-form.php:1007
+#: includes/class-coblocks-form.php:998
 #: src/blocks/form/edit.js:296
 #: src/blocks/form/fields/name/index.js:53
 #: src/blocks/form/index.js:43
@@ -178,7 +178,7 @@ msgstr ""
 msgid "email"
 msgstr ""
 
-#: includes/class-coblocks-form.php:1052
+#: includes/class-coblocks-form.php:1043
 msgid "Your message was sent:"
 msgstr ""
 
