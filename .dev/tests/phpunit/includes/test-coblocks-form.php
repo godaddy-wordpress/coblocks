@@ -576,6 +576,39 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Test the form renders a submit button if one does not exists within the innerBlocks.
+	 */
+	public function test_render_submit_button_if_missing_from_form() {
+		$form_missing_submit_button = '<!-- wp:coblocks/form -->
+			<!-- wp:coblocks/field-name /-->
+			<!-- wp:coblocks/field-email /-->
+			<!-- wp:coblocks/field-textarea /-->
+			<!-- /wp:coblocks/form -->';
+
+		$this->assertContains(
+			'<button type="submit" class="wp-block-button__link" style="">Submit</button>',
+			$this->coblocks_form->render_form( [], $form_missing_submit_button )
+		);
+	}
+
+	/**
+	 * Test the form only renders the submit button included within the innerBlocks.
+	 */
+	public function test_does_not_insert_submit_button_if_exists_in_form() {
+		$form_has_submit_button = '<!-- wp:coblocks/form -->
+			<!-- wp:coblocks/field-name /-->
+			<!-- wp:coblocks/field-email /-->
+			<!-- wp:coblocks/field-textarea /-->
+			<!-- wp:coblocks/field-submit-button {"submitButtonText":"Contact Us"} /-->
+		<!-- /wp:coblocks/form -->';
+
+		$this->assertContains(
+			'<button type="submit" class="wp-block-button__link" style="">Contact Us</button>',
+			$this->coblocks_form->render_form( [], $form_has_submit_button )
+		);
+	}
+
+	/**
 	 * Test the form submission works as expected
 	 */
 	public function test_process_form_submission() {
