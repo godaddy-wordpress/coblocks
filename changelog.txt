@@ -1,4 +1,12 @@
 
+1.26.1 / 2020-05-04
+===================
+
+### Bug Fixes
+* Render a submit button if not found in the block content [#1479](https://github.com/godaddy-wordpress/coblocks/pull/1479)
+* Remove a condition where a variable may not be defined [#1477](https://github.com/godaddy-wordpress/coblocks/pull/1477)
+
+
 1.26.0 / 2020-04-30
 ===================
 
