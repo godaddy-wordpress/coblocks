@@ -2,7 +2,7 @@
 
 ## Customize labels
 
-The following JavaScript filter will customize the text used for the menu item
+The following `JavaScript` filter will customize the text used for the menu item
 label and panel titles: 
 
 ```javascript
@@ -16,6 +16,23 @@ addFilter(
 	'coblocks-settings-title',
 	'coblocks-settings-title',
 	updateSettingsTitle,
+);
+```
+
+## Hide layout selector and related controls
+
+The following `JavaScript` filter will globally disable the CoBlocks layout selector
+and will prevent the controls from showing within the editor settings panel. 
+
+```javascript
+import { addFilter } from '@wordpress/hooks';
+
+addFilter(
+	'coblocks-show-layout-selector',
+	'coblocks-show-layout-selector',
+	function() {
+		return false;
+	},
 );
 ```
 

@@ -8,7 +8,7 @@ import Section from './section';
  */
 import { Component } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { applyFilters, addFilter } from '@wordpress/hooks';
+import { applyFilters } from '@wordpress/hooks';
 import {
 	CheckboxControl,
 	Modal,
