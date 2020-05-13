@@ -71,8 +71,17 @@
 		const imagePreloader = {};
 
 		Array.from(images).forEach( function( img, imgIndex ) {
+
+			// Enables support for lazy loading base64 URLs by using the data-src attribute.
+			const src = () => { 
+				const attributeSrc = ( img.attributes.src && img.attributes.src.value.indexOf('http') >= 0 ) ? img.attributes.src.value : '';
+				const attributeDataSrc = ( img.attributes['data-src'] && img.attributes['data-src'].value.indexOf('http') >= 0 ) ? img.attributes['data-src'].value : '';
+
+				return !! attributeSrc ? img.attributes.src.value : attributeDataSrc;
+			};
+
 			imagePreloader[ `img-${ imgIndex }` ] = new window.Image();
-			imagePreloader[ `img-${ imgIndex }` ].src = img.attributes.src.value;
+			imagePreloader[ `img-${ imgIndex }` ].src = src();
 			imagePreloader[ `img-${ imgIndex }` ]['data-caption'] = 
 				( images[ imgIndex ] && images[ imgIndex ].nextElementSibling ) ? 
 					images[ imgIndex ].nextElementSibling.innerHTML : '';
