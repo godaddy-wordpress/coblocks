@@ -192,13 +192,11 @@ class CoBlocks_Form {
 		$submitted_hash  = filter_input( INPUT_POST, 'form-hash', FILTER_SANITIZE_STRING );
 
 		ob_start();
-
 		?>
 
 		<div class="coblocks-form" id="<?php echo esc_attr( $this->form_hash ); ?>">
 
 			<?php
-
 			if ( $submitted_hash === $this->form_hash ) {
 
 				$submit_form = $this->process_form_submission( $atts );
@@ -210,16 +208,21 @@ class CoBlocks_Form {
 					print( '</div>' );
 
 					return ob_get_clean();
-
 				}
 			}
-
 			?>
 
 			<form action="<?php echo esc_url( sprintf( '%1$s#%2$s', set_url_scheme( get_the_permalink() ), $this->form_hash ) ); ?>" method="post">
 				<?php echo do_blocks( $content ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				<input class="coblocks-field verify" type="email" name="coblocks-verify-email" autocomplete="off" placeholder="<?php esc_attr_e( 'Email', 'coblocks' ); ?>" tabindex="-1">
 				<input type="hidden" name="form-hash" value="<?php echo esc_attr( $this->form_hash ); ?>">
+
+				<?php
+				// Output a submit button if it's not found in the block content.
+				if ( false === strpos( $content, 'coblocks-form__submit' ) ) :
+					echo $this->render_field_submit_button( $atts ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				endif;
+				?>
 			</form>
 
 		</div>
@@ -227,7 +230,6 @@ class CoBlocks_Form {
 		<?php
 
 		return ob_get_clean();
-
 	}
 
 	/**
@@ -769,42 +771,31 @@ class CoBlocks_Form {
 				$atts['className'],
 				$btn_class
 			);
-
 		}
 
 		if ( isset( $atts['customBackgroundButtonColor'] ) ) {
-
 			$styles[] = "background-color: {$atts['customBackgroundButtonColor']};";
-
 		}
 
 		if ( isset( $atts['customTextButtonColor'] ) ) {
-
 			$styles[] = "color: {$atts['customTextButtonColor']};";
-
 		}
 
 		ob_start();
-
 		?>
 
 		<div class="coblocks-form__submit wp-block-button">
 			<button type="submit" class="wp-block-button__link<?php echo esc_attr( $btn_class ); ?>" style="<?php echo esc_attr( implode( ' ', $styles ) ); ?>"><?php echo esc_html( $btn_text ); ?></button>
 			<?php wp_nonce_field( 'coblocks-form-submit', 'form-submit' ); ?>
 			<input type="hidden" name="action" value="coblocks-form-submit">
-			<?php
-			if ( $recaptcha_site_key && $recaptcha_secret_key ) {
-				?>
+
+			<?php if ( $recaptcha_site_key && $recaptcha_secret_key ) : ?>
 				<input type="hidden" class="g-recaptcha-token" name="g-recaptcha-token" />
-				<?php
-			}
-			?>
+			<?php endif; ?>
 		</div>
 
 		<?php
-
 		return ob_get_clean();
-
 	}
 
 	/**

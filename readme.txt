@@ -6,7 +6,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 1.26.0
+Stable tag: 1.26.1
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,15 +123,6 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-### Enhancements
-* Allow core/shortcode block in the Pricing Table block [#1465](https://github.com/godaddy-wordpress/coblocks/pull/1465)
-* Use columns/gutter utilities on the Pricing Table block [#1440](https://github.com/godaddy-wordpress/coblocks/pull/1440)
-* Only load front end CSS when it is needed [#1455](https://github.com/godaddy-wordpress/coblocks/pull/1455)
-
 ### Bug Fixes
-* Maintain Masonry block gutter as browser viewport resizes [#1469](https://github.com/godaddy-wordpress/coblocks/pull/1469)
-* Propagate Hero alignment to children [#1463](https://github.com/godaddy-wordpress/coblocks/pull/1463)
-
-### Misc
-* Add form block e2e test to confirm emails are being sent [#1468](https://github.com/godaddy-wordpress/coblocks/pull/1468)
-* Improve keywords for icons [#1448](https://github.com/godaddy-wordpress/coblocks/pull/1448)
+* Render a submit button if not found in the block content [#1479](https://github.com/godaddy-wordpress/coblocks/pull/1479)
+* Remove a condition where a variable may not be defined [#1477](https://github.com/godaddy-wordpress/coblocks/pull/1477)
