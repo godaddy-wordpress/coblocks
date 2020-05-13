@@ -223,13 +223,6 @@ export const layoutTemplates = [
 				[]
 			],
 			[
-				"core/spacer",
-				{
-					"height": 30,
-				},
-				[]
-			],
-			[
 				"core/heading",
 				{
 					"align": "center",
