@@ -88,7 +88,7 @@ class LayoutSelector extends Component {
 		super( ...arguments );
 
 		this.state = {
-			selectedCategory: __( 'Most used', 'coblocks' ),
+			selectedCategory: __( 'About', 'coblocks' ),
 			templates: templateCategories,
 		};
 
@@ -177,7 +177,7 @@ class LayoutSelector extends Component {
 		let sortedArray = sortBy( this.state.templates, 'label' );
 
 		let mostUsedIndex = findIndex( sortedArray, function( template ) {
-			return template.label == __( 'Most used', 'coblocks' );
+			return template.label == __( 'About', 'coblocks' );
 		} );
 
 		if ( mostUsedIndex === -1 ) {
@@ -237,7 +237,7 @@ class LayoutSelector extends Component {
 					) ) }
 				</div>
 			</div>
-		) : ( <p><em>{ __('Sorry, no layouts available for this category.', 'coblocks' ) }</em></p> );
+		) : ( <p><em>{ __('No layouts are available for this category.', 'coblocks' ) }</em></p> );
 	}
 
 	render() {
@@ -252,7 +252,7 @@ class LayoutSelector extends Component {
 				title={ (
 					<Fragment>
 						{ __( 'Add new page', 'coblocks' ) }
-						<span>{ __( 'Pick one of these layouts or start with a blank page.', 'coblocks' ) }</span>
+						<span>{ __( 'Pick one of these layouts or start with a blank page', 'coblocks' ) }</span>
 					</Fragment>
 				) }
 				onRequestClose={ () => {

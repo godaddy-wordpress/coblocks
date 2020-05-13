@@ -3,9 +3,14 @@
  */
 import { __ } from '@wordpress/i18n';
 
-export const layoutTemplates = [
+export const aboutLayouts = [];
+
+export const contactLayouts = [];
+
+export const homeLayouts = [
 	{
-		label: __( 'Home: Layout one', 'coblocks' ),
+		slug: 'home-one',
+		label: __( 'Homepage', 'coblocks' ),
 		blocks: [
 			[
 				"core/spacer",
@@ -18,7 +23,7 @@ export const layoutTemplates = [
 				"core/heading",
 				{
 					"align": "center",
-					"content": "Where the hustle slows, the rhythm is heard, and the beans are fantastic",
+					"content": __( 'Where the hustle slows, the rhythm is heard, and the beans are fantastic', 'coblocks' ),
 					"level": 2,
 					"fontWeight": "",
 					"textTransform": "",
@@ -117,7 +122,7 @@ export const layoutTemplates = [
 					"columns": 2,
 					"gutter": "huge",
 					"align": "wide",
-					"headingLevel": 5,
+					"headingLevel": 4,
 					"buttons": false,
 					"className": "alignwide is-style-threebyfour"
 				},
@@ -125,7 +130,7 @@ export const layoutTemplates = [
 					[
 						"coblocks/service",
 						{
-							"headingLevel": 5,
+							"headingLevel": 4,
 							"showCta": false,
 							"imageUrl": "https://user-images.githubusercontent.com/1813435/76585533-fffec900-64b4-11ea-9ba4-fb771f6d7622.jpg",
 							"imageAlt": "Image description",
@@ -161,7 +166,7 @@ export const layoutTemplates = [
 					[
 						"coblocks/service",
 						{
-							"headingLevel": 5,
+							"headingLevel": 4,
 							"showCta": false,
 							"imageUrl": "https://user-images.githubusercontent.com/1813435/76585544-04c37d00-64b5-11ea-93a2-e287301b67f0.jpg",
 							"imageAlt": "Image description",
@@ -172,7 +177,7 @@ export const layoutTemplates = [
 								"core/heading",
 								{
 									"content": "A listening room",
-									"level": 5,
+									"level": 4,
 									"fontWeight": "",
 									"textTransform": "",
 									"noBottomSpacing": false,
@@ -200,7 +205,8 @@ export const layoutTemplates = [
 	},
 
 	{
-		label: __( 'Home: Layout two', 'coblocks' ),
+		slug: 'home-two',
+		label: __( 'Homepage', 'coblocks' ),
 		blocks: [
 			[
 				"core/image",
@@ -391,10 +397,10 @@ export const layoutTemplates = [
 	},
 ];
 
-
-export const portfolioTemplates = [
+export const portfolioLayouts = [
 	{
-		label: __( 'Portfolio: Layout one', 'coblocks' ),
+		slug: 'portfolio-one',
+		label: __( 'Portfolio', 'coblocks' ),
 		blocks: [
 			[
 				"core/spacer",
@@ -469,8 +475,8 @@ export const portfolioTemplates = [
 					"id": 3,
 					"sizeSlug": "full",
 					"linkDestination": "none",
-					"noBottomMargin": true,
-					"noTopMargin": true,
+					"noBottomMargin": false,
+					"noTopMargin": false,
 					"cropX": 0,
 					"cropY": 0,
 					"cropWidth": 100,
@@ -536,9 +542,8 @@ export const portfolioTemplates = [
 ];
 
 export const templateCategories = [
-	{ label: __( 'Most used', 'coblocks' ), layouts: layoutTemplates },
-	{ label: __( 'Home', 'coblocks' ), layouts: layoutTemplates },
-	{ label: __( 'About', 'coblocks' ), layouts: layoutTemplates },
-	{ label: __( 'Contact', 'coblocks' ), layouts: [] },
-	{ label: __( 'Gallery', 'coblocks' ), layouts: portfolioTemplates },
+	{ label: __( 'About', 'coblocks' ), layouts: aboutLayouts },
+	{ label: __( 'Contact', 'coblocks' ), layouts: contactLayouts },
+	{ label: __( 'Home', 'coblocks' ), layouts: homeLayouts },
+	{ label: __( 'Portfolio', 'coblocks' ), layouts: portfolioLayouts },
 ];

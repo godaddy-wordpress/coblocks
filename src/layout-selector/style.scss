@@ -1,10 +1,10 @@
 $color-highlight: #00a4a6;
 
-.coblocks-layout-selector__layout .block-editor-block-preview__container {
-	--go--font-size: 10px;
+.coblocks-layout-selector .coblocks-layout-selector__layout .block-editor-block-preview__container.editor-styles-wrapper {
+	--go--font-size: 0.5rem;
 	--go--viewport-basis: 1800;
 	--editor-max-w-base: 400px;
-	--editor-max-w-wide: 80%;
+	--editor-max-w-wide: 85%;
 
 	h1,
 	h2,
@@ -12,27 +12,33 @@ $color-highlight: #00a4a6;
 	h4,
 	h5,
 	h6 {
+		// margin-bottom: -20px !important;
 		margin-left: auto !important;
 		margin-right: auto !important;
+		// margin-top: -20px !important;
+		// transform: scale(0.6) !important;
 	}
 
-	.block-editor-block-list__layout .wp-block:first-of-type {
+	.block-editor-block-list__layout .wp-block:not([data-type="core/heading"]):first-of-type {
 		margin-top: 0 !important;
 	}
 
-	.block-editor-block-list__layout .wp-block:last-of-type {
+	.block-editor-block-list__layout .wp-block:not([data-type="core/heading"]):last-of-type {
 		margin-bottom: 0 !important;
+	}
+
+	.wp-block[data-type="core/paragraph"] {
+		font-size: 0.75rem;
 	}
 }
 
 .coblocks-layout-selector-modal {
-	width: 1120px;
-	height: 80vh;
+	width: 1320px;
+	height: 85vh;
 	position: relative;
 
 	.components-modal__content {
 		height: auto;
-		padding: 0 36px 36px;
 	}
 
 	.components-modal__header {
@@ -41,13 +47,13 @@ $color-highlight: #00a4a6;
 		border-bottom: none;
 
 		.components-modal__header-heading {
-			font-size: 1.25rem;
+			font-size: 1rem;
 			margin-top: 10px;
 
 			> span {
 				display: block;
-				font-size: 13px;
-				font-weight: normal;
+				font-size: 14px;
+				font-weight: 400;
 				margin-bottom: 13px;
 				margin-top: 0.8em;
 			}
@@ -95,18 +101,17 @@ $color-highlight: #00a4a6;
 		}
 
 		&__items {
-			font-size: 15px;
-			font-weight: 400;
-			margin-bottom: 1.75em;
+			font-size: 16px;
+			margin-bottom: 2em;
+			margin-top: 0;
 		}
 
 		&__item {
-			margin-bottom: 0.75em;
+			margin-bottom: 0.85em;
 
 			> a {
-				color: #000;
+				color: $dark-gray-800;
 				text-decoration: none;
-				transition: color 0.2s;
 
 				&:hover,
 				&:focus,
@@ -150,19 +155,19 @@ $color-highlight: #00a4a6;
 	}
 
 	&__add-button {
-		color: #000 !important;
+		color: $dark-gray-800 !important;
 		text-decoration: none !important;
-		font-weight: 500;
+		font-weight: 600;
 		display: inline-flex;
 		vertical-align: middle;
-		transition: color 0.2s;
+		transition-duration: 0;
 		align-items: center;
 
 		> span {
 			display: inline-block;
 			position: relative;
-			background-color: #000;
-			color: #fff;
+			background-color: $dark-gray-800;
+			color: $white;
 			padding: 7px 5px 0;
 			margin-right: 0.65em;
 			border-radius: 2px;
