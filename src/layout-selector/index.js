@@ -43,6 +43,7 @@ const titleCase = ( str ) => {
 };
 
 const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
+
 	return (
 		<a href="#!"
 			key={ layout }
