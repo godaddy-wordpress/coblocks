@@ -1,7 +1,28 @@
 /**
  * External dependencies.
  */
-import { kebabCase, startCase } from 'lodash';
+import { startCase } from 'lodash';
+
+/**
+ * Close layout selector.
+ * To open the modal you must visit a new page.
+ * cy.visit( Cypress.env( 'testURL' ) + '/wp-admin/post-new.php?post_type=page' );
+ */
+export function closeLayoutSelector() {
+	if ( isLayoutSelectorOpen() ) {
+		cy.get( '#editor' ).then( () => {
+			cy.get( '.coblocks-layout-selector__sidebar' ).find( '.coblocks-layout-selector__add-button' ).click();
+		} );
+		return;
+	}
+}
+
+/**
+ * Is layout selector modal open
+ */
+export function isLayoutSelectorOpen() {
+	return Cypress.$('.coblocks-layout-selector__sidebar').length > 0;
+}
 
 /**
  * Login to our test WordPress site
@@ -21,10 +42,6 @@ export function loginToSite() {
 		} );
 
 		cy.get( '.block-editor-page' ).should( 'exist' );
-
-		cy.get( '#editor' ).then( () => {
-			disableGutenbergFeatures();
-		} );
 }
 
 /**
@@ -55,7 +72,9 @@ export function disableGutenbergFeatures() {
 		}
 
 		// Close the Layout Selector
-		cy.get( '.coblocks-layout-selector__sidebar' ).find( '.coblocks-layout-selector__add-button' ).click();
+		if ( isLayoutSelectorOpen() ) {
+			closeLayoutSelector();
+		}
 	} );
 }
 
