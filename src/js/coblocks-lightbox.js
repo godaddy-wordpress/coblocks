@@ -130,8 +130,7 @@
 						}
 					};
 				} // End if ! imagePreloader.preloaded
-
-			}
+			} // End setPreloadImages()
 		};
 
 		function changeImage( imageIndex ) {
