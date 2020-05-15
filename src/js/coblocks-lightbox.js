@@ -98,7 +98,7 @@
 			preloaded: false,
 			setPreloadImages: () => {
 				if ( ! imagePreloader.preloaded ) {
-					imagePreloader.imagesPreloaded = true;
+					imagePreloader.preloaded = true;
 					Array.from(images).forEach( function( img, imgIndex ) {
 						imagePreloader[ `img-${ imgIndex }` ] = new window.Image();
 						imagePreloader[ `img-${ imgIndex }` ].src = img.attributes.src.value;
