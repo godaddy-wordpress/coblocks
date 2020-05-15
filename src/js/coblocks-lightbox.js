@@ -68,8 +68,6 @@
 			} );
 		}
 
-
-
 		Array.from(images).forEach( function( img, imgIndex ) {
 			img.addEventListener('click', function(){
 				changeImage( imgIndex );
@@ -106,7 +104,33 @@
 							( images[ imgIndex ] && images[ imgIndex ].nextElementSibling ) ? 
 								images[ imgIndex ].nextElementSibling.innerHTML : '';
 					} );
-				}
+
+					document.onkeydown = function(e) {
+						const lightboxDisplayValue = wrapper
+						const lightboxIsOpen = ( typeof lightboxDisplayValue !== 'undefined' && lightboxDisplayValue !== 'none' );
+						if ( lightboxIsOpen ) {
+							e = e || window.event;
+							switch ( e.keyCode ) {
+								case 27 : // Esc key
+									close.trigger( 'click' );
+									break;
+								case 37 : // Arrow left or 'A' key.
+									arrowLeftContainer.click();
+									break;
+								case 65 : // 'A' key.
+									arrowLeftContainer.click();
+									break;
+								case 39 : // Arrow right.
+									arrowRightContainer.click();
+									break;
+								case 68 : // 'D' key.
+									arrowRightContainer.click();
+									break;
+							}
+						}
+					};
+				} // End if ! imagePreloader.preloaded
+
 			}
 		};
 
@@ -119,30 +143,5 @@
 			caption.textContent = imagePreloader[ `img-${ index }` ]['data-caption'];
 			counter.textContent = `${( index + 1 )} / ${images.length}`;
 		}
-
-		document.onkeydown = function(e) {
-			const lightboxDisplayValue = wrapper.style.display;
-			const lightboxIsOpen = ( typeof lightboxDisplayValue !== typeof 'undefined' && lightboxDisplayValue !== 'none' );
-			if ( lightboxIsOpen ) {
-				e = e || window.event;
-				switch ( e.keyCode ) {
-					case 27 : // Esc key
-						close.trigger( 'click' );
-						break;
-					case 37 : // Arrow left or 'A' key.
-						arrowLeftContainer.click();
-						break;
-					case 65 : // 'A' key.
-						arrowLeftContainer.click();
-						break;
-					case 39 : // Arrow right.
-						arrowRightContainer.click();
-						break;
-					case 68 : // 'D' key.
-						arrowRightContainer.click();
-						break;
-				}
-			}
-		};
 	}
 }() );
