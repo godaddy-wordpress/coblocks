@@ -104,33 +104,9 @@
 							( images[ imgIndex ] && images[ imgIndex ].nextElementSibling ) ? 
 								images[ imgIndex ].nextElementSibling.innerHTML : '';
 					} );
-
-					document.onkeydown = function(e) {
-						const lightboxDisplayValue = wrapper
-						const lightboxIsOpen = ( typeof lightboxDisplayValue !== 'undefined' && lightboxDisplayValue !== 'none' );
-						if ( lightboxIsOpen ) {
-							e = e || window.event;
-							switch ( e.keyCode ) {
-								case 27 : // Esc key
-									close.trigger( 'click' );
-									break;
-								case 37 : // Arrow left or 'A' key.
-									arrowLeftContainer.click();
-									break;
-								case 65 : // 'A' key.
-									arrowLeftContainer.click();
-									break;
-								case 39 : // Arrow right.
-									arrowRightContainer.click();
-									break;
-								case 68 : // 'D' key.
-									arrowRightContainer.click();
-									break;
-							}
-						}
-					};
-				} // End if ! imagePreloader.preloaded
-			} // End setPreloadImages()
+					setKeyboardListener();
+				}
+			}
 		};
 
 		function changeImage( imageIndex ) {
@@ -141,6 +117,33 @@
 			image.src = imagePreloader[ `img-${ index }` ].src;
 			caption.textContent = imagePreloader[ `img-${ index }` ]['data-caption'];
 			counter.textContent = `${( index + 1 )} / ${images.length}`;
+		}
+
+		function setKeyboardListener( ) {
+			document.onkeydown = function(e) {
+				const lightboxDisplayValue = wrapper
+				const lightboxIsOpen = ( typeof lightboxDisplayValue !== 'undefined' && lightboxDisplayValue !== 'none' );
+				if ( lightboxIsOpen ) {
+					e = e || window.event;
+					switch ( e.keyCode ) {
+						case 27 : // Esc key
+							close.trigger( 'click' );
+							break;
+						case 37 : // Arrow left or 'A' key.
+							arrowLeftContainer.click();
+							break;
+						case 65 : // 'A' key.
+							arrowLeftContainer.click();
+							break;
+						case 39 : // Arrow right.
+							arrowRightContainer.click();
+							break;
+						case 68 : // 'D' key.
+							arrowRightContainer.click();
+							break;
+					}
+				}
+			};
 		}
 	}
 }() );
