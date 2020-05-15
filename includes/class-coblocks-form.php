@@ -808,7 +808,7 @@ class CoBlocks_Form {
 	public function process_form_submission( $atts ) {
 
 		$form_submission = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
-		
+
 		if ( ! $form_submission || 'coblocks-form-submit' !== $form_submission ) {
 
 			return;
@@ -943,7 +943,7 @@ class CoBlocks_Form {
 		add_filter( 'wp_mail_content_type', array( $this, 'enable_html_email' ) );
 
 		$email = wp_mail( $to, $subject, $email_content, $email_headers );
-
+		print_r($email_content);
 		remove_filter( 'wp_mail_content_type', array( $this, 'enable_html_email' ) );
 
 		/**
