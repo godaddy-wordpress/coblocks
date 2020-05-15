@@ -68,23 +68,9 @@
 			} );
 		}
 
-		const imagePreloader = {};
+
 
 		Array.from(images).forEach( function( img, imgIndex ) {
-			// Enables support for lazy loading base64 URLs by using the data-src attribute.
-			const src = () => { 
-				const attributeSrc = ( img.attributes.src && img.attributes.src.value.indexOf('http') >= 0 ) ? img.attributes.src.value : '';
-				const attributeDataSrc = ( img.attributes['data-src'] && img.attributes['data-src'].value.indexOf('http') >= 0 ) ? img.attributes['data-src'].value : '';
-
-				return !! attributeSrc ? img.attributes.src.value : attributeDataSrc;
-			};
-
-			imagePreloader[ `img-${ imgIndex }` ] = new window.Image();
-			imagePreloader[ `img-${ imgIndex }` ].src = src();
-			imagePreloader[ `img-${ imgIndex }` ]['data-caption'] = 
-				( images[ imgIndex ] && images[ imgIndex ].nextElementSibling ) ? 
-					images[ imgIndex ].nextElementSibling.innerHTML : '';
-
 			img.addEventListener('click', function(){
 				changeImage( imgIndex );
 			})
@@ -108,8 +94,24 @@
 			wrapper.style.display = 'none';
 		})
 
+		const imagePreloader = {
+			preloaded: false,
+			setPreloadImages: () => {
+				if ( ! imagePreloader.preloaded ) {
+					imagePreloader.imagesPreloaded = true;
+					Array.from(images).forEach( function( img, imgIndex ) {
+						imagePreloader[ `img-${ imgIndex }` ] = new window.Image();
+						imagePreloader[ `img-${ imgIndex }` ].src = img.attributes.src.value;
+						imagePreloader[ `img-${ imgIndex }` ]['data-caption'] = 
+							( images[ imgIndex ] && images[ imgIndex ].nextElementSibling ) ? 
+								images[ imgIndex ].nextElementSibling.innerHTML : '';
+					} );
+				}
+			}
+		};
 
 		function changeImage( imageIndex ) {
+			imagePreloader.setPreloadImages();
 			index = imageIndex;
 			wrapper.style.display = 'flex';
 			wrapperBackground.style.backgroundImage = `url(${imagePreloader[ `img-${ index }` ].src})`;
@@ -120,7 +122,7 @@
 
 		document.onkeydown = function(e) {
 			const lightboxDisplayValue = wrapper.style.display;
-			const lightboxIsOpen = ( typeof lightboxDisplayValue !== typeof undefined && lightboxDisplayValue !== 'none' );
+			const lightboxIsOpen = ( typeof lightboxDisplayValue !== typeof 'undefined' && lightboxDisplayValue !== 'none' );
 			if ( lightboxIsOpen ) {
 				e = e || window.event;
 				switch ( e.keyCode ) {
