@@ -115,6 +115,7 @@ class Edit extends Component {
 			attributes,
 			setAttributes,
 			isSelected,
+			className,
 		} = this.props;
 
 		const {
@@ -183,7 +184,7 @@ class Edit extends Component {
 							height,
 							width: '100%',
 						} }
-						className={ classnames( { 'is-selected': isSelected } ) }
+						className={ classnames( className, { 'is-selected': isSelected } ) }
 						minHeight="200"
 						enable={ {
 							bottom: true,
