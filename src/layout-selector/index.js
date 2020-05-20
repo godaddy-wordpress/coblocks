@@ -159,7 +159,7 @@ class LayoutSelector extends Component {
 
 				}
 
-				let categoryIndex = findIndex( this.state.templates, function( template ) {
+				const categoryIndex = findIndex( this.state.templates, function( template ) {
 					return titleCase( template.label ) == categoryName;
 				} );
 
@@ -174,9 +174,9 @@ class LayoutSelector extends Component {
 
 		}
 
-		let sortedArray = sortBy( this.state.templates, 'label' );
+		const sortedArray = sortBy( this.state.templates, 'label' );
 
-		let mostUsedIndex = findIndex( sortedArray, function( template ) {
+		const mostUsedIndex = findIndex( sortedArray, function( template ) {
 			return template.label == __( 'About', 'coblocks' );
 		} );
 
@@ -192,7 +192,7 @@ class LayoutSelector extends Component {
 	}
 
 	componentDidMount() {
-		if ( Object.keys( coblocksLayoutSelector.customLayouts ).length ) {
+		if ( this.props.layoutSelectorEnabled && Object.keys( coblocksLayoutSelector.customLayouts ).length ) {
 			this.addCustomLayoutsToTemplateCategories();
 		}
 	}
@@ -245,7 +245,12 @@ class LayoutSelector extends Component {
 		const {
 			isActive,
 			closeTemplateSelector,
+			layoutSelectorEnabled,
 		} = this.props;
+
+		if ( ! layoutSelectorEnabled ) {
+			return null;
+		}
 
 		return !isActive ? null : (
 			<Modal
@@ -334,9 +339,11 @@ registerPlugin( 'coblocks-layout-selector', {
 		withSelect( select => {
 			const { isTemplateSelectorActive } = select( 'coblocks/template-selector' );
 			const { isCleanNewPost } = select( 'core/editor' );
+			const { getLayoutSelector } = select( 'coblocks-settings' );
 
 			return {
 				isActive: isCleanNewPost() || isTemplateSelectorActive(),
+				layoutSelectorEnabled: getLayoutSelector(),
 			};
 		} ),
 		withDispatch( dispatch => {

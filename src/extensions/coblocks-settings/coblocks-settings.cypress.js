@@ -6,6 +6,9 @@ import * as helpers from '../../../.dev/tests/cypress/helpers';
 describe( 'Extension: CoBlocks Settings', function() {
 	let supportsGradients = false;
 	beforeEach( function() {
+		if ( helpers.isLayoutSelectorOpen() ) {
+			helpers.closeLayoutSelector();
+		}
 		cy.get( '.edit-post-more-menu' ).click();
 		cy.get( '.components-menu-group' ).find( 'button' ).contains( 'Editor settings' ).click();
 		cy.get( '.coblocks-modal__content' ).find( 'input[type="checkbox"]' ).each( ( checkbox ) => {
@@ -25,7 +28,7 @@ describe( 'Extension: CoBlocks Settings', function() {
 	 */
 	it( 'Can control typography settings as expected.', function() {
 		helpers.addBlockToPost( 'coblocks/row', true );
-		cy.get( 'div[aria-label="Select row columns"]' ).find( 'div:nth-child(1) button' ).click( { force: true } );
+		cy.get( 'div[data-type="coblocks/row"] .components-placeholder' ).find( 'button' ).first().click( { force: true } );
 		cy.get( '.wp-block-coblocks-row' ).click( { force: true } );
 
 		cy.get( '.edit-post-more-menu' ).click();
@@ -37,6 +40,32 @@ describe( 'Extension: CoBlocks Settings', function() {
 		cy.get( 'button[aria-label="Change typography"]' ).should( 'not.exist' );
 
 		cy.get( '.components-modal__header' ).find( 'button[aria-label="Close dialog"]' ).click();
+	} );
+
+	/**
+	 * Test that the CoBlocks panel layout selector controls function as expected.
+	 */
+	it( 'Can control layout selector visibility as expected.', function() {
+		cy.visit( Cypress.env( 'testURL' ) + '/wp-admin/post-new.php?post_type=page' );
+		cy.get( '.coblocks-layout-selector__sidebar' ).should( 'exist' );
+
+		cy.get( '#editor' ).then( () => {
+			cy.get( '.coblocks-layout-selector__sidebar' ).find( '.coblocks-layout-selector__add-button' ).click();
+		} );
+
+		cy.get( '.edit-post-more-menu' ).click();
+		cy.get( '.components-menu-group' ).find( 'button' ).contains( 'Editor settings' ).click();
+		cy.get( '.coblocks-modal__content' ).contains( 'Layout selector' ).click();
+
+		cy.visit( Cypress.env( 'testURL' ) + '/wp-admin/post-new.php?post_type=page' );
+
+		cy.get( '.coblocks-layout-selector__sidebar' ).should( 'not.exist' );
+		cy.get( '.edit-post-more-menu' ).click();
+		cy.get( '.components-menu-group' ).find( 'button' ).contains( 'Editor settings' ).click();
+		cy.get( '.coblocks-modal__content' ).contains( 'Layout selector' ).click();
+
+		cy.get( '.coblocks-layout-selector__sidebar' ).should( 'exist' );
+		helpers.closeLayoutSelector();
 	} );
 
 	/**
