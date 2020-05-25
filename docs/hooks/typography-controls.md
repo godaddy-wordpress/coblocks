@@ -2,7 +2,7 @@
 
 ## Add Additional Google Fonts
 
-The following `PHP` filter can be used to add Google fonts to the list of available fonts with Typography Controls.  
+The following `JavaScript` filter can be used to add Google fonts to the list of available fonts with Typography Controls.  
 
 
 ```php
