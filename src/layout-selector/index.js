@@ -338,11 +338,14 @@ registerPlugin( 'coblocks-layout-selector', {
 	render: compose( [
 		withSelect( select => {
 			const { isTemplateSelectorActive } = select( 'coblocks/template-selector' );
-			const { isCleanNewPost } = select( 'core/editor' );
+			const { isCleanNewPost, hasEditorUndo, getCurrentPost } = select( 'core/editor' );
+			const { getBlockCount } = select( 'core/block-editor' );
 			const { getLayoutSelector } = select( 'coblocks-settings' );
 
+			const layoutUndo = ( ! getBlockCount() && ! hasEditorUndo() && ! getCurrentPost().title.length );
+
 			return {
-				isActive: isCleanNewPost() || isTemplateSelectorActive(),
+				isActive: isCleanNewPost() || isTemplateSelectorActive() || layoutUndo,
 				layoutSelectorEnabled: getLayoutSelector(),
 			};
 		} ),
