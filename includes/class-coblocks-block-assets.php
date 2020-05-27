@@ -280,7 +280,7 @@ class CoBlocks_Block_Assets {
 		$vendors_dir = CoBlocks()->asset_source( 'js', 'vendors' );
 
 		// Masonry block.
-		if ( has_block( 'coblocks/gallery-masonry' ) ) {
+		if ( has_block( 'coblocks/gallery-masonry' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
 				'coblocks-masonry',
 				$dir . 'coblocks-masonry.js',
@@ -291,7 +291,7 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Carousel block.
-		if ( has_block( 'coblocks/gallery-carousel' ) ) {
+		if ( has_block( 'coblocks/gallery-carousel' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
 				'coblocks-flickity',
 				$vendors_dir . '/flickity.js',
@@ -300,7 +300,7 @@ class CoBlocks_Block_Assets {
 				true
 			);
 
-			if ( has_block( 'coblocks/accordion' ) ) {
+			if ( has_block( 'coblocks/accordion' ) || has_block( 'core/block' ) ) {
 				wp_enqueue_script(
 					'coblocks-accordion-carousel',
 					$dir . 'coblocks-accordion-carousel.js',
@@ -312,7 +312,7 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Post Carousel block.
-		if ( has_block( 'coblocks/post-carousel' ) ) {
+		if ( has_block( 'coblocks/post-carousel' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
 				'coblocks-slick',
 				$vendors_dir . '/slick.js',
@@ -330,7 +330,7 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Events block.
-		if ( has_block( 'coblocks/events' ) ) {
+		if ( has_block( 'coblocks/events' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
 				'coblocks-slick',
 				$vendors_dir . '/slick.js',
@@ -348,7 +348,7 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Lightbox.
-		if ( has_block( 'coblocks/gallery-masonry' ) || has_block( 'coblocks/gallery-stacked' ) || has_block( 'coblocks/gallery-collage' ) || has_block( 'coblocks/gallery-carousel' ) || has_block( 'coblocks/gallery-offset' ) ) {
+		if ( has_block( 'coblocks/gallery-masonry' ) || has_block( 'coblocks/gallery-stacked' ) || has_block( 'coblocks/gallery-collage' ) || has_block( 'coblocks/gallery-carousel' ) || has_block( 'coblocks/gallery-offset' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
 				'coblocks-lightbox',
 				$dir . 'coblocks-lightbox.js',
