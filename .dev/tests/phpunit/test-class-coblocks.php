@@ -176,19 +176,6 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test the block editor assets load correctly
-	 */
-	public function test_block_editor_assets() {
-
-		do_action( 'enqueue_block_editor_assets' );
-
-		global $wp_scripts;
-
-		$this->assertTrue( array_key_exists( 'coblocks-editor', $wp_scripts->registered ) );
-
-	}
-
-	/**
 	 * Test all expected final build assets exist
 	 */
 	public function test_final_build_assets_exist() {
