@@ -6,6 +6,39 @@
  */
 
 /**
+ * Get the categories for the layout selector.
+ *
+ * @return array
+ */
+function coblocks_layout_selector_categories() {
+	$categories = array(
+		array(
+			'slug'  => 'about',
+			'title' => __( 'About', 'coblocks' ),
+		),
+		array(
+			'slug'  => 'contact',
+			'title' => __( 'Contact', 'coblocks' ),
+		),
+		array(
+			'slug'  => 'home',
+			'title' => __( 'Home', 'coblocks' ),
+		),
+		array(
+			'slug'  => 'portfolio',
+			'title' => __( 'Portfolio', 'coblocks' ),
+		),
+	);
+
+	/**
+	 * Filters the available categories used by the Layout Selector.
+	 *
+	 * @param array $categories The available categories.
+	 */
+	return apply_filters( 'coblocks_layout_selector_categories', $categories );
+}
+
+/**
  * Load custom layouts from the theme directory, if they exist.
  */
 function coblocks_register_custom_layouts() {
@@ -31,24 +64,7 @@ function coblocks_register_custom_layouts() {
 			 */
 			'layouts'    => apply_filters( 'coblocks_layout_selector_layouts', $layouts ),
 
-			'categories' => array(
-				array(
-					'slug'  => 'about',
-					'title' => __( 'About', 'coblocks' ),
-				),
-				array(
-					'slug'  => 'contact',
-					'title' => __( 'Contact', 'coblocks' ),
-				),
-				array(
-					'slug'  => 'home',
-					'title' => __( 'Home', 'coblocks' ),
-				),
-				array(
-					'slug'  => 'portfolio',
-					'title' => __( 'Portfolio', 'coblocks' ),
-				),
-			),
+			'categories' => coblocks_layout_selector_categories(),
 		)
 	);
 }
