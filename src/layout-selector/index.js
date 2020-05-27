@@ -16,15 +16,11 @@ import { Button, Modal, Icon, DropdownMenu, MenuGroup, MenuItem } from '@wordpre
 import { BlockPreview } from '@wordpress/block-editor';
 import { createBlock } from '@wordpress/blocks';
 import map from 'lodash/map';
-import findIndex from 'lodash/findIndex';
-import omit from 'lodash/omit';
-import sortBy from 'lodash/sortBy';
 
 /**
  * Internal dependencies
  */
 import './store';
-import { templateCategories } from './layouts';
 
 const getBlocksFromTemplate = ( name, attributes, innerBlocks = [] ) => {
 	return createBlock( name, attributes,
@@ -32,14 +28,6 @@ const getBlocksFromTemplate = ( name, attributes, innerBlocks = [] ) => {
 			getBlocksFromTemplate( blockName, blockAttributes, blockInnerBlocks )
 		)
 	);
-};
-
-const titleCase = ( str ) => {
-	const splitStr = str.toLowerCase().split( ' ' );
-	for ( let i = 0; i < splitStr.length; i++ ) {
-		splitStr[i] = splitStr[ i ].charAt( 0 ).toUpperCase() + splitStr[ i ].substring( 1 );
-	}
-	return splitStr.join( ' ' );
 };
 
 const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
@@ -68,16 +56,16 @@ const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
 	)
 };
 
-const SidebarItem = ( { item, isSelected, onClick } ) => {
+const SidebarItem = ( { slug, title, isSelected, onClick } ) => {
 	return (
-		<li key={ item } className="coblocks-layout-selector__sidebar__item">
-			<a href={ `#${item}` }
+		<li key={ slug } className="coblocks-layout-selector__sidebar__item">
+			<a href={ `#${slug}` }
 				className={ classnames( { 'is-selected': isSelected } ) }
 				onClick={ ( event ) => {
 					event.preventDefault();
 					onClick();
 				} }>
-				{ item }
+				{ title }
 			</a>
 		</li>
 	)
@@ -88,13 +76,11 @@ class LayoutSelector extends Component {
 		super( ...arguments );
 
 		this.state = {
-			selectedCategory: __( 'About', 'coblocks' ),
-			templates: templateCategories,
+			selectedCategory: 'about',
 		};
 
 		this.useTemplateLayout = this.useTemplateLayout.bind( this );
 		this.useEmptyTemplateLayout = this.useEmptyTemplateLayout.bind( this );
-		this.addCustomLayoutsToTemplateCategories = this.addCustomLayoutsToTemplateCategories.bind( this );
 		this.renderContent = this.renderContent.bind( this );
 	}
 
@@ -128,87 +114,23 @@ class LayoutSelector extends Component {
 		replacePostTitle( layout.label );
 	}
 
-	addCustomLayoutsToTemplateCategories() {
-		const categoryNames = map( this.state.templates, 'label' ).map( function( e ) {
-			return titleCase( e );
-		} );
-
-		for ( let index = 0; index < Object.keys( coblocksLayoutSelector.customLayouts ).length; index++ ) {
-
-			// No category key set.
-			if ( ! ( 'category' in coblocksLayoutSelector.customLayouts[ index ] ) ) {
-				console.error( 'No category set for custom layout ' + coblocksLayoutSelector.customLayouts[ index ].label );
-				continue;
-			}
-
-			// Loop over set template categories
-			for ( let categoryIndex = 0; categoryIndex < Object.keys( coblocksLayoutSelector.customLayouts[ index ].category ).length; categoryIndex++ ) {
-
-				const categoryName = titleCase( coblocksLayoutSelector.customLayouts[ index ].category[ categoryIndex ] );
-
-				const customTemplateObject = omit( coblocksLayoutSelector.customLayouts[ index ], 'category' );
-
-				// New Category
-				if ( ! categoryNames.includes( categoryName ) ) {
-
-					categoryNames.push( categoryName );
-
-					this.state.templates = this.state.templates.concat( [ { label: categoryName, layouts: [ customTemplateObject ] } ] );
-
-					continue;
-
-				}
-
-				const categoryIndex = findIndex( this.state.templates, function( template ) {
-					return titleCase( template.label ) == categoryName;
-				} );
-
-				// Category not found or duplicate exists in array
-				if ( categoryIndex === -1 || findIndex( this.state.templates[ categoryIndex ].layouts, customTemplateObject ) > -1 ) {
-					continue;
-				}
-
-				this.state.templates[ categoryIndex ].layouts = this.state.templates[ categoryIndex ].layouts.concat( customTemplateObject );
-
-			}
-
-		}
-
-		const sortedArray = sortBy( this.state.templates, 'label' );
-
-		const mostUsedIndex = findIndex( sortedArray, function( template ) {
-			return template.label == __( 'About', 'coblocks' );
-		} );
-
-		if ( mostUsedIndex === -1 ) {
-			this.setState( { templates: sortedArray } );
-			return;
-		}
-
-		sortedArray.unshift( sortedArray.splice( mostUsedIndex, 1 )[0] );
-
-		this.setState( { templates: sortedArray } );
-
+	getLayoutsInCategory( category ) {
+		return this.props.layouts.filter( layout => layout.category === category ) || [];
 	}
 
-	componentDidMount() {
-		if ( this.props.layoutSelectorEnabled && Object.keys( coblocksLayoutSelector.customLayouts ).length ) {
-			this.addCustomLayoutsToTemplateCategories();
-		}
+	hasLayoutsInCategory( category ) {
+		return !! this.getLayoutsInCategory( category ).length;
 	}
 
 	renderContent( selectedCategory ) {
-		const layouts = [];
-
 		const registeredBlocks = map( wp.blocks.getBlockTypes(), 'name' );
 
-		const foundLayouts = templateCategories.find( category => category.label === selectedCategory ).layouts || [];
-		foundLayouts.forEach( layout => layouts.push( layout ) );
+		const foundLayouts = this.getLayoutsInCategory( selectedCategory );
 
-		const layoutsCol1 = layouts.slice( 0, Math.ceil( layouts.length / 2 ) );
-		const layoutsCol2 = layouts.slice( Math.ceil( layouts.length / 2 ) );
+		const layoutsCol1 = foundLayouts.slice( 0, Math.ceil( foundLayouts.length / 2 ) );
+		const layoutsCol2 = foundLayouts.slice( Math.ceil( foundLayouts.length / 2 ) );
 
-		return layouts.length ? (
+		return this.hasLayoutsInCategory( selectedCategory ) ? (
 			<div className="coblocks-layout-selector__layouts">
 				<div className="coblocks-layout-selector__layouts-column">
 					{ layoutsCol1.map( ( layout, index ) => (
@@ -269,12 +191,13 @@ class LayoutSelector extends Component {
 				<div className="coblocks-layout-selector">
 					<aside className="coblocks-layout-selector__sidebar">
 						<ul className="coblocks-layout-selector__sidebar__items">
-							{ this.state.templates.filter( category => category.layouts.length > 0 ).map( ( category, index ) => (
+							{ this.props.categories.filter( category => this.hasLayoutsInCategory( category.slug ) ).map( ( category, index ) => (
 								<SidebarItem
 									key={ index }
-									item={ titleCase( category.label ) }
-									isSelected={ category.label === selectedCategory }
-									onClick={ () => this.setState( { selectedCategory: category.label } ) }
+									slug={ category.slug }
+									title={ category.title }
+									isSelected={ category.slug === selectedCategory }
+									onClick={ () => this.setState( { selectedCategory: category.slug } ) }
 								/>
 							) ) }
 						</ul>
@@ -341,9 +264,14 @@ registerPlugin( 'coblocks-layout-selector', {
 			const { isCleanNewPost } = select( 'core/editor' );
 			const { getLayoutSelector } = select( 'coblocks-settings' );
 
+			const layouts = coblocksLayoutSelector.layouts || [];
+			const categories = coblocksLayoutSelector.categories || [];
+
 			return {
 				isActive: isCleanNewPost() || isTemplateSelectorActive(),
 				layoutSelectorEnabled: getLayoutSelector(),
+				layouts,
+				categories,
 			};
 		} ),
 		withDispatch( dispatch => {
