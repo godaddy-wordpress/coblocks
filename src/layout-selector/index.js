@@ -269,7 +269,7 @@ registerPlugin( 'coblocks-layout-selector', {
 
 			return {
 				isActive: isCleanNewPost() || isTemplateSelectorActive(),
-				layoutSelectorEnabled: getLayoutSelector(),
+				layoutSelectorEnabled: getLayoutSelector() && !! layouts.length && !! categories.length,
 				layouts,
 				categories,
 			};
