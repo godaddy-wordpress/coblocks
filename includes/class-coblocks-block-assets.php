@@ -79,12 +79,13 @@ class CoBlocks_Block_Assets {
 		// Only load the front end CSS if a Coblock is in use.
 		$has_coblock = ! is_singular();
 
-		if ( ! is_admin() ) {
+		if ( ! is_admin() && is_singular() ) {
+			$wp_post = get_post( $post );
+
 			// This is similar to has_block() in core, but will match anything
 			// in the coblocks/* namespace.
-			$wp_post = get_post( $post );
 			if ( $wp_post instanceof WP_Post ) {
-				$has_coblock = false !== strpos( $wp_post->post_content, '<!-- wp:coblocks/' );
+				$has_coblock = false !== strpos( $wp_post->post_content, '<!-- wp:coblocks/' ) || has_block( 'core/block', $wp_post );
 			}
 		}
 
