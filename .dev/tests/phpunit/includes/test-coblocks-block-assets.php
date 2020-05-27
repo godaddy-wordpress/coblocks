@@ -56,7 +56,6 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 			[ 'enqueue_block_assets', 'block_assets' ],
 			[ 'init', 'editor_assets' ],
 			[ 'wp_enqueue_scripts', 'frontend_scripts' ],
-			[ 'the_post', 'frontend_scripts' ],
 		];
 
 		foreach ( $actions as $action_data ) {
