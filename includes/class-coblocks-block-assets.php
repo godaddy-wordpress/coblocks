@@ -77,7 +77,7 @@ class CoBlocks_Block_Assets {
 		global $post;
 
 		// Only load the front end CSS if a Coblock is in use.
-		$has_coblock = false;
+		$has_coblock = ! is_singular();
 
 		if ( ! is_admin() ) {
 			// This is similar to has_block() in core, but will match anything
