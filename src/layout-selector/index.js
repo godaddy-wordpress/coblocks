@@ -100,32 +100,27 @@ class LayoutSelector extends Component {
 
 	useEmptyTemplateLayout() {
 		const {
-			replacePostTitle,
 			resetBlocks,
+			editPost
 		} = this.props;
 
-		resetBlocks( [ createBlock( 'core/paragraph' ) ] );
-		replacePostTitle( '' );
+		editPost( { title: '', blocks: [ createBlock( 'core/paragraph' ) ] } );
 	}
 
 	// Replace any blocks with the selected layout.
 	useTemplateLayout( layout, registeredBlocks ) {
 		const {
-			replacePostTitle,
-			resetBlocks,
+			editPost,
 		} = this.props;
 
-		resetBlocks(
-			layout.blocks
-			.filter( layout => registeredBlocks.includes( layout[0] ) )
-			.map(
-				( [ name, attributes, innerBlocks = [] ] ) => {
-					return getBlocksFromTemplate( name, attributes, innerBlocks );
-				}
-			)
-		);
-
-		replacePostTitle( layout.label );
+		editPost( { 
+			title: layout.label, 
+			blocks: layout.blocks.filter( layout => registeredBlocks.includes( layout[0] ) )
+				.map(
+					( [ name, attributes, innerBlocks = [] ] ) => {
+						return getBlocksFromTemplate( name, attributes, innerBlocks );
+					}
+				) } );
 	}
 
 	addCustomLayoutsToTemplateCategories() {
@@ -338,7 +333,7 @@ registerPlugin( 'coblocks-layout-selector', {
 	render: compose( [
 		withSelect( select => {
 			const { isTemplateSelectorActive } = select( 'coblocks/template-selector' );
-			const { isCleanNewPost, hasEditorUndo, getCurrentPost } = select( 'core/editor' );
+			const { isCleanNewPost, hasEditorUndo, getCurrentPost, getBlocks } = select( 'core/editor' );
 			const { getBlockCount } = select( 'core/block-editor' );
 			const { getLayoutSelector } = select( 'coblocks-settings' );
 
@@ -347,6 +342,7 @@ registerPlugin( 'coblocks-layout-selector', {
 			return {
 				isActive: isCleanNewPost() || isTemplateSelectorActive() || layoutUndo,
 				layoutSelectorEnabled: getLayoutSelector(),
+				currentBlocks: getBlocks(),
 			};
 		} ),
 		withDispatch( dispatch => {
@@ -356,7 +352,7 @@ registerPlugin( 'coblocks-layout-selector', {
 
 			return {
 				closeTemplateSelector,
-				replacePostTitle: ( title ) => { editPost( { title } ); },
+				editPost,
 				resetBlocks,
 			};
 		} ),
