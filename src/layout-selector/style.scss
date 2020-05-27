@@ -158,21 +158,27 @@ $color-highlight: #00a4a6;
 		color: $dark-gray-800 !important;
 		text-decoration: none !important;
 		font-weight: 600;
+		min-width: 32px;
+		height: 32px;
 		display: inline-flex;
 		vertical-align: middle;
 		transition-duration: 0;
 		align-items: center;
 
 		> span {
-			display: inline-block;
 			position: relative;
 			background-color: $dark-gray-800;
 			color: $white;
-			padding: 7px 5px 0;
-			margin-right: 0.65em;
+			min-width: 32px;
+			height: 32px;
+			width: 32px;
+			margin-right: 8px;
 			border-radius: 2px;
 			vertical-align: middle;
 			transition: all 0.1s;
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
 		}
 
 		&:hover,

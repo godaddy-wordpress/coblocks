@@ -3,6 +3,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import map from 'lodash/map';
 
 /**
  * WordPress dependencies
@@ -12,10 +13,9 @@ import { Component, Fragment } from '@wordpress/element';
 import { registerPlugin } from '@wordpress/plugins';
 import { compose } from '@wordpress/compose';
 import { withSelect, withDispatch } from '@wordpress/data';
-import { Button, Modal, Icon, DropdownMenu, MenuGroup, MenuItem } from '@wordpress/components';
+import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem } from '@wordpress/components';
 import { BlockPreview } from '@wordpress/block-editor';
 import { createBlock } from '@wordpress/blocks';
-import map from 'lodash/map';
 
 /**
  * Internal dependencies
@@ -209,7 +209,8 @@ class LayoutSelector extends Component {
 								closeTemplateSelector();
 							} }
 							isLink>
-							<span><Icon icon="plus" size={ 16 } /></span> { __( 'Add blank page', 'coblocks' ) }
+							<span><SVG width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><Path d="M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z" ></Path></SVG></span>
+							{ __( 'Add blank page', 'coblocks' ) }
 						</Button>
 					</aside>
 
