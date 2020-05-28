@@ -98,14 +98,13 @@ class LayoutSelector extends Component {
 			editPost,
 		} = this.props;
 
-		editPost( { 
-			title: layout.label, 
+		editPost( {
+			title: layout.label,
 			blocks: layout.blocks.filter( layout => registeredBlocks.includes( layout[0] ) )
-				.map(
-					( [ name, attributes, innerBlocks = [] ] ) => {
-						return getBlocksFromTemplate( name, attributes, innerBlocks );
-					}
-				) } );
+				.map( ( [ name, attributes, innerBlocks = [] ] ) => {
+					return getBlocksFromTemplate( name, attributes, innerBlocks );
+				} )
+			} );
 	}
 
 	getLayoutsInCategory( category ) {
