@@ -172,6 +172,174 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
 	}
 
+	public function test_block_assets_loaded_with_core_image_block() {
+		global $post, $wp_styles;
+		unset( $GLOBALS['current_screen'] );
+
+		// core/image
+		$post_id = wp_insert_post( [
+			'post_author'  => 1,
+			'post_content' => '<!-- wp:core/image /-->',
+			'post_title'   => 'Core Image Block',
+			'post_status'  => 'publish',
+		] );
+
+		$this->go_to( "/?p={$post_id}" );
+		$post = get_post( $post_id );
+
+		$this->coblocks_block_assets->block_assets();
+		do_action( 'enqueue_block_assets' );
+
+		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
+	}
+
+	public function test_typography_styles_loaded_with_core_button_block() {
+		global $post, $wp_styles;
+		unset( $GLOBALS['current_screen'] );
+
+		// core/button
+		$post_id = wp_insert_post( [
+			'post_author'  => 1,
+			'post_content' => '<!-- wp:core/button /-->',
+			'post_title'   => 'Core Button Block',
+			'post_status'  => 'publish',
+		] );
+
+		$this->go_to( "/?p={$post_id}" );
+		$post = get_post( $post_id );
+
+		$this->coblocks_block_assets->block_assets();
+		do_action( 'enqueue_block_assets' );
+
+		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
+	}
+
+	public function test_typography_styles_loaded_with_core_cover_block() {
+		global $post, $wp_styles;
+		unset( $GLOBALS['current_screen'] );
+
+		// core/cover
+		$post_id = wp_insert_post( [
+			'post_author'  => 1,
+			'post_content' => '<!-- wp:core/cover /-->',
+			'post_title'   => 'Core Cover Block',
+			'post_status'  => 'publish',
+		] );
+
+		$this->go_to( "/?p={$post_id}" );
+		$post = get_post( $post_id );
+
+		$this->coblocks_block_assets->block_assets();
+		do_action( 'enqueue_block_assets' );
+
+		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
+	}
+
+	public function test_typography_styles_loaded_with_core_heading_block() {
+		global $post, $wp_styles;
+		unset( $GLOBALS['current_screen'] );
+
+		// core/heading
+		$post_id = wp_insert_post( [
+			'post_author'  => 1,
+			'post_content' => '<!-- wp:core/heading /-->',
+			'post_title'   => 'Core Heading Block',
+			'post_status'  => 'publish',
+		] );
+
+		$this->go_to( "/?p={$post_id}" );
+		$post = get_post( $post_id );
+
+		$this->coblocks_block_assets->block_assets();
+		do_action( 'enqueue_block_assets' );
+
+		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
+	}
+
+	public function test_typography_styles_loaded_with_core_list_block() {
+		global $post, $wp_styles;
+		unset( $GLOBALS['current_screen'] );
+
+		// core/list
+		$post_id = wp_insert_post( [
+			'post_author'  => 1,
+			'post_content' => '<!-- wp:core/list /-->',
+			'post_title'   => 'Core List Block',
+			'post_status'  => 'publish',
+		] );
+
+		$this->go_to( "/?p={$post_id}" );
+		$post = get_post( $post_id );
+
+		$this->coblocks_block_assets->block_assets();
+		do_action( 'enqueue_block_assets' );
+
+		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
+	}
+
+	public function test_typography_styles_loaded_with_core_paragraph_block() {
+		global $post, $wp_styles;
+		unset( $GLOBALS['current_screen'] );
+
+		// core/paragraph
+		$post_id = wp_insert_post( [
+			'post_author'  => 1,
+			'post_content' => '<!-- wp:core/paragraph /-->',
+			'post_title'   => 'Core Paragraph Block',
+			'post_status'  => 'publish',
+		] );
+
+		$this->go_to( "/?p={$post_id}" );
+		$post = get_post( $post_id );
+
+		$this->coblocks_block_assets->block_assets();
+		do_action( 'enqueue_block_assets' );
+
+		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
+	}
+
+	public function test_typography_styles_loaded_with_core_pullquote_block() {
+		global $post, $wp_styles;
+		unset( $GLOBALS['current_screen'] );
+
+		// core/pullquote
+		$post_id = wp_insert_post( [
+			'post_author'  => 1,
+			'post_content' => '<!-- wp:core/pullquote /-->',
+			'post_title'   => 'Core Pullquote Block',
+			'post_status'  => 'publish',
+		] );
+
+		$this->go_to( "/?p={$post_id}" );
+		$post = get_post( $post_id );
+
+		$this->coblocks_block_assets->block_assets();
+		do_action( 'enqueue_block_assets' );
+
+		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
+	}
+
+	public function test_typography_styles_loaded_with_core_quote_block() {
+		global $post, $wp_styles;
+		unset( $GLOBALS['current_screen'] );
+
+		// core/quote
+		$post_id = wp_insert_post( [
+			'post_author'  => 1,
+			'post_content' => '<!-- wp:core/quote /-->',
+			'post_title'   => 'Core Quote Block',
+			'post_status'  => 'publish',
+		] );
+
+		$this->go_to( "/?p={$post_id}" );
+		$post = get_post( $post_id );
+
+		$this->coblocks_block_assets->block_assets();
+		do_action( 'enqueue_block_assets' );
+
+		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
+	}
+
 	/**
 	 * Test the frontend scripts masonry are enqueued correctly
 	 */

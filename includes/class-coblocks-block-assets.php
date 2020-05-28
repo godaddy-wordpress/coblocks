@@ -84,7 +84,22 @@ class CoBlocks_Block_Assets {
 			// This is similar to has_block() in core, but will match anything
 			// in the coblocks/* namespace.
 			if ( $wp_post instanceof WP_Post ) {
-				$has_coblock = false !== strpos( $wp_post->post_content, '<!-- wp:coblocks/' ) || has_block( 'core/block', $wp_post );
+				$has_coblock = ! empty(
+					array_filter(
+						array(
+							false !== strpos( $wp_post->post_content, '<!-- wp:coblocks/' ),
+							has_block( 'core/block', $wp_post ),
+							has_block( 'core/button', $wp_post ),
+							has_block( 'core/cover', $wp_post ),
+							has_block( 'core/heading', $wp_post ),
+							has_block( 'core/image', $wp_post ),
+							has_block( 'core/list', $wp_post ),
+							has_block( 'core/paragraph', $wp_post ),
+							has_block( 'core/pullquote', $wp_post ),
+							has_block( 'core/quote', $wp_post ),
+						)
+					)
+				);
 			}
 		}
 
