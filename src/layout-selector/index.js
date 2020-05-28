@@ -257,33 +257,37 @@ class LayoutSelector extends Component {
 	}
 }
 
-registerPlugin( 'coblocks-layout-selector', {
-	render: compose( [
-		withSelect( select => {
-			const { isTemplateSelectorActive } = select( 'coblocks/template-selector' );
-			const { isCleanNewPost } = select( 'core/editor' );
-			const { getLayoutSelector } = select( 'coblocks-settings' );
+if( typeof coblocksLayoutSelector !== 'undefined' ) {
 
-			const layouts = coblocksLayoutSelector.layouts || [];
-			const categories = coblocksLayoutSelector.categories || [];
+	registerPlugin( 'coblocks-layout-selector', {
+		render: compose( [
+			withSelect( select => {
+				const { isTemplateSelectorActive } = select( 'coblocks/template-selector' );
+				const { isCleanNewPost } = select( 'core/editor' );
+				const { getLayoutSelector } = select( 'coblocks-settings' );
 
-			return {
-				isActive: isCleanNewPost() || isTemplateSelectorActive(),
-				layoutSelectorEnabled: getLayoutSelector() && !! layouts.length && !! categories.length,
-				layouts,
-				categories,
-			};
-		} ),
-		withDispatch( dispatch => {
-			const { resetBlocks } = dispatch( 'core/block-editor' );
-			const { closeTemplateSelector } = dispatch( 'coblocks/template-selector' );
-			const { editPost } = dispatch( 'core/editor' );
+				const layouts = coblocksLayoutSelector.layouts || [];
+				const categories = coblocksLayoutSelector.categories || [];
 
-			return {
-				closeTemplateSelector,
-				replacePostTitle: ( title ) => { editPost( { title } ); },
-				resetBlocks,
-			};
-		} ),
-	] )( LayoutSelector )
-} );
+				return {
+					isActive: isCleanNewPost() || isTemplateSelectorActive(),
+					layoutSelectorEnabled: getLayoutSelector() && !! layouts.length && !! categories.length,
+					layouts,
+					categories,
+				};
+			} ),
+			withDispatch( dispatch => {
+				const { resetBlocks } = dispatch( 'core/block-editor' );
+				const { closeTemplateSelector } = dispatch( 'coblocks/template-selector' );
+				const { editPost } = dispatch( 'core/editor' );
+
+				return {
+					closeTemplateSelector,
+					replacePostTitle: ( title ) => { editPost( { title } ); },
+					resetBlocks,
+				};
+			} ),
+		] )( LayoutSelector )
+	} );
+
+}
