@@ -86,7 +86,6 @@ class LayoutSelector extends Component {
 
 	useEmptyTemplateLayout() {
 		const {
-			resetBlocks,
 			editPost
 		} = this.props;
 
@@ -276,14 +275,12 @@ if( typeof coblocksLayoutSelector !== 'undefined' ) {
 				};
 			} ),
 			withDispatch( dispatch => {
-				const { resetBlocks } = dispatch( 'core/block-editor' );
 				const { closeTemplateSelector } = dispatch( 'coblocks/template-selector' );
 				const { editPost } = dispatch( 'core/editor' );
 
 				return {
 					closeTemplateSelector,
-					replacePostTitle: ( title ) => { editPost( { title } ); },
-					resetBlocks,
+					editPost,
 				};
 			} ),
 		] )( LayoutSelector )
