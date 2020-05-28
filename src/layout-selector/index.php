@@ -71,7 +71,7 @@ add_action( 'admin_enqueue_scripts', 'coblocks_localize_layout_selector' );
 
 /**
  * Example Layouts.
- * TODO: remove before merging!
+ * ! REMOVE BEFORE MERGING
  *
  * @param array $layouts The layouts being filtered.
  */
