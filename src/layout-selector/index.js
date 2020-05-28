@@ -89,7 +89,7 @@ class LayoutSelector extends Component {
 			editPost
 		} = this.props;
 
-		editPost( { title: '', blocks: [ createBlock( 'core/paragraph' ) ] } );
+		editPost( { title: '', blocks: [] } );
 	}
 
 	// Replace any blocks with the selected layout.
