@@ -256,18 +256,16 @@ if( typeof coblocksLayoutSelector !== 'undefined' ) {
 		render: compose( [
 			withSelect( select => {
 				const { isTemplateSelectorActive } = select( 'coblocks/template-selector' );
-				const { isCleanNewPost, hasEditorUndo, getCurrentPost } = select( 'core/editor' );
-				const { getBlockCount } = select( 'core/block-editor' );
+				const { hasEditorUndo, isCurrentPostPublished } = select( 'core/editor' );
 				const { getLayoutSelector } = select( 'coblocks-settings' );
 
-				const layoutUndo = ( ! getBlockCount() && ! hasEditorUndo() && ! getCurrentPost().title.length );
-
+				const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo();
 
 				const layouts = coblocksLayoutSelector.layouts || [];
 				const categories = coblocksLayoutSelector.categories || [];
 
 				return {
-					isActive: isCleanNewPost() || isTemplateSelectorActive() || layoutUndo,
+					isActive: isCleanUnpublishedPost || isTemplateSelectorActive(),
 					layoutSelectorEnabled: getLayoutSelector() && !! layouts.length && !! categories.length,
 					layouts,
 					categories,
