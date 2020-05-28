@@ -86,32 +86,25 @@ class LayoutSelector extends Component {
 
 	useEmptyTemplateLayout() {
 		const {
-			replacePostTitle,
-			resetBlocks,
+			editPost
 		} = this.props;
 
-		resetBlocks( [ createBlock( 'core/paragraph' ) ] );
-		replacePostTitle( '' );
+		editPost( { title: '', blocks: [] } );
 	}
 
 	// Replace any blocks with the selected layout.
 	useTemplateLayout( layout, registeredBlocks ) {
 		const {
-			replacePostTitle,
-			resetBlocks,
+			editPost,
 		} = this.props;
 
-		resetBlocks(
-			layout.blocks
-			.filter( layout => registeredBlocks.includes( layout[0] ) )
-			.map(
-				( [ name, attributes, innerBlocks = [] ] ) => {
+		editPost( {
+			title: layout.label,
+			blocks: layout.blocks.filter( layout => registeredBlocks.includes( layout[0] ) )
+				.map( ( [ name, attributes, innerBlocks = [] ] ) => {
 					return getBlocksFromTemplate( name, attributes, innerBlocks );
-				}
-			)
-		);
-
-		replacePostTitle( layout.label );
+				} )
+			} );
 	}
 
 	getLayoutsInCategory( category ) {
@@ -259,36 +252,34 @@ class LayoutSelector extends Component {
 }
 
 if( typeof coblocksLayoutSelector !== 'undefined' ) {
-
 	registerPlugin( 'coblocks-layout-selector', {
 		render: compose( [
 			withSelect( select => {
 				const { isTemplateSelectorActive } = select( 'coblocks/template-selector' );
-				const { isCleanNewPost } = select( 'core/editor' );
+				const { hasEditorUndo, isCurrentPostPublished } = select( 'core/editor' );
 				const { getLayoutSelector } = select( 'coblocks-settings' );
+
+				const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo();
 
 				const layouts = coblocksLayoutSelector.layouts || [];
 				const categories = coblocksLayoutSelector.categories || [];
 
 				return {
-					isActive: isCleanNewPost() || isTemplateSelectorActive(),
+					isActive: isCleanUnpublishedPost || isTemplateSelectorActive(),
 					layoutSelectorEnabled: getLayoutSelector() && !! layouts.length && !! categories.length,
 					layouts,
 					categories,
 				};
 			} ),
 			withDispatch( dispatch => {
-				const { resetBlocks } = dispatch( 'core/block-editor' );
 				const { closeTemplateSelector } = dispatch( 'coblocks/template-selector' );
 				const { editPost } = dispatch( 'core/editor' );
 
 				return {
 					closeTemplateSelector,
-					replacePostTitle: ( title ) => { editPost( { title } ); },
-					resetBlocks,
+					editPost,
 				};
 			} ),
 		] )( LayoutSelector )
 	} );
-
 }
