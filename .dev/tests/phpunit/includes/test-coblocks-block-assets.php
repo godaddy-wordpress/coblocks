@@ -172,6 +172,20 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
 	}
 
+	public function test_block_assets_loaded_on_archive_pages() {
+		global $wp_styles;
+		unset( $GLOBALS['current_screen'] );
+
+		$this->go_to( "/?cat=1" );
+
+		$this->assertTrue( is_archive() );
+
+		$this->coblocks_block_assets->block_assets();
+		do_action( 'enqueue_block_assets' );
+
+		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
+	}
+
 	public function test_block_assets_loaded_with_core_image_block() {
 		global $post, $wp_styles;
 		unset( $GLOBALS['current_screen'] );
