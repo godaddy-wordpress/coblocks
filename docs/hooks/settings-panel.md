@@ -19,23 +19,6 @@ addFilter(
 );
 ```
 
-## Hide layout selector and related controls
-
-The following `JavaScript` filter will globally disable the CoBlocks layout selector
-and will prevent the controls from showing within the editor settings panel. 
-
-```javascript
-import { addFilter } from '@wordpress/hooks';
-
-addFilter(
-	'coblocks-show-layout-selector',
-	'coblocks-show-layout-selector',
-	function() {
-		return false;
-	},
-);
-```
-
 ## Disable the modal entirely
 
 The following `PHP` filter can be used to prevent the editor settings panel from appearing within the editor.
