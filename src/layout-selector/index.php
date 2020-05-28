@@ -169,4 +169,4 @@ function coblocks_layout_selector_examples( $layouts ) {
 
 	return $layouts;
 }
-add_filter( 'coblocks_layout_selector_layouts', 'coblocks_layout_selector_examples' );
+// add_filter( 'coblocks_layout_selector_layouts', 'coblocks_layout_selector_examples' );
