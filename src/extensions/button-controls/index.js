@@ -124,8 +124,8 @@ const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 	return enhance( ( { select, ...props } ) => {
 		let wrapperProps 	= props.wrapperProps;
 		let customData 	 	= {};
-		const attributes 	= select( 'core/block-editor' ).getBlock( props.clientId ).attributes;
-		const blockName		= select( 'core/block-editor' ).getBlockName( props.clientId );
+		const attributes 	= select( 'core/block-editor' ).getBlock( props.rootClientId || props.clientId ).attributes;
+		const blockName		= select( 'core/block-editor' ).getBlockName( props.rootClientId || props.clientId );
 
 		const hasFullwidth = allowedBlocks.includes( blockName );
 
