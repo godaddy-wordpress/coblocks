@@ -9,7 +9,7 @@ import map from 'lodash/map';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
+import { Component, Fragment, useState } from '@wordpress/element';
 import { registerPlugin } from '@wordpress/plugins';
 import { compose } from '@wordpress/compose';
 import { withSelect, withDispatch } from '@wordpress/data';
@@ -31,6 +31,8 @@ const getBlocksFromTemplate = ( name, attributes, innerBlocks = [] ) => {
 };
 
 const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
+	const [ overlay, setOverlay ] = useState( false );
+
 	return (
 		<a href="#!"
 			key={ layout }
@@ -38,7 +40,16 @@ const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
 			onClick={ ( event ) => {
 				event.preventDefault();
 				onClick();
-			} }>
+			} }
+			onMouseEnter={ () => setOverlay( true ) }
+			onMouseLeave={ () => setOverlay( false ) }>
+
+			<div className={ classnames( 'coblocks-layout-selector__layout--overlay', { 'is-active': overlay } ) }>
+				<Button isLarge isPressed>
+					{ __( 'Select Layout', 'coblocks' ) }
+				</Button>
+			</div>
+
 			<BlockPreview
 				autoHeight
 				blocks={
