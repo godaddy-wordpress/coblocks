@@ -169,7 +169,7 @@ jobs:
       - run:
           name: "Pre-Check"
           command: |
-            if [ -z $FILES ] || [ "$CIRCLE_BRANCH" != "master" ] || [ "$CIRCLE_BRANCH" != "optimize-circleci-builds" ]; then
+            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "optimize-circleci-builds" ]; then
               echo "Changes do not require linting."
               circleci-agent step halt
             fi
@@ -200,7 +200,7 @@ jobs:
       - run:
           name: "Pre-Check"
           command: |
-            if [ -z $FILES ] || [ "$CIRCLE_BRANCH" != "master" ] || [ "$CIRCLE_BRANCH" != "optimize-circleci-builds" ]; then
+            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "optimize-circleci-builds" ]; then
               echo "Changes do not require linting."
               circleci-agent step halt
             fi
@@ -233,7 +233,7 @@ jobs:
       - run:
           name: "Pre-Check"
           command: |
-            if [ -z $FILES ] || [ "$CIRCLE_BRANCH" != "master" ] || [ "$CIRCLE_BRANCH" != "optimize-circleci-builds" ]; then
+            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "optimize-circleci-builds" ]; then
               echo "Changes do not require linting."
               circleci-agent step halt
             fi
