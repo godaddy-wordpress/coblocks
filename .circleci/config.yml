@@ -2,6 +2,12 @@ workflows:
   version: 2.1
   main:
     jobs:
+      - build:
+        filters:
+          tags:
+            only: /^(?!canary).*$/
+
+      # CODE LINTING
       - lint_php:
           requires:
             - build
@@ -11,12 +17,9 @@ workflows:
       - lint_css:
           requires:
             - build
-      - build:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
-      # Support PHP Versions
-      # http://php.net/supported-versions.php
+
+      # UNIT TESTING
+      # Support PHP Versions: http://php.net/supported-versions.php
       - unit_testing_php_56:
           filters:
             tags:
@@ -38,13 +41,27 @@ workflows:
           requires:
             - build
             - lint_js
-      - end_to_end_testing:
+
+      # END TO END TESTING
+      - e2e_chrome:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
             - build
-            - lint_js
+            - unit_testing_php_56
+            - unit_testing_php_73
+            - unit_testing_js
+      - e2e_firefox:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - build
+            - unit_testing_php_56
+            - unit_testing_php_73
+            - unit_testing_js
+
       # - canary-release:
       #     filters:
       #       branches:
@@ -55,10 +72,12 @@ workflows:
       #         only: master
       # - deploy:
       #     requires:
-      #       - php56
-      #       - php73
-      #       - jest
-      #       - e2e
+      #       - build
+      #       - unit_testing_php_56
+      #       - unit_testing_php_73
+      #       - unit_testing_js
+      #       - e2e_firefox
+      #       - e2e_chrome
       #     filters:
       #       tags:
       #         only: /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*)?(\+[0-9-]+(\.[0-9]+)*)?/ # Run on semantic version tags only
@@ -86,6 +105,59 @@ commands:
       - run: FILES=$(git diff HEAD..$BASE_BRANCH --name-only --diff-filter=M '*<< parameters.ext >>')
 
 jobs:
+
+  # 1. Download and cache node and composer dependencies.
+  # 2. Build deployable plugin folder.
+  # 3. Persist deployable plugin folder to workspace for other jobs.
+  build:
+    docker:
+      - image: circleci/php:7.3-node
+    steps:
+      - checkout
+      - run:
+          name: Disable xdebug PHP extension
+          command: |
+            sudo rm -f /etc/php/*/mods-available/xdebug.ini
+            sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
+            sudo rm -f /etc/php/*/conf.d/*xdebug.ini
+            sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
+      - restore_cache:
+          keys:
+            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-{{ .Branch }}
+      - run:
+          name: Install Node dependencies
+          command: |
+            PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+            yarn install --frozen-lockfile
+      - save_cache:
+          key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/project/node_modules
+            - ~/.cache/yarn
+      - restore_cache:
+          keys:
+            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Branch }}
+      - run:
+          name: Install Composer dependencies
+          command: |
+            composer install
+      - save_cache:
+          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+          paths:
+            - ~/project/vendor
+      - run:
+          name: Build the plugin
+          command: |
+            npx wp-scripts build --config .dev/config/webpack.ci.config.js
+            npx grunt clean:build copy:build
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - build/coblocks
+            - dist
+
   # Run phpcs on changed php files only.
   lint_php:
     docker:
@@ -183,58 +255,6 @@ jobs:
           name: "Linting CSS"
           command: npm run lint:css $FILES
 
-  # 1. Download and cache node and composer dependencies.
-  # 2. Build deployable plugin folder.
-  # 3. Persist deployable plugin folder to workspace for other jobs.
-  build:
-    docker:
-      - image: circleci/php:7.3-node
-    steps:
-      - checkout
-      - run:
-          name: Disable xdebug PHP extension
-          command: |
-            sudo rm -f /etc/php/*/mods-available/xdebug.ini
-            sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
-            sudo rm -f /etc/php/*/conf.d/*xdebug.ini
-            sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
-      - restore_cache:
-          keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
-      - run:
-          name: Install Node dependencies
-          command: |
-            PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-            yarn install --frozen-lockfile
-      - save_cache:
-          key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/project/node_modules
-            - ~/.cache/yarn
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-      - run:
-          name: Install Composer dependencies
-          command: |
-            composer install
-      - save_cache:
-          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-          paths:
-            - ~/project/vendor
-      - run:
-          name: Build the plugin
-          command: |
-            npx wp-scripts build --config .dev/config/webpack.ci.config.js
-            npx grunt clean:build copy:build
-      - persist_to_workspace:
-          root: ~/project
-          paths:
-            - build/coblocks
-            - dist
-
   unit_testing_php_56:
     docker:
       - image: circleci/php:5.6
@@ -273,8 +293,12 @@ jobs:
             done
             echo Failed waiting for MySQL && exit 1
       - run:
+          name: "Validate Composer configuration"
+          command: composer validate --strict
+      - run:
           name: "Install Dependencies"
           command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
@@ -329,8 +353,12 @@ jobs:
             done
             echo Failed waiting for MySQL && exit 1
       - run:
+          name: "Validate Composer configuration"
+          command: composer validate --strict
+      - run:
           name: "Install Dependencies"
           command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
@@ -391,7 +419,7 @@ jobs:
       - store_test_results:
           path: /tmp/artifacts/code-coverage/
 
-  end_to_end_testing:
+  e2e_chrome:
     docker:
       - image: circleci/php:latest-node-browsers-legacy
       - image: circleci/mysql:5.7
@@ -400,6 +428,11 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/project
+      - run:
+          name: "Setup Environment Variables"
+          command: |
+            echo "export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH" >> $BASH_ENV
+            source /home/circleci/.bashrc
       - run:
           name: Setup spec files to run based on git diff-tree
           command: |
@@ -436,6 +469,7 @@ jobs:
       - run:
           name: Install Composer dependencies
           command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             composer install
       - save_cache:
           key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
@@ -467,19 +501,130 @@ jobs:
             ./vendor/bin/wp post generate --count=5 --path=/tmp/wordpress
             ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
       - run:
+          name: "Install Mailhog"
+          command: bash .dev/bin/install-mailhog.sh
+      - run:
+          name: "Start Mailhog"
+          command: "MailHog"
+          background: true
+      - run:
           name: "Start WPCLI Server"
           command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root  --path=/tmp/wordpress
           background: true
       - run:
-          name: "Run end to end tests (Cypress.io)"
+          name: "Run end to end tests (Cypress.io) - Chrome"
           command: |
             touch cypress.env.json
             echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
 
             if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
-              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel
+              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel --group e2e-chrome
             else
-              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel --spec "$(cat /tmp/specstring)"
+              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel --group e2e-chrome --spec "$(cat /tmp/specstring)"
+            fi
+
+  e2e_firefox:
+    docker:
+      - image: circleci/php:latest-node-browsers-legacy
+      - image: circleci/mysql:5.7
+    parallelism: 4
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: "Setup Environment Variables"
+          command: |
+            echo "export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH" >> $BASH_ENV
+            source /home/circleci/.bashrc
+      - run:
+          name: Setup spec files to run based on git diff-tree
+          command: |
+            bash .dev/bin/setup-test-specs.sh
+            if [ ! -s /tmp/specstring ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ]; then
+              echo "Changes do not require testing."
+              circleci-agent step halt
+            fi
+      - run:
+          name: Disable xdebug PHP extension
+          command: |
+            sudo rm -f /etc/php/*/mods-available/xdebug.ini
+            sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
+            sudo rm -f /etc/php/*/conf.d/*xdebug.ini
+            sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
+      - restore_cache:
+          keys:
+            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-{{ .Branch }}
+      - run:
+          name: Install Node dependencies
+          command: |
+            PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+            yarn install --frozen-lockfile
+      - save_cache:
+          key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/project/node_modules
+            - ~/.cache/yarn
+      - restore_cache:
+          keys:
+            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Branch }}
+      - run:
+          name: Install Composer dependencies
+          command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
+            composer install
+      - save_cache:
+          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+          paths:
+            - ~/project/vendor
+      - run:
+          name: Install dependencies
+          command: |
+            bash .dev/bin/install-dependencies.sh
+            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
+      - run:
+          name: Waiting for MySQL to be ready
+          command: |
+            for i in `seq 1 10`;
+            do
+              nc -z 127.0.0.1 3306 && echo Success && exit 0
+              echo -n .
+              sleep 1
+            done
+            echo Failed waiting for MySQL && exit 1
+      - run:
+          name: Update hosts
+          command: echo 127.0.0.1 coblocks.test | sudo tee -a /etc/hosts
+      - run:
+          name: "Install WordPress"
+          command: |
+            ./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass='' --path=/tmp/wordpress
+            ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=/tmp/wordpress
+            ./vendor/bin/wp post generate --count=5 --path=/tmp/wordpress
+            ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
+      - run:
+          name: "Install Mailhog"
+          command: bash .dev/bin/install-mailhog.sh
+      - run:
+          name: "Start Mailhog"
+          command: "MailHog"
+          background: true
+      - run:
+          name: "Start WPCLI Server"
+          command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root  --path=/tmp/wordpress
+          background: true
+      - run:
+          name: "Run end to end tests (Cypress.io) - Chrome"
+          command: |
+            touch cypress.env.json
+            echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
+
+            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
+              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser firefox --record --parallel --group e2e-firefox
+            else
+              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser firefox --record --parallel --group e2e-firefox --spec "$(cat /tmp/specstring)"
             fi
 
   i18n:
@@ -517,6 +662,7 @@ jobs:
       - run:
           name: Install Composer dependencies
           command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             composer install
       - save_cache:
           key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
@@ -533,9 +679,14 @@ jobs:
             if [[ $GIT_COMMIT_DESC != *"skip i18n"* ]]; then
               git config --global user.email "plugins@godaddy.com"
               git config --global user.name "GoDaddy Translator Bot"
+              git checkout HEAD -- composer.lock
+              git checkout HEAD -- package-lock.json
               git add languages/coblocks.json
               git add languages/coblocks.pot
+              git status
               git commit -m "Update coblocks.pot/coblocks.json files [skip i18n]"
+              git reset --hard
+              git pull --rebase
               git push origin master --quiet
             fi
 
@@ -543,13 +694,7 @@ jobs:
     docker:
       - image: circleci/golang:latest-node-browsers-legacy
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "0e:f8:0a:19:88:42:c3:5a:b9:82:17:34:6b:40:68:21"
       - checkout
-      - run:
-          name: Add CoBlocks i18n staging site to known_hosts
-          command: ssh-keyscan -H a90.8f7.myftpupload.com >> ~/.ssh/known_hosts
       - run:
           name: Install PHP
           command: sudo apt-get install php libapache2-mod-php php-mbstring php-xml php-curl
@@ -590,6 +735,7 @@ jobs:
       - run:
           name: Install Composer dependencies
           command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             composer install
       - save_cache:
           key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
@@ -616,13 +762,15 @@ jobs:
             cd build && zip -r coblocks-canary.zip coblocks
             mv coblocks-canary.zip /tmp/artifacts/coblocks-canary.zip
       - run:
-          name: Deploy plugin to the CoBlocks i18n staging site
-          command: |
-            scp -r /tmp/artifacts/coblocks-canary.zip ${STAGING_SITE_SSH_CREDS}:html/wp-content/
-            ssh ${STAGING_SITE_SSH_CREDS} 'cd html/wp-content && wp plugin install coblocks-canary.zip --force --activate --skip-themes --skip-plugins && rm -rf coblocks-canary.zip languages/plugins/coblocks-*'
-      - deploy:
           name: Create a canary release on GitHub
           command: ghr -t ${GH_ACCESS_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "Latest build of the master branch. This bleeding edge version is for testing purposes only and should not be used in production." -delete -prerelease -replace canary /tmp/artifacts/coblocks-canary.zip
+      - deploy:
+          name: Deploy CoBlocks canary to the WPNUX site
+          command: |
+            curl https://wpnux.godaddy.com/v2/webhook-install-canary.php \
+            -H 'Content-Type: application/json' \
+            -H "X-Authorization: Bearer ${WPNUX_SITE_X_AUTHORIZATION}" \
+            -d '[ "coblocks" ]'
 
   deploy:
     docker:
@@ -673,6 +821,7 @@ jobs:
       - run:
           name: Install composer dependencies
           command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             composer install
       - save_cache:
           key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}

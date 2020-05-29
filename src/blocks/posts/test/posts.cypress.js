@@ -75,9 +75,6 @@ describe( 'Test CoBlocks Posts Block', function() {
 
 		helpers.checkForBlockErrors( 'coblocks/posts' );
 
-		cy.get( '.wp-block-coblocks-posts' )
-			.should( 'have.class', 'my-custom-class' );
-
 		helpers.viewPage();
 
 		cy.get( '.wp-block-coblocks-posts' )

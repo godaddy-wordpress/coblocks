@@ -90,6 +90,8 @@ function coblocks_posts( $posts, $attributes ) {
 	$class       = array( 'wp-block-coblocks-posts__inner' );
 	$block_style = strpos( $attributes['className'], 'is-style-stacked' ) !== false ? 'stacked' : 'horizontal';
 
+	array_push( $class_name, 'wp-block-coblocks-posts' );
+
 	if ( isset( $attributes['className'] ) ) {
 		array_push( $class_name, $attributes['className'] );
 	}

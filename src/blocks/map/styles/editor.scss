@@ -13,10 +13,10 @@
 				position: relative;
 				top: 1px;
 			}
-		}
 
-		.components-base-control__field {
-			margin-bottom: 12px;
+			form {
+				margin-bottom: 12px;
+			}
 		}
 
 		.components-placeholder__label {
@@ -48,8 +48,6 @@
 
 	.components-placeholder__cancel-button.is-link {
 		display: block;
-		margin-left: 33%;
-		margin-right: 33%;
 	}
 }
 

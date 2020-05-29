@@ -50,7 +50,7 @@ describe( name, () => {
 		expect( serializedBlock ).toContain( 'Food item description' );
 		expect( serializedBlock ).toContain( '<span itemprop="price">$1.00</span>' );
 		expect( serializedBlock ).toContain( '<img src="https://www.google.com" alt="Alt Tag" itemprop="image" style="object-position:0% 10000%"/>' );
-		expect( serializedBlock ).toContain( 'wp-block-coblocks-food-item__attribute--glutenFree' );
+		expect( serializedBlock ).toContain( 'wp-block-coblocks-food-item__attribute--gluten-free' );
 		expect( serializedBlock ).toContain( 'wp-block-coblocks-food-item__attribute--pescatarian' );
 		expect( serializedBlock ).toContain( 'wp-block-coblocks-food-item__attribute--popular' );
 		expect( serializedBlock ).toContain( 'wp-block-coblocks-food-item__attribute--spicy' );

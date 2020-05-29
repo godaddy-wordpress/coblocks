@@ -9,6 +9,7 @@ const variations = {
 	className: [ undefined, '', 'random classes' ],
 	width: [ undefined, '', '50', '25' ],
 	contentAlign: [ undefined, 'left', 'center', 'right' ],
+	verticalAlignment: [ undefined, 'top', 'center', 'bottom' ],
 	coblocks: [ undefined, {}, { id: undefined }, { id: 'testing' } ],
 	fontSize: [ undefined, 'small', 'large' ],
 	customFontSize: [ undefined, 0, 16, 100 ],

@@ -9,6 +9,15 @@
 		height: 100%;
 	}
 
+	// Set the carousel to 100% height in the editor
+	.wp-block-coblocks-gallery-carousel {
+
+		&,
+		.coblocks-gallery {
+			height: 100%;
+		}
+	}
+
 	// Fixes issue with multiple dropzones displaying when dropping in an image.
 	.components-drop-zone.is-active {
 

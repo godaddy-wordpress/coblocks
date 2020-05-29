@@ -6,7 +6,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 1.23.0
+Stable tag: 1.26.3
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -111,7 +111,7 @@ Extensible, adaptable, and open source — CoBlocks is created with theme and pl
 Yes! CoBlocks is 100% free and always will be.
 
 = How do I start using Gutenberg? =
-To get the full experience of the next-generation WordPress block editor, it helps to have a properly Gutenberg-optizied WordPress theme, like [this one](https://wordpress.org/themes/go/). Then install either WordPress 5.0+, or the offical Gutenberg [WordPress plugin](https://wordpress.org/plugins/gutenberg/).
+To get the full experience of the next-generation WordPress block editor, it helps to have a properly Gutenberg-optizied WordPress theme, like [this one](https://wordpress.org/themes/go/) and install WordPress 5.0 or higher.
 
 = How do I use my first CoBlocks Gutenberg blocks? =
 CoBlocks adds its Gutenberg blocks to the new WordPress editor, so you can use them exactly how you would any other WordPress blocks. Once the plugin is installed, create or edit a WordPress page or post, add a new block using the plus icon, and you'll find all of CoBlocks' WordPress blocks available.
@@ -123,29 +123,9 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-### Enhancements
-* Add 'Replace Image' button to core/image InspectorControls [#1385](https://github.com/godaddy-wordpress/coblocks/pull/1385)
-* Add Form block Text field [#1417](https://github.com/godaddy-wordpress/coblocks/pull/1417)
-* Introduce RTL support [#1420](https://github.com/godaddy-wordpress/coblocks/pull/1420)
-* Introduce a filter to disable the CoBlocks bundled SVG icons within the Icon Block [#1403](https://github.com/godaddy-wordpress/coblocks/pull/1403)
-* Remove jQuery from Form, Gif, Crop Settings [#1376](https://github.com/godaddy-wordpress/coblocks/pull/1376)
-* Show gallery image captions in lightbox [#1409](https://github.com/godaddy-wordpress/coblocks/pull/1409)
-
 ### Bug Fixes
-* Clicking captions opens the lightbox [#1407](https://github.com/godaddy-wordpress/coblocks/pull/1407)
-* Fix Form block for Gutenberg 7.7 [#1419](https://github.com/godaddy-wordpress/coblocks/pull/1419)
-* Fix Map block error in editor + refactor wp.api global [#1411](https://github.com/godaddy-wordpress/coblocks/pull/1411)
-* Fix Posts and Post Carousel block categories control [#1406](https://github.com/godaddy-wordpress/coblocks/pull/1406)
-* Fix image and price toggle behavior on the Food and Drinks block [#1402](https://github.com/godaddy-wordpress/coblocks/pull/1402)
-* Fix selected font family option in the typography controls [#1404](https://github.com/godaddy-wordpress/coblocks/pull/1404)
+* Apply styles for formats [#1494](https://github.com/godaddy-wordpress/coblocks/pull/1494)
 
 ### Misc
-* Add CoBlocks icon to docs [#1412](https://github.com/godaddy-wordpress/coblocks/pull/1412)
-* Add docs for CoBlocks features [#1418](https://github.com/godaddy-wordpress/coblocks/pull/1418)
-* E2E Gauntlet Testing Script [#1415](https://github.com/godaddy-wordpress/coblocks/pull/1415)
-* Introduce E2E tests for CoBlocks Settings panel [#1395](https://github.com/godaddy-wordpress/coblocks/pull/1395)
-* Minor style specificity clean-up [#1424](https://github.com/godaddy-wordpress/coblocks/pull/1424)
-* Refactor form radio and checkbox labels [#1416](https://github.com/godaddy-wordpress/coblocks/pull/1416)
-* Tweak UI to support sentence case [#1414](https://github.com/godaddy-wordpress/coblocks/pull/1414)
-* Update Tested up to value to WordPress 5.4 [#1422](https://github.com/godaddy-wordpress/coblocks/pull/1422)
-* Update npm and composer development dependencies [#1413](https://github.com/godaddy-wordpress/coblocks/pull/1413)
+* Update contributors list [#1498](https://github.com/godaddy-wordpress/coblocks/pull/1498)
+* Update typography hooks docs [#1502](https://github.com/godaddy-wordpress/coblocks/pull/1502)

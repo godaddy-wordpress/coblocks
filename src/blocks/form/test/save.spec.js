@@ -35,26 +35,7 @@ describe( 'coblocks/form', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'Form subject' );
-		expect( serializedBlock ).toContain( 'Form submit button text' );
 		expect( serializedBlock ).toContain( 'Form to text' );
-		expect( serializedBlock ).toMatchSnapshot();
-	} );
-
-	it( 'should render with customBackgroundButtonColor', () => {
-		block.attributes.customBackgroundButtonColor = '#da5d5d';
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '{"customBackgroundButtonColor":"#da5d5d"}' );
-		expect( serializedBlock ).toMatchSnapshot();
-	} );
-
-	it( 'should render with customTextButtonColor', () => {
-		block.attributes.customTextButtonColor = '#da5d5d';
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '{"customTextButtonColor":"#da5d5d"}' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 } );

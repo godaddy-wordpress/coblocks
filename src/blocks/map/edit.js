@@ -26,7 +26,6 @@ import { compose } from '@wordpress/compose';
 import {
 	Placeholder,
 	Button,
-	TextControl,
 	ResizableBox,
 	withNotices,
 } from '@wordpress/components';
@@ -71,7 +70,10 @@ class Edit extends Component {
 			this.state.address &&
 			Object.keys( this.state.address ).length
 		) {
-			this.props.setAttributes( { address: this.state.address, pinned: true } );
+			this.props.setAttributes( {
+				address: this.state.address,
+				pinned: true,
+			} );
 		}
 	}
 
@@ -112,11 +114,7 @@ class Edit extends Component {
 	}
 
 	render() {
-		const {
-			attributes,
-			setAttributes,
-			isSelected,
-		} = this.props;
+		const { attributes, setAttributes, isSelected, className } = this.props;
 
 		const {
 			address,
@@ -133,7 +131,11 @@ class Edit extends Component {
 
 		const locale = document.documentElement.lang;
 
-		const renderMap = () => {
+		const renderMap = ( event ) => {
+			if ( event ) {
+				event.preventDefault();
+			}
+
 			setAttributes( { address: this.state.address, pinned: true } );
 		};
 
@@ -146,19 +148,26 @@ class Edit extends Component {
 		};
 
 		const marker = {
-			url: '/wp-content/plugins/coblocks/dist/images/markers/' + skin + '.svg',
+			url:
+				'/wp-content/plugins/coblocks/dist/images/markers/' +
+				skin +
+				'.svg',
 			scaledSize: { width: iconSize, height: iconSize },
 		};
 
 		const GoogleMapIframeRender = (
 			<Fragment>
-				<div style={ { width: '100%', height, position: 'absolute' } } />
+				<div
+					style={ { width: '100%', height, position: 'absolute' } }
+				/>
 				<div className="iframe__overflow-wrapper">
 					<iframe
 						title={ __( 'Google Map', 'coblocks' ) }
 						frameBorder="0"
 						style={ { width: '100%', minHeight: height + 'px' } }
-						src={ `https://www.google.com/maps?q=${ encodeURIComponent( address ) }&output=embed&hl=${ locale }&z=${ zoom }` }
+						src={ `https://www.google.com/maps?q=${ encodeURIComponent(
+							address
+						) }&output=embed&hl=${ locale }&z=${ zoom }` }
 					/>
 				</div>
 			</Fragment>
@@ -173,14 +182,18 @@ class Edit extends Component {
 						updateApiKeyCallBack={ this.updateApiKey }
 					/>
 				) }
-				{ isSelected && <Controls { ...this.props } apiKey={ this.state.apiKey } /> }
+				{ isSelected && (
+					<Controls { ...this.props } apiKey={ this.state.apiKey } />
+				) }
 				{ pinned ? (
 					<ResizableBox
 						size={ {
 							height,
 							width: '100%',
 						} }
-						className={ classnames( { 'is-selected': isSelected } ) }
+						className={ classnames( className, {
+							'is-selected': isSelected,
+						} ) }
 						minHeight="200"
 						enable={ {
 							bottom: true,
@@ -198,114 +211,159 @@ class Edit extends Component {
 							} );
 						} }
 					>
-						{ !! this.state.apiKey ?
-							compose(
-								withProps( {
-									googleMapURL:
-												`https://maps.googleapis.com/maps/api/js?key=${ this.state.apiKey }` +
-												`&language=${ locale }` +
-												'&v=3.exp&libraries=geometry,drawing,places',
-									loadingElement: <div style={ { height: '100%' } } />,
-									containerElement: <div style={ { height: '100%' } } />,
-									mapElement: <div style={ { height: '100%' } } />,
-									coords: null,
-									props: this.props,
-								} ),
-								withScriptjs,
-								withGoogleMap,
-								lifecycle( {
-									componentDidMount() {
-										const geocoder = new window.google.maps.Geocoder();
-										geocoder.geocode(
-											{ address },
-											function( results, status ) {
-												if ( status !== 'OK' ) {
-													this.props.props.setAttributes( {
-														pinned: false,
-														hasError: __( 'Invalid API key, or too many requests', 'coblocks' ),
+						{ !! this.state.apiKey
+							? compose(
+									withProps( {
+										googleMapURL:
+											`https://maps.googleapis.com/maps/api/js?key=${ this.state.apiKey }` +
+											`&language=${ locale }` +
+											'&v=3.exp&libraries=geometry,drawing,places',
+										loadingElement: (
+											<div style={ { height: '100%' } } />
+										),
+										containerElement: (
+											<div style={ { height: '100%' } } />
+										),
+										mapElement: (
+											<div style={ { height: '100%' } } />
+										),
+										coords: null,
+										props: this.props,
+									} ),
+									withScriptjs,
+									withGoogleMap,
+									lifecycle( {
+										componentDidMount() {
+											const geocoder = new window.google.maps.Geocoder();
+											geocoder.geocode(
+												{ address },
+												function( results, status ) {
+													if ( status !== 'OK' ) {
+														this.props.props.setAttributes(
+															{
+																pinned: false,
+																hasError: __(
+																	'Invalid API key, or too many requests',
+																	'coblocks'
+																),
+															}
+														);
+														return;
+													}
+
+													this.setState( {
+														coords: results[ 0 ].geometry.location.toJSON(),
 													} );
-													return;
+
+													this.props.props.setAttributes(
+														{
+															lat: results[ 0 ].geometry.location
+																.toJSON()
+																.lat.toString(),
+															lng: results[ 0 ].geometry.location
+																.toJSON()
+																.lng.toString(),
+															hasError: '',
+														}
+													);
+												}.bind( this )
+											);
+										},
+									} )
+							  )( ( props ) => [
+									props.coords ? (
+										<GoogleMap
+											isMarkerShown={ true }
+											defaultZoom={
+												props.props.attributes.zoom
+											}
+											defaultCenter={
+												new window.google.maps.LatLng(
+													props.coords
+												)
+											}
+											defaultOptions={ {
+												styles: GMapStyles[ skin ],
+												draggable: false,
+												mapTypeControl,
+												zoomControl,
+												streetViewControl,
+												fullscreenControl,
+											} }
+										>
+											<Marker
+												position={
+													new window.google.maps.LatLng(
+														props.coords
+													)
 												}
-
-												this.setState( {
-													coords: results[ 0 ].geometry.location.toJSON(),
-												} );
-
-												this.props.props.setAttributes( {
-													lat: results[ 0 ].geometry.location.toJSON().lat.toString(),
-													lng: results[ 0 ].geometry.location.toJSON().lng.toString(),
-													hasError: '',
-												} );
-											}.bind( this )
-										);
-									},
-								} )
-							)( ( props ) => [
-								props.coords ? (
-									<GoogleMap
-										isMarkerShown={ true }
-										defaultZoom={ props.props.attributes.zoom }
-										defaultCenter={ new window.google.maps.LatLng( props.coords ) }
-										defaultOptions={ {
-											styles: GMapStyles[ skin ],
-											draggable: false,
-											mapTypeControl,
-											zoomControl,
-											streetViewControl,
-											fullscreenControl,
-										} }
-									>
-										<Marker
-											position={ new window.google.maps.LatLng( props.coords ) }
-											icon={ marker }
-										/>
-									</GoogleMap>
-								) : null,
-							] ) :
-							( GoogleMapIframeRender ) }
+												icon={ marker }
+											/>
+										</GoogleMap>
+									) : null,
+							  ] )
+							: GoogleMapIframeRender }
 					</ResizableBox>
 				) : (
 					<Placeholder
 						icon={ <BlockIcon icon={ icon } /> }
 						label={ __( 'Google map', 'coblocks' ) }
-						instructions={ __( 'Enter a location or address to drop a pin on a Google map.', 'coblocks' ) }
-					>
-						<TextControl
-							className="components-placeholder__input"
-							value={ this.state.address }
-							placeholder={ __( 'Search for a place or address…', 'coblocks' ) }
-							onChange={ ( nextAddress ) => this.setState( { address: nextAddress } ) }
-							onKeyDown={ ( { keyCode } ) => handleKeyDown( keyCode ) }
-						/>
-						<Button
-							isLarge
-							isSecondary
-							type="button"
-							onClick={ renderMap }
-							disabled={ ! this.state.address }
-						>
-							{ __( 'Apply', 'coblocks' ) }
-						</Button>
-
-						{ address && (
-							<Button
-								className="components-placeholder__cancel-button"
-								title={ __( 'Cancel', 'coblocks' ) }
-								isLink
-								onClick={ () => {
-									setAttributes( { pinned: ! pinned } );
-									this.setState( { address: this.props.attributes.address } );
-								} }
-								disabled={ ! address }
-							>
-								{ __( 'Cancel', 'coblocks' ) }
-							</Button>
+						instructions={ __(
+							'Enter a location or address to drop a pin on a Google map.',
+							'coblocks'
 						) }
+					>
+						<form onSubmit={ renderMap }>
+							<input
+								type="text"
+								value={ this.state.address || '' }
+								className="components-placeholder__input"
+								placeholder={ __(
+									'Search for a place or address…',
+									'coblocks'
+								) }
+								onChange={ ( nextAddress ) =>
+									this.setState( {
+										address: nextAddress.target.value,
+									} )
+								}
+								onKeyDown={ ( { keyCode } ) =>
+									handleKeyDown( keyCode )
+								}
+							/>
+							<Button
+								isLarge
+								isSecondary
+								type="submit"
+								disabled={ ! this.state.address }
+							>
+								{ __( 'Apply', 'coblocks' ) }
+							</Button>
+						</form>
 						{ attributes.lng && attributes.hasError && (
 							<span className="invalid-google-maps-api-key">
 								{ attributes.hasError }
 							</span>
 						) }
+						<div className="components-placeholder__learn-more">
+							{ address && (
+								<Button
+									className="components-placeholder__cancel-button"
+									title={ __( 'Cancel', 'coblocks' ) }
+									isLink
+									onClick={ () => {
+										setAttributes( { pinned: ! pinned } );
+										this.setState( {
+											address: this.props.attributes
+												.address,
+										} );
+									} }
+									disabled={ ! address }
+								>
+									{ __( 'Cancel', 'coblocks' ) }
+								</Button>
+							) }
+						</div>
 					</Placeholder>
 				) }
 			</Fragment>
