@@ -30,3 +30,4 @@ This list is manually curated to include valuable contributions by volunteers th
 | @brandonpayton  |                        |
 | @josephscott    | @josephscott           |
 | @passatgt       | @passatgt              |
+| @juanfra        | @juanfra               |

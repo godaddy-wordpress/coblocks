@@ -6,7 +6,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 1.26.1
+Stable tag: 1.26.2
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -124,5 +124,6 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Bug Fixes
-* Render a submit button if not found in the block content [#1479](https://github.com/godaddy-wordpress/coblocks/pull/1479)
-* Remove a condition where a variable may not be defined [#1477](https://github.com/godaddy-wordpress/coblocks/pull/1477)
+* Improve conditional loading of scripts and styles [#1511](https://github.com/godaddy-wordpress/coblocks/pull/1511)
+* Add custom classes for Map block within the editor [#1492](https://github.com/godaddy-wordpress/coblocks/pull/1492)
+* Updating security related dependencies [#1482](https://github.com/godaddy-wordpress/coblocks/pull/1482)
