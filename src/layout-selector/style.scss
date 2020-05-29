@@ -12,11 +12,8 @@ $color-highlight: #00a4a6;
 	h4,
 	h5,
 	h6 {
-		// margin-bottom: -20px !important;
 		margin-left: auto !important;
 		margin-right: auto !important;
-		// margin-top: -20px !important;
-		// transform: scale(0.6) !important;
 	}
 
 	.block-editor-block-list__layout .wp-block:not([data-type="core/heading"]):first-of-type {
@@ -59,10 +56,6 @@ $color-highlight: #00a4a6;
 			}
 		}
 	}
-
-	// .editor-styles-wrapper .wp-block {
-	// 	max-width: none;
-	// }
 }
 
 .wp-block[data-type="core/buttons"] {
