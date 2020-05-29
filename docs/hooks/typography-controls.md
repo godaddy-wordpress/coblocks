@@ -4,8 +4,7 @@
 
 The following `JavaScript` filter can be used to add Google fonts to the list of available fonts with Typography Controls.  
 
-
-```php
+```JavaScript
 /**
  * Make additional custom Google fonts available
  *
@@ -35,6 +34,9 @@ wp.hooks.addFilter( 'coblocks.google_fonts', 'coblocks/coblocks.google_fonts', f
 ```
 
 ## Disable Typography Controls
+
+The following `PHP` filters allow for disabling of typography controls by post or user role.
+
 **Post Limits (Only shows on post ID 1)**
 ```php
 add_filter( 'coblocks_disable_typography_controls', function( $bool, $post_id ) {
