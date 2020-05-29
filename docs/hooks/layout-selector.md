@@ -2,7 +2,7 @@
 
 The layout selector allows site creators to chose from curated sets of starter blocks. The Layout Selector is only available to those who have the plugin [CoBlocks](https://wordpress.org/plugins/coblocks/) (2.0.0+) activated and [the Gutenberg plugin](https://wordpress.org/plugins/gutenberg/) activated running (8.0.0+). At time of release the Layout Selector includes a number of hand made layouts when you have the [Go](https://wordpress.org/themes/go/) theme active.
 
-To access the Layout Selector a user must match all preceding conditions and create a new page/post on a WordPress site. At this point is when a user has the Layout Selector available for use.
+To access the Layout Selector a user must match all preceding conditions and create a new page on a WordPress site. At this point is when a user has the Layout Selector available for use.
 
 ## Screenshot
 ![image](https://user-images.githubusercontent.com/30462574/83181890-5e157280-a0da-11ea-8239-ccbe8e26d179.png)
@@ -10,7 +10,7 @@ To access the Layout Selector a user must match all preceding conditions and cre
 
 ## Extending available layouts in the layout selector
 
-The following `PHP` filter can be used to add layouts or block templates for use with the CoBlocks layout selector.
+The following `PHP` filter can be used to add layouts for use with the CoBlocks layout selector.
 
 
 ```php
@@ -72,7 +72,8 @@ function mycustom_layouts( $layouts ) {
 					'imageCrop' => true,
 					'linkTo'    => 'none',
 					'sizeslug'  => 'large',
-					'className' => 'alignwide columns-2',
+					'align'		=> 'wide',
+					'className' => 'columns-2',
 				),
 				array(),
 			),
@@ -86,7 +87,7 @@ function mycustom_layouts( $layouts ) {
 ## Hide layout selector and related controls
 
 The following `JavaScript` filter will globally disable the CoBlocks layout selector
-and will prevent the controls from showing within the editor settings panel. 
+and will prevent the controls from showing within the editor settings panel if the display conditions are met. 
 
 ```javascript
 import { addFilter } from '@wordpress/hooks';
