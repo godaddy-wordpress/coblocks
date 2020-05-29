@@ -31,7 +31,6 @@ const getBlocksFromTemplate = ( name, attributes, innerBlocks = [] ) => {
 };
 
 const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
-
 	return (
 		<a href="#!"
 			key={ layout }
@@ -44,22 +43,22 @@ const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
 				autoHeight
 				blocks={
 					layout.blocks
-					.filter( layout => registeredBlocks.includes( layout[0] ) )
-					.map(
-						( [ name, attributes, innerBlocks = [] ] ) => {
-							return getBlocksFromTemplate( name, attributes, innerBlocks );
-						}
-					)
+						.filter( ( layout ) => registeredBlocks.includes( layout[ 0 ] ) )
+						.map(
+							( [ name, attributes, innerBlocks = [] ] ) => {
+								return getBlocksFromTemplate( name, attributes, innerBlocks );
+							}
+						)
 				}
 			/>
 		</a>
-	)
+	);
 };
 
 const SidebarItem = ( { slug, title, isSelected, onClick } ) => {
 	return (
 		<li key={ slug } className="coblocks-layout-selector__sidebar__item">
-			<a href={ `#${slug}` }
+			<a href={ `#${ slug }` }
 				className={ classnames( { 'is-selected': isSelected } ) }
 				onClick={ ( event ) => {
 					event.preventDefault();
@@ -68,8 +67,8 @@ const SidebarItem = ( { slug, title, isSelected, onClick } ) => {
 				{ title }
 			</a>
 		</li>
-	)
-}
+	);
+};
 
 class LayoutSelector extends Component {
 	constructor() {
@@ -86,7 +85,7 @@ class LayoutSelector extends Component {
 
 	useEmptyTemplateLayout() {
 		const {
-			editPost
+			editPost,
 		} = this.props;
 
 		editPost( { title: '', blocks: [] } );
@@ -100,15 +99,15 @@ class LayoutSelector extends Component {
 
 		editPost( {
 			title: layout.label,
-			blocks: layout.blocks.filter( layout => registeredBlocks.includes( layout[0] ) )
+			blocks: layout.blocks.filter( ( layout ) => registeredBlocks.includes( layout[ 0 ] ) )
 				.map( ( [ name, attributes, innerBlocks = [] ] ) => {
 					return getBlocksFromTemplate( name, attributes, innerBlocks );
-				} )
-			} );
+				} ),
+		} );
 	}
 
 	getLayoutsInCategory( category ) {
-		return this.props.layouts.filter( layout => layout.category === category ) || [];
+		return this.props.layouts.filter( ( layout ) => layout.category === category ) || [];
 	}
 
 	hasLayoutsInCategory( category ) {
@@ -152,7 +151,7 @@ class LayoutSelector extends Component {
 					) ) }
 				</div>
 			</div>
-		) : ( <p><em>{ __('No layouts are available for this category.', 'coblocks' ) }</em></p> );
+		) : ( <p><em>{ __( 'No layouts are available for this category.', 'coblocks' ) }</em></p> );
 	}
 
 	render() {
@@ -167,7 +166,7 @@ class LayoutSelector extends Component {
 			return null;
 		}
 
-		return !isActive ? null : (
+		return ! isActive ? null : (
 			<Modal
 				title={ (
 					<Fragment>
@@ -184,7 +183,7 @@ class LayoutSelector extends Component {
 				<div className="coblocks-layout-selector">
 					<aside className="coblocks-layout-selector__sidebar">
 						<ul className="coblocks-layout-selector__sidebar__items">
-							{ this.props.categories.filter( category => this.hasLayoutsInCategory( category.slug ) ).map( ( category, index ) => (
+							{ this.props.categories.filter( ( category ) => this.hasLayoutsInCategory( category.slug ) ).map( ( category, index ) => (
 								<SidebarItem
 									key={ index }
 									slug={ category.slug }
@@ -222,7 +221,7 @@ class LayoutSelector extends Component {
 													} }>
 														{ category.label }
 													</MenuItem>
-												)
+												);
 											} ) }
 										</MenuGroup>
 									</Fragment>
@@ -251,10 +250,10 @@ class LayoutSelector extends Component {
 	}
 }
 
-if( typeof coblocksLayoutSelector !== 'undefined' ) {
+if ( typeof coblocksLayoutSelector !== 'undefined' ) {
 	registerPlugin( 'coblocks-layout-selector', {
 		render: compose( [
-			withSelect( select => {
+			withSelect( ( select ) => {
 				const { isTemplateSelectorActive } = select( 'coblocks/template-selector' );
 				const { hasEditorUndo, isCurrentPostPublished } = select( 'core/editor' );
 				const { getLayoutSelector } = select( 'coblocks-settings' );
@@ -271,7 +270,7 @@ if( typeof coblocksLayoutSelector !== 'undefined' ) {
 					categories,
 				};
 			} ),
-			withDispatch( dispatch => {
+			withDispatch( ( dispatch ) => {
 				const { closeTemplateSelector } = dispatch( 'coblocks/template-selector' );
 				const { editPost } = dispatch( 'core/editor' );
 
@@ -280,6 +279,6 @@ if( typeof coblocksLayoutSelector !== 'undefined' ) {
 					editPost,
 				};
 			} ),
-		] )( LayoutSelector )
+		] )( LayoutSelector ),
 	} );
 }
