@@ -3,49 +3,49 @@
 
 	const lightboxModals = document.getElementsByClassName( 'has-lightbox' );
 
-	Array.from(lightboxModals).forEach( ( lightbox, index ) => {
+	Array.from( lightboxModals ).forEach( ( lightbox, index ) => {
 		lightbox.className += ' lightbox-' + index + ' ';
 		renderLightboxModal( index );
-	});
+	} );
 
 	function renderLightboxModal( lightboxIndex ) {
-		const wrapper = document.createElement('div');
-		wrapper.setAttribute('class','coblocks-lightbox');
+		const wrapper = document.createElement( 'div' );
+		wrapper.setAttribute( 'class', 'coblocks-lightbox' );
 
-		const wrapperBackground = document.createElement('div');
-		wrapperBackground.setAttribute('class', 'coblocks-lightbox__background');
+		const wrapperBackground = document.createElement( 'div' );
+		wrapperBackground.setAttribute( 'class', 'coblocks-lightbox__background' );
 
-		const modalHeading = document.createElement('div');
-		modalHeading.setAttribute('class','coblocks-lightbox__heading');
+		const modalHeading = document.createElement( 'div' );
+		modalHeading.setAttribute( 'class', 'coblocks-lightbox__heading' );
 
-		const close = document.createElement('button');
-		close.setAttribute('class','coblocks-lightbox__close');
+		const close = document.createElement( 'button' );
+		close.setAttribute( 'class', 'coblocks-lightbox__close' );
 
-		const counter = document.createElement('span');
-		counter.setAttribute('class','coblocks-lightbox__count');
+		const counter = document.createElement( 'span' );
+		counter.setAttribute( 'class', 'coblocks-lightbox__count' );
 
-		const imageContainer = document.createElement('div');
-		imageContainer.setAttribute('class', 'coblocks-lightbox__image')
+		const imageContainer = document.createElement( 'div' );
+		imageContainer.setAttribute( 'class', 'coblocks-lightbox__image' );
 
-		const image = document.createElement('img');
+		const image = document.createElement( 'img' );
 
-		const caption = document.createElement('figcaption');
-		caption.setAttribute('class', 'coblocks-lightbox__caption')
+		const caption = document.createElement( 'figcaption' );
+		caption.setAttribute( 'class', 'coblocks-lightbox__caption' );
 
-		const arrowLeftContainer = document.createElement('button');
-		arrowLeftContainer.setAttribute('class', 'coblocks-lightbox__arrow coblocks-lightbox__arrow--left');
+		const arrowLeftContainer = document.createElement( 'button' );
+		arrowLeftContainer.setAttribute( 'class', 'coblocks-lightbox__arrow coblocks-lightbox__arrow--left' );
 
-		const arrowRightContainer = document.createElement('button');
-		arrowRightContainer.setAttribute('class', 'coblocks-lightbox__arrow coblocks-lightbox__arrow--right');
+		const arrowRightContainer = document.createElement( 'button' );
+		arrowRightContainer.setAttribute( 'class', 'coblocks-lightbox__arrow coblocks-lightbox__arrow--right' );
 
-		const arrowRight = document.createElement('div');
-		arrowRight.setAttribute('class', 'arrow-right');
+		const arrowRight = document.createElement( 'div' );
+		arrowRight.setAttribute( 'class', 'arrow-right' );
 
-		const arrowLeft = document.createElement('div');
-		arrowLeft.setAttribute('class', 'arrow-left');
+		const arrowLeft = document.createElement( 'div' );
+		arrowLeft.setAttribute( 'class', 'arrow-left' );
 
 		const images = document.querySelectorAll( `.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure img` );
-		const captions = document.querySelectorAll( `.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure figcaption` )
+		const captions = document.querySelectorAll( `.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure figcaption` );
 		let index;
 
 		modalHeading.append( counter, close );
@@ -57,71 +57,87 @@
 		wrapper.append( wrapperBackground, modalHeading, imageContainer, arrowLeftContainer, arrowRightContainer );
 
 		if ( images.length > 0 ) {
-			document.getElementsByTagName("BODY")[0].append( wrapper );
+			document.getElementsByTagName( 'BODY' )[ 0 ].append( wrapper );
 		}
 
 		if ( captions.length > 0 ) {
-			Array.from(captions).forEach( function( captionElem, captionIndex ) {
-				captionElem.addEventListener('click',function(){
+			Array.from( captions ).forEach( function( captionElem, captionIndex ) {
+				captionElem.addEventListener( 'click', function() {
 					changeImage( captionIndex );
-				})
+				} );
 			} );
 		}
 
-		Array.from(images).forEach( function( img, imgIndex ) {
-			img.addEventListener('click', function(){
+		Array.from( images ).forEach( function( img, imgIndex ) {
+			img.addEventListener( 'click', function() {
 				changeImage( imgIndex );
-			})
+			} );
 		} );
 
-		arrowLeftContainer.addEventListener('click', function() {
+		arrowLeftContainer.addEventListener( 'click', function() {
 			index = ( index === 0 ) ? ( images.length - 1 ) : ( index - 1 );
 			changeImage( index );
-		})
-		
-		arrowRightContainer.addEventListener('click', function() {
+		} );
+
+		arrowRightContainer.addEventListener( 'click', function() {
 			index = ( index === ( images.length - 1 ) ) ? 0 : ( index + 1 );
 			changeImage( index );
-		})
+		} );
 
-		wrapperBackground.addEventListener('click', function() {
+		wrapperBackground.addEventListener( 'click', function() {
 			wrapper.style.display = 'none';
-		})
+		} );
 
-		close.addEventListener('click', function() {
+		close.addEventListener( 'click', function() {
 			wrapper.style.display = 'none';
-		})
+		} );
+
+		function getImageCaption( elem ) {
+			const selector = 'figcaption';
+			let sibling = elem.nextElementSibling;
+
+			// If the sibling matches our selector, use it
+			// If not, jump to the next sibling and continue the loop
+			while ( sibling ) {
+				if ( sibling.matches( selector ) ) {
+					return sibling.innerHTML;
+				}
+				sibling = sibling.nextElementSibling;
+			}
+			return '';
+		}
 
 		const imagePreloader = {
 			preloaded: false,
 			setPreloadImages: () => {
 				if ( ! imagePreloader.preloaded ) {
 					imagePreloader.preloaded = true;
-					Array.from(images).forEach( function( img, imgIndex ) {
+					Array.from( images ).forEach( function( img, imgIndex ) {
 						imagePreloader[ `img-${ imgIndex }` ] = new window.Image();
 						imagePreloader[ `img-${ imgIndex }` ].src = img.attributes.src.value;
-						imagePreloader[ `img-${ imgIndex }` ]['data-caption'] = 
-							( images[ imgIndex ] && images[ imgIndex ].nextElementSibling ) ? 
-								images[ imgIndex ].nextElementSibling.innerHTML : '';
+						imagePreloader[ `img-${ imgIndex }` ][ 'data-caption' ] =
+							( images[ imgIndex ] && images[ imgIndex ].nextElementSibling )
+								? getImageCaption( images[ imgIndex ] ) : '';
 					} );
 					setKeyboardListener();
 				}
-			}
+			},
 		};
 
 		function changeImage( imageIndex ) {
 			imagePreloader.setPreloadImages();
 			index = imageIndex;
 			wrapper.style.display = 'flex';
-			wrapperBackground.style.backgroundImage = `url(${imagePreloader[ `img-${ index }` ].src})`;
+			wrapperBackground.style.backgroundImage = `url(${ imagePreloader[ `img-${ index }` ].src })`;
 			image.src = imagePreloader[ `img-${ index }` ].src;
-			caption.textContent = imagePreloader[ `img-${ index }` ]['data-caption'];
-			counter.textContent = `${( index + 1 )} / ${images.length}`;
+			console.log( imagePreloader[ `img-${ index }` ] );
+			caption.textContent = imagePreloader[ `img-${ index }` ][ 'data-caption' ];
+			counter.textContent = `${ ( index + 1 ) } / ${ images.length }`;
 		}
 
 		function setKeyboardListener( ) {
-			document.onkeydown = function(e) {
-				const lightboxDisplayValue = wrapper
+			document.onkeydown = function( e ) {
+				const lightboxDisplayValue = wrapper;
 				const lightboxIsOpen = ( typeof lightboxDisplayValue !== 'undefined' && lightboxDisplayValue !== 'none' );
 				if ( lightboxIsOpen ) {
 					e = e || window.event;
