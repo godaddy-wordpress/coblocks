@@ -1,4 +1,4 @@
-# CoBlocks Theme Layout Selector
+# CoBlocks Layout Selector
 
 The layout selector allows site creators to chose from curated sets of starter blocks. The Layout Selector is only available to those who have the plugin [CoBlocks](https://wordpress.org/plugins/coblocks/) (2.0.0+) activated and [the Gutenberg plugin](https://wordpress.org/plugins/gutenberg/) activated running (8.0.0+). At time of release the Layout Selector includes a number of hand made layouts when you have the [Go](https://wordpress.org/themes/go/) theme active.
 
@@ -26,9 +26,9 @@ add_filter( 'coblocks_layout_selector_layouts', 'mycustom_layouts' );
  */
 function mycustom_layouts( $layouts ) {
     $layouts[] = array(
-		'category' => 'home',                     // Category in which layout appears.
+		'category' => 'home', // Category in which layout appears.
 		'label'    => __( 'Welcome Home!', 'textdomain' ), // Serves as text for page title.
-		'blocks'   => array(                       // Array of blocks or layout.
+		'blocks'   => array( // Array of blocks.
 			array(
 				'core/heading',
 				array(
