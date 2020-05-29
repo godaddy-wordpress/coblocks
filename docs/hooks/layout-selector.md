@@ -4,7 +4,7 @@ The layout selector allows site creators to chose from curated sets of starter b
 
 To access the Layout Selector a user must match all preceding conditions and create a new page/post on a WordPress site. At this point is when a user has the Layout Selector available for use.
 
-## Screenshot of CoBlocks Layout Selector
+## Screenshot
 ![image](https://user-images.githubusercontent.com/30462574/83181890-5e157280-a0da-11ea-8239-ccbe8e26d179.png)
 
 
