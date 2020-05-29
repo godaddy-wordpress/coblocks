@@ -124,6 +124,8 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Bug Fixes
-* Improve conditional loading of scripts and styles [#1511](https://github.com/godaddy-wordpress/coblocks/pull/1511)
-* Add custom classes for Map block within the editor [#1492](https://github.com/godaddy-wordpress/coblocks/pull/1492)
-* Updating security related dependencies [#1482](https://github.com/godaddy-wordpress/coblocks/pull/1482)
+* Apply styles for formats [#1494](https://github.com/godaddy-wordpress/coblocks/pull/1494)
+
+### Misc
+* Update contributors list [#1498](https://github.com/godaddy-wordpress/coblocks/pull/1498)
+* Update typography hooks docs [#1502](https://github.com/godaddy-wordpress/coblocks/pull/1502)
