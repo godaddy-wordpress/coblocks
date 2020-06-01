@@ -87,6 +87,8 @@ workflows:
 version: 2.1
 
 commands:
+
+  # Find all files with the passed extension that have changed from the base branch.
   changed_files_with_extension:
     description: ""
     parameters:
@@ -103,6 +105,28 @@ commands:
               BASE_BRANCH="master"
             fi
       - run: FILES=$(git diff HEAD..$BASE_BRANCH --name-only --diff-filter=M '*<< parameters.ext >>')
+
+  # Install and configure WordPress for end-to-end tests.
+  install_wordpress_with_coblocks:
+    description: ""
+    steps:
+      - run:
+          run: Copy CoBlocks to WordPress install
+          command: /
+            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
+      - run:
+          name: Update hosts
+          command: echo 127.0.0.1 coblocks.test | sudo tee -a /etc/hosts
+      - run:
+          name: Install WordPress
+          command: |
+            mkdir -p /tmp/wordpress
+            ./vendor/bin/wp core download --path=/tmp/wordpress
+            ./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass='' --path=/tmp/wordpress
+            ./vendor/bin/wp db create
+            ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=/tmp/wordpress
+            ./vendor/bin/wp post generate --count=5 --path=/tmp/wordpress
+            ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
 
 jobs:
 
@@ -464,11 +488,6 @@ jobs:
           paths:
             - ~/project/vendor
       - run:
-          name: Install dependencies
-          command: |
-            bash .dev/bin/install-dependencies.sh
-            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
-      - run:
           name: Waiting for MySQL to be ready
           command: |
             for i in `seq 1 10`;
@@ -479,23 +498,13 @@ jobs:
             done
             echo Failed waiting for MySQL && exit 1
       - run:
-          name: Update hosts
-          command: echo 127.0.0.1 coblocks.test | sudo tee -a /etc/hosts
-      - run:
-          name: "Install WordPress"
-          command: |
-            ./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass='' --path=/tmp/wordpress
-            ./vendor/bin/wp db create
-            ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=/tmp/wordpress
-            ./vendor/bin/wp post generate --count=5 --path=/tmp/wordpress
-            ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
-      - run:
           name: "Install Mailhog"
           command: bash .dev/bin/install-mailhog.sh
       - run:
           name: "Start Mailhog"
           command: "MailHog"
           background: true
+      - install_wordpress_with_coblocks
       - run:
           name: "Start WPCLI Server"
           command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root  --path=/tmp/wordpress
@@ -571,11 +580,6 @@ jobs:
           paths:
             - ~/project/vendor
       - run:
-          name: Install dependencies
-          command: |
-            bash .dev/bin/install-dependencies.sh
-            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
-      - run:
           name: Waiting for MySQL to be ready
           command: |
             for i in `seq 1 10`;
@@ -586,23 +590,13 @@ jobs:
             done
             echo Failed waiting for MySQL && exit 1
       - run:
-          name: Update hosts
-          command: echo 127.0.0.1 coblocks.test | sudo tee -a /etc/hosts
-      - run:
-          name: "Install WordPress"
-          command: |
-            ./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass='' --path=/tmp/wordpress
-            ./vendor/bin/wp db create
-            ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=/tmp/wordpress
-            ./vendor/bin/wp post generate --count=5 --path=/tmp/wordpress
-            ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
-      - run:
           name: "Install Mailhog"
           command: bash .dev/bin/install-mailhog.sh
       - run:
           name: "Start Mailhog"
           command: "MailHog"
           background: true
+      - install_wordpress_with_coblocks
       - run:
           name: "Start WPCLI Server"
           command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root  --path=/tmp/wordpress
