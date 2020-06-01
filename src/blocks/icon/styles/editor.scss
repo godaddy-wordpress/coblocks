@@ -111,7 +111,7 @@
 }
 
 //Add styling for resizableBox handles when a parent div is positioning the icon.
-.has-center-content .wp-block-coblocks-icon__inner.is-selected {
+.has-center-content .wp-block-coblocks-icon__inner.has-show-handle {
 
 	.components-resizable-box__handle-left,
 	.components-resizable-box__handle-right {
@@ -119,7 +119,7 @@
 	}
 }
 
-.has-right-content .wp-block-coblocks-icon__inner.is-selected {
+.has-right-content .wp-block-coblocks-icon__inner.has-show-handle {
 
 	.components-resizable-box__handle-left {
 		display: block !important;
@@ -129,6 +129,14 @@
 		display: none !important;
 	}
 }
+
+.wp-block[data-type="coblocks/icon"] {
+
+	&.block-editor-block-list__block:not([contenteditable]):focus::after {
+		display: none !important;
+	}
+}
+
 
 // Editor style preview.
 .editor-block-preview,
