@@ -149,15 +149,15 @@ jobs:
             sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
       - restore_cache:
           keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
+            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-v2-{{ .Branch }}
       - run:
           name: Install Node dependencies
           command: |
             PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
             yarn install --frozen-lockfile
       - save_cache:
-          key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
@@ -233,15 +233,15 @@ jobs:
             fi
       - restore_cache:
           keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
+            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-v2-{{ .Branch }}
       - run:
           name: Install Node dependencies
           command: |
             PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
             yarn install --frozen-lockfile
       - save_cache:
-          key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
@@ -267,15 +267,15 @@ jobs:
             fi
       - restore_cache:
           keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
+            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-v2-{{ .Branch }}
       - run:
           name: Install Node dependencies
           command: |
             PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
             yarn install --frozen-lockfile
       - save_cache:
-          key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
@@ -406,14 +406,14 @@ jobs:
             fi
       - restore_cache:
           keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
+            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-v2-{{ .Branch }}
       - run:
           name: Install Node dependencies
           command: |
             yarn install --frozen-lockfile
       - save_cache:
-          key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
@@ -468,15 +468,15 @@ jobs:
             sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
       - restore_cache:
           keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
+            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-v2-{{ .Branch }}
       - run:
           name: Install Node dependencies
           command: |
             PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
             yarn install --frozen-lockfile
       - save_cache:
-          key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
@@ -561,15 +561,15 @@ jobs:
             sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
       - restore_cache:
           keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
+            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-v2-{{ .Branch }}
       - run:
           name: Install Node dependencies
           command: |
             PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
             yarn install --frozen-lockfile
       - save_cache:
-          key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
@@ -638,14 +638,14 @@ jobs:
             sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
       - restore_cache:
           keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
+            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-v2-{{ .Branch }}
       - run:
           name: Install Node dependencies
           command: |
             yarn install --frozen-lockfile
       - save_cache:
-          key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
@@ -712,14 +712,14 @@ jobs:
             sudo mv composer.phar /usr/local/bin/composer
       - restore_cache:
           keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
+            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-v2-{{ .Branch }}
       - run:
           name: Install Node dependencies
           command: |
             yarn install --frozen-lockfile
       - save_cache:
-          key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
