@@ -166,16 +166,16 @@ jobs:
       - disable_xdebug_php_extension
       - restore_cache:
           keys:
-            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-v2-{{ .Branch }}
-            - yarn-deps-v2
+            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-{{ .Branch }}
+            - yarn-deps
       - run:
           name: Install Node dependencies
           command: |
             PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
             yarn install --frozen-lockfile
       - save_cache:
-          key: yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
@@ -254,9 +254,9 @@ jobs:
           at: ~/project
       - restore_cache:
           keys:
-            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-v2-{{ .Branch }}
-            - yarn-deps-v2
+            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-{{ .Branch }}
+            - yarn-deps
       - run:
           name: "Linting JS"
           command: npm run lint:js $FILES
@@ -280,9 +280,9 @@ jobs:
           at: ~/project
       - restore_cache:
           keys:
-            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-v2-{{ .Branch }}
-            - yarn-deps-v2
+            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-{{ .Branch }}
+            - yarn-deps
       - run:
           name: "Linting CSS"
           command: npm run lint:css $FILES
@@ -393,9 +393,9 @@ jobs:
           at: ~/project
       - restore_cache:
           keys:
-            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-v2-{{ .Branch }}
-            - yarn-deps-v2
+            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-{{ .Branch }}
+            - yarn-deps
       - run:
           name: Run Jest tests
           command: |
@@ -444,9 +444,9 @@ jobs:
           at: ~/project
       - restore_cache:
           keys:
-            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-v2-{{ .Branch }}
-            - yarn-deps-v2
+            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-{{ .Branch }}
+            - yarn-deps
       - restore_cache:
           keys:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
@@ -513,9 +513,9 @@ jobs:
           at: ~/project
       - restore_cache:
           keys:
-            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-v2-{{ .Branch }}
-            - yarn-deps-v2
+            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-{{ .Branch }}
+            - yarn-deps
       - restore_cache:
           keys:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
@@ -570,9 +570,9 @@ jobs:
           at: ~/project
       - restore_cache:
           keys:
-            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-v2-{{ .Branch }}
-            - yarn-deps-v2
+            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-{{ .Branch }}
+            - yarn-deps
       - restore_cache:
           keys:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
@@ -610,9 +610,9 @@ jobs:
           at: ~/project
       - restore_cache:
           keys:
-            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-v2-{{ .Branch }}
-            - yarn-deps-v2
+            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-{{ .Branch }}
+            - yarn-deps
       - restore_cache:
           keys:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
@@ -675,9 +675,9 @@ jobs:
           at: ~/project
       - restore_cache:
           keys:
-            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-v2-{{ .Branch }}
-            - yarn-deps-v2
+            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-{{ .Branch }}
+            - yarn-deps
       - restore_cache:
           keys:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
