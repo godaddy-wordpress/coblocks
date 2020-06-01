@@ -497,6 +497,7 @@ jobs:
               sleep 1
             done
             echo Failed waiting for MySQL && exit 1
+      - install_wordpress_with_coblocks
       - run:
           name: "Install Mailhog"
           command: bash .dev/bin/install-mailhog.sh
@@ -504,7 +505,6 @@ jobs:
           name: "Start Mailhog"
           command: "MailHog"
           background: true
-      - install_wordpress_with_coblocks
       - run:
           name: "Start WPCLI Server"
           command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root  --path=/tmp/wordpress
@@ -589,6 +589,7 @@ jobs:
               sleep 1
             done
             echo Failed waiting for MySQL && exit 1
+      - install_wordpress_with_coblocks
       - run:
           name: "Install Mailhog"
           command: bash .dev/bin/install-mailhog.sh
@@ -596,7 +597,6 @@ jobs:
           name: "Start Mailhog"
           command: "MailHog"
           background: true
-      - install_wordpress_with_coblocks
       - run:
           name: "Start WPCLI Server"
           command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root  --path=/tmp/wordpress
