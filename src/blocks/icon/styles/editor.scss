@@ -97,21 +97,10 @@
 				}
 			}
 		}
-
-		// &.is-selected {
-		// 	.components-button {
-		// 		&,
-		// 		&:focus {
-		// 			background: transparent;
-		// 			box-shadow: 0 0 0 2px $white, 0 0 0 4px $dark-gray-500;
-		// 		}
-		// 	}
-		// }
 	}
 }
 
-//Add styling for resizableBox handles when a parent div is positioning the icon.
-.has-center-content .wp-block-coblocks-icon__inner.has-show-handle {
+.has-center-content .wp-block-coblocks-icon__inner.is-selected {
 
 	.components-resizable-box__handle-left,
 	.components-resizable-box__handle-right {
@@ -119,7 +108,7 @@
 	}
 }
 
-.has-right-content .wp-block-coblocks-icon__inner.has-show-handle {
+.has-right-content .wp-block-coblocks-icon__inner.is-selected {
 
 	.components-resizable-box__handle-left {
 		display: block !important;
@@ -168,6 +157,7 @@
 	}
 }
 
+// Hide screen reader label for Gutenberg < 6.4
 .components-coblocks-icon-size__controls {
 	align-items: center;
 	display: flex;
@@ -182,10 +172,6 @@
 	.components-base-control__field {
 		margin-bottom: 0 !important;
 	}
-}
-
-// Hide screen reader label for Gutenberg < 6.4
-.components-coblocks-icon-size__controls {
 
 	.components-base-control .components-base-control__label {
 		border: 0;
