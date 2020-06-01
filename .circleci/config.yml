@@ -62,27 +62,38 @@ workflows:
             - unit_testing_php_73
             # - unit_testing_js
 
-      # - canary-release:
-      #     filters:
-      #       branches:
-      #         only: master
-      # - i18n:
-      #     filters:
-      #       branches:
-      #         only: master
-      # - deploy:
-      #     requires:
-      #       - build
-      #       - unit_testing_php_56
-      #       - unit_testing_php_73
-      #       - unit_testing_js
-      #       - e2e_firefox
-      #       - e2e_chrome
-      #     filters:
-      #       tags:
-      #         only: /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*)?(\+[0-9-]+(\.[0-9]+)*)?/ # Run on semantic version tags only
-      #       branches:
-      #         ignore: /.*/
+      - canary-release:
+          filters:
+            branches:
+              only: master
+          requires:
+            - build
+            - unit_testing_php_56
+            - unit_testing_php_73
+            - unit_testing_js
+      - i18n:
+          filters:
+            branches:
+              only: master
+          requires:
+            - build
+            - unit_testing_php_56
+            - unit_testing_php_73
+            - unit_testing_js
+
+      - deploy:
+          requires:
+            - build
+            - unit_testing_php_56
+            - unit_testing_php_73
+            - unit_testing_js
+            - e2e_firefox
+            - e2e_chrome
+          filters:
+            tags:
+              only: /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*)?(\+[0-9-]+(\.[0-9]+)*)?/ # Run on semantic version tags only
+            branches:
+              ignore: /.*/
 
 version: 2.1
 
@@ -194,6 +205,10 @@ jobs:
             - build
             - dist
 
+  # --------------------------------------------------
+  # Code Quality Checks
+  # --------------------------------------------------
+
   # Run phpcs on changed php files only.
   lint_php:
     docker:
@@ -271,6 +286,10 @@ jobs:
       - run:
           name: "Linting CSS"
           command: npm run lint:css $FILES
+
+  # --------------------------------------------------
+  # Unit Testing
+  # --------------------------------------------------
 
   unit_testing_php_56:
     docker:
@@ -393,6 +412,10 @@ jobs:
           destination: jest-coverage
       - store_test_results:
           path: /tmp/artifacts/code-coverage/
+
+  # --------------------------------------------------
+  # End to End Testing
+  # --------------------------------------------------
 
   e2e_chrome:
     docker:
@@ -532,6 +555,9 @@ jobs:
               ./node_modules/.bin/cypress run --config integrationFolder=./ --browser firefox --record --parallel --group e2e-firefox --spec "$(cat /tmp/specstring)"
             fi
 
+  # --------------------------------------------------
+  # Internationalization Processes
+  # --------------------------------------------------
   i18n:
     docker:
       - image: circleci/php:7.3-node-browsers-legacy
@@ -637,6 +663,9 @@ jobs:
             -H "X-Authorization: Bearer ${WPNUX_SITE_X_AUTHORIZATION}" \
             -d '[ "coblocks" ]'
 
+  # --------------------------------------------------
+  # Plugin Deployment to WordPress.org
+  # --------------------------------------------------
   deploy:
     docker:
       - image: circleci/golang:latest-node-browsers-legacy
