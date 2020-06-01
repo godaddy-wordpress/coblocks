@@ -51,7 +51,7 @@ workflows:
             - build
             - unit_testing_php_56
             - unit_testing_php_73
-            # - unit_testing_js
+            - unit_testing_js
       - e2e_firefox:
           filters:
             tags:
@@ -60,7 +60,7 @@ workflows:
             - build
             - unit_testing_php_56
             - unit_testing_php_73
-            # - unit_testing_js
+            - unit_testing_js
 
       - canary-release:
           filters:
