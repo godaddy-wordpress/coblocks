@@ -276,13 +276,6 @@ jobs:
           paths:
             - ~/project/vendor
       - run:
-          name: Disable xdebug PHP extension
-          command: |
-            sudo rm -f /etc/php/*/mods-available/xdebug.ini
-            sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
-            sudo rm -f /etc/php/*/conf.d/*xdebug.ini
-            sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
-      - run:
           name: Waiting for MySQL to be ready
           command: |
             for i in `seq 1 10`;
@@ -335,13 +328,6 @@ jobs:
           key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
           paths:
             - ~/project/vendor
-      - run:
-          name: Disable xdebug PHP extension
-          command: |
-            sudo rm -f /etc/php/*/mods-available/xdebug.ini
-            sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
-            sudo rm -f /etc/php/*/conf.d/*xdebug.ini
-            sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
       - run:
           name: Waiting for MySQL to be ready
           command: |
