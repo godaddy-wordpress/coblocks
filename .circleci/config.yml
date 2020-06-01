@@ -189,19 +189,24 @@ jobs:
             npx wp-scripts build --config .dev/config/webpack.ci.config.js
             npx grunt clean:build copy:build
       - persist_to_workspace:
-          root: ~/
+          root: ~/project
           paths:
-            - project
-            - .cache/yarn
-            - .cache/Cypress
+            - build
+            - dist
 
   # Run phpcs on changed php files only.
   lint_php:
     docker:
       - image: circleci/php:7.3
     steps:
+      - checkout
       - attach_workspace:
-          at: ~/
+          at: ~/project
+      - restore_cache:
+          keys:
+            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Branch }}
+            - composer-deps
       - changed_files_with_extension:
           ext: ".php"
       - run:
@@ -220,8 +225,14 @@ jobs:
     docker:
       - image: circleci/node:latest
     steps:
+      - checkout
       - attach_workspace:
-          at: ~/
+          at: ~/project
+      - restore_cache:
+          keys:
+            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-v2-{{ .Branch }}
+            - yarn-deps-v2
       - changed_files_with_extension:
           ext: ".js"
       - run:
@@ -240,8 +251,14 @@ jobs:
     docker:
       - image: circleci/node:latest
     steps:
+      - checkout
       - attach_workspace:
-          at: ~/
+          at: ~/project
+      - restore_cache:
+          keys:
+            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-v2-{{ .Branch }}
+            - yarn-deps-v2
       - changed_files_with_extension:
           ext: ".scss"
       - run:
@@ -260,8 +277,14 @@ jobs:
       - image: circleci/php:5.6
       - image: circleci/mysql:5.7
     steps:
+      - checkout
       - attach_workspace:
-          at: ~/
+          at: ~/project
+      - restore_cache:
+          keys:
+            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Branch }}
+            - composer-deps
       - run:
           name: Waiting for MySQL to be ready
           command: |
@@ -296,8 +319,14 @@ jobs:
       - image: circleci/php:7.3
       - image: circleci/mysql:5.7
     steps:
+      - checkout
       - attach_workspace:
-          at: ~/
+          at: ~/project
+      - restore_cache:
+          keys:
+            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Branch }}
+            - composer-deps
       - run:
           name: Waiting for MySQL to be ready
           command: |
@@ -331,8 +360,14 @@ jobs:
     docker:
       - image: circleci/node:latest-browsers-legacy
     steps:
+      - checkout
       - attach_workspace:
-          at: ~/
+          at: ~/project
+      - restore_cache:
+          keys:
+            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-v2-{{ .Branch }}
+            - yarn-deps-v2
       - changed_files_with_extension:
           ext: ".js"
       - run:
@@ -365,8 +400,19 @@ jobs:
       - image: circleci/mysql:5.7
     parallelism: 4
     steps:
+      - checkout
       - attach_workspace:
-          at: ~/
+          at: ~/project
+      - restore_cache:
+          keys:
+            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-v2-{{ .Branch }}
+            - yarn-deps-v2
+      - restore_cache:
+          keys:
+            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Branch }}
+            - composer-deps
       - run:
           name: "Setup Environment Variables"
           command: |
@@ -423,8 +469,19 @@ jobs:
       - image: circleci/mysql:5.7
     parallelism: 4
     steps:
+      - checkout
       - attach_workspace:
-          at: ~/
+          at: ~/project
+      - restore_cache:
+          keys:
+            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-v2-{{ .Branch }}
+            - yarn-deps-v2
+      - restore_cache:
+          keys:
+            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Branch }}
+            - composer-deps
       - run:
           name: "Setup Environment Variables"
           command: |
@@ -482,8 +539,19 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "14:ee:bc:31:0f:50:7e:fe:8b:56:87:f8:56:db:48:5b"
+      - checkout
       - attach_workspace:
-          at: ~/
+          at: ~/project
+      - restore_cache:
+          keys:
+            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-v2-{{ .Branch }}
+            - yarn-deps-v2
+      - restore_cache:
+          keys:
+            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Branch }}
+            - composer-deps
       - disable_xdebug_php_extension
       - run:
           name: Generate the translations
@@ -511,8 +579,19 @@ jobs:
     docker:
       - image: circleci/golang:latest-node-browsers-legacy
     steps:
+      - checkout
       - attach_workspace:
-          at: ~/
+          at: ~/project
+      - restore_cache:
+          keys:
+            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-v2-{{ .Branch }}
+            - yarn-deps-v2
+      - restore_cache:
+          keys:
+            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Branch }}
+            - composer-deps
       - run:
           name: Install PHP
           command: sudo apt-get install php libapache2-mod-php php-mbstring php-xml php-curl
@@ -562,8 +641,19 @@ jobs:
     docker:
       - image: circleci/golang:latest-node-browsers-legacy
     steps:
+      - checkout
       - attach_workspace:
-          at: ~/
+          at: ~/project
+      - restore_cache:
+          keys:
+            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-v2-{{ .Branch }}
+            - yarn-deps-v2
+      - restore_cache:
+          keys:
+            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Branch }}
+            - composer-deps
       - run:
           name: Install SVN
           command: sudo apt-get update && sudo apt-get install subversion
