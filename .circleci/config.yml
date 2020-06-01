@@ -25,21 +25,18 @@ workflows:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - build
             - lint_php
       - unit_testing_php_73:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - build
             - lint_php
       - unit_testing_js:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - build
             - lint_js
 
       # END TO END TESTING
@@ -48,7 +45,7 @@ workflows:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - build
+            - lint_css
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_js
@@ -57,7 +54,7 @@ workflows:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - build
+            - lint_css
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_js
@@ -67,7 +64,6 @@ workflows:
             branches:
               only: master
           requires:
-            - build
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_js
@@ -76,14 +72,12 @@ workflows:
             branches:
               only: master
           requires:
-            - build
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_js
 
       - deploy:
           requires:
-            - build
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_js
