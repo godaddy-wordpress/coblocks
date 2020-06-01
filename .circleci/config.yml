@@ -161,6 +161,7 @@ jobs:
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
+            - ~/.cache/Cypress
       - restore_cache:
           keys:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
@@ -244,6 +245,7 @@ jobs:
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
+            - ~/.cache/Cypress
       - run:
           name: "Linting JS"
           command: npm run lint:js $FILES
@@ -277,6 +279,7 @@ jobs:
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
+            - ~/.cache/Cypress
       - run:
           name: "Linting CSS"
           command: npm run lint:css $FILES
@@ -414,6 +417,7 @@ jobs:
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
+            - ~/.cache/Cypress
       - run:
           name: Run Jest tests
           command: |
@@ -476,6 +480,7 @@ jobs:
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
+            - ~/.cache/Cypress
       - restore_cache:
           keys:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
@@ -568,6 +573,7 @@ jobs:
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
+            - ~/.cache/Cypress
       - restore_cache:
           keys:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
@@ -643,6 +649,7 @@ jobs:
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
+            - ~/.cache/Cypress
       - restore_cache:
           keys:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
@@ -716,6 +723,7 @@ jobs:
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
+            - ~/.cache/Cypress
       - restore_cache:
           keys:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
