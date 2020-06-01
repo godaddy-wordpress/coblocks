@@ -422,7 +422,9 @@ jobs:
       - run:
           name: Setup spec files to run based on git diff-tree
           command: |
-            bash .dev/bin/setup-test-specs.sh
+            if [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "optimize-circleci-builds" ]; then
+              bash .dev/bin/setup-test-specs.sh
+            fi
             if [ ! -s /tmp/specstring ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "optimize-circleci-builds" ]; then
               echo "Changes do not require testing."
               circleci-agent step halt
@@ -526,7 +528,9 @@ jobs:
       - run:
           name: Setup spec files to run based on git diff-tree
           command: |
-            bash .dev/bin/setup-test-specs.sh
+            if [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "optimize-circleci-builds" ]; then
+              bash .dev/bin/setup-test-specs.sh
+            fi
             if [ ! -s /tmp/specstring ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "optimize-circleci-builds" ]; then
               echo "Changes do not require testing."
               circleci-agent step halt
