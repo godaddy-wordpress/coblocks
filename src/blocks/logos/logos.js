@@ -110,6 +110,7 @@ class Logos extends Component {
 												this.props.setAttributes( { images: remainingImages } );
 											}
 										} }
+										showHandle={ isSelected }
 									>
 										<img
 											src={ img.url }

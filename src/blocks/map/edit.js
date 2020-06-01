@@ -210,6 +210,7 @@ class Edit extends Component {
 								height: parseInt( height + delta.height, 10 ),
 							} );
 						} }
+						showHandle={ isSelected }
 					>
 						{ !! this.state.apiKey
 							? compose(

@@ -155,6 +155,7 @@ class MediaContainer extends Component {
 					onResize={ onResize }
 					onResizeStop={ onResizeStop }
 					axis="x"
+					showHandle={ isSelected }
 				>
 					{ imageDropZone }
 					{ mediaElement }
