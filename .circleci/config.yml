@@ -130,16 +130,10 @@ commands:
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
             ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
 
-jobs:
-
-  # 1. Download and cache node and composer dependencies.
-  # 2. Build deployable plugin folder.
-  # 3. Persist deployable plugin folder to workspace for other jobs.
-  build:
-    docker:
-      - image: circleci/php:7.3-node
+  # Disable the xdebug PHP extension.
+  disable_xdebug_php_extension:
+    description: ""
     steps:
-      - checkout
       - run:
           name: Disable xdebug PHP extension
           command: |
@@ -147,10 +141,23 @@ jobs:
             sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
             sudo rm -f /etc/php/*/conf.d/*xdebug.ini
             sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
+
+jobs:
+
+  # 1. Download and cache node and composer dependencies.
+  # 2. Build deployable plugin folder.
+  # 3. Persist project folder to workspace for other jobs.
+  build:
+    docker:
+      - image: circleci/php:7.3-node
+    steps:
+      - checkout
+      - disable_xdebug_php_extension
       - restore_cache:
           keys:
             - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
             - yarn-deps-v2-{{ .Branch }}
+            - yarn-deps-v2
       - run:
           name: Install Node dependencies
           command: |
@@ -166,9 +173,11 @@ jobs:
           keys:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
             - composer-deps-{{ .Branch }}
+            - composer-deps
       - run:
           name: Install Composer dependencies
           command: |
+            composer validate --strict
             composer install
       - save_cache:
           key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
@@ -180,17 +189,19 @@ jobs:
             npx wp-scripts build --config .dev/config/webpack.ci.config.js
             npx grunt clean:build copy:build
       - persist_to_workspace:
-          root: ~/project
+          root: ~/
           paths:
-            - build/coblocks
-            - dist
+            - project
+            - .cache/yarn
+            - .cache/Cypress
 
   # Run phpcs on changed php files only.
   lint_php:
     docker:
       - image: circleci/php:7.3
     steps:
-      - checkout
+      - attach_workspace:
+          at: ~/
       - changed_files_with_extension:
           ext: ".php"
       - run:
@@ -200,18 +211,6 @@ jobs:
               echo "Changes do not require linting."
               circleci-agent step halt
             fi
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-      - run:
-          name: Install Composer dependencies
-          command: |
-            composer install
-      - save_cache:
-          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-          paths:
-            - ~/project/vendor
       - run:
           name: "Linting PHP"
           command: composer run lint $FILES
@@ -221,7 +220,8 @@ jobs:
     docker:
       - image: circleci/node:latest
     steps:
-      - checkout
+      - attach_workspace:
+          at: ~/
       - changed_files_with_extension:
           ext: ".js"
       - run:
@@ -231,21 +231,6 @@ jobs:
               echo "Changes do not require linting."
               circleci-agent step halt
             fi
-      - restore_cache:
-          keys:
-            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-v2-{{ .Branch }}
-      - run:
-          name: Install Node dependencies
-          command: |
-            PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-            yarn install --frozen-lockfile
-      - save_cache:
-          key: yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/project/node_modules
-            - ~/.cache/yarn
-            - ~/.cache/Cypress
       - run:
           name: "Linting JS"
           command: npm run lint:js $FILES
@@ -255,7 +240,8 @@ jobs:
     docker:
       - image: circleci/node:latest
     steps:
-      - checkout
+      - attach_workspace:
+          at: ~/
       - changed_files_with_extension:
           ext: ".scss"
       - run:
@@ -265,21 +251,6 @@ jobs:
               echo "Changes do not require linting."
               circleci-agent step halt
             fi
-      - restore_cache:
-          keys:
-            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-v2-{{ .Branch }}
-      - run:
-          name: Install Node dependencies
-          command: |
-            PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-            yarn install --frozen-lockfile
-      - save_cache:
-          key: yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/project/node_modules
-            - ~/.cache/yarn
-            - ~/.cache/Cypress
       - run:
           name: "Linting CSS"
           command: npm run lint:css $FILES
@@ -289,21 +260,8 @@ jobs:
       - image: circleci/php:5.6
       - image: circleci/mysql:5.7
     steps:
-      - checkout
       - attach_workspace:
-          at: ~/project
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-      - run:
-          name: Install Composer dependencies
-          command: |
-            composer install
-      - save_cache:
-          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-          paths:
-            - ~/project/vendor
+          at: ~/
       - run:
           name: Waiting for MySQL to be ready
           command: |
@@ -315,12 +273,8 @@ jobs:
             done
             echo Failed waiting for MySQL && exit 1
       - run:
-          name: "Validate Composer configuration"
-          command: composer validate --strict
-      - run:
-          name: "Install Dependencies"
+          name: "Install WordPress Testing Suite"
           command: |
-            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
@@ -342,21 +296,8 @@ jobs:
       - image: circleci/php:7.3
       - image: circleci/mysql:5.7
     steps:
-      - checkout
       - attach_workspace:
-          at: ~/project
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-      - run:
-          name: Install Composer dependencies
-          command: |
-            composer install
-      - save_cache:
-          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-          paths:
-            - ~/project/vendor
+          at: ~/
       - run:
           name: Waiting for MySQL to be ready
           command: |
@@ -368,12 +309,8 @@ jobs:
             done
             echo Failed waiting for MySQL && exit 1
       - run:
-          name: "Validate Composer configuration"
-          command: composer validate --strict
-      - run:
-          name: "Install Dependencies"
+          name: "Install WordPress Testing Suite"
           command: |
-            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
@@ -394,7 +331,8 @@ jobs:
     docker:
       - image: circleci/node:latest-browsers-legacy
     steps:
-      - checkout
+      - attach_workspace:
+          at: ~/
       - changed_files_with_extension:
           ext: ".js"
       - run:
@@ -404,20 +342,6 @@ jobs:
               echo "Changes do not require testing."
               circleci-agent step halt
             fi
-      - restore_cache:
-          keys:
-            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-v2-{{ .Branch }}
-      - run:
-          name: Install Node dependencies
-          command: |
-            yarn install --frozen-lockfile
-      - save_cache:
-          key: yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/project/node_modules
-            - ~/.cache/yarn
-            - ~/.cache/Cypress
       - run:
           name: Run Jest tests
           command: |
@@ -441,9 +365,8 @@ jobs:
       - image: circleci/mysql:5.7
     parallelism: 4
     steps:
-      - checkout
       - attach_workspace:
-          at: ~/project
+          at: ~/
       - run:
           name: "Setup Environment Variables"
           command: |
@@ -459,41 +382,7 @@ jobs:
               echo "Changes do not require testing."
               circleci-agent step halt
             fi
-      - run:
-          name: Disable xdebug PHP extension
-          command: |
-            sudo rm -f /etc/php/*/mods-available/xdebug.ini
-            sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
-            sudo rm -f /etc/php/*/conf.d/*xdebug.ini
-            sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
-      - restore_cache:
-          keys:
-            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-v2-{{ .Branch }}
-      - run:
-          name: Install Node dependencies
-          command: |
-            PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-            yarn install --frozen-lockfile
-      - save_cache:
-          key: yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/project/node_modules
-            - ~/.cache/yarn
-            - ~/.cache/Cypress
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-      - run:
-          name: Install Composer dependencies
-          command: |
-            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
-            composer install
-      - save_cache:
-          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-          paths:
-            - ~/project/vendor
+      - disable_xdebug_php_extension
       - run:
           name: Waiting for MySQL to be ready
           command: |
@@ -534,9 +423,8 @@ jobs:
       - image: circleci/mysql:5.7
     parallelism: 4
     steps:
-      - checkout
       - attach_workspace:
-          at: ~/project
+          at: ~/
       - run:
           name: "Setup Environment Variables"
           command: |
@@ -552,41 +440,7 @@ jobs:
               echo "Changes do not require testing."
               circleci-agent step halt
             fi
-      - run:
-          name: Disable xdebug PHP extension
-          command: |
-            sudo rm -f /etc/php/*/mods-available/xdebug.ini
-            sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
-            sudo rm -f /etc/php/*/conf.d/*xdebug.ini
-            sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
-      - restore_cache:
-          keys:
-            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-v2-{{ .Branch }}
-      - run:
-          name: Install Node dependencies
-          command: |
-            PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-            yarn install --frozen-lockfile
-      - save_cache:
-          key: yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/project/node_modules
-            - ~/.cache/yarn
-            - ~/.cache/Cypress
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-      - run:
-          name: Install Composer dependencies
-          command: |
-            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
-            composer install
-      - save_cache:
-          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-          paths:
-            - ~/project/vendor
+      - disable_xdebug_php_extension
       - run:
           name: Waiting for MySQL to be ready
           command: |
@@ -628,41 +482,9 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "14:ee:bc:31:0f:50:7e:fe:8b:56:87:f8:56:db:48:5b"
-      - checkout
-      - run:
-          name: Disable xdebug PHP extension
-          command: |
-            sudo rm -f /etc/php/*/mods-available/xdebug.ini
-            sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
-            sudo rm -f /etc/php/*/conf.d/*xdebug.ini
-            sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
-      - restore_cache:
-          keys:
-            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-v2-{{ .Branch }}
-      - run:
-          name: Install Node dependencies
-          command: |
-            yarn install --frozen-lockfile
-      - save_cache:
-          key: yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/project/node_modules
-            - ~/.cache/yarn
-            - ~/.cache/Cypress
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-      - run:
-          name: Install Composer dependencies
-          command: |
-            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
-            composer install
-      - save_cache:
-          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-          paths:
-            - /home/circleci/project/vendor
+      - attach_workspace:
+          at: ~/
+      - disable_xdebug_php_extension
       - run:
           name: Generate the translations
           command: |
@@ -689,20 +511,15 @@ jobs:
     docker:
       - image: circleci/golang:latest-node-browsers-legacy
     steps:
-      - checkout
+      - attach_workspace:
+          at: ~/
       - run:
           name: Install PHP
           command: sudo apt-get install php libapache2-mod-php php-mbstring php-xml php-curl
       - run:
           name: Install gettext
           command: sudo apt-get install gettext
-      - run:
-          name: Disable xdebug PHP extension
-          command: |
-            sudo rm -f /etc/php/*/mods-available/xdebug.ini
-            sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
-            sudo rm -f /etc/php/*/conf.d/*xdebug.ini
-            sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
+      - disable_xdebug_php_extension
       - run:
           name: Install Composer
           command: |
@@ -710,33 +527,6 @@ jobs:
             php composer-setup.php
             php -r "unlink('composer-setup.php');"
             sudo mv composer.phar /usr/local/bin/composer
-      - restore_cache:
-          keys:
-            - yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-v2-{{ .Branch }}
-      - run:
-          name: Install Node dependencies
-          command: |
-            yarn install --frozen-lockfile
-      - save_cache:
-          key: yarn-deps-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/project/node_modules
-            - ~/.cache/yarn
-            - ~/.cache/Cypress
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-      - run:
-          name: Install Composer dependencies
-          command: |
-            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
-            composer install
-      - save_cache:
-          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-          paths:
-            - /home/circleci/project/vendor
       - run:
           name: Install ghr
           command: |
@@ -772,20 +562,15 @@ jobs:
     docker:
       - image: circleci/golang:latest-node-browsers-legacy
     steps:
-      - checkout
+      - attach_workspace:
+          at: ~/
       - run:
           name: Install SVN
           command: sudo apt-get update && sudo apt-get install subversion
       - run:
           name: Install PHP
           command: sudo apt-get install php libapache2-mod-php php-mbstring php-xml php-curl
-      - run:
-          name: Disable xdebug PHP extension
-          command: |
-            sudo rm -f /etc/php/*/mods-available/xdebug.ini
-            sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
-            sudo rm -f /etc/php/*/conf.d/*xdebug.ini
-            sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
+      - disable_xdebug_php_extension
       - run:
           name: Install Composer
           command: |
@@ -797,32 +582,6 @@ jobs:
           name: Install ghr
           command: |
             go get -u github.com/tcnksm/ghr
-      - restore_cache:
-          keys:
-            - npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
-            - npm-deps-{{ .Branch }}
-      - run:
-          name: Install node dependencies
-          command: |
-            npm install
-      - save_cache:
-          key: npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
-          paths:
-            - /home/circleci/project/node_modules
-            - /home/circleci/.npm
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-      - run:
-          name: Install composer dependencies
-          command: |
-            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
-            composer install
-      - save_cache:
-          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-          paths:
-            - /home/circleci/project/vendor
       - run:
           name: Build the plugin
           command: |
