@@ -107,7 +107,6 @@
 		"postcss": "7.0.13",
 		"postcss-color-function": "^4.1.0",
 		"postcss-loader": "^3.0.0",
-		"prettier-stylelint": "^0.4.2",
 		"react-flickity-component": "^3.4.0",
 		"react-google-maps": "^9.4.5",
 		"react-masonry-component": "^6.2.1",
