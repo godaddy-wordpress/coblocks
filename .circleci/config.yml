@@ -111,10 +111,6 @@ commands:
     description: ""
     steps:
       - run:
-          run: Copy CoBlocks to WordPress install
-          command: /
-            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
-      - run:
           name: Update hosts
           command: echo 127.0.0.1 coblocks.test | sudo tee -a /etc/hosts
       - run:
@@ -127,6 +123,10 @@ commands:
             ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=/tmp/wordpress
             ./vendor/bin/wp post generate --count=5 --path=/tmp/wordpress
             ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
+      - run:
+          name: Copy CoBlocks to WordPress install
+          command: |
+            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
 
 jobs:
 
