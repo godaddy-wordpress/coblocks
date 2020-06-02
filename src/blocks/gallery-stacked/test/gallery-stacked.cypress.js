@@ -2,16 +2,12 @@
  * Include our constants
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
-import 'cypress-file-upload';
 
 describe( 'Test CoBlocks Gallery Stacked Block', function() {
 	/**
 	 * Setup Gallery data
 	 */
 	const galleryData = {
-		fileName: '150x150.png',
-		imageBase: '150x150',
-		pathToFixtures: '../.dev/tests/cypress/fixtures/images/',
 		caption: 'Caption Here',
 	};
 
@@ -38,33 +34,24 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 	 * to successfully save the block without errors.
 	 */
 	it( 'Test stacked block saves with image upload.', function() {
-		const { fileName, imageBase, pathToFixtures } = galleryData;
+		const { imageBase } = helpers.upload.spec;
 		helpers.addBlockToPost( 'coblocks/gallery-stacked', true );
 
-		cy.get( '.wp-block[data-type="coblocks/gallery-stacked"]' )
-			.click();
+		cy.get( '.wp-block[data-type="coblocks/gallery-stacked"]' ).click();
 
-		cy.fixture( pathToFixtures + fileName, 'base64' ).then( ( fileContent ) => {
-			cy.get( 'div[data-type="coblocks/gallery-stacked"]' )
-				.find( 'div.components-drop-zone' ).first()
-				.upload(
-					{ fileContent, fileName, mimeType: 'image/png' },
-					{ subjectType: 'drag-n-drop', force: true, events: [ 'dragstart', 'dragover', 'drop' ] },
-				)
-				.wait( 2000 ); // Allow upload to finish.
+		helpers.upload.imageToBlock( 'coblocks/gallery-stacked' );
 
-			cy.get( '.coblocks-gallery--item' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
+		cy.get( '.coblocks-gallery--item img[src*="http"]' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
 
-			helpers.savePage();
+		helpers.savePage();
 
-			helpers.checkForBlockErrors( 'coblocks/gallery-stacked' );
+		helpers.checkForBlockErrors( 'coblocks/gallery-stacked' );
 
-			helpers.viewPage();
+		helpers.viewPage();
 
-			cy.get( '.coblocks-gallery--item' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
+		cy.get( '.coblocks-gallery--item' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
 
-			helpers.editPage();
-		} );
+		helpers.editPage();
 	} );
 
 	/**
