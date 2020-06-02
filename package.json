@@ -12,13 +12,13 @@
 		"url": "https://github.com/godaddy-wordpress/coblocks/issues"
 	},
 	"scripts": {
-		"setup": "composer install && npm install && npm run build && wp-scripts env install",
+		"setup": "composer install && yarn install && yarn run build && wp-scripts env install",
 		"start": "wp-scripts start --config .dev/config/webpack.config.js --progress",
 		"build": "wp-scripts build --config .dev/config/webpack.config.js",
 		"clean": "wp-scripts env stop && rm -rf build dist/*.* dist/js node_modules vendor wordpress",
 		"version": "grunt version && grunt update-pot && git add -A .",
 		"postversion": "git push && git push --tags",
-		"makepot": "./vendor/bin/wp i18n make-pot . --skip-audit --exclude=\".dev,.github,.wordpress-org,build,docs,dist,node_modules,vendor,wordpress\" --headers='{\"Last-Translator\":\"plugins@godaddy.com\",\"Report-Msgid-Bugs-To\":\"https://github.com/godaddy-wordpress/coblocks/issues\"}' --file-comment=\"Copyright (c) $(date +'%Y') GoDaddy Operating Company, LLC. All Rights Reserved.\" languages/coblocks.pot && npm run pot2json",
+		"makepot": "./vendor/bin/wp i18n make-pot . --skip-audit --exclude=\".dev,.github,.wordpress-org,build,docs,dist,node_modules,vendor,wordpress\" --headers='{\"Last-Translator\":\"plugins@godaddy.com\",\"Report-Msgid-Bugs-To\":\"https://github.com/godaddy-wordpress/coblocks/issues\"}' --file-comment=\"Copyright (c) $(date +'%Y') GoDaddy Operating Company, LLC. All Rights Reserved.\" languages/coblocks.pot && yarn run pot2json",
 		"pot2json": ".dev/bin/pot2json languages/coblocks.pot languages/coblocks.json",
 		"json2po": "cd languages && find . -name '*.json' ! -name 'coblocks*.json' -execdir /bin/bash -c 'FROM=\"$0\" && TO=\"coblocks-`basename $0 .json`.po\" && echo \"$FROM > $TO\" && ../.dev/bin/json2po coblocks.json $FROM $TO && msgmerge --previous $TO coblocks.pot > $TO-msgmerge && mv $TO-msgmerge $TO && if [[ \"$OSTYPE\" == \"darwin\"* ]]; then sed -i \"\" -e \"/^#, fuzzy$/d\" $TO; else sed -i -e \"/^#, fuzzy$/d\" $TO; fi;' '{}' \\;",
 		"po2mo": "cd languages && find . -name '*.po' -execdir /bin/bash -c 'FROM=\"$0\" && TO=\"`basename $0 .po`.mo\" && echo \"$FROM > $TO\" && msgfmt $FROM -o $TO' '{}' \\;",
@@ -36,7 +36,7 @@
 	"wp-env": {
 		"plugin-dir": "coblocks",
 		"plugin-name": "CoBlocks",
-		"welcome-build-command": "npm start"
+		"welcome-build-command": "yarn start"
 	},
 	"locales": {
 		"da_DK": "Dansk",
@@ -109,7 +109,6 @@
 		"postcss": "7.0.13",
 		"postcss-color-function": "^4.1.0",
 		"postcss-loader": "^3.0.0",
-		"prettier-stylelint": "^0.4.2",
 		"react-flickity-component": "^3.4.0",
 		"react-google-maps": "^9.4.5",
 		"react-masonry-component": "^6.2.1",
