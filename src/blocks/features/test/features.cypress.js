@@ -5,7 +5,7 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Features Block', function() {
 	beforeEach( function() {
-		helpers.addCoBlocksBlockToPage( true, 'features' );
+		helpers.addBlockToPost( 'coblocks/features', true );
 	} );
 
 	/**
@@ -14,7 +14,7 @@ describe( 'Test CoBlocks Features Block', function() {
 	 */
 	it( 'Test features block saves with empty values.', function() {
 		cy.get( '.wp-block-coblocks-features' ).should( 'exist' );
-		helpers.checkForBlockErrors( 'features' );
+		helpers.checkForBlockErrors( 'coblocks/features' );
 	} );
 
 	/**
@@ -34,7 +34,7 @@ describe( 'Test CoBlocks Features Block', function() {
 		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"]' ).click( { force: true } ).clear().type( 4 );
 		cy.get( '.wp-block-coblocks-feature' ).should( 'have.length', 4 );
 
-		helpers.checkForBlockErrors( 'features' );
+		helpers.checkForBlockErrors( 'coblocks/features' );
 	} );
 
 	/**
@@ -53,7 +53,7 @@ describe( 'Test CoBlocks Features Block', function() {
 			.should( 'have.css', 'background-color', 'rgb(255, 0, 0)' )
 			.should( 'have.css', 'color', 'rgb(255, 255, 255)' );
 
-		helpers.checkForBlockErrors( 'features' );
+		helpers.checkForBlockErrors( 'coblocks/features' );
 	} );
 
 	/**
@@ -65,26 +65,37 @@ describe( 'Test CoBlocks Features Block', function() {
 		cy.get( '.wp-block-coblocks-features' )
 			.should( 'have.class', 'my-custom-class' );
 
-		helpers.checkForBlockErrors( 'features' );
+		helpers.checkForBlockErrors( 'coblocks/features' );
 	} );
 
 	it( 'Updates the inner core/heading blocks when the "Heading Level" control is changed.', function() {
-		helpers.openSettingsPanel( /features settings/i );
+		cy.get( '.wp-block-coblocks-feature h4' ).should('exist');
 
-		const numberOfHeadings = Cypress.$( '[data-type="coblocks/feature"] [data-type="core/heading"]' ).length;
+		cy.get( '.wp-block-coblocks-features' ).click();
+		helpers.openHeadingToolbarAndSelect( 2 );
+		cy.get( '.wp-block-coblocks-feature h2' ).should('exist');
 
-		cy.get( '.components-coblocks-heading-toolbar [aria-label="Heading 6"]' ).click( { force: true } );
-		cy.get( '[data-type="coblocks/feature"] [data-type="core/heading"] h6' ).should( 'have.length', numberOfHeadings );
+		cy.get( '.wp-block-coblocks-features' ).click();
+		helpers.openHeadingToolbarAndSelect( 3 );
+		cy.get( '.wp-block-coblocks-feature h3' ).should('exist');
 
-		helpers.checkForBlockErrors( 'features' );
+		cy.get( '.wp-block-coblocks-features' ).click();
+		helpers.openHeadingToolbarAndSelect( 4 );
+		cy.get( '.wp-block-coblocks-feature h4' ).should('exist');
+
+		cy.get( '.wp-block-coblocks-features' ).click();
+		helpers.openHeadingToolbarAndSelect( 5 );
+		cy.get( '.wp-block-coblocks-feature h5' ).should('exist');
+
+		helpers.checkForBlockErrors( 'coblocks/features' );
 	} );
 
-	it( 'Matches snapshot', function() {
-		helpers.savePage();
+	// it( 'Matches snapshot', function() {
+	// 	helpers.savePage();
 
-		helpers.viewPage().then( () => {
-			Cypress.$( '#wpadminbar' ).hide();
-			cy.get( '.hentry' ).matchImageSnapshot();
-		} );
-	} );
+	// 	helpers.viewPage().then( () => {
+	// 		Cypress.$( '#wpadminbar' ).hide();
+	// 		cy.get( '.hentry' ).matchImageSnapshot();
+	// 	} );
+	// } );
 } );

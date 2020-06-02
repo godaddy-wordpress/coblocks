@@ -5,7 +5,7 @@ import * as helpers from '../../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Feature Block', function() {
 	beforeEach( function() {
-		helpers.addCoBlocksBlockToPage( true, 'features' );
+		helpers.addBlockToPost( 'coblocks/features', true );
 	} );
 
 	/**
@@ -14,7 +14,7 @@ describe( 'Test CoBlocks Feature Block', function() {
 	   */
 	it( 'Test feature block saves with empty values.', function() {
 		cy.get( '.wp-block-coblocks-feature' ).should( 'exist' );
-		helpers.checkForBlockErrors( 'feature' );
+		helpers.checkForBlockErrors( 'coblocks/feature' );
 	} );
 
 	/**
@@ -33,7 +33,7 @@ describe( 'Test CoBlocks Feature Block', function() {
 			.should( 'have.css', 'background-color', 'rgb(255, 0, 0)' )
 			.should( 'have.css', 'color', 'rgb(255, 255, 255)' );
 
-		helpers.checkForBlockErrors( 'feature' );
+		helpers.checkForBlockErrors( 'coblocks/feature' );
 	} );
 
 	/**
@@ -41,23 +41,21 @@ describe( 'Test CoBlocks Feature Block', function() {
    * Use one column to avoid confusion in the DOM.
    */
 	it( 'Test the feature block custom classes.', function() {
+		cy.get( '.wp-block-coblocks-feature' ).last().click( { force: true } );
 		cy.get( '.edit-post-sidebar' ).contains( /feature settings/i ).click(); //close feature settings panel
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'feature' );
 		cy.get( '.wp-block-coblocks-feature' ).last().should( 'have.class', 'my-custom-class' );
 
-		cy.get( '.wp-block-coblocks-feature' )
-			.should( 'have.class', 'my-custom-class' );
-
-		helpers.checkForBlockErrors( 'feature' );
+		helpers.checkForBlockErrors( 'coblocks/feature' );
 	} );
 
-	it( 'Matches snapshot', function() {
-		helpers.savePage();
+	// it( 'Matches snapshot', function() {
+	// 	helpers.savePage();
 
-		helpers.viewPage().then( () => {
-			Cypress.$( '#wpadminbar' ).hide();
-			cy.get( '.hentry' ).matchImageSnapshot();
-		} );
-	} );
+	// 	helpers.viewPage().then( () => {
+	// 		Cypress.$( '#wpadminbar' ).hide();
+	// 		cy.get( '.hentry' ).matchImageSnapshot();
+	// 	} );
+	// } );
 } );
