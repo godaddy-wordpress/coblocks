@@ -86,12 +86,8 @@ export function addBlockToPost( blockName, clearEditor = false ) {
  * From inside the WordPress editor open the CoBlocks Gutenberg editor panel
  */
 export function savePage() {
-	cy.get( '.edit-post-header__settings button.is-primary' ).click();
-
+	cy.get( '.edit-post-header__settings button.is-primary' ).first().click();
 	cy.get( '.components-snackbar-list__notice-container', { timeout: 10000 } ).should( 'be.visible' );
-
-	// Reload the page to ensure that we're not hitting any block errors
-	cy.reload();
 }
 
 /**
@@ -117,22 +113,22 @@ export function checkForBlockErrors( blockName ) {
 export function viewPage() {
 	cy.get( 'button[aria-label="Settings"]' ).then( ( settingsButton ) => {
 		if ( ! Cypress.$( settingsButton ).hasClass( 'is-pressed' ) && ! Cypress.$( settingsButton ).hasClass('is-toggled') ) {
-			cy.get( settingsButton ).click()
+			cy.get( settingsButton ).click();
 		}
-	})
+	} );
 
 	cy.get( 'button[data-label="Document"]' ).then( ( documentButton ) => {
-		if ( ! Cypress.$( documentButton ).hasClass('is-active') ) {
-			cy.get( documentButton ).click()
+		if ( ! Cypress.$( documentButton ).hasClass( 'is-active' ) ) {
+			cy.get( documentButton ).click();
 		}
-	})
+	} );
 
 	openSettingsPanel( /permalink/i );
 
-	cy.get( '.edit-post-post-link__link' ).then( ( pageLink ) => {
+	return cy.get( '.edit-post-post-link__link' ).then( ( pageLink ) => {
 		const linkAddress = Cypress.$( pageLink ).attr( 'href' );
 		cy.visit( linkAddress );
-	})
+	} );
 }
 
 /**
