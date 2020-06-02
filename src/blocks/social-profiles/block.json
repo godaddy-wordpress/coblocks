@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/social-profiles",
-	"category": "coblocks",
+	"category": "common",
 	"attributes": {
 		"align": {
 			"type": "string",

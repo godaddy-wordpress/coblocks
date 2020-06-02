@@ -114,7 +114,7 @@ class CoBlocks_Form {
 
 			wp_enqueue_script(
 				'coblocks-google-recaptcha',
-				CoBlocks()->asset_source( 'js' ) . 'coblocks-google-recaptcha' . COBLOCKS_ASSET_SUFFIX . '.js',
+				CoBlocks()->asset_source( 'js' ) . 'coblocks-google-recaptcha.js',
 				array( 'jquery', 'google-recaptcha' ),
 				COBLOCKS_VERSION,
 				true
@@ -148,10 +148,12 @@ class CoBlocks_Form {
 			'name',
 			'email',
 			'textarea',
+			'text',
 			'date',
 			'phone',
 			'radio',
 			'select',
+			'submit-button',
 			'checkbox',
 			'website',
 			'hidden',
@@ -163,7 +165,7 @@ class CoBlocks_Form {
 				"coblocks/field-${form_block}",
 				array(
 					'parent'          => array( 'coblocks/form' ),
-					'render_callback' => array( $this, "render_field_${form_block}" ),
+					'render_callback' => array( $this, sprintf( 'render_field_%s', str_replace( '-', '_', $form_block ) ) ),
 				)
 			);
 
@@ -179,26 +181,22 @@ class CoBlocks_Form {
 	/**
 	 * Render the form
 	 *
-	 * @param  array $atts    Block attributes.
-	 * @param  mixed $content Block content.
+	 * @param array $atts    Block attributes.
+	 * @param mixed $content Block content.
 	 *
 	 * @return mixed Form markup or success message when form submits successfully.
 	 */
 	public function render_form( $atts, $content ) {
 
-		$this->form_hash      = sha1( wp_json_encode( $atts ) . $content );
-		$submitted_hash       = filter_input( INPUT_POST, 'form-hash', FILTER_SANITIZE_STRING );
-		$recaptcha_site_key   = get_option( 'coblocks_google_recaptcha_site_key' );
-		$recaptcha_secret_key = get_option( 'coblocks_google_recaptcha_secret_key' );
+		$this->form_hash = sha1( $content );
+		$submitted_hash  = filter_input( INPUT_POST, 'form-hash', FILTER_SANITIZE_STRING );
 
 		ob_start();
-
 		?>
 
 		<div class="coblocks-form" id="<?php echo esc_attr( $this->form_hash ); ?>">
 
 			<?php
-
 			if ( $submitted_hash === $this->form_hash ) {
 
 				$submit_form = $this->process_form_submission( $atts );
@@ -210,28 +208,21 @@ class CoBlocks_Form {
 					print( '</div>' );
 
 					return ob_get_clean();
-
 				}
 			}
-
 			?>
 
-			<form action="<?php echo esc_url( sprintf( '%1$s#%2$s', set_url_scheme( untrailingslashit( get_the_permalink() ) ), $this->form_hash ) ); ?>" method="post">
+			<form action="<?php echo esc_url( sprintf( '%1$s#%2$s', set_url_scheme( get_the_permalink() ), $this->form_hash ) ); ?>" method="post">
 				<?php echo do_blocks( $content ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				<input class="coblocks-field verify" type="email" name="coblocks-verify-email" autocomplete="off" placeholder="<?php esc_attr_e( 'Email', 'coblocks' ); ?>" tabindex="-1">
-				<div class="coblocks-form__submit wp-block-button">
-					<?php $this->render_submit_button( $atts ); ?>
-					<?php wp_nonce_field( 'coblocks-form-submit', 'form-submit' ); ?>
-					<input type="hidden" name="action" value="coblocks-form-submit">
-					<input type="hidden" name="form-hash" value="<?php echo esc_attr( $this->form_hash ); ?>">
-					<?php
-					if ( $recaptcha_site_key && $recaptcha_secret_key ) {
-						?>
-						<input type="hidden" class="g-recaptcha-token" name="g-recaptcha-token" />
-						<?php
-					}
-					?>
-				</div>
+				<input type="hidden" name="form-hash" value="<?php echo esc_attr( $this->form_hash ); ?>">
+
+				<?php
+				// Output a submit button if it's not found in the block content.
+				if ( false === strpos( $content, 'coblocks-form__submit' ) ) :
+					echo $this->render_field_submit_button( $atts ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				endif;
+				?>
 			</form>
 
 		</div>
@@ -239,13 +230,12 @@ class CoBlocks_Form {
 		<?php
 
 		return ob_get_clean();
-
 	}
 
 	/**
 	 * Render the name field
 	 *
-	 * @param  array $atts    Block attributes.
+	 * @param array $atts Block attributes.
 	 *
 	 * @return mixed Markup for the name field.
 	 */
@@ -307,7 +297,7 @@ class CoBlocks_Form {
 	/**
 	 * Render the email field
 	 *
-	 * @param  array $atts    Block attributes.
+	 * @param array $atts Block attributes.
 	 *
 	 * @return mixed Markup for the email field.
 	 */
@@ -364,6 +354,37 @@ class CoBlocks_Form {
 	}
 
 	/**
+	 * Render the text field
+	 *
+	 * @param  array $atts    Block attributes.
+	 *
+	 * @return mixed Markup for the text field.
+	 */
+	public function render_field_text( $atts ) {
+
+		static $text_count = 1;
+
+		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Text', 'coblocks' );
+		$label_slug    = $text_count > 1 ? sanitize_title( $label . '-' . $text_count ) : sanitize_title( $label );
+		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
+
+		ob_start();
+
+		$this->render_field_label( $atts, $label, $text_count );
+
+		?>
+
+		<input type="text" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" id="<?php echo esc_attr( $label_slug ); ?>" class="coblocks-field coblocks-text" <?php echo esc_attr( $required_attr ); ?>>
+
+		<?php
+
+		$text_count++;
+
+		return ob_get_clean();
+
+	}
+
+	/**
 	 * Render the date field
 	 *
 	 * @param  array $atts Block attributes.
@@ -376,7 +397,7 @@ class CoBlocks_Form {
 
 		wp_enqueue_script(
 			'coblocks-datepicker',
-			CoBlocks()->asset_source( 'js' ) . 'coblocks-datepicker' . COBLOCKS_ASSET_SUFFIX . '.js',
+			CoBlocks()->asset_source( 'js' ) . 'coblocks-datepicker.js',
 			array( 'jquery', 'jquery-ui-datepicker' ),
 			COBLOCKS_VERSION,
 			true
@@ -473,9 +494,9 @@ class CoBlocks_Form {
 		foreach ( $the_options as $value ) {
 
 			printf(
-				'<label class="coblocks-radio-label">
-					<input type="radio" name="field-%1$s[value]" value="%2$s" class="radio"> %3$s
-				</label>',
+				'<input id="%1$s" type="radio" name="field-%2$s[value]" value="%3$s" class="radio">
+				<label class="coblocks-radio-label" for="%1$s">%4$s</label>',
+				esc_attr( $label_slug . '-' . sanitize_title( $value ) ),
 				esc_attr( $label_slug ),
 				esc_attr( $value ),
 				esc_html( $value )
@@ -583,9 +604,9 @@ class CoBlocks_Form {
 		foreach ( $the_options as $value ) {
 
 			printf(
-				'<label class="coblocks-checkbox-label">
-					<input type="checkbox" name="field-%1$s[value][]" value="%2$s" class="checkbox"> %3$s
-				</label>',
+				'<input id="%1$s" type="checkbox" name="field-%2$s[value][]" value="%3$s" class="checkbox">
+				<label class="coblocks-checkbox-label" for="%1$s">%4$s</label>',
+				esc_attr( $label_slug . '-' . sanitize_title( $value ) ),
 				esc_attr( $label_slug ),
 				esc_attr( $value ),
 				esc_html( $value )
@@ -729,29 +750,52 @@ class CoBlocks_Form {
 	 *
 	 * @return mixed Form submit button markup.
 	 */
-	public function render_submit_button( $atts ) {
+	public function render_field_submit_button( $atts ) {
 
-		$btn_text  = isset( $atts['submitButtonText'] ) ? $atts['submitButtonText'] : __( 'Submit', 'coblocks' );
-		$btn_class = isset( $atts['submitButtonClasses'] ) ? $atts['submitButtonClasses'] : '';
-		$styles    = '';
+		$btn_text             = isset( $atts['submitButtonText'] ) ? $atts['submitButtonText'] : __( 'Submit', 'coblocks' );
+		$btn_class            = isset( $atts['submitButtonClasses'] ) ? " {$atts['submitButtonClasses']}" : '';
+		$styles               = array();
+		$recaptcha_site_key   = get_option( 'coblocks_google_recaptcha_site_key' );
+		$recaptcha_secret_key = get_option( 'coblocks_google_recaptcha_secret_key' );
+
+		if ( isset( $atts['className'] ) ) {
+
+			$btn_class = str_replace(
+				array(
+					'is-style-fill',
+					'is-style-outline',
+					'is-style-circular',
+					'is-style-3d',
+					'is-style-shadow',
+				),
+				$atts['className'],
+				$btn_class
+			);
+		}
 
 		if ( isset( $atts['customBackgroundButtonColor'] ) ) {
-
-			$styles .= "background-color: {$atts['customBackgroundButtonColor']};";
-
+			$styles[] = "background-color: {$atts['customBackgroundButtonColor']};";
 		}
 
 		if ( isset( $atts['customTextButtonColor'] ) ) {
-
-			$styles .= "color: {$atts['customTextButtonColor']};";
-
+			$styles[] = "color: {$atts['customTextButtonColor']};";
 		}
 
+		ob_start();
 		?>
 
-		<button type="submit" class="wp-block-button__link <?php echo esc_attr( $btn_class ); ?>" style="<?php echo esc_attr( $styles ); ?>"><?php echo esc_html( $btn_text ); ?></button>
+		<div class="coblocks-form__submit wp-block-button">
+			<button type="submit" class="wp-block-button__link<?php echo esc_attr( $btn_class ); ?>" style="<?php echo esc_attr( implode( ' ', $styles ) ); ?>"><?php echo esc_html( $btn_text ); ?></button>
+			<?php wp_nonce_field( 'coblocks-form-submit', 'form-submit' ); ?>
+			<input type="hidden" name="action" value="coblocks-form-submit">
+
+			<?php if ( $recaptcha_site_key && $recaptcha_secret_key ) : ?>
+				<input type="hidden" class="g-recaptcha-token" name="g-recaptcha-token" />
+			<?php endif; ?>
+		</div>
 
 		<?php
+		return ob_get_clean();
 	}
 
 	/**

@@ -180,7 +180,7 @@ class GalleryImage extends Component {
 		};
 
 		// Disable reason: Each block can be selected by clicking on it and we should keep the same saved markup
-		/* eslint-disable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/onclick-has-role, jsx-a11y/click-events-have-key-events */
+		/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 		return (
 			<figure className={ className } tabIndex="-1" onKeyDown={ this.onKeyDown } ref={ this.bindContainer }>
 				{ isSelected &&
@@ -191,7 +191,7 @@ class GalleryImage extends Component {
 									icon={ verticalMoving ? 'arrow-up' : 'arrow-left' }
 									onClick={ ! isFirstItem && onMoveBackward }
 									className="coblocks-gallery-item__button"
-									label={ __( 'Move Image Backward', 'coblocks' ) }
+									label={ __( 'Move image backward', 'coblocks' ) }
 									aria-disabled={ isFirstItem }
 									disabled={ ! isSelected }
 								/>
@@ -199,7 +199,7 @@ class GalleryImage extends Component {
 									icon={ verticalMoving ? 'arrow-down' : 'arrow-right' }
 									onClick={ ! isLastItem && onMoveForward }
 									className="coblocks-gallery-item__button"
-									label={ __( 'Move Image Forward', 'coblocks' ) }
+									label={ __( 'Move image forward', 'coblocks' ) }
 									aria-disabled={ isLastItem }
 									disabled={ ! isSelected }
 								/>
@@ -210,7 +210,7 @@ class GalleryImage extends Component {
 								icon="no-alt"
 								onClick={ onRemove }
 								className="coblocks-gallery-item__button"
-								label={ __( 'Remove Image', 'coblocks' ) }
+								label={ __( 'Remove image', 'coblocks' ) }
 								disabled={ ! isSelected }
 							/>
 						</div>
@@ -244,7 +244,7 @@ class GalleryImage extends Component {
 				) : null }
 			</figure>
 		);
-		/* eslint-enable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/onclick-has-role, jsx-a11y/click-events-have-key-events */
+		/* eslint-enable jsx-a11y/no-noninteractive-element-interactions */
 	}
 }
 

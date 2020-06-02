@@ -47,7 +47,7 @@ class Edit extends Component {
 			this.props.clientId
 		)[ 0 ].innerBlocks;
 
-		innerItems.map( item => {
+		innerItems.forEach( ( item ) => {
 			if ( item.name === blockName ) {
 				dispatch( 'core/block-editor' ).updateBlockAttributes(
 					item.clientId,
@@ -62,7 +62,7 @@ class Edit extends Component {
 			this.props.clientId
 		)[ 0 ].innerBlocks;
 
-		const targetBlock = innerItems.filter( item => item.name === blockName );
+		const targetBlock = innerItems.filter( ( item ) => item.name === blockName );
 
 		if ( ! targetBlock.length && show ) {
 			const newBlock = wp.blocks.createBlock( blockName, blockAttributes );
@@ -76,7 +76,7 @@ class Edit extends Component {
 
 		if ( targetBlock.length && ! show ) {
 			dispatch( 'core/block-editor' ).removeBlocks(
-				targetBlock.map( item => item.clientId ),
+				targetBlock.map( ( item ) => item.clientId ),
 				false
 			);
 		}
@@ -166,7 +166,7 @@ class Edit extends Component {
 								icon="no-alt"
 								onClick={ () => setAttributes( { imageUrl: '' } ) }
 								className="coblocks-gallery-item__button"
-								label={ __( 'Remove Image', 'coblocks' ) }
+								label={ __( 'Remove image', 'coblocks' ) }
 								disabled={ ! isSelected }
 							/>
 						</div>
@@ -190,7 +190,7 @@ class Edit extends Component {
 				labels={ {
 					title: ' ',
 				} }
-				onSelect={ el => setAttributes( { imageUrl: el.url, imageAlt: el.alt } ) }
+				onSelect={ ( el ) => setAttributes( { imageUrl: el.url, imageAlt: el.alt } ) }
 			/>
 		);
 	}

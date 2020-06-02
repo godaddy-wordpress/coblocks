@@ -15,7 +15,7 @@ import { BackgroundControls } from '../../components/background';
  */
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { BlockControls } from '@wordpress/block-editor';
+import { BlockControls, BlockVerticalAlignmentToolbar } from '@wordpress/block-editor';
 import { Toolbar } from '@wordpress/components';
 
 class Controls extends Component {
@@ -47,11 +47,14 @@ class Controls extends Component {
 			clientId,
 			attributes,
 			setAttributes,
+			getBlocksByClientId,
+			updateBlockAttributes,
 		} = this.props;
 
 		const {
 			columns,
 			layout,
+			verticalAlignment,
 		} = attributes;
 
 		let selectedRows = 1;
@@ -80,13 +83,13 @@ class Controls extends Component {
 									isActive: key === layout,
 									onClick: () => {
 										const selectedWidth = key.toString().split( '-' );
-										const children = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId );
+										const children = getBlocksByClientId( clientId );
 										setAttributes( {
 											layout: key,
 										} );
 										if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
-											map( children[ 0 ].innerBlocks, ( { clientId }, index ) => (
-												wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { width: selectedWidth[ index ] } )
+											map( children[ 0 ].innerBlocks, ( blockProps, index ) => (
+												updateBlockAttributes( blockProps.clientId, { width: selectedWidth[ index ] } )
 											) );
 										}
 									},
@@ -95,6 +98,18 @@ class Controls extends Component {
 						>
 						</Toolbar>
 					}
+					<BlockVerticalAlignmentToolbar
+						onChange={ ( alignment ) => {
+							const children = getBlocksByClientId( clientId );
+							setAttributes( { verticalAlignment: alignment } );
+							if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
+								map( children[ 0 ].innerBlocks, ( blockProps, index ) => (
+									updateBlockAttributes( blockProps.clientId, { verticalAlignment: alignment } )
+								) );
+							}
+							} }
+						value={ verticalAlignment }
+					/>
 					{ layout &&
 						BackgroundControls( this.props )
 					}

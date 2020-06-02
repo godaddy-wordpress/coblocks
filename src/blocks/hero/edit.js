@@ -19,8 +19,9 @@ import { compose } from '@wordpress/compose';
 import { Component, Fragment } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { ResizableBox, Spinner } from '@wordpress/components';
+import { withDispatch, withSelect } from '@wordpress/data';
 import { isBlobURL } from '@wordpress/blob';
-
+ 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
  * The contents of the array should never change.
@@ -29,7 +30,7 @@ import { isBlobURL } from '@wordpress/blob';
  *
  * @constant
  * @type {string[]}
-*/
+ */
 const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/buttons', 'core/list', 'core/image', 'coblocks/alert', 'coblocks/gif', 'coblocks/social', 'coblocks/row', 'coblocks/column', 'coblocks/buttons' ];
 const TEMPLATE = [
 	[
@@ -112,8 +113,9 @@ export class Edit extends Component {
 	}
 
 	saveMeta( type ) {
-		const meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
-		const block = wp.data.select( 'core/block-editor' ).getBlock( this.props.clientId );
+		const { getEditedPostAttribute, getBlock, editPost } = this.props; 
+		const meta = getEditedPostAttribute( 'meta' );
+		const block = getBlock( this.props.clientId );
 		let dimensions = {};
 
 		if ( typeof this.props.attributes.coblocks !== 'undefined' && typeof this.props.attributes.coblocks.id !== 'undefined' ) {
@@ -133,16 +135,14 @@ export class Edit extends Component {
 			if ( typeof dimensions[ id ] === 'undefined' ) {
 				dimensions[ id ] = {};
 				dimensions[ id ][ type ] = {};
-			} else {
-				if ( typeof dimensions[ id ][ type ] === 'undefined' ) {
-					dimensions[ id ][ type ] = {};
-				}
+			} else if ( typeof dimensions[ id ][ type ] === 'undefined' ) {
+				dimensions[ id ][ type ] = {};
 			}
 
 			dimensions[ id ][ type ] = height;
 
 			// Save values to metadata.
-			wp.data.dispatch( 'core/editor' ).editPost( {
+			editPost( {
 				meta: {
 					_coblocks_responsive_height: JSON.stringify( dimensions ),
 				},
@@ -162,6 +162,7 @@ export class Edit extends Component {
 
 		const {
 			coblocks,
+			className,
 			layout,
 			fullscreen,
 			maxWidth,
@@ -185,7 +186,7 @@ export class Edit extends Component {
 			/>
 		);
 
-		let classes = 'wp-block-coblocks-hero';
+		let classes = classnames( 'wp-block-coblocks-hero', className );
 
 		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
 			classes = classnames( classes, `coblocks-hero-${ coblocks.id }` );
@@ -400,4 +401,25 @@ export class Edit extends Component {
 
 export default compose( [
 	applyWithColors,
+
+	withDispatch( ( dispatch ) => {
+		const { updateBlockAttributes, editPost } = dispatch( 'core/block-editor' );
+
+		return {
+			updateBlockAttributes,
+			editPost,
+		};
+	} ),
+
+	withSelect( ( select, props ) => {
+		const { getBlocks,  } = select( 'core/block-editor' );
+		const { getEditedPostAttribute } = select( 'core/editor' );
+		const innerBlocks = getBlocks( props.clientId );
+	
+		return {
+			innerBlocks,
+			getEditedPostAttribute,
+			getBlocks,
+		};
+	} )
 ] )( Edit );

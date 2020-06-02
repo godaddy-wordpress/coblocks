@@ -4,12 +4,6 @@
 import classnames from 'classnames';
 
 /**
- * Internal Dependencies
- */
-import './styles/editor.scss';
-import './styles/style.scss';
-
-/**
  * WordPress Dependencies
  */
 import { __ } from '@wordpress/i18n';
@@ -87,11 +81,11 @@ function addAttributes( settings ) {
 /**
  * Add custom CoBlocks attributes to selected blocks
  *
- * @param {function|Component} BlockEdit Original component.
+ * @param {Function} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
-const withAdvancedControls = createHigherOrderComponent( BlockEdit => {
-	return props => {
+const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
+	return ( props ) => {
 		const { name, clientId, attributes, setAttributes, isSelected } = props;
 
 		const { isStackedOnMobile, noBottomMargin, noTopMargin } = attributes;
@@ -106,7 +100,7 @@ const withAdvancedControls = createHigherOrderComponent( BlockEdit => {
 					<InspectorAdvancedControls>
 						{ hasStackedControl && (
 							<ToggleControl
-								label={ __( 'Stack on Mobile', 'coblocks' ) }
+								label={ __( 'Stack on mobile', 'coblocks' ) }
 								checked={ !! isStackedOnMobile }
 								onChange={ () =>
 									setAttributes( { isStackedOnMobile: ! isStackedOnMobile } )
@@ -122,7 +116,7 @@ const withAdvancedControls = createHigherOrderComponent( BlockEdit => {
 						) }
 						{ withBlockSpacing && (
 							<ToggleControl
-								label={ __( 'Remove Top Spacing', 'coblocks' ) }
+								label={ __( 'Remove top spacing', 'coblocks' ) }
 								checked={ !! noTopMargin }
 								onChange={ () =>
 									setAttributes( {
@@ -137,7 +131,7 @@ const withAdvancedControls = createHigherOrderComponent( BlockEdit => {
 						) }
 						{ withBlockSpacing && (
 							<ToggleControl
-								label={ __( 'Remove Bottom Spacing', 'coblocks' ) }
+								label={ __( 'Remove bottom spacing', 'coblocks' ) }
 								checked={ !! noBottomMargin }
 								onChange={ () => {
 									setAttributes( {
@@ -212,19 +206,19 @@ const enhance = compose(
 	 * "original" block is not the current one. Thus, an inexisting
 	 * `originalBlockClientId` prop signals that the block is valid.
 	 *
-	 * @param {Component} WrappedBlockEdit A filtered BlockEdit instance.
+	 * @param {Function} WrappedBlockEdit A filtered BlockEdit instance.
 	 *
-	 * @return {Component} Enhanced component with merged state data props.
+	 * @return {Function} Enhanced component with merged state data props.
 	 */
-	withSelect( select => {
+	withSelect( ( select ) => {
 		return {
 			selected: select( 'core/block-editor' ).getSelectedBlock(),
-			select: select,
+			select,
 		};
 	} )
 );
 
-const addEditorBlockAttributes = createHigherOrderComponent( BlockListBlock => {
+const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
 	return enhance( ( { select, ...props } ) => {
 		let wrapperProps = props.wrapperProps;
 		let customData = {};

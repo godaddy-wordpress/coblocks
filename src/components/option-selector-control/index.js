@@ -1,14 +1,19 @@
 /**
+ * External dependencies.
+ */
+import { kebabCase } from 'lodash';
+
+/**
  * WordPress dependencies
  */
 import { Component } from '@wordpress/element';
 import {
 	BaseControl,
-	PanelRow,
-	ButtonGroup,
 	Button,
-	Tooltip,
+	ButtonGroup,
+	PanelRow,
 	RangeControl,
+	Tooltip,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
@@ -51,12 +56,15 @@ const NONE_OPTION = {
 export default class OptionSelectorControl extends Component {
 	render() {
 		const {
-			label, options, currentOption,
-			showNoneOption,
-			showAdvancedControls,
-			advancedMinValue,
 			advancedMaxValue,
+			advancedMinValue,
+			currentOption,
+			label,
 			onChange,
+			options,
+			showAdvancedControls,
+			showIcons,
+			showNoneOption,
 		} = this.props;
 
 		let buttons = options || DEFAULT_OPTIONS;
@@ -70,16 +78,16 @@ export default class OptionSelectorControl extends Component {
 			<RangeControl
 				label={ label }
 				value={ currentOption }
-				onChange={ value => onChange( value ) }
+				onChange={ ( value ) => onChange( value ) }
 				min={ advancedMinValue }
 				max={ advancedMaxValue }
 			/> :
 
-			<BaseControl label={ label }>
+			<BaseControl id={ `coblocks-option-selector-${ kebabCase( label ) }` } label={ label }>
 				<PanelRow>
 					<ButtonGroup aria-label={ label }>
 
-						{ buttons.map( option => (
+						{ buttons.map( ( option ) => (
 							<Tooltip
 								key={ `option-${ option.value }` }
 								text={ option.tooltip }>
@@ -92,7 +100,7 @@ export default class OptionSelectorControl extends Component {
 									onClick={ () => onChange( option.value ) }
 									aria-label={ option.tooltip }>
 
-									{ option.label }
+									{ showIcons ? option.icon : option.label }
 
 								</Button>
 

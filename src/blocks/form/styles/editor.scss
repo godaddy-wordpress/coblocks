@@ -1,4 +1,5 @@
 .wp-block[data-type="coblocks/form"] {
+
 	.components-base-control,
 	.coblocks-option__input {
 		font-family: inherit;
@@ -32,6 +33,7 @@
 		}
 
 		.components-base-control {
+
 			&.coblocks-field-label__required {
 				color: $dark-gray-500;
 				margin-top: -5px;
@@ -67,6 +69,7 @@
 	}
 
 	.coblocks-field {
+
 		input,
 		textarea {
 			margin-bottom: 0;
@@ -116,6 +119,7 @@
 	div[data-type="coblocks/field-radio"].is-selected,
 	div[data-type="coblocks/field-checkbox"].is-typing,
 	div[data-type="coblocks/field-radio"].is-typing {
+
 		.is-inline {
 			display: block;
 
@@ -166,30 +170,45 @@
 	}
 }
 
+.block-editor-block-preview__container .coblocks-form__submit.wp-block-button {
+	text-align: center;
+}
+
+.wp-block[data-type="coblocks/form"] .coblocks-form__submit.wp-block-button .wp-block-button__link,
+.block-editor-block-preview__container .wp-block-button__link {
+
+	&.is-style-outline {
+		background-color: transparent;
+		border: 2px solid !important;
+	}
+
+	&.is-style-circular {
+		border-radius: 100px !important;
+	}
+
+	&.is-style-3d {
+		box-shadow: inset 0 -3px 0 0 rgba(0, 0, 0, 0.25);
+	}
+
+	&.is-style-shadow {
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.11), 0 1px 3px rgba(0, 0, 0, 0.075);
+	}
+}
+
 .wp-block[data-type="coblocks/field-select"] .coblocks-field-multiple__add-option {
 	margin-left: 0;
 }
 
+.coblocks-form__submit {
+	margin-top: 1em;
+}
+
 @import "notice";
 
-// Advanced forms filter.
-.components-coblocks-advanced-forms-cta {
-	h3 {
-		margin-bottom: 0.5em;
-	}
-}
-
 .edit-post-settings-sidebar__panel-block {
+
 	.components-block-coblocks-form-recaptcha-key__custom-input {
 		margin-bottom: 15px !important;
-	}
-}
-
-// Shim to fix styles in the previewer.
-.block-editor-inserter__preview-content .wp-block-coblocks-form {
-	.block-editor-block-list__layout {
-		margin-left: 0;
-		margin-right: 0;
 	}
 }
 
@@ -197,64 +216,21 @@
 	margin-left: 6px;
 }
 
-// Core themes.
-.is-twentynineteen {
-	.coblocks-form {
-		.components-text-control__input,
-		.components-textarea-control__input {
-			border-color: #ccc;
-			border-radius: 0;
-			padding: 1.2rem 0;
-		}
-	}
+// Shim to fix styles in the previewer.
+.block-editor-inserter__preview-content .wp-block-coblocks-form {
 
-	.coblocks-form__submit.wp-block-button {
-		margin-top: 0;
-	}
-}
-
-.coblocks-form__submit {
-	margin-top: 1em;
-}
-
-.is-twentyseventeen {
-	.coblocks-label {
-		font-weight: 800;
-	}
-
-	.coblocks-form__submit {
-		margin-top: -0.75em;
-	}
-}
-
-.is-twentysixteen {
-	.coblocks-form {
-		.components-text-control__input,
-		.components-textarea-control__input {
-			background-color: #f7f7f7;
-			border-color: #d1d1d1;
-			border-radius: 2px;
-			padding: 0.75rem 0;
-		}
-
-		.components-base-control {
-			margin-bottom: 0;
-
-			.components-base-control__field {
-				margin-bottom: 0;
-			}
-		}
-	}
-
-	.coblocks-form__submit.wp-block-button {
-		margin-top: 0;
+	.block-editor-block-list__layout {
+		margin-left: 0;
+		margin-right: 0;
 	}
 }
 
 // Added for Gutenberg 6.3+
 .block-editor-block-list__layout .block-editor-block-list__block[data-type="coblocks/form"].is-selected,
 .block-editor-block-list__layout .block-editor-block-list__block[data-type="coblocks/form"].has-child-selected {
+
 	.coblocks-form {
+
 		[data-block] {
 			margin-bottom: 42px;
 		}
@@ -262,23 +238,17 @@
 }
 
 .block-editor-block-list__layout .block-editor-block-list__block[data-type="coblocks/form"] .wp-block:first-child {
+
 	[data-block] {
 		margin-top: 2px;
 	}
 }
 
 .block-editor-block-list__layout
-	.block-editor-block-list__block[data-type="coblocks/form"].has-child-selected
-	> .block-editor-block-list__block-edit
-	> [data-block]
-	> div
-	.block-editor-inner-blocks,
-.block-editor-block-list__block[data-type="coblocks/form"].is-selected
-	> .block-editor-block-list__block-edit
-	> [data-block]
-	> div
-	> .block-editor-inner-blocks
-	.block-editor-block-list__layout {
+.block-editor-block-list__block[data-type="coblocks/form"].has-child-selected > .block-editor-block-list__block-edit > [data-block] > div
+.block-editor-inner-blocks,
+.block-editor-block-list__block[data-type="coblocks/form"].is-selected > .block-editor-block-list__block-edit > [data-block] > div > .block-editor-inner-blocks
+.block-editor-block-list__layout {
 	padding: 14px;
 	padding-bottom: 0;
 }

@@ -1,12 +1,32 @@
 .wp-block-coblocks-social {
 	&__button {
+
 		&:active {
 			animation: none !important;
+		}
+
+		&.is-empty {
+			opacity: 0.4 !important;
+		}
+
+		&.is-selected {
+			opacity: 1;
+		}
+
+		&:not(.is-selected):hover {
+			opacity: 100;
+		}
+
+		&:focus {
+			box-shadow: 0 0 0 1px $white, 0 0 0 3px theme(primary) !important;
+			outline: 2px solid transparent;
+			outline-offset: -2px;
 		}
 	}
 }
 
 .block-editor-block-styles {
+
 	.wp-block-coblocks-social {
 		align-content: center;
 		align-items: center;
@@ -17,6 +37,7 @@
 		text-align: center !important;
 
 		&.is-style-mask {
+
 			.wp-block-coblocks-social__icon {
 				height: 32px !important;
 				width: 32px !important;
@@ -25,16 +46,19 @@
 
 		&.is-style-text,
 		&.is-style-icon-and-text {
+
 			.wp-block-coblocks-social__button {
 				width: 61%;
 			}
 		}
 
 		&.is-style-circular {
+
 			.wp-block-coblocks-social__icon {
 				height: 18px !important;
 				width: 18px !important;
 			}
+
 			.wp-block-coblocks-social__button {
 				padding: 14px !important;
 			}
@@ -79,8 +103,10 @@
 	}
 
 	.wp-block-coblocks-social-profiles {
+
 		&.is-style-text,
 		&.is-style-icon-and-text {
+
 			.wp-block-coblocks-social__button {
 				width: 96%;
 			}
@@ -115,12 +141,14 @@
 }
 
 .edit-post-settings-sidebar__panel-block .components-social-icons-list {
+
 	.components-base-control {
 		margin-bottom: 8px;
 	}
 }
 
 .edit-post-settings-sidebar__panel-block .components-social-links-list {
+
 	.components-base-control {
 		margin-bottom: 8px;
 	}

@@ -53,7 +53,7 @@ const transforms = {
 		{
 			type: 'prefix',
 			prefix: ':carousel',
-			transform: function( content ) {
+			transform( content ) {
 				return createBlock( metadata.name, {
 					content,
 				} );
@@ -67,7 +67,7 @@ const transforms = {
 			'coblocks/gallery-stacked',
 			'coblocks/gallery-offset',
 			'core/gallery',
-		].map( x => {
+		].map( ( x ) => {
 			return {
 				type: 'block',
 				blocks: [ x ],

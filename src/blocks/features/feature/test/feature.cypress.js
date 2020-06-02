@@ -1,4 +1,4 @@
-/*
+/**
  * Include our constants
  */
 import * as helpers from '../../../../../.dev/tests/cypress/helpers';
@@ -44,6 +44,7 @@ describe( 'Test CoBlocks Feature Block', function() {
 		cy.get( '.edit-post-sidebar' ).contains( /feature settings/i ).click(); //close feature settings panel
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'feature' );
+		cy.get( '.wp-block-coblocks-feature' ).last().should( 'have.class', 'my-custom-class' );
 
 		cy.get( '.wp-block-coblocks-feature' )
 			.should( 'have.class', 'my-custom-class' );

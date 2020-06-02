@@ -1,4 +1,5 @@
 .components-panel__body {
+
 	.components-coblocks-dimensions-control {
 		position: relative;
 
@@ -190,7 +191,9 @@
 // Styles to handle Gutenberg < V6.2.0.
 // Should be able to deprecate when Gutenberg 6.2.0 is merged into WP core.
 .components-panel__body {
+
 	.components-coblocks-dimensions-control {
+
 		.components-font-size-picker__select {
 			margin-bottom: 0 !important;
 			width: 115px;

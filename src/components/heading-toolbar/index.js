@@ -13,7 +13,7 @@ import HeadingLevelIcon from './icon';
  */
 import { __, sprintf } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
-import { BaseControl, Toolbar } from '@wordpress/components';
+import { Toolbar } from '@wordpress/components';
 
 class HeadingToolbar extends Component {
 	createLevelControl( targetLevel, selectedLevel, onChange ) {
@@ -22,26 +22,30 @@ class HeadingToolbar extends Component {
 		return {
 			icon: <HeadingLevelIcon level={ targetLevel } isPressed={ isActive } />,
 			// translators: %s: heading level e.g: "1", "2", "3"
-			title: sprintf( __( 'Heading %d' ), targetLevel ),
+			title: sprintf( __( 'Heading %d', 'coblocks' ), targetLevel ),
 			isActive,
 			onClick: () => onChange( targetLevel ),
 		};
 	}
 
 	render() {
-		const { minLevel, maxLevel, selectedLevel, onChange } = this.props;
+		const {
+			isCollapsed = true,
+			minLevel,
+			maxLevel,
+			selectedLevel,
+			onChange,
+		} = this.props;
+
 		return (
-			<BaseControl
-				label={ __( 'Heading Level', 'coblocks' ) }
-				className="components-coblocks-heading-toolbar"
-			>
-				<Toolbar
-					icon={ <HeadingLevelIcon level={ selectedLevel } /> }
-					controls={ range( minLevel, maxLevel ).map( index =>
-						this.createLevelControl( index, selectedLevel, onChange )
-					) }
-				/>
-			</BaseControl>
+			<Toolbar
+				isCollapsed={ isCollapsed }
+				icon={ <HeadingLevelIcon level={ selectedLevel } /> }
+				controls={ range( minLevel, maxLevel ).map( ( index ) =>
+					this.createLevelControl( index, selectedLevel, onChange )
+				) }
+				label={ __( 'Change heading level' ) }
+			/>
 		);
 	}
 }

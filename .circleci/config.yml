@@ -16,7 +16,11 @@ workflows:
           filters:
             tags:
               only: /^(?!canary).*$/
-      - e2e:
+      - e2e-chrome:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+      - e2e-firefox:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -33,7 +37,8 @@ workflows:
             - php56
             - php73
             - jest
-            - e2e
+            - e2e-chrome
+            - e2e-firefox
           filters:
             tags:
               only: /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*)?(\+[0-9-]+(\.[0-9]+)*)?/ # Run on semantic version tags only
@@ -71,18 +76,15 @@ jobs:
           paths:
             - node_modules
       - run:
-          name: Install WP-CLI
-          command: |
-            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-            chmod +x wp-cli.phar
-            sudo mv wp-cli.phar /usr/local/bin/wp
-      - run:
           name: Build the plugin
-          command: |
-            ./node_modules/.bin/grunt build
+          command: npx wp-scripts build --config .dev/config/webpack.ci.config.js
+      - run:
+          name: "Validate Composer configuration"
+          command: composer validate --strict
       - run:
           name: "Install Dependencies"
           command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
@@ -109,6 +111,17 @@ jobs:
     steps:
       - checkout
       - run:
+          # Our primary container isn't MYSQL so run a sleep command until it's ready.
+          name: Waiting for MySQL to be ready
+          command: |
+            for i in `seq 1 10`;
+            do
+              nc -z 127.0.0.1 3306 && echo Success && exit 0
+              echo -n .
+              sleep 1
+            done
+            echo Failed waiting for MySQL && exit 1
+      - run:
           name: Disable xdebug PHP extension
           command: sudo rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
       - run:
@@ -126,23 +139,22 @@ jobs:
           command: |
             npm uninstall cypress
             npm install
+      - run:
+          name: Install MariaDB
+          command: |
+            sudo apt-get update
+            sudo apt-get install mariadb-client
       - save_cache:
           key: php73-build-dependency-cache--{{ checksum "package.json" }}
           paths:
             - node_modules
       - run:
-          name: Install WP-CLI
-          command: |
-            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-            chmod +x wp-cli.phar
-            sudo mv wp-cli.phar /usr/local/bin/wp
-      - run:
           name: Build the plugin
-          command: |
-            ./node_modules/.bin/grunt build
+          command: npx wp-scripts build --config .dev/config/webpack.ci.config.js
       - run:
           name: "Install Dependencies"
           command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
             bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
@@ -182,24 +194,26 @@ jobs:
           paths:
             - node_modules
       - run:
-          name: Run eslint
-          command: npx grunt eslint
-      - run:
           name: Run jest tests
-          command: JEST_JUNIT_OUTPUT_DIR="/tmp/artifacts/code-coverage/jest/" JEST_JUNIT_OUTPUT_NAME="results.xml" npm test -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html
+          command: JEST_JUNIT_OUTPUT_DIR="/tmp/artifacts/code-coverage/jest/" JEST_JUNIT_OUTPUT_NAME="results.xml" npm run test:unit -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html
       - store_artifacts:
           path: /tmp/artifacts/code-coverage/
           destination: jest-coverage
       - store_test_results:
           path: /tmp/artifacts/code-coverage/
 
-  e2e:
+  e2e-chrome:
     docker:
       - image: circleci/php:latest-node-browsers-legacy
       - image: circleci/mysql:5.7
     parallelism: 4
     steps:
       - checkout
+      - run:
+          name: "Setup Environment Variables"
+          command: |
+            echo "export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH" >> $BASH_ENV
+            source /home/circleci/.bashrc
       - run:
           name: Setup spec files to run based on git diff-tree
           command: bash .dev/bin/setup-test-specs.sh
@@ -225,141 +239,238 @@ jobs:
       - run:
           name: "Install Dependencies"
           command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
+            composer install
             bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
-          name: Install WP-CLI
-          command: |
-            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-            chmod +x wp-cli.phar
-            sudo mv wp-cli.phar /usr/local/bin/wp
-      - run:
           name: Build the plugin
           command: |
-            ./node_modules/.bin/grunt build
+            npx wp-scripts build --config .dev/config/webpack.ci.config.js
+            npx grunt clean:build
+            npx grunt copy:build
             cp -a ./build/coblocks /tmp/wordpress/wp-content/plugins/
       - run:
           name: "Install WordPress"
           command: |
-            wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass=''
-            wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email
-            wp plugin activate coblocks
-          path: /tmp/wordpress
+            ./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass='' --path=/tmp/wordpress
+            ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=/tmp/wordpress
+            ./vendor/bin/wp post generate --count=5 --path=/tmp/wordpress
+            ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
       - run:
-          name: "Start WPCLI Server"
-          command: sudo wp server --host=0.0.0.0 --port=80 --allow-root
-          path: /tmp/wordpress
+          name: "Install Mailhog"
+          command: bash .dev/bin/install-mailhog.sh
+      - run:
+          name: "Start Mailhog"
+          command: "MailHog"
           background: true
       - run:
-          name: "Run end to end tests (Cypress.io)"
+          name: "Start WPCLI Server"
+          command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root  --path=/tmp/wordpress
+          background: true
+      - run:
+          name: "Run end to end tests (Cypress.io) - Chrome"
           command: |
-            touch .dev/tests/cypress/wp_creds.json
-            echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > .dev/tests/cypress/wp_creds.json
-            ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel --spec "$(cat /tmp/specstring)"
-          path: /tmp/wordpress/wp-content/plugins/coblocks
+            touch cypress.env.json
+            echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
+            ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel --group e2e-chrome --spec "$(cat /tmp/specstring)"
+
+  e2e-firefox:
+    docker:
+      - image: circleci/php:latest-node-browsers
+      - image: circleci/mysql:5.7
+    parallelism: 4
+    steps:
+      - checkout
+      - run:
+          name: "Setup Environment Variables"
+          command: |
+            echo "export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH" >> $BASH_ENV
+            source /home/circleci/.bashrc
+      - run:
+          name: Setup spec files to run based on git diff-tree
+          command: bash .dev/bin/setup-test-specs.sh
+      - run:
+          name: Disable xdebug PHP extension
+          command: sudo rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - run:
+          name: Update hosts
+          command: echo 127.0.0.1 coblocks.test | sudo tee -a /etc/hosts
+      - run:
+          name: Update npm
+          command: sudo npm install -g npm@latest
+      - restore_cache:
+          key: e2e-dependency-cache--{{ checksum "package.json" }}
+      - run:
+          name: Install node packages
+          command: npm install
+      - save_cache:
+          key: e2e-dependency-cache--{{ checksum "package.json" }}
+          paths:
+            - node_modules
+            - ~/.cache
+      - run:
+          name: "Install Dependencies"
+          command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
+            composer install
+            bash .dev/bin/install-dependencies.sh
+            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
+      - run:
+          name: Build the plugin
+          command: |
+            npx wp-scripts build --config .dev/config/webpack.ci.config.js
+            npx grunt clean:build
+            npx grunt copy:build
+            cp -a ./build/coblocks /tmp/wordpress/wp-content/plugins/
+      - run:
+          name: "Install WordPress"
+          command: |
+            ./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass='' --path=/tmp/wordpress
+            ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=/tmp/wordpress
+            ./vendor/bin/wp post generate --count=5 --path=/tmp/wordpress
+            ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
+      - run:
+          name: "Install Mailhog"
+          command: bash .dev/bin/install-mailhog.sh
+      - run:
+          name: "Start Mailhog"
+          command: "MailHog"
+          background: true
+      - run:
+          name: "Start WPCLI Server"
+          command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root  --path=/tmp/wordpress
+          background: true
+      - run:
+          name: "Run end to end tests (Cypress.io) - Firefox"
+          command: |
+            touch cypress.env.json
+            echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
+            ./node_modules/.bin/cypress run --config integrationFolder=./ --browser firefox --record --parallel --group e2e-firefox --spec "$(cat /tmp/specstring)"
 
   i18n:
     docker:
-      - image: circleci/node:latest-browsers-legacy
+      - image: circleci/php:7.3-node-browsers-legacy
     steps:
       - add_ssh_keys:
           fingerprints:
             - "14:ee:bc:31:0f:50:7e:fe:8b:56:87:f8:56:db:48:5b"
       - checkout
       - run:
-          name: Update npm
-          command: sudo npm install -g npm@latest
-      - run:
-          name: Install PHP
-          command: sudo apt-get install php libapache2-mod-php php-mbstring
-      - run:
           name: Disable xdebug PHP extension
           command: |
             sudo rm -f /etc/php/*/mods-available/xdebug.ini
             sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
             sudo rm -f /etc/php/*/conf.d/*xdebug.ini
+            sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
+      - restore_cache:
+          keys:
+            - npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - npm-deps-{{ .Branch }}
       - run:
-          name: Install gettext
-          command: sudo apt-get install gettext
-      - run:
-          name: Install node packages
+          name: Install node dependencies
           command: |
-            npm uninstall cypress
             npm install
+      - save_cache:
+          key: npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          paths:
+          - /home/circleci/project/node_modules
+          - /home/circleci/.npm
+      - restore_cache:
+          keys:
+            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Branch }}
       - run:
-          name: Install WP-CLI
+          name: Install composer dependencies
           command: |
-            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-            chmod +x wp-cli.phar
-            sudo mv wp-cli.phar /usr/local/bin/wp
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
+            composer install
+      - save_cache:
+          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+          paths:
+          - /home/circleci/project/vendor
       - run:
           name: Generate the translations
           command: |
-            mv ../project ../coblocks
-            npm run babel:build
+            npx grunt update-pot
       - run:
           name: Deploy coblocks.pot/coblocks.json back to GitHub
           command: |
             export GIT_COMMIT_DESC=$(git log --format=oneline -n 1 $CIRCLE_SHA1)
             if [[ $GIT_COMMIT_DESC != *"skip i18n"* ]]; then
               git config --global user.email "plugins@godaddy.com"
-              git config --global user.name "GoDaddy Translator"
+              git config --global user.name "GoDaddy Translator Bot"
+              git checkout HEAD -- composer.lock
+              git checkout HEAD -- package-lock.json
               git add languages/coblocks.json
               git add languages/coblocks.pot
+              git status
               git commit -m "Update coblocks.pot/coblocks.json files [skip i18n]"
+              git reset --hard
+              git pull --rebase
               git push origin master --quiet
             fi
-          path: ~/coblocks
 
   canary-release:
     docker:
       - image: circleci/golang:latest-node-browsers-legacy
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "0e:f8:0a:19:88:42:c3:5a:b9:82:17:34:6b:40:68:21"
       - checkout
       - run:
-          name: Add CoBlocks i18n staging site to known_hosts
-          command: ssh-keyscan -H a90.8f7.myftpupload.com >> ~/.ssh/known_hosts
-      - run:
-          name: Update npm
-          command: sudo npm install -g npm@latest
-      - run:
-          name: Install Grunt.js
-          command: sudo npm install -g grunt-cli
-      - run:
           name: Install PHP
-          command: sudo apt-get install php libapache2-mod-php php-mbstring
+          command: sudo apt-get install php libapache2-mod-php php-mbstring php-xml php-curl
+      - run:
+          name: Install gettext
+          command: sudo apt-get install gettext
       - run:
           name: Disable xdebug PHP extension
           command: |
             sudo rm -f /etc/php/*/mods-available/xdebug.ini
             sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
             sudo rm -f /etc/php/*/conf.d/*xdebug.ini
+            sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
       - run:
-          name: Install gettext
-          command: sudo apt-get install gettext
-      - run:
-          name: Install WP-CLI
+          name: Install Composer
           command: |
-            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-            chmod +x wp-cli.phar
-            sudo mv wp-cli.phar /usr/local/bin/wp
+            wget https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer -O composer-setup.php
+            php composer-setup.php
+            php -r "unlink('composer-setup.php');"
+            sudo mv composer.phar /usr/local/bin/composer
+      - restore_cache:
+          keys:
+            - npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - npm-deps-{{ .Branch }}
+      - run:
+          name: Install node dependencies
+          command: |
+            npm install
+      - save_cache:
+          key: npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          paths:
+          - /home/circleci/project/node_modules
+          - /home/circleci/.npm
+      - restore_cache:
+          keys:
+            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Branch }}
+      - run:
+          name: Install composer dependencies
+          command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
+            composer install
+      - save_cache:
+          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+          paths:
+          - /home/circleci/project/vendor
       - run:
           name: Install ghr
           command: |
             go get -u github.com/tcnksm/ghr
       - run:
-          name: Install node packages
-          command: |
-            npm uninstall cypress
-            npm install
-      - run:
           name: Build the plugin
           command: |
             mkdir -p /tmp/artifacts
-            grunt build
+            npx grunt build
             COBLOCKS_VERSION_LINE=$(awk '/\* Version:/{ print NR; exit }' build/coblocks/class-coblocks.php)
             COBLOCKS_COMMIT_HASH=$(git rev-parse --verify HEAD | head -c 7)
             sed -i -e "${COBLOCKS_VERSION_LINE}s/$/-${COBLOCKS_COMMIT_HASH}/" build/coblocks/class-coblocks.php
@@ -372,13 +483,15 @@ jobs:
             cd build && zip -r coblocks-canary.zip coblocks
             mv coblocks-canary.zip /tmp/artifacts/coblocks-canary.zip
       - run:
-          name: Deploy plugin to the CoBlocks i18n staging site
-          command: |
-            scp -r /tmp/artifacts/coblocks-canary.zip ${STAGING_SITE_SSH_CREDS}:html/wp-content/
-            ssh ${STAGING_SITE_SSH_CREDS} 'cd html/wp-content && wp plugin install coblocks-canary.zip --force --activate --skip-themes --skip-plugins && rm -rf coblocks-canary.zip languages/plugins/coblocks-*'
-      - deploy:
           name: Create a canary release on GitHub
           command: ghr -t ${GH_ACCESS_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "Latest build of the master branch. This bleeding edge version is for testing purposes only and should not be used in production." -delete -prerelease -replace canary /tmp/artifacts/coblocks-canary.zip
+      - deploy:
+          name: Deploy CoBlocks canary to the WPNUX site
+          command: |
+            curl https://wpnux.godaddy.com/v2/webhook-install-canary.php \
+            -H 'Content-Type: application/json' \
+            -H "X-Authorization: Bearer ${WPNUX_SITE_X_AUTHORIZATION}" \
+            -d '[ "coblocks" ]'
 
   deploy:
     docker:
@@ -386,47 +499,61 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Update npm
-          command: sudo npm install -g npm@latest
-      - run:
-          name: Install Grunt.js
-          command: sudo npm install -g grunt-cli
-      - run:
           name: Install SVN
           command: sudo apt-get update && sudo apt-get install subversion
       - run:
           name: Install PHP
-          command: sudo apt-get install php libapache2-mod-php php-mbstring
+          command: sudo apt-get install php libapache2-mod-php php-mbstring php-xml php-curl
       - run:
           name: Disable xdebug PHP extension
           command: |
             sudo rm -f /etc/php/*/mods-available/xdebug.ini
             sudo rm -f /etc/php/*/mods-enabled/xdebug.ini
             sudo rm -f /etc/php/*/conf.d/*xdebug.ini
+            sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
       - run:
-          name: Install gettext
-          command: sudo apt-get install gettext
-      - run:
-          name: Install WP-CLI
+          name: Install Composer
           command: |
-            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-            chmod +x wp-cli.phar
-            sudo mv wp-cli.phar /usr/local/bin/wp
+            wget https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer -O composer-setup.php
+            php composer-setup.php
+            php -r "unlink('composer-setup.php');"
+            sudo mv composer.phar /usr/local/bin/composer
       - run:
           name: Install ghr
           command: |
             go get -u github.com/tcnksm/ghr
+      - restore_cache:
+          keys:
+            - npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - npm-deps-{{ .Branch }}
       - run:
-          name: Install node packages
+          name: Install node dependencies
           command: |
-            npm uninstall cypress
             npm install
+      - save_cache:
+          key: npm-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          paths:
+            - /home/circleci/project/node_modules
+            - /home/circleci/.npm
+      - restore_cache:
+          keys:
+            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Branch }}
+      - run:
+          name: Install composer dependencies
+          command: |
+            composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
+            composer install
+      - save_cache:
+          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+          paths:
+            - /home/circleci/project/vendor
       - run:
           name: Build the plugin
           command: |
             mkdir -p /tmp/artifacts
-            grunt build
-            grunt compress
+            npx grunt build
+            npx grunt compress
             mv build/*.zip /tmp/artifacts
       - deploy:
           name: Deploy the plugin

@@ -4,7 +4,8 @@
 import applyWithColors from './colors';
 import { BackgroundPanel } from '../../components/background';
 import DimensionsControl from '../../components/dimensions-control/';
-import HeadingToolbar from '../../components/heading-toolbar';
+import OptionSelectorControl from '../../components/option-selector-control';
+import gutterOptions from '../../utils/gutter-options';
 
 /**
  * WordPress dependencies
@@ -13,7 +14,7 @@ import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
-import { PanelBody, RangeControl, SelectControl, withFallbackStyles } from '@wordpress/components';
+import { PanelBody, RangeControl, withFallbackStyles } from '@wordpress/components';
 
 /**
  * Fallback styles
@@ -38,7 +39,6 @@ class Inspector extends Component {
 			attributes,
 			backgroundColor,
 			clientId,
-			onChangeHeadingLevel,
 			setAttributes,
 			setBackgroundColor,
 			setTextColor,
@@ -84,18 +84,10 @@ class Inspector extends Component {
 			paddingUnit,
 		} = attributes;
 
-		const gutterOptions = [
-			{ value: 'no', label: __( 'None', 'coblocks' ) },
-			{ value: 'small', label: __( 'Small', 'coblocks' ) },
-			{ value: 'medium', label: __( 'Medium', 'coblocks' ) },
-			{ value: 'large', label: __( 'Large', 'coblocks' ) },
-			{ value: 'huge', label: __( 'Huge', 'coblocks' ) },
-		];
-
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Features Settings', 'coblocks' ) }>
+					<PanelBody title={ __( 'Features settings', 'coblocks' ) }>
 						<RangeControl
 							label={ __( 'Columns', 'coblocks' ) }
 							value={ columns }
@@ -108,12 +100,10 @@ class Inspector extends Component {
 									setAttributes( {
 										gutter: 'no',
 									} );
-								} else {
-									if ( gutter === 'no' ) {
-										setAttributes( {
-											gutter: 'large',
-										} );
-									}
+								} else if ( gutter === 'no' ) {
+									setAttributes( {
+										gutter: 'large',
+									} );
 								}
 
 								wp.data.dispatch( 'core/block-editor' ).selectBlock( clientId );
@@ -121,21 +111,12 @@ class Inspector extends Component {
 							min={ 1 }
 							max={ 4 }
 						/>
-						{ columns >= 2 &&
-							<SelectControl
-								label={ __( 'Gutter', 'coblocks' ) }
-								value={ gutter }
-								options={ gutterOptions }
-								help={ __( 'Space between each column.', 'coblocks' ) }
-								onChange={ ( value ) => setAttributes( { gutter: value } ) }
-							/>
-						}
-						<HeadingToolbar
-							minLevel={ 1 }
-							maxLevel={ 7 }
-							selectedLevel={ attributes.headingLevel }
-							onChange={ onChangeHeadingLevel }
-						/>
+						{ columns >= 2 && <OptionSelectorControl
+							label={ __( 'Gutter', 'coblocks' ) }
+							currentOption={ gutter }
+							options={ gutterOptions }
+							onChange={ ( newGutter ) => setAttributes( { gutter: newGutter } ) }
+						/> }
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
 							label={ __( 'Padding', 'coblocks' ) }
@@ -180,7 +161,7 @@ class Inspector extends Component {
 						/>
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'coblocks' ) }
+						title={ __( 'Color settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
@@ -198,11 +179,11 @@ class Inspector extends Component {
 										setAttributes( { paddingSize: 'no' } );
 									}
 								},
-								label: __( 'Background Color', 'coblocks' ),
+								label: __( 'Background color', 'coblocks' ),
 							}, {
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color', 'coblocks' ),
+								label: __( 'Text color', 'coblocks' ),
 							},
 						] }
 					>

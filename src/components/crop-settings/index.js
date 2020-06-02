@@ -1,9 +1,4 @@
 /**
- * Styles
- */
-import './styles/editor.scss';
-
-/**
  * External dependencies
  */
 import classnames from 'classnames';
@@ -17,7 +12,7 @@ import icons from './icons';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, createRef } from '@wordpress/element';
+import { Component, Fragment, createRef } from '@wordpress/element';
 import { TextControl,
 	RangeControl,
 	ButtonGroup,
@@ -57,7 +52,7 @@ class CropSettings extends Component {
 
 	componentDidMount() {
 		this.setState( {
-			containerWidth: ( jQuery( this.imageContainer.current ).width() - 28 ),
+			containerWidth: ( this.imageContainer.current.clientWidth - 28 ),
 		} );
 
 		this.selectedAreaReference.current.addEventListener( 'wheel', this.handleMouseWheel );
@@ -264,10 +259,10 @@ class CropSettings extends Component {
 			height: imageHeight + 'px',
 		};
 
+		/* eslint-disable jsx-a11y/no-static-element-interactions */
 		return (
-			<div>
-				<div ref={ this.imageContainer } className={ mainClass } onMouseDown={ this.mouseDownListener }
-					style={ containerStyle }>
+			<Fragment>
+				<div ref={ this.imageContainer } className={ mainClass } onMouseDown={ this.mouseDownListener } style={ containerStyle }>
 					<div>
 						<img ref={ this.imageReference } src={ imageUrl } style={ style } alt={ __( 'Crop settings image placeholder', 'coblocks' ) } onLoad={ this.handleImageLoaded } />
 					</div>
@@ -278,7 +273,7 @@ class CropSettings extends Component {
 				<div className={ offsetClass }>
 					<TextControl
 						/* translators: label for horizontal positioning input */
-						label={ __( 'Horizontal Pos.', 'coblocks' ) }
+						label={ __( 'Horizontal pos.', 'coblocks' ) }
 						value={ self.state.x }
 						type={ 'number' }
 						min={ 0 }
@@ -287,7 +282,7 @@ class CropSettings extends Component {
 					/>
 					<TextControl
 						/* translators: label for vertical positioning input */
-						label={ __( 'Vertical Pos.', 'coblocks' ) }
+						label={ __( 'Vertical pos.', 'coblocks' ) }
 						value={ self.state.y }
 						type={ 'number' }
 						min={ 0 }
@@ -297,14 +292,14 @@ class CropSettings extends Component {
 				</div>
 				<RangeControl
 					/* translators: label for the control that allows zooming in on the image */
-					label={ __( 'Image Zoom', 'coblocks' ) }
+					label={ __( 'Image zoom', 'coblocks' ) }
 					className="components-coblocks-zoom-control"
 					value={ this.getCurrentScale() }
 					onChange={ ( val ) => this.setNewZoom( val, self.state.r ) }
 					min={ 100 }
 					max={ 1000 }
 				/>
-				<p>{ __( 'Image Orientation', 'coblocks' ) }</p>
+				<p>{ __( 'Image orientation', 'coblocks' ) }</p>
 				<div className="components-coblocks-rotate-control">
 					<ButtonGroup >
 						<IconButton
@@ -332,8 +327,9 @@ class CropSettings extends Component {
 						{ __( 'Reset', 'coblocks' ) }
 					</Button>
 				</div>
-			</div>
+			</Fragment>
 		);
+		/* eslint-enable jsx-a11y/no-static-element-interactions */
 	}
 }
 

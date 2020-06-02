@@ -1,10 +1,15 @@
 /**
+ * WordPress dependencies
+ */
+import { registerBlockCollection } from '@wordpress/blocks';
+
+/**
  * Determine if the block attributes are empty.
  *
  * @param {Object} attributes The block attributes to check.
- * @returns {Boolean} The empty state of the attributes passed.
+ * @return {boolean} The empty state of the attributes passed.
  */
-export const hasEmptyAttributes = attributes => {
+export const hasEmptyAttributes = ( attributes ) => {
 	return ! Object.entries( attributes )
 		.map( ( [ , value ] ) => {
 			if ( typeof value === 'string' ) {
@@ -21,5 +26,18 @@ export const hasEmptyAttributes = attributes => {
 
 			return !! value;
 		} )
-		.filter( value => value === true ).length;
+		.filter( ( value ) => value === true ).length;
 };
+
+/**
+ * Return bool depending on registerBlockCollection compatibility.
+ *
+ * @return {boolean} Value to indicate function support.
+ */
+export const supportsCollections = () => {
+	if ( typeof registerBlockCollection === 'function' ) {
+		return true;
+	}
+	return false;
+};
+

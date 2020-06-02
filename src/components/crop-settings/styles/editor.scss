@@ -29,6 +29,7 @@
 	}
 
 	&.is-zoomed div:first-child {
+
 		img {
 			filter: blur(6px) saturate(0.7) brightness(1.1);
 		}
@@ -36,6 +37,7 @@
 }
 
 .components-panel__body .components-coblocks-offset-control {
+
 	> .components-base-control {
 		margin-bottom: 15px;
 	}

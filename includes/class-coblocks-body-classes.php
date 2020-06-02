@@ -65,7 +65,7 @@ class CoBlocks_Body_Classes {
 	 * @return string
 	 */
 	public function theme_slug() {
-		return esc_attr( wp_get_theme( get_template() )->get( 'TextDomain' ) );
+		return esc_attr( wp_get_theme( get_template() )->get_template() );
 	}
 
 	/**

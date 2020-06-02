@@ -29,10 +29,6 @@
 		}
 	}
 
-	&__twitter-btn:not(.has-button-color) {
-		background: $color-twitter;
-	}
-
 	&__twitter-btn {
 		appearance: none;
 		border-radius: 4px;
@@ -53,6 +49,10 @@
 		white-space: normal;
 		word-break: break-all;
 
+		&:not(.has-button-color) {
+			background: $color-twitter;
+		}
+
 		&::before {
 			background-color: $white;
 			background-size: cover;
@@ -64,26 +64,6 @@
 			position: relative;
 			top: 4px;
 			width: 18px;
-		}
-
-		&:active::before {
-			animation: pulse 200ms;
-			animation-timing-function: ease-out;
-			animation-fill-mode: none;
-		}
-	}
-
-	@keyframes pulse {
-		0% {
-			transform: scale(1);
-		}
-
-		15% {
-			transform: scale(0.9);
-		}
-
-		100% {
-			transform: scale(1);
 		}
 	}
 }

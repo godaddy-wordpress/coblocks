@@ -48,7 +48,7 @@ class CoBlocksFieldMultiple extends Component {
 			inFocus = key + 1;
 		}
 
-		this.setState( { inFocus: inFocus } );
+		this.setState( { inFocus } );
 		this.props.setAttributes( { options: newOptions } );
 	}
 
@@ -109,10 +109,10 @@ class CoBlocksFieldMultiple extends Component {
 						<IconButton
 							className="coblocks-field-multiple__add-option"
 							icon="insert"
-							label={ 'radio' === type || 'select' === type ? __( 'Add Option', 'coblocks' ) : __( 'Add Checkbox', 'coblocks' ) }
+							label={ 'radio' === type || 'select' === type ? __( 'Add option', 'coblocks' ) : __( 'Add checkbox', 'coblocks' ) }
 							onClick={ this.addNewOption }
 						>
-							{ 'radio' === type || 'select' === type ? __( 'Add Option', 'coblocks' ) : __( 'Add Checkbox', 'coblocks' ) }
+							{ 'radio' === type || 'select' === type ? __( 'Add option', 'coblocks' ) : __( 'Add checkbox', 'coblocks' ) }
 						</IconButton>
 					) }
 				</BaseControl>

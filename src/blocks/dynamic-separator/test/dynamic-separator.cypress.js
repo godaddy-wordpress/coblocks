@@ -5,14 +5,14 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Dynamic Seperator Block', function() {
 	/**
-   * Test that we can add a dynamic separator block to the page
-   */
+	 * Test that we can add a dynamic separator block to the page
+	 */
 	it( 'Test dynamic separator block saves properly.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'dynamic-separator' );
+		helpers.addBlockToPost( 'coblocks/dynamic-separator', true );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'dynamic-separator' );
+		helpers.checkForBlockErrors( 'coblocks/dynamic-separator' );
 
 		helpers.viewPage();
 
@@ -23,10 +23,10 @@ describe( 'Test CoBlocks Dynamic Seperator Block', function() {
 	} );
 
 	/**
-   * Test dynamic separator styles
-   */
+	 * Test dynamic separator styles
+	 */
 	it( 'Test dynamic separator styles.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'dynamic-separator' );
+		helpers.addBlockToPost( 'coblocks/dynamic-separator', true );
 
 		helpers.openSettingsPanel( 'Styles' );
 
@@ -53,7 +53,7 @@ describe( 'Test CoBlocks Dynamic Seperator Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'dynamic-separator' );
+		helpers.checkForBlockErrors( 'coblocks/dynamic-separator' );
 
 		helpers.viewPage();
 
@@ -64,10 +64,10 @@ describe( 'Test CoBlocks Dynamic Seperator Block', function() {
 	} );
 
 	/**
-   * Test dynamic separator styles
-   */
+	 * Test dynamic separator styles
+	 */
 	it( 'Test dynamic separator colors.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'dynamic-separator' );
+		helpers.addBlockToPost( 'coblocks/dynamic-separator', true );
 
 		helpers.setColorSetting( 'color', '#55e7ff' );
 
@@ -83,7 +83,7 @@ describe( 'Test CoBlocks Dynamic Seperator Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'dynamic-separator' );
+		helpers.checkForBlockErrors( 'coblocks/dynamic-separator' );
 
 		helpers.viewPage();
 
@@ -96,12 +96,12 @@ describe( 'Test CoBlocks Dynamic Seperator Block', function() {
 	} );
 
 	/**
-   * Test that we can add a dynamic separator block to the page and alter it's height
-   */
+	 * Test that we can add a dynamic separator block to the page and alter it's height
+	 */
 	it( 'Test dynamic separator height increase.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'dynamic-separator' );
+		helpers.addBlockToPost( 'coblocks/dynamic-separator', true );
 
-		helpers.openSettingsPanel( 'Dynamic HR Settings' );
+		helpers.openSettingsPanel( 'Dynamic HR settings' );
 		cy.get( '.components-panel__body.is-opened input[type="number"]' )
 			.clear()
 			.type( 200 );
@@ -112,7 +112,7 @@ describe( 'Test CoBlocks Dynamic Seperator Block', function() {
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'dynamic-separator' );
+		helpers.checkForBlockErrors( 'coblocks/dynamic-separator' );
 
 		helpers.viewPage();
 
@@ -125,16 +125,16 @@ describe( 'Test CoBlocks Dynamic Seperator Block', function() {
 	} );
 
 	/**
-   * Test dynamic separator custom class
-   */
+	 * Test dynamic separator custom class
+	 */
 	it( 'Test dynamic separator custom class.', function() {
-		helpers.addCoBlocksBlockToPage( true, 'dynamic-separator' );
+		helpers.addBlockToPost( 'coblocks/dynamic-separator', true );
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'dynamic-separator' );
 
 		helpers.savePage();
 
-		helpers.checkForBlockErrors( 'dynamic-separator' );
+		helpers.checkForBlockErrors( 'coblocks/dynamic-separator' );
 
 		helpers.viewPage();
 

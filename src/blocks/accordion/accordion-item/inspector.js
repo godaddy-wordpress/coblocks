@@ -60,28 +60,28 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Accordion Item Settings', 'coblocks' ) }>
+					<PanelBody title={ __( 'Accordion Item settings', 'coblocks' ) }>
 						<ToggleControl
 							/* translators: visually display open as opposed to closed */
-							label={ __( 'Display Open', 'coblocks' ) }
+							label={ __( 'Display as open', 'coblocks' ) }
 							checked={ !! open }
 							help={ this.getDisplayOpenHelp }
 							onChange={ () => setAttributes( { open: ! open } ) }
 						/>
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'coblocks' ) }
+						title={ __( 'Color settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: backgroundColor.color,
 								onChange: this.setBorderColor(),
-								label: __( 'Background Color', 'coblocks' ),
+								label: __( 'Background color', 'coblocks' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Title Text Color', 'coblocks' ),
+								label: __( 'Text color', 'coblocks' ),
 							},
 						] }
 					>

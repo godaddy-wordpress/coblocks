@@ -31,6 +31,7 @@ function Save( { attributes } ) {
 		focalPoint,
 		hasParallax,
 		backgroundType,
+		verticalAlignment,
 	} = attributes;
 
 	const textClass = getColorClassName( 'color', textColor );
@@ -55,6 +56,7 @@ function Save( { attributes } ) {
 		{ 'has-margin': marginSize && marginSize !== 'no' },
 		{ [ `has-${ marginSize }-margin` ]: ! [ 'advanced' ].includes( marginSize ) },
 		{ 'is-stacked-on-mobile': isStackedOnMobile },
+		{ [ `are-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment },
 	];
 
 	const innerStyles = {

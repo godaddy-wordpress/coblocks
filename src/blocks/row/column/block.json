@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/column",
-	"category": "coblocks",
+	"category": "layout",
 	"attributes": {
 		"width": {
 			"type": "string"
@@ -12,6 +12,9 @@
 			"type": "string"
 		},
 		"customTextColor": {
+			"type": "string"
+		},
+		"verticalAlignment": {
 			"type": "string"
 		}
 	}

@@ -1,6 +1,8 @@
 .wp-block[data-type="coblocks/accordion"] {
+
 	&[data-align="wide"],
 	&[data-align="full"] {
+
 		.wp-block {
 			max-width: none;
 		}
@@ -9,15 +11,6 @@
 	&[data-align="full"] .wp-block-coblocks-accordion {
 		padding: 0 12px;
 	}
-
-	.block-editor-inner-blocks .block-list-appender {
-		display: none;
-	}
-}
-
-// The "Add Accordion Item" button
-.components-coblocks-add-accordion-item {
-	margin-top: -28px;
 }
 
 .components-coblocks-add-accordion-item__button.components-button {

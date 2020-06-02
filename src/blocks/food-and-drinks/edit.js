@@ -2,7 +2,8 @@
  * Internal dependencies.
  */
 import CustomAppender from './appender';
-import InspectorControls from './inspector';
+import Inspector from './inspector';
+import Controls from './controls';
 import icons from './icons';
 
 /**
@@ -17,9 +18,10 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { withSelect, dispatch, select } from '@wordpress/data';
+import { withDispatch, withSelect } from '@wordpress/data';
+import { createBlock } from '@wordpress/blocks';
 import { InnerBlocks } from '@wordpress/block-editor';
-const TokenList = wp.tokenList;
+import TokenList from '@wordpress/token-list';
 
 const ALLOWED_BLOCKS = [ 'coblocks/food-item' ];
 
@@ -93,26 +95,42 @@ function replaceActiveStyle( className, activeStyle, newStyle ) {
 	return list.value;
 }
 
-class FoodItem extends Component {
-	constructor( ) {
+class FoodAndDrinksEdit extends Component {
+	constructor() {
 		super( ...arguments );
 
-		this.updateInnerAttributes = this.updateInnerAttributes.bind( this );
+		this.insertNewItem = this.insertNewItem.bind( this );
+		this.onChangeHeadingLevel = this.onChangeHeadingLevel.bind( this );
+		this.setColumns = this.setColumns.bind( this );
+		this.setGutter = this.setGutter.bind( this );
 		this.toggleImages = this.toggleImages.bind( this );
 		this.togglePrices = this.togglePrices.bind( this );
-		this.setColumns = this.setColumns.bind( this );
+		this.updateInnerAttributes = this.updateInnerAttributes.bind( this );
 		this.updateStyle = this.updateStyle.bind( this );
-		this.insertNewItem = this.insertNewItem.bind( this );
+	}
+
+	componentDidUpdate( prevProps ) {
+		const { attributes } = this.props;
+		const activeStyle = getActiveStyle( layoutOptions, attributes.className );
+		const lastActiveStyle = getActiveStyle( layoutOptions, prevProps.attributes.className );
+
+		if ( activeStyle !== lastActiveStyle ) {
+			if ( 'list' === activeStyle.name ) {
+				this.setColumns( 1 );
+			}
+
+			if ( 'grid' === activeStyle.name ) {
+				this.setColumns( 2 );
+			}
+		}
 	}
 
 	updateInnerAttributes( blockName, newAttributes ) {
-		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
-			this.props.clientId
-		)[ 0 ].innerBlocks;
+		const { innerBlocks, updateBlockAttributes } = this.props;
 
-		innerItems.map( item => {
+		innerBlocks.forEach( ( item ) => {
 			if ( item.name === blockName ) {
-				dispatch( 'core/block-editor' ).updateBlockAttributes(
+				updateBlockAttributes(
 					item.clientId,
 					newAttributes
 				);
@@ -120,10 +138,17 @@ class FoodItem extends Component {
 		} );
 	}
 
+	onChangeHeadingLevel( headingLevel ) {
+		const { setAttributes } = this.props;
+
+		setAttributes( { headingLevel } );
+		this.updateInnerAttributes( 'coblocks/food-item', { headingLevel } );
+	}
+
 	toggleImages() {
 		const { attributes, setAttributes } = this.props;
 
-		const showImages = ! attributes.showImages;
+		const showImages = !attributes.showImages;
 		setAttributes( { showImages } );
 
 		this.updateInnerAttributes( 'coblocks/food-item', { showImage: showImages } );
@@ -132,7 +157,7 @@ class FoodItem extends Component {
 	togglePrices() {
 		const { attributes, setAttributes } = this.props;
 
-		const showPrices = ! attributes.showPrices;
+		const showPrices = !attributes.showPrices;
 		setAttributes( { showPrices } );
 
 		this.updateInnerAttributes( 'coblocks/food-item', { showPrice: showPrices } );
@@ -142,6 +167,12 @@ class FoodItem extends Component {
 		const { setAttributes } = this.props;
 
 		setAttributes( { columns: parseInt( value ) } );
+	}
+
+	setGutter( value ) {
+		const { setAttributes } = this.props;
+
+		setAttributes( { gutter: value } );
 	}
 
 	updateStyle( style ) {
@@ -158,13 +189,13 @@ class FoodItem extends Component {
 	}
 
 	insertNewItem() {
-		const { clientId, attributes } = this.props;
+		const { clientId, attributes, insertBlock, getBlockOrder } = this.props;
 
-		const blockOrder = select( 'core/block-editor' ).getBlockOrder();
+		const blockOrder = getBlockOrder();
 		const insertAtIndex = blockOrder.indexOf( clientId ) + 1;
 
 		const innerBlocks = TEMPLATE.map( ( [ blockName, blockAttributes ] ) =>
-			wp.blocks.createBlock(
+			createBlock(
 				blockName,
 				Object.assign( {}, blockAttributes, {
 					showImage: attributes.showImages,
@@ -173,13 +204,13 @@ class FoodItem extends Component {
 			)
 		);
 
-		const newItem = wp.blocks.createBlock(
+		const newItem = createBlock(
 			'coblocks/food-and-drinks',
 			attributes,
 			innerBlocks
 		);
 
-		dispatch( 'core/block-editor' ).insertBlock( newItem, insertAtIndex );
+		insertBlock( newItem, insertAtIndex );
 	}
 
 	render() {
@@ -187,15 +218,29 @@ class FoodItem extends Component {
 			className,
 			attributes,
 			isSelected,
-			clientId,
-			selectedParentClientId,
 		} = this.props;
 
 		const activeStyle = getActiveStyle( layoutOptions, className );
 
+		const {
+			columns,
+			gutter,
+		} = attributes;
+
+		const classes = classnames( className, {
+			'has-columns': columns > 1,
+			'has-responsive-columns': columns > 1,
+			[ `has-${columns}-columns` ]: columns > 1,
+			[ `has-${gutter}-gutter` ]: gutter,
+		} );
+
 		return (
 			<Fragment>
-				<InspectorControls
+				<Controls
+					{ ...this.props }
+					onChangeHeadingLevel={ this.onChangeHeadingLevel }
+				/>
+				<Inspector
 					attributes={ attributes }
 					activeStyle={ activeStyle }
 					layoutOptions={ layoutOptions }
@@ -203,35 +248,81 @@ class FoodItem extends Component {
 					onTogglePrices={ this.togglePrices }
 					onUpdateStyle={ this.updateStyle }
 					onSetColumns={ this.setColumns }
+					onSetGutter={ this.setGutter }
 				/>
-				<div
-					className={ classnames( className, {
-						'child-selected': isSelected || clientId === selectedParentClientId,
-					} ) }
-				>
+				<div className={ classes }>
 					<InnerBlocks
 						allowedBlocks={ ALLOWED_BLOCKS }
 						template={ TEMPLATE }
 						templateInsertUpdatesSelection={ false }
 					/>
-					{ ( isSelected || clientId === selectedParentClientId ) && (
+					{ isSelected &&
 						<CustomAppender onClick={ this.insertNewItem } />
-					) }
+					}
 				</div>
 			</Fragment>
 		);
 	}
 }
 
-const applyWithSelect = withSelect( () => {
-	const selectedClientId = select( 'core/block-editor' ).getBlockSelectionStart();
-	const parentClientId = select( 'core/block-editor' ).getBlockRootClientId(
-		selectedClientId
-	);
+export default compose( [
 
-	return {
-		selectedParentClientId: parentClientId,
-	};
-} );
+	withSelect( ( select, props ) => {
+		const {
+			getBlockOrder,
+			getBlockRootClientId,
+			getBlockSelectionStart,
+			getBlocks,
+			getBlocksByClientId,
+		} = select( 'core/block-editor' );
 
-export default compose( applyWithSelect )( FoodItem );
+		// Get clientId of the parent block.
+		const parentClientId = getBlockRootClientId( getBlockSelectionStart() );
+
+		return {
+			getBlockOrder,
+			getBlocksByClientId,
+			isSelected: props.isSelected || props.clientId === parentClientId,
+			innerBlocks: getBlocks( props.clientId ),
+		};
+	} ),
+
+	withDispatch( ( dispatch ) => {
+		const {
+			insertBlock,
+			insertBlocks,
+			updateBlockAttributes,
+		} = dispatch( 'core/block-editor' );
+
+		return {
+			insertBlock,
+			insertBlocks,
+			updateBlockAttributes,
+		};
+	} ),
+
+	// Ensure there is a minimum of one coblocks/food-item innerBlock per column set.
+	( WrappedComponent ) => ( ownProps ) => {
+		// This is a newly added block if we have zero innerBlocks. We want the TEMPLATE definition to be used in this case.
+		if ( ownProps.innerBlocks.length > 0 ) {
+			const foodItemBlocksCount = ownProps.innerBlocks.reduce( ( acc, cur ) => acc + ( cur.name === 'coblocks/food-item' ), 0 );
+
+			// Add a new block if the count is less than the columns set.
+			// We don't need a loop here because this will trigger a component update as soon as we insert a block (triggering this HOC again).
+			if ( foodItemBlocksCount < ownProps.attributes.columns ) {
+				ownProps.insertBlock(
+					createBlock( 'coblocks/food-item', {
+						showImage: ownProps.attributes.showImages,
+						showPrice: ownProps.attributes.showPrices,
+					} ),
+					ownProps.innerBlocks.length,
+					ownProps.clientId,
+					false
+				);
+			}
+		}
+
+		return <WrappedComponent { ...ownProps } />;
+	},
+
+] )( FoodAndDrinksEdit );

@@ -35,6 +35,7 @@
 		height: 100%;
 
 		> [data-block] {
+
 			@include break-small() {
 				display: flex;
 				height: 100%;
@@ -45,6 +46,7 @@
 
 	// Tweak editor styling of button block.
 	.wp-block[data-type="core/button"] {
+
 		.block-editor-block-list__block-edit::before {
 			display: none;
 		}
@@ -80,6 +82,7 @@
 	}
 
 	.block-editor-inner-blocks {
+
 		.block-editor-block-list__insertion-point {
 			display: none;
 		}
@@ -101,6 +104,10 @@
 		input[type="text"] {
 			width: 100%;
 		}
+	}
+
+	.components-placeholder.components-placeholder {
+		min-height: 120px;
 	}
 }
 

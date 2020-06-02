@@ -6,7 +6,7 @@ import { Fragment } from '@wordpress/element';
 import { PanelBody, ToggleControl, TextareaControl, ExternalLink, FocalPointPicker } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 
-const Inspector = props => {
+const Inspector = ( props ) => {
 	const {
 		attributes,
 		setAttributes,
@@ -15,9 +15,9 @@ const Inspector = props => {
 
 	return (
 		<InspectorControls>
-			<PanelBody title={ __( 'Service Settings', 'coblocks' ) }>
+			<PanelBody title={ __( 'Service settings', 'coblocks' ) }>
 				<ToggleControl
-					label={ __( 'Action Button', 'coblocks' ) }
+					label={ __( 'Display button', 'coblocks' ) }
 					help={
 						attributes.showCta ?
 							__( 'Showing the call to action button.', 'coblocks' ) :
@@ -28,9 +28,9 @@ const Inspector = props => {
 				/>
 			</PanelBody>
 			{ attributes.imageUrl &&
-				<PanelBody title={ __( 'Image Settings', 'coblocks' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Image settings', 'coblocks' ) } initialOpen={ false }>
 					<TextareaControl
-						label={ __( 'Alt Text (Alternative Text)', 'coblocks' ) }
+						label={ __( 'Alt text (alternative text)', 'coblocks' ) }
 						value={ attributes.imageAlt }
 						onChange={ ( value ) => setAttributes( { imageAlt: value } ) }
 						help={
@@ -43,7 +43,7 @@ const Inspector = props => {
 						}
 					/>
 					<FocalPointPicker
-						label={ __( 'Focal Point', 'coblocks' ) }
+						label={ __( 'Focal point', 'coblocks' ) }
 						url={ attributes.imageUrl }
 						value={ attributes.focalPoint }
 						onChange={ ( value ) => setAttributes( { focalPoint: value } ) }

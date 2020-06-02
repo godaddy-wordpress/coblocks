@@ -27,11 +27,15 @@ class CoBlocks_Accordion_IE_Support {
 
 	/**
 	 * Registers the plugin.
+	 *
+	 * @return CoBlocks_Accordion_IE_Support
 	 */
 	public static function register() {
 		if ( null === self::$instance ) {
 			self::$instance = new CoBlocks_Accordion_IE_Support();
 		}
+
+		return self::$instance;
 	}
 
 	/**
@@ -84,7 +88,7 @@ class CoBlocks_Accordion_IE_Support {
 
 			wp_enqueue_script(
 				$this->slug . '-accordion-polyfill',
-				$dir . $this->slug . '-accordion-polyfill' . COBLOCKS_ASSET_SUFFIX . '.js',
+				$dir . $this->slug . '-accordion-polyfill.js',
 				array(),
 				COBLOCKS_VERSION,
 				true

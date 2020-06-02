@@ -1,10 +1,14 @@
 {
 	"name": "coblocks/pricing-table",
-	"category": "coblocks",
+	"category": "layout",
 	"attributes": {
 		"count": {
 			"type": "number",
 			"default": 2
+		},
+		"gutter": {
+			"type": "string",
+			"default": "medium"
 		},
 		"contentAlign": {
 			"type": "string",

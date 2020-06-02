@@ -5,6 +5,7 @@
 	padding: 2em;
 
 	&:not(.has-background) {
+
 		&.is-style-warning {
 			background-color: $color-alert-warning-bg;
 		}
@@ -19,6 +20,7 @@
 	}
 
 	&:not(.has-text-color) {
+
 		&.is-style-warning {
 			color: $color-alert-warning-color;
 		}

@@ -22,6 +22,7 @@
 
 :-ms-fullscreen .components-coblocks-css-grid-selector,
 :root .components-coblocks-css-grid-selector {
+
 	.components-button-group {
 		display: flex;
 		flex-wrap: wrap;
@@ -35,6 +36,7 @@
 }
 
 .components-coblocks-css-grid-selector {
+
 	.components-button-group {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);

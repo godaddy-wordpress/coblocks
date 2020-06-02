@@ -86,4 +86,87 @@ describe( 'coblocks/hero', () => {
 			blockDOM.window.document.querySelector( '.wp-block-coblocks-hero__content' )
 		).toHaveStyle( 'max-width: 750px' );
 	} );
+
+	it( 'should render with backgroundColor attribute', () => {
+		block.attributes.backgroundColor = 'accent';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '"backgroundColor":"accent"' );
+		expect( serializedBlock ).toContain( 'has-accent-background' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with customBackgroundColor attribute', () => {
+		block.attributes.customBackgroundColor = '#5a4a4f';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '"customBackgroundColor":"#5a4a4f"' );
+		expect( serializedBlock ).toContain( 'has-background' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with textColor attribute', () => {
+		block.attributes.textColor = 'accent';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '"textColor":"accent"' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with customTextColor attribute', () => {
+		block.attributes.customTextColor = '#5a4a4f';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '"customTextColor":"#5a4a4f"' );
+		expect( serializedBlock ).toContain( 'has-text-color' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with className attribute', () => {
+		block.attributes.className = 'my-custom-class';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '"className":"my-custom-class"' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with contentAlign attribute', () => {
+		const alignOptions = [ 'left', 'center', 'right' ];
+		alignOptions.forEach( ( alignOption ) => {
+			block.attributes.contentAlign = alignOption;
+			serializedBlock = serialize( block );
+
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( `"contentAlign":"${ alignOption }"` );
+			expect( serializedBlock ).toContain( `has-${ alignOption }-content` );
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
+	} );
+
+	it( 'should render with fullscreen & layout attributes', () => {
+		const layoutOptions = [
+			'top-left', 'top-center', 'top-right',
+			'center-left', 'center-center', 'center-right',
+			'bottom-left', 'bottom-center', 'bottom-right',
+		];
+		layoutOptions.forEach( ( layoutOption ) => {
+			block.attributes.fullscreen = 'true';
+			block.attributes.layout = layoutOption;
+			serializedBlock = serialize( block );
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( '"fullscreen":"true"' );
+			expect( serializedBlock ).toContain( 'is-fullscreen' );
+			expect( serializedBlock ).toContain( `hero-${ layoutOption }-align` );
+
+			if ( layoutOption !== 'center-left' ) { // center-left === default layout
+				expect( serializedBlock ).toContain( `"layout":"${ layoutOption }"` );
+			}
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
+	} );
 } );

@@ -40,9 +40,11 @@
 
 	// Styling particular to the waves divider.
 	.divider--waves {
+
 		path:nth-child(1) {
 			opacity: 0.15;
 		}
+
 		path:nth-child(2) {
 			opacity: 0.3;
 		}

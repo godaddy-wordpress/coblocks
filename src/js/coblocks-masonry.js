@@ -1,3 +1,5 @@
+import jQuery from 'jquery';
+
 ( function( $ ) {
 	'use strict';
 
@@ -7,7 +9,7 @@
 		container.imagesLoaded( function() {
 			container.masonry( {
 				itemSelector: '.coblocks-gallery--item',
-				transitionDuration: '0.2s',
+				transitionDuration: '0',
 				percentPosition: true,
 			} );
 		} );

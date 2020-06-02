@@ -4,6 +4,8 @@
 import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
 import captionOptions from '../../components/block-gallery/options/caption-options';
 import SizeControl from '../../components/size-control';
+import OptionSelectorControl from '../../components/option-selector-control';
+import gutterOptions from '../../utils/gutter-options';
 
 /**
  * WordPress dependencies
@@ -11,7 +13,7 @@ import SizeControl from '../../components/size-control';
 import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, RangeControl, PanelRow, ToggleControl, ButtonGroup, Button, BaseControl, SelectControl } from '@wordpress/components';
+import { PanelBody, RangeControl, ToggleControl, SelectControl } from '@wordpress/components';
 
 /**
  * Inspector controls
@@ -49,8 +51,8 @@ class Inspector extends Component {
 
 	getCaptionsHelp( checked ) {
 		return checked ?
-			__( 'Showing captions for each media item.' ) :
-			__( 'Toggle to show media captions.' );
+			__( 'Showing captions for each media item.', 'coblocks' ) :
+			__( 'Toggle to show media captions.', 'coblocks' );
 	}
 
 	getLightboxHelp( checked ) {
@@ -74,106 +76,48 @@ class Inspector extends Component {
 			captionStyle,
 		} = attributes;
 
-		const gutterOptions = [
-			{
-				value: 'no',
-				label: __( 'None', 'coblocks' ),
-				shortName: __( 'None', 'coblocks' ),
-			},
-			{
-				value: 'small',
-				label: __( 'Small', 'coblocks' ),
-				/* translators: abbreviation for small size */
-				shortName: __( 'S', 'coblocks' ),
-			},
-			{
-				value: 'medium',
-				label: __( 'Medium', 'coblocks' ),
-				/* translators: abbreviation for medium size */
-				shortName: __( 'M', 'coblocks' ),
-			},
-			{
-				value: 'large',
-				label: __( 'Large', 'coblocks' ),
-				/* translators: abbreviation for large size */
-				shortName: __( 'L', 'coblocks' ),
-			},
-			{
-				value: 'huge',
-				label: __( 'Huge', 'coblocks' ),
-				/* translators: abbreviation for largest size */
-				shortName: __( 'XL', 'coblocks' ),
-			},
-		];
-
 		return (
 			<InspectorControls>
-				<PanelBody title={ __( 'Offset Settings' ) }>
-
+				<PanelBody title={ __( 'Offset settings', 'coblocks' ) }>
 					<SizeControl { ...this.props }
-						label={ __( 'Size' ) }
+						label={ __( 'Size', 'coblocks' ) }
 						type={ 'reverse-grid' }
 						onChange={ this.setSizeControl }
 						value={ gridSize }
 						reset={ false }
 					/>
-
-					<BaseControl label={ __( 'Gutter', 'coblocks' ) }>
-						<PanelRow>
-							<ButtonGroup aria-label={ __( 'Gutter', 'coblocks' ) }>
-								{ gutterOptions.map( ( option ) => {
-									const isCurrent = gutter === option.value;
-									return (
-										<Button
-											key={ `option-${ option.value }` }
-											isLarge
-											isSecondary={ ! isCurrent }
-											isPrimary={ isCurrent }
-											aria-pressed={ isCurrent }
-											onClick={ () => setAttributes( { gutter: option.value } ) }
-										>
-											{ option.shortName }
-										</Button>
-									);
-								} ) }
-							</ButtonGroup>
-						</PanelRow>
-					</BaseControl>
-
-					{ gutter !== 'no' &&
-						<RangeControl
-							label={ __( 'Rounded Corners' ) }
-							value={ radius }
-							onChange={ this.setRadiusTo }
-							min={ 0 }
-							max={ 20 }
-							step={ 1 }
-						/>
-					}
-
+					<OptionSelectorControl
+						label={ __( 'Gutter', 'coblocks' ) }
+						currentOption={ gutter }
+						options={ gutterOptions }
+						onChange={ ( gutter ) => setAttributes( { gutter } ) }
+					/>
+					{ gutter !== 'no' && <RangeControl
+						label={ __( 'Rounded corners', 'coblocks' ) }
+						value={ radius }
+						onChange={ this.setRadiusTo }
+						min={ 0 }
+						max={ 20 }
+						step={ 1 }
+					/> }
 					<ToggleControl
 						label={ __( 'Lightbox', 'coblocks' ) }
 						checked={ !! lightbox }
 						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
 						help={ this.getLightboxHelp }
 					/>
-
 					<ToggleControl
 						label={ __( 'Captions', 'coblocks' ) }
 						checked={ !! captions }
 						onChange={ () => setAttributes( { captions: ! captions } ) }
 						help={ this.getCaptionsHelp }
 					/>
-
-					{ captions &&
-						<SelectControl
-							label={ __( 'Caption Style', 'coblocks' ) }
-							value={ captionStyle }
-							onChange={ this.setCaptionStyleTo }
-							options={ captionOptions }
-						/>
-					}
-
+					{ captions && <SelectControl
+						label={ __( 'Caption style', 'coblocks' ) }
+						value={ captionStyle }
+						onChange={ this.setCaptionStyleTo }
+						options={ captionOptions }
+					/> }
 				</PanelBody>
 				<GalleryLinkSettings { ...this.props } />
 			</InspectorControls>

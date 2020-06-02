@@ -54,7 +54,7 @@ class PostCarousel extends Component {
 	componentDidMount() {
 		this.isStillMounted = true;
 		this.fetchRequest = apiFetch( {
-			path: addQueryArgs( '/wp-json/wp/v2/categories', CATEGORIES_LIST_QUERY ),
+			path: addQueryArgs( '/wp/v2/categories', CATEGORIES_LIST_QUERY ),
 		} ).then(
 			( categoriesList ) => {
 				if ( this.isStillMounted ) {
@@ -181,7 +181,7 @@ class PostCarousel extends Component {
 								{ __( 'No posts found. Start publishing or add posts from an RSS feed.', 'coblocks' ) }
 								<Button
 									className="components-placeholder__cancel-button"
-									title={ __( 'Retrieve an External Feed', 'coblocks' ) }
+									title={ __( 'Retrieve an external feed', 'coblocks' ) }
 									isLarge
 									isSecondary
 									onClick={ () => {
@@ -353,7 +353,7 @@ export default compose( [
 		}
 
 		return {
-			latestPosts: latestPosts,
+			latestPosts,
 		};
 	} ),
 ] )( PostCarousel );

@@ -19,26 +19,30 @@ class OriginalImage {
 				return;
 			}
 
-			jQuery.post( global.ajaxurl, {
-				action: 'coblocks_crop_settings_original_image',
-				nonce: coblocksBlockData.cropSettingsOriginalImageNonce,
-				id: id,
-			}, function( response ) {
-				if ( ! response.success ) {
-					reject();
-					return;
+			fetch( global.ajaxurl,
+				{
+					method: 'POST',
+					headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+					body: [ `action=${ 'coblocks_crop_settings_original_image' }`, `nonce=${ coblocksBlockData.cropSettingsOriginalImageNonce }`, `id=${ id }` ].join( '&' ),
 				}
+			)
+				.then( ( response ) => {
+					return response.json();
+				} )
+				.then( ( response ) => {
+					const data = response.data;
 
-				const data = response.data;
+					if ( ! data || ! data.url ) {
+						reject();
+						return;
+					}
 
-				if ( ! data || ! data.url ) {
-					reject();
-					return;
-				}
-
-				self.originalImageCache[ id ] = data.id;
-				resolve( data );
-			} );
+					self.originalImageCache[ id ] = data.id;
+					resolve( data );
+				} )
+				.catch( ( err ) => {
+					reject( err );
+				} );
 		} );
 
 		return self.urlsInProgress[ id ];

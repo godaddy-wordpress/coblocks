@@ -1,12 +1,22 @@
 .wp-block-coblocks-logos {
+
 	img:focus {
 		outline: none;
 	}
 
 	.block-editor-media-placeholder.is-appender {
+		margin-bottom: 0;
+		margin-top: 16px;
+		min-height: 100px;
+		outline: 1px dashed $dark-gray-150;
+
 		.components-placeholder__label,
 		.components-placeholder__instructions {
 			display: none;
+		}
+
+		.components-button {
+			margin-bottom: 1px;
 		}
 	}
 
@@ -16,16 +26,5 @@
 
 	.components-resizable-box__handle-right {
 		right: 14px;
-	}
-
-	.block-editor-media-placeholder.is-appender {
-		margin-bottom: 0;
-		margin-top: 16px;
-		min-height: 100px;
-		outline: 1px dashed $dark-gray-150;
-
-		.components-button {
-			margin-bottom: 1px;
-		}
 	}
 }

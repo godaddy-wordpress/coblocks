@@ -1,99 +1,138 @@
-/* global: Image */
-( function( $ ) {
+( function( ) {
 	'use strict';
 
-	const lightboxModals = $( '.has-lightbox' );
+	const lightboxModals = document.getElementsByClassName( 'has-lightbox' );
 
-	$.each( lightboxModals, function( index, lightbox ) {
+	Array.from(lightboxModals).forEach( ( lightbox, index ) => {
 		lightbox.className += ' lightbox-' + index + ' ';
 		renderLightboxModal( index );
-	} );
+	});
 
 	function renderLightboxModal( lightboxIndex ) {
-		const wrapper = $( '<div/>', { class: 'coblocks-lightbox' } );
-		const wrapperBackground = $( '<div/>', { class: 'coblocks-lightbox__background' } );
-		const modalHeading = $( '<div/>', { class: 'coblocks-lightbox__heading' } );
-		const close = $( '<button/>', { class: 'coblocks-lightbox__close' } );
-		const counter = $( '<span/>', { class: 'coblocks-lightbox__count' } );
-		const imageContainer = $( '<div/>', { class: 'coblocks-lightbox__image' } );
-		const image = $( '<img/>' );
-		const arrowLeftContainer = $( '<button/>', { class: 'coblocks-lightbox__arrow coblocks-lightbox__arrow--left' } );
-		const arrowRightContainer = $( '<button/>', { class: 'coblocks-lightbox__arrow coblocks-lightbox__arrow--right' } );
-		const arrowRight = $( '<div/>', { class: 'arrow-right' } );
-		const arrowLeft = $( '<div/>', { class: 'arrow-left' } );
+		const wrapper = document.createElement('div');
+		wrapper.setAttribute('class','coblocks-lightbox');
 
-		const images = $( `.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure img` );
+		const wrapperBackground = document.createElement('div');
+		wrapperBackground.setAttribute('class', 'coblocks-lightbox__background');
+
+		const modalHeading = document.createElement('div');
+		modalHeading.setAttribute('class','coblocks-lightbox__heading');
+
+		const close = document.createElement('button');
+		close.setAttribute('class','coblocks-lightbox__close');
+
+		const counter = document.createElement('span');
+		counter.setAttribute('class','coblocks-lightbox__count');
+
+		const imageContainer = document.createElement('div');
+		imageContainer.setAttribute('class', 'coblocks-lightbox__image')
+
+		const image = document.createElement('img');
+
+		const caption = document.createElement('figcaption');
+		caption.setAttribute('class', 'coblocks-lightbox__caption')
+
+		const arrowLeftContainer = document.createElement('button');
+		arrowLeftContainer.setAttribute('class', 'coblocks-lightbox__arrow coblocks-lightbox__arrow--left');
+
+		const arrowRightContainer = document.createElement('button');
+		arrowRightContainer.setAttribute('class', 'coblocks-lightbox__arrow coblocks-lightbox__arrow--right');
+
+		const arrowRight = document.createElement('div');
+		arrowRight.setAttribute('class', 'arrow-right');
+
+		const arrowLeft = document.createElement('div');
+		arrowLeft.setAttribute('class', 'arrow-left');
+
+		const images = document.querySelectorAll( `.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure img` );
+		const captions = document.querySelectorAll( `.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure figcaption` )
 		let index;
 
 		modalHeading.append( counter, close );
-		imageContainer.append( image );
+
+		imageContainer.append( image, caption );
 		arrowLeftContainer.append( arrowLeft );
 		arrowRightContainer.append( arrowRight );
+
 		wrapper.append( wrapperBackground, modalHeading, imageContainer, arrowLeftContainer, arrowRightContainer );
 
 		if ( images.length > 0 ) {
-			$( 'body' ).append( wrapper );
+			document.getElementsByTagName("BODY")[0].append( wrapper );
+		}
+
+		if ( captions.length > 0 ) {
+			Array.from(captions).forEach( function( captionElem, captionIndex ) {
+				captionElem.addEventListener('click',function(){
+					changeImage( captionIndex );
+				})
+			} );
 		}
 
 		const imagePreloader = {};
 
-		images.each( function( index, img ) {
-			imagePreloader[ `img-${ index }` ] = new window.Image();
-			imagePreloader[ `img-${ index }` ].src = img.attributes.src.value;
+		Array.from(images).forEach( function( img, imgIndex ) {
+			imagePreloader[ `img-${ imgIndex }` ] = new window.Image();
+			imagePreloader[ `img-${ imgIndex }` ].src = img.attributes.src.value;
+			imagePreloader[ `img-${ imgIndex }` ]['data-caption'] = 
+				( images[ imgIndex ] && images[ imgIndex ].nextElementSibling ) ? 
+					images[ imgIndex ].nextElementSibling.innerHTML : '';
 
-			$( img ).click( function() {
-				changeImage( index );
-			} );
+			img.addEventListener('click', function(){
+				changeImage( imgIndex );
+			})
 		} );
 
-		arrowLeftContainer.click( function() {
+		arrowLeftContainer.addEventListener('click', function() {
 			index = ( index === 0 ) ? ( images.length - 1 ) : ( index - 1 );
 			changeImage( index );
-		} );
-
-		arrowRightContainer.click( function() {
+		})
+		
+		arrowRightContainer.addEventListener('click', function() {
 			index = ( index === ( images.length - 1 ) ) ? 0 : ( index + 1 );
 			changeImage( index );
-		} );
+		})
 
-		wrapperBackground.click( function() {
-			wrapper.css( 'display', 'none' );
-		} );
+		wrapperBackground.addEventListener('click', function() {
+			wrapper.style.display = 'none';
+		})
 
-		close.click( function() {
-			wrapper.css( 'display', 'none' );
-		} );
+		close.addEventListener('click', function() {
+			wrapper.style.display = 'none';
+		})
+
 
 		function changeImage( imageIndex ) {
 			index = imageIndex;
-			wrapper.css( 'display', 'flex' );
-			wrapperBackground.css( 'background-image', 'url(' + imagePreloader[ `img-${ index }` ].src + ')' );
-			image.attr( 'src', imagePreloader[ `img-${ index }` ].src );
-			counter.html( ( index + 1 ) + ' / ' + images.length );
+			wrapper.style.display = 'flex';
+			wrapperBackground.style.backgroundImage = `url(${imagePreloader[ `img-${ index }` ].src})`;
+			image.src = imagePreloader[ `img-${ index }` ].src;
+			caption.textContent = imagePreloader[ `img-${ index }` ]['data-caption'];
+			counter.textContent = `${( index + 1 )} / ${images.length}`;
 		}
 
-		$( window ).keydown( function( event ) {
-			const lightboxDisplayValue = wrapper.css( 'display' );
+		document.onkeydown = function(e) {
+			const lightboxDisplayValue = wrapper.style.display;
 			const lightboxIsOpen = ( typeof lightboxDisplayValue !== typeof undefined && lightboxDisplayValue !== 'none' );
 			if ( lightboxIsOpen ) {
-				switch ( event.which ) {
+				e = e || window.event;
+				switch ( e.keyCode ) {
 					case 27 : // Esc key
 						close.trigger( 'click' );
 						break;
 					case 37 : // Arrow left or 'A' key.
-						arrowLeftContainer.trigger( 'click' );
+						arrowLeftContainer.click();
 						break;
 					case 65 : // 'A' key.
-						arrowLeftContainer.trigger( 'click' );
+						arrowLeftContainer.click();
 						break;
 					case 39 : // Arrow right.
-						arrowRightContainer.trigger( 'click' );
+						arrowRightContainer.click();
 						break;
 					case 68 : // 'D' key.
-						arrowRightContainer.trigger( 'click' );
+						arrowRightContainer.click();
 						break;
 				}
 			}
-		} );
+		};
 	}
-}( jQuery ) );
+}() );

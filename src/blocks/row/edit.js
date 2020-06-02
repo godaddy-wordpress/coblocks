@@ -3,6 +3,7 @@
  */
 import classnames from 'classnames';
 import map from 'lodash/map';
+import get from 'lodash/get';
 
 /**
  * Internal dependencies
@@ -12,6 +13,7 @@ import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
 import rowIcons from './icons';
+import { createBlock, registerBlockVariation } from '@wordpress/blocks';
 import { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../components/background';
 
 /**
@@ -20,7 +22,8 @@ import { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../co
 import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { BlockIcon, InnerBlocks } from '@wordpress/block-editor';
+import { withSelect, useDispatch, withDispatch } from '@wordpress/data';
+import { BlockIcon, InnerBlocks, __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 import { ButtonGroup, Button, IconButton, Tooltip, Placeholder, Spinner } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
 
@@ -36,6 +39,15 @@ class Edit extends Component {
 		};
 	}
 
+	componentDidUpdate( prevProps ) {
+		const { setAttributes, hasInnerBlocks } = this.props;
+		// Store the selected innerBlocks layout in state so that undo and redo functions work properly.
+		if ( prevProps.hasInnerBlocks && ! hasInnerBlocks ) {
+			this.setState( { layoutSelection: true } );
+			setAttributes( { layout: null, columns: null } );
+		}
+	}
+
 	numberToText( columns ) {
 		if ( columns === 1 ) {
 			return __( 'one', 'coblocks' );
@@ -48,39 +60,51 @@ class Edit extends Component {
 		}
 	}
 
+	createBlocksFromInnerBlocksTemplate( innerBlocksTemplate ) {
+		return map( innerBlocksTemplate, ( [ name, attributes, innerBlocks = [] ] ) => createBlock( name, attributes, this.createBlocksFromInnerBlocksTemplate( innerBlocks ) ) );
+	}
+
+	supportsBlockVariationPicker() {
+		return !! registerBlockVariation;
+	}
+
 	render() {
 		const {
 			attributes,
-			className,
 			isSelected,
 			setAttributes,
-			backgroundColor,
-			textColor,
+			className,
+			variations,
+			hasInnerBlocks,
+			defaultVariation,
+			replaceInnerBlocks,
+			blockType,
 		} = this.props;
 
 		const {
-			coblocks,
-			backgroundImg,
-			id,
 			columns,
 			layout,
+			id,
+			backgroundImg,
+			coblocks,
 			gutter,
-			paddingTop,
-			paddingRight,
-			paddingBottom,
-			paddingLeft,
+			paddingSize,
+			marginSize,
+			marginUnit,
 			marginTop,
 			marginRight,
 			marginBottom,
 			marginLeft,
 			paddingUnit,
-			marginUnit,
-			marginSize,
-			paddingSize,
-			isStackedOnMobile,
-			focalPoint,
-			hasParallax,
+			paddingTop,
 			backgroundType,
+			hasParallax,
+			focalPoint,
+			paddingRight,
+			paddingBottom,
+			isStackedOnMobile,
+			paddingLeft,
+			verticalAlignment,
 		} = attributes;
 
 		const dropZone = (
@@ -91,9 +115,10 @@ class Edit extends Component {
 		);
 
 		const columnOptions = [
-			{ columns: 2, name: __( 'Two Columns', 'coblocks' ), icon: rowIcons.colTwo },
-			{ columns: 3, name: __( 'Three Columns', 'coblocks' ), icon: rowIcons.colThree },
-			{ columns: 4, name: __( 'Four Columns', 'coblocks' ), icon: rowIcons.colFour },
+			{ columns: 1, name: __( 'One column', 'coblocks' ), icon: rowIcons.colOne, key: '100' },
+			{ columns: 2, name: __( 'Two columns', 'coblocks' ), icon: rowIcons.colTwo },
+			{ columns: 3, name: __( 'Three columns', 'coblocks' ), icon: rowIcons.colThree },
+			{ columns: 4, name: __( 'Four columns', 'coblocks' ), icon: rowIcons.colFour },
 		];
 
 		let selectedRows = 1;
@@ -102,7 +127,7 @@ class Edit extends Component {
 			selectedRows = parseInt( columns.toString().split( '-' ) );
 		}
 
-		if ( ! layout && this.state.layoutSelection ) {
+		if ( ! layout && this.state.layoutSelection && ! this.supportsBlockVariationPicker() ) {
 			return (
 				<Fragment>
 					{ isSelected && (
@@ -119,7 +144,7 @@ class Edit extends Component {
 						key="placeholder"
 						className="components-coblocks-row-placeholder"
 						icon={ <BlockIcon icon={ columns ? rowIcons.layout : rowIcons.row } /> }
-						label={ columns ? __( 'Row Layout', 'coblocks' ) : __( 'Row', 'coblocks' ) }
+						label={ columns ? __( 'Row layout', 'coblocks' ) : __( 'Row', 'coblocks' ) }
 						instructions={ columns ?
 							sprintf(
 								/* translators: %s: 'one' 'two' 'three' and 'four' */
@@ -130,9 +155,9 @@ class Edit extends Component {
 						}
 					>
 						{ ! columns ?
-							<ButtonGroup aria-label={ __( 'Select Row Columns', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
-								{ map( columnOptions, ( { name, key, icon, columns } ) => (
-									<Tooltip text={ name }>
+							<ButtonGroup aria-label={ __( 'Select row columns', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
+								{ map( columnOptions, ( option ) => (
+									<Tooltip text={ option.name }>
 										<div className="components-coblocks-row-placeholder__button-wrapper">
 											<Button
 												className="components-coblocks-row-placeholder__button block-editor-inner-blocks__template-picker-option block-editor-block-pattern-picker__pattern"
@@ -140,23 +165,23 @@ class Edit extends Component {
 												isSecondary
 												onClick={ () => {
 													setAttributes( {
-														columns: columns,
-														layout: columns === 1 ? key : null,
+														columns: option.columns,
+														layout: option.columns === 1 ? option.key : null,
 													} );
 
-													if ( columns === 1 ) {
+													if ( option.columns === 1 ) {
 														this.setState( { layoutSelection: false } );
 													}
 												} }
 											>
-												{ icon }
+												{ option.icon }
 											</Button>
 										</div>
 									</Tooltip>
 								) ) }
 							</ButtonGroup> :
 							<Fragment>
-								<ButtonGroup aria-label={ __( 'Select Row Layout', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
+								<ButtonGroup aria-label={ __( 'Select row layout', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
 									<IconButton
 										icon="exit"
 										className="components-coblocks-row-placeholder__back"
@@ -166,7 +191,7 @@ class Edit extends Component {
 											} );
 											this.setState( { layoutSelection: true } );
 										} }
-										label={ __( 'Back to Columns', 'coblocks' ) }
+										label={ __( 'Back to columns', 'coblocks' ) }
 									/>
 									{ map( layoutOptions[ selectedRows ], ( { name, key, icon } ) => (
 										<Tooltip text={ name }>
@@ -209,21 +234,22 @@ class Edit extends Component {
 		const innerClasses = classnames(
 			'wp-block-coblocks-row__inner',
 			...BackgroundClasses( attributes ), {
-				'has-text-color': textColor.color,
+				'has-text-color': this.props.textColor.color,
 				[ `has-${ gutter }-gutter` ]: gutter,
 				'has-padding': paddingSize && paddingSize !== 'no',
 				[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
 				'has-margin': marginSize && marginSize !== 'no',
 				[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'advanced',
 				'is-stacked-on-mobile': isStackedOnMobile,
+				[ `are-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment,
 			}
 		);
 
 		const innerStyles = {
-			backgroundColor: backgroundColor.color,
+			backgroundColor: this.props.backgroundColor.color,
 			backgroundImage: backgroundImg && backgroundType === 'image' ? `url(${ backgroundImg })` : undefined,
 			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
-			color: textColor.color,
+			color: this.props.textColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
 			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
@@ -234,36 +260,105 @@ class Edit extends Component {
 			marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
 		};
 
+		if ( hasInnerBlocks || !! layout ) {
+			const deprecatedInnerBlocks = () => (
+				<InnerBlocks
+					template={ template[ layout ] }
+					templateLock="all"
+					allowedBlocks={ allowedBlocks }
+					templateInsertUpdatesSelection={ columns === 1 }
+					renderAppender={ () => ( null ) }
+				/>
+			);
+
+			const variationInnerBlocks = () => (
+				<InnerBlocks
+					allowedBlocks={ allowedBlocks }
+					templateInsertUpdatesSelection={ columns === 1 }
+					renderAppender={ () => ( null ) }
+					templateLock="all" />
+			);
+
+			return (
+				<Fragment>
+					{ dropZone }
+					{ isSelected && (
+						<Controls
+							{ ...this.props }
+						/>
+					) }
+					{ isSelected && (
+						<Inspector
+							{ ...this.props }
+						/>
+					) }
+					<div className={ classes }>
+						{ isBlobURL( backgroundImg ) && <Spinner /> }
+						<div className={ innerClasses } style={ innerStyles }>
+							{ BackgroundVideo( attributes ) }
+							{ this.supportsBlockVariationPicker() ?
+								variationInnerBlocks() :
+								deprecatedInnerBlocks() }
+						</div>
+					</div>
+				</Fragment>
+			);
+		}
+
+		const blockVariationPickerOnSelect = ( nextVariation = defaultVariation ) => {
+			if ( nextVariation.attributes ) {
+				this.props.setAttributes( nextVariation.attributes );
+			}
+
+			if ( nextVariation.innerBlocks ) {
+				replaceInnerBlocks(
+					this.props.clientId,
+					this.createBlocksFromInnerBlocksTemplate( nextVariation.innerBlocks )
+				);
+			}
+		};
+
 		return (
 			<Fragment>
-				{ dropZone }
-				{ isSelected && (
-					<Controls
-						{ ...this.props }
-					/>
-				) }
-				{ isSelected && (
-					<Inspector
-						{ ...this.props }
-					/>
-				) }
-				<div className={ classes }>
-					{ isBlobURL( backgroundImg ) && <Spinner /> }
-					<div className={ innerClasses } style={ innerStyles }>
-						{ BackgroundVideo( attributes ) }
-						<InnerBlocks
-							template={ template[ layout ] }
-							templateLock="all"
-							allowedBlocks={ allowedBlocks }
-							templateInsertUpdatesSelection={ columns === 1 }
-							renderAppender={ () => ( null ) } />
-					</div>
-				</div>
+				<__experimentalBlockVariationPicker
+					icon={ get( blockType, [ 'icon', 'src' ] ) }
+					label={ get( blockType, [ 'title' ] ) }
+					instructions={ __( 'Select a variation to start with.', 'coblocks' ) }
+					variations={ variations }
+					allowSkip
+					onSelect={ ( nextVariation ) => blockVariationPickerOnSelect( nextVariation ) }
+				/>
 			</Fragment>
 		);
 	}
 }
 
-export default compose( [
-	applyWithColors,
-] )( Edit );
+const applyWithDispatch = withDispatch( ( dispatch ) => {
+	const { updateBlockAttributes } = dispatch( 'core/block-editor' );
+
+	return {
+		updateBlockAttributes, // passed to controls & inspector
+	};
+} );
+
+const applyWithSelect = withSelect( ( select, props ) => {
+	const { getBlocks, getBlocksByClientId } = select( 'core/block-editor' );
+	const { getBlockType, getBlockVariations, getDefaultBlockVariation } = select( 'core/blocks' );
+	const innerBlocks = getBlocks( props.clientId );
+	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
+
+	return {
+		// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
+		innerBlocks,
+		hasInnerBlocks: select( 'core/block-editor' ).getBlocks( props.clientId ).length > 0,
+
+		blockType: getBlockType( props.name ),
+		defaultVariation: typeof getDefaultBlockVariation === 'undefined' ? null : getDefaultBlockVariation( props.name ),
+		variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( props.name ),
+		replaceInnerBlocks,
+
+		getBlocksByClientId, // passed to controls & inspector
+	};
+} );
+
+export default compose( applyWithColors, applyWithSelect, applyWithDispatch )( Edit );

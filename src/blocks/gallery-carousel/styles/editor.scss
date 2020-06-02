@@ -1,4 +1,5 @@
 .wp-block[data-type="coblocks/gallery-carousel"] {
+
 	&.wp-block[data-align="full"] > .block-editor-block-list__block-edit figure {
 		width: auto;
 	}
@@ -8,8 +9,18 @@
 		height: 100%;
 	}
 
+	// Set the carousel to 100% height in the editor
+	.wp-block-coblocks-gallery-carousel {
+
+		&,
+		.coblocks-gallery {
+			height: 100%;
+		}
+	}
+
 	// Fixes issue with multiple dropzones displaying when dropping in an image.
 	.components-drop-zone.is-active {
+
 		+ .wp-block-coblocks-gallery-carousel div div div div div:last-child .components-drop-zone {
 			display: none;
 		}
@@ -21,6 +32,7 @@
 	}
 
 	.has-responsive-height {
+
 		> span .components-resizable-box__handle {
 			display: none !important;
 		}
@@ -41,6 +53,7 @@
 	}
 
 	.carousel-nav {
+
 		.coblocks--item-thumbnail {
 			opacity: 0.4;
 		}
@@ -62,6 +75,7 @@
 
 // Shim to fix styles in the previewer.
 .block-editor-inserter__preview-content .wp-block-coblocks-gallery-carousel {
+
 	.flickity-button:disabled {
 		opacity: 1;
 	}
@@ -69,8 +83,9 @@
 
 // Needed until GB 6.9 is merged into core or backward support.
 // Hide the placeholder when not selected.
-.block-editor-block-list__block[data-type="coblocks/gallery-carousel"]:not(.is-selected):not(.is-focused) {
-		div.components-form-file-upload {
-			display: none;
-		}
+.block-editor-block-list__block[data-type="coblocks/gallery-carousel"]:not(.is-selected):not(.is-focused) .coblocks-gallery {
+
+	div.components-form-file-upload {
+		display: none;
+	}
 }

@@ -13,7 +13,7 @@ const transforms = {
 		{
 			type: 'prefix',
 			prefix: ':feature',
-			transform: function( content ) {
+			transform( content ) {
 				return createBlock( metadata.name, {
 					content,
 					columns: 1,
@@ -23,13 +23,13 @@ const transforms = {
 		{
 			type: 'prefix',
 			prefix: ':features',
-			transform: function( content ) {
+			transform( content ) {
 				return createBlock( metadata.name, {
 					content,
 				} );
 			},
 		},
-		...[ 2, 3 ].map( columns => ( {
+		...[ 2, 3 ].map( ( columns ) => ( {
 			type: 'prefix',
 			prefix: Array( columns + 1 ).join( ':' ) + 'features',
 			transform( content ) {

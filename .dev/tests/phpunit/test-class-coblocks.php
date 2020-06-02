@@ -69,7 +69,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 		$reflection_method->invoke( coblocks() );
 
 		$expected = [
-			'version' => '1.20.1',
+			'version' => '1.26.3',
 			'plugin_dir'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_path( __FILE__ ) ),
 			'plugin_url'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_url( __FILE__ ) ),
 			'plugin_file' => str_replace( '.dev/tests/phpunit/test-class-coblocks.php', 'class-coblocks.php', __FILE__ ),
@@ -140,15 +140,6 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test the asset suffix returns .min
-	 */
-	public function test_min_asset_suffix() {
-
-		$this->assertEquals( COBLOCKS_ASSET_SUFFIX, '.min' );
-
-	}
-
-	/**
 	 * Test the asset source directory for js assets
 	 */
 	public function test_js_asset_source() {
@@ -185,49 +176,37 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test the block editor assets load correctly
-	 */
-	public function test_block_editor_assets() {
-
-		do_action( 'enqueue_block_editor_assets' );
-
-		global $wp_scripts;
-
-		$this->assertTrue( array_key_exists( 'coblocks-editor', $wp_scripts->registered ) );
-
-	}
-
-	/**
 	 * Test all expected final build assets exist
 	 */
 	public function test_final_build_assets_exist() {
 
 		$expected_assets = [
 			'js'  => [
-				'dist/js/coblocks-accordion-polyfill.min.js',
+				'dist/coblocks.js',
+				'dist/js/coblocks-accordion-polyfill.js',
+				'dist/js/coblocks-datepicker.js',
+				'dist/js/coblocks-fromEntries.js',
+				'dist/js/coblocks-google-maps.js',
+				'dist/js/coblocks-google-recaptcha.js',
+				'dist/js/coblocks-lightbox.js',
+				'dist/js/coblocks-masonry.js',
+				'dist/js/coblocks-slick-initializer-front.js',
+				'dist/js/coblocks-slick-initializer.js',
+				'dist/js/vendors/flickity.js',
+				'dist/js/vendors/slick.js',
 				'src/js/coblocks-accordion-polyfill.js',
-				'dist/blocks.build.js',
-				'dist/js/coblocks-masonry.min.js',
-				'src/js/coblocks-masonry.js',
-				'dist/js/vendors/flickity.min.js',
-				'src/js/vendors/flickity.js',
-				'dist/js/vendors/slick.min.js',
-				'src/js/vendors/slick.js',
-				'dist/js/coblocks-slick-initializer-front.min.js',
-				'src/js/coblocks-slick-initializer-front.js',
-				'dist/js/coblocks-lightbox.min.js',
-				'src/js/coblocks-lightbox.js',
-				'dist/js/coblocks-google-recaptcha.min.js',
-				'src/js/coblocks-google-recaptcha.js',
-				'dist/js/coblocks-datepicker.min.js',
 				'src/js/coblocks-datepicker.js',
-				'dist/js/coblocks-google-maps.min.js',
+				'src/js/coblocks-fromEntries.js',
 				'src/js/coblocks-google-maps.js',
+				'src/js/coblocks-google-recaptcha.js',
+				'src/js/coblocks-lightbox.js',
+				'src/js/coblocks-masonry.js',
+				'src/js/coblocks-slick-initializer-front.js',
+				'src/js/coblocks-slick-initializer.js',
 			],
 			'css' => [
-				'dist/blocks.style.build.css',
-				'dist/blocks.editor.build.css',
-				// 'dist/utilities.style.build.css',
+				'dist/coblocks-editor.css',
+				'dist/coblocks-style.css',
 			],
 		];
 
@@ -235,7 +214,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 
 			foreach ( $assets as $path_to_asset ) {
 
-				$minfied_asset_string = ( false !== strpos( $path_to_asset, '.min' ) ) ? 'Minified' : 'Unminified';
+				$minfied_asset_string = ( false !== strpos( $path_to_asset, 'dist/' ) ) ? 'Minified' : 'Unminified';
 
 				$this->assertTrue(
 					file_exists( COBLOCKS_PLUGIN_DIR . $path_to_asset ),

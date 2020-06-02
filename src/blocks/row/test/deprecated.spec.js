@@ -9,6 +9,7 @@ const variations = {
 	className: [ undefined, '', 'random classes' ],
 	anchor: [ undefined, '' ], // TODO: figure out how to test this core attribute.
 	align: [ '', 'wide', 'full', 'left', 'center', 'right' ],
+	verticalAlignment: [ undefined, 'top', 'center', 'bottom' ],
 	gutter: [ 'none', 'small', 'medium', 'large', 'xlarge' ],
 	layout: [ undefined, '', '100', '50-50', '25-75', '75-25', '66-33', '33-66', '33-33-33', '50-25-25', '25-25-50', '25-50-25', '20-60-20', '25-25-25-25', '40-20-20-20', '20-20-20-40' ],
 	columns: [ 1, 2, 3, 4 ],

@@ -1,15 +1,9 @@
 /**
- * Styles.
- */
-import './styles/editor.scss';
-import './styles/style.scss';
-
-/**
  * Internal dependencies
  */
 import edit from './edit';
 import icon from './icon';
-import patterns from './patterns';
+import variations from './variations';
 
 /**
  * WordPress dependencies
@@ -22,7 +16,7 @@ import { InnerBlocks } from '@wordpress/block-editor';
  */
 const metadata = {
 	name: 'coblocks/form',
-	category: 'coblocks',
+	category: 'layout',
 	attributes: {
 		subject: {
 			type: 'string',
@@ -31,19 +25,6 @@ const metadata = {
 		to: {
 			type: 'string',
 			default: null,
-		},
-		submitButtonText: {
-			type: 'string',
-			default: null,
-		},
-		customBackgroundButtonColor: {
-			type: 'string',
-		},
-		customTextButtonColor: {
-			type: 'string',
-		},
-		submitButtonClasses: {
-			type: 'string',
 		},
 	},
 };
@@ -76,7 +57,7 @@ const settings = {
 		},
 	},
 	attributes,
-	patterns,
+	variations,
 	edit,
 	save: InnerBlocks.Content,
 };

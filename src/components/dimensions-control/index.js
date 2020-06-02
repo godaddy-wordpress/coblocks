@@ -8,7 +8,6 @@ import map from 'lodash/map';
  * Internal dependencies
  */
 import icons from './icons';
-import './styles/editor.scss';
 import DimensionsSelect from './dimensions-select';
 
 /**
@@ -190,10 +189,8 @@ class DimensionsControl extends Component {
 			if ( typeof dimensions[ id ] === 'undefined' ) {
 				dimensions[ id ] = {};
 				dimensions[ id ][ this.props.type ] = {};
-			} else {
-				if ( typeof dimensions[ id ][ this.props.type ] === 'undefined' ) {
-					dimensions[ id ][ this.props.type ] = {};
-				}
+			} else if ( typeof dimensions[ id ][ this.props.type ] === 'undefined' ) {
+				dimensions[ id ][ this.props.type ] = {};
 			}
 
 			if ( this.props.dimensionSize === 'advanced' ) {
@@ -397,12 +394,12 @@ class DimensionsControl extends Component {
 			},
 			{
 				/* translators: a unit of size (vw) for css markup */
-				name: __( 'Viewport Width', 'coblocks' ),
+				name: __( 'Viewport width', 'coblocks' ),
 				unitValue: 'vw',
 			},
 			{
 				/* translators: a unit of size (vh) for css markup */
-				name: __( 'Viewport Height', 'coblocks' ),
+				name: __( 'Viewport height', 'coblocks' ),
 				unitValue: 'vh',
 			},
 			{
@@ -456,7 +453,7 @@ class DimensionsControl extends Component {
 										{ map( unitSizes, ( { unitValue, name } ) => (
 											<Tooltip text={ sprintf(
 												/* translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
-												__( '%s Units', 'coblocks' ),
+												__( '%s units', 'coblocks' ),
 												name
 											) }>
 												<Button
@@ -468,7 +465,7 @@ class DimensionsControl extends Component {
 													aria-pressed={ unit === unitValue }
 													aria-label={ sprintf(
 														/* translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
-														__( '%s Units', 'coblocks' ),
+														__( '%s units', 'coblocks' ),
 														name
 													) }
 													onClick={ () => this.onChangeUnits( unitValue ) }
@@ -532,7 +529,7 @@ class DimensionsControl extends Component {
 															onChange={ onChangeTopValue }
 															aria-label={ sprintf(
 																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
-																__( '%s Top', 'coblocks' ),
+																__( '%s top', 'coblocks' ),
 																label
 															) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
@@ -546,7 +543,7 @@ class DimensionsControl extends Component {
 															onChange={ onChangeRightValue }
 															aria-label={ sprintf(
 																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
-																__( '%s Right', 'coblocks' ),
+																__( '%s right', 'coblocks' ),
 																label
 															) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
@@ -560,7 +557,7 @@ class DimensionsControl extends Component {
 															onChange={ onChangeBottomValue }
 															aria-label={ sprintf(
 																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
-																__( '%s Bottom', 'coblocks' ),
+																__( '%s bottom', 'coblocks' ),
 																label
 															) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
@@ -574,7 +571,7 @@ class DimensionsControl extends Component {
 															onChange={ onChangeLeftValue }
 															aria-label={ sprintf(
 																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
-																__( '%s Left', 'coblocks' ),
+																__( '%s left', 'coblocks' ),
 																label
 															) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
@@ -585,7 +582,7 @@ class DimensionsControl extends Component {
 														<Tooltip text={ !! syncUnitsMobile ? __( 'Unsync', 'coblocks' ) : __( 'Sync', 'coblocks' ) } >
 															<Button
 																className="components-coblocks-dimensions-control_sync"
-																aria-label={ __( 'Sync Units', 'coblocks' ) }
+																aria-label={ __( 'Sync units', 'coblocks' ) }
 																isPrimary={ syncUnitsMobile ? syncUnitsMobile : false }
 																isSecondary={ syncUnitsMobile ? syncUnitsMobile : true }
 																aria-pressed={ syncUnitsMobile ? syncUnitsMobile : false }
@@ -609,7 +606,7 @@ class DimensionsControl extends Component {
 															onChange={ onChangeTopValue }
 															aria-label={ sprintf(
 																/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-																__( '%s Top', 'coblocks' ),
+																__( '%s top', 'coblocks' ),
 																label
 															) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
@@ -623,7 +620,7 @@ class DimensionsControl extends Component {
 															onChange={ onChangeRightValue }
 															aria-label={ sprintf(
 																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
-																__( '%s Right', 'coblocks' ),
+																__( '%s right', 'coblocks' ),
 																label
 															) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
@@ -637,7 +634,7 @@ class DimensionsControl extends Component {
 															onChange={ onChangeBottomValue }
 															aria-label={ sprintf(
 																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
-																__( '%s Bottom', 'coblocks' ),
+																__( '%s bottom', 'coblocks' ),
 																label
 															) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
@@ -651,7 +648,7 @@ class DimensionsControl extends Component {
 															onChange={ onChangeLeftValue }
 															aria-label={ sprintf(
 																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
-																__( '%s Left', 'coblocks' ),
+																__( '%s left', 'coblocks' ),
 																label
 															) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
@@ -662,7 +659,7 @@ class DimensionsControl extends Component {
 														<Tooltip text={ !! syncUnitsTablet ? __( 'Unsync', 'coblocks' ) : __( 'Sync', 'coblocks' ) } >
 															<Button
 																className="components-coblocks-dimensions-control_sync"
-																aria-label={ __( 'Sync Units', 'coblocks' ) }
+																aria-label={ __( 'Sync units', 'coblocks' ) }
 																isPrimary={ syncUnitsTablet ? syncUnitsTablet : false }
 																isSecondary={ syncUnitsTablet ? syncUnitsTablet : true }
 																aria-pressed={ syncUnitsTablet ? syncUnitsTablet : false }
@@ -686,7 +683,7 @@ class DimensionsControl extends Component {
 														onChange={ onChangeTopValue }
 														aria-label={ sprintf(
 															/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
-															__( '%s Top', 'coblocks' ),
+															__( '%s top', 'coblocks' ),
 															label
 														) }
 														aria-describedby={ !! help ? id + '__help' : undefined }
@@ -700,7 +697,7 @@ class DimensionsControl extends Component {
 														onChange={ onChangeRightValue }
 														aria-label={ sprintf(
 															/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
-															__( '%s Right', 'coblocks' ),
+															__( '%s right', 'coblocks' ),
 															label
 														) }
 														aria-describedby={ !! help ? id + '__help' : undefined }
@@ -714,7 +711,7 @@ class DimensionsControl extends Component {
 														onChange={ onChangeBottomValue }
 														aria-label={ sprintf(
 															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-															__( '%s Bottom', 'coblocks' ),
+															__( '%s bottom', 'coblocks' ),
 															label
 														) }
 														aria-describedby={ !! help ? id + '__help' : undefined }
@@ -728,7 +725,7 @@ class DimensionsControl extends Component {
 														onChange={ onChangeLeftValue }
 														aria-label={ sprintf(
 															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-															__( '%s Left', 'coblocks' ), label
+															__( '%s left', 'coblocks' ), label
 														) }
 														aria-describedby={ !! help ? id + '__help' : undefined }
 														value={ valueLeft !== '' ? valueLeft : '' }
@@ -738,7 +735,7 @@ class DimensionsControl extends Component {
 													<Tooltip text={ !! syncUnits ? __( 'Unsync', 'coblocks' ) : __( 'Sync', 'coblocks' ) } >
 														<Button
 															className="components-coblocks-dimensions-control_sync"
-															aria-label={ __( 'Sync Units', 'coblocks' ) }
+															aria-label={ __( 'Sync units', 'coblocks' ) }
 															isPrimary={ syncUnits ? syncUnits : false }
 															isSecondary={ syncUnits ? syncUnits : true }
 															aria-pressed={ syncUnits ? syncUnits : false }

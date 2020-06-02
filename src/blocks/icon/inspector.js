@@ -152,7 +152,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Icon Settings', 'coblocks' ) }>
+					<PanelBody title={ __( 'Icon settings', 'coblocks' ) }>
 						{ iconSize === 'advanced' ?
 							<Fragment>
 								<div className="components-base-control components-coblocks-icon-block--advanced-size">
@@ -224,7 +224,7 @@ class Inspector extends Component {
 						<TextControl
 							type="text"
 							autoComplete="off"
-							label={ __( 'Icon Search', 'coblocks' ) }
+							label={ __( 'Icon search', 'coblocks' ) }
 							value={ this.state.searchValue }
 							className="coblocks-icon-types-list__search"
 							onChange={ ( evt ) => {
@@ -280,32 +280,32 @@ class Inspector extends Component {
 						</div>
 					</PanelBody>
 					<PanelBody
-						title={ __( 'Link Settings', 'coblocks' ) }
+						title={ __( 'Link settings', 'coblocks' ) }
 						initialOpen={ false } >
 						<TextControl
 							label={ __( 'Link URL', 'coblocks' ) }
 							value={ href || '' }
-							onChange={ value => setAttributes( { href: value } ) }
+							onChange={ ( value ) => setAttributes( { href: value } ) }
 							placeholder="https://" />
 						<TextControl
-							label={ __( 'Link Rel', 'coblocks' ) }
+							label={ __( 'Link rel', 'coblocks' ) }
 							value={ rel || '' }
-							onChange={ value => setAttributes( { rel: value } ) }
+							onChange={ ( value ) => setAttributes( { rel: value } ) }
 						/>
 						<ToggleControl
-							label={ !! linkTarget ? __( 'Opening in New Tab', 'coblocks' ) : __( 'Open in New Tab', 'coblocks' ) }
+							label={ !! linkTarget ? __( 'Opening in new tab', 'coblocks' ) : __( 'Open in new tab', 'coblocks' ) }
 							onChange={ this.onSetNewTab }
 							checked={ linkTarget === '_blank' } />
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'coblocks' ) }
+						title={ __( 'Color settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
 								isLargeText: true,
 								value: iconColor.color,
 								onChange: setIconColor,
-								label: __( 'Icon Color', 'coblocks' ),
+								label: __( 'Icon color', 'coblocks' ),
 							},
 							{
 								value: backgroundColor.color,
@@ -322,7 +322,7 @@ class Inspector extends Component {
 
 									setBackgroundColor( newBackground );
 								},
-								label: __( 'Background Color', 'coblocks' ),
+								label: __( 'Background color', 'coblocks' ),
 							},
 
 						] }

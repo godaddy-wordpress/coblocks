@@ -1,8 +1,13 @@
 .coblocks-form {
+
 	label {
 		display: block;
 		float: none;
 		margin-bottom: 3px;
+	}
+
+	.coblocks-form__submit + label {
+		margin: 1.25rem 0 3px 0;
 	}
 
 	.coblocks-field,
@@ -21,6 +26,20 @@
 		}
 	}
 
+	.coblocks-field {
+
+		input[type="radio"] {
+			float: left;
+			margin: 5px 5px 0 0;
+			display: inline-block;
+		}
+
+		.coblocks-checkbox-label {
+			display: inline-flex;
+			width: 95%;
+		}
+	}
+
 	textarea {
 		float: none;
 		height: 200px;
@@ -34,9 +53,28 @@
 		margin-left: 5px;
 	}
 
-	.coblocks-radio-label + *:not(.coblocks-radio-label),
 	.coblocks-radio-label + .coblocks-field.verify + .coblocks-form__submit {
 		margin-top: 1.25rem;
+	}
+
+	.coblocks-form__submit .wp-block-button__link {
+
+		&.is-style-outline {
+			background-color: transparent;
+			border: 2px solid !important;
+		}
+
+		&.is-style-circular {
+			border-radius: 100px !important;
+		}
+
+		&.is-style-3d {
+			box-shadow: inset 0 -3px 0 0 rgba(0, 0, 0, 0.25);
+		}
+
+		&.is-style-shadow {
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.11), 0 1px 3px rgba(0, 0, 0, 0.075);
+		}
 	}
 
 	.coblocks-form__inline-fields {
@@ -107,7 +145,19 @@
 		margin-bottom: 1.25rem;
 
 		label {
-			margin-right: 8px;
+			margin-right: 10px;
+		}
+
+		input[type="radio"] {
+			margin-top: 5px;
+		}
+
+		.coblocks-checkbox-label {
+			width: auto;
+		}
+
+		input[type="checkbox"] {
+			margin-top: 2px;
 		}
 	}
 }

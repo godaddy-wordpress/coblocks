@@ -1,5 +1,7 @@
 .wp-block[data-type="coblocks/gif"] {
+
 	.components-placeholder.wp-block-coblocks-gif {
+
 		.dashicon {
 			position: relative;
 			top: -2px;
@@ -13,6 +15,13 @@
 	}
 
 	.wp-block-coblocks-gif {
+
+		button {
+			border: none !important;
+			background: none !important;
+			height: auto !important;
+			width: 100% !important;
+		}
 
 		form,
 		.components-placeholder__fieldset {
@@ -75,6 +84,7 @@
 	}
 
 	&[data-align="center"] {
+
 		.wp-block-coblocks-gif:not(.components-placeholder) {
 			margin-left: auto !important;
 			margin-right: auto !important;

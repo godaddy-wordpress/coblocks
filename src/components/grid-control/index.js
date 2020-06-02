@@ -8,10 +8,15 @@ import map from 'lodash/map';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { withInstanceId } from '@wordpress/compose';
-import { dispatch } from '@wordpress/data';
+import { withInstanceId, compose } from '@wordpress/compose';
 import { Component, Fragment } from '@wordpress/element';
 import { ButtonGroup, Button, Tooltip, ToggleControl } from '@wordpress/components';
+import { withDispatch, withSelect } from '@wordpress/data';
+
+/**
+ * Internal dependencies
+ */
+import { buttonsBlockDeprecated } from '../../js/deprecations/deprecate-coblocks-buttons';
 
 class CSSGridControl extends Component {
 	render() {
@@ -20,12 +25,29 @@ class CSSGridControl extends Component {
 			clientId,
 			setAttributes,
 			tooltip = true,
+			updateBlockAttributes,
+			innerBlocks,
 		} = this.props;
 
 		const {
 			layout,
 			fullscreen,
 		} = attributes;
+
+		const updateButtonsAttributes = ( newAttribute ) => {
+			const isDeprecated = buttonsBlockDeprecated();
+			const blockName = isDeprecated ? 'core/buttons' : 'coblocks/buttons';
+			const blockAttribute = isDeprecated ? 'align' : 'contentAlign';
+
+			innerBlocks.forEach( ( item ) => {
+				if ( item.name === blockName ) {
+					updateBlockAttributes(
+						item.clientId,
+						{ [blockAttribute]: newAttribute }
+					);
+				}
+			} );
+		}
 
 		/**
 		 * Set layout options and padding controls for Row Blocks
@@ -35,47 +57,47 @@ class CSSGridControl extends Component {
 			{
 				value: 'top-left',
 				/* translators: block layout */
-				label: __( 'Top Left', 'coblocks' ),
+				label: __( 'Top left', 'coblocks' ),
 			},
 			{
 				value: 'top-center',
 				/* translators: block layout */
-				label: __( 'Top Center', 'coblocks' ),
+				label: __( 'Top center', 'coblocks' ),
 			},
 			{
 				value: 'top-right',
 				/* translators: block layout */
-				label: __( 'Top Right', 'coblocks' ),
+				label: __( 'Top right', 'coblocks' ),
 			},
 			{
 				value: 'center-left',
 				/* translators: block layout */
-				label: __( 'Center Left', 'coblocks' ),
+				label: __( 'Center left', 'coblocks' ),
 			},
 			{
 				value: 'center-center',
 				/* translators: block layout */
-				label: __( 'Center Center', 'coblocks' ),
+				label: __( 'Center center', 'coblocks' ),
 			},
 			{
 				value: 'center-right',
 				/* translators: block layout */
-				label: __( 'Center Right', 'coblocks' ),
+				label: __( 'Center right', 'coblocks' ),
 			},
 			{
 				value: 'bottom-left',
 				/* translators: block layout */
-				label: __( 'Bottom Left', 'coblocks' ),
+				label: __( 'Bottom left', 'coblocks' ),
 			},
 			{
 				value: 'bottom-center',
 				/* translators: block layout */
-				label: __( 'Bottom Center', 'coblocks' ),
+				label: __( 'Bottom center', 'coblocks' ),
 			},
 			{
 				value: 'bottom-right',
 				/* translators: block layout */
-				label: __( 'Bottom Right', 'coblocks' ),
+				label: __( 'Bottom right', 'coblocks' ),
 			},
 		];
 
@@ -84,17 +106,17 @@ class CSSGridControl extends Component {
 				{
 					value: 'center-left',
 					/* translators: block layout */
-					label: __( 'Center Left', 'coblocks' ),
+					label: __( 'Center left', 'coblocks' ),
 				},
 				{
 					value: 'center-center',
 					/* translators: block layout */
-					label: __( 'Center Center', 'coblocks' ),
+					label: __( 'Center center', 'coblocks' ),
 				},
 				{
 					value: 'center-right',
 					/* translators: block layout */
-					label: __( 'Center Right', 'coblocks' ),
+					label: __( 'Center right', 'coblocks' ),
 				},
 			];
 		}
@@ -169,7 +191,7 @@ class CSSGridControl extends Component {
 			<Fragment>
 				<div className={ classes }>
 					<p className="components-base-control__label">{ __( 'Layout', 'coblocks' ) }</p>
-					<ButtonGroup aria-label={ __( 'Select Layout', 'coblocks' ) }>
+					<ButtonGroup aria-label={ __( 'Select layout', 'coblocks' ) }>
 						{ map( layoutOptions, ( { label, value }, index ) => {
 							if ( tooltip ) {
 								return (
@@ -181,8 +203,9 @@ class CSSGridControl extends Component {
 												isPrimary={ value === layout }
 												onClick={ () => {
 													setAttributes( { layout: value } );
+													updateButtonsAttributes( value.split('-')[1] );
 													if ( layoutAttributes[ value ].wrapper ) {
-														dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
+														updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
 													}
 												} }
 											>
@@ -200,7 +223,8 @@ class CSSGridControl extends Component {
 										onClick={ () => {
 											setAttributes( { layout: value } );
 											if ( layoutAttributes[ value ].wrapper ) {
-												dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
+												updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
+												updateButtonsAttributes( value.split('-')[1] );
 											}
 										} }
 									>
@@ -217,14 +241,19 @@ class CSSGridControl extends Component {
 						if ( fullscreen ) {
 							if ( [ 'bottom-left', 'top-left' ].includes( layout ) ) {
 								setAttributes( { layout: 'center-left' } );
+								updateButtonsAttributes( 'left' );
+
 							}
 
 							if ( [ 'bottom-center', 'top-center' ].includes( layout ) ) {
 								setAttributes( { layout: 'center-center' } );
+								updateButtonsAttributes( 'center' );
+
 							}
 
 							if ( [ 'bottom-right', 'top-right' ].includes( layout ) ) {
 								setAttributes( { layout: 'center-right' } );
+								updateButtonsAttributes( 'right' );
 							}
 						}
 						setAttributes( { fullscreen: ! fullscreen } );
@@ -236,4 +265,21 @@ class CSSGridControl extends Component {
 	}
 }
 
-export default withInstanceId( CSSGridControl );
+export default withInstanceId( compose( [
+	withDispatch( ( dispatch ) => {
+		const { updateBlockAttributes } = dispatch( 'core/block-editor' );
+
+		return {
+			updateBlockAttributes,
+		};
+	} ),
+
+	withSelect( ( select, props ) => {
+		const { getBlocks,  } = select( 'core/block-editor' );
+		const innerBlocks = getBlocks( props.clientId );
+	
+		return {
+			innerBlocks,
+		};
+	} )
+] )( CSSGridControl ) );

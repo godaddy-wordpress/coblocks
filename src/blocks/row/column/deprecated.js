@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundAttributes } from '../../../components/background';
-import { attributes } from './block.json';
+import { attributes as currentBlockAttributes } from './block.json';
 import DimensionsAttributes from '../../../components/dimensions-control/attributes';
 
 /**
@@ -16,7 +16,7 @@ import DimensionsAttributes from '../../../components/dimensions-control/attribu
 import { InnerBlocks, getColorClassName } from '@wordpress/block-editor';
 
 const deprecated = [ {
-	attributes,
+	attributes: currentBlockAttributes,
 	save( { attributes } ) {
 		const {
 			id,
@@ -80,7 +80,7 @@ const deprecated = [ {
 	attributes: {
 		...BackgroundAttributes,
 		...DimensionsAttributes,
-		...attributes,
+		...currentBlockAttributes,
 	},
 	save( { attributes } ) {
 		const {
@@ -133,4 +133,3 @@ const deprecated = [ {
 ];
 
 export default deprecated;
-//compose( [ applyWithColors ] )( deprecated );

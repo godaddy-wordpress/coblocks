@@ -47,7 +47,7 @@ class Logos extends Component {
 
 		return (
 			<Fragment>
-				{ Object.keys( imageChunks ).map( keyOuter => {
+				{ Object.keys( imageChunks ).map( ( keyOuter ) => {
 					const images = imageChunks[ keyOuter ];
 					return (
 						<div className="wp-block-coblocks-logos__row" key={ 'wrapper-' + keyOuter }>
@@ -103,11 +103,11 @@ class Logos extends Component {
 										onClick={ () => {
 											this.setState( { selectedImage: img.id } );
 										} }
-										onKeyDown={ event => {
+										onKeyDown={ ( event ) => {
 											if ( BACKSPACE === event.keyCode ) {
-												const images = this.props.images.filter( ( image ) => image.id !== img.id );
+												const remainingImages = this.props.images.filter( ( image ) => image.id !== img.id );
 												this.setState( { selectedImage: null } );
-												this.props.setAttributes( { images } );
+												this.props.setAttributes( { images: remainingImages } );
 											}
 										} }
 									>

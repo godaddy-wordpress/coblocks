@@ -16,26 +16,16 @@ import dividers from './deprecated/dividers';
  */
 import { getColorClassName } from '@wordpress/block-editor';
 
-const deprecatedSVGs = ( { attributes, className } ) => {
-	const {
-		backgroundColor,
-		backgroundHeight,
-		coblocks,
-		color,
-		customBackgroundColor,
-		customColor,
-		horizontalFlip,
-		shapeHeight,
-		verticalFlip,
-	} = attributes;
+const deprecatedSVGs = ( props ) => {
+	const { attributes } = props;
 
-	const shapeClass = getColorClassName( 'color', color );
-	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+	const shapeClass = getColorClassName( 'color', attributes.color );
+	const backgroundClass = getColorClassName( 'background-color', attributes.backgroundColor );
 
 	let classes = classnames(
-		className, {
-			'is-vertically-flipped': verticalFlip,
-			'is-horizontally-flipped': horizontalFlip,
+		props.className, {
+			'is-vertically-flipped': attributes.verticalFlip,
+			'is-horizontally-flipped': attributes.horizontalFlip,
 			[ shapeClass ]: shapeClass,
 			[ backgroundClass ]: backgroundClass,
 		} );
@@ -70,21 +60,21 @@ const deprecatedSVGs = ( { attributes, className } ) => {
 		return divider;
 	};
 
-	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
-		classes = classnames( classes, `coblocks-shape-divider-${ coblocks.id }` );
+	if ( attributes.coblocks && ( typeof attributes.coblocks.id !== 'undefined' ) ) {
+		classes = classnames( classes, `coblocks-shape-divider-${ attributes.coblocks.id }` );
 	}
 
 	const styles = {
-		backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-		color: shapeClass ? undefined : customColor,
+		backgroundColor: backgroundClass ? undefined : attributes.customBackgroundColor,
+		color: shapeClass ? undefined : attributes.customColor,
 	};
 
 	return (
 		<div className={ classes } style={ styles } aria-hidden="true">
-			<div className="wp-block-coblocks-shape-divider__svg-wrapper" style={ { minHeight: shapeHeight } }>
+			<div className="wp-block-coblocks-shape-divider__svg-wrapper" style={ { minHeight: attributes.shapeHeight } }>
 				{ deprecatedGetDividerFromStyle( attributes.className ) }
 			</div>
-			<div className="wp-block-coblocks-shape-divider__alt-wrapper" style={ { minHeight: backgroundHeight } }></div>
+			<div className="wp-block-coblocks-shape-divider__alt-wrapper" style={ { minHeight: attributes.backgroundHeight } }></div>
 		</div>
 	);
 };
@@ -94,40 +84,31 @@ const deprecated = [
 		attributes: {
 			...metadata.attributes,
 		},
-		save( { attributes, className } ) {
-			const {
-				backgroundColor,
-				backgroundHeight,
-				color,
-				customBackgroundColor,
-				customColor,
-				horizontalFlip,
-				shapeHeight,
-				verticalFlip,
-			} = attributes;
+		save( props ) {
+			const { attributes } = props;
 
-			const shapeClass = getColorClassName( 'color', color );
-			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+			const shapeClass = getColorClassName( 'color', attributes.color );
+			const backgroundClass = getColorClassName( 'background-color', attributes.backgroundColor );
 
 			const classes = classnames(
-				className, {
-					'is-vertically-flipped': verticalFlip,
-					'is-horizontally-flipped': horizontalFlip,
+				props.className, {
+					'is-vertically-flipped': attributes.verticalFlip,
+					'is-horizontally-flipped': attributes.horizontalFlip,
 					[ shapeClass ]: shapeClass,
 					[ backgroundClass ]: backgroundClass,
 				} );
 
 			const styles = {
-				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-				color: shapeClass ? undefined : customColor,
+				backgroundColor: backgroundClass ? undefined : attributes.customBackgroundColor,
+				color: shapeClass ? undefined : attributes.customColor,
 			};
 
 			return (
 				<div className={ classes } style={ styles } aria-hidden="true">
-					<div className="wp-block-coblocks-shape-divider__svg-wrapper" style={ { height: shapeHeight } }>
+					<div className="wp-block-coblocks-shape-divider__svg-wrapper" style={ { height: attributes.shapeHeight } }>
 						{ getDividerFromStyle( attributes.className ) }
 					</div>
-					<div className="wp-block-coblocks-shape-divider__alt-wrapper" style={ { height: backgroundHeight } }></div>
+					<div className="wp-block-coblocks-shape-divider__alt-wrapper" style={ { height: attributes.backgroundHeight } }></div>
 				</div>
 			);
 		},

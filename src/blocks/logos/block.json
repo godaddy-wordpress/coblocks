@@ -1,13 +1,9 @@
 {
 	"name": "coblocks/logos",
-	"category": "coblocks",
+	"category": "layout",
 	"attributes": {
 		"align": {
 			"type": "string"
-		},
-		"grayscale": {
-			"type": "boolean",
-			"default": false
 		},
 		"images": {
 			"type": "array",

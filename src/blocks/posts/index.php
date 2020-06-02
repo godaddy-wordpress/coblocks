@@ -37,7 +37,7 @@ function coblocks_render_posts_block( $attributes ) {
 
 		if ( is_wp_error( $recent_posts ) ) {
 
-			return '<div class="components-placeholder"><div class="notice notice-error"><strong>' . __( 'RSS Error:', 'coblocks' ) . '</strong> ' . $recent_posts->get_error_message() . '</div></div>';
+			return '<div class="components-placeholder"><div class="notice notice-error"><strong>' . __( 'RSS error:', 'coblocks' ) . '</strong> ' . $recent_posts->get_error_message() . '</div></div>';
 
 		}
 
@@ -90,6 +90,8 @@ function coblocks_posts( $posts, $attributes ) {
 	$class       = array( 'wp-block-coblocks-posts__inner' );
 	$block_style = strpos( $attributes['className'], 'is-style-stacked' ) !== false ? 'stacked' : 'horizontal';
 
+	array_push( $class_name, 'wp-block-coblocks-posts' );
+
 	if ( isset( $attributes['className'] ) ) {
 		array_push( $class_name, $attributes['className'] );
 	}
@@ -99,7 +101,11 @@ function coblocks_posts( $posts, $attributes ) {
 	}
 
 	if ( isset( $attributes['columns'] ) ) {
-		array_push( $class, 'has-columns has-' . $attributes['columns'] . '-columns has-responsive-columns has-medium-gutter' );
+		array_push( $class, 'has-columns has-' . $attributes['columns'] . '-columns has-responsive-columns' );
+	}
+
+	if ( isset( $attributes['columns'] ) && isset( $attributes['gutter'] ) ) {
+		array_push( $class, 'has-' . $attributes['gutter'] . '-gutter' );
 	}
 
 	if ( isset( $attributes['listPosition'] ) && 'right' === $attributes['listPosition'] && 'horizontal' === $block_style ) {
@@ -108,6 +114,10 @@ function coblocks_posts( $posts, $attributes ) {
 
 	if ( isset( $attributes['imageSize'] ) && 'horizontal' === $block_style ) {
 		array_push( $class, 'has-' . $attributes['imageSize'] . '-image' );
+	}
+
+	if ( isset( $attributes['imageStyle'] ) ) {
+		array_push( $class, 'has-' . $attributes['imageStyle'] . '-image' );
 	}
 
 	$block_content = sprintf(

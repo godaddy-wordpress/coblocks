@@ -2,7 +2,6 @@
  * Internal dependencies
  */
 import icons from './icons';
-import './styles/style.scss';
 
 /**
  * WordPress dependencies
@@ -38,7 +37,7 @@ class MediaFilterControl extends Component {
 			{
 				icon: icons.grayscale,
 				/* translators: image style */
-				title: __( 'Grayscale Filter', 'coblocks' ),
+				title: __( 'Grayscale filter', 'coblocks' ),
 				onClick: () => {
 					setAttributes( { filter: 'grayscale' } );
 				},
@@ -47,7 +46,7 @@ class MediaFilterControl extends Component {
 			{
 				icon: icons.sepia,
 				/* translators: image style */
-				title: __( 'Sepia Filter', 'coblocks' ),
+				title: __( 'Sepia filter', 'coblocks' ),
 				onClick: () => {
 					setAttributes( { filter: 'sepia' } );
 				},
@@ -56,7 +55,7 @@ class MediaFilterControl extends Component {
 			{
 				icon: icons.saturation,
 				/* translators: image style */
-				title: __( 'Saturation Filter', 'coblocks' ),
+				title: __( 'Saturation filter', 'coblocks' ),
 				onClick: () => {
 					setAttributes( { filter: 'saturation' } );
 				},
@@ -65,7 +64,7 @@ class MediaFilterControl extends Component {
 			{
 				icon: icons.dark,
 				/* translators: image style */
-				title: __( 'Dim Filter', 'coblocks' ),
+				title: __( 'Dim filter', 'coblocks' ),
 				onClick: () => {
 					setAttributes( { filter: 'dim' } );
 				},
@@ -74,7 +73,7 @@ class MediaFilterControl extends Component {
 			{
 				icon: icons.vintage,
 				/* translators: image style */
-				title: __( 'Vintage Filter', 'coblocks' ),
+				title: __( 'Vintage filter', 'coblocks' ),
 				onClick: () => {
 					setAttributes( { filter: 'vintage' } );
 				},

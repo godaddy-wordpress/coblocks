@@ -6,7 +6,7 @@ import { Fragment } from '@wordpress/element';
 import { PanelBody, ToggleControl, CheckboxControl, FocalPointPicker, ExternalLink, TextareaControl } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 
-const Inspector = props => {
+const Inspector = ( props ) => {
 	const {
 		attributes,
 		setAttributes,
@@ -14,75 +14,90 @@ const Inspector = props => {
 		setHotTo,
 	} = props;
 
+	const {
+		alt,
+		focalPoint,
+		glutenFree,
+		pescatarian,
+		popular,
+		showImage,
+		showPrice,
+		spicier,
+		spicy,
+		url,
+		vegan,
+		vegetarian,
+	} = attributes;
+
 	return (
 		<InspectorControls>
-			<PanelBody title={ __( 'Item Settings', 'coblocks' ) } initialOpen={ true }>
+			<PanelBody title={ __( 'Item settings', 'coblocks' ) } initialOpen={ true }>
 				<ToggleControl
 					label={ __( 'Image', 'coblocks' ) }
 					help={
-						attributes.showImage ?
+						showImage ?
 							__( 'Showing an image for this item.', 'coblocks' ) :
 							__( 'Toggle to show an image for this item.', 'coblocks' )
 					}
-					checked={ attributes.showImage }
-					onChange={ () => setAttributes( { showImage: ! attributes.showImage } ) }
+					checked={ showImage }
+					onChange={ () => setAttributes( { showImage: ! showImage } ) }
 				/>
 				<ToggleControl
 					label={ __( 'Price', 'coblocks' ) }
 					help={
-						attributes.showPrice ?
+						showPrice ?
 							__( 'Showing the price for this item.', 'coblocks' ) :
 							__( 'Toggle to show the price for this item.', 'coblocks' )
 					}
-					checked={ attributes.showPrice }
-					onChange={ () => setAttributes( { showPrice: ! attributes.showPrice } ) }
+					checked={ showPrice }
+					onChange={ () => setAttributes( { showPrice: ! showPrice } ) }
 				/>
 				<div className="components-food-item-attributes">
 					<p className="components-food-item-attributes__label">
-						{ __( 'Item Attributes', 'coblocks' ) }
+						{ __( 'Item attributes', 'coblocks' ) }
 					</p>
 					<CheckboxControl
 						label={ __( 'Popular', 'coblocks' ) }
-						checked={ attributes.popular }
-						onChange={ () => setAttributes( { popular: ! attributes.popular } ) }
+						checked={ popular }
+						onChange={ () => setAttributes( { popular: ! popular } ) }
 					/>
 					<CheckboxControl
 						label={ __( 'Gluten Free', 'coblocks' ) }
-						checked={ attributes.glutenFree }
-						onChange={ () => setAttributes( { glutenFree: ! attributes.glutenFree } ) }
+						checked={ glutenFree }
+						onChange={ () => setAttributes( { glutenFree: ! glutenFree } ) }
 					/>
 					<CheckboxControl
 						label={ __( 'Pescatarian', 'coblocks' ) }
-						checked={ attributes.pescatarian }
-						onChange={ () => setAttributes( { pescatarian: ! attributes.pescatarian } ) }
+						checked={ pescatarian }
+						onChange={ () => setAttributes( { pescatarian: ! pescatarian } ) }
 					/>
 					<CheckboxControl
 						label={ __( 'Spicy', 'coblocks' ) }
-						checked={ attributes.spicy }
+						checked={ spicy }
 						onChange={ setSpicyTo }
 					/>
 					<CheckboxControl
 						label={ __( 'Spicier', 'coblocks' ) }
-						checked={ attributes.spicier }
+						checked={ spicier }
 						onChange={ setHotTo }
 					/>
 					<CheckboxControl
 						label={ __( 'Vegan', 'coblocks' ) }
-						checked={ attributes.vegan }
-						onChange={ () => setAttributes( { vegan: ! attributes.vegan } ) }
+						checked={ vegan }
+						onChange={ () => setAttributes( { vegan: ! vegan } ) }
 					/>
 					<CheckboxControl
 						label={ __( 'Vegetarian', 'coblocks' ) }
-						checked={ attributes.vegetarian }
-						onChange={ () => setAttributes( { vegetarian: ! attributes.vegetarian } ) }
+						checked={ vegetarian }
+						onChange={ () => setAttributes( { vegetarian: ! vegetarian } ) }
 					/>
 				</div>
 			</PanelBody>
-			{ attributes.url &&
-				<PanelBody title={ __( 'Image Settings', 'coblocks' ) } initialOpen={ false }>
+			{ url &&
+				<PanelBody title={ __( 'Image settings', 'coblocks' ) } initialOpen={ false }>
 					<TextareaControl
-						label={ __( 'Alt Text (Alternative Text)', 'coblocks' ) }
-						value={ attributes.alt }
+						label={ __( 'Alt text (alternative text)', 'coblocks' ) }
+						value={ alt }
 						onChange={ ( value ) => setAttributes( { alt: value } ) }
 						help={
 							<Fragment>
@@ -94,9 +109,9 @@ const Inspector = props => {
 						}
 					/>
 					<FocalPointPicker
-						label={ __( 'Focal Point', 'coblocks' ) }
-						url={ attributes.url }
-						value={ attributes.focalPoint }
+						label={ __( 'Focal point', 'coblocks' ) }
+						url={ url }
+						value={ focalPoint }
 						onChange={ ( value ) => setAttributes( { focalPoint: value } ) }
 					/>
 				</PanelBody>

@@ -8,7 +8,6 @@ import { find, isUndefined, pickBy, some } from 'lodash';
 /**
  * Internal dependencies
  */
-
 import InspectorControls from './inspector';
 import icons from './icons';
 import icon from './icon';
@@ -140,7 +139,7 @@ class PostsEdit extends Component {
 
 		this.isStillMounted = true;
 		this.fetchRequest = apiFetch( {
-			path: addQueryArgs( '/wp-json/wp/v2/categories', CATEGORIES_LIST_QUERY ),
+			path: addQueryArgs( '/wp/v2/categories', CATEGORIES_LIST_QUERY ),
 		} ).then(
 			( categoriesList ) => {
 				if ( this.isStillMounted ) {
@@ -193,12 +192,11 @@ class PostsEdit extends Component {
 	}
 
 	updateStyle( style ) {
-		const { className, setAttributes } = this.props;
+		const { setAttributes, attributes, className } = this.props;
 
 		const activeStyle = getActiveStyle( styleOptions, className );
-
 		const updatedClassName = replaceActiveStyle(
-			className,
+			attributes.className,
 			activeStyle,
 			style
 		);
@@ -216,9 +214,6 @@ class PostsEdit extends Component {
 
 		const { categoriesList } = this.state;
 
-		const isHorizontalStyle = includes( className, 'is-style-horizontal' );
-		const isStackedStyle = includes( className, 'is-style-stacked' );
-
 		const activeStyle = getActiveStyle( styleOptions, className );
 
 		const {
@@ -233,6 +228,8 @@ class PostsEdit extends Component {
 			excerptLength,
 			listPosition,
 			imageSize,
+			imageStyle,
+			gutter,
 		} = attributes;
 
 		const editToolbarControls = [
@@ -341,6 +338,9 @@ class PostsEdit extends Component {
 			);
 		}
 
+		const isHorizontalStyle = includes( className, 'is-style-horizontal' );
+		const isStackedStyle = includes( className, 'is-style-stacked' );
+
 		return (
 			<Fragment>
 				<InspectorControls
@@ -383,9 +383,10 @@ class PostsEdit extends Component {
 							'has-columns': columns,
 							[ `has-${ columns }-columns` ]: columns,
 							'has-responsive-columns': columns,
-							'has-medium-gutter': columns,
+							[ `has-${ gutter }-gutter` ]: gutter && columns,
 							'has-image-right': isHorizontalStyle && listPosition === 'right',
 							[ `has-${ imageSize }-image` ]: isHorizontalStyle,
+							[ `has-${ imageStyle }-image` ]: imageStyle,
 						} ) }>
 							{ displayPosts.map( ( post, i ) => {
 								const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
@@ -492,7 +493,7 @@ export default compose( [
 		}
 
 		return {
-			latestPosts: latestPosts,
+			latestPosts,
 		};
 	} ),
 ] )( PostsEdit );

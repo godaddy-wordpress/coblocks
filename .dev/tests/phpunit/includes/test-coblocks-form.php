@@ -295,8 +295,8 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 			'label'          => 'Name',
 			'required'       => true,
 			'hasLastName'    => true,
-			'labelFirstName' => 'First Name',
-			'labelLastName'  => 'Last Name',
+			'labelFirstName' => 'First name',
+			'labelLastName'  => 'Last name',
 		];
 
 		echo $this->coblocks_form->render_field_name( $atts, '' );
@@ -382,7 +382,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	 */
 	public function test_render_field_radio() {
 
-		$this->expectOutputRegex( '/<input type="radio" name="field-radio\[value\]" value="Option 2" class="radio"> Option 2/' );
+		$this->expectOutputRegex( '/<label class="coblocks-radio-label" for="radio-option-1">Option 1<\/label><input id="radio-option-2" type="radio" name="field-radio\[value\]" value="Option 2" class="radio">/' );
 
 		echo $this->coblocks_form->render_field_radio(
 			[
@@ -474,7 +474,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	 */
 	public function test_render_field_checkbox() {
 
-		$this->expectOutputRegex( '/<input type="checkbox" name="field-select\[value\]\[\]" value="Option 2" class="checkbox"> Option 2/' );
+		$this->expectOutputRegex( '/<label class="coblocks-checkbox-label" for="select-option-1">Option 1<\/label><input id="select-option-2" type="checkbox" name="field-select\[value\]\[\]" value="Option 2" class="checkbox">/' );
 
 		echo $this->coblocks_form->render_field_checkbox(
 			[
@@ -555,9 +555,9 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	/**
 	 * Test the field label markup is as expected
 	 */
-	public function test_render_submit_button() {
+	public function test_render_field_submit_button() {
 
-		$this->expectOutputRegex( '/<button type="submit" class="wp-block-button__link custom-button-class" style="background-color: #B4D455;color: #333333;">Submit<\/button>/' );
+		$this->expectOutputRegex( '/<button type="submit" class="wp-block-button__link custom-button-class" style="background-color: #B4D455; color: #333333;">Submit<\/button>/' );
 
 		$atts = [
 			'submitButtonClasses'         => 'custom-button-class',
@@ -567,12 +567,45 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 
 		$object    = new CoBlocks_Form();
 		$reflector = new ReflectionClass( 'CoBlocks_Form' );
-		$method    = $reflector->getMethod( 'render_submit_button' );
+		$method    = $reflector->getMethod( 'render_field_submit_button' );
 
 		$method->setAccessible( true );
 
 		echo $method->invokeArgs( $object, [ $atts ] );
 
+	}
+
+	/**
+	 * Test the form renders a submit button if one does not exists within the innerBlocks.
+	 */
+	public function test_render_submit_button_if_missing_from_form() {
+		$form_missing_submit_button = '<!-- wp:coblocks/form -->
+			<!-- wp:coblocks/field-name /-->
+			<!-- wp:coblocks/field-email /-->
+			<!-- wp:coblocks/field-textarea /-->
+			<!-- /wp:coblocks/form -->';
+
+		$this->assertContains(
+			'<button type="submit" class="wp-block-button__link" style="">Submit</button>',
+			$this->coblocks_form->render_form( [], $form_missing_submit_button )
+		);
+	}
+
+	/**
+	 * Test the form only renders the submit button included within the innerBlocks.
+	 */
+	public function test_does_not_insert_submit_button_if_exists_in_form() {
+		$form_has_submit_button = '<!-- wp:coblocks/form -->
+			<!-- wp:coblocks/field-name /-->
+			<!-- wp:coblocks/field-email /-->
+			<!-- wp:coblocks/field-textarea /-->
+			<!-- wp:coblocks/field-submit-button {"submitButtonText":"Contact Us"} /-->
+		<!-- /wp:coblocks/form -->';
+
+		$this->assertContains(
+			'<button type="submit" class="wp-block-button__link" style="">Contact Us</button>',
+			$this->coblocks_form->render_form( [], $form_has_submit_button )
+		);
 	}
 
 	/**

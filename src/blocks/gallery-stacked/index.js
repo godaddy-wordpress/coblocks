@@ -1,10 +1,4 @@
 /**
- * Styles.
- */
-import './styles/editor.scss';
-import './styles/style.scss';
-
-/**
  * Internal dependencies
  */
 import deprecated from './deprecated';
@@ -34,7 +28,7 @@ const settings = {
 	/* translators: block name */
 	title: __( 'Stacked', 'coblocks' ),
 	/* translators: block description */
-	description: __( 'Display multiple images in an single column stacked gallery.', 'coblocks' ),
+	description: __( 'Display multiple images in a single column stacked gallery.', 'coblocks' ),
 	icon,
 	keywords: [
 		'coblocks',

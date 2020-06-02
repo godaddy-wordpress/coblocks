@@ -27,11 +27,11 @@ function CoBlocksFieldHidden( props ) {
 				value={ value }
 			/>
 			<InspectorControls>
-				<PanelBody title={ __( 'Hidden Field Settings', 'coblocks' ) }>
+				<PanelBody title={ __( 'Hidden Field settings', 'coblocks' ) }>
 					<TextControl
 						value={ value }
-						label={ __( 'Field Value', 'coblocks' ) }
-						onChange={ value => setAttributes( { value } ) }
+						label={ __( 'Field value', 'coblocks' ) }
+						onChange={ ( value ) => setAttributes( { value } ) }
 						className="components-block-coblocks-map-api-key__custom-input"
 					/>
 				</PanelBody>

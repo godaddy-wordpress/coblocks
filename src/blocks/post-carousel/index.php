@@ -37,7 +37,7 @@ function coblocks_render_post_carousel_block( $attributes ) {
 
 		if ( is_wp_error( $recent_posts ) ) {
 
-			return '<div class="components-placeholder"><div class="notice notice-error"><strong>' . __( 'RSS Error:', 'coblocks' ) . '</strong> ' . $recent_posts->get_error_message() . '</div></div>';
+			return '<div class="components-placeholder"><div class="notice notice-error"><strong>' . __( 'RSS error:', 'coblocks' ) . '</strong> ' . $recent_posts->get_error_message() . '</div></div>';
 
 		}
 
@@ -145,8 +145,7 @@ function coblocks_post_carousel( $posts, $attributes ) {
 							),
 						),
 					)
-				),
-				true
+				)
 			)
 		)
 	);
@@ -321,7 +320,7 @@ function coblocks_register_post_carousel_block() {
 
 	wp_register_script(
 		'coblocks-slick-initializer',
-		$dir . 'coblocks-slick-initializer' . COBLOCKS_ASSET_SUFFIX . '.js',
+		$dir . 'coblocks-slick-initializer.js',
 		array( 'jquery' ),
 		COBLOCKS_VERSION,
 		true

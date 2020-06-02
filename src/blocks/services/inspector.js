@@ -7,6 +7,8 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import HeadingToolbar from '../../components/heading-toolbar';
+import OptionSelectorControl from '../../components/option-selector-control';
+import gutterOptions from '../../utils/gutter-options';
 
 /**
  * WordPress dependencies.
@@ -16,7 +18,7 @@ import { PanelBody, ToggleControl, RangeControl, SelectControl } from '@wordpres
 import { InspectorControls } from '@wordpress/block-editor';
 import { ENTER, SPACE } from '@wordpress/keycodes';
 
-const Inspector = props => {
+const Inspector = ( props ) => {
 	const {
 		attributes,
 		setAttributes,
@@ -27,13 +29,6 @@ const Inspector = props => {
 		onUpdateStyle,
 	} = props;
 
-	const gutterOptions = [
-		{ value: 'small', label: __( 'Small', 'coblocks' ) },
-		{ value: 'medium', label: __( 'Medium', 'coblocks' ) },
-		{ value: 'large', label: __( 'Large', 'coblocks' ) },
-		{ value: 'huge', label: __( 'Huge', 'coblocks' ) },
-	];
-
 	return (
 		<InspectorControls>
 			<PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
@@ -41,7 +36,7 @@ const Inspector = props => {
 					'block-editor-block-styles',
 					'coblocks-editor-block-styles',
 				) } >
-					{ layoutOptions.map( style => (
+					{ layoutOptions.map( ( style ) => (
 						<div
 							key={ `style-${ style.name }` }
 							className={ classnames(
@@ -50,7 +45,7 @@ const Inspector = props => {
 								`align-${ ( typeof attributes.alignment === 'undefined' || attributes.alignment === 'none' ) ? style.defaultAlign : attributes.alignment }`
 							) }
 							onClick={ () => onUpdateStyle( style ) }
-							onKeyDown={ event => {
+							onKeyDown={ ( event ) => {
 								if ( ENTER === event.keyCode || SPACE === event.keyCode ) {
 									event.preventDefault();
 									onUpdateStyle( style );
@@ -70,33 +65,22 @@ const Inspector = props => {
 					) ) }
 				</div>
 			</PanelBody>
-			<PanelBody title={ __( 'Services Settings', 'coblocks' ) }>
+			<PanelBody title={ __( 'Services settings', 'coblocks' ) }>
 				<RangeControl
 					label={ __( 'Columns', 'coblocks' ) }
 					value={ attributes.columns }
 					min={ 1 }
 					max={ 4 }
-					onChange={ columns => setAttributes( { columns } ) }
+					onChange={ ( columns ) => setAttributes( { columns } ) }
 				/>
-				{ attributes.columns >= 2 &&
-					<SelectControl
-						label={ __( 'Gutter', 'coblocks' ) }
-						value={ attributes.gutter }
-						options={ gutterOptions }
-						help={ __( 'Space between each column.', 'coblocks' ) }
-						onChange={ ( value ) => setAttributes( { gutter: value } ) }
-					/>
-				}
-
-				<HeadingToolbar
-					minLevel={ 1 }
-					maxLevel={ 7 }
-					selectedLevel={ attributes.headingLevel }
-					onChange={ onChangeHeadingLevel }
-				/>
-
+				{ attributes.columns >= 2 && <OptionSelectorControl
+					label={ __( 'Gutter', 'coblocks' ) }
+					currentOption={ attributes.gutter }
+					options={ gutterOptions }
+					onChange={ ( gutter ) => setAttributes( { gutter } ) }
+				/> }
 				<ToggleControl
-					label={ __( 'Action Buttons', 'coblocks' ) }
+					label={ __( 'Display buttons', 'coblocks' ) }
 					className="components-toggle-control--services-action-button"
 					help={
 						attributes.buttons ?

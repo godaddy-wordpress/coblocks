@@ -6,7 +6,6 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import './styles/editor.scss';
 import googleFonts from './../../components/font-family/fonts';
 import TypographyAttributes from './attributes';
 import TypograpyClasses from './classes';
@@ -22,6 +21,7 @@ import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { DOWN } from '@wordpress/keycodes';
 import { RangeControl, withFallbackStyles, ToggleControl, Dropdown, IconButton, SelectControl, Toolbar } from '@wordpress/components';
+import { withSelect, select } from '@wordpress/data';
 
 /**
  * Export
@@ -40,7 +40,7 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	const { textColor, fontSize, customFontSize } = ownProps.attributes;
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
 	//verify if editableNode is available, before using getComputedStyle.
-	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
+	const computedStyles = editableNode ? getComputedStyle( editableNode ) : undefined;
 	return {
 		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
 		fallbackFontSize: fontSize || customFontSize || ! computedStyles ? undefined : parseInt( computedStyles.fontSize ) || undefined,
@@ -51,9 +51,27 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  * Typography Component
  */
 class TypographyControls extends Component {
+	constructor( props ) {
+		super( props );
+		this.state = {
+			allowedBlocks: [],
+		};
+	}
+
+	componentDidMount() {
+		if ( this.props.typographyEnabled ) {
+			this.setState( {
+				allowedBlocks: [ 'core/paragraph', 'core/heading', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/pricing-table', 'coblocks/highlight' ],
+			} );
+		}
+	}
+
 	render() {
-		// Blocks that should be allowed to display TypographyControls
-		const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/pricing-table', 'coblocks/highlight' ];
+		if ( ! this.props.typographyEnabled ) {
+			return null;
+		}
+
+		const { allowedBlocks } = this.state;
 
 		const {
 			attributes,
@@ -125,23 +143,21 @@ class TypographyControls extends Component {
 		];
 
 		if ( typeof googleFonts[ fontFamily ] !== 'undefined' && typeof googleFonts[ fontFamily ].weight !== 'undefined' ) {
-			googleFonts[ fontFamily ].weight.map( ( k ) => {
+			googleFonts[ fontFamily ].weight.forEach( ( k ) => {
 				weight.push(
 					{ value: k, label: k }
 				);
 			} );
 		}
 
-		const onFontChange = ( value, onClose ) => {
+		const onFontChange = ( value ) => {
 			setAttributes( { fontFamily: value } );
 
 			if ( typeof googleFonts[ value ] !== 'undefined' && typeof googleFonts[ value ].weight !== 'undefined' ) {
 				if ( fontWeight && Object.values( googleFonts[ fontFamily ].weight ).indexOf( fontWeight ) < 0 ) {
-					setAttributes( { fontWeight: '' } );
+					setAttributes( { fontWeight: undefined } );
 				}
 			}
-
-			onClose();
 		};
 
 		return (
@@ -173,13 +189,13 @@ class TypographyControls extends Component {
 							</IconButton>
 						);
 					} }
-					renderContent={ ( { onClose } ) => (
+					renderContent={ () => (
 						<Fragment>
 							<div className="components-coblocks-typography-dropdown__inner">
 								<FontFamilyPicker
 									label={ __( 'Font', 'coblocks' ) }
 									value={ fontFamily }
-									onChange={ ( nextFontFamily ) => onFontChange( nextFontFamily, onClose ) }
+									onChange={ ( nextFontFamily ) => onFontChange( nextFontFamily ) }
 									className="components-base-control--with-flex components-coblocks-typography-dropdown__inner--font"
 								/>
 								{ ( ( typeof attributes.textPanelFontWeight === 'undefined' || ( typeof attributes.textPanelFontWeight !== 'undefined' && typeof attributes.textPanelFontWeight === 'undefined' ) ) ) ?
@@ -203,7 +219,7 @@ class TypographyControls extends Component {
 								{ ( ( typeof attributes.textPanelHideSize === 'undefined' || ( typeof attributes.textPanelHideSize !== 'undefined' && typeof attributes.textPanelHideSize === 'undefined' ) ) ) ?
 									<RangeControl
 										label={ __( 'Size', 'coblocks' ) }
-										value={ parseFloat( customFontSize ) || null }
+										value={ parseFloat( customFontSize ) || undefined }
 										onChange={ ( nextFontSize ) => setAttributes( { customFontSize: nextFontSize } ) }
 										min={ 1 }
 										max={ 100 }
@@ -213,8 +229,8 @@ class TypographyControls extends Component {
 								}
 								{ ( ( typeof attributes.textPanelLineHeight === 'undefined' || ( typeof attributes.textPanelLineHeight !== 'undefined' && typeof attributes.textPanelLineHeight === 'undefined' ) ) ) ?
 									<RangeControl
-										label={ __( 'Line Height', 'coblocks' ) }
-										value={ parseFloat( lineHeight ) || null }
+										label={ __( 'Line height', 'coblocks' ) }
+										value={ parseFloat( lineHeight ) || undefined }
 										onChange={ ( nextLineHeight ) => setAttributes( { lineHeight: nextLineHeight } ) }
 										min={ 1 }
 										max={ 3 }
@@ -224,8 +240,8 @@ class TypographyControls extends Component {
 								}
 								{ ( ( typeof attributes.textPanelLetterSpacing === 'undefined' || ( typeof attributes.textPanelLetterSpacing !== 'undefined' && typeof attributes.textPanelLetterSpacing === 'undefined' ) ) ) ?
 									<RangeControl
-										label={ __( 'Letter Spacing', 'coblocks' ) }
-										value={ parseFloat( letterSpacing ) || null }
+										label={ __( 'Letter spacing', 'coblocks' ) }
+										value={ parseFloat( letterSpacing ) || undefined }
 										onChange={ ( nextLetterSpacing ) => setAttributes( { letterSpacing: nextLetterSpacing } ) }
 										min={ -1 }
 										max={ 3 }n
@@ -236,12 +252,12 @@ class TypographyControls extends Component {
 								{ ( ( typeof attributes.textPanelShowSpacingControls !== 'undefined' && attributes.textPanelShowSpacingControls ) ) &&
 									<div className="components-coblocks-typography-dropdown__footer">
 										<ToggleControl
-											label={ __( 'No Top Spacing', 'coblocks' ) }
+											label={ __( 'No top spacing', 'coblocks' ) }
 											checked={ !! noTopSpacing }
 											onChange={ () => setAttributes( { noTopSpacing: ! noTopSpacing } ) }
 										/>
 										<ToggleControl
-											label={ __( 'No Bottom Spacing', 'coblocks' ) }
+											label={ __( 'No bottom spacing', 'coblocks' ) }
 											checked={ !! noBottomSpacing }
 											onChange={ () => setAttributes( { noBottomSpacing: ! noBottomSpacing } ) }
 										/>
@@ -256,6 +272,15 @@ class TypographyControls extends Component {
 	}
 }
 
+const applyWithSelect = withSelect( () => {
+	const { getTypography } = select( 'coblocks-settings' );
+
+	return {
+		typographyEnabled: getTypography(),
+	};
+} );
+
 export default compose( [
 	applyFallbackStyles,
+	applyWithSelect,
 ] )( TypographyControls );

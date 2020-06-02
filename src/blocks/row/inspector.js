@@ -11,6 +11,8 @@ import { layoutOptions } from './utilities';
 import applyWithColors from './colors';
 import { BackgroundPanel } from '../../components/background';
 import DimensionsControl from '../../components/dimensions-control';
+import OptionSelectorControl from '../../components/option-selector-control';
+import gutterOptions from '../../utils/gutter-options';
 
 /**
  * WordPress dependencies
@@ -19,7 +21,7 @@ import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
-import { PanelBody, SelectControl, withFallbackStyles } from '@wordpress/components';
+import { PanelBody, withFallbackStyles } from '@wordpress/components';
 
 /**
  * Fallback styles
@@ -52,6 +54,8 @@ class Inspector extends Component {
 			setBackgroundColor,
 			setTextColor,
 			textColor,
+			updateBlockAttributes,
+			getBlocksByClientId,
 		} = this.props;
 
 		const {
@@ -95,19 +99,25 @@ class Inspector extends Component {
 			hasMarginControl,
 		} = attributes;
 
-		const gutterOptions = [
-			{ value: 'no', label: __( 'None', 'coblocks' ) },
-			{ value: 'small', label: __( 'Small', 'coblocks' ) },
-			{ value: 'medium', label: __( 'Medium', 'coblocks' ) },
-			{ value: 'large', label: __( 'Large', 'coblocks' ) },
-			{ value: 'huge', label: __( 'Huge', 'coblocks' ) },
-		];
-
 		let selectedRows = 1;
 
 		if ( columns ) {
 			selectedRows = parseInt( columns.toString().split( '-' ) );
 		}
+
+		const handleEvent = ( key ) => {
+			const selectedWidth = key.toString().split( '-' );
+			const children = getBlocksByClientId( clientId );
+			setAttributes( {
+				layout: key,
+			} );
+
+			if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
+				map( children[ 0 ].innerBlocks, ( blockProps, index ) => (
+					updateBlockAttributes( blockProps.clientId, { width: selectedWidth[ index ] } )
+				) );
+			}
+		};
 
 		return (
 			<Fragment>
@@ -129,19 +139,8 @@ class Inspector extends Component {
 													'block-editor-block-styles__item',
 													{ 'is-active': layout === key },
 												) }
-												onClick={ () => {
-													const selectedWidth = key.toString().split( '-' );
-													const children = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId );
-													setAttributes( {
-														layout: key,
-													} );
-
-													if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
-														map( children[ 0 ].innerBlocks, ( { clientId }, index ) => (
-															wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { width: selectedWidth[ index ] } )
-														) );
-													}
-												} }
+												onClick={ () => handleEvent( key ) }
+												onKeyPress={ () => handleEvent( key ) }
 												role="button"
 												tabIndex="0"
 												aria-label={ name }
@@ -156,16 +155,13 @@ class Inspector extends Component {
 							}
 							{ layout &&
 								<Fragment>
-									<PanelBody title={ __( 'Row Settings', 'coblocks' ) }>
-										{ selectedRows >= 2 &&
-											<SelectControl
-												label={ __( 'Gutter', 'coblocks' ) }
-												value={ gutter }
-												options={ gutterOptions }
-												help={ __( 'Space between each column.', 'coblocks' ) }
-												onChange={ ( value ) => setAttributes( { gutter: value } ) }
-											/>
-										}
+									<PanelBody title={ __( 'Row settings', 'coblocks' ) }>
+										{ selectedRows >= 2 && <OptionSelectorControl
+											label={ __( 'Gutter', 'coblocks' ) }
+											currentOption={ gutter }
+											options={ gutterOptions }
+											onChange={ ( newGutter ) => setAttributes( { gutter: newGutter } ) }
+										/> }
 										<DimensionsControl { ...this.props }
 											type={ 'padding' }
 											label={ __( 'Padding', 'coblocks' ) }
@@ -214,7 +210,7 @@ class Inspector extends Component {
 										}
 									</PanelBody>
 									<PanelColorSettings
-										title={ __( 'Color Settings', 'coblocks' ) }
+										title={ __( 'Color settings', 'coblocks' ) }
 										initialOpen={ false }
 										colorSettings={ [
 											{
@@ -230,12 +226,12 @@ class Inspector extends Component {
 														setAttributes( { paddingSize: 'no' } );
 													}
 												},
-												label: __( 'Background Color', 'coblocks' ),
+												label: __( 'Background color', 'coblocks' ),
 											},
 											{
 												value: textColor.color,
 												onChange: setTextColor,
-												label: __( 'Text Color', 'coblocks' ),
+												label: __( 'Text color', 'coblocks' ),
 											},
 										] }
 									>

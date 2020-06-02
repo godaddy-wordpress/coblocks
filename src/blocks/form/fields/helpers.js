@@ -7,7 +7,7 @@ import { PanelBody, ToggleControl } from '@wordpress/components';
 import { Fragment } from '@wordpress/element';
 import { sprintf, __ } from '@wordpress/i18n';
 
-export const editMultiField = type => props => {
+export const editMultiField = ( type ) => ( props ) => {
 	const { attributes, setAttributes, isSelected } = props;
 	const { required, label, isInline, options } = attributes;
 
@@ -24,7 +24,7 @@ export const editMultiField = type => props => {
 			/>
 			{ 'select' !== type && (
 				<InspectorControls>
-					<PanelBody title={ __( 'Display Settings', 'coblocks' ) }>
+					<PanelBody title={ __( 'Display settings', 'coblocks' ) }>
 						<ToggleControl
 							label={ sprintf(
 								/* translators: field type eg: checkbox */
@@ -33,7 +33,7 @@ export const editMultiField = type => props => {
 							) }
 							className="coblocks-field-label__required"
 							checked={ isInline }
-							onChange={ value => setAttributes( { isInline: value } ) }
+							onChange={ ( value ) => setAttributes( { isInline: value } ) }
 							help={ !! isInline ? sprintf(
 								/* translators: field type eg: checkbox */
 								__( 'Displaying the %s inline.', 'coblocks' ),

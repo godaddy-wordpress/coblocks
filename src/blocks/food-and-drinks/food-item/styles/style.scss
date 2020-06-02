@@ -1,70 +1,7 @@
-$icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenFree);
+$icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (gluten-free);
 
-.wp-block-coblocks-food-item { 
-	flex-grow: 1;
+.wp-block-coblocks-food-item {
 	margin-top: 2.75em;
-	width: 50%;
-
-	@media all and (max-width: 514px) {
-		width: 100%;
-	}
-
-	[data-columns="3"] & {
-		flex-grow: 1;
-		width: 33.33%;
-	}
-
-	.wp-block-coblocks-food-and-drinks[data-columns="2"]:not(.is-style-list) & {
-		&:nth-child(even) {
-			padding-right: 20px;
-
-			@media all and (max-width: 514px) {
-				padding-right: 0;
-			}
-		}
-
-		&:nth-child(odd) {
-			padding-left: 20px;
-
-			@media all and (max-width: 514px) {
-				padding-left: 0;
-			}
-		}
-	}
-
-	.wp-block-coblocks-food-and-drinks[data-columns="3"]:not(.is-style-list) & {
-		&:nth-child(3n - 1) {
-			padding-right: 12px;
-
-			@media all and (max-width: 514px) {
-				padding-right: 0;
-			}
-		}
-
-		&:nth-child(3n + 3) {
-			padding-left: 8px;
-			padding-right: 8px;
-
-			@media all and (max-width: 514px) {
-				padding-left: 0;
-				padding-right: 0;
-			}
-		}
-
-		&:nth-child(3n + 1) {
-			padding-left: 12px;
-
-			@media all and (max-width: 514px) {
-				padding-left: 0;
-			}
-		}
-	}
-
-	.wp-block-coblocks-food-and-drinks:not(.is-style-list) & {
-		.wp-block-coblocks-food-item__content {
-			display: block;
-		}
-	}
 
 	&__figure {
 		display: flex;
@@ -74,7 +11,7 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenFree);
 		position: relative;
 		width: 100%;
 
-		img {
+		img, img[itemprop="image"] {
 			height: 100%;
 			object-fit: cover;
 			position: absolute;
@@ -101,7 +38,7 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenFree);
 		order: 1;
 	}
 
-	&__heading {
+	&__heading, &__heading[itemprop="name"] {
 		margin: 0;
 		padding: 0;
 	}
@@ -129,7 +66,11 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenFree);
 	}
 
 	&__attribute {
+		display: flex;
+		background: none;
+		border: none;
 		margin-right: 0.25em !important;
+		padding: 0;
 
 		&--spicier {
 			margin-left: -0.25em !important;
@@ -158,22 +99,8 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenFree);
 		width: 18px;
 	}
 
-	&__attributes {
-		display: flex;
-		margin-left: 0.4em;
-	}
-
-	&__attribute {
-		background: none;
-		border:none;
-		padding:0;
-	}
-	
-	&__attribute.spicier {
-		margin-left: -0.25em !important;
-	}
-
 	@each $icon in $icons {
+
 		&__attribute--#{$icon} &__icon {
 			mask-image: url(images/food-attribute/#{$icon}.svg);
 
@@ -184,6 +111,7 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenFree);
 
 		// IE 10+ Support
 		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+
 			&__attribute--#{$icon} &__icon {
 				background-image: url(images/food-attribute/#{$icon}.svg);
 				color: transparent !important;

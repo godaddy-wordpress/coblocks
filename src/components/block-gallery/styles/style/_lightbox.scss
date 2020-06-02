@@ -152,9 +152,15 @@
 	}
 }
 
+.coblocks-lightbox__caption {
+	color: #ffffff;
+	text-align: center;
+	margin-top: 10px;
+}
+
 .has-lightbox > :not(.carousel-nav) {
+
 	figure:hover {
 		cursor: zoom-in;
 	}
 }
-

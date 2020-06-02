@@ -1,4 +1,5 @@
 .wp-block[data-type="coblocks/posts"] {
+
 	.flickity-enabled {
 		height: 100% !important;
 		position: inherit;
@@ -24,20 +25,5 @@
 	.components-placeholder__cancel-button {
 		align-self: flex-start;
 		margin-top: 10px;
-	}
-}
-
-.wp-block-coblocks-posts__image {
-
-	> div {
-		padding-top: 100%;
-	}
-}
-
-.edit-post-settings-sidebar__panel-block .components-base-control.components-coblocks-posts-thumbnail-size {
-	margin-top: -10px;
-
-	&.has-content {
-		margin-top: -5px;
 	}
 }

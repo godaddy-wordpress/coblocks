@@ -1,8 +1,10 @@
 .wp-block[data-type="coblocks/map"] {
+
 	.components-placeholder {
 		height: 100%;
 
 		.components-placeholder__fieldset {
+
 			span {
 				color: $dark-gray-500;
 			}
@@ -11,13 +13,14 @@
 				position: relative;
 				top: 1px;
 			}
-		}
 
-		.components-base-control__field {
-			margin-bottom: 12px;
+			form {
+				margin-bottom: 12px;
+			}
 		}
 
 		.components-placeholder__label {
+
 			svg {
 				position: relative;
 				top: -1px;
@@ -45,8 +48,6 @@
 
 	.components-placeholder__cancel-button.is-link {
 		display: block;
-		margin-left: 33%;
-		margin-right: 33%;
 	}
 }
 
@@ -63,8 +64,11 @@ $styles: (standard), (silver), (retro), (dark), (night), (aubergine);
 
 // Style the custom styles component buttons.
 .components-coblocks-map-styles__button-wrapper {
+
 	.components-button {
+
 		@each $style in $styles {
+
 			&--#{$style} {
 				background-image: url(images/map/#{$style}.jpg) !important;
 				background-position: center center;

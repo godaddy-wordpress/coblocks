@@ -1,5 +1,6 @@
 /**
  * Set the attributes for the text panel
+ *
  * @type {Object}
  */
 const TypographyAttributes = {

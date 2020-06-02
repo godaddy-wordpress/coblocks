@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/feature",
-	"category": "coblocks",
+	"category": "layout",
 	"attributes": {
 		"headingLevel": {
 			"type": "integer",

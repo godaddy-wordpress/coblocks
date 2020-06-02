@@ -1,7 +1,7 @@
 .wp-block-coblocks-gallery-carousel {
+
 	&,
 	.coblocks-gallery {
-		height: 100%;
 		position: relative;
 		overflow: hidden;
 	}
@@ -11,7 +11,9 @@
 	}
 
 	@for $i from 2 through 20 {
+
 		.carousel-nav.has-border-radius-#{ $i } {
+
 			img {
 				border-radius: #{$i}px;
 			}
@@ -59,7 +61,7 @@
 
 		&::after {
 			display: block;
-			content: '';
+			content: "";
 			background-color: $white;
 			height: 28px;
 			position: relative;
@@ -73,8 +75,10 @@
 		}
 
 		&.previous {
-			width: 62px;
 			height: 62px;
+			left: 0;
+			width: 62px;
+
 			&::after {
 				width: 32px;
 				height: 32px;
@@ -86,7 +90,8 @@
 		&.next {
 			width: 62px;
 			height: 62px;
-			&::after{
+
+			&::after {
 				width: 32px;
 				height: 32px;
 				mask-image: url(images/lightbox/arrow-right.svg);
@@ -97,14 +102,14 @@
 		// IE 10+ Support
 		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 
-			&.previous::after{
+			&.previous::after {
 				background-image: url(images/lightbox/arrow-left.svg);
 				color: transparent !important;
 				background-color: transparent !important;
 			}
 
 			&.next::after {
-				background-image:  url(images/lightbox/arrow-right.svg);
+				background-image: url(images/lightbox/arrow-right.svg);
 				color: transparent !important;
 				background-color: transparent !important;
 
@@ -158,6 +163,7 @@
 }
 
 .has-responsive-height {
+
 	.has-carousel {
 		height: auto !important;
 		padding-bottom: 56.25%;

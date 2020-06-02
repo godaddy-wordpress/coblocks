@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/pricing-table-item",
-	"category": "coblocks",
+	"category": "layout",
 	"attributes": {
 		"title": {
 			"source": "children",

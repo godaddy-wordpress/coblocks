@@ -4,11 +4,6 @@
 import classnames from 'classnames';
 
 /**
- * Internal dependencies
- */
-import './styles/editor.scss';
-
-/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';

@@ -1,10 +1,14 @@
 [class*="wp-block-"] {
+
 	&.mt-0 {
+
 		> .has-margin {
 			margin-top: 0 !important;
 		}
 	}
+
 	&.mb-0 {
+
 		> .has-margin {
 			margin-bottom: 0 !important;
 		}

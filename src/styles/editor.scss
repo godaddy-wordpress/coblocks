@@ -1,9 +1,11 @@
 @import "../common";
-
 @import "editor/columns";
 @import "editor/columns-gutter";
 @import "editor/columns-responsive";
 @import "editor/is-transient";
+@import "../components/**/editor.scss";
+@import "../extensions/**/editor.scss";
+@import "../blocks/**/editor.scss";
 
 // Legacy styling
 @import "legacy/margin-editor";

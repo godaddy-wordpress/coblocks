@@ -4,6 +4,7 @@
 import captionOptions from '../../components/block-gallery/options/caption-options';
 import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
 import OptionSelectorControl from '../../components/option-selector-control';
+import gutterOptions from '../../utils/gutter-options';
 
 /**
  * WordPress dependencies
@@ -55,38 +56,6 @@ class Inspector extends Component {
 			lightbox,
 		} = attributes;
 
-		const gutterOptions = [
-			{
-				value: 'no',
-				label: __( 'None', 'coblocks' ),
-				shortName: __( 'None', 'coblocks' ),
-			},
-			{
-				value: 'small',
-				/* translators: abbreviation for small size */
-				label: __( 'S', 'coblocks' ),
-				tooltip: __( 'Small', 'coblocks' ),
-			},
-			{
-				value: 'medium',
-				/* translators: abbreviation for medium size */
-				label: __( 'M', 'coblocks' ),
-				tooltip: __( 'Medium', 'coblocks' ),
-			},
-			{
-				value: 'large',
-				/* translators: abbreviation for large size */
-				label: __( 'L', 'coblocks' ),
-				tooltip: __( 'Large', 'coblocks' ),
-			},
-			{
-				value: 'huge',
-				/* translators: abbreviation for largest size */
-				label: __( 'XL', 'coblocks' ),
-				tooltip: __( 'Huge', 'coblocks' ),
-			},
-		];
-
 		const shadowOptions = [
 			{
 				value: 'sm',
@@ -110,19 +79,19 @@ class Inspector extends Component {
 
 		return (
 			<InspectorControls>
-				<PanelBody title={ __( 'Collage Settings', 'coblocks' ) }>
+				<PanelBody title={ __( 'Collage settings', 'coblocks' ) }>
 					{ enableGutter && <OptionSelectorControl
 						label={ __( 'Gutter', 'coblocks' ) }
 						currentOption={ gutter }
 						options={ gutterOptions }
-						onChange={ gutter => setAttributes( { gutter } ) }
+						onChange={ ( gutter ) => setAttributes( { gutter } ) }
 					/> }
 					{ ! enableGutter && <OptionSelectorControl
 						label={ __( 'Shadow', 'coblocks' ) }
 						options={ shadowOptions }
 						currentOption={ shadow }
 						showNoneOption
-						onChange={ shadow => setAttributes( { shadow } ) }
+						onChange={ ( shadow ) => setAttributes( { shadow } ) }
 					/> }
 					{ enableCaptions && <ToggleControl
 						label={ __( 'Captions', 'coblocks' ) }
@@ -131,7 +100,7 @@ class Inspector extends Component {
 						help={ this.getCaptionsHelp }
 					/> }
 					{ captions && <SelectControl
-						label={ __( 'Caption Style', 'coblocks' ) }
+						label={ __( 'Caption style', 'coblocks' ) }
 						value={ captionStyle }
 						onChange={ this.setCaptionStyleTo }
 						options={ captionOptions }

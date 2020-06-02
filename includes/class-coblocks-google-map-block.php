@@ -27,11 +27,15 @@ class CoBlocks_Google_Map_Block {
 
 	/**
 	 * Registers the plugin.
+	 *
+	 * @return CoBlocks_Google_Map_Block
 	 */
 	public static function register() {
 		if ( null === self::$instance ) {
 			self::$instance = new CoBlocks_Google_Map_Block();
 		}
+
+		return self::$instance;
 	}
 
 	/**
@@ -78,7 +82,7 @@ class CoBlocks_Google_Map_Block {
 
 			wp_enqueue_script(
 				$this->slug . '-google-maps',
-				$dir . $this->slug . '-google-maps' . COBLOCKS_ASSET_SUFFIX . '.js',
+				$dir . $this->slug . '-google-maps.js',
 				array( 'jquery' ),
 				COBLOCKS_VERSION,
 				true

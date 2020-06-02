@@ -8,8 +8,8 @@
 /**
  * Renders the `events` block on server.
  *
- * @param array $attributes The block attributes.
- * @param array $content    The post content.
+ * @param array  $attributes The block attributes.
+ * @param string $content    The post content.
  *
  * @return string Returns the events content.
  */
@@ -133,16 +133,6 @@ function coblocks_register_events_block() {
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
-
-	$vendors_dir = CoBlocks()->asset_source( 'js', 'vendors' );
-
-	wp_enqueue_script(
-		'coblocks-slick',
-		$vendors_dir . '/slick' . COBLOCKS_ASSET_SUFFIX . '.js',
-		array( 'jquery' ),
-		COBLOCKS_VERSION,
-		true
-	);
 
 	// Load attributes from block.json.
 	ob_start();

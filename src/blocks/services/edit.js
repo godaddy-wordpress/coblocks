@@ -9,6 +9,7 @@ import classnames from 'classnames';
  */
 import InspectorControls from './inspector';
 import icons from './icons';
+import HeadingToolbar from '../../components/heading-toolbar';
 
 /**
  * WordPress dependencies
@@ -144,7 +145,7 @@ class Edit extends Component {
 			this.props.clientId
 		)[ 0 ].innerBlocks;
 
-		innerItems.map( item => {
+		innerItems.forEach( ( item ) => {
 			if ( item.name === blockName ) {
 				dispatch( 'core/block-editor' ).updateBlockAttributes(
 					item.clientId,
@@ -169,7 +170,10 @@ class Edit extends Component {
 	}
 
 	toggleCtas() {
-		const { attributes, setAttributes } = this.props;
+		const {
+			attributes,
+			setAttributes,
+		} = this.props;
 
 		const buttons = ! attributes.buttons;
 		setAttributes( { buttons } );
@@ -178,13 +182,25 @@ class Edit extends Component {
 	}
 
 	render() {
-		const { className, attributes, setAttributes } = this.props;
+		const {
+			className,
+			attributes,
+			setAttributes,
+		} = this.props;
+
+		const {
+			alignment,
+			buttons,
+			columns,
+			gutter,
+			headingLevel,
+		} = attributes;
 
 		const classes = classnames(
 			'has-columns', {
-				[ `has-${ attributes.columns }-columns` ]: attributes.columns,
-				'has-responsive-columns': attributes.columns > 1,
-				[ `has-${ attributes.gutter }-gutter` ]: attributes.gutter,
+				[ `has-${ columns }-columns` ]: columns,
+				'has-responsive-columns': columns > 1,
+				[ `has-${ gutter }-gutter` ]: gutter,
 			}
 		);
 
@@ -193,8 +209,14 @@ class Edit extends Component {
 		return (
 			<Fragment>
 				<BlockControls>
+					<HeadingToolbar
+						minLevel={ 2 }
+						maxLevel={ 6 }
+						selectedLevel={ attributes.headingLevel }
+						onChange={ this.onChangeHeadingLevel }
+					/>
 					<AlignmentToolbar
-						value={ attributes.alignment }
+						value={ alignment }
 						onChange={ this.onChangeAlignment }
 					/>
 				</BlockControls>
@@ -203,7 +225,6 @@ class Edit extends Component {
 					setAttributes={ setAttributes }
 					activeStyle={ activeStyle }
 					layoutOptions={ layoutOptions }
-					onChangeHeadingLevel={ this.onChangeHeadingLevel }
 					onToggleCtas={ this.toggleCtas }
 					onUpdateStyle={ this.updateStyle }
 					onSetColumns={ this.setColumns }
@@ -212,12 +233,12 @@ class Edit extends Component {
 					<div className={ classes }>
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
-							template={ Array( attributes.columns ).fill( [
+							template={ Array( columns ).fill( [
 								'coblocks/service',
 								{
-									showCta: attributes.buttons,
-									headingLevel: attributes.headingLevel,
-									alignment: attributes.alignment,
+									showCta: buttons,
+									headingLevel,
+									alignment,
 								},
 							] ) }
 							templateLock="all"

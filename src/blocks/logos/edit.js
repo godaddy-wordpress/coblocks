@@ -7,7 +7,6 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import { pickRelevantMediaFiles } from './../../utils/helper';
-import Inspector from './inspector';
 import Controls from './controls';
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
 import Logos from './logos';
@@ -30,7 +29,7 @@ class Edit extends Component {
 
 	onSelectImages( images ) {
 		this.props.setAttributes( {
-			images: images.map( image => pickRelevantMediaFiles( image ) ),
+			images: images.map( ( image ) => pickRelevantMediaFiles( image ) ),
 		} );
 	}
 
@@ -43,22 +42,15 @@ class Edit extends Component {
 			isSelected,
 		} = this.props;
 
-		const { images, grayscale } = attributes;
-
-		const hasImages = !! images.length;
-
-		const classes = classnames( className, {
-			'has-filter-grayscale': grayscale,
-		} );
+		const hasImages = !! attributes.images.length;
 
 		return (
 			<Fragment>
 				<Controls { ...this.props } />
-				<Inspector { ...this.props } />
 				<GalleryDropZone { ...this.props } />
 
-				<div className={ classes }>
-					<Logos { ...this.props } images={ images } />
+				<div className={ className }>
+					<Logos { ...this.props } images={ attributes.images } />
 
 					{ ( ! hasImages || isSelected ) && (
 						<MediaPlaceholder
@@ -72,7 +64,7 @@ class Edit extends Component {
 							multiple
 							accept="image/*"
 							allowedTypes={ [ 'image' ] }
-							value={ hasImages ? images : undefined }
+							value={ hasImages ? attributes.images : undefined }
 							onError={ noticeOperations.createErrorNotice }
 							notices={ noticeUI }
 							onSelect={ this.onSelectImages }
