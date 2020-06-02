@@ -241,7 +241,7 @@ export const upload = {
 	imageToBlock: ( blockName ) => {
 		const { fileName, pathToFixtures } = upload.spec;
 		cy.fixture( pathToFixtures + fileName ).then( ( fileContent ) => {
-			cy.get( `div[data-type="${ blockName }"]` )
+			cy.get( `[data-type="${ blockName }"]` )
 				.find( 'input' )
 				.first()
 				.invoke( 'removeAttr', 'style' ) //makes element easier to interact with/accessible. Headless test fails without this.

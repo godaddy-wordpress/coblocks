@@ -85,8 +85,8 @@ class MediaContainer extends Component {
 
 		return (
 			<div className="wp-block-coblocks-media-card__placeholder">
-				{ isBlobURL( mediaUrl ) ?
-					<Fragment>
+				{ isBlobURL( mediaUrl )
+					? <Fragment>
 						<Spinner />
 						<figure className={ classnames(
 							figureClass,
@@ -94,8 +94,8 @@ class MediaContainer extends Component {
 						) } >
 							<img src={ mediaUrl } alt={ mediaAlt } />
 						</figure>
-					</Fragment>				:
-					<MediaPlaceholder
+					</Fragment>
+					:				<MediaPlaceholder
 						icon={ <BlockIcon icon={ icons.mediaContainer } /> }
 						labels={ {
 							title: __( 'Media area', 'coblocks' ),
@@ -113,7 +113,7 @@ class MediaContainer extends Component {
 	}
 
 	render() {
-		const { mediaUrl, mediaType, mediaWidth, mediaPosition, commitWidthChange, onWidthChange, onDropMedia } = this.props;
+		const { mediaUrl, mediaType, mediaWidth, mediaPosition, commitWidthChange, onWidthChange, onDropMedia, isSelected } = this.props;
 
 		const imageDropZone = (
 			<Fragment>

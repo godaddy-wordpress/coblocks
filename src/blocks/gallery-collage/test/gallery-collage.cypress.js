@@ -42,7 +42,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 
 		cy.get( '.wp-block[data-type="coblocks/gallery-collage"]' ).click();
 
-		helpers.upload.imageToBlock( 'coblocks/collage' );
+		helpers.upload.imageToBlock( 'coblocks/gallery-collage' );
 
 		cy.get( '.wp-block-coblocks-gallery-collage__item img[src*="http"]' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
 

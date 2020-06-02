@@ -30,6 +30,7 @@ class Logos extends Component {
 
 	render() {
 		let count;
+		const { isSelected } = this.props;
 
 		switch ( this.props.attributes.align ) {
 			case 'wide':
