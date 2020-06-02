@@ -13,7 +13,7 @@
 	}
 
 	.wp-block[data-coblocks-top-spacing="1"]:not(:first-child),
-	.wp-block [data-coblocks-top-spacing="1"]:not(:first-child) {
+	.wp-block:not(:first-child) [data-coblocks-top-spacing="1"] {
 		margin-top: 0 !important;
 
 		// Ensure that blocks with custom margin settings using our dimensions control
@@ -36,7 +36,7 @@
 	}
 
 	.wp-block[data-coblocks-bottom-spacing="1"]:not(:last-child),
-	.wp-block [data-coblocks-bottom-spacing="1"]:not(:last-child)  {
+	.wp-block:not(:last-child) [data-coblocks-bottom-spacing="1"] {
 		margin-bottom: 0 !important;
 
 		// Ensure that blocks with custom margin settings using our dimensions control
