@@ -57,7 +57,7 @@ describe( 'Test CoBlocks Feature Block', function() {
 
 		helpers.viewPage().then( () => {
 			Cypress.$( '#wpadminbar' ).hide();
-			cy.get( '.hentry' ).toMatchImageSnapshot();
+			cy.get( '.hentry' ).matchImageSnapshot();
 		} );
 	} );
 } );
