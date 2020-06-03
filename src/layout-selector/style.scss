@@ -1,5 +1,9 @@
 $color-highlight: #00a4a6;
 
+// .interface-interface-skeleton__sidebar {
+// 	display: none;
+// }
+
 .coblocks-layout-selector .coblocks-layout-selector__layout .block-editor-block-preview__container.editor-styles-wrapper {
 	--go--font-size: 0.5rem;
 	--go-button--font-size: 0.5rem;
@@ -211,10 +215,10 @@ $color-highlight: #00a4a6;
 		display: flex;
 		flex-basis: 50%;
 		flex-grow: 1;
-		margin: 0 0 10% 10%;
+		margin: 0 0 12% 12%;
 		position: relative;
 		text-decoration: none;
-		// transition: all 0.2s;
+
 
 		@media (max-width: 1024px) {
 			flex-basis: 100%;
@@ -243,19 +247,16 @@ $color-highlight: #00a4a6;
 
 		&.is-selected::after {
 			box-shadow: 0 0 0 1px #fff, 0 0 0 3px theme(primary);
-			// border-width: 4px;
-			// border-color: theme(primary);
 		}
 
 		&:hover,
 		&:focus {
 			outline: none;
-			// box-shadow: none;
 		}
 	}
 
 	&__layout--overlay {
-		display: none !important;
+		display: none !important; // Hide this temp.
 		position: absolute;
 		top: 0;
 		right: 0;
