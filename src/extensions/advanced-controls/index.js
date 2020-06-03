@@ -273,7 +273,6 @@ const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 
 const handleEditorAdvancedMargin = ( ) => {
 	const handleChanges = ( targetedElem ) => {
-		// console.log( targetedElem );
 		if ( targetedElem.className.includes( 'wp-block' ) ) {
 			switch ( targetedElem.innerHTML.includes( 'data-coblocks-bottom-spacing' ) ) {
 				case true:
@@ -295,8 +294,9 @@ const handleEditorAdvancedMargin = ( ) => {
 		}
 	};
 
-	const targetNode = document;
-	const config = { attributes: true, childList: true, subtree: true };
+	const observationTargetNode = !! document.getElementsByClassName( 'coblocks-layout-selector' ).length
+		? document : document.getElementsByClassName( 'block-editor-block-list__layout' )[ 0 ];
+
 	const getClosest = ( elem, selector ) => {
 		for ( ; elem && elem !== document; elem = elem.parentNode ) {
 			if ( elem.matches( selector ) && !! elem.dataset.align ) {
@@ -328,7 +328,7 @@ const handleEditorAdvancedMargin = ( ) => {
 		}
 	};
 	const observer = new MutationObserver( callback );
-	observer.observe( targetNode, config );
+	observer.observe( observationTargetNode, { attributes: true, childList: true, subtree: true } );
 };
 
 addFilter(
