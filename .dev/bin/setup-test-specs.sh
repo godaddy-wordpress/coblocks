@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-CHANGEDFILES=$(git diff --name-only origin/master)
+# Allow files to be passed into the script
+CHANGEDFILES=${@-$(git diff --name-only origin/master)}
 SPECS=()
 SPECSTRING=''
 

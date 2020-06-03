@@ -1,3 +1,31 @@
+1.26.3 / 2020-05-29
+
+===================
+
+### Bug Fixes
+* Apply styles for formats [#1494](https://github.com/godaddy-wordpress/coblocks/pull/1494)
+
+### Misc
+* Update contributors list [#1498](https://github.com/godaddy-wordpress/coblocks/pull/1498)
+* Update typography hooks docs [#1502](https://github.com/godaddy-wordpress/coblocks/pull/1502)
+
+
+1.26.2 / 2020-05-29
+===================
+
+### Bug Fixes
+* Improve conditional loading of scripts and styles [#1511](https://github.com/godaddy-wordpress/coblocks/pull/1511)
+* Add custom classes for Map block within the editor [#1492](https://github.com/godaddy-wordpress/coblocks/pull/1492)
+* Updating security related dependencies [#1482](https://github.com/godaddy-wordpress/coblocks/pull/1482)
+
+
+1.26.1 / 2020-05-04
+===================
+
+### Bug Fixes
+* Render a submit button if not found in the block content [#1479](https://github.com/godaddy-wordpress/coblocks/pull/1479)
+* Remove a condition where a variable may not be defined [#1477](https://github.com/godaddy-wordpress/coblocks/pull/1477)
+
 
 1.26.0 / 2020-04-30
 ===================

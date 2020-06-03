@@ -69,7 +69,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 		$reflection_method->invoke( coblocks() );
 
 		$expected = [
-			'version' => '1.26.0',
+			'version' => '1.26.3',
 			'plugin_dir'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_path( __FILE__ ) ),
 			'plugin_url'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_url( __FILE__ ) ),
 			'plugin_file' => str_replace( '.dev/tests/phpunit/test-class-coblocks.php', 'class-coblocks.php', __FILE__ ),
@@ -172,19 +172,6 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 	public function test_text_domain() {
 
 		$this->markTestSkipped( 'Todo: Write tests for text domain.' );
-
-	}
-
-	/**
-	 * Test the block editor assets load correctly
-	 */
-	public function test_block_editor_assets() {
-
-		do_action( 'enqueue_block_editor_assets' );
-
-		global $wp_scripts;
-
-		$this->assertTrue( array_key_exists( 'coblocks-editor', $wp_scripts->registered ) );
 
 	}
 
