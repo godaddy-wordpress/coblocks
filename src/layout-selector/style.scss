@@ -2,6 +2,7 @@ $color-highlight: #00a4a6;
 
 .coblocks-layout-selector .coblocks-layout-selector__layout .block-editor-block-preview__container.editor-styles-wrapper {
 	--go--font-size: 0.5rem;
+	--go-button--font-size: 0.5rem;
 	--go--viewport-basis: 1800;
 	--editor-max-w-base: 400px;
 	--editor-max-w-wide: 85%;
@@ -30,7 +31,7 @@ $color-highlight: #00a4a6;
 }
 
 .coblocks-layout-selector-modal {
-	width: 1320px;
+	width: 1200px;
 	height: 85vh;
 	position: relative;
 
@@ -84,8 +85,8 @@ $color-highlight: #00a4a6;
 	}
 
 	&__sidebar {
-		width: 200px;
-		top: 119px;
+		width: 220px;
+		top: 118px;
 		position: -webkit-sticky;
 		position: sticky;
 
@@ -94,8 +95,8 @@ $color-highlight: #00a4a6;
 		}
 
 		&__items {
-			font-size: 16px;
-			margin-bottom: 2em;
+			font-size: 14px;
+			margin-bottom: 2.5em;
 			margin-top: 0;
 		}
 
@@ -150,7 +151,7 @@ $color-highlight: #00a4a6;
 	&__add-button {
 		color: $dark-gray-800 !important;
 		text-decoration: none !important;
-		font-weight: 600;
+		font-weight: 500;
 		min-width: 32px;
 		height: 32px;
 		display: inline-flex;
@@ -197,6 +198,7 @@ $color-highlight: #00a4a6;
 		flex-wrap: wrap;
 		align-items: flex-start;
 		justify-content: space-between;
+		padding: 3px;
 	}
 
 	&__layouts-column {
@@ -204,19 +206,25 @@ $color-highlight: #00a4a6;
 	}
 
 	&__layout {
-		background-color: hsla(240, 5%, 57%, 0.1);
+		border-radius: 2px;
+		background-color: var(--go--color--background, #fff);
 		display: flex;
 		flex-basis: 50%;
 		flex-grow: 1;
-		margin: 0 0 8% 8%;
+		margin: 0 0 10% 10%;
 		position: relative;
 		text-decoration: none;
-		transition: all 0.2s;
+		// transition: all 0.2s;
 
 		@media (max-width: 1024px) {
 			flex-basis: 100%;
 			max-width: 100%;
 			margin-right: 0;
+		}
+
+		.block-editor-block-preview__container {
+			margin-bottom: 2rem;
+			margin-top: 2rem;
 		}
 
 		&::after {
@@ -226,21 +234,28 @@ $color-highlight: #00a4a6;
 			width: 100%;
 			z-index: 1;
 			content: "";
+			border-radius: 2px;
+		}
+
+		&:hover {
+			box-shadow: 0 0 0 1px #fff, 0 0 0 3px theme(primary);
 		}
 
 		&.is-selected::after {
-			border-width: 4px;
-			border-color: theme(primary);
+			box-shadow: 0 0 0 1px #fff, 0 0 0 3px theme(primary);
+			// border-width: 4px;
+			// border-color: theme(primary);
 		}
 
 		&:hover,
 		&:focus {
 			outline: none;
-			box-shadow: none;
+			// box-shadow: none;
 		}
 	}
 
 	&__layout--overlay {
+		display: none !important;
 		position: absolute;
 		top: 0;
 		right: 0;
