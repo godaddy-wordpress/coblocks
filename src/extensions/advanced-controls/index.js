@@ -273,6 +273,7 @@ const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 
 const handleEditorAdvancedMargin = ( ) => {
 	const handleChanges = ( targetedElem ) => {
+		// console.log( targetedElem );
 		if ( targetedElem.className.includes( 'wp-block' ) ) {
 			switch ( targetedElem.innerHTML.includes( 'data-coblocks-bottom-spacing' ) ) {
 				case true:
@@ -294,19 +295,30 @@ const handleEditorAdvancedMargin = ( ) => {
 		}
 	};
 
-	const targetNode = document.getElementsByClassName( 'block-editor-block-list__layout is-root-container' )[ 0 ];
+	const targetNode = document;
 	const config = { attributes: true, childList: true, subtree: true };
+	const getClosest = ( elem, selector ) => {
+		for ( ; elem && elem !== document; elem = elem.parentNode ) {
+			if ( elem.matches( selector ) && !! elem.dataset.align ) {
+				return elem;
+			}
+		}
+		return null;
+	};
+
 	const callback = function( mutationsList ) {
 		for ( const mutation of mutationsList ) {
 			if ( mutation.type === 'childList' ) {
-				if ( ! ( mutation.previousSibling instanceof HTMLElement ) ) {
+				if ( ! ( mutation.target instanceof HTMLElement ) ) {
 					continue;
 				}
-				if ( mutation.previousSibling.className.includes( 'wp-block' ) ) {
-					handleChanges( mutation.previousSibling );
+
+				const wpBlock = getClosest( mutation.target, '.wp-block' );
+				if ( !! wpBlock ) {
+					handleChanges( wpBlock );
 				}
 			}
-			if ( mutation.type === 'attributes' && 
+			if ( mutation.type === 'attributes' &&
 			( mutation.attributeName === 'data-coblocks-bottom-spacing' || mutation.attributeName === 'data-coblocks-top-spacing' ) ) {
 				if ( ! ( mutation.target.parentElement instanceof HTMLElement ) ) {
 					continue;
