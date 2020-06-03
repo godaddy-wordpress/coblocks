@@ -6,7 +6,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 1.26.1
+Stable tag: 1.26.3
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -124,5 +124,8 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Bug Fixes
-* Render a submit button if not found in the block content [#1479](https://github.com/godaddy-wordpress/coblocks/pull/1479)
-* Remove a condition where a variable may not be defined [#1477](https://github.com/godaddy-wordpress/coblocks/pull/1477)
+* Apply styles for formats [#1494](https://github.com/godaddy-wordpress/coblocks/pull/1494)
+
+### Misc
+* Update contributors list [#1498](https://github.com/godaddy-wordpress/coblocks/pull/1498)
+* Update typography hooks docs [#1502](https://github.com/godaddy-wordpress/coblocks/pull/1502)
