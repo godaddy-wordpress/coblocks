@@ -1,14 +1,14 @@
 # Copyright (c) 2020 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.26.1\n"
+"Project-Id-Version: CoBlocks 1.26.3\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-05-14T17:31:21+00:00\n"
+"POT-Creation-Date: 2020-06-01T17:01:50+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -1906,7 +1906,7 @@ msgid "Responsive height"
 msgstr ""
 
 #: src/blocks/gallery-collage/edit.js:181
-#: src/blocks/map/edit.js:291
+#: src/blocks/map/edit.js:340
 #: src/components/block-gallery/gallery-image.js:226
 msgid "Apply"
 msgstr ""
@@ -5340,29 +5340,29 @@ msgid "Edit Location"
 msgstr ""
 
 #: src/blocks/map/deprecated.js:96
-#: src/blocks/map/edit.js:161
+#: src/blocks/map/edit.js:165
 #: src/blocks/map/save.js:50
 msgid "Google Map"
 msgstr ""
 
-#: src/blocks/map/edit.js:228
+#: src/blocks/map/edit.js:245
 msgid "Invalid API key, or too many requests"
 msgstr ""
 
-#: src/blocks/map/edit.js:273
+#: src/blocks/map/edit.js:310
 msgid "Google map"
 msgstr ""
 
-#: src/blocks/map/edit.js:274
+#: src/blocks/map/edit.js:311
 msgid "Enter a location or address to drop a pin on a Google map."
 msgstr ""
 
-#: src/blocks/map/edit.js:281
+#: src/blocks/map/edit.js:321
 msgid "Search for a place or address…"
 msgstr ""
 
-#: src/blocks/map/edit.js:303
-#: src/blocks/map/edit.js:311
+#: src/blocks/map/edit.js:352
+#: src/blocks/map/edit.js:363
 msgid "Cancel"
 msgstr ""
 
