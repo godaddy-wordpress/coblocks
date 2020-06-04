@@ -21,7 +21,7 @@ import { InnerBlocks } from '@wordpress/block-editor';
 import { ResizableBox, Spinner } from '@wordpress/components';
 import { withDispatch, withSelect } from '@wordpress/data';
 import { isBlobURL } from '@wordpress/blob';
- 
+
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
  * The contents of the array should never change.
@@ -113,7 +113,7 @@ export class Edit extends Component {
 	}
 
 	saveMeta( type ) {
-		const { getEditedPostAttribute, getBlock, editPost } = this.props; 
+		const { getEditedPostAttribute, getBlock, editPost } = this.props;
 		const meta = getEditedPostAttribute( 'meta' );
 		const block = getBlock( this.props.clientId );
 		let dimensions = {};
@@ -298,6 +298,7 @@ export class Edit extends Component {
 											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.width = 'auto';
 											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.maxWidth = parseInt( maxWidth + delta.width, 10 ) + 'px';
 										} }
+										showHandle={ isSelected }
 									>
 										<InnerBlocks
 											template={ TEMPLATE }
@@ -350,6 +351,7 @@ export class Edit extends Component {
 								//update meta
 								this.saveMeta( 'height' );
 							} }
+							showHandle={ isSelected }
 						>
 							{ isBlobURL( backgroundImg ) && <Spinner /> }
 							{ BackgroundVideo( attributes ) }
@@ -381,6 +383,7 @@ export class Edit extends Component {
 											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.width = 'auto';
 											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.maxWidth = parseInt( maxWidth + delta.width, 10 ) + 'px';
 										} }
+										showHandle={ isSelected }
 									>
 										<InnerBlocks
 											template={ TEMPLATE }
@@ -415,7 +418,7 @@ export default compose( [
 		const { getBlocks,  } = select( 'core/block-editor' );
 		const { getEditedPostAttribute } = select( 'core/editor' );
 		const innerBlocks = getBlocks( props.clientId );
-	
+
 		return {
 			innerBlocks,
 			getEditedPostAttribute,

@@ -63,6 +63,7 @@ class DynamicSeparatorEdit extends Component {
 							height: spacerHeight,
 						} );
 					} }
+					showHandle={ isSelected }
 				/>
 			</Fragment>
 		);
