@@ -8,12 +8,7 @@ import linkOptions from './options/link-options';
  */
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import {
-	SelectControl,
-	ToggleControl,
-	PanelBody,
-	TextControl,
-} from '@wordpress/components';
+import { SelectControl, ToggleControl, PanelBody, TextControl } from '@wordpress/components';
 
 class GalleryLinkSettings extends Component {
 	constructor() {
@@ -58,13 +53,21 @@ class GalleryLinkSettings extends Component {
 	}
 
 	render() {
-		const { attributes, setAttributes } = this.props;
+		const {
+			attributes,
+			setAttributes,
+		} = this.props;
 
-		const { lightbox, linkTo, target, rel } = attributes;
+		const {
+			lightbox,
+			linkTo,
+			target,
+			rel,
+		} = attributes;
 
 		return (
 			<Fragment>
-				{ ! lightbox && (
+				{ ! lightbox &&
 					<PanelBody
 						title={ __( 'Link settings', 'coblocks' ) }
 						initialOpen={ false }
@@ -75,13 +78,10 @@ class GalleryLinkSettings extends Component {
 							options={ linkOptions }
 							onChange={ this.setLinkTo }
 						/>
-						{ linkTo !== 'none' && (
+						{ linkTo !== 'none' &&
 							<Fragment>
 								<ToggleControl
-									label={ __(
-										'Open in new tab',
-										'coblocks'
-									) }
+									label={ __( 'Open in new tab', 'coblocks' ) }
 									onChange={ this.setNewTab }
 									checked={ target === '_blank' }
 								/>
@@ -89,14 +89,12 @@ class GalleryLinkSettings extends Component {
 									/* translators: html attribute that specifies the relationship between two pages */
 									label={ __( 'Link rel', 'coblocks' ) }
 									value={ rel }
-									onChange={ ( value ) =>
-										setAttributes( { rel: value } )
-									}
+									onChange={ ( value ) => setAttributes( { rel: value } ) }
 								/>
 							</Fragment>
-						) }
+						}
 					</PanelBody>
-				) }
+				}
 			</Fragment>
 		);
 	}
