@@ -9,6 +9,7 @@ import Section from './section';
 import { Component } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { applyFilters } from '@wordpress/hooks';
+import { getPlugin } from '@wordpress/plugins';
 import {
 	CheckboxControl,
 	Modal,
@@ -114,7 +115,7 @@ class CoBlocksSettingsModal extends Component {
 
 		const supportsGradients = getSettings().gradients !== undefined;
 		const colorPanelEnabled = !! colorPanel;
-		const showLayoutSelectorControl = applyFilters( 'coblocks-show-layout-selector', true );
+		const showLayoutSelectorControl = applyFilters( 'coblocks-show-layout-selector', true ) && !! getPlugin( 'coblocks-layout-selector' );
 
 		return (
 			<Modal
@@ -123,7 +124,7 @@ class CoBlocksSettingsModal extends Component {
 			>
 				<div className="coblocks-modal__content">
 					<Section title={ __( 'General' ) }>
-						{ showLayoutSelectorControl && 
+						{ showLayoutSelectorControl &&
 						<>
 							<HorizontalRule />
 							<CheckboxControl
