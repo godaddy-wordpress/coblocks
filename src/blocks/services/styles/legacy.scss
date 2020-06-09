@@ -13,12 +13,12 @@
 
 			&[data-columns="2"] > .wp-block-coblocks-service {
 				flex-basis: 50%;
-				max-width: calc(100% / 2 - #{map-get($spacing, 2)});
+				max-width: calc(100% / 2 - var(--coblocks-spacing--2, #{map-get($spacing, 2)}));
 			}
 
 			&[data-columns="3"] > .wp-block-coblocks-service {
 				flex-basis: 33.333%;
-				max-width: calc(100% / 3 - #{map-get($spacing, 2)});
+				max-width: calc(100% / 3 - var(--coblocks-spacing--2, #{map-get($spacing, 2)}));
 			}
 		}
 
@@ -27,7 +27,7 @@
 			&[data-columns="4"] > .wp-block-coblocks-service {
 				flex-basis: 50%;
 				margin-bottom: 3em;
-				max-width: calc(100% / 2 - #{map-get($spacing, 2)});
+				max-width: calc(100% / 2 - var(--coblocks-spacing--2, #{map-get($spacing, 2)}));
 
 				&:nth-child(1),
 				&:nth-child(3) {
@@ -50,7 +50,7 @@
 
 			&[data-columns="4"] > .wp-block-coblocks-service {
 				flex-basis: 25%;
-				max-width: calc(100% / 4 - #{map-get($spacing, 2)});
+				max-width: calc(100% / 4 - var(--coblocks-spacing--2, #{map-get($spacing, 2)}));
 			}
 		}
 	}

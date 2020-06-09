@@ -4,9 +4,18 @@
 @import "styles/editor/core/breakpoints";
 @import "styles/editor/core/mixins";
 
-// Spacing utility
+// Colors
+$color-alert-default-bg: #d6efee;
+$color-alert-default-color: #094264;
+$color-alert-warning-bg: #fbe7dd;
+$color-alert-warning-color: #8a4b30;
+$color-alert-error-bg: #ffdede;
+$color-alert-error-color: #8b343c;
+$color-alert-success-bg: #d0eac4;
+$color-alert-success-color: #154a28;
+
+// Spacing
 $spacing: (
-	0: 0,
 	1: 0.5em,
 	2: 1em,
 	3: 1.5em,
@@ -17,15 +26,30 @@ $spacing: (
 	8: 4em
 );
 
+// CSS Custom Properties
+:root {
+	--coblocks-spacing--0: 0;
+	--coblocks-spacing--1: #{map-get($spacing, 1)};
+	--coblocks-spacing--2: #{map-get($spacing, 2)};
+	--coblocks-spacing--3: #{map-get($spacing, 3)};
+	--coblocks-spacing--4: #{map-get($spacing, 4)};
+	--coblocks-spacing--5: #{map-get($spacing, 5)};
+	--coblocks-spacing--6: #{map-get($spacing, 6)};
+	--coblocks-spacing--7: #{map-get($spacing, 7)};
+	--coblocks-spacing--8: #{map-get($spacing, 8)};
+}
+
 // Colors
-$color-twitter: #1da1f2;
-$color-alert-default-bg: #d6efee;
-$color-alert-default-color: #094264;
-$color-alert-warning-bg: #fbe7dd;
-$color-alert-warning-color: #8a4b30;
-$color-alert-error-bg: #ffdede;
-$color-alert-error-color: #8b343c;
-$color-alert-success-bg: #d0eac4;
-$color-alert-success-color: #154a28;
+$color-alert-default-bg: var(--coblocks-alert-default--color--background, $color-alert-default-bg);
+$color-alert-default-color: var(--coblocks-alert-default--color--text, $color-alert-default-color);
+
+$color-alert-warning-bg: var(--coblocks-alert-default--color--background, $color-alert-warning-bg);
+$color-alert-warning-color: var(--coblocks-alert-warning--color--text, $color-alert-warning-color);
+
+$color-alert-error-bg: var(--coblocks-alert-default--color--background, $color-alert-error-bg);
+$color-alert-error-color: var(--coblocks-alert-error--color--text, $color-alert-error-color);
+
+$color-alert-success-bg: var(--coblocks-alert-default--color--background, $color-alert-success-bg);
+$color-alert-success-color: var(--coblocks-alert-error--color--text, $color-alert-success-color);
 
 @import "styles/mixins";
