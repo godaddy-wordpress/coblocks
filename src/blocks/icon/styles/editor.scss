@@ -97,20 +97,9 @@
 				}
 			}
 		}
-
-		// &.is-selected {
-		// 	.components-button {
-		// 		&,
-		// 		&:focus {
-		// 			background: transparent;
-		// 			box-shadow: 0 0 0 2px $white, 0 0 0 4px $dark-gray-500;
-		// 		}
-		// 	}
-		// }
 	}
 }
 
-//Add styling for resizableBox handles when a parent div is positioning the icon.
 .has-center-content .wp-block-coblocks-icon__inner.is-selected {
 
 	.components-resizable-box__handle-left,
@@ -129,6 +118,14 @@
 		display: none !important;
 	}
 }
+
+.wp-block[data-type="coblocks/icon"] {
+
+	&.block-editor-block-list__block:not([contenteditable]):focus::after {
+		display: none !important;
+	}
+}
+
 
 // Editor style preview.
 .editor-block-preview,
@@ -160,6 +157,7 @@
 	}
 }
 
+// Hide screen reader label for Gutenberg < 6.4
 .components-coblocks-icon-size__controls {
 	align-items: center;
 	display: flex;
@@ -174,10 +172,6 @@
 	.components-base-control__field {
 		margin-bottom: 0 !important;
 	}
-}
-
-// Hide screen reader label for Gutenberg < 6.4
-.components-coblocks-icon-size__controls {
 
 	.components-base-control .components-base-control__label {
 		border: 0;

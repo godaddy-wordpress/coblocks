@@ -8,9 +8,6 @@ describe( 'Test CoBlocks Media Card Block', function() {
 	 * Setup media-card data
 	 */
 	const mediaData = {
-		fileName: '150x150.png',
-		imageBase: '150x150',
-		pathToFixtures: '../.dev/tests/cypress/fixtures/images/',
 		colorData: {
 			backgroundColor: '#ff0000',
 			backgroundColorRGB: 'rgb(255, 0, 0)',
@@ -40,33 +37,24 @@ describe( 'Test CoBlocks Media Card Block', function() {
 	 * to successfully save the block without errors.
 	 */
 	it( 'Test media-card block saves with image upload.', function() {
-		const { fileName, imageBase, pathToFixtures } = mediaData;
+		const { imageBase } = helpers.upload.spec;
 		helpers.addBlockToPost( 'coblocks/media-card', true );
 
-		cy.get( '.wp-block[data-type="coblocks/media-card"]' )
-			.click();
+		cy.get( '.wp-block[data-type="coblocks/media-card"]' ).click();
 
-		cy.fixture( pathToFixtures + fileName, 'base64' ).then( ( fileContent ) => {
-			cy.get( 'div[data-type="coblocks/media-card"]' )
-				.find( 'div.components-drop-zone' ).first()
-				.upload(
-					{ fileContent, fileName, mimeType: 'image/png' },
-					{ subjectType: 'drag-n-drop', force: true, events: [ 'dragstart', 'dragover', 'drop' ] },
-				)
-				.wait( 2000 ); // Allow upload to finish.
+		helpers.upload.imageToBlock( 'coblocks/media-card' );
 
-			cy.get( '.wp-block-coblocks-media-card' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
+		cy.get( `img[src*="${imageBase}"]` );
 
-			helpers.savePage();
+		helpers.savePage();
 
-			helpers.checkForBlockErrors( 'coblocks/media-card' );
+		helpers.checkForBlockErrors( 'coblocks/media-card' );
 
-			helpers.viewPage();
+		helpers.viewPage();
 
-			cy.get( '.wp-block-coblocks-media-card' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
+		cy.get( '.wp-block-coblocks-media-card' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
 
-			helpers.editPage();
-		} );
+		helpers.editPage();
 	} );
 
 	/**
