@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import pickBy from 'lodash/pickby';
+import { pickBy } from 'lodash';
 
 const styleAttributes = [ 'fontFamily', 'lineHeight', 'letterSpacing', 'fontWeight', 'textTransform' ];
 
