@@ -30,7 +30,7 @@ This list is manually curated to include valuable contributions by volunteers th
 | @mahdiyazdani     | @mahdiyazdani          |
 | @nicolad          | @vadimnicolai          |
 | @obenland         | @obenland              |
-| @p-jackson        |                        |
+| @p-jackson        | @philipmjackson        |
 | @passatgt         | @passatgt              |
 | @ramiy            | @ramiy                 |
 | @Reinpal          |                        |

@@ -50,7 +50,7 @@
 		word-break: break-all;
 
 		&:not(.has-button-color) {
-			background: $color-twitter;
+			background: var(--coblocks--color--twitter, #1da1f2);
 		}
 
 		&::before {

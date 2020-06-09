@@ -77,24 +77,24 @@
 	.has-medium-gutter,
 	.has-large-gutter,
 	.has-huge-gutter {
-		margin-bottom: calc(#{map-get($spacing, 1)} * -1 * 2);
-		margin-left: calc(#{map-get($spacing, 1)} * -0.5 * 2);
+		margin-bottom: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) * -1 * 2);
+		margin-left: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) * -0.5 * 2);
 
 		figure {
-			margin-bottom: calc(#{map-get($spacing, 1)} * 2);
-			margin-left: calc(#{map-get($spacing, 1)} * 2);
+			margin-bottom: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) * 2);
+			margin-left: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) * 2);
 		}
 	}
 
 	.has-medium-gutter {
 
 		@include break-small() {
-			margin-bottom: calc(#{map-get($spacing, 2)} * -1 * 2);
-			margin-left: calc(#{map-get($spacing, 2)} * -0.5 * 2);
+			margin-bottom: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * -1 * 2);
+			margin-left: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * -0.5 * 2);
 
 			figure {
-				margin-bottom: calc(#{map-get($spacing, 2)} * 2);
-				margin-left: calc(#{map-get($spacing, 2)} * 2);
+				margin-bottom: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * 2);
+				margin-left: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * 2);
 			}
 		}
 	}
@@ -102,12 +102,12 @@
 	.has-large-gutter {
 
 		@include break-small() {
-			margin-bottom: calc(#{map-get($spacing, 3)} * -1 * 2);
-			margin-left: calc(#{map-get($spacing, 3)} * -0.5 * 2);
+			margin-bottom: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) * -1 * 2);
+			margin-left: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) * -0.5 * 2);
 
 			figure {
-				margin-bottom: calc(#{map-get($spacing, 3)} * 2);
-				margin-left: calc(#{map-get($spacing, 3)} * 2);
+				margin-bottom: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) * 2);
+				margin-left: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) * 2);
 			}
 		}
 	}
@@ -115,12 +115,12 @@
 	.has-huge-gutter {
 
 		@include break-small() {
-			margin-bottom: calc(#{map-get($spacing, 4)} * -1 * 2);
-			margin-left: calc(#{map-get($spacing, 4)} * -0.5 * 2);
+			margin-bottom: calc(var(--coblocks-spacing--4, #{map-get($spacing, 4)}) * -1 * 2);
+			margin-left: calc(var(--coblocks-spacing--4, #{map-get($spacing, 4)}) * -0.5 * 2);
 
 			figure {
-				margin-bottom: calc(#{map-get($spacing, 4)} * 2);
-				margin-left: calc(#{map-get($spacing, 4)} * 2);
+				margin-bottom: calc(var(--coblocks-spacing--4, #{map-get($spacing, 4)}) * 2);
+				margin-left: calc(var(--coblocks-spacing--4, #{map-get($spacing, 4)}) * 2);
 			}
 		}
 	}
