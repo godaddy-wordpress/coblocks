@@ -50,10 +50,15 @@
 	}
 
 	.block-editor-url-input {
-		flex-grow: 1;
+		flex: 1 2;
 		padding: 2px;
 		position: relative;
 		width: calc(100% - 73px);
+
+		.components-base-control__field {
+			margin-top: 4px;
+			margin-bottom: 4px;
+		}
 
 		input[type="text"] {
 			border-radius: 3px;
