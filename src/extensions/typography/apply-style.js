@@ -1,19 +1,12 @@
-function applyStyle( attributes, name ) {
-	const {
-		fontFamily,
-		lineHeight,
-		letterSpacing,
-		fontWeight,
-		textTransform,
-	} = attributes;
+/**
+ * External dependencies
+ */
+import pickBy from 'lodash/pickby';
 
-	const style = {
-		lineHeight: lineHeight || null,
-		fontFamily: fontFamily || null,
-		fontWeight: fontWeight || null,
-		textTransform: textTransform || null,
-		letterSpacing: letterSpacing || null,
-	};
+const styleAttributes = [ 'fontFamily', 'lineHeight', 'letterSpacing', 'fontWeight', 'textTransform' ];
+
+function applyStyle( attributes, name ) {
+	const style = pickBy( attributes, ( value, key ) => !! value && styleAttributes.includes( key ) );
 
 	if ( typeof attributes.customFontSize !== 'undefined' ) {
 		style.fontSize = attributes.customFontSize + 'px';
