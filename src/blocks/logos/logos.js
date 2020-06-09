@@ -30,6 +30,7 @@ class Logos extends Component {
 
 	render() {
 		let count;
+		const { isSelected } = this.props;
 
 		switch ( this.props.attributes.align ) {
 			case 'wide':
@@ -110,6 +111,7 @@ class Logos extends Component {
 												this.props.setAttributes( { images: remainingImages } );
 											}
 										} }
+										showHandle={ isSelected }
 									>
 										<img
 											src={ img.url }

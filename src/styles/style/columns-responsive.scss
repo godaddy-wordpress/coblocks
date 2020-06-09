@@ -17,19 +17,19 @@
 		}
 
 		&.has-small-gutter > [class*="wp-block"]:not(:last-child) {
-			margin-bottom: map-get($spacing, 1) * 2.35;
+			margin-bottom: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) * 2.35);
 		}
 
 		&.has-medium-gutter > [class*="wp-block"]:not(:last-child) {
-			margin-bottom: map-get($spacing, 2) * 2.35;
+			margin-bottom: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * 2.35);
 		}
 
 		&.has-large-gutter > [class*="wp-block"]:not(:last-child) {
-			margin-bottom: map-get($spacing, 3) * 2.35;
+			margin-bottom: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) * 2.35);
 		}
 
 		&.has-huge-gutter > [class*="wp-block"]:not(:last-child) {
-			margin-bottom: map-get($spacing, 4) * 2.35;
+			margin-bottom: calc(var(--coblocks-spacing--4, #{map-get($spacing, 4)}) * 2.35);
 		}
 	}
 }

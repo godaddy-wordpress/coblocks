@@ -63,13 +63,11 @@ describe( 'Test CoBlocks Post Carousel Block', function() {
 
 		helpers.checkForBlockErrors( 'coblocks/post-carousel' );
 
-		cy.get( '.wp-block-coblocks-post-carousel' )
-			.should( 'have.class', 'my-custom-class' );
+		cy.get( '.my-custom-class > .coblocks-slick' ).should( 'exist' );
 
 		helpers.viewPage();
 
-		cy.get( '.wp-block-coblocks-post-carousel' )
-			.should( 'have.class', 'my-custom-class' );
+		cy.get( '.my-custom-class > .coblocks-slick' ).should( 'exist' );
 
 		helpers.editPage();
 	} );

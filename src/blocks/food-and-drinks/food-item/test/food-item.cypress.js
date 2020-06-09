@@ -2,7 +2,6 @@
  * Include our constants
  */
 import * as helpers from '../../../../../.dev/tests/cypress/helpers';
-import 'cypress-file-upload';
 
 describe( 'Block: Food Item', () => {
 
@@ -84,6 +83,7 @@ describe( 'Block: Food Item', () => {
 	} );
 
 	it( 'can upload image with drag-and-drop', () => {
+		const { imageBase } = helpers.upload.spec;
 		// Open block settings panel.
 		cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().click();
 		helpers.openSettingsPanel( /item settings/i );
@@ -93,19 +93,12 @@ describe( 'Block: Food Item', () => {
 		cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'exist' );
 
 		// Drag-and-drop a file to upload.
-		cy.fixture( '../.dev/tests/cypress/fixtures/images/150x150.png', 'base64' ).then( fileContent => {
-			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first()
-				.find( '.components-drop-zone' ).first()
-				.upload(
-					{ fileContent, fileName: '150x150.png', mimeType: 'image/png' },
-					{ subjectType: 'drag-n-drop', force: true, events: [ 'dragstart', 'dragover', 'drop' ] },
-				);
-		} );
+		helpers.upload.imageToBlock('coblocks/food-item');
 
 		// Assert that the image was added.
-		cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( 'figure' ).find( 'img' )
+		cy.get( 'div.wp-block[data-type="coblocks/food-item"] img[src*="http"]' )
 			.should( 'have.attr', 'src' )
-			.should( 'include', '150x150' );
+			.should( 'include', imageBase );
 
 		helpers.checkForBlockErrors( 'coblocks/food-item' );
 	} );
