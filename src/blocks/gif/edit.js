@@ -215,6 +215,7 @@ class Edit extends Component {
 													height: parseInt( currentHeight + delta.height, 10 ),
 												} );
 											} }
+											showHandle={ isSelected }
 										>
 											{ img }
 										</ResizableBox>

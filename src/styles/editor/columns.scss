@@ -45,11 +45,11 @@
 
 // Fullwidth alignment
 [data-align="full"] > .block-editor-block-list__block-edit [data-block] > div > .columns {
-	padding-left: map-get($spacing, 2);
-	padding-right: map-get($spacing, 2);
+	padding-left: var(--coblocks-spacing--2, map-get($spacing, 2));
+	padding-right: var(--coblocks-spacing--2, map-get($spacing, 2));
 
 	@media (min-width: 480px) {
-		padding-left: map-get($spacing, 4);
-		padding-right: map-get($spacing, 4);
+		padding-left: var(--coblocks-spacing--4, map-get($spacing, 4));
+		padding-right: var(--coblocks-spacing--4, map-get($spacing, 4));
 	}
 }

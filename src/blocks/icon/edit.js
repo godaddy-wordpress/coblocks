@@ -161,6 +161,7 @@ class Edit extends Component {
 						onResizeStart={ () => {
 							setAttributes( { iconSize: 'advanced' } );
 						} }
+						showHandle={ isSelected }
 					>
 						{ selectedIcon ? selectedIcon.icon : null }
 					</ResizableBox>

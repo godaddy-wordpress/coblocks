@@ -729,7 +729,7 @@ class CoBlocks_Form {
 			printf(
 				'<label for="%1$s" class="coblocks-label">%2$s%3$s</label>',
 				esc_attr( $label_slug ),
-				esc_html( $label ),
+				wp_kses_post( $label ),
 				wp_kses( $required_label, $allowed_html )
 			);
 
@@ -890,7 +890,7 @@ class CoBlocks_Form {
 
 			}
 
-			$this->email_content .= '<li>' . sanitize_text_field( $data['label'] ) . ': ' . sanitize_text_field( $data['value'] ) . '</li>';
+			$this->email_content .= '<li>' . wp_kses_post( $data['label'] ) . ': ' . wp_kses_post( $data['value'] ) . '</li>';
 
 		}
 

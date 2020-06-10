@@ -80,19 +80,19 @@
 	> [class*="wp-block-coblocks-column"] {
 
 		&:nth-child(odd) {
-			margin-right: map-get($spacing, 1);
+			margin-right: var(--coblocks-spacing--1, map-get($spacing, 1));
 		}
 
 		&:nth-child(even) {
-			margin-left: map-get($spacing, 1);
+			margin-left: var(--coblocks-spacing--1, map-get($spacing, 1));
 		}
 
 		&:not(:first-child) {
-			margin-left: map-get($spacing, 1);
+			margin-left: var(--coblocks-spacing--1, map-get($spacing, 1));
 		}
 
 		&:not(:last-child) {
-			margin-right: map-get($spacing, 1);
+			margin-right: var(--coblocks-spacing--1, map-get($spacing, 1));
 		}
 	}
 }
@@ -102,19 +102,19 @@
 	> [class*="wp-block-coblocks-column"] {
 
 		&:nth-child(odd) {
-			margin-right: map-get($spacing, 2);
+			margin-right: var(--coblocks-spacing--2, map-get($spacing, 2));
 		}
 
 		&:nth-child(even) {
-			margin-left: map-get($spacing, 2);
+			margin-left: var(--coblocks-spacing--2, map-get($spacing, 2));
 		}
 
 		&:not(:first-child) {
-			margin-left: map-get($spacing, 2);
+			margin-left: var(--coblocks-spacing--2, map-get($spacing, 2));
 		}
 
 		&:not(:last-child) {
-			margin-right: map-get($spacing, 2);
+			margin-right: var(--coblocks-spacing--2, map-get($spacing, 2));
 		}
 	}
 }
@@ -124,19 +124,19 @@
 	> [class*="wp-block-coblocks-column"] {
 
 		&:nth-child(odd) {
-			margin-right: map-get($spacing, 3);
+			margin-right: var(--coblocks-spacing--3, map-get($spacing, 3));
 		}
 
 		&:nth-child(even) {
-			margin-left: map-get($spacing, 3);
+			margin-left: var(--coblocks-spacing--3, map-get($spacing, 3));
 		}
 
 		&:not(:first-child) {
-			margin-left: map-get($spacing, 3);
+			margin-left: var(--coblocks-spacing--3, map-get($spacing, 3));
 		}
 
 		&:not(:last-child) {
-			margin-right: map-get($spacing, 3);
+			margin-right: var(--coblocks-spacing--3, map-get($spacing, 3));
 		}
 	}
 }
@@ -146,19 +146,19 @@
 	> [class*="wp-block-coblocks-column"] {
 
 		&:nth-child(odd) {
-			margin-right: map-get($spacing, 4);
+			margin-right: var(--coblocks-spacing--4, map-get($spacing, 4));
 		}
 
 		&:nth-child(even) {
-			margin-left: map-get($spacing, 4);
+			margin-left: var(--coblocks-spacing--4, map-get($spacing, 4));
 		}
 
 		&:not(:first-child) {
-			margin-left: map-get($spacing, 4);
+			margin-left: var(--coblocks-spacing--4, map-get($spacing, 4));
 		}
 
 		&:not(:last-child) {
-			margin-right: map-get($spacing, 4);
+			margin-right: var(--coblocks-spacing--4, map-get($spacing, 4));
 		}
 	}
 }
@@ -184,19 +184,19 @@
 		}
 
 		&.has-small-gutter > [class*="wp-block"]:not(:last-child) {
-			margin-bottom: map-get($spacing, 1) * 2;
+			margin-bottom: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) * 2);
 		}
 
 		&.has-medium-gutter > [class*="wp-block"]:not(:last-child) {
-			margin-bottom: map-get($spacing, 2) * 2;
+			margin-bottom: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * 2);
 		}
 
 		&.has-large-gutter > [class*="wp-block"]:not(:last-child) {
-			margin-bottom: map-get($spacing, 3) * 2;
+			margin-bottom: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) * 2);
 		}
 
 		&.has-huge-gutter > [class*="wp-block"]:not(:last-child) {
-			margin-bottom: map-get($spacing, 4) * 2;
+			margin-bottom: calc(var(--coblocks-spacing--4, #{map-get($spacing, 4)}) * 2);
 		}
 	}
 }
@@ -205,6 +205,7 @@
  * Row and Column Alignment
  */
  .wp-block-coblocks-row__inner {
+
 	.wp-block[data-type="coblocks/column"] {
 		display: flex;
 		margin-top: 0;
@@ -229,6 +230,7 @@
 	}
 
 	.wp-block-coblocks-column {
+
 		&.is-vertically-aligned-top {
 			display: flex;
 
@@ -236,7 +238,7 @@
 				align-self: flex-start;
 			}
 		}
-	
+
 		&.is-vertically-aligned-center {
 			display: flex;
 
@@ -244,7 +246,7 @@
 				align-self: center;
 			}
 		}
-	
+
 		&.is-vertically-aligned-bottom {
 			display: flex;
 
@@ -256,7 +258,7 @@
 		.wp-block-coblocks-column__inner {
 			flex: 1;
 		}
-	
+
 		&.is-vertically-aligned-top,
 		&.is-vertically-aligned-center,
 		&.is-vertically-aligned-bottom {
