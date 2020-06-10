@@ -261,7 +261,7 @@ class LayoutSelector extends Component {
 	}
 }
 
-if ( typeof coblocksLayoutSelector !== 'undefined' ) {
+if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.postTypeEnabled ) {
 	registerPlugin( 'coblocks-layout-selector', {
 		render: compose( [
 			withSelect( ( select ) => {

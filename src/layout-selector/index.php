@@ -58,12 +58,20 @@ function coblocks_layout_selector_layouts() {
  * Localize layout and category definitions for the Layout Selector component.
  */
 function coblocks_localize_layout_selector() {
+	$current_screen   = get_current_screen();
+	$screen_post_type = $current_screen->post_type;
+
+	$allowed_post_types = array(
+		'page',
+	);
+
 	wp_localize_script(
 		'coblocks-editor',
 		'coblocksLayoutSelector',
 		array(
-			'layouts'    => coblocks_layout_selector_layouts(),
-			'categories' => coblocks_layout_selector_categories(),
+			'postTypeEnabled' => in_array( $screen_post_type, $allowed_post_types, true ),
+			'layouts'         => coblocks_layout_selector_layouts(),
+			'categories'      => coblocks_layout_selector_categories(),
 		)
 	);
 }
