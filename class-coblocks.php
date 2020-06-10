@@ -124,7 +124,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			$gutenberg_plugin_version = empty( $installed_plugins[ $gutenberg_plugin_file ] ) ? null : $installed_plugins[ $gutenberg_plugin_file ]['Version'];
 
 			if ( is_admin() && is_plugin_active( $gutenberg_plugin_file ) && version_compare( $gutenberg_plugin_version, '8.0.0', '>=' ) ) {
-				require_once COBLOCKS_PLUGIN_DIR . 'src/layout-selector/index.php';
+				require_once COBLOCKS_PLUGIN_DIR . 'src/extensions/layout-selector/index.php';
 			}
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {

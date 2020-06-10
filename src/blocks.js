@@ -21,15 +21,13 @@ import './extensions/cover-styles';
 import './extensions/replace-image';
 import './extensions/image-crop';
 import './extensions/coblocks-settings/';
+import './extensions/layout-selector';
 
 // Formats
 import './formats';
 
 // Categories Helper
 import { supportsCollections } from './utils/block-helpers';
-
-// Features
-import './layout-selector';
 
 // Deprecate Blocks
 import './js/deprecations/deprecate-coblocks-buttons.js';
