@@ -103,7 +103,7 @@ function coblocks_render_social_profiles_block( $attributes ) {
 	$markup = '';
 
 	// Set the social link target.
-	$link_target = $opens_in_new_tab ? 'target="_blank"' : '';
+	$link_target = $opens_in_new_tab ? 'target="_blank" rel="noopener noreferrer"' : '';
 
 	foreach ( $platforms as $id => $platform ) {
 
