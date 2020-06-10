@@ -18,6 +18,15 @@ class GalleryLinkSettings extends Component {
 		this.setLinkTo = this.setLinkTo.bind( this );
 	}
 
+	componentDidUpdate( prevProps ) {
+		const { attributes, setAttributes } = this.props;
+		const { lightbox } = attributes;
+
+		if ( prevProps.attributes.linkTo !== 'none' && !! lightbox ) {
+			setAttributes( { linkTo: 'none' } );
+		}
+	}
+
 	setLinkTo( value ) {
 		this.props.setAttributes( { linkTo: value } );
 	}

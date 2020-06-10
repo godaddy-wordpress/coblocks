@@ -5,15 +5,6 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Logos Block', function() {
 	/**
-	 * Setup Logos data
-	 */
-	const logosData = {
-		fileName: '150x150.png',
-		imageBase: '150x150',
-		pathToFixtures: '../.dev/tests/cypress/fixtures/images/',
-	};
-
-	/**
 	 * Test that we can add a logos block to the content, not add any images or
 	 * alter any settings, and are able to successfully save the block without errors.
 	 */
@@ -36,33 +27,24 @@ describe( 'Test CoBlocks Logos Block', function() {
 	 * to successfully save the block without errors.
 	 */
 	it( 'Test logos block saves with image upload.', function() {
-		const { fileName, imageBase, pathToFixtures } = logosData;
+		const { imageBase } = helpers.upload.spec;
 		helpers.addBlockToPost( 'coblocks/logos', true );
 
-		cy.get( '.wp-block[data-type="coblocks/logos"]' )
-			.click();
+		cy.get( '.wp-block[data-type="coblocks/logos"]' ).click();
 
-		cy.fixture( pathToFixtures + fileName, 'base64' ).then( ( fileContent ) => {
-			cy.get( 'div[data-type="coblocks/logos"]' )
-				.find( 'div.components-drop-zone' ).first()
-				.upload(
-					{ fileContent, fileName, mimeType: 'image/png' },
-					{ subjectType: 'drag-n-drop', force: true, events: [ 'dragstart', 'dragover', 'drop' ] },
-				)
-				.wait( 2000 ); // Allow upload to finish.
+		helpers.upload.imageToBlock( 'coblocks/logos' );
 
-			cy.get( '.wp-block-coblocks-logos' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
+		cy.get( '.wp-block-coblocks-logos img[src*="http"]' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
 
-			helpers.savePage();
+		helpers.savePage();
 
-			helpers.checkForBlockErrors( 'coblocks/logos' );
+		helpers.checkForBlockErrors( 'coblocks/logos' );
 
-			helpers.viewPage();
+		helpers.viewPage();
 
-			cy.get( '.wp-block-coblocks-logos' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
+		cy.get( '.wp-block-coblocks-logos' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
 
-			helpers.editPage();
-		} );
+		helpers.editPage();
 	} );
 
 	/**

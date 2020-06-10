@@ -9,9 +9,6 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	 * Setup Gallery data
 	 */
 	const galleryData = {
-		fileName: '150x150.png',
-		imageBase: '150x150',
-		pathToFixtures: '../.dev/tests/cypress/fixtures/images/',
 		caption: 'Caption Here',
 	};
 
@@ -40,33 +37,24 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	 * to successfully save the block without errors.
 	 */
 	it( 'Test collage block saves with image upload.', function() {
-		const { fileName, imageBase, pathToFixtures } = galleryData;
+		const { imageBase } = helpers.upload.spec;
 		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
 
-		cy.get( '.wp-block[data-type="coblocks/gallery-collage"]' )
-			.click();
+		cy.get( '.wp-block[data-type="coblocks/gallery-collage"]' ).click();
 
-		cy.fixture( pathToFixtures + fileName, 'base64' ).then( ( fileContent ) => {
-			cy.get( 'div[data-type="coblocks/gallery-collage"]' )
-				.find( 'div.components-drop-zone' ).first()
-				.upload(
-					{ fileContent, fileName, mimeType: 'image/png' },
-					{ subjectType: 'drag-n-drop', force: true, events: [ 'dragstart', 'dragover', 'drop' ] },
-				)
-				.wait( 2000 ); // Allow upload to finish.
+		helpers.upload.imageToBlock( 'coblocks/gallery-collage' );
 
-			cy.get( '.wp-block-coblocks-gallery-collage__item' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
+		cy.get( '.wp-block-coblocks-gallery-collage__item img[src*="http"]' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
 
-			helpers.savePage();
+		helpers.savePage();
 
-			helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
+		helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
 
-			helpers.viewPage();
+		helpers.viewPage();
 
-			cy.get( '.wp-block-coblocks-gallery-collage__item' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
+		cy.get( '.wp-block-coblocks-gallery-collage__item' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
 
-			helpers.editPage();
-		} );
+		helpers.editPage();
 	} );
 
 	/**

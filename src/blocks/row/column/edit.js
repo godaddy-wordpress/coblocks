@@ -92,7 +92,7 @@ class Edit extends Component {
 				columnBlocks &&
 				columnBlocks.innerBlocks &&
 				Object.keys( columnBlocks.innerBlocks ).length < 1,
-		}, { 
+		}, {
 			[ `has-text-align-${ contentAlign }` ]: contentAlign,
 			[ `is-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment,
 		} );
@@ -268,6 +268,7 @@ class Edit extends Component {
 						this.setState( { selectedWidth: currentBlockClientRect.width } );
 						this.setState( { resizing: true } );
 					} }
+					showHandle={ isSelected }
 				>
 					<div
 						className={ classes }

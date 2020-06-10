@@ -1,19 +1,19 @@
 .has-small-margin {
-	margin-bottom: map-get($spacing, 1);
-	margin-top: map-get($spacing, 1);
+	margin-bottom: var(--coblocks-spacing--1, map-get($spacing, 1));
+	margin-top: var(--coblocks-spacing--1, map-get($spacing, 1));
 }
 
 .has-medium-margin {
-	margin-bottom: map-get($spacing, 2);
-	margin-top: map-get($spacing, 2);
+	margin-bottom: var(--coblocks-spacing--2, map-get($spacing, 2));
+	margin-top: var(--coblocks-spacing--2, map-get($spacing, 2));
 }
 
 .has-large-margin {
-	margin-bottom: map-get($spacing, 3);
-	margin-top: map-get($spacing, 3);
+	margin-bottom: var(--coblocks-spacing--3, map-get($spacing, 3));
+	margin-top: var(--coblocks-spacing--3, map-get($spacing, 3));
 }
 
 .has-huge-margin {
-	margin-bottom: map-get($spacing, 4);
-	margin-top: map-get($spacing, 4);
+	margin-bottom: var(--coblocks-spacing--4, map-get($spacing, 4));
+	margin-top: var(--coblocks-spacing--4, map-get($spacing, 4));
 }

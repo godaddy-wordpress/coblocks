@@ -13,19 +13,19 @@
 		@include break-small() {
 
 			.wp-block-coblocks-feature:nth-child(odd) {
-				margin-right: map-get($spacing, 3);
+				margin-right: var(--coblocks-spacing--3, map-get($spacing, 3));
 			}
 
 			.wp-block-coblocks-feature:nth-child(even) {
-				margin-left: map-get($spacing, 3);
+				margin-left: var(--coblocks-spacing--3, map-get($spacing, 3));
 			}
 
 			.wp-block-coblocks-feature:not(:first-child) {
-				margin-left: map-get($spacing, 3);
+				margin-left: var(--coblocks-spacing--3, map-get($spacing, 3));
 			}
 
 			.wp-block-coblocks-feature:not(:last-child) {
-				margin-right: map-get($spacing, 3);
+				margin-right: var(--coblocks-spacing--3, map-get($spacing, 3));
 			}
 		}
 
