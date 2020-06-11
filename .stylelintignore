@@ -4,5 +4,5 @@ build
 dist
 test
 vendor
-wordpress
+wordpress*
 *.js
