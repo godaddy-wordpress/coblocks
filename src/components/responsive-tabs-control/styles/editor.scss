@@ -16,16 +16,16 @@
 	&-item {
 		align-items: center;
 		appearance: none;
-		margin: 0;
-		border-radius: 2px;
-		height: auto !important;
-		padding: 8px !important;
-		box-shadow: none;
-		outline: 1px solid transparent;
-		white-space: nowrap;
-		color: theme(primary);
 		background: transparent;
+		border-radius: 2px;
 		border: 1px solid theme(primary);
+		box-shadow: none;
+		color: theme(primary);
+		height: auto !important;
+		margin: 0;
+		outline: 1px solid transparent;
+		padding: 8px !important;
+		white-space: nowrap;
 
 
 		&:first-of-type {
