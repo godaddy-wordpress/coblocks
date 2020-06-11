@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-06-01T17:01:50+00:00\n"
+"POT-Creation-Date: 2020-06-11T06:39:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -1797,14 +1797,14 @@ msgid "Carousel"
 msgstr ""
 
 #. translators: %1$d is the order number of the image, %2$d is the total number of images
-#: src/blocks/gallery-carousel/edit.js:306
+#: src/blocks/gallery-carousel/edit.js:307
 #: src/blocks/gallery-masonry/edit.js:216
 #: src/blocks/gallery-offset/edit.js:185
 #: src/blocks/gallery-stacked/edit.js:196
 msgid "image %1$d of %2$d in gallery"
 msgstr ""
 
-#: src/blocks/gallery-carousel/edit.js:368
+#: src/blocks/gallery-carousel/edit.js:369
 msgid "Write gallery caption…"
 msgstr ""
 
@@ -1906,13 +1906,13 @@ msgid "Responsive height"
 msgstr ""
 
 #: src/blocks/gallery-collage/edit.js:181
-#: src/blocks/map/edit.js:340
+#: src/blocks/map/edit.js:341
 #: src/components/block-gallery/gallery-image.js:226
 msgid "Apply"
 msgstr ""
 
 #: src/blocks/gallery-collage/edit.js:190
-#: src/blocks/gif/edit.js:228
+#: src/blocks/gif/edit.js:229
 #: src/blocks/gist/edit.js:103
 #: src/components/block-gallery/gallery-image.js:235
 msgid "Write caption…"
@@ -2070,11 +2070,11 @@ msgstr ""
 msgid "This gif has an empty alt attribute"
 msgstr ""
 
-#: src/blocks/gif/edit.js:288
+#: src/blocks/gif/edit.js:289
 msgid "Search for that perfect gif on Giphy"
 msgstr ""
 
-#: src/blocks/gif/edit.js:294
+#: src/blocks/gif/edit.js:295
 msgid "Search for gifs"
 msgstr ""
 
@@ -4105,7 +4105,7 @@ msgid "No results found."
 msgstr ""
 
 #: src/blocks/icon/inspector.js:283
-#: src/components/block-gallery/gallery-link-settings.js:63
+#: src/components/block-gallery/gallery-link-settings.js:72
 msgid "Link settings"
 msgstr ""
 
@@ -4115,7 +4115,7 @@ msgstr ""
 
 #. translators: html attribute that specifies the relationship between two pages
 #: src/blocks/icon/inspector.js:291
-#: src/components/block-gallery/gallery-link-settings.js:81
+#: src/components/block-gallery/gallery-link-settings.js:90
 msgid "Link rel"
 msgstr ""
 
@@ -4124,7 +4124,7 @@ msgid "Opening in new tab"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:296
-#: src/components/block-gallery/gallery-link-settings.js:75
+#: src/components/block-gallery/gallery-link-settings.js:84
 msgid "Open in new tab"
 msgstr ""
 
@@ -5345,24 +5345,24 @@ msgstr ""
 msgid "Google Map"
 msgstr ""
 
-#: src/blocks/map/edit.js:245
+#: src/blocks/map/edit.js:246
 msgid "Invalid API key, or too many requests"
 msgstr ""
 
-#: src/blocks/map/edit.js:310
+#: src/blocks/map/edit.js:311
 msgid "Google map"
 msgstr ""
 
-#: src/blocks/map/edit.js:311
+#: src/blocks/map/edit.js:312
 msgid "Enter a location or address to drop a pin on a Google map."
 msgstr ""
 
-#: src/blocks/map/edit.js:321
+#: src/blocks/map/edit.js:322
 msgid "Search for a place or address…"
 msgstr ""
 
-#: src/blocks/map/edit.js:352
-#: src/blocks/map/edit.js:363
+#: src/blocks/map/edit.js:353
+#: src/blocks/map/edit.js:364
 msgid "Cancel"
 msgstr ""
 
@@ -6637,7 +6637,7 @@ msgstr ""
 msgid "Move image forward"
 msgstr ""
 
-#: src/components/block-gallery/gallery-link-settings.js:67
+#: src/components/block-gallery/gallery-link-settings.js:76
 msgid "Link to"
 msgstr ""
 
