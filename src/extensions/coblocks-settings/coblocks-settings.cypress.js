@@ -7,6 +7,7 @@ describe( 'Extension: CoBlocks Settings', function() {
 	let supportsGradients = false;
 	beforeEach( function() {
 		helpers.closeLayoutSelector();
+		helpers.disableGutenbergFeatures();
 
 		cy.get( '.edit-post-more-menu' ).click();
 		cy.get( '.components-menu-group' ).find( 'button' ).contains( 'Editor settings' ).click();
@@ -39,32 +40,6 @@ describe( 'Extension: CoBlocks Settings', function() {
 		cy.get( 'button[aria-label="Change typography"]' ).should( 'not.exist' );
 
 		cy.get( '.components-modal__header' ).find( 'button[aria-label="Close dialog"]' ).click();
-	} );
-
-	/**
-	 * Test that the CoBlocks panel layout selector controls function as expected.
-	 */
-	it( 'Can control layout selector visibility as expected.', function() {
-		cy.visit( Cypress.env( 'testURL' ) + '/wp-admin/post-new.php?post_type=page' );
-		cy.get( '.coblocks-layout-selector__sidebar' ).should( 'exist' );
-
-		cy.get( '#editor' ).then( () => {
-			cy.get( '.coblocks-layout-selector__sidebar' ).find( '.coblocks-layout-selector__add-button' ).click();
-		} );
-
-		cy.get( '.edit-post-more-menu' ).click();
-		cy.get( '.components-menu-group' ).find( 'button' ).contains( 'Editor settings' ).click();
-		cy.get( '.coblocks-modal__content' ).contains( 'Layout selector' ).click();
-
-		cy.visit( Cypress.env( 'testURL' ) + '/wp-admin/post-new.php?post_type=page' );
-
-		cy.get( '.coblocks-layout-selector__sidebar' ).should( 'not.exist' );
-		cy.get( '.edit-post-more-menu' ).click();
-		cy.get( '.components-menu-group' ).find( 'button' ).contains( 'Editor settings' ).click();
-		cy.get( '.coblocks-modal__content' ).contains( 'Layout selector' ).click();
-
-		cy.get( '.coblocks-layout-selector__sidebar' ).should( 'exist' );
-		helpers.closeLayoutSelector();
 	} );
 
 	/**
