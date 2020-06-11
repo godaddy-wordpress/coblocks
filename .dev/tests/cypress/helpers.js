@@ -386,6 +386,20 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 }
 
 /**
+ * Press the Undo button in the header toolbar.
+ */
+export function doEditorUndo() {
+	cy.get( '.editor-history__undo' ).click();
+}
+
+/**
+ * Press the Redo button in the header toolbar.
+ */
+export function doEditorRedo() {
+	cy.get( '.editor-history__redo' ).click();
+}
+
+/**
  * Helper method to convert a hex value to an RGB value
  *
  * @param {string} hex Hex string. eg: #55e7ff
