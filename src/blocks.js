@@ -21,6 +21,7 @@ import './extensions/cover-styles';
 import './extensions/replace-image';
 import './extensions/image-crop';
 import './extensions/coblocks-settings/';
+import './extensions/layout-selector';
 
 // Formats
 import './formats';

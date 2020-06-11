@@ -6,6 +6,9 @@ import * as helpers from '../../../.dev/tests/cypress/helpers';
 describe( 'Extension: CoBlocks Settings', function() {
 	let supportsGradients = false;
 	beforeEach( function() {
+		helpers.closeLayoutSelector();
+		helpers.disableGutenbergFeatures();
+
 		cy.get( '.edit-post-more-menu' ).click();
 		cy.get( '.components-menu-group' ).find( 'button' ).contains( 'Editor settings' ).click();
 		cy.get( '.coblocks-modal__content' ).find( 'input[type="checkbox"]' ).each( ( checkbox ) => {

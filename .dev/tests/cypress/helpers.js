@@ -4,10 +4,23 @@
 import { startCase } from 'lodash';
 
 /**
+ * Close layout selector.
+ */
+export function closeLayoutSelector() {
+	if ( Cypress.$( '.coblocks-layout-selector-modal' ).length > 0 ) {
+		cy.get( '.coblocks-layout-selector-modal' )
+			.find( '.components-button[aria-label="Close dialog"]' ).first()
+			.click();
+	}
+
+	cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
+}
+
+/**
  * Login to our test WordPress site
  */
 export function loginToSite() {
-	cy.visit( Cypress.env( 'testURL' ) + '/wp-admin/post-new.php?post_type=page' )
+	goTo( '/wp-admin/post-new.php?post_type=page' )
 		.then( ( window ) => {
 			if ( window.location.pathname === '/wp-login.php' ) {
 				// WordPress has a wp_attempt_focus() function that fires 200ms after the wp-login.php page loads.
@@ -21,6 +34,15 @@ export function loginToSite() {
 		} );
 
 	cy.get( '.block-editor-page' ).should( 'exist' );
+}
+
+/**
+ * Go to a specific URI.
+ *
+ * @param {string} path The URI path to go to.
+ */
+export function goTo( path = '/wp-admin' ) {
+	return cy.visit( Cypress.env( 'testURL' ) + path );
 }
 
 /**
@@ -348,6 +370,63 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 				}
 			} );
 		} );
+}
+
+/**
+ * Press the Undo button in the header toolbar.
+ */
+export function doEditorUndo() {
+	cy.get( '.editor-history__undo' ).click();
+}
+
+/**
+ * Press the Redo button in the header toolbar.
+ */
+export function doEditorRedo() {
+	cy.get( '.editor-history__redo' ).click();
+}
+
+/**
+ * Open the Editor Settings panel.
+ */
+export function openEditorSettingsModal() {
+	// Open "more" menu.
+	cy.get( '.edit-post-more-menu' ).find( 'button' ).click();
+	cy.get( '.components-menu-item__button' ).contains( 'Editor settings' ).click();
+
+	cy.get( '.components-modal__frame' ).contains( 'Editor settings' ).should( 'exist' );
+}
+
+/**
+ * Turn off a setting from the Editor Settings panel.
+ *
+ * @param {string} settingName The label of the setting control.
+ */
+export function turnOffEditorSetting( settingName ) {
+	cy.get( '.components-base-control' ).contains( settingName ).parent().find( 'input[type=checkbox]' )
+		.then( ( element ) => {
+			if ( element[ 0 ].checked ) {
+				element.click();
+			}
+		} );
+
+	cy.get( '.components-base-control' ).contains( settingName ).parent().find( 'input[type=checkbox]' ).should( 'not.be.checked' );
+}
+
+/**
+ * Turn on a setting from the Editor Settings panel.
+ *
+ * @param {string} settingName The label of the setting control.
+ */
+export function turnOnEditorSetting( settingName ) {
+	cy.get( '.components-base-control' ).contains( settingName ).parent().find( 'input[type=checkbox]' )
+		.then( ( element ) => {
+			if ( ! element[ 0 ].checked ) {
+				element.click();
+			}
+		} );
+
+	cy.get( '.components-base-control' ).contains( settingName ).parent().find( 'input[type=checkbox]' ).should( 'be.checked' );
 }
 
 /**
