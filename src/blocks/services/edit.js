@@ -15,20 +15,18 @@ import HeadingToolbar from '../../components/heading-toolbar';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { compose } from '@wordpress/compose';
+import TokenList from '@wordpress/token-list';
+import { createBlock } from '@wordpress/blocks';
 import { Component, Fragment } from '@wordpress/element';
-import {
-	AlignmentToolbar,
-	BlockControls,
-	InnerBlocks,
-} from '@wordpress/block-editor';
-import { dispatch, select } from '@wordpress/data';
-
-const TokenList = wp.tokenList;
+import { withSelect, withDispatch } from '@wordpress/data';
+import { AlignmentToolbar, BlockControls, InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Constants
  */
 const ALLOWED_BLOCKS = [ 'coblocks/service' ];
+const TEMPLATE = [ [ 'coblocks/service' ] ];
 
 const layoutOptions = [
 	{
@@ -141,13 +139,11 @@ class Edit extends Component {
 	}
 
 	updateInnerAttributes( blockName, newAttributes ) {
-		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
-			this.props.clientId
-		)[ 0 ].innerBlocks;
-
+		const { updateBlockAttributes, getBlocksByClientId } = this.props;
+		const innerItems = getBlocksByClientId(	this.props.clientId	)[ 0 ].innerBlocks;
 		innerItems.forEach( ( item ) => {
 			if ( item.name === blockName ) {
-				dispatch( 'core/block-editor' ).updateBlockAttributes(
+				updateBlockAttributes(
 					item.clientId,
 					newAttributes
 				);
@@ -190,10 +186,8 @@ class Edit extends Component {
 
 		const {
 			alignment,
-			buttons,
 			columns,
 			gutter,
-			headingLevel,
 		} = attributes;
 
 		const classes = classnames(
@@ -233,15 +227,7 @@ class Edit extends Component {
 					<div className={ classes }>
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
-							template={ Array( columns ).fill( [
-								'coblocks/service',
-								{
-									showCta: buttons,
-									headingLevel,
-									alignment,
-								},
-							] ) }
-							templateLock="all"
+							template={ TEMPLATE }
 							templateInsertUpdatesSelection={ false }
 						/>
 					</div>
@@ -251,4 +237,56 @@ class Edit extends Component {
 	}
 }
 
-export default Edit;
+export default compose( [
+
+	withSelect( ( select, props ) => {
+		const {
+			getBlocksByClientId,
+			getBlocks,
+		} = select( 'core/block-editor' );
+
+		return {
+			getBlocksByClientId,
+			innerBlocks: getBlocks( props.clientId ),
+		};
+	} ),
+
+	withDispatch( ( dispatch ) => {
+		const {
+			updateBlockAttributes,
+			insertBlock,
+		} = dispatch( 'core/block-editor' );
+		return {
+			updateBlockAttributes,
+			insertBlock,
+		};
+	} ),
+
+	// Ensure there is a minimum of one coblocks/services innerBlock per column set.
+	( WrappedComponent ) => ( ownProps ) => {
+		// This is a newly added block if we have zero innerBlocks. We want the TEMPLATE definition to be used in this case.
+		if ( ownProps.innerBlocks.length > 0 ) {
+			const serviceBlocksCount = ownProps.innerBlocks.reduce( ( acc, cur ) => acc + ( cur.name === 'coblocks/service' ), 0 );
+
+			// Add a new block if the count is less than the columns set.
+			// We don't need a loop here because this will trigger a component update as soon as we insert a block (triggering this HOC again).
+
+			if ( serviceBlocksCount < ownProps.attributes.columns ) {
+				const { buttons, headingLevel, alignment } = ownProps;
+				ownProps.insertBlock(
+					createBlock( 'coblocks/service', {
+						showCta: buttons,
+						headingLevel,
+						alignment,
+					} ),
+					ownProps.innerBlocks.length + 1,
+					ownProps.clientId,
+					false
+				);
+			}
+		}
+
+		return <WrappedComponent { ...ownProps } />;
+	},
+
+] )( Edit );
