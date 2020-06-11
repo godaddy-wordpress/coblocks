@@ -82,8 +82,8 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_js
-            - e2e_firefox
-            - e2e_chrome
+            # - e2e_firefox
+            # - e2e_chrome
           filters:
             tags:
               only: /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*)?(\+[0-9-]+(\.[0-9]+)*)?/ # Run on semantic version tags only
