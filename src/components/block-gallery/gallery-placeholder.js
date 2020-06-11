@@ -22,82 +22,32 @@ class GalleryPlaceholder extends Component {
 		super( ...arguments );
 		this.onSelectImages = this.onSelectImages.bind( this );
 		this.onUploadError = this.onUploadError.bind( this );
-
-		this.state = {
-			attachmentCaptions: null,
-			imgLinks: null,
-		};
 	}
 
-	selectCaption( newImage, images, attachmentCaptions ) {
-		if ( ! newImage.caption ) {
+	selectCaption( newImage, images ) {
+		const currentImage = find( images, ( obj ) => parseInt( obj?.id ) === newImage?.id );
+		if ( ! newImage?.caption && ! currentImage?.caption ) {
 			return '';
 		}
-		const currentImage = find( images, { id: newImage.id.toString() } ) ||	find( images, { id: newImage.id } );
-
-		const currentImageCaption = currentImage ? currentImage.caption : newImage.caption;
-
-		if ( ! attachmentCaptions ) {
-			return currentImageCaption;
-		}
-
-		const attachment = find(
-			attachmentCaptions, { id: newImage.id }
-		);
-
-		if ( attachment && ( attachment.caption !== newImage.caption ) ) {
-			return newImage.caption;
-		}
-
-		return currentImageCaption;
+		return Array.isArray( currentImage?.caption ) ? currentImage?.caption?.[0] : currentImage?.caption || newImage?.caption || '';
 	}
 
-	selectImgLink( newImage, images, imgLinks ) {
-		if ( ! newImage.id ) {
-			return '';
-		}
-		const currentImage = find( images, { id: newImage.id.toString() } ) ||	find( images, { id: newImage.id } );
-
-		const currentImageImgLink = currentImage ? currentImage.imgLink : newImage.imgLink;
-
-		if ( ! imgLinks ) {
-			return currentImageImgLink;
-		}
-
-		const link = find(
-			imgLinks, { id: newImage.id }
-		);
-
-		if ( link && ( link.imgLink !== newImage.imgLink ) ) {
-			return newImage.imgLink;
-		}
-
-		return currentImageImgLink;
+	selectImgLink( newImage, images ) {
+		const currentImage = find( images, ( obj ) => {
+			return parseInt( obj?.id ) === newImage?.id;
+		} );
+		return currentImage?.imgLink || newImage?.imgLink || '';
 	}
 
 	onSelectImages( newImages ) {
 		const { images } = this.props.attributes;
-		const { attachmentCaptions, imgLinks } = this.state;
-
-		this.setState(
-			{
-				attachmentCaptions: newImages.map( ( newImage ) => ( {
-					id: newImage.id,
-					caption: newImage.caption,
-				} ) ),
-				imgLinks: newImages.map( ( newImage ) => ( {
-					id: newImage.id,
-					imgLink: newImage.imgLink,
-				} ) ),
-			} );
 		this.props.setAttributes( {
 			images: newImages.map( ( image ) => ( {
 				...helper.pickRelevantMediaFiles( image ),
-				caption: this.selectCaption( image, images, attachmentCaptions ),
-				imgLink: this.selectImgLink( image, images, imgLinks ),
+				caption: this.selectCaption( image, images ),
+				imgLink: this.selectImgLink( image, images ),
 			} ) ),
-		}
-		);
+		} );
 	}
 
 	onUploadError( message ) {
