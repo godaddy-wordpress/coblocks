@@ -11,9 +11,9 @@ workflows:
       - lint_php:
           requires:
             - build
-      - lint_js:
-          requires:
-            - build
+      # - lint_js:
+      #     requires:
+      #       - build
       # - lint_css:
       #     requires:
       #       - build
@@ -36,8 +36,8 @@ workflows:
           filters:
             tags:
               only: /^(?!canary).*$/
-          requires:
-            - lint_js
+          # requires:
+          #   - lint_js
 
       # END TO END TESTING
       - e2e_chrome:
