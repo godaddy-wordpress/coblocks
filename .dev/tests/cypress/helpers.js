@@ -399,6 +399,49 @@ export function doEditorRedo() {
 }
 
 /**
+ * Open the Editor Settings panel.
+ */
+export function openEditorSettingsModal() {
+	// Open "more" menu.
+	cy.get( '.edit-post-more-menu' ).find( 'button' ).click();
+	cy.get( '.components-menu-item__button' ).contains( 'Editor settings' ).click();
+
+	cy.get( '.components-modal__frame' ).contains( 'Editor settings' ).should( 'exist' );
+}
+
+/**
+ * Turn off a setting from the Editor Settings panel.
+ *
+ * @param {string} settingName The label of the setting control.
+ */
+export function turnOffEditorSetting( settingName ) {
+	cy.get( '.components-base-control' ).contains( settingName ).parent().find( 'input[type=checkbox]' )
+		.then( ( element ) => {
+			if ( element[ 0 ].checked ) {
+				element.click();
+			}
+		} );
+
+	cy.get( '.components-base-control' ).contains( settingName ).parent().find( 'input[type=checkbox]' ).should( 'not.be.checked' );
+}
+
+/**
+ * Turn on a setting from the Editor Settings panel.
+ *
+ * @param {string} settingName The label of the setting control.
+ */
+export function turnOnEditorSetting( settingName ) {
+	cy.get( '.components-base-control' ).contains( settingName ).parent().find( 'input[type=checkbox]' )
+		.then( ( element ) => {
+			if ( ! element[ 0 ].checked ) {
+				element.click();
+			}
+		} );
+
+	cy.get( '.components-base-control' ).contains( settingName ).parent().find( 'input[type=checkbox]' ).should( 'be.checked' );
+}
+
+/**
  * Helper method to convert a hex value to an RGB value
  *
  * @param {string} hex Hex string. eg: #55e7ff
