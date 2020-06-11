@@ -50,8 +50,7 @@ export function loginToSite() {
  * @param {string} path The URI path to go to.
  */
 export function goTo( path = '/wp-admin' ) {
-	return cy.visit( Cypress.env( 'testURL' ) + path )
-		.then( () => disableGutenbergFeatures() );
+	return cy.visit( Cypress.env( 'testURL' ) + path );
 }
 
 /**
