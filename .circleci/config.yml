@@ -14,9 +14,9 @@ workflows:
       - lint_js:
           requires:
             - build
-      - lint_css:
-          requires:
-            - build
+      # - lint_css:
+      #     requires:
+      #       - build
 
       # UNIT TESTING
       # Support PHP Versions: http://php.net/supported-versions.php
@@ -45,7 +45,7 @@ workflows:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - lint_css
+            # - lint_css
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_js
@@ -54,7 +54,7 @@ workflows:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - lint_css
+            # - lint_css
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_js
