@@ -429,10 +429,8 @@ jobs:
       - run:
           name: Setup spec files to run based on git diff-tree
           command: |
-            bash .dev/bin/setup-test-specs.sh $FILES
-            if [[ ! -s /tmp/specstring || ( "$CIRCLE_BRANCH" != "master" && "$CIRCLE_BRANCH" != "develop" ) ]]; then
-              echo "Changes do not require testing."
-              circleci-agent step halt
+            if [[ "$CIRCLE_BRANCH" != "master" && "$CIRCLE_BRANCH" != "develop" ]]; then
+              bash .dev/bin/setup-test-specs.sh $FILES
             fi
       - disable_xdebug_php_extension
       - attach_workspace:
@@ -498,10 +496,8 @@ jobs:
       - run:
           name: Setup spec files to run based on git diff-tree
           command: |
-            bash .dev/bin/setup-test-specs.sh $FILES
-            if [[ ! -s /tmp/specstring || ( "$CIRCLE_BRANCH" != "master" && "$CIRCLE_BRANCH" != "develop" ) ]]; then
-              echo "Changes do not require testing."
-              circleci-agent step halt
+            if [[ "$CIRCLE_BRANCH" != "master" && "$CIRCLE_BRANCH" != "develop" ]]; then
+              bash .dev/bin/setup-test-specs.sh $FILES
             fi
       - disable_xdebug_php_extension
       - attach_workspace:
