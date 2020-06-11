@@ -17,6 +17,16 @@
 		align-items: center;
 		appearance: none;
 		margin: 0;
+		border-radius: 2px;
+		height: auto !important;
+		padding: 8px !important;
+		box-shadow: none;
+		outline: 1px solid transparent;
+		white-space: nowrap;
+		color: theme(primary);
+		background: transparent;
+		border: 1px solid theme(primary);
+
 
 		&:first-of-type {
 			border-bottom-right-radius: 0;
