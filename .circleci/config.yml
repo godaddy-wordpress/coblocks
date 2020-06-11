@@ -430,7 +430,7 @@ jobs:
           name: Setup spec files to run based on git diff-tree
           command: |
             bash .dev/bin/setup-test-specs.sh $FILES
-            if [[ ! -s /tmp/specstring && ( "$CIRCLE_BRANCH" != "master" || "$CIRCLE_BRANCH" != "develop" ) ]]; then
+            if [[ ! -s /tmp/specstring || ( "$CIRCLE_BRANCH" != "master" && "$CIRCLE_BRANCH" != "develop" ) ]]; then
               echo "Changes do not require testing."
               circleci-agent step halt
             fi
@@ -499,7 +499,7 @@ jobs:
           name: Setup spec files to run based on git diff-tree
           command: |
             bash .dev/bin/setup-test-specs.sh $FILES
-            if [[ ! -s /tmp/specstring && ( "$CIRCLE_BRANCH" != "master" || "$CIRCLE_BRANCH" != "develop" ) ]]; then
+            if [[ ! -s /tmp/specstring || ( "$CIRCLE_BRANCH" != "master" && "$CIRCLE_BRANCH" != "develop" ) ]]; then
               echo "Changes do not require testing."
               circleci-agent step halt
             fi
