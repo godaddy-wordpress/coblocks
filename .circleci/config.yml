@@ -11,12 +11,12 @@ workflows:
       - lint_php:
           requires:
             - build
-      - lint_js:
-          requires:
-            - build
-      - lint_css:
-          requires:
-            - build
+      # - lint_js:
+      #     requires:
+      #       - build
+      # - lint_css:
+      #     requires:
+      #       - build
 
       # UNIT TESTING
       # Support PHP Versions: http://php.net/supported-versions.php
@@ -37,7 +37,8 @@ workflows:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - lint_js
+            - build
+          #   - lint_js
 
       # END TO END TESTING
       - e2e_chrome:
@@ -45,7 +46,7 @@ workflows:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - lint_css
+            # - lint_css
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_js
@@ -54,7 +55,7 @@ workflows:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - lint_css
+            # - lint_css
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_js
@@ -81,8 +82,8 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_js
-            - e2e_firefox
-            - e2e_chrome
+            # - e2e_firefox
+            # - e2e_chrome
           filters:
             tags:
               only: /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*)?(\+[0-9-]+(\.[0-9]+)*)?/ # Run on semantic version tags only
@@ -428,10 +429,8 @@ jobs:
       - run:
           name: Setup spec files to run based on git diff-tree
           command: |
-            bash .dev/bin/setup-test-specs.sh $FILES
-            if [ ! -s /tmp/specstring ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ]; then
-              echo "Changes do not require testing."
-              circleci-agent step halt
+            if [[ "$CIRCLE_BRANCH" != "master" && "$CIRCLE_BRANCH" != "develop" ]]; then
+              bash .dev/bin/setup-test-specs.sh $FILES
             fi
       - disable_xdebug_php_extension
       - attach_workspace:
@@ -497,10 +496,8 @@ jobs:
       - run:
           name: Setup spec files to run based on git diff-tree
           command: |
-            bash .dev/bin/setup-test-specs.sh $FILES
-            if [ ! -s /tmp/specstring ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ]; then
-              echo "Changes do not require testing."
-              circleci-agent step halt
+            if [[ "$CIRCLE_BRANCH" != "master" && "$CIRCLE_BRANCH" != "develop" ]]; then
+              bash .dev/bin/setup-test-specs.sh $FILES
             fi
       - disable_xdebug_php_extension
       - attach_workspace:
@@ -585,7 +582,7 @@ jobs:
               git config --global user.email "plugins@godaddy.com"
               git config --global user.name "GoDaddy Translator Bot"
               git checkout HEAD -- composer.lock
-              git checkout HEAD -- package-lock.json
+              git checkout HEAD -- yarn.lock
               git add languages/coblocks.json
               git add languages/coblocks.pot
               git status

@@ -27,7 +27,7 @@ done
 # No spec files to run
 if [ ${#SPECS[@]} -eq 0 ]; then
 	echo "Changes do not require testing."
-  circleci-agent step halt
+	circleci-agent step halt
 	exit
 fi
 

@@ -28,8 +28,7 @@ describe( 'Extension: CoBlocks Settings', function() {
 	 */
 	it( 'Can control typography settings as expected.', function() {
 		helpers.addBlockToPost( 'coblocks/row', true );
-		cy.get( 'div[data-type="coblocks/row"] .components-placeholder' ).find( 'button' ).first().click( { force: true } );
-		cy.get( '.wp-block-coblocks-row' ).click( { force: true } );
+		cy.get( '.block-editor-block-variation-picker__variation' ).first().click();
 
 		cy.get( '.edit-post-more-menu' ).click();
 		cy.get( '.components-menu-group' ).find( 'button' ).contains( 'Editor settings' ).click();
