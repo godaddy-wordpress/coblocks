@@ -28,7 +28,7 @@ export function isLayoutSelectorOpen() {
  * Login to our test WordPress site
  */
 export function loginToSite() {
-	cy.visit( Cypress.env( 'testURL' ) + '/wp-admin/post-new.php?post_type=page' )
+	goTo( '/wp-admin/post-new.php?post_type=page' )
 		.then( ( window ) => {
 			if ( window.location.pathname === '/wp-login.php' ) {
 				// WordPress has a wp_attempt_focus() function that fires 200ms after the wp-login.php page loads.
@@ -42,6 +42,16 @@ export function loginToSite() {
 		} );
 
 	cy.get( '.block-editor-page' ).should( 'exist' );
+}
+
+/**
+ * Go to a specific URI.
+ *
+ * @param {string} path The URI path to go to.
+ */
+export function goTo( path = '/wp-admin' ) {
+	return cy.visit( Cypress.env( 'testURL' ) + path )
+		.then( () => disableGutenbergFeatures() );
 }
 
 /**
