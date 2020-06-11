@@ -36,7 +36,8 @@ workflows:
           filters:
             tags:
               only: /^(?!canary).*$/
-          # requires:
+          requires:
+            - build
           #   - lint_js
 
       # END TO END TESTING
