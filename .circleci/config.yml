@@ -1,14 +1,17 @@
 workflows:
-  version: 2.1
+  version: 2
   main:
     jobs:
       - build:
-        filters:
-          tags:
-            only: /^(?!canary).*$/
+          filters:
+            tags:
+              only: /^(?!canary).*$/
 
       # CODE LINTING
       - lint_php:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
           requires:
             - build
       # - lint_js:
@@ -82,8 +85,8 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_js
-            - e2e_firefox
-            - e2e_chrome
+            # - e2e_firefox
+            # - e2e_chrome
           filters:
             tags:
               only: /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*)?(\+[0-9-]+(\.[0-9]+)*)?/ # Run on semantic version tags only
@@ -586,7 +589,7 @@ jobs:
               git add languages/coblocks.json
               git add languages/coblocks.pot
               git status
-              git commit -m "Update coblocks.pot/coblocks.json files [skip i18n]"
+              git commit -m "[skip ci] Update coblocks.pot/coblocks.json files"
               git reset --hard
               git pull --rebase
               git push origin master --quiet
