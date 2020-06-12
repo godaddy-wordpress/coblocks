@@ -8,6 +8,7 @@ import icon from './icon';
 import transforms from './transforms';
 import metadata from './block.json';
 import { GalleryAttributes } from '../../components/block-gallery/shared';
+import { hasFormattingCategory } from '../../utils/block-helpers';
 
 /**
  * WordPress dependencies
@@ -29,6 +30,7 @@ const settings = {
 	title: __( 'Offset', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Display images in an offset brick pattern gallery.', 'coblocks' ),
+	category: hasFormattingCategory ? 'coblocks-galleries' : 'media',
 	icon,
 	keywords: [
 		'coblocks',

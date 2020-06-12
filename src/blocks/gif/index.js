@@ -5,6 +5,7 @@ import edit from './edit';
 import icon from './icon';
 import metadata from './block.json';
 import save from './save';
+import { hasFormattingCategory } from '../../utils/block-helpers';
 
 /**
  * WordPress dependencies
@@ -21,6 +22,7 @@ const settings = {
 	title: __( 'Gif', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Pick a gif, any gif.', 'coblocks' ),
+	category: hasFormattingCategory ? 'common' : 'media',
 	icon,
 	keywords: [
 		'coblocks',
