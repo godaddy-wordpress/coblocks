@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/gif",
-	"category": "common",
+	"category": "media",
 	"attributes": {
 		"url": {
 			"attribute": "src",
