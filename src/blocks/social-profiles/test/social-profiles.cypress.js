@@ -71,6 +71,35 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 		helpers.editPage();
 	} );
 
+		/**
+	 * Test the coblocks social profiles block saves with opensInNewTab.
+	 */
+	it( 'Test the social profiles block allows links in new tabs.', function() {
+		helpers.addBlockToPost( 'coblocks/social-profiles', true );
+
+		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook profile"]' ).click();
+		cy.get( '.block-editor-url-input' ).type( 'https://www.facebook.com/test' );
+
+		helpers.toggleSettingCheckbox( 'Open links in new tab' );
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/social-profiles' );
+
+		helpers.viewPage();
+
+		cy.get( '.wp-block-coblocks-social-profiles ul li' )
+			.its( 'length' )
+			.should( 'equal', 1 );
+
+		cy.get( 'a[title="Facebook"]' )
+			.should( 'have.attr', 'href', 'https://www.facebook.com/test' )
+			.should('have.attr', 'target', '_blank')
+			.should('have.attr', 'rel', 'noopener noreferrer');
+
+		helpers.editPage();
+	} );
+
 	/**
 	 * Test the coblocks social profiles block styles.
 	 */
