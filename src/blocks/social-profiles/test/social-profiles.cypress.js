@@ -71,7 +71,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 		helpers.editPage();
 	} );
 
-		/**
+	/**
 	 * Test the coblocks social profiles block saves with opensInNewTab.
 	 */
 	it( 'Test the social profiles block allows links in new tabs.', function() {
