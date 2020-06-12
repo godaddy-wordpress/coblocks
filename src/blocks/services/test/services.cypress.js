@@ -35,7 +35,7 @@ describe( 'Test CoBlocks Services Block', function() {
 
 		helpers.setInputValue( 'Services settings', 'Columns', 1, false );
 
-		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 1 );
+		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 2 ); // No longer pops children out of block.
 
 		helpers.setInputValue( 'Services settings', 'Columns', 3, false );
 
