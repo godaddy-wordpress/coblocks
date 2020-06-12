@@ -6,7 +6,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 1.26.3
+Stable tag: 2.0.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,9 +123,24 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+### Enhancements
+* 🎉 Introduce the new Layout Selector [#1473](https://github.com/godaddy-wordpress/coblocks/pull/1473)
+* Introduce CSS Custom Properties for $spacing [#1476](https://github.com/godaddy-wordpress/coblocks/pull/1476)
+
 ### Bug Fixes
-* Apply styles for formats [#1494](https://github.com/godaddy-wordpress/coblocks/pull/1494)
+* Add Lightbox support for lazy loading plugins [#1486](https://github.com/godaddy-wordpress/coblocks/pull/1486)
+* Fix Gallery blocks image links when Lightbox is active [#1497](https://github.com/godaddy-wordpress/coblocks/pull/1497)
+* Fix Form block inline toolbar typography controls [#1489](https://github.com/godaddy-wordpress/coblocks/pull/1489)
+* Fix fullwidth buttons display issues [#1484](https://github.com/godaddy-wordpress/coblocks/pull/1484)
+* Fix gallery caption display when using custom links [#1527](https://github.com/godaddy-wordpress/coblocks/pull/1527)
+* Fix overwriting existing line height style when none has been set [#1526](https://github.com/godaddy-wordpress/coblocks/pull/1526)
+* Fix resizablebox handle visibility [#1516](https://github.com/godaddy-wordpress/coblocks/pull/1516)
+* Fix advanced spacing in the Layout Selector and Editor [#1521](https://github.com/godaddy-wordpress/coblocks/pull/1521)
+* Add appropriate margin between Services block placeholder and title [#1505](https://github.com/godaddy-wordpress/coblocks/pull/1505)
+* Fix advanced block spacing with Gutenberg plugin [#1518](https://github.com/godaddy-wordpress/coblocks/pull/1518)
+* Fix gallery block image selector UI for Gutenberg 8.2+ [#1507](https://github.com/godaddy-wordpress/coblocks/pull/1507)
 
 ### Misc
-* Update contributors list [#1498](https://github.com/godaddy-wordpress/coblocks/pull/1498)
-* Update typography hooks docs [#1502](https://github.com/godaddy-wordpress/coblocks/pull/1502)
+* Change import target [#1529](https://github.com/godaddy-wordpress/coblocks/pull/1529)
+* Remove .prettierrc.js file from repository [#1522](https://github.com/godaddy-wordpress/coblocks/pull/1522)
+* Optimize CircleCI Workflow [#1328](https://github.com/godaddy-wordpress/coblocks/pull/1328)

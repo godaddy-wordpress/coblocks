@@ -13,6 +13,10 @@
 			"type": "boolean",
 			"default": true
 		},
+		"opensInNewTab": {
+			"type": "boolean",
+			"default": false
+		},
 		"borderRadius": {
 			"type": "number",
 			"default": 40

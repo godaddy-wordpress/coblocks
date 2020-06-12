@@ -1,14 +1,17 @@
 workflows:
-  version: 2.1
+  version: 2
   main:
     jobs:
       - build:
-        filters:
-          tags:
-            only: /^(?!canary).*$/
+          filters:
+            tags:
+              only: /^(?!canary).*$/
 
       # CODE LINTING
       - lint_php:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
           requires:
             - build
       # - lint_js:
