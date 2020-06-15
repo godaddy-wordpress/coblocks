@@ -16,7 +16,17 @@
 	&-item {
 		align-items: center;
 		appearance: none;
+		background: transparent;
+		border-radius: 2px;
+		border: 1px solid theme(primary);
+		box-shadow: none;
+		color: theme(primary);
+		height: auto !important;
 		margin: 0;
+		outline: 1px solid transparent;
+		padding: 8px !important;
+		white-space: nowrap;
+
 
 		&:first-of-type {
 			border-bottom-right-radius: 0;
