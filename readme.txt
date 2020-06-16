@@ -1,6 +1,5 @@
 === Page Builder Gutenberg Blocks – CoBlocks ===
 Author URI: https://www.godaddy.com
-Plugin URI: https://www.coblocks.com
 Contributors: coblocks, godaddy, richtabor, phpbits, eherman24, jonathanbardo, jrtashjian, sbalakr2, dmatuszak, paranoia1906
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
@@ -14,7 +13,7 @@ CoBlocks is a suite of page builder WordPress blocks for Gutenberg, with 10+ new
 
 == Description ==
 
-[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the most innovative collection of page building WordPress blocks for the new Gutenberg WordPress block editor.
+CoBlocks is the most innovative collection of page building WordPress blocks for the new Gutenberg WordPress block editor.
 
 With additional blocks and true row and column building, CoBlocks gives you a true page builder experience for Gutenberg.
 
@@ -26,7 +25,7 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 
 
 ## Make Beautiful Web Pages With Gutenberg & CoBlocks
-[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the last page builder you’ll ever need: you get a winning mix of additional WordPress blocks, and page builder functionality. With CoBlocks you have everything you need to make beautiful web pages with the new block editor:
+CoBlocks is the last page builder you’ll ever need: you get a winning mix of additional WordPress blocks, and page builder functionality. With CoBlocks you have everything you need to make beautiful web pages with the new block editor:
 
 * Accordion Block
 * Alert Block
@@ -61,7 +60,7 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Stacked Gallery Block
 
 ## Breakthrough Page Builder System
-[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) features an innovative block system that allows you to create stunning web pages, and even entire websites, with the new WordPress editor.
+CoBlocks features an innovative block system that allows you to create stunning web pages, and even entire websites, with the new WordPress editor.
 
 You get the extra blocks you need <em>and</em> the layout and design functionality for a true page builder experience.
 
@@ -82,7 +81,6 @@ The vision for CoBlocks is to create a suite of Gutenberg blocks to help folks m
 
 <strong>Join us</strong> in welcoming the future of WordPress blocks:
 
-* [Visit the CoBlocks website](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks)
 * [Follow on Twitter](https://twitter.com/coblocks)
 * [Join our new Community](https://facebook.com/groups/coblocks)
 * [Like us on Facebook](https://www.facebook.com/coblocks/)
