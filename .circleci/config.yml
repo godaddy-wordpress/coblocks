@@ -75,6 +75,12 @@ jobs:
           key: php56-build-dependency-cache--{{ checksum "package.json" }}
           paths:
             - node_modules
+            - run:
+      - run:
+        name: Install MariaDB
+        command: |
+          sudo apt-get update
+          sudo apt-get install mariadb-client
       - run:
           name: Build the plugin
           command: npx wp-scripts build --config .dev/config/webpack.ci.config.js
@@ -216,6 +222,11 @@ jobs:
             - node_modules
             - ~/.cache
       - run:
+        name: Install MariaDB
+        command: |
+          sudo apt-get update
+          sudo apt-get install mariadb-client
+      - run:
           name: "Install Dependencies"
           command: |
             composer config -g github-oauth.github.com $GH_ACCESS_TOKEN
@@ -276,6 +287,11 @@ jobs:
           paths:
             - node_modules
             - ~/.cache
+      - run:
+        name: Install MariaDB
+        command: |
+          sudo apt-get update
+          sudo apt-get install mariadb-client
       - run:
           name: "Install Dependencies"
           command: |
