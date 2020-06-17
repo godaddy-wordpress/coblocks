@@ -138,6 +138,11 @@ jobs:
           paths:
             - node_modules
       - run:
+          name: Install MariaDB
+          command: |
+            sudo apt-get update
+            sudo apt-get install mariadb-client
+      - run:
           name: Build the plugin
           command: npx wp-scripts build --config .dev/config/webpack.ci.config.js
       - run:
