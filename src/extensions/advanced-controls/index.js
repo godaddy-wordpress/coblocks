@@ -2,12 +2,12 @@
  * External Dependencies
  */
 import classnames from 'classnames';
+import { lifecycle } from 'recompose';
 
 /**
  * WordPress Dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { lifecycle } from 'recompose';
 import { addFilter } from '@wordpress/hooks';
 import { Fragment } from '@wordpress/element';
 import { withSelect } from '@wordpress/data';
