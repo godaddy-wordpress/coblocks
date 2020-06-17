@@ -77,10 +77,10 @@ jobs:
             - node_modules
             - run:
       - run:
-        name: Install MariaDB
-        command: |
-          sudo apt-get update
-          sudo apt-get install mariadb-client
+          name: Install MariaDB
+          command: |
+            sudo apt-get update
+            sudo apt-get install mariadb-client
       - run:
           name: Build the plugin
           command: npx wp-scripts build --config .dev/config/webpack.ci.config.js
@@ -222,10 +222,10 @@ jobs:
             - node_modules
             - ~/.cache
       - run:
-        name: Install MariaDB
-        command: |
-          sudo apt-get update
-          sudo apt-get install mariadb-client
+          name: Install MariaDB
+          command: |
+            sudo apt-get update
+            sudo apt-get install mariadb-client
       - run:
           name: "Install Dependencies"
           command: |
@@ -288,10 +288,10 @@ jobs:
             - node_modules
             - ~/.cache
       - run:
-        name: Install MariaDB
-        command: |
-          sudo apt-get update
-          sudo apt-get install mariadb-client
+          name: Install MariaDB
+          command: |
+            sudo apt-get update
+            sudo apt-get install mariadb-client
       - run:
           name: "Install Dependencies"
           command: |
