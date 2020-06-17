@@ -9,6 +9,24 @@
 	.block-list-appender {
 		display: none !important;
 	}
+
+	.is-selected .components-coblocks-gallery-item__remove-menu {
+		background: #ffffff;
+		border: 1px solid rgba(66, 88, 99, 0.4);
+		border-radius: 4px;
+		margin: 8px;
+		transition: box-shadow 0.2s ease-out;
+
+		.coblocks-gallery-item__button {
+			color: rgba(14, 28, 46, 0.62) !important;
+			height: 24px;
+			padding: 2px;
+
+			&:hover {
+				color: #191e23 !important;
+			}
+		}
+	}
 }
 
 // CoBlocks style previewer
