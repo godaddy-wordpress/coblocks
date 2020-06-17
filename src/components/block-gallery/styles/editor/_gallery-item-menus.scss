@@ -40,8 +40,9 @@
 
 .coblocks-gallery-item__button {
 	box-shadow: none !important;
-	color: $white;
+	color: $white !important;
 	height: 24px;
-	padding: 2px;
+	padding: 2px !important;
 	width: 24px;
+	min-width: 24px !important;
 }

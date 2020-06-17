@@ -21,6 +21,13 @@
 	}
 }
 
+@mixin break-large-max() {
+
+	@media (max-width: #{ ($break-large-max) }) {
+		@content;
+	}
+}
+
 @mixin break-medium() {
 
 	@media (min-width: #{ ($break-medium) }) {

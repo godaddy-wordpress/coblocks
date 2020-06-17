@@ -9,7 +9,7 @@ import jQuery from 'jquery';
 		container.imagesLoaded( function() {
 			container.masonry( {
 				itemSelector: '.coblocks-gallery--item',
-				transitionDuration: '0.2s',
+				transitionDuration: '0',
 				percentPosition: true,
 			} );
 		} );

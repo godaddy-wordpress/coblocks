@@ -7,6 +7,7 @@
 class CoBlocks_Generated_Styles_Tests extends WP_UnitTestCase {
 
 	private $coblocks_generated_styles;
+	private $coblocks_block_assets;
 
 	private $dimensions;
 
@@ -46,6 +47,7 @@ class CoBlocks_Generated_Styles_Tests extends WP_UnitTestCase {
 		];
 
 		$this->coblocks_generated_styles = new CoBlocks_Generated_Styles();
+		$this->coblocks_block_assets = new CoBlocks_Block_Assets();
 
 	}
 
@@ -105,10 +107,12 @@ class CoBlocks_Generated_Styles_Tests extends WP_UnitTestCase {
 	 */
 	public function test_enqueue_styles() {
 
+		unset( $GLOBALS['current_screen'] );
+
 		$post_id = wp_insert_post(
 			[
 				'post_author'  => 1,
-				'post_content' => 'Post content',
+				'post_content' => '<!-- wp:coblocks/block_with_custom_styles --><!-- /wp:coblocks/block_with_custom_styles -->',
 				'post_title'   => 'Post title',
 				'post_status'  => 'publish',
 			]
@@ -121,8 +125,10 @@ class CoBlocks_Generated_Styles_Tests extends WP_UnitTestCase {
 
 		$post = get_post( $post_id );
 
+		$this->coblocks_block_assets->block_assets();
 		$this->coblocks_generated_styles->enqueue_styles();
 
+		do_action( 'enqueue_block_assets' );
 		do_action( 'wp_enqueue_scripts' );
 
 		global $wp_styles;

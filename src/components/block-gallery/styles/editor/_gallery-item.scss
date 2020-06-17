@@ -37,6 +37,11 @@
 	.block-editor-rich-text {
 		z-index: 2;
 	}
+
+	.components-coblocks-gallery-item__image-link ~ .coblocks-gallery--caption {
+		bottom: 3em;
+	}
+
 }
 
 .has-caption-color .coblocks-gallery--caption a {

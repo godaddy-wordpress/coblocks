@@ -2,7 +2,7 @@
 
 ## Customize labels
 
-The following JavaScript filter will customize the text used for the menu item
+The following `JavaScript` filter will customize the text used for the menu item
 label and panel titles: 
 
 ```javascript
