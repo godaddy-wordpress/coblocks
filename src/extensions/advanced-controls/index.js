@@ -7,10 +7,10 @@ import classnames from 'classnames';
  * WordPress Dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { lifecycle } from 'recompose';
 import { addFilter } from '@wordpress/hooks';
 import { Fragment } from '@wordpress/element';
 import { withSelect } from '@wordpress/data';
-import { withProps, lifecycle } from 'recompose';
 import { hasBlockSupport } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
 import { InspectorAdvancedControls } from '@wordpress/block-editor';
