@@ -56,6 +56,43 @@ class AccordionEdit extends Component {
 
 		const items = this.props.getBlocksByClientId( clientId );
 
+		const handleEvent = ( ) => {
+			if ( items[ 0 ].innerBlocks ) {
+				const lastId = items[ 0 ].innerBlocks[ items[ 0 ].innerBlocks.length - 1 ].clientId;
+				let copyAttributes = {};
+
+				if ( lastId ) {
+					const lastBlockClient = this.props.getBlockAttributes( lastId );
+					if ( lastBlockClient.backgroundColor ) {
+						copyAttributes = Object.assign( copyAttributes, {
+							backgroundColor: lastBlockClient.backgroundColor,
+						} );
+					}
+
+					if ( lastBlockClient.borderColor ) {
+						copyAttributes = Object.assign( copyAttributes, {
+							borderColor: lastBlockClient.borderColor,
+						} );
+					}
+
+					if ( lastBlockClient.textColor ) {
+						copyAttributes = Object.assign( copyAttributes, {
+							textColor: lastBlockClient.textColor,
+						} );
+					}
+
+					if ( lastBlockClient.customTextColor ) {
+						copyAttributes = Object.assign( copyAttributes, {
+							customTextColor: lastBlockClient.customTextColor,
+						} );
+					}
+				}
+
+				const created = createBlock( 'coblocks/accordion-item', copyAttributes );
+				this.props.insertBlock( created, undefined, clientId );
+			}
+		};
+
 		return (
 			<Fragment>
 				{ isSelected && (
@@ -76,42 +113,8 @@ class AccordionEdit extends Component {
 								/* translators: Add a child element for the Accordion block */
 								label={ __( 'Add accordion item', 'coblocks' ) }
 								icon="insert"
-								onClick={ () => {
-									if ( items[ 0 ].innerBlocks ) {
-										const lastId = items[ 0 ].innerBlocks[ items[ 0 ].innerBlocks.length - 1 ].clientId;
-										let copyAttributes = {};
-
-										if ( lastId ) {
-											const lastBlockClient = this.props.getBlockAttributes( lastId );
-											if ( lastBlockClient.backgroundColor ) {
-												copyAttributes = Object.assign( copyAttributes, {
-													backgroundColor: lastBlockClient.backgroundColor,
-												} );
-											}
-
-											if ( lastBlockClient.borderColor ) {
-												copyAttributes = Object.assign( copyAttributes, {
-													borderColor: lastBlockClient.borderColor,
-												} );
-											}
-
-											if ( lastBlockClient.textColor ) {
-												copyAttributes = Object.assign( copyAttributes, {
-													textColor: lastBlockClient.textColor,
-												} );
-											}
-
-											if ( lastBlockClient.customTextColor ) {
-												copyAttributes = Object.assign( copyAttributes, {
-													customTextColor: lastBlockClient.customTextColor,
-												} );
-											}
-										}
-
-										const created = createBlock( 'coblocks/accordion-item', copyAttributes );
-										this.props.insertBlock( created, undefined, clientId );
-									}
-								} } >
+								onMouseUp={ handleEvent }
+							>
 							</IconButton>
 						</div>
 					) }
