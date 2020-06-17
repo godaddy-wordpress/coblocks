@@ -75,7 +75,6 @@ jobs:
           key: php56-build-dependency-cache--{{ checksum "package.json" }}
           paths:
             - node_modules
-            - run:
       - run:
           name: Install MariaDB
           command: |
