@@ -1,7 +1,6 @@
 <?php
 /**
  * Plugin Name: CoBlocks
- * Plugin URI: https://coblocks.com
  * Description: CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
  * Author: GoDaddy
  * Author URI: https://www.godaddy.com
