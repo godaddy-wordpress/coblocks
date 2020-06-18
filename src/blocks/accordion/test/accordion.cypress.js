@@ -46,7 +46,8 @@ describe( 'Block: Accordion', () => {
 	 * Test that multiple accordion items display as expected
 	 */
 	it( 'can add multiple accordion item blocks', () => {
-		cy.get( '[data-type="coblocks/accordion"]' ).click( { force: true } ).find( '.components-coblocks-add-accordion-item__button' ).click( );
+		cy.get( '[data-type="coblocks/accordion"]' ).click( 'top', { force: true } );
+		cy.get('.components-coblocks-add-accordion-item__button' ).click( );
 		cy.get( '[data-type="coblocks/accordion"]' ).find( '[data-type="coblocks/accordion-item"]' ).should( 'have.length', 2 );
 
 		helpers.checkForBlockErrors( 'coblocks/accordion' );
