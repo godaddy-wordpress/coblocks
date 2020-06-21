@@ -33,7 +33,7 @@ describe( 'Block: Accordion', () => {
 		cy.get( '.editor-post-title__input' ).click();
 		cy.get( '[data-type="coblocks/accordion"] .wp-block-coblocks-accordion-item__content' ).should( 'not.exist' );
 
-		cy.get( '[data-type="coblocks/accordion"]' ).click();
+		cy.get( '[data-type="coblocks/accordion-item"]' ).click();
 		helpers.toggleSettingCheckbox( 'Display as open' );
 
 		cy.get( '.editor-post-title__input' ).click();
