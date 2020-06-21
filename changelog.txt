@@ -1,4 +1,20 @@
 
+2.0.1 / 2020-06-18
+==================
+
+### Enhancements
+* Social profiles: Open links in new tab [#1520](https://github.com/godaddy-wordpress/coblocks/pull/1520)
+
+### Bug Fixes
+* Fix editor performance relating to advanced margins [#1543](https://github.com/godaddy-wordpress/coblocks/pull/1543)
+* Remove selected block outline for Shape Divider in G8.3+ [#1541](https://github.com/godaddy-wordpress/coblocks/pull/1541)
+* Fix primary/secondary buttons in custom components with Gutenberg active [#1532](https://github.com/godaddy-wordpress/coblocks/pull/1532)
+* Fix Services innerBlock based on column count [#1534](https://github.com/godaddy-wordpress/coblocks/pull/1534)
+
+### Misc
+* Remove reference to coblocks.com [#1540](https://github.com/godaddy-wordpress/coblocks/pull/1540)
+
+
 2.0.0 / 2020-06-11
 ==================
 

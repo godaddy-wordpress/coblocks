@@ -2,6 +2,7 @@
  * External Dependencies
  */
 import classnames from 'classnames';
+import { lifecycle } from 'recompose';
 
 /**
  * WordPress Dependencies
@@ -215,6 +216,41 @@ const enhance = compose(
 			selected: select( 'core/block-editor' ).getSelectedBlock(),
 			select,
 		};
+	} ),
+
+	/**
+	 * Using recompose lifecycle as an escape hatch to access component lifecycle methods.
+	 * Method will perform document mutations related to advanced editor margins.
+	 *
+	 * @return {Function} Enhanced component with modified lifecycle method.
+	 */
+	lifecycle( {
+		componentDidUpdate() {
+			// Check if alignment wrapper has been applied - Gutenberg 8.2.1
+			if ( !! document.getElementsByClassName( 'block-editor-block-list__layout is-root-container' ).length ) {
+				const targetElems = document.querySelectorAll( '.block-editor-block-list__layout .wp-block[data-align]' );
+				targetElems.forEach( ( elem ) => {
+					const wrapper = elem.closest( '.wp-block' );
+					switch ( wrapper.innerHTML.includes( 'data-coblocks-bottom-spacing' ) ) {
+						case true:
+							wrapper.style.marginBottom = 0;
+							break;
+						case false:
+							wrapper.style.marginBottom = null;
+							break;
+					}
+
+					switch ( wrapper.innerHTML.includes( 'data-coblocks-top-spacing' ) ) {
+						case true:
+							wrapper.style.marginTop = 0;
+							break;
+						case false:
+							wrapper.style.marginTop = null;
+							break;
+					}
+				} );
+			}
+		},
 	} )
 );
 
@@ -262,74 +298,9 @@ const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 			};
 		}
 
-		// Check if alignment wrapper has been applied - Gutenberg 8.2.1
-		if ( !! document.getElementsByClassName( 'block-editor-block-list__layout is-root-container' ).length ) {
-			handleEditorAdvancedMargin();
-		}
-
 		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
 	} );
 }, 'addEditorBlockAttributes' );
-
-const handleEditorAdvancedMargin = ( ) => {
-	const handleChanges = ( targetedElem ) => {
-		if ( targetedElem.className.includes( 'wp-block' ) ) {
-			switch ( targetedElem.innerHTML.includes( 'data-coblocks-bottom-spacing' ) ) {
-				case true:
-					targetedElem.style.marginBottom = 0;
-					break;
-				case false:
-					targetedElem.style.marginBottom = null;
-					break;
-			}
-
-			switch ( targetedElem.innerHTML.includes( 'data-coblocks-top-spacing' ) ) {
-				case true:
-					targetedElem.style.marginTop = 0;
-					break;
-				case false:
-					targetedElem.style.marginTop = null;
-					break;
-			}
-		}
-	};
-
-	const observationTargetNode = !! document.getElementsByClassName( 'coblocks-layout-selector' ).length
-		? document : document.getElementsByClassName( 'block-editor-block-list__layout' )[ 0 ];
-
-	const getClosest = ( elem, selector ) => {
-		for ( ; elem && elem !== document; elem = elem.parentNode ) {
-			if ( elem.matches( selector ) && !! elem.dataset.align ) {
-				return elem;
-			}
-		}
-		return null;
-	};
-
-	const callback = function( mutationsList ) {
-		for ( const mutation of mutationsList ) {
-			if ( mutation.type === 'childList' ) {
-				if ( ! ( mutation.target instanceof HTMLElement ) ) {
-					continue;
-				}
-
-				const wpBlock = getClosest( mutation.target, '.wp-block' );
-				if ( !! wpBlock ) {
-					handleChanges( wpBlock );
-				}
-			}
-			if ( mutation.type === 'attributes' &&
-			( mutation.attributeName === 'data-coblocks-bottom-spacing' || mutation.attributeName === 'data-coblocks-top-spacing' ) ) {
-				if ( ! ( mutation.target.parentElement instanceof HTMLElement ) ) {
-					continue;
-				}
-				handleChanges( mutation.target.parentElement );
-			}
-		}
-	};
-	const observer = new MutationObserver( callback );
-	observer.observe( observationTargetNode, { attributes: true, childList: true, subtree: true } );
-};
 
 addFilter(
 	'blocks.registerBlockType',
