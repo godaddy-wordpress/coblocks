@@ -583,9 +583,9 @@ class DimensionsControl extends Component {
 															<Button
 																className="components-coblocks-dimensions-control_sync"
 																aria-label={ __( 'Sync units', 'coblocks' ) }
-																isPrimary={ syncUnitsMobile ? syncUnitsMobile : false }
-																isSecondary={ syncUnitsMobile ? syncUnitsMobile : true }
-																aria-pressed={ syncUnitsMobile ? syncUnitsMobile : false }
+																isPrimary={ syncUnitsMobile ? true : false }
+																isSecondary={ syncUnitsMobile ? false : true }
+																aria-pressed={ syncUnitsMobile ? true : false }
 																onClick={ ( value ) => this.syncUnits( value, 'Mobile' ) }
 																data-device-type="Mobile"
 																isSmall
@@ -660,9 +660,9 @@ class DimensionsControl extends Component {
 															<Button
 																className="components-coblocks-dimensions-control_sync"
 																aria-label={ __( 'Sync units', 'coblocks' ) }
-																isPrimary={ syncUnitsTablet ? syncUnitsTablet : false }
-																isSecondary={ syncUnitsTablet ? syncUnitsTablet : true }
-																aria-pressed={ syncUnitsTablet ? syncUnitsTablet : false }
+																isPrimary={ syncUnitsTablet ? true : false }
+																isSecondary={ syncUnitsTablet ? false : true }
+																aria-pressed={ syncUnitsTablet ? true : false }
 																onClick={ ( value ) => this.syncUnits( value, 'Tablet' ) }
 																data-device-type="Tablet"
 																isSmall
@@ -736,9 +736,9 @@ class DimensionsControl extends Component {
 														<Button
 															className="components-coblocks-dimensions-control_sync"
 															aria-label={ __( 'Sync units', 'coblocks' ) }
-															isPrimary={ syncUnits ? syncUnits : false }
-															isSecondary={ syncUnits ? syncUnits : true }
-															aria-pressed={ syncUnits ? syncUnits : false }
+															isPrimary={ syncUnits ? true : false }
+															isSecondary={ syncUnits ? false : true }
+															aria-pressed={ syncUnits ? true : false }
 															onClick={ ( value ) => this.syncUnits( value, '' ) }
 															data-device-type=""
 															isSmall
