@@ -23,15 +23,17 @@
 	}
 
 	.is-selected .components-coblocks-gallery-item__remove-menu {
-		background: #ffffff;
-		border: 1px solid rgba(66, 88, 99, 0.4);
-		border-radius: 4px;
-		margin: 8px;
+		background: $white;
+		border: 1px solid #1e1e1e;
+		border-radius: 3px;
+		margin: 6px;
 		transition: box-shadow 0.2s ease-out;
 
 		.coblocks-gallery-item__button {
-			color: rgba(14, 28, 46, 0.62) !important;
-			height: 24px;
+			color: #1e1e1e !important;
+			height: 22px;
+			width: auto !important;
+			min-width: auto !important;
 			padding: 2px;
 
 			&:hover {
@@ -114,7 +116,8 @@
 
 			&::after {
 				bottom: 0;
-				box-shadow: inset 0 0 0 4px theme(primary);
+				border-radius: 2px;
+				box-shadow: 0 0 0 2px theme(primary), inset 0 0 0 1px $white;
 				content: "";
 				left: 0;
 				position: absolute;
