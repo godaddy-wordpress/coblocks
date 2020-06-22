@@ -131,3 +131,12 @@
 		margin-top: 1.7em;
 	}
 }
+
+.wp-block[data-type="coblocks/service"].is-selected.block-editor-block-list__block:focus:after {
+	box-shadow: 0 0 0 1.5px transparent;
+
+}
+
+.wp-block[data-type="coblocks/service"].is-selected.block-editor-block-list__block .wp-block-coblocks-service .wp-block-coblocks-service__figure:not(figure) {
+    box-shadow: inset 0 0 0 4px #0085ba;
+}
