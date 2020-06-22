@@ -21,6 +21,24 @@
 	.wp-block:nth-last-child(2) [data-block] {
 		margin-bottom: 0;
 	}
+
+	.is-selected .components-coblocks-gallery-item__remove-menu {
+		background: #ffffff;
+		border: 1px solid rgba(66, 88, 99, 0.4);
+		border-radius: 4px;
+		margin: 8px;
+		transition: box-shadow 0.2s ease-out;
+
+		.coblocks-gallery-item__button {
+			color: rgba(14, 28, 46, 0.62) !important;
+			height: 24px;
+			padding: 2px;
+
+			&:hover {
+				color: #191e23 !important;
+			}
+		}
+	}
 }
 
 .wp-block-coblocks-service {
