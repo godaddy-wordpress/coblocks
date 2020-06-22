@@ -4,8 +4,9 @@
 		position: relative;
 
 		&__mobile-controls-item {
-			border-radius: 3px 0 0 3px;
-			box-shadow: none;
+			border-radius: 2px 0 0 2px;
+			box-shadow: inset 0 0 0 1px theme(primary) !important;
+			border: 0;
 			display: none;
 			font-size: 10px;
 			height: 30px;
@@ -140,9 +141,10 @@
 
 		&_sync.components-button.is-small {
 			border-radius: 0;
-			border-bottom-right-radius: 3px;
-			border-top-right-radius: 3px;
-			box-shadow: none;
+			border: 0;
+			border-bottom-right-radius: 2px;
+			border-top-right-radius: 2px;
+			box-shadow: inset 0 0 0 1px theme(primary);
 			height: auto;
 			justify-content: center;
 			padding: 0;

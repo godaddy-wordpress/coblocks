@@ -5,6 +5,7 @@ import edit from './edit';
 import icon from './icon';
 import metadata from './block.json';
 import { transforms } from './transforms';
+import { hasFormattingCategory } from '../../utils/block-helpers';
 
 /**
  * WordPress dependencies
@@ -21,6 +22,7 @@ const settings = {
 	title: __( 'Social Profiles', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Grow your audience with links to social media profiles.', 'coblocks' ),
+	category: hasFormattingCategory ? 'common' : 'widgets',
 	icon,
 	keywords: [
 		'coblocks',
