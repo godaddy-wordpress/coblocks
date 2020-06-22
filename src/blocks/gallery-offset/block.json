@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/gallery-offset",
-	"category": "coblocks-galleries",
+	"category": "media",
 	"attributes": {
 		"gridSize": {
 			"type": "string",

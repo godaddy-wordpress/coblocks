@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/gallery-collage",
-	"category": "coblocks-galleries",
+	"category": "media",
 	"attributes": {
 		"images": {
 			"type": "array",

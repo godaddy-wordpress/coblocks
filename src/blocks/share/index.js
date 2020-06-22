@@ -4,6 +4,7 @@
 import edit from './edit';
 import icon from './icon';
 import metadata from './block.json';
+import { hasFormattingCategory } from '../../utils/block-helpers';
 
 /**
  * WordPress dependencies
@@ -20,6 +21,7 @@ const settings = {
 	title: __( 'Share', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add social sharing links to help you get likes and shares.', 'coblocks' ),
+	category: hasFormattingCategory ? 'common' : 'widgets',
 	icon,
 	keywords: [
 		'coblocks',
