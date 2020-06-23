@@ -13,6 +13,7 @@ import './extensions/colors/inspector';
 import './extensions/typography';
 import './extensions/attributes';
 import './extensions/advanced-controls';
+import './extensions/gutter-controls';
 import './extensions/list-styles';
 import './extensions/button-styles';
 import './extensions/button-controls';
