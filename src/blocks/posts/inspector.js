@@ -141,9 +141,9 @@ const Inspector = ( props ) => {
 					label={ __( 'Post date', 'coblocks' ) }
 					checked={ displayPostDate }
 					help={
-						displayPostDate ?
-							__( 'Showing the publish date.', 'coblocks' ) :
-							__( 'Toggle to show the publish date.', 'coblocks' )
+						displayPostDate
+							? __( 'Showing the publish date.', 'coblocks' )
+							: __( 'Toggle to show the publish date.', 'coblocks' )
 					}
 					onChange={ () => setAttributes( { displayPostDate: ! displayPostDate } ) }
 				/>
@@ -151,9 +151,9 @@ const Inspector = ( props ) => {
 					label={ __( 'Post content', 'coblocks' ) }
 					checked={ displayPostContent }
 					help={
-						displayPostContent ?
-							__( 'Showing the post content.', 'coblocks' ) :
-							__( 'Toggle to show the post content.', 'coblocks' )
+						displayPostContent
+							? __( 'Showing the post content.', 'coblocks' )
+							: __( 'Toggle to show the post content.', 'coblocks' )
 					}
 					onChange={ () => setAttributes( { displayPostContent: ! displayPostContent } ) }
 				/>
@@ -190,7 +190,7 @@ const Inspector = ( props ) => {
 						label={ __( 'Thumbnail style', 'coblocks' ) }
 						options={ isHorizontalStyle ? imageStyleHorizontalOptions : imageStyleStackedOptions }
 						currentOption={ imageStyle }
-						onChange={ imageStyle => setAttributes( { imageStyle } ) }
+						onChange={ ( imageStyle ) => setAttributes( { imageStyle } ) }
 					/>
 				}
 				{ isHorizontalStyle && hasFeaturedImage &&
@@ -216,14 +216,16 @@ const Inspector = ( props ) => {
 				] }
 				onChange={ ( value ) => setAttributes( { postFeedType: value } ) }
 			/>
-			{ hasPosts ?
-				<Fragment>
+			{ hasPosts
+				? <Fragment>
 					{ postFeedType === 'internal' &&
 						<QueryControls
 							order={ order }
 							orderBy={ orderBy }
 							categoriesList={ categoriesList }
 							selectedCategoryId={ attributes.categories }
+							categorySuggestions={ categoriesList }
+							selectedCategories={ attributes.categories }
 							onOrderChange={ ( value ) => setAttributes( { order: value } ) }
 							onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
 							onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
@@ -242,8 +244,8 @@ const Inspector = ( props ) => {
 
 	return (
 		<InspectorControls>
-			{ hasPosts ?
-				<PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
+			{ hasPosts
+				? <PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
 					<div className="block-editor-block-styles coblocks-editor-block-styles">
 						{ styleOptions.map( ( style ) => (
 							<div

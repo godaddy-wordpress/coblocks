@@ -57,9 +57,9 @@ class Inspector extends Component {
 						label={ __( 'Post date', 'coblocks' ) }
 						checked={ displayPostDate }
 						help={
-							displayPostDate ?
-								__( 'Showing the publish date.', 'coblocks' ) :
-								__( 'Toggle to show the publish date.', 'coblocks' )
+							displayPostDate
+								? __( 'Showing the publish date.', 'coblocks' )
+								: __( 'Toggle to show the publish date.', 'coblocks' )
 						}
 						onChange={ () => setAttributes( { displayPostDate: ! displayPostDate } ) }
 					/>
@@ -67,9 +67,9 @@ class Inspector extends Component {
 						label={ __( 'Post content', 'coblocks' ) }
 						checked={ displayPostContent }
 						help={
-							displayPostContent ?
-								__( 'Showing the post content.', 'coblocks' ) :
-								__( 'Toggle to show the post content.', 'coblocks' )
+							displayPostContent
+								? __( 'Showing the post content.', 'coblocks' )
+								: __( 'Toggle to show the post content.', 'coblocks' )
 						}
 						onChange={ () => setAttributes( { displayPostContent: ! displayPostContent } ) }
 					/>
@@ -106,13 +106,15 @@ class Inspector extends Component {
 						] }
 						onChange={ ( value ) => setAttributes( { postFeedType: value } ) }
 					/>
-					{ hasPosts ?
-						<Fragment>
+					{ hasPosts
+						? <Fragment>
 							{ postFeedType === 'internal' &&
 								<QueryControls
 									{ ...{ order, orderBy } }
 									categoriesList={ categoriesList }
 									selectedCategoryId={ attributes.categories }
+									categorySuggestions={ categoriesList }
+									selectedCategories={ attributes.categories }
 									onOrderChange={ ( value ) => setAttributes( { order: value } ) }
 									onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
 									onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
