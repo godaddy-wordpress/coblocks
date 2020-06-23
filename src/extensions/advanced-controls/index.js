@@ -225,34 +225,40 @@ const enhance = compose(
 	 * @return {Function} Enhanced component with modified lifecycle method.
 	 */
 	lifecycle( {
+		componentDidMount() {
+			handleMargins();
+		},
 		componentDidUpdate() {
-			// Check if alignment wrapper has been applied - Gutenberg 8.2.1
-			if ( !! document.getElementsByClassName( 'block-editor-block-list__layout is-root-container' ).length ) {
-				const targetElems = document.querySelectorAll( '.block-editor-block-list__layout .wp-block[data-align]' );
-				targetElems.forEach( ( elem ) => {
-					const wrapper = elem.closest( '.wp-block' );
-					switch ( wrapper.innerHTML.includes( 'data-coblocks-bottom-spacing' ) ) {
-						case true:
-							wrapper.style.marginBottom = 0;
-							break;
-						case false:
-							wrapper.style.marginBottom = null;
-							break;
-					}
-
-					switch ( wrapper.innerHTML.includes( 'data-coblocks-top-spacing' ) ) {
-						case true:
-							wrapper.style.marginTop = 0;
-							break;
-						case false:
-							wrapper.style.marginTop = null;
-							break;
-					}
-				} );
-			}
+			handleMargins();
 		},
 	} )
 );
+
+const handleMargins = () => {
+	// Check if alignment wrapper has been applied - Gutenberg 8.2.1
+	if ( !! document.getElementsByClassName( 'block-editor-block-list__layout is-root-container' ).length ) {
+		const targetElems = document.querySelectorAll( '.block-editor-block-list__layout .wp-block[data-align]' );
+		targetElems.forEach( ( elem ) => {
+			const wrapper = elem.closest( '.wp-block' );
+			switch ( wrapper.innerHTML.includes( 'data-coblocks-bottom-spacing' ) ) {
+				case true:
+					wrapper.style.marginBottom = 0;
+					break;
+				case false:
+					wrapper.style.marginBottom = null;
+					break;
+			}
+			switch ( wrapper.innerHTML.includes( 'data-coblocks-top-spacing' ) ) {
+				case true:
+					wrapper.style.marginTop = 0;
+					break;
+				case false:
+					wrapper.style.marginTop = null;
+					break;
+			}
+		} );
+	}
+};
 
 const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
 	return enhance( ( { select, ...props } ) => {
