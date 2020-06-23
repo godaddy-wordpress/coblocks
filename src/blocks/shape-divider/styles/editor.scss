@@ -121,3 +121,8 @@
 		}
 	}
 }
+
+// remove block outline.
+.block-editor-block-list__block[data-type="coblocks/shape-divider"]:not([contenteditable]):focus:after {
+	box-shadow: none;
+}

@@ -1,6 +1,5 @@
 {
   "8bfb6fa6c6fed2cd3ba9b6337ac1568f": "CoBlocks",
-  "b6400a2bc881d3d4d046eb34fb6486a7": "https://coblocks.com",
   "da16db9821d2ff9df584d65bef56f9d3": "CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.",
   "ab0a2ad2de4a8df6663bbcb8fd532f46": "GoDaddy",
   "14f0fd22288f6490c67087be904ab544": "https://www.godaddy.com",
@@ -237,7 +236,7 @@
   "a76d4ef5f3f6a672bbfab2865563e530": "Time",
   "b311a3fe13ac9b0ee02985f4759a2e46": "Morning",
   "31d0ff0ae8611ca7f4ffc11349067cf7": "Afternoon",
-  "7a6adea672736ea9d702f332fce97628": "Special Notes",
+  "6c73235c8bab3c46afa1d65fde0908c6": "Special notes",
   "c730da47033df7e9e74221c8aa1419e6": "Book Appointment",
   "361e32b1c1ed39d9001688f6d71b9e46": "%s is not a valid email address.",
   "7c58712f87bd36e0eca90b8cc8c97560": "%s and %s are not valid email addresses.",
@@ -323,7 +322,6 @@
   "46b3931b9959c927df4fc65fdee94b07": "about",
   "2f8a6bf31f3bd67bd2d9720c58b19c9a": "contact",
   "e6435d481bfa59849a0d3a36769fc265": "Subject example",
-  "6c73235c8bab3c46afa1d65fde0908c6": "Special notes",
   "225bf3d9290b5f536b2e442259e78652": "Carousel",
   "33875e53bf53bf6c23488b35b28f8c9b": "image %1$d of %2$d in gallery",
   "a62100d1067abe19f191cd84695e0f8f": "Write gallery caption…",

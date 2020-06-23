@@ -1,11 +1,12 @@
 /**
  * Internal dependencies
  */
-import edit from './edit';
 import deprecated from './deprecated';
+import edit from './edit';
 import icon from './icon';
 import metadata from './block.json';
 import save from './save';
+import { hasFormattingCategory } from '../../utils/block-helpers';
 
 /**
  * WordPress dependencies
@@ -17,6 +18,7 @@ import { __ } from '@wordpress/i18n';
  */
 export const DEFAULT_ICON_SIZE = 60;
 
+
 /**
  * Block constants
  */
@@ -27,6 +29,7 @@ const settings = {
 	title: __( 'Icon', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add a stylized graphic symbol to communicate something more.', 'coblocks' ),
+	category: hasFormattingCategory ? 'common' : 'design',
 	icon,
 	keywords: [
 		'coblocks',

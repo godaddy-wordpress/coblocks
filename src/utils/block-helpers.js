@@ -41,3 +41,11 @@ export const supportsCollections = () => {
 	return false;
 };
 
+/**
+ * Check for which category to assign.
+ *
+ * @return {boolean} Value to indicate function support.
+ */
+export const hasFormattingCategory = wp.blocks.getCategories().some( function( category ) {
+	return category.slug === 'formatting';
+} );
