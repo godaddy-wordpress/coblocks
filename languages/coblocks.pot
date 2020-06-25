@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-06-25T18:33:13+00:00\n"
+"POT-Creation-Date: 2020-06-25T18:42:51+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -34,34 +34,27 @@ msgstr ""
 
 #: class-coblocks.php:81
 #: class-coblocks.php:93
-#: wordpress_latest/wp-content/plugins/coblocks/class-coblocks.php:82
-#: wordpress_latest/wp-content/plugins/coblocks/class-coblocks.php:94
 msgid "Something went wrong."
 msgstr ""
 
 #: includes/admin/class-coblocks-action-links.php:41
-#: wordpress_latest/wp-content/plugins/coblocks/includes/admin/class-coblocks-action-links.php:41
 msgid "Review CoBlocks on WordPress.org"
 msgstr ""
 
 #: includes/admin/class-coblocks-action-links.php:41
-#: wordpress_latest/wp-content/plugins/coblocks/includes/admin/class-coblocks-action-links.php:41
 msgid "Leave a Review"
 msgstr ""
 
 #. translators: placeholder for email shortcode.
 #: includes/class-coblocks-form.php:51
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-form.php:51
 msgid "Form submission from [%1$s]"
 msgstr ""
 
 #: includes/class-coblocks-form.php:77
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-form.php:77
 msgid "Google reCaptcha site key for form spam protection"
 msgstr ""
 
 #: includes/class-coblocks-form.php:89
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-form.php:89
 msgid "Google reCaptcha secret key for form spam protection"
 msgstr ""
 
@@ -69,8 +62,6 @@ msgstr ""
 #. translators: icon label
 #: includes/class-coblocks-form.php:217
 #: includes/class-coblocks-form.php:306
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-form.php:217
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-form.php:306
 #: src/blocks/form/fields/email/index.js:21
 #: src/blocks/form/fields/email/index.js:34
 #: src/blocks/icon/deprecated/svgs.js:688
@@ -82,26 +73,22 @@ msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:246
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-form.php:246
 #: src/blocks/form/fields/name/index.js:21
 #: src/blocks/form/fields/name/index.js:46
 msgid "Name"
 msgstr ""
 
 #: includes/class-coblocks-form.php:250
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-form.php:250
 #: src/blocks/form/fields/name/index.js:33
 msgid "First"
 msgstr ""
 
 #: includes/class-coblocks-form.php:251
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-form.php:251
 #: src/blocks/form/fields/name/index.js:37
 msgid "Last"
 msgstr ""
 
 #: includes/class-coblocks-form.php:336
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-form.php:336
 #: src/blocks/form/fields/textarea/index.js:21
 msgid "Message"
 msgstr ""
@@ -109,7 +96,6 @@ msgstr ""
 #. translators: block name
 #. translators: block style
 #: includes/class-coblocks-form.php:367
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-form.php:367
 #: src/blocks/form/fields/text/index.js:21
 #: src/blocks/form/fields/text/index.js:34
 #: src/blocks/share/index.js:46
@@ -119,7 +105,6 @@ msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:408
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-form.php:408
 #: src/blocks/form/fields/date/index.js:21
 #: src/blocks/form/fields/date/index.js:34
 msgid "Date"
@@ -127,14 +112,12 @@ msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:439
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-form.php:439
 #: src/blocks/form/fields/phone/index.js:21
 #: src/blocks/form/fields/phone/index.js:34
 msgid "Phone"
 msgstr ""
 
 #: includes/class-coblocks-form.php:478
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-form.php:478
 #: src/blocks/form/fields/radio/index.js:21
 msgid "Choose one"
 msgstr ""
@@ -142,8 +125,6 @@ msgstr ""
 #. translators: block name
 #: includes/class-coblocks-form.php:540
 #: includes/class-coblocks-form.php:589
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-form.php:540
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-form.php:589
 #: src/blocks/form/fields/select/index.js:21
 #: src/blocks/form/fields/select/index.js:38
 msgid "Select"
@@ -151,7 +132,6 @@ msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:642
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-form.php:642
 #: src/blocks/form/fields/website/index.js:21
 #: src/blocks/form/fields/website/index.js:34
 msgid "Website"
@@ -159,7 +139,6 @@ msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:676
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-form.php:676
 #: src/blocks/form/fields/hidden/index.js:21
 #: src/blocks/form/fields/hidden/index.js:34
 msgid "Hidden"
@@ -167,7 +146,6 @@ msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:755
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-form.php:755
 #: src/blocks/form/edit.js:141
 #: src/blocks/form/fields/submit-button/index.js:21
 #: src/blocks/form/fields/submit-button/index.js:29
@@ -176,7 +154,6 @@ msgid "Submit"
 msgstr ""
 
 #: includes/class-coblocks-form.php:986
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-form.php:986
 #: src/blocks/form/edit.js:302
 msgid "name"
 msgstr ""
@@ -184,7 +161,6 @@ msgstr ""
 #. translators: block keyword
 #. translators: icon keyword
 #: includes/class-coblocks-form.php:998
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-form.php:998
 #: src/blocks/form/edit.js:296
 #: src/blocks/form/fields/name/index.js:53
 #: src/blocks/form/index.js:43
@@ -199,12 +175,10 @@ msgid "email"
 msgstr ""
 
 #: includes/class-coblocks-form.php:1043
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-form.php:1043
 msgid "Your message was sent:"
 msgstr ""
 
 #: includes/class-coblocks-google-map-block.php:120
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-google-map-block.php:120
 msgid "Google Map API key for map rendering"
 msgstr ""
 
@@ -213,145 +187,118 @@ msgid "Setting use to disable or enable layout selector controls across the site
 msgstr ""
 
 #: includes/class-coblocks-settings.php:113
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-settings.php:101
 msgid "Setting use to disable or enable typography controls across the site."
 msgstr ""
 
 #: includes/class-coblocks-settings.php:125
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-settings.php:113
 msgid "Setting use to disable or enable custom color controls across the site."
 msgstr ""
 
 #: includes/class-coblocks-settings.php:137
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-settings.php:125
 msgid "Setting use to disable or enable all color controls across the site."
 msgstr ""
 
 #: includes/class-coblocks-settings.php:149
-#: wordpress_latest/wp-content/plugins/coblocks/includes/class-coblocks-settings.php:137
 msgid "Setting use to disable or enable gradient controls and presets across the site."
 msgstr ""
 
 #: src/blocks/events/index.php:122
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/events/index.php:122
 msgid "An error has occurred, check for calendar privileges to make sure it is public or try again later."
 msgstr ""
 
 #: src/blocks/post-carousel/index.php:40
 #: src/blocks/posts/index.php:40
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/post-carousel/index.php:40
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/posts/index.php:40
 msgid "RSS error:"
 msgstr ""
 
 #: src/blocks/post-carousel/index.php:51
 #: src/blocks/posts/index.php:51
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/post-carousel/index.php:51
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/posts/index.php:51
 msgid "An error has occurred, which probably means the feed is down. Try again later."
 msgstr ""
 
 #: src/blocks/post-carousel/index.php:184
 #: src/blocks/posts/index.php:173
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/post-carousel/index.php:184
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/posts/index.php:173
 msgctxt "placeholder when a post has no title"
 msgid "(no title)"
 msgstr ""
 
 #: src/blocks/share/index.php:132
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/share/index.php:132
 #: src/blocks/share/edit.js:132
 msgid "Share on Facebook"
 msgstr ""
 
 #: src/blocks/share/index.php:136
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/share/index.php:136
 #: src/blocks/share/edit.js:148
 msgid "Share on Twitter"
 msgstr ""
 
 #: src/blocks/share/index.php:140
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/share/index.php:140
 #: src/blocks/share/edit.js:164
 msgid "Share on Pinterest"
 msgstr ""
 
 #: src/blocks/share/index.php:144
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/share/index.php:144
 msgid "Share on Linkedin"
 msgstr ""
 
 #: src/blocks/share/index.php:148
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/share/index.php:148
 #: src/blocks/share/edit.js:196
 msgid "Share via Email"
 msgstr ""
 
 #: src/blocks/share/index.php:152
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/share/index.php:152
 #: src/blocks/share/edit.js:212
 msgid "Share on Tumblr"
 msgstr ""
 
 #: src/blocks/share/index.php:156
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/share/index.php:156
 #: src/blocks/share/edit.js:228
 msgid "Share on Google"
 msgstr ""
 
 #: src/blocks/share/index.php:160
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/share/index.php:160
 #: src/blocks/share/edit.js:244
 msgid "Share on Reddit"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:68
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/social-profiles/index.php:67
 #: src/blocks/share/inspector.js:162
 #: src/blocks/social-profiles/edit.js:159
 msgid "Facebook"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:72
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/social-profiles/index.php:71
 #: src/blocks/share/inspector.js:157
 #: src/blocks/social-profiles/edit.js:205
 msgid "Twitter"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:76
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/social-profiles/index.php:75
 #: src/blocks/social-profiles/edit.js:251
 msgid "Instagram"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:80
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/social-profiles/index.php:79
 #: src/blocks/share/inspector.js:167
 #: src/blocks/social-profiles/edit.js:299
 msgid "Pinterest"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:84
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/social-profiles/index.php:83
 msgid "Linkedin"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:89
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/social-profiles/index.php:88
 #: src/blocks/social-profiles/edit.js:393
 msgid "YouTube"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:93
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/social-profiles/index.php:92
 #: src/blocks/social-profiles/edit.js:439
 msgid "Yelp"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:97
-#: wordpress_latest/wp-content/plugins/coblocks/src/blocks/social-profiles/index.php:96
 #: src/blocks/social-profiles/edit.js:485
 msgid "Houzz"
 msgstr ""
