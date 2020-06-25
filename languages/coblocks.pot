@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-06-21T15:17:16+00:00\n"
+"POT-Creation-Date: 2020-06-25T15:56:56+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -98,8 +98,8 @@ msgstr ""
 #: includes/class-coblocks-form.php:367
 #: src/blocks/form/fields/text/index.js:21
 #: src/blocks/form/fields/text/index.js:34
-#: src/blocks/share/index.js:44
-#: src/blocks/social-profiles/index.js:49
+#: src/blocks/share/index.js:46
+#: src/blocks/social-profiles/index.js:51
 msgid "Text"
 msgstr ""
 
@@ -438,7 +438,7 @@ msgid "Text color"
 msgstr ""
 
 #. translators: Add a child element for the Accordion block
-#: src/blocks/accordion/edit.js:77
+#: src/blocks/accordion/edit.js:114
 msgid "Add accordion item"
 msgstr ""
 
@@ -673,7 +673,7 @@ msgstr ""
 #. translators: icon keyword
 #: src/blocks/click-to-tweet/index.js:30
 #: src/blocks/icon/svgs.js:656
-#: src/blocks/social-profiles/index.js:28
+#: src/blocks/social-profiles/index.js:30
 msgid "share"
 msgstr ""
 
@@ -1275,7 +1275,7 @@ msgstr ""
 
 #: src/blocks/food-and-drinks/inspector.js:66
 #: src/blocks/map/inspector.js:105
-#: src/blocks/posts/inspector.js:246
+#: src/blocks/posts/inspector.js:248
 #: src/blocks/row/inspector.js:130
 #: src/blocks/services/inspector.js:34
 msgid "Styles"
@@ -1802,7 +1802,7 @@ msgstr ""
 
 #. translators: block name
 #: src/blocks/gallery-carousel/edit.js:244
-#: src/blocks/gallery-carousel/index.js:29
+#: src/blocks/gallery-carousel/index.js:30
 msgid "Carousel"
 msgstr ""
 
@@ -1819,26 +1819,26 @@ msgid "Write gallery caption…"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/gallery-carousel/index.js:31
+#: src/blocks/gallery-carousel/index.js:32
 msgid "Display multiple images in a beautiful carousel gallery."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/gallery-carousel/index.js:37
-#: src/blocks/gallery-collage/index.js:36
-#: src/blocks/gallery-masonry/index.js:36
-#: src/blocks/gallery-offset/index.js:36
-#: src/blocks/gallery-stacked/index.js:36
-msgid "gallery"
-msgstr ""
-
-#. translators: block keyword
-#. translators: icon keyword
 #: src/blocks/gallery-carousel/index.js:39
 #: src/blocks/gallery-collage/index.js:38
 #: src/blocks/gallery-masonry/index.js:38
 #: src/blocks/gallery-offset/index.js:38
 #: src/blocks/gallery-stacked/index.js:38
+msgid "gallery"
+msgstr ""
+
+#. translators: block keyword
+#. translators: icon keyword
+#: src/blocks/gallery-carousel/index.js:41
+#: src/blocks/gallery-collage/index.js:40
+#: src/blocks/gallery-masonry/index.js:40
+#: src/blocks/gallery-offset/index.js:40
+#: src/blocks/gallery-stacked/index.js:40
 #: src/blocks/icon/deprecated/svgs.js:204
 #: src/blocks/icon/svgs.js:183
 msgid "photos"
@@ -1916,7 +1916,7 @@ msgid "Responsive height"
 msgstr ""
 
 #: src/blocks/gallery-collage/edit.js:181
-#: src/blocks/map/edit.js:341
+#: src/blocks/map/edit.js:312
 #: src/components/block-gallery/gallery-image.js:226
 msgid "Apply"
 msgstr ""
@@ -1929,18 +1929,18 @@ msgid "Write caption…"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gallery-collage/index.js:29
+#: src/blocks/gallery-collage/index.js:30
 msgid "Collage"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/gallery-collage/index.js:31
+#: src/blocks/gallery-collage/index.js:32
 msgid "Assemble images into a beautiful collage gallery."
 msgstr ""
 
 #. translators: block style
 #. translators: typography style
-#: src/blocks/gallery-collage/index.js:44
+#: src/blocks/gallery-collage/index.js:46
 #: src/blocks/logos/index.js:43
 #: src/components/font-family/index.js:16
 #: src/components/typography-controls/index.js:103
@@ -1952,12 +1952,12 @@ msgid "Default"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/gallery-collage/index.js:50
+#: src/blocks/gallery-collage/index.js:52
 msgid "Tiled"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/gallery-collage/index.js:55
+#: src/blocks/gallery-collage/index.js:57
 msgid "Layered"
 msgstr ""
 
@@ -2001,18 +2001,18 @@ msgstr ""
 
 #. translators: block name
 #: src/blocks/gallery-masonry/edit.js:180
-#: src/blocks/gallery-masonry/index.js:29
+#: src/blocks/gallery-masonry/index.js:30
 msgid "Masonry"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/gallery-masonry/index.js:31
+#: src/blocks/gallery-masonry/index.js:32
 msgid "Display multiple images in an organized masonry gallery."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/gallery-masonry/index.js:40
-#: src/blocks/gallery-stacked/index.js:40
+#: src/blocks/gallery-masonry/index.js:42
+#: src/blocks/gallery-stacked/index.js:42
 msgid "lightbox"
 msgstr ""
 
@@ -2026,12 +2026,12 @@ msgstr ""
 
 #. translators: block name
 #: src/blocks/gallery-offset/edit.js:163
-#: src/blocks/gallery-offset/index.js:29
+#: src/blocks/gallery-offset/index.js:30
 msgid "Offset"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/gallery-offset/index.js:31
+#: src/blocks/gallery-offset/index.js:32
 msgid "Display images in an offset brick pattern gallery."
 msgstr ""
 
@@ -2042,13 +2042,13 @@ msgstr ""
 #. translators: block name
 #. translators: block style
 #: src/blocks/gallery-stacked/edit.js:168
-#: src/blocks/gallery-stacked/index.js:29
+#: src/blocks/gallery-stacked/index.js:30
 #: src/blocks/posts/edit.js:49
 msgid "Stacked"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/gallery-stacked/index.js:31
+#: src/blocks/gallery-stacked/index.js:32
 msgid "Display multiple images in a single column stacked gallery."
 msgstr ""
 
@@ -2089,17 +2089,17 @@ msgid "Search for gifs"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gif/index.js:21
+#: src/blocks/gif/index.js:22
 msgid "Gif"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/gif/index.js:23
+#: src/blocks/gif/index.js:24
 msgid "Pick a gif, any gif."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/gif/index.js:28
+#: src/blocks/gif/index.js:30
 msgid "animated"
 msgstr ""
 
@@ -2136,18 +2136,18 @@ msgid "Loading Gist"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gist/index.js:23
+#: src/blocks/gist/index.js:24
 msgid "Gist"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/gist/index.js:25
+#: src/blocks/gist/index.js:26
 msgid "Embed GitHub gists by adding a gist link."
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/gist/index.js:31
+#: src/blocks/gist/index.js:33
 #: src/blocks/icon/deprecated/svgs.js:462
 #: src/blocks/icon/svgs.js:440
 msgid "code"
@@ -3246,7 +3246,7 @@ msgstr ""
 #. translators: block keyword
 #: src/blocks/icon/deprecated/svgs.js:680
 #: src/blocks/icon/svgs.js:658
-#: src/blocks/share/index.js:27
+#: src/blocks/share/index.js:29
 msgid "social"
 msgstr ""
 
@@ -4050,30 +4050,30 @@ msgstr ""
 
 #. translators: block name
 #. translators: block style
-#: src/blocks/icon/index.js:27
-#: src/blocks/share/index.js:38
-#: src/blocks/social-profiles/index.js:43
+#: src/blocks/icon/index.js:29
+#: src/blocks/share/index.js:40
+#: src/blocks/social-profiles/index.js:45
 msgid "Icon"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/icon/index.js:29
+#: src/blocks/icon/index.js:31
 msgid "Add a stylized graphic symbol to communicate something more."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/icon/index.js:35
-#: src/blocks/social-profiles/index.js:32
+#: src/blocks/icon/index.js:38
+#: src/blocks/social-profiles/index.js:34
 msgid "icons"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/icon/index.js:41
+#: src/blocks/icon/index.js:44
 msgid "Outlined"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/icon/index.js:47
+#: src/blocks/icon/index.js:50
 msgid "Filled"
 msgstr ""
 
@@ -5301,7 +5301,6 @@ msgid "Logos & Badges"
 msgstr ""
 
 #: src/blocks/logos/edit.js:62
-#: src/components/block-gallery/gallery-placeholder.js:154
 msgid "Drag images, upload new ones or select files from your library."
 msgstr ""
 
@@ -5355,24 +5354,24 @@ msgstr ""
 msgid "Google Map"
 msgstr ""
 
-#: src/blocks/map/edit.js:246
+#: src/blocks/map/edit.js:238
 msgid "Invalid API key, or too many requests"
 msgstr ""
 
-#: src/blocks/map/edit.js:311
+#: src/blocks/map/edit.js:282
 msgid "Google map"
 msgstr ""
 
-#: src/blocks/map/edit.js:312
+#: src/blocks/map/edit.js:283
 msgid "Enter a location or address to drop a pin on a Google map."
 msgstr ""
 
-#: src/blocks/map/edit.js:322
+#: src/blocks/map/edit.js:293
 msgid "Search for a place or address…"
 msgstr ""
 
-#: src/blocks/map/edit.js:353
-#: src/blocks/map/edit.js:364
+#: src/blocks/map/edit.js:324
+#: src/blocks/map/edit.js:335
 msgid "Cancel"
 msgstr ""
 
@@ -5758,8 +5757,8 @@ msgstr ""
 msgid "External feed"
 msgstr ""
 
-#: src/blocks/post-carousel/inspector.js:122
-#: src/blocks/posts/inspector.js:233
+#: src/blocks/post-carousel/inspector.js:124
+#: src/blocks/posts/inspector.js:235
 msgid "Number of posts"
 msgstr ""
 
@@ -6318,30 +6317,30 @@ msgid "Add Reddit share button"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/share/index.js:20
+#: src/blocks/share/index.js:21
 msgid "Share"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/share/index.js:22
+#: src/blocks/share/index.js:23
 msgid "Add social sharing links to help you get likes and shares."
 msgstr ""
 
 #. translators: block style
-#: src/blocks/share/index.js:33
-#: src/blocks/social-profiles/index.js:38
+#: src/blocks/share/index.js:35
+#: src/blocks/social-profiles/index.js:40
 msgid "Mask"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/share/index.js:49
-#: src/blocks/social-profiles/index.js:54
+#: src/blocks/share/index.js:51
+#: src/blocks/social-profiles/index.js:56
 msgid "Icon & Text"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/share/index.js:54
-#: src/blocks/social-profiles/index.js:59
+#: src/blocks/share/index.js:56
+#: src/blocks/social-profiles/index.js:61
 #: src/extensions/button-styles/index.js:11
 msgid "Circular"
 msgstr ""
@@ -6462,17 +6461,17 @@ msgid "https://houzz.com/"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/social-profiles/index.js:21
+#: src/blocks/social-profiles/index.js:22
 msgid "Social Profiles"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/social-profiles/index.js:23
+#: src/blocks/social-profiles/index.js:24
 msgid "Grow your audience with links to social media profiles."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/social-profiles/index.js:30
+#: src/blocks/social-profiles/index.js:32
 msgid "links"
 msgstr ""
 
@@ -6653,11 +6652,6 @@ msgstr ""
 
 #: src/components/block-gallery/gallery-link-settings.js:76
 msgid "Link to"
-msgstr ""
-
-#. translators: %s: Type of gallery
-#: src/components/block-gallery/gallery-placeholder.js:151
-msgid "%s Gallery"
 msgstr ""
 
 #. translators: visual style option
