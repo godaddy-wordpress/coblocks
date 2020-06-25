@@ -93,28 +93,44 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 		const hasStackedControl = hasBlockSupport( name, 'stackedOnMobile' );
 		const withBlockSpacing = hasBlockSupport( name, 'coBlocksSpacing' );
 
+		const handleMargins = ( target ) => {
+			const innerAlignmentBlock = target.querySelector( '.wp-block[data-align]' );
+			const setInnerAlignmentBlock = ( margin, val ) => {
+				if ( !! innerAlignmentBlock ) {
+					innerAlignmentBlock.style[ margin ] = val;
+				}
+			};
+			switch ( target.outerHTML.includes( 'data-coblocks-bottom-spacing' ) ) {
+				case true:
+					target.style.marginBottom = 0;
+					setInnerAlignmentBlock( 'marginBottom', 0 );
+					break;
+				case false:
+					target.style.marginBottom = null;
+					setInnerAlignmentBlock( 'marginBottom', null );
+					break;
+			}
+			switch ( target.outerHTML.includes( 'data-coblocks-top-spacing' ) ) {
+				case true:
+					target.style.marginTop = 0;
+					setInnerAlignmentBlock( 'marginTop', 0 );
+					break;
+				case false:
+					target.style.marginTop = null;
+					setInnerAlignmentBlock( 'marginTop', null );
+
+					break;
+			}
+		};
+
 		useEffect( ( ) => {
 			// Check if alignment wrapper has been applied - Gutenberg 8.2.1
 			if ( !! document.getElementsByClassName( 'block-editor-block-list__layout is-root-container' ).length ) {
-				const targetElems = document.querySelectorAll( '.block-editor-block-list__layout .wp-block[data-align]' );
+				const targetElems = document.querySelectorAll( '.block-editor-block-list__layout' );
 				targetElems.forEach( ( elem ) => {
-					const wrapper = elem.closest( '.wp-block' );
-					switch ( wrapper.innerHTML.includes( 'data-coblocks-bottom-spacing' ) ) {
-						case true:
-							wrapper.style.marginBottom = 0;
-							break;
-						case false:
-							wrapper.style.marginBottom = null;
-							break;
-					}
-					switch ( wrapper.innerHTML.includes( 'data-coblocks-top-spacing' ) ) {
-						case true:
-							wrapper.style.marginTop = 0;
-							break;
-						case false:
-							wrapper.style.marginTop = null;
-							break;
-					}
+					elem.childNodes.forEach( ( child ) => {
+						handleMargins( child );
+					} );
 				} );
 			}
 		}, [ noBottomMargin, noTopMargin ] );
