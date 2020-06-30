@@ -8,10 +8,10 @@ import classnames from 'classnames';
  */
 import { __ } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
-import { Fragment } from '@wordpress/element';
 import { withSelect } from '@wordpress/data';
 import { hasBlockSupport } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
+import { Fragment, useEffect } from '@wordpress/element';
 import { InspectorAdvancedControls } from '@wordpress/block-editor';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
@@ -92,6 +92,48 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 
 		const hasStackedControl = hasBlockSupport( name, 'stackedOnMobile' );
 		const withBlockSpacing = hasBlockSupport( name, 'coBlocksSpacing' );
+
+		const handleMargins = ( target ) => {
+			const innerAlignmentBlock = target.querySelector( '.wp-block[data-align]' );
+			const setInnerAlignmentBlock = ( margin, val ) => {
+				if ( !! innerAlignmentBlock ) {
+					innerAlignmentBlock.style[ margin ] = val;
+				}
+			};
+			switch ( target.outerHTML.includes( 'data-coblocks-bottom-spacing' ) ) {
+				case true:
+					target.style.marginBottom = 0;
+					setInnerAlignmentBlock( 'marginBottom', 0 );
+					break;
+				case false:
+					target.style.marginBottom = null;
+					setInnerAlignmentBlock( 'marginBottom', null );
+					break;
+			}
+			switch ( target.outerHTML.includes( 'data-coblocks-top-spacing' ) ) {
+				case true:
+					target.style.marginTop = 0;
+					setInnerAlignmentBlock( 'marginTop', 0 );
+					break;
+				case false:
+					target.style.marginTop = null;
+					setInnerAlignmentBlock( 'marginTop', null );
+
+					break;
+			}
+		};
+
+		useEffect( ( ) => {
+			// Check if alignment wrapper has been applied - Gutenberg 8.2.1
+			if ( !! document.getElementsByClassName( 'block-editor-block-list__layout is-root-container' ).length ) {
+				const targetElems = document.querySelectorAll( '.block-editor-block-list__layout' );
+				targetElems.forEach( ( elem ) => {
+					elem.childNodes.forEach( ( child ) => {
+						handleMargins( child );
+					} );
+				} );
+			}
+		}, [ noBottomMargin, noTopMargin ] );
 
 		return (
 			<Fragment>
@@ -215,7 +257,7 @@ const enhance = compose(
 			selected: select( 'core/block-editor' ).getSelectedBlock(),
 			select,
 		};
-	} )
+	} ),
 );
 
 const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
@@ -262,62 +304,9 @@ const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 			};
 		}
 
-		// Check if alignment wrapper has been applied - Gutenberg 8.2.1
-		if ( !! document.getElementsByClassName( 'block-editor-block-list__layout is-root-container' ).length ) {
-			handleEditorAdvancedMargin();
-		}
-
 		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
 	} );
 }, 'addEditorBlockAttributes' );
-
-const handleEditorAdvancedMargin = ( ) => {
-	const handleChanges = ( targetedElem ) => {
-		if ( targetedElem.className.includes( 'wp-block' ) ) {
-			switch ( targetedElem.innerHTML.includes( 'data-coblocks-bottom-spacing' ) ) {
-				case true:
-					targetedElem.style.marginBottom = 0;
-					break;
-				case false:
-					targetedElem.style.marginBottom = null;
-					break;
-			}
-
-			switch ( targetedElem.innerHTML.includes( 'data-coblocks-top-spacing' ) ) {
-				case true:
-					targetedElem.style.marginTop = 0;
-					break;
-				case false:
-					targetedElem.style.marginTop = null;
-					break;
-			}
-		}
-	};
-
-	const targetNode = document.getElementsByClassName( 'block-editor-block-list__layout is-root-container' )[ 0 ];
-	const config = { attributes: true, childList: true, subtree: true };
-	const callback = function( mutationsList ) {
-		for ( const mutation of mutationsList ) {
-			if ( mutation.type === 'childList' ) {
-				if ( ! ( mutation.previousSibling instanceof HTMLElement ) ) {
-					continue;
-				}
-				if ( mutation.previousSibling.className.includes( 'wp-block' ) ) {
-					handleChanges( mutation.previousSibling );
-				}
-			}
-			if ( mutation.type === 'attributes' && 
-			( mutation.attributeName === 'data-coblocks-bottom-spacing' || mutation.attributeName === 'data-coblocks-top-spacing' ) ) {
-				if ( ! ( mutation.target.parentElement instanceof HTMLElement ) ) {
-					continue;
-				}
-				handleChanges( mutation.target.parentElement );
-			}
-		}
-	};
-	const observer = new MutationObserver( callback );
-	observer.observe( targetNode, config );
-};
 
 addFilter(
 	'blocks.registerBlockType',

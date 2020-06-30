@@ -1,15 +1,15 @@
 .has-small-padding {
-	padding: map-get($spacing, 1);
+	padding: var(--coblocks-spacing--1, map-get($spacing, 1));
 }
 
 .has-medium-padding {
-	padding: map-get($spacing, 2);
+	padding: var(--coblocks-spacing--2, map-get($spacing, 2));
 }
 
 .has-large-padding {
-	padding: map-get($spacing, 3);
+	padding: var(--coblocks-spacing--3, map-get($spacing, 3));
 }
 
 .has-huge-padding {
-	padding: map-get($spacing, 4);
+	padding: var(--coblocks-spacing--4, map-get($spacing, 4));
 }

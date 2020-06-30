@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/social-profiles",
-	"category": "common",
+	"category": "widgets",
 	"attributes": {
 		"align": {
 			"type": "string",
@@ -12,6 +12,10 @@
 		"hasColors": {
 			"type": "boolean",
 			"default": true
+		},
+		"opensInNewTab": {
+			"type": "boolean",
+			"default": false
 		},
 		"borderRadius": {
 			"type": "number",

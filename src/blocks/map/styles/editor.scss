@@ -111,6 +111,7 @@ $styles: (standard), (silver), (retro), (dark), (night), (aubergine);
 	.components-coblocks-map-styles__button {
 		align-items: center;
 		background: $white;
+		box-shadow: none;
 		border: 1px solid rgba(25, 30, 35, 0.2);
 		border-radius: 3px !important;
 		height: auto;

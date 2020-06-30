@@ -8,6 +8,7 @@ import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
 import { GalleryAttributes } from '../../components/block-gallery/shared';
+import { hasFormattingCategory } from '../../utils/block-helpers';
 
 /**
  * WordPress dependencies.
@@ -29,6 +30,7 @@ const settings = {
 	title: __( 'Collage', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Assemble images into a beautiful collage gallery.', 'coblocks' ),
+	category: hasFormattingCategory ? 'coblocks-galleries' : 'media',
 	icon,
 	keywords: [
 		'coblocks',

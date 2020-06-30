@@ -28,6 +28,7 @@ function coblocks_render_social_profiles_block( $attributes ) {
 	$background_color_style = is_array( $attributes ) && isset( $attributes['customBlockBackgroundColor'] ) ? 'style=background-color:' . $attributes['customBlockBackgroundColor'] : '';
 	$border_radius          = is_array( $attributes ) && isset( $attributes['borderRadius'] ) ? "border-radius: {$attributes['borderRadius']}px;" : '';
 	$has_padding            = is_array( $attributes ) && isset( $attributes['padding'] ) ? 'has-padding' : '';
+	$opens_in_new_tab       = is_array( $attributes ) && isset( $attributes['opensInNewTab'] ) && $attributes['opensInNewTab'];
 
 	$has_background          = '';
 	$background_color_class  = '';
@@ -101,12 +102,15 @@ function coblocks_render_social_profiles_block( $attributes ) {
 	// Start markup.
 	$markup = '';
 
+	// Set the social link target.
+	$link_target = $opens_in_new_tab ? 'target="_blank" rel="noopener noreferrer"' : '';
+
 	foreach ( $platforms as $id => $platform ) {
 
 		if ( isset( $attributes[ $id ] ) && $attributes[ $id ] ) {
 			$markup .= sprintf(
 				'<li>
-					<a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--%8$s %3$s %7$s %9$s %10$s %13$s" title="%2$s" style="%4$s%6$s%11$s%12$s">
+					<a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--%8$s %3$s %7$s %9$s %10$s %13$s" title="%2$s" style="%4$s%6$s%11$s%12$s" %14$s>
 						<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
 						<span class="wp-block-coblocks-social__text">%2$s</span>
 					</a>
@@ -123,7 +127,8 @@ function coblocks_render_social_profiles_block( $attributes ) {
 				esc_attr( $text_color_class ),
 				esc_attr( $custom_text_color ),
 				esc_attr( $padding ),
-				esc_attr( $has_padding )
+				esc_attr( $has_padding ),
+				$link_target
 			);
 		}
 	}

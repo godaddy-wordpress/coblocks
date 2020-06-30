@@ -19,6 +19,14 @@ const coblocksMap = {
 			mapAttributes = mapAttributes.replace( /\/q/g, '"' ).split( '||' );
 			const gmapAttr = JSON.parse( '{' + mapAttributes + '}' );
 
+			if (
+				gmapAttr.address === 'undefined' &&
+				gmapAttr.lat === 'undefined' &&
+				gmapAttr.lng === 'undefined'
+			) {
+				return;
+			}
+
 			let skin = self.mapStyles( gmapAttr.skin );
 			if ( typeof skin === 'undefined' ) {
 				skin = [];

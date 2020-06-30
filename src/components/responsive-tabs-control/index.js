@@ -46,12 +46,12 @@ class ResponsiveTabsControl extends Component {
 						{
 							name: 'desk',
 							title: icons.desktopChrome,
-							className: 'components-coblocks-responsive__tabs-item components-coblocks-responsive__tabs-item--desktop components-button is-button is-default is-secondary',
+							className: 'components-coblocks-responsive__tabs-item components-coblocks-responsive__tabs-item--desktop components-button is-button is-default',
 						},
 						{
 							name: 'mobile',
 							title: icons.mobile,
-							className: 'components-coblocks-responsive__tabs-item components-coblocks-responsive__tabs-item--mobile components-button is-button is-default is-secondary',
+							className: 'components-coblocks-responsive__tabs-item components-coblocks-responsive__tabs-item--mobile components-button is-button is-default',
 						},
 					] }>
 					{

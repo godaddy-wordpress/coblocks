@@ -8,9 +8,6 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 	 * Setup Gallery data
 	 */
 	const galleryData = {
-		fileName: '150x150.png',
-		imageBase: '150x150',
-		pathToFixtures: '../.dev/tests/cypress/fixtures/images/',
 		caption: 'Caption Here',
 	};
 
@@ -37,33 +34,24 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 	 * to successfully save the block without errors.
 	 */
 	it( 'Test carousel block saves with image upload.', function() {
-		const { fileName, imageBase, pathToFixtures } = galleryData;
+		const { imageBase } = helpers.upload.spec;
 		helpers.addBlockToPost( 'coblocks/gallery-carousel', true );
 
-		cy.get( '.wp-block[data-type="coblocks/gallery-carousel"]' )
-			.click();
+		cy.get( '.wp-block[data-type="coblocks/gallery-carousel"]' ).click();
 
-		cy.fixture( pathToFixtures + fileName, 'base64' ).then( ( fileContent ) => {
-			cy.get( 'div[data-type="coblocks/gallery-carousel"]' )
-				.find( 'div.components-drop-zone' ).first()
-				.upload(
-					{ fileContent, fileName, mimeType: 'image/png' },
-					{ subjectType: 'drag-n-drop', force: true, events: [ 'dragstart', 'dragover', 'drop' ] },
-				)
-				.wait( 2000 ); // Allow upload to finish.
+		helpers.upload.imageToBlock( 'coblocks/gallery-carousel' );
 
-			cy.get( 'div.coblocks-gallery--item' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
+		cy.get( 'div.coblocks-gallery--item img[src*="http"]' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
 
-			helpers.savePage();
+		helpers.savePage();
 
-			helpers.checkForBlockErrors( 'coblocks/gallery-carousel' );
+		helpers.checkForBlockErrors( 'coblocks/gallery-carousel' );
 
-			helpers.viewPage();
+		helpers.viewPage();
 
-			cy.get( 'div.coblocks-gallery--item' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
+		cy.get( 'div.coblocks-gallery--item' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
 
-			helpers.editPage();
-		} );
+		helpers.editPage();
 	} );
 
 	/**
