@@ -21,7 +21,7 @@ import gutterOptions from '../../utils/gutter-options';
 const blocksWithGutterSupport = [ 'core/group' ];
 
 /**
- * Add custom CoBlocks attributes to selected blocks
+ * Add custom CoBlocks gutter controls to selected blocks
  *
  * @param {Function} BlockEdit Original component.
  * @return {string} Wrapped component.
@@ -58,7 +58,7 @@ const withGutterControls = createHigherOrderComponent( ( BlockEdit ) => {
 }, 'withGutterControls' );
 
 /**
- * Add custom CoBlocks attributes to selected blocks
+ * Add custom CoBlocks editor gutter classes to selected blocks
  *
  * @param {Function} BlockEdit Original component.
  * @return {string} Wrapped component.
@@ -81,7 +81,7 @@ const withGutterClasses = createHigherOrderComponent( ( BlockListBlock ) => {
 }, 'withGutterClasses' );
 
 /**
- * Override props assigned to save component to inject attributes
+ * Override props assigned to save component to inject gutter classes.
  *
  * @param {Object} extraProps Additional props applied to save element.
  * @param {Object} blockType  Block type.
@@ -102,7 +102,7 @@ function applyGutterClass( extraProps, blockType, attributes ) {
 }
 
 /**
- * Filters registered block settings, extending attributes with settings
+ * Filters registered block settings, extends block with gutter attributes.
  *
  * @param {Object} settings Original block settings.
  * @return {Object} Filtered block settings.
@@ -115,7 +115,7 @@ function addAttributes( settings ) {
 			settings.attributes = Object.assign( settings.attributes, {
 				gutter: {
 					type: 'string',
-					default: 'medium',
+					default: 'no',
 				},
 			} );
 		}
@@ -124,7 +124,7 @@ function addAttributes( settings ) {
 	return settings;
 }
 
-addFilter( 'blocks.registerBlockType', 'coblocks/AdvancedControls/attributes', addAttributes );
-addFilter( 'editor.BlockEdit', 'coblocks/gutter-controls', withGutterControls );
-addFilter( 'editor.BlockListBlock', 'coblocks/gutter-controls', withGutterClasses );
-addFilter( 'blocks.getSaveContent.extraProps', 'coblocks/apply-gutter-class', applyGutterClass );
+addFilter( 'blocks.registerBlockType', 'coblocks/gutter-controls/block-attributes', addAttributes );
+addFilter( 'editor.BlockEdit', 'coblocks/gutter-controls/editor-controls', withGutterControls );
+addFilter( 'editor.BlockListBlock', 'coblocks/gutter-controls/editor-gutter-classes', withGutterClasses );
+addFilter( 'blocks.getSaveContent.extraProps', 'coblocks/gutter-controls/save-gutter-class', applyGutterClass );
