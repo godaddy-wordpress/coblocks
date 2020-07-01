@@ -1,0 +1,19 @@
+.has-small-gutter.wp-block-group > .wp-block-group__inner-container > *:not(.block-editor-inner-blocks) > *:not(.block-editor-inner-blocks) {
+    margin-right: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) - 0.6em) !important;
+    margin-left: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) - 0.6em) !important;
+}
+
+.has-medium-gutter.wp-block-group > .wp-block-group__inner-container > *:not(.block-editor-inner-blocks) > *:not(.block-editor-inner-blocks) {
+    margin-right: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) - 0.75em) !important;
+    margin-left: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) - 0.75em) !important;
+}
+
+.has-large-gutter.wp-block-group > .wp-block-group__inner-container > *:not(.block-editor-inner-blocks) > *:not(.block-editor-inner-blocks) {
+    margin-right: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) - 0.75em) !important;
+    margin-left: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) - 0.75em) !important;
+}
+
+.has-huge-gutter.wp-block-group > .wp-block-group__inner-container > *:not(.block-editor-inner-blocks) > *:not(.block-editor-inner-blocks) {
+    margin-right: var(--coblocks-spacing--4, map-get($spacing, 4)) !important;
+    margin-left: var(--coblocks-spacing--4, map-get($spacing, 4)) !important;
+}
