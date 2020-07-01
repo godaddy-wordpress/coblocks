@@ -1,15 +1,51 @@
-.has-small-padding {
-	padding: var(--coblocks-spacing--1, map-get($spacing, 1));
+.has-small-padding,
+.has-small-padding.wp-block-group,
+.has-small-padding.wp-block-group.has-background {
+	padding-left: var(--coblocks-spacing--1, map-get($spacing, 1));
 }
 
-.has-medium-padding {
+.has-medium-padding,
+.has-medium-padding.wp-block-group,
+.has-medium-padding.wp-block-group.has-background {
 	padding: var(--coblocks-spacing--2, map-get($spacing, 2));
 }
 
-.has-large-padding {
+.has-large-padding,
+.has-large-padding.wp-block-group,
+.has-large-padding.wp-block-group.has-background {
 	padding: var(--coblocks-spacing--3, map-get($spacing, 3));
 }
 
-.has-huge-padding {
+.has-huge-padding,
+.has-huge-padding.wp-block-group,
+.has-huge-padding.wp-block-group.has-background {
 	padding: var(--coblocks-spacing--4, map-get($spacing, 4));
+}
+
+.content-area__wrapper,
+.editor-styles-wrapper {
+
+	.has-small-padding,
+	.has-small-padding.wp-block-group,
+	.has-small-padding.wp-block-group.has-background {
+		padding: var(--coblocks-spacing--1, map-get($spacing, 1));
+	}
+	
+	.has-medium-padding,
+	.has-medium-padding.wp-block-group,
+	.has-medium-padding.wp-block-group.has-background {
+		padding: var(--coblocks-spacing--2, map-get($spacing, 2));
+	}
+
+	.has-large-padding,
+	.has-large-padding.wp-block-group,
+	.has-large-padding.wp-block-group.has-background {
+		padding: var(--coblocks-spacing--3, map-get($spacing, 3));
+	}
+
+	.has-huge-padding,
+	.has-huge-padding.wp-block-group,
+	.has-huge-padding.wp-block-group.has-background {
+		padding: var(--coblocks-spacing--4, map-get($spacing, 4));
+	}
 }
