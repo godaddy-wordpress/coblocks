@@ -2,17 +2,16 @@
  * External Dependencies
  */
 import classnames from 'classnames';
-import { lifecycle } from 'recompose';
 
 /**
  * WordPress Dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
-import { Fragment } from '@wordpress/element';
 import { withSelect } from '@wordpress/data';
 import { hasBlockSupport } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
+import { Fragment, useEffect } from '@wordpress/element';
 import { InspectorAdvancedControls } from '@wordpress/block-editor';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
@@ -93,6 +92,48 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 
 		const hasStackedControl = hasBlockSupport( name, 'stackedOnMobile' );
 		const withBlockSpacing = hasBlockSupport( name, 'coBlocksSpacing' );
+
+		const handleMargins = ( target ) => {
+			const innerAlignmentBlock = target.querySelector( '.wp-block[data-align]' );
+			const setInnerAlignmentBlock = ( margin, val ) => {
+				if ( !! innerAlignmentBlock ) {
+					innerAlignmentBlock.style[ margin ] = val;
+				}
+			};
+			switch ( target.outerHTML.includes( 'data-coblocks-bottom-spacing' ) ) {
+				case true:
+					target.style.marginBottom = 0;
+					setInnerAlignmentBlock( 'marginBottom', 0 );
+					break;
+				case false:
+					target.style.marginBottom = null;
+					setInnerAlignmentBlock( 'marginBottom', null );
+					break;
+			}
+			switch ( target.outerHTML.includes( 'data-coblocks-top-spacing' ) ) {
+				case true:
+					target.style.marginTop = 0;
+					setInnerAlignmentBlock( 'marginTop', 0 );
+					break;
+				case false:
+					target.style.marginTop = null;
+					setInnerAlignmentBlock( 'marginTop', null );
+
+					break;
+			}
+		};
+
+		useEffect( ( ) => {
+			// Check if alignment wrapper has been applied - Gutenberg 8.2.1
+			if ( !! document.getElementsByClassName( 'block-editor-block-list__layout is-root-container' ).length ) {
+				const targetElems = document.querySelectorAll( '.block-editor-block-list__layout' );
+				targetElems.forEach( ( elem ) => {
+					elem.childNodes.forEach( ( child ) => {
+						handleMargins( child );
+					} );
+				} );
+			}
+		}, [ noBottomMargin, noTopMargin ] );
 
 		return (
 			<Fragment>
@@ -217,41 +258,6 @@ const enhance = compose(
 			select,
 		};
 	} ),
-
-	/**
-	 * Using recompose lifecycle as an escape hatch to access component lifecycle methods.
-	 * Method will perform document mutations related to advanced editor margins.
-	 *
-	 * @return {Function} Enhanced component with modified lifecycle method.
-	 */
-	lifecycle( {
-		componentDidUpdate() {
-			// Check if alignment wrapper has been applied - Gutenberg 8.2.1
-			if ( !! document.getElementsByClassName( 'block-editor-block-list__layout is-root-container' ).length ) {
-				const targetElems = document.querySelectorAll( '.block-editor-block-list__layout .wp-block[data-align]' );
-				targetElems.forEach( ( elem ) => {
-					const wrapper = elem.closest( '.wp-block' );
-					switch ( wrapper.innerHTML.includes( 'data-coblocks-bottom-spacing' ) ) {
-						case true:
-							wrapper.style.marginBottom = 0;
-							break;
-						case false:
-							wrapper.style.marginBottom = null;
-							break;
-					}
-
-					switch ( wrapper.innerHTML.includes( 'data-coblocks-top-spacing' ) ) {
-						case true:
-							wrapper.style.marginTop = 0;
-							break;
-						case false:
-							wrapper.style.marginTop = null;
-							break;
-					}
-				} );
-			}
-		},
-	} )
 );
 
 const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {

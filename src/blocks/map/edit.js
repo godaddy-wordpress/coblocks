@@ -155,7 +155,7 @@ class Edit extends Component {
 			scaledSize: { width: iconSize, height: iconSize },
 		};
 
-		const GoogleMapIframeRender = (
+		const GoogleMapIframeRender = () => (
 			<Fragment>
 				<div
 					style={ { width: '100%', height, position: 'absolute' } }
@@ -213,97 +213,68 @@ class Edit extends Component {
 						showHandle={ isSelected }
 					>
 						{ !! this.state.apiKey
-							? compose(
-									withProps( {
-										googleMapURL:
-											`https://maps.googleapis.com/maps/api/js?key=${ this.state.apiKey }` +
-											`&language=${ locale }` +
-											'&v=3.exp&libraries=geometry,drawing,places',
-										loadingElement: (
-											<div style={ { height: '100%' } } />
-										),
-										containerElement: (
-											<div style={ { height: '100%' } } />
-										),
-										mapElement: (
-											<div style={ { height: '100%' } } />
-										),
-										coords: null,
-										props: this.props,
-									} ),
-									withScriptjs,
-									withGoogleMap,
-									lifecycle( {
-										componentDidMount() {
-											const geocoder = new window.google.maps.Geocoder();
-											geocoder.geocode(
-												{ address },
-												function( results, status ) {
-													if ( status !== 'OK' ) {
-														this.props.props.setAttributes(
-															{
-																pinned: false,
-																hasError: __(
-																	'Invalid API key, or too many requests',
-																	'coblocks'
-																),
-															}
-														);
-														return;
-													}
-
-													this.setState( {
-														coords: results[ 0 ].geometry.location.toJSON(),
-													} );
-
-													this.props.props.setAttributes(
-														{
-															lat: results[ 0 ].geometry.location
-																.toJSON()
-																.lat.toString(),
-															lng: results[ 0 ].geometry.location
-																.toJSON()
-																.lng.toString(),
-															hasError: '',
-														}
-													);
-												}.bind( this )
-											);
-										},
-									} )
-							  )( ( props ) => [
-									props.coords ? (
-										<GoogleMap
-											isMarkerShown={ true }
-											defaultZoom={
-												props.props.attributes.zoom
+							? ( compose(	withProps( {
+								googleMapURL:
+									`https://maps.googleapis.com/maps/api/js?key=${ this.state.apiKey }` +
+									`&language=${ locale }` +
+									'&v=3.exp&libraries=geometry,drawing,places',
+								loadingElement: <div style={ { height: '100%' } } />,
+								containerElement: <div style={ { height: '100%' } } />,
+								mapElement: <div style={ { height: '100%' } } />,
+								coords: null,
+								props: this.props,
+							} ),
+							withScriptjs,
+							withGoogleMap,
+							lifecycle( {
+								componentDidMount() {
+									const geocoder = new window.google.maps.Geocoder();
+									geocoder.geocode(
+										{ address },
+										function( results, status ) {
+											if ( status !== 'OK' ) {
+												this.props.props.setAttributes( {
+													pinned: false,
+													hasError: __( 'Invalid API key, or too many requests', 'coblocks' ),
+												} );
+												return;
 											}
-											defaultCenter={
-												new window.google.maps.LatLng(
-													props.coords
-												)
-											}
-											defaultOptions={ {
-												styles: GMapStyles[ skin ],
-												draggable: false,
-												mapTypeControl,
-												zoomControl,
-												streetViewControl,
-												fullscreenControl,
-											} }
-										>
-											<Marker
-												position={
-													new window.google.maps.LatLng(
-														props.coords
-													)
-												}
-												icon={ marker }
-											/>
-										</GoogleMap>
-									) : null,
-							  ] )
-							: GoogleMapIframeRender }
+
+											this.setState( {
+												coords: results[ 0 ].geometry.location.toJSON(),
+											} );
+
+											this.props.props.setAttributes( {
+												lat: results[ 0 ].geometry.location.toJSON().lat.toString(),
+												lng: results[ 0 ].geometry.location.toJSON().lng.toString(),
+												hasError: '',
+											} );
+										}.bind( this )
+									);
+								},
+							} )
+							)( ( props ) => [
+								props.coords ? (
+									<GoogleMap
+										isMarkerShown={ true }
+										defaultZoom={ props.props.attributes.zoom }
+										defaultCenter={ new window.google.maps.LatLng( props.coords ) }
+										defaultOptions={ {
+											styles: GMapStyles[ skin ],
+											draggable: false,
+											mapTypeControl,
+											zoomControl,
+											streetViewControl,
+											fullscreenControl,
+										} }
+									>
+										<Marker
+											position={ new window.google.maps.LatLng( props.coords ) }
+											icon={ marker }
+										/>
+									</GoogleMap>
+								) : null,
+							] ) )() : GoogleMapIframeRender() }
 					</ResizableBox>
 				) : (
 					<Placeholder

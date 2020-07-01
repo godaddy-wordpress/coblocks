@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -116,13 +116,18 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Enhancements
-* Social profiles: Open links in new tab [#1520](https://github.com/godaddy-wordpress/coblocks/pull/1520)
+* Tweak categories in support of new categories within the Gutenberg plugin [#1535](https://github.com/godaddy-wordpress/coblocks/pull/1535)
+* Update the Services block selected state [#1546](https://github.com/godaddy-wordpress/coblocks/pull/1546)
 
 ### Bug Fixes
-* Fix editor performance relating to advanced margins [#1543](https://github.com/godaddy-wordpress/coblocks/pull/1543)
-* Remove selected block outline for Shape Divider in G8.3+ [#1541](https://github.com/godaddy-wordpress/coblocks/pull/1541)
-* Fix primary/secondary buttons in custom components with Gutenberg active [#1532](https://github.com/godaddy-wordpress/coblocks/pull/1532)
-* Fix Services innerBlock based on column count [#1534](https://github.com/godaddy-wordpress/coblocks/pull/1534)
+* Add proper styling for the DimensionsControl in Gutenberg 8.3+ [#1544](https://github.com/godaddy-wordpress/coblocks/pull/1544)
+* Fix Accordion children block appender [#1545](https://github.com/godaddy-wordpress/coblocks/pull/1545)
+* Fix gallery captions and custom links disappearing [#1533](https://github.com/godaddy-wordpress/coblocks/pull/1533)
+* Fix Map block API issues [#1542](https://github.com/godaddy-wordpress/coblocks/pull/1542)
+* Fix Posts and PostCarousel error with the Gutenberg plugin [#1547](https://github.com/godaddy-wordpress/coblocks/pull/1547)
+* Improve consistency of advanced margin propagation [#1548](https://github.com/godaddy-wordpress/coblocks/pull/1548)
 
 ### Misc
-* Remove reference to coblocks.com [#1540](https://github.com/godaddy-wordpress/coblocks/pull/1540)
+* Add tests for the `alert` block save. [#1536](https://github.com/godaddy-wordpress/coblocks/pull/1536)
+* Fix unit tests by importing getCategories [#1552](https://github.com/godaddy-wordpress/coblocks/pull/1552)
+* Use React hooks to improve Advanced Margins feature [#1553](https://github.com/godaddy-wordpress/coblocks/pull/1553)
