@@ -7,7 +7,7 @@ const gutterOptions = [
 	{
 		value: 'no',
 		label: __( 'None', 'coblocks' ),
-		tooltip: __( 'None', 'coblocks' ),
+		shortName: __( 'None', 'coblocks' ),
 	},
 	{
 		value: 'small',
