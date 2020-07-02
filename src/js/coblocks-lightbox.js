@@ -44,7 +44,7 @@
 		const arrowLeft = document.createElement( 'div' );
 		arrowLeft.setAttribute( 'class', 'arrow-left' );
 
-		const images = document.querySelectorAll( `.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure img` );
+		const images = document.querySelectorAll( `.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure img, figure.has-lightbox.lightbox-${ lightboxIndex } > img` );
 		const captions = document.querySelectorAll( `.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure figcaption` );
 		let index;
 

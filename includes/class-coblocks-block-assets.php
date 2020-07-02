@@ -362,11 +362,19 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Lightbox.
-		if ( has_block( 'coblocks/gallery-masonry' ) || has_block( 'coblocks/gallery-stacked' ) || has_block( 'coblocks/gallery-collage' ) || has_block( 'coblocks/gallery-carousel' ) || has_block( 'coblocks/gallery-offset' ) || has_block( 'core/block' ) ) {
+		if ( has_block( 'coblocks/gallery-masonry' ) ||
+			has_block( 'coblocks/gallery-stacked' ) ||
+			has_block( 'coblocks/gallery-collage' ) ||
+			has_block( 'coblocks/gallery-carousel' ) ||
+			has_block( 'coblocks/gallery-offset' ) ||
+			has_block( 'core/gallery' ) ||
+			has_block( 'core/image' ) ||
+			has_block( 'core/block' ) )
+		{
 			wp_enqueue_script(
 				'coblocks-lightbox',
 				$dir . 'coblocks-lightbox.js',
-				array( 'jquery' ),
+				array( ),
 				COBLOCKS_VERSION,
 				true
 			);

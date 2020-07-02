@@ -18,6 +18,7 @@ import './extensions/button-styles';
 import './extensions/button-controls';
 import './extensions/image-styles';
 import './extensions/cover-styles';
+import './extensions/lightbox-controls';
 import './extensions/replace-image';
 import './extensions/image-crop';
 import './extensions/coblocks-settings/';
