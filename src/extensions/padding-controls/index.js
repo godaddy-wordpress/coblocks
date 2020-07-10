@@ -62,7 +62,7 @@ const withPaddingControls = createHigherOrderComponent( ( BlockEdit ) => {
 		const { name, attributes, setAttributes, isSelected } = props;
 		const { padding } = attributes;
 
-		const supportsPaddingControls = blocksWithPaddingSupport?.includes( name );
+		const supportsPaddingControls = blocksWithPaddingSupport.includes( name );
 		const panelTitle = startCase( name.split( '/' )[ 1 ] );
 		return (
 			<>
@@ -98,7 +98,7 @@ const withPaddingClasses = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
 		const { name, attributes } = props;
 		const { padding } = attributes;
-		const supportsPaddingControls = blocksWithPaddingSupport?.includes( name );
+		const supportsPaddingControls = blocksWithPaddingSupport.includes( name );
 
 		let wrapperProps;
 
@@ -121,7 +121,7 @@ const withPaddingClasses = createHigherOrderComponent( ( BlockListBlock ) => {
  * @return {Object} Filtered props applied to save element.
  */
 function applyPaddingClass( props, blockType, attributes ) {
-	const supportsPaddingControls = blocksWithPaddingSupport?.includes( blockType?.name );
+	const supportsPaddingControls = blocksWithPaddingSupport.includes( blockType?.name );
 
 	if ( supportsPaddingControls ) {
 		const { padding } = attributes;
@@ -139,7 +139,7 @@ function applyPaddingClass( props, blockType, attributes ) {
  * @return {Object} Filtered block settings.
  */
 function addAttributes( settings ) {
-	const supportsPaddingControls = blocksWithPaddingSupport?.includes( settings?.name );
+	const supportsPaddingControls = blocksWithPaddingSupport.includes( settings?.name );
 	// Add custom attribute
 	if ( supportsPaddingControls ) {
 		if ( ! settings?.attributes?.padding ) {
