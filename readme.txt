@@ -116,18 +116,8 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Enhancements
-* Tweak categories in support of new categories within the Gutenberg plugin [#1535](https://github.com/godaddy-wordpress/coblocks/pull/1535)
-* Update the Services block selected state [#1546](https://github.com/godaddy-wordpress/coblocks/pull/1546)
+* Introduce Padding Controls extension to core/group block [#1556](https://github.com/godaddy-wordpress/coblocks/pull/1556)
 
 ### Bug Fixes
-* Add proper styling for the DimensionsControl in Gutenberg 8.3+ [#1544](https://github.com/godaddy-wordpress/coblocks/pull/1544)
-* Fix Accordion children block appender [#1545](https://github.com/godaddy-wordpress/coblocks/pull/1545)
-* Fix gallery captions and custom links disappearing [#1533](https://github.com/godaddy-wordpress/coblocks/pull/1533)
-* Fix Map block API issues [#1542](https://github.com/godaddy-wordpress/coblocks/pull/1542)
-* Fix Posts and PostCarousel error with the Gutenberg plugin [#1547](https://github.com/godaddy-wordpress/coblocks/pull/1547)
-* Improve consistency of advanced margin propagation [#1548](https://github.com/godaddy-wordpress/coblocks/pull/1548)
-
-### Misc
-* Add tests for the `alert` block save. [#1536](https://github.com/godaddy-wordpress/coblocks/pull/1536)
-* Fix unit tests by importing getCategories [#1552](https://github.com/godaddy-wordpress/coblocks/pull/1552)
-* Use React hooks to improve Advanced Margins feature [#1553](https://github.com/godaddy-wordpress/coblocks/pull/1553)
+* Ensure extensions are applied properly to blocks [#1515](https://github.com/godaddy-wordpress/coblocks/pull/1515)
+* Fix focus mode issue within the Layout Selector [#1562](https://github.com/godaddy-wordpress/coblocks/pull/1562)
