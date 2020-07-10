@@ -89,6 +89,29 @@ const withPaddingControls = createHigherOrderComponent( ( BlockEdit ) => {
 }, 'withPaddingControls' );
 
 /**
+ * Add custom CoBlocks editor padding classes to selected blocks
+ *
+ * @param {Function} BlockEdit Original component.
+ * @return {string} Wrapped component.
+ */
+const withPaddingClasses = createHigherOrderComponent( ( BlockListBlock ) => {
+	return ( props ) => {
+		const { name, attributes } = props;
+		const { padding } = attributes;
+		const supportsPaddingControls = blocksWithPaddingSupport.includes( name );
+
+		let wrapperProps;
+
+		if ( supportsPaddingControls ) {
+			wrapperProps = props?.wrapperProps;
+			props.className = classnames( props.className, { [ `has-${ padding }-padding` ]: padding } );
+		}
+
+		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
+	};
+}, 'withPaddingClasses' );
+
+/**
  * Override props assigned to save component to inject padding classes.
  *
  * @param {Object} props Additional props applied to save element.
@@ -133,4 +156,5 @@ function addAttributes( settings ) {
 
 addFilter( 'blocks.registerBlockType', 'coblocks/padding-controls/block-attributes', addAttributes );
 addFilter( 'editor.BlockEdit', 'coblocks/padding-controls/editor-controls', withPaddingControls );
+// addFilter( 'editor.BlockListBlock', 'coblocks/padding-controls/editor-padding-classes', withPaddingClasses );
 addFilter( 'blocks.getSaveContent.extraProps', 'coblocks/padding-controls/save-padding-class', applyPaddingClass );
