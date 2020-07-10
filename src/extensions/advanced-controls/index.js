@@ -264,9 +264,9 @@ const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 	return enhance( ( { select, ...props } ) => {
 		let wrapperProps = props.wrapperProps;
 		let customData = {};
-		const attributes = select( 'core/block-editor' ).getBlock( props.clientId )
-			.attributes;
-		const blockName = select( 'core/block-editor' ).getBlockName( props.clientId );
+
+		const block = select( 'core/block-editor' ).getBlock( props.rootClientId || props.clientId );
+		const blockName = select( 'core/block-editor' ).getBlockName( props.rootClientId || props.clientId );
 
 		const withBlockSpacing = hasBlockSupport( blockName, 'coBlocksSpacing' );
 		let withAlignSupport = hasBlockSupport( blockName, 'align' );
@@ -275,8 +275,8 @@ const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 			withAlignSupport = true;
 		}
 
-		if ( withBlockSpacing ) {
-			const { noBottomMargin, noTopMargin } = attributes;
+		if ( withBlockSpacing && block?.attributes ) {
+			const { noBottomMargin, noTopMargin } = block.attributes;
 
 			if ( typeof noTopMargin !== 'undefined' && noTopMargin ) {
 				customData = Object.assign( customData, {
