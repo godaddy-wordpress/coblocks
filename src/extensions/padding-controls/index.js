@@ -101,13 +101,14 @@ const withPaddingClasses = createHigherOrderComponent( ( BlockListBlock ) => {
 		const supportsPaddingControls = blocksWithPaddingSupport.includes( name );
 
 		let wrapperProps;
+		let newClassName = props.className;
 
 		if ( supportsPaddingControls ) {
 			wrapperProps = props?.wrapperProps;
-			props.className = classnames( props.className, { [ `has-${ padding }-padding` ]: padding } );
+			newClassName = classnames( props.className, { [ `has-${ padding }-padding` ]: padding } );
 		}
 
-		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
+		return <BlockListBlock { ...props } className={ newClassName } wrapperProps={ wrapperProps } />;
 	};
 }, 'withPaddingClasses' );
 
