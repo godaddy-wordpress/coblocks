@@ -124,13 +124,14 @@ const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 	return enhance( ( { select, ...props } ) => {
 		let wrapperProps 	= props.wrapperProps;
 		let customData 	 	= {};
-		const attributes 	= select( 'core/block-editor' ).getBlock( props.rootClientId || props.clientId ).attributes;
-		const blockName		= select( 'core/block-editor' ).getBlockName( props.rootClientId || props.clientId );
+
+		const block = select( 'core/block-editor' ).getBlock( props.rootClientId || props.clientId );
+		const blockName	= select( 'core/block-editor' ).getBlockName( props.rootClientId || props.clientId );
 
 		const hasFullwidth = allowedBlocks.includes( blockName );
 
-		if ( hasFullwidth ) {
-			const { isFullwidth } = attributes;
+		if ( hasFullwidth && block?.attributes ) {
+			const { isFullwidth } = block.attributes;
 
 			if ( typeof isFullwidth !== 'undefined' && isFullwidth ) {
 				customData = Object.assign( customData, { 'data-coblocks-button-fullwidth': 1 } );
