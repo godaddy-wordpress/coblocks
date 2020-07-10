@@ -146,7 +146,6 @@ function addAttributes( settings ) {
 			settings.attributes = Object.assign( settings.attributes, {
 				padding: {
 					type: 'string',
-					default: 'no',
 				},
 			} );
 		}
