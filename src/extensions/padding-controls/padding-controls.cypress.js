@@ -19,7 +19,6 @@ describe( 'Extension: CoBlocks Padding Controls', function() {
 		helpers.openSettingsPanel( /group settings/i );
 
 		cy.get( '.components-base-control' ).contains( /padding/i ).parent().find( `.components-button[aria-label="None"]` ).click();
-		cy.get( '[data-type="core/group"]' ).should( 'have.class', `has-no-padding` );
 
 		[ 'Small', 'Medium', 'Large', 'Huge' ].forEach( ( padding ) => {
 			cy.get( '.components-base-control' ).contains( /padding/i ).parent().find( `.components-button[aria-label="${ padding }"]` ).click();
