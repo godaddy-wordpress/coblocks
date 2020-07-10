@@ -156,5 +156,5 @@ function addAttributes( settings ) {
 
 addFilter( 'blocks.registerBlockType', 'coblocks/padding-controls/block-attributes', addAttributes );
 addFilter( 'editor.BlockEdit', 'coblocks/padding-controls/editor-controls', withPaddingControls );
-// addFilter( 'editor.BlockListBlock', 'coblocks/padding-controls/editor-padding-classes', withPaddingClasses );
+addFilter( 'editor.BlockListBlock', 'coblocks/padding-controls/editor-padding-classes', withPaddingClasses );
 addFilter( 'blocks.getSaveContent.extraProps', 'coblocks/padding-controls/save-padding-class', applyPaddingClass );
