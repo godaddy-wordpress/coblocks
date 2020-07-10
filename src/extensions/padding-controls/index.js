@@ -114,22 +114,22 @@ const withPaddingClasses = createHigherOrderComponent( ( BlockListBlock ) => {
 /**
  * Override props assigned to save component to inject padding classes.
  *
- * @param {Object} extraProps Additional props applied to save element.
+ * @param {Object} props Additional props applied to save element.
  * @param {Object} blockType  Block type.
  * @param {Object} attributes Current block attributes.
  *
  * @return {Object} Filtered props applied to save element.
  */
-function applyPaddingClass( extraProps, blockType, attributes ) {
+function applyPaddingClass( props, blockType, attributes ) {
 	const supportsPaddingControls = blocksWithPaddingSupport?.includes( blockType?.name );
 
 	if ( supportsPaddingControls ) {
 		const { padding } = attributes;
 
-		extraProps.className = classnames( extraProps.className, { [ `has-${ padding }-padding` ]: padding } );
+		props.className = classnames( props.className, { [ `has-${ padding }-padding` ]: padding } );
 	}
 
-	return extraProps;
+	return props;
 }
 
 /**
@@ -156,5 +156,5 @@ function addAttributes( settings ) {
 
 addFilter( 'blocks.registerBlockType', 'coblocks/padding-controls/block-attributes', addAttributes );
 addFilter( 'editor.BlockEdit', 'coblocks/padding-controls/editor-controls', withPaddingControls );
-addFilter( 'editor.BlockListBlock', 'coblocks/padding-controls/editor-padding-classes', withPaddingClasses );
+// addFilter( 'editor.BlockListBlock', 'coblocks/padding-controls/editor-padding-classes', withPaddingClasses );
 addFilter( 'blocks.getSaveContent.extraProps', 'coblocks/padding-controls/save-padding-class', applyPaddingClass );
