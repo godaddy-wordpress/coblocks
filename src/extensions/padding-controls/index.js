@@ -66,7 +66,7 @@ const withPaddingControls = createHigherOrderComponent( ( BlockEdit ) => {
 		const panelTitle = startCase( name.split( '/' )[ 1 ] );
 		return (
 			<>
-				<BlockEdit { ...props } />
+				<BlockEdit { ...props } className={ classnames( props.className, { [ `has-${ padding }-padding` ]: padding } ) } />
 				{ isSelected && supportsPaddingControls && (
 					<InspectorControls>
 						<PanelBody title={ sprintf(
