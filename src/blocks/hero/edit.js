@@ -113,9 +113,9 @@ export class Edit extends Component {
 	}
 
 	saveMeta( type ) {
-		const { getEditedPostAttribute } = this.props;
+		const { getEditedPostAttribute, getBlock, editPost } = this.props;
 		const meta = getEditedPostAttribute( 'meta' );
-		const block = wp.data.select( 'core/editor' ).getBlock( this.props.clientId );
+		const block = getBlock( this.props.clientId );
 		let dimensions = {};
 
 		if ( typeof this.props.attributes.coblocks !== 'undefined' && typeof this.props.attributes.coblocks.id !== 'undefined' ) {
@@ -142,7 +142,7 @@ export class Edit extends Component {
 			dimensions[ id ][ type ] = height;
 
 			// Save values to metadata.
-			wp.data.dispatch( 'core/editor' ).editPost( {
+			editPost( {
 				meta: {
 					_coblocks_responsive_height: JSON.stringify( dimensions ),
 				},
@@ -406,7 +406,8 @@ export default compose( [
 	applyWithColors,
 
 	withDispatch( ( dispatch ) => {
-		const { updateBlockAttributes, editPost } = dispatch( 'core/block-editor' );
+		const { updateBlockAttributes } = dispatch( 'core/block-editor' );
+		const { editPost } = dispatch( 'core/editor' );
 
 		return {
 			updateBlockAttributes,
@@ -414,15 +415,13 @@ export default compose( [
 		};
 	} ),
 
-	withSelect( ( select, props ) => {
-		const { getBlocks } = select( 'core/block-editor' );
+	withSelect( ( select ) => {
+		const { getBlock } = select( 'core/block-editor' );
 		const { getEditedPostAttribute } = select( 'core/editor' );
-		const innerBlocks = getBlocks( props.clientId );
 
 		return {
-			innerBlocks,
 			getEditedPostAttribute,
-			getBlocks,
+			getBlock,
 		};
 	} ),
 ] )( Edit );
