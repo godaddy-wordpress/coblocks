@@ -116,7 +116,6 @@ export class Edit extends Component {
 		const { getEditedPostAttribute } = this.props;
 		const meta = getEditedPostAttribute( 'meta' );
 		const block = wp.data.select( 'core/editor' ).getBlock( this.props.clientId );
-		console.log( block );
 		let dimensions = {};
 
 		if ( typeof this.props.attributes.coblocks !== 'undefined' && typeof this.props.attributes.coblocks.id !== 'undefined' ) {
