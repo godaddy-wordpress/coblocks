@@ -130,7 +130,7 @@
 			wrapper.style.display = 'flex';
 			wrapperBackground.style.backgroundImage = `url(${ imagePreloader[ `img-${ index }` ].src })`;
 			image.src = imagePreloader[ `img-${ index }` ].src;
-			caption.textContent = imagePreloader[ `img-${ index }` ][ 'data-caption' ];
+			caption.innerHTML = imagePreloader[ `img-${ index }` ][ 'data-caption' ];
 			counter.textContent = `${ ( index + 1 ) } / ${ images.length }`;
 		}
 
