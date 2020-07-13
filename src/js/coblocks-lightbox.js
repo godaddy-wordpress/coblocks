@@ -142,7 +142,7 @@
 					e = e || window.event;
 					switch ( e.keyCode ) {
 						case 27 : // Esc key
-							close.trigger( 'click' );
+							close.click();
 							break;
 						case 37 : // Arrow left or 'A' key.
 							arrowLeftContainer.click();
