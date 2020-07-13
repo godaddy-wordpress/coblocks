@@ -113,9 +113,10 @@ export class Edit extends Component {
 	}
 
 	saveMeta( type ) {
-		const { getEditedPostAttribute, getBlock, editPost } = this.props;
+		const { getEditedPostAttribute } = this.props;
 		const meta = getEditedPostAttribute( 'meta' );
-		const block = getBlock( this.props.clientId );
+		const block = wp.data.select( 'core/editor' ).getBlock( this.props.clientId );
+		console.log( block );
 		let dimensions = {};
 
 		if ( typeof this.props.attributes.coblocks !== 'undefined' && typeof this.props.attributes.coblocks.id !== 'undefined' ) {
@@ -142,7 +143,7 @@ export class Edit extends Component {
 			dimensions[ id ][ type ] = height;
 
 			// Save values to metadata.
-			editPost( {
+			wp.data.dispatch( 'core/editor' ).editPost( {
 				meta: {
 					_coblocks_responsive_height: JSON.stringify( dimensions ),
 				},
