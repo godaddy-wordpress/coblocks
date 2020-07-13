@@ -100,7 +100,7 @@
 			// If not, jump to the next sibling and continue the loop
 			while ( sibling ) {
 				if ( sibling.matches( selector ) ) {
-					return sibling.innerHTML;
+					return sibling.textContent;
 				}
 				sibling = sibling.nextElementSibling;
 			}
