@@ -22,6 +22,22 @@ do
 			SPECS=( "${SPECS[@]}" "${testSpec}" )
 		fi
   fi
+  
+  # Changed file matches /src/extensions/*
+  if [[ $FILE == *"src/extensions/"* ]]; then
+    testSpec=$(echo $FILE | cut -d'/' -f3)
+		foundwords=$(echo ${SPECS[@]} | grep -o "${testSpec}" | wc -w)
+		# The test spec does not yet exist in the SPECS array
+		if [[ "${foundwords}" -eq 0 ]]; then
+			# Spec file string is empty, do not start string with a ,
+			if [[ ${#SPECSTRING} -eq 0 ]]; then
+				SPECSTRING="src/extensions/${testSpec}/**/*.cypress.js"
+			else
+				SPECSTRING="${SPECSTRING},src/extensions/${testSpec}/**/*.cypress.js"
+			fi
+			SPECS=( "${SPECS[@]}" "${testSpec}" )
+		fi
+  fi
 done
 
 # No spec files to run
