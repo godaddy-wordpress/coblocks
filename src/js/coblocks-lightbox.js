@@ -44,7 +44,7 @@
 		const arrowLeft = document.createElement( 'div' );
 		arrowLeft.setAttribute( 'class', 'arrow-left' );
 
-		const images = document.querySelectorAll( `.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure img` );
+		const images = document.querySelectorAll( `.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure img, figure.has-lightbox.lightbox-${ lightboxIndex } > img` );
 		const captions = document.querySelectorAll( `.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure figcaption` );
 		let index;
 
@@ -130,7 +130,7 @@
 			wrapper.style.display = 'flex';
 			wrapperBackground.style.backgroundImage = `url(${ imagePreloader[ `img-${ index }` ].src })`;
 			image.src = imagePreloader[ `img-${ index }` ].src;
-			caption.textContent = imagePreloader[ `img-${ index }` ][ 'data-caption' ];
+			caption.innerHTML = imagePreloader[ `img-${ index }` ][ 'data-caption' ];
 			counter.textContent = `${ ( index + 1 ) } / ${ images.length }`;
 		}
 
