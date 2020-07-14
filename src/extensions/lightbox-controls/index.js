@@ -69,13 +69,14 @@ const withLightboxClasses = createHigherOrderComponent( ( BlockListBlock ) => {
 		const supportsLightbox = blocksWithLightboxSupport?.includes( name );
 
 		let wrapperProps;
+		let newClassName = props.className;
 
 		if ( supportsLightbox ) {
 			wrapperProps = props?.wrapperProps;
-			props.className = classnames( props.className, { [ `has-lightbox` ]: lightbox } );
+			newClassName = classnames( props.className, { [ `has-lightbox` ]: lightbox } );
 		}
 
-		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
+		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } className={ newClassName } />;
 	};
 }, 'withlightboxClasses' );
 
