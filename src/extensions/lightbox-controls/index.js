@@ -28,7 +28,7 @@ const withLightbox = createHigherOrderComponent( ( BlockEdit ) => {
 		const { name, attributes, setAttributes, isSelected } = props;
 		const { lightbox } = attributes;
 
-		const supportsLightbox = blocksWithLightboxSupport?.includes( name );
+		const supportsLightbox = blocksWithLightboxSupport.includes( name );
 
 		const getLightboxHelp = ( checked ) => {
 			return checked
@@ -66,7 +66,7 @@ const withLightboxClasses = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
 		const { name, attributes } = props;
 		const { lightbox } = attributes;
-		const supportsLightbox = blocksWithLightboxSupport?.includes( name );
+		const supportsLightbox = blocksWithLightboxSupport.includes( name );
 
 		let wrapperProps;
 		let newClassName = props.className;
@@ -90,7 +90,7 @@ const withLightboxClasses = createHigherOrderComponent( ( BlockListBlock ) => {
  * @return {Object} Filtered props applied to save element.
  */
 function applyLightboxClasses( extraProps, blockType, attributes ) {
-	const supportsLightbox = blocksWithLightboxSupport?.includes( blockType?.name );
+	const supportsLightbox = blocksWithLightboxSupport.includes( blockType?.name );
 
 	if ( supportsLightbox ) {
 		const { lightbox } = attributes;
@@ -108,7 +108,7 @@ function applyLightboxClasses( extraProps, blockType, attributes ) {
  * @return {Object} Filtered block settings.
  */
 function addAttributes( settings ) {
-	const supportsLightbox = blocksWithLightboxSupport?.includes( settings?.name );
+	const supportsLightbox = blocksWithLightboxSupport.includes( settings?.name );
 	// Add custom attribute
 	if ( supportsLightbox ) {
 		if ( ! settings?.attributes?.lightbox ) {
