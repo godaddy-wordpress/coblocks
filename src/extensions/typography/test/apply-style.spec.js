@@ -1,7 +1,7 @@
 /**
  * Internal dependencies.
  */
-import applyStyle from './apply-style';
+import applyStyle from '../apply-style';
 
 describe( 'typography/applyStyle', () => {
 	it( 'returns style attributes for block', () => {

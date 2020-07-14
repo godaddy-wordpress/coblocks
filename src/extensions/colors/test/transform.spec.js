@@ -1,7 +1,7 @@
 /**
  * Internal dependencies.
  */
-import ColorTransforms from './transform';
+import ColorTransforms from '../transform';
 
 describe( 'colors/ColorTransforms', () => {
 	it( 'returns color transform attributes', () => {
