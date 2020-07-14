@@ -39,7 +39,7 @@ const withLightbox = createHigherOrderComponent( ( BlockEdit ) => {
 		return (
 			<>
 				<BlockEdit { ...props } />
-				{ isSelected && supportsLightbox && (
+				{ isSelected && supportsLightbox && ( !! props.attributes?.images?.length || !! props.attributes.id ) && (
 					<InspectorControls>
 						<PanelRow className={ 'coblocks-lightbox-controls' }>
 							<ToggleControl
