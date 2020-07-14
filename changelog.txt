@@ -1,4 +1,15 @@
 
+2.0.3 / 2020-07-10
+==================
+
+### Enhancements
+* Introduce Padding Controls extension to core/group block [#1556](https://github.com/godaddy-wordpress/coblocks/pull/1556)
+
+### Bug Fixes
+* Ensure extensions are applied properly to blocks [#1515](https://github.com/godaddy-wordpress/coblocks/pull/1515)
+* Fix focus mode issue within the Layout Selector [#1562](https://github.com/godaddy-wordpress/coblocks/pull/1562)
+
+
 2.0.2 / 2020-06-25
 ==================
 

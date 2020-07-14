@@ -49,7 +49,7 @@ const TEMPLATE = [
 		},
 	],
 	[
-		'coblocks/buttons',
+		'core/buttons',
 		{
 			contentAlign: 'left',
 			items: 2,
@@ -266,8 +266,8 @@ export class Edit extends Component {
 				<div
 					className={ classes }
 				>
-					{ fullscreen ?
-						<div className={ innerClasses } style={ innerStyles } >
+					{ fullscreen
+						? <div className={ innerClasses } style={ innerStyles } >
 							{ isBlobURL( backgroundImg ) && <Spinner /> }
 							{ BackgroundVideo( attributes ) }
 							{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
@@ -309,8 +309,8 @@ export class Edit extends Component {
 									</ResizableBox>
 								</div>
 							) }
-						</div> :
-						<ResizableBox
+						</div>
+						: <ResizableBox
 							className={ innerClasses }
 							style={ innerStyles }
 							size={ {
@@ -415,7 +415,7 @@ export default compose( [
 	} ),
 
 	withSelect( ( select, props ) => {
-		const { getBlocks,  } = select( 'core/block-editor' );
+		const { getBlocks } = select( 'core/block-editor' );
 		const { getEditedPostAttribute } = select( 'core/editor' );
 		const innerBlocks = getBlocks( props.clientId );
 
@@ -424,5 +424,5 @@ export default compose( [
 			getEditedPostAttribute,
 			getBlocks,
 		};
-	} )
+	} ),
 ] )( Edit );

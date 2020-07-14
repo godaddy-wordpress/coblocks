@@ -1,8 +1,8 @@
 $color-highlight: #00a4a6;
 
-// .interface-interface-skeleton__sidebar {
-// 	display: none;
-// }
+.coblocks-layout-selector .block-editor-block-list__layout .block-editor-block-list__block.is-focus-mode:not(.is-multi-selected) {
+	opacity: 1 !important;
+}
 
 .coblocks-layout-selector .coblocks-layout-selector__layout .block-editor-block-preview__container.editor-styles-wrapper {
 	--go--font-size: 0.5rem;

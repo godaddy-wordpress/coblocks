@@ -80,11 +80,12 @@ const withFontSettings = createHigherOrderComponent( ( BlockListBlock ) => {
 	return enhance( ( { select, ...props } ) => {
 		let wrapperProps 	= props.wrapperProps;
 		let customData 	 	= {};
-		const attributes 	= select( 'core/block-editor' ).getBlock( props.clientId ).attributes;
-		const blockName		= select( 'core/block-editor' ).getBlockName( props.clientId );
 
-		if ( allowedBlocks.includes( blockName ) ) {
-			const { customFontSize, fontFamily, lineHeight, fontWeight, letterSpacing, textTransform, customTextColor } = attributes;
+		const block = select( 'core/block-editor' ).getBlock( props.rootClientId || props.clientId );
+		const blockName	= select( 'core/block-editor' ).getBlockName( props.rootClientId || props.clientId );
+
+		if ( allowedBlocks.includes( blockName ) && block?.attributes ) {
+			const { customFontSize, fontFamily, lineHeight, fontWeight, letterSpacing, textTransform, customTextColor } = block.attributes;
 
 			if ( customFontSize ) {
 				customData = Object.assign( customData, { 'data-custom-fontsize': 1 } );
@@ -116,7 +117,7 @@ const withFontSettings = createHigherOrderComponent( ( BlockListBlock ) => {
 
 			wrapperProps = {
 				...wrapperProps,
-				style: applyStyle( attributes, blockName ),
+				style: applyStyle( block.attributes, blockName ),
 				...customData,
 			};
 		}
