@@ -20,8 +20,6 @@ describe( 'Test CoBlocks Replace Image extension', function() {
 
 		cy.get( '.components-coblocks-replace-image button' ).click();
 
-		cy.get( '.media-modal-content' ).contains( /upload files/i );
-		cy.get( '.media-modal-content' ).contains( /media library/i );
-		cy.get( '.media-modal-content' ).find( '.attachments-browser' ).should( 'exist' );
+		cy.get( '.media-modal' ).should( 'exist' );
 	} );
 } );
