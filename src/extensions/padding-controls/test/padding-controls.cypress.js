@@ -1,7 +1,7 @@
 /*
  * Include our constants
  */
-import * as helpers from '../../../.dev/tests/cypress/helpers';
+import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Extension: CoBlocks Padding Controls', function() {
 	beforeEach( function() {

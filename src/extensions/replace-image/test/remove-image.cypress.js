@@ -1,7 +1,7 @@
 /*
  * Include our constants
  */
-import * as helpers from '../../../.dev/tests/cypress/helpers';
+import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Replace Image extension', function() {
 	/**
