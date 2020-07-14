@@ -93,6 +93,7 @@ class CoBlocks_Block_Assets {
 							has_block( 'core/cover', $wp_post ),
 							has_block( 'core/heading', $wp_post ),
 							has_block( 'core/image', $wp_post ),
+							has_block( 'core/gallery', $wp_post ),
 							has_block( 'core/list', $wp_post ),
 							has_block( 'core/paragraph', $wp_post ),
 							has_block( 'core/pullquote', $wp_post ),
