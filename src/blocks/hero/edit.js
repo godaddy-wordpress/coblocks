@@ -406,7 +406,8 @@ export default compose( [
 	applyWithColors,
 
 	withDispatch( ( dispatch ) => {
-		const { updateBlockAttributes, editPost } = dispatch( 'core/block-editor' );
+		const { updateBlockAttributes } = dispatch( 'core/block-editor' );
+		const { editPost } = dispatch( 'core/editor' );
 
 		return {
 			updateBlockAttributes,
@@ -414,15 +415,13 @@ export default compose( [
 		};
 	} ),
 
-	withSelect( ( select, props ) => {
-		const { getBlocks } = select( 'core/block-editor' );
+	withSelect( ( select ) => {
+		const { getBlock } = select( 'core/block-editor' );
 		const { getEditedPostAttribute } = select( 'core/editor' );
-		const innerBlocks = getBlocks( props.clientId );
 
 		return {
-			innerBlocks,
 			getEditedPostAttribute,
-			getBlocks,
+			getBlock,
 		};
 	} ),
 ] )( Edit );
