@@ -131,8 +131,7 @@ class CoBlocksSettingsModal extends Component {
 								<>
 									{ fills }
 								</>
-							)
-							}
+							) }
 						</CoBlocksSettingsSlot.Slot>
 
 						{ showLayoutSelectorControl &&

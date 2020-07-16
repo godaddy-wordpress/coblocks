@@ -2,7 +2,7 @@
 
 ## Add Fill to settings panel using SlotFill functionality
 
-The following `JavaScript` filter will allow insertion of react components within the CoBlocks settings modal. A helper function has been established which allows the user to pass an ID for the control as well as react components as children. Below are two examples, we have the correct methodology with ID passed, as well as the incorrect method ( invalid id ) that results in zero output.
+The following `JavaScript` filter will allow insertion of react components within the CoBlocks settings modal. A helper function has been established which allows the user to pass an ID for the control as well as react components as children. Below are two examples, we have the correct methodology with ID passed, as well as the incorrect method ( invalid id ) which has no output.
 
 
 ### Correct Method - Unique ID properly supplied
@@ -14,9 +14,7 @@ const buttonControls = (
 	<Button>Sample Controls</Button>
 );
 
-createSettingsFill.children = buttonControls;
-
-addFilter( 'editor.BlockEdit', 'custom-slug/custom-coblocks-setting', createSettingsFill( 'sample-id' ).setup );
+addFilter( 'editor.BlockEdit', 'custom-slug/custom-coblocks-setting', createSettingsFill( 'sample-id', buttonControls ).setup );
 ```
 
 ### Incorrect method - Controls require unique identifier
@@ -28,9 +26,7 @@ const buttonsControls = (
 	<Button>Sample Controls</Button>
 );
 
-createSettingsFill.children = buttonsControls;
-
-addFilter( 'editor.BlockEdit', 'custom-slug/custom-coblocks-setting', createSettingsFill( '' ).setup );
+addFilter( 'editor.BlockEdit', 'custom-slug/custom-coblocks-setting', createSettingsFill( buttonControls ).setup );
 ```
 
 ![image](https://user-images.githubusercontent.com/30462574/87710720-f9ca7300-c75a-11ea-97dd-d736d74eaf70.png)
