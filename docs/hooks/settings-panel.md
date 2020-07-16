@@ -22,7 +22,7 @@ addFilter( 'editor.BlockEdit', 'custom-slug/custom-coblocks-setting', createSett
 import { addFilter } from '@wordpress/hooks';
 import { createSettingsFill } from '../../extensions/coblocks-settings/coblocks-settings-slot';
 
-const buttonsControls = (
+const buttonControls = (
 	<Button>Sample Controls</Button>
 );
 
