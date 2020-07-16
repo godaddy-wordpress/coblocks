@@ -8,29 +8,29 @@ The following `JavaScript` filter will allow insertion of react components withi
 ### Correct Method - Unique ID properly supplied
 ```javascript
 import { addFilter } from '@wordpress/hooks';
-import { withCoBlocksSettings } from '../../extensions/coblocks-settings/coblocks-settings-slot';
+import { createSettingsFill } from '../../extensions/coblocks-settings/coblocks-settings-slot';
 
 const buttonControls = (
 	<Button>Sample Controls</Button>
 );
 
-withCoBlocksSettings.children = buttonControls;
+createSettingsFill.children = buttonControls;
 
-addFilter( 'editor.BlockEdit', 'custom-slug/custom-coblocks-setting', withCoBlocksSettings( 'sample-id' ).setup, 50 );
+addFilter( 'editor.BlockEdit', 'custom-slug/custom-coblocks-setting', createSettingsFill( 'sample-id' ).setup );
 ```
 
 ### Incorrect method - Controls require unique identifier
 ```javascript
 import { addFilter } from '@wordpress/hooks';
-import { withCoBlocksSettings } from '../../extensions/coblocks-settings/coblocks-settings-slot';
+import { createSettingsFill } from '../../extensions/coblocks-settings/coblocks-settings-slot';
 
 const buttonsControls = (
 	<Button>Sample Controls</Button>
 );
 
-withCoBlocksSettings.children = buttonsControls;
+createSettingsFill.children = buttonsControls;
 
-addFilter( 'editor.BlockEdit', 'custom-slug/custom-coblocks-setting', withCoBlocksSettings( '' ).setup, 50 );
+addFilter( 'editor.BlockEdit', 'custom-slug/custom-coblocks-setting', createSettingsFill( '' ).setup );
 ```
 
 ![image](https://user-images.githubusercontent.com/30462574/87710720-f9ca7300-c75a-11ea-97dd-d736d74eaf70.png)

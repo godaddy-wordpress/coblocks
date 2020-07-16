@@ -13,7 +13,7 @@ const CoBlocksSettingsSlot = <Slot />;
 CoBlocksSettingsSlot.Slot = Slot;
 export default CoBlocksSettingsSlot;
 
-export const withCoBlocksSettings = ( id ) => {
+export const createSettingsFill = ( id ) => {
 	if ( !! id === true ) {
 		return {
 			init: () => {
@@ -25,11 +25,11 @@ export const withCoBlocksSettings = ( id ) => {
 			},
 			setup: createHigherOrderComponent( ( BlockEdit ) => {
 				return ( props ) => {
-					if ( withCoBlocksSettings( id ).init() === true ) {
+					if ( createSettingsFill( id ).init() === true ) {
 						return (
 							<>
 								<Fill name="CoBlocksSettingsSlot">
-									{ withCoBlocksSettings.children }
+									{ createSettingsFill.children }
 								</Fill>
 
 								<BlockEdit { ...props } />
@@ -37,7 +37,7 @@ export const withCoBlocksSettings = ( id ) => {
 					}
 					return <BlockEdit { ...props } />;
 				};
-			}, 'withCoBlocksSettings' ),
+			}, 'createSettingsFill' ),
 		};
 	}
 	return !! id === false && {
