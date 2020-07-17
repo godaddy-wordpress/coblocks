@@ -2,6 +2,7 @@
 /**
  * External dependencies
  */
+import jQuery from 'jquery';
 import classnames from 'classnames';
 import map from 'lodash/map';
 
@@ -160,6 +161,15 @@ class LayoutSelector extends Component {
 
 		const layoutsCol1 = foundLayouts.slice( 0, Math.ceil( foundLayouts.length / 2 ) );
 		const layoutsCol2 = foundLayouts.slice( Math.ceil( foundLayouts.length / 2 ) );
+
+		// Rebind the masonry library
+		setTimeout( () => {
+			jQuery( '.wp-block-coblocks-gallery-masonry ul' ).masonry( {
+				itemSelector: '.coblocks-gallery--item',
+				transitionDuration: '0',
+				percentPosition: true,
+			} );
+		}, 10 );
 
 		return this.hasLayoutsInCategory( selectedCategory ) ? (
 			<div className="coblocks-layout-selector__layouts">
