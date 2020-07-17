@@ -11,11 +11,10 @@ import map from 'lodash/map';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment, useState } from '@wordpress/element';
 import { registerPlugin } from '@wordpress/plugins';
-import { compose } from '@wordpress/compose';
+import { compose, useResizeObserver } from '@wordpress/compose';
 import { withSelect, withDispatch } from '@wordpress/data';
-import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem } from '@wordpress/components';
-import { BlockPreview } from '@wordpress/block-editor';
-import { createBlock } from '@wordpress/blocks';
+import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem, Disabled } from '@wordpress/components';
+import { createBlock, serialize } from '@wordpress/blocks';
 
 /**
  * Internal dependencies
@@ -30,8 +29,23 @@ const getBlocksFromTemplate = ( name, attributes, innerBlocks = [] ) => {
 	);
 };
 
-const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
+export const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
+	const viewportWidth = 700;
 	const [ overlay, setOverlay ] = useState( false );
+
+	const [ containerWidthResizeListener, { width: containerWidth } ] = useResizeObserver();
+	const [ containerHeightResizeListener, { height: containerHeight } ] = useResizeObserver();
+	const scale = containerWidth / viewportWidth;
+
+	const layoutHtml = serialize(
+		layout.blocks
+			.filter( ( layout ) => registeredBlocks.includes( layout[ 0 ] ) )
+			.map(
+				( [ name, attributes, innerBlocks = [] ] ) => {
+					return getBlocksFromTemplate( name, attributes, innerBlocks );
+				}
+			)
+	);
 
 	return (
 		<a href="#!"
@@ -50,18 +64,32 @@ const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
 				</Button>
 			</div>
 
-			<BlockPreview
-				autoHeight
-				blocks={
-					layout.blocks
-						.filter( ( layout ) => registeredBlocks.includes( layout[ 0 ] ) )
-						.map(
-							( [ name, attributes, innerBlocks = [] ] ) => {
-								return getBlocksFromTemplate( name, attributes, innerBlocks );
-							}
-						)
-				}
-			/>
+			<div
+				className="block-editor-block-preview__container editor-styles-wrapper"
+				style={ {
+					margin: 0,
+					height: containerHeight * scale,
+				} }
+			>
+				{ containerWidthResizeListener }
+
+				<Disabled
+					style={ {
+						transform: `scale(${ scale })`,
+						width: viewportWidth,
+						left: 0,
+						right: 0,
+						top: 0,
+					} }
+					className="block-editor-block-preview__content"
+				>
+					{ containerHeightResizeListener }
+					<div
+						className="editor-styles-wrapper"
+						dangerouslySetInnerHTML={ { __html: layoutHtml } }
+					/>
+				</Disabled>
+			</div>
 		</a>
 	);
 };
