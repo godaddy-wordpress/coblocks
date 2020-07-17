@@ -28,6 +28,10 @@ function coblocks_layout_selector_categories() {
 			'slug'  => 'portfolio',
 			'title' => __( 'Portfolio', 'coblocks' ),
 		),
+		array(
+			'slug' => 'testing',
+			'title' => __( 'Testing', 'coblocks' ),
+		),
 	);
 
 	/**
@@ -45,6 +49,128 @@ function coblocks_layout_selector_categories() {
  */
 function coblocks_layout_selector_layouts() {
 	$layouts = array();
+
+	for ( $i=0; $i <= 100; $i++ ) {
+		$layouts[] = array(
+			'category' => 'testing',
+			'label'    => __( 'About', 'go' ),
+			'blocks'   => array(
+				array(
+					'core/heading',
+					array(
+						'align'   => 'center',
+						'content' => __( 'Hi, I’m Everett', 'go' ),
+						'level'   => 2,
+					),
+					array(),
+				),
+				array(
+					'core/paragraph',
+					array(
+						'align'   => 'center',
+						'content' => __( 'A tenacious, loving and energetic photographer who enjoys grabbing her camera and running out to take some photos.', 'go' ),
+						'dropCap' => false,
+					),
+					array(),
+				),
+				array(
+					'core/button',
+					array(
+
+						'text'  => __( 'Work With Me', 'go' ),
+						'align' => 'center',
+					),
+					array(),
+				),
+				array(
+					'core/gallery',
+					array(
+						'images'    => array(
+							array(
+								'url'     => get_theme_file_uri( '/partials/layouts/images/1x1.jpg' ),
+								'alt'     => __( 'Image description', 'go' ),
+								'id'      => 'about-image-1',
+								'caption' => '',
+							),
+							array(
+								'url'     => get_theme_file_uri( '/partials/layouts/images/1x1.jpg' ),
+								'alt'     => __( 'Image description', 'go' ),
+								'id'      => 'about-image-1',
+								'caption' => '',
+							),
+							array(
+								'url'     => get_theme_file_uri( '/partials/layouts/images/1x1.jpg' ),
+								'fullUrl' => get_theme_file_uri( '/partials/layouts/images/1x1.jpg' ),
+								'alt'     => __( 'Image description', 'go' ),
+								'id'      => 'about-image-1',
+								'caption' => '',
+							),
+						),
+						'ids'       => array(),
+						'caption'   => '',
+						'imageCrop' => true,
+						'linkTo'    => 'none',
+						'sizeslug'  => 'large',
+						'columns'   => 3,
+						'align'     => 'wide',
+					),
+					array(),
+				),
+				array(
+					'core/columns',
+					array(
+						'align' => 'wide',
+					),
+					array(
+						array(
+							'core/column',
+							array(),
+							array(
+								array(
+									'core/heading',
+									array(
+										'content' => __( 'Early on', 'go' ),
+										'level'   => 3,
+									),
+									array(),
+								),
+								array(
+									'core/paragraph',
+									array(
+										'content' => __( 'I am so fascinated by photography and it’s capability to bring your imagination to amazing places. Early on, I fell in love with the idea of filming my own productions, so I set out to learn everything I could.', 'go' ),
+										'dropCap' => false,
+									),
+									array(),
+								),
+							),
+						),
+						array(
+							'core/column',
+							array(),
+							array(
+								array(
+									'core/heading',
+									array(
+										'content' => __( 'Current', 'go' ),
+										'level'   => 3,
+									),
+									array(),
+								),
+								array(
+									'core/paragraph',
+									array(
+										'content' => __( 'I have been teaching myself filmmaking for the past four and a half years and I’m still learning every day. I am building my business as a freelance filmmaker, as well as working on my own photo shoots.', 'go' ),
+										'dropCap' => false,
+									),
+									array(),
+								),
+							),
+						),
+					),
+				),
+			),
+		);
+	}
 
 	/**
 	 * Filters the available layouts used by the Layout Selector.
