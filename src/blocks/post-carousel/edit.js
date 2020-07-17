@@ -2,7 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { isUndefined, pickBy, get, includes, invoke } from 'lodash';
+import { isUndefined, pickBy, get } from 'lodash';
 import Slick from 'react-slick';
 
 /**
