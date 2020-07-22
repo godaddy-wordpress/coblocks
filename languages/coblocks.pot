@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-07-21T18:17:34+00:00\n"
+"POT-Creation-Date: 2020-07-22T22:10:45+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -774,8 +774,8 @@ msgid "Enter URL here…"
 msgstr ""
 
 #: src/blocks/events/edit.js:185
-#: src/blocks/post-carousel/edit.js:224
-#: src/blocks/posts/edit.js:333
+#: src/blocks/post-carousel/edit.js:225
+#: src/blocks/posts/edit.js:334
 msgid "Use URL"
 msgstr ""
 
@@ -931,8 +931,6 @@ msgstr ""
 
 #: src/blocks/features/inspector.js:92
 #: src/blocks/food-and-drinks/inspector.js:103
-#: src/blocks/post-carousel/inspector.js:86
-#: src/blocks/posts/inspector.js:170
 #: src/blocks/services/inspector.js:70
 msgid "Columns"
 msgstr ""
@@ -944,7 +942,6 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:84
 #: src/blocks/gallery-offset/inspector.js:90
 #: src/blocks/gallery-stacked/inspector.js:99
-#: src/blocks/posts/inspector.js:182
 #: src/blocks/pricing-table/inspector.js:66
 #: src/blocks/row/inspector.js:160
 #: src/blocks/services/inspector.js:77
@@ -1176,19 +1173,15 @@ msgstr ""
 #. translators: abbreviation for small size
 #: src/blocks/food-and-drinks/inspector.js:41
 #: src/blocks/gallery-collage/inspector.js:63
-#: src/blocks/posts/inspector.js:63
 #: src/blocks/pricing-table/inspector.js:38
 #: src/components/option-selector-control/index.js:27
 #: src/utils/gutter-options.js:15
 msgid "S"
 msgstr ""
 
-#. translators: abbreviation for small size
-#. translators: label for small size option
 #: src/blocks/food-and-drinks/inspector.js:42
 #: src/blocks/gallery-collage/inspector.js:64
 #: src/blocks/icon/icon-size-select.js:16
-#: src/blocks/posts/inspector.js:64
 #: src/blocks/pricing-table/inspector.js:39
 #: src/blocks/share/inspector.js:72
 #: src/blocks/social-profiles/inspector.js:77
@@ -1202,19 +1195,15 @@ msgstr ""
 #. translators: abbreviation for medium size
 #: src/blocks/food-and-drinks/inspector.js:47
 #: src/blocks/gallery-collage/inspector.js:69
-#: src/blocks/posts/inspector.js:68
 #: src/blocks/pricing-table/inspector.js:44
 #: src/components/option-selector-control/index.js:33
 #: src/utils/gutter-options.js:21
 msgid "M"
 msgstr ""
 
-#. translators: abbreviation for medium size
-#. translators: label for medium size option
 #: src/blocks/food-and-drinks/inspector.js:48
 #: src/blocks/gallery-collage/inspector.js:70
 #: src/blocks/icon/icon-size-select.js:21
-#: src/blocks/posts/inspector.js:69
 #: src/blocks/pricing-table/inspector.js:45
 #: src/blocks/share/inspector.js:73
 #: src/blocks/social-profiles/inspector.js:78
@@ -1228,19 +1217,15 @@ msgstr ""
 #. translators: abbreviation for large size
 #: src/blocks/food-and-drinks/inspector.js:53
 #: src/blocks/gallery-collage/inspector.js:75
-#: src/blocks/posts/inspector.js:73
 #: src/blocks/pricing-table/inspector.js:50
 #: src/components/option-selector-control/index.js:39
 #: src/utils/gutter-options.js:27
 msgid "L"
 msgstr ""
 
-#. translators: abbreviation for large size
-#. translators: label for large size option
 #: src/blocks/food-and-drinks/inspector.js:54
 #: src/blocks/gallery-collage/inspector.js:76
 #: src/blocks/icon/icon-size-select.js:26
-#: src/blocks/posts/inspector.js:74
 #: src/blocks/pricing-table/inspector.js:51
 #: src/blocks/share/inspector.js:74
 #: src/blocks/social-profiles/inspector.js:79
@@ -1254,18 +1239,14 @@ msgstr ""
 #. translators: abbreviation for largest size
 #. translators: abbreviation for extra large size
 #: src/blocks/food-and-drinks/inspector.js:59
-#: src/blocks/posts/inspector.js:78
 #: src/blocks/pricing-table/inspector.js:56
 #: src/components/option-selector-control/index.js:45
 #: src/utils/gutter-options.js:33
 msgid "XL"
 msgstr ""
 
-#. translators: abbreviation for extra large size
-#. translators: label for extra large size option
 #: src/blocks/food-and-drinks/inspector.js:60
 #: src/blocks/icon/icon-size-select.js:30
-#: src/blocks/posts/inspector.js:79
 #: src/blocks/pricing-table/inspector.js:57
 #: src/components/dimensions-control/dimensions-select.js:30
 #: src/utils/gutter-options.js:34
@@ -1274,7 +1255,6 @@ msgstr ""
 
 #: src/blocks/food-and-drinks/inspector.js:66
 #: src/blocks/map/inspector.js:105
-#: src/blocks/posts/inspector.js:248
 #: src/blocks/row/inspector.js:130
 #: src/blocks/services/inspector.js:34
 msgid "Styles"
@@ -2042,7 +2022,7 @@ msgstr ""
 #. translators: block style
 #: src/blocks/gallery-stacked/edit.js:168
 #: src/blocks/gallery-stacked/index.js:30
-#: src/blocks/posts/edit.js:49
+#: src/blocks/posts/edit.js:50
 msgid "Stacked"
 msgstr ""
 
@@ -5617,54 +5597,53 @@ msgstr ""
 msgid "Drop to replace media"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:121
-#: src/blocks/posts/edit.js:238
+#: src/blocks/post-carousel/edit.js:122
+#: src/blocks/posts/edit.js:239
 msgid "Edit RSS URL"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/post-carousel/edit.js:176
+#: src/blocks/post-carousel/edit.js:177
 #: src/blocks/post-carousel/index.js:21
 msgid "Post Carousel"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:181
-#: src/blocks/posts/edit.js:285
+#: src/blocks/post-carousel/edit.js:182
+#: src/blocks/posts/edit.js:286
 msgid "No posts found. Start publishing or add posts from an RSS feed."
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:184
+#: src/blocks/post-carousel/edit.js:185
 msgid "Retrieve an external feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:191
-#: src/blocks/posts/edit.js:295
+#: src/blocks/post-carousel/edit.js:192
+#: src/blocks/posts/edit.js:296
 msgid "Use External Feed"
-msgstr ""
-
-#: src/blocks/post-carousel/edit.js:213
-#: src/blocks/posts/edit.js:322
-msgid "RSS Feed"
 msgstr ""
 
 #: src/blocks/post-carousel/edit.js:214
 #: src/blocks/posts/edit.js:323
+msgid "RSS Feed"
+msgstr ""
+
+#: src/blocks/post-carousel/edit.js:215
+#: src/blocks/posts/edit.js:324
 msgid "RSS URLs are generally located at the /feed/ directory of a site."
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:218
-#: src/blocks/posts/edit.js:327
+#: src/blocks/post-carousel/edit.js:219
+#: src/blocks/posts/edit.js:328
 msgid "https://example.com/feed…"
 msgstr ""
 
-#. translators: placeholder when a post has no title
-#: src/blocks/post-carousel/edit.js:300
-#: src/blocks/posts/edit.js:430
+#: src/blocks/post-carousel/edit.js:301
+#: src/blocks/posts/edit.js:431
 msgid "(no title)"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:318
-#: src/blocks/posts/edit.js:456
+#: src/blocks/post-carousel/edit.js:319
+#: src/blocks/posts/edit.js:457
 msgid "Read more"
 msgstr ""
 
@@ -5702,83 +5681,24 @@ msgstr ""
 msgid "rss"
 msgstr ""
 
-#: src/blocks/post-carousel/inspector.js:54
-msgid "Post Carousel settings"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:57
-#: src/blocks/posts/inspector.js:141
-msgid "Post date"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:61
-#: src/blocks/posts/inspector.js:145
-msgid "Showing the publish date."
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:62
-#: src/blocks/posts/inspector.js:146
-msgid "Toggle to show the publish date."
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:67
-#: src/blocks/posts/inspector.js:151
-msgid "Post content"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:71
-#: src/blocks/posts/inspector.js:155
-msgid "Showing the post content."
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:72
-#: src/blocks/posts/inspector.js:156
-msgid "Toggle to show the post content."
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:78
-#: src/blocks/posts/inspector.js:162
-msgid "Max words in content"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:100
-#: src/blocks/posts/inspector.js:210
-msgid "Feed settings"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:104
-#: src/blocks/posts/inspector.js:214
-msgid "My blog"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:105
-#: src/blocks/posts/inspector.js:215
-msgid "External feed"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:124
-#: src/blocks/posts/inspector.js:235
-msgid "Number of posts"
-msgstr ""
-
 #. translators: block style
-#: src/blocks/posts/edit.js:56
+#: src/blocks/posts/edit.js:57
 msgid "Horizontal"
 msgstr ""
 
-#: src/blocks/posts/edit.js:251
+#: src/blocks/posts/edit.js:252
 msgid "Image on left"
 msgstr ""
 
-#: src/blocks/posts/edit.js:256
+#: src/blocks/posts/edit.js:257
 msgid "Image on right"
 msgstr ""
 
-#: src/blocks/posts/edit.js:280
+#: src/blocks/posts/edit.js:281
 msgid "Blog Posts"
 msgstr ""
 
-#: src/blocks/posts/edit.js:288
+#: src/blocks/posts/edit.js:289
 msgid "Retrieve an External Feed"
 msgstr ""
 
@@ -5790,50 +5710,6 @@ msgstr ""
 #. translators: block description
 #: src/blocks/posts/index.js:23
 msgid "Display posts or an RSS feed as stacked or horizontal cards."
-msgstr ""
-
-#: src/blocks/posts/inspector.js:86
-#: src/blocks/posts/inspector.js:87
-#: src/blocks/posts/inspector.js:99
-#: src/blocks/posts/inspector.js:100
-#: src/blocks/services/edit.js:45
-msgid "Square"
-msgstr ""
-
-#: src/blocks/posts/inspector.js:91
-#: src/blocks/posts/inspector.js:92
-#: src/blocks/posts/inspector.js:114
-#: src/blocks/posts/inspector.js:115
-#: src/blocks/services/edit.js:50
-msgid "Circle"
-msgstr ""
-
-#: src/blocks/posts/inspector.js:104
-msgid "4:3"
-msgstr ""
-
-#: src/blocks/posts/inspector.js:105
-msgid "4:3 Aspect ratio"
-msgstr ""
-
-#: src/blocks/posts/inspector.js:109
-msgid "16:9"
-msgstr ""
-
-#: src/blocks/posts/inspector.js:110
-msgid "16:9 Aspect ratio"
-msgstr ""
-
-#: src/blocks/posts/inspector.js:138
-msgid "Posts settings"
-msgstr ""
-
-#: src/blocks/posts/inspector.js:190
-msgid "Thumbnail style"
-msgstr ""
-
-#: src/blocks/posts/inspector.js:198
-msgid "Thumbnail size"
 msgstr ""
 
 #: src/blocks/pricing-table/controls.js:17
@@ -6141,6 +6017,14 @@ msgstr ""
 
 #: src/blocks/row/variations.js:78
 msgid "Four columns; equal split"
+msgstr ""
+
+#: src/blocks/services/edit.js:45
+msgid "Square"
+msgstr ""
+
+#: src/blocks/services/edit.js:50
+msgid "Circle"
 msgstr ""
 
 #. translators: block name
