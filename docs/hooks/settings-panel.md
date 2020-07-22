@@ -2,31 +2,20 @@
 
 ## Add Fill to settings panel using SlotFill functionality
 
-The following `JavaScript` filter will allow insertion of react components within the CoBlocks settings modal. A helper function has been established which allows the user to pass an ID for the control as well as react components as children. Below are two examples, we have the correct methodology with ID passed, as well as the incorrect method ( invalid id ) which has no output.
+The following `JavaScript` filter will allow insertion of react components within the CoBlocks settings modal. To use the filer the user should push elements onto the controls array provided by the filter. The filtered elements then are able to display within the CoBlocks settings modal. 
 
-
-### Correct Method - Unique ID properly supplied
+*Example usage*
 ```javascript
 import { addFilter } from '@wordpress/hooks';
-import { createSettingsFill } from '../../extensions/coblocks-settings/coblocks-settings-slot';
 
 const buttonControls = (
 	<Button>Sample Controls</Button>
 );
 
-addFilter( 'editor.BlockEdit', 'custom-slug/custom-coblocks-setting', createSettingsFill( 'sample-id', buttonControls ).setup );
-```
-
-### Incorrect method - Controls require unique identifier
-```javascript
-import { addFilter } from '@wordpress/hooks';
-import { createSettingsFill } from '../../extensions/coblocks-settings/coblocks-settings-slot';
-
-const buttonControls = (
-	<Button>Sample Controls</Button>
-);
-
-addFilter( 'editor.BlockEdit', 'custom-slug/custom-coblocks-setting', createSettingsFill( buttonControls ).setup );
+addFilter( 'coblocks-settings-modal-controls', 'custom-slug', ( controls ) => {
+	controls.push( buttonControls );
+	return controls;
+} );
 ```
 
 ![image](https://user-images.githubusercontent.com/30462574/87710720-f9ca7300-c75a-11ea-97dd-d736d74eaf70.png)
