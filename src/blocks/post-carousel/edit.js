@@ -2,7 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { isUndefined, pickBy } from 'lodash';
+import { isUndefined, pickBy, get } from 'lodash';
 import Slick from 'react-slick';
 
 /**
@@ -30,6 +30,7 @@ import {
 	Button,
 	Disabled,
 	ServerSideRender,
+	QueryControls,
 } from '@wordpress/components';
 
 /**
@@ -175,9 +176,9 @@ class PostCarousel extends Component {
 						icon={ <BlockIcon icon={ icon } /> }
 						label={ __( 'Post Carousel', 'coblocks' ) }
 					>
-						{ ! Array.isArray( latestPosts ) ?
-							<Spinner /> :
-							<Fragment>
+						{ ! Array.isArray( latestPosts )
+							? <Spinner />
+							: <Fragment>
 								{ __( 'No posts found. Start publishing or add posts from an RSS feed.', 'coblocks' ) }
 								<Button
 									className="components-placeholder__cancel-button"
@@ -295,9 +296,9 @@ class PostCarousel extends Component {
 															<RawHTML>
 																{ titleTrimmed }
 															</RawHTML>
-														) :
+														)
 															/* translators: placeholder when a post has no title */
-															__( '(no title)', 'coblocks' )
+															: __( '(no title)', 'coblocks' )
 														}
 													</a>
 												</Disabled>
@@ -334,26 +335,70 @@ class PostCarousel extends Component {
 export default compose( [
 	withSelect( ( select, props ) => {
 		const { postsToShow, order, orderBy, categories } = props.attributes;
-		const { getEntityRecords } = select( 'core' );
-		const latestPostsQuery = pickBy( {
-			categories,
-			order,
-			orderby: orderBy,
-			per_page: postsToShow,
-		}, ( value ) => ! isUndefined( value ) );
+		const { getEntityRecords, getMedia } = select( 'core' );
 
-		let latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
-		if ( latestPosts ) {
-			latestPosts = latestPosts.map( ( post ) => {
-				return {
-					...post,
-					featured_media_object: post.featured_media && select( 'core' ).getMedia( post.featured_media ),
-				};
-			} );
-		}
+		const useUpdatedQueryControls = QueryControls.toString().includes( 'selectedCategories' );
+
+		const deprecatedQuery = () => {
+			const latestPostsQuery = pickBy( {
+				categories,
+				order,
+				orderby: orderBy,
+				per_page: postsToShow,
+			}, ( value ) => ! isUndefined( value ) );
+
+			let latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
+			if ( latestPosts ) {
+				latestPosts = latestPosts.map( ( post ) => {
+					return {
+						...post,
+						featured_media_object: post.featured_media && select( 'core' ).getMedia( post.featured_media ),
+					};
+				} );
+			}
+			return latestPosts;
+		};
+
+		const updatedQuery = () => {
+			const catIds = categories && categories.length > 0
+				? categories.map( ( cat ) => cat.id )
+				: [];
+
+			const latestPostsQuery = pickBy( {
+				categories: catIds,
+				order,
+				orderby: orderBy,
+				per_page: postsToShow,
+			}, ( value ) => ! isUndefined( value ) );
+
+			const latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
+
+			return ! Array.isArray( latestPosts )
+				? latestPosts
+				: latestPosts.map( ( post ) => {
+					if ( post.featured_media ) {
+						const image = getMedia( post.featured_media );
+						let url = get(
+							image,
+							[
+								'media_details',
+								'sizes',
+								'source_url',
+							],
+							null
+						);
+						if ( ! url ) {
+							url = get( image, 'source_url', null );
+						}
+						return { ...post, featuredImageSourceUrl: url };
+					}
+					return post;
+				} );
+		};
 
 		return {
-			latestPosts,
+			latestPosts: useUpdatedQueryControls ? updatedQuery() : deprecatedQuery(),
+			useUpdatedQueryControls,
 		};
 	} ),
 ] )( PostCarousel );
