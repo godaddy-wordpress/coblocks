@@ -2,7 +2,7 @@
 
 ## Add Fill to settings panel using SlotFill functionality
 
-The following `JavaScript` filter will allow insertion of react components within the CoBlocks settings modal. To use the filer the user should push elements onto the controls array provided by the filter. The filtered elements then are able to display within the CoBlocks settings modal. 
+The following `JavaScript` filter will allow insertion of react components within the CoBlocks settings modal. To use the filter push react elements onto the controls array provided by the filter. The filtered elements then are able to render within the CoBlocks settings modal. 
 
 *Example usage*
 ```javascript
