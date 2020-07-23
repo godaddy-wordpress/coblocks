@@ -46,6 +46,7 @@
 			padding: 0;
 		}
 
+		// Add whitespace ti LI's to allow blank lines as spacing between features.
 		li:after {
 			content: '\00a0';
 		}
