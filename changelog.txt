@@ -1,4 +1,25 @@
 
+2.1.0 / 2020-07-23
+==================
+
+### Enhancements
+* Enable extensibility of CoBlocks settings panel using SlotFill component [#1573](https://github.com/godaddy-wordpress/coblocks/pull/1573)
+* Introduce Lightbox controls to the core/gallery and core/image blocks [#1557](https://github.com/godaddy-wordpress/coblocks/pull/1557)
+* Allow closing of Lightbox with the esc keyboard shortcut [#1567](https://github.com/godaddy-wordpress/coblocks/pull/1567)
+
+### Bug Fixes
+* Fix Posts and Post Carousel blocks compatibility across Gutenberg versions [#1576](https://github.com/godaddy-wordpress/coblocks/pull/1576)
+* Fix Click to Tweet inline toolbar SVG styles [#1575](https://github.com/godaddy-wordpress/coblocks/pull/1575)
+* Fix Hero block resizable handles error [#1568](https://github.com/godaddy-wordpress/coblocks/pull/1568)
+* Remove list styles from editor for Gallery blocks [#1584](https://github.com/godaddy-wordpress/coblocks/pull/1568)
+* Allow HTML formatted text within Lightbox captions [#1566](https://github.com/godaddy-wordpress/coblocks/pull/1566)
+
+### Misc
+* Implement detection of modified code in extensions when setting up test specs [#1571](https://github.com/godaddy-wordpress/coblocks/pull/1571)
+* Add Accordion block save Jest tests [#1565](https://github.com/godaddy-wordpress/coblocks/pull/1565)
+* Add documentation of releasing new CoBlocks versions [#1583](https://github.com/godaddy-wordpress/coblocks/pull/1586)
+
+
 2.0.3 / 2020-07-10
 ==================
 
