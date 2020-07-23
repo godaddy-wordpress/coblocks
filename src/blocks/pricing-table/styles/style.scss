@@ -45,6 +45,10 @@
 			margin: 0;
 			padding: 0;
 		}
+
+		li:after {
+			content: '\00a0';
+		}
 	}
 
 	& &__title {
