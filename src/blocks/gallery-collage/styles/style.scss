@@ -16,8 +16,12 @@
 		display: flex;
 		flex-wrap: wrap;
 		list-style-type: none;
-		margin: 0;
-		padding: 0;
+		margin: 0 !important;
+		padding: 0 !important;
+
+		li {
+			list-style: none;
+		}
 	}
 
 	&.has-no-gutter &__item {
