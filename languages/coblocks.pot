@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-07-22T22:10:45+00:00\n"
+"POT-Creation-Date: 2020-07-23T16:10:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -392,7 +392,7 @@ msgstr ""
 #: src/blocks/shape-divider/inspector.js:92
 #: src/blocks/share/inspector.js:200
 #: src/blocks/social-profiles/inspector.js:212
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:147
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:158
 #: src/extensions/colors/index.js:59
 msgid "Color settings"
 msgstr ""
@@ -6987,44 +6987,44 @@ msgstr ""
 msgid "3D"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:122
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:125
 #: src/extensions/coblocks-settings/index.js:44
 msgid "Editor settings"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:131
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:137
 msgid "Layout selector"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:132
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:138
 msgid "Allow layout selection on new pages."
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:140
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:148
 msgid "Typography controls"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:141
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:149
 msgid "Allow block-level typography controls."
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:148
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:159
 msgid "Allow color settings throughout the editor."
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:156
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:169
 msgid "Custom color pickers"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:157
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:170
 msgid "Allow styling with custom colors."
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:167
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:181
 msgid "Gradient styles"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:168
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:182
 msgid "Allow styling with gradient fills."
 msgstr ""
 
