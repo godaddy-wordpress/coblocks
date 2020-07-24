@@ -14,13 +14,14 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies.
  */
-import { Toolbar, Placeholder, Button, TextControl, ServerSideRender } from '@wordpress/components';
+import { Toolbar, Placeholder, Button, TextControl, ServerSideRender, withNotices } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withSelect, dispatch } from '@wordpress/data';
 import { InnerBlocks, BlockControls } from '@wordpress/block-editor';
+import apiFetch from '@wordpress/api-fetch';
 
 const ALLOWED_BLOCKS = [ 'coblocks/event-item' ];
 
@@ -124,8 +125,25 @@ class EventsEdit extends Component {
 	}
 
 	saveExternalCalendarUrl() {
-		this.props.setAttributes( { externalCalendarUrl: this.state.externalCalendarUrl } );
-		this.setState( { isEditing: false } );
+		const { noticeOperations } = this.props;
+
+		apiFetch(
+			{
+				path: '/coblocks/v1/external-calendar-events',
+				method: 'POST',
+				data: { url: this.state.externalCalendarUrl },
+			}
+		).then(
+			() => {
+				this.props.setAttributes( { externalCalendarUrl: this.state.externalCalendarUrl } );
+				this.setState( { isEditing: false } );
+			}
+		).catch(
+			( error ) => {
+				noticeOperations.removeAllNotices();
+				noticeOperations.createErrorNotice( error.message );
+			}
+		);
 	}
 
 	insertNewItem() {
@@ -139,6 +157,7 @@ class EventsEdit extends Component {
 			className,
 			attributes,
 			setAttributes,
+			noticeUI,
 		} = this.props;
 
 		const {
@@ -173,7 +192,8 @@ class EventsEdit extends Component {
 				{ this.state.showExternalCalendarControls && ( ! externalCalendarUrl || this.state.isEditing ) &&
 					<Placeholder
 						icon="rss"
-						label={ __( 'Calendar URL', 'coblocks' ) }>
+						label={ __( 'Calendar URL', 'coblocks' ) }
+						notices={ noticeUI }>
 
 						<TextControl
 							placeholder={ __( 'Enter URL here…', 'coblocks' ) }
@@ -217,4 +237,4 @@ const applyWithSelect = withSelect( ( select, blockData ) => {
 	};
 } );
 
-export default compose( [ applyWithSelect ] )( EventsEdit );
+export default compose( [ applyWithSelect, withNotices ] )( EventsEdit );
