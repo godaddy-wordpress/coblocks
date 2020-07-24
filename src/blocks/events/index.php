@@ -106,7 +106,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 	$ical = coblocks_get_ical( $attributes['externalCalendarUrl'] );
 
 	if ( is_wp_error( $ical ) ) {
-		return $content;
+		return '<div class="wp-block-coblocks-events">' . $ical->get_error_message() . '</div>';
 	}
 
 	$events = ( 'all' === $attributes['eventsRange'] )
