@@ -3,7 +3,7 @@
 
 	const lightboxModals = document.getElementsByClassName( 'has-lightbox' );
 
-	Array.from( lightboxModals ).forEach( ( lightbox, index ) => {
+	Array.from( lightboxModals ).forEach( function( lightbox, index ) {
 		lightbox.className += ' lightbox-' + index + ' ';
 		renderLightboxModal( index );
 	} );
@@ -69,7 +69,7 @@
 		}
 
 		Array.from( images ).forEach( function( img, imgIndex ) {
-			img.addEventListener( 'click', function() {
+			img.closest( 'figure' ).addEventListener( 'click', function() {
 				changeImage( imgIndex );
 			} );
 		} );
@@ -116,8 +116,8 @@
 						imagePreloader[ `img-${ imgIndex }` ] = new window.Image();
 						imagePreloader[ `img-${ imgIndex }` ].src = img.attributes.src.value;
 						imagePreloader[ `img-${ imgIndex }` ][ 'data-caption' ] =
-							( images[ imgIndex ] && images[ imgIndex ].nextElementSibling )
-								? getImageCaption( images[ imgIndex ] ) : '';
+								( images[ imgIndex ] && images[ imgIndex ].nextElementSibling )
+									? getImageCaption( images[ imgIndex ] ) : '';
 					} );
 					setKeyboardListener();
 				}
