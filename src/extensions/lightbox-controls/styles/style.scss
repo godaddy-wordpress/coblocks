@@ -1,0 +1,9 @@
+.edit-post-sidebar .components-panel__body.is-opened ~ .coblocks-lightbox-controls {
+    margin-top: -8px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.edit-post-sidebar .components-panel__body.is-opened ~ .coblocks-lightbox-controls ~ .components-coblocks-replace-image {
+    margin-top: 0;
+}

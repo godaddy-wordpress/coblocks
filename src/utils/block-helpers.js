@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { registerBlockCollection } from '@wordpress/blocks';
+import { registerBlockCollection, getCategories } from '@wordpress/blocks';
 
 /**
  * Determine if the block attributes are empty.
@@ -41,3 +41,11 @@ export const supportsCollections = () => {
 	return false;
 };
 
+/**
+ * Check for which category to assign.
+ *
+ * @return {boolean} Value to indicate function support.
+ */
+export const hasFormattingCategory = getCategories().some( function( category ) {
+	return category.slug === 'formatting';
+} );

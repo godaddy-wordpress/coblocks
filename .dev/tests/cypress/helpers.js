@@ -1,13 +1,26 @@
 /**
  * External dependencies.
  */
-import { kebabCase, startCase } from 'lodash';
+import { startCase } from 'lodash';
+
+/**
+ * Close layout selector.
+ */
+export function closeLayoutSelector() {
+	if ( Cypress.$( '.coblocks-layout-selector-modal' ).length > 0 ) {
+		cy.get( '.coblocks-layout-selector-modal' )
+			.find( '.components-button[aria-label="Close dialog"]' ).first()
+			.click();
+	}
+
+	cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
+}
 
 /**
  * Login to our test WordPress site
  */
 export function loginToSite() {
-	cy.visit( Cypress.env( 'testURL' ) + '/wp-admin/post-new.php?post_type=page' )
+	goTo( '/wp-admin/post-new.php?post_type=page' )
 		.then( ( window ) => {
 			if ( window.location.pathname === '/wp-login.php' ) {
 				// WordPress has a wp_attempt_focus() function that fires 200ms after the wp-login.php page loads.
@@ -20,7 +33,16 @@ export function loginToSite() {
 			}
 		} );
 
-		cy.get( '.block-editor-page' ).should( 'exist' );
+	cy.get( '.block-editor-page' ).should( 'exist' );
+}
+
+/**
+ * Go to a specific URI.
+ *
+ * @param {string} path The URI path to go to.
+ */
+export function goTo( path = '/wp-admin' ) {
+	return cy.visit( Cypress.env( 'testURL' ) + path );
 }
 
 /**
@@ -28,7 +50,6 @@ export function loginToSite() {
  */
 export function disableGutenbergFeatures() {
 	cy.window().then( ( win ) => {
-
 		// Enable "Top Toolbar"
 		if ( ! win.wp.data.select( 'core/edit-post' ).isFeatureActive( 'fixedToolbar' ) ) {
 			win.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'fixedToolbar' );
@@ -76,7 +97,8 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 		blockID.split( '-' )[ 0 ]
 	);
 
-	cy.get( '.components-panel__body.is-opened .editor-block-list-item-coblocks-' + blockID ).first().click();
+	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
+	cy.get( '.components-panel__body.is-opened .editor-block-list-item' + targetClassName ).first().click();
 
 	// Make sure the block was added to our page
 	cy.get( `div[data-type="${ blockName }"]` ).should( 'exist' );
@@ -116,23 +138,23 @@ export function checkForBlockErrors( blockName ) {
  */
 export function viewPage() {
 	cy.get( 'button[aria-label="Settings"]' ).then( ( settingsButton ) => {
-		if ( ! Cypress.$( settingsButton ).hasClass( 'is-pressed' ) && ! Cypress.$( settingsButton ).hasClass('is-toggled') ) {
-			cy.get( settingsButton ).click()
+		if ( ! Cypress.$( settingsButton ).hasClass( 'is-pressed' ) && ! Cypress.$( settingsButton ).hasClass( 'is-toggled' ) ) {
+			cy.get( settingsButton ).click();
 		}
-	})
+	} );
 
 	cy.get( 'button[data-label="Document"]' ).then( ( documentButton ) => {
-		if ( ! Cypress.$( documentButton ).hasClass('is-active') ) {
-			cy.get( documentButton ).click()
+		if ( ! Cypress.$( documentButton ).hasClass( 'is-active' ) ) {
+			cy.get( documentButton ).click();
 		}
-	})
+	} );
 
 	openSettingsPanel( /permalink/i );
 
 	cy.get( '.edit-post-post-link__link' ).then( ( pageLink ) => {
 		const linkAddress = Cypress.$( pageLink ).attr( 'href' );
 		cy.visit( linkAddress );
-	})
+	} );
 }
 
 /**
@@ -149,7 +171,7 @@ export function editPage() {
 export function clearBlocks() {
 	cy.window().then( ( win ) => {
 		win.wp.data.dispatch( 'core/block-editor' ).removeBlocks(
-			win.wp.data.select( 'core/block-editor' ).getBlocks().map( block => block.clientId )
+			win.wp.data.select( 'core/block-editor' ).getBlocks().map( ( block ) => block.clientId )
 		);
 	} );
 }
@@ -221,6 +243,38 @@ export function setInputValue( panelName, settingName, value, ignoreCase = true 
 				.type( `{selectall}${ value }` );
 		} );
 }
+
+/**
+ * Upload helper object. Contains image fixture spec and uploader function.
+ * `helpers.upload.spec` Object containing image spec.
+ * `helpers.upload.imageToBlock` Function performs upload action on specified block.
+ */
+export const upload = {
+	spec: {
+		fileName: '150x150.png',
+		imageBase: '150x150',
+		pathToFixtures: '../.dev/tests/cypress/fixtures/images/',
+	},
+	/**
+	 * Upload image to input element.
+	 *
+	 * @param {string} blockName The name of the block that is upload target
+	 * e.g 'core/image' or 'coblocks/accordion'.
+	 */
+	imageToBlock: ( blockName ) => {
+		const { fileName, pathToFixtures } = upload.spec;
+		cy.fixture( pathToFixtures + fileName ).then( ( fileContent ) => {
+			cy.get( `[data-type="${ blockName }"]` )
+				.find( 'input' )
+				.first()
+				.invoke( 'removeAttr', 'style' ) //makes element easier to interact with/accessible. Headless test fails without this.
+				.upload(
+					{ fileContent, fileName, mimeType: 'image/png' },
+					{ force: true }
+				);
+		} );
+	},
+};
 
 /**
  * Set a Color Setting value to a custom hex color
@@ -310,12 +364,69 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 		.then( ( $inputElem ) => {
 			cy.get( $inputElem ).invoke( 'val' ).then( ( val ) => {
 				if ( val.length > 0 ) {
-					cy.get( $inputElem ).type( `{selectall}${[ val, classes ].join( ' ' )}` );
+					cy.get( $inputElem ).type( `{selectall}${ [ val, classes ].join( ' ' ) }` );
 				} else {
 					cy.get( $inputElem ).type( classes );
 				}
 			} );
 		} );
+}
+
+/**
+ * Press the Undo button in the header toolbar.
+ */
+export function doEditorUndo() {
+	cy.get( '.editor-history__undo' ).click();
+}
+
+/**
+ * Press the Redo button in the header toolbar.
+ */
+export function doEditorRedo() {
+	cy.get( '.editor-history__redo' ).click();
+}
+
+/**
+ * Open the Editor Settings panel.
+ */
+export function openEditorSettingsModal() {
+	// Open "more" menu.
+	cy.get( '.edit-post-more-menu' ).find( 'button' ).click();
+	cy.get( '.components-menu-item__button' ).contains( 'Editor settings' ).click();
+
+	cy.get( '.components-modal__frame' ).contains( 'Editor settings' ).should( 'exist' );
+}
+
+/**
+ * Turn off a setting from the Editor Settings panel.
+ *
+ * @param {string} settingName The label of the setting control.
+ */
+export function turnOffEditorSetting( settingName ) {
+	cy.get( '.components-base-control' ).contains( settingName ).parent().find( 'input[type=checkbox]' )
+		.then( ( element ) => {
+			if ( element[ 0 ].checked ) {
+				element.click();
+			}
+		} );
+
+	cy.get( '.components-base-control' ).contains( settingName ).parent().find( 'input[type=checkbox]' ).should( 'not.be.checked' );
+}
+
+/**
+ * Turn on a setting from the Editor Settings panel.
+ *
+ * @param {string} settingName The label of the setting control.
+ */
+export function turnOnEditorSetting( settingName ) {
+	cy.get( '.components-base-control' ).contains( settingName ).parent().find( 'input[type=checkbox]' )
+		.then( ( element ) => {
+			if ( ! element[ 0 ].checked ) {
+				element.click();
+			}
+		} );
+
+	cy.get( '.components-base-control' ).contains( settingName ).parent().find( 'input[type=checkbox]' ).should( 'be.checked' );
 }
 
 /**

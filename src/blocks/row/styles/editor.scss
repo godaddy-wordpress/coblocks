@@ -25,7 +25,7 @@
 
 	.wp-block[data-type="coblocks/row"] & &__inner {
 
-		div[data-type="coblocks/column"] { 
+		div[data-type="coblocks/column"] {
 			max-width: 100% !important;
 			margin-top: 0;
 			margin-bottom: 0;
@@ -225,95 +225,95 @@
 .has-no-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"] {
 
 	&:nth-child(odd) {
-		margin-right: map-get($spacing, 1) - 0.25em;
+		margin-right: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) - 0.25em);
 	}
 
 	&:nth-child(even) {
-		margin-left: map-get($spacing, 1) - 0.25em;
+		margin-left: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) - 0.25em);
 	}
 
 	&:not(:first-child) {
-		margin-left: map-get($spacing, 1) - 0.25em;
+		margin-left: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) - 0.25em);
 	}
 
 	&:not(:last-child) {
-		margin-right: map-get($spacing, 1) - 0.25em;
+		margin-right: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) - 0.25em);
 	}
 }
 
 .has-small-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"] {
 
 	&:nth-child(odd) {
-		margin-right: map-get($spacing, 1) - 0.6em;
+		margin-right: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) - 0.6em);
 	}
 
 	&:nth-child(even) {
-		margin-left: map-get($spacing, 1) - 0.6em;
+		margin-left: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) - 0.6em);
 	}
 
 	&:not(:first-child) {
-		margin-left: map-get($spacing, 1) - 0.6em;
+		margin-left: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) - 0.6em);
 	}
 
 	&:not(:last-child) {
-		margin-right: map-get($spacing, 1) - 0.6em;
+		margin-right: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) - 0.6em);
 	}
 }
 
 .has-medium-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"] {
 
 	&:nth-child(odd) {
-		margin-right: map-get($spacing, 2) - 0.75em;
+		margin-right: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) - 0.75em);
 	}
 
 	&:nth-child(even) {
-		margin-left: map-get($spacing, 2) - 0.75em;
+		margin-left: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) - 0.75em);
 	}
 
 	&:not(:first-child) {
-		margin-left: map-get($spacing, 2) - 0.75em;
+		margin-left: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) - 0.75em);
 	}
 
 	&:not(:last-child) {
-		margin-right: map-get($spacing, 2) - 0.75em;
+		margin-right: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) - 0.75em);
 	}
 }
 
 .has-large-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"] {
 
 	&:nth-child(odd) {
-		margin-right: map-get($spacing, 3) - 0.75em;
+		margin-right: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) - 0.75em);
 	}
 
 	&:nth-child(even) {
-		margin-left: map-get($spacing, 3) - 0.75em;
+		margin-left: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) - 0.75em);
 	}
 
 	&:not(:first-child) {
-		margin-left: map-get($spacing, 3) - 0.75em;
+		margin-left: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) - 0.75em);
 	}
 
 	&:not(:last-child) {
-		margin-right: map-get($spacing, 3) - 0.75em;
+		margin-right: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) - 0.75em);
 	}
 }
 
 .has-huge-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"] {
 
 	&:nth-child(odd) {
-		margin-right: map-get($spacing, 4);
+		margin-right: var(--coblocks-spacing--4, map-get($spacing, 4));
 	}
 
 	&:nth-child(even) {
-		margin-left: map-get($spacing, 4);
+		margin-left: var(--coblocks-spacing--4, map-get($spacing, 4));
 	}
 
 	&:not(:first-child) {
-		margin-left: map-get($spacing, 4);
+		margin-left: var(--coblocks-spacing--4, map-get($spacing, 4));
 	}
 
 	&:not(:last-child) {
-		margin-right: map-get($spacing, 4);
+		margin-right: var(--coblocks-spacing--4, map-get($spacing, 4));
 	}
 }
 
@@ -339,19 +339,19 @@
 	}
 
 	.is-stacked-on-mobile.has-small-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"]:not(:last-child) {
-		margin-bottom: map-get($spacing, 1);
+		margin-bottom: var(--coblocks-spacing--1, map-get($spacing, 1));
 	}
 
 	.is-stacked-on-mobile.has-medium-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"]:not(:last-child) {
-		margin-bottom: map-get($spacing, 2);
+		margin-bottom: var(--coblocks-spacing--2, map-get($spacing, 2));
 	}
 
 	.is-stacked-on-mobile.has-large-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"]:not(:last-child) {
-		margin-bottom: map-get($spacing, 3);
+		margin-bottom: var(--coblocks-spacing--3, map-get($spacing, 3));
 	}
 
 	.is-stacked-on-mobile.has-huge-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"]:not(:last-child) {
-		margin-bottom: map-get($spacing, 4);
+		margin-bottom: var(--coblocks-spacing--4, map-get($spacing, 4));
 	}
 }
 
@@ -378,19 +378,19 @@
 		}
 
 		.has-small-gutter & {
-			right: -1.4 * map-get($spacing, 1) - 0.5em;
+			right: calc(-1.4 * var(--coblocks-spacing--1, #{map-get($spacing, 1)}) - 0.5em);
 		}
 
 		.has-medium-gutter & {
-			right: -0.8 * map-get($spacing, 2) - 0.75em;
+			right: calc(-0.8 * var(--coblocks-spacing--2, #{map-get($spacing, 2)}) - 0.75em);
 		}
 
 		.has-large-gutter & {
-			right: -0.85 * map-get($spacing, 3) - 0.75em;
+			right: calc(-0.85 * var(--coblocks-spacing--3, #{map-get($spacing, 3)}) - 0.75em);
 		}
 
 		.has-huge-gutter & {
-			right: -0.9 * map-get($spacing, 4) - 0.75em;
+			right: calc(-0.9 * var(--coblocks-spacing--4, #{map-get($spacing, 4)}) - 0.75em);
 		}
 
 		div[data-type="coblocks/row"].is-selected &,
@@ -460,7 +460,7 @@ div[data-type="coblocks/column"]:last-child {
 		flex-direction: column;
 		flex-shrink: 1;
 		list-style: none;
-		margin: 4px 8px 4px 0px;
+		margin: 4px 8px 4px 0;
 	}
 
 	.components-coblocks-row-placeholder__button {

@@ -236,6 +236,7 @@ class Edit extends Component {
 						onResizeStart={ () => {
 							this.setState( { resizing: true } );
 						} }
+						showHandle={ isSelected }
 					>
 						{ getDividerFromStyle( className ) }
 					</ResizableBox>
@@ -288,6 +289,7 @@ class Edit extends Component {
 						onResizeStart={ () => {
 							this.setState( { resizingAlt: true } );
 						} }
+						showHandle={ isSelected }
 					>
 						{ isSelected && (
 							<InlineColorPicker

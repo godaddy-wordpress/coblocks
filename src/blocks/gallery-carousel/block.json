@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/gallery-carousel",
-	"category": "coblocks-galleries",
+	"category": "media",
 	"attributes": {
 		"gutter": {
 			"type": "number",

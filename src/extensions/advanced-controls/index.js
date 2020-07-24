@@ -8,10 +8,10 @@ import classnames from 'classnames';
  */
 import { __ } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
-import { Fragment } from '@wordpress/element';
 import { withSelect } from '@wordpress/data';
 import { hasBlockSupport } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
+import { Fragment, useEffect } from '@wordpress/element';
 import { InspectorAdvancedControls } from '@wordpress/block-editor';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
@@ -93,6 +93,48 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 		const hasStackedControl = hasBlockSupport( name, 'stackedOnMobile' );
 		const withBlockSpacing = hasBlockSupport( name, 'coBlocksSpacing' );
 
+		const handleMargins = ( target ) => {
+			const innerAlignmentBlock = target.querySelector( '.wp-block[data-align]' );
+			const setInnerAlignmentBlock = ( margin, val ) => {
+				if ( !! innerAlignmentBlock ) {
+					innerAlignmentBlock.style[ margin ] = val;
+				}
+			};
+			switch ( target.outerHTML.includes( 'data-coblocks-bottom-spacing' ) ) {
+				case true:
+					target.style.marginBottom = 0;
+					setInnerAlignmentBlock( 'marginBottom', 0 );
+					break;
+				case false:
+					target.style.marginBottom = null;
+					setInnerAlignmentBlock( 'marginBottom', null );
+					break;
+			}
+			switch ( target.outerHTML.includes( 'data-coblocks-top-spacing' ) ) {
+				case true:
+					target.style.marginTop = 0;
+					setInnerAlignmentBlock( 'marginTop', 0 );
+					break;
+				case false:
+					target.style.marginTop = null;
+					setInnerAlignmentBlock( 'marginTop', null );
+
+					break;
+			}
+		};
+
+		useEffect( ( ) => {
+			// Check if alignment wrapper has been applied - Gutenberg 8.2.1
+			if ( !! document.getElementsByClassName( 'block-editor-block-list__layout is-root-container' ).length ) {
+				const targetElems = document.querySelectorAll( '.block-editor-block-list__layout' );
+				targetElems.forEach( ( elem ) => {
+					elem.childNodes.forEach( ( child ) => {
+						handleMargins( child );
+					} );
+				} );
+			}
+		}, [ noBottomMargin, noTopMargin ] );
+
 		return (
 			<Fragment>
 				<BlockEdit { ...props } />
@@ -106,9 +148,9 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 									setAttributes( { isStackedOnMobile: ! isStackedOnMobile } )
 								}
 								help={
-									!! isStackedOnMobile ?
-										__( 'Responsiveness is enabled.', 'coblocks' ) :
-										__(
+									!! isStackedOnMobile
+										? __( 'Responsiveness is enabled.', 'coblocks' )
+										: __(
 											'Toggle to stack elements on top of each other on smaller viewports.', 'coblocks'
 										)
 								}
@@ -215,16 +257,16 @@ const enhance = compose(
 			selected: select( 'core/block-editor' ).getSelectedBlock(),
 			select,
 		};
-	} )
+	} ),
 );
 
 const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
 	return enhance( ( { select, ...props } ) => {
 		let wrapperProps = props.wrapperProps;
 		let customData = {};
-		const attributes = select( 'core/block-editor' ).getBlock( props.clientId )
-			.attributes;
-		const blockName = select( 'core/block-editor' ).getBlockName( props.clientId );
+
+		const block = select( 'core/block-editor' ).getBlock( props.rootClientId || props.clientId );
+		const blockName = select( 'core/block-editor' ).getBlockName( props.rootClientId || props.clientId );
 
 		const withBlockSpacing = hasBlockSupport( blockName, 'coBlocksSpacing' );
 		let withAlignSupport = hasBlockSupport( blockName, 'align' );
@@ -233,8 +275,8 @@ const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 			withAlignSupport = true;
 		}
 
-		if ( withBlockSpacing ) {
-			const { noBottomMargin, noTopMargin } = attributes;
+		if ( withBlockSpacing && block?.attributes ) {
+			const { noBottomMargin, noTopMargin } = block.attributes;
 
 			if ( typeof noTopMargin !== 'undefined' && noTopMargin ) {
 				customData = Object.assign( customData, {

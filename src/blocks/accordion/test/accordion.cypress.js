@@ -33,7 +33,7 @@ describe( 'Block: Accordion', () => {
 		cy.get( '.editor-post-title__input' ).click();
 		cy.get( '[data-type="coblocks/accordion"] .wp-block-coblocks-accordion-item__content' ).should( 'not.exist' );
 
-		cy.get( '[data-type="coblocks/accordion"]' ).click();
+		cy.get( '[data-type="coblocks/accordion-item"]' ).click();
 		helpers.toggleSettingCheckbox( 'Display as open' );
 
 		cy.get( '.editor-post-title__input' ).click();
@@ -46,7 +46,11 @@ describe( 'Block: Accordion', () => {
 	 * Test that multiple accordion items display as expected
 	 */
 	it( 'can add multiple accordion item blocks', () => {
-		cy.get( '[data-type="coblocks/accordion"]' ).click( { force: true } ).find( '.components-coblocks-add-accordion-item__button' ).click( );
+		cy.get( '[data-type="coblocks/accordion"]' ).click( 'top', { force: true } );
+		
+		cy.get('.components-coblocks-add-accordion-item__button' ).trigger( 'mouseup' ); 
+		// Using trigger here instead of click to more accurately represent behavior of event bubbling from user interaction within the editor.
+
 		cy.get( '[data-type="coblocks/accordion"]' ).find( '[data-type="coblocks/accordion-item"]' ).should( 'have.length', 2 );
 
 		helpers.checkForBlockErrors( 'coblocks/accordion' );

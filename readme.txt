@@ -1,12 +1,11 @@
 === Page Builder Gutenberg Blocks – CoBlocks ===
 Author URI: https://www.godaddy.com
-Plugin URI: https://www.coblocks.com
 Contributors: coblocks, godaddy, richtabor, phpbits, eherman24, jonathanbardo, jrtashjian, sbalakr2, dmatuszak, paranoia1906
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 1.24.0
+Stable tag: 2.1.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +13,7 @@ CoBlocks is a suite of page builder WordPress blocks for Gutenberg, with 10+ new
 
 == Description ==
 
-[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the most innovative collection of page building WordPress blocks for the new Gutenberg WordPress block editor.
+CoBlocks is the most innovative collection of page building WordPress blocks for the new Gutenberg WordPress block editor.
 
 With additional blocks and true row and column building, CoBlocks gives you a true page builder experience for Gutenberg.
 
@@ -26,7 +25,7 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 
 
 ## Make Beautiful Web Pages With Gutenberg & CoBlocks
-[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the last page builder you’ll ever need: you get a winning mix of additional WordPress blocks, and page builder functionality. With CoBlocks you have everything you need to make beautiful web pages with the new block editor:
+CoBlocks is the last page builder you’ll ever need: you get a winning mix of additional WordPress blocks, and page builder functionality. With CoBlocks you have everything you need to make beautiful web pages with the new block editor:
 
 * Accordion Block
 * Alert Block
@@ -61,7 +60,7 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Stacked Gallery Block
 
 ## Breakthrough Page Builder System
-[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) features an innovative block system that allows you to create stunning web pages, and even entire websites, with the new WordPress editor.
+CoBlocks features an innovative block system that allows you to create stunning web pages, and even entire websites, with the new WordPress editor.
 
 You get the extra blocks you need <em>and</em> the layout and design functionality for a true page builder experience.
 
@@ -80,15 +79,8 @@ CoBlocks is built to show off the best of Gutenberg, but it requires a Gutenberg
 ## Going Beyond Gutenberg Blocks
 The vision for CoBlocks is to create a suite of Gutenberg blocks to help folks make beautiful websites easily. These newest releases of CoBlocks is the ultimate expression of that vision.
 
-<strong>Join us</strong> in welcoming the future of WordPress blocks:
-
-* [Visit the CoBlocks website](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks)
-* [Follow on Twitter](https://twitter.com/coblocks)
-* [Join our new Community](https://facebook.com/groups/coblocks)
-* [Like us on Facebook](https://www.facebook.com/coblocks/)
-
 ## Built With Developers in Mind
-Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're intersted to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks on GitHub](https://github.com/godaddy-wordpress/coblocks) and join the party. 🎉
+Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're interested to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks on GitHub](https://github.com/godaddy-wordpress/coblocks) and join the party. 🎉
 
 
 == Screenshots ==
@@ -111,7 +103,7 @@ Extensible, adaptable, and open source — CoBlocks is created with theme and pl
 Yes! CoBlocks is 100% free and always will be.
 
 = How do I start using Gutenberg? =
-To get the full experience of the next-generation WordPress block editor, it helps to have a properly Gutenberg-optizied WordPress theme, like [this one](https://wordpress.org/themes/go/). Then install either WordPress 5.0+, or the offical Gutenberg [WordPress plugin](https://wordpress.org/plugins/gutenberg/).
+To get the full experience of the next-generation WordPress block editor, it helps to have a properly Gutenberg-optizied WordPress theme, like [this one](https://wordpress.org/themes/go/) and install WordPress 5.0 or higher.
 
 = How do I use my first CoBlocks Gutenberg blocks? =
 CoBlocks adds its Gutenberg blocks to the new WordPress editor, so you can use them exactly how you would any other WordPress blocks. Once the plugin is installed, create or edit a WordPress page or post, add a new block using the plus icon, and you'll find all of CoBlocks' WordPress blocks available.
@@ -124,22 +116,18 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Enhancements
-* Improve Share block UX [#1433](https://github.com/godaddy-wordpress/coblocks/pull/1433)
-* Use column and gutter utility classes within the Food and Drinks block [#1384](https://github.com/godaddy-wordpress/coblocks/pull/1384)
-* Migrate the Form block's submit button to a child block [#1397](https://github.com/godaddy-wordpress/coblocks/pull/1397)
-* Introduce cross browser E2E testing [#1375](https://github.com/godaddy-wordpress/coblocks/pull/1375)
+* Enable extensibility of CoBlocks settings panel using SlotFill component [#1573](https://github.com/godaddy-wordpress/coblocks/pull/1573)
+* Introduce Lightbox controls to the core/gallery and core/image blocks [#1557](https://github.com/godaddy-wordpress/coblocks/pull/1557)
+* Allow closing of Lightbox with the esc keyboard shortcut [#1567](https://github.com/godaddy-wordpress/coblocks/pull/1567)
 
 ### Bug Fixes
-* Fix duplicate classes with Posts block [#1443](https://github.com/godaddy-wordpress/coblocks/pull/1443)
-* Do not register if coblocksSettings is undefined [#1451](https://github.com/godaddy-wordpress/coblocks/pull/1451)
-* Fix Map block placeholder styles [#1442](https://github.com/godaddy-wordpress/coblocks/pull/1442)
-* Fix Icon block spacing when using custom links [#1430](https://github.com/godaddy-wordpress/coblocks/pull/1430)
-* Remove 100% height on front of site gallery carousels [#1436](https://github.com/godaddy-wordpress/coblocks/pull/1436)
+* Fix Posts and Post Carousel blocks compatibility across Gutenberg versions [#1576](https://github.com/godaddy-wordpress/coblocks/pull/1576)
+* Fix Click to Tweet inline toolbar SVG styles [#1575](https://github.com/godaddy-wordpress/coblocks/pull/1575)
+* Fix Hero block resizable handles error [#1568](https://github.com/godaddy-wordpress/coblocks/pull/1568)
+* Remove list styles from editor for Gallery blocks [#1584](https://github.com/godaddy-wordpress/coblocks/pull/1568)
+* Allow HTML formatted text within Lightbox captions [#1566](https://github.com/godaddy-wordpress/coblocks/pull/1566)
 
 ### Misc
-* Return class instance on register [#1444](https://github.com/godaddy-wordpress/coblocks/pull/1444)
-* Refactor gutter options functionality across blocks [#1445](https://github.com/godaddy-wordpress/coblocks/pull/1445)
-* Validate Composer configuration [#1388](https://github.com/godaddy-wordpress/coblocks/pull/1388)
-* Remove the options parameter passed into wp_json_encode [#1390](https://github.com/godaddy-wordpress/coblocks/pull/1390)
-* Fix variable type in coblocks_render_events_block [#1389](https://github.com/godaddy-wordpress/coblocks/pull/1389)
-* Update Canary release CircleCI deployment [#1431](https://github.com/godaddy-wordpress/coblocks/pull/1431)
+* Implement detection of modified code in extensions when setting up test specs [#1571](https://github.com/godaddy-wordpress/coblocks/pull/1571)
+* Add Accordion block save Jest tests [#1565](https://github.com/godaddy-wordpress/coblocks/pull/1565)
+* Add documentation of releasing new CoBlocks versions [#1583](https://github.com/godaddy-wordpress/coblocks/pull/1586)

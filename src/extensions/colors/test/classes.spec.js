@@ -1,7 +1,7 @@
 /**
  * Internal dependencies.
  */
-import ColorSettingsClasses from './classes';
+import ColorSettingsClasses from '../classes';
 
 describe( 'colors/classes', () => {
 	it( 'returns an empty array of classes if textColor or customTextColor is undefined', () => {

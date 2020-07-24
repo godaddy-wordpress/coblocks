@@ -289,6 +289,7 @@ class GalleryCarouselEdit extends Component {
 							height: parseInt( height + delta.height, 10 ),
 						} );
 					} }
+					showHandle={ isSelected }
 				>
 					<div className={ className }>
 						<div className={ innerClasses }>

@@ -44,7 +44,7 @@
 	word-break: break-word;
 
 	.wp-block-coblocks-icon {
-		margin-bottom: map-get($spacing, 3);
+		margin-bottom: var(--coblocks-spacing--3, map-get($spacing, 3));
 	}
 
 	h1,

@@ -13,14 +13,17 @@ import './extensions/colors/inspector';
 import './extensions/typography';
 import './extensions/attributes';
 import './extensions/advanced-controls';
+import './extensions/padding-controls';
 import './extensions/list-styles';
 import './extensions/button-styles';
 import './extensions/button-controls';
 import './extensions/image-styles';
 import './extensions/cover-styles';
+import './extensions/lightbox-controls';
 import './extensions/replace-image';
 import './extensions/image-crop';
 import './extensions/coblocks-settings/';
+import './extensions/layout-selector';
 
 // Formats
 import './formats';

@@ -31,8 +31,8 @@
 	}
 
 	&__via {
-		margin: 3px;
-		padding-left: 26px !important;
+		margin: 5px;
+		padding-left: 32px !important;
 	}
 
 	&__via-label {
@@ -40,14 +40,11 @@
 		display: flex;
 		flex-basis: 0;
 		font-size: 12px;
-		height: 36px;
-		left: 7px;
+		top: 0;
+		bottom: 0;
+		padding: 0 10px;
 		position: absolute;
 		white-space: nowrap;
-
-		svg {
-			color: $dark-gray-500;
-		}
 	}
 
 	&__via-wrapper {
@@ -72,6 +69,6 @@
 	}
 
 	.edit-post-header-toolbar__block-toolbar &__via-label {
-		padding-left: 2px;
+		padding: 0 10px;
 	}
 }

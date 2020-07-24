@@ -66,6 +66,7 @@ class Inspector extends Component {
 			youtube,
 			yelp,
 			houzz,
+			opensInNewTab,
 		} = attributes;
 
 		const isMaskStyle = includes( className, 'is-style-mask' );
@@ -155,6 +156,11 @@ class Inspector extends Component {
 								className="components-coblocks-inspector__social-button-size"
 							/>
 						) }
+						<ToggleControl
+							label={ __( 'Open links in new tab', 'coblocks' ) }
+							checked={ !! opensInNewTab }
+							onChange={ () => setAttributes( { opensInNewTab: ! opensInNewTab } ) }
+						/>
 					</PanelBody>
 					<PanelBody title={ __( 'Profiles', 'coblocks' ) } initialOpen={ false }>
 						<div className="components-social-links-list">

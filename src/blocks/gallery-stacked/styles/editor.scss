@@ -1,4 +1,4 @@
-.wp-block[data-type="coblocks/gallery-stacked"] {
+[data-type="coblocks/gallery-stacked"] {
 
 	&[data-align="left"],
 	&[data-align="right"] {
@@ -11,6 +11,8 @@
 	// Fix issue where selected images are not wider than the viewport.
 	.coblocks-gallery--item:not(.is-appender) .coblocks-gallery--figure {
 		display: inline-block;
+		margin-left: 0;
+		margin-right: 0;
 	}
 
 	.has-fullwidth-images .coblocks-gallery--figure {
@@ -22,8 +24,11 @@
 		margin-bottom: 35px;
 	}
 
-	li:nth-last-of-type(1) figure {
-		margin-bottom: 0 !important;
+	.components-coblocks-gallery-item__image-link ~ .coblocks-gallery--caption {
+		bottom: 3em;
+		position: absolute;
+		width: 100%;
+		justify-content: center;
 	}
 }
 

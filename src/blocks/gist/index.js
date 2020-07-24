@@ -7,6 +7,7 @@ import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
+import { hasFormattingCategory } from '../../utils/block-helpers';
 
 /**
  * WordPress dependencies
@@ -23,6 +24,7 @@ const settings = {
 	title: __( 'Gist', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Embed GitHub gists by adding a gist link.', 'coblocks' ),
+	category: hasFormattingCategory ? 'common' : 'embed',
 	icon,
 	keywords: [
 		'coblocks',

@@ -1,11 +1,14 @@
 /*
  * Include our constants
  */
-import * as helpers from '../../../.dev/tests/cypress/helpers';
+import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Extension: CoBlocks Settings', function() {
 	let supportsGradients = false;
 	beforeEach( function() {
+		helpers.closeLayoutSelector();
+		helpers.disableGutenbergFeatures();
+
 		cy.get( '.edit-post-more-menu' ).click();
 		cy.get( '.components-menu-group' ).find( 'button' ).contains( 'Editor settings' ).click();
 		cy.get( '.coblocks-modal__content' ).find( 'input[type="checkbox"]' ).each( ( checkbox ) => {
@@ -25,8 +28,7 @@ describe( 'Extension: CoBlocks Settings', function() {
 	 */
 	it( 'Can control typography settings as expected.', function() {
 		helpers.addBlockToPost( 'coblocks/row', true );
-		cy.get( 'div[aria-label="Select row columns"]' ).find( 'div:nth-child(1) button' ).click( { force: true } );
-		cy.get( '.wp-block-coblocks-row' ).click( { force: true } );
+		cy.get( '.block-editor-block-variation-picker__variation' ).first().click();
 
 		cy.get( '.edit-post-more-menu' ).click();
 		cy.get( '.components-menu-group' ).find( 'button' ).contains( 'Editor settings' ).click();
