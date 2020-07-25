@@ -31,7 +31,9 @@
 		"lint:js": "wp-scripts lint-js",
 		"lint:php": "wp-scripts env lint-php",
 		"test:php": "wp-scripts env test-php",
-		"test:unit": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js"
+		"test:unit": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js",
+		"blockbook:start": "blockbook start",
+		"blockbook:build": "blockbook build"
 	},
 	"wp-env": {
 		"plugin-dir": "coblocks",
