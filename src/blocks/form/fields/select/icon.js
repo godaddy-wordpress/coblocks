@@ -1,6 +1,6 @@
 /**
  * WordPress dependencies
  */
-import { Path, SVG } from '@wordpress/components';
+import { Path, SVG, Circle, G } from '@wordpress/components';
 
-export default <SVG fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/SVG"><Path d="m5 7.25h14c.6904 0 1.25.55964 1.25 1.25v7c0 .6904-.5596 1.25-1.25 1.25h-14c-.69036 0-1.25-.5596-1.25-1.25v-7c0-.69036.55964-1.25 1.25-1.25z" stroke="currentColor" stroke-width="1.5" fill="none" /><Path clip-rule="evenodd" d="m16 12.75h-8v-1.5h8z" fill="currentColor" fill-rule="evenodd" /></SVG>;
+export default <SVG fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><G stroke="currentColor" stroke-width="1.5" fill="none"><Circle cx="12" cy="12" r="7.25" /><Path d="m8 11 3.7141 2.7755c.1781.133.4225.1326.6001-.001l3.6858-2.7745" /></G></SVG>;
