@@ -1,7 +1,13 @@
+/**
+ * CoBlocks Globals
+ */
+window.coblocksBlockData = {};
+window.coblocksSettings = {};
+
 import '../src/blocks.js';
 import '../src/styles/style.scss';
 import '../src/styles/editor.scss';
-import { registerBlockType } from 'blockbook-api';
+import { registerBlockType } from 'blockbook-api';
 
 registerBlockType( 'coblocks/accordion' );
 registerBlockType( 'coblocks/alert' );
