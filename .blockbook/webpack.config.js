@@ -1,9 +1,18 @@
+const path = require( 'path' );
 const nodeSassGlobImporter = require( 'node-sass-glob-importer' );
 const postcssConfig = require( '../.dev/config/postcss.config.js' );
 
 module.exports = ( baseConfig ) => {
 	return {
 		...baseConfig,
+		output: {
+			...baseConfig.output,
+			path: path.resolve( process.cwd(), 'blockbook' ),
+		},
+		devServer: {
+			...baseConfig.devServer,
+			contentBase: path.resolve( process.cwd(), 'blockbook' ),
+		},
 		module: {
 			...baseConfig.module,
 			rules: [
