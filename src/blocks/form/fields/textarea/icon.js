@@ -3,4 +3,4 @@
  */
 import { Path, SVG, G } from '@wordpress/components';
 
-export default <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><G fill="none" fillRule="evenodd"><Path d="m0 0h24v24h-24z" /><Path d="m4 11h16v2h-16zm0-4h16v2h-16zm0 8h10v2h-10z" fill="currentColor" fillRule="nonzero" /></G></SVG>;
+export default <SVG fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/SVG"><G clip-rule="evenodd" fill="currentColor" fill-rule="evenodd"><Path d="m19.9998 15.5h-16.00004v-1.5h16.00004z" /><Path d="m15.9998 5.5h-12.00004v-1.5h12.00004z" /><Path d="m19.9998 10.5h-16.00004v-1.5h16.00004z" /><Path d="m19.9998 20h-16.00004v-1.5h16.00004z" /></G></SVG>;
