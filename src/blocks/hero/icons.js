@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { SVG, Path } from '@wordpress/components';
+import { SVG, Path, G } from '@wordpress/components';
 
 /**
  * Block user interface icons
@@ -9,7 +9,7 @@ import { SVG, Path } from '@wordpress/components';
 const icons = {};
 
 icons.grid =
-	<SVG viewBox="0 0 20 20" height="20" width="20" xmlns="http://www.w3.org/2000/svg"><Path d="m11.5 17h4v-2h-4zm4-12h2v-3h-2zm-15-3v13c0 1.1.9 2 2 2h9v-2h-9v-13h13v-2h-13c-1.1 0-2 .9-2 2zm15-2v2h2c0-1.1-.9-2-2-2zm-10 17h2v-16h-2zm-5-7v2h16v-2zm0-5v2h16v-2zm10 12h2v-16h-2zm5-2h2v-2h-2zm0-2h2v-8h-2zm0 4c1.1 0 2-.9 2-2h-2z" transform="matrix(0 1 -1 0 18.5 1)" /></SVG>;
+	<SVG fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><G fill="currentColor"><Path d="m4 4h2v2h-2z" /><Path d="m11 4h2v2h-2z" /><Path d="m18 4h2v2h-2z" /><Path d="m4 18h2v2h-2z" /><Path d="m11 18h2v2h-2z" /><Path d="m18 18h2v2h-2z" /><Path d="m4 11h2v2h-2z" /><Path d="m10 10h4v4h-4z" /><Path d="m18 11h2v2h-2z" /></G></SVG>;
 
 export default icons;
 
