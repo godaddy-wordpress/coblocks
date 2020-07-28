@@ -6,12 +6,12 @@ import { Path, SVG, G } from '@wordpress/components';
 const icons = {};
 
 icons.mediaCardLeft =
-	<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><path d="M4 18h6V6H4v12zm9-10v1.5h7V8h-7zm0 7.5h7V14h-7v1.5z"></path></svg>;
+	<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><Path d="M4 18h6V6H4v12zm9-10v1.5h7V8h-7zm0 7.5h7V14h-7v1.5z"></Path></SVG>;
 
 icons.mediaCardRight =
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><path d="M14 6v12h6V6h-6zM4 9.5h7V8H4v1.5zm0 6h7V14H4v1.5z"></path></svg>;
+	<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><Path d="M14 6v12h6V6h-6zM4 9.5h7V8H4v1.5zm0 6h7V14H4v1.5z"></Path></SVG>;
 
 icons.mediaContainer =
-	<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><Path d="M18 2l2 4h-2l-2-4h-3l2 4h-2l-2-4h-1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V2zm2 12H10V4.4L11.8 8H20z" /><Path d="M14 20H4V10h3V8H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3h-2z" /><Path d="M5 19h8l-1.59-2H9.24l-.84 1.1L7 16.3 5 19z" /></SVG>;
+	<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><Path d="m5 9.75h8c.6904 0 1.25.5596 1.25 1.25v8c0 .6904-.5596 1.25-1.25 1.25h-8c-.69036 0-1.25-.5596-1.25-1.25v-8c0-.6904.55964-1.25 1.25-1.25z" stroke="currentColor" stroke-width="1.5" fill="none"/><Path d="m7.67706 16.8438v-3.6876l3.07294 1.8438z" fill="currentColor" /><G stroke="currentColor" stroke-width="1.5" fill="none"><Path d="m17.0039 14.25h1.9961c.6904 0 1.25-.5596 1.25-1.25v-8c0-.69036-.5597-1.25-1.25-1.25h-7.9649c-.6904 0-1.25002.55964-1.25002 1.25v1.98437" /><Path d="m10.75 9.83333 2.875-3.11458 2.5938 2.46875 1.5-1.6875 2.5312 2.33333" stroke-linejoin="round" /></G></SVG>
 
 export default icons;
