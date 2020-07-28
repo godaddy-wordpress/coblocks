@@ -169,7 +169,7 @@
 
 	// Width tag that pops up.
 	.coblocks-resizeable-width {
-		background: theme(primary);
+		background: var(--wp-admin-theme-color, #007cba );
 		border: 2px solid $white;
 		border-radius: 4px;
 		color: $white;
@@ -208,7 +208,7 @@
 
 		&::after {
 			border-color: rgba(0, 133, 186, 0);
-			border-top-color: theme(primary);
+			border-top-color: var(--wp-admin-theme-color, #007cba );
 			border-width: 4px;
 			margin-left: -4px;
 		}

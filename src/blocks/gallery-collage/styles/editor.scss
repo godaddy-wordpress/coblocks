@@ -14,7 +14,7 @@
 
 			&::after {
 				bottom: 0;
-				box-shadow: inset 0 0 0 4px theme(primary);
+				box-shadow: inset 0 0 0 4px var(--wp-admin-theme-color, #007cba );
 				content: "";
 				left: 0;
 				position: absolute;

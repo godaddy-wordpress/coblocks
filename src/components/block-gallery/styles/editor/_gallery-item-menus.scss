@@ -1,5 +1,5 @@
 .components-coblocks-gallery-item__remove-menu {
-	background-color: theme(primary);
+	background-color: var(--wp-admin-theme-color, #007cba );
 	display: inline-flex;
 	padding: 4px;
 	position: absolute;
@@ -26,7 +26,7 @@
 	}
 
 	.is-selected & {
-		background-color: theme(primary);
+		background-color: var(--wp-admin-theme-color, #007cba );
 
 		.components-button {
 			color: $white;
