@@ -12,7 +12,6 @@ import { registerBlockType } from 'blockbook-api';
 registerBlockType( 'coblocks/accordion' );
 registerBlockType( 'coblocks/alert' );
 registerBlockType( 'coblocks/author' );
-registerBlockType( 'coblocks/buttons' );
 registerBlockType( 'coblocks/click-to-tweet' );
 registerBlockType( 'coblocks/dynamic-separator' );
 registerBlockType( 'coblocks/events' );
