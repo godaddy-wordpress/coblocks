@@ -19,7 +19,7 @@ const { name, category, attributes } = metadata;
 
 const settings = {
 	/* translators: block name */
-	title: __( 'Logos & Badges', 'coblocks' ),
+	title: __( 'Logos', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add logos, badges, or certifications to build credibility.', 'coblocks' ),
 	icon,
