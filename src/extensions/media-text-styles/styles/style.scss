@@ -1,0 +1,223 @@
+.wp-block-media-text .wp-block-media-text__content *:first-child {
+	margin-top: 0;
+}
+
+.wp-block-media-text.is-style-card {
+
+	.wp-block-media-text__content {
+		background-color: var(--wp--preset--color--background, #fff);
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: -5rem;
+		padding: var(--coblocks-spacing--4, map-get($spacing, 4));
+		width: 95%;
+		z-index: 2;
+
+		@include break-small() {
+			margin-left: initial;
+			margin-right: initial;
+			margin-top: initial;
+			padding: calc(2 * var(--coblocks-spacing--3, map-get($spacing, 3)));
+			width: auto;
+		}
+
+		@include break-large() {
+			padding: calc(2 * var(--coblocks-spacing--6, map-get($spacing, 6)));
+		}
+	}
+
+	&.has-media-on-the-right .wp-block-media-text__content {
+		margin-top: initial;
+		margin-bottom: -5rem;
+
+		@include break-small() {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.wp-block-media-text.is-style-offset {
+
+	.wp-block-media-text__content {
+		margin-top: -3rem;
+		margin-left: auto;
+		margin-right: auto;
+		width: 90%;
+
+		@include break-small() {
+			margin-top: initial;
+			margin-left: initial;
+			margin-right: initial;
+			width: auto;
+		}
+
+		@include break-small() {
+			margin-left: -5rem;
+			z-index: 2;
+		}
+
+		@include break-large() {
+			margin-left: -10rem;
+		}
+	}
+
+	&.has-media-on-the-right .wp-block-media-text__content {
+		margin-left: initial;
+		margin-right: initial;
+		margin-top: initial;
+		width: auto;
+
+		@include break-small() {
+			margin-left: 0;
+			margin-right: -5rem;
+			width: 175%;
+		}
+
+		@include break-large() {
+			margin-right: -10rem;
+		}
+	}
+}
+
+
+.wp-block-media-text.is-style-card,
+.wp-block-media-text.is-style-overlap {
+
+	.wp-block-media-text__content {
+
+		@include break-small() {
+			margin-left: -6rem;
+			z-index: 2;
+		}
+	}
+
+	&.has-media-on-the-right .wp-block-media-text__content {
+
+		@include break-small() {
+			margin-left: 0;
+			margin-right: -6rem;
+		}
+	}
+}
+
+.wp-block-media-text.is-style-overlap {
+
+	.wp-block-media-text__content {
+		margin-left: auto;
+		margin-right: auto;
+		width: 90%;
+
+		@include break-small() {
+			margin-left: -3rem;
+			margin-right: inherit;
+			margin-top: inherit;
+			width: auto;
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			background-color: var(--wp--preset--color--background, #fff);
+			box-shadow: 0.5rem 0 0 var(--wp--preset--color--background, #fff), -0.5rem 0 0 var(--wp--preset--color--background, #fff);
+			display: inline;
+		}
+
+		.wp-block-buttons {
+			margin-top: var(--coblocks-spacing--5, map-get($spacing, 5));
+		}
+	}
+
+	&.has-media-on-the-right .wp-block-media-text__content {
+		width: 100%;
+
+		@include break-small() {
+			margin-left: 0.5rem;
+			width: 175%;
+		}
+	}
+}
+
+.wp-block-media-text.is-style-card,
+.wp-block-media-text.is-style-overlap,
+.wp-block-media-text.is-style-offset {
+
+	&.is-vertically-aligned-bottom .wp-block-media-text__content {
+
+		@include break-medium() {
+			margin-bottom: 2rem;
+		}
+
+		@include break-large() {
+			margin-bottom: 4rem;
+		}
+
+		@include break-wide() {
+			margin-bottom: 6rem;
+		}
+	}
+
+	&.is-vertically-aligned-top:not(.is-image-fill) .wp-block-media-text__content {
+
+		@include break-medium() {
+			margin-top: 2rem;
+		}
+
+		@include break-large() {
+			margin-top: 4rem;
+		}
+
+		@include break-wide() {
+			margin-top: 6rem;
+		}
+	}
+}
+
+// Editor UI adjustments.
+.editor-styles-wrapper {
+
+	.wp-block-media-text.is-style-card,
+	.wp-block-media-text.is-style-offset,
+	.wp-block-media-text.is-style-overlap {
+
+		&.has-media-on-the-left .wp-block-media-text__content {
+			width: calc(100% - 1px);
+		}
+
+		&.has-media-on-the-right .wp-block-media-text__content {
+			left: 1px;
+		}
+
+		// Move core's handle out of the way.
+		.components-resizable-box__handle::after {
+			top: -8px;
+		}
+
+		&.is-selected .wp-block-media-text__media::after {
+			background: var(--wp-admin-theme-color, #007cba);
+			border-radius: 50%;
+			border: 2px solid $white;
+			bottom: -7px;
+			content: "";
+			cursor: inherit;
+			display: block;
+			height: 15px;
+			position: absolute;
+			width: 15px;
+			right: -8px;
+			z-index: 9999;
+		}
+
+		// Move the handle if the media is on the right.
+		&.has-media-on-the-right .wp-block-media-text__media::after {
+			left: -8px;
+			right: inherit;
+		}
+	}
+
+	.wp-block-media-text.is-style-overlap .wp-block-media-text__content .wp-block.wp-block-buttons {
+		margin-top: var(--coblocks-spacing--5, map-get($spacing, 5)) !important;
+	}
+}
