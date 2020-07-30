@@ -78,7 +78,7 @@
 		"@wordpress/postcss-themes": "^2.2.0",
 		"@wordpress/scripts": "7.1.4",
 		"autoprefixer": "^9.7.5",
-		"blockbook-cli": "^0.5.1",
+		"blockbook-cli": "^0.5.2",
 		"css-loader": "^3.2.1",
 		"cypress": "^4.7.0",
 		"cypress-file-upload": "^3.5.3",
