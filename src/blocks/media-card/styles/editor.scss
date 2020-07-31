@@ -90,7 +90,7 @@
 	&:not(.has-no-media).is-selected .wp-block-coblocks-media-card__media-container {
 
 		&::after {
-			background: theme(primary);
+			background: var(--wp-admin-theme-color, #007cba);
 			border: 2px solid $white;
 			border-radius: 50%;
 			bottom: -7px;
