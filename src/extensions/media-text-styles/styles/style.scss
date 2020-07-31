@@ -26,7 +26,6 @@
 	&.has-media-on-the-right .wp-block-media-text__content {
 		margin-top: initial;
 		margin-bottom: calc(-1 * var(--coblocks-spacing--8, map-get($spacing, 8)));
-		left: 1px;
 
 		@include break-small() {
 			margin-bottom: 0;
@@ -34,7 +33,7 @@
 	}
 }
 
-.wp-block-media-text.is-style-offset {
+.wp-block-media-text.is-style-overlap {
 
 	.wp-block-media-text__content {
 		margin-top: calc(-1 * var(--coblocks-spacing--4, map-get($spacing, 4)));
@@ -79,7 +78,7 @@
 
 
 .wp-block-media-text.is-style-card,
-.wp-block-media-text.is-style-overlap {
+.wp-block-media-text.is-style-outline {
 
 	.wp-block-media-text__content {
 
@@ -98,7 +97,7 @@
 	}
 }
 
-.wp-block-media-text.is-style-overlap {
+.wp-block-media-text.is-style-outline {
 
 	.wp-block-media-text__content {
 		margin-left: auto;
@@ -117,7 +116,8 @@
 		h3,
 		h4,
 		h5,
-		h6 {
+		h6,
+		p {
 			background-color: var(--wp--preset--color--background, #fff);
 			box-shadow: 0.5rem 0 0 var(--wp--preset--color--background, #fff), -0.5rem 0 0 var(--wp--preset--color--background, #fff);
 			display: inline;
@@ -139,8 +139,8 @@
 }
 
 .wp-block-media-text.is-style-card,
-.wp-block-media-text.is-style-overlap,
-.wp-block-media-text.is-style-offset {
+.wp-block-media-text.is-style-outline,
+.wp-block-media-text.is-style-overlap {
 
 	&.is-vertically-aligned-bottom .wp-block-media-text__content {
 
@@ -180,17 +180,24 @@
 // Editor UI adjustments.
 .editor-styles-wrapper {
 
-	.wp-block-media-text.is-style-card,
-	.wp-block-media-text.is-style-offset,
-	.wp-block-media-text.is-style-overlap {
+	.wp-block-media-text.is-style-card .wp-block-media-text__content {
 
-		&.has-media-on-the-left .wp-block-media-text__content {
-			width: calc(100% - 1px);
+		@include break-small() {
+			right: 1px;
 		}
+	}
 
-		&.has-media-on-the-right .wp-block-media-text__content {
+	.wp-block-media-text.is-style-card.has-media-on-the-right .wp-block-media-text__content {
+
+		@include break-small() {
 			left: 1px;
+			right: initial;
 		}
+	}
+
+	.wp-block-media-text.is-style-card,
+	.wp-block-media-text.is-style-overlap,
+	.wp-block-media-text.is-style-outline {
 
 		// Move core's handle out of the way.
 		.components-resizable-box__handle::after {
@@ -219,7 +226,7 @@
 		}
 	}
 
-	.wp-block-media-text.is-style-overlap .wp-block-media-text__content .wp-block.wp-block-buttons {
+	.wp-block-media-text.is-style-outline .wp-block-media-text__content .wp-block.wp-block-buttons {
 		margin-top: var(--coblocks-spacing--5, map-get($spacing, 5)) !important;
 	}
 }

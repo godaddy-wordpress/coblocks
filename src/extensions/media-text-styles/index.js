@@ -19,15 +19,15 @@ registerBlockStyle( 'core/media-text', {
 } );
 
 registerBlockStyle( 'core/media-text', {
-	name: 'offset',
+	name: 'overlap',
 	/* translators: block style */
-	label: __( 'Offset', 'coblocks' ),
+	label: __( 'Overlap', 'coblocks' ),
 	isDefault: false,
 } );
 
 registerBlockStyle( 'core/media-text', {
-	name: 'overlap',
+	name: 'outline',
 	/* translators: block style */
-	label: __( 'Overlap', 'coblocks' ),
+	label: __( 'Outline', 'coblocks' ),
 	isDefault: false,
 } );
