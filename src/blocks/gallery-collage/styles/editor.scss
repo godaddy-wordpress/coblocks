@@ -14,13 +14,14 @@
 
 			&::after {
 				bottom: 0;
-				box-shadow: inset 0 0 0 4px theme(primary);
+				box-shadow: 0 0 0 1.5px var(--wp-admin-theme-color, #007cba);
 				content: "";
 				left: 0;
 				position: absolute;
 				right: 0;
 				top: 0;
 				z-index: 1;
+				border-radius: 2px
 			}
 		}
 	}
@@ -32,6 +33,9 @@
 }
 
 [data-type="coblocks/gallery-collage"] {
+	&.block-editor-block-list__block::after {
+		display: none;
+	}
 
 	ul {
 		list-style-type: none;

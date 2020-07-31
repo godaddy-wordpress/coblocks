@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-07-24T18:08:37+00:00\n"
+"POT-Creation-Date: 2020-07-31T17:35:00+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -1879,15 +1879,15 @@ msgid "Rounded corners"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:140
-msgid "Thumbnails"
-msgstr ""
-
-#: src/blocks/gallery-carousel/inspector.js:146
-#: src/blocks/gallery-collage/inspector.js:109
+#: src/blocks/gallery-collage/inspector.js:97
 #: src/blocks/gallery-masonry/inspector.js:102
 #: src/blocks/gallery-offset/inspector.js:104
 #: src/blocks/gallery-stacked/inspector.js:115
 msgid "Lightbox"
+msgstr ""
+
+#: src/blocks/gallery-carousel/inspector.js:146
+msgid "Thumbnails"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:156
@@ -1965,14 +1965,14 @@ msgstr ""
 msgid "Shadow"
 msgstr ""
 
-#: src/blocks/gallery-collage/inspector.js:97
+#: src/blocks/gallery-collage/inspector.js:103
 #: src/blocks/gallery-masonry/inspector.js:109
 #: src/blocks/gallery-offset/inspector.js:110
 #: src/blocks/gallery-stacked/inspector.js:122
 msgid "Captions"
 msgstr ""
 
-#: src/blocks/gallery-collage/inspector.js:103
+#: src/blocks/gallery-collage/inspector.js:109
 #: src/blocks/gallery-masonry/inspector.js:117
 #: src/blocks/gallery-offset/inspector.js:116
 msgid "Caption style"
@@ -5517,11 +5517,11 @@ msgid "Aubergine"
 msgstr ""
 
 #: src/blocks/media-card/controls.js:28
-msgid "Media on right"
+msgid "Show media on left"
 msgstr ""
 
 #: src/blocks/media-card/controls.js:33
-msgid "Media on left"
+msgid "Show media on right"
 msgstr ""
 
 #. translators: content placeholder
@@ -7040,7 +7040,7 @@ msgstr ""
 msgid "Top Wave"
 msgstr ""
 
-#: src/extensions/image-crop/index.js:171
+#: src/extensions/image-crop/index.js:170
 msgid "Crop settings"
 msgstr ""
 

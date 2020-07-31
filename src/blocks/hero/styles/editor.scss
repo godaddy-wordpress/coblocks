@@ -33,7 +33,7 @@
 
 				&::before,
 				&::after {
-					background: theme(primary);
+					background: var(--wp-admin-theme-color, #007cba);
 					content: "";
 					display: block;
 					height: 100%;
