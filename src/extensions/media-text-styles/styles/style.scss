@@ -1,14 +1,10 @@
-.wp-block-media-text .wp-block-media-text__content *:first-child {
-	margin-top: 0;
-}
-
 .wp-block-media-text.is-style-card {
 
 	.wp-block-media-text__content {
 		background-color: var(--wp--preset--color--background, #fff);
 		margin-left: auto;
 		margin-right: auto;
-		margin-top: -5rem;
+		margin-top: calc(-1 * var(--coblocks-spacing--8, map-get($spacing, 8)));
 		padding: var(--coblocks-spacing--4, map-get($spacing, 4));
 		width: 95%;
 		z-index: 2;
@@ -18,7 +14,8 @@
 			margin-right: initial;
 			margin-top: initial;
 			padding: calc(2 * var(--coblocks-spacing--3, map-get($spacing, 3)));
-			width: auto;
+			width: initial;
+			right: 1px;
 		}
 
 		@include break-large() {
@@ -28,7 +25,8 @@
 
 	&.has-media-on-the-right .wp-block-media-text__content {
 		margin-top: initial;
-		margin-bottom: -5rem;
+		margin-bottom: calc(-1 * var(--coblocks-spacing--8, map-get($spacing, 8)));
+		left: 1px;
 
 		@include break-small() {
 			margin-bottom: 0;
@@ -39,7 +37,7 @@
 .wp-block-media-text.is-style-offset {
 
 	.wp-block-media-text__content {
-		margin-top: -3rem;
+		margin-top: calc(-1 * var(--coblocks-spacing--4, map-get($spacing, 4)));
 		margin-left: auto;
 		margin-right: auto;
 		width: 90%;
@@ -52,12 +50,12 @@
 		}
 
 		@include break-small() {
-			margin-left: -5rem;
+			margin-left: calc(-1 * var(--coblocks-spacing--8, map-get($spacing, 8)));
 			z-index: 2;
 		}
 
 		@include break-large() {
-			margin-left: -10rem;
+			margin-left: calc(-2 * var(--coblocks-spacing--10, map-get($spacing, 10)));
 		}
 	}
 
@@ -69,12 +67,12 @@
 
 		@include break-small() {
 			margin-left: 0;
-			margin-right: -5rem;
+			margin-right: calc(-1 * var(--coblocks-spacing--8, map-get($spacing, 8)));
 			width: 175%;
 		}
 
 		@include break-large() {
-			margin-right: -10rem;
+			margin-right: calc(-2 * var(--coblocks-spacing--10, map-get($spacing, 10)));
 		}
 	}
 }
@@ -86,7 +84,7 @@
 	.wp-block-media-text__content {
 
 		@include break-small() {
-			margin-left: -6rem;
+			margin-left: calc(-1 * var(--coblocks-spacing--10, map-get($spacing, 10)));
 			z-index: 2;
 		}
 	}
@@ -95,7 +93,7 @@
 
 		@include break-small() {
 			margin-left: 0;
-			margin-right: -6rem;
+			margin-right: calc(-1 * var(--coblocks-spacing--10, map-get($spacing, 10)));
 		}
 	}
 }
@@ -108,7 +106,7 @@
 		width: 90%;
 
 		@include break-small() {
-			margin-left: -3rem;
+			margin-left: calc(-1 * var(--coblocks-spacing--10, map-get($spacing, 10)));
 			margin-right: inherit;
 			margin-top: inherit;
 			width: auto;
@@ -146,33 +144,37 @@
 
 	&.is-vertically-aligned-bottom .wp-block-media-text__content {
 
-		@include break-medium() {
-			margin-bottom: 2rem;
+		@include break-small() {
+			margin-bottom: var(--coblocks-spacing--4, map-get($spacing, 4));
 		}
 
 		@include break-large() {
-			margin-bottom: 4rem;
+			margin-bottom: var(--coblocks-spacing--6, map-get($spacing, 6));
 		}
 
 		@include break-wide() {
-			margin-bottom: 6rem;
+			margin-bottom: var(--coblocks-spacing--10, map-get($spacing, 10));
 		}
 	}
 
 	&.is-vertically-aligned-top:not(.is-image-fill) .wp-block-media-text__content {
 
-		@include break-medium() {
-			margin-top: 2rem;
+		@include break-small() {
+			margin-top: var(--coblocks-spacing--4, map-get($spacing, 4));
 		}
 
 		@include break-large() {
-			margin-top: 4rem;
+			margin-top: var(--coblocks-spacing--6, map-get($spacing, 6));
 		}
 
 		@include break-wide() {
-			margin-top: 6rem;
+			margin-top: var(--coblocks-spacing--10, map-get($spacing, 10));
 		}
 	}
+}
+
+.wp-block-media-text .wp-block-media-text__content *:first-child {
+	margin-top: 0;
 }
 
 // Editor UI adjustments.
