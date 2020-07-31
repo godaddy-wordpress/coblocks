@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import { iconsat } from './icon';
+import icons from './icons';
 
 /**
  * WordPress dependencies
@@ -37,7 +37,7 @@ class Controls extends Component {
 								className="wp-block-coblocks-click-to-tweet__via-label"
 								htmlFor="wp-block-coblocks-click-to-tweet__via"
 							>
-								{ iconsat }
+								{ icons.at }
 							</label>
 							<input
 								aria-label={ __( 'Twitter Username', 'coblocks' ) }
