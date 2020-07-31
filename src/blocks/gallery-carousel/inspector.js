@@ -119,9 +119,9 @@ class Inspector extends Component {
 									className={ 'block-height-control__input' }
 									onChange={ ( event ) => {
 										const unprocessedValue = event.target.value;
-										const inputValue = unprocessedValue !== '' ?
-											parseInt( event.target.value, 10 ) :
-											undefined;
+										const inputValue = unprocessedValue !== ''
+											? parseInt( event.target.value, 10 )
+											: undefined;
 										if ( ( inputValue < 0 ) && inputValue !== undefined ) {
 											this.setTemporayInput( inputValue );
 											this.setHeightTo( 0 );
@@ -137,16 +137,16 @@ class Inspector extends Component {
 							</BaseControl>
 							}
 							<ToggleControl
-								label={ __( 'Thumbnails', 'coblocks' ) }
-								checked={ !! thumbnails }
-								onChange={ () => setAttributes( { thumbnails: ! thumbnails } ) }
-								help={ this.getThumbnailNavigationHelp }
-							/>
-							<ToggleControl
 								label={ __( 'Lightbox', 'coblocks' ) }
 								checked={ !! lightbox }
 								onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
 								help={ this.getLightboxHelp }
+							/>
+							<ToggleControl
+								label={ __( 'Thumbnails', 'coblocks' ) }
+								checked={ !! thumbnails }
+								onChange={ () => setAttributes( { thumbnails: ! thumbnails } ) }
+								help={ this.getThumbnailNavigationHelp }
 							/>
 						</PanelBody>
 						<SliderPanel { ...this.props } />
