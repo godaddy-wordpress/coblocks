@@ -4,6 +4,7 @@
  */
 import classnames from 'classnames';
 import map from 'lodash/map';
+import { pick, isEmpty } from 'lodash';
 
 /**
  * WordPress dependencies
@@ -92,6 +93,28 @@ class LayoutSelector extends Component {
 		this.useTemplateLayout = this.useTemplateLayout.bind( this );
 		this.useEmptyTemplateLayout = this.useEmptyTemplateLayout.bind( this );
 		this.renderContent = this.renderContent.bind( this );
+		this.detectImageBlocks = this.detectImageBlocks.bind( this );
+		this.uploadExternalImages = this.uploadExternalImages.bind( this );
+	}
+
+	componentDidUpdate( prevProps ) {
+		if ( prevProps.clientIds.length === 0 && this.props.clientIds.length !== 0 ) {
+			this.detectImageBlocks( this.props.clientIds )
+				.filter(
+					( block ) => {
+						if ( typeof block === 'undefined' || isEmpty( Object.values( block )[ 0 ] ) ) {
+							return false;
+						}
+						return true;
+					}
+				)
+				.forEach(
+					( block ) => {
+						const blockParts = Object.entries( block );
+						this.uploadExternalImages( blockParts[ 0 ][ 0 ], blockParts[ 0 ][ 1 ] );
+					}
+				);
+		}
 	}
 
 	useEmptyTemplateLayout() {
@@ -114,6 +137,80 @@ class LayoutSelector extends Component {
 				.map( ( [ name, attributes, innerBlocks = [] ] ) => {
 					return getBlocksFromTemplate( name, attributes, innerBlocks );
 				} ),
+		} );
+	}
+
+	detectImageBlocks( clientIds ) {
+		const {
+			getBlockName,
+			getBlockAttributes,
+		} = this.props;
+
+		const imageBlockTypes = [ 'core/image', 'core/cover' ];
+		const galleryBlockTypes = [ 'core/gallery' ];
+
+		return clientIds.map( ( clientId ) => {
+			const blockName = getBlockName( clientId );
+			const blockAttributes = getBlockAttributes( clientId );
+
+			if ( imageBlockTypes.includes( blockName ) ) {
+				return { [ clientId ]: pick( blockAttributes, [ 'id', 'url' ] ) };
+			}
+
+			if ( galleryBlockTypes.includes( blockName ) ) {
+				return { [ clientId ]: pick( blockAttributes, [ 'ids', 'images' ] ) };
+			}
+		} );
+	}
+
+	uploadExternalImages( clientId, blockAttributes ) {
+		const {
+			getBlockAttributes,
+			mediaUpload,
+			updateBlockAttributes,
+		} = this.props;
+
+		const urls = [];
+
+		if ( blockAttributes.hasOwnProperty( 'images' ) ) {
+			blockAttributes.images.forEach( ( image ) => urls.push( image.url ) );
+		} else {
+			urls.push( blockAttributes.url );
+		}
+
+		urls.forEach( ( imageUrl, index ) => {
+			window.fetch( imageUrl )
+				.then( ( response ) => response.blob() )
+				.then( ( blob ) => {
+					mediaUpload( {
+						filesList: [ blob ],
+						allowedTypes: [ 'image' ],
+						onFileChange( [ media ] ) {
+							if ( blockAttributes.hasOwnProperty( 'images' ) ) {
+								const currentAttributes = getBlockAttributes( clientId );
+
+								const newImages = currentAttributes.images.map( ( oldImage, oldIndex ) => {
+									return oldIndex === index
+										? Object.assign( {}, oldImage, { url: media.url } )
+										: oldImage;
+								} );
+
+								updateBlockAttributes( clientId, {
+									ids: media.id !== null ? [ ...currentAttributes.ids, media.id ] : currentAttributes.ids,
+									images: newImages,
+								} );
+							} else {
+								updateBlockAttributes( clientId, {
+									id: media.id,
+									url: media.url,
+								} );
+							}
+						},
+						onError( message ) {
+							console.log( [ 'onError', message ] );
+						},
+					} );
+				} );
 		} );
 	}
 
@@ -268,6 +365,12 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 				const { isTemplateSelectorActive } = select( 'coblocks/template-selector' );
 				const { hasEditorUndo, isCurrentPostPublished } = select( 'core/editor' );
 				const { getLayoutSelector } = select( 'coblocks-settings' );
+				const {
+					getBlockAttributes,
+					getBlockName,
+					getClientIdsWithDescendants,
+					getSettings,
+				} = select( 'core/block-editor' );
 
 				const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo();
 
@@ -279,15 +382,21 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 					layoutSelectorEnabled: getLayoutSelector() && !! layouts.length && !! categories.length,
 					layouts,
 					categories,
+					mediaUpload: getSettings().mediaUpload,
+					clientIds: getClientIdsWithDescendants(),
+					getBlockAttributes,
+					getBlockName,
 				};
 			} ),
 			withDispatch( ( dispatch ) => {
 				const { closeTemplateSelector } = dispatch( 'coblocks/template-selector' );
 				const { editPost } = dispatch( 'core/editor' );
+				const { updateBlockAttributes } = dispatch( 'core/block-editor' );
 
 				return {
 					closeTemplateSelector,
 					editPost,
+					updateBlockAttributes,
 				};
 			} ),
 		] )( LayoutSelector ),
