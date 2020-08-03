@@ -37,7 +37,7 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 		const { imageBase } = helpers.upload.spec;
 		helpers.addBlockToPost( 'coblocks/gallery-carousel', true );
 
-		cy.get( '.wp-block[data-type="coblocks/gallery-carousel"]' ).click();
+		cy.get( '[data-type="coblocks/gallery-carousel"]' ).click();
 
 		helpers.upload.imageToBlock( 'coblocks/gallery-carousel' );
 
@@ -61,7 +61,7 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 	it( 'Test carousel block saves with images from media library.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-carousel', true );
 
-		cy.get( '.wp-block[data-type="coblocks/gallery-carousel"]' )
+		cy.get( '[data-type="coblocks/gallery-carousel"]' )
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -101,7 +101,7 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 		const { caption } = galleryData;
 		helpers.addBlockToPost( 'coblocks/gallery-carousel', true );
 
-		cy.get( '.wp-block[data-type="coblocks/gallery-carousel"]' )
+		cy.get( '[data-type="coblocks/gallery-carousel"]' )
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -122,7 +122,7 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 			}
 		} );
 
-		cy.get( '.wp-block[data-type="coblocks/gallery-carousel"]' ).find( 'figcaption' ).click().type( caption );
+		cy.get( '[data-type="coblocks/gallery-carousel"]' ).find( 'figcaption' ).click().type( caption );
 
 		helpers.savePage();
 

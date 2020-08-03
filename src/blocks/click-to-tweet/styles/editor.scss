@@ -1,4 +1,4 @@
-.wp-block[data-type="coblocks/click-to-tweet"] {
+.wp-block[data-type="coblocks/click-to-tweet"] { // needed only for 5.4.2
 	// Resolves jumpy toolbar on input focus.
 	.components-toolbar {
 		transform: translate3d(0, 0, 0);
