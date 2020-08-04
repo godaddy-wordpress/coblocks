@@ -10,7 +10,7 @@ import { ALLOWED_BG_MEDIA_TYPES } from './';
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
 import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
-import { Toolbar, IconButton, Popover, MenuItem } from '@wordpress/components';
+import { Toolbar, Button, Popover, MenuItem } from '@wordpress/components';
 
 /**
  * Background image block toolbar controls.
@@ -74,7 +74,7 @@ function BackgroundControls( props ) {
 						</Popover>
 					) }
 					{ backgroundImg ?
-						<IconButton
+						<Button
 							className="components-dropdown-menu__toggle"
 							icon={ icons.background }
 							aria-haspopup="true"
@@ -83,7 +83,7 @@ function BackgroundControls( props ) {
 							onClick={ () => setAttributes( { openPopover: ! openPopover } ) }
 						>
 							<span className="components-dropdown-menu__indicator" />
-						</IconButton>					:
+						</Button>					:
 						<MediaUpload
 							onSelect={ ( media ) => {
 								setAttributes( { backgroundImg: media.url, backgroundType: media.type } );
@@ -91,7 +91,7 @@ function BackgroundControls( props ) {
 							allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
 							value={ backgroundImg }
 							render={ ( { open } ) => (
-								<IconButton
+								<Button
 									className="components-toolbar__control"
 									label={ __( 'Add background image', 'coblocks' ) }
 									icon={ icons.background }
