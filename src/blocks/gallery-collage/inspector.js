@@ -84,6 +84,7 @@ class Inspector extends Component {
 						label={ __( 'Gutter', 'coblocks' ) }
 						currentOption={ gutter }
 						options={ gutterOptions }
+						showCustomOption
 						onChange={ ( newGutter ) => setAttributes( { gutter: newGutter } ) }
 					/> }
 					{ ! enableGutter && <OptionSelectorControl

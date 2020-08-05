@@ -16,6 +16,7 @@ import {
 	Tooltip,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import icons from '../../utils/icons';
 
 /**
  * Constants
@@ -53,6 +54,12 @@ const NONE_OPTION = {
 	tooltip: __( 'None', 'coblocks' ),
 };
 
+const CUSTOM_OPTION = {
+	value: 'custom',
+	label: icons.settings,
+	tooltip: __( 'Custom', 'coblocks' ),
+}
+
 export default class OptionSelectorControl extends Component {
 	render() {
 		const {
@@ -65,12 +72,17 @@ export default class OptionSelectorControl extends Component {
 			showAdvancedControls,
 			showIcons,
 			showNoneOption,
+			showCustomOption,
 		} = this.props;
 
 		let buttons = options || DEFAULT_OPTIONS;
 
 		if ( showNoneOption ) {
 			buttons = [ NONE_OPTION, ...buttons ];
+		}
+
+		if ( showCustomOption ) {
+			buttons = [ ...buttons, CUSTOM_OPTION ];
 		}
 
 		return ( showAdvancedControls && ( advancedMinValue !== false && advancedMaxValue !== false ) ?
