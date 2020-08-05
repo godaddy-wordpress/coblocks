@@ -95,7 +95,7 @@ export default class OptionSelectorControl extends Component {
 				max={ advancedMaxValue }
 			/> :
 
-			<BaseControl id={ `coblocks-option-selector-${ kebabCase( label ) }` } label={ label }>
+			<BaseControl id={ `coblocks-option-selector-${ kebabCase( label ) }` } label={ label } className='coblocks-option-selector-control' >
 				<PanelRow>
 					<ButtonGroup aria-label={ label }>
 
