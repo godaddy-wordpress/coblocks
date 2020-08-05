@@ -27,9 +27,13 @@ do
   if [[ $FILE == *"src/extensions/"* ]]; then
     testSpec=$(echo $FILE | cut -d'/' -f3)
 		foundwords=$(echo ${SPECS[@]} | grep -o "${testSpec}" | wc -w)
+		# Catch cases where no cypress spec file exists. 
+			if [[ $(ls -l src/extensions/${testSpec}/**/*.cypress.js | wc -l) -eq 0 ]]; then
+				continue
+			fi
 		# The test spec does not yet exist in the SPECS array
 		if [[ "${foundwords}" -eq 0 ]]; then
-			# Spec file string is empty, do not start string with a ,
+			# Spec file string is empty, do not start string with a comma
 			if [[ ${#SPECSTRING} -eq 0 ]]; then
 				SPECSTRING="src/extensions/${testSpec}/**/*.cypress.js"
 			else
