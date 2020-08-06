@@ -7,13 +7,13 @@
 		}
 	}
 
-	.wp-block[data-type="coblocks/media-card"] & &__wrapper {
+	[data-type="coblocks/media-card"] & &__wrapper {
 		grid-template-areas:
 			"media-text-media media-text-content"
 			"resizer resizer";
 	}
 
-	.wp-block[data-type="coblocks/media-card"] &.is-style-right &__wrapper {
+	[data-type="coblocks/media-card"] &.is-style-right &__wrapper {
 		grid-template-areas:
 			"media-text-content media-text-media"
 			"resizer resizer";
@@ -85,10 +85,10 @@
 	}
 
 	// Create a fake circular handle point.
-	&:not(.has-no-media) .wp-block-coblocks-media-card__media-container {
+	&:not(.has-no-media).is-selected .wp-block-coblocks-media-card__media-container {
 
 		&::after {
-			background: theme(primary);
+			background: var(--wp-admin-theme-color, #007cba);
 			border: 2px solid $white;
 			border-radius: 50%;
 			bottom: -7px;
@@ -161,7 +161,7 @@
 	}
 }
 
-.wp-block[data-type="coblocks/media-card"] {
+[data-type="coblocks/media-card"] {
 	background: transparent !important;
 
 	.has-no-media .components-placeholder {
@@ -199,12 +199,7 @@
 		}
 	}
 
-	// Child blocks should not have a max-width.
-	.block-editor-inner-blocks .wp-block {
-		// max-width: none;
-	}
-
-	.wp-block[data-type="coblocks/row"] .block-editor-block-mover {
+	[data-type="coblocks/row"] .block-editor-block-mover {
 		display: none;
 	}
 

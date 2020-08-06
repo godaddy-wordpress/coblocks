@@ -84,15 +84,21 @@ class Inspector extends Component {
 						label={ __( 'Gutter', 'coblocks' ) }
 						currentOption={ gutter }
 						options={ gutterOptions }
-						onChange={ ( gutter ) => setAttributes( { gutter } ) }
+						onChange={ ( newGutter ) => setAttributes( { gutter: newGutter } ) }
 					/> }
 					{ ! enableGutter && <OptionSelectorControl
 						label={ __( 'Shadow', 'coblocks' ) }
 						options={ shadowOptions }
 						currentOption={ shadow }
 						showNoneOption
-						onChange={ ( shadow ) => setAttributes( { shadow } ) }
+						onChange={ ( newShadow ) => setAttributes( { shadow: newShadow } ) }
 					/> }
+					<ToggleControl
+						label={ __( 'Lightbox', 'coblocks' ) }
+						checked={ !! lightbox }
+						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
+						help={ this.getLightboxHelp }
+					/>
 					{ enableCaptions && <ToggleControl
 						label={ __( 'Captions', 'coblocks' ) }
 						checked={ !! captions }
@@ -105,12 +111,6 @@ class Inspector extends Component {
 						onChange={ this.setCaptionStyleTo }
 						options={ captionOptions }
 					/> }
-					<ToggleControl
-						label={ __( 'Lightbox', 'coblocks' ) }
-						checked={ !! lightbox }
-						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
-						help={ this.getLightboxHelp }
-					/>
 				</PanelBody>
 				<GalleryLinkSettings { ...this.props } />
 			</InspectorControls>

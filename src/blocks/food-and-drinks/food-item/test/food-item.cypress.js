@@ -15,7 +15,7 @@ describe( 'Block: Food Item', () => {
 	} );
 
 	it( 'removes .is-empty when the \'title\', \'description\', \'price\' attributes have content', () => {
-		cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().click().within( () => {
+		cy.get( '[data-type="coblocks/food-item"]' ).first().click().within( () => {
 
 			// Set heading.
 			cy.get( '.wp-block-coblocks-food-item__heading .block-editor-rich-text__editable' ).type( 'item heading' );
@@ -38,31 +38,31 @@ describe( 'Block: Food Item', () => {
 	} );
 
 	it( 'can toggle image', () => {
-		cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().click();
-		cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'not.exist' );
+		cy.get( '[data-type="coblocks/food-item"]' ).first().click();
+		cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'not.exist' );
 
 		helpers.openSettingsPanel( /item settings/i );
 
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /image/i ).click();
-		cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'exist' );
+		cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'exist' );
 
 		helpers.checkForBlockErrors( 'coblocks/food-item' );
 	} );
 
 	it( 'can toggle price', () => {
-		cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().click();
-		cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'exist' );
+		cy.get( '[data-type="coblocks/food-item"]' ).first().click();
+		cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'exist' );
 
 		helpers.openSettingsPanel( /item settings/i );
 
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /price/i ).click();
-		cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'not.exist' );
+		cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'not.exist' );
 
 		helpers.checkForBlockErrors( 'coblocks/food-item' );
 	} );
 
 	it( 'can toggle attributes', () => {
-		cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().click();
+		cy.get( '[data-type="coblocks/food-item"]' ).first().click();
 		helpers.openSettingsPanel( /item settings/i );
 
 		Object.entries( {
@@ -74,9 +74,9 @@ describe( 'Block: Food Item', () => {
 			vegan: /vegan/i,
 			vegetarian: /vegetarian/i,
 		} ).forEach( ( [ className, controlLabel ] ) => {
-			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( `.wp-block-coblocks-food-item__attribute--${className}` ).should( 'not.exist' );
+			cy.get( '[data-type="coblocks/food-item"]' ).first().find( `.wp-block-coblocks-food-item__attribute--${className}` ).should( 'not.exist' );
 			cy.get( '.components-base-control__field' ).contains( controlLabel ).click();
-			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( `.wp-block-coblocks-food-item__attribute--${className}` ).should( 'exist' );
+			cy.get( '[data-type="coblocks/food-item"]' ).first().find( `.wp-block-coblocks-food-item__attribute--${className}` ).should( 'exist' );
 		} );
 
 		helpers.checkForBlockErrors( 'coblocks/food-item' );
@@ -85,18 +85,18 @@ describe( 'Block: Food Item', () => {
 	it( 'can upload image with drag-and-drop', () => {
 		const { imageBase } = helpers.upload.spec;
 		// Open block settings panel.
-		cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().click();
+		cy.get( '[data-type="coblocks/food-item"]' ).first().click();
 		helpers.openSettingsPanel( /item settings/i );
 
 		// Enable the image on the block.
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /image/i ).click();
-		cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'exist' );
+		cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'exist' );
 
 		// Drag-and-drop a file to upload.
 		helpers.upload.imageToBlock('coblocks/food-item');
 
 		// Assert that the image was added.
-		cy.get( 'div.wp-block[data-type="coblocks/food-item"] img[src*="http"]' )
+		cy.get( '[data-type="coblocks/food-item"] img[src*="http"]' )
 			.should( 'have.attr', 'src' )
 			.should( 'include', imageBase );
 

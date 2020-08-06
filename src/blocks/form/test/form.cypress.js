@@ -10,7 +10,7 @@ describe( 'Test CoBlocks Form Block', function() {
 	it( 'Test the form block contact template.', function() {
 		helpers.addBlockToPost( 'coblocks/form', true );
 
-		cy.get( 'div.wp-block[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
+		cy.get( '[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
 			if ( placeholder.prop( 'outerHTML' ).includes( 'block-editor-block-variation-picker' ) ) {
 				cy.get( placeholder )
 					.find( '.block-editor-block-variation-picker__variations li:first-child' )
@@ -80,7 +80,7 @@ describe( 'Test CoBlocks Form Block', function() {
 	it( 'Test the form block RSVP template.', function() {
 		helpers.addBlockToPost( 'coblocks/form', true );
 
-		cy.get( 'div.wp-block[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
+		cy.get( '[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
 			if ( placeholder.prop( 'outerHTML' ).includes( 'block-editor-block-variation-picker' ) ) {
 				cy.get( placeholder )
 					.find( '.block-editor-block-variation-picker__variations li:nth-child(2)' )
@@ -174,7 +174,7 @@ describe( 'Test CoBlocks Form Block', function() {
 	it( 'Test the form block appointment template.', function() {
 		helpers.addBlockToPost( 'coblocks/form', true );
 
-		cy.get( 'div.wp-block[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
+		cy.get( '[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
 			if ( placeholder.prop( 'outerHTML' ).includes( 'block-editor-block-variation-picker' ) ) {
 				cy.get( placeholder )
 					.find( '.block-editor-block-variation-picker__variations li:nth-child(3)' )
@@ -281,7 +281,7 @@ describe( 'Test CoBlocks Form Block', function() {
 	it( 'Test the form block email is sent and received.', function() {
 		helpers.addBlockToPost( 'coblocks/form', true );
 
-		cy.get( 'div.wp-block[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
+		cy.get( '[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
 			if ( placeholder.prop( 'outerHTML' ).includes( 'block-editor-block-variation-picker' ) ) {
 				cy.get( placeholder )
 					.find( '.block-editor-block-variation-picker__variations li:first-child' )
@@ -334,7 +334,7 @@ describe( 'Test CoBlocks Form Block', function() {
 	it( 'Test the form block custom subject line sends as intended.', function() {
 		helpers.addBlockToPost( 'coblocks/form', true );
 
-		cy.get( 'div.wp-block[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
+		cy.get( '[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
 			if ( placeholder.prop( 'outerHTML' ).includes( 'block-editor-block-variation-picker' ) ) {
 				cy.get( placeholder )
 					.find( '.block-editor-block-variation-picker__variations li:first-child' )
@@ -348,7 +348,7 @@ describe( 'Test CoBlocks Form Block', function() {
 			}
 		} );
 
-		cy.get( '.wp-block[data-type="coblocks/form"]' )
+		cy.get( '[data-type="coblocks/form"]' )
 			.click( { force: true } );
 
 			cy.get( 'div.edit-post-sidebar' )

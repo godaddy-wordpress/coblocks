@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import Section from './section';
+import CoBlocksSettingsModalControls from './coblocks-settings-slot';
 
 /**
  * WordPress dependencies
@@ -117,6 +118,8 @@ class CoBlocksSettingsModal extends Component {
 		const colorPanelEnabled = !! colorPanel;
 		const showLayoutSelectorControl = applyFilters( 'coblocks-show-layout-selector', true ) && !! getPlugin( 'coblocks-layout-selector' );
 
+		const settings = applyFilters( 'coblocks-settings-modal-controls', [] );
+
 		return (
 			<Modal
 				title={ applyFilters( 'coblocks-settings-title', __( 'Editor settings', 'coblocks' ) ) }
@@ -124,54 +127,73 @@ class CoBlocksSettingsModal extends Component {
 			>
 				<div className="coblocks-modal__content">
 					<Section title={ __( 'General' ) }>
+
+						<CoBlocksSettingsModalControls.Slot />
+
 						{ showLayoutSelectorControl &&
-						<>
+							<CoBlocksSettingsModalControls>
+								<HorizontalRule />
+								<CheckboxControl
+									label={ __( 'Layout selector', 'coblocks' ) }
+									help={ __( 'Allow layout selection on new pages.', 'coblocks' ) }
+									onChange={ () => this.updateLayoutSelectorSetting() }
+									checked={ !! layoutSelector }
+								/>
+							</CoBlocksSettingsModalControls>
+						}
+
+						<CoBlocksSettingsModalControls>
 							<HorizontalRule />
 							<CheckboxControl
-								label={ __( 'Layout selector', 'coblocks' ) }
-								help={ __( 'Allow layout selection on new pages.', 'coblocks' ) }
-								onChange={ () => this.updateLayoutSelectorSetting() }
-								checked={ !! layoutSelector }
+								label={ __( 'Typography controls', 'coblocks' ) }
+								help={ __( 'Allow block-level typography controls.', 'coblocks' ) }
+								onChange={ () => this.updateTypographyControlsSetting() }
+								checked={ !! typography }
 							/>
-						</>
-						}
-						<HorizontalRule />
-						<CheckboxControl
-							label={ __( 'Typography controls', 'coblocks' ) }
-							help={ __( 'Allow block-level typography controls.', 'coblocks' ) }
-							onChange={ () => this.updateTypographyControlsSetting() }
-							checked={ !! typography }
-						/>
-						<HorizontalRule />
-						<CheckboxControl
-							label={ __( 'Color settings', 'coblocks' ) }
-							help={ __( 'Allow color settings throughout the editor.', 'coblocks' ) }
-							onChange={ () => this.updateColorPanel( !! colorPanel ) }
-							checked={ !! colorPanel }
-						/>
+						</CoBlocksSettingsModalControls>
+
+						<CoBlocksSettingsModalControls>
+							<HorizontalRule />
+							<CheckboxControl
+								label={ __( 'Color settings', 'coblocks' ) }
+								help={ __( 'Allow color settings throughout the editor.', 'coblocks' ) }
+								onChange={ () => this.updateColorPanel( !! colorPanel ) }
+								checked={ !! colorPanel }
+							/>
+						</CoBlocksSettingsModalControls>
+
 						{ colorPanelEnabled &&
-						<>
-							<HorizontalRule />
-							<CheckboxControl
-								label={ __( 'Custom color pickers', 'coblocks' ) }
-								help={ __( 'Allow styling with custom colors.', 'coblocks' ) }
-								onChange={ () => this.updateCustomColorsSetting( !! customColors ) }
-								checked={ !! customColors }
-							/>
-						</>
+							<CoBlocksSettingsModalControls>
+								<HorizontalRule />
+								<CheckboxControl
+									label={ __( 'Custom color pickers', 'coblocks' ) }
+									help={ __( 'Allow styling with custom colors.', 'coblocks' ) }
+									onChange={ () => this.updateCustomColorsSetting( !! customColors ) }
+									checked={ !! customColors }
+								/>
+							</CoBlocksSettingsModalControls>
 						}
-						<HorizontalRule />
+
 						{ colorPanelEnabled && supportsGradients &&
-						<>
-							<CheckboxControl
-								label={ __( 'Gradient styles', 'coblocks' ) }
-								help={ __( 'Allow styling with gradient fills.', 'coblocks' ) }
-								onChange={ () => this.updateGradientsControlsSetting( !! gradientControls ) }
-								checked={ !! gradientControls }
-							/>
-							<HorizontalRule />
-						</>
+							<CoBlocksSettingsModalControls>
+								<HorizontalRule />
+								<CheckboxControl
+									label={ __( 'Gradient styles', 'coblocks' ) }
+									help={ __( 'Allow styling with gradient fills.', 'coblocks' ) }
+									onChange={ () => this.updateGradientsControlsSetting( !! gradientControls ) }
+									checked={ !! gradientControls }
+								/>
+							</CoBlocksSettingsModalControls>
 						}
+
+						{ settings && settings.map( ( Control, index ) => (
+							<CoBlocksSettingsModalControls key={ `modal-control-${ index }` }>
+								<HorizontalRule />
+								<Control />
+							</CoBlocksSettingsModalControls>
+						) ) }
+
+						<HorizontalRule />
 					</Section>
 				</div>
 			</Modal>

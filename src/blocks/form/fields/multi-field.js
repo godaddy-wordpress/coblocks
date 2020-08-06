@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { BaseControl, IconButton } from '@wordpress/components';
+import { BaseControl, Button } from '@wordpress/components';
 import { Component, Fragment } from '@wordpress/element';
 import { withInstanceId } from '@wordpress/compose';
 import classnames from 'classnames';
@@ -106,14 +106,14 @@ class CoBlocksFieldMultiple extends Component {
 						</ol>
 					) }
 					{ isSelected && (
-						<IconButton
+						<Button
 							className="coblocks-field-multiple__add-option"
 							icon="insert"
 							label={ 'radio' === type || 'select' === type ? __( 'Add option', 'coblocks' ) : __( 'Add checkbox', 'coblocks' ) }
 							onClick={ this.addNewOption }
 						>
 							{ 'radio' === type || 'select' === type ? __( 'Add option', 'coblocks' ) : __( 'Add checkbox', 'coblocks' ) }
-						</IconButton>
+						</Button>
 					) }
 				</BaseControl>
 			</Fragment>

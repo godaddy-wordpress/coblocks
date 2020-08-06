@@ -35,7 +35,7 @@ describe( 'Block: Events', function () {
 
 		helpers.toggleSettingCheckbox( /link a calendar/i );
 
-		cy.get( '.wp-block[data-type="coblocks/events"]' ).first().within( () => {
+		cy.get( '[data-type="coblocks/events"]' ).first().within( () => {
 			cy.get( 'input[placeholder="Enter URL here…"]' ).type( ical, { delay: 0 } );
 			cy.get( 'button' ).contains( 'Use URL' ).click();
 		} );

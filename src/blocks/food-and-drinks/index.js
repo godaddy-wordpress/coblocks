@@ -19,7 +19,7 @@ const { name, category, attributes } = metadata;
 
 const settings = {
 	/* translators: block name */
-	title: __( 'Food & Drinks', 'coblocks' ),
+	title: __( 'Food & Drink', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Display a menu or price list.', 'coblocks' ),
 	icon,

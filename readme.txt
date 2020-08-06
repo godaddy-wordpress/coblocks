@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 2.0.3
+Stable tag: 2.1.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -116,8 +116,18 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Enhancements
-* Introduce Padding Controls extension to core/group block [#1556](https://github.com/godaddy-wordpress/coblocks/pull/1556)
+* Enable extensibility of CoBlocks settings panel using SlotFill component [#1573](https://github.com/godaddy-wordpress/coblocks/pull/1573)
+* Introduce Lightbox controls to the core/gallery and core/image blocks [#1557](https://github.com/godaddy-wordpress/coblocks/pull/1557)
+* Allow closing of Lightbox with the esc keyboard shortcut [#1567](https://github.com/godaddy-wordpress/coblocks/pull/1567)
 
 ### Bug Fixes
-* Ensure extensions are applied properly to blocks [#1515](https://github.com/godaddy-wordpress/coblocks/pull/1515)
-* Fix focus mode issue within the Layout Selector [#1562](https://github.com/godaddy-wordpress/coblocks/pull/1562)
+* Fix Posts and Post Carousel blocks compatibility across Gutenberg versions [#1576](https://github.com/godaddy-wordpress/coblocks/pull/1576)
+* Fix Click to Tweet inline toolbar SVG styles [#1575](https://github.com/godaddy-wordpress/coblocks/pull/1575)
+* Fix Hero block resizable handles error [#1568](https://github.com/godaddy-wordpress/coblocks/pull/1568)
+* Remove list styles from editor for Gallery blocks [#1584](https://github.com/godaddy-wordpress/coblocks/pull/1568)
+* Allow HTML formatted text within Lightbox captions [#1566](https://github.com/godaddy-wordpress/coblocks/pull/1566)
+
+### Misc
+* Implement detection of modified code in extensions when setting up test specs [#1571](https://github.com/godaddy-wordpress/coblocks/pull/1571)
+* Add Accordion block save Jest tests [#1565](https://github.com/godaddy-wordpress/coblocks/pull/1565)
+* Add documentation of releasing new CoBlocks versions [#1583](https://github.com/godaddy-wordpress/coblocks/pull/1586)
