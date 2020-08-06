@@ -17,7 +17,7 @@ import classnames from 'classnames';
  */
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { IconButton, DropZone, Spinner } from '@wordpress/components';
+import { Button, DropZone, Spinner } from '@wordpress/components';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { RichText, MediaPlaceholder } from '@wordpress/block-editor';
 import { mediaUpload } from '@wordpress/editor';
@@ -203,7 +203,7 @@ class FoodItem extends Component {
 				<figure className={ classes }>
 					{ isSelected && (
 						<div className="wp-block-coblocks-food-item__remove-menu">
-							<IconButton
+							<Button
 								icon="no-alt"
 								onClick={ () => {
 									setAttributes( { url: '' } )
@@ -312,7 +312,7 @@ class FoodItem extends Component {
 							/>
 							<div className="wp-block-coblocks-food-item__attributes">
 								{ ( ( isSelected && title ) || ( !! popular ) ) && (
-									<IconButton
+									<Button
 										icon={ icons.popular }
 										label={ __( 'Popular', 'coblocks' ) }
 										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--popular', {
@@ -324,7 +324,7 @@ class FoodItem extends Component {
 									/>
 								) }
 								{ ( ( isSelected && title ) || ( !! spicy ) ) && (
-									<IconButton
+									<Button
 										icon={ icons.spicy }
 										label={ __( 'Spicy', 'coblocks' ) }
 										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--spicy', {
@@ -335,7 +335,7 @@ class FoodItem extends Component {
 									/>
 								) }
 								{ ( ( isSelected && title && !! spicy ) || ( !! spicier ) ) && (
-									<IconButton
+									<Button
 										icon={ icons.spicy }
 										label={ __( 'Hot', 'coblocks' ) }
 										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--spicier', {
@@ -348,7 +348,7 @@ class FoodItem extends Component {
 									/>
 								) }
 								{ ( ( isSelected && title ) || ( !! vegetarian ) ) && (
-									<IconButton
+									<Button
 										icon={ icons.vegetarian }
 										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--vegetarian', {
 											'is-toggled': vegetarian,
@@ -364,7 +364,7 @@ class FoodItem extends Component {
 								) }
 								{ ( ( isSelected && !! glutenFree ) || ( !! glutenFree ) ) && (
 									// Only renders if the option is checked within the Settings sidebar.
-									<IconButton
+									<Button
 										icon={ icons.glutenFree }
 										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--gluten-free', {
 											'is-toggled': glutenFree,
@@ -379,7 +379,7 @@ class FoodItem extends Component {
 								) }
 								{ ( ( isSelected && !! pescatarian ) || ( !! pescatarian ) ) && (
 									// Only renders if the option is checked within the Settings sidebar.
-									<IconButton
+									<Button
 										icon={ icons.pescatarian }
 										label={ __( 'Pescatarian', 'coblocks' ) }
 										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--pescatarian', {
@@ -395,7 +395,7 @@ class FoodItem extends Component {
 								) }
 								{ ( ( isSelected && !! vegan ) || ( !! vegan ) ) && (
 									// Only renders if the option is checked within the Settings sidebar.
-									<IconButton
+									<Button
 										icon={ icons.vegan }
 										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--vegan', {
 											'is-toggled': vegan,

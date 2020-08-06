@@ -37,7 +37,7 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 		const { imageBase } = helpers.upload.spec;
 		helpers.addBlockToPost( 'coblocks/gallery-stacked', true );
 
-		cy.get( '.wp-block[data-type="coblocks/gallery-stacked"]' ).click();
+		cy.get( '[data-type="coblocks/gallery-stacked"]' ).click();
 
 		helpers.upload.imageToBlock( 'coblocks/gallery-stacked' );
 
@@ -61,7 +61,7 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 	it( 'Test stacked block saves with images from media library.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-stacked', true );
 
-		cy.get( '.wp-block[data-type="coblocks/gallery-stacked"]' )
+		cy.get( '[data-type="coblocks/gallery-stacked"]' )
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -101,7 +101,7 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 		const { caption } = galleryData;
 		helpers.addBlockToPost( 'coblocks/gallery-stacked', true );
 
-		cy.get( '.wp-block[data-type="coblocks/gallery-stacked"]' )
+		cy.get( '[data-type="coblocks/gallery-stacked"]' )
 			.click()
 			.contains( /media library/i )
 			.click();

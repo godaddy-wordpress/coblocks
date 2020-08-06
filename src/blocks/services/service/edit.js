@@ -19,7 +19,7 @@ import {
 } from '@wordpress/block-editor';
 import {
 	DropZone,
-	IconButton,
+	Button,
 	Spinner,
 } from '@wordpress/components';
 import { dispatch, select } from '@wordpress/data';
@@ -162,7 +162,7 @@ class Edit extends Component {
 				<figure className={ classes }>
 					{ isSelected && (
 						<div className="components-coblocks-gallery-item__remove-menu">
-							<IconButton
+							<Button
 								icon="no-alt"
 								onClick={ () => setAttributes( { imageUrl: '' } ) }
 								className="coblocks-gallery-item__button"

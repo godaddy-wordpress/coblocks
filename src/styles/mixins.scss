@@ -1,11 +1,11 @@
 // Grab all gallery blocks
 @mixin coblocksGalleryEditorBlocks {
 
-	.wp-block[data-type="coblocks/carousel"],
-	.wp-block[data-type="coblocks/collage"],
-	.wp-block[data-type="coblocks/masonry"],
-	.wp-block[data-type="coblocks/offset"],
-	.wp-block[data-type="coblocks/stacked"] {
+	[data-type="coblocks/carousel"],
+	[data-type="coblocks/collage"],
+	[data-type="coblocks/masonry"],
+	[data-type="coblocks/offset"],
+	[data-type="coblocks/stacked"] {
 		@content;
 	}
 }

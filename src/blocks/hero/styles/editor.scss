@@ -1,4 +1,4 @@
-.wp-block[data-type="coblocks/hero"] {
+[data-type="coblocks/hero"] {
 
 	.wp-block-coblocks-hero {
 		width: 100%;
@@ -33,7 +33,7 @@
 
 				&::before,
 				&::after {
-					background: theme(primary);
+					background: var(--wp-admin-theme-color, #007cba);
 					content: "";
 					display: block;
 					height: 100%;
