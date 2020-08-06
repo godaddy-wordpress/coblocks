@@ -135,10 +135,12 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 			}
 		}, [ noBottomMargin, noTopMargin ] );
 
+		const hasAdvancedControl = !! hasStackedControl || !! withBlockSpacing;
+
 		return (
 			<Fragment>
 				<BlockEdit { ...props } />
-				{ isSelected && (
+				{ isSelected && hasAdvancedControl && (
 					<InspectorAdvancedControls>
 						{ hasStackedControl && (
 							<ToggleControl
@@ -207,7 +209,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 }, 'withAdvancedControls' );
 
 /**
- * Override props assigned to save component to inject atttributes
+ * Override props assigned to save component to inject attributes
  *
  * @param {Object} extraProps Additional props applied to save element.
  * @param {Object} blockType  Block type.
