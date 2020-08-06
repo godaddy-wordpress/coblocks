@@ -23,7 +23,7 @@
 		}
 	}
 
-	.wp-block[data-type="coblocks/row"] & &__inner {
+	[data-type="coblocks/row"] & &__inner {
 
 		div[data-type="coblocks/column"] {
 			max-width: 100% !important;
@@ -33,7 +33,7 @@
 	}
 
 
-	.wp-block[data-type="coblocks/row"][data-columns="1"] & &__inner {
+	[data-type="coblocks/row"][data-columns="1"] & &__inner {
 
 		.wp-block-coblocks-column__inner {
 

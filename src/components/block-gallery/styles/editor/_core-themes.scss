@@ -93,7 +93,7 @@
 		padding: 0;
 	}
 
-	.wp-block[data-type="coblocks-gallery/stacked"] figcaption {
+	[data-type="coblocks-gallery/stacked"] figcaption {
 		text-align: center !important;
 	}
 }
@@ -126,7 +126,7 @@
 		}
 	}
 
-	.wp-block[data-type="coblocks-gallery/stacked"] figcaption {
+	[data-type="coblocks-gallery/stacked"] figcaption {
 		padding-left: 1em;
 		padding-right: 1em;
 		text-align: center;

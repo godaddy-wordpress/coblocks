@@ -29,7 +29,7 @@ $color-highlight: #00a4a6;
 		margin-bottom: 0 !important;
 	}
 
-	.wp-block[data-type="core/paragraph"] {
+	[data-type="core/paragraph"] {
 		font-size: 0.75rem;
 	}
 }
@@ -63,7 +63,7 @@ $color-highlight: #00a4a6;
 	}
 }
 
-.wp-block[data-type="core/buttons"] {
+[data-type="core/buttons"] {
 
 	.block-list-appender {
 		top: -10px;
@@ -72,7 +72,7 @@ $color-highlight: #00a4a6;
 	}
 }
 
-.wp-block[data-type="core/buttons"]:not(.is-selected):not(.has-child-selected) {
+[data-type="core/buttons"]:not(.is-selected):not(.has-child-selected) {
 
 	.block-list-appender {
 		display: none !important;
