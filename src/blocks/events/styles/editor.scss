@@ -4,23 +4,24 @@
 		margin-left: -12px;
 		margin-right: -12px;
 		margin-top: 28px;
-	}
 
-	.coblocks-list-appender__toggle {
-		align-items: center;
-		background: $dark-opacity-light-200 !important;
-		border-radius: 0;
-		box-shadow: none;
-		color: $dark-gray-500;
-		display: flex;
-		justify-content: center;
-		outline: 1px dashed $dark-gray-150;
-		padding: 16px;
-		width: 100%;
+		&__toggle.components-button {
+			align-items: center;
+			background: $dark-opacity-light-200 !important;
+			border-radius: 0;
+			box-shadow: none;
+			color: $dark-gray-500;
+			display: flex;
+			padding: 16px;
+			height: auto;
+			justify-content: center;
+			outline: 1px dashed $dark-gray-150;
+			width: 100%;
 
-		&:hover {
-			box-shadow: none !important;
-			outline: 1px dashed $dark-gray-500;
+			&:hover {
+				box-shadow: none !important;
+				outline: 1px dashed $dark-gray-500;
+			}
 		}
 	}
 

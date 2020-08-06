@@ -4,7 +4,7 @@
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { BlockControls, BlockAlignmentToolbar } from '@wordpress/block-editor';
-import { Toolbar, IconButton } from '@wordpress/components';
+import { Toolbar, Button } from '@wordpress/components';
 
 class Controls extends Component {
 	constructor() {
@@ -39,7 +39,7 @@ class Controls extends Component {
 					/>
 					<Toolbar>
 						{ url &&
-							<IconButton
+							<Button
 								className="components-toolbar__control"
 								label={ __( 'Remove gif', 'coblocks' ) }
 								icon="trash"

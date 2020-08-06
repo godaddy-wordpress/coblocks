@@ -16,7 +16,7 @@ import * as helper from './../../utils/helper';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { withNotices, DropZone, Spinner, IconButton, Dashicon } from '@wordpress/components';
+import { withNotices, DropZone, Spinner, Button, Dashicon } from '@wordpress/components';
 import { MediaPlaceholder, RichText, URLInput } from '@wordpress/block-editor';
 import { mediaUpload } from '@wordpress/editor';
 import { isBlobURL } from '@wordpress/blob';
@@ -160,7 +160,7 @@ class GalleryCollageEdit extends Component {
 						} ) }>
 						{ isSelected && (
 							<div className="components-coblocks-gallery-item__remove-menu">
-								<IconButton
+								<Button
 									icon="no-alt"
 									onClick={ () => this.removeImage( index ) }
 									className="coblocks-gallery-item__button"
@@ -178,7 +178,7 @@ class GalleryCollageEdit extends Component {
 									value={ image.imgLink }
 									onChange={ ( imgLink ) => this.updateImageAttributes( index, { imgLink } ) }
 								/>
-								<IconButton icon={ this.state.isSaved ? 'saved' : 'editor-break' } label={ this.state.isSaved ? __( 'Saving', 'coblocks' ) : __( 'Apply', 'coblocks' ) } onClick={ this.saveCustomLink } type="submit" />
+								<Button icon={ this.state.isSaved ? 'saved' : 'editor-break' } label={ this.state.isSaved ? __( 'Saving', 'coblocks' ) : __( 'Apply', 'coblocks' ) } onClick={ this.saveCustomLink } type="submit" />
 							</form>
 						}
 						{ dropZone }
