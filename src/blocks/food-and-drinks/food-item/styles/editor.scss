@@ -73,12 +73,12 @@
 			}
 		}
 
-		&__attribute.components-icon-button,
 		&__attribute.components-button {
 			color: inherit;
 			padding: 1px;
 			height: auto;
 			opacity: 0.55;
+			min-width: auto;
 
 			&:not(.is-toggled):hover,
 			&:not(.is-toggled):focus {

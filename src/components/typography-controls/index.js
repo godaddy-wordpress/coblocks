@@ -20,7 +20,7 @@ import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { DOWN } from '@wordpress/keycodes';
-import { RangeControl, withFallbackStyles, ToggleControl, Dropdown, Button, SelectControl, Toolbar } from '@wordpress/components';
+import { RangeControl, withFallbackStyles, ToggleControl, Dropdown, ToolbarButton, SelectControl, Toolbar } from '@wordpress/components';
 import { withSelect, select } from '@wordpress/data';
 
 /**
@@ -175,7 +175,7 @@ class TypographyControls extends Component {
 						};
 
 						return (
-							<Button
+							<ToolbarButton
 								className="components-dropdown-menu__toggle"
 								icon={ icon }
 								onClick={ onToggle }
@@ -184,9 +184,7 @@ class TypographyControls extends Component {
 								aria-expanded={ isOpen }
 								label={ label }
 								tooltip={ label }
-							>
-								<span className="components-dropdown-menu__indicator" />
-							</Button>
+							/>
 						);
 					} }
 					renderContent={ () => (

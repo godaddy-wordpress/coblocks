@@ -12,7 +12,7 @@ import CSSGridControl from './';
  * WordPress dependencies
  */
 import { DOWN } from '@wordpress/keycodes';
-import { Button, Dropdown, NavigableMenu } from '@wordpress/components';
+import { ToolbarButton, ToolbarGroup, Dropdown, NavigableMenu } from '@wordpress/components';
 
 function CSSGridToolbar( {
 	icon = 'menu',
@@ -34,18 +34,15 @@ function CSSGridToolbar( {
 					}
 				};
 				return (
-					<Button
-						className="components-dropdown-menu__toggle"
-						icon={ icon }
+					<ToolbarButton
 						onClick={ onToggle }
-						onKeyDown={ openOnArrowDown }
 						aria-haspopup="true"
 						aria-expanded={ isOpen }
+						onKeyDown={ openOnArrowDown }
 						label={ label }
-						tooltip={ label }
-					>
-						<span className="components-dropdown-menu__indicator" />
-					</Button>
+						icon={ icon }
+						showTooltip
+					/>
 				);
 			} }
 			renderContent={ () => {
