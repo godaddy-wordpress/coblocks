@@ -16,7 +16,6 @@ const CustomAppender = ( { onClick = noop } ) => {
 			<Tooltip text={ __( 'Add menu section', 'coblocks' ) }>
 				<Button
 					label={ __( 'Add menu section', 'coblocks' ) }
-					labelPosition="bottom"
 					className="block-editor-button-block-appender"
 					onClick={ onClick }
 				>

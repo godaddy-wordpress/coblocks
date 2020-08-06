@@ -16,7 +16,6 @@ const CustomAppender = ( { onClick = noop } ) => {
 			<Tooltip text={ __( 'Add event', 'coblocks' ) }>
 				<Button
 					label={ __( 'Add event', 'coblocks' ) }
-					labelPosition="bottom"
 					className="block-editor-button-block-appender"
 					onClick={ onClick }
 				>
