@@ -1,8 +1,12 @@
 /**
+ * External dependencies
+ */
+import { AccordionItemIcon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import edit from './edit';
-import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 
@@ -21,7 +25,7 @@ const settings = {
 	title: __( 'Accordion Item', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add collapsable accordion items to accordions.', 'coblocks' ),
-	icon,
+	icon: AccordionItemIcon,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

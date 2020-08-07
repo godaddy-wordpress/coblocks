@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { OpenIcon } from 'coblocks-icons';
+import { OpenIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies
