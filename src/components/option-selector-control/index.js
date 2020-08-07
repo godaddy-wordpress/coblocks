@@ -58,7 +58,7 @@ const CUSTOM_OPTION = {
 	value: 'custom',
 	label: icons.settings,
 	tooltip: __( 'Custom', 'coblocks' ),
-}
+};
 
 export default class OptionSelectorControl extends Component {
 	render() {
@@ -95,7 +95,10 @@ export default class OptionSelectorControl extends Component {
 				max={ advancedMaxValue }
 			/> :
 
-			<BaseControl id={ `coblocks-option-selector-${ kebabCase( label ) }` } label={ label } className='coblocks-option-selector-control' >
+			<BaseControl
+				id={ `coblocks-option-selector-${ kebabCase( label ) }` }
+				label={ label }
+				className="coblocks-option-selector-control" >
 				<PanelRow>
 					<ButtonGroup aria-label={ label }>
 

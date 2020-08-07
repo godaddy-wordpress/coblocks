@@ -50,6 +50,10 @@
 			"type": "string",
 			"default": "small"
 		},
+	  	"gutterCustom": {
+		  "type": "string",
+		  "default": 3
+		},
 		"shadow": {
 			"type": "string",
 			"default": "none"

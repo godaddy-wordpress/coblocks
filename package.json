@@ -13,6 +13,7 @@
 	},
 	"scripts": {
 		"setup": "composer install && yarn install && yarn run build && wp-scripts env install",
+		"start:dev": "NODE_ENV=development yarn start",
 		"start": "wp-scripts start --config .dev/config/webpack.config.js --progress",
 		"build": "wp-scripts build --config .dev/config/webpack.config.js",
 		"clean": "wp-scripts env stop && rm -rf build dist/*.* dist/js node_modules vendor wordpress",
@@ -66,6 +67,7 @@
 		"zh_TW": "繁體中文"
 	},
 	"devDependencies": {
+	  	"@babel/plugin-proposal-class-properties": "7.10.4",
 		"@testing-library/jest-dom": "^4.2.4",
 		"@wordpress/block-editor": "3.1.0",
 		"@wordpress/block-library": "2.8.0",
