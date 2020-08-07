@@ -2,6 +2,7 @@
  * External dependencies.
  */
 import { kebabCase } from 'lodash';
+import { SettingsIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies
@@ -14,9 +15,9 @@ import {
 	PanelRow,
 	RangeControl,
 	Tooltip,
+	Icon,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import icons from '../../utils/icons';
 
 /**
  * Constants
@@ -56,7 +57,7 @@ const NONE_OPTION = {
 
 const CUSTOM_OPTION = {
 	value: 'custom',
-	label: icons.settings,
+	label: <Icon icon={ SettingsIcon } />,
 	tooltip: __( 'Custom', 'coblocks' ),
 };
 

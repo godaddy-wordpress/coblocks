@@ -531,25 +531,4 @@ icons.trash = (
 	</SVG>
 );
 
-icons.settings = (
-	<SVG
-		aria-hidden
-		role="img"
-		focusable="false"
-		height="18"
-		width="14"
-		viewBox="0 0 13 14"
-		xmlns="http://www.w3.org/2000/svg"
-	>
-		<G fill="currentColor">
-			<Rect height="3" rx="1.5" width="3" y="3"/>
-			<Rect height="3" rx="1.5" width="3" x="5" y="8"/>
-			<Rect height="3" rx="1.5" width="3" x="10" y="3"/>
-			<Path d="m11 0h1v13.825h-1z"/>
-			<Path d="m1 0h1v14h-1z"/>
-			<Path d="m6 0h1v14h-1z"/>
-		</G>
-	</SVG>
-);
-
 export default icons;

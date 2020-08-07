@@ -212,7 +212,6 @@
 	  "custom": var(--coblocks-custom-gutter, 0),
 	);
 
-
 	@mixin gutter($padding) {
 	  .wp-block-coblocks-gallery-collage__item:nth-child(1),
 	  .wp-block-coblocks-gallery-collage__item:nth-child(2) {

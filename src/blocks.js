@@ -25,6 +25,9 @@ import './extensions/image-crop';
 import './extensions/coblocks-settings/';
 import './extensions/layout-selector';
 
+// Internal Extensions / Components
+import './components/gutter-control';
+
 // Formats
 import './formats';
 

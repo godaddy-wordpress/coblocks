@@ -4,7 +4,7 @@
 import captionOptions from '../../components/block-gallery/options/caption-options';
 import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
 import OptionSelectorControl from '../../components/option-selector-control';
-import GutterControl from '../../components/gutter-control';
+import GutterControl from '../../components/gutter-control/gutter-control';
 
 /**
  * WordPress dependencies

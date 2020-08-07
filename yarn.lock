@@ -1886,6 +1886,13 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
+"@godaddy-wordpress/coblocks-icons@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/coblocks-icons/-/coblocks-icons-1.0.1.tgz#b8fbf17be56af7f9c528901533609c6908762379"
+  integrity sha512-KQLEH32Wfj8K2A/f220Sw16wF9WT1JXd62gk5jIzbol8+orY40E3BlHHQl9s3v14E45D+KUsMJkztSFr6LpPgg==
+  dependencies:
+    "@wordpress/primitives" "^1.7.0"
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -3404,6 +3411,15 @@
   dependencies:
     "@babel/runtime" "^7.9.2"
     "@wordpress/element" "^2.14.0"
+    classnames "^2.2.5"
+
+"@wordpress/primitives@^1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@wordpress/primitives/-/primitives-1.7.0.tgz#b682faefa068b4eff7d3d3c7c0ba0b056263a8c4"
+  integrity sha512-bbbWmYtvI23tOtikEIVThEfJauIoDFcPmLB5+/EAQ1kFXB0dGANMunYcUcBiE+ejtvpOxVJfEN4+/iElVUlW/Q==
+  dependencies:
+    "@babel/runtime" "^7.9.2"
+    "@wordpress/element" "^2.16.0"
     classnames "^2.2.5"
 
 "@wordpress/priority-queue@^1.6.0":

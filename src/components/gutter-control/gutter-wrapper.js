@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 /**
  * WordPress dependencies
@@ -26,5 +27,10 @@ function GutterWrapper( { children, gutter, gutterCustom } ) {
 		style: { '--coblocks-custom-gutter': `${ gutterCustom }em` },
 	} );
 }
+
+GutterWrapper.PropTypes = {
+	gutter: PropTypes.string,
+	gutterCustom: PropTypes.string,
+};
 
 export default GutterWrapper;
