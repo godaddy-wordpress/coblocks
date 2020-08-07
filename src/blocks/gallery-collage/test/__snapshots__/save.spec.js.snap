@@ -72,12 +72,6 @@ exports[`coblocks/gallery-collage should have className 'has-small-gutter' with 
 <!-- /wp:coblocks/gallery-collage -->"
 `;
 
-exports[`coblocks/gallery-collage should have className 'has-xlarge-gutter' with gutter set to 'xlarge'. 1`] = `
-"<!-- wp:coblocks/gallery-collage {\\"gutter\\":\\"xlarge\\"} -->
-<div class=\\"wp-block-coblocks-gallery-collage has-xlarge-gutter\\"><ul><li class=\\"wp-block-coblocks-gallery-collage__item item-1\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" class=\\"wp-image-1\\"/></figure></li><li class=\\"wp-block-coblocks-gallery-collage__item item-2\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" data-id=\\"2\\" class=\\"wp-image-2\\"/></figure></li></ul></div>
-<!-- /wp:coblocks/gallery-collage -->"
-`;
-
 exports[`coblocks/gallery-collage should have custom link when linkTo is set to "custom" 1`] = `
 "<!-- wp:coblocks/gallery-collage {\\"linkTo\\":\\"custom\\"} -->
 <div class=\\"wp-block-coblocks-gallery-collage has-small-gutter\\"><ul><li class=\\"wp-block-coblocks-gallery-collage__item item-1\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" class=\\"wp-image-1\\"/></figure></li><li class=\\"wp-block-coblocks-gallery-collage__item item-2\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" data-id=\\"2\\" class=\\"wp-image-2\\"/></figure></li><li class=\\"wp-block-coblocks-gallery-collage__item item-3\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><a href=\\"http://google.com\\" rel=\\"\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\" data-id=\\"3\\" data-imglink=\\"http://google.com\\" class=\\"wp-image-3\\"/></a></figure></li></ul></div>
