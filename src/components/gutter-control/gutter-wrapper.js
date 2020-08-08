@@ -12,15 +12,16 @@ import { cloneElement, isValidElement } from '@wordpress/element';
 /**
  * Return an element Wrapped with Gutter Properties.
  *
- * @return {JSX.Element}  Icon component
+ * @return {JSX.Element}  GutterWrapper component
  */
-function GutterWrapper( { children, gutter, gutterCustom } ) {
+function GutterWrapper( { children, gutter, gutterCustom, className } ) {
 	if ( ! isValidElement( children ) ) {
 		return children;
 	}
 
 	return cloneElement( children, {
 		className: classnames(
+			className,
 			children.props.className,
 			{ [ `has-${ gutter }-gutter` ]: gutter }
 		),
@@ -28,7 +29,7 @@ function GutterWrapper( { children, gutter, gutterCustom } ) {
 	} );
 }
 
-GutterWrapper.PropTypes = {
+GutterWrapper.propTypes = {
 	gutter: PropTypes.string,
 	gutterCustom: PropTypes.string,
 };

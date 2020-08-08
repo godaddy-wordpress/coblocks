@@ -13,7 +13,7 @@ import { RichText } from '@wordpress/block-editor';
  */
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 
-const save = ( { attributes, className } ) => {
+const save = ( { attributes } ) => {
 	const {
 		captions,
 		captionStyle,
@@ -32,7 +32,7 @@ const save = ( { attributes, className } ) => {
 
 	return (
 		<GutterWrapper { ...attributes }>
-			<div className={ classnames( className, {
+			<div className={ classnames( {
 				[ `has-filter-${ filter }` ]: filter !== 'none',
 				[ `has-caption-style-${ captionStyle }` ]: captions && captionStyle !== undefined,
 				'has-lightbox': lightbox,
