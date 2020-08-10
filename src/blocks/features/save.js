@@ -7,6 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import { BackgroundStyles, BackgroundClasses, BackgroundVideo } from '../../components/background';
+import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 
 /**
  * WordPress dependencies
@@ -20,7 +21,6 @@ const save = ( { attributes, className } ) => {
 		contentAlign,
 		customTextColor,
 		textColor,
-		gutter,
 		marginSize,
 		paddingSize,
 	} = attributes;
@@ -40,7 +40,6 @@ const save = ( { attributes, className } ) => {
 			'has-columns': columns > 1,
 			[ `has-${ columns }-columns` ]: columns,
 			'has-responsive-columns': columns > 1,
-			[ `has-${ gutter }-gutter` ]: gutter,
 			'has-text-color': textColor || customTextColor,
 			[ textClass ]: textClass,
 			'has-padding': paddingSize && paddingSize !== 'no',
@@ -57,10 +56,12 @@ const save = ( { attributes, className } ) => {
 
 	return (
 		<div className={ classes }>
-			<div className={ innerClasses } style={ innerStyles }>
-				{ BackgroundVideo( attributes ) }
-				<InnerBlocks.Content />
-			</div>
+			<GutterWrapper { ...attributes }>
+				<div className={ innerClasses } style={ innerStyles }>
+					{ BackgroundVideo( attributes ) }
+					<InnerBlocks.Content />
+				</div>
+			</GutterWrapper>
 		</div>
 	);
 };

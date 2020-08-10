@@ -61,7 +61,6 @@ const settings = {
 		align: [ 'wide', 'full' ],
 		gutter: {
 			default: 'small',
-			customDefault: 3,
 		},
 	},
 	example: {
