@@ -59,6 +59,8 @@ class FormEdit extends Component {
 		this.state = {
 			toError: error && error.length ? error : null,
 			siteKey: '',
+			recaptchaSiteKey: '',
+			recaptchaSecretKey: '',
 			isSavedKey: false,
 			isSaving: false,
 			keySaved: false,
@@ -360,6 +362,9 @@ class FormEdit extends Component {
 
 	render() {
 		const { className, blockType, defaultVariation, replaceInnerBlocks, hasInnerBlocks, variations } = this.props;
+
+		console.log( 'STATE' );
+		console.log( this.state );
 
 		const classes = classnames(
 			className,
