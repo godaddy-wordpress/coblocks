@@ -14,7 +14,7 @@ import { cloneElement, isValidElement } from '@wordpress/element';
  *
  * @return {JSX.Element}  GutterWrapper component
  */
-function GutterWrapper( { children, gutter, gutterCustom, className } ) {
+function GutterWrapper( { children, gutter, gutterCustom, className, condition = true } ) {
 	if ( ! isValidElement( children ) ) {
 		return children;
 	}
@@ -23,7 +23,7 @@ function GutterWrapper( { children, gutter, gutterCustom, className } ) {
 		className: classnames(
 			className,
 			children.props.className,
-			{ [ `has-${ gutter }-gutter` ]: gutter }
+			{ [ `has-${ gutter }-gutter` ]: gutter && !! condition }
 		),
 		style: { '--coblocks-custom-gutter': `${ gutterCustom }em` },
 	} );
