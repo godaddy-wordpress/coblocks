@@ -206,58 +206,67 @@
 
 .wp-block-coblocks-gallery-collage {
 	$gutters: (
-	  "medium": calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * 2),
-	  "large": calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) * 2),
-	  "huge": calc(var(--coblocks-spacing--4, #{map-get($spacing, 4)}) * 2),
-	  "custom": var(--coblocks-custom-gutter, 0),
+		"medium": calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * 2),
+		"large": calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) * 2),
+		"huge": calc(var(--coblocks-spacing--4, #{map-get($spacing, 4)}) * 2),
+		"custom": var(--coblocks-custom-gutter, 0),
 	);
 
 	@mixin gutter($padding) {
-	  .wp-block-coblocks-gallery-collage__item:nth-child(1),
-	  .wp-block-coblocks-gallery-collage__item:nth-child(2) {
-		padding-bottom: $padding;
-	  }
 
-	  ul > *:not(:first-child) {
-		padding-left: $padding;
-	  }
+		.wp-block-coblocks-gallery-collage__item:nth-child(1),
+		.wp-block-coblocks-gallery-collage__item:nth-child(2) {
+			padding-bottom: $padding;
+		}
+
+		ul > *:not(:first-child) {
+			padding-left: $padding;
+		}
 	}
 
 	@include gutter(calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) * 2));
 
 	@each $g, $padding in $gutters {
-	  	&.has-#{$g}-gutter {
-		  @include break-small() {
-			@include gutter(#{$padding});
-		  }
+
+		&.has-#{$g}-gutter {
+
+			@include break-small() {
+
+				@include gutter(#{$padding});
+			}
 		}
 	}
 
-  	&.is-style-tiled {
-	  @mixin gutter($padding) {
-		.wp-block-coblocks-gallery-collage__item:nth-child(2) {
-		  padding-left: $padding;
+	&.is-style-tiled {
+
+		@mixin gutter($padding) {
+
+			.wp-block-coblocks-gallery-collage__item:nth-child(2) {
+				padding-left: $padding;
+			}
+
+			.wp-block-coblocks-gallery-collage__item:nth-child(3) {
+				padding-right: $padding;
+				padding-top: $padding;
+			}
+
+			.wp-block-coblocks-gallery-collage__item:nth-child(4) {
+				padding-top: $padding;
+			}
 		}
 
-		.wp-block-coblocks-gallery-collage__item:nth-child(3) {
-		  padding-right: $padding;
-		  padding-top: $padding;
-		}
+		@include gutter(calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) * 2));
 
-		.wp-block-coblocks-gallery-collage__item:nth-child(4) {
-		  padding-top: $padding;
-		}
-	  }
+		@each $g, $padding in $gutters {
 
-	  @include gutter(calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) * 2));
+			&.has-#{$g}-gutter {
 
-	  @each $g, $padding in $gutters {
-		&.has-#{$g}-gutter {
-		  @include break-small() {
-			@include gutter(#{$padding});
-		  }
+				@include break-small() {
+
+					@include gutter(#{$padding});
+				}
+			}
 		}
-	  }
 	}
 }
 

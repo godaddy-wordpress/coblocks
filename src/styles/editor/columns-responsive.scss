@@ -1,36 +1,57 @@
 @include break-small-max() {
 
-	.has-responsive-columns > .block-editor-inner-blocks > .block-editor-block-list__layout {
-		flex-direction: column;
+	.has-responsive-columns {
 
-		> .wp-block {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			flex-direction: column;
+
+			> .wp-block {
+				max-width: 100% !important;
+				width: 100% !important;
+			}
+		}
+
+		> * {
 			max-width: 100% !important;
 			width: 100% !important;
 		}
-	}
 
-	.has-responsive-columns > * {
-		max-width: 100% !important;
-		width: 100% !important;
-	}
+		@mixin gutter-margin($margin) {
 
-	.has-responsive-columns.has-no-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [class*="wp-block"]:not(:last-child) {
-		margin-bottom: 0;
-	}
+			> .block-editor-inner-blocks > .block-editor-block-list__layout > [class*="wp-block"]:not(:last-child) {
+				margin-bottom: $margin;
+			}
+		}
 
-	.has-responsive-columns.has-small-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [class*="wp-block"]:not(:last-child) {
-		margin-bottom: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) * 2.35);
-	}
+		&.has-no-gutter {
 
-	.has-responsive-columns.has-medium-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [class*="wp-block"]:not(:last-child) {
-		margin-bottom: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * 2.35);
-	}
+			@include gutter-margin(0);
+		}
 
-	.has-responsive-columns.has-large-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [class*="wp-block"]:not(:last-child) {
-		margin-bottom: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) * 2.35);
-	}
+		&.has-small-gutter {
 
-	.has-responsive-columns.has-huge-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [class*="wp-block"]:not(:last-child) {
-		margin-bottom: calc(var(--coblocks-spacing--4, #{map-get($spacing, 4)}) * 2.35);
+			@include gutter-margin(calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) * 2.35));
+		}
+
+		&.has-medium-gutter {
+
+			@include gutter-margin(calc(var(--coblocks-spacing--1, #{map-get($spacing, 2)}) * 2.35));
+		}
+
+		&.has-large-gutter {
+
+			@include gutter-margin(calc(var(--coblocks-spacing--1, #{map-get($spacing, 3)}) * 2.35));
+		}
+
+		&.has-huge-gutter {
+
+			@include gutter-margin(calc(var(--coblocks-spacing--1, #{map-get($spacing, 4)}) * 2.35));
+		}
+
+		&.has-custom-gutter {
+
+			@include gutter-margin(calc(var(--coblocks-custom-gutter, 0) * 2.35));
+		}
+
 	}
 }

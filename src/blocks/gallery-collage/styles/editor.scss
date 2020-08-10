@@ -21,7 +21,7 @@
 				right: 0;
 				top: 0;
 				z-index: 1;
-				border-radius: 2px
+				border-radius: 2px;
 			}
 		}
 	}
@@ -37,6 +37,7 @@
 }
 
 [data-type="coblocks/gallery-collage"] {
+
 	&.block-editor-block-list__block::after {
 		display: none;
 	}

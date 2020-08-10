@@ -4,6 +4,7 @@
 @import "../../../styles/editor/core/mixins";
 
 .coblocks-modal__content {
+
 	@include break-small() {
 		max-width: 310px;
 	}
