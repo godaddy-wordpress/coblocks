@@ -276,6 +276,50 @@ describe( 'Test CoBlocks Form Block', function() {
 	} );
 
 	/**
+	 * Test the coblock google recaptcha panel is closed on initial block add.
+	 */
+	it( 'Test the form block Google Recaptcha panel is closed on initial block add.', function() {
+		helpers.addBlockToPost( 'coblocks/form', true );
+
+		cy.get( '[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
+			if ( placeholder.prop( 'outerHTML' ).includes( 'block-editor-block-variation-picker' ) ) {
+				cy.get( placeholder )
+					.find( '.block-editor-block-variation-picker__variations li:first-child' )
+					.find( 'button' ).click( { force: true } );
+			} else {
+				cy.get( '.block-editor-inner-blocks__template-picker-options li:first-child' )
+					.click();
+
+				cy.get( '.block-editor-inner-blocks__template-picker-options' )
+					.should( 'not.exist' );
+			}
+		} );
+
+		cy.get( 'div[data-type="coblocks/field-name"]' )
+			.should( 'exist' );
+
+		cy.get( 'div[data-type="coblocks/field-email"]' )
+			.should( 'exist' );
+
+		cy.get( 'div[data-type="coblocks/field-textarea"]' )
+			.should( 'exist' );
+
+		helpers.checkForBlockErrors( 'coblocks/form' );
+
+		cy.get( '.coblocks-form' )
+			.should( 'exist' );
+
+		// Check for Google Recaptcha panel visibility here
+		cy.get( '.wp-block-coblocks-form.coblocks-form' )
+			.click( 'bottomRight', { force: true } );
+
+			cy.get( '.components-panel__body-title' ).contains( 'Google reCAPTCHA' ).then( ( $panelTop ) => {
+				const $parentPanel = Cypress.$( $panelTop ).closest( 'div.components-panel__body' );
+				$parentPanel.should( 'not.have.class', 'is-opened' );
+			} );
+	} );
+
+	/**
 	 * Test the coblock contact template.
 	 */
 	it( 'Test the form block email is sent and received.', function() {

@@ -376,7 +376,7 @@ class FormEdit extends Component {
 						</PanelBody>
 						<PanelBody
 							title={ __( 'Google reCAPTCHA', 'coblocks' ) }
-							initialOpen={ this.state.recaptchaSecretKey ? false : true }
+							initialOpen={ '' === this.state.recaptchaSecretKey ? false : true }
 						>
 							<p>{ __( 'Add your reCAPTCHA site and secret keys to protect your form from spam.', 'coblocks' ) }</p>
 							<p>
