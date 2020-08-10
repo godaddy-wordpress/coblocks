@@ -11,7 +11,7 @@ import Inspector from './inspector';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
-import { IconButton } from '@wordpress/components';
+import { Button } from '@wordpress/components';
 import { compose } from '@wordpress/compose';
 import { withDispatch, withSelect } from '@wordpress/data';
 import { createBlock } from '@wordpress/blocks';
@@ -107,7 +107,7 @@ class AccordionEdit extends Component {
 					/>
 					{ isSelected && (
 						<div className="components-coblocks-add-accordion-item">
-							<IconButton
+							<Button
 								isLarge
 								className="block-editor-button-block-appender components-coblocks-add-accordion-item__button"
 								/* translators: Add a child element for the Accordion block */
@@ -115,7 +115,7 @@ class AccordionEdit extends Component {
 								icon="insert"
 								onMouseUp={ handleEvent }
 							>
-							</IconButton>
+							</Button>
 						</div>
 					) }
 				</div>

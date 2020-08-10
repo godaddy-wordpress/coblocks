@@ -1,6 +1,6 @@
 .components-coblocks-gallery-item__image-link {
 	align-items: center;
-	background: theme(primary);
+	background: var(--wp-admin-theme-color, #007cba);
 	bottom: 0;
 	display: flex;
 	flex-wrap: wrap;
@@ -33,7 +33,7 @@
 		padding: 6px;
 
 		&:not(:disabled):not([aria-disabled="true"]):hover {
-			background: theme(primary) !important;
+			background: var(--wp-admin-theme-color, #007cba) !important;
 			box-shadow: none;
 			color: $white !important;
 			opacity: 0.75;

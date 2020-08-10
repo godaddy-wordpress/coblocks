@@ -110,10 +110,11 @@ export default compose( [
 	withSelect( ( select, props ) => {
 		const {
 			getSelectedBlockClientId,
+			getBlockRootClientId,
 			getBlocks,
 		} = select( 'core/block-editor' );
 
-		const hasSelectedChildren = getBlocks( props.clientId ).filter( ( elem ) => elem.clientId === getSelectedBlockClientId() );
+		const hasSelectedChildren = getBlocks( props.clientId ).filter( ( elem ) => elem.clientId === getSelectedBlockClientId() || elem.clientId === getBlockRootClientId( getSelectedBlockClientId() ) );
 
 		return {
 			isEditing: getSelectedBlockClientId() === props.clientId || hasSelectedChildren.length > 0,

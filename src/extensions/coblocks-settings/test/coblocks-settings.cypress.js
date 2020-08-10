@@ -34,9 +34,9 @@ describe( 'Extension: CoBlocks Settings', function() {
 		cy.get( '.components-menu-group' ).find( 'button' ).contains( 'Editor settings' ).click();
 
 		// Typography Test
-		cy.get( 'button[aria-label="Change typography"]' ).should( 'exist' );
+		cy.get( '.components-coblocks-typography-dropdown' ).should( 'exist' );
 		cy.get( '.coblocks-modal__content' ).contains( 'Typography controls' ).click();
-		cy.get( 'button[aria-label="Change typography"]' ).should( 'not.exist' );
+		cy.get( '.components-coblocks-typography-dropdown' ).should( 'not.exist' );
 
 		cy.get( '.components-modal__header' ).find( 'button[aria-label="Close dialog"]' ).click();
 	} );

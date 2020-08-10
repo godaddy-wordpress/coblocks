@@ -119,7 +119,7 @@
 	}
 }
 
-.wp-block[data-type="coblocks/icon"] {
+[data-type="coblocks/icon"] {
 
 	&.block-editor-block-list__block:not([contenteditable]):focus::after {
 		display: none !important;

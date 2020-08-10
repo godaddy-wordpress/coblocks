@@ -1,14 +1,14 @@
 # Copyright (c) 2020 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 2.1.0\n"
+"Project-Id-Version: CoBlocks 2.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-07-28T14:18:51+00:00\n"
+"POT-Creation-Date: 2020-08-06T19:23:54+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -709,18 +709,24 @@ msgstr ""
 msgid "spacer"
 msgstr ""
 
+#. translators: block keyword
+#: src/blocks/dynamic-separator/index.js:33
+#: src/blocks/shape-divider/index.js:32
+msgid "separator"
+msgstr ""
+
 #. translators: block style
-#: src/blocks/dynamic-separator/index.js:37
+#: src/blocks/dynamic-separator/index.js:39
 msgid "Dot"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/dynamic-separator/index.js:43
+#: src/blocks/dynamic-separator/index.js:45
 msgid "Line"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/dynamic-separator/index.js:48
+#: src/blocks/dynamic-separator/index.js:50
 msgid "Fullwidth"
 msgstr ""
 
@@ -1153,7 +1159,7 @@ msgstr ""
 
 #. translators: block name
 #: src/blocks/food-and-drinks/index.js:22
-msgid "Food & Drinks"
+msgid "Food & Drink"
 msgstr ""
 
 #. translators: block description
@@ -1864,7 +1870,7 @@ msgstr ""
 #: src/blocks/gallery-offset/inspector.js:83
 #: src/blocks/icon/inspector.js:106
 #: src/blocks/icon/inspector.js:172
-#: src/components/typography-controls/index.js:221
+#: src/components/typography-controls/index.js:219
 msgid "Size"
 msgstr ""
 
@@ -1879,15 +1885,15 @@ msgid "Rounded corners"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:140
-msgid "Thumbnails"
-msgstr ""
-
-#: src/blocks/gallery-carousel/inspector.js:146
-#: src/blocks/gallery-collage/inspector.js:109
+#: src/blocks/gallery-collage/inspector.js:97
 #: src/blocks/gallery-masonry/inspector.js:102
 #: src/blocks/gallery-offset/inspector.js:104
 #: src/blocks/gallery-stacked/inspector.js:115
 msgid "Lightbox"
+msgstr ""
+
+#: src/blocks/gallery-carousel/inspector.js:146
+msgid "Thumbnails"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:156
@@ -1965,14 +1971,14 @@ msgstr ""
 msgid "Shadow"
 msgstr ""
 
-#: src/blocks/gallery-collage/inspector.js:97
+#: src/blocks/gallery-collage/inspector.js:103
 #: src/blocks/gallery-masonry/inspector.js:109
 #: src/blocks/gallery-offset/inspector.js:110
 #: src/blocks/gallery-stacked/inspector.js:122
 msgid "Captions"
 msgstr ""
 
-#: src/blocks/gallery-collage/inspector.js:103
+#: src/blocks/gallery-collage/inspector.js:109
 #: src/blocks/gallery-masonry/inspector.js:117
 #: src/blocks/gallery-offset/inspector.js:116
 msgid "Caption style"
@@ -2121,7 +2127,7 @@ msgstr ""
 
 #. translators: block description
 #: src/blocks/gist/index.js:26
-msgid "Embed GitHub gists by adding a gist link."
+msgid "Embed a GitHub Gist."
 msgstr ""
 
 #. translators: block keyword
@@ -3006,7 +3012,7 @@ msgstr ""
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:495
 #: src/blocks/icon/svgs.js:477
-#: src/components/typography-controls/index.js:196
+#: src/components/typography-controls/index.js:194
 msgid "Font"
 msgstr ""
 
@@ -4067,7 +4073,7 @@ msgid "Reset icon size"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:169
-#: src/components/crop-settings/index.js:327
+#: src/components/crop-settings/index.js:326
 #: src/components/dimensions-control/index.js:489
 #: src/components/size-control/index.js:186
 msgid "Reset"
@@ -5273,14 +5279,17 @@ msgstr ""
 msgid "Edit logos"
 msgstr ""
 
-#. translators: block name
 #: src/blocks/logos/edit.js:61
-#: src/blocks/logos/index.js:22
 msgid "Logos & Badges"
 msgstr ""
 
 #: src/blocks/logos/edit.js:62
 msgid "Drag images, upload new ones or select files from your library."
+msgstr ""
+
+#. translators: block name
+#: src/blocks/logos/index.js:22
+msgid "Logos"
 msgstr ""
 
 #. translators: block description
@@ -5517,11 +5526,11 @@ msgid "Aubergine"
 msgstr ""
 
 #: src/blocks/media-card/controls.js:28
-msgid "Media on right"
+msgid "Show media on left"
 msgstr ""
 
 #: src/blocks/media-card/controls.js:33
-msgid "Media on left"
+msgid "Show media on right"
 msgstr ""
 
 #. translators: content placeholder
@@ -6107,11 +6116,6 @@ msgstr ""
 msgid "Add a shape divider to visually distinquish page sections."
 msgstr ""
 
-#. translators: block keyword
-#: src/blocks/shape-divider/index.js:32
-msgid "separator"
-msgstr ""
-
 #. translators: block style
 #: src/blocks/shape-divider/index.js:42
 msgid "Wavy"
@@ -6380,7 +6384,7 @@ msgstr ""
 msgid "Edit background image"
 msgstr ""
 
-#: src/components/background/controls.js:96
+#: src/components/background/controls.js:95
 msgid "Add background image"
 msgstr ""
 
@@ -6554,39 +6558,39 @@ msgstr ""
 msgid "Custom URL"
 msgstr ""
 
-#: src/components/crop-settings/index.js:267
-#: src/components/crop-settings/index.js:270
+#: src/components/crop-settings/index.js:266
+#: src/components/crop-settings/index.js:269
 msgid "Crop settings image placeholder"
 msgstr ""
 
 #. translators: label for horizontal positioning input
-#: src/components/crop-settings/index.js:276
+#: src/components/crop-settings/index.js:275
 msgid "Horizontal pos."
 msgstr ""
 
 #. translators: label for vertical positioning input
-#: src/components/crop-settings/index.js:285
+#: src/components/crop-settings/index.js:284
 msgid "Vertical pos."
 msgstr ""
 
 #. translators: label for the control that allows zooming in on the image
-#: src/components/crop-settings/index.js:295
+#: src/components/crop-settings/index.js:294
 msgid "Image zoom"
 msgstr ""
 
-#: src/components/crop-settings/index.js:302
+#: src/components/crop-settings/index.js:301
 msgid "Image orientation"
 msgstr ""
 
-#: src/components/crop-settings/index.js:309
+#: src/components/crop-settings/index.js:308
 msgid "Rotate counter-clockwise"
 msgstr ""
 
-#: src/components/crop-settings/index.js:316
+#: src/components/crop-settings/index.js:315
 msgid "Rotate clockwise"
 msgstr ""
 
-#: src/components/crop-settings/index.js:325
+#: src/components/crop-settings/index.js:324
 msgid "Reset image cropping options"
 msgstr ""
 
@@ -6958,27 +6962,27 @@ msgstr ""
 msgid "Capitalize"
 msgstr ""
 
-#: src/components/typography-controls/index.js:203
+#: src/components/typography-controls/index.js:201
 msgid "Weight"
 msgstr ""
 
-#: src/components/typography-controls/index.js:212
+#: src/components/typography-controls/index.js:210
 msgid "Transform"
 msgstr ""
 
-#: src/components/typography-controls/index.js:232
+#: src/components/typography-controls/index.js:230
 msgid "Line height"
 msgstr ""
 
-#: src/components/typography-controls/index.js:243
+#: src/components/typography-controls/index.js:241
 msgid "Letter spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:255
+#: src/components/typography-controls/index.js:253
 msgid "No top spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:260
+#: src/components/typography-controls/index.js:258
 msgid "No bottom spacing"
 msgstr ""
 
@@ -7040,7 +7044,7 @@ msgstr ""
 msgid "Top Wave"
 msgstr ""
 
-#: src/extensions/image-crop/index.js:171
+#: src/extensions/image-crop/index.js:170
 msgid "Crop settings"
 msgstr ""
 

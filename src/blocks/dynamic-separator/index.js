@@ -29,6 +29,8 @@ const settings = {
 		'hr',
 		/* translators: block keyword */
 		__( 'spacer', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'separator', 'coblocks' ),
 	],
 	styles: [
 		{
