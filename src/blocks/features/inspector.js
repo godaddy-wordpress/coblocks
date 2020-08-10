@@ -4,8 +4,6 @@
 import applyWithColors from './colors';
 import { BackgroundPanel } from '../../components/background';
 import DimensionsControl from '../../components/dimensions-control/';
-import OptionSelectorControl from '../../components/option-selector-control';
-import gutterOptions from '../../utils/gutter-options';
 
 /**
  * WordPress dependencies
