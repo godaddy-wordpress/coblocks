@@ -92,7 +92,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 		clearBlocks();
 	}
 
-	cy.get( '.edit-post-header-toolbar' ).find( '.block-editor-inserter__toggle' ).click();
+	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click();
 	cy.get( '.block-editor-inserter__search' ).click().type(
 		blockID.split( '-' )[ 0 ]
 	);
