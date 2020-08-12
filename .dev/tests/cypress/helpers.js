@@ -98,7 +98,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	);
 
 	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
-	cy.get( '.components-panel__body.is-opened .editor-block-list-item' + targetClassName ).first().click();
+	cy.get( '.block-editor-inserter__block-list .editor-block-list-item' + targetClassName ).first().click();
 
 	// Make sure the block was added to our page
 	cy.get( `div[data-type="${ blockName }"]` ).should( 'exist' );
