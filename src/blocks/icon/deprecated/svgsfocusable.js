@@ -1229,7 +1229,7 @@ const icons = {
 	},
 };
 
-Object.entries( icons ).filter( function( item ) {
+Object.entries( icons ).filter( ( item ) => {
 	svgs.outlined[ item[ 0 ] ] = {
 		icon: ( icons[ item[ 0 ] ] && icons[ item[ 0 ] ].icon_outlined ) ? icons[ item[ 0 ] ].icon_outlined : icons[ item[ 0 ] ].icon,
 		label: ( icons[ item[ 0 ] ] ) ? icons[ item[ 0 ] ].label : null,
