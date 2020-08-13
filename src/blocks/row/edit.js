@@ -15,6 +15,7 @@ import applyWithColors from './colors';
 import rowIcons from './icons';
 import { createBlock, registerBlockVariation } from '@wordpress/blocks';
 import { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../components/background';
+import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 
 /**
  * WordPress dependencies
@@ -87,7 +88,6 @@ class Edit extends Component {
 			id,
 			backgroundImg,
 			coblocks,
-			gutter,
 			paddingSize,
 			marginSize,
 			marginUnit,
@@ -145,13 +145,13 @@ class Edit extends Component {
 						className="components-coblocks-row-placeholder"
 						icon={ <BlockIcon icon={ columns ? rowIcons.layout : rowIcons.row } /> }
 						label={ columns ? __( 'Row layout', 'coblocks' ) : __( 'Row', 'coblocks' ) }
-						instructions={ columns ?
-							sprintf(
+						instructions={ columns
+							? sprintf(
 								/* translators: %s: 'one' 'two' 'three' and 'four' */
 								__( 'Select a layout for this %s column row.', 'coblocks' ),
 								this.numberToText( columns )
-							) :
-							__( 'Select the number of columns for this row.', 'coblocks' )
+							)
+							: __( 'Select the number of columns for this row.', 'coblocks' )
 						}
 					>
 						{ ! columns ?
@@ -235,7 +235,6 @@ class Edit extends Component {
 			'wp-block-coblocks-row__inner',
 			...BackgroundClasses( attributes ), {
 				'has-text-color': this.props.textColor.color,
-				[ `has-${ gutter }-gutter` ]: gutter,
 				'has-padding': paddingSize && paddingSize !== 'no',
 				[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
 				'has-margin': marginSize && marginSize !== 'no',
@@ -294,12 +293,14 @@ class Edit extends Component {
 					) }
 					<div className={ classes }>
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
-						<div className={ innerClasses } style={ innerStyles }>
-							{ BackgroundVideo( attributes ) }
-							{ this.supportsBlockVariationPicker() ?
-								variationInnerBlocks() :
-								deprecatedInnerBlocks() }
-						</div>
+						<GutterWrapper { ...attributes }>
+							<div className={ innerClasses } style={ innerStyles }>
+								{ BackgroundVideo( attributes ) }
+								{ this.supportsBlockVariationPicker()
+									? variationInnerBlocks()
+									: deprecatedInnerBlocks() }
+							</div>
+						</GutterWrapper>
 					</div>
 				</Fragment>
 			);

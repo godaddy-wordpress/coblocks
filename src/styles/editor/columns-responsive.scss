@@ -1,3 +1,10 @@
+@mixin gutter-margin($margin) {
+
+	> .block-editor-inner-blocks > .block-editor-block-list__layout > [class*="wp-block"]:not(:last-child) {
+		margin-bottom: $margin;
+	}
+}
+
 @include break-small-max() {
 
 	.has-responsive-columns {
@@ -14,13 +21,6 @@
 		> * {
 			max-width: 100% !important;
 			width: 100% !important;
-		}
-
-		@mixin gutter-margin($margin) {
-
-			> .block-editor-inner-blocks > .block-editor-block-list__layout > [class*="wp-block"]:not(:last-child) {
-				margin-bottom: $margin;
-			}
 		}
 
 		&.has-no-gutter {

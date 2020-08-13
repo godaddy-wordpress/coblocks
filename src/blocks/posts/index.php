@@ -105,15 +105,6 @@ function coblocks_posts( $posts, $attributes ) {
 		array_push( $class, 'has-columns has-' . $attributes['columns'] . '-columns has-responsive-columns' );
 	}
 
-	if ( isset( $attributes['columns'] ) && isset( $attributes['gutter'] ) ) {
-		array_push( $class, 'has-' . $attributes['gutter'] . '-gutter' );
-
-		// @todo this needs to be filterable
-		if ( isset( $attributes['gutterCustom'] ) ) {
-			array_push( $styles, '--coblocks-custom-gutter:' . $attributes['gutterCustom'] . 'em' );
-		}
-	}
-
 	if ( isset( $attributes['listPosition'] ) && 'right' === $attributes['listPosition'] && 'horizontal' === $block_style ) {
 		array_push( $class, 'has-image-right' );
 	}
@@ -129,8 +120,8 @@ function coblocks_posts( $posts, $attributes ) {
 	$block_content = sprintf(
 		'<div class="%1$s"><div class="%2$s" style="%3$s">',
 		esc_attr( implode( ' ', $class_name ) ),
-		esc_attr( implode( ' ', $class ) ),
-		esc_attr( implode( ' ', $styles ) )
+		esc_attr( implode( ' ', apply_filters( 'coblocks/render/wrapper/class', $class, $attributes ) ) ),
+		esc_attr( implode( ' ', apply_filters( 'coblocks/render/wrapper/styles', $styles, $attributes ) ) )
 	);
 
 	$list_items_markup = '';
