@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { IconButton, Spinner, Dashicon } from '@wordpress/components';
+import { Button, Spinner, Dashicon } from '@wordpress/components';
 import { RichText, URLInput } from '@wordpress/block-editor';
 import { withSelect } from '@wordpress/data';
 import { BACKSPACE, DELETE } from '@wordpress/keycodes';
@@ -187,7 +187,7 @@ class GalleryImage extends Component {
 					<Fragment>
 						{ supportsMoving &&
 							<div className="components-coblocks-gallery-item__move-menu">
-								<IconButton
+								<Button
 									icon={ verticalMoving ? 'arrow-up' : 'arrow-left' }
 									onClick={ ! isFirstItem && onMoveBackward }
 									className="coblocks-gallery-item__button"
@@ -195,7 +195,7 @@ class GalleryImage extends Component {
 									aria-disabled={ isFirstItem }
 									disabled={ ! isSelected }
 								/>
-								<IconButton
+								<Button
 									icon={ verticalMoving ? 'arrow-down' : 'arrow-right' }
 									onClick={ ! isLastItem && onMoveForward }
 									className="coblocks-gallery-item__button"
@@ -206,7 +206,7 @@ class GalleryImage extends Component {
 							</div>
 						}
 						<div className="components-coblocks-gallery-item__remove-menu">
-							<IconButton
+							<Button
 								icon="no-alt"
 								onClick={ onRemove }
 								className="coblocks-gallery-item__button"
@@ -223,7 +223,7 @@ class GalleryImage extends Component {
 									value={ imgLink }
 									onChange={ ( value ) => setAttributes( { imgLink: value } ) }
 								/>
-								<IconButton icon={ this.state.isSaved ? 'saved' : 'editor-break' } label={ this.state.isSaved ? __( 'Saving', 'coblocks' ) : __( 'Apply', 'coblocks' ) } onClick={ this.saveCustomLink } type="submit" />
+								<Button icon={ this.state.isSaved ? 'saved' : 'editor-break' } label={ this.state.isSaved ? __( 'Saving', 'coblocks' ) : __( 'Apply', 'coblocks' ) } onClick={ this.saveCustomLink } type="submit" />
 							</form>
 						}
 					</Fragment>

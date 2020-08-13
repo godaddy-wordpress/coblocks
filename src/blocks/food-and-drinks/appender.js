@@ -7,12 +7,12 @@ import { noop } from 'lodash';
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { IconButton } from '@wordpress/components';
+import { Button } from '@wordpress/components';
 
 const CustomAppender = ( { onClick = noop } ) => {
 	return (
 		<div className="coblocks-list-appender">
-			<IconButton
+			<Button
 				icon="insert"
 				label={ __( 'Add menu section', 'coblocks' ) }
 				labelPosition="bottom"
@@ -20,7 +20,7 @@ const CustomAppender = ( { onClick = noop } ) => {
 				onClick={ onClick }
 			>
 				{ __( 'Add menu section', 'coblocks' ) }
-			</IconButton>
+			</Button>
 		</div>
 	);
 };

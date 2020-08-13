@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { IconButton } from '@wordpress/components';
+import { Button } from '@wordpress/components';
 import { Component, createRef, Fragment } from '@wordpress/element';
 
 class CoBlocksFieldOption extends Component {
@@ -68,7 +68,7 @@ class CoBlocksFieldOption extends Component {
 							onKeyDown={ this.onKeyPress }
 							ref={ this.textInput }
 						/>
-						<IconButton
+						<Button
 							className="coblocks-option__remove"
 							icon="trash"
 							label={ __( 'Remove Option', 'coblocks' ) }

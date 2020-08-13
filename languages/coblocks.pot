@@ -1,14 +1,14 @@
 # Copyright (c) 2020 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 2.1.0\n"
+"Project-Id-Version: CoBlocks 2.2.1\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-08-05T15:46:16+00:00\n"
+"POT-Creation-Date: 2020-08-12T19:33:05+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -1870,7 +1870,7 @@ msgstr ""
 #: src/blocks/gallery-offset/inspector.js:83
 #: src/blocks/icon/inspector.js:106
 #: src/blocks/icon/inspector.js:172
-#: src/components/typography-controls/index.js:221
+#: src/components/typography-controls/index.js:219
 msgid "Size"
 msgstr ""
 
@@ -3012,7 +3012,7 @@ msgstr ""
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:495
 #: src/blocks/icon/svgs.js:477
-#: src/components/typography-controls/index.js:196
+#: src/components/typography-controls/index.js:194
 msgid "Font"
 msgstr ""
 
@@ -4073,7 +4073,7 @@ msgid "Reset icon size"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:169
-#: src/components/crop-settings/index.js:327
+#: src/components/crop-settings/index.js:326
 #: src/components/dimensions-control/index.js:489
 #: src/components/size-control/index.js:186
 msgid "Reset"
@@ -6384,7 +6384,7 @@ msgstr ""
 msgid "Edit background image"
 msgstr ""
 
-#: src/components/background/controls.js:96
+#: src/components/background/controls.js:95
 msgid "Add background image"
 msgstr ""
 
@@ -6558,39 +6558,39 @@ msgstr ""
 msgid "Custom URL"
 msgstr ""
 
-#: src/components/crop-settings/index.js:267
-#: src/components/crop-settings/index.js:270
+#: src/components/crop-settings/index.js:266
+#: src/components/crop-settings/index.js:269
 msgid "Crop settings image placeholder"
 msgstr ""
 
 #. translators: label for horizontal positioning input
-#: src/components/crop-settings/index.js:276
+#: src/components/crop-settings/index.js:275
 msgid "Horizontal pos."
 msgstr ""
 
 #. translators: label for vertical positioning input
-#: src/components/crop-settings/index.js:285
+#: src/components/crop-settings/index.js:284
 msgid "Vertical pos."
 msgstr ""
 
 #. translators: label for the control that allows zooming in on the image
-#: src/components/crop-settings/index.js:295
+#: src/components/crop-settings/index.js:294
 msgid "Image zoom"
 msgstr ""
 
-#: src/components/crop-settings/index.js:302
+#: src/components/crop-settings/index.js:301
 msgid "Image orientation"
 msgstr ""
 
-#: src/components/crop-settings/index.js:309
+#: src/components/crop-settings/index.js:308
 msgid "Rotate counter-clockwise"
 msgstr ""
 
-#: src/components/crop-settings/index.js:316
+#: src/components/crop-settings/index.js:315
 msgid "Rotate clockwise"
 msgstr ""
 
-#: src/components/crop-settings/index.js:325
+#: src/components/crop-settings/index.js:324
 msgid "Reset image cropping options"
 msgstr ""
 
@@ -6962,27 +6962,27 @@ msgstr ""
 msgid "Capitalize"
 msgstr ""
 
-#: src/components/typography-controls/index.js:203
+#: src/components/typography-controls/index.js:201
 msgid "Weight"
 msgstr ""
 
-#: src/components/typography-controls/index.js:212
+#: src/components/typography-controls/index.js:210
 msgid "Transform"
 msgstr ""
 
-#: src/components/typography-controls/index.js:232
+#: src/components/typography-controls/index.js:230
 msgid "Line height"
 msgstr ""
 
-#: src/components/typography-controls/index.js:243
+#: src/components/typography-controls/index.js:241
 msgid "Letter spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:255
+#: src/components/typography-controls/index.js:253
 msgid "No top spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:260
+#: src/components/typography-controls/index.js:258
 msgid "No bottom spacing"
 msgstr ""
 

@@ -25,7 +25,7 @@ import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withSelect, useDispatch, withDispatch } from '@wordpress/data';
 import { BlockIcon, InnerBlocks, __experimentalBlockVariationPicker } from '@wordpress/block-editor';
-import { ButtonGroup, Button, IconButton, Tooltip, Placeholder, Spinner } from '@wordpress/components';
+import { ButtonGroup, Button, Tooltip, Placeholder, Spinner } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
 
 /**
@@ -154,8 +154,8 @@ class Edit extends Component {
 							: __( 'Select the number of columns for this row.', 'coblocks' )
 						}
 					>
-						{ ! columns ?
-							<ButtonGroup aria-label={ __( 'Select row columns', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
+						{ ! columns
+							? <ButtonGroup aria-label={ __( 'Select row columns', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
 								{ map( columnOptions, ( option ) => (
 									<Tooltip text={ option.name }>
 										<div className="components-coblocks-row-placeholder__button-wrapper">
@@ -179,10 +179,10 @@ class Edit extends Component {
 										</div>
 									</Tooltip>
 								) ) }
-							</ButtonGroup> :
-							<Fragment>
+							</ButtonGroup>
+							: <Fragment>
 								<ButtonGroup aria-label={ __( 'Select row layout', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
-									<IconButton
+									<Button
 										icon="exit"
 										className="components-coblocks-row-placeholder__back"
 										onClick={ () => {
@@ -293,14 +293,14 @@ class Edit extends Component {
 					) }
 					<div className={ classes }>
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
-						<GutterWrapper { ...attributes }>
-							<div className={ innerClasses } style={ innerStyles }>
-								{ BackgroundVideo( attributes ) }
-								{ this.supportsBlockVariationPicker()
-									? variationInnerBlocks()
-									: deprecatedInnerBlocks() }
-							</div>
-						</GutterWrapper>
+            <GutterWrapper { ...attributes }>
+              <div className={ innerClasses } style={ innerStyles }>
+                { BackgroundVideo( attributes ) }
+                { this.supportsBlockVariationPicker()
+                  ? variationInnerBlocks()
+                  : deprecatedInnerBlocks() }
+              </div>
+            </GutterWrapper>
 					</div>
 				</Fragment>
 			);

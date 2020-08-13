@@ -232,7 +232,7 @@
  */
 .wp-block-coblocks-row__inner {
 
-	.wp-block[data-type="coblocks/column"] {
+	[data-type="coblocks/column"] {
 		display: flex;
 		margin-top: 0;
 		margin-bottom: 0;
