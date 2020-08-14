@@ -1,0 +1,29 @@
+body:not(.wp-admin) {
+
+	.animate {
+		opacity: 0;
+		transform: translateX(-20rem);
+		animation-duration: 1s;
+		animation-fill-mode: both;
+	}
+
+	.fadeIn {
+		animation-name: fadeIn;
+		animation-timing-function: ease-in;
+	}
+
+	@keyframes fadeIn {
+
+		from {
+			opacity: 0;
+			transform: translateX(-20rem);
+		}
+
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+}
+
+
