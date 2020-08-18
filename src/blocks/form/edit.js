@@ -363,9 +363,6 @@ class FormEdit extends Component {
 	render() {
 		const { className, blockType, defaultVariation, replaceInnerBlocks, hasInnerBlocks, variations } = this.props;
 
-		console.log( 'STATE' );
-		console.log( this.state );
-
 		const classes = classnames(
 			className,
 			'coblocks-form',
