@@ -1,4 +1,11 @@
 
+2.2.1 / 2020-08-11
+==================
+
+### Bug Fixes
+* Fix Icon block deprecation from legacy markup [#1622](https://github.com/godaddy-wordpress/coblocks/pull/1622)
+
+
 2.2.0 / 2020-08-06
 ==================
 
