@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-08-19T15:15:46+00:00\n"
+"POT-Creation-Date: 2020-08-19T16:31:02+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -437,8 +437,8 @@ msgstr ""
 msgid "Text color"
 msgstr ""
 
-#. translators: Add a child element for the Accordion block
-#: src/blocks/accordion/edit.js:114
+#: src/blocks/accordion/edit.js:111
+#: src/blocks/accordion/edit.js:113
 msgid "Add accordion item"
 msgstr ""
 
@@ -746,8 +746,8 @@ msgstr ""
 msgid "Height for the dynamic separator element in pixels."
 msgstr ""
 
-#: src/blocks/events/appender.js:17
-#: src/blocks/events/appender.js:22
+#: src/blocks/events/appender.js:16
+#: src/blocks/events/appender.js:18
 msgid "Add event"
 msgstr ""
 
@@ -962,8 +962,8 @@ msgstr ""
 msgid "Margin"
 msgstr ""
 
-#: src/blocks/food-and-drinks/appender.js:17
-#: src/blocks/food-and-drinks/appender.js:22
+#: src/blocks/food-and-drinks/appender.js:16
+#: src/blocks/food-and-drinks/appender.js:18
 msgid "Add menu section"
 msgstr ""
 
