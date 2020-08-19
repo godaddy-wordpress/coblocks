@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-08-12T19:33:05+00:00\n"
+"POT-Creation-Date: 2020-08-19T15:15:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -146,7 +146,7 @@ msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:755
-#: src/blocks/form/edit.js:141
+#: src/blocks/form/edit.js:143
 #: src/blocks/form/fields/submit-button/index.js:21
 #: src/blocks/form/fields/submit-button/index.js:29
 #: src/blocks/form/fields/submit-button/index.js:47
@@ -154,14 +154,14 @@ msgid "Submit"
 msgstr ""
 
 #: includes/class-coblocks-form.php:986
-#: src/blocks/form/edit.js:302
+#: src/blocks/form/edit.js:304
 msgid "name"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
 #: includes/class-coblocks-form.php:998
-#: src/blocks/form/edit.js:296
+#: src/blocks/form/edit.js:298
 #: src/blocks/form/fields/name/index.js:53
 #: src/blocks/form/index.js:43
 #: src/blocks/icon/deprecated/svgs.js:691
@@ -1364,85 +1364,85 @@ msgid "Book Appointment"
 msgstr ""
 
 #. translators: %s: placeholder for an email address
-#: src/blocks/form/edit.js:193
+#: src/blocks/form/edit.js:195
 msgid "%s is not a valid email address."
 msgstr ""
 
 #. translators: %s1: placeholder for an email address. %s2: placeholder for an email address
-#: src/blocks/form/edit.js:203
+#: src/blocks/form/edit.js:205
 msgid "%s and %s are not valid email addresses."
 msgstr ""
 
 #. translators: %s1: placeholder for comma separated email addresses
-#: src/blocks/form/edit.js:211
+#: src/blocks/form/edit.js:213
 msgid "%s are not valid email addresses."
 msgstr ""
 
-#: src/blocks/form/edit.js:277
+#: src/blocks/form/edit.js:279
 msgid "Email address"
 msgstr ""
 
-#: src/blocks/form/edit.js:278
+#: src/blocks/form/edit.js:280
 msgid "name@example.com"
 msgstr ""
 
-#: src/blocks/form/edit.js:288
+#: src/blocks/form/edit.js:290
 msgid "Subject"
 msgstr ""
 
-#: src/blocks/form/edit.js:291
+#: src/blocks/form/edit.js:293
 msgid "You may use the following tags in the subject field: "
 msgstr ""
 
-#: src/blocks/form/edit.js:373
+#: src/blocks/form/edit.js:375
 msgid "Form settings"
 msgstr ""
 
-#: src/blocks/form/edit.js:378
+#: src/blocks/form/edit.js:380
 msgid "Google reCAPTCHA"
 msgstr ""
 
-#: src/blocks/form/edit.js:381
+#: src/blocks/form/edit.js:383
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
 msgstr ""
 
-#: src/blocks/form/edit.js:387
+#: src/blocks/form/edit.js:389
 msgid "Generate keys"
 msgstr ""
 
-#: src/blocks/form/edit.js:388
+#: src/blocks/form/edit.js:390
 msgid "My keys"
 msgstr ""
 
-#: src/blocks/form/edit.js:391
+#: src/blocks/form/edit.js:393
 msgid "Get help"
 msgstr ""
 
-#: src/blocks/form/edit.js:395
+#: src/blocks/form/edit.js:397
 msgid "Site key"
 msgstr ""
 
-#: src/blocks/form/edit.js:401
+#: src/blocks/form/edit.js:403
 msgid "Secret key"
 msgstr ""
 
-#: src/blocks/form/edit.js:416
+#: src/blocks/form/edit.js:418
 #: src/blocks/gallery-collage/edit.js:181
 #: src/components/block-gallery/gallery-image.js:226
 msgid "Saving"
 msgstr ""
 
-#: src/blocks/form/edit.js:416
+#: src/blocks/form/edit.js:418
 #: src/blocks/map/inspector.js:227
 msgid "Save"
 msgstr ""
 
-#: src/blocks/form/edit.js:427
+#: src/blocks/form/edit.js:429
 #: src/blocks/map/inspector.js:237
 msgid "Remove"
 msgstr ""
 
-#: src/blocks/form/edit.js:465
+#: src/blocks/form/edit.js:467
 #: src/blocks/row/edit.js:326
 msgid "Select a variation to start with."
 msgstr ""
