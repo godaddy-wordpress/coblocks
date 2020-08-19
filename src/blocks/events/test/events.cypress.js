@@ -46,6 +46,19 @@ describe( 'Block: Events', function () {
 	} );
 
 	/**
+	 * Test that multiple event items display as expected
+	 */
+	it( 'can add multiple event item blocks', () => {
+		cy.get( '[data-type="coblocks/events"]' ).click( 'top', { force: true } );
+		
+		cy.get('.coblocks-block-appender button' ).trigger( 'click' ); 
+
+		cy.get( '[data-type="coblocks/events"]' ).find( '[data-type="coblocks/event-item"]' ).should( 'have.length', 2 );
+
+		helpers.checkForBlockErrors( 'coblocks/events' );
+	} );
+
+	/**
 	* Test the events block saves with custom classes
 	*/
 	it( 'can set custom classes', function () {
