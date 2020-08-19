@@ -43,7 +43,7 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 		const { shapeHeight, backgroundHeight } = shapeDividerData;
 		helpers.addBlockToPost( 'coblocks/shape-divider', true );
 
-		cy.get( '.wp-block-coblocks-shape-divider' ).click();
+		cy.get( '.wp-block-coblocks-shape-divider' ).first().click();
 
 		helpers.setInputValue( 'divider settings', 'shape height', shapeHeight );
 		helpers.setInputValue( 'divider settings', 'background height', backgroundHeight );
@@ -69,7 +69,7 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 		const { shapeColor, backgroundColor, shapeColorRGB, backgroundColorRGB } = shapeDividerData;
 		helpers.addBlockToPost( 'coblocks/shape-divider', true );
 
-		cy.get( '.wp-block-coblocks-shape-divider' ).click();
+		cy.get( '.wp-block-coblocks-shape-divider' ).first().click();
 		helpers.setColorSetting( 'shape color', shapeColor );
 		helpers.setColorSetting( 'background color', backgroundColor );
 
@@ -95,7 +95,7 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 		const { style } = shapeDividerData;
 		helpers.addBlockToPost( 'coblocks/shape-divider', true );
 
-		cy.get( '.wp-block-coblocks-shape-divider' ).click();
+		cy.get( '.wp-block-coblocks-shape-divider' ).first().click();
 
 		helpers.setBlockStyle( style );
 
