@@ -1,28 +1,7 @@
 [data-type="coblocks/events"] {
 
-	.coblocks-list-appender {
-		margin-left: -12px;
-		margin-right: -12px;
+	.coblocks-block-appender {
 		margin-top: 28px;
-
-		&__toggle.components-button {
-			align-items: center;
-			background: $dark-opacity-light-200 !important;
-			border-radius: 0;
-			box-shadow: none;
-			color: $dark-gray-500;
-			display: flex;
-			padding: 16px;
-			height: auto;
-			justify-content: center;
-			outline: 1px dashed $dark-gray-150;
-			width: 100%;
-
-			&:hover {
-				box-shadow: none !important;
-				outline: 1px dashed $dark-gray-500;
-			}
-		}
 	}
 
 	&.is-selected,
