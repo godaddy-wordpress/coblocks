@@ -29,7 +29,7 @@ function addAttributes( settings, name ) {
 		},
 		gutterCustom: {
 			type: 'string',
-			default: supportOverride.customDefault || 3,
+			default: supportOverride.customDefault?.toString() || '3',
 		},
 	};
 

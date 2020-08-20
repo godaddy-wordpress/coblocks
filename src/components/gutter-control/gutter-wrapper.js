@@ -19,29 +19,28 @@ function GutterWrapper( { children, gutter, gutterCustom, className, condition =
 		return children;
 	}
 
-	let style = {};
-
-	if ( children.props.style ) {
-		style = {
-			...children.props.style,
-		};
-	}
-
-	if ( 'custom' === gutter ) {
-		style = {
-			...style,
-			'--coblocks-custom-gutter': `${ gutterCustom }em`,
-		};
-	}
-
-	return cloneElement( children, {
+	const attributes = {
 		className: classnames(
 			className,
 			children.props.className,
 			{ [ `has-${ gutter }-gutter` ]: gutter && !! condition }
 		),
-		style,
-	} );
+	};
+
+	if ( children.props.style ) {
+		attributes.style = {
+			...children.props.style,
+		};
+	}
+
+	if ( 'custom' === gutter ) {
+		attributes.style = {
+			...attributes.style,
+			'--coblocks-custom-gutter': `${ gutterCustom }em`,
+		};
+	}
+
+	return cloneElement( children, attributes );
 }
 
 GutterWrapper.propTypes = {
