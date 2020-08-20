@@ -1,4 +1,6 @@
 /* global coblocksLayoutSelector */
+const isRunningTests = ( typeof Cypress !== 'undefined' && !! Cypress.env( 'testingLayoutSelector' ) ) || false;
+
 /**
  * External dependencies
  */
@@ -22,6 +24,7 @@ import { createBlock } from '@wordpress/blocks';
  * Internal dependencies
  */
 import './store';
+import cypressLayoutsTesting from './test/cypress-layouts.js';
 
 const getBlocksFromTemplate = ( name, attributes, innerBlocks = [] ) => {
 	return createBlock( name, attributes,
@@ -374,8 +377,8 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 
 				const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo();
 
-				const layouts = coblocksLayoutSelector.layouts || [];
-				const categories = coblocksLayoutSelector.categories || [];
+				const layouts = isRunningTests ? cypressLayoutsTesting.layouts : coblocksLayoutSelector.layouts || [];
+				const categories = isRunningTests ? cypressLayoutsTesting.categories : coblocksLayoutSelector.categories || [];
 
 				return {
 					isActive: isCleanUnpublishedPost || isTemplateSelectorActive(),

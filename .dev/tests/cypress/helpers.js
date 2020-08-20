@@ -376,7 +376,7 @@ export function addCustomBlockClass( classes, blockID = '' ) {
  * Press the Undo button in the header toolbar.
  */
 export function doEditorUndo() {
-	cy.get( '.editor-history__undo' ).click();
+	cy.get( '.editor-history__undo' ).click( { force: true } );
 }
 
 /**
@@ -391,7 +391,7 @@ export function doEditorRedo() {
  */
 export function openEditorSettingsModal() {
 	// Open "more" menu.
-	cy.get( '.edit-post-more-menu' ).find( 'button' ).click();
+	cy.get( '.edit-post-more-menu' ).find( 'button' ).click( { force: true } );
 	cy.get( '.components-menu-item__button' ).contains( 'Editor settings' ).click();
 
 	cy.get( '.components-modal__frame' ).contains( 'Editor settings' ).should( 'exist' );
