@@ -115,5 +115,11 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+### Enhancement
+* Hide form reCAPTCHA panel on initial load [#1621](https://github.com/godaddy-wordpress/coblocks/pull/1621)
+
 ### Bug Fixes
-* Fix Icon block deprecation from legacy markup [#1622](https://github.com/godaddy-wordpress/coblocks/pull/1622)
+* Introduce Shape Divider deprecations related to extensions [#1633](https://github.com/godaddy-wordpress/coblocks/pull/1633)
+* Prevent columns css from overriding list-style css [#1635](https://github.com/godaddy-wordpress/coblocks/pull/1635)
+* Pull in SVG components from wp/5.3 release for deprecation [#1637](https://github.com/godaddy-wordpress/coblocks/pull/1637)
+* Style block appenders better for WordPress 5.5 [#1616](https://github.com/godaddy-wordpress/coblocks/pull/1616)
