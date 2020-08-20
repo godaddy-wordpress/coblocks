@@ -53,9 +53,7 @@ describe( 'Test CoBlocks Share Block', function() {
 
 		helpers.toggleSettingCheckbox( 'Social colors' );
 
-		cy.get( 'input[aria-label="Rounded corners"]' )
-			.clear()
-			.type( '10' );
+		cy.get( 'input[aria-label="Rounded corners"][type="number"]' ).type( '{selectall}10' );
 
 		if ( Cypress.browser.name === 'chrome' ) {
 			cy.get( '.wp-block-coblocks-social li:first-child .wp-block-coblocks-social__button' )
@@ -67,7 +65,7 @@ describe( 'Test CoBlocks Share Block', function() {
 				.should( 'have.css', 'border-top-right-radius', '10px' )
 				.should( 'have.css', 'border-top-left-radius', '10px' );
 		}
-		
+
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/social' );
@@ -167,11 +165,11 @@ describe( 'Test CoBlocks Share Block', function() {
 	it( 'Test the share block social network visibility using click toggle.', function() {
 		helpers.addBlockToPost( 'coblocks/social', true );
 
-		cy.get( '.wp-block-coblocks-social__button--linkedin' ).click();
-		cy.get( '.wp-block-coblocks-social__button--email' ).click();
-		cy.get( '.wp-block-coblocks-social__button--tumblr' ).click();
-		cy.get( '.wp-block-coblocks-social__button--google' ).click();
-		cy.get( '.wp-block-coblocks-social__button--reddit' ).click();
+		cy.get( '.wp-block-coblocks-social__button--linkedin' ).first().click();
+		cy.get( '.wp-block-coblocks-social__button--email' ).first().click();
+		cy.get( '.wp-block-coblocks-social__button--tumblr' ).first().click();
+		cy.get( '.wp-block-coblocks-social__button--google' ).first().click();
+		cy.get( '.wp-block-coblocks-social__button--reddit' ).first().click();
 
 		helpers.savePage();
 
@@ -190,15 +188,15 @@ describe( 'Test CoBlocks Share Block', function() {
 
 		helpers.editPage();
 
-		cy.get( '.wp-block-coblocks-social' ).click( { force: true } );
+		cy.get( '.wp-block-coblocks-social' ).first().click( { force: true } );
 
-		cy.get( '.wp-block-coblocks-social__button--twitter' ).click();
-		cy.get( '.wp-block-coblocks-social__button--facebook' ).click();
-		cy.get( '.wp-block-coblocks-social__button--pinterest' ).click();
-		cy.get( '.wp-block-coblocks-social__button--linkedin' ).click();
-		cy.get( '.wp-block-coblocks-social__button--email' ).click();
-		cy.get( '.wp-block-coblocks-social__button--tumblr' ).click();
-		cy.get( '.wp-block-coblocks-social__button--google' ).click();
+		cy.get( '.wp-block-coblocks-social__button--twitter' ).first().click();
+		cy.get( '.wp-block-coblocks-social__button--facebook' ).first().click();
+		cy.get( '.wp-block-coblocks-social__button--pinterest' ).first().click();
+		cy.get( '.wp-block-coblocks-social__button--linkedin' ).first().click();
+		cy.get( '.wp-block-coblocks-social__button--email' ).first().click();
+		cy.get( '.wp-block-coblocks-social__button--tumblr' ).first().click();
+		cy.get( '.wp-block-coblocks-social__button--google' ).first().click();
 
 		helpers.savePage();
 
