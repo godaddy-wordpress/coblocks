@@ -1,4 +1,4 @@
-.wp-block[data-type="coblocks/form"] {
+[data-type="coblocks/form"] {
 
 	.components-base-control,
 	.coblocks-option__input {
@@ -174,7 +174,7 @@
 	text-align: center;
 }
 
-.wp-block[data-type="coblocks/form"] .coblocks-form__submit.wp-block-button .wp-block-button__link,
+[data-type="coblocks/form"] .coblocks-form__submit.wp-block-button .wp-block-button__link,
 .block-editor-block-preview__container .wp-block-button__link {
 
 	&.is-style-outline {
@@ -195,7 +195,7 @@
 	}
 }
 
-.wp-block[data-type="coblocks/field-select"] .coblocks-field-multiple__add-option {
+[data-type="coblocks/field-select"] .coblocks-field-multiple__add-option {
 	margin-left: 0;
 }
 

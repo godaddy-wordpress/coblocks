@@ -1,4 +1,4 @@
-.wp-block[data-type="coblocks/author"] {
+[data-type="coblocks/author"] {
 
 	.block-editor-inner-blocks {
 
@@ -8,7 +8,7 @@
 		}
 	}
 
-	.wp-block[data-type="core/button"] {
+	[data-type="core/button"] {
 		display: block;
 
 		[data-block] {
@@ -42,7 +42,7 @@
 		background: $white;
 		position: relative;
 
-		button {
+		.components-button {
 			border-radius: 100%;
 			height: 100%;
 			left: 0;

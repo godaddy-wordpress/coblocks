@@ -15,7 +15,7 @@ import icons from './icons';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { BlockControls, MediaPlaceholder, MediaUpload, BlockIcon } from '@wordpress/block-editor';
-import { IconButton, ResizableBox, Toolbar, DropZone, Spinner } from '@wordpress/components';
+import { Button, ResizableBox, Toolbar, DropZone, Spinner } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
 
 /**
@@ -33,7 +33,7 @@ class MediaContainer extends Component {
 						allowedTypes={ ALLOWED_MEDIA_TYPES }
 						value={ mediaId }
 						render={ ( { open } ) => (
-							<IconButton
+							<Button
 								className="components-toolbar__control"
 								label={ __( 'Edit media', 'coblocks' ) }
 								icon="edit"

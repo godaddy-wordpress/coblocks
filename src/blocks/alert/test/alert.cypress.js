@@ -58,7 +58,7 @@ describe( 'Test CoBlocks Alert Block', function() {
 	it( 'Test alert style classes are applied in the editor.', function() {
 		helpers.addBlockToPost( 'coblocks/alert', true );
 
-		cy.get( '.wp-block[data-type="coblocks/alert"]' )
+		cy.get( '[data-type="coblocks/alert"]' )
 			.click( 'right' );
 
 		helpers.openSettingsPanel( 'Styles' );

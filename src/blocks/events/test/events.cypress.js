@@ -35,12 +35,25 @@ describe( 'Block: Events', function () {
 
 		helpers.toggleSettingCheckbox( /link a calendar/i );
 
-		cy.get( '.wp-block[data-type="coblocks/events"]' ).first().within( () => {
+		cy.get( '[data-type="coblocks/events"]' ).first().within( () => {
 			cy.get( 'input[placeholder="Enter URL here…"]' ).type( ical, { delay: 0 } );
 			cy.get( 'button' ).contains( 'Use URL' ).click();
 		} );
 
 		cy.get( '.wp-block-coblocks-event-item', { timeout: 10000 } ).should( 'exist' );
+
+		helpers.checkForBlockErrors( 'coblocks/events' );
+	} );
+
+	/**
+	 * Test that multiple event items display as expected
+	 */
+	it( 'can add multiple event item blocks', () => {
+		cy.get( '[data-type="coblocks/events"]' ).click( 'top', { force: true } );
+		
+		cy.get('.coblocks-block-appender button' ).trigger( 'click' ); 
+
+		cy.get( '[data-type="coblocks/events"]' ).find( '[data-type="coblocks/event-item"]' ).should( 'have.length', 2 );
 
 		helpers.checkForBlockErrors( 'coblocks/events' );
 	} );

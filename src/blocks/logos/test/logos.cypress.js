@@ -30,7 +30,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 		const { imageBase } = helpers.upload.spec;
 		helpers.addBlockToPost( 'coblocks/logos', true );
 
-		cy.get( '.wp-block[data-type="coblocks/logos"]' ).click();
+		cy.get( '[data-type="coblocks/logos"]' ).click();
 
 		helpers.upload.imageToBlock( 'coblocks/logos' );
 
@@ -54,7 +54,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 	it( 'Test logos block saves with image from media library.', function() {
 		helpers.addBlockToPost( 'coblocks/logos', true );
 
-		cy.get( '.wp-block[data-type="coblocks/logos"]' )
+		cy.get( '[data-type="coblocks/logos"]' )
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -93,7 +93,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 	it( 'Test logos block saves with black and white filter.', function() {
 		helpers.addBlockToPost( 'coblocks/logos', true );
 
-		cy.get( '.wp-block[data-type="coblocks/logos"]' )
+		cy.get( '[data-type="coblocks/logos"]' )
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -135,7 +135,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 	it( 'Test logos block saves with grayscale filter.', function() {
 		helpers.addBlockToPost( 'coblocks/logos', true );
 
-		cy.get( '.wp-block[data-type="coblocks/logos"]' )
+		cy.get( '[data-type="coblocks/logos"]' )
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -177,7 +177,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 	it( 'Test logos block saves with default filter.', function() {
 		helpers.addBlockToPost( 'coblocks/logos', true );
 
-		cy.get( '.wp-block[data-type="coblocks/logos"]' )
+		cy.get( '[data-type="coblocks/logos"]' )
 			.click()
 			.contains( /media library/i )
 			.click();

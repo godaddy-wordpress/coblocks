@@ -82,6 +82,7 @@ const save = ( { attributes } ) => {
 			{ ! RichText.isEmpty( features ) && (
 				<RichText.Content
 					tagName="ul"
+					multiline="li"
 					className="wp-block-coblocks-pricing-table-item__features"
 					value={ features }
 				/>
