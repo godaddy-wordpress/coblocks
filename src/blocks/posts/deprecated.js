@@ -19,11 +19,6 @@ export default [
 		},
 		migrate: ( oldAttributes ) => {
 			// This needs the full category object, not just the ID.
-			console.log( oldAttributes );
-			console.log( {
-				...oldAttributes,
-				categories: [ { id: Number( oldAttributes.categories ) } ],
-			} );
 			return {
 				...oldAttributes,
 				categories: [ { id: Number( oldAttributes.categories ) } ],
