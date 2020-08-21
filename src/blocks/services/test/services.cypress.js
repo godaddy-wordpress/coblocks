@@ -70,23 +70,23 @@ describe( 'Test CoBlocks Services Block', function() {
 		cy.get( '.wp-block-coblocks-services' ).click( { force: true } );
 
 		helpers.addBlockToPost( 'coblocks/services', true );
-		cy.get( 'div[data-type="core/heading"]' ).find( 'h3[aria-label="Write title…"]' );
+		cy.get( 'h3[data-type="core/heading"][aria-label="Write title…"]' );
 
 		cy.get( '.wp-block-coblocks-services' ).click();
 		helpers.openHeadingToolbarAndSelect( 2 );
-		cy.get( 'div[data-type="core/heading"]' ).find( 'h2[aria-label="Write title…"]' );
+		cy.get( 'h2[data-type="core/heading"][aria-label="Write title…"]' );
 
 		cy.get( '.wp-block-coblocks-services' ).click();
 		helpers.openHeadingToolbarAndSelect( 3 );
-		cy.get( 'div[data-type="core/heading"]' ).find( 'h3[aria-label="Write title…"]' );
+		cy.get( 'h3[data-type="core/heading"][aria-label="Write title…"]' );
 
 		cy.get( '.wp-block-coblocks-services' ).click();
 		helpers.openHeadingToolbarAndSelect( 4 );
-		cy.get( 'div[data-type="core/heading"]' ).find( 'h4[aria-label="Write title…"]' );
+		cy.get( 'h4[data-type="core/heading"][aria-label="Write title…"]' );
 
 		cy.get( '.wp-block-coblocks-services' ).click();
 		helpers.openHeadingToolbarAndSelect( 5 );
-		cy.get( 'div[data-type="core/heading"]' ).find( 'h5[aria-label="Write title…"]' );
+		cy.get( 'h5[data-type="core/heading"][aria-label="Write title…"]' );
 
 		helpers.savePage();
 		helpers.checkForBlockErrors( 'coblocks/services' );
