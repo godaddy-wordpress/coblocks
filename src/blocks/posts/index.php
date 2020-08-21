@@ -27,7 +27,7 @@ function coblocks_render_posts_block( $attributes ) {
 
 	if ( isset( $attributes['categories'] ) ) {
 
-		$args['category'] = $attributes['categories'];
+		$args['category__in'] = array_column( $attributes['categories'], 'id' );
 
 	}
 
