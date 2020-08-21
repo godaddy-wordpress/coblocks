@@ -30,7 +30,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 		const { imageBase } = helpers.upload.spec;
 		helpers.addBlockToPost( 'coblocks/logos', true );
 
-		cy.get( '[data-type="coblocks/logos"]' ).click();
+		cy.get( '[data-type="coblocks/logos"]' ).first().click();
 
 		helpers.upload.imageToBlock( 'coblocks/logos' );
 
@@ -55,6 +55,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 		helpers.addBlockToPost( 'coblocks/logos', true );
 
 		cy.get( '[data-type="coblocks/logos"]' )
+			.first()
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -94,6 +95,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 		helpers.addBlockToPost( 'coblocks/logos', true );
 
 		cy.get( '[data-type="coblocks/logos"]' )
+			.first()
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -136,6 +138,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 		helpers.addBlockToPost( 'coblocks/logos', true );
 
 		cy.get( '[data-type="coblocks/logos"]' )
+			.first()
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -178,6 +181,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 		helpers.addBlockToPost( 'coblocks/logos', true );
 
 		cy.get( '[data-type="coblocks/logos"]' )
+			.first()
 			.click()
 			.contains( /media library/i )
 			.click();

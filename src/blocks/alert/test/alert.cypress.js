@@ -30,9 +30,11 @@ describe( 'Test CoBlocks Alert Block', function() {
 		helpers.addBlockToPost( 'coblocks/alert', true );
 
 		cy.get( '.wp-block-coblocks-alert__title' )
+			.first()
 			.type( 'Test Title' );
 
 		cy.get( '.wp-block-coblocks-alert__text' )
+			.first()
 			.type( 'Test text' );
 
 		helpers.savePage();
@@ -59,6 +61,7 @@ describe( 'Test CoBlocks Alert Block', function() {
 		helpers.addBlockToPost( 'coblocks/alert', true );
 
 		cy.get( '[data-type="coblocks/alert"]' )
+			.first()
 			.click( 'right' );
 
 		helpers.openSettingsPanel( 'Styles' );
