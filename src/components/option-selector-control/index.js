@@ -3,6 +3,7 @@
  */
 import { kebabCase } from 'lodash';
 import { SettingsIcon } from '@godaddy-wordpress/coblocks-icons';
+import classnames from 'classnames';
 
 /**
  * WordPress dependencies
@@ -99,7 +100,12 @@ export default class OptionSelectorControl extends Component {
 			<BaseControl
 				id={ `coblocks-option-selector-${ kebabCase( label ) }` }
 				label={ label }
-				className="coblocks-option-selector-control" >
+				className={ classnames(
+					'coblocks-option-selector-control',
+					{
+						'is-custom': currentOption === 'custom',
+					}
+				) }>
 				<PanelRow>
 					<ButtonGroup aria-label={ label }>
 
