@@ -92,16 +92,16 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 		clearBlocks();
 	}
 
-	cy.get( '.edit-post-header-toolbar' ).find( '.block-editor-inserter__toggle' ).click();
+	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click();
 	cy.get( '.block-editor-inserter__search' ).click().type(
 		blockID.split( '-' )[ 0 ]
 	);
 
 	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
-	cy.get( '.components-panel__body.is-opened .editor-block-list-item' + targetClassName ).first().click();
+	cy.get( '.block-editor-inserter__block-list .editor-block-list-item' + targetClassName ).first().click();
 
 	// Make sure the block was added to our page
-	cy.get( `div[data-type="${ blockName }"]` ).should( 'exist' );
+	cy.get( `[data-type="${ blockName }"]` ).should( 'exist' );
 }
 
 /**
@@ -129,7 +129,7 @@ export function checkForBlockErrors( blockName ) {
 
 		cy.get( '.block-editor-warning' ).should( 'not.exist' );
 
-		cy.get( `div[data-type="${ blockName }"]` ).should( 'exist' );
+		cy.get( `[data-type="${ blockName }"]` ).should( 'exist' );
 	} );
 }
 
@@ -265,7 +265,7 @@ export const upload = {
 		const { fileName, pathToFixtures } = upload.spec;
 		cy.fixture( pathToFixtures + fileName ).then( ( fileContent ) => {
 			cy.get( `[data-type="${ blockName }"]` )
-				.find( 'input' )
+				.find( 'input[type="file"]' )
 				.first()
 				.invoke( 'removeAttr', 'style' ) //makes element easier to interact with/accessible. Headless test fails without this.
 				.upload(

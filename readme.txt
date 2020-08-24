@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 2.2.0
+Stable tag: 2.2.2
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -115,20 +115,11 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-### Enhancements
-* Tweaks to CoBlocks icons descriptions labels and keywords to support the new editor UI [#1602](https://github.com/godaddy-wordpress/coblocks/pull/1602)
-* Update CSS selectors for WordPress 5.5 support [#1608](https://github.com/godaddy-wordpress/coblocks/pull/1608)
-* Enable use of core color variables for extensibility [#1598](https://github.com/godaddy-wordpress/coblocks/pull/1598)
-* Improve Lightbox compatibility with Themes [#1587](https://github.com/godaddy-wordpress/coblocks/pull/1587)
-* Allow empty lines within the Price Table features list [#1586](https://github.com/godaddy-wordpress/coblocks/pull/1586)
+### Enhancement
+* Hide form reCAPTCHA panel on initial load [#1621](https://github.com/godaddy-wordpress/coblocks/pull/1621)
 
 ### Bug Fixes
-* Fix Accordion block support for grandchild blocks [#1582](https://github.com/godaddy-wordpress/coblocks/pull/1582)
-* Fix bug where empty sidebar panels may appear on blocks [#1610](https://github.com/godaddy-wordpress/coblocks/pull/1610)
-* Fix display of gallery image control styles [#1591](https://github.com/godaddy-wordpress/coblocks/pull/1591)
-* Fix MediaCard block resizable controls [#1603](https://github.com/godaddy-wordpress/coblocks/pull/1603)
-
-### Misc
-* Update tested to value to 5.5 [#1614](https://github.com/godaddy-wordpress/coblocks/pull/1614)
-* Deprecate IconButton component in favor of Button component [#1609](https://github.com/godaddy-wordpress/coblocks/pull/1609)
-* Remove crop controls from core image block [#1597](https://github.com/godaddy-wordpress/coblocks/pull/1597)
+* Introduce Shape Divider deprecations related to extensions [#1633](https://github.com/godaddy-wordpress/coblocks/pull/1633)
+* Prevent columns css from overriding list-style css [#1635](https://github.com/godaddy-wordpress/coblocks/pull/1635)
+* Pull in SVG components from wp/5.3 release for deprecation [#1637](https://github.com/godaddy-wordpress/coblocks/pull/1637)
+* Style block appenders better for WordPress 5.5 [#1616](https://github.com/godaddy-wordpress/coblocks/pull/1616)

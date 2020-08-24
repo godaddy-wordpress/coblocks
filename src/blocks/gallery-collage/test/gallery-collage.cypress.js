@@ -40,7 +40,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 		const { imageBase } = helpers.upload.spec;
 		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
 
-		cy.get( '[data-type="coblocks/gallery-collage"]' ).click();
+		cy.get( '[data-type="coblocks/gallery-collage"]' ).first().click();
 
 		helpers.upload.imageToBlock( 'coblocks/gallery-collage' );
 
@@ -65,6 +65,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
 
 		cy.get( '[data-type="coblocks/gallery-collage"]' )
+			.first()
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -98,6 +99,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
 
 		cy.get( '[data-type="coblocks/gallery-collage"]' )
+			.first()
 			.click()
 			.contains( /media library/i )
 			.click();

@@ -12,38 +12,3 @@
 		padding: 0 12px;
 	}
 }
-
-.components-coblocks-add-accordion-item__button.components-button {
-	align-items: center;
-	background: rgba(237, 239, 240, 0.8);
-	border: none;
-	border-radius: 0;
-	box-shadow: none !important;
-	color: $dark-gray-500;
-	display: flex;
-	flex-direction: column;
-	height: 62px;
-	justify-content: center;
-	line-height: 31px;
-	outline: 1px dashed $dark-gray-150;
-	padding: 21px;
-	text-align: center;
-	width: 100%;
-
-	svg {
-		margin-right: 5px;
-	}
-
-	&:hover {
-		background: rgba(237, 239, 240, 0.8);
-		color: $dark-gray-900;
-		outline: 1px dashed $dark-gray-500;
-	}
-
-	&.block-editor-button-block-appender:focus {
-		background-color: $white;
-		box-shadow: inset 0 0 0 1px $dark-gray-300, inset 0 0 0 2px $white !important;
-		color: $dark-gray-900;
-		outline: 2px solid transparent;
-	}
-}

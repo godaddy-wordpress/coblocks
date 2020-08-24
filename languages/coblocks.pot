@@ -1,14 +1,14 @@
 # Copyright (c) 2020 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 2.2.0\n"
+"Project-Id-Version: CoBlocks 2.2.2\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-08-06T19:23:54+00:00\n"
+"POT-Creation-Date: 2020-08-20T23:17:39+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -146,7 +146,7 @@ msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:755
-#: src/blocks/form/edit.js:141
+#: src/blocks/form/edit.js:143
 #: src/blocks/form/fields/submit-button/index.js:21
 #: src/blocks/form/fields/submit-button/index.js:29
 #: src/blocks/form/fields/submit-button/index.js:47
@@ -154,14 +154,14 @@ msgid "Submit"
 msgstr ""
 
 #: includes/class-coblocks-form.php:986
-#: src/blocks/form/edit.js:302
+#: src/blocks/form/edit.js:304
 msgid "name"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
 #: includes/class-coblocks-form.php:998
-#: src/blocks/form/edit.js:296
+#: src/blocks/form/edit.js:298
 #: src/blocks/form/fields/name/index.js:53
 #: src/blocks/form/index.js:43
 #: src/blocks/icon/deprecated/svgs.js:691
@@ -437,8 +437,8 @@ msgstr ""
 msgid "Text color"
 msgstr ""
 
-#. translators: Add a child element for the Accordion block
-#: src/blocks/accordion/edit.js:114
+#: src/blocks/accordion/edit.js:111
+#: src/blocks/accordion/edit.js:113
 msgid "Add accordion item"
 msgstr ""
 
@@ -746,8 +746,8 @@ msgstr ""
 msgid "Height for the dynamic separator element in pixels."
 msgstr ""
 
-#: src/blocks/events/appender.js:17
-#: src/blocks/events/appender.js:22
+#: src/blocks/events/appender.js:16
+#: src/blocks/events/appender.js:18
 msgid "Add event"
 msgstr ""
 
@@ -962,8 +962,8 @@ msgstr ""
 msgid "Margin"
 msgstr ""
 
-#: src/blocks/food-and-drinks/appender.js:17
-#: src/blocks/food-and-drinks/appender.js:22
+#: src/blocks/food-and-drinks/appender.js:16
+#: src/blocks/food-and-drinks/appender.js:18
 msgid "Add menu section"
 msgstr ""
 
@@ -981,7 +981,7 @@ msgstr ""
 msgid "List"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:142
+#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:190
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:132
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:91
 #: src/blocks/food-and-drinks/food-item/edit.js:317
@@ -990,7 +990,7 @@ msgstr ""
 msgid "Popular"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:150
+#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:198
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:140
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:104
 #: src/blocks/food-and-drinks/food-item/edit.js:329
@@ -999,7 +999,7 @@ msgstr ""
 msgid "Spicy"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:158
+#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:206
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:148
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:117
 #: src/blocks/food-and-drinks/food-item/inspector.js:80
@@ -1007,7 +1007,7 @@ msgstr ""
 msgid "Spicier"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:166
+#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:214
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:156
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:130
 #: src/blocks/food-and-drinks/food-item/edit.js:356
@@ -1016,14 +1016,14 @@ msgstr ""
 msgid "Vegetarian"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:174
+#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:222
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:164
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:143
 #: src/blocks/food-and-drinks/food-item/inspector.js:65
 msgid "Gluten Free"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:182
+#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:230
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:172
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:156
 #: src/blocks/food-and-drinks/food-item/edit.js:384
@@ -1032,7 +1032,7 @@ msgstr ""
 msgid "Pescatarian"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:190
+#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:238
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:180
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:169
 #: src/blocks/food-and-drinks/food-item/inspector.js:85
@@ -1364,85 +1364,85 @@ msgid "Book Appointment"
 msgstr ""
 
 #. translators: %s: placeholder for an email address
-#: src/blocks/form/edit.js:193
+#: src/blocks/form/edit.js:195
 msgid "%s is not a valid email address."
 msgstr ""
 
 #. translators: %s1: placeholder for an email address. %s2: placeholder for an email address
-#: src/blocks/form/edit.js:203
+#: src/blocks/form/edit.js:205
 msgid "%s and %s are not valid email addresses."
 msgstr ""
 
 #. translators: %s1: placeholder for comma separated email addresses
-#: src/blocks/form/edit.js:211
+#: src/blocks/form/edit.js:213
 msgid "%s are not valid email addresses."
 msgstr ""
 
-#: src/blocks/form/edit.js:277
+#: src/blocks/form/edit.js:279
 msgid "Email address"
 msgstr ""
 
-#: src/blocks/form/edit.js:278
+#: src/blocks/form/edit.js:280
 msgid "name@example.com"
 msgstr ""
 
-#: src/blocks/form/edit.js:288
+#: src/blocks/form/edit.js:290
 msgid "Subject"
 msgstr ""
 
-#: src/blocks/form/edit.js:291
+#: src/blocks/form/edit.js:293
 msgid "You may use the following tags in the subject field: "
 msgstr ""
 
-#: src/blocks/form/edit.js:373
+#: src/blocks/form/edit.js:375
 msgid "Form settings"
 msgstr ""
 
-#: src/blocks/form/edit.js:378
+#: src/blocks/form/edit.js:380
 msgid "Google reCAPTCHA"
 msgstr ""
 
-#: src/blocks/form/edit.js:381
+#: src/blocks/form/edit.js:383
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
 msgstr ""
 
-#: src/blocks/form/edit.js:387
+#: src/blocks/form/edit.js:389
 msgid "Generate keys"
 msgstr ""
 
-#: src/blocks/form/edit.js:388
+#: src/blocks/form/edit.js:390
 msgid "My keys"
 msgstr ""
 
-#: src/blocks/form/edit.js:391
+#: src/blocks/form/edit.js:393
 msgid "Get help"
 msgstr ""
 
-#: src/blocks/form/edit.js:395
+#: src/blocks/form/edit.js:397
 msgid "Site key"
 msgstr ""
 
-#: src/blocks/form/edit.js:401
+#: src/blocks/form/edit.js:403
 msgid "Secret key"
 msgstr ""
 
-#: src/blocks/form/edit.js:416
+#: src/blocks/form/edit.js:418
 #: src/blocks/gallery-collage/edit.js:181
 #: src/components/block-gallery/gallery-image.js:226
 msgid "Saving"
 msgstr ""
 
-#: src/blocks/form/edit.js:416
+#: src/blocks/form/edit.js:418
 #: src/blocks/map/inspector.js:227
 msgid "Save"
 msgstr ""
 
-#: src/blocks/form/edit.js:427
+#: src/blocks/form/edit.js:429
 #: src/blocks/map/inspector.js:237
 msgid "Remove"
 msgstr ""
 
-#: src/blocks/form/edit.js:465
+#: src/blocks/form/edit.js:467
 #: src/blocks/row/edit.js:326
 msgid "Select a variation to start with."
 msgstr ""
