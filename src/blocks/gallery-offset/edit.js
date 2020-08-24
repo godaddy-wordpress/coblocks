@@ -13,6 +13,7 @@ import Inspector from './inspector';
 import Controls from './controls';
 import icon from './icon';
 import { GalleryClasses } from '../../components/block-gallery/shared';
+import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 
 /**
  * WordPress dependencies
@@ -29,13 +30,6 @@ import { withNotices } from '@wordpress/components';
 class Edit extends Component {
 	constructor() {
 		super( ...arguments );
-
-		this.onSelectImage = this.onSelectImage.bind( this );
-		this.onRemoveImage = this.onRemoveImage.bind( this );
-		this.onMove = this.onMove.bind( this );
-		this.onMoveForward = this.onMoveForward.bind( this );
-		this.onMoveBackward = this.onMoveBackward.bind( this );
-		this.setImageAttributes = this.setImageAttributes.bind( this );
 
 		this.state = {
 			selectedImage: null,
@@ -60,7 +54,7 @@ class Edit extends Component {
 		}
 	}
 
-	onMove( oldIndex, newIndex ) {
+	onMove = ( oldIndex, newIndex ) => {
 		const images = [ ...this.props.attributes.images ];
 		images.splice( newIndex, 1, this.props.attributes.images[ oldIndex ] );
 		images.splice( oldIndex, 1, this.props.attributes.images[ newIndex ] );
@@ -68,7 +62,7 @@ class Edit extends Component {
 		this.props.setAttributes( { images } );
 	}
 
-	onMoveForward( oldIndex ) {
+	onMoveForward = ( oldIndex ) => {
 		return () => {
 			if ( oldIndex === this.props.attributes.images.length - 1 ) {
 				return;
@@ -77,7 +71,7 @@ class Edit extends Component {
 		};
 	}
 
-	onMoveBackward( oldIndex ) {
+	onMoveBackward = ( oldIndex ) => {
 		return () => {
 			if ( oldIndex === 0 ) {
 				return;
@@ -86,7 +80,7 @@ class Edit extends Component {
 		};
 	}
 
-	onSelectImage( index ) {
+	onSelectImage = ( index ) => {
 		return () => {
 			if ( this.state.selectedImage !== index ) {
 				this.setState( {
@@ -96,7 +90,7 @@ class Edit extends Component {
 		};
 	}
 
-	onRemoveImage( index ) {
+	onRemoveImage = ( index ) => {
 		return () => {
 			const images = filter( this.props.attributes.images, ( img, i ) => index !== i );
 			this.setState( { selectedImage: null } );
@@ -106,7 +100,7 @@ class Edit extends Component {
 		};
 	}
 
-	setImageAttributes( index, attributes ) {
+	setImageAttributes = ( index, attributes ) => {
 		const { attributes: { images }, setAttributes } = this.props;
 		if ( ! images[ index ] ) {
 			return;
@@ -133,7 +127,6 @@ class Edit extends Component {
 
 		const {
 			captions,
-			gutter,
 			images,
 			linkTo,
 			lightbox,
@@ -141,19 +134,6 @@ class Edit extends Component {
 		} = attributes;
 
 		const hasImages = !! images.length;
-
-		const wrapperClasses = classnames(
-			className, {
-				'has-lightbox': lightbox,
-			}
-		);
-
-		const innerClasses = classnames(
-			...GalleryClasses( attributes ), {
-				[ `has-${ gridSize }-images` ]: gridSize,
-				[ `has-${ gutter }-gutter` ]: gutter,
-			}
-		);
 
 		const offsetGalleryPlaceholder = (
 			<Fragment>
@@ -170,6 +150,18 @@ class Edit extends Component {
 			return offsetGalleryPlaceholder;
 		}
 
+		const wrapperClasses = classnames(
+			className, {
+				'has-lightbox': lightbox,
+			}
+		);
+
+		const innerClasses = classnames(
+			...GalleryClasses( attributes ), {
+				[ `has-${ gridSize }-images` ]: gridSize,
+			}
+		);
+
 		return (
 			<Fragment>
 				<Controls { ...this.props } />
@@ -178,41 +170,43 @@ class Edit extends Component {
 				/>
 				{ noticeUI }
 				<div className={ wrapperClasses }>
-					<ul className={ innerClasses }>
-						{ images.map( ( img, index ) => {
-							const ariaLabel = sprintf(
-								/* translators: %1$d is the order number of the image, %2$d is the total number of images */
-								__( 'image %1$d of %2$d in gallery', 'coblocks' ),
-								( index + 1 ),
-								images.length
-							);
+					<GutterWrapper { ...attributes }>
+						<ul className={ innerClasses }>
+							{ images.map( ( img, index ) => {
+								const ariaLabel = sprintf(
+									/* translators: %1$d is the order number of the image, %2$d is the total number of images */
+									__( 'image %1$d of %2$d in gallery', 'coblocks' ),
+									( index + 1 ),
+									images.length
+								);
 
-							return (
-								<li className="coblocks-gallery--item" key={ img.id || img.url }>
-									<GalleryImage
-										url={ img.url }
-										alt={ img.alt }
-										id={ img.id }
-										isSelected={ isSelected && this.state.selectedImage === index }
-										onRemove={ this.onRemoveImage( index ) }
-										onSelect={ this.onSelectImage( index ) }
-										setAttributes={ ( attrs ) => this.setImageAttributes( index, attrs ) }
-										caption={ img.caption }
-										aria-label={ ariaLabel }
-										captions={ captions }
-										supportsCaption={ true }
-										imgLink={ img.imgLink }
-										linkTo={ linkTo }
-										isFirstItem={ index === 0 }
-										isLastItem={ ( index + 1 ) === images.length }
-										onMoveBackward={ this.onMoveBackward( index ) }
-										onMoveForward={ this.onMoveForward( index ) }
-										newClass="wp-block-coblocks-gallery-offset__figure"
-									/>
-								</li>
-							);
-						} ) }
-					</ul>
+								return (
+									<li className="coblocks-gallery--item" key={ img.id || img.url }>
+										<GalleryImage
+											url={ img.url }
+											alt={ img.alt }
+											id={ img.id }
+											isSelected={ isSelected && this.state.selectedImage === index }
+											onRemove={ this.onRemoveImage( index ) }
+											onSelect={ this.onSelectImage( index ) }
+											setAttributes={ ( attrs ) => this.setImageAttributes( index, attrs ) }
+											caption={ img.caption }
+											aria-label={ ariaLabel }
+											captions={ captions }
+											supportsCaption={ true }
+											imgLink={ img.imgLink }
+											linkTo={ linkTo }
+											isFirstItem={ index === 0 }
+											isLastItem={ ( index + 1 ) === images.length }
+											onMoveBackward={ this.onMoveBackward( index ) }
+											onMoveForward={ this.onMoveForward( index ) }
+											newClass="wp-block-coblocks-gallery-offset__figure"
+										/>
+									</li>
+								);
+							} ) }
+						</ul>
+					</GutterWrapper>
 					{ offsetGalleryPlaceholder }
 				</div>
 			</Fragment>

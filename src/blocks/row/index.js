@@ -46,6 +46,10 @@ const settings = {
 	supports: {
 		align: [ 'wide', 'full' ],
 		anchor: true,
+		gutter: {
+			default: 'medium',
+			customDefault: 0.8,
+		},
 		stackedOnMobile: true,
 		coBlocksSpacing: true,
 	},

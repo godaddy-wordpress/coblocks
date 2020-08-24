@@ -6,15 +6,13 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import HeadingToolbar from '../../components/heading-toolbar';
-import OptionSelectorControl from '../../components/option-selector-control';
-import gutterOptions from '../../utils/gutter-options';
+import GutterControl from '../../components/gutter-control/gutter-control';
 
 /**
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { PanelBody, ToggleControl, RangeControl, SelectControl } from '@wordpress/components';
+import { PanelBody, ToggleControl, RangeControl } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 import { ENTER, SPACE } from '@wordpress/keycodes';
 
@@ -24,7 +22,6 @@ const Inspector = ( props ) => {
 		setAttributes,
 		activeStyle,
 		layoutOptions,
-		onChangeHeadingLevel,
 		onToggleCtas,
 		onUpdateStyle,
 	} = props;
@@ -73,19 +70,14 @@ const Inspector = ( props ) => {
 					max={ 4 }
 					onChange={ ( columns ) => setAttributes( { columns } ) }
 				/>
-				{ attributes.columns >= 2 && <OptionSelectorControl
-					label={ __( 'Gutter', 'coblocks' ) }
-					currentOption={ attributes.gutter }
-					options={ gutterOptions }
-					onChange={ ( gutter ) => setAttributes( { gutter } ) }
-				/> }
+				{ attributes.columns >= 2 && <GutterControl { ...props } /> }
 				<ToggleControl
 					label={ __( 'Display buttons', 'coblocks' ) }
 					className="components-toggle-control--services-action-button"
 					help={
-						attributes.buttons ?
-							__( 'Showing the call to action buttons.', 'coblocks' ) :
-							__( 'Toggle to show call to action buttons.', 'coblocks' )
+						attributes.buttons
+							? __( 'Showing the call to action buttons.', 'coblocks' )
+							: __( 'Toggle to show call to action buttons.', 'coblocks' )
 					}
 					checked={ attributes.buttons }
 					onChange={ onToggleCtas }
