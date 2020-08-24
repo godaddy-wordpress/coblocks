@@ -184,6 +184,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 			'js'  => [
 				'dist/coblocks.js',
 				'dist/js/coblocks-accordion-polyfill.js',
+				'dist/js/coblocks-checkbox-required.js',
 				'dist/js/coblocks-datepicker.js',
 				'dist/js/coblocks-fromEntries.js',
 				'dist/js/coblocks-google-maps.js',
@@ -195,6 +196,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 				'dist/js/vendors/flickity.js',
 				'dist/js/vendors/slick.js',
 				'src/js/coblocks-accordion-polyfill.js',
+				'src/js/coblocks-checkbox-required.js',
 				'src/js/coblocks-datepicker.js',
 				'src/js/coblocks-fromEntries.js',
 				'src/js/coblocks-google-maps.js',

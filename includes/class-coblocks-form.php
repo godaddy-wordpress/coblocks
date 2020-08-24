@@ -586,43 +586,34 @@ class CoBlocks_Form {
 
 		static $checkbox_count = 1;
 
-		if ( $checkbox_count === 1 ) {
-
-			?>
-
-			<script type="text/javascript">
-			jQuery( 'body' ).on( 'click', '.coblocks-form__submit button[type="submit"]', function( e ) {
-				if ( ! jQuery( '.coblocks-field.checkbox.required' ).length ) {
-					return;
-				}
-				var submittedForm      = jQuery( this ).closest( 'form' );
-				var selectedCheckboxes = submittedForm.find( '.coblocks-field.checkbox.required input[type="checkbox"]:checked' ).length;
-				if ( selectedCheckboxes === 0 ) {
-					submittedForm.find( '.required-error' ).show();
-					e.preventDefault();
-					return;
-				}
-				submittedForm.find( '.required-error' ).hide();
-			} );
-			</script>
-
-			<?php
-
-		}
-
 		$the_options = array_filter( $atts['options'] );
 
 		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Select', 'coblocks' );
 		$label_slug = $checkbox_count > 1 ? sanitize_title( $label . '-' . $checkbox_count ) : sanitize_title( $label );
 		$required   = ( isset( $atts['required'] ) && $atts['required'] );
 
+		if ( $checkbox_count === 1 && $required ) {
+
+			wp_enqueue_script(
+				'coblocks-checkbox-required',
+				CoBlocks()->asset_source( 'js' ) . 'coblocks-checkbox-required.js',
+				array( 'jquery' ),
+				COBLOCKS_VERSION,
+				true
+			);
+
+		}
+
 		ob_start();
 
 		printf(
 			'<div class="coblocks-field checkbox%1$s">
-				<div class="required-error hidden">%2$s</div>',
+				%2$s',
 			$required ? esc_attr( ' required' ) : '',
-			(string) apply_filters( 'coblocks_form_checkbox_required_text', esc_html__( 'Please check one of these options.', 'coblocks' ) )
+			$required ? sprintf(
+				'<div class="required-error hidden">%s</div>',
+				(string) apply_filters( 'coblocks_form_checkbox_required_text', esc_html__( 'Please check one of these options.', 'coblocks' ) )
+			) : ''
 		);
 
 		$this->render_field_label( $atts, $label, $checkbox_count );
