@@ -109,7 +109,6 @@ export default class OptionSelectorControl extends Component {
 								text={ option.tooltip }>
 
 								<Button
-									isLarge
 									isSecondary={ currentOption !== option.value }
 									isPrimary={ currentOption === option.value }
 									aria-pressed={ currentOption === option.value }
