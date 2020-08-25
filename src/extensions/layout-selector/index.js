@@ -186,7 +186,7 @@ class LayoutSelector extends Component {
 
 								const newImages = currentAttributes.images.map( ( oldImage, oldIndex ) => {
 									return oldIndex === index
-										? Object.assign( {}, oldImage, { url: media.url } )
+										? { ...oldImage, url: media.url }
 										: oldImage;
 								} );
 
