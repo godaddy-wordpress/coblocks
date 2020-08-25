@@ -612,6 +612,12 @@ class CoBlocks_Form {
 			$required ? esc_attr( ' required' ) : '',
 			$required ? sprintf(
 				'<div class="required-error hidden">%s</div>',
+				/**
+				 * Filter the checkbox required text that displays when no checkbox is
+				 * selected when the form is submitted.
+				 *
+				 * @param string $error_text Error text displayed to the user.
+				 */
 				(string) apply_filters( 'coblocks_form_checkbox_required_text', esc_html__( 'Please check one of these options.', 'coblocks' ) )
 			) : ''
 		);
