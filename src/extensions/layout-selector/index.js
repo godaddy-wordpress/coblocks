@@ -160,6 +160,7 @@ class LayoutSelector extends Component {
 
 	uploadExternalImages( clientId, blockAttributes ) {
 		const {
+			createWarningNotice,
 			getBlockAttributes,
 			mediaUpload,
 			updateBlockAttributes,
@@ -201,11 +202,10 @@ class LayoutSelector extends Component {
 								} );
 							}
 						},
-						onError( message ) {
-							console.log( [ 'onError', message ] );
-						},
+						onError: ( message ) => createWarningNotice( message ),
 					} );
-				} );
+				} )
+				.catch( ( error ) => createWarningNotice( error ) );
 		} );
 	}
 
@@ -387,9 +387,11 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 				const { closeTemplateSelector } = dispatch( 'coblocks/template-selector' );
 				const { editPost } = dispatch( 'core/editor' );
 				const { updateBlockAttributes } = dispatch( 'core/block-editor' );
+				const { createWarningNotice } = dispatch( 'core/notices' );
 
 				return {
 					closeTemplateSelector,
+					createWarningNotice,
 					editPost,
 					updateBlockAttributes,
 				};
