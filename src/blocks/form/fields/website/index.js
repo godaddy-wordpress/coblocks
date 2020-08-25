@@ -20,6 +20,10 @@ const metadata = {
 			type: 'string',
 			default: __( 'Website', 'coblocks' ),
 		},
+		labelColor: {
+			type: 'string',
+			default: '#000000',
+		},
 		required: {
 			type: 'boolean',
 			default: false,

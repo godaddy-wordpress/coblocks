@@ -18,7 +18,7 @@ import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
 
 function CoBlocksFieldName( props ) {
 	const { attributes, setAttributes, isSelected } = props;
-	const { required, label, hasLastName, labelFirstName, labelLastName } = attributes;
+	const { required, label, labelColor, hasLastName, labelFirstName, labelLastName } = attributes;
 
 	return (
 		<Fragment>
@@ -32,6 +32,7 @@ function CoBlocksFieldName( props ) {
 				<CoBlocksFieldLabel
 					required={ required }
 					label={ label }
+					labelColor={ labelColor }
 					setAttributes={ setAttributes }
 					isSelected={ isSelected }
 				/>

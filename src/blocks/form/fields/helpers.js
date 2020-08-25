@@ -9,12 +9,13 @@ import { sprintf, __ } from '@wordpress/i18n';
 
 export const editMultiField = ( type ) => ( props ) => {
 	const { attributes, setAttributes, isSelected } = props;
-	const { required, label, isInline, options } = attributes;
+	const { required, label, labelColor, isInline, options } = attributes;
 
 	return (
 		<Fragment>
 			<CoBlocksFieldMultiple
 				label={ label }
+				labelColor={ labelColor }
 				required={ required }
 				options={ options }
 				setAttributes={ setAttributes }

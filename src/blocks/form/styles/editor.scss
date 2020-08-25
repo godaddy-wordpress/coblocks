@@ -168,6 +168,13 @@
 	.coblocks-field-multiple__add-option svg {
 		margin-right: 5px;
 	}
+
+	.coblocks-field-label .components-coblocks-inline-color-picker {
+		bottom: auto;
+		left: -2.5em;
+		position: absolute;
+		top: 0;
+	}
 }
 
 .block-editor-block-preview__container .coblocks-form__submit.wp-block-button {

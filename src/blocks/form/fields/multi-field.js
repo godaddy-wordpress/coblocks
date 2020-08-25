@@ -53,7 +53,7 @@ class CoBlocksFieldMultiple extends Component {
 	}
 
 	render() {
-		const { type, instanceId, required, label, setAttributes, isSelected, isInline } = this.props;
+		const { type, instanceId, required, label, labelColor, setAttributes, isSelected, isInline } = this.props;
 		let { options } = this.props;
 		let { inFocus } = this.state;
 		if ( ! options.length ) {
@@ -70,6 +70,7 @@ class CoBlocksFieldMultiple extends Component {
 						<CoBlocksFieldLabel
 							required={ required }
 							label={ label }
+							labelColor={ labelColor }
 							setAttributes={ setAttributes }
 							isSelected={ isSelected }
 							resetFocus={ () => this.setState( { inFocus: null } ) }

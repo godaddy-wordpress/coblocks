@@ -11,13 +11,14 @@ import { TextControl } from '@wordpress/components';
 
 function CoBlocksFieldWebsite( props ) {
 	const { attributes, setAttributes, isSelected } = props;
-	const { required, label } = attributes;
+	const { required, label, labelColor } = attributes;
 
 	return (
 		<Fragment>
 			<CoBlocksFieldLabel
 				required={ required }
 				label={ label }
+				labelColor={ labelColor }
 				setAttributes={ setAttributes }
 				isSelected={ isSelected }
 			/>
