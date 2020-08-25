@@ -509,6 +509,29 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Test that the required checkbox field script is loaded when checkboxes
+	 * are set to required
+	 */
+	public function test_required_checkbox_script() {
+
+		echo $this->coblocks_form->render_field_checkbox(
+			[
+				'options' => [
+					'option-1' => 'Option 1',
+					'option-2' => 'Option 2',
+				],
+				'required' => true
+			],
+			''
+		);
+
+		global $wp_scripts;
+
+		$this->assertArrayHasKey( 'coblocks-datepicker', $wp_scripts->registered );
+
+	}
+
+	/**
 	 * Test the website field markup is as expected
 	 */
 	public function test_render_field_website() {
