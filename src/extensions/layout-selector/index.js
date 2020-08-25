@@ -182,25 +182,27 @@ class LayoutSelector extends Component {
 						filesList: [ blob ],
 						allowedTypes: [ 'image' ],
 						onFileChange( [ media ] ) {
-							if ( blockAttributes.hasOwnProperty( 'images' ) ) {
-								const currentAttributes = getBlockAttributes( clientId );
-
-								const newImages = currentAttributes.images.map( ( oldImage, oldIndex ) => {
-									return oldIndex === index
-										? { ...oldImage, url: media.url }
-										: oldImage;
-								} );
-
-								updateBlockAttributes( clientId, {
-									ids: media.id !== null ? [ ...currentAttributes.ids, media.id ] : currentAttributes.ids,
-									images: newImages,
-								} );
-							} else {
+							if ( ! blockAttributes.hasOwnProperty( 'images' ) ) {
 								updateBlockAttributes( clientId, {
 									id: media.id,
 									url: media.url,
 								} );
+
+								return;
 							}
+
+							const currentAttributes = getBlockAttributes( clientId );
+
+							const newImages = currentAttributes.images.map( ( oldImage, oldIndex ) => {
+								return oldIndex === index
+									? { ...oldImage, url: media.url }
+									: oldImage;
+							} );
+
+							updateBlockAttributes( clientId, {
+								ids: media.id !== null ? [ ...currentAttributes.ids, media.id ] : currentAttributes.ids,
+								images: newImages,
+							} );
 						},
 						onError: ( message ) => createWarningNotice( message ),
 					} );
