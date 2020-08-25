@@ -103,14 +103,7 @@ class LayoutSelector extends Component {
 		}
 
 		this.detectImageBlocks( this.props.clientIds )
-			.filter(
-				( block ) => {
-					if ( typeof block === 'undefined' || isEmpty( Object.values( block )[ 0 ] ) ) {
-						return false;
-					}
-					return true;
-				}
-			)
+			.filter( ( block ) => typeof block !== 'undefined' || ! isEmpty( Object.values( block )[ 0 ] ) )
 			.forEach(
 				( block ) => {
 					const blockParts = Object.entries( block );
