@@ -618,7 +618,7 @@ class CoBlocks_Form {
 				 *
 				 * @param string $error_text Error text displayed to the user.
 				 */
-				(string) apply_filters( 'coblocks_form_checkbox_required_text', esc_html__( 'Please check one of these options.', 'coblocks' ) )
+				(string) apply_filters( 'coblocks_form_checkbox_required_text', esc_html__( 'Please select at least one checkbox.', 'coblocks' ) )
 			) : ''
 		);
 
