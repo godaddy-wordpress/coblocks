@@ -98,23 +98,25 @@ class LayoutSelector extends Component {
 	}
 
 	componentDidUpdate( prevProps ) {
-		if ( prevProps.clientIds.length === 0 && this.props.clientIds.length !== 0 ) {
-			this.detectImageBlocks( this.props.clientIds )
-				.filter(
-					( block ) => {
-						if ( typeof block === 'undefined' || isEmpty( Object.values( block )[ 0 ] ) ) {
-							return false;
-						}
-						return true;
-					}
-				)
-				.forEach(
-					( block ) => {
-						const blockParts = Object.entries( block );
-						this.uploadExternalImages( blockParts[ 0 ][ 0 ], blockParts[ 0 ][ 1 ] );
-					}
-				);
+		if ( prevProps.clientIds.length !== 0 ) {
+			return;
 		}
+
+		this.detectImageBlocks( this.props.clientIds )
+			.filter(
+				( block ) => {
+					if ( typeof block === 'undefined' || isEmpty( Object.values( block )[ 0 ] ) ) {
+						return false;
+					}
+					return true;
+				}
+			)
+			.forEach(
+				( block ) => {
+					const blockParts = Object.entries( block );
+					this.uploadExternalImages( blockParts[ 0 ][ 0 ], blockParts[ 0 ][ 1 ] );
+				}
+			);
 	}
 
 	useEmptyTemplateLayout() {
