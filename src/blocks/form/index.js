@@ -1,3 +1,5 @@
+/* global coblocksBlockData */
+
 /**
  * Internal dependencies
  */
@@ -10,6 +12,9 @@ import variations from './variations';
  */
 import { __ } from '@wordpress/i18n';
 import { InnerBlocks } from '@wordpress/block-editor';
+
+// Note: Check that coblocksBlockData is set. So jest tests will pass.
+const successTextDefault = typeof coblocksBlockData === 'undefined' ? __( 'Your message was sent:', 'coblocks' ) : 'coblocksBlockData.form.successText';
 
 /**
  * Block constants
@@ -28,7 +33,7 @@ const metadata = {
 		},
 		successText: {
 			type: 'string',
-			default: __( 'Your message was sent:', 'coblocks' ),
+			default: successTextDefault,
 		},
 	},
 };

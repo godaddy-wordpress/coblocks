@@ -52,6 +52,18 @@ class CoBlocks_Form {
 	}
 
 	/**
+	 * Default success text
+	 *
+	 * @var string
+	 */
+	public function default_success_text() {
+		/**
+		 * Filter the sent notice above the success message.
+		 */
+		return (string) apply_filters( 'coblocks_form_sent_notice', __( 'Your message was sent:', 'coblocks' ) );
+	}
+
+	/**
 	 * The Constructor.
 	 */
 	public function __construct() {
@@ -1038,10 +1050,7 @@ class CoBlocks_Form {
 	 */
 	public function success_message( $atts ) {
 
-		/**
-		 * Filter the sent notice above the success message.
-		 */
-		$sent_notice = ( isset( $atts['successText'] ) && ! empty( $atts['successText'] ) )  ? wp_kses_post( $atts['successText'] ) : (string) apply_filters( 'coblocks_form_sent_notice', __( 'Your message was sent:', 'coblocks' ) );
+		$sent_notice = ( isset( $atts['successText'] ) && ! empty( $atts['successText'] ) )  ? $atts['successText'] : $this->default_success_text();
 
 		/**
 		 * Filter the success message after a form submission
@@ -1053,8 +1062,11 @@ class CoBlocks_Form {
 		$success_message = (string) apply_filters(
 			'coblocks_form_success_message',
 			sprintf(
-				'<div class="coblocks-form__submitted">%s %s</div>',
-				wp_kses_post( $sent_notice ),
+				'<div class="coblocks-form__submitted">%1$s %2$s</div>',
+				/**
+				 * Filter the sent notice above the success message.
+				 */
+				(string) apply_filters( 'coblocks_form_sent_notice', wp_kses_post( $sent_notice ) ),
 				wp_kses_post( $this->email_content )
 			),
 			get_the_ID()
