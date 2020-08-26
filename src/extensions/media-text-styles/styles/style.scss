@@ -138,41 +138,6 @@
 	}
 }
 
-.wp-block-media-text.is-style-card,
-.wp-block-media-text.is-style-outline,
-.wp-block-media-text.is-style-overlap {
-
-	&.is-vertically-aligned-bottom .wp-block-media-text__content {
-
-		@include break-small() {
-			margin-bottom: var(--coblocks-spacing--4, map-get($spacing, 4));
-		}
-
-		@include break-large() {
-			margin-bottom: var(--coblocks-spacing--6, map-get($spacing, 6));
-		}
-
-		@include break-wide() {
-			margin-bottom: var(--coblocks-spacing--10, map-get($spacing, 10));
-		}
-	}
-
-	&.is-vertically-aligned-top:not(.is-image-fill) .wp-block-media-text__content {
-
-		@include break-small() {
-			margin-top: var(--coblocks-spacing--4, map-get($spacing, 4));
-		}
-
-		@include break-large() {
-			margin-top: var(--coblocks-spacing--6, map-get($spacing, 6));
-		}
-
-		@include break-wide() {
-			margin-top: var(--coblocks-spacing--10, map-get($spacing, 10));
-		}
-	}
-}
-
 .wp-block-media-text .wp-block-media-text__content *:first-child {
 	margin-top: 0;
 }
