@@ -203,7 +203,7 @@ class CoBlocks_Form {
 
 				if ( $submit_form ) {
 
-					$this->success_message();
+					$this->success_message( $atts );
 
 					print( '</div>' );
 
@@ -1033,14 +1033,15 @@ class CoBlocks_Form {
 	/**
 	 * Display the form success data
 	 *
-	 * @return mixed Markup for a preview of the submitted data
+	 * @param  array $atts Block attributes array.
+	 * @return mixed Success Text followed by the submitted form data.
 	 */
-	public function success_message() {
+	public function success_message( $atts ) {
 
 		/**
 		 * Filter the sent notice above the success message.
 		 */
-		$sent_notice = (string) apply_filters( 'coblocks_form_sent_notice', __( 'Your message was sent:', 'coblocks' ) );
+		$sent_notice = ( isset( $atts['successText'] ) && ! empty( $atts['successText'] ) )  ? $atts['successText'] : (string) apply_filters( 'coblocks_form_sent_notice', __( 'Your message was sent:', 'coblocks' ) );
 
 		/**
 		 * Filter the success message after a form submission

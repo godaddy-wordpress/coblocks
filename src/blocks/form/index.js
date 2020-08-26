@@ -26,6 +26,10 @@ const metadata = {
 			type: 'string',
 			default: null,
 		},
+		successText: {
+			type: 'string',
+			default: __( 'Your message was sent:', 'coblocks' ),
+		},
 	},
 };
 
