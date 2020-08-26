@@ -122,6 +122,9 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			$gutenberg_plugin_file    = 'gutenberg/gutenberg.php';
 			$gutenberg_plugin_version = empty( $installed_plugins[ $gutenberg_plugin_file ] ) ? null : $installed_plugins[ $gutenberg_plugin_file ]['Version'];
 
+			// Require CoBlocks custom filters
+			require_once COBLOCKS_PLUGIN_DIR . 'src/components/gutter-control/gutter-wrapper.php';
+
 			if ( is_admin() && is_plugin_active( $gutenberg_plugin_file ) && version_compare( $gutenberg_plugin_version, '8.0.0', '>=' ) ) {
 				require_once COBLOCKS_PLUGIN_DIR . 'src/extensions/layout-selector/index.php';
 			}

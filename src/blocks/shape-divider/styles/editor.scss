@@ -101,6 +101,7 @@
 
 	//! Gutenberg 6.3+ introduced a new block style preview.
 	.block-editor-block-preview__content[style*="transform:"] {
+
 		.wp-block-coblocks-shape-divider {
 			height: 200px;
 
@@ -123,6 +124,6 @@
 }
 
 // remove block outline.
-.block-editor-block-list__block[data-type="coblocks/shape-divider"]:not([contenteditable]):focus:after {
+.block-editor-block-list__block[data-type="coblocks/shape-divider"]:not([contenteditable]):focus::after {
 	box-shadow: none;
 }

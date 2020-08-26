@@ -35,6 +35,10 @@ const settings = {
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,
+		gutter: {
+			default: 'medium',
+			customDefault: 3,
+		},
 	},
 	example,
 	attributes,
