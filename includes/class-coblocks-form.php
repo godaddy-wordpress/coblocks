@@ -1041,7 +1041,7 @@ class CoBlocks_Form {
 		/**
 		 * Filter the sent notice above the success message.
 		 */
-		$sent_notice = ( isset( $atts['successText'] ) && ! empty( $atts['successText'] ) )  ? $atts['successText'] : (string) apply_filters( 'coblocks_form_sent_notice', __( 'Your message was sent:', 'coblocks' ) );
+		$sent_notice = ( isset( $atts['successText'] ) && ! empty( $atts['successText'] ) )  ? wp_kses_post( $atts['successText'] ) : (string) apply_filters( 'coblocks_form_sent_notice', __( 'Your message was sent:', 'coblocks' ) );
 
 		/**
 		 * Filter the success message after a form submission
