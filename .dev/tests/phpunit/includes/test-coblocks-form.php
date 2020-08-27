@@ -382,7 +382,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	 */
 	public function test_render_field_radio() {
 
-		$this->expectOutputRegex( '/<label class="coblocks-radio-label" for="radio-option-1">Option 1<\/label><input id="radio-option-2" type="radio" name="field-radio\[value\]" value="Option 2" class="radio">/' );
+		$this->expectOutputRegex( '/<label class="coblocks-radio-label" for="choose-one-option-1">Option 1<\/label><input id="choose-one-option-2" type="radio" name="field-choose-one\[value\]" value="Option 2" class="radio">/' );
 
 		echo $this->coblocks_form->render_field_radio(
 			[
