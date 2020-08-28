@@ -435,4 +435,111 @@ describe( 'Test CoBlocks Form Block', function() {
 
 		helpers.editPage();
 	} );
+
+	/**
+	 * Test the coblock form block label colors.
+	 */
+	it( 'Test the coblock form block label colors.', function() {
+		helpers.addBlockToPost( 'coblocks/form', true );
+
+		cy.get( '[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
+			if ( placeholder.prop( 'outerHTML' ).includes( 'block-editor-block-variation-picker' ) ) {
+				cy.get( placeholder )
+					.find( '.block-editor-block-variation-picker__variations li:first-child' )
+					.find( 'button' ).click( { force: true } );
+			} else {
+				cy.get( '.block-editor-inner-blocks__template-picker-options li:first-child' )
+					.click();
+
+				cy.get( '.block-editor-inner-blocks__template-picker-options' )
+					.should( 'not.exist' );
+			}
+		} );
+
+		cy.get( 'div[data-type="coblocks/field-name"]' )
+			.should( 'exist' );
+
+		cy.get( 'div[data-type="coblocks/field-email"]' )
+			.should( 'exist' );
+
+		cy.get( 'div[data-type="coblocks/field-textarea"]' )
+			.should( 'exist' );
+
+		// Name Label Color
+		cy.get( 'div[data-type="coblocks/field-name"]' )
+			.find( '.coblocks-field-label__input' )
+			.click( { force: true } );
+
+		cy.get( 'div[data-type="coblocks/field-name"]' )
+			.find( '.components-color-palette__custom-color-gradient' )
+			.click();
+
+		cy.get( '.components-color-palette__picker' )
+			.should( 'exist' );
+
+		cy.get( '.components-color-picker__inputs-field' )
+			.find( '.components-text-control__input' )
+			.clear()
+			.type( '#b4d455');
+
+		cy.get( '.coblocks-field.coblocks-field--name' )
+			.find( '.coblocks-field-label__input-wrapper' )
+			.should( 'have.attr', 'style', 'color: rgb(180, 212, 85);' );
+
+		// Email Label Color
+		cy.get( 'div[data-type="coblocks/field-email"]' )
+			.find( '.coblocks-field-label__input' )
+			.click( { force: true } );
+
+		cy.get( 'div[data-type="coblocks/field-email"]' )
+			.find( '.components-color-palette__custom-color-gradient' )
+			.click();
+
+		cy.get( '.components-color-palette__picker' )
+			.should( 'exist' );
+
+		cy.get( '.components-color-picker__inputs-field' )
+			.find( '.components-text-control__input' )
+			.clear()
+			.type( '#0547fe');
+
+		cy.get( 'div[data-type="coblocks/field-email"]' )
+			.find( '.coblocks-field-label__input-wrapper' )
+			.should( 'have.attr', 'style', 'color: rgb(5, 71, 254);' );
+
+		// Message Label Color
+		cy.get( 'div[data-type="coblocks/field-textarea"]' )
+			.find( '.coblocks-field-label__input' )
+			.click( { force: true } );
+
+		cy.get( 'div[data-type="coblocks/field-textarea"]' )
+			.find( '.components-color-palette__custom-color-gradient' )
+			.click();
+
+		cy.get( '.components-color-palette__picker' )
+			.should( 'exist' );
+
+		cy.get( '.components-color-picker__inputs-field' )
+			.find( '.components-text-control__input' )
+			.clear()
+			.type( '#ff1b1b');
+
+		cy.get( 'div[data-type="coblocks/field-textarea"]' )
+			.find( '.coblocks-field-label__input-wrapper' )
+			.should( 'have.attr', 'style', 'color: rgb(255, 27, 27);' );
+
+		helpers.savePage();
+		helpers.viewPage();
+
+		cy.get( 'label[for="name"]' )
+			.should( 'have.attr', 'style', 'color: #b4d455' );
+
+		cy.get( 'label[for="email"]' )
+			.should( 'have.attr', 'style', 'color: #0547fe' );
+
+		cy.get( 'label[for="message"]' )
+			.should( 'have.attr', 'style', 'color: #ff1b1b' );
+
+		helpers.editPage();
+	} );
 } );
