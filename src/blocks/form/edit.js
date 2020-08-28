@@ -303,13 +303,13 @@ class FormEdit extends Component {
 								isLink
 								onClick={ this.appendTagsToSubject }
 							>
-								{ __( 'email', 'coblocks' ) }
+								[{ __( 'email', 'coblocks' ) }]
 							</Button>
 							<Button
 								isLink
 								onClick={ this.appendTagsToSubject }
 							>
-								{ __( 'name', 'coblocks' ) }
+								[{ __( 'name', 'coblocks' ) }]
 							</Button>
 						</Fragment>
 					}
