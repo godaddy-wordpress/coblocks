@@ -98,23 +98,18 @@ class LayoutSelector extends Component {
 	}
 
 	componentDidUpdate( prevProps ) {
-		if ( prevProps.clientIds.length === 0 && this.props.clientIds.length !== 0 ) {
-			this.detectImageBlocks( this.props.clientIds )
-				.filter(
-					( block ) => {
-						if ( typeof block === 'undefined' || isEmpty( Object.values( block )[ 0 ] ) ) {
-							return false;
-						}
-						return true;
-					}
-				)
-				.forEach(
-					( block ) => {
-						const blockParts = Object.entries( block );
-						this.uploadExternalImages( blockParts[ 0 ][ 0 ], blockParts[ 0 ][ 1 ] );
-					}
-				);
+		if ( prevProps.clientIds.length !== 0 ) {
+			return;
 		}
+
+		this.detectImageBlocks( this.props.clientIds )
+			.filter( ( block ) => typeof block !== 'undefined' || ! isEmpty( Object.values( block )[ 0 ] ) )
+			.forEach(
+				( block ) => {
+					const blockParts = Object.entries( block );
+					this.uploadExternalImages( blockParts[ 0 ][ 0 ], blockParts[ 0 ][ 1 ] );
+				}
+			);
 	}
 
 	useEmptyTemplateLayout() {
@@ -165,6 +160,7 @@ class LayoutSelector extends Component {
 
 	uploadExternalImages( clientId, blockAttributes ) {
 		const {
+			createWarningNotice,
 			getBlockAttributes,
 			mediaUpload,
 			updateBlockAttributes,
@@ -186,31 +182,32 @@ class LayoutSelector extends Component {
 						filesList: [ blob ],
 						allowedTypes: [ 'image' ],
 						onFileChange( [ media ] ) {
-							if ( blockAttributes.hasOwnProperty( 'images' ) ) {
-								const currentAttributes = getBlockAttributes( clientId );
-
-								const newImages = currentAttributes.images.map( ( oldImage, oldIndex ) => {
-									return oldIndex === index
-										? Object.assign( {}, oldImage, { url: media.url } )
-										: oldImage;
-								} );
-
-								updateBlockAttributes( clientId, {
-									ids: media.id !== null ? [ ...currentAttributes.ids, media.id ] : currentAttributes.ids,
-									images: newImages,
-								} );
-							} else {
+							if ( ! blockAttributes.hasOwnProperty( 'images' ) ) {
 								updateBlockAttributes( clientId, {
 									id: media.id,
 									url: media.url,
 								} );
+
+								return;
 							}
+
+							const currentAttributes = getBlockAttributes( clientId );
+
+							const newImages = currentAttributes.images.map( ( oldImage, oldIndex ) => {
+								return oldIndex === index
+									? { ...oldImage, url: media.url }
+									: oldImage;
+							} );
+
+							updateBlockAttributes( clientId, {
+								ids: media.id !== null ? [ ...currentAttributes.ids, media.id ] : currentAttributes.ids,
+								images: newImages,
+							} );
 						},
-						onError( message ) {
-							console.log( [ 'onError', message ] );
-						},
+						onError: ( message ) => createWarningNotice( message ),
 					} );
-				} );
+				} )
+				.catch( ( error ) => createWarningNotice( error ) );
 		} );
 	}
 
@@ -392,9 +389,11 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 				const { closeTemplateSelector } = dispatch( 'coblocks/template-selector' );
 				const { editPost } = dispatch( 'core/editor' );
 				const { updateBlockAttributes } = dispatch( 'core/block-editor' );
+				const { createWarningNotice } = dispatch( 'core/notices' );
 
 				return {
 					closeTemplateSelector,
+					createWarningNotice,
 					editPost,
 					updateBlockAttributes,
 				};
