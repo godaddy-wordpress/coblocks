@@ -17,7 +17,6 @@ import { TextControl,
 	RangeControl,
 	ButtonGroup,
 	Button,
-	IconButton,
 } from '@wordpress/components';
 
 class CropSettings extends Component {
@@ -302,14 +301,14 @@ class CropSettings extends Component {
 				<p>{ __( 'Image orientation', 'coblocks' ) }</p>
 				<div className="components-coblocks-rotate-control">
 					<ButtonGroup >
-						<IconButton
+						<Button
 							isLarge
 							isSecondary
 							icon={ icons.rotateLeft }
 							label={ __( 'Rotate counter-clockwise', 'coblocks' ) }
 							onClick={ () => this.applyRotation( self.state.r - 90 ) }
 						/>
-						<IconButton
+						<Button
 							isLarge
 							isSecondary
 							icon={ icons.rotateRight }

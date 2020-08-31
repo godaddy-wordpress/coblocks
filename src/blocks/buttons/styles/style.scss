@@ -27,6 +27,7 @@ $gutter: 1.35em;
 	}
 
 	.is-stacked-on-mobile {
+
 		@media (max-width: #{ ($break-small) }) {
 			display: block;
 

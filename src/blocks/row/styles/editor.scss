@@ -23,7 +23,7 @@
 		}
 	}
 
-	.wp-block[data-type="coblocks/row"] & &__inner {
+	[data-type="coblocks/row"] & &__inner {
 
 		div[data-type="coblocks/column"] {
 			max-width: 100% !important;
@@ -33,7 +33,7 @@
 	}
 
 
-	.wp-block[data-type="coblocks/row"][data-columns="1"] & &__inner {
+	[data-type="coblocks/row"][data-columns="1"] & &__inner {
 
 		.wp-block-coblocks-column__inner {
 
@@ -169,7 +169,7 @@
 
 	// Width tag that pops up.
 	.coblocks-resizeable-width {
-		background: theme(primary);
+		background: var(--wp-admin-theme-color, #007cba);
 		border: 2px solid $white;
 		border-radius: 4px;
 		color: $white;
@@ -208,7 +208,7 @@
 
 		&::after {
 			border-color: rgba(0, 133, 186, 0);
-			border-top-color: theme(primary);
+			border-top-color: var(--wp-admin-theme-color, #007cba);
 			border-width: 4px;
 			margin-left: -4px;
 		}
@@ -317,6 +317,25 @@
 	}
 }
 
+.has-custom-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"] {
+
+	&:nth-child(odd) {
+		margin-right: var(--coblocks-custom-gutter, 0);
+	}
+
+	&:nth-child(even) {
+		margin-left: var(--coblocks-custom-gutter, 0);
+	}
+
+	&:not(:first-child) {
+		margin-left: var(--coblocks-custom-gutter, 0);
+	}
+
+	&:not(:last-child) {
+		margin-right: var(--coblocks-custom-gutter, 0);
+	}
+}
+
 [class*="-gutter"] > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"]:last-child {
 	margin-right: 0;
 }
@@ -352,6 +371,10 @@
 
 	.is-stacked-on-mobile.has-huge-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"]:not(:last-child) {
 		margin-bottom: var(--coblocks-spacing--4, map-get($spacing, 4));
+	}
+
+	.is-stacked-on-mobile.has-custom-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"]:not(:last-child) {
+		margin-bottom: var(--coblocks-custom-gutter, 0);
 	}
 }
 
@@ -391,6 +414,10 @@
 
 		.has-huge-gutter & {
 			right: calc(-0.9 * var(--coblocks-spacing--4, #{map-get($spacing, 4)}) - 0.75em);
+		}
+
+		.has-custom-gutter & {
+			right: calc(-0.9 * var(--coblocks-custom-gutter, 0) - 0.75em);
 		}
 
 		div[data-type="coblocks/row"].is-selected &,

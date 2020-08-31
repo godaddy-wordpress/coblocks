@@ -1,14 +1,14 @@
 # Copyright (c) 2020 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 2.0.3\n"
+"Project-Id-Version: CoBlocks 2.2.2\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-07-15T14:29:45+00:00\n"
+"POT-Creation-Date: 2020-08-24T17:49:48+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -146,7 +146,7 @@ msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:755
-#: src/blocks/form/edit.js:141
+#: src/blocks/form/edit.js:143
 #: src/blocks/form/fields/submit-button/index.js:21
 #: src/blocks/form/fields/submit-button/index.js:29
 #: src/blocks/form/fields/submit-button/index.js:47
@@ -154,14 +154,14 @@ msgid "Submit"
 msgstr ""
 
 #: includes/class-coblocks-form.php:986
-#: src/blocks/form/edit.js:302
+#: src/blocks/form/edit.js:304
 msgid "name"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
 #: includes/class-coblocks-form.php:998
-#: src/blocks/form/edit.js:296
+#: src/blocks/form/edit.js:298
 #: src/blocks/form/fields/name/index.js:53
 #: src/blocks/form/index.js:43
 #: src/blocks/icon/deprecated/svgs.js:691
@@ -392,7 +392,7 @@ msgstr ""
 #: src/blocks/shape-divider/inspector.js:92
 #: src/blocks/share/inspector.js:200
 #: src/blocks/social-profiles/inspector.js:212
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:147
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:158
 #: src/extensions/colors/index.js:59
 msgid "Color settings"
 msgstr ""
@@ -437,8 +437,8 @@ msgstr ""
 msgid "Text color"
 msgstr ""
 
-#. translators: Add a child element for the Accordion block
-#: src/blocks/accordion/edit.js:114
+#: src/blocks/accordion/edit.js:111
+#: src/blocks/accordion/edit.js:113
 msgid "Add accordion item"
 msgstr ""
 
@@ -709,18 +709,24 @@ msgstr ""
 msgid "spacer"
 msgstr ""
 
+#. translators: block keyword
+#: src/blocks/dynamic-separator/index.js:33
+#: src/blocks/shape-divider/index.js:32
+msgid "separator"
+msgstr ""
+
 #. translators: block style
-#: src/blocks/dynamic-separator/index.js:37
+#: src/blocks/dynamic-separator/index.js:39
 msgid "Dot"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/dynamic-separator/index.js:43
+#: src/blocks/dynamic-separator/index.js:45
 msgid "Line"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/dynamic-separator/index.js:48
+#: src/blocks/dynamic-separator/index.js:50
 msgid "Fullwidth"
 msgstr ""
 
@@ -740,8 +746,8 @@ msgstr ""
 msgid "Height for the dynamic separator element in pixels."
 msgstr ""
 
-#: src/blocks/events/appender.js:17
-#: src/blocks/events/appender.js:22
+#: src/blocks/events/appender.js:16
+#: src/blocks/events/appender.js:18
 msgid "Add event"
 msgstr ""
 
@@ -774,8 +780,8 @@ msgid "Enter URL here…"
 msgstr ""
 
 #: src/blocks/events/edit.js:185
-#: src/blocks/post-carousel/edit.js:224
-#: src/blocks/posts/edit.js:333
+#: src/blocks/post-carousel/edit.js:225
+#: src/blocks/posts/edit.js:334
 msgid "Use URL"
 msgstr ""
 
@@ -931,8 +937,6 @@ msgstr ""
 
 #: src/blocks/features/inspector.js:92
 #: src/blocks/food-and-drinks/inspector.js:103
-#: src/blocks/post-carousel/inspector.js:86
-#: src/blocks/posts/inspector.js:170
 #: src/blocks/services/inspector.js:70
 msgid "Columns"
 msgstr ""
@@ -944,7 +948,6 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:84
 #: src/blocks/gallery-offset/inspector.js:90
 #: src/blocks/gallery-stacked/inspector.js:99
-#: src/blocks/posts/inspector.js:182
 #: src/blocks/pricing-table/inspector.js:66
 #: src/blocks/row/inspector.js:160
 #: src/blocks/services/inspector.js:77
@@ -959,8 +962,8 @@ msgstr ""
 msgid "Margin"
 msgstr ""
 
-#: src/blocks/food-and-drinks/appender.js:17
-#: src/blocks/food-and-drinks/appender.js:22
+#: src/blocks/food-and-drinks/appender.js:16
+#: src/blocks/food-and-drinks/appender.js:18
 msgid "Add menu section"
 msgstr ""
 
@@ -978,7 +981,7 @@ msgstr ""
 msgid "List"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:142
+#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:190
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:132
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:91
 #: src/blocks/food-and-drinks/food-item/edit.js:317
@@ -987,7 +990,7 @@ msgstr ""
 msgid "Popular"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:150
+#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:198
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:140
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:104
 #: src/blocks/food-and-drinks/food-item/edit.js:329
@@ -996,7 +999,7 @@ msgstr ""
 msgid "Spicy"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:158
+#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:206
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:148
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:117
 #: src/blocks/food-and-drinks/food-item/inspector.js:80
@@ -1004,7 +1007,7 @@ msgstr ""
 msgid "Spicier"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:166
+#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:214
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:156
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:130
 #: src/blocks/food-and-drinks/food-item/edit.js:356
@@ -1013,14 +1016,14 @@ msgstr ""
 msgid "Vegetarian"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:174
+#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:222
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:164
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:143
 #: src/blocks/food-and-drinks/food-item/inspector.js:65
 msgid "Gluten Free"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:182
+#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:230
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:172
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:156
 #: src/blocks/food-and-drinks/food-item/edit.js:384
@@ -1029,7 +1032,7 @@ msgstr ""
 msgid "Pescatarian"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:190
+#: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:238
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:180
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:169
 #: src/blocks/food-and-drinks/food-item/inspector.js:85
@@ -1156,7 +1159,7 @@ msgstr ""
 
 #. translators: block name
 #: src/blocks/food-and-drinks/index.js:22
-msgid "Food & Drinks"
+msgid "Food & Drink"
 msgstr ""
 
 #. translators: block description
@@ -1176,19 +1179,15 @@ msgstr ""
 #. translators: abbreviation for small size
 #: src/blocks/food-and-drinks/inspector.js:41
 #: src/blocks/gallery-collage/inspector.js:63
-#: src/blocks/posts/inspector.js:63
 #: src/blocks/pricing-table/inspector.js:38
 #: src/components/option-selector-control/index.js:27
 #: src/utils/gutter-options.js:15
 msgid "S"
 msgstr ""
 
-#. translators: abbreviation for small size
-#. translators: label for small size option
 #: src/blocks/food-and-drinks/inspector.js:42
 #: src/blocks/gallery-collage/inspector.js:64
 #: src/blocks/icon/icon-size-select.js:16
-#: src/blocks/posts/inspector.js:64
 #: src/blocks/pricing-table/inspector.js:39
 #: src/blocks/share/inspector.js:72
 #: src/blocks/social-profiles/inspector.js:77
@@ -1202,19 +1201,15 @@ msgstr ""
 #. translators: abbreviation for medium size
 #: src/blocks/food-and-drinks/inspector.js:47
 #: src/blocks/gallery-collage/inspector.js:69
-#: src/blocks/posts/inspector.js:68
 #: src/blocks/pricing-table/inspector.js:44
 #: src/components/option-selector-control/index.js:33
 #: src/utils/gutter-options.js:21
 msgid "M"
 msgstr ""
 
-#. translators: abbreviation for medium size
-#. translators: label for medium size option
 #: src/blocks/food-and-drinks/inspector.js:48
 #: src/blocks/gallery-collage/inspector.js:70
 #: src/blocks/icon/icon-size-select.js:21
-#: src/blocks/posts/inspector.js:69
 #: src/blocks/pricing-table/inspector.js:45
 #: src/blocks/share/inspector.js:73
 #: src/blocks/social-profiles/inspector.js:78
@@ -1228,19 +1223,15 @@ msgstr ""
 #. translators: abbreviation for large size
 #: src/blocks/food-and-drinks/inspector.js:53
 #: src/blocks/gallery-collage/inspector.js:75
-#: src/blocks/posts/inspector.js:73
 #: src/blocks/pricing-table/inspector.js:50
 #: src/components/option-selector-control/index.js:39
 #: src/utils/gutter-options.js:27
 msgid "L"
 msgstr ""
 
-#. translators: abbreviation for large size
-#. translators: label for large size option
 #: src/blocks/food-and-drinks/inspector.js:54
 #: src/blocks/gallery-collage/inspector.js:76
 #: src/blocks/icon/icon-size-select.js:26
-#: src/blocks/posts/inspector.js:74
 #: src/blocks/pricing-table/inspector.js:51
 #: src/blocks/share/inspector.js:74
 #: src/blocks/social-profiles/inspector.js:79
@@ -1254,18 +1245,14 @@ msgstr ""
 #. translators: abbreviation for largest size
 #. translators: abbreviation for extra large size
 #: src/blocks/food-and-drinks/inspector.js:59
-#: src/blocks/posts/inspector.js:78
 #: src/blocks/pricing-table/inspector.js:56
 #: src/components/option-selector-control/index.js:45
 #: src/utils/gutter-options.js:33
 msgid "XL"
 msgstr ""
 
-#. translators: abbreviation for extra large size
-#. translators: label for extra large size option
 #: src/blocks/food-and-drinks/inspector.js:60
 #: src/blocks/icon/icon-size-select.js:30
-#: src/blocks/posts/inspector.js:79
 #: src/blocks/pricing-table/inspector.js:57
 #: src/components/dimensions-control/dimensions-select.js:30
 #: src/utils/gutter-options.js:34
@@ -1274,7 +1261,6 @@ msgstr ""
 
 #: src/blocks/food-and-drinks/inspector.js:66
 #: src/blocks/map/inspector.js:105
-#: src/blocks/posts/inspector.js:248
 #: src/blocks/row/inspector.js:130
 #: src/blocks/services/inspector.js:34
 msgid "Styles"
@@ -1378,85 +1364,85 @@ msgid "Book Appointment"
 msgstr ""
 
 #. translators: %s: placeholder for an email address
-#: src/blocks/form/edit.js:193
+#: src/blocks/form/edit.js:195
 msgid "%s is not a valid email address."
 msgstr ""
 
 #. translators: %s1: placeholder for an email address. %s2: placeholder for an email address
-#: src/blocks/form/edit.js:203
+#: src/blocks/form/edit.js:205
 msgid "%s and %s are not valid email addresses."
 msgstr ""
 
 #. translators: %s1: placeholder for comma separated email addresses
-#: src/blocks/form/edit.js:211
+#: src/blocks/form/edit.js:213
 msgid "%s are not valid email addresses."
 msgstr ""
 
-#: src/blocks/form/edit.js:277
+#: src/blocks/form/edit.js:279
 msgid "Email address"
 msgstr ""
 
-#: src/blocks/form/edit.js:278
+#: src/blocks/form/edit.js:280
 msgid "name@example.com"
 msgstr ""
 
-#: src/blocks/form/edit.js:288
+#: src/blocks/form/edit.js:290
 msgid "Subject"
 msgstr ""
 
-#: src/blocks/form/edit.js:291
+#: src/blocks/form/edit.js:293
 msgid "You may use the following tags in the subject field: "
 msgstr ""
 
-#: src/blocks/form/edit.js:373
+#: src/blocks/form/edit.js:375
 msgid "Form settings"
 msgstr ""
 
-#: src/blocks/form/edit.js:378
+#: src/blocks/form/edit.js:380
 msgid "Google reCAPTCHA"
 msgstr ""
 
-#: src/blocks/form/edit.js:381
+#: src/blocks/form/edit.js:383
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
 msgstr ""
 
-#: src/blocks/form/edit.js:387
+#: src/blocks/form/edit.js:389
 msgid "Generate keys"
 msgstr ""
 
-#: src/blocks/form/edit.js:388
+#: src/blocks/form/edit.js:390
 msgid "My keys"
 msgstr ""
 
-#: src/blocks/form/edit.js:391
+#: src/blocks/form/edit.js:393
 msgid "Get help"
 msgstr ""
 
-#: src/blocks/form/edit.js:395
+#: src/blocks/form/edit.js:397
 msgid "Site key"
 msgstr ""
 
-#: src/blocks/form/edit.js:401
+#: src/blocks/form/edit.js:403
 msgid "Secret key"
 msgstr ""
 
-#: src/blocks/form/edit.js:416
+#: src/blocks/form/edit.js:418
 #: src/blocks/gallery-collage/edit.js:181
 #: src/components/block-gallery/gallery-image.js:226
 msgid "Saving"
 msgstr ""
 
-#: src/blocks/form/edit.js:416
+#: src/blocks/form/edit.js:418
 #: src/blocks/map/inspector.js:227
 msgid "Save"
 msgstr ""
 
-#: src/blocks/form/edit.js:427
+#: src/blocks/form/edit.js:429
 #: src/blocks/map/inspector.js:237
 msgid "Remove"
 msgstr ""
 
-#: src/blocks/form/edit.js:465
+#: src/blocks/form/edit.js:467
 #: src/blocks/row/edit.js:326
 msgid "Select a variation to start with."
 msgstr ""
@@ -1884,7 +1870,7 @@ msgstr ""
 #: src/blocks/gallery-offset/inspector.js:83
 #: src/blocks/icon/inspector.js:106
 #: src/blocks/icon/inspector.js:172
-#: src/components/typography-controls/index.js:221
+#: src/components/typography-controls/index.js:219
 msgid "Size"
 msgstr ""
 
@@ -1899,15 +1885,15 @@ msgid "Rounded corners"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:140
-msgid "Thumbnails"
-msgstr ""
-
-#: src/blocks/gallery-carousel/inspector.js:146
-#: src/blocks/gallery-collage/inspector.js:109
+#: src/blocks/gallery-collage/inspector.js:97
 #: src/blocks/gallery-masonry/inspector.js:102
 #: src/blocks/gallery-offset/inspector.js:104
 #: src/blocks/gallery-stacked/inspector.js:115
 msgid "Lightbox"
+msgstr ""
+
+#: src/blocks/gallery-carousel/inspector.js:146
+msgid "Thumbnails"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:156
@@ -1985,14 +1971,14 @@ msgstr ""
 msgid "Shadow"
 msgstr ""
 
-#: src/blocks/gallery-collage/inspector.js:97
+#: src/blocks/gallery-collage/inspector.js:103
 #: src/blocks/gallery-masonry/inspector.js:109
 #: src/blocks/gallery-offset/inspector.js:110
 #: src/blocks/gallery-stacked/inspector.js:122
 msgid "Captions"
 msgstr ""
 
-#: src/blocks/gallery-collage/inspector.js:103
+#: src/blocks/gallery-collage/inspector.js:109
 #: src/blocks/gallery-masonry/inspector.js:117
 #: src/blocks/gallery-offset/inspector.js:116
 msgid "Caption style"
@@ -2042,7 +2028,7 @@ msgstr ""
 #. translators: block style
 #: src/blocks/gallery-stacked/edit.js:168
 #: src/blocks/gallery-stacked/index.js:30
-#: src/blocks/posts/edit.js:49
+#: src/blocks/posts/edit.js:50
 msgid "Stacked"
 msgstr ""
 
@@ -2141,7 +2127,7 @@ msgstr ""
 
 #. translators: block description
 #: src/blocks/gist/index.js:26
-msgid "Embed GitHub gists by adding a gist link."
+msgid "Embed a GitHub Gist."
 msgstr ""
 
 #. translators: block keyword
@@ -3026,7 +3012,7 @@ msgstr ""
 #. translators: icon label
 #: src/blocks/icon/deprecated/svgs.js:495
 #: src/blocks/icon/svgs.js:477
-#: src/components/typography-controls/index.js:196
+#: src/components/typography-controls/index.js:194
 msgid "Font"
 msgstr ""
 
@@ -4087,7 +4073,7 @@ msgid "Reset icon size"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:169
-#: src/components/crop-settings/index.js:327
+#: src/components/crop-settings/index.js:326
 #: src/components/dimensions-control/index.js:489
 #: src/components/size-control/index.js:186
 msgid "Reset"
@@ -5293,14 +5279,17 @@ msgstr ""
 msgid "Edit logos"
 msgstr ""
 
-#. translators: block name
 #: src/blocks/logos/edit.js:61
-#: src/blocks/logos/index.js:22
 msgid "Logos & Badges"
 msgstr ""
 
 #: src/blocks/logos/edit.js:62
 msgid "Drag images, upload new ones or select files from your library."
+msgstr ""
+
+#. translators: block name
+#: src/blocks/logos/index.js:22
+msgid "Logos"
 msgstr ""
 
 #. translators: block description
@@ -5537,11 +5526,11 @@ msgid "Aubergine"
 msgstr ""
 
 #: src/blocks/media-card/controls.js:28
-msgid "Media on right"
+msgid "Show media on left"
 msgstr ""
 
 #: src/blocks/media-card/controls.js:33
-msgid "Media on left"
+msgid "Show media on right"
 msgstr ""
 
 #. translators: content placeholder
@@ -5617,54 +5606,53 @@ msgstr ""
 msgid "Drop to replace media"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:121
-#: src/blocks/posts/edit.js:238
+#: src/blocks/post-carousel/edit.js:122
+#: src/blocks/posts/edit.js:239
 msgid "Edit RSS URL"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/post-carousel/edit.js:176
+#: src/blocks/post-carousel/edit.js:177
 #: src/blocks/post-carousel/index.js:21
 msgid "Post Carousel"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:181
-#: src/blocks/posts/edit.js:285
+#: src/blocks/post-carousel/edit.js:182
+#: src/blocks/posts/edit.js:286
 msgid "No posts found. Start publishing or add posts from an RSS feed."
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:184
+#: src/blocks/post-carousel/edit.js:185
 msgid "Retrieve an external feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:191
-#: src/blocks/posts/edit.js:295
+#: src/blocks/post-carousel/edit.js:192
+#: src/blocks/posts/edit.js:296
 msgid "Use External Feed"
-msgstr ""
-
-#: src/blocks/post-carousel/edit.js:213
-#: src/blocks/posts/edit.js:322
-msgid "RSS Feed"
 msgstr ""
 
 #: src/blocks/post-carousel/edit.js:214
 #: src/blocks/posts/edit.js:323
+msgid "RSS Feed"
+msgstr ""
+
+#: src/blocks/post-carousel/edit.js:215
+#: src/blocks/posts/edit.js:324
 msgid "RSS URLs are generally located at the /feed/ directory of a site."
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:218
-#: src/blocks/posts/edit.js:327
+#: src/blocks/post-carousel/edit.js:219
+#: src/blocks/posts/edit.js:328
 msgid "https://example.com/feed…"
 msgstr ""
 
-#. translators: placeholder when a post has no title
-#: src/blocks/post-carousel/edit.js:300
-#: src/blocks/posts/edit.js:430
+#: src/blocks/post-carousel/edit.js:301
+#: src/blocks/posts/edit.js:431
 msgid "(no title)"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:318
-#: src/blocks/posts/edit.js:456
+#: src/blocks/post-carousel/edit.js:319
+#: src/blocks/posts/edit.js:457
 msgid "Read more"
 msgstr ""
 
@@ -5702,83 +5690,24 @@ msgstr ""
 msgid "rss"
 msgstr ""
 
-#: src/blocks/post-carousel/inspector.js:54
-msgid "Post Carousel settings"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:57
-#: src/blocks/posts/inspector.js:141
-msgid "Post date"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:61
-#: src/blocks/posts/inspector.js:145
-msgid "Showing the publish date."
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:62
-#: src/blocks/posts/inspector.js:146
-msgid "Toggle to show the publish date."
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:67
-#: src/blocks/posts/inspector.js:151
-msgid "Post content"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:71
-#: src/blocks/posts/inspector.js:155
-msgid "Showing the post content."
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:72
-#: src/blocks/posts/inspector.js:156
-msgid "Toggle to show the post content."
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:78
-#: src/blocks/posts/inspector.js:162
-msgid "Max words in content"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:100
-#: src/blocks/posts/inspector.js:210
-msgid "Feed settings"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:104
-#: src/blocks/posts/inspector.js:214
-msgid "My blog"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:105
-#: src/blocks/posts/inspector.js:215
-msgid "External feed"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:124
-#: src/blocks/posts/inspector.js:235
-msgid "Number of posts"
-msgstr ""
-
 #. translators: block style
-#: src/blocks/posts/edit.js:56
+#: src/blocks/posts/edit.js:57
 msgid "Horizontal"
 msgstr ""
 
-#: src/blocks/posts/edit.js:251
+#: src/blocks/posts/edit.js:252
 msgid "Image on left"
 msgstr ""
 
-#: src/blocks/posts/edit.js:256
+#: src/blocks/posts/edit.js:257
 msgid "Image on right"
 msgstr ""
 
-#: src/blocks/posts/edit.js:280
+#: src/blocks/posts/edit.js:281
 msgid "Blog Posts"
 msgstr ""
 
-#: src/blocks/posts/edit.js:288
+#: src/blocks/posts/edit.js:289
 msgid "Retrieve an External Feed"
 msgstr ""
 
@@ -5790,50 +5719,6 @@ msgstr ""
 #. translators: block description
 #: src/blocks/posts/index.js:23
 msgid "Display posts or an RSS feed as stacked or horizontal cards."
-msgstr ""
-
-#: src/blocks/posts/inspector.js:86
-#: src/blocks/posts/inspector.js:87
-#: src/blocks/posts/inspector.js:99
-#: src/blocks/posts/inspector.js:100
-#: src/blocks/services/edit.js:45
-msgid "Square"
-msgstr ""
-
-#: src/blocks/posts/inspector.js:91
-#: src/blocks/posts/inspector.js:92
-#: src/blocks/posts/inspector.js:114
-#: src/blocks/posts/inspector.js:115
-#: src/blocks/services/edit.js:50
-msgid "Circle"
-msgstr ""
-
-#: src/blocks/posts/inspector.js:104
-msgid "4:3"
-msgstr ""
-
-#: src/blocks/posts/inspector.js:105
-msgid "4:3 Aspect ratio"
-msgstr ""
-
-#: src/blocks/posts/inspector.js:109
-msgid "16:9"
-msgstr ""
-
-#: src/blocks/posts/inspector.js:110
-msgid "16:9 Aspect ratio"
-msgstr ""
-
-#: src/blocks/posts/inspector.js:138
-msgid "Posts settings"
-msgstr ""
-
-#: src/blocks/posts/inspector.js:190
-msgid "Thumbnail style"
-msgstr ""
-
-#: src/blocks/posts/inspector.js:198
-msgid "Thumbnail size"
 msgstr ""
 
 #: src/blocks/pricing-table/controls.js:17
@@ -6143,6 +6028,14 @@ msgstr ""
 msgid "Four columns; equal split"
 msgstr ""
 
+#: src/blocks/services/edit.js:45
+msgid "Square"
+msgstr ""
+
+#: src/blocks/services/edit.js:50
+msgid "Circle"
+msgstr ""
+
 #. translators: block name
 #: src/blocks/services/index.js:22
 msgid "Services"
@@ -6221,11 +6114,6 @@ msgstr ""
 #. translators: block description
 #: src/blocks/shape-divider/index.js:25
 msgid "Add a shape divider to visually distinquish page sections."
-msgstr ""
-
-#. translators: block keyword
-#: src/blocks/shape-divider/index.js:32
-msgid "separator"
 msgstr ""
 
 #. translators: block style
@@ -6496,7 +6384,7 @@ msgstr ""
 msgid "Edit background image"
 msgstr ""
 
-#: src/components/background/controls.js:96
+#: src/components/background/controls.js:95
 msgid "Add background image"
 msgstr ""
 
@@ -6670,39 +6558,39 @@ msgstr ""
 msgid "Custom URL"
 msgstr ""
 
-#: src/components/crop-settings/index.js:267
-#: src/components/crop-settings/index.js:270
+#: src/components/crop-settings/index.js:266
+#: src/components/crop-settings/index.js:269
 msgid "Crop settings image placeholder"
 msgstr ""
 
 #. translators: label for horizontal positioning input
-#: src/components/crop-settings/index.js:276
+#: src/components/crop-settings/index.js:275
 msgid "Horizontal pos."
 msgstr ""
 
 #. translators: label for vertical positioning input
-#: src/components/crop-settings/index.js:285
+#: src/components/crop-settings/index.js:284
 msgid "Vertical pos."
 msgstr ""
 
 #. translators: label for the control that allows zooming in on the image
-#: src/components/crop-settings/index.js:295
+#: src/components/crop-settings/index.js:294
 msgid "Image zoom"
 msgstr ""
 
-#: src/components/crop-settings/index.js:302
+#: src/components/crop-settings/index.js:301
 msgid "Image orientation"
 msgstr ""
 
-#: src/components/crop-settings/index.js:309
+#: src/components/crop-settings/index.js:308
 msgid "Rotate counter-clockwise"
 msgstr ""
 
-#: src/components/crop-settings/index.js:316
+#: src/components/crop-settings/index.js:315
 msgid "Rotate clockwise"
 msgstr ""
 
-#: src/components/crop-settings/index.js:325
+#: src/components/crop-settings/index.js:324
 msgid "Reset image cropping options"
 msgstr ""
 
@@ -7074,27 +6962,27 @@ msgstr ""
 msgid "Capitalize"
 msgstr ""
 
-#: src/components/typography-controls/index.js:203
+#: src/components/typography-controls/index.js:201
 msgid "Weight"
 msgstr ""
 
-#: src/components/typography-controls/index.js:212
+#: src/components/typography-controls/index.js:210
 msgid "Transform"
 msgstr ""
 
-#: src/components/typography-controls/index.js:232
+#: src/components/typography-controls/index.js:230
 msgid "Line height"
 msgstr ""
 
-#: src/components/typography-controls/index.js:243
+#: src/components/typography-controls/index.js:241
 msgid "Letter spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:255
+#: src/components/typography-controls/index.js:253
 msgid "No top spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:260
+#: src/components/typography-controls/index.js:258
 msgid "No bottom spacing"
 msgstr ""
 
@@ -7103,44 +6991,44 @@ msgstr ""
 msgid "3D"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:122
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:125
 #: src/extensions/coblocks-settings/index.js:44
 msgid "Editor settings"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:131
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:137
 msgid "Layout selector"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:132
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:138
 msgid "Allow layout selection on new pages."
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:140
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:148
 msgid "Typography controls"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:141
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:149
 msgid "Allow block-level typography controls."
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:148
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:159
 msgid "Allow color settings throughout the editor."
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:156
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:169
 msgid "Custom color pickers"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:157
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:170
 msgid "Allow styling with custom colors."
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:167
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:181
 msgid "Gradient styles"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:168
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:182
 msgid "Allow styling with gradient fills."
 msgstr ""
 
@@ -7156,7 +7044,7 @@ msgstr ""
 msgid "Top Wave"
 msgstr ""
 
-#: src/extensions/image-crop/index.js:171
+#: src/extensions/image-crop/index.js:170
 msgid "Crop settings"
 msgstr ""
 

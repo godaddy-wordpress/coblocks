@@ -8,8 +8,56 @@ import fromEntries from '../../../../js/coblocks-fromEntries';
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
+import { createElement, Component, isValidElement, cloneElement } from '@wordpress/element';
 import { RichText } from '@wordpress/block-editor';
-import { Icon, SVG, Path } from '@wordpress/components';
+
+const Path = ( props ) => createElement( 'path', props );
+
+const SVG = ( props ) => {
+	const appliedProps = {
+		...props,
+		role: 'img',
+		'aria-hidden': 'true',
+		focusable: 'false',
+	};
+
+	// Disable reason: We need to have a way to render HTML tag for web.
+	// eslint-disable-next-line react/forbid-elements
+	return <svg { ...appliedProps } />;
+};
+
+function Icon( { icon = null, size, ...additionalProps } ) {
+	// Any other icons should be 24x24 by default
+	const iconSize = size || 24;
+
+	if ( 'function' === typeof icon ) {
+		if ( icon.prototype instanceof Component ) {
+			return createElement( icon, { size: iconSize, ...additionalProps } );
+		}
+
+		return icon( { size: iconSize, ...additionalProps } );
+	}
+
+	if ( icon && ( icon.type === 'svg' || icon.type === SVG ) ) {
+		const appliedProps = {
+			width: iconSize,
+			height: iconSize,
+			...icon.props,
+			...additionalProps,
+		};
+
+		return <SVG { ...appliedProps } />;
+	}
+
+	if ( isValidElement( icon ) ) {
+		return cloneElement( icon, {
+			size: iconSize,
+			...additionalProps,
+		} );
+	}
+
+	return icon;
+}
 
 /**
  * Block user interface icons

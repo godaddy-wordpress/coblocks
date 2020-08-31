@@ -5,7 +5,7 @@
 	}
 
 	&__inner {
-		padding: 16px;
+		padding: 8px;
 
 		.components-select-control__input {
 			appearance: none;
@@ -39,14 +39,14 @@
 
 			&:focus {
 				background: $white;
-				border-color: theme(outlines);
-				box-shadow: 0 0 0 1px theme(outliness);
+				border-color: var(--wp-admin-theme-color, #007cba);
+				box-shadow: 0 0 0 1px var(--wp-admin-theme-color, #007cba);
 				color: $dark-gray-800;
 				text-decoration: none;
 
 				&:hover {
-					border-color: theme(outlines);
-					box-shadow: 0 0 0 1px theme(outliness);
+					border-color: var(--wp-admin-theme-color, #007cba);
+					box-shadow: 0 0 0 1px var(--wp-admin-theme-color, #007cba);
 				}
 			}
 		}

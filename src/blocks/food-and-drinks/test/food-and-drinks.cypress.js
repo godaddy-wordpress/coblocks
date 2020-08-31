@@ -37,7 +37,7 @@ describe( 'Block: Food and Drinks', function () {
 			cy.get( '.components-range-control' ).contains( /columns/i ).parent().find( '.components-range-control__number' ).type( `{selectall}${columns}` );
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', 'has-columns' );
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', `has-${columns}-columns` );
-			cy.get( '.wp-block-coblocks-food-and-drinks' ).find( '.wp-block[data-type="coblocks/food-item"]' ).should( 'have.length', columns );
+			cy.get( '.wp-block-coblocks-food-and-drinks' ).find( '[data-type="coblocks/food-item"]' ).should( 'have.length', columns );
 		} );
 
 		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
@@ -57,38 +57,38 @@ describe( 'Block: Food and Drinks', function () {
 	} );
 
 	it( 'can toggle images for inner food-item blocks', () => {
-		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
-			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().click( 'left' );
-			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'not.exist' );
+		cy.get( '[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
+			cy.get( '[data-type="coblocks/food-item"]' ).first().click( 'left' );
+			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'not.exist' );
 		} );
 
-		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).first().click();
+		cy.get( '[data-type="coblocks/food-and-drinks"]' ).first().click();
 
 		helpers.openSettingsPanel( /food & drinks settings/i );
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /images/i ).click();
 
-		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
-			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().click( 'left' );
-			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'exist' );
+		cy.get( '[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
+			cy.get( '[data-type="coblocks/food-item"]' ).first().click( 'left' );
+			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'exist' );
 		} );
 
 		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
 	} );
 
 	it( 'can toggle prices for inner food-item blocks', () => {
-		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
-			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().click( 'left' );
-			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'exist' );
+		cy.get( '[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
+			cy.get( '[data-type="coblocks/food-item"]' ).first().click( 'left' );
+			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'exist' );
 		} );
 
-		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).first().click();
+		cy.get( '[data-type="coblocks/food-and-drinks"]' ).first().click();
 
 		helpers.openSettingsPanel( /food & drinks settings/i );
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /prices/i ).click();
 
-		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
-			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().click( 'left' );
-			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'not.exist' );
+		cy.get( '[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
+			cy.get( '[data-type="coblocks/food-item"]' ).first().click( 'left' );
+			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'not.exist' );
 		} );
 
 		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
@@ -100,14 +100,14 @@ describe( 'Block: Food and Drinks', function () {
 	it( 'Test the food-and-drinks block custom classes.', function() {
 		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
 
-		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).first().click();
+		cy.get( '[data-type="coblocks/food-and-drinks"]' ).first().click();
 
 		helpers.openSettingsPanel( /food & drinks settings/i );
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /prices/i ).click();
 
-		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
-			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().click( 'left' );
-			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'not.exist' );
+		cy.get( '[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
+			cy.get( '[data-type="coblocks/food-item"]' ).first().click( 'left' );
+			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'not.exist' );
 		} );
 
 		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
@@ -121,14 +121,14 @@ describe( 'Block: Food and Drinks', function () {
 		helpers.addCustomBlockClass( 'my-custom-class', 'food-and-drinks' );
 
 		// Click "Add Menu Section" and verify two blocks exist on the page.
-		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).click();
-		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).find( '.coblocks-list-appender__toggle' ).click();
+		cy.get( '[data-type="coblocks/food-and-drinks"]' ).click();
+		cy.get( '[data-type="coblocks/food-and-drinks"]' ).find( '.block-editor-button-block-appender' ).click();
 		cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'have.length', 2 );
 
-		cy.get( '.wp-block[data-type="coblocks/food-and-drinks"]' ).last().within( () => {
-			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().click( 'left' );
-			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'exist' );
-			cy.get( '.wp-block[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'exist' );
+		cy.get( '[data-type="coblocks/food-and-drinks"]' ).last().within( () => {
+			cy.get( '[data-type="coblocks/food-item"]' ).first().click( 'left' );
+			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'exist' );
+			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'exist' );
 
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'have.class', 'my-custom-class' );
 		} );

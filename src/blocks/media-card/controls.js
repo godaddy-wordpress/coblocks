@@ -24,15 +24,15 @@ class Controls extends Component {
 		} = attributes;
 
 		const toolbarControls = [ {
-			icon: icons.mediaCardRight,
-			title: __( 'Media on right', 'coblocks' ),
-			isActive: mediaPosition === 'right',
-			onClick: () => setAttributes( { mediaPosition: 'right' } ),
-		}, {
 			icon: icons.mediaCardLeft,
-			title: __( 'Media on left', 'coblocks' ),
+			title: __( 'Show media on left', 'coblocks' ),
 			isActive: mediaPosition === 'left',
 			onClick: () => setAttributes( { mediaPosition: 'left' } ),
+		}, {
+			icon: icons.mediaCardRight,
+			title: __( 'Show media on right', 'coblocks' ),
+			isActive: mediaPosition === 'right',
+			onClick: () => setAttributes( { mediaPosition: 'right' } ),
 		} ];
 
 		return (

@@ -154,7 +154,7 @@ describe( name, () => {
 		} );
 	} );
 
-	[ 'small', 'medium', 'large', 'xlarge' ].forEach( ( gutter ) => {
+	[ 'small', 'medium', 'large' ].forEach( ( gutter ) => {
 		it( `should have className 'has-${gutter}-gutter' with gutter set to '${gutter}'.`, () => {
 			block.attributes = { ...block.attributes, gutter };
 

@@ -107,3 +107,29 @@
 		}
 	}
 }
+
+.has-custom-gutter {
+
+  &.has-2-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+	max-width: calc(100% / 2 - var(--coblocks-custom-gutter, 0));
+  }
+
+  &.has-3-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+	max-width: calc(100% / 3 - var(--coblocks-custom-gutter, 0));
+  }
+
+  &.has-4-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+	max-width: calc(100% / 2 - var(--coblocks-custom-gutter, 0));
+
+	@include break-large() {
+	  max-width: calc(100% / 4.15 - var(--coblocks-custom-gutter, 0));
+	}
+
+	&:nth-of-type(1),
+	&:nth-of-type(2) {
+		@include break-large-max() {
+			margin-bottom: calc(2 * var(--coblocks-custom-gutter, 0));
+		}
+	}
+  }
+}

@@ -1,4 +1,4 @@
-.wp-block[data-coblocks-button-fullwidth="1"] {
+[data-coblocks-button-fullwidth="1"] {
 	width: 100% !important;
 
 	.wp-block-button,
@@ -11,7 +11,7 @@
 		margin-left: auto;
 		margin-right: auto;
 
-		.block-list-appender__toggle {
+		.block-editor-button-block-appender {
 			margin-left: auto;
 			margin-right: auto;
 		}

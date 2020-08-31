@@ -88,6 +88,7 @@ function coblocks_render_posts_block( $attributes ) {
 function coblocks_posts( $posts, $attributes ) {
 	$class_name  = array();
 	$class       = array( 'wp-block-coblocks-posts__inner' );
+	$styles      = array();
 	$block_style = strpos( $attributes['className'], 'is-style-stacked' ) !== false ? 'stacked' : 'horizontal';
 
 	array_push( $class_name, 'wp-block-coblocks-posts' );
@@ -104,10 +105,6 @@ function coblocks_posts( $posts, $attributes ) {
 		array_push( $class, 'has-columns has-' . $attributes['columns'] . '-columns has-responsive-columns' );
 	}
 
-	if ( isset( $attributes['columns'] ) && isset( $attributes['gutter'] ) ) {
-		array_push( $class, 'has-' . $attributes['gutter'] . '-gutter' );
-	}
-
 	if ( isset( $attributes['listPosition'] ) && 'right' === $attributes['listPosition'] && 'horizontal' === $block_style ) {
 		array_push( $class, 'has-image-right' );
 	}
@@ -121,9 +118,10 @@ function coblocks_posts( $posts, $attributes ) {
 	}
 
 	$block_content = sprintf(
-		'<div class="%1$s"><div class="%2$s">',
+		'<div class="%1$s"><div class="%2$s" style="%3$s">',
 		esc_attr( implode( ' ', $class_name ) ),
-		esc_attr( implode( ' ', $class ) )
+		esc_attr( implode( ' ', apply_filters( 'coblocks/render/wrapper/class', $class, $attributes ) ) ),
+		esc_attr( implode( ' ', apply_filters( 'coblocks/render/wrapper/styles', $styles, $attributes ) ) )
 	);
 
 	$list_items_markup = '';

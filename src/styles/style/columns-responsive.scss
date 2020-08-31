@@ -31,5 +31,9 @@
 		&.has-huge-gutter > [class*="wp-block"]:not(:last-child) {
 			margin-bottom: calc(var(--coblocks-spacing--4, #{map-get($spacing, 4)}) * 2.35);
 		}
+
+		&.has-custom-gutter > [class*="wp-block"]:not(:last-child) {
+			margin-bottom: calc(var(--coblocks-custom-gutter, 0) * 2.35);
+		}
 	}
 }

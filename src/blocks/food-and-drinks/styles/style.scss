@@ -46,9 +46,10 @@
 		}
 	}
 
-	&.is-style-list .wp-block-coblocks-food-item {
+	&.is-style-list .wp-block-coblocks-food-item,
+	&.is-style-list div[data-type="coblocks/food-item"] {
 		display: flex;
-		flex: 1 100%;
+		flex: 1 100% !important;
 		margin-top: 1.5em;
 		max-width: 100%;
 

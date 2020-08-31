@@ -30,9 +30,11 @@ describe( 'Test CoBlocks Alert Block', function() {
 		helpers.addBlockToPost( 'coblocks/alert', true );
 
 		cy.get( '.wp-block-coblocks-alert__title' )
+			.first()
 			.type( 'Test Title' );
 
 		cy.get( '.wp-block-coblocks-alert__text' )
+			.first()
 			.type( 'Test text' );
 
 		helpers.savePage();
@@ -58,7 +60,8 @@ describe( 'Test CoBlocks Alert Block', function() {
 	it( 'Test alert style classes are applied in the editor.', function() {
 		helpers.addBlockToPost( 'coblocks/alert', true );
 
-		cy.get( '.wp-block[data-type="coblocks/alert"]' )
+		cy.get( '[data-type="coblocks/alert"]' )
+			.first()
 			.click( 'right' );
 
 		helpers.openSettingsPanel( 'Styles' );

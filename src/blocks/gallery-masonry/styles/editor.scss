@@ -1,4 +1,4 @@
-.wp-block[data-type="coblocks/gallery-masonry"] {
+[data-type="coblocks/gallery-masonry"] {
 	// Fixes issue where figures are set to display 100% if alignfull is set.
 	.coblocks-gallery--figure {
 		width: auto !important;
@@ -80,7 +80,7 @@
 	}
 }
 
-.wp-block[data-type="core/group"] .wp-block-coblocks-gallery-masonry {
+[data-type="core/group"] .wp-block-coblocks-gallery-masonry {
 	margin-bottom: 40px !important;
 	margin-top: 40px !important;
 }

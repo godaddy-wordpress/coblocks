@@ -6,29 +6,10 @@
 		flex-basis: 100% !important;
 	}
 
-	.coblocks-list-appender {
+	.coblocks-block-appender {
 		flex: 1 100%;
 		max-width: 100% !important;
-
-		&__toggle {
-			align-items: center;
-			background: rgba(139, 139, 150, 0.1) !important;
-			border-radius: 0;
-			box-shadow: none;
-			color: $dark-gray-500;
-			display: flex;
-			height: auto;
-			justify-content: center;
-			margin-top: 14px;
-			outline: 1px dashed $dark-gray-150;
-			padding: 16px;
-			width: 100%;
-
-			&:hover {
-				box-shadow: none !important;
-				outline: 1px dashed $dark-gray-500;
-			}
-		}
+		margin-top: 28px;
 	}
 
 	// Hide this on Gutenberg 5.9+

@@ -12,6 +12,7 @@ import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZon
 import applyWithColors from './colors';
 import Inspector from './inspector';
 import Controls from './controls';
+import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 
 /**
  * WordPress dependencies
@@ -121,7 +122,6 @@ class Edit extends Component {
 				'has-columns': columns > 1,
 				[ `has-${ columns }-columns` ]: columns,
 				'has-responsive-columns': columns > 1,
-				[ `has-${ gutter }-gutter` ]: gutter,
 				'has-padding': paddingSize && paddingSize !== 'no',
 				[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'no' && paddingSize !== 'advanced' ),
 				'has-margin': marginSize && marginSize !== 'no',
@@ -159,16 +159,18 @@ class Edit extends Component {
 				<div
 					className={ classes }
 				>
-					<div className={ innerClasses } style={ innerStyles }>
-						{ isBlobURL( backgroundImg ) && <Spinner /> }
-						{ BackgroundVideo( attributes ) }
-						<InnerBlocks
-							template={ getCount( columns ) }
-							allowedBlocks={ ALLOWED_BLOCKS }
-							templateLock="all"
-							templateInsertUpdatesSelection={ false }
-							renderAppender={ () => ( null ) } />
-					</div>
+					<GutterWrapper { ...attributes }>
+						<div className={ innerClasses } style={ innerStyles }>
+							{ isBlobURL( backgroundImg ) && <Spinner /> }
+							{ BackgroundVideo( attributes ) }
+							<InnerBlocks
+								template={ getCount( columns ) }
+								allowedBlocks={ ALLOWED_BLOCKS }
+								templateLock="all"
+								templateInsertUpdatesSelection={ false }
+								renderAppender={ () => ( null ) } />
+						</div>
+					</GutterWrapper>
 				</div>
 			</Fragment>
 		);

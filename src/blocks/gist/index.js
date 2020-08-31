@@ -23,7 +23,7 @@ const settings = {
 	/* translators: block name */
 	title: __( 'Gist', 'coblocks' ),
 	/* translators: block description */
-	description: __( 'Embed GitHub gists by adding a gist link.', 'coblocks' ),
+	description: __( 'Embed a GitHub Gist.', 'coblocks' ),
 	category: hasFormattingCategory ? 'common' : 'embed',
 	icon,
 	keywords: [

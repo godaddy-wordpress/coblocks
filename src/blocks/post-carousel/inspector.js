@@ -21,6 +21,7 @@ class Inspector extends Component {
 			hasPosts,
 			postCount,
 			setAttributes,
+			useUpdatedQueryControls,
 		} = this.props;
 
 		const {
@@ -32,17 +33,16 @@ class Inspector extends Component {
 			postFeedType,
 			postsToShow,
 			columns,
+			categories,
 		} = attributes;
 
 		const columnsCountOnChange = ( selectedColumns ) => {
-			const { postsToShow } = attributes;
 			setAttributes( { columns:
 				( selectedColumns > postsToShow ) ? postsToShow : selectedColumns,
 			} );
 		};
 
 		const postsCountOnChange = ( selectedPosts ) => {
-			const { columns } = attributes;
 			const changedAttributes = { postsToShow: selectedPosts };
 			if ( columns > selectedPosts || ( selectedPosts === 1 && columns !== 1 ) ) {
 				Object.assign( changedAttributes, { columns: selectedPosts } );
@@ -94,6 +94,51 @@ class Inspector extends Component {
 			</PanelBody>
 		);
 
+		const deprecatedQueryControls = (
+			<QueryControls
+				{ ...{ order, orderBy } }
+				categoriesList={ categoriesList }
+				selectedCategoryId={ attributes.categories }
+				onOrderChange={ ( value ) => setAttributes( { order: value } ) }
+				onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
+				onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
+			/>
+		);
+
+		const updatedQueryControls = () => {
+			const categorySuggestions = categoriesList.reduce(
+				( accumulator, category ) => ( {
+					...accumulator,
+					[ category.name ]: category,
+				} ),
+				{}
+			);
+
+			const suggestions = categoriesList.reduce(
+				( accumulator, category ) => ( {
+					...accumulator,
+					[ category.name ]: category,
+				} ),
+				{}
+			);
+
+			return ( <QueryControls
+				{ ...{ order, orderBy } }
+				categorySuggestions={ categorySuggestions }
+				selectedCategories={ attributes.categories }
+				onOrderChange={ ( value ) => setAttributes( { order: value } ) }
+				onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
+				onCategoryChange={ ( tokens ) => {
+					// Categories that are already will be objects, while new additions will be strings (the name).
+					// allCategories nomalizes the array so that they are all objects.
+					const allCategories = tokens.map( ( token ) =>
+						typeof token === 'string' ? suggestions[ token ] : token
+					);
+					setAttributes( { categories: allCategories } );
+				} }
+			/> );
+		};
+
 		return (
 			<InspectorControls>
 				{ hasPosts ? settings : null }
@@ -106,19 +151,10 @@ class Inspector extends Component {
 						] }
 						onChange={ ( value ) => setAttributes( { postFeedType: value } ) }
 					/>
-					{ hasPosts
+					{ hasPosts || ( !! categories && categories?.length > 0 )
 						? <Fragment>
 							{ postFeedType === 'internal' &&
-								<QueryControls
-									{ ...{ order, orderBy } }
-									categoriesList={ categoriesList }
-									selectedCategoryId={ attributes.categories }
-									categorySuggestions={ categoriesList }
-									selectedCategories={ attributes.categories }
-									onOrderChange={ ( value ) => setAttributes( { order: value } ) }
-									onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
-									onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
-								/>
+								useUpdatedQueryControls ? updatedQueryControls() : deprecatedQueryControls
 							}
 							<RangeControl
 								label={ __( 'Number of posts', 'coblocks' ) }

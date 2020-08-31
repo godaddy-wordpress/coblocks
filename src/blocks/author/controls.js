@@ -4,7 +4,7 @@
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { BlockControls, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
-import { Toolbar, IconButton } from '@wordpress/components';
+import { Toolbar, Button } from '@wordpress/components';
 
 class Controls extends Component {
 	render() {
@@ -31,7 +31,7 @@ class Controls extends Component {
 									allowedTypes={ [ 'image' ] }
 									value={ imgId }
 									render={ ( { open } ) => (
-										<IconButton
+										<Button
 											className="components-toolbar__control"
 											label={ __( 'Edit avatar', 'coblocks' ) }
 											icon="edit"

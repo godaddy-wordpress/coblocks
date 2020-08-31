@@ -40,7 +40,7 @@ describe( 'Test CoBlocks Media Card Block', function() {
 		const { imageBase } = helpers.upload.spec;
 		helpers.addBlockToPost( 'coblocks/media-card', true );
 
-		cy.get( '.wp-block[data-type="coblocks/media-card"]' ).click();
+		cy.get( '[data-type="coblocks/media-card"]' ).click();
 
 		helpers.upload.imageToBlock( 'coblocks/media-card' );
 
@@ -64,7 +64,7 @@ describe( 'Test CoBlocks Media Card Block', function() {
 	it( 'Test media-card block saves with images from media library.', function() {
 		helpers.addBlockToPost( 'coblocks/media-card', true );
 
-		cy.get( '.wp-block[data-type="coblocks/media-card"]' )
+		cy.get( '[data-type="coblocks/media-card"]' )
 			.click()
 			.find( 'button' )
 			.contains( /media library/i )

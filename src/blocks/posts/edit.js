@@ -3,7 +3,7 @@
  */
 import classnames from 'classnames';
 import includes from 'lodash/includes';
-import { find, isUndefined, pickBy, some } from 'lodash';
+import { find, isUndefined, pickBy, some, get } from 'lodash';
 
 /**
  * Internal dependencies
@@ -31,7 +31,9 @@ import {
 	Button,
 	Disabled,
 	ServerSideRender,
+	QueryControls,
 } from '@wordpress/components';
+import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 
 /**
  * Module Constants
@@ -229,7 +231,6 @@ class PostsEdit extends Component {
 			listPosition,
 			imageSize,
 			imageStyle,
-			gutter,
 		} = attributes;
 
 		const editToolbarControls = [
@@ -279,9 +280,9 @@ class PostsEdit extends Component {
 						icon={ <BlockIcon icon={ icon } /> }
 						label={ __( 'Blog Posts', 'coblocks' ) }
 					>
-						{ ! Array.isArray( latestPosts ) ?
-							<Spinner /> :
-							<Fragment>
+						{ ! Array.isArray( latestPosts )
+							? <Spinner />
+							: <Fragment>
 								{ __( 'No posts found. Start publishing or add posts from an RSS feed.', 'coblocks' ) }
 								<Button
 									className="components-placeholder__cancel-button"
@@ -379,91 +380,92 @@ class PostsEdit extends Component {
 				{ postFeedType === 'internal' &&
 
 					<div className={ className }>
-						<div className={ classnames( 'wp-block-coblocks-posts__inner', {
-							'has-columns': columns,
-							[ `has-${ columns }-columns` ]: columns,
-							'has-responsive-columns': columns,
-							[ `has-${ gutter }-gutter` ]: gutter && columns,
-							'has-image-right': isHorizontalStyle && listPosition === 'right',
-							[ `has-${ imageSize }-image` ]: isHorizontalStyle,
-							[ `has-${ imageStyle }-image` ]: imageStyle,
-						} ) }>
-							{ displayPosts.map( ( post, i ) => {
-								const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
-								const featuredImageStyle = 'url(' + featuredImageUrl + ')';
+						<GutterWrapper { ...attributes } condition={ attributes.columns >= 2 }>
+							<div className={ classnames( 'wp-block-coblocks-posts__inner', {
+								'has-columns': columns,
+								[ `has-${ columns }-columns` ]: columns,
+								'has-responsive-columns': columns,
+								'has-image-right': isHorizontalStyle && listPosition === 'right',
+								[ `has-${ imageSize }-image` ]: isHorizontalStyle,
+								[ `has-${ imageStyle }-image` ]: imageStyle,
+							} ) }>
+								{ displayPosts.map( ( post, i ) => {
+									const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
+									const featuredImageStyle = 'url(' + featuredImageUrl + ')';
 
-								const contentClasses = classnames( 'wp-block-coblocks-posts__content', {
-									'self-center': isHorizontalStyle && ! displayPostContent && columns <= 2,
-								} );
+									const contentClasses = classnames( 'wp-block-coblocks-posts__content', {
+										'self-center': isHorizontalStyle && ! displayPostContent && columns <= 2,
+									} );
 
-								const titleTrimmed = post.title.rendered.trim();
+									const titleTrimmed = post.title.rendered.trim();
 
-								let excerpt = post.excerpt.rendered;
-								if ( post.excerpt.raw === '' ) {
-									excerpt = post.content.raw;
-								}
-								const excerptElement = document.createElement( 'div' );
-								excerptElement.innerHTML = excerpt;
-								excerpt = excerptElement.textContent || excerptElement.innerText || '';
+									let excerpt = post.excerpt.rendered;
+									if ( post.excerpt.raw === '' ) {
+										excerpt = post.content.raw;
+									}
+									const excerptElement = document.createElement( 'div' );
+									excerptElement.innerHTML = excerpt;
+									excerpt = excerptElement.textContent || excerptElement.innerText || '';
 
-								return (
-									<div key={ i } className="wp-block-coblocks-posts__item">
-										{ featuredImageUrl &&
-											<div className="wp-block-coblocks-posts__image">
-												<div className="bg-cover bg-center-center" style={ { backgroundImage: featuredImageStyle } }></div>
-											</div>
-										}
-										<div className={ contentClasses }>
-											{ isStackedStyle && displayPostDate && post.date_gmt &&
-												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-posts__date">
-													{ dateI18n( dateFormat, post.date_gmt ) }
-												</time>
-											}
-											<Disabled>
-												<a href={ post.link } target="_blank" rel="noreferrer noopener" alt={ titleTrimmed }>
-													{ titleTrimmed ? (
-														<RawHTML>
-															{ titleTrimmed }
-														</RawHTML>
-													) :
-														/* translators: placeholder when a post has no title */
-														__( '(no title)', 'coblocks' )
-													}
-												</a>
-											</Disabled>
-											{ isHorizontalStyle && displayPostDate && post.date_gmt &&
-												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-posts__date">
-													{ dateI18n( dateFormat, post.date_gmt ) }
-												</time>
-											}
-											{ displayPostContent &&
-												<div className="wp-block-coblocks-posts__excerpt">
-													<RawHTML
-														key="html"
-													>
-														{ excerptLength < excerpt.trim().split( ' ' ).length ?
-															excerpt.trim().split( ' ', excerptLength ).join( ' ' ) + '…' :
-															excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
-													</RawHTML>
+									return (
+										<div key={ i } className="wp-block-coblocks-posts__item">
+											{ featuredImageUrl &&
+												<div className="wp-block-coblocks-posts__image">
+													<div className="bg-cover bg-center-center" style={ { backgroundImage: featuredImageStyle } }></div>
 												</div>
 											}
-											{ displayPostLink &&
-												<RichText
-													tagName="a"
-													className="wp-block-coblocks-posts__more-link"
-													onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
-													value={ postLink }
-													placeholder={ __( 'Read more', 'coblocks' ) }
-													multiline={ false }
-													withoutInteractiveFormatting={ false }
-													isSelected={ false }
-												/>
-											}
+											<div className={ contentClasses }>
+												{ isStackedStyle && displayPostDate && post.date_gmt &&
+													<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-posts__date">
+														{ dateI18n( dateFormat, post.date_gmt ) }
+													</time>
+												}
+												<Disabled>
+													<a href={ post.link } target="_blank" rel="noreferrer noopener" alt={ titleTrimmed }>
+														{ titleTrimmed ? (
+															<RawHTML>
+																{ titleTrimmed }
+															</RawHTML>
+														)
+															/* translators: placeholder when a post has no title */
+															: __( '(no title)', 'coblocks' )
+														}
+													</a>
+												</Disabled>
+												{ isHorizontalStyle && displayPostDate && post.date_gmt &&
+													<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-posts__date">
+														{ dateI18n( dateFormat, post.date_gmt ) }
+													</time>
+												}
+												{ displayPostContent &&
+													<div className="wp-block-coblocks-posts__excerpt">
+														<RawHTML
+															key="html"
+														>
+															{ excerptLength < excerpt.trim().split( ' ' ).length
+																? excerpt.trim().split( ' ', excerptLength ).join( ' ' ) + '…'
+																: excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
+														</RawHTML>
+													</div>
+												}
+												{ displayPostLink &&
+													<RichText
+														tagName="a"
+														className="wp-block-coblocks-posts__more-link"
+														onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
+														value={ postLink }
+														placeholder={ __( 'Read more', 'coblocks' ) }
+														multiline={ false }
+														withoutInteractiveFormatting={ false }
+														isSelected={ false }
+													/>
+												}
+											</div>
 										</div>
-									</div>
-								);
-							} ) }
-						</div>
+									);
+								} ) }
+							</div>
+						</GutterWrapper>
 					</div>
 				}
 			</Fragment>
@@ -474,26 +476,70 @@ class PostsEdit extends Component {
 export default compose( [
 	withSelect( ( select, props ) => {
 		const { postsToShow, order, orderBy, categories } = props.attributes;
-		const { getEntityRecords } = select( 'core' );
-		const latestPostsQuery = pickBy( {
-			categories,
-			order,
-			orderby: orderBy,
-			per_page: postsToShow,
-		}, ( value ) => ! isUndefined( value ) );
+		const { getEntityRecords, getMedia } = select( 'core' );
 
-		let latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
-		if ( latestPosts ) {
-			latestPosts = latestPosts.map( ( post ) => {
-				return {
-					...post,
-					featured_media_object: post.featured_media && select( 'core' ).getMedia( post.featured_media ),
-				};
-			} );
-		}
+		const useUpdatedQueryControls = QueryControls.toString().includes( 'selectedCategories' );
+
+		const deprecatedQuery = () => {
+			const latestPostsQuery = pickBy( {
+				categories,
+				order,
+				orderby: orderBy,
+				per_page: postsToShow,
+			}, ( value ) => ! isUndefined( value ) );
+
+			let latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
+			if ( latestPosts ) {
+				latestPosts = latestPosts.map( ( post ) => {
+					return {
+						...post,
+						featured_media_object: post.featured_media && select( 'core' ).getMedia( post.featured_media ),
+					};
+				} );
+			}
+			return latestPosts;
+		};
+
+		const updatedQuery = () => {
+			const catIds = categories && categories.length > 0
+				? categories.map( ( cat ) => cat.id )
+				: [];
+
+			const latestPostsQuery = pickBy( {
+				categories: catIds,
+				order,
+				orderby: orderBy,
+				per_page: postsToShow,
+			}, ( value ) => ! isUndefined( value ) );
+
+			const latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
+
+			return ! Array.isArray( latestPosts )
+				? latestPosts
+				: latestPosts.map( ( post ) => {
+					if ( post.featured_media ) {
+						const image = getMedia( post.featured_media );
+						let url = get(
+							image,
+							[
+								'media_details',
+								'sizes',
+								'source_url',
+							],
+							null
+						);
+						if ( ! url ) {
+							url = get( image, 'source_url', null );
+						}
+						return { ...post, featuredImageSourceUrl: url };
+					}
+					return post;
+				} );
+		};
 
 		return {
-			latestPosts,
+			latestPosts: useUpdatedQueryControls ? updatedQuery() : deprecatedQuery(),
+			useUpdatedQueryControls,
 		};
 	} ),
 ] )( PostsEdit );

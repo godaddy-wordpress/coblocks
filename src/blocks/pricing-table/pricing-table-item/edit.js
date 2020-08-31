@@ -26,7 +26,7 @@ import { RichText, InnerBlocks } from '@wordpress/block-editor';
  * @constant
  * @type {string[]}
  */
-const ALLOWED_BLOCKS = [ 'core/button' , 'core/shortcode' ];
+const ALLOWED_BLOCKS = [ 'core/button', 'core/shortcode' ];
 const TEMPLATE = [ [ 'core/button', { placeholder: __( 'Buy Now', 'coblocks' ) } ] ];
 
 /**
