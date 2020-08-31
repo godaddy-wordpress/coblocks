@@ -170,4 +170,9 @@
 	align-items: center;
 	display: flex;
 	justify-content: center;
+
+	.components-resizable-box__container {
+		width: 100% !important;
+		padding: 4rem !important;
+	}
 }
