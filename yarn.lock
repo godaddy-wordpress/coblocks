@@ -2652,7 +2652,7 @@
     "@wordpress/warning" "^1.2.0"
     core-js "^3.6.4"
 
-"@wordpress/base-styles@^2.0.1":
+"@wordpress/base-styles@2.0.1":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@wordpress/base-styles/-/base-styles-2.0.1.tgz#0e76e3980862decd12d31611423c8f00204a938e"
   integrity sha512-nwm0OK/AkxkTkdvZTMeBxkO01RXFYP8TXdqAsx6Fn022o7YV40V89yLr7zTRoQ8MSNy6c/WmRxnLKapLdUCDUg==
