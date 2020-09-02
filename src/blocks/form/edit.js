@@ -315,12 +315,12 @@ class FormEdit extends Component {
 					}
 				/>
 				<TextareaControl
-					label={ __( 'Success Message', 'coblocks' ) }
+					label={ __( 'Success message', 'coblocks' ) }
 					placeholder={ __( 'Your message was sent:', 'coblocks' ) }
 					onKeyDown={ this.preventEnterSubmission }
 					value={ successText }
 					onChange={ this.onChangeSuccessText }
-					help={ __( 'Enter the success text to display back to the user.', 'coblocks' ) }
+					help={ __( 'Form submission confirmation text.', 'coblocks' ) }
 				/>
 			</Fragment>
 		);
