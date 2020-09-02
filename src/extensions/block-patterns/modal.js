@@ -123,7 +123,7 @@ class CoBlocksBlockPatternsModal extends Component {
 				</div>
 				<form onSubmit={ this.savePattern }>
 					<TextControl
-						label={ __( 'Name', 'coblocks' ) }
+						label={ __( 'Name', 'coblocks' ) + '*' }
 						onChange={ ( name ) => this.setState( { name } ) }
 						required
 					/>
