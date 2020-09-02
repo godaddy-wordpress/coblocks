@@ -53,6 +53,7 @@ class CoBlocks_Block_Patterns {
 			'supports'          => array( 'title', 'editor' ),
 			'taxonomies'        => array(
 				'block_pattern_type',
+				'block_pattern_category',
 			),
 			'show_ui'           => true,
 			'rewrite'           => false,
