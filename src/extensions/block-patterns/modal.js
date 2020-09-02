@@ -87,7 +87,10 @@ class CoBlocksBlockPatternsModal extends Component {
 						actions: [
 							{
 								label: __( 'View patterns', 'coblocks' ),
-								onClick: () => setIsInserterOpened( true ),
+								onClick: () => {
+									setIsInserterOpened( true );
+									setTimeout( () => document.getElementById( 'tab-panel-1-patterns' ).click(), 1000 );
+								},
 							},
 						],
 					}
