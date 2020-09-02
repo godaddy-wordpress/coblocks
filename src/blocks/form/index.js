@@ -14,7 +14,7 @@ import { __ } from '@wordpress/i18n';
 import { InnerBlocks } from '@wordpress/block-editor';
 
 // Note: Check that coblocksBlockData is set. So jest tests will pass.
-const successTextDefault = typeof coblocksBlockData === 'undefined' ? __( 'Your message was sent:', 'coblocks' ) : 'coblocksBlockData.form.successText';
+const successTextDefault = typeof coblocksBlockData === 'undefined' ? __( 'Your message was sent:', 'coblocks' ) : coblocksBlockData.form.successText;
 
 /**
  * Block constants
