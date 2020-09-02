@@ -51,7 +51,7 @@ class CoBlocks_Block_Patterns {
 			'description'       => __( 'Description', 'coblocks' ),
 			'supports'          => array( 'title', 'editor' ),
 			'taxonomies'        => array(
-				'block_pattern_type',
+				'coblocks_pattern_type',
 			),
 			'show_ui'           => true,
 			'rewrite'           => false,
@@ -60,7 +60,7 @@ class CoBlocks_Block_Patterns {
 			'show_in_admin_bar' => false,
 		);
 
-		register_post_type( 'block_patterns', $args );
+		register_post_type( 'coblocks_pattern', $args );
 	}
 
 	public function register_type_taxonomy() {
@@ -71,7 +71,7 @@ class CoBlocks_Block_Patterns {
 			'show_in_rest' => true,
 		);
 
-		register_taxonomy( 'block_pattern_type', array( 'block_patterns' ), $args );
+		register_taxonomy( 'coblocks_pattern_type', array( 'coblocks_pattern' ), $args );
 	}
 
 	public function register_category_taxonomy() {
@@ -82,13 +82,13 @@ class CoBlocks_Block_Patterns {
 			'show_in_rest' => true,
 		);
 
-		register_taxonomy( 'block_pattern_category', array( 'block_patterns' ), $args );
+		register_taxonomy( 'coblocks_pattern_category', array( 'coblocks_pattern' ), $args );
 	}
 
 	public function load_categories( $categories ) {
 		$categories_flattened = wp_list_pluck( $categories, 'title', 'slug' );
 
-		$pattern_categories           = get_terms( 'block_pattern_category' );
+		$pattern_categories           = get_terms( 'coblocks_pattern_category' );
 		$pattern_categories_flattened = wp_list_pluck( $pattern_categories, 'name', 'slug' );
 
 		$merged_categories = array_merge(
@@ -110,7 +110,7 @@ class CoBlocks_Block_Patterns {
 
 	public function load_layouts( $layouts ) {
 		$query_args = array(
-			'post_type'              => 'block_patterns',
+			'post_type'              => 'coblocks_pattern',
 
 			'no_found_rows'          => true,
 			'update_post_meta_cache' => false,
@@ -118,7 +118,7 @@ class CoBlocks_Block_Patterns {
 
 			'tax_query'              => array(
 				array(
-					'taxonomy' => 'block_pattern_type',
+					'taxonomy' => 'coblocks_pattern_type',
 					'field'    => 'slug',
 					'terms'    => 'layout',
 				),
@@ -129,7 +129,7 @@ class CoBlocks_Block_Patterns {
 		wp_reset_postdata();
 
 		foreach ( $block_patterns_query->posts as $block_pattern ) {
-			$categories = get_the_terms( $block_pattern->ID, 'block_pattern_category' );
+			$categories = get_the_terms( $block_pattern->ID, 'coblocks_pattern_category' );
 
 			$layouts[] = array(
 				'category'    => wp_list_pluck( $categories, 'slug' )[0],
