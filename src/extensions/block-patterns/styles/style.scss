@@ -1,0 +1,14 @@
+@import "../../../styles/editor/core/colors";
+@import "../../../styles/editor/core/variables";
+
+.coblocks-block-patterns__modal {
+	.components-base-control__field {
+		margin-bottom: $grid-unit-20;
+	}
+}
+
+.coblocks-block-patterns__preview {
+	margin-bottom: $grid-unit-30;
+	padding: 9px;
+	border: $border-width solid $gray-700;
+}
