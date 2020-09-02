@@ -13,25 +13,7 @@ defined( 'ABSPATH' ) || exit;
  * @since NEXT
  */
 class CoBlocks_Block_Patterns {
-	/**
-	 * This plugin's instance.
-	 *
-	 * @var CoBlocks_Block_Patterns
-	 */
-	private static $instance;
-
-	/**
-	 * Registers the plugin.
-	 *
-	 * @return CoBlocks_Block_Patterns
-	 */
-	public static function register() {
-		if ( null === self::$instance ) {
-			self::$instance = new CoBlocks_Block_Patterns();
-		}
-
-		return self::$instance;
-	}
+	use CoBlocks_Singleton_Trait;
 
 	/**
 	 * The Constructor.
