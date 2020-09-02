@@ -597,7 +597,7 @@ class CoBlocks_Form {
 			wp_enqueue_script(
 				'coblocks-checkbox-required',
 				CoBlocks()->asset_source( 'js' ) . 'coblocks-checkbox-required.js',
-				array( 'jquery' ),
+				array(),
 				COBLOCKS_VERSION,
 				true
 			);
