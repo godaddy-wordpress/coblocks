@@ -40,6 +40,7 @@ class CoBlocks_Block_Patterns {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_action( 'init', array( $this, 'register_type_taxonomy' ) );
 		add_action( 'init', array( $this, 'register_category_taxonomy' ) );
+		add_action( 'rest_insert_block_patterns', array( $this, 'add_taxonomies_on_insert_post' ), 10, 2 );
 
 		add_filter( 'coblocks_layout_selector_categories', array( $this, 'load_categories' ) );
 		add_filter( 'coblocks_layout_selector_layouts', array( $this, 'load_layouts' ) );
@@ -83,6 +84,22 @@ class CoBlocks_Block_Patterns {
 		);
 
 		register_taxonomy( 'block_pattern_category', array( 'block_patterns' ), $args );
+	}
+
+	/**
+	 * Set custom taxonomies relationships with the REST API.
+	 *
+	 * @param WP_Post         $post     Inserted or updated post object.
+	 * @param WP_REST_Request $request  Request object.
+	 */
+	function add_taxonomies_on_insert_post( $post, $request ) {
+		$params = $request->get_json_params();
+
+		if ( array_key_exists( 'terms', $params ) ) {
+			foreach ( $params['terms'] as $taxonomy => $terms ) {
+				wp_set_object_terms( $post->ID, $terms, $taxonomy );
+			}
+		}
 	}
 
 	public function load_categories( $categories ) {
