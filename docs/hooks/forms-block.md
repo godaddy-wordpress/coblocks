@@ -30,3 +30,21 @@ function coblocks_form_sent_message() {
 }
 add_filter( 'coblocks_form_sent_notice', 'coblocks_form_sent_message' );
 ```
+
+## Customize the Checkbox Required Text
+
+The following `PHP` filter can be used to set a custom response when a required checkbox group has no options set before submitting the form.
+
+```php
+/**
+ * Set a custom success message to mimic a successful form submission
+ *
+ * @return string Form submission success message
+ */
+function coblocks_checkbox_required_text() {
+
+	return __( 'Please check at least one checkbox.', 'textdomain' );
+
+}
+add_filter( 'coblocks_form_checkbox_required_text', 'coblocks_checkbox_required_text' );
+```
