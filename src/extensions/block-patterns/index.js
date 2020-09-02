@@ -31,7 +31,7 @@ const CoBlocksBlockPatterns = () => {
 							onClose();
 						} }
 					>
-						{ __( 'Create a Design Pattern', 'coblocks' ) }
+						{ __( 'Add Design Pattern', 'coblocks' ) }
 					</MenuItem>
 				) }
 			</BlockSettingsMenuControls>
