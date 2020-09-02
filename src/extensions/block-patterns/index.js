@@ -3,8 +3,9 @@
  */
 import { __ } from '@wordpress/i18n';
 import { registerPlugin } from '@wordpress/plugins';
-import { PluginBlockSettingsMenuItem } from '@wordpress/edit-post';
 import { Fragment, useState } from '@wordpress/element';
+import { BlockSettingsMenuControls } from '@wordpress/block-editor';
+import { MenuItem } from '@wordpress/components';
 
 /**
  * Internal dependencies
@@ -22,11 +23,18 @@ const CoBlocksBlockPatterns = () => {
 
 	return (
 		<Fragment>
-			<PluginBlockSettingsMenuItem
-				label={ __( 'Add to Patterns', 'coblocks' ) }
-				icon={ false }
-				onClick={ openModal }
-			/>
+			<BlockSettingsMenuControls>
+				{ ( { onClose } ) => (
+					<MenuItem
+						onClick={ () => {
+							openModal();
+							onClose();
+						} }
+					>
+						{ __( 'Add to Patterns', 'coblocks' ) }
+					</MenuItem>
+				) }
+			</BlockSettingsMenuControls>
 			<CoBlocksBlockPatternsModal { ...props } />
 		</Fragment>
 	);
