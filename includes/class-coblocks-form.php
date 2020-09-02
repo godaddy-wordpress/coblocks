@@ -1063,10 +1063,7 @@ class CoBlocks_Form {
 			'coblocks_form_success_message',
 			sprintf(
 				'<div class="coblocks-form__submitted">%1$s %2$s</div>',
-				/**
-				 * Filter the sent notice above the success message.
-				 */
-				(string) apply_filters( 'coblocks_form_sent_notice', wp_kses_post( $sent_notice ) ),
+				wp_kses_post( $sent_notice ),
 				wp_kses_post( $this->email_content )
 			),
 			get_the_ID()
