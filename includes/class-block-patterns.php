@@ -50,7 +50,7 @@ class CoBlocks_Block_Patterns {
 		$args = array(
 			'label'             => __( 'Block Patterns', 'coblocks' ),
 			'description'       => __( 'Description', 'coblocks' ),
-			'supports'          => array( 'title', 'editor' ),
+			'supports'          => array( 'title', 'editor', 'excerpt' ),
 			'taxonomies'        => array(
 				'block_pattern_type',
 				'block_pattern_category',
