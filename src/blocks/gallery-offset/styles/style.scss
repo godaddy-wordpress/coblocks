@@ -126,4 +126,24 @@
 			}
 		}
 	}
+
+	.has-custom-gutter {
+		margin-bottom: calc(var(--coblocks-custom-gutter, 0) * -1 * 2);
+		margin-left: calc(var(--coblocks-custom-gutter, 0) * -0.5 * 2);
+
+		figure {
+			margin-bottom: calc(var(--coblocks-custom-gutter, 0) * 2);
+			margin-left: calc(var(--coblocks-custom-gutter, 0) * 2);
+		}
+
+		@include break-small() {
+			margin-bottom: calc(var(--coblocks-custom-gutter, 0) * -1 * 2);
+			margin-left: calc(var(--coblocks-custom-gutter, 0) * -0.5 * 2);
+
+			figure {
+				margin-bottom: calc(var(--coblocks-custom-gutter, 0) * 2);
+				margin-left: calc(var(--coblocks-custom-gutter, 0) * 2);
+			}
+		}
+	}
 }

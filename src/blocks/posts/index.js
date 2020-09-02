@@ -35,6 +35,9 @@ const settings = {
 	],
 	supports: {
 		align: [ 'wide', 'full' ],
+		gutter: {
+			default: 'medium',
+		},
 		html: false,
 	},
 	transforms,

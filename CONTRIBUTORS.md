@@ -41,3 +41,5 @@ This list is manually curated to include valuable contributions by volunteers th
 | @xpurichan        |                        |
 | @zrgisa           |                        |
 | @jchwenger        |                        |
+| @sbalakr2         | @sbalakr2              |
+| @daniel-matuszak  | @dmatuszak             |

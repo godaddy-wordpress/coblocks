@@ -11,10 +11,6 @@
 		"layout": {
 			"type": "string"
 		},
-		"gutter": {
-			"type": "string",
-			"default": "medium"
-		},
 		"textColor": {
 			"type": "string"
 		},

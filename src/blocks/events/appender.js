@@ -7,20 +7,21 @@ import { noop } from 'lodash';
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { Button } from '@wordpress/components';
+import { Button, Tooltip } from '@wordpress/components';
+import { Icon, plus } from '@wordpress/icons';
 
 const CustomAppender = ( { onClick = noop } ) => {
 	return (
-		<div className="coblocks-list-appender">
-			<Button
-				icon="insert"
-				label={ __( 'Add event', 'coblocks' ) }
-				labelPosition="bottom"
-				className="coblocks-list-appender__toggle"
-				onClick={ onClick }
-			>
-				{ __( 'Add event', 'coblocks' ) }
-			</Button>
+		<div className="coblocks-block-appender">
+			<Tooltip text={ __( 'Add event', 'coblocks' ) }>
+				<Button
+					label={ __( 'Add event', 'coblocks' ) }
+					className="block-editor-button-block-appender"
+					onClick={ onClick }
+				>
+					<Icon icon={ plus } />
+				</Button>
+			</Tooltip>
 		</div>
 	);
 };

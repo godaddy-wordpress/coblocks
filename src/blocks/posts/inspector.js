@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import OptionSelectorControl from '../../components/option-selector-control';
-import gutterOptions from '../../utils/gutter-options';
+import GutterControl from '../../components/gutter-control/gutter-control';
 
 /**
  * WordPress dependencies
@@ -179,14 +179,7 @@ const Inspector = ( props ) => {
 					max={ isHorizontalStyle ? Math.min( 2, postCount ) : Math.min( 4, postCount ) }
 					required
 				/>
-				{ attributes.columns >= 2 &&
-					<OptionSelectorControl
-						label={ __( 'Gutter', 'coblocks' ) }
-						currentOption={ attributes.gutter }
-						options={ gutterOptions }
-						onChange={ ( gutter ) => setAttributes( { gutter } ) }
-					/>
-				}
+				{ attributes.columns >= 2 && <GutterControl { ...props } /> }
 				{ hasFeaturedImage &&
 					<OptionSelectorControl
 						label={ __( 'Thumbnail style', 'coblocks' ) }

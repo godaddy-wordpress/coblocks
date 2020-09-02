@@ -48,7 +48,7 @@ describe( 'Block: Accordion', () => {
 	it( 'can add multiple accordion item blocks', () => {
 		cy.get( '[data-type="coblocks/accordion"]' ).click( 'top', { force: true } );
 		
-		cy.get('.components-coblocks-add-accordion-item__button' ).trigger( 'mouseup' ); 
+		cy.get('.coblocks-block-appender button' ).trigger( 'mouseup' ); 
 		// Using trigger here instead of click to more accurately represent behavior of event bubbling from user interaction within the editor.
 
 		cy.get( '[data-type="coblocks/accordion"]' ).find( '[data-type="coblocks/accordion-item"]' ).should( 'have.length', 2 );
@@ -70,15 +70,15 @@ describe( 'Block: Accordion', () => {
 		helpers.setColorSetting( 'text', '#FFFFFF' );
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__title' ).should( 'have.css', 'color', `rgb(255, 255, 255)` );
 
-		cy.get( '[data-type="coblocks/accordion-item"] p.wp-block-paragraph' ).click().type( 'Content' );
+		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__content p' ).click().type( 'Content' );
 
 		// Content - Background color
 		helpers.setColorSetting( 'background', '#000000' );
-		cy.get( '[data-type="coblocks/accordion-item"] p.wp-block-paragraph' ).should( 'have.css', 'background-color', `rgb(0, 0, 0)` );
+		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__content p' ).should( 'have.css', 'background-color', `rgb(0, 0, 0)` );
 
 		// Content - Text color
 		helpers.setColorSetting( 'text', '#FFFFFF' );
-		cy.get( '[data-type="coblocks/accordion-item"] p.wp-block-paragraph' ).should( 'have.css', 'color', `rgb(255, 255, 255)` );
+		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__content p' ).should( 'have.css', 'color', `rgb(255, 255, 255)` );
 
 		helpers.checkForBlockErrors( 'coblocks/accordion' );
 	} );

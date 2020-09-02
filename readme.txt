@@ -1,11 +1,11 @@
 === Page Builder Gutenberg Blocks – CoBlocks ===
 Author URI: https://www.godaddy.com
-Contributors: coblocks, godaddy, richtabor, phpbits, eherman24, jonathanbardo, jrtashjian, sbalakr2, dmatuszak, paranoia1906
+Contributors: godaddy, richtabor, eherman24, jonathanbardo, jrtashjian, paranoia1906, fjarrett
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 2.2.1
+Stable tag: 2.2.2
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -115,5 +115,11 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+### Enhancement
+* Hide form reCAPTCHA panel on initial load [#1621](https://github.com/godaddy-wordpress/coblocks/pull/1621)
+
 ### Bug Fixes
-* Fix Icon block deprecation from legacy markup [#1622](https://github.com/godaddy-wordpress/coblocks/pull/1622)
+* Introduce Shape Divider deprecations related to extensions [#1633](https://github.com/godaddy-wordpress/coblocks/pull/1633)
+* Prevent columns css from overriding list-style css [#1635](https://github.com/godaddy-wordpress/coblocks/pull/1635)
+* Pull in SVG components from wp/5.3 release for deprecation [#1637](https://github.com/godaddy-wordpress/coblocks/pull/1637)
+* Style block appenders better for WordPress 5.5 [#1616](https://github.com/godaddy-wordpress/coblocks/pull/1616)
