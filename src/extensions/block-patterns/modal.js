@@ -44,7 +44,7 @@ class CoBlocksBlockPatternsModal extends Component {
 		} = this.props;
 
 		apiFetch( {
-			path: '/wp/v2/coblock_patterns',
+			path: '/wp/v2/coblocks_patterns',
 			method: 'POST',
 			data: {
 				title: name,
@@ -53,8 +53,8 @@ class CoBlocksBlockPatternsModal extends Component {
 				excerpt: description,
 				status: 'publish',
 				terms: {
-					coblock_patterns_type: [ 'pattern' ],
-					coblock_patterns_category: [ category ],
+					coblocks_patterns_type: [ 'pattern' ],
+					coblocks_patterns_category: [ category ],
 				},
 			},
 		} )
@@ -68,7 +68,7 @@ class CoBlocksBlockPatternsModal extends Component {
 						...this.props.getSettings().__experimentalBlockPatterns,
 						{
 							title: name,
-							name: `coblock_patterns/${ name }`,
+							name: `coblocks_patterns/${ name }`,
 							content: serialize( selectedBlocks ),
 							description,
 							categories: [ category ],
