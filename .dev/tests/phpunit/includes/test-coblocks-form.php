@@ -527,7 +527,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 
 		global $wp_scripts;
 
-		$this->assertArrayHasKey( 'coblocks-datepicker', $wp_scripts->registered );
+		$this->assertArrayHasKey( 'coblocks-checkbox-required', $wp_scripts->registered );
 
 	}
 
