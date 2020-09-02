@@ -1,6 +1,6 @@
 <?php
 /**
- * The Block Patterns post type.
+ * The Block Patterns.
  *
  * @package CoBlocks
  */
@@ -8,30 +8,16 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * The Block Patterns post type.
+ * Registers the custom post type and custom taxonomies used for storing block patterns.
  *
  * @since NEXT
  */
 class CoBlocks_Block_Patterns {
-	/**
-	 * This plugin's instance.
-	 *
-	 * @var CoBlocks_Block_Patterns
-	 */
-	private static $instance;
+	use CoBlocks_Singleton_Trait;
 
-	/**
-	 * Registers the plugin.
-	 *
-	 * @return CoBlocks_Block_Patterns
-	 */
-	public static function register() {
-		if ( null === self::$instance ) {
-			self::$instance = new CoBlocks_Block_Patterns();
-		}
-
-		return self::$instance;
-	}
+	const POST_TYPE         = 'coblocks_pattern';
+	const TYPE_TAXONOMY     = 'coblocks_pattern_type';
+	const CATEGORY_TAXONOMY = 'coblocks_pattern_category';
 
 	/**
 	 * The Constructor.
@@ -47,14 +33,17 @@ class CoBlocks_Block_Patterns {
 		add_filter( 'coblocks_layout_selector_layouts', array( $this, 'load_layouts' ) );
 	}
 
+	/**
+	 * Register the Custom Post Type.
+	 */
 	public function register_post_type() {
 		$args = array(
 			'label'             => __( 'Block Patterns', 'coblocks' ),
 			'description'       => __( 'Description', 'coblocks' ),
 			'supports'          => array( 'title', 'editor', 'excerpt' ),
 			'taxonomies'        => array(
-				'coblocks_pattern_type',
-				'coblocks_pattern_category',
+				self::TYPE_TAXONOMY,
+				self::CATEGORY_TAXONOMY,
 			),
 			'show_ui'           => true,
 			'rewrite'           => false,
@@ -63,9 +52,15 @@ class CoBlocks_Block_Patterns {
 			'show_in_admin_bar' => false,
 		);
 
-		register_post_type( 'coblocks_pattern', $args );
+		register_post_type( self::POST_TYPE, $args );
 	}
 
+	/**
+	 * Registers the "type" custom taxonomy.
+	 *
+	 * "Type" is used to differentiate between a full page "layout" and
+	 * a block "pattern" so we can utilize the same CPT for different contexts.
+	 */
 	public function register_type_taxonomy() {
 		$args = array(
 			'label'        => __( 'Pattern Type', 'coblocks' ),
@@ -74,9 +69,14 @@ class CoBlocks_Block_Patterns {
 			'show_in_rest' => true,
 		);
 
-		register_taxonomy( 'coblocks_pattern_type', array( 'coblocks_pattern' ), $args );
+		register_taxonomy( self::TYPE_TAXONOMY, array( 'coblocks_pattern' ), $args );
 	}
 
+	/**
+	 * Registers the "category" custom taxonomy.
+	 *
+	 * "Category" is used to categorize different block patterns and layouts which are grouped together in the UI.
+	 */
 	public function register_category_taxonomy() {
 		$args = array(
 			'label'        => __( 'Pattern Category', 'coblocks' ),
@@ -85,7 +85,7 @@ class CoBlocks_Block_Patterns {
 			'show_in_rest' => true,
 		);
 
-		register_taxonomy( 'coblocks_pattern_category', array( 'coblocks_pattern' ), $args );
+		register_taxonomy( self::CATEGORY_TAXONOMY, array( 'coblocks_pattern' ), $args );
 	}
 
 	/**
@@ -104,10 +104,17 @@ class CoBlocks_Block_Patterns {
 		}
 	}
 
+	/**
+	 * Merge our "category" taxonomy with the categories already defined elsewhere.
+	 *
+	 * @param array $categories The existing categories.
+	 *
+	 * @return array
+	 */
 	public function load_categories( $categories ) {
 		$categories_flattened = wp_list_pluck( $categories, 'title', 'slug' );
 
-		$pattern_categories           = get_terms( 'coblocks_pattern_category' );
+		$pattern_categories           = get_terms( self::CATEGORY_TAXONOMY );
 		$pattern_categories_flattened = wp_list_pluck( $pattern_categories, 'name', 'slug' );
 
 		$merged_categories = array_merge(
@@ -127,9 +134,16 @@ class CoBlocks_Block_Patterns {
 		);
 	}
 
+	/**
+	 * Merge our custom post type posts (with the 'layout' type) with the layouts already defined elsewhere.
+	 *
+	 * @param array $layouts The existing layouts.
+	 *
+	 * @return array
+	 */
 	public function load_layouts( $layouts ) {
 		$query_args = array(
-			'post_type'              => 'coblocks_pattern',
+			'post_type'              => self::POST_TYPE,
 
 			'no_found_rows'          => true,
 			'update_post_meta_cache' => false,
@@ -137,7 +151,7 @@ class CoBlocks_Block_Patterns {
 
 			'tax_query'              => array(
 				array(
-					'taxonomy' => 'coblocks_pattern_type',
+					'taxonomy' => self::TYPE_TAXONOMY,
 					'field'    => 'slug',
 					'terms'    => 'layout',
 				),
@@ -148,7 +162,7 @@ class CoBlocks_Block_Patterns {
 		wp_reset_postdata();
 
 		foreach ( $block_patterns_query->posts as $block_pattern ) {
-			$categories = get_the_terms( $block_pattern->ID, 'coblocks_pattern_category' );
+			$categories = get_the_terms( $block_pattern->ID, self::CATEGORY_TAXONOMY );
 
 			$layouts[] = array(
 				'category'    => wp_list_pluck( $categories, 'slug' )[0],

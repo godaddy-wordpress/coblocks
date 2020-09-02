@@ -101,6 +101,9 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 * @return void
 		 */
 		private function includes() {
+			// Traits.
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/traits/trait-coblocks-singleton.php';
+
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-block-patterns.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-block-assets.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-register-blocks.php';
