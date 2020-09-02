@@ -592,7 +592,7 @@ class CoBlocks_Form {
 		$label_slug = $checkbox_count > 1 ? sanitize_title( $label . '-' . $checkbox_count ) : sanitize_title( $label );
 		$required   = ( isset( $atts['required'] ) && $atts['required'] );
 
-		if ( $checkbox_count === 1 && $required ) {
+		if ( $required ) {
 
 			wp_enqueue_script(
 				'coblocks-checkbox-required',
