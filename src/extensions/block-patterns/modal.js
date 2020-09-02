@@ -86,7 +86,7 @@ class CoBlocksBlockPatternsModal extends Component {
 						type: 'snackbar',
 						actions: [
 							{
-								label: __( 'View patterns', 'coblocks' ),
+								label: __( 'View Patterns', 'coblocks' ),
 								onClick: () => {
 									setIsInserterOpened( true );
 									setTimeout( () => document.getElementById( 'tab-panel-1-patterns' ).click(), 1000 );
@@ -111,7 +111,7 @@ class CoBlocksBlockPatternsModal extends Component {
 
 		return isOpen && (
 			<Modal
-				title={ __( 'Add Block Pattern', 'coblocks' ) }
+				title={ __( 'Add Design Pattern', 'coblocks' ) }
 				onRequestClose={ closeModal }
 				className="coblocks-block-patterns__modal"
 			>

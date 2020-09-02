@@ -23,7 +23,7 @@ const CoBlocksBlockPatterns = () => {
 	return (
 		<Fragment>
 			<PluginBlockSettingsMenuItem
-				label={ __( 'Add to Patterns', 'coblocks' ) }
+				label={ __( 'Add to Design Patterns', 'coblocks' ) }
 				icon={ false }
 				onClick={ openModal }
 			/>
