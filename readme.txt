@@ -116,10 +116,25 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Enhancement
-* Hide form reCAPTCHA panel on initial load [#1621](https://github.com/godaddy-wordpress/coblocks/pull/1621)
+* Add styles to Media & Text block [#1605](https://github.com/godaddy-wordpress/coblocks/pull/1605)
+* Add support for __experimentalCaptureToolbars [#1661](https://github.com/godaddy-wordpress/coblocks/pull/1661)
+* Introduce ability to define a custom form success message in the Form block [#1647](https://github.com/godaddy-wordpress/coblocks/pull/1647)
+* Introduce custom block patterns saved as a CPT. [#1659](https://github.com/godaddy-wordpress/coblocks/pull/1659)
+* Introduce support for custom gutter controls [#1619](https://github.com/godaddy-wordpress/coblocks/pull/1619)
+* Layouts as Custom Post Type [#1581](https://github.com/godaddy-wordpress/coblocks/pull/1581)
+* Update Row, Accordion, and Column block icons [#1662](https://github.com/godaddy-wordpress/coblocks/pull/1662)
 
 ### Bug Fixes
-* Introduce Shape Divider deprecations related to extensions [#1633](https://github.com/godaddy-wordpress/coblocks/pull/1633)
-* Prevent columns css from overriding list-style css [#1635](https://github.com/godaddy-wordpress/coblocks/pull/1635)
-* Pull in SVG components from wp/5.3 release for deprecation [#1637](https://github.com/godaddy-wordpress/coblocks/pull/1637)
-* Style block appenders better for WordPress 5.5 [#1616](https://github.com/godaddy-wordpress/coblocks/pull/1616)
+* Fix cursor hover state on offset/collage blocks [#1657](https://github.com/godaddy-wordpress/coblocks/pull/1657)
+* Fix Icon block style previews [#1649](https://github.com/godaddy-wordpress/coblocks/pull/1649)
+* Fix required form radio/checkbox fields [#1643](https://github.com/godaddy-wordpress/coblocks/pull/1643)
+* Fix variation titles for Row and Form blocks [#1660](https://github.com/godaddy-wordpress/coblocks/pull/1660)
+* Introduce Posts and Post Carousel block deprecations [#1638](https://github.com/godaddy-wordpress/coblocks/pull/1638)
+
+### Misc
+* Fix Editor Settings control description alignment [#1648](https://github.com/godaddy-wordpress/coblocks/pull/1648)
+* Migrate CoBlocks to use @wordpress/base-styles package [#1651](https://github.com/godaddy-wordpress/coblocks/pull/1651)
+* Move appropriate contributors to the CONTRIBUTORS file [#1641](https://github.com/godaddy-wordpress/coblocks/pull/1641)
+* Move i18ntools to their own composer package [#1650](https://github.com/godaddy-wordpress/coblocks/pull/1650)
+* Remove arrows from lightbox in single image galleries [#1656](https://github.com/godaddy-wordpress/coblocks/pull/1656)
+* Remove box shadow from selected Form block fields [#1655](https://github.com/godaddy-wordpress/coblocks/pull/1655)
