@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Registers the custom post type and custom taxonomies used for storing block patterns.
  *
- * @since NEXT
+ * @since 2.3.0
  */
 class CoBlocks_Block_Patterns {
 	use CoBlocks_Singleton_Trait;

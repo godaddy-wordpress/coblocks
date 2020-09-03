@@ -8,7 +8,7 @@
 /**
  * Trait for our Singleton pattern.
  *
- * @since NEXT
+ * @since 2.3.0
  */
 trait CoBlocks_Singleton_Trait {
 	/**
