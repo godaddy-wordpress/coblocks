@@ -17,7 +17,7 @@ import { __ } from '@wordpress/i18n';
 const variations = [
 	{
 		name: 'contact-form',
-		label: __( 'Contact', 'coblocks' ),
+		title: __( 'Contact', 'coblocks' ),
 		icon: icons.layoutContact,
 		isDefault: true,
 		innerBlocks: [
@@ -30,7 +30,7 @@ const variations = [
 	},
 	{
 		name: 'rsvp-form',
-		label: __( 'RSVP', 'coblocks' ),
+		title: __( 'RSVP', 'coblocks' ),
 		icon: icons.layoutRSVP,
 		innerBlocks: [
 			[ 'coblocks/field-name', { required: true, hasLastName: true } ],
@@ -46,7 +46,7 @@ const variations = [
 	},
 	{
 		name: 'appointment-form',
-		label: __( 'Appointment', 'coblocks' ),
+		title: __( 'Event', 'coblocks' ),
 		icon: icons.layoutAppointment,
 		innerBlocks: [
 			[ 'coblocks/field-name', { required: true, hasLastName: true } ],

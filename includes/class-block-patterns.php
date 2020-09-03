@@ -26,6 +26,8 @@ class CoBlocks_Block_Patterns {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_action( 'init', array( $this, 'register_type_taxonomy' ) );
 		add_action( 'init', array( $this, 'register_category_taxonomy' ) );
+		add_action( 'init', array( $this, 'load_block_patterns' ) );
+		add_action( 'rest_insert_block_patterns', array( $this, 'add_taxonomies_on_insert_post' ), 10, 2 );
 
 		add_filter( 'coblocks_layout_selector_categories', array( $this, 'load_categories' ) );
 		add_filter( 'coblocks_layout_selector_layouts', array( $this, 'load_layouts' ) );
@@ -38,7 +40,7 @@ class CoBlocks_Block_Patterns {
 		$args = array(
 			'label'             => __( 'Block Patterns', 'coblocks' ),
 			'description'       => __( 'Description', 'coblocks' ),
-			'supports'          => array( 'title', 'editor' ),
+			'supports'          => array( 'title', 'editor', 'excerpt' ),
 			'taxonomies'        => array(
 				self::TYPE_TAXONOMY,
 				self::CATEGORY_TAXONOMY,
@@ -67,7 +69,7 @@ class CoBlocks_Block_Patterns {
 			'show_in_rest' => true,
 		);
 
-		register_taxonomy( self::TYPE_TAXONOMY, array( 'coblocks_pattern' ), $args );
+		register_taxonomy( self::TYPE_TAXONOMY, array( self::POST_TYPE ), $args );
 	}
 
 	/**
@@ -83,7 +85,23 @@ class CoBlocks_Block_Patterns {
 			'show_in_rest' => true,
 		);
 
-		register_taxonomy( self::CATEGORY_TAXONOMY, array( 'coblocks_pattern' ), $args );
+		register_taxonomy( self::CATEGORY_TAXONOMY, array( self::POST_TYPE ), $args );
+	}
+
+	/**
+	 * Set custom taxonomies relationships with the REST API.
+	 *
+	 * @param WP_Post         $post     Inserted or updated post object.
+	 * @param WP_REST_Request $request  Request object.
+	 */
+	public function add_taxonomies_on_insert_post( $post, $request ) {
+		$params = $request->get_json_params();
+
+		if ( array_key_exists( 'terms', $params ) ) {
+			foreach ( $params['terms'] as $taxonomy => $terms ) {
+				wp_set_object_terms( $post->ID, $terms, $taxonomy );
+			}
+		}
 	}
 
 	/**
@@ -153,6 +171,48 @@ class CoBlocks_Block_Patterns {
 		}
 
 		return $layouts;
+	}
+
+	/**
+	 * Register custom post type posts (with the 'pattern' type) as block patterns.
+	 */
+	public function load_block_patterns() {
+		$query_args = array(
+			'post_type'              => self::POST_TYPE,
+
+			'no_found_rows'          => true,
+			'update_post_meta_cache' => false,
+			'update_post_term_cache' => false,
+
+			'tax_query'              => array(
+				array(
+					'taxonomy' => self::TYPE_TAXONOMY,
+					'field'    => 'slug',
+					'terms'    => 'pattern',
+				),
+			),
+		);
+
+		$block_patterns_query = new \WP_Query( $query_args );
+		wp_reset_postdata();
+
+		if ( empty( $block_patterns_query->posts ) ) {
+			return;
+		}
+
+		foreach ( $block_patterns_query->posts as $block_pattern ) {
+			$categories = get_the_terms( $block_pattern->ID, self::CATEGORY_TAXONOMY );
+
+			register_block_pattern(
+				self::POST_TYPE . '/' . $block_pattern->post_name,
+				array(
+					'title'       => $block_pattern->post_title,
+					'content'     => $block_pattern->post_content,
+					'categories'  => empty( $categories ) ? array() : wp_list_pluck( $categories, 'slug' ),
+					'description' => $block_pattern->post_excerpt,
+				)
+			);
+		}
 	}
 }
 
