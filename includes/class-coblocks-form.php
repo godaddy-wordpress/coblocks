@@ -512,7 +512,7 @@ class CoBlocks_Form {
 				esc_attr( $label_slug . '-' . sanitize_title( $value ) ),
 				esc_attr( $label_slug ),
 				esc_attr( $value ),
-				$key === 0 ? esc_attr( $required_attr ) : '',
+				0 === $key ? esc_attr( $required_attr ) : '',
 				esc_html( $value )
 			);
 
@@ -621,17 +621,19 @@ class CoBlocks_Form {
 		printf(
 			'<div class="coblocks-field checkbox%1$s">
 				%2$s',
-			$required ? esc_attr( ' required' ) : '',
-			$required ? sprintf(
-				'<div class="required-error hidden">%s</div>',
-				/**
-				 * Filter the checkbox required text that displays when no checkbox is
-				 * selected when the form is submitted.
-				 *
-				 * @param string $error_text Error text displayed to the user.
-				 */
-				(string) apply_filters( 'coblocks_form_checkbox_required_text', esc_html__( 'Please select at least one checkbox.', 'coblocks' ) )
-			) : ''
+			esc_attr( $required ? ' required' : '' ),
+			esc_html(
+				$required ? sprintf(
+					'<div class="required-error hidden">%s</div>',
+					/**
+					* Filter the checkbox required text that displays when no checkbox is
+					* selected when the form is submitted.
+					*
+					* @param string $error_text Error text displayed to the user.
+					*/
+					apply_filters( 'coblocks_form_checkbox_required_text', __( 'Please select at least one checkbox.', 'coblocks' ) )
+				) : ''
+			)
 		);
 
 		$this->render_field_label( $atts, $label, $checkbox_count );
