@@ -13,11 +13,11 @@
 		color: $dark-gray-500;
 		display: block;
 		font-style: normal;
-		padding-left: 37px;
+		padding-left: 36px;
 		padding-top: 2px;
 
 		@include break-small() {
-			padding-left: 28px;
+			padding-left: 32px;
 		}
 	}
 }

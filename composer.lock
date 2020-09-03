@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a15d37f60d5504f8ac4c9e3ca2c02a89",
+    "content-hash": "03a5cf0ab387c60397606d18f7f3b26d",
     "packages": [],
     "packages-dev": [
         {
@@ -621,6 +621,68 @@
                 "unicode"
             ],
             "time": "2019-11-13T10:30:21+00:00"
+        },
+        {
+            "name": "godaddy-wordpress/json2po",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/godaddy-wordpress/json2po.git",
+                "reference": "fee97b7d91ebb5f002ca2a9c01f432ca3124679b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/godaddy-wordpress/json2po/zipball/fee97b7d91ebb5f002ca2a9c01f432ca3124679b",
+                "reference": "fee97b7d91ebb5f002ca2a9c01f432ca3124679b",
+                "shasum": ""
+            },
+            "bin": [
+                "json2po"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Frankie Jarrett",
+                    "email": "fjarrett@godaddy.com"
+                }
+            ],
+            "description": "Package to convert JSON files to PO files",
+            "time": "2020-08-27T20:48:42+00:00"
+        },
+        {
+            "name": "godaddy-wordpress/pot2json",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/godaddy-wordpress/pot2json.git",
+                "reference": "79d8d200a76ad9b27b97aeb17409167c602c83f0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/godaddy-wordpress/pot2json/zipball/79d8d200a76ad9b27b97aeb17409167c602c83f0",
+                "reference": "79d8d200a76ad9b27b97aeb17409167c602c83f0",
+                "shasum": ""
+            },
+            "bin": [
+                "pot2json"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Frankie Jarrett",
+                    "email": "fjarrett@godaddy.com"
+                }
+            ],
+            "description": "Package to convert PO files to JSON",
+            "time": "2020-08-27T20:07:07+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -1481,6 +1543,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2017-12-04T08:55:13+00:00"
         },
         {
