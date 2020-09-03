@@ -633,7 +633,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 
 		$this->expectOutputRegex( '/<div class="coblocks-form__submitted">Your message was sent: <\/div>/' );
 
-		$this->coblocks_form->success_message();
+		$this->coblocks_form->success_message( [ 'successText' => $this->coblocks_form->default_success_text() ] );
 
 	}
 

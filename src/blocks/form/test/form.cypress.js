@@ -435,4 +435,61 @@ describe( 'Test CoBlocks Form Block', function() {
 
 		helpers.editPage();
 	} );
+
+	/**
+	 * Test the custom success message displays as intended.
+	 */
+	it( 'Test the custom success message displays as intended.', function() {
+		helpers.addBlockToPost( 'coblocks/form', true );
+
+		cy.get( '[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
+			if ( placeholder.prop( 'outerHTML' ).includes( 'block-editor-block-variation-picker' ) ) {
+				cy.get( placeholder )
+					.find( '.block-editor-block-variation-picker__variations li:first-child' )
+					.find( 'button' ).click( { force: true } );
+			} else {
+				cy.get( '.block-editor-inner-blocks__template-picker-options li:first-child' )
+					.click();
+
+				cy.get( '.block-editor-inner-blocks__template-picker-options' )
+					.should( 'not.exist' );
+			}
+		} );
+
+		cy.get( '[data-type="coblocks/form"]' )
+			.click( { force: true } );
+
+			cy.get( 'div.edit-post-sidebar' )
+				.contains( /Success Message/i )
+				.next( 'textarea' )
+				.then( ( $inputElem ) => {
+					cy.get( $inputElem ).invoke( 'val' ).then( ( val ) => {
+						cy.get( $inputElem )
+							.clear()
+							.type( 'Thank you for submitting this form!' );
+					} );
+				} );
+
+		helpers.savePage();
+		helpers.viewPage();
+
+		cy.get( '.coblocks-form' )
+			.should( 'exist' );
+
+		cy.get( 'input[name="field-name[value]"]' )
+			.type( 'Name' );
+
+		cy.get( 'input[name="field-email[value]"]' )
+			.type( 'email@example.com' );
+
+		cy.get( 'textarea[name="field-message[value]"]' )
+			.type( 'My message for you.' );
+
+		cy.get( '.coblocks-form__submit button' )
+			.click();
+
+		cy.get( '.coblocks-form__submitted' ).contains( 'Thank you for submitting this form!' );
+
+		helpers.editPage();
+	} );
 } );
