@@ -382,7 +382,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	 */
 	public function test_render_field_radio() {
 
-		$this->expectOutputRegex( '/<label class="coblocks-radio-label" for="radio-option-1">Option 1<\/label><input id="radio-option-2" type="radio" name="field-radio\[value\]" value="Option 2" class="radio">/' );
+		$this->expectOutputRegex( '/<label class="coblocks-radio-label" for="choose-one-option-1">Option 1<\/label><input id="choose-one-option-2" type="radio" name="field-choose-one\[value\]" value="Option 2" class="radio">/' );
 
 		echo $this->coblocks_form->render_field_radio(
 			[
@@ -505,6 +505,49 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 			],
 			''
 		);
+
+	}
+
+	/**
+	 * Test the checkbox required class is added to the markup as expected
+	 */
+	public function test_render_field_checkbox_required_class() {
+
+		$this->expectOutputRegex( '/<div class="coblocks-field checkbox required">/' );
+
+		echo $this->coblocks_form->render_field_checkbox(
+			[
+				'options' => [
+					'option-1' => 'Option 1',
+					'option-2' => 'Option 2',
+				],
+				'required' => true,
+			],
+			''
+		);
+
+	}
+
+	/**
+	 * Test that the required checkbox field script is loaded when checkboxes
+	 * are set to required
+	 */
+	public function test_required_checkbox_script() {
+
+		$this->coblocks_form->render_field_checkbox(
+			[
+				'options' => [
+					'option-1' => 'Option 1',
+					'option-2' => 'Option 2',
+				],
+				'required' => true
+			],
+			''
+		);
+
+		global $wp_scripts;
+
+		$this->assertArrayHasKey( 'coblocks-checkbox-required', $wp_scripts->registered );
 
 	}
 
