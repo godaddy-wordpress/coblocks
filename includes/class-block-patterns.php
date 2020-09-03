@@ -94,7 +94,7 @@ class CoBlocks_Block_Patterns {
 	 * @param WP_Post         $post     Inserted or updated post object.
 	 * @param WP_REST_Request $request  Request object.
 	 */
-	function add_taxonomies_on_insert_post( $post, $request ) {
+	public function add_taxonomies_on_insert_post( $post, $request ) {
 		$params = $request->get_json_params();
 
 		if ( array_key_exists( 'terms', $params ) ) {
@@ -173,7 +173,10 @@ class CoBlocks_Block_Patterns {
 		return $layouts;
 	}
 
-	function load_block_patterns() {
+	/**
+	 * Register custom post type posts (with the 'pattern' type) as block patterns.
+	 */
+	public function load_block_patterns() {
 		$query_args = array(
 			'post_type'              => self::POST_TYPE,
 
