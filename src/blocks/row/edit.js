@@ -4,6 +4,7 @@
 import classnames from 'classnames';
 import map from 'lodash/map';
 import get from 'lodash/get';
+import { RowIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
@@ -24,8 +25,8 @@ import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withSelect, useDispatch, withDispatch } from '@wordpress/data';
-import { BlockIcon, InnerBlocks, __experimentalBlockVariationPicker } from '@wordpress/block-editor';
-import { ButtonGroup, Button, Tooltip, Placeholder, Spinner } from '@wordpress/components';
+import { InnerBlocks, __experimentalBlockVariationPicker } from '@wordpress/block-editor';
+import { ButtonGroup, Button, Tooltip, Placeholder, Spinner, Icon } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
 
 /**
@@ -143,7 +144,7 @@ class Edit extends Component {
 					<Placeholder
 						key="placeholder"
 						className="components-coblocks-row-placeholder"
-						icon={ <BlockIcon icon={ columns ? rowIcons.layout : rowIcons.row } /> }
+						icon={ <Icon icon={ RowIcon } /> }
 						label={ columns ? __( 'Row layout', 'coblocks' ) : __( 'Row', 'coblocks' ) }
 						instructions={ columns
 							? sprintf(
