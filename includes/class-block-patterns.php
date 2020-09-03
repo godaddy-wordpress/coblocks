@@ -69,7 +69,7 @@ class CoBlocks_Block_Patterns {
 			'show_in_rest' => true,
 		);
 
-		register_taxonomy( self::TYPE_TAXONOMY, array( 'coblocks_pattern' ), $args );
+		register_taxonomy( self::TYPE_TAXONOMY, array( self::POST_TYPE ), $args );
 	}
 
 	/**
@@ -85,7 +85,7 @@ class CoBlocks_Block_Patterns {
 			'show_in_rest' => true,
 		);
 
-		register_taxonomy( self::CATEGORY_TAXONOMY, array( 'coblocks_pattern' ), $args );
+		register_taxonomy( self::CATEGORY_TAXONOMY, array( self::POST_TYPE ), $args );
 	}
 
 	/**
@@ -175,7 +175,7 @@ class CoBlocks_Block_Patterns {
 
 	function load_block_patterns() {
 		$query_args = array(
-			'post_type'              => 'coblocks_pattern',
+			'post_type'              => self::POST_TYPE,
 
 			'no_found_rows'          => true,
 			'update_post_meta_cache' => false,
@@ -183,7 +183,7 @@ class CoBlocks_Block_Patterns {
 
 			'tax_query'              => array(
 				array(
-					'taxonomy' => 'coblocks_pattern_type',
+					'taxonomy' => self::TYPE_TAXONOMY,
 					'field'    => 'slug',
 					'terms'    => 'pattern',
 				),
@@ -198,10 +198,10 @@ class CoBlocks_Block_Patterns {
 		}
 
 		foreach ( $block_patterns_query->posts as $block_pattern ) {
-			$categories = get_the_terms( $block_pattern->ID, 'coblocks_pattern_category' );
+			$categories = get_the_terms( $block_pattern->ID, self::CATEGORY_TAXONOMY );
 
 			register_block_pattern(
-				"coblocks_pattern/{$block_pattern->post_name}",
+				self::POST_TYPE . '/' . $block_pattern->post_name,
 				array(
 					'title'       => $block_pattern->post_title,
 					'content'     => $block_pattern->post_content,
