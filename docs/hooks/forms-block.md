@@ -37,7 +37,8 @@ The following `PHP` filter can be used to set a custom response when a required 
 
 ```php
 /**
- * Set a custom success message to mimic a successful form submission
+ * Set a custom error message to display when a required checkbox 
+ * group has no options set before submitting the form.
  *
  * @return string Form submission success message
  */
