@@ -97,7 +97,8 @@ class PricingTableEdit extends Component {
 								template={ getCount( count ) }
 								templateLock="insert"
 								allowedBlocks={ ALLOWED_BLOCKS }
-								__experimentalMoverDirection={ count > 1 ? 'horizontal' : 'vertical' } />
+								orientation={ count > 1 ? 'horizontal' : 'vertical' }
+								__experimentalCaptureToolbars={ true } />
 						</div>
 					</GutterWrapper>
 				</div>
