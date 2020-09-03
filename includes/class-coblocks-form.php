@@ -703,8 +703,9 @@ class CoBlocks_Form {
 	 */
 	public function render_field_label( $atts, $field_label, $count = 1 ) {
 
-		$label      = isset( $atts['label'] ) ? $atts['label'] : $field_label;
-		$label_slug = $count > 1 ? sanitize_title( $label . '-' . $count ) : sanitize_title( $label );
+		$label       = isset( $atts['label'] ) ? $atts['label'] : $field_label;
+		$label_color = ( isset( $atts['textColor'] ) ) ? $atts['textColor'] : '';
+		$label_slug  = $count > 1 ? sanitize_title( $label . '-' . $count ) : sanitize_title( $label );
 
 		/**
 		 * Filter the required text in the field label.
@@ -725,10 +726,18 @@ class CoBlocks_Form {
 		);
 
 		if ( ! isset( $atts['hidden'] ) ) {
-
+			$block_content = sprintf(
+				'<div class="%1$s" style="%2$s"></div>',
+				esc_attr( implode( ' ', apply_filters( 'coblocks/render/wrapper/class', array( 'coblocks-label' ), $atts ) ) ),
+				esc_attr( implode( ' ', apply_filters( 'coblocks/render/wrapper/styles', $styles, $atts ) ) )
+			);
 			printf(
-				'<label for="%1$s" class="coblocks-label">%2$s%3$s</label>',
+				'<label for="%1$s" class="coblocks-label"%2$s>%3$s%4$s</label>',
 				esc_attr( $label_slug ),
+				empty( $label_color ) ? '' : sprintf(
+					'style="color: %1$s"',
+					$label_color
+				),
 				wp_kses_post( $label ),
 				wp_kses( $required_label, $allowed_html )
 			);

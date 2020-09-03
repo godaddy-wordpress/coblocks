@@ -27,6 +27,7 @@ import './extensions/layout-selector';
 
 // Internal Extensions / Components
 import './components/gutter-control';
+import './components/form-label-colors';
 
 // Formats
 import './formats';
