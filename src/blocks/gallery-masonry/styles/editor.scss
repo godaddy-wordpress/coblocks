@@ -93,12 +93,8 @@
 	}
 }
 
-.has-lightbox {
-
-	.coblocks-gallery--figure:hover,
-	.coblocks-gallery--item figure:hover {
-		cursor: default !important;
-	}
+.has-lightbox figure {
+	cursor: default !important;
 }
 
 // Needed until GB 6.9 is merged into core or backward support.
