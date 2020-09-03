@@ -305,6 +305,7 @@ export class Edit extends Component {
 											allowedBlocks={ ALLOWED_BLOCKS }
 											templateLock={ false }
 											templateInsertUpdatesSelection={ false }
+											__experimentalCaptureToolbars={ true }
 										/>
 									</ResizableBox>
 								</div>
