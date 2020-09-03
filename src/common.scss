@@ -23,7 +23,9 @@ $spacing: (
 	5: 2.5em,
 	6: 3em,
 	7: 3.5em,
-	8: 4em
+	8: 4em,
+	9: 4.5em,
+	10: 7em,
 );
 
 // CSS Custom Properties
@@ -37,6 +39,8 @@ $spacing: (
 	--coblocks-spacing--6: #{map-get($spacing, 6)};
 	--coblocks-spacing--7: #{map-get($spacing, 7)};
 	--coblocks-spacing--8: #{map-get($spacing, 8)};
+	--coblocks-spacing--9: #{map-get($spacing, 9)};
+	--coblocks-spacing--10: #{map-get($spacing, 10)};
 }
 
 // Colors

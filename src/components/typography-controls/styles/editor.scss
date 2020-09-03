@@ -27,14 +27,14 @@
 			width: 130px;
 
 			&:hover {
-				background: $light-gray-100;
+				background: $gray-100;
 				border-color: #999;
 				color: $dark-gray-800;
 				text-decoration: none;
 			}
 
 			&:active:enabled {
-				background: $light-gray-200;
+				background: $gray-200;
 			}
 
 			&:focus {

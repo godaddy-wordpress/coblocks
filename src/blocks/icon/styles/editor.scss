@@ -126,37 +126,6 @@
 	}
 }
 
-
-// Editor style preview.
-.editor-block-preview,
-.block-editor-block-styles__item-preview {
-
-	.wp-block-coblocks-icon__inner {
-		align-items: center;
-		background: transparent !important;
-		display: flex;
-		height: 100% !important;
-		justify-content: center;
-		margin-top: 16px;
-		padding: 0 !important;
-		transform: scale(1.23);
-		width: 100% !important;
-
-		> svg {
-			fill: #3f464d;
-			height: 24px;
-			width: 24px;
-		}
-	}
-}
-
-.editor-block-preview {
-
-	.wp-block-coblocks-icon__inner {
-		margin-top: 3px;
-	}
-}
-
 // Hide screen reader label for Gutenberg < 6.4
 .components-coblocks-icon-size__controls {
 	align-items: center;
@@ -196,13 +165,14 @@
 }
 
 // Shim to get icons to display correctly in G 6.3+ only.
-.components-panel__body .block-editor-block-preview__container .wp-block-coblocks-icon {
+.block-editor-block-preview__container .wp-block-coblocks-icon {
 	align-content: center;
 	align-items: center;
 	display: flex;
 	justify-content: center;
 
-	svg {
-		transform: scale(4);
+	.components-resizable-box__container {
+		width: 100% !important;
+		padding: 4rem !important;
 	}
 }

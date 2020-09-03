@@ -179,7 +179,9 @@ class CoBlocks_Block_Assets {
 		 */
 		$bundled_icons_enabled = (bool) apply_filters( 'coblocks_bundled_icons_enabled', true );
 
-		$form_subject = ( new CoBlocks_Form() )->default_subject();
+		$form         = new CoBlocks_Form();
+		$form_subject = $form->default_subject();
+		$success_text = $form->default_success_text();
 
 		wp_localize_script(
 			'coblocks-editor',
@@ -188,6 +190,7 @@ class CoBlocks_Block_Assets {
 				'form'                           => array(
 					'adminEmail'   => $email_to,
 					'emailSubject' => $form_subject,
+					'successText'  => $success_text,
 				),
 				'cropSettingsOriginalImageNonce' => wp_create_nonce( 'cropSettingsOriginalImageNonce' ),
 				'cropSettingsNonce'              => wp_create_nonce( 'cropSettingsNonce' ),
