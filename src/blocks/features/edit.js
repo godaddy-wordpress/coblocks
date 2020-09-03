@@ -168,7 +168,9 @@ class Edit extends Component {
 								allowedBlocks={ ALLOWED_BLOCKS }
 								templateLock="all"
 								templateInsertUpdatesSelection={ false }
-								renderAppender={ () => ( null ) } />
+								renderAppender={ () => ( null ) }
+								__experimentalCaptureToolbars={ true }
+							/>
 						</div>
 					</GutterWrapper>
 				</div>
