@@ -138,3 +138,6 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 * Move i18ntools to their own composer package [#1650](https://github.com/godaddy-wordpress/coblocks/pull/1650)
 * Remove arrows from lightbox in single image galleries [#1656](https://github.com/godaddy-wordpress/coblocks/pull/1656)
 * Remove box shadow from selected Form block fields [#1655](https://github.com/godaddy-wordpress/coblocks/pull/1655)
+
+### 2.3.1
+* Fix custom taxonomy not being assigned to block pattern on save
