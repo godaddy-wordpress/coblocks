@@ -1050,7 +1050,7 @@ class CoBlocks_Form {
 	 */
 	public function success_message( $atts ) {
 
-		$sent_notice = ( isset( $atts['successText'] ) && ! empty( $atts['successText'] ) )  ? $atts['successText'] : $this->default_success_text();
+		$sent_notice = ( isset( $atts['successText'] ) && ! empty( $atts['successText'] ) ) ? $atts['successText'] : $this->default_success_text();
 
 		/**
 		 * Filter the success message after a form submission
