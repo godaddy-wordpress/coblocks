@@ -27,7 +27,7 @@ class CoBlocks_Block_Patterns {
 		add_action( 'init', array( $this, 'register_type_taxonomy' ) );
 		add_action( 'init', array( $this, 'register_category_taxonomy' ) );
 		add_action( 'init', array( $this, 'load_block_patterns' ) );
-		add_action( 'rest_insert_block_patterns', array( $this, 'add_taxonomies_on_insert_post' ), 10, 2 );
+		add_action( 'rest_insert_' . self::POST_TYPE, array( $this, 'add_taxonomies_on_insert_post' ), 10, 2 );
 
 		add_filter( 'coblocks_layout_selector_categories', array( $this, 'load_categories' ) );
 		add_filter( 'coblocks_layout_selector_layouts', array( $this, 'load_layouts' ) );
