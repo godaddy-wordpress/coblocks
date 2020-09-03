@@ -350,7 +350,10 @@ class FormEdit extends Component {
 	blockVariationPicker() {
 		return (
 			<Fragment>
-				<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
+				<InnerBlocks
+					allowedBlocks={ ALLOWED_BLOCKS }
+					__experimentalCaptureToolbars={ true }
+				/>
 			</Fragment>
 		);
 	}
@@ -371,6 +374,7 @@ class FormEdit extends Component {
 					template={ this.supportsInnerBlocksPicker() ? this.state.template : TEMPLATE_OPTIONS[ 0 ].template }
 					allowedBlocks={ ALLOWED_BLOCKS }
 					templateInsertUpdatesSelection={ false }
+					__experimentalCaptureToolbars={ true }
 				/>
 			</Fragment>
 		);
