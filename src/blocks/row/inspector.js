@@ -11,8 +11,7 @@ import { layoutOptions } from './utilities';
 import applyWithColors from './colors';
 import { BackgroundPanel } from '../../components/background';
 import DimensionsControl from '../../components/dimensions-control';
-import OptionSelectorControl from '../../components/option-selector-control';
-import gutterOptions from '../../utils/gutter-options';
+import GutterControl from '../../components/gutter-control/gutter-control';
 
 /**
  * WordPress dependencies
@@ -60,7 +59,6 @@ class Inspector extends Component {
 
 		const {
 			columns,
-			gutter,
 			layout,
 			marginBottom,
 			marginLeft,
@@ -156,12 +154,7 @@ class Inspector extends Component {
 							{ layout &&
 								<Fragment>
 									<PanelBody title={ __( 'Row settings', 'coblocks' ) }>
-										{ selectedRows >= 2 && <OptionSelectorControl
-											label={ __( 'Gutter', 'coblocks' ) }
-											currentOption={ gutter }
-											options={ gutterOptions }
-											onChange={ ( newGutter ) => setAttributes( { gutter: newGutter } ) }
-										/> }
+										{ selectedRows >= 2 && <GutterControl { ...this.props } /> }
 										<DimensionsControl { ...this.props }
 											type={ 'padding' }
 											label={ __( 'Padding', 'coblocks' ) }

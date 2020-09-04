@@ -105,6 +105,7 @@ class AccordionEdit extends Component {
 					<InnerBlocks
 						template={ getCount( count ) }
 						allowedBlocks={ ALLOWED_BLOCKS }
+						__experimentalCaptureToolbars={ true }
 					/>
 					{ isSelected && (
 						<div className="coblocks-block-appender">

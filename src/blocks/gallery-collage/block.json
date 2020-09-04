@@ -46,10 +46,6 @@
 				}
 			}
 		},
-		"gutter": {
-			"type": "string",
-			"default": "small"
-		},
 		"shadow": {
 			"type": "string",
 			"default": "none"

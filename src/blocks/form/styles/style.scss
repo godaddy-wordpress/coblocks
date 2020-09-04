@@ -10,6 +10,10 @@
 		margin: 1.25rem 0 3px 0;
 	}
 
+	.required-error.hidden {
+		display: none;
+	}
+
 	.coblocks-field,
 	select {
 		margin: 0 0 1.25rem 0;

@@ -49,7 +49,7 @@ describe( name, () => {
 	} );
 
 	it( 'should render gutter classes', () => {
-		[ 'none', 'small', 'medium', 'large', 'huge' ].forEach( gutterSize => {
+		[ 'small', 'medium', 'large' ].forEach( gutterSize => {
 			block.attributes.gutter = gutterSize;
 			serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();
@@ -69,7 +69,7 @@ describe( name, () => {
 	} );
 
 	it( 'should render padding classes', () => {
-		[ 'none', 'small', 'medium', 'large', 'huge' ].forEach( paddingSize => {
+		[ 'small', 'medium', 'large' ].forEach( paddingSize => {
 			block.attributes.paddingSize = paddingSize;
 			serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();
@@ -79,7 +79,7 @@ describe( name, () => {
 	} );
 
 	it( 'should render margin classes', () => {
-		[ 'none', 'small', 'medium', 'large', 'huge' ].forEach( marginSize => {
+		[ 'small', 'medium', 'large' ].forEach( marginSize => {
 			block.attributes.marginSize = marginSize;
 			serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();

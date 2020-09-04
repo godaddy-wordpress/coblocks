@@ -52,6 +52,18 @@ class CoBlocks_Form {
 	}
 
 	/**
+	 * Default success text
+	 *
+	 * @var string
+	 */
+	public function default_success_text() {
+		/**
+		 * Filter the sent notice above the success message.
+		 */
+		return (string) apply_filters( 'coblocks_form_sent_notice', __( 'Your message was sent:', 'coblocks' ) );
+	}
+
+	/**
 	 * The Constructor.
 	 */
 	public function __construct() {
@@ -203,7 +215,7 @@ class CoBlocks_Form {
 
 				if ( $submit_form ) {
 
-					$this->success_message();
+					$this->success_message( $atts );
 
 					print( '</div>' );
 
@@ -475,9 +487,10 @@ class CoBlocks_Form {
 
 		$the_options = array_filter( $atts['options'] );
 
-		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Choose one', 'coblocks' );
-		$label_desc = sanitize_title( $label ) !== 'choose-one' ? sanitize_title( $label ) : 'radio';
-		$label_slug = $radio_count > 1 ? sanitize_title( $label_desc . '-' . $radio_count ) : sanitize_title( $label_desc );
+		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Choose one', 'coblocks' );
+		$label_desc    = sanitize_title( $label ) !== 'choose-one' ? sanitize_title( $label ) : 'choose-one';
+		$label_slug    = $radio_count > 1 ? sanitize_title( $label_desc . '-' . $radio_count ) : sanitize_title( $label_desc );
+		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? ' required' : '';
 
 		ob_start();
 
@@ -491,14 +504,15 @@ class CoBlocks_Form {
 
 		}
 
-		foreach ( $the_options as $value ) {
+		foreach ( $the_options as $key => $value ) {
 
 			printf(
-				'<input id="%1$s" type="radio" name="field-%2$s[value]" value="%3$s" class="radio">
-				<label class="coblocks-radio-label" for="%1$s">%4$s</label>',
+				'<input id="%1$s" type="radio" name="field-%2$s[value]" value="%3$s" class="radio"%4$s>
+				<label class="coblocks-radio-label" for="%1$s">%5$s</label>',
 				esc_attr( $label_slug . '-' . sanitize_title( $value ) ),
 				esc_attr( $label_slug ),
 				esc_attr( $value ),
+				0 === $key ? esc_attr( $required_attr ) : '',
 				esc_html( $value )
 			);
 
@@ -588,10 +602,39 @@ class CoBlocks_Form {
 
 		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Select', 'coblocks' );
 		$label_slug = $checkbox_count > 1 ? sanitize_title( $label . '-' . $checkbox_count ) : sanitize_title( $label );
+		$required   = ( isset( $atts['required'] ) && $atts['required'] );
+
+		if ( $required ) {
+
+			wp_enqueue_script(
+				'coblocks-checkbox-required',
+				CoBlocks()->asset_source( 'js' ) . 'coblocks-checkbox-required.js',
+				array(),
+				COBLOCKS_VERSION,
+				true
+			);
+
+		}
 
 		ob_start();
 
-		print( '<div class="coblocks-field">' );
+		printf(
+			'<div class="coblocks-field checkbox%1$s">
+				%2$s',
+			esc_attr( $required ? ' required' : '' ),
+			esc_html(
+				$required ? sprintf(
+					'<div class="required-error hidden">%s</div>',
+					/**
+					* Filter the checkbox required text that displays when no checkbox is
+					* selected when the form is submitted.
+					*
+					* @param string $error_text Error text displayed to the user.
+					*/
+					apply_filters( 'coblocks_form_checkbox_required_text', __( 'Please select at least one checkbox.', 'coblocks' ) )
+				) : ''
+			)
+		);
 
 		$this->render_field_label( $atts, $label, $checkbox_count );
 
@@ -1033,14 +1076,12 @@ class CoBlocks_Form {
 	/**
 	 * Display the form success data
 	 *
-	 * @return mixed Markup for a preview of the submitted data
+	 * @param  array $atts Block attributes array.
+	 * @return mixed Success Text followed by the submitted form data.
 	 */
-	public function success_message() {
+	public function success_message( $atts ) {
 
-		/**
-		 * Filter the sent notice above the success message.
-		 */
-		$sent_notice = (string) apply_filters( 'coblocks_form_sent_notice', __( 'Your message was sent:', 'coblocks' ) );
+		$sent_notice = ( isset( $atts['successText'] ) && ! empty( $atts['successText'] ) ) ? $atts['successText'] : $this->default_success_text();
 
 		/**
 		 * Filter the success message after a form submission
@@ -1052,7 +1093,7 @@ class CoBlocks_Form {
 		$success_message = (string) apply_filters(
 			'coblocks_form_success_message',
 			sprintf(
-				'<div class="coblocks-form__submitted">%s %s</div>',
+				'<div class="coblocks-form__submitted">%1$s %2$s</div>',
 				wp_kses_post( $sent_notice ),
 				wp_kses_post( $this->email_content )
 			),

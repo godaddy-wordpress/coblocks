@@ -5,6 +5,7 @@ import edit from './edit';
 import icon from './icon';
 import metadata from './block.json';
 import transforms from './transforms';
+import deprecated from './deprecated';
 
 /**
  * WordPress dependencies
@@ -35,10 +36,14 @@ const settings = {
 	],
 	supports: {
 		align: [ 'wide', 'full' ],
+		gutter: {
+			default: 'medium',
+		},
 		html: false,
 	},
 	transforms,
 	edit,
+	deprecated,
 	save() {
 		return null;
 	},
