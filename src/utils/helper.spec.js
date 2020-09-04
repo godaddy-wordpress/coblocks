@@ -1,7 +1,7 @@
 /**
  * Internal dependencies.
  */
-import { overlayToClass, pickRelevantMediaFiles } from './helper';
+import { overlayToClass, pickRelevantMediaFiles, hexToRGB } from './helper';
 
 describe( 'utils/helper', () => {
 	describe( 'overlayToClass', () => {
@@ -104,5 +104,11 @@ describe( 'utils/helper', () => {
 			url: imageObject.sizes.large.url,
 		};
 		expect( imageProps ).toMatchObject( expected );
+	} );
+
+	it( 'should convert hex string to rbg values', () => {
+		expect( hexToRGB( '#00FF00' ) ).toEqual( '0, 255, 0' );
+		expect( hexToRGB( '#800000' ) ).toEqual( '128, 0, 0' );
+		expect( hexToRGB( '#008080' ) ).toEqual( '0, 128, 128' );
 	} );
 } );

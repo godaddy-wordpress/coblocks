@@ -1,29 +1,72 @@
-body:not(.wp-admin) {
+.coblocks-animate {
+	opacity: 0;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-in;
 
-	.animate {
-		opacity: 0;
-		transform: translateX(-20rem);
-		animation-duration: 1s;
-		animation-fill-mode: both;
+	&.animate-loop {
+		animation-iteration-count: infinite;
 	}
 
-	.fadeIn {
+	&.fadeIn {
 		animation-name: fadeIn;
-		animation-timing-function: ease-in;
+		animation-duration: 2s;
 	}
 
 	@keyframes fadeIn {
-
-		from {
+		0% {
 			opacity: 0;
-			transform: translateX(-20rem);
 		}
 
-		to {
+		50% {
 			opacity: 1;
-			transform: scale(1);
+		}
+
+		100% {
+			opacity: 1;
+		}
+	}
+
+	&.slideInLeft {
+		animation-name: slideInLeft;
+		animation-duration: 2s;
+	}
+
+	@keyframes slideInLeft {
+		0% {
+			opacity: 0;
+			transform: translateX(-10rem);
+		}
+
+		50% {
+			opacity: 1;
+			transform: translateX(0rem);
+		}
+
+		100% {
+			opacity: 1;
+			transform: translateX(0rem);
+		}
+	}
+
+	&.slideInRight {
+		animation-name: slideInRight;
+		animation-duration: 2s;
+	}
+
+	@keyframes slideInRight {
+		0% {
+			opacity: 0;
+			transform: translateX(10rem);
+		}
+
+		50% {
+			opacity: 1;
+			transform: translateX(0rem);
+		}
+
+		100% {
+			opacity: 1;
+			transform: translateX(0rem);
 		}
 	}
 }
-
-

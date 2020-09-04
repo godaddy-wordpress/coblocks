@@ -1,4 +1,4 @@
-const elems = document.querySelectorAll( '.animate' );
+const elems = document.querySelectorAll( '.coblocks-animate' );
 
 const observer = new IntersectionObserver( ( entries ) => {
 	entries.forEach( ( entry ) => {
@@ -6,7 +6,7 @@ const observer = new IntersectionObserver( ( entries ) => {
 			return;
 		}
 
-		entry.target.classList.add( 'fadeIn' );
+		entry.target.classList.add( entry.target.dataset.animation );
 		observer.unobserve( entry.target );
 	} );
 }, {

@@ -296,9 +296,9 @@ class CoBlocks_Block_Assets {
 
 		// Temporary for testing animations
 		wp_enqueue_script(
-			'coblocks-animations',
-			$dir . 'coblocks-animations.js',
-			array( 'jquery' ),
+			'coblocks-animation',
+			$dir . 'coblocks-animation.js',
+			array(),
 			COBLOCKS_VERSION,
 			true
 		);
