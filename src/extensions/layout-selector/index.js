@@ -115,11 +115,11 @@ class LayoutSelector extends Component {
 		}
 
 		this.detectImageBlocks( this.props.clientIds )
-			.filter( ( block ) => typeof block !== 'undefined' || ! isEmpty( Object.values( block )[ 0 ] ) )
+			.filter( ( block ) => typeof block !== 'undefined' )
 			.forEach(
 				( block ) => {
-					const blockParts = Object.entries( block );
-					this.uploadExternalImages( blockParts[ 0 ][ 0 ], blockParts[ 0 ][ 1 ] );
+					const [ clientId, attributes ] = Object.entries( block )[ 0 ];
+					this.uploadExternalImages( clientId, attributes );
 				}
 			);
 	}
@@ -188,6 +188,10 @@ class LayoutSelector extends Component {
 			blockAttributes.images.forEach( ( image ) => urls.push( image.url ) );
 		} else {
 			urls.push( blockAttributes.url );
+		}
+
+		if ( ! urls.filter( ( url ) => typeof url !== 'undefined' ).length ) {
+			return;
 		}
 
 		urls.forEach( ( imageUrl, index ) => {
