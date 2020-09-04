@@ -4,6 +4,11 @@
 import { startCase } from 'lodash';
 
 /**
+ * Internal dependencies.
+ */
+import coblocksLayoutSelector from './cypress-layouts';
+
+/**
  * Close layout selector.
  */
 export function closeLayoutSelector() {
@@ -42,7 +47,14 @@ export function loginToSite() {
  * @param {string} path The URI path to go to.
  */
 export function goTo( path = '/wp-admin' ) {
-	return cy.visit( Cypress.env( 'testURL' ) + path );
+	return cy.visit(
+		Cypress.env( 'testURL' ) + path,
+		{
+			onLoad( win ) {
+				win.coblocksLayoutSelector = coblocksLayoutSelector;
+			},
+		}
+	);
 }
 
 /**
@@ -391,7 +403,7 @@ export function doEditorRedo() {
  */
 export function openEditorSettingsModal() {
 	// Open "more" menu.
-	cy.get( '.edit-post-more-menu' ).find( 'button' ).click( { force: true } );
+	cy.get( '.edit-post-more-menu' ).find( 'button' ).click();
 	cy.get( '.components-menu-item__button' ).contains( 'Editor settings' ).click();
 
 	cy.get( '.components-modal__frame' ).contains( 'Editor settings' ).should( 'exist' );

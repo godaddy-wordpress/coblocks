@@ -2,13 +2,11 @@
  * Include our constants
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
-import coblocksLayoutSelector from './cypress-layouts';
 
 describe( 'Extension: Layout Selector', () => {
 	beforeEach( () => {
-		cy.window().then( ( win ) => { // Use layouts specific for testing.
-			win.coblocksLayoutSelector = coblocksLayoutSelector;
-		} );
+		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
+		helpers.disableGutenbergFeatures();
 	} );
 
 	it( 'shows modal on add new "page" post_type', () => {
@@ -46,10 +44,7 @@ describe( 'Extension: Layout Selector', () => {
 		cy.get( '.editor-post-title__block' ).contains( 'About Test' );
 		cy.get( '.wp-block' ).contains( 'Test About Layout.' );
 
-		cy.get( '[data-type="core/image"] img[src^="http"]' )
-
-		helpers.doEditorUndo();
-		helpers.doEditorUndo();
+		cy.get( '[data-type="core/image"] img[src^="http"]' );
 	} );
 
 	it( 'inserts blank layout into page', () => {
@@ -67,15 +62,10 @@ describe( 'Extension: Layout Selector', () => {
 	} );
 
 	it( 'does not show modal on add new "post" post_type', () => {
-		helpers.goTo( '/wp-admin/post-new.php?post_type=post' );
-		helpers.disableGutenbergFeatures();
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
 	} );
 
 	it( 'does not open modal when disabled via the "Editor Settings" panel', () => {
-		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
-		helpers.disableGutenbergFeatures();
-
 		helpers.closeLayoutSelector();
 
 		helpers.openEditorSettingsModal();
@@ -96,9 +86,7 @@ describe( 'Extension: Layout Selector', () => {
 	} );
 
 	it( 'imports images into media library from layouts', () => {
-		helpers.disableGutenbergFeatures();
-
-		// Click "Home" category.
+		// Click "About" category.
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(1)' ).find( 'a' ).click();
 		cy.get( '.coblocks-layout-selector__layout' ).contains( 'Test About Layout.' );
 
@@ -108,6 +96,6 @@ describe( 'Extension: Layout Selector', () => {
 		cy.get( '.wp-block' ).contains( 'Test About Layout.' );
 
 		// Only passes if the image was successfully uploaded to site.
-		cy.get( `[data-type="core/image"] img[src^="${Cypress.env('testURL')}"]` ).click(); 
+		cy.get( `[data-type="core/image"] img[src^="${Cypress.env('testURL')}"]` ).click();
 	} );
 } );
