@@ -4,12 +4,11 @@
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Extension: Layout Selector', () => {
-	beforeEach( () => {
-		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
-		helpers.disableGutenbergFeatures();
-	} );
 
 	it( 'shows modal on add new "page" post_type', () => {
+		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
+		helpers.disableGutenbergFeatures();
+
 		// The new page post_type admin page is already loaded before tests run.
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 	} );
@@ -48,6 +47,8 @@ describe( 'Extension: Layout Selector', () => {
 	} );
 
 	it( 'inserts blank layout into page', () => {
+		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
+		helpers.disableGutenbergFeatures();
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 
 		// Click "Add Blank Page" button.
@@ -62,10 +63,15 @@ describe( 'Extension: Layout Selector', () => {
 	} );
 
 	it( 'does not show modal on add new "post" post_type', () => {
+		helpers.goTo( '/wp-admin/post-new.php?post_type=post' );
+		helpers.disableGutenbergFeatures();
+
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
 	} );
 
 	it( 'does not open modal when disabled via the "Editor Settings" panel', () => {
+		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
+		helpers.disableGutenbergFeatures();
 		helpers.closeLayoutSelector();
 
 		helpers.openEditorSettingsModal();
@@ -86,6 +92,8 @@ describe( 'Extension: Layout Selector', () => {
 	} );
 
 	it( 'imports images into media library from layouts', () => {
+		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
+		helpers.disableGutenbergFeatures();
 		// Click "About" category.
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(1)' ).find( 'a' ).click();
 		cy.get( '.coblocks-layout-selector__layout' ).contains( 'Test About Layout.' );
