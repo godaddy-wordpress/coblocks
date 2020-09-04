@@ -2,6 +2,7 @@
  * Internal Dependencies
  */
 import Controls from './controls';
+import '../../js/coblocks-animation';
 
 /**
  * External Dependencies
@@ -11,12 +12,16 @@ import classnames from 'classnames';
 /**
  * WordPress Dependencies
  */
+import { withSelect } from '@wordpress/data';
 import { addFilter } from '@wordpress/hooks';
-import { createHigherOrderComponent } from '@wordpress/compose';
+import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
 const allowedBlocks = [
 	'core/cover',
 ];
+
+const animateClass = 'coblocks-animate';
+const dataAnimationHolder = 'data-coblocks-animation';
 
 /**
  * Override the default edit UI to include a new block toolbar control
@@ -84,8 +89,8 @@ function applyAnimationSettings( extraProps, blockType, attributes ) {
 	const { animation } = attributes;
 
 	if ( !! animation ) {
-		extraProps.className = classnames( extraProps.className, 'coblocks-animate' );
-		extraProps[`data-animation`] = animation;
+		extraProps.className = classnames( extraProps.className, animateClass );
+		extraProps[ dataAnimationHolder ] = animation;
 	}
 
 	return extraProps;
@@ -95,4 +100,49 @@ addFilter(
 	'blocks.getSaveContent.extraProps',
 	'coblocks/applyAnimationSettings',
 	applyAnimationSettings
+);
+
+const enhance = compose(
+	/**
+	 * For blocks whose block type doesn't support `multiple`, provides the
+	 * wrapped component with `originalBlockClientId` -- a reference to the
+	 * first block of the same type in the content -- if and only if that
+	 * "original" block is not the current one. Thus, an inexisting
+	 * `originalBlockClientId` prop signals that the block is valid.
+	 *
+	 * @param {Function} WrappedBlockEdit A filtered BlockEdit instance.
+	 *
+	 * @return {Function} Enhanced component with merged state data props.
+	 */
+	withSelect( ( select ) => {
+		return { selected: select( 'core/block-editor' ).getSelectedBlock(), select };
+	} )
+);
+
+const withAnimationSettings = createHigherOrderComponent( ( BlockListBlock ) => {
+	return enhance( ( { select, ...props } ) => {
+		let wrapperProps 	= props.wrapperProps;
+
+		const block = select( 'core/block-editor' ).getBlock( props.rootClientId || props.clientId );
+		const blockName	= select( 'core/block-editor' ).getBlockName( props.rootClientId || props.clientId );
+
+		if ( ! allowedBlocks.includes( blockName ) || ! block?.attributes?.animation ) {
+			return <BlockListBlock { ...props } />;
+		}
+
+		const { animation } = block.attributes;
+
+		wrapperProps = {
+			...wrapperProps,
+			className: classnames( wrapperProps.className, animateClass, animation ),
+		};
+
+		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
+	} );
+}, 'withAnimationSettings' );
+
+addFilter(
+	'editor.BlockListBlock',
+	'coblocks/withAnimationSettings',
+	withAnimationSettings
 );

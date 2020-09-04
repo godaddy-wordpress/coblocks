@@ -6,7 +6,7 @@ const observer = new IntersectionObserver( ( entries ) => {
 			return;
 		}
 
-		entry.target.classList.add( entry.target.dataset.animation );
+		entry.target.classList.add( entry.target.dataset.coblocksAnimation );
 		observer.unobserve( entry.target );
 	} );
 }, {
