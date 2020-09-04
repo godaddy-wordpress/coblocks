@@ -6,7 +6,7 @@ import { startCase } from 'lodash';
 /**
  * Internal dependencies.
  */
-import coblocksLayoutSelector from './cypress-layouts';
+import coblocksLayoutSelector from '../../../src/extensions/layout-selector/test/cypress-layouts';
 
 /**
  * Close layout selector.
