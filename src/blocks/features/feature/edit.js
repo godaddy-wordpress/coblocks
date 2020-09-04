@@ -167,6 +167,7 @@ class Edit extends Component {
 							templateLock={ false }
 							templateInsertUpdatesSelection={ false }
 							renderAppender={ () => ( null ) }
+							__experimentalCaptureToolbars={ true }
 						/>
 					</div>
 				</div>

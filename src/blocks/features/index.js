@@ -37,6 +37,9 @@ const settings = {
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
+		gutter: {
+			default: 'medium',
+		},
 	},
 	example: {
 		attributes: {

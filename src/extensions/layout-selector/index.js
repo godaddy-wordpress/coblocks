@@ -16,7 +16,7 @@ import { compose } from '@wordpress/compose';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem } from '@wordpress/components';
 import { BlockPreview } from '@wordpress/block-editor';
-import { createBlock } from '@wordpress/blocks';
+import { createBlock, rawHandler } from '@wordpress/blocks';
 
 /**
  * Internal dependencies
@@ -31,8 +31,20 @@ const getBlocksFromTemplate = ( name, attributes, innerBlocks = [] ) => {
 	);
 };
 
+const getTemplateFromBlocks = ( name, attributes, innerBlocks = [] ) => {
+	return [ name, attributes,
+		innerBlocks && innerBlocks.map( ( blockObject ) => {
+			return getTemplateFromBlocks( blockObject.name, blockObject.attributes, blockObject.innerBlocks );
+		} ),
+	];
+};
+
 const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
 	const [ overlay, setOverlay ] = useState( false );
+
+	const layoutBlocks = layout.blocks || rawHandler( { HTML: layout.postContent } ).map(
+		( blockObject ) => getTemplateFromBlocks( blockObject.name, blockObject.attributes, blockObject.innerBlocks )
+	);
 
 	return (
 		<a href="#!"
@@ -54,7 +66,7 @@ const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
 			<BlockPreview
 				autoHeight
 				blocks={
-					layout.blocks
+					layoutBlocks
 						.filter( ( layout ) => registeredBlocks.includes( layout[ 0 ] ) )
 						.map(
 							( [ name, attributes, innerBlocks = [] ] ) => {
@@ -103,11 +115,11 @@ class LayoutSelector extends Component {
 		}
 
 		this.detectImageBlocks( this.props.clientIds )
-			.filter( ( block ) => typeof block !== 'undefined' || ! isEmpty( Object.values( block )[ 0 ] ) )
+			.filter( ( block ) => typeof block !== 'undefined' )
 			.forEach(
 				( block ) => {
-					const blockParts = Object.entries( block );
-					this.uploadExternalImages( blockParts[ 0 ][ 0 ], blockParts[ 0 ][ 1 ] );
+					const [ clientId, attributes ] = Object.entries( block )[ 0 ];
+					this.uploadExternalImages( clientId, attributes );
 				}
 			);
 	}
@@ -126,9 +138,13 @@ class LayoutSelector extends Component {
 			editPost,
 		} = this.props;
 
+		const layoutBlocks = layout.blocks || rawHandler( { HTML: layout.postContent } ).map(
+			( blockObject ) => getTemplateFromBlocks( blockObject.name, blockObject.attributes, blockObject.innerBlocks )
+		);
+
 		editPost( {
 			title: layout.label,
-			blocks: layout.blocks.filter( ( layout ) => registeredBlocks.includes( layout[ 0 ] ) )
+			blocks: layoutBlocks.filter( ( layout ) => registeredBlocks.includes( layout[ 0 ] ) )
 				.map( ( [ name, attributes, innerBlocks = [] ] ) => {
 					return getBlocksFromTemplate( name, attributes, innerBlocks );
 				} ),
@@ -172,6 +188,10 @@ class LayoutSelector extends Component {
 			blockAttributes.images.forEach( ( image ) => urls.push( image.url ) );
 		} else {
 			urls.push( blockAttributes.url );
+		}
+
+		if ( ! urls.filter( ( url ) => typeof url !== 'undefined' ).length ) {
+			return;
 		}
 
 		urls.forEach( ( imageUrl, index ) => {

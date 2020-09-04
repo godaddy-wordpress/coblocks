@@ -58,6 +58,10 @@
 
 		if ( images.length > 0 ) {
 			document.getElementsByTagName( 'BODY' )[ 0 ].append( wrapper );
+			if ( images.length === 1 ) {
+				arrowRightContainer.remove();
+				arrowLeftContainer.remove();
+			}
 		}
 
 		if ( captions.length > 0 ) {

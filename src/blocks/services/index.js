@@ -30,6 +30,10 @@ const settings = {
 	],
 	supports: {
 		align: [ 'wide', 'full' ],
+		gutter: {
+			default: 'medium',
+			customDefault: 1.6,
+		},
 		reusable: false,
 		html: false,
 	},

@@ -20,7 +20,7 @@ import { TEMPLATE_OPTIONS } from './deprecatedTemplates/layouts';
  */
 import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/components';
+import { Button, PanelBody, TextControl, ExternalLink, TextareaControl } from '@wordpress/components';
 import { InspectorControls, InnerBlocks, __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
 import { compose } from '@wordpress/compose';
@@ -41,6 +41,7 @@ class FormEdit extends Component {
 		super( ...arguments );
 
 		this.onChangeSubject = this.onChangeSubject.bind( this );
+		this.onChangeSuccessText = this.onChangeSuccessText.bind( this );
 		this.onBlurTo = this.onBlurTo.bind( this );
 		this.onChangeTo = this.onChangeTo.bind( this );
 		this.getToValidationError = this.getToValidationError.bind( this );
@@ -151,6 +152,10 @@ class FormEdit extends Component {
 	onChangeSubject( subject ) {
 		this.setState( { subjectValue: subject } );
 		this.props.setAttributes( { subject } );
+	}
+
+	onChangeSuccessText( successText ) {
+		this.props.setAttributes( { successText } );
 	}
 
 	getToValidationError( email ) {
@@ -268,7 +273,7 @@ class FormEdit extends Component {
 	renderToAndSubjectFields() {
 		const fieldEmailError = this.state.toError;
 		const { instanceId, attributes } = this.props;
-		const { to } = attributes;
+		const { to, successText } = attributes;
 		const { subjectValue } = this.state;
 		return (
 			<Fragment>
@@ -282,6 +287,7 @@ class FormEdit extends Component {
 					value={ to || '' === to ? to : coblocksBlockData.form.adminEmail }
 					onBlur={ this.onBlurTo }
 					onChange={ this.onChangeTo }
+					help={ __( 'Enter the email address where emails should be sent to.', 'coblocks' ) }
 				/>
 				<Notice isError id={ `contact-form-${instanceId}-email-error` }>
 					{ this.getfieldEmailError( fieldEmailError ) }
@@ -290,22 +296,32 @@ class FormEdit extends Component {
 					label={ __( 'Subject', 'coblocks' ) }
 					value={ subjectValue }
 					onChange={ this.onChangeSubject }
-					help={ <Fragment> { __( 'You may use the following tags in the subject field: ', 'coblocks' ) }
-						<Button
-							isLink
-							onClick={ this.appendTagsToSubject }
-						>
-							[{ __( 'email', 'coblocks' ) }]
-						</Button>
-						<Button
-							isLink
-							onClick={ this.appendTagsToSubject }
-						>
-							[{ __( 'name', 'coblocks' ) }]
-						</Button></Fragment> }
-
+					help={
+						<Fragment>
+							{ __( 'You may use the following tags in the subject field: ', 'coblocks' ) }
+							<Button
+								isLink
+								onClick={ this.appendTagsToSubject }
+							>
+								[{ __( 'email', 'coblocks' ) }]
+							</Button>
+							<Button
+								isLink
+								onClick={ this.appendTagsToSubject }
+							>
+								[{ __( 'name', 'coblocks' ) }]
+							</Button>
+						</Fragment>
+					}
 				/>
-
+				<TextareaControl
+					label={ __( 'Success message', 'coblocks' ) }
+					placeholder={ __( 'Your message was sent:', 'coblocks' ) }
+					onKeyDown={ this.preventEnterSubmission }
+					value={ successText }
+					onChange={ this.onChangeSuccessText }
+					help={ __( 'Form submission confirmation text.', 'coblocks' ) }
+				/>
 			</Fragment>
 		);
 	}
@@ -334,7 +350,10 @@ class FormEdit extends Component {
 	blockVariationPicker() {
 		return (
 			<Fragment>
-				<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
+				<InnerBlocks
+					allowedBlocks={ ALLOWED_BLOCKS }
+					__experimentalCaptureToolbars={ true }
+				/>
 			</Fragment>
 		);
 	}
@@ -355,6 +374,7 @@ class FormEdit extends Component {
 					template={ this.supportsInnerBlocksPicker() ? this.state.template : TEMPLATE_OPTIONS[ 0 ].template }
 					allowedBlocks={ ALLOWED_BLOCKS }
 					templateInsertUpdatesSelection={ false }
+					__experimentalCaptureToolbars={ true }
 				/>
 			</Fragment>
 		);
