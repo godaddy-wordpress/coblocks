@@ -8,9 +8,7 @@ import PropTypes from 'prop-types';
  * WordPress dependencies
  */
 import { cloneElement, isValidElement } from '@wordpress/element';
-import { getColorClassName } from '@wordpress/block-editor';
-import { withDispatch, withSelect } from '@wordpress/data';
-import { compose } from '@wordpress/compose';
+import { hasBlockSupport } from '@wordpress/blocks';
 
 /**
  * Return an element Wrapped with Label Color Properties.
@@ -19,12 +17,17 @@ import { compose } from '@wordpress/compose';
  * @param props
  */
 function LabelColorWrapper( props ) {
-	const { children, className } = props;
+	const { children, className, name } = props;
+	if ( ! hasBlockSupport( name, 'labelColor', false ) ) {
+		return children;
+	}
+
 	if ( ! isValidElement( children ) ) {
 		return children;
 	}
 
-	const { textColor, customTextColor } = props.attributes;
+	const textColor = props?.attributes?.textColor || null;
+	const customTextColor = props?.attributes?.customTextColor || null;
 
 	const attributes = {
 		className: classnames(
@@ -33,8 +36,6 @@ function LabelColorWrapper( props ) {
 				[ `has-${ textColor }-color` ]: textColor,
 			} ),
 	};
-
-	console.log( attributes, textColor );
 
 	if ( children.props.style ) {
 		attributes.style = {
@@ -48,7 +49,7 @@ function LabelColorWrapper( props ) {
 			color: customTextColor,
 		};
 	}
-	console.log( children, attributes );
+
 	return cloneElement( children, attributes );
 }
 

@@ -12,12 +12,9 @@ import { InspectorControls, withColors, PanelColorSettings } from '@wordpress/bl
 class LabelColorControl extends Component {
 	render() {
 		const {
-			attributes,
 			setTextColor,
 			textColor,
 		} = this.props;
-
-		console.log( this.props );
 
 		const colorSettings = [ {
 			value: textColor?.color || '',

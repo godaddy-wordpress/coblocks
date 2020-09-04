@@ -9,9 +9,9 @@
  * @return array
  */
 function coblocks_add_label_color_styles( $styles, $attributes ) {
-	if ( isset( $attributes['labelColorCustom'] ) ) {
+	// if ( isset( $attributes['customTextColor'] ) ) {
 		array_push( $styles, "color: {$attributes['customTextColor']};" );
-	}
+	// }
 
 	return $styles;
 }

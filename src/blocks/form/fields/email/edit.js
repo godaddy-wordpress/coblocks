@@ -11,15 +11,10 @@ function CoBlocksFieldTextarea( props ) {
 	return (
 		<>
 			<LabelColorControl { ...props } />
-			<LabelColorWrapper { ...props }>
-				<CoBlocksField
-					type="email"
-					label={ label }
-					required={ required }
-					setAttributes={ setAttributes }
-					isSelected={ isSelected }
-				/>
-			</LabelColorWrapper>
+			<CoBlocksField
+				{ ...props }
+				type="email"
+			/>
 		</>
 	);
 }

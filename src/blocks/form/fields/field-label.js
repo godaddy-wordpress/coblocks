@@ -1,26 +1,38 @@
 /**
+ * Internal dependencies
+ */
+import LabelColorWrapper from '../../../components/form-label-colors/label-color-wrapper';
+
+/**
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { ToggleControl } from '@wordpress/components';
 import { RichText } from '@wordpress/block-editor';
 
-const CoBlocksFieldLabel = ( { setAttributes, label, resetFocus, isSelected, required, showRequiredToggle = true } ) => {
+const CoBlocksFieldLabel = ( props ) => {
+	const { required, label, setAttributes, isSelected, resetFocus, showRequiredToggle = true } = props;
 	return (
 		<div className="coblocks-field-label">
 			<div className="coblocks-field-label__input-wrapper">
-				<RichText
-					tagName="label"
-					className="coblocks-label coblocks-field-label__input"
-					value={ label }
-					onChange={ ( value ) => {
-						if ( resetFocus ) {
-							resetFocus();
-						}
-						setAttributes( { label: value } );
-					} }
-					placeholder={ __( 'Add label…', 'coblocks' ) }
-				/>
+				<LabelColorWrapper
+					{ ...props }
+					label={ props?.attributes?.label || label }
+				>
+					<RichText
+						tagName="label"
+						className="coblocks-label coblocks-field-label__input"
+						value={ label }
+						onChange={ ( value ) => {
+							if ( resetFocus ) {
+								resetFocus();
+							}
+							setAttributes( { label: value } );
+						} }
+						placeholder={ __( 'Add label…', 'coblocks' ) }
+					/>
+				</LabelColorWrapper>
+
 				{ required && (
 					<span className="required">*</span>
 				) }

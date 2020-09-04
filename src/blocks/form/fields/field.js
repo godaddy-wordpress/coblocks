@@ -14,21 +14,15 @@ import CoBlocksFieldLabel from './field-label';
 import { Fragment } from '@wordpress/element';
 import { TextControl } from '@wordpress/components';
 
-function CoBlocksField( {
-	isSelected,
-	type,
-	required,
-	label,
-	setAttributes,
-} ) {
+function CoBlocksField( props ) {
+	const { isSelected, type } = props;
 	return (
 		<Fragment>
 			<div className={ classnames( 'coblocks-field', { 'is-selected': isSelected } ) }>
 				<CoBlocksFieldLabel
-					required={ required }
-					label={ label }
-					setAttributes={ setAttributes }
-					isSelected={ isSelected }
+					{ ...props }
+					required={ props?.attributes?.required }
+					label={ props?.attributes?.label }
 				/>
 				<TextControl type={ type } />
 			</div>
