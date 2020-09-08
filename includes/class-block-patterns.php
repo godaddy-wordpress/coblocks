@@ -118,8 +118,7 @@ class CoBlocks_Block_Patterns {
 	 */
 	public function conditional_load_patterns() {
 		global $wp_version;
-		// Strip '-src' from the version string. Messes up version_compare().
-		$version = str_replace( '-src', '', $wp_version );
+		$version = str_replace( '-src', '', $wp_version ); // Strip '-src' from the version string. Messes up version_compare().
 
 		wp_localize_script(
 			'coblocks-editor',
