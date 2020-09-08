@@ -23,14 +23,21 @@ class CoBlocks_Block_Patterns {
 	 * The Constructor.
 	 */
 	public function __construct() {
-		add_action( 'init', array( $this, 'register_post_type' ) );
-		add_action( 'init', array( $this, 'register_type_taxonomy' ) );
-		add_action( 'init', array( $this, 'register_category_taxonomy' ) );
-		add_action( 'init', array( $this, 'load_block_patterns' ) );
-		add_action( 'rest_insert_' . self::POST_TYPE, array( $this, 'add_taxonomies_on_insert_post' ), 10, 2 );
+		global $wp_version;
+		$version = str_replace( '-src', '', $wp_version );  // Strip '-src' from the version string. Messes up version_compare().
+		add_action( 'admin_enqueue_scripts', array( $this, 'conditional_load_patterns' ) );
+		
+		if ( version_compare( $version, '5.5-beta', '>=' ) ) {
+			add_action( 'init', array( $this, 'register_post_type' ) );
+			add_action( 'init', array( $this, 'register_type_taxonomy' ) );
+			add_action( 'init', array( $this, 'register_category_taxonomy' ) );
+			add_action( 'init', array( $this, 'load_block_patterns' ) );
+			add_action( 'rest_insert_' . self::POST_TYPE, array( $this, 'add_taxonomies_on_insert_post' ), 10, 2 );
 
-		add_filter( 'coblocks_layout_selector_categories', array( $this, 'load_categories' ) );
-		add_filter( 'coblocks_layout_selector_layouts', array( $this, 'load_layouts' ) );
+			add_filter( 'coblocks_layout_selector_categories', array( $this, 'load_categories' ) );
+			add_filter( 'coblocks_layout_selector_layouts', array( $this, 'load_layouts' ) );
+		}
+		
 	}
 
 	/**
@@ -102,6 +109,25 @@ class CoBlocks_Block_Patterns {
 				wp_set_object_terms( $post->ID, $terms, $taxonomy );
 			}
 		}
+	}
+
+	/**
+	 * Localize conditional loading based on version check.
+	 *
+	 * @access public
+	 */
+	public function conditional_load_patterns() {
+		global $wp_version;
+		// Strip '-src' from the version string. Messes up version_compare().
+		$version = str_replace( '-src', '', $wp_version );
+
+		wp_localize_script(
+			'coblocks-editor',
+			'coblocksBlockPatterns',
+			array(
+				'patternsEnabled' => version_compare( $version, '5.5-beta', '>=' ),
+			)
+		);
 	}
 
 	/**
