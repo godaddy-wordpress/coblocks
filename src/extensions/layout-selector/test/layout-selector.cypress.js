@@ -14,6 +14,8 @@ describe( 'Extension: Layout Selector', () => {
 	} );
 
 	it( 'loads layouts of each category', () => {
+		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
+		helpers.disableGutenbergFeatures();
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 
 		// Click "About" category.
@@ -34,6 +36,8 @@ describe( 'Extension: Layout Selector', () => {
 	} );
 
 	it( 'inserts layout into page', () => {
+		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
+		helpers.disableGutenbergFeatures();
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(1)' ).find( 'a' ).click();
@@ -43,7 +47,7 @@ describe( 'Extension: Layout Selector', () => {
 		cy.get( '.editor-post-title__block' ).contains( 'About Test' );
 		cy.get( '.wp-block' ).contains( 'Test About Layout.' );
 
-		cy.get( '[data-type="core/image"] img[src^="http"]' );
+		cy.get( `[data-type="core/image"] img[src^="${Cypress.env('testURL')}"]` );
 	} );
 
 	it( 'inserts blank layout into page', () => {
@@ -72,7 +76,9 @@ describe( 'Extension: Layout Selector', () => {
 	it( 'does not open modal when disabled via the "Editor Settings" panel', () => {
 		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
 		helpers.disableGutenbergFeatures();
-		helpers.closeLayoutSelector();
+		cy.get( '.coblocks-layout-selector-modal' )
+			.find( '.components-button[aria-label="Close dialog"]' ).first()
+			.click();
 
 		helpers.openEditorSettingsModal();
 		helpers.turnOffEditorSetting( 'Layout selector' );
