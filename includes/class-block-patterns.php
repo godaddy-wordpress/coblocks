@@ -23,11 +23,10 @@ class CoBlocks_Block_Patterns {
 	 * The Constructor.
 	 */
 	public function __construct() {
-		global $wp_version;
-		$version = str_replace( '-src', '', $wp_version );  // Strip '-src' from the version string. Messes up version_compare().
+		
 		add_action( 'admin_enqueue_scripts', array( $this, 'conditional_load_patterns' ) );
 		
-		if ( version_compare( $version, '5.5-beta', '>=' ) ) {
+		if ( is_wp_version_compatible('5.5-beta') ) {
 			add_action( 'init', array( $this, 'register_post_type' ) );
 			add_action( 'init', array( $this, 'register_type_taxonomy' ) );
 			add_action( 'init', array( $this, 'register_category_taxonomy' ) );
@@ -117,14 +116,11 @@ class CoBlocks_Block_Patterns {
 	 * @access public
 	 */
 	public function conditional_load_patterns() {
-		global $wp_version;
-		$version = str_replace( '-src', '', $wp_version ); // Strip '-src' from the version string. Messes up version_compare().
-
 		wp_localize_script(
 			'coblocks-editor',
 			'coblocksBlockPatterns',
 			array(
-				'patternsEnabled' => version_compare( $version, '5.5-beta', '>=' ),
+				'patternsEnabled' => is_wp_version_compatible('5.5-beta'),
 			)
 		);
 	}
