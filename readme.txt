@@ -141,3 +141,10 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 ### 2.3.1
 * Fix custom taxonomy not being assigned to block pattern on save
+
+### 2.3.2
+* Prevent layout selector on posts saved as a draft [#1675](https://github.com/godaddy-wordpress/coblocks/pull/1675)
+* Fix required checkbox/radio hidden message escaped markup [#1677](https://github.com/godaddy-wordpress/coblocks/pull/1677)
+* Fix editor crash when running WordPress 5.4.2 [#1669](https://github.com/godaddy-wordpress/coblocks/pull/1669)
+* Use ToolbarGroup to render controls correctly in Gutenberg 8.8+ [#1671](https://github.com/godaddy-wordpress/coblocks/pull/1671)
+* Add @WunderBart as a contributor 🎉 [#1674](https://github.com/godaddy-wordpress/coblocks/pull/1674)
