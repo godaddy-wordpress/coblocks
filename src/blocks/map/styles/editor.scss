@@ -6,7 +6,7 @@
 		.components-placeholder__fieldset {
 
 			span {
-				color: $dark-gray-500;
+				color: $gray-900;
 			}
 
 			.components-button {
@@ -104,7 +104,7 @@ $styles: (standard), (silver), (retro), (dark), (night), (aubergine);
 		width: calc(50% - 8px);
 
 		&.is-selected {
-			box-shadow: 0 0 0 2px $dark-gray-500;
+			box-shadow: 0 0 0 2px $gray-900;
 		}
 	}
 
