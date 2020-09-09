@@ -25,8 +25,8 @@
 }
 
 [class*="hint--"]::after {
-	background: #333;
-	border-radius: 2px;
+	background: $gray-900;
+	border-radius: $radius-block-ui;
 	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 	color: $white;
 	font-family: $default-font;
@@ -59,7 +59,7 @@
 
 // Top tooltip.
 .hint--top::before {
-	border-top-color: #333;
+	border-top-color: $gray-900;
 	left: calc(50% - 6px) !important;
 	margin-bottom: -10px;
 }
@@ -80,7 +80,7 @@
 
 // Bottom tooltip.
 .hint--bottom::before {
-	border-bottom-color: #333;
+	border-bottom-color: $gray-900;
 	left: calc(50% - 10px);
 	margin-top: -11px;
 }

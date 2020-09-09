@@ -16,7 +16,7 @@
 	img:focus {
 		box-shadow: inset 0 0 0 1.5px var(--wp-admin-theme-color, #007cba);
 		outline: none;
-		border-radius: 2px;
+		border-radius: $radius-block-ui;
 	}
 
 	.is-selected::after {
@@ -28,7 +28,7 @@
 		position: absolute;
 		right: 0;
 		top: 0;
-		border-radius: 2px;
+		border-radius: $radius-block-ui;
 		z-index: 1;
 	}
 

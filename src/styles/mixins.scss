@@ -25,3 +25,18 @@
 		}
 	}
 }
+
+// Mixins to better support mobile
+@mixin break-large-max() {
+
+	@media (max-width: #{ ($break-large-max) }) {
+		@content;
+	}
+}
+
+@mixin break-small-max() {
+
+	@media (max-width: #{ ($break-small-max) }) {
+		@content;
+	}
+}

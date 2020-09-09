@@ -11,7 +11,7 @@
 			appearance: none;
 			background: 0 0;
 			border: 1px solid $gray-900;
-			border-radius: 2px;
+			border-radius: $radius-block-ui;
 			box-shadow: 0 0 0 transparent;
 			color: $gray-900;
 			cursor: pointer;

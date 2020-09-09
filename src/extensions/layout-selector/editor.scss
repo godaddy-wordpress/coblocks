@@ -1,5 +1,3 @@
-$color-highlight: #00a4a6;
-
 .coblocks-layout-selector .block-editor-block-list__layout .block-editor-block-list__block.is-focus-mode:not(.is-multi-selected) {
 	opacity: 1 !important;
 }
@@ -171,7 +169,7 @@ $color-highlight: #00a4a6;
 			height: 32px;
 			width: 32px;
 			margin-right: 8px;
-			border-radius: 2px;
+			border-radius: $radius-block-ui;
 			vertical-align: middle;
 			transition: all 0.1s;
 			display: inline-flex;
@@ -210,7 +208,7 @@ $color-highlight: #00a4a6;
 	}
 
 	&__layout {
-		border-radius: 2px;
+		border-radius: $radius-block-ui;
 		background-color: var(--go--color--background, $white);
 		display: flex;
 		flex-basis: 50%;
@@ -238,7 +236,7 @@ $color-highlight: #00a4a6;
 			width: 100%;
 			z-index: 1;
 			content: "";
-			border-radius: 2px;
+			border-radius: $radius-block-ui;
 		}
 
 		&:hover {

@@ -1,7 +1,7 @@
-@import "../../../styles/editor/core/colors";
-@import "../../../styles/editor/core/variables";
-@import "../../../styles/editor/core/breakpoints";
-@import "../../../styles/editor/core/mixins";
+@import "node_modules/@wordpress/base-styles/variables";
+@import "node_modules/@wordpress/base-styles/colors";
+@import "node_modules/@wordpress/base-styles/mixins";
+@import "node_modules/@wordpress/base-styles/breakpoints";
 
 .coblocks-modal__content {
 
