@@ -23,10 +23,10 @@ class CoBlocks_Block_Patterns {
 	 * The Constructor.
 	 */
 	public function __construct() {
-		
+
 		add_action( 'admin_enqueue_scripts', array( $this, 'conditional_load_patterns' ) );
-		
-		if ( is_wp_version_compatible('5.5') ) {
+
+		if ( is_wp_version_compatible( '5.5' ) ) {
 			add_action( 'init', array( $this, 'register_post_type' ) );
 			add_action( 'init', array( $this, 'register_type_taxonomy' ) );
 			add_action( 'init', array( $this, 'register_category_taxonomy' ) );
@@ -36,7 +36,6 @@ class CoBlocks_Block_Patterns {
 			add_filter( 'coblocks_layout_selector_categories', array( $this, 'load_categories' ) );
 			add_filter( 'coblocks_layout_selector_layouts', array( $this, 'load_layouts' ) );
 		}
-		
 	}
 
 	/**
@@ -120,7 +119,7 @@ class CoBlocks_Block_Patterns {
 			'coblocks-editor',
 			'coblocksBlockPatterns',
 			array(
-				'patternsEnabled' => is_wp_version_compatible('5.5'),
+				'patternsEnabled' => is_wp_version_compatible( '5.5' ),
 			)
 		);
 	}
