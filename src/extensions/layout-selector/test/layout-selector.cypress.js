@@ -14,8 +14,9 @@ describe( 'Extension: Layout Selector', () => {
 	} );
 
 	it( 'loads layouts of each category', () => {
-		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
+		helpers.clearBlocks();
 		helpers.disableGutenbergFeatures();
+
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 
 		// Click "About" category.
@@ -36,8 +37,9 @@ describe( 'Extension: Layout Selector', () => {
 	} );
 
 	it( 'inserts layout into page', () => {
-		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
+		helpers.clearBlocks();
 		helpers.disableGutenbergFeatures();
+
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(1)' ).find( 'a' ).click();
@@ -53,6 +55,7 @@ describe( 'Extension: Layout Selector', () => {
 	it( 'inserts blank layout into page', () => {
 		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
 		helpers.disableGutenbergFeatures();
+
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 
 		// Click "Add Blank Page" button.
@@ -92,7 +95,7 @@ describe( 'Extension: Layout Selector', () => {
 		helpers.turnOnEditorSetting( 'Layout selector' );
 
 		// Check that the modal does show.
-		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
+		// helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
 		helpers.disableGutenbergFeatures();
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 	} );
