@@ -11,7 +11,7 @@ describe( 'Test CoBlocks Form Block', function() {
 
 		let blocksToTransformTo = [
 			'Select',
-			'Radio',
+			'Checkbox',
 		];
 
 		let blocksToRemove = [
