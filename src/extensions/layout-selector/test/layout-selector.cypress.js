@@ -3,7 +3,18 @@
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
+/**
+ * Internal dependencies.
+ */
+import coblocksLayoutSelector from './cypress-layouts';
+
+
 describe( 'Extension: Layout Selector', () => {
+	beforeEach( () => {
+		cy.window().then( ( win ) => {
+			win.coblocksLayoutSelector = coblocksLayoutSelector;
+		} )
+	} );
 
 	it( 'shows modal on add new "page" post_type', () => {
 		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
