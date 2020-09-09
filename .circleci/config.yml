@@ -136,7 +136,7 @@ commands:
       - run:
           name: Install Go theme
           command: |
-            ./vendor/bin/wp theme install go --activate
+            ./vendor/bin/wp theme install go --activate --path=/tmp/wordpress
       - run:
           name: Activate CoBlocks
           command: |
