@@ -1,3 +1,4 @@
+/*global coblocksBlockPatterns*/
 /**
  * WordPress dependencies
  */
@@ -40,6 +41,8 @@ const CoBlocksBlockPatterns = () => {
 	);
 };
 
-registerPlugin( 'coblocks-block-patterns', {
-	render: CoBlocksBlockPatterns,
-} );
+if ( typeof coblocksBlockPatterns !== 'undefined' && !! coblocksBlockPatterns?.patternsEnabled ) {
+	registerPlugin( 'coblocks-block-patterns', {
+		render: CoBlocksBlockPatterns,
+	} );
+}
