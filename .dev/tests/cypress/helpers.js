@@ -47,14 +47,10 @@ export function loginToSite() {
  * @param {string} path The URI path to go to.
  */
 export function goTo( path = '/wp-admin' ) {
-	return cy.visit(
-		Cypress.env( 'testURL' ) + path,
-		{
-			onLoad( win ) {
-				win.coblocksLayoutSelector = coblocksLayoutSelector;
-			},
-		}
-	);
+	cy.visit( Cypress.env( 'testURL' ) + path );
+	return cy.window().then( ( win ) => {
+		win.coblocksLayoutSelector = coblocksLayoutSelector;
+	} );
 }
 
 /**
