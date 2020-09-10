@@ -285,7 +285,7 @@ class CoBlocks_Form {
 
 				<div class="coblocks-form__inline-field">
 					<input type="text" id="<?php echo esc_attr( $label_slug ); ?>-lastname" name="field-<?php echo esc_attr( $label_slug ); ?>[value][last-name]" class="coblocks-field coblocks-field--name last" <?php echo esc_attr( $required_attr ); ?> />
-					<small class="<?php echo $classes; ?>" <?php echo $styles; ?>> <?php echo esc_html( $label_last_name ); ?></small>
+					<small class="<?php echo $classes; ?>" <?php echo $styles; ?>><?php echo esc_html( $label_last_name ); ?></small>
 				</div>
 			</div>
 
