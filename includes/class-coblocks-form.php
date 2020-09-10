@@ -747,11 +747,9 @@ class CoBlocks_Form {
 	public function render_field_label( $atts, $field_label, $count = 1 ) {
 
 		$label       		= isset( $atts['label'] ) ? $atts['label'] : $field_label;
-		$label_color 		= ( isset( $atts['textColor'] ) ) ? $atts['textColor'] : '';
-		$label_color_custom = ( isset( $atts['customTextColor'] ) ) ? $atts['customTextColor'] : '';
 		$label_slug  		= $count > 1 ? sanitize_title( $label . '-' . $count ) : sanitize_title( $label );
-		$styles      		= array();
-		$classes			= array();
+		$styles      		= esc_attr( implode( ' ', apply_filters( 'coblocks_render_label_color_wrapper_styles', array(), $atts ) ) );
+		$classes			= esc_attr( implode( ' ', apply_filters( 'coblocks_render_label_color_wrapper_class', array( 'coblocks-label' ), $atts ) ) );
 
 		/**
 		 * Filter the required text in the field label.
@@ -771,27 +769,15 @@ class CoBlocks_Form {
 			'span' => array( 'class' => array() ),
 		);
 
-		// if ( isset( $atts['customTextColor'] ) ) {
-		// 	$styles[] = "color: {$atts['customTextColor']};";
-		// }
-
-		// if ( isset( $atts['customTextColor'] ) || isset( $atts['textColor'] ) ) {
-		// 	$classes[] = "has-text-color";
-		// }
-
-		// if ( isset( $atts['textColor'] ) ) {
-		// 	$classes[] = "has-{$atts['textColor']}-color";
-		// }
-
 		print_r('here is the styles');
-		print_r(apply_filters( 'coblocks/render/wrapper/styles', $styles, $atts ) );
+		print_r($styles);
 
 		if ( ! isset( $atts['hidden'] ) ) {
 			printf(
-				'<label for="%1$s" class="coblocks-label %2$s"%3$s>%4$s%5$s</label>',
+				'<label for="%1$s" class="%2$s" %3$s>%4$s%5$s</label>',
 				esc_attr( $label_slug ),
-				esc_attr( implode( ' ', apply_filters( 'coblocks/render/wrapper/class', array( 'coblocks-label' ), $atts ) ) ),
-				empty( $label_color ) ? '' : esc_attr( implode( ' ', apply_filters( 'coblocks/render/wrapper/styles', $styles, $atts ) ) ),
+				$classes,
+				empty( $styles ) ? '' : 'style="'.$styles.'"',
 				wp_kses_post( $label ),
 				wp_kses( $required_label, $allowed_html )
 			);
