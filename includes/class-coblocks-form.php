@@ -749,10 +749,10 @@ class CoBlocks_Form {
 	 */
 	public function render_field_label( $atts, $field_label, $count = 1 ) {
 
-		$label       		= isset( $atts['label'] ) ? $atts['label'] : $field_label;
-		$label_slug  		= $count > 1 ? sanitize_title( $label . '-' . $count ) : sanitize_title( $label );
-		$styles      		= esc_attr( implode( ' ', apply_filters( 'coblocks_render_label_color_wrapper_styles', array(), $atts ) ) );
-		$classes			= esc_attr( implode( ' ', apply_filters( 'coblocks_render_label_color_wrapper_class', array( 'coblocks-label' ), $atts ) ) );
+		$label      = isset( $atts['label'] ) ? $atts['label'] : $field_label;
+		$label_slug = $count > 1 ? sanitize_title( $label . '-' . $count ) : sanitize_title( $label );
+		$styles     = esc_attr( implode( ' ', apply_filters( 'coblocks_render_label_color_wrapper_styles', array(), $atts ) ) );
+		$classes    = esc_attr( implode( ' ', apply_filters( 'coblocks_render_label_color_wrapper_class', array( 'coblocks-label' ), $atts ) ) );
 
 		/**
 		 * Filter the required text in the field label.
