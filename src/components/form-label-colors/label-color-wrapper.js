@@ -16,8 +16,7 @@ import { hasBlockSupport } from '@wordpress/blocks';
  * @return {JSX.Element} LabelColorWrapper component
  * @param props
  */
-function LabelColorWrapper( props ) {
-	const { children, className, name } = props;
+function LabelColorWrapper( { children, name, textColor, customTextColor } ) {
 	if ( ! hasBlockSupport( name, 'labelColor', false ) ) {
 		return children;
 	}
@@ -26,8 +25,7 @@ function LabelColorWrapper( props ) {
 		return children;
 	}
 
-	const textColor = props?.attributes?.textColor || null;
-	const customTextColor = props?.attributes?.customTextColor || null;
+	const { className = '' } = children.props;
 
 	const attributes = {
 		className: classnames(

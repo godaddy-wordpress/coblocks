@@ -10,14 +10,15 @@ import { __ } from '@wordpress/i18n';
 import { ToggleControl } from '@wordpress/components';
 import { RichText } from '@wordpress/block-editor';
 
-const CoBlocksFieldLabel = ( props ) => {
-	const { required, label, setAttributes, isSelected, resetFocus, showRequiredToggle = true } = props;
+const CoBlocksFieldLabel = ( { setAttributes, label, resetFocus, isSelected, required, name, textColor, customTextColor, showRequiredToggle = true } ) => {
 	return (
 		<div className="coblocks-field-label">
 			<div className="coblocks-field-label__input-wrapper">
 				<LabelColorWrapper
-					{ ...props }
-					label={ props?.attributes?.label || label }
+					label={ label }
+					textColor={ textColor }
+					customTextColor={ customTextColor }
+					name={ name }
 				>
 					<RichText
 						tagName="label"

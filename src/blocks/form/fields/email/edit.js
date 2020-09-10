@@ -3,17 +3,22 @@
  */
 import CoBlocksField from '../field';
 import LabelColorControl from '../../../../components/form-label-colors/label-color-control';
-import LabelColorWrapper from '../../../../components/form-label-colors/label-color-wrapper';
 
 function CoBlocksFieldTextarea( props ) {
-	const { attributes, setAttributes, isSelected } = props;
-	const { required, label } = attributes;
+	const { attributes, setAttributes, isSelected, name } = props;
+	const { required, label, textColor, customTextColor } = attributes;
 	return (
 		<>
 			<LabelColorControl { ...props } />
 			<CoBlocksField
-				{ ...props }
-				type="email"
+				type="text"
+				label={ label }
+				required={ required }
+				setAttributes={ setAttributes }
+				isSelected={ isSelected }
+				textColor={ textColor }
+				customTextColor={ customTextColor }
+				name={ name }
 			/>
 		</>
 	);

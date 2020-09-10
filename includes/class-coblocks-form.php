@@ -272,17 +272,20 @@ class CoBlocks_Form {
 
 		if ( $has_last_name ) {
 
-			?>
+		$style   = esc_attr( implode( ' ', apply_filters( 'coblocks_render_label_color_wrapper_styles', array(), $atts ) ) );
+		$styles  = empty($style) ? '' : "style='$style'";
+		$classes = esc_attr( implode( ' ', apply_filters( 'coblocks_render_label_color_wrapper_class', array( 'coblocks-form__subtext' ), $atts ) ) );
 
+			?>
 			<div class="coblocks-form__inline-fields">
 				<div class="coblocks-form__inline-field">
 					<input type="text" id="<?php echo esc_attr( $label_slug ); ?>-firstname" name="field-<?php echo esc_attr( $label_slug ); ?>[value][first-name]" class="coblocks-field coblocks-field--name first" <?php echo esc_attr( $required_attr ); ?> />
-					<small class="coblocks-form__subtext"><?php echo esc_html( $label_first_name ); ?></small>
+					<small class="<?php echo $classes; ?>" <?php echo $styles; ?>><?php echo esc_html( $label_first_name ); ?></small>
 				</div>
 
 				<div class="coblocks-form__inline-field">
 					<input type="text" id="<?php echo esc_attr( $label_slug ); ?>-lastname" name="field-<?php echo esc_attr( $label_slug ); ?>[value][last-name]" class="coblocks-field coblocks-field--name last" <?php echo esc_attr( $required_attr ); ?> />
-					<small class="coblocks-form__subtext"><?php echo esc_html( $label_last_name ); ?></small>
+					<small class="<?php echo $classes; ?>" <?php echo $styles; ?>> <?php echo esc_html( $label_last_name ); ?></small>
 				</div>
 			</div>
 
@@ -769,15 +772,12 @@ class CoBlocks_Form {
 			'span' => array( 'class' => array() ),
 		);
 
-		print_r('here is the styles');
-		print_r($styles);
-
 		if ( ! isset( $atts['hidden'] ) ) {
 			printf(
 				'<label for="%1$s" class="%2$s" %3$s>%4$s%5$s</label>',
 				esc_attr( $label_slug ),
 				$classes,
-				empty( $styles ) ? '' : 'style="'.$styles.'"',
+				empty( $styles ) ? '' : "style='$styles'",
 				wp_kses_post( $label ),
 				wp_kses( $required_label, $allowed_html )
 			);
