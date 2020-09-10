@@ -25,7 +25,7 @@ class LabelColorControl extends Component {
 		return (
 			<InspectorControls>
 				<PanelColorSettings
-					title={ __( 'Label text color', 'coblocks' ) }
+					title={ __( 'Color settings', 'coblocks' ) }
 					initialOpen={ false }
 					colorSettings={ colorSettings }
 				>

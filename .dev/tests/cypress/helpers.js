@@ -17,6 +17,24 @@ export function closeLayoutSelector() {
 }
 
 /**
+ * Add Form block child element by name.
+ *
+ * @param {string} name the name of the child block to add.
+ */
+export function addFormChild( name ) {
+	cy.get( '[data-type="coblocks/form"]' ).first().click();
+	cy.get( '.block-editor-block-settings-menu' ).click();
+	cy.get( '.components-popover__content' ).contains( /insert after/i ).click();
+	cy.get( '[data-type="coblocks/form"]' ).first().find( '[data-type="core/paragraph"]' ).click();
+
+	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click();
+	cy.get( '.block-editor-inserter__search' ).click().type( name );
+
+	cy.get( '.block-editor-inserter__block-list .editor-block-list-item-coblocks-field-' + name ).first().click();
+	cy.get( `[data-type="coblocks/field-${ name }"]` ).should( 'exist' ).click();
+}
+
+/**
  * Login to our test WordPress site
  */
 export function loginToSite() {
