@@ -774,10 +774,10 @@ class CoBlocks_Form {
 
 		if ( ! isset( $atts['hidden'] ) ) {
 			printf(
-				'<label for="%1$s" class="%2$s" %3$s>%4$s%5$s</label>',
+				'<label for="%1$s" class="%2$s"%3$s>%4$s%5$s</label>',
 				esc_attr( $label_slug ),
 				$classes,
-				empty( $styles ) ? '' : "style='$styles'",
+				empty( $styles ) ? '' : " style='$styles'",
 				wp_kses_post( $label ),
 				wp_kses( $required_label, $allowed_html )
 			);
