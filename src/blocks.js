@@ -19,11 +19,13 @@ import './extensions/button-styles';
 import './extensions/button-controls';
 import './extensions/image-styles';
 import './extensions/cover-styles';
+import './extensions/media-text-styles';
 import './extensions/lightbox-controls';
 import './extensions/replace-image';
 import './extensions/image-crop';
 import './extensions/coblocks-settings/';
 import './extensions/layout-selector';
+import './extensions/block-patterns';
 
 // Internal Extensions / Components
 import './components/gutter-control';

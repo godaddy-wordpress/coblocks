@@ -437,9 +437,9 @@ describe( 'Test CoBlocks Form Block', function() {
 	} );
 
 	/**
-	 * Test the coblock form block label colors.
+	 * Test the custom success message displays as intended.
 	 */
-	it( 'Test the coblock form block label colors.', function() {
+	it( 'Test the custom success message displays as intended.', function() {
 		helpers.addBlockToPost( 'coblocks/form', true );
 
 		cy.get( '[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
@@ -456,89 +456,39 @@ describe( 'Test CoBlocks Form Block', function() {
 			}
 		} );
 
-		cy.get( 'div[data-type="coblocks/field-name"]' )
-			.should( 'exist' );
-
-		cy.get( 'div[data-type="coblocks/field-email"]' )
-			.should( 'exist' );
-
-		cy.get( 'div[data-type="coblocks/field-textarea"]' )
-			.should( 'exist' );
-
-		// Name Label Color
-		cy.get( 'div[data-type="coblocks/field-name"]' )
-			.find( '.coblocks-field-label__input' )
+		cy.get( '[data-type="coblocks/form"]' )
 			.click( { force: true } );
 
-		cy.get( 'div[data-type="coblocks/field-name"]' )
-			.find( '.components-color-palette__custom-color-gradient' )
-			.click();
-
-		cy.get( '.components-color-palette__picker' )
-			.should( 'exist' );
-
-		cy.get( '.components-color-picker__inputs-field' )
-			.find( '.components-text-control__input' )
-			.clear()
-			.type( '#b4d455');
-
-		cy.get( '.coblocks-field.coblocks-field--name' )
-			.find( '.coblocks-field-label__input-wrapper' )
-			.should( 'have.attr', 'style', 'color: rgb(180, 212, 85);' );
-
-		// Email Label Color
-		cy.get( 'div[data-type="coblocks/field-email"]' )
-			.find( '.coblocks-field-label__input' )
-			.click( { force: true } );
-
-		cy.get( 'div[data-type="coblocks/field-email"]' )
-			.find( '.components-color-palette__custom-color-gradient' )
-			.click();
-
-		cy.get( '.components-color-palette__picker' )
-			.should( 'exist' );
-
-		cy.get( '.components-color-picker__inputs-field' )
-			.find( '.components-text-control__input' )
-			.clear()
-			.type( '#0547fe');
-
-		cy.get( 'div[data-type="coblocks/field-email"]' )
-			.find( '.coblocks-field-label__input-wrapper' )
-			.should( 'have.attr', 'style', 'color: rgb(5, 71, 254);' );
-
-		// Message Label Color
-		cy.get( 'div[data-type="coblocks/field-textarea"]' )
-			.find( '.coblocks-field-label__input' )
-			.click( { force: true } );
-
-		cy.get( 'div[data-type="coblocks/field-textarea"]' )
-			.find( '.components-color-palette__custom-color-gradient' )
-			.click();
-
-		cy.get( '.components-color-palette__picker' )
-			.should( 'exist' );
-
-		cy.get( '.components-color-picker__inputs-field' )
-			.find( '.components-text-control__input' )
-			.clear()
-			.type( '#ff1b1b');
-
-		cy.get( 'div[data-type="coblocks/field-textarea"]' )
-			.find( '.coblocks-field-label__input-wrapper' )
-			.should( 'have.attr', 'style', 'color: rgb(255, 27, 27);' );
+			cy.get( 'div.edit-post-sidebar' )
+				.contains( /Success Message/i )
+				.next( 'textarea' )
+				.then( ( $inputElem ) => {
+					cy.get( $inputElem ).invoke( 'val' ).then( ( val ) => {
+						cy.get( $inputElem )
+							.clear()
+							.type( 'Thank you for submitting this form!' );
+					} );
+				} );
 
 		helpers.savePage();
 		helpers.viewPage();
 
-		cy.get( 'label[for="name"]' )
-			.should( 'have.attr', 'style', 'color: #b4d455' );
+		cy.get( '.coblocks-form' )
+			.should( 'exist' );
 
-		cy.get( 'label[for="email"]' )
-			.should( 'have.attr', 'style', 'color: #0547fe' );
+		cy.get( 'input[name="field-name[value]"]' )
+			.type( 'Name' );
 
-		cy.get( 'label[for="message"]' )
-			.should( 'have.attr', 'style', 'color: #ff1b1b' );
+		cy.get( 'input[name="field-email[value]"]' )
+			.type( 'email@example.com' );
+
+		cy.get( 'textarea[name="field-message[value]"]' )
+			.type( 'My message for you.' );
+
+		cy.get( '.coblocks-form__submit button' )
+			.click();
+
+		cy.get( '.coblocks-form__submitted' ).contains( 'Thank you for submitting this form!' );
 
 		helpers.editPage();
 	} );

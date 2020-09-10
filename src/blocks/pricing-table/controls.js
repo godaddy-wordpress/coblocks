@@ -9,7 +9,7 @@ import { find } from 'lodash';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { AlignmentToolbar, BlockControls } from '@wordpress/block-editor';
-import { Toolbar, Path, SVG } from '@wordpress/components';
+import { ToolbarGroup, Path, SVG } from '@wordpress/components';
 
 const DEFAULT_ALIGNMENT_CONTROLS = [
 	{
@@ -57,7 +57,7 @@ class Controls extends Component {
 						value={ contentAlign }
 						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
 					/>
-					<Toolbar
+					<ToolbarGroup
 						isCollapsed={ true }
 						icon={ activeCount.icon }
 						label={ __( 'Change pricing table count', 'coblocks' ) }

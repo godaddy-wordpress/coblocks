@@ -1,10 +1,15 @@
 <?php
+/**
+ * Add inline attributes to blocks rendered with gutters.
+ *
+ * @package CoBlocks
+ */
 
 /**
  * Add gutter styles in php
  *
- * @param $styles { array } array of styles
- * @param $attributes { array } block attributes
+ * @param array $styles array of styles.
+ * @param array $attributes block attributes.
  *
  * @return array
  */
@@ -16,14 +21,14 @@ function coblocks_add_gutter_styles( $styles, $attributes ) {
 	return $styles;
 }
 
-add_filter( 'coblocks/render/wrapper/styles', 'coblocks_add_gutter_styles', 10, 2 );
+add_filter( 'coblocks_render_wrapper_styles', 'coblocks_add_gutter_styles', 10, 2 );
 
 
 /**
  * Add gutter class in php
  *
- * @param $classes { array } array of classes
- * @param $attributes { array } block attributes
+ * @param array $classes array of classes.
+ * @param array $attributes block attributes.
  *
  * @return array
  */
@@ -34,4 +39,4 @@ function coblocks_add_gutter_class( $classes, $attributes ) {
 
 	return $classes;
 }
-add_filter( 'coblocks/render/wrapper/class', 'coblocks_add_gutter_class', 10, 2 );
+add_filter( 'coblocks_render_wrapper_class', 'coblocks_add_gutter_class', 10, 2 );

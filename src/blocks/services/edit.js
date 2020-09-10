@@ -229,6 +229,7 @@ class Edit extends Component {
 								allowedBlocks={ ALLOWED_BLOCKS }
 								template={ TEMPLATE }
 								templateInsertUpdatesSelection={ false }
+								__experimentalCaptureToolbars={ true }
 							/>
 						</div>
 					</GutterWrapper>
