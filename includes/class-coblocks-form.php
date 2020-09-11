@@ -622,7 +622,7 @@ class CoBlocks_Form {
 			'<div class="coblocks-field checkbox%1$s">
 				%2$s',
 			esc_attr( $required ? ' required' : '' ),
-			esc_html(
+			wp_kses_post(
 				$required ? sprintf(
 					'<div class="required-error hidden">%s</div>',
 					/**
