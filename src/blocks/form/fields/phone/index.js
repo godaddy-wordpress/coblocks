@@ -3,6 +3,7 @@
  */
 import edit from './edit';
 import icon from './icon';
+import transforms from './transforms';
 
 /**
  * WordPress dependencies
@@ -55,6 +56,7 @@ const settings = {
 		customClassName: false,
 	},
 	attributes,
+	transforms,
 	edit,
 	save: () => null,
 };
