@@ -126,4 +126,26 @@ describe( 'Extension: Layout Selector', () => {
 		// Only passes if the image was successfully uploaded to site.
 		cy.get( `[data-type="core/image"] img[src^="${Cypress.env('testURL')}"]` ).click();
 	} );
+	
+	it( 'does not open modal when editing a draft post', () => {
+		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
+		helpers.disableGutenbergFeatures();
+
+		cy.get( '.coblocks-layout-selector__layout' ).first().click();
+		cy.get( '.editor-post-save-draft' ).click();
+
+		// Reload the post.
+		let postID;
+		cy.window()
+			.then( (win) => {
+				postID = win.wp.data.select( 'core/editor' ).getCurrentPostId()
+			} )
+			.then( () => {
+				helpers.goTo( `/wp-admin/post.php?post=${postID}&action=edit` );
+
+				helpers.disableGutenbergFeatures();
+				cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
+			} );
+	} );
+
 } );

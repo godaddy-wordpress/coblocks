@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -141,3 +141,10 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 ### 2.3.1
 * Fix custom taxonomy not being assigned to block pattern on save
+
+### 2.3.2
+* Prevent layout selector on posts saved as a draft [#1675](https://github.com/godaddy-wordpress/coblocks/pull/1675)
+* Fix required checkbox/radio hidden message escaped markup [#1677](https://github.com/godaddy-wordpress/coblocks/pull/1677)
+* Fix editor crash when running WordPress 5.4.2 [#1669](https://github.com/godaddy-wordpress/coblocks/pull/1669)
+* Use ToolbarGroup to render controls correctly in Gutenberg 8.8+ [#1671](https://github.com/godaddy-wordpress/coblocks/pull/1671)
+* Add @WunderBart as a contributor 🎉 [#1674](https://github.com/godaddy-wordpress/coblocks/pull/1674)

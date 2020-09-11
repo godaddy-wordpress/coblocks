@@ -380,7 +380,11 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 		render: compose( [
 			withSelect( ( select ) => {
 				const { isTemplateSelectorActive } = select( 'coblocks/template-selector' );
-				const { hasEditorUndo, isCurrentPostPublished } = select( 'core/editor' );
+				const {
+					getCurrentPostAttribute,
+					hasEditorUndo,
+					isCurrentPostPublished,
+				} = select( 'core/editor' );
 				const { getLayoutSelector } = select( 'coblocks-settings' );
 				const {
 					getBlockAttributes,
@@ -389,7 +393,8 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 					getSettings,
 				} = select( 'core/block-editor' );
 
-				const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo();
+				const isDraft = [ 'draft' ].indexOf( getCurrentPostAttribute( 'status' ) ) !== -1;
+				const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo() && ! isDraft;
 
 				const layouts = coblocksLayoutSelector.layouts || [];
 				const categories = coblocksLayoutSelector.categories || [];
