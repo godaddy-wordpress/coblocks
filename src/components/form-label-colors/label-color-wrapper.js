@@ -32,7 +32,8 @@ function LabelColorWrapper( { children, name, textColor, customTextColor } ) {
 			className, {
 				'has-text-color': textColor || customTextColor,
 				[ `has-${ textColor }-color` ]: textColor,
-			} ),
+			}
+		),
 	};
 
 	if ( children.props.style ) {
@@ -57,4 +58,3 @@ LabelColorWrapper.propTypes = {
 };
 
 export default LabelColorWrapper;
-
