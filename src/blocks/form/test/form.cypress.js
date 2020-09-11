@@ -3,13 +3,13 @@
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
-describe( 'Test CoBlocks Form Block', function() { 
+describe( 'Test CoBlocks Form Block', function() {
 	//setup From block color data.
 	const formData = {
 		textColor: '#ffffff',
 		textColorRGB: 'rgb(255, 255, 255)',
 	};
-	
+
 	/**
 	 * Test the coblock contact template.
 	 */
@@ -534,32 +534,32 @@ describe( 'Test CoBlocks Form Block', function() {
 		helpers.setColorSetting( 'label color', textColor );
 
 		// Set text color.
-		helpers.addFormChild('text');
+		helpers.addFormChild( 'text' );
 		helpers.setColorSetting( 'label color', textColor );
 
 		// Set radio color.
-		helpers.addFormChild('radio');
-		cy.get( '.coblocks-option__input' ).type('text');
+		helpers.addFormChild( 'radio' );
+		cy.get( '.coblocks-option__input' ).type( 'text' );
 		helpers.setColorSetting( 'label color', textColor );
 
 		// Set phone color.
-		helpers.addFormChild('phone');
+		helpers.addFormChild( 'phone' );
 		helpers.setColorSetting( 'label color', textColor );
-		
+
 		// Set checkbox color.
-		helpers.addFormChild('checkbox');
-		cy.get( '.coblocks-option__input' ).type('text');
+		helpers.addFormChild( 'checkbox' );
+		cy.get( '.coblocks-option__input' ).type( 'text' );
 		helpers.setColorSetting( 'label color', textColor );
-		
+
 		// Set select color.
-		helpers.addFormChild('select');
-		cy.get( '.coblocks-option__input' ).type('text');
+		helpers.addFormChild( 'select' );
+		cy.get( '.coblocks-option__input' ).type( 'text' );
 		helpers.setColorSetting( 'label color', textColor );
-		
+
 		// Set website color.
-		helpers.addFormChild('website');
+		helpers.addFormChild( 'website' );
 		helpers.setColorSetting( 'label color', textColor );
-		
+
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/form' );
@@ -575,9 +575,9 @@ describe( 'Test CoBlocks Form Block', function() {
 		 * Radio    === choose-one
 		 * Textarea === message.
 		 */
-		['text','email','website','select','phone','choose-one','message','name'].forEach( (field) => {
+		[ 'text', 'email', 'website', 'select', 'phone', 'choose-one', 'message', 'name' ].forEach( ( field ) => {
 			cy.get( `label[for="${field}"]` )
-			.should( 'have.css', 'color', textColorRGB );
-		} )
+				.should( 'have.css', 'color', textColorRGB );
+		} );
 	} );
 } );

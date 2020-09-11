@@ -272,20 +272,20 @@ class CoBlocks_Form {
 
 		if ( $has_last_name ) {
 
-		$style   = esc_attr( implode( ' ', apply_filters( 'coblocks_render_label_color_wrapper_styles', array(), $atts ) ) );
-		$styles  = empty($style) ? '' : "style='$style'";
-		$classes = esc_attr( implode( ' ', apply_filters( 'coblocks_render_label_color_wrapper_class', array( 'coblocks-form__subtext' ), $atts ) ) );
+			$style   = implode( ' ', (array) apply_filters( 'coblocks_render_label_color_wrapper_styles', array(), $atts ) );
+			$styles  = empty( $style ) ? '' : "style='$style'";
+			$classes = implode( ' ', (array) apply_filters( 'coblocks_render_label_color_wrapper_class', array( 'coblocks-form__subtext' ), $atts ) );
 
 			?>
 			<div class="coblocks-form__inline-fields">
 				<div class="coblocks-form__inline-field">
 					<input type="text" id="<?php echo esc_attr( $label_slug ); ?>-firstname" name="field-<?php echo esc_attr( $label_slug ); ?>[value][first-name]" class="coblocks-field coblocks-field--name first" <?php echo esc_attr( $required_attr ); ?> />
-					<small class="<?php echo $classes; ?>" <?php echo $styles; ?>><?php echo esc_html( $label_first_name ); ?></small>
+					<small class="<?php echo esc_attr( $classes ); ?>" <?php echo esc_attr( $styles ); ?>><?php echo esc_html( $label_first_name ); ?></small>
 				</div>
 
 				<div class="coblocks-form__inline-field">
 					<input type="text" id="<?php echo esc_attr( $label_slug ); ?>-lastname" name="field-<?php echo esc_attr( $label_slug ); ?>[value][last-name]" class="coblocks-field coblocks-field--name last" <?php echo esc_attr( $required_attr ); ?> />
-					<small class="<?php echo $classes; ?>" <?php echo $styles; ?>><?php echo esc_html( $label_last_name ); ?></small>
+					<small class="<?php echo esc_attr( $classes ); ?>" <?php echo esc_attr( $styles ); ?>><?php echo esc_html( $label_last_name ); ?></small>
 				</div>
 			</div>
 
@@ -751,8 +751,8 @@ class CoBlocks_Form {
 
 		$label      = isset( $atts['label'] ) ? $atts['label'] : $field_label;
 		$label_slug = $count > 1 ? sanitize_title( $label . '-' . $count ) : sanitize_title( $label );
-		$styles     = esc_attr( implode( ' ', apply_filters( 'coblocks_render_label_color_wrapper_styles', array(), $atts ) ) );
-		$classes    = esc_attr( implode( ' ', apply_filters( 'coblocks_render_label_color_wrapper_class', array( 'coblocks-label' ), $atts ) ) );
+		$styles     = implode( ' ', (array) apply_filters( 'coblocks_render_label_color_wrapper_styles', array(), $atts ) );
+		$classes    = implode( ' ', (array) apply_filters( 'coblocks_render_label_color_wrapper_class', array( 'coblocks-label' ), $atts ) );
 
 		/**
 		 * Filter the required text in the field label.
@@ -776,8 +776,8 @@ class CoBlocks_Form {
 			printf(
 				'<label for="%1$s" class="%2$s"%3$s>%4$s%5$s</label>',
 				esc_attr( $label_slug ),
-				$classes,
-				empty( $styles ) ? '' : " style='$styles'",
+				esc_attr( $classes ),
+				empty( $styles ) ? '' : esc_attr( " style='$styles'" ),
 				wp_kses_post( $label ),
 				wp_kses( $required_label, $allowed_html )
 			);
