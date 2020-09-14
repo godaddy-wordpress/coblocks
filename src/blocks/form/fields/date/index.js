@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { FormDateIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import edit from './edit';
@@ -9,11 +14,6 @@ import transforms from './transforms';
  */
 import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
-
-/**
- * External dependencies
- */
-import { FormDateIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Block constants
@@ -40,7 +40,7 @@ const settings = {
 	title: __( 'Date', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'A field for requesting date selections with a date picker.', 'coblocks' ),
-	icon: <Icon icon={ FormDateIcon } />,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

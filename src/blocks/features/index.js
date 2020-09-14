@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { FeatureIcon } from '@godaddy-wordpress/coblocks-icons';
+import { FeatureIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
@@ -36,7 +36,7 @@ const settings = {
 	title: __( 'Features', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add up to four columns of small notes for your product or service.', 'coblocks' ),
-	icon: <Icon icon={ FeatureIcon } />,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 	],

@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { FormTextIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import edit from './edit';
@@ -9,11 +14,6 @@ import transforms from './transforms';
  */
 import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
-
-/**
- * External dependencies
- */
-import { FormTextIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Block constants
@@ -40,7 +40,7 @@ const settings = {
 	title: __( 'Text', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'A text box for custom responses.', 'coblocks' ),
-	icon: <Icon icon={ FormTextIcon } />,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

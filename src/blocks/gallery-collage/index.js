@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { GalleryCollageIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies.
  */
 import deprecated from './deprecated';
@@ -16,11 +21,6 @@ import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 
 /**
- * External dependencies
- */
-import { GalleryCollageIcon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Block constants.
  */
 const { name, category } = metadata;
@@ -36,7 +36,7 @@ const settings = {
 	/* translators: block description */
 	description: __( 'Assemble images into a beautiful collage gallery.', 'coblocks' ),
 	category: hasFormattingCategory ? 'coblocks-galleries' : 'media',
-	icon: <Icon icon={ GalleryCollageIcon } />,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

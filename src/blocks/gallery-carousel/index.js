@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { GalleryCarouselIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import deprecated from './deprecated';
@@ -16,15 +21,9 @@ import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 
 /**
- * External dependencies
- */
-import { GalleryCarouselIcon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Block constants
  */
 const { name, category } = metadata;
-const icon = <Icon icon={ GalleryCarouselIcon } />;
 
 const attributes = {
 	...GalleryAttributes,
@@ -38,7 +37,7 @@ const settings = {
 	description: __( 'Display multiple images in a beautiful carousel gallery.', 'coblocks' ),
 	category: hasFormattingCategory ? 'coblocks-galleries' : 'media',
 	attributes,
-	icon,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */
@@ -68,4 +67,4 @@ const settings = {
 	deprecated,
 };
 
-export { name, category, icon, metadata, settings };
+export { name, category, metadata, settings };

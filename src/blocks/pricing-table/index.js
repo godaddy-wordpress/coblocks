@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { PricingTableIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import edit from './edit';
@@ -15,11 +20,6 @@ import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 
 /**
- * External dependencies
- */
-import { PricingTableIcon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Block constants
  */
 const { name, category, attributes } = metadata;
@@ -29,7 +29,7 @@ const settings = {
 	title: __( 'Pricing Table', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add pricing tables to help visitors compare products and plans.', 'coblocks' ),
-	icon: <Icon icon={ PricingTableIcon } />,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

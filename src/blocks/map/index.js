@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { MapIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import deprecated from './deprecated';
@@ -14,22 +19,16 @@ import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 
 /**
- * External dependencies
- */
-import { MapIcon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Block constants
  */
 const { name, category, attributes } = metadata;
-const icon = <Icon icon={ MapIcon } />;
 
 const settings = {
 	/* translators: block name */
 	title: __( 'Map', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add an address or location to drop a pin on a Google map.', 'coblocks' ),
-	icon,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */
@@ -58,4 +57,4 @@ const settings = {
 	deprecated,
 };
 
-export { name, category, metadata, settings, icon };
+export { name, category, metadata, settings };

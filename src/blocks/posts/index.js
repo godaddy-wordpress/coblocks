@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { PostsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import edit from './edit';
@@ -13,22 +18,16 @@ import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 
 /**
- * External dependencies
- */
-import { PostsIcon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Block constants
  */
 const { name, category } = metadata;
-const icon = <Icon icon={ PostsIcon } />;
 
 const settings = {
 	/* translators: block name */
 	title: __( 'Posts', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Display posts or an RSS feed as stacked or horizontal cards.', 'coblocks' ),
-	icon,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */
@@ -55,4 +54,4 @@ const settings = {
 	},
 };
 
-export { name, category, settings, icon };
+export { name, category, settings };

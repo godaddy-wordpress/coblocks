@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { GifIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import edit from './edit';
@@ -13,15 +18,9 @@ import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 
 /**
- * External dependencies
- */
-import { GifIcon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Block constants
  */
 const { name, category, attributes } = metadata;
-const icon = <Icon icon={ GifIcon } />;
 
 const settings = {
 	/* translators: block name */
@@ -29,7 +28,7 @@ const settings = {
 	/* translators: block description */
 	description: __( 'Pick a gif, any gif.', 'coblocks' ),
 	category: hasFormattingCategory ? 'common' : 'media',
-	icon,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */
@@ -50,4 +49,4 @@ const settings = {
 	save,
 };
 
-export { name, category, icon, metadata, settings };
+export { name, category, metadata, settings };

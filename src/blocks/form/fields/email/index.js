@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { FormEmailIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import edit from './edit';
@@ -8,11 +13,6 @@ import edit from './edit';
  */
 import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
-
-/**
- * External dependencies
- */
-import { FormEmailIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Block constants
@@ -39,7 +39,7 @@ const settings = {
 	title: __( 'Email', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'A field for collecting a validated email address.', 'coblocks' ),
-	icon: <Icon icon={ FormEmailIcon } />,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

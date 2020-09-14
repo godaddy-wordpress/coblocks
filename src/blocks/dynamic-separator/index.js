@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { DynamicHrIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import deprecated from './deprecated';
@@ -14,11 +19,6 @@ import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 
 /**
- * External dependencies
- */
-import { DynamicHrIcon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Block constants
  */
 const { name, category, attributes } = metadata;
@@ -28,7 +28,7 @@ const settings = {
 	title: __( 'Dynamic HR', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add a resizable spacer between other blocks.', 'coblocks' ),
-	icon: <Icon icon={ DynamicHrIcon } />,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		'hr',

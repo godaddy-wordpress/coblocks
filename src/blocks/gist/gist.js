@@ -2,19 +2,14 @@
  * External dependencies
  */
 import PropTypes from 'prop-types';
-
-/**
- * Internal dependencies
- */
-import { icon } from './';
+import { GithubIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
-import { BlockIcon } from '@wordpress/block-editor';
-import { Placeholder, Spinner } from '@wordpress/components';
+import { Placeholder, Spinner, Icon } from '@wordpress/components';
 
 // -- MAIN --
 // Extending PureComponent allow us to prevent re-rendering when the props DONT change.
@@ -134,7 +129,7 @@ export default class Gist extends Component {
 			return (
 				<Placeholder
 					key="placeholder"
-					icon={ <BlockIcon icon={ icon } /> }
+					icon={ <Icon icon={ icon } /> }
 					label={ __( 'Loading Gist', 'coblocks' ) }
 				>
 					<Spinner />

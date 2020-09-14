@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { ServicesIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies.
  */
 import deprecated from './deprecated';
@@ -13,11 +18,6 @@ import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 
 /**
- * External dependencies
- */
-import { ServicesIcon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Block constants.
  */
 const { name, category, attributes } = metadata;
@@ -27,7 +27,7 @@ const settings = {
 	title: __( 'Services', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add up to four columns of services to display.', 'coblocks' ),
-	icon: <Icon icon={ ServicesIcon } />,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

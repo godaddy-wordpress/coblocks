@@ -9,6 +9,7 @@ import {
 	Marker,
 } from 'react-google-maps';
 import { withProps, lifecycle } from 'recompose';
+import { MapIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
@@ -16,7 +17,6 @@ import { withProps, lifecycle } from 'recompose';
 import Controls from './controls';
 import Inspector from './inspector';
 import GMapStyles from './map-styles';
-import icon from './';
 
 /**
  * WordPress dependencies
@@ -28,10 +28,10 @@ import {
 	Button,
 	ResizableBox,
 	withNotices,
+	Icon,
 } from '@wordpress/components';
 import { Fragment, Component } from '@wordpress/element';
 import { ENTER } from '@wordpress/keycodes';
-import { BlockIcon } from '@wordpress/block-editor';
 import apiFetch from '@wordpress/api-fetch';
 
 class Edit extends Component {
@@ -278,7 +278,7 @@ class Edit extends Component {
 					</ResizableBox>
 				) : (
 					<Placeholder
-						icon={ <BlockIcon icon={ icon } /> }
+						icon={ <Icon icon={ icon } /> }
 						label={ __( 'Google map', 'coblocks' ) }
 						instructions={ __(
 							'Enter a location or address to drop a pin on a Google map.',

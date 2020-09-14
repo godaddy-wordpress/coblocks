@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { LogosIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import deprecated from './deprecated';
@@ -13,22 +18,16 @@ import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 
 /**
- * External dependencies
- */
-import { LogosIcon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Block constants.
  */
 const { name, category, attributes } = metadata;
-const icon = <Icon icon={ LogosIcon } />;
 
 const settings = {
 	/* translators: block name */
 	title: __( 'Logos', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add logos, badges, or certifications to build credibility.', 'coblocks' ),
-	icon,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */
@@ -78,4 +77,4 @@ const settings = {
 	deprecated,
 };
 
-export { name, category, metadata, settings, icon };
+export { name, category, metadata, settings };

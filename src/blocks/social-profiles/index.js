@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { SocialProfilesIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import edit from './edit';
@@ -13,11 +18,6 @@ import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 
 /**
- * External dependencies
- */
-import { SocialProfilesIcon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Block constants
  */
 const { name, category } = metadata;
@@ -28,7 +28,7 @@ const settings = {
 	/* translators: block description */
 	description: __( 'Grow your audience with links to social media profiles.', 'coblocks' ),
 	category: hasFormattingCategory ? 'common' : 'widgets',
-	icon: <Icon icon={ SocialProfilesIcon } />,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

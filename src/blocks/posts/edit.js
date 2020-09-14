@@ -4,13 +4,13 @@
 import classnames from 'classnames';
 import includes from 'lodash/includes';
 import { find, isUndefined, pickBy, some, get } from 'lodash';
+import { PostsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
  */
 import InspectorControls from './inspector';
 import icons from './icons';
-import icon from './';
 
 /**
  * WordPress dependencies
@@ -22,18 +22,20 @@ import { Component, RawHTML, Fragment } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
 import { dateI18n, format, __experimentalGetSettings } from '@wordpress/date';
 import { withSelect } from '@wordpress/data';
-import { BlockControls, RichText, BlockIcon } from '@wordpress/block-editor';
+import { BlockControls, RichText } from '@wordpress/block-editor';
 import {
-	Placeholder,
-	Spinner,
-	Toolbar,
-	TextControl,
 	Button,
 	Disabled,
-	ServerSideRender,
+	Icon,
+	Placeholder,
 	QueryControls,
+	ServerSideRender,
+	Spinner,
+	TextControl,
+	Toolbar,
 } from '@wordpress/components';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
+import { pullLeft, pullRight } from '@wordpress/icons';
 
 /**
  * Module Constants
@@ -248,12 +250,12 @@ class PostsEdit extends Component {
 		const hasFeaturedImage = some( displayPosts, 'featured_media_object' );
 
 		const toolbarControls = [ {
-			icon: icons.imageLeft,
+			icon: <Icon icon={ pullLeft } />,
 			title: __( 'Image on left', 'coblocks' ),
 			isActive: listPosition === 'left',
 			onClick: () => setAttributes( { listPosition: 'left' } ),
 		}, {
-			icon: icons.imageRight,
+			icon: <Icon icon={ pullRight } />,
 			title: __( 'Image on right', 'coblocks' ),
 			isActive: listPosition === 'right',
 			onClick: () => setAttributes( { listPosition: 'right' } ),
@@ -277,7 +279,7 @@ class PostsEdit extends Component {
 						postCount={ latestPosts && latestPosts.length }
 					/>
 					<Placeholder
-						icon={ <BlockIcon icon={ icon } /> }
+						icon={ <Icon icon={ icon } /> }
 						label={ __( 'Blog Posts', 'coblocks' ) }
 					>
 						{ ! Array.isArray( latestPosts )
@@ -319,7 +321,7 @@ class PostsEdit extends Component {
 						postCount={ latestPosts && latestPosts.length }
 					/>
 					<Placeholder
-						icon={ <BlockIcon icon={ icon } /> }
+						icon={ <Icon icon={ icon } /> }
 						label={ __( 'RSS Feed', 'coblocks' ) }
 						instructions={ __( 'RSS URLs are generally located at the /feed/ directory of a site.', 'coblocks' ) }
 					>

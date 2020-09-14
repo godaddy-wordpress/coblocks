@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { GithubIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import deprecated from './deprecated';
@@ -15,11 +20,6 @@ import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 
 /**
- * External dependencies
- */
-import { GithubIcon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Block constants
  */
 const { name, category, attributes } = metadata;
@@ -30,7 +30,7 @@ const settings = {
 	/* translators: block description */
 	description: __( 'Embed a GitHub Gist.', 'coblocks' ),
 	category: hasFormattingCategory ? 'common' : 'embed',
-	icon: <Icon icon={ GithubIcon } />,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		'github',

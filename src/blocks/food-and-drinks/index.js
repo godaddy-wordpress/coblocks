@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { FoodDrinkIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies.
  */
 import edit from './edit';
@@ -13,11 +18,6 @@ import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 
 /**
- * External dependencies
- */
-import { FoodDrinkIcon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Block constants.
  */
 const { name, category, attributes } = metadata;
@@ -27,7 +27,7 @@ const settings = {
 	title: __( 'Food & Drink', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Display a menu or price list.', 'coblocks' ),
-	icon: <Icon icon={ FoodDrinkIcon } />,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

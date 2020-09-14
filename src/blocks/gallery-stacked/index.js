@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { GalleryStackedIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import deprecated from './deprecated';
@@ -16,15 +21,9 @@ import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 
 /**
- * External dependencies
- */
-import { GalleryStackedIcon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Block constants
  */
 const { name, category } = metadata;
-const icon = <Icon icon={ GalleryStackedIcon } />;
 
 const attributes = {
 	...GalleryAttributes,
@@ -37,7 +36,7 @@ const settings = {
 	/* translators: block description */
 	description: __( 'Display multiple images in a single column stacked gallery.', 'coblocks' ),
 	category: hasFormattingCategory ? 'coblocks-galleries' : 'media',
-	icon,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

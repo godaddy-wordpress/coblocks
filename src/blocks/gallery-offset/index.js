@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { GalleryOffsetIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import edit from './edit';
@@ -16,15 +21,9 @@ import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 
 /**
- * External dependencies
- */
-import { GalleryOffsetIcon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Block constants
  */
 const { name, category } = metadata;
-const icon = <Icon icon={ GalleryOffsetIcon } />;
 
 const attributes = {
 	...GalleryAttributes,
@@ -37,7 +36,7 @@ const settings = {
 	/* translators: block description */
 	description: __( 'Display images in an offset brick pattern gallery.', 'coblocks' ),
 	category: hasFormattingCategory ? 'coblocks-galleries' : 'media',
-	icon,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */
@@ -69,4 +68,4 @@ const settings = {
 	deprecated,
 };
 
-export { name, category, icon, metadata, settings };
+export { name, category, metadata, settings };

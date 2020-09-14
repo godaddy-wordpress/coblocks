@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { AtIcon } from '@godaddy-wordpress/coblocks-icons';
+import { AtIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies
@@ -37,7 +37,7 @@ class Controls extends Component {
 								className="wp-block-coblocks-click-to-tweet__via-label"
 								htmlFor="wp-block-coblocks-click-to-tweet__via"
 							>
-								<Icon icon={ AtIcon } />
+								<Icon icon={ icon } />
 							</label>
 							<input
 								aria-label={ __( 'Twitter Username', 'coblocks' ) }
