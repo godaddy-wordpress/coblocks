@@ -255,6 +255,7 @@ class FoodAndDrinksEdit extends Component {
 						allowedBlocks={ ALLOWED_BLOCKS }
 						template={ TEMPLATE }
 						templateInsertUpdatesSelection={ false }
+						__experimentalCaptureToolbars={ true }
 					/>
 					{ isSelected &&
 						<CustomAppender onClick={ this.insertNewItem } />

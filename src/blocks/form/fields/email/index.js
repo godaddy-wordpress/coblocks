@@ -48,6 +48,7 @@ const settings = {
 		html: false,
 		multiple: false,
 		customClassName: false,
+		labelColor: true,
 	},
 	attributes,
 	edit,

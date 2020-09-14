@@ -15,7 +15,7 @@ import { compose } from '@wordpress/compose';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem } from '@wordpress/components';
 import { BlockPreview } from '@wordpress/block-editor';
-import { createBlock } from '@wordpress/blocks';
+import { createBlock, rawHandler } from '@wordpress/blocks';
 
 /**
  * Internal dependencies
@@ -30,8 +30,20 @@ const getBlocksFromTemplate = ( name, attributes, innerBlocks = [] ) => {
 	);
 };
 
+const getTemplateFromBlocks = ( name, attributes, innerBlocks = [] ) => {
+	return [ name, attributes,
+		innerBlocks && innerBlocks.map( ( blockObject ) => {
+			return getTemplateFromBlocks( blockObject.name, blockObject.attributes, blockObject.innerBlocks );
+		} ),
+	];
+};
+
 const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
 	const [ overlay, setOverlay ] = useState( false );
+
+	const layoutBlocks = layout.blocks || rawHandler( { HTML: layout.postContent } ).map(
+		( blockObject ) => getTemplateFromBlocks( blockObject.name, blockObject.attributes, blockObject.innerBlocks )
+	);
 
 	return (
 		<a href="#!"
@@ -53,7 +65,7 @@ const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
 			<BlockPreview
 				autoHeight
 				blocks={
-					layout.blocks
+					layoutBlocks
 						.filter( ( layout ) => registeredBlocks.includes( layout[ 0 ] ) )
 						.map(
 							( [ name, attributes, innerBlocks = [] ] ) => {
@@ -108,9 +120,13 @@ class LayoutSelector extends Component {
 			editPost,
 		} = this.props;
 
+		const layoutBlocks = layout.blocks || rawHandler( { HTML: layout.postContent } ).map(
+			( blockObject ) => getTemplateFromBlocks( blockObject.name, blockObject.attributes, blockObject.innerBlocks )
+		);
+
 		editPost( {
 			title: layout.label,
-			blocks: layout.blocks.filter( ( layout ) => registeredBlocks.includes( layout[ 0 ] ) )
+			blocks: layoutBlocks.filter( ( layout ) => registeredBlocks.includes( layout[ 0 ] ) )
 				.map( ( [ name, attributes, innerBlocks = [] ] ) => {
 					return getBlocksFromTemplate( name, attributes, innerBlocks );
 				} ),
@@ -266,10 +282,15 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 		render: compose( [
 			withSelect( ( select ) => {
 				const { isTemplateSelectorActive } = select( 'coblocks/template-selector' );
-				const { hasEditorUndo, isCurrentPostPublished } = select( 'core/editor' );
+				const {
+					getCurrentPostAttribute,
+					hasEditorUndo,
+					isCurrentPostPublished,
+				} = select( 'core/editor' );
 				const { getLayoutSelector } = select( 'coblocks-settings' );
 
-				const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo();
+				const isDraft = [ 'draft' ].indexOf( getCurrentPostAttribute( 'status' ) ) !== -1;
+				const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo() && ! isDraft;
 
 				const layouts = coblocksLayoutSelector.layouts || [];
 				const categories = coblocksLayoutSelector.categories || [];

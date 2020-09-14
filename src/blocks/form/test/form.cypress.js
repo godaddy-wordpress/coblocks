@@ -4,6 +4,12 @@
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Form Block', function() {
+	//setup From block color data.
+	const formData = {
+		textColor: '#ffffff',
+		textColorRGB: 'rgb(255, 255, 255)',
+	};
+
 	/**
 	 * Test the coblock contact template.
 	 */
@@ -434,5 +440,144 @@ describe( 'Test CoBlocks Form Block', function() {
 			.should( 'contain', 'Custom Subject Line: Email From email@example.com - Name' );
 
 		helpers.editPage();
+	} );
+
+	/**
+	 * Test the custom success message displays as intended.
+	 */
+	it( 'Test the custom success message displays as intended.', function() {
+		helpers.addBlockToPost( 'coblocks/form', true );
+
+		cy.get( '[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
+			if ( placeholder.prop( 'outerHTML' ).includes( 'block-editor-block-variation-picker' ) ) {
+				cy.get( placeholder )
+					.find( '.block-editor-block-variation-picker__variations li:first-child' )
+					.find( 'button' ).click( { force: true } );
+			} else {
+				cy.get( '.block-editor-inner-blocks__template-picker-options li:first-child' )
+					.click();
+
+				cy.get( '.block-editor-inner-blocks__template-picker-options' )
+					.should( 'not.exist' );
+			}
+		} );
+
+		cy.get( '[data-type="coblocks/form"]' )
+			.click( { force: true } );
+
+			cy.get( 'div.edit-post-sidebar' )
+				.contains( /Success Message/i )
+				.next( 'textarea' )
+				.then( ( $inputElem ) => {
+					cy.get( $inputElem ).invoke( 'val' ).then( ( val ) => {
+						cy.get( $inputElem )
+							.clear()
+							.type( 'Thank you for submitting this form!' );
+					} );
+				} );
+
+		helpers.savePage();
+		helpers.viewPage();
+
+		cy.get( '.coblocks-form' )
+			.should( 'exist' );
+
+		cy.get( 'input[name="field-name[value]"]' )
+			.type( 'Name' );
+
+		cy.get( 'input[name="field-email[value]"]' )
+			.type( 'email@example.com' );
+
+		cy.get( 'textarea[name="field-message[value]"]' )
+			.type( 'My message for you.' );
+
+		cy.get( '.coblocks-form__submit button' )
+			.click();
+
+		cy.get( '.coblocks-form__submitted' ).contains( 'Thank you for submitting this form!' );
+
+		helpers.editPage();
+	} );
+
+	/**
+	 * Test that we can add a Form block to the content, adjust colors
+	 * and are able to successfully save the block without errors.
+	 */
+	it( 'Test that color values are able to set and save.', function() {
+		const { textColor, textColorRGB } = formData;
+		helpers.addBlockToPost( 'coblocks/form', true );
+
+		cy.get( '[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
+			if ( placeholder.prop( 'outerHTML' ).includes( 'block-editor-block-variation-picker' ) ) {
+				cy.get( placeholder )
+					.find( '.block-editor-block-variation-picker__variations li:first-child' )
+					.find( 'button' ).click( { force: true } );
+			} else {
+				cy.get( '.block-editor-inner-blocks__template-picker-options li:first-child' )
+					.click();
+
+				cy.get( '.block-editor-inner-blocks__template-picker-options' )
+					.should( 'not.exist' );
+			}
+		} );
+
+		// Set name color.
+		cy.get( '[data-type="coblocks/form"] [data-type="coblocks/field-name"]' ).click();
+		helpers.setColorSetting( 'label color', textColor );
+
+		// Set email color.
+		cy.get( '[data-type="coblocks/form"] [data-type="coblocks/field-email"]' ).click();
+		helpers.setColorSetting( 'label color', textColor );
+
+		// Set textarea color.
+		cy.get( '[data-type="coblocks/form"] [data-type="coblocks/field-textarea"]' ).click();
+		helpers.setColorSetting( 'label color', textColor );
+
+		// Set text color.
+		helpers.addFormChild( 'text' );
+		helpers.setColorSetting( 'label color', textColor );
+
+		// Set radio color.
+		helpers.addFormChild( 'radio' );
+		cy.get( '.coblocks-option__input' ).type( 'text' );
+		helpers.setColorSetting( 'label color', textColor );
+
+		// Set phone color.
+		helpers.addFormChild( 'phone' );
+		helpers.setColorSetting( 'label color', textColor );
+
+		// Set checkbox color.
+		helpers.addFormChild( 'checkbox' );
+		cy.get( '.coblocks-option__input' ).type( 'text' );
+		helpers.setColorSetting( 'label color', textColor );
+
+		// Set select color.
+		helpers.addFormChild( 'select' );
+		cy.get( '.coblocks-option__input' ).type( 'text' );
+		helpers.setColorSetting( 'label color', textColor );
+
+		// Set website color.
+		helpers.addFormChild( 'website' );
+		helpers.setColorSetting( 'label color', textColor );
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/form' );
+
+		helpers.viewPage();
+
+		cy.get( '.coblocks-form' )
+			.should( 'exist' );
+
+		/**
+		 * Checkbox === select
+		 * Select   === select
+		 * Radio    === choose-one
+		 * Textarea === message.
+		 */
+		[ 'text', 'email', 'website', 'select', 'phone', 'choose-one', 'message', 'name' ].forEach( ( field ) => {
+			cy.get( `label[for="${field}"]` )
+				.should( 'have.css', 'color', textColorRGB );
+		} );
 	} );
 } );

@@ -1,14 +1,12 @@
-// Breakpoints & Media Queries
+@import "node_modules/@wordpress/base-styles/breakpoints";
 
+/**
+ * Deprecated breakpoints.
+ * Please avoid using these.
+ */
 // Most used breakpoints
-$break-huge: 1440px;
-$break-wide: 1280px;
-$break-large: 960px;
 $break-large-max: 959px;	// admin sidebar auto folds
-$break-medium: 782px;	// adminbar goes big
-$break-small: 600px;
 $break-small-max: 599px;
-$break-mobile: 480px;
 
 // All media queries currently in WordPress:
 //
