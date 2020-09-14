@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { FeatureIcon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import { BackgroundAttributes } from '../../../components/background';
@@ -12,11 +17,6 @@ import save from './save';
  */
 import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
-
-/**
- * External dependencies
- */
-import { FeatureIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Block constants
