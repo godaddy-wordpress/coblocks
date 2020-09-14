@@ -180,12 +180,12 @@
 	figcaption {
 		bottom: 0;
 		font-size: 13px;
+		margin: 0;
 		opacity: 0.9;
 		padding: 30px 10px 10px;
 		position: absolute;
 		text-align: center;
 		width: 100%;
-		margin: 0;
 	}
 
 	&.has-caption-style-dark figcaption {
