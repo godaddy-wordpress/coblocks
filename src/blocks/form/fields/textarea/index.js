@@ -20,10 +20,6 @@ const metadata = {
 			type: 'string',
 			default: __( 'Message', 'coblocks' ),
 		},
-		labelColor: {
-			type: 'string',
-			default: '#000000',
-		},
 		required: {
 			type: 'boolean',
 			default: false,

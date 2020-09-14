@@ -19,7 +19,6 @@ function CoBlocksField( {
 	type,
 	required,
 	label,
-	labelColor,
 	setAttributes,
 } ) {
 	return (
@@ -28,7 +27,6 @@ function CoBlocksField( {
 				<CoBlocksFieldLabel
 					required={ required }
 					label={ label }
-					labelColor={ labelColor }
 					setAttributes={ setAttributes }
 					isSelected={ isSelected }
 				/>

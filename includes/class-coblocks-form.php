@@ -703,9 +703,8 @@ class CoBlocks_Form {
 	 */
 	public function render_field_label( $atts, $field_label, $count = 1 ) {
 
-		$label       = isset( $atts['label'] ) ? $atts['label'] : $field_label;
-		$label_color = ( isset( $atts['labelColor'] ) && '#000000' !== $atts['labelColor'] ) ? $atts['labelColor'] : '';
-		$label_slug  = $count > 1 ? sanitize_title( $label . '-' . $count ) : sanitize_title( $label );
+		$label      = isset( $atts['label'] ) ? $atts['label'] : $field_label;
+		$label_slug = $count > 1 ? sanitize_title( $label . '-' . $count ) : sanitize_title( $label );
 
 		/**
 		 * Filter the required text in the field label.
@@ -728,12 +727,8 @@ class CoBlocks_Form {
 		if ( ! isset( $atts['hidden'] ) ) {
 
 			printf(
-				'<label for="%1$s" class="coblocks-label"%2$s>%3$s%4$s</label>',
+				'<label for="%1$s" class="coblocks-label">%2$s%3$s</label>',
 				esc_attr( $label_slug ),
-				empty( $label_color ) ? '' : sprintf(
-					'style="color: %1$s"',
-					$label_color
-				),
 				wp_kses_post( $label ),
 				wp_kses( $required_label, $allowed_html )
 			);
