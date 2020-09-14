@@ -392,7 +392,6 @@ class FormEdit extends Component {
 			return (
 				<Fragment>
 					<InspectorControls>
-						<LabelColorControl { ...this.props } />
 						<PanelBody title={ __( 'Form settings', 'coblocks' ) }>
 							{ this.renderToAndSubjectFields() }
 							{ applyFilters( 'coblocks.advanced_forms_cta' ) }
@@ -452,6 +451,7 @@ class FormEdit extends Component {
 								) }
 							</div>
 						</PanelBody>
+						<LabelColorControl { ...this.props } />
 					</InspectorControls>
 					<div className={ classes }>
 						{ this.supportsBlockVariationPicker() ? this.blockVariationPicker() : this.innerBlocksPicker() }
