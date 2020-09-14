@@ -3,7 +3,6 @@
  */
 import deprecated from './deprecated';
 import edit from './edit';
-import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
@@ -13,6 +12,12 @@ import { hasFormattingCategory } from '../../utils/block-helpers';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
+
+/**
+ * External dependencies
+ */
+import { GithubIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Block constants
@@ -25,7 +30,7 @@ const settings = {
 	/* translators: block description */
 	description: __( 'Embed a GitHub Gist.', 'coblocks' ),
 	category: hasFormattingCategory ? 'common' : 'embed',
-	icon,
+	icon: <Icon icon={ GithubIcon } />,
 	keywords: [
 		'coblocks',
 		'github',

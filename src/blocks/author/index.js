@@ -3,7 +3,6 @@
  */
 import deprecated from './deprecated';
 import edit from './edit';
-import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
@@ -12,6 +11,12 @@ import transforms from './transforms';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
+
+/**
+ * External dependencies
+ */
+import { AuthorIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Block constants
@@ -23,7 +28,7 @@ const settings = {
 	title: __( 'Author', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add an author biography to build credibility and authority.', 'coblocks' ),
-	icon,
+	icon: <Icon icon={ AuthorIcon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

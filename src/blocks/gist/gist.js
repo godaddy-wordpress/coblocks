@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 /**
  * Internal dependencies
  */
-import icon from './icon';
+import { icon } from './';
 
 /**
  * WordPress dependencies

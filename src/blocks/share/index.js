@@ -2,7 +2,6 @@
  * Internal dependencies
  */
 import edit from './edit';
-import icon from './icon';
 import metadata from './block.json';
 import { hasFormattingCategory } from '../../utils/block-helpers';
 
@@ -10,6 +9,12 @@ import { hasFormattingCategory } from '../../utils/block-helpers';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
+
+/**
+ * External dependencies
+ */
+import { ShareIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Block constants
@@ -22,7 +27,7 @@ const settings = {
 	/* translators: block description */
 	description: __( 'Add social sharing links to help you get likes and shares.', 'coblocks' ),
 	category: hasFormattingCategory ? 'common' : 'widgets',
-	icon,
+	icon: <Icon icon={ ShareIcon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

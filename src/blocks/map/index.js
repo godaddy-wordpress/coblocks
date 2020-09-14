@@ -3,7 +3,6 @@
  */
 import deprecated from './deprecated';
 import edit from './edit';
-import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
@@ -12,11 +11,18 @@ import transforms from './transforms';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
+
+/**
+ * External dependencies
+ */
+import { MapIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Block constants
  */
 const { name, category, attributes } = metadata;
+const icon = <Icon icon={ MapIcon } />;
 
 const settings = {
 	/* translators: block name */
@@ -52,4 +58,4 @@ const settings = {
 	deprecated,
 };
 
-export { name, category, metadata, settings };
+export { name, category, metadata, settings, icon };

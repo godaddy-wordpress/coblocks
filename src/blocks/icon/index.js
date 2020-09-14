@@ -3,7 +3,6 @@
  */
 import deprecated from './deprecated';
 import edit from './edit';
-import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 import { hasFormattingCategory } from '../../utils/block-helpers';
@@ -12,12 +11,17 @@ import { hasFormattingCategory } from '../../utils/block-helpers';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
+
+/**
+ * External dependencies
+ */
+import { IconIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Set default icon size equivalent to "Medium".
  */
 export const DEFAULT_ICON_SIZE = 60;
-
 
 /**
  * Block constants
@@ -30,7 +34,7 @@ const settings = {
 	/* translators: block description */
 	description: __( 'Add a stylized graphic symbol to communicate something more.', 'coblocks' ),
 	category: hasFormattingCategory ? 'common' : 'design',
-	icon,
+	icon: <Icon icon={ IconIcon } />,
 	keywords: [
 		'coblocks',
 		'svg',

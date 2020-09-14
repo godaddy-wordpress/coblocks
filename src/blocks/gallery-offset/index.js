@@ -4,7 +4,6 @@
 import edit from './edit';
 import deprecated from './deprecated';
 import save from './save';
-import icon from './icon';
 import transforms from './transforms';
 import metadata from './block.json';
 import { GalleryAttributes } from '../../components/block-gallery/shared';
@@ -14,11 +13,18 @@ import { hasFormattingCategory } from '../../utils/block-helpers';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
+
+/**
+ * External dependencies
+ */
+import { GalleryOffsetIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Block constants
  */
 const { name, category } = metadata;
+const icon = <Icon icon={ GalleryOffsetIcon } />;
 
 const attributes = {
 	...GalleryAttributes,
@@ -63,4 +69,4 @@ const settings = {
 	deprecated,
 };
 
-export { name, category, metadata, settings };
+export { name, category, icon, metadata, settings };

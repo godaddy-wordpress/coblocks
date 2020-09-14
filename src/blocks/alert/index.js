@@ -12,6 +12,12 @@ import transforms from './transforms';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
+
+/**
+ * External dependencies
+ */
+import { AlertIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Block constants
@@ -23,7 +29,7 @@ const settings = {
 	title: __( 'Alert', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Provide contextual feedback messages or notices.', 'coblocks' ),
-	icon,
+	icon: <Icon icon={ AlertIcon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

@@ -2,12 +2,17 @@
  * Internal dependencies
  */
 import edit from './edit';
-import icon from './icon';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
+
+/**
+ * External dependencies
+ */
+import { FormEmailIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Block constants
@@ -34,7 +39,7 @@ const settings = {
 	title: __( 'Email', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'A field for collecting a validated email address.', 'coblocks' ),
-	icon,
+	icon: <Icon icon={ FormEmailIcon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

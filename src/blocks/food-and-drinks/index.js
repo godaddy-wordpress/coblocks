@@ -2,7 +2,6 @@
  * Internal dependencies.
  */
 import edit from './edit';
-import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 import deprecated from './deprecated';
@@ -11,6 +10,12 @@ import deprecated from './deprecated';
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
+
+/**
+ * External dependencies
+ */
+import { FoodDrinkIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Block constants.
@@ -22,7 +27,7 @@ const settings = {
 	title: __( 'Food & Drink', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Display a menu or price list.', 'coblocks' ),
-	icon,
+	icon: <Icon icon={ FoodDrinkIcon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */
@@ -33,8 +38,8 @@ const settings = {
 	supports: {
 		align: [ 'wide' ],
 	},
-	getEditWrapperProps( attributes ) {
-		return { 'data-columns': attributes.columns };
+	getEditWrapperProps( atts ) {
+		return { 'data-columns': atts.columns };
 	},
 	deprecated,
 	attributes,

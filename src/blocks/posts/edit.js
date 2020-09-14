@@ -10,7 +10,7 @@ import { find, isUndefined, pickBy, some, get } from 'lodash';
  */
 import InspectorControls from './inspector';
 import icons from './icons';
-import icon from './icon';
+import icon from './';
 
 /**
  * WordPress dependencies

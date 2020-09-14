@@ -2,7 +2,6 @@
  * Internal dependencies
  */
 import edit from './edit';
-import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 import { hasFormattingCategory } from '../../utils/block-helpers';
@@ -11,11 +10,18 @@ import { hasFormattingCategory } from '../../utils/block-helpers';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
+
+/**
+ * External dependencies
+ */
+import { GifIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Block constants
  */
 const { name, category, attributes } = metadata;
+const icon = <Icon icon={ GifIcon } />;
 
 const settings = {
 	/* translators: block name */
@@ -34,8 +40,8 @@ const settings = {
 		html: false,
 	},
 	attributes,
-	getEditWrapperProps( attributes ) {
-		const { align, width } = attributes;
+	getEditWrapperProps( atts ) {
+		const { align, width } = atts;
 		if ( 'left' === align || 'center' === align || 'right' === align || 'wide' === align || 'full' === align ) {
 			return { 'data-align': align, 'data-resized': !! width };
 		}
@@ -44,4 +50,4 @@ const settings = {
 	save,
 };
 
-export { name, category, metadata, settings };
+export { name, category, icon, metadata, settings };

@@ -3,7 +3,6 @@
  */
 import deprecated from './deprecated';
 import edit from './edit';
-import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
@@ -14,6 +13,12 @@ import { hasFormattingCategory } from '../../utils/block-helpers';
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
+
+/**
+ * External dependencies
+ */
+import { GalleryCollageIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Block constants.
@@ -31,7 +36,7 @@ const settings = {
 	/* translators: block description */
 	description: __( 'Assemble images into a beautiful collage gallery.', 'coblocks' ),
 	category: hasFormattingCategory ? 'coblocks-galleries' : 'media',
-	icon,
+	icon: <Icon icon={ GalleryCollageIcon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

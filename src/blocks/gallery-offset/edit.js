@@ -11,7 +11,7 @@ import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import Inspector from './inspector';
 import Controls from './controls';
-import icon from './icon';
+import { icon } from './';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 
@@ -26,6 +26,11 @@ import { withNotices } from '@wordpress/components';
 
 /**
  * Block edit function
+ *
+ * @param oldIndex
+ * @param index
+ * @param attributes
+ * @param newIndex
  */
 class Edit extends Component {
 	constructor() {

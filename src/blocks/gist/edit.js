@@ -8,7 +8,7 @@ import classnames from 'classnames';
  */
 import Controls from './controls';
 import Inspector from './inspector';
-import icon from './icon';
+import { icon } from './';
 import Gist from './gist';
 
 /**

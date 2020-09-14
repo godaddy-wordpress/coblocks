@@ -4,7 +4,6 @@
  * Internal dependencies
  */
 import edit from './edit';
-import icon from './icon';
 import variations from './variations';
 
 /**
@@ -12,6 +11,12 @@ import variations from './variations';
  */
 import { __ } from '@wordpress/i18n';
 import { InnerBlocks } from '@wordpress/block-editor';
+import { Icon } from '@wordpress/components';
+
+/**
+ * External dependencies
+ */
+import { FormIcon } from '@godaddy-wordpress/coblocks-icons';
 
 // Note: Check that coblocksBlockData is set. So jest tests will pass.
 const successTextDefault = typeof coblocksBlockData === 'undefined' ? __( 'Your message was sent:', 'coblocks' ) : coblocksBlockData.form.successText;
@@ -39,6 +44,7 @@ const metadata = {
 };
 
 const { name, category, attributes } = metadata;
+const icon = <Icon icon={ FormIcon } />;
 
 const settings = {
 	/* translators: block name */

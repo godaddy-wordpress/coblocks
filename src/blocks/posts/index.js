@@ -2,7 +2,6 @@
  * Internal dependencies
  */
 import edit from './edit';
-import icon from './icon';
 import metadata from './block.json';
 import transforms from './transforms';
 import deprecated from './deprecated';
@@ -11,11 +10,18 @@ import deprecated from './deprecated';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
+
+/**
+ * External dependencies
+ */
+import { PostsIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Block constants
  */
 const { name, category } = metadata;
+const icon = <Icon icon={ PostsIcon } />;
 
 const settings = {
 	/* translators: block name */
@@ -49,4 +55,4 @@ const settings = {
 	},
 };
 
-export { name, category, settings };
+export { name, category, settings, icon };

@@ -2,13 +2,18 @@
  * Internal dependencies
  */
 import edit from './edit';
-import icon from './icon';
 import transforms from './transforms';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
+
+/**
+ * External dependencies
+ */
+import { FormTextareaIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Block constants
@@ -35,7 +40,7 @@ const settings = {
 	title: __( 'Textarea', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'A text box for longer responses.', 'coblocks' ),
-	icon,
+	icon: <Icon icon={ FormTextareaIcon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

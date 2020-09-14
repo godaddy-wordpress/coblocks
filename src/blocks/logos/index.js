@@ -3,7 +3,6 @@
  */
 import deprecated from './deprecated';
 import edit from './edit';
-import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 
@@ -11,11 +10,18 @@ import save from './save';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
+
+/**
+ * External dependencies
+ */
+import { LogosIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Block constants.
  */
 const { name, category, attributes } = metadata;
+const icon = <Icon icon={ LogosIcon } />;
 
 const settings = {
 	/* translators: block name */

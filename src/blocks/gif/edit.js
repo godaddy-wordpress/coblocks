@@ -19,7 +19,7 @@ import { BlockIcon, RichText } from '@wordpress/block-editor';
  */
 import Controls from './controls';
 import icons from './../../utils/icons';
-import icon from './icon';
+import { icon } from './';
 import Inspector from './inspector';
 import Size from './size';
 

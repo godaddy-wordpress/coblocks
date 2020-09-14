@@ -16,7 +16,7 @@ import { withProps, lifecycle } from 'recompose';
 import Controls from './controls';
 import Inspector from './inspector';
 import GMapStyles from './map-styles';
-import icon from './icon';
+import icon from './';
 
 /**
  * WordPress dependencies
