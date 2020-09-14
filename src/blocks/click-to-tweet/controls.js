@@ -1,14 +1,14 @@
 /**
- * Internal dependencies
+ * External dependencies
  */
-import icons from './icons';
+import { AtIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { Toolbar } from '@wordpress/components';
+import { Icon, Toolbar } from '@wordpress/components';
 import { AlignmentToolbar, BlockControls } from '@wordpress/block-editor';
 
 class Controls extends Component {
@@ -37,7 +37,7 @@ class Controls extends Component {
 								className="wp-block-coblocks-click-to-tweet__via-label"
 								htmlFor="wp-block-coblocks-click-to-tweet__via"
 							>
-								{ icons.at }
+								<Icon icon={ AtIcon } />
 							</label>
 							<input
 								aria-label={ __( 'Twitter Username', 'coblocks' ) }
