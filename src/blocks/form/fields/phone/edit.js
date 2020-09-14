@@ -2,7 +2,6 @@
  * Internal dependencies
  */
 import CoBlocksField from '../field';
-import LabelColorControl from '../../../../components/form-label-colors/label-color-control';
 
 function CoBlocksFieldPhone( props ) {
 	const { attributes, setAttributes, isSelected, name } = props;
@@ -10,7 +9,6 @@ function CoBlocksFieldPhone( props ) {
 
 	return (
 		<>
-			<LabelColorControl { ...props } />
 			<CoBlocksField
 				type="text"
 				label={ label }

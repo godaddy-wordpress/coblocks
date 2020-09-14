@@ -2,14 +2,12 @@
  * Internal dependencies
  */
 import CoBlocksField from '../field';
-import LabelColorControl from '../../../../components/form-label-colors/label-color-control';
 
 function CoBlocksFieldTextarea( props ) {
 	const { attributes, setAttributes, isSelected, name } = props;
 	const { required, label, textColor, customTextColor } = attributes;
 	return (
 		<>
-			<LabelColorControl { ...props } />
 			<CoBlocksField
 				type="text"
 				label={ label }
