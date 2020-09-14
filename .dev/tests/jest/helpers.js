@@ -20,6 +20,21 @@ import { name as carouselName, settings as carouselSettings } from '../../../src
 import { name as offsetName, settings as offsetSettings } from '../../../src/blocks/gallery-offset';
 import { name as masonryName, settings as masonrySettings } from '../../../src/blocks/gallery-masonry';
 
+// Imports used for registerGalleryBlocks().
+// Form, Name, Date, Textarea, Phone, Text, Website, Hidden
+import { name as formBlockName, settings as formBlockSettings } from '../../../src/blocks/form';
+import { name as formNameBlockName, settings as formNameBlockSettings } from '../../../src/blocks/form/fields/name';
+import { name as formDateBlockName, settings as formDateBlockSettings } from '../../../src/blocks/form/fields/date';
+import { name as formTextareaBlockName, settings as formTextareaBlockSettings } from '../../../src/blocks/form/fields/textarea';
+import { name as formPhoneBlockName, settings as formPhoneBlockSettings } from '../../../src/blocks/form/fields/phone';
+import { name as formTextBlockName, settings as formTextBlockSettings } from '../../../src/blocks/form/fields/text';
+import { name as formWebsiteBlockName, settings as formWebsiteBlockSettings } from '../../../src/blocks/form/fields/website';
+import { name as formHiddenBlockName, settings as formHiddenBlockSettings } from '../../../src/blocks/form/fields/hidden';
+
+import { name as formSelectBlockName, settings as formSelectBlockSettings } from '../../../src/blocks/form/fields/select';
+import { name as formCheckboxBlockName, settings as formCheckboxBlockSettings } from '../../../src/blocks/form/fields/checkbox';
+import { name as formRadioBlockName, settings as formRadioBlockSettings } from '../../../src/blocks/form/fields/radio';
+
 /**
  * WordPress dependencies
  */
@@ -37,6 +52,23 @@ export const registerGalleryBlocks = () => {
 	registerBlockType( carouselName, { category: 'common', ...carouselSettings } ); // Register carousel block
 	registerBlockType( offsetName, { category: 'common', ...offsetSettings } ); // Register offset block
 	registerBlockType( masonryName, { category: 'common', ...masonrySettings } ); // Register masonry block
+};
+
+export const registerFormBlocks = () => {
+	// Form, Name, Date, Textarea, Phone, Text, Website, Hidden
+	registerBlockType( formBlockName, { category: 'common', ...formBlockSettings } ); // Register form block
+	registerBlockType( formNameBlockName, { category: 'common', ...formNameBlockSettings } ); // Register form name block
+	registerBlockType( formDateBlockName, { category: 'common', ...formDateBlockSettings } ); // Register form name block
+	registerBlockType( formTextareaBlockName, { category: 'common', ...formTextareaBlockSettings } ); // Register form textarea block
+	registerBlockType( formPhoneBlockName, { category: 'common', ...formPhoneBlockSettings } ); // Register form phone block
+	registerBlockType( formTextBlockName, { category: 'common', ...formTextBlockSettings } ); // Register form text block
+	registerBlockType( formWebsiteBlockName, { category: 'common', ...formWebsiteBlockSettings } ); // Register form website block
+	registerBlockType( formHiddenBlockName, { category: 'common', ...formHiddenBlockSettings } ); // Register form hidden block
+
+	// Select, Checkbox, Radio
+	registerBlockType( formSelectBlockName, { category: 'common', ...formSelectBlockSettings } ); // Register form name block
+	registerBlockType( formCheckboxBlockName, { category: 'common', ...formCheckboxBlockSettings } ); // Register form name block
+	registerBlockType( formRadioBlockName, { category: 'common', ...formRadioBlockSettings } ); // Register form name block
 };
 
 /**

@@ -282,10 +282,15 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 		render: compose( [
 			withSelect( ( select ) => {
 				const { isTemplateSelectorActive } = select( 'coblocks/template-selector' );
-				const { hasEditorUndo, isCurrentPostPublished } = select( 'core/editor' );
+				const {
+					getCurrentPostAttribute,
+					hasEditorUndo,
+					isCurrentPostPublished,
+				} = select( 'core/editor' );
 				const { getLayoutSelector } = select( 'coblocks-settings' );
 
-				const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo();
+				const isDraft = [ 'draft' ].indexOf( getCurrentPostAttribute( 'status' ) ) !== -1;
+				const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo() && ! isDraft;
 
 				const layouts = coblocksLayoutSelector.layouts || [];
 				const categories = coblocksLayoutSelector.categories || [];

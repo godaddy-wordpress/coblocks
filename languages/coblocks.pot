@@ -1,14 +1,14 @@
 # Copyright (c) 2020 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 2.3.1\n"
+"Project-Id-Version: CoBlocks 2.3.2\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-09-04T01:25:19+00:00\n"
+"POT-Creation-Date: 2020-09-14T16:53:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -46,19 +46,19 @@ msgstr ""
 msgid "Leave a Review"
 msgstr ""
 
-#: includes/class-block-patterns.php:41
+#: includes/class-block-patterns.php:46
 msgid "Block Patterns"
 msgstr ""
 
-#: includes/class-block-patterns.php:42
+#: includes/class-block-patterns.php:47
 msgid "Description"
 msgstr ""
 
-#: includes/class-block-patterns.php:66
+#: includes/class-block-patterns.php:71
 msgid "Pattern Type"
 msgstr ""
 
-#: includes/class-block-patterns.php:82
+#: includes/class-block-patterns.php:87
 msgid "Pattern Category"
 msgstr ""
 
@@ -98,31 +98,34 @@ msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:258
-#: src/blocks/form/fields/name/index.js:21
-#: src/blocks/form/fields/name/index.js:46
+#: src/blocks/form/fields/name/index.js:22
+#: src/blocks/form/fields/name/index.js:47
+#: src/blocks/form/fields/name/transforms.js:14
 msgid "Name"
 msgstr ""
 
 #: includes/class-coblocks-form.php:262
-#: src/blocks/form/fields/name/index.js:33
+#: src/blocks/form/fields/name/index.js:34
 msgid "First"
 msgstr ""
 
 #: includes/class-coblocks-form.php:263
-#: src/blocks/form/fields/name/index.js:37
+#: src/blocks/form/fields/name/index.js:38
 msgid "Last"
 msgstr ""
 
 #: includes/class-coblocks-form.php:348
-#: src/blocks/form/fields/textarea/index.js:21
+#: src/blocks/form/fields/textarea/index.js:22
+#: src/blocks/form/fields/textarea/transforms.js:14
 msgid "Message"
 msgstr ""
 
 #. translators: block name
 #. translators: block style
 #: includes/class-coblocks-form.php:379
-#: src/blocks/form/fields/text/index.js:21
-#: src/blocks/form/fields/text/index.js:34
+#: src/blocks/form/fields/text/index.js:22
+#: src/blocks/form/fields/text/index.js:35
+#: src/blocks/form/fields/text/transforms.js:14
 #: src/blocks/share/index.js:46
 #: src/blocks/social-profiles/index.js:51
 msgid "Text"
@@ -130,28 +133,32 @@ msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:420
-#: src/blocks/form/fields/date/index.js:21
-#: src/blocks/form/fields/date/index.js:34
+#: src/blocks/form/fields/date/index.js:22
+#: src/blocks/form/fields/date/index.js:35
+#: src/blocks/form/fields/date/transforms.js:14
 msgid "Date"
 msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:451
-#: src/blocks/form/fields/phone/index.js:21
-#: src/blocks/form/fields/phone/index.js:34
+#: src/blocks/form/fields/phone/index.js:22
+#: src/blocks/form/fields/phone/index.js:35
+#: src/blocks/form/fields/phone/transforms.js:14
 msgid "Phone"
 msgstr ""
 
 #: includes/class-coblocks-form.php:490
-#: src/blocks/form/fields/radio/index.js:21
+#: src/blocks/form/fields/radio/index.js:22
+#: src/blocks/form/fields/radio/transforms.js:14
 msgid "Choose one"
 msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:554
 #: includes/class-coblocks-form.php:603
-#: src/blocks/form/fields/select/index.js:21
-#: src/blocks/form/fields/select/index.js:38
+#: src/blocks/form/fields/select/index.js:22
+#: src/blocks/form/fields/select/index.js:39
+#: src/blocks/form/fields/select/transforms.js:14
 msgid "Select"
 msgstr ""
 
@@ -161,15 +168,17 @@ msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:685
-#: src/blocks/form/fields/website/index.js:21
-#: src/blocks/form/fields/website/index.js:34
+#: src/blocks/form/fields/website/index.js:22
+#: src/blocks/form/fields/website/index.js:35
+#: src/blocks/form/fields/website/transforms.js:14
 msgid "Website"
 msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:719
-#: src/blocks/form/fields/hidden/index.js:21
-#: src/blocks/form/fields/hidden/index.js:34
+#: src/blocks/form/fields/hidden/index.js:22
+#: src/blocks/form/fields/hidden/index.js:35
+#: src/blocks/form/fields/hidden/transforms.js:14
 msgid "Hidden"
 msgstr ""
 
@@ -191,7 +200,7 @@ msgstr ""
 #. translators: icon keyword
 #: includes/class-coblocks-form.php:1041
 #: src/blocks/form/edit.js:306
-#: src/blocks/form/fields/name/index.js:53
+#: src/blocks/form/fields/name/index.js:54
 #: src/blocks/form/index.js:52
 #: src/blocks/icon/deprecated/svgs.js:691
 #: src/blocks/icon/deprecated/svgs.js:709
@@ -636,7 +645,7 @@ msgstr ""
 
 #. translators: block keyword
 #: src/blocks/buttons/index.js:30
-#: src/blocks/form/fields/website/index.js:41
+#: src/blocks/form/fields/website/index.js:42
 msgid "link"
 msgstr ""
 
@@ -864,7 +873,7 @@ msgstr ""
 
 #. translators: block keyword
 #: src/blocks/events/index.js:27
-#: src/blocks/form/fields/date/index.js:41
+#: src/blocks/form/fields/date/index.js:42
 msgid "calendar"
 msgstr ""
 
@@ -1497,21 +1506,22 @@ msgstr ""
 
 #. translators: block name
 #. translators: block style
-#: src/blocks/form/fields/checkbox/index.js:21
-#: src/blocks/form/fields/checkbox/index.js:42
+#: src/blocks/form/fields/checkbox/index.js:22
+#: src/blocks/form/fields/checkbox/index.js:43
+#: src/blocks/form/fields/checkbox/transforms.js:14
 #: src/extensions/list-styles/index.js:25
 msgid "Checkbox"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/checkbox/index.js:44
+#: src/blocks/form/fields/checkbox/index.js:45
 msgid "A checkbox field with multiple options where multiple choices can be made."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/checkbox/index.js:49
-#: src/blocks/form/fields/radio/index.js:53
-#: src/blocks/form/fields/select/index.js:47
+#: src/blocks/form/fields/checkbox/index.js:50
+#: src/blocks/form/fields/radio/index.js:54
+#: src/blocks/form/fields/select/index.js:48
 msgid "option"
 msgstr ""
 
@@ -1524,22 +1534,22 @@ msgid "Remove Option"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/date/index.js:36
+#: src/blocks/form/fields/date/index.js:37
 msgid "A field for requesting date selections with a date picker."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/date/index.js:43
+#: src/blocks/form/fields/date/index.js:44
 msgid "day"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/date/index.js:45
+#: src/blocks/form/fields/date/index.js:46
 msgid "month"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/date/index.js:47
+#: src/blocks/form/fields/date/index.js:48
 msgid "year"
 msgstr ""
 
@@ -1609,20 +1619,20 @@ msgid "Field value"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/hidden/index.js:36
+#: src/blocks/form/fields/hidden/index.js:37
 msgid "A hidden text field for collecting additional data."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/hidden/index.js:41
-#: src/blocks/form/fields/text/index.js:45
+#: src/blocks/form/fields/hidden/index.js:42
+#: src/blocks/form/fields/text/index.js:46
 msgid "input"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/form/fields/hidden/index.js:43
-#: src/blocks/form/fields/textarea/index.js:41
+#: src/blocks/form/fields/hidden/index.js:44
+#: src/blocks/form/fields/textarea/index.js:42
 #: src/blocks/highlight/index.js:29
 #: src/blocks/icon/deprecated/svgs.js:500
 #: src/blocks/icon/deprecated/svgsfocusable.js:499
@@ -1657,77 +1667,77 @@ msgid "Toggle to add a last name field."
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/name/index.js:48
+#: src/blocks/form/fields/name/index.js:49
 msgid "A text field for collecting the first and last names."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/name/index.js:55
+#: src/blocks/form/fields/name/index.js:56
 msgid "first name"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/name/index.js:57
+#: src/blocks/form/fields/name/index.js:58
 msgid "last name"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/phone/index.js:36
+#: src/blocks/form/fields/phone/index.js:37
 msgid "A phone number to allow visitors to give you a phone number."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/phone/index.js:41
+#: src/blocks/form/fields/phone/index.js:42
 msgid "telephone"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/phone/index.js:43
+#: src/blocks/form/fields/phone/index.js:44
 msgid "cellular"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/phone/index.js:45
+#: src/blocks/form/fields/phone/index.js:46
 msgid "cell"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/phone/index.js:47
+#: src/blocks/form/fields/phone/index.js:48
 msgid "mobile"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/phone/index.js:49
+#: src/blocks/form/fields/phone/index.js:50
 msgid "fax"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/form/fields/radio/index.js:42
+#: src/blocks/form/fields/radio/index.js:43
 msgid "Radio"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/radio/index.js:44
+#: src/blocks/form/fields/radio/index.js:45
 msgid "A field with multiple options where only one choice can be made."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/radio/index.js:49
+#: src/blocks/form/fields/radio/index.js:50
 msgid "choose"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/radio/index.js:51
+#: src/blocks/form/fields/radio/index.js:52
 msgid "select"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/select/index.js:40
+#: src/blocks/form/fields/select/index.js:41
 msgid "A dropdown field with multiple options where only one choice can be made."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/select/index.js:45
+#: src/blocks/form/fields/select/index.js:46
 msgid "dropdown"
 msgstr ""
 
@@ -1761,54 +1771,54 @@ msgid "button"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/text/index.js:36
+#: src/blocks/form/fields/text/index.js:37
 msgid "A text box for custom responses."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/text/index.js:41
+#: src/blocks/form/fields/text/index.js:42
 msgid "text control"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/form/fields/text/index.js:43
+#: src/blocks/form/fields/text/index.js:44
 #: src/blocks/icon/svgs.js:1826
 msgid "text box"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/form/fields/textarea/index.js:34
+#: src/blocks/form/fields/textarea/index.js:35
 msgid "Textarea"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/textarea/index.js:36
+#: src/blocks/form/fields/textarea/index.js:37
 msgid "A text box for longer responses."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/textarea/index.js:43
+#: src/blocks/form/fields/textarea/index.js:44
 msgid "message text"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/textarea/index.js:45
+#: src/blocks/form/fields/textarea/index.js:46
 msgid "multiline text"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/website/index.js:36
+#: src/blocks/form/fields/website/index.js:37
 msgid "A text field for collecting a URL."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/website/index.js:43
+#: src/blocks/form/fields/website/index.js:44
 msgid "hyperlink"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/website/index.js:45
+#: src/blocks/form/fields/website/index.js:46
 msgid "url"
 msgstr ""
 
@@ -7570,7 +7580,7 @@ msgstr ""
 msgid "Toggle to remove any bottom margin."
 msgstr ""
 
-#: src/extensions/block-patterns/index.js:34
+#: src/extensions/block-patterns/index.js:35
 msgid "Add Design Pattern"
 msgstr ""
 
