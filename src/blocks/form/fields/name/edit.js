@@ -7,7 +7,6 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import CoBlocksFieldLabel from '../field-label';
-import LabelColorControl from '../../../../components/form-label-colors/label-color-control';
 import LabelColorWrapper from '../../../../components/form-label-colors/label-color-wrapper';
 
 /**
@@ -31,7 +30,6 @@ function CoBlocksFieldName( props ) {
 					{ 'is-selected': isSelected }
 				) }
 			>
-				<LabelColorControl { ...props } />
 				<CoBlocksFieldLabel
 					required={ required }
 					label={ label }

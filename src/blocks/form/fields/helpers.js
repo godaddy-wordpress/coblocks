@@ -2,7 +2,6 @@
  * Internal dependencies
  */
 import CoBlocksFieldMultiple from './multi-field';
-import LabelColorControl from '../../../components/form-label-colors/label-color-control';
 
 /**
  * WordPress dependencies
@@ -18,7 +17,6 @@ export const editMultiField = ( type ) => ( props ) => {
 
 	return (
 		<Fragment>
-			<LabelColorControl { ...props } />
 			<CoBlocksFieldMultiple
 				{ ...props }
 				label={ label }

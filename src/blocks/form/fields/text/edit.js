@@ -2,7 +2,6 @@
  * Internal dependencies
  */
 import CoBlocksFieldLabel from '../field-label';
-import LabelColorControl from '../../../../components/form-label-colors/label-color-control';
 
 /**
  * WordPress dependencies
@@ -17,7 +16,6 @@ function CoBlocksFieldTextControl( props ) {
 	return (
 		<Fragment>
 			<div className="coblocks-field">
-				<LabelColorControl { ...props } />
 				<CoBlocksFieldLabel
 					required={ required }
 					label={ label }

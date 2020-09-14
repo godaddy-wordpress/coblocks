@@ -521,43 +521,23 @@ describe( 'Test CoBlocks Form Block', function() {
 			}
 		} );
 
-		// Set name color.
-		cy.get( '[data-type="coblocks/form"] [data-type="coblocks/field-name"]' ).click();
-		helpers.setColorSetting( 'label color', textColor );
-
-		// Set email color.
-		cy.get( '[data-type="coblocks/form"] [data-type="coblocks/field-email"]' ).click();
-		helpers.setColorSetting( 'label color', textColor );
-
-		// Set textarea color.
-		cy.get( '[data-type="coblocks/form"] [data-type="coblocks/field-textarea"]' ).click();
-		helpers.setColorSetting( 'label color', textColor );
-
-		// Set text color.
 		helpers.addFormChild( 'text' );
-		helpers.setColorSetting( 'label color', textColor );
 
-		// Set radio color.
 		helpers.addFormChild( 'radio' );
 		cy.get( '.coblocks-option__input' ).type( 'text' );
-		helpers.setColorSetting( 'label color', textColor );
 
-		// Set phone color.
 		helpers.addFormChild( 'phone' );
-		helpers.setColorSetting( 'label color', textColor );
 
-		// Set checkbox color.
 		helpers.addFormChild( 'checkbox' );
 		cy.get( '.coblocks-option__input' ).type( 'text' );
-		helpers.setColorSetting( 'label color', textColor );
 
-		// Set select color.
 		helpers.addFormChild( 'select' );
 		cy.get( '.coblocks-option__input' ).type( 'text' );
-		helpers.setColorSetting( 'label color', textColor );
 
-		// Set website color.
 		helpers.addFormChild( 'website' );
+
+		cy.get( '[data-type="coblocks/form"]' ).click( { force: true } );
+
 		helpers.setColorSetting( 'label color', textColor );
 
 		helpers.savePage();
