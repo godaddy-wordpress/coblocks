@@ -23,6 +23,7 @@ import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withNotices, ResizableBox } from '@wordpress/components';
 import { RichText } from '@wordpress/block-editor';
+import { Icon } from '@wordpress/icons';
 
 class GalleryCarouselEdit extends Component {
 	constructor() {
@@ -162,6 +163,21 @@ class GalleryCarouselEdit extends Component {
 
 		const hasImages = !! images.length;
 
+		const carouselGalleryPlaceholder = (
+			<Fragment>
+				{ ! hasImages ? noticeUI : null }
+				<GalleryPlaceholder
+					{ ...this.props }
+					label={ __( 'Carousel', 'coblocks' ) }
+					icon={ <Icon icon={ icon } /> }
+					gutter={ gutter }
+				/>
+			</Fragment> );
+
+		if ( ! hasImages ) {
+			return carouselGalleryPlaceholder;
+		}
+
 		const innerClasses = classnames(
 			'is-cropped',
 			...GalleryClasses( attributes ), {
@@ -236,21 +252,6 @@ class GalleryCarouselEdit extends Component {
 			}
 		);
 
-		const carouselGalleryPlaceholder = (
-			<Fragment>
-				{ ! hasImages ? noticeUI : null }
-				<GalleryPlaceholder
-					{ ...this.props }
-					label={ __( 'Carousel', 'coblocks' ) }
-					icon={ <Icon icon={ icon } /> }
-					gutter={ gutter }
-				/>
-			</Fragment> );
-
-		if ( ! hasImages ) {
-			return carouselGalleryPlaceholder;
-		}
-
 		return (
 			<Fragment>
 				{ isSelected &&
@@ -310,7 +311,7 @@ class GalleryCarouselEdit extends Component {
 									);
 
 									return (
-										<div className="coblocks-gallery--item" key={ img.id || img.url } onClick={ this.onItemClick }>
+										<div className="coblocks-gallery--item" role="button" tabIndex="0" key={ img.id || img.url } onKeyDown={ this.onItemClick } onClick={ this.onItemClick }>
 											<GalleryImage
 												url={ img.url }
 												alt={ img.alt }
