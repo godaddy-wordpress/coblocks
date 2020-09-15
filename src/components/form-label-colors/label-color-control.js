@@ -6,6 +6,7 @@ import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
 import { InspectorControls, withColors, PanelColorSettings } from '@wordpress/block-editor';
 import { withDispatch, withSelect } from '@wordpress/data';
+import { hasBlockSupport } from '@wordpress/blocks';
 
 /**
  * Color Settings
@@ -59,10 +60,12 @@ export default compose( [
 		const updateInnerAttributes = ( newAttributes ) => {
 			const innerItems = getBlocksByClientId(	props.clientId	)[ 0 ].innerBlocks;
 			innerItems.forEach( ( item ) => {
-				updateBlockAttributes(
-					item.clientId,
-					newAttributes
-				);
+				if ( hasBlockSupport( item.name, 'labelColor', false ) ) {
+					updateBlockAttributes(
+						item.clientId,
+						newAttributes
+					);
+				}
 			} );
 		};
 
