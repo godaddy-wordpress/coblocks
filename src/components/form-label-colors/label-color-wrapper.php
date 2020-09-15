@@ -37,7 +37,7 @@ add_filter( 'coblocks_render_label_color_wrapper_styles', 'coblocks_add_label_co
  */
 function coblocks_add_label_color_class( $classes, $attributes ) {
 
-	if ( isset( $attributes['textColor']) || isset( $attributes['customTextColor'] )) {
+	if ( isset( $attributes['textColor'] ) || isset( $attributes['customTextColor'] ) ) {
 
 		$classes[] = 'has-text-color';
 
