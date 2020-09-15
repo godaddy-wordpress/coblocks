@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { RowIcon } from '@godaddy-wordpress/coblocks-icons';
+import { RowIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
@@ -38,7 +38,7 @@ const settings = {
 	title: __( 'Row', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add a structured wrapper for column blocks, then add content blocks you’d like to the columns.', 'coblocks' ),
-	icon: <Icon icon={ RowIcon } />,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

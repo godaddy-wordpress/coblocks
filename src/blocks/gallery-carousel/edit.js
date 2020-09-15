@@ -4,11 +4,11 @@
 import classnames from 'classnames';
 import filter from 'lodash/filter';
 import Flickity from 'react-flickity-component';
+import { GalleryCarouselIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
  */
-import { icon } from './';
 import Inspector from './inspector';
 import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
@@ -242,7 +242,7 @@ class GalleryCarouselEdit extends Component {
 				<GalleryPlaceholder
 					{ ...this.props }
 					label={ __( 'Carousel', 'coblocks' ) }
-					icon={ icon }
+					icon={ <Icon icon={ icon } /> }
 					gutter={ gutter }
 				/>
 			</Fragment> );

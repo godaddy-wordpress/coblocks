@@ -3,6 +3,7 @@
  */
 import classnames from 'classnames';
 import { debounce, map } from 'lodash';
+import { GifIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies
@@ -10,16 +11,15 @@ import { debounce, map } from 'lodash';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { Placeholder, Spinner, ResizableBox } from '@wordpress/components';
+import { Placeholder, Spinner, ResizableBox, Icon } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
-import { BlockIcon, RichText } from '@wordpress/block-editor';
+import { RichText } from '@wordpress/block-editor';
 
 /**
  * Internal dependencies
  */
 import Controls from './controls';
-import icons from './../../utils/icons';
-import icon from './icon';
+import icons from './icons.js';
 import Inspector from './inspector';
 import Size from './size';
 
@@ -284,8 +284,8 @@ class Edit extends Component {
 			<Fragment>
 				<Placeholder
 					key="placeholder"
-					icon={ <BlockIcon icon={ icon } /> }
 					label="Gif"
+					icon={ <Icon icon={ GifIcon } /> }
 					instructions={ __( 'Search for that perfect gif on Giphy', 'coblocks' ) }
 					className={ className }>
 					{ icons.giphy }

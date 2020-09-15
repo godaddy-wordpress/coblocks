@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { OpenIcon } from '@godaddy-wordpress/coblocks-icons';
+import { OpenIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies
@@ -24,7 +24,7 @@ class Controls extends Component {
 
 		const customControls = [
 			{
-				icon: <Icon icon={ OpenIcon } />,
+				icon: <Icon icon={ icon } />,
 				/* translators: toggle label to display the accordion open */
 				title: __( 'Display as open', 'coblocks' ),
 				onClick: () => setAttributes( { open: ! open } ),

@@ -1,9 +1,13 @@
 /**
+ * External dependencies
+ */
+import { MediaCardIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import edit from './edit';
-import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
@@ -13,6 +17,7 @@ import { BackgroundAttributes } from '../../components/background';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
 
 /**
  * Block constants
@@ -30,7 +35,7 @@ const settings = {
 	title: __( 'Media Card', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add an image or video with an offset card side-by-side.', 'coblocks' ),
-	icon,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

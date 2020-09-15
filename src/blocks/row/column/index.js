@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { ColumnIcon } from '@godaddy-wordpress/coblocks-icons';
+import { ColumnIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
@@ -35,7 +35,7 @@ const settings = {
 	title: __( 'Column', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'An immediate child of a row.', 'coblocks' ),
-	icon: <Icon icon={ ColumnIcon } />,
+	icon: <Icon icon={ icon } />,
 	parent: [ 'coblocks/row' ],
 	supports: {
 		inserter: false,

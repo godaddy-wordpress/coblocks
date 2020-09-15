@@ -11,6 +11,7 @@ import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
 import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
 import { Toolbar, ToolbarButton, Popover, MenuItem } from '@wordpress/components';
+import { edit, trash } from '@wordpress/icons';
 
 /**
  * Background image block toolbar controls.
@@ -47,7 +48,7 @@ function BackgroundControls( props ) {
 								render={ ( { open } ) => (
 									<MenuItem
 										className="components-dropdown-menu__menu-item"
-										icon="edit"
+										icon={ edit }
 										role="menuitem"
 										onClick={ open } >
 										{ __( 'Edit background', 'coblocks' ) }
@@ -56,7 +57,7 @@ function BackgroundControls( props ) {
 							/>
 							<MenuItem
 								className="components-dropdown-menu__menu-item"
-								icon="trash"
+								icon={ trash }
 								role="menuitem"
 								onClick={ () => {
 									setAttributes( {

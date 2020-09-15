@@ -13,7 +13,8 @@ import * as helper from './../../utils/helper';
  */
 import { __, sprintf } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
-import { MediaPlaceholder, BlockIcon } from '@wordpress/block-editor';
+import { MediaPlaceholder } from '@wordpress/block-editor';
+import { Icon } from '@wordpress/components';
 import { mediaUpload } from '@wordpress/editor';
 import { getBlobByURL, isBlobURL, revokeBlobURL } from '@wordpress/blob';
 
@@ -89,7 +90,7 @@ class GalleryPlaceholder extends Component {
 					isAppender={ hasImages }
 					className="coblocks-gallery--figure"
 					disableMediaButtons={ hasImages && ! isSelected }
-					icon={ ! hasImages && <BlockIcon icon={ this.props.icon } /> }
+					icon={ ! hasImages && <Icon icon={ this.props.icon } /> }
 					labels={ {
 						title: ! hasImages && sprintf(
 							/* translators: %s: Type of gallery */
