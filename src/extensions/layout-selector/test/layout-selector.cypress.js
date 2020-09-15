@@ -10,12 +10,6 @@ import coblocksLayoutSelector from './cypress-layouts';
 
 
 describe( 'Extension: Layout Selector', () => {
-	beforeEach( () => {
-		cy.window().then( ( win ) => {
-			win.coblocksLayoutSelector = coblocksLayoutSelector;
-		} )
-	} );
-
 	it( 'shows modal on add new "page" post_type', () => {
 		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
 		helpers.disableGutenbergFeatures();
@@ -29,6 +23,10 @@ describe( 'Extension: Layout Selector', () => {
 		helpers.disableGutenbergFeatures();
 
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
+
+		cy.window().then( ( win ) => {
+			win.coblocksLayoutSelector = coblocksLayoutSelector;
+		} )
 
 		// Click "About" category.
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(1)' ).find( 'a' ).click();
@@ -50,6 +48,10 @@ describe( 'Extension: Layout Selector', () => {
 	it( 'inserts layout into page', () => {
 		helpers.clearBlocks();
 		helpers.disableGutenbergFeatures();
+
+		cy.window().then( ( win ) => {
+			win.coblocksLayoutSelector = coblocksLayoutSelector;
+		} )
 
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 
