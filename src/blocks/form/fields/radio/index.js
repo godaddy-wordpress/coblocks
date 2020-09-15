@@ -1,14 +1,19 @@
 /**
+ * External dependencies
+ */
+import { FormRadioIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import { editMultiField } from '../helpers';
-import icon from './icon';
 import transforms from './transforms';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
 
 /**
  * Block constants
@@ -43,7 +48,7 @@ const settings = {
 	title: __( 'Radio', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'A field with multiple options where only one choice can be made.', 'coblocks' ),
-	icon,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

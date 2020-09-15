@@ -4,11 +4,11 @@
 import classnames from 'classnames';
 import filter from 'lodash/filter';
 import Masonry from 'react-masonry-component';
+import { GalleryMasonryIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
  */
-import { icon } from './';
 import Inspector from './inspector';
 import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
@@ -22,7 +22,7 @@ import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
-import { withNotices } from '@wordpress/components';
+import { withNotices, Icon } from '@wordpress/components';
 
 /**
  * Block consts
@@ -178,7 +178,7 @@ class GalleryMasonryEdit extends Component {
 				<GalleryPlaceholder
 					{ ...this.props }
 					label={ __( 'Masonry', 'coblocks' ) }
-					icon={ icon }
+					icon={ <Icon icon={ icon } /> }
 					gutter={ gutter }
 				/>
 			</Fragment>

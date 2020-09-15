@@ -1,13 +1,18 @@
 /**
+ * External dependencies
+ */
+import { FormSubmitIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import edit from './edit';
-import icon from './icon';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
 
 /**
  * Block constants
@@ -47,7 +52,7 @@ const settings = {
 	title: __( 'Submit', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'A button for submitting form data.', 'coblocks' ),
-	icon,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

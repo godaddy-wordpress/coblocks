@@ -1,15 +1,15 @@
 /**
- * Internal dependencies
- */
-import icons from './icons';
-
-/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { BlockControls } from '@wordpress/block-editor';
-import { Toolbar } from '@wordpress/components';
+import { Toolbar, Icon } from '@wordpress/components';
+
+/**
+ * External dependencies
+ */
+import { FlipHorizontalIcon, FlipVerticalIcon } from '@godaddy-wordpress/coblocks-icons';
 
 class Controls extends Component {
 	render() {
@@ -24,12 +24,12 @@ class Controls extends Component {
 		} = attributes;
 
 		const toolbarControls = [ {
-			icon: icons.flipY,
+			icon: <Icon icon={ FlipHorizontalIcon } />,
 			title: __( 'Flip horiztonally', 'coblocks' ),
 			isActive: !! verticalFlip,
 			onClick: () => setAttributes( { verticalFlip: ! verticalFlip } ),
 		}, {
-			icon: icons.flipX,
+			icon: <Icon icon={ FlipVerticalIcon } />,
 			title: __( 'Flip vertically', 'coblocks' ),
 			isActive: !! horizontalFlip,
 			onClick: () => setAttributes( { horizontalFlip: ! horizontalFlip } ),

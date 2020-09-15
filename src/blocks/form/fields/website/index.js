@@ -1,14 +1,19 @@
 /**
+ * External dependencies
+ */
+import { FormWebsiteIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import edit from './edit';
-import icon from './icon';
 import transforms from './transforms';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
 
 /**
  * Block constants
@@ -35,7 +40,7 @@ const settings = {
 	title: __( 'Website', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'A text field for collecting a URL.', 'coblocks' ),
-	icon,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */
