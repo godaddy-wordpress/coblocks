@@ -58,15 +58,12 @@ export default compose( [
 
 		const updateInnerAttributes = ( newAttributes ) => {
 			const innerItems = getBlocksByClientId(	props.clientId	)[ 0 ].innerBlocks;
-			const exculdeBlocks = [ 'coblocks/field-hidden', 'coblocks/field-submit-button' ];
-			innerItems
-				.filter( ( item ) => exculdeBlocks.indexOf( item.name ) === -1 )
-				.forEach( ( item ) => {
-					updateBlockAttributes(
-						item.clientId,
-						newAttributes
-					);
-				} );
+			innerItems.forEach( ( item ) => {
+				updateBlockAttributes(
+					item.clientId,
+					newAttributes
+				);
+			} );
 		};
 
 		return {
