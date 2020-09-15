@@ -3,12 +3,6 @@
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
-/**
- * Internal dependencies.
- */
-import coblocksLayoutSelector from './cypress-layouts';
-
-
 describe( 'Extension: Layout Selector', () => {
 	it( 'shows modal on add new "page" post_type', () => {
 		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
@@ -19,14 +13,10 @@ describe( 'Extension: Layout Selector', () => {
 	} );
 
 	it( 'loads layouts of each category', () => {
-		helpers.clearBlocks();
+		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
 		helpers.disableGutenbergFeatures();
 
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
-
-		cy.window().then( ( win ) => {
-			win.coblocksLayoutSelector = coblocksLayoutSelector;
-		} )
 
 		// Click "About" category.
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(1)' ).find( 'a' ).click();
@@ -46,23 +36,19 @@ describe( 'Extension: Layout Selector', () => {
 	} );
 
 	it( 'inserts layout into page', () => {
-		helpers.clearBlocks();
+		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
 		helpers.disableGutenbergFeatures();
-
-		cy.window().then( ( win ) => {
-			win.coblocksLayoutSelector = coblocksLayoutSelector;
-		} )
 
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(1)' ).find( 'a' ).click();
-		cy.get( '.coblocks-layout-selector__layout' ).should('exist');
+		cy.get( '.coblocks-layout-selector__layout' ).should( 'exist' );
 		cy.get( '.coblocks-layout-selector__layout' ).first().click();
 
 		cy.get( '.editor-post-title__block' ).contains( 'About Test' );
 		cy.get( '.wp-block' ).contains( 'Test About Layout.' );
 
-		cy.get( `[data-type="core/image"] img[src^="${Cypress.env('testURL')}"]` );
+		cy.get( `[data-type="core/image"] img[src^="${ Cypress.env( 'testURL' ) }"]` );
 	} );
 
 	it( 'inserts blank layout into page', () => {
@@ -126,28 +112,29 @@ describe( 'Extension: Layout Selector', () => {
 		cy.get( '.wp-block' ).contains( 'Test About Layout.' );
 
 		// Only passes if the image was successfully uploaded to site.
-		cy.get( `[data-type="core/image"] img[src^="${Cypress.env('testURL')}"]` ).click();
+		cy.get( `[data-type="core/image"] img[src^="${ Cypress.env( 'testURL' ) }"]` ).click();
 	} );
-	
+
 	it( 'does not open modal when editing a draft post', () => {
 		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
 		helpers.disableGutenbergFeatures();
 
 		cy.get( '.coblocks-layout-selector__layout' ).first().click();
+		cy.get( '[data-type="core/image"] img[src*="http"]' ).should( 'exist' );
 		cy.get( '.editor-post-save-draft' ).click();
 
 		// Reload the post.
 		let postID;
+		// eslint-disable-next-line jest/valid-expect-in-promise
 		cy.window()
-			.then( (win) => {
-				postID = win.wp.data.select( 'core/editor' ).getCurrentPostId()
+			.then( ( win ) => {
+				postID = win.wp.data.select( 'core/editor' ).getCurrentPostId();
 			} )
 			.then( () => {
-				helpers.goTo( `/wp-admin/post.php?post=${postID}&action=edit` );
+				helpers.goTo( `/wp-admin/post.php?post=${ postID }&action=edit` );
 
 				helpers.disableGutenbergFeatures();
 				cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
 			} );
 	} );
-
 } );
