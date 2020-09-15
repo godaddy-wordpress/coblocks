@@ -4,6 +4,12 @@
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Form Block', function() {
+	//setup From block color data.
+	const formData = {
+		textColor: '#ffffff',
+		textColorRGB: 'rgb(255, 255, 255)',
+	};
+
 	/**
 	 * Test the coblock contact template.
 	 */
@@ -491,5 +497,67 @@ describe( 'Test CoBlocks Form Block', function() {
 		cy.get( '.coblocks-form__submitted' ).contains( 'Thank you for submitting this form!' );
 
 		helpers.editPage();
+	} );
+
+	/**
+	 * Test that we can add a Form block to the content, adjust colors
+	 * and are able to successfully save the block without errors.
+	 */
+	it( 'Test that color values are able to set and save.', function() {
+		const { textColor, textColorRGB } = formData;
+		helpers.addBlockToPost( 'coblocks/form', true );
+
+		cy.get( '[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
+			if ( placeholder.prop( 'outerHTML' ).includes( 'block-editor-block-variation-picker' ) ) {
+				cy.get( placeholder )
+					.find( '.block-editor-block-variation-picker__variations li:first-child' )
+					.find( 'button' ).click( { force: true } );
+			} else {
+				cy.get( '.block-editor-inner-blocks__template-picker-options li:first-child' )
+					.click();
+
+				cy.get( '.block-editor-inner-blocks__template-picker-options' )
+					.should( 'not.exist' );
+			}
+		} );
+
+		helpers.addFormChild( 'text' );
+
+		helpers.addFormChild( 'radio' );
+		cy.get( '.coblocks-option__input' ).type( 'text' );
+
+		helpers.addFormChild( 'phone' );
+
+		helpers.addFormChild( 'checkbox' );
+		cy.get( '.coblocks-option__input' ).type( 'text' );
+
+		helpers.addFormChild( 'select' );
+		cy.get( '.coblocks-option__input' ).type( 'text' );
+
+		helpers.addFormChild( 'website' );
+
+		cy.get( '[data-type="coblocks/form"]' ).click( { force: true } );
+
+		helpers.setColorSetting( 'label color', textColor );
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/form' );
+
+		helpers.viewPage();
+
+		cy.get( '.coblocks-form' )
+			.should( 'exist' );
+
+		/**
+		 * Checkbox === select
+		 * Select   === select
+		 * Radio    === choose-one
+		 * Textarea === message.
+		 */
+		[ 'text', 'email', 'website', 'select', 'phone', 'choose-one', 'message', 'name' ].forEach( ( field ) => {
+			cy.get( `label[for="${field}"]` )
+				.should( 'have.css', 'color', textColorRGB );
+		} );
 	} );
 } );

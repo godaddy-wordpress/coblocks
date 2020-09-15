@@ -62,6 +62,7 @@ const settings = {
 		reusable: false,
 		html: false,
 		customClassName: false,
+		labelColor: true,
 	},
 	attributes,
 	transforms,

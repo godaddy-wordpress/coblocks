@@ -29,6 +29,7 @@ import './extensions/block-patterns';
 
 // Internal Extensions / Components
 import './components/gutter-control';
+import './components/form-label-colors';
 
 // Formats
 import './formats';
