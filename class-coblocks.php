@@ -121,6 +121,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 
 			// Require CoBlocks custom filters.
 			require_once COBLOCKS_PLUGIN_DIR . 'src/components/gutter-control/gutter-wrapper.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'src/components/form-label-colors/label-color-wrapper.php';
 
 			if ( is_admin() ) {
 				require_once COBLOCKS_PLUGIN_DIR . 'src/extensions/layout-selector/index.php';
