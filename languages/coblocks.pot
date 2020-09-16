@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-09-14T16:53:14+00:00\n"
+"POT-Creation-Date: 2020-09-16T01:12:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -68,8 +68,8 @@ msgid "Form submission from [%1$s]"
 msgstr ""
 
 #: includes/class-coblocks-form.php:63
-#: src/blocks/form/edit.js:319
-#: src/blocks/form/index.js:17
+#: src/blocks/form/edit.js:320
+#: src/blocks/form/index.js:22
 msgid "Your message was sent:"
 msgstr ""
 
@@ -84,9 +84,9 @@ msgstr ""
 #. translators: block name
 #. translators: icon label
 #: includes/class-coblocks-form.php:229
-#: includes/class-coblocks-form.php:318
-#: src/blocks/form/fields/email/index.js:21
-#: src/blocks/form/fields/email/index.js:34
+#: includes/class-coblocks-form.php:321
+#: src/blocks/form/fields/email/index.js:26
+#: src/blocks/form/fields/email/index.js:39
 #: src/blocks/icon/deprecated/svgs.js:688
 #: src/blocks/icon/deprecated/svgs.js:706
 #: src/blocks/icon/deprecated/svgsfocusable.js:687
@@ -98,110 +98,110 @@ msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:258
-#: src/blocks/form/fields/name/index.js:22
-#: src/blocks/form/fields/name/index.js:47
+#: src/blocks/form/fields/name/index.js:27
+#: src/blocks/form/fields/name/index.js:52
 #: src/blocks/form/fields/name/transforms.js:14
 msgid "Name"
 msgstr ""
 
 #: includes/class-coblocks-form.php:262
-#: src/blocks/form/fields/name/index.js:34
+#: src/blocks/form/fields/name/index.js:39
 msgid "First"
 msgstr ""
 
 #: includes/class-coblocks-form.php:263
-#: src/blocks/form/fields/name/index.js:38
+#: src/blocks/form/fields/name/index.js:43
 msgid "Last"
 msgstr ""
 
-#: includes/class-coblocks-form.php:348
-#: src/blocks/form/fields/textarea/index.js:22
+#: includes/class-coblocks-form.php:351
+#: src/blocks/form/fields/textarea/index.js:27
 #: src/blocks/form/fields/textarea/transforms.js:14
 msgid "Message"
 msgstr ""
 
 #. translators: block name
 #. translators: block style
-#: includes/class-coblocks-form.php:379
-#: src/blocks/form/fields/text/index.js:22
-#: src/blocks/form/fields/text/index.js:35
+#: includes/class-coblocks-form.php:382
+#: src/blocks/form/fields/text/index.js:27
+#: src/blocks/form/fields/text/index.js:40
 #: src/blocks/form/fields/text/transforms.js:14
-#: src/blocks/share/index.js:46
-#: src/blocks/social-profiles/index.js:51
+#: src/blocks/share/index.js:51
+#: src/blocks/social-profiles/index.js:56
 msgid "Text"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:420
-#: src/blocks/form/fields/date/index.js:22
-#: src/blocks/form/fields/date/index.js:35
+#: includes/class-coblocks-form.php:423
+#: src/blocks/form/fields/date/index.js:27
+#: src/blocks/form/fields/date/index.js:40
 #: src/blocks/form/fields/date/transforms.js:14
 msgid "Date"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:451
-#: src/blocks/form/fields/phone/index.js:22
-#: src/blocks/form/fields/phone/index.js:35
+#: includes/class-coblocks-form.php:454
+#: src/blocks/form/fields/phone/index.js:27
+#: src/blocks/form/fields/phone/index.js:40
 #: src/blocks/form/fields/phone/transforms.js:14
 msgid "Phone"
 msgstr ""
 
-#: includes/class-coblocks-form.php:490
-#: src/blocks/form/fields/radio/index.js:22
+#: includes/class-coblocks-form.php:493
+#: src/blocks/form/fields/radio/index.js:27
 #: src/blocks/form/fields/radio/transforms.js:14
 msgid "Choose one"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:554
-#: includes/class-coblocks-form.php:603
-#: src/blocks/form/fields/select/index.js:22
-#: src/blocks/form/fields/select/index.js:39
+#: includes/class-coblocks-form.php:557
+#: includes/class-coblocks-form.php:606
+#: src/blocks/form/fields/select/index.js:27
+#: src/blocks/form/fields/select/index.js:44
 #: src/blocks/form/fields/select/transforms.js:14
 msgid "Select"
 msgstr ""
 
-#: includes/class-coblocks-form.php:634
+#: includes/class-coblocks-form.php:637
 msgid "Please select at least one checkbox."
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:685
-#: src/blocks/form/fields/website/index.js:22
-#: src/blocks/form/fields/website/index.js:35
+#: includes/class-coblocks-form.php:688
+#: src/blocks/form/fields/website/index.js:27
+#: src/blocks/form/fields/website/index.js:40
 #: src/blocks/form/fields/website/transforms.js:14
 msgid "Website"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:719
-#: src/blocks/form/fields/hidden/index.js:22
-#: src/blocks/form/fields/hidden/index.js:35
+#: includes/class-coblocks-form.php:722
+#: src/blocks/form/fields/hidden/index.js:27
+#: src/blocks/form/fields/hidden/index.js:40
 #: src/blocks/form/fields/hidden/transforms.js:14
 msgid "Hidden"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:798
-#: src/blocks/form/edit.js:144
-#: src/blocks/form/fields/submit-button/index.js:21
-#: src/blocks/form/fields/submit-button/index.js:29
-#: src/blocks/form/fields/submit-button/index.js:47
+#: includes/class-coblocks-form.php:803
+#: src/blocks/form/edit.js:145
+#: src/blocks/form/fields/submit-button/index.js:26
+#: src/blocks/form/fields/submit-button/index.js:34
+#: src/blocks/form/fields/submit-button/index.js:52
 msgid "Submit"
 msgstr ""
 
-#: includes/class-coblocks-form.php:1029
-#: src/blocks/form/edit.js:312
+#: includes/class-coblocks-form.php:1034
+#: src/blocks/form/edit.js:313
 msgid "name"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: includes/class-coblocks-form.php:1041
-#: src/blocks/form/edit.js:306
-#: src/blocks/form/fields/name/index.js:54
-#: src/blocks/form/index.js:52
+#: includes/class-coblocks-form.php:1046
+#: src/blocks/form/edit.js:307
+#: src/blocks/form/fields/name/index.js:59
+#: src/blocks/form/index.js:57
 #: src/blocks/icon/deprecated/svgs.js:691
 #: src/blocks/icon/deprecated/svgs.js:709
 #: src/blocks/icon/deprecated/svgs.js:728
@@ -378,24 +378,24 @@ msgid "Write accordion item title…"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/accordion/accordion-item/index.js:21
+#: src/blocks/accordion/accordion-item/index.js:26
 msgid "Accordion Item"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/accordion/accordion-item/index.js:23
+#: src/blocks/accordion/accordion-item/index.js:28
 msgid "Add collapsable accordion items to accordions."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/accordion/accordion-item/index.js:28
-#: src/blocks/accordion/index.js:29
+#: src/blocks/accordion/accordion-item/index.js:33
+#: src/blocks/accordion/index.js:34
 msgid "tabs"
 msgstr ""
 
 #. translators: block keyword (abbreviation for "frequently asked questions")
-#: src/blocks/accordion/accordion-item/index.js:30
-#: src/blocks/accordion/index.js:31
+#: src/blocks/accordion/accordion-item/index.js:35
+#: src/blocks/accordion/index.js:36
 msgid "faq"
 msgstr ""
 
@@ -430,6 +430,7 @@ msgstr ""
 #: src/blocks/shape-divider/inspector.js:92
 #: src/blocks/share/inspector.js:200
 #: src/blocks/social-profiles/inspector.js:212
+#: src/components/form-label-colors/label-color-control.js:36
 #: src/extensions/coblocks-settings/coblocks-settings-modal.js:158
 #: src/extensions/colors/index.js:59
 msgid "Color settings"
@@ -481,12 +482,12 @@ msgid "Add accordion item"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/accordion/index.js:22
+#: src/blocks/accordion/index.js:27
 msgid "Accordion"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/accordion/index.js:24
+#: src/blocks/accordion/index.js:29
 msgid "Organize content within collapsable accordion items."
 msgstr ""
 
@@ -518,25 +519,25 @@ msgid "Write text…"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/alert/index.js:23
+#: src/blocks/alert/index.js:28
 msgid "Alert"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/alert/index.js:25
+#: src/blocks/alert/index.js:30
 msgid "Provide contextual feedback messages or notices."
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/alert/index.js:30
+#: src/blocks/alert/index.js:35
 #: src/blocks/icon/svgs.js:1112
 msgid "notice"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/alert/index.js:32
+#: src/blocks/alert/index.js:37
 #: src/blocks/icon/deprecated/svgs.js:732
 #: src/blocks/icon/deprecated/svgsfocusable.js:731
 #: src/blocks/icon/svgs.js:673
@@ -547,30 +548,30 @@ msgid "message"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/alert/index.js:38
+#: src/blocks/alert/index.js:43
 msgid "Info"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/alert/index.js:44
+#: src/blocks/alert/index.js:49
 msgid "Success"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/alert/index.js:49
+#: src/blocks/alert/index.js:54
 msgid "Warning"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/alert/index.js:54
+#: src/blocks/alert/index.js:59
 msgid "Error"
 msgstr ""
 
-#: src/blocks/alert/index.js:64
+#: src/blocks/alert/index.js:69
 msgid "This is an alert block"
 msgstr ""
 
-#: src/blocks/alert/index.js:65
+#: src/blocks/alert/index.js:70
 msgid "An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action."
 msgstr ""
 
@@ -599,32 +600,32 @@ msgid "Author link…"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/author/index.js:23
+#: src/blocks/author/index.js:28
 msgid "Author"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/author/index.js:25
+#: src/blocks/author/index.js:30
 msgid "Add an author biography to build credibility and authority."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/author/index.js:30
+#: src/blocks/author/index.js:35
 msgid "biography"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/author/index.js:32
+#: src/blocks/author/index.js:37
 msgid "profile"
 msgstr ""
 
 #. translators: example female name
-#: src/blocks/author/index.js:37
+#: src/blocks/author/index.js:42
 msgid "Jane Doe"
 msgstr ""
 
 #. translators: example biography
-#: src/blocks/author/index.js:39
+#: src/blocks/author/index.js:44
 msgid "Born to express, not to impress. A maker making the world I want."
 msgstr ""
 
@@ -645,19 +646,19 @@ msgstr ""
 
 #. translators: block keyword
 #: src/blocks/buttons/index.js:30
-#: src/blocks/form/fields/website/index.js:42
+#: src/blocks/form/fields/website/index.js:47
 msgid "link"
 msgstr ""
 
 #. translators: block keyword (abbreviation for "call to action")
 #: src/blocks/buttons/index.js:32
-#: src/blocks/hero/index.js:44
+#: src/blocks/hero/index.js:49
 msgid "cta"
 msgstr ""
 
 #. translators: block keyword
 #: src/blocks/buttons/index.js:34
-#: src/blocks/hero/index.js:46
+#: src/blocks/hero/index.js:51
 msgid "call to action"
 msgstr ""
 
@@ -712,7 +713,7 @@ msgstr ""
 #. translators: icon keyword
 #: src/blocks/click-to-tweet/index.js:30
 #: src/blocks/icon/svgs.js:656
-#: src/blocks/social-profiles/index.js:30
+#: src/blocks/social-profiles/index.js:35
 msgid "share"
 msgstr ""
 
@@ -735,38 +736,38 @@ msgid "Button Color"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/dynamic-separator/index.js:23
+#: src/blocks/dynamic-separator/index.js:28
 msgid "Dynamic HR"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/dynamic-separator/index.js:25
+#: src/blocks/dynamic-separator/index.js:30
 msgid "Add a resizable spacer between other blocks."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/dynamic-separator/index.js:31
+#: src/blocks/dynamic-separator/index.js:36
 msgid "spacer"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/dynamic-separator/index.js:33
-#: src/blocks/shape-divider/index.js:32
+#: src/blocks/dynamic-separator/index.js:38
+#: src/blocks/shape-divider/index.js:37
 msgid "separator"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/dynamic-separator/index.js:39
+#: src/blocks/dynamic-separator/index.js:44
 msgid "Dot"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/dynamic-separator/index.js:45
+#: src/blocks/dynamic-separator/index.js:50
 msgid "Line"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/dynamic-separator/index.js:50
+#: src/blocks/dynamic-separator/index.js:55
 msgid "Fullwidth"
 msgstr ""
 
@@ -820,8 +821,8 @@ msgid "Enter URL here…"
 msgstr ""
 
 #: src/blocks/events/edit.js:185
-#: src/blocks/post-carousel/edit.js:225
-#: src/blocks/posts/edit.js:334
+#: src/blocks/post-carousel/edit.js:226
+#: src/blocks/posts/edit.js:336
 msgid "Use URL"
 msgstr ""
 
@@ -862,23 +863,23 @@ msgstr ""
 msgid "An event within the events block."
 msgstr ""
 
-#: src/blocks/events/index.js:21
+#: src/blocks/events/index.js:26
 msgctxt "block name"
 msgid "Events"
 msgstr ""
 
-#: src/blocks/events/index.js:22
+#: src/blocks/events/index.js:27
 msgid "Add a list of events or display events from a public calendar."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/events/index.js:27
-#: src/blocks/form/fields/date/index.js:42
+#: src/blocks/events/index.js:32
+#: src/blocks/form/fields/date/index.js:47
 msgid "calendar"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/events/index.js:29
+#: src/blocks/events/index.js:34
 msgid "date"
 msgstr ""
 
@@ -937,12 +938,12 @@ msgid "This is a feature block that you can use to highlight features."
 msgstr ""
 
 #. translators: block name
-#: src/blocks/features/feature/index.js:29
+#: src/blocks/features/feature/index.js:34
 msgid "Feature"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/features/feature/index.js:31
+#: src/blocks/features/feature/index.js:36
 msgid "A singular child column within a parent features block."
 msgstr ""
 
@@ -963,12 +964,12 @@ msgid "Padding"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/features/index.js:30
+#: src/blocks/features/index.js:36
 msgid "Features"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/features/index.js:32
+#: src/blocks/features/index.js:38
 msgid "Add up to four columns of small notes for your product or service."
 msgstr ""
 
@@ -1102,19 +1103,19 @@ msgid "$0.00"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/food-and-drinks/food-item/index.js:22
+#: src/blocks/food-and-drinks/food-item/index.js:27
 msgid "Food Item"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/food-and-drinks/food-item/index.js:24
+#: src/blocks/food-and-drinks/food-item/index.js:29
 msgid "A food and drink item within the Food & Drinks block."
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/food-and-drinks/food-item/index.js:29
-#: src/blocks/food-and-drinks/index.js:31
+#: src/blocks/food-and-drinks/food-item/index.js:34
+#: src/blocks/food-and-drinks/index.js:36
 #: src/blocks/icon/deprecated/svgs.js:901
 #: src/blocks/icon/deprecated/svgsfocusable.js:900
 #: src/blocks/icon/svgs.js:900
@@ -1186,18 +1187,18 @@ msgid "Focal point"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/food-and-drinks/index.js:22
+#: src/blocks/food-and-drinks/index.js:27
 msgid "Food & Drink"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/food-and-drinks/index.js:24
+#: src/blocks/food-and-drinks/index.js:29
 msgid "Display a menu or price list."
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/food-and-drinks/index.js:29
+#: src/blocks/food-and-drinks/index.js:34
 #: src/blocks/icon/deprecated/svgs.js:903
 #: src/blocks/icon/deprecated/svgsfocusable.js:902
 #: src/blocks/icon/svgs.js:902
@@ -1410,45 +1411,45 @@ msgid "Book Appointment"
 msgstr ""
 
 #. translators: %s: placeholder for an email address
-#: src/blocks/form/edit.js:200
+#: src/blocks/form/edit.js:201
 msgid "%s is not a valid email address."
 msgstr ""
 
 #. translators: %s1: placeholder for an email address. %s2: placeholder for an email address
-#: src/blocks/form/edit.js:210
+#: src/blocks/form/edit.js:211
 msgid "%s and %s are not valid email addresses."
 msgstr ""
 
 #. translators: %s1: placeholder for comma separated email addresses
-#: src/blocks/form/edit.js:218
+#: src/blocks/form/edit.js:219
 msgid "%s are not valid email addresses."
 msgstr ""
 
-#: src/blocks/form/edit.js:284
+#: src/blocks/form/edit.js:285
 msgid "Email address"
 msgstr ""
 
-#: src/blocks/form/edit.js:285
+#: src/blocks/form/edit.js:286
 msgid "name@example.com"
 msgstr ""
 
-#: src/blocks/form/edit.js:290
+#: src/blocks/form/edit.js:291
 msgid "Enter the email address where emails should be sent to."
 msgstr ""
 
-#: src/blocks/form/edit.js:296
+#: src/blocks/form/edit.js:297
 msgid "Subject"
 msgstr ""
 
-#: src/blocks/form/edit.js:301
+#: src/blocks/form/edit.js:302
 msgid "You may use the following tags in the subject field: "
 msgstr ""
 
-#: src/blocks/form/edit.js:318
+#: src/blocks/form/edit.js:319
 msgid "Success message"
 msgstr ""
 
-#: src/blocks/form/edit.js:323
+#: src/blocks/form/edit.js:324
 msgid "Form submission confirmation text."
 msgstr ""
 
@@ -1499,29 +1500,29 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: src/blocks/form/edit.js:487
+#: src/blocks/form/edit.js:488
 #: src/blocks/row/edit.js:328
 msgid "Select a variation to start with."
 msgstr ""
 
 #. translators: block name
 #. translators: block style
-#: src/blocks/form/fields/checkbox/index.js:22
-#: src/blocks/form/fields/checkbox/index.js:43
+#: src/blocks/form/fields/checkbox/index.js:27
+#: src/blocks/form/fields/checkbox/index.js:48
 #: src/blocks/form/fields/checkbox/transforms.js:14
 #: src/extensions/list-styles/index.js:25
 msgid "Checkbox"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/checkbox/index.js:45
+#: src/blocks/form/fields/checkbox/index.js:50
 msgid "A checkbox field with multiple options where multiple choices can be made."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/checkbox/index.js:50
-#: src/blocks/form/fields/radio/index.js:54
-#: src/blocks/form/fields/select/index.js:48
+#: src/blocks/form/fields/checkbox/index.js:55
+#: src/blocks/form/fields/radio/index.js:59
+#: src/blocks/form/fields/select/index.js:53
 msgid "option"
 msgstr ""
 
@@ -1534,38 +1535,38 @@ msgid "Remove Option"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/date/index.js:37
+#: src/blocks/form/fields/date/index.js:42
 msgid "A field for requesting date selections with a date picker."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/date/index.js:44
+#: src/blocks/form/fields/date/index.js:49
 msgid "day"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/date/index.js:46
+#: src/blocks/form/fields/date/index.js:51
 msgid "month"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/date/index.js:48
+#: src/blocks/form/fields/date/index.js:53
 msgid "year"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/email/index.js:36
+#: src/blocks/form/fields/email/index.js:41
 msgid "A field for collecting a validated email address."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/email/index.js:41
+#: src/blocks/form/fields/email/index.js:46
 msgid "e-mail"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/form/fields/email/index.js:43
+#: src/blocks/form/fields/email/index.js:48
 #: src/blocks/icon/deprecated/svgs.js:695
 #: src/blocks/icon/deprecated/svgs.js:713
 #: src/blocks/icon/deprecated/svgs.js:730
@@ -1581,32 +1582,32 @@ msgstr ""
 msgid "mail"
 msgstr ""
 
-#: src/blocks/form/fields/field-label.js:22
-#: src/blocks/form/fields/name/edit.js:49
-#: src/blocks/form/fields/name/edit.js:61
+#: src/blocks/form/fields/field-label.js:33
+#: src/blocks/form/fields/name/edit.js:59
+#: src/blocks/form/fields/name/edit.js:78
 msgid "Add label…"
 msgstr ""
 
-#: src/blocks/form/fields/field-label.js:30
+#: src/blocks/form/fields/field-label.js:43
 msgid "Required"
 msgstr ""
 
-#: src/blocks/form/fields/helpers.js:27
+#: src/blocks/form/fields/helpers.js:35
 msgid "Display settings"
 msgstr ""
 
 #. translators: field type eg: checkbox
-#: src/blocks/form/fields/helpers.js:31
+#: src/blocks/form/fields/helpers.js:39
 msgid "Inline %s"
 msgstr ""
 
 #. translators: field type eg: checkbox
-#: src/blocks/form/fields/helpers.js:39
+#: src/blocks/form/fields/helpers.js:47
 msgid "Displaying the %s inline."
 msgstr ""
 
 #. translators: field type eg: checkbox
-#: src/blocks/form/fields/helpers.js:43
+#: src/blocks/form/fields/helpers.js:51
 msgid "Toggle to display the %s inline."
 msgstr ""
 
@@ -1619,125 +1620,125 @@ msgid "Field value"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/hidden/index.js:37
+#: src/blocks/form/fields/hidden/index.js:42
 msgid "A hidden text field for collecting additional data."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/hidden/index.js:42
-#: src/blocks/form/fields/text/index.js:46
+#: src/blocks/form/fields/hidden/index.js:47
+#: src/blocks/form/fields/text/index.js:51
 msgid "input"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/form/fields/hidden/index.js:44
-#: src/blocks/form/fields/textarea/index.js:42
-#: src/blocks/highlight/index.js:29
+#: src/blocks/form/fields/hidden/index.js:49
+#: src/blocks/form/fields/textarea/index.js:47
+#: src/blocks/highlight/index.js:34
 #: src/blocks/icon/deprecated/svgs.js:500
 #: src/blocks/icon/deprecated/svgsfocusable.js:499
 #: src/blocks/icon/svgs.js:484
 msgid "text"
 msgstr ""
 
-#: src/blocks/form/fields/multi-field.js:112
 #: src/blocks/form/fields/multi-field.js:115
+#: src/blocks/form/fields/multi-field.js:118
 msgid "Add option"
 msgstr ""
 
-#: src/blocks/form/fields/multi-field.js:112
 #: src/blocks/form/fields/multi-field.js:115
+#: src/blocks/form/fields/multi-field.js:118
 msgid "Add checkbox"
 msgstr ""
 
-#: src/blocks/form/fields/name/edit.js:69
+#: src/blocks/form/fields/name/edit.js:87
 msgid "Name Field settings"
 msgstr ""
 
-#: src/blocks/form/fields/name/edit.js:71
+#: src/blocks/form/fields/name/edit.js:89
 msgid "Last name"
 msgstr ""
 
-#: src/blocks/form/fields/name/edit.js:75
+#: src/blocks/form/fields/name/edit.js:93
 msgid "Showing both first and last name fields."
 msgstr ""
 
-#: src/blocks/form/fields/name/edit.js:75
+#: src/blocks/form/fields/name/edit.js:93
 msgid "Toggle to add a last name field."
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/name/index.js:49
+#: src/blocks/form/fields/name/index.js:54
 msgid "A text field for collecting the first and last names."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/name/index.js:56
+#: src/blocks/form/fields/name/index.js:61
 msgid "first name"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/name/index.js:58
+#: src/blocks/form/fields/name/index.js:63
 msgid "last name"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/phone/index.js:37
+#: src/blocks/form/fields/phone/index.js:42
 msgid "A phone number to allow visitors to give you a phone number."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/phone/index.js:42
+#: src/blocks/form/fields/phone/index.js:47
 msgid "telephone"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/phone/index.js:44
+#: src/blocks/form/fields/phone/index.js:49
 msgid "cellular"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/phone/index.js:46
+#: src/blocks/form/fields/phone/index.js:51
 msgid "cell"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/phone/index.js:48
+#: src/blocks/form/fields/phone/index.js:53
 msgid "mobile"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/phone/index.js:50
+#: src/blocks/form/fields/phone/index.js:55
 msgid "fax"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/form/fields/radio/index.js:43
+#: src/blocks/form/fields/radio/index.js:48
 msgid "Radio"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/radio/index.js:45
+#: src/blocks/form/fields/radio/index.js:50
 msgid "A field with multiple options where only one choice can be made."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/radio/index.js:50
+#: src/blocks/form/fields/radio/index.js:55
 msgid "choose"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/radio/index.js:52
+#: src/blocks/form/fields/radio/index.js:57
 msgid "select"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/select/index.js:41
+#: src/blocks/form/fields/select/index.js:46
 msgid "A dropdown field with multiple options where only one choice can be made."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/select/index.js:46
+#: src/blocks/form/fields/select/index.js:51
 msgid "dropdown"
 msgstr ""
 
@@ -1755,97 +1756,97 @@ msgid "Button text color"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/submit-button/index.js:49
+#: src/blocks/form/fields/submit-button/index.js:54
 msgid "A button for submitting form data."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/submit-button/index.js:54
+#: src/blocks/form/fields/submit-button/index.js:59
 msgid "submit"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/submit-button/index.js:56
-#: src/blocks/hero/index.js:42
+#: src/blocks/form/fields/submit-button/index.js:61
+#: src/blocks/hero/index.js:47
 msgid "button"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/text/index.js:37
+#: src/blocks/form/fields/text/index.js:42
 msgid "A text box for custom responses."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/text/index.js:42
+#: src/blocks/form/fields/text/index.js:47
 msgid "text control"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/form/fields/text/index.js:44
+#: src/blocks/form/fields/text/index.js:49
 #: src/blocks/icon/svgs.js:1826
 msgid "text box"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/form/fields/textarea/index.js:35
+#: src/blocks/form/fields/textarea/index.js:40
 msgid "Textarea"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/textarea/index.js:37
+#: src/blocks/form/fields/textarea/index.js:42
 msgid "A text box for longer responses."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/textarea/index.js:44
+#: src/blocks/form/fields/textarea/index.js:49
 msgid "message text"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/textarea/index.js:46
+#: src/blocks/form/fields/textarea/index.js:51
 msgid "multiline text"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/website/index.js:37
+#: src/blocks/form/fields/website/index.js:42
 msgid "A text field for collecting a URL."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/website/index.js:44
+#: src/blocks/form/fields/website/index.js:49
 msgid "hyperlink"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/website/index.js:46
+#: src/blocks/form/fields/website/index.js:51
 msgid "url"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/form/index.js:45
+#: src/blocks/form/index.js:50
 msgid "Form"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/index.js:47
+#: src/blocks/form/index.js:52
 msgid "Add a contact form to your page."
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/form/index.js:54
+#: src/blocks/form/index.js:59
 #: src/blocks/icon/deprecated/svgs.js:796
 #: src/blocks/icon/deprecated/svgsfocusable.js:795
 msgid "about"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/index.js:56
+#: src/blocks/form/index.js:61
 msgid "contact"
 msgstr ""
 
-#: src/blocks/form/index.js:65
+#: src/blocks/form/index.js:71
 msgid "Subject example"
 msgstr ""
 
@@ -1855,7 +1856,7 @@ msgstr ""
 
 #. translators: block name
 #: src/blocks/gallery-carousel/edit.js:244
-#: src/blocks/gallery-carousel/index.js:30
+#: src/blocks/gallery-carousel/index.js:35
 msgid "Carousel"
 msgstr ""
 
@@ -1871,26 +1872,26 @@ msgid "Write gallery caption…"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/gallery-carousel/index.js:32
+#: src/blocks/gallery-carousel/index.js:37
 msgid "Display multiple images in a beautiful carousel gallery."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/gallery-carousel/index.js:39
-#: src/blocks/gallery-collage/index.js:38
-#: src/blocks/gallery-masonry/index.js:38
-#: src/blocks/gallery-offset/index.js:38
-#: src/blocks/gallery-stacked/index.js:38
+#: src/blocks/gallery-carousel/index.js:44
+#: src/blocks/gallery-collage/index.js:43
+#: src/blocks/gallery-masonry/index.js:43
+#: src/blocks/gallery-offset/index.js:43
+#: src/blocks/gallery-stacked/index.js:43
 msgid "gallery"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/gallery-carousel/index.js:41
-#: src/blocks/gallery-collage/index.js:40
-#: src/blocks/gallery-masonry/index.js:40
-#: src/blocks/gallery-offset/index.js:40
-#: src/blocks/gallery-stacked/index.js:40
+#: src/blocks/gallery-carousel/index.js:46
+#: src/blocks/gallery-collage/index.js:45
+#: src/blocks/gallery-masonry/index.js:45
+#: src/blocks/gallery-offset/index.js:45
+#: src/blocks/gallery-stacked/index.js:45
 #: src/blocks/icon/deprecated/svgs.js:204
 #: src/blocks/icon/deprecated/svgsfocusable.js:203
 #: src/blocks/icon/svgs.js:183
@@ -1964,19 +1965,19 @@ msgid "Responsive height"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gallery-collage/index.js:30
+#: src/blocks/gallery-collage/index.js:35
 msgid "Collage"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/gallery-collage/index.js:32
+#: src/blocks/gallery-collage/index.js:37
 msgid "Assemble images into a beautiful collage gallery."
 msgstr ""
 
 #. translators: block style
 #. translators: typography style
-#: src/blocks/gallery-collage/index.js:46
-#: src/blocks/logos/index.js:43
+#: src/blocks/gallery-collage/index.js:51
+#: src/blocks/logos/index.js:48
 #: src/components/font-family/index.js:16
 #: src/components/typography-controls/index.js:103
 #: src/components/typography-controls/index.js:121
@@ -1988,29 +1989,29 @@ msgid "Default"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/gallery-collage/index.js:52
+#: src/blocks/gallery-collage/index.js:57
 msgid "Tiled"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/gallery-collage/index.js:57
+#: src/blocks/gallery-collage/index.js:62
 msgid "Layered"
 msgstr ""
 
 #. translators: block name
 #: src/blocks/gallery-masonry/edit.js:180
-#: src/blocks/gallery-masonry/index.js:30
+#: src/blocks/gallery-masonry/index.js:35
 msgid "Masonry"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/gallery-masonry/index.js:32
+#: src/blocks/gallery-masonry/index.js:37
 msgid "Display multiple images in an organized masonry gallery."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/gallery-masonry/index.js:42
-#: src/blocks/gallery-stacked/index.js:42
+#: src/blocks/gallery-masonry/index.js:47
+#: src/blocks/gallery-stacked/index.js:47
 msgid "lightbox"
 msgstr ""
 
@@ -2042,25 +2043,25 @@ msgid "Caption style"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gallery-offset/index.js:30
+#: src/blocks/gallery-offset/index.js:35
 msgid "Offset"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/gallery-offset/index.js:32
+#: src/blocks/gallery-offset/index.js:37
 msgid "Display images in an offset brick pattern gallery."
 msgstr ""
 
 #. translators: block name
 #. translators: block style
 #: src/blocks/gallery-stacked/edit.js:168
-#: src/blocks/gallery-stacked/index.js:30
-#: src/blocks/posts/edit.js:51
+#: src/blocks/gallery-stacked/index.js:35
+#: src/blocks/posts/edit.js:53
 msgid "Stacked"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/gallery-stacked/index.js:32
+#: src/blocks/gallery-stacked/index.js:37
 msgid "Display multiple images in a single column stacked gallery."
 msgstr ""
 
@@ -2113,17 +2114,17 @@ msgid "Search for gifs"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gif/index.js:22
+#: src/blocks/gif/index.js:27
 msgid "Gif"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/gif/index.js:24
+#: src/blocks/gif/index.js:29
 msgid "Pick a gif, any gif."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/gif/index.js:30
+#: src/blocks/gif/index.js:35
 msgid "animated"
 msgstr ""
 
@@ -2155,23 +2156,23 @@ msgstr ""
 msgid "Add GitHub Gist URL…"
 msgstr ""
 
-#: src/blocks/gist/gist.js:138
+#: src/blocks/gist/gist.js:133
 msgid "Loading Gist"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gist/index.js:24
+#: src/blocks/gist/index.js:29
 msgid "Gist"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/gist/index.js:26
+#: src/blocks/gist/index.js:31
 msgid "Embed a GitHub Gist."
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/gist/index.js:33
+#: src/blocks/gist/index.js:38
 #: src/blocks/icon/deprecated/svgs.js:462
 #: src/blocks/icon/deprecated/svgsfocusable.js:461
 #: src/blocks/icon/svgs.js:440
@@ -2198,7 +2199,7 @@ msgstr ""
 msgid "Gist Meta"
 msgstr ""
 
-#: src/blocks/hero/controls.js:32
+#: src/blocks/hero/controls.js:35
 msgid "Change layout"
 msgstr ""
 
@@ -2227,12 +2228,12 @@ msgid "Add background to hero"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/hero/index.js:35
+#: src/blocks/hero/index.js:40
 msgid "Hero"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/hero/index.js:37
+#: src/blocks/hero/index.js:42
 msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
 msgstr ""
 
@@ -2251,62 +2252,26 @@ msgstr ""
 msgid "Content width in pixels"
 msgstr ""
 
-#: src/blocks/hero/layouts.js:12
-msgid "Top Left"
-msgstr ""
-
-#: src/blocks/hero/layouts.js:13
-msgid "Top Center"
-msgstr ""
-
-#: src/blocks/hero/layouts.js:14
-msgid "Top Right"
-msgstr ""
-
-#: src/blocks/hero/layouts.js:15
-msgid "Center Left"
-msgstr ""
-
-#: src/blocks/hero/layouts.js:16
-msgid "Center Center"
-msgstr ""
-
-#: src/blocks/hero/layouts.js:17
-msgid "Center Right"
-msgstr ""
-
-#: src/blocks/hero/layouts.js:18
-msgid "Bottom Left"
-msgstr ""
-
-#: src/blocks/hero/layouts.js:19
-msgid "Bottom Center"
-msgstr ""
-
-#: src/blocks/hero/layouts.js:20
-msgid "Bottom Right"
-msgstr ""
-
 #: src/blocks/highlight/edit.js:113
 msgid "Add highlighted text…"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/highlight/index.js:22
+#: src/blocks/highlight/index.js:27
 msgid "Highlight"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/highlight/index.js:24
+#: src/blocks/highlight/index.js:29
 msgid "Draw attention and emphasize important narrative."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/highlight/index.js:31
+#: src/blocks/highlight/index.js:36
 msgid "paragraph"
 msgstr ""
 
-#: src/blocks/highlight/index.js:35
+#: src/blocks/highlight/index.js:40
 msgid "Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative."
 msgstr ""
 
@@ -2810,7 +2775,7 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:200
 #: src/blocks/icon/deprecated/svgsfocusable.js:199
 #: src/blocks/icon/svgs.js:179
-#: src/blocks/media-card/index.js:37
+#: src/blocks/media-card/index.js:42
 msgid "image"
 msgstr ""
 
@@ -2863,7 +2828,7 @@ msgstr ""
 #: src/blocks/icon/svgs.js:225
 #: src/blocks/icon/svgs.js:1665
 #: src/blocks/icon/svgs.js:1788
-#: src/blocks/media-card/index.js:39
+#: src/blocks/media-card/index.js:44
 msgid "video"
 msgstr ""
 
@@ -3539,7 +3504,7 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:680
 #: src/blocks/icon/deprecated/svgsfocusable.js:679
 #: src/blocks/icon/svgs.js:658
-#: src/blocks/share/index.js:29
+#: src/blocks/share/index.js:34
 msgid "social"
 msgstr ""
 
@@ -3725,7 +3690,7 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:802
 #: src/blocks/icon/deprecated/svgsfocusable.js:801
 #: src/blocks/icon/svgs.js:785
-#: src/blocks/map/index.js:36
+#: src/blocks/map/index.js:41
 msgid "directions"
 msgstr ""
 
@@ -3804,7 +3769,7 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:829
 #: src/blocks/icon/deprecated/svgsfocusable.js:828
 #: src/blocks/icon/svgs.js:822
-#: src/blocks/shape-divider/index.js:53
+#: src/blocks/shape-divider/index.js:58
 msgid "Waves"
 msgstr ""
 
@@ -4495,30 +4460,30 @@ msgstr ""
 
 #. translators: block name
 #. translators: block style
-#: src/blocks/icon/index.js:29
-#: src/blocks/share/index.js:40
-#: src/blocks/social-profiles/index.js:45
+#: src/blocks/icon/index.js:33
+#: src/blocks/share/index.js:45
+#: src/blocks/social-profiles/index.js:50
 msgid "Icon"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/icon/index.js:31
+#: src/blocks/icon/index.js:35
 msgid "Add a stylized graphic symbol to communicate something more."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/icon/index.js:38
-#: src/blocks/social-profiles/index.js:34
+#: src/blocks/icon/index.js:42
+#: src/blocks/social-profiles/index.js:39
 msgid "icons"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/icon/index.js:44
+#: src/blocks/icon/index.js:48
 msgid "Outlined"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/icon/index.js:50
+#: src/blocks/icon/index.js:54
 msgid "Filled"
 msgstr ""
 
@@ -4533,7 +4498,7 @@ msgid "Reset icon size"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:169
-#: src/components/crop-settings/index.js:326
+#: src/components/crop-settings/index.js:322
 #: src/components/dimensions-control/index.js:489
 #: src/components/size-control/index.js:186
 msgid "Reset"
@@ -5745,52 +5710,52 @@ msgid "Logos & Badges"
 msgstr ""
 
 #: src/blocks/logos/edit.js:62
-#: src/components/block-gallery/gallery-placeholder.js:99
+#: src/components/block-gallery/gallery-placeholder.js:100
 msgid "Drag images, upload new ones or select files from your library."
 msgstr ""
 
 #. translators: block name
-#: src/blocks/logos/index.js:22
+#: src/blocks/logos/index.js:27
 msgid "Logos"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/logos/index.js:24
+#: src/blocks/logos/index.js:29
 msgid "Add logos, badges, or certifications to build credibility."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/logos/index.js:29
+#: src/blocks/logos/index.js:34
 msgid "clients"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/logos/index.js:31
+#: src/blocks/logos/index.js:36
 msgid "proof"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/logos/index.js:33
+#: src/blocks/logos/index.js:38
 msgid "testimonials"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/logos/index.js:35
+#: src/blocks/logos/index.js:40
 msgid "awards"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/logos/index.js:37
+#: src/blocks/logos/index.js:42
 msgid "seal"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/logos/index.js:49
+#: src/blocks/logos/index.js:54
 msgid "Grayscale"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/logos/index.js:54
+#: src/blocks/logos/index.js:59
 msgid "Black & White"
 msgstr ""
 
@@ -5831,27 +5796,27 @@ msgid "Cancel"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/map/index.js:23
+#: src/blocks/map/index.js:28
 msgid "Map"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/map/index.js:25
+#: src/blocks/map/index.js:30
 msgid "Add an address or location to drop a pin on a Google map."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/map/index.js:30
+#: src/blocks/map/index.js:35
 msgid "address"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/map/index.js:32
+#: src/blocks/map/index.js:37
 msgid "maps"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/map/index.js:34
+#: src/blocks/map/index.js:39
 msgid "google"
 msgstr ""
 
@@ -6008,7 +5973,7 @@ msgstr ""
 #. translators: content placeholder
 #. translators: block name
 #: src/blocks/media-card/edit.js:67
-#: src/blocks/media-card/index.js:30
+#: src/blocks/media-card/index.js:35
 msgid "Media Card"
 msgstr ""
 
@@ -6018,7 +5983,7 @@ msgid "Replace this text with descriptive copy to go along with the card image. 
 msgstr ""
 
 #. translators: block description
-#: src/blocks/media-card/index.js:32
+#: src/blocks/media-card/index.js:37
 msgid "Add an image or video with an offset card side-by-side."
 msgstr ""
 
@@ -6061,99 +6026,99 @@ msgstr ""
 msgid "Edit media"
 msgstr ""
 
-#: src/blocks/media-card/media-container.js:101
+#: src/blocks/media-card/media-container.js:102
 msgid "Media area"
 msgstr ""
 
-#: src/blocks/media-card/media-container.js:102
+#: src/blocks/media-card/media-container.js:103
 msgid "Upload a media file or pick one from your media library"
 msgstr ""
 
-#: src/blocks/media-card/media-container.js:122
+#: src/blocks/media-card/media-container.js:123
 msgid "Drop to replace media"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:122
-#: src/blocks/posts/edit.js:239
+#: src/blocks/post-carousel/edit.js:123
+#: src/blocks/posts/edit.js:241
 msgid "Edit RSS URL"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/post-carousel/edit.js:177
-#: src/blocks/post-carousel/index.js:22
+#: src/blocks/post-carousel/edit.js:178
+#: src/blocks/post-carousel/index.js:27
 msgid "Post Carousel"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:182
-#: src/blocks/posts/edit.js:286
+#: src/blocks/post-carousel/edit.js:183
+#: src/blocks/posts/edit.js:288
 msgid "No posts found. Start publishing or add posts from an RSS feed."
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:185
+#: src/blocks/post-carousel/edit.js:186
 msgid "Retrieve an external feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:192
-#: src/blocks/posts/edit.js:296
+#: src/blocks/post-carousel/edit.js:193
+#: src/blocks/posts/edit.js:298
 msgid "Use External Feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:214
-#: src/blocks/posts/edit.js:323
+#: src/blocks/post-carousel/edit.js:215
+#: src/blocks/posts/edit.js:325
 msgid "RSS Feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:215
-#: src/blocks/posts/edit.js:324
+#: src/blocks/post-carousel/edit.js:216
+#: src/blocks/posts/edit.js:326
 msgid "RSS URLs are generally located at the /feed/ directory of a site."
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:219
-#: src/blocks/posts/edit.js:328
+#: src/blocks/post-carousel/edit.js:220
+#: src/blocks/posts/edit.js:330
 msgid "https://example.com/feed…"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:301
-#: src/blocks/posts/edit.js:431
+#: src/blocks/post-carousel/edit.js:302
+#: src/blocks/posts/edit.js:433
 msgid "(no title)"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:319
-#: src/blocks/posts/edit.js:457
+#: src/blocks/post-carousel/edit.js:320
+#: src/blocks/posts/edit.js:459
 msgid "Read more"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/post-carousel/index.js:24
+#: src/blocks/post-carousel/index.js:29
 msgid "Display posts or an external blog feed as a carousel."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/post-carousel/index.js:29
+#: src/blocks/post-carousel/index.js:34
 msgid "slider"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/post-carousel/index.js:31
-#: src/blocks/posts/index.js:29
+#: src/blocks/post-carousel/index.js:36
+#: src/blocks/posts/index.js:34
 msgid "posts"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/post-carousel/index.js:33
-#: src/blocks/posts/index.js:31
+#: src/blocks/post-carousel/index.js:38
+#: src/blocks/posts/index.js:36
 msgid "blog"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/post-carousel/index.js:35
-#: src/blocks/posts/index.js:33
+#: src/blocks/post-carousel/index.js:40
+#: src/blocks/posts/index.js:38
 msgid "latest"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/post-carousel/index.js:37
-#: src/blocks/posts/index.js:35
+#: src/blocks/post-carousel/index.js:42
+#: src/blocks/posts/index.js:40
 msgid "rss"
 msgstr ""
 
@@ -6217,33 +6182,33 @@ msgid "Number of posts"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/posts/edit.js:58
+#: src/blocks/posts/edit.js:60
 msgid "Horizontal"
 msgstr ""
 
-#: src/blocks/posts/edit.js:252
+#: src/blocks/posts/edit.js:254
 msgid "Image on left"
 msgstr ""
 
-#: src/blocks/posts/edit.js:257
+#: src/blocks/posts/edit.js:259
 msgid "Image on right"
 msgstr ""
 
-#: src/blocks/posts/edit.js:281
+#: src/blocks/posts/edit.js:283
 msgid "Blog Posts"
 msgstr ""
 
-#: src/blocks/posts/edit.js:289
+#: src/blocks/posts/edit.js:291
 msgid "Retrieve an External Feed"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/posts/index.js:22
+#: src/blocks/posts/index.js:27
 msgid "Posts"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/posts/index.js:24
+#: src/blocks/posts/index.js:29
 msgid "Display posts or an RSS feed as stacked or horizontal cards."
 msgstr ""
 
@@ -6341,24 +6306,24 @@ msgid "Pro"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/pricing-table/index.js:24
+#: src/blocks/pricing-table/index.js:29
 msgid "Pricing Table"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/pricing-table/index.js:26
+#: src/blocks/pricing-table/index.js:31
 msgid "Add pricing tables to help visitors compare products and plans."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/pricing-table/index.js:31
-#: src/blocks/pricing-table/pricing-table-item/index.js:29
+#: src/blocks/pricing-table/index.js:36
+#: src/blocks/pricing-table/pricing-table-item/index.js:34
 msgid "landing"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/pricing-table/index.js:33
-#: src/blocks/pricing-table/pricing-table-item/index.js:31
+#: src/blocks/pricing-table/index.js:38
+#: src/blocks/pricing-table/pricing-table-item/index.js:36
 msgid "comparison"
 msgstr ""
 
@@ -6383,12 +6348,12 @@ msgid "Add features"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/pricing-table/pricing-table-item/index.js:22
+#: src/blocks/pricing-table/pricing-table-item/index.js:27
 msgid "Pricing Table Item"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/pricing-table/pricing-table-item/index.js:24
+#: src/blocks/pricing-table/pricing-table-item/index.js:29
 msgid "A pricing table to help visitors compare products and plans."
 msgstr ""
 
@@ -6581,17 +6546,17 @@ msgid "66 / 33"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/services/index.js:22
+#: src/blocks/services/index.js:27
 msgid "Services"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/services/index.js:24
+#: src/blocks/services/index.js:29
 msgid "Add up to four columns of services to display."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/services/index.js:29
+#: src/blocks/services/index.js:34
 msgid "features"
 msgstr ""
 
@@ -6617,12 +6582,12 @@ msgid "Write description…"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/services/service/index.js:21
+#: src/blocks/services/service/index.js:26
 msgid "Service"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/services/service/index.js:23
+#: src/blocks/services/service/index.js:28
 msgid "A single service item within a services block."
 msgstr ""
 
@@ -6651,47 +6616,47 @@ msgid "Flip vertically"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/shape-divider/index.js:23
+#: src/blocks/shape-divider/index.js:28
 msgid "Shape Divider"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/shape-divider/index.js:25
+#: src/blocks/shape-divider/index.js:30
 msgid "Add a shape divider to visually distinquish page sections."
 msgstr ""
 
 #. translators: block style
-#: src/blocks/shape-divider/index.js:42
+#: src/blocks/shape-divider/index.js:47
 msgid "Wavy"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/shape-divider/index.js:48
+#: src/blocks/shape-divider/index.js:53
 msgid "Hills"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/shape-divider/index.js:58
+#: src/blocks/shape-divider/index.js:63
 msgid "Angled"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/shape-divider/index.js:63
+#: src/blocks/shape-divider/index.js:68
 msgid "Sloped"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/shape-divider/index.js:68
+#: src/blocks/shape-divider/index.js:73
 msgid "Rounded"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/shape-divider/index.js:73
+#: src/blocks/shape-divider/index.js:78
 msgid "Triangle"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/shape-divider/index.js:78
+#: src/blocks/shape-divider/index.js:83
 msgid "Pointed"
 msgstr ""
 
@@ -6748,30 +6713,30 @@ msgid "Add Reddit share button"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/share/index.js:21
+#: src/blocks/share/index.js:26
 msgid "Share"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/share/index.js:23
+#: src/blocks/share/index.js:28
 msgid "Add social sharing links to help you get likes and shares."
 msgstr ""
 
 #. translators: block style
-#: src/blocks/share/index.js:35
-#: src/blocks/social-profiles/index.js:40
+#: src/blocks/share/index.js:40
+#: src/blocks/social-profiles/index.js:45
 msgid "Mask"
-msgstr ""
-
-#. translators: block style
-#: src/blocks/share/index.js:51
-#: src/blocks/social-profiles/index.js:56
-msgid "Icon & Text"
 msgstr ""
 
 #. translators: block style
 #: src/blocks/share/index.js:56
 #: src/blocks/social-profiles/index.js:61
+msgid "Icon & Text"
+msgstr ""
+
+#. translators: block style
+#: src/blocks/share/index.js:61
+#: src/blocks/social-profiles/index.js:66
 #: src/extensions/button-styles/index.js:11
 msgid "Circular"
 msgstr ""
@@ -6892,17 +6857,17 @@ msgid "https://houzz.com/"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/social-profiles/index.js:22
+#: src/blocks/social-profiles/index.js:27
 msgid "Social Profiles"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/social-profiles/index.js:24
+#: src/blocks/social-profiles/index.js:29
 msgid "Grow your audience with links to social media profiles."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/social-profiles/index.js:32
+#: src/blocks/social-profiles/index.js:37
 msgid "links"
 msgstr ""
 
@@ -6914,21 +6879,21 @@ msgstr ""
 msgid "Profiles"
 msgstr ""
 
-#: src/components/background/controls.js:53
+#: src/components/background/controls.js:54
 msgid "Edit background"
 msgstr ""
 
-#: src/components/background/controls.js:72
+#: src/components/background/controls.js:73
 #: src/components/background/panel.js:273
 msgid "Remove background"
 msgstr ""
 
-#: src/components/background/controls.js:81
 #: src/components/background/controls.js:82
+#: src/components/background/controls.js:83
 msgid "Edit background image"
 msgstr ""
 
-#: src/components/background/controls.js:95
+#: src/components/background/controls.js:96
 msgid "Add background image"
 msgstr ""
 
@@ -7086,7 +7051,7 @@ msgid "Link to"
 msgstr ""
 
 #. translators: %s: Type of gallery
-#: src/components/block-gallery/gallery-placeholder.js:96
+#: src/components/block-gallery/gallery-placeholder.js:97
 msgid "%s Gallery"
 msgstr ""
 
@@ -7120,39 +7085,39 @@ msgstr ""
 msgid "Custom URL"
 msgstr ""
 
-#: src/components/crop-settings/index.js:266
-#: src/components/crop-settings/index.js:269
+#: src/components/crop-settings/index.js:262
+#: src/components/crop-settings/index.js:265
 msgid "Crop settings image placeholder"
 msgstr ""
 
 #. translators: label for horizontal positioning input
-#: src/components/crop-settings/index.js:275
+#: src/components/crop-settings/index.js:271
 msgid "Horizontal pos."
 msgstr ""
 
 #. translators: label for vertical positioning input
-#: src/components/crop-settings/index.js:284
+#: src/components/crop-settings/index.js:280
 msgid "Vertical pos."
 msgstr ""
 
 #. translators: label for the control that allows zooming in on the image
-#: src/components/crop-settings/index.js:294
+#: src/components/crop-settings/index.js:290
 msgid "Image zoom"
 msgstr ""
 
-#: src/components/crop-settings/index.js:301
+#: src/components/crop-settings/index.js:297
 msgid "Image orientation"
 msgstr ""
 
-#: src/components/crop-settings/index.js:308
+#: src/components/crop-settings/index.js:304
 msgid "Rotate counter-clockwise"
 msgstr ""
 
-#: src/components/crop-settings/index.js:315
+#: src/components/crop-settings/index.js:311
 msgid "Rotate clockwise"
 msgstr ""
 
-#: src/components/crop-settings/index.js:324
+#: src/components/crop-settings/index.js:320
 msgid "Reset image cropping options"
 msgstr ""
 
@@ -7270,6 +7235,10 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
+#: src/components/form-label-colors/label-color-control.js:30
+msgid "Label color"
+msgstr ""
+
 #: src/components/grid-control/index.js:193
 msgid "Layout"
 msgstr ""
@@ -7300,36 +7269,36 @@ msgid "Custom color picker"
 msgstr ""
 
 #. translators: image style
-#: src/components/media-filter-control/index.js:31
+#: src/components/media-filter-control/index.js:40
 msgid "Original"
 msgstr ""
 
 #. translators: image style
-#: src/components/media-filter-control/index.js:40
+#: src/components/media-filter-control/index.js:49
 msgid "Grayscale filter"
 msgstr ""
 
 #. translators: image style
-#: src/components/media-filter-control/index.js:49
+#: src/components/media-filter-control/index.js:58
 msgid "Sepia filter"
 msgstr ""
 
 #. translators: image style
-#: src/components/media-filter-control/index.js:58
+#: src/components/media-filter-control/index.js:67
 msgid "Saturation filter"
 msgstr ""
 
 #. translators: image style
-#: src/components/media-filter-control/index.js:67
+#: src/components/media-filter-control/index.js:76
 msgid "Dim filter"
 msgstr ""
 
 #. translators: image style
-#: src/components/media-filter-control/index.js:76
+#: src/components/media-filter-control/index.js:85
 msgid "Vintage filter"
 msgstr ""
 
-#: src/components/media-filter-control/index.js:89
+#: src/components/media-filter-control/index.js:98
 msgid "Apply filter"
 msgstr ""
 

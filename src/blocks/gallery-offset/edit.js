@@ -3,6 +3,7 @@
  */
 import classnames from 'classnames';
 import filter from 'lodash/filter';
+import { GalleryOffsetIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
@@ -11,7 +12,6 @@ import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import Inspector from './inspector';
 import Controls from './controls';
-import icon from './icon';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 
@@ -22,10 +22,15 @@ import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
-import { withNotices } from '@wordpress/components';
+import { withNotices, Icon } from '@wordpress/components';
 
 /**
  * Block edit function
+ *
+ * @param oldIndex
+ * @param index
+ * @param attributes
+ * @param newIndex
  */
 class Edit extends Component {
 	constructor() {
@@ -141,7 +146,7 @@ class Edit extends Component {
 				<GalleryPlaceholder
 					{ ...this.props }
 					label={ __( 'Offset', 'coblocks' ) }
-					icon={ icon }
+					icon={ <Icon icon={ icon } /> }
 				/>
 			</Fragment>
 		);

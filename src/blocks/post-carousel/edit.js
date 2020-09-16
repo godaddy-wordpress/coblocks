@@ -2,14 +2,14 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { isUndefined, pickBy, get } from 'lodash';
 import Slick from 'react-slick';
+import { isUndefined, pickBy, get } from 'lodash';
+import { PostCarouselIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
  */
 import InspectorControls from './inspector';
-import icon from './icon';
 
 /**
  * WordPress dependencies
@@ -21,16 +21,17 @@ import { Component, RawHTML, Fragment } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
 import { dateI18n, format, __experimentalGetSettings } from '@wordpress/date';
 import { withSelect } from '@wordpress/data';
-import { BlockControls, PlainText, BlockIcon } from '@wordpress/block-editor';
+import { BlockControls, PlainText } from '@wordpress/block-editor';
 import {
-	Placeholder,
-	Spinner,
-	Toolbar,
-	TextControl,
 	Button,
 	Disabled,
-	ServerSideRender,
+	Icon,
+	Placeholder,
 	QueryControls,
+	ServerSideRender,
+	Spinner,
+	TextControl,
+	Toolbar,
 } from '@wordpress/components';
 
 /**
@@ -173,7 +174,7 @@ class PostCarousel extends Component {
 						postCount={ latestPosts && latestPosts.length }
 					/>
 					<Placeholder
-						icon={ <BlockIcon icon={ icon } /> }
+						icon={ <Icon icon={ icon } /> }
 						label={ __( 'Post Carousel', 'coblocks' ) }
 					>
 						{ ! Array.isArray( latestPosts )
@@ -210,7 +211,7 @@ class PostCarousel extends Component {
 						postCount={ latestPosts && latestPosts.length }
 					/>
 					<Placeholder
-						icon={ <BlockIcon icon={ icon } /> }
+						icon={ <Icon icon={ icon } /> }
 						label={ __( 'RSS Feed', 'coblocks' ) }
 						instructions={ __( 'RSS URLs are generally located at the /feed/ directory of a site.', 'coblocks' ) }
 					>
