@@ -280,12 +280,12 @@ class CoBlocks_Form {
 			<div class="coblocks-form__inline-fields">
 				<div class="coblocks-form__inline-field">
 					<input type="text" id="<?php echo esc_attr( $label_slug ); ?>-firstname" name="field-<?php echo esc_attr( $label_slug ); ?>[value][first-name]" class="coblocks-field coblocks-field--name first" <?php echo esc_attr( $required_attr ); ?> />
-					<small class="<?php echo esc_attr( $classes ); ?>"<?php echo $styles; ?>><?php echo esc_html( $label_first_name ); ?></small>
+					<small class="<?php echo esc_attr( $classes ); ?>"<?php echo wp_kses_post( $styles ); ?>><?php echo esc_html( $label_first_name ); ?></small>
 				</div>
 
 				<div class="coblocks-form__inline-field">
 					<input type="text" id="<?php echo esc_attr( $label_slug ); ?>-lastname" name="field-<?php echo esc_attr( $label_slug ); ?>[value][last-name]" class="coblocks-field coblocks-field--name last" <?php echo esc_attr( $required_attr ); ?> />
-					<small class="<?php echo esc_attr( $classes ); ?>"<?php echo $styles; ?>><?php echo esc_html( $label_last_name ); ?></small>
+					<small class="<?php echo esc_attr( $classes ); ?>"<?php echo wp_kses_post( $styles ); ?>><?php echo esc_html( $label_last_name ); ?></small>
 				</div>
 			</div>
 
@@ -777,7 +777,7 @@ class CoBlocks_Form {
 				'<label for="%1$s" class="%2$s"%3$s>%4$s%5$s</label>',
 				esc_attr( $label_slug ),
 				esc_attr( $classes ),
-				empty( $styles ) ? '' : " style='$styles'",
+				empty( $styles ) ? '' : wp_kses_post( " style='$styles'" ),
 				wp_kses_post( $label ),
 				wp_kses( $required_label, $allowed_html )
 			);

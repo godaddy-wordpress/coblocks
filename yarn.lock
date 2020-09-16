@@ -1138,10 +1138,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
-"@godaddy-wordpress/coblocks-icons@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/coblocks-icons/-/coblocks-icons-1.0.1.tgz#b8fbf17be56af7f9c528901533609c6908762379"
-  integrity sha512-KQLEH32Wfj8K2A/f220Sw16wF9WT1JXd62gk5jIzbol8+orY40E3BlHHQl9s3v14E45D+KUsMJkztSFr6LpPgg==
+"@godaddy-wordpress/coblocks-icons@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/coblocks-icons/-/coblocks-icons-1.2.0.tgz#f9c491fbeac364317716c17df667a47ef816d2f9"
+  integrity sha512-K6PnBcU/fpkKskyCyfr3TkbWtgqDt2yTGJPueAEmcPiLs3bdvdkXRKsKqlLuQse8XDRfQ/I712iGqYAt2I3xbw==
   dependencies:
     "@wordpress/primitives" "^1.7.0"
 
