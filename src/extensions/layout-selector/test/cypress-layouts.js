@@ -125,6 +125,35 @@ const coblocksLayoutSelector = {
                         align: 'full',
                     },
                     [],
+                ],
+                [
+                    'core/gallery',
+                    {
+                        images: [
+                            {
+                                url: 'https://img1.wsimg.com/wpnux/v2/starter-content/templates/keynote/attachments/home-image-1.jpg',
+                                alt: 'Image description',
+                            },
+                            {
+                                url: 'https://img1.wsimg.com/wpnux/v2/starter-content/templates/keynote/attachments/home-image-1.jpg',
+                                alt: 'Image description',
+                            },
+                        ],
+                        align: 'full',
+                    },
+                    [],
+                ],
+                [
+                    'core/cover',
+                    {
+                        url: 'https://img1.wsimg.com/wpnux/v2/starter-content/templates/keynote/attachments/home-image-1.jpg',
+                        alt: 'Image description',
+                        caption: '',
+                        linkDestination: 'none',
+                        className: 'alignfull size-full is-style-default',
+                        align: 'full',
+                    },
+                    [],
                 ]
             ],
         }

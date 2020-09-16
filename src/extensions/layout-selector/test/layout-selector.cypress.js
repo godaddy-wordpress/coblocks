@@ -102,17 +102,20 @@ describe( 'Extension: Layout Selector', () => {
 	it( 'imports images into media library from layouts', () => {
 		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
 		helpers.disableGutenbergFeatures();
-		// Click "About" category.
-		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(1)' ).find( 'a' ).click();
-		cy.get( '.coblocks-layout-selector__layout' ).contains( 'Test About Layout.' );
+
+		// Click "Portfolio" category.
+		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(4)' ).find( 'a' ).click();
+		cy.get( '.coblocks-layout-selector__layout' ).contains( 'Test Portfolio Layout.' );
 
 		cy.get( '.coblocks-layout-selector__layout' ).first().click();
 
-		cy.get( '.editor-post-title__block' ).contains( 'About Test' );
-		cy.get( '.wp-block' ).contains( 'Test About Layout.' );
+		cy.get( '.editor-post-title__block' ).contains( 'Portfolio Test' );
+		cy.get( '.wp-block' ).contains( 'Test Portfolio Layout.' ).click();
 
 		// Only passes if the image was successfully uploaded to site.
-		cy.get( `[data-type="core/image"] img[src^="${ Cypress.env( 'testURL' ) }"]` ).click();
+		cy.get( `[data-type="core/image"] img[src^="${ Cypress.env( 'testURL' ) }"]` ).should( 'exist' );
+		cy.get( `[data-type="core/gallery"] img[src^="${ Cypress.env( 'testURL' ) }"]` ).should( 'exist' );
+		cy.get( `[data-type="core/cover"] img[src^="${ Cypress.env( 'testURL' ) }"]` ).should( 'exist' );
 	} );
 
 	it( 'does not open modal when editing a draft post', () => {
