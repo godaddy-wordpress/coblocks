@@ -2,7 +2,7 @@
  * External dependencies.
  */
 import { kebabCase } from 'lodash';
-import { SettingsIcon } from '@godaddy-wordpress/coblocks-icons';
+import { SettingsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 import classnames from 'classnames';
 
 /**
@@ -58,7 +58,7 @@ const NONE_OPTION = {
 
 const CUSTOM_OPTION = {
 	value: 'custom',
-	label: <Icon icon={ SettingsIcon } />,
+	label: <Icon icon={ icon } />,
 	tooltip: __( 'Custom', 'coblocks' ),
 };
 

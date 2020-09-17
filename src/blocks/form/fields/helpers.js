@@ -2,18 +2,23 @@
  * Internal dependencies
  */
 import CoBlocksFieldMultiple from './multi-field';
+
+/**
+ * WordPress dependencies
+ */
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, ToggleControl } from '@wordpress/components';
 import { Fragment } from '@wordpress/element';
 import { sprintf, __ } from '@wordpress/i18n';
 
 export const editMultiField = ( type ) => ( props ) => {
-	const { attributes, setAttributes, isSelected } = props;
-	const { required, label, isInline, options } = attributes;
+	const { attributes, setAttributes, isSelected, name } = props;
+	const { required, label, isInline, options, textColor, customTextColor } = attributes;
 
 	return (
 		<Fragment>
 			<CoBlocksFieldMultiple
+				{ ...props }
 				label={ label }
 				required={ required }
 				options={ options }
@@ -21,6 +26,9 @@ export const editMultiField = ( type ) => ( props ) => {
 				type={ type }
 				isSelected={ isSelected }
 				isInline={ isInline }
+				textColor={ textColor }
+				customTextColor={ customTextColor }
+				name={ name }
 			/>
 			{ 'select' !== type && (
 				<InspectorControls>

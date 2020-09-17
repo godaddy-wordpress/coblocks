@@ -1,7 +1,15 @@
 /**
- * Internal dependencies
+ * External dependencies
  */
-import icons from './icons';
+import {
+	FilterDarkIcon,
+	FilterGrayscaleIcon,
+	FilterNoneIcon,
+	FilterSaturationIcon,
+	FilterSepiaIcon,
+	FilterVintageIcon,
+	FilterMainIcon,
+} from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies
@@ -11,6 +19,7 @@ import { Component } from '@wordpress/element';
 import {
 	Toolbar,
 	DropdownMenu,
+	Icon,
 } from '@wordpress/components';
 
 class MediaFilterControl extends Component {
@@ -26,7 +35,7 @@ class MediaFilterControl extends Component {
 
 		const filterControls = [
 			{
-				icon: icons.none,
+				icon: <Icon icon={ FilterNoneIcon } />,
 				/* translators: image style */
 				title: __( 'Original', 'coblocks' ),
 				onClick: () => {
@@ -35,7 +44,7 @@ class MediaFilterControl extends Component {
 				isActive: filter === 'none',
 			},
 			{
-				icon: icons.grayscale,
+				icon: <Icon icon={ FilterGrayscaleIcon } />,
 				/* translators: image style */
 				title: __( 'Grayscale filter', 'coblocks' ),
 				onClick: () => {
@@ -44,7 +53,7 @@ class MediaFilterControl extends Component {
 				isActive: filter === 'grayscale',
 			},
 			{
-				icon: icons.sepia,
+				icon: <Icon icon={ FilterSepiaIcon } />,
 				/* translators: image style */
 				title: __( 'Sepia filter', 'coblocks' ),
 				onClick: () => {
@@ -53,7 +62,7 @@ class MediaFilterControl extends Component {
 				isActive: filter === 'sepia',
 			},
 			{
-				icon: icons.saturation,
+				icon: <Icon icon={ FilterSaturationIcon } />,
 				/* translators: image style */
 				title: __( 'Saturation filter', 'coblocks' ),
 				onClick: () => {
@@ -62,7 +71,7 @@ class MediaFilterControl extends Component {
 				isActive: filter === 'saturation',
 			},
 			{
-				icon: icons.dark,
+				icon: <Icon icon={ FilterDarkIcon } />,
 				/* translators: image style */
 				title: __( 'Dim filter', 'coblocks' ),
 				onClick: () => {
@@ -71,7 +80,7 @@ class MediaFilterControl extends Component {
 				isActive: filter === 'dim',
 			},
 			{
-				icon: icons.vintage,
+				icon: <Icon icon={ FilterVintageIcon } />,
 				/* translators: image style */
 				title: __( 'Vintage filter', 'coblocks' ),
 				onClick: () => {
@@ -85,7 +94,7 @@ class MediaFilterControl extends Component {
 			<Toolbar>
 				<DropdownMenu
 					hasArrowIndicator
-					icon={ icons.filter }
+					icon={ <Icon icon={ FilterMainIcon } /> }
 					label={ __( 'Apply filter', 'coblocks' ) }
 					controls={ filterControls }
 					className="components-coblocks-media-filter"

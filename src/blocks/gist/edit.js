@@ -2,13 +2,13 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import { GithubIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
  */
 import Controls from './controls';
 import Inspector from './inspector';
-import icon from './icon';
 import Gist from './gist';
 
 /**
@@ -17,8 +17,8 @@ import Gist from './gist';
 import { __ } from '@wordpress/i18n';
 import { compose, withState } from '@wordpress/compose';
 import { Component, Fragment } from '@wordpress/element';
-import { PlainText, RichText, BlockIcon } from '@wordpress/block-editor';
-import { withNotices } from '@wordpress/components';
+import { PlainText, RichText } from '@wordpress/block-editor';
+import { withNotices, Icon } from '@wordpress/components';
 
 /**
  * Block edit function
@@ -120,7 +120,7 @@ class Edit extends Component {
 						>
 
 							<label>
-								<BlockIcon icon={ icon } />
+								<Icon icon={ icon } />
 								{ __( 'Gist URL', 'coblocks' ) }
 							</label>
 							<PlainText

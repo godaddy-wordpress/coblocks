@@ -4,7 +4,7 @@
 import classnames from 'classnames';
 import map from 'lodash/map';
 import get from 'lodash/get';
-import { RowIcon } from '@godaddy-wordpress/coblocks-icons';
+import { RowIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
@@ -144,7 +144,7 @@ class Edit extends Component {
 					<Placeholder
 						key="placeholder"
 						className="components-coblocks-row-placeholder"
-						icon={ <Icon icon={ RowIcon } /> }
+						icon={ <Icon icon={ icon } /> }
 						label={ columns ? __( 'Row layout', 'coblocks' ) : __( 'Row', 'coblocks' ) }
 						instructions={ columns
 							? sprintf(

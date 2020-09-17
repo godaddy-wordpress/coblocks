@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import { LogosIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
@@ -10,7 +11,6 @@ import { pickRelevantMediaFiles } from './../../utils/helper';
 import Controls from './controls';
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
 import Logos from './logos';
-import { icon } from './';
 
 /**
  * WordPress dependencies
@@ -18,8 +18,8 @@ import { icon } from './';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { withNotices } from '@wordpress/components';
-import { MediaPlaceholder, BlockIcon } from '@wordpress/block-editor';
+import { withNotices, Icon } from '@wordpress/components';
+import { MediaPlaceholder } from '@wordpress/block-editor';
 
 class Edit extends Component {
 	constructor() {
@@ -56,7 +56,7 @@ class Edit extends Component {
 						<MediaPlaceholder
 							addToGallery={ hasImages }
 							isAppender={ hasImages }
-							icon={ <BlockIcon icon={ icon } /> }
+							icon={ <Icon icon={ icon } /> }
 							labels={ {
 								title: __( 'Logos & Badges', 'coblocks' ),
 								instructions: __( 'Drag images, upload new ones or select files from your library.', 'coblocks' ),
