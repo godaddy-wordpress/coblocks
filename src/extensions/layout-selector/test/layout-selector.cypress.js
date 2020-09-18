@@ -107,7 +107,7 @@ describe( 'Extension: Layout Selector', () => {
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(4)' ).find( 'a' ).click();
 		cy.get( '.coblocks-layout-selector__layout' ).contains( 'Test Portfolio Layout.' );
 
-		cy.get( '.coblocks-layout-selector__layout:nth-of-type(1)' ).click();
+		cy.get( '.coblocks-layout-selector__layout:nth-of-type(1)' ).click( { force: true } );
 
 		cy.get( '.editor-post-title__block' ).contains( 'Portfolio Test' );
 		cy.get( '.wp-block' ).contains( 'Test Portfolio Layout.' );
