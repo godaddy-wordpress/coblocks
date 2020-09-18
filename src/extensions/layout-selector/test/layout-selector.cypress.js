@@ -107,10 +107,10 @@ describe( 'Extension: Layout Selector', () => {
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(4)' ).find( 'a' ).click();
 		cy.get( '.coblocks-layout-selector__layout' ).contains( 'Test Portfolio Layout.' );
 
-		cy.get( '.coblocks-layout-selector__layout' ).first().click();
+		cy.get( '.coblocks-layout-selector__layout' ).first().click( { force: true } );
 
 		cy.get( '.editor-post-title__block' ).contains( 'Portfolio Test' );
-		cy.get( '.wp-block' ).contains( 'Test Portfolio Layout.' ).click();
+		cy.get( '.wp-block' ).contains( 'Test Portfolio Layout.' );
 
 		// Only passes if the image was successfully uploaded to site.
 		cy.get( `[data-type="core/image"] img[src^="${ Cypress.env( 'testURL' ) }"]` ).should( 'exist' );
