@@ -49,7 +49,9 @@ class GalleryImage extends Component {
 		}
 	}
 
-	onImageClick() {
+	onImageClick( event ) {
+		event.stopPropagation();
+		event.preventDefault();
 		if ( ! this.props.isSelected ) {
 			this.props.onSelect();
 		}
@@ -70,6 +72,8 @@ class GalleryImage extends Component {
 			event.stopPropagation();
 			event.preventDefault();
 			this.props.onRemove();
+		} else {
+			this.onImageClick();
 		}
 	}
 
@@ -179,11 +183,10 @@ class GalleryImage extends Component {
 		const captionStyles = {
 			fontSize: fontSize ? fontSize + 'px' : undefined,
 		};
-
 		// Disable reason: Each block can be selected by clicking on it and we should keep the same saved markup
 		/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 		return (
-			<figure className={ className } tabIndex="-1" onKeyDown={ this.onKeyDown } ref={ this.bindContainer }>
+			<figure className={ className } onClick={ this.onImageClick } tabIndex="-1" onKeyDown={ this.onKeyDown } ref={ this.bindContainer }>
 				{ isSelected &&
 					<Fragment>
 						{ supportsMoving &&
