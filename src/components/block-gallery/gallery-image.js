@@ -9,11 +9,12 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { Button, Spinner, Dashicon } from '@wordpress/components';
+import { Button, Spinner, Dashicon, ButtonGroup } from '@wordpress/components';
 import { RichText, URLInput } from '@wordpress/block-editor';
 import { withSelect } from '@wordpress/data';
 import { BACKSPACE, DELETE } from '@wordpress/keycodes';
 import { isBlobURL } from '@wordpress/blob';
+import { chevronLeft, chevronRight, chevronUp, chevronDown, closeSmall } from '@wordpress/icons';
 
 class GalleryImage extends Component {
 	constructor() {
@@ -186,9 +187,9 @@ class GalleryImage extends Component {
 				{ isSelected &&
 					<Fragment>
 						{ supportsMoving &&
-							<div className="components-coblocks-gallery-item__move-menu">
+							<ButtonGroup className="components-coblocks-gallery-item__move-menu is-left">
 								<Button
-									icon={ verticalMoving ? 'arrow-up' : 'arrow-left' }
+									icon={ verticalMoving ? chevronUp : chevronLeft }
 									onClick={ ! isFirstItem && onMoveBackward }
 									className="coblocks-gallery-item__button"
 									label={ __( 'Move image backward', 'coblocks' ) }
@@ -196,24 +197,24 @@ class GalleryImage extends Component {
 									disabled={ ! isSelected }
 								/>
 								<Button
-									icon={ verticalMoving ? 'arrow-down' : 'arrow-right' }
+									icon={ verticalMoving ? chevronDown : chevronRight }
 									onClick={ ! isLastItem && onMoveForward }
 									className="coblocks-gallery-item__button"
 									label={ __( 'Move image forward', 'coblocks' ) }
 									aria-disabled={ isLastItem }
 									disabled={ ! isSelected }
 								/>
-							</div>
+							</ButtonGroup>
 						}
-						<div className="components-coblocks-gallery-item__remove-menu">
+						<ButtonGroup className="components-coblocks-gallery-item__remove-menu is-right">
 							<Button
-								icon="no-alt"
-								onClick={ onRemove }
+								icon={ closeSmall }
 								className="coblocks-gallery-item__button"
+								onClick={ onRemove }
 								label={ __( 'Remove image', 'coblocks' ) }
 								disabled={ ! isSelected }
 							/>
-						</div>
+						</ButtonGroup>
 						{ linkTo === 'custom' &&
 							<form
 								className="components-coblocks-gallery-item__image-link"

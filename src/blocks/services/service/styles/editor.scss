@@ -21,26 +21,6 @@
 	.wp-block:nth-last-child(2) [data-block] {
 		margin-bottom: 0;
 	}
-
-	.is-selected .components-coblocks-gallery-item__remove-menu {
-		background: $white;
-		border: 1px solid #1e1e1e;
-		border-radius: 3px;
-		margin: 6px;
-		transition: box-shadow 0.2s ease-out;
-
-		.coblocks-gallery-item__button {
-			color: #1e1e1e !important;
-			height: 22px;
-			width: auto !important;
-			min-width: auto !important;
-			padding: 2px;
-
-			&:hover {
-				color: #191e23 !important;
-			}
-		}
-	}
 }
 
 .wp-block-coblocks-service {
