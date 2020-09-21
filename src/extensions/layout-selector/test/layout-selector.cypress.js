@@ -6,45 +6,56 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 describe( 'Extension: Layout Selector', () => {
 
 	it( 'shows modal on add new "page" post_type', () => {
+		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
+		helpers.disableGutenbergFeatures();
+
 		// The new page post_type admin page is already loaded before tests run.
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 	} );
 
 	it( 'loads layouts of each category', () => {
+		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
+		helpers.disableGutenbergFeatures();
+
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 
 		// Click "About" category.
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(1)' ).find( 'a' ).click();
-		cy.get( '.coblocks-layout-selector__layout' ).contains( 'Test About Content' );
+		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layouts-column' ).should( 'not.have.length', 0 );
 
 		// Click "Contact" category.
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(2)' ).find( 'a' ).click();
-		cy.get( '.coblocks-layout-selector__layout' ).contains( 'Test Contact Content' );
+		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layouts-column' ).should( 'not.have.length', 0 );
 
 		// Click "Home" category.
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(3)' ).find( 'a' ).click();
-		cy.get( '.coblocks-layout-selector__layout' ).contains( 'Test Home Content' );
+		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layouts-column' ).should( 'not.have.length', 0 );
 
 		// Click "Portfolio" category.
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(4)' ).find( 'a' ).click();
-		cy.get( '.coblocks-layout-selector__layout' ).contains( 'Test Portfolio Content' );
+		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layouts-column' ).should( 'not.have.length', 0 );
 	} );
 
 	it( 'inserts layout into page', () => {
+		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
+		helpers.disableGutenbergFeatures();
+
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(1)' ).find( 'a' ).click();
-		cy.get( '.coblocks-layout-selector__layout' ).contains( 'Test About Content' )
 		cy.get( '.coblocks-layout-selector__layout' ).first().click();
 
-		cy.get( '.editor-post-title__block' ).contains( 'Test Layout' );
-		cy.get( '.wp-block' ).contains( 'Test About Content' );
+		cy.get( '.editor-post-title__block' ).contains( 'About' );
+		cy.get( '.wp-block' ).contains( 'Work With Me' );
 
 		// Reset the page.
 		helpers.doEditorUndo();
 	} );
 
 	it( 'inserts blank layout into page', () => {
+		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
+		helpers.disableGutenbergFeatures();
+
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 
 		// Click "Add Blank Page" button.
