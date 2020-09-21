@@ -4,7 +4,7 @@
  */
 import classnames from 'classnames';
 import map from 'lodash/map';
-import { pick, isEmpty } from 'lodash';
+import { pick } from 'lodash';
 
 /**
  * WordPress dependencies
@@ -14,6 +14,7 @@ import { Component, Fragment, useState } from '@wordpress/element';
 import { registerPlugin } from '@wordpress/plugins';
 import { compose } from '@wordpress/compose';
 import { withSelect, withDispatch } from '@wordpress/data';
+import { isBlobURL } from '@wordpress/blob';
 import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem } from '@wordpress/components';
 import { BlockPreview } from '@wordpress/block-editor';
 import { createBlock, rawHandler } from '@wordpress/blocks';
@@ -38,6 +39,17 @@ const getTemplateFromBlocks = ( name, attributes, innerBlocks = [] ) => {
 		} ),
 	];
 };
+
+/**
+ * Is the url for the image hosted externally. An externally hosted image has no
+ * id and is not a blob url.
+ *
+ * @param {number=} id  The id of the image.
+ * @param {string=} url The url of the image.
+ *
+ * @return {boolean} Is the url an externally hosted url?
+ */
+const isExternalImage = ( id, url ) => url && ! id && ! isBlobURL( url );
 
 const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
 	const [ overlay, setOverlay ] = useState( false );
@@ -182,15 +194,18 @@ class LayoutSelector extends Component {
 			updateBlockAttributes,
 		} = this.props;
 
-		const urls = [];
+		let urls = [];
 
 		if ( blockAttributes.hasOwnProperty( 'images' ) ) {
-			blockAttributes.images.forEach( ( image ) => urls.push( image.url ) );
-		} else {
+			blockAttributes.images.forEach( ( image ) =>
+				isExternalImage( image.id, image.url ) && urls.push( image.url )
+			);
+		} else if ( isExternalImage( blockAttributes.id, blockAttributes.url ) ) {
 			urls.push( blockAttributes.url );
 		}
 
-		if ( ! urls.filter( ( url ) => typeof url !== 'undefined' ).length ) {
+		urls = urls.filter( ( url ) => typeof url !== 'undefined' );
+		if ( ! urls.length ) {
 			return;
 		}
 
@@ -211,16 +226,17 @@ class LayoutSelector extends Component {
 								return;
 							}
 
+							// Make sure we have the latest saved attributes for each iteration.
 							const currentAttributes = getBlockAttributes( clientId );
 
 							const newImages = currentAttributes.images.map( ( oldImage, oldIndex ) => {
 								return oldIndex === index
-									? { ...oldImage, url: media.url }
+									? { ...oldImage, id: media.id, url: media.url }
 									: oldImage;
 							} );
 
 							updateBlockAttributes( clientId, {
-								ids: media.id !== null ? [ ...currentAttributes.ids, media.id ] : currentAttributes.ids,
+								ids: newImages.map( ( image ) => image.id || null ),
 								images: newImages,
 							} );
 						},
