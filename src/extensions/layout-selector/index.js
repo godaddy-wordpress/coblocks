@@ -49,7 +49,7 @@ const getTemplateFromBlocks = ( name, attributes, innerBlocks = [] ) => {
  *
  * @return {boolean} Is the url an externally hosted url?
  */
-const isExternalImage = ( id, url ) => url && ! id && ! isBlobURL( url );
+const isExternalImage = ( id, url ) => url && ! id && ! isBlobURL( url ) && ! url.includes( window.location.host );
 
 const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
 	const [ overlay, setOverlay ] = useState( false );
