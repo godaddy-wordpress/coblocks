@@ -79,6 +79,7 @@ describe( 'Extension: Layout Selector', () => {
 		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
 		helpers.disableGutenbergFeatures();
 
+		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 		helpers.closeLayoutSelector();
 
 		helpers.openEditorSettingsModal();
