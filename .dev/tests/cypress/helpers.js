@@ -7,11 +7,9 @@ import { startCase } from 'lodash';
  * Close layout selector.
  */
 export function closeLayoutSelector() {
-	if ( Cypress.$( '.coblocks-layout-selector-modal' ).length > 0 ) {
-		cy.get( '.coblocks-layout-selector-modal' )
-			.find( '.components-button[aria-label="Close dialog"]' ).first()
-			.click();
-	}
+	cy.get( '.coblocks-layout-selector-modal' )
+		.find( '.components-button[aria-label="Close dialog"]' ).first()
+		.click();
 
 	cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
 }
