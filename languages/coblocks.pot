@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-09-21T22:19:23+00:00\n"
+"POT-Creation-Date: 2020-09-22T14:47:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -7627,28 +7627,28 @@ msgstr ""
 msgid "Crop settings"
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:61
+#: src/extensions/layout-selector/index.js:74
 msgid "Select Layout"
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:181
+#: src/extensions/layout-selector/index.js:295
 msgid "No layouts are available for this category."
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:200
+#: src/extensions/layout-selector/index.js:314
 msgid "Add new page"
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:201
+#: src/extensions/layout-selector/index.js:315
 msgid "Pick one of these layouts or start with a blank page"
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:232
-#: src/extensions/layout-selector/index.js:266
+#: src/extensions/layout-selector/index.js:346
+#: src/extensions/layout-selector/index.js:380
 msgid "Add blank page"
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:238
+#: src/extensions/layout-selector/index.js:352
 msgid "Layouts"
 msgstr ""
 
