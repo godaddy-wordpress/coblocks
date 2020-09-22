@@ -7,11 +7,13 @@ import { startCase } from 'lodash';
  * Close layout selector.
  */
 export function closeLayoutSelector() {
-	if ( Cypress.$( '.coblocks-layout-selector-modal' ).length > 0 ) {
-		cy.get( '.coblocks-layout-selector-modal' )
-			.find( '.components-button[aria-label="Close dialog"]' ).first()
-			.click();
-	}
+	cy.get( '.coblocks-layout-selector-modal' ).its( 'length' ).then( layoutSelectorModal => {
+		if ( layoutSelectorModal > 0 ) {
+			cy.get( '.coblocks-layout-selector-modal' )
+				.find( '.components-button[aria-label="Close dialog"]' ).first()
+				.click();
+		}
+	} );
 
 	cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
 }
@@ -410,7 +412,7 @@ export function doEditorRedo() {
 export function openEditorSettingsModal() {
 	// Open "more" menu.
 	cy.get( '.edit-post-more-menu button' ).click();
-	cy.get( '.components-menu-item__button' ).contains( 'Editor settings' ).click( { force: true } );
+	cy.get( '.components-menu-item__button' ).contains( 'Editor settings' ).click();
 
 	cy.get( '.components-modal__frame' ).contains( 'Editor settings' ).should( 'exist' );
 }
