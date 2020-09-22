@@ -51,14 +51,10 @@
 			width: 100%;
 
 			&:focus:not(:disabled) {
-				background: none;
-				border: none;
-				box-shadow: 0 0 0 2px $blue-medium-focus;
-				outline: none;
+				box-shadow: 0 0 0 1px $white, 0 0 0 3px var(--wp-admin-theme-color);
 			}
 
 			svg {
-				fill: $dark-gray-500;
 				margin: auto auto;
 				pointer-events: none;
 				transform: translate3d(0, 0, 0);

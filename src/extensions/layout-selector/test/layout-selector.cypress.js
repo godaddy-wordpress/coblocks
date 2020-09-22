@@ -20,19 +20,19 @@ describe( 'Extension: Layout Selector', () => {
 
 		// Click "About" category.
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(1)' ).find( 'a' ).click();
-		cy.get( '.coblocks-layout-selector__layout' ).contains( 'Test About Layout.' );
+		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layouts-column' ).should( 'not.have.length', 0 );
 
 		// Click "Contact" category.
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(2)' ).find( 'a' ).click();
-		cy.get( '.coblocks-layout-selector__layout' ).contains( 'Test Contact Layout.' );
+		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layouts-column' ).should( 'not.have.length', 0 );
 
 		// Click "Home" category.
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(3)' ).find( 'a' ).click();
-		cy.get( '.coblocks-layout-selector__layout' ).contains( 'Test Home Layout.' );
+		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layouts-column' ).should( 'not.have.length', 0 );
 
 		// Click "Portfolio" category.
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(4)' ).find( 'a' ).click();
-		cy.get( '.coblocks-layout-selector__layout' ).contains( 'Test Portfolio Layout.' );
+		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layouts-column' ).should( 'not.have.length', 0 );
 	} );
 
 	it( 'inserts layout into page', () => {
@@ -42,11 +42,10 @@ describe( 'Extension: Layout Selector', () => {
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(1)' ).find( 'a' ).click();
-		cy.get( '.coblocks-layout-selector__layout' ).should( 'exist' );
 		cy.get( '.coblocks-layout-selector__layout' ).first().click();
 
-		cy.get( '.editor-post-title__block' ).contains( 'About Test' );
-		cy.get( '.wp-block' ).contains( 'Test About Layout.' );
+		cy.get( '.editor-post-title__block' ).contains( 'About' );
+		cy.get( '.wp-block' ).contains( 'Work With Me' );
 
 		cy.get( `[data-type="core/image"] img[src^="${ Cypress.env( 'testURL' ) }"]` );
 	} );
