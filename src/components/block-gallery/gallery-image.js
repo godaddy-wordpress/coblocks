@@ -190,7 +190,7 @@ class GalleryImage extends Component {
 				{ isSelected &&
 					<Fragment>
 						{ supportsMoving &&
-							<ButtonGroup className="components-coblocks-gallery-item__move-menu is-left">
+							<ButtonGroup className="block-library-gallery-item__inline-menu is-left">
 								<Button
 									icon={ verticalMoving ? chevronUp : chevronLeft }
 									onClick={ ! isFirstItem && onMoveBackward }
@@ -209,7 +209,7 @@ class GalleryImage extends Component {
 								/>
 							</ButtonGroup>
 						}
-						<ButtonGroup className="components-coblocks-gallery-item__remove-menu is-right">
+						<ButtonGroup className="block-library-gallery-item__inline-menu is-right">
 							<Button
 								icon={ closeSmall }
 								className="coblocks-gallery-item__button"

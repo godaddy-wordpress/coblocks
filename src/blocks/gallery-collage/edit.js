@@ -153,7 +153,7 @@ class GalleryCollageEdit extends Component {
 						} ) }>
 						{ isSelected && (
 							<>
-								<ButtonGroup className="components-coblocks-gallery-item__remove-menu is-right">
+								<ButtonGroup className="block-library-gallery-item__inline-menu is-right is-visible">
 									<Button
 										icon={ closeSmall }
 										className="coblocks-gallery-item__button"

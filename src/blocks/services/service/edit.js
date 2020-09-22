@@ -163,7 +163,7 @@ class Edit extends Component {
 			<Fragment>
 				<figure className={ classes }>
 					{ isSelected && (
-						<ButtonGroup className="components-coblocks-gallery-item__remove-menu is-right">
+						<ButtonGroup className="block-library-gallery-item__inline-menu is-right is-visible">
 							<Button
 								icon={ closeSmall }
 								onClick={ () => setAttributes( { imageUrl: '' } ) }

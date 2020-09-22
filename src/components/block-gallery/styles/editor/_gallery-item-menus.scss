@@ -1,40 +1,7 @@
-.components-coblocks-gallery-item__remove-menu {
+.coblocks-gallery--item .is-selected .block-library-gallery-item__inline-menu {
 	display: inline-flex;
-	position: absolute;
-	top: -2px;
-	margin: $grid-unit-10;
-	z-index: 20; // https://github.com/WordPress/gutenberg/blob/7a8039357440522d9849ace89471b58a82bd283b/packages/base-styles/_z-index.scss#L26
-	transition: box-shadow 0.2s ease-out;
-	border-radius: $radius-block-ui;
-	background: $white;
-	border: $border-width solid $gray-900;
-
-	&.is-left {
-		left: -2px;
-	}
-	
-	&.is-right {
-		right: -2px;
-	}
-
-	svg {
-		position: relative;
-	}
 }
 
-.components-coblocks-gallery-item__move-menu {
+.is-visible.block-library-gallery-item__inline-menu {
 	display: inline-flex;
-	position: absolute;
-	top: -2px;
-	margin: $grid-unit-10;
-	z-index: 20;
-	transition: box-shadow 0.2s ease-out;
-	border-radius: $radius-block-ui;
-	background: $white;
-	border: $border-width solid $gray-900;
-}
-
-.coblocks-gallery-item__button {
-	box-shadow: none !important;
-	color: $white;
 }
