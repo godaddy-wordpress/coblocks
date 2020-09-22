@@ -4,6 +4,7 @@
  */
 import classnames from 'classnames';
 import map from 'lodash/map';
+import { pick } from 'lodash';
 
 /**
  * WordPress dependencies
@@ -13,6 +14,7 @@ import { Component, Fragment, useState } from '@wordpress/element';
 import { registerPlugin } from '@wordpress/plugins';
 import { compose } from '@wordpress/compose';
 import { withSelect, withDispatch } from '@wordpress/data';
+import { isBlobURL } from '@wordpress/blob';
 import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem } from '@wordpress/components';
 import { BlockPreview } from '@wordpress/block-editor';
 import { createBlock, rawHandler } from '@wordpress/blocks';
@@ -37,6 +39,17 @@ const getTemplateFromBlocks = ( name, attributes, innerBlocks = [] ) => {
 		} ),
 	];
 };
+
+/**
+ * Is the url for the image hosted externally. An externally hosted image has no
+ * id and is not a blob url.
+ *
+ * @param {number=} id  The id of the image.
+ * @param {string=} url The url of the image.
+ *
+ * @return {boolean} Is the url an externally hosted url?
+ */
+const isExternalImage = ( id, url ) => url && ! id && ! isBlobURL( url ) && ! url.includes( window.location.host );
 
 const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
 	const [ overlay, setOverlay ] = useState( false );
@@ -104,6 +117,23 @@ class LayoutSelector extends Component {
 		this.useTemplateLayout = this.useTemplateLayout.bind( this );
 		this.useEmptyTemplateLayout = this.useEmptyTemplateLayout.bind( this );
 		this.renderContent = this.renderContent.bind( this );
+		this.detectImageBlocks = this.detectImageBlocks.bind( this );
+		this.uploadExternalImages = this.uploadExternalImages.bind( this );
+	}
+
+	componentDidUpdate( prevProps ) {
+		if ( prevProps.clientIds.length !== 0 ) {
+			return;
+		}
+
+		this.detectImageBlocks( this.props.clientIds )
+			.filter( ( block ) => typeof block !== 'undefined' )
+			.forEach(
+				( block ) => {
+					const [ clientId, attributes ] = Object.entries( block )[ 0 ];
+					this.uploadExternalImages( clientId, attributes );
+				}
+			);
 	}
 
 	useEmptyTemplateLayout() {
@@ -130,6 +160,90 @@ class LayoutSelector extends Component {
 				.map( ( [ name, attributes, innerBlocks = [] ] ) => {
 					return getBlocksFromTemplate( name, attributes, innerBlocks );
 				} ),
+		} );
+	}
+
+	detectImageBlocks( clientIds ) {
+		const {
+			getBlockName,
+			getBlockAttributes,
+		} = this.props;
+
+		const imageBlockTypes = [ 'core/image', 'core/cover' ];
+		const galleryBlockTypes = [ 'core/gallery' ];
+
+		return clientIds.map( ( clientId ) => {
+			const blockName = getBlockName( clientId );
+			const blockAttributes = getBlockAttributes( clientId );
+
+			if ( imageBlockTypes.includes( blockName ) ) {
+				return { [ clientId ]: pick( blockAttributes, [ 'id', 'url' ] ) };
+			}
+
+			if ( galleryBlockTypes.includes( blockName ) ) {
+				return { [ clientId ]: pick( blockAttributes, [ 'ids', 'images' ] ) };
+			}
+		} );
+	}
+
+	uploadExternalImages( clientId, blockAttributes ) {
+		const {
+			createWarningNotice,
+			getBlockAttributes,
+			mediaUpload,
+			updateBlockAttributes,
+		} = this.props;
+
+		let urls = [];
+
+		if ( blockAttributes.hasOwnProperty( 'images' ) ) {
+			blockAttributes.images.forEach( ( image ) =>
+				isExternalImage( image.id, image.url ) && urls.push( image.url )
+			);
+		} else if ( isExternalImage( blockAttributes.id, blockAttributes.url ) ) {
+			urls.push( blockAttributes.url );
+		}
+
+		urls = urls.filter( ( url ) => typeof url !== 'undefined' );
+		if ( ! urls.length ) {
+			return;
+		}
+
+		urls.forEach( ( imageUrl, index ) => {
+			window.fetch( imageUrl )
+				.then( ( response ) => response.blob() )
+				.then( ( blob ) => {
+					mediaUpload( {
+						filesList: [ blob ],
+						allowedTypes: [ 'image' ],
+						onFileChange( [ media ] ) {
+							if ( ! blockAttributes.hasOwnProperty( 'images' ) ) {
+								updateBlockAttributes( clientId, {
+									id: media.id,
+									url: media.url,
+								} );
+
+								return;
+							}
+
+							// Make sure we have the latest saved attributes for each iteration.
+							const currentAttributes = getBlockAttributes( clientId );
+
+							const newImages = currentAttributes.images.map( ( oldImage, oldIndex ) => {
+								return oldIndex === index
+									? { ...oldImage, id: media.id, url: media.url }
+									: oldImage;
+							} );
+
+							updateBlockAttributes( clientId, {
+								ids: newImages.map( ( image ) => image.id || null ),
+								images: newImages,
+							} );
+						},
+						onError: ( message ) => createWarningNotice( message ),
+					} );
+				} )
+				.catch( ( error ) => createWarningNotice( error ) );
 		} );
 	}
 
@@ -288,6 +402,12 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 					isCurrentPostPublished,
 				} = select( 'core/editor' );
 				const { getLayoutSelector } = select( 'coblocks-settings' );
+				const {
+					getBlockAttributes,
+					getBlockName,
+					getClientIdsWithDescendants,
+					getSettings,
+				} = select( 'core/block-editor' );
 
 				const isDraft = [ 'draft' ].indexOf( getCurrentPostAttribute( 'status' ) ) !== -1;
 				const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo() && ! isDraft;
@@ -300,15 +420,23 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 					layoutSelectorEnabled: getLayoutSelector() && !! layouts.length && !! categories.length,
 					layouts,
 					categories,
+					mediaUpload: getSettings().mediaUpload,
+					clientIds: getClientIdsWithDescendants(),
+					getBlockAttributes,
+					getBlockName,
 				};
 			} ),
 			withDispatch( ( dispatch ) => {
 				const { closeTemplateSelector } = dispatch( 'coblocks/template-selector' );
 				const { editPost } = dispatch( 'core/editor' );
+				const { updateBlockAttributes } = dispatch( 'core/block-editor' );
+				const { createWarningNotice } = dispatch( 'core/notices' );
 
 				return {
 					closeTemplateSelector,
+					createWarningNotice,
 					editPost,
+					updateBlockAttributes,
 				};
 			} ),
 		] )( LayoutSelector ),

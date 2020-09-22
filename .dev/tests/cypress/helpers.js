@@ -4,6 +4,11 @@
 import { startCase } from 'lodash';
 
 /**
+ * Internal dependencies.
+ */
+import coblocksLayoutSelector from '../../../src/extensions/layout-selector/test/cypress-layouts';
+
+/**
  * Close layout selector.
  */
 export function closeLayoutSelector() {
@@ -60,7 +65,10 @@ export function loginToSite() {
  * @param {string} path The URI path to go to.
  */
 export function goTo( path = '/wp-admin' ) {
-	return cy.visit( Cypress.env( 'testURL' ) + path );
+	cy.visit( Cypress.env( 'testURL' ) + path );
+	return cy.window().then( ( win ) => {
+		win.coblocksLayoutSelector = coblocksLayoutSelector;
+	} );
 }
 
 /**
@@ -394,7 +402,7 @@ export function addCustomBlockClass( classes, blockID = '' ) {
  * Press the Undo button in the header toolbar.
  */
 export function doEditorUndo() {
-	cy.get( '.editor-history__undo' ).click();
+	cy.get( '.editor-history__undo' ).click( { force: true } );
 }
 
 /**
