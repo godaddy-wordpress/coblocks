@@ -15,5 +15,9 @@
     "testURL": "http://localhost:8889",
     "wpUsername": "admin",
     "wpPassword": "password"
+  },
+  "retries": {
+    "runMode": 2,
+    "openMode": 3
   }
 }

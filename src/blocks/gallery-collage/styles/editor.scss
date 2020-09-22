@@ -14,7 +14,7 @@
 
 			&::after {
 				bottom: 0;
-				box-shadow: 0 0 0 $border-width-focus var(--wp-admin-theme-color, #007cba);
+        box-shadow: 0 0 0 $border-width $white, 0 0 0 3px var(--wp-admin-theme-color, #007cba);
 				content: "";
 				left: 0;
 				position: absolute;
@@ -120,7 +120,7 @@
 		}
 
 		// Move the close button where its visible on the Layered style.
-		li:nth-child(4) .components-coblocks-gallery-item__remove-menu {
+		li:nth-child(4) .block-library-gallery-item__inline-menu {
 			left: 2px;
 			right: auto;
 		}
