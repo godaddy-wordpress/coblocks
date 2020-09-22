@@ -7,13 +7,11 @@ import { startCase } from 'lodash';
  * Close layout selector.
  */
 export function closeLayoutSelector() {
-	cy.get( '.coblocks-layout-selector-modal' ).its( 'length' ).then( layoutSelectorModal => {
-		if ( layoutSelectorModal > 0 ) {
-			cy.get( '.coblocks-layout-selector-modal' )
-				.find( '.components-button[aria-label="Close dialog"]' ).first()
-				.click();
-		}
-	} );
+	if ( 0 < Cypress.$( '.coblocks-layout-selector-modal' ).length ) {
+		cy.get( '.coblocks-layout-selector-modal' )
+			.find( '.components-button[aria-label="Close dialog"]' ).first()
+			.click();
+	}
 
 	cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
 }
