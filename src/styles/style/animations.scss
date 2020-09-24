@@ -1,72 +1,147 @@
 .coblocks-animate {
-	opacity: 0;
+	// VARIABLES
+
+	$coblocks-animate-duration: 2s;
+	$coblocks-animate-translation: 10rem;
+
+	// BLOCK STYLE
+
 	animation-fill-mode: forwards;
 	animation-timing-function: ease-in;
+	opacity: 0;
 
 	&.animate-loop {
 		animation-iteration-count: infinite;
 	}
 
+	// FADE IN
+
 	&.fadeIn {
+		animation-duration: $coblocks-animate-duration;
 		animation-name: fadeIn;
-		animation-duration: 2s;
 	}
 
+	// This animation is used for each animation
 	@keyframes fadeIn {
 		0% {
 			opacity: 0;
 		}
 
-		50% {
-			opacity: 1;
-		}
-
+		50%,
 		100% {
 			opacity: 1;
 		}
 	}
 
+	// FOCUS IN
+
+	&.focusIn {
+		animation-duration: $coblocks-animate-duration;
+		animation-name: focusIn, fadeIn;
+	}
+
+	@keyframes focusIn {
+		0% {
+			transform: scale(0);
+		}
+
+		50%,
+		100% {
+			transform: scale(1);
+		}
+	}
+
+	// SLIDE IN - LEFT
+
 	&.slideInLeft {
-		animation-name: slideInLeft;
-		animation-duration: 2s;
+		animation-duration: $coblocks-animate-duration;
+		animation-name: slideInLeft, fadeIn;
 	}
 
 	@keyframes slideInLeft {
 		0% {
-			opacity: 0;
-			transform: translateX(-10rem);
+			transform: translateX(-#{ $coblocks-animate-translation });
 		}
 
-		50% {
-			opacity: 1;
-			transform: translateX(0rem);
-		}
-
+		50%,
 		100% {
-			opacity: 1;
-			transform: translateX(0rem);
+			transform: translateX(0);
 		}
 	}
+	
+	// SLIDE IN - RIGHT
 
 	&.slideInRight {
-		animation-name: slideInRight;
-		animation-duration: 2s;
+		animation-duration: $coblocks-animate-duration;
+		animation-name: slideInRight, fadeIn;
 	}
 
 	@keyframes slideInRight {
 		0% {
-			opacity: 0;
-			transform: translateX(10rem);
+			transform: translateX($coblocks-animate-translation);
 		}
 
-		50% {
-			opacity: 1;
-			transform: translateX(0rem);
-		}
-
+		50%,
 		100% {
-			opacity: 1;
-			transform: translateX(0rem);
+			transform: translateX(0);
+		}
+	}
+
+	// SLIDE IN - UP
+
+	&.slideInBottom {
+		animation-duration: $coblocks-animate-duration;
+		animation-name: slideInBottom, fadeIn;
+	}
+
+	@keyframes slideInBottom {
+		0% {
+			transform: translateY($coblocks-animate-translation);
+		}
+
+		50%, 
+		100% {
+			transform: translateY(0);
+		}
+	}
+
+	// CLIP - HORIZONTAL
+
+	&.clipHorizontal {
+		animation-duration: $coblocks-animate-duration;
+		animation-name: clipHorizontal, fadeIn;
+	}
+
+	@keyframes clipHorizontal {
+		0% {
+			-webkit-clip-path: polygon(0% 50%, 0% 100%, 0% 100%, 0% 50%, 100% 50%, 100% 0%, 100% 0%, 100% 50%);
+			clip-path:polygon(0% 50%, 0% 100%, 0% 100%, 0% 50%, 100% 50%, 100% 0%, 100% 0%, 100% 50%);
+		}
+
+		50%,
+		100% {
+			-webkit-clip-path: polygon(0% 50%, 0% 100%, 100% 100%, 100% 50%, 100% 50%, 100% 0%, 0% 0%, 0% 50%);
+			clip-path:polygon(0% 50%, 0% 100%, 100% 100%, 100% 50%, 100% 50%, 100% 0%, 0% 0%, 0% 50%);
+		}
+	}
+
+	// CLIP - VERTICAL
+
+	&.clipVertical {
+		animation-duration: $coblocks-animate-duration;
+		animation-name: clipVertical, fadeIn;
+	}
+
+	@keyframes clipVertical {
+		0% {
+			-webkit-clip-path: polygon(50% 0%, 100% 0%, 100% 0%, 50% 0%, 50% 100%, 0% 100%, 0% 100%, 50% 100%);
+    		clip-path:polygon(50% 0%, 100% 0%, 100% 0%, 50% 0%, 50% 100%, 0% 100%, 0% 100%, 50% 100%);
+		}
+
+		50%,
+		100% {
+			-webkit-clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 100%, 0% 100%, 0% 0%, 50% 0%);
+    		clip-path:polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 100%, 0% 100%, 0% 0%, 50% 0%);
 		}
 	}
 }

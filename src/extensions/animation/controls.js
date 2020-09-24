@@ -30,10 +30,7 @@ class Controls extends Component {
 		const { setAttributes } = this.props;
 
 		return () => {
-			if ( !! animationClass ) {
-				setAttributes( { animation: animationClass } );
-			}
-
+			setAttributes( { animation: animationClass } );
 			onClose();
 		};
 	};
@@ -47,7 +44,7 @@ class Controls extends Component {
 			<BlockControls>
 				<Dropdown
 					position="bottom right"
-					className={ classnames( 'components-dropdown-menu', 'components-coblocks-animation-dropdown' ) }
+					className={ classnames( 'components-dropdown-menu', 'components-coblocks-animation-dropdown', animation ? 'is-with-animation' : '' ) }
 					contentClassName="components-dropdown-menu__popover components-coblocks-animation-dropdown"
 					renderToggle={ ( { onToggle, isOpen } ) => {
 						const openOnArrowDown = ( event ) => {

@@ -18,6 +18,7 @@ import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
 const allowedBlocks = [
 	'core/cover',
+	'core/image'
 ];
 
 const animateClass = 'coblocks-animate';
@@ -121,7 +122,7 @@ const enhance = compose(
 
 const withAnimationSettings = createHigherOrderComponent( ( BlockListBlock ) => {
 	return enhance( ( { select, ...props } ) => {
-		let wrapperProps 	= props.wrapperProps;
+		let wrapperProps = props.wrapperProps;
 
 		const block = select( 'core/block-editor' ).getBlock( props.rootClientId || props.clientId );
 		const blockName	= select( 'core/block-editor' ).getBlockName( props.rootClientId || props.clientId );
