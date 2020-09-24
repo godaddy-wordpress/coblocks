@@ -20,6 +20,9 @@ function CoBlocksField( {
 	required,
 	label,
 	setAttributes,
+	textColor,
+	customTextColor,
+	name,
 } ) {
 	return (
 		<Fragment>
@@ -29,6 +32,9 @@ function CoBlocksField( {
 					label={ label }
 					setAttributes={ setAttributes }
 					isSelected={ isSelected }
+					textColor={ textColor }
+					customTextColor={ customTextColor }
+					name={ name }
 				/>
 				<TextControl type={ type } />
 			</div>

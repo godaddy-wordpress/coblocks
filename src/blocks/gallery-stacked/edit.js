@@ -3,11 +3,11 @@
  */
 import classnames from 'classnames';
 import filter from 'lodash/filter';
+import { GalleryStackedIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
  */
-import { icon } from './';
 import Inspector from './inspector';
 import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
@@ -21,7 +21,7 @@ import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
-import { withNotices } from '@wordpress/components';
+import { withNotices, Icon } from '@wordpress/components';
 import { withFontSizes } from '@wordpress/block-editor';
 
 class GalleryStackedEdit extends Component {
@@ -166,7 +166,7 @@ class GalleryStackedEdit extends Component {
 				<GalleryPlaceholder
 					{ ...this.props }
 					label={ __( 'Stacked', 'coblocks' ) }
-					icon={ icon }
+					icon={ <Icon icon={ icon } /> }
 					gutter={ gutter }
 				/>
 			</Fragment> );

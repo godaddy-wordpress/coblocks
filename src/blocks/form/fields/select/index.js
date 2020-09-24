@@ -1,13 +1,19 @@
 /**
+ * External dependencies
+ */
+import { FormSelectIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import { editMultiField } from '../helpers';
-import icon from './icon';
+import transforms from './transforms';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
 
 /**
  * Block constants
@@ -38,7 +44,7 @@ const settings = {
 	title: __( 'Select', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'A dropdown field with multiple options where only one choice can be made.', 'coblocks' ),
-	icon,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */
@@ -51,8 +57,10 @@ const settings = {
 		reusable: false,
 		html: false,
 		customClassName: false,
+		labelColor: true,
 	},
 	attributes,
+	transforms,
 	edit: editMultiField( 'select' ),
 	save: () => null,
 };

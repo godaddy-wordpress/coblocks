@@ -493,7 +493,7 @@ div[data-type="coblocks/column"]:last-child {
 	.components-coblocks-row-placeholder__button {
 		align-items: center;
 		background: $white;
-		border-radius: 3px !important;
+		border-radius: $radius-block-ui !important;
 		height: auto;
 		margin: 0;
 		padding: 16px 10px;
@@ -501,7 +501,7 @@ div[data-type="coblocks/column"]:last-child {
 
 	.components-coblocks-row-placeholder__back {
 		align-self: center;
-		border-radius: 3px !important;
+		border-radius: $radius-block-ui !important;
 		margin-bottom: 0;
 		margin-right: 4px;
 	}

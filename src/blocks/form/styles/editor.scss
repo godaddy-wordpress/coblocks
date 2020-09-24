@@ -35,7 +35,7 @@
 		.components-base-control {
 
 			&.coblocks-field-label__required {
-				color: $dark-gray-500;
+				color: $gray-900;
 				margin-top: -5px;
 
 				.components-form-toggle {
@@ -151,8 +151,8 @@
 
 	.coblocks-option__input.coblocks-option__input.coblocks-option__input:focus {
 		background: $white;
-		border-color: $blue-medium-focus;
-		box-shadow: 0 0 0 1px $blue-medium-focus;
+		border-color: var(--wp-admin-theme-color, #007cba);
+		box-shadow: 0 0 0 1px var(--wp-admin-theme-color, #007cba);
 	}
 
 	.coblocks-option__remove.coblocks-option__remove {
@@ -167,6 +167,10 @@
 
 	.coblocks-field-multiple__add-option svg {
 		margin-right: 5px;
+	}
+
+	.wp-block:focus::after {
+		box-shadow: none !important;
 	}
 }
 

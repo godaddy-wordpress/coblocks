@@ -14,13 +14,14 @@ import isEqual from 'lodash/isEqual';
  */
 import Notice from './notice';
 import { TEMPLATE_OPTIONS } from './deprecatedTemplates/layouts';
+import LabelColorControl from '../../components/form-label-colors/label-color-control';
 
 /**
  * WordPress dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/components';
+import { Button, PanelBody, TextControl, ExternalLink, TextareaControl } from '@wordpress/components';
 import { InspectorControls, InnerBlocks, __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
 import { compose } from '@wordpress/compose';
@@ -41,6 +42,7 @@ class FormEdit extends Component {
 		super( ...arguments );
 
 		this.onChangeSubject = this.onChangeSubject.bind( this );
+		this.onChangeSuccessText = this.onChangeSuccessText.bind( this );
 		this.onBlurTo = this.onBlurTo.bind( this );
 		this.onChangeTo = this.onChangeTo.bind( this );
 		this.getToValidationError = this.getToValidationError.bind( this );
@@ -65,9 +67,9 @@ class FormEdit extends Component {
 			isSaving: false,
 			keySaved: false,
 			template: null,
-			subjectValue: this.props.attributes.subject || '' === this.props.attributes.subject ?
-				this.props.attributes.subject :
-				coblocksBlockData.form.emailSubject,
+			subjectValue: this.props.attributes.subject || '' === this.props.attributes.subject
+				? this.props.attributes.subject
+				: coblocksBlockData.form.emailSubject,
 		};
 
 		const to = arguments[ 0 ].attributes.to ? arguments[ 0 ].attributes.to : '';
@@ -91,7 +93,7 @@ class FormEdit extends Component {
 			this.setState( { template: innerBlocks } );
 		}
 
-		if ( !this.supportsInnerBlocksPicker() && !this.supportsBlockVariationPicker() && hasInnerBlocks === false ) {
+		if ( ! this.supportsInnerBlocksPicker() && ! this.supportsBlockVariationPicker() && hasInnerBlocks === false ) {
 			this.setTemplate( defaultVariation );
 		}
 	}
@@ -132,11 +134,11 @@ class FormEdit extends Component {
 				// Check if the template does not include the submit button.
 				prevState.template !== this.state.template &&
 				Object.keys( prevProps.innerBlocks ).length &&
-				innerBlocks.filter( block => block.name === 'coblocks/field-submit-button' ).length < 1
+				innerBlocks.filter( ( block ) => block.name === 'coblocks/field-submit-button' ).length < 1
 			) || (
 				// Check if a submit button exists when a block has been removed.
 				Object.keys( innerBlocks ).length < Object.keys( prevProps.innerBlocks ).length &&
-				innerBlocks.filter( block => block.name === 'coblocks/field-submit-button' ).length < 1
+				innerBlocks.filter( ( block ) => block.name === 'coblocks/field-submit-button' ).length < 1
 			)
 		) {
 			insertBlock(
@@ -153,12 +155,16 @@ class FormEdit extends Component {
 		this.props.setAttributes( { subject } );
 	}
 
+	onChangeSuccessText( successText ) {
+		this.props.setAttributes( { successText } );
+	}
+
 	getToValidationError( email ) {
 		email = email.trim();
 		if ( email.length === 0 ) {
 			return false; // ignore the empty emails
 		}
-		if ( !emailValidator.validate( email ) ) {
+		if ( ! emailValidator.validate( email ) ) {
 			return { email };
 		}
 		return false;
@@ -268,44 +274,55 @@ class FormEdit extends Component {
 	renderToAndSubjectFields() {
 		const fieldEmailError = this.state.toError;
 		const { instanceId, attributes } = this.props;
-		const { to } = attributes;
+		const { to, successText } = attributes;
 		const { subjectValue } = this.state;
 		return (
 			<Fragment>
 				<TextControl
-					aria-describedby={ `contact-form-${instanceId}-email-${
+					aria-describedby={ `contact-form-${ instanceId }-email-${
 						this.hasEmailError() ? 'error' : 'help'
-						}` }
+					}` }
 					label={ __( 'Email address', 'coblocks' ) }
 					placeholder={ __( 'name@example.com', 'coblocks' ) }
 					onKeyDown={ this.preventEnterSubmission }
 					value={ to || '' === to ? to : coblocksBlockData.form.adminEmail }
 					onBlur={ this.onBlurTo }
 					onChange={ this.onChangeTo }
+					help={ __( 'Enter the email address where emails should be sent to.', 'coblocks' ) }
 				/>
-				<Notice isError id={ `contact-form-${instanceId}-email-error` }>
+				<Notice isError id={ `contact-form-${ instanceId }-email-error` }>
 					{ this.getfieldEmailError( fieldEmailError ) }
 				</Notice>
 				<TextControl
 					label={ __( 'Subject', 'coblocks' ) }
 					value={ subjectValue }
 					onChange={ this.onChangeSubject }
-					help={ <Fragment> { __( 'You may use the following tags in the subject field: ', 'coblocks' ) }
-						<Button
-							isLink
-							onClick={ this.appendTagsToSubject }
-						>
-							[{ __( 'email', 'coblocks' ) }]
-						</Button>
-						<Button
-							isLink
-							onClick={ this.appendTagsToSubject }
-						>
-							[{ __( 'name', 'coblocks' ) }]
-						</Button></Fragment> }
-
+					help={
+						<Fragment>
+							{ __( 'You may use the following tags in the subject field: ', 'coblocks' ) }
+							<Button
+								isLink
+								onClick={ this.appendTagsToSubject }
+							>
+								[{ __( 'email', 'coblocks' ) }]
+							</Button>
+							<Button
+								isLink
+								onClick={ this.appendTagsToSubject }
+							>
+								[{ __( 'name', 'coblocks' ) }]
+							</Button>
+						</Fragment>
+					}
 				/>
-
+				<TextareaControl
+					label={ __( 'Success message', 'coblocks' ) }
+					placeholder={ __( 'Your message was sent:', 'coblocks' ) }
+					onKeyDown={ this.preventEnterSubmission }
+					value={ successText }
+					onChange={ this.onChangeSuccessText }
+					help={ __( 'Form submission confirmation text.', 'coblocks' ) }
+				/>
 			</Fragment>
 		);
 	}
@@ -328,19 +345,21 @@ class FormEdit extends Component {
 	}
 
 	supportsBlockVariationPicker() {
-		return !!registerBlockVariation;
+		return !! registerBlockVariation;
 	}
 
 	blockVariationPicker() {
 		return (
 			<Fragment>
-				<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
+				<InnerBlocks
+					allowedBlocks={ ALLOWED_BLOCKS }
+					__experimentalCaptureToolbars={ true }
+				/>
 			</Fragment>
 		);
 	}
 
 	innerBlocksPicker() {
-		const { hasInnerBlocks } = this.props;
 		return (
 			<Fragment>
 				<InnerBlocks
@@ -355,6 +374,7 @@ class FormEdit extends Component {
 					template={ this.supportsInnerBlocksPicker() ? this.state.template : TEMPLATE_OPTIONS[ 0 ].template }
 					allowedBlocks={ ALLOWED_BLOCKS }
 					templateInsertUpdatesSelection={ false }
+					__experimentalCaptureToolbars={ true }
 				/>
 			</Fragment>
 		);
@@ -368,7 +388,7 @@ class FormEdit extends Component {
 			'coblocks-form',
 		);
 
-		if ( hasInnerBlocks || !this.supportsBlockVariationPicker() ) {
+		if ( hasInnerBlocks || ! this.supportsBlockVariationPicker() ) {
 			return (
 				<Fragment>
 					<InspectorControls>
@@ -385,9 +405,9 @@ class FormEdit extends Component {
 								<Fragment>
 									<ExternalLink href={ RETRIEVE_KEY_URL }>
 										{ this.state.recaptchaSiteKey === '' &&
-											this.state.recaptchaSecretKey === '' ?
-											__( 'Generate keys', 'coblocks' ) :
-											__( 'My keys', 'coblocks' ) }
+											this.state.recaptchaSecretKey === ''
+											? __( 'Generate keys', 'coblocks' )
+											: __( 'My keys', 'coblocks' ) }
 									</ExternalLink>
 									|&nbsp;
 									<ExternalLink href={ HELP_URL }>{ __( 'Get help', 'coblocks' ) }</ExternalLink>
@@ -419,18 +439,19 @@ class FormEdit extends Component {
 								</Button>
 								{ this.state.recaptchaSiteKey !== '' &&
 									this.state.recaptchaSecretKey !== '' && (
-										<Button
-											className="components-block-coblocks-form-recaptcha-key-remove__button"
-											isLarge
-											isSecondary
-											onClick={ this.removeRecaptchaKey }
-											disabled={ this.state.recaptchaSiteKey === '' || this.state.recaptchaSecretKey === '' }
-										>
-											{ __( 'Remove', 'coblocks' ) }
-										</Button>
-									) }
+									<Button
+										className="components-block-coblocks-form-recaptcha-key-remove__button"
+										isLarge
+										isSecondary
+										onClick={ this.removeRecaptchaKey }
+										disabled={ this.state.recaptchaSiteKey === '' || this.state.recaptchaSecretKey === '' }
+									>
+										{ __( 'Remove', 'coblocks' ) }
+									</Button>
+								) }
 							</div>
 						</PanelBody>
+						<LabelColorControl { ...this.props } />
 					</InspectorControls>
 					<div className={ classes }>
 						{ this.supportsBlockVariationPicker() ? this.blockVariationPicker() : this.innerBlocksPicker() }

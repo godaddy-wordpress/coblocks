@@ -5,9 +5,9 @@
 	display: flex;
 	flex-wrap: wrap;
 	font-family: $default-font;
-	font-size: 13px;
+	font-size: $default-font-size;
 	left: 0;
-	line-height: 1.4;
+	line-height: $default-line-height;
 	position: absolute;
 	right: 0;
 	z-index: 20;

@@ -96,6 +96,7 @@ class AccordionItemEdit extends Component {
 							<InnerBlocks
 								template={ TEMPLATE }
 								templateInsertUpdatesSelection={ false }
+								__experimentalCaptureToolbars={ true }
 							/>
 						</div>
 					}

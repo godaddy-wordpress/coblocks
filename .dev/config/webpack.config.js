@@ -20,6 +20,7 @@ module.exports = {
 		'js/coblocks-animation': path.resolve( process.cwd(), 'src/js/coblocks-animation.js' ),
 		'js/coblocks-accordion-polyfill': path.resolve( process.cwd(), 'src/js/coblocks-accordion-polyfill.js' ),
 		'js/coblocks-accordion-carousel': path.resolve( process.cwd(), 'src/js/coblocks-accordion-carousel.js' ),
+		'js/coblocks-checkbox-required': path.resolve( process.cwd(), 'src/js/coblocks-checkbox-required.js' ),
 		'js/coblocks-datepicker': path.resolve( process.cwd(), 'src/js/coblocks-datepicker.js' ),
 		'js/coblocks-events': path.resolve( process.cwd(), 'src/js/coblocks-events.js' ),
 		'js/coblocks-fromEntries': path.resolve( process.cwd(), 'src/js/coblocks-fromEntries.js' ),

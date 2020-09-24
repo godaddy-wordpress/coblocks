@@ -1,8 +1,12 @@
 /**
+ * External dependencies
+ */
+import { HighlightIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import edit from './edit';
-import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
@@ -11,6 +15,7 @@ import transforms from './transforms';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
 
 /**
  * Block constants
@@ -22,7 +27,7 @@ const settings = {
 	title: __( 'Highlight', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Draw attention and emphasize important narrative.', 'coblocks' ),
-	icon,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

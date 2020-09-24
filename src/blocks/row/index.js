@@ -1,21 +1,26 @@
 /**
+ * External dependencies
+ */
+import { RowIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
-import edit from './edit';
 import deprecated from './deprecated';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
-import { getEditWrapperProps } from './utilities';
-import icon from './icon';
+import edit from './edit';
 import metadata from './block.json';
-import variations from './variations';
 import save from './save';
 import transforms from './transforms';
+import variations from './variations';
 import { BackgroundAttributes } from '../../components/background';
+import { getEditWrapperProps } from './utilities';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
 
 /**
  * Block constants
@@ -33,7 +38,7 @@ const settings = {
 	title: __( 'Row', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add a structured wrapper for column blocks, then add content blocks you’d like to the columns.', 'coblocks' ),
-	icon,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

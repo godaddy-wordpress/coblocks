@@ -1,0 +1,16 @@
+@import "node_modules/@wordpress/base-styles/variables";
+@import "node_modules/@wordpress/base-styles/colors";
+
+.coblocks-block-patterns__modal {
+
+	.components-base-control__field {
+		margin-bottom: $grid-unit-20;
+	}
+}
+
+.coblocks-block-patterns__preview {
+	border-radius: $radius-block-ui;
+	border: $border-width solid $gray-900;
+	margin-bottom: $grid-unit-30;
+	padding: 9px;
+}

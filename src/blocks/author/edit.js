@@ -159,6 +159,7 @@ class AuthorEdit extends Component {
 							templateLock="all"
 							allowedBlocks={ [ 'core/button' ] }
 							templateInsertUpdatesSelection={ false }
+							__experimentalCaptureToolbars={ true }
 						/>
 					</div>
 				</div>

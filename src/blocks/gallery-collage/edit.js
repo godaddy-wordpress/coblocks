@@ -17,10 +17,11 @@ import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { withNotices, DropZone, Spinner, Button, Dashicon } from '@wordpress/components';
+import { withNotices, DropZone, Spinner, Button, Dashicon, ButtonGroup } from '@wordpress/components';
 import { MediaPlaceholder, RichText, URLInput } from '@wordpress/block-editor';
 import { mediaUpload } from '@wordpress/editor';
 import { isBlobURL } from '@wordpress/blob';
+import { closeSmall } from '@wordpress/icons';
 
 class GalleryCollageEdit extends Component {
 	constructor() {
@@ -151,15 +152,17 @@ class GalleryCollageEdit extends Component {
 							[ `shadow-${ this.props.attributes.shadow }` ]: this.props.attributes.shadow,
 						} ) }>
 						{ isSelected && (
-							<div className="components-coblocks-gallery-item__remove-menu">
-								<Button
-									icon="no-alt"
-									onClick={ () => this.removeImage( index ) }
-									className="coblocks-gallery-item__button"
-									label={ __( 'Remove image', 'coblocks' ) }
-									disabled={ ! isSelected }
-								/>
-							</div>
+							<>
+								<ButtonGroup className="block-library-gallery-item__inline-menu is-right is-visible">
+									<Button
+										icon={ closeSmall }
+										className="coblocks-gallery-item__button"
+										onClick={ () => this.removeImage( index ) }
+										label={ __( 'Remove image', 'coblocks' ) }
+										disabled={ ! isSelected }
+									/>
+								</ButtonGroup>
+							</>
 						) }
 						{ this.state.selectedImage === image.index && this.props.attributes.linkTo === 'custom' &&
 							<form

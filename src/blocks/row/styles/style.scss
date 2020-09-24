@@ -47,7 +47,7 @@
 
 .wp-block-coblocks-column {
 	height: 100%;
-	margin-bottom: $grid-size-large * 2;
+	margin-bottom: $grid-unit-40;
 
 	// Beyond mobile, allow 2 columns.
 	@include break-small() {
