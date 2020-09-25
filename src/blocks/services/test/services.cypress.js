@@ -93,6 +93,24 @@ describe( 'Test CoBlocks Services Block', function() {
 	} );
 
 	/**
+	 * Test that the service block move arrow orientation is correct
+	 */
+	it( 'Test service block has the proper arrow orientation.', function() {
+		helpers.addBlockToPost( 'coblocks/services', true );
+
+		cy.get( '.wp-block-coblocks-services div[data-type="coblocks/service"]:first-child' ).click();
+		cy.get( 'div.block-editor-block-mover' ).should( 'have.class', 'is-horizontal' );
+
+		cy.get( '.wp-block-coblocks-services' ).click();
+		helpers.setInputValue( 'Services settings', 'Columns', 1, false );
+
+		cy.get( '.wp-block-coblocks-services div[data-type="coblocks/service"]:first-child' ).click();
+		cy.get( 'div.block-editor-block-mover' ).should( 'not.have.class', 'is-horizontal' );
+
+		helpers.savePage();
+	} );
+
+	/**
 	 * Test that we can add a services block to the content, enable
 	 * action buttons and  are able to successfully save the block without errors.
 	 */
