@@ -1,3 +1,5 @@
+/*global coblocksBlockData*/
+
 /**
  * Internal
  */
@@ -39,6 +41,10 @@ class Controls extends Component {
 		const {
 			attributes: { animation },
 		} = this.props;
+
+		if ( ! coblocksBlockData.animationControlsEnabled ) {
+			return null;
+		}
 
 		return (
 			<BlockControls>
