@@ -33,6 +33,7 @@ import {
 	TextControl,
 	Toolbar,
 } from '@wordpress/components';
+import { edit } from '@wordpress/icons';
 
 /**
  * Module Constants
@@ -119,7 +120,7 @@ class PostCarousel extends Component {
 
 		const editToolbarControls = [
 			{
-				icon: 'edit',
+				icon: edit,
 				title: __( 'Edit RSS URL', 'coblocks' ),
 				onClick: () => this.setState( { editing: true } ),
 			},
