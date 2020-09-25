@@ -4,6 +4,9 @@
 - name: First-time Contributor
   color: "c3c4c7"
   description: "Pull request opened by a first-time contributor"
+- name: "Hacktoberfest"
+  color: "ff8ae2"
+  description: "Issues/PRs related to Hacktoberfest: https://hacktoberfest.digitalocean.com"
 
 - name: "[Priority] Low"
   color: "907300"
