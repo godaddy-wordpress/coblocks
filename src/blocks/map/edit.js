@@ -29,9 +29,9 @@ import {
 	ResizableBox,
 	withNotices,
 	Icon,
+	TextControl,
 } from '@wordpress/components';
 import { Fragment, Component } from '@wordpress/element';
-import { ENTER } from '@wordpress/keycodes';
 import apiFetch from '@wordpress/api-fetch';
 
 class Edit extends Component {
@@ -137,14 +137,6 @@ class Edit extends Component {
 			}
 
 			setAttributes( { address: this.state.address, pinned: true } );
-		};
-
-		const handleKeyDown = ( keyCode ) => {
-			if ( keyCode !== ENTER ) {
-				return;
-			}
-
-			renderMap();
 		};
 
 		const marker = {
@@ -279,15 +271,14 @@ class Edit extends Component {
 				) : (
 					<Placeholder
 						icon={ <Icon icon={ icon } /> }
-						label={ __( 'Google map', 'coblocks' ) }
+						label={ __( 'Map', 'coblocks' ) }
 						instructions={ __(
 							'Enter a location or address to drop a pin on a Google map.',
 							'coblocks'
 						) }
 					>
 						<form onSubmit={ renderMap }>
-							<input
-								type="text"
+							<TextControl
 								value={ this.state.address || '' }
 								className="components-placeholder__input"
 								placeholder={ __(
@@ -296,20 +287,18 @@ class Edit extends Component {
 								) }
 								onChange={ ( nextAddress ) =>
 									this.setState( {
-										address: nextAddress.target.value,
+										address: nextAddress,
 									} )
-								}
-								onKeyDown={ ( { keyCode } ) =>
-									handleKeyDown( keyCode )
 								}
 							/>
 							<Button
 								isLarge
-								isSecondary
+								isPrimary={ !! this.state.address }
+								isSecondary={ ! this.state.address }
 								type="submit"
 								disabled={ ! this.state.address }
 							>
-								{ __( 'Apply', 'coblocks' ) }
+								{ __( 'Search', 'coblocks' ) }
 							</Button>
 						</form>
 						{ attributes.lng && attributes.hasError && (

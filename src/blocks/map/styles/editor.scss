@@ -10,12 +10,25 @@
 			}
 
 			.components-button {
-				position: relative;
-				top: 1px;
+				height: 100%;
 			}
 
 			form {
 				margin-bottom: 12px;
+				display: inline-flex;
+
+				.components-placeholder__input {
+					min-width: 50%;
+					margin-right: 5px;
+
+					.components-base-control__field {
+						height: 100%;
+					}
+				}
+
+				input {
+					height: 100%;
+				}
 			}
 		}
 
