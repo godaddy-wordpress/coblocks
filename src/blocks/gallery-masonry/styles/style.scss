@@ -4,6 +4,9 @@
 	ul {
 		list-style: none !important;
 		padding: 0 !important;
+	}
+
+	ul:not([class*="gutter"]) {
 		margin-left: 0 !important;
 	}
 
@@ -13,6 +16,7 @@
 
 	figure {
 		overflow: hidden;
+		margin: 0;
 	}
 
 	img {

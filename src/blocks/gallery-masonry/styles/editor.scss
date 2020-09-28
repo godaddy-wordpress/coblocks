@@ -78,6 +78,10 @@
 	.components-coblocks-gallery-item__image-link + img + .block-editor-rich-text {
 		margin-bottom: 34px;
 	}
+
+	.wp-block-coblocks-gallery-masonry ul{
+		margin: 0;
+	}
 }
 
 [data-type="core/group"] .wp-block-coblocks-gallery-masonry {
