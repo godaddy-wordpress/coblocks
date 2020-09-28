@@ -35,7 +35,7 @@ describe( 'Test CoBlocks Map Block', function() {
 		cy.get( 'input[placeholder="Search for a place or address…"]' )
 			.type( mapAddress )
 			.parents( '.components-placeholder__fieldset' )
-			.find( 'button' ).contains( /apply/i ).click();
+			.find( 'button' ).contains( /search/i ).click();
 
 		helpers.savePage();
 
@@ -57,7 +57,7 @@ describe( 'Test CoBlocks Map Block', function() {
 		cy.get( 'input[placeholder="Search for a place or address…"]' )
 			.type( mapAddress )
 			.parents( '.components-placeholder__fieldset' )
-			.find( 'button' ).contains( /apply/i ).click();
+			.find( 'button' ).contains( /search/i ).click();
 
 		helpers.setInputValue( 'map settings', 'height in pixels', 800 );
 
@@ -81,9 +81,9 @@ describe( 'Test CoBlocks Map Block', function() {
 		helpers.addBlockToPost( 'coblocks/map', true );
 
 		cy.get( 'input[placeholder="Search for a place or address…"]' )
-		.type( mapAddress )
-		.parents( '.components-placeholder__fieldset' )
-		.find( 'button' ).contains( /apply/i ).click();
+			.type( mapAddress )
+			.parents( '.components-placeholder__fieldset' )
+			.find( 'button' ).contains( /search/i ).click();
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'map' );
 
