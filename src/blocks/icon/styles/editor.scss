@@ -8,6 +8,10 @@
 		margin-top: 5px;
 		order: 1;
 	}
+
+	.components-range-control {
+		width: 100%;
+	}
 }
 
 .coblocks-icon-types-list-wrapper {
@@ -63,11 +67,18 @@
 		.components-button {
 			align-items: center;
 			box-shadow: none;
+			color: $gray-900;
 			display: flex;
 			height: auto;
 			justify-content: center;
 			padding: 14px 0;
 			width: 100%;
+			outline: 1px dotted transparent;
+
+			&:hover:not(:disabled) {
+				box-shadow: inset 0 0 0 1px var(--wp-admin-theme-color, #007cba);
+				color: var(--wp-admin-theme-color, #007cba);
+			}
 
 			svg {
 				fill: currentColor;
@@ -88,12 +99,12 @@
 		&.selected-svg {
 
 			.components-button {
-				background: $light-gray-500;
-				border-color: $light-gray-500;
+				background: $gray-900;
+				border-color: $gray-900;
 				pointer-events: none;
 
 				svg {
-					fill: $dark-gray-500;
+					fill: $white;
 				}
 			}
 		}
@@ -126,7 +137,6 @@
 	}
 }
 
-// Hide screen reader label for Gutenberg < 6.4
 .components-coblocks-icon-size__controls {
 	align-items: center;
 	display: flex;
@@ -173,6 +183,7 @@
 
 	.components-resizable-box__container {
 		width: 100% !important;
-		padding: 4rem !important;
+		padding: 4em !important;
+		max-width: 16em !important;
 	}
 }

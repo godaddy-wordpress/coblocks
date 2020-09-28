@@ -5,6 +5,7 @@ import { __, sprintf } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
 import { BlockControls } from '@wordpress/block-editor';
 import { Toolbar } from '@wordpress/components';
+import { edit } from '@wordpress/icons';
 
 class Controls extends Component {
 	render() {
@@ -15,7 +16,7 @@ class Controls extends Component {
 
 		const editControl = [
 			{
-				icon: 'edit',
+				icon: edit,
 				title: preview ?
 					sprintf(
 						/* translators: %s: "Gist", the name of a code sharing platform */

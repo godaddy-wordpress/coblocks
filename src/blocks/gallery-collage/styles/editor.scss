@@ -14,14 +14,14 @@
 
 			&::after {
 				bottom: 0;
-				box-shadow: 0 0 0 1.5px var(--wp-admin-theme-color, #007cba);
+        box-shadow: 0 0 0 $border-width $white, 0 0 0 3px var(--wp-admin-theme-color, #007cba);
 				content: "";
 				left: 0;
 				position: absolute;
 				right: 0;
 				top: 0;
 				z-index: 1;
-				border-radius: 2px;
+				border-radius: $radius-block-ui;
 			}
 		}
 	}
@@ -120,7 +120,7 @@
 		}
 
 		// Move the close button where its visible on the Layered style.
-		li:nth-child(4) .components-coblocks-gallery-item__remove-menu {
+		li:nth-child(4) .block-library-gallery-item__inline-menu {
 			left: 2px;
 			right: auto;
 		}

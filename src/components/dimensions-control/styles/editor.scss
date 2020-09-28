@@ -190,8 +190,6 @@
 	}
 }
 
-// Styles to handle Gutenberg < V6.2.0.
-// Should be able to deprecate when Gutenberg 6.2.0 is merged into WP core.
 .components-panel__body {
 
 	.components-coblocks-dimensions-control {
@@ -209,7 +207,7 @@
 			align-items: center;
 			display: flex;
 			justify-content: space-between;
-			max-width: $sidebar-width - (2 * $panel-padding);
+			max-width: $sidebar-width - (2 * $block-edge-to-content);
 		}
 
 		.components-font-size-picker__select .components-base-control__label {

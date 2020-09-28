@@ -1,5 +1,3 @@
-$color-highlight: #00a4a6;
-
 .coblocks-layout-selector .block-editor-block-list__layout .block-editor-block-list__block.is-focus-mode:not(.is-multi-selected) {
 	opacity: 1 !important;
 }
@@ -108,7 +106,7 @@ $color-highlight: #00a4a6;
 			margin-bottom: 0.85em;
 
 			> a {
-				color: $dark-gray-800;
+				color: $gray-900;
 				text-decoration: none;
 
 				&:hover,
@@ -153,7 +151,7 @@ $color-highlight: #00a4a6;
 	}
 
 	&__add-button {
-		color: $dark-gray-800 !important;
+		color: $gray-900 !important;
 		text-decoration: none !important;
 		font-weight: 500;
 		min-width: 32px;
@@ -165,13 +163,13 @@ $color-highlight: #00a4a6;
 
 		> span {
 			position: relative;
-			background-color: $dark-gray-800;
+			background-color: $gray-900;
 			color: $white;
 			min-width: 32px;
 			height: 32px;
 			width: 32px;
 			margin-right: 8px;
-			border-radius: 2px;
+			border-radius: $radius-block-ui;
 			vertical-align: middle;
 			transition: all 0.1s;
 			display: inline-flex;
@@ -187,7 +185,7 @@ $color-highlight: #00a4a6;
 
 			> span {
 				background-color: var(--wp-admin-theme-color, #007cba);
-				color: #fff;
+				color: $white;
 			}
 		}
 	}
@@ -210,8 +208,8 @@ $color-highlight: #00a4a6;
 	}
 
 	&__layout {
-		border-radius: 2px;
-		background-color: var(--go--color--background, #fff);
+		border-radius: $radius-block-ui;
+		background-color: var(--go--color--background, $white);
 		display: flex;
 		flex-basis: 50%;
 		flex-grow: 1;
@@ -238,15 +236,15 @@ $color-highlight: #00a4a6;
 			width: 100%;
 			z-index: 1;
 			content: "";
-			border-radius: 2px;
+			border-radius: $radius-block-ui;
 		}
 
 		&:hover {
-			box-shadow: 0 0 0 1px #fff, 0 0 0 3px var(--wp-admin-theme-color, #007cba);
+			box-shadow: 0 0 0 1px $white, 0 0 0 3px var(--wp-admin-theme-color, #007cba);
 		}
 
 		&.is-selected::after {
-			box-shadow: 0 0 0 1px #fff, 0 0 0 3px var(--wp-admin-theme-color, #007cba);
+			box-shadow: 0 0 0 1px $white, 0 0 0 3px var(--wp-admin-theme-color, #007cba);
 		}
 
 		&:hover,
@@ -257,13 +255,13 @@ $color-highlight: #00a4a6;
 
 	&__layout--overlay {
 		display: none !important; // Hide this temp.
+		display: flex;
 		position: absolute;
 		top: 0;
 		right: 0;
 		bottom: 0;
 		left: 0;
 		background: rgba(255, 255, 255, 0.75);
-		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;

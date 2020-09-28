@@ -5,6 +5,7 @@ import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { BlockControls, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
 import { Toolbar, Button } from '@wordpress/components';
+import { edit } from '@wordpress/icons';
 
 class Controls extends Component {
 	render() {
@@ -34,7 +35,7 @@ class Controls extends Component {
 										<Button
 											className="components-toolbar__control"
 											label={ __( 'Edit avatar', 'coblocks' ) }
-											icon="edit"
+											icon={ edit }
 											onClick={ open }
 										/>
 									) }

@@ -1,7 +1,7 @@
 .wp-block-media-text.is-style-card {
 
 	.wp-block-media-text__content {
-		background-color: var(--wp--preset--color--background, #fff);
+		background-color: var(--wp--preset--color--background, $white);
 		margin-left: auto;
 		margin-right: auto;
 		margin-top: calc(-1 * var(--coblocks-spacing--8, map-get($spacing, 8)));
