@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-09-30T16:29:32+00:00\n"
+"POT-Creation-Date: 2020-09-30T16:46:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -5764,40 +5764,36 @@ msgid "Edit Location"
 msgstr ""
 
 #: src/blocks/map/deprecated.js:96
-#: src/blocks/map/edit.js:165
+#: src/blocks/map/edit.js:157
 #: src/blocks/map/save.js:50
 msgid "Google Map"
 msgstr ""
 
-#: src/blocks/map/edit.js:238
+#: src/blocks/map/edit.js:230
 msgid "Invalid API key, or too many requests"
 msgstr ""
 
-#: src/blocks/map/edit.js:282
-msgid "Google map"
+#. translators: block name
+#: src/blocks/map/edit.js:274
+#: src/blocks/map/index.js:28
+msgid "Map"
 msgstr ""
 
-#: src/blocks/map/edit.js:283
+#: src/blocks/map/edit.js:275
 msgid "Enter a location or address to drop a pin on a Google map."
 msgstr ""
 
-#: src/blocks/map/edit.js:293
+#: src/blocks/map/edit.js:284
 msgid "Search for a place or address…"
 msgstr ""
 
-#: src/blocks/map/edit.js:312
-#: src/components/block-gallery/gallery-image.js:228
-msgid "Apply"
+#: src/blocks/map/edit.js:301
+msgid "Search"
 msgstr ""
 
-#: src/blocks/map/edit.js:324
-#: src/blocks/map/edit.js:335
+#: src/blocks/map/edit.js:308
+#: src/blocks/map/edit.js:318
 msgid "Cancel"
-msgstr ""
-
-#. translators: block name
-#: src/blocks/map/index.js:28
-msgid "Map"
 msgstr ""
 
 #. translators: block description
@@ -7044,6 +7040,10 @@ msgstr ""
 
 #: src/components/block-gallery/gallery-image.js:204
 msgid "Move image forward"
+msgstr ""
+
+#: src/components/block-gallery/gallery-image.js:228
+msgid "Apply"
 msgstr ""
 
 #: src/components/block-gallery/gallery-link-settings.js:76
