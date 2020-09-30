@@ -6,7 +6,8 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-import { createBlock, getPhrasingContentSchema } from '@wordpress/blocks';
+import { createBlock } from '@wordpress/blocks';
+import { getPhrasingContentSchema } from '@wordpress/dom';
 
 const transforms = {
 	from: [
