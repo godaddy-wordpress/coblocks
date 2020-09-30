@@ -62,7 +62,24 @@
 	}
 
 	.components-button[aria-checked="true"] {
-		border: 1px solid $gray-900;
+		padding: 6px 12px;
+
+		svg {
+			margin-left: auto;
+			margin-right: 0;
+			order: 2;
+		}
+	}
+
+	.components-dropdown-menu__menu {
+		.components-menu-item__button,
+		.components-menu-item__button.components-button {
+			padding-left: 8px;
+		}
+
+		.components-menu-group + .components-menu-group {
+			border-top-color: #1e1e1e;
+		}
 	}
 
 	@keyframes bounce {
