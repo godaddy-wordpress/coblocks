@@ -130,6 +130,9 @@
 		}
 	},
 	"lint-staged": {
+		"*.scss": [
+			"stylelint src/**/*.scss"
+		],
 		"*.js": [
 			"jest --config .dev/tests/jest/jest.config.js --silent --findRelatedTests"
 		]
