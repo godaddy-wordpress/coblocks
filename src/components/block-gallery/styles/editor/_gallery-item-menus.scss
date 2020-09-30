@@ -2,6 +2,10 @@
 	display: inline-flex;
 }
 
+.coblocks-gallery--item .is-selected .block-library-gallery-item__inline-menu.is-right .components-button {
+	border-radius: $radius-block-ui;
+}
+
 .is-visible.block-library-gallery-item__inline-menu {
 	display: inline-flex;
 }
