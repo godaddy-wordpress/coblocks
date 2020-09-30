@@ -215,9 +215,11 @@
 
 		// Only show if the column is actively being resized.
 		// &.is-resizing {
-		// 	opacity: 1;
-		// 	transform: scale(1);
-		// 	transition: opacity 100ms cubic-bezier(0.39, 0.575, 0.565, 1), transform 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
+		// 	 opacity: 1;
+		// 	 transform: scale(1);
+		// 	 transition:
+		//     opacity 100ms cubic-bezier(0.39, 0.575, 0.565, 1),
+		//     transform 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
 		// }
 	}
 }

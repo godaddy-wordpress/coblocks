@@ -203,9 +203,7 @@
 	&:not(.has-caption-color).has-caption-style-light figcaption {
 		color: $black;
 	}
-}
 
-.wp-block-coblocks-gallery-collage {
 	$gutters: (
 		"medium": calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * 2),
 		"large": calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) * 2),

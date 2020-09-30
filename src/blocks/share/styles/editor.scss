@@ -1,5 +1,7 @@
 .wp-block-coblocks-social {
+
 	&__button {
+
 		&:active {
 			animation: none !important;
 		}
@@ -33,12 +35,14 @@
 }
 
 .edit-post-settings-sidebar__panel-block .components-social-icons-list {
+
 	.components-base-control {
 		margin-bottom: 8px;
 	}
 }
 
 .edit-post-settings-sidebar__panel-block .components-social-links-list {
+
 	.components-base-control {
 		margin-bottom: 8px;
 	}
@@ -46,7 +50,9 @@
 
 // Styles to handle style previews for both share and social profiles.
 .components-panel__body {
+
 	.block-editor-block-styles {
+
 		.block-editor-block-preview__container {
 			height: 100% !important;
 
@@ -66,6 +72,7 @@
 					&.is-style-icon-and-text {
 
 						&.wp-block-coblocks-social-profiles {
+
 							.wp-block-coblocks-social__button {
 								transform: scale(3);
 							}
@@ -77,6 +84,7 @@
 					}
 
 					&.is-style-mask {
+
 						.wp-block-coblocks-social__icon {
 							height: 32px !important;
 							width: 32px !important;
@@ -84,6 +92,7 @@
 					}
 
 					&.is-style-circular {
+
 						.wp-block-coblocks-social__icon {
 							height: 18px !important;
 							width: 18px !important;

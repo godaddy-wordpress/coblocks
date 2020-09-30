@@ -160,7 +160,26 @@
 		}
 
 		.components-font-size-picker__controls {
+			align-items: center;
+			display: flex;
+			justify-content: space-between;
 			margin-bottom: 0;
+			max-width: $sidebar-width - (2 * $block-edge-to-content);
+		}
+
+		.components-font-size-picker__select {
+			margin-bottom: 0 !important;
+			width: 115px;
+
+			.components-base-control__field {
+				margin-bottom: 0;
+			}
+		}
+
+		.components-font-size-picker__select .components-base-control__label {
+			display: none;
+			margin-bottom: 5px;
+			visibility: hidden;
 		}
 	}
 }
@@ -187,36 +206,5 @@
 
 	&.is-huge-size {
 		font-size: 34px;
-	}
-}
-
-.components-panel__body {
-
-	.components-coblocks-dimensions-control {
-
-		.components-font-size-picker__select {
-			margin-bottom: 0 !important;
-			width: 115px;
-
-			.components-base-control__field {
-				margin-bottom: 0;
-			}
-		}
-
-		.components-font-size-picker__controls {
-			align-items: center;
-			display: flex;
-			justify-content: space-between;
-			max-width: $sidebar-width - (2 * $block-edge-to-content);
-		}
-
-		.components-font-size-picker__select .components-base-control__label {
-			margin-bottom: 5px;
-		}
-
-		.components-font-size-picker__select .components-base-control__label {
-			display: none;
-			visibility: hidden;
-		}
 	}
 }

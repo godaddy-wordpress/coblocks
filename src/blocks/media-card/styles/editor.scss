@@ -19,7 +19,7 @@
 			"resizer resizer";
 	}
 
-	.__resizable_base__ {
+	.__resizable_base__ { // stylelint-disable-line selector-class-pattern
 		grid-area: resizer;
 	}
 
@@ -115,6 +115,11 @@
 	}
 
 	.editor-media-container__resizer .components-resizable-box__handle {
+		display: none;
+	}
+
+	// Hide the wide and full alignment settings on the row.
+	.block-editor-block-toolbar .components-toolbar:nth-child(2) {
 		display: none;
 	}
 
@@ -242,14 +247,6 @@
 				}
 			}
 		}
-	}
-}
-
-// Hide the wide and full alignment settings on the row.
-.wp-block-coblocks-media-card {
-
-	.block-editor-block-toolbar .components-toolbar:nth-child(2) {
-		display: none;
 	}
 }
 

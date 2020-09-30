@@ -125,6 +125,11 @@
 			}
 		}
 	}
+
+	.block-library-button__inline-link,
+	.block-editor-block-list__breadcrumb {
+		font-weight: 400;
+	}
 }
 
 .block-editor-block-list__block[data-custom-texttransform="1"] {
@@ -186,14 +191,6 @@
 		h6 {
 			color: inherit !important;
 		}
-	}
-}
-
-.block-editor-block-list__block[data-custom-fontweight="1"] {
-
-	.block-library-button__inline-link,
-	.block-editor-block-list__breadcrumb {
-		font-weight: normal;
 	}
 }
 

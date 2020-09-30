@@ -1,6 +1,7 @@
 {
 	"extends": "stylelint-config-wordpress/scss",
 	"rules": {
+		"max-line-length": [120, { "ignore": ["non-comments"] }],
 		"no-descending-specificity": null
 	}
 }
