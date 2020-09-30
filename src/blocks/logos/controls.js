@@ -14,6 +14,7 @@ import {
 	MediaUpload,
 	MediaUploadCheck,
 } from '@wordpress/block-editor';
+import { edit } from '@wordpress/icons';
 
 class Controls extends Component {
 	constructor() {
@@ -48,7 +49,7 @@ class Controls extends Component {
 										<Button
 											className="components-toolbar__control"
 											label={ __( 'Edit logos', 'coblocks' ) }
-											icon="edit"
+											icon={ edit }
 											onClick={ open }
 										/>
 									) }

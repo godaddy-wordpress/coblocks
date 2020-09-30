@@ -35,7 +35,7 @@ import {
 	Toolbar,
 } from '@wordpress/components';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
-import { pullLeft, pullRight } from '@wordpress/icons';
+import { pullLeft, pullRight, edit } from '@wordpress/icons';
 
 /**
  * Module Constants
@@ -237,7 +237,7 @@ class PostsEdit extends Component {
 
 		const editToolbarControls = [
 			{
-				icon: 'edit',
+				icon: edit,
 				title: __( 'Edit RSS URL', 'coblocks' ),
 				onClick: () => this.setState( { editing: true } ),
 			},
