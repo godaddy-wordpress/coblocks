@@ -95,7 +95,7 @@
 	flex-flow: row wrap;
 	justify-content: space-around;
 	overflow: hidden;
-	padding: 4px 8px 11px 8px;
+	padding: 4px 8px 11px;
 
 	.components-menu-item__button {
 		background: $gray-100;
@@ -104,10 +104,6 @@
 		overflow: hidden;
 		padding: 10px;
 		width: calc(50% - 8px);
-
-		// &:nth-child(-n + 2) {
-		// 	margin-top: 5px;
-		// }
 
 		.animation-block__inner {
 			margin: 0 auto;
