@@ -8,6 +8,7 @@ import { animationTypes } from './animation-types';
 /**
  * External dependencies
  */
+import _ from 'lodash';
 import classnames from 'classnames';
 import { AnimationIcon } from '@godaddy-wordpress/coblocks-icons';
 
@@ -16,22 +17,73 @@ import { AnimationIcon } from '@godaddy-wordpress/coblocks-icons';
  */
 import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
-import { BlockControls } from '@wordpress/block-editor';
+import { BlockControls, BlockPreview } from '@wordpress/block-editor';
 import {
 	ToolbarButton,
 	Dropdown,
 	ToolbarGroup,
 	NavigableMenu,
 	MenuItem,
+	MenuGroup,
+	Popover,
+	Tip
 } from '@wordpress/components';
 import { DOWN } from '@wordpress/keycodes';
-import { Icon } from '@wordpress/icons';
+import { Icon, check } from '@wordpress/icons';
+
+function PreviewAnimationPopover( { hoveredAnimation, selected } ) {
+	if ( ! hoveredAnimation ) return null;
+
+	const block = _.cloneDeep(selected);
+	
+	block.attributes.animation = hoveredAnimation;
+	
+	return (
+		<div className="block-editor-block-switcher__popover__preview__parent">
+			<div className="block-editor-block-switcher__popover__preview__container">
+				<Popover
+					className="block-editor-block-switcher__preview__popover"
+					position="bottom right"
+					focusOnMount={ false }
+				>
+					<div className="block-editor-block-switcher__preview">
+						<div className="block-editor-block-switcher__preview-title">
+							{ __( 'Preview' ) }
+						</div>
+						<BlockPreview
+							autoHeight
+							blocks={ { ...block } }
+						/>
+						<Tip>
+							{ __( 'The animation is applied when this element comes into view as you scroll the page.', 'coblocks' ) }
+						</Tip>
+					</div>
+				</Popover>
+			</div>
+		</div>
+	);
+}
 
 class Controls extends Component {
+	constructor() {
+		super( ...arguments );
+		
+		this.state = {
+			hoveredAnimation: null
+		};
+	}
+
+	onChangeHoveredAnimation = (animation) => {
+		this.setState({
+			hoveredAnimation: animation
+		});
+	}
+
 	onAnimationClick = ( onClose, animationClass = null ) => {
 		const { setAttributes } = this.props;
 
 		return () => {
+			this.setState( { hoveredAnimation: null } );
 			setAttributes( { animation: animationClass } );
 			onClose();
 		};
@@ -40,7 +92,10 @@ class Controls extends Component {
 	render() {
 		const {
 			attributes: { animation },
+			selected
 		} = this.props;
+
+		const { hoveredAnimation } = this.state;
 
 		if ( ! coblocksBlockData.animationControlsEnabled ) {
 			return null;
@@ -76,29 +131,35 @@ class Controls extends Component {
 						);
 					} }
 					renderContent={ ( { onClose } ) => (
-						<NavigableMenu
-							orientation="horizontal"
-							className="coblocks-animation-menu__wrapper">
-							<MenuItem
-								role="menuitemradio"
-								label={ __( 'No animation', 'coblocks' ) }
-								onClick={ this.onAnimationClick( onClose ) }
-								isSelected={ ! animation } >
-								<div className="animation-block__inner">
-									{ __( 'None', 'coblocks' ) }
-								</div>
-							</MenuItem>
-							{
-								animationTypes.map( ( animationItem ) => (
+						<NavigableMenu className="components-dropdown-menu__menu">
+							<MenuGroup>
+								<PreviewAnimationPopover hoveredAnimation={ hoveredAnimation } selected={ selected } />
+								{
+									animationTypes.map( ( animationItem ) => (
+										<MenuItem
+											role="menuitemradio"
+											label={ animationItem.label }
+											onClick={ this.onAnimationClick( onClose, animationItem.className ) }
+											onMouseEnter={ () => this.onChangeHoveredAnimation( animationItem.className ) }
+											onMouseLeave={ () => this.onChangeHoveredAnimation( null ) }
+											isSelected={ animation === animationItem.className }
+											icon={ animation === animationItem.className ? check : null }
+											key={ `coblocks-animation-${ animationItem.className }` }>
+											{ animationItem.label }
+										</MenuItem>
+									) )
+								}
+							</MenuGroup>
+							{ animation && 
+								<MenuGroup>
 									<MenuItem
 										role="menuitemradio"
-										label={ animationItem.label }
-										onClick={ this.onAnimationClick( onClose, animationItem.className ) }
-										isSelected={ animation === animationItem.className }
-										key={ `coblocks-animation-${ animationItem.className }` }>
-										<div className={ classnames( 'animation-block__inner coblocks-animate animate-loop', animationItem.className ) } />
+										label={ __( 'No animation', 'coblocks' ) }
+										onClick={ this.onAnimationClick( onClose ) }
+										isSelected={ false } >
+										{ __( 'Remove animation', 'coblocks' ) }
 									</MenuItem>
-								) )
+								</MenuGroup>
 							}
 						</NavigableMenu>
 					) }

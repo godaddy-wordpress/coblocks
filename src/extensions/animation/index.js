@@ -31,14 +31,16 @@ const dataAnimationHolder = 'data-coblocks-animation';
  * @return {string} Wrapped component.
  */
 const withControls = createHigherOrderComponent( ( BlockEdit ) => {
-	return ( props ) => {
+	return enhance( ( { select, ...props } ) => {
+		const block = select( 'core/block-editor' ).getBlock( props.clientId );
+
 		return (
 			<>
 				<BlockEdit { ...props } />
-				{ props.isSelected && allowedBlocks.includes( props.name ) && <Controls { ...{ ...props } } /> }
+				{ props.isSelected && allowedBlocks.includes( props.name ) && <Controls { ...{ ...props, selectedBlock: block } } /> }
 			</>
 		);
-	};
+	} );
 }, 'withControls' );
 
 addFilter(

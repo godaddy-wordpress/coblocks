@@ -21,7 +21,6 @@
 		animation-name: fadeIn;
 	}
 
-	// This animation is used for each animation
 	@keyframes fadeIn {
 		0% {
 			opacity: 0;
@@ -37,16 +36,18 @@
 
 	&.focusIn {
 		animation-duration: $coblocks-animate-duration;
-		animation-name: focusIn, fadeIn;
+		animation-name: focusIn;
 	}
 
 	@keyframes focusIn {
 		0% {
+			opacity: 0;
 			transform: scale(0);
 		}
 
 		50%,
 		100% {
+			opacity: 1;
 			transform: scale(1);
 		}
 	}
@@ -55,16 +56,18 @@
 
 	&.slideInLeft {
 		animation-duration: $coblocks-animate-duration;
-		animation-name: slideInLeft, fadeIn;
+		animation-name: slideInLeft;
 	}
 
 	@keyframes slideInLeft {
 		0% {
+			opacity: 0;
 			transform: translateX(-#{ $coblocks-animate-translation });
 		}
 
 		50%,
 		100% {
+			opacity: 1;
 			transform: translateX(0);
 		}
 	}
@@ -73,16 +76,18 @@
 
 	&.slideInRight {
 		animation-duration: $coblocks-animate-duration;
-		animation-name: slideInRight, fadeIn;
+		animation-name: slideInRight;
 	}
 
 	@keyframes slideInRight {
 		0% {
+			opacity: 0;
 			transform: translateX($coblocks-animate-translation);
 		}
 
 		50%,
 		100% {
+			opacity: 1;
 			transform: translateX(0);
 		}
 	}
@@ -91,16 +96,18 @@
 
 	&.slideInBottom {
 		animation-duration: $coblocks-animate-duration;
-		animation-name: slideInBottom, fadeIn;
+		animation-name: slideInBottom;
 	}
 
 	@keyframes slideInBottom {
 		0% {
+			opacity: 0;
 			transform: translateY($coblocks-animate-translation);
 		}
 
 		50%, 
 		100% {
+			opacity: 1;
 			transform: translateY(0);
 		}
 	}
@@ -109,17 +116,19 @@
 
 	&.clipHorizontal {
 		animation-duration: $coblocks-animate-duration;
-		animation-name: clipHorizontal, fadeIn;
+		animation-name: clipHorizontal;
 	}
 
 	@keyframes clipHorizontal {
 		0% {
+			opacity: 0;
 			-webkit-clip-path: polygon(0% 50%, 0% 100%, 0% 100%, 0% 50%, 100% 50%, 100% 0%, 100% 0%, 100% 50%);
 			clip-path:polygon(0% 50%, 0% 100%, 0% 100%, 0% 50%, 100% 50%, 100% 0%, 100% 0%, 100% 50%);
 		}
 
 		50%,
 		100% {
+			opacity: 1;
 			-webkit-clip-path: polygon(0% 50%, 0% 100%, 100% 100%, 100% 50%, 100% 50%, 100% 0%, 0% 0%, 0% 50%);
 			clip-path:polygon(0% 50%, 0% 100%, 100% 100%, 100% 50%, 100% 50%, 100% 0%, 0% 0%, 0% 50%);
 		}
@@ -129,17 +138,19 @@
 
 	&.clipVertical {
 		animation-duration: $coblocks-animate-duration;
-		animation-name: clipVertical, fadeIn;
+		animation-name: clipVertical;
 	}
 
 	@keyframes clipVertical {
 		0% {
+			opacity: 0;
 			-webkit-clip-path: polygon(50% 0%, 100% 0%, 100% 0%, 50% 0%, 50% 100%, 0% 100%, 0% 100%, 50% 100%);
     		clip-path:polygon(50% 0%, 100% 0%, 100% 0%, 50% 0%, 50% 100%, 0% 100%, 0% 100%, 50% 100%);
 		}
 
 		50%,
 		100% {
+			opacity: 1;
 			-webkit-clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 100%, 0% 100%, 0% 0%, 50% 0%);
     		clip-path:polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 100%, 0% 100%, 0% 0%, 50% 0%);
 		}
