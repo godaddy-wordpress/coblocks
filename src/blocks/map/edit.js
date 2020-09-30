@@ -300,31 +300,31 @@ class Edit extends Component {
 							>
 								{ __( 'Search', 'coblocks' ) }
 							</Button>
+							<div className="components-placeholder__learn-more">
+								{ address && (
+									<Button
+										isTertiary
+										className="components-placeholder__cancel-button"
+										title={ __( 'Cancel', 'coblocks' ) }
+										onClick={ () => {
+											setAttributes( { pinned: ! pinned } );
+											this.setState( {
+												address: this.props.attributes
+													.address,
+											} );
+										} }
+										disabled={ ! address }
+									>
+										{ __( 'Cancel', 'coblocks' ) }
+									</Button>
+								) }
+							</div>
 						</form>
 						{ attributes.lng && attributes.hasError && (
 							<span className="invalid-google-maps-api-key">
 								{ attributes.hasError }
 							</span>
 						) }
-						<div className="components-placeholder__learn-more">
-							{ address && (
-								<Button
-									className="components-placeholder__cancel-button"
-									title={ __( 'Cancel', 'coblocks' ) }
-									isLink
-									onClick={ () => {
-										setAttributes( { pinned: ! pinned } );
-										this.setState( {
-											address: this.props.attributes
-												.address,
-										} );
-									} }
-									disabled={ ! address }
-								>
-									{ __( 'Cancel', 'coblocks' ) }
-								</Button>
-							) }
-						</div>
 					</Placeholder>
 				) }
 			</Fragment>
