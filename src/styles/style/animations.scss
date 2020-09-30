@@ -34,12 +34,12 @@
 
 	// FOCUS IN
 
-	&.focusIn {
+	&.scaleIn {
 		animation-duration: $coblocks-animate-duration;
-		animation-name: focusIn;
+		animation-name: scaleIn;
 	}
 
-	@keyframes focusIn {
+	@keyframes scaleIn {
 		0% {
 			opacity: 0;
 			transform: scale(0);
@@ -71,7 +71,7 @@
 			transform: translateX(0);
 		}
 	}
-	
+
 	// SLIDE IN - RIGHT
 
 	&.slideInRight {
@@ -105,7 +105,7 @@
 			transform: translateY($coblocks-animate-translation);
 		}
 
-		50%, 
+		50%,
 		100% {
 			opacity: 1;
 			transform: translateY(0);

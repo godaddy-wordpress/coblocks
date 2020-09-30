@@ -2,12 +2,12 @@ import { __ } from '@wordpress/i18n';
 
 export const animationTypes = [
 	{
-		className: 'focusIn',
-		label: __( 'Focus in', 'coblocks' ),
-	},
-	{
 		className: 'fadeIn',
 		label: __( 'Fade in', 'coblocks' ),
+	},
+	{
+		className: 'scaleIn',
+		label: __( 'Scale in', 'coblocks' ),
 	},
 	{
 		className: 'slideInLeft',
