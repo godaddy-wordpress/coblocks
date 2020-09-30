@@ -1,5 +1,10 @@
 [data-type="coblocks/gallery-offset"] {
 
+	// Remove selected state.
+	&.block-editor-block-list__block::after {
+		box-shadow: none !important;
+	}
+
 	.components-form-file-upload .components-placeholder {
 		margin-top: 20px;
 	}

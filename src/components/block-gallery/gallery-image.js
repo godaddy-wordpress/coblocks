@@ -72,8 +72,6 @@ class GalleryImage extends Component {
 			event.stopPropagation();
 			event.preventDefault();
 			this.props.onRemove();
-		} else {
-			this.onImageClick();
 		}
 	}
 

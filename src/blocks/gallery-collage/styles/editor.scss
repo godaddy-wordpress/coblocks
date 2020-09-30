@@ -14,7 +14,7 @@
 
 			&::after {
 				bottom: 0;
-        box-shadow: 0 0 0 $border-width $white, 0 0 0 3px var(--wp-admin-theme-color, #007cba);
+				box-shadow: 0 0 0 $border-width $white, 0 0 0 3px var(--wp-admin-theme-color, #007cba);
 				content: "";
 				left: 0;
 				position: absolute;
@@ -38,8 +38,9 @@
 
 [data-type="coblocks/gallery-collage"] {
 
+	// Remove selected state.
 	&.block-editor-block-list__block::after {
-		display: none;
+		box-shadow: none !important;
 	}
 
 	ul {

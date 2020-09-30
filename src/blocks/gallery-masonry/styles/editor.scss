@@ -1,7 +1,35 @@
 [data-type="coblocks/gallery-masonry"] {
+
+	// Remove selected state.
+	&.block-editor-block-list__block::after {
+		box-shadow: none !important;
+	}
+
+	// Adjust because we modify the selected state.
+	.block-library-gallery-item__inline-menu {
+		top: 1px;
+
+		&.is-left {
+			left: 1px;
+		}
+
+		&.is-right {
+			right: 1px;
+		}
+	}
+
 	// Fixes issue where figures are set to display 100% if alignfull is set.
 	.coblocks-gallery--figure {
 		width: auto !important;
+
+		&.is-selected {
+			border-radius: $radius-block-ui + 2; // Additional because we modify the selected state.
+
+			&::after {
+				box-shadow: inset 0 0 0 $border-width + 1 var(--wp-admin-theme-color, #007cba), inset 0 0 0 3px $white;
+				border-radius: $radius-block-ui + 2;
+			}
+		}
 
 		img {
 			vertical-align: bottom;
@@ -77,6 +105,10 @@
 	// Tweak the position of the figcaption if Custom URL is set.
 	.components-coblocks-gallery-item__image-link + img + .block-editor-rich-text {
 		margin-bottom: 34px;
+	}
+
+	.wp-block-coblocks-gallery-masonry ul{
+		margin: 0;
 	}
 }
 

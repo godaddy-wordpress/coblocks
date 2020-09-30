@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-09-29T17:13:24+00:00\n"
+"POT-Creation-Date: 2020-09-30T16:29:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -1077,7 +1077,7 @@ msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:214
 #: src/blocks/services/service/edit.js:171
-#: src/components/block-gallery/gallery-image.js:217
+#: src/components/block-gallery/gallery-image.js:215
 msgid "Remove image"
 msgstr ""
 
@@ -1486,7 +1486,7 @@ msgid "Secret key"
 msgstr ""
 
 #: src/blocks/form/edit.js:438
-#: src/components/block-gallery/gallery-image.js:230
+#: src/components/block-gallery/gallery-image.js:228
 msgid "Saving"
 msgstr ""
 
@@ -2101,7 +2101,7 @@ msgstr ""
 
 #: src/blocks/gif/edit.js:229
 #: src/blocks/gist/edit.js:103
-#: src/components/block-gallery/gallery-image.js:239
+#: src/components/block-gallery/gallery-image.js:237
 msgid "Write caption…"
 msgstr ""
 
@@ -5786,7 +5786,7 @@ msgid "Search for a place or address…"
 msgstr ""
 
 #: src/blocks/map/edit.js:312
-#: src/components/block-gallery/gallery-image.js:230
+#: src/components/block-gallery/gallery-image.js:228
 msgid "Apply"
 msgstr ""
 
@@ -7038,11 +7038,11 @@ msgstr ""
 msgid "Clear Media"
 msgstr ""
 
-#: src/components/block-gallery/gallery-image.js:198
+#: src/components/block-gallery/gallery-image.js:196
 msgid "Move image backward"
 msgstr ""
 
-#: src/components/block-gallery/gallery-image.js:206
+#: src/components/block-gallery/gallery-image.js:204
 msgid "Move image forward"
 msgstr ""
 
