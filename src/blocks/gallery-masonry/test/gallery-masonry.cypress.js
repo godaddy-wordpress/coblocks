@@ -123,8 +123,11 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 
 		helpers.toggleSettingCheckbox( /captions/i );
 
-		cy.get( '.coblocks-gallery--item' ).first().click()
-			.find( 'figcaption' ).click( { force: true } ).type( caption );
+		cy.get( '.coblocks-gallery--item img[src*="http"]' ).click();
+
+		cy.get( 'figcaption[role="textbox"] span' ).click( { force: true } );
+
+		cy.get( 'figcaption[role="textbox"]' ).focus().type( caption );
 
 		helpers.savePage();
 
