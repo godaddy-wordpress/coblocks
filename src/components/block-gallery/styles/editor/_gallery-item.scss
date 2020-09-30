@@ -48,3 +48,8 @@
 .has-caption-color .coblocks-gallery--caption a {
 	color: inherit !important;
 }
+
+// Hide selected state from core/gallery block.
+[data-type="core/gallery"].block-editor-block-list__block::after {
+	box-shadow: none !important;
+}
