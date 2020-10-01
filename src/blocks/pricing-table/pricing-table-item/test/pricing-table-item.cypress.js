@@ -45,12 +45,12 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB, title, currency, amount, features, buttonText } = pricingTableItemData;
 		helpers.addBlockToPost( 'coblocks/pricing-table', true );
 
-		cy.get( '.wp-block-coblocks-pricing-table-item' ).first().click().then( $firstItem => {
-			cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__title' ).click().type( `{selectall}${title}` );
-			cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__currency' ).click().type( `{selectall}${currency}` );
-			cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__amount' ).click().type( `{selectall}${amount}` );
-			cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__features' ).click().type( `{selectall} ${features}` );
-			cy.get( $firstItem ).find( '.wp-block-button' ).find( 'div[role="textbox"]' ).click().type( `{selectall}${buttonText}` );
+		cy.get( '.wp-block-coblocks-pricing-table-item' ).first().click().then( ( $firstItem ) => {
+			cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__title' ).focus().type( `{selectall}${ title }` );
+			cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__currency' ).focus().type( `{selectall}${ currency }` );
+			cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__amount' ).focus().type( `{selectall}${ amount }` );
+			cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__features' ).focus().type( `{selectall} ${ features }` );
+			cy.get( $firstItem ).find( '.wp-block-button' ).find( 'div[role="textbox"]' ).focus().type( `{selectall}${ buttonText }` );
 
 			cy.get( $firstItem ).click( 'topRight' );
 			helpers.setColorSetting( 'background color', backgroundColor );
@@ -69,7 +69,7 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 			.should( 'have.css', 'color', textColorRGB );
 
 		cy.get( '.wp-block-coblocks-pricing-table-item' ).first()
-			.then( $firstItem => {
+			.then( ( $firstItem ) => {
 				cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__title' ).should( 'have.html', title );
 				cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__currency' ).should( 'have.html', currency );
 				cy.get( $firstItem ).find( '.wp-block-coblocks-pricing-table-item__amount' ).should( 'have.html', amount );
