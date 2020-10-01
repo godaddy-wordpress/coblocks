@@ -5,15 +5,18 @@
 		position: relative;
 
 		::after {
-			background-color: var(--wp-admin-theme-color);
-			border-radius: 6px;
+			border-bottom: solid 4px $gray-900;
+			border-left: solid 4px transparent;
+			border-right: solid 4px $gray-900;
+			border-top: solid 4px transparent;
 			content: "";
 			display: block;
-			height: 6px;
+			height: 8px;
 			position: absolute;
-			right: 6px;
-			top: 7px;
-			width: 6px;
+			right: 0;
+			top: 1px;
+			transform: rotate(-90deg);
+			width: 8px;
 		}
 	}
 
