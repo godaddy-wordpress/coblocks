@@ -1,7 +1,7 @@
 .coblocks-animate {
 	// VARIABLES
 
-	$coblocks-animate-duration: 2s;
+	$coblocks-animate-duration: 0.75s;
 	$coblocks-animate-translation: 10rem;
 
 	// BLOCK STYLE
@@ -26,7 +26,6 @@
 			opacity: 0;
 		}
 
-		50%,
 		100% {
 			opacity: 1;
 		}
@@ -45,7 +44,6 @@
 			transform: scale(0);
 		}
 
-		50%,
 		100% {
 			opacity: 1;
 			transform: scale(1);
@@ -65,7 +63,6 @@
 			transform: translateX(-#{ $coblocks-animate-translation });
 		}
 
-		50%,
 		100% {
 			opacity: 1;
 			transform: translateX(0);
@@ -85,7 +82,6 @@
 			transform: translateX($coblocks-animate-translation);
 		}
 
-		50%,
 		100% {
 			opacity: 1;
 			transform: translateX(0);
@@ -105,7 +101,6 @@
 			transform: translateY($coblocks-animate-translation);
 		}
 
-		50%,
 		100% {
 			opacity: 1;
 			transform: translateY(0);
@@ -126,7 +121,6 @@
 			clip-path:polygon(0% 50%, 0% 100%, 0% 100%, 0% 50%, 100% 50%, 100% 0%, 100% 0%, 100% 50%);
 		}
 
-		50%,
 		100% {
 			opacity: 1;
 			-webkit-clip-path: polygon(0% 50%, 0% 100%, 100% 100%, 100% 50%, 100% 50%, 100% 0%, 0% 0%, 0% 50%);
@@ -148,7 +142,6 @@
     		clip-path:polygon(50% 0%, 100% 0%, 100% 0%, 50% 0%, 50% 100%, 0% 100%, 0% 100%, 50% 100%);
 		}
 
-		50%,
 		100% {
 			opacity: 1;
 			-webkit-clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 100%, 0% 100%, 0% 0%, 50% 0%);
