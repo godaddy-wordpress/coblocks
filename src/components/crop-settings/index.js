@@ -298,14 +298,12 @@ class CropSettings extends Component {
 				<div className="components-coblocks-rotate-control">
 					<ButtonGroup >
 						<Button
-							isLarge
 							isSecondary
 							icon={ rotateLeft }
 							label={ __( 'Rotate counter-clockwise', 'coblocks' ) }
 							onClick={ () => this.applyRotation( self.state.r - 90 ) }
 						/>
 						<Button
-							isLarge
 							isSecondary
 							icon={ rotateRight }
 							label={ __( 'Rotate clockwise', 'coblocks' ) }

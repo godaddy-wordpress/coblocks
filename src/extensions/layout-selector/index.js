@@ -70,7 +70,7 @@ const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
 			onMouseLeave={ () => setOverlay( false ) }>
 
 			<div className={ classnames( 'coblocks-layout-selector__layout--overlay', { 'is-active': overlay } ) }>
-				<Button isLarge isPressed>
+				<Button isPressed>
 					{ __( 'Select Layout', 'coblocks' ) }
 				</Button>
 			</div>
