@@ -1,4 +1,4 @@
-/*eslint camelcase: ["error", {allow: ["coblocks_layout_selector_controls_enabled"]}]*/
+/* eslint camelcase: ["error", {allow: ["coblocks_layout_selector_controls_enabled"]}] */
 /**
  * WordPress dependencies
  */

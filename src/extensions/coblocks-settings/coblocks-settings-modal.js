@@ -10,7 +10,6 @@ import CoBlocksSettingsModalControls from './coblocks-settings-slot';
 import { Component } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { applyFilters } from '@wordpress/hooks';
-import { getPlugin } from '@wordpress/plugins';
 import {
 	CheckboxControl,
 	Modal,
@@ -97,18 +96,13 @@ class CoBlocksSettingsModal extends Component {
 		setGradients();
 	}
 
-	updateLayoutSelectorSetting() {
-		const { setLayoutSelector } = this.props;
-		setLayoutSelector();
-	}
-
 	updateTypographyControlsSetting() {
 		const { setTypography } = this.props;
 		setTypography();
 	}
 
 	render() {
-		const { isOpen, closeModal, typography, customColors, gradientControls, getSettings, colorPanel, layoutSelector } = this.props;
+		const { isOpen, closeModal, typography, customColors, gradientControls, getSettings, colorPanel } = this.props;
 
 		if ( ! isOpen ) {
 			return null;
@@ -116,7 +110,6 @@ class CoBlocksSettingsModal extends Component {
 
 		const supportsGradients = getSettings().gradients !== undefined;
 		const colorPanelEnabled = !! colorPanel;
-		const showLayoutSelectorControl = applyFilters( 'coblocks-show-layout-selector', true ) && !! getPlugin( 'coblocks-layout-selector' );
 
 		const settings = applyFilters( 'coblocks-settings-modal-controls', [] );
 
@@ -129,18 +122,6 @@ class CoBlocksSettingsModal extends Component {
 					<Section title={ __( 'General' ) }>
 
 						<CoBlocksSettingsModalControls.Slot />
-
-						{ showLayoutSelectorControl &&
-							<CoBlocksSettingsModalControls>
-								<HorizontalRule />
-								<CheckboxControl
-									label={ __( 'Layout selector', 'coblocks' ) }
-									help={ __( 'Allow layout selection on new pages.', 'coblocks' ) }
-									onChange={ () => this.updateLayoutSelectorSetting() }
-									checked={ !! layoutSelector }
-								/>
-							</CoBlocksSettingsModalControls>
-						}
 
 						<CoBlocksSettingsModalControls>
 							<HorizontalRule />
@@ -202,7 +183,7 @@ class CoBlocksSettingsModal extends Component {
 }
 
 const applyWithSelect = withSelect( () => {
-	const { getTypography, getCustomColors, getGradients, getColorPanel, getLayoutSelector } = select( 'coblocks-settings' );
+	const { getTypography, getCustomColors, getGradients, getColorPanel } = select( 'coblocks-settings' );
 	const { getSettings } = select( 'core/block-editor' );
 
 	return {
@@ -210,20 +191,18 @@ const applyWithSelect = withSelect( () => {
 		customColors: getCustomColors(),
 		gradientControls: getGradients(),
 		colorPanel: getColorPanel(),
-		layoutSelector: getLayoutSelector(),
 		getSettings,
 	};
 } );
 
 const applyWithDispatch = withDispatch( ( dispatch ) => {
-	const { setTypography, setCustomColors, setGradients, setColorPanel, setLayoutSelector } = dispatch( 'coblocks-settings' );
+	const { setTypography, setCustomColors, setGradients, setColorPanel } = dispatch( 'coblocks-settings' );
 	const { updateSettings } = dispatch( 'core/block-editor' );
 
 	return {
 		setColorPanel,
 		setCustomColors,
 		setTypography,
-		setLayoutSelector,
 		setGradients,
 		updateSettings,
 	};

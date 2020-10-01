@@ -4,7 +4,6 @@
  * WordPress dependencies
  */
 import apiFetch from '@wordpress/api-fetch';
-import { applyFilters } from '@wordpress/hooks';
 
 export default function createCoBlocksStore() {
 	const settingsNonce = coblocksSettings.coblocksSettingsNonce;
@@ -16,10 +15,7 @@ export default function createCoBlocksStore() {
 		colorsPanel: true,
 		gradients: true,
 		typography: true,
-		layoutSelector: false, // default false to prevent screen flicker.
 	};
-
-	const layoutSelectorEnabled = applyFilters( 'coblocks-show-layout-selector', true )
 
 	apiFetch( {
 		path: '/wp/v2/settings/',
@@ -31,14 +27,10 @@ export default function createCoBlocksStore() {
 		settings.gradients = res.coblocks_gradient_presets_enabled || false;
 		settings.typography = res.coblocks_typography_controls_enabled || false;
 		settings.colorsPanel = res.coblocks_color_panel_controls_enabled || false;
-		settings.layoutSelector = layoutSelectorEnabled ? res.coblocks_layout_selector_controls_enabled || false : false;
 		storeChanged();
 	} );
 
 	const selectors = {
-		getLayoutSelector( ) {
-			return settings.layoutSelector;
-		},
 		getCustomColors( ) {
 			return settings.customColors;
 		},
@@ -101,21 +93,6 @@ export default function createCoBlocksStore() {
 				},
 				data: {
 					coblocks_gradient_presets_enabled: toggle,
-				},
-			} );
-		},
-		setLayoutSelector( ) {
-			const toggle = ! settings.layoutSelector;
-			settings.layoutSelector = toggle;
-			storeChanged();
-			apiFetch( {
-				path: '/wp/v2/settings/',
-				method: 'POST',
-				headers: {
-					'X-WP-Nonce': settingsNonce,
-				},
-				data: {
-					coblocks_layout_selector_controls_enabled: toggle,
 				},
 			} );
 		},

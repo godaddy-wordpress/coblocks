@@ -1,3 +1,4 @@
+/* eslint camelcase: ["error", {allow: ["coblocks_layout_selector_controls_enabled"]}] */
 /* global coblocksLayoutSelector */
 /**
  * External dependencies
@@ -402,13 +403,14 @@ registerPlugin( 'coblocks-layout-selector', {
 				hasEditorUndo,
 				isCurrentPostPublished,
 			} = select( 'core/editor' );
-			const { getLayoutSelector } = select( 'coblocks-settings' );
 			const {
 				getBlockAttributes,
 				getBlockName,
 				getClientIdsWithDescendants,
 				getSettings,
 			} = select( 'core/block-editor' );
+
+			const { coblocks_layout_selector_controls_enabled } = select( 'core' ).getEditedEntityRecord( 'root', 'site' );
 
 			const isDraft = [ 'draft' ].indexOf( getCurrentPostAttribute( 'status' ) ) !== -1;
 			const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo() && ! isDraft;
@@ -418,7 +420,7 @@ registerPlugin( 'coblocks-layout-selector', {
 
 			return {
 				isActive: isCleanUnpublishedPost || isTemplateSelectorActive(),
-				layoutSelectorEnabled: getLayoutSelector() && !! layouts.length && !! categories.length,
+				layoutSelectorEnabled: !! coblocks_layout_selector_controls_enabled && !! layouts.length && !! categories.length,
 				layouts,
 				categories,
 				mediaUpload: getSettings().mediaUpload,
