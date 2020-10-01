@@ -50,7 +50,7 @@ function PreviewAnimationPopover( { hoveredAnimation, selected } ) {
 							blocks={ { ...block } }
 						/>
 						<Tip>
-							{ __( 'Animations are applied as this block comes into view on the page.', 'coblocks' ) }
+							{ __( 'This will animate as a visitor scrolls this block into view.', 'coblocks' ) }
 						</Tip>
 					</div>
 				</Popover>
