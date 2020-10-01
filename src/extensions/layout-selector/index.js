@@ -23,6 +23,7 @@ import { createBlock, rawHandler } from '@wordpress/blocks';
  * Internal dependencies
  */
 import './store';
+import LayoutSelectorControl from './settings-modal-control';
 
 const getBlocksFromTemplate = ( name, attributes, innerBlocks = [] ) => {
 	return createBlock( name, attributes,
@@ -303,142 +304,141 @@ class LayoutSelector extends Component {
 			layoutSelectorEnabled,
 		} = this.props;
 
-		if ( ! layoutSelectorEnabled ) {
-			return null;
-		}
+		return (
+			<Fragment>
+				<LayoutSelectorControl />
+				{ isActive && layoutSelectorEnabled &&
+					<Modal
+						title={ (
+							<Fragment>
+								{ __( 'Add new page', 'coblocks' ) }
+								<span>{ __( 'Pick one of these layouts or start with a blank page', 'coblocks' ) }</span>
+							</Fragment>
+						) }
+						onRequestClose={ () => {
+							this.useEmptyTemplateLayout();
+							closeTemplateSelector();
+						} }
+						className="coblocks-layout-selector-modal">
 
-		return ! isActive ? null : (
-			<Modal
-				title={ (
-					<Fragment>
-						{ __( 'Add new page', 'coblocks' ) }
-						<span>{ __( 'Pick one of these layouts or start with a blank page', 'coblocks' ) }</span>
-					</Fragment>
-				) }
-				onRequestClose={ () => {
-					this.useEmptyTemplateLayout();
-					closeTemplateSelector();
-				} }
-				className="coblocks-layout-selector-modal">
+						<div className="coblocks-layout-selector">
+							<aside className="coblocks-layout-selector__sidebar">
+								<ul className="coblocks-layout-selector__sidebar__items">
+									{ this.props.categories.filter( ( category ) => this.hasLayoutsInCategory( category.slug ) ).map( ( category, index ) => (
+										<SidebarItem
+											key={ index }
+											slug={ category.slug }
+											title={ category.title }
+											isSelected={ category.slug === selectedCategory }
+											onClick={ () => this.setState( { selectedCategory: category.slug } ) }
+										/>
+									) ) }
+								</ul>
 
-				<div className="coblocks-layout-selector">
-					<aside className="coblocks-layout-selector__sidebar">
-						<ul className="coblocks-layout-selector__sidebar__items">
-							{ this.props.categories.filter( ( category ) => this.hasLayoutsInCategory( category.slug ) ).map( ( category, index ) => (
-								<SidebarItem
-									key={ index }
-									slug={ category.slug }
-									title={ category.title }
-									isSelected={ category.slug === selectedCategory }
-									onClick={ () => this.setState( { selectedCategory: category.slug } ) }
-								/>
-							) ) }
-						</ul>
+								<Button
+									className="coblocks-layout-selector__add-button"
+									onClick={ () => {
+										this.useEmptyTemplateLayout();
+										closeTemplateSelector();
+									} }
+									isLink>
+									<span><SVG width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><Path d="M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z" ></Path></SVG></span>
+									{ __( 'Add blank page', 'coblocks' ) }
+								</Button>
+							</aside>
 
-						<Button
-							className="coblocks-layout-selector__add-button"
-							onClick={ () => {
-								this.useEmptyTemplateLayout();
-								closeTemplateSelector();
-							} }
-							isLink>
-							<span><SVG width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><Path d="M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z" ></Path></SVG></span>
-							{ __( 'Add blank page', 'coblocks' ) }
-						</Button>
-					</aside>
+							<div className="coblocks-layout-selector__topbar">
+								<div className="coblocks-layout-selector__topbar__left">
+									<strong>{ __( 'Layouts', 'coblocks' ) }:</strong> { selectedCategory }
+									<DropdownMenu label="Select a layout category">
+										{ ( { onClose } ) => (
+											<Fragment>
+												<MenuGroup onClick={ onClose }>
+													{ this.state.templates.map( ( category, index ) => {
+														return (
+															<MenuItem key={ index } onClick={ () => {
+																this.setState( { selectedCategory: category.label } );
+																onClose();
+															} }>
+																{ category.label }
+															</MenuItem>
+														);
+													} ) }
+												</MenuGroup>
+											</Fragment>
+										) }
+									</DropdownMenu>
+								</div>
+								<div className="coblocks-layout-selector__topbar__right">
+									<Button
+										className="coblocks-layout-selector__add-button"
+										onClick={ () => {
+											this.useEmptyTemplateLayout();
+											closeTemplateSelector();
+										} }
+										isLink>
+										<span><Icon icon="plus" size={ 16 } /></span> { __( 'Add blank page', 'coblocks' ) }
+									</Button>
+								</div>
+							</div>
 
-					<div className="coblocks-layout-selector__topbar">
-						<div className="coblocks-layout-selector__topbar__left">
-							<strong>{ __( 'Layouts', 'coblocks' ) }:</strong> { selectedCategory }
-							<DropdownMenu label="Select a layout category">
-								{ ( { onClose } ) => (
-									<Fragment>
-										<MenuGroup onClick={ onClose }>
-											{ this.state.templates.map( ( category, index ) => {
-												return (
-													<MenuItem key={ index } onClick={ () => {
-														this.setState( { selectedCategory: category.label } );
-														onClose();
-													} }>
-														{ category.label }
-													</MenuItem>
-												);
-											} ) }
-										</MenuGroup>
-									</Fragment>
-								) }
-							</DropdownMenu>
+							<div className="coblocks-layout-selector__content">
+								{ this.renderContent( selectedCategory ) }
+							</div>
 						</div>
-						<div className="coblocks-layout-selector__topbar__right">
-							<Button
-								className="coblocks-layout-selector__add-button"
-								onClick={ () => {
-									this.useEmptyTemplateLayout();
-									closeTemplateSelector();
-								} }
-								isLink>
-								<span><Icon icon="plus" size={ 16 } /></span> { __( 'Add blank page', 'coblocks' ) }
-							</Button>
-						</div>
-					</div>
-
-					<div className="coblocks-layout-selector__content">
-						{ this.renderContent( selectedCategory ) }
-					</div>
-				</div>
-			</Modal>
+					</Modal>
+				}
+			</Fragment>
 		);
 	}
 }
 
-if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.postTypeEnabled ) {
-	registerPlugin( 'coblocks-layout-selector', {
-		render: compose( [
-			withSelect( ( select ) => {
-				const { isTemplateSelectorActive } = select( 'coblocks/template-selector' );
-				const {
-					getCurrentPostAttribute,
-					hasEditorUndo,
-					isCurrentPostPublished,
-				} = select( 'core/editor' );
-				const { getLayoutSelector } = select( 'coblocks-settings' );
-				const {
-					getBlockAttributes,
-					getBlockName,
-					getClientIdsWithDescendants,
-					getSettings,
-				} = select( 'core/block-editor' );
+registerPlugin( 'coblocks-layout-selector', {
+	render: compose( [
+		withSelect( ( select ) => {
+			const { isTemplateSelectorActive } = select( 'coblocks/template-selector' );
+			const {
+				getCurrentPostAttribute,
+				hasEditorUndo,
+				isCurrentPostPublished,
+			} = select( 'core/editor' );
+			const { getLayoutSelector } = select( 'coblocks-settings' );
+			const {
+				getBlockAttributes,
+				getBlockName,
+				getClientIdsWithDescendants,
+				getSettings,
+			} = select( 'core/block-editor' );
 
-				const isDraft = [ 'draft' ].indexOf( getCurrentPostAttribute( 'status' ) ) !== -1;
-				const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo() && ! isDraft;
+			const isDraft = [ 'draft' ].indexOf( getCurrentPostAttribute( 'status' ) ) !== -1;
+			const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo() && ! isDraft;
 
-				const layouts = coblocksLayoutSelector.layouts || [];
-				const categories = coblocksLayoutSelector.categories || [];
+			const layouts = coblocksLayoutSelector.layouts || [];
+			const categories = coblocksLayoutSelector.categories || [];
 
-				return {
-					isActive: isCleanUnpublishedPost || isTemplateSelectorActive(),
-					layoutSelectorEnabled: getLayoutSelector() && !! layouts.length && !! categories.length,
-					layouts,
-					categories,
-					mediaUpload: getSettings().mediaUpload,
-					clientIds: getClientIdsWithDescendants(),
-					getBlockAttributes,
-					getBlockName,
-				};
-			} ),
-			withDispatch( ( dispatch ) => {
-				const { closeTemplateSelector } = dispatch( 'coblocks/template-selector' );
-				const { editPost } = dispatch( 'core/editor' );
-				const { updateBlockAttributes } = dispatch( 'core/block-editor' );
-				const { createWarningNotice } = dispatch( 'core/notices' );
+			return {
+				isActive: isCleanUnpublishedPost || isTemplateSelectorActive(),
+				layoutSelectorEnabled: getLayoutSelector() && !! layouts.length && !! categories.length,
+				layouts,
+				categories,
+				mediaUpload: getSettings().mediaUpload,
+				clientIds: getClientIdsWithDescendants(),
+				getBlockAttributes,
+				getBlockName,
+			};
+		} ),
+		withDispatch( ( dispatch ) => {
+			const { closeTemplateSelector } = dispatch( 'coblocks/template-selector' );
+			const { editPost } = dispatch( 'core/editor' );
+			const { updateBlockAttributes } = dispatch( 'core/block-editor' );
+			const { createWarningNotice } = dispatch( 'core/notices' );
 
-				return {
-					closeTemplateSelector,
-					createWarningNotice,
-					editPost,
-					updateBlockAttributes,
-				};
-			} ),
-		] )( LayoutSelector ),
-	} );
-}
+			return {
+				closeTemplateSelector,
+				createWarningNotice,
+				editPost,
+				updateBlockAttributes,
+			};
+		} ),
+	] )( LayoutSelector ),
+} );
