@@ -122,7 +122,7 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 			}
 		} );
 
-		cy.get( '[data-type="coblocks/gallery-carousel"]' ).find( 'figcaption' ).click().type( caption );
+		cy.get( '[data-type="coblocks/gallery-carousel"]' ).find( 'figcaption' ).focus().type( caption );
 
 		helpers.savePage();
 
