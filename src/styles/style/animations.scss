@@ -2,7 +2,7 @@
 	// VARIABLES
 
 	$coblocks-animate-duration: 0.75s;
-	$coblocks-animate-translation: 10rem;
+	$coblocks-animate-translation: 5rem;
 
 	// BLOCK STYLE
 
@@ -22,6 +22,7 @@
 	}
 
 	@keyframes fadeIn {
+
 		0% {
 			opacity: 0;
 		}
@@ -39,6 +40,7 @@
 	}
 
 	@keyframes scaleIn {
+
 		0% {
 			opacity: 0;
 			transform: scale(0);
@@ -58,6 +60,7 @@
 	}
 
 	@keyframes slideInLeft {
+
 		0% {
 			opacity: 0;
 			transform: translateX(-#{ $coblocks-animate-translation });
@@ -77,6 +80,7 @@
 	}
 
 	@keyframes slideInRight {
+
 		0% {
 			opacity: 0;
 			transform: translateX($coblocks-animate-translation);
@@ -96,6 +100,7 @@
 	}
 
 	@keyframes slideInBottom {
+
 		0% {
 			opacity: 0;
 			transform: translateY($coblocks-animate-translation);
@@ -115,6 +120,7 @@
 	}
 
 	@keyframes clipHorizontal {
+
 		0% {
 			opacity: 0;
 			-webkit-clip-path: polygon(0% 50%, 0% 100%, 0% 100%, 0% 50%, 100% 50%, 100% 0%, 100% 0%, 100% 50%);
@@ -136,16 +142,17 @@
 	}
 
 	@keyframes clipVertical {
+
 		0% {
 			opacity: 0;
 			-webkit-clip-path: polygon(50% 0%, 100% 0%, 100% 0%, 50% 0%, 50% 100%, 0% 100%, 0% 100%, 50% 100%);
-    		clip-path:polygon(50% 0%, 100% 0%, 100% 0%, 50% 0%, 50% 100%, 0% 100%, 0% 100%, 50% 100%);
+    			clip-path:polygon(50% 0%, 100% 0%, 100% 0%, 50% 0%, 50% 100%, 0% 100%, 0% 100%, 50% 100%);
 		}
 
 		100% {
 			opacity: 1;
 			-webkit-clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 100%, 0% 100%, 0% 0%, 50% 0%);
-    		clip-path:polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 100%, 0% 100%, 0% 0%, 50% 0%);
+    			clip-path:polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 100%, 0% 100%, 0% 0%, 50% 0%);
 		}
 	}
 }
