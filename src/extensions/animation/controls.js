@@ -17,19 +17,14 @@ import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { BlockControls, BlockPreview } from '@wordpress/block-editor';
 import {
-	ToolbarButton,
-	Dropdown,
 	DropdownMenu,
-	ToolbarGroup,
-	NavigableMenu,
 	MenuItem,
 	MenuGroup,
 	Popover,
 	Toolbar,
 	Tip
 } from '@wordpress/components';
-import { DOWN } from '@wordpress/keycodes';
-import { Icon, check } from '@wordpress/icons';
+import { check } from '@wordpress/icons';
 
 function PreviewAnimationPopover( { hoveredAnimation, selected } ) {
 	if ( ! hoveredAnimation ) return null;
