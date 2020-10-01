@@ -49,11 +49,6 @@
 	height: 100%;
 	margin-bottom: $grid-unit-40;
 
-	// Beyond mobile, allow 2 columns.
-	@include break-small() {
-		margin-bottom: 0;
-	}
-
 	// Prevent the columns from growing wider than their distributed sizes.
 	min-width: 0;
 
@@ -61,6 +56,11 @@
 	overflow-wrap: break-word; // New standard.
 	position: relative;
 	word-break: break-word; // For back-compat.
+
+	// Beyond mobile, allow 2 columns.
+	@include break-small() {
+		margin-bottom: 0;
+	}
 
 	p {
 		margin-top: 0;
@@ -234,8 +234,8 @@
 
 	[data-type="coblocks/column"] {
 		display: flex;
-		margin-top: 0;
 		margin-bottom: 0;
+		margin-top: 0;
 
 		.wp-block-coblocks-column,
 		.wp-block-coblocks-column__inner {

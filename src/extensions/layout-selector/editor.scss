@@ -33,18 +33,18 @@
 }
 
 .coblocks-layout-selector-modal {
-	width: 1200px;
 	height: 85vh;
 	position: relative;
+	width: 1200px;
 
 	.components-modal__content {
 		height: auto;
 	}
 
 	.components-modal__header {
+		border-bottom: none;
 		height: 96px;
 		padding: 0 24px;
-		border-bottom: none;
 
 		.components-modal__header-heading {
 			font-size: 1rem;
@@ -64,9 +64,9 @@
 [data-type="core/buttons"] {
 
 	.block-list-appender {
-		top: -10px;
 		margin-bottom: 0;
 		position: relative;
+		top: -10px;
 	}
 }
 
@@ -78,19 +78,19 @@
 }
 
 .coblocks-layout-selector {
+	align-items: flex-start;
 	display: flex;
 	justify-content: space-around;
-	align-items: flex-start;
 
 	@media (max-width: 782px) {
 		flex-direction: column;
 	}
 
 	&__sidebar {
-		width: 220px;
-		top: 118px;
 		position: -webkit-sticky;
 		position: sticky;
+		top: 118px;
+		width: 220px;
 
 		@media (max-width: 782px) {
 			display: none;
@@ -112,9 +112,9 @@
 				&:hover,
 				&:focus,
 				&.is-selected {
+					box-shadow: none;
 					color: var(--wp-admin-theme-color, #007cba);
 					outline: none;
-					box-shadow: none;
 				}
 			}
 		}
@@ -124,11 +124,11 @@
 		display: none;
 
 		@media (max-width: 782px) {
-			display: flex;
 			align-items: center;
+			display: flex;
 			justify-content: space-between;
-			width: 100%;
 			margin-bottom: 1em;
+			width: 100%;
 
 			.components-dropdown-menu__toggle {
 
@@ -139,8 +139,8 @@
 			}
 
 			&__left {
-				display: flex;
 				align-items: center;
+				display: flex;
 
 				> strong {
 					display: inline-block;
@@ -151,37 +151,37 @@
 	}
 
 	&__add-button {
-		color: $gray-900 !important;
-		text-decoration: none !important;
-		font-weight: 500;
-		min-width: 32px;
-		height: 32px;
-		display: inline-flex;
-		vertical-align: middle;
-		transition-duration: 0;
 		align-items: center;
+		color: $gray-900 !important;
+		display: inline-flex;
+		font-weight: 500;
+		height: 32px;
+		min-width: 32px;
+		text-decoration: none !important;
+		transition-duration: 0;
+		vertical-align: middle;
 
 		> span {
-			position: relative;
-			background-color: $gray-900;
-			color: $white;
-			min-width: 32px;
-			height: 32px;
-			width: 32px;
-			margin-right: 8px;
-			border-radius: $radius-block-ui;
-			vertical-align: middle;
-			transition: all 0.1s;
-			display: inline-flex;
-			justify-content: center;
 			align-items: center;
+			background-color: $gray-900;
+			border-radius: $radius-block-ui;
+			color: $white;
+			display: inline-flex;
+			height: 32px;
+			justify-content: center;
+			margin-right: 8px;
+			min-width: 32px;
+			position: relative;
+			transition: all 0.1s;
+			vertical-align: middle;
+			width: 32px;
 		}
 
 		&:hover,
 		&:focus {
-			outline: none;
 			box-shadow: none;
 			color: var(--wp-admin-theme-color, #007cba) !important;
+			outline: none;
 
 			> span {
 				background-color: var(--wp-admin-theme-color, #007cba);
@@ -196,9 +196,9 @@
 	}
 
 	&__layouts {
+		align-items: flex-start;
 		display: flex;
 		flex-wrap: wrap;
-		align-items: flex-start;
 		justify-content: space-between;
 		padding: 3px;
 	}
@@ -208,8 +208,8 @@
 	}
 
 	&__layout {
-		border-radius: $radius-block-ui;
 		background-color: var(--go--color--background, $white);
+		border-radius: $radius-block-ui;
 		display: flex;
 		flex-basis: 50%;
 		flex-grow: 1;
@@ -220,8 +220,8 @@
 
 		@media (max-width: 1024px) {
 			flex-basis: 100%;
-			max-width: 100%;
 			margin-right: 0;
+			max-width: 100%;
 		}
 
 		.block-editor-block-preview__container {
@@ -231,12 +231,12 @@
 
 		&::after {
 			border: 1px solid rgba(0, 0, 0, 0.15);
-			position: absolute;
+			border-radius: $radius-block-ui;
+			content: "";
 			height: 100%;
+			position: absolute;
 			width: 100%;
 			z-index: 1;
-			content: "";
-			border-radius: $radius-block-ui;
 		}
 
 		&:hover {
@@ -254,21 +254,21 @@
 	}
 
 	&__layout--overlay {
+		align-items: center;
+		background: rgba(255, 255, 255, 0.75);
+		border: 2px solid var(--wp-admin-theme-color, #007cba);
+		bottom: 0;
 		display: none !important; // Hide this temp.
 		display: flex;
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		background: rgba(255, 255, 255, 0.75);
 		flex-direction: column;
-		align-items: center;
 		justify-content: center;
-		z-index: 1;
-		border: 2px solid var(--wp-admin-theme-color, #007cba);
-		transition: opacity 0.1s linear;
+		left: 0;
 		opacity: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		transition: opacity 0.1s linear;
+		z-index: 1;
 
 		&.is-active {
 			opacity: 1;

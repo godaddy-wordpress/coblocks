@@ -71,9 +71,9 @@
 			display: flex;
 			height: auto;
 			justify-content: center;
+			outline: 1px dotted transparent;
 			padding: 14px 0;
 			width: 100%;
-			outline: 1px dotted transparent;
 
 			&:hover:not(:disabled) {
 				box-shadow: inset 0 0 0 1px var(--wp-admin-theme-color, #007cba);
@@ -182,8 +182,8 @@
 	justify-content: center;
 
 	.components-resizable-box__container {
-		width: 100% !important;
-		padding: 4em !important;
 		max-width: 16em !important;
+		padding: 4em !important;
+		width: 100% !important;
 	}
 }

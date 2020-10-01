@@ -26,9 +26,9 @@
 	[data-type="coblocks/row"] & &__inner {
 
 		div[data-type="coblocks/column"] {
-			max-width: 100% !important;
-			margin-top: 0;
 			margin-bottom: 0;
+			margin-top: 0;
+			max-width: 100% !important;
 		}
 	}
 
@@ -77,6 +77,13 @@
 		// Adjust the individual column block.
 		> [data-type="coblocks/column"] {
 			margin-left: 0;
+
+			// Prevent the columns from growing wider than their distributed sizes.
+			min-width: 0;
+
+			// Prevent long unbroken words from overflowing.
+			overflow-wrap: break-word; // New standard.
+			word-break: break-word; // For back-compat.
 
 			.wp-block-coblocks-column {
 				margin: 0 !important;
@@ -140,13 +147,6 @@
 			> .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar {
 				margin-left: -$border-width;
 			}
-
-			// Prevent the columns from growing wider than their distributed sizes.
-			min-width: 0;
-
-			// Prevent long unbroken words from overflowing.
-			overflow-wrap: break-word; // New standard.
-			word-break: break-word; // For back-compat.
 
 			&.is-selected {
 

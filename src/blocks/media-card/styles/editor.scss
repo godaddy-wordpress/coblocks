@@ -24,11 +24,11 @@
 	}
 
 	&__media-container {
+		align-items: center !important;
 		height: 100%;
 		margin: 0;
-		width: 100%;
 		text-align: center !important;
-		align-items: center !important;
+		width: 100%;
 
 		.components-placeholder__fieldset {
 			justify-content: center;

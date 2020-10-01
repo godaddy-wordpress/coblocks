@@ -33,9 +33,9 @@
 	.coblocks-field {
 
 		input[type="radio"] {
+			display: inline-block;
 			float: left;
 			margin: 5px 5px 0 0;
-			display: inline-block;
 		}
 
 		.coblocks-checkbox-label {
