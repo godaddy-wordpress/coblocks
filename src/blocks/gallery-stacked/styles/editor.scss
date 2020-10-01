@@ -1,5 +1,10 @@
 [data-type="coblocks/gallery-stacked"] {
 
+	// Remove selected state.
+	&.block-editor-block-list__block::after {
+		box-shadow: none !important;
+	}
+
 	&[data-align="left"],
 	&[data-align="right"] {
 
