@@ -31,7 +31,7 @@ describe( 'Test CoBlocks Click to Tweet Block', function() {
 		cy.get( '.wp-block-coblocks-click-to-tweet' ).click( { force: true } );
 
 		cy.get( '.wp-block-coblocks-click-to-tweet__via' ).type( 'TestUsername' );
-		cy.get( '.wp-block-coblocks-click-to-tweet__text' ).type( 'Some custom data here.' );
+		cy.get( '.wp-block-coblocks-click-to-tweet__text' ).focus().type( 'Some custom data here.' );
 
 		helpers.savePage();
 

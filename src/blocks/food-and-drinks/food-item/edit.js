@@ -280,7 +280,7 @@ class FoodItem extends Component {
 
 		const richTextAttributes = {
 			keepPlaceholderOnFocus: true,
-			formattingControls: [ 'bold', 'italic' ],
+			allowedFormats: [ 'bold', 'italic' ],
 		};
 
 		return (
