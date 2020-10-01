@@ -289,7 +289,6 @@ class PostsEdit extends Component {
 								<Button
 									className="components-placeholder__cancel-button"
 									title={ __( 'Retrieve an External Feed', 'coblocks' ) }
-									isLarge
 									isSecondary
 									onClick={ () => {
 										setAttributes( { postFeedType: 'external' } );
