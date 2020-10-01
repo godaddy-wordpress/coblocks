@@ -220,7 +220,6 @@ class Inspector extends Component {
 						/>
 						<Button
 							isPrimary
-							isLarge
 							onClick={ this.updateApiKey }
 							disabled={ ( this.state.apiKey === '' ) || ( this.state.apiKey === this.props.apiKey ) }
 						>
@@ -230,7 +229,6 @@ class Inspector extends Component {
 						<Button
 							className="components-block-coblocks-map-api-key-remove__button"
 							isSecondary
-							isLarge
 							onClick={ this.removeApiKey }
 							disabled={ this.state.apiKey !== this.props.apiKey || ! this.state.apiKey }
 						>

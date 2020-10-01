@@ -182,7 +182,7 @@ class EventsEdit extends Component {
 							onChange={ ( newExternalCalendarUrl ) => this.setState( { externalCalendarUrl: newExternalCalendarUrl } ) }
 							className={ 'components-placeholder__input' }
 						/>
-						<Button isLarge type="button" onClick={ this.saveExternalCalendarUrl } disabled={ ! this.state.externalCalendarUrl }>
+						<Button type="button" onClick={ this.saveExternalCalendarUrl } disabled={ ! this.state.externalCalendarUrl }>
 							{ __( 'Use URL', 'coblocks' ) }
 						</Button>
 					</Placeholder>

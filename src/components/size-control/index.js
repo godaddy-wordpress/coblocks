@@ -167,7 +167,6 @@ class SizeControl extends Component {
 						{ map( this.getSizes(), ( { size, shortName } ) => (
 							<Button
 								key={ size }
-								isLarge
 								isSecondary={ value !== size }
 								isPrimary={ value === size }
 								aria-pressed={ value === size }
