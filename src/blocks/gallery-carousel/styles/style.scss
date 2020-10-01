@@ -177,3 +177,21 @@
 		}
 	}
 }
+
+body.rtl {
+
+	.flickity-viewport {
+		position: relative;
+	}
+
+	.flickity-prev-next-button {
+
+		&.next {
+			left: 0;
+		}
+
+		&.previous {
+			left: unset;
+		}
+	}
+}
