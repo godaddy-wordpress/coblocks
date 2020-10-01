@@ -77,6 +77,7 @@ export function goTo( path = '/wp-admin' ) {
  * Disable Gutenberg Tips
  */
 export function disableGutenbergFeatures() {
+	cy.window().should( 'have.property', 'wp' );
 	cy.window().then( ( win ) => {
 		// Enable "Top Toolbar"
 		if ( ! win.wp.data.select( 'core/edit-post' ).isFeatureActive( 'fixedToolbar' ) ) {
@@ -197,6 +198,7 @@ export function editPage() {
  * Clear all blocks from the editor
  */
 export function clearBlocks() {
+	cy.window().should( 'have.property', 'wp' );
 	cy.window().then( ( win ) => {
 		win.wp.data.dispatch( 'core/block-editor' ).removeBlocks(
 			win.wp.data.select( 'core/block-editor' ).getBlocks().map( ( block ) => block.clientId )
