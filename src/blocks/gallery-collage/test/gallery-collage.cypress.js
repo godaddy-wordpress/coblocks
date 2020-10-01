@@ -115,7 +115,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 		helpers.toggleSettingCheckbox( /captions/i );
 
 		cy.get( '.wp-block-coblocks-gallery-collage__item' ).first().click()
-			.find( 'figcaption' ).click( { force: true } ).type( caption );
+			.find( 'figcaption' ).focus().type( caption, { force: true } );
 
 		helpers.savePage();
 
