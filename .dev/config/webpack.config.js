@@ -17,6 +17,7 @@ module.exports = {
 		'coblocks-editor': path.resolve( process.cwd(), 'src/styles/editor.scss' ),
 		'coblocks-style': path.resolve( process.cwd(), 'src/styles/style.scss' ),
 
+		'js/coblocks-animation': path.resolve( process.cwd(), 'src/js/coblocks-animation.js' ),
 		'js/coblocks-accordion-polyfill': path.resolve( process.cwd(), 'src/js/coblocks-accordion-polyfill.js' ),
 		'js/coblocks-accordion-carousel': path.resolve( process.cwd(), 'src/js/coblocks-accordion-carousel.js' ),
 		'js/coblocks-checkbox-required': path.resolve( process.cwd(), 'src/js/coblocks-checkbox-required.js' ),

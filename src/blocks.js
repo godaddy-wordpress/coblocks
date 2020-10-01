@@ -8,7 +8,11 @@ import {
 // Register block category
 import './utils/block-category';
 
+// Utils
+import './js/coblocks-color-fix';
+
 // Extensions
+import './extensions/animation';
 import './extensions/colors/inspector';
 import './extensions/typography';
 import './extensions/attributes';
