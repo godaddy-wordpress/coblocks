@@ -162,7 +162,6 @@ class Edit extends Component {
 										<div className="components-coblocks-row-placeholder__button-wrapper">
 											<Button
 												className="components-coblocks-row-placeholder__button block-editor-inner-blocks__template-picker-option block-editor-block-pattern-picker__pattern"
-												isLarge
 												isSecondary
 												onClick={ () => {
 													setAttributes( {
@@ -200,7 +199,6 @@ class Edit extends Component {
 												<Button
 													key={ key }
 													className="components-coblocks-row-placeholder__button block-editor-inner-blocks__template-picker-option block-editor-block-pattern-picker__pattern"
-													isLarge
 													isSecondary
 													onClick={ () => {
 														setAttributes( {
@@ -294,14 +292,14 @@ class Edit extends Component {
 					) }
 					<div className={ classes }>
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
-            <GutterWrapper { ...attributes }>
-              <div className={ innerClasses } style={ innerStyles }>
-                { BackgroundVideo( attributes ) }
-                { this.supportsBlockVariationPicker()
-                  ? variationInnerBlocks()
-                  : deprecatedInnerBlocks() }
-              </div>
-            </GutterWrapper>
+						<GutterWrapper { ...attributes }>
+							<div className={ innerClasses } style={ innerStyles }>
+								{ BackgroundVideo( attributes ) }
+								{ this.supportsBlockVariationPicker()
+									? variationInnerBlocks()
+									: deprecatedInnerBlocks() }
+							</div>
+						</GutterWrapper>
 					</div>
 				</Fragment>
 			);

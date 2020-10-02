@@ -34,12 +34,12 @@
 
 	// FOCUS IN
 
-	&.scaleIn {
+	&.zoomIn {
 		animation-duration: $coblocks-animate-duration;
-		animation-name: scaleIn;
+		animation-name: zoomIn;
 	}
 
-	@keyframes scaleIn {
+	@keyframes zoomIn {
 
 		0% {
 			opacity: 0;

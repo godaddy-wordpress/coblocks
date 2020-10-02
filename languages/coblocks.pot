@@ -1,14 +1,14 @@
 # Copyright (c) 2020 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 2.3.2\n"
+"Project-Id-Version: CoBlocks 2.4.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-10-01T01:18:05+00:00\n"
+"POT-Creation-Date: 2020-10-02T16:43:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -422,7 +422,7 @@ msgstr ""
 #: src/blocks/form/fields/submit-button/edit.js:113
 #: src/blocks/hero/inspector.js:137
 #: src/blocks/highlight/inspector.js:43
-#: src/blocks/icon/inspector.js:301
+#: src/blocks/icon/inspector.js:299
 #: src/blocks/media-card/inspector.js:141
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:48
 #: src/blocks/row/column/inspector.js:163
@@ -444,7 +444,7 @@ msgstr ""
 #: src/blocks/features/inspector.js:176
 #: src/blocks/hero/inspector.js:150
 #: src/blocks/highlight/inspector.js:49
-#: src/blocks/icon/inspector.js:325
+#: src/blocks/icon/inspector.js:323
 #: src/blocks/media-card/inspector.js:155
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:53
 #: src/blocks/row/column/inspector.js:169
@@ -821,8 +821,8 @@ msgid "Enter URL here…"
 msgstr ""
 
 #: src/blocks/events/edit.js:186
-#: src/blocks/post-carousel/edit.js:227
-#: src/blocks/posts/edit.js:336
+#: src/blocks/post-carousel/edit.js:226
+#: src/blocks/posts/edit.js:335
 msgid "Use URL"
 msgstr ""
 
@@ -1485,23 +1485,23 @@ msgstr ""
 msgid "Secret key"
 msgstr ""
 
-#: src/blocks/form/edit.js:438
+#: src/blocks/form/edit.js:437
 #: src/components/block-gallery/gallery-image.js:228
 msgid "Saving"
 msgstr ""
 
-#: src/blocks/form/edit.js:438
-#: src/blocks/map/inspector.js:227
+#: src/blocks/form/edit.js:437
+#: src/blocks/map/inspector.js:226
 msgid "Save"
 msgstr ""
 
-#: src/blocks/form/edit.js:449
-#: src/blocks/map/inspector.js:237
+#: src/blocks/form/edit.js:447
+#: src/blocks/map/inspector.js:235
 msgid "Remove"
 msgstr ""
 
-#: src/blocks/form/edit.js:488
-#: src/blocks/row/edit.js:328
+#: src/blocks/form/edit.js:486
+#: src/blocks/row/edit.js:326
 msgid "Select a variation to start with."
 msgstr ""
 
@@ -4498,9 +4498,9 @@ msgid "Reset icon size"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:169
-#: src/components/crop-settings/index.js:322
+#: src/components/crop-settings/index.js:320
 #: src/components/dimensions-control/index.js:489
-#: src/components/size-control/index.js:186
+#: src/components/size-control/index.js:185
 msgid "Reset"
 msgstr ""
 
@@ -4521,35 +4521,35 @@ msgstr ""
 msgid "Icon search"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:277
+#: src/blocks/icon/inspector.js:275
 msgid "No results found."
 msgstr ""
 
-#: src/blocks/icon/inspector.js:283
+#: src/blocks/icon/inspector.js:281
 #: src/components/block-gallery/gallery-link-settings.js:72
 msgid "Link settings"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:286
+#: src/blocks/icon/inspector.js:284
 msgid "Link URL"
 msgstr ""
 
 #. translators: html attribute that specifies the relationship between two pages
-#: src/blocks/icon/inspector.js:291
+#: src/blocks/icon/inspector.js:289
 #: src/components/block-gallery/gallery-link-settings.js:90
 msgid "Link rel"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:296
+#: src/blocks/icon/inspector.js:294
 msgid "Opening in new tab"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:296
+#: src/blocks/icon/inspector.js:294
 #: src/components/block-gallery/gallery-link-settings.js:84
 msgid "Open in new tab"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:308
+#: src/blocks/icon/inspector.js:306
 #: src/blocks/share/inspector.js:68
 #: src/blocks/share/inspector.js:104
 #: src/blocks/social-profiles/inspector.js:96
@@ -5787,12 +5787,12 @@ msgstr ""
 msgid "Search for a place or address…"
 msgstr ""
 
-#: src/blocks/map/edit.js:301
+#: src/blocks/map/edit.js:300
 msgid "Search"
 msgstr ""
 
-#: src/blocks/map/edit.js:308
-#: src/blocks/map/edit.js:318
+#: src/blocks/map/edit.js:307
+#: src/blocks/map/edit.js:317
 msgid "Cancel"
 msgstr ""
 
@@ -5917,7 +5917,7 @@ msgstr ""
 msgid "Add Google API key…"
 msgstr ""
 
-#: src/blocks/map/inspector.js:227
+#: src/blocks/map/inspector.js:226
 msgid "Saved"
 msgstr ""
 
@@ -6054,33 +6054,33 @@ msgstr ""
 msgid "Retrieve an external feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:194
-#: src/blocks/posts/edit.js:298
+#: src/blocks/post-carousel/edit.js:193
+#: src/blocks/posts/edit.js:297
 msgid "Use External Feed"
+msgstr ""
+
+#: src/blocks/post-carousel/edit.js:215
+#: src/blocks/posts/edit.js:324
+msgid "RSS Feed"
 msgstr ""
 
 #: src/blocks/post-carousel/edit.js:216
 #: src/blocks/posts/edit.js:325
-msgid "RSS Feed"
-msgstr ""
-
-#: src/blocks/post-carousel/edit.js:217
-#: src/blocks/posts/edit.js:326
 msgid "RSS URLs are generally located at the /feed/ directory of a site."
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:221
-#: src/blocks/posts/edit.js:330
+#: src/blocks/post-carousel/edit.js:220
+#: src/blocks/posts/edit.js:329
 msgid "https://example.com/feed…"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:303
-#: src/blocks/posts/edit.js:433
+#: src/blocks/post-carousel/edit.js:302
+#: src/blocks/posts/edit.js:432
 msgid "(no title)"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:321
-#: src/blocks/posts/edit.js:459
+#: src/blocks/post-carousel/edit.js:320
+#: src/blocks/posts/edit.js:458
 msgid "Read more"
 msgstr ""
 
@@ -6443,11 +6443,11 @@ msgstr ""
 msgid "Select row columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:185
+#: src/blocks/row/edit.js:184
 msgid "Select row layout"
 msgstr ""
 
-#: src/blocks/row/edit.js:195
+#: src/blocks/row/edit.js:194
 msgid "Back to columns"
 msgstr ""
 
@@ -7109,15 +7109,15 @@ msgstr ""
 msgid "Image orientation"
 msgstr ""
 
-#: src/components/crop-settings/index.js:304
+#: src/components/crop-settings/index.js:303
 msgid "Rotate counter-clockwise"
 msgstr ""
 
-#: src/components/crop-settings/index.js:311
+#: src/components/crop-settings/index.js:309
 msgid "Rotate clockwise"
 msgstr ""
 
-#: src/components/crop-settings/index.js:320
+#: src/components/crop-settings/index.js:318
 msgid "Reset image cropping options"
 msgstr ""
 
@@ -7547,6 +7547,34 @@ msgstr ""
 
 #: src/extensions/advanced-controls/index.js:201
 msgid "Toggle to remove any bottom margin."
+msgstr ""
+
+#: src/extensions/animation/animation-types.js:6
+msgid "Fade in"
+msgstr ""
+
+#: src/extensions/animation/animation-types.js:10
+msgid "Zoom in"
+msgstr ""
+
+#: src/extensions/animation/animation-types.js:14
+msgid "Slide in from left"
+msgstr ""
+
+#: src/extensions/animation/animation-types.js:18
+msgid "Slide in from right"
+msgstr ""
+
+#: src/extensions/animation/animation-types.js:22
+msgid "Slide in from bottom"
+msgstr ""
+
+#: src/extensions/animation/animation-types.js:26
+msgid "Clip horizontally"
+msgstr ""
+
+#: src/extensions/animation/animation-types.js:30
+msgid "Clip vertically"
 msgstr ""
 
 #: src/extensions/block-patterns/index.js:35

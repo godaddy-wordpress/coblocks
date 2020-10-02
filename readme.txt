@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 2.3.2
+Stable tag: 2.4.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -115,36 +115,36 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-### Enhancement
-* Add styles to Media & Text block [#1605](https://github.com/godaddy-wordpress/coblocks/pull/1605)
-* Add support for __experimentalCaptureToolbars [#1661](https://github.com/godaddy-wordpress/coblocks/pull/1661)
-* Introduce ability to define a custom form success message in the Form block [#1647](https://github.com/godaddy-wordpress/coblocks/pull/1647)
-* Introduce custom block patterns saved as a CPT. [#1659](https://github.com/godaddy-wordpress/coblocks/pull/1659)
-* Introduce support for custom gutter controls [#1619](https://github.com/godaddy-wordpress/coblocks/pull/1619)
-* Layouts as Custom Post Type [#1581](https://github.com/godaddy-wordpress/coblocks/pull/1581)
-* Update Row, Accordion, and Column block icons [#1662](https://github.com/godaddy-wordpress/coblocks/pull/1662)
+### Enhancements
+* ✨ Introduce animation control [#1667](https://github.com/godaddy-wordpress/coblocks/pull/1667)
+* Download remote images used in layouts [#1607](https://github.com/godaddy-wordpress/coblocks/pull/1607)
+* Enhance Map block placeholder with new styles [#1694](https://github.com/godaddy-wordpress/coblocks/pull/1694)
+* Improve move arrow orientation on gallery blocks [#1691](https://github.com/godaddy-wordpress/coblocks/pull/1691)
+* Introduce From block label color controls [#1646](https://github.com/godaddy-wordpress/coblocks/pull/1646)
 
 ### Bug Fixes
-* Fix cursor hover state on offset/collage blocks [#1657](https://github.com/godaddy-wordpress/coblocks/pull/1657)
-* Fix Icon block style previews [#1649](https://github.com/godaddy-wordpress/coblocks/pull/1649)
-* Fix required form radio/checkbox fields [#1643](https://github.com/godaddy-wordpress/coblocks/pull/1643)
-* Fix variation titles for Row and Form blocks [#1660](https://github.com/godaddy-wordpress/coblocks/pull/1660)
-* Introduce Posts and Post Carousel block deprecations [#1638](https://github.com/godaddy-wordpress/coblocks/pull/1638)
+* Add form field transformations [#1676](https://github.com/godaddy-wordpress/coblocks/pull/1676)
+* Collage block: Add caption margin zero [#1679](https://github.com/godaddy-wordpress/coblocks/pull/1679)
+* Fix appearance of Row block column spacing controls [#1695](https://github.com/godaddy-wordpress/coblocks/pull/1695)
+* Fix carousel arrows in an RTL environment [#1699](https://github.com/godaddy-wordpress/coblocks/pull/1699)
+* Fix formattingControls console warnings [#1701](https://github.com/godaddy-wordpress/coblocks/pull/1701)
+* Fix post carousel arrows/text-align when in an RTL environment [#1700](https://github.com/godaddy-wordpress/coblocks/pull/1700)
+* Fix style previews for social blocks [#1697](https://github.com/godaddy-wordpress/coblocks/pull/1697)
+* Fix un-wanted margins being applied to the markup of Gallery blocks [#1696](https://github.com/godaddy-wordpress/coblocks/pull/1696)
+* HeadingToolbar: Use ToolbarGroup to render controls correctly [#1673](https://github.com/godaddy-wordpress/coblocks/pull/1673)
+* Migrate CoBlocks galley controls to use core styles [#1687](https://github.com/godaddy-wordpress/coblocks/pull/1687)
+* Remove deprecated isLarge Button component prop [#1703](https://github.com/godaddy-wordpress/coblocks/pull/1703)
+* Remove unnecessary SCSS variables and use @wordpress/base-styles instead [#1672](https://github.com/godaddy-wordpress/coblocks/pull/1672)
+* Transform form fields with proper labels [#1680](https://github.com/godaddy-wordpress/coblocks/pull/1680)
+* Tweak Form label color controls [#1683](https://github.com/godaddy-wordpress/coblocks/pull/1683)
+* Update edit icons to utilize @wordpress/icons edit icon [#1689](https://github.com/godaddy-wordpress/coblocks/pull/1689)
 
 ### Misc
-* Fix Editor Settings control description alignment [#1648](https://github.com/godaddy-wordpress/coblocks/pull/1648)
-* Migrate CoBlocks to use @wordpress/base-styles package [#1651](https://github.com/godaddy-wordpress/coblocks/pull/1651)
-* Move appropriate contributors to the CONTRIBUTORS file [#1641](https://github.com/godaddy-wordpress/coblocks/pull/1641)
-* Move i18ntools to their own composer package [#1650](https://github.com/godaddy-wordpress/coblocks/pull/1650)
-* Remove arrows from lightbox in single image galleries [#1656](https://github.com/godaddy-wordpress/coblocks/pull/1656)
-* Remove box shadow from selected Form block fields [#1655](https://github.com/godaddy-wordpress/coblocks/pull/1655)
-
-### 2.3.1
-* Fix custom taxonomy not being assigned to block pattern on save
-
-### 2.3.2
-* Prevent layout selector on posts saved as a draft [#1675](https://github.com/godaddy-wordpress/coblocks/pull/1675)
-* Fix required checkbox/radio hidden message escaped markup [#1677](https://github.com/godaddy-wordpress/coblocks/pull/1677)
-* Fix editor crash when running WordPress 5.4.2 [#1669](https://github.com/godaddy-wordpress/coblocks/pull/1669)
-* Use ToolbarGroup to render controls correctly in Gutenberg 8.8+ [#1671](https://github.com/godaddy-wordpress/coblocks/pull/1671)
-* Add @WunderBart as a contributor 🎉 [#1674](https://github.com/godaddy-wordpress/coblocks/pull/1674)
+* 🎉 Add [Jon Surrell](https://github.com/sirreal) as a contributor [#1681](https://github.com/godaddy-wordpress/coblocks/pull/1681)
+* Add [Hacktoberfest](https://hacktoberfest.digitalocean.com/) label [#1693](https://github.com/godaddy-wordpress/coblocks/pull/1693)
+* Improve Collage Gallery block tests [#1708](https://github.com/godaddy-wordpress/coblocks/pull/1708)
+* Improve Stacked Gallery block tests [#1709](https://github.com/godaddy-wordpress/coblocks/pull/1709)
+* Migrate icons to use coblocks-icons package [#1682](https://github.com/godaddy-wordpress/coblocks/pull/1682)
+* Resolve errors around icon imports [#1686](https://github.com/godaddy-wordpress/coblocks/pull/1686)
+* Resolve PHPCS errors [#1685](https://github.com/godaddy-wordpress/coblocks/pull/1685)
+* Update coblocks-icon package to 1.2.0 [#1684](https://github.com/godaddy-wordpress/coblocks/pull/1684)

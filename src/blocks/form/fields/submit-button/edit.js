@@ -104,7 +104,7 @@ class CoBlocksSubmitButton extends Component {
 						onChange={ ( nextValue ) => setAttributes( { submitButtonText: nextValue } ) }
 						className={ this.getButtonClasses() }
 						style={ buttonStyle }
-						formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
+						allowedFormats={ [ 'bold', 'italic', 'strikethrough' ] }
 						keepPlaceholderOnFocus
 					/>
 				</div>

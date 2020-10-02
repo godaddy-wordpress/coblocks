@@ -6,8 +6,8 @@ export const animationTypes = [
 		label: __( 'Fade in', 'coblocks' ),
 	},
 	{
-		className: 'scaleIn',
-		label: __( 'Scale in', 'coblocks' ),
+		className: 'zoomIn',
+		label: __( 'Zoom in', 'coblocks' ),
 	},
 	{
 		className: 'slideInLeft',
@@ -19,7 +19,7 @@ export const animationTypes = [
 	},
 	{
 		className: 'slideInBottom',
-		label: __( 'Slide in from the bottom', 'coblocks' ),
+		label: __( 'Slide in from bottom', 'coblocks' ),
 	},
 	{
 		className: 'clipHorizontal',
