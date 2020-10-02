@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-10-02T16:43:32+00:00\n"
+"POT-Creation-Date: 2020-10-02T20:32:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -240,6 +240,10 @@ msgstr ""
 msgid "Setting use to disable or enable gradient controls and presets across the site."
 msgstr ""
 
+#: includes/class-coblocks-settings.php:161
+msgid "Setting use to disable or enable animation controls across the site."
+msgstr ""
+
 #: src/blocks/events/index.php:122
 msgid "An error has occurred, check for calendar privileges to make sure it is public or try again later."
 msgstr ""
@@ -431,7 +435,7 @@ msgstr ""
 #: src/blocks/share/inspector.js:200
 #: src/blocks/social-profiles/inspector.js:212
 #: src/components/form-label-colors/label-color-control.js:36
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:158
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:163
 #: src/extensions/colors/index.js:59
 msgid "Color settings"
 msgstr ""
@@ -7598,45 +7602,53 @@ msgstr ""
 msgid "3D"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:125
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:130
 #: src/extensions/coblocks-settings/index.js:44
 msgid "Editor settings"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:137
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:142
 msgid "Layout selector"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:138
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:143
 msgid "Allow layout selection on new pages."
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:148
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:153
 msgid "Typography controls"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:149
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:154
 msgid "Allow block-level typography controls."
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:159
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:164
 msgid "Allow color settings throughout the editor."
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:169
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:174
 msgid "Custom color pickers"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:170
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:175
 msgid "Allow styling with custom colors."
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:181
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:186
 msgid "Gradient styles"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:182
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:187
 msgid "Allow styling with gradient fills."
+msgstr ""
+
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:197
+msgid "Animation controls"
+msgstr ""
+
+#: src/extensions/coblocks-settings/coblocks-settings-modal.js:198
+msgid "Allow animations to be used on blocks."
 msgstr ""
 
 #. translators: block style
