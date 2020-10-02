@@ -107,8 +107,13 @@ class CoBlocksSettingsModal extends Component {
 		setTypography();
 	}
 
+	updateAnimationControlsSetting() {
+		const { setAnimation } = this.props;
+		setAnimation();
+	}
+
 	render() {
-		const { isOpen, closeModal, typography, customColors, gradientControls, getSettings, colorPanel, layoutSelector } = this.props;
+		const { isOpen, closeModal, typography, animation, customColors, gradientControls, getSettings, colorPanel, layoutSelector } = this.props;
 
 		if ( ! isOpen ) {
 			return null;
@@ -186,6 +191,16 @@ class CoBlocksSettingsModal extends Component {
 							</CoBlocksSettingsModalControls>
 						}
 
+						<CoBlocksSettingsModalControls>
+							<HorizontalRule />
+							<CheckboxControl
+								label={ __( 'Animation controls', 'coblocks' ) }
+								help={ __( 'Allow animations to be used on blocks.', 'coblocks' ) }
+								onChange={ () => this.updateAnimationControlsSetting() }
+								checked={ !! animation }
+							/>
+						</CoBlocksSettingsModalControls>
+
 						{ settings && settings.map( ( Control, index ) => (
 							<CoBlocksSettingsModalControls key={ `modal-control-${ index }` }>
 								<HorizontalRule />
@@ -202,10 +217,11 @@ class CoBlocksSettingsModal extends Component {
 }
 
 const applyWithSelect = withSelect( () => {
-	const { getTypography, getCustomColors, getGradients, getColorPanel, getLayoutSelector } = select( 'coblocks-settings' );
+	const { getAnimation, getTypography, getCustomColors, getGradients, getColorPanel, getLayoutSelector } = select( 'coblocks-settings' );
 	const { getSettings } = select( 'core/block-editor' );
 
 	return {
+		animation: getAnimation(),
 		typography: getTypography(),
 		customColors: getCustomColors(),
 		gradientControls: getGradients(),
@@ -216,15 +232,23 @@ const applyWithSelect = withSelect( () => {
 } );
 
 const applyWithDispatch = withDispatch( ( dispatch ) => {
-	const { setTypography, setCustomColors, setGradients, setColorPanel, setLayoutSelector } = dispatch( 'coblocks-settings' );
+	const { 
+		setAnimation,
+		setColorPanel, 
+		setCustomColors, 
+		setGradients, 
+		setLayoutSelector, 
+		setTypography,
+	} = dispatch( 'coblocks-settings' );
 	const { updateSettings } = dispatch( 'core/block-editor' );
 
 	return {
+		setAnimation,
 		setColorPanel,
 		setCustomColors,
-		setTypography,
-		setLayoutSelector,
 		setGradients,
+		setLayoutSelector,
+		setTypography,
 		updateSettings,
 	};
 } );

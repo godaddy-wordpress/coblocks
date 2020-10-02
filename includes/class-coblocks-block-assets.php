@@ -173,6 +173,14 @@ class CoBlocks_Block_Assets {
 		$typography_controls_enabled = (bool) apply_filters( 'coblocks_typography_controls_enabled', true, (int) $post_id );
 
 		/**
+		 * Filter to disable the animation controls
+		 *
+		 * @param bool    true Whether or not the controls are enabled.
+		 * @param integer $post_id Current post ID.
+		 */
+		$animation_controls_enabled = (bool) apply_filters( 'coblocks_animation_controls_enabled', true, (int) $post_id );
+
+		/**
 		 * Filter to disable all bundled CoBlocks svg icons
 		 *
 		 * @param bool true Whether or not the bundled icons are displayed.
@@ -198,6 +206,7 @@ class CoBlocks_Block_Assets {
 				'customIcons'                    => $this->get_custom_icons(),
 				'customIconConfigExists'         => file_exists( get_stylesheet_directory() . '/coblocks/icons/config.json' ),
 				'typographyControlsEnabled'      => $typography_controls_enabled,
+				'animationControlsEnabled'       => $animation_controls_enabled,
 			)
 		);
 

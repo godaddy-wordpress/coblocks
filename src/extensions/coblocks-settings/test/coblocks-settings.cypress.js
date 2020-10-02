@@ -41,6 +41,23 @@ describe( 'Extension: CoBlocks Settings', function() {
 	} );
 
 	/**
+	 * Test that the CoBlocks panel animation controls function as expected.
+	 */
+	it( 'Can control animation settings as expected.', function() {
+		helpers.addBlockToPost( 'core/cover', true );
+
+		cy.get( '.edit-post-more-menu' ).click();
+		cy.get( '.components-menu-group' ).find( 'button' ).contains( 'Editor settings' ).click();
+
+		// Animation Test
+		cy.get( '.components-coblocks-animation-toggle' ).should( 'exist' );
+		cy.get( '.coblocks-modal__content' ).contains( 'Animation controls' ).click();
+		cy.get( '.components-coblocks-animation-toggle' ).should( 'not.exist' );
+
+		cy.get( '.components-modal__header' ).find( 'button[aria-label="Close dialog"]' ).click();
+	} );
+
+	/**
 	 * Test that the CoBlocks panel colors controls function as expected.
 	 */
 	it( 'Can control color settings as expected.', function() {

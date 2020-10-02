@@ -121,7 +121,13 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 		clearBlocks();
 	}
 
-	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click();
+	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).then( ( inserterButton ) => {
+		if ( ! Cypress.$( inserterButton ).hasClass( 'is-pressed' ) ) {
+			cy.get( inserterButton ).click();
+		}
+	} );
+
+	cy.get( '.block-editor-inserter__search' ).find( 'input' ).clear();
 	cy.get( '.block-editor-inserter__search' ).click().type(
 		blockID.split( '-' )[ 0 ]
 	);
