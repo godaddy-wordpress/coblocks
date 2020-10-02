@@ -44,7 +44,7 @@ export default function createCoBlocksStore() {
 		getCustomColors( ) {
 			return settings.customColors;
 		},
-		getGradients() {
+		getGradients( ) {
 			return settings.gradients;
 		},
 		getTypography( ) {
@@ -53,7 +53,7 @@ export default function createCoBlocksStore() {
 		getAnimation( ) {
 			return settings.animation;
 		},
-		getColorPanel() {
+		getColorPanel( ) {
 			return settings.colorsPanel;
 		},
 	};

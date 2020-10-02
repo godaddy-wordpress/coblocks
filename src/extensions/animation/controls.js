@@ -27,6 +27,7 @@ import {
 	Tip
 } from '@wordpress/components';
 import { check } from '@wordpress/icons';
+import { withSelect } from '@wordpress/data';
 
 function PreviewAnimationPopover( { hoveredAnimation, selected } ) {
 	if ( ! hoveredAnimation ) return null;
@@ -87,6 +88,10 @@ class Controls extends Component {
 	};
 
 	render() {
+		if ( ! this.props.animationEnabled ) {
+			return null;
+		}
+
 		const {
 			attributes: { animation },
 			selected
@@ -148,4 +153,10 @@ class Controls extends Component {
 	}
 }
 
-export default Controls;
+export default withSelect( (select) => {
+	const { getAnimation } = select( 'coblocks-settings' );
+
+	return {
+		animationEnabled: getAnimation(),
+	};
+} )( Controls );
