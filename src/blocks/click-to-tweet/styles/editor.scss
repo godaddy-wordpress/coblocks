@@ -30,19 +30,19 @@
 
 	&__via-label {
 		align-items: center;
+		bottom: 0;
 		display: flex;
 		flex-basis: 0;
 		font-size: 12px;
-		top: 0;
-		bottom: 0;
 		padding: 0 10px;
 		position: absolute;
+		top: 0;
 		white-space: nowrap;
 	}
 
 	&__via-wrapper {
-		position: relative;
 		align-self: center;
+		position: relative;
 	}
 
 	//Top toolbar styling for the Twitter username field

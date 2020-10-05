@@ -26,8 +26,8 @@
 			border-radius: $radius-block-ui + 2; // Additional because we modify the selected state.
 
 			&::after {
-				box-shadow: inset 0 0 0 $border-width + 1 var(--wp-admin-theme-color, #007cba), inset 0 0 0 3px $white;
 				border-radius: $radius-block-ui + 2;
+				box-shadow: inset 0 0 0 $border-width + 1 var(--wp-admin-theme-color, #007cba), inset 0 0 0 3px $white;
 			}
 		}
 
@@ -107,7 +107,7 @@
 		margin-bottom: 34px;
 	}
 
-	.wp-block-coblocks-gallery-masonry ul{
+	.wp-block-coblocks-gallery-masonry ul {
 		margin: 0;
 	}
 }

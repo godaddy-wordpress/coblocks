@@ -13,8 +13,8 @@
 			margin-right: initial;
 			margin-top: initial;
 			padding: calc(2 * var(--coblocks-spacing--3, map-get($spacing, 3)));
-			width: initial;
 			right: 1px;
+			width: initial;
 		}
 
 		@include break-large() {
@@ -23,8 +23,8 @@
 	}
 
 	&.has-media-on-the-right .wp-block-media-text__content {
-		margin-top: initial;
 		margin-bottom: calc(-1 * var(--coblocks-spacing--8, map-get($spacing, 8)));
+		margin-top: initial;
 
 		@include break-small() {
 			margin-bottom: 0;
@@ -35,15 +35,15 @@
 .wp-block-media-text.is-style-overlap {
 
 	.wp-block-media-text__content {
-		margin-top: calc(-1 * var(--coblocks-spacing--4, map-get($spacing, 4)));
 		margin-left: auto;
 		margin-right: auto;
+		margin-top: calc(-1 * var(--coblocks-spacing--4, map-get($spacing, 4)));
 		width: 90%;
 
 		@include break-small() {
-			margin-top: initial;
 			margin-left: initial;
 			margin-right: initial;
+			margin-top: initial;
 			width: auto;
 		}
 
@@ -168,16 +168,16 @@
 
 		&.is-selected .wp-block-media-text__media::after {
 			background: var(--wp-admin-theme-color, #007cba);
-			border-radius: 50%;
 			border: 2px solid $white;
+			border-radius: 50%;
 			bottom: -7px;
 			content: "";
 			cursor: inherit;
 			display: block;
 			height: 15px;
 			position: absolute;
-			width: 15px;
 			right: -8px;
+			width: 15px;
 			z-index: 9999;
 		}
 

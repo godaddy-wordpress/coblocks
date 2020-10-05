@@ -122,6 +122,7 @@
 		"sass-loader": "^8.0.0",
 		"slick-carousel": "^1.8.1",
 		"style-loader": "^0.19.1",
+		"stylelint-order": "4.1.0",
 		"webpack-fix-style-only-entries": "^0.4.0"
 	},
 	"husky": {
@@ -130,6 +131,9 @@
 		}
 	},
 	"lint-staged": {
+		"*.scss": [
+			"stylelint src/**/*.scss --fix"
+		],
 		"*.js": [
 			"jest --config .dev/tests/jest/jest.config.js --silent --findRelatedTests"
 		]

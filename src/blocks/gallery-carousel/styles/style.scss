@@ -2,8 +2,8 @@
 
 	&,
 	.coblocks-gallery {
-		position: relative;
 		overflow: hidden;
+		position: relative;
 	}
 
 	.coblocks-gallery--figure {
@@ -27,7 +27,6 @@
 		cursor: pointer;
 		display: flex;
 		height: auto;
-		width: auto;
 		margin: 0 1%;
 		padding: 15px;
 		position: absolute;
@@ -35,6 +34,7 @@
 		top: 50%;
 		transform: translateY(-50%);
 		transition: 250ms background-color linear;
+		width: auto;
 		z-index: 3;
 
 		&:hover {
@@ -60,13 +60,13 @@
 		}
 
 		&::after {
-			display: block;
-			content: "";
 			background-color: $white;
+			content: "";
+			display: block;
 			height: 28px;
+			mask-repeat: no-repeat;
 			position: relative;
 			width: 28px;
-			mask-repeat: no-repeat;
 
 			@include break-large() {
 				height: 32px;
@@ -80,22 +80,22 @@
 			width: 62px;
 
 			&::after {
-				width: 32px;
 				height: 32px;
 				left: -1px;
 				mask-image: url(images/lightbox/arrow-left.svg);
+				width: 32px;
 			}
 		}
 
 		&.next {
-			width: 62px;
 			height: 62px;
+			width: 62px;
 
 			&::after {
-				width: 32px;
 				height: 32px;
 				mask-image: url(images/lightbox/arrow-right.svg);
 				right: -1px;
+				width: 32px;
 			}
 		}
 
@@ -103,15 +103,15 @@
 		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 
 			&.previous::after {
+				background-color: transparent !important;
 				background-image: url(images/lightbox/arrow-left.svg);
 				color: transparent !important;
-				background-color: transparent !important;
 			}
 
 			&.next::after {
+				background-color: transparent !important;
 				background-image: url(images/lightbox/arrow-right.svg);
 				color: transparent !important;
-				background-color: transparent !important;
 
 			}
 		}
