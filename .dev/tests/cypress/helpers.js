@@ -7,12 +7,15 @@ import { startCase } from 'lodash';
  * Internal dependencies.
  */
 import coblocksLayoutSelector from '../../../src/extensions/layout-selector/test/cypress-layouts';
+import {
+	insertBlock,
+} from './e2e-test-utils';
 
 /**
  * Close layout selector.
  */
 export function closeLayoutSelector() {
-	cy.get( '.coblocks-layout-selector-modal' ).its( 'length' ).then( layoutSelectorModal => {
+	cy.get( '.coblocks-layout-selector-modal' ).its( 'length' ).then( ( layoutSelectorModal ) => {
 		if ( layoutSelectorModal > 0 ) {
 			cy.get( '.coblocks-layout-selector-modal' )
 				.find( '.components-button[aria-label="Close dialog"]' ).first()
@@ -110,27 +113,11 @@ export function disableGutenbergFeatures() {
  * @param {boolean} clearEditor Should clear editor of all blocks
  */
 export function addBlockToPost( blockName, clearEditor = false ) {
-	const blockCategory = blockName.split( '/' )[ 0 ] || false;
-	const blockID = blockName.split( '/' )[ 1 ] || false;
-
-	if ( ! blockCategory || ! blockID ) {
-		return;
-	}
-
 	if ( clearEditor ) {
 		clearBlocks();
 	}
 
-	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click();
-	cy.get( '.block-editor-inserter__search' ).click().type(
-		blockID.split( '-' )[ 0 ]
-	);
-
-	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
-	cy.get( '.block-editor-inserter__block-list .editor-block-list-item' + targetClassName ).first().click();
-
-	// Make sure the block was added to our page
-	cy.get( `[data-type="${ blockName }"]` ).should( 'exist' );
+	insertBlock( blockName );
 }
 
 /**
