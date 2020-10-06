@@ -39,7 +39,7 @@ function PreviewImageFilterPopover( { hoveredFilter } ) {
 		<div className="block-editor-block-switcher__popover__preview__parent">
 			<div className="block-editor-block-switcher__popover__preview__container">
 				<Popover
-					className="block-editor-block-switcher__preview__popover"
+					className="block-editor-block-switcher__preview__popover coblocks-image-filter-popover"
 					position="bottom right"
 					focusOnMount={ false }
 				>
@@ -156,7 +156,6 @@ class MediaFilterControl extends Component {
 					hasArrowIndicator
 					icon={ <Icon icon={ FilterMainIcon } /> }
 					label={ __( 'Apply filter', 'coblocks' ) }
-					className="components-coblocks-media-filter"
 					className={ classnames( 'components-coblocks-media-filter', ( 'none' !== filter ) ? 'has-filter' : '' ) }
 					noIcons
 				>
