@@ -2,6 +2,7 @@
  * External dependencies
  */
 import _ from 'lodash';
+import classnames from 'classnames';
 import {
 	FilterDarkIcon,
 	FilterGrayscaleIcon,
@@ -82,14 +83,16 @@ class MediaFilterControl extends Component {
 			filter,
 		} = attributes;
 
-		const { hoveredFilter } = this.state;
+		const {
+			hoveredFilter
+		} = this.state;
 
 		const filterControls = [
 			{
 				icon: <Icon icon={ FilterNoneIcon } />,
 				/* translators: image style */
 				title: __( 'Original', 'coblocks' ),
-				slug: 'original',
+				slug: 'none',
 				onClick: () => {
 					setAttributes( { filter: 'none' } );
 				},
@@ -154,6 +157,8 @@ class MediaFilterControl extends Component {
 					icon={ <Icon icon={ FilterMainIcon } /> }
 					label={ __( 'Apply filter', 'coblocks' ) }
 					className="components-coblocks-media-filter"
+					className={ classnames( 'components-coblocks-media-filter', ( 'none' !== filter ) ? 'has-filter' : '' ) }
+					noIcons
 				>
 				{ () => (
 						<Fragment>
