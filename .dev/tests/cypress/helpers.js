@@ -178,11 +178,7 @@ export function viewPage() {
 		}
 	} );
 
-	cy.get( 'button[data-label="Document"]' ).then( ( documentButton ) => {
-		if ( ! Cypress.$( documentButton ).hasClass( 'is-active' ) ) {
-			cy.get( documentButton ).click();
-		}
-	} );
+	cy.wait( 100 );
 
 	openSettingsPanel( /permalink/i );
 
