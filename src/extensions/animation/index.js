@@ -17,7 +17,10 @@ import { addFilter } from '@wordpress/hooks';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
 const allowedBlocks = [
+	'coblocks/gallery-carousel',
+	'core/columns',
 	'core/cover',
+	'core/group',
 	'core/image'
 ];
 
