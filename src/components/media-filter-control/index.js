@@ -27,10 +27,10 @@ import {
 	Icon,
 } from '@wordpress/components';
 
-function PreviewImageFilterPopover( { hoveredFilter, selected } ) {
+function PreviewImageFilterPopover( { hoveredFilter } ) {
 	if ( ! hoveredFilter ) return null;
 
-	const block = _.cloneDeep( selected );
+	const block = _.cloneDeep( wp.data.select( 'core/block-editor' ).getSelectedBlock() );
 
 	block.attributes.filter = hoveredFilter;
 
@@ -76,7 +76,6 @@ class MediaFilterControl extends Component {
 		const {
 			attributes,
 			setAttributes,
-			selected,
 		} = this.props;
 
 		const {
@@ -156,22 +155,22 @@ class MediaFilterControl extends Component {
 					label={ __( 'Apply filter', 'coblocks' ) }
 					className="components-coblocks-media-filter"
 				>
-				{ ( { onClose } ) => (
+				{ () => (
 						<Fragment>
 							<MenuGroup>
-								<PreviewImageFilterPopover hoveredFilter={ hoveredFilter } selected={ selected } />
+								<PreviewImageFilterPopover hoveredFilter={ hoveredFilter } />
 								{
-									filterControls.map( ( filter ) => (
+									filterControls.map( ( imageFilter ) => (
 										<MenuItem
 											role="menuitemradio"
-											label={ filter.title }
-											onClick={ filter.onClick }
-											onMouseEnter={ () => this.onChangeHoveredFilter( filter.slug ) }
+											label={ imageFilter.title }
+											onClick={ imageFilter.onClick }
+											onMouseEnter={ () => this.onChangeHoveredFilter( imageFilter.slug ) }
 											onMouseLeave={ () => this.onChangeHoveredFilter( null ) }
-											isSelected={ filter === filter.slug }
-											icon={ filter.icon }
-											key={ `coblocks-image-filter-${ filter.slug }` }>
-											{ filter.title }
+											isSelected={ filter === imageFilter.slug }
+											icon={ imageFilter.icon }
+											key={ `coblocks-image-filter-${ imageFilter.slug }` }>
+											{ imageFilter.title }
 										</MenuItem>
 									) )
 								}
