@@ -22,11 +22,8 @@ import {
 	DropdownMenu,
 	Icon,
 } from '@wordpress/components';
-
 import { addFilter } from '@wordpress/hooks';
-
 import { createHigherOrderComponent } from '@wordpress/compose';
-
 import { BlockControls } from '@wordpress/block-editor';
 
 const allowedBlocks = [
