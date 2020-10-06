@@ -22,7 +22,7 @@ function GalleryTransforms( props ) {
 		filter: props.filter,
 		fontSize: props.fontSize,
 		gridSize: props.gridSize,
-		gutter: props.gutter,
+		// gutter: props.gutter, // Disabled while gallery blocks use multiple gutter controls.
 		gutterMobile: props.gutterMobile,
 		height: props.height,
 		images: props.images.map( ( image, index ) => {
@@ -40,7 +40,6 @@ function GalleryTransforms( props ) {
 		noBottomMargin: props.noBottomMargin,
 		noTopMargin: props.noTopMargin,
 	};
-
 	return transforms;
 }
 
