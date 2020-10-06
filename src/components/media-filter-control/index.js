@@ -77,6 +77,7 @@ class MediaFilterControl extends Component {
 		const {
 			attributes,
 			setAttributes,
+			selected,
 		} = this.props;
 
 		const {
