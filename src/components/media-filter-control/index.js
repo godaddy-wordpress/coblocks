@@ -88,6 +88,10 @@ class MediaFilterControl extends Component {
 			hoveredFilter
 		} = this.state;
 
+		const POPOVER_PROPS = {
+			className: 'components-coblocks-dropdown',
+		};
+
 		const filterControls = [
 			{
 				icon: <Icon icon={ FilterNoneIcon } />,
@@ -154,9 +158,9 @@ class MediaFilterControl extends Component {
 		return (
 			<Toolbar>
 				<DropdownMenu
-					hasArrowIndicator
 					icon={ <Icon icon={ FilterMainIcon } /> }
 					label={ __( 'Apply filter', 'coblocks' ) }
+					popoverProps={ POPOVER_PROPS }
 					className={ classnames( 'components-coblocks-media-filter', ( 'none' !== filter ) ? 'has-filter' : '' ) }
 					noIcons
 				>
