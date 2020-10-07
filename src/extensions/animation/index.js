@@ -12,13 +12,14 @@ import classnames from 'classnames';
 /**
  * WordPress Dependencies
  */
+import { useEffect, useRef } from '@wordpress/element';
 import { withSelect } from '@wordpress/data';
 import { addFilter } from '@wordpress/hooks';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
 const allowedBlocks = [
 	'core/cover',
-	'core/image'
+	'core/image',
 ];
 
 const animateClass = 'coblocks-animate';
@@ -84,7 +85,6 @@ addFilter(
  * @return {Object} Filtered props applied to save element.
  */
 function applyAnimationSettings( extraProps, blockType, attributes ) {
-
 	if ( ! allowedBlocks.includes( blockType.name ) ) {
 		return extraProps;
 	}
@@ -135,9 +135,20 @@ const withAnimationSettings = createHigherOrderComponent( ( BlockListBlock ) => 
 
 		const { animation } = block.attributes;
 
+		// Apply animation classes to block wrapper only if the animation attribute has changed.
+		const prevAnimation = useRef();
+		useEffect( () => {
+			prevAnimation.current = animation;
+		}, [ animation ] );
+
+		const didNotAnimate = prevAnimation.current !== animation;
+
 		wrapperProps = {
 			...wrapperProps,
-			className: classnames( wrapperProps.className, animateClass, animation ),
+			className: classnames( wrapperProps.className, {
+				[ animateClass ]: didNotAnimate,
+				[ animation ]: didNotAnimate,
+			} ),
 		};
 
 		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
