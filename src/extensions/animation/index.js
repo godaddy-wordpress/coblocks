@@ -12,7 +12,7 @@ import classnames from 'classnames';
 /**
  * WordPress Dependencies
  */
-import { useEffect, useRef } from '@wordpress/element';
+import { useState, useEffect, useRef } from '@wordpress/element';
 import { withSelect } from '@wordpress/data';
 import { addFilter } from '@wordpress/hooks';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
@@ -141,17 +141,33 @@ const withAnimationSettings = createHigherOrderComponent( ( BlockListBlock ) => 
 			prevAnimation.current = animation;
 		}, [ animation ] );
 
-		const didNotAnimate = prevAnimation.current !== animation;
+		const willAnimate = prevAnimation.current !== animation;
+
+		// Hide the Block Toolbar while animations are playing.
+		const [ isAnimating, setIsAnimating ] = useState( false );
 
 		wrapperProps = {
 			...wrapperProps,
 			className: classnames( wrapperProps.className, {
-				[ animateClass ]: didNotAnimate,
-				[ animation ]: didNotAnimate,
+				[ animateClass ]: willAnimate || isAnimating,
+				[ animation ]: willAnimate || isAnimating,
 			} ),
 		};
 
-		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
+		if ( props.isSelected ) {
+			wrapperProps = {
+				...wrapperProps,
+				onAnimationStart: () => setIsAnimating( willAnimate ),
+				onAnimationEnd: () => setIsAnimating( false ),
+			};
+		}
+
+		return (
+			<>
+				<BlockListBlock { ...props } wrapperProps={ wrapperProps } />
+				{ isAnimating && <style dangerouslySetInnerHTML={ { __html: `.block-editor-block-contextual-toolbar, .block-editor-rich-text__inline-format-toolbar { display: none !important; }` } } /> }
+			</>
+		);
 	} );
 }, 'withAnimationSettings' );
 
