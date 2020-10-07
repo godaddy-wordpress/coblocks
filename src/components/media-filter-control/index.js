@@ -2,6 +2,7 @@
  * External dependencies
  */
 import _ from 'lodash';
+import classnames from 'classnames';
 import {
 	FilterDarkIcon,
 	FilterGrayscaleIcon,
@@ -27,10 +28,10 @@ import {
 	Icon,
 } from '@wordpress/components';
 
-function PreviewImageFilterPopover( { hoveredFilter, selected } ) {
+function PreviewImageFilterPopover( { hoveredFilter } ) {
 	if ( ! hoveredFilter ) return null;
 
-	const block = _.cloneDeep( selected );
+	const block = _.cloneDeep( wp.data.select( 'core/block-editor' ).getSelectedBlock() );
 
 	block.attributes.filter = hoveredFilter;
 
@@ -38,7 +39,7 @@ function PreviewImageFilterPopover( { hoveredFilter, selected } ) {
 		<div className="block-editor-block-switcher__popover__preview__parent">
 			<div className="block-editor-block-switcher__popover__preview__container">
 				<Popover
-					className="block-editor-block-switcher__preview__popover"
+					className="block-editor-block-switcher__preview__popover coblocks-image-filter-popover"
 					position="bottom right"
 					focusOnMount={ false }
 				>
@@ -83,14 +84,20 @@ class MediaFilterControl extends Component {
 			filter,
 		} = attributes;
 
-		const { hoveredFilter } = this.state;
+		const {
+			hoveredFilter
+		} = this.state;
+
+		const POPOVER_PROPS = {
+			className: 'components-coblocks-dropdown',
+		};
 
 		const filterControls = [
 			{
 				icon: <Icon icon={ FilterNoneIcon } />,
 				/* translators: image style */
 				title: __( 'Original', 'coblocks' ),
-				slug: 'original',
+				slug: 'none',
 				onClick: () => {
 					setAttributes( { filter: 'none' } );
 				},
@@ -151,27 +158,28 @@ class MediaFilterControl extends Component {
 		return (
 			<Toolbar>
 				<DropdownMenu
-					hasArrowIndicator
 					icon={ <Icon icon={ FilterMainIcon } /> }
 					label={ __( 'Apply filter', 'coblocks' ) }
-					className="components-coblocks-media-filter"
+					popoverProps={ POPOVER_PROPS }
+					className={ classnames( 'components-coblocks-media-filter', ( 'none' !== filter ) ? 'has-filter' : '' ) }
+					noIcons
 				>
-				{ ( { onClose } ) => (
+				{ () => (
 						<Fragment>
 							<MenuGroup>
-								<PreviewImageFilterPopover hoveredFilter={ hoveredFilter } selected={ selected } />
+								<PreviewImageFilterPopover hoveredFilter={ hoveredFilter } />
 								{
-									filterControls.map( ( filter ) => (
+									filterControls.map( ( imageFilter ) => (
 										<MenuItem
 											role="menuitemradio"
-											label={ filter.title }
-											onClick={ filter.onClick }
-											onMouseEnter={ () => this.onChangeHoveredFilter( filter.slug ) }
+											label={ imageFilter.title }
+											onClick={ imageFilter.onClick }
+											onMouseEnter={ () => this.onChangeHoveredFilter( imageFilter.slug ) }
 											onMouseLeave={ () => this.onChangeHoveredFilter( null ) }
-											isSelected={ filter === filter.slug }
-											icon={ filter.icon }
-											key={ `coblocks-image-filter-${ filter.slug }` }>
-											{ filter.title }
+											isSelected={ filter === imageFilter.slug }
+											icon={ imageFilter.icon }
+											key={ `coblocks-image-filter-${ imageFilter.slug }` }>
+											{ imageFilter.title }
 										</MenuItem>
 									) )
 								}
