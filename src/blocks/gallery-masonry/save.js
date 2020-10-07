@@ -15,6 +15,7 @@ import { RichText } from '@wordpress/block-editor';
 
 const save = ( { attributes, className } ) => {
 	const {
+		animation,
 		captions,
 		gridSize,
 		gutter,
@@ -37,6 +38,12 @@ const save = ( { attributes, className } ) => {
 		`has-grid-${ gridSize }`, {
 			[ `has-gutter-${ gutter }` ]: gutter > 0,
 			[ `has-gutter-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+		}
+	);
+
+	const masonryItemClasses = classnames(
+		'coblocks-gallery--item', {
+			[ `coblocks-animate` ]: animation,
 		}
 	);
 
@@ -71,7 +78,7 @@ const save = ( { attributes, className } ) => {
 						const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
 
 						return (
-							<li key={ image.id || image.url } className="coblocks-gallery--item">
+							<li key={ image.id || image.url } className={ masonryItemClasses } data-coblocks-animation={ animation }>
 								<figure className="coblocks-gallery--figure">
 									{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
 									{ captions && image.caption && image.caption.length > 0 && (
