@@ -1,5 +1,3 @@
-/*global coblocksBlockData*/
-
 /**
  * Internal
  */
@@ -24,15 +22,17 @@ import {
 	MenuGroup,
 	Popover,
 	Toolbar,
-	Tip
+	Tip,
 } from '@wordpress/components';
 import { check } from '@wordpress/icons';
 import { withSelect } from '@wordpress/data';
 
 function PreviewAnimationPopover( { hoveredAnimation, selected } ) {
-	if ( ! hoveredAnimation ) return null;
+	if ( ! hoveredAnimation ) {
+		return null;
+	}
 
-	const block = _.cloneDeep(selected);
+	const block = _.cloneDeep( selected );
 
 	block.attributes.animation = hoveredAnimation;
 
@@ -67,14 +67,14 @@ class Controls extends Component {
 		super( ...arguments );
 
 		this.state = {
-			hoveredAnimation: null
+			hoveredAnimation: null,
 		};
 	}
 
-	onChangeHoveredAnimation = (animation) => {
-		this.setState({
-			hoveredAnimation: animation
-		});
+	onChangeHoveredAnimation = ( animation ) => {
+		this.setState( {
+			hoveredAnimation: animation,
+		} );
 	}
 
 	onAnimationClick = ( onClose, animationClass = null ) => {
@@ -94,7 +94,7 @@ class Controls extends Component {
 
 		const {
 			attributes: { animation },
-			selected
+			selected,
 		} = this.props;
 
 		const { hoveredAnimation } = this.state;
@@ -153,7 +153,7 @@ class Controls extends Component {
 	}
 }
 
-export default withSelect( (select) => {
+export default withSelect( ( select ) => {
 	const { getAnimation } = select( 'coblocks-settings' );
 
 	return {
