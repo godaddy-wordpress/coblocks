@@ -36,13 +36,6 @@ const settings = {
 	/* translators: block description */
 	description: __( 'Add an image or video with an offset card side-by-side.', 'coblocks' ),
 	icon: <Icon icon={ icon } />,
-	keywords: [
-		'coblocks',
-		/* translators: block keyword */
-		__( 'image', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'video', 'coblocks' ),
-	],
 	supports: {
 		align: [ 'wide', 'full' ],
 		stackedOnMobile: true,
