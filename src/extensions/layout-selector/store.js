@@ -1,3 +1,4 @@
+/* global coblocksLayoutSelector */
 /**
  * WordPress dependencies
  */
@@ -5,6 +6,8 @@ import { registerStore } from '@wordpress/data';
 
 const DEFAULT_STATE = {
 	templateSelector: false,
+	layouts: coblocksLayoutSelector.layouts || [],
+	categories: coblocksLayoutSelector.categories || [],
 };
 
 const actions = {
@@ -34,6 +37,10 @@ const store = registerStore( 'coblocks/template-selector', {
 
 	selectors: {
 		isTemplateSelectorActive: ( state ) => state.templateSelector || false,
+		hasLayouts: ( state ) => !! state.layouts.length,
+		getLayouts: ( state ) => state.layouts || [],
+		getCategories: ( state ) => state.categories || [],
+		hasCategories: ( state ) => !! state.categories.length,
 	},
 } );
 
