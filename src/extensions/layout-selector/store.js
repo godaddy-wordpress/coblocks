@@ -13,6 +13,8 @@ const DEFAULT_STATE = {
 const actions = {
 	openTemplateSelector: () => ( { type: 'OPEN_TEMPLATE_SELECTOR' } ),
 	closeTemplateSelector: () => ( { type: 'CLOSE_TEMPLATE_SELECTOR' } ),
+	updateLayouts: ( layouts ) => ( { type: 'UPDATE_LAYOUTS', layouts } ),
+	updateCategories: ( categories ) => ( { type: 'UPDATE_CATEGORIES', categories } ),
 };
 
 const store = registerStore( 'coblocks/template-selector', {
@@ -27,6 +29,16 @@ const store = registerStore( 'coblocks/template-selector', {
 				return {
 					...state,
 					templateSelector: false,
+				};
+			case 'UPDATE_LAYOUTS':
+				return {
+					...state,
+					layouts: action.layouts,
+				};
+			case 'UPDATE_CATEGORIES':
+				return {
+					...state,
+					categories: action.categories,
 				};
 		}
 
