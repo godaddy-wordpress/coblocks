@@ -20,9 +20,11 @@
 
 // Apply gallery placeholder styles to gallery blocks.
 [data-type*="coblocks/gallery"] {
+
 	.coblocks-gallery,
 	.coblocks-gallery--item,
 	.components-resizable-box__container {
+
 		~ div .coblocks-gallery--figure.is-appender .components-placeholder__label {
 			display: none; // Gallery has images - hide label div
 		}
@@ -33,8 +35,8 @@
 		padding: 12px;
 
 		.components-placeholder__fieldset .block-editor-media-placeholder__upload-button {
-			margin-right: 0 !important;
 			margin-bottom: 0 !important;
+			margin-right: 0 !important;
 		}
 	}
 }
