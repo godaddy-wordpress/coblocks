@@ -173,7 +173,7 @@ class GalleryMasonryEdit extends Component {
 			}
 		);
 
-		const masonryItemClasses = classnames(
+		const itemClasses = classnames(
 			'coblocks-gallery--item', {
 				[ `coblocks-animate ${ animation }` ]: animation,
 			}
@@ -226,7 +226,7 @@ class GalleryMasonryEdit extends Component {
 								);
 
 								return (
-									<li className={ masonryItemClasses } key={ img.id || img.url }>
+									<li className={ itemClasses } key={ img.id || img.url }>
 										<GalleryImage
 											url={ img.url }
 											alt={ img.alt }

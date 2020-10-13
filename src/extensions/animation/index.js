@@ -24,7 +24,7 @@ const allowedBlocks = [
 	{ blockType: 'coblocks/gallery-stacked', animateChildren: true },
 	{ blockType: 'core/columns', animateChildren: false },
 	{ blockType: 'core/cover', animateChildren: false },
-	{ blockType: 'core/gallery', animateChildren: false }, // true
+	{ blockType: 'core/gallery', animateChildren: false },
 	{ blockType: 'core/group', animateChildren: false },
 	{ blockType: 'core/image', animateChildren: false },
 ];

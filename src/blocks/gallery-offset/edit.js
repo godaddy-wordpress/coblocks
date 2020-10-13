@@ -131,6 +131,7 @@ class Edit extends Component {
 		} = this.props;
 
 		const {
+			animation,
 			captions,
 			images,
 			linkTo,
@@ -167,6 +168,12 @@ class Edit extends Component {
 			}
 		);
 
+		const itemClasses = classnames(
+			'coblocks-gallery--item', {
+				[ `coblocks-animate ${ animation }` ]: animation,
+			}
+		)
+
 		return (
 			<Fragment>
 				<Controls { ...this.props } />
@@ -186,7 +193,7 @@ class Edit extends Component {
 								);
 
 								return (
-									<li className="coblocks-gallery--item" key={ img.id || img.url }>
+									<li className={ itemClasses } key={ img.id || img.url }>
 										<GalleryImage
 											url={ img.url }
 											alt={ img.alt }

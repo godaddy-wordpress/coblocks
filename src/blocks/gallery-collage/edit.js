@@ -230,6 +230,7 @@ class GalleryCollageEdit extends Component {
 		} = this.props;
 
 		const {
+			animation,
 			captions,
 			captionStyle,
 			filter,
@@ -257,7 +258,13 @@ class GalleryCollageEdit extends Component {
 								return (
 									<li
 										key={ `image-${ theIndex }` }
-										className={ classnames( 'wp-block-coblocks-gallery-collage__item', `item-${ index + 1 }` ) }
+										className={ classnames( 
+											'wp-block-coblocks-gallery-collage__item', 
+											`item-${ index + 1 }`,
+											{
+												[ `coblocks-animate ${ animation }` ]: animation,
+											}
+										) }
 									>
 										{ !! img.url ? this.renderImage( theIndex ) : null }
 										{ this.renderPlaceholder( theIndex ) }

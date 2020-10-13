@@ -41,7 +41,7 @@ const save = ( { attributes, className } ) => {
 		}
 	);
 
-	const masonryItemClasses = classnames(
+	const itemClasses = classnames(
 		'coblocks-gallery--item', {
 			[ `coblocks-animate` ]: animation,
 		}
@@ -78,7 +78,7 @@ const save = ( { attributes, className } ) => {
 						const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
 
 						return (
-							<li key={ image.id || image.url } className={ masonryItemClasses } data-coblocks-animation={ animation }>
+							<li key={ image.id || image.url } className={ itemClasses } data-coblocks-animation={ animation }>
 								<figure className="coblocks-gallery--figure">
 									{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
 									{ captions && image.caption && image.caption.length > 0 && (

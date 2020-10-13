@@ -131,6 +131,7 @@ class GalleryStackedEdit extends Component {
 
 		const {
 			align,
+			animation,
 			captions,
 			fullwidth,
 			gutter,
@@ -159,6 +160,12 @@ class GalleryStackedEdit extends Component {
 				[ `has-margin-bottom-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
 		);
+
+		const itemClasses = classnames(
+			'coblocks-gallery--item', {
+				[ `coblocks-animate ${ animation }` ]: animation,
+			}
+		)
 
 		const stackedGalleryPlaceholder = (
 			<Fragment>
@@ -199,7 +206,7 @@ class GalleryStackedEdit extends Component {
 							);
 
 							return (
-								<li className="coblocks-gallery--item" key={ img.id || img.url }>
+								<li className={ itemClasses } key={ img.id || img.url }>
 									<GalleryImage
 										url={ img.url }
 										alt={ img.alt }
