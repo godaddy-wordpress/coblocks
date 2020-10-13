@@ -12,11 +12,13 @@ import classnames from 'classnames';
 /**
  * WordPress Dependencies
  */
+import { useState, useEffect, useRef } from '@wordpress/element';
 import { withSelect } from '@wordpress/data';
 import { addFilter } from '@wordpress/hooks';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
 const allowedBlocks = [
+<<<<<<< HEAD
 	{ blockType: 'coblocks/gallery-carousel', animateChildren: false },
 	{ blockType: 'coblocks/gallery-collage', animateChildren: true },
 	{ blockType: 'coblocks/gallery-masonry', animateChildren: true },
@@ -27,6 +29,13 @@ const allowedBlocks = [
 	{ blockType: 'core/gallery', animateChildren: false },
 	{ blockType: 'core/group', animateChildren: false },
 	{ blockType: 'core/image', animateChildren: false },
+=======
+	'coblocks/gallery-carousel',
+	'core/columns',
+	'core/cover',
+	'core/group',
+	'core/image'
+>>>>>>> master
 ];
 
 const animateClass = 'coblocks-animate';
@@ -92,8 +101,12 @@ addFilter(
  * @return {Object} Filtered props applied to save element.
  */
 function applyAnimationSettings( extraProps, blockType, attributes ) {
+<<<<<<< HEAD
 
 	if ( ! allowedBlocks.some( block => block.blockType === blockType.name && ! block.animateChildren ) ) {
+=======
+	if ( ! allowedBlocks.includes( blockType.name ) ) {
+>>>>>>> master
 		return extraProps;
 	}
 
@@ -143,12 +156,39 @@ const withAnimationSettings = createHigherOrderComponent( ( BlockListBlock ) => 
 
 		const { animation } = block.attributes;
 
+		// Apply animation classes to block wrapper only if the animation attribute has changed.
+		const prevAnimation = useRef();
+		useEffect( () => {
+			prevAnimation.current = animation;
+		}, [ animation ] );
+
+		const willAnimate = prevAnimation.current !== animation;
+
+		// Hide the Block Toolbar while animations are playing.
+		const [ isAnimating, setIsAnimating ] = useState( false );
+
 		wrapperProps = {
 			...wrapperProps,
-			className: classnames( wrapperProps.className, animateClass, animation ),
+			className: classnames( wrapperProps.className, {
+				[ animateClass ]: willAnimate || isAnimating,
+				[ animation ]: willAnimate || isAnimating,
+			} ),
 		};
 
-		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
+		if ( props.isSelected ) {
+			wrapperProps = {
+				...wrapperProps,
+				onAnimationStart: () => setIsAnimating( willAnimate ),
+				onAnimationEnd: () => setIsAnimating( false ),
+			};
+		}
+
+		return (
+			<>
+				<BlockListBlock { ...props } wrapperProps={ wrapperProps } />
+				{ isAnimating && <style dangerouslySetInnerHTML={ { __html: `.block-editor-block-contextual-toolbar, .block-editor-rich-text__inline-format-toolbar { display: none !important; }` } } /> }
+			</>
+		);
 	} );
 }, 'withAnimationSettings' );
 
