@@ -18,7 +18,6 @@ import { addFilter } from '@wordpress/hooks';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
 const allowedBlocks = [
-<<<<<<< HEAD
 	{ blockType: 'coblocks/gallery-carousel', animateChildren: false },
 	{ blockType: 'coblocks/gallery-collage', animateChildren: true },
 	{ blockType: 'coblocks/gallery-masonry', animateChildren: true },
@@ -29,13 +28,6 @@ const allowedBlocks = [
 	{ blockType: 'core/gallery', animateChildren: false },
 	{ blockType: 'core/group', animateChildren: false },
 	{ blockType: 'core/image', animateChildren: false },
-=======
-	'coblocks/gallery-carousel',
-	'core/columns',
-	'core/cover',
-	'core/group',
-	'core/image'
->>>>>>> master
 ];
 
 const animateClass = 'coblocks-animate';
@@ -101,12 +93,8 @@ addFilter(
  * @return {Object} Filtered props applied to save element.
  */
 function applyAnimationSettings( extraProps, blockType, attributes ) {
-<<<<<<< HEAD
 
 	if ( ! allowedBlocks.some( block => block.blockType === blockType.name && ! block.animateChildren ) ) {
-=======
-	if ( ! allowedBlocks.includes( blockType.name ) ) {
->>>>>>> master
 		return extraProps;
 	}
 
