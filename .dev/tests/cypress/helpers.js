@@ -12,7 +12,7 @@ import coblocksLayoutSelector from '../../../src/extensions/layout-selector/test
  * Close layout selector.
  */
 export function closeLayoutSelector() {
-	cy.get( '.coblocks-layout-selector-modal' ).its( 'length' ).then( layoutSelectorModal => {
+	cy.get( '.coblocks-layout-selector-modal' ).its( 'length' ).then( ( layoutSelectorModal ) => {
 		if ( layoutSelectorModal > 0 ) {
 			cy.get( '.coblocks-layout-selector-modal' )
 				.find( '.components-button[aria-label="Close dialog"]' ).first()
@@ -69,7 +69,8 @@ export function loginToSite() {
 export function goTo( path = '/wp-admin' ) {
 	cy.visit( Cypress.env( 'testURL' ) + path );
 	return cy.window().then( ( win ) => {
-		win.coblocksLayoutSelector = coblocksLayoutSelector;
+		win.wp.data.dispatch( 'coblocks/template-selector' ).updateLayouts( coblocksLayoutSelector.layouts );
+		win.wp.data.dispatch( 'coblocks/template-selector' ).updateCategories( coblocksLayoutSelector.categories );
 	} );
 }
 
