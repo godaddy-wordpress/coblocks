@@ -124,7 +124,7 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 		helpers.toggleSettingCheckbox( /captions/i );
 
 		cy.get( '.coblocks-gallery--item' ).first().click()
-			.find( 'figcaption' ).click( { force: true } ).type( caption );
+			.find( 'figcaption' ).focus().type( caption );
 
 		helpers.savePage();
 
