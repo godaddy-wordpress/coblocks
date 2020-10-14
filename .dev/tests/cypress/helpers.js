@@ -48,8 +48,8 @@ export function loginToSite() {
 	goTo( '/wp-admin/post-new.php?post_type=post' )
 		.then( ( window ) => {
 			if ( window.location.pathname === '/wp-login.php' ) {
-				// WordPress has a wp_attempt_focus() function that fires 200ms after the wp-login.php page loads.
-				// We need to wait a short time before trying to login.
+			// WordPress has a wp_attempt_focus() function that fires 200ms after the wp-login.php page loads.
+			// We need to wait a short time before trying to login.
 				cy.wait( 250 );
 
 				cy.get( '#user_login' ).type( Cypress.env( 'wpUsername' ) );
@@ -68,9 +68,14 @@ export function loginToSite() {
  */
 export function goTo( path = '/wp-admin' ) {
 	cy.visit( Cypress.env( 'testURL' ) + path );
+
 	return cy.window().then( ( win ) => {
-		win.wp.data.dispatch( 'coblocks/template-selector' ).updateLayouts( coblocksLayoutSelector.layouts );
-		win.wp.data.dispatch( 'coblocks/template-selector' ).updateCategories( coblocksLayoutSelector.categories );
+		if ( win.location.pathname.includes( 'post-new.php' ) ) {
+			win.coblocksLayoutSelector = coblocksLayoutSelector;
+
+			win.wp.data.dispatch( 'coblocks/template-selector' ).updateLayouts( coblocksLayoutSelector.layouts );
+			win.wp.data.dispatch( 'coblocks/template-selector' ).updateCategories( coblocksLayoutSelector.categories );
+		}
 	} );
 }
 
