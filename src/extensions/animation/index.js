@@ -18,11 +18,16 @@ import { addFilter } from '@wordpress/hooks';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
 const allowedBlocks = [
-	'coblocks/gallery-carousel',
-	'core/columns',
-	'core/cover',
-	'core/group',
-	'core/image'
+	{ blockType: 'coblocks/gallery-carousel', animateChildren: false },
+	{ blockType: 'coblocks/gallery-collage', animateChildren: true },
+	{ blockType: 'coblocks/gallery-masonry', animateChildren: true },
+	{ blockType: 'coblocks/gallery-offset', animateChildren: true },
+	{ blockType: 'coblocks/gallery-stacked', animateChildren: true },
+	{ blockType: 'core/columns', animateChildren: false },
+	{ blockType: 'core/cover', animateChildren: false },
+	{ blockType: 'core/gallery', animateChildren: false },
+	{ blockType: 'core/group', animateChildren: false },
+	{ blockType: 'core/image', animateChildren: false },
 ];
 
 const animateClass = 'coblocks-animate';
@@ -41,7 +46,7 @@ const withControls = createHigherOrderComponent( ( BlockEdit ) => {
 		return (
 			<>
 				<BlockEdit { ...props } />
-				{ props.isSelected && allowedBlocks.includes( props.name ) && <Controls { ...{ ...props, selectedBlock: block } } /> }
+				{ props.isSelected && allowedBlocks.some( block => block.blockType === props.name ) && <Controls { ...{ ...props, selectedBlock: block } } /> }
 			</>
 		);
 	} );
@@ -60,7 +65,7 @@ addFilter(
  * @return {Object} Filtered block settings.
  */
 function addAttributes( settings ) {
-	if ( allowedBlocks.includes( settings.name ) ) {
+	if ( allowedBlocks.some( block => block.blockType === settings.name ) ) {
 		settings.attributes = {
 			...settings.attributes,
 			animation: {
@@ -88,7 +93,8 @@ addFilter(
  * @return {Object} Filtered props applied to save element.
  */
 function applyAnimationSettings( extraProps, blockType, attributes ) {
-	if ( ! allowedBlocks.includes( blockType.name ) ) {
+
+	if ( ! allowedBlocks.some( block => block.blockType === blockType.name && ! block.animateChildren ) ) {
 		return extraProps;
 	}
 
@@ -132,7 +138,7 @@ const withAnimationSettings = createHigherOrderComponent( ( BlockListBlock ) => 
 		const block = select( 'core/block-editor' ).getBlock( props.rootClientId || props.clientId );
 		const blockName	= select( 'core/block-editor' ).getBlockName( props.rootClientId || props.clientId );
 
-		if ( ! allowedBlocks.includes( blockName ) || ! block?.attributes?.animation ) {
+		if ( ! allowedBlocks.some( block => block.blockType === blockName && ! block.animateChildren ) || ! block?.attributes?.animation ) {
 			return <BlockListBlock { ...props } />;
 		}
 

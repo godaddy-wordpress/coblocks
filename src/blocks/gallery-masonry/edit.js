@@ -143,6 +143,7 @@ class GalleryMasonryEdit extends Component {
 
 		const {
 			align,
+			animation,
 			captions,
 			gridSize,
 			gutter,
@@ -171,6 +172,12 @@ class GalleryMasonryEdit extends Component {
 				[ `has-gutter-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
 		);
+
+		const itemClasses = classnames(
+			'coblocks-gallery--item', {
+				[ `coblocks-animate ${ animation }` ]: animation,
+			}
+		)
 
 		const masonryGalleryPlaceholder = (
 			<Fragment>
@@ -219,7 +226,7 @@ class GalleryMasonryEdit extends Component {
 								);
 
 								return (
-									<li className="coblocks-gallery--item" key={ img.id || img.url }>
+									<li className={ itemClasses } key={ img.id || img.url }>
 										<GalleryImage
 											url={ img.url }
 											alt={ img.alt }
