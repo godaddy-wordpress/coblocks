@@ -172,6 +172,7 @@ class LayoutSelector extends Component {
 				case 'core/cover': {
 					return { [ clientId ]: pick( blockAttributes, [ 'id', 'url' ] ) };
 				}
+				case 'coblocks/logos':
 				case 'coblocks/gallery-carousel':
 				case 'coblocks/gallery-collage':
 				case 'coblocks/gallery-masonry':
