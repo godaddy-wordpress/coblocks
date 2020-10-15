@@ -45,7 +45,7 @@ describe( 'Extension: Layout Selector', () => {
 		cy.get( '.coblocks-layout-selector__layout' ).first().click();
 
 		cy.get( '.editor-post-title__block' ).contains( 'About' );
-		cy.get( '.wp-block' ).contains( 'Work With Me' );
+		cy.get( '.wp-block' ).contains( 'Test About Layout' );
 
 		cy.get( `[data-type="core/image"] img[src^="${ Cypress.env( 'testURL' ) }"]` );
 	} );

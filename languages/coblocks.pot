@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-10-13T17:20:59+00:00\n"
+"POT-Creation-Date: 2020-10-15T14:11:13+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -1866,8 +1866,8 @@ msgstr ""
 
 #. translators: %1$d is the order number of the image, %2$d is the total number of images
 #: src/blocks/gallery-carousel/edit.js:308
-#: src/blocks/gallery-masonry/edit.js:216
-#: src/blocks/gallery-stacked/edit.js:196
+#: src/blocks/gallery-masonry/edit.js:223
+#: src/blocks/gallery-stacked/edit.js:203
 msgid "image %1$d of %2$d in gallery"
 msgstr ""
 
@@ -2003,7 +2003,7 @@ msgid "Layered"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gallery-masonry/edit.js:180
+#: src/blocks/gallery-masonry/edit.js:187
 #: src/blocks/gallery-masonry/index.js:35
 msgid "Masonry"
 msgstr ""
@@ -2058,7 +2058,7 @@ msgstr ""
 
 #. translators: block name
 #. translators: block style
-#: src/blocks/gallery-stacked/edit.js:168
+#: src/blocks/gallery-stacked/edit.js:175
 #: src/blocks/gallery-stacked/index.js:35
 #: src/blocks/posts/edit.js:53
 msgid "Stacked"
