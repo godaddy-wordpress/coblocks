@@ -395,7 +395,13 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 	registerPlugin( 'coblocks-layout-selector', {
 		render: compose( [
 			withSelect( ( select ) => {
-				const { isTemplateSelectorActive } = select( 'coblocks/template-selector' );
+				const {
+					isTemplateSelectorActive,
+					hasLayouts,
+					getLayouts,
+					hasCategories,
+					getCategories,
+				} = select( 'coblocks/template-selector' );
 				const {
 					getCurrentPostAttribute,
 					hasEditorUndo,
@@ -412,14 +418,11 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 				const isDraft = [ 'draft' ].indexOf( getCurrentPostAttribute( 'status' ) ) !== -1;
 				const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo() && ! isDraft;
 
-				const layouts = coblocksLayoutSelector.layouts || [];
-				const categories = coblocksLayoutSelector.categories || [];
-
 				return {
 					isActive: isCleanUnpublishedPost || isTemplateSelectorActive(),
-					layoutSelectorEnabled: getLayoutSelector() && !! layouts.length && !! categories.length,
-					layouts,
-					categories,
+					layoutSelectorEnabled: getLayoutSelector() && hasLayouts() && hasCategories(),
+					layouts: getLayouts(),
+					categories: getCategories(),
 					mediaUpload: getSettings().mediaUpload,
 					clientIds: getClientIdsWithDescendants(),
 					getBlockAttributes,
