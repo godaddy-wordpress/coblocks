@@ -114,19 +114,19 @@ describe( 'Test CoBlocks Features Block', function() {
 		helpers.addBlockToPost( 'coblocks/features', true );
 		cy.get( '.wp-block-coblocks-feature h4' ).should( 'exist' );
 
-		cy.get( '.wp-block-coblocks-features' ).click();
+		cy.get( '.wp-block-coblocks-features' ).click( { force: true } );
 		helpers.openHeadingToolbarAndSelect( 2 );
 		cy.get( '.wp-block-coblocks-feature h2' ).should( 'exist' );
 
-		cy.get( '.wp-block-coblocks-features' ).click();
+		cy.get( '.wp-block-coblocks-features' ).click( { force: true } );
 		helpers.openHeadingToolbarAndSelect( 3 );
 		cy.get( '.wp-block-coblocks-feature h3' ).should( 'exist' );
 
-		cy.get( '.wp-block-coblocks-features' ).click();
+		cy.get( '.wp-block-coblocks-features' ).click( { force: true } );
 		helpers.openHeadingToolbarAndSelect( 4 );
 		cy.get( '.wp-block-coblocks-feature h4' ).should( 'exist' );
 
-		cy.get( '.wp-block-coblocks-features' ).click();
+		cy.get( '.wp-block-coblocks-features' ).click( { force: true } );
 		helpers.openHeadingToolbarAndSelect( 5 );
 		cy.get( '.wp-block-coblocks-feature h5' ).should( 'exist' );
 
