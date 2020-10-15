@@ -40,7 +40,7 @@
 					"attribute": "data-index"
 				},
 				"caption": {
-					"type": "array",
+					"type": "string",
 					"source": "children",
 					"selector": "figcaption"
 				}
