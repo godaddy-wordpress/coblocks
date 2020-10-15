@@ -79,7 +79,7 @@ const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
 				autoHeight
 				blocks={
 					layoutBlocks
-						.filter( ( layout ) => registeredBlocks.includes( layout[ 0 ] ) )
+						.filter( ( currentLayout ) => registeredBlocks.includes( currentLayout[ 0 ] ) )
 						.map(
 							( [ name, attributes, innerBlocks = [] ] ) => {
 								return getBlocksFromTemplate( name, attributes, innerBlocks );
@@ -113,12 +113,6 @@ class LayoutSelector extends Component {
 		this.state = {
 			selectedCategory: 'about',
 		};
-
-		this.useTemplateLayout = this.useTemplateLayout.bind( this );
-		this.useEmptyTemplateLayout = this.useEmptyTemplateLayout.bind( this );
-		this.renderContent = this.renderContent.bind( this );
-		this.detectImageBlocks = this.detectImageBlocks.bind( this );
-		this.uploadExternalImages = this.uploadExternalImages.bind( this );
 	}
 
 	componentDidUpdate( prevProps ) {
@@ -127,7 +121,7 @@ class LayoutSelector extends Component {
 		}
 
 		this.detectImageBlocks( this.props.clientIds )
-			.filter( ( block ) => typeof block !== 'undefined' )
+			.filter( ( block ) => !! block )
 			.forEach(
 				( block ) => {
 					const [ clientId, attributes ] = Object.entries( block )[ 0 ];
@@ -136,7 +130,7 @@ class LayoutSelector extends Component {
 			);
 	}
 
-	useEmptyTemplateLayout() {
+	useEmptyTemplateLayout = () => {
 		const {
 			editPost,
 		} = this.props;
@@ -145,7 +139,7 @@ class LayoutSelector extends Component {
 	}
 
 	// Replace any blocks with the selected layout.
-	useTemplateLayout( layout, registeredBlocks ) {
+	useTemplateLayout = ( layout, registeredBlocks ) => {
 		const {
 			editPost,
 		} = this.props;
@@ -156,37 +150,56 @@ class LayoutSelector extends Component {
 
 		editPost( {
 			title: layout.label,
-			blocks: layoutBlocks.filter( ( layout ) => registeredBlocks.includes( layout[ 0 ] ) )
+			blocks: layoutBlocks.filter( ( layoutElem ) => registeredBlocks.includes( layoutElem[ 0 ] ) )
 				.map( ( [ name, attributes, innerBlocks = [] ] ) => {
 					return getBlocksFromTemplate( name, attributes, innerBlocks );
 				} ),
 		} );
 	}
 
-	detectImageBlocks( clientIds ) {
+	detectImageBlocks = ( clientIds ) => {
 		const {
 			getBlockName,
 			getBlockAttributes,
 		} = this.props;
 
-		const imageBlockTypes = [ 'core/image', 'core/cover' ];
-		const galleryBlockTypes = [ 'core/gallery' ];
-
 		return clientIds.map( ( clientId ) => {
 			const blockName = getBlockName( clientId );
 			const blockAttributes = getBlockAttributes( clientId );
 
-			if ( imageBlockTypes.includes( blockName ) ) {
-				return { [ clientId ]: pick( blockAttributes, [ 'id', 'url' ] ) };
+			switch ( blockName ) {
+				case 'core/image':
+				case 'core/cover': {
+					return { [ clientId ]: pick( blockAttributes, [ 'id', 'url' ] ) };
+				}
+				case 'coblocks/gallery-carousel':
+				case 'coblocks/gallery-collage':
+				case 'coblocks/gallery-masonry':
+				case 'coblocks/gallery-offset':
+				case 'coblocks/gallery-stacked':
+				case 'core/gallery' : {
+					return { [ clientId ]: pick( blockAttributes, [ 'ids', 'images' ] ) };
+				}
 			}
 
-			if ( galleryBlockTypes.includes( blockName ) ) {
-				return { [ clientId ]: pick( blockAttributes, [ 'ids', 'images' ] ) };
-			}
+			return null;
 		} );
 	}
 
-	uploadExternalImages( clientId, blockAttributes ) {
+	getUrlsFromBlockAttributes( blockAttributes ) {
+		if (
+			! blockAttributes.hasOwnProperty( 'images' ) &&
+			isExternalImage( blockAttributes.id, blockAttributes.url )
+		) {
+			return [ blockAttributes.url ];
+		}
+
+		return blockAttributes.images.filter( ( image ) =>
+			isExternalImage( image.id, image.url )
+		).map( ( image ) => image.url );
+	}
+
+	uploadExternalImages = ( clientId, blockAttributes ) => {
 		const {
 			createWarningNotice,
 			getBlockAttributes,
@@ -194,15 +207,7 @@ class LayoutSelector extends Component {
 			updateBlockAttributes,
 		} = this.props;
 
-		let urls = [];
-
-		if ( blockAttributes.hasOwnProperty( 'images' ) ) {
-			blockAttributes.images.forEach( ( image ) =>
-				isExternalImage( image.id, image.url ) && urls.push( image.url )
-			);
-		} else if ( isExternalImage( blockAttributes.id, blockAttributes.url ) ) {
-			urls.push( blockAttributes.url );
-		}
+		let urls = this.getUrlsFromBlockAttributes( blockAttributes );
 
 		urls = urls.filter( ( url ) => typeof url !== 'undefined' );
 		if ( ! urls.length ) {
@@ -255,7 +260,7 @@ class LayoutSelector extends Component {
 		return !! this.getLayoutsInCategory( category ).length;
 	}
 
-	renderContent( selectedCategory ) {
+	renderContent = ( selectedCategory ) => {
 		const registeredBlocks = map( wp.blocks.getBlockTypes(), 'name' );
 
 		const foundLayouts = this.getLayoutsInCategory( selectedCategory );
@@ -342,7 +347,7 @@ class LayoutSelector extends Component {
 								closeTemplateSelector();
 							} }
 							isLink>
-							<span><SVG width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><Path d="M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z" ></Path></SVG></span>
+							<span><SVG width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><Path d="M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z" /></SVG></span>
 							{ __( 'Add blank page', 'coblocks' ) }
 						</Button>
 					</aside>
