@@ -120,6 +120,8 @@ class LayoutSelector extends Component {
 			return;
 		}
 
+		console.log('test', this.props.clientIds);
+
 		this.detectImageBlocks( this.props.clientIds )
 			.filter( ( block ) => !! block )
 			.forEach(
@@ -188,7 +190,6 @@ class LayoutSelector extends Component {
 	}
 
 	getUrlsFromBlockAttributes( blockAttributes ) {
-		console.log('test', blockAttributes);
 		switch ( true ) {
 			case isExternalImage( 0, blockAttributes?.imageUrl ): {
 				return [ blockAttributes.imageUrl ];
@@ -230,7 +231,6 @@ class LayoutSelector extends Component {
 						filesList: [ blob ],
 						allowedTypes: [ 'image' ],
 						onFileChange( [ media ] ) {
-							console.log(media, blockAttributes);
 							switch ( true ) {
 								case !! blockAttributes?.imageUrl: {
 									updateBlockAttributes( clientId, {
