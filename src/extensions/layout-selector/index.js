@@ -158,46 +158,53 @@ class LayoutSelector extends Component {
 	}
 
 	detectImageBlocks = ( clientIds ) => {
-		const {
-			getBlockName,
-			getBlockAttributes,
-		} = this.props;
+		const { getBlockAttributes } = this.props;
 
 		return clientIds.map( ( clientId ) => {
-			const blockName = getBlockName( clientId );
 			const blockAttributes = getBlockAttributes( clientId );
 
-			switch ( blockName ) {
-				case 'core/image':
-				case 'core/cover': {
+			switch ( true ) {
+				// For core/image
+				case !! blockAttributes?.url : {
 					return { [ clientId ]: pick( blockAttributes, [ 'id', 'url' ] ) };
 				}
-				case 'coblocks/logos':
-				case 'coblocks/gallery-carousel':
-				case 'coblocks/gallery-collage':
-				case 'coblocks/gallery-masonry':
-				case 'coblocks/gallery-offset':
-				case 'coblocks/gallery-stacked':
-				case 'core/gallery' : {
+				// For coblocks/gallery-*
+				case !! blockAttributes?.images : {
 					return { [ clientId ]: pick( blockAttributes, [ 'ids', 'images' ] ) };
 				}
+				// For coblocks/service
+				case !! blockAttributes?.imageUrl : {
+					return { [ clientId ]: pick( blockAttributes, [ 'imageUrl' ] ) };
+				}
+				// For core/media-text
+				case !! blockAttributes?.mediaUrl && blockAttributes?.mediaType === 'image' : {
+					return { [ clientId ]: pick( blockAttributes, [ 'mediaId', 'mediaUrl' ] ) };
+				}
+				default: {
+					return null;
+				}
 			}
-
-			return null;
 		} );
 	}
 
 	getUrlsFromBlockAttributes( blockAttributes ) {
-		if (
-			! blockAttributes.hasOwnProperty( 'images' ) &&
-			isExternalImage( blockAttributes.id, blockAttributes.url )
-		) {
-			return [ blockAttributes.url ];
+		console.log('test', blockAttributes);
+		switch ( true ) {
+			case isExternalImage( 0, blockAttributes?.imageUrl ): {
+				return [ blockAttributes.imageUrl ];
+			}
+			case isExternalImage( blockAttributes?.id, blockAttributes?.url ): {
+				return [ blockAttributes.url ];
+			}
+			case isExternalImage( blockAttributes?.mediaId, blockAttributes?.mediaUrl ): {
+				return [ blockAttributes.mediaUrl ];
+			}
+			case !! blockAttributes?.images : {
+				return blockAttributes.images.filter( ( image ) =>
+					isExternalImage( image?.id, image?.url )
+				).map( ( image ) => image.url );
+			}
 		}
-
-		return blockAttributes.images.filter( ( image ) =>
-			isExternalImage( image.id, image.url )
-		).map( ( image ) => image.url );
 	}
 
 	uploadExternalImages = ( clientId, blockAttributes ) => {
@@ -223,28 +230,46 @@ class LayoutSelector extends Component {
 						filesList: [ blob ],
 						allowedTypes: [ 'image' ],
 						onFileChange( [ media ] ) {
-							if ( ! blockAttributes.hasOwnProperty( 'images' ) ) {
-								updateBlockAttributes( clientId, {
-									id: media.id,
-									url: media.url,
-								} );
+							console.log(media, blockAttributes);
+							switch ( true ) {
+								case !! blockAttributes?.imageUrl: {
+									updateBlockAttributes( clientId, {
+										imageUrl: media.url,
+									} );
 
-								return;
+									break;
+								}
+								case !! blockAttributes?.url : {
+									updateBlockAttributes( clientId, {
+										id: media.id,
+										url: media.url,
+									} );
+
+									break;
+								}
+								case !! blockAttributes?.mediaUrl : {
+									updateBlockAttributes( clientId, {
+										mediaId: media.id,
+										mediaUrl: media.url,
+									} );
+
+									break;
+								}
+								case !! blockAttributes?.images : {
+									const currentAttributes = getBlockAttributes( clientId );
+
+									const newImages = currentAttributes.images.map( ( oldImage, oldIndex ) => {
+										return oldIndex === index
+											? { ...oldImage, id: media.id, url: media.url }
+											: oldImage;
+									} );
+
+									updateBlockAttributes( clientId, {
+										ids: newImages.map( ( image ) => image.id || null ),
+										images: newImages,
+									} );
+								}
 							}
-
-							// Make sure we have the latest saved attributes for each iteration.
-							const currentAttributes = getBlockAttributes( clientId );
-
-							const newImages = currentAttributes.images.map( ( oldImage, oldIndex ) => {
-								return oldIndex === index
-									? { ...oldImage, id: media.id, url: media.url }
-									: oldImage;
-							} );
-
-							updateBlockAttributes( clientId, {
-								ids: newImages.map( ( image ) => image.id || null ),
-								images: newImages,
-							} );
 						},
 						onError: ( message ) => createWarningNotice( message ),
 					} );
