@@ -10,3 +10,5 @@ console = {
 	info: () => { },
 	error: () => { },
 };
+
+global.coblocksLayoutSelector = { layouts: [], categories: [] };
