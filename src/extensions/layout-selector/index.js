@@ -4,7 +4,7 @@
  */
 import classnames from 'classnames';
 import map from 'lodash/map';
-import { pick } from 'lodash';
+import { pick, difference } from 'lodash';
 
 /**
  * WordPress dependencies
@@ -107,6 +107,8 @@ const SidebarItem = ( { slug, title, isSelected, onClick } ) => {
 };
 
 class LayoutSelector extends Component {
+	#currentClientIds = [];
+
 	constructor() {
 		super( ...arguments );
 
@@ -115,14 +117,10 @@ class LayoutSelector extends Component {
 		};
 	}
 
-	componentDidUpdate( prevProps ) {
-		if ( prevProps.clientIds.length !== 0 ) {
-			return;
-		}
+	componentDidUpdate() {
+		const clientIds = difference( this.props.clientIds, this.#currentClientIds );
 
-		console.log('test', this.props.clientIds);
-
-		this.detectImageBlocks( this.props.clientIds )
+		this.detectImageBlocks( clientIds )
 			.filter( ( block ) => !! block )
 			.forEach(
 				( block ) => {
@@ -130,6 +128,8 @@ class LayoutSelector extends Component {
 					this.uploadExternalImages( clientId, attributes );
 				}
 			);
+
+		this.#currentClientIds = this.props.clientIds;
 	}
 
 	useEmptyTemplateLayout = () => {
