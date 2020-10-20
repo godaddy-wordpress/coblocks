@@ -52,7 +52,7 @@ const getTemplateFromBlocks = ( name, attributes, innerBlocks = [] ) => {
  */
 const isExternalImage = ( id, url ) => url && ! id && ! isBlobURL( url ) && ! url.includes( window.location.host );
 
-const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
+export const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
 	const [ overlay, setOverlay ] = useState( false );
 
 	const filterdLayoutBlocks = applyFilters(
