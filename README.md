@@ -60,8 +60,8 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 
 1. Clone the GitHub repository: `https://github.com/godaddy-wordpress/coblocks.git`
 2. Browse to the folder in the command line.
-3. Run the `npm install` command to install the plugin's dependencies within a /node_modules/ folder.
-4. Run the `npm start` command to compile and watch source files for changes while developing.
+3. Run the `yarn install` command to install the plugin's dependencies within a /node_modules/ folder.
+4. Run the `yarn start` command to compile and watch source files for changes while developing.
 
 Check out the [Getting Started](docs/contributors/getting-started.md) guide for additional development information.
 

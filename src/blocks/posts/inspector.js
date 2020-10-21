@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import OptionSelectorControl from '../../components/option-selector-control';
-import gutterOptions from '../../utils/gutter-options';
+import GutterControl from '../../components/gutter-control/gutter-control';
 
 /**
  * WordPress dependencies
@@ -39,6 +39,7 @@ const Inspector = ( props ) => {
 		postCount,
 		hasPosts,
 		hasFeaturedImage,
+		useUpdatedQueryControls,
 	} = props;
 
 	const {
@@ -53,6 +54,7 @@ const Inspector = ( props ) => {
 		orderBy,
 		postFeedType,
 		postsToShow,
+		categories,
 	} = attributes;
 
 	const isHorizontalStyle = ( 'horizontal' === activeStyle.name );
@@ -177,20 +179,13 @@ const Inspector = ( props ) => {
 					max={ isHorizontalStyle ? Math.min( 2, postCount ) : Math.min( 4, postCount ) }
 					required
 				/>
-				{ attributes.columns >= 2 &&
-					<OptionSelectorControl
-						label={ __( 'Gutter', 'coblocks' ) }
-						currentOption={ attributes.gutter }
-						options={ gutterOptions }
-						onChange={ ( gutter ) => setAttributes( { gutter } ) }
-					/>
-				}
+				{ attributes.columns >= 2 && <GutterControl { ...props } /> }
 				{ hasFeaturedImage &&
 					<OptionSelectorControl
 						label={ __( 'Thumbnail style', 'coblocks' ) }
 						options={ isHorizontalStyle ? imageStyleHorizontalOptions : imageStyleStackedOptions }
 						currentOption={ imageStyle }
-						onChange={ ( imageStyle ) => setAttributes( { imageStyle } ) }
+						onChange={ ( newImageStyle ) => setAttributes( { imageStyle: newImageStyle } ) }
 					/>
 				}
 				{ isHorizontalStyle && hasFeaturedImage &&
@@ -206,6 +201,55 @@ const Inspector = ( props ) => {
 		</PanelBody>
 	);
 
+	const deprecatedQueryControls = (
+		<QueryControls
+			order={ order }
+			orderBy={ orderBy }
+			categoriesList={ categoriesList }
+			selectedCategoryId={ attributes.categories }
+			categorySuggestions={ categoriesList }
+			selectedCategories={ attributes.categories }
+			onOrderChange={ ( value ) => setAttributes( { order: value } ) }
+			onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
+			onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
+		/>
+	);
+
+	const updatedQueryControls = () => {
+		const categorySuggestions = categoriesList.reduce(
+			( accumulator, category ) => ( {
+				...accumulator,
+				[ category.name ]: category,
+			} ),
+			{}
+		);
+
+		const suggestions = categoriesList.reduce(
+			( accumulator, category ) => ( {
+				...accumulator,
+				[ category.name ]: category,
+			} ),
+			{}
+		);
+
+		return ( <QueryControls
+			order={ order }
+			orderBy={ orderBy }
+			categorySuggestions={ categorySuggestions }
+			selectedCategories={ attributes.categories }
+			onOrderChange={ ( value ) => setAttributes( { order: value } ) }
+			onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
+			onCategoryChange={ ( tokens ) => {
+				// Categories that are already will be objects, while new additions will be strings (the name).
+				// allCategories nomalizes the array so that they are all objects.
+				const allCategories = tokens.map( ( token ) =>
+					typeof token === 'string' ? suggestions[ token ] : token
+				);
+				setAttributes( { categories: allCategories } );
+			} }
+		/> );
+	};
+
 	const feedSettings = (
 		<PanelBody title={ __( 'Feed settings', 'coblocks' ) } initialOpen={ ! hasPosts ? true : false }>
 			<RadioControl
@@ -216,20 +260,11 @@ const Inspector = ( props ) => {
 				] }
 				onChange={ ( value ) => setAttributes( { postFeedType: value } ) }
 			/>
-			{ hasPosts
+			{ hasPosts || ( !! categories && categories?.length > 0 )
 				? <Fragment>
 					{ postFeedType === 'internal' &&
-						<QueryControls
-							order={ order }
-							orderBy={ orderBy }
-							categoriesList={ categoriesList }
-							selectedCategoryId={ attributes.categories }
-							categorySuggestions={ categoriesList }
-							selectedCategories={ attributes.categories }
-							onOrderChange={ ( value ) => setAttributes( { order: value } ) }
-							onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
-							onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
-						/>
+						useUpdatedQueryControls ? updatedQueryControls() : deprecatedQueryControls
+
 					}
 					<RangeControl
 						label={ __( 'Number of posts', 'coblocks' ) }

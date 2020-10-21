@@ -10,6 +10,10 @@
 		margin: 1.25rem 0 3px 0;
 	}
 
+	.required-error.hidden {
+		display: none;
+	}
+
 	.coblocks-field,
 	select {
 		margin: 0 0 1.25rem 0;
@@ -29,9 +33,9 @@
 	.coblocks-field {
 
 		input[type="radio"] {
+			display: inline-block;
 			float: left;
 			margin: 5px 5px 0 0;
-			display: inline-block;
 		}
 
 		.coblocks-checkbox-label {
@@ -140,7 +144,6 @@
 
 	.coblocks--inline {
 		display: flex;
-		flex-direction: row;
 		flex-flow: row wrap;
 		margin-bottom: 1.25rem;
 

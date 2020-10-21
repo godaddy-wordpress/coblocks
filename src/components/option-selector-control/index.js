@@ -2,6 +2,8 @@
  * External dependencies.
  */
 import { kebabCase } from 'lodash';
+import { SettingsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import classnames from 'classnames';
 
 /**
  * WordPress dependencies
@@ -14,6 +16,7 @@ import {
 	PanelRow,
 	RangeControl,
 	Tooltip,
+	Icon,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
@@ -53,6 +56,12 @@ const NONE_OPTION = {
 	tooltip: __( 'None', 'coblocks' ),
 };
 
+const CUSTOM_OPTION = {
+	value: 'custom',
+	label: <Icon icon={ icon } />,
+	tooltip: __( 'Custom', 'coblocks' ),
+};
+
 export default class OptionSelectorControl extends Component {
 	render() {
 		const {
@@ -65,12 +74,17 @@ export default class OptionSelectorControl extends Component {
 			showAdvancedControls,
 			showIcons,
 			showNoneOption,
+			showCustomOption,
 		} = this.props;
 
 		let buttons = options || DEFAULT_OPTIONS;
 
 		if ( showNoneOption ) {
 			buttons = [ NONE_OPTION, ...buttons ];
+		}
+
+		if ( showCustomOption ) {
+			buttons = [ ...buttons, CUSTOM_OPTION ];
 		}
 
 		return ( showAdvancedControls && ( advancedMinValue !== false && advancedMaxValue !== false ) ?
@@ -83,7 +97,15 @@ export default class OptionSelectorControl extends Component {
 				max={ advancedMaxValue }
 			/> :
 
-			<BaseControl id={ `coblocks-option-selector-${ kebabCase( label ) }` } label={ label }>
+			<BaseControl
+				id={ `coblocks-option-selector-${ kebabCase( label ) }` }
+				label={ label }
+				className={ classnames(
+					'coblocks-option-selector-control',
+					{
+						'is-custom': currentOption === 'custom',
+					}
+				) }>
 				<PanelRow>
 					<ButtonGroup aria-label={ label }>
 
@@ -93,7 +115,6 @@ export default class OptionSelectorControl extends Component {
 								text={ option.tooltip }>
 
 								<Button
-									isLarge
 									isSecondary={ currentOption !== option.value }
 									isPrimary={ currentOption === option.value }
 									aria-pressed={ currentOption === option.value }

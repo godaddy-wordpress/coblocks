@@ -1,4 +1,5 @@
 .wp-block-coblocks-social {
+
 	&__button {
 
 		&:active {
@@ -18,116 +19,9 @@
 		}
 
 		&:focus {
-			box-shadow: 0 0 0 1px $white, 0 0 0 3px theme(primary) !important;
+			box-shadow: 0 0 0 1px $white, 0 0 0 3px var(--wp-admin-theme-color, #007cba) !important;
 			outline: 2px solid transparent;
 			outline-offset: -2px;
-		}
-	}
-}
-
-.block-editor-block-styles {
-
-	.wp-block-coblocks-social {
-		align-content: center;
-		align-items: center;
-		background: transparent !important;
-		display: flex;
-		height: 100%;
-		justify-content: center;
-		text-align: center !important;
-
-		&.is-style-mask {
-
-			.wp-block-coblocks-social__icon {
-				height: 32px !important;
-				width: 32px !important;
-			}
-		}
-
-		&.is-style-text,
-		&.is-style-icon-and-text {
-
-			.wp-block-coblocks-social__button {
-				width: 61%;
-			}
-		}
-
-		&.is-style-circular {
-
-			.wp-block-coblocks-social__icon {
-				height: 18px !important;
-				width: 18px !important;
-			}
-
-			.wp-block-coblocks-social__button {
-				padding: 14px !important;
-			}
-		}
-
-		ul {
-			margin: 0;
-		}
-
-		li {
-			display: none;
-			margin: 0 !important;
-
-			&:first-child {
-				display: block;
-			}
-
-			&::before,
-			&::after {
-				display: none;
-			}
-		}
-
-		&__text {
-			max-width: 70%;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-		}
-
-		&__button {
-			margin: 0;
-			max-width: 100%;
-			padding-left: 10px;
-			padding-right: 10px;
-			width: 100%;
-
-			&.is-empty {
-				opacity: 1 !important;
-			}
-		}
-	}
-
-	.wp-block-coblocks-social-profiles {
-
-		&.is-style-text,
-		&.is-style-icon-and-text {
-
-			.wp-block-coblocks-social__button {
-				width: 96%;
-			}
-		}
-	}
-
-	// Gutenberg 5.9+ tweaks.
-	[data-type="coblocks/social"] [data-block],
-	[data-type="coblocks/social-profiles"] [data-block] {
-		margin-bottom: 0;
-
-		.wp-block-coblocks-social {
-			margin-top: 10px;
-
-			&.is-style-icon {
-				margin-top: 8px;
-			}
-
-			&.is-style-circular {
-				margin-top: 5px;
-			}
 		}
 	}
 }
@@ -154,7 +48,103 @@
 	}
 }
 
-// Shim to get buttons to display correctly in G 6.3+ only.
-.components-panel__body .block-editor-block-preview__container .wp-block-coblocks-social__button {
-	transform: scale(4.2);
+// Styles to handle style previews for both share and social profiles.
+.components-panel__body {
+
+	.block-editor-block-styles {
+
+		.block-editor-block-preview__container {
+			height: 100% !important;
+
+			.block-editor-block-preview__content {
+				margin-top: 35%;
+
+				.wp-block-coblocks-social {
+					align-content: center;
+					align-items: center;
+					background: transparent !important;
+					display: flex;
+					height: 100%;
+					justify-content: center;
+					text-align: center !important;
+
+					&.is-style-text,
+					&.is-style-icon-and-text {
+
+						&.wp-block-coblocks-social-profiles {
+
+							.wp-block-coblocks-social__button {
+								transform: scale(3);
+							}
+						}
+
+						.wp-block-coblocks-social__button {
+							transform: scale(2);
+						}
+					}
+
+					&.is-style-mask {
+
+						.wp-block-coblocks-social__icon {
+							height: 32px !important;
+							width: 32px !important;
+						}
+					}
+
+					&.is-style-circular {
+
+						.wp-block-coblocks-social__icon {
+							height: 18px !important;
+							width: 18px !important;
+						}
+
+						.wp-block-coblocks-social__button {
+							padding: 14px !important;
+						}
+					}
+
+					.wp-block-coblocks-social__button {
+						transform: scale(4.1);
+					}
+
+					ul {
+						margin: 0;
+					}
+
+					li {
+						display: none;
+						margin: 0 !important;
+
+						&:first-child {
+							display: block;
+						}
+
+						&::before,
+						&::after {
+							display: none;
+						}
+					}
+
+					&__text {
+						max-width: 95%;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+					}
+
+					&__button {
+						margin: 0;
+						max-width: 100%;
+						padding-left: 10px;
+						padding-right: 10px;
+						width: 100%;
+
+						&.is-empty {
+							opacity: 1 !important;
+						}
+					}
+				}
+			}
+		}
+	}
 }

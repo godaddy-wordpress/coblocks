@@ -1,48 +1,11 @@
-.components-coblocks-gallery-item__remove-menu {
-	background-color: theme(primary);
+.coblocks-gallery--item .is-selected .block-library-gallery-item__inline-menu {
 	display: inline-flex;
-	padding: 4px;
-	position: absolute;
-	right: 2px;
-	top: 2px;
-	transition: padding 0.1s linear;
-	z-index: 20;
-
-	svg {
-		position: relative;
-	}
 }
 
-.components-coblocks-gallery-item__move-menu {
-	display: inline-flex;
-	left: 2px;
-	padding: 4px;
-	position: absolute;
-	top: 2px;
-	z-index: 20;
-
-	.components-button {
-		color: transparent;
-	}
-
-	.is-selected & {
-		background-color: theme(primary);
-
-		.components-button {
-			color: $white;
-		}
-
-		.components-button:focus {
-			color: inherit;
-		}
-	}
+.coblocks-gallery--item .is-selected .block-library-gallery-item__inline-menu.is-right .components-button {
+	border-radius: $radius-block-ui;
 }
 
-.coblocks-gallery-item__button {
-	box-shadow: none !important;
-	color: $white !important;
-	height: 24px;
-	padding: 2px !important;
-	width: 24px;
-	min-width: 24px !important;
+.is-visible.block-library-gallery-item__inline-menu {
+	display: inline-flex;
 }

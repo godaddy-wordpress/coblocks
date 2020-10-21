@@ -4,27 +4,52 @@
 import { startCase } from 'lodash';
 
 /**
+ * Internal dependencies.
+ */
+import coblocksLayoutSelector from '../../../src/extensions/layout-selector/test/cypress-layouts';
+
+/**
  * Close layout selector.
  */
 export function closeLayoutSelector() {
-	if ( Cypress.$( '.coblocks-layout-selector-modal' ).length > 0 ) {
-		cy.get( '.coblocks-layout-selector-modal' )
-			.find( '.components-button[aria-label="Close dialog"]' ).first()
-			.click();
-	}
+	cy.get( '.coblocks-layout-selector-modal' ).its( 'length' ).then( ( layoutSelectorModal ) => {
+		if ( layoutSelectorModal > 0 ) {
+			cy.get( '.coblocks-layout-selector-modal' )
+				.find( '.components-button[aria-label="Close dialog"]' ).first()
+				.click();
+		}
+	} );
 
 	cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
+}
+
+/**
+ * Add Form block child element by name.
+ *
+ * @param {string} name the name of the child block to add.
+ */
+export function addFormChild( name ) {
+	cy.get( '[data-type="coblocks/form"]' ).first().click();
+	cy.get( '.block-editor-block-settings-menu' ).click();
+	cy.get( '.components-popover__content' ).contains( /insert after/i ).click();
+	cy.get( '[data-type="coblocks/form"]' ).first().find( '[data-type="core/paragraph"]' ).click();
+
+	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click();
+	cy.get( '.block-editor-inserter__search' ).click().type( name );
+
+	cy.get( '.block-editor-inserter__block-list .editor-block-list-item-coblocks-field-' + name ).first().click();
+	cy.get( `[data-type="coblocks/field-${ name }"]` ).should( 'exist' ).click();
 }
 
 /**
  * Login to our test WordPress site
  */
 export function loginToSite() {
-	goTo( '/wp-admin/post-new.php?post_type=page' )
+	goTo( '/wp-admin/post-new.php?post_type=post' )
 		.then( ( window ) => {
 			if ( window.location.pathname === '/wp-login.php' ) {
-				// WordPress has a wp_attempt_focus() function that fires 200ms after the wp-login.php page loads.
-				// We need to wait a short time before trying to login.
+			// WordPress has a wp_attempt_focus() function that fires 200ms after the wp-login.php page loads.
+			// We need to wait a short time before trying to login.
 				cy.wait( 250 );
 
 				cy.get( '#user_login' ).type( Cypress.env( 'wpUsername' ) );
@@ -42,13 +67,23 @@ export function loginToSite() {
  * @param {string} path The URI path to go to.
  */
 export function goTo( path = '/wp-admin' ) {
-	return cy.visit( Cypress.env( 'testURL' ) + path );
+	cy.visit( Cypress.env( 'testURL' ) + path );
+
+	return cy.window().then( ( win ) => {
+		if ( win.location.pathname.includes( 'post-new.php' ) ) {
+			win.coblocksLayoutSelector = coblocksLayoutSelector;
+
+			win.wp.data.dispatch( 'coblocks/template-selector' ).updateLayouts( coblocksLayoutSelector.layouts );
+			win.wp.data.dispatch( 'coblocks/template-selector' ).updateCategories( coblocksLayoutSelector.categories );
+		}
+	} );
 }
 
 /**
  * Disable Gutenberg Tips
  */
 export function disableGutenbergFeatures() {
+	cy.window().should( 'have.property', 'wp' );
 	cy.window().then( ( win ) => {
 		// Enable "Top Toolbar"
 		if ( ! win.wp.data.select( 'core/edit-post' ).isFeatureActive( 'fixedToolbar' ) ) {
@@ -92,16 +127,22 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 		clearBlocks();
 	}
 
-	cy.get( '.edit-post-header-toolbar' ).find( '.block-editor-inserter__toggle' ).click();
+	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).then( ( inserterButton ) => {
+		if ( ! Cypress.$( inserterButton ).hasClass( 'is-pressed' ) ) {
+			cy.get( inserterButton ).click();
+		}
+	} );
+
+	cy.get( '.block-editor-inserter__search' ).find( 'input' ).clear();
 	cy.get( '.block-editor-inserter__search' ).click().type(
 		blockID.split( '-' )[ 0 ]
 	);
 
 	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
-	cy.get( '.components-panel__body.is-opened .editor-block-list-item' + targetClassName ).first().click();
+	cy.get( '.block-editor-inserter__block-list .editor-block-list-item' + targetClassName ).first().click();
 
 	// Make sure the block was added to our page
-	cy.get( `div[data-type="${ blockName }"]` ).should( 'exist' );
+	cy.get( `[data-type="${ blockName }"]` ).should( 'exist' );
 }
 
 /**
@@ -129,7 +170,7 @@ export function checkForBlockErrors( blockName ) {
 
 		cy.get( '.block-editor-warning' ).should( 'not.exist' );
 
-		cy.get( `div[data-type="${ blockName }"]` ).should( 'exist' );
+		cy.get( `[data-type="${ blockName }"]` ).should( 'exist' );
 	} );
 }
 
@@ -143,11 +184,7 @@ export function viewPage() {
 		}
 	} );
 
-	cy.get( 'button[data-label="Document"]' ).then( ( documentButton ) => {
-		if ( ! Cypress.$( documentButton ).hasClass( 'is-active' ) ) {
-			cy.get( documentButton ).click();
-		}
-	} );
+	cy.wait( 100 );
 
 	openSettingsPanel( /permalink/i );
 
@@ -169,6 +206,7 @@ export function editPage() {
  * Clear all blocks from the editor
  */
 export function clearBlocks() {
+	cy.window().should( 'have.property', 'wp' );
 	cy.window().then( ( win ) => {
 		win.wp.data.dispatch( 'core/block-editor' ).removeBlocks(
 			win.wp.data.select( 'core/block-editor' ).getBlocks().map( ( block ) => block.clientId )
@@ -265,7 +303,7 @@ export const upload = {
 		const { fileName, pathToFixtures } = upload.spec;
 		cy.fixture( pathToFixtures + fileName ).then( ( fileContent ) => {
 			cy.get( `[data-type="${ blockName }"]` )
-				.find( 'input' )
+				.find( 'input[type="file"]' )
 				.first()
 				.invoke( 'removeAttr', 'style' ) //makes element easier to interact with/accessible. Headless test fails without this.
 				.upload(
@@ -376,7 +414,7 @@ export function addCustomBlockClass( classes, blockID = '' ) {
  * Press the Undo button in the header toolbar.
  */
 export function doEditorUndo() {
-	cy.get( '.editor-history__undo' ).click();
+	cy.get( '.editor-history__undo' ).click( { force: true } );
 }
 
 /**
@@ -391,7 +429,7 @@ export function doEditorRedo() {
  */
 export function openEditorSettingsModal() {
 	// Open "more" menu.
-	cy.get( '.edit-post-more-menu' ).find( 'button' ).click();
+	cy.get( '.edit-post-more-menu button' ).click();
 	cy.get( '.components-menu-item__button' ).contains( 'Editor settings' ).click();
 
 	cy.get( '.components-modal__frame' ).contains( 'Editor settings' ).should( 'exist' );

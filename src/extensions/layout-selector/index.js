@@ -5,6 +5,7 @@
 import jQuery from 'jquery';
 import classnames from 'classnames';
 import map from 'lodash/map';
+import { pick } from 'lodash';
 
 /**
  * WordPress dependencies
@@ -14,8 +15,9 @@ import { Component, Fragment, useState } from '@wordpress/element';
 import { registerPlugin } from '@wordpress/plugins';
 import { compose, useResizeObserver } from '@wordpress/compose';
 import { withSelect, withDispatch } from '@wordpress/data';
+import { isBlobURL } from '@wordpress/blob';
 import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem, Disabled } from '@wordpress/components';
-import { createBlock, serialize } from '@wordpress/blocks';
+import { createBlock, rawHandler, serialize } from '@wordpress/blocks';
 
 /**
  * Internal dependencies
@@ -30,7 +32,26 @@ const getBlocksFromTemplate = ( name, attributes, innerBlocks = [] ) => {
 	);
 };
 
-export const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
+const getTemplateFromBlocks = ( name, attributes, innerBlocks = [] ) => {
+	return [ name, attributes,
+		innerBlocks && innerBlocks.map( ( blockObject ) => {
+			return getTemplateFromBlocks( blockObject.name, blockObject.attributes, blockObject.innerBlocks );
+		} ),
+	];
+};
+
+/**
+ * Is the url for the image hosted externally. An externally hosted image has no
+ * id and is not a blob url.
+ *
+ * @param {number=} id  The id of the image.
+ * @param {string=} url The url of the image.
+ *
+ * @return {boolean} Is the url an externally hosted url?
+ */
+const isExternalImage = ( id, url ) => url && ! id && ! isBlobURL( url ) && ! url.includes( window.location.host );
+
+const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
 	const viewportWidth = 700;
 	const [ overlay, setOverlay ] = useState( false );
 
@@ -38,8 +59,12 @@ export const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick }
 	const [ containerHeightResizeListener, { height: containerHeight } ] = useResizeObserver();
 	const scale = containerWidth / viewportWidth;
 
+	const layoutBlocks = layout.blocks || rawHandler( { HTML: layout.postContent } ).map(
+		( blockObject ) => getTemplateFromBlocks( blockObject.name, blockObject.attributes, blockObject.innerBlocks )
+	);
+
 	const layoutHtml = serialize(
-		layout.blocks
+		layoutBlocks
 			.filter( ( layout ) => registeredBlocks.includes( layout[ 0 ] ) )
 			.map(
 				( [ name, attributes, innerBlocks = [] ] ) => {
@@ -60,7 +85,7 @@ export const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick }
 			onMouseLeave={ () => setOverlay( false ) }>
 
 			<div className={ classnames( 'coblocks-layout-selector__layout--overlay', { 'is-active': overlay } ) }>
-				<Button isLarge isPressed>
+				<Button isPressed>
 					{ __( 'Select Layout', 'coblocks' ) }
 				</Button>
 			</div>
@@ -121,6 +146,23 @@ class LayoutSelector extends Component {
 		this.useTemplateLayout = this.useTemplateLayout.bind( this );
 		this.useEmptyTemplateLayout = this.useEmptyTemplateLayout.bind( this );
 		this.renderContent = this.renderContent.bind( this );
+		this.detectImageBlocks = this.detectImageBlocks.bind( this );
+		this.uploadExternalImages = this.uploadExternalImages.bind( this );
+	}
+
+	componentDidUpdate( prevProps ) {
+		if ( prevProps.clientIds.length !== 0 ) {
+			return;
+		}
+
+		this.detectImageBlocks( this.props.clientIds )
+			.filter( ( block ) => typeof block !== 'undefined' )
+			.forEach(
+				( block ) => {
+					const [ clientId, attributes ] = Object.entries( block )[ 0 ];
+					this.uploadExternalImages( clientId, attributes );
+				}
+			);
 	}
 
 	useEmptyTemplateLayout() {
@@ -137,12 +179,100 @@ class LayoutSelector extends Component {
 			editPost,
 		} = this.props;
 
+		const layoutBlocks = layout.blocks || rawHandler( { HTML: layout.postContent } ).map(
+			( blockObject ) => getTemplateFromBlocks( blockObject.name, blockObject.attributes, blockObject.innerBlocks )
+		);
+
 		editPost( {
 			title: layout.label,
-			blocks: layout.blocks.filter( ( layout ) => registeredBlocks.includes( layout[ 0 ] ) )
+			blocks: layoutBlocks.filter( ( layout ) => registeredBlocks.includes( layout[ 0 ] ) )
 				.map( ( [ name, attributes, innerBlocks = [] ] ) => {
 					return getBlocksFromTemplate( name, attributes, innerBlocks );
 				} ),
+		} );
+	}
+
+	detectImageBlocks( clientIds ) {
+		const {
+			getBlockName,
+			getBlockAttributes,
+		} = this.props;
+
+		const imageBlockTypes = [ 'core/image', 'core/cover' ];
+		const galleryBlockTypes = [ 'core/gallery' ];
+
+		return clientIds.map( ( clientId ) => {
+			const blockName = getBlockName( clientId );
+			const blockAttributes = getBlockAttributes( clientId );
+
+			if ( imageBlockTypes.includes( blockName ) ) {
+				return { [ clientId ]: pick( blockAttributes, [ 'id', 'url' ] ) };
+			}
+
+			if ( galleryBlockTypes.includes( blockName ) ) {
+				return { [ clientId ]: pick( blockAttributes, [ 'ids', 'images' ] ) };
+			}
+		} );
+	}
+
+	uploadExternalImages( clientId, blockAttributes ) {
+		const {
+			createWarningNotice,
+			getBlockAttributes,
+			mediaUpload,
+			updateBlockAttributes,
+		} = this.props;
+
+		let urls = [];
+
+		if ( blockAttributes.hasOwnProperty( 'images' ) ) {
+			blockAttributes.images.forEach( ( image ) =>
+				isExternalImage( image.id, image.url ) && urls.push( image.url )
+			);
+		} else if ( isExternalImage( blockAttributes.id, blockAttributes.url ) ) {
+			urls.push( blockAttributes.url );
+		}
+
+		urls = urls.filter( ( url ) => typeof url !== 'undefined' );
+		if ( ! urls.length ) {
+			return;
+		}
+
+		urls.forEach( ( imageUrl, index ) => {
+			window.fetch( imageUrl )
+				.then( ( response ) => response.blob() )
+				.then( ( blob ) => {
+					mediaUpload( {
+						filesList: [ blob ],
+						allowedTypes: [ 'image' ],
+						onFileChange( [ media ] ) {
+							if ( ! blockAttributes.hasOwnProperty( 'images' ) ) {
+								updateBlockAttributes( clientId, {
+									id: media.id,
+									url: media.url,
+								} );
+
+								return;
+							}
+
+							// Make sure we have the latest saved attributes for each iteration.
+							const currentAttributes = getBlockAttributes( clientId );
+
+							const newImages = currentAttributes.images.map( ( oldImage, oldIndex ) => {
+								return oldIndex === index
+									? { ...oldImage, id: media.id, url: media.url }
+									: oldImage;
+							} );
+
+							updateBlockAttributes( clientId, {
+								ids: newImages.map( ( image ) => image.id || null ),
+								images: newImages,
+							} );
+						},
+						onError: ( message ) => createWarningNotice( message ),
+					} );
+				} )
+				.catch( ( error ) => createWarningNotice( error ) );
 		} );
 	}
 
@@ -303,29 +433,51 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 	registerPlugin( 'coblocks-layout-selector', {
 		render: compose( [
 			withSelect( ( select ) => {
-				const { isTemplateSelectorActive } = select( 'coblocks/template-selector' );
-				const { hasEditorUndo, isCurrentPostPublished } = select( 'core/editor' );
+				const {
+					isTemplateSelectorActive,
+					hasLayouts,
+					getLayouts,
+					hasCategories,
+					getCategories,
+				} = select( 'coblocks/template-selector' );
+				const {
+					getCurrentPostAttribute,
+					hasEditorUndo,
+					isCurrentPostPublished,
+				} = select( 'core/editor' );
 				const { getLayoutSelector } = select( 'coblocks-settings' );
+				const {
+					getBlockAttributes,
+					getBlockName,
+					getClientIdsWithDescendants,
+					getSettings,
+				} = select( 'core/block-editor' );
 
-				const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo();
-
-				const layouts = coblocksLayoutSelector.layouts || [];
-				const categories = coblocksLayoutSelector.categories || [];
+				const isDraft = [ 'draft' ].indexOf( getCurrentPostAttribute( 'status' ) ) !== -1;
+				const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo() && ! isDraft;
 
 				return {
 					isActive: isCleanUnpublishedPost || isTemplateSelectorActive(),
-					layoutSelectorEnabled: getLayoutSelector() && !! layouts.length && !! categories.length,
-					layouts,
-					categories,
+					layoutSelectorEnabled: getLayoutSelector() && hasLayouts() && hasCategories(),
+					layouts: getLayouts(),
+					categories: getCategories(),
+					mediaUpload: getSettings().mediaUpload,
+					clientIds: getClientIdsWithDescendants(),
+					getBlockAttributes,
+					getBlockName,
 				};
 			} ),
 			withDispatch( ( dispatch ) => {
 				const { closeTemplateSelector } = dispatch( 'coblocks/template-selector' );
 				const { editPost } = dispatch( 'core/editor' );
+				const { updateBlockAttributes } = dispatch( 'core/block-editor' );
+				const { createWarningNotice } = dispatch( 'core/notices' );
 
 				return {
 					closeTemplateSelector,
+					createWarningNotice,
 					editPost,
+					updateBlockAttributes,
 				};
 			} ),
 		] )( LayoutSelector ),

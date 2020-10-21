@@ -70,26 +70,44 @@ describe( 'Test CoBlocks Services Block', function() {
 		cy.get( '.wp-block-coblocks-services' ).click( { force: true } );
 
 		helpers.addBlockToPost( 'coblocks/services', true );
-		cy.get( 'div[data-type="core/heading"]' ).find( 'h3[aria-label="Write title…"]' );
+		cy.get( 'h3[data-type="core/heading"][aria-label="Write title…"]' );
 
 		cy.get( '.wp-block-coblocks-services' ).click();
 		helpers.openHeadingToolbarAndSelect( 2 );
-		cy.get( 'div[data-type="core/heading"]' ).find( 'h2[aria-label="Write title…"]' );
+		cy.get( 'h2[data-type="core/heading"][aria-label="Write title…"]' );
 
 		cy.get( '.wp-block-coblocks-services' ).click();
 		helpers.openHeadingToolbarAndSelect( 3 );
-		cy.get( 'div[data-type="core/heading"]' ).find( 'h3[aria-label="Write title…"]' );
+		cy.get( 'h3[data-type="core/heading"][aria-label="Write title…"]' );
 
 		cy.get( '.wp-block-coblocks-services' ).click();
 		helpers.openHeadingToolbarAndSelect( 4 );
-		cy.get( 'div[data-type="core/heading"]' ).find( 'h4[aria-label="Write title…"]' );
+		cy.get( 'h4[data-type="core/heading"][aria-label="Write title…"]' );
 
 		cy.get( '.wp-block-coblocks-services' ).click();
 		helpers.openHeadingToolbarAndSelect( 5 );
-		cy.get( 'div[data-type="core/heading"]' ).find( 'h5[aria-label="Write title…"]' );
+		cy.get( 'h5[data-type="core/heading"][aria-label="Write title…"]' );
 
 		helpers.savePage();
 		helpers.checkForBlockErrors( 'coblocks/services' );
+	} );
+
+	/**
+	 * Test that the service block move arrow orientation is correct
+	 */
+	it( 'Test service block has the proper arrow orientation.', function() {
+		helpers.addBlockToPost( 'coblocks/services', true );
+
+		cy.get( '.wp-block-coblocks-services div[data-type="coblocks/service"]:first-child' ).click();
+		cy.get( 'div.block-editor-block-mover' ).should( 'have.class', 'is-horizontal' );
+
+		cy.get( '.wp-block-coblocks-services' ).click();
+		helpers.setInputValue( 'Services settings', 'Columns', 1, false );
+
+		cy.get( '.wp-block-coblocks-services div[data-type="coblocks/service"]:first-child' ).click();
+		cy.get( 'div.block-editor-block-mover' ).should( 'not.have.class', 'is-horizontal' );
+
+		helpers.savePage();
 	} );
 
 	/**

@@ -4,6 +4,11 @@
 import classnames from 'classnames';
 
 /**
+ * Internal dependencies
+ */
+import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
+
+/**
  * WordPress dependencies
  */
 import { InnerBlocks } from '@wordpress/block-editor';
@@ -12,7 +17,6 @@ const save = ( { attributes } ) => {
 	const {
 		contentAlign,
 		count,
-		gutter,
 	} = attributes;
 
 	const classes = classnames(
@@ -26,16 +30,16 @@ const save = ( { attributes } ) => {
 			'has-columns': count > 1,
 			[ `has-${ count }-columns` ]: count,
 			'has-responsive-columns': count > 1,
-			[ `has-${ gutter }-gutter` ]: gutter,
 		}
 	);
 
 	return (
-
 		<div className={ classes }>
-			<div className={ innerClasses }>
-				<InnerBlocks.Content />
-			</div>
+			<GutterWrapper { ...attributes } >
+				<div className={ innerClasses }>
+					<InnerBlocks.Content />
+				</div>
+			</GutterWrapper>
 		</div>
 	);
 };

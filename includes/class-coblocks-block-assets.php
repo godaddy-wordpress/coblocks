@@ -174,13 +174,23 @@ class CoBlocks_Block_Assets {
 		$typography_controls_enabled = (bool) apply_filters( 'coblocks_typography_controls_enabled', true, (int) $post_id );
 
 		/**
+		 * Filter to disable the animation controls
+		 *
+		 * @param bool    true Whether or not the controls are enabled.
+		 * @param integer $post_id Current post ID.
+		 */
+		$animation_controls_enabled = (bool) apply_filters( 'coblocks_animation_controls_enabled', true, (int) $post_id );
+
+		/**
 		 * Filter to disable all bundled CoBlocks svg icons
 		 *
 		 * @param bool true Whether or not the bundled icons are displayed.
 		 */
 		$bundled_icons_enabled = (bool) apply_filters( 'coblocks_bundled_icons_enabled', true );
 
-		$form_subject = ( new CoBlocks_Form() )->default_subject();
+		$form         = new CoBlocks_Form();
+		$form_subject = $form->default_subject();
+		$success_text = $form->default_success_text();
 
 		wp_localize_script(
 			'coblocks-editor',
@@ -189,6 +199,7 @@ class CoBlocks_Block_Assets {
 				'form'                           => array(
 					'adminEmail'   => $email_to,
 					'emailSubject' => $form_subject,
+					'successText'  => $success_text,
 				),
 				'cropSettingsOriginalImageNonce' => wp_create_nonce( 'cropSettingsOriginalImageNonce' ),
 				'cropSettingsNonce'              => wp_create_nonce( 'cropSettingsNonce' ),
@@ -196,6 +207,7 @@ class CoBlocks_Block_Assets {
 				'customIcons'                    => $this->get_custom_icons(),
 				'customIconConfigExists'         => file_exists( get_stylesheet_directory() . '/coblocks/icons/config.json' ),
 				'typographyControlsEnabled'      => $typography_controls_enabled,
+				'animationControlsEnabled'       => $animation_controls_enabled,
 			)
 		);
 
@@ -294,6 +306,15 @@ class CoBlocks_Block_Assets {
 
 		// Define where the vendor asset is loaded from.
 		$vendors_dir = CoBlocks()->asset_source( 'js', 'vendors' );
+
+		// Enqueue for coblocks animations.
+		wp_enqueue_script(
+			'coblocks-animation',
+			$dir . 'coblocks-animation.js',
+			array(),
+			COBLOCKS_VERSION,
+			true
+		);
 
 		// Masonry block.
 		if ( is_admin() || has_block( 'coblocks/gallery-masonry' ) || has_block( 'core/block' ) ) {

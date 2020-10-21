@@ -8,12 +8,13 @@ import * as helper from './../../utils/helper';
  */
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { IconButton, Toolbar } from '@wordpress/components';
+import { Button, Toolbar } from '@wordpress/components';
 import {
 	BlockControls,
 	MediaUpload,
 	MediaUploadCheck,
 } from '@wordpress/block-editor';
+import { edit } from '@wordpress/icons';
 
 class Controls extends Component {
 	constructor() {
@@ -45,10 +46,10 @@ class Controls extends Component {
 									gallery
 									value={ attributes.images.map( ( img ) => img.id ) }
 									render={ ( { open } ) => (
-										<IconButton
+										<Button
 											className="components-toolbar__control"
 											label={ __( 'Edit logos', 'coblocks' ) }
-											icon="edit"
+											icon={ edit }
 											onClick={ open }
 										/>
 									) }

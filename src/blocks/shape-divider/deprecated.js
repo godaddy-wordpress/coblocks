@@ -121,4 +121,15 @@ const deprecated = [
 	},
 ];
 
+// Deprecations for Advanced Spacing controls.
+[ 'noTopMargin', 'noBottomMargin' ].forEach( ( attr ) => {
+	deprecated.push( {
+		attributes: {
+			...metadata.attributes,
+			[ attr ]: false,
+		},
+		save: deprecatedSVGs,
+	} );
+} );
+
 export default deprecated;

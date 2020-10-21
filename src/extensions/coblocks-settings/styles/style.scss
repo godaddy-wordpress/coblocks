@@ -1,22 +1,23 @@
-@import "../../../styles/editor/core/colors";
-@import "../../../styles/editor/core/variables";
-@import "../../../styles/editor/core/breakpoints";
-@import "../../../styles/editor/core/mixins";
+@import "node_modules/@wordpress/base-styles/variables";
+@import "node_modules/@wordpress/base-styles/colors";
+@import "node_modules/@wordpress/base-styles/mixins";
+@import "node_modules/@wordpress/base-styles/breakpoints";
 
 .coblocks-modal__content {
+
 	@include break-small() {
 		max-width: 310px;
 	}
 
 	.components-base-control__help {
-		color: $dark-gray-500;
+		color: $gray-900;
 		display: block;
 		font-style: normal;
-		padding-left: 37px;
+		padding-left: 36px;
 		padding-top: 2px;
 
 		@include break-small() {
-			padding-left: 28px;
+			padding-left: 32px;
 		}
 	}
 }

@@ -11,10 +11,11 @@ import Inspector from './inspector';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
-import { IconButton } from '@wordpress/components';
+import { Button, Tooltip } from '@wordpress/components';
 import { compose } from '@wordpress/compose';
 import { withDispatch, withSelect } from '@wordpress/data';
 import { createBlock } from '@wordpress/blocks';
+import { Icon, plus } from '@wordpress/icons';
 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
@@ -104,18 +105,19 @@ class AccordionEdit extends Component {
 					<InnerBlocks
 						template={ getCount( count ) }
 						allowedBlocks={ ALLOWED_BLOCKS }
+						__experimentalCaptureToolbars={ true }
 					/>
 					{ isSelected && (
-						<div className="components-coblocks-add-accordion-item">
-							<IconButton
-								isLarge
-								className="block-editor-button-block-appender components-coblocks-add-accordion-item__button"
-								/* translators: Add a child element for the Accordion block */
-								label={ __( 'Add accordion item', 'coblocks' ) }
-								icon="insert"
-								onMouseUp={ handleEvent }
-							>
-							</IconButton>
+						<div className="coblocks-block-appender">
+							<Tooltip text={ __( 'Add accordion item', 'coblocks' ) }>
+								<Button
+									label={ __( 'Add accordion item', 'coblocks' ) }
+									className="block-editor-button-block-appender"
+									onMouseUp={ handleEvent }
+								>
+									<Icon icon={ plus } />
+								</Button>
+							</Tooltip>
 						</div>
 					) }
 				</div>

@@ -37,7 +37,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 		const { imageBase } = helpers.upload.spec;
 		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
-		cy.get( '.wp-block[data-type="coblocks/gallery-masonry"]' ).click();
+		cy.get( '[data-type="coblocks/gallery-masonry"]' ).click();
 
 		helpers.upload.imageToBlock( 'coblocks/gallery-masonry' );
 
@@ -61,7 +61,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 	it( 'Test masonry block saves with images from media library.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
-		cy.get( '.wp-block[data-type="coblocks/gallery-masonry"]' )
+		cy.get( '[data-type="coblocks/gallery-masonry"]' )
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -101,7 +101,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 		const { caption } = galleryData;
 		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
-		cy.get( '.wp-block[data-type="coblocks/gallery-masonry"]' )
+		cy.get( '[data-type="coblocks/gallery-masonry"]' )
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -123,8 +123,11 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 
 		helpers.toggleSettingCheckbox( /captions/i );
 
-		cy.get( '.coblocks-gallery--item' ).first().click()
-			.find( 'figcaption' ).click( { force: true } ).type( caption );
+		cy.get( '.coblocks-gallery--item img[src*="http"]' ).click();
+
+		cy.get( 'figcaption[role="textbox"] span' ).click( { force: true } );
+
+		cy.get( 'figcaption[role="textbox"]' ).focus().type( caption );
 
 		helpers.savePage();
 

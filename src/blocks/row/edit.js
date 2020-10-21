@@ -4,6 +4,7 @@
 import classnames from 'classnames';
 import map from 'lodash/map';
 import get from 'lodash/get';
+import { RowIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
@@ -15,6 +16,7 @@ import applyWithColors from './colors';
 import rowIcons from './icons';
 import { createBlock, registerBlockVariation } from '@wordpress/blocks';
 import { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../components/background';
+import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 
 /**
  * WordPress dependencies
@@ -23,8 +25,8 @@ import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withSelect, useDispatch, withDispatch } from '@wordpress/data';
-import { BlockIcon, InnerBlocks, __experimentalBlockVariationPicker } from '@wordpress/block-editor';
-import { ButtonGroup, Button, IconButton, Tooltip, Placeholder, Spinner } from '@wordpress/components';
+import { InnerBlocks, __experimentalBlockVariationPicker } from '@wordpress/block-editor';
+import { ButtonGroup, Button, Tooltip, Placeholder, Spinner, Icon } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
 
 /**
@@ -87,7 +89,6 @@ class Edit extends Component {
 			id,
 			backgroundImg,
 			coblocks,
-			gutter,
 			paddingSize,
 			marginSize,
 			marginUnit,
@@ -143,25 +144,24 @@ class Edit extends Component {
 					<Placeholder
 						key="placeholder"
 						className="components-coblocks-row-placeholder"
-						icon={ <BlockIcon icon={ columns ? rowIcons.layout : rowIcons.row } /> }
+						icon={ <Icon icon={ icon } /> }
 						label={ columns ? __( 'Row layout', 'coblocks' ) : __( 'Row', 'coblocks' ) }
-						instructions={ columns ?
-							sprintf(
+						instructions={ columns
+							? sprintf(
 								/* translators: %s: 'one' 'two' 'three' and 'four' */
 								__( 'Select a layout for this %s column row.', 'coblocks' ),
 								this.numberToText( columns )
-							) :
-							__( 'Select the number of columns for this row.', 'coblocks' )
+							)
+							: __( 'Select the number of columns for this row.', 'coblocks' )
 						}
 					>
-						{ ! columns ?
-							<ButtonGroup aria-label={ __( 'Select row columns', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
+						{ ! columns
+							? <ButtonGroup aria-label={ __( 'Select row columns', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
 								{ map( columnOptions, ( option ) => (
 									<Tooltip text={ option.name }>
 										<div className="components-coblocks-row-placeholder__button-wrapper">
 											<Button
 												className="components-coblocks-row-placeholder__button block-editor-inner-blocks__template-picker-option block-editor-block-pattern-picker__pattern"
-												isLarge
 												isSecondary
 												onClick={ () => {
 													setAttributes( {
@@ -179,10 +179,10 @@ class Edit extends Component {
 										</div>
 									</Tooltip>
 								) ) }
-							</ButtonGroup> :
-							<Fragment>
+							</ButtonGroup>
+							: <Fragment>
 								<ButtonGroup aria-label={ __( 'Select row layout', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
-									<IconButton
+									<Button
 										icon="exit"
 										className="components-coblocks-row-placeholder__back"
 										onClick={ () => {
@@ -199,7 +199,6 @@ class Edit extends Component {
 												<Button
 													key={ key }
 													className="components-coblocks-row-placeholder__button block-editor-inner-blocks__template-picker-option block-editor-block-pattern-picker__pattern"
-													isLarge
 													isSecondary
 													onClick={ () => {
 														setAttributes( {
@@ -235,7 +234,6 @@ class Edit extends Component {
 			'wp-block-coblocks-row__inner',
 			...BackgroundClasses( attributes ), {
 				'has-text-color': this.props.textColor.color,
-				[ `has-${ gutter }-gutter` ]: gutter,
 				'has-padding': paddingSize && paddingSize !== 'no',
 				[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
 				'has-margin': marginSize && marginSize !== 'no',
@@ -294,12 +292,14 @@ class Edit extends Component {
 					) }
 					<div className={ classes }>
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
-						<div className={ innerClasses } style={ innerStyles }>
-							{ BackgroundVideo( attributes ) }
-							{ this.supportsBlockVariationPicker() ?
-								variationInnerBlocks() :
-								deprecatedInnerBlocks() }
-						</div>
+						<GutterWrapper { ...attributes }>
+							<div className={ innerClasses } style={ innerStyles }>
+								{ BackgroundVideo( attributes ) }
+								{ this.supportsBlockVariationPicker()
+									? variationInnerBlocks()
+									: deprecatedInnerBlocks() }
+							</div>
+						</GutterWrapper>
 					</div>
 				</Fragment>
 			);

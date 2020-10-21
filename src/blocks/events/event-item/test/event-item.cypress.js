@@ -43,7 +43,7 @@ describe( 'Block: Event Item', () => {
 	it( 'can save with custom content without errors', () => {
 		const { date, event, time, location } = eventItemData;
 
-		cy.get( '.wp-block[data-type="coblocks/events"]' ).first().within( () => {
+		cy.get( '[data-type="coblocks/events"]' ).first().within( () => {
 			cy.get( '.wp-block-coblocks-events__day' ).type( date.day );
 			cy.get( '.wp-block-coblocks-events__month' ).type( date.month );
 			cy.get( '.wp-block-coblocks-events__year' ).type( date.year );

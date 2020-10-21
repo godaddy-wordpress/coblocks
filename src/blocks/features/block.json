@@ -6,10 +6,6 @@
 			"type": "integer",
 			"default": 4
 		},
-		"gutter": {
-			"type": "string",
-			"default": "medium"
-		},
 		"columns": {
 			"type": "number",
 			"default": 2

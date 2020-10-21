@@ -81,7 +81,7 @@ class Edit extends Component {
 						/* translators: the text of the click to tweet element */
 						placeholder={ __( 'Add a quote to tweet…', 'coblocks' ) }
 						value={ content }
-						formattingControls={ [] } // disable controls
+						allowedFormats={ [] } // disable controls
 						className={ classnames(
 							'wp-block-coblocks-click-to-tweet__text', {
 								'has-text-color': textColor.color,
@@ -108,7 +108,7 @@ class Edit extends Component {
 						multiline="false"
 						placeholder={ __( 'Add button…', 'coblocks' ) }
 						value={ buttonText }
-						formattingControls={ [] } // disable controls
+						allowedFormats={ [] } // disable controls
 						className={ classnames(
 							'wp-block-coblocks-click-to-tweet__twitter-btn', {
 								'has-button-color': buttonColor.color,

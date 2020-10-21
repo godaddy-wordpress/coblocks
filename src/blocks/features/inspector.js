@@ -4,8 +4,6 @@
 import applyWithColors from './colors';
 import { BackgroundPanel } from '../../components/background';
 import DimensionsControl from '../../components/dimensions-control/';
-import OptionSelectorControl from '../../components/option-selector-control';
-import gutterOptions from '../../utils/gutter-options';
 
 /**
  * WordPress dependencies
@@ -15,6 +13,7 @@ import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
 import { PanelBody, RangeControl, withFallbackStyles } from '@wordpress/components';
+import GutterControl from '../../components/gutter-control/gutter-control';
 
 /**
  * Fallback styles
@@ -43,6 +42,7 @@ class Inspector extends Component {
 			setBackgroundColor,
 			setTextColor,
 			textColor,
+			selectBlock,
 		} = this.props;
 
 		const {
@@ -93,7 +93,7 @@ class Inspector extends Component {
 							value={ columns }
 							onChange={ ( nextCount ) => {
 								setAttributes( {
-									columns: parseInt( nextCount ),
+									columns: Math.min( parseInt( nextCount ) || 1, 4 ),
 								} );
 
 								if ( parseInt( nextCount ) < 2 ) {
@@ -106,17 +106,12 @@ class Inspector extends Component {
 									} );
 								}
 
-								wp.data.dispatch( 'core/block-editor' ).selectBlock( clientId );
+								selectBlock( clientId );
 							} }
 							min={ 1 }
 							max={ 4 }
 						/>
-						{ columns >= 2 && <OptionSelectorControl
-							label={ __( 'Gutter', 'coblocks' ) }
-							currentOption={ gutter }
-							options={ gutterOptions }
-							onChange={ ( newGutter ) => setAttributes( { gutter: newGutter } ) }
-						/> }
+						{ columns >= 2 && <GutterControl { ...this.props } /> }
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
 							label={ __( 'Padding', 'coblocks' ) }

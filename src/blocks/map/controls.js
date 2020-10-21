@@ -4,6 +4,7 @@
 import { __ } from '@wordpress/i18n';
 import { BlockControls } from '@wordpress/block-editor';
 import { Toolbar } from '@wordpress/components';
+import { edit } from '@wordpress/icons';
 
 function Controls( { attributes, setAttributes } ) {
 	const {
@@ -13,7 +14,7 @@ function Controls( { attributes, setAttributes } ) {
 
 	const toolbarControls = [
 		{
-			icon: 'edit',
+			icon: edit,
 			title: __( 'Edit Location', 'coblocks' ),
 			isActive: ! pinned,
 			onClick: () => setAttributes( { pinned: ! pinned } ),

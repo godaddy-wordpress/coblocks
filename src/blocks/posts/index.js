@@ -1,15 +1,21 @@
 /**
+ * External dependencies
+ */
+import { PostsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
+/**
  * Internal dependencies
  */
 import edit from './edit';
-import icon from './icon';
 import metadata from './block.json';
 import transforms from './transforms';
+import deprecated from './deprecated';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
 
 /**
  * Block constants
@@ -21,7 +27,7 @@ const settings = {
 	title: __( 'Posts', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Display posts or an RSS feed as stacked or horizontal cards.', 'coblocks' ),
-	icon,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */
@@ -35,10 +41,14 @@ const settings = {
 	],
 	supports: {
 		align: [ 'wide', 'full' ],
+		gutter: {
+			default: 'medium',
+		},
 		html: false,
 	},
 	transforms,
 	edit,
+	deprecated,
 	save() {
 		return null;
 	},

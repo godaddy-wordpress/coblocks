@@ -4,7 +4,7 @@ const postcssConfig = require( './postcss.config' );
 
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const RtlCssPlugin = require( 'rtlcss-webpack-plugin' );
-const FixStyleOnlyEntriesPlugin = require( "webpack-fix-style-only-entries" );
+const FixStyleOnlyEntriesPlugin = require( 'webpack-fix-style-only-entries' );
 const nodeSassGlobImporter = require( 'node-sass-glob-importer' );
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -17,8 +17,10 @@ module.exports = {
 		'coblocks-editor': path.resolve( process.cwd(), 'src/styles/editor.scss' ),
 		'coblocks-style': path.resolve( process.cwd(), 'src/styles/style.scss' ),
 
+		'js/coblocks-animation': path.resolve( process.cwd(), 'src/js/coblocks-animation.js' ),
 		'js/coblocks-accordion-polyfill': path.resolve( process.cwd(), 'src/js/coblocks-accordion-polyfill.js' ),
 		'js/coblocks-accordion-carousel': path.resolve( process.cwd(), 'src/js/coblocks-accordion-carousel.js' ),
+		'js/coblocks-checkbox-required': path.resolve( process.cwd(), 'src/js/coblocks-checkbox-required.js' ),
 		'js/coblocks-datepicker': path.resolve( process.cwd(), 'src/js/coblocks-datepicker.js' ),
 		'js/coblocks-events': path.resolve( process.cwd(), 'src/js/coblocks-events.js' ),
 		'js/coblocks-fromEntries': path.resolve( process.cwd(), 'src/js/coblocks-fromEntries.js' ),
@@ -67,9 +69,9 @@ module.exports = {
 							sourceMap: ! isProduction,
 							sassOptions: {
 								importer: nodeSassGlobImporter(),
-							}
-						}
-					}
+							},
+						},
+					},
 				],
 			},
 		],
@@ -88,8 +90,8 @@ module.exports = {
 		new MiniCssExtractPlugin( {
 			filename: '[name].css',
 		} ),
-		new RtlCssPlugin( { 
-			filename: '[name]-rtl.css' 
+		new RtlCssPlugin( {
+			filename: '[name]-rtl.css',
 		} ),
 	],
 };

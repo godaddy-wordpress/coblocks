@@ -1,4 +1,4 @@
-.wp-block[data-type="coblocks/dynamic-separator"] {
+[data-type="coblocks/dynamic-separator"] {
 
 	.wp-block-coblocks-dynamic-separator {
 
@@ -7,7 +7,7 @@
 		}
 
 		&.is-selected {
-			background: $light-gray-200;
+			background: $gray-200;
 		}
 	}
 }
@@ -22,8 +22,8 @@
 		}
 
 		&.is-style-line::before {
-			width: 4vw;
 			top: 71% !important;
+			width: 4vw;
 		}
 
 		&.is-style-fullwidth::before {

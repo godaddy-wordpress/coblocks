@@ -15,6 +15,7 @@ import { RichText, getFontSizeClass } from '@wordpress/block-editor';
 
 const save = ( { attributes, className } ) => {
 	const {
+		animation,
 		captions,
 		customFontSize,
 		fontSize,
@@ -22,11 +23,11 @@ const save = ( { attributes, className } ) => {
 		gutter,
 		gutterMobile,
 		images,
-		target,
-		rel,
-		linkTo,
-		shadow,
 		lightbox,
+		linkTo,
+		rel,
+		shadow,
+		target,
 	} = attributes;
 
 	const classes = classnames(
@@ -40,6 +41,12 @@ const save = ( { attributes, className } ) => {
 		...GalleryClasses( attributes ), {
 			'has-fullwidth-images': fullwidth,
 			'has-margin': gutter > 0,
+		}
+	);
+
+	const itemClasses = classnames(
+		'coblocks-gallery--item', {
+			[ `coblocks-animate` ]: animation,
 		}
 	);
 
@@ -89,7 +96,7 @@ const save = ( { attributes, className } ) => {
 					const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ imgClasses } />;
 
 					return (
-						<li key={ image.id || image.url } className="coblocks-gallery--item">
+						<li key={ image.id || image.url } className={ itemClasses } data-coblocks-animation={ animation }>
 							<figure className={ figureClasses }>
 								{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
 								{ captions && image.caption && image.caption.length > 0 && (

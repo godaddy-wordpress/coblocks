@@ -16,6 +16,7 @@ export default function createCoBlocksStore() {
 		colorsPanel: true,
 		gradients: true,
 		typography: true,
+		animation: true,
 		layoutSelector: false, // default false to prevent screen flicker.
 	};
 
@@ -30,6 +31,7 @@ export default function createCoBlocksStore() {
 		settings.customColors = res.coblocks_custom_colors_controls_enabled || false;
 		settings.gradients = res.coblocks_gradient_presets_enabled || false;
 		settings.typography = res.coblocks_typography_controls_enabled || false;
+		settings.animation = res.coblocks_animation_controls_enabled || false;
 		settings.colorsPanel = res.coblocks_color_panel_controls_enabled || false;
 		settings.layoutSelector = layoutSelectorEnabled ? res.coblocks_layout_selector_controls_enabled || false : false;
 		storeChanged();
@@ -42,13 +44,16 @@ export default function createCoBlocksStore() {
 		getCustomColors( ) {
 			return settings.customColors;
 		},
-		getGradients() {
+		getGradients( ) {
 			return settings.gradients;
 		},
 		getTypography( ) {
 			return settings.typography;
 		},
-		getColorPanel() {
+		getAnimation( ) {
+			return settings.animation;
+		},
+		getColorPanel( ) {
 			return settings.colorsPanel;
 		},
 	};
@@ -131,6 +136,21 @@ export default function createCoBlocksStore() {
 				},
 				data: {
 					coblocks_typography_controls_enabled: toggle,
+				},
+			} );
+		},
+		setAnimation( ) {
+			const toggle = ! settings.animation;
+			settings.animation = toggle;
+			storeChanged();
+			apiFetch( {
+				path: '/wp/v2/settings/',
+				method: 'POST',
+				headers: {
+					'X-WP-Nonce': settingsNonce,
+				},
+				data: {
+					coblocks_animation_controls_enabled: toggle,
 				},
 			} );
 		},

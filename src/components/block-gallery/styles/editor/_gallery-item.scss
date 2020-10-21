@@ -14,13 +14,14 @@
 	}
 
 	img:focus {
-		box-shadow: inset 0 0 0 4px theme(primary);
+		border-radius: $radius-block-ui;
 		outline: none;
 	}
 
 	.is-selected::after {
+		border-radius: $radius-block-ui;
 		bottom: 0;
-		box-shadow: inset 0 0 0 4px theme(primary);
+		box-shadow: 0 0 0 $border-width $white, 0 0 0 3px var(--wp-admin-theme-color, #007cba);
 		content: "";
 		left: 0;
 		pointer-events: none;
@@ -46,4 +47,9 @@
 
 .has-caption-color .coblocks-gallery--caption a {
 	color: inherit !important;
+}
+
+// Hide selected state from core/gallery block.
+[data-type="core/gallery"].block-editor-block-list__block::after {
+	box-shadow: none !important;
 }

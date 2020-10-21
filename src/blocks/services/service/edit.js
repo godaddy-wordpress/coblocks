@@ -19,12 +19,14 @@ import {
 } from '@wordpress/block-editor';
 import {
 	DropZone,
-	IconButton,
+	Button,
 	Spinner,
+	ButtonGroup,
 } from '@wordpress/components';
 import { dispatch, select } from '@wordpress/data';
 import { mediaUpload } from '@wordpress/editor';
 import { isBlobURL } from '@wordpress/blob';
+import { closeSmall } from '@wordpress/icons';
 
 /**
  * Constants
@@ -161,15 +163,15 @@ class Edit extends Component {
 			<Fragment>
 				<figure className={ classes }>
 					{ isSelected && (
-						<div className="components-coblocks-gallery-item__remove-menu">
-							<IconButton
-								icon="no-alt"
+						<ButtonGroup className="block-library-gallery-item__inline-menu is-right is-visible">
+							<Button
+								icon={ closeSmall }
 								onClick={ () => setAttributes( { imageUrl: '' } ) }
 								className="coblocks-gallery-item__button"
 								label={ __( 'Remove image', 'coblocks' ) }
 								disabled={ ! isSelected }
 							/>
-						</div>
+						</ButtonGroup>
 					) }
 					{ dropZone }
 					{ isBlobURL( attributes.imageUrl ) && <Spinner /> }

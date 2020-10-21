@@ -21,6 +21,7 @@ import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withSelect, dispatch } from '@wordpress/data';
 import { InnerBlocks, BlockControls } from '@wordpress/block-editor';
+import { edit } from '@wordpress/icons';
 
 const ALLOWED_BLOCKS = [ 'coblocks/event-item' ];
 
@@ -147,7 +148,7 @@ class EventsEdit extends Component {
 
 		const toolbarControls = [
 			{
-				icon: 'edit',
+				icon: edit,
 				title: __( 'Edit calendar URL', 'coblocks' ),
 				onClick: () => this.setState( { isEditing: ! this.state.isEditing } ),
 			},
@@ -181,7 +182,7 @@ class EventsEdit extends Component {
 							onChange={ ( newExternalCalendarUrl ) => this.setState( { externalCalendarUrl: newExternalCalendarUrl } ) }
 							className={ 'components-placeholder__input' }
 						/>
-						<Button isLarge type="button" onClick={ this.saveExternalCalendarUrl } disabled={ ! this.state.externalCalendarUrl }>
+						<Button type="button" onClick={ this.saveExternalCalendarUrl } disabled={ ! this.state.externalCalendarUrl }>
 							{ __( 'Use URL', 'coblocks' ) }
 						</Button>
 					</Placeholder>

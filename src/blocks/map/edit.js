@@ -9,6 +9,7 @@ import {
 	Marker,
 } from 'react-google-maps';
 import { withProps, lifecycle } from 'recompose';
+import { MapIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
@@ -16,7 +17,6 @@ import { withProps, lifecycle } from 'recompose';
 import Controls from './controls';
 import Inspector from './inspector';
 import GMapStyles from './map-styles';
-import icon from './icon';
 
 /**
  * WordPress dependencies
@@ -28,10 +28,10 @@ import {
 	Button,
 	ResizableBox,
 	withNotices,
+	Icon,
+	TextControl,
 } from '@wordpress/components';
 import { Fragment, Component } from '@wordpress/element';
-import { ENTER } from '@wordpress/keycodes';
-import { BlockIcon } from '@wordpress/block-editor';
 import apiFetch from '@wordpress/api-fetch';
 
 class Edit extends Component {
@@ -137,14 +137,6 @@ class Edit extends Component {
 			}
 
 			setAttributes( { address: this.state.address, pinned: true } );
-		};
-
-		const handleKeyDown = ( keyCode ) => {
-			if ( keyCode !== ENTER ) {
-				return;
-			}
-
-			renderMap();
 		};
 
 		const marker = {
@@ -278,16 +270,15 @@ class Edit extends Component {
 					</ResizableBox>
 				) : (
 					<Placeholder
-						icon={ <BlockIcon icon={ icon } /> }
-						label={ __( 'Google map', 'coblocks' ) }
+						icon={ <Icon icon={ icon } /> }
+						label={ __( 'Map', 'coblocks' ) }
 						instructions={ __(
 							'Enter a location or address to drop a pin on a Google map.',
 							'coblocks'
 						) }
 					>
 						<form onSubmit={ renderMap }>
-							<input
-								type="text"
+							<TextControl
 								value={ this.state.address || '' }
 								className="components-placeholder__input"
 								placeholder={ __(
@@ -296,46 +287,43 @@ class Edit extends Component {
 								) }
 								onChange={ ( nextAddress ) =>
 									this.setState( {
-										address: nextAddress.target.value,
+										address: nextAddress,
 									} )
-								}
-								onKeyDown={ ( { keyCode } ) =>
-									handleKeyDown( keyCode )
 								}
 							/>
 							<Button
-								isLarge
-								isSecondary
+								isPrimary={ !! this.state.address }
+								isSecondary={ ! this.state.address }
 								type="submit"
 								disabled={ ! this.state.address }
 							>
-								{ __( 'Apply', 'coblocks' ) }
+								{ __( 'Search', 'coblocks' ) }
 							</Button>
+							<div className="components-placeholder__learn-more">
+								{ address && (
+									<Button
+										isTertiary
+										className="components-placeholder__cancel-button"
+										title={ __( 'Cancel', 'coblocks' ) }
+										onClick={ () => {
+											setAttributes( { pinned: ! pinned } );
+											this.setState( {
+												address: this.props.attributes
+													.address,
+											} );
+										} }
+										disabled={ ! address }
+									>
+										{ __( 'Cancel', 'coblocks' ) }
+									</Button>
+								) }
+							</div>
 						</form>
 						{ attributes.lng && attributes.hasError && (
 							<span className="invalid-google-maps-api-key">
 								{ attributes.hasError }
 							</span>
 						) }
-						<div className="components-placeholder__learn-more">
-							{ address && (
-								<Button
-									className="components-placeholder__cancel-button"
-									title={ __( 'Cancel', 'coblocks' ) }
-									isLink
-									onClick={ () => {
-										setAttributes( { pinned: ! pinned } );
-										this.setState( {
-											address: this.props.attributes
-												.address,
-										} );
-									} }
-									disabled={ ! address }
-								>
-									{ __( 'Cancel', 'coblocks' ) }
-								</Button>
-							) }
-						</div>
 					</Placeholder>
 				) }
 			</Fragment>

@@ -1,6 +1,9 @@
 {
 	"extends": "stylelint-config-wordpress/scss",
+	"plugins": [ "stylelint-order" ],
 	"rules": {
-		"no-descending-specificity": null
+		"max-line-length": [120, { "ignore": ["non-comments"] }],
+		"no-descending-specificity": null,
+		"order/properties-alphabetical-order": true 
 	}
 }

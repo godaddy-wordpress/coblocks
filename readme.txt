@@ -1,11 +1,11 @@
 === Page Builder Gutenberg Blocks – CoBlocks ===
 Author URI: https://www.godaddy.com
-Contributors: coblocks, godaddy, richtabor, phpbits, eherman24, jonathanbardo, jrtashjian, sbalakr2, dmatuszak, paranoia1906
+Contributors: godaddy, richtabor, eherman24, jonathanbardo, jrtashjian, paranoia1906, fjarrett
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
-Tested up to: 5.4
+Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 2.0.3
+Stable tag: 2.5.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -116,8 +116,21 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Enhancements
-* Introduce Padding Controls extension to core/group block [#1556](https://github.com/godaddy-wordpress/coblocks/pull/1556)
+* ✨ Add animation option to Group, Columns and Carousel blocks [#1720](https://github.com/godaddy-wordpress/coblocks/pull/1720)
+* ✨ Add animation option to Collage, Masonry, Offset, and Stacked blocks [#1725](https://github.com/godaddy-wordpress/coblocks/pull/1725)
+* ✨ Add ability to disable animation via the CoBlocks Editor Settings [#1692](https://github.com/godaddy-wordpress/coblocks/pull/1692)
+* Introduce image filters to core image block [#1716](https://github.com/godaddy-wordpress/coblocks/pull/1716)
+* Introduce image filter hover-to-preview functionality [#1721](https://github.com/godaddy-wordpress/coblocks/pull/1721)
+* Improve UX of blocks with animations applied and playing [#1726](https://github.com/godaddy-wordpress/coblocks/pull/1726)
 
 ### Bug Fixes
-* Ensure extensions are applied properly to blocks [#1515](https://github.com/godaddy-wordpress/coblocks/pull/1515)
-* Fix focus mode issue within the Layout Selector [#1562](https://github.com/godaddy-wordpress/coblocks/pull/1562)
+* Fix Features block column controls [#1732](https://github.com/godaddy-wordpress/coblocks/pull/1732)
+* Fix Row width and Typography control issues [#1711](https://github.com/godaddy-wordpress/coblocks/pull/1711)
+* Fix gallery media upload across blocks [#1730](https://github.com/godaddy-wordpress/coblocks/pull/1730)
+* Fix duplicated gallery transforms [#1718](https://github.com/godaddy-wordpress/coblocks/pull/1718)
+* Fix off-center Lightbox images under certain conditions [#1710](https://github.com/godaddy-wordpress/coblocks/pull/1710)
+
+### Misc
+* Force SCSS linting on pre-commit and fix SCSS files [#1698](https://github.com/godaddy-wordpress/coblocks/pull/1698)
+* Improve layout availability for the Layout Selector [#1727](https://github.com/godaddy-wordpress/coblocks/pull/1727)
+* Improve UX around use of media-card [#1724](https://github.com/godaddy-wordpress/coblocks/pull/1724)

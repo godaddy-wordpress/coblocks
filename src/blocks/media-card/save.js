@@ -7,7 +7,6 @@ import noop from 'lodash/noop';
 /**
  * Internal dependencies
  */
-import brandAssets from '../../utils/brand-assets';
 import { BackgroundStyles, BackgroundClasses, BackgroundVideo } from '../../components/background';
 
 /**
@@ -86,7 +85,6 @@ const save = ( { attributes } ) => {
 					) }
 					>
 						{ ( mediaTypeRenders[ mediaType ] || noop )() }
-						{ ! mediaUrl ? brandAssets.logo : null }
 					</figure>
 					<div className={ cardClasses }>
 						<InnerBlocks.Content />

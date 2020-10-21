@@ -10,8 +10,9 @@ wordpress*/
 *.cache
 .ftppass
 coverage/
-cypress/
+./cypress/
 .dev/tests/cypress/screenshots
+.dev/tests/cypress/snapshots
 sftp.json
 dist/*
 !dist/images/

@@ -10,6 +10,7 @@ import classnames from 'classnames';
 import InspectorControls from './inspector';
 import icons from './icons';
 import HeadingToolbar from '../../components/heading-toolbar';
+import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 
 /**
  * WordPress dependencies
@@ -187,14 +188,12 @@ class Edit extends Component {
 		const {
 			alignment,
 			columns,
-			gutter,
 		} = attributes;
 
 		const classes = classnames(
 			'has-columns', {
 				[ `has-${ columns }-columns` ]: columns,
 				'has-responsive-columns': columns > 1,
-				[ `has-${ gutter }-gutter` ]: gutter,
 			}
 		);
 
@@ -224,13 +223,17 @@ class Edit extends Component {
 					onSetColumns={ this.setColumns }
 				/>
 				<div className={ className }>
-					<div className={ classes }>
-						<InnerBlocks
-							allowedBlocks={ ALLOWED_BLOCKS }
-							template={ TEMPLATE }
-							templateInsertUpdatesSelection={ false }
-						/>
-					</div>
+					<GutterWrapper { ...attributes } >
+						<div className={ classes }>
+							<InnerBlocks
+								allowedBlocks={ ALLOWED_BLOCKS }
+								template={ TEMPLATE }
+								orientation={ attributes.columns > 1 ? "horizontal" : "vertical" }
+								templateInsertUpdatesSelection={ false }
+								__experimentalCaptureToolbars={ true }
+							/>
+						</div>
+					</GutterWrapper>
 				</div>
 			</Fragment>
 		);

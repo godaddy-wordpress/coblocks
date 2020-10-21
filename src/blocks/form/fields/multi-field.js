@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { BaseControl, IconButton } from '@wordpress/components';
+import { BaseControl, Button } from '@wordpress/components';
 import { Component, Fragment } from '@wordpress/element';
 import { withInstanceId } from '@wordpress/compose';
 import classnames from 'classnames';
@@ -53,7 +53,7 @@ class CoBlocksFieldMultiple extends Component {
 	}
 
 	render() {
-		const { type, instanceId, required, label, setAttributes, isSelected, isInline } = this.props;
+		const { type, instanceId, required, label, setAttributes, isSelected, isInline, textColor, customTextColor, name } = this.props;
 		let { options } = this.props;
 		let { inFocus } = this.state;
 		if ( ! options.length ) {
@@ -73,6 +73,9 @@ class CoBlocksFieldMultiple extends Component {
 							setAttributes={ setAttributes }
 							isSelected={ isSelected }
 							resetFocus={ () => this.setState( { inFocus: null } ) }
+							textColor={ textColor }
+							customTextColor={ customTextColor }
+							name={ name }
 						/>
 					}
 				>
@@ -106,14 +109,14 @@ class CoBlocksFieldMultiple extends Component {
 						</ol>
 					) }
 					{ isSelected && (
-						<IconButton
+						<Button
 							className="coblocks-field-multiple__add-option"
 							icon="insert"
 							label={ 'radio' === type || 'select' === type ? __( 'Add option', 'coblocks' ) : __( 'Add checkbox', 'coblocks' ) }
 							onClick={ this.addNewOption }
 						>
 							{ 'radio' === type || 'select' === type ? __( 'Add option', 'coblocks' ) : __( 'Add checkbox', 'coblocks' ) }
-						</IconButton>
+						</Button>
 					) }
 				</BaseControl>
 			</Fragment>

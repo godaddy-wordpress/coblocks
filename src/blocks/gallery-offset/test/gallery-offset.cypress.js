@@ -37,7 +37,7 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 		const { imageBase } = helpers.upload.spec;
 		helpers.addBlockToPost( 'coblocks/gallery-offset', true );
 
-		cy.get( '.wp-block[data-type="coblocks/gallery-offset"]' ).click();
+		cy.get( '[data-type="coblocks/gallery-offset"]' ).click();
 
 		helpers.upload.imageToBlock( 'coblocks/gallery-offset' );
 
@@ -61,7 +61,7 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 	it( 'Test offset block saves with images from media library.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-offset', true );
 
-		cy.get( '.wp-block[data-type="coblocks/gallery-offset"]' )
+		cy.get( '[data-type="coblocks/gallery-offset"]' )
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -101,7 +101,7 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 		const { caption } = galleryData;
 		helpers.addBlockToPost( 'coblocks/gallery-offset', true );
 
-		cy.get( '.wp-block[data-type="coblocks/gallery-offset"]' )
+		cy.get( '[data-type="coblocks/gallery-offset"]' )
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -124,7 +124,7 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 		helpers.toggleSettingCheckbox( /captions/i );
 
 		cy.get( '.coblocks-gallery--item' ).first().click()
-			.find( 'figcaption' ).click( { force: true } ).type( caption );
+			.find( 'figcaption' ).focus().type( caption );
 
 		helpers.savePage();
 

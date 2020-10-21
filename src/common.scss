@@ -1,10 +1,9 @@
-// Gutenberg modules
-@import "styles/editor/core/colors";
-@import "styles/editor/core/variables";
-@import "styles/editor/core/breakpoints";
-@import "styles/editor/core/mixins";
+@import "node_modules/@wordpress/base-styles/variables";
+@import "node_modules/@wordpress/base-styles/colors";
+@import "node_modules/@wordpress/base-styles/mixins";
+@import "node_modules/@wordpress/base-styles/breakpoints";
 
-// Colors
+//Colors
 $color-alert-default-bg: #d6efee;
 $color-alert-default-color: #094264;
 $color-alert-warning-bg: #fbe7dd;
@@ -13,6 +12,15 @@ $color-alert-error-bg: #ffdede;
 $color-alert-error-color: #8b343c;
 $color-alert-success-bg: #d0eac4;
 $color-alert-success-color: #154a28;
+$dark-opacity-light-200: rgba(#8b8b96, 0.1);
+$light-opacity-light-200: rgba($white, 0.15);
+
+// UI
+$animation-transition-default: 0.5s;
+
+//Breakpoints
+$break-large-max: 959px;
+$break-small-max: 599px;
 
 // Spacing
 $spacing: (
@@ -23,7 +31,9 @@ $spacing: (
 	5: 2.5em,
 	6: 3em,
 	7: 3.5em,
-	8: 4em
+	8: 4em,
+	9: 4.5em,
+	10: 7em,
 );
 
 // CSS Custom Properties
@@ -37,6 +47,8 @@ $spacing: (
 	--coblocks-spacing--6: #{map-get($spacing, 6)};
 	--coblocks-spacing--7: #{map-get($spacing, 7)};
 	--coblocks-spacing--8: #{map-get($spacing, 8)};
+	--coblocks-spacing--9: #{map-get($spacing, 9)};
+	--coblocks-spacing--10: #{map-get($spacing, 10)};
 }
 
 // Colors

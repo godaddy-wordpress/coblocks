@@ -13,15 +13,14 @@ import CropControl from '../../components/crop-settings/crop-control';
 /**
  * WordPress dependencies
  */
+import { __ } from '@wordpress/i18n';
+import { addFilter } from '@wordpress/hooks';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { Fragment } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody } from '@wordpress/components';
-import { addFilter } from '@wordpress/hooks';
-import { __ } from '@wordpress/i18n';
 
 const supportedBlocks = [
-	'core/image',
 	'core/cover',
 ];
 

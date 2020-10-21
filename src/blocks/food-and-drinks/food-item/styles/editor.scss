@@ -6,13 +6,13 @@
 	}
 
 	.block-editor-media-placeholder {
+		align-items: center;
+		height: 100%;
+		left: 0;
+		margin-bottom: 0;
 		position: absolute;
 		top: 0;
-		left: 0;
 		width: 100%;
-		height: 100%;
-		margin-bottom: 0;
-		align-items: center;
 
 		.components-placeholder__instructions {
 			text-align: center;
@@ -43,26 +43,11 @@
 
 		&__figure {
 
-			.wp-block-coblocks-food-item__remove-menu {
-				background-color: theme(primary);
-				display: inline-flex;
-				padding: 2px;
-				position: absolute;
-				right: 2px;
-				top: 2px;
-				transition: padding 0.1s linear;
-				z-index: 20;
-
-				svg {
-					position: relative;
-				}
-			}
-
 			&.is-selected {
 
 				&::after {
 					bottom: 0;
-					box-shadow: inset 0 0 0 4px theme(primary);
+					box-shadow: inset 0 0 0 4px var(--wp-admin-theme-color, #007cba);
 					content: "";
 					left: 0;
 					position: absolute;
@@ -73,12 +58,12 @@
 			}
 		}
 
-		&__attribute.components-icon-button,
 		&__attribute.components-button {
 			color: inherit;
-			padding: 1px;
 			height: auto;
+			min-width: auto;
 			opacity: 0.55;
+			padding: 1px;
 
 			&:not(.is-toggled):hover,
 			&:not(.is-toggled):focus {
@@ -98,16 +83,16 @@
 	.is-style-list & {
 
 		.wp-block-coblocks-food-item__figure {
-			padding-top: 0;
-			max-width: 100px;
 			margin-right: 20px;
+			max-width: 100px;
+			padding-top: 0;
 		}
 
 		.block-editor-media-placeholder {
 			height: 75px;
 			min-height: 75px;
-			position: relative;
 			padding: 0 !important;
+			position: relative;
 
 			@include break-small() {
 				height: 100px;

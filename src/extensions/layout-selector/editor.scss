@@ -1,22 +1,50 @@
-$color-highlight: #00a4a6;
-
 .coblocks-layout-selector .block-editor-block-list__layout .block-editor-block-list__block.is-focus-mode:not(.is-multi-selected) {
 	opacity: 1 !important;
 }
 
+.coblocks-layout-selector .coblocks-layout-selector__layout .block-editor-block-preview__container.editor-styles-wrapper {
+	--go--font-size: 0.5rem;
+	--go-button--font-size: 0.5rem;
+	--go--viewport-basis: 1800;
+	--editor-max-w-base: 400px;
+	--editor-max-w-wide: 85%;
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+
+	.block-editor-block-list__layout .wp-block:not([data-type="core/heading"]):first-of-type {
+		margin-top: 0 !important;
+	}
+
+	.block-editor-block-list__layout .wp-block:not([data-type="core/heading"]):last-of-type {
+		margin-bottom: 0 !important;
+	}
+
+	[data-type="core/paragraph"] {
+		font-size: 0.75rem;
+	}
+}
+
 .coblocks-layout-selector-modal {
-	width: 1200px;
 	height: 85vh;
 	position: relative;
+	width: 1200px;
 
 	.components-modal__content {
 		height: auto;
 	}
 
 	.components-modal__header {
+		border-bottom: none;
 		height: 96px;
 		padding: 0 24px;
-		border-bottom: none;
 
 		.components-modal__header-heading {
 			font-size: 1rem;
@@ -33,20 +61,36 @@ $color-highlight: #00a4a6;
 	}
 }
 
+[data-type="core/buttons"] {
+
+	.block-list-appender {
+		margin-bottom: 0;
+		position: relative;
+		top: -10px;
+	}
+}
+
+[data-type="core/buttons"]:not(.is-selected):not(.has-child-selected) {
+
+	.block-list-appender {
+		display: none !important;
+	}
+}
+
 .coblocks-layout-selector {
+	align-items: flex-start;
 	display: flex;
 	justify-content: space-around;
-	align-items: flex-start;
 
 	@media (max-width: 782px) {
 		flex-direction: column;
 	}
 
 	&__sidebar {
-		width: 220px;
-		top: 118px;
 		position: -webkit-sticky;
 		position: sticky;
+		top: 118px;
+		width: 220px;
 
 		@media (max-width: 782px) {
 			display: none;
@@ -62,15 +106,15 @@ $color-highlight: #00a4a6;
 			margin-bottom: 0.85em;
 
 			> a {
-				color: $dark-gray-800;
+				color: $gray-900;
 				text-decoration: none;
 
 				&:hover,
 				&:focus,
 				&.is-selected {
-					color: theme(primary);
-					outline: none;
 					box-shadow: none;
+					color: var(--wp-admin-theme-color, #007cba);
+					outline: none;
 				}
 			}
 		}
@@ -80,11 +124,11 @@ $color-highlight: #00a4a6;
 		display: none;
 
 		@media (max-width: 782px) {
-			display: flex;
 			align-items: center;
+			display: flex;
 			justify-content: space-between;
-			width: 100%;
 			margin-bottom: 1em;
+			width: 100%;
 
 			.components-dropdown-menu__toggle {
 
@@ -95,8 +139,8 @@ $color-highlight: #00a4a6;
 			}
 
 			&__left {
-				display: flex;
 				align-items: center;
+				display: flex;
 
 				> strong {
 					display: inline-block;
@@ -107,41 +151,41 @@ $color-highlight: #00a4a6;
 	}
 
 	&__add-button {
-		color: $dark-gray-800 !important;
-		text-decoration: none !important;
-		font-weight: 500;
-		min-width: 32px;
-		height: 32px;
-		display: inline-flex;
-		vertical-align: middle;
-		transition-duration: 0;
 		align-items: center;
+		color: $gray-900 !important;
+		display: inline-flex;
+		font-weight: 500;
+		height: 32px;
+		min-width: 32px;
+		text-decoration: none !important;
+		transition-duration: 0;
+		vertical-align: middle;
 
 		> span {
-			position: relative;
-			background-color: $dark-gray-800;
-			color: $white;
-			min-width: 32px;
-			height: 32px;
-			width: 32px;
-			margin-right: 8px;
-			border-radius: 2px;
-			vertical-align: middle;
-			transition: all 0.1s;
-			display: inline-flex;
-			justify-content: center;
 			align-items: center;
+			background-color: $gray-900;
+			border-radius: $radius-block-ui;
+			color: $white;
+			display: inline-flex;
+			height: 32px;
+			justify-content: center;
+			margin-right: 8px;
+			min-width: 32px;
+			position: relative;
+			transition: all 0.1s;
+			vertical-align: middle;
+			width: 32px;
 		}
 
 		&:hover,
 		&:focus {
-			outline: none;
 			box-shadow: none;
-			color: theme(primary) !important;
+			color: var(--wp-admin-theme-color, #007cba) !important;
+			outline: none;
 
 			> span {
-				background-color: theme(primary);
-				color: #fff;
+				background-color: var(--wp-admin-theme-color, #007cba);
+				color: $white;
 			}
 		}
 	}
@@ -152,9 +196,9 @@ $color-highlight: #00a4a6;
 	}
 
 	&__layouts {
+		align-items: flex-start;
 		display: flex;
 		flex-wrap: wrap;
-		align-items: flex-start;
 		justify-content: space-between;
 		padding: 3px;
 	}
@@ -164,8 +208,8 @@ $color-highlight: #00a4a6;
 	}
 
 	&__layout {
-		border-radius: 2px;
-		background-color: var(--go--color--background, #fff);
+		background-color: var(--go--color--background, $white);
+		border-radius: $radius-block-ui;
 		display: flex;
 		flex-basis: 50%;
 		flex-grow: 1;
@@ -176,8 +220,8 @@ $color-highlight: #00a4a6;
 
 		@media (max-width: 1024px) {
 			flex-basis: 100%;
-			max-width: 100%;
 			margin-right: 0;
+			max-width: 100%;
 		}
 
 		.block-editor-block-preview__container {
@@ -187,20 +231,20 @@ $color-highlight: #00a4a6;
 
 		&::after {
 			border: 1px solid rgba(0, 0, 0, 0.15);
-			position: absolute;
+			border-radius: $radius-block-ui;
+			content: "";
 			height: 100%;
+			position: absolute;
 			width: 100%;
 			z-index: 1;
-			content: "";
-			border-radius: 2px;
 		}
 
 		&:hover {
-			box-shadow: 0 0 0 1px #fff, 0 0 0 3px theme(primary);
+			box-shadow: 0 0 0 1px $white, 0 0 0 3px var(--wp-admin-theme-color, #007cba);
 		}
 
 		&.is-selected::after {
-			box-shadow: 0 0 0 1px #fff, 0 0 0 3px theme(primary);
+			box-shadow: 0 0 0 1px $white, 0 0 0 3px var(--wp-admin-theme-color, #007cba);
 		}
 
 		&:hover,
@@ -210,21 +254,21 @@ $color-highlight: #00a4a6;
 	}
 
 	&__layout--overlay {
-		display: none !important; // Hide this temp.
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
+		align-items: center;
 		background: rgba(255, 255, 255, 0.75);
+		border: 2px solid var(--wp-admin-theme-color, #007cba);
+		bottom: 0;
+		display: none !important; // Hide this temp.
 		display: flex;
 		flex-direction: column;
-		align-items: center;
 		justify-content: center;
-		z-index: 1;
-		border: 2px solid theme(primary);
-		transition: opacity 0.1s linear;
+		left: 0;
 		opacity: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		transition: opacity 0.1s linear;
+		z-index: 1;
 
 		&.is-active {
 			opacity: 1;

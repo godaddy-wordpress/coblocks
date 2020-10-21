@@ -17,13 +17,14 @@ import classnames from 'classnames';
  */
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { IconButton, DropZone, Spinner } from '@wordpress/components';
+import { Button, DropZone, Spinner, ButtonGroup } from '@wordpress/components';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { RichText, MediaPlaceholder } from '@wordpress/block-editor';
 import { mediaUpload } from '@wordpress/editor';
 import { isBlobURL } from '@wordpress/blob';
 import { createBlock } from '@wordpress/blocks';
 import { compose } from '@wordpress/compose';
+import { closeSmall } from '@wordpress/icons';
 
 const isEmpty = ( attributes ) => {
 	const attributesToCheck = [ 'url', 'title', 'description', 'price' ];
@@ -42,9 +43,9 @@ class FoodItem extends Component {
 	constructor() {
 		super( ...arguments );
 		this.state = {
-			url: this.props.attributes.url ||'',
+			url: this.props.attributes.url || '',
 			price: this.props.attributes.price || '',
-		}
+		};
 		this.replaceImage = this.replaceImage.bind( this );
 		this.setSpicyTo = this.setSpicyTo.bind( this );
 		this.setHotTo = this.setHotTo.bind( this );
@@ -143,7 +144,7 @@ class FoodItem extends Component {
 			onFileChange: ( [ media ] ) => {
 				this.setState( { url: media.url } );
 				this.props.setAttributes( { url: media.url, alt: media.alt } );
-			}
+			},
 		} );
 	}
 
@@ -202,18 +203,18 @@ class FoodItem extends Component {
 			<Fragment>
 				<figure className={ classes }>
 					{ isSelected && (
-						<div className="wp-block-coblocks-food-item__remove-menu">
-							<IconButton
-								icon="no-alt"
+						<ButtonGroup className="block-library-gallery-item__inline-menu is-right is-visible">
+							<Button
+								icon={ closeSmall }
 								onClick={ () => {
-									setAttributes( { url: '' } )
+									setAttributes( { url: '' } );
 									this.setState( { url: '' } );
 								} }
 								className="coblocks-gallery-item__button"
 								label={ __( 'Remove image', 'coblocks' ) }
 								disabled={ ! isSelected }
 							/>
-						</div>
+						</ButtonGroup>
 					) }
 					{ dropZone }
 					{ isBlobURL( url ) && <Spinner /> }
@@ -221,10 +222,10 @@ class FoodItem extends Component {
 						src={ url }
 						alt={ alt }
 						style={ {
-							objectPosition: focalPoint ?
-								`${ focalPoint.x * 100 }% ${ focalPoint.y *
-										100 }%` :
-								undefined,
+							objectPosition: focalPoint
+								? `${ focalPoint.x * 100 }% ${ focalPoint.y *
+										100 }%`
+								: undefined,
 						} }
 					/>
 				</figure>
@@ -279,7 +280,7 @@ class FoodItem extends Component {
 
 		const richTextAttributes = {
 			keepPlaceholderOnFocus: true,
-			formattingControls: [ 'bold', 'italic' ],
+			allowedFormats: [ 'bold', 'italic' ],
 		};
 
 		return (
@@ -312,7 +313,7 @@ class FoodItem extends Component {
 							/>
 							<div className="wp-block-coblocks-food-item__attributes">
 								{ ( ( isSelected && title ) || ( !! popular ) ) && (
-									<IconButton
+									<Button
 										icon={ icons.popular }
 										label={ __( 'Popular', 'coblocks' ) }
 										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--popular', {
@@ -324,7 +325,7 @@ class FoodItem extends Component {
 									/>
 								) }
 								{ ( ( isSelected && title ) || ( !! spicy ) ) && (
-									<IconButton
+									<Button
 										icon={ icons.spicy }
 										label={ __( 'Spicy', 'coblocks' ) }
 										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--spicy', {
@@ -335,7 +336,7 @@ class FoodItem extends Component {
 									/>
 								) }
 								{ ( ( isSelected && title && !! spicy ) || ( !! spicier ) ) && (
-									<IconButton
+									<Button
 										icon={ icons.spicy }
 										label={ __( 'Hot', 'coblocks' ) }
 										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--spicier', {
@@ -348,7 +349,7 @@ class FoodItem extends Component {
 									/>
 								) }
 								{ ( ( isSelected && title ) || ( !! vegetarian ) ) && (
-									<IconButton
+									<Button
 										icon={ icons.vegetarian }
 										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--vegetarian', {
 											'is-toggled': vegetarian,
@@ -364,7 +365,7 @@ class FoodItem extends Component {
 								) }
 								{ ( ( isSelected && !! glutenFree ) || ( !! glutenFree ) ) && (
 									// Only renders if the option is checked within the Settings sidebar.
-									<IconButton
+									<Button
 										icon={ icons.glutenFree }
 										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--gluten-free', {
 											'is-toggled': glutenFree,
@@ -379,7 +380,7 @@ class FoodItem extends Component {
 								) }
 								{ ( ( isSelected && !! pescatarian ) || ( !! pescatarian ) ) && (
 									// Only renders if the option is checked within the Settings sidebar.
-									<IconButton
+									<Button
 										icon={ icons.pescatarian }
 										label={ __( 'Pescatarian', 'coblocks' ) }
 										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--pescatarian', {
@@ -395,7 +396,7 @@ class FoodItem extends Component {
 								) }
 								{ ( ( isSelected && !! vegan ) || ( !! vegan ) ) && (
 									// Only renders if the option is checked within the Settings sidebar.
-									<IconButton
+									<Button
 										icon={ icons.vegan }
 										className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--vegan', {
 											'is-toggled': vegan,
@@ -424,7 +425,7 @@ class FoodItem extends Component {
 								placeholder={ __( '$0.00', 'coblocks' ) }
 								onChange={ ( newPrice ) => {
 									this.setState( { price: newPrice } );
-									this.props.setAttributes( { price : newPrice}) 
+									this.props.setAttributes( { price: newPrice } );
 								} }
 								{ ...richTextAttributes }
 							/>
