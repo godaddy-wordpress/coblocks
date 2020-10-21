@@ -57,7 +57,9 @@ export const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick }
 
 	const filterdLayoutBlocks = applyFilters(
 		'coblocks.layoutPreviewBlocks',
-		layout.blocks || rawHandler( { HTML: layout.postContent } )
+		layout.blocks
+			? layout.blocks.map( ( block ) => Array.isArray( block ) ? getBlocksFromTemplate( block[ 0 ], block[ 1 ], block[ 2 ] ) : block )
+			: rawHandler( { HTML: layout.postContent } )
 	);
 
 	const layoutBlocks = filterdLayoutBlocks.map(
