@@ -55,6 +55,11 @@ const isExternalImage = ( id, url ) => url && ! id && ! isBlobURL( url ) && ! ur
 export const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
 	const [ overlay, setOverlay ] = useState( false );
 
+	/**
+	 * Filters the list of blocks within the layout preview.
+	 *
+	 * @param {Array} blocks The block objects of the layout.
+	 */
 	const filterdLayoutBlocks = applyFilters(
 		'coblocks.layoutPreviewBlocks',
 		layout.blocks
