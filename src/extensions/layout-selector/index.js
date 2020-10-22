@@ -10,12 +10,13 @@ import { pick } from 'lodash';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { close } from '@wordpress/icons';
 import { Component, Fragment, useState } from '@wordpress/element';
 import { registerPlugin } from '@wordpress/plugins';
 import { compose } from '@wordpress/compose';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { isBlobURL } from '@wordpress/blob';
-import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem } from '@wordpress/components';
+import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem, Popover } from '@wordpress/components';
 import { BlockPreview } from '@wordpress/block-editor';
 import { createBlock, rawHandler } from '@wordpress/blocks';
 
@@ -23,6 +24,7 @@ import { createBlock, rawHandler } from '@wordpress/blocks';
  * Internal dependencies
  */
 import './store';
+import LayoutSelectorSidebarDropdown from './sidebar-dropdown';
 
 const getBlocksFromTemplate = ( name, attributes, innerBlocks = [] ) => {
 	return createBlock( name, attributes,
@@ -112,6 +114,7 @@ class LayoutSelector extends Component {
 
 		this.state = {
 			selectedCategory: 'about',
+			imageCategory: 'arts-design',
 		};
 
 		this.useTemplateLayout = this.useTemplateLayout.bind( this );
@@ -296,7 +299,7 @@ class LayoutSelector extends Component {
 	}
 
 	render() {
-		const { selectedCategory } = this.state;
+		const { selectedCategory, imageCategory } = this.state;
 		const {
 			isActive,
 			closeTemplateSelector,
@@ -309,20 +312,16 @@ class LayoutSelector extends Component {
 
 		return ! isActive ? null : (
 			<Modal
-				title={ (
-					<Fragment>
-						{ __( 'Add new page', 'coblocks' ) }
-						<span>{ __( 'Pick one of these layouts or start with a blank page', 'coblocks' ) }</span>
-					</Fragment>
-				) }
-				onRequestClose={ () => {
-					this.useEmptyTemplateLayout();
-					closeTemplateSelector();
-				} }
 				className="coblocks-layout-selector-modal">
-
 				<div className="coblocks-layout-selector">
 					<aside className="coblocks-layout-selector__sidebar">
+						<h1 className="layout-selector-title">
+							{ __( 'Add new page', 'coblocks' ) }
+						</h1>
+						<LayoutSelectorSidebarDropdown
+							imageCategory={ imageCategory }
+							setImageCategory={ ( newImageCategory ) => this.setState( { imageCategory: newImageCategory } ) }
+						/>
 						<ul className="coblocks-layout-selector__sidebar__items">
 							{ this.props.categories.filter( ( category ) => this.hasLayoutsInCategory( category.slug ) ).map( ( category, index ) => (
 								<SidebarItem
@@ -383,6 +382,18 @@ class LayoutSelector extends Component {
 					</div>
 
 					<div className="coblocks-layout-selector__content">
+						<span>
+							{ __( 'Pick one of these layouts or start with a blank page', 'coblocks' ) }
+							<Button
+								className="coblocks-layout-selector__close-button"
+								icon={ close }
+								onClick={ () => {
+									this.useEmptyTemplateLayout();
+									this.props.closeTemplateSelector();
+								} }
+								aria-label="Close dialog">
+							</Button>
+						</span>
 						{ this.renderContent( selectedCategory ) }
 					</div>
 				</div>

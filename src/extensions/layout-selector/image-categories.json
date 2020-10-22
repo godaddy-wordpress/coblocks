@@ -1,0 +1,44 @@
+{
+    "categories": [
+        {
+            "name": "arts-design",
+            "slug": "Arts & Design",
+            "value": ""
+        },
+        {
+            "name": "automotive-cars",
+            "slug": "Automotove & Cars",
+            "value": ""
+        },
+        {
+            "name": "community-nonprofit",
+            "slug": "Community & Nonprofit",
+            "value": ""
+        },
+        {
+            "name": "construction",
+            "slug": "Construction",
+            "value": ""
+        },
+        {
+            "name": "education",
+            "slug": "Education",
+            "value": ""
+        },
+        {
+            "name": "fashion-beauty",
+            "slug": "Fashion & Beauty",
+            "value": ""
+        },
+        {
+            "name": "halth-fitness",
+            "slug": "Health & Fitness",
+            "value": ""
+        },
+        {
+            "name": "home-services",
+            "slug": "Home Services",
+            "value": ""
+        }
+    ]
+}
