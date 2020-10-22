@@ -12,6 +12,7 @@ import * as helper from './../../../utils/helper';
 function GalleryTransforms( props ) {
 	const transforms = {
 		align: props.align,
+		animation: props.animation,
 		autoPlay: props.autoPlay,
 		autoPlaySpeed: props.autoPlaySpeed,
 		captionColor: props.captionColor,
