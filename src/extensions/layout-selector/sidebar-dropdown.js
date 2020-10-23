@@ -11,16 +11,10 @@ import { chevronDown } from '@wordpress/icons';
 import { useState } from '@wordpress/element';
 import { Button, Icon, MenuGroup, MenuItem, Popover } from '@wordpress/components';
 
-/**
- * Internal dependencies
- */
-import { categories } from './image-categories.json';
-
-const LayoutSelectorSidebarDropdown = ( { imageCategory, setImageCategory } ) => {
+const LayoutSelectorSidebarDropdown = ( { imageCategory, setImageCategory, imageCategories } ) => {
 	const [ isVisible, setVisible ] = useState( false );
-
 	const toggleVisible = () => setVisible( ! isVisible );
-	const buttonSlug = categories.filter( ( { name } ) => name === imageCategory )?.[ 0 ]?.slug || '<none>';
+	const buttonSlug = imageCategories.filter( ( { name } ) => name === imageCategory )?.[ 0 ]?.slug || '<none>';
 
 	return (
 		<>
@@ -47,7 +41,7 @@ const LayoutSelectorSidebarDropdown = ( { imageCategory, setImageCategory } ) =>
 					noArrow="false"
 				>
 					<MenuGroup>
-						{ categories.map( ( { name, slug } ) => {
+						{ imageCategories.map( ( { name, slug } ) => {
 							return (
 								<MenuItem key={ `image-category-${ name }` } onClick={ () => setImageCategory( name ) }>
 									{ slug }

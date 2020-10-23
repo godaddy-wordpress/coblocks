@@ -310,6 +310,8 @@ class LayoutSelector extends Component {
 			return null;
 		}
 
+		const imageCategories = coblocksLayoutSelector?.imageCategories || [];
+
 		return ! isActive ? null : (
 			<Modal
 				className="coblocks-layout-selector-modal">
@@ -318,10 +320,13 @@ class LayoutSelector extends Component {
 						<h1 className="layout-selector-title">
 							{ __( 'Add new page', 'coblocks' ) }
 						</h1>
-						<LayoutSelectorSidebarDropdown
-							imageCategory={ imageCategory }
-							setImageCategory={ ( newImageCategory ) => this.setState( { imageCategory: newImageCategory } ) }
-						/>
+						{ !! imageCategories.length &&
+							<LayoutSelectorSidebarDropdown
+								imageCategory={ imageCategory }
+								imageCategories={ imageCategories }
+								setImageCategory={ ( newImageCategory ) => this.setState( { imageCategory: newImageCategory } ) }
+							/>
+						}
 						<ul className="coblocks-layout-selector__sidebar__items">
 							{ this.props.categories.filter( ( category ) => this.hasLayoutsInCategory( category.slug ) ).map( ( category, index ) => (
 								<SidebarItem
