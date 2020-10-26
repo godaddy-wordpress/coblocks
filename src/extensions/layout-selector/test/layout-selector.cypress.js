@@ -77,7 +77,7 @@ describe( 'Extension: Layout Selector', () => {
 	it( 'does not open modal when disabled via the "Editor Settings" panel', () => {
 		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
 		helpers.disableGutenbergFeatures();
-		cy.get( '.coblocks-layout-selector-modal' )
+		cy.get( '.coblocks-layout-selector__content' )
 			.find( '.components-button[aria-label="Close dialog"]' ).first()
 			.click();
 
@@ -106,7 +106,7 @@ describe( 'Extension: Layout Selector', () => {
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(4)' ).find( 'a' ).click();
 		cy.get( '.coblocks-layout-selector__layout' ).contains( 'Test Portfolio Layout.' );
 
-		cy.get( '.coblocks-layout-selector__layout:nth-of-type(1)' ).click( { force: true } );
+		cy.get( '.coblocks-layout-selector__layout:nth-of-type(1) .block-editor-block-preview__container' ).click( { force: true } );
 
 		cy.get( '.editor-post-title__block' ).contains( 'Portfolio Test' );
 		cy.get( '.wp-block' ).contains( 'Test Portfolio Layout.' );
