@@ -14,7 +14,7 @@ import { Button, Icon, MenuGroup, MenuItem, Popover } from '@wordpress/component
 const ImageCategorySelector = ( { imageCategory, setImageCategory, imageCategories } ) => {
 	const [ isVisible, setVisible ] = useState( false );
 	const toggleVisible = () => setVisible( ! isVisible );
-	const buttonSlug = imageCategories.filter( ( { name } ) => name === imageCategory )?.[ 0 ]?.slug || '<none>';
+	const buttonSlug = imageCategories.filter( ( { slug } ) => slug === imageCategory )?.[ 0 ]?.name || '<none>';
 
 	return (
 		<>
@@ -43,8 +43,8 @@ const ImageCategorySelector = ( { imageCategory, setImageCategory, imageCategori
 					<MenuGroup>
 						{ imageCategories.map( ( { name, slug } ) => {
 							return (
-								<MenuItem key={ `image-category-${ name }` } onClick={ () => setImageCategory( name ) }>
-									{ slug }
+								<MenuItem key={ `image-category-${ slug }` } onClick={ () => setImageCategory( slug ) }>
+									{ name }
 								</MenuItem>
 							);
 						} ) }

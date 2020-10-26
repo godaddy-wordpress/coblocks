@@ -114,7 +114,7 @@ class LayoutSelector extends Component {
 
 		this.state = {
 			selectedCategory: 'about',
-			imageCategory: 'arts-design',
+			imageCategory: 'fashion',
 		};
 
 		this.useTemplateLayout = this.useTemplateLayout.bind( this );
