@@ -8,6 +8,7 @@ const DEFAULT_STATE = {
 	templateSelector: false,
 	layouts: coblocksLayoutSelector.layouts || [],
 	categories: coblocksLayoutSelector.categories || [],
+	imageCategories: coblocksLayoutSelector.imageCategories || [],
 };
 
 const actions = {
@@ -15,6 +16,7 @@ const actions = {
 	closeTemplateSelector: () => ( { type: 'CLOSE_TEMPLATE_SELECTOR' } ),
 	updateLayouts: ( layouts ) => ( { type: 'UPDATE_LAYOUTS', layouts } ),
 	updateCategories: ( categories ) => ( { type: 'UPDATE_CATEGORIES', categories } ),
+	updateImageCategories: ( imageCategories ) => ( { type: 'UPDATE_IMAGE_CATEGORIES', imageCategories } ),
 };
 
 const store = registerStore( 'coblocks/template-selector', {
@@ -40,6 +42,11 @@ const store = registerStore( 'coblocks/template-selector', {
 					...state,
 					categories: action.categories,
 				};
+			case 'UPDATE_IMAGE_CATEGORIES':
+				return {
+					...state,
+					imageCategories: action.imageCategories,
+				};
 		}
 
 		return state;
@@ -53,6 +60,8 @@ const store = registerStore( 'coblocks/template-selector', {
 		getLayouts: ( state ) => state.layouts || [],
 		getCategories: ( state ) => state.categories || [],
 		hasCategories: ( state ) => !! state.categories.length,
+		getImageCategories: ( state ) => state.imageCategories || [],
+		hasImageCategories: ( state ) => !! state.imageCategories.length,
 	},
 } );
 

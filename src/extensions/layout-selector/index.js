@@ -81,7 +81,7 @@ const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
 				autoHeight
 				blocks={
 					layoutBlocks
-						.filter( ( layout ) => registeredBlocks.includes( layout[ 0 ] ) )
+						.filter( ( filteredLayout ) => registeredBlocks.includes( filteredLayout[ 0 ] ) )
 						.map(
 							( [ name, attributes, innerBlocks = [] ] ) => {
 								return getBlocksFromTemplate( name, attributes, innerBlocks );
@@ -114,7 +114,7 @@ class LayoutSelector extends Component {
 
 		this.state = {
 			selectedCategory: 'about',
-			imageCategory: 'fashion',
+			selectedImageCategory: 'fashion',
 		};
 
 		this.useTemplateLayout = this.useTemplateLayout.bind( this );
@@ -159,7 +159,7 @@ class LayoutSelector extends Component {
 
 		editPost( {
 			title: layout.label,
-			blocks: layoutBlocks.filter( ( layout ) => registeredBlocks.includes( layout[ 0 ] ) )
+			blocks: layoutBlocks.filter( ( filteredLayout ) => registeredBlocks.includes( filteredLayout[ 0 ] ) )
 				.map( ( [ name, attributes, innerBlocks = [] ] ) => {
 					return getBlocksFromTemplate( name, attributes, innerBlocks );
 				} ),
@@ -186,6 +186,7 @@ class LayoutSelector extends Component {
 			if ( galleryBlockTypes.includes( blockName ) ) {
 				return { [ clientId ]: pick( blockAttributes, [ 'ids', 'images' ] ) };
 			}
+			return undefined; // Explicit undefined return - satisfy eslint.
 		} );
 	}
 
@@ -299,18 +300,18 @@ class LayoutSelector extends Component {
 	}
 
 	render() {
-		const { selectedCategory, imageCategory } = this.state;
+		const { selectedCategory, selectedImageCategory } = this.state;
 		const {
 			isActive,
 			closeTemplateSelector,
 			layoutSelectorEnabled,
+			imageCategoriesEnabled,
+			imageCategories,
 		} = this.props;
 
 		if ( ! layoutSelectorEnabled ) {
 			return null;
 		}
-
-		const imageCategories = coblocksLayoutSelector?.imageCategories || [];
 
 		return ! isActive ? null : (
 			<Modal
@@ -320,11 +321,11 @@ class LayoutSelector extends Component {
 						<h1 className="layout-selector-title">
 							{ __( 'Add new page', 'coblocks' ) }
 						</h1>
-						{ !! imageCategories.length &&
+						{ imageCategoriesEnabled &&
 							<ImageCategorySelector
-								imageCategory={ imageCategory }
+								selectedImageCategory={ selectedImageCategory }
 								imageCategories={ imageCategories }
-								setImageCategory={ ( newImageCategory ) => this.setState( { imageCategory: newImageCategory } ) }
+								setImageCategory={ ( newImageCategory ) => this.setState( { selectedImageCategory: newImageCategory } ) }
 							/>
 						}
 						<ul className="coblocks-layout-selector__sidebar__items">
@@ -417,6 +418,8 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 					getLayouts,
 					hasCategories,
 					getCategories,
+					hasImageCategories,
+					getImageCategories,
 				} = select( 'coblocks/template-selector' );
 				const {
 					getCurrentPostAttribute,
@@ -439,6 +442,8 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 					layoutSelectorEnabled: getLayoutSelector() && hasLayouts() && hasCategories(),
 					layouts: getLayouts(),
 					categories: getCategories(),
+					imageCategoriesEnabled: hasImageCategories(),
+					imageCategories: getImageCategories(),
 					mediaUpload: getSettings().mediaUpload,
 					clientIds: getClientIdsWithDescendants(),
 					getBlockAttributes,
