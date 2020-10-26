@@ -11,7 +11,7 @@ import { chevronDown } from '@wordpress/icons';
 import { useState } from '@wordpress/element';
 import { Button, Icon, MenuGroup, MenuItem, Popover } from '@wordpress/components';
 
-const LayoutSelectorSidebarDropdown = ( { imageCategory, setImageCategory, imageCategories } ) => {
+const ImageCategorySelector = ( { imageCategory, setImageCategory, imageCategories } ) => {
 	const [ isVisible, setVisible ] = useState( false );
 	const toggleVisible = () => setVisible( ! isVisible );
 	const buttonSlug = imageCategories.filter( ( { name } ) => name === imageCategory )?.[ 0 ]?.slug || '<none>';
@@ -55,4 +55,4 @@ const LayoutSelectorSidebarDropdown = ( { imageCategory, setImageCategory, image
 	);
 };
 
-export default LayoutSelectorSidebarDropdown;
+export default ImageCategorySelector;

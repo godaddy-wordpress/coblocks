@@ -16,7 +16,7 @@ import { registerPlugin } from '@wordpress/plugins';
 import { compose } from '@wordpress/compose';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { isBlobURL } from '@wordpress/blob';
-import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem, Popover } from '@wordpress/components';
+import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem } from '@wordpress/components';
 import { BlockPreview } from '@wordpress/block-editor';
 import { createBlock, rawHandler } from '@wordpress/blocks';
 
@@ -24,7 +24,7 @@ import { createBlock, rawHandler } from '@wordpress/blocks';
  * Internal dependencies
  */
 import './store';
-import LayoutSelectorSidebarDropdown from './sidebar-dropdown';
+import ImageCategorySelector from './image-categories';
 
 const getBlocksFromTemplate = ( name, attributes, innerBlocks = [] ) => {
 	return createBlock( name, attributes,
@@ -321,7 +321,7 @@ class LayoutSelector extends Component {
 							{ __( 'Add new page', 'coblocks' ) }
 						</h1>
 						{ !! imageCategories.length &&
-							<LayoutSelectorSidebarDropdown
+							<ImageCategorySelector
 								imageCategory={ imageCategory }
 								imageCategories={ imageCategories }
 								setImageCategory={ ( newImageCategory ) => this.setState( { imageCategory: newImageCategory } ) }
