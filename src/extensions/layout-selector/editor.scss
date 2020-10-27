@@ -248,9 +248,9 @@
 		}
 
 		&.is-placeholder {
-			min-height: 150px;
-			justify-content: center;
 			align-items: center;
+			justify-content: center;
+			min-height: 150px;
 
 			.components-spinner {
 				margin: 0;
