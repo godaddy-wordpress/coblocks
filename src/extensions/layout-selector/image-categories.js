@@ -20,7 +20,11 @@ const ImageCategorySelector = ( { selectedImageCategory, setImageCategory, image
 		<>
 			<span>{ __( 'My site is about:', 'coblocks' ) }</span>
 			<Button
-				className="coblocks-layout-selector__dropdown"
+				className={	classnames(
+					'coblocks-layout-selector__dropdown', {
+						'is-open': isVisible,
+					}
+				) }
 				onClick={ () => toggleVisible() }
 			>
 				{ buttonSlug }
