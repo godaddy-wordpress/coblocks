@@ -2,7 +2,6 @@
 /**
  * External dependencies
  */
-import jQuery from 'jquery';
 import classnames from 'classnames';
 import map from 'lodash/map';
 import { pick } from 'lodash';
@@ -11,18 +10,19 @@ import { pick } from 'lodash';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment, useState } from '@wordpress/element';
+import { Component, Fragment } from '@wordpress/element';
 import { registerPlugin } from '@wordpress/plugins';
-import { compose, useResizeObserver } from '@wordpress/compose';
+import { compose } from '@wordpress/compose';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { isBlobURL } from '@wordpress/blob';
-import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem, Disabled } from '@wordpress/components';
-import { createBlock, rawHandler, serialize } from '@wordpress/blocks';
+import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem } from '@wordpress/components';
+import { createBlock, rawHandler } from '@wordpress/blocks';
 
 /**
  * Internal dependencies
  */
 import './store';
+import { LayoutSelectorResults } from './layout-selector-results';
 
 const getBlocksFromTemplate = ( name, attributes, innerBlocks = [] ) => {
 	return createBlock( name, attributes,
@@ -30,14 +30,6 @@ const getBlocksFromTemplate = ( name, attributes, innerBlocks = [] ) => {
 			getBlocksFromTemplate( blockName, blockAttributes, blockInnerBlocks )
 		)
 	);
-};
-
-const getTemplateFromBlocks = ( name, attributes, innerBlocks = [] ) => {
-	return [ name, attributes,
-		innerBlocks && innerBlocks.map( ( blockObject ) => {
-			return getTemplateFromBlocks( blockObject.name, blockObject.attributes, blockObject.innerBlocks );
-		} ),
-	];
 };
 
 /**
@@ -50,75 +42,6 @@ const getTemplateFromBlocks = ( name, attributes, innerBlocks = [] ) => {
  * @return {boolean} Is the url an externally hosted url?
  */
 const isExternalImage = ( id, url ) => url && ! id && ! isBlobURL( url ) && ! url.includes( window.location.host );
-
-const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
-	const viewportWidth = 700;
-	const [ overlay, setOverlay ] = useState( false );
-
-	const [ containerWidthResizeListener, { width: containerWidth } ] = useResizeObserver();
-	const [ containerHeightResizeListener, { height: containerHeight } ] = useResizeObserver();
-	const scale = containerWidth / viewportWidth;
-
-	const layoutBlocks = layout.blocks || rawHandler( { HTML: layout.postContent } ).map(
-		( blockObject ) => getTemplateFromBlocks( blockObject.name, blockObject.attributes, blockObject.innerBlocks )
-	);
-
-	const layoutHtml = serialize(
-		layoutBlocks
-			.filter( ( layout ) => registeredBlocks.includes( layout[ 0 ] ) )
-			.map(
-				( [ name, attributes, innerBlocks = [] ] ) => {
-					return getBlocksFromTemplate( name, attributes, innerBlocks );
-				}
-			)
-	);
-
-	return (
-		<a href="#!"
-			key={ layout }
-			className={ classnames( 'coblocks-layout-selector__layout', { 'is-selected': isSelected } ) }
-			onClick={ ( event ) => {
-				event.preventDefault();
-				onClick();
-			} }
-			onMouseEnter={ () => setOverlay( true ) }
-			onMouseLeave={ () => setOverlay( false ) }>
-
-			<div className={ classnames( 'coblocks-layout-selector__layout--overlay', { 'is-active': overlay } ) }>
-				<Button isPressed>
-					{ __( 'Select Layout', 'coblocks' ) }
-				</Button>
-			</div>
-
-			<div
-				className="block-editor-block-preview__container editor-styles-wrapper"
-				style={ {
-					margin: 0,
-					height: containerHeight * scale,
-				} }
-			>
-				{ containerWidthResizeListener }
-
-				<Disabled
-					style={ {
-						transform: `scale(${ scale })`,
-						width: viewportWidth,
-						left: 0,
-						right: 0,
-						top: 0,
-					} }
-					className="block-editor-block-preview__content"
-				>
-					{ containerHeightResizeListener }
-					<div
-						className="editor-styles-wrapper"
-						dangerouslySetInnerHTML={ { __html: layoutHtml } }
-					/>
-				</Disabled>
-			</div>
-		</a>
-	);
-};
 
 const SidebarItem = ( { slug, title, isSelected, onClick } ) => {
 	return (
@@ -145,7 +68,6 @@ class LayoutSelector extends Component {
 
 		this.useTemplateLayout = this.useTemplateLayout.bind( this );
 		this.useEmptyTemplateLayout = this.useEmptyTemplateLayout.bind( this );
-		this.renderContent = this.renderContent.bind( this );
 		this.detectImageBlocks = this.detectImageBlocks.bind( this );
 		this.uploadExternalImages = this.uploadExternalImages.bind( this );
 	}
@@ -174,21 +96,14 @@ class LayoutSelector extends Component {
 	}
 
 	// Replace any blocks with the selected layout.
-	useTemplateLayout( layout, registeredBlocks ) {
+	useTemplateLayout( layout ) {
 		const {
 			editPost,
 		} = this.props;
 
-		const layoutBlocks = layout.blocks || rawHandler( { HTML: layout.postContent } ).map(
-			( blockObject ) => getTemplateFromBlocks( blockObject.name, blockObject.attributes, blockObject.innerBlocks )
-		);
-
 		editPost( {
 			title: layout.label,
-			blocks: layoutBlocks.filter( ( layout ) => registeredBlocks.includes( layout[ 0 ] ) )
-				.map( ( [ name, attributes, innerBlocks = [] ] ) => {
-					return getBlocksFromTemplate( name, attributes, innerBlocks );
-				} ),
+			blocks: layout.blocks,
 		} );
 	}
 
@@ -284,55 +199,6 @@ class LayoutSelector extends Component {
 		return !! this.getLayoutsInCategory( category ).length;
 	}
 
-	renderContent( selectedCategory ) {
-		const registeredBlocks = map( wp.blocks.getBlockTypes(), 'name' );
-
-		const foundLayouts = this.getLayoutsInCategory( selectedCategory );
-
-		const layoutsCol1 = foundLayouts.slice( 0, Math.ceil( foundLayouts.length / 2 ) );
-		const layoutsCol2 = foundLayouts.slice( Math.ceil( foundLayouts.length / 2 ) );
-
-		// Rebind the masonry library
-		setTimeout( () => {
-			jQuery( '.wp-block-coblocks-gallery-masonry ul' ).masonry( {
-				itemSelector: '.coblocks-gallery--item',
-				transitionDuration: '0',
-				percentPosition: true,
-			} );
-		}, 10 );
-
-		return this.hasLayoutsInCategory( selectedCategory ) ? (
-			<div className="coblocks-layout-selector__layouts">
-				<div className="coblocks-layout-selector__layouts-column">
-					{ layoutsCol1.map( ( layout, index ) => (
-						<LayoutPreview
-							key={ index }
-							layout={ layout }
-							registeredBlocks={ registeredBlocks }
-							onClick={ () => {
-								this.useTemplateLayout( layout, registeredBlocks );
-								this.props.closeTemplateSelector();
-							} }
-						/>
-					) ) }
-				</div>
-				<div className="coblocks-layout-selector__layouts-column">
-					{ layoutsCol2.map( ( layout, index ) => (
-						<LayoutPreview
-							key={ index }
-							layout={ layout }
-							registeredBlocks={ registeredBlocks }
-							onClick={ () => {
-								this.useTemplateLayout( layout, registeredBlocks );
-								this.props.closeTemplateSelector();
-							} }
-						/>
-					) ) }
-				</div>
-			</div>
-		) : ( <p><em>{ __( 'No layouts are available for this category.', 'coblocks' ) }</em></p> );
-	}
-
 	render() {
 		const { selectedCategory } = this.state;
 		const {
@@ -421,7 +287,17 @@ class LayoutSelector extends Component {
 					</div>
 
 					<div className="coblocks-layout-selector__content">
-						{ this.renderContent( selectedCategory ) }
+						<LayoutSelectorResults
+							layouts={ this.props.layouts }
+							category={ selectedCategory }
+							onInsert={ ( layout ) => {
+								this.useTemplateLayout(
+									layout,
+									map( wp.blocks.getBlockTypes(), 'name' )
+								);
+								this.props.closeTemplateSelector();
+							} }
+						/>
 					</div>
 				</div>
 			</Modal>
@@ -456,10 +332,24 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 				const isDraft = [ 'draft' ].indexOf( getCurrentPostAttribute( 'status' ) ) !== -1;
 				const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo() && ! isDraft;
 
+				const layouts = getLayouts().map(
+					( layout ) => {
+						const blocks = layout.blocks
+							? layout.blocks.map(
+								( block ) => Array.isArray( block )
+									? getBlocksFromTemplate( block[ 0 ], block[ 1 ], block[ 2 ] )
+									: block
+							)
+							: rawHandler( { HTML: layout.postContent } );
+
+						return { ...layout, blocks };
+					}
+				);
+
 				return {
 					isActive: isCleanUnpublishedPost || isTemplateSelectorActive(),
 					layoutSelectorEnabled: getLayoutSelector() && hasLayouts() && hasCategories(),
-					layouts: getLayouts(),
+					layouts,
 					categories: getCategories(),
 					mediaUpload: getSettings().mediaUpload,
 					clientIds: getClientIdsWithDescendants(),
