@@ -247,6 +247,16 @@
 			box-shadow: 0 0 0 1px $white, 0 0 0 3px var(--wp-admin-theme-color, #007cba);
 		}
 
+		&.is-placeholder {
+			min-height: 150px;
+			justify-content: center;
+			align-items: center;
+
+			.components-spinner {
+				margin: 0;
+			}
+		}
+
 		&:hover,
 		&:focus {
 			outline: none;
