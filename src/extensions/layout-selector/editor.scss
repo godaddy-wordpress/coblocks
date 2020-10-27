@@ -124,8 +124,8 @@
 			&.is-open {
 				background: $white;
 				border: 1px solid #ccc;
-				box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 				border-radius: 2px;
+				box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 			}
 
 			svg {
@@ -319,8 +319,8 @@
 	&__pop {
 
 		.components-popover__content {
-			margin-top: -152px;
 			margin-left: -102px !important;
+			margin-top: -152px;
 		}
 	}
 }
