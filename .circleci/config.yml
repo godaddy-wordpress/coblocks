@@ -190,7 +190,7 @@ jobs:
       - run:
           name: Install Composer dependencies
           command: |
-            sudo composer self-update --1
+            sudo composer self-update 1
             composer validate --strict
             composer install
       - save_cache:
@@ -237,7 +237,7 @@ jobs:
       - run:
           name: Install Composer v1
           command: |
-            sudo composer self-update --1
+            sudo composer self-update 1
       - run:
           name: "Linting PHP"
           command: composer run lint $FILES
@@ -314,7 +314,7 @@ jobs:
       - run:
           name: Install Composer v1
           command: |
-            sudo composer self-update --1
+            sudo composer self-update 1
       - run:
           name: Waiting for MySQL to be ready
           command: |
@@ -360,7 +360,7 @@ jobs:
       - run:
           name: Install Composer v1
           command: |
-            sudo composer self-update --1
+            sudo composer self-update 1
       - run:
           name: Waiting for MySQL to be ready
           command: |
