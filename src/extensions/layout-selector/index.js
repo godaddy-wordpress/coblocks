@@ -18,6 +18,7 @@ import { isBlobURL } from '@wordpress/blob';
 import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem } from '@wordpress/components';
 import { BlockPreview } from '@wordpress/block-editor';
 import { createBlock, rawHandler } from '@wordpress/blocks';
+import { applyFilters } from '@wordpress/hooks';
 
 /**
  * Internal dependencies
@@ -51,10 +52,22 @@ const getTemplateFromBlocks = ( name, attributes, innerBlocks = [] ) => {
  */
 const isExternalImage = ( id, url ) => url && ! id && ! isBlobURL( url ) && ! url.includes( window.location.host );
 
-const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
+export const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
 	const [ overlay, setOverlay ] = useState( false );
 
-	const layoutBlocks = layout.blocks || rawHandler( { HTML: layout.postContent } ).map(
+	/**
+	 * Filters the list of blocks within the layout preview.
+	 *
+	 * @param {Array} blocks The block objects of the layout.
+	 */
+	const filterdLayoutBlocks = applyFilters(
+		'coblocks.layoutPreviewBlocks',
+		layout.blocks
+			? layout.blocks.map( ( block ) => Array.isArray( block ) ? getBlocksFromTemplate( block[ 0 ], block[ 1 ], block[ 2 ] ) : block )
+			: rawHandler( { HTML: layout.postContent } )
+	);
+
+	const layoutBlocks = filterdLayoutBlocks.map(
 		( blockObject ) => getTemplateFromBlocks( blockObject.name, blockObject.attributes, blockObject.innerBlocks )
 	);
 
