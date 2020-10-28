@@ -312,10 +312,6 @@ jobs:
             - composer-deps-{{ .Branch }}
             - composer-deps
       - run:
-          name: Install Composer v1
-          command: |
-            sudo composer self-update --1
-      - run:
           name: Waiting for MySQL to be ready
           command: |
             for i in `seq 1 10`;
