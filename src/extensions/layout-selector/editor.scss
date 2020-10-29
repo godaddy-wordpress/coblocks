@@ -44,12 +44,28 @@
 	}
 
 	.components-modal__header {
-		display: none;
-	}
+		border-bottom: none;
+		height: 96px;
+		padding: 0 24px;
 
-	.layout-selector-title {
-		font-size: 1rem;
-		margin-top: 10px;
+		.components-modal__header-heading {
+			display: flex;
+			flex-direction: row;
+			font-size: 1rem;
+			justify-content: start;
+			margin-bottom: 13px;
+			margin-top: 0.8em;
+
+			> span {
+				display: block;
+				font-size: 14px;
+				font-weight: 400;
+				left: 125px;
+				margin-bottom: 13px;
+				margin-top: 0.8em;
+				position: relative;
+			}
+		}
 	}
 }
 
@@ -229,10 +245,6 @@
 			margin: 0 0 0 6%;
 			padding: 20px 0 20px 0;
 
-			.coblocks-layout-selector__close-button {
-				right: 12px;
-				top: 12px;
-			}
 		}
 	}
 

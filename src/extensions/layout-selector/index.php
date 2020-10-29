@@ -67,7 +67,7 @@ function coblocks_layout_selector_image_categories() {
 	 *
 	 * @param array $image_categories The available image categories.
 	 */
-	return apply_filters( 'nextgen_image_categories', $image_categories );
+	return apply_filters( 'coblocks_image_categories', $image_categories );
 }
 
 /**
