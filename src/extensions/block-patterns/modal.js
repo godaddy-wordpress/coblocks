@@ -111,7 +111,7 @@ class CoBlocksBlockPatternsModal extends Component {
 
 		return isOpen && (
 			<Modal
-				title={ __( 'Add Design Pattern', 'coblocks' ) }
+				title={ __( 'Save Design Pattern', 'coblocks' ) }
 				onRequestClose={ closeModal }
 				className="coblocks-block-patterns__modal"
 			>
@@ -140,7 +140,7 @@ class CoBlocksBlockPatternsModal extends Component {
 						onChange={ ( category ) => this.setState( { category } ) }
 					/>
 					<Button isPrimary type="submit">
-						{ __( 'Add Pattern', 'coblocks' ) }
+						{ __( 'Save Pattern', 'coblocks' ) }
 					</Button>
 				</form>
 			</Modal>
