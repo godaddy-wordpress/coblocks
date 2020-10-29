@@ -77,7 +77,7 @@ describe( 'Extension: Layout Selector', () => {
 	it( 'does not open modal when disabled via the "Editor Settings" panel', () => {
 		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
 		helpers.disableGutenbergFeatures();
-		cy.get( '.coblocks-layout-selector__content' )
+		cy.get( '.coblocks-layout-selector-modal' )
 			.find( '.components-button[aria-label="Close dialog"]' ).first()
 			.click();
 
