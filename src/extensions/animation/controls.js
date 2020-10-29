@@ -140,7 +140,7 @@ class Controls extends Component {
 											label={ __( 'Remove animation', 'coblocks' ) }
 											onClick={ this.onAnimationClick( onClose ) }
 											isSelected={ false } >
-											{ __( 'Remove Animation', 'coblocks' ) }
+											{ __( 'Remove animation', 'coblocks' ) }
 										</MenuItem>
 									</MenuGroup>
 								}

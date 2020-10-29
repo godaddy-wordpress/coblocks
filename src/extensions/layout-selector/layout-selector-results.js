@@ -11,10 +11,20 @@ import { useState, useMemo } from '@wordpress/element';
 import { useAsyncList } from '@wordpress/compose';
 import { Button, Spinner } from '@wordpress/components';
 import { BlockPreview } from '@wordpress/block-editor';
+import { applyFilters } from '@wordpress/hooks';
 
 export const LayoutSelectorResults = ( { layouts, category, onInsert } ) => {
 	const filteredLayouts = useMemo(
-		() => layouts.filter( ( layout ) => layout.category === category ),
+		() => layouts
+			.filter( ( layout ) => layout.category === category )
+			.map( ( layout ) => ( { ...layout,
+				/**
+				 * Filters the list of blocks within the layout preview.
+				 *
+				 * @param {Array} blocks The block objects of the layout.
+				 */
+				blocks: applyFilters( 'coblocks.layoutPreviewBlocks', layout.blocks ),
+			} ) ),
 		[ layouts, category ]
 	);
 
