@@ -636,7 +636,7 @@ jobs:
           name: Install Composer
           command: |
             wget https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer -O composer-setup.php
-            php composer-setup.php --version=1
+            php composer-setup.php --version=1.10.16
             php -r "unlink('composer-setup.php');"
             sudo mv composer.phar /usr/local/bin/composer
       - run:
@@ -701,7 +701,7 @@ jobs:
           name: Install Composer
           command: |
             wget https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer -O composer-setup.php
-            php composer-setup.php --version=1
+            php composer-setup.php --version=1.10.16
             php -r "unlink('composer-setup.php');"
             sudo mv composer.phar /usr/local/bin/composer
       - run:
