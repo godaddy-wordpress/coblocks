@@ -19,7 +19,6 @@ import { isBlobURL } from '@wordpress/blob';
 import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem } from '@wordpress/components';
 import { BlockPreview } from '@wordpress/block-editor';
 import { createBlock, rawHandler } from '@wordpress/blocks';
-import { applyFilters } from '@wordpress/hooks';
 
 /**
  * Internal dependencies
