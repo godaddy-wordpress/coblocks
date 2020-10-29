@@ -55,22 +55,6 @@ function coblocks_layout_selector_layouts() {
 }
 
 /**
- * Get the image categories for the layout selector.
- *
- * @return array
- */
-function coblocks_layout_selector_image_categories() {
-	$image_categories = array();
-
-	/**
-	 * Filters the available image categories used by the Layout Selector.
-	 *
-	 * @param array $image_categories The available image categories.
-	 */
-	return apply_filters( 'coblocks_image_categories', $image_categories );
-}
-
-/**
  * Localize layout and category definitions for the Layout Selector component.
  */
 function coblocks_localize_layout_selector() {
@@ -88,7 +72,6 @@ function coblocks_localize_layout_selector() {
 			'postTypeEnabled' => in_array( $screen_post_type, $allowed_post_types, true ),
 			'layouts'         => coblocks_layout_selector_layouts(),
 			'categories'      => coblocks_layout_selector_categories(),
-			'imageCategories'  => coblocks_layout_selector_image_categories(),
 		)
 	);
 }
