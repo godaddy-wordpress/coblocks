@@ -47,24 +47,40 @@
 		border-bottom: none;
 		height: 96px;
 		margin: 0;
-		padding: 0 24px;
+		padding: 0;
+		
+		.components-modal__header-heading-container {
+			height: 100%;
 
-		.components-modal__header-heading {
-			display: flex;
-			flex-direction: row;
-			font-size: 1rem;
-			justify-content: start;
-			margin-bottom: 13px;
-			margin-top: 0.8em;
+			.components-modal__header-heading {
+				display: flex;
+				flex-direction: row;
+				font-size: 1rem;
+				justify-content: start;
+				background-color: #f5f5f5;
+				margin: 0;
+				padding: 0;
+				height: 100%;
+				width: 220px;
 
-			> span {
-				display: block;
-				font-size: 14px;
-				font-weight: 400;
-				left: 125px;
-				margin-bottom: 13px;
-				margin-top: 0.8em;
-				position: relative;
+				> div {
+					flex: 1 0 auto;
+					align-self: center;
+					padding: 0 0 0 24px;
+				}
+	
+	
+				> span {
+					display: block;
+					font-size: 14px;
+					font-weight: 400;
+					left: 125px;
+					margin-bottom: 13px;
+					margin-top: 0.8em;
+					position: relative;
+					flex: 1 0 auto;
+					align-self: center;
+				}
 			}
 		}
 	}
