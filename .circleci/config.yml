@@ -190,6 +190,7 @@ jobs:
       - run:
           name: Install Composer dependencies
           command: |
+            sudo composer self-update --1
             composer validate --strict
             composer install
       - save_cache:
@@ -233,6 +234,10 @@ jobs:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
             - composer-deps-{{ .Branch }}
             - composer-deps
+      - run:
+          name: Install Composer v1
+          command: |
+            sudo composer self-update --1
       - run:
           name: "Linting PHP"
           command: composer run lint $FILES
@@ -348,6 +353,10 @@ jobs:
             - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
             - composer-deps-{{ .Branch }}
             - composer-deps
+      - run:
+          name: Install Composer v1
+          command: |
+            sudo composer self-update --1
       - run:
           name: Waiting for MySQL to be ready
           command: |
@@ -627,7 +636,7 @@ jobs:
           name: Install Composer
           command: |
             wget https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer -O composer-setup.php
-            php composer-setup.php
+            php composer-setup.php --version=1
             php -r "unlink('composer-setup.php');"
             sudo mv composer.phar /usr/local/bin/composer
       - run:
@@ -692,7 +701,7 @@ jobs:
           name: Install Composer
           command: |
             wget https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer -O composer-setup.php
-            php composer-setup.php
+            php composer-setup.php --version=1
             php -r "unlink('composer-setup.php');"
             sudo mv composer.phar /usr/local/bin/composer
       - run:
