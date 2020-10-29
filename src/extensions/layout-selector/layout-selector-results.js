@@ -13,6 +13,9 @@ import { Button, Spinner } from '@wordpress/components';
 import { BlockPreview } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
 
+/**
+ * Render the layout previews into columns.
+ */
 export const LayoutSelectorResults = ( { layouts, category, onInsert } ) => {
 	const filteredLayouts = useMemo(
 		() => layouts
@@ -28,6 +31,7 @@ export const LayoutSelectorResults = ( { layouts, category, onInsert } ) => {
 		[ layouts, category ]
 	);
 
+	// Needed to render our list of previews asynchronously for better performance.
 	const currentShowLayouts = useAsyncList( filteredLayouts );
 
 	const chunkedLayoutsList = [ [], [] ];
@@ -52,6 +56,9 @@ export const LayoutSelectorResults = ( { layouts, category, onInsert } ) => {
 		: ( <p><em>{ __( 'No layouts are available for this category.', 'coblocks' ) }</em></p> );
 };
 
+/**
+ * Renders the layout's block preview.
+ */
 export const LayoutPreview = ( { layout, onClick } ) => {
 	const [ overlay, setOverlay ] = useState( false );
 	const isSelected = false;
@@ -77,6 +84,9 @@ export const LayoutPreview = ( { layout, onClick } ) => {
 	);
 };
 
+/**
+ * Renders the layout's loading placeholder.
+ */
 const LayoutPreviewPlaceholder = () => {
 	return (
 		<div className="coblocks-layout-selector__layout is-placeholder">
@@ -85,6 +95,10 @@ const LayoutPreviewPlaceholder = () => {
 	);
 };
 
+/**
+ * Renders a list of previews for the layouts passed. Placeholders rendered
+ * for components not yet loaded async via `shownLayouts`.
+ */
 export const LayoutPreviewList = ( { layouts, shownLayouts, onClickLayout } ) => {
 	return layouts.map( ( layout, index ) => {
 		const isShown = shownLayouts.includes( layout );

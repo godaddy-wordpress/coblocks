@@ -332,6 +332,7 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 				const isDraft = [ 'draft' ].indexOf( getCurrentPostAttribute( 'status' ) ) !== -1;
 				const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo() && ! isDraft;
 
+				// Get block objects before passing into the component.
 				const layouts = getLayouts().map(
 					( layout ) => {
 						const blocks = layout.blocks
