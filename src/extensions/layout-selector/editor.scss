@@ -47,6 +47,7 @@
 		border-bottom: none;
 		height: 96px;
 		padding: 0 24px;
+		margin: 0;
 
 		.components-modal__header-heading {
 			display: flex;
@@ -127,13 +128,6 @@
 				}
 			}
 		}
-
-		> span {
-			display: flex;
-			margin: 24px 0 0 0;
-		}
-
-
 	}
 
 	&__topbar {
@@ -210,7 +204,7 @@
 		background: $white;
 		flex-grow: 1;
 		overflow-y: auto;
-		padding: 0 24px 24px 24px;
+		padding: 12px 24px 24px 24px;
 
 		> span {
 			align-items: center;
@@ -300,14 +294,6 @@
 
 		&.is-active {
 			opacity: 1;
-		}
-	}
-
-	&__pop {
-
-		.components-popover__content {
-			margin-left: -102px !important;
-			margin-top: -152px;
 		}
 	}
 }
