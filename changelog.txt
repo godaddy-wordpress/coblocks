@@ -1,4 +1,15 @@
 
+2.5.1 / 2020-10-29
+==================
+### Bug Fixes
+* Preserve gallery animations on transform [#1736](https://github.com/godaddy-wordpress/coblocks/pull/1736)
+* Fix composer specificity with CI jobs [#1739](https://github.com/godaddy-wordpress/coblocks/pull/1739)
+
+### Misc
+* Improve block layout preview extensibility [#1735](https://github.com/godaddy-wordpress/coblocks/pull/1735)
+* Improve copy consistency using sentence case [#1740](https://github.com/godaddy-wordpress/coblocks/pull/1740)
+* Improve copy quality around block patterns modal [#1741](https://github.com/godaddy-wordpress/coblocks/pull/1741)
+
 2.5.0 / 2020-10-15
 ==================
 

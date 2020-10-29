@@ -115,22 +115,11 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-### Enhancements
-* ✨ Add animation option to Group, Columns and Carousel blocks [#1720](https://github.com/godaddy-wordpress/coblocks/pull/1720)
-* ✨ Add animation option to Collage, Masonry, Offset, and Stacked blocks [#1725](https://github.com/godaddy-wordpress/coblocks/pull/1725)
-* ✨ Add ability to disable animation via the CoBlocks Editor Settings [#1692](https://github.com/godaddy-wordpress/coblocks/pull/1692)
-* Introduce image filters to core image block [#1716](https://github.com/godaddy-wordpress/coblocks/pull/1716)
-* Introduce image filter hover-to-preview functionality [#1721](https://github.com/godaddy-wordpress/coblocks/pull/1721)
-* Improve UX of blocks with animations applied and playing [#1726](https://github.com/godaddy-wordpress/coblocks/pull/1726)
-
 ### Bug Fixes
-* Fix Features block column controls [#1732](https://github.com/godaddy-wordpress/coblocks/pull/1732)
-* Fix Row width and Typography control issues [#1711](https://github.com/godaddy-wordpress/coblocks/pull/1711)
-* Fix gallery media upload across blocks [#1730](https://github.com/godaddy-wordpress/coblocks/pull/1730)
-* Fix duplicated gallery transforms [#1718](https://github.com/godaddy-wordpress/coblocks/pull/1718)
-* Fix off-center Lightbox images under certain conditions [#1710](https://github.com/godaddy-wordpress/coblocks/pull/1710)
+* Preserve gallery animations on transform [#1736](https://github.com/godaddy-wordpress/coblocks/pull/1736)
+* Fix composer specificity with CI jobs [#1739](https://github.com/godaddy-wordpress/coblocks/pull/1739)
 
 ### Misc
-* Force SCSS linting on pre-commit and fix SCSS files [#1698](https://github.com/godaddy-wordpress/coblocks/pull/1698)
-* Improve layout availability for the Layout Selector [#1727](https://github.com/godaddy-wordpress/coblocks/pull/1727)
-* Improve UX around use of media-card [#1724](https://github.com/godaddy-wordpress/coblocks/pull/1724)
+* Improve block layout preview extensibility [#1735](https://github.com/godaddy-wordpress/coblocks/pull/1735)
+* Improve copy consistency using sentence case [#1740](https://github.com/godaddy-wordpress/coblocks/pull/1740)
+* Improve copy quality around block patterns modal [#1741](https://github.com/godaddy-wordpress/coblocks/pull/1741)
