@@ -154,7 +154,10 @@ class CoBlocks_Block_Assets {
 			true
 		);
 
-		$post_id = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
+		// WP.com custom - START
+		$post_id    = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
+		$post_title = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
+		// WP.com custom - END
 
 		/**
 		 * Filter the default block email address value
@@ -179,7 +182,9 @@ class CoBlocks_Block_Assets {
 		 */
 		$bundled_icons_enabled = (bool) apply_filters( 'coblocks_bundled_icons_enabled', true );
 
-		$form_subject = ( new CoBlocks_Form() )->default_subject();
+		// WP.com custom - START
+		// $form_subject = ( new CoBlocks_Form() )->default_subject();
+		// WP.com custom - END
 
 		wp_localize_script(
 			'coblocks-editor',
@@ -187,7 +192,10 @@ class CoBlocks_Block_Assets {
 			array(
 				'form'                           => array(
 					'adminEmail'   => $email_to,
-					'emailSubject' => $form_subject,
+					// WP.com custom - START
+					// 'emailSubject' => $form_subject,
+					'emailSubject' => $post_title,
+					// WP.com custom - END
 				),
 				'cropSettingsOriginalImageNonce' => wp_create_nonce( 'cropSettingsOriginalImageNonce' ),
 				'cropSettingsNonce'              => wp_create_nonce( 'cropSettingsNonce' ),
@@ -284,9 +292,11 @@ class CoBlocks_Block_Assets {
 	public function frontend_scripts() {
 
 		// Custom scripts are not allowed in AMP, so short-circuit.
-		if ( CoBlocks()->is_amp() ) {
-			return;
-		}
+		// WP.com custom - START
+		// if ( CoBlocks()->is_amp() ) {
+		// 	return;
+		// }
+		// WP.com custom - END
 
 		// Define where the asset is loaded from.
 		$dir = CoBlocks()->asset_source( 'js' );
@@ -305,6 +315,12 @@ class CoBlocks_Block_Assets {
 			);
 		}
 
+		// WP.com custom - START
+		/*
+			DISABLED ON WPCOM
+			These blocks are unavailable and should not have their assets enqueued.
+			See customization in blocks.js.
+			These sections check for `core/block` (reusable blocks) and enqueue assets that are not necessary.
 		// Carousel block.
 		if ( has_block( 'coblocks/gallery-carousel' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
@@ -361,6 +377,9 @@ class CoBlocks_Block_Assets {
 				true
 			);
 		}
+
+		*/
+		// WP.com custom - END
 
 		// Lightbox.
 		if (
