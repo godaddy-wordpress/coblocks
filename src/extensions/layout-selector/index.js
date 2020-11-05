@@ -209,8 +209,8 @@ class LayoutSelector extends Component {
 			<Modal
 				title={ (
 					<Fragment>
-						<div>{ __( 'Add new page', 'coblocks' ) }</div>
-						<span>{ __( 'Pick one of these layouts or start with a blank page', 'coblocks' ) }</span>
+						<div>{ __( 'Add New Page', 'coblocks' ) }</div>
+						<span>{ __( 'Pick one of these layouts or start with a blank page.', 'coblocks' ) }</span>
 					</Fragment>
 				) }
 				onRequestClose={ () => {
