@@ -49,6 +49,12 @@
 		margin: 0;
 		padding: 0;
 
+		.components-button {
+			position: relative;
+			right: 3%;
+			left: inherit;
+		}
+
 		.components-modal__header-heading-container {
 			height: 100%;
 
@@ -61,7 +67,7 @@
 				justify-content: start;
 				margin: 0;
 				padding: 0;
-				width: 220px;
+				width: 250px;
 
 				> div {
 					align-self: center;
@@ -76,7 +82,7 @@
 					flex: 1 0 auto;
 					font-size: 14px;
 					font-weight: 400;
-					left: 125px;
+					left: calc(150px + 5%);
 					margin-bottom: 13px;
 					margin-top: 0.8em;
 					position: relative;
@@ -116,14 +122,14 @@
 		position: -webkit-sticky;
 		position: sticky;
 		top: 12px;
-		width: 220px;
+		width: 250px;
 
 		@media (max-width: 782px) {
 			display: none;
 		}
 
 		&__items {
-			font-size: 14px;
+			font-size: 16px;
 			margin-bottom: 2.5em;
 			margin-top: 0;
 		}
@@ -181,8 +187,8 @@
 		color: $gray-900 !important;
 		display: inline-flex;
 		font-weight: 500;
-		height: 32px;
-		min-width: 32px;
+		height: 28px;
+		min-width: 28px;
 		text-decoration: none !important;
 		transition-duration: 0;
 		vertical-align: middle;
@@ -193,14 +199,14 @@
 			border-radius: $radius-block-ui;
 			color: $white;
 			display: inline-flex;
-			height: 32px;
+			height: 28px;
 			justify-content: center;
 			margin-right: 8px;
-			min-width: 32px;
+			min-width: 28px;
 			position: relative;
 			transition: all 0.1s;
 			vertical-align: middle;
-			width: 32px;
+			width: 28px;
 		}
 
 		&:hover,
@@ -251,7 +257,7 @@
 		display: flex;
 		flex-basis: 50%;
 		flex-grow: 1;
-		margin: 0 0 12% 12%;
+		margin: 0 5% 10% 5%;
 		position: relative;
 		text-decoration: none;
 
