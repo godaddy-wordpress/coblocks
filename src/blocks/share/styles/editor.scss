@@ -54,10 +54,8 @@
 	.block-editor-block-styles {
 
 		.block-editor-block-preview__container {
-			height: 100% !important;
 
 			.block-editor-block-preview__content {
-				margin-top: 35%;
 
 				.wp-block-coblocks-social {
 					align-content: center;
@@ -66,6 +64,7 @@
 					display: flex;
 					height: 100%;
 					justify-content: center;
+					margin: 10vh;
 					text-align: center !important;
 
 					&.is-style-text,
