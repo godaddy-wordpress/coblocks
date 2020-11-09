@@ -115,11 +115,12 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+### Enhancements
+* Improve performance of Layout selector [#1577](https://github.com/godaddy-wordpress/coblocks/pull/1577)
+* Enhance Layout selector by enabling extensibility [#1738](https://github.com/godaddy-wordpress/coblocks/pull/1738)
+
 ### Bug Fixes
-* Preserve gallery animations on transform [#1736](https://github.com/godaddy-wordpress/coblocks/pull/1736)
-* Fix composer specificity with CI jobs [#1739](https://github.com/godaddy-wordpress/coblocks/pull/1739)
+* Fix broken style previews across blocks [#1747](https://github.com/godaddy-wordpress/coblocks/pull/1747)
 
 ### Misc
-* Improve block layout preview extensibility [#1735](https://github.com/godaddy-wordpress/coblocks/pull/1735)
-* Improve copy consistency using sentence case [#1740](https://github.com/godaddy-wordpress/coblocks/pull/1740)
-* Improve copy quality around block patterns modal [#1741](https://github.com/godaddy-wordpress/coblocks/pull/1741)
+* Remove image download functionality from layout selector [#1733](https://github.com/godaddy-wordpress/coblocks/pull/1733)

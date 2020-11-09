@@ -1,4 +1,16 @@
 
+2.5.2 / 2020-11-09
+==================
+### Enhancements
+* Improve performance of Layout selector [#1577](https://github.com/godaddy-wordpress/coblocks/pull/1577)
+* Enhance Layout selector by enabling extensibility [#1738](https://github.com/godaddy-wordpress/coblocks/pull/1738)
+
+### Bug Fixes
+* Fix broken style previews across blocks [#1747](https://github.com/godaddy-wordpress/coblocks/pull/1747)
+
+### Misc
+* Remove image download functionality from layout selector [#1733](https://github.com/godaddy-wordpress/coblocks/pull/1733)
+
 2.5.1 / 2020-10-29
 ==================
 ### Bug Fixes
