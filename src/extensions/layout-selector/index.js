@@ -9,6 +9,7 @@ import map from 'lodash/map';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { applyFilters } from '@wordpress/hooks';
 import { Component, Fragment, useState } from '@wordpress/element';
 import { registerPlugin } from '@wordpress/plugins';
 import { compose } from '@wordpress/compose';
@@ -16,12 +17,12 @@ import { withSelect, withDispatch } from '@wordpress/data';
 import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem } from '@wordpress/components';
 import { BlockPreview } from '@wordpress/block-editor';
 import { createBlock, rawHandler } from '@wordpress/blocks';
-import { applyFilters } from '@wordpress/hooks';
 
 /**
  * Internal dependencies
  */
 import './store';
+import CoBlocksLayoutSelectorFill from './layout-selector-slot';
 
 const getBlocksFromTemplate = ( name, attributes, innerBlocks = [] ) => {
 	return createBlock( name, attributes,
@@ -202,12 +203,14 @@ class LayoutSelector extends Component {
 			return null;
 		}
 
+		const settings = applyFilters( 'coblocks-layout-selector-controls', [] );
+
 		return ! isActive ? null : (
 			<Modal
 				title={ (
 					<Fragment>
-						{ __( 'Add new page', 'coblocks' ) }
-						<span>{ __( 'Pick one of these layouts or start with a blank page', 'coblocks' ) }</span>
+						<div>{ __( 'Add New Page', 'coblocks' ) }</div>
+						<span>{ __( 'Pick one of these layouts or start with a blank page.', 'coblocks' ) }</span>
 					</Fragment>
 				) }
 				onRequestClose={ () => {
@@ -215,9 +218,16 @@ class LayoutSelector extends Component {
 					closeTemplateSelector();
 				} }
 				className="coblocks-layout-selector-modal">
-
 				<div className="coblocks-layout-selector">
 					<aside className="coblocks-layout-selector__sidebar">
+						<CoBlocksLayoutSelectorFill.Slot />
+
+						{ settings && settings.map( ( Control, index ) => (
+							<CoBlocksLayoutSelectorFill key={ `layout-control-${ index }` }>
+								<Control />
+							</CoBlocksLayoutSelectorFill>
+						) ) }
+
 						<ul className="coblocks-layout-selector__sidebar__items">
 							{ this.props.categories.filter( ( category ) => this.hasLayoutsInCategory( category.slug ) ).map( ( category, index ) => (
 								<SidebarItem
