@@ -61,26 +61,20 @@ export const LayoutSelectorResults = ( { layouts, category, onInsert } ) => {
  */
 export const LayoutPreview = ( { layout, onClick } ) => {
 	const [ overlay, setOverlay ] = useState( false );
-	const isSelected = false;
 
 	return (
-		<a href="#!"
-			className={ classnames( 'coblocks-layout-selector__layout', { 'is-selected': isSelected } ) }
-			onClick={ ( event ) => {
-				event.preventDefault();
-				onClick( layout );
-			} }
+		<Button
+			className={ classnames( 'coblocks-layout-selector__layout' ) }
+			onClick={ () => onClick( layout ) }
 			onMouseEnter={ () => setOverlay( true ) }
 			onMouseLeave={ () => setOverlay( false ) }>
 
 			<div className={ classnames( 'coblocks-layout-selector__layout--overlay', { 'is-active': overlay } ) }>
-				<Button isPressed>
-					{ __( 'Select Layout', 'coblocks' ) }
-				</Button>
+				{ __( 'Select Layout', 'coblocks' ) }
 			</div>
 
 			<BlockPreview blocks={ layout.blocks } viewportWidth={ 700 } />
-		</a>
+		</Button>
 	);
 };
 
