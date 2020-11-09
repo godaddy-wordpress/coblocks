@@ -45,6 +45,7 @@ class CoBlocks_Block_Assets {
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 		add_action( 'init', array( $this, 'editor_assets' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_scripts' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'frontend_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
 	}
 
@@ -316,7 +317,7 @@ class CoBlocks_Block_Assets {
 		);
 
 		// Masonry block.
-		if ( has_block( 'coblocks/gallery-masonry' ) || has_block( 'core/block' ) ) {
+		if ( $this->is_page_gutenberg() || has_block( 'coblocks/gallery-masonry' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
 				'coblocks-masonry',
 				$dir . 'coblocks-masonry.js',
@@ -327,7 +328,7 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Carousel block.
-		if ( has_block( 'coblocks/gallery-carousel' ) || has_block( 'core/block' ) ) {
+		if ( $this->is_page_gutenberg() || has_block( 'coblocks/gallery-carousel' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
 				'coblocks-flickity',
 				$vendors_dir . '/flickity.js',
@@ -336,7 +337,7 @@ class CoBlocks_Block_Assets {
 				true
 			);
 
-			if ( has_block( 'coblocks/accordion' ) || has_block( 'core/block' ) ) {
+			if ( $this->is_page_gutenberg() || has_block( 'coblocks/accordion' ) || has_block( 'core/block' ) ) {
 				wp_enqueue_script(
 					'coblocks-accordion-carousel',
 					$dir . 'coblocks-accordion-carousel.js',
@@ -348,7 +349,7 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Post Carousel block.
-		if ( has_block( 'coblocks/post-carousel' ) || has_block( 'core/block' ) ) {
+		if ( $this->is_page_gutenberg() || has_block( 'coblocks/post-carousel' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
 				'coblocks-slick',
 				$vendors_dir . '/slick.js',
@@ -366,7 +367,7 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Events block.
-		if ( has_block( 'coblocks/events' ) || has_block( 'core/block' ) ) {
+		if ( $this->is_page_gutenberg() || has_block( 'coblocks/events' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
 				'coblocks-slick',
 				$vendors_dir . '/slick.js',

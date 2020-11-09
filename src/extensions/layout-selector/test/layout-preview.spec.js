@@ -4,7 +4,6 @@
 import { shallow } from 'enzyme';
 import '@testing-library/jest-dom/extend-expect';
 import '@wordpress/hooks';
-import { BlockPreview } from '@wordpress/block-editor';
 import { addFilter } from '@wordpress/hooks';
 
 import { registerCoreBlocks } from '@wordpress/block-library';
@@ -13,18 +12,38 @@ registerCoreBlocks();
 /**
  * Internal dependencies.
  */
-import { LayoutPreview } from '../index';
+import {
+	LayoutSelectorResults,
+	LayoutPreviewList,
+} from '../layout-selector-results';
 
 describe( name, () => {
 
-	it( 'should render blocks preview', () => {
+	it( 'should render layout results', () => {
 		const componentProps = {
-			layout: { postContent: '<!-- wp:paragraph -->\r\n<p>Paragraph Block</p>\r\n<!-- /wp:paragraph -->' },
+			layouts: [ {
+				label: 'About',
+				category: 'about',
+				blocks: [ [ 'core/paragraph', { content: 'Paragraph Block' }, [] ] ],
+			} ],
 			registeredBlocks: [ 'core/paragraph' ],
+			category: 'about',
+			onInsert: () => {},
 		};
 
-		const renderOne = shallow( <LayoutPreview { ...componentProps } /> );
-		expect( renderOne.find( BlockPreview ).prop( 'blocks' ) ).toHaveLength( 1 );
+		const combineLayoutsProps = ( shallowRender ) => {
+			return shallowRender
+				.find( LayoutPreviewList )
+				.map( ( node ) =>
+					node.prop( 'layouts' ).map(
+						( layout ) => layout.blocks
+					)
+				)
+				.flat( 2 );
+		}
+
+		const renderOne = shallow( <LayoutSelectorResults { ...componentProps } /> );
+		expect( combineLayoutsProps( renderOne ) ).toHaveLength( 1 );
 
 		addFilter(
 			'coblocks.layoutPreviewBlocks',
@@ -32,8 +51,8 @@ describe( name, () => {
 			() => ( [] ) // remove all blocks.
 		);
 
-		const renderTwo = shallow( <LayoutPreview { ...componentProps } /> );
-		expect( renderTwo.find( BlockPreview ).prop( 'blocks' ) ).toHaveLength( 0 );
+		const renderTwo = shallow( <LayoutSelectorResults { ...componentProps } /> );
+		expect( combineLayoutsProps( renderTwo ) ).toHaveLength( 0 );
 	} );
 
 } );
