@@ -15,6 +15,11 @@ import {
 	SelectControl,
 } from '@wordpress/components';
 
+/**
+ * Internal dependencies
+ */
+import { InfoPopover } from '../../components/info-popover';
+
 class CoBlocksBlockPatternsModal extends Component {
 	constructor( props ) {
 		super( props );
@@ -111,7 +116,17 @@ class CoBlocksBlockPatternsModal extends Component {
 
 		return isOpen && (
 			<Modal
-				title={ __( 'Save Design Pattern', 'coblocks' ) }
+				title={ (
+					<>
+						{ __( 'Save Design Pattern', 'coblocks' ) }
+						<InfoPopover
+							title={ __( 'Design Patterns', 'coblocks' ) }
+							popoverProps={ { position: 'top center' } }
+						>
+							{ __( 'Create reusable content and designs that can be quickly added anywhere, but not be tied to other copies of itself (i.e. changing one will not affect the others).', 'coblocks' ) }
+						</InfoPopover>
+					</>
+				) }
 				onRequestClose={ closeModal }
 				className="coblocks-block-patterns__modal"
 			>
