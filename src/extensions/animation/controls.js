@@ -126,7 +126,7 @@ class Controls extends Component {
 												onMouseEnter={ () => this.onChangeHoveredAnimation( animationItem.className ) }
 												onMouseLeave={ () => this.onChangeHoveredAnimation( null ) }
 												isSelected={ animation === animationItem.className }
-												icon={ animation === animationItem.className ? check : null }
+												icon={ animation === animationItem.className ? check : animationItem.icon }
 												key={ `coblocks-animation-${ animationItem.className }` }>
 												{ animationItem.label }
 											</MenuItem>
