@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-11-11T23:00:56+00:00\n"
+"POT-Creation-Date: 2020-11-12T15:49:05+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -7519,27 +7519,27 @@ msgstr ""
 msgid "Fade in"
 msgstr ""
 
-#: src/extensions/animation/animation-types.js:10
+#: src/extensions/animation/animation-types.js:11
 msgid "Zoom in"
 msgstr ""
 
-#: src/extensions/animation/animation-types.js:14
+#: src/extensions/animation/animation-types.js:16
 msgid "Slide in from left"
 msgstr ""
 
-#: src/extensions/animation/animation-types.js:18
+#: src/extensions/animation/animation-types.js:21
 msgid "Slide in from right"
 msgstr ""
 
-#: src/extensions/animation/animation-types.js:22
+#: src/extensions/animation/animation-types.js:26
 msgid "Slide in from bottom"
 msgstr ""
 
-#: src/extensions/animation/animation-types.js:26
+#: src/extensions/animation/animation-types.js:31
 msgid "Clip horizontally"
 msgstr ""
 
-#: src/extensions/animation/animation-types.js:30
+#: src/extensions/animation/animation-types.js:37
 msgid "Clip vertically"
 msgstr ""
 
