@@ -56,6 +56,14 @@ class LayoutSelector extends Component {
 		};
 	}
 
+	componentDidMount() {
+		const { isCleanUnpublishedPost, openTemplateSelector } = this.props;
+
+		if ( isCleanUnpublishedPost ) {
+			openTemplateSelector();
+		}
+	}
+
 	useEmptyTemplateLayout = () => {
 		const {
 			editPost,
@@ -234,18 +242,20 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 
 				return {
 					isActive: isCleanUnpublishedPost || isTemplateSelectorActive(),
+					isCleanUnpublishedPost,
 					layoutSelectorEnabled: getLayoutSelector() && hasLayouts() && hasCategories(),
 					layouts,
 					categories: getCategories(),
 				};
 			} ),
 			withDispatch( ( dispatch ) => {
-				const { closeTemplateSelector } = dispatch( 'coblocks/template-selector' );
+				const { closeTemplateSelector, openTemplateSelector } = dispatch( 'coblocks/template-selector' );
 				const { editPost } = dispatch( 'core/editor' );
 				const { createWarningNotice } = dispatch( 'core/notices' );
 
 				return {
 					closeTemplateSelector,
+					openTemplateSelector,
 					createWarningNotice,
 					editPost,
 				};
