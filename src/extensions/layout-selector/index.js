@@ -3,7 +3,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import map from 'lodash/map';
 
 /**
  * WordPress dependencies
@@ -54,14 +53,6 @@ class LayoutSelector extends Component {
 		this.state = {
 			selectedCategory: 'about',
 		};
-	}
-
-	componentDidMount() {
-		const { isCleanUnpublishedPost, openTemplateSelector } = this.props;
-
-		if ( isCleanUnpublishedPost ) {
-			openTemplateSelector();
-		}
 	}
 
 	useEmptyTemplateLayout = () => {
@@ -215,15 +206,7 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 					hasCategories,
 					getCategories,
 				} = select( 'coblocks/template-selector' );
-				const {
-					getCurrentPostAttribute,
-					hasEditorUndo,
-					isCurrentPostPublished,
-				} = select( 'core/editor' );
 				const { getLayoutSelector } = select( 'coblocks-settings' );
-
-				const isDraft = [ 'draft' ].indexOf( getCurrentPostAttribute( 'status' ) ) !== -1;
-				const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo() && ! isDraft;
 
 				// Get block objects before passing into the component.
 				const layouts = getLayouts().map(
@@ -241,21 +224,19 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 				);
 
 				return {
-					isActive: isCleanUnpublishedPost || isTemplateSelectorActive(),
-					isCleanUnpublishedPost,
+					isActive: isTemplateSelectorActive(),
 					layoutSelectorEnabled: getLayoutSelector() && hasLayouts() && hasCategories(),
 					layouts,
 					categories: getCategories(),
 				};
 			} ),
 			withDispatch( ( dispatch ) => {
-				const { closeTemplateSelector, openTemplateSelector } = dispatch( 'coblocks/template-selector' );
+				const { closeTemplateSelector } = dispatch( 'coblocks/template-selector' );
 				const { editPost } = dispatch( 'core/editor' );
 				const { createWarningNotice } = dispatch( 'core/notices' );
 
 				return {
 					closeTemplateSelector,
-					openTemplateSelector,
 					createWarningNotice,
 					editPost,
 				};
