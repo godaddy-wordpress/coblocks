@@ -3,6 +3,7 @@
  * WordPress dependencies
  */
 import { registerStore } from '@wordpress/data';
+import { controls, select } from '@wordpress/data-controls';
 
 const DEFAULT_STATE = {
 	templateSelector: false,
@@ -48,11 +49,26 @@ const store = registerStore( 'coblocks/template-selector', {
 	actions,
 
 	selectors: {
-		isTemplateSelectorActive: ( state ) => state.templateSelector || false,
+		isTemplateSelectorActive: ( state ) => state.templateSelector,
 		hasLayouts: ( state ) => !! state.layouts.length,
 		getLayouts: ( state ) => state.layouts || [],
 		getCategories: ( state ) => state.categories || [],
 		hasCategories: ( state ) => !! state.categories.length,
+	},
+
+	controls,
+
+	resolvers: {
+		* isTemplateSelectorActive() {
+			const getCurrentPostAttributeStatus = yield select( 'core/editor', 'getCurrentPostAttribute', 'status' );
+			const hasEditorUndo = yield select( 'core/editor', 'hasEditorUndo' );
+			const isCurrentPostPublished = yield select( 'core/editor', 'isCurrentPostPublished' );
+
+			const isDraft = getCurrentPostAttributeStatus.includes( 'draft' );
+			const isCleanUnpublishedPost = ! isCurrentPostPublished && ! hasEditorUndo && isDraft;
+
+			return isCleanUnpublishedPost && actions.openTemplateSelector();
+		},
 	},
 } );
 

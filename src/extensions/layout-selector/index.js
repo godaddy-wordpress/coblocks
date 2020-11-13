@@ -3,7 +3,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import map from 'lodash/map';
 
 /**
  * WordPress dependencies
@@ -207,15 +206,7 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 					hasCategories,
 					getCategories,
 				} = select( 'coblocks/template-selector' );
-				const {
-					getCurrentPostAttribute,
-					hasEditorUndo,
-					isCurrentPostPublished,
-				} = select( 'core/editor' );
 				const { getLayoutSelector } = select( 'coblocks-settings' );
-
-				const isDraft = [ 'draft' ].indexOf( getCurrentPostAttribute( 'status' ) ) !== -1;
-				const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo() && ! isDraft;
 
 				// Get block objects before passing into the component.
 				const layouts = getLayouts().map(
@@ -233,7 +224,7 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 				);
 
 				return {
-					isActive: isCleanUnpublishedPost || isTemplateSelectorActive(),
+					isActive: isTemplateSelectorActive(),
 					layoutSelectorEnabled: getLayoutSelector() && hasLayouts() && hasCategories(),
 					layouts,
 					categories: getCategories(),
