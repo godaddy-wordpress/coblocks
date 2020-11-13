@@ -65,7 +65,7 @@ const store = registerStore( 'coblocks/template-selector', {
 			const isCurrentPostPublished = yield select( 'core/editor', 'isCurrentPostPublished' );
 
 			const isDraft = getCurrentPostAttributeStatus.includes( 'draft' );
-			const isCleanUnpublishedPost = ! isCurrentPostPublished && ! hasEditorUndo && ! isDraft;
+			const isCleanUnpublishedPost = ! isCurrentPostPublished && ! hasEditorUndo && isDraft;
 
 			return isCleanUnpublishedPost && actions.openTemplateSelector();
 		},
