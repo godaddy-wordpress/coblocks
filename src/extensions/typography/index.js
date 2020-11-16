@@ -22,10 +22,14 @@ const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/pullquote', 'cor
 const deprecatedBlocks = [ 'coblocks/click-to-tweet' ];
 
 /**
- * Compares against list of blocks with deprecated typography controls and prepares attributes for deprecation when needed.
+ * Compares against list of blocks with deprecated typography controls and prepares
+ * attributes for deprecation when needed.
  *
- * @param {Object} attributes Original block attributes.
- * @return {Object} Filtered block attributes.
+ * Does not modify settings for registered block - Will only modify attributes
+ * used within the deprecated function.
+ *
+ * @param {Object} attributes Original registered block attributes.
+ * @return {Object} Block attributes filtered for deprecation .
  */
 export function deprecateTypographyControls( attributes ) {
 	addFilter(
@@ -33,7 +37,7 @@ export function deprecateTypographyControls( attributes ) {
 		'coblocks/inspector/attributes',
 		( settings ) => {
 			if ( deprecatedBlocks.includes( settings.name ) ) {
-				settings.attributes = Object.assign( settings.attributes, TypographyAttributes );
+				attributes = Object.assign( attributes, TypographyAttributes );
 			}
 			return settings;
 		}
