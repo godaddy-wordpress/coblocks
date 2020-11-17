@@ -31,14 +31,7 @@ function deprecateCoBlocksMediaCardSettings() {
  * @return {boolean} True or false if block is deprecated.
  */
 export function mediaCardBlockDeprecated( coreMediaText, coBlocksMediaCard ) {
-	if ( ! coreMediaText ) {
-		return false;
-	}
-
-	if ( ! coBlocksMediaCard ) {
-		return false;
-	}
-	return true;
+	return ( ! coreMediaText || ! coBlocksMediaCard ) ? false : true;
 }
 
 domReady( deprecateCoBlocksMediaCardSettings );
