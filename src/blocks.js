@@ -44,6 +44,7 @@ import { supportsCollections } from './utils/block-helpers';
 
 // Deprecate Blocks
 import './js/deprecations/deprecate-coblocks-buttons.js';
+import './js/deprecations/deprecate-coblocks-media-card.js';
 
 // Register Blocks
 import * as accordion from './blocks/accordion';
