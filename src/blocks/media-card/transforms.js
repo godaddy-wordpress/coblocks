@@ -1,59 +1,10 @@
 /**
- * Internal dependencies
- */
-import metadata from './block.json';
-
-/**
  * WordPress dependencies
  */
 import { createBlock } from '@wordpress/blocks';
 
 const transforms = {
-	from: [
-		{
-			type: 'prefix',
-			prefix: ':card',
-			transform() {
-				return createBlock( metadata.name );
-			},
-		},
-		{
-			type: 'block',
-			blocks: [ 'core/image' ],
-			transform: ( { alt, url, id } ) => (
-				createBlock( metadata.name, {
-					mediaAlt: alt,
-					mediaId: id,
-					mediaUrl: url,
-					mediaType: 'image',
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'core/video' ],
-			transform: ( { src, id } ) => (
-				createBlock( metadata.name, {
-					mediaId: id,
-					mediaUrl: src,
-					mediaType: 'video',
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'core/media-text' ],
-			transform: ( { mediaAlt, mediaUrl, mediaId, mediaType, mediaPosition } ) => (
-				createBlock( metadata.name, {
-					mediaAlt,
-					mediaId,
-					mediaUrl,
-					mediaType,
-					mediaPosition,
-				} )
-			),
-		},
-	],
+	from: [],
 	to: [
 		{
 			type: 'block',
