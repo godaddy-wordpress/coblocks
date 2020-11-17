@@ -1,115 +1,18 @@
-/*
- * Include our constants
- */
-import * as helpers from '../../../../.dev/tests/cypress/helpers';
-
 describe( 'Test CoBlocks Media Card Block', function() {
 	/**
-	 * Setup media-card data
+	 * Test that we can not insert a media-card block into the page.
+	 * Media-card blocks is deprecated and should not be usable.
 	 */
-	const mediaData = {
-		colorData: {
-			backgroundColor: '#ff0000',
-			backgroundColorRGB: 'rgb(255, 0, 0)',
-		},
-	};
+	it( 'Test media-card block in not insertable.', function() {
+		cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).then( ( inserterButton ) => {
+			if ( ! Cypress.$( inserterButton ).hasClass( 'is-pressed' ) ) {
+				cy.get( inserterButton ).click();
+			}
+		} );
 
-	/**
-	 * Test that we can add a media-card block to the content, not add any images or
-	 * alter any settings, and are able to successfully save the block without errors.
-	 */
-	it( 'Test media-card block saves with empty values.', function() {
-		helpers.addBlockToPost( 'coblocks/media-card', true );
+		cy.get( '.block-editor-inserter__search' ).find( 'input' ).clear();
+		cy.get( '.block-editor-inserter__search' ).click().type( 'media-card' );
 
-		helpers.savePage();
-
-		helpers.checkForBlockErrors( 'coblocks/media-card' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-media-card' ).should( 'exist' );
-
-		helpers.editPage();
-	} );
-
-	/**
-	 * Test that we can upload images to block and are able
-	 * to successfully save the block without errors.
-	 */
-	it( 'Test media-card block saves with image upload.', function() {
-		const { imageBase } = helpers.upload.spec;
-		helpers.addBlockToPost( 'coblocks/media-card', true );
-
-		cy.get( '[data-type="coblocks/media-card"]' ).click();
-
-		helpers.upload.imageToBlock( 'coblocks/media-card' );
-
-		cy.get( `img[src*="${imageBase}"]` );
-
-		helpers.savePage();
-
-		helpers.checkForBlockErrors( 'coblocks/media-card' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-media-card' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
-
-		helpers.editPage();
-	} );
-
-	/**
-	 * Test that we can add image from library and are able
-	 * to successfully save the block without errors.
-	 */
-	it( 'Test media-card block saves with images from media library.', function() {
-		helpers.addBlockToPost( 'coblocks/media-card', true );
-
-		cy.get( '[data-type="coblocks/media-card"]' )
-			.click()
-			.find( 'button' )
-			.contains( /media library/i )
-			.click( { force: true } );
-
-		cy.get( '.media-modal-content' ).contains( /media library/i ).click();
-
-		cy.get( '.media-modal-content' ).find( 'li.attachment' )
-			.first( 'li' )
-			.click();
-
-		cy.get( '.media-toolbar' ).find( 'button' ).click();
-
-		helpers.savePage();
-
-		helpers.checkForBlockErrors( 'coblocks/media-card' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-media-card' ).should( 'exist' );
-		cy.get( '.wp-block-coblocks-media-card' ).find( 'img' ).should( 'have.attr', 'src' );
-
-		helpers.editPage();
-	} );
-
-	/**
-	 * Test that we can add a media-card block to the content, adjust colors
-	 * and are able to successfully save the block without errors.
-	 */
-	it( 'Test media-card block saves with color values set.', function() {
-		const { backgroundColor, backgroundColorRGB } = mediaData.colorData;
-		helpers.addBlockToPost( 'coblocks/media-card', true );
-
-		helpers.setColorSetting( 'background color', backgroundColor );
-
-		helpers.savePage();
-
-		helpers.checkForBlockErrors( 'coblocks/media-card' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-media-card' ).should( 'exist' );
-		cy.get( '.wp-block-coblocks-media-card__inner' )
-			.should( 'have.css', 'background-color', backgroundColorRGB );
-
-		helpers.editPage();
+		cy.get( '.block-editor-inserter__block-list .editor-block-list-item-coblocks-media-card' ).should( 'not.exist' );
 	} );
 } );
