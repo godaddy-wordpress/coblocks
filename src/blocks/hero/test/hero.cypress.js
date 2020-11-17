@@ -36,9 +36,17 @@ describe( 'Test CoBlocks Hero Block', function() {
 	 * Test that we can add a hero block to the content, adjust colors
 	 * and are able to successfully save the block without errors.
 	 */
-	it( 'Test hero block saves with color values set.', function() {
+	// Skip reason: "A bug exists with the Hero block and setting text color."
+	// Skip issue: https://github.com/godaddy-wordpress/coblocks/issues/1762
+	// eslint-disable-next-line jest/no-disabled-tests
+	it.skip( 'Test hero block saves with color values set.', function() {
 		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB } = heroData;
 		helpers.addBlockToPost( 'coblocks/hero', true );
+
+		cy.get( '.wp-block-coblocks-hero' ).click( { force: true } );
+
+		cy.get( '[data-type="core/heading"]' ).focus().type( 'Heading Text' );
+		cy.get( '[data-type="core/paragraph"]' ).first().focus().type( 'Paragraph Text' );
 
 		cy.get( '.wp-block-coblocks-hero' ).click( { force: true } );
 

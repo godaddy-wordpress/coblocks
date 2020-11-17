@@ -4,11 +4,6 @@
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Extension: CoBlocks Padding Controls', function() {
-	beforeEach( function() {
-		helpers.closeLayoutSelector();
-		helpers.disableGutenbergFeatures();
-	} );
-
 	/**
 	 * Test that the CoBlocks panel padding controls function as expected.
 	 */
