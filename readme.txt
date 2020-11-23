@@ -116,11 +116,14 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Enhancements
-* Improve performance of Layout selector [#1577](https://github.com/godaddy-wordpress/coblocks/pull/1577)
-* Enhance Layout selector by enabling extensibility [#1738](https://github.com/godaddy-wordpress/coblocks/pull/1738)
-
-### Bug Fixes
-* Fix broken style previews across blocks [#1747](https://github.com/godaddy-wordpress/coblocks/pull/1747)
+* Add hint to the "Save Design Pattern" modal [#1751](https://github.com/godaddy-wordpress/coblocks/pull/1751)
+* Add icons for improved animations UI [#1752](https://github.com/godaddy-wordpress/coblocks/pull/1752)
 
 ### Misc
-* Remove image download functionality from layout selector [#1733](https://github.com/godaddy-wordpress/coblocks/pull/1733)
+* Add logic to define Layout Selector visibility in data store [#1754](https://github.com/godaddy-wordpress/coblocks/pull/1754)
+* Add logic to prevent insertion of Media Card block [#1760](https://github.com/godaddy-wordpress/coblocks/pull/1760)
+* Add logic to deprecate typography controls from Click-To-Tweet block [#1757](https://github.com/godaddy-wordpress/coblocks/pull/1757)
+* Remove deprecated transforms jest tests [#1761](https://github.com/godaddy-wordpress/coblocks/pull/1761)
+* Cypress E2E testing framework upgrades [#1763](https://github.com/godaddy-wordpress/coblocks/pull/1763)
+* Cypress E2E test updates and tweaks [#1764](https://github.com/godaddy-wordpress/coblocks/pull/1764)
+

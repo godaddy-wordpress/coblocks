@@ -1,4 +1,18 @@
 
+2.5.3 / 2020-11-23
+==================
+### Enhancements
+* Add hint to the "Save Design Pattern" modal [#1751](https://github.com/godaddy-wordpress/coblocks/pull/1751)
+* Add icons for improved animations UI [#1752](https://github.com/godaddy-wordpress/coblocks/pull/1752)
+
+### Misc
+* Add logic to define Layout Selector visibility in data store [#1754](https://github.com/godaddy-wordpress/coblocks/pull/1754)
+* Add logic to prevent insertion of Media Card block [#1760](https://github.com/godaddy-wordpress/coblocks/pull/1760)
+* Add logic to deprecate typography controls from Click-To-Tweet block [#1757](https://github.com/godaddy-wordpress/coblocks/pull/1757)
+* Remove deprecated transforms jest tests [#1761](https://github.com/godaddy-wordpress/coblocks/pull/1761)
+* Cypress E2E testing framework upgrades [#1763](https://github.com/godaddy-wordpress/coblocks/pull/1763)
+* Cypress E2E test updates and tweaks [#1764](https://github.com/godaddy-wordpress/coblocks/pull/1764)
+
 2.5.2 / 2020-11-09
 ==================
 ### Enhancements
