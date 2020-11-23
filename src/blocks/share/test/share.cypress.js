@@ -30,8 +30,8 @@ describe( 'Test CoBlocks Share Block', function() {
 
 		helpers.toggleSettingCheckbox( 'Social colors' );
 
-		cy.get( '.wp-block-coblocks-social li:first-child .wp-block-coblocks-social__button' )
-			.should( 'have.css', 'background-color', 'rgb(49, 55, 60)' );
+		cy.get( '.block-editor-writing-flow .wp-block-coblocks-social li:first-child .wp-block-coblocks-social__button' )
+			.should( 'have.css', 'background-color', 'rgb(200, 106, 25)' );
 
 		helpers.savePage();
 
@@ -40,7 +40,7 @@ describe( 'Test CoBlocks Share Block', function() {
 		helpers.viewPage();
 
 		cy.get( '.wp-block-coblocks-social li:first-child .wp-block-coblocks-social__button' )
-			.should( 'have.css', 'background-color', 'rgb(49, 55, 60)' );
+			.should( 'have.css', 'background-color', 'rgb(200, 106, 25)' );
 
 		helpers.editPage();
 	} );
@@ -74,7 +74,7 @@ describe( 'Test CoBlocks Share Block', function() {
 
 		if ( Cypress.browser.name === 'chrome' ) {
 			cy.get( '.wp-block-coblocks-social li:first-child .wp-block-coblocks-social__button' )
-			.should( 'have.css', 'border-radius', '10px' );
+				.should( 'have.css', 'border-radius', '10px' );
 		} else if ( Cypress.browser.name === 'firefox' ) {
 			cy.get( '.wp-block-coblocks-social li:first-child .wp-block-coblocks-social__button' )
 				.should( 'have.css', 'border-bottom-left-radius', '10px' )
@@ -82,7 +82,7 @@ describe( 'Test CoBlocks Share Block', function() {
 				.should( 'have.css', 'border-top-right-radius', '10px' )
 				.should( 'have.css', 'border-top-left-radius', '10px' );
 		}
-			helpers.editPage();
+		helpers.editPage();
 	} );
 
 	/**

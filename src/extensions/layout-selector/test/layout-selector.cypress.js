@@ -42,12 +42,15 @@ describe( 'Extension: Layout Selector', () => {
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(1)' ).find( 'a' ).click();
+
+		cy.get( '[data-type="core/image"] img[src*="http"]' ); // Ensure layout is loaded
+
 		cy.get( '.coblocks-layout-selector__layout' ).first().click();
 
 		cy.get( '.editor-post-title__block' ).contains( 'About' );
 		cy.get( '.wp-block' ).contains( 'Test About Layout' );
 
-		cy.get( `[data-type="core/image"] img[src^="${ Cypress.env( 'testURL' ) }"]` );
+		cy.get( `[data-type="core/image"] img[src*="http"]` ).should( 'exist' );
 	} );
 
 	it( 'inserts blank layout into page', () => {
@@ -102,6 +105,7 @@ describe( 'Extension: Layout Selector', () => {
 		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
 		helpers.disableGutenbergFeatures();
 
+		cy.get( '[data-type="core/image"] img[src*="http"]' ); // Ensure layout is loaded
 		cy.get( '.coblocks-layout-selector__layout' ).first().click();
 		cy.get( '[data-type="core/image"] img[src*="http"]' ).should( 'exist' );
 		cy.get( '.editor-post-save-draft' ).click();

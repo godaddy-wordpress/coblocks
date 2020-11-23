@@ -94,8 +94,8 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		cy.get( 'a[title="Facebook"]' )
 			.should( 'have.attr', 'href', 'https://www.facebook.com/test' )
-			.should('have.attr', 'target', '_blank')
-			.should('have.attr', 'rel', 'noopener noreferrer');
+			.should( 'have.attr', 'target', '_blank' )
+			.should( 'have.attr', 'rel', 'noopener noreferrer' );
 
 		helpers.editPage();
 	} );
@@ -247,8 +247,8 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 		helpers.openSettingsPanel( 'Icon settings' );
 		helpers.toggleSettingCheckbox( 'Social colors' );
 
-		cy.get( 'button[aria-label="Add Facebook profile"]' )
-			.should( 'have.css', 'background-color', 'rgb(49, 55, 60)' );
+		cy.get( '.block-editor-writing-flow button[aria-label="Add Facebook profile"]' )
+			.should( 'have.css', 'background-color', 'rgb(200, 106, 25)' );
 
 		helpers.savePage();
 
@@ -257,7 +257,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 		helpers.viewPage();
 
 		cy.get( '.wp-block-coblocks-social-profiles ul li:first-child a' )
-			.should( 'have.css', 'background-color', 'rgb(49, 55, 60)' );
+			.should( 'have.css', 'background-color', 'rgb(200, 106, 25)' );
 
 		helpers.editPage();
 	} );
