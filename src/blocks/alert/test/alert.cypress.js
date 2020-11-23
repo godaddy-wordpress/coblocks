@@ -31,10 +31,12 @@ describe( 'Test CoBlocks Alert Block', function() {
 
 		cy.get( '.wp-block-coblocks-alert__title' )
 			.first()
+			.focus()
 			.type( 'Test Title' );
 
 		cy.get( '.wp-block-coblocks-alert__text' )
 			.first()
+			.focus()
 			.type( 'Test text' );
 
 		helpers.savePage();
