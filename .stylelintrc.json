@@ -2,8 +2,20 @@
 	"extends": "stylelint-config-wordpress/scss",
 	"plugins": [ "stylelint-order" ],
 	"rules": {
-		"max-line-length": [120, { "ignore": ["non-comments"] }],
+		"at-rule-empty-line-before": null,
+
+		"font-weight-notation": null,
+
+		"max-line-length": null,
+
 		"no-descending-specificity": null,
-		"order/properties-alphabetical-order": true 
+
+		"number-leading-zero": null,
+
+		"order/properties-alphabetical-order": true,
+
+		"selector-class-pattern": null,
+		"selector-pseudo-element-colon-notation": null,
+		"selector-type-no-unknown": null
 	}
 }
