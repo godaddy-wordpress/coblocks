@@ -7,7 +7,6 @@
 		}
 	}
 }
-
 @include break-small-max() {
 	// For desktop.
 	@for $i from 1 through 10 {
