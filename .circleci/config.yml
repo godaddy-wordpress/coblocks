@@ -414,9 +414,9 @@ jobs:
             JEST_JUNIT_OUTPUT_NAME="results.xml"
 
             if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
-              npm run test:unit -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html
+              npm run test:js -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html
             else
-              npm run test:unit -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html --findRelatedTests $FILES
+              npm run test:js -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html --findRelatedTests $FILES
             fi
       - store_artifacts:
           path: /tmp/artifacts/code-coverage/
