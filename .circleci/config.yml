@@ -239,7 +239,7 @@ commands:
 
   pre_check_files:
     steps:
-      - run: 
+      - run:
           name: "Pre-Check files"
           command: |
             if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ]; then
@@ -256,7 +256,7 @@ commands:
 
   install_wordpress_testing_suite:
     steps:
-      - run: 
+      - run:
           name: "Install WordPress Testing Suite"
           command: |
             bash .dev/bin/install-dependencies.sh
@@ -399,7 +399,7 @@ jobs:
 
   unit_testing_php_73:
     docker:
-      - image: circleci/php:7.3
+      - image: circleci/php:7.4
       - image: circleci/mysql:5.7
     steps:
       - checkout
