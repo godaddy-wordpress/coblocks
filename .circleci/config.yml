@@ -399,7 +399,7 @@ jobs:
 
   unit_testing_php_73:
     docker:
-      - image: circleci/php:7.4
+      - image: circleci/php:7.2
       - image: circleci/mysql:5.7
     steps:
       - checkout
