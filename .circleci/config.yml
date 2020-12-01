@@ -155,6 +155,113 @@ commands:
             sudo rm -f /etc/php/*/conf.d/*xdebug.ini
             sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
 
+  restore_composer_cache:
+    steps:
+      - restore_cache:
+          keys:
+            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Branch }}
+            - composer-deps
+
+  restore_yarn_cache:
+    steps:
+      - restore_cache:
+          keys:
+            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-{{ .Branch }}
+            - yarn-deps
+
+  run_e2e_tests:
+    parameters:
+      browser:
+        type: string
+    steps:
+      - run:
+          name: Run end to end tests (Cypress.io) - << parameters.browser >>
+          command: |
+            touch cypress.env.json
+            echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
+            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
+              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>
+            else
+              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >> --spec "$(cat /tmp/specstring)"
+            fi
+
+  start_wpcli_server:
+    steps:
+      - run:
+          name: Start WPCLI Server
+          command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root  --path=/tmp/wordpress
+          background: true
+
+  wait_for_mysql:
+    steps:
+      - run:
+          name: Waiting for MySQL to be ready
+          command: |
+            for i in `seq 1 10`;
+            do
+              nc -z 127.0.0.1 3306 && echo Success && exit 0
+              echo -n .
+              sleep 1
+            done
+            echo Failed waiting for MySQL && exit 1
+
+  setup_e2e_env_var:
+    steps:
+      - run:
+          name: Setup Environment Variables
+          command: |
+            echo "export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH" >> $BASH_ENV
+            source /home/circleci/.bashrc
+
+  install_mailhog:
+    steps:
+      - run:
+          name: "Install Mailhog"
+          command: bash .dev/bin/install-mailhog.sh
+
+  start_mailhog:
+    steps:
+      - run:
+          name: "Start Mailhog"
+          command: "MailHog"
+          background: true
+
+  setup_spec_files_diff_tree:
+    steps:
+      - run:
+          name: Setup spec files to run based on git diff-tree
+          command: |
+            if [[ "$CIRCLE_BRANCH" != "master" && "$CIRCLE_BRANCH" != "develop" ]]; then
+              bash .dev/bin/setup-test-specs.sh $FILES
+            fi
+
+  pre_check_files:
+    steps:
+      - run: 
+          name: "Pre-Check files"
+          command: |
+            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ]; then
+              echo "Changes do not require testing."
+              circleci-agent step halt
+            fi
+
+  run_phpunit_singlesite_coverage_reports:
+    steps:
+      - run:
+          name: "Run PHPUnit - Single Site - Generate Coverage Reports"
+          command: composer run test -- --coverage-html=/tmp/artifacts/code-coverage/phpunit/html --log-junit=/tmp/artifacts/code-coverage/phpunit/results.xml
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+
+  install_wordpress_testing_suite:
+    steps:
+      - run: 
+          name: "Install WordPress Testing Suite"
+          command: |
+            bash .dev/bin/install-dependencies.sh
+            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
+
 jobs:
 
   # 1. Download and cache node and composer dependencies.
@@ -220,20 +327,10 @@ jobs:
       - checkout
       - changed_files_with_extension:
           ext: ".php"
-      - run:
-          name: "Pre-Check"
-          command: |
-            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ]; then
-              echo "Changes do not require linting."
-              circleci-agent step halt
-            fi
+      - pre_check_files
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-            - composer-deps
+      - restore_composer_cache
       - run:
           name: Install Composer v1
           command: |
@@ -250,20 +347,10 @@ jobs:
       - checkout
       - changed_files_with_extension:
           ext: ".js"
-      - run:
-          name: "Pre-Check"
-          command: |
-            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ]; then
-              echo "Changes do not require linting."
-              circleci-agent step halt
-            fi
+      - pre_check_files
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
-            - yarn-deps
+      - restore_yarn_cache
       - run:
           name: "Linting JS"
           command: npm run lint:js $FILES
@@ -276,20 +363,10 @@ jobs:
       - checkout
       - changed_files_with_extension:
           ext: ".scss"
-      - run:
-          name: "Pre-Check"
-          command: |
-            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ]; then
-              echo "Changes do not require linting."
-              circleci-agent step halt
-            fi
+      - pre_check_files
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
-            - yarn-deps
+      - restore_yarn_cache
       - run:
           name: "Linting CSS"
           command: npm run lint:css $FILES
@@ -306,30 +383,10 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-            - composer-deps
-      - run:
-          name: Waiting for MySQL to be ready
-          command: |
-            for i in `seq 1 10`;
-            do
-              nc -z 127.0.0.1 3306 && echo Success && exit 0
-              echo -n .
-              sleep 1
-            done
-            echo Failed waiting for MySQL && exit 1
-      - run:
-          name: "Install WordPress Testing Suite"
-          command: |
-            bash .dev/bin/install-dependencies.sh
-            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
-      - run:
-          name: "Run PHPUnit - Single Site - Generate Coverage Reports"
-          command: composer run test -- --coverage-html=/tmp/artifacts/code-coverage/phpunit/html --log-junit=/tmp/artifacts/code-coverage/phpunit/results.xml
-          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+      - restore_composer_cache
+      - wait_for_mysql
+      - install_wordpress_testing_suite
+      - run_phpunit_singlesite_coverage_reports
       - store_artifacts:
           path: /tmp/artifacts/code-coverage/
           destination: phpunit-coverage
@@ -348,34 +405,14 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-            - composer-deps
+      - restore_composer_cache
       - run:
           name: Install Composer v1
           command: |
             sudo composer self-update --1
-      - run:
-          name: Waiting for MySQL to be ready
-          command: |
-            for i in `seq 1 10`;
-            do
-              nc -z 127.0.0.1 3306 && echo Success && exit 0
-              echo -n .
-              sleep 1
-            done
-            echo Failed waiting for MySQL && exit 1
-      - run:
-          name: "Install WordPress Testing Suite"
-          command: |
-            bash .dev/bin/install-dependencies.sh
-            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
-      - run:
-          name: "Run PHPUnit - Single Site - Generate Coverage Reports"
-          command: composer run test -- --coverage-html=/tmp/artifacts/code-coverage/phpunit/html --log-junit=/tmp/artifacts/code-coverage/phpunit/results.xml
-          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+      - wait_for_mysql
+      - install_wordpress_testing_suite
+      - run_phpunit_singlesite_coverage_reports
       - store_artifacts:
           path: /tmp/artifacts/code-coverage/
           destination: phpunit-coverage
@@ -393,20 +430,10 @@ jobs:
       - checkout
       - changed_files_with_extension:
           ext: ".js"
-      - run:
-          name: "Pre-Check"
-          command: |
-            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ]; then
-              echo "Changes do not require testing."
-              circleci-agent step halt
-            fi
+      - pre_check_files
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
-            - yarn-deps
+      - restore_yarn_cache
       - run:
           name: Run Jest tests
           command: |
@@ -435,65 +462,22 @@ jobs:
     parallelism: 4
     steps:
       - checkout
-      - run:
-          name: "Setup Environment Variables"
-          command: |
-            echo "export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH" >> $BASH_ENV
-            source /home/circleci/.bashrc
+      - setup_e2e_env_var
       - changed_files_with_extension:
           ext: ".js"
-      - run:
-          name: Setup spec files to run based on git diff-tree
-          command: |
-            if [[ "$CIRCLE_BRANCH" != "master" && "$CIRCLE_BRANCH" != "develop" ]]; then
-              bash .dev/bin/setup-test-specs.sh $FILES
-            fi
+      - setup_spec_files_diff_tree
       - disable_xdebug_php_extension
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
-            - yarn-deps
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-            - composer-deps
-      - run:
-          name: Waiting for MySQL to be ready
-          command: |
-            for i in `seq 1 10`;
-            do
-              nc -z 127.0.0.1 3306 && echo Success && exit 0
-              echo -n .
-              sleep 1
-            done
-            echo Failed waiting for MySQL && exit 1
+      - restore_yarn_cache
+      - restore_composer_cache
+      - wait_for_mysql
       - install_wordpress_with_coblocks
-      - run:
-          name: "Install Mailhog"
-          command: bash .dev/bin/install-mailhog.sh
-      - run:
-          name: "Start Mailhog"
-          command: "MailHog"
-          background: true
-      - run:
-          name: "Start WPCLI Server"
-          command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root  --path=/tmp/wordpress
-          background: true
-      - run:
-          name: "Run end to end tests (Cypress.io) - Chrome"
-          command: |
-            touch cypress.env.json
-            echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
-
-            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
-              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel --group e2e-chrome
-            else
-              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel --group e2e-chrome --spec "$(cat /tmp/specstring)"
-            fi
+      - install_mailhog
+      - start_mailhog
+      - start_wpcli_server
+      - run_e2e_tests:
+          browser: chrome
 
   e2e_firefox:
     docker:
@@ -502,65 +486,22 @@ jobs:
     parallelism: 4
     steps:
       - checkout
-      - run:
-          name: "Setup Environment Variables"
-          command: |
-            echo "export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH" >> $BASH_ENV
-            source /home/circleci/.bashrc
+      - setup_e2e_env_var
       - changed_files_with_extension:
           ext: ".js"
-      - run:
-          name: Setup spec files to run based on git diff-tree
-          command: |
-            if [[ "$CIRCLE_BRANCH" != "master" && "$CIRCLE_BRANCH" != "develop" ]]; then
-              bash .dev/bin/setup-test-specs.sh $FILES
-            fi
+      - setup_spec_files_diff_tree
       - disable_xdebug_php_extension
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
-            - yarn-deps
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-            - composer-deps
-      - run:
-          name: Waiting for MySQL to be ready
-          command: |
-            for i in `seq 1 10`;
-            do
-              nc -z 127.0.0.1 3306 && echo Success && exit 0
-              echo -n .
-              sleep 1
-            done
-            echo Failed waiting for MySQL && exit 1
+      - restore_yarn_cache
+      - restore_composer_cache
+      - wait_for_mysql
       - install_wordpress_with_coblocks
-      - run:
-          name: "Install Mailhog"
-          command: bash .dev/bin/install-mailhog.sh
-      - run:
-          name: "Start Mailhog"
-          command: "MailHog"
-          background: true
-      - run:
-          name: "Start WPCLI Server"
-          command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root  --path=/tmp/wordpress
-          background: true
-      - run:
-          name: "Run end to end tests (Cypress.io) - Chrome"
-          command: |
-            touch cypress.env.json
-            echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
-
-            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
-              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser firefox --record --parallel --group e2e-firefox
-            else
-              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser firefox --record --parallel --group e2e-firefox --spec "$(cat /tmp/specstring)"
-            fi
+      - install_mailhog
+      - start_mailhog
+      - start_wpcli_server
+      - run_e2e_tests:
+          browser: firefox
 
   # --------------------------------------------------
   # Internationalization Processes
@@ -575,16 +516,8 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
-            - yarn-deps
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-            - composer-deps
+      - restore_yarn_cache
+      - restore_composer_cache
       - disable_xdebug_php_extension
       - run:
           name: Generate the translations
@@ -615,16 +548,8 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
-            - yarn-deps
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-            - composer-deps
+      - restore_yarn_cache
+      - restore_composer_cache
       - run:
           name: Install PHP
           command: sudo apt-get install php libapache2-mod-php php-mbstring php-xml php-curl
@@ -680,16 +605,8 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
-            - yarn-deps
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-            - composer-deps
+      - restore_yarn_cache
+      - restore_composer_cache
       - run:
           name: Install SVN
           command: sudo apt-get update && sudo apt-get install subversion
