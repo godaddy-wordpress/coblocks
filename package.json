@@ -70,6 +70,7 @@
 	},
 	"devDependencies": {
 		"@babel/plugin-proposal-class-properties": "7.10.4",
+		"@godaddy-wordpress/stylelint-config": "^0.2.0",
 		"@testing-library/jest-dom": "^4.2.4",
 		"@wordpress/base-styles": "2.0.1",
 		"@wordpress/block-editor": "3.1.0",
@@ -123,7 +124,6 @@
 		"sass-loader": "^8.0.0",
 		"slick-carousel": "^1.8.1",
 		"style-loader": "^0.19.1",
-		"stylelint-order": "4.1.0",
 		"webpack-fix-style-only-entries": "^0.4.0"
 	},
 	"husky": {

@@ -1,5 +1,4 @@
 @include break-small() {
-
 	@for $i from 1 through 20 {
 
 		&.has-padding-#{ $i * 5 } {
@@ -7,9 +6,7 @@
 		}
 	}
 }
-
 @include break-small-max() {
-
 	@for $i from 1 through 20 {
 
 		&.has-padding-mobile-#{ $i * 5 } {

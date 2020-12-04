@@ -91,14 +91,12 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #e60023), (linkedin
 	}
 
 	@each $icon, $color in $icons {
-
 		&__button--#{$icon} &__icon {
 			mask-image: url(images/social/#{$icon}.svg);
 		}
 
 		// IE 10+ Support
 		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-
 			&__button--#{$icon} &__icon {
 				background-image: url(images/social/#{$icon}.svg);
 				color: transparent !important;
@@ -113,16 +111,12 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #e60023), (linkedin
 
 	// Social colors.
 	&.has-colors {
-
 		@each $icon, $color in $icons {
-
 			.wp-block-coblocks-social__button--#{$icon} {
 				background-color: $color !important;
 			}
 		}
-
 		@each $icon, $color in $icons {
-
 			&.is-style-mask .wp-block-coblocks-social__button--#{$icon} {
 				color: $color !important;
 			}
@@ -241,7 +235,6 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #e60023), (linkedin
 }
 
 @keyframes pulse {
-
 	0% {
 		transform: scale(1);
 	}

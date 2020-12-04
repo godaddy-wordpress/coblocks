@@ -32,44 +32,36 @@
 	}
 
 	.has-small-images img {
-
 		@include break-small() {
 			max-height: 22vw;
 		}
-
 		@include break-large() {
 			max-height: 11vw;
 		}
 	}
 
 	.has-medium-images img {
-
 		@include break-small() {
 			max-height: 28vw;
 		}
-
 		@include break-large() {
 			max-height: 12vw;
 		}
 	}
 
 	.has-large-images img {
-
 		@include break-small() {
 			max-height: 40vw;
 		}
-
 		@include break-large() {
 			max-height: 20vw;
 		}
 	}
 
 	.has-huge-images img {
-
 		@include break-small() {
 			max-height: 40vw;
 		}
-
 		@include break-large() {
 			max-height: 30vw;
 		}
@@ -89,7 +81,6 @@
 	}
 
 	.has-medium-gutter {
-
 		@include break-small() {
 			margin-bottom: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * -1 * 2);
 			margin-left: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * -0.5 * 2);
@@ -102,7 +93,6 @@
 	}
 
 	.has-large-gutter {
-
 		@include break-small() {
 			margin-bottom: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) * -1 * 2);
 			margin-left: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) * -0.5 * 2);
@@ -115,7 +105,6 @@
 	}
 
 	.has-huge-gutter {
-
 		@include break-small() {
 			margin-bottom: calc(var(--coblocks-spacing--4, #{map-get($spacing, 4)}) * -1 * 2);
 			margin-left: calc(var(--coblocks-spacing--4, #{map-get($spacing, 4)}) * -0.5 * 2);

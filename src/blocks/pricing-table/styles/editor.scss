@@ -17,7 +17,6 @@
 
 	&:nth-of-type(1),
 	&:nth-of-type(2) {
-
 		@include break-large-max() {
 			flex-basis: 50%;
 			max-width: calc(100% / 2 - var(--coblocks-spacing--2, #{map-get($spacing, 2)}));
@@ -25,13 +24,11 @@
 	}
 
 	&:nth-of-type(3) {
-
 		@include break-large-max() {
 			flex-basis: 100%;
 			margin-top: calc(2 * var(--coblocks-spacing--2, #{map-get($spacing, 2)}));
 			max-width: 100%;
 		}
-
 		@include break-small-max() {
 			margin-top: 0;
 		}
@@ -42,7 +39,6 @@
 
 	&:nth-of-type(1),
 	&:nth-of-type(2) {
-
 		@include break-large-max() {
 			flex-basis: 50%;
 			max-width: calc(100% / 2.01 - var(--coblocks-spacing--3, #{map-get($spacing, 3)}));
@@ -50,13 +46,11 @@
 	}
 
 	&:nth-of-type(3) {
-
 		@include break-large-max() {
 			flex-basis: 100%;
 			margin-top: calc(2 * var(--coblocks-spacing--3, #{map-get($spacing, 3)}));
 			max-width: 100%;
 		}
-
 		@include break-small-max() {
 			margin-top: 0;
 		}
@@ -67,7 +61,6 @@
 
 	&:nth-of-type(1),
 	&:nth-of-type(2) {
-
 		@include break-large-max() {
 			flex-basis: 50%;
 			max-width: calc(100% / 2.02 - var(--coblocks-spacing--4, #{map-get($spacing, 4)}));
@@ -75,13 +68,11 @@
 	}
 
 	&:nth-of-type(3) {
-
 		@include break-large-max() {
 			flex-basis: 100%;
 			margin-top: calc(2 * var(--coblocks-spacing--4, #{map-get($spacing, 4)}));
 			max-width: 100%;
 		}
-
 		@include break-small-max() {
 			margin-top: 0;
 		}

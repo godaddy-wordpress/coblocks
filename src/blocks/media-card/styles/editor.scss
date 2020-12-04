@@ -1,7 +1,6 @@
 .wp-block-coblocks-media-card {
 
 	&__wrapper {
-
 		@include break-small-max() {
 			display: block !important;
 		}
@@ -130,7 +129,6 @@
 		}
 
 		@include break-small-max() {
-
 			&.is-stacked-on-mobile {
 
 				.editor-media-container__resizer .components-resizable-box__handle {
@@ -141,7 +139,6 @@
 	}
 
 	@include break-small-max() {
-
 		&.is-selected.is-style-right {
 
 			.editor-media-container__resizer .components-resizable-box__handle {
@@ -149,9 +146,7 @@
 			}
 		}
 	}
-
 	@include break-small-max() {
-
 		&.is-stacked-on-mobile {
 
 			.wp-block-coblocks-media-card__wrapper {

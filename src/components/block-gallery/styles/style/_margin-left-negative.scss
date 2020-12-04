@@ -1,5 +1,4 @@
 @include break-small() {
-
 	@for $i from 1 through 10 {
 
 		&.has-negative-margin-left-#{ $i * 5 } {
@@ -7,9 +6,7 @@
 		}
 	}
 }
-
 @include break-small-max() {
-
 	@for $i from 1 through 10 {
 
 		&.has-negative-margin-left-mobile-#{ $i * 5 } {
@@ -17,9 +14,7 @@
 		}
 	}
 }
-
 @include break-small() {
-
 	@for $i from 1 through 10 {
 
 		&.has-negative-margin-#{ $i * 5 } {
@@ -27,9 +22,7 @@
 		}
 	}
 }
-
 @include break-small-max() {
-
 	@for $i from 1 through 10 {
 
 		&.has-negative-margin-mobile-#{ $i * 5 } {
