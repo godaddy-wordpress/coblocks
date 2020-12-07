@@ -140,7 +140,7 @@ commands:
       - run:
           name: Activate CoBlocks
           command: |
-            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
+            ln -s $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
             ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
 
   # Disable the xdebug PHP extension.
