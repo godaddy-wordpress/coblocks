@@ -436,20 +436,22 @@ jobs:
       - restore_yarn_cache
       - run:
           name: Run Jest tests
-          command: |
-            JEST_JUNIT_OUTPUT_DIR="/tmp/artifacts/code-coverage/jest/"
-            JEST_JUNIT_OUTPUT_NAME="results.xml"
-
-            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
-              npm run test:unit -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html
-            else
-              npm run test:unit -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html --findRelatedTests $FILES
-            fi
+          command: yarn test:unit -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --maxWorkers=2 --reporters=default --reporters=jest-junit
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: /tmp/artifacts/tests-results/jest
       - store_artifacts:
-          path: /tmp/artifacts/code-coverage/
-          destination: jest-coverage
+          path: coverage
+          destination: coverage
       - store_test_results:
-          path: /tmp/artifacts/code-coverage/
+          path: /tmp/artifacts/tests-results/jest
+      - run:
+          name: Post coverage comment to GitHub
+          command: |
+            if [ -n "$CIRCLE_PULL_REQUEST" ]; then
+              npx @godaddy-wordpress/circleci-coverage-github-reporter
+            else
+              exit 0
+            fi
 
   # --------------------------------------------------
   # End to End Testing

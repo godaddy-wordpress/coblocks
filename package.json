@@ -101,7 +101,7 @@
 		"html-react-parser": "^0.9.1",
 		"husky": "^3.1.0",
 		"jest": "^24.8.0",
-		"jest-junit": "github:jest-community/jest-junit",
+		"jest-junit": "12.0.0",
 		"jquery": "^3.4.1",
 		"jsdom": "^15.2.1",
 		"lint-staged": "^9.5.0",

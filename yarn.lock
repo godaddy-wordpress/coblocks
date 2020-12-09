@@ -1154,7 +1154,7 @@
   dependencies:
     "@wordpress/primitives" "^1.7.0"
 
-"@godaddy-wordpress/stylelint-config@0.2.0":
+"@godaddy-wordpress/stylelint-config@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@godaddy-wordpress/stylelint-config/-/stylelint-config-0.2.0.tgz#f735d96c4ac81ee1c70a788541787c232343431b"
   integrity sha512-hVGhLdKFjnKuJnJdUzJsrcjeynGqSGvM/45Fhu1F/2dkfnvQ4jlj2N2U0ZHODTN9vvH3MxjGz2jPhb+5kUjuwA==
@@ -8315,9 +8315,10 @@ jest-jasmine2@^24.9.0:
     pretty-format "^24.9.0"
     throat "^4.0.0"
 
-"jest-junit@github:jest-community/jest-junit":
+jest-junit@12.0.0:
   version "12.0.0"
-  resolved "https://codeload.github.com/jest-community/jest-junit/tar.gz/3eb8b0270f42da5c8585327ac6246a16f4c0decd"
+  resolved "https://registry.yarnpkg.com/jest-junit/-/jest-junit-12.0.0.tgz#3ebd4a6a84b50c4ab18323a8f7d9cceb9d845df6"
+  integrity sha512-+8K35LlboWiPuCnXSyiid7rFdxNlpCWWM20WEYe6IZH6psfUWKZmSpSRQ5tk0C0cBeDsvsnIzcef5mYhyJsbug==
   dependencies:
     mkdirp "^1.0.4"
     strip-ansi "^5.2.0"
