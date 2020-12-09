@@ -111,10 +111,12 @@ commands:
               BASE_BRANCH="master"
             fi
 
-            echo 'export BASE_BRANCH=$BASE_BRANCH' >> $BASH_ENV
+            echo "export BASE_BRANCH=$BASE_BRANCH" >> $BASH_ENV
       - run:
           name: Set diff files env var
-          command: echo 'FILES=$(git diff HEAD..origin/$BASE_BRANCH --name-only --diff-filter=M "*<< parameters.ext >>")' >> $BASH_ENV
+          command: |
+            FILES=$(git diff HEAD..origin/$BASE_BRANCH --name-only --diff-filter=M "*<< parameters.ext >>")
+            echo "export FILES=$FILES" >> $BASH_ENV
 
   # Install and configure WordPress for end-to-end tests.
   install_wordpress_with_coblocks:
@@ -160,17 +162,32 @@ commands:
     steps:
       - restore_cache:
           keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-            - composer-deps
+            - composer-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}
+            - composer-deps-{{ .Environment.CACHE_VERSION }}
 
   restore_yarn_cache:
     steps:
       - restore_cache:
           keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
-            - yarn-deps
+            - yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}
+            - yarn-deps-{{ .Environment.CACHE_VERSION }}
+
+  restore_update_cypress_cache:
+    steps:
+      - restore_cache:
+          keys:
+            - cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}
+            - cypress-deps-{{ .Environment.CACHE_VERSION }}
+      - run:
+          name: Install CyPress Binaries
+          command: ./node_modules/.bin/cypress install
+      - save_cache:
+          key: cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/Cypress
 
   run_e2e_tests:
     parameters:
@@ -285,16 +302,11 @@ jobs:
             PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
             yarn install --frozen-lockfile
       - save_cache:
-          key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
-            - ~/.cache/Cypress
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-            - composer-deps
+      - restore_composer_cache
       - run:
           name: Install Composer dependencies
           command: |
@@ -302,7 +314,7 @@ jobs:
             composer validate --strict
             composer install
       - save_cache:
-          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+          key: composer-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "composer.lock" }}
           paths:
             - ~/project/vendor
       - run:
@@ -464,6 +476,7 @@ jobs:
       - attach_workspace:
           at: ~/project
       - restore_yarn_cache
+      - restore_update_cypress_cache
       - restore_composer_cache
       - wait_for_mysql
       - install_wordpress_with_coblocks
@@ -488,6 +501,7 @@ jobs:
       - attach_workspace:
           at: ~/project
       - restore_yarn_cache
+      - restore_update_cypress_cache
       - restore_composer_cache
       - wait_for_mysql
       - install_wordpress_with_coblocks
