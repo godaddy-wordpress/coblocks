@@ -10,4 +10,7 @@ module.exports = {
 	moduleNameMapper: {
 		'@godaddy-wordpress/coblocks-icons': '<rootDir>/.dev/tests/jest/empty-class.js',
 	},
+	collectCoverageFrom: [
+		'<rootDir>/src/**/*.js',
+	],
 };

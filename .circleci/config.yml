@@ -35,13 +35,12 @@ workflows:
               only: /^(?!canary).*$/
           requires:
             - lint_php
-      - unit_testing_js:
+      - js:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
             - build
-          #   - lint_js
 
       # END TO END TESTING
       - e2e_chrome:
@@ -52,7 +51,7 @@ workflows:
             # - lint_css
             - unit_testing_php_56
             - unit_testing_php_73
-            - unit_testing_js
+            - js
       - e2e_firefox:
           filters:
             tags:
@@ -61,7 +60,7 @@ workflows:
             # - lint_css
             - unit_testing_php_56
             - unit_testing_php_73
-            - unit_testing_js
+            - js
 
       - canary-release:
           filters:
@@ -70,7 +69,7 @@ workflows:
           requires:
             - unit_testing_php_56
             - unit_testing_php_73
-            - unit_testing_js
+            - js
       - i18n:
           filters:
             branches:
@@ -78,13 +77,13 @@ workflows:
           requires:
             - unit_testing_php_56
             - unit_testing_php_73
-            - unit_testing_js
+            - js
 
       - deploy:
           requires:
             - unit_testing_php_56
             - unit_testing_php_73
-            - unit_testing_js
+            - js
             # - e2e_firefox
             # - e2e_chrome
           filters:
@@ -423,20 +422,27 @@ jobs:
           command: WP_MULTISITE=1 composer run test
           working_directory: /tmp/wordpress/wp-content/plugins/coblocks
 
-  unit_testing_js:
+  js:
     docker:
-      - image: circleci/node:latest-browsers-legacy
+      - image: cimg/php:7.3.23-node
     steps:
       - checkout
       - changed_files_with_extension:
           ext: ".js"
-      - pre_check_files
       - attach_workspace:
           at: ~/project
       - restore_yarn_cache
       - run:
-          name: Run Jest tests
-          command: yarn test:unit -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --maxWorkers=2 --reporters=default --reporters=jest-junit
+          name: "Linting JS"
+          command: |
+            if [ "$CIRCLE_BRANCH" == "master" ]; then
+              exit 0
+            else
+              yarn lint:js $FILES
+            fi
+      - run:
+          name: "Test JS and Collect Coverage"
+          command: yarn test:js:coverage --maxWorkers=2 --reporters=default --reporters=jest-junit
           environment:
             JEST_JUNIT_OUTPUT_DIR: /tmp/artifacts/tests-results/jest
       - store_artifacts:
