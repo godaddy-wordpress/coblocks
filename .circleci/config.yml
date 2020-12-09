@@ -14,12 +14,9 @@ workflows:
               only: /^(?!canary).*$/
           requires:
             - build
-      # - lint_js:
-      #     requires:
-      #       - build
-      # - lint_css:
-      #     requires:
-      #       - build
+      - lint_css:
+         requires:
+           - build
 
       # UNIT TESTING
       # Support PHP Versions: http://php.net/supported-versions.php
@@ -48,7 +45,7 @@ workflows:
             tags:
               only: /^(?!canary).*$/
           requires:
-            # - lint_css
+            - lint_css
             - unit_testing_php_56
             - unit_testing_php_73
             - js
@@ -57,7 +54,7 @@ workflows:
             tags:
               only: /^(?!canary).*$/
           requires:
-            # - lint_css
+            - lint_css
             - unit_testing_php_56
             - unit_testing_php_73
             - js
@@ -104,6 +101,7 @@ commands:
         type: string
     steps:
       - run:
+          name: Get and set base branch env file
           command: |
             if [ -n "$CIRCLE_PULL_REQUEST" ]; then
               GH_API_ENDPOINT="${CIRCLE_PULL_REQUEST/github.com/api.github.com/repos}"
@@ -112,7 +110,9 @@ commands:
             else
               BASE_BRANCH="master"
             fi
-      - run: FILES=$(git diff HEAD..$BASE_BRANCH --name-only --diff-filter=M '*<< parameters.ext >>')
+      - run:
+          name: Set diff files env var
+          command: FILES=$(git diff HEAD..origin/$BASE_BRANCH --name-only --diff-filter=M '*<< parameters.ext >>')
 
   # Install and configure WordPress for end-to-end tests.
   install_wordpress_with_coblocks:
@@ -338,22 +338,6 @@ jobs:
           name: "Linting PHP"
           command: composer run lint $FILES
 
-  # Run eslint on changed javascript files only.
-  lint_js:
-    docker:
-      - image: circleci/node:latest
-    steps:
-      - checkout
-      - changed_files_with_extension:
-          ext: ".js"
-      - pre_check_files
-      - attach_workspace:
-          at: ~/project
-      - restore_yarn_cache
-      - run:
-          name: "Linting JS"
-          command: npm run lint:js $FILES
-
   # Run stylelint on changed stylesheet files only.
   lint_css:
     docker:
@@ -368,7 +352,7 @@ jobs:
       - restore_yarn_cache
       - run:
           name: "Linting CSS"
-          command: npm run lint:css $FILES
+          command: yarn lint:css $FILES
 
   # --------------------------------------------------
   # Unit Testing
