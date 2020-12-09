@@ -112,11 +112,13 @@ commands:
             fi
 
             echo "export BASE_BRANCH=$BASE_BRANCH" >> $BASH_ENV
+            source $BASH_ENV
       - run:
           name: Set diff files env var
           command: |
             FILES=$(git diff HEAD..origin/$BASE_BRANCH --name-only --diff-filter=M "*<< parameters.ext >>")
-            echo "export FILES=$FILES" >> $BASH_ENV
+            echo "export FILES='$FILES'" >> $BASH_ENV
+            source $BASH_ENV
 
   # Install and configure WordPress for end-to-end tests.
   install_wordpress_with_coblocks:
@@ -291,11 +293,7 @@ jobs:
     steps:
       - checkout
       - disable_xdebug_php_extension
-      - restore_cache:
-          keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
-            - yarn-deps
+      - restore_yarn_cache
       - run:
           name: Install Node dependencies
           command: |
