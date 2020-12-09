@@ -8,13 +8,13 @@ workflows:
               only: /^(?!canary).*$/
 
       # CODE LINTING
-      - lint_php:
+      - php:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
             - build
-      - lint_css:
+      - css:
          requires:
            - build
 
@@ -25,13 +25,13 @@ workflows:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - lint_php
+            - php
       - unit_testing_php_73:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - lint_php
+            - php
       - js:
           filters:
             tags:
@@ -45,7 +45,7 @@ workflows:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - lint_css
+            - css
             - unit_testing_php_56
             - unit_testing_php_73
             - js
@@ -54,7 +54,7 @@ workflows:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - lint_css
+            - css
             - unit_testing_php_56
             - unit_testing_php_73
             - js
@@ -110,9 +110,11 @@ commands:
             else
               BASE_BRANCH="master"
             fi
+
+            echo 'export BASE_BRANCH=$BASE_BRANCH' >> $BASH_ENV
       - run:
           name: Set diff files env var
-          command: FILES=$(git diff HEAD..origin/$BASE_BRANCH --name-only --diff-filter=M '*<< parameters.ext >>')
+          command: echo 'FILES=$(git diff HEAD..origin/$BASE_BRANCH --name-only --diff-filter=M "*<< parameters.ext >>")' >> $BASH_ENV
 
   # Install and configure WordPress for end-to-end tests.
   install_wordpress_with_coblocks:
@@ -319,7 +321,7 @@ jobs:
   # --------------------------------------------------
 
   # Run phpcs on changed php files only.
-  lint_php:
+  php:
     docker:
       - image: circleci/php:7.3
     steps:
@@ -339,7 +341,7 @@ jobs:
           command: composer run lint $FILES
 
   # Run stylelint on changed stylesheet files only.
-  lint_css:
+  css:
     docker:
       - image: circleci/node:latest
     steps:
