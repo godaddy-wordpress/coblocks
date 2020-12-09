@@ -31,7 +31,8 @@
 		"lint:js": "wp-scripts lint-js",
 		"lint:php": "wp-scripts env lint-php",
 		"test:php": "wp-scripts env test-php",
-		"test:unit": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js"
+		"test:js": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js",
+		"test:js:coverage": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js --coverage"
 	},
 	"wp-env": {
 		"plugin-dir": "coblocks",
@@ -101,7 +102,7 @@
 		"html-react-parser": "^0.9.1",
 		"husky": "^3.1.0",
 		"jest": "^24.8.0",
-		"jest-junit": "github:jest-community/jest-junit",
+		"jest-junit": "12.0.0",
 		"jquery": "^3.4.1",
 		"jsdom": "^15.2.1",
 		"lint-staged": "^9.5.0",
