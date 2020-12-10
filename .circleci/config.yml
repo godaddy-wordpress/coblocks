@@ -107,6 +107,7 @@ commands:
               GH_API_ENDPOINT="${CIRCLE_PULL_REQUEST/github.com/api.github.com/repos}"
               GH_API_ENDPOINT="${GH_API_ENDPOINT/pull/pulls}"
               BASE_BRANCH=$(curl -s $GH_API_ENDPOINT | jq -r '.base.ref')
+              [ "${BASE_BRANCH}" = "null" ] && BASE_BRANCH="master"
             else
               BASE_BRANCH="master"
             fi
