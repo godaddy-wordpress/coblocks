@@ -2,6 +2,9 @@
 	"name": "coblocks/gallery-carousel",
 	"category": "media",
 	"attributes": {
+		"lightboxId" : {
+			"type": "string"
+		},
 		"gutter": {
 			"type": "number",
 			"default": 5

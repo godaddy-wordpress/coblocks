@@ -60,6 +60,7 @@ class Inspector extends Component {
 			attributes,
 			isSelected,
 			setAttributes,
+			clientId,
 		} = this.props;
 
 		const {
@@ -139,7 +140,12 @@ class Inspector extends Component {
 							<ToggleControl
 								label={ __( 'Lightbox', 'coblocks' ) }
 								checked={ !! lightbox }
-								onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
+								onChange={ () => {
+									setAttributes( {
+										lightbox: ! lightbox,
+										lightboxId: ! lightbox ? clientId.replace( /-/g, '' ) : undefined,
+									} );
+								} }
 								help={ this.getLightboxHelp }
 							/>
 							<ToggleControl

@@ -12,28 +12,28 @@ const GalleryAttributes = {
 		query: {
 			url: {
 				source: 'attribute',
-				selector: 'img',
+				selector: 'img, amp-img',
 				attribute: 'src',
 			},
 			link: {
 				source: 'attribute',
-				selector: 'img',
+				selector: 'img, amp-img',
 				attribute: 'data-link',
 			},
 			imgLink: {
 				source: 'attribute',
-				selector: 'img',
+				selector: 'img, amp-img',
 				attribute: 'data-imglink',
 			},
 			alt: {
 				source: 'attribute',
-				selector: 'img',
+				selector: 'img, amp-img',
 				attribute: 'alt',
 				default: '',
 			},
 			id: {
 				source: 'attribute',
-				selector: 'img',
+				selector: 'img, amp-img',
 				attribute: 'data-id',
 			},
 			caption: {

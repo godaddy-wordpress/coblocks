@@ -373,6 +373,7 @@ const GalleryCarouselEdit = ( props ) => {
 		lightbox,
 		autoPlay,
 		autoPlaySpeed,
+		lightboxId,
 	} = attributes;
 
 	const hasImages = !! images.length;
@@ -392,34 +393,52 @@ const GalleryCarouselEdit = ( props ) => {
 		const carousel = document.getElementById( clientId );
 		if ( !! carousel ) {
 			const newHeightValue = `${ height }px`;
-			const slides = carousel.querySelectorAll( '.amp-carousel-slide' );
+			const slides = carousel.querySelectorAll( '.amp-carousel-slide > amp-img' );
 			document.getElementById( clientId ).style.height = newHeightValue;
 			slides.forEach( ( slide ) => slide.style.height = newHeightValue );
 		}
 	}, [ height ] );
 
-	useEffect( ( ) => {
-		const carousel = document.getElementById( clientId );
-		if ( !! carousel ) {
-			const newHeightValue = `${ height }px`;
-			const slides = carousel.querySelectorAll( '.amp-carousel-slide' );
-			document.getElementById( clientId ).style.height = newHeightValue;
-			slides.forEach( ( slide ) => slide.style.height = newHeightValue );
-		}
-	}, [ autoPlay ] );
+	// useEffect( ( ) => {
+	// 	const carousel = document.getElementById( clientId );
+	// 	if ( !! carousel ) {
+	// 		const newHeightValue = `${ height }px`;
+	// 		const slides = carousel.querySelectorAll( '.amp-carousel-slide' );
+	// 		document.getElementById( clientId ).style.height = newHeightValue;
+	// 		slides.forEach( ( slide ) => slide.style.height = newHeightValue );
+	// 	}
+	// }, [ autoPlay ] );
+
+	const [ lightboxEnabled, setLightboxEnabled ] = useState( lightboxId );
 
 	useEffect( ( ) => {
 		const carousel = document.getElementById( clientId );
 		if ( !! carousel ) {
 			const slides = carousel.querySelectorAll( '.amp-carousel-slide' );
-			switch ( lightbox ) {
-				case true:
-					// carousel.setAttribute( 'amp-lightbox-group', true );
-					break;
-				case false:
-					// carousel.removeAttribute( 'amp-lightbox-group' );
-					break;
-			}
+			// console.log( lightboxId );
+
+			// switch ( lightbox ) {
+			// 	case true:
+			// 		const lightboxIdString = clientId.replace( /-/g, '' );
+			// 		setAttributes( 'lightboxId', lightboxIdString );
+			// 		carousel.setAttribute( 'lightbox', clientId );
+			// 		// slides.forEach( ( slide ) => {
+			// 		// 	slide.setAttribute( 'lightbox', clientId );
+			// 		// 	slide.setAttribute( 'on', 'tap:amp-lightbox-gallery.activate' );
+			// 		// } );
+
+			// 		break;
+			// 	case false:
+
+			// 		setAttributes( 'lightboxId', undefined );
+			carousel.removeAttribute( 'lightbox' );
+			// slides.forEach( ( slide ) => {
+			// 	slide.removeAttribute( 'lightbox' );
+			// 	slide.removeAttribute( 'on' );
+			// } );
+
+			// break;
+		// }
 		}
 	}, [ lightbox ] );
 
@@ -434,7 +453,7 @@ const GalleryCarouselEdit = ( props ) => {
 			'has-horizontal-gutter': gutter > 0,
 			'is-selected': isSelected,
 			'has-lightbox': lightbox,
-			'has-no-arrows': prevNextButtons,
+			'has-no-arrows': ! prevNextButtons,
 		}
 	);
 
@@ -444,9 +463,19 @@ const GalleryCarouselEdit = ( props ) => {
 		}
 	);
 
+	const navFigureClasses = classnames( {
+		[ `has-margin-left-${ gutter }` ]: gutter > 0,
+		[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+		[ `has-margin-right-${ gutter }` ]: gutter > 0,
+		[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+	}
+	);
+
 	const renderAmpCarousel = () => {
+		console.log( lightbox, lightboxId );
 		return (
-			<amp-carousel lightbox
+			<amp-carousel
+				lightbox={ lightboxEnabled }
 				id={ clientId }
 				height={ responsiveHeight ? null : height }
 				layout={ responsiveHeight ? 'fill' : 'fixed-height' }
@@ -467,14 +496,16 @@ const GalleryCarouselEdit = ( props ) => {
 					);
 
 					return (
-						<amp-img
-							src={ img.url }
-							height={ responsiveHeight ? null : height }
-							alt={ img.alt }
-							id={ img.id }
-							key={ img.id || img.url }
-							aria-label={ ariaLabel }
-						></amp-img>
+						<div className="coblocks-gallery--item" role="button" tabIndex="0" key={ img.id || img.url }>
+							<amp-img
+								src={ img.url }
+								height={ responsiveHeight ? null : height }
+								alt={ img.alt }
+								id={ img.id }
+								key={ img.id || img.url }
+								aria-label={ ariaLabel }
+							></amp-img>
+						</div>
 					);
 				} ) }
 			</amp-carousel>
@@ -487,17 +518,21 @@ const GalleryCarouselEdit = ( props ) => {
 			<div className="coblocks-carousel-preview">
 				{ images.map( ( image, index ) => {
 					return (
-						<amp-img
-							layout="flex-item"
-							height="150"
-							on={ `tap:${ clientId }.goToSlide(index=${ index })` }
-							src={ image.url }
-							alt={ image.alt }
-							data-link={ image.link }
-							key={ image.id || image.url }
-							data-id={ image.id }
-							class={ classnames( 'coblocks--item-thumbnail',	{ [ `wp-image-${ image.id }` ]: image.id } ) }
-						></amp-img>
+						<div key={ image.id || image.url } className="coblocks--item-thumbnail">
+							<figure className={ navFigureClasses } >
+								<amp-img
+									layout="flex-item"
+									height="150"
+									on={ `tap:${ clientId }.goToSlide(index=${ index })` }
+									src={ image.url }
+									alt={ image.alt }
+									data-link={ image.link }
+									key={ image.id || image.url }
+									data-id={ image.id }
+									class={ classnames( { [ `wp-image-${ image.id }` ]: image.id } ) }
+								></amp-img>
+							</figure>
+						</div>
 					);
 				} ) }
 			</div>
@@ -549,9 +584,7 @@ const GalleryCarouselEdit = ( props ) => {
 						placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
 						value={ primaryCaption }
 						className="coblocks-gallery--caption coblocks-gallery--primary-caption"
-						// unstableOnFocus={ this.onFocusCaption }
 						onChange={ ( value ) => setAttributes( { primaryCaption: value } ) }
-						// isSelected={ this.state.captionFocused }
 						keepPlaceholderOnFocus
 						inlineToolbar
 					/>
