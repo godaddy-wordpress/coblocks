@@ -47,6 +47,7 @@ class CoBlocks_Block_Assets {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_scripts' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'frontend_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
+
 	}
 
 	/**
@@ -329,23 +330,30 @@ class CoBlocks_Block_Assets {
 
 		// Carousel block.
 		if ( $this->is_page_gutenberg() || has_block( 'coblocks/gallery-carousel' ) || has_block( 'core/block' ) ) {
+			wp_enqueue_script( 
+				'coblocks-amp-dependency', 
+				'https://cdn.ampproject.org/v0.js',
+				array( ), 
+				COBLOCKS_VERSION,
+				true 
+			);
+
+			// AMP Lightbox.
 			wp_enqueue_script(
-				'coblocks-flickity',
-				$vendors_dir . '/flickity.js',
-				array( 'jquery' ),
+				'coblocks-amp-lightbox',
+				'https://cdn.ampproject.org/v0/amp-lightbox-gallery-0.1.js',
+				array( 'coblocks-amp-carousel' ),
 				COBLOCKS_VERSION,
 				true
 			);
 
-			if ( $this->is_page_gutenberg() || has_block( 'coblocks/accordion' ) || has_block( 'core/block' ) ) {
-				wp_enqueue_script(
-					'coblocks-accordion-carousel',
-					$dir . 'coblocks-accordion-carousel.js',
-					array( 'coblocks-flickity' ),
-					COBLOCKS_VERSION,
-					true
-				);
-			}
+			wp_enqueue_script( 
+				'coblocks-amp-carousel', 
+				'https://cdn.ampproject.org/v0/amp-carousel-0.2.js',
+				array( 'coblocks-amp-dependency' ), 
+				COBLOCKS_VERSION,
+				true 
+			);
 		}
 
 		// Post Carousel block.
@@ -384,12 +392,11 @@ class CoBlocks_Block_Assets {
 			);
 		}
 
-		// Lightbox.
+		// CoBlocks Lightbox.
 		if (
 			has_block( 'coblocks/gallery-masonry' ) ||
 			has_block( 'coblocks/gallery-stacked' ) ||
 			has_block( 'coblocks/gallery-collage' ) ||
-			has_block( 'coblocks/gallery-carousel' ) ||
 			has_block( 'coblocks/gallery-offset' ) ||
 			has_block( 'core/gallery' ) ||
 			has_block( 'core/image' ) ||

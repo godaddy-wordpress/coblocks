@@ -18,10 +18,6 @@
 			"type": "number",
 			"default": 400
 		},
-		"pageDots": {
-			"type": "boolean",
-			"default": false
-		},
 		"prevNextButtons": {
 			"type": "boolean",
 			"default": true
@@ -33,22 +29,6 @@
 		"autoPlaySpeed": {
 			"type": "string",
 			"default": 3000
-		},
-		"draggable": {
-			"type": "boolean",
-			"default": true
-		},
-		"alignCells": {
-			"type": "boolean",
-			"default": false
-		},
-		"pauseHover": {
-			"type": "boolean",
-			"default": false
-		},
-		"freeScroll": {
-			"type": "boolean",
-			"default": false
 		},
 		"thumbnails": {
 			"type": "boolean",

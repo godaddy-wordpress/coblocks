@@ -52,25 +52,8 @@
 		}
 	}
 
-	.has-responsive-height .has-carousel.flickity-enabled {
-		height: auto !important;
-		padding-bottom: 56.25%;
-		position: relative;
-	}
-
 	.has-responsive-height.components-resizable-box__container {
 		height: auto !important;
-	}
-
-	.carousel-nav {
-
-		.coblocks--item-thumbnail {
-			opacity: 0.4;
-		}
-
-		.coblocks--item-thumbnail:first-of-type {
-			opacity: 1;
-		}
 	}
 
 	.wp-block-blockgallery-thumbnails {
