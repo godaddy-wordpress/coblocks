@@ -40,6 +40,7 @@
 		"welcome-build-command": "yarn start"
 	},
 	"locales": {
+		"ar": "العربية",
 		"da_DK": "Dansk",
 		"de_DE": "Deutsch",
 		"el": "Ελληνικά",
