@@ -409,7 +409,7 @@ class CoBlocks_Block_Assets {
 			'coblocksLigthboxData',
 			array(
 				'closeLabel' => __( 'Close Gallery', 'coblocks' ),
-				'leftLabel' => __( 'Previous', 'coblocks' ),
+				'leftLabel'  => __( 'Previous', 'coblocks' ),
 				'rightLabel' => __( 'Next', 'coblocks' ),
 			)
 		);
