@@ -28,6 +28,7 @@ const allowedBlocks = [
 	{ blockType: 'core/gallery', animateChildren: false },
 	{ blockType: 'core/group', animateChildren: false },
 	{ blockType: 'core/image', animateChildren: false },
+	{ blockType: 'core/media-text', animateChildren: false },
 ];
 
 const animateClass = 'coblocks-animate';
