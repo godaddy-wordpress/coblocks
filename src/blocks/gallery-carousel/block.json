@@ -2,7 +2,7 @@
 	"name": "coblocks/gallery-carousel",
 	"category": "media",
 	"attributes": {
-		"lightboxId" : {
+		"carouselId" : {
 			"type": "string"
 		},
 		"gutter": {
@@ -12,10 +12,6 @@
 		"gutterMobile": {
 			"type": "number",
 			"default": 5
-		},
-		"gridSize": {
-			"type": "string",
-			"default": "lrg"
 		},
 		"height": {
 			"type": "number",

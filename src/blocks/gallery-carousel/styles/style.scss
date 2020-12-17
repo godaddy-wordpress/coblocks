@@ -62,6 +62,7 @@
 	.coblocks-carousel-preview {
 		display: flex;
 		max-height: 80px;
+		justify-content: center;
 
 		.coblocks--item-thumbnail {
 			max-height: 80px;
@@ -70,14 +71,20 @@
 			transition: opacity 250ms ease;
 			width: 100px;
 
-			img {
-				height: 100%;
-				object-fit: cover;
-				position: absolute;
-				top: 0;
-				vertical-align: middle;
-				width: 100%;
+			figure {
+				margin-top: 0;
+				margin-bottom: 0;
+				
+				img {
+					height: 100%;
+					object-fit: cover;
+					position: absolute;
+					top: 0;
+					vertical-align: middle;
+					width: 100%;
+				}
 			}
+			
 		}
 	}
 

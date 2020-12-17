@@ -34,7 +34,7 @@ import { __, sprintf } from '@wordpress/i18n';
 // 		lightbox,
 // 		autoPlay,
 // 		autoPlaySpeed,
-// 		lightboxId,
+// 		carouselId,
 // 	} = attributes;
 
 // 	const classes = classnames(
@@ -174,7 +174,7 @@ const save = ( props ) => {
 		lightbox,
 		autoPlay,
 		autoPlaySpeed,
-		lightboxId,
+		carouselId,
 	} = attributes;
 
 	const hasImages = !! images.length;
@@ -209,11 +209,12 @@ const save = ( props ) => {
 		return (
 			<div className="coblocks-carousel-preview">
 				{ images.map( ( image, index ) => {
+					console.log( image );
 					return (
 						<amp-img
 							layout="flex-item"
 							height="150"
-							on={ `tap:${ clientId }.goToSlide(index=${ index })` }
+							on={ `tap:${ carouselId }.goToSlide(index=${ index })` }
 							src={ image.url }
 							alt={ image.alt }
 							data-link={ image.link }
@@ -227,13 +228,13 @@ const save = ( props ) => {
 
 		);
 	};
-	console.log( lightbox, lightboxId );
+
 	return (
 		<div className={ classes }>
 			<div className={ innerClasses }>
 				<amp-carousel
-					lightbox={ lightbox ? lightboxId : undefined }
-					id={ clientId }
+					lightbox={ lightbox ? carouselId : undefined }
+					id={ carouselId }
 					height={ responsiveHeight ? null : height }
 					layout={ responsiveHeight ? 'fill' : 'fixed-height' }
 					type="slides"

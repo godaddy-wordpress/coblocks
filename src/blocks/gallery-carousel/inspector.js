@@ -143,7 +143,7 @@ class Inspector extends Component {
 								onChange={ () => {
 									setAttributes( {
 										lightbox: ! lightbox,
-										lightboxId: ! lightbox ? clientId.replace( /-/g, '' ) : undefined,
+										carouselId: ! lightbox ? clientId.replace( /-/g, '' ) : undefined,
 									} );
 								} }
 								help={ this.getLightboxHelp }
