@@ -7,7 +7,7 @@
  * Version: 2.5.3
  * Text Domain: coblocks
  * Domain Path: /languages
- * Tested up to: 5.5
+ * Tested up to: 5.6
  *
  * CoBlocks is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
