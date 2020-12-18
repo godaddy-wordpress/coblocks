@@ -2,8 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import filter from 'lodash/filter';
-import Flickity from 'react-flickity-component';
 import { GalleryCarouselIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
@@ -24,6 +22,11 @@ import { compose } from '@wordpress/compose';
 import { withNotices, ResizableBox } from '@wordpress/components';
 import { RichText } from '@wordpress/block-editor';
 import { Icon } from '@wordpress/icons';
+
+//TODO: Deprecation, Save, autoplay, transforms, lightbox, tests.
+// Figure out why the image attributes work on initial save but not on refresh.
+// Masonry block is incompatible with the AMP script!
+// Need to handle `is_amp()` logic.
 
 const GalleryCarouselEdit = ( props ) => {
 	const { attributes, setAttributes, isSelected, clientId, noticeUI, className } = props;
@@ -108,7 +111,7 @@ const GalleryCarouselEdit = ( props ) => {
 		}
 	);
 
-	const navFigureClasses = classnames( {
+	const navFigureClasses = classnames( 'carousel-nav', {
 		[ `has-margin-left-${ gutter }` ]: gutter > 0,
 		[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 		[ `has-margin-right-${ gutter }` ]: gutter > 0,

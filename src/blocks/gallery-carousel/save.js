@@ -209,7 +209,6 @@ const save = ( props ) => {
 		return (
 			<div className="coblocks-carousel-preview">
 				{ images.map( ( image, index ) => {
-					console.log( image );
 					return (
 						<amp-img
 							layout="flex-item"

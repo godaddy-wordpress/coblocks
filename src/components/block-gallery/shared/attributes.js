@@ -17,12 +17,12 @@ const GalleryAttributes = {
 			},
 			link: {
 				source: 'attribute',
-				selector: 'amp-img',
+				selector: 'img, amp-img',
 				attribute: 'data-link',
 			},
 			imgLink: {
 				source: 'attribute',
-				selector: 'amp-img',
+				selector: 'img, amp-img',
 				attribute: 'data-imglink',
 			},
 			alt: {

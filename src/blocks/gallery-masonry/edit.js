@@ -30,6 +30,7 @@ import { withNotices, Icon } from '@wordpress/components';
 const masonryOptions = {
 	transitionDuration: 0,
 	percentPosition: true,
+	// initLayout: true,
 };
 
 class GalleryMasonryEdit extends Component {
@@ -177,7 +178,7 @@ class GalleryMasonryEdit extends Component {
 			'coblocks-gallery--item', {
 				[ `coblocks-animate ${ animation }` ]: animation,
 			}
-		)
+		);
 
 		const masonryGalleryPlaceholder = (
 			<Fragment>
@@ -216,6 +217,7 @@ class GalleryMasonryEdit extends Component {
 							options={ masonryOptions }
 							disableImagesLoaded={ false }
 							updateOnEachImageLoad={ false }
+
 						>
 							{ images.map( ( img, index ) => {
 								const ariaLabel = sprintf(
