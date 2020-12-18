@@ -47,7 +47,7 @@ const withControls = createHigherOrderComponent( ( BlockEdit ) => {
 		return (
 			<>
 				<BlockEdit { ...props } />
-				{ props.isSelected && allowedBlocks.some( ( block ) => block.blockType === props.name ) && <Controls { ...{ ...props, selectedBlock: block } } /> }
+				{ props.isSelected && allowedBlocks.some( ( allowedBlock ) => allowedBlock.blockType === props.name ) && <Controls { ...{ ...props, selectedBlock: block } } /> }
 			</>
 		);
 	} );
