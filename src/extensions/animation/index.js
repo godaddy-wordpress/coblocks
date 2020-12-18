@@ -47,7 +47,7 @@ const withControls = createHigherOrderComponent( ( BlockEdit ) => {
 		return (
 			<>
 				<BlockEdit { ...props } />
-				{ props.isSelected && allowedBlocks.some( block => block.blockType === props.name ) && <Controls { ...{ ...props, selectedBlock: block } } /> }
+				{ props.isSelected && allowedBlocks.some( ( block ) => block.blockType === props.name ) && <Controls { ...{ ...props, selectedBlock: block } } /> }
 			</>
 		);
 	} );
@@ -66,7 +66,7 @@ addFilter(
  * @return {Object} Filtered block settings.
  */
 function addAttributes( settings ) {
-	if ( allowedBlocks.some( block => block.blockType === settings.name ) ) {
+	if ( allowedBlocks.some( ( block ) => block.blockType === settings.name ) ) {
 		settings.attributes = {
 			...settings.attributes,
 			animation: {
@@ -94,8 +94,7 @@ addFilter(
  * @return {Object} Filtered props applied to save element.
  */
 function applyAnimationSettings( extraProps, blockType, attributes ) {
-
-	if ( ! allowedBlocks.some( block => block.blockType === blockType.name && ! block.animateChildren ) ) {
+	if ( ! allowedBlocks.some( ( block ) => block.blockType === blockType.name && ! block.animateChildren ) ) {
 		return extraProps;
 	}
 
@@ -139,7 +138,7 @@ const withAnimationSettings = createHigherOrderComponent( ( BlockListBlock ) => 
 		const block = select( 'core/block-editor' ).getBlock( props.rootClientId || props.clientId );
 		const blockName	= select( 'core/block-editor' ).getBlockName( props.rootClientId || props.clientId );
 
-		if ( ! allowedBlocks.some( block => block.blockType === blockName && ! block.animateChildren ) || ! block?.attributes?.animation ) {
+		if ( ! allowedBlocks.some( ( allowedBlock ) => allowedBlock.blockType === blockName && ! allowedBlock.animateChildren ) || ! block?.attributes?.animation ) {
 			return <BlockListBlock { ...props } />;
 		}
 
