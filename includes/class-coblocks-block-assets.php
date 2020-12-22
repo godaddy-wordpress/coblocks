@@ -317,23 +317,28 @@ class CoBlocks_Block_Assets {
 			true
 		);
 
-		// Masonry block.
-		if ( $this->is_page_gutenberg() || has_block( 'coblocks/gallery-masonry' ) || has_block( 'core/block' ) ) {
+		// Masonry & Crousel block.
+		if ( $this->is_page_gutenberg() || has_block( 'coblocks/gallery-masonry' ) || has_block( 'coblocks/gallery-carousel' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
 				'coblocks-masonry',
 				$dir . 'coblocks-masonry.js',
-				array( 'jquery', 'masonry', 'imagesloaded' ),
+				array( 'masonry' ),
 				COBLOCKS_VERSION,
 				true
 			);
-		}
-
-		// Carousel block.
-		if ( $this->is_page_gutenberg() || has_block( 'coblocks/gallery-carousel' ) || has_block( 'core/block' ) ) {
+	
 			wp_enqueue_script( 
 				'coblocks-amp-dependency', 
 				'https://cdn.ampproject.org/v0.js',
-				array( ), 
+				array( 'coblocks-masonry' ), 
+				COBLOCKS_VERSION,
+				true 
+			);
+
+			wp_enqueue_script( 
+				'coblocks-amp-carousel', 
+				'https://cdn.ampproject.org/v0/amp-carousel-0.2.js',
+				array( 'coblocks-amp-dependency' ), 
 				COBLOCKS_VERSION,
 				true 
 			);
@@ -345,14 +350,6 @@ class CoBlocks_Block_Assets {
 				array( 'coblocks-amp-carousel' ),
 				COBLOCKS_VERSION,
 				true
-			);
-
-			wp_enqueue_script( 
-				'coblocks-amp-carousel', 
-				'https://cdn.ampproject.org/v0/amp-carousel-0.2.js',
-				array( 'coblocks-amp-dependency' ), 
-				COBLOCKS_VERSION,
-				true 
 			);
 		}
 
