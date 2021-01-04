@@ -3,8 +3,6 @@
  */
 import { shallow } from 'enzyme';
 import '@testing-library/jest-dom/extend-expect';
-import '@wordpress/hooks';
-import { addFilter } from '@wordpress/hooks';
 
 import { registerCoreBlocks } from '@wordpress/block-library';
 registerCoreBlocks();
@@ -13,46 +11,180 @@ registerCoreBlocks();
  * Internal dependencies.
  */
 import {
-	LayoutSelectorResults,
+	LayoutPreview,
 	LayoutPreviewList,
+	LayoutPreviewPlaceholder,
+	LayoutSelectorResults,
 } from '../layout-selector-results';
 
-describe( name, () => {
+describe( 'layout-selector-results', () => {
 
-	it( 'should render layout results', () => {
-		const componentProps = {
-			layouts: [ {
-				label: 'About',
+	describe( 'LayoutPreviewList', () => {
+		let wrapper;
+
+		const layouts = [
+			{
+				label: 'layout-one',
 				category: 'about',
-				blocks: [ [ 'core/paragraph', { content: 'Paragraph Block' }, [] ] ],
-			} ],
-			registeredBlocks: [ 'core/paragraph' ],
-			category: 'about',
-			onInsert: () => {},
+				blocks: [ [ 'core/paragraph', { content: 'layout-one' }, [] ] ],
+			},
+			{
+				label: 'layout-two',
+				category: 'about',
+				blocks: [ [ 'core/paragraph', { content: 'layout-two' }, [] ] ],
+			},
+			{
+				label: 'layout-three',
+				category: 'about',
+				blocks: [ [ 'core/paragraph', { content: 'layout-three' }, [] ] ],
+			},
+		];
+
+		const defaultProps = {
+			layouts,
+			shownLayouts: layouts,
+			onClickLayout: jest.fn(),
 		};
 
-		const combineLayoutsProps = ( shallowRender ) => {
-			return shallowRender
-				.find( LayoutPreviewList )
-				.map( ( node ) =>
-					node.prop( 'layouts' ).map(
-						( layout ) => layout.blocks
-					)
-				)
-				.flat( 2 );
-		}
+		const setup = ( props = {} ) => {
+			const setupProps = { ...defaultProps, ...props };
+			return shallow( <LayoutPreviewList { ...setupProps } /> );
+		};
 
-		const renderOne = shallow( <LayoutSelectorResults { ...componentProps } /> );
-		expect( combineLayoutsProps( renderOne ) ).toHaveLength( 1 );
+		beforeEach( () => {
+			wrapper = setup();
+		} );
 
-		addFilter(
-			'coblocks.layoutPreviewBlocks',
-			'tests/coblocks/layoutPreviewBlocks',
-			() => ( [] ) // remove all blocks.
-		);
+		afterEach( () => {
+			jest.clearAllMocks();
+		} );
 
-		const renderTwo = shallow( <LayoutSelectorResults { ...componentProps } /> );
-		expect( combineLayoutsProps( renderTwo ) ).toHaveLength( 0 );
+		it( 'renders shown layouts', () => {
+			expect( wrapper ).toHaveLength( layouts.length );
+			expect( wrapper.find( 'LayoutPreview' ) ).toHaveLength( layouts.length );
+			expect( wrapper.find( 'LayoutPreviewPlaceholder' ) ).toHaveLength( 0 );
+		} );
+
+		it( 'renders layout placeholders', () => {
+			wrapper = setup( { shownLayouts: [] } );
+			expect( wrapper ).toHaveLength( layouts.length );
+			expect( wrapper.find( 'LayoutPreview' ) ).toHaveLength( 0 );
+			expect( wrapper.find( 'LayoutPreviewPlaceholder' ) ).toHaveLength( layouts.length );
+		} );
+
+	} );
+
+	describe( 'LayoutPreviewPlaceholder', () => {
+		let wrapper;
+
+		beforeEach( () => {
+			wrapper = shallow( <LayoutPreviewPlaceholder /> );
+		} );
+
+		afterEach( () => {
+			jest.clearAllMocks();
+		} );
+
+		it( 'renders', () => {
+			expect( wrapper.exists( '.coblocks-layout-selector__layout' ) ).toEqual( true );
+		} );
+
+	} );
+
+	describe( 'LayoutPreview', () => {
+		let wrapper;
+
+		const defaultProps = {
+			layout: {
+				label: 'layout-one',
+				category: 'about',
+				blocks: [ [ 'core/paragraph', { content: 'layout-one' }, [] ] ],
+			},
+			onClick: jest.fn(),
+		};
+
+		const setup = ( props = {} ) => {
+			return shallow( <LayoutPreview { ...props } /> );
+		};
+
+		beforeEach( () => {
+			wrapper = setup( defaultProps );
+		} );
+
+		afterEach( () => {
+			jest.clearAllMocks();
+		} );
+
+		it( 'renders', () => {
+			expect( wrapper.exists( '.coblocks-layout-selector__layout' ) ).toEqual( true );
+		} );
+
+		it( 'toggles overlay on mouse events "enter" and "leave"', () => {
+			expect( wrapper.find( '.coblocks-layout-selector__layout--overlay' ).hasClass( 'is-active' ) ).toEqual( false );
+
+			wrapper.find( '.coblocks-layout-selector__layout' ).invoke( 'onMouseEnter' )();
+			expect( wrapper.find( '.coblocks-layout-selector__layout--overlay' ).hasClass( 'is-active' ) ).toEqual( true );
+
+			wrapper.find( '.coblocks-layout-selector__layout' ).invoke( 'onMouseLeave' )();
+			expect( wrapper.find( '.coblocks-layout-selector__layout--overlay' ).hasClass( 'is-active' ) ).toEqual( false );
+		} );
+
+		it( 'should call onClick() on Button click', () => {
+			wrapper.find( '.coblocks-layout-selector__layout' ).invoke( 'onClick' )();
+			expect( defaultProps.onClick ).toHaveBeenCalled();
+		} );
+
+	} );
+
+	describe( 'LayoutSelectorResults', () => {
+		let wrapper;
+
+		const defaultProps = {
+			layouts: [
+				{
+					label: 'layout-one',
+					category: 'about',
+					blocks: [ [ 'core/paragraph', { content: 'layout-one' }, [] ] ],
+				},
+				{
+					label: 'layout-two',
+					category: 'about',
+					blocks: [ [ 'core/paragraph', { content: 'layout-two' }, [] ] ],
+				},
+				{
+					label: 'layout-three',
+					category: 'about',
+					blocks: [ [ 'core/paragraph', { content: 'layout-three' }, [] ] ],
+				},
+			],
+			category: 'about',
+			onInsert: jest.fn(),
+		};
+
+
+		const setup = ( props = {} ) => {
+			const setupProps = { ...defaultProps, ...props };
+			return shallow( <LayoutSelectorResults { ...setupProps } /> );
+		};
+
+		beforeEach( () => {
+			wrapper = setup();
+		} );
+
+		afterEach( () => {
+			jest.clearAllMocks();
+		} );
+
+		it( 'renders', () => {
+			expect( wrapper.exists( '.coblocks-layout-selector__layouts' ) ).toEqual( true );
+		} );
+
+		it( 'renders message when no layouts are available for the selected category', () => {
+			wrapper = setup( { category: 'doesnotexist' } );
+			expect( wrapper.find( '.coblocks-layout-selector__layout' ) ).toHaveLength( 0 );
+			expect( wrapper.text() ).toContain( 'No layouts are available for this category.' );
+		} );
+
 	} );
 
 } );
