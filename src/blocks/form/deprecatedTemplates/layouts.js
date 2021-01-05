@@ -24,7 +24,7 @@ export const TEMPLATE_OPTIONS = [
 			[ 'coblocks/field-textarea', { required: true } ],
 			[ 'coblocks/field-submit-button', {} ],
 		],
-		submitButtonText: __( 'Contact Us', 'coblocks' )
+		submitButtonText: __( 'Contact Us', 'coblocks' ),
 	},
 	{
 		title: __( 'RSVP', 'coblocks' ),

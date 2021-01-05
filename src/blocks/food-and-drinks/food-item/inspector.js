@@ -35,9 +35,9 @@ const Inspector = ( props ) => {
 				<ToggleControl
 					label={ __( 'Image', 'coblocks' ) }
 					help={
-						showImage ?
-							__( 'Showing an image for this item.', 'coblocks' ) :
-							__( 'Toggle to show an image for this item.', 'coblocks' )
+						showImage
+							? __( 'Showing an image for this item.', 'coblocks' )
+							: __( 'Toggle to show an image for this item.', 'coblocks' )
 					}
 					checked={ showImage }
 					onChange={ () => setAttributes( { showImage: ! showImage } ) }
@@ -45,9 +45,9 @@ const Inspector = ( props ) => {
 				<ToggleControl
 					label={ __( 'Price', 'coblocks' ) }
 					help={
-						showPrice ?
-							__( 'Showing the price for this item.', 'coblocks' ) :
-							__( 'Toggle to show the price for this item.', 'coblocks' )
+						showPrice
+							? __( 'Showing the price for this item.', 'coblocks' )
+							: __( 'Toggle to show the price for this item.', 'coblocks' )
 					}
 					checked={ showPrice }
 					onChange={ () => setAttributes( { showPrice: ! showPrice } ) }

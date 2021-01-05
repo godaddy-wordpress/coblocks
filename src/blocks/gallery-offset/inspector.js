@@ -18,10 +18,20 @@ import { PanelBody, RangeControl, ToggleControl, SelectControl } from '@wordpres
  * Inspector controls
  */
 class Inspector extends Component {
+	/**
+	 * setLinkTo
+	 *
+	 * @param {string} value
+	 */
 	setLinkTo = ( value ) => {
 		this.props.setAttributes( { linkTo: value } );
 	}
 
+	/**
+	 * setRadiusTo
+	 *
+	 * @param {number} value
+	 */
 	setRadiusTo = ( value ) => {
 		this.props.setAttributes( { radius: value } );
 	}
@@ -30,10 +40,20 @@ class Inspector extends Component {
 		this.props.setAttributes( { fullwidth: ! this.props.attributes.fullwidth } );
 	}
 
+	/**
+	 * setSizeControl
+	 *
+	 * @param {number} value
+	 */
 	setSizeControl = ( value ) => {
 		this.props.setAttributes( { gridSize: value } );
 	}
 
+	/**
+	 * setCaptionStyleTo
+	 *
+	 * @param {string} value
+	 */
 	setCaptionStyleTo = ( value ) => {
 		this.props.setAttributes( { captionStyle: value } );
 	}

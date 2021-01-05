@@ -1,3 +1,6 @@
+/* eslint-disable jest/valid-expect-in-promise */
+// Disable reason: Cypress chained functions are not true promises and do not require a return.
+// https://docs.cypress.io/guides/core-concepts/introduction-to-cypress.html#Commands-Are-Not-Promises
 /*
  * Include our constants
  */

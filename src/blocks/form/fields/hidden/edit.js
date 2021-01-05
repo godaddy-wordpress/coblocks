@@ -31,7 +31,7 @@ function CoBlocksFieldHidden( props ) {
 					<TextControl
 						value={ value }
 						label={ __( 'Field value', 'coblocks' ) }
-						onChange={ ( value ) => setAttributes( { value } ) }
+						onChange={ ( newValue ) => setAttributes( { value: newValue } ) }
 						className="components-block-coblocks-map-api-key__custom-input"
 					/>
 				</PanelBody>

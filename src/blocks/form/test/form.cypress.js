@@ -1,3 +1,6 @@
+/* eslint-disable jest/valid-expect-in-promise */
+// Disable reason: Cypress chained functions are not true promises and do not require a return.
+// https://docs.cypress.io/guides/core-concepts/introduction-to-cypress.html#Commands-Are-Not-Promises
 /*
  * Include our constants
  */
@@ -310,7 +313,7 @@ describe( 'Test CoBlocks Form Block', function() {
 
 		cy.get( '.components-panel__body-title' ).contains( 'Google reCAPTCHA' ).then( ( $panelTop ) => {
 			const $parentPanel = Cypress.$( $panelTop ).closest( 'div.components-panel__body' );
-			expect( $parentPanel.hasClass( 'is-opened' ) ).to.be.false;
+			cy.get( $parentPanel ).should( 'not.have.class', 'is-opened' );
 		} );
 	} );
 
@@ -390,30 +393,30 @@ describe( 'Test CoBlocks Form Block', function() {
 		cy.get( '[data-type="coblocks/form"]' )
 			.click( { force: true } );
 
-			cy.get( 'div.edit-post-sidebar' )
-				.contains( /Subject/i )
-				.next( 'input' )
-				.then( ( $inputElem ) => {
+		cy.get( 'div.edit-post-sidebar' )
+			.contains( /Subject/i )
+			.next( 'input' )
+			.then( ( $inputElem ) => {
+				cy.get( $inputElem ).invoke( 'val' ).then( () => {
+					cy.get( $inputElem )
+						.clear()
+						.type( 'Custom Subject Line: Email From ' );
+
+					cy.get( 'button.components-button' )
+						.contains( '[email]' )
+						.click();
+
+					cy.get( $inputElem ).type( ' - ' );
+
+					cy.get( 'button.components-button' )
+						.contains( '[name]' )
+						.click();
+
 					cy.get( $inputElem ).invoke( 'val' ).then( ( val ) => {
-						cy.get( $inputElem )
-							.clear()
-							.type( 'Custom Subject Line: Email From ' );
-
-						cy.get( 'button.components-button' )
-							.contains( '[email]' )
-							.click();
-
-						cy.get( $inputElem ).type( ' - ' );
-
-						cy.get( 'button.components-button' )
-							.contains( '[name]' )
-							.click();
-
-						cy.get( $inputElem ).invoke( 'val' ).then( ( val ) => {
-							cy.expect( val ).to.equal( 'Custom Subject Line: Email From [email] - [name]' );
-						} );
+						cy.expect( val ).to.equal( 'Custom Subject Line: Email From [email] - [name]' );
 					} );
 				} );
+			} );
 
 		helpers.savePage();
 		helpers.viewPage();
@@ -465,16 +468,16 @@ describe( 'Test CoBlocks Form Block', function() {
 		cy.get( '[data-type="coblocks/form"]' )
 			.click( { force: true } );
 
-			cy.get( 'div.edit-post-sidebar' )
-				.contains( /Success Message/i )
-				.next( 'textarea' )
-				.then( ( $inputElem ) => {
-					cy.get( $inputElem ).invoke( 'val' ).then( ( val ) => {
-						cy.get( $inputElem )
-							.clear()
-							.type( 'Thank you for submitting this form!' );
-					} );
+		cy.get( 'div.edit-post-sidebar' )
+			.contains( /Success Message/i )
+			.next( 'textarea' )
+			.then( ( $inputElem ) => {
+				cy.get( $inputElem ).invoke( 'val' ).then( ( ) => {
+					cy.get( $inputElem )
+						.clear()
+						.type( 'Thank you for submitting this form!' );
 				} );
+			} );
 
 		helpers.savePage();
 		helpers.viewPage();
@@ -556,7 +559,7 @@ describe( 'Test CoBlocks Form Block', function() {
 		 * Textarea === message.
 		 */
 		[ 'text', 'email', 'website', 'select', 'phone', 'choose-one', 'message', 'name' ].forEach( ( field ) => {
-			cy.get( `label[for="${field}"]` )
+			cy.get( `label[for="${ field }"]` )
 				.should( 'have.css', 'color', textColorRGB );
 		} );
 	} );

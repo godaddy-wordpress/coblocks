@@ -19,9 +19,9 @@ const Inspector = ( props ) => {
 				<ToggleControl
 					label={ __( 'Display button', 'coblocks' ) }
 					help={
-						attributes.showCta ?
-							__( 'Showing the call to action button.', 'coblocks' ) :
-							__( 'Toggle to show a call to action button.', 'coblocks' )
+						attributes.showCta
+							? __( 'Showing the call to action button.', 'coblocks' )
+							: __( 'Toggle to show a call to action button.', 'coblocks' )
 					}
 					checked={ attributes.showCta }
 					onChange={ onToggleCta }

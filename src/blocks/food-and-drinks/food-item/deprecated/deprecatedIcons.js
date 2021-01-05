@@ -163,10 +163,10 @@ export default function deprecatedIcons( { attributes } ) {
 						alt={ attributes.alt }
 						itemProp="image"
 						style={ {
-							objectPosition: attributes.focalPoint ?
-								`${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y *
-										100 }%` :
-								undefined,
+							objectPosition: attributes.focalPoint
+								? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y *
+										100 }%`
+								: undefined,
 						} }
 					/>
 				</figure>

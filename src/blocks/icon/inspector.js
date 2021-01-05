@@ -181,7 +181,7 @@ class Inspector extends Component {
 									/>
 								</div>
 							</Fragment>
-							: <BaseControl label={ label } help={ help }>
+							: <BaseControl id={ `icon-size-control-${ clientId }` } label={ label } help={ help }>
 								<div className="components-coblocks-icon-size__controls">
 									<IconSizeSelect
 										setAttributes={ setAttributes }

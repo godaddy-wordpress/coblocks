@@ -87,50 +87,52 @@ export default class OptionSelectorControl extends Component {
 			buttons = [ ...buttons, CUSTOM_OPTION ];
 		}
 
-		return ( showAdvancedControls && ( advancedMinValue !== false && advancedMaxValue !== false ) ?
+		return ( showAdvancedControls && ( advancedMinValue !== false && advancedMaxValue !== false )
 
-			<RangeControl
-				label={ label }
-				value={ currentOption }
-				onChange={ ( value ) => onChange( value ) }
-				min={ advancedMinValue }
-				max={ advancedMaxValue }
-			/> :
+			? (
+				<RangeControl
+					label={ label }
+					value={ currentOption }
+					onChange={ ( value ) => onChange( value ) }
+					min={ advancedMinValue }
+					max={ advancedMaxValue }
+				/>
+			) : (
+				<BaseControl
+					id={ `coblocks-option-selector-${ kebabCase( label ) }` }
+					label={ label }
+					className={ classnames(
+						'coblocks-option-selector-control',
+						{
+							'is-custom': currentOption === 'custom',
+						}
+					) }>
+					<PanelRow>
+						<ButtonGroup aria-label={ label }>
 
-			<BaseControl
-				id={ `coblocks-option-selector-${ kebabCase( label ) }` }
-				label={ label }
-				className={ classnames(
-					'coblocks-option-selector-control',
-					{
-						'is-custom': currentOption === 'custom',
-					}
-				) }>
-				<PanelRow>
-					<ButtonGroup aria-label={ label }>
+							{ buttons.map( ( option ) => (
+								<Tooltip
+									key={ `option-${ option.value }` }
+									text={ option.tooltip }>
 
-						{ buttons.map( ( option ) => (
-							<Tooltip
-								key={ `option-${ option.value }` }
-								text={ option.tooltip }>
+									<Button
+										isSecondary={ currentOption !== option.value }
+										isPrimary={ currentOption === option.value }
+										aria-pressed={ currentOption === option.value }
+										onClick={ () => onChange( option.value ) }
+										aria-label={ option.tooltip }>
 
-								<Button
-									isSecondary={ currentOption !== option.value }
-									isPrimary={ currentOption === option.value }
-									aria-pressed={ currentOption === option.value }
-									onClick={ () => onChange( option.value ) }
-									aria-label={ option.tooltip }>
+										{ showIcons ? option.icon : option.label }
 
-									{ showIcons ? option.icon : option.label }
+									</Button>
 
-								</Button>
+								</Tooltip>
+							) ) }
 
-							</Tooltip>
-						) ) }
-
-					</ButtonGroup>
-				</PanelRow>
-			</BaseControl>
+						</ButtonGroup>
+					</PanelRow>
+				</BaseControl>
+			)
 		);
 	}
 }

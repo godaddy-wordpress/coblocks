@@ -103,7 +103,7 @@ class Controls extends Component {
 							const children = getBlocksByClientId( clientId );
 							setAttributes( { verticalAlignment: alignment } );
 							if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
-								map( children[ 0 ].innerBlocks, ( blockProps, index ) => (
+								map( children[ 0 ].innerBlocks, ( blockProps ) => (
 									updateBlockAttributes( blockProps.clientId, { verticalAlignment: alignment } )
 								) );
 							}

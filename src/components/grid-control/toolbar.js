@@ -12,7 +12,7 @@ import CSSGridControl from './';
  * WordPress dependencies
  */
 import { DOWN } from '@wordpress/keycodes';
-import { ToolbarButton, ToolbarGroup, Dropdown, NavigableMenu } from '@wordpress/components';
+import { ToolbarButton, Dropdown, NavigableMenu } from '@wordpress/components';
 
 function CSSGridToolbar( {
 	icon = 'menu',

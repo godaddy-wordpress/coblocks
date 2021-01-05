@@ -10,7 +10,7 @@ import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { InspectorControls, PanelColorSettings, ContrastChecker } from '@wordpress/block-editor';
 
-const Inspector = props => {
+const Inspector = ( props ) => {
 	const {
 		textColor,
 		setTextColor,

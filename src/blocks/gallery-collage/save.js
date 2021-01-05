@@ -56,8 +56,8 @@ const save = ( { attributes } ) => {
 							href = image.imgLink;
 						}
 
-						const itemClasses = classnames( 
-							'wp-block-coblocks-gallery-collage__item', 
+						const itemClasses = classnames(
+							'wp-block-coblocks-gallery-collage__item',
 							`item-${ index + 1 }`,
 							{
 								[ `coblocks-animate` ]: animation,

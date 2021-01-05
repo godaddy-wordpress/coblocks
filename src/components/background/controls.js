@@ -74,33 +74,34 @@ function BackgroundControls( props ) {
 							</MenuItem>
 						</Popover>
 					) }
-					{ backgroundImg ?
-						<ToolbarButton
-							className="components-dropdown-menu__toggle"
-							icon={ icons.background }
-							aria-haspopup="true"
-							label={ __( 'Edit background image', 'coblocks' ) }
-							tooltip={ __( 'Edit background image', 'coblocks' ) }
-							onClick={ () => setAttributes( { openPopover: ! openPopover } ) }
-						/>
-						:
-						<MediaUpload
-							onSelect={ ( media ) => {
-								setAttributes( { backgroundImg: media.url, backgroundType: media.type } );
-							} }
-							allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
-							value={ backgroundImg }
-							render={ ( { open } ) => (
-								<ToolbarButton
-									className="components-toolbar__control"
-									label={ __( 'Add background image', 'coblocks' ) }
-									icon={ icons.background }
-									onClick={ open }
-								/>
-							) }
-						/>
+					{ backgroundImg
+						? (
+							<ToolbarButton
+								className="components-dropdown-menu__toggle"
+								icon={ icons.background }
+								aria-haspopup="true"
+								label={ __( 'Edit background image', 'coblocks' ) }
+								tooltip={ __( 'Edit background image', 'coblocks' ) }
+								onClick={ () => setAttributes( { openPopover: ! openPopover } ) }
+							/>
+						) : (
+							<MediaUpload
+								onSelect={ ( media ) => {
+									setAttributes( { backgroundImg: media.url, backgroundType: media.type } );
+								} }
+								allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
+								value={ backgroundImg }
+								render={ ( { open } ) => (
+									<ToolbarButton
+										className="components-toolbar__control"
+										label={ __( 'Add background image', 'coblocks' ) }
+										icon={ icons.background }
+										onClick={ open }
+									/>
+								) }
+							/>
 
-					}
+						) }
 				</Toolbar>
 			</MediaUploadCheck>
 		</Fragment>

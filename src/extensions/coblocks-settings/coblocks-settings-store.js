@@ -20,7 +20,7 @@ export default function createCoBlocksStore() {
 		layoutSelector: false, // default false to prevent screen flicker.
 	};
 
-	const layoutSelectorEnabled = applyFilters( 'coblocks-show-layout-selector', true )
+	const layoutSelectorEnabled = applyFilters( 'coblocks-show-layout-selector', true );
 
 	apiFetch( {
 		path: '/wp/v2/settings/',

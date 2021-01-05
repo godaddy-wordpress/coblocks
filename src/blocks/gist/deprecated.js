@@ -25,9 +25,9 @@ const deprecated = [
 
 			const src = file ? `${ url }.js?file=${ file }` : `${ url }.js`;
 
-			const noscriptSrc = file ?
-				`${ url }#file-${ file.replace( '.', '-' ) }` :
-				`${ url }`;
+			const noscriptSrc = file
+				? `${ url }#file-${ file.replace( '.', '-' ) }`
+				: `${ url }`;
 
 			return (
 				<div className={ classes }>

@@ -43,11 +43,11 @@ class CSSGridControl extends Component {
 				if ( item.name === blockName ) {
 					updateBlockAttributes(
 						item.clientId,
-						{ [blockAttribute]: newAttribute }
+						{ [ blockAttribute ]: newAttribute }
 					);
 				}
 			} );
-		}
+		};
 
 		/**
 		 * Set layout options and padding controls for Row Blocks
@@ -203,7 +203,7 @@ class CSSGridControl extends Component {
 												isPrimary={ value === layout }
 												onClick={ () => {
 													setAttributes( { layout: value } );
-													updateButtonsAttributes( value.split('-')[1] );
+													updateButtonsAttributes( value.split( '-' )[ 1 ] );
 													if ( layoutAttributes[ value ].wrapper ) {
 														updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
 													}
@@ -224,7 +224,7 @@ class CSSGridControl extends Component {
 											setAttributes( { layout: value } );
 											if ( layoutAttributes[ value ].wrapper ) {
 												updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
-												updateButtonsAttributes( value.split('-')[1] );
+												updateButtonsAttributes( value.split( '-' )[ 1 ] );
 											}
 										} }
 									>
@@ -242,13 +242,11 @@ class CSSGridControl extends Component {
 							if ( [ 'bottom-left', 'top-left' ].includes( layout ) ) {
 								setAttributes( { layout: 'center-left' } );
 								updateButtonsAttributes( 'left' );
-
 							}
 
 							if ( [ 'bottom-center', 'top-center' ].includes( layout ) ) {
 								setAttributes( { layout: 'center-center' } );
 								updateButtonsAttributes( 'center' );
-
 							}
 
 							if ( [ 'bottom-right', 'top-right' ].includes( layout ) ) {
@@ -275,11 +273,11 @@ export default withInstanceId( compose( [
 	} ),
 
 	withSelect( ( select, props ) => {
-		const { getBlocks,  } = select( 'core/block-editor' );
+		const { getBlocks } = select( 'core/block-editor' );
 		const innerBlocks = getBlocks( props.clientId );
-	
+
 		return {
 			innerBlocks,
 		};
-	} )
+	} ),
 ] )( CSSGridControl ) );

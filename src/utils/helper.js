@@ -12,9 +12,9 @@ import { isBlobURL } from '@wordpress/blob';
 
 // Set dim ratio.
 export function overlayToClass( ratio ) {
-	return ( ratio === 0 || ratio === 50 ) ?
-		null :
-		'has-background-overlay-' + ( 10 * Math.round( ratio / 10 ) );
+	return ( ratio === 0 || ratio === 50 )
+		? null
+		: 'has-background-overlay-' + ( 10 * Math.round( ratio / 10 ) );
 }
 
 // Pick image media attributes.
@@ -55,9 +55,9 @@ export const hexToRGB = ( h ) => {
 			break;
 		}
 		case 7: {
-			r = '0x' + h[1] + h[2];
-			g = '0x' + h[3] + h[4];
-			b = '0x' + h[5] + h[6];
+			r = '0x' + h[ 1 ] + h[ 2 ];
+			g = '0x' + h[ 3 ] + h[ 4 ];
+			b = '0x' + h[ 5 ] + h[ 6 ];
 			break;
 		}
 	}

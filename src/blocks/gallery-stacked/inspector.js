@@ -45,21 +45,21 @@ class Inspector extends Component {
 	}
 
 	getFullwidthImagesHelp( checked ) {
-		return checked ?
-			__( 'Fullwidth images are enabled.', 'coblocks' ) :
-			__( 'Toggle to fill the available gallery area with completely fullwidth images.', 'coblocks' );
+		return checked
+			? __( 'Fullwidth images are enabled.', 'coblocks' )
+			: __( 'Toggle to fill the available gallery area with completely fullwidth images.', 'coblocks' );
 	}
 
 	getCaptionsHelp( checked ) {
-		return checked ?
-			__( 'Showing captions for each media item.', 'coblocks' ) :
-			__( 'Toggle to show media captions.', 'coblocks' );
+		return checked
+			? __( 'Showing captions for each media item.', 'coblocks' )
+			: __( 'Toggle to show media captions.', 'coblocks' );
 	}
 
 	getLightboxHelp( checked ) {
-		return checked ?
-			__( 'Image lightbox is enabled.', 'coblocks' ) :
-			__( 'Toggle to enable the image lightbox.', 'coblocks' );
+		return checked
+			? __( 'Image lightbox is enabled.', 'coblocks' )
+			: __( 'Toggle to enable the image lightbox.', 'coblocks' );
 	}
 
 	render() {

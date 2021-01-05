@@ -9,7 +9,6 @@ import { BackgroundControls } from '../../../components/background';
 import { Component, Fragment } from '@wordpress/element';
 import { AlignmentToolbar, BlockVerticalAlignmentToolbar, BlockControls } from '@wordpress/block-editor';
 
-
 class Controls extends Component {
 	render() {
 		const {

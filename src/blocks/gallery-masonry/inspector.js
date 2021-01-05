@@ -46,15 +46,15 @@ class Inspector extends Component {
 	}
 
 	getCaptionsHelp( checked ) {
-		return checked ?
-			__( 'Showing captions for each media item.', 'coblocks' ) :
-			__( 'Toggle to show media captions.', 'coblocks' );
+		return checked
+			? __( 'Showing captions for each media item.', 'coblocks' )
+			: __( 'Toggle to show media captions.', 'coblocks' );
 	}
 
 	getLightboxHelp( checked ) {
-		return checked ?
-			__( 'Image lightbox is enabled.', 'coblocks' ) :
-			__( 'Toggle to enable the image lightbox.', 'coblocks' );
+		return checked
+			? __( 'Image lightbox is enabled.', 'coblocks' )
+			: __( 'Toggle to enable the image lightbox.', 'coblocks' );
 	}
 
 	render() {
