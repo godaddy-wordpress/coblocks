@@ -52,7 +52,7 @@ describe( 'Block: Highlight', function() {
 						.select( 'large' );
 				} else {
 					cy.get( Cypress.$( $settingSection ).closest( '.components-panel__body' ) )
-						.find( 'button[aria-label="Preset size"]' ).click();
+						.find( 'button[aria-label="Font size"]' ).click();
 					cy.get( '.components-custom-select-control__item' ).contains( /large/i ).click();
 				}
 			} );
