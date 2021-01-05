@@ -403,6 +403,16 @@ class CoBlocks_Block_Assets {
 				true
 			);
 		}
+
+		wp_localize_script(
+			'coblocks-lightbox',
+			'coblocksLigthboxData',
+			array(
+				'closeLabel' => __( 'Close Gallery', 'coblocks' ),
+				'leftLabel'  => __( 'Previous', 'coblocks' ),
+				'rightLabel' => __( 'Next', 'coblocks' ),
+			)
+		);
 	}
 
 	/**
