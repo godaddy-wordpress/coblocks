@@ -184,7 +184,7 @@ export function viewPage() {
 		}
 	} );
 
-	cy.wait( 100 );
+	cy.get( 'button[data-label="Post"]' );
 
 	openSettingsPanel( /permalink/i );
 
@@ -343,7 +343,7 @@ export function setColorSetting( settingName, hexColor ) {
  * @param {string} panelText The panel label text to open. eg: Color Settings
  */
 export function openSettingsPanel( panelText ) {
-	cy.get( '.components-panel__body-title' )
+	cy.get( '.components-panel__body' )
 		.contains( panelText )
 		.then( ( $panelTop ) => {
 			const $parentPanel = Cypress.$( $panelTop ).closest( 'div.components-panel__body' );
