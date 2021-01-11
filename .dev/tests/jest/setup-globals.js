@@ -12,7 +12,8 @@ console = {
 	...console,
 	// log: () => { },
 	info: () => { },
-	error: () => { },
+	warn: () => { },
+	// error: () => { },
 };
 
 global.coblocksLayoutSelector = { layouts: [], categories: [] };
