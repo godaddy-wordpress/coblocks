@@ -11,8 +11,6 @@ import { cloneElement, isValidElement } from '@wordpress/element';
 
 /**
  * Return an element Wrapped with padding Properties.
- *
- * @return {JSX.Element}  paddingWrapper component
  */
 function PaddingWrapper( { children, padding, paddingCustom, className } ) {
 	if ( ! isValidElement( children ) ) {
