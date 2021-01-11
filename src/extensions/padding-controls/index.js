@@ -9,7 +9,7 @@ import { startCase } from 'lodash';
  */
 import { __, sprintf } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
-import { PanelBody } from '@wordpress/components';
+import { PanelBody, RangeControl } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 import { createHigherOrderComponent } from '@wordpress/compose';
 
@@ -17,6 +17,7 @@ import { createHigherOrderComponent } from '@wordpress/compose';
  * Internal dependencies.
  */
 import OptionSelectorControl from '../../components/option-selector-control';
+import PaddingWrapper from './padding-wrapper';
 const blocksWithPaddingSupport = [ 'core/group' ];
 
 const paddingOptions = [
@@ -60,13 +61,23 @@ const paddingOptions = [
 const withPaddingControls = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		const { name, attributes, setAttributes, isSelected } = props;
-		const { padding } = attributes;
+		const { padding, paddingCustom } = attributes;
+
+		const getMaxValue = () => {
+			const { maxValue = null } = props;
+
+			if ( ! maxValue ) {
+				return attributes.align === 'full' ? 10 : 5;
+			}
+
+			return maxValue;
+		};
 
 		const supportsPaddingControls = blocksWithPaddingSupport.includes( name );
 		const panelTitle = startCase( name.split( '/' )[ 1 ] );
 		return (
 			<>
-				<BlockEdit { ...props } className={ classnames( props.className, { [ `has-${ padding }-padding` ]: padding } ) } />
+				<BlockEdit { ...props } />
 				{ isSelected && supportsPaddingControls && (
 					<InspectorControls>
 						<PanelBody title={ sprintf(
@@ -78,8 +89,21 @@ const withPaddingControls = createHigherOrderComponent( ( BlockEdit ) => {
 								label={ __( 'Padding', 'coblocks' ) }
 								currentOption={ padding }
 								options={ paddingOptions }
+								showCustomOption
 								onChange={ ( newPadding ) => setAttributes( { padding: newPadding } ) }
 							/>
+							{
+								padding === 'custom' &&
+								<RangeControl
+									step={ 0.1 }
+									initialValue={ 0 }
+									value={ parseFloat( paddingCustom ) || 0 }
+									onChange={ ( newPadding ) => setAttributes( { paddingCustom: newPadding.toString() } ) }
+									min={ 0 }
+									max={ getMaxValue() }
+									withInputField
+								/>
+							}
 						</PanelBody>
 					</InspectorControls>
 				) }
@@ -91,46 +115,57 @@ const withPaddingControls = createHigherOrderComponent( ( BlockEdit ) => {
 /**
  * Add custom CoBlocks editor padding classes to selected blocks
  *
- * @param {Function} BlockEdit Original component.
+ * @param {Function} BlockListBlock Original component.
  * @return {string} Wrapped component.
  */
 const withPaddingClasses = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
 		const { name, attributes } = props;
-		const { padding } = attributes;
+		const { padding, paddingCustom } = attributes;
 		const supportsPaddingControls = blocksWithPaddingSupport.includes( name );
 
-		let wrapperProps;
-		let newClassName = props.className;
-
 		if ( supportsPaddingControls ) {
-			wrapperProps = props?.wrapperProps;
-			newClassName = classnames( props.className, { [ `has-${ padding }-padding` ]: padding } );
+			let wrapperProps = props.wrapperProps;
+			wrapperProps = {
+				...props.wrapperProps,
+				style: {
+					...props.wrapperProps?.style,
+					'--coblocks-custom-padding': padding === 'custom' && `${ paddingCustom }em`,
+				},
+			};
+
+			const newClassnames = classnames( props.className, { [ `has-${ padding }-padding` ]: padding } );
+
+			return (
+				<BlockListBlock { ...props } className={ newClassnames } wrapperProps={ wrapperProps } />
+			);
 		}
 
-		return <BlockListBlock { ...props } className={ newClassName } wrapperProps={ wrapperProps } />;
+		return <BlockListBlock { ...props } />;
 	};
 }, 'withPaddingClasses' );
 
 /**
  * Override props assigned to save component to inject padding classes.
  *
- * @param {Object} props Additional props applied to save element.
+ * @param {Object} elem Original element produced by save element.
  * @param {Object} blockType  Block type.
  * @param {Object} attributes Current block attributes.
  *
- * @return {Object} Filtered props applied to save element.
+ * @return {Object} Filtered elem applied to save element.
  */
-function applyPaddingClass( props, blockType, attributes ) {
+function applySavePadding( elem, blockType, attributes ) {
 	const supportsPaddingControls = blocksWithPaddingSupport.includes( blockType?.name );
 
 	if ( supportsPaddingControls ) {
-		const { padding } = attributes;
-
-		props.className = classnames( props.className, { [ `has-${ padding }-padding` ]: padding } );
+		return (
+			<PaddingWrapper { ...attributes }>
+				{ elem }
+			</PaddingWrapper>
+		);
 	}
 
-	return props;
+	return elem;
 }
 
 /**
@@ -148,6 +183,9 @@ function addAttributes( settings ) {
 				padding: {
 					type: 'string',
 				},
+				paddingCustom: {
+					type: 'string',
+				},
 			} );
 		}
 	}
@@ -158,4 +196,4 @@ function addAttributes( settings ) {
 addFilter( 'blocks.registerBlockType', 'coblocks/padding-controls/block-attributes', addAttributes );
 addFilter( 'editor.BlockEdit', 'coblocks/padding-controls/editor-controls', withPaddingControls );
 addFilter( 'editor.BlockListBlock', 'coblocks/padding-controls/editor-padding-classes', withPaddingClasses );
-addFilter( 'blocks.getSaveContent.extraProps', 'coblocks/padding-controls/save-padding-class', applyPaddingClass );
+addFilter( 'blocks.getSaveElement', 'coblocks/padding-controls/save-padding-class', applySavePadding );
