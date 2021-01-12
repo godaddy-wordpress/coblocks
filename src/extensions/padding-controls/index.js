@@ -63,15 +63,7 @@ const withPaddingControls = createHigherOrderComponent( ( BlockEdit ) => {
 		const { name, attributes, setAttributes, isSelected } = props;
 		const { padding, paddingCustom } = attributes;
 
-		const getMaxValue = () => {
-			const { maxValue = null } = props;
-
-			if ( ! maxValue ) {
-				return attributes.align === 'full' ? 10 : 5;
-			}
-
-			return maxValue;
-		};
+		const maxValue = attributes.align === 'full' ? 10 : 5;
 
 		const supportsPaddingControls = blocksWithPaddingSupport.includes( name );
 		const panelTitle = startCase( name.split( '/' )[ 1 ] );
@@ -100,7 +92,7 @@ const withPaddingControls = createHigherOrderComponent( ( BlockEdit ) => {
 									value={ parseFloat( paddingCustom ) || 0 }
 									onChange={ ( newPadding ) => setAttributes( { paddingCustom: newPadding.toString() } ) }
 									min={ 0 }
-									max={ getMaxValue() }
+									max={ maxValue }
 									withInputField
 								/>
 							}
