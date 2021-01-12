@@ -167,6 +167,13 @@
 	}
 }
 
+.has-lightbox {
+
+	figure[class^="align"]:hover {
+		cursor: zoom-in;
+	}
+}
+
 figure.has-lightbox:hover {
 	cursor: zoom-in;
 }
