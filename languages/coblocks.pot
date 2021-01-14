@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-14T20:45:21+00:00\n"
+"POT-Creation-Date: 2021-01-14T21:18:38+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -975,7 +975,7 @@ msgstr ""
 #: src/blocks/row/column/inspector.js:109
 #: src/blocks/row/inspector.js:160
 #: src/components/background/panel.js:209
-#: src/extensions/padding-controls/index.js:78
+#: src/extensions/padding-controls/index.js:81
 msgid "Padding"
 msgstr ""
 
@@ -1231,7 +1231,7 @@ msgstr ""
 #: src/components/size-control/index.js:93
 #: src/components/size-control/index.js:104
 #: src/components/size-control/index.js:136
-#: src/extensions/padding-controls/index.js:31
+#: src/extensions/padding-controls/index.js:32
 msgid "S"
 msgstr ""
 
@@ -1249,7 +1249,7 @@ msgstr ""
 #: src/components/size-control/index.js:94
 #: src/components/size-control/index.js:105
 #: src/components/size-control/index.js:137
-#: src/extensions/padding-controls/index.js:32
+#: src/extensions/padding-controls/index.js:33
 msgid "Small"
 msgstr ""
 
@@ -1262,7 +1262,7 @@ msgstr ""
 #: src/components/size-control/index.js:84
 #: src/components/size-control/index.js:110
 #: src/components/size-control/index.js:143
-#: src/extensions/padding-controls/index.js:37
+#: src/extensions/padding-controls/index.js:38
 msgid "M"
 msgstr ""
 
@@ -1280,7 +1280,7 @@ msgstr ""
 #: src/components/size-control/index.js:85
 #: src/components/size-control/index.js:111
 #: src/components/size-control/index.js:144
-#: src/extensions/padding-controls/index.js:38
+#: src/extensions/padding-controls/index.js:39
 msgid "Medium"
 msgstr ""
 
@@ -1293,7 +1293,7 @@ msgstr ""
 #: src/components/size-control/index.js:69
 #: src/components/size-control/index.js:116
 #: src/components/size-control/index.js:152
-#: src/extensions/padding-controls/index.js:43
+#: src/extensions/padding-controls/index.js:44
 msgid "L"
 msgstr ""
 
@@ -1311,7 +1311,7 @@ msgstr ""
 #: src/components/size-control/index.js:70
 #: src/components/size-control/index.js:117
 #: src/components/size-control/index.js:153
-#: src/extensions/padding-controls/index.js:44
+#: src/extensions/padding-controls/index.js:45
 msgid "Large"
 msgstr ""
 
@@ -1323,7 +1323,7 @@ msgstr ""
 #: src/components/size-control/index.js:75
 #: src/components/size-control/index.js:122
 #: src/components/size-control/index.js:161
-#: src/extensions/padding-controls/index.js:49
+#: src/extensions/padding-controls/index.js:50
 msgid "XL"
 msgstr ""
 
@@ -1333,7 +1333,7 @@ msgstr ""
 #: src/blocks/icon/icon-size-select.js:30
 #: src/blocks/posts/inspector.js:81
 #: src/components/dimensions-control/dimensions-select.js:30
-#: src/extensions/padding-controls/index.js:50
+#: src/extensions/padding-controls/index.js:51
 msgid "Huge"
 msgstr ""
 
@@ -7105,8 +7105,8 @@ msgstr ""
 #: src/components/size-control/index.js:41
 #: src/components/size-control/index.js:42
 #: src/extensions/list-styles/index.js:18
-#: src/extensions/padding-controls/index.js:25
 #: src/extensions/padding-controls/index.js:26
+#: src/extensions/padding-controls/index.js:27
 msgid "None"
 msgstr ""
 
@@ -7688,7 +7688,7 @@ msgid "Outline"
 msgstr ""
 
 #. translators: %1$s is placeholder for block name such as Group, or Embed
-#: src/extensions/padding-controls/index.js:74
+#: src/extensions/padding-controls/index.js:77
 msgid "%1$s settings"
 msgstr ""
 
