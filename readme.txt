@@ -116,14 +116,13 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Enhancements
-* Add hint to the "Save Design Pattern" modal [#1751](https://github.com/godaddy-wordpress/coblocks/pull/1751)
-* Add icons for improved animations UI [#1752](https://github.com/godaddy-wordpress/coblocks/pull/1752)
+* Introduce 'Most Used' category to Layout Selector controls [#1786](https://github.com/godaddy-wordpress/coblocks/pull/1786)
+* Introduce customizable padding controls to core/group block [#1790](https://github.com/godaddy-wordpress/coblocks/pull/1790)
+* Enhance block sizing controls UI style consistency [#1789](https://github.com/godaddy-wordpress/coblocks/pull/1789)
+
+### Bug Fixes
+* Fix bug with aligned Lightbox images [#1787](https://github.com/godaddy-wordpress/coblocks/pull/1787)
+* Fix bug with cover block placeholder styles [#1778](https://github.com/godaddy-wordpress/coblocks/pull/1778)
 
 ### Misc
-* Add logic to define Layout Selector visibility in data store [#1754](https://github.com/godaddy-wordpress/coblocks/pull/1754)
-* Add logic to prevent insertion of Media Card block [#1760](https://github.com/godaddy-wordpress/coblocks/pull/1760)
-* Add logic to deprecate typography controls from Click-To-Tweet block [#1757](https://github.com/godaddy-wordpress/coblocks/pull/1757)
-* Remove deprecated transforms jest tests [#1761](https://github.com/godaddy-wordpress/coblocks/pull/1761)
-* Cypress E2E testing framework upgrades [#1763](https://github.com/godaddy-wordpress/coblocks/pull/1763)
-* Cypress E2E test updates and tweaks [#1764](https://github.com/godaddy-wordpress/coblocks/pull/1764)
-
+* Apply ESLint fixes and E2E test fixes. [#1788](https://github.com/godaddy-wordpress/coblocks/pull/1788)
