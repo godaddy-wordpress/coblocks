@@ -2,7 +2,7 @@
 
 ## Schedule
 
-We release a new version every two weeks with the release day being a Thursday. The next version is [tracked in GitHub milestones](https://github.com/godaddy-wordpress/coblocks/milestones) along with each versions scheduled tagging date.
+We release a new version every two weeks with the release day being a Monday. The next version is [tracked in GitHub milestones](https://github.com/godaddy-wordpress/coblocks/milestones) along with each versions scheduled tagging date.
 
 If critical bugs are discovered on stable versions of the plugin, patch versions can be released at any time.
 
@@ -38,7 +38,7 @@ Finally replace the latest changelog added at the end of the readme file with th
 To deploy a new release, simply run the following command:
 
 ```
-npm run version major|minor|patch
+yarn version major|minor|patch
 ```
 
 Replace "major|minor|patch" with the actual semver release type.
