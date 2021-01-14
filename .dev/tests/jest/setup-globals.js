@@ -10,10 +10,8 @@ global.wp = {};
 // Prevent console messages when running tests.
 console = {
 	...console,
-	// log: () => { },
 	info: () => { },
 	warn: () => { },
-	// error: () => { },
 };
 
 global.coblocksLayoutSelector = { layouts: [], categories: [] };
