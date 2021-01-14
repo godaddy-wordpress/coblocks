@@ -51,8 +51,8 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	}
 
 	return {
-		fallbackBackgroundColor: backgroundColorValue || false,
-		fallbackTextColor: textColorValue || false,
+		fallbackBackgroundColor: fallbackBackgroundColor || backgroundColorValue || false,
+		fallbackTextColor: fallbackTextColor || textColorValue || false,
 	};
 } );
 

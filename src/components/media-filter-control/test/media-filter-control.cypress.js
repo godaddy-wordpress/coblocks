@@ -3,7 +3,7 @@
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
-let filters = [
+const filters = [
 	'Original',
 	'Grayscale',
 	'Sepia',
@@ -18,7 +18,6 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 	 * and alter image using the media filter control component
 	 */
 	it( 'Test core/image block extends with Media Filter Control component.', function() {
-		const { imageBase } = helpers.upload.spec;
 		helpers.addBlockToPost( 'core/image', true );
 
 		helpers.upload.imageToBlock( 'core/image' );
@@ -27,20 +26,21 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 			.should( 'exist' )
 			.click();
 
-		var childIteration = 1;
+		let childIteration = 1;
+		let i;
 
 		// Check the menu contains the expected filters
-		for ( var i = 0; i < filters.length; i++ ) {
+		for ( i = 0; i < filters.length; i++ ) {
 			cy.get( '.components-dropdown-menu__menu button:nth-child(' + childIteration + ')' )
 				.contains( filters[ i ] );
-				childIteration++;
+			childIteration++;
 		}
 
 		i = 0;
 		childIteration = 1;
 
 		// Check the classes are applied correctly to the block
-		for ( var i = 0; i < filters.length; i++ ) {
+		for ( i = 0; i < filters.length; i++ ) {
 			cy.get( '.components-dropdown-menu__menu button:nth-child(' + childIteration + ')' )
 				.click();
 
@@ -79,7 +79,7 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 				continue;
 			}
 
-			let filterSlug = filters[ i ].toLowerCase();
+			const filterSlug = filters[ i ].toLowerCase();
 
 			cy.get( '.wp-block-image' )
 				.should( 'have.class', 'has-filter-' + filterSlug );
@@ -108,7 +108,6 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 	 * and alter image using the Lightbox Controls extension
 	 */
 	it( 'Test core/gallery block extends with Media Filter Control component.', function() {
-		const { imageBase } = helpers.upload.spec;
 		helpers.addBlockToPost( 'core/gallery', true );
 
 		helpers.upload.imageToBlock( 'core/gallery' );
@@ -117,20 +116,21 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 			.should( 'exist' )
 			.click();
 
-		var childIteration = 1;
+		let childIteration = 1;
+		let i;
 
 		// Check the menu contains the expected filters
-		for ( var i = 0; i < filters.length; i++ ) {
+		for ( i = 0; i < filters.length; i++ ) {
 			cy.get( '.components-dropdown-menu__menu button:nth-child(' + childIteration + ')' )
 				.contains( filters[ i ] );
-				childIteration++;
+			childIteration++;
 		}
 
 		i = 0;
 		childIteration = 1;
 
 		// Check the classes are applied correctly to the block
-		for ( var i = 0; i < filters.length; i++ ) {
+		for ( i = 0; i < filters.length; i++ ) {
 			cy.get( '.components-dropdown-menu__menu button:nth-child(' + childIteration + ')' )
 				.click();
 
@@ -169,7 +169,7 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 				continue;
 			}
 
-			let filterSlug = filters[ i ].toLowerCase();
+			const filterSlug = filters[ i ].toLowerCase();
 
 			cy.get( 'div[data-type="core/gallery"]' )
 				.should( 'have.class', 'has-filter-' + filterSlug );
@@ -192,5 +192,4 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 			childIteration++;
 		}
 	} );
-
 } );

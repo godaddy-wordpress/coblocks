@@ -143,7 +143,11 @@ class GalleryCollageEdit extends Component {
 
 		return (
 			<Fragment>
-				<a onClick={ () => this.onSelectImage( image.index ) }>
+				{ /* // Disable reason: Image itself is not meant to be interactive, but should
+						direct image selection and unfocus caption fields. */ }
+				{ /* eslint-disable jsx-a11y/click-events-have-key-events  */ }
+				{ /* eslint-disable jsx-a11y/anchor-is-valid  */ }
+				<a role="button" tabIndex="0" onClick={ () => this.onSelectImage( image.index ) }>
 					<figure
 						className={ classnames( {
 							'wp-block-coblocks-gallery-collage__figure': true,
@@ -192,6 +196,8 @@ class GalleryCollageEdit extends Component {
 						}
 					</figure>
 				</a>
+				{ /* eslint-enable jsx-a11y/no-noninteractive-element-interactions */ }
+				{ /* eslint-enable jsx-a11y/click-events-have-key-events  */ }
 			</Fragment>
 		);
 	}
@@ -258,8 +264,8 @@ class GalleryCollageEdit extends Component {
 								return (
 									<li
 										key={ `image-${ theIndex }` }
-										className={ classnames( 
-											'wp-block-coblocks-gallery-collage__item', 
+										className={ classnames(
+											'wp-block-coblocks-gallery-collage__item',
 											`item-${ index + 1 }`,
 											{
 												[ `coblocks-animate ${ animation }` ]: animation,

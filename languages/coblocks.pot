@@ -1,14 +1,14 @@
 # Copyright (c) 2021 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 2.5.3\n"
+"Project-Id-Version: CoBlocks 2.6.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-12T14:36:29+00:00\n"
+"POT-Creation-Date: 2021-01-14T21:54:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -431,7 +431,7 @@ msgstr ""
 #: src/blocks/alert/inspector.js:49
 #: src/blocks/author/inspector.js:50
 #: src/blocks/click-to-tweet/inspector.js:60
-#: src/blocks/dynamic-separator/inspector.js:62
+#: src/blocks/dynamic-separator/inspector.js:63
 #: src/blocks/events/event-item/inspector.js:30
 #: src/blocks/features/feature/inspector.js:92
 #: src/blocks/features/inspector.js:159
@@ -441,7 +441,7 @@ msgstr ""
 #: src/blocks/icon/inspector.js:299
 #: src/blocks/media-card/inspector.js:141
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:48
-#: src/blocks/row/column/inspector.js:163
+#: src/blocks/row/column/inspector.js:164
 #: src/blocks/row/inspector.js:206
 #: src/blocks/shape-divider/inspector.js:92
 #: src/blocks/share/inspector.js:200
@@ -455,7 +455,7 @@ msgstr ""
 #: src/blocks/accordion/accordion-item/inspector.js:79
 #: src/blocks/alert/inspector.js:55
 #: src/blocks/author/inspector.js:56
-#: src/blocks/dynamic-separator/inspector.js:68
+#: src/blocks/dynamic-separator/inspector.js:69
 #: src/blocks/features/feature/inspector.js:110
 #: src/blocks/features/inspector.js:177
 #: src/blocks/hero/inspector.js:150
@@ -463,7 +463,7 @@ msgstr ""
 #: src/blocks/icon/inspector.js:323
 #: src/blocks/media-card/inspector.js:155
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:53
-#: src/blocks/row/column/inspector.js:169
+#: src/blocks/row/column/inspector.js:170
 #: src/blocks/row/inspector.js:222
 #: src/blocks/shape-divider/inspector.js:103
 #: src/blocks/share/inspector.js:81
@@ -484,7 +484,7 @@ msgstr ""
 #: src/blocks/hero/inspector.js:155
 #: src/blocks/highlight/inspector.js:54
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:58
-#: src/blocks/row/column/inspector.js:174
+#: src/blocks/row/column/inspector.js:175
 #: src/blocks/row/inspector.js:227
 #: src/blocks/share/inspector.js:66
 #: src/blocks/social-profiles/inspector.js:96
@@ -601,17 +601,17 @@ msgid "Drop to upload as avatar"
 msgstr ""
 
 #. translators: placeholder text used for the author name
-#: src/blocks/author/edit.js:134
+#: src/blocks/author/edit.js:131
 msgid "Write author name…"
 msgstr ""
 
 #. translators: placeholder text used for the biography
-#: src/blocks/author/edit.js:149
+#: src/blocks/author/edit.js:146
 msgid "Write a biography that distills objective credibility and authority to your readers…"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/author/edit.js:158
+#: src/blocks/author/edit.js:155
 msgid "Author link…"
 msgstr ""
 
@@ -788,18 +788,18 @@ msgid "Fullwidth"
 msgstr ""
 
 #. translators: hr is html markup (horizonal rule)
-#: src/blocks/dynamic-separator/inspector.js:45
+#: src/blocks/dynamic-separator/inspector.js:46
 msgid "Dynamic HR settings"
 msgstr ""
 
-#: src/blocks/dynamic-separator/inspector.js:46
+#: src/blocks/dynamic-separator/inspector.js:47
 #: src/blocks/gallery-carousel/inspector.js:114
 #: src/blocks/hero/inspector.js:108
 #: src/blocks/map/inspector.js:130
 msgid "Height in pixels"
 msgstr ""
 
-#: src/blocks/dynamic-separator/inspector.js:54
+#: src/blocks/dynamic-separator/inspector.js:55
 msgid "Height for the dynamic separator element in pixels."
 msgstr ""
 
@@ -927,7 +927,7 @@ msgstr ""
 msgid "Show events from the period (100 events max)."
 msgstr ""
 
-#: src/blocks/features/edit.js:102
+#: src/blocks/features/edit.js:100
 #: src/blocks/features/feature/edit.js:117
 #: src/blocks/media-card/edit.js:206
 msgid "Add as background"
@@ -975,7 +975,7 @@ msgstr ""
 #: src/blocks/row/column/inspector.js:109
 #: src/blocks/row/inspector.js:160
 #: src/components/background/panel.js:209
-#: src/extensions/padding-controls/index.js:78
+#: src/extensions/padding-controls/index.js:81
 msgid "Padding"
 msgstr ""
 
@@ -1231,7 +1231,7 @@ msgstr ""
 #: src/components/size-control/index.js:93
 #: src/components/size-control/index.js:104
 #: src/components/size-control/index.js:136
-#: src/extensions/padding-controls/index.js:31
+#: src/extensions/padding-controls/index.js:32
 msgid "S"
 msgstr ""
 
@@ -1249,7 +1249,7 @@ msgstr ""
 #: src/components/size-control/index.js:94
 #: src/components/size-control/index.js:105
 #: src/components/size-control/index.js:137
-#: src/extensions/padding-controls/index.js:32
+#: src/extensions/padding-controls/index.js:33
 msgid "Small"
 msgstr ""
 
@@ -1262,7 +1262,7 @@ msgstr ""
 #: src/components/size-control/index.js:84
 #: src/components/size-control/index.js:110
 #: src/components/size-control/index.js:143
-#: src/extensions/padding-controls/index.js:37
+#: src/extensions/padding-controls/index.js:38
 msgid "M"
 msgstr ""
 
@@ -1280,7 +1280,7 @@ msgstr ""
 #: src/components/size-control/index.js:85
 #: src/components/size-control/index.js:111
 #: src/components/size-control/index.js:144
-#: src/extensions/padding-controls/index.js:38
+#: src/extensions/padding-controls/index.js:39
 msgid "Medium"
 msgstr ""
 
@@ -1293,7 +1293,7 @@ msgstr ""
 #: src/components/size-control/index.js:69
 #: src/components/size-control/index.js:116
 #: src/components/size-control/index.js:152
-#: src/extensions/padding-controls/index.js:43
+#: src/extensions/padding-controls/index.js:44
 msgid "L"
 msgstr ""
 
@@ -1311,7 +1311,7 @@ msgstr ""
 #: src/components/size-control/index.js:70
 #: src/components/size-control/index.js:117
 #: src/components/size-control/index.js:153
-#: src/extensions/padding-controls/index.js:44
+#: src/extensions/padding-controls/index.js:45
 msgid "Large"
 msgstr ""
 
@@ -1323,7 +1323,7 @@ msgstr ""
 #: src/components/size-control/index.js:75
 #: src/components/size-control/index.js:122
 #: src/components/size-control/index.js:161
-#: src/extensions/padding-controls/index.js:49
+#: src/extensions/padding-controls/index.js:50
 msgid "XL"
 msgstr ""
 
@@ -1333,7 +1333,7 @@ msgstr ""
 #: src/blocks/icon/icon-size-select.js:30
 #: src/blocks/posts/inspector.js:81
 #: src/components/dimensions-control/dimensions-select.js:30
-#: src/extensions/padding-controls/index.js:50
+#: src/extensions/padding-controls/index.js:51
 msgid "Huge"
 msgstr ""
 
@@ -1976,7 +1976,7 @@ msgstr ""
 #: src/blocks/gallery-masonry/inspector.js:81
 #: src/blocks/icon/inspector.js:106
 #: src/blocks/icon/inspector.js:172
-#: src/components/typography-controls/index.js:219
+#: src/components/typography-controls/index.js:224
 msgid "Size"
 msgstr ""
 
@@ -1989,18 +1989,18 @@ msgstr ""
 msgid "Rounded corners"
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:140
+#: src/blocks/gallery-carousel/inspector.js:141
 #: src/blocks/gallery-masonry/inspector.js:102
 #: src/blocks/gallery-stacked/inspector.js:115
 #: src/extensions/lightbox-controls/index.js:46
 msgid "Lightbox"
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:146
+#: src/blocks/gallery-carousel/inspector.js:147
 msgid "Thumbnails"
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:156
+#: src/blocks/gallery-carousel/inspector.js:157
 msgid "Responsive height"
 msgstr ""
 
@@ -2018,7 +2018,6 @@ msgstr ""
 #. translators: typography style
 #: src/blocks/gallery-collage/index.js:51
 #: src/blocks/logos/index.js:48
-#: src/components/font-family/index.js:16
 #: src/components/typography-controls/index.js:103
 #: src/components/typography-controls/index.js:121
 #: src/extensions/cover-styles/index.js:11
@@ -2039,7 +2038,7 @@ msgid "Layered"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gallery-masonry/edit.js:187
+#: src/blocks/gallery-masonry/edit.js:165
 #: src/blocks/gallery-masonry/index.js:35
 msgid "Masonry"
 msgstr ""
@@ -2094,7 +2093,7 @@ msgstr ""
 
 #. translators: block name
 #. translators: block style
-#: src/blocks/gallery-stacked/edit.js:175
+#: src/blocks/gallery-stacked/edit.js:150
 #: src/blocks/gallery-stacked/index.js:35
 #: src/blocks/posts/edit.js:53
 msgid "Stacked"
@@ -2192,7 +2191,7 @@ msgstr ""
 msgid "Gist URL"
 msgstr ""
 
-#: src/blocks/gist/edit.js:129
+#: src/blocks/gist/edit.js:130
 msgid "Add GitHub Gist URL…"
 msgstr ""
 
@@ -6412,7 +6411,7 @@ msgstr ""
 msgid "Space around the container."
 msgstr ""
 
-#: src/blocks/row/column/inspector.js:153
+#: src/blocks/row/column/inspector.js:154
 msgid "Width"
 msgstr ""
 
@@ -6920,12 +6919,12 @@ msgstr ""
 msgid "Remove background"
 msgstr ""
 
-#: src/components/background/controls.js:82
 #: src/components/background/controls.js:83
+#: src/components/background/controls.js:84
 msgid "Edit background image"
 msgstr ""
 
-#: src/components/background/controls.js:96
+#: src/components/background/controls.js:97
 msgid "Add background image"
 msgstr ""
 
@@ -7106,8 +7105,8 @@ msgstr ""
 #: src/components/size-control/index.js:41
 #: src/components/size-control/index.js:42
 #: src/extensions/list-styles/index.js:18
-#: src/extensions/padding-controls/index.js:25
 #: src/extensions/padding-controls/index.js:26
+#: src/extensions/padding-controls/index.js:27
 msgid "None"
 msgstr ""
 
@@ -7289,11 +7288,11 @@ msgstr ""
 msgid "Fullscreen"
 msgstr ""
 
-#: src/components/grid-control/index.js:261
+#: src/components/grid-control/index.js:259
 msgid "Fullscreen mode is enabled."
 msgstr ""
 
-#: src/components/grid-control/index.js:261
+#: src/components/grid-control/index.js:259
 msgid "Toggle to enable fullscreen mode."
 msgstr ""
 
@@ -7495,27 +7494,27 @@ msgstr ""
 msgid "Capitalize"
 msgstr ""
 
-#: src/components/typography-controls/index.js:201
+#: src/components/typography-controls/index.js:202
 msgid "Weight"
 msgstr ""
 
-#: src/components/typography-controls/index.js:210
+#: src/components/typography-controls/index.js:214
 msgid "Transform"
 msgstr ""
 
-#: src/components/typography-controls/index.js:230
+#: src/components/typography-controls/index.js:236
 msgid "Line height"
 msgstr ""
 
-#: src/components/typography-controls/index.js:241
+#: src/components/typography-controls/index.js:248
 msgid "Letter spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:253
+#: src/components/typography-controls/index.js:260
 msgid "No top spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:258
+#: src/components/typography-controls/index.js:265
 msgid "No bottom spacing"
 msgstr ""
 
@@ -7665,6 +7664,27 @@ msgstr ""
 msgid "Crop settings"
 msgstr ""
 
+#: src/extensions/layout-selector/index.js:88
+msgid "Add New Page"
+msgstr ""
+
+#: src/extensions/layout-selector/index.js:89
+msgid "Pick one of these layouts or start with a blank page."
+msgstr ""
+
+#: src/extensions/layout-selector/index.js:121
+#: src/extensions/layout-selector/index.js:152
+msgid "Add blank page"
+msgstr ""
+
+#: src/extensions/layout-selector/index.js:127
+msgid "Layouts"
+msgstr ""
+
+#: src/extensions/layout-selector/index.js:208
+msgid "Most Used"
+msgstr ""
+
 #: src/extensions/layout-selector/layout-selector-results.js:56
 msgid "No layouts are available for this category."
 msgstr ""
@@ -7689,7 +7709,7 @@ msgid "Outline"
 msgstr ""
 
 #. translators: %1$s is placeholder for block name such as Group, or Embed
-#: src/extensions/padding-controls/index.js:74
+#: src/extensions/padding-controls/index.js:77
 msgid "%1$s settings"
 msgstr ""
 

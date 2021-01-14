@@ -34,6 +34,11 @@ const save = ( { attributes, className } ) => {
 		lightbox,
 	} = attributes;
 
+	// Return early if there are no images.
+	if ( images.length <= 0 ) {
+		return;
+	}
+
 	const classes = classnames(
 		className, {
 			'has-responsive-height': responsiveHeight,
@@ -126,11 +131,6 @@ const save = ( { attributes, className } ) => {
 		wrapAround: false,
 	};
 
-	// Return early if there are no images.
-	if ( images.length <= 0 ) {
-		return;
-	}
-
 	return (
 		<div className={ classes }>
 			<div className={ innerClasses }>
@@ -151,22 +151,23 @@ const save = ( { attributes, className } ) => {
 						);
 					} ) }
 				</div>
-				{ thumbnails ?
-					<div
-						className={ navClasses }
-						data-flickity={ JSON.stringify( navOptions ) }
-					>
-						{ images.map( ( image ) => {
-							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } />;
-							return (
-								<div key={ image.id || image.url } className="coblocks--item-thumbnail">
-									<figure className={ navFigureClasses }>
-										{ img }
-									</figure>
-								</div>
-							);
-						} ) }
-					</div> : null
+				{ thumbnails
+					? (
+						<div
+							className={ navClasses }
+							data-flickity={ JSON.stringify( navOptions ) }
+						>
+							{ images.map( ( image ) => {
+								const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } />;
+								return (
+									<div key={ image.id || image.url } className="coblocks--item-thumbnail">
+										<figure className={ navFigureClasses }>
+											{ img }
+										</figure>
+									</div>
+								);
+							} ) }
+						</div> ) : null
 				}
 			</div>
 			{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } /> }

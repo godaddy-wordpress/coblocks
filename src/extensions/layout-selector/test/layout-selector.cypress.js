@@ -66,8 +66,8 @@ describe( 'Extension: Layout Selector', () => {
 		cy.get( '.editor-post-title__block' ).find( 'textarea' ).should( 'be.empty' );
 
 		// The first block should be the default prompt.
-		cy.get( '.wp-block' ).should( 'have.length', 2 );
-		cy.get( '.wp-block' ).last().find( 'textarea' ).should( 'have.value', 'Start writing or type / to choose a block' );
+		cy.get( '.edit-post-visual-editor .block-editor-block-list__layout' ).find( '> .wp-block' ).should( 'have.length', 1 );
+		cy.get( '.block-editor-default-block-appender' ).find( 'textarea' ).should( 'have.value', 'Start writing or type / to choose a block' );
 	} );
 
 	it( 'does not show modal on add new "post" post_type', () => {

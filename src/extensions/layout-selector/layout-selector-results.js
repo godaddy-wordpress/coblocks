@@ -81,7 +81,7 @@ export const LayoutPreview = ( { layout, onClick } ) => {
 /**
  * Renders the layout's loading placeholder.
  */
-const LayoutPreviewPlaceholder = () => {
+export const LayoutPreviewPlaceholder = () => {
 	return (
 		<div className="coblocks-layout-selector__layout is-placeholder">
 			<Spinner />

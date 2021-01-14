@@ -13,7 +13,7 @@ module.exports = {
 	...defaultConfig,
 
 	entry: {
-		'coblocks': path.resolve( process.cwd(), 'src/blocks.js' ),
+		coblocks: path.resolve( process.cwd(), 'src/blocks.js' ),
 		'coblocks-editor': path.resolve( process.cwd(), 'src/styles/editor.scss' ),
 		'coblocks-style': path.resolve( process.cwd(), 'src/styles/style.scss' ),
 

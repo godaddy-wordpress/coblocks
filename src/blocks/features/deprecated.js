@@ -26,7 +26,7 @@ const deprecated =
 			default: 'large',
 		},
 	},
-	save( { attributes, className } ) {
+	save( deprecatedProps ) {
 		const {
 			coblocks,
 			columns,
@@ -36,12 +36,12 @@ const deprecated =
 			gutter,
 			marginSize,
 			paddingSize,
-		} = attributes;
+		} = deprecatedProps.attributes;
 
 		// Body color class and styles.
 		const textClass = getColorClassName( 'color', textColor );
 
-		let classes = className;
+		let classes = deprecatedProps.className;
 
 		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
 			classes = classnames( classes, `coblocks-features-${ coblocks.id }` );
@@ -49,7 +49,7 @@ const deprecated =
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-features__inner',
-			...BackgroundClasses( attributes ), {
+			...BackgroundClasses( deprecatedProps.attributes ), {
 				'has-text-color': textColor || customTextColor,
 				[ textClass ]: textClass,
 				'has-padding': paddingSize && paddingSize !== 'no',
@@ -61,14 +61,14 @@ const deprecated =
 			} );
 
 		const innerStyles = {
-			...BackgroundStyles( attributes ),
+			...BackgroundStyles( deprecatedProps.attributes ),
 			color: textClass ? undefined : customTextColor,
 		};
 
 		return (
 			<div className={ classes } data-columns={ columns }>
 				<div className={ innerClasses } style={ innerStyles }>
-					{ BackgroundVideo( attributes ) }
+					{ BackgroundVideo( deprecatedProps.attributes ) }
 					<InnerBlocks.Content />
 				</div>
 			</div>

@@ -444,8 +444,8 @@ class DimensionsControl extends Component {
 		return (
 			<Fragment>
 				<div className={ classes }>
-					{ dimensionSize === 'advanced' ?
-						<Fragment>
+					{ dimensionSize === 'advanced'
+						? <Fragment>
 							<div className="components-coblocks-dimensions-control__header">
 								{ label && <p className={ 'components-coblocks-dimensions-control__label' }>{ label }</p> }
 								<div className="components-coblocks-dimensions-control__actions">
@@ -759,8 +759,8 @@ class DimensionsControl extends Component {
 								<span className="components-coblocks-dimensions-control__number-label">{ __( 'Left', 'coblocks' ) }</span>
 								<span className="components-coblocks-dimensions-control__number-label-blank"></span>
 							</div>
-						</Fragment>						:
-						<BaseControl id="textarea-1" label={ label } help={ help }>
+						</Fragment>
+						:						<BaseControl id="textarea-1" label={ label } help={ help }>
 							<div className="components-font-size-picker__controls">
 								<DimensionsSelect
 									type={ type }

@@ -5,9 +5,9 @@ import * as helpers from '../../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Service Block', function() {
 	/**
-	* Test that we can add a service block to the content, not alter
-	* any settings, and are able to successfully save the block without errors.
-	*/
+	 * Test that we can add a service block to the content, not alter
+	 * any settings, and are able to successfully save the block without errors.
+	 */
 	it( 'Test service block saves with empty values.', function() {
 		helpers.addBlockToPost( 'coblocks/services', true );
 
@@ -23,9 +23,9 @@ describe( 'Test CoBlocks Service Block', function() {
 	} );
 
 	/**
-	* Test that we can add a service block to the content, enable
-	* action buttons and  are able to successfully save the block without errors.
-	*/
+	 * Test that we can add a service block to the content, enable
+	 * action buttons and  are able to successfully save the block without errors.
+	 */
 	it( 'Test service block saves with action buttons enabled.', function() {
 		helpers.addBlockToPost( 'coblocks/services', true );
 
@@ -41,8 +41,8 @@ describe( 'Test CoBlocks Service Block', function() {
 	} );
 
 	/**
-    * Test the service block saves with custom classes
-    */
+	 * Test the service block saves with custom classes
+	 */
 	it( 'Test the service block custom classes.', function() {
 		helpers.addBlockToPost( 'coblocks/services', true );
 

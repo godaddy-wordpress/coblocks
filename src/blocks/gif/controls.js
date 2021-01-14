@@ -13,9 +13,9 @@ class Controls extends Component {
 	}
 
 	updateAlignment( nextAlign ) {
-		const extraUpdatedAttributes = [ 'wide', 'full' ].indexOf( nextAlign ) !== -1 ?
-			{ width: undefined, height: undefined } :
-			{};
+		const extraUpdatedAttributes = [ 'wide', 'full' ].indexOf( nextAlign ) !== -1
+			? { width: undefined, height: undefined }
+			: {};
 		this.props.setAttributes( { ...extraUpdatedAttributes, align: nextAlign } );
 	}
 

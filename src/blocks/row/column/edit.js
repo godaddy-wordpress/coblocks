@@ -119,37 +119,37 @@ class Edit extends Component {
 			backgroundColor: backgroundColor.color,
 			color: textColor.color,
 			paddingTop:
-				paddingSize === 'advanced' && paddingTop ?
-					paddingTop + paddingUnit :
-					undefined,
+				paddingSize === 'advanced' && paddingTop
+					? paddingTop + paddingUnit
+					: undefined,
 			paddingRight:
-				paddingSize === 'advanced' && paddingRight ?
-					paddingRight + paddingUnit :
-					undefined,
+				paddingSize === 'advanced' && paddingRight
+					? paddingRight + paddingUnit
+					: undefined,
 			paddingBottom:
-				paddingSize === 'advanced' && paddingBottom ?
-					paddingBottom + paddingUnit :
-					undefined,
+				paddingSize === 'advanced' && paddingBottom
+					? paddingBottom + paddingUnit
+					: undefined,
 			paddingLeft:
-				paddingSize === 'advanced' && paddingLeft ?
-					paddingLeft + paddingUnit :
-					undefined,
+				paddingSize === 'advanced' && paddingLeft
+					? paddingLeft + paddingUnit
+					: undefined,
 			marginTop:
-				marginSize === 'advanced' && marginTop ?
-					marginTop + marginUnit :
-					undefined,
+				marginSize === 'advanced' && marginTop
+					? marginTop + marginUnit
+					: undefined,
 			marginRight:
-				marginSize === 'advanced' && marginRight ?
-					marginRight + marginUnit :
-					undefined,
+				marginSize === 'advanced' && marginRight
+					? marginRight + marginUnit
+					: undefined,
 			marginBottom:
-				marginSize === 'advanced' && marginBottom ?
-					marginBottom + marginUnit :
-					undefined,
+				marginSize === 'advanced' && marginBottom
+					? marginBottom + marginUnit
+					: undefined,
 			marginLeft:
-				marginSize === 'advanced' && marginLeft ?
-					marginLeft + marginUnit :
-					undefined,
+				marginSize === 'advanced' && marginLeft
+					? marginLeft + marginUnit
+					: undefined,
 		};
 
 		if ( parseInt( width ) === 100 ) {
@@ -162,9 +162,9 @@ class Edit extends Component {
 						className={ classes }
 						style={ {
 							backgroundColor: backgroundColor.color,
-							backgroundImage: backgroundImg ?
-								`url(${ backgroundImg })` :
-								undefined,
+							backgroundImage: backgroundImg
+								? `url(${ backgroundImg })`
+								: undefined,
 							color: textColor.color,
 						} }
 					>
@@ -189,9 +189,9 @@ class Edit extends Component {
 						'is-resizing': this.state.resizing,
 					} ) }
 				>
-					{ isSelected && this.state.selectedBlockWidth > 0 ?
-						parseFloat( this.state.selectedBlockWidth ).toFixed( 1 ) :
-						parseFloat( width ).toFixed( 1 ) }
+					{ isSelected && this.state.selectedBlockWidth > 0
+						? parseFloat( this.state.selectedBlockWidth ).toFixed( 1 )
+						: parseFloat( width ).toFixed( 1 ) }
 					%
 				</span>
 				<ResizableBox

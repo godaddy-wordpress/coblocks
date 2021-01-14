@@ -10,9 +10,9 @@ import PropTypes from 'prop-types';
 import { cloneElement, isValidElement } from '@wordpress/element';
 
 /**
- * Return an element Wrapped with Gutter Properties.
+ * Return an element Wrapped with padding Properties.
  */
-function GutterWrapper( { children, gutter, gutterCustom, className, condition = true } ) {
+function PaddingWrapper( { children, padding, paddingCustom, className } ) {
 	if ( ! isValidElement( children ) ) {
 		return children;
 	}
@@ -21,7 +21,7 @@ function GutterWrapper( { children, gutter, gutterCustom, className, condition =
 		className: classnames(
 			className,
 			children.props.className,
-			{ [ `has-${ gutter }-gutter` ]: gutter && !! condition }
+			{ [ `has-${ padding }-padding` ]: padding }
 		),
 	};
 
@@ -31,19 +31,19 @@ function GutterWrapper( { children, gutter, gutterCustom, className, condition =
 		};
 	}
 
-	if ( 'custom' === gutter ) {
+	if ( 'custom' === padding ) {
 		attributes.style = {
 			...attributes.style,
-			'--coblocks-custom-gutter': `${ gutterCustom }em`,
+			'--coblocks-custom-padding': `${ paddingCustom }em`,
 		};
 	}
 
 	return cloneElement( children, attributes );
 }
 
-GutterWrapper.propTypes = {
-	gutter: PropTypes.string,
-	gutterCustom: PropTypes.oneOfType( [ PropTypes.string, PropTypes.number ] ),
+PaddingWrapper.propTypes = {
+	padding: PropTypes.string,
+	paddingCustom: PropTypes.oneOfType( [ PropTypes.string, PropTypes.number ] ),
 };
 
-export default GutterWrapper;
+export default PaddingWrapper;

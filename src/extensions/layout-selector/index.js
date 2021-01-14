@@ -3,6 +3,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import { orderBy } from 'lodash';
 
 /**
  * WordPress dependencies
@@ -22,6 +23,8 @@ import { createBlock, rawHandler } from '@wordpress/blocks';
 import './store';
 import { LayoutSelectorResults } from './layout-selector-results';
 import CoBlocksLayoutSelectorFill from './layout-selector-slot';
+
+const MAX_SUGGESTED_ITEMS = 6;
 
 const getBlocksFromTemplate = ( name, attributes, innerBlocks = [] ) => {
 	return createBlock( name, attributes,
@@ -55,26 +58,6 @@ class LayoutSelector extends Component {
 		};
 	}
 
-	useEmptyTemplateLayout = () => {
-		const {
-			editPost,
-		} = this.props;
-
-		editPost( { title: '', blocks: [] } );
-	}
-
-	// Replace any blocks with the selected layout.
-	useTemplateLayout = ( layout ) => {
-		const {
-			editPost,
-		} = this.props;
-
-		editPost( {
-			title: layout.label,
-			blocks: layout.blocks,
-		} );
-	}
-
 	getLayoutsInCategory( category ) {
 		return this.props.layouts.filter( ( layout ) => layout.category === category ) || [];
 	}
@@ -87,8 +70,9 @@ class LayoutSelector extends Component {
 		const { selectedCategory } = this.state;
 		const {
 			isActive,
-			closeTemplateSelector,
 			layoutSelectorEnabled,
+			useEmptyTemplateLayout,
+			useTemplateLayout,
 		} = this.props;
 
 		if ( ! layoutSelectorEnabled ) {
@@ -105,10 +89,7 @@ class LayoutSelector extends Component {
 						<span>{ __( 'Pick one of these layouts or start with a blank page.', 'coblocks' ) }</span>
 					</Fragment>
 				) }
-				onRequestClose={ () => {
-					this.useEmptyTemplateLayout();
-					closeTemplateSelector();
-				} }
+				onRequestClose={ () => useEmptyTemplateLayout() }
 				className="coblocks-layout-selector-modal">
 				<div className="coblocks-layout-selector">
 					<aside className="coblocks-layout-selector__sidebar">
@@ -134,10 +115,7 @@ class LayoutSelector extends Component {
 
 						<Button
 							className="coblocks-layout-selector__add-button"
-							onClick={ () => {
-								this.useEmptyTemplateLayout();
-								closeTemplateSelector();
-							} }
+							onClick={ () => useEmptyTemplateLayout() }
 							isLink>
 							<span><SVG width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><Path d="M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z" /></SVG></span>
 							{ __( 'Add blank page', 'coblocks' ) }
@@ -169,10 +147,7 @@ class LayoutSelector extends Component {
 						<div className="coblocks-layout-selector__topbar__right">
 							<Button
 								className="coblocks-layout-selector__add-button"
-								onClick={ () => {
-									this.useEmptyTemplateLayout();
-									closeTemplateSelector();
-								} }
+								onClick={ () => useEmptyTemplateLayout() }
 								isLink>
 								<span><Icon icon="plus" size={ 16 } /></span> { __( 'Add blank page', 'coblocks' ) }
 							</Button>
@@ -183,10 +158,7 @@ class LayoutSelector extends Component {
 						<LayoutSelectorResults
 							layouts={ this.props.layouts }
 							category={ selectedCategory }
-							onInsert={ ( layout ) => {
-								this.useTemplateLayout( layout );
-								this.props.closeTemplateSelector();
-							} }
+							onInsert={ ( layout ) => useTemplateLayout( layout ) }
 						/>
 					</div>
 				</div>
@@ -231,15 +203,26 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 					}
 				), [ layouts ] );
 
+				const mostUsedLayouts = orderBy( layouts, [ 'frequency' ], [ 'desc' ] )
+					.slice( 0, MAX_SUGGESTED_ITEMS )
+					.map( ( layout ) => ( { ...layout, category: 'most-used' } ) );
+				layouts.push( ...mostUsedLayouts );
+
 				return {
 					isActive: isTemplateSelectorActive(),
 					layoutSelectorEnabled: getLayoutSelector() && hasLayouts() && hasCategories(),
 					layouts: layoutsMemo,
-					categories: getCategories(),
+					categories: [
+						{ slug: 'most-used', title: __( 'Most Used', 'coblocks' ) },
+						...getCategories(),
+					],
 				};
 			} ),
 			withDispatch( ( dispatch ) => {
-				const { closeTemplateSelector } = dispatch( 'coblocks/template-selector' );
+				const {
+					closeTemplateSelector,
+					incrementLayoutUsage,
+				} = dispatch( 'coblocks/template-selector' );
 				const { editPost } = dispatch( 'core/editor' );
 				const { createWarningNotice } = dispatch( 'core/notices' );
 
@@ -247,6 +230,21 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 					closeTemplateSelector,
 					createWarningNotice,
 					editPost,
+
+					// Replace any blocks with the selected layout.
+					useTemplateLayout: ( layout ) => {
+						editPost( {
+							title: layout.label,
+							blocks: layout.blocks,
+						} );
+						closeTemplateSelector();
+						incrementLayoutUsage( layout );
+					},
+
+					useEmptyTemplateLayout: () => {
+						editPost( { title: '', blocks: [] } );
+						closeTemplateSelector();
+					},
 				};
 			} ),
 		] )( LayoutSelector ),

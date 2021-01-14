@@ -257,8 +257,8 @@ export function setBlockStyle( style ) {
  * @param {string} name The name of the block to select eg: highlight or click-to-tweet
  */
 export function selectBlock( name ) {
-	cy.get( '.edit-post-header__toolbar button[aria-label="Block navigation"]' ).click();
-	cy.get( '.block-editor-block-navigation__container button' ).contains( startCase( name ) ).click();
+	cy.get( '.block-editor-block-navigation' ).click();
+	cy.get( '.block-editor-block-navigation-leaf button' ).contains( startCase( name ) ).click();
 }
 
 /**

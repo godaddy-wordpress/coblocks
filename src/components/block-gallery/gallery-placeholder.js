@@ -27,7 +27,7 @@ class GalleryPlaceholder extends Component {
 
 	selectCaption( newImage, images ) {
 		const currentImage = find( images, ( obj ) => parseInt( obj?.id ) === newImage?.id );
-		return Array.isArray( currentImage?.caption ) ? currentImage?.caption?.[0] : currentImage?.caption || newImage?.caption || '';
+		return Array.isArray( currentImage?.caption ) ? currentImage?.caption?.[ 0 ] : currentImage?.caption || newImage?.caption || '';
 	}
 
 	selectImgLink( newImage, images ) {

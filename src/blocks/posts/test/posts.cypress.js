@@ -28,9 +28,9 @@ describe( 'Test CoBlocks Posts Block', function() {
 	it( 'Test posts block column and post count controls.', function() {
 		helpers.addBlockToPost( 'coblocks/posts', true );
 
-		cy.get( '.wp-block-coblocks-posts' ).find( '.has-2-columns' ).then( () => {
-			helpers.setInputValue( 'posts settings', 'columns', 1 );
-		} );
+		cy.get( '.wp-block-coblocks-posts' ).find( '.has-2-columns' );
+
+		helpers.setInputValue( 'posts settings', 'columns', 1 );
 
 		cy.get( '.wp-block-coblocks-posts' ).find( '.has-1-columns' ).should( 'exist' );
 
@@ -38,15 +38,15 @@ describe( 'Test CoBlocks Posts Block', function() {
 
 		helpers.checkForBlockErrors( 'coblocks/posts' );
 
-		cy.get( '.wp-block-coblocks-posts' ).click( { force: true } ).then( () => {
-			helpers.setInputValue( 'feed settings', 'number of posts', 3 );
+		cy.get( '.wp-block-coblocks-posts' ).click( { force: true } );
 
-			helpers.setInputValue( 'feed settings', 'number of posts', 2 );
+		helpers.setInputValue( 'feed settings', 'number of posts', 3 );
 
-			helpers.setInputValue( 'feed settings', 'number of posts', 1 );
+		helpers.setInputValue( 'feed settings', 'number of posts', 2 );
 
-			cy.get( '.wp-block-coblocks-posts  > .has-columns' ).children().should( 'have.length', 1 );
-		} );
+		helpers.setInputValue( 'feed settings', 'number of posts', 1 );
+
+		cy.get( '.wp-block-coblocks-posts  > .has-columns' ).children().should( 'have.length', 1 );
 
 		helpers.savePage();
 

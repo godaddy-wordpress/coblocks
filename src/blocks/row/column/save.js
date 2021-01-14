@@ -25,9 +25,9 @@ const save = ( { attributes } ) => {
 	} = attributes;
 	const textClass = getColorClassName( 'color', textColor );
 
-	let classes = classnames( { 
+	let classes = classnames( {
 		[ `has-text-align-${ contentAlign }` ]: contentAlign,
-		[ `is-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment, 
+		[ `is-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment,
 	} );
 
 	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {

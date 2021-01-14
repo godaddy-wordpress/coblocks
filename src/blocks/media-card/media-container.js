@@ -95,20 +95,20 @@ class MediaContainer extends Component {
 							<img src={ mediaUrl } alt={ mediaAlt } />
 						</figure>
 					</Fragment>
-					:
-					<MediaPlaceholder
-						icon={ <Icon icon={ icon } /> }
-						labels={ {
-							title: __( 'Media area', 'coblocks' ),
-							instructions: __( 'Upload a media file or pick one from your media library', 'coblocks' ),
-						} }
-						className={ figureClass }
-						onSelect={ onSelectMedia }
-						accept="image/*,video/*"
-						allowedTypes={ ALLOWED_MEDIA_TYPES }
-					>
-					</MediaPlaceholder>
-				}
+					: (
+						<MediaPlaceholder
+							icon={ <Icon icon={ icon } /> }
+							labels={ {
+								title: __( 'Media area', 'coblocks' ),
+								instructions: __( 'Upload a media file or pick one from your media library', 'coblocks' ),
+							} }
+							className={ figureClass }
+							onSelect={ onSelectMedia }
+							accept="image/*,video/*"
+							allowedTypes={ ALLOWED_MEDIA_TYPES }
+						>
+						</MediaPlaceholder>
+					) }
 			</div>
 		);
 	}

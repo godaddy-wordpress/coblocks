@@ -232,12 +232,12 @@ const applyWithSelect = withSelect( () => {
 } );
 
 const applyWithDispatch = withDispatch( ( dispatch ) => {
-	const { 
+	const {
 		setAnimation,
-		setColorPanel, 
-		setCustomColors, 
-		setGradients, 
-		setLayoutSelector, 
+		setColorPanel,
+		setCustomColors,
+		setGradients,
+		setLayoutSelector,
 		setTypography,
 	} = dispatch( 'coblocks-settings' );
 	const { updateSettings } = dispatch( 'core/block-editor' );
