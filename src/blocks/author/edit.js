@@ -101,8 +101,8 @@ class AuthorEdit extends Component {
 				) }
 				<div className={ classes } style={ styles }>
 					{ dropZone }
-					{ ( !! isSelected || clientId === selectedParentClientId || hasImage ) ?
-						<figure className="wp-block-coblocks-author__avatar">
+					{ ( !! isSelected || clientId === selectedParentClientId || hasImage )
+						? <figure className="wp-block-coblocks-author__avatar">
 							<MediaUploadCheck>
 								<MediaUpload
 									onSelect={ onUploadImage }
@@ -110,12 +110,9 @@ class AuthorEdit extends Component {
 									value={ imgUrl }
 									render={ ( { open } ) => (
 										<Button onClick={ open }>
-											{ ! imgUrl ?
-												<Dashicon icon="format-image" /> :
-												<img className="wp-block-coblocks-author__avatar-img"
-													src={ imgUrl }
-													alt="avatar"
-												/>
+											{ ! imgUrl
+												? <Dashicon icon="format-image" />
+												: <img className="wp-block-coblocks-author__avatar-img" src={ imgUrl } alt="avatar" />
 											}
 										</Button>
 									) }

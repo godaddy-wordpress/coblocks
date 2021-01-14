@@ -18,19 +18,38 @@ import { PanelBody, ToggleControl, SelectControl } from '@wordpress/components';
  * Inspector controls
  */
 class Inspector extends Component {
-
+	/**
+	 * setCaptionStyleTo
+	 *
+	 * @param {string} value
+	 */
 	setCaptionStyleTo = ( value ) => {
 		this.props.setAttributes( { captionStyle: value } );
 	}
 
+	/**
+	 * getCaptionsHelp
+	 *
+	 * @param {boolean} checked
+	 */
 	getCaptionsHelp( checked ) {
 		return checked ? __( 'Showing captions for each media item.', 'coblocks' ) : __( 'Toggle to show media captions.', 'coblocks' );
 	}
 
+	/**
+	 * setShadowTo
+	 *
+	 * @param {boolean} value
+	 */
 	setShadowTo = ( value ) => {
 		this.props.setAttributes( { shadow: value } );
 	}
 
+	/**
+	 * getLightboxHelp
+	 *
+	 * @param {boolean} checked
+	 */
 	getLightboxHelp( checked ) {
 		return checked ? __( 'Image lightbox is enabled.', 'coblocks' ) : __( 'Toggle to enable the image lightbox.', 'coblocks' );
 	}

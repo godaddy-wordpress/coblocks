@@ -29,7 +29,9 @@ import {
 } from '@wordpress/components';
 
 function PreviewImageFilterPopover( { hoveredFilter } ) {
-	if ( ! hoveredFilter ) return null;
+	if ( ! hoveredFilter ) {
+		return null;
+	}
 
 	const block = _.cloneDeep( wp.data.select( 'core/block-editor' ).getSelectedBlock() );
 
@@ -63,13 +65,13 @@ class MediaFilterControl extends Component {
 		super( ...arguments );
 
 		this.state = {
-			hoveredFilter: null
+			hoveredFilter: null,
 		};
 	}
 
 	onChangeHoveredFilter = ( filter ) => {
 		this.setState( {
-			hoveredFilter: filter
+			hoveredFilter: filter,
 		} );
 	}
 
@@ -77,7 +79,6 @@ class MediaFilterControl extends Component {
 		const {
 			attributes,
 			setAttributes,
-			selected,
 		} = this.props;
 
 		const {
@@ -85,7 +86,7 @@ class MediaFilterControl extends Component {
 		} = attributes;
 
 		const {
-			hoveredFilter
+			hoveredFilter,
 		} = this.state;
 
 		const POPOVER_PROPS = {
@@ -164,7 +165,7 @@ class MediaFilterControl extends Component {
 					className={ classnames( 'components-coblocks-media-filter', ( 'none' !== filter ) ? 'has-filter' : '' ) }
 					noIcons
 				>
-				{ () => (
+					{ () => (
 						<Fragment>
 							<MenuGroup>
 								<PreviewImageFilterPopover hoveredFilter={ hoveredFilter } />

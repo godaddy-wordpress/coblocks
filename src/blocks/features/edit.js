@@ -2,8 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import memoize from 'memize';
-import times from 'lodash/times';
 
 /**
  * Internal dependencies

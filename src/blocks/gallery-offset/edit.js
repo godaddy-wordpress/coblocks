@@ -27,10 +27,7 @@ import { withNotices, Icon } from '@wordpress/components';
 /**
  * Block edit function
  *
- * @param oldIndex
  * @param index
- * @param attributes
- * @param newIndex
  */
 class Edit extends Component {
 	constructor() {
@@ -59,6 +56,12 @@ class Edit extends Component {
 		}
 	}
 
+	/**
+	 * onMoveForward
+	 *
+	 * @param {number} oldIndex
+	 * @param {number} newIndex
+	 */
 	onMove = ( oldIndex, newIndex ) => {
 		const images = [ ...this.props.attributes.images ];
 		images.splice( newIndex, 1, this.props.attributes.images[ oldIndex ] );
@@ -67,6 +70,11 @@ class Edit extends Component {
 		this.props.setAttributes( { images } );
 	}
 
+	/**
+	 * onMoveForward
+	 *
+	 * @param {number} oldIndex
+	 */
 	onMoveForward = ( oldIndex ) => {
 		return () => {
 			if ( oldIndex === this.props.attributes.images.length - 1 ) {
@@ -76,6 +84,11 @@ class Edit extends Component {
 		};
 	}
 
+	/**
+	 * onMoveBackward
+	 *
+	 * @param {number} oldIndex
+	 */
 	onMoveBackward = ( oldIndex ) => {
 		return () => {
 			if ( oldIndex === 0 ) {
@@ -85,6 +98,11 @@ class Edit extends Component {
 		};
 	}
 
+	/**
+	 * onSelectImage
+	 *
+	 * @param {number} index
+	 */
 	onSelectImage = ( index ) => {
 		return () => {
 			if ( this.state.selectedImage !== index ) {
@@ -95,6 +113,11 @@ class Edit extends Component {
 		};
 	}
 
+	/**
+	 * onRemoveImage
+	 *
+	 * @param {number} index
+	 */
 	onRemoveImage = ( index ) => {
 		return () => {
 			const images = filter( this.props.attributes.images, ( img, i ) => index !== i );
@@ -104,6 +127,13 @@ class Edit extends Component {
 			} );
 		};
 	}
+
+	/**
+	 * setImageAttributes
+	 *
+	 * @param {number} index
+	 * @param {Object} attributes
+	 */
 
 	setImageAttributes = ( index, attributes ) => {
 		const { attributes: { images }, setAttributes } = this.props;
@@ -172,7 +202,7 @@ class Edit extends Component {
 			'coblocks-gallery--item', {
 				[ `coblocks-animate ${ animation }` ]: animation,
 			}
-		)
+		);
 
 		return (
 			<Fragment>

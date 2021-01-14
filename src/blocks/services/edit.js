@@ -228,7 +228,7 @@ class Edit extends Component {
 							<InnerBlocks
 								allowedBlocks={ ALLOWED_BLOCKS }
 								template={ TEMPLATE }
-								orientation={ attributes.columns > 1 ? "horizontal" : "vertical" }
+								orientation={ attributes.columns > 1 ? 'horizontal' : 'vertical' }
 								templateInsertUpdatesSelection={ false }
 								__experimentalCaptureToolbars={ true }
 							/>

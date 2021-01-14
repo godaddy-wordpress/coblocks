@@ -157,6 +157,22 @@ class GalleryMasonryEdit extends Component {
 
 		const sidebarIsOpened = editorSidebarOpened || pluginSidebarOpened || publishSidebarOpened;
 
+		const masonryGalleryPlaceholder = (
+			<Fragment>
+				{ ! hasImages ? noticeUI : null }
+				<GalleryPlaceholder
+					{ ...this.props }
+					label={ __( 'Masonry', 'coblocks' ) }
+					icon={ <Icon icon={ icon } /> }
+					gutter={ gutter }
+				/>
+			</Fragment>
+		);
+
+		if ( ! hasImages ) {
+			return masonryGalleryPlaceholder;
+		}
+
 		const innerClasses = classnames(
 			...GalleryClasses( attributes ),
 			sidebarIsOpened, {
@@ -177,23 +193,7 @@ class GalleryMasonryEdit extends Component {
 			'coblocks-gallery--item', {
 				[ `coblocks-animate ${ animation }` ]: animation,
 			}
-		)
-
-		const masonryGalleryPlaceholder = (
-			<Fragment>
-				{ ! hasImages ? noticeUI : null }
-				<GalleryPlaceholder
-					{ ...this.props }
-					label={ __( 'Masonry', 'coblocks' ) }
-					icon={ <Icon icon={ icon } /> }
-					gutter={ gutter }
-				/>
-			</Fragment>
 		);
-
-		if ( ! hasImages ) {
-			return masonryGalleryPlaceholder;
-		}
 
 		return (
 			<Fragment>

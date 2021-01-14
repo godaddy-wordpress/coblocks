@@ -9,7 +9,7 @@ import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 const { attributes } = metadata;
 
-const deprecatedIframeEmbed = ( { attributes } ) => {
+const deprecatedIframeEmbed = ( deprecated ) => {
 	const {
 		address,
 		height,
@@ -22,7 +22,7 @@ const deprecatedIframeEmbed = ( { attributes } ) => {
 		zoomControl,
 		streetViewControl,
 		fullscreenControl,
-	} = attributes;
+	} = deprecated.attributes;
 
 	const backgroundStyles = {
 		minHeight: height ? height + 'px' : undefined,
@@ -50,7 +50,7 @@ const deprecatedIframeEmbed = ( { attributes } ) => {
 	return <div style={ backgroundStyles } { ...dataMap } />;
 };
 
-const deprecatedUserLocale = ( { attributes } ) => {
+const deprecatedUserLocale = ( deprecated ) => {
 	const {
 		address,
 		height,
@@ -64,7 +64,7 @@ const deprecatedUserLocale = ( { attributes } ) => {
 		streetViewControl,
 		fullscreenControl,
 		hasApiKey,
-	} = attributes;
+	} = deprecated.attributes;
 
 	const backgroundStyles = {
 		minHeight: height ? height + 'px' : undefined,

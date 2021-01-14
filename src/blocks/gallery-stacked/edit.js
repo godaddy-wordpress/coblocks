@@ -142,7 +142,22 @@ class GalleryStackedEdit extends Component {
 			lightbox,
 		} = attributes;
 
+		const stackedGalleryPlaceholder = (
+			<Fragment>
+				{ ! hasImages ? noticeUI : null }
+				<GalleryPlaceholder
+					{ ...this.props }
+					label={ __( 'Stacked', 'coblocks' ) }
+					icon={ <Icon icon={ icon } /> }
+					gutter={ gutter }
+				/>
+			</Fragment> );
+
 		const hasImages = !! images.length;
+
+		if ( ! hasImages ) {
+			return stackedGalleryPlaceholder;
+		}
 
 		const classes = classnames(
 			className, {
@@ -165,22 +180,7 @@ class GalleryStackedEdit extends Component {
 			'coblocks-gallery--item', {
 				[ `coblocks-animate ${ animation }` ]: animation,
 			}
-		)
-
-		const stackedGalleryPlaceholder = (
-			<Fragment>
-				{ ! hasImages ? noticeUI : null }
-				<GalleryPlaceholder
-					{ ...this.props }
-					label={ __( 'Stacked', 'coblocks' ) }
-					icon={ <Icon icon={ icon } /> }
-					gutter={ gutter }
-				/>
-			</Fragment> );
-
-		if ( ! hasImages ) {
-			return stackedGalleryPlaceholder;
-		}
+		);
 
 		return (
 			<Fragment>

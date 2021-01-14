@@ -14,15 +14,15 @@ describe( 'Test CoBlocks Row Block', function() {
 
 	/**
 	 * Conditionally run tests on Variation picker or Classic picker depending on availability.
-	 * 
+	 *
 	 */
 	let testAgainstVariationsPicker;
-	before(function () {
-		helpers.addBlockToPost('coblocks/row', true);
-		cy.get('div[data-type="coblocks/row"]').then(() => {
-			testAgainstVariationsPicker = Cypress.$('.block-editor-block-variation-picker').length > 0;
-		})
-	});
+	before( function() {
+		helpers.addBlockToPost( 'coblocks/row', true );
+		cy.get( 'div[data-type="coblocks/row"]' ).then( () => {
+			testAgainstVariationsPicker = Cypress.$( '.block-editor-block-variation-picker' ).length > 0;
+		} );
+	} );
 
 	/**
 	 * Test that we can add a row block to the content, select
@@ -34,7 +34,7 @@ describe( 'Test CoBlocks Row Block', function() {
 		if ( testAgainstVariationsPicker ) {
 			cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(1) button' ).click( { force: true } );
 		} else {
-			cy.get( 'div[aria-label="Select row columns"]' ).find( 'div:nth-child(1) button' ).click({ force: true } );
+			cy.get( 'div[aria-label="Select row columns"]' ).find( 'div:nth-child(1) button' ).click( { force: true } );
 		}
 
 		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 1 );
@@ -170,7 +170,7 @@ describe( 'Test CoBlocks Row Block', function() {
 	it( 'Test the row block custom classes.', function() {
 		helpers.addBlockToPost( 'coblocks/row', true );
 
-		if (testAgainstVariationsPicker) {
+		if ( testAgainstVariationsPicker ) {
 			cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(1) button' ).click( { force: true } );
 		} else {
 			cy.get( 'div[aria-label="Select row columns"]' ).find( 'div:nth-child(1) button' ).click( { force: true } );
@@ -197,13 +197,13 @@ describe( 'Test CoBlocks Row Block', function() {
 		helpers.editPage();
 	} );
 
-		/**
+	/**
 	 * Test the row block saves with alignment classes
 	 */
 	it( 'Test the row block alignment controls.', function() {
 		helpers.addBlockToPost( 'coblocks/row', true );
 
-		if (testAgainstVariationsPicker) {
+		if ( testAgainstVariationsPicker ) {
 			cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(1) button' ).click( { force: true } );
 		} else {
 			cy.get( 'div[aria-label="Select row columns"]' ).find( 'div:nth-child(1) button' ).click( { force: true } );
@@ -213,7 +213,7 @@ describe( 'Test CoBlocks Row Block', function() {
 
 		cy.get( 'button[aria-label="Change vertical alignment"]' ).click();
 
-		cy.get( 'div[aria-label="Change vertical alignment"]').find('button').contains(/top/i).click();
+		cy.get( 'div[aria-label="Change vertical alignment"]' ).find( 'button' ).contains( /top/i ).click();
 
 		cy.get( '.wp-block-coblocks-row__inner' )
 			.should( 'have.class', 'are-vertically-aligned-top' );
@@ -223,7 +223,7 @@ describe( 'Test CoBlocks Row Block', function() {
 
 		cy.get( 'button[aria-label="Change vertical alignment"]' ).click();
 
-		cy.get( 'div[aria-label="Change vertical alignment"]').find('button').contains(/middle/i).click();
+		cy.get( 'div[aria-label="Change vertical alignment"]' ).find( 'button' ).contains( /middle/i ).click();
 
 		cy.get( '.wp-block-coblocks-row__inner' )
 			.should( 'have.class', 'are-vertically-aligned-center' );
@@ -233,7 +233,7 @@ describe( 'Test CoBlocks Row Block', function() {
 
 		cy.get( 'button[aria-label="Change vertical alignment"]' ).click();
 
-		cy.get( 'div[aria-label="Change vertical alignment"]').find('button').contains(/bottom/i).click();
+		cy.get( 'div[aria-label="Change vertical alignment"]' ).find( 'button' ).contains( /bottom/i ).click();
 
 		cy.get( '.wp-block-coblocks-row__inner' )
 			.should( 'have.class', 'are-vertically-aligned-bottom' );

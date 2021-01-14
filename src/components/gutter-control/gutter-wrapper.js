@@ -11,8 +11,6 @@ import { cloneElement, isValidElement } from '@wordpress/element';
 
 /**
  * Return an element Wrapped with Gutter Properties.
- *
- * @return {JSX.Element}  GutterWrapper component
  */
 function GutterWrapper( { children, gutter, gutterCustom, className, condition = true } ) {
 	if ( ! isValidElement( children ) ) {

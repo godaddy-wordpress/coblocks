@@ -24,7 +24,7 @@ const allowedBlocks = [
 /**
  * Add the MediaFilterControl component to the core/image and core/gallery block
  */
-const coreImageFilter = createHigherOrderComponent( (BlockEdit) => {
+const coreImageFilter = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		if ( ! allowedBlocks.includes( props.name ) ) {
 			return <BlockEdit { ...props } />;
@@ -58,7 +58,7 @@ const coreImageEditorStyles = createHigherOrderComponent( ( BlockListBlock ) => 
 			filter,
 		} = props.attributes;
 
-		let className = classnames(
+		const className = classnames(
 			{
 				[ `has-filter-${ filter }` ]: filter !== 'none',
 			}

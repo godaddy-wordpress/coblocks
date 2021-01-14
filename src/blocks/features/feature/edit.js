@@ -80,7 +80,7 @@ class Edit extends Component {
 			this.props.clientId
 		)[ 0 ].innerBlocks;
 
-		innerItems.map( item => {
+		innerItems.forEach( ( item ) => {
 			if ( item.name === blockName ) {
 				dispatch( 'core/block-editor' ).updateBlockAttributes(
 					item.clientId,

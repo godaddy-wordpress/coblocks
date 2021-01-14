@@ -35,7 +35,7 @@ const deprecated = [
 					</div>
 				</div>
 			);
-		}
+		},
 	},
 	{
 		attributes: currentBlockAttributes,

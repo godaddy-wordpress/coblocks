@@ -60,9 +60,9 @@ export default function save( { attributes, className } ) {
 						alt={ alt }
 						itemProp="image"
 						style={ {
-							objectPosition: focalPoint ?
-								`${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` :
-								undefined,
+							objectPosition: focalPoint
+								? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%`
+								: undefined,
 						} }
 					/>
 				</figure>

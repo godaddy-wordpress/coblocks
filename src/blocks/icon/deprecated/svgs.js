@@ -1230,6 +1230,8 @@ const icons = {
 	},
 };
 
+// Disable reason: Mutation within execution context - no return value.
+// eslint-disable-next-line array-callback-return
 Object.entries( icons ).filter( function( item ) {
 	svgs.outlined[ item[ 0 ] ] = {
 		icon: ( icons[ item[ 0 ] ] && icons[ item[ 0 ] ].icon_outlined ) ? icons[ item[ 0 ] ].icon_outlined : icons[ item[ 0 ] ].icon,

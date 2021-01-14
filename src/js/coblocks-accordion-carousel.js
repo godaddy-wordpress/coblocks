@@ -17,7 +17,7 @@ let flickiyTimer;
 			flickiyTimer = setInterval( reInitFlickityCarousel, 1, e.target );
 		} );
 	} );
-} )( jQuery );
+}( jQuery ) );
 
 /**
  * Reinitialize the flickity carousel when it becomes visible.
@@ -26,7 +26,7 @@ let flickiyTimer;
  */
 function reInitFlickityCarousel( target ) {
 	const $targetCarousel = jQuery( target ).next().find( '.has-carousel' );
-	if ( jQuery( target ).next().find( '.has-carousel' ).is( ':visible' ) && !$targetCarousel.attr( 'data-reinit' ) ) {
+	if ( jQuery( target ).next().find( '.has-carousel' ).is( ':visible' ) && ! $targetCarousel.attr( 'data-reinit' ) ) {
 		$targetCarousel.attr( 'data-reinit', 1 ).flickity( 'destroy' ).flickity( JSON.parse( $targetCarousel.attr( 'data-flickity' ) ) ).flickity( 'resize' );
 		clearInterval( flickiyTimer );
 	}

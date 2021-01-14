@@ -32,9 +32,9 @@ import {
  */
 class Inspector extends Component {
 	getHasColorsHelp( checked ) {
-		return checked ?
-			__( 'Share button colors are enabled.', 'coblocks' ) :
-			__( 'Toggle to use official colors from each social media platform.', 'coblocks' );
+		return checked
+			? __( 'Share button colors are enabled.', 'coblocks' )
+			: __( 'Toggle to use official colors from each social media platform.', 'coblocks' );
 	}
 
 	render() {
