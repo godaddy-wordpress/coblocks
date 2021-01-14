@@ -7,6 +7,7 @@ import { kebabCase } from 'lodash';
 /**
  * WordPress dependencies
  */
+import memoize from 'memize';
 import { registerStore } from '@wordpress/data';
 import { controls, select } from '@wordpress/data-controls';
 
@@ -21,6 +22,26 @@ const DEFAULT_STATE = {
 const MILLISECONDS_PER_HOUR = 3600 * 1000;
 const MILLISECONDS_PER_DAY = 24 * 3600 * 1000;
 const MILLISECONDS_PER_WEEK = 7 * 24 * 3600 * 1000;
+
+// Taken from Core: https://github.com/WordPress/gutenberg/blob/e41e4f62074fac964d5c92e8836e826e90b289f7/packages/block-editor/src/store/selectors.js#L1434
+const calculateFrequency = memoize( ( time, count ) => {
+	if ( ! time ) {
+		return count;
+	}
+
+	const duration = Date.now() - time;
+
+	switch ( true ) {
+		case duration < MILLISECONDS_PER_HOUR:
+			return count * 4;
+		case duration < MILLISECONDS_PER_DAY:
+			return count * 2;
+		case duration < MILLISECONDS_PER_WEEK:
+			return count / 2;
+		default:
+			return count / 4;
+	}
+} );
 
 const actions = {
 	openTemplateSelector: () => ( { type: 'OPEN_TEMPLATE_SELECTOR' } ),
@@ -79,26 +100,6 @@ const store = registerStore( 'coblocks/template-selector', {
 		hasLayouts: ( state ) => !! state.layouts.length,
 		getLayouts: ( state ) => {
 			const layouts = state.layouts || [];
-
-			// Taken from Core: https://github.com/WordPress/gutenberg/blob/e41e4f62074fac964d5c92e8836e826e90b289f7/packages/block-editor/src/store/selectors.js#L1434
-			const calculateFrequency = ( time, count ) => {
-				if ( ! time ) {
-					return count;
-				}
-
-				const duration = Date.now() - time;
-
-				switch ( true ) {
-					case duration < MILLISECONDS_PER_HOUR:
-						return count * 4;
-					case duration < MILLISECONDS_PER_DAY:
-						return count * 2;
-					case duration < MILLISECONDS_PER_WEEK:
-						return count / 2;
-					default:
-						return count / 4;
-				}
-			};
 
 			return layouts.map( ( layout ) => {
 				const { time, count = 0 } = state.layoutUsage[ kebabCase( layout.label ) ] || {};
