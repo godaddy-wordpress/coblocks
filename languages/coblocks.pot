@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-14T21:18:38+00:00\n"
+"POT-Creation-Date: 2021-01-14T21:44:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -7662,6 +7662,27 @@ msgstr ""
 
 #: src/extensions/image-crop/index.js:170
 msgid "Crop settings"
+msgstr ""
+
+#: src/extensions/layout-selector/index.js:88
+msgid "Add New Page"
+msgstr ""
+
+#: src/extensions/layout-selector/index.js:89
+msgid "Pick one of these layouts or start with a blank page."
+msgstr ""
+
+#: src/extensions/layout-selector/index.js:121
+#: src/extensions/layout-selector/index.js:152
+msgid "Add blank page"
+msgstr ""
+
+#: src/extensions/layout-selector/index.js:127
+msgid "Layouts"
+msgstr ""
+
+#: src/extensions/layout-selector/index.js:208
+msgid "Most Used"
 msgstr ""
 
 #: src/extensions/layout-selector/layout-selector-results.js:56
