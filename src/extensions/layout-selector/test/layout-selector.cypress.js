@@ -110,18 +110,10 @@ describe( 'Extension: Layout Selector', () => {
 		cy.get( '[data-type="core/image"] img[src*="http"]' ).should( 'exist' );
 		cy.get( '.editor-post-save-draft' ).click();
 
-		// Reload the post.
-		let postID;
-		// eslint-disable-next-line jest/valid-expect-in-promise
-		cy.window()
-			.then( ( win ) => {
-				postID = win.wp.data.select( 'core/editor' ).getCurrentPostId();
-			} )
-			.then( () => {
-				helpers.goTo( `/wp-admin/post.php?post=${ postID }&action=edit` );
+		cy.reload();
+		cy.get( '.edit-post-visual-editor' );
 
-				helpers.disableGutenbergFeatures();
-				cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
-			} );
+		helpers.disableGutenbergFeatures();
+		cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
 	} );
 } );
