@@ -118,14 +118,8 @@ const store = registerStore( 'coblocks/template-selector', {
 
 	resolvers: {
 		* isTemplateSelectorActive() {
-			const getCurrentPostAttributeStatus = yield select( 'core/editor', 'getCurrentPostAttribute', 'status' );
-			const hasEditorUndo = yield select( 'core/editor', 'hasEditorUndo' );
-			const isCurrentPostPublished = yield select( 'core/editor', 'isCurrentPostPublished' );
-
-			const isDraft = getCurrentPostAttributeStatus.includes( 'draft' );
-			const isCleanUnpublishedPost = ! isCurrentPostPublished && ! hasEditorUndo && isDraft;
-
-			return isCleanUnpublishedPost && actions.openTemplateSelector();
+			const isCleanNewPost = yield select( 'core/editor', 'isCleanNewPost' );
+			return isCleanNewPost && actions.openTemplateSelector();
 		},
 	},
 
