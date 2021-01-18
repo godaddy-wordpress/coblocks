@@ -3,19 +3,17 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { orderBy } from 'lodash';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment, useMemo } from '@wordpress/element';
+import { Component, Fragment } from '@wordpress/element';
 import { applyFilters } from '@wordpress/hooks';
 import { registerPlugin } from '@wordpress/plugins';
 import { compose } from '@wordpress/compose';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem } from '@wordpress/components';
-import { createBlock, rawHandler } from '@wordpress/blocks';
 
 /**
  * Internal dependencies
@@ -23,16 +21,7 @@ import { createBlock, rawHandler } from '@wordpress/blocks';
 import './store';
 import { LayoutSelectorResults } from './layout-selector-results';
 import CoBlocksLayoutSelectorFill from './layout-selector-slot';
-
-const MAX_SUGGESTED_ITEMS = 6;
-
-const getBlocksFromTemplate = ( name, attributes, innerBlocks = [] ) => {
-	return createBlock( name, attributes,
-		innerBlocks && innerBlocks.map( ( [ blockName, blockAttributes, blockInnerBlocks ] ) =>
-			getBlocksFromTemplate( blockName, blockAttributes, blockInnerBlocks )
-		)
-	);
-};
+import useComputedLayouts from './hooks/useComputedLayouts';
 
 const SidebarItem = ( { slug, title, isSelected, onClick } ) => {
 	return (
@@ -174,44 +163,15 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 				const {
 					isTemplateSelectorActive,
 					hasLayouts,
-					getLayouts,
 					hasCategories,
 					getCategories,
 				} = select( 'coblocks/template-selector' );
 				const { getLayoutSelector } = select( 'coblocks-settings' );
 
-				const layouts = getLayouts();
-
-				// Get block objects before passing into the component.
-				const layoutsMemo = useMemo( () => layouts.map(
-					( layout ) => {
-						const blocks = layout.blocks
-							? layout.blocks.map(
-								( block ) => Array.isArray( block )
-									? getBlocksFromTemplate( block[ 0 ], block[ 1 ], block[ 2 ] )
-									: block
-							)
-							: rawHandler( { HTML: layout.postContent } );
-
-						const computedLayout = { ...layout, blocks };
-
-						// Remove postContent because blocks retain original content
-						// and makes debugging object layout easier to read
-						delete computedLayout.postContent;
-
-						return computedLayout;
-					}
-				), [ layouts ] );
-
-				const mostUsedLayouts = orderBy( layouts, [ 'frequency' ], [ 'desc' ] )
-					.slice( 0, MAX_SUGGESTED_ITEMS )
-					.map( ( layout ) => ( { ...layout, category: 'most-used' } ) );
-				layouts.push( ...mostUsedLayouts );
-
 				return {
 					isActive: isTemplateSelectorActive(),
 					layoutSelectorEnabled: getLayoutSelector() && hasLayouts() && hasCategories(),
-					layouts: layoutsMemo,
+					layouts: useComputedLayouts(),
 					categories: [
 						{ slug: 'most-used', title: __( 'Most Used', 'coblocks' ) },
 						...getCategories(),
