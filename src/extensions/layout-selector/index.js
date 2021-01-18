@@ -9,7 +9,7 @@ import { orderBy } from 'lodash';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
+import { Component, Fragment, useMemo } from '@wordpress/element';
 import { applyFilters } from '@wordpress/hooks';
 import { registerPlugin } from '@wordpress/plugins';
 import { compose } from '@wordpress/compose';
@@ -180,8 +180,10 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 				} = select( 'coblocks/template-selector' );
 				const { getLayoutSelector } = select( 'coblocks-settings' );
 
+				const layouts = getLayouts();
+
 				// Get block objects before passing into the component.
-				const layouts = getLayouts().map(
+				const layoutsMemo = useMemo( () => layouts.map(
 					( layout ) => {
 						const blocks = layout.blocks
 							? layout.blocks.map(
@@ -191,9 +193,15 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 							)
 							: rawHandler( { HTML: layout.postContent } );
 
-						return { ...layout, blocks };
+						const computedLayout = { ...layout, blocks };
+
+						// Remove postContent because blocks retain original content
+						// and makes debugging object layout easier to read
+						delete computedLayout.postContent;
+
+						return computedLayout;
 					}
-				);
+				), [ layouts ] );
 
 				const mostUsedLayouts = orderBy( layouts, [ 'frequency' ], [ 'desc' ] )
 					.slice( 0, MAX_SUGGESTED_ITEMS )
@@ -203,7 +211,7 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 				return {
 					isActive: isTemplateSelectorActive(),
 					layoutSelectorEnabled: getLayoutSelector() && hasLayouts() && hasCategories(),
-					layouts,
+					layouts: layoutsMemo,
 					categories: [
 						{ slug: 'most-used', title: __( 'Most Used', 'coblocks' ) },
 						...getCategories(),
