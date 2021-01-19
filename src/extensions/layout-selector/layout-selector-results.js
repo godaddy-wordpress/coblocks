@@ -40,23 +40,14 @@ export const LayoutSelectorResults = ( { layouts, category, onInsert } ) => {
 	// Needed to render our list of previews asynchronously for better performance.
 	const currentShowLayouts = useAsyncList( filteredLayouts );
 
-	const chunkedLayoutsList = [ [], [] ];
-	filteredLayouts.forEach( ( layout, index ) => chunkedLayoutsList[ index % 2 ].push( layout ) );
-
 	return category && !! filteredLayouts.length
 		? (
 			<div className="coblocks-layout-selector__layouts">
-				{ chunkedLayoutsList.map(
-					( theLayouts, columnIndex ) => (
-						<div key={ columnIndex } className="coblocks-layout-selector__layouts-column">
-							<LayoutPreviewList
-								layouts={ theLayouts }
-								shownLayouts={ currentShowLayouts }
-								onClickLayout={ onInsert }
-							/>
-						</div>
-					)
-				) }
+				<LayoutPreviewList
+					layouts={ filteredLayouts }
+					shownLayouts={ currentShowLayouts }
+					onClickLayout={ onInsert }
+				/>
 			</div>
 		)
 		: ( <p><em>{ __( 'No layouts are available for this category.', 'coblocks' ) }</em></p> );
@@ -66,7 +57,7 @@ export const LayoutSelectorResults = ( { layouts, category, onInsert } ) => {
  * Renders the layout's block preview.
  */
 export const LayoutPreview = ( { layout, onClick } ) => {
-	const [ overlay, setOverlay ] = useState( false );
+	const [ setOverlay ] = useState( false );
 
 	return (
 		<Button
@@ -75,9 +66,7 @@ export const LayoutPreview = ( { layout, onClick } ) => {
 			onMouseEnter={ () => setOverlay( true ) }
 			onMouseLeave={ () => setOverlay( false ) }>
 
-			<div className={ classnames( 'coblocks-layout-selector__layout--overlay', { 'is-active': overlay } ) }>
-				{ __( 'Select Layout', 'coblocks' ) }
-			</div>
+			<Spinner />
 
 			<BlockPreview blocks={ layout.blocks } viewportWidth={ 700 } />
 		</Button>
