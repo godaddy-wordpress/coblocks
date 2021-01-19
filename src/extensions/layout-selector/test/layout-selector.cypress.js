@@ -105,11 +105,14 @@ describe( 'Extension: Layout Selector', () => {
 		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
 		helpers.disableGutenbergFeatures();
 
-		cy.get( '[data-type="core/image"] img[src*="http"]' ); // Ensure layout is loaded
+		// Ensure the layout selector has loaded
+		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
+		// Ensure the preview has rendered before clicking it.
+		cy.get( '.block-editor-block-preview__container' ).should( 'exist' );
 		cy.get( '.coblocks-layout-selector__layout' ).first().click();
-		cy.get( '[data-type="core/image"] img[src*="http"]' ).should( 'exist' );
-		cy.get( '.editor-post-save-draft' ).click();
+		cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
 
+		cy.get( '.editor-post-save-draft' ).click();
 		cy.reload();
 		cy.get( '.edit-post-visual-editor' );
 
