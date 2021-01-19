@@ -212,6 +212,7 @@ class GalleryCarouselEdit extends Component {
 		);
 
 		const flickityOptions = {
+			initialIndex: 1,
 			draggable: false,
 			pageDots: true,
 			prevNextButtons: true,
