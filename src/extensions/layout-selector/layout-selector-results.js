@@ -8,6 +8,7 @@ import classnames from 'classnames';
  */
 import { __ } from '@wordpress/i18n';
 import { useState, useMemo } from '@wordpress/element';
+import { useSelect } from '@wordpress/data';
 import { useAsyncList } from '@wordpress/compose';
 import { Button, Spinner } from '@wordpress/components';
 import { BlockPreview } from '@wordpress/block-editor';
@@ -17,6 +18,10 @@ import { applyFilters } from '@wordpress/hooks';
  * Render the layout previews into columns.
  */
 export const LayoutSelectorResults = ( { layouts, category, onInsert } ) => {
+	const getEntityRecord = useSelect( ( select ) => select( 'core' ).getEntityRecord, [] );
+
+	const imageCategory = getEntityRecord( 'root', 'site' )?.image_category || '';
+
 	const filteredLayouts = useMemo(
 		() => layouts
 			.filter( ( layout ) => layout.category === category )
@@ -28,7 +33,7 @@ export const LayoutSelectorResults = ( { layouts, category, onInsert } ) => {
 				 */
 				blocks: applyFilters( 'coblocks.layoutPreviewBlocks', layout.blocks ),
 			} ) ),
-		[ layouts, category ]
+		[ layouts, category, imageCategory ]
 	);
 
 	// Needed to render our list of previews asynchronously for better performance.
