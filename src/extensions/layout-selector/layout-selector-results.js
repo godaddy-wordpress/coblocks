@@ -56,7 +56,7 @@ export const LayoutSelectorResults = ( { layouts, category, onInsert } ) => {
  * Renders the layout's block preview.
  */
 export const LayoutPreview = ( { layout, onClick } ) => {
-	const [ overlay, setOverlay ] = useState( false );
+	const [ setOverlay ] = useState( false );
 
 	return (
 		<Button
