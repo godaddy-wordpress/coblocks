@@ -58,9 +58,6 @@ export const LayoutSelectorResults = ( { layouts, category, onInsert } ) => {
 export const LayoutPreview = ( { layout, onClick } ) => {
 	const [ overlay, setOverlay ] = useState( false );
 
-	const block = <BlockPreview blocks={ layout.blocks } viewportWidth={ 700 } />;
-	console.log( block );
-
 	return (
 		<Button
 			className={ classnames( 'coblocks-layout-selector__layout' ) }
@@ -74,7 +71,7 @@ export const LayoutPreview = ( { layout, onClick } ) => {
 
 			<Spinner />
 
-			{ block }
+			<BlockPreview blocks={ layout.blocks } viewportWidth={ 700 } />
 		</Button>
 	);
 };
