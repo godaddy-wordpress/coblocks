@@ -38,7 +38,7 @@ Finally replace the latest changelog added at the end of the readme file with th
 To deploy a new release, simply run the following command:
 
 ```
-yarn version major|minor|patch
+npm version major|minor|patch
 ```
 
 Replace "major|minor|patch" with the actual semver release type.
