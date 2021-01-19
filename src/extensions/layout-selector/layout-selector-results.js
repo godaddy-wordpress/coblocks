@@ -24,16 +24,17 @@ export const LayoutSelectorResults = ( { layouts, category, onInsert } ) => {
 
 	const filteredLayouts = useMemo(
 		() => layouts
-			.filter( ( layout ) => layout.category === category )
-			.map( ( layout ) => ( { ...layout,
+			.filter( ( layout ) => layout.category === category && !! layout.parsedBlocks?.length )
+			.map( ( layout ) => ( {
+				...layout,
 				/**
 				 * Filters the list of blocks within the layout preview.
 				 *
 				 * @param {Array} blocks The block objects of the layout.
 				 */
-				blocks: applyFilters( 'coblocks.layoutPreviewBlocks', layout.blocks ),
+				blocks: applyFilters( 'coblocks.layoutPreviewBlocks', layout.parsedBlocks ),
 			} ) ),
-		[ layouts, category, imageCategory ]
+		[ JSON.stringify( layouts ), category, imageCategory ]
 	);
 
 	// Needed to render our list of previews asynchronously for better performance.

@@ -27,16 +27,19 @@ describe( 'layout-selector-results', () => {
 				label: 'layout-one',
 				category: 'about',
 				blocks: [ [ 'core/paragraph', { content: 'layout-one' }, [] ] ],
+				parsedBlocks: [ [ 'core/paragraph', { content: 'layout-one' }, [] ] ],
 			},
 			{
 				label: 'layout-two',
 				category: 'about',
 				blocks: [ [ 'core/paragraph', { content: 'layout-two' }, [] ] ],
+				parsedBlocks: [ [ 'core/paragraph', { content: 'layout-two' }, [] ] ],
 			},
 			{
 				label: 'layout-three',
 				category: 'about',
 				blocks: [ [ 'core/paragraph', { content: 'layout-three' }, [] ] ],
+				parsedBlocks: [ [ 'core/paragraph', { content: 'layout-three' }, [] ] ],
 			},
 		];
 
@@ -99,6 +102,7 @@ describe( 'layout-selector-results', () => {
 				label: 'layout-one',
 				category: 'about',
 				blocks: [ [ 'core/paragraph', { content: 'layout-one' }, [] ] ],
+				parsedBlocks: [ [ 'core/paragraph', { content: 'layout-one' }, [] ] ],
 			},
 			onClick: jest.fn(),
 		};
@@ -145,16 +149,19 @@ describe( 'layout-selector-results', () => {
 					label: 'layout-one',
 					category: 'about',
 					blocks: [ [ 'core/paragraph', { content: 'layout-one' }, [] ] ],
+					parsedBlocks: [ [ 'core/paragraph', { content: 'layout-one' }, [] ] ],
 				},
 				{
 					label: 'layout-two',
 					category: 'about',
 					blocks: [ [ 'core/paragraph', { content: 'layout-two' }, [] ] ],
+					parsedBlocks: [ [ 'core/paragraph', { content: 'layout-two' }, [] ] ],
 				},
 				{
 					label: 'layout-three',
 					category: 'about',
 					blocks: [ [ 'core/paragraph', { content: 'layout-three' }, [] ] ],
+					parsedBlocks: [ [ 'core/paragraph', { content: 'layout-three' }, [] ] ],
 				},
 			],
 			category: 'about',
