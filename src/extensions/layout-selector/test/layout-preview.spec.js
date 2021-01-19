@@ -119,16 +119,6 @@ describe( 'layout-selector-results', () => {
 			expect( wrapper.exists( '.coblocks-layout-selector__layout' ) ).toEqual( true );
 		} );
 
-		it( 'toggles overlay on mouse events "enter" and "leave"', () => {
-			expect( wrapper.find( '.coblocks-layout-selector__layout--overlay' ).hasClass( 'is-active' ) ).toEqual( false );
-
-			wrapper.find( '.coblocks-layout-selector__layout' ).invoke( 'onMouseEnter' )();
-			expect( wrapper.find( '.coblocks-layout-selector__layout--overlay' ).hasClass( 'is-active' ) ).toEqual( true );
-
-			wrapper.find( '.coblocks-layout-selector__layout' ).invoke( 'onMouseLeave' )();
-			expect( wrapper.find( '.coblocks-layout-selector__layout--overlay' ).hasClass( 'is-active' ) ).toEqual( false );
-		} );
-
 		it( 'should call onClick() on Button click', () => {
 			wrapper.find( '.coblocks-layout-selector__layout' ).invoke( 'onClick' )();
 			expect( defaultProps.onClick ).toHaveBeenCalled();

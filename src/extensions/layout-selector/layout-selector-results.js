@@ -65,10 +65,6 @@ export const LayoutPreview = ( { layout, onClick } ) => {
 			onMouseEnter={ () => setOverlay( true ) }
 			onMouseLeave={ () => setOverlay( false ) }>
 
-			<div className={ classnames( 'coblocks-layout-selector__layout--overlay', { 'is-active': overlay } ) }>
-				{ __( 'Select Layout', 'coblocks' ) }
-			</div>
-
 			<Spinner />
 
 			<BlockPreview blocks={ layout.blocks } viewportWidth={ 700 } />

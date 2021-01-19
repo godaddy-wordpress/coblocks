@@ -226,7 +226,7 @@
 		background: $white;
 		flex-grow: 1;
 		overflow-y: auto;
-		padding: 12px 24px 24px 24px;
+		padding: 12px 48px 24px;
 
 		> span {
 			align-items: center;
@@ -271,6 +271,7 @@
 			left: 50%;
 			margin: 0;
 			position: absolute;
+			transform: translateX(-50%);
 		}
 
 		&::after {
@@ -295,26 +296,6 @@
 		&:hover,
 		&:focus {
 			outline: none;
-		}
-	}
-
-	&__layout--overlay {
-		align-items: center;
-		background: rgba(255, 255, 255, 0.75);
-		bottom: 0;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		left: 0;
-		opacity: 0;
-		position: absolute;
-		right: 0;
-		top: 0;
-		transition: opacity 0.1s linear;
-		z-index: 1;
-
-		&.is-active {
-			opacity: 1;
 		}
 	}
 }
