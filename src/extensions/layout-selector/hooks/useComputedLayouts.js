@@ -22,16 +22,16 @@ const getBlocksFromTemplate = ( name, attributes, innerBlocks = [] ) => {
 
 function useComputedLayouts() {
 	const layouts = useSelect( ( select ) => select( 'coblocks/template-selector' ).getLayouts(), [] );
-	const computedLayouts = useSelect( ( select ) => select( 'coblocks/template-selector' ).getComputedLayouts(), [] );
+	const computedLayoutsStore = useSelect( ( select ) => select( 'coblocks/template-selector' ).getComputedLayouts(), [] );
 	const { updateComputedLayouts } = useDispatch( 'coblocks/template-selector' );
 
 	let taskQueueId = null;
-	let layoutsToProcess = [];
-	let processedLayouts = [];
+	let layoutsQueue = [];
+	let computedLayouts = [];
 
-	const processBlocks = ( deadline ) => {
-		while ( ( deadline.timeRemaining() > 0 || deadline.didTimeout ) && layoutsToProcess.length ) {
-			const layout = layoutsToProcess.shift();
+	const computeLayouts = ( deadline ) => {
+		while ( ( deadline.timeRemaining() > 0 || deadline.didTimeout ) && layoutsQueue.length ) {
+			const layout = layoutsQueue.shift();
 			let blocks;
 
 			if ( layout.blocks ) {
@@ -48,32 +48,32 @@ function useComputedLayouts() {
 			// and makes debugging object layout easier to read
 			delete computedLayout.postContent;
 
-			processedLayouts.push( computedLayout );
+			computedLayouts.push( computedLayout );
 		}
 
 		// We still have layouts to compute, continue on next available idle time
-		if ( layoutsToProcess.length ) {
-			window.requestIdleCallback( processBlocks, { timeout: 1000 } );
+		if ( layoutsQueue.length ) {
+			window.requestIdleCallback( computeLayouts, { timeout: 1000 } );
 			return;
 		}
 
-		const mostUsedLayouts = orderBy( processedLayouts, [ 'frequency' ], [ 'desc' ] )
+		const mostUsedLayouts = orderBy( computedLayouts, [ 'frequency' ], [ 'desc' ] )
 			.slice( 0, MAX_SUGGESTED_ITEMS )
 			.map( ( layout ) => ( { ...layout, category: 'most-used' } ) );
 
-		processedLayouts.push( ...mostUsedLayouts );
+		computedLayouts.push( ...mostUsedLayouts );
 
-		updateComputedLayouts( processedLayouts );
+		updateComputedLayouts( computedLayouts );
 	};
 
 	useEffect( () => {
 		window.cancelIdleCallback( taskQueueId );
-		processedLayouts = [];
-		layoutsToProcess = layouts;
-		taskQueueId = window.requestIdleCallback( processBlocks, { timeout: 1000 } );
+		computedLayouts = [];
+		layoutsQueue = layouts;
+		taskQueueId = window.requestIdleCallback( computeLayouts, { timeout: 1000 } );
 	}, [ JSON.stringify( layouts ) ] );
 
-	return computedLayouts;
+	return computedLayoutsStore;
 }
 
 export default useComputedLayouts;

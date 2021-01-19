@@ -16,6 +16,7 @@ const DEFAULT_STATE = {
 	layouts: coblocksLayoutSelector.layouts || [],
 	computedLayouts: [],
 	categories: coblocksLayoutSelector.categories || [],
+	selectedCategory: 'most-used',
 	layoutUsage: {},
 };
 
@@ -50,6 +51,7 @@ const actions = {
 	updateLayouts: ( layouts ) => ( { type: 'UPDATE_LAYOUTS', layouts } ),
 	updateComputedLayouts: ( computedLayouts ) => ( { type: 'UPDATE_COMPUTED_LAYOUTS', computedLayouts } ),
 	updateCategories: ( categories ) => ( { type: 'UPDATE_CATEGORIES', categories } ),
+	updateSelectedCategory: ( selectedCategory ) => ( { type: 'UPDATE_CATEGORY', selectedCategory } ),
 	incrementLayoutUsage: ( layout ) => ( { type: 'INCREMENT_LAYOUT_USAGE', layout, time: Date.now() } ),
 };
 
@@ -80,6 +82,11 @@ const store = registerStore( 'coblocks/template-selector', {
 				return {
 					...state,
 					categories: action.categories,
+				};
+			case 'UPDATE_CATEGORY':
+				return {
+					...state,
+					selectedCategory: action.selectedCategory,
 				};
 			case 'INCREMENT_LAYOUT_USAGE':
 				const layoutSlug = kebabCase( action.layout.label );
@@ -117,6 +124,7 @@ const store = registerStore( 'coblocks/template-selector', {
 		getComputedLayouts: ( state ) => state.computedLayouts,
 		getCategories: ( state ) => state.categories || [],
 		hasCategories: ( state ) => !! state.categories.length,
+		getSelectedCategory: ( state ) => state.selectedCategory,
 		getLayoutUsage: ( state ) => state.layoutUsage,
 	},
 
