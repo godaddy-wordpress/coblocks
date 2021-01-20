@@ -296,7 +296,7 @@ class GalleryCarouselEdit extends Component {
 						<div className={ innerClasses }>
 							<Flickity
 								className={ flickityClasses }
-								disableImagesLoaded={ false }
+								disableImagesLoaded={ true }
 								flickityRef={ ( c ) => this.flkty = c }
 								options={ flickityOptions }
 								reloadOnUpdate={ true }
