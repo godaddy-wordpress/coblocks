@@ -143,6 +143,8 @@
 	}
 
 	&__sidebar {
+		// Display only on desktop (>= 782px) using isViewportMatch
+
 		display: none;
 		padding: 0 0 0 24px;
 		position: -webkit-sticky;
@@ -179,7 +181,7 @@
 	}
 
 	&__topbar {
-		// Display only on mobile using isViewportMatch
+		// Display only on mobile (< 782px) using isViewportMatch
 
 		align-items: flex-end;
 		display: flex;
