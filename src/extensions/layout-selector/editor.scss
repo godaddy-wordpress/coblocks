@@ -294,11 +294,9 @@
 			column-count: 2;
 			column-gap: 2em;
 		}
-
 		@include break-medium() {
 			column-count: 1;
 		}
-
 		@include break-large() {
 			column-count: 2;
 		}
