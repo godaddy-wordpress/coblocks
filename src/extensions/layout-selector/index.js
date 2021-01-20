@@ -62,7 +62,7 @@ class LayoutSelector extends Component {
 			<>
 				<Slot />
 
-				{ settings && settings.map( ( Control, index ) => (
+				{ Array.isArray( settings ) && settings.map( ( Control, index ) => (
 					<CoBlocksLayoutSelectorFill key={ `layout-control-${ index }` }>
 						<Control />
 					</CoBlocksLayoutSelectorFill>
