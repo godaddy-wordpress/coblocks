@@ -11,5 +11,5 @@ function CoBlocksLayoutSelectorFill( { children } ) {
 
 export {
 	CoBlocksLayoutSelectorFill as default,
-	Slot
-}
+	Slot,
+};

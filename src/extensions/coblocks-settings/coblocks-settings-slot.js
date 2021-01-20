@@ -11,5 +11,5 @@ function CoBlocksSettingsModalControls( { children } ) {
 
 export {
 	CoBlocksSettingsModalControls as default,
-	Slot
-}
+	Slot,
+};

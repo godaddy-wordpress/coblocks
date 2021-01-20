@@ -90,7 +90,7 @@ class LayoutSelector extends Component {
 									{ coblocksCustomLayoutsSettings }
 								</div>
 								<div className="coblocks-layout-selector__topbar__left__category">
-									<strong>{ __( 'Layouts', 'coblocks' ) }:</strong> { categories.find( category => category.slug === selectedCategory )?.title }
+									<strong>{ __( 'Layouts', 'coblocks' ) }:</strong> { categories.find( ( category ) => category.slug === selectedCategory )?.title }
 									<DropdownMenu label="Select a layout category">
 										{ ( { onClose } ) => (
 											<>
