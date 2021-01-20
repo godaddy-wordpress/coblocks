@@ -20,19 +20,19 @@ describe( 'Extension: Layout Selector', () => {
 
 		// Click "About" category.
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(1)' ).find( 'a' ).click();
-		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layouts-column' ).should( 'not.have.length', 0 );
+		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layout' ).should( 'not.have.length', 0 );
 
 		// Click "Contact" category.
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(2)' ).find( 'a' ).click();
-		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layouts-column' ).should( 'not.have.length', 0 );
+		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layout' ).should( 'not.have.length', 0 );
 
 		// Click "Home" category.
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(3)' ).find( 'a' ).click();
-		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layouts-column' ).should( 'not.have.length', 0 );
+		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layout' ).should( 'not.have.length', 0 );
 
 		// Click "Portfolio" category.
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(4)' ).find( 'a' ).click();
-		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layouts-column' ).should( 'not.have.length', 0 );
+		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layout' ).should( 'not.have.length', 0 );
 	} );
 
 	it( 'inserts layout into page', () => {

@@ -57,14 +57,10 @@ export const LayoutSelectorResults = ( { layouts, category, onInsert } ) => {
  * Renders the layout's block preview.
  */
 export const LayoutPreview = ( { layout, onClick } ) => {
-	const [ setOverlay ] = useState( false );
-
 	return (
 		<Button
 			className={ classnames( 'coblocks-layout-selector__layout' ) }
-			onClick={ () => onClick( layout ) }
-			onMouseEnter={ () => setOverlay( true ) }
-			onMouseLeave={ () => setOverlay( false ) }>
+			onClick={ () => onClick( layout ) }>
 
 			<Spinner />
 
