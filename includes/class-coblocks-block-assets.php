@@ -143,7 +143,7 @@ class CoBlocks_Block_Assets {
 		);
 
 		// Scripts.
-		$name       = 'coblocks';
+		$name       = 'coblocks'; // coblocks.js.
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
 

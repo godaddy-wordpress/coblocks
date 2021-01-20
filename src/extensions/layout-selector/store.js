@@ -14,7 +14,9 @@ import { controls, select } from '@wordpress/data-controls';
 const DEFAULT_STATE = {
 	templateSelector: false,
 	layouts: coblocksLayoutSelector.layouts || [],
+	computedLayouts: [],
 	categories: coblocksLayoutSelector.categories || [],
+	selectedCategory: 'most-used',
 	layoutUsage: {},
 };
 
@@ -47,7 +49,9 @@ const actions = {
 	openTemplateSelector: () => ( { type: 'OPEN_TEMPLATE_SELECTOR' } ),
 	closeTemplateSelector: () => ( { type: 'CLOSE_TEMPLATE_SELECTOR' } ),
 	updateLayouts: ( layouts ) => ( { type: 'UPDATE_LAYOUTS', layouts } ),
+	updateComputedLayouts: ( computedLayouts ) => ( { type: 'UPDATE_COMPUTED_LAYOUTS', computedLayouts } ),
 	updateCategories: ( categories ) => ( { type: 'UPDATE_CATEGORIES', categories } ),
+	updateSelectedCategory: ( selectedCategory ) => ( { type: 'UPDATE_CATEGORY', selectedCategory } ),
 	incrementLayoutUsage: ( layout ) => ( { type: 'INCREMENT_LAYOUT_USAGE', layout, time: Date.now() } ),
 };
 
@@ -69,10 +73,20 @@ const store = registerStore( 'coblocks/template-selector', {
 					...state,
 					layouts: action.layouts,
 				};
+			case 'UPDATE_COMPUTED_LAYOUTS':
+				return {
+					...state,
+					computedLayouts: action.computedLayouts,
+				};
 			case 'UPDATE_CATEGORIES':
 				return {
 					...state,
 					categories: action.categories,
+				};
+			case 'UPDATE_CATEGORY':
+				return {
+					...state,
+					selectedCategory: action.selectedCategory,
 				};
 			case 'INCREMENT_LAYOUT_USAGE':
 				const layoutSlug = kebabCase( action.layout.label );
@@ -82,9 +96,7 @@ const store = registerStore( 'coblocks/template-selector', {
 						...state.layoutUsage,
 						[ layoutSlug ]: {
 							time: action.time,
-							count: state.layoutUsage[ layoutSlug ]
-								? state.layoutUsage[ layoutSlug ].count + 1
-								: 1,
+							count: state.layoutUsage[ layoutSlug ] ? state.layoutUsage[ layoutSlug ].count + 1 : 1,
 						},
 					},
 				};
@@ -109,8 +121,10 @@ const store = registerStore( 'coblocks/template-selector', {
 				};
 			} );
 		},
+		getComputedLayouts: ( state ) => state.computedLayouts,
 		getCategories: ( state ) => state.categories || [],
 		hasCategories: ( state ) => !! state.categories.length,
+		getSelectedCategory: ( state ) => state.selectedCategory,
 		getLayoutUsage: ( state ) => state.layoutUsage,
 	},
 

@@ -226,7 +226,7 @@
 		background: $white;
 		flex-grow: 1;
 		overflow-y: auto;
-		padding: 12px 24px 24px 24px;
+		padding: 12px 48px 24px;
 
 		> span {
 			align-items: center;
@@ -240,16 +240,9 @@
 	}
 
 	&__layouts {
-		align-items: flex-start;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		padding: 3px;
-	}
-
-	&__layouts-column {
-		padding: 0 1rem;
-		width: 50%;
+		column-count: 2;
+		column-gap: 2em;
+		padding-top: 4px;
 	}
 
 	&__layout {
@@ -258,11 +251,11 @@
 		display: flex;
 		height: auto;
 		margin-bottom: 2rem;
+		min-height: 150px;
 		padding: 0;
 		position: relative;
 		text-decoration: none;
 		width: 100%;
-
 
 		@media (max-width: 1024px) {
 			margin-right: 0;
@@ -270,8 +263,15 @@
 		}
 
 		.block-editor-block-preview__container {
-			margin-bottom: 2rem;
-			margin-top: 2rem;
+			background-color: var(--go--color--background, $white);
+			margin: 2em;
+		}
+
+		.components-spinner {
+			left: 50%;
+			margin: 0;
+			position: absolute;
+			transform: translateX(-50%);
 		}
 
 		&::after {
@@ -291,36 +291,11 @@
 		&.is-placeholder {
 			align-items: center;
 			justify-content: center;
-			min-height: 150px;
-
-			.components-spinner {
-				margin: 0;
-			}
 		}
 
 		&:hover,
 		&:focus {
 			outline: none;
-		}
-	}
-
-	&__layout--overlay {
-		align-items: center;
-		background: rgba(255, 255, 255, 0.75);
-		bottom: 0;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		left: 0;
-		opacity: 0;
-		position: absolute;
-		right: 0;
-		top: 0;
-		transition: opacity 0.1s linear;
-		z-index: 1;
-
-		&.is-active {
-			opacity: 1;
 		}
 	}
 }

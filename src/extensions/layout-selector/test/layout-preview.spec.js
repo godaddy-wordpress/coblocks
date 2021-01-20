@@ -27,16 +27,19 @@ describe( 'layout-selector-results', () => {
 				label: 'layout-one',
 				category: 'about',
 				blocks: [ [ 'core/paragraph', { content: 'layout-one' }, [] ] ],
+				parsedBlocks: [ [ 'core/paragraph', { content: 'layout-one' }, [] ] ],
 			},
 			{
 				label: 'layout-two',
 				category: 'about',
 				blocks: [ [ 'core/paragraph', { content: 'layout-two' }, [] ] ],
+				parsedBlocks: [ [ 'core/paragraph', { content: 'layout-two' }, [] ] ],
 			},
 			{
 				label: 'layout-three',
 				category: 'about',
 				blocks: [ [ 'core/paragraph', { content: 'layout-three' }, [] ] ],
+				parsedBlocks: [ [ 'core/paragraph', { content: 'layout-three' }, [] ] ],
 			},
 		];
 
@@ -99,6 +102,7 @@ describe( 'layout-selector-results', () => {
 				label: 'layout-one',
 				category: 'about',
 				blocks: [ [ 'core/paragraph', { content: 'layout-one' }, [] ] ],
+				parsedBlocks: [ [ 'core/paragraph', { content: 'layout-one' }, [] ] ],
 			},
 			onClick: jest.fn(),
 		};
@@ -119,16 +123,6 @@ describe( 'layout-selector-results', () => {
 			expect( wrapper.exists( '.coblocks-layout-selector__layout' ) ).toEqual( true );
 		} );
 
-		it( 'toggles overlay on mouse events "enter" and "leave"', () => {
-			expect( wrapper.find( '.coblocks-layout-selector__layout--overlay' ).hasClass( 'is-active' ) ).toEqual( false );
-
-			wrapper.find( '.coblocks-layout-selector__layout' ).invoke( 'onMouseEnter' )();
-			expect( wrapper.find( '.coblocks-layout-selector__layout--overlay' ).hasClass( 'is-active' ) ).toEqual( true );
-
-			wrapper.find( '.coblocks-layout-selector__layout' ).invoke( 'onMouseLeave' )();
-			expect( wrapper.find( '.coblocks-layout-selector__layout--overlay' ).hasClass( 'is-active' ) ).toEqual( false );
-		} );
-
 		it( 'should call onClick() on Button click', () => {
 			wrapper.find( '.coblocks-layout-selector__layout' ).invoke( 'onClick' )();
 			expect( defaultProps.onClick ).toHaveBeenCalled();
@@ -145,16 +139,19 @@ describe( 'layout-selector-results', () => {
 					label: 'layout-one',
 					category: 'about',
 					blocks: [ [ 'core/paragraph', { content: 'layout-one' }, [] ] ],
+					parsedBlocks: [ [ 'core/paragraph', { content: 'layout-one' }, [] ] ],
 				},
 				{
 					label: 'layout-two',
 					category: 'about',
 					blocks: [ [ 'core/paragraph', { content: 'layout-two' }, [] ] ],
+					parsedBlocks: [ [ 'core/paragraph', { content: 'layout-two' }, [] ] ],
 				},
 				{
 					label: 'layout-three',
 					category: 'about',
 					blocks: [ [ 'core/paragraph', { content: 'layout-three' }, [] ] ],
+					parsedBlocks: [ [ 'core/paragraph', { content: 'layout-three' }, [] ] ],
 				},
 			],
 			category: 'about',
