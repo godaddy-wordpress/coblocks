@@ -20,7 +20,7 @@ import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem } fro
  */
 import './store';
 import { LayoutSelectorResults } from './layout-selector-results';
-import CoBlocksLayoutSelectorFill from './layout-selector-slot';
+import CoBlocksLayoutSelectorFill, { Slot } from './layout-selector-slot';
 import useComputedLayouts from './hooks/useComputedLayouts';
 import useCategories from './hooks/useCategories';
 
@@ -46,6 +46,7 @@ class LayoutSelector extends Component {
 			selectedCategory,
 			updateSelectedCategory,
 			isActive,
+			isMobile,
 			layoutSelectorEnabled,
 			useEmptyTemplateLayout,
 			useTemplateLayout,
@@ -57,6 +58,18 @@ class LayoutSelector extends Component {
 
 		const settings = applyFilters( 'coblocks-layout-selector-controls', [] );
 
+		const coblocksCustomLayoutsSettings = (
+			<>
+				<Slot />
+
+				{ settings && settings.map( ( Control, index ) => (
+					<CoBlocksLayoutSelectorFill key={ `layout-control-${ index }` }>
+						<Control />
+					</CoBlocksLayoutSelectorFill>
+				) ) }
+			</>
+		);
+
 		return ! isActive ? null : (
 			<Modal
 				title={ (
@@ -67,66 +80,72 @@ class LayoutSelector extends Component {
 				) }
 				onRequestClose={ useEmptyTemplateLayout }
 				className="coblocks-layout-selector-modal">
+
 				<div className="coblocks-layout-selector">
-					<aside className="coblocks-layout-selector__sidebar">
-						<CoBlocksLayoutSelectorFill.Slot />
 
-						{ settings && settings.map( ( Control, index ) => (
-							<CoBlocksLayoutSelectorFill key={ `layout-control-${ index }` }>
-								<Control />
-							</CoBlocksLayoutSelectorFill>
-						) ) }
-
-						<ul className="coblocks-layout-selector__sidebar__items">
-							{ categories.map( ( category, index ) => (
-								<SidebarItem
-									key={ index }
-									slug={ category.slug }
-									title={ category.title }
-									isSelected={ category.slug === selectedCategory }
-									onClick={ () => updateSelectedCategory( category.slug ) }
-								/>
-							) ) }
-						</ul>
-
-						<Button
-							className="coblocks-layout-selector__add-button"
-							onClick={ useEmptyTemplateLayout }
-							isLink>
-							<span><SVG width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><Path d="M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z" /></SVG></span>
-							{ __( 'Add blank page', 'coblocks' ) }
-						</Button>
-					</aside>
-
-					<div className="coblocks-layout-selector__topbar">
-						<div className="coblocks-layout-selector__topbar__left">
-							<strong>{ __( 'Layouts', 'coblocks' ) }:</strong> { selectedCategory }
-							<DropdownMenu label="Select a layout category">
-								{ ( { onClose } ) => (
-									<>
-										<MenuGroup onClick={ onClose }>
-											{ categories.map( ( category, index ) => (
-												<MenuItem key={ index } onClick={ () => {
-													updateSelectedCategory( category.slug );
-													onClose();
-												} }>
-													{ category.title }
-												</MenuItem>
-											) ) }
-										</MenuGroup>
-									</>
-								) }
-							</DropdownMenu>
+					{ isMobile && (
+						<div className="coblocks-layout-selector__topbar">
+							<div className="coblocks-layout-selector__topbar__left">
+								<div className="coblocks-layout-selector__topbar__left__settings">
+									{ coblocksCustomLayoutsSettings }
+								</div>
+								<div className="coblocks-layout-selector__topbar__left__category">
+									<strong>{ __( 'Layouts', 'coblocks' ) }:</strong> { categories.find( category => category.slug === selectedCategory )?.title }
+									<DropdownMenu label="Select a layout category">
+										{ ( { onClose } ) => (
+											<>
+												<MenuGroup onClick={ onClose }>
+													{ categories.map( ( category, index ) => (
+														<MenuItem key={ index } onClick={ () => {
+															updateSelectedCategory( category.slug );
+															onClose();
+														} }>
+															{ category.title }
+														</MenuItem>
+													) ) }
+												</MenuGroup>
+											</>
+										) }
+									</DropdownMenu>
+								</div>
+							</div>
+							<div className="coblocks-layout-selector__topbar__right">
+								<Button
+									className="coblocks-layout-selector__add-button"
+									onClick={ useEmptyTemplateLayout }
+									isLink>
+									<span><Icon icon="plus" size={ 16 } /></span> { __( 'Add blank page', 'coblocks' ) }
+								</Button>
+							</div>
 						</div>
-						<div className="coblocks-layout-selector__topbar__right">
+					) }
+
+					{ ! isMobile && (
+						<aside className="coblocks-layout-selector__sidebar">
+
+							{ coblocksCustomLayoutsSettings }
+
+							<ul className="coblocks-layout-selector__sidebar__items">
+								{ categories.map( ( category, index ) => (
+									<SidebarItem
+										key={ index }
+										slug={ category.slug }
+										title={ category.title }
+										isSelected={ category.slug === selectedCategory }
+										onClick={ () => updateSelectedCategory( category.slug ) }
+									/>
+								) ) }
+							</ul>
+
 							<Button
 								className="coblocks-layout-selector__add-button"
 								onClick={ useEmptyTemplateLayout }
 								isLink>
-								<span><Icon icon="plus" size={ 16 } /></span> { __( 'Add blank page', 'coblocks' ) }
+								<span><SVG width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><Path d="M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z" /></SVG></span>
+								{ __( 'Add blank page', 'coblocks' ) }
 							</Button>
-						</div>
-					</div>
+						</aside>
+					) }
 
 					<div className="coblocks-layout-selector__content">
 						<LayoutSelectorResults
@@ -153,10 +172,13 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 				} = select( 'coblocks/template-selector' );
 				const { getLayoutSelector } = select( 'coblocks-settings' );
 
+				const { isViewportMatch } = select( 'core/viewport' );
+
 				const layouts = useComputedLayouts();
 
 				return {
 					isActive: isTemplateSelectorActive(),
+					isMobile: isViewportMatch( '< medium' ),
 					layoutSelectorEnabled: getLayoutSelector() && hasLayouts() && hasCategories(),
 					layouts,
 					categories: useCategories( layouts ),
