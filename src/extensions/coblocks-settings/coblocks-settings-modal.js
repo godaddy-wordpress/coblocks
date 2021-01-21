@@ -2,7 +2,7 @@
  * Internal dependencies
  */
 import Section from './section';
-import CoBlocksSettingsModalControls from './coblocks-settings-slot';
+import CoBlocksSettingsModalControls, { Slot } from './coblocks-settings-slot';
 
 /**
  * WordPress dependencies
@@ -133,7 +133,7 @@ class CoBlocksSettingsModal extends Component {
 				<div className="coblocks-modal__content">
 					<Section title={ __( 'General' ) }>
 
-						<CoBlocksSettingsModalControls.Slot />
+						<Slot />
 
 						{ showLayoutSelectorControl &&
 							<CoBlocksSettingsModalControls>

@@ -36,7 +36,11 @@
 	background-color: $gray-100;
 	height: 85vh;
 	position: relative;
-	width: 1200px;
+	width: 100%;
+
+	@include break-medium() {
+		max-width: 1200px;
+	}
 
 	.components-modal__content {
 		height: auto;
@@ -44,15 +48,24 @@
 	}
 
 	.components-modal__header {
+		background-color: $gray-100;
 		border-bottom: none;
 		height: 96px;
 		margin: 0;
 		padding: 0;
 
+		@include break-medium() {
+			background-color: $white;
+		}
+
 		.components-button {
 			left: inherit;
 			position: relative;
-			right: 3%;
+			right: 1em;
+
+			@include break-medium() {
+				right: 3em;
+			}
 		}
 
 		.components-modal__header-heading-container {
@@ -61,31 +74,42 @@
 			.components-modal__header-heading {
 				background-color: $gray-100;
 				display: flex;
-				flex-direction: row;
+				flex-direction: column;
 				font-size: 1rem;
 				height: 100%;
-				justify-content: start;
+				justify-content: center;
 				margin: 0;
-				padding: 0;
-				width: 250px;
+				padding: 0 24px;
+				width: 100%;
 
-				> div {
-					align-self: center;
-					flex: 1 0 auto;
-					padding: 0 0 0 24px;
+				@include break-medium() {
+					flex-direction: row;
+					justify-content: start;
+					padding: 0;
+					width: 250px;
 				}
 
+				> div {
+					@include break-medium() {
+						align-self: center;
+						flex: 1 0 auto;
+						padding: 0 0 0 24px;
+					}
+				}
 
 				> span {
-					align-self: center;
 					display: block;
-					flex: 1 0 auto;
 					font-size: 14px;
 					font-weight: 400;
-					left: calc(150px + 5%);
-					margin-bottom: 13px;
 					margin-top: 0.8em;
-					position: relative;
+
+					@include break-medium() {
+						align-self: center;
+						flex: 1 0 auto;
+						left: calc(150px + 5%);
+						margin-bottom: 13px;
+						position: relative;
+					}
 				}
 			}
 		}
@@ -111,21 +135,25 @@
 .coblocks-layout-selector {
 	align-items: flex-start;
 	display: flex;
+	flex-direction: column;
 	justify-content: space-around;
 
-	@media (max-width: 782px) {
-		flex-direction: column;
+	@include break-medium() {
+		flex-direction: row;
 	}
 
 	&__sidebar {
+		// Display only on desktop (>= 782px) using isViewportMatch
+
+		display: none;
 		padding: 0 0 0 24px;
 		position: -webkit-sticky;
 		position: sticky;
 		top: 12px;
 		width: 250px;
 
-		@media (max-width: 782px) {
-			display: none;
+		@include break-medium() {
+			display: block;
 		}
 
 		&__items {
@@ -153,24 +181,34 @@
 	}
 
 	&__topbar {
-		display: none;
+		// Display only on mobile (< 782px) using isViewportMatch
 
-		@media (max-width: 782px) {
-			align-items: center;
+		align-items: flex-end;
+		display: flex;
+		justify-content: space-between;
+		padding: 12px 24px;
+		width: 100%;
+
+		.components-dropdown-menu__toggle {
+
+			&:hover {
+				border: 0;
+				box-shadow: none !important;
+			}
+		}
+
+		&__left {
 			display: flex;
-			justify-content: space-between;
-			margin-bottom: 1em;
-			width: 100%;
+			flex-direction: column;
 
-			.components-dropdown-menu__toggle {
-
-				&:hover {
-					border: 0;
-					box-shadow: none !important;
+			&__settings {
+				.coblocks-layout-selector__dropdown-button.is-link {
+					font-size: 1.1em;
+					margin-top: 0;
 				}
 			}
 
-			&__left {
+			&__category {
 				align-items: center;
 				display: flex;
 
@@ -179,6 +217,11 @@
 					margin-right: 0.5em;
 				}
 			}
+		}
+
+		&__right {
+			position: relative;
+			top: -4px;
 		}
 	}
 
@@ -226,7 +269,13 @@
 		background: $white;
 		flex-grow: 1;
 		overflow-y: auto;
-		padding: 12px 48px 24px;
+		padding: 24px !important;
+		width: 100%;
+
+		@include break-medium() {
+			padding: 0 48px 24px !important;
+			width: auto;
+		}
 
 		> span {
 			align-items: center;
@@ -234,15 +283,25 @@
 			flex-wrap: wrap;
 			justify-content: space-between;
 			margin: 0 0 0 6%;
-			padding: 20px 0 20px 0;
-
+			padding: 20px 0;
 		}
 	}
 
 	&__layouts {
-		column-count: 2;
-		column-gap: 2em;
+		column-count: 1;
+		column-gap: 1em;
 		padding-top: 4px;
+
+		@include break-small() {
+			column-count: 2;
+			column-gap: 2em;
+		}
+		@include break-medium() {
+			column-count: 1;
+		}
+		@include break-large() {
+			column-count: 2;
+		}
 	}
 
 	&__layout {
