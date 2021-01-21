@@ -139,7 +139,7 @@
 		],
 		"*.js": [
 			"jest --config .dev/tests/jest/jest.config.js --silent --findRelatedTests",
-			"wp-scripts lint-js"
+			"yarn lint:js"
 		]
 	}
 }
