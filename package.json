@@ -138,7 +138,8 @@
 			"stylelint src/**/*.scss --fix"
 		],
 		"*.js": [
-			"jest --config .dev/tests/jest/jest.config.js --silent --findRelatedTests"
+			"jest --config .dev/tests/jest/jest.config.js --silent --findRelatedTests",
+			"yarn lint:js"
 		]
 	}
 }

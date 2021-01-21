@@ -9,5 +9,7 @@ function CoBlocksLayoutSelectorFill( { children } ) {
 	return <Fill>{ children }</Fill>;
 }
 
-CoBlocksLayoutSelectorFill.Slot = Slot;
-export default CoBlocksLayoutSelectorFill;
+export {
+	CoBlocksLayoutSelectorFill as default,
+	Slot,
+};
