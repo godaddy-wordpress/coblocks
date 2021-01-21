@@ -8,7 +8,7 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component } from '@wordpress/element';
+import { Component, isValidElement } from '@wordpress/element';
 import { applyFilters } from '@wordpress/hooks';
 import { registerPlugin } from '@wordpress/plugins';
 import { compose } from '@wordpress/compose';
@@ -62,11 +62,26 @@ class LayoutSelector extends Component {
 			<>
 				<Slot />
 
-				{ Array.isArray( settings ) && settings.map( ( Control, index ) => (
-					<CoBlocksLayoutSelectorFill key={ `layout-control-${ index }` }>
-						<Control />
-					</CoBlocksLayoutSelectorFill>
-				) ) }
+				{
+					Array.isArray( settings ) &&
+					settings.map( ( Control, index ) => {
+						let ControlElem = Control;
+
+						if ( ! [ 'function', 'object' ].includes( typeof ControlElem ) ) {
+							return null;
+						}
+
+						if ( ! isValidElement( ControlElem ) ) {
+							ControlElem = <ControlElem />;
+						}
+
+						return (
+							<CoBlocksLayoutSelectorFill key={ `layout-control-${ index }` }>
+								{ ControlElem }
+							</CoBlocksLayoutSelectorFill>
+						);
+					} )
+				}
 			</>
 		);
 
