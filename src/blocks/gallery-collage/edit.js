@@ -165,7 +165,7 @@ class GalleryCollageEdit extends Component {
 											value={ image.url }
 											render={ ( { open } ) => (
 												<Button
-													className="coblocks-gallery-item__button"
+													className="coblocks-gallery-item__button-replace"
 													onClick={ open }
 													label={ __( 'Replace Image', 'coblocks' ) }
 												>
@@ -178,7 +178,6 @@ class GalleryCollageEdit extends Component {
 
 									<Button
 										icon={ closeSmall }
-										className="coblocks-gallery-item__button"
 										onClick={ () => this.removeImage( index ) }
 										label={ __( 'Remove image', 'coblocks' ) }
 										disabled={ ! isSelected }
