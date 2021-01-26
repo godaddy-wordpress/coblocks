@@ -2,7 +2,12 @@
  * Internal dependencies
  */
 import Section from './section';
-import CoBlocksSettingsModalControls, { Slot } from './coblocks-settings-slot';
+import {
+	SettingsSlot,
+	CoBlocksSettingsModalControls,
+	PreferenceSlot,
+	CoBlocksSettingsEditorPreference,
+} from './coblocks-settings-slot';
 
 /**
  * WordPress dependencies
@@ -125,15 +130,29 @@ class CoBlocksSettingsModal extends Component {
 
 		const settings = applyFilters( 'coblocks-settings-modal-controls', [] );
 
+		const editorPreference = applyFilters( 'coblocks-settings-editor-controls', [] );
+
 		return (
 			<Modal
 				title={ applyFilters( 'coblocks-settings-title', __( 'Editor settings', 'coblocks' ) ) }
 				onRequestClose={ closeModal }
 			>
-				<div className="coblocks-modal__content">
-					<Section title={ __( 'General' ) }>
+				{ !! editorPreference.length &&
+					<div className="coblocks-modal__content">
+						<Section title={ __( 'Editor Preference', 'coblocks' ) }>
+							<PreferenceSlot />
 
-						<Slot />
+							{ editorPreference.map( ( Control, index ) => (
+								<CoBlocksSettingsEditorPreference key={ `modal-preference-${ index }` }>
+									<Control />
+								</CoBlocksSettingsEditorPreference>
+							) ) }
+						</Section>
+					</div>
+				}
+				<div className="coblocks-modal__content">
+					<Section title={ __( 'General', 'coblocks' ) }>
+						<SettingsSlot />
 
 						{ showLayoutSelectorControl &&
 							<CoBlocksSettingsModalControls>

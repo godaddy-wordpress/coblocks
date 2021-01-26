@@ -18,6 +18,7 @@ export default function createCoBlocksStore() {
 		typography: true,
 		animation: true,
 		layoutSelector: false, // default false to prevent screen flicker.
+		settingsModalOpen: false,
 	};
 
 	const layoutSelectorEnabled = applyFilters( 'coblocks-show-layout-selector', true );
@@ -55,6 +56,9 @@ export default function createCoBlocksStore() {
 		},
 		getColorPanel( ) {
 			return settings.colorsPanel;
+		},
+		getSettingsModalState( ) {
+			return settings.settingsModalOpen;
 		},
 	};
 
@@ -153,6 +157,12 @@ export default function createCoBlocksStore() {
 					coblocks_animation_controls_enabled: toggle,
 				},
 			} );
+		},
+		toggleSettingsModal( setting ) {
+			if ( settings.settingsModalOpen !== setting ) {
+				settings.settingsModalOpen = setting;
+				storeChanged();
+			}
 		},
 	};
 

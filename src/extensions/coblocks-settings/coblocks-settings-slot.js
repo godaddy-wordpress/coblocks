@@ -2,14 +2,25 @@
  * WordPress dependencies
  */
 import { createSlotFill } from '@wordpress/components';
+const createSettings = createSlotFill( 'CoBlocksSettingsModalControls' );
+const createPreferences = createSlotFill( 'CoBlocksSettingsEditorPreference' );
 
-const { Fill, Slot } = createSlotFill( 'CoBlocksSettingsModalControls' );
+const SettingsFill = createSettings.Fill,
+	SettingsSlot = createSettings.Slot,
+	PreferenceFill = createPreferences.Fill,
+	PreferenceSlot = createPreferences.Slot;
 
 function CoBlocksSettingsModalControls( { children } ) {
-	return <Fill>{ children }</Fill>;
+	return <SettingsFill>{ children }</SettingsFill>;
+}
+
+function CoBlocksSettingsEditorPreference( { children } ) {
+	return <PreferenceFill>{ children }</PreferenceFill>;
 }
 
 export {
-	CoBlocksSettingsModalControls as default,
-	Slot,
+	CoBlocksSettingsModalControls,
+	CoBlocksSettingsEditorPreference,
+	SettingsSlot,
+	PreferenceSlot,
 };

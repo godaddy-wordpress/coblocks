@@ -10,9 +10,9 @@ import './styles/style.scss';
  */
 import { __ } from '@wordpress/i18n';
 import { applyFilters } from '@wordpress/hooks';
-import { Fragment, useState } from '@wordpress/element';
+import { Fragment } from '@wordpress/element';
 import { PluginMoreMenuItem } from '@wordpress/edit-post';
-import { registerGenericStore } from '@wordpress/data';
+import { registerGenericStore, useSelect, useDispatch } from '@wordpress/data';
 import { registerPlugin, getPlugin, unregisterPlugin } from '@wordpress/plugins';
 
 /**
@@ -23,13 +23,12 @@ import createCoBlocksStore from './coblocks-settings-store.js';
 
 if ( typeof coblocksSettings !== 'undefined' && coblocksSettings.coblocksSettingsEnabled ) {
 	const CoBlocksSettingsMenuItem = () => {
-		const [
-			isOpen,
-			setOpen,
-		] = useState( false );
+		const isOpen = useSelect( ( select ) => select( 'coblocks-settings' ).getSettingsModalState(), [] );
 
-		const openModal = () => setOpen( true );
-		const closeModal = () => setOpen( false );
+		const { toggleSettingsModal } = useDispatch( 'coblocks-settings' );
+
+		const openModal = () => toggleSettingsModal( true );
+		const closeModal = () => toggleSettingsModal( false );
 
 		const props = {
 			isOpen,
