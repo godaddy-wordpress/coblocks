@@ -14,6 +14,8 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import {
+	__experimentalImageURLInputUI as ImageURLInputUI,
+	BlockControls,
 	InnerBlocks,
 	MediaPlaceholder,
 } from '@wordpress/block-editor';
@@ -197,15 +199,31 @@ class Edit extends Component {
 		);
 	}
 
+	onSetHref = ( props ) => {
+		const { setAttributes } = this.props;
+
+		setAttributes( props );
+	}
+
 	render() {
 		const { className, attributes, setAttributes } = this.props;
+		const {
+			headingLevel,
+			href,
+			imageUrl,
+			linkClass,
+			linkDestination,
+			linkTarget,
+			rel,
+			showCta,
+		} = attributes;
 
 		const TEMPLATE = [
 			[
 				'core/heading',
 				{
 					placeholder: /* translators: placeholder text for input box */ __( 'Write title…', 'coblocks' ),
-					level: attributes.headingLevel,
+					level: headingLevel,
 				},
 			],
 			[
@@ -217,19 +235,33 @@ class Edit extends Component {
 			],
 		];
 
-		if ( attributes.showCta ) {
+		if ( showCta ) {
 			TEMPLATE.push( [ 'core/button', {} ] );
 		}
 
 		return (
 			<Fragment>
+				<BlockControls>
+					{ imageUrl && (
+						<ImageURLInputUI
+							url={ href || '' }
+							onChangeUrl={ this.onSetHref }
+							linkDestination={ linkDestination }
+							mediaUrl={ imageUrl }
+							mediaLink={ imageUrl }
+							linkTarget={ linkTarget }
+							linkClass={ linkClass }
+							rel={ rel }
+						/>
+					) }
+				</BlockControls>
 				<InspectorControls
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					onToggleCta={ this.toggleCta }
 				/>
 				<div className={ className }>
-					{ attributes.imageUrl ? this.renderImage() : this.renderPlaceholder() }
+					{ imageUrl ? this.renderImage() : this.renderPlaceholder() }
 					<div className="wp-block-coblocks-service__content">
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
