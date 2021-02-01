@@ -142,7 +142,7 @@ class Edit extends Component {
 			allowedTypes: [ 'image' ],
 			filesList: files,
 			onFileChange: ( [ media ] ) =>
-				this.props.setAttributes( { imageUrl: media.url, imageAlt: media.alt } ),
+				this.props.setAttributes( { imageUrl: media.url, imageAttachmentPage: media.link, imageAlt: media.alt } ),
 		} );
 	}
 
@@ -168,7 +168,7 @@ class Edit extends Component {
 						<ButtonGroup className="block-library-gallery-item__inline-menu is-right is-visible">
 							<Button
 								icon={ closeSmall }
-								onClick={ () => setAttributes( { imageUrl: '' } ) }
+								onClick={ () => setAttributes( { imageUrl: '', imageAttachmentPage: '' } ) }
 								className="coblocks-gallery-item__button"
 								label={ __( 'Remove image', 'coblocks' ) }
 								disabled={ ! isSelected }
@@ -194,7 +194,7 @@ class Edit extends Component {
 				labels={ {
 					title: ' ',
 				} }
-				onSelect={ ( el ) => setAttributes( { imageUrl: el.url, imageAlt: el.alt } ) }
+				onSelect={ ( el ) => setAttributes( { imageUrl: el.url, imageAttachmentPage: el.link, imageAlt: el.alt } ) }
 			/>
 		);
 	}
@@ -211,6 +211,7 @@ class Edit extends Component {
 			headingLevel,
 			href,
 			imageUrl,
+			imageAttachmentPage,
 			linkClass,
 			linkDestination,
 			linkTarget,
@@ -248,7 +249,7 @@ class Edit extends Component {
 							onChangeUrl={ this.onSetHref }
 							linkDestination={ linkDestination }
 							mediaUrl={ imageUrl }
-							mediaLink={ imageUrl }
+							mediaLink={ imageAttachmentPage }
 							linkTarget={ linkTarget }
 							linkClass={ linkClass }
 							rel={ rel }
