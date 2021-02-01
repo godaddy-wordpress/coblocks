@@ -141,12 +141,14 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 
 		// Replace the image.
 		const newImageBase = '150x150-2';
+		/* eslint-disable */
 		cy.fixture( `../.dev/tests/cypress/fixtures/images/${ newImageBase }.png` ).then( ( fileContent ) => {
 			cy.get( '[class^="moxie"]' ).find( '[type="file"]' ).first().upload(
 				{ fileContent, fileName: `${ newImageBase }.png`, mimeType: 'image/png' },
 				{ force: true }
 			);
 		} );
+		/* eslint-enable */
 		cy.get( '.media-modal' ).find( '.media-button-select' ).click();
 
 		cy.get( '.edit-post-visual-editor' ).find( '.wp-block-coblocks-gallery-collage__item img' ).first().should( 'have.attr', 'src' ).should( 'include', newImageBase );
