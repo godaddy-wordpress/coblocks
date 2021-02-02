@@ -37,6 +37,12 @@
 			"selector": "figure > a",
 			"attribute": "href"
 		},
+		"imageAttachmentPage": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "src"
+		},
 		"rel": {
 			"type": "string",
 			"source": "attribute",
