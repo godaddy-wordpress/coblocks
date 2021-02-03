@@ -199,6 +199,7 @@ class CoBlocks_Block_Patterns {
 	public function load_block_patterns() {
 		$query_args = array(
 			'post_type'              => self::POST_TYPE,
+			'posts_per_page'         => -1,
 
 			'no_found_rows'          => true,
 			'update_post_meta_cache' => false,
