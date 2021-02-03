@@ -10,6 +10,11 @@ import { useSelect, useDispatch } from '@wordpress/data';
 import { createBlock, rawHandler } from '@wordpress/blocks';
 import { useEffect } from '@wordpress/element';
 
+/**
+ * Inernal dependencies
+ */
+import './requestIdleCallbackShim';
+
 const MAX_SUGGESTED_ITEMS = 6;
 
 const getBlocksFromTemplate = ( name, attributes, innerBlocks = [] ) => {
