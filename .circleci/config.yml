@@ -292,8 +292,8 @@ jobs:
     docker:
       - image: circleci/php:7.3-node
         auth:
-          username: DOCKERHUB_USERNAME
-          password: DOCKERHUB_PASSWORD
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - disable_xdebug_php_extension
@@ -339,8 +339,8 @@ jobs:
     docker:
       - image: circleci/php:7.3
         auth:
-          username: DOCKERHUB_USERNAME
-          password: DOCKERHUB_PASSWORD
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - changed_files_with_extension:
@@ -362,8 +362,8 @@ jobs:
     docker:
       - image: circleci/node:latest
         auth:
-          username: DOCKERHUB_USERNAME
-          password: DOCKERHUB_PASSWORD
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - changed_files_with_extension:
@@ -384,12 +384,12 @@ jobs:
     docker:
       - image: circleci/php:5.6
         auth:
-          username: DOCKERHUB_USERNAME
-          password: DOCKERHUB_PASSWORD
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
       - image: circleci/mysql:5.7
         auth:
-          username: DOCKERHUB_USERNAME
-          password: DOCKERHUB_PASSWORD
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - attach_workspace:
@@ -412,12 +412,12 @@ jobs:
     docker:
       - image: circleci/php:7.3.23-apache-node
         auth:
-          username: DOCKERHUB_USERNAME
-          password: DOCKERHUB_PASSWORD
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
       - image: circleci/mysql:5.7
         auth:
-          username: DOCKERHUB_USERNAME
-          password: DOCKERHUB_PASSWORD
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - attach_workspace:
@@ -444,8 +444,8 @@ jobs:
     docker:
       - image: cimg/php:7.3.23-node
         auth:
-          username: DOCKERHUB_USERNAME
-          password: DOCKERHUB_PASSWORD
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - changed_files_with_extension:
@@ -488,12 +488,12 @@ jobs:
     docker:
       - image: circleci/php:7.3.23-node-browsers
         auth:
-          username: DOCKERHUB_USERNAME
-          password: DOCKERHUB_PASSWORD
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
       - image: circleci/mysql:5.7
         auth:
-          username: DOCKERHUB_USERNAME
-          password: DOCKERHUB_PASSWORD
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     parallelism: 4
     steps:
       - checkout
@@ -519,12 +519,12 @@ jobs:
     docker:
       - image: circleci/php:7.3.23-node-browsers
         auth:
-          username: DOCKERHUB_USERNAME
-          password: DOCKERHUB_PASSWORD
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
       - image: circleci/mysql:5.7
         auth:
-          username: DOCKERHUB_USERNAME
-          password: DOCKERHUB_PASSWORD
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     parallelism: 4
     steps:
       - checkout
@@ -553,8 +553,8 @@ jobs:
     docker:
       - image: circleci/php:7.3-node-browsers-legacy
         auth:
-          username: DOCKERHUB_USERNAME
-          password: DOCKERHUB_PASSWORD
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -591,8 +591,8 @@ jobs:
     docker:
       - image: circleci/golang:latest-node-browsers-legacy
         auth:
-          username: DOCKERHUB_USERNAME
-          password: DOCKERHUB_PASSWORD
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - attach_workspace:
@@ -651,8 +651,8 @@ jobs:
     docker:
       - image: circleci/golang:latest-node-browsers-legacy
         auth:
-          username: DOCKERHUB_USERNAME
-          password: DOCKERHUB_PASSWORD
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - attach_workspace:
