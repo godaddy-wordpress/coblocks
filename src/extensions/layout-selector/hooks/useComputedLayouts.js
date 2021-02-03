@@ -10,6 +10,11 @@ import { useSelect, useDispatch } from '@wordpress/data';
 import { createBlock, rawHandler } from '@wordpress/blocks';
 import { useEffect } from '@wordpress/element';
 
+/**
+ * Internal Dependencies
+ */
+import { requestIdleCallback, cancelIdleCallback } from '../../../utils/background-task-api';
+
 const MAX_SUGGESTED_ITEMS = 6;
 
 const getBlocksFromTemplate = ( name, attributes, innerBlocks = [] ) => {
@@ -54,7 +59,7 @@ function useComputedLayouts() {
 
 		// We still have layouts to compute, continue on next available idle time
 		if ( layoutsQueue.length ) {
-			window.requestIdleCallback( processLayoutsQueue, { timeout: 1000 } );
+			requestIdleCallback( processLayoutsQueue, { timeout: 1000 } );
 			return;
 		}
 
@@ -62,7 +67,7 @@ function useComputedLayouts() {
 	};
 
 	useEffect( () => {
-		window.cancelIdleCallback( taskQueueId );
+		cancelIdleCallback( taskQueueId );
 		computedLayouts = [];
 
 		const mostUsedLayouts = orderBy( layouts, [ 'frequency' ], [ 'desc' ] )
@@ -75,7 +80,7 @@ function useComputedLayouts() {
 		];
 
 		computedCategories = [ selectedCategory ];
-		taskQueueId = window.requestIdleCallback( processLayoutsQueue, { timeout: 1000 } );
+		taskQueueId = requestIdleCallback( processLayoutsQueue, { timeout: 1000 } );
 	}, [ JSON.stringify( layouts ) ] );
 
 	// Compute layouts on category change to save cpu cycle.
