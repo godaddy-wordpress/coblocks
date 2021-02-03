@@ -1,8 +1,9 @@
 
-2.7.1 / 2021-02-03
+2.7.2 / 2021-02-03
 ==================
 ### Bug Fixes
 * Fix bug when utilizing Background Tasks API [#1816](https://github.com/godaddy-wordpress/coblocks/pull/1816)
+* Fix bug with DockerHub authentication [#1817](https://github.com/godaddy-wordpress/coblocks/pull/1817)
 
 2.7.0 / 2021-02-02
 ==================

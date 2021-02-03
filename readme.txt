@@ -117,3 +117,4 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 ### Bug Fixes
 * Fix bug when utilizing Background Tasks API [#1816](https://github.com/godaddy-wordpress/coblocks/pull/1816)
+* Fix bug with DockerHub authentication [#1817](https://github.com/godaddy-wordpress/coblocks/pull/1817)
