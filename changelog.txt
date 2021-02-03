@@ -1,4 +1,9 @@
 
+2.7.1 / 2021-02-03
+==================
+### Bug Fixes
+* Fix bug when utilizing Background Tasks API [#1816](https://github.com/godaddy-wordpress/coblocks/pull/1816)
+
 2.7.0 / 2021-02-02
 ==================
 ### Enhancements

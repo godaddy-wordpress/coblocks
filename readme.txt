@@ -115,16 +115,5 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-### Enhancements
-* Add replace image button to Collage block gallery items (#1804)
-* Add mobile friendly experience to Layout Selector [#1800](https://github.com/godaddy-wordpress/coblocks/pull/1800)
-
 ### Bug Fixes
-* Fix layout selector modal appearance to show only when creating new pages [#1794](https://github.com/godaddy-wordpress/coblocks/pull/1794)
-* Fix Logos & Badges block responsive layout [#1810](https://github.com/godaddy-wordpress/coblocks/pull/1810)
-* Fix Gist block console warning message [#1802](https://github.com/godaddy-wordpress/coblocks/pull/1802)
-* Fix Carousel block initial image hidden [#1798](https://github.com/godaddy-wordpress/coblocks/pull/1798)
-* Fix animation behavior when IntersectionObserver is not detected [#1799](https://github.com/godaddy-wordpress/coblocks/pull/1799)
-
-### Misc
-* Improvements to Layout Selector styles and performance [#1795](https://github.com/godaddy-wordpress/coblocks/pull/1795) [#1796](https://github.com/godaddy-wordpress/coblocks/pull/1796) [#1793](https://github.com/godaddy-wordpress/coblocks/pull/1793)
+* Fix bug when utilizing Background Tasks API [#1816](https://github.com/godaddy-wordpress/coblocks/pull/1816)
