@@ -142,7 +142,7 @@ class Edit extends Component {
 			allowedTypes: [ 'image' ],
 			filesList: files,
 			onFileChange: ( [ media ] ) =>
-				this.props.setAttributes( { imageUrl: media.url, imageAttachmentPage: media.link, imageAlt: media.alt } ),
+				this.props.setAttributes( { imageUrl: media.url, imageAlt: media.alt, imageId: media.id } ),
 		} );
 	}
 
@@ -168,7 +168,7 @@ class Edit extends Component {
 						<ButtonGroup className="block-library-gallery-item__inline-menu is-right is-visible">
 							<Button
 								icon={ closeSmall }
-								onClick={ () => setAttributes( { imageUrl: '', imageAttachmentPage: '' } ) }
+								onClick={ () => setAttributes( { imageUrl: '', imageAlt: '', imageId: null } ) }
 								className="coblocks-gallery-item__button"
 								label={ __( 'Remove image', 'coblocks' ) }
 								disabled={ ! isSelected }
@@ -194,7 +194,7 @@ class Edit extends Component {
 				labels={ {
 					title: ' ',
 				} }
-				onSelect={ ( el ) => setAttributes( { imageUrl: el.url, imageAttachmentPage: el.link, imageAlt: el.alt } ) }
+				onSelect={ ( el ) => setAttributes( { imageUrl: el.url, imageAlt: el.alt, imageId: el.id } ) }
 			/>
 		);
 	}
@@ -211,13 +211,15 @@ class Edit extends Component {
 			headingLevel,
 			href,
 			imageUrl,
-			imageAttachmentPage,
 			linkClass,
 			linkDestination,
 			linkTarget,
 			rel,
 			showCta,
+			imageId,
 		} = attributes;
+
+		const image = select( 'core' ).getMedia( imageId );
 
 		const TEMPLATE = [
 			[
@@ -249,7 +251,7 @@ class Edit extends Component {
 							onChangeUrl={ this.onSetHref }
 							linkDestination={ linkDestination }
 							mediaUrl={ imageUrl }
-							mediaLink={ imageAttachmentPage }
+							mediaLink={ image && image.link }
 							linkTarget={ linkTarget }
 							linkClass={ linkClass }
 							rel={ rel }
