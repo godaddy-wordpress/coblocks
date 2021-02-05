@@ -119,11 +119,12 @@ class Edit extends Component {
 							) }
 						>
 
-							<label>
+							<label htmlFor={ `gist-url-input-${ this.props.clientId }` }>
 								<Icon icon={ icon } />
 								{ __( 'Gist URL', 'coblocks' ) }
 							</label>
 							<PlainText
+								id={ `gist-url-input-${ this.props.clientId }` }
 								className="input-control"
 								value={ url }
 								placeholder={ __( 'Add GitHub Gist URL…', 'coblocks' ) }

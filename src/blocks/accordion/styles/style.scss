@@ -1,14 +1,16 @@
+// stylelint-disable selector-type-no-unknown
+
 .wp-block-coblocks-accordion.alignfull {
 	padding: 0 12px;
 }
 
 _:-ms-fullscreen,
- :root .wp-block-coblocks-accordion summary {
+:root .wp-block-coblocks-accordion summary {
 	display: block;
 }
 
 _:-ms-lang(x),
- _:-webkit-full-screen,
- .wp-block-coblocks-accordion summary {
+_:-webkit-full-screen,
+.wp-block-coblocks-accordion summary {
 	display: block;
 }

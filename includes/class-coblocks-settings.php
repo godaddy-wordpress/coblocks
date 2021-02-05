@@ -152,6 +152,19 @@ class CoBlocks_Settings {
 				'default'           => true,
 			)
 		);
+
+		register_setting(
+			'coblocks_animation_controls_enabled',
+			'coblocks_animation_controls_enabled',
+			array(
+				'type'              => 'boolean',
+				'description'       => __( 'Setting use to disable or enable animation controls across the site.', 'coblocks' ),
+				'sanitize_callback' => null,
+				'show_in_rest'      => true,
+				'default'           => true,
+			)
+		);
+
 	}
 }
 

@@ -51,8 +51,8 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	}
 
 	return {
-		fallbackBackgroundColor: backgroundColorValue || false,
-		fallbackTextColor: textColorValue || false,
+		fallbackBackgroundColor: fallbackBackgroundColor || backgroundColorValue || false,
+		fallbackTextColor: fallbackTextColor || textColorValue || false,
 	};
 } );
 
@@ -104,7 +104,7 @@ class CoBlocksSubmitButton extends Component {
 						onChange={ ( nextValue ) => setAttributes( { submitButtonText: nextValue } ) }
 						className={ this.getButtonClasses() }
 						style={ buttonStyle }
-						formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
+						allowedFormats={ [ 'bold', 'italic', 'strikethrough' ] }
 						keepPlaceholderOnFocus
 					/>
 				</div>

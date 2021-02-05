@@ -115,7 +115,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 		helpers.toggleSettingCheckbox( /captions/i );
 
 		cy.get( '.wp-block-coblocks-gallery-collage__item' ).first().click()
-			.find( 'figcaption' ).click( { force: true } ).type( caption );
+			.find( 'figcaption' ).focus().type( caption, { force: true } );
 
 		helpers.savePage();
 
@@ -127,5 +127,30 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 		cy.get( '.wp-block-coblocks-gallery-collage' ).contains( caption );
 
 		helpers.editPage();
+	} );
+
+	it( 'can replace the existing image through the "Replace" button', () => {
+		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
+
+		const { imageBase } = helpers.upload.spec;
+		helpers.upload.imageToBlock( 'coblocks/gallery-collage' );
+		cy.get( '.wp-block-coblocks-gallery-collage__item img[src*="http"]' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
+
+		cy.get( '.wp-block-coblocks-gallery-collage__item' ).first().click();
+		cy.get( '.wp-block-coblocks-gallery-collage__item' ).first().find( '.coblocks-gallery-item__button-replace' ).click();
+
+		// Replace the image.
+		const newImageBase = '150x150-2';
+		/* eslint-disable */
+		cy.fixture( `../.dev/tests/cypress/fixtures/images/${ newImageBase }.png` ).then( ( fileContent ) => {
+			cy.get( '[class^="moxie"]' ).find( '[type="file"]' ).first().upload(
+				{ fileContent, fileName: `${ newImageBase }.png`, mimeType: 'image/png' },
+				{ force: true }
+			);
+		} );
+		/* eslint-enable */
+		cy.get( '.media-modal' ).find( '.media-button-select' ).click();
+
+		cy.get( '.edit-post-visual-editor' ).find( '.wp-block-coblocks-gallery-collage__item img' ).first().should( 'have.attr', 'src' ).should( 'include', newImageBase );
 	} );
 } );

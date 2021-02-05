@@ -49,6 +49,11 @@ const deprecated =
 			thumbnails,
 		} = attributes;
 
+		// Return early if there are no images.
+		if ( images.length <= 0 ) {
+			return;
+		}
+
 		const captionColorClass = getColorClassName( 'color', attributes.captionColor );
 
 		const galleryClassesDeprecated = classnames(
@@ -171,11 +176,6 @@ const deprecated =
 			color: captionColorClass ? undefined : customCaptionColor,
 		};
 
-		// Return early if there are no images.
-		if ( images.length <= 0 ) {
-			return;
-		}
-
 		return (
 			<div className={ classes }>
 				<div
@@ -199,22 +199,23 @@ const deprecated =
 							);
 						} ) }
 					</div>
-					{ thumbnails ?
-						<div
-							className={ navClasses }
-							data-flickity={ JSON.stringify( navOptions ) }
-						>
-							{ images.map( ( image ) => {
-								const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } />;
-								return (
-									<div key={ image.id || image.url } className="coblocks--item-thumbnail">
-										<figure className={ navFigureClasses }>
-											{ img }
-										</figure>
-									</div>
-								);
-							} ) }
-						</div> : null
+					{ thumbnails
+						? (
+							<div
+								className={ navClasses }
+								data-flickity={ JSON.stringify( navOptions ) }
+							>
+								{ images.map( ( image ) => {
+									const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } />;
+									return (
+										<div key={ image.id || image.url } className="coblocks--item-thumbnail">
+											<figure className={ navFigureClasses }>
+												{ img }
+											</figure>
+										</div>
+									);
+								} ) }
+							</div> ) : null
 					}
 				</div>
 				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } style={ captionStyles } /> }
@@ -317,11 +318,6 @@ const deprecated =
 			color: captionColorClass ? undefined : customCaptionColor,
 		};
 
-		// Return early if there are no images.
-		if ( images.length <= 0 ) {
-			return;
-		}
-
 		return (
 			<div className={ className }>
 				<div
@@ -373,6 +369,11 @@ const deprecated =
 			prevNextButtons,
 			primaryCaption,
 		} = attributes;
+
+		// Return early if there are no images.
+		if ( images.length <= 0 ) {
+			return;
+		}
 
 		const innerClasses = classnames(
 			'is-cropped',
@@ -431,11 +432,6 @@ const deprecated =
 		const captionStyles = {
 			color: captionColorClass ? undefined : customCaptionColor,
 		};
-
-		// Return early if there are no images.
-		if ( images.length <= 0 ) {
-			return;
-		}
 
 		return (
 			<div className={ className }>

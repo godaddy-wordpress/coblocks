@@ -17,13 +17,13 @@ class Controls extends Component {
 		const editControl = [
 			{
 				icon: edit,
-				title: preview ?
-					sprintf(
+				title: preview
+					? sprintf(
 						/* translators: %s: "Gist", the name of a code sharing platform */
 						__( 'Return to %s', 'coblocks' ),
 						'Gist'
-					) :
-					sprintf(
+					)
+					: sprintf(
 						/* translators: %s: "Gist", the name of a code sharing platform */
 						__( 'Edit %s URL', 'coblocks' ),
 						'Gist'

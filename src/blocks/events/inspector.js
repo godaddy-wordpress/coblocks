@@ -5,7 +5,7 @@ import { __ } from '@wordpress/i18n';
 import { PanelBody, ToggleControl, SelectControl, RangeControl } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 
-const Inspector = props => {
+const Inspector = ( props ) => {
 	const {
 		attributes,
 		toggleExternalCalendarControls,
@@ -26,9 +26,9 @@ const Inspector = props => {
 				<ToggleControl
 					label={ __( 'Link a calendar', 'coblocks' ) }
 					help={
-						showExternalCalendarControls ?
-							__( 'Showing public calendar.', 'coblocks' ) :
-							__( 'Toggle to link a public calendar.', 'coblocks' )
+						showExternalCalendarControls
+							? __( 'Showing public calendar.', 'coblocks' )
+							: __( 'Toggle to link a public calendar.', 'coblocks' )
 					}
 					checked={ showExternalCalendarControls }
 					onChange={ () => toggleExternalCalendarControls() }
@@ -37,7 +37,7 @@ const Inspector = props => {
 					<RangeControl
 						label={ __( 'Events per page', 'coblocks' ) }
 						value={ eventsToShow }
-						onChange={ value => onChangeEventsToShow( value ) }
+						onChange={ ( value ) => onChangeEventsToShow( value ) }
 						min={ 1 }
 						max={ 15 }
 					/>
@@ -48,7 +48,7 @@ const Inspector = props => {
 						value={ eventsRange }
 						options={ eventsRangeOptions }
 						help={ __( 'Show events from the period (100 events max).', 'coblocks' ) }
-						onChange={ value => onChangeEventsRange( value ) }
+						onChange={ ( value ) => onChangeEventsRange( value ) }
 					/>
 				}
 			</PanelBody>

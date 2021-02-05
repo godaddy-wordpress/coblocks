@@ -1,7 +1,7 @@
 /**
- * External dependencies
+ * Internal dependencies
  */
-import map from 'lodash/map';
+import OptionSelectorControl from '../option-selector-control';
 
 /**
  * WordPress dependencies
@@ -9,7 +9,7 @@ import map from 'lodash/map';
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { Component } from '@wordpress/element';
-import { ButtonGroup, Button, BaseControl, PanelRow } from '@wordpress/components';
+import { Button, BaseControl, PanelRow } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
 
 class SizeControl extends Component {
@@ -37,45 +37,61 @@ class SizeControl extends Component {
 
 		const defaultSizes = [
 			{
-				shortName: 'None',
-				size: 'none',
+				value: 'none',
+				label: __( 'None', 'coblocks' ),
+				tooltip: __( 'None', 'coblocks' ),
 			},
 			{
-				shortName: 'S',
-				size: 'sml',
+				value: 'sml',
+				/* translators: abbreviation for small size */
+				label: __( 'S', 'coblocks' ),
+				tooltip: __( 'Small', 'coblocks' ),
+
 			},
 			{
-				shortName: 'M',
-				size: 'med',
+				value: 'med',
+				/* translators: abbreviation for medium size */
+				label: __( 'M', 'coblocks' ),
+				tooltip: __( 'Medium', 'coblocks' ),
 			},
 			{
-				shortName: 'L',
-				size: 'lrg',
+				value: 'lrg',
+				/* translators: abbreviation for large size */
+				label: __( 'L', 'coblocks' ),
+				tooltip: __( 'Large', 'coblocks' ),
 			},
 		];
 
 		let standardSizes = [
 			{
-				shortName: ( wideControlsEnabled === true && 'wide' === align ) || 'full' === align ? 'L' : __( 'Large', 'coblocks' ),
-				size: 'lrg',
+				value: 'lrg',
+				/* translators: abbreviation for large size */
+				label: __( 'L', 'coblocks' ),
+				tooltip: __( 'Large', 'coblocks' ),
 			},
 			{
-				shortName: ( wideControlsEnabled === true && 'wide' === align ) || 'full' === align ? 'XL' : __( 'Extra Large', 'coblocks' ),
-				size: 'xlrg',
+				value: 'xlrg',
+				/* translators: abbreviation for extra large size */
+				label: __( 'XL', 'coblocks' ),
+				tooltip: __( 'Extra Large', 'coblocks' ),
 			},
 		];
 
 		let wideSizes = [
 			{
-				shortName: 'M',
-				size: 'med',
+				value: 'med',
+				/* translators: abbreviation for medium size */
+				label: __( 'M', 'coblocks' ),
+				tooltip: __( 'Medium', 'coblocks' ),
 			},
 		];
 
 		let fullSizes = [
 			{
-				shortName: 'S',
-				size: 'sml',
+				value: 'sml',
+				/* translators: abbreviation for small size */
+				label: __( 'S', 'coblocks' ),
+				tooltip: __( 'Small', 'coblocks' ),
 			},
 		];
 
@@ -83,20 +99,28 @@ class SizeControl extends Component {
 		if ( 'smlx' === type ) {
 			standardSizes = [
 				{
-					shortName: 'S',
-					size: 'sml',
+					value: 'sml',
+					/* translators: abbreviation for small size */
+					label: __( 'S', 'coblocks' ),
+					tooltip: __( 'Small', 'coblocks' ),
 				},
 				{
-					shortName: 'M',
-					size: 'med',
+					value: 'med',
+					/* translators: abbreviation for medium size */
+					label: __( 'M', 'coblocks' ),
+					tooltip: __( 'Medium', 'coblocks' ),
 				},
 				{
-					shortName: 'L',
-					size: 'lrg',
+					value: 'lrg',
+					/* translators: abbreviation for large size */
+					label: __( 'L', 'coblocks' ),
+					tooltip: __( 'Large', 'coblocks' ),
 				},
 				{
-					shortName: 'XL',
-					size: 'xlrg',
+					value: 'xlrg',
+					/* translators: abbreviation for extra large size */
+					label: __( 'XL', 'coblocks' ),
+					tooltip: __( 'Extra Large', 'coblocks' ),
 				},
 			];
 
@@ -107,26 +131,35 @@ class SizeControl extends Component {
 		if ( 'reverse-grid' === type ) {
 			standardSizes = [
 				{
-					shortName: ( wideControlsEnabled === true && 'wide' === align ) || 'full' === align ? 'S' : __( 'Small', 'coblocks' ),
-					size: 'small',
+					value: 'small',
+					/* translators: abbreviation for small size */
+					label: __( 'S', 'coblocks' ),
+					tooltip: __( 'Small', 'coblocks' ),
+
 				},
 				{
-					shortName: ( wideControlsEnabled === true && 'wide' === align ) || 'full' === align ? 'M' : __( 'Medium', 'coblocks' ),
-					size: 'medium',
+					value: 'medium',
+					/* translators: abbreviation for medium size */
+					label: __( 'M', 'coblocks' ),
+					tooltip: __( 'Medium', 'coblocks' ),
 				},
 			];
 
 			wideSizes = [
 				{
-					shortName: 'L',
-					size: 'large',
+					value: 'large',
+					/* translators: abbreviation for large size */
+					label: __( 'L', 'coblocks' ),
+					tooltip: __( 'Large', 'coblocks' ),
 				},
 			];
 
 			fullSizes = [
 				{
-					shortName: 'XL',
-					size: 'huge',
+					value: 'huge',
+					/* translators: abbreviation for extra large size */
+					label: __( 'XL', 'coblocks' ),
+					tooltip: __( 'Extra Large', 'coblocks' ),
 				},
 			];
 
@@ -163,20 +196,10 @@ class SizeControl extends Component {
 		return (
 			<BaseControl id="coblocks-select-size" label={ label }>
 				<PanelRow>
-					<ButtonGroup aria-label={ __( 'Select size', 'coblocks' ) }>
-						{ map( this.getSizes(), ( { size, shortName } ) => (
-							<Button
-								key={ size }
-								isLarge
-								isSecondary={ value !== size }
-								isPrimary={ value === size }
-								aria-pressed={ value === size }
-								onClick={ () => onChange( size ) }
-							>
-								{ shortName }
-							</Button>
-						) ) }
-					</ButtonGroup>
+					<OptionSelectorControl
+						currentOption={ value }
+						options={ this.getSizes() }
+						onChange={ ( size ) => onChange( size ) } />
 					{ reset &&
 						<Button
 							isSmall

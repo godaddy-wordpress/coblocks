@@ -31,6 +31,7 @@ class Inspector extends Component {
 			setAttributes,
 			setColor,
 			color,
+			clientId,
 		} = this.props;
 
 		const {
@@ -43,7 +44,7 @@ class Inspector extends Component {
 					<PanelBody
 						/* translators: hr is html markup (horizonal rule) */
 						title={ __( 'Dynamic HR settings', 'coblocks' ) }>
-						<BaseControl label={ __( 'Height in pixels', 'coblocks' ) }>
+						<BaseControl id={ `height-control-${ clientId }` } label={ __( 'Height in pixels', 'coblocks' ) }>
 							<input
 								type="number"
 								onChange={ ( event ) => {

@@ -15,6 +15,7 @@ import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 
 const save = ( { attributes } ) => {
 	const {
+		animation,
 		captions,
 		captionStyle,
 		filter,
@@ -55,13 +56,21 @@ const save = ( { attributes } ) => {
 							href = image.imgLink;
 						}
 
+						const itemClasses = classnames(
+							'wp-block-coblocks-gallery-collage__item',
+							`item-${ index + 1 }`,
+							{
+								[ `coblocks-animate` ]: animation,
+							}
+						);
 						const imgClasses = classnames( image.id && [ `wp-image-${ image.id }` ] );
 						const img = typeof image.url === 'undefined' ? null : ( <img src={ image.url } alt={ image.alt } data-index={ image.index } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ imgClasses } /> );
 
 						return (
 							<li
 								key={ `image-${ index }` }
-								className={ classnames( 'wp-block-coblocks-gallery-collage__item', `item-${ index + 1 }` ) }
+								className={ itemClasses }
+								data-coblocks-animation={ animation }
 							>
 								{ img &&
 									<figure className={ classes }>

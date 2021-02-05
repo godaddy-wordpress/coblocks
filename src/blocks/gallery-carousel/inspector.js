@@ -113,6 +113,7 @@ class Inspector extends Component {
 							<BaseControl
 								label={ __( 'Height in pixels', 'coblocks' ) }
 								className={ 'block-height-control' }
+								id="gallery-carousel-height-control"
 							>
 								<input
 									type="number"

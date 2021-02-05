@@ -10,6 +10,7 @@
 	}
 }
 
+// Utilities
 @mixin utilities($map, $attribute, $prefix: "-", $separator: "-", $base: "base") {
 
 	@each $key, $value in $map {
@@ -33,7 +34,6 @@
 		@content;
 	}
 }
-
 @mixin break-small-max() {
 
 	@media (max-width: #{ ($break-small-max) }) {

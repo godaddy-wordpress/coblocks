@@ -16,6 +16,7 @@ import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 
 const save = ( { attributes, className } ) => {
 	const {
+		animation,
 		captions,
 		gridSize,
 		images,
@@ -35,6 +36,12 @@ const save = ( { attributes, className } ) => {
 		...GalleryClasses( attributes ), {
 			[ `has-${ gridSize }-images` ]: gridSize,
 		},
+	);
+
+	const itemClasses = classnames(
+		'coblocks-gallery--item', {
+			[ `coblocks-animate` ]: animation,
+		}
 	);
 
 	return (
@@ -65,7 +72,7 @@ const save = ( { attributes, className } ) => {
 						const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ imgClasses } />;
 
 						return (
-							<li key={ image.id || image.url } className="coblocks-gallery--item">
+							<li key={ image.id || image.url } className={ itemClasses } data-coblocks-animation={ animation }>
 								<figure className="wp-block-coblocks-gallery-offset__figure">
 									{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
 									{ captions && image.caption && image.caption.length > 0 && (

@@ -20,19 +20,19 @@ describe( 'Extension: Layout Selector', () => {
 
 		// Click "About" category.
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(1)' ).find( 'a' ).click();
-		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layouts-column' ).should( 'not.have.length', 0 );
+		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layout' ).should( 'not.have.length', 0 );
 
 		// Click "Contact" category.
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(2)' ).find( 'a' ).click();
-		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layouts-column' ).should( 'not.have.length', 0 );
+		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layout' ).should( 'not.have.length', 0 );
 
 		// Click "Home" category.
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(3)' ).find( 'a' ).click();
-		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layouts-column' ).should( 'not.have.length', 0 );
+		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layout' ).should( 'not.have.length', 0 );
 
 		// Click "Portfolio" category.
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(4)' ).find( 'a' ).click();
-		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layouts-column' ).should( 'not.have.length', 0 );
+		cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layout' ).should( 'not.have.length', 0 );
 	} );
 
 	it( 'inserts layout into page', () => {
@@ -42,12 +42,15 @@ describe( 'Extension: Layout Selector', () => {
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(1)' ).find( 'a' ).click();
+
+		cy.get( '[data-type="core/image"] img[src*="http"]' ); // Ensure layout is loaded
+
 		cy.get( '.coblocks-layout-selector__layout' ).first().click();
 
 		cy.get( '.editor-post-title__block' ).contains( 'About' );
-		cy.get( '.wp-block' ).contains( 'Work With Me' );
+		cy.get( '.wp-block' ).contains( 'Test About Layout' );
 
-		cy.get( `[data-type="core/image"] img[src^="${ Cypress.env( 'testURL' ) }"]` );
+		cy.get( `[data-type="core/image"] img[src*="http"]` ).should( 'exist' );
 	} );
 
 	it( 'inserts blank layout into page', () => {
@@ -63,8 +66,8 @@ describe( 'Extension: Layout Selector', () => {
 		cy.get( '.editor-post-title__block' ).find( 'textarea' ).should( 'be.empty' );
 
 		// The first block should be the default prompt.
-		cy.get( '.wp-block' ).should( 'have.length', 2 );
-		cy.get( '.wp-block' ).last().find( 'textarea' ).should( 'have.value', 'Start writing or type / to choose a block' );
+		cy.get( '.edit-post-visual-editor .block-editor-block-list__layout' ).find( '> .wp-block' ).should( 'have.length', 1 );
+		cy.get( '.block-editor-default-block-appender' ).find( 'textarea' ).should( 'have.value', 'Start writing or type / to choose a block' );
 	} );
 
 	it( 'does not show modal on add new "post" post_type', () => {
@@ -98,45 +101,22 @@ describe( 'Extension: Layout Selector', () => {
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 	} );
 
-	it( 'imports images into media library from layouts', () => {
-		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
-		helpers.disableGutenbergFeatures();
-
-		// Click "Portfolio" category.
-		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(4)' ).find( 'a' ).click();
-		cy.get( '.coblocks-layout-selector__layout' ).contains( 'Test Portfolio Layout.' );
-
-		cy.get( '.coblocks-layout-selector__layout:nth-of-type(1)' ).click( { force: true } );
-
-		cy.get( '.editor-post-title__block' ).contains( 'Portfolio Test' );
-		cy.get( '.wp-block' ).contains( 'Test Portfolio Layout.' );
-
-		// Only passes if the image was successfully uploaded to site.
-		cy.get( `[data-type="core/image"] img[src^="${ Cypress.env( 'testURL' ) }"]` ).should( 'exist' );
-		cy.get( `[data-type="core/gallery"] img[src^="${ Cypress.env( 'testURL' ) }"]` ).should( 'exist' );
-		cy.get( `[data-type="core/cover"] img[src^="${ Cypress.env( 'testURL' ) }"]` ).should( 'exist' );
-	} );
-
 	it( 'does not open modal when editing a draft post', () => {
 		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
 		helpers.disableGutenbergFeatures();
 
+		// Ensure the layout selector has loaded
+		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
+		// Ensure the preview has rendered before clicking it.
+		cy.get( '.block-editor-block-preview__container' ).should( 'exist' );
 		cy.get( '.coblocks-layout-selector__layout' ).first().click();
-		cy.get( '[data-type="core/image"] img[src*="http"]' ).should( 'exist' );
+		cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
+
 		cy.get( '.editor-post-save-draft' ).click();
+		cy.reload();
+		cy.get( '.edit-post-visual-editor' );
 
-		// Reload the post.
-		let postID;
-		// eslint-disable-next-line jest/valid-expect-in-promise
-		cy.window()
-			.then( ( win ) => {
-				postID = win.wp.data.select( 'core/editor' ).getCurrentPostId();
-			} )
-			.then( () => {
-				helpers.goTo( `/wp-admin/post.php?post=${ postID }&action=edit` );
-
-				helpers.disableGutenbergFeatures();
-				cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
-			} );
+		helpers.disableGutenbergFeatures();
+		cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
 	} );
 } );

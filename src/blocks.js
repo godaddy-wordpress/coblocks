@@ -8,7 +8,11 @@ import {
 // Register block category
 import './utils/block-category';
 
+// Utils
+import './js/coblocks-color-fix';
+
 // Extensions
+import './extensions/animation';
 import './extensions/colors/inspector';
 import './extensions/typography';
 import './extensions/attributes';
@@ -23,6 +27,7 @@ import './extensions/media-text-styles';
 import './extensions/lightbox-controls';
 import './extensions/replace-image';
 import './extensions/image-crop';
+import './extensions/image-filter';
 import './extensions/coblocks-settings/';
 import './extensions/layout-selector';
 import './extensions/block-patterns';
@@ -39,6 +44,7 @@ import { supportsCollections } from './utils/block-helpers';
 
 // Deprecate Blocks
 import './js/deprecations/deprecate-coblocks-buttons.js';
+import './js/deprecations/deprecate-coblocks-media-card.js';
 
 // Register Blocks
 import * as accordion from './blocks/accordion';

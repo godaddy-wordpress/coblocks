@@ -1,6 +1,8 @@
+/*global coblocksLigthboxData */
 ( function( ) {
 	'use strict';
 
+	const { closeLabel, leftLabel, rightLabel } = coblocksLigthboxData;
 	const lightboxModals = document.getElementsByClassName( 'has-lightbox' );
 
 	Array.from( lightboxModals ).forEach( function( lightbox, index ) {
@@ -20,6 +22,7 @@
 
 		const close = document.createElement( 'button' );
 		close.setAttribute( 'class', 'coblocks-lightbox__close' );
+		close.setAttribute( 'aria-label', closeLabel );
 
 		const counter = document.createElement( 'span' );
 		counter.setAttribute( 'class', 'coblocks-lightbox__count' );
@@ -40,12 +43,24 @@
 
 		const arrowRight = document.createElement( 'div' );
 		arrowRight.setAttribute( 'class', 'arrow-right' );
+		arrowRight.setAttribute( 'aria-label', rightLabel );
 
 		const arrowLeft = document.createElement( 'div' );
 		arrowLeft.setAttribute( 'class', 'arrow-left' );
+		arrowLeft.setAttribute( 'aria-label', leftLabel );
 
-		const images = document.querySelectorAll( `.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure img, figure.has-lightbox.lightbox-${ lightboxIndex } > img` );
-		const captions = document.querySelectorAll( `.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure figcaption` );
+		const imageSelector = [
+				`.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure img`,
+				`figure.has-lightbox.lightbox-${ lightboxIndex } > img`,
+				`.has-lightbox.lightbox-${ lightboxIndex } > figure[class^="align"] img`,
+			].join( ', ' ),
+
+			captionSelector = [
+				`.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure figcaption`,
+			].join( ', ' );
+
+		const images = document.querySelectorAll( imageSelector );
+		const captions = document.querySelectorAll( captionSelector );
 		let index;
 
 		modalHeading.append( counter, close );

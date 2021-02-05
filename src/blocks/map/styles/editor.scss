@@ -6,8 +6,8 @@
 		.components-placeholder__fieldset {
 
 			.components-placeholder__input {
-				min-width: 50%;
 				margin-right: 5px;
+				min-width: 50%;
 
 				.components-base-control__field {
 					height: 36px;
@@ -112,9 +112,9 @@ $styles: (standard), (silver), (retro), (dark), (night), (aubergine);
 	.components-coblocks-map-styles__button {
 		align-items: center;
 		background: $white;
-		box-shadow: none;
 		border: 1px solid rgba(25, 30, 35, 0.2);
 		border-radius: $radius-block-ui;
+		box-shadow: none;
 		height: auto;
 		margin: 0;
 		padding: 0 0 70px 0;

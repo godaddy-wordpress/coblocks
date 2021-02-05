@@ -55,8 +55,8 @@ const settings = {
 	attributes,
 	transforms,
 	edit,
-	getEditWrapperProps( attributes ) {
-		const { id, layout, columns } = attributes;
+	getEditWrapperProps( wrapperAttributes ) {
+		const { id, layout, columns } = wrapperAttributes;
 
 		// If no layout is seleted, return the following.
 		if ( ! layout ) {

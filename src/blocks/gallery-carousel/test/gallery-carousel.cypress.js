@@ -1,3 +1,6 @@
+/* eslint-disable jest/valid-expect-in-promise */
+// Disable reason: Cypress chained functions are not true promises and do not require a return.
+// https://docs.cypress.io/guides/core-concepts/introduction-to-cypress.html#Commands-Are-Not-Promises
 /*
  * Include our constants
  */
@@ -113,7 +116,6 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 			.click();
 
 		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
-			console.log( mediaToolbar.prop( 'outerHTML' ) );
 			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
 				cy.get( 'button' ).contains( /insert gallery/i ).click();
 			} else { // pre wp 5.4
@@ -122,7 +124,7 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 			}
 		} );
 
-		cy.get( '[data-type="coblocks/gallery-carousel"]' ).find( 'figcaption' ).click().type( caption );
+		cy.get( '[data-type="coblocks/gallery-carousel"]' ).find( 'figcaption' ).focus().type( caption );
 
 		helpers.savePage();
 

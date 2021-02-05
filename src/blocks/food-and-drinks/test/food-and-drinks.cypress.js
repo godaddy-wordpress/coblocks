@@ -3,8 +3,7 @@
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
-describe( 'Block: Food and Drinks', function () {
-
+describe( 'Block: Food and Drinks', function() {
 	beforeEach( () => {
 		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
 	} );
@@ -13,7 +12,7 @@ describe( 'Block: Food and Drinks', function () {
 	 * Test that we can add a food-and-drinks block to the content, not alter
 	 * any settings, and are able to successfully save the block without errors.
 	 */
-	it( 'can be inserted without errors', function () {
+	it( 'can be inserted without errors', function() {
 		cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'exist' );
 		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
 	} );
@@ -34,9 +33,9 @@ describe( 'Block: Food and Drinks', function () {
 		helpers.openSettingsPanel( /food & drinks settings/i );
 
 		[ 2, 3, 4 ].forEach( ( columns ) => {
-			cy.get( '.components-range-control' ).contains( /columns/i ).parent().find( '.components-range-control__number' ).type( `{selectall}${columns}` );
+			cy.get( '.components-range-control' ).contains( /columns/i ).parent().find( '.components-range-control__number' ).type( `{selectall}${ columns }` );
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', 'has-columns' );
-			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', `has-${columns}-columns` );
+			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', `has-${ columns }-columns` );
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).find( '[data-type="coblocks/food-item"]' ).should( 'have.length', columns );
 		} );
 
@@ -49,8 +48,8 @@ describe( 'Block: Food and Drinks', function () {
 		helpers.openSettingsPanel( /food & drinks settings/i );
 
 		[ 'Small', 'Medium', 'Large', 'Huge' ].forEach( ( gutter ) => {
-			cy.get( '.components-base-control' ).contains( /gutter/i ).parent().find( `.components-button[aria-label="${gutter}"]` ).click();
-			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', `has-${gutter.toLowerCase()}-gutter` );
+			cy.get( '.components-base-control' ).contains( /gutter/i ).parent().find( `.components-button[aria-label="${ gutter }"]` ).click();
+			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', `has-${ gutter.toLowerCase() }-gutter` );
 		} );
 
 		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );

@@ -42,6 +42,7 @@ class Inspector extends Component {
 			setBackgroundColor,
 			setTextColor,
 			textColor,
+			selectBlock,
 		} = this.props;
 
 		const {
@@ -92,7 +93,7 @@ class Inspector extends Component {
 							value={ columns }
 							onChange={ ( nextCount ) => {
 								setAttributes( {
-									columns: parseInt( nextCount ),
+									columns: Math.min( parseInt( nextCount ) || 1, 4 ),
 								} );
 
 								if ( parseInt( nextCount ) < 2 ) {
@@ -105,7 +106,7 @@ class Inspector extends Component {
 									} );
 								}
 
-								wp.data.dispatch( 'core/block-editor' ).selectBlock( clientId );
+								selectBlock( clientId );
 							} }
 							min={ 1 }
 							max={ 4 }

@@ -147,6 +147,6 @@ export default class Gist extends Component {
 // - PROP TYPES -
 Gist.propTypes = {
 	file: PropTypes.string,
-	onError: PropTypes.function,
+	onError: PropTypes.func,
 	url: PropTypes.string.isRequired,
 };

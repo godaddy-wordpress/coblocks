@@ -1,6 +1,6 @@
 /**
  * WordPress dependencies
-*/
+ */
 import { __ } from '@wordpress/i18n';
 
 const example = {
@@ -9,74 +9,74 @@ const example = {
 		contentAlign: 'center',
 	},
 	innerBlocks: [
-	{
-		name: 'coblocks/pricing-table-item',
-		attributes: {
-			title: __( 'Basic', 'coblocks' ),
-			currency: '$',
-			amount: '19',
-			features: [
-			{
-				type: 'li',
-				props: {
-					children: [
-						__( 'Feature one', 'coblocks' ),
-					]
-				}
-			},
-			{
-				type: 'li',
-				props: {
-					children: [
-						__( 'Feature two', 'coblocks' ),
-					]
-				}
-			}
-			]
-		},
-		innerBlocks: [
 		{
-			name: 'core/button',
+			name: 'coblocks/pricing-table-item',
 			attributes: {
-				text: __( 'Buy now', 'coblocks' ),
-			}
-		}
-		]
-	},
-	{
-		name: 'coblocks/pricing-table-item',
-		attributes: {
-			title: __( 'Pro', 'coblocks' ),
-			currency: '$',
-			amount: '49',
-			features: [
-			{
-				type: 'li',
-				props: {
-					children: [
-						__( 'Feature one', 'coblocks' ),
-					]
-				}
+				title: __( 'Basic', 'coblocks' ),
+				currency: '$',
+				amount: '19',
+				features: [
+					{
+						type: 'li',
+						props: {
+							children: [
+								__( 'Feature one', 'coblocks' ),
+							],
+						},
+					},
+					{
+						type: 'li',
+						props: {
+							children: [
+								__( 'Feature two', 'coblocks' ),
+							],
+						},
+					},
+				],
 			},
-			{
-				type: 'li',
-				props: {
-					children: [
-						__( 'Feature two', 'coblocks' ),
-					]
-				}
-			}
-			]
+			innerBlocks: [
+				{
+					name: 'core/button',
+					attributes: {
+						text: __( 'Buy now', 'coblocks' ),
+					},
+				},
+			],
 		},
-		innerBlocks: [
 		{
-			name: 'core/button',
+			name: 'coblocks/pricing-table-item',
 			attributes: {
-				text: __( 'Buy now', 'coblocks' ),
-			}
-		}
-		]
-	},
+				title: __( 'Pro', 'coblocks' ),
+				currency: '$',
+				amount: '49',
+				features: [
+					{
+						type: 'li',
+						props: {
+							children: [
+								__( 'Feature one', 'coblocks' ),
+							],
+						},
+					},
+					{
+						type: 'li',
+						props: {
+							children: [
+								__( 'Feature two', 'coblocks' ),
+							],
+						},
+					},
+				],
+			},
+			innerBlocks: [
+				{
+					name: 'core/button',
+					attributes: {
+						text: __( 'Buy now', 'coblocks' ),
+					},
+				},
+			],
+		},
 	],
 };
 

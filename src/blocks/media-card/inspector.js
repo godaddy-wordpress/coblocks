@@ -122,13 +122,13 @@ class Inspector extends Component {
 								}
 								checked={ !! hasImgShadow }
 								onChange={ () => setAttributes( { hasImgShadow: ! hasImgShadow } ) }
-								help={ !! hasImgShadow ?
-									sprintf(
+								help={ !! hasImgShadow
+									? sprintf(
 										/* translators: %s: placeholder is either 'Card, or 'Image' */
 										__( 'Showing %s shadow.', 'coblocks' ),
 										mediaType
-									) :
-									sprintf(
+									)
+									: sprintf(
 										/* translators: %s: placeholder is either 'Card, or 'Image' */
 										__( 'Toggle to add an %s shadow', 'coblocks' ),
 										mediaType

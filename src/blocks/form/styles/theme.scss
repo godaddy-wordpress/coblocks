@@ -12,6 +12,14 @@
 		margin-bottom: 1.75rem;
 	}
 
+	.coblocks-label {
+		font-weight: 800;
+	}
+
+	.coblocks-form__submit {
+		margin-top: -0.75em;
+	}
+
 	.coblocks-form__submit .wp-block-button__link {
 		margin-top: 0.1em;
 	}
@@ -31,17 +39,6 @@
 
 	.coblocks-form__submit.wp-block-button {
 		margin-top: 0;
-	}
-}
-
-.is-twentyseventeen {
-
-	.coblocks-label {
-		font-weight: 800;
-	}
-
-	.coblocks-form__submit {
-		margin-top: -0.75em;
 	}
 }
 

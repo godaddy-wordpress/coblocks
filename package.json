@@ -2,8 +2,8 @@
 	"name": "coblocks",
 	"title": "CoBlocks",
 	"description": "CoBlocks is a suite of professional page building blocks for the WordPress Gutenberg block editor.",
-	"version": "2.3.2",
-	"tested_up_to": "5.5",
+	"version": "2.7.2",
+	"tested_up_to": "5.6",
 	"author": "GoDaddy",
 	"license": "GPL-2.0",
 	"repository": "godaddy-wordpress/coblocks",
@@ -31,7 +31,8 @@
 		"lint:js": "wp-scripts lint-js",
 		"lint:php": "wp-scripts env lint-php",
 		"test:php": "wp-scripts env test-php",
-		"test:unit": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js"
+		"test:js": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js",
+		"test:js:coverage": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js --coverage"
 	},
 	"wp-env": {
 		"plugin-dir": "coblocks",
@@ -39,6 +40,7 @@
 		"welcome-build-command": "yarn start"
 	},
 	"locales": {
+		"ar": "العربية",
 		"da_DK": "Dansk",
 		"de_DE": "Deutsch",
 		"el": "Ελληνικά",
@@ -66,10 +68,11 @@
 		"zh_TW": "繁體中文"
 	},
 	"dependencies": {
-		"@godaddy-wordpress/coblocks-icons": "1.2.0"
+		"@godaddy-wordpress/coblocks-icons": "1.3.0"
 	},
 	"devDependencies": {
 		"@babel/plugin-proposal-class-properties": "7.10.4",
+		"@godaddy-wordpress/stylelint-config": "^0.2.0",
 		"@testing-library/jest-dom": "^4.2.4",
 		"@wordpress/base-styles": "2.0.1",
 		"@wordpress/block-editor": "3.1.0",
@@ -82,9 +85,10 @@
 		"@wordpress/scripts": "7.1.4",
 		"autoprefixer": "^9.7.5",
 		"css-loader": "^3.2.1",
-		"cypress": "^5.3.0",
+		"cypress": "^6.3.0",
 		"cypress-file-upload": "^3.5.3",
 		"email-validator": "^2.0.4",
+		"enzyme": "^3.11.0",
 		"eslint-plugin-chai-friendly": "^0.5.0",
 		"eslint-plugin-cypress": "^2.10.3",
 		"flickity": "^2.2.1",
@@ -99,7 +103,7 @@
 		"html-react-parser": "^0.9.1",
 		"husky": "^3.1.0",
 		"jest": "^24.8.0",
-		"jest-junit": "github:jest-community/jest-junit",
+		"jest-junit": "12.0.0",
 		"jquery": "^3.4.1",
 		"jsdom": "^15.2.1",
 		"lint-staged": "^9.5.0",
@@ -130,8 +134,12 @@
 		}
 	},
 	"lint-staged": {
+		"*.scss": [
+			"stylelint src/**/*.scss --fix"
+		],
 		"*.js": [
-			"jest --config .dev/tests/jest/jest.config.js --silent --findRelatedTests"
+			"jest --config .dev/tests/jest/jest.config.js --silent --findRelatedTests",
+			"yarn lint:js"
 		]
 	}
 }

@@ -82,6 +82,9 @@ function FontFamilyPicker( { label, value, help, instanceId, onChange, className
 
 	return (
 		<BaseControl label={ label } id={ id } help={ help } className={ className }>
+			{ /* Disable reason: onChange needed to pass user selection onto logic.
+				Tested with Keyboard events and working as expected */ }
+			{ /* eslint-disable-next-line jsx-a11y/no-onchange */ }
 			<select
 				id={ id }
 				className="components-select-control__input components-select-control__input--coblocks-fontfamily"

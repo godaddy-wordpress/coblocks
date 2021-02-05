@@ -38,13 +38,11 @@ import { name as formRadioBlockName, settings as formRadioBlockSettings } from '
 /**
  * WordPress dependencies
  */
-import { sprintf } from '@wordpress/i18n';
 import { registerBlockType, unregisterBlockType, createBlock, getBlockTransforms, serialize, parse } from '@wordpress/blocks';
 
 /**
  * Register all gallery blocks to be used for transforms testing.
  *
- * @returns null;
  */
 export const registerGalleryBlocks = () => {
 	registerBlockType( stackedName, { category: 'common', ...stackedSettings } ); // Register stacked block
@@ -75,11 +73,11 @@ export const registerFormBlocks = () => {
  * A simplified version of the prefix trigger located in the RichText component.
  * See: https://github.com/WordPress/gutenberg/blob/53857f67563eb97025d75c196afa643994f0bbcc/packages/block-editor/src/components/rich-text/index.js#L254-L284
  *
- * @param {String} blockName The registered block name.
- * @param {String} prefix The prefix to trigger the transform.
- * @param {String} content The content of the block when a prefix is found.
+ * @param {string} blockName The registered block name.
+ * @param {string} prefix The prefix to trigger the transform.
+ * @param {string} content The content of the block when a prefix is found.
  *
- * @returns {Object} The block object.
+ * @return {Object} The block object.
  */
 export const performPrefixTransformation = ( blockName, prefix, content ) => {
 	const prefixTransforms = getBlockTransforms( 'from', blockName )
@@ -95,7 +93,7 @@ export const performPrefixTransformation = ( blockName, prefix, content ) => {
 /**
  * Generate tests for each defined deprecation of a block.
  *
- * @param {String} blockName The registered block name.
+ * @param {string} blockName The registered block name.
  * @param {Object} blockSettings The registered block settings.
  * @param {Object} blockVariations The used attributes and value varitions.
  */
@@ -105,7 +103,7 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 	let deprecatedSettings;
 	let deprecatedBlockType;
 
-	blockSettings.deprecated.map( ( deprecated, index ) => {
+	blockSettings.deprecated.forEach( ( deprecated, index ) => {
 		// Register the deprecated block to get the attributes with filters applied.
 		deprecatedSettings = Object.assign(
 			{ category: 'common' },
@@ -120,7 +118,7 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 		// Unregister the registered block.
 		unregisterBlockType( blockName );
 
-		describe( `${blockName} deprecation ${index}`, () => {
+		describe( `${ blockName } deprecation ${ index }`, () => {
 			beforeEach( () => {
 				// Register the deprecated block.
 				deprecatedBlockType = registerBlockType( blockName, deprecatedSettings );
@@ -146,13 +144,13 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 				const blocks = parse( deprecatedSerialized );
 
 				expect(
-					blocks.filter( block => !block.isValid ).map( filterBlockObjectResult )
+					blocks.filter( ( block ) => ! block.isValid ).map( filterBlockObjectResult )
 				).toEqual( [] );
 			} );
 
-			Object.keys( deprecatedBlockType.attributes ).map( ( attribute ) => {
+			Object.keys( deprecatedBlockType.attributes ).forEach( ( attribute ) => {
 				// This test helps expose attributes we need variations for.
-				it( `should have variations for attribute.${attribute}`, () => {
+				it( `should have variations for attribute.${ attribute }`, () => {
 					expect( blockVariations.hasOwnProperty( attribute ) ).toBe( true );
 				} );
 
@@ -167,8 +165,8 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 					testBaseAttributes = blockVariations[ attribute ].baseAttributes || {};
 				}
 
-				testVariations.map( variation => {
-					it( `should support attribute.${attribute} set to '${JSON.stringify( variation )}'`, () => {
+				testVariations.forEach( ( variation ) => {
+					it( `should support attribute.${ attribute } set to '${ JSON.stringify( variation ) }'`, () => {
 						// Allow baseAttributes defined in the test to override deprecated attribute defaults.
 						deprecatedBlock.attributes = {
 							...deprecatedBlock.attributes,
@@ -188,13 +186,13 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 						const blocks = parse( deprecatedSerialized );
 
 						expect(
-							blocks.filter( block => !block.isValid ).map( filterBlockObjectResult )
+							blocks.filter( ( block ) => ! block.isValid ).map( filterBlockObjectResult )
 						).toEqual( [] );
 					} );
 				} );
 			} );
 		} );
-	} )
+	} );
 };
 
 /**
@@ -202,10 +200,10 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
  *
  * @param {Object} blockObject The block object returned from parse().
  *
- * @returns {Object} The filtered block object.
+ * @return {Object} The filtered block object.
  */
 const filterBlockObjectResult = ( blockObject ) => {
 	const { name, attributes, isValid } = blockObject;
-	const validationIssues = blockObject.validationIssues.map( issue => sprintf( ...issue.args ) );
+	const validationIssues = blockObject.validationIssues.map( ( issue ) => issue.args );
 	return { name, attributes, isValid, validationIssues };
 };

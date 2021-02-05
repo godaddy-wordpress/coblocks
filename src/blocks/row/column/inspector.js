@@ -148,16 +148,17 @@ class Inspector extends Component {
 							syncUnitsMobile={ marginSyncUnitsMobile }
 							dimensionSize={ marginSize }
 						/>
-						{ ( lastId !== clientId ) ?
-							<RangeControl
-								label={ __( 'Width', 'coblocks' ) }
-								value={ parseFloat( width ) }
-								onChange={ ( newWidth ) => onChangeWidth( newWidth ) }
-								min={ 10.00 }
-								max={ 100.00 }
-								step={ 0.01 }
-							/> :
-							null }
+						{ ( lastId !== clientId )
+							? (
+								<RangeControl
+									label={ __( 'Width', 'coblocks' ) }
+									value={ parseFloat( width ) }
+									onChange={ ( newWidth ) => onChangeWidth( newWidth ) }
+									min={ 10.00 }
+									max={ 100.00 }
+									step={ 0.01 }
+								/>
+							) : null }
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color settings', 'coblocks' ) }

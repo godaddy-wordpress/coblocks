@@ -18,7 +18,7 @@ import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withNotices, DropZone, Spinner, Button, Dashicon, ButtonGroup } from '@wordpress/components';
-import { MediaPlaceholder, RichText, URLInput } from '@wordpress/block-editor';
+import { MediaUpload, MediaUploadCheck, MediaPlaceholder, RichText, URLInput } from '@wordpress/block-editor';
 import { mediaUpload } from '@wordpress/editor';
 import { isBlobURL } from '@wordpress/blob';
 import { closeSmall } from '@wordpress/icons';
@@ -143,7 +143,11 @@ class GalleryCollageEdit extends Component {
 
 		return (
 			<Fragment>
-				<a onClick={ () => this.onSelectImage( image.index ) }>
+				{ /* // Disable reason: Image itself is not meant to be interactive, but should
+						direct image selection and unfocus caption fields. */ }
+				{ /* eslint-disable jsx-a11y/click-events-have-key-events  */ }
+				{ /* eslint-disable jsx-a11y/anchor-is-valid  */ }
+				<a role="button" tabIndex="0" onClick={ () => this.onSelectImage( image.index ) }>
 					<figure
 						className={ classnames( {
 							'wp-block-coblocks-gallery-collage__figure': true,
@@ -154,9 +158,26 @@ class GalleryCollageEdit extends Component {
 						{ isSelected && (
 							<>
 								<ButtonGroup className="block-library-gallery-item__inline-menu is-right is-visible">
+									<MediaUploadCheck>
+										<MediaUpload
+											allowedTypes={ [ 'image' ] }
+											onSelect={ ( img ) => this.replaceImage( img, index ) }
+											value={ image.url }
+											render={ ( { open } ) => (
+												<Button
+													className="coblocks-gallery-item__button-replace"
+													onClick={ open }
+													label={ __( 'Replace Image', 'coblocks' ) }
+												>
+													{ __( 'Replace', 'coblocks' ) }
+												</Button>
+											) }
+										>
+										</MediaUpload>
+									</MediaUploadCheck>
+
 									<Button
 										icon={ closeSmall }
-										className="coblocks-gallery-item__button"
 										onClick={ () => this.removeImage( index ) }
 										label={ __( 'Remove image', 'coblocks' ) }
 										disabled={ ! isSelected }
@@ -192,6 +213,8 @@ class GalleryCollageEdit extends Component {
 						}
 					</figure>
 				</a>
+				{ /* eslint-enable jsx-a11y/no-noninteractive-element-interactions */ }
+				{ /* eslint-enable jsx-a11y/click-events-have-key-events  */ }
 			</Fragment>
 		);
 	}
@@ -230,6 +253,7 @@ class GalleryCollageEdit extends Component {
 		} = this.props;
 
 		const {
+			animation,
 			captions,
 			captionStyle,
 			filter,
@@ -257,7 +281,13 @@ class GalleryCollageEdit extends Component {
 								return (
 									<li
 										key={ `image-${ theIndex }` }
-										className={ classnames( 'wp-block-coblocks-gallery-collage__item', `item-${ index + 1 }` ) }
+										className={ classnames(
+											'wp-block-coblocks-gallery-collage__item',
+											`item-${ index + 1 }`,
+											{
+												[ `coblocks-animate ${ animation }` ]: animation,
+											}
+										) }
 									>
 										{ !! img.url ? this.renderImage( theIndex ) : null }
 										{ this.renderPlaceholder( theIndex ) }

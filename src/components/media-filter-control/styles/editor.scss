@@ -1,0 +1,32 @@
+.components-coblocks-media-filter {
+
+	&.has-filter {
+		position: relative;
+
+		::after {
+			border-bottom: solid 4px $gray-900;
+			border-left: solid 4px transparent;
+			border-right: solid 4px $gray-900;
+			border-top: solid 4px transparent;
+			content: "";
+			display: block;
+			height: 8px;
+			position: absolute;
+			right: 0;
+			top: 1px;
+			transform: rotate(-90deg);
+			width: 8px;
+		}
+	}
+}
+
+// Fix popover opacity bug
+.coblocks-image-filter-popover .block-editor-block-list__layout .block-editor-block-list__block.is-focus-mode:not(.is-multi-selected) {
+	opacity: 1;
+}
+
+// Add proper border to the dropdown component we use.
+.components-coblocks-dropdown  .components-popover__content {
+	border-color: $gray-900;
+	box-shadow: none;
+}

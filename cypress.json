@@ -17,7 +17,7 @@
     "wpPassword": "password"
   },
   "retries": {
-    "runMode": 2,
-    "openMode": 3
+    "runMode": 0,
+    "openMode": 0
   }
 }

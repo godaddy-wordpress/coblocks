@@ -13,6 +13,10 @@
 function coblocks_layout_selector_categories() {
 	$categories = array(
 		array(
+			'slug'  => 'most-used',
+			'title' => __( 'Most Used', 'coblocks' ),
+		),
+		array(
 			'slug'  => 'about',
 			'title' => __( 'About', 'coblocks' ),
 		),

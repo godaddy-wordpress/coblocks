@@ -45,7 +45,7 @@ describe( 'Test CoBlocks Services Block', function() {
 
 		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 4 );
 
-		cy.get( 'h3[aria-label="Write title…"]' ).each( ( $serviceHeading, index ) => {
+		cy.get( 'h3 > [data-rich-text-placeholder="Write title…"]' ).parent().each( ( $serviceHeading, index ) => {
 			cy.get( $serviceHeading ).click( { force: true } ).type( `Service ${ index }` );
 		} );
 
@@ -70,23 +70,23 @@ describe( 'Test CoBlocks Services Block', function() {
 		cy.get( '.wp-block-coblocks-services' ).click( { force: true } );
 
 		helpers.addBlockToPost( 'coblocks/services', true );
-		cy.get( 'h3[data-type="core/heading"][aria-label="Write title…"]' );
+		cy.get( 'h3 > [data-rich-text-placeholder="Write title…"]' ).parent();
 
 		cy.get( '.wp-block-coblocks-services' ).click();
 		helpers.openHeadingToolbarAndSelect( 2 );
-		cy.get( 'h2[data-type="core/heading"][aria-label="Write title…"]' );
+		cy.get( 'h2 > [data-rich-text-placeholder="Write title…"]' ).parent();
 
 		cy.get( '.wp-block-coblocks-services' ).click();
 		helpers.openHeadingToolbarAndSelect( 3 );
-		cy.get( 'h3[data-type="core/heading"][aria-label="Write title…"]' );
+		cy.get( 'h3 > [data-rich-text-placeholder="Write title…"]' ).parent();
 
 		cy.get( '.wp-block-coblocks-services' ).click();
 		helpers.openHeadingToolbarAndSelect( 4 );
-		cy.get( 'h4[data-type="core/heading"][aria-label="Write title…"]' );
+		cy.get( 'h4 > [data-rich-text-placeholder="Write title…"]' ).parent();
 
 		cy.get( '.wp-block-coblocks-services' ).click();
 		helpers.openHeadingToolbarAndSelect( 5 );
-		cy.get( 'h5[data-type="core/heading"][aria-label="Write title…"]' );
+		cy.get( 'h5 > [data-rich-text-placeholder="Write title…"]' ).parent();
 
 		helpers.savePage();
 		helpers.checkForBlockErrors( 'coblocks/services' );

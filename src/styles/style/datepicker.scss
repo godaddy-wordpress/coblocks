@@ -82,7 +82,7 @@
 
 	.ui-datepicker-prev::before,
 	.ui-datepicker-next::before {
-		font: 400 20px/34px "dashicons";
+		font: 400 20px/34px "dashicons"; // stylelint-disable-line font-family-no-missing-generic-family-keyword, font-family-name-quotes
 		height: 34px;
 		padding-left: 7px;
 		speak: none;

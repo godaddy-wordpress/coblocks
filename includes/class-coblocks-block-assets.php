@@ -45,6 +45,7 @@ class CoBlocks_Block_Assets {
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 		add_action( 'init', array( $this, 'editor_assets' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_scripts' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'frontend_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
 	}
 
@@ -142,7 +143,7 @@ class CoBlocks_Block_Assets {
 		);
 
 		// Scripts.
-		$name       = 'coblocks';
+		$name       = 'coblocks'; // coblocks.js.
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
 
@@ -173,6 +174,14 @@ class CoBlocks_Block_Assets {
 		$typography_controls_enabled = (bool) apply_filters( 'coblocks_typography_controls_enabled', true, (int) $post_id );
 
 		/**
+		 * Filter to disable the animation controls
+		 *
+		 * @param bool    true Whether or not the controls are enabled.
+		 * @param integer $post_id Current post ID.
+		 */
+		$animation_controls_enabled = (bool) apply_filters( 'coblocks_animation_controls_enabled', true, (int) $post_id );
+
+		/**
 		 * Filter to disable all bundled CoBlocks svg icons
 		 *
 		 * @param bool true Whether or not the bundled icons are displayed.
@@ -198,6 +207,7 @@ class CoBlocks_Block_Assets {
 				'customIcons'                    => $this->get_custom_icons(),
 				'customIconConfigExists'         => file_exists( get_stylesheet_directory() . '/coblocks/icons/config.json' ),
 				'typographyControlsEnabled'      => $typography_controls_enabled,
+				'animationControlsEnabled'       => $animation_controls_enabled,
 			)
 		);
 
@@ -297,8 +307,17 @@ class CoBlocks_Block_Assets {
 		// Define where the vendor asset is loaded from.
 		$vendors_dir = CoBlocks()->asset_source( 'js', 'vendors' );
 
+		// Enqueue for coblocks animations.
+		wp_enqueue_script(
+			'coblocks-animation',
+			$dir . 'coblocks-animation.js',
+			array(),
+			COBLOCKS_VERSION,
+			true
+		);
+
 		// Masonry block.
-		if ( has_block( 'coblocks/gallery-masonry' ) || has_block( 'core/block' ) ) {
+		if ( $this->is_page_gutenberg() || has_block( 'coblocks/gallery-masonry' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
 				'coblocks-masonry',
 				$dir . 'coblocks-masonry.js',
@@ -309,7 +328,7 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Carousel block.
-		if ( has_block( 'coblocks/gallery-carousel' ) || has_block( 'core/block' ) ) {
+		if ( $this->is_page_gutenberg() || has_block( 'coblocks/gallery-carousel' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
 				'coblocks-flickity',
 				$vendors_dir . '/flickity.js',
@@ -318,7 +337,7 @@ class CoBlocks_Block_Assets {
 				true
 			);
 
-			if ( has_block( 'coblocks/accordion' ) || has_block( 'core/block' ) ) {
+			if ( $this->is_page_gutenberg() || has_block( 'coblocks/accordion' ) || has_block( 'core/block' ) ) {
 				wp_enqueue_script(
 					'coblocks-accordion-carousel',
 					$dir . 'coblocks-accordion-carousel.js',
@@ -330,7 +349,7 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Post Carousel block.
-		if ( has_block( 'coblocks/post-carousel' ) || has_block( 'core/block' ) ) {
+		if ( $this->is_page_gutenberg() || has_block( 'coblocks/post-carousel' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
 				'coblocks-slick',
 				$vendors_dir . '/slick.js',
@@ -348,7 +367,7 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Events block.
-		if ( has_block( 'coblocks/events' ) || has_block( 'core/block' ) ) {
+		if ( $this->is_page_gutenberg() || has_block( 'coblocks/events' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
 				'coblocks-slick',
 				$vendors_dir . '/slick.js',
@@ -384,6 +403,16 @@ class CoBlocks_Block_Assets {
 				true
 			);
 		}
+
+		wp_localize_script(
+			'coblocks-lightbox',
+			'coblocksLigthboxData',
+			array(
+				'closeLabel' => __( 'Close Gallery', 'coblocks' ),
+				'leftLabel'  => __( 'Previous', 'coblocks' ),
+				'rightLabel' => __( 'Next', 'coblocks' ),
+			)
+		);
 	}
 
 	/**

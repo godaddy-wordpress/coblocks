@@ -143,6 +143,7 @@ class GalleryMasonryEdit extends Component {
 
 		const {
 			align,
+			animation,
 			captions,
 			gridSize,
 			gutter,
@@ -155,6 +156,22 @@ class GalleryMasonryEdit extends Component {
 		const hasImages = !! images.length;
 
 		const sidebarIsOpened = editorSidebarOpened || pluginSidebarOpened || publishSidebarOpened;
+
+		const masonryGalleryPlaceholder = (
+			<Fragment>
+				{ ! hasImages ? noticeUI : null }
+				<GalleryPlaceholder
+					{ ...this.props }
+					label={ __( 'Masonry', 'coblocks' ) }
+					icon={ <Icon icon={ icon } /> }
+					gutter={ gutter }
+				/>
+			</Fragment>
+		);
+
+		if ( ! hasImages ) {
+			return masonryGalleryPlaceholder;
+		}
 
 		const innerClasses = classnames(
 			...GalleryClasses( attributes ),
@@ -172,21 +189,11 @@ class GalleryMasonryEdit extends Component {
 			}
 		);
 
-		const masonryGalleryPlaceholder = (
-			<Fragment>
-				{ ! hasImages ? noticeUI : null }
-				<GalleryPlaceholder
-					{ ...this.props }
-					label={ __( 'Masonry', 'coblocks' ) }
-					icon={ <Icon icon={ icon } /> }
-					gutter={ gutter }
-				/>
-			</Fragment>
+		const itemClasses = classnames(
+			'coblocks-gallery--item', {
+				[ `coblocks-animate ${ animation }` ]: animation,
+			}
 		);
-
-		if ( ! hasImages ) {
-			return masonryGalleryPlaceholder;
-		}
 
 		return (
 			<Fragment>
@@ -219,7 +226,7 @@ class GalleryMasonryEdit extends Component {
 								);
 
 								return (
-									<li className="coblocks-gallery--item" key={ img.id || img.url }>
+									<li className={ itemClasses } key={ img.id || img.url }>
 										<GalleryImage
 											url={ img.url }
 											alt={ img.alt }

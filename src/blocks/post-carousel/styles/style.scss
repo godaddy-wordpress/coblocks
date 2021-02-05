@@ -83,5 +83,19 @@
 	}
 }
 
+body.rtl {
+
+	.wp-block-coblocks-post-carousel:not(.alignwide) {
+
+		.slick-prev::before {
+			background-image: url(images/lightbox/arrow-right.svg);
+		}
+
+		.slick-next::before {
+			background-image: url(images/lightbox/arrow-left.svg);
+		}
+	}
+}
+
 // Import style tweaks for core WordPress themes
 @import "theme";

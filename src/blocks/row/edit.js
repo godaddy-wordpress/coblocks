@@ -162,7 +162,6 @@ class Edit extends Component {
 										<div className="components-coblocks-row-placeholder__button-wrapper">
 											<Button
 												className="components-coblocks-row-placeholder__button block-editor-inner-blocks__template-picker-option block-editor-block-pattern-picker__pattern"
-												isLarge
 												isSecondary
 												onClick={ () => {
 													setAttributes( {
@@ -194,22 +193,21 @@ class Edit extends Component {
 										} }
 										label={ __( 'Back to columns', 'coblocks' ) }
 									/>
-									{ map( layoutOptions[ selectedRows ], ( { name, key, icon } ) => (
-										<Tooltip text={ name }>
+									{ map( layoutOptions[ selectedRows ], ( option ) => (
+										<Tooltip text={ option.name }>
 											<div className="components-coblocks-row-placeholder__button-wrapper">
 												<Button
-													key={ key }
+													key={ option.key }
 													className="components-coblocks-row-placeholder__button block-editor-inner-blocks__template-picker-option block-editor-block-pattern-picker__pattern"
-													isLarge
 													isSecondary
 													onClick={ () => {
 														setAttributes( {
-															layout: key,
+															layout: option.key,
 														} );
 														this.setState( { layoutSelection: false } );
 													} }
 												>
-													{ icon }
+													{ option.icon }
 												</Button>
 											</div>
 										</Tooltip>
@@ -294,14 +292,14 @@ class Edit extends Component {
 					) }
 					<div className={ classes }>
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
-            <GutterWrapper { ...attributes }>
-              <div className={ innerClasses } style={ innerStyles }>
-                { BackgroundVideo( attributes ) }
-                { this.supportsBlockVariationPicker()
-                  ? variationInnerBlocks()
-                  : deprecatedInnerBlocks() }
-              </div>
-            </GutterWrapper>
+						<GutterWrapper { ...attributes }>
+							<div className={ innerClasses } style={ innerStyles }>
+								{ BackgroundVideo( attributes ) }
+								{ this.supportsBlockVariationPicker()
+									? variationInnerBlocks()
+									: deprecatedInnerBlocks() }
+							</div>
+						</GutterWrapper>
 					</div>
 				</Fragment>
 			);

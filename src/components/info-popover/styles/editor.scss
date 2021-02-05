@@ -1,0 +1,27 @@
+@import "node_modules/@wordpress/base-styles/variables";
+@import "node_modules/@wordpress/base-styles/colors";
+
+.coblocks-info-popover {
+
+	&.components-popover:not(.is-without-arrow)[data-y-axis="top"]::before,
+	&.components-popover:not(.is-without-arrow)[data-y-axis="top"]::after {
+		border-top-color: $gray-900 !important;
+	}
+
+	.components-popover__content {
+		background-color: $gray-900;
+		border-color: $gray-900;
+		border-radius: 7px;
+		color: $white;
+		padding: $grid-unit-20;
+	}
+
+	&__trigger.components-button.has-text svg {
+		margin-right: 0;
+	}
+
+	&__title {
+		font-size: 1rem;
+		margin: 0 0 $grid-unit-10 0;
+	}
+}

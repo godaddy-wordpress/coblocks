@@ -292,7 +292,6 @@ class Edit extends Component {
 								}
 							/>
 							<Button
-								isLarge
 								isPrimary={ !! this.state.address }
 								isSecondary={ ! this.state.address }
 								type="submit"

@@ -131,6 +131,7 @@ class GalleryStackedEdit extends Component {
 
 		const {
 			align,
+			animation,
 			captions,
 			fullwidth,
 			gutter,
@@ -141,7 +142,22 @@ class GalleryStackedEdit extends Component {
 			lightbox,
 		} = attributes;
 
+		const stackedGalleryPlaceholder = (
+			<Fragment>
+				{ ! hasImages ? noticeUI : null }
+				<GalleryPlaceholder
+					{ ...this.props }
+					label={ __( 'Stacked', 'coblocks' ) }
+					icon={ <Icon icon={ icon } /> }
+					gutter={ gutter }
+				/>
+			</Fragment> );
+
 		const hasImages = !! images.length;
+
+		if ( ! hasImages ) {
+			return stackedGalleryPlaceholder;
+		}
 
 		const classes = classnames(
 			className, {
@@ -160,20 +176,11 @@ class GalleryStackedEdit extends Component {
 			}
 		);
 
-		const stackedGalleryPlaceholder = (
-			<Fragment>
-				{ ! hasImages ? noticeUI : null }
-				<GalleryPlaceholder
-					{ ...this.props }
-					label={ __( 'Stacked', 'coblocks' ) }
-					icon={ <Icon icon={ icon } /> }
-					gutter={ gutter }
-				/>
-			</Fragment> );
-
-		if ( ! hasImages ) {
-			return stackedGalleryPlaceholder;
-		}
+		const itemClasses = classnames(
+			'coblocks-gallery--item', {
+				[ `coblocks-animate ${ animation }` ]: animation,
+			}
+		);
 
 		return (
 			<Fragment>
@@ -199,7 +206,7 @@ class GalleryStackedEdit extends Component {
 							);
 
 							return (
-								<li className="coblocks-gallery--item" key={ img.id || img.url }>
+								<li className={ itemClasses } key={ img.id || img.url }>
 									<GalleryImage
 										url={ img.url }
 										alt={ img.alt }

@@ -12,7 +12,7 @@ import coblocksLayoutSelector from '../../../src/extensions/layout-selector/test
  * Close layout selector.
  */
 export function closeLayoutSelector() {
-	cy.get( '.coblocks-layout-selector-modal' ).its( 'length' ).then( layoutSelectorModal => {
+	cy.get( '.coblocks-layout-selector-modal' ).its( 'length' ).then( ( layoutSelectorModal ) => {
 		if ( layoutSelectorModal > 0 ) {
 			cy.get( '.coblocks-layout-selector-modal' )
 				.find( '.components-button[aria-label="Close dialog"]' ).first()
@@ -48,8 +48,8 @@ export function loginToSite() {
 	goTo( '/wp-admin/post-new.php?post_type=post' )
 		.then( ( window ) => {
 			if ( window.location.pathname === '/wp-login.php' ) {
-				// WordPress has a wp_attempt_focus() function that fires 200ms after the wp-login.php page loads.
-				// We need to wait a short time before trying to login.
+			// WordPress has a wp_attempt_focus() function that fires 200ms after the wp-login.php page loads.
+			// We need to wait a short time before trying to login.
 				cy.wait( 250 );
 
 				cy.get( '#user_login' ).type( Cypress.env( 'wpUsername' ) );
@@ -68,8 +68,14 @@ export function loginToSite() {
  */
 export function goTo( path = '/wp-admin' ) {
 	cy.visit( Cypress.env( 'testURL' ) + path );
+
 	return cy.window().then( ( win ) => {
-		win.coblocksLayoutSelector = coblocksLayoutSelector;
+		if ( win.location.pathname.includes( 'post-new.php' ) ) {
+			win.coblocksLayoutSelector = coblocksLayoutSelector;
+
+			win.wp.data.dispatch( 'coblocks/template-selector' ).updateLayouts( coblocksLayoutSelector.layouts );
+			win.wp.data.dispatch( 'coblocks/template-selector' ).updateCategories( coblocksLayoutSelector.categories );
+		}
 	} );
 }
 
@@ -77,6 +83,7 @@ export function goTo( path = '/wp-admin' ) {
  * Disable Gutenberg Tips
  */
 export function disableGutenbergFeatures() {
+	cy.window().should( 'have.property', 'wp' );
 	cy.window().then( ( win ) => {
 		// Enable "Top Toolbar"
 		if ( ! win.wp.data.select( 'core/edit-post' ).isFeatureActive( 'fixedToolbar' ) ) {
@@ -120,7 +127,13 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 		clearBlocks();
 	}
 
-	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click();
+	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).then( ( inserterButton ) => {
+		if ( ! Cypress.$( inserterButton ).hasClass( 'is-pressed' ) ) {
+			cy.get( inserterButton ).click();
+		}
+	} );
+
+	cy.get( '.block-editor-inserter__search' ).find( 'input' ).clear();
 	cy.get( '.block-editor-inserter__search' ).click().type(
 		blockID.split( '-' )[ 0 ]
 	);
@@ -171,11 +184,7 @@ export function viewPage() {
 		}
 	} );
 
-	cy.get( 'button[data-label="Document"]' ).then( ( documentButton ) => {
-		if ( ! Cypress.$( documentButton ).hasClass( 'is-active' ) ) {
-			cy.get( documentButton ).click();
-		}
-	} );
+	cy.get( 'button[data-label="Post"]' );
 
 	openSettingsPanel( /permalink/i );
 
@@ -197,6 +206,7 @@ export function editPage() {
  * Clear all blocks from the editor
  */
 export function clearBlocks() {
+	cy.window().should( 'have.property', 'wp' );
 	cy.window().then( ( win ) => {
 		win.wp.data.dispatch( 'core/block-editor' ).removeBlocks(
 			win.wp.data.select( 'core/block-editor' ).getBlocks().map( ( block ) => block.clientId )
@@ -247,8 +257,8 @@ export function setBlockStyle( style ) {
  * @param {string} name The name of the block to select eg: highlight or click-to-tweet
  */
 export function selectBlock( name ) {
-	cy.get( '.edit-post-header__toolbar button[aria-label="Block navigation"]' ).click();
-	cy.get( '.block-editor-block-navigation__container button' ).contains( startCase( name ) ).click();
+	cy.get( '.block-editor-block-navigation' ).click();
+	cy.get( '.block-editor-block-navigation-leaf button' ).contains( startCase( name ) ).click();
 }
 
 /**
@@ -333,7 +343,7 @@ export function setColorSetting( settingName, hexColor ) {
  * @param {string} panelText The panel label text to open. eg: Color Settings
  */
 export function openSettingsPanel( panelText ) {
-	cy.get( '.components-panel__body-title' )
+	cy.get( '.components-panel__body' )
 		.contains( panelText )
 		.then( ( $panelTop ) => {
 			const $parentPanel = Cypress.$( $panelTop ).closest( 'div.components-panel__body' );
