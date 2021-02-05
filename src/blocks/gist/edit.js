@@ -88,7 +88,7 @@ class Edit extends Component {
 		const { handleErrors } = this;
 
 		return (
-			<Fragment>
+			<Fragment className={ classnames( className, meta ? null : 'no-meta' ) }>
 				{ url && url.length > 0 && isSelected && <Controls { ...this.props } /> }
 				{ url && url.length > 0 && isSelected && <Inspector { ...this.props } /> }
 				{ preview ? (
@@ -112,25 +112,18 @@ class Edit extends Component {
 				) : (
 					<Fragment>
 						{ noticeUI }
-						<div
-							className={ classnames(
-								className,
-								'wp-block-shortcode' // Use the same styling as the core shortcode block.
-							) }
-						>
 
-							<label htmlFor={ `gist-url-input-${ this.props.clientId }` }>
-								<Icon icon={ icon } />
-								{ __( 'Gist URL', 'coblocks' ) }
-							</label>
-							<PlainText
-								id={ `gist-url-input-${ this.props.clientId }` }
-								className="input-control"
-								value={ url }
-								placeholder={ __( 'Add GitHub Gist URL…', 'coblocks' ) }
-								onChange={ this.updateURL }
-							/>
-						</div>
+						<label htmlFor={ `gist-url-input-${ this.props.clientId }` }>
+							<Icon icon={ icon } />
+							{ __( 'Gist URL', 'coblocks' ) }
+						</label>
+						<PlainText
+							id={ `gist-url-input-${ this.props.clientId }` }
+							className="input-control"
+							value={ url }
+							placeholder={ __( 'Add GitHub Gist URL…', 'coblocks' ) }
+							onChange={ this.updateURL }
+						/>
 					</Fragment>
 				) }
 
