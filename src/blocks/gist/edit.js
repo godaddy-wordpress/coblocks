@@ -16,7 +16,7 @@ import Gist from './gist';
  */
 import { __ } from '@wordpress/i18n';
 import { compose, withState } from '@wordpress/compose';
-import { Component, Fragment } from '@wordpress/element';
+import { Component } from '@wordpress/element';
 import { PlainText, RichText } from '@wordpress/block-editor';
 import { withNotices, Icon } from '@wordpress/components';
 
@@ -88,7 +88,7 @@ class Edit extends Component {
 		const { handleErrors } = this;
 
 		return (
-			<Fragment>
+			<>
 				{ url && url.length > 0 && isSelected && <Controls { ...this.props } /> }
 				{ url && url.length > 0 && isSelected && <Inspector { ...this.props } /> }
 				{ preview ? (
@@ -110,24 +110,25 @@ class Edit extends Component {
 						</div>
 					)
 				) : (
-					<Fragment>
+					<>
 						{ noticeUI }
-
-						<label htmlFor={ `gist-url-input-${ this.props.clientId }` }>
-							<Icon icon={ icon } />
-							{ __( 'Gist URL', 'coblocks' ) }
-						</label>
-						<PlainText
-							id={ `gist-url-input-${ this.props.clientId }` }
-							className="input-control"
-							value={ url }
-							placeholder={ __( 'Add GitHub Gist URL…', 'coblocks' ) }
-							onChange={ this.updateURL }
-						/>
-					</Fragment>
+						<div className={ className }>
+							<label htmlFor={ `gist-url-input-${ this.props.clientId }` }>
+								<Icon icon={ icon } />
+								{ __( 'Gist URL', 'coblocks' ) }
+							</label>
+							<PlainText
+								id={ `gist-url-input-${ this.props.clientId }` }
+								className="input-control"
+								value={ url }
+								placeholder={ __( 'Add GitHub Gist URL…', 'coblocks' ) }
+								onChange={ this.updateURL }
+							/>
+						</div>
+					</>
 				) }
 
-			</Fragment>
+			</>
 		);
 	}
 }
