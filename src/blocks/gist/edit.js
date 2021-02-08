@@ -88,7 +88,7 @@ class Edit extends Component {
 		const { handleErrors } = this;
 
 		return (
-			<Fragment className={ classnames( className, meta ? null : 'no-meta' ) }>
+			<Fragment>
 				{ url && url.length > 0 && isSelected && <Controls { ...this.props } /> }
 				{ url && url.length > 0 && isSelected && <Inspector { ...this.props } /> }
 				{ preview ? (
