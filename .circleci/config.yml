@@ -457,6 +457,8 @@ jobs:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
+        environment:
+          XDEBUG_MODE=coverage
       - image: circleci/mysql:5.7
         auth:
           username: $DOCKERHUB_USERNAME
@@ -470,10 +472,6 @@ jobs:
           name: Install Composer v1
           command: |
             sudo composer self-update --1
-      - run:
-          name: Set XDEBUG_MODE=coverage
-          command: |
-            XDEBUG_MODE=coverage
       - wait_for_mysql
       - install_wordpress_testing_suite
       - run_phpunit_singlesite_coverage_reports
