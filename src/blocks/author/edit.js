@@ -17,8 +17,17 @@ import { compose } from '@wordpress/compose';
 import { mediaUpload } from '@wordpress/editor';
 import { withSelect, select } from '@wordpress/data';
 import { Component, Fragment } from '@wordpress/element';
-import { Button, Dashicon, DropZone } from '@wordpress/components';
-import { RichText, InnerBlocks, MediaUpload, MediaUploadCheck, withColors, withFontSizes } from '@wordpress/block-editor';
+import { Button, DropZone } from '@wordpress/components';
+import { image as icon } from '@wordpress/icons';
+import {
+	RichText,
+	InnerBlocks,
+	MediaUpload,
+	MediaUploadCheck,
+	withColors,
+	withFontSizes,
+	BlockIcon,
+} from '@wordpress/block-editor';
 
 class AuthorEdit extends Component {
 	constructor() {
@@ -111,7 +120,7 @@ class AuthorEdit extends Component {
 									render={ ( { open } ) => (
 										<Button onClick={ open }>
 											{ ! imgUrl
-												? <Dashicon icon="format-image" />
+												? <BlockIcon icon={ icon } />
 												: <img className="wp-block-coblocks-author__avatar-img" src={ imgUrl } alt="avatar" />
 											}
 										</Button>
@@ -153,7 +162,6 @@ class AuthorEdit extends Component {
 						/>
 						<InnerBlocks
 							template={ [ [ 'core/button', { placeholder: /* translators: content placeholder */ __( 'Author link…', 'coblocks' ) } ] ] }
-							templateLock="all"
 							allowedBlocks={ [ 'core/button' ] }
 							templateInsertUpdatesSelection={ false }
 							__experimentalCaptureToolbars={ true }
