@@ -112,7 +112,7 @@ class Edit extends Component {
 	}
 
 	componentDidUpdate( prevProps ) {
-		const { attributes } = this.props;
+		const { attributes, innerBlocks } = this.props;
 		const activeStyle = getActiveStyle( layoutOptions, attributes.className );
 		const lastActiveStyle = getActiveStyle(
 			layoutOptions,
@@ -122,6 +122,26 @@ class Edit extends Component {
 		if ( activeStyle !== lastActiveStyle ) {
 			if ( 'circle' === activeStyle.name && ( typeof attributes.alignment === 'undefined' || attributes.alignment === 'none' ) ) {
 				this.onChangeAlignment( 'center' );
+			}
+		}
+
+		if ( innerBlocks.length > 0 ) {
+			const serviceBlocksCount = innerBlocks.reduce( ( acc, cur ) => acc + ( cur.name === 'coblocks/service' ), 0 );
+
+			// Add a new block if the count is less than the columns set.
+			if ( serviceBlocksCount < attributes.columns ) {
+				const { buttons, headingLevel, alignment, insertBlock, clientId } = this.props;
+
+				insertBlock(
+					createBlock( 'coblocks/service', {
+						showCta: buttons,
+						headingLevel,
+						alignment,
+					} ),
+					innerBlocks.length + 1,
+					clientId,
+					false,
+				);
 			}
 		}
 	}
@@ -264,32 +284,5 @@ export default compose( [
 			insertBlock,
 		};
 	} ),
-
-	// Ensure there is a minimum of one coblocks/services innerBlock per column set.
-	( WrappedComponent ) => ( ownProps ) => {
-		// This is a newly added block if we have zero innerBlocks. We want the TEMPLATE definition to be used in this case.
-		if ( ownProps.innerBlocks.length > 0 ) {
-			const serviceBlocksCount = ownProps.innerBlocks.reduce( ( acc, cur ) => acc + ( cur.name === 'coblocks/service' ), 0 );
-
-			// Add a new block if the count is less than the columns set.
-			// We don't need a loop here because this will trigger a component update as soon as we insert a block (triggering this HOC again).
-
-			if ( serviceBlocksCount < ownProps.attributes.columns ) {
-				const { buttons, headingLevel, alignment } = ownProps;
-				ownProps.insertBlock(
-					createBlock( 'coblocks/service', {
-						showCta: buttons,
-						headingLevel,
-						alignment,
-					} ),
-					ownProps.innerBlocks.length + 1,
-					ownProps.clientId,
-					false
-				);
-			}
-		}
-
-		return <WrappedComponent { ...ownProps } />;
-	},
 
 ] )( Edit );
