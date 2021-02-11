@@ -2,7 +2,7 @@
 /**
  * General utilities.
  *
- * @package gutenberg
+ * @package CoBlocks
  */
 
 /**
