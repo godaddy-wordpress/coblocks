@@ -322,6 +322,7 @@ function coblocks_register_posts_block() {
 		'coblocks/posts',
 		array(
 			'attributes'      => $metadata['attributes'],
+			'supports'        => $metadata['supports'],
 			'render_callback' => 'coblocks_render_posts_block',
 		)
 	);
