@@ -33,7 +33,7 @@ add_filter( 'coblocks_render_wrapper_styles', 'coblocks_add_gutter_styles', 10, 
  * @return array
  */
 function coblocks_add_gutter_class( $classes, $attributes ) {
-	if ( isset( $attributes['columns'] ) && 1 < intval ( $attributes['columns'] ) && isset( $attributes['gutter'] ) ) {
+	if ( isset( $attributes['columns'] ) && 1 < intval( $attributes['columns'] ) && isset( $attributes['gutter'] ) ) {
 		array_push( $classes, 'has-' . $attributes['gutter'] . '-gutter' );
 	}
 
@@ -44,10 +44,7 @@ add_filter( 'coblocks_render_wrapper_class', 'coblocks_add_gutter_class', 10, 2 
 /**
  * Add gutter attribute in php
  *
- * @param array $classes array of classes.
- * @param array $attributes block attributes.
- *
- * @return array
+ * @param WP_Block_Type $block_type Block Type.
  */
 function coblocks_register_gutter_support( $block_type ) {
 	$has_gutter_support = false;
@@ -60,22 +57,25 @@ function coblocks_register_gutter_support( $block_type ) {
 		if ( ! $block_type->attributes ) {
 
 			$block_type->attributes = array();
+
 		}
 	
-	
 		if ( ! array_key_exists( 'gutter', $block_type->attributes ) ) {
+
 			$block_type->attributes['gutter'] = array(
-				'type' => 'string',
-				'default' => 'medium'
+				'type'    => 'string',
+				'default' => 'medium',
 			);
-			
+
 		}
 	
 		if ( ! array_key_exists( 'gutterCustom', $block_type->attributes ) ) {
+
 			$block_type->attributes['gutterCustom'] = array(
-				'type' => 'string',
-				'default' => ''
+				'type'    => 'string',
+				'default' => '',
 			);
+
 		}
 	}
 }
