@@ -33,7 +33,7 @@ add_filter( 'coblocks_render_wrapper_styles', 'coblocks_add_gutter_styles', 10, 
  * @return array
  */
 function coblocks_add_gutter_class( $classes, $attributes ) {
-	if ( isset( $attributes['columns'] ) && isset( $attributes['gutter'] ) ) {
+	if ( isset( $attributes['columns'] ) && 1 < intval ( $attributes['columns'] ) && isset( $attributes['gutter'] ) ) {
 		array_push( $classes, 'has-' . $attributes['gutter'] . '-gutter' );
 	}
 
@@ -50,7 +50,13 @@ add_filter( 'coblocks_render_wrapper_class', 'coblocks_add_gutter_class', 10, 2 
  * @return array
  */
 function coblocks_register_gutter_support( $block_type ) {
-	if ( $block_type->name === 'coblocks/posts') {
+	$has_gutter_support = false;
+	if ( property_exists( $block_type, 'supports' ) ) {
+		$has_gutter_support = coblocks_experimental_get( $block_type->supports, array( 'gutter' ), false );
+	}
+
+
+	if ( $has_gutter_support ) {
 		if ( ! $block_type->attributes ) {
 
 			$block_type->attributes = array();
