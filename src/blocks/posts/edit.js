@@ -532,7 +532,10 @@ export default compose( [
 						if ( ! url ) {
 							url = get( image, 'source_url', null );
 						}
-						return { ...post, featuredImageSourceUrl: url };
+						return {
+							...post,
+							featured_media_object: post.featured_media && select( 'core' ).getMedia( post.featured_media ),
+						};
 					}
 					return post;
 				} );
