@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-02-12T17:14:27+00:00\n"
+"POT-Creation-Date: 2021-02-12T19:05:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -599,22 +599,22 @@ msgid "Edit avatar"
 msgstr ""
 
 #. translators: image to represent the post author
-#: src/blocks/author/edit.js:69
+#: src/blocks/author/edit.js:78
 msgid "Drop to upload as avatar"
 msgstr ""
 
 #. translators: placeholder text used for the author name
-#: src/blocks/author/edit.js:131
+#: src/blocks/author/edit.js:140
 msgid "Write author name…"
 msgstr ""
 
 #. translators: placeholder text used for the biography
-#: src/blocks/author/edit.js:146
+#: src/blocks/author/edit.js:155
 msgid "Write a biography that distills objective credibility and authority to your readers…"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/author/edit.js:155
+#: src/blocks/author/edit.js:164
 msgid "Author link…"
 msgstr ""
 
