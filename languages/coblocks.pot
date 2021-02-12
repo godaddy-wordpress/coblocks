@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-02-11T15:07:13+00:00\n"
+"POT-Creation-Date: 2021-02-12T17:14:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -2187,12 +2187,12 @@ msgstr ""
 msgid "View this gist on GitHub"
 msgstr ""
 
-#: src/blocks/gist/edit.js:124
+#: src/blocks/gist/edit.js:118
 #: src/blocks/gist/inspector.js:51
 msgid "Gist URL"
 msgstr ""
 
-#: src/blocks/gist/edit.js:130
+#: src/blocks/gist/edit.js:124
 msgid "Add GitHub Gist URL…"
 msgstr ""
 
