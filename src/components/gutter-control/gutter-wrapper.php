@@ -55,30 +55,34 @@ function coblocks_register_gutter_support( $block_type ) {
 
 	}
 
-	if ( $has_gutter_support ) {
-		if ( ! $block_type->attributes ) {
+	if ( ! $has_gutter_support ) {
 
-			$block_type->attributes = array();
+		return;
 
-		}
+	}
 
-		if ( ! array_key_exists( 'gutter', $block_type->attributes ) ) {
+	if ( ! $block_type->attributes ) {
 
-			$block_type->attributes['gutter'] = array(
-				'type'    => 'string',
-				'default' => 'medium',
-			);
+		$block_type->attributes = array();
 
-		}
+	}
 
-		if ( ! array_key_exists( 'gutterCustom', $block_type->attributes ) ) {
+	if ( ! array_key_exists( 'gutter', $block_type->attributes ) ) {
 
-			$block_type->attributes['gutterCustom'] = array(
-				'type'    => 'string',
-				'default' => '',
-			);
+		$block_type->attributes['gutter'] = array(
+			'type'    => 'string',
+			'default' => 'medium',
+		);
 
-		}
+	}
+
+	if ( ! array_key_exists( 'gutterCustom', $block_type->attributes ) ) {
+
+		$block_type->attributes['gutterCustom'] = array(
+			'type'    => 'string',
+			'default' => '',
+		);
+
 	}
 }
 
