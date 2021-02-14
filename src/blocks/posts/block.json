@@ -70,5 +70,10 @@
 				"type": "object"
 			}
 		}
+	},
+	"supports": {
+		"gutter": {
+			"default": "medium"
+		}
 	}
 }
