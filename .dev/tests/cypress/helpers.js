@@ -127,7 +127,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 		clearBlocks();
 	}
 
-	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).then( ( inserterButton ) => {
+	cy.get( '.edit-post-header-toolbar .edit-post-header-toolbar__inserter-toggle' ).then( ( inserterButton ) => {
 		if ( ! Cypress.$( inserterButton ).hasClass( 'is-pressed' ) ) {
 			cy.get( inserterButton ).click();
 		}
