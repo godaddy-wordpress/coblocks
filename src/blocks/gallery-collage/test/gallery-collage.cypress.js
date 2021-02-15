@@ -129,6 +129,38 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 		helpers.editPage();
 	} );
 
+	/**
+	 * Test that we can add image captions with rich text options
+	 * No assertion that rich text options do not exist.
+	 * Collage block has always-focused rich text options.
+	 */
+	it( 'Test collage captions allow rich text controls.', function() {
+		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
+
+		cy.get( '[data-type="coblocks/gallery-collage"]' )
+			.first()
+			.click()
+			.contains( /media library/i )
+			.click();
+
+		cy.get( '.media-modal-content' ).contains( /media library/i ).click();
+
+		cy.get( '.media-modal-content' ).find( 'li.attachment' )
+			.first( 'li' )
+			.click();
+
+		cy.get( '.media-modal-content' ).find( '.media-button-select' ).click();
+
+		helpers.toggleSettingCheckbox( /captions/i );
+
+		cy.get( '.wp-block-coblocks-gallery-collage__item' ).first().click()
+			.find( 'figcaption' ).focus();
+
+		cy.get( '[data-type="coblocks/gallery-collage"]' ).find( 'figcaption' ).focus();
+
+		cy.get( '.block-editor-format-toolbar' );
+	} );
+
 	it( 'can replace the existing image through the "Replace" button', () => {
 		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
 
