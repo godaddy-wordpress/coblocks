@@ -137,4 +137,37 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 
 		helpers.editPage();
 	} );
+
+	/**
+	 * Test that we can add image captions with rich text options
+	 */
+	it( 'Test carousel captions allow rich text controls.', function() {
+		helpers.addBlockToPost( 'coblocks/gallery-carousel', true );
+
+		cy.get( '[data-type="coblocks/gallery-carousel"]' )
+			.click()
+			.contains( /media library/i )
+			.click();
+
+		cy.get( '.media-modal-content' ).contains( /media library/i ).click();
+
+		cy.get( '.media-modal-content' ).find( 'li.attachment' )
+			.first( 'li' )
+			.click();
+
+		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
+			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			} else { // pre wp 5.4
+				cy.get( 'button' ).contains( /create a new gallery/i ).click();
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			}
+		} );
+
+		cy.get( '.block-editor-format-toolbar' ).should( 'not.exist' );
+
+		cy.get( '[data-type="coblocks/gallery-carousel"]' ).find( 'figcaption' ).focus();
+
+		cy.get( '.block-editor-format-toolbar' );
+	} );
 } );
