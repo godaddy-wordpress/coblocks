@@ -162,6 +162,9 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	} );
 
 	it( 'can replace the existing image through the "Replace" button', () => {
+		cy.get( '.wp-block-coblocks-gallery-collage__item' ).first().click();
+		cy.get( '.wp-block-coblocks-gallery-collage__item' ).first().find( '.coblocks-gallery-item__button-replace' ).click();
+
 		// Replace the image.
 		const newImageBase = '150x150-2';
 		/* eslint-disable */
