@@ -31,8 +31,8 @@ export function closeLayoutSelector() {
 export function addFormChild( name ) {
 	cy.get( '[data-type="coblocks/form"]' ).first().click();
 	cy.get( '.block-editor-block-settings-menu' ).click();
-	cy.get( '.components-popover__content' ).contains( /insert after/i ).click();
-	cy.get( '[data-type="coblocks/form"]' ).first().find( '[data-type="core/paragraph"]' ).click();
+	cy.get( '.components-popover__content button' ).contains( /insert after/i ).click();
+	cy.get( '[data-type="coblocks/form"] [data-type="core/paragraph"]' ).click();
 
 	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click();
 	cy.get( '.block-editor-inserter__search' ).click().type( name );
@@ -127,7 +127,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 		clearBlocks();
 	}
 
-	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).then( ( inserterButton ) => {
+	cy.get( '.edit-post-header-toolbar .edit-post-header-toolbar__inserter-toggle' ).then( ( inserterButton ) => {
 		if ( ! Cypress.$( inserterButton ).hasClass( 'is-pressed' ) ) {
 			cy.get( inserterButton ).click();
 		}
@@ -139,7 +139,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	);
 
 	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
-	cy.get( '.block-editor-inserter__block-list .editor-block-list-item' + targetClassName ).first().click();
+	cy.get( '.editor-block-list-item' + targetClassName ).first().click();
 
 	// Make sure the block was added to our page
 	cy.get( `[data-type="${ blockName }"]` ).should( 'exist' );
