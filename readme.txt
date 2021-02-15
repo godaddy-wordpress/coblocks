@@ -115,6 +115,13 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+### Enhancements
+* Introduce ability to Link to images within Service block [#1807](https://github.com/godaddy-wordpress/coblocks/pull/1807)
+* Improve Gist block User Experience with updated styles [#1820](https://github.com/godaddy-wordpress/coblocks/pull/1820)
+
 ### Bug Fixes
-* Fix bug when utilizing Background Tasks API [#1816](https://github.com/godaddy-wordpress/coblocks/pull/1816)
-* Fix bug with DockerHub authentication [#1817](https://github.com/godaddy-wordpress/coblocks/pull/1817)
+* Fix gallery captions rich text controls visibility [#1821](https://github.com/godaddy-wordpress/coblocks/pull/1821)
+* Fix Posts block missing images and improper layout [#1825](https://github.com/godaddy-wordpress/coblocks/pull/1825)
+* Fix Author block button removal and image placeholder alignment [#1822](https://github.com/godaddy-wordpress/coblocks/pull/1822)
+* Fix unintentional limit on block patterns count [#1818](https://github.com/godaddy-wordpress/coblocks/pull/1818)
+* Fix focus state to improve accessibility of Layout Selector [#1821](https://github.com/godaddy-wordpress/coblocks/pull/1821)
