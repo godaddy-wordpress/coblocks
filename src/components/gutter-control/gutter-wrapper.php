@@ -51,7 +51,7 @@ function coblocks_register_gutter_support( $block_type ) {
 
 	if ( isset( $block_type->supports ) && is_array( $block_type->supports ) ) {
 
-		$has_gutter_support = array_key_exists('gutter', $block_type->supports );
+		$has_gutter_support = array_key_exists( 'gutter', $block_type->supports );
 
 	}
 
@@ -87,7 +87,7 @@ function coblocks_register_gutter_support( $block_type ) {
 }
 
 
-// Register the block support. Only since 5.6.0
+// Register the block support. Only since 5.6.0.
 if ( class_exists( 'WP_Block_Supports' ) ) {
 
 	WP_Block_Supports::get_instance()->register(
