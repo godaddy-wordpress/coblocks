@@ -2,17 +2,17 @@
 <ruleset name="CoBlocks">
 	<description>Rules for CoBlocks</description>
 
-    <arg name="extensions" value="php" />
-    <arg name="basepath" value="./" />
-    <file>./</file>
+	<arg name="extensions" value="php" />
+	<arg name="basepath" value="./" />
+	<file>./</file>
 
-    <exclude-pattern>build/*</exclude-pattern>
-    <exclude-pattern>dist/*</exclude-pattern>
-    <exclude-pattern>vendor/*</exclude-pattern>
-    <exclude-pattern>node_modules/*</exclude-pattern>
+	<exclude-pattern>build/*</exclude-pattern>
+	<exclude-pattern>dist/*</exclude-pattern>
+	<exclude-pattern>vendor/*</exclude-pattern>
+	<exclude-pattern>node_modules/*</exclude-pattern>
 	<exclude-pattern type="relative">wordpress/*</exclude-pattern>
-    <exclude-pattern>\.dev\/.*</exclude-pattern>
-    <exclude-pattern>includes/ical-parser/class-coblocks-ical.php</exclude-pattern>
+	<exclude-pattern>\.dev\/.*</exclude-pattern>
+	<exclude-pattern>includes/ical-parser/class-coblocks-ical.php</exclude-pattern>
 
 	<arg name="colors"/>
 	<arg value="sp"/>
