@@ -140,6 +140,9 @@
 		"*.js": [
 			"jest --config .dev/tests/jest/jest.config.js --silent --findRelatedTests",
 			"yarn lint:js"
+		],
+		"*.php": [
+		  "composer run lint"
 		]
 	}
 }
