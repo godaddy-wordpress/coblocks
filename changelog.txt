@@ -1,4 +1,9 @@
 
+2.8.1 / 2021-02-16
+==================
+### Bug Fixes
+* Fix backward compatibility with WP_Block_Supports [#1828](https://github.com/godaddy-wordpress/coblocks/pull/1828)
+
 2.8.0 / 2021-02-15
 ==================
 ### Enhancements
