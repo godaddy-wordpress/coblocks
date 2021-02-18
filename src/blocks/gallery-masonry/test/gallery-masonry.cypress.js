@@ -140,4 +140,41 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 
 		helpers.editPage();
 	} );
+
+	/**
+	 * Test that we can add image captions with rich text options
+	 */
+	it( 'Test masonry captions allow rich text controls.', function() {
+		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
+
+		cy.get( '[data-type="coblocks/gallery-masonry"]' )
+			.click()
+			.contains( /media library/i )
+			.click();
+
+		cy.get( '.media-modal-content' ).contains( /media library/i ).click();
+
+		cy.get( '.media-modal-content' ).find( 'li.attachment' )
+			.first( 'li' )
+			.click();
+
+		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
+			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			} else { // pre wp 5.4
+				cy.get( 'button' ).contains( /create a new gallery/i ).click();
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			}
+		} );
+
+		helpers.toggleSettingCheckbox( /captions/i );
+
+		cy.get( '.coblocks-gallery--item img[src*="http"]' ).click();
+
+		cy.get( '.block-editor-format-toolbar' ).should( 'not.exist' );
+
+		cy.get( 'figcaption[role="textbox"]' ).focus();
+
+		cy.get( '.block-editor-format-toolbar' );
+	} );
 } );

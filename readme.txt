@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.6
 Requires PHP: 5.6
-Stable tag: 2.7.2
+Stable tag: 2.8.1
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -116,5 +116,4 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Bug Fixes
-* Fix bug when utilizing Background Tasks API [#1816](https://github.com/godaddy-wordpress/coblocks/pull/1816)
-* Fix bug with DockerHub authentication [#1817](https://github.com/godaddy-wordpress/coblocks/pull/1817)
+* Fix backward compatibility with WP_Block_Supports [#1828](https://github.com/godaddy-wordpress/coblocks/pull/1828)

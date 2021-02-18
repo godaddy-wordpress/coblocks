@@ -4,7 +4,7 @@
  * Description: CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
  * Author: GoDaddy
  * Author URI: https://www.godaddy.com
- * Version: 2.7.2
+ * Version: 2.8.1
  * Text Domain: coblocks
  * Domain Path: /languages
  * Tested up to: 5.6
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'COBLOCKS_VERSION', '2.7.2' );
+define( 'COBLOCKS_VERSION', '2.8.1' );
 define( 'COBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'COBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'COBLOCKS_PLUGIN_FILE', __FILE__ );
@@ -122,9 +122,6 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			// Require CoBlocks custom filters.
 			require_once COBLOCKS_PLUGIN_DIR . 'src/components/gutter-control/gutter-wrapper.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'src/components/form-label-colors/label-color-wrapper.php';
-
-			// Require CoBlocks custom utilities.
-			require_once COBLOCKS_PLUGIN_DIR . 'src/utils/utils.php';
 
 			if ( is_admin() ) {
 				require_once COBLOCKS_PLUGIN_DIR . 'src/extensions/layout-selector/index.php';
