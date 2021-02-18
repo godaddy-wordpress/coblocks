@@ -57,6 +57,8 @@ export const LayoutSelectorResults = ( { layouts, category, onInsert } ) => {
  * Renders the layout's block preview.
  */
 export const LayoutPreview = ( { layout, onClick } ) => {
+	const sanitizedBlocks = sanitizeBlocks( layout.blocks );
+
 	return (
 		<Button
 			className={ classnames( 'coblocks-layout-selector__layout' ) }
@@ -64,9 +66,34 @@ export const LayoutPreview = ( { layout, onClick } ) => {
 
 			<Spinner />
 
-			<BlockPreview blocks={ layout.blocks } viewportWidth={ 700 } />
+			<BlockPreview blocks={ sanitizedBlocks } viewportWidth={ 700 } />
 		</Button>
 	);
+};
+
+/**
+ * Remove unwanted stuff from blocks displayed in preview
+ * - Remove animations
+ *
+ * @param {Array} blocks Array of blocks
+ * @return {Array} Sanitized version of the blocks
+ */
+const sanitizeBlocks = ( blocks ) => {
+	const sanitized = blocks.map( ( block ) => {
+		// Remove animation
+		if ( block?.attributes?.animation ) {
+			block.attributes.animation = '';
+		}
+
+		// Process innerBlocks, if any
+		if ( block?.innerBlocks?.length > 0 ) {
+			block.innerBlocks = sanitizeBlocks( block.innerBlocks );
+		}
+
+		return block;
+	} );
+
+	return sanitized;
 };
 
 /**
