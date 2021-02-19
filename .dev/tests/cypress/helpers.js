@@ -79,6 +79,7 @@ export function goTo( path = '/wp-admin' ) {
 		}
 	} );
 }
+
 /**
  * Safely obtain the window object or error
  * when the window object is not available.
