@@ -165,7 +165,7 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 
 			const filterSlug = filters[ i ].toLowerCase();
 
-			cy.get( '.wp-block-gallery' )
+			cy.get( '[data-type="core/gallery"]' )
 				.should( 'have.class', 'has-filter-' + filterSlug );
 
 			helpers.savePage();
