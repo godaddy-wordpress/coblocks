@@ -39,7 +39,9 @@ describe( 'Block: Highlight', function() {
 	/**
 	 * Test the accordion block content font settings
 	 */
-	it( 'Test highlight block font size setting.', function() {
+	// Disable reason: https://github.com/godaddy-wordpress/coblocks/issues/1832.
+	// eslint-disable-next-line jest/no-disabled-tests
+	it.skip( 'Test highlight block font size setting.', function() {
 		cy.get( 'p.wp-block-coblocks-highlight' ).find( 'mark' )
 			.type( 'highlighted text' );
 
@@ -53,7 +55,7 @@ describe( 'Block: Highlight', function() {
 				} else {
 					cy.get( Cypress.$( $settingSection ).closest( '.components-panel__body' ) )
 						.find( 'button[aria-label="Font size"]' ).click();
-					cy.get( '.components-custom-select-control__item butt' ).contains( /large/i ).click( { force: true } );
+					cy.get( '.components-custom-select-control__item' ).contains( /large/i ).click( { force: true } );
 				}
 			} );
 
