@@ -70,12 +70,10 @@ export function goTo( path = '/wp-admin' ) {
 	cy.visit( Cypress.env( 'testURL' ) + path );
 
 	return getWindowObject().then( ( safeWin ) => {
-		if ( safeWin.location.pathname.includes( 'post-new.php' ) ) {
-			safeWin.coblocksLayoutSelector = coblocksLayoutSelector;
+		safeWin.coblocksLayoutSelector = coblocksLayoutSelector;
 
-			safeWin.wp.data.dispatch( 'coblocks/template-selector' ).updateLayouts( coblocksLayoutSelector.layouts );
-			safeWin.wp.data.dispatch( 'coblocks/template-selector' ).updateCategories( coblocksLayoutSelector.categories );
-		}
+		safeWin.wp.data.dispatch( 'coblocks/template-selector' ).updateLayouts( coblocksLayoutSelector.layouts );
+		safeWin.wp.data.dispatch( 'coblocks/template-selector' ).updateCategories( coblocksLayoutSelector.categories );
 	} );
 }
 /**
@@ -87,13 +85,14 @@ export function getWindowObject() {
 	return cy.window().then( ( win ) => {
 		const isEditorPage = editorUrlStrings.filter( ( str ) => win.location.href.includes( str ) );
 
+		if ( isEditorPage.length === 0 ) {
+			throw new Error( 'Check previous test, window property was fired outside of Editor' );
+		}
+
 		if ( ! win?.wp ) {
 			throw new Error( 'Check previous test, win.wp is not defined' );
 		}
 
-		if ( isEditorPage.length === 0 ) {
-			throw new Error( 'Check previous test, window property was fired outside of Editor' );
-		}
 		return win;
 	} );
 }
