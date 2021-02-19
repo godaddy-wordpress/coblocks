@@ -246,7 +246,7 @@ commands:
     steps:
       - run:
           name: "Start Mailhog"
-          command: "mailhog"
+          command: "MailHog"
           background: true
 
   setup_spec_files_diff_tree:
