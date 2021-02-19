@@ -29,7 +29,7 @@ export function closeLayoutSelector() {
  * @param {string} name the name of the child block to add.
  */
 export function addFormChild( name ) {
-	cy.get( '[data-type="coblocks/form"]' ).first().click();
+	cy.get( '[data-type="coblocks/form"] [data-type^="coblocks/field"]' ).first().click();
 	cy.get( '.block-editor-block-settings-menu' ).click();
 	cy.get( '.components-popover__content button' ).contains( /insert after/i ).click();
 	cy.get( '[data-type="coblocks/form"] [data-type="core/paragraph"]' ).click();
