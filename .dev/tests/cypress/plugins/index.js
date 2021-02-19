@@ -1,9 +1,3 @@
 module.exports = ( on ) => {
-	on( 'task', {
-		log( message ) {
-			// eslint-disable-next-line no-console
-			console.log( message );
-			return null;
-		},
-	} );
+	require( 'cypress-log-to-output' ).install( on, ( type, event ) => event.level === 'error' || event.type === 'error' );
 };
