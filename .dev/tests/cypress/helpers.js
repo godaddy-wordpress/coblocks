@@ -70,10 +70,13 @@ export function goTo( path = '/wp-admin' ) {
 	cy.visit( Cypress.env( 'testURL' ) + path );
 
 	return getWindowObject().then( ( safeWin ) => {
-		safeWin.coblocksLayoutSelector = coblocksLayoutSelector;
+		// Only set global `safeWin.coblocksLayoutSelector` on new pages.
+		if ( safeWin.location.href.includes( 'post-new.php?post_type=page' ) ) {
+			safeWin.coblocksLayoutSelector = coblocksLayoutSelector;
 
-		safeWin.wp.data.dispatch( 'coblocks/template-selector' ).updateLayouts( coblocksLayoutSelector.layouts );
-		safeWin.wp.data.dispatch( 'coblocks/template-selector' ).updateCategories( coblocksLayoutSelector.categories );
+			safeWin.wp.data.dispatch( 'coblocks/template-selector' ).updateLayouts( coblocksLayoutSelector.layouts );
+			safeWin.wp.data.dispatch( 'coblocks/template-selector' ).updateCategories( coblocksLayoutSelector.categories );
+		}
 	} );
 }
 /**
