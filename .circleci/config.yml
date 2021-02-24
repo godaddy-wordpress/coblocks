@@ -362,8 +362,7 @@ jobs:
       - restore_composer_cache
       - run:
           name: Install Composer v1
-          command: |
-            sudo composer self-update --1
+          command: sudo composer self-update --1
       - run:
           name: "Linting PHP"
           command: composer run lint $FILES
@@ -436,8 +435,7 @@ jobs:
       - restore_composer_cache
       - run:
           name: Install Composer v1
-          command: |
-            sudo composer self-update --1
+          command: sudo composer self-update --1
       - wait_for_mysql
       - install_wordpress_testing_suite
       - run_phpunit_singlesite_coverage_reports
@@ -470,8 +468,7 @@ jobs:
       - restore_composer_cache
       - run:
           name: Install Composer v1
-          command: |
-            sudo composer self-update --1
+          command: sudo composer self-update --1
       - wait_for_mysql
       - install_wordpress_testing_suite
       - run_phpunit_singlesite_coverage_reports
