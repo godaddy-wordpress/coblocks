@@ -57,12 +57,12 @@ describe( name, () => {
 		expect( serializedBlock ).toContain( 'has-lightbox' );
 	} );
 
-	it( 'should have className \'carousel-nav\' with thumbnails enabled.', () => {
-		block.attributes = { ...block.attributes, thumbnails: true };
+	it( 'should have asNavFor flickity setting of \'\.${ attributes.navForClass }\' with thumbnails enabled.', () => {
+		block.attributes = { ...block.attributes, thumbnails: true, navForClass: 'has-nav-abc123' };
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'carousel-nav' );
+		expect( serializedBlock ).toContain( '.has-nav-abc123' );
 	} );
 
 	it( 'should have className \'has-responsive-height\' with responsiveHeight enabled.', () => {
