@@ -202,7 +202,7 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
  *
  * @return {Object} The filtered block object.
  */
-const filterBlockObjectResult = ( blockObject ) => {
+export const filterBlockObjectResult = ( blockObject ) => {
 	const { name, attributes, isValid } = blockObject;
 	const validationIssues = blockObject.validationIssues.map( ( issue ) => issue.args );
 	return { name, attributes, isValid, validationIssues };
