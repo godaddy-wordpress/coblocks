@@ -79,7 +79,7 @@ export const LayoutPreview = ( { layout, onClick } ) => {
  * @return {Array} Sanitized version of the blocks
  */
 const sanitizeBlocks = ( blocks ) => {
-	const sanitized = blocks.map( ( block ) => {
+	return blocks.map( ( block ) => {
 		// Remove animation
 		if ( block?.attributes?.animation ) {
 			block.attributes.animation = '';
@@ -92,8 +92,6 @@ const sanitizeBlocks = ( blocks ) => {
 
 		return block;
 	} );
-
-	return sanitized;
 };
 
 /**
