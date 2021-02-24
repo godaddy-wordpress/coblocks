@@ -78,7 +78,7 @@ export const LayoutPreview = ( { layout, onClick } ) => {
  * @param {Array} blocks Array of blocks
  * @return {Array} Sanitized version of the blocks
  */
-const sanitizeBlocks = ( blocks ) => {
+export const sanitizeBlocks = ( blocks ) => {
 	return blocks.map( ( block ) => {
 		// Remove animation
 		if ( block?.attributes?.animation ) {

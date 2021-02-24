@@ -5,6 +5,7 @@ import { shallow } from 'enzyme';
 import '@testing-library/jest-dom/extend-expect';
 
 import { registerCoreBlocks } from '@wordpress/block-library';
+import { createBlock, serialize, parse } from '@wordpress/blocks';
 registerCoreBlocks();
 
 /**
@@ -15,7 +16,9 @@ import {
 	LayoutPreviewList,
 	LayoutPreviewPlaceholder,
 	LayoutSelectorResults,
+	sanitizeBlocks,
 } from '../layout-selector-results';
+import * as helpers from '../../../../.dev/tests/jest/helpers';
 
 describe( 'layout-selector-results', () => {
 
@@ -158,7 +161,6 @@ describe( 'layout-selector-results', () => {
 			onInsert: jest.fn(),
 		};
 
-
 		const setup = ( props = {} ) => {
 			const setupProps = { ...defaultProps, ...props };
 			return shallow( <LayoutSelectorResults { ...setupProps } /> );
@@ -182,6 +184,64 @@ describe( 'layout-selector-results', () => {
 			expect( wrapper.text() ).toContain( 'No layouts are available for this category.' );
 		} );
 
+	} );
+
+	describe( 'sanitizeBlocks()', () => {
+		beforeAll( () => {
+			helpers.registerGalleryBlocks();
+		} );
+
+		it( 'sanitize blocks without breaking them', () => {
+			const blocks = [
+				createBlock( 'coblocks/gallery-stacked' ),
+				createBlock( 'coblocks/gallery-masonry' ),
+				{
+					"clientId": "ff9f9721-eb6d-4817-ab60-cfceee6c28a8",
+					"name": "core/gallery",
+					"isValid": true,
+					"attributes": {
+					  "images": [
+						{
+						  "url": "https://wpnux.godaddy.com/v2/api/image?aspect=3%3A4&index=2&lang=en_US&seed=wpnux_layout_home-1&size=large&category=fashion",
+						  "link": "https://wpnux.godaddy.com/v2/api/image?aspect=3%3A4&index=2&lang=en_US&seed=wpnux_layout_home-1&size=large&category=fashion",
+						  "alt": "Image Description",
+						  "id": "2",
+						  "caption": ""
+						},
+						{
+						  "url": "https://wpnux.godaddy.com/v2/api/image?aspect=3%3A4&index=3&lang=en_US&seed=wpnux_layout_home-1&size=large&category=fashion",
+						  "link": "https://wpnux.godaddy.com/v2/api/image?aspect=3%3A4&index=3&lang=en_US&seed=wpnux_layout_home-1&size=large&category=fashion",
+						  "alt": "Image Description",
+						  "id": "3",
+						  "caption": ""
+						}
+					  ],
+					  "ids": [
+						{},
+						{}
+					  ],
+					  "caption": "",
+					  "imageCrop": true,
+					  "linkTo": "none",
+					  "sizeSlug": "large",
+					  "align": "wide",
+					  "animation": "slideInBottom",
+					  "noBottomMargin": false,
+					  "noTopMargin": false,
+					  "lightbox": false,
+					  "filter": "none"
+					},
+					"innerBlocks": []
+				  }
+			];
+			const sanitized = sanitizeBlocks( blocks );
+			const selializedBlocks = serialize( sanitized );
+			const parsedBlocks = parse( selializedBlocks );
+
+			expect(
+				parsedBlocks.filter( ( block ) => ! block.isValid ).map( helpers.filterBlockObjectResult )
+			).toEqual( [] );
+		} );
 	} );
 
 } );
