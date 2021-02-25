@@ -69,35 +69,13 @@ export function loginToSite() {
 export function goTo( path = '/wp-admin' ) {
 	cy.visit( Cypress.env( 'testURL' ) + path );
 
-	return getWindowObject().then( ( safeWin ) => {
-		// Only set global `safeWin.coblocksLayoutSelector` on new pages.
-		if ( safeWin.location.href.includes( 'post-new.php?post_type=page' ) ) {
-			safeWin.coblocksLayoutSelector = coblocksLayoutSelector;
-
-			safeWin.wp.data.dispatch( 'coblocks/template-selector' ).updateLayouts( coblocksLayoutSelector.layouts );
-			safeWin.wp.data.dispatch( 'coblocks/template-selector' ).updateCategories( coblocksLayoutSelector.categories );
-		}
-	} );
-}
-
-/**
- * Safely obtain the window object or error
- * when the window object is not available.
- */
-export function getWindowObject() {
-	const editorUrlStrings = [ 'post-new.php', 'action=edit' ];
 	return cy.window().then( ( win ) => {
-		const isEditorPage = editorUrlStrings.filter( ( str ) => win.location.href.includes( str ) );
+		if ( win.location.pathname.includes( 'post-new.php' ) ) {
+			win.coblocksLayoutSelector = coblocksLayoutSelector;
 
-		if ( isEditorPage.length === 0 ) {
-			throw new Error( 'Check previous test, window property was fired outside of Editor' );
+			win.wp.data.dispatch( 'coblocks/template-selector' ).updateLayouts( coblocksLayoutSelector.layouts );
+			win.wp.data.dispatch( 'coblocks/template-selector' ).updateCategories( coblocksLayoutSelector.categories );
 		}
-
-		if ( ! win?.wp ) {
-			throw new Error( 'Check previous test, win.wp is not defined' );
-		}
-
-		return win;
 	} );
 }
 
@@ -105,26 +83,27 @@ export function getWindowObject() {
  * Disable Gutenberg Tips
  */
 export function disableGutenbergFeatures() {
-	getWindowObject().then( ( safeWin ) => {
+	cy.window().should( 'have.property', 'wp' );
+	cy.window().then( ( win ) => {
 		// Enable "Top Toolbar"
-		if ( ! safeWin.wp.data.select( 'core/edit-post' ).isFeatureActive( 'fixedToolbar' ) ) {
-			safeWin.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'fixedToolbar' );
+		if ( ! win.wp.data.select( 'core/edit-post' ).isFeatureActive( 'fixedToolbar' ) ) {
+			win.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'fixedToolbar' );
 		}
 
-		if ( !! safeWin.wp.data.select( 'core/nux' ) ) { // < GB 7.2 || < WP 5.4
-			if ( ! safeWin.wp.data.select( 'core/nux' ).areTipsEnabled() ) {
+		if ( !! win.wp.data.select( 'core/nux' ) ) { // < GB 7.2 || < WP 5.4
+			if ( ! win.wp.data.select( 'core/nux' ).areTipsEnabled() ) {
 				return;
 			}
 
-			safeWin.wp.data.dispatch( 'core/nux' ).disableTips();
-			safeWin.wp.data.dispatch( 'core/editor' ).disablePublishSidebar();
+			win.wp.data.dispatch( 'core/nux' ).disableTips();
+			win.wp.data.dispatch( 'core/editor' ).disablePublishSidebar();
 		} else { // GB 7.2 || WP 5.4
-			if ( ! safeWin.wp.data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
+			if ( ! win.wp.data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
 				return;
 			}
 
-			safeWin.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
-			safeWin.wp.data.dispatch( 'core/editor' ).disablePublishSidebar();
+			win.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
+			win.wp.data.dispatch( 'core/editor' ).disablePublishSidebar();
 		}
 	} );
 }
@@ -221,9 +200,10 @@ export function editPage() {
  * Clear all blocks from the editor
  */
 export function clearBlocks() {
-	getWindowObject().then( ( safeWin ) => {
-		safeWin.wp.data.dispatch( 'core/block-editor' ).removeBlocks(
-			safeWin.wp.data.select( 'core/block-editor' ).getBlocks().map( ( block ) => block.clientId )
+	cy.window().should( 'have.property', 'wp' );
+	cy.window().then( ( win ) => {
+		win.wp.data.dispatch( 'core/block-editor' ).removeBlocks(
+			win.wp.data.select( 'core/block-editor' ).getBlocks().map( ( block ) => block.clientId )
 		);
 	} );
 }
