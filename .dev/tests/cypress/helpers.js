@@ -90,11 +90,11 @@ export function getWindowObject() {
 		const isEditorPage = editorUrlStrings.filter( ( str ) => win.location.href.includes( str ) );
 
 		if ( isEditorPage.length === 0 ) {
-			throw new Error( 'Check previous test, window property was fired outside of Editor' );
+			throw new Error( 'Check the previous test, window property was invoked outside of Editor.' );
 		}
 
 		if ( ! win?.wp ) {
-			throw new Error( 'Check previous test, win.wp is not defined' );
+			throw new Error( 'Window property was invoked within Editor but `win.wp` is not defined.' );
 		}
 
 		return win;
