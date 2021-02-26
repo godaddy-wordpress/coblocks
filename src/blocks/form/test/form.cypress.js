@@ -26,7 +26,7 @@ describe( 'Test CoBlocks Form Block', function() {
 					.find( 'button' ).click( { force: true } );
 			} else {
 				cy.get( '.block-editor-inner-blocks__template-picker-options li:first-child' )
-					.click();
+					.click( { force: true } );
 
 				cy.get( '.block-editor-inner-blocks__template-picker-options' )
 					.should( 'not.exist' );
