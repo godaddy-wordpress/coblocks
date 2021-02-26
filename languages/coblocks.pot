@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-02-24T20:36:07+00:00\n"
+"POT-Creation-Date: 2021-02-26T15:08:39+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -442,7 +442,7 @@ msgstr ""
 #: src/blocks/form/fields/submit-button/edit.js:113
 #: src/blocks/hero/inspector.js:137
 #: src/blocks/highlight/inspector.js:43
-#: src/blocks/icon/inspector.js:299
+#: src/blocks/icon/inspector.js:309
 #: src/blocks/media-card/inspector.js:141
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:48
 #: src/blocks/row/column/inspector.js:164
@@ -464,7 +464,7 @@ msgstr ""
 #: src/blocks/features/inspector.js:177
 #: src/blocks/hero/inspector.js:150
 #: src/blocks/highlight/inspector.js:49
-#: src/blocks/icon/inspector.js:323
+#: src/blocks/icon/inspector.js:333
 #: src/blocks/media-card/inspector.js:155
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:53
 #: src/blocks/row/column/inspector.js:170
@@ -973,7 +973,7 @@ msgstr ""
 #: src/blocks/features/feature/inspector.js:71
 #: src/blocks/features/inspector.js:117
 #: src/blocks/hero/inspector.js:84
-#: src/blocks/icon/inspector.js:215
+#: src/blocks/icon/inspector.js:225
 #: src/blocks/media-card/inspector.js:62
 #: src/blocks/row/column/inspector.js:109
 #: src/blocks/row/inspector.js:160
@@ -1975,8 +1975,8 @@ msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:85
 #: src/blocks/gallery-masonry/inspector.js:81
-#: src/blocks/icon/inspector.js:106
-#: src/blocks/icon/inspector.js:172
+#: src/blocks/icon/inspector.js:116
+#: src/blocks/icon/inspector.js:182
 #: src/components/typography-controls/index.js:224
 msgid "Size"
 msgstr ""
@@ -4523,69 +4523,69 @@ msgstr ""
 msgid "Filled"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:155
+#: src/blocks/icon/inspector.js:165
 #: src/blocks/share/inspector.js:111
 #: src/blocks/social-profiles/inspector.js:116
 msgid "Icon settings"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:167
+#: src/blocks/icon/inspector.js:177
 msgid "Reset icon size"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:169
+#: src/blocks/icon/inspector.js:179
 #: src/components/crop-settings/index.js:320
 #: src/components/dimensions-control/index.js:489
 #: src/components/size-control/index.js:209
 msgid "Reset"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:196
+#: src/blocks/icon/inspector.js:206
 msgid "Apply custom size"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:199
+#: src/blocks/icon/inspector.js:209
 #: src/components/option-selector-control/index.js:62
 msgid "Custom"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:207
+#: src/blocks/icon/inspector.js:217
 msgid "Radius"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:227
+#: src/blocks/icon/inspector.js:237
 msgid "Icon search"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:275
+#: src/blocks/icon/inspector.js:285
 msgid "No results found."
 msgstr ""
 
-#: src/blocks/icon/inspector.js:281
+#: src/blocks/icon/inspector.js:291
 #: src/components/block-gallery/gallery-link-settings.js:72
 msgid "Link settings"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:284
+#: src/blocks/icon/inspector.js:294
 msgid "Link URL"
 msgstr ""
 
 #. translators: html attribute that specifies the relationship between two pages
-#: src/blocks/icon/inspector.js:289
+#: src/blocks/icon/inspector.js:299
 #: src/components/block-gallery/gallery-link-settings.js:90
 msgid "Link rel"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:294
+#: src/blocks/icon/inspector.js:304
 msgid "Opening in new tab"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:294
+#: src/blocks/icon/inspector.js:304
 #: src/components/block-gallery/gallery-link-settings.js:84
 msgid "Open in new tab"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:306
+#: src/blocks/icon/inspector.js:316
 #: src/blocks/share/inspector.js:68
 #: src/blocks/share/inspector.js:104
 #: src/blocks/social-profiles/inspector.js:96

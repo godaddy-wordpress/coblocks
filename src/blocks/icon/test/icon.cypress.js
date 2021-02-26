@@ -111,7 +111,7 @@ describe( 'Test CoBlocks Icon Block', function() {
 
 		cy.get( '.wp-block-coblocks-icon__inner a' )
 			.should( 'have.attr', 'href', 'https://www.google.com' )
-			.and( 'have.attr', 'rel', 'Link rel noopener noreferrer' )
+			.and( 'have.attr', 'rel', 'Link rel noreferrer noopener' )
 			.and( 'have.attr', 'target', '_blank' );
 
 		helpers.editPage();
