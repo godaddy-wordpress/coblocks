@@ -86,6 +86,8 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 
 			childIteration++;
 		}
+
+		cy.reload();
 	} );
 
 	/**
@@ -161,5 +163,7 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 
 			childIteration++;
 		}
+
+		cy.reload();
 	} );
 } );
