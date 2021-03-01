@@ -39,9 +39,7 @@ describe( 'Block: Highlight', function() {
 	/**
 	 * Test the accordion block content font settings
 	 */
-	// Disable reason: https://github.com/godaddy-wordpress/coblocks/issues/1832.
-	// eslint-disable-next-line jest/no-disabled-tests
-	it.skip( 'Test highlight block font size setting.', function() {
+	it( 'Test highlight block font size setting.', function() {
 		cy.get( 'p.wp-block-coblocks-highlight' ).find( 'mark' )
 			.type( 'highlighted text' );
 
