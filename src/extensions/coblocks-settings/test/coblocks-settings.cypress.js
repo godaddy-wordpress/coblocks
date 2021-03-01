@@ -6,6 +6,8 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 describe( 'Extension: CoBlocks Settings', function() {
 	let supportsGradients = false;
 	beforeEach( function() {
+		helpers.goTo( '/wp-admin/post-new.php?post_type=post' );
+
 		helpers.disableGutenbergFeatures();
 
 		cy.get( '.edit-post-more-menu' ).click();
