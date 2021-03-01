@@ -19,7 +19,7 @@ describe( 'Extension: CoBlocks Settings', function() {
 				supportsGradients = true;
 			}
 		} );
-		cy.get( '.components-modal__header' ).find( 'button[aria-label="Close dialog"]' ).click();
+		cy.get( '.components-modal__header button[aria-label="Close dialog"]' ).click();
 	} );
 
 	/**
@@ -37,7 +37,7 @@ describe( 'Extension: CoBlocks Settings', function() {
 		cy.get( '.coblocks-modal__content' ).contains( 'Typography controls' ).click();
 		cy.get( '.components-coblocks-typography-dropdown' ).should( 'not.exist' );
 
-		cy.get( '.components-modal__header' ).find( 'button[aria-label="Close dialog"]' ).click();
+		cy.get( '.components-modal__header button[aria-label="Close dialog"]' ).click();
 	} );
 
 	/**
@@ -54,7 +54,7 @@ describe( 'Extension: CoBlocks Settings', function() {
 		cy.get( '.coblocks-modal__content' ).contains( 'Animation controls' ).click();
 		cy.get( '.components-coblocks-animation-toggle' ).should( 'not.exist' );
 
-		cy.get( '.components-modal__header' ).find( 'button[aria-label="Close dialog"]' ).click();
+		cy.get( '.components-modal__header button[aria-label="Close dialog"]' ).click();
 	} );
 
 	/**
