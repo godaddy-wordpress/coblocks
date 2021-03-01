@@ -76,6 +76,16 @@ class GalleryCarouselEdit extends Component {
 				gutterMobile: 0,
 			} );
 		}
+
+		const { clientId, attributes, setAttributes } = this.props;
+		const { thumbnails, navForClass } = attributes;
+		const parsedNavForClass = classnames( {
+			[ `has-nav-${ clientId.split( '-' )[ 0 ] }` ]: thumbnails,
+		} );
+
+		if ( parsedNavForClass !== navForClass ) {
+			setAttributes( { navForClass: parsedNavForClass } );
+		}
 	}
 
 	onSelectImage( index ) {
@@ -159,6 +169,7 @@ class GalleryCarouselEdit extends Component {
 			thumbnails,
 			responsiveHeight,
 			lightbox,
+			navForClass,
 		} = attributes;
 
 		const hasImages = !! images.length;
@@ -197,6 +208,7 @@ class GalleryCarouselEdit extends Component {
 				'has-aligned-cells': alignCells,
 				[ `has-margin-bottom-${ gutter }` ]: thumbnails && gutter > 0,
 				[ `has-margin-bottom-mobile-${ gutterMobile }` ]: thumbnails && gutterMobile > 0,
+				[ navForClass ]: thumbnails,
 			}
 		);
 
@@ -229,7 +241,7 @@ class GalleryCarouselEdit extends Component {
 		};
 
 		const navOptions = {
-			asNavFor: '.has-carousel',
+			asNavFor: `.${ navForClass }`,
 			draggable: false,
 			pageDots: true,
 			prevNextButtons: false,
@@ -345,7 +357,7 @@ class GalleryCarouselEdit extends Component {
 							<Flickity
 								className={ navClasses }
 								options={ navOptions }
-								disableImagesLoaded={ false }
+								disableImagesLoaded={ true }
 								reloadOnUpdate={ true }
 								flickityRef={ ( c ) => this.flkty = c }
 								updateOnEachImageLoad={ true }

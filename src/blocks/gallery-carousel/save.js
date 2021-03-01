@@ -32,6 +32,7 @@ const save = ( { attributes, className } ) => {
 		thumbnails,
 		responsiveHeight,
 		lightbox,
+		navForClass,
 	} = attributes;
 
 	// Return early if there are no images.
@@ -59,6 +60,7 @@ const save = ( { attributes, className } ) => {
 			'has-aligned-cells': alignCells,
 			[ `has-margin-bottom-${ gutter }` ]: thumbnails && gutter > 0,
 			[ `has-margin-bottom-mobile-${ gutterMobile }` ]: thumbnails && gutterMobile > 0,
+			[ navForClass ]: thumbnails,
 		}
 	);
 
@@ -120,7 +122,7 @@ const save = ( { attributes, className } ) => {
 	);
 
 	const navOptions = {
-		asNavFor: '.has-carousel',
+		asNavFor: `.${ navForClass }`,
 		autoPlay: false,
 		contain: true,
 		cellAlign: 'left',
