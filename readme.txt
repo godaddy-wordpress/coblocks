@@ -116,4 +116,5 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Bug Fixes
-* Fix backward compatibility with WP_Block_Supports [#1828](https://github.com/godaddy-wordpress/coblocks/pull/1828)
+* Fix Carousel thumbnail navigation behavior [#1835](https://github.com/godaddy-wordpress/coblocks/pull/1835)
+* Fix Layout Selector behavior around animations [#1831](https://github.com/godaddy-wordpress/coblocks/pull/1831)

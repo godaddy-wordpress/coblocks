@@ -1,4 +1,10 @@
 
+2.8.2 / 2021-03-01
+==================
+### Bug Fixes
+* Fix Carousel thumbnail navigation behavior [#1835](https://github.com/godaddy-wordpress/coblocks/pull/1835)
+* Fix Layout Selector behavior around animations [#1831](https://github.com/godaddy-wordpress/coblocks/pull/1831)
+
 2.8.1 / 2021-02-16
 ==================
 ### Bug Fixes
