@@ -6,6 +6,8 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 describe( 'Extension: CoBlocks Settings', function() {
 	let supportsGradients = false;
 	beforeEach( function() {
+		helpers.goTo( '/wp-admin/post-new.php?post_type=post' );
+
 		helpers.disableGutenbergFeatures();
 
 		cy.get( '.edit-post-more-menu' ).click();
@@ -19,7 +21,7 @@ describe( 'Extension: CoBlocks Settings', function() {
 				supportsGradients = true;
 			}
 		} );
-		cy.get( '.components-modal__header' ).find( 'button[aria-label="Close dialog"]' ).click();
+		cy.get( '.components-modal__header button[aria-label="Close dialog"]' ).click();
 	} );
 
 	/**
@@ -37,7 +39,7 @@ describe( 'Extension: CoBlocks Settings', function() {
 		cy.get( '.coblocks-modal__content' ).contains( 'Typography controls' ).click();
 		cy.get( '.components-coblocks-typography-dropdown' ).should( 'not.exist' );
 
-		cy.get( '.components-modal__header' ).find( 'button[aria-label="Close dialog"]' ).click();
+		cy.get( '.components-modal__header button[aria-label="Close dialog"]' ).click();
 	} );
 
 	/**
@@ -54,7 +56,7 @@ describe( 'Extension: CoBlocks Settings', function() {
 		cy.get( '.coblocks-modal__content' ).contains( 'Animation controls' ).click();
 		cy.get( '.components-coblocks-animation-toggle' ).should( 'not.exist' );
 
-		cy.get( '.components-modal__header' ).find( 'button[aria-label="Close dialog"]' ).click();
+		cy.get( '.components-modal__header button[aria-label="Close dialog"]' ).click();
 	} );
 
 	/**
@@ -88,6 +90,6 @@ describe( 'Extension: CoBlocks Settings', function() {
 		cy.get( '.components-panel__body-title' ).contains( /(Background & Text Color|Color Settings)/i ).should( 'not.exist' );
 		cy.get( '.coblocks-modal__content' ).contains( 'Color settings' ).click(); // Re-enable
 
-		cy.get( '.components-modal__header' ).find( 'button[aria-label="Close dialog"]' ).click();
+		cy.get( '.components-modal__header button[aria-label="Close dialog"]' ).click();
 	} );
 } );

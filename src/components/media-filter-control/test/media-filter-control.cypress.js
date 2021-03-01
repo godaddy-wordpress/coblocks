@@ -22,6 +22,8 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 
 		helpers.upload.imageToBlock( 'core/image' );
 
+		cy.get( '[data-type="core/image"] [src^="http"]' );
+
 		cy.get( '.block-editor-block-toolbar__slot .components-coblocks-media-filter' )
 			.should( 'exist' )
 			.click();
@@ -56,17 +58,6 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 
 				helpers.savePage();
 				helpers.checkForBlockErrors( 'core/image' );
-				helpers.viewPage();
-
-				cy.get( 'figure.wp-block-image' )
-					.should( 'not.have.class', 'has-filter-original' )
-					.and( 'not.have.class', 'has-filter-grayscale' )
-					.and( 'not.have.class', 'has-filter-sepia' )
-					.and( 'not.have.class', 'has-filter-saturation' )
-					.and( 'not.have.class', 'has-filter-dim' )
-					.and( 'not.have.class', 'has-filter-vintage' );
-
-				helpers.editPage();
 
 				cy.get( '.wp-block-image' )
 					.click();
@@ -106,6 +97,8 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 
 		helpers.upload.imageToBlock( 'core/gallery' );
 
+		cy.get( '[data-type="core/gallery"] [src^="http"]' );
+
 		cy.get( '.block-editor-block-toolbar__slot .components-coblocks-media-filter' )
 			.should( 'exist' )
 			.click();
@@ -140,17 +133,6 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 
 				helpers.savePage();
 				helpers.checkForBlockErrors( 'core/gallery' );
-				helpers.viewPage();
-
-				cy.get( 'figure.wp-block-gallery' )
-					.should( 'not.have.class', 'has-filter-original' )
-					.and( 'not.have.class', 'has-filter-grayscale' )
-					.and( 'not.have.class', 'has-filter-sepia' )
-					.and( 'not.have.class', 'has-filter-saturation' )
-					.and( 'not.have.class', 'has-filter-dim' )
-					.and( 'not.have.class', 'has-filter-vintage' );
-
-				helpers.editPage();
 
 				cy.get( '.wp-block-gallery' )
 					.click();
