@@ -22,7 +22,7 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 
 		helpers.upload.imageToBlock( 'core/image' );
 
-		cy.get( '[data-type="core/image"] [src*="http"]' );
+		cy.get( '[data-type="core/image"] [src^="http"]' );
 
 		cy.get( '.block-editor-block-toolbar__slot .components-coblocks-media-filter' )
 			.should( 'exist' )
@@ -97,7 +97,7 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 
 		helpers.upload.imageToBlock( 'core/gallery' );
 
-		cy.get( '[data-type="core/gallery"] [src*="http"]' );
+		cy.get( '[data-type="core/gallery"] [src^="http"]' );
 
 		cy.get( '.block-editor-block-toolbar__slot .components-coblocks-media-filter' )
 			.should( 'exist' )

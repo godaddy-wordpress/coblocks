@@ -88,6 +88,6 @@ describe( 'Extension: CoBlocks Settings', function() {
 		cy.get( '.components-panel__body-title' ).contains( /(Background & Text Color|Color Settings)/i ).should( 'not.exist' );
 		cy.get( '.coblocks-modal__content' ).contains( 'Color settings' ).click(); // Re-enable
 
-		cy.get( '.components-modal__header' ).find( 'button[aria-label="Close dialog"]' ).click();
+		cy.get( '.components-modal__header button[aria-label="Close dialog"]' ).click();
 	} );
 } );
