@@ -4,6 +4,7 @@
 CHANGEDFILES=${@-$(git diff --name-only origin/master)}
 SPECS=()
 SPECSTRING=''
+TESTOVERRIDE=${@-$(git branch --show-current)}
 
 for FILE in $CHANGEDFILES
 do
@@ -55,7 +56,7 @@ do
 		if [[ "${foundwords}" -eq 0 ]]; then
 			# Spec file string is empty, do not start string with a comma
 			if [[ ${#SPECSTRING} -eq 0 ]]; then
-				SPECSTRING="src/components/${testSpec}/**/*.cypress.js"
+				SPECSTRING="src/**/*.cypress.js"
 			else
 				SPECSTRING="${SPECSTRING},src/components/${testSpec}/**/*.cypress.js"
 			fi
@@ -63,6 +64,12 @@ do
 		fi
   fi
 done
+
+# TESTOVERRIDE matches run-all-tests*
+if [[ $TESTOVERRIDE == *"run-all-tests"* ]]; then
+	printf "\n\033[0;33m===Test Override Branch Detected===\033[0m\n"
+	SPECS=${@-$(find . -iname '*.cypress.js')}
+fi
 
 # No spec files to run
 if [ ${#SPECS[@]} -eq 0 ]; then
