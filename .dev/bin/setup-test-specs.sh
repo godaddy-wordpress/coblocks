@@ -4,7 +4,7 @@
 CHANGEDFILES=${@-$(git diff --name-only origin/master)}
 SPECS=()
 SPECSTRING=''
-TESTOVERRIDE=${@-$(git branch --show-current)}
+TESTOVERRIDE=${@-$(git branch -l | grep '*')}
 
 for FILE in $CHANGEDFILES
 do
@@ -56,7 +56,7 @@ do
 		if [[ "${foundwords}" -eq 0 ]]; then
 			# Spec file string is empty, do not start string with a comma
 			if [[ ${#SPECSTRING} -eq 0 ]]; then
-				SPECSTRING="src/**/*.cypress.js"
+				SPECSTRING="src/components/${testSpec}/**/*.cypress.js"
 			else
 				SPECSTRING="${SPECSTRING},src/components/${testSpec}/**/*.cypress.js"
 			fi
