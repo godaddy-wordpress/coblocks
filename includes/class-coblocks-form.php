@@ -970,8 +970,8 @@ class CoBlocks_Form {
 		 */
 		$email_content = (string) apply_filters( 'coblocks_form_email_content', $this->email_content, $_POST, $post_id );
 
-		$from_name = isset( $_POST[ $name_field_id ]['value'] ) ? esc_html( $_POST[ $name_field_id ]['value'] ) : esc_html( get_bloginfo( 'name' ) );
 		$reply_to  = isset( $_POST[ $email_field_id ]['value'] ) ? esc_html( $_POST[ $email_field_id ]['value'] ) : esc_html( get_bloginfo( 'admin_email' ) );
+		$from_name = isset( $_POST[ $name_field_id ]['value'] ) ? esc_html( $_POST[ $name_field_id ]['value'] ) : esc_html( $reply_to );
 
 		/**
 		 * Filter the form email headers.
