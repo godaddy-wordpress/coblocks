@@ -1,9 +1,4 @@
 /**
- * External dependencies.
- */
-import { startCase } from 'lodash';
-
-/**
  * Internal dependencies.
  */
 import coblocksLayoutSelector from '../../../src/extensions/layout-selector/test/cypress-layouts';
@@ -272,7 +267,7 @@ export function setBlockStyle( style ) {
  */
 export function selectBlock( name ) {
 	cy.get( '.block-editor-block-navigation' ).click();
-	cy.get( '.block-editor-block-navigation-leaf button' ).contains( startCase( name ) ).click();
+	cy.get( '.block-editor-block-navigation-leaf button' ).contains( RegExp( name, 'i' ) ).click();
 }
 
 /**

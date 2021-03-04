@@ -46,9 +46,9 @@ describe( 'Test CoBlocks Lightbox Controls extension', function() {
 
 			helpers.upload.imageToBlock( 'core/image' );
 
-			cy.get( '[aria-label="Change alignment"]' ).click();
+			cy.get( '[aria-label="Change alignment"], [aria-label="Align"]' ).click();
 
-			cy.get( '[aria-label="Change alignment"]' ).contains( new RegExp( alignment, 'i' ) ).click();
+			cy.get( '[aria-label="Change alignment"], [aria-label="Align"]' ).contains( new RegExp( alignment, 'i' ) ).click();
 
 			helpers.toggleSettingCheckbox( /Lightbox/ );
 
@@ -110,9 +110,9 @@ describe( 'Test CoBlocks Lightbox Controls extension', function() {
 
 			helpers.upload.imageToBlock( 'core/gallery' );
 
-			cy.get( '[aria-label="Change alignment"]' ).click();
+			cy.get( '[aria-label="Change alignment"], [aria-label="Align"]' ).click();
 
-			cy.get( '[aria-label="Change alignment"]' ).contains( new RegExp( alignment, 'i' ) ).click();
+			cy.get( '[aria-label="Change alignment"], [aria-label="Align"]' ).contains( new RegExp( alignment, 'i' ) ).click();
 
 			helpers.toggleSettingCheckbox( /Lightbox/ );
 

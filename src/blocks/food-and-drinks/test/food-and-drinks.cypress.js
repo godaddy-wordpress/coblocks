@@ -6,6 +6,7 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 describe( 'Block: Food and Drinks', function() {
 	beforeEach( () => {
 		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
+		helpers.selectBlock( 'food & drink' );
 	} );
 
 	/**

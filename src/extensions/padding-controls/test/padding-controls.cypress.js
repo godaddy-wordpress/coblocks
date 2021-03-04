@@ -9,7 +9,7 @@ describe( 'Extension: CoBlocks Padding Controls', function() {
 	 */
 	it( 'Can control padding settings as expected.', function() {
 		helpers.addBlockToPost( 'core/group', true );
-		cy.get( '[data-type="core/group"]' ).click( { force: true } );
+		helpers.selectBlock( 'group' );
 
 		helpers.openSettingsPanel( /group settings/i );
 

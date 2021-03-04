@@ -86,7 +86,7 @@
 		"@wordpress/scripts": "7.1.4",
 		"autoprefixer": "^9.7.5",
 		"css-loader": "^3.2.1",
-		"cypress": "^6.3.0",
+		"cypress": "^6.6.0",
 		"cypress-file-upload": "^3.5.3",
 		"cypress-log-to-output": "1.1.2",
 		"email-validator": "^2.0.4",
