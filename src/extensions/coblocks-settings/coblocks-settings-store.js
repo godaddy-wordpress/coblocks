@@ -2,7 +2,7 @@
 /**
  * WordPress dependencies
  */
-import { registerStore } from '@wordpress/data';
+import { createReduxStore, register } from '@wordpress/data';
 import apiFetch from '@wordpress/api-fetch';
 import { applyFilters } from '@wordpress/hooks';
 
@@ -44,7 +44,7 @@ const registerCoBlocksSettingsStore = () => {
 		setAnimation: ( ) => ( { type: 'UPDATE_ANIMATION' } ),
 	};
 
-	registerStore( 'coblocks/coblocks-settings', {
+	const store = createReduxStore( 'coblocks/coblocks-settings', {
 		reducer( state = DEFAULT_STATE, action ) {
 			let toggleValue;
 			switch ( action.type ) {
@@ -175,6 +175,8 @@ const registerCoBlocksSettingsStore = () => {
 			getColorPanel: ( state ) => state.colorsPanel,
 		},
 	} );
+
+	register( store );
 };
 
 export default registerCoBlocksSettingsStore;
