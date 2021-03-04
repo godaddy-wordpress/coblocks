@@ -34,7 +34,7 @@ describe( 'Block: Food and Drinks', function() {
 		helpers.openSettingsPanel( /food & drinks settings/i );
 
 		[ 2, 3, 4 ].forEach( ( columns ) => {
-			cy.get( '.components-range-control' ).contains( /columns/i ).parent().find( '.components-range-control__number' ).type( `{selectall}${ columns }` );
+			cy.get( '.components-range-control' ).contains( /columns/i ).parent().find( '.components-range-control__number input' ).focus().type( `{selectall}${ columns }` );
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', 'has-columns' );
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', `has-${ columns }-columns` );
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).find( '[data-type="coblocks/food-item"]' ).should( 'have.length', columns );
