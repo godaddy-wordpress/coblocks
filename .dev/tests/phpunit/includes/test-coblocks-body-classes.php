@@ -66,6 +66,7 @@ class CoBlocks_Body_Classes_Tests extends WP_UnitTestCase {
 	public function test_themes() {
 
 		$expected = [
+			'twentytwentyone',
 			'twentytwenty',
 			'twentynineteen',
 			'twentyseventeen',
@@ -87,6 +88,7 @@ class CoBlocks_Body_Classes_Tests extends WP_UnitTestCase {
 	public function test_filtered_themes() {
 
 		$expected = [
+			'twentytwentyone',
 			'twentytwenty',
 			'twentynineteen',
 			'twentyseventeen',
