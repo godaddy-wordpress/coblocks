@@ -44,6 +44,7 @@ class CoBlocks_Body_Classes {
 	 */
 	public function themes() {
 		$themes = array(
+			'twentytwentyone',
 			'twentytwenty',
 			'twentynineteen',
 			'twentyseventeen',
