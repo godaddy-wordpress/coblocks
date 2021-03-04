@@ -83,6 +83,10 @@ class CoBlocks_Body_Classes {
 			$classes[] = 'is-' . $this->theme_slug();
 		}
 
+		if ( apply_filters( 'coblocks_is_amp', ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() && ! in_array( 'amp', $classes, true ) ) ) ) {
+			$classes[] = 'amp';
+		}
+
 		return $classes;
 	}
 
