@@ -32,7 +32,7 @@ export function addFormChild( name ) {
 	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click();
 	cy.get( '.block-editor-inserter__search' ).click().type( name );
 
-	cy.get( '.block-editor-inserter__block-list .editor-block-list-item-coblocks-field-' + name ).first().click();
+	cy.get( '.block-editor-inserter__content .editor-block-list-item-coblocks-field-' + name ).first().click();
 	cy.get( `[data-type="coblocks/field-${ name }"]` ).should( 'exist' ).click();
 }
 
