@@ -154,7 +154,7 @@ class Controls extends Component {
 }
 
 export default withSelect( ( select ) => {
-	const { getAnimation } = select( 'coblocks/coblocks-settings' );
+	const { getAnimation } = select( 'coblocks/settings' );
 
 	return {
 		animationEnabled: getAnimation(),

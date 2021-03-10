@@ -278,7 +278,7 @@ class TypographyControls extends Component {
 }
 
 const applyWithSelect = withSelect( () => {
-	const { getTypography } = select( 'coblocks/coblocks-settings' );
+	const { getTypography } = select( 'coblocks/settings' );
 
 	return {
 		typographyEnabled: getTypography(),

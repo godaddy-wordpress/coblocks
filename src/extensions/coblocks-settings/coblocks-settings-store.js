@@ -35,7 +35,7 @@ const getStoreType = ( storeName, storeOptions ) => {
  * Function intended to fire conditionally when the CoBlocks Settings extension is enabled for user.
  * Function will perform all necessary actions to register Redux store for use with CoBlocks Settings.
  *
- * Store namespace: `coblocks/coblocks-settings`
+ * Store namespace: `coblocks/settings`
  *
  * @function registerCoBlocksSettingsStore
  */
@@ -87,7 +87,7 @@ const registerCoBlocksSettingsStore = () => {
 		setAnimation: ( ) => ( { type: 'UPDATE_ANIMATION' } ),
 	};
 
-	const store = getStoreType( 'coblocks/coblocks-settings', {
+	const store = getStoreType( 'coblocks/settings', {
 		reducer( state = DEFAULT_STATE, action ) {
 			let toggleValue;
 			switch ( action.type ) {
