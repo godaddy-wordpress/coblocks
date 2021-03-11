@@ -265,7 +265,7 @@ commands:
       - run:
           name: Setup spec files to run based on git diff-tree
           command: |
-            if [[ "$CIRCLE_BRANCH" != "master" && "$CIRCLE_BRANCH" != "develop" ]]; then
+            if [[ "$CIRCLE_BRANCH" != "master" && "$CIRCLE_BRANCH" != "develop" && "$CIRCLE_BRANCH" != *"run-all-tests"* ]]; then
               bash .dev/bin/setup-test-specs.sh $FILES
             fi
 
@@ -274,7 +274,7 @@ commands:
       - run:
           name: "Pre-Check files"
           command: |
-            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ]; then
+            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ] && [ "$CIRCLE_BRANCH" != *"run-all-tests"* ]; then
               echo "Changes do not require testing."
               circleci-agent step halt
             fi
