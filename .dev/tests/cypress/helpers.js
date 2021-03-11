@@ -264,10 +264,11 @@ export function setBlockStyle( style ) {
  * Input parameter is the name of the block to select.
  *
  * @param {string} name The name of the block to select eg: highlight or click-to-tweet
+ * @param {boolean} isChildBlock  Optional selector for children blocks. Default will be top level blocks.
  */
-export function selectBlock( name ) {
+export function selectBlock( name, isChildBlock = false ) {
 	cy.get( '.block-editor-block-navigation' ).click();
-	cy.get( '.block-editor-block-navigation-leaf button' ).contains( RegExp( name, 'i' ) ).click();
+	cy.get( '.block-editor-block-navigation-leaf button' ).contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) ).click();
 }
 
 /**
@@ -363,17 +364,21 @@ export function openSettingsPanel( panelText ) {
 }
 
 /**
- * Open a block heading controls located in block toolbar
+ * Open a block heading controls located in block toolbar.
+ *
+ * This function has an extended timeout because settings
+ * propagate down to children slowly
  *
  * @param {number} headingLevel The button that should be located and clicked
  */
 export function openHeadingToolbarAndSelect( headingLevel ) {
-	cy.get( '.block-editor-block-toolbar' ).find( '.block-editor-block-toolbar__slot' ).first().find( 'button' ).each( ( button, index ) => {
+	cy.get( '.block-editor-block-toolbar .block-editor-block-toolbar__slot button' ).each( ( button, index ) => {
 		if ( index === 1 ) { // represents the second position in the toolbar
 			cy.get( button ).click( { force: true } );
 		}
 	} );
-	cy.get( '.components-popover__content' ).find( 'div[role="menu"]' ).find( 'button' ).contains( headingLevel ).click();
+	cy.get( '.components-popover__content div[role="menu"] button' ).contains( headingLevel ).focus().click();
+	cy.get( `h${ headingLevel } > [data-rich-text-placeholder="Write title…"]`, { timeout: 10000 } ).should( 'have.length', 2 ).parent();
 }
 
 /**
