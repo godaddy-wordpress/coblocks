@@ -366,9 +366,6 @@ export function openSettingsPanel( panelText ) {
 /**
  * Open a block heading controls located in block toolbar.
  *
- * This function has an extended timeout because settings
- * propagate down to children slowly
- *
  * @param {number} headingLevel The button that should be located and clicked
  */
 export function openHeadingToolbarAndSelect( headingLevel ) {
@@ -378,7 +375,6 @@ export function openHeadingToolbarAndSelect( headingLevel ) {
 		}
 	} );
 	cy.get( '.components-popover__content div[role="menu"] button' ).contains( headingLevel ).focus().click();
-	cy.get( `h${ headingLevel } > [data-rich-text-placeholder="Write title…"]`, { timeout: 10000 } ).should( 'have.length', 2 ).parent();
 }
 
 /**
