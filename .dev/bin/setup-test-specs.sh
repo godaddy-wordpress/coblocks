@@ -64,11 +64,6 @@ do
   fi
 done
 
-# $CIRCLE_BRANCH matches run-all-tests*
-if [[ $CIRCLE_BRANCH == *"run-all-tests"* ]]; then
-	printf "\n\033[32m===Test Override Branch Detected===\033[32m\n"
-fi
-
 # No spec files to run
 if [ ${#SPECS[@]} -eq 0 ]; then
 	echo "Changes do not require testing."
