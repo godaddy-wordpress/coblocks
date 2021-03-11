@@ -64,19 +64,9 @@ do
   fi
 done
 
-# TESTOVERRIDE matches run-all-tests*
+# $CIRCLE_BRANCH matches run-all-tests*
 if [[ $CIRCLE_BRANCH == *"run-all-tests"* ]]; then
 	printf "\n\033[32m===Test Override Branch Detected===\033[32m\n"
-	SPECS=''
-	SPECSTRING=''
-
-	SEARCHEDSPECS=${@-$(find . -iname '*.cypress.js')}
-	SPECSTRING=${@-$(find . -iname '*.cypress.js' | sed "s/^.//" | tr '\n' ',' )}
-	for FILE in $SEARCHEDSPECS
-		do
-			testSpec=$(echo $FILE | sed "s/.*\///" | sed "s/.cypress.js//")
-			SPECS=( "${SPECS[@]}" "${testSpec}" )
-	done
 fi
 
 # No spec files to run
