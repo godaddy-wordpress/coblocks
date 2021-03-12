@@ -49,11 +49,19 @@ class GalleryMasonryEdit extends Component {
 	}
 
 	componentDidMount() {
-		if ( this.props.wideControlsEnabled === true && ! this.props.attributes.align && this.props.attributes.gridSize === 'xlrg' ) {
-			this.props.setAttributes( {
-				align: 'wide',
-				gridSize: 'lrg',
-			} );
+		const {
+			attributes,
+			setAttributes,
+			wideControlsEnabled,
+		} = this.props;
+
+		if ( typeof attributes.align !== 'undefined' && typeof attributes.gridSize !== 'undefined' ) {
+			if ( wideControlsEnabled === true && ! attributes.align && attributes.gridSize === 'xlrg' ) {
+				setAttributes( {
+					align: 'wide',
+					gridSize: 'lrg',
+				} );
+			}
 		}
 	}
 
