@@ -115,6 +115,15 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+### Enhancements
+* Introduce WordPress 5.7 compatibility changes [#1845](https://github.com/godaddy-wordpress/coblocks/pull/1845)
+* Introduce new from: header to form submission emails [#1840](https://github.com/godaddy-wordpress/coblocks/pull/1840)
+
 ### Bug Fixes
-* Fix Carousel thumbnail navigation behavior [#1835](https://github.com/godaddy-wordpress/coblocks/pull/1835)
-* Fix Layout Selector behavior around animations [#1831](https://github.com/godaddy-wordpress/coblocks/pull/1831)
+* Fix Services block image height in TwentyTwentyOne [#1846](https://github.com/godaddy-wordpress/coblocks/pull/1846)
+* Fix Logos & Badges block sizing behavior [#1852](https://github.com/godaddy-wordpress/coblocks/pull/1852)
+* Fix Accordion block appender behavior [#1851](https://github.com/godaddy-wordpress/coblocks/pull/1851)
+* Fix animation visibility when in AMP [#1847](https://github.com/godaddy-wordpress/coblocks/pull/1847)
+
+### Misc
+* Document tested to WordPress 5.7 [#1853](https://github.com/godaddy-wordpress/coblocks/pull/1853)
