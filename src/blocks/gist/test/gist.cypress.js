@@ -79,4 +79,22 @@ describe( 'Test CoBlocks Gist Block', function() {
 
 		helpers.editPage();
 	} );
+
+	it( 'Test two gists in the edit page should render properly', function() {
+		helpers.addBlockToPost( 'coblocks/gist', true );
+
+		cy.get( '.wp-block-coblocks-gist textarea' ).invoke( 'val', gistUrl ).type( '{enter}' );
+
+		helpers.addBlockToPost( 'coblocks/gist' );
+
+		cy.get( '.wp-block-coblocks-gist textarea' ).invoke( 'val', gistUrl ).type( '{enter}' );
+
+		helpers.savePage();
+
+		helpers.viewPage();
+
+		helpers.editPage();
+
+		cy.get( '.wp-block-coblocks-gist' ).find( '.gist-file' ).should( 'have.length', 2 );
+	} );
 } );
