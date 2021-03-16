@@ -1,7 +1,8 @@
 sudo apt-get -y install golang-go
 go get github.com/mailhog/MailHog
 
-alias MailHog="~/go/bin/MailHog"
+echo alias MailHog="~/go/bin/MailHog" > ~/.bashrc
+source ~/.bashrc
 
 mkdir /tmp/wordpress/wp-content/mu-plugins
 
