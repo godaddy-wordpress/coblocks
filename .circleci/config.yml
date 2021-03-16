@@ -213,7 +213,7 @@ commands:
           command: |
             touch cypress.env.json
             echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
-            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
+            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ] || [ "$CIRCLE_BRANCH" == *"run-all-tests"* ]; then
               ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>
             else
               ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >> --spec "$(cat /tmp/specstring)"
@@ -265,7 +265,7 @@ commands:
       - run:
           name: Setup spec files to run based on git diff-tree
           command: |
-            if [[ "$CIRCLE_BRANCH" != "master" && "$CIRCLE_BRANCH" != "develop" ]]; then
+            if [[ "$CIRCLE_BRANCH" != "master" && "$CIRCLE_BRANCH" != "develop" && "$CIRCLE_BRANCH" != *"run-all-tests"* ]]; then
               bash .dev/bin/setup-test-specs.sh $FILES
             fi
 
@@ -274,7 +274,7 @@ commands:
       - run:
           name: "Pre-Check files"
           command: |
-            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ]; then
+            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ] && [ "$CIRCLE_BRANCH" != *"run-all-tests"* ]; then
               echo "Changes do not require testing."
               circleci-agent step halt
             fi

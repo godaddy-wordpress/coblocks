@@ -63,30 +63,27 @@ describe( 'Test CoBlocks Services Block', function() {
 	/**
 	 * Test that we can add a services block to the content, change
 	 * heading level and  are able to successfully save the block without errors.
+	 *
+	 * This function has an extended timeout because settings
+	 * propagate down to children slowly
 	 */
 	it( 'Test services block saves with heading level set.', function() {
 		helpers.addBlockToPost( 'coblocks/services', true );
 
-		cy.get( '.wp-block-coblocks-services' ).click( { force: true } );
+		cy.get( 'h3 > [data-rich-text-placeholder="Write title…"]' ).should( 'have.length', 2 ).parent();
 
-		helpers.addBlockToPost( 'coblocks/services', true );
-		cy.get( 'h3 > [data-rich-text-placeholder="Write title…"]' ).parent();
-
-		cy.get( '.wp-block-coblocks-services' ).click();
+		helpers.selectBlock( 'services' );
 		helpers.openHeadingToolbarAndSelect( 2 );
-		cy.get( 'h2 > [data-rich-text-placeholder="Write title…"]' ).parent();
+		cy.get( `h2 > [data-rich-text-placeholder="Write title…"]`, { timeout: 10000 } ).should( 'have.length', 2 ).parent();
 
-		cy.get( '.wp-block-coblocks-services' ).click();
 		helpers.openHeadingToolbarAndSelect( 3 );
-		cy.get( 'h3 > [data-rich-text-placeholder="Write title…"]' ).parent();
+		cy.get( `h3> [data-rich-text-placeholder="Write title…"]`, { timeout: 10000 } ).should( 'have.length', 2 ).parent();
 
-		cy.get( '.wp-block-coblocks-services' ).click();
 		helpers.openHeadingToolbarAndSelect( 4 );
-		cy.get( 'h4 > [data-rich-text-placeholder="Write title…"]' ).parent();
+		cy.get( `h4 > [data-rich-text-placeholder="Write title…"]`, { timeout: 10000 } ).should( 'have.length', 2 ).parent();
 
-		cy.get( '.wp-block-coblocks-services' ).click();
 		helpers.openHeadingToolbarAndSelect( 5 );
-		cy.get( 'h5 > [data-rich-text-placeholder="Write title…"]' ).parent();
+		cy.get( `h5 > [data-rich-text-placeholder="Write title…"]`, { timeout: 10000 } ).should( 'have.length', 2 ).parent();
 
 		helpers.savePage();
 		helpers.checkForBlockErrors( 'coblocks/services' );
@@ -98,13 +95,13 @@ describe( 'Test CoBlocks Services Block', function() {
 	it( 'Test service block has the proper arrow orientation.', function() {
 		helpers.addBlockToPost( 'coblocks/services', true );
 
-		cy.get( '.wp-block-coblocks-services div[data-type="coblocks/service"]:first-child' ).click();
+		helpers.selectBlock( 'service', true );
 		cy.get( 'div.block-editor-block-mover' ).should( 'have.class', 'is-horizontal' );
 
-		cy.get( '.wp-block-coblocks-services' ).click();
+		helpers.selectBlock( 'services' );
 		helpers.setInputValue( 'Services settings', 'Columns', 1, false );
 
-		cy.get( '.wp-block-coblocks-services div[data-type="coblocks/service"]:first-child' ).click();
+		helpers.selectBlock( 'service', true );
 		cy.get( 'div.block-editor-block-mover' ).should( 'not.have.class', 'is-horizontal' );
 
 		helpers.savePage();
