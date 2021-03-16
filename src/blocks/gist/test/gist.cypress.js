@@ -91,9 +91,7 @@ describe( 'Test CoBlocks Gist Block', function() {
 
 		helpers.savePage();
 
-		helpers.viewPage();
-
-		helpers.editPage();
+		helpers.checkForBlockErrors( 'coblocks/gist' );
 
 		cy.get( '.wp-block-coblocks-gist' ).find( '.gist-file' ).should( 'have.length', 2 );
 	} );
