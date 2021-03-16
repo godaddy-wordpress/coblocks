@@ -11,8 +11,9 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
+import { compose } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
+import { Component, Fragment, useState, useEffect } from '@wordpress/element';
 import {
 	__experimentalImageURLInputUI as ImageURLInputUI,
 	BlockControls,
@@ -25,7 +26,7 @@ import {
 	Spinner,
 	ButtonGroup,
 } from '@wordpress/components';
-import { dispatch, select } from '@wordpress/data';
+import { withSelect, withDispatch } from '@wordpress/data';
 import { mediaUpload } from '@wordpress/editor';
 import { isBlobURL } from '@wordpress/blob';
 import { closeSmall } from '@wordpress/icons';
@@ -35,119 +36,79 @@ import { closeSmall } from '@wordpress/icons';
  */
 const ALLOWED_BLOCKS = [ 'core/heading', 'core/button', 'core/paragraph' ];
 
-class Edit extends Component {
-	constructor() {
-		super( ...arguments );
+const Edit = ( props ) => {
+	const {
+		attributes,
+		clientId,
+		getBlocksByClientId,
+		insertBlocks,
+		removeBlocks,
+		setAttributes,
+		updateBlockAttributes,
+	} = props;
 
-		this.updateInnerAttributes = this.updateInnerAttributes.bind( this );
-		this.manageInnerBlock = this.manageInnerBlock.bind( this );
-		this.onChangeAlignment = this.onChangeAlignment.bind( this );
-		this.toggleCta = this.toggleCta.bind( this );
-		this.replaceImage = this.replaceImage.bind( this );
-	}
-
-	updateInnerAttributes( blockName, newAttributes ) {
-		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
-			this.props.clientId
-		)[ 0 ].innerBlocks;
+	const updateInnerAttributes = ( blockName, newAttributes ) => {
+		const innerItems = getBlocksByClientId( clientId )[ 0 ].innerBlocks;
 
 		innerItems.forEach( ( item ) => {
 			if ( item.name === blockName ) {
-				dispatch( 'core/block-editor' ).updateBlockAttributes(
+				updateBlockAttributes(
 					item.clientId,
 					newAttributes
 				);
 			}
 		} );
-	}
+	};
 
-	manageInnerBlock( blockName, blockAttributes, show = true ) {
-		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
-			this.props.clientId
-		)[ 0 ].innerBlocks;
+	const manageInnerBlock = ( blockName, blockAttributes, show = true ) => {
+		const innerItems = getBlocksByClientId( clientId )[ 0 ].innerBlocks;
 
 		const targetBlock = innerItems.filter( ( item ) => item.name === blockName );
 
 		if ( ! targetBlock.length && show ) {
 			const newBlock = wp.blocks.createBlock( blockName, blockAttributes );
-			dispatch( 'core/block-editor' ).insertBlocks(
-				newBlock,
-				innerItems.length,
-				this.props.clientId,
-				false
-			);
+			insertBlocks( newBlock, innerItems.length, clientId, false );
 		}
 
 		if ( targetBlock.length && ! show ) {
-			dispatch( 'core/block-editor' ).removeBlocks(
-				targetBlock.map( ( item ) => item.clientId ),
-				false
-			);
+			removeBlocks( targetBlock.map( ( item ) => item.clientId ),	false );
 		}
-	}
+	};
 
-	componentDidUpdate( prevProps ) {
-		if (
-			this.props.attributes.headingLevel !== prevProps.attributes.headingLevel
-		) {
-			this.updateInnerAttributes( 'core/heading', {
-				level: this.props.attributes.headingLevel,
-			} );
-		}
+	/* istanbul ignore next */
+	useEffect( () => {
+		updateInnerAttributes( 'core/heading', { level: attributes.headingLevel } );
+	}, [ attributes.headingLevel ] );
 
-		if ( this.props.attributes.alignment !== prevProps.attributes.alignment ) {
-			this.updateInnerAttributes( 'core/heading', {
-				align: this.props.attributes.alignment,
-			} );
-			this.updateInnerAttributes( 'core/paragraph', {
-				align: this.props.attributes.alignment,
-			} );
-			this.updateInnerAttributes( 'core/button', {
-				align: this.props.attributes.alignment,
-			} );
-		}
+	/* istanbul ignore next */
+	useEffect( () => {
+		updateInnerAttributes( 'core/heading', { align: attributes.alignment } );
+		updateInnerAttributes( 'core/paragraph', { align: attributes.alignment } );
+		updateInnerAttributes( 'core/button', {	align: attributes.alignment } );
+	}, [ attributes.alignment ] );
 
-		if ( this.props.attributes.showCta !== prevProps.attributes.showCta ) {
-			this.manageInnerBlock( 'core/button', {
-				align: this.props.attributes.alignment,
-			}, this.props.attributes.showCta );
-		}
-	}
+	/* istanbul ignore next */
+	useEffect( () => {
+		manageInnerBlock( 'core/button', { align: attributes.alignment }, attributes.showCta );
+	}, [ attributes.showCta ] );
 
-	onChangeAlignment( alignment ) {
-		const { setAttributes } = this.props;
-
-		setAttributes( { alignment } );
-		this.updateInnerAttributes( 'core/heading', {
-			align: this.props.attributes.alignment,
-		} );
-		this.updateInnerAttributes( 'core/paragraph', {
-			align: this.props.attributes.alignment,
-		} );
-		this.updateInnerAttributes( 'core/button', {
-			align: this.props.attributes.alignment,
-		} );
-	}
-
-	toggleCta() {
-		const { attributes, setAttributes } = this.props;
-
+	const toggleCta = () => {
 		const showCta = ! attributes.showCta;
 		setAttributes( { showCta } );
-		this.manageInnerBlock( 'core/button', {}, showCta );
-	}
+		manageInnerBlock( 'core/button', {}, showCta );
+	};
 
-	replaceImage( files ) {
+	const replaceImage = ( files ) => {
 		mediaUpload( {
 			allowedTypes: [ 'image' ],
 			filesList: files,
 			onFileChange: ( [ media ] ) =>
-				this.props.setAttributes( { imageUrl: media.url, imageAlt: media.alt, imageId: media.id } ),
+				setAttributes( { imageUrl: media.url, imageAlt: media.alt, imageId: media.id } ),
 		} );
-	}
+	};
 
-	renderImage() {
-		const { attributes, setAttributes, isSelected } = this.props;
+	const renderImage = () => {
+		const { isSelected } = props;
 
 		const classes = classnames( 'wp-block-coblocks-service__figure', {
 			'is-transient': isBlobURL( attributes.imageUrl ),
@@ -156,7 +117,7 @@ class Edit extends Component {
 
 		const dropZone = (
 			<DropZone
-				onFilesDrop={ this.replaceImage }
+				onFilesDrop={ replaceImage }
 				label={ __( 'Drop image to replace', 'coblocks' ) }
 			/>
 		);
@@ -181,10 +142,9 @@ class Edit extends Component {
 				</figure>
 			</Fragment>
 		);
-	}
+	};
 
-	renderPlaceholder() {
-		const { setAttributes } = this.props;
+	const renderPlaceholder = () => {
 		return (
 			<MediaPlaceholder
 				className="wp-block-coblocks-service__figure"
@@ -197,86 +157,113 @@ class Edit extends Component {
 				onSelect={ ( el ) => setAttributes( { imageUrl: el.url, imageAlt: el.alt, imageId: el.id } ) }
 			/>
 		);
-	}
+	};
 
-	onSetHref = ( props ) => {
-		const { setAttributes } = this.props;
-
+	const onSetHref = ( ) => {
 		setAttributes( props );
+	};
+
+	const { className, getMedia } = props;
+	const {
+		headingLevel,
+		href,
+		imageUrl,
+		linkClass,
+		linkDestination,
+		linkTarget,
+		rel,
+		showCta,
+		imageId,
+	} = attributes;
+
+	const image = getMedia( imageId );
+
+	const TEMPLATE = [
+		[
+			'core/heading',
+			{
+				placeholder: /* translators: placeholder text for input box */ __( 'Write title…', 'coblocks' ),
+				level: headingLevel,
+			},
+		],
+		[
+			'core/paragraph',
+			{
+				/* translators: content placeholder */
+				placeholder: __( 'Write description…', 'coblocks' ),
+			},
+		],
+	];
+
+	if ( showCta ) {
+		TEMPLATE.push( [ 'core/button', {} ] );
 	}
 
-	render() {
-		const { className, attributes, setAttributes } = this.props;
-		const {
-			headingLevel,
-			href,
-			imageUrl,
-			linkClass,
-			linkDestination,
-			linkTarget,
-			rel,
-			showCta,
-			imageId,
-		} = attributes;
-
-		const image = select( 'core' ).getMedia( imageId );
-
-		const TEMPLATE = [
-			[
-				'core/heading',
-				{
-					placeholder: /* translators: placeholder text for input box */ __( 'Write title…', 'coblocks' ),
-					level: headingLevel,
-				},
-			],
-			[
-				'core/paragraph',
-				{
-					/* translators: content placeholder */
-					placeholder: __( 'Write description…', 'coblocks' ),
-				},
-			],
-		];
-
-		if ( showCta ) {
-			TEMPLATE.push( [ 'core/button', {} ] );
-		}
-
-		return (
-			<Fragment>
-				<BlockControls>
-					{ imageUrl && (
-						<ImageURLInputUI
-							url={ href || '' }
-							onChangeUrl={ this.onSetHref }
-							linkDestination={ linkDestination }
-							mediaUrl={ imageUrl }
-							mediaLink={ image && image.link }
-							linkTarget={ linkTarget }
-							linkClass={ linkClass }
-							rel={ rel }
-						/>
-					) }
-				</BlockControls>
-				<InspectorControls
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					onToggleCta={ this.toggleCta }
-				/>
-				<div className={ className }>
-					{ imageUrl ? this.renderImage() : this.renderPlaceholder() }
-					<div className="wp-block-coblocks-service__content">
-						<InnerBlocks
-							allowedBlocks={ ALLOWED_BLOCKS }
-							template={ TEMPLATE }
-							templateLock={ false }
-							templateInsertUpdatesSelection={ false }
-						/>
-					</div>
+	return (
+		<Fragment>
+			<BlockControls>
+				{ imageUrl && (
+					<ImageURLInputUI
+						url={ href || '' }
+						onChangeUrl={ onSetHref }
+						linkDestination={ linkDestination }
+						mediaUrl={ imageUrl }
+						mediaLink={ image && image.link }
+						linkTarget={ linkTarget }
+						linkClass={ linkClass }
+						rel={ rel }
+					/>
+				) }
+			</BlockControls>
+			<InspectorControls
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				onToggleCta={ toggleCta }
+			/>
+			<div className={ className }>
+				{ imageUrl ? renderImage() : renderPlaceholder() }
+				<div className="wp-block-coblocks-service__content">
+					<InnerBlocks
+						allowedBlocks={ ALLOWED_BLOCKS }
+						template={ TEMPLATE }
+						templateLock={ false }
+						templateInsertUpdatesSelection={ false }
+					/>
 				</div>
-			</Fragment>
-		);
-	}
-}
+			</div>
+		</Fragment>
+	);
+};
 
-export default Edit;
+export default compose( [
+
+	withSelect( ( select, props ) => {
+		const {
+			getBlocksByClientId,
+			getBlocks,
+		} = select( 'core/block-editor' );
+
+		const { getMedia } = select( 'core' );
+
+		return {
+			getBlocksByClientId,
+			innerBlocks: getBlocks( props.clientId ),
+			getMedia,
+		};
+	} ),
+
+	withDispatch( ( dispatch ) => {
+		const {
+			updateBlockAttributes,
+			insertBlocks,
+			removeBlocks,
+		} = dispatch( 'core/block-editor' );
+
+		return {
+			updateBlockAttributes,
+			insertBlocks,
+			removeBlocks,
+		};
+	} ),
+
+] )( Edit );
