@@ -1,11 +1,7 @@
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+sudo apt-get -y install golang-go
+go get github.com/mailhog/MailHog
 
-test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
-test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
-echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
-
-brew install mailhog
+alias MailHog="~/go/bin/MailHog"
 
 mkdir /tmp/wordpress/wp-content/mu-plugins
 
