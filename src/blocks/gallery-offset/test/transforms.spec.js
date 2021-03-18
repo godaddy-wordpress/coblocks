@@ -152,4 +152,20 @@ describe( 'coblocks/gallery-offset transforms', () => {
 		expect( block.isValid ).toBe( true );
 		expect( block.name ).toBe( name );
 	} );
+
+	it( 'should transform from multiple core/image blocks', () => {
+		const coreImageBlocks = [
+			createBlock( 'core/image', { id: 0, url: 'http://local.domain/image.jpg' } ),
+			createBlock( 'core/image', { id: 1, url: 'http://local.domain/image.jpg' } ),
+		];
+		const transformed = switchToBlockType( coreImageBlocks, name )[0];
+
+		expect( transformed.isValid ).toBe( true );
+		expect( transformed.attributes.images.length ).toBeGreaterThan( 0 );
+
+		transformed.attributes.images.forEach( ( image, index ) => {
+			expect( image.id ).toBe( coreImageBlocks[ index ].attributes.id );
+			expect( image.url ).toBe( coreImageBlocks[ index ].attributes.url );
+		} );
+	} );
 } );
