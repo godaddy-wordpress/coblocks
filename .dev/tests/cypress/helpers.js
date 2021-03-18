@@ -149,14 +149,11 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	}
 
 	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"]' ).click();
-
-	cy.get( '.block-editor-inserter__search' ).find( 'input' ).clear();
-	cy.get( '.block-editor-inserter__search' ).click().type(
-		blockID.split( '-' )[ 0 ]
-	);
+	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search' ).type( blockName );
 
 	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
 	cy.get( '.editor-block-list-item' + targetClassName ).first().click( { force: true } );
+	cy.get( `.edit-post-visual-editor .wp-block[data-type="${ blockName }"], .edit-site-visual-editor .wp-block[data-type="${ blockName }"]` ).should( 'exist' );
 
 	// Make sure the block was added to our page
 	cy.get( `[data-type="${ blockName }"]` ).should( 'exist' );
