@@ -53,7 +53,7 @@ describe( 'Test CoBlocks Share Block', function() {
 
 		helpers.toggleSettingCheckbox( 'Social colors' );
 
-		cy.get( 'input[aria-label="Rounded corners"][type="number"]' ).type( '{selectall}10' );
+		cy.get( 'input[aria-label="Rounded corners"][type="number"]' ).focus().type( '{selectall}10' );
 
 		if ( Cypress.browser.name === 'chrome' ) {
 			cy.get( '.wp-block-coblocks-social li:first-child .wp-block-coblocks-social__button' )
