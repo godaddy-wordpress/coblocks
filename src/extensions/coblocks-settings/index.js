@@ -12,14 +12,13 @@ import { __ } from '@wordpress/i18n';
 import { applyFilters } from '@wordpress/hooks';
 import { Fragment, useState } from '@wordpress/element';
 import { PluginMoreMenuItem } from '@wordpress/edit-post';
-import { registerGenericStore } from '@wordpress/data';
 import { registerPlugin, getPlugin, unregisterPlugin } from '@wordpress/plugins';
 
 /**
  * Internal dependencies
  */
 import CoBlocksSettingsModal from './coblocks-settings-modal';
-import createCoBlocksStore from './coblocks-settings-store.js';
+import registerCoBlocksSettingsStore from './coblocks-settings-store';
 
 if ( typeof coblocksSettings !== 'undefined' && coblocksSettings.coblocksSettingsEnabled ) {
 	const CoBlocksSettingsMenuItem = () => {
@@ -55,7 +54,7 @@ if ( typeof coblocksSettings !== 'undefined' && coblocksSettings.coblocksSetting
 		render: CoBlocksSettingsMenuItem,
 	} );
 
-	registerGenericStore( 'coblocks-settings', createCoBlocksStore() );
+	registerCoBlocksSettingsStore();
 } else if ( getPlugin( 'coblocks-settings' ) ) {
 	unregisterPlugin( 'coblocks-settings' );
 }

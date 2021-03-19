@@ -217,7 +217,7 @@ class CoBlocksSettingsModal extends Component {
 }
 
 const applyWithSelect = withSelect( () => {
-	const { getAnimation, getTypography, getCustomColors, getGradients, getColorPanel, getLayoutSelector } = select( 'coblocks-settings' );
+	const { getAnimation, getTypography, getCustomColors, getGradients, getColorPanel, getLayoutSelector } = select( 'coblocks/settings' );
 	const { getSettings } = select( 'core/block-editor' );
 
 	return {
@@ -239,7 +239,7 @@ const applyWithDispatch = withDispatch( ( dispatch ) => {
 		setGradients,
 		setLayoutSelector,
 		setTypography,
-	} = dispatch( 'coblocks-settings' );
+	} = dispatch( 'coblocks/settings' );
 	const { updateSettings } = dispatch( 'core/block-editor' );
 
 	return {

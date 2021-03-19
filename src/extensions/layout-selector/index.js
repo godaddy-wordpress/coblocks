@@ -185,7 +185,7 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 					hasCategories,
 					getSelectedCategory,
 				} = select( 'coblocks/template-selector' );
-				const { getLayoutSelector } = select( 'coblocks-settings' );
+				const { getLayoutSelector } = select( 'coblocks/settings' );
 
 				const { isViewportMatch } = select( 'core/viewport' );
 

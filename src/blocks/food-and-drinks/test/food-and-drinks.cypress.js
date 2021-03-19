@@ -6,6 +6,7 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 describe( 'Block: Food and Drinks', function() {
 	beforeEach( () => {
 		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
+		helpers.selectBlock( 'food & drink' );
 	} );
 
 	/**
@@ -103,7 +104,7 @@ describe( 'Block: Food and Drinks', function() {
 	it( 'Test the food-and-drinks block custom classes.', function() {
 		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
 
-		cy.get( '[data-type="coblocks/food-and-drinks"]' ).first().click();
+		helpers.selectBlock( 'food & drink' );
 
 		helpers.openSettingsPanel( /food & drinks settings/i );
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /prices/i ).click();
@@ -124,7 +125,7 @@ describe( 'Block: Food and Drinks', function() {
 		helpers.addCustomBlockClass( 'my-custom-class', 'food-and-drinks' );
 
 		// Click "Add Menu Section" and verify two blocks exist on the page.
-		cy.get( '[data-type="coblocks/food-and-drinks"]' ).click();
+		helpers.selectBlock( 'food & drink' );
 		cy.get( '[data-type="coblocks/food-and-drinks"]' ).find( '.block-editor-button-block-appender' ).click();
 		cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'have.length', 2 );
 

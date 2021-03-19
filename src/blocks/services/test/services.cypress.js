@@ -50,6 +50,9 @@ describe( 'Test CoBlocks Services Block', function() {
 	/**
 	 * Test that we can add a services block to the content, change
 	 * heading level and  are able to successfully save the block without errors.
+	 *
+	 * This function has an extended timeout because settings
+	 * propagate down to children slowly
 	 */
 	it( 'Test services block saves with heading level set.', function() {
 		helpers.addBlockToPost( 'coblocks/services', true );
