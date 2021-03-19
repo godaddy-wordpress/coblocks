@@ -22,7 +22,7 @@ describe( 'Extension: CoBlocks Padding Controls', function() {
 		} );
 
 		// Test custom padding
-		cy.get( '.components-base-control' ).contains( /padding/i ).closest( '.components-panel__body' ).find( 'input.components-input-control__input' ).click().type( 5 ); // Panel body.
+		cy.get( '.components-base-control' ).contains( /padding/i ).closest( '.components-panel__body' ).find( 'input.components-input-control__input' ).focus().type( 5 ); // Panel body.
 		cy.get( '[data-type="core/group"]' ).should( 'have.attr', 'style', '--coblocks-custom-padding:5em;' );
 
 		helpers.checkForBlockErrors( 'core/group' );
