@@ -33,7 +33,7 @@ describe( 'Block: Food and Drinks', function() {
 		helpers.openSettingsPanel( /food & drinks settings/i );
 
 		[ 2, 3, 4 ].forEach( ( columns ) => {
-			cy.get( '.components-range-control' ).contains( /columns/i ).parent().find( '.components-range-control__number' ).type( `{selectall}${ columns }` );
+			cy.get( '.components-range-control' ).contains( /columns/i ).parent().find( '.components-input-control__input' ).focus().type( `{selectall}${ columns }` );
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', 'has-columns' );
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', `has-${ columns }-columns` );
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).find( '[data-type="coblocks/food-item"]' ).should( 'have.length', columns );
@@ -61,7 +61,9 @@ describe( 'Block: Food and Drinks', function() {
 			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'not.exist' );
 		} );
 
-		cy.get( '[data-type="coblocks/food-and-drinks"]' ).first().click();
+		// Select parent block
+		cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation' ).click();
+		cy.get( '.block-editor-block-navigation__popover' ).find( '.block-editor-block-navigation-leaf' ).contains( 'Food & Drink' ).click();
 
 		helpers.openSettingsPanel( /food & drinks settings/i );
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /images/i ).click();
@@ -80,7 +82,9 @@ describe( 'Block: Food and Drinks', function() {
 			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'exist' );
 		} );
 
-		cy.get( '[data-type="coblocks/food-and-drinks"]' ).first().click();
+		// Select parent block
+		cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation' ).click();
+		cy.get( '.block-editor-block-navigation__popover' ).find( '.block-editor-block-navigation-leaf' ).contains( 'Food & Drink' ).click();
 
 		helpers.openSettingsPanel( /food & drinks settings/i );
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /prices/i ).click();
