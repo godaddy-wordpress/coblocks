@@ -153,10 +153,9 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 
 	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
 	cy.get( '.editor-block-list-item' + targetClassName ).first().click( { force: true } );
-	cy.get( `.edit-post-visual-editor [data-type="${ blockName }"], .edit-site-visual-editor [data-type="${ blockName }"]` ).should( 'exist' );
 
 	// Make sure the block was added to our page
-	cy.get( `[data-type="${ blockName }"]` ).should( 'exist' );
+	cy.get( `.edit-post-visual-editor [data-type="${ blockName }"], .edit-site-visual-editor [data-type="${ blockName }"]` ).should( 'exist' );
 }
 
 /**
