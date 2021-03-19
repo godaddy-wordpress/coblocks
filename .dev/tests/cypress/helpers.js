@@ -287,7 +287,7 @@ export function setInputValue( panelName, settingName, value, ignoreCase = true 
 		.then( ( $settingSection ) => {
 			cy.get( Cypress.$( $settingSection ).parent() )
 				.find( 'input[type="number"]' )
-				.click()
+				.focus()
 				.type( `{selectall}${ value }` );
 		} );
 }
