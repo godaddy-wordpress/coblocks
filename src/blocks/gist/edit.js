@@ -37,6 +37,14 @@ class Edit extends Component {
 		}
 	}
 
+	static __gistCallbackId = 0;
+
+	// Each time we request a new Gist, we have to provide a new
+	// global function name to serve as the JSONP callback.
+	static __nextGist() {
+		return 'embed_gist_callback_' + this.__gistCallbackId++;
+	}
+
 	updateURL( newURL ) {
 		this.props.setAttributes( { url: newURL, file: '' } );
 
@@ -94,7 +102,7 @@ class Edit extends Component {
 				{ preview ? (
 					url && (
 						<div className={ classnames( className, meta ? null : 'no-meta' ) }>
-							<Gist url={ url } file={ file } onError={ () => {
+							<Gist url={ url } file={ file } callbackId={ Edit.__nextGist() } onError={ () => {
 								handleErrors();
 							} } />
 							{ ( ! RichText.isEmpty( caption ) || isSelected ) && (
