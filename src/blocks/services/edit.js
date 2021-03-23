@@ -16,18 +16,16 @@ import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { compose } from '@wordpress/compose';
 import TokenList from '@wordpress/token-list';
 import { createBlock } from '@wordpress/blocks';
-import { Component, Fragment, useState, useEffect } from '@wordpress/element';
-import { withSelect, withDispatch } from '@wordpress/data';
+import { Fragment, useState, useEffect } from '@wordpress/element';
+import { useSelect, useDispatch } from '@wordpress/data';
 import { AlignmentToolbar, BlockControls, InnerBlocks } from '@wordpress/block-editor';
-
 /**
  * Constants
  */
-const ALLOWED_BLOCKS = [ 'coblocks/service' ];
-const TEMPLATE = [ [ 'coblocks/service' ] ];
+const ALLOWED_BLOCKS = [ 'coblocks/service-column' ];
+const TEMPLATE = [ [ 'coblocks/service-column' ] ];
 
 const layoutOptions = [
 	{
@@ -101,7 +99,29 @@ function replaceActiveStyle( className, activeStyle, newStyle ) {
 }
 
 const Edit = ( props ) => {
-	const {	className, attributes, setAttributes, innerBlocks } = props;
+	const {	className, attributes, setAttributes, clientId } = props;
+
+	const [ removedServiceColumns, setRemovedServiceColumns ] = useState( [] );
+
+	const { updateBlockAttributes, insertBlock, removeBlock } = useDispatch( 'core/block-editor' );
+
+	const { getBlocksByClientId, innerBlocks, isSelected } = useSelect(
+		( select ) => {
+			const {
+				getBlockHierarchyRootClientId,
+				getSelectedBlockClientId,
+			} = select( 'core/block-editor' );
+
+			// Get clientID of the parent block.
+			const rootClientId = getBlockHierarchyRootClientId( clientId );
+			const selectedRootClientId = getBlockHierarchyRootClientId( getSelectedBlockClientId() );
+
+			return {
+				getBlocksByClientId: select( 'core/block-editor' ).getBlocksByClientId,
+				innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
+				isSelected: isSelected || rootClientId === selectedRootClientId,
+			};
+		} );
 
 	const updateStyle = ( style ) => {
 		const activeStyle = getActiveStyle( layoutOptions, className );
@@ -115,15 +135,17 @@ const Edit = ( props ) => {
 	};
 
 	const updateInnerAttributes = ( blockName, newAttributes ) => {
-		const { updateBlockAttributes, getBlocksByClientId } = props;
-		const innerItems = getBlocksByClientId(	props.clientId	)[ 0 ].innerBlocks;
-		innerItems.forEach( ( item ) => {
-			if ( item.name === blockName ) {
-				updateBlockAttributes(
-					item.clientId,
-					newAttributes
-				);
-			}
+		const innerColumns = getBlocksByClientId( clientId )[ 0 ].innerBlocks;
+		innerColumns.forEach( ( column ) => {
+			const innerServiceItems = getBlocksByClientId( column.clientId )[ 0 ].innerBlocks;
+			innerServiceItems.forEach( ( item ) => {
+				if ( item.name === blockName ) {
+					updateBlockAttributes(
+						item.clientId,
+						newAttributes
+					);
+				}
+			} );
 		} );
 	};
 
@@ -165,28 +187,53 @@ const Edit = ( props ) => {
 		};
 	}, [ attributes.className ] );
 
+	// Add service-column when column count is increased.
 	/* istanbul ignore next */
 	useEffect( () => {
-		if ( innerBlocks.length > 0 ) {
-			const serviceBlocksCount = innerBlocks.reduce( ( acc, cur ) => acc + ( cur.name === 'coblocks/service' ), 0 );
+		if ( innerBlocks.length < attributes.columns ) {
+		// Add a new service-column block if the count is less than the columns set.
+			const { buttons, headingLevel, alignment } = attributes;
 
-			// Add a new block if the count is less than the columns set.
-			if ( serviceBlocksCount < attributes.columns ) {
-				const { buttons, headingLevel, alignment, insertBlock, clientId } = props;
-
-				insertBlock(
-					createBlock( 'coblocks/service', {
+			const blockToInsert = () => {
+				const removedBlock = removedServiceColumns?.[ 0 ];
+				if ( ! removedBlock ) {
+					return createBlock( 'coblocks/service-column', {
 						showCta: buttons,
 						headingLevel,
 						alignment,
-					} ),
-					innerBlocks.length + 1,
-					clientId,
-					false,
-				);
+					} );
+				}
+
+				const shiftedRemovedServiceColumns = removedServiceColumns;
+				shiftedRemovedServiceColumns.shift();
+
+				setRemovedServiceColumns( shiftedRemovedServiceColumns );
+				return removedBlock;
+			};
+
+			insertBlock(
+				blockToInsert(),
+				innerBlocks.length + 1,
+				clientId,
+				false,
+			);
+		}
+	}, [ attributes.columns ] );
+
+	// Remove service-column when column count is reduced.
+	/* istanbul ignore next */
+	useEffect( () => {
+		if ( innerBlocks.length > attributes.columns ) {
+			const targetBlock = innerBlocks[ innerBlocks.length - 1 ];
+			if ( targetBlock ) {
+				const unshiftedRemovedServiceColumns = removedServiceColumns;
+				unshiftedRemovedServiceColumns.unshift( targetBlock );
+
+				setRemovedServiceColumns( unshiftedRemovedServiceColumns );
+				removeBlock( targetBlock.clientId, false );
 			}
 		}
-	}, [ innerBlocks ] );
+	}, [ attributes.columns ] );
 
 	const {
 		alignment,
@@ -242,29 +289,4 @@ const Edit = ( props ) => {
 	);
 };
 
-export default compose( [
-
-	withSelect( ( select, props ) => {
-		const {
-			getBlocksByClientId,
-			getBlocks,
-		} = select( 'core/block-editor' );
-
-		return {
-			getBlocksByClientId,
-			innerBlocks: getBlocks( props.clientId ),
-		};
-	} ),
-
-	withDispatch( ( dispatch ) => {
-		const {
-			updateBlockAttributes,
-			insertBlock,
-		} = dispatch( 'core/block-editor' );
-		return {
-			updateBlockAttributes,
-			insertBlock,
-		};
-	} ),
-
-] )( Edit );
+export default Edit;

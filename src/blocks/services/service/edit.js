@@ -20,16 +20,12 @@ import {
 	InnerBlocks,
 	MediaPlaceholder,
 } from '@wordpress/block-editor';
-import {
-	DropZone,
-	Button,
-	Spinner,
-	ButtonGroup,
-} from '@wordpress/components';
-import { withSelect, withDispatch } from '@wordpress/data';
+import { DropZone, Button, Spinner, ButtonGroup, Tooltip } from '@wordpress/components';
+import { useSelect, useDispatch } from '@wordpress/data';
 import { mediaUpload } from '@wordpress/editor';
 import { isBlobURL } from '@wordpress/blob';
-import { closeSmall } from '@wordpress/icons';
+import { closeSmall, Icon, plus } from '@wordpress/icons';
+import { createBlock } from '@wordpress/blocks';
 
 /**
  * Constants
@@ -37,19 +33,31 @@ import { closeSmall } from '@wordpress/icons';
 const ALLOWED_BLOCKS = [ 'core/heading', 'core/button', 'core/paragraph' ];
 
 const Edit = ( props ) => {
-	const {
-		attributes,
-		clientId,
-		getBlocksByClientId,
-		insertBlocks,
-		removeBlocks,
-		setAttributes,
-		updateBlockAttributes,
-	} = props;
+	const {	attributes, clientId, setAttributes } = props;
+
+	const { getBlocksByClientId, getMedia, isSelected } = useSelect(
+		( select ) => {
+			const {
+				getBlockHierarchyRootClientId,
+				getSelectedBlockClientId,
+			} = select( 'core/block-editor' );
+
+			// Get clientID of the parent block.
+			const rootClientId = getBlockHierarchyRootClientId( clientId );
+			const selectedRootClientId = getBlockHierarchyRootClientId( getSelectedBlockClientId() );
+
+			return {
+				getBlocksByClientId: select( 'core/block-editor' ).getBlocksByClientId,
+				getMedia: select( 'core' ).getMedia,
+				isSelected: isSelected || rootClientId === selectedRootClientId,
+			};
+		} );
+
+	const innerItems = getBlocksByClientId( clientId )[ 0 ].innerBlocks;
+
+	const { updateBlockAttributes, insertBlocks, removeBlocks } = useDispatch( 'core/block-editor' );
 
 	const updateInnerAttributes = ( blockName, newAttributes ) => {
-		const innerItems = getBlocksByClientId( clientId )[ 0 ].innerBlocks;
-
 		innerItems.forEach( ( item ) => {
 			if ( item.name === blockName ) {
 				updateBlockAttributes(
@@ -61,12 +69,10 @@ const Edit = ( props ) => {
 	};
 
 	const manageInnerBlock = ( blockName, blockAttributes, show = true ) => {
-		const innerItems = getBlocksByClientId( clientId )[ 0 ].innerBlocks;
-
 		const targetBlock = innerItems.filter( ( item ) => item.name === blockName );
 
 		if ( ! targetBlock.length && show ) {
-			const newBlock = wp.blocks.createBlock( blockName, blockAttributes );
+			const newBlock = createBlock( blockName, blockAttributes );
 			insertBlocks( newBlock, innerItems.length, clientId, false );
 		}
 
@@ -82,9 +88,9 @@ const Edit = ( props ) => {
 
 	/* istanbul ignore next */
 	useEffect( () => {
-		updateInnerAttributes( 'core/heading', { align: attributes.alignment } );
+		updateInnerAttributes( 'core/heading', { textAlign: attributes.alignment } );
 		updateInnerAttributes( 'core/paragraph', { align: attributes.alignment } );
-		updateInnerAttributes( 'core/button', {	align: attributes.alignment } );
+		updateInnerAttributes( 'core/buttons', { contentJustification: attributes.alignment } );
 	}, [ attributes.alignment ] );
 
 	/* istanbul ignore next */
@@ -108,8 +114,6 @@ const Edit = ( props ) => {
 	};
 
 	const renderImage = () => {
-		const { isSelected } = props;
-
 		const classes = classnames( 'wp-block-coblocks-service__figure', {
 			'is-transient': isBlobURL( attributes.imageUrl ),
 			'is-selected': isSelected,
@@ -163,7 +167,7 @@ const Edit = ( props ) => {
 		setAttributes( props );
 	};
 
-	const { className, getMedia } = props;
+	const { className } = props;
 	const {
 		headingLevel,
 		href,
@@ -196,7 +200,7 @@ const Edit = ( props ) => {
 	];
 
 	if ( showCta ) {
-		TEMPLATE.push( [ 'core/button', {} ] );
+		TEMPLATE.push( [ 'core/buttons', {} ] );
 	}
 
 	return (
@@ -235,35 +239,4 @@ const Edit = ( props ) => {
 	);
 };
 
-export default compose( [
-
-	withSelect( ( select, props ) => {
-		const {
-			getBlocksByClientId,
-			getBlocks,
-		} = select( 'core/block-editor' );
-
-		const { getMedia } = select( 'core' );
-
-		return {
-			getBlocksByClientId,
-			innerBlocks: getBlocks( props.clientId ),
-			getMedia,
-		};
-	} ),
-
-	withDispatch( ( dispatch ) => {
-		const {
-			updateBlockAttributes,
-			insertBlocks,
-			removeBlocks,
-		} = dispatch( 'core/block-editor' );
-
-		return {
-			updateBlockAttributes,
-			insertBlocks,
-			removeBlocks,
-		};
-	} ),
-
-] )( Edit );
+export default Edit;

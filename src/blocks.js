@@ -92,6 +92,7 @@ import * as pricingTable from './blocks/pricing-table';
 import * as pricingTableItem from './blocks/pricing-table/pricing-table-item';
 import * as row from './blocks/row';
 import * as service from './blocks/services/service';
+import * as serviceColumn from './blocks/services/service-column';
 import * as services from './blocks/services';
 import * as shapeDivider from './blocks/shape-divider';
 import * as share from './blocks/share';
@@ -173,6 +174,7 @@ export const registerCoBlocksBlocks = () => {
 		pricingTableItem,
 		row,
 		service,
+		serviceColumn,
 		services,
 		shapeDivider,
 		share,

@@ -1,0 +1,10 @@
+{
+	"name": "coblocks/service-column",
+	"category": "layout",
+	"attributes": {
+		"count": {
+			"type": "number",
+			"default": 1
+		}
+	}
+}

@@ -1,5 +1,11 @@
-[data-type="coblocks/service"] {
+[data-type="coblocks/services"] [data-type="coblocks/service-column"] .block-editor-block-list__layout {
+	[data-type="coblocks/service"] {
+		margin-bottom: 0;
+		margin-top: 0;
+	}
+}
 
+[data-type="coblocks/service"] {
 	> .block-editor-block-list__block-edit {
 		margin-bottom: 0;
 		margin-top: 0;
