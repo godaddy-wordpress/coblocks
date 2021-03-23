@@ -1,14 +1,14 @@
 # Copyright (c) 2021 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 2.9.0\n"
+"Project-Id-Version: CoBlocks 2.9.1\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-03-16T15:47:39+00:00\n"
+"POT-Creation-Date: 2021-03-23T21:33:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -6907,21 +6907,7 @@ msgstr ""
 msgid "Profiles"
 msgstr ""
 
-#: src/components/background/controls.js:54
-msgid "Edit background"
-msgstr ""
-
-#: src/components/background/controls.js:73
-#: src/components/background/panel.js:273
-msgid "Remove background"
-msgstr ""
-
-#: src/components/background/controls.js:83
-#: src/components/background/controls.js:84
-msgid "Edit background image"
-msgstr ""
-
-#: src/components/background/controls.js:97
+#: src/components/background/controls.js:63
 msgid "Add background image"
 msgstr ""
 
@@ -7060,6 +7046,10 @@ msgstr ""
 
 #: src/components/background/panel.js:264
 msgid "Toggle to loop the video."
+msgstr ""
+
+#: src/components/background/panel.js:273
+msgid "Remove background"
 msgstr ""
 
 #: src/components/background/panel.js:294
