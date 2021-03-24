@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import { ServiceItemIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Internal dependencies.
  */
 import edit from './edit';
@@ -14,7 +9,6 @@ import save from './save';
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
 
 /**
  * Block constants.

@@ -1,6 +1,10 @@
 [data-type="coblocks/services"] {
 	:focus {
-		box-shadow: none;
+		box-shadow: 0 0 0 $border-width-focus transparent;
+	}
+
+	[data-type="coblocks/service-column"]:focus::after {
+		box-shadow: 0 0 0 $border-width-focus transparent !important;
 	}
 }
 

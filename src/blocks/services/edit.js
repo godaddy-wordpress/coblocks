@@ -1,125 +1,42 @@
 /**
  * External dependencies.
  */
-import { find } from 'lodash';
 import classnames from 'classnames';
 
 /**
  * Internal dependencies.
  */
 import InspectorControls from './inspector';
-import icons from './icons';
 import HeadingToolbar from '../../components/heading-toolbar';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
+import {
+	SERVICE_ALLOWED_BLOCKS as ALLOWED_BLOCKS,
+	SERVICE_TEMPLATE as TEMPLATE,
+	replaceActiveStyle,
+	getActiveStyle,
+	layoutOptions,
+} from './utilities';
 
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
-import TokenList from '@wordpress/token-list';
 import { createBlock } from '@wordpress/blocks';
 import { Fragment, useState, useEffect } from '@wordpress/element';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { AlignmentToolbar, BlockControls, InnerBlocks } from '@wordpress/block-editor';
-/**
- * Constants
- */
-const ALLOWED_BLOCKS = [ 'coblocks/service-column' ];
-const TEMPLATE = [ [ 'coblocks/service-column' ] ];
-
-const layoutOptions = [
-	{
-		name: 'threebyfour',
-		label: '4:3',
-		icon: icons.service43,
-		isDefault: true,
-	},
-	{
-		name: 'sixbynine',
-		label: '16:9',
-		icon: icons.service169,
-	},
-	{
-		name: 'square',
-		label: __( 'Square', 'coblocks' ),
-		icon: icons.serviceSquare,
-	},
-	{
-		name: 'circle',
-		label: __( 'Circle', 'coblocks' ),
-		icon: icons.serviceCircle,
-		defaultAlign: 'center',
-	},
-];
-
-/**
- * Returns the active style from the given className.
- *
- * @param {Array} styles Block style variations.
- * @param {string} className  Class name
- *
- * @return {Object?} The active style.
- */
-function getActiveStyle( styles, className ) {
-	for ( const style of new TokenList( className ).values() ) {
-		if ( style.indexOf( 'is-style-' ) === -1 ) {
-			continue;
-		}
-
-		const potentialStyleName = style.substring( 9 );
-		const activeStyle = find( styles, { name: potentialStyleName } );
-
-		if ( activeStyle ) {
-			return activeStyle;
-		}
-	}
-
-	return find( styles, 'isDefault' );
-}
-
-/**
- * Replaces the active style in the block's className.
- *
- * @param {string}  className   Class name.
- * @param {Object?} activeStyle The replaced style.
- * @param {Object}  newStyle    The replacing style.
- *
- * @return {string} The updated className.
- */
-function replaceActiveStyle( className, activeStyle, newStyle ) {
-	const list = new TokenList( className );
-
-	if ( activeStyle ) {
-		list.remove( 'is-style-' + activeStyle.name );
-	}
-
-	list.add( 'is-style-' + newStyle.name );
-
-	return list.value;
-}
 
 const Edit = ( props ) => {
 	const {	className, attributes, setAttributes, clientId } = props;
 
-	const [ removedServiceColumns, setRemovedServiceColumns ] = useState( [] );
+	const [ removedColumns, setRemovedColumns ] = useState( [] );
 
 	const { updateBlockAttributes, insertBlock, removeBlock } = useDispatch( 'core/block-editor' );
 
-	const { getBlocksByClientId, innerBlocks, isSelected } = useSelect(
+	const { getBlocksByClientId, innerBlocks } = useSelect(
 		( select ) => {
-			const {
-				getBlockHierarchyRootClientId,
-				getSelectedBlockClientId,
-			} = select( 'core/block-editor' );
-
-			// Get clientID of the parent block.
-			const rootClientId = getBlockHierarchyRootClientId( clientId );
-			const selectedRootClientId = getBlockHierarchyRootClientId( getSelectedBlockClientId() );
-
 			return {
 				getBlocksByClientId: select( 'core/block-editor' ).getBlocksByClientId,
 				innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
-				isSelected: isSelected || rootClientId === selectedRootClientId,
 			};
 		} );
 
@@ -187,27 +104,21 @@ const Edit = ( props ) => {
 		};
 	}, [ attributes.className ] );
 
-	// Add service-column when column count is increased.
 	/* istanbul ignore next */
 	useEffect( () => {
+		// Add service-column when column count is increased.
 		if ( innerBlocks.length < attributes.columns ) {
-		// Add a new service-column block if the count is less than the columns set.
-			const { buttons, headingLevel, alignment } = attributes;
-
+			// Add a new service-column block if the count is less than the columns set.
 			const blockToInsert = () => {
-				const removedBlock = removedServiceColumns?.[ 0 ];
+				const removedBlock = removedColumns?.[ 0 ];
 				if ( ! removedBlock ) {
-					return createBlock( 'coblocks/service-column', {
-						showCta: buttons,
-						headingLevel,
-						alignment,
-					} );
+					return createBlock( 'coblocks/service-column' );
 				}
 
-				const shiftedRemovedServiceColumns = removedServiceColumns;
-				shiftedRemovedServiceColumns.shift();
+				const shiftedRemovedColumns = removedColumns;
+				shiftedRemovedColumns.shift();
 
-				setRemovedServiceColumns( shiftedRemovedServiceColumns );
+				setRemovedColumns( shiftedRemovedColumns );
 				return removedBlock;
 			};
 
@@ -218,27 +129,21 @@ const Edit = ( props ) => {
 				false,
 			);
 		}
-	}, [ attributes.columns ] );
 
-	// Remove service-column when column count is reduced.
-	/* istanbul ignore next */
-	useEffect( () => {
+		// Remove service-column when column count is reduced.
 		if ( innerBlocks.length > attributes.columns ) {
 			const targetBlock = innerBlocks[ innerBlocks.length - 1 ];
 			if ( targetBlock ) {
-				const unshiftedRemovedServiceColumns = removedServiceColumns;
-				unshiftedRemovedServiceColumns.unshift( targetBlock );
+				const unshiftedRemovedColumns = removedColumns;
+				unshiftedRemovedColumns.unshift( targetBlock );
 
-				setRemovedServiceColumns( unshiftedRemovedServiceColumns );
+				setRemovedColumns( unshiftedRemovedColumns );
 				removeBlock( targetBlock.clientId, false );
 			}
 		}
 	}, [ attributes.columns ] );
 
-	const {
-		alignment,
-		columns,
-	} = attributes;
+	const {	alignment, columns } = attributes;
 
 	const classes = classnames(
 		'has-columns', {

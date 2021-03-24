@@ -1,4 +1,9 @@
 /**
+ * Internal dependencies.
+ */
+import { SERVICE_COLUMN_ALLOWED_BLOCKS as ALLOWED_BLOCKS } from './utilities';
+
+/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
@@ -8,11 +13,6 @@ import { useSelect, useDispatch } from '@wordpress/data';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { Button, Tooltip } from '@wordpress/components';
 import { Icon, plus } from '@wordpress/icons';
-
-/**
- * Constants
- */
-const ALLOWED_BLOCKS = [ 'coblocks/service' ];
 
 const Edit = ( props ) => {
 	const { attributes, clientId } = props;
@@ -27,6 +27,7 @@ const Edit = ( props ) => {
 						className="block-editor-button-block-appender"
 						onClick={ () => {
 							props.setAttributes( { count: count + 1 } );
+							setBlocksPropagated( false );
 						} }
 					>
 						<Icon icon={ plus } />
@@ -36,9 +37,9 @@ const Edit = ( props ) => {
 		);
 	};
 
-	const { updateBlockAttributes, insertBlock, removeBlock } = useDispatch( 'core/block-editor' );
+	const { insertBlock } = useDispatch( 'core/block-editor' );
 
-	const { getBlocksByClientId, innerBlocks, isSelected, parentServicesBlock } = useSelect(
+	const { innerBlocks, parentServicesBlock, isSelected } = useSelect(
 		( select ) => {
 			const {
 				getBlockHierarchyRootClientId,
@@ -50,38 +51,24 @@ const Edit = ( props ) => {
 			const selectedRootClientId = getBlockHierarchyRootClientId( getSelectedBlockClientId() );
 
 			return {
-				getBlocksByClientId: select( 'core/block-editor' ).getBlocksByClientId,
 				innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
 				parentServicesBlock: select( 'core/block-editor' ).getBlock( rootClientId ),
 				isSelected: isSelected || rootClientId === selectedRootClientId,
 			};
 		} );
 
-	// const [ previousInnerBlocksLength, setPreviousInnerBlocksLength ] = useState( innerBlocks.length );
-
-	// Track the previous count of blocks to allow decrement of count attribute
-	// When service block has been removed by user, decrement count.
-	// const prevBlockCount = useRef();
-	useEffect( () => {
-		if ( innerBlocks.length < count ) {
-			console.log( 'innerblocks.length is changing' );
-			// console.log( previousInnerBlocksLength, innerBlocks.length );
-			console.log( innerBlocks.length, count );
-			console.log( innerBlocks.length < count );
-		}
-	// 	prevBlockCount.current = innerBlocks.length;
-	}, [ innerBlocks.length, count ] );
+	const [ blocksPropagated, setBlocksPropagated ] = useState( false );
 
 	/* istanbul ignore next */
 	useEffect( () => {
-		// console.log( prevBlockCount.current, innerBlocks.length );
-		// if ( prevBlockCount.current <= innerBlocks.length ) {
-		// 	props.setAttributes( { count: count - 1 } );
-		// 	return;
-		// }
-
 		if ( innerBlocks.length < count ) {
-		// Add a new block if the count is less than the count set.
+			// Block has been removed by user, decrement block count.
+			if ( blocksPropagated ) {
+				props.setAttributes( { count: count - 1 } );
+				return;
+			}
+
+			// Add a new block if the count is less than the count set.
 			const { buttons, headingLevel, alignment } = parentServicesBlock.attributes;
 
 			insertBlock(
@@ -95,7 +82,12 @@ const Edit = ( props ) => {
 				false,
 			);
 		}
-	}, [ count ] );
+
+		// useEffect logic should now have all blocks in place.
+		if ( innerBlocks.length === count ) {
+			setBlocksPropagated( true );
+		}
+	}, [ count, innerBlocks.length ] );
 
 	return (
 		<>
@@ -105,7 +97,7 @@ const Edit = ( props ) => {
 				templateLock={ false }
 				templateInsertUpdatesSelection={ false }
 			/>
-			{ serviceBlockAppender() }
+			{ isSelected && serviceBlockAppender() }
 		</>
 
 	);
