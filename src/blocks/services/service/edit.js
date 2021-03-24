@@ -90,6 +90,11 @@ const Edit = ( props ) => {
 
 	/* istanbul ignore next */
 	useEffect( () => {
+		//First effect has no blocks - short circuit.
+		if ( ! innerItems.length ) {
+			return;
+		}
+
 		manageInnerBlock( 'core/buttons', { contentJustification: attributes.alignment }, attributes.showCta );
 	}, [ attributes.showCta ] );
 

@@ -105,7 +105,7 @@ describe( 'Test CoBlocks Services Block', function() {
 
 		helpers.toggleSettingCheckbox( /display buttons/i );
 
-		cy.get( 'div.wp-block-button' ).should( 'exist' );
+		cy.get( '.wp-block-buttons' ).should( 'have.length', 2 );
 
 		helpers.savePage();
 
