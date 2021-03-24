@@ -37,6 +37,7 @@ export default function CoBlocksSettings() {
 					title={ __( 'Editor settings', 'coblocks' ) }
 					closeLabel={ __( 'Close', 'coblocks' ) }
 					onRequestClose={ closeModal }
+					shouldCloseOnClickOutside={ false }
 				>
 					<section className="edit-post-preferences-modal__section">
 						<h2 className="edit-post-preferences-modal__section-title">
