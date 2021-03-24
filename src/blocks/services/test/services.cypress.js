@@ -14,12 +14,6 @@ describe( 'Test CoBlocks Services Block', function() {
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/services' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-services' ).should( 'exist' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -29,21 +23,21 @@ describe( 'Test CoBlocks Services Block', function() {
 	it( 'Test services block saves with columns attribute.', function() {
 		helpers.addBlockToPost( 'coblocks/services', true );
 
-		cy.get( '.wp-block-coblocks-services' ).click( { force: true } );
+		helpers.selectBlock( 'services' );
 
-		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 2 );
+		cy.get( '.wp-block-coblocks-service-column' ).should( 'have.length', 2 );
 
-		helpers.setInputValue( 'Services settings', 'Columns', 1, false );
+		helpers.setInputValue( 'Services settings', 'Columns', '{downarrow}', false );
 
-		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 2 ); // No longer pops children out of block.
+		cy.get( '.wp-block-coblocks-service-column' ).should( 'have.length', 1 );
 
-		helpers.setInputValue( 'Services settings', 'Columns', 3, false );
+		helpers.setInputValue( 'Services settings', 'Columns', '{uparrow}{uparrow}', false );
 
-		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 3 );
+		cy.get( '.wp-block-coblocks-service-column' ).should( 'have.length', 3 );
 
-		helpers.setInputValue( 'Services settings', 'Columns', 4, false );
+		helpers.setInputValue( 'Services settings', 'Columns', '{uparrow}', false );
 
-		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 4 );
+		cy.get( '.wp-block-coblocks-service-column' ).should( 'have.length', 4 );
 
 		cy.get( 'h3 > [data-rich-text-placeholder="Write title…"]' ).parent().each( ( $serviceHeading, index ) => {
 			cy.get( $serviceHeading ).click( { force: true } ).type( `Service ${ index }` );
@@ -52,12 +46,6 @@ describe( 'Test CoBlocks Services Block', function() {
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/services' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 4 );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -96,15 +84,14 @@ describe( 'Test CoBlocks Services Block', function() {
 		helpers.addBlockToPost( 'coblocks/services', true );
 
 		helpers.selectBlock( 'service', true );
-		cy.get( 'div.block-editor-block-mover' ).should( 'have.class', 'is-horizontal' );
-
-		helpers.selectBlock( 'services' );
-		helpers.setInputValue( 'Services settings', 'Columns', 1, false );
-
-		helpers.selectBlock( 'service', true );
+		cy.get( 'div.block-editor-block-mover' ).should( 'not.have.class', 'is-vertical' );
 		cy.get( 'div.block-editor-block-mover' ).should( 'not.have.class', 'is-horizontal' );
 
+		helpers.selectBlock( 'service column', true );
+		cy.get( 'div.block-editor-block-mover' ).should( 'have.class', 'is-horizontal' );
+
 		helpers.savePage();
+		helpers.checkForBlockErrors( 'coblocks/services' );
 	} );
 
 	/**
@@ -146,5 +133,61 @@ describe( 'Test CoBlocks Services Block', function() {
 			.should( 'have.class', 'my-custom-class' );
 
 		helpers.editPage();
+	} );
+
+	/**
+	 * Test that we can add a service-column block to the content, change
+	 * count and are able to successfully save the block without errors.
+	 */
+	it( 'Test service-column block saves with count attribute.', function() {
+		helpers.addBlockToPost( 'coblocks/services', true );
+
+		helpers.selectBlock( 'services' );
+
+		cy.get( '.wp-block-coblocks-service-column' ).should( 'have.length', 2 );
+
+		cy.get( '.wp-block-coblocks-service-column .block-editor-button-block-appender' ).last().click();
+
+		cy.get( '.wp-block-coblocks-service-column' ).last().find( '.wp-block-coblocks-service' ).should( 'have.length', 2 );
+
+		cy.get( '.wp-block-coblocks-service-column .block-editor-button-block-appender' ).last().click();
+
+		cy.get( '.wp-block-coblocks-service-column' ).last().find( '.wp-block-coblocks-service' ).should( 'have.length', 3 );
+
+		cy.get( '.wp-block-coblocks-service-column .block-editor-button-block-appender' ).last().click();
+
+		cy.get( '.wp-block-coblocks-service-column' ).last().find( '.wp-block-coblocks-service' ).should( 'have.length', 4 );
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/services' );
+	} );
+
+	/**
+	 * Test that we can add a service-column block to the content, reduce
+	 * column count and re able to successfully restore removed columns without errors.
+	 */
+	it( 'Test service-column blocks persist when column attribute changes.', function() {
+		helpers.addBlockToPost( 'coblocks/services', true );
+
+		helpers.selectBlock( 'services' );
+
+		cy.get( '.wp-block-coblocks-service-column' ).should( 'have.length', 2 );
+
+		cy.get( '.wp-block-coblocks-service-column .block-editor-button-block-appender' ).last().click().click().click();
+		cy.get( '.wp-block-coblocks-service-column' ).last().find( '.wp-block-coblocks-service' ).should( 'have.length', 4 );
+
+		helpers.selectBlock( 'services' );
+
+		helpers.setInputValue( 'Services settings', 'Columns', '{downarrow}', false );
+		cy.get( '.wp-block-coblocks-service-column' ).should( 'have.length', 1 );
+		cy.get( '.wp-block-coblocks-service-column' ).find( '.wp-block-coblocks-service' ).should( 'have.length', 1 );
+
+		helpers.setInputValue( 'Services settings', 'Columns', '{uparrow}', false );
+		cy.get( '.wp-block-coblocks-service-column' ).should( 'have.length', 2 );
+		cy.get( '.wp-block-coblocks-service-column' ).last().find( '.wp-block-coblocks-service' ).should( 'have.length', 4 );
+
+		helpers.savePage();
+		helpers.checkForBlockErrors( 'coblocks/services' );
 	} );
 } );

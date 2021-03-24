@@ -17,9 +17,10 @@ import TokenList from '@wordpress/token-list';
 /**
  * Constants
  */
-const SERVICE_ALLOWED_BLOCKS = [ 'coblocks/service-column' ];
-const SERVICE_TEMPLATE = [ [ 'coblocks/service-column' ] ];
+const SERVICES_ALLOWED_BLOCKS = [ 'coblocks/service-column' ];
+const SERVICES_TEMPLATE = [ [ 'coblocks/service-column' ] ];
 const SERVICE_COLUMN_ALLOWED_BLOCKS = [ 'coblocks/service' ];
+const SERVICE_ALLOWED_BLOCKS = [ 'core/heading', 'core/buttons', 'core/paragraph' ];
 
 const layoutOptions = [
 	{
@@ -92,4 +93,12 @@ function replaceActiveStyle( className, activeStyle, newStyle ) {
 	return list.value;
 }
 
-export { replaceActiveStyle, getActiveStyle, layoutOptions, SERVICE_ALLOWED_BLOCKS, SERVICE_TEMPLATE, SERVICE_COLUMN_ALLOWED_BLOCKS };
+export {
+	replaceActiveStyle,
+	getActiveStyle,
+	layoutOptions,
+	SERVICES_ALLOWED_BLOCKS,
+	SERVICES_TEMPLATE,
+	SERVICE_COLUMN_ALLOWED_BLOCKS,
+	SERVICE_ALLOWED_BLOCKS,
+};

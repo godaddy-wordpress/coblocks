@@ -10,8 +10,8 @@ import InspectorControls from './inspector';
 import HeadingToolbar from '../../components/heading-toolbar';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 import {
-	SERVICE_ALLOWED_BLOCKS as ALLOWED_BLOCKS,
-	SERVICE_TEMPLATE as TEMPLATE,
+	SERVICES_ALLOWED_BLOCKS as ALLOWED_BLOCKS,
+	SERVICES_TEMPLATE as TEMPLATE,
 	replaceActiveStyle,
 	getActiveStyle,
 	layoutOptions,
@@ -183,7 +183,7 @@ const Edit = ( props ) => {
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
 							template={ TEMPLATE }
-							orientation={ attributes.columns > 1 ? 'horizontal' : 'vertical' }
+							orientation={ 'horizontal' }
 							templateInsertUpdatesSelection={ false }
 							__experimentalCaptureToolbars={ true }
 						/>

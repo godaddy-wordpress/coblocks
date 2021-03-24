@@ -1,7 +1,7 @@
 /**
  * Internal dependencies.
  */
-import { SERVICE_COLUMN_ALLOWED_BLOCKS as ALLOWED_BLOCKS } from './utilities';
+import { SERVICE_COLUMN_ALLOWED_BLOCKS as ALLOWED_BLOCKS } from '../utilities';
 
 /**
  * WordPress dependencies
@@ -15,7 +15,7 @@ import { Button, Tooltip } from '@wordpress/components';
 import { Icon, plus } from '@wordpress/icons';
 
 const Edit = ( props ) => {
-	const { attributes, clientId } = props;
+	const { attributes, clientId, className } = props;
 	const { count } = attributes;
 	const serviceBlockAppender = ( ) => {
 		const label = __( 'Add service section', 'coblocks' );
@@ -90,15 +90,16 @@ const Edit = ( props ) => {
 	}, [ count, innerBlocks.length ] );
 
 	return (
-		<>
+		<div className={ className } >
 			<InnerBlocks
 				allowedBlocks={ ALLOWED_BLOCKS }
 				template={ [] }
 				templateLock={ false }
+				orientation={ 'vertical' }
 				templateInsertUpdatesSelection={ false }
 			/>
 			{ isSelected && serviceBlockAppender() }
-		</>
+		</div>
 
 	);
 };

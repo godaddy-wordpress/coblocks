@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import InspectorControls from './inspector';
+import { SERVICE_ALLOWED_BLOCKS as ALLOWED_BLOCKS } from '../utilities';
 
 /**
  * External dependencies.
@@ -11,26 +12,20 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-import { compose } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment, useState, useEffect } from '@wordpress/element';
+import { Fragment, useEffect } from '@wordpress/element';
 import {
 	__experimentalImageURLInputUI as ImageURLInputUI,
 	BlockControls,
 	InnerBlocks,
 	MediaPlaceholder,
 } from '@wordpress/block-editor';
-import { DropZone, Button, Spinner, ButtonGroup, Tooltip } from '@wordpress/components';
+import { DropZone, Button, Spinner, ButtonGroup } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { mediaUpload } from '@wordpress/editor';
 import { isBlobURL } from '@wordpress/blob';
-import { closeSmall, Icon, plus } from '@wordpress/icons';
+import { closeSmall } from '@wordpress/icons';
 import { createBlock } from '@wordpress/blocks';
-
-/**
- * Constants
- */
-const ALLOWED_BLOCKS = [ 'core/heading', 'core/button', 'core/paragraph' ];
 
 const Edit = ( props ) => {
 	const {	attributes, clientId, setAttributes } = props;
@@ -55,7 +50,7 @@ const Edit = ( props ) => {
 
 	const innerItems = getBlocksByClientId( clientId )[ 0 ].innerBlocks;
 
-	const { updateBlockAttributes, insertBlocks, removeBlocks } = useDispatch( 'core/block-editor' );
+	const { updateBlockAttributes, insertBlock, removeBlocks } = useDispatch( 'core/block-editor' );
 
 	const updateInnerAttributes = ( blockName, newAttributes ) => {
 		innerItems.forEach( ( item ) => {
@@ -73,7 +68,7 @@ const Edit = ( props ) => {
 
 		if ( ! targetBlock.length && show ) {
 			const newBlock = createBlock( blockName, blockAttributes );
-			insertBlocks( newBlock, innerItems.length, clientId, false );
+			insertBlock( newBlock, innerItems.length, clientId, false );
 		}
 
 		if ( targetBlock.length && ! show ) {
@@ -95,13 +90,11 @@ const Edit = ( props ) => {
 
 	/* istanbul ignore next */
 	useEffect( () => {
-		manageInnerBlock( 'core/button', { align: attributes.alignment }, attributes.showCta );
+		manageInnerBlock( 'core/buttons', { contentJustification: attributes.alignment }, attributes.showCta );
 	}, [ attributes.showCta ] );
 
 	const toggleCta = () => {
-		const showCta = ! attributes.showCta;
-		setAttributes( { showCta } );
-		manageInnerBlock( 'core/button', {}, showCta );
+		setAttributes( { showCta: ! showCta } );
 	};
 
 	const replaceImage = ( files ) => {
