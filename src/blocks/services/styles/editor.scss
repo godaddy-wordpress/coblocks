@@ -6,6 +6,16 @@
 	[data-type="coblocks/service-column"]:focus::after {
 		box-shadow: 0 0 0 $border-width-focus transparent !important;
 	}
+
+	[data-type="coblocks/service-column"] [data-type="coblocks/service"] [data-type="core/buttons"] .wp-block {
+		margin-top: 0;
+		margin-bottom: 0;
+
+		[data-type="core/button"] {
+			margin-top: 0;
+		}
+	}
+
 }
 
 .wp-block-coblocks-services {

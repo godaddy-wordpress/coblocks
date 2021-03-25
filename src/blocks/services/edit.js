@@ -30,15 +30,14 @@ const Edit = ( props ) => {
 
 	const [ removedColumns, setRemovedColumns ] = useState( [] );
 
-	const { updateBlockAttributes, insertBlock, removeBlock } = useDispatch( 'core/block-editor' );
+	const {	updateBlockAttributes, insertBlock, removeBlock, replaceBlocks } = useDispatch( 'core/block-editor' );
 
-	const { getBlocksByClientId, innerBlocks } = useSelect(
-		( select ) => {
-			return {
-				getBlocksByClientId: select( 'core/block-editor' ).getBlocksByClientId,
-				innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
-			};
-		} );
+	const { getBlocksByClientId, innerBlocks } = useSelect( ( select ) => {
+		return {
+			getBlocksByClientId: select( 'core/block-editor' ).getBlocksByClientId,
+			innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
+		};
+	} );
 
 	const updateStyle = ( style ) => {
 		const activeStyle = getActiveStyle( layoutOptions, className );
@@ -142,6 +141,23 @@ const Edit = ( props ) => {
 			}
 		}
 	}, [ attributes.columns ] );
+
+	/* istanbul ignore next */
+	useEffect( () => {
+		// Check for existence of service blocks to migrate to service-columns
+		if ( innerBlocks.length ) {
+			const serviceBlocks = innerBlocks.filter( ( block ) => block.name === 'coblocks/service' );
+			const migrateToServiceColumns = !! serviceBlocks.length;
+
+			if ( migrateToServiceColumns ) {
+				const newServiceColumnsBlocks = serviceBlocks.map( ( serviceBlock ) => {
+					const newServiceBlocks = createBlock( serviceBlock.name, serviceBlock.attributes, [ ...serviceBlock.innerBlocks ] );
+					return createBlock( 'coblocks/service-column', {}, [ newServiceBlocks ] );
+				} );
+				replaceBlocks( serviceBlocks.map( ( block ) => block.clientId ), newServiceColumnsBlocks, 0 );
+			}
+		}
+	}, [ innerBlocks.length ] );
 
 	const {	alignment, columns } = attributes;
 

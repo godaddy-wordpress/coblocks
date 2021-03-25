@@ -30,23 +30,19 @@ import { createBlock } from '@wordpress/blocks';
 const Edit = ( props ) => {
 	const {	attributes, clientId, setAttributes } = props;
 
-	const { getBlocksByClientId, getMedia, isSelected } = useSelect(
-		( select ) => {
-			const {
-				getBlockHierarchyRootClientId,
-				getSelectedBlockClientId,
-			} = select( 'core/block-editor' );
+	const { getBlocksByClientId, getMedia, isSelected } = useSelect( ( select ) => {
+		const {	getBlockHierarchyRootClientId, getSelectedBlockClientId } = select( 'core/block-editor' );
 
-			// Get clientID of the parent block.
-			const rootClientId = getBlockHierarchyRootClientId( clientId );
-			const selectedRootClientId = getBlockHierarchyRootClientId( getSelectedBlockClientId() );
+		// Get clientID of the parent block.
+		const rootClientId = getBlockHierarchyRootClientId( clientId );
+		const selectedRootClientId = getBlockHierarchyRootClientId( getSelectedBlockClientId() );
 
-			return {
-				getBlocksByClientId: select( 'core/block-editor' ).getBlocksByClientId,
-				getMedia: select( 'core' ).getMedia,
-				isSelected: isSelected || rootClientId === selectedRootClientId,
-			};
-		} );
+		return {
+			getBlocksByClientId: select( 'core/block-editor' ).getBlocksByClientId,
+			getMedia: select( 'core' ).getMedia,
+			isSelected: isSelected || rootClientId === selectedRootClientId,
+		};
+	} );
 
 	const innerItems = getBlocksByClientId( clientId )[ 0 ].innerBlocks;
 
@@ -64,6 +60,16 @@ const Edit = ( props ) => {
 	};
 
 	const manageInnerBlock = ( blockName, blockAttributes, show = true ) => {
+		const migrateButton = innerItems.filter( ( item ) => item.name === 'core/button' );
+
+		// Migrate core/button to core/buttons block
+		if ( !! migrateButton.length ) {
+			removeBlocks( migrateButton.map( ( item ) => item.clientId ),	false );
+			const newBlock = createBlock( blockName, blockAttributes, migrateButton );
+			insertBlock( newBlock, innerItems.length, clientId, false );
+			return;
+		}
+
 		const targetBlock = innerItems.filter( ( item ) => item.name === blockName );
 
 		if ( ! targetBlock.length && show ) {
@@ -176,6 +182,7 @@ const Edit = ( props ) => {
 		rel,
 		showCta,
 		imageId,
+		alignment,
 	} = attributes;
 
 	const image = getMedia( imageId );
@@ -186,6 +193,7 @@ const Edit = ( props ) => {
 			{
 				placeholder: /* translators: placeholder text for input box */ __( 'Write title…', 'coblocks' ),
 				level: headingLevel,
+				textAlign: alignment,
 			},
 		],
 		[
@@ -193,12 +201,13 @@ const Edit = ( props ) => {
 			{
 				/* translators: content placeholder */
 				placeholder: __( 'Write description…', 'coblocks' ),
+				align: alignment,
 			},
 		],
 	];
 
 	if ( showCta ) {
-		TEMPLATE.push( [ 'core/buttons', {} ] );
+		TEMPLATE.push( [ 'core/buttons', { contentJustification: alignment } ] );
 	}
 
 	return (
