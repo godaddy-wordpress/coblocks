@@ -59,12 +59,12 @@ export default function CoBlocksSettings() {
 								 *
 								 * import { registerPlugin } from '@wordpress/plugins';
 								 * import { CoBlocksSettingsModalControl } from './coblocks-settings-slot';
-								 * import { CoBlocksSettingsModalControl } from './coblocks-settings-toggle-control';
+								 * import { CoBlocksSettingsToggleControl } from './coblocks-settings-toggle-control';
 								 *
 								 * registerPlugin( 'your-settings-modal-control', {
 								 *     render: () => (
 								 *         <CoBlocksSettingsModalControl>
-								 *             <CoBlocksSettingsModalControl
+								 *             <CoBlocksSettingsToggleControl
 								 *                 settingsKey="name_of_wordpress_setting"
 								 *                 label={ __( 'The toggle control label', 'coblocks' ) }
 								 *                 help={ __( 'The toggle control help text', 'coblocks' ) }
