@@ -47,6 +47,7 @@ class LayoutSelector extends Component {
 			categories,
 			selectedCategory,
 			updateSelectedCategory,
+			isActive,
 			isMobile,
 			useEmptyTemplateLayout,
 			useTemplateLayout,
@@ -81,7 +82,7 @@ class LayoutSelector extends Component {
 			</>
 		);
 
-		return (
+		return ! isActive ? null : (
 			<Modal
 				title={ (
 					<>
@@ -178,16 +179,16 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 				const [ layoutSelectorEnabled ] = useEntityProp( 'root', 'site', 'coblocks_layout_selector_controls_enabled' );
 
 				const {
-					isTemplateSelectorActive,
 					hasLayouts,
 					hasCategories,
 				} = useSelect( ( select ) => select( 'coblocks/template-selector' ) );
 
-				return ( !! layoutSelectorEnabled && hasLayouts() && hasCategories() ) && isTemplateSelectorActive();
+				return layoutSelectorEnabled && hasLayouts() && hasCategories();
 			} ),
 			withSelect( ( select ) => {
 				const {
 					getSelectedCategory,
+					isTemplateSelectorActive,
 				} = select( 'coblocks/template-selector' );
 
 				const { isViewportMatch } = select( 'core/viewport' );
@@ -195,6 +196,7 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 				const layouts = useComputedLayouts();
 
 				return {
+					isActive: isTemplateSelectorActive(),
 					isMobile: isViewportMatch( '< medium' ),
 					layouts,
 					categories: useCategories( layouts ),
@@ -227,7 +229,7 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 					},
 
 					useEmptyTemplateLayout: () => {
-						// editPost( { title: '', blocks: [] } );
+						editPost( { title: '', blocks: [] } );
 						closeTemplateSelector();
 					},
 				};
@@ -238,7 +240,7 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 	registerPlugin( 'coblocks-layout-selector-control', {
 		render: () => (
 			<CoBlocksSettingsToggleControl
-				settingsKey="coblocks_layout_selector_controls_enabled"
+				settingsKey={ 'coblocks_layout_selector_controls_enabled' }
 				label={ __( 'Layout selector', 'coblocks' ) }
 				help={ __( 'Allow layout selection on new pages', 'coblocks' ) }
 			/>
