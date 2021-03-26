@@ -31,6 +31,7 @@ import './extensions/image-filter';
 import './extensions/coblocks-settings/';
 import './extensions/layout-selector';
 import './extensions/block-patterns';
+import './extensions/block-editor-settings';
 
 // Internal Extensions / Components
 import './components/gutter-control';
