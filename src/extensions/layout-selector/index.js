@@ -11,14 +11,16 @@ import { __ } from '@wordpress/i18n';
 import { Component, isValidElement } from '@wordpress/element';
 import { applyFilters } from '@wordpress/hooks';
 import { registerPlugin } from '@wordpress/plugins';
-import { compose } from '@wordpress/compose';
-import { withSelect, withDispatch } from '@wordpress/data';
+import { compose, ifCondition } from '@wordpress/compose';
+import { withSelect, useSelect, withDispatch } from '@wordpress/data';
+import { useEntityProp } from '@wordpress/core-data';
 import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem } from '@wordpress/components';
 
 /**
  * Internal dependencies
  */
 import './store';
+import CoBlocksSettingsToggleControl from '../coblocks-settings/coblocks-settings-toggle-control';
 import { LayoutSelectorResults } from './layout-selector-results';
 import CoBlocksLayoutSelectorFill, { Slot } from './layout-selector-slot';
 import useComputedLayouts from './hooks/useComputedLayouts';
@@ -45,16 +47,10 @@ class LayoutSelector extends Component {
 			categories,
 			selectedCategory,
 			updateSelectedCategory,
-			isActive,
 			isMobile,
-			layoutSelectorEnabled,
 			useEmptyTemplateLayout,
 			useTemplateLayout,
 		} = this.props;
-
-		if ( ! layoutSelectorEnabled ) {
-			return null;
-		}
 
 		const settings = applyFilters( 'coblocks-layout-selector-controls', [] );
 
@@ -85,7 +81,7 @@ class LayoutSelector extends Component {
 			</>
 		);
 
-		return ! isActive ? null : (
+		return (
 			<Modal
 				title={ (
 					<>
@@ -178,23 +174,28 @@ class LayoutSelector extends Component {
 if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.postTypeEnabled ) {
 	registerPlugin( 'coblocks-layout-selector', {
 		render: compose( [
-			withSelect( ( select ) => {
+			ifCondition( () => {
+				const [ layoutSelectorEnabled ] = useEntityProp( 'root', 'site', 'coblocks_layout_selector_controls_enabled' );
+
 				const {
 					isTemplateSelectorActive,
 					hasLayouts,
 					hasCategories,
+				} = useSelect( ( select ) => select( 'coblocks/template-selector' ) );
+
+				return ( !! layoutSelectorEnabled && hasLayouts() && hasCategories() ) && isTemplateSelectorActive();
+			} ),
+			withSelect( ( select ) => {
+				const {
 					getSelectedCategory,
 				} = select( 'coblocks/template-selector' );
-				const { getLayoutSelector } = select( 'coblocks/settings' );
 
 				const { isViewportMatch } = select( 'core/viewport' );
 
 				const layouts = useComputedLayouts();
 
 				return {
-					isActive: isTemplateSelectorActive(),
 					isMobile: isViewportMatch( '< medium' ),
-					layoutSelectorEnabled: getLayoutSelector() && hasLayouts() && hasCategories(),
 					layouts,
 					categories: useCategories( layouts ),
 					selectedCategory: getSelectedCategory(),
@@ -226,11 +227,21 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 					},
 
 					useEmptyTemplateLayout: () => {
-						editPost( { title: '', blocks: [] } );
+						// editPost( { title: '', blocks: [] } );
 						closeTemplateSelector();
 					},
 				};
 			} ),
 		] )( LayoutSelector ),
+	} );
+
+	registerPlugin( 'coblocks-layout-selector-control', {
+		render: () => (
+			<CoBlocksSettingsToggleControl
+				settingsKey="coblocks_layout_selector_controls_enabled"
+				label={ __( 'Layout selector', 'coblocks' ) }
+				help={ __( 'Allow layout selection on new pages', 'coblocks' ) }
+			/>
+		),
 	} );
 }
