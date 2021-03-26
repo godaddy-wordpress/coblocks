@@ -11,6 +11,7 @@ import './styles/style.scss';
 import { __ } from '@wordpress/i18n';
 import { Fragment, useState } from '@wordpress/element';
 import { PluginMoreMenuItem } from '@wordpress/edit-post';
+import { useDispatch } from '@wordpress/data';
 import { registerPlugin, getPlugin, unregisterPlugin } from '@wordpress/plugins';
 import { Modal } from '@wordpress/components';
 
@@ -22,8 +23,15 @@ import CoBlocksSettingsModalControl from './coblocks-settings-slot';
 export default function CoBlocksSettings() {
 	const [ isOpen, setOpen ] = useState( false );
 
+	// Detect and save settings when closing the modal (make the API POST request).
+	const { saveEditedEntityRecord } = useDispatch( 'core' );
+
 	const openModal = () => setOpen( true );
-	const closeModal = () => setOpen( false );
+	const closeModal = () => {
+		setOpen( false );
+		// Save settings entities when closing the modal.
+		saveEditedEntityRecord( 'root', 'site' );
+	};
 
 	return (
 		<Fragment>
