@@ -34,6 +34,7 @@ class GalleryStackedEdit extends Component {
 		this.onMoveForward = this.onMoveForward.bind( this );
 		this.onMoveBackward = this.onMoveBackward.bind( this );
 		this.setImageAttributes = this.setImageAttributes.bind( this );
+		this.replaceImage = this.replaceImage.bind( this );
 
 		this.state = {
 			selectedImage: null,
@@ -101,6 +102,19 @@ class GalleryStackedEdit extends Component {
 				images,
 			} );
 		};
+	}
+
+	/**
+	 * replaceImage is passed to GalleryImage component and is used to replace images
+	 *
+	 * @param {number} index Index of image to remove.
+	 * @param {Object} media Media object used to initialize attributes.
+	 */
+	replaceImage( index, media ) {
+		const images = [ ...this.props.attributes.images ];
+		images[ index ] = { ...media };
+
+		this.props.setAttributes( { images } );
 	}
 
 	setImageAttributes( index, attributes ) {
@@ -231,6 +245,8 @@ class GalleryStackedEdit extends Component {
 										supportsCaption={ true }
 										verticalMoving={ true }
 										fontSize={ fontSize.size }
+										imageIndex={ index }
+										replaceImage={ this.replaceImage }
 									/>
 								</li>
 							);

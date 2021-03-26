@@ -30,12 +30,21 @@
 		}
 	}
 
-	.coblocks-gallery--figure.is-appender {
-		margin-bottom: 12px;
-		padding: 12px;
+	.coblocks-gallery--figure,
+	figure {
+		.is-appender {
+			margin-bottom: 12px;
+			padding: 12px;
 
-		.components-placeholder__fieldset .block-editor-media-placeholder__upload-button {
-			margin-bottom: 0 !important;
+			.components-placeholder__fieldset .block-editor-media-placeholder__upload-button {
+				margin-bottom: 0 !important;
+			}
+		}
+
+		.coblocks-gallery-item__button-replace {
+			box-shadow: none;
+			border-right: solid 1px #1e1e1e;
 		}
 	}
+
 }
