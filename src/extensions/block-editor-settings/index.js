@@ -56,8 +56,8 @@ function CoBlocksEditorSettingsControls() {
 		}
 
 		updateSettings( {
+			colors: colorPanelEnabled ? enableEditorSetting( 'colors' ) : disableEditorSetting( 'colors' ),
 			disableCustomColors: ! customColorsEnabled,
-			colors: customColorsEnabled ? enableEditorSetting( 'colors' ) : disableEditorSetting( 'colors' ),
 			disableCustomGradients: ! gradientPresetsEnabled,
 			gradients: gradientPresetsEnabled ? enableEditorSetting( 'gradients' ) : disableEditorSetting( 'gradients' ),
 		} );
