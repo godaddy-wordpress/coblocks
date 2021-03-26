@@ -25,7 +25,8 @@ import {
 	Tip,
 } from '@wordpress/components';
 import { check } from '@wordpress/icons';
-import { withSelect } from '@wordpress/data';
+import { compose, ifCondition } from '@wordpress/compose';
+import { useEntityProp } from '@wordpress/core-data';
 
 function PreviewAnimationPopover( { hoveredAnimation, selected } ) {
 	if ( ! hoveredAnimation ) {
@@ -88,10 +89,6 @@ class Controls extends Component {
 	};
 
 	render() {
-		if ( ! this.props.animationEnabled ) {
-			return null;
-		}
-
 		const {
 			attributes: { animation },
 			selected,
@@ -153,10 +150,9 @@ class Controls extends Component {
 	}
 }
 
-export default withSelect( ( select ) => {
-	const { getAnimation } = select( 'coblocks/settings' );
-
-	return {
-		animationEnabled: getAnimation(),
-	};
-} )( Controls );
+export default compose( [
+	ifCondition( () => {
+		const [ animationEnabled ] = useEntityProp( 'root', 'site', 'coblocks_animation_controls_enabled' );
+		return animationEnabled;
+	} ),
+] )( Controls );
