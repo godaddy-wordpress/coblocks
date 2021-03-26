@@ -12,7 +12,7 @@ describe( 'Extension: CoBlocks Settings', function() {
 
 		cy.get( '.edit-post-more-menu' ).click();
 		cy.get( '.components-menu-group' ).find( 'button' ).contains( 'Editor settings' ).click();
-		cy.get( '.coblocks-modal__content' ).find( 'input[type="checkbox"]' ).each( ( checkbox ) => {
+		cy.get( '.coblocks-settings-modal' ).find( 'input[type="checkbox"]' ).each( ( checkbox ) => {
 			if ( ! Cypress.$( checkbox ).prop( 'checked' ) ) {
 				cy.get( checkbox ).click();
 			}
@@ -36,7 +36,7 @@ describe( 'Extension: CoBlocks Settings', function() {
 
 		// Typography Test
 		cy.get( '.components-coblocks-typography-dropdown' ).should( 'exist' );
-		cy.get( '.coblocks-modal__content' ).contains( 'Typography controls' ).click();
+		cy.get( '.coblocks-settings-modal' ).contains( 'Typography controls' ).click();
 		cy.get( '.components-coblocks-typography-dropdown' ).should( 'not.exist' );
 
 		cy.get( '.components-modal__header button[aria-label="Close dialog"]' ).click();
@@ -53,7 +53,7 @@ describe( 'Extension: CoBlocks Settings', function() {
 
 		// Animation Test
 		cy.get( '.components-coblocks-animation-toggle' ).should( 'exist' );
-		cy.get( '.coblocks-modal__content' ).contains( 'Animation controls' ).click();
+		cy.get( '.coblocks-settings-modal' ).contains( 'Animation controls' ).click();
 		cy.get( '.components-coblocks-animation-toggle' ).should( 'not.exist' );
 
 		cy.get( '.components-modal__header button[aria-label="Close dialog"]' ).click();
@@ -73,22 +73,22 @@ describe( 'Extension: CoBlocks Settings', function() {
 		if ( supportsGradients ) {
 			// Gradient Panels
 			cy.get( '.block-editor-color-gradient-control button' ).contains( 'Gradient' ).should( 'exist' );
-			cy.get( '.coblocks-modal__content' ).contains( 'Gradient styles' ).click();
+			cy.get( '.coblocks-settings-modal' ).contains( 'Gradient styles' ).click();
 			cy.get( '.block-editor-color-gradient-control button' ).contains( 'Gradient' ).should( 'not.exist' );
-			cy.get( '.coblocks-modal__content' ).contains( 'Gradient styles' ).click(); // Re-enable
+			cy.get( '.coblocks-settings-modal' ).contains( 'Gradient styles' ).click(); // Re-enable
 		}
 
 		// Custom Color Picker
 		cy.get( 'button[aria-label="Custom color picker"]' ).should( 'exist' );
-		cy.get( '.coblocks-modal__content' ).contains( 'Custom color pickers' ).click();
+		cy.get( '.coblocks-settings-modal' ).contains( 'Custom color pickers' ).click();
 		cy.get( 'button[aria-label="Custom color picker"]' ).should( 'not.exist' );
-		cy.get( '.coblocks-modal__content' ).contains( 'Custom color pickers' ).click();// Re-enable
+		cy.get( '.coblocks-settings-modal' ).contains( 'Custom color pickers' ).click();// Re-enable
 
 		// Color Settings
 		cy.get( '.components-panel__body-title' ).contains( /(Background & Text Color|Color Settings)/i ).should( 'exist' );
-		cy.get( '.coblocks-modal__content' ).contains( 'Color settings' ).click();
+		cy.get( '.coblocks-settings-modal' ).contains( 'Color settings' ).click();
 		cy.get( '.components-panel__body-title' ).contains( /(Background & Text Color|Color Settings)/i ).should( 'not.exist' );
-		cy.get( '.coblocks-modal__content' ).contains( 'Color settings' ).click(); // Re-enable
+		cy.get( '.coblocks-settings-modal' ).contains( 'Color settings' ).click(); // Re-enable
 
 		cy.get( '.components-modal__header button[aria-label="Close dialog"]' ).click();
 	} );
