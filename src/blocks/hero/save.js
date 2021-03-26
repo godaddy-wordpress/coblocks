@@ -42,7 +42,7 @@ const save = ( { attributes } ) => {
 	} );
 
 	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
-		classes = classnames( classnames, `coblocks-hero-${ coblocks.id }` );
+		classes = classnames( classes, `coblocks-hero-${ coblocks.id }` );
 	}
 
 	const styles = {
