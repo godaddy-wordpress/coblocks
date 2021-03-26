@@ -19,11 +19,11 @@ import { ENTER, SPACE } from '@wordpress/keycodes';
 const Inspector = ( props ) => {
 	const {
 		attributes,
-		setAttributes,
 		activeStyle,
 		layoutOptions,
 		onToggleCtas,
 		onUpdateStyle,
+		onSetColumns,
 	} = props;
 
 	return (
@@ -68,7 +68,7 @@ const Inspector = ( props ) => {
 					value={ attributes.columns }
 					min={ 1 }
 					max={ 4 }
-					onChange={ ( columns ) => setAttributes( { columns } ) }
+					onChange={ ( columns ) => onSetColumns( columns ) }
 				/>
 				{ attributes.columns >= 2 && <GutterControl { ...props } /> }
 				<ToggleControl

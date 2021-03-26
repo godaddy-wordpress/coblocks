@@ -83,6 +83,7 @@ const Edit = ( props ) => {
 	};
 
 	const setColumns = ( value ) => {
+		setBlocksPropagated( false );
 		setAttributes( { columns: parseInt( value ) } );
 	};
 
@@ -103,11 +104,22 @@ const Edit = ( props ) => {
 		};
 	}, [ attributes.className ] );
 
+	const [ blocksPropagated, setBlocksPropagated ] = useState( false );
+
 	/* istanbul ignore next */
 	useEffect( () => {
+		// Block has been removed by user, decrement block count.
+		if ( blocksPropagated && innerBlocks.length < attributes.columns ) {
+			setColumns( columns - ( attributes.columns - innerBlocks.length ) );
+			setBlocksPropagated( true );
+		}
+	}, [ innerBlocks.length, blocksPropagated ] );
+
+	/* istanbul ignore next */
+	useEffect( () => {
+		const { columns } = attributes;
 		// Add service-column when column count is increased.
-		if ( innerBlocks.length < attributes.columns ) {
-			// Add a new service-column block if the count is less than the columns set.
+		if ( innerBlocks.length < columns ) {
 			const blockToInsert = () => {
 				const removedBlock = removedColumns?.[ 0 ];
 				if ( ! removedBlock ) {
@@ -121,16 +133,18 @@ const Edit = ( props ) => {
 				return removedBlock;
 			};
 
-			insertBlock(
-				blockToInsert(),
-				innerBlocks.length + 1,
-				clientId,
-				false,
-			);
+			if ( ! blocksPropagated ) {
+				insertBlock(
+					blockToInsert(),
+					innerBlocks.length + 1,
+					clientId,
+					false,
+				);
+			}
 		}
 
 		// Remove service-column when column count is reduced.
-		if ( innerBlocks.length > attributes.columns ) {
+		if ( innerBlocks.length > columns ) {
 			const targetBlock = innerBlocks[ innerBlocks.length - 1 ];
 			if ( targetBlock ) {
 				const unshiftedRemovedColumns = removedColumns;
@@ -140,7 +154,12 @@ const Edit = ( props ) => {
 				removeBlock( targetBlock.clientId, false );
 			}
 		}
-	}, [ attributes.columns ] );
+
+		// useEffect logic should now have all blocks in place.
+		if ( innerBlocks.length === attributes.columns ) {
+			setBlocksPropagated( true );
+		}
+	}, [ attributes.columns, innerBlocks.length ] );
 
 	/* istanbul ignore next */
 	useEffect( () => {
