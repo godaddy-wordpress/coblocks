@@ -73,7 +73,8 @@ const Edit = ( props ) => {
 		const targetBlock = innerItems.filter( ( item ) => item.name === blockName );
 
 		if ( ! targetBlock.length && show ) {
-			const newBlock = createBlock( blockName, blockAttributes );
+			const newButton = createBlock( 'core/button', {} );
+			const newBlock = createBlock( blockName, blockAttributes, [ newButton ] );
 			insertBlock( newBlock, innerItems.length, clientId, false );
 		}
 
@@ -96,11 +97,6 @@ const Edit = ( props ) => {
 
 	/* istanbul ignore next */
 	useEffect( () => {
-		//First effect has no blocks - short circuit.
-		if ( ! innerItems.length ) {
-			return;
-		}
-
 		manageInnerBlock( 'core/buttons', { contentJustification: attributes.alignment }, attributes.showCta );
 	}, [ attributes.showCta ] );
 
@@ -205,10 +201,6 @@ const Edit = ( props ) => {
 			},
 		],
 	];
-
-	if ( showCta ) {
-		TEMPLATE.push( [ 'core/buttons', { contentJustification: alignment } ] );
-	}
 
 	return (
 		<Fragment>

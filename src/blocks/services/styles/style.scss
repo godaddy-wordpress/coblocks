@@ -1,2 +1,17 @@
 // Import legacy styles for older versions of CoBlocks
 @import "legacy";
+
+.wp-block-coblocks-services {
+	.has-1-columns {
+		justify-content: center;
+
+		.wp-block-coblocks-service-column {
+			width: 100%;
+		}
+	}
+}
+
+// TwentyTwenty compatibility
+.is-twentytwenty .wp-block-coblocks-services .has-1-columns .wp-block-coblocks-service-column {
+	max-width: 58rem;
+}
