@@ -238,7 +238,7 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 	} );
 
 	registerPlugin( 'coblocks-layout-selector-control', {
-		render: () => (
+		render: () => applyFilters( 'coblocks-show-layout-selector', true ) && (
 			<CoBlocksSettingsToggleControl
 				settingsKey={ 'coblocks_layout_selector_controls_enabled' }
 				label={ __( 'Layout selector', 'coblocks' ) }
