@@ -12,7 +12,6 @@ import TypograpyClasses from './classes';
 import TypographyTransforms from './transforms';
 import FontFamilyPicker from './../../components/font-family/index';
 import icons from './icons';
-import { TYPOGRAPHY_CONTROLS_SETTINGS_KEY } from '../../extensions/typography/index';
 
 /**
  * WordPress dependencies
@@ -262,7 +261,7 @@ class TypographyControls extends Component {
 export default compose( [
 	applyFallbackStyles,
 	ifCondition( () => {
-		const [ typographyEnabled ] = useEntityProp( 'root', 'site', TYPOGRAPHY_CONTROLS_SETTINGS_KEY );
+		const [ typographyEnabled ] = useEntityProp( 'root', 'site', 'coblocks_typography_controls_enabled' );
 		return typographyEnabled;
 	} ),
 ] )( TypographyControls );

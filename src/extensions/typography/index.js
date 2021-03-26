@@ -21,8 +21,6 @@ import { Fragment }	from '@wordpress/element';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
 import { registerPlugin } from '@wordpress/plugins';
 
-export const TYPOGRAPHY_CONTROLS_SETTINGS_KEY = 'coblocks_typography_controls_enabled';
-
 const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/pullquote', 'core/cover', 'core/quote', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/alert', 'coblocks/highlight', 'coblocks/pricing-table', 'coblocks/features' ];
 const deprecatedBlocks = [ 'coblocks/click-to-tweet' ];
 
@@ -234,7 +232,7 @@ addFilter(
 registerPlugin( 'coblocks-typography-control', {
 	render: () => (
 		<CoBlocksSettingsToggleControl
-			settingsKey={ TYPOGRAPHY_CONTROLS_SETTINGS_KEY }
+			settingsKey={ 'coblocks_typography_controls_enabled' }
 			label={ __( 'Typography controls', 'coblocks' ) }
 			help={ __( 'Allow block-level typography controls.', 'coblocks' ) }
 		/>
