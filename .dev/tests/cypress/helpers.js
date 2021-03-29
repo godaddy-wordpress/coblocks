@@ -296,6 +296,7 @@ export function setInputValue( panelName, settingName, value, ignoreCase = true 
  * Upload helper object. Contains image fixture spec and uploader function.
  * `helpers.upload.spec` Object containing image spec.
  * `helpers.upload.imageToBlock` Function performs upload action on specified block.
+ * `helpers.upload.replaceImageFlow` Function performs replace action on specified block.
  */
 export const upload = {
 	spec: {
@@ -321,6 +322,45 @@ export const upload = {
 					{ force: true }
 				);
 		} );
+	},
+	/**
+	 * Upload image to input element and trigger replace image flow.
+	 *
+	 * @param {string} blockName The name of the block that is replace target
+	 * imageReplaceFlow works with CoBlocks Galleries: Carousel, Collage, Masonry, Offset, Stacked.
+	 */
+	imageReplaceFlow: ( blockName ) => {
+		const selectBlockBy = blockName.split( '-' )?.[ 1 ];
+
+		upload.imageToBlock( blockName );
+
+		selectBlock( selectBlockBy );
+
+		cy.get( '.coblocks-gallery-item__button-replace' ).should( 'not.exist' );
+
+		cy.get( `[data-type="${ blockName }"] figure` ).click();
+
+		cy.get( '.coblocks-gallery-item__button-replace' ).click( { force: true } );
+
+		cy.get( '#menu-item-browse' ).click();
+
+		cy.get( 'ul.attachments' );
+
+		// Replace the image.
+		const newImageBase = 'R150x150';
+		/* eslint-disable */
+		cy.fixture( `../.dev/tests/cypress/fixtures/images/${ newImageBase }.png` ).then( ( fileContent ) => {
+			cy.get( '[class^="moxie"]' ).find( '[type="file"]' ).first()
+			.invoke( 'removeAttr', 'style' ) //makes element easier to interact with/accessible.
+			.upload(
+				{ fileContent, fileName: `${ newImageBase }.png`, mimeType: 'image/png' },
+				{ force: true }
+			);
+		} );
+		/* eslint-enable */
+		cy.get( '.media-modal .media-button-select' ).click();
+
+		cy.get( '.edit-post-visual-editor' ).find( `[data-type="${ blockName }"] img` ).first().should( 'have.attr', 'src' ).should( 'include', newImageBase );
 	},
 };
 

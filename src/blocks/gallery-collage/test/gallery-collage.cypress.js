@@ -162,21 +162,10 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	} );
 
 	it( 'can replace the existing image through the "Replace" button', () => {
-		cy.get( '.wp-block-coblocks-gallery-collage__item' ).first().click();
-		cy.get( '.wp-block-coblocks-gallery-collage__item' ).first().find( '.coblocks-gallery-item__button-replace' ).click();
+		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
 
-		// Replace the image.
-		const newImageBase = '150x150-2';
-		/* eslint-disable */
-		cy.fixture( `../.dev/tests/cypress/fixtures/images/${ newImageBase }.png` ).then( ( fileContent ) => {
-			cy.get( '[class^="moxie"]' ).find( '[type="file"]' ).first().upload(
-				{ fileContent, fileName: `${ newImageBase }.png`, mimeType: 'image/png' },
-				{ force: true }
-			);
-		} );
-		/* eslint-enable */
-		cy.get( '.media-modal' ).find( '.media-button-select' ).click();
+		helpers.upload.imageReplaceFlow( 'coblocks/gallery-collage' );
 
-		cy.get( '.edit-post-visual-editor' ).find( '.wp-block-coblocks-gallery-collage__item img' ).first().should( 'have.attr', 'src' ).should( 'include', newImageBase );
+		helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
 	} );
 } );

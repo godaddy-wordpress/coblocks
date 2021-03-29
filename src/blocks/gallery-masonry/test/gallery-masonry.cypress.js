@@ -46,12 +46,6 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/gallery-masonry' );
-
-		helpers.viewPage();
-
-		cy.get( '.coblocks-gallery--item' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -84,13 +78,6 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/gallery-masonry' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-gallery-masonry' ).should( 'exist' );
-		cy.get( '.wp-block-coblocks-gallery-masonry' ).find( 'img' ).should( 'have.attr', 'src' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -132,13 +119,6 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/gallery-masonry' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-gallery-masonry' ).should( 'exist' );
-		cy.get( '.wp-block-coblocks-gallery-masonry' ).contains( caption );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -176,5 +156,22 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 		cy.get( 'figcaption[role="textbox"]' ).focus();
 
 		cy.get( '.block-editor-format-toolbar' );
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/gallery-masonry' );
+	} );
+
+	/**
+	 * Test that we can add image and replace image.
+	 */
+	it( 'Test masonry replace image flow.', function() {
+		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
+
+		helpers.upload.imageReplaceFlow( 'coblocks/gallery-masonry' );
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/gallery-masonry' );
 	} );
 } );
