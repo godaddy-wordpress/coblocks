@@ -105,10 +105,10 @@ function coblocks_post_carousel( $posts, $attributes ) {
 
 	}
 
-	$carousel_direction = false;
+	$right_to_left = false;
 
 	if ( is_rtl() ) {
-		$carousel_direction = true;
+		$right_to_left = true;
 	}
 
 	$block_content = sprintf(
@@ -130,7 +130,7 @@ function coblocks_post_carousel( $posts, $attributes ) {
 						'infinite'       => true,
 						'adaptiveHeight' => false,
 						'draggable'      => true,
-						'rtl'            => $carousel_direction,
+						'rtl'            => $right_to_left,
 						'responsive'     => array(
 							array(
 								'breakpoint' => 1024,
