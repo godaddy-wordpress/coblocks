@@ -10,6 +10,7 @@ import Inspector from './inspector';
 import Controls from './controls';
 import * as helper from './../../utils/helper';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
+import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
 
 /**
  * WordPress dependencies
@@ -223,25 +224,38 @@ class GalleryCollageEdit extends Component {
 		const image = this.props.attributes.images.filter( ( img ) => parseInt( img.index ) === parseInt( index ) ).pop() || false;
 		const hasImage = !! image;
 
+		const classNames = classnames( 'wp-block-coblocks-gallery-collage__figure', {
+			[ `shadow-${ this.props.attributes.shadow }` ]: this.props.attributes.shadow,
+		} );
+
 		return (
-			<MediaPlaceholder
-				addToGallery={ true }
-				className={ classnames( 'wp-block-coblocks-gallery-collage__figure', {
-					[ `shadow-${ this.props.attributes.shadow }` ]: this.props.attributes.shadow,
-				} ) }
-				allowedTypes={ [ 'image' ] }
-				disableDropZone={ hasImage }
-				disableMediaButtons={ hasImage }
-				accept="image/*"
-				multiple={ false }
-				icon={ false }
-				labels={ {
-					title: ' ',
-					instructions: ' ',
-				} }
-				onSelect={ ( img ) => this.replaceImage( img, index ) }
-				onError={ this.onUploadError }
-			/>
+			<div className="wp-block-coblock-gallery-collage-dropzone-container">
+				<MediaPlaceholder
+					addToGallery={ true }
+					className={ classNames }
+					allowedTypes={ [ 'image' ] }
+					disableDropZone={ true }
+					disableMediaButtons={ hasImage }
+					accept="image/*"
+					multiple={ false }
+					icon={ false }
+					labels={ {
+						title: ' ',
+						instructions: ' ',
+					} }
+					onSelect={ ( img ) => {
+						this.replaceImage( img, index );
+					} }
+					onError={ this.onUploadError }
+				/>
+				<GalleryDropZone
+					{ ...this.props }
+					label="Drop file to upload"
+					onSelect={ ( img ) => {
+						this.replaceImage( img, index );
+					} }
+				/>
+			</div>
 		);
 	}
 

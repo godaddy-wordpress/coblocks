@@ -23,8 +23,14 @@ class GalleryDropZone extends Component {
 		mediaUpload( {
 			allowedTypes: helper.ALLOWED_GALLERY_MEDIA_TYPES,
 			filesList: files,
-			onFileChange: ( images ) => {
+			onFileChange: ( [ images ] ) => {
+				if ( this.props.onSelect ) {
+					this.props.onSelect( images );
+					return;
+				}
+
 				const imagesNormalized = images.map( ( image ) => helper.pickRelevantMediaFiles( image ) );
+
 				setAttributes( {
 					images: currentImages.concat( imagesNormalized ),
 				} );
