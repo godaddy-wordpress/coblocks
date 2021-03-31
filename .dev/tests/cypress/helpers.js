@@ -338,7 +338,7 @@ export const upload = {
 
 		cy.get( '.coblocks-gallery-item__button-replace' ).should( 'not.exist' );
 
-		cy.get( `[data-type="${ blockName }"] figure` ).click();
+		cy.get( `[data-type="${ blockName }"] img` ).first().click( { force: true } );
 
 		cy.get( '.coblocks-gallery-item__button-replace' ).click( { force: true } );
 
