@@ -3,7 +3,7 @@
  */
 import Controls from './controls';
 import '../../js/coblocks-animation';
-import CoBlocksSettingsToggleControl from '../coblocks-settings/coblocks-settings-toggle-control';
+import './settings-modal-control';
 
 /**
  * External Dependencies
@@ -17,8 +17,6 @@ import { useState, useEffect, useRef } from '@wordpress/element';
 import { withSelect } from '@wordpress/data';
 import { addFilter } from '@wordpress/hooks';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
-import { __ } from '@wordpress/i18n';
-import { registerPlugin } from '@wordpress/plugins';
 
 const allowedBlocks = [
 	{ blockType: 'coblocks/gallery-carousel', animateChildren: false },
@@ -188,13 +186,3 @@ addFilter(
 	'coblocks/withAnimationSettings',
 	withAnimationSettings
 );
-
-registerPlugin( 'coblocks-animation-control', {
-	render: () => (
-		<CoBlocksSettingsToggleControl
-			settingsKey={ 'coblocks_animation_controls_enabled' }
-			label={ __( 'Animation controls', 'coblocks' ) }
-			help={ __( 'Allow animations to be used on blocks.', 'coblocks' ) }
-		/>
-	),
-} );

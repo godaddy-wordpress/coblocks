@@ -20,11 +20,11 @@ import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem } fro
  * Internal dependencies
  */
 import './store';
-import CoBlocksSettingsToggleControl from '../coblocks-settings/coblocks-settings-toggle-control';
 import { LayoutSelectorResults } from './layout-selector-results';
 import CoBlocksLayoutSelectorFill, { Slot } from './layout-selector-slot';
 import useComputedLayouts from './hooks/useComputedLayouts';
 import useCategories from './hooks/useCategories';
+import './settings-modal-control';
 
 const SidebarItem = ( { slug, title, isSelected, onClick } ) => {
 	return (
@@ -235,15 +235,5 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 				};
 			} ),
 		] )( LayoutSelector ),
-	} );
-
-	registerPlugin( 'coblocks-layout-selector-control', {
-		render: () => applyFilters( 'coblocks-show-layout-selector', true ) && (
-			<CoBlocksSettingsToggleControl
-				settingsKey={ 'coblocks_layout_selector_controls_enabled' }
-				label={ __( 'Layout selector', 'coblocks' ) }
-				help={ __( 'Allow layout selection on new pages', 'coblocks' ) }
-			/>
-		),
 	} );
 }

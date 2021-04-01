@@ -12,15 +12,16 @@ import { registerPlugin } from '@wordpress/plugins';
  * Internal Dependencies
  */
 import CoBlocksSettingsModalControl from '../coblocks-settings/coblocks-settings-slot';
-
-export const COLOR_PANEL_SETTINGS_KEY = 'coblocks_color_panel_controls_enabled';
-export const CUSTOM_COLORS_SETTINGS_KEY = 'coblocks_custom_colors_controls_enabled';
-export const GRADIENT_PRESETS_SETTINGS_KEY = 'coblocks_gradient_presets_enabled';
+import {
+	COLORS_FEATURE_ENABLED_KEY,
+	COLORS_CUSTOM_FEATURE_ENABLED_KEY,
+	COLORS_GRADIENT_FEATURE_ENABLED_KEY,
+} from './constants';
 
 function CoBlocksEditorSettingsControls() {
-	const [ colorPanelEnabled, setColorPanelEnabled ] = useEntityProp( 'root', 'site', COLOR_PANEL_SETTINGS_KEY );
-	const [ customColorsEnabled, setCustomColorsEnabled ] = useEntityProp( 'root', 'site', CUSTOM_COLORS_SETTINGS_KEY );
-	const [ gradientPresetsEnabled, setGradientPresetsEnabled ] = useEntityProp( 'root', 'site', GRADIENT_PRESETS_SETTINGS_KEY );
+	const [ colorPanelEnabled, setColorPanelEnabled ] = useEntityProp( 'root', 'site', COLORS_FEATURE_ENABLED_KEY );
+	const [ customColorsEnabled, setCustomColorsEnabled ] = useEntityProp( 'root', 'site', COLORS_CUSTOM_FEATURE_ENABLED_KEY );
+	const [ gradientPresetsEnabled, setGradientPresetsEnabled ] = useEntityProp( 'root', 'site', COLORS_GRADIENT_FEATURE_ENABLED_KEY );
 
 	// Backup current settings so that we can reload when toggling settings.
 	const { settings } = useSelect( ( select ) => {

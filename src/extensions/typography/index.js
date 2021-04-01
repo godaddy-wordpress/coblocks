@@ -4,7 +4,7 @@
 import Controls from './controls';
 import applyStyle from './apply-style';
 import { TypographyAttributes } from '../../components/typography-controls';
-import CoBlocksSettingsToggleControl from '../coblocks-settings/coblocks-settings-toggle-control';
+import './settings-modal-control';
 
 /**
  * External Dependencies
@@ -14,12 +14,10 @@ import classnames from 'classnames';
 /**
  * WordPress Dependencies
  */
-import { __ } from '@wordpress/i18n';
 import { withSelect } from '@wordpress/data';
 import { addFilter } from '@wordpress/hooks';
 import { Fragment }	from '@wordpress/element';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
-import { registerPlugin } from '@wordpress/plugins';
 
 const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/pullquote', 'core/cover', 'core/quote', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/alert', 'coblocks/highlight', 'coblocks/pricing-table', 'coblocks/features' ];
 const deprecatedBlocks = [ 'coblocks/click-to-tweet' ];
@@ -228,13 +226,3 @@ addFilter(
 	'coblocks/applyFontSettings',
 	applyFontSettings
 );
-
-registerPlugin( 'coblocks-typography-control', {
-	render: () => (
-		<CoBlocksSettingsToggleControl
-			settingsKey={ 'coblocks_typography_controls_enabled' }
-			label={ __( 'Typography controls', 'coblocks' ) }
-			help={ __( 'Allow block-level typography controls.', 'coblocks' ) }
-		/>
-	),
-} );

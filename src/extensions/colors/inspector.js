@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import ColorSettings, { ColorSettingsAttributes } from './index';
+import './settings-modal-control';
 
 /**
  * WordPress dependencies
