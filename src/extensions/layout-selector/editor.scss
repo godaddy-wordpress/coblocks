@@ -342,8 +342,8 @@
 
 		// Safari-only hack. Welcome back to 2005.
 		// Hide spinner because there is a bug with how Safari is rendering column-count
-		@media not all and (min-resolution:.001dpcm) {
-			@supports (-webkit-appearance:none) {
+		@media not all and ( min-resolution: 0.001dpcm ) {
+			@supports ( -webkit-appearance: none ) {
 				.components-spinner {
 					display: none;
 				}
