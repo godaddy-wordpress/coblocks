@@ -38,13 +38,13 @@ class Edit extends Component {
 		};
 	}
 
-	componentDidMount() {
-		if ( this.props.wideControlsEnabled === true && ! this.props.attributes.align ) {
-			this.props.setAttributes( {
-				align: 'wide',
-			} );
-		}
-	}
+	// componentDidMount() {
+	// 	if ( this.props.wideControlsEnabled === true && ! this.props.attributes.align ) {
+	// 		this.props.setAttributes( {
+	// 			align: 'wide',
+	// 		} );
+	// 	}
+	// }
 
 	componentDidUpdate( prevProps ) {
 		// Deselect images when deselecting the block
@@ -53,6 +53,10 @@ class Edit extends Component {
 				selectedImage: null,
 				captionSelected: false,
 			} );
+		}
+
+		if ( this.props.wideControlsEnabled === true && typeof this.props.attributes.align === undefined ) {
+			this.props.setAttributes( { align: 'wide' } );
 		}
 	}
 
