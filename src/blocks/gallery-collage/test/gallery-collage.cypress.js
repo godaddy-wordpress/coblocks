@@ -18,18 +18,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	 */
 	it( 'Test collage block saves with empty values.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
-
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-gallery-collage' ).find( 'ul>li' ).each( ( $item ) => {
-			cy.get( $item ).should( 'be.empty' );
-		} );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -46,15 +35,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 
 		cy.get( '.wp-block-coblocks-gallery-collage__item img[src*="http"]' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-gallery-collage__item' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -78,16 +59,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 
 		cy.get( '.media-modal-content' ).find( '.media-button-select' ).click();
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-gallery-collage' ).should( 'exist' );
-		cy.get( '.wp-block-coblocks-gallery-collage' ).find( 'img' ).should( 'have.attr', 'src' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -117,16 +89,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 		cy.get( '.wp-block-coblocks-gallery-collage__item' ).first().click()
 			.find( 'figcaption' ).focus().type( caption, { force: true } );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-gallery-collage' ).should( 'exist' );
-		cy.get( '.wp-block-coblocks-gallery-collage' ).contains( caption );
-
-		helpers.editPage();
 	} );
 
 	/**
