@@ -4,6 +4,10 @@ import {
 	TYPOGRAPHY_FEATURE_ENABLED_KEY,
 } from '../constants';
 
+before( () => {
+	helpers.addBlockToPost( 'core/heading', true );
+} );
+
 describe( 'Settings Modal: Typography feature', () => {
 	beforeEach( () => {
 		// Reset settings.
@@ -13,7 +17,6 @@ describe( 'Settings Modal: Typography feature', () => {
 			} );
 		} );
 
-		helpers.addBlockToPost( 'core/heading', true );
 		cy.get( '.edit-post-visual-editor .wp-block[data-type="core/heading"]' ).first().click();
 
 		// Open settings modal.

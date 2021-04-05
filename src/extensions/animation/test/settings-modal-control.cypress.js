@@ -4,6 +4,10 @@ import {
 	ANIMATION_FEATURE_ENABLED_KEY,
 } from '../constants';
 
+before( () => {
+	helpers.addBlockToPost( 'core/cover', true );
+} );
+
 describe( 'Settings Modal: Animation feature', () => {
 	beforeEach( () => {
 		// Reset settings.
@@ -13,7 +17,6 @@ describe( 'Settings Modal: Animation feature', () => {
 			} );
 		} );
 
-		helpers.addBlockToPost( 'core/cover', true );
 		cy.get( '.edit-post-visual-editor .wp-block[data-type="core/cover"]' ).first().click();
 
 		// Open settings modal.

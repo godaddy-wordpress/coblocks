@@ -6,6 +6,10 @@ import {
 	COLORS_GRADIENT_FEATURE_ENABLED_KEY,
 } from '../constants';
 
+before( () => {
+	helpers.addBlockToPost( 'core/cover', true );
+} );
+
 describe( 'Settings Modal: Colors feature', () => {
 	beforeEach( () => {
 		// Reset settings.
@@ -33,8 +37,6 @@ describe( 'Settings Modal: Colors feature', () => {
 				],
 			} );
 		} );
-
-		helpers.addBlockToPost( 'core/cover', true );
 
 		// Open overlay settings on cover block where the color panel resides.
 		cy.get( '.edit-post-visual-editor .wp-block[data-type="core/cover"]' ).first().click();
