@@ -263,8 +263,8 @@ export function setBlockStyle( style ) {
  * @param {boolean} isChildBlock  Optional selector for children blocks. Default will be top level blocks.
  */
 export function selectBlock( name, isChildBlock = false ) {
-	cy.get( '.block-editor-block-navigation' ).click();
-	cy.get( '.block-editor-block-navigation-leaf button' ).contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) ).click();
+	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation' ).click();
+	cy.get( '.block-editor-block-navigation__popover' ).find( '.block-editor-block-navigation-leaf' ).contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) ).click();
 }
 
 /**
