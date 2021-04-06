@@ -12,24 +12,19 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 		caption: 'Caption Here',
 	};
 
+	const createNewPost = () => {
+		helpers.goTo( '/wp-admin/post-new.php?post_type=post' );
+		helpers.disableGutenbergFeatures();
+		helpers.addBlockToPost( 'coblocks/gallery-collage' );
+	};
+
 	/**
 	 * Test that we can add a gallery-collage block to the content, not add any images or
 	 * alter any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'Test collage block saves with empty values.', function() {
-		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
-
-		helpers.savePage();
-
+		helpers.addBlockToPost( 'coblocks/gallery-collage' );
 		helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-gallery-collage' ).find( 'ul>li' ).each( ( $item ) => {
-			cy.get( $item ).should( 'be.empty' );
-		} );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -38,23 +33,14 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	 */
 	it( 'Test collage block saves with image upload.', function() {
 		const { imageBase } = helpers.upload.spec;
-		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
-
+		createNewPost();
 		cy.get( '[data-type="coblocks/gallery-collage"]' ).first().click();
 
 		helpers.upload.imageToBlock( 'coblocks/gallery-collage' );
 
 		cy.get( '.wp-block-coblocks-gallery-collage__item img[src*="http"]' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-gallery-collage__item' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -62,8 +48,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	 * to successfully save the block without errors.
 	 */
 	it( 'Test collage block saves with images from media library.', function() {
-		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
-
+		createNewPost();
 		cy.get( '[data-type="coblocks/gallery-collage"]' )
 			.first()
 			.click()
@@ -78,16 +63,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 
 		cy.get( '.media-modal-content' ).find( '.media-button-select' ).click();
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-gallery-collage' ).should( 'exist' );
-		cy.get( '.wp-block-coblocks-gallery-collage' ).find( 'img' ).should( 'have.attr', 'src' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -96,8 +72,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	 */
 	it( 'Test collage block saves with images captions.', function() {
 		const { caption } = galleryData;
-		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
-
+		createNewPost();
 		cy.get( '[data-type="coblocks/gallery-collage"]' )
 			.first()
 			.click()
@@ -117,16 +92,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 		cy.get( '.wp-block-coblocks-gallery-collage__item' ).first().click()
 			.find( 'figcaption' ).focus().type( caption, { force: true } );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-gallery-collage' ).should( 'exist' );
-		cy.get( '.wp-block-coblocks-gallery-collage' ).contains( caption );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -135,8 +101,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	 * Collage block has always-focused rich text options.
 	 */
 	it( 'Test collage captions allow rich text controls.', function() {
-		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
-
+		createNewPost();
 		cy.get( '[data-type="coblocks/gallery-collage"]' )
 			.first()
 			.click()

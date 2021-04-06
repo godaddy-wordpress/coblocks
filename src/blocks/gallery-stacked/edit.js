@@ -41,10 +41,11 @@ class GalleryStackedEdit extends Component {
 	}
 
 	componentDidMount() {
+		const { attributes, setAttributes } = this.props;
 		// This block does not support caption style.
-		this.props.setAttributes( {
-			captionStyle: undefined,
-		} );
+		if ( typeof attributes.captionStyle !== 'undefined' ) {
+			setAttributes( { captionStyle: undefined } );
+		}
 	}
 
 	componentDidUpdate( prevProps ) {

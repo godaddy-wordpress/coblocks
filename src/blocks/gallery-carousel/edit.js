@@ -41,13 +41,6 @@ class GalleryCarouselEdit extends Component {
 		};
 	}
 
-	componentDidMount() {
-		// This block does not support the following attributes.
-		this.props.setAttributes( {
-			shadow: undefined,
-		} );
-	}
-
 	componentDidUpdate( prevProps ) {
 		// Deselect images when deselecting the block.
 		if ( ! this.props.isSelected && prevProps.isSelected ) {
