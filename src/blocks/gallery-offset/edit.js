@@ -38,14 +38,6 @@ class Edit extends Component {
 		};
 	}
 
-	// componentDidMount() {
-	// 	if ( this.props.wideControlsEnabled === true && ! this.props.attributes.align ) {
-	// 		this.props.setAttributes( {
-	// 			align: 'wide',
-	// 		} );
-	// 	}
-	// }
-
 	componentDidUpdate( prevProps ) {
 		// Deselect images when deselecting the block
 		if ( ! this.props.isSelected && prevProps.isSelected ) {
