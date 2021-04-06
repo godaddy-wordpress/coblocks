@@ -48,7 +48,7 @@ describe( 'Settings Modal: Layout Selector feature', () => {
 		cy.get( '.coblocks-settings-modal input[type="checkbox"]' ).should( 'have.length', 6 );
 
 		// Disable feature.
-		cy.get( '.coblocks-settings-modal' ).contains( 'Layout selector' ).parent().find( 'input' ).click();
+		cy.get( '.coblocks-settings-modal' ).contains( 'Layout selector' ).parent().find( 'input' ).focus().click();
 		cy.get( '.components-modal__header button[aria-label="Close dialog"]' ).click();
 
 		// Creating a new page should not load the layout selector.
@@ -60,7 +60,7 @@ describe( 'Settings Modal: Layout Selector feature', () => {
 		cy.get( '.components-menu-item__button' ).contains( 'Editor settings' ).click();
 
 		// Enable feature.
-		cy.get( '.coblocks-settings-modal' ).contains( 'Layout selector' ).parent().find( 'input' ).click();
+		cy.get( '.coblocks-settings-modal' ).contains( 'Layout selector' ).parent().find( 'input' ).focus().click();
 
 		// The layout selector should load.
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
