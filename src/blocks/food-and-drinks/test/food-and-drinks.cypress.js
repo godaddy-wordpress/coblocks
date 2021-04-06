@@ -62,9 +62,7 @@ describe( 'Block: Food and Drinks', function() {
 			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'not.exist' );
 		} );
 
-		// Select parent block
-		cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation' ).click();
-		cy.get( '.block-editor-block-navigation__popover' ).find( '.block-editor-block-navigation-leaf' ).contains( 'Food & Drink' ).click();
+		helpers.selectBlock( 'Food & Drink' );
 
 		helpers.openSettingsPanel( /food & drinks settings/i );
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /images/i ).click();
@@ -83,9 +81,7 @@ describe( 'Block: Food and Drinks', function() {
 			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'exist' );
 		} );
 
-		// Select parent block
-		cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation' ).click();
-		cy.get( '.block-editor-block-navigation__popover' ).find( '.block-editor-block-navigation-leaf' ).contains( 'Food & Drink' ).click();
+		helpers.selectBlock( 'Food & Drink' );
 
 		helpers.openSettingsPanel( /food & drinks settings/i );
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /prices/i ).click();
