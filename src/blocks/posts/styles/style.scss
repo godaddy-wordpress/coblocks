@@ -36,6 +36,10 @@
 	}
 }
 
+.wp-block-coblocks-posts.is-style-horizontal .wp-block-coblocks-posts__item {
+	display: flex;
+}
+
 .wp-block-coblocks-posts__image {
 	display: table;
 	flex: 0 0 auto;
