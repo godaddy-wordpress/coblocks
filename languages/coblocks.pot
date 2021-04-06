@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-04-06T16:04:51+00:00\n"
+"POT-Creation-Date: 2021-04-06T16:28:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -1099,7 +1099,7 @@ msgid "Drop image to replace"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:214
-#: src/components/block-gallery/gallery-image.js:215
+#: src/components/block-gallery/gallery-image.js:221
 msgid "Remove image"
 msgstr ""
 
@@ -1532,7 +1532,7 @@ msgid "Secret key"
 msgstr ""
 
 #: src/blocks/form/edit.js:437
-#: src/components/block-gallery/gallery-image.js:228
+#: src/components/block-gallery/gallery-image.js:258
 msgid "Saving"
 msgstr ""
 
@@ -1901,19 +1901,19 @@ msgid "Event"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gallery-carousel/edit.js:175
+#: src/blocks/gallery-carousel/edit.js:189
 #: src/blocks/gallery-carousel/index.js:35
 msgid "Carousel"
 msgstr ""
 
 #. translators: %1$d is the order number of the image, %2$d is the total number of images
-#: src/blocks/gallery-carousel/edit.js:313
-#: src/blocks/gallery-masonry/edit.js:231
-#: src/blocks/gallery-stacked/edit.js:204
+#: src/blocks/gallery-carousel/edit.js:327
+#: src/blocks/gallery-masonry/edit.js:245
+#: src/blocks/gallery-stacked/edit.js:218
 msgid "image %1$d of %2$d in gallery"
 msgstr ""
 
-#: src/blocks/gallery-carousel/edit.js:375
+#: src/blocks/gallery-carousel/edit.js:391
 msgid "Write gallery caption…"
 msgstr ""
 
@@ -2044,7 +2044,7 @@ msgid "Layered"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gallery-masonry/edit.js:173
+#: src/blocks/gallery-masonry/edit.js:187
 #: src/blocks/gallery-masonry/index.js:35
 msgid "Masonry"
 msgstr ""
@@ -2099,7 +2099,7 @@ msgstr ""
 
 #. translators: block name
 #. translators: block style
-#: src/blocks/gallery-stacked/edit.js:151
+#: src/blocks/gallery-stacked/edit.js:165
 #: src/blocks/gallery-stacked/index.js:35
 #: src/blocks/posts/edit.js:53
 msgid "Stacked"
@@ -2146,7 +2146,7 @@ msgstr ""
 
 #: src/blocks/gif/edit.js:229
 #: src/blocks/gist/edit.js:103
-#: src/components/block-gallery/gallery-image.js:237
+#: src/components/block-gallery/gallery-image.js:267
 msgid "Write caption…"
 msgstr ""
 
@@ -7056,15 +7056,24 @@ msgstr ""
 msgid "Clear Media"
 msgstr ""
 
-#: src/components/block-gallery/gallery-image.js:196
+#: src/components/block-gallery/gallery-image.js:208
+#: src/extensions/replace-image/index.js:115
+msgid "Replace Image"
+msgstr ""
+
+#: src/components/block-gallery/gallery-image.js:210
+msgid "Replace"
+msgstr ""
+
+#: src/components/block-gallery/gallery-image.js:235
 msgid "Move image backward"
 msgstr ""
 
-#: src/components/block-gallery/gallery-image.js:204
+#: src/components/block-gallery/gallery-image.js:243
 msgid "Move image forward"
 msgstr ""
 
-#: src/components/block-gallery/gallery-image.js:228
+#: src/components/block-gallery/gallery-image.js:258
 msgid "Apply"
 msgstr ""
 
@@ -7690,10 +7699,6 @@ msgstr ""
 #. translators: %1$s is placeholder for block name such as Group, or Embed
 #: src/extensions/padding-controls/index.js:77
 msgid "%1$s settings"
-msgstr ""
-
-#: src/extensions/replace-image/index.js:115
-msgid "Replace Image"
 msgstr ""
 
 #: src/utils/block-category.js:16
