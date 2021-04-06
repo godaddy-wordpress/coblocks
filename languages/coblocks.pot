@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-04-06T15:43:25+00:00\n"
+"POT-Creation-Date: 2021-04-06T16:04:51+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -1901,19 +1901,19 @@ msgid "Event"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gallery-carousel/edit.js:182
+#: src/blocks/gallery-carousel/edit.js:175
 #: src/blocks/gallery-carousel/index.js:35
 msgid "Carousel"
 msgstr ""
 
 #. translators: %1$d is the order number of the image, %2$d is the total number of images
-#: src/blocks/gallery-carousel/edit.js:320
-#: src/blocks/gallery-masonry/edit.js:223
-#: src/blocks/gallery-stacked/edit.js:203
+#: src/blocks/gallery-carousel/edit.js:313
+#: src/blocks/gallery-masonry/edit.js:231
+#: src/blocks/gallery-stacked/edit.js:204
 msgid "image %1$d of %2$d in gallery"
 msgstr ""
 
-#: src/blocks/gallery-carousel/edit.js:382
+#: src/blocks/gallery-carousel/edit.js:375
 msgid "Write gallery caption…"
 msgstr ""
 
@@ -2044,7 +2044,7 @@ msgid "Layered"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gallery-masonry/edit.js:165
+#: src/blocks/gallery-masonry/edit.js:173
 #: src/blocks/gallery-masonry/index.js:35
 msgid "Masonry"
 msgstr ""
@@ -2099,7 +2099,7 @@ msgstr ""
 
 #. translators: block name
 #. translators: block style
-#: src/blocks/gallery-stacked/edit.js:150
+#: src/blocks/gallery-stacked/edit.js:151
 #: src/blocks/gallery-stacked/index.js:35
 #: src/blocks/posts/edit.js:53
 msgid "Stacked"
