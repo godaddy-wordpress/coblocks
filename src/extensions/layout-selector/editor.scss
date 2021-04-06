@@ -53,6 +53,7 @@
 		height: 96px;
 		margin: 0;
 		padding: 0;
+		z-index: 15;
 
 		@include break-medium() {
 			background-color: $white;
@@ -307,7 +308,6 @@
 	&__layout {
 		background-color: var(--go--color--background, $white);
 		border-radius: $radius-block-ui;
-		display: flex;
 		height: auto;
 		margin-bottom: 2rem;
 		min-height: 150px;
@@ -324,6 +324,12 @@
 		.block-editor-block-preview__container {
 			background-color: var(--go--color--background, $white);
 			margin: 2em;
+			position: relative;
+			z-index: 10;
+
+			&:hover {
+				cursor: pointer;
+			}
 		}
 
 		.components-spinner {
@@ -331,6 +337,17 @@
 			margin: 0;
 			position: absolute;
 			transform: translateX(-50%);
+			z-index: 1;
+		}
+
+		// Safari-only hack. Welcome back to 2005.
+		// Hide spinner because there is a bug with how Safari is rendering column-count
+		@media not all and ( min-resolution: 0.001dpcm ) {
+			@supports ( -webkit-appearance: none ) {
+				.components-spinner {
+					display: none;
+				}
+			}
 		}
 
 		&::after {
