@@ -59,7 +59,8 @@ describe( 'Settings Modal: Layout Selector feature', () => {
 		// Enable feature.
 		cy.get( '.coblocks-settings-modal' ).contains( 'Layout selector' ).click();
 
-		// The layout selector should load.
+		// The layout selector should load after reload.
+		createNewPage();
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 	} );
 } );
