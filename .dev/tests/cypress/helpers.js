@@ -140,7 +140,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	}
 
 	if ( clearEditor ) {
-		cy.wrap( clearBlocks() );
+		clearBlocks();
 	}
 
 	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"]' ).click();
