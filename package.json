@@ -35,6 +35,7 @@
 		"test:js": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js",
 		"test:js:coverage": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js --coverage"
 	},
+	"sideEffects": ["./src/js/coblocks-lightbox.js"],
 	"wp-env": {
 		"plugin-dir": "coblocks",
 		"plugin-name": "CoBlocks",

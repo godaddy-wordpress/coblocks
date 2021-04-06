@@ -87,6 +87,11 @@ module.exports = {
 		warnings: false,
 	},
 
+	mode: 'development',
+	optimization: {
+		usedExports: true,
+	},
+
 	plugins: [
 		...defaultConfig.plugins,
 
