@@ -49,12 +49,6 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/gallery-carousel' );
-
-		helpers.viewPage();
-
-		cy.get( 'div.coblocks-gallery--item' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -87,13 +81,6 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/gallery-carousel' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-gallery-carousel' ).should( 'exist' );
-		cy.get( '.wp-block-coblocks-gallery-carousel' ).find( 'img' ).should( 'have.attr', 'src' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -129,13 +116,6 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/gallery-carousel' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-gallery-carousel' ).should( 'exist' );
-		cy.get( '.wp-block-coblocks-gallery-carousel' ).contains( caption );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -169,5 +149,22 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 		cy.get( '[data-type="coblocks/gallery-carousel"]' ).find( 'figcaption' ).focus();
 
 		cy.get( '.block-editor-format-toolbar' );
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/gallery-carousel' );
+	} );
+
+	/**
+	 * Test that we can add image and replace image.
+	 */
+	it( 'Test carousel replace image flow.', function() {
+		helpers.addBlockToPost( 'coblocks/gallery-carousel', true );
+
+		helpers.upload.imageReplaceFlow( 'coblocks/gallery-carousel' );
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/gallery-carousel' );
 	} );
 } );

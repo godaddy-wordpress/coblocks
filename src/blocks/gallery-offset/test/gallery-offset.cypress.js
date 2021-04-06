@@ -46,12 +46,6 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/gallery-offset' );
-
-		helpers.viewPage();
-
-		cy.get( '.coblocks-gallery--item' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -84,13 +78,6 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/gallery-offset' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-gallery-offset' ).should( 'exist' );
-		cy.get( '.wp-block-coblocks-gallery-offset' ).find( 'img' ).should( 'have.attr', 'src' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -129,13 +116,6 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/gallery-offset' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-gallery-offset' ).should( 'exist' );
-		cy.get( '.wp-block-coblocks-gallery-offset' ).contains( caption );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -172,5 +152,22 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 			.find( 'figcaption' ).focus();
 
 		cy.get( '.block-editor-format-toolbar' );
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/gallery-offset' );
+	} );
+
+	/**
+	 * Test that we can add image and replace image.
+	 */
+	it( 'Test offset replace image flow.', function() {
+		helpers.addBlockToPost( 'coblocks/gallery-offset', true );
+
+		helpers.upload.imageReplaceFlow( 'coblocks/gallery-offset' );
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/gallery-offset' );
 	} );
 } );
