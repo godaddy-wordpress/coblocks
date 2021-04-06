@@ -50,6 +50,12 @@
 }
 
 // Hide selected state from core/gallery block.
-[data-type="core/gallery"].block-editor-block-list__block::after {
-	box-shadow: none !important;
+[data-type="core/gallery"].block-editor-block-list__block {
+	::after {
+		box-shadow: none !important;
+	}
+
+	figure.is-selected::before {
+		pointer-events: none;
+	}
 }
