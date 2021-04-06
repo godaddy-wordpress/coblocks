@@ -44,6 +44,9 @@ describe( 'Settings Modal: Layout Selector feature', () => {
 		cy.get( '.interface-interface-skeleton__header .edit-post-more-menu .components-button' ).click();
 		cy.get( '.components-menu-item__button' ).contains( 'Editor settings' ).click();
 
+		// Ensure settings have loaded.
+		cy.get( '.coblocks-settings-modal input[type="checkbox"]' ).should( 'have.length', 6 );
+
 		// Disable feature.
 		cy.get( '.coblocks-settings-modal' ).contains( 'Layout selector' ).parent().find( 'input' ).click();
 		cy.get( '.components-modal__header button[aria-label="Close dialog"]' ).click();
