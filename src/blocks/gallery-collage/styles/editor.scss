@@ -42,22 +42,6 @@
 	}
 }
 
-.wp-block-coblock-gallery-collage-dropzone-container {
-	height: 100%;
-	position: relative;
-	width: 100%;
-
-	& > .components-drop-zone {
-		height: 100%;
-		width: 100%;
-
-
-		& > .components-drop-zone__content-text {
-			font-size: 13px;
-		}
-	}
-}
-
 [data-type="coblocks/gallery-collage"] {
 
 	// Remove selected state.
