@@ -32,6 +32,12 @@ workflows:
               only: /^(?!canary).*$/
           requires:
             - php
+      - unit_testing_php_74:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - php
       - js:
           filters:
             tags:
@@ -48,6 +54,7 @@ workflows:
             - css
             - unit_testing_php_56
             - unit_testing_php_73
+            - unit_testing_php_74
             - js
       - e2e_firefox:
           filters:
@@ -57,6 +64,7 @@ workflows:
             - css
             - unit_testing_php_56
             - unit_testing_php_73
+            - unit_testing_php_74
             - js
 
       - canary-release:
@@ -66,6 +74,7 @@ workflows:
           requires:
             - unit_testing_php_56
             - unit_testing_php_73
+            - unit_testing_php_74
             - js
       - i18n:
           filters:
@@ -74,12 +83,14 @@ workflows:
           requires:
             - unit_testing_php_56
             - unit_testing_php_73
+            - unit_testing_php_74
             - js
 
       - deploy:
           requires:
             - unit_testing_php_56
             - unit_testing_php_73
+            - unit_testing_php_74
             - js
             # - e2e_firefox
             # - e2e_chrome
@@ -202,7 +213,7 @@ commands:
           command: |
             touch cypress.env.json
             echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
-            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
+            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ] || [ "$CIRCLE_BRANCH" == *"run-all-tests"* ]; then
               ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>
             else
               ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >> --spec "$(cat /tmp/specstring)"
@@ -254,7 +265,7 @@ commands:
       - run:
           name: Setup spec files to run based on git diff-tree
           command: |
-            if [[ "$CIRCLE_BRANCH" != "master" && "$CIRCLE_BRANCH" != "develop" ]]; then
+            if [[ "$CIRCLE_BRANCH" != "master" && "$CIRCLE_BRANCH" != "develop" && "$CIRCLE_BRANCH" != *"run-all-tests"* ]]; then
               bash .dev/bin/setup-test-specs.sh $FILES
             fi
 
@@ -263,7 +274,7 @@ commands:
       - run:
           name: "Pre-Check files"
           command: |
-            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ]; then
+            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ] && [ "$CIRCLE_BRANCH" != *"run-all-tests"* ]; then
               echo "Changes do not require testing."
               circleci-agent step halt
             fi
@@ -351,8 +362,7 @@ jobs:
       - restore_composer_cache
       - run:
           name: Install Composer v1
-          command: |
-            sudo composer self-update --1
+          command: sudo composer self-update --1
       - run:
           name: "Linting PHP"
           command: composer run lint $FILES
@@ -425,8 +435,40 @@ jobs:
       - restore_composer_cache
       - run:
           name: Install Composer v1
-          command: |
-            sudo composer self-update --1
+          command: sudo composer self-update --1
+      - wait_for_mysql
+      - install_wordpress_testing_suite
+      - run_phpunit_singlesite_coverage_reports
+      - store_artifacts:
+          path: /tmp/artifacts/code-coverage/
+          destination: phpunit-coverage
+      - store_test_results:
+          path: /tmp/artifacts/code-coverage/
+      - run:
+          name: "Run PHPUnit - Multi Site"
+          command: WP_MULTISITE=1 composer run test
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+
+  unit_testing_php_74:
+    docker:
+      - image: circleci/php:7.4.15-apache-node
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+        environment:
+          XDEBUG_MODE=coverage
+      - image: circleci/mysql:5.7
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project
+      - restore_composer_cache
+      - run:
+          name: Install Composer v1
+          command: sudo composer self-update --1
       - wait_for_mysql
       - install_wordpress_testing_suite
       - run_phpunit_singlesite_coverage_reports

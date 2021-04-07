@@ -20,7 +20,6 @@
 
 .wp-block-coblocks-posts__item {
 	align-items: stretch;
-	display: flex;
 	flex: 1 1 auto;
 	margin-bottom: var(--coblocks-spacing--3, map-get($spacing, 3));
 	margin-left: 0;
@@ -35,6 +34,10 @@
 	.is-style-horizontal .has-image-right  & {
 		flex-direction: row-reverse;
 	}
+}
+
+.wp-block-coblocks-posts.is-style-horizontal .wp-block-coblocks-posts__item {
+	display: flex;
 }
 
 .wp-block-coblocks-posts__image {
@@ -110,6 +113,7 @@
 .wp-block-coblocks-posts__content {
 	display: flex;
 	flex-direction: column;
+	margin-top: auto;
 	width: 100%;
 
 	&.self-center {

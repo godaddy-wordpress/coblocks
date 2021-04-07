@@ -74,20 +74,30 @@ class Inspector extends Component {
 		return Math.round( width / 4 );
 	}
 
-	onSetNewTab( value ) {
-		const { rel } = this.props.attributes;
-		const linkTarget = value ? '_blank' : undefined;
-
+	onSetNewTab( shouldOpenNewTab ) {
+		const { rel = '' } = this.props.attributes;
+		const linkTarget = shouldOpenNewTab ? '_blank' : undefined;
+		const linkRelAttributes = NEW_TAB_REL.split( ' ' );
 		let updatedRel = rel;
-		if ( linkTarget && ! rel ) {
-			updatedRel = NEW_TAB_REL;
-		} else if ( ! linkTarget && rel === NEW_TAB_REL ) {
-			updatedRel = undefined;
+
+		// Should open new tab and set block specified rel
+		if ( shouldOpenNewTab && linkRelAttributes.filter( ( att ) => updatedRel.includes( att ) ).length === 0 ) {
+			linkRelAttributes.forEach( ( att ) => {
+				updatedRel = updatedRel.includes( att ) ? updatedRel : updatedRel = `${ updatedRel } ${ att }`;
+			} );
+		}
+
+		// Should not open in new tab and should remove block specified rel
+		if ( ! shouldOpenNewTab && linkRelAttributes.filter( ( att ) => updatedRel.includes( att ) ).length > 0 ) {
+			linkRelAttributes.forEach( ( att ) => {
+				updatedRel = updatedRel.replace( att, '' );
+				updatedRel = updatedRel.trim();
+			} );
 		}
 
 		this.props.setAttributes( {
 			linkTarget,
-			rel: updatedRel,
+			rel: updatedRel || undefined,
 		} );
 	}
 

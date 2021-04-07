@@ -24,12 +24,45 @@
 			"attribute": "alt",
 			"default": ""
 		},
+		"imageId": {
+			"type": "number"
+		},
 		"focalPoint": {
 			"type": "object"
 		},
 		"alignment": {
 			"type": "string",
 			"default": "none"
+		},
+		"href": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "figure > a",
+			"attribute": "href"
+		},
+		"rel": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "figure > a",
+			"attribute": "rel"
+		},
+		"linkClass": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "figure > a",
+			"attribute": "class"
+		},
+		"linkDestination": {
+			"type": "string"
+		},
+		"linkTarget": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "figure > a",
+			"attribute": "target"
 		}
+	},
+	"supports": {
+		"anchor": true
 	}
 }

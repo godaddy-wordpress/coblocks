@@ -1,4 +1,50 @@
 
+2.9.1 / 2021-03-23
+==================
+### Bug Fixes
+* Hide media upload flow popover menu when upload modal is open [#1863](https://github.com/godaddy-wordpress/coblocks/pull/1863)
+* When two or more gists on an edit page, fix so that they render properly [#1856](https://github.com/godaddy-wordpress/coblocks/pull/1856)
+* Improve Food & Drink block test reliability [#1854](https://github.com/godaddy-wordpress/coblocks/pull/1854)
+
+2.9 / 2021-03-15
+================
+### Enhancements
+* Introduce WordPress 5.7 compatibility changes [#1845](https://github.com/godaddy-wordpress/coblocks/pull/1845)
+* Introduce new from: header to form submission emails [#1840](https://github.com/godaddy-wordpress/coblocks/pull/1840)
+
+### Bug Fixes
+* Fix Services block image height in TwentyTwentyOne [#1846](https://github.com/godaddy-wordpress/coblocks/pull/1846)
+* Fix Logos & Badges block sizing behavior [#1852](https://github.com/godaddy-wordpress/coblocks/pull/1852)
+* Fix Accordion block appender behavior [#1851](https://github.com/godaddy-wordpress/coblocks/pull/1851)
+* Fix animation visibility when in AMP [#1847](https://github.com/godaddy-wordpress/coblocks/pull/1847)
+
+### Misc
+* Document tested to WordPress 5.7 [#1853](https://github.com/godaddy-wordpress/coblocks/pull/1853)
+
+2.8.2 / 2021-03-01
+==================
+### Bug Fixes
+* Fix Carousel thumbnail navigation behavior [#1835](https://github.com/godaddy-wordpress/coblocks/pull/1835)
+* Fix Layout Selector behavior around animations [#1831](https://github.com/godaddy-wordpress/coblocks/pull/1831)
+
+2.8.1 / 2021-02-16
+==================
+### Bug Fixes
+* Fix backward compatibility with WP_Block_Supports [#1828](https://github.com/godaddy-wordpress/coblocks/pull/1828)
+
+2.8.0 / 2021-02-15
+==================
+### Enhancements
+* Introduce ability to Link to images within Service block [#1807](https://github.com/godaddy-wordpress/coblocks/pull/1807)
+* Improve Gist block User Experience with updated styles [#1820](https://github.com/godaddy-wordpress/coblocks/pull/1820)
+
+### Bug Fixes
+* Fix gallery captions rich text controls visibility [#1821](https://github.com/godaddy-wordpress/coblocks/pull/1821)
+* Fix Posts block missing images and improper layout [#1825](https://github.com/godaddy-wordpress/coblocks/pull/1825)
+* Fix Author block button removal and image placeholder alignment [#1822](https://github.com/godaddy-wordpress/coblocks/pull/1822)
+* Fix unintentional limit on block patterns count [#1818](https://github.com/godaddy-wordpress/coblocks/pull/1818)
+* Fix focus state to improve accessibility of Layout Selector [#1821](https://github.com/godaddy-wordpress/coblocks/pull/1821)
+
 2.7.2 / 2021-02-03
 ==================
 ### Bug Fixes
@@ -8,7 +54,7 @@
 2.7.0 / 2021-02-02
 ==================
 ### Enhancements
-* Add replace image button to Collage block gallery items (#1804)
+* Add replace image button to Collage block gallery items [#1804](https://github.com/godaddy-wordpress/coblocks/pull/1804)
 * Add mobile friendly experience to Layout Selector [#1800](https://github.com/godaddy-wordpress/coblocks/pull/1800)
 
 ### Bug Fixes

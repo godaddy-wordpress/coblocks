@@ -22,6 +22,8 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 
 		helpers.upload.imageToBlock( 'core/image' );
 
+		cy.get( '[data-type="core/image"] [src^="http"]' );
+
 		cy.get( '.block-editor-block-toolbar__slot .components-coblocks-media-filter' )
 			.should( 'exist' )
 			.click();
@@ -56,17 +58,6 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 
 				helpers.savePage();
 				helpers.checkForBlockErrors( 'core/image' );
-				helpers.viewPage();
-
-				cy.get( 'figure.wp-block-image' )
-					.should( 'not.have.class', 'has-filter-original' )
-					.and( 'not.have.class', 'has-filter-grayscale' )
-					.and( 'not.have.class', 'has-filter-sepia' )
-					.and( 'not.have.class', 'has-filter-saturation' )
-					.and( 'not.have.class', 'has-filter-dim' )
-					.and( 'not.have.class', 'has-filter-vintage' );
-
-				helpers.editPage();
 
 				cy.get( '.wp-block-image' )
 					.click();
@@ -86,12 +77,6 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 
 			helpers.savePage();
 			helpers.checkForBlockErrors( 'core/image' );
-			helpers.viewPage();
-
-			cy.get( 'figure.wp-block-image' )
-				.should( 'have.class', 'has-filter-' + filterSlug );
-
-			helpers.editPage();
 
 			cy.get( '.wp-block-image' )
 				.click();
@@ -101,6 +86,8 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 
 			childIteration++;
 		}
+
+		cy.reload();
 	} );
 
 	/**
@@ -111,6 +98,8 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 		helpers.addBlockToPost( 'core/gallery', true );
 
 		helpers.upload.imageToBlock( 'core/gallery' );
+
+		cy.get( '[data-type="core/gallery"] [src^="http"]' );
 
 		cy.get( '.block-editor-block-toolbar__slot .components-coblocks-media-filter' )
 			.should( 'exist' )
@@ -146,17 +135,6 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 
 				helpers.savePage();
 				helpers.checkForBlockErrors( 'core/gallery' );
-				helpers.viewPage();
-
-				cy.get( 'figure.wp-block-gallery' )
-					.should( 'not.have.class', 'has-filter-original' )
-					.and( 'not.have.class', 'has-filter-grayscale' )
-					.and( 'not.have.class', 'has-filter-sepia' )
-					.and( 'not.have.class', 'has-filter-saturation' )
-					.and( 'not.have.class', 'has-filter-dim' )
-					.and( 'not.have.class', 'has-filter-vintage' );
-
-				helpers.editPage();
 
 				cy.get( '.wp-block-gallery' )
 					.click();
@@ -171,19 +149,13 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 
 			const filterSlug = filters[ i ].toLowerCase();
 
-			cy.get( 'div[data-type="core/gallery"]' )
+			cy.get( '[data-type="core/gallery"]' )
 				.should( 'have.class', 'has-filter-' + filterSlug );
 
 			helpers.savePage();
 			helpers.checkForBlockErrors( 'core/gallery' );
-			helpers.viewPage();
 
-			cy.get( 'figure.wp-block-gallery' )
-				.should( 'have.class', 'has-filter-' + filterSlug );
-
-			helpers.editPage();
-
-			cy.get( 'div[data-type="core/gallery"]' )
+			cy.get( '.wp-block-gallery' )
 				.click();
 
 			cy.get( '.block-editor-block-toolbar__slot .components-coblocks-media-filter' )
@@ -191,5 +163,7 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 
 			childIteration++;
 		}
+
+		cy.reload();
 	} );
 } );

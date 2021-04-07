@@ -49,12 +49,6 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/gallery-carousel' );
-
-		helpers.viewPage();
-
-		cy.get( 'div.coblocks-gallery--item' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -87,13 +81,6 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/gallery-carousel' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-gallery-carousel' ).should( 'exist' );
-		cy.get( '.wp-block-coblocks-gallery-carousel' ).find( 'img' ).should( 'have.attr', 'src' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -129,12 +116,55 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/gallery-carousel' );
+	} );
 
-		helpers.viewPage();
+	/**
+	 * Test that we can add image captions with rich text options
+	 */
+	it( 'Test carousel captions allow rich text controls.', function() {
+		helpers.addBlockToPost( 'coblocks/gallery-carousel', true );
 
-		cy.get( '.wp-block-coblocks-gallery-carousel' ).should( 'exist' );
-		cy.get( '.wp-block-coblocks-gallery-carousel' ).contains( caption );
+		cy.get( '[data-type="coblocks/gallery-carousel"]' )
+			.click()
+			.contains( /media library/i )
+			.click();
 
-		helpers.editPage();
+		cy.get( '.media-modal-content' ).contains( /media library/i ).click();
+
+		cy.get( '.media-modal-content' ).find( 'li.attachment' )
+			.first( 'li' )
+			.click();
+
+		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
+			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			} else { // pre wp 5.4
+				cy.get( 'button' ).contains( /create a new gallery/i ).click();
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			}
+		} );
+
+		cy.get( '.block-editor-format-toolbar' ).should( 'not.exist' );
+
+		cy.get( '[data-type="coblocks/gallery-carousel"]' ).find( 'figcaption' ).focus();
+
+		cy.get( '.block-editor-format-toolbar' );
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/gallery-carousel' );
+	} );
+
+	/**
+	 * Test that we can add image and replace image.
+	 */
+	it( 'Test carousel replace image flow.', function() {
+		helpers.addBlockToPost( 'coblocks/gallery-carousel', true );
+
+		helpers.upload.imageReplaceFlow( 'coblocks/gallery-carousel' );
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/gallery-carousel' );
 	} );
 } );

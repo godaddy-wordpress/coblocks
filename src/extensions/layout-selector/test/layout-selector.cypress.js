@@ -96,7 +96,7 @@ describe( 'Extension: Layout Selector', () => {
 		helpers.turnOnEditorSetting( 'Layout selector' );
 
 		// Check that the modal does show.
-		// helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
+		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
 		helpers.disableGutenbergFeatures();
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 	} );

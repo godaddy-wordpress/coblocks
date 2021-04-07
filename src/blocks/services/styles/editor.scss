@@ -45,3 +45,8 @@
 .components-toggle-control--services-action-button {
 	margin-top: 30;
 }
+
+// TwentyTwentyOne compatibility
+.is-twentytwentyone .wp-block-coblocks-service img {
+	height: 100%;
+}

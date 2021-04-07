@@ -40,7 +40,7 @@ class Controls extends Component {
 						value={ contentAlign }
 						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
 					/>
-					{ BackgroundControls( this.props ) }
+					<BackgroundControls { ...this.props } />
 				</BlockControls>
 			</Fragment>
 		);

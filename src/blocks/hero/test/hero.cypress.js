@@ -36,10 +36,7 @@ describe( 'Test CoBlocks Hero Block', function() {
 	 * Test that we can add a hero block to the content, adjust colors
 	 * and are able to successfully save the block without errors.
 	 */
-	// Skip reason: "A bug exists with the Hero block and setting text color."
-	// Skip issue: https://github.com/godaddy-wordpress/coblocks/issues/1762
-	// eslint-disable-next-line jest/no-disabled-tests
-	it.skip( 'Test hero block saves with color values set.', function() {
+	it( 'Test hero block saves with color values set.', function() {
 		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB } = heroData;
 		helpers.addBlockToPost( 'coblocks/hero', true );
 
@@ -91,5 +88,35 @@ describe( 'Test CoBlocks Hero Block', function() {
 		cy.get( '.wp-block-coblocks-hero' ).find( '.is-fullscreen' ).should( 'exist' );
 
 		helpers.editPage();
+	} );
+
+	it( 'should close media upload flow on media selection', function() {
+		helpers.addBlockToPost( 'coblocks/hero', true );
+
+		cy.get( '.wp-block-coblocks-hero__inner' ).click();
+
+		cy.get( '.block-editor-block-toolbar .components-toolbar__control[aria-label="Add background image"]' ).click();
+
+		const fileName = helpers.upload.spec.fileName;
+
+		// Disable reason: cy.fixture should not return a value.
+		// eslint-disable-next-line jest/valid-expect-in-promise
+		cy.fixture( helpers.upload.spec.pathToFixtures + fileName, 'base64' ).then( ( fileContent ) => {
+			cy.get( '.media-frame input[type="file"]' )
+				.upload(
+					{ fileContent, fileName, mimeType: 'image/png' },
+					{ force: true },
+				);
+		} );
+
+		cy.get( '.media-toolbar-primary > .button' ).click();
+
+		cy.get( '.media-replace-flow button' ).click();
+
+		cy.get( '.components-popover__content' ).should( 'be.visible' );
+
+		cy.get( '.block-editor-media-replace-flow__media-upload-menu .components-menu-item__button' ).contains( 'Open Media Library' ).click();
+
+		cy.get( '.components-popover__content' ).should( 'not.be.visible' );
 	} );
 } );

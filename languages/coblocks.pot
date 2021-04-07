@@ -1,14 +1,14 @@
 # Copyright (c) 2021 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 2.7.2\n"
+"Project-Id-Version: CoBlocks 2.9.1\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-02-03T18:51:13+00:00\n"
+"POT-Creation-Date: 2021-04-06T17:10:00+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -203,14 +203,19 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
-#: includes/class-coblocks-form.php:1034
+#. translators: 1. Reply to email address; eg: email@example.com
+#: includes/class-coblocks-form.php:974
+msgid "Form Submission <%s>"
+msgstr ""
+
+#: includes/class-coblocks-form.php:1036
 #: src/blocks/form/edit.js:313
 msgid "name"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: includes/class-coblocks-form.php:1046
+#: includes/class-coblocks-form.php:1048
 #: src/blocks/form/edit.js:307
 #: src/blocks/form/fields/name/index.js:59
 #: src/blocks/form/index.js:57
@@ -442,7 +447,7 @@ msgstr ""
 #: src/blocks/form/fields/submit-button/edit.js:113
 #: src/blocks/hero/inspector.js:137
 #: src/blocks/highlight/inspector.js:43
-#: src/blocks/icon/inspector.js:299
+#: src/blocks/icon/inspector.js:309
 #: src/blocks/media-card/inspector.js:141
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:48
 #: src/blocks/row/column/inspector.js:164
@@ -464,7 +469,7 @@ msgstr ""
 #: src/blocks/features/inspector.js:177
 #: src/blocks/hero/inspector.js:150
 #: src/blocks/highlight/inspector.js:49
-#: src/blocks/icon/inspector.js:323
+#: src/blocks/icon/inspector.js:333
 #: src/blocks/media-card/inspector.js:155
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:53
 #: src/blocks/row/column/inspector.js:170
@@ -529,7 +534,6 @@ msgstr ""
 
 #. translators: placeholder text for input box
 #: src/blocks/alert/edit.js:95
-#: src/blocks/services/service/edit.js:207
 msgid "Write title…"
 msgstr ""
 
@@ -600,22 +604,22 @@ msgid "Edit avatar"
 msgstr ""
 
 #. translators: image to represent the post author
-#: src/blocks/author/edit.js:69
+#: src/blocks/author/edit.js:78
 msgid "Drop to upload as avatar"
 msgstr ""
 
 #. translators: placeholder text used for the author name
-#: src/blocks/author/edit.js:131
+#: src/blocks/author/edit.js:140
 msgid "Write author name…"
 msgstr ""
 
 #. translators: placeholder text used for the biography
-#: src/blocks/author/edit.js:146
+#: src/blocks/author/edit.js:155
 msgid "Write a biography that distills objective credibility and authority to your readers…"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/author/edit.js:155
+#: src/blocks/author/edit.js:164
 msgid "Author link…"
 msgstr ""
 
@@ -974,7 +978,7 @@ msgstr ""
 #: src/blocks/features/feature/inspector.js:71
 #: src/blocks/features/inspector.js:117
 #: src/blocks/hero/inspector.js:84
-#: src/blocks/icon/inspector.js:215
+#: src/blocks/icon/inspector.js:225
 #: src/blocks/media-card/inspector.js:62
 #: src/blocks/row/column/inspector.js:109
 #: src/blocks/row/inspector.js:160
@@ -1091,13 +1095,11 @@ msgid "Vegan"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:198
-#: src/blocks/services/service/edit.js:158
 msgid "Drop image to replace"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:214
-#: src/blocks/services/service/edit.js:171
-#: src/components/block-gallery/gallery-image.js:215
+#: src/components/block-gallery/gallery-image.js:221
 msgid "Remove image"
 msgstr ""
 
@@ -1530,7 +1532,7 @@ msgid "Secret key"
 msgstr ""
 
 #: src/blocks/form/edit.js:437
-#: src/components/block-gallery/gallery-image.js:228
+#: src/components/block-gallery/gallery-image.js:258
 msgid "Saving"
 msgstr ""
 
@@ -1899,19 +1901,19 @@ msgid "Event"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gallery-carousel/edit.js:171
+#: src/blocks/gallery-carousel/edit.js:189
 #: src/blocks/gallery-carousel/index.js:35
 msgid "Carousel"
 msgstr ""
 
 #. translators: %1$d is the order number of the image, %2$d is the total number of images
-#: src/blocks/gallery-carousel/edit.js:308
-#: src/blocks/gallery-masonry/edit.js:223
-#: src/blocks/gallery-stacked/edit.js:203
+#: src/blocks/gallery-carousel/edit.js:327
+#: src/blocks/gallery-masonry/edit.js:245
+#: src/blocks/gallery-stacked/edit.js:218
 msgid "image %1$d of %2$d in gallery"
 msgstr ""
 
-#: src/blocks/gallery-carousel/edit.js:370
+#: src/blocks/gallery-carousel/edit.js:391
 msgid "Write gallery caption…"
 msgstr ""
 
@@ -1978,8 +1980,8 @@ msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:85
 #: src/blocks/gallery-masonry/inspector.js:81
-#: src/blocks/icon/inspector.js:106
-#: src/blocks/icon/inspector.js:172
+#: src/blocks/icon/inspector.js:116
+#: src/blocks/icon/inspector.js:182
 #: src/components/typography-controls/index.js:224
 msgid "Size"
 msgstr ""
@@ -2042,7 +2044,7 @@ msgid "Layered"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gallery-masonry/edit.js:165
+#: src/blocks/gallery-masonry/edit.js:187
 #: src/blocks/gallery-masonry/index.js:35
 msgid "Masonry"
 msgstr ""
@@ -2097,7 +2099,7 @@ msgstr ""
 
 #. translators: block name
 #. translators: block style
-#: src/blocks/gallery-stacked/edit.js:150
+#: src/blocks/gallery-stacked/edit.js:165
 #: src/blocks/gallery-stacked/index.js:35
 #: src/blocks/posts/edit.js:53
 msgid "Stacked"
@@ -2144,7 +2146,7 @@ msgstr ""
 
 #: src/blocks/gif/edit.js:229
 #: src/blocks/gist/edit.js:103
-#: src/components/block-gallery/gallery-image.js:237
+#: src/components/block-gallery/gallery-image.js:267
 msgid "Write caption…"
 msgstr ""
 
@@ -2190,17 +2192,13 @@ msgstr ""
 msgid "View this gist on GitHub"
 msgstr ""
 
-#: src/blocks/gist/edit.js:124
+#: src/blocks/gist/edit.js:118
 #: src/blocks/gist/inspector.js:51
 msgid "Gist URL"
 msgstr ""
 
-#: src/blocks/gist/edit.js:130
+#: src/blocks/gist/edit.js:124
 msgid "Add GitHub Gist URL…"
-msgstr ""
-
-#: src/blocks/gist/gist.js:133
-msgid "Loading Gist"
 msgstr ""
 
 #. translators: block name
@@ -4526,69 +4524,69 @@ msgstr ""
 msgid "Filled"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:155
+#: src/blocks/icon/inspector.js:165
 #: src/blocks/share/inspector.js:111
 #: src/blocks/social-profiles/inspector.js:116
 msgid "Icon settings"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:167
+#: src/blocks/icon/inspector.js:177
 msgid "Reset icon size"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:169
+#: src/blocks/icon/inspector.js:179
 #: src/components/crop-settings/index.js:320
 #: src/components/dimensions-control/index.js:489
 #: src/components/size-control/index.js:209
 msgid "Reset"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:196
+#: src/blocks/icon/inspector.js:206
 msgid "Apply custom size"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:199
+#: src/blocks/icon/inspector.js:209
 #: src/components/option-selector-control/index.js:62
 msgid "Custom"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:207
+#: src/blocks/icon/inspector.js:217
 msgid "Radius"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:227
+#: src/blocks/icon/inspector.js:237
 msgid "Icon search"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:275
+#: src/blocks/icon/inspector.js:285
 msgid "No results found."
 msgstr ""
 
-#: src/blocks/icon/inspector.js:281
+#: src/blocks/icon/inspector.js:291
 #: src/components/block-gallery/gallery-link-settings.js:72
 msgid "Link settings"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:284
+#: src/blocks/icon/inspector.js:294
 msgid "Link URL"
 msgstr ""
 
 #. translators: html attribute that specifies the relationship between two pages
-#: src/blocks/icon/inspector.js:289
+#: src/blocks/icon/inspector.js:299
 #: src/components/block-gallery/gallery-link-settings.js:90
 msgid "Link rel"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:294
+#: src/blocks/icon/inspector.js:304
 msgid "Opening in new tab"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:294
+#: src/blocks/icon/inspector.js:304
 #: src/components/block-gallery/gallery-link-settings.js:84
 msgid "Open in new tab"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:306
+#: src/blocks/icon/inspector.js:316
 #: src/blocks/share/inspector.js:68
 #: src/blocks/share/inspector.js:104
 #: src/blocks/social-profiles/inspector.js:96
@@ -5749,7 +5747,7 @@ msgid "Logos & Badges"
 msgstr ""
 
 #: src/blocks/logos/edit.js:62
-#: src/components/block-gallery/gallery-placeholder.js:100
+#: src/components/block-gallery/gallery-placeholder.js:77
 msgid "Drag images, upload new ones or select files from your library."
 msgstr ""
 
@@ -6611,11 +6609,6 @@ msgstr ""
 msgid "Toggle to show call to action buttons."
 msgstr ""
 
-#. translators: content placeholder
-#: src/blocks/services/service/edit.js:215
-msgid "Write description…"
-msgstr ""
-
 #. translators: block name
 #: src/blocks/services/service/index.js:26
 msgid "Service"
@@ -6914,21 +6907,7 @@ msgstr ""
 msgid "Profiles"
 msgstr ""
 
-#: src/components/background/controls.js:54
-msgid "Edit background"
-msgstr ""
-
-#: src/components/background/controls.js:73
-#: src/components/background/panel.js:273
-msgid "Remove background"
-msgstr ""
-
-#: src/components/background/controls.js:83
-#: src/components/background/controls.js:84
-msgid "Edit background image"
-msgstr ""
-
-#: src/components/background/controls.js:97
+#: src/components/background/controls.js:63
 msgid "Add background image"
 msgstr ""
 
@@ -7069,19 +7048,32 @@ msgstr ""
 msgid "Toggle to loop the video."
 msgstr ""
 
+#: src/components/background/panel.js:273
+msgid "Remove background"
+msgstr ""
+
 #: src/components/background/panel.js:294
 msgid "Clear Media"
 msgstr ""
 
-#: src/components/block-gallery/gallery-image.js:196
+#: src/components/block-gallery/gallery-image.js:208
+#: src/extensions/replace-image/index.js:115
+msgid "Replace Image"
+msgstr ""
+
+#: src/components/block-gallery/gallery-image.js:210
+msgid "Replace"
+msgstr ""
+
+#: src/components/block-gallery/gallery-image.js:235
 msgid "Move image backward"
 msgstr ""
 
-#: src/components/block-gallery/gallery-image.js:204
+#: src/components/block-gallery/gallery-image.js:243
 msgid "Move image forward"
 msgstr ""
 
-#: src/components/block-gallery/gallery-image.js:228
+#: src/components/block-gallery/gallery-image.js:258
 msgid "Apply"
 msgstr ""
 
@@ -7090,7 +7082,7 @@ msgid "Link to"
 msgstr ""
 
 #. translators: %s: Type of gallery
-#: src/components/block-gallery/gallery-placeholder.js:97
+#: src/components/block-gallery/gallery-placeholder.js:74
 msgid "%s Gallery"
 msgstr ""
 
@@ -7604,7 +7596,7 @@ msgid "3D"
 msgstr ""
 
 #: src/extensions/coblocks-settings/coblocks-settings-modal.js:130
-#: src/extensions/coblocks-settings/index.js:44
+#: src/extensions/coblocks-settings/index.js:43
 msgid "Editor settings"
 msgstr ""
 
@@ -7707,10 +7699,6 @@ msgstr ""
 #. translators: %1$s is placeholder for block name such as Group, or Embed
 #: src/extensions/padding-controls/index.js:77
 msgid "%1$s settings"
-msgstr ""
-
-#: src/extensions/replace-image/index.js:115
-msgid "Replace Image"
 msgstr ""
 
 #: src/utils/block-category.js:16

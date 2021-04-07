@@ -3,9 +3,9 @@ Author URI: https://www.godaddy.com
 Contributors: godaddy, richtabor, eherman24, jonathanbardo, jrtashjian, paranoia1906, fjarrett
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
-Tested up to: 5.6
+Tested up to: 5.7
 Requires PHP: 5.6
-Stable tag: 2.7.2
+Stable tag: 2.9.1
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -116,5 +116,6 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Bug Fixes
-* Fix bug when utilizing Background Tasks API [#1816](https://github.com/godaddy-wordpress/coblocks/pull/1816)
-* Fix bug with DockerHub authentication [#1817](https://github.com/godaddy-wordpress/coblocks/pull/1817)
+* Hide media upload flow popover menu when upload modal is open [#1863](https://github.com/godaddy-wordpress/coblocks/pull/1863)
+* When two or more gists on an edit page, fix so that they render properly [#1856](https://github.com/godaddy-wordpress/coblocks/pull/1856)
+* Improve Food & Drink block test reliability [#1854](https://github.com/godaddy-wordpress/coblocks/pull/1854)

@@ -34,18 +34,12 @@ class GalleryCarouselEdit extends Component {
 		this.setImageAttributes = this.setImageAttributes.bind( this );
 		this.onFocusCaption = this.onFocusCaption.bind( this );
 		this.onItemClick = this.onItemClick.bind( this );
+		this.replaceImage = this.replaceImage.bind( this );
 
 		this.state = {
 			selectedImage: null,
 			captionFocused: false,
 		};
-	}
-
-	componentDidMount() {
-		// This block does not support the following attributes.
-		this.props.setAttributes( {
-			shadow: undefined,
-		} );
 	}
 
 	componentDidUpdate( prevProps ) {
@@ -76,6 +70,16 @@ class GalleryCarouselEdit extends Component {
 				gutterMobile: 0,
 			} );
 		}
+
+		const { clientId, attributes, setAttributes } = this.props;
+		const { thumbnails, navForClass } = attributes;
+		const parsedNavForClass = classnames( {
+			[ `has-nav-${ clientId.split( '-' )[ 0 ] }` ]: thumbnails,
+		} );
+
+		if ( parsedNavForClass !== navForClass ) {
+			setAttributes( { navForClass: parsedNavForClass } );
+		}
 	}
 
 	onSelectImage( index ) {
@@ -97,6 +101,19 @@ class GalleryCarouselEdit extends Component {
 				images,
 			} );
 		};
+	}
+
+	/**
+	 * replaceImage is passed to GalleryImage component and is used to replace images
+	 *
+	 * @param {number} index Index of image to remove.
+	 * @param {Object} media Media object used to initialize attributes.
+	 */
+	replaceImage( index, media ) {
+		const images = [ ...this.props.attributes.images ];
+		images[ index ] = { ...media };
+
+		this.props.setAttributes( { images } );
 	}
 
 	setImageAttributes( index, attributes ) {
@@ -159,6 +176,7 @@ class GalleryCarouselEdit extends Component {
 			thumbnails,
 			responsiveHeight,
 			lightbox,
+			navForClass,
 		} = attributes;
 
 		const hasImages = !! images.length;
@@ -197,6 +215,7 @@ class GalleryCarouselEdit extends Component {
 				'has-aligned-cells': alignCells,
 				[ `has-margin-bottom-${ gutter }` ]: thumbnails && gutter > 0,
 				[ `has-margin-bottom-mobile-${ gutterMobile }` ]: thumbnails && gutterMobile > 0,
+				[ navForClass ]: thumbnails,
 			}
 		);
 
@@ -229,7 +248,7 @@ class GalleryCarouselEdit extends Component {
 		};
 
 		const navOptions = {
-			asNavFor: '.has-carousel',
+			asNavFor: `.${ navForClass }`,
 			draggable: false,
 			pageDots: true,
 			prevNextButtons: false,
@@ -328,6 +347,8 @@ class GalleryCarouselEdit extends Component {
 												aria-label={ ariaLabel }
 												supportsCaption={ false }
 												supportsMoving={ false }
+												imageIndex={ index }
+												replaceImage={ this.replaceImage }
 											/>
 										</div>
 									);
@@ -345,7 +366,7 @@ class GalleryCarouselEdit extends Component {
 							<Flickity
 								className={ navClasses }
 								options={ navOptions }
-								disableImagesLoaded={ false }
+								disableImagesLoaded={ true }
 								reloadOnUpdate={ true }
 								flickityRef={ ( c ) => this.flkty = c }
 								updateOnEachImageLoad={ true }

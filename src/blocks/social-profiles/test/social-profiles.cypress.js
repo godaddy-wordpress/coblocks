@@ -280,7 +280,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		helpers.openSettingsPanel( 'Icon settings' );
 
-		cy.get( 'input[aria-label="Rounded corners"][type="number"]' ).type( '{selectall}10' );
+		cy.get( 'input[aria-label="Rounded corners"][type="number"]' ).focus().type( '{selectall}10' );
 
 		if ( Cypress.browser.name === 'chrome' ) {
 			cy.get( 'button[aria-label="Add Facebook profile"]' )

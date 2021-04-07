@@ -20,7 +20,6 @@ function PaddingWrapper( { children, padding, paddingCustom, className } ) {
 	const attributes = {
 		className: classnames(
 			className,
-			children.props.className,
 			{ [ `has-${ padding }-padding` ]: padding }
 		),
 	};
