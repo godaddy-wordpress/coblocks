@@ -144,17 +144,13 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	}
 
 	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"]' ).click();
-
-	cy.get( '.block-editor-inserter__search' ).find( 'input' ).clear();
-	cy.get( '.block-editor-inserter__search' ).click().type(
-		blockID.split( '-' )[ 0 ]
-	);
+	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search' ).type( blockName );
 
 	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
 	cy.get( '.editor-block-list-item' + targetClassName ).first().click( { force: true } );
 
 	// Make sure the block was added to our page
-	cy.get( `[data-type="${ blockName }"]` ).should( 'exist' );
+	cy.get( `.edit-post-visual-editor [data-type="${ blockName }"], .edit-site-visual-editor [data-type="${ blockName }"]` ).should( 'exist' );
 }
 
 /**
@@ -267,8 +263,8 @@ export function setBlockStyle( style ) {
  * @param {boolean} isChildBlock  Optional selector for children blocks. Default will be top level blocks.
  */
 export function selectBlock( name, isChildBlock = false ) {
-	cy.get( '.block-editor-block-navigation' ).click();
-	cy.get( '.block-editor-block-navigation-leaf button' ).contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) ).click();
+	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation' ).click();
+	cy.get( '.block-editor-block-navigation__popover' ).find( '.block-editor-block-navigation-leaf' ).contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) ).click();
 }
 
 /**
@@ -296,6 +292,7 @@ export function setInputValue( panelName, settingName, value, ignoreCase = true 
  * Upload helper object. Contains image fixture spec and uploader function.
  * `helpers.upload.spec` Object containing image spec.
  * `helpers.upload.imageToBlock` Function performs upload action on specified block.
+ * `helpers.upload.replaceImageFlow` Function performs replace action on specified block.
  */
 export const upload = {
 	spec: {
@@ -321,6 +318,45 @@ export const upload = {
 					{ force: true }
 				);
 		} );
+	},
+	/**
+	 * Upload image to input element and trigger replace image flow.
+	 *
+	 * @param {string} blockName The name of the block that is replace target
+	 * imageReplaceFlow works with CoBlocks Galleries: Carousel, Collage, Masonry, Offset, Stacked.
+	 */
+	imageReplaceFlow: ( blockName ) => {
+		const selectBlockBy = blockName.split( '-' )?.[ 1 ];
+
+		upload.imageToBlock( blockName );
+
+		selectBlock( selectBlockBy );
+
+		cy.get( '.coblocks-gallery-item__button-replace' ).should( 'not.exist' );
+
+		cy.get( `[data-type="${ blockName }"] img` ).first().click( { force: true } );
+
+		cy.get( '.coblocks-gallery-item__button-replace' ).click( { force: true } );
+
+		cy.get( '#menu-item-browse' ).click();
+
+		cy.get( 'ul.attachments' );
+
+		// Replace the image.
+		const newImageBase = 'R150x150';
+		/* eslint-disable */
+		cy.fixture( `../.dev/tests/cypress/fixtures/images/${ newImageBase }.png` ).then( ( fileContent ) => {
+			cy.get( '[class^="moxie"]' ).find( '[type="file"]' ).first()
+			.invoke( 'removeAttr', 'style' ) //makes element easier to interact with/accessible.
+			.upload(
+				{ fileContent, fileName: `${ newImageBase }.png`, mimeType: 'image/png' },
+				{ force: true }
+			);
+		} );
+		/* eslint-enable */
+		cy.get( '.media-modal .media-button-select' ).click();
+
+		cy.get( '.edit-post-visual-editor' ).find( `[data-type="${ blockName }"] img` ).first().should( 'have.attr', 'src' ).should( 'include', newImageBase );
 	},
 };
 

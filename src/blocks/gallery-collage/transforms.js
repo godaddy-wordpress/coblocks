@@ -2,6 +2,7 @@
  * External dependencies
  */
 import filter from 'lodash/filter';
+import pick from 'lodash/pick';
 
 /**
  * Internal dependencies
@@ -31,19 +32,13 @@ const transforms = {
 			type: 'block',
 			isMultiBlock: true,
 			blocks: [ 'core/image' ],
-			transform: ( attributes ) => {
-				const validImages = filter( attributes, ( { id, url } ) => Number.isInteger( id ) && url );
-				const hasCaption = !! filter( attributes, ( { caption } ) => !! caption );
-
-				if ( validImages.length > 0 ) {
-					return createBlock( metadata.name, {
-						images: validImages.map( ( { id, url, alt, caption }, index ) => ( { index, id, url, alt: alt || '', caption: caption || '' } ) ),
-						ids: validImages.map( ( { id } ) => id ),
-						captions: hasCaption,
-					} );
-				}
-				return createBlock( metadata.name );
-			},
+			isMatch: ( content ) => filter( content, ( { id, url } ) => Number.isInteger( id ) && url ),
+			transform: ( content ) =>
+				createBlock( metadata.name, {
+					images: content.map( ( attributes, index ) => ( { ...pick( attributes, [ 'id', 'url', 'alt', 'caption' ] ), index } ) ),
+					ids: content.map( ( { id } ) => id ),
+					captions: !! filter( content, ( { caption } ) => !! caption ),
+				} ),
 		},
 		{
 			type: 'prefix',

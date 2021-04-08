@@ -1,4 +1,11 @@
 
+2.9.1 / 2021-03-23
+==================
+### Bug Fixes
+* Hide media upload flow popover menu when upload modal is open [#1863](https://github.com/godaddy-wordpress/coblocks/pull/1863)
+* When two or more gists on an edit page, fix so that they render properly [#1856](https://github.com/godaddy-wordpress/coblocks/pull/1856)
+* Improve Food & Drink block test reliability [#1854](https://github.com/godaddy-wordpress/coblocks/pull/1854)
+
 2.9 / 2021-03-15
 ================
 ### Enhancements
