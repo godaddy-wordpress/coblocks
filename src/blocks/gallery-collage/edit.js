@@ -10,6 +10,7 @@ import Inspector from './inspector';
 import Controls from './controls';
 import * as helper from './../../utils/helper';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
+import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
 
 /**
  * WordPress dependencies
@@ -211,14 +212,16 @@ class GalleryCollageEdit extends Component {
 		const image = this.getImageAtIndex( index );
 		const hasImage = !! image;
 
+		const classNames = classnames( 'wp-block-coblocks-gallery-collage__figure', {
+			[ `shadow-${ this.props.attributes.shadow }` ]: this.props.attributes.shadow,
+		} );
+
 		return (
 			<MediaPlaceholder
 				addToGallery={ true }
-				className={ classnames( 'wp-block-coblocks-gallery-collage__figure', {
-					[ `shadow-${ this.props.attributes.shadow }` ]: this.props.attributes.shadow,
-				} ) }
+				className={ classNames }
 				allowedTypes={ [ 'image' ] }
-				disableDropZone={ hasImage }
+				disableDropZone={ true }
 				disableMediaButtons={ hasImage }
 				accept="image/*"
 				multiple={ false }
@@ -229,7 +232,13 @@ class GalleryCollageEdit extends Component {
 				} }
 				onSelect={ ( img ) => this.replaceImage( img, index ) }
 				onError={ this.onUploadError }
-			/>
+			>
+				<GalleryDropZone
+					{ ...this.props }
+					label="Drop file to upload"
+					onSelect={ ( [ img ] ) => this.replaceImage( img, index ) }
+				/>
+			</MediaPlaceholder>
 		);
 	}
 
