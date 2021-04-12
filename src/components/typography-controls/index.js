@@ -18,10 +18,10 @@ import icons from './icons';
  */
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { compose } from '@wordpress/compose';
+import { compose, ifCondition } from '@wordpress/compose';
 import { DOWN } from '@wordpress/keycodes';
 import { RangeControl, withFallbackStyles, ToggleControl, Dropdown, ToolbarButton, SelectControl, Toolbar } from '@wordpress/components';
-import { withSelect, select } from '@wordpress/data';
+import { useEntityProp } from '@wordpress/core-data';
 
 /**
  * Export
@@ -47,32 +47,13 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	};
 } );
 
+const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/pricing-table', 'coblocks/highlight' ];
+
 /**
  * Typography Component
  */
 class TypographyControls extends Component {
-	constructor( props ) {
-		super( props );
-		this.state = {
-			allowedBlocks: [],
-		};
-	}
-
-	componentDidMount() {
-		if ( this.props.typographyEnabled ) {
-			this.setState( {
-				allowedBlocks: [ 'core/paragraph', 'core/heading', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/pricing-table', 'coblocks/highlight' ],
-			} );
-		}
-	}
-
 	render() {
-		if ( ! this.props.typographyEnabled ) {
-			return null;
-		}
-
-		const { allowedBlocks } = this.state;
-
 		const {
 			attributes,
 			setAttributes,
@@ -277,15 +258,10 @@ class TypographyControls extends Component {
 	}
 }
 
-const applyWithSelect = withSelect( () => {
-	const { getTypography } = select( 'coblocks/settings' );
-
-	return {
-		typographyEnabled: getTypography(),
-	};
-} );
-
 export default compose( [
 	applyFallbackStyles,
-	applyWithSelect,
+	ifCondition( () => {
+		const [ typographyEnabled ] = useEntityProp( 'root', 'site', 'coblocks_typography_controls_enabled' );
+		return typographyEnabled;
+	} ),
 ] )( TypographyControls );
