@@ -439,6 +439,9 @@ export function openEditorSettingsModal() {
 	cy.get( '.components-menu-group' ).contains( 'Editor settings' ).click();
 
 	cy.get( '.components-modal__frame' ).contains( 'Editor settings' ).should( 'exist' );
+
+	// Ensure settings have loaded.
+	cy.get( '.coblocks-settings-modal input[type="checkbox"]' ).should( 'have.length', 6 );
 }
 
 /**
