@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-04-08T17:09:08+00:00\n"
+"POT-Creation-Date: 2021-04-12T21:08:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -237,27 +237,27 @@ msgstr ""
 msgid "Google Map API key for map rendering"
 msgstr ""
 
-#: includes/class-coblocks-settings.php:101
+#: includes/class-coblocks-settings.php:100
 msgid "Setting use to disable or enable layout selector controls across the site."
 msgstr ""
 
-#: includes/class-coblocks-settings.php:113
+#: includes/class-coblocks-settings.php:112
 msgid "Setting use to disable or enable typography controls across the site."
 msgstr ""
 
-#: includes/class-coblocks-settings.php:125
+#: includes/class-coblocks-settings.php:124
 msgid "Setting use to disable or enable custom color controls across the site."
 msgstr ""
 
-#: includes/class-coblocks-settings.php:137
+#: includes/class-coblocks-settings.php:136
 msgid "Setting use to disable or enable all color controls across the site."
 msgstr ""
 
-#: includes/class-coblocks-settings.php:149
+#: includes/class-coblocks-settings.php:148
 msgid "Setting use to disable or enable gradient controls and presets across the site."
 msgstr ""
 
-#: includes/class-coblocks-settings.php:161
+#: includes/class-coblocks-settings.php:160
 msgid "Setting use to disable or enable animation controls across the site."
 msgstr ""
 
@@ -456,8 +456,8 @@ msgstr ""
 #: src/blocks/share/inspector.js:200
 #: src/blocks/social-profiles/inspector.js:212
 #: src/components/form-label-colors/label-color-control.js:36
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:163
 #: src/extensions/colors/index.js:59
+#: src/extensions/colors/settings-modal-control.js:70
 msgid "Color settings"
 msgstr ""
 
@@ -1982,7 +1982,7 @@ msgstr ""
 #: src/blocks/gallery-masonry/inspector.js:81
 #: src/blocks/icon/inspector.js:116
 #: src/blocks/icon/inspector.js:182
-#: src/components/typography-controls/index.js:224
+#: src/components/typography-controls/index.js:205
 msgid "Size"
 msgstr ""
 
@@ -2024,8 +2024,8 @@ msgstr ""
 #. translators: typography style
 #: src/blocks/gallery-collage/index.js:51
 #: src/blocks/logos/index.js:48
-#: src/components/typography-controls/index.js:103
-#: src/components/typography-controls/index.js:121
+#: src/components/typography-controls/index.js:84
+#: src/components/typography-controls/index.js:102
 #: src/extensions/cover-styles/index.js:11
 #: src/extensions/image-styles/index.js:11
 #: src/extensions/list-styles/index.js:11
@@ -3268,7 +3268,7 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:495
 #: src/blocks/icon/deprecated/svgsfocusable.js:494
 #: src/blocks/icon/svgs.js:477
-#: src/components/typography-controls/index.js:194
+#: src/components/typography-controls/index.js:175
 msgid "Font"
 msgstr ""
 
@@ -7456,59 +7456,59 @@ msgstr ""
 msgid "Align cells"
 msgstr ""
 
-#: src/components/typography-controls/index.js:80
+#: src/components/typography-controls/index.js:61
 msgid "Change typography"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:108
-#: src/components/typography-controls/index.js:141
+#: src/components/typography-controls/index.js:89
+#: src/components/typography-controls/index.js:122
 msgid "Normal"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:113
+#: src/components/typography-controls/index.js:94
 msgid "Bold"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:126
+#: src/components/typography-controls/index.js:107
 #: src/formats/uppercase/index.js:25
 #: src/formats/uppercase/index.js:40
 msgid "Uppercase"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:131
+#: src/components/typography-controls/index.js:112
 msgid "Lowercase"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:136
+#: src/components/typography-controls/index.js:117
 msgid "Capitalize"
 msgstr ""
 
-#: src/components/typography-controls/index.js:202
+#: src/components/typography-controls/index.js:183
 msgid "Weight"
 msgstr ""
 
-#: src/components/typography-controls/index.js:214
+#: src/components/typography-controls/index.js:195
 msgid "Transform"
 msgstr ""
 
-#: src/components/typography-controls/index.js:236
+#: src/components/typography-controls/index.js:217
 msgid "Line height"
 msgstr ""
 
-#: src/components/typography-controls/index.js:248
+#: src/components/typography-controls/index.js:229
 msgid "Letter spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:260
+#: src/components/typography-controls/index.js:241
 msgid "No top spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:265
+#: src/components/typography-controls/index.js:246
 msgid "No bottom spacing"
 msgstr ""
 
@@ -7572,6 +7572,14 @@ msgstr ""
 msgid "Clip vertically"
 msgstr ""
 
+#: src/extensions/animation/settings-modal-control.js:17
+msgid "Animation controls"
+msgstr ""
+
+#: src/extensions/animation/settings-modal-control.js:18
+msgid "Allow animations to be used on blocks."
+msgstr ""
+
 #: src/extensions/block-patterns/index.js:35
 msgid "Add Design Pattern"
 msgstr ""
@@ -7593,53 +7601,33 @@ msgstr ""
 msgid "3D"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:130
-#: src/extensions/coblocks-settings/index.js:43
+#: src/extensions/coblocks-settings/index.js:39
+#: src/extensions/coblocks-settings/index.js:45
 msgid "Editor settings"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:142
-msgid "Layout selector"
+#: src/extensions/coblocks-settings/index.js:46
+msgid "Close"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:143
-msgid "Allow layout selection on new pages."
-msgstr ""
-
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:153
-msgid "Typography controls"
-msgstr ""
-
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:154
-msgid "Allow block-level typography controls."
-msgstr ""
-
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:164
+#: src/extensions/colors/settings-modal-control.js:71
 msgid "Allow color settings throughout the editor."
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:174
+#: src/extensions/colors/settings-modal-control.js:82
 msgid "Custom color pickers"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:175
+#: src/extensions/colors/settings-modal-control.js:83
 msgid "Allow styling with custom colors."
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:186
+#: src/extensions/colors/settings-modal-control.js:94
 msgid "Gradient styles"
 msgstr ""
 
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:187
+#: src/extensions/colors/settings-modal-control.js:95
 msgid "Allow styling with gradient fills."
-msgstr ""
-
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:197
-msgid "Animation controls"
-msgstr ""
-
-#: src/extensions/coblocks-settings/coblocks-settings-modal.js:198
-msgid "Allow animations to be used on blocks."
 msgstr ""
 
 #. translators: block style
@@ -7658,25 +7646,33 @@ msgstr ""
 msgid "Crop settings"
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:92
+#: src/extensions/layout-selector/index.js:89
 msgid "Add New Page"
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:93
+#: src/extensions/layout-selector/index.js:90
 msgid "Pick one of these layouts or start with a blank page."
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:108
+#: src/extensions/layout-selector/index.js:105
 msgid "Layouts"
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:132
-#: src/extensions/layout-selector/index.js:160
+#: src/extensions/layout-selector/index.js:129
+#: src/extensions/layout-selector/index.js:157
 msgid "Add blank page"
 msgstr ""
 
 #: src/extensions/layout-selector/layout-selector-results.js:53
 msgid "No layouts are available for this category."
+msgstr ""
+
+#: src/extensions/layout-selector/settings-modal-control.js:18
+msgid "Layout selector"
+msgstr ""
+
+#: src/extensions/layout-selector/settings-modal-control.js:19
+msgid "Allow layout selection on new pages"
 msgstr ""
 
 #. translators: block style
@@ -7697,6 +7693,14 @@ msgstr ""
 #. translators: %1$s is placeholder for block name such as Group, or Embed
 #: src/extensions/padding-controls/index.js:77
 msgid "%1$s settings"
+msgstr ""
+
+#: src/extensions/typography/settings-modal-control.js:18
+msgid "Typography controls"
+msgstr ""
+
+#: src/extensions/typography/settings-modal-control.js:19
+msgid "Allow block-level typography controls."
 msgstr ""
 
 #: src/utils/block-category.js:16
