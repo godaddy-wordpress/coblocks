@@ -436,7 +436,7 @@ export function doEditorRedo() {
 export function openEditorSettingsModal() {
 	// Open "more" menu.
 	cy.get( '.edit-post-more-menu button' ).click();
-	cy.get( '.components-menu-item__button' ).contains( 'Editor settings' ).click();
+	cy.get( '.components-menu-group' ).contains( 'Editor settings' ).click();
 
 	cy.get( '.components-modal__frame' ).contains( 'Editor settings' ).should( 'exist' );
 }
