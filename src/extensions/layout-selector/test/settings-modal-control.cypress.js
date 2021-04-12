@@ -41,9 +41,7 @@ describe( 'Settings Modal: Layout Selector feature', () => {
 		helpers.closeLayoutSelector();
 
 		// Open settings modal.
-		cy.get( '.interface-interface-skeleton__header .edit-post-more-menu .components-button' ).click();
-		cy.get( '.components-menu-item__button' ).contains( 'Editor settings' ).click();
-
+		helpers.openEditorSettingsModal();
 		// Ensure settings have loaded.
 		cy.get( '.coblocks-settings-modal input[type="checkbox"]' ).should( 'have.length', 6 );
 
@@ -56,11 +54,10 @@ describe( 'Settings Modal: Layout Selector feature', () => {
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
 
 		// Open settings modal.
-		cy.get( '.interface-interface-skeleton__header .edit-post-more-menu .components-button' ).click();
-		cy.get( '.components-menu-item__button' ).contains( 'Editor settings' ).click();
+		helpers.openEditorSettingsModal();
 
 		// Enable feature.
-		cy.get( '.coblocks-settings-modal' ).contains( 'Layout selector' ).parent().find( 'input' ).focus().click();
+		cy.get( '.coblocks-settings-modal' ).contains( 'Layout selector' ).click();
 
 		// The layout selector should load.
 		cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
