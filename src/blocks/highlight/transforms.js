@@ -2,12 +2,12 @@
  * Internal dependencies
  */
 import metadata from './block.json';
+import getPhrasingContentSchema from '../../utils/get-phrasing-content-schema';
 
 /**
  * WordPress dependencies
  */
 import { createBlock } from '@wordpress/blocks';
-import { getPhrasingContentSchema } from '@wordpress/dom';
 
 const transforms = {
 	from: [

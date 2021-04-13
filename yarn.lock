@@ -2422,7 +2422,7 @@
   dependencies:
     "@babel/runtime" "^7.12.5"
 
-"@wordpress/dom@^2.12.0", "@wordpress/dom@^2.16.1", "@wordpress/dom@^2.16.2", "@wordpress/dom@^2.5.0", "@wordpress/dom@^2.6.0", "@wordpress/dom@^2.9.0":
+"@wordpress/dom@^2.12.0", "@wordpress/dom@^2.16.1", "@wordpress/dom@^2.16.2", "@wordpress/dom@^2.5.0", "@wordpress/dom@^2.6.0", "@wordpress/dom@^2.9.0", "@wordpress/dom@~2.16.2":
   version "2.16.2"
   resolved "https://registry.yarnpkg.com/@wordpress/dom/-/dom-2.16.2.tgz#d72cd40342e439d6cb7f15148473222594cbd497"
   integrity sha512-w95LZR98sqmxkXm5RtynXi+/tIb5vw2gSBAWlbc0OHhZkC2DC9oy6QDR0pthUUYCa3NJht4KMyhBbwN/cePq8w==
