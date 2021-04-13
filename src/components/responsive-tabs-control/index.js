@@ -75,7 +75,7 @@ class ResponsiveTabsControl extends Component {
 							return (
 								<RangeControl
 									label={ label }
-									value={ attributes.value }
+									value={ attributes.gutter }
 									onChange={ ( value ) => onChange( value ) }
 									min={ min }
 									max={ max }
