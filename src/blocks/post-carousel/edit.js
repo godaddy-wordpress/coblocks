@@ -101,6 +101,7 @@ class PostCarousel extends Component {
 			setAttributes,
 			latestPosts,
 			className,
+			isRTL,
 		} = this.props;
 
 		const { categoriesList } = this.state;
@@ -138,7 +139,8 @@ class PostCarousel extends Component {
 			adaptiveHeight: false,
 			speed: 500,
 			slidesToShow: columns,
-			slidesToScroll: 1,
+			slidesToScroll: isRTL ? -1 : 1,
+			rtl: isRTL ? true : false,
 			responsive: [
 				{
 					breakpoint: 1024,
@@ -337,6 +339,7 @@ export default compose( [
 	withSelect( ( select, props ) => {
 		const { postsToShow, order, orderBy, categories } = props.attributes;
 		const { getEntityRecords, getMedia } = select( 'core' );
+		const { isRTL } = select( 'core/editor' ).getEditorSettings();
 
 		const useUpdatedQueryControls = QueryControls.toString().includes( 'selectedCategories' );
 
@@ -400,6 +403,7 @@ export default compose( [
 		return {
 			latestPosts: useUpdatedQueryControls ? updatedQuery() : deprecatedQuery(),
 			useUpdatedQueryControls,
+			isRTL,
 		};
 	} ),
 ] )( PostCarousel );
