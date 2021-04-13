@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.7
 Requires PHP: 5.6
-Stable tag: 2.9.1
+Stable tag: 2.10.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -115,7 +115,23 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+### Enhancements
+* Introduce image replacement flow to CoBlocks Gallery blocks [#1870](https://github.com/godaddy-wordpress/coblocks/pull/1870)
+* Enhance reliability and extensibility of CoBlocks settings control implementation [#1869](https://github.com/godaddy-wordpress/coblocks/pull/1869)
+* Enhance Layout Selector UX by improving focus styles [#1865](https://github.com/godaddy-wordpress/coblocks/pull/1865)
+
 ### Bug Fixes
-* Hide media upload flow popover menu when upload modal is open [#1863](https://github.com/godaddy-wordpress/coblocks/pull/1863)
-* When two or more gists on an edit page, fix so that they render properly [#1856](https://github.com/godaddy-wordpress/coblocks/pull/1856)
-* Improve Food & Drink block test reliability [#1854](https://github.com/godaddy-wordpress/coblocks/pull/1854)
+* Fix Collage Gallery dropzone label [#1873](https://github.com/godaddy-wordpress/coblocks/pull/1873)
+* Fix posts block margin in Safari and IE [#1875](https://github.com/godaddy-wordpress/coblocks/pull/1875)
+* Fix layouts jumping around within the Layout Selector in Safari  [#1874](https://github.com/godaddy-wordpress/coblocks/pull/1874)
+* Fix width of images in image filter previews [#1876](https://github.com/godaddy-wordpress/coblocks/pull/1876)
+* Fix Image block transforms into CoBlocks Galleries [#1855](https://github.com/godaddy-wordpress/coblocks/pull/1855)
+* Fix image replace flow for core gallery block [#1877](https://github.com/godaddy-wordpress/coblocks/pull/1877)
+* Fix duplicated images within media library on upload [#1872](https://github.com/godaddy-wordpress/coblocks/pull/1872)
+* Fix custom text color in Hero block [#1857](https://github.com/godaddy-wordpress/coblocks/pull/1857)
+* Fix superfluous style applied within Cover blocks [#1867](https://github.com/godaddy-wordpress/coblocks/pull/1867)
+* Fix custom class replication with blocks [#1864](https://github.com/godaddy-wordpress/coblocks/pull/1864)
+
+### Misc
+* Refactor Gist component to hooks [#1859](https://github.com/godaddy-wordpress/coblocks/pull/1859)
+* Import getPhrasingContentSchema from @wordpress/dom instead of @wordpress/blocks [#1702](https://github.com/godaddy-wordpress/coblocks/pull/1702)

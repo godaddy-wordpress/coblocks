@@ -3,6 +3,7 @@
  */
 import Controls from './controls';
 import '../../js/coblocks-animation';
+import './settings-modal-control';
 
 /**
  * External Dependencies
