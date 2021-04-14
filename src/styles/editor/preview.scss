@@ -1,0 +1,10 @@
+.block-editor-inserter__preview-container {
+
+	div[data-type="coblocks/gallery-stacked"] {
+		margin-bottom: 0;
+
+		.wp-block {
+			margin-bottom: inherit !important;
+		}
+	}
+}
