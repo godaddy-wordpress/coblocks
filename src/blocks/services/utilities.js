@@ -7,6 +7,8 @@ import { find } from 'lodash';
  * Internal dependencies.
  */
 import icons from './icons';
+import { hasEmptyAttributes } from '../../utils/block-helpers';
+import fromEntries from '../../js/coblocks-fromEntries';
 
 /**
  * WordPress dependencies
@@ -17,9 +19,8 @@ import TokenList from '@wordpress/token-list';
 /**
  * Constants
  */
-const SERVICES_ALLOWED_BLOCKS = [ 'coblocks/service-column' ];
-const SERVICES_TEMPLATE = [ [ 'coblocks/service-column' ] ];
-const SERVICE_COLUMN_ALLOWED_BLOCKS = [ 'coblocks/service' ];
+const SERVICES_ALLOWED_BLOCKS = [ 'coblocks/service' ];
+const SERVICES_TEMPLATE = [ [ 'coblocks/service' ] ];
 const SERVICE_ALLOWED_BLOCKS = [ 'core/heading', 'core/buttons', 'core/paragraph' ];
 
 const layoutOptions = [
@@ -93,12 +94,51 @@ function replaceActiveStyle( className, activeStyle, newStyle ) {
 	return list.value;
 }
 
+/**
+ * Given an attributes object will return true if attributes are unset.
+ *
+ * @param {Object} attributes The replacing style.
+ *
+ * @return {boolean} Whether or not the attributes object is empty.
+ */
+const isEmpty = ( attributes ) => {
+	const attributesToCheck = [ 'columns', 'buttons' ];
+	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
+		attributesToCheck.includes( key )
+	);
+
+	return hasEmptyAttributes( fromEntries( newAttributes ) );
+};
+
+/**
+ * Given an innerBlocks array will return true if innerBlocks attributes are unset.
+ *
+ * @param {Array} innerBlocks Array of innerBlocks.
+ * @return {boolean} Whether or not the innerBlocks attributes object is empty.
+ */
+const isEmptyInnerBlocks = ( innerBlocks ) => {
+	//innerBlock attributes to search for.
+	const attributesToCheck = [ 'content' ];
+
+	let blocksAreEmpty = true;
+	innerBlocks.forEach( ( block ) => {
+		const newAttributes = Object.entries( block.attributes ).filter( ( [ key ] ) =>	attributesToCheck.includes( key ) );
+
+		if ( ! hasEmptyAttributes( fromEntries( newAttributes ) ) ) {
+			blocksAreEmpty = false;
+		}
+	} );
+
+	return blocksAreEmpty;
+};
+
 export {
 	replaceActiveStyle,
 	getActiveStyle,
+	isEmpty,
+	isEmptyInnerBlocks,
 	layoutOptions,
 	SERVICES_ALLOWED_BLOCKS,
 	SERVICES_TEMPLATE,
-	SERVICE_COLUMN_ALLOWED_BLOCKS,
 	SERVICE_ALLOWED_BLOCKS,
 };

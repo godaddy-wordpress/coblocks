@@ -15,27 +15,28 @@ import {
 	replaceActiveStyle,
 	getActiveStyle,
 	layoutOptions,
+	isEmptyInnerBlocks,
+	isEmpty,
 } from './utilities';
 
 /**
  * WordPress dependencies
  */
 import { createBlock } from '@wordpress/blocks';
-import { Fragment, useState, useEffect } from '@wordpress/element';
+import { Fragment, useEffect } from '@wordpress/element';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { AlignmentToolbar, BlockControls, InnerBlocks } from '@wordpress/block-editor';
 
 const Edit = ( props ) => {
 	const {	className, attributes, setAttributes, clientId } = props;
 
-	const [ removedColumns, setRemovedColumns ] = useState( [] );
-
-	const {	updateBlockAttributes, insertBlock, removeBlock, replaceBlocks } = useDispatch( 'core/block-editor' );
+	const {	updateBlockAttributes, insertBlock, removeBlocks } = useDispatch( 'core/block-editor' );
 
 	const { getBlocksByClientId, innerBlocks } = useSelect( ( select ) => {
 		return {
 			getBlocksByClientId: select( 'core/block-editor' ).getBlocksByClientId,
 			innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
+			getBlockRootClientId: select( 'core/block-editor' ).getBlockRootClientId,
 		};
 	} );
 
@@ -51,17 +52,14 @@ const Edit = ( props ) => {
 	};
 
 	const updateInnerAttributes = ( blockName, newAttributes ) => {
-		const innerColumns = getBlocksByClientId( clientId )[ 0 ].innerBlocks;
-		innerColumns.forEach( ( column ) => {
-			const innerServiceItems = getBlocksByClientId( column.clientId )[ 0 ].innerBlocks;
-			innerServiceItems.forEach( ( item ) => {
-				if ( item.name === blockName ) {
-					updateBlockAttributes(
-						item.clientId,
-						newAttributes
-					);
-				}
-			} );
+		const innerItems = getBlocksByClientId(	props.clientId	)[ 0 ].innerBlocks;
+		innerItems.forEach( ( item ) => {
+			if ( item.name === blockName ) {
+				updateBlockAttributes(
+					item.clientId,
+					newAttributes
+				);
+			}
 		} );
 	};
 
@@ -83,100 +81,67 @@ const Edit = ( props ) => {
 	};
 
 	const setColumns = ( value ) => {
-		setBlocksPropagated( false );
 		setAttributes( { columns: parseInt( value ) } );
 	};
 
 	/* istanbul ignore next */
 	useEffect( () => {
 		const activeStyle = getActiveStyle( layoutOptions, attributes.className );
-		return () => {
-			const lastActiveStyle = getActiveStyle(
-				layoutOptions,
-				attributes.className
-			);
+		const lastActiveStyle = getActiveStyle(
+			layoutOptions,
+			attributes.className
+		);
 
-			if ( activeStyle !== lastActiveStyle ) {
-				if ( 'circle' === activeStyle.name && ( typeof attributes.alignment === 'undefined' || attributes.alignment === 'none' ) ) {
-					onChangeAlignment( 'center' );
-				}
+		if ( activeStyle !== lastActiveStyle ) {
+			if ( 'circle' === activeStyle.name && ( typeof attributes.alignment === 'undefined' || attributes.alignment === 'none' ) ) {
+				onChangeAlignment( 'center' );
 			}
-		};
+		}
 	}, [ attributes.className ] );
 
-	const [ blocksPropagated, setBlocksPropagated ] = useState( false );
-
 	/* istanbul ignore next */
 	useEffect( () => {
-		// Block has been removed by user, decrement block count.
-		if ( blocksPropagated && innerBlocks.length < attributes.columns ) {
-			setColumns( columns - ( attributes.columns - innerBlocks.length ) );
-			setBlocksPropagated( true );
-		}
-	}, [ innerBlocks.length, blocksPropagated ] );
+		// Handle add and removal of service block when column is changed.
+		const { buttons, headingLevel, alignment } = props;
 
-	/* istanbul ignore next */
-	useEffect( () => {
-		const { columns } = attributes;
-		// Add service-column when column count is increased.
-		if ( innerBlocks.length < columns ) {
-			const blockToInsert = () => {
-				const removedBlock = removedColumns?.[ 0 ];
-				if ( ! removedBlock ) {
-					return createBlock( 'coblocks/service-column' );
-				}
+		handlePlaceholderPlacement( 'coblocks/service', {
+			showCta: buttons,
+			headingLevel,
+			alignment,
+		} );
+	}, [ columns, innerBlocks ] );
 
-				const shiftedRemovedColumns = removedColumns;
-				shiftedRemovedColumns.shift();
+	/**
+	 * Handle creation and removal of placeholder elements so that we always have one available to use.
+	 *
+	 * @param {string} blockName The block to insert.
+	 * @param {Object} blockAttributes The attributes for the placeholder block.
+	 */
+	const handlePlaceholderPlacement = ( blockName, blockAttributes = {} ) => {
+		const serviceItems = getBlocksByClientId( clientId )[ 0 ].innerBlocks;
+		const filledServiceItems = serviceItems.filter(	( item ) =>	( ! isEmpty( item.attributes ) || ! isEmptyInnerBlocks( item.innerBlocks ) ) );
+		const placeholders = serviceItems.filter( ( item ) => isEmpty( item.attributes ) && isEmptyInnerBlocks( item.innerBlocks ) );
 
-				setRemovedColumns( shiftedRemovedColumns );
-				return removedBlock;
-			};
-
-			if ( ! blocksPropagated ) {
-				insertBlock(
-					blockToInsert(),
-					innerBlocks.length + 1,
-					clientId,
-					false,
-				);
-			}
+		// Remove trailing placeholders if there are more inner blocks than columns.
+		// Should always be a single placeholder present.
+		if ( placeholders.length + filledServiceItems.length > columns ) {
+			removeBlocks(
+				placeholders.filter( ( item, index ) => index !== 0 ).map( ( item ) => item.clientId ),
+				false
+			);
 		}
 
-		// Remove service-column when column count is reduced.
-		if ( innerBlocks.length > columns ) {
-			const targetBlock = innerBlocks[ innerBlocks.length - 1 ];
-			if ( targetBlock ) {
-				const unshiftedRemovedColumns = removedColumns;
-				unshiftedRemovedColumns.unshift( targetBlock );
-
-				setRemovedColumns( unshiftedRemovedColumns );
-				removeBlock( targetBlock.clientId, false );
-			}
+		// Add a placeholder if there are none.
+		if ( placeholders.length === 0 || placeholders.length + filledServiceItems.length < columns ) {
+			const newServiceItem = createBlock( blockName, blockAttributes );
+			insertBlock(
+				newServiceItem,
+				serviceItems.length,
+				clientId,
+				false
+			);
 		}
-
-		// useEffect logic should now have all blocks in place.
-		if ( innerBlocks.length === attributes.columns ) {
-			setBlocksPropagated( true );
-		}
-	}, [ attributes.columns, innerBlocks.length ] );
-
-	/* istanbul ignore next */
-	useEffect( () => {
-		// Check for existence of service blocks to migrate to service-columns
-		if ( innerBlocks.length ) {
-			const serviceBlocks = innerBlocks.filter( ( block ) => block.name === 'coblocks/service' );
-			const migrateToServiceColumns = !! serviceBlocks.length;
-
-			if ( migrateToServiceColumns ) {
-				const newServiceColumnsBlocks = serviceBlocks.map( ( serviceBlock ) => {
-					const newServiceBlocks = createBlock( serviceBlock.name, serviceBlock.attributes, [ ...serviceBlock.innerBlocks ] );
-					return createBlock( 'coblocks/service-column', {}, [ newServiceBlocks ] );
-				} );
-				replaceBlocks( serviceBlocks.map( ( block ) => block.clientId ), newServiceColumnsBlocks, 0 );
-			}
-		}
-	}, [ innerBlocks.length ] );
+	};
 
 	const {	alignment, columns } = attributes;
 
@@ -188,7 +153,6 @@ const Edit = ( props ) => {
 	);
 
 	const activeStyle = getActiveStyle( layoutOptions, className );
-
 	return (
 		<Fragment>
 			<BlockControls>

@@ -163,9 +163,7 @@ const Edit = ( props ) => {
 		);
 	};
 
-	const onSetHref = ( ) => {
-		setAttributes( props );
-	};
+	const onSetHref = ( ) => setAttributes( props );
 
 	const { className } = props;
 	const {
