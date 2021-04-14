@@ -26,7 +26,6 @@ describe( 'Test CoBlocks Services Block', function() {
 		// Select parent block
 		helpers.selectBlock( 'services' );
 
-
 		cy.get( '.edit-post-visual-editor [data-type="coblocks/service"]' ).should( 'have.length', 2 );
 
 		helpers.setInputValue( 'Services settings', 'Columns', '{downarrow}', false );
