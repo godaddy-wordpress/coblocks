@@ -26,7 +26,8 @@ describe( 'Test CoBlocks Services Block', function() {
 		// Select parent block
 		helpers.selectBlock( 'services' );
 
-		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 2 );
+
+		cy.get( '.edit-post-visual-editor [data-type="coblocks/service"]' ).should( 'have.length', 2 );
 
 		helpers.setInputValue( 'Services settings', 'Columns', '{downarrow}', false );
 		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 1 ); // should only have one placeholder on one column.

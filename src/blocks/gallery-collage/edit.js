@@ -10,6 +10,7 @@ import Inspector from './inspector';
 import Controls from './controls';
 import * as helper from './../../utils/helper';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
+import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
 
 /**
  * WordPress dependencies
@@ -28,20 +29,13 @@ class GalleryCollageEdit extends Component {
 		super( ...arguments );
 
 		this.state = {
-			images: [],
 			selectedImage: null,
 			lastGutterValue: null,
 		};
 	}
 
-	componentDidMount() {
-		this.setupImageLocations();
-	}
-
 	componentDidUpdate( prevProps ) {
 		if ( this.props.className !== prevProps.className ) {
-			this.setupImageLocations();
-
 			if ( this.props.className.includes( 'is-style-layered' ) ) {
 				this.setState( { lastGutterValue: this.props.attributes.gutter } );
 				this.props.setAttributes( { gutter: 0 } );
@@ -59,18 +53,13 @@ class GalleryCollageEdit extends Component {
 		}
 	}
 
-	setupImageLocations = ( images = null ) => {
-		const theImages = images || this.props.attributes.images;
+	getPlaceholderCount() {
+		return [ 'is-style-tiled', 'is-style-layered' ].includes( this.props.attributes.className ) ? 4 : 5;
+	}
 
-		const placeholderCount = this.props.className.includes( 'is-style-tiled' ) || this.props.className.includes( 'is-style-layered' ) ? 4 : 5;
-		const imageLocations = [];
-
-		for ( let index = 0; index < placeholderCount; index++ ) {
-			imageLocations.push( theImages.find( ( image ) => parseInt( image.index ) === parseInt( index ) ) || {} );
-		}
-
-		this.props.setAttributes( { images: imageLocations } );
-		this.setState( { images: imageLocations } );
+	getImageAtIndex( index ) {
+		const { attributes } = this.props;
+		return attributes.images.find( ( image ) => parseInt( image.index ) === parseInt( index ) );
 	}
 
 	onSelectImage = ( index ) => {
@@ -95,34 +84,34 @@ class GalleryCollageEdit extends Component {
 	}
 
 	replaceImage = ( image, index ) => {
-		const { attributes } = this.props;
+		const { attributes, setAttributes } = this.props;
 
 		const images = [
 			...attributes.images.filter( ( img ) => parseInt( img.index ) !== parseInt( index ) ),
 			{ ...helper.pickRelevantMediaFiles( image ), index },
 		];
-		this.setupImageLocations( images );
+		setAttributes( { images } );
 	}
 
 	removeImage = ( index ) => {
-		const { attributes } = this.props;
+		const { attributes, setAttributes } = this.props;
 
 		const images = [
 			...attributes.images.filter( ( image ) => parseInt( image.index ) !== parseInt( index ) ),
 		];
-		this.setupImageLocations( images );
+		setAttributes( { images } );
 	}
 
 	updateImageAttributes( index, newAttributes ) {
-		const { attributes } = this.props;
-		const image = attributes.images.filter( ( img ) => parseInt( img.index ) === parseInt( index ) ).pop();
+		const { attributes, setAttributes } = this.props;
+		const image = this.getImageAtIndex( index );
 
 		const images = [
 			...attributes.images.filter( ( img ) => parseInt( img.index ) !== parseInt( index ) ),
 			Object.assign( {}, image, newAttributes ),
 		];
 
-		this.setupImageLocations( images );
+		setAttributes( { images } );
 	}
 
 	saveCustomLink = () => {
@@ -130,7 +119,7 @@ class GalleryCollageEdit extends Component {
 	}
 
 	renderImage( index ) {
-		const image = this.props.attributes.images.filter( ( img ) => parseInt( img.index ) === parseInt( index ) ).pop() || {};
+		const image = this.getImageAtIndex( index );
 		const isSelected = this.props.isSelected && this.state.selectedImage === image.index;
 		const enableCaptions = ! this.props.className.includes( 'is-style-layered' );
 
@@ -220,17 +209,19 @@ class GalleryCollageEdit extends Component {
 	}
 
 	renderPlaceholder( index ) {
-		const image = this.props.attributes.images.filter( ( img ) => parseInt( img.index ) === parseInt( index ) ).pop() || false;
+		const image = this.getImageAtIndex( index );
 		const hasImage = !! image;
+
+		const classNames = classnames( 'wp-block-coblocks-gallery-collage__figure', {
+			[ `shadow-${ this.props.attributes.shadow }` ]: this.props.attributes.shadow,
+		} );
 
 		return (
 			<MediaPlaceholder
 				addToGallery={ true }
-				className={ classnames( 'wp-block-coblocks-gallery-collage__figure', {
-					[ `shadow-${ this.props.attributes.shadow }` ]: this.props.attributes.shadow,
-				} ) }
+				className={ classNames }
 				allowedTypes={ [ 'image' ] }
-				disableDropZone={ hasImage }
+				disableDropZone={ true }
 				disableMediaButtons={ hasImage }
 				accept="image/*"
 				multiple={ false }
@@ -241,7 +232,13 @@ class GalleryCollageEdit extends Component {
 				} }
 				onSelect={ ( img ) => this.replaceImage( img, index ) }
 				onError={ this.onUploadError }
-			/>
+			>
+				<GalleryDropZone
+					{ ...this.props }
+					label="Drop file to upload"
+					onSelect={ ( [ img ] ) => this.replaceImage( img, index ) }
+				/>
+			</MediaPlaceholder>
 		);
 	}
 
@@ -263,6 +260,30 @@ class GalleryCollageEdit extends Component {
 		const enableGutter = ! className.includes( 'is-style-layered' );
 		const enableCaptions = ! className.includes( 'is-style-layered' );
 
+		const images = [];
+
+		for ( let imageIndex = 0; imageIndex < this.getPlaceholderCount(); imageIndex++ ) {
+			const image = this.getImageAtIndex( imageIndex );
+
+			images.push(
+				<li
+					key={ `image-${ imageIndex }` }
+					className={ classnames(
+						'wp-block-coblocks-gallery-collage__item',
+						`item-${ imageIndex + 1 }`,
+						{
+							[ `coblocks-animate ${ animation }` ]: animation,
+						}
+					) }
+				>
+					{ !! image
+						? this.renderImage( imageIndex )
+						: this.renderPlaceholder( imageIndex )
+					}
+				</li>
+			);
+		}
+
 		return (
 			<Fragment>
 				<Controls { ...this.props } />
@@ -275,25 +296,7 @@ class GalleryCollageEdit extends Component {
 						'has-lightbox': lightbox,
 					} ) }>
 						<ul>
-							{ this.state.images.map( ( img, index ) => {
-								const theIndex = img.index || index;
-
-								return (
-									<li
-										key={ `image-${ theIndex }` }
-										className={ classnames(
-											'wp-block-coblocks-gallery-collage__item',
-											`item-${ index + 1 }`,
-											{
-												[ `coblocks-animate ${ animation }` ]: animation,
-											}
-										) }
-									>
-										{ !! img.url ? this.renderImage( theIndex ) : null }
-										{ this.renderPlaceholder( theIndex ) }
-									</li>
-								);
-							} ) }
+							{ images }
 						</ul>
 					</div>
 				</GutterWrapper>

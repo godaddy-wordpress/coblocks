@@ -9,9 +9,8 @@ import { ALLOWED_BG_MEDIA_TYPES } from './';
  */
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
-import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
-import { Toolbar, ToolbarButton, Popover, MenuItem } from '@wordpress/components';
-import { edit, trash } from '@wordpress/icons';
+import { MediaUpload, MediaUploadCheck, MediaReplaceFlow, BlockControls } from '@wordpress/block-editor';
+import { Toolbar, ToolbarButton } from '@wordpress/components';
 
 /**
  * Background image block toolbar controls.
@@ -27,63 +26,30 @@ function BackgroundControls( props ) {
 
 	const {
 		backgroundImg,
-		openPopover,
 	} = attributes;
 
 	return (
 		<Fragment>
 			<MediaUploadCheck>
 				<Toolbar className={ backgroundImg ? 'components-dropdown-menu' : '' }>
-					{ openPopover && (
-						<Popover
-							position="bottom center"
-							className="components-coblocks__background-popover"
-						>
-							<MediaUpload
-								onSelect={ ( media ) => {
-									setAttributes( { backgroundImg: media.url, backgroundType: media.type, openPopover: ! openPopover } );
-								} }
-								allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
-								value={ backgroundImg }
-								render={ ( { open } ) => (
-									<MenuItem
-										className="components-dropdown-menu__menu-item"
-										icon={ edit }
-										role="menuitem"
-										onClick={ open } >
-										{ __( 'Edit background', 'coblocks' ) }
-									</MenuItem>
-								) }
-							/>
-							<MenuItem
-								className="components-dropdown-menu__menu-item"
-								icon={ trash }
-								role="menuitem"
-								onClick={ () => {
-									setAttributes( {
-										backgroundImg: '',
-										backgroundOverlay: 0,
-										backgroundRepeat: 'no-repeat',
-										backgroundPosition: '',
-										backgroundSize: 'cover',
-										hasParallax: false,
-										openPopover: ! openPopover,
-									} );
-								} } >
-								{ __( 'Remove background', 'coblocks' ) }
-							</MenuItem>
-						</Popover>
-					) }
 					{ backgroundImg
 						? (
-							<ToolbarButton
-								className="components-dropdown-menu__toggle"
-								icon={ icons.background }
-								aria-haspopup="true"
-								label={ __( 'Edit background image', 'coblocks' ) }
-								tooltip={ __( 'Edit background image', 'coblocks' ) }
-								onClick={ () => setAttributes( { openPopover: ! openPopover } ) }
-							/>
+							<BlockControls group="other">
+								<MediaReplaceFlow
+									name={ icons.background }
+									mediaURL={ backgroundImg }
+									allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
+									accept="image/*"
+									onSelect={ ( media ) => {
+										if ( media ) {
+											setAttributes( { backgroundImg: media.url, backgroundType: ( media.media_type || media.type ) } );
+										}
+									} }
+									onError={ () => {
+										setAttributes( { backgroundImg: undefined, backgroundType: undefined } );
+									} }
+								/>
+							</BlockControls>
 						) : (
 							<MediaUpload
 								onSelect={ ( media ) => {
@@ -100,7 +66,6 @@ function BackgroundControls( props ) {
 									/>
 								) }
 							/>
-
 						) }
 				</Toolbar>
 			</MediaUploadCheck>

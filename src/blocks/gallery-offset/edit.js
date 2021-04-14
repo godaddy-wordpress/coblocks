@@ -36,14 +36,8 @@ class Edit extends Component {
 		this.state = {
 			selectedImage: null,
 		};
-	}
 
-	componentDidMount() {
-		if ( this.props.wideControlsEnabled === true && ! this.props.attributes.align ) {
-			this.props.setAttributes( {
-				align: 'wide',
-			} );
-		}
+		this.replaceImage = this.replaceImage.bind( this );
 	}
 
 	componentDidUpdate( prevProps ) {
@@ -53,6 +47,10 @@ class Edit extends Component {
 				selectedImage: null,
 				captionSelected: false,
 			} );
+		}
+
+		if ( this.props.wideControlsEnabled === true && typeof this.props.attributes.align === undefined ) {
+			this.props.setAttributes( { align: 'wide' } );
 		}
 	}
 
@@ -134,7 +132,6 @@ class Edit extends Component {
 	 * @param {number} index
 	 * @param {Object} attributes
 	 */
-
 	setImageAttributes = ( index, attributes ) => {
 		const { attributes: { images }, setAttributes } = this.props;
 		if ( ! images[ index ] ) {
@@ -150,6 +147,19 @@ class Edit extends Component {
 				...images.slice( index + 1 ),
 			],
 		} );
+	}
+
+	/**
+	 * replaceImage is passed to GalleryImage component and is used to replace images
+	 *
+	 * @param {number} index Index of image to remove.
+	 * @param {Object} media Media object used to initialize attributes.
+	 */
+	replaceImage( index, media ) {
+		const images = [ ...this.props.attributes.images ];
+		images[ index ] = { ...media };
+
+		this.props.setAttributes( { images } );
 	}
 
 	render() {
@@ -243,6 +253,8 @@ class Edit extends Component {
 											onMoveBackward={ this.onMoveBackward( index ) }
 											onMoveForward={ this.onMoveForward( index ) }
 											newClass="wp-block-coblocks-gallery-offset__figure"
+											imageIndex={ index }
+											replaceImage={ this.replaceImage }
 										/>
 									</li>
 								);

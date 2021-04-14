@@ -1,4 +1,9 @@
 /**
+ * Internal dependencies
+ */
+import * as helper from '../../utils/helper';
+
+/**
  * External Dependencies
  */
 import classnames from 'classnames';
@@ -9,8 +14,8 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { Button, Spinner, Dashicon, ButtonGroup } from '@wordpress/components';
-import { RichText, URLInput } from '@wordpress/block-editor';
+import { Spinner, Button, Dashicon, ButtonGroup } from '@wordpress/components';
+import { MediaUpload, MediaUploadCheck, RichText, URLInput } from '@wordpress/block-editor';
 import { withSelect } from '@wordpress/data';
 import { BACKSPACE, DELETE } from '@wordpress/keycodes';
 import { isBlobURL } from '@wordpress/blob';
@@ -49,9 +54,7 @@ class GalleryImage extends Component {
 		}
 	}
 
-	onImageClick( event ) {
-		event.stopPropagation();
-		event.preventDefault();
+	onImageClick() {
 		if ( ! this.props.isSelected ) {
 			this.props.onSelect();
 		}
@@ -132,6 +135,8 @@ class GalleryImage extends Component {
 			url,
 			'aria-label': ariaLabel,
 			imgLink,
+			imageIndex,
+			replaceImage,
 		} = this.props;
 
 		const imgClasses = classnames( {
@@ -185,6 +190,40 @@ class GalleryImage extends Component {
 		/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 		return (
 			<figure className={ className } tabIndex="-1" onKeyDown={ this.onKeyDown } ref={ this.bindContainer }>
+				{ isSelected && (
+					<>
+						<ButtonGroup className="block-library-gallery-item__inline-menu is-right is-visible">
+							<MediaUploadCheck>
+								<MediaUpload
+									allowedTypes={ [ 'image' ] }
+									onSelect={ ( selectedImg ) => {
+										const newAttributeProperty = helper.pickRelevantMediaFiles( selectedImg );
+										replaceImage( imageIndex, newAttributeProperty );
+									} }
+									value={ url }
+									render={ ( { open } ) => (
+										<Button
+											className="coblocks-gallery-item__button-replace"
+											onClick={ open }
+											label={ __( 'Replace Image', 'coblocks' ) }
+										>
+											{ __( 'Replace', 'coblocks' ) }
+										</Button>
+									) }
+								>
+								</MediaUpload>
+							</MediaUploadCheck>
+
+							<Button
+								icon={ closeSmall }
+								className="coblocks-gallery-item__button"
+								onClick={ onRemove }
+								label={ __( 'Remove image', 'coblocks' ) }
+								disabled={ ! isSelected }
+							/>
+						</ButtonGroup>
+					</>
+				) }
 				{ isSelected &&
 					<Fragment>
 						{ supportsMoving &&
@@ -207,15 +246,6 @@ class GalleryImage extends Component {
 								/>
 							</ButtonGroup>
 						}
-						<ButtonGroup className="block-library-gallery-item__inline-menu is-right">
-							<Button
-								icon={ closeSmall }
-								className="coblocks-gallery-item__button"
-								onClick={ onRemove }
-								label={ __( 'Remove image', 'coblocks' ) }
-								disabled={ ! isSelected }
-							/>
-						</ButtonGroup>
 						{ linkTo === 'custom' &&
 							<form
 								className="components-coblocks-gallery-item__image-link"

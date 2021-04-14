@@ -34,18 +34,12 @@ class GalleryCarouselEdit extends Component {
 		this.setImageAttributes = this.setImageAttributes.bind( this );
 		this.onFocusCaption = this.onFocusCaption.bind( this );
 		this.onItemClick = this.onItemClick.bind( this );
+		this.replaceImage = this.replaceImage.bind( this );
 
 		this.state = {
 			selectedImage: null,
 			captionFocused: false,
 		};
-	}
-
-	componentDidMount() {
-		// This block does not support the following attributes.
-		this.props.setAttributes( {
-			shadow: undefined,
-		} );
 	}
 
 	componentDidUpdate( prevProps ) {
@@ -107,6 +101,19 @@ class GalleryCarouselEdit extends Component {
 				images,
 			} );
 		};
+	}
+
+	/**
+	 * replaceImage is passed to GalleryImage component and is used to replace images
+	 *
+	 * @param {number} index Index of image to remove.
+	 * @param {Object} media Media object used to initialize attributes.
+	 */
+	replaceImage( index, media ) {
+		const images = [ ...this.props.attributes.images ];
+		images[ index ] = { ...media };
+
+		this.props.setAttributes( { images } );
 	}
 
 	setImageAttributes( index, attributes ) {
@@ -340,6 +347,8 @@ class GalleryCarouselEdit extends Component {
 												aria-label={ ariaLabel }
 												supportsCaption={ false }
 												supportsMoving={ false }
+												imageIndex={ index }
+												replaceImage={ this.replaceImage }
 											/>
 										</div>
 									);
