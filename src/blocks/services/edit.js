@@ -109,7 +109,7 @@ const Edit = ( props ) => {
 			headingLevel,
 			alignment,
 		} );
-	}, [ columns, innerBlocks ] );
+	}, [ attributes.columns, innerBlocks ] );
 
 	/**
 	 * Handle creation and removal of placeholder elements so that we always have one available to use.
@@ -123,7 +123,7 @@ const Edit = ( props ) => {
 		const placeholders = serviceItems.filter( ( item ) => isEmpty( item.attributes ) && isEmptyInnerBlocks( item.innerBlocks ) );
 
 		// Remove trailing placeholders if there are more inner blocks than columns.
-		// Should always be a single placeholder present.
+		// Should always be at least a single placeholder present.
 		if ( placeholders.length + filledServiceItems.length > columns ) {
 			removeBlocks(
 				placeholders.filter( ( item, index ) => index !== 0 ).map( ( item ) => item.clientId ),
@@ -131,7 +131,7 @@ const Edit = ( props ) => {
 			);
 		}
 
-		// Add a placeholder if there are none.
+		// Add a placeholder if there are none or if block count is less than columns.
 		if ( placeholders.length === 0 || placeholders.length + filledServiceItems.length < columns ) {
 			const newServiceItem = createBlock( blockName, blockAttributes );
 			insertBlock(
@@ -182,7 +182,7 @@ const Edit = ( props ) => {
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
 							template={ TEMPLATE }
-							orientation={ 'horizontal' }
+							orientation={ attributes.columns > 1 ? 'horizontal' : 'vertical' }
 							templateInsertUpdatesSelection={ false }
 							__experimentalCaptureToolbars={ true }
 						/>
