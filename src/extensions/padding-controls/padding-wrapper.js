@@ -12,14 +12,14 @@ import { cloneElement, isValidElement } from '@wordpress/element';
 /**
  * Return an element Wrapped with padding Properties.
  */
-function PaddingWrapper( { children, padding, paddingCustom, className } ) {
+function PaddingWrapper( { children, padding, paddingCustom } ) {
 	if ( ! isValidElement( children ) ) {
 		return children;
 	}
 
 	const attributes = {
 		className: classnames(
-			className,
+			children.props.className,
 			{ [ `has-${ padding }-padding` ]: padding }
 		),
 	};
