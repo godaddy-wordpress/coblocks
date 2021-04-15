@@ -119,7 +119,7 @@ const Edit = ( props ) => {
 	 */
 	const handlePlaceholderPlacement = ( blockName, blockAttributes = {} ) => {
 		const serviceItems = getBlocksByClientId( clientId )[ 0 ].innerBlocks;
-		const filledServiceItems = serviceItems.filter(	( item ) =>	( ! isEmpty( item.attributes ) || ! isEmptyInnerBlocks( item.innerBlocks ) ) );
+		const filledServiceItems = serviceItems.filter(	( item ) => ( ! isEmpty( item.attributes ) || ! isEmptyInnerBlocks( item.innerBlocks ) ) );
 		const placeholders = serviceItems.filter( ( item ) => isEmpty( item.attributes ) && isEmptyInnerBlocks( item.innerBlocks ) );
 
 		// Remove trailing placeholders if there are more inner blocks than columns.
