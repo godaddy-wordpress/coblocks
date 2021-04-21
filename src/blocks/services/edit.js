@@ -32,13 +32,7 @@ const Edit = ( props ) => {
 
 	const {	updateBlockAttributes, insertBlock, removeBlocks } = useDispatch( 'core/block-editor' );
 
-	const { getBlocksByClientId, innerBlocks } = useSelect( ( select ) => {
-		return {
-			getBlocksByClientId: select( 'core/block-editor' ).getBlocksByClientId,
-			innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
-			getBlockRootClientId: select( 'core/block-editor' ).getBlockRootClientId,
-		};
-	} );
+	const innerServiceItems = useSelect( ( select ) => select( 'core/block-editor' ).getBlocks( clientId ), [] );
 
 	const updateStyle = ( style ) => {
 		const activeStyle = getActiveStyle( layoutOptions, className );
@@ -52,8 +46,7 @@ const Edit = ( props ) => {
 	};
 
 	const updateInnerAttributes = ( blockName, newAttributes ) => {
-		const innerItems = getBlocksByClientId(	props.clientId	)[ 0 ].innerBlocks;
-		innerItems.forEach( ( item ) => {
+		innerServiceItems.forEach( ( item ) => {
 			if ( item.name === blockName ) {
 				updateBlockAttributes(
 					item.clientId,
@@ -87,15 +80,10 @@ const Edit = ( props ) => {
 	/* istanbul ignore next */
 	useEffect( () => {
 		const activeStyle = getActiveStyle( layoutOptions, attributes.className );
-		const lastActiveStyle = getActiveStyle(
-			layoutOptions,
-			attributes.className
-		);
 
-		if ( activeStyle !== lastActiveStyle ) {
-			if ( 'circle' === activeStyle.name && ( typeof attributes.alignment === 'undefined' || attributes.alignment === 'none' ) ) {
-				onChangeAlignment( 'center' );
-			}
+		// When circle style is set and alignment is not specified by user, than set center alignment
+		if ( 'circle' === activeStyle.name && ( typeof attributes.alignment === 'undefined' || attributes.alignment === 'none' ) ) {
+			onChangeAlignment( 'center' );
 		}
 	}, [ attributes.className ] );
 
@@ -109,7 +97,7 @@ const Edit = ( props ) => {
 			headingLevel,
 			alignment,
 		} );
-	}, [ attributes.columns, innerBlocks ] );
+	}, [ attributes.columns, innerServiceItems ] );
 
 	/**
 	 * Handle creation and removal of placeholder elements so that we always have one available to use.
@@ -118,9 +106,8 @@ const Edit = ( props ) => {
 	 * @param {Object} blockAttributes The attributes for the placeholder block.
 	 */
 	const handlePlaceholderPlacement = ( blockName, blockAttributes = {} ) => {
-		const serviceItems = getBlocksByClientId( clientId )[ 0 ].innerBlocks;
-		const filledServiceItems = serviceItems.filter(	( item ) => ( ! isEmpty( item.attributes ) || ! isEmptyInnerBlocks( item.innerBlocks ) ) );
-		const placeholders = serviceItems.filter( ( item ) => isEmpty( item.attributes ) && isEmptyInnerBlocks( item.innerBlocks ) );
+		const filledServiceItems = innerServiceItems.filter(	( item ) => ( ! isEmpty( item.attributes ) || ! isEmptyInnerBlocks( item.innerBlocks ) ) );
+		const placeholders = innerServiceItems.filter( ( item ) => isEmpty( item.attributes ) && isEmptyInnerBlocks( item.innerBlocks ) );
 
 		// Remove trailing placeholders if there are more inner blocks than columns.
 		// Should always be at least a single placeholder present.
@@ -136,7 +123,7 @@ const Edit = ( props ) => {
 			const newServiceItem = createBlock( blockName, blockAttributes );
 			insertBlock(
 				newServiceItem,
-				serviceItems.length,
+				innerServiceItems.length,
 				clientId,
 				false
 			);

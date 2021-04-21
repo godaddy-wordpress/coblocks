@@ -30,21 +30,24 @@ import { createBlock } from '@wordpress/blocks';
 const Edit = ( props ) => {
 	const {	attributes, clientId, setAttributes } = props;
 
-	const { getBlocksByClientId, getMedia, isSelected } = useSelect( ( select ) => {
+	const innerItems = useSelect( ( select ) => select( 'core/block-editor' ).getBlocks( clientId ), [] );
+	const image = useSelect( ( select ) => select( 'core' ).getMedia( attributes.imageId ), [] );
+
+	/**
+	 * This functional components `props.isSelected` value does not detect when nested children blocks are selected.
+	 * Here we re-declare isSelected as a local variable with improved logic to detect when nested children have been selected.
+	 *
+	 * @type {boolean} Whether or not this Service block or one of its nested children are selected.
+	 */
+	const isSelected = useSelect( ( select ) => {
 		const {	getBlockHierarchyRootClientId, getSelectedBlockClientId } = select( 'core/block-editor' );
 
 		// Get clientID of the parent block.
 		const rootClientId = getBlockHierarchyRootClientId( clientId );
 		const selectedRootClientId = getBlockHierarchyRootClientId( getSelectedBlockClientId() );
 
-		return {
-			getBlocksByClientId: select( 'core/block-editor' ).getBlocksByClientId,
-			getMedia: select( 'core' ).getMedia,
-			isSelected: isSelected || rootClientId === selectedRootClientId,
-		};
+		return props.isSelected || rootClientId === selectedRootClientId;
 	} );
-
-	const innerItems = getBlocksByClientId( clientId )[ 0 ].innerBlocks;
 
 	const { updateBlockAttributes, insertBlock, removeBlocks } = useDispatch( 'core/block-editor' );
 
@@ -175,11 +178,8 @@ const Edit = ( props ) => {
 		linkTarget,
 		rel,
 		showCta,
-		imageId,
 		alignment,
 	} = attributes;
-
-	const image = getMedia( imageId );
 
 	const TEMPLATE = [
 		[
