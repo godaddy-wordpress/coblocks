@@ -1,4 +1,9 @@
 
+2.10.1 / 2021-04-14
+===================
+### Bug Fixes
+* Fix Group block missing class [#1885](https://github.com/godaddy-wordpress/coblocks/pull/1885)
+
 2.10.0 / 2021-04-12
 ===================
 ### Enhancements
