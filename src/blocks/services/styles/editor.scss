@@ -9,6 +9,11 @@
 	.block-list-appender {
 		display: none !important;
 	}
+
+	.is-selected .wp-block-coblocks-service .wp-block-coblocks-service__figure:not(figure) {
+		border-radius: $radius-block-ui;
+		box-shadow: 0 0 0 $border-width $white, 0 0 0 3px var(--wp-admin-theme-color, #007cba) !important;
+	}
 }
 
 // CoBlocks style previewer
