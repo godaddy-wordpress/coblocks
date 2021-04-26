@@ -1,154 +1,40 @@
 /**
  * External dependencies.
  */
-import { find } from 'lodash';
 import classnames from 'classnames';
 
 /**
  * Internal dependencies.
  */
 import InspectorControls from './inspector';
-import icons from './icons';
 import HeadingToolbar from '../../components/heading-toolbar';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
+import {
+	SERVICES_ALLOWED_BLOCKS as ALLOWED_BLOCKS,
+	SERVICES_TEMPLATE as TEMPLATE,
+	replaceActiveStyle,
+	getActiveStyle,
+	layoutOptions,
+	isEmptyInnerBlocks,
+	isEmpty,
+} from './utilities';
 
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
-import { compose } from '@wordpress/compose';
-import TokenList from '@wordpress/token-list';
 import { createBlock } from '@wordpress/blocks';
-import { Component, Fragment } from '@wordpress/element';
-import { withSelect, withDispatch } from '@wordpress/data';
+import { Fragment, useEffect } from '@wordpress/element';
+import { useSelect, useDispatch } from '@wordpress/data';
 import { AlignmentToolbar, BlockControls, InnerBlocks } from '@wordpress/block-editor';
 
-/**
- * Constants
- */
-const ALLOWED_BLOCKS = [ 'coblocks/service' ];
-const TEMPLATE = [ [ 'coblocks/service' ] ];
+const Edit = ( props ) => {
+	const {	className, attributes, setAttributes, clientId } = props;
 
-const layoutOptions = [
-	{
-		name: 'threebyfour',
-		label: '4:3',
-		icon: icons.service43,
-		isDefault: true,
-	},
-	{
-		name: 'sixbynine',
-		label: '16:9',
-		icon: icons.service169,
-	},
-	{
-		name: 'square',
-		label: __( 'Square', 'coblocks' ),
-		icon: icons.serviceSquare,
-	},
-	{
-		name: 'circle',
-		label: __( 'Circle', 'coblocks' ),
-		icon: icons.serviceCircle,
-		defaultAlign: 'center',
-	},
-];
+	const {	updateBlockAttributes, insertBlock, removeBlocks } = useDispatch( 'core/block-editor' );
 
-/**
- * Returns the active style from the given className.
- *
- * @param {Array} styles Block style variations.
- * @param {string} className  Class name
- *
- * @return {Object?} The active style.
- */
-function getActiveStyle( styles, className ) {
-	for ( const style of new TokenList( className ).values() ) {
-		if ( style.indexOf( 'is-style-' ) === -1 ) {
-			continue;
-		}
+	const innerServiceItems = useSelect( ( select ) => select( 'core/block-editor' ).getBlocks( clientId ), [] );
 
-		const potentialStyleName = style.substring( 9 );
-		const activeStyle = find( styles, { name: potentialStyleName } );
-
-		if ( activeStyle ) {
-			return activeStyle;
-		}
-	}
-
-	return find( styles, 'isDefault' );
-}
-
-/**
- * Replaces the active style in the block's className.
- *
- * @param {string}  className   Class name.
- * @param {Object?} activeStyle The replaced style.
- * @param {Object}  newStyle    The replacing style.
- *
- * @return {string} The updated className.
- */
-function replaceActiveStyle( className, activeStyle, newStyle ) {
-	const list = new TokenList( className );
-
-	if ( activeStyle ) {
-		list.remove( 'is-style-' + activeStyle.name );
-	}
-
-	list.add( 'is-style-' + newStyle.name );
-
-	return list.value;
-}
-
-class Edit extends Component {
-	constructor() {
-		super( ...arguments );
-
-		this.updateStyle = this.updateStyle.bind( this );
-		this.updateInnerAttributes = this.updateInnerAttributes.bind( this );
-		this.onChangeAlignment = this.onChangeAlignment.bind( this );
-		this.onChangeHeadingLevel = this.onChangeHeadingLevel.bind( this );
-		this.toggleCtas = this.toggleCtas.bind( this );
-	}
-
-	componentDidUpdate( prevProps ) {
-		const { attributes, innerBlocks } = this.props;
-		const activeStyle = getActiveStyle( layoutOptions, attributes.className );
-		const lastActiveStyle = getActiveStyle(
-			layoutOptions,
-			prevProps.attributes.className
-		);
-
-		if ( activeStyle !== lastActiveStyle ) {
-			if ( 'circle' === activeStyle.name && ( typeof attributes.alignment === 'undefined' || attributes.alignment === 'none' ) ) {
-				this.onChangeAlignment( 'center' );
-			}
-		}
-
-		if ( innerBlocks.length > 0 ) {
-			const serviceBlocksCount = innerBlocks.reduce( ( acc, cur ) => acc + ( cur.name === 'coblocks/service' ), 0 );
-
-			// Add a new block if the count is less than the columns set.
-			if ( serviceBlocksCount < attributes.columns ) {
-				const { buttons, headingLevel, alignment, insertBlock, clientId } = this.props;
-
-				insertBlock(
-					createBlock( 'coblocks/service', {
-						showCta: buttons,
-						headingLevel,
-						alignment,
-					} ),
-					innerBlocks.length + 1,
-					clientId,
-					false,
-				);
-			}
-		}
-	}
-
-	updateStyle( style ) {
-		const { className, attributes, setAttributes } = this.props;
-
+	const updateStyle = ( style ) => {
 		const activeStyle = getActiveStyle( layoutOptions, className );
 		const updatedClassName = replaceActiveStyle(
 			attributes.className,
@@ -157,12 +43,10 @@ class Edit extends Component {
 		);
 
 		setAttributes( { className: updatedClassName } );
-	}
+	};
 
-	updateInnerAttributes( blockName, newAttributes ) {
-		const { updateBlockAttributes, getBlocksByClientId } = this.props;
-		const innerItems = getBlocksByClientId(	this.props.clientId	)[ 0 ].innerBlocks;
-		innerItems.forEach( ( item ) => {
+	const updateInnerAttributes = ( blockName, newAttributes ) => {
+		innerServiceItems.forEach( ( item ) => {
 			if ( item.name === blockName ) {
 				updateBlockAttributes(
 					item.clientId,
@@ -170,119 +54,130 @@ class Edit extends Component {
 				);
 			}
 		} );
-	}
+	};
 
-	onChangeAlignment( alignment ) {
-		const { setAttributes } = this.props;
-
+	const onChangeAlignment = ( alignment ) => {
 		setAttributes( { alignment } );
-		this.updateInnerAttributes( 'coblocks/service', { alignment } );
-	}
+		updateInnerAttributes( 'coblocks/service', { alignment } );
+	};
 
-	onChangeHeadingLevel( headingLevel ) {
-		const { setAttributes } = this.props;
-
+	const onChangeHeadingLevel = ( headingLevel ) => {
 		setAttributes( { headingLevel } );
-		this.updateInnerAttributes( 'coblocks/service', { headingLevel } );
-	}
+		updateInnerAttributes( 'coblocks/service', { headingLevel } );
+	};
 
-	toggleCtas() {
-		const {
-			attributes,
-			setAttributes,
-		} = this.props;
-
+	const toggleCtas = () => {
 		const buttons = ! attributes.buttons;
 		setAttributes( { buttons } );
 
-		this.updateInnerAttributes( 'coblocks/service', { showCta: buttons } );
-	}
+		updateInnerAttributes( 'coblocks/service', { showCta: buttons } );
+	};
 
-	render() {
-		const {
-			className,
-			attributes,
-			setAttributes,
-		} = this.props;
+	const setColumns = ( value ) => {
+		setAttributes( { columns: parseInt( value ) } );
+	};
 
-		const {
+	/* istanbul ignore next */
+	useEffect( () => {
+		const activeStyle = getActiveStyle( layoutOptions, attributes.className );
+
+		// When circle style is set and alignment is not specified by user, than set center alignment
+		if ( 'circle' === activeStyle.name && ( typeof attributes.alignment === 'undefined' || attributes.alignment === 'none' ) ) {
+			onChangeAlignment( 'center' );
+		}
+	}, [ attributes.className ] );
+
+	/* istanbul ignore next */
+	useEffect( () => {
+		// Handle add and removal of service block when column is changed.
+		const { buttons, headingLevel, alignment } = props;
+
+		handlePlaceholderPlacement( 'coblocks/service', {
+			showCta: buttons,
+			headingLevel,
 			alignment,
-			columns,
-		} = attributes;
+		} );
+	}, [ attributes.columns, innerServiceItems ] );
 
-		const classes = classnames(
-			'has-columns', {
-				[ `has-${ columns }-columns` ]: columns,
-				'has-responsive-columns': columns > 1,
-			}
-		);
+	/**
+	 * Handle creation and removal of placeholder elements so that we always have one available to use.
+	 *
+	 * @param {string} blockName The block to insert.
+	 * @param {Object} blockAttributes The attributes for the placeholder block.
+	 */
+	const handlePlaceholderPlacement = ( blockName, blockAttributes = {} ) => {
+		const filledServiceItems = innerServiceItems.filter(	( item ) => ( ! isEmpty( item.attributes ) || ! isEmptyInnerBlocks( item.innerBlocks ) ) );
+		const placeholders = innerServiceItems.filter( ( item ) => isEmpty( item.attributes ) && isEmptyInnerBlocks( item.innerBlocks ) );
 
-		const activeStyle = getActiveStyle( layoutOptions, className );
+		// Remove trailing placeholders if there are more inner blocks than columns.
+		// Should always be at least a single placeholder present.
+		if ( placeholders.length + filledServiceItems.length > columns ) {
+			removeBlocks(
+				placeholders.filter( ( item, index ) => index !== 0 ).map( ( item ) => item.clientId ),
+				false
+			);
+		}
 
-		return (
-			<Fragment>
-				<BlockControls>
-					<HeadingToolbar
-						minLevel={ 2 }
-						maxLevel={ 6 }
-						selectedLevel={ attributes.headingLevel }
-						onChange={ this.onChangeHeadingLevel }
-					/>
-					<AlignmentToolbar
-						value={ alignment }
-						onChange={ this.onChangeAlignment }
-					/>
-				</BlockControls>
-				<InspectorControls
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					activeStyle={ activeStyle }
-					layoutOptions={ layoutOptions }
-					onToggleCtas={ this.toggleCtas }
-					onUpdateStyle={ this.updateStyle }
-					onSetColumns={ this.setColumns }
+		// Add a placeholder if there are none or if block count is less than columns.
+		if ( placeholders.length === 0 || placeholders.length + filledServiceItems.length < columns ) {
+			const newServiceItem = createBlock( blockName, blockAttributes );
+			insertBlock(
+				newServiceItem,
+				innerServiceItems.length,
+				clientId,
+				false
+			);
+		}
+	};
+
+	const {	alignment, columns } = attributes;
+
+	const classes = classnames(
+		'has-columns', {
+			[ `has-${ columns }-columns` ]: columns,
+			'has-responsive-columns': columns > 1,
+		}
+	);
+
+	const activeStyle = getActiveStyle( layoutOptions, className );
+	return (
+		<Fragment>
+			<BlockControls>
+				<HeadingToolbar
+					minLevel={ 2 }
+					maxLevel={ 6 }
+					selectedLevel={ attributes.headingLevel }
+					onChange={ onChangeHeadingLevel }
 				/>
-				<div className={ className }>
-					<GutterWrapper { ...attributes } >
-						<div className={ classes }>
-							<InnerBlocks
-								allowedBlocks={ ALLOWED_BLOCKS }
-								template={ TEMPLATE }
-								orientation={ attributes.columns > 1 ? 'horizontal' : 'vertical' }
-								templateInsertUpdatesSelection={ false }
-								__experimentalCaptureToolbars={ true }
-							/>
-						</div>
-					</GutterWrapper>
-				</div>
-			</Fragment>
-		);
-	}
-}
+				<AlignmentToolbar
+					value={ alignment }
+					onChange={ onChangeAlignment }
+				/>
+			</BlockControls>
+			<InspectorControls
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				activeStyle={ activeStyle }
+				layoutOptions={ layoutOptions }
+				onToggleCtas={ toggleCtas }
+				onUpdateStyle={ updateStyle }
+				onSetColumns={ setColumns }
+			/>
+			<div className={ className }>
+				<GutterWrapper { ...attributes } >
+					<div className={ classes }>
+						<InnerBlocks
+							allowedBlocks={ ALLOWED_BLOCKS }
+							template={ TEMPLATE }
+							orientation={ attributes.columns > 1 ? 'horizontal' : 'vertical' }
+							templateInsertUpdatesSelection={ false }
+							__experimentalCaptureToolbars={ true }
+						/>
+					</div>
+				</GutterWrapper>
+			</div>
+		</Fragment>
+	);
+};
 
-export default compose( [
-
-	withSelect( ( select, props ) => {
-		const {
-			getBlocksByClientId,
-			getBlocks,
-		} = select( 'core/block-editor' );
-
-		return {
-			getBlocksByClientId,
-			innerBlocks: getBlocks( props.clientId ),
-		};
-	} ),
-
-	withDispatch( ( dispatch ) => {
-		const {
-			updateBlockAttributes,
-			insertBlock,
-		} = dispatch( 'core/block-editor' );
-		return {
-			updateBlockAttributes,
-			insertBlock,
-		};
-	} ),
-
-] )( Edit );
+export default Edit;
