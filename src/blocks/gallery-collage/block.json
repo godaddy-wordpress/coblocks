@@ -49,6 +49,10 @@
 		"shadow": {
 			"type": "string",
 			"default": "none"
+		},
+		"align": {
+			"type": "string",
+			"default": "wide"
 		}
 	}
 }
