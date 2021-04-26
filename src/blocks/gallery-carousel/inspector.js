@@ -89,13 +89,11 @@ class Inspector extends Component {
 							/>
 							{ gridSize !== null && ( align === 'wide' || align === 'full' ) &&
 								<ResponsiveTabsControl { ...this.props }
-									label={ __( 'Gutter', 'coblocks' ) }
 									max={ 20 }
 								/>
 							}
 							{ gridSize !== 'xlrg' && ! align &&
 								<ResponsiveTabsControl { ...this.props }
-									label={ __( 'Gutter', 'coblocks' ) }
 									max={ 20 }
 								/>
 							}

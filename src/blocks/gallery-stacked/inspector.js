@@ -96,7 +96,6 @@ class Inspector extends Component {
 
 					{ images.length > 1 &&
 						<ResponsiveTabsControl { ...this.props }
-							label={ __( 'Gutter', 'coblocks' ) }
 						/>
 					}
 
