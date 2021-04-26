@@ -344,13 +344,13 @@ describe( 'Test CoBlocks Form Block', function() {
 			.should( 'exist' );
 
 		cy.get( 'input[name="field-name[value]"]' )
-			.type( 'Name' );
+			.type( 'Name', { force: true } );
 
 		cy.get( 'input[name="field-email[value]"]' )
-			.type( 'email@example.com' );
+			.type( 'email@example.com', { force: true } );
 
 		cy.get( 'textarea[name="field-message[value]"]' )
-			.type( 'My message for you.' );
+			.type( 'My message for you.', { force: true } );
 
 		cy.get( '.coblocks-form__submit button' )
 			.click();
@@ -425,13 +425,13 @@ describe( 'Test CoBlocks Form Block', function() {
 			.should( 'exist' );
 
 		cy.get( 'input[name="field-name[value]"]' )
-			.type( 'Name' );
+			.type( 'Name', { force: true } );
 
 		cy.get( 'input[name="field-email[value]"]' )
-			.type( 'email@example.com' );
+			.type( 'email@example.com', { force: true } );
 
 		cy.get( 'textarea[name="field-message[value]"]' )
-			.type( 'My message for you.' );
+			.type( 'My message for you.', { force: true } );
 
 		cy.get( '.coblocks-form__submit button' )
 			.click();
@@ -475,7 +475,7 @@ describe( 'Test CoBlocks Form Block', function() {
 				cy.get( $inputElem ).invoke( 'val' ).then( ( ) => {
 					cy.get( $inputElem )
 						.clear()
-						.type( 'Thank you for submitting this form!' );
+						.type( 'Thank you for submitting this form!', { force: true } );
 				} );
 			} );
 
@@ -486,13 +486,13 @@ describe( 'Test CoBlocks Form Block', function() {
 			.should( 'exist' );
 
 		cy.get( 'input[name="field-name[value]"]' )
-			.type( 'Name' );
+			.type( 'Name', { force: true } );
 
 		cy.get( 'input[name="field-email[value]"]' )
-			.type( 'email@example.com' );
+			.type( 'email@example.com', { force: true } );
 
 		cy.get( 'textarea[name="field-message[value]"]' )
-			.type( 'My message for you.' );
+			.type( 'My message for you.', { force: true } );
 
 		cy.get( '.coblocks-form__submit button' )
 			.click();
@@ -527,15 +527,15 @@ describe( 'Test CoBlocks Form Block', function() {
 		helpers.addFormChild( 'text' );
 
 		helpers.addFormChild( 'radio' );
-		cy.get( '.coblocks-option__input' ).type( 'text' );
+		cy.get( '.coblocks-option__input' ).type( 'text', { force: true } );
 
 		helpers.addFormChild( 'phone' );
 
 		helpers.addFormChild( 'checkbox' );
-		cy.get( '.coblocks-option__input' ).type( 'text' );
+		cy.get( '.coblocks-option__input' ).type( 'text', { force: true } );
 
 		helpers.addFormChild( 'select' );
-		cy.get( '.coblocks-option__input' ).type( 'text' );
+		cy.get( '.coblocks-option__input' ).type( 'text', { force: true } );
 
 		helpers.addFormChild( 'website' );
 
