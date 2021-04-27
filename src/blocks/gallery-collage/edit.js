@@ -213,7 +213,7 @@ class GalleryCollageEdit extends Component {
 		const hasImage = !! image;
 
 		const classNames = classnames( 'wp-block-coblocks-gallery-collage__figure', {
-			[ `shadow-${ this.props.attributes.shadow }` ]: this.props.attributes.shadow,
+			[ `shadow-${ this.props.attributes.shadow }` ]: hasImage && this.props.attributes.shadow,
 		} );
 
 		return (
