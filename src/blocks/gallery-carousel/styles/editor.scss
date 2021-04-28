@@ -43,7 +43,8 @@
 
 	.has-responsive-height {
 
-		> span .components-resizable-box__handle {
+		> span .components-resizable-box__handle,
+		.components-resizable-box__handle {
 			display: none !important;
 		}
 
