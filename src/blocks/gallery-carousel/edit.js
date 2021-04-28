@@ -71,7 +71,7 @@ const GalleryCarouselEdit = ( props ) => {
 	}, [ props.attributes.navForClass, parsedNavForClass ] );
 
 	useEffect( () => {
-		if ( ! props.attributes.thumbnails && props.attributes.pageDots ) {
+		if ( !! props.attributes.thumbnails && props.attributes.pageDots ) {
 			setAttributes( { pageDots: false } );
 		}
 	}, [ props.attributes.thumbnails, props.attributes.pageDots ] );
