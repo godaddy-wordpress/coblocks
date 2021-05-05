@@ -7,7 +7,7 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import { Component, isValidElement } from '@wordpress/element';
 import { applyFilters } from '@wordpress/hooks';
 import { registerPlugin } from '@wordpress/plugins';
@@ -210,11 +210,12 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 					updateSelectedCategory,
 				} = dispatch( 'coblocks/template-selector' );
 				const { editPost } = dispatch( 'core/editor' );
-				const { createWarningNotice } = dispatch( 'core/notices' );
+				const { createWarningNotice, createSuccessNotice } = dispatch( 'core/notices' );
 
 				return {
 					closeTemplateSelector,
 					createWarningNotice,
+					createSuccessNotice,
 					editPost,
 					updateSelectedCategory,
 
@@ -226,6 +227,14 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 						} );
 						closeTemplateSelector();
 						incrementLayoutUsage( layout );
+						createSuccessNotice(
+							sprintf(
+								// translators: %s is the post title.
+								__( '"%s" layout has been added to the page.', 'nextgen' ),
+								layout.label
+							),
+							{ type: 'snackbar' }
+						);
 					},
 
 					useEmptyTemplateLayout: () => {
