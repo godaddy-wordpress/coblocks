@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-05-05T20:16:41+00:00\n"
+"POT-Creation-Date: 2021-05-05T21:25:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -1233,6 +1233,7 @@ msgstr ""
 
 #. translators: abbreviation for small size
 #: src/blocks/food-and-drinks/inspector.js:41
+#: src/blocks/gallery-collage/inspector.js:71
 #: src/blocks/posts/inspector.js:65
 #: src/components/gutter-control/gutter-control.js:17
 #: src/components/option-selector-control/index.js:30
@@ -1247,6 +1248,7 @@ msgstr ""
 #. translators: abbreviation for small size
 #. translators: label for small size option
 #: src/blocks/food-and-drinks/inspector.js:42
+#: src/blocks/gallery-collage/inspector.js:72
 #: src/blocks/icon/icon-size-select.js:16
 #: src/blocks/posts/inspector.js:66
 #: src/blocks/share/inspector.js:72
@@ -1264,6 +1266,7 @@ msgstr ""
 
 #. translators: abbreviation for medium size
 #: src/blocks/food-and-drinks/inspector.js:47
+#: src/blocks/gallery-collage/inspector.js:77
 #: src/blocks/posts/inspector.js:70
 #: src/components/gutter-control/gutter-control.js:23
 #: src/components/option-selector-control/index.js:36
@@ -1278,6 +1281,7 @@ msgstr ""
 #. translators: abbreviation for medium size
 #. translators: label for medium size option
 #: src/blocks/food-and-drinks/inspector.js:48
+#: src/blocks/gallery-collage/inspector.js:78
 #: src/blocks/icon/icon-size-select.js:21
 #: src/blocks/posts/inspector.js:71
 #: src/blocks/share/inspector.js:73
@@ -1295,6 +1299,7 @@ msgstr ""
 
 #. translators: abbreviation for large size
 #: src/blocks/food-and-drinks/inspector.js:53
+#: src/blocks/gallery-collage/inspector.js:83
 #: src/blocks/posts/inspector.js:75
 #: src/components/gutter-control/gutter-control.js:29
 #: src/components/option-selector-control/index.js:42
@@ -1309,6 +1314,7 @@ msgstr ""
 #. translators: abbreviation for large size
 #. translators: label for large size option
 #: src/blocks/food-and-drinks/inspector.js:54
+#: src/blocks/gallery-collage/inspector.js:84
 #: src/blocks/icon/icon-size-select.js:26
 #: src/blocks/posts/inspector.js:76
 #: src/blocks/share/inspector.js:74
@@ -1961,6 +1967,7 @@ msgid "Toggle for percentage based height."
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:55
+#: src/blocks/gallery-collage/inspector.js:50
 #: src/blocks/gallery-masonry/inspector.js:56
 #: src/blocks/gallery-stacked/inspector.js:61
 #: src/extensions/lightbox-controls/index.js:35
@@ -1968,6 +1975,7 @@ msgid "Image lightbox is enabled."
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:55
+#: src/blocks/gallery-collage/inspector.js:50
 #: src/blocks/gallery-masonry/inspector.js:57
 #: src/blocks/gallery-stacked/inspector.js:62
 #: src/extensions/lightbox-controls/index.js:36
@@ -1996,6 +2004,7 @@ msgid "Rounded corners"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:139
+#: src/blocks/gallery-collage/inspector.js:100
 #: src/blocks/gallery-masonry/inspector.js:102
 #: src/blocks/gallery-stacked/inspector.js:114
 #: src/extensions/lightbox-controls/index.js:46
@@ -2043,6 +2052,40 @@ msgstr ""
 msgid "Layered"
 msgstr ""
 
+#: src/blocks/gallery-collage/inspector.js:32
+#: src/blocks/gallery-masonry/inspector.js:50
+#: src/blocks/gallery-stacked/inspector.js:55
+msgid "Showing captions for each media item."
+msgstr ""
+
+#: src/blocks/gallery-collage/inspector.js:32
+#: src/blocks/gallery-masonry/inspector.js:51
+#: src/blocks/gallery-stacked/inspector.js:56
+msgid "Toggle to show media captions."
+msgstr ""
+
+#: src/blocks/gallery-collage/inspector.js:90
+msgid "Collage settings"
+msgstr ""
+
+#. translators: block style
+#: src/blocks/gallery-collage/inspector.js:93
+#: src/blocks/gallery-stacked/inspector.js:138
+#: src/extensions/button-styles/index.js:25
+msgid "Shadow"
+msgstr ""
+
+#: src/blocks/gallery-collage/inspector.js:106
+#: src/blocks/gallery-masonry/inspector.js:109
+#: src/blocks/gallery-stacked/inspector.js:121
+msgid "Captions"
+msgstr ""
+
+#: src/blocks/gallery-collage/inspector.js:112
+#: src/blocks/gallery-masonry/inspector.js:117
+msgid "Caption style"
+msgstr ""
+
 #. translators: block name
 #: src/blocks/gallery-masonry/edit.js:187
 #: src/blocks/gallery-masonry/index.js:35
@@ -2060,31 +2103,12 @@ msgstr ""
 msgid "lightbox"
 msgstr ""
 
-#: src/blocks/gallery-masonry/inspector.js:50
-#: src/blocks/gallery-stacked/inspector.js:55
-msgid "Showing captions for each media item."
-msgstr ""
-
-#: src/blocks/gallery-masonry/inspector.js:51
-#: src/blocks/gallery-stacked/inspector.js:56
-msgid "Toggle to show media captions."
-msgstr ""
-
 #: src/blocks/gallery-masonry/inspector.js:77
 msgid "Masonry settings"
 msgstr ""
 
 #: src/blocks/gallery-masonry/inspector.js:92
 msgid "Add rounded corners to the gallery items."
-msgstr ""
-
-#: src/blocks/gallery-masonry/inspector.js:109
-#: src/blocks/gallery-stacked/inspector.js:121
-msgid "Captions"
-msgstr ""
-
-#: src/blocks/gallery-masonry/inspector.js:117
-msgid "Caption style"
 msgstr ""
 
 #. translators: block name
@@ -2128,12 +2152,6 @@ msgstr ""
 
 #: src/blocks/gallery-stacked/inspector.js:90
 msgid "Fullwidth image"
-msgstr ""
-
-#. translators: block style
-#: src/blocks/gallery-stacked/inspector.js:138
-#: src/extensions/button-styles/index.js:25
-msgid "Shadow"
 msgstr ""
 
 #: src/blocks/gif/controls.js:44
