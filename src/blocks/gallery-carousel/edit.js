@@ -254,8 +254,12 @@ const GalleryCarouselEdit = ( props ) => {
 
 	return (
 		<>
-			{ isSelected &&	<Controls { ...props } /> }
-			{ isSelected &&	<Inspector { ...props }	/> }
+			{ isSelected && (
+				<>
+					<Controls { ...props } />
+					<Inspector { ...props } />
+				</>
+			) }
 			{ noticeUI }
 			<ResizableBox
 				size={ {

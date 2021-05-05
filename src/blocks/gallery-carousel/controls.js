@@ -17,7 +17,7 @@ const Controls = ( props ) => {
 	return (
 		<BlockControls>
 			{ hasImages && (
-				<MediaFilterControl	{ ...props } />
+				<MediaFilterControl { ...props } />
 			) }
 		</BlockControls>
 	);
