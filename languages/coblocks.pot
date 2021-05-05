@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-05-05T21:25:09+00:00\n"
+"POT-Creation-Date: 2021-05-05T21:37:55+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -802,7 +802,7 @@ msgid "Dynamic HR settings"
 msgstr ""
 
 #: src/blocks/dynamic-separator/inspector.js:47
-#: src/blocks/gallery-carousel/inspector.js:112
+#: src/blocks/gallery-carousel/inspector.js:103
 #: src/blocks/hero/inspector.js:108
 #: src/blocks/map/inspector.js:130
 msgid "Height in pixels"
@@ -1907,19 +1907,19 @@ msgid "Event"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gallery-carousel/edit.js:189
+#: src/blocks/gallery-carousel/edit.js:170
 #: src/blocks/gallery-carousel/index.js:35
 msgid "Carousel"
 msgstr ""
 
 #. translators: %1$d is the order number of the image, %2$d is the total number of images
-#: src/blocks/gallery-carousel/edit.js:327
+#: src/blocks/gallery-carousel/edit.js:303
 #: src/blocks/gallery-masonry/edit.js:245
 #: src/blocks/gallery-stacked/edit.js:218
 msgid "image %1$d of %2$d in gallery"
 msgstr ""
 
-#: src/blocks/gallery-carousel/edit.js:391
+#: src/blocks/gallery-carousel/edit.js:366
 msgid "Write gallery caption…"
 msgstr ""
 
@@ -1950,23 +1950,23 @@ msgstr ""
 msgid "photos"
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:47
+#: src/blocks/gallery-carousel/inspector.js:41
 msgid "Showing thumbnail navigation."
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:47
+#: src/blocks/gallery-carousel/inspector.js:41
 msgid "Toggle to show thumbnails."
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:51
+#: src/blocks/gallery-carousel/inspector.js:45
 msgid "Percentage based height is activated."
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:51
+#: src/blocks/gallery-carousel/inspector.js:45
 msgid "Toggle for percentage based height."
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:55
+#: src/blocks/gallery-carousel/inspector.js:49
 #: src/blocks/gallery-collage/inspector.js:50
 #: src/blocks/gallery-masonry/inspector.js:56
 #: src/blocks/gallery-stacked/inspector.js:61
@@ -1974,7 +1974,7 @@ msgstr ""
 msgid "Image lightbox is enabled."
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:55
+#: src/blocks/gallery-carousel/inspector.js:49
 #: src/blocks/gallery-collage/inspector.js:50
 #: src/blocks/gallery-masonry/inspector.js:57
 #: src/blocks/gallery-stacked/inspector.js:62
@@ -1982,11 +1982,11 @@ msgstr ""
 msgid "Toggle to enable the image lightbox."
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:82
+#: src/blocks/gallery-carousel/inspector.js:73
 msgid "Carousel settings"
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:85
+#: src/blocks/gallery-carousel/inspector.js:76
 #: src/blocks/gallery-masonry/inspector.js:81
 #: src/blocks/icon/inspector.js:116
 #: src/blocks/icon/inspector.js:182
@@ -1994,7 +1994,7 @@ msgstr ""
 msgid "Size"
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:102
+#: src/blocks/gallery-carousel/inspector.js:93
 #: src/blocks/gallery-masonry/inspector.js:91
 #: src/blocks/gallery-stacked/inspector.js:104
 #: src/blocks/share/inspector.js:120
@@ -2003,7 +2003,7 @@ msgstr ""
 msgid "Rounded corners"
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:139
+#: src/blocks/gallery-carousel/inspector.js:130
 #: src/blocks/gallery-collage/inspector.js:100
 #: src/blocks/gallery-masonry/inspector.js:102
 #: src/blocks/gallery-stacked/inspector.js:114
@@ -2011,11 +2011,11 @@ msgstr ""
 msgid "Lightbox"
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:145
+#: src/blocks/gallery-carousel/inspector.js:136
 msgid "Thumbnails"
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:155
+#: src/blocks/gallery-carousel/inspector.js:146
 msgid "Responsive height"
 msgstr ""
 
@@ -7378,104 +7378,104 @@ msgstr ""
 msgid "Ten Seconds"
 msgstr ""
 
-#: src/components/slider-panel/index.js:23
+#: src/components/slider-panel/index.js:17
 msgid "seconds"
 msgstr ""
 
-#: src/components/slider-panel/index.js:23
+#: src/components/slider-panel/index.js:17
 msgid "second"
 msgstr ""
 
 #. translators: %1$d: Speed of the slider, %2$d: Time until the slide advances
-#: src/components/slider-panel/index.js:27
+#: src/components/slider-panel/index.js:21
 msgid "Advancing after %1$d %2$s."
 msgstr ""
 
-#: src/components/slider-panel/index.js:30
+#: src/components/slider-panel/index.js:24
 msgid "Automatically advance to the next slide."
 msgstr ""
 
-#: src/components/slider-panel/index.js:34
+#: src/components/slider-panel/index.js:28
 msgid "Dragging and flicking enabled."
 msgstr ""
 
-#: src/components/slider-panel/index.js:34
+#: src/components/slider-panel/index.js:28
 msgid "Toggle to enable drag functionality."
 msgstr ""
 
-#: src/components/slider-panel/index.js:38
+#: src/components/slider-panel/index.js:32
 msgid "Showing slide navigation arrows."
 msgstr ""
 
-#: src/components/slider-panel/index.js:38
+#: src/components/slider-panel/index.js:32
 msgid "Toggle to show slide navigation arrows."
 msgstr ""
 
-#: src/components/slider-panel/index.js:42
+#: src/components/slider-panel/index.js:36
 msgid "Showing dot navigation."
 msgstr ""
 
-#: src/components/slider-panel/index.js:42
+#: src/components/slider-panel/index.js:36
 msgid "Toggle to show dot navigation."
 msgstr ""
 
-#: src/components/slider-panel/index.js:46
+#: src/components/slider-panel/index.js:40
 msgid "Aligning slides to the left."
 msgstr ""
 
-#: src/components/slider-panel/index.js:46
+#: src/components/slider-panel/index.js:40
 msgid "Aligning slides to the center."
 msgstr ""
 
-#: src/components/slider-panel/index.js:49
+#: src/components/slider-panel/index.js:43
 msgid "Pausing autoplay when hovering."
 msgstr ""
 
-#: src/components/slider-panel/index.js:49
+#: src/components/slider-panel/index.js:43
 msgid "Toggle to pause autoplay when hovered."
 msgstr ""
 
-#: src/components/slider-panel/index.js:53
+#: src/components/slider-panel/index.js:47
 msgid "Scrolling without fixed slides enabled."
 msgstr ""
 
-#: src/components/slider-panel/index.js:53
+#: src/components/slider-panel/index.js:47
 msgid "Toggle to scroll without fixed slides."
 msgstr ""
 
-#: src/components/slider-panel/index.js:75
+#: src/components/slider-panel/index.js:69
 msgid "Slider settings"
 msgstr ""
 
-#: src/components/slider-panel/index.js:77
+#: src/components/slider-panel/index.js:71
 msgid "Autoplay"
 msgstr ""
 
-#: src/components/slider-panel/index.js:84
+#: src/components/slider-panel/index.js:78
 msgid "Transition speed"
 msgstr ""
 
-#: src/components/slider-panel/index.js:91
+#: src/components/slider-panel/index.js:85
 msgid "Pause on hover"
 msgstr ""
 
-#: src/components/slider-panel/index.js:99
+#: src/components/slider-panel/index.js:93
 msgid "Draggable"
 msgstr ""
 
-#: src/components/slider-panel/index.js:105
+#: src/components/slider-panel/index.js:99
 msgid "Free scroll"
 msgstr ""
 
-#: src/components/slider-panel/index.js:111
+#: src/components/slider-panel/index.js:105
 msgid "Arrow navigation"
 msgstr ""
 
-#: src/components/slider-panel/index.js:117
+#: src/components/slider-panel/index.js:112
 msgid "Dot navigation"
 msgstr ""
 
-#: src/components/slider-panel/index.js:123
+#: src/components/slider-panel/index.js:118
 msgid "Align cells"
 msgstr ""
 
