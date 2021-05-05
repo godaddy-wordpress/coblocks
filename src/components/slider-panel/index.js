@@ -8,18 +8,12 @@ import autoPlayOptions from './autoplay-options';
  * WordPress dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
 import { PanelBody, ToggleControl, SelectControl } from '@wordpress/components';
 
-class SliderPanel extends Component {
-	constructor() {
-		super( ...arguments );
-		this.getAutoPlayHelp = this.getAutoPlayHelp.bind( this );
-	}
-
-	getAutoPlayHelp( checked ) {
+const SliderPanel = ( props ) => {
+	const getAutoPlayHelp = ( checked ) => {
 		// Retrieve the height value and divide it to display full seconds.
-		const speed = this.props.attributes.autoPlaySpeed / 1000;
+		const speed = props.attributes.autoPlaySpeed / 1000;
 		const time = ( speed > 1 ) ? __( 'seconds', 'coblocks' ) : __( 'second', 'coblocks' );
 
 		return checked ? sprintf(
@@ -28,107 +22,107 @@ class SliderPanel extends Component {
 			speed,
 			time
 		) : __( 'Automatically advance to the next slide.', 'coblocks' );
-	}
+	};
 
-	getDraggableHelp( checked ) {
+	const getDraggableHelp = ( checked ) => {
 		return checked ? __( 'Dragging and flicking enabled.', 'coblocks' ) : __( 'Toggle to enable drag functionality.', 'coblocks' );
-	}
+	};
 
-	getArrowNavigationHelp( checked ) {
+	const getArrowNavigationHelp = ( checked ) => {
 		return checked ? __( 'Showing slide navigation arrows.', 'coblocks' ) : __( 'Toggle to show slide navigation arrows.', 'coblocks' );
-	}
+	};
 
-	getDotNavigationHelp( checked ) {
+	const getDotNavigationHelp = ( checked ) => {
 		return checked ? __( 'Showing dot navigation.', 'coblocks' ) : __( 'Toggle to show dot navigation.', 'coblocks' );
-	}
+	};
 
-	getAlignCellsHelp( checked ) {
+	const getAlignCellsHelp = ( checked ) => {
 		return checked ? __( 'Aligning slides to the left.', 'coblocks' ) : __( 'Aligning slides to the center.', 'coblocks' );
-	}
-	getPauseAutoplayOnHoverHelp( checked ) {
+	};
+	const getPauseAutoplayOnHoverHelp = ( checked ) => {
 		return checked ? __( 'Pausing autoplay when hovering.', 'coblocks' ) : __( 'Toggle to pause autoplay when hovered.', 'coblocks' );
-	}
+	};
 
-	getfreeScrollHelp( checked ) {
+	const getfreeScrollHelp = ( checked ) => {
 		return checked ? __( 'Scrolling without fixed slides enabled.', 'coblocks' ) : __( 'Toggle to scroll without fixed slides.', 'coblocks' );
-	}
+	};
 
-	render() {
-		const {
-			attributes,
-			setAttributes,
-		} = this.props;
+	const {
+		attributes,
+		setAttributes,
+	} = props;
 
-		const {
-			autoPlay,
-			autoPlaySpeed,
-			draggable,
-			freeScroll,
-			pageDots,
-			prevNextButtons,
-			alignCells,
-			pauseHover,
-		} = attributes;
+	const {
+		autoPlay,
+		autoPlaySpeed,
+		draggable,
+		freeScroll,
+		pageDots,
+		prevNextButtons,
+		alignCells,
+		pauseHover,
+		thumbnails,
+	} = attributes;
 
-		return (
-			<Fragment>
-				<PanelBody title={ __( 'Slider settings', 'coblocks' ) } initialOpen={ false }>
-					<ToggleControl
-						label={ __( 'Autoplay', 'coblocks' ) }
-						checked={ !! autoPlay }
-						onChange={ () => setAttributes( { autoPlay: ! autoPlay } ) }
-						help={ this.getAutoPlayHelp }
+	return (
+		<>
+			<PanelBody title={ __( 'Slider settings', 'coblocks' ) } initialOpen={ false }>
+				<ToggleControl
+					label={ __( 'Autoplay', 'coblocks' ) }
+					checked={ !! autoPlay }
+					onChange={ () => setAttributes( { autoPlay: ! autoPlay } ) }
+					help={ getAutoPlayHelp }
+				/>
+				{ autoPlay && <>
+					<SelectControl
+						label={ __( 'Transition speed', 'coblocks' ) }
+						value={ autoPlaySpeed }
+						onChange={ ( value ) => setAttributes( { autoPlaySpeed: value } ) }
+						options={ autoPlayOptions }
+						className="components-coblocks-gallery-inspector__autoplayspeed-select"
 					/>
-					{ autoPlay && <Fragment>
-						<SelectControl
-							label={ __( 'Transition speed', 'coblocks' ) }
-							value={ autoPlaySpeed }
-							onChange={ ( value ) => setAttributes( { autoPlaySpeed: value } ) }
-							options={ autoPlayOptions }
-							className="components-coblocks-gallery-inspector__autoplayspeed-select"
-						/>
-						<ToggleControl
-							label={ __( 'Pause on hover', 'coblocks' ) }
-							checked={ pauseHover }
-							onChange={ () => setAttributes( { pauseHover: ! pauseHover } ) }
-							help={ this.getPauseAutoplayOnHoverHelp }
-						/>
-					</Fragment>
-					}
 					<ToggleControl
-						label={ __( 'Draggable', 'coblocks' ) }
-						checked={ !! draggable }
-						onChange={ () => setAttributes( { draggable: ! draggable } ) }
-						help={ this.getDraggableHelp }
+						label={ __( 'Pause on hover', 'coblocks' ) }
+						checked={ pauseHover }
+						onChange={ () => setAttributes( { pauseHover: ! pauseHover } ) }
+						help={ getPauseAutoplayOnHoverHelp }
 					/>
-					{ draggable && <ToggleControl
-						label={ __( 'Free scroll', 'coblocks' ) }
-						checked={ !! freeScroll }
-						onChange={ () => setAttributes( { freeScroll: ! freeScroll } ) }
-						help={ this.getfreeScrollHelp }
-					/> }
-					<ToggleControl
-						label={ __( 'Arrow navigation', 'coblocks' ) }
-						checked={ !! prevNextButtons }
-						onChange={ () => setAttributes( { prevNextButtons: ! prevNextButtons } ) }
-						help={ this.getArrowNavigationHelp }
-					/>
+				</>
+				}
+				<ToggleControl
+					label={ __( 'Draggable', 'coblocks' ) }
+					checked={ !! draggable }
+					onChange={ () => setAttributes( { draggable: ! draggable } ) }
+					help={ getDraggableHelp }
+				/>
+				{ draggable && <ToggleControl
+					label={ __( 'Free scroll', 'coblocks' ) }
+					checked={ !! freeScroll }
+					onChange={ () => setAttributes( { freeScroll: ! freeScroll } ) }
+					help={ getfreeScrollHelp }
+				/> }
+				<ToggleControl
+					label={ __( 'Arrow navigation', 'coblocks' ) }
+					checked={ !! prevNextButtons }
+					onChange={ () => setAttributes( { prevNextButtons: ! prevNextButtons } ) }
+					help={ getArrowNavigationHelp }
+				/>
+				{ !! thumbnails ? null	: (
 					<ToggleControl
 						label={ __( 'Dot navigation', 'coblocks' ) }
 						checked={ !! pageDots }
 						onChange={ () => setAttributes( { pageDots: ! pageDots } ) }
-						help={ this.getDotNavigationHelp }
-					/>
-					<ToggleControl
-						label={ __( 'Align cells', 'coblocks' ) }
-						checked={ !! alignCells }
-						onChange={ () => setAttributes( { alignCells: ! alignCells } ) }
-						help={ this.getAlignCellsHelp }
-					/>
-				</PanelBody>
-			</Fragment>
-		);
-	}
-}
+						help={ getDotNavigationHelp } />
+				) }
+				<ToggleControl
+					label={ __( 'Align cells', 'coblocks' ) }
+					checked={ !! alignCells }
+					onChange={ () => setAttributes( { alignCells: ! alignCells } ) }
+					help={ getAlignCellsHelp }
+				/>
+			</PanelBody>
+		</>
+	);
+};
 
 export default SliderPanel;

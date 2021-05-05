@@ -18,90 +18,76 @@ import { GalleryClasses } from '../../components/block-gallery/shared';
 /**
  * WordPress dependencies
  */
-import { __, sprintf } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
-import { compose } from '@wordpress/compose';
-import { withNotices, ResizableBox } from '@wordpress/components';
-import { RichText } from '@wordpress/block-editor';
 import { Icon } from '@wordpress/icons';
+import { RichText } from '@wordpress/block-editor';
+import { __, sprintf } from '@wordpress/i18n';
+import { useState, useEffect } from '@wordpress/element';
+import { compose, usePrevious } from '@wordpress/compose';
+import { withNotices, ResizableBox } from '@wordpress/components';
 
-class GalleryCarouselEdit extends Component {
-	constructor() {
-		super( ...arguments );
+const GalleryCarouselEdit = ( props ) => {
+	const parsedNavForClass = classnames( {
+		[ `has-nav-${ props.clientId.split( '-' )[ 0 ] }` ]: props.attributes.thumbnails,
+	} );
 
-		this.onSelectImage = this.onSelectImage.bind( this );
-		this.onRemoveImage = this.onRemoveImage.bind( this );
-		this.setImageAttributes = this.setImageAttributes.bind( this );
-		this.onFocusCaption = this.onFocusCaption.bind( this );
-		this.onItemClick = this.onItemClick.bind( this );
-		this.replaceImage = this.replaceImage.bind( this );
+	const [ selectedImage, setSelectedImage ] = useState( null );
+	const [ captionFocused, setCaptionFocused ] = useState( false );
 
-		this.state = {
-			selectedImage: null,
-			captionFocused: false,
-		};
-	}
+	const prevSelected = usePrevious( props.isSelected );
+	const prevAlign = usePrevious( props.attributes.align );
 
-	componentDidUpdate( prevProps ) {
-		// Deselect images when deselecting the block.
-		if ( ! this.props.isSelected && prevProps.isSelected ) {
-			this.setState( {
-				selectedImage: null,
-				captionSelected: false,
-				captionFocused: false,
-			} );
+	useEffect( () => {
+		if ( ! props.isSelected && prevSelected ) {
+			setSelectedImage( null );
+			setCaptionFocused( false );
 		}
 
-		if ( ! this.props.isSelected && prevProps.isSelected && this.state.captionFocused ) {
-			this.setState( {
-				captionFocused: false,
-			} );
+		if ( ! props.isSelected && prevSelected && captionFocused ) {
+			setCaptionFocused( false );
 		}
+	}, [ prevSelected, props.isSelected, captionFocused ] );
 
-		if ( this.props.attributes.gutter <= 0 ) {
-			this.props.setAttributes( {
+	useEffect( () => {
+		if ( props.attributes.gutter <= 0 ) {
+			props.setAttributes( {
 				radius: 0,
 			} );
 		}
+	}, [ props.attributes.gutter ] );
 
-		if ( this.props.attributes.gridSize === 'xlrg' && prevProps.attributes.align === undefined ) {
-			this.props.setAttributes( {
+	useEffect( () => {
+		if ( props.attributes.gridSize === 'xlrg' && prevAlign === undefined ) {
+			props.setAttributes( {
 				gutter: 0,
 				gutterMobile: 0,
 			} );
 		}
+	}, [ props.attributes.gridSize, prevAlign ] );
 
-		const { clientId, attributes, setAttributes } = this.props;
-		const { thumbnails, navForClass } = attributes;
-		const parsedNavForClass = classnames( {
-			[ `has-nav-${ clientId.split( '-' )[ 0 ] }` ]: thumbnails,
-		} );
-
-		if ( parsedNavForClass !== navForClass ) {
+	useEffect( () => {
+		if ( parsedNavForClass !== props.attributes.navForClass ) {
 			setAttributes( { navForClass: parsedNavForClass } );
 		}
-	}
+	}, [ props.attributes.navForClass, parsedNavForClass ] );
 
-	onSelectImage( index ) {
-		return () => {
-			if ( this.state.selectedImage !== index ) {
-				this.setState( {
-					selectedImage: index,
-					captionFocused: false,
-				} );
-			}
-		};
-	}
+	useEffect( () => {
+		if ( !! props.attributes.thumbnails && props.attributes.pageDots ) {
+			setAttributes( { pageDots: false } );
+		}
+	}, [ props.attributes.thumbnails, props.attributes.pageDots ] );
 
-	onRemoveImage( index ) {
-		return () => {
-			const images = filter( this.props.attributes.images, ( _img, i ) => index !== i );
-			this.setState( { selectedImage: null } );
-			this.props.setAttributes( {
-				images,
-			} );
-		};
-	}
+	const onSelectImage = ( index ) => {
+		if ( selectedImage !== index ) {
+			setSelectedImage( index );
+			setCaptionFocused( false );
+		}
+	};
+
+	const onRemoveImage = ( index ) => {
+		const images = filter( props.attributes.images, ( _img, i ) => index !== i );
+		setSelectedImage( null );
+		props.setAttributes( { images } );
+	};
 
 	/**
 	 * replaceImage is passed to GalleryImage component and is used to replace images
@@ -109,15 +95,15 @@ class GalleryCarouselEdit extends Component {
 	 * @param {number} index Index of image to remove.
 	 * @param {Object} media Media object used to initialize attributes.
 	 */
-	replaceImage( index, media ) {
-		const images = [ ...this.props.attributes.images ];
+	const replaceImage = ( index, media ) => {
+		const images = [ ...props.attributes.images ];
 		images[ index ] = { ...media };
 
-		this.props.setAttributes( { images } );
-	}
+		props.setAttributes( { images } );
+	};
 
-	setImageAttributes( index, attributes ) {
-		const { attributes: { images }, setAttributes } = this.props;
+	const setImageAttributes = ( index, attributes ) => {
+		const { attributes: { images }, setAttributes } = props;
 		if ( ! images[ index ] ) {
 			return;
 		}
@@ -131,277 +117,265 @@ class GalleryCarouselEdit extends Component {
 				...images.slice( index + 1 ),
 			],
 		} );
+	};
+
+	const onFocusCaption = () => {
+		if ( ! captionFocused ) {
+			setCaptionFocused( true );
+		}
+	};
+
+	const onItemClick = () => {
+		if ( ! props.isSelected ) {
+			props.onSelect();
+		}
+
+		if ( captionFocused ) {
+			setCaptionFocused( false );
+		}
+	};
+
+	const {
+		attributes,
+		className,
+		isSelected,
+		noticeUI,
+		setAttributes,
+	} = props;
+
+	const {
+		align,
+		gridSize,
+		gutter,
+		gutterMobile,
+		height,
+		images,
+		pageDots,
+		prevNextButtons,
+		primaryCaption,
+		alignCells,
+		thumbnails,
+		responsiveHeight,
+		lightbox,
+		navForClass,
+	} = attributes;
+
+	const hasImages = !! images.length;
+
+	const carouselGalleryPlaceholder = (
+		<>
+			{ noticeUI }
+			<GalleryPlaceholder
+				{ ...props }
+				label={ __( 'Carousel', 'coblocks' ) }
+				icon={ <Icon icon={ icon } /> }
+				gutter={ gutter }
+			/>
+		</> );
+
+	if ( ! hasImages ) {
+		return carouselGalleryPlaceholder;
 	}
 
-	onFocusCaption() {
-		if ( ! this.state.captionFocused ) {
-			this.setState( {
-				captionFocused: true,
-			} );
+	const innerClasses = classnames(
+		'is-cropped',
+		...GalleryClasses( attributes ), {
+			[ `align${ align }` ]: align,
+			'has-horizontal-gutter': gutter > 0,
+			'has-no-dots': ! pageDots,
+			'has-no-arrows': ! prevNextButtons,
+			'is-selected': isSelected,
+			'has-no-thumbnails': ! thumbnails,
+			'has-lightbox': lightbox,
 		}
-	}
+	);
 
-	onItemClick() {
-		if ( ! this.props.isSelected ) {
-			this.props.onSelect();
+	const flickityClasses = classnames(
+		'has-carousel',
+		`has-carousel-${ gridSize }`, {
+			'has-aligned-cells': alignCells,
+			[ `has-margin-bottom-${ gutter }` ]: thumbnails && gutter > 0,
+			[ `has-margin-bottom-mobile-${ gutterMobile }` ]: thumbnails && gutterMobile > 0,
+			[ navForClass ]: thumbnails,
 		}
+	);
 
-		if ( this.state.captionFocused ) {
-			this.setState( {
-				captionFocused: false,
-			} );
+	const navClasses = classnames(
+		'carousel-nav', {
+			[ `has-margin-top-${ gutter }` ]: gutter > 0,
+			[ `has-margin-top-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+			[ `has-negative-margin-left-${ gutter }` ]: gutter > 0,
+			[ `has-negative-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+			[ `has-negative-margin-right-${ gutter }` ]: gutter > 0,
+			[ `has-negative-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 		}
-	}
+	);
 
-	render() {
-		const {
-			attributes,
-			className,
-			isSelected,
-			noticeUI,
-			setAttributes,
-		} = this.props;
+	const flickityOptions = {
+		draggable: false,
+		pageDots: true,
+		prevNextButtons: true,
+		wrapAround: true,
+		autoPlay: false,
+		cellAlign: alignCells ? 'left' : 'center',
+		arrowShape: {
+			x0: 10,
+			x1: 60, y1: 50,
+			x2: 65, y2: 45,
+			x3: 20,
+		},
+		responsiveHeight,
+		thumbnails,
+	};
 
-		const {
-			align,
-			gridSize,
-			gutter,
-			gutterMobile,
-			height,
-			images,
-			pageDots,
-			prevNextButtons,
-			primaryCaption,
-			alignCells,
-			thumbnails,
-			responsiveHeight,
-			lightbox,
-			navForClass,
-		} = attributes;
+	const navOptions = {
+		asNavFor: `.${ navForClass }`,
+		draggable: false,
+		pageDots: true,
+		prevNextButtons: false,
+		wrapAround: true,
+		autoPlay: false,
+		thumbnails: false,
+		cellAlign: 'left',
+	};
 
-		const hasImages = !! images.length;
+	const navStyles = {
+		marginTop: gutter > 0 && ! responsiveHeight ? ( gutter / 2 ) + 'px' : undefined,
+	};
 
-		const carouselGalleryPlaceholder = (
-			<Fragment>
-				{ ! hasImages ? noticeUI : null }
-				<GalleryPlaceholder
-					{ ...this.props }
-					label={ __( 'Carousel', 'coblocks' ) }
-					icon={ <Icon icon={ icon } /> }
-					gutter={ gutter }
-				/>
-			</Fragment> );
-
-		if ( ! hasImages ) {
-			return carouselGalleryPlaceholder;
+	const navFigureClasses = classnames(
+		'coblocks--figure', {
+			[ `has-margin-left-${ gutter }` ]: gutter > 0,
+			[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+			[ `has-margin-right-${ gutter }` ]: gutter > 0,
+			[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 		}
+	);
 
-		const innerClasses = classnames(
-			'is-cropped',
-			...GalleryClasses( attributes ), {
-				[ `align${ align }` ]: align,
-				'has-horizontal-gutter': gutter > 0,
-				'has-no-dots': ! pageDots,
-				'has-no-arrows': ! prevNextButtons,
-				'is-selected': isSelected,
-				'has-no-thumbnails': ! thumbnails,
-				'has-lightbox': lightbox,
-			}
-		);
-
-		const flickityClasses = classnames(
-			'has-carousel',
-			`has-carousel-${ gridSize }`, {
-				'has-aligned-cells': alignCells,
-				[ `has-margin-bottom-${ gutter }` ]: thumbnails && gutter > 0,
-				[ `has-margin-bottom-mobile-${ gutterMobile }` ]: thumbnails && gutterMobile > 0,
-				[ navForClass ]: thumbnails,
-			}
-		);
-
-		const navClasses = classnames(
-			'carousel-nav', {
-				[ `has-margin-top-${ gutter }` ]: gutter > 0,
-				[ `has-margin-top-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-				[ `has-negative-margin-left-${ gutter }` ]: gutter > 0,
-				[ `has-negative-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-				[ `has-negative-margin-right-${ gutter }` ]: gutter > 0,
-				[ `has-negative-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-			}
-		);
-
-		const flickityOptions = {
-			draggable: false,
-			pageDots: true,
-			prevNextButtons: true,
-			wrapAround: true,
-			autoPlay: false,
-			cellAlign: alignCells ? 'left' : 'center',
-			arrowShape: {
-				x0: 10,
-				x1: 60, y1: 50,
-				x2: 65, y2: 45,
-				x3: 20,
-			},
-			responsiveHeight,
-			thumbnails,
-		};
-
-		const navOptions = {
-			asNavFor: `.${ navForClass }`,
-			draggable: false,
-			pageDots: true,
-			prevNextButtons: false,
-			wrapAround: true,
-			autoPlay: false,
-			thumbnails: false,
-			cellAlign: 'left',
-		};
-
-		const navStyles = {
-			marginTop: gutter > 0 && ! responsiveHeight ? ( gutter / 2 ) + 'px' : undefined,
-		};
-
-		const navFigureClasses = classnames(
-			'coblocks--figure', {
-				[ `has-margin-left-${ gutter }` ]: gutter > 0,
-				[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-				[ `has-margin-right-${ gutter }` ]: gutter > 0,
-				[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-			}
-		);
-
-		return (
-			<Fragment>
-				{ isSelected &&
-					<Controls
-						{ ...this.props }
-					/>
-				}
-				{ isSelected &&
-					<Inspector
-						{ ...this.props }
-					/>
-				}
-				{ noticeUI }
-				<ResizableBox
-					size={ {
-						height,
-						width: '100%',
-					} }
-					className={ classnames( {
-						'is-selected': isSelected,
-						'has-responsive-height': responsiveHeight,
-					} ) }
-					minHeight="0"
-					enable={ {
-						bottom: true,
-						bottomLeft: false,
-						bottomRight: false,
-						left: false,
-						right: false,
-						top: false,
-						topLeft: false,
-						topRight: false,
-					} }
-					onResizeStop={ ( _event, _direction, _elt, delta ) => {
-						setAttributes( {
-							height: parseInt( height + delta.height, 10 ),
-						} );
-					} }
-					showHandle={ isSelected }
-				>
-					<div className={ className }>
-						<div className={ innerClasses }>
-							<Flickity
-								className={ flickityClasses }
-								disableImagesLoaded={ true }
-								flickityRef={ ( c ) => this.flkty = c }
-								options={ flickityOptions }
-								reloadOnUpdate={ true }
-								updateOnEachImageLoad={ true }
-							>
-								{ images.map( ( img, index ) => {
-									const ariaLabel = sprintf(
-										/* translators: %1$d is the order number of the image, %2$d is the total number of images */
-										__( 'image %1$d of %2$d in gallery', 'coblocks' ),
-										( index + 1 ),
-										images.length
-									);
-
-									return (
-										<div className="coblocks-gallery--item" role="button" tabIndex="0" key={ img.id || img.url } onKeyDown={ this.onItemClick } onClick={ this.onItemClick }>
-											<GalleryImage
-												url={ img.url }
-												alt={ img.alt }
-												id={ img.id }
-												gutter={ gutter }
-												gutterMobile={ gutterMobile }
-												marginRight={ true }
-												marginLeft={ true }
-												isSelected={ isSelected && this.state.selectedImage === index }
-												onRemove={ this.onRemoveImage( index ) }
-												onSelect={ this.onSelectImage( index ) }
-												setAttributes={ ( attrs ) => this.setImageAttributes( index, attrs ) }
-												caption={ img.caption }
-												aria-label={ ariaLabel }
-												supportsCaption={ false }
-												supportsMoving={ false }
-												imageIndex={ index }
-												replaceImage={ this.replaceImage }
-											/>
-										</div>
-									);
-								} ) }
-							</Flickity>
-						</div>
-					</div>
-				</ResizableBox>
-				{ thumbnails &&
-					<div className={ className }>
-						<div
-							className={ innerClasses }
-							style={ navStyles }
+	return (
+		<>
+			{ isSelected && (
+				<>
+					<Controls { ...props } />
+					<Inspector { ...props } />
+				</>
+			) }
+			{ noticeUI }
+			<ResizableBox
+				size={ {
+					height,
+					width: '100%',
+				} }
+				className={ classnames( {
+					'is-selected': isSelected,
+					'has-responsive-height': responsiveHeight,
+				} ) }
+				minHeight="0"
+				enable={ {
+					bottom: true,
+					bottomLeft: false,
+					bottomRight: false,
+					left: false,
+					right: false,
+					top: false,
+					topLeft: false,
+					topRight: false,
+				} }
+				onResizeStop={ ( _event, _direction, _elt, delta ) => {
+					setAttributes( {
+						height: parseInt( height + delta.height, 10 ),
+					} );
+				} }
+				showHandle={ isSelected }
+			>
+				<div className={ className }>
+					<div className={ innerClasses }>
+						<Flickity
+							className={ flickityClasses }
+							disableImagesLoaded={ true }
+							options={ flickityOptions }
+							reloadOnUpdate={ true }
+							updateOnEachImageLoad={ true }
 						>
-							<Flickity
-								className={ navClasses }
-								options={ navOptions }
-								disableImagesLoaded={ true }
-								reloadOnUpdate={ true }
-								flickityRef={ ( c ) => this.flkty = c }
-								updateOnEachImageLoad={ true }
-							>
-								{ images.map( ( image ) => {
-									return (
-										<div className="coblocks--item-thumbnail" key={ image.id || image.url }>
-											<figure className={ navFigureClasses }>
-												<img src={ image.url } alt={ image.alt } data-link={ image.link } data-id={ image.id } className={ image.id ? `wp-image-${ image.id }` : null } />
-											</figure>
-										</div>
-									);
-								} ) }
-							</Flickity>
-						</div>
+							{ images.map( ( img, index ) => {
+								const ariaLabel = sprintf(
+									/* translators: %1$d is the order number of the image, %2$d is the total number of images */
+									__( 'image %1$d of %2$d in gallery', 'coblocks' ),
+									( index + 1 ),
+									images.length
+								);
+
+								return (
+									<div className="coblocks-gallery--item" role="button" tabIndex="0" key={ img.id || img.url } onKeyDown={ onItemClick } onClick={ onItemClick }>
+										<GalleryImage
+											url={ img.url }
+											alt={ img.alt }
+											id={ img.id }
+											gutter={ gutter }
+											gutterMobile={ gutterMobile }
+											marginRight={ true }
+											marginLeft={ true }
+											isSelected={ isSelected && selectedImage === index }
+											onRemove={ () => onRemoveImage( index ) }
+											onSelect={ () => onSelectImage( index ) }
+											setAttributes={ ( attrs ) => setImageAttributes( index, attrs ) }
+											caption={ img.caption }
+											aria-label={ ariaLabel }
+											supportsCaption={ false }
+											supportsMoving={ false }
+											imageIndex={ index }
+											replaceImage={ replaceImage }
+										/>
+									</div>
+								);
+							} ) }
+						</Flickity>
 					</div>
-				}
-				{ carouselGalleryPlaceholder }
-				{ ( ! RichText.isEmpty( primaryCaption ) || isSelected ) && (
-					<RichText
-						tagName="figcaption"
-						placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
-						value={ primaryCaption }
-						className="coblocks-gallery--caption coblocks-gallery--primary-caption"
-						unstableOnFocus={ this.onFocusCaption }
-						onChange={ ( value ) => setAttributes( { primaryCaption: value } ) }
-						isSelected={ this.state.captionFocused }
-						keepPlaceholderOnFocus
-						inlineToolbar
-					/>
-				) }
-			</Fragment>
-		);
-	}
-}
+				</div>
+			</ResizableBox>
+			{ thumbnails &&
+			<div className={ className }>
+				<div
+					className={ innerClasses }
+					style={ navStyles }
+				>
+					<Flickity
+						className={ navClasses }
+						options={ navOptions }
+						disableImagesLoaded={ true }
+						reloadOnUpdate={ true }
+						updateOnEachImageLoad={ true }
+					>
+						{ images.map( ( image ) => {
+							return (
+								<div className="coblocks--item-thumbnail" key={ image.id || image.url }>
+									<figure className={ navFigureClasses }>
+										<img src={ image.url } alt={ image.alt } data-link={ image.link } data-id={ image.id } className={ image.id ? `wp-image-${ image.id }` : null } />
+									</figure>
+								</div>
+							);
+						} ) }
+					</Flickity>
+				</div>
+			</div>
+			}
+			{ carouselGalleryPlaceholder }
+			{ ( ! RichText.isEmpty( primaryCaption ) || isSelected ) && (
+				<RichText
+					tagName="figcaption"
+					placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
+					value={ primaryCaption }
+					className="coblocks-gallery--caption coblocks-gallery--primary-caption"
+					unstableOnFocus={ onFocusCaption }
+					onChange={ ( value ) => setAttributes( { primaryCaption: value } ) }
+					isSelected={ captionFocused }
+					keepPlaceholderOnFocus
+					inlineToolbar
+				/>
+			) }
+		</>
+	);
+};
 
 export default compose( [
 	withNotices,
