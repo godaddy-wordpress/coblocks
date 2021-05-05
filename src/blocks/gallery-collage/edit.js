@@ -38,7 +38,7 @@ class GalleryCollageEdit extends Component {
 		if ( this.props.className !== prevProps.className ) {
 			if ( this.props.className.includes( 'is-style-layered' ) ) {
 				this.setState( { lastGutterValue: this.props.attributes.gutter } );
-				this.props.setAttributes( { gutter: 0 } );
+				this.props.setAttributes( { gutter: '0' } );
 			} else {
 				this.props.setAttributes( {
 					shadow: 'none',
