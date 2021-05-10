@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-05-10T17:42:32+00:00\n"
+"POT-Creation-Date: 2021-05-10T19:42:36+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -275,7 +275,7 @@ msgstr ""
 msgid "An error has occurred, which probably means the feed is down. Try again later."
 msgstr ""
 
-#: src/blocks/post-carousel/index.php:184
+#: src/blocks/post-carousel/index.php:191
 #: src/blocks/posts/index.php:171
 msgctxt "placeholder when a post has no title"
 msgid "(no title)"
@@ -846,7 +846,7 @@ msgid "Enter URL here…"
 msgstr ""
 
 #: src/blocks/events/edit.js:186
-#: src/blocks/post-carousel/edit.js:226
+#: src/blocks/post-carousel/edit.js:228
 #: src/blocks/posts/edit.js:335
 msgid "Use URL"
 msgstr ""
@@ -6087,52 +6087,52 @@ msgstr ""
 msgid "Drop to replace media"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:124
+#: src/blocks/post-carousel/edit.js:125
 #: src/blocks/posts/edit.js:241
 msgid "Edit RSS URL"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/post-carousel/edit.js:179
+#: src/blocks/post-carousel/edit.js:181
 #: src/blocks/post-carousel/index.js:27
 msgid "Post Carousel"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:184
+#: src/blocks/post-carousel/edit.js:186
 #: src/blocks/posts/edit.js:288
 msgid "No posts found. Start publishing or add posts from an RSS feed."
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:187
+#: src/blocks/post-carousel/edit.js:189
 msgid "Retrieve an external feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:193
+#: src/blocks/post-carousel/edit.js:195
 #: src/blocks/posts/edit.js:297
 msgid "Use External Feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:215
+#: src/blocks/post-carousel/edit.js:217
 #: src/blocks/posts/edit.js:324
 msgid "RSS Feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:216
+#: src/blocks/post-carousel/edit.js:218
 #: src/blocks/posts/edit.js:325
 msgid "RSS URLs are generally located at the /feed/ directory of a site."
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:220
+#: src/blocks/post-carousel/edit.js:222
 #: src/blocks/posts/edit.js:329
 msgid "https://example.com/feed…"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:302
+#: src/blocks/post-carousel/edit.js:304
 #: src/blocks/posts/edit.js:432
 msgid "(no title)"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:320
+#: src/blocks/post-carousel/edit.js:322
 #: src/blocks/posts/edit.js:458
 msgid "Read more"
 msgstr ""
