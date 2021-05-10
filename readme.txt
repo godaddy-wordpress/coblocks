@@ -116,11 +116,10 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Enhancements
-* Enhance Services block extensibility and UX  [#1866](https://github.com/godaddy-wordpress/coblocks/pull/1866)
-* Enhance Collage Gallery consistency with default alignment [#1891](https://github.com/godaddy-wordpress/coblocks/pull/1891)
+* Enhance accessibility of Layout Selector with snackbar notifications [#1893](https://github.com/godaddy-wordpress/coblocks/pull/1893)
 
 ### Bug Fixes
-* Fix Gallery gutter controls missing values [#1883](https://github.com/godaddy-wordpress/coblocks/pull/1883)
-* Fix regression with getPhrasingContentSchema using pre 5.6 WordPress [#1882](https://github.com/godaddy-wordpress/coblocks/pull/1882)
-* Fix Stacked Gallery preview margins [#1884](https://github.com/godaddy-wordpress/coblocks/pull/1884)
-* Fix Services block selected state box shadow [#1886](https://github.com/godaddy-wordpress/coblocks/pull/1886)
+* Fix Post Carousel block Right To Left layout when using RTL locale [#1871](https://github.com/godaddy-wordpress/coblocks/pull/1871)
+* Fix Carousel gallery UI inconsistencies and navigation behavior [#1896](https://github.com/godaddy-wordpress/coblocks/pull/1896)
+* Fix Collage block Tile style and improper gutter values [#1897](https://github.com/godaddy-wordpress/coblocks/pull/1897)
+* Fix appearance of shadows on Collage block placeholders [#1895](https://github.com/godaddy-wordpress/coblocks/pull/1895)
