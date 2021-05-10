@@ -105,6 +105,12 @@ function coblocks_post_carousel( $posts, $attributes ) {
 
 	}
 
+	$right_to_left = false;
+
+	if ( is_rtl() ) {
+		$right_to_left = true;
+	}
+
 	$block_content = sprintf(
 		'<div class="%1$s"><div class="coblocks-slick pb-8" data-slick="%2$s">',
 		esc_attr( $class ),
@@ -124,6 +130,7 @@ function coblocks_post_carousel( $posts, $attributes ) {
 						'infinite'       => true,
 						'adaptiveHeight' => false,
 						'draggable'      => true,
+						'rtl'            => $right_to_left,
 						'responsive'     => array(
 							array(
 								'breakpoint' => 1024,
