@@ -14,6 +14,7 @@ import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import { GalleryClasses } from '../../components/block-gallery/shared';
+import { CarouselGalleryVariationPicker } from './variations';
 
 /**
  * WordPress dependencies
@@ -174,7 +175,7 @@ const GalleryCarouselEdit = ( props ) => {
 		</> );
 
 	if ( ! hasImages ) {
-		return carouselGalleryPlaceholder;
+		return <CarouselGalleryVariationPicker { ...props } />;
 	}
 
 	const innerClasses = classnames(
