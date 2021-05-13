@@ -10,6 +10,12 @@ import { __ } from '@wordpress/i18n';
 import { __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
 
+/**
+ * Pre-defined images used for the images attribute across all variations.
+ *
+ * @constant
+ * @type {Array}
+ */
 const images = [
 	{ url: 'https://s.w.org/images/core/5.3/Biologia_Centrali-Americana_-_Cantorchilus_semibadius_1902.jpg' },
 	{ url: 'https://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg' },
@@ -104,6 +110,12 @@ const variations = [
 	},
 ];
 
+/**
+ * The Experimental Block Variation Picker functional component for the Carousel Gallery block.
+ *
+ * @constant FunctionalComponent
+ * @param {Object} props Props passed from Carousel Gallery block.
+ */
 const CarouselGalleryVariationPicker = ( props ) => {
 	const blockType = useSelect( ( select ) => select( 'core/blocks' ).getBlockType( props.name ), [] );
 	const registeredVariations = useSelect( ( select ) => select( 'core/blocks' ).getBlockVariations( props.name ) ?? null, [] );

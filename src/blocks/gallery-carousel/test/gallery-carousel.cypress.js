@@ -15,6 +15,17 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 	};
 
 	/**
+	 * Conditionally run tests on Variation picker or Classic picker depending on availability.
+	 */
+	let testAgainstVariationsPicker;
+	before( function() {
+		helpers.addBlockToPost( 'coblocks/gallery-carousel', true );
+		cy.get( 'div[data-type="coblocks/gallery-carousel"]' ).then( () => {
+			testAgainstVariationsPicker = Cypress.$( '.block-editor-block-variation-picker' ).length > 0;
+		} );
+	} );
+
+	/**
 	 * Test that we can add a gallery-carousel block to the content, not add any images or
 	 * alter any settings, and are able to successfully save the block without errors.
 	 */
