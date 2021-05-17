@@ -124,7 +124,7 @@ const CarouselGalleryVariationPicker = ( props ) => {
 	return ( <__experimentalBlockVariationPicker
 		icon={ get( blockType, [ 'icon', 'src' ] ) }
 		label={ get( blockType, [ 'title' ] ) }
-		instructions={ __( 'Select a variation to start with.', 'coblocks' ) }
+		instructions={ __( 'Select a carousel variation to start with.', 'coblocks' ) }
 		variations={ registeredVariations }
 		allowSkip
 		onSelect={ ( nextVariation = defaultVariation ) => {
