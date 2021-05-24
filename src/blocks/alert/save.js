@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-import { RichText, getColorClassName } from '@wordpress/block-editor';
+import { RichText, getColorClassName, InnerBlocks } from '@wordpress/block-editor';
 
 const save = ( { attributes } ) => {
 	const {
@@ -54,6 +54,7 @@ const save = ( { attributes } ) => {
 				value={ value }
 			/>
 			}
+      <InnerBlocks.Content />
 		</div>
 	);
 };

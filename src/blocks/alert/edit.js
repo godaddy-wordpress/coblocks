@@ -11,12 +11,32 @@ import Inspector from './inspector';
 import applyWithColors from './colors';
 
 /**
+ * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
+ * The contents of the array should never change.
+ * The array should contain the name of each block that is allowed.
+ *
+ * @constant
+ * @type {string[]}
+ */
+ const ALLOWED_BLOCKS = [
+  "core/heading",
+  "core/paragraph",
+  "core/spacer",
+  "core/button",
+  "core/buttons",
+  "core/list",
+  "core/image",
+  "coblocks/social",
+  "coblocks/buttons",
+];
+
+/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { RichText } from '@wordpress/block-editor';
+import { InnerBlocks, RichText } from '@wordpress/block-editor';
 
 /**
  * Block edit function
@@ -99,14 +119,22 @@ class Edit extends Component {
 							keepPlaceholderOnFocus
 						/>
 					) }
-					<RichText
-						/* translators: placeholder text for input box */
-						placeholder={ __( 'Write text…', 'coblocks' ) }
-						value={ value }
-						className="wp-block-coblocks-alert__text"
-						onChange={ ( newValue ) => setAttributes( { value: newValue } ) }
-						keepPlaceholderOnFocus
-					/>
+          {!RichText.isEmpty(value) && (
+            <RichText
+              /* translators: placeholder text for input box */
+              placeholder={__("Write text…", "coblocks")}
+              value={value}
+              className="wp-block-coblocks-alert__text"
+              onChange={(newValue) => setAttributes({ value: newValue })}
+              keepPlaceholderOnFocus
+            />
+          )}
+          <InnerBlocks
+            template={TEMPLATE}
+            allowedBlocks={ALLOWED_BLOCKS}
+            templateLock={false}
+            templateInsertUpdatesSelection={false}
+          />
 				</div>
 			</Fragment>
 		);
