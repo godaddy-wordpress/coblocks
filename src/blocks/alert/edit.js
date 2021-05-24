@@ -30,6 +30,17 @@ import applyWithColors from './colors';
   "coblocks/buttons",
 ];
 
+const TEMPLATE = [
+  // [
+  //   "core/list",
+  //   {
+  //     /* translators: content placeholder */
+  //     placeholder: __("Add list", "coblocks"),
+  //     level: 2,
+  //   },
+  // ],
+];
+
 /**
  * WordPress dependencies
  */
