@@ -77,7 +77,7 @@ export default class GutterControl extends Component {
 					<RangeControl
 						step={ 0.1 }
 						initialValue={ 0 }
-						value={ parseFloat( gutterCustom ) }
+						value={ parseFloat( gutterCustom ) || 0 }
 						onChange={ ( newGutter ) => setAttributes( { gutterCustom: newGutter.toString() } ) }
 						min={ 0 }
 						max={ this.maxValue }
