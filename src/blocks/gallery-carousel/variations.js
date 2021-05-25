@@ -1,4 +1,9 @@
 /**
+ * Internal dependencies
+ */
+import icons from './icons';
+
+/**
  * External dependencies
  */
 import get from 'lodash/get';
@@ -45,8 +50,8 @@ const hasVariationSet = memoize( ( attributes ) => {
 const variations = [
 	{
 		name: 'full-thumbnails-xlrg',
-		title: __( 'Full with thumbnails', 'coblocks' ),
-		// icon: rowIcons.colOne,
+		title: __( 'Thumbnails', 'coblocks' ),
+		icon: icons.thumbnails,
 		attributes: {
 			thumbnails: true,
 			alignCells: true,
@@ -67,8 +72,8 @@ const variations = [
 	},
 	{
 		name: 'full-arrows-lrg',
-		title: __( 'Full with auto play', 'coblocks' ),
-		// 	icon: rowIcons.layout5050,
+		title: __( 'Full Autoplay', 'coblocks' ),
+		icon: icons.fullAutoplay,
 		attributes: {
 			thumbnails: false,
 			alignCells: false,
@@ -84,8 +89,8 @@ const variations = [
 	},
 	{
 		name: 'full-scroll-dots-lrg',
-		title: __( 'Full with free scroll', 'coblocks' ),
-		// icon: rowIcons.layout6633,
+		title: __( 'Full Scroll', 'coblocks' ),
+		icon: icons.fullScroll,
 		attributes: {
 			thumbnails: false,
 			alignCells: true,
@@ -104,8 +109,8 @@ const variations = [
 	},
 	{
 		name: 'wide-lightbox-lrg',
-		title: __( 'Wide with Lightbox', 'coblocks' ),
-		// icon: rowIcons.layout6633,
+		title: __( 'Lightbox', 'coblocks' ),
+		icon: icons.lightbox,
 		attributes: {
 			thumbnails: false,
 			alignCells: true,
