@@ -184,7 +184,6 @@ const GalleryCarouselEdit = ( props ) => {
 			{ noticeUI }
 			<GalleryPlaceholder
 				{ ...props }
-				variationLabel={ variatonSelected }
 				variationLabel={ sprintf(
 					/* translators: %s: Type of gallery variation */
 					__( '%s Carousel', 'coblocks' ),
