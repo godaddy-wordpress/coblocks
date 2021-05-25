@@ -116,10 +116,4 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Enhancements
-* Enhance accessibility of Layout Selector with snackbar notifications [#1893](https://github.com/godaddy-wordpress/coblocks/pull/1893)
-
-### Bug Fixes
-* Fix Post Carousel block Right To Left layout when using RTL locale [#1871](https://github.com/godaddy-wordpress/coblocks/pull/1871)
-* Fix Carousel gallery UI inconsistencies and navigation behavior [#1896](https://github.com/godaddy-wordpress/coblocks/pull/1896)
-* Fix Collage block Tile style and improper gutter values [#1897](https://github.com/godaddy-wordpress/coblocks/pull/1897)
-* Fix appearance of shadows on Collage block placeholders [#1895](https://github.com/godaddy-wordpress/coblocks/pull/1895)
+* Enhance readability of Offset Gallery block previews [#1903](https://github.com/godaddy-wordpress/coblocks/pull/1903)

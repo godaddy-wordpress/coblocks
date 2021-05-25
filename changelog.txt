@@ -1,4 +1,9 @@
 
+2.11.2 / 2021-05-25
+===================
+### Enhancements
+* Enhance readability of Offset Gallery block previews [#1903](https://github.com/godaddy-wordpress/coblocks/pull/1903)
+
 2.11.1 / 2021-05-10
 ===================
 ### Enhancements
