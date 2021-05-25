@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import icons from './icons';
+import { parseNavForClass } from './edit';
 
 /**
  * External dependencies
@@ -16,11 +17,9 @@ import { __ } from '@wordpress/i18n';
 import { __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
 
-import { parseNavForClass } from './edit';
-
 /**
  * When passed the Carousel Gallery block attributes will return
- * true if block has a variation set false otherwise.
+ * active variation title string or false if unset.
  *
  * @constant
  * @type {Function}
