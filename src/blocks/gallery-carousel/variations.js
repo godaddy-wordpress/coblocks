@@ -2,6 +2,7 @@
  * External dependencies
  */
 import get from 'lodash/get';
+import memoize from 'memize';
 
 /**
  * WordPress dependencies
@@ -10,17 +11,30 @@ import { __ } from '@wordpress/i18n';
 import { __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
 
+import { parseNavForClass } from './edit';
+
 /**
- * Pre-defined images used for the images attribute across all variations.
+ * When passed the Carousel Gallery block attributes will return
+ * true if block has a variation set false otherwise.
  *
  * @constant
- * @type {Array}
+ * @type {Function}
+ * @param {Object} attributes Attributes object passed from Gallery Carousel
+ * @return {string|boolean} Return the title of the matching variation or false otherwise.
  */
-const images = [
-	{ url: 'https://s.w.org/images/core/5.3/Biologia_Centrali-Americana_-_Cantorchilus_semibadius_1902.jpg' },
-	{ url: 'https://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg' },
-	{ url: 'https://s.w.org/images/core/5.3/MtBlanc1.jpg' },
-];
+const hasVariationSet = memoize( ( attributes ) => {
+	// Recurse array of variation attributes and compare with matching key of real attributes.
+	const matches = variations.map( ( variation ) => {
+		const matchingValues = Object.entries( variation.attributes )
+			.filter( ( [ key ] ) => attributes[ key ] === variation.attributes[ key ] );
+
+		return matchingValues.length === Object.entries( variation.attributes ).length
+			? variation.title : false;
+	} );
+
+	const filteredMatches = matches.filter( ( match ) => typeof match === 'string' );
+	return filteredMatches.length ? filteredMatches[ 0 ] : false;
+} );
 
 /**
  * Template option choices for predefined carousel layouts.
@@ -37,12 +51,16 @@ const variations = [
 			thumbnails: true,
 			alignCells: true,
 			align: 'full',
-			images,
 			autoPlay: false,
 			draggable: false,
 			freeScroll: false,
 			prevNextButtons: false,
 			gridSize: 'xlrg',
+			// The following attributes would default due to useEffect logic.
+			radius: 0,
+			gutter: 0,
+			gutterMobile: 0,
+			pageDots: false,
 		},
 		isDefault: true,
 		scope: [ 'block' ],
@@ -55,7 +73,6 @@ const variations = [
 			thumbnails: false,
 			alignCells: false,
 			align: 'full',
-			images,
 			autoPlay: true,
 			draggable: false,
 			freeScroll: false,
@@ -73,7 +90,6 @@ const variations = [
 			thumbnails: false,
 			alignCells: true,
 			align: 'full',
-			images,
 			autoPlay: true,
 			prevNextButtons: true,
 			gridSize: 'lrg',
@@ -94,7 +110,6 @@ const variations = [
 			thumbnails: false,
 			alignCells: true,
 			align: 'wide',
-			images,
 			autoPlay: true,
 			prevNextButtons: true,
 			gridSize: 'lrg',
@@ -117,9 +132,10 @@ const variations = [
  * @param {Object} props Props passed from Carousel Gallery block.
  */
 const CarouselGalleryVariationPicker = ( props ) => {
-	const blockType = useSelect( ( select ) => select( 'core/blocks' ).getBlockType( props.name ), [] );
-	const registeredVariations = useSelect( ( select ) => select( 'core/blocks' ).getBlockVariations( props.name ) ?? null, [] );
-	const defaultVariation = useSelect( ( select ) => select( 'core/blocks' ).getDefaultBlockVariation( props.name ) ?? null, [] );
+	const { name, setAttributes, clientId } = props;
+	const blockType = useSelect( ( select ) => select( 'core/blocks' ).getBlockType( name ), [] );
+	const registeredVariations = useSelect( ( select ) => select( 'core/blocks' ).getBlockVariations( name ) ?? null, [] );
+	const defaultVariation = useSelect( ( select ) => select( 'core/blocks' ).getDefaultBlockVariation( name ) ?? null, [] );
 
 	return ( <__experimentalBlockVariationPicker
 		icon={ get( blockType, [ 'icon', 'src' ] ) }
@@ -128,12 +144,18 @@ const CarouselGalleryVariationPicker = ( props ) => {
 		variations={ registeredVariations }
 		allowSkip
 		onSelect={ ( nextVariation = defaultVariation ) => {
-			if ( nextVariation.attributes ) {
-				props.setAttributes( { ...nextVariation.attributes } );
+			if ( nextVariation?.attributes ) {
+				setAttributes( {
+					...nextVariation.attributes,
+
+					// This class is assigned dynamically when block attributes have truthy thumbnails.
+					// nav class must be set here as well so that only a single undo snapshot is created.
+					navForClass: parseNavForClass( nextVariation.attributes?.thumbnails, clientId ),
+				} );
 			}
 		} }
 	/>
 	);
 };
 
-export { CarouselGalleryVariationPicker, variations };
+export { CarouselGalleryVariationPicker, variations, hasVariationSet };

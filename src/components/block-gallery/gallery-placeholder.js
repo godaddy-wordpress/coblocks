@@ -60,6 +60,12 @@ const GalleryPlaceholder = ( props ) => {
 		marginTop: gutter + 'px',
 	};
 
+	const title = ! hasImages && ( props.variationLabel || sprintf(
+		/* translators: %s: Type of gallery */
+		__( '%s Gallery', 'coblocks' ),
+		props.label
+	) );
+
 	return (
 		<div style={ styles }>
 			<MediaPlaceholder
@@ -69,11 +75,7 @@ const GalleryPlaceholder = ( props ) => {
 				disableMediaButtons={ hasImages && ! isSelected }
 				icon={ ! hasImages && <Icon icon={ props.icon } /> }
 				labels={ {
-					title: ! hasImages && sprintf(
-						/* translators: %s: Type of gallery */
-						__( '%s Gallery', 'coblocks' ),
-						props.label
-					),
+					title,
 					instructions: ! hasImages && __( 'Drag images, upload new ones or select files from your library.', 'coblocks' ),
 				} }
 				onSelect={ onSelectImages }
