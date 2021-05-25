@@ -179,7 +179,7 @@ const GalleryCarouselEdit = ( props ) => {
 		return ( <CarouselGalleryVariationPicker { ...props } /> );
 	}
 
-	const carouselGalleryPlaceholder = () => (
+	const carouselGalleryPlaceholder = (
 		<>
 			{ noticeUI }
 			<GalleryPlaceholder
@@ -197,7 +197,7 @@ const GalleryCarouselEdit = ( props ) => {
 	);
 
 	if ( ! hasImages ) {
-		return carouselGalleryPlaceholder();
+		return carouselGalleryPlaceholder;
 	}
 
 	const innerClasses = classnames(

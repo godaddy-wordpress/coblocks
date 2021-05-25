@@ -28,7 +28,6 @@ const GalleryPlaceholder = ( props ) => {
 
 	const onSelectImages = ( newImages ) => {
 		const { images } = props.attributes;
-
 		props.setAttributes( {
 			images: newImages.map( ( image ) => ( {
 				...helper.pickRelevantMediaFiles( image ),
