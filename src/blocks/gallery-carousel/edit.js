@@ -185,6 +185,11 @@ const GalleryCarouselEdit = ( props ) => {
 			<GalleryPlaceholder
 				{ ...props }
 				variationLabel={ variatonSelected }
+				variationLabel={ sprintf(
+					/* translators: %s: Type of gallery variation */
+					__( '%s Carousel', 'coblocks' ),
+					variatonSelected
+				) }
 				label={ __( 'Carousel', 'coblocks' ) }
 				icon={ <Icon icon={ icon } /> }
 				gutter={ gutter }
