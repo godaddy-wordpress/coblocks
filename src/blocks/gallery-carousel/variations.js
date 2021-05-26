@@ -29,16 +29,44 @@ import { useSelect } from '@wordpress/data';
 const hasVariationSet = memoize( ( attributes ) => {
 	// Recurse array of variation attributes and compare with matching key of real attributes.
 	const matches = variations.map( ( variation ) => {
-		const matchingValues = Object.entries( variation.attributes )
-			.filter( ( [ key ] ) => attributes[ key ] === variation.attributes[ key ] );
+		const matchingValues = Object.entries( variation.attributes ).filter( ( [ key ] ) => attributes[ key ] === variation.attributes[ key ] );
+		const matchingVariation = matchingValues.length === Object.entries( variation.attributes ).length;
 
-		return matchingValues.length === Object.entries( variation.attributes ).length
-			? variation.title : false;
+		return matchingVariation ? variation.title : false;
 	} );
 
 	const filteredMatches = matches.filter( ( match ) => typeof match === 'string' );
-	return filteredMatches.length ? filteredMatches[ 0 ] : false;
+	if ( filteredMatches.length ) {
+		return filteredMatches[ 0 ];
+	}
+
+	// No variation detected. Finally check for skip variation.
+	const matchesSkipVariation = Object.entries( defaultVariation.attributes ).filter( ( [ key ] ) => attributes[ key ] === defaultVariation.attributes[ key ] );
+	const isMatching = matchesSkipVariation.length === Object.entries( defaultVariation.attributes ).length;
+	if ( isMatching ) {
+		defaultVariation.isDefaultTemplateActive = true;
+		return isMatching ? 'skip' : false;
+	}
+
+	return false;
 } );
+
+/**
+ * Default template variation which represents the un-configured Carousel experience.
+ *
+ * @constant
+ * @type {Object}
+ */
+const defaultVariation = {
+	attributes: {
+		gridSize: 'xlrg',
+		// The following attributes would default due to useEffect logic.
+		radius: 0,
+		gutter: 0,
+		gutterMobile: 0,
+	},
+	isDefaultTemplateActive: false,
+};
 
 /**
  * Template option choices for predefined carousel layouts.
@@ -66,7 +94,6 @@ const variations = [
 			gutterMobile: 0,
 			pageDots: false,
 		},
-		isDefault: true,
 		scope: [ 'block' ],
 	},
 	{
@@ -139,7 +166,6 @@ const CarouselGalleryVariationPicker = ( props ) => {
 	const { name, setAttributes, clientId } = props;
 	const blockType = useSelect( ( select ) => select( 'core/blocks' ).getBlockType( name ), [] );
 	const registeredVariations = useSelect( ( select ) => select( 'core/blocks' ).getBlockVariations( name ) ?? null, [] );
-	const defaultVariation = useSelect( ( select ) => select( 'core/blocks' ).getDefaultBlockVariation( name ) ?? null, [] );
 
 	return ( <__experimentalBlockVariationPicker
 		icon={ get( blockType, [ 'icon', 'src' ] ) }
@@ -149,6 +175,7 @@ const CarouselGalleryVariationPicker = ( props ) => {
 		allowSkip
 		onSelect={ ( nextVariation = defaultVariation ) => {
 			if ( nextVariation?.attributes ) {
+				// console.log( nextVariation );
 				setAttributes( {
 					...nextVariation.attributes,
 
@@ -156,6 +183,10 @@ const CarouselGalleryVariationPicker = ( props ) => {
 					// nav class must be set here as well so that only a single undo snapshot is created.
 					navForClass: parseNavForClass( nextVariation.attributes?.thumbnails, clientId ),
 				} );
+			}
+
+			if ( nextVariation?.isDefaultTemplateActive === false ) {
+				nextVariation.isDefaultTemplateActive = true;
 			}
 		} }
 	/>

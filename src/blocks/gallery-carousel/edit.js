@@ -175,20 +175,23 @@ const GalleryCarouselEdit = ( props ) => {
 	const variatonSelected = hasVariationSet( attributes );
 	const hasImages = !! images.length;
 
-	if ( ! hasImages && ! variatonSelected ) {
+	if ( ! hasImages && ! variatonSelected && variatonSelected !== 'skip' ) {
 		return ( <CarouselGalleryVariationPicker { ...props } /> );
 	}
+
+	const variationLabel = ( !! variatonSelected && variatonSelected !== 'skip' )
+		? sprintf(
+		/* translators: %s: Type of gallery variation */
+			__( '%s Carousel', 'coblocks' ),
+			variatonSelected
+		) : false;
 
 	const carouselGalleryPlaceholder = (
 		<>
 			{ noticeUI }
 			<GalleryPlaceholder
 				{ ...props }
-				variationLabel={ sprintf(
-					/* translators: %s: Type of gallery variation */
-					__( '%s Carousel', 'coblocks' ),
-					variatonSelected
-				) }
+				variationLabel={ variationLabel }
 				label={ __( 'Carousel', 'coblocks' ) }
 				icon={ <Icon icon={ icon } /> }
 				gutter={ gutter }
