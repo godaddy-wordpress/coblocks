@@ -27,25 +27,31 @@ import { useSelect } from '@wordpress/data';
  * @return {string|boolean} Return the title of the matching variation or false otherwise.
  */
 const hasVariationSet = memoize( ( attributes ) => {
-	// Recurse array of variation attributes and compare with matching key of real attributes.
-	const matches = variations.map( ( variation ) => {
-		const matchingValues = Object.entries( variation.attributes ).filter( ( [ key ] ) => attributes[ key ] === variation.attributes[ key ] );
-		const matchingVariation = matchingValues.length === Object.entries( variation.attributes ).length;
+	// Short circuit if images have been set by user.
+	if ( Object.entries( attributes.images ).length > 0 ) {
+		return false;
+	}
 
-		return matchingVariation ? variation.title : false;
+	// Recurse array of variation attributes and compare with matching key of real attributes.
+	const variationMatches = variations.map( ( variation ) => {
+		const matchingValues = Object.entries( variation.attributes )
+			.filter( ( [ key ] ) => attributes[ key ] === variation.attributes[ key ] );
+		const isMatchingVariation = matchingValues.length === Object.entries( variation.attributes ).length;
+		return isMatchingVariation ? variation.title : false;
 	} );
 
-	const filteredMatches = matches.filter( ( match ) => typeof match === 'string' );
-	if ( filteredMatches.length ) {
-		return filteredMatches[ 0 ];
+	const hasMatchingVariation = variationMatches.filter( ( match ) => typeof match === 'string' );
+	if ( hasMatchingVariation.length ) {
+		return hasMatchingVariation[ 0 ];
 	}
 
 	// No variation detected. Finally check for skip variation.
-	const matchesSkipVariation = Object.entries( defaultVariation.attributes ).filter( ( [ key ] ) => attributes[ key ] === defaultVariation.attributes[ key ] );
-	const isMatching = matchesSkipVariation.length === Object.entries( defaultVariation.attributes ).length;
-	if ( isMatching ) {
-		defaultVariation.isDefaultTemplateActive = true;
-		return isMatching ? 'skip' : false;
+	const matchesSkipValues = Object.entries( defaultVariation.attributes )
+		.filter( ( [ key ] ) => attributes[ key ] === defaultVariation.attributes[ key ] );
+	const isMatchingSkip = matchesSkipValues.length === Object.entries( defaultVariation.attributes ).length;
+
+	if ( isMatchingSkip ) {
+		return 'skip';
 	}
 
 	return false;
@@ -65,7 +71,6 @@ const defaultVariation = {
 		gutter: 0,
 		gutterMobile: 0,
 	},
-	isDefaultTemplateActive: false,
 };
 
 /**
@@ -183,10 +188,6 @@ const CarouselGalleryVariationPicker = ( props ) => {
 					// nav class must be set here as well so that only a single undo snapshot is created.
 					navForClass: parseNavForClass( nextVariation.attributes?.thumbnails, clientId ),
 				} );
-			}
-
-			if ( nextVariation?.isDefaultTemplateActive === false ) {
-				nextVariation.isDefaultTemplateActive = true;
 			}
 		} }
 	/>
