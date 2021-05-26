@@ -180,7 +180,6 @@ const CarouselGalleryVariationPicker = ( props ) => {
 		allowSkip
 		onSelect={ ( nextVariation = defaultVariation ) => {
 			if ( nextVariation?.attributes ) {
-				// console.log( nextVariation );
 				setAttributes( {
 					...nextVariation.attributes,
 
