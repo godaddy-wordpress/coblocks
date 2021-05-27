@@ -269,6 +269,7 @@ const GalleryCollageEdit = ( props ) => {
 					`item-${ imageIndex + 1 }`,
 					{
 						[ `coblocks-animate ${ animation }` ]: animation,
+						'is-selected': imageIndex === parseInt( selectedImage ),
 					}
 				) }
 			>
