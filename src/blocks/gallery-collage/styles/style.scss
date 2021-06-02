@@ -169,6 +169,10 @@
 			width: calc(492 / 890 * 100%);
 			z-index: 1;
 
+			&.is-selected {
+				z-index: 4;
+			}
+
 			figure,
 			.block-editor-media-placeholder {
 				padding-top: calc(378 / 492 * 100%);
