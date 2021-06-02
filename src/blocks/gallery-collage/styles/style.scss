@@ -142,6 +142,10 @@
 			width: calc(198 / 890 * 100%);
 			z-index: 2;
 
+			&.is-selected {
+				z-index: 4;
+			}
+
 			figure,
 			.block-editor-media-placeholder {
 				padding-top: 100%;
@@ -164,6 +168,10 @@
 			margin-top: calc(189 / 890 * 100% * -1) !important;
 			width: calc(492 / 890 * 100%);
 			z-index: 1;
+
+			&.is-selected {
+				z-index: 4;
+			}
 
 			figure,
 			.block-editor-media-placeholder {
