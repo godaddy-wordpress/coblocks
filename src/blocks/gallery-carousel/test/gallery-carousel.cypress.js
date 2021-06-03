@@ -14,6 +14,10 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 		caption: 'Caption Here',
 	};
 
+	const handleVariation = () => {
+		cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(1) button' ).click( { force: true } );
+	};
+
 	/**
 	 * Test that we can add a gallery-carousel block to the content, not add any images or
 	 * alter any settings, and are able to successfully save the block without errors.
@@ -40,6 +44,8 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 		const { imageBase } = helpers.upload.spec;
 		helpers.addBlockToPost( 'coblocks/gallery-carousel', true );
 
+		handleVariation();
+
 		cy.get( '[data-type="coblocks/gallery-carousel"]' ).click();
 
 		helpers.upload.imageToBlock( 'coblocks/gallery-carousel' );
@@ -57,6 +63,8 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 	 */
 	it( 'Test carousel block saves with images from media library.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-carousel', true );
+
+		handleVariation();
 
 		cy.get( '[data-type="coblocks/gallery-carousel"]' )
 			.click()
@@ -91,6 +99,8 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 		const { caption } = galleryData;
 		helpers.addBlockToPost( 'coblocks/gallery-carousel', true );
 
+		handleVariation();
+
 		cy.get( '[data-type="coblocks/gallery-carousel"]' )
 			.click()
 			.contains( /media library/i )
@@ -123,6 +133,8 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 	 */
 	it( 'Test carousel captions allow rich text controls.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-carousel', true );
+
+		handleVariation();
 
 		cy.get( '[data-type="coblocks/gallery-carousel"]' )
 			.click()
@@ -160,6 +172,8 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 	 */
 	it( 'Test carousel replace image flow.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-carousel', true );
+
+		handleVariation();
 
 		helpers.upload.imageReplaceFlow( 'coblocks/gallery-carousel' );
 

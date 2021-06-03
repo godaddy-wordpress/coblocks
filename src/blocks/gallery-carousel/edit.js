@@ -14,6 +14,7 @@ import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import { GalleryClasses } from '../../components/block-gallery/shared';
+import { CarouselGalleryVariationPicker, hasVariationSet } from './variations';
 
 /**
  * WordPress dependencies
@@ -25,10 +26,22 @@ import { useState, useEffect } from '@wordpress/element';
 import { compose, usePrevious } from '@wordpress/compose';
 import { withNotices, ResizableBox } from '@wordpress/components';
 
+/**
+ * Function will dynamically process a string for use with the `navForClass` block attribute.
+ * This attribute should only be truthy when the corresponding `thumbnails` attribute is also set.
+ *
+ * @constant parseNavForClass
+ * @type {Function}
+ * @param {boolean} thumbnails This boolean value is equal to props.attributes.thumbnails.
+ * @param {string} clientId This string value is equal to props.clientId.
+ * @return {string} Return parsed class string if thumbnails is truthy or an empty string.
+ */
+export const parseNavForClass = ( thumbnails, clientId ) => thumbnails
+	? `has-nav-${ clientId.split( '-' )[ 0 ] }`
+	: '';
+
 const GalleryCarouselEdit = ( props ) => {
-	const parsedNavForClass = classnames( {
-		[ `has-nav-${ props.clientId.split( '-' )[ 0 ] }` ]: props.attributes.thumbnails,
-	} );
+	const parsedNavForClass = parseNavForClass( props.attributes.thumbnails, props.clientId );
 
 	const [ selectedImage, setSelectedImage ] = useState( null );
 	const [ captionFocused, setCaptionFocused ] = useState( false );
@@ -48,19 +61,18 @@ const GalleryCarouselEdit = ( props ) => {
 	}, [ prevSelected, props.isSelected, captionFocused ] );
 
 	useEffect( () => {
-		if ( props.attributes.gutter <= 0 ) {
-			props.setAttributes( {
-				radius: 0,
-			} );
+		if ( props.attributes.gutter <= 0 && props.attributes.radius !== 0 ) {
+			props.setAttributes( { radius: 0 } );
 		}
 	}, [ props.attributes.gutter ] );
 
 	useEffect( () => {
-		if ( props.attributes.gridSize === 'xlrg' && prevAlign === undefined ) {
-			props.setAttributes( {
-				gutter: 0,
-				gutterMobile: 0,
-			} );
+		if (
+			props.attributes.gridSize === 'xlrg' &&
+			prevAlign === undefined &&
+			( gutter !== 0 || gutterMobile !== 0 )
+		) {
+			props.setAttributes( { gutter: 0, gutterMobile: 0 } );
 		}
 	}, [ props.attributes.gridSize, prevAlign ] );
 
@@ -160,18 +172,32 @@ const GalleryCarouselEdit = ( props ) => {
 		navForClass,
 	} = attributes;
 
+	const variatonSelected = hasVariationSet( attributes );
 	const hasImages = !! images.length;
+
+	if ( ! hasImages && ! variatonSelected && variatonSelected !== 'skip' ) {
+		return ( <CarouselGalleryVariationPicker { ...props } /> );
+	}
+
+	const variationLabel = ( !! variatonSelected && variatonSelected !== 'skip' )
+		? sprintf(
+		/* translators: %s: Type of gallery variation */
+			__( '%s Carousel', 'coblocks' ),
+			variatonSelected
+		) : false;
 
 	const carouselGalleryPlaceholder = (
 		<>
 			{ noticeUI }
 			<GalleryPlaceholder
 				{ ...props }
+				variationLabel={ variationLabel }
 				label={ __( 'Carousel', 'coblocks' ) }
 				icon={ <Icon icon={ icon } /> }
 				gutter={ gutter }
 			/>
-		</> );
+		</>
+	);
 
 	if ( ! hasImages ) {
 		return carouselGalleryPlaceholder;

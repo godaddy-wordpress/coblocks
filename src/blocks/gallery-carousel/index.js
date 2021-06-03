@@ -11,6 +11,7 @@ import edit from './edit';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
+import { variations } from './variations';
 import { GalleryAttributes } from '../../components/block-gallery/shared';
 import { hasFormattingCategory } from '../../utils/block-helpers';
 
@@ -37,6 +38,7 @@ const settings = {
 	description: __( 'Display multiple images in a beautiful carousel gallery.', 'coblocks' ),
 	category: hasFormattingCategory ? 'coblocks-galleries' : 'media',
 	attributes,
+	variations,
 	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
