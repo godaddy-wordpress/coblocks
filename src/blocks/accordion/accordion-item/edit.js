@@ -18,6 +18,7 @@ import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
 import { InnerBlocks, RichText } from '@wordpress/block-editor';
+import { Icon } from '@wordpress/components';
 
 /**
  * Constants
@@ -26,6 +27,7 @@ const TEMPLATE = [
 	[ 'core/paragraph', { placeholder: __( 'Add content…', 'coblocks' ) } ],
 ];
 
+import '../styles/style.scss';
 /**
  * Block edit function
  */
@@ -90,6 +92,9 @@ class AccordionItemEdit extends Component {
 							}
 						} }
 					/>
+					<span className="accordion-icon-container">
+						<Icon icon={ isEditing === true || attributes.open ? 'arrow-down' : 'arrow-right' } />
+					</span>
 
 					{ ( isEditing === true || attributes.open ) &&
 						<div className="wp-block-coblocks-accordion-item__content" style={ { borderColor: backgroundColor.color } }>
