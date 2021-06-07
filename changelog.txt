@@ -1,4 +1,14 @@
 
+2.12.0 / 2021-06-07
+===================
+### Enhancements
+* Introduce Carousel Gallery block variations [#1905](https://github.com/godaddy-wordpress/coblocks/pull/1905)
+
+### Bug Fixes
+* Fix accessibility of Collage Gallery image controls  [#1909](https://github.com/godaddy-wordpress/coblocks/pull/1909)
+* Fix block toolbar overlap with header toolbar [#1910](https://github.com/godaddy-wordpress/coblocks/pull/1910)
+* Fix excess padding when editing Accordion block [#1908](https://github.com/godaddy-wordpress/coblocks/pull/1908)
+
 2.11.2 / 2021-05-25
 ===================
 ### Enhancements

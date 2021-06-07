@@ -116,4 +116,9 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Enhancements
-* Enhance readability of Offset Gallery block previews [#1903](https://github.com/godaddy-wordpress/coblocks/pull/1903)
+* Introduce Carousel Gallery block variations [#1905](https://github.com/godaddy-wordpress/coblocks/pull/1905)
+
+### Bug Fixes
+* Fix accessibility of Collage Gallery image controls  [#1909](https://github.com/godaddy-wordpress/coblocks/pull/1909)
+* Fix block toolbar overlap with header toolbar [#1910](https://github.com/godaddy-wordpress/coblocks/pull/1910)
+* Fix excess padding when editing Accordion block [#1908](https://github.com/godaddy-wordpress/coblocks/pull/1908)
