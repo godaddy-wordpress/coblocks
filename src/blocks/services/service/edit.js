@@ -166,7 +166,7 @@ const Edit = ( props ) => {
 		);
 	};
 
-	const onSetHref = ( ) => setAttributes( props );
+	const onSetHref = ( { href } ) => setAttributes( { href } );
 
 	const { className } = props;
 	const {
