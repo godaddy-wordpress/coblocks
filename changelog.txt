@@ -1,4 +1,10 @@
 
+2.12.1 / 2021-06-09
+===================
+### Bug Fixes
+* Fix accordion items background color override [#1920](https://github.com/godaddy-wordpress/coblocks/pull/1920)
+* Fix image link controls for Services block [#1917](https://github.com/godaddy-wordpress/coblocks/pull/1917)
+
 2.12.0 / 2021-06-07
 ===================
 ### Enhancements
