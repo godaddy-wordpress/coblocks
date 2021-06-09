@@ -12,7 +12,6 @@
 
 	&__title,
 	&__title.has-background {
-		background: hsla(240, 5%, 57%, 0.1);
 		border-radius: 4px;
 		padding: 10px 15px;
 		position: relative;
@@ -26,6 +25,10 @@
 			right: 0;
 			top: 0;
 			transition: background 100ms cubic-bezier(0.694, 0, 0.335, 1);
+		}
+
+		&:not(.has-background) {
+			background: hsla(240, 5%, 57%, 0.1);
 		}
 
 		&:hover::after {
