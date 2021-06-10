@@ -15,19 +15,10 @@ _:-webkit-full-screen,
 	display: block;
 }
 
-.accordion-icon-container {
-	& > .dashicons {
-		align-items: center;
-		display: flex;
-		flex-direction: column;
-		font-size: 40px;
-		justify-content: center;
-		left: 5px;
-		position: absolute;
-		top: 20px;
+.edit-post-visual-editor {
+	.wp-block-coblocks-accordion-item {
+		.wp-block-coblocks-accordion-item__title {
+			padding-left: 35px;
+		}
 	}
-}
-
-.wp-block-coblocks-accordion-item__title {
-	padding-left: 45px;
 }

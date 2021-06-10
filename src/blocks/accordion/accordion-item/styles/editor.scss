@@ -76,3 +76,14 @@
 [data-type="coblocks/accordion-item"]:not(.is-selected) > .block-editor-block-list__block-edit::before {
 	border: 1px dashed rgba(123, 134, 162, 0.3);
 }
+
+.dashicons {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	font-size: 40px;
+	justify-content: center;
+	left: 5px;
+	position: absolute;
+	top: 20px;
+}

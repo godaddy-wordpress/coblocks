@@ -27,7 +27,7 @@ const TEMPLATE = [
 	[ 'core/paragraph', { placeholder: __( 'Add content…', 'coblocks' ) } ],
 ];
 
-import '../styles/style.scss';
+// import '../styles/style.scss';
 /**
  * Block edit function
  */
