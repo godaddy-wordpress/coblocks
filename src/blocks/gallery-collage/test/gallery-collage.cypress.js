@@ -123,7 +123,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 
 		cy.get( '[data-type="coblocks/gallery-collage"]' ).find( 'figcaption' ).focus();
 
-		cy.get( '.block-editor-rich-text__inline-format-toolbar-group' );
+		cy.get( '.block-editor-format-toolbar, .block-editor-rich-text__inline-format-toolbar-group' );
 
 		helpers.savePage();
 
