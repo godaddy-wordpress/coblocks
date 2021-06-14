@@ -50,10 +50,10 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	it( 'Test collage block saves with images from media library.', function() {
 		createNewPost();
 		cy.get( '[data-type="coblocks/gallery-collage"]' )
-			.first()
-			.click()
+			.find( '.components-button' )
 			.contains( /media library/i )
-			.click();
+			.first()
+			.click( { force: true } );
 
 		cy.get( '.media-modal-content' ).contains( /media library/i ).click();
 
@@ -74,10 +74,10 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 		const { caption } = galleryData;
 		createNewPost();
 		cy.get( '[data-type="coblocks/gallery-collage"]' )
-			.first()
-			.click()
+			.find( '.components-button' )
 			.contains( /media library/i )
-			.click();
+			.first()
+			.click( { force: true } );
 
 		cy.get( '.media-modal-content' ).contains( /media library/i ).click();
 
@@ -103,10 +103,10 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	it( 'Test collage captions allow rich text controls.', function() {
 		createNewPost();
 		cy.get( '[data-type="coblocks/gallery-collage"]' )
-			.first()
-			.click()
+			.find( '.components-button' )
 			.contains( /media library/i )
-			.click();
+			.first()
+			.click( { force: true } );
 
 		cy.get( '.media-modal-content' ).contains( /media library/i ).click();
 
@@ -123,7 +123,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 
 		cy.get( '[data-type="coblocks/gallery-collage"]' ).find( 'figcaption' ).focus();
 
-		cy.get( '.block-editor-format-toolbar' );
+		cy.get( '.block-editor-rich-text__inline-format-toolbar-group' );
 
 		helpers.savePage();
 
