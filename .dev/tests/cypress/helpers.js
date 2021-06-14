@@ -263,8 +263,8 @@ export function setBlockStyle( style ) {
  * @param {boolean} isChildBlock  Optional selector for children blocks. Default will be top level blocks.
  */
 export function selectBlock( name, isChildBlock = false ) {
-	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation' ).click();
-	cy.get( '.block-editor-block-navigation__popover' ).find( '.block-editor-block-navigation-leaf' ).contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) ).click();
+	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle' ).click();
+	cy.get( '.block-editor-block-navigation-leaf' ).contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) ).click();
 }
 
 /**
@@ -386,7 +386,7 @@ export function setColorSetting( settingName, hexColor ) {
 /**
  * Open a certain settings panel in the right hand sidebar of the editor
  *
- * @param {string} panelText The panel label text to open. eg: Color Settings
+ * @param {RegExp} panelText The panel label text to open. eg: Color Settings
  */
 export function openSettingsPanel( panelText ) {
 	cy.get( '.components-panel__body' )

@@ -62,7 +62,7 @@ describe( 'Block: Food and Drinks', function() {
 			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'not.exist' );
 		} );
 
-		helpers.selectBlock( 'Food & Drink' );
+		cy.get( '.block-editor-block-navigation-leaf' ).contains( 'Food & Drink' ).click();
 
 		helpers.openSettingsPanel( /food & drinks settings/i );
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /images/i ).click();
@@ -81,7 +81,7 @@ describe( 'Block: Food and Drinks', function() {
 			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'exist' );
 		} );
 
-		helpers.selectBlock( 'Food & Drink' );
+		cy.get( '.block-editor-block-navigation-leaf' ).contains( 'Food & Drink' ).click();
 
 		helpers.openSettingsPanel( /food & drinks settings/i );
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /prices/i ).click();
@@ -121,7 +121,7 @@ describe( 'Block: Food and Drinks', function() {
 		helpers.addCustomBlockClass( 'my-custom-class', 'food-and-drinks' );
 
 		// Click "Add Menu Section" and verify two blocks exist on the page.
-		helpers.selectBlock( 'food & drink' );
+		cy.get( '.block-editor-block-navigation-leaf' ).contains( 'Food & Drink' ).click();
 		cy.get( '[data-type="coblocks/food-and-drinks"]' ).find( '.block-editor-button-block-appender' ).click();
 		cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'have.length', 2 );
 
