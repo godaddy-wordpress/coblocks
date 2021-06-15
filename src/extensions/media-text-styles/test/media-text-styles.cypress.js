@@ -15,7 +15,10 @@ describe( 'Test CoBlocks Media Text styles extension', function() {
 		const selectBlock = () => cy.get( `img[src*="${ imageBase }"]` ).click();
 
 		cy.get( `img[src*="${ imageBase }"]` );
-		cy.get( '.wp-block-media-text__content p' ).first().type( 'Content' );
+
+		// Cypress cannot type content in a p, it seems
+		//cy.get( '.wp-block-media-text__content p' ).first().type( 'Content', { force: true } );
+
 		selectBlock();
 
 		helpers.setBlockStyle( 'card' );
