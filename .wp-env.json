@@ -1,4 +1,4 @@
 {
   "plugins": ["."],
-  "core": "https://wordpress.org/wordpress-5.8-beta1.zip"
+  "core": "WordPress/WordPress#nightly"
 }
