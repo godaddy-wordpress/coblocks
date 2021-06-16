@@ -1,4 +1,4 @@
 {
   "plugins": ["."],
-  "core": "WordPress/WordPress#nightly"
+  "core": "https://wordpress.org/nightly-builds/wordpress-latest.zip"
 }
