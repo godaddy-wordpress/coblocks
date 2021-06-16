@@ -19,11 +19,6 @@ With additional blocks and true row and column building, CoBlocks gives you a tr
 
 CoBlocks is powerful but lightweight: it adds functionality to the WordPress editor without bloat. This is the plugin you've been waiting for, and it will make you rethink what WordPress is capable of.
 
-
-= See For Yourself =
-https://www.youtube.com/watch?v=SfWoVX_uJ0M
-
-
 ## Make Beautiful Web Pages With Gutenberg & CoBlocks
 CoBlocks is the last page builder you’ll ever need: you get a winning mix of additional WordPress blocks, and page builder functionality. With CoBlocks you have everything you need to make beautiful web pages with the new block editor:
 
