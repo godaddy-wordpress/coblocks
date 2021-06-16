@@ -69,9 +69,14 @@
 		"zh_TW": "繁體中文"
 	},
 	"dependencies": {
+		"@babel/plugin-transform-regenerator": "^7.14.5",
+		"@babel/plugin-transform-runtime": "^7.14.5",
+		"@babel/runtime": "^7.14.6",
+		"@babel/runtime-corejs2": "^7.14.6",
 		"@godaddy-wordpress/coblocks-icons": "1.3.0"
 	},
 	"devDependencies": {
+		"@babel/plugin-proposal-async-generator-functions": "^7.14.5",
 		"@babel/plugin-proposal-class-properties": "7.10.4",
 		"@godaddy-wordpress/stylelint-config": "^0.2.0",
 		"@testing-library/jest-dom": "^4.2.4",
