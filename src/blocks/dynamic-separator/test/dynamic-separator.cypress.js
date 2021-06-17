@@ -127,7 +127,8 @@ describe( 'Test CoBlocks Dynamic Seperator Block', function() {
 	/**
 	 * Test dynamic separator custom class
 	 */
-	it( 'Test dynamic separator custom class.', function() {
+	// pointer-events: none does not allow to click in addCustomBlockClass function
+	it.skip( 'Test dynamic separator custom class.', function() {
 		helpers.addBlockToPost( 'coblocks/dynamic-separator', true );
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'dynamic-separator' );
