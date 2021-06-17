@@ -6,6 +6,8 @@
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
+// TODO : there seems to be a real bug here, as the success message is not shown and the form is still there
+
 describe( 'Test CoBlocks Form Block', function() {
 	//setup From block color data.
 	const formData = {
