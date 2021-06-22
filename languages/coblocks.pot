@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-06-16T19:02:00+00:00\n"
+"POT-Creation-Date: 2021-06-22T21:03:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -392,13 +392,13 @@ msgid "Display as open"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/accordion/accordion-item/edit.js:26
+#: src/blocks/accordion/accordion-item/edit.js:27
 #: src/blocks/media-card/edit.js:75
 msgid "Add content…"
 msgstr ""
 
 #. translators: Accordion is the block name
-#: src/blocks/accordion/accordion-item/edit.js:71
+#: src/blocks/accordion/accordion-item/edit.js:72
 msgid "Write accordion item title…"
 msgstr ""
 
