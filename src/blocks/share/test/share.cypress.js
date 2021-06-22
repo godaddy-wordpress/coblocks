@@ -24,6 +24,7 @@ describe( 'Test CoBlocks Share Block', function() {
 
 	/**
 	 * Test the coblocks share block colors.
+	 * Go traditional style default color: rgb(200, 106, 25)
 	 */
 	it( 'Test the share block colors.', function() {
 		helpers.addBlockToPost( 'coblocks/social', true );
@@ -31,7 +32,7 @@ describe( 'Test CoBlocks Share Block', function() {
 		helpers.toggleSettingCheckbox( 'Social colors' );
 
 		cy.get( '.block-editor-writing-flow .wp-block-coblocks-social li:first-child .wp-block-coblocks-social__button' )
-			.should( 'have.css', 'background-color', 'rgb(40, 48, 61)' );
+			.should( 'have.css', 'background-color', 'rgb(200, 106, 25)' );
 
 		helpers.savePage();
 
@@ -40,7 +41,7 @@ describe( 'Test CoBlocks Share Block', function() {
 		helpers.viewPage();
 
 		cy.get( '.wp-block-coblocks-social li:first-child .wp-block-coblocks-social__button' )
-			.should( 'have.css', 'background-color', 'rgb(49, 55, 60)' );
+			.should( 'have.css', 'background-color', 'rgb(200, 106, 25)' );
 
 		helpers.editPage();
 	} );
@@ -89,7 +90,7 @@ describe( 'Test CoBlocks Share Block', function() {
 	 * Test the coblocks share block button size.
 	 */
 	// Weird CSS behaviour : real width does not match CSS width
-	it.skip( 'Test the share block button size.', function() {
+	it( 'Test the share block button size.', function() {
 		helpers.addBlockToPost( 'coblocks/social', true );
 
 		helpers.toggleSettingCheckbox( 'Social colors' );
@@ -212,7 +213,7 @@ describe( 'Test CoBlocks Share Block', function() {
 	 * Test the coblocks share block custom classes & top/bottom spacing.
 	 */
 	// `pointer-events: none` prevents user mouse interaction (herited from a parent)
-	it.skip( 'Test the share block custom classes and top/bottom spacing.', function() {
+	it( 'Test the share block custom classes and top/bottom spacing.', function() {
 		helpers.addBlockToPost( 'coblocks/social', true );
 
 		cy.get( '.components-panel__body-title' ).contains( 'Icon settings' ).then( ( $panelTop ) => {
