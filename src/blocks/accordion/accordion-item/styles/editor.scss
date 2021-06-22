@@ -1,4 +1,14 @@
 .wp-block-coblocks-accordion-item {
+	.dashicons {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		font-size: 30px;
+		justify-content: center;
+		left: 7px;
+		position: absolute;
+		top: 15px;
+	}
 
 	p {
 		margin-top: 0;
@@ -6,6 +16,18 @@
 
 	// Remove hover and focus, as the title is a text field.
 	&__title {
+		color: inherit;
+		padding-top: 6px;
+
+		&.has-background {
+			padding: 10px 15px;
+		}
+
+		&::before {
+			content: "";
+			display: inline-block;
+			width: 20px;
+		}
 
 		&::after {
 			display: none;
