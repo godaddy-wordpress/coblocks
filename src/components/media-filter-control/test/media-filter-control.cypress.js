@@ -22,8 +22,6 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 
 		helpers.upload.imageToBlock( 'core/image' );
 
-		cy.get( '[data-type="core/image"] [src^="http"]' );
-
 		cy.get( '.block-editor-block-toolbar__slot .components-coblocks-media-filter .components-dropdown-menu__toggle' )
 			.should( 'be.visible' )
 			.click();
@@ -97,8 +95,6 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 		helpers.addBlockToPost( 'core/gallery', true );
 
 		helpers.upload.imageToBlock( 'core/gallery' );
-
-		cy.get( '[data-type="core/gallery"] [src^="http"]' );
 
 		cy.get( '.block-editor-block-toolbar__slot .components-coblocks-media-filter' )
 			.should( 'exist' )

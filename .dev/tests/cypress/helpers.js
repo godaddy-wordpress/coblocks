@@ -317,6 +317,15 @@ export const upload = {
 					{ fileContent, fileName, mimeType: 'image/png' },
 					{ force: true }
 				);
+
+			// Close the styles panel if its open.
+			const stylePanel = Cypress.$( ".components-panel__body:contains('Styles')" );
+			if ( !! stylePanel.length ) {
+				cy.get( stylePanel[ 0 ] ).find( '.components-panel__body-title' ).click();
+			}
+
+			// Now validate upload is complete and is not a blob.
+			cy.get( `[data-type="${ blockName }"] [src^="http"]` );
 		} );
 	},
 	/**
@@ -394,7 +403,7 @@ export function openSettingsPanel( panelText ) {
 		.then( ( $panelTop ) => {
 			const $parentPanel = Cypress.$( $panelTop ).closest( 'div.components-panel__body' );
 			if ( ! $parentPanel.hasClass( 'is-opened' ) ) {
-				$panelTop.click();
+				$panelTop.trigger( 'click' );
 			}
 		} );
 }
