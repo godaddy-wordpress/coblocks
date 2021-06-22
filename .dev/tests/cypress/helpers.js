@@ -24,16 +24,16 @@ export function closeLayoutSelector() {
  * @param {string} name the name of the child block to add.
  */
 export function addFormChild( name ) {
-	cy.get( '[data-type="coblocks/form"] [data-type^="coblocks/field"]' ).first().click();
+	cy.get( '[data-type="coblocks/form"] [data-type^="coblocks/field"]' ).first().click( { force: true } );
 	cy.get( '.block-editor-block-settings-menu' ).click();
-	cy.get( '.components-popover__content button' ).contains( /insert after/i ).click();
-	cy.get( '[data-type="coblocks/form"] [data-type="core/paragraph"]' ).click();
+	cy.get( '.components-popover__content button' ).contains( /insert after/i ).click( { force: true } );
+	cy.get( '[data-type="coblocks/form"] [data-type="core/paragraph"]' ).click( { force: true } );
 
-	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click();
+	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click( { force: true } );
 	cy.get( '.block-editor-inserter__search' ).click().type( name );
 
-	cy.get( '.block-editor-inserter__content .editor-block-list-item-coblocks-field-' + name ).first().click();
-	cy.get( `[data-type="coblocks/field-${ name }"]` ).should( 'exist' ).click();
+	cy.get( '.block-editor-inserter__content .editor-block-list-item-coblocks-field-' + name ).first().click( { force: true } );
+	cy.get( `[data-type="coblocks/field-${ name }"]` ).should( 'exist' ).click( { force: true } );
 }
 
 /**
@@ -318,14 +318,8 @@ export const upload = {
 					{ force: true }
 				);
 
-			// Close the styles panel if its open.
-			const stylePanel = Cypress.$( ".components-panel__body:contains('Styles')" );
-			if ( !! stylePanel.length ) {
-				cy.get( stylePanel[ 0 ] ).find( '.components-panel__body-title' ).click();
-			}
-
 			// Now validate upload is complete and is not a blob.
-			cy.get( `[data-type="${ blockName }"] [src^="http"]` );
+			cy.get( `.edit-post-visual-editor [data-type="${ blockName }"] [src^="http"]` );
 		} );
 	},
 	/**
