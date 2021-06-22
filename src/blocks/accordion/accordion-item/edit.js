@@ -91,7 +91,7 @@ class AccordionItemEdit extends Component {
 							}
 						} }
 					/>
-					<Icon style={ { color: textColor.color } } icon={ isEditing === true || attributes.open ? 'arrow-down' : 'arrow-right' } />
+					<Icon className={ classnames( { 'has-text-color': textColor.color } ) } style={ { color: textColor.color } } icon={ isEditing === true || attributes.open ? 'arrow-down' : 'arrow-right' } />
 
 					{ ( isEditing === true || attributes.open ) &&
 						<div className="wp-block-coblocks-accordion-item__content" style={ { borderColor: backgroundColor.color } }>
