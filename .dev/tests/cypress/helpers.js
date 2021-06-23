@@ -150,11 +150,11 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	cy.get( '.editor-block-list-item' + targetClassName ).first().click( { force: true } );
 
 	// Make sure the block was added to our page
-	cy.get( `.edit-post-visual-editor [data-type="${ blockName }"], .edit-site-visual-editor [data-type="${ blockName }"]` ).should( 'exist' );
+	cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"]` ).should( 'exist' );
 
 	// With WP 5.8 the block inserter may stay open in some instances.
 	// Close the block inserter if still open
-	const inserterButton = Cypress.$( 'button.edit-post-header-toolbar__inserter-toggle.is-pressed' );
+	const inserterButton = Cypress.$( 'button[class*="__inserter-toggle"].is-pressed' );
 	if ( !! inserterButton.length ) {
 		cy.get( inserterButton ).click();
 	}
@@ -326,7 +326,7 @@ export const upload = {
 				);
 
 			// Now validate upload is complete and is not a blob.
-			cy.get( `.edit-post-visual-editor [data-type="${ blockName }"] [src^="http"]` );
+			cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"] [src^="http"]` );
 		} );
 	},
 	/**
@@ -344,7 +344,7 @@ export const upload = {
 
 		cy.get( '.coblocks-gallery-item__button-replace' ).should( 'not.exist' );
 
-		cy.get( `.edit-site-visual-editor [data-type="${ blockName }"] img, .edit-post-visual-editor [data-type="${ blockName }"] img` ).first().click( { force: true } );
+		cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"] img` ).first().click( { force: true } );
 
 		cy.get( '.coblocks-gallery-item__button-replace' ).click( { force: true } );
 
@@ -366,7 +366,7 @@ export const upload = {
 		/* eslint-enable */
 		cy.get( '.media-modal .media-button-select' ).click();
 
-		cy.get( '.edit-post-visual-editor, .edit-site-visual-editor' ).find( `[data-type="${ blockName }"] img` ).first().should( 'have.attr', 'src' ).should( 'include', newImageBase );
+		cy.get( '[class*="-visual-editor"]' ).find( `[data-type="${ blockName }"] img` ).first().should( 'have.attr', 'src' ).should( 'include', newImageBase );
 	},
 };
 
@@ -448,7 +448,7 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 	}
 
 	// Force click the target element so that we don't select any innerBlocks by mistake.
-	cy.get( '.edit-post-visual-editor .wp-block[data-type="coblocks/' + blockID + '"], .edit-site-visual-edit .wp-block[data-type="coblocks/' + blockID + '"]' ).last().click( { force: true } );
+	cy.get( '[class*="-visual-editor"] .wp-block[data-type="coblocks/' + blockID + '"]' ).last().click( { force: true } );
 
 	cy.get( '.block-editor-block-inspector__advanced' ).scrollIntoView().find( 'button' ).click();
 
