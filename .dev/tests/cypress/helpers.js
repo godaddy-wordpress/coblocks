@@ -152,6 +152,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	// Make sure the block was added to our page
 	cy.get( `.edit-post-visual-editor [data-type="${ blockName }"], .edit-site-visual-editor [data-type="${ blockName }"]` ).should( 'exist' );
 
+	// With WP 5.8 the block inserter may stay open in some instances.
 	// Close the block inserter if still open
 	const inserterButton = Cypress.$( 'button.edit-post-header-toolbar__inserter-toggle.is-pressed' );
 	if ( !! inserterButton.length ) {
@@ -343,7 +344,7 @@ export const upload = {
 
 		cy.get( '.coblocks-gallery-item__button-replace' ).should( 'not.exist' );
 
-		cy.get( `[data-type="${ blockName }"] img` ).first().click( { force: true } );
+		cy.get( `.edit-site-visual-editor [data-type="${ blockName }"] img, .edit-post-visual-editor [data-type="${ blockName }"] img` ).first().click( { force: true } );
 
 		cy.get( '.coblocks-gallery-item__button-replace' ).click( { force: true } );
 
@@ -365,7 +366,7 @@ export const upload = {
 		/* eslint-enable */
 		cy.get( '.media-modal .media-button-select' ).click();
 
-		cy.get( '.edit-post-visual-editor' ).find( `[data-type="${ blockName }"] img` ).first().should( 'have.attr', 'src' ).should( 'include', newImageBase );
+		cy.get( '.edit-post-visual-editor, .edit-site-visual-editor' ).find( `[data-type="${ blockName }"] img` ).first().should( 'have.attr', 'src' ).should( 'include', newImageBase );
 	},
 };
 
@@ -447,7 +448,7 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 	}
 
 	// Force click the target element so that we don't select any innerBlocks by mistake.
-	cy.get( '.wp-block[data-type="coblocks/' + blockID + '"]' ).last().click( { force: true } );
+	cy.get( '.edit-post-visual-editor .wp-block[data-type="coblocks/' + blockID + '"], .edit-site-visual-edit .wp-block[data-type="coblocks/' + blockID + '"]' ).last().click( { force: true } );
 
 	cy.get( '.block-editor-block-inspector__advanced' ).scrollIntoView().find( 'button' ).click();
 
