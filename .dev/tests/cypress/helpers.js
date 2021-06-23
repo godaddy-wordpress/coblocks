@@ -151,6 +151,12 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 
 	// Make sure the block was added to our page
 	cy.get( `.edit-post-visual-editor [data-type="${ blockName }"], .edit-site-visual-editor [data-type="${ blockName }"]` ).should( 'exist' );
+
+	// Close the block inserter if still open
+	const inserterButton = Cypress.$( 'button.edit-post-header-toolbar__inserter-toggle.is-pressed' );
+	if ( !! inserterButton.length ) {
+		cy.get( inserterButton ).click();
+	}
 }
 
 /**
