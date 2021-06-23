@@ -156,7 +156,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	// Close the block inserter if still open
 	const inserterButton = Cypress.$( 'button[class*="__inserter-toggle"].is-pressed' );
 	if ( !! inserterButton.length ) {
-		cy.get( inserterButton ).click();
+		cy.get( 'button[class*="__inserter-toggle"].is-pressed' ).click();
 	}
 }
 

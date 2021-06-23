@@ -40,7 +40,7 @@ describe( 'Test CoBlocks Hero Block', function() {
 		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB } = heroData;
 		helpers.addBlockToPost( 'coblocks/hero', true );
 
-		cy.get( '.wp-block-coblocks-hero' ).click( { force: true } );
+		helpers.selectBlock( 'hero' );
 
 		cy.get( '[data-type="core/heading"]' ).focus().type( 'Heading Text' );
 		cy.get( '[data-type="core/paragraph"]' ).first().focus().type( 'Paragraph Text' );
@@ -93,7 +93,7 @@ describe( 'Test CoBlocks Hero Block', function() {
 	it( 'should close media upload flow on media selection', function() {
 		helpers.addBlockToPost( 'coblocks/hero', true );
 
-		cy.get( '.wp-block-coblocks-hero__inner' ).click();
+		helpers.selectBlock( 'hero' );
 
 		cy.get( '.block-editor-block-toolbar .components-toolbar__control[aria-label="Add background image"]' ).click();
 
