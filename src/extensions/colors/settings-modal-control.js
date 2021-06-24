@@ -42,10 +42,10 @@ function CoBlocksEditorSettingsControls() {
 		let settingValue;
 		switch ( key ) {
 			case '__experimentalFeatures.color.palette':
-				settingValue = settings.__experimentalFeatures.color.palette;
+				settingValue = settings?.__experimentalFeatures?.color?.palette;
 				break;
 			case '__experimentalFeatures.color.gradients':
-				settingValue = settings.__experimentalFeatures.color.gradients;
+				settingValue = settings?.__experimentalFeatures?.color?.gradients;
 				break;
 			default:
 				settingValue = settings[ key ];

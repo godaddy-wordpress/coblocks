@@ -150,14 +150,13 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	cy.get( '.editor-block-list-item' + targetClassName ).first().click( { force: true } );
 
 	// Make sure the block was added to our page
-	cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"]` ).should( 'exist' );
-
-	// With WP 5.8 the block inserter may stay open in some instances.
-	// Close the block inserter if still open
-	const inserterButton = Cypress.$( 'button[class*="__inserter-toggle"].is-pressed' );
-	if ( !! inserterButton.length ) {
-		cy.get( 'button[class*="__inserter-toggle"].is-pressed' ).click();
-	}
+	cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"]` ).should( 'exist' ).then( () => {
+		// Then close the block inserter if still open.
+		const inserterButton = Cypress.$( 'button[class*="__inserter-toggle"].is-pressed' );
+		if ( !! inserterButton.length ) {
+			cy.get( 'button[class*="__inserter-toggle"].is-pressed' ).click();
+		}
+	} );
 }
 
 /**
