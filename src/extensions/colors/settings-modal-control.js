@@ -38,12 +38,26 @@ function CoBlocksEditorSettingsControls() {
 	 * @return {Array} The restored value or an empty array (if disabled).
 	 */
 	const setEditorSetting = ( key, isEnabled ) => {
+		// Identify if experimental keys are passed and fetch those values directly
+		let settingValue;
+		switch ( key ) {
+			case '__experimentalFeatures.color.palette':
+				settingValue = settings.__experimentalFeatures.color.palette;
+				break;
+			case '__experimentalFeatures.color.gradients':
+				settingValue = settings.__experimentalFeatures.color.gradients;
+				break;
+			default:
+				settingValue = settings[ key ];
+				break;
+		}
+
 		if ( ! isEnabled ) {
-			localStorage.setItem( key, JSON.stringify( settings[ key ] ) );
+			localStorage.setItem( key, JSON.stringify( settingValue ) );
 		}
 
 		return isEnabled
-			? ( JSON.parse( localStorage.getItem( key ) ) || settings[ key ] )
+			? ( JSON.parse( localStorage.getItem( key ) ) || settingValue )
 			: [];
 	};
 	const enableEditorSetting = ( key ) => setEditorSetting( key, true );
@@ -61,6 +75,19 @@ function CoBlocksEditorSettingsControls() {
 			disableCustomColors: ! customColorsEnabled,
 			disableCustomGradients: ! gradientPresetsEnabled,
 			gradients: gradientPresetsEnabled ? enableEditorSetting( 'gradients' ) : disableEditorSetting( 'gradients' ),
+
+			// Handle experimental features for 5.8
+			__experimentalFeatures: {
+				color: {
+					...settings.__experimentalFeatures.color,
+					palette: colorPanelEnabled
+						? enableEditorSetting( '__experimentalFeatures.color.palette' )
+						: disableEditorSetting( '__experimentalFeatures.color.palette' ),
+					gradients: gradientPresetsEnabled
+						? enableEditorSetting( '__experimentalFeatures.color.gradients' )
+						: disableEditorSetting( '__experimentalFeatures.color.gradients' ),
+				},
+			},
 		} );
 	}, [ colorPanelEnabled, customColorsEnabled, gradientPresetsEnabled ] );
 

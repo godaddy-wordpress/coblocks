@@ -74,14 +74,14 @@ class CoBlocks_Settings {
 		}
 
 		if ( ! get_option( 'coblocks_gradient_presets_enabled' ) ) {
-			add_theme_support( '__experimental-editor-gradient-presets', array() );
-			add_theme_support( '__experimental-disable-custom-gradients', true );
+			add_theme_support( 'editor-gradient-presets', array() );
+			add_theme_support( 'disable-custom-gradients' );
 		}
 
 		if ( ! get_option( 'coblocks_color_panel_controls_enabled' ) ) {
 			add_theme_support( 'editor-color-palette', array() );
-			add_theme_support( '__experimental-editor-gradient-presets', array() );
-			add_theme_support( '__experimental-disable-custom-gradients', true );
+			add_theme_support( 'editor-gradient-presets', array() );
+			add_theme_support( 'disable-custom-gradients' );
 			add_theme_support( 'disable-custom-colors' );
 		}
 	}
