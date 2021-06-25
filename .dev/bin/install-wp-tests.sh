@@ -151,6 +151,7 @@ install_db() {
 	# create database
 	mysqladmin create $DB_NAME --user="$DB_USER" --password="$DB_PASS"$EXTRA
 
+	# TODO: Is this a mistake? e2e-chrome !== e2e_chrome
 	if [ "$CIRCLE_JOB" == 'e2e-firefox' ] || [ "$CIRCLE_JOB" == 'e2e-chrome' ]; then
 		# create the e2e test database
 		mysqladmin create coblocks --user="$DB_USER" --password="$DB_PASS"$EXTRA

@@ -66,7 +66,7 @@ workflows:
             - unit_testing_php_73
             - unit_testing_php_74
             - js
-      - e2e_chrome_5.8:
+      - e2e_chrome_58:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -76,7 +76,7 @@ workflows:
             - unit_testing_php_73
             - unit_testing_php_74
             - js
-      - e2e_firefox_5.8:
+      - e2e_firefox_58:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -181,7 +181,7 @@ commands:
             ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
 
   # Install and configure WordPress for end-to-end test using nightly branch.
-  install_wordpress_with_coblocks_5.8:
+  install_wordpress_with_coblocks_58:
     description: ""
     steps:
       - run:
@@ -636,7 +636,7 @@ jobs:
       - run_e2e_tests:
           browser: firefox
 
-  e2e_chrome_5.8:
+  e2e_chrome_58:
     docker:
       - image: circleci/php:7.3.23-node-browsers
         auth:
@@ -660,14 +660,14 @@ jobs:
       - restore_update_cypress_cache
       - restore_composer_cache
       - wait_for_mysql
-      - install_wordpress_with_coblocks_5.8
+      - install_wordpress_with_coblocks_58
       - install_mailhog
       - start_mailhog
       - start_wpcli_server
       - run_e2e_tests:
           browser: chrome
 
-  e2e_firefox_5.8:
+  e2e_firefox_58:
     docker:
       - image: circleci/php:7.3.23-node-browsers
         auth:
@@ -691,7 +691,7 @@ jobs:
       - restore_update_cypress_cache
       - restore_composer_cache
       - wait_for_mysql
-      - install_wordpress_with_coblocks_5.8
+      - install_wordpress_with_coblocks_58
       - install_mailhog
       - start_mailhog
       - start_wpcli_server

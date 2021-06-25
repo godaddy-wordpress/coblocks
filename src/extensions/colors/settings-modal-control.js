@@ -76,7 +76,7 @@ function CoBlocksEditorSettingsControls() {
 			disableCustomGradients: ! gradientPresetsEnabled,
 			gradients: gradientPresetsEnabled ? enableEditorSetting( 'gradients' ) : disableEditorSetting( 'gradients' ),
 
-			// Handle experimental features for 5.8
+			// Handle experimental features for WP 5.8
 			__experimentalFeatures: {
 				color: {
 					...settings.__experimentalFeatures.color,
