@@ -66,6 +66,26 @@ workflows:
             - unit_testing_php_73
             - unit_testing_php_74
             - js
+      - e2e_chrome_5.8:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - css
+            - unit_testing_php_56
+            - unit_testing_php_73
+            - unit_testing_php_74
+            - js
+      - e2e_firefox_5.8:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - css
+            - unit_testing_php_56
+            - unit_testing_php_73
+            - unit_testing_php_74
+            - js
 
       - canary-release:
           filters:
@@ -134,6 +154,34 @@ commands:
 
   # Install and configure WordPress for end-to-end tests.
   install_wordpress_with_coblocks:
+    description: ""
+    steps:
+      - run:
+          name: Update hosts
+          command: echo 127.0.0.1 coblocks.test | sudo tee -a /etc/hosts
+      - run:
+          name: Install WordPress
+          command: |
+            sudo apt-get update && sudo apt-get install -y subversion default-mysql-client
+            sudo -E docker-php-ext-install mysqli
+            mkdir -p /tmp/wordpress
+            ./vendor/bin/wp core download --path=/tmp/wordpress
+            ./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass='' --path=/tmp/wordpress
+            ./vendor/bin/wp db create --path=/tmp/wordpress
+            ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=/tmp/wordpress
+            ./vendor/bin/wp post generate --count=5 --path=/tmp/wordpress
+      - run:
+          name: Install Go theme
+          command: |
+            ./vendor/bin/wp theme install go --activate --path=/tmp/wordpress
+      - run:
+          name: Activate CoBlocks
+          command: |
+            ln -s $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
+            ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
+
+  # Install and configure WordPress for end-to-end test using nightly branch.
+  install_wordpress_with_coblocks_5.8:
     description: ""
     steps:
       - run:
@@ -582,6 +630,68 @@ jobs:
       - restore_composer_cache
       - wait_for_mysql
       - install_wordpress_with_coblocks
+      - install_mailhog
+      - start_mailhog
+      - start_wpcli_server
+      - run_e2e_tests:
+          browser: firefox
+
+  e2e_chrome_5.8:
+    docker:
+      - image: circleci/php:7.3.23-node-browsers
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+      - image: circleci/mysql:5.7
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+    parallelism: 4
+    steps:
+      - checkout
+      - setup_e2e_env_var
+      - changed_files_with_extension:
+          ext: ".js"
+      - setup_spec_files_diff_tree
+      - disable_xdebug_php_extension
+      - attach_workspace:
+          at: ~/project
+      - restore_yarn_cache
+      - restore_update_cypress_cache
+      - restore_composer_cache
+      - wait_for_mysql
+      - install_wordpress_with_coblocks_5.8
+      - install_mailhog
+      - start_mailhog
+      - start_wpcli_server
+      - run_e2e_tests:
+          browser: chrome
+
+  e2e_firefox_5.8:
+    docker:
+      - image: circleci/php:7.3.23-node-browsers
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+      - image: circleci/mysql:5.7
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+    parallelism: 4
+    steps:
+      - checkout
+      - setup_e2e_env_var
+      - changed_files_with_extension:
+          ext: ".js"
+      - setup_spec_files_diff_tree
+      - disable_xdebug_php_extension
+      - attach_workspace:
+          at: ~/project
+      - restore_yarn_cache
+      - restore_update_cypress_cache
+      - restore_composer_cache
+      - wait_for_mysql
+      - install_wordpress_with_coblocks_5.8
       - install_mailhog
       - start_mailhog
       - start_wpcli_server
