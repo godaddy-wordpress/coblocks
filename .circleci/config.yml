@@ -680,7 +680,7 @@ jobs:
       - install_mailhog
       - start_mailhog
       - start_wpcli_server
-      - run_e2e_tests:
+      - run_e2e_tests_58:
           browser: chrome
 
   e2e_firefox_58:
@@ -711,7 +711,7 @@ jobs:
       - install_mailhog
       - start_mailhog
       - start_wpcli_server
-      - run_e2e_tests:
+      - run_e2e_tests_58:
           browser: firefox
 
   # --------------------------------------------------
