@@ -270,7 +270,13 @@ export function setBlockStyle( style ) {
  */
 export function selectBlock( name, isChildBlock = false ) {
 	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle' ).click();
-	cy.get( '.block-editor-block-navigation-leaf' ).contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) ).click();
+	cy.get( '.block-editor-block-navigation-leaf' ).contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) ).click().then( () => {
+		// Then close the block navigator if still open.
+		const inserterButton = Cypress.$( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' );
+		if ( !! inserterButton.length ) {
+			cy.get( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' ).click();
+		}
+	} );
 }
 
 /**

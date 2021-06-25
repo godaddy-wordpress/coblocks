@@ -111,7 +111,9 @@ describe( 'Test CoBlocks Hero Block', function() {
 
 		cy.get( '.media-toolbar-primary > .button' ).click();
 
-		cy.get( '.media-replace-flow button' ).click();
+		//'.media-replace-flow button' was deprecated in 5.8.
+		// Media replace button should reside as the 5th button within the toolbar.
+		cy.get( '.block-editor-block-toolbar button:nth(4)' ).click();
 
 		cy.get( '.components-popover__content' ).should( 'be.visible' );
 
