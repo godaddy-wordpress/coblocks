@@ -16,8 +16,7 @@ describe( 'Test CoBlocks Media Text styles extension', function() {
 
 		cy.get( `img[src*="${ imageBase }"]` );
 
-		// Cypress cannot type content in a p, it seems
-		//cy.get( '.wp-block-media-text__content p' ).first().type( 'Content', { force: true } );
+		cy.get( '.wp-block-media-text__content p' ).first().type( 'Content', { force: true } );
 
 		selectBlock();
 

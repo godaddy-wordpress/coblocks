@@ -34,7 +34,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	it( 'Test collage block saves with image upload.', function() {
 		const { imageBase } = helpers.upload.spec;
 		createNewPost();
-		cy.get( '[data-type="coblocks/gallery-collage"]' ).first().click();
+		helpers.selectBlock( 'collage' );
 
 		helpers.upload.imageToBlock( 'coblocks/gallery-collage' );
 

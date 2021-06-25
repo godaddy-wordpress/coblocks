@@ -266,6 +266,22 @@ commands:
             else
               ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >> --spec "$(cat /tmp/specstring | xargs | sed -e 's/ /,/g')"
             fi
+        
+  run_e2e_tests_58:
+    parameters:
+      browser:
+        type: string
+    steps:
+      - run:
+          name: Run end to end tests (Cypress.io) - << parameters.browser >>
+          command: |
+            touch cypress.env.json
+            echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
+            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ] || [ "$CIRCLE_BRANCH" == *"run-all-tests"* ]; then
+              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>
+            else
+              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>-58 --spec "$(cat /tmp/specstring | xargs | sed -e 's/ /,/g')"
+            fi
 
   start_wpcli_server:
     steps:

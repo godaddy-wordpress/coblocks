@@ -214,7 +214,6 @@ describe( 'Test CoBlocks Share Block', function() {
 	/**
 	 * Test the coblocks share block custom classes & top/bottom spacing.
 	 */
-	// `pointer-events: none` prevents user mouse interaction (herited from a parent)
 	it( 'Test the share block custom classes and top/bottom spacing.', function() {
 		helpers.addBlockToPost( 'coblocks/social', true );
 

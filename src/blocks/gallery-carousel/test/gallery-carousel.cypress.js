@@ -156,7 +156,7 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 			}
 		} );
 
-		cy.get( '.block-editor-rich-text__inline-format-toolbar-group' ).should( 'not.exist' );
+		cy.get( '.block-editor-format-toolbar, .block-editor-rich-text__inline-format-toolbar-group' ).should( 'not.exist' );
 
 		cy.get( '[data-type="coblocks/gallery-carousel"]' ).find( 'figcaption' ).focus();
 

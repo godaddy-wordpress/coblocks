@@ -166,7 +166,6 @@ describe( 'Test CoBlocks Icon Block', function() {
 		helpers.editPage();
 	} );
 
-	// pointer-events: none does not allow us to click
 	it( 'Test the icon block custom class.', function() {
 		helpers.addBlockToPost( 'coblocks/icon', true );
 

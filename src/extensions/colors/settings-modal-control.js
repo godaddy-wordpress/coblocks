@@ -79,7 +79,7 @@ function CoBlocksEditorSettingsControls() {
 			// Handle experimental features for WP 5.8
 			__experimentalFeatures: {
 				color: {
-					...settings.__experimentalFeatures.color,
+					...settings?.__experimentalFeatures?.color,
 					palette: colorPanelEnabled
 						? enableEditorSetting( '__experimentalFeatures.color.palette' )
 						: disableEditorSetting( '__experimentalFeatures.color.palette' ),

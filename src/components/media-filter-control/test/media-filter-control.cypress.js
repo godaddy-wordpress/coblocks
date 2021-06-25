@@ -39,7 +39,6 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 
 		// Check the classes are applied correctly to the block
 		for ( let i = 0; i < filters.length; i++ ) {
-			// Cannot get the element without making it disappear.... strange
 			cy.get( '.components-dropdown-menu__menu button:nth-child(' + childIteration + ')' )
 				.click();
 

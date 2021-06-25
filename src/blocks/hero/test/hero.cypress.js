@@ -110,5 +110,13 @@ describe( 'Test CoBlocks Hero Block', function() {
 		} );
 
 		cy.get( '.media-toolbar-primary > .button' ).click();
+
+		cy.get( '.media-replace-flow button' ).click();
+
+		cy.get( '.components-popover__content' ).should( 'be.visible' );
+
+		cy.get( '.block-editor-media-replace-flow__media-upload-menu .components-menu-item__button' ).contains( 'Open Media Library' ).click();
+
+		cy.get( '.components-popover__content' ).should( 'not.be.visible' );
 	} );
 } );
