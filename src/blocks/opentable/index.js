@@ -62,6 +62,9 @@ const settings = {
 			label: __( 'Button', 'coblocks' ),
 		},
 	],
+	supports: {
+		align: [ 'wide', 'full' ],
+	},
 	example: {
 		attributes: {
 			align: 'wide',
