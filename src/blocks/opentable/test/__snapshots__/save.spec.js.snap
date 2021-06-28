@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/logos should render with className attribute 1`] = `"<!-- wp:coblocks/logos {\\"className\\":\\"my-custom-class\\"} /-->"`;
+
+exports[`coblocks/logos should render with images attribute 1`] = `
+"<!-- wp:coblocks/logos -->
+<div class=\\"wp-block-coblocks-opentable\\"><div class=\\"wp-block-coblocks-opentable__row\\"><div style=\\"width:100%\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" data-width=\\"100%\\"/></div></div></div>
+<!-- /wp:coblocks/logos -->"
+`;
+
+exports[`coblocks/logos should render with images.width attribute 1`] = `
+"<!-- wp:coblocks/logos -->
+<div class=\\"wp-block-coblocks-opentable\\"><div class=\\"wp-block-coblocks-opentable__row\\"><div style=\\"width:60.6897%\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" data-width=\\"60.6897%\\"/></div></div></div>
+<!-- /wp:coblocks/logos -->"
+`;
+
+exports[`coblocks/logos should render with style "Black & White" 1`] = `
+"<!-- wp:coblocks/logos {\\"className\\":\\"is-style-black-and-white\\"} -->
+<div class=\\"wp-block-coblocks-opentable is-style-black-and-white\\"><div class=\\"wp-block-coblocks-opentable__row\\"><div style=\\"width:100%\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" data-width=\\"100%\\"/></div></div></div>
+<!-- /wp:coblocks/logos -->"
+`;
+
+exports[`coblocks/logos should render with style "Grayscale" 1`] = `
+"<!-- wp:coblocks/logos {\\"className\\":\\"is-style-grayscale\\"} -->
+<div class=\\"wp-block-coblocks-opentable is-style-grayscale\\"><div class=\\"wp-block-coblocks-opentable__row\\"><div style=\\"width:100%\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" data-width=\\"100%\\"/></div></div></div>
+<!-- /wp:coblocks/logos -->"
+`;

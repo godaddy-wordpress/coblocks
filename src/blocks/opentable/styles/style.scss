@@ -1,0 +1,35 @@
+.wp-block-coblocks-opentable {
+
+	&.has-filter-grayscale img,
+	&.is-style-black-and-white img {
+		filter: grayscale(1) brightness(0);
+	}
+
+	&.is-style-grayscale img {
+		filter: grayscale(1);
+	}
+
+	&__row {
+		align-items: center;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+
+		@media (max-width: #{ ($break-small) }) {
+			flex-wrap: wrap;
+		}
+
+		& + & {
+			margin-top: 2em;
+		}
+
+		> div {
+			padding: 0 1.5vw;
+		}
+
+		img {
+			vertical-align: middle;
+			width: 100%;
+		}
+	}
+}

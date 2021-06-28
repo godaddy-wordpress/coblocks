@@ -1,0 +1,12 @@
+{
+	"name": "coblocks/opentable",
+	"category": "widgets",
+	"attributes": {
+		"restaurantID": {
+			"type": "string"
+		},
+		"align": {
+			"type": "string"
+		}
+	}
+}
