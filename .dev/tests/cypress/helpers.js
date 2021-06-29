@@ -304,7 +304,7 @@ export function setInputValue( panelName, settingName, value, ignoreCase = true 
  * Upload helper object. Contains image fixture spec and uploader function.
  * `helpers.upload.spec` Object containing image spec.
  * `helpers.upload.imageToBlock` Function performs upload action on specified block.
- * `helpers.upload.replaceImageFlow` Function performs replace action on specified block.
+ * `helpers.upload.imageReplaceFlow` Function performs replace action on specified block.
  */
 export const upload = {
 	spec: {
@@ -321,14 +321,8 @@ export const upload = {
 	imageToBlock: ( blockName ) => {
 		const { fileName, pathToFixtures } = upload.spec;
 		cy.fixture( pathToFixtures + fileName ).then( ( fileContent ) => {
-			cy.get( `[data-type="${ blockName }"]` )
-				.find( 'input[type="file"]' )
-				.first()
-				.invoke( 'removeAttr', 'style' ) //makes element easier to interact with/accessible. Headless test fails without this.
-				.upload(
-					{ fileContent, fileName, mimeType: 'image/png' },
-					{ force: true }
-				);
+			cy.get( `[data-type="${ blockName }"] input[type="file"]` )
+				.attachFile( { fileContent, filePath: pathToFixtures + fileName, mimeType: 'image/png' }, { force: true } );
 
 			// Now validate upload is complete and is not a blob.
 			cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"] [src^="http"]` );
@@ -359,14 +353,11 @@ export const upload = {
 
 		// Replace the image.
 		const newImageBase = 'R150x150';
+		const newFilePath = `../.dev/tests/cypress/fixtures/images/${ newImageBase }.png`;
 		/* eslint-disable */
-		cy.fixture( `../.dev/tests/cypress/fixtures/images/${ newImageBase }.png` ).then( ( fileContent ) => {
-			cy.get( '[class^="moxie"]' ).find( '[type="file"]' ).first()
-			.invoke( 'removeAttr', 'style' ) //makes element easier to interact with/accessible.
-			.upload(
-				{ fileContent, fileName: `${ newImageBase }.png`, mimeType: 'image/png' },
-				{ force: true }
-			);
+		cy.fixture( newFilePath ).then( ( fileContent ) => {
+			cy.get( '[class^="moxie"] [type="file"]' )
+			.attachFile( { fileContent, filePath: newFilePath, mimeType: 'image/png' }, { force: true } );
 		} );
 		/* eslint-enable */
 		cy.get( '.media-modal .media-button-select' ).click();

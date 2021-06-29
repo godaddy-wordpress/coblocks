@@ -5,15 +5,6 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Author Block', function() {
 	/**
-	 * Setup author image data
-	 */
-	const authorImageData = {
-		fileName: '150x150.png',
-		imageBase: '150x150',
-		pathToFixtures: '../.dev/tests/cypress/fixtures/images/',
-	};
-
-	/**
 	 * Test that we can add a author block to the content, not add any text or
 	 * alter any settings, and are able to successfully save the block without errors.
 	 */
@@ -38,7 +29,7 @@ describe( 'Test CoBlocks Author Block', function() {
 	it( 'Test author block custom class.', function() {
 		helpers.addBlockToPost( 'coblocks/author', true );
 
-		cy.get( '.wp-block-coblocks-author' ).click( { force: true } );
+		helpers.selectBlock( 'author' );
 
 		cy.get( '.wp-block-coblocks-author__name' ).focus().type( 'Randall Lewis' );
 
@@ -61,33 +52,32 @@ describe( 'Test CoBlocks Author Block', function() {
 	 * Test that we can add a author block with author info content
 	 */
 	it( 'Test author block saves with author information.', function() {
-		const { fileName, imageBase, pathToFixtures } = authorImageData;
+		const { fileName, pathToFixtures, imageBase } = helpers.upload.spec;
+
 		helpers.addBlockToPost( 'coblocks/author', true );
 
-		cy.get( '.wp-block-coblocks-author' ).click( { force: true } );
+		helpers.selectBlock( 'author' );
 
-		// Test skipped for Firefox.
-		// Slip issue: https://github.com/godaddy-wordpress/coblocks/issues/1495
-		// Upload the author avatar
-		if ( Cypress.browser.name === 'chrome' ) {
-			// Disable reason: cy.fixture should not return a value.
-			// eslint-disable-next-line jest/valid-expect-in-promise
-			cy.fixture( pathToFixtures + fileName, 'base64' ).then( ( fileContent ) => {
-				cy.get( 'div[data-type="coblocks/author"]' )
-					.find( 'div.components-drop-zone' ).first()
-					.upload(
-						{ fileContent, fileName, mimeType: 'image/png' },
-						{ subjectType: 'drag-n-drop', force: true, events: [ 'dragstart', 'dragover', 'drop' ] },
-					);
-				cy.get( '.wp-block-coblocks-author__avatar img' ).should( 'exist' ); // Wait for upload to finish.
-			} );
-		}
+		// Bug: https://github.com/godaddy-wordpress/coblocks/issues/1495
+		// Upload the Author avatar
+		// Disable reason: cy.fixture should not return a value.
+		// eslint-disable-next-line jest/valid-expect-in-promise
+		cy.fixture( pathToFixtures + fileName ).then( ( fileContent ) => {
+			cy.get( 'div[data-type="coblocks/author"] .wp-block-coblocks-author__avatar' ).click();
+			cy.get( '[class^="moxie"] [type="file"]' ).attachFile( { fileContent, filePath: pathToFixtures + fileName, mimeType: 'image/png', subjectType: 'drag-n-drop' }, { force: true } );
 
-		cy.get( '.wp-block-coblocks-author__name' ).focus().type( 'Randall Lewis' );
+			cy.get( '.attachment.selected.save-ready' );
 
-		cy.get( '.wp-block-coblocks-author__biography' ).focus().type( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' );
+			cy.get( '.media-modal .media-button-select' ).click();
 
-		cy.get( '.wp-block-coblocks-author .wp-block-button__link' ).focus().type( 'Read My Bio' );
+			cy.get( '[class*="-visual-editor"]' ).find( `[data-type="coblocks/author"] img` ).first().should( 'have.attr', 'src' ).should( 'include', imageBase );
+		} );
+
+		cy.get( '.wp-block-coblocks-author__name' ).focus().type( 'Randall Lewis' ).blur();
+
+		cy.get( '.wp-block-coblocks-author__biography' ).focus().type( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' ).blur();
+
+		cy.get( '.wp-block-coblocks-author .wp-block-button__link' ).focus().type( 'Read My Bio' ).blur();
 
 		cy.get( '.wp-block-coblocks-author' ).then( ( author ) => {
 			if ( ! author.prop( 'outerHTML' ).includes( 'editor-url-input' ) ) { // wp 5.4
@@ -110,13 +100,9 @@ describe( 'Test CoBlocks Author Block', function() {
 		cy.get( '.wp-block-coblocks-author' )
 			.should( 'exist' );
 
-		// Test skipped for Firefox.
-		// Slip issue: https://github.com/godaddy-wordpress/coblocks/issues/1495
-		if ( Cypress.browser.name === 'chrome' ) {
-			cy.get( '.wp-block-coblocks-author__avatar-img' )
-				.should( 'have.attr', 'src' )
-				.and( 'contains', imageBase );
-		}
+		cy.get( '.wp-block-coblocks-author__avatar-img' )
+			.should( 'have.attr', 'src' )
+			.and( 'contains', imageBase );
 
 		cy.get( '.wp-block-coblocks-author__name' )
 			.contains( 'Randall Lewis' );

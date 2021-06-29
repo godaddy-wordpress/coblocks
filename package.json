@@ -88,7 +88,7 @@
 		"autoprefixer": "^9.7.5",
 		"css-loader": "^3.2.1",
 		"cypress": "^6.9.1",
-		"cypress-file-upload": "^3.5.3",
+		"cypress-file-upload": "^5.0.8",
 		"cypress-log-to-output": "1.1.2",
 		"email-validator": "^2.0.4",
 		"enzyme": "^3.11.0",
