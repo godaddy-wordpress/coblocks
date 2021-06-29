@@ -45,13 +45,13 @@ const Edit = ( props ) => {
 		setRidField( attributes.restaurantID );
 	}, [] );
 
-	const renderOpenTable = ( event ) => {
-		if ( event ) {
-			event.preventDefault();
-		}
+	// const renderOpenTable = ( event ) => {
+	// 	if ( event ) {
+	// 		event.preventDefault();
+	// 	}
 
-		// setAttributes( { restaurantID: restaurantID } );
-	};
+	// 	// setAttributes( { restaurantID: restaurantID } );
+	// };
 
 	// const hasRestaurantID = !! attributes.restaurantID.length;
 
@@ -74,30 +74,30 @@ const Edit = ( props ) => {
 						) }
 					>
 
-						<form onSubmit={ renderOpenTable }>
-							<TextControl
-								value={ ridField }
-								className="components-placeholder__input"
-								placeholder={ __(
-									'Restaurant ID',
-									'coblocks'
-								) }
-								onChange={ ( newRestaurantID ) => {
-									setRidField( newRestaurantID );
-								} }
-							/>
-							<Button
-								isPrimary={ !! ridField }
-								isSecondary={ ! ridField }
-								type="submit"
-								disabled={ ! ridField }
-								onClick={ () => {
-									props.setAttributes( { restaurantID: ridField } );
-								} }
-							>
-								{ __( 'Embed', 'coblocks' ) }
-							</Button>
-						</form>
+						{ /* <form onSubmit={ renderOpenTable }> */ }
+						<TextControl
+							value={ ridField || '' }
+							className="components-placeholder__input"
+							placeholder={ __(
+								'Restaurant ID',
+								'coblocks'
+							) }
+							onChange={ ( newRestaurantID ) => {
+								setRidField( newRestaurantID );
+							} }
+						/>
+						<Button
+							isPrimary={ !! ridField }
+							isSecondary={ ! ridField }
+							type="submit"
+							disabled={ ! ridField }
+							onClick={ () => {
+								props.setAttributes( { restaurantID: ridField } );
+							} }
+						>
+							{ __( 'Embed', 'coblocks' ) }
+						</Button>
+						{ /* </form> */ }
 						<a target="_blank" rel="noopener noreferrer" href="https://guestcenter.opentable.com/login">{ __( 'Get your Restaurant ID here.', 'coblocks' ) }</a>
 					</Placeholder>
 				)

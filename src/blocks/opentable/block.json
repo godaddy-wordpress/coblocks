@@ -3,7 +3,8 @@
 	"category": "layout",
 	"attributes": {
 		"restaurantID": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		},
 		"align": {
 			"type": "string",
