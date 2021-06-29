@@ -1,12 +1,13 @@
 {
 	"name": "coblocks/opentable",
-	"category": "widgets",
+	"category": "layout",
 	"attributes": {
 		"restaurantID": {
 			"type": "string"
 		},
 		"align": {
-			"type": "string"
+			"type": "string",
+			"default": "wide"
 		}
 	}
 }
