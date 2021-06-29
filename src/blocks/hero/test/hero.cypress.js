@@ -103,9 +103,9 @@ describe( 'Test CoBlocks Hero Block', function() {
 		// eslint-disable-next-line jest/valid-expect-in-promise
 		cy.fixture( pathToFixtures + fileName, 'base64' ).then( ( fileContent ) => {
 			cy.get( '[class^="moxie"] [type="file"]' ).attachFile( { fileContent, filePath: pathToFixtures + fileName, mimeType: 'image/png', subjectType: 'drag-n-drop' }, { force: true } );
-			cy.get( '.attachment.selected.save-ready' );
 		} );
 
+		cy.get( '.attachment.selected.save-ready' );
 		cy.get( '.media-toolbar-primary > .button' ).click();
 
 		//'.media-replace-flow button' was deprecated in 5.8.
