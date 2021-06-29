@@ -97,16 +97,13 @@ describe( 'Test CoBlocks Hero Block', function() {
 
 		cy.get( '.block-editor-block-toolbar .components-toolbar__control[aria-label="Add background image"]' ).click();
 
-		const fileName = helpers.upload.spec.fileName;
+		const { pathToFixtures, fileName } = helpers.upload.spec;
 
 		// Disable reason: cy.fixture should not return a value.
 		// eslint-disable-next-line jest/valid-expect-in-promise
-		cy.fixture( helpers.upload.spec.pathToFixtures + fileName, 'base64' ).then( ( fileContent ) => {
-			cy.get( '.media-frame input[type="file"]' )
-				.upload(
-					{ fileContent, fileName, mimeType: 'image/png' },
-					{ force: true },
-				);
+		cy.fixture( pathToFixtures + fileName, 'base64' ).then( ( fileContent ) => {
+			cy.get( '[class^="moxie"] [type="file"]' ).attachFile( { fileContent, filePath: pathToFixtures + fileName, mimeType: 'image/png', subjectType: 'drag-n-drop' }, { force: true } );
+			cy.get( '.attachment.selected.save-ready' );
 		} );
 
 		cy.get( '.media-toolbar-primary > .button' ).click();

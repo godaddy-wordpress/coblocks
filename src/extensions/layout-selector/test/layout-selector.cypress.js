@@ -74,7 +74,7 @@ describe( 'Extension: Layout Selector', () => {
 		cy.get( '.editor-post-title__block' ).find( 'textarea' ).should( 'be.empty' );
 
 		// The first block should be the default prompt.
-		cy.get( '.edit-post-visual-editor .block-editor-block-list__layout' ).find( '> .wp-block' ).should( 'have.length', 1 );
+		cy.get( '.edit-post-visual-editor .block-editor-block-list__layout > .wp-block' ).should( 'have.length', 1 );
 		cy.contains( RegExp( 'type / to choose a block', 'i' ) );
 	} );
 

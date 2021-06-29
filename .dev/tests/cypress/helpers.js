@@ -360,6 +360,8 @@ export const upload = {
 			.attachFile( { fileContent, filePath: newFilePath, mimeType: 'image/png' }, { force: true } );
 		} );
 		/* eslint-enable */
+
+		cy.get( '.attachment.selected.save-ready' );
 		cy.get( '.media-modal .media-button-select' ).click();
 
 		cy.get( '[class*="-visual-editor"]' ).find( `[data-type="${ blockName }"] img` ).first().should( 'have.attr', 'src' ).should( 'include', newImageBase );
