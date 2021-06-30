@@ -58,7 +58,6 @@ describe( 'Test CoBlocks Author Block', function() {
 
 		helpers.selectBlock( 'author' );
 
-		// Bug: https://github.com/godaddy-wordpress/coblocks/issues/1495
 		// Upload the Author avatar
 		// Disable reason: cy.fixture should not return a value.
 		// eslint-disable-next-line jest/valid-expect-in-promise

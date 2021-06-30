@@ -45,7 +45,7 @@ describe( 'Test CoBlocks Lightbox Controls extension', function() {
 			helpers.addBlockToPost( 'core/image', true );
 
 			helpers.upload.imageToBlock( 'core/image' );
-			cy.wait( 500 );
+
 			cy.get( '[aria-label="Change alignment"], [aria-label="Align"]' ).click();
 
 			cy.get( '[aria-label="Change alignment"], [aria-label="Align"]' ).contains( new RegExp( alignment, 'i' ) ).click();
