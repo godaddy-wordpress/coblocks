@@ -95,7 +95,6 @@ class PricingTableEdit extends Component {
 						) }>
 							<InnerBlocks
 								template={ getCount( count ) }
-								// templateLock="insert"
 								allowedBlocks={ ALLOWED_BLOCKS }
 								orientation={ count > 1 ? 'horizontal' : 'vertical' }
 								__experimentalCaptureToolbars={ true } />
