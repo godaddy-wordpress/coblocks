@@ -66,26 +66,6 @@ workflows:
             - unit_testing_php_73
             - unit_testing_php_74
             - js
-      - e2e_chrome_58:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
-          requires:
-            - css
-            - unit_testing_php_56
-            - unit_testing_php_73
-            - unit_testing_php_74
-            - js
-      - e2e_firefox_58:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
-          requires:
-            - css
-            - unit_testing_php_56
-            - unit_testing_php_73
-            - unit_testing_php_74
-            - js
 
       - canary-release:
           filters:
@@ -180,34 +160,6 @@ commands:
             ln -s $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
             ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
 
-  # Install and configure WordPress for end-to-end test using nightly branch.
-  install_wordpress_with_coblocks_58:
-    description: ""
-    steps:
-      - run:
-          name: Update hosts
-          command: echo 127.0.0.1 coblocks.test | sudo tee -a /etc/hosts
-      - run:
-          name: Install WordPress
-          command: |
-            sudo apt-get update && sudo apt-get install -y subversion default-mysql-client
-            sudo -E docker-php-ext-install mysqli
-            mkdir -p /tmp/wordpress
-            ./vendor/bin/wp core download --path=/tmp/wordpress --version=nightly
-            ./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass='' --path=/tmp/wordpress
-            ./vendor/bin/wp db create --path=/tmp/wordpress
-            ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=/tmp/wordpress
-            ./vendor/bin/wp post generate --count=5 --path=/tmp/wordpress
-      - run:
-          name: Install Go theme
-          command: |
-            ./vendor/bin/wp theme install go --activate --path=/tmp/wordpress
-      - run:
-          name: Activate CoBlocks
-          command: |
-            ln -s $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
-            ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
-
   # Disable the xdebug PHP extension.
   disable_xdebug_php_extension:
     description: ""
@@ -265,22 +217,6 @@ commands:
               ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>
             else
               ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >> --spec "$(cat /tmp/specstring | xargs | sed -e 's/ /,/g')"
-            fi
-        
-  run_e2e_tests_58:
-    parameters:
-      browser:
-        type: string
-    steps:
-      - run:
-          name: Run end to end tests (Cypress.io) - << parameters.browser >>
-          command: |
-            touch cypress.env.json
-            echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
-            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ] || [ "$CIRCLE_BRANCH" == *"run-all-tests"* ]; then
-              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>
-            else
-              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>-58 --spec "$(cat /tmp/specstring | xargs | sed -e 's/ /,/g')"
             fi
 
   start_wpcli_server:
@@ -650,68 +586,6 @@ jobs:
       - start_mailhog
       - start_wpcli_server
       - run_e2e_tests:
-          browser: firefox
-
-  e2e_chrome_58:
-    docker:
-      - image: circleci/php:7.3.23-node-browsers
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-    parallelism: 4
-    steps:
-      - checkout
-      - setup_e2e_env_var
-      - changed_files_with_extension:
-          ext: ".js"
-      - setup_spec_files_diff_tree
-      - disable_xdebug_php_extension
-      - attach_workspace:
-          at: ~/project
-      - restore_yarn_cache
-      - restore_update_cypress_cache
-      - restore_composer_cache
-      - wait_for_mysql
-      - install_wordpress_with_coblocks_58
-      - install_mailhog
-      - start_mailhog
-      - start_wpcli_server
-      - run_e2e_tests_58:
-          browser: chrome
-
-  e2e_firefox_58:
-    docker:
-      - image: circleci/php:7.3.23-node-browsers
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-    parallelism: 4
-    steps:
-      - checkout
-      - setup_e2e_env_var
-      - changed_files_with_extension:
-          ext: ".js"
-      - setup_spec_files_diff_tree
-      - disable_xdebug_php_extension
-      - attach_workspace:
-          at: ~/project
-      - restore_yarn_cache
-      - restore_update_cypress_cache
-      - restore_composer_cache
-      - wait_for_mysql
-      - install_wordpress_with_coblocks_58
-      - install_mailhog
-      - start_mailhog
-      - start_wpcli_server
-      - run_e2e_tests_58:
           browser: firefox
 
   # --------------------------------------------------
