@@ -26,7 +26,6 @@ import { RichText, InnerBlocks } from '@wordpress/block-editor';
  * @constant
  * @type {string[]}
  */
-const ALLOWED_BLOCKS = [ 'core/button', 'core/shortcode' ];
 const TEMPLATE = [ [ 'core/button', { placeholder: __( 'Buy Now', 'coblocks' ) } ] ];
 
 /**
@@ -115,8 +114,8 @@ class Edit extends Component {
 					<InnerBlocks
 						template={ TEMPLATE }
 						templateLock={ false }
-						allowedBlocks={ ALLOWED_BLOCKS }
 						templateInsertUpdatesSelection={ false }
+						renderAppender={ InnerBlocks.ButtonBlockAppender }
 					/>
 				</div>
 			</Fragment>
