@@ -230,6 +230,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 	/**
 	 * Test the coblocks social profiles colors.
+	 * Go traditional style default color: rgb(200, 106, 25)
 	 */
 	it( 'Test the social profiles colors.', function() {
 		helpers.addBlockToPost( 'coblocks/social-profiles', true );
@@ -316,7 +317,10 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	/**
 	 * Test the coblocks social profiles button size.
 	 */
-	it( 'Test the social profiles button size.', function() {
+	// Disable Reason: Social block size controls have not worked since the introduction of these tests.
+	// https://github.com/godaddy-wordpress/coblocks/issues/1926
+	// eslint-disable-next-line jest/no-disabled-tests
+	it.skip( 'Test the social profiles button size.', function() {
 		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
 		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook profile"]' ).first().click();

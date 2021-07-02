@@ -9,6 +9,7 @@ import classnames from 'classnames';
 import applyWithColors from './colors';
 import Controls from './controls';
 import Inspector from './inspector';
+import { computeFontSize } from '../../utils/helper';
 
 /**
  * WordPress dependencies
@@ -98,8 +99,8 @@ export class Edit extends Component {
 				'has-text-color': textColor.color,
 				[ textColor.class ]: textColor.class,
 			},
-			fontSize && {
-				[ fontSize.class ]: fontSize.class,
+			fontSize?.class && {
+				[ fontSize?.class ]: fontSize?.class,
 			}
 		);
 
@@ -118,9 +119,9 @@ export class Edit extends Component {
 						onRemove={ () => onReplace( [] ) }
 						className={ classes }
 						style={ {
-							backgroundColor: backgroundColor && backgroundColor.color,
-							color: textColor && textColor.color,
-							fontSize: fontSize && fontSize.size ? fontSize.size + 'px' : undefined,
+							backgroundColor: backgroundColor?.color,
+							color: textColor?.color,
+							fontSize: computeFontSize( fontSize ) ?? undefined,
 						} }
 						keepPlaceholderOnFocus
 					/>

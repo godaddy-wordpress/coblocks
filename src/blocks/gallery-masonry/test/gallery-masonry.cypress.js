@@ -155,7 +155,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 
 		cy.get( 'figcaption[role="textbox"]' ).focus();
 
-		cy.get( '.block-editor-format-toolbar' );
+		cy.get( '.block-editor-format-toolbar, .block-editor-rich-text__inline-format-toolbar-group' );
 
 		helpers.savePage();
 
