@@ -331,7 +331,7 @@ class PostsEdit extends Component {
 								onChange={ ( value ) => setAttributes( { externalRssUrl: value } ) }
 								className={ 'components-placeholder__input' }
 							/>
-							<Button isLarge type="submit" disabled={ ! externalRssUrl }>
+							<Button type="submit" disabled={ ! externalRssUrl }>
 								{ __( 'Use URL', 'coblocks' ) }
 							</Button>
 						</form>
