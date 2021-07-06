@@ -8,6 +8,7 @@ import classnames from 'classnames';
  */
 import Controls from './controls';
 import Inspector from './inspector';
+import { computeFontSize } from '../../utils/helper';
 
 /**
  * WordPress dependencies
@@ -91,7 +92,7 @@ class AuthorEdit extends Component {
 		const styles = {
 			backgroundColor: backgroundColor.color,
 			color: textColor.color,
-			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
+			fontSize: computeFontSize( fontSize ),
 		};
 
 		const onUploadImage = ( media ) => setAttributes( { imgUrl: media.url, imgId: media.id } );

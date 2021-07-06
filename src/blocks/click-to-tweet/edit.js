@@ -9,6 +9,7 @@ import classnames from 'classnames';
 import applyWithColors from './colors';
 import Inspector from './inspector';
 import Controls from './controls';
+import { computeFontSize } from '../../utils/helper';
 
 /**
  * WordPress dependencies
@@ -86,12 +87,12 @@ class Edit extends Component {
 							'wp-block-coblocks-click-to-tweet__text', {
 								'has-text-color': textColor.color,
 								[ textColor.class ]: textColor.class,
-								[ fontSize.class ]: fontSize.class,
+								[ fontSize?.class ]: fontSize?.class,
 							}
 						) }
 						style={ {
 							color: textColor.color,
-							fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
+							fontSize: computeFontSize( fontSize ),
 						} }
 						onChange={ ( nextContent ) => setAttributes( { content: nextContent } ) }
 						keepPlaceholderOnFocus

@@ -151,6 +151,7 @@ install_db() {
 	# create database
 	mysqladmin create $DB_NAME --user="$DB_USER" --password="$DB_PASS"$EXTRA
 
+	# This is created in run_e2e_tests in config.yml.
 	if [ "$CIRCLE_JOB" == 'e2e-firefox' ] || [ "$CIRCLE_JOB" == 'e2e-chrome' ]; then
 		# create the e2e test database
 		mysqladmin create coblocks --user="$DB_USER" --password="$DB_PASS"$EXTRA

@@ -60,7 +60,7 @@ describe( 'layout-selector-results', () => {
 		beforeEach( () => {
 			wrapper = setup();
 		} );
-
+ 
 		afterEach( () => {
 			jest.clearAllMocks();
 		} );

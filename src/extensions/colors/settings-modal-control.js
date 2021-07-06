@@ -38,13 +38,35 @@ function CoBlocksEditorSettingsControls() {
 	 * @return {Array} The restored value or an empty array (if disabled).
 	 */
 	const setEditorSetting = ( key, isEnabled ) => {
-		if ( ! isEnabled ) {
-			localStorage.setItem( key, JSON.stringify( settings[ key ] ) );
+		// Identify if experimental keys are passed and fetch those values directly
+		let settingValue;
+		switch ( key ) {
+			case '__experimentalFeatures.color.palette':
+				settingValue = settings?.__experimentalFeatures?.color?.palette ?? [];
+				break;
+			case '__experimentalFeatures.color.gradients':
+				settingValue = settings?.__experimentalFeatures?.color?.gradients ?? [];
+				break;
+			default:
+				settingValue = settings[ key ];
+				break;
 		}
 
-		return isEnabled
-			? ( JSON.parse( localStorage.getItem( key ) ) || settings[ key ] )
-			: [];
+		// Safely fetch the localStorage value
+		const localStorageValue = !! localStorage.getItem( key ) ? localStorage.getItem( key ) : false;
+
+		// Backup settings if no key exists.
+		if ( ! isEnabled && ! localStorageValue ) {
+			localStorage.setItem( key, JSON.stringify( settingValue ) );
+		}
+
+		// Feature is enabled so parse the stored value or return existing setting value.
+		if ( isEnabled ) {
+			return localStorageValue ? JSON.parse( localStorageValue ) : settingValue;
+		}
+
+		// Feature is disabled return empty array to disable the setting.
+		return [];
 	};
 	const enableEditorSetting = ( key ) => setEditorSetting( key, true );
 	const disableEditorSetting = ( key ) => setEditorSetting( key, false );
@@ -61,6 +83,19 @@ function CoBlocksEditorSettingsControls() {
 			disableCustomColors: ! customColorsEnabled,
 			disableCustomGradients: ! gradientPresetsEnabled,
 			gradients: gradientPresetsEnabled ? enableEditorSetting( 'gradients' ) : disableEditorSetting( 'gradients' ),
+
+			// Handle experimental features for WP 5.8
+			__experimentalFeatures: {
+				color: {
+					...settings?.__experimentalFeatures?.color,
+					palette: colorPanelEnabled
+						? enableEditorSetting( '__experimentalFeatures.color.palette' )
+						: disableEditorSetting( '__experimentalFeatures.color.palette' ),
+					gradients: gradientPresetsEnabled
+						? enableEditorSetting( '__experimentalFeatures.color.gradients' )
+						: disableEditorSetting( '__experimentalFeatures.color.gradients' ),
+				},
+			},
 		} );
 	}, [ colorPanelEnabled, customColorsEnabled, gradientPresetsEnabled ] );
 

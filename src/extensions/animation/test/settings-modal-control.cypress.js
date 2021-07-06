@@ -21,7 +21,7 @@ describe( 'Settings Modal: Animation feature', () => {
 
 		// Open settings modal.
 		cy.get( '.interface-interface-skeleton__header .edit-post-more-menu .components-button' ).click();
-		cy.get( '.components-menu-item__button' ).contains( 'Editor settings' ).click();
+		cy.get( '.components-menu-item__button,.components-button' ).contains( 'Editor settings' ).click();
 	} );
 
 	afterEach( () => {
