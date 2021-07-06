@@ -9,6 +9,10 @@
 		"align": {
 			"type": "string",
 			"default": "center"
+		},
+		"pinned": {
+			"type": "boolean",
+			"default": false
 		}
 	}
 }

@@ -64,7 +64,7 @@ const Edit = ( props ) => {
 			/>
 			<div className={ className }>
 
-				{ ( ! attributes.restaurantID ) ? (
+				{ ( ! attributes.pinned ) ? (
 					<Placeholder
 						icon={ <Icon icon={ icon } /> }
 						label={ __( 'OpenTable', 'coblocks' ) }
@@ -94,7 +94,7 @@ const Edit = ( props ) => {
 								type="submit"
 								disabled={ ! ridField }
 								onClick={ () => {
-									props.setAttributes( { restaurantID: ridField } );
+									props.setAttributes( { restaurantID: ridField, pinned: true } );
 								} }
 							>
 								{ __( 'Embed', 'coblocks' ) }

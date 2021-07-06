@@ -21,16 +21,6 @@ const Inspector = ( props ) => {
 
 	return (
 		<InspectorControls>
-			<PanelBody title={ __( 'OpenTable settings', 'coblocks' ) }>
-				<TextControl
-					label={ __( 'Restaurant ID', 'coblocks' ) }
-					className="components-text-control--opentable-restaurant-id"
-					value={ attributes.restaurantID }
-					onChange={ ( rID ) => {
-						setAttributes( { restaurantID: rID } );
-					} }
-				/>
-			</PanelBody>
 		</InspectorControls>
 	);
 };
