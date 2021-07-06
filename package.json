@@ -131,6 +131,16 @@
 		"style-loader": "^0.19.1",
 		"webpack-fix-style-only-entries": "^0.4.0"
 	},
+	"resolutions": {
+		"css-what": "^5.0.1",
+		"trim-newlines": "^4.0.1",
+		"glob-parent": "^5.1.2",
+		"ws": "^7.4.6",
+		"trim": "^0.0.3",
+		"node-fetch": "^2.6.1",
+		"normalize-url": "^6.0.1",
+		"yargs-parser": "^18.1.2"
+	},
 	"husky": {
 		"hooks": {
 			"pre-commit": "lint-staged"
