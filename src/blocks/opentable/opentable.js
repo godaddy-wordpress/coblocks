@@ -9,7 +9,7 @@ class OpenTable extends Component {
 		super( ...arguments );
 
 		this.state = {
-			selectedImage: null,
+			showLoading: true,
 		};
 	}
 
@@ -27,6 +27,7 @@ class OpenTable extends Component {
 			return (
 				<div className="iframe__overflow-wrapper">
 					<iframe
+						id="opentable-iframe"
 						frameBorder="0"
 						style={ { width: '224px', height: '301px', display: 'block', margin: 'auto' } }
 						title="open table frame"
@@ -38,15 +39,9 @@ class OpenTable extends Component {
 		}
 		return (
 			<div className="iframe__overflow-wrapper">
-				{ { wide: (
+				{ { tall: (
 					<iframe
-						frameBorder="0"
-						style={ { width: '840px', height: '200px', display: 'block', margin: 'auto' } }
-						title="open table frame"
-						src={ `//www.opentable.com/widget/reservation/canvas?rid=${ this.props.attributes.restaurantID }$&domain=com&type=standard&theme=wide&overlay=false&insideiframe=true` }
-					/>
-				), tall: (
-					<iframe
+						id="opentable-iframe"
 						frameBorder="0"
 						style={ { width: '289px', height: '491px', display: 'block', margin: 'auto' } }
 						title="open table frame"
@@ -54,6 +49,7 @@ class OpenTable extends Component {
 					/>
 				), standard: (
 					<iframe
+						id="opentable-iframe"
 						frameBorder="0"
 						style={ { width: '225px', height: '302px', display: 'block', margin: 'auto' } }
 						title="open table frame"
@@ -61,6 +57,7 @@ class OpenTable extends Component {
 					/>
 				), button: (
 					<iframe
+						id="opentable-iframe"
 						frameBorder="0"
 						style={ { width: '210px', height: '116px', display: 'block', margin: 'auto' } }
 						title="open table frame"

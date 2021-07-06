@@ -8,7 +8,7 @@
 		},
 		"align": {
 			"type": "string",
-			"default": "wide"
+			"default": "center"
 		}
 	}
 }

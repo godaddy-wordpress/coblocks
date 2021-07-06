@@ -72,33 +72,40 @@ const Edit = ( props ) => {
 							'Enter your OpenTable Restaurant ID to show the reservations widget.',
 							'coblocks'
 						) }
+						isColumnLayout={ true }
 					>
 
 						{ /* <form onSubmit={ renderOpenTable }> */ }
-						<TextControl
-							value={ ridField || '' }
-							className="components-placeholder__input"
-							placeholder={ __(
-								'Restaurant ID',
-								'coblocks'
-							) }
-							onChange={ ( newRestaurantID ) => {
-								setRidField( newRestaurantID );
-							} }
-						/>
-						<Button
-							isPrimary={ !! ridField }
-							isSecondary={ ! ridField }
-							type="submit"
-							disabled={ ! ridField }
-							onClick={ () => {
-								props.setAttributes( { restaurantID: ridField } );
-							} }
-						>
-							{ __( 'Embed', 'coblocks' ) }
-						</Button>
+						<div className="components-placeholder__flex-fields">
+							<TextControl
+								value={ ridField || '' }
+								className="components-placeholder__input"
+								placeholder={ __(
+									'Restaurant ID',
+									'coblocks'
+								) }
+								onChange={ ( newRestaurantID ) => {
+									setRidField( newRestaurantID );
+								} }
+							/>
+							<Button
+								isPrimary={ !! ridField }
+								isSecondary={ ! ridField }
+								type="submit"
+								disabled={ ! ridField }
+								onClick={ () => {
+									props.setAttributes( { restaurantID: ridField } );
+								} }
+							>
+								{ __( 'Embed', 'coblocks' ) }
+							</Button>
+						</div>
 						{ /* </form> */ }
-						<a target="_blank" rel="noopener noreferrer" href="https://guestcenter.opentable.com/login">{ __( 'Get your Restaurant ID here.', 'coblocks' ) }</a>
+						<div className="components-placeholder__opentable-help-links">
+							<a target="_blank" rel="noopener noreferrer" href="https://guestcenter.opentable.com/login">{ __( 'Get your Restaurant ID', 'coblocks' ) }</a>
+							<a target="_blank" rel="noopener noreferrer" href="https://restaurant.opentable.com/get-started/">{ __( 'Sign up for OpenTable', 'coblocks' ) }</a>
+						</div>
+
 					</Placeholder>
 				)
 					: <>

@@ -46,15 +46,9 @@ const settings = {
 			isDefault: true,
 		},
 		{
-			name: 'wide',
-			/* translators: block style */
-			label: __( 'Wide', 'coblocks' ),
-		},
-		{
 			name: 'tall',
 			/* translators: block style */
 			label: __( 'Tall', 'coblocks' ),
-			isDefault: true,
 		},
 		{
 			name: 'button',

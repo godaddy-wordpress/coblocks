@@ -35,4 +35,17 @@
 	.components-base-control {
 		margin-right: 15px;
 	}
+
+	.components-placeholder__flex-fields{
+		display: inline-flex;
+	}
+
+	.components-placeholder__opentable-help-links a:link{
+		margin-right: 10px;
+	}
+
+	iframe {
+		transition: width 0.5s ease-in-out;
+	}
+
 }
