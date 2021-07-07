@@ -28,6 +28,7 @@ class OpenTable extends Component {
 				<div className="iframe__overflow-wrapper">
 					<iframe
 						id="opentable-iframe"
+						scrolling="no"
 						frameBorder="0"
 						style={ { width: '224px', height: '301px', display: 'block', margin: 'auto' } }
 						title="open table frame"
@@ -43,6 +44,7 @@ class OpenTable extends Component {
 					<iframe
 						id="opentable-iframe"
 						frameBorder="0"
+						scrolling="no"
 						style={ { width: '289px', height: '491px', display: 'block', margin: 'auto' } }
 						title="open table frame"
 						src={ `//www.opentable.com/widget/reservation/canvas?rid=${ this.props.attributes.restaurantID }$&domain=com&type=standard&theme=tall&overlay=false&insideiframe=true` }
@@ -51,6 +53,7 @@ class OpenTable extends Component {
 					<iframe
 						id="opentable-iframe"
 						frameBorder="0"
+						scrolling="no"
 						style={ { width: '225px', height: '302px', display: 'block', margin: 'auto' } }
 						title="open table frame"
 						src={ `//www.opentable.com/widget/reservation/canvas?rid=${ this.props.attributes.restaurantID }$&domain=com&type=standard&theme=standard&overlay=false&insideiframe=true` }
@@ -59,6 +62,7 @@ class OpenTable extends Component {
 					<iframe
 						id="opentable-iframe"
 						frameBorder="0"
+						scrolling="no"
 						style={ { width: '210px', height: '116px', display: 'block', margin: 'auto' } }
 						title="open table frame"
 						src={ `//www.opentable.com/widget/reservation/canvas?rid=${ this.props.attributes.restaurantID }$&domain=com&type=button&theme=standard&overlay=false&insideiframe=true` }

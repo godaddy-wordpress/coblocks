@@ -1122,7 +1122,7 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
-"@godaddy-wordpress/coblocks-icons@1.5.3":
+"@godaddy-wordpress/coblocks-icons@^1.5.3":
   version "1.5.3"
   resolved "https://registry.yarnpkg.com/@godaddy-wordpress/coblocks-icons/-/coblocks-icons-1.5.3.tgz#46f6ccdaa939e880cc52ded0bf4aaa6afe645fbd"
   integrity sha512-mBV2qdf0mzjSGWFNYKuKAA1zCIcU43O+DOycYngC5MFFk/x9JbmbAVJLEh89Q+KotEG5LxWzvlrIut0HBywQXA==

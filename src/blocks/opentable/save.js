@@ -4,6 +4,7 @@ export default function save( { attributes, className } ) {
 		return (
 			<iframe
 				frameBorder="0"
+				scrolling="no"
 				style={ { width: '224px', height: '301px', display: 'block', margin: 'auto' } }
 				title="open table frame"
 				src={ `//www.opentable.com/widget/reservation/canvas?rid=${ attributes.restaurantID }$&domain=com&type=standard&theme=standard&overlay=false&insideiframe=true` }
@@ -15,6 +16,7 @@ export default function save( { attributes, className } ) {
 				{ { tall: (
 					<iframe
 						frameBorder="0"
+						scrolling="no"
 						style={ { width: '288px', height: '490px', display: 'block', margin: 'auto' } }
 						title="open table frame"
 						src={ `//www.opentable.com/widget/reservation/canvas?rid=${ attributes.restaurantID }$&domain=com&type=standard&theme=tall&overlay=false&insideiframe=true` }
@@ -22,6 +24,7 @@ export default function save( { attributes, className } ) {
 				), standard: (
 					<iframe
 						frameBorder="0"
+						scrolling="no"
 						style={ { width: '224px', height: '301px', display: 'block', margin: 'auto' } }
 						title="open table frame"
 						src={ `//www.opentable.com/widget/reservation/canvas?rid=${ attributes.restaurantID }$&domain=com&type=standard&theme=standard&overlay=false&insideiframe=true` }
@@ -29,6 +32,7 @@ export default function save( { attributes, className } ) {
 				), button: (
 					<iframe
 						frameBorder="0"
+						scrolling="no"
 						style={ { width: '210px', height: '115px', display: 'block', margin: 'auto' } }
 						title="open table frame"
 						src={ `//www.opentable.com/widget/reservation/canvas?rid=${ attributes.restaurantID }$&domain=com&type=button&theme=standard&overlay=false&insideiframe=true` }
