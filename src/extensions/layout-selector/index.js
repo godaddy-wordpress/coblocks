@@ -7,12 +7,13 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import { Component, isValidElement } from '@wordpress/element';
 import { applyFilters } from '@wordpress/hooks';
 import { registerPlugin } from '@wordpress/plugins';
-import { compose } from '@wordpress/compose';
-import { withSelect, withDispatch } from '@wordpress/data';
+import { compose, ifCondition } from '@wordpress/compose';
+import { withSelect, useSelect, withDispatch } from '@wordpress/data';
+import { useEntityProp } from '@wordpress/core-data';
 import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem } from '@wordpress/components';
 
 /**
@@ -23,6 +24,7 @@ import { LayoutSelectorResults } from './layout-selector-results';
 import CoBlocksLayoutSelectorFill, { Slot } from './layout-selector-slot';
 import useComputedLayouts from './hooks/useComputedLayouts';
 import useCategories from './hooks/useCategories';
+import './settings-modal-control';
 
 const SidebarItem = ( { slug, title, isSelected, onClick } ) => {
 	return (
@@ -47,14 +49,9 @@ class LayoutSelector extends Component {
 			updateSelectedCategory,
 			isActive,
 			isMobile,
-			layoutSelectorEnabled,
 			useEmptyTemplateLayout,
 			useTemplateLayout,
 		} = this.props;
-
-		if ( ! layoutSelectorEnabled ) {
-			return null;
-		}
 
 		const settings = applyFilters( 'coblocks-layout-selector-controls', [] );
 
@@ -178,14 +175,21 @@ class LayoutSelector extends Component {
 if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.postTypeEnabled ) {
 	registerPlugin( 'coblocks-layout-selector', {
 		render: compose( [
-			withSelect( ( select ) => {
+			ifCondition( () => {
+				const [ layoutSelectorEnabled ] = useEntityProp( 'root', 'site', 'coblocks_layout_selector_controls_enabled' );
+
 				const {
-					isTemplateSelectorActive,
 					hasLayouts,
 					hasCategories,
+				} = useSelect( ( select ) => select( 'coblocks/template-selector' ) );
+
+				return layoutSelectorEnabled && hasLayouts() && hasCategories();
+			} ),
+			withSelect( ( select ) => {
+				const {
 					getSelectedCategory,
+					isTemplateSelectorActive,
 				} = select( 'coblocks/template-selector' );
-				const { getLayoutSelector } = select( 'coblocks/settings' );
 
 				const { isViewportMatch } = select( 'core/viewport' );
 
@@ -194,7 +198,6 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 				return {
 					isActive: isTemplateSelectorActive(),
 					isMobile: isViewportMatch( '< medium' ),
-					layoutSelectorEnabled: getLayoutSelector() && hasLayouts() && hasCategories(),
 					layouts,
 					categories: useCategories( layouts ),
 					selectedCategory: getSelectedCategory(),
@@ -207,11 +210,12 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 					updateSelectedCategory,
 				} = dispatch( 'coblocks/template-selector' );
 				const { editPost } = dispatch( 'core/editor' );
-				const { createWarningNotice } = dispatch( 'core/notices' );
+				const { createWarningNotice, createSuccessNotice } = dispatch( 'core/notices' );
 
 				return {
 					closeTemplateSelector,
 					createWarningNotice,
+					createSuccessNotice,
 					editPost,
 					updateSelectedCategory,
 
@@ -223,6 +227,14 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 						} );
 						closeTemplateSelector();
 						incrementLayoutUsage( layout );
+						createSuccessNotice(
+							sprintf(
+								// translators: %s is the post title.
+								__( '"%s" layout has been added to the page.', 'nextgen' ),
+								layout.label
+							),
+							{ type: 'snackbar' }
+						);
 					},
 
 					useEmptyTemplateLayout: () => {

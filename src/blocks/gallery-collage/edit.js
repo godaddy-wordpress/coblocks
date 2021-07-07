@@ -16,95 +16,92 @@ import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
-import { compose } from '@wordpress/compose';
+import { useState, useEffect } from '@wordpress/element';
+import { compose, usePrevious } from '@wordpress/compose';
 import { withNotices, DropZone, Spinner, Button, Dashicon, ButtonGroup } from '@wordpress/components';
 import { MediaUpload, MediaUploadCheck, MediaPlaceholder, RichText, URLInput } from '@wordpress/block-editor';
 import { mediaUpload } from '@wordpress/editor';
 import { isBlobURL } from '@wordpress/blob';
 import { closeSmall } from '@wordpress/icons';
 
-class GalleryCollageEdit extends Component {
-	constructor() {
-		super( ...arguments );
+const GalleryCollageEdit = ( props ) => {
+	const [ selectedImage, setSelectedImage ] = useState( null );
+	const [ lastGutterValue, setLastGutterValue ] = useState( null );
+	const [ isSaved, setIsSaved ] = useState( false );
 
-		this.state = {
-			selectedImage: null,
-			lastGutterValue: null,
-		};
-	}
+	const prevClassName = usePrevious( props.className );
+	const prevIsSelected = usePrevious( props.isSelected );
 
-	componentDidUpdate( prevProps ) {
-		if ( this.props.className !== prevProps.className ) {
-			if ( this.props.className.includes( 'is-style-layered' ) ) {
-				this.setState( { lastGutterValue: this.props.attributes.gutter } );
-				this.props.setAttributes( { gutter: 0 } );
+	useEffect( () => {
+		if ( props.className !== prevClassName ) {
+			if ( props.className.includes( 'is-style-layered' ) ) {
+				setLastGutterValue( props.attributes.gutter );
+				props.setAttributes( { gutter: 'small' } );
 			} else {
-				this.props.setAttributes( {
-					shadow: 'none',
-					gutter: this.state.lastGutterValue || this.props.attributes.gutter,
-				} );
-				this.setState( { lastGutterValue: null } );
+				setLastGutterValue( null );
+				props.setAttributes( { shadow: 'none', gutter: lastGutterValue || attributes.gutter } );
 			}
 		}
+	}, [ props.className, prevClassName ] );
 
-		if ( this.props.isSelected !== prevProps.isSelected && this.props.isSelected === false ) {
-			this.setState( { selectedImage: null } );
+	useEffect( () => {
+		if ( props.isSelected !== prevIsSelected && props.isSelected === false ) {
+			setSelectedImage( null );
 		}
-	}
+	}, [ props.isSelected, prevIsSelected ] );
 
-	getPlaceholderCount() {
-		return [ 'is-style-tiled', 'is-style-layered' ].includes( this.props.attributes.className ) ? 4 : 5;
-	}
+	const getPlaceholderCount = () => {
+		return [ 'is-style-tiled', 'is-style-layered' ].includes( props.attributes.className ) ? 4 : 5;
+	};
 
-	getImageAtIndex( index ) {
-		const { attributes } = this.props;
+	const getImageAtIndex = ( index ) => {
+		const { attributes } = props;
 		return attributes.images.find( ( image ) => parseInt( image.index ) === parseInt( index ) );
-	}
+	};
 
-	onSelectImage = ( index ) => {
-		if ( this.state.selectedImage !== index ) {
-			this.setState( { selectedImage: index } );
+	const onSelectImage = ( index ) => {
+		if ( selectedImage !== index ) {
+			setSelectedImage( index );
 		}
-	}
+	};
 
-	uploadImage = ( files, index ) => {
+	const uploadImage = ( files, index ) => {
 		mediaUpload( {
 			allowedTypes: [ 'image' ],
 			filesList: files,
-			onFileChange: ( [ image ] ) => this.replaceImage( image, index ),
-			onError: this.onUploadError,
+			onFileChange: ( [ image ] ) => replaceImage( image, index ),
+			onError: onUploadError,
 		} );
-	}
+	};
 
-	onUploadError = ( message ) => {
-		const { noticeOperations } = this.props;
+	const onUploadError = ( message ) => {
+		const { noticeOperations } = props;
 		noticeOperations.removeAllNotices();
 		noticeOperations.createErrorNotice( message );
-	}
+	};
 
-	replaceImage = ( image, index ) => {
-		const { attributes, setAttributes } = this.props;
+	const replaceImage = ( image, index ) => {
+		const { attributes, setAttributes } = props;
 
 		const images = [
 			...attributes.images.filter( ( img ) => parseInt( img.index ) !== parseInt( index ) ),
 			{ ...helper.pickRelevantMediaFiles( image ), index },
 		];
 		setAttributes( { images } );
-	}
+	};
 
-	removeImage = ( index ) => {
-		const { attributes, setAttributes } = this.props;
+	const removeImage = ( index ) => {
+		const { attributes, setAttributes } = props;
 
 		const images = [
 			...attributes.images.filter( ( image ) => parseInt( image.index ) !== parseInt( index ) ),
 		];
 		setAttributes( { images } );
-	}
+	};
 
-	updateImageAttributes( index, newAttributes ) {
-		const { attributes, setAttributes } = this.props;
-		const image = this.getImageAtIndex( index );
+	const updateImageAttributes = ( index, newAttributes ) => {
+		const { attributes, setAttributes } = props;
+		const image = getImageAtIndex( index );
 
 		const images = [
 			...attributes.images.filter( ( img ) => parseInt( img.index ) !== parseInt( index ) ),
@@ -112,37 +109,37 @@ class GalleryCollageEdit extends Component {
 		];
 
 		setAttributes( { images } );
-	}
+	};
 
-	saveCustomLink = () => {
-		this.setState( { isSaved: true } );
-	}
+	const saveCustomLink = () => {
+		setIsSaved( true );
+	};
 
-	renderImage( index ) {
-		const image = this.getImageAtIndex( index );
-		const isSelected = this.props.isSelected && this.state.selectedImage === image.index;
-		const enableCaptions = ! this.props.className.includes( 'is-style-layered' );
+	const renderImage = ( index ) => {
+		const image = getImageAtIndex( index );
+		const isSelected = props.isSelected && selectedImage === image.index;
+		const enableCaptions = ! props.className.includes( 'is-style-layered' );
 
 		const dropZone = (
 			<DropZone
-				onFilesDrop={ ( files ) => this.uploadImage( files, index ) }
+				onFilesDrop={ ( files ) => uploadImage( files, index ) }
 				label={ __( 'Drop image to replace', 'coblocks' ) }
 			/>
 		);
 
 		return (
-			<Fragment>
+			<>
 				{ /* // Disable reason: Image itself is not meant to be interactive, but should
 						direct image selection and unfocus caption fields. */ }
 				{ /* eslint-disable jsx-a11y/click-events-have-key-events  */ }
 				{ /* eslint-disable jsx-a11y/anchor-is-valid  */ }
-				<a role="button" tabIndex="0" onClick={ () => this.onSelectImage( image.index ) }>
+				<a role="button" tabIndex="0" onClick={ () => onSelectImage( image.index ) }>
 					<figure
 						className={ classnames( {
 							'wp-block-coblocks-gallery-collage__figure': true,
 							'is-transient': isBlobURL( image.url ),
 							'is-selected': isSelected,
-							[ `shadow-${ this.props.attributes.shadow }` ]: this.props.attributes.shadow,
+							[ `shadow-${ props.attributes.shadow }` ]: props.attributes.shadow,
 						} ) }>
 						{ isSelected && (
 							<>
@@ -150,7 +147,7 @@ class GalleryCollageEdit extends Component {
 									<MediaUploadCheck>
 										<MediaUpload
 											allowedTypes={ [ 'image' ] }
-											onSelect={ ( img ) => this.replaceImage( img, index ) }
+											onSelect={ ( img ) => replaceImage( img, index ) }
 											value={ image.url }
 											render={ ( { open } ) => (
 												<Button
@@ -167,35 +164,35 @@ class GalleryCollageEdit extends Component {
 
 									<Button
 										icon={ closeSmall }
-										onClick={ () => this.removeImage( index ) }
+										onClick={ () => removeImage( index ) }
 										label={ __( 'Remove image', 'coblocks' ) }
 										disabled={ ! isSelected }
 									/>
 								</ButtonGroup>
 							</>
 						) }
-						{ this.state.selectedImage === image.index && this.props.attributes.linkTo === 'custom' &&
+						{ selectedImage === image.index && props.attributes.linkTo === 'custom' &&
 							<form
 								className="components-coblocks-gallery-item__image-link"
 								onSubmit={ ( event ) => event.preventDefault() }>
 								<Dashicon icon="admin-links" />
 								<URLInput
 									value={ image.imgLink }
-									onChange={ ( imgLink ) => this.updateImageAttributes( index, { imgLink } ) }
+									onChange={ ( imgLink ) => updateImageAttributes( index, { imgLink } ) }
 								/>
-								<Button icon={ this.state.isSaved ? 'saved' : 'editor-break' } label={ this.state.isSaved ? __( 'Saving', 'coblocks' ) : __( 'Apply', 'coblocks' ) } onClick={ this.saveCustomLink } type="submit" />
+								<Button icon={ isSaved ? 'saved' : 'editor-break' } label={ isSaved ? __( 'Saving', 'coblocks' ) : __( 'Apply', 'coblocks' ) } onClick={ saveCustomLink } type="submit" />
 							</form>
 						}
 						{ dropZone }
 						{ isBlobURL( image.url ) && <Spinner /> }
 						<img src={ image.url } alt={ image.alt } />
-						{ enableCaptions && this.props.attributes.captions && ( image.caption || isSelected ) &&
+						{ enableCaptions && props.attributes.captions && ( image.caption || isSelected ) &&
 							<RichText
 								tagName="figcaption"
 								placeholder={ __( 'Write caption…', 'coblocks' ) }
 								className="coblocks-gallery--caption"
 								value={ image.caption }
-								onChange={ ( caption ) => this.updateImageAttributes( index, { caption } ) }
+								onChange={ ( caption ) => updateImageAttributes( index, { caption } ) }
 								isSelected={ isSelected }
 								inlineToolbar
 							/>
@@ -204,16 +201,16 @@ class GalleryCollageEdit extends Component {
 				</a>
 				{ /* eslint-enable jsx-a11y/no-noninteractive-element-interactions */ }
 				{ /* eslint-enable jsx-a11y/click-events-have-key-events  */ }
-			</Fragment>
+			</>
 		);
-	}
+	};
 
-	renderPlaceholder( index ) {
-		const image = this.getImageAtIndex( index );
+	const renderPlaceholder = ( index ) => {
+		const image = getImageAtIndex( index );
 		const hasImage = !! image;
 
 		const classNames = classnames( 'wp-block-coblocks-gallery-collage__figure', {
-			[ `shadow-${ this.props.attributes.shadow }` ]: this.props.attributes.shadow,
+			[ `shadow-${ props.attributes.shadow }` ]: props.attributes.shadow,
 		} );
 
 		return (
@@ -230,79 +227,78 @@ class GalleryCollageEdit extends Component {
 					title: ' ',
 					instructions: ' ',
 				} }
-				onSelect={ ( img ) => this.replaceImage( img, index ) }
-				onError={ this.onUploadError }
+				onSelect={ ( img ) => replaceImage( img, index ) }
+				onError={ onUploadError }
 			>
 				<GalleryDropZone
-					{ ...this.props }
+					{ ...props }
 					label="Drop file to upload"
-					onSelect={ ( [ img ] ) => this.replaceImage( img, index ) }
+					onSelect={ ( [ img ] ) => replaceImage( img, index ) }
 				/>
 			</MediaPlaceholder>
 		);
-	}
+	};
 
-	render() {
-		const {
-			attributes,
-			className,
-			noticeUI,
-		} = this.props;
+	const {
+		attributes,
+		className,
+		noticeUI,
+	} = props;
 
-		const {
-			animation,
-			captions,
-			captionStyle,
-			filter,
-			lightbox,
-		} = attributes;
+	const {
+		animation,
+		captions,
+		captionStyle,
+		filter,
+		lightbox,
+	} = attributes;
 
-		const enableGutter = ! className.includes( 'is-style-layered' );
-		const enableCaptions = ! className.includes( 'is-style-layered' );
+	const enableGutter = ! className.includes( 'is-style-layered' );
+	const enableCaptions = ! className.includes( 'is-style-layered' );
 
-		const images = [];
+	const images = [];
 
-		for ( let imageIndex = 0; imageIndex < this.getPlaceholderCount(); imageIndex++ ) {
-			const image = this.getImageAtIndex( imageIndex );
+	for ( let imageIndex = 0; imageIndex < getPlaceholderCount(); imageIndex++ ) {
+		const image = getImageAtIndex( imageIndex );
 
-			images.push(
-				<li
-					key={ `image-${ imageIndex }` }
-					className={ classnames(
-						'wp-block-coblocks-gallery-collage__item',
-						`item-${ imageIndex + 1 }`,
-						{
-							[ `coblocks-animate ${ animation }` ]: animation,
-						}
-					) }
-				>
-					{ !! image
-						? this.renderImage( imageIndex )
-						: this.renderPlaceholder( imageIndex )
+		images.push(
+			<li
+				key={ `image-${ imageIndex }` }
+				className={ classnames(
+					'wp-block-coblocks-gallery-collage__item',
+					`item-${ imageIndex + 1 }`,
+					{
+						[ `coblocks-animate ${ animation }` ]: animation,
+						'is-selected': imageIndex === parseInt( selectedImage ),
 					}
-				</li>
-			);
-		}
-
-		return (
-			<Fragment>
-				<Controls { ...this.props } />
-				<Inspector { ...this.props } enableGutter={ enableGutter } enableCaptions={ enableCaptions } />
-				{ noticeUI }
-				<GutterWrapper { ...attributes }>
-					<div className={ classnames( className, {
-						[ `has-filter-${ filter }` ]: filter !== 'none',
-						[ `has-caption-style-${ captionStyle }` ]: captions && captionStyle !== undefined,
-						'has-lightbox': lightbox,
-					} ) }>
-						<ul>
-							{ images }
-						</ul>
-					</div>
-				</GutterWrapper>
-			</Fragment>
+				) }
+			>
+				{ !! image
+					? renderImage( imageIndex )
+					: renderPlaceholder( imageIndex )
+				}
+			</li>
 		);
 	}
-}
+
+	return (
+		<>
+			<Controls { ...props } />
+			<Inspector { ...props } enableGutter={ enableGutter } enableCaptions={ enableCaptions } />
+			{ noticeUI }
+			<GutterWrapper { ...attributes }>
+				<div className={ classnames( className, {
+					[ `has-filter-${ filter }` ]: filter !== 'none',
+					[ `has-caption-style-${ captionStyle }` ]: captions && captionStyle !== undefined,
+					'has-lightbox': lightbox,
+				} ) }>
+					<ul>
+						{ images }
+					</ul>
+				</div>
+			</GutterWrapper>
+		</>
+	);
+};
 
 export default compose( [ withNotices ] )( GalleryCollageEdit );

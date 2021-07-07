@@ -151,7 +151,7 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 		cy.get( '.coblocks-gallery--item' ).first().click()
 			.find( 'figcaption' ).focus();
 
-		cy.get( '.block-editor-format-toolbar' );
+		cy.get( '.block-editor-format-toolbar, .block-editor-rich-text__inline-format-toolbar-group' );
 
 		helpers.savePage();
 

@@ -4,6 +4,7 @@
 import Controls from './controls';
 import applyStyle from './apply-style';
 import { TypographyAttributes } from '../../components/typography-controls';
+import './settings-modal-control';
 
 /**
  * External Dependencies

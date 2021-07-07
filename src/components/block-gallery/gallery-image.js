@@ -184,7 +184,7 @@ class GalleryImage extends Component {
 		} );
 
 		const captionStyles = {
-			fontSize: fontSize ? fontSize + 'px' : undefined,
+			fontSize: helper.computeFontSize( fontSize ),
 		};
 		// Disable reason: Each block can be selected by clicking on it and we should keep the same saved markup
 		/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */

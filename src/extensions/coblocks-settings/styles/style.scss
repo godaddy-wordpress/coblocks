@@ -3,14 +3,9 @@
 @import "node_modules/@wordpress/base-styles/mixins";
 @import "node_modules/@wordpress/base-styles/breakpoints";
 
-.coblocks-modal__content {
-
-	@include break-small() {
-		max-width: 310px;
-	}
-
+.coblocks-settings-modal {
 	.components-base-control__help {
-		color: $gray-900;
+		color: $gray-700;
 		display: block;
 		font-style: normal;
 		padding-left: 36px;

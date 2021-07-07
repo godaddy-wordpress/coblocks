@@ -92,6 +92,11 @@
 	.is-style-tiled &__item {
 
 		&:nth-child(1),
+		&:nth-child(2) {
+			padding-bottom: 0 !important;
+		}
+
+		&:nth-child(1),
 		&:nth-child(4) {
 			width: 66.66%;
 
@@ -109,6 +114,11 @@
 			.block-editor-media-placeholder {
 				padding-top: 100%;
 			}
+		}
+
+		&:nth-child(3),
+		&:nth-child(4) {
+			padding-left: 0 !important;
 		}
 	}
 
@@ -132,6 +142,10 @@
 			width: calc(198 / 890 * 100%);
 			z-index: 2;
 
+			&.is-selected {
+				z-index: 4;
+			}
+
 			figure,
 			.block-editor-media-placeholder {
 				padding-top: 100%;
@@ -154,6 +168,10 @@
 			margin-top: calc(189 / 890 * 100% * -1) !important;
 			width: calc(492 / 890 * 100%);
 			z-index: 1;
+
+			&.is-selected {
+				z-index: 4;
+			}
 
 			figure,
 			.block-editor-media-placeholder {

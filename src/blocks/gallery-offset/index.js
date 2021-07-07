@@ -47,12 +47,12 @@ const settings = {
 	supports: {
 		align: [ 'wide', 'full' ],
 		gutter: {
-			default: 'medium',
+			default: 'small',
 		},
 	},
 	example: {
 		attributes: {
-			gutter: 'medium',
+			gutter: 'small',
 			images: [
 				{ index: 0, url: 'https://s.w.org/images/core/5.3/Sediment_off_the_Yucatan_Peninsula.jpg' },
 				{ index: 1, url: 'https://s.w.org/images/core/5.3/Windbuchencom.jpg' },

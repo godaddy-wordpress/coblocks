@@ -14,12 +14,6 @@ describe( 'Test CoBlocks Services Block', function() {
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/services' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-services' ).should( 'exist' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -30,20 +24,20 @@ describe( 'Test CoBlocks Services Block', function() {
 		helpers.addBlockToPost( 'coblocks/services', true );
 
 		// Select parent block
-		cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation' ).click();
-		cy.get( '.block-editor-block-navigation__popover' ).find( '.block-editor-block-navigation-leaf' ).contains( 'Services' ).click();
+		helpers.selectBlock( 'services' );
 
 		cy.get( '.edit-post-visual-editor [data-type="coblocks/service"]' ).should( 'have.length', 2 );
 
-		helpers.setInputValue( 'Services settings', 'Columns', 1, false );
-		cy.get( '.edit-post-visual-editor [data-type="coblocks/service"]' ).should( 'have.length', 2 ); // No longer pops children out of block.
+		helpers.setInputValue( 'Services settings', 'Columns', '{downarrow}', false );
+		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 1 ); // should only have one placeholder on one column.
 
-		helpers.setInputValue( 'Services settings', 'Columns', 3, false );
-		cy.get( '.edit-post-visual-editor [data-type="coblocks/service"]' ).should( 'have.length', 3 );
+		helpers.setInputValue( 'Services settings', 'Columns', '{uparrow}{uparrow}', false );
+		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 3 );
 
-		helpers.setInputValue( 'Services settings', 'Columns', 4, false );
-		cy.get( '.edit-post-visual-editor [data-type="coblocks/service"]' ).should( 'have.length', 4 );
+		helpers.setInputValue( 'Services settings', 'Columns', '{uparrow}', false );
+		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 4 );
 
+		helpers.savePage();
 		helpers.checkForBlockErrors( 'coblocks/services' );
 	} );
 
@@ -58,8 +52,7 @@ describe( 'Test CoBlocks Services Block', function() {
 		helpers.addBlockToPost( 'coblocks/services', true );
 
 		// Select parent block
-		cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation' ).click();
-		cy.get( '.block-editor-block-navigation__popover' ).find( '.block-editor-block-navigation-leaf' ).contains( 'Services' ).click();
+		helpers.selectBlock( 'services' );
 
 		helpers.openHeadingToolbarAndSelect( 2 );
 		cy.get( '.edit-post-visual-editor [data-type="coblocks/services"] h2' ).should( 'exist' );
@@ -84,8 +77,7 @@ describe( 'Test CoBlocks Services Block', function() {
 		cy.get( 'div.block-editor-block-mover' ).should( 'have.class', 'is-horizontal' );
 
 		// Select parent block
-		cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation' ).click();
-		cy.get( '.block-editor-block-navigation__popover' ).find( '.block-editor-block-navigation-leaf' ).contains( 'Services' ).click();
+		helpers.selectBlock( 'services' );
 
 		helpers.setInputValue( 'Services settings', 'Columns', 1, false );
 
@@ -93,6 +85,7 @@ describe( 'Test CoBlocks Services Block', function() {
 		cy.get( 'div.block-editor-block-mover' ).should( 'not.have.class', 'is-horizontal' );
 
 		helpers.savePage();
+		helpers.checkForBlockErrors( 'coblocks/services' );
 	} );
 
 	/**
@@ -106,7 +99,7 @@ describe( 'Test CoBlocks Services Block', function() {
 
 		helpers.toggleSettingCheckbox( /display buttons/i );
 
-		cy.get( 'div.wp-block-button' ).should( 'exist' );
+		cy.get( '.wp-block-buttons' ).should( 'have.length', 2 );
 
 		helpers.savePage();
 

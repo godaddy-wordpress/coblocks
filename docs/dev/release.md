@@ -10,7 +10,7 @@ If critical bugs are discovered on stable versions of the plugin, patch versions
 
 First, make sure you have pulled down the latest changes from the `master` branch and all tests are passing in CircleCI.
 
-To generate a changelog for the release, install and use the [changelog generateor tool](https://github.com/tj/git-extras/blob/master/Installation.md) from `git-extras`:
+To generate a changelog for the release, install and use the [changelog generator tool](https://github.com/tj/git-extras/blob/master/Installation.md) from `git-extras`:
 
 ```
 git changelog --tag x.x.x
@@ -32,6 +32,16 @@ Search for: `\(#([0-9]+)\)`
 Replace with: `[#$1](https://github.com/godaddy-wordpress/coblocks/pull/$1)`
 
 Finally replace the latest changelog added at the end of the readme file with this updated one. And commit to master (don't push yet).
+
+## Preparing the Milestone in GitHub
+
+For every release, there is a milestone on GitHub containing all of the merged Pull Requests for that release cycle. 
+
+1. Open the [current milestone](https://github.com/godaddy-wordpress/coblocks/milestones) in GitHub.
+2. Edit the milestone title to the new release's version number, following the "x.x.x" convention discussed above
+3. Close the milestone.
+4. Create a new milestone, with the title "Next Release".
+5. Set the milestone's due date to two Mondays into the future.
 
 ## Deploying the release
 

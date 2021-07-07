@@ -22,27 +22,23 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 
 		helpers.upload.imageToBlock( 'core/image' );
 
-		cy.get( '[data-type="core/image"] [src^="http"]' );
-
-		cy.get( '.block-editor-block-toolbar__slot .components-coblocks-media-filter' )
-			.should( 'exist' )
+		cy.get( '.block-editor-block-toolbar__slot .components-coblocks-media-filter .components-dropdown-menu__toggle' )
+			.should( 'be.visible' )
 			.click();
 
 		let childIteration = 1;
-		let i;
 
 		// Check the menu contains the expected filters
-		for ( i = 0; i < filters.length; i++ ) {
+		for ( let i = 0; i < filters.length; i++ ) {
 			cy.get( '.components-dropdown-menu__menu button:nth-child(' + childIteration + ')' )
 				.contains( filters[ i ] );
 			childIteration++;
 		}
 
-		i = 0;
 		childIteration = 1;
 
 		// Check the classes are applied correctly to the block
-		for ( i = 0; i < filters.length; i++ ) {
+		for ( let i = 0; i < filters.length; i++ ) {
 			cy.get( '.components-dropdown-menu__menu button:nth-child(' + childIteration + ')' )
 				.click();
 
@@ -99,27 +95,23 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 
 		helpers.upload.imageToBlock( 'core/gallery' );
 
-		cy.get( '[data-type="core/gallery"] [src^="http"]' );
-
 		cy.get( '.block-editor-block-toolbar__slot .components-coblocks-media-filter' )
 			.should( 'exist' )
 			.click();
 
 		let childIteration = 1;
-		let i;
 
 		// Check the menu contains the expected filters
-		for ( i = 0; i < filters.length; i++ ) {
+		for ( let i = 0; i < filters.length; i++ ) {
 			cy.get( '.components-dropdown-menu__menu button:nth-child(' + childIteration + ')' )
 				.contains( filters[ i ] );
 			childIteration++;
 		}
 
-		i = 0;
 		childIteration = 1;
 
 		// Check the classes are applied correctly to the block
-		for ( i = 0; i < filters.length; i++ ) {
+		for ( let i = 0; i < filters.length; i++ ) {
 			cy.get( '.components-dropdown-menu__menu button:nth-child(' + childIteration + ')' )
 				.click();
 

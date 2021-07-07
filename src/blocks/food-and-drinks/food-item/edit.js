@@ -32,11 +32,7 @@ const isEmpty = ( attributes ) => {
 		attributesToCheck.includes( key )
 	);
 
-	if ( typeof Object.fromEntries === 'undefined' ) {
-		return hasEmptyAttributes( fromEntries( newAttributes ) );
-	}
-
-	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
+	return hasEmptyAttributes( fromEntries( newAttributes ) );
 };
 
 class FoodItem extends Component {

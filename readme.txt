@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.7
 Requires PHP: 5.6
-Stable tag: 2.9.1
+Stable tag: 2.12.1
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,11 +18,6 @@ CoBlocks is the most innovative collection of page building WordPress blocks for
 With additional blocks and true row and column building, CoBlocks gives you a true page builder experience for Gutenberg.
 
 CoBlocks is powerful but lightweight: it adds functionality to the WordPress editor without bloat. This is the plugin you've been waiting for, and it will make you rethink what WordPress is capable of.
-
-
-= See For Yourself =
-https://www.youtube.com/watch?v=SfWoVX_uJ0M
-
 
 ## Make Beautiful Web Pages With Gutenberg & CoBlocks
 CoBlocks is the last page builder you’ll ever need: you get a winning mix of additional WordPress blocks, and page builder functionality. With CoBlocks you have everything you need to make beautiful web pages with the new block editor:
@@ -116,6 +111,5 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Bug Fixes
-* Hide media upload flow popover menu when upload modal is open [#1863](https://github.com/godaddy-wordpress/coblocks/pull/1863)
-* When two or more gists on an edit page, fix so that they render properly [#1856](https://github.com/godaddy-wordpress/coblocks/pull/1856)
-* Improve Food & Drink block test reliability [#1854](https://github.com/godaddy-wordpress/coblocks/pull/1854)
+* Fix accordion items background color override [#1920](https://github.com/godaddy-wordpress/coblocks/pull/1920)
+* Fix image link controls for Services block [#1917](https://github.com/godaddy-wordpress/coblocks/pull/1917)

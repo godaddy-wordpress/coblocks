@@ -38,20 +38,22 @@
 
 	&__content {
 		flex: 1 1 auto;
-	}
 
-	&__name {
-		display: block;
-		font-size: 1.5em;
-		margin: 0;
-		padding: 0;
-	}
+		// Nested for increased selector specificity.
+		> .wp-block-coblocks-author__name {
+			display: block;
+			font-size: 1.5em;
+			margin: 0;
+			padding: 0;
+		}
 
-	&__biography {
-		margin: 0 0 1em;
+		> .wp-block-coblocks-author__biography {
+			font-size: inherit;
+			margin: 0 0 1em;
 
-		&:last-of-type {
-			margin-bottom: 0;
+			&:last-of-type {
+				margin-bottom: 0;
+			}
 		}
 	}
 
