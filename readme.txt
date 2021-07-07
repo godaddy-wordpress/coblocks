@@ -110,6 +110,8 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+### Enhancements
+* Introduce WordPress 5.8 compatibility [#1923](https://github.com/godaddy-wordpress/coblocks/pull/1923)
+
 ### Bug Fixes
-* Fix accordion items background color override [#1920](https://github.com/godaddy-wordpress/coblocks/pull/1920)
-* Fix image link controls for Services block [#1917](https://github.com/godaddy-wordpress/coblocks/pull/1917)
+* Fix accordion items caret display in editor [#1915](https://github.com/godaddy-wordpress/coblocks/pull/1915)

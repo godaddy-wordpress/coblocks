@@ -1,4 +1,12 @@
 
+2.13.0 / 2021-07-07
+===================
+### Enhancements
+* Introduce WordPress 5.8 compatibility [#1923](https://github.com/godaddy-wordpress/coblocks/pull/1923)
+
+### Bug Fixes
+* Fix accordion items caret display in editor [#1915](https://github.com/godaddy-wordpress/coblocks/pull/1915)
+
 2.12.1 / 2021-06-09
 ===================
 ### Bug Fixes
