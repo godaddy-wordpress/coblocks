@@ -230,7 +230,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 	/**
 	 * Test the coblocks social profiles colors.
-	 * Go traditional style default color: rgb(200, 106, 25)
+	 * Go traditional style default color: rgb(49, 55, 60)
 	 */
 	it( 'Test the social profiles colors.', function() {
 		helpers.addBlockToPost( 'coblocks/social-profiles', true );
@@ -249,7 +249,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 		helpers.toggleSettingCheckbox( 'Social colors' );
 
 		cy.get( '.block-editor-writing-flow button[aria-label="Add Facebook profile"]' )
-			.should( 'have.css', 'background-color', 'rgb(200, 106, 25)' );
+			.should( 'have.css', 'background-color', 'rgb(40, 48, 61)' );
 
 		helpers.savePage();
 
@@ -258,7 +258,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 		helpers.viewPage();
 
 		cy.get( '.wp-block-coblocks-social-profiles ul li:first-child a' )
-			.should( 'have.css', 'background-color', 'rgb(200, 106, 25)' );
+			.should( 'have.css', 'background-color', 'rgb(49, 55, 60)' );
 
 		helpers.editPage();
 	} );
@@ -317,10 +317,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	/**
 	 * Test the coblocks social profiles button size.
 	 */
-	// Disable Reason: Social block size controls have not worked since the introduction of these tests.
-	// https://github.com/godaddy-wordpress/coblocks/issues/1926
-	// eslint-disable-next-line jest/no-disabled-tests
-	it.skip( 'Test the social profiles button size.', function() {
+	it( 'Test the social profiles button size.', function() {
 		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
 		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook profile"]' ).first().click();
@@ -338,19 +335,12 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 		cy.get( '.components-coblocks-inspector__social-button-size select' )
 			.select( 'lrg' );
 
-		cy.get( 'button[aria-label="Add Facebook profile"]' )
-			.should( 'have.css', 'width', '84px' );
+		cy.get( '.has-button-size-lrg' ).should( 'exist' );
 
-		helpers.savePage();
+		cy.get( '.components-coblocks-inspector__social-button-size select' )
+			.select( 'sml' );
 
-		helpers.checkForBlockErrors( 'coblocks/social-profiles' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-social-profiles ul li:first-child a' )
-			.should( 'have.css', 'width', '66px' );
-
-		helpers.editPage();
+		cy.get( '.has-button-size-sml' ).should( 'exist' );
 	} );
 
 	/**
