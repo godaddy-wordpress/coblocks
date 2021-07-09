@@ -24,6 +24,7 @@ describe( 'Test CoBlocks Share Block', function() {
 
 	/**
 	 * Test the coblocks share block colors.
+	 * Go traditional style default color: rgb(200, 106, 25)
 	 */
 	it( 'Test the share block colors.', function() {
 		helpers.addBlockToPost( 'coblocks/social', true );
@@ -31,7 +32,7 @@ describe( 'Test CoBlocks Share Block', function() {
 		helpers.toggleSettingCheckbox( 'Social colors' );
 
 		cy.get( '.block-editor-writing-flow .wp-block-coblocks-social li:first-child .wp-block-coblocks-social__button' )
-			.should( 'have.css', 'background-color', 'rgb(40, 48, 61)' );
+			.should( 'have.css', 'background-color', 'rgb(200, 106, 25)' );
 
 		helpers.savePage();
 
@@ -40,7 +41,7 @@ describe( 'Test CoBlocks Share Block', function() {
 		helpers.viewPage();
 
 		cy.get( '.wp-block-coblocks-social li:first-child .wp-block-coblocks-social__button' )
-			.should( 'have.css', 'background-color', 'rgb(49, 55, 60)' );
+			.should( 'have.css', 'background-color', 'rgb(200, 106, 25)' );
 
 		helpers.editPage();
 	} );
