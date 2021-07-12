@@ -20,7 +20,7 @@ import {
 	Button,
 	withNotices,
 	Icon,
-	TextControl,
+	FormTokenField,
 } from '@wordpress/components';
 
 const Edit = ( props ) => {
@@ -37,12 +37,29 @@ const Edit = ( props ) => {
 	// const { className, noticeOperations, attributes, noticeUI, isSelected } = props;
 
 	// const [ restaurantID, setRestaurantID ] = useState();
-	const [ ridField, setRidField ] = useState();
+	const [ ridField, setRidField ] = useState( [] );
 
+	const [ queryResults, setQueryResults ] = useState( [] );
 	const { className, isSelected, attributes } = props;
 
+	//searches the opentable reservation network for restaurants with the given name or ID
+	const searchRestaurants = ( query ) => {
+		fetch(
+			'https://www.opentable.com/widget/reservation/restaurant-search?pageSize=15' +
+				'&query=' +
+				encodeURIComponent( query )
+		)
+			.then( ( response ) => response.json() )
+			.then( ( json ) => {
+				setQueryResults( [] );
+				for ( const item in json.items ) {
+					const name = decodeURIComponent( json.items[ item ].name ) + ' (' + json.items[ item ].rid + ')';
+					setQueryResults( ( oldQueryResults ) => [ ...oldQueryResults, name ] );
+				}
+			} );
+	};
 	useEffect( () => {
-		setRidField( attributes.restaurantID );
+		setRidField( attributes.restaurantIDs );
 	}, [] );
 
 	// const renderOpenTable = ( event ) => {
@@ -69,7 +86,7 @@ const Edit = ( props ) => {
 						icon={ <Icon icon={ icon } /> }
 						label={ __( 'OpenTable', 'coblocks' ) }
 						instructions={ __(
-							'Enter your OpenTable Restaurant ID to show the reservations widget.',
+							'Select your OpenTable restaurant(s) to show the reservations widget.',
 							'coblocks'
 						) }
 						isColumnLayout={ true }
@@ -77,16 +94,22 @@ const Edit = ( props ) => {
 
 						{ /* <form onSubmit={ renderOpenTable }> */ }
 						<div className="components-placeholder__flex-fields">
-							<TextControl
+							<FormTokenField
 								value={ ridField || '' }
+								suggestions={ queryResults }
 								className="components-placeholder__input"
 								placeholder={ __(
-									'Restaurant ID',
+									'Select restaurant(s)',
 									'coblocks'
 								) }
-								onChange={ ( newRestaurantID ) => {
-									setRidField( newRestaurantID );
+								maxSuggestions={ 15 }
+								onChange={ ( newRestaurantIDs ) => {
+									setRidField( newRestaurantIDs );
 								} }
+								onInputChange={ ( query ) => {
+									searchRestaurants( query );
+								} }
+								__experimentalHowTo={ false }
 							/>
 							<Button
 								isPrimary={ !! ridField }
@@ -102,7 +125,6 @@ const Edit = ( props ) => {
 						</div>
 						{ /* </form> */ }
 						<div className="components-placeholder__opentable-help-links">
-							<a target="_blank" rel="noopener noreferrer" href="https://guestcenter.opentable.com/login">{ __( 'Get your Restaurant ID', 'coblocks' ) }</a>
 							<a target="_blank" rel="noopener noreferrer" href="https://restaurant.opentable.com/get-started/">{ __( 'Sign up for OpenTable', 'coblocks' ) }</a>
 						</div>
 

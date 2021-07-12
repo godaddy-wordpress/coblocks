@@ -24,6 +24,33 @@
 		left: 13px;
 	}
 
+	.components-placeholder__input {
+		min-width: 300px;
+		min-height: 36px;
+	}
+	
+	.components-form-token-field {
+		margin-right: 10px;
+	}
+
+	.components-form-token-field__help {
+		display: none;
+	}
+
+	.components-form-token-field__suggestions-list { 
+		margin: 4px -4px -4px;
+		padding: 0;
+	}
+
+	.components-form-token-field__token-text {
+		display: inline-flex;
+		align-items: center;
+	}
+
+	.components-form-token-field__label {
+		display: none;
+	}
+
 	.components-resizable-box__handle-right {
 		right: 14px;
 	}
@@ -48,4 +75,8 @@
 		transition: width 0.5s ease-in-out;
 	}
 
+}
+
+.edit-post-visual-editor .wp-block-coblocks-opentable .components-form-token-field__remove-token{
+	padding: 0;
 }

@@ -8,7 +8,7 @@ import { edit } from '@wordpress/icons';
 
 function Controls( { attributes, setAttributes } ) {
 	const {
-		restaurantID,
+		restaurantIDs,
 		pinned,
 	} = attributes;
 
@@ -23,7 +23,7 @@ function Controls( { attributes, setAttributes } ) {
 
 	return (
 		<BlockControls>
-			{ restaurantID &&
+			{ restaurantIDs &&
 				<Toolbar controls={ toolbarControls } />
 			}
 		</BlockControls>

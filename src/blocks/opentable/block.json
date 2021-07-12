@@ -2,9 +2,9 @@
 	"name": "coblocks/opentable",
 	"category": "layout",
 	"attributes": {
-		"restaurantID": {
-			"type": "string",
-			"default": ""
+		"restaurantIDs": {
+			"type": "array",
+			"default": []
 		},
 		"align": {
 			"type": "string",
