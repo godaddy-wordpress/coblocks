@@ -25,10 +25,10 @@
 	}
 
 	.components-placeholder__input {
-		min-width: 300px;
 		min-height: 36px;
+		min-width: 300px;
 	}
-	
+
 	.components-form-token-field {
 		margin-right: 10px;
 	}
@@ -37,14 +37,14 @@
 		display: none;
 	}
 
-	.components-form-token-field__suggestions-list { 
+	.components-form-token-field__suggestions-list {
 		margin: 4px -4px -4px;
 		padding: 0;
 	}
 
 	.components-form-token-field__token-text {
-		display: inline-flex;
 		align-items: center;
+		display: inline-flex;
 	}
 
 	.components-form-token-field__label {
@@ -77,6 +77,6 @@
 
 }
 
-.edit-post-visual-editor .wp-block-coblocks-opentable .components-form-token-field__remove-token{
+.edit-post-visual-editor .wp-block-coblocks-opentable .components-form-token-field__remove-token {
 	padding: 0;
 }
