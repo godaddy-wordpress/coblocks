@@ -133,7 +133,7 @@
 	},
 	"resolutions": {
 		"css-what": "^5.0.1",
-		"trim-newlines": "^4.0.1",
+		"trim-newlines": "^3.0.1",
 		"glob-parent": "^5.1.2",
 		"ws": "^7.4.6",
 		"trim": "^0.0.3",
