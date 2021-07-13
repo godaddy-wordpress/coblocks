@@ -160,7 +160,7 @@ function coblocks_render_social_profiles_block( $attributes ) {
 		$class .= ' has-colors';
 	}
 
-	if ( isset( $attributes['size'] ) && 'med' !== $attributes['size'] && ( isset( $attributes['className'] ) ) ) {
+	if ( isset( $attributes['size'] ) && 'med' !== $attributes['size'] && strpos( $attributes['className'], 'is-style-mask' ) === false ) {
 		$class .= ' has-button-size-' . $attributes['size'];
 	}
 
