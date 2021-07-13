@@ -53,8 +53,12 @@ const Edit = ( props ) => {
 			.then( ( json ) => {
 				setQueryResults( [] );
 				for ( const item in json.items ) {
-					const name = decodeURIComponent( json.items[ item ].name ) + ' (' + json.items[ item ].rid + ')';
-					setQueryResults( ( oldQueryResults ) => [ ...oldQueryResults, name ] );
+					const toAdd = {
+						value: ( decodeURIComponent( json.items[ item ].name ) + ' (' + json.items[ item ].rid + ')' ),
+						rid: json.items[ item ].rid,
+					};
+					console.log( toAdd );
+					setQueryResults( ( oldQueryResults ) => [ ...oldQueryResults, toAdd.value ] );
 				}
 			} );
 	};
@@ -109,6 +113,9 @@ const Edit = ( props ) => {
 								onInputChange={ ( query ) => {
 									searchRestaurants( query );
 								} }
+								// saveTransform={ () => {
+
+								// } }
 								__experimentalHowTo={ false }
 							/>
 							<Button
