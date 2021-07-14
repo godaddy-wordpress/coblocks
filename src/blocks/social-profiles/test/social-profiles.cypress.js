@@ -341,6 +341,11 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 			.select( 'sml' );
 
 		cy.get( '.has-button-size-sml' ).should( 'exist' );
+
+		cy.get( '.components-coblocks-inspector__social-button-size select' )
+			.select( 'med' );
+
+		cy.get( '.has-button-size-med' ).should( 'exist' );
 	} );
 
 	/**
