@@ -4,6 +4,19 @@
  */
 import { Component, Fragment } from '@wordpress/element';
 
+function transformRIDs( rids ) {
+	console.log( rids );
+	let output = rids[ 0 ];
+	if ( rids.length === 1 ) {
+		return output += '&type=standard';
+	}
+	for ( let i = 1; i < rids.length; i++ ) {
+		output += `%2C${ rids[ i ] }`;
+	}
+	output += '&type=multi';
+	return output;
+}
+
 class OpenTable extends Component {
 	constructor() {
 		super( ...arguments );
@@ -12,7 +25,6 @@ class OpenTable extends Component {
 			showLoading: true,
 		};
 	}
-
 	// componentDidUpdate( prevProps ) {
 	// 	if ( ! this.props.isSelected && prevProps.isSelected ) {
 	// 		this.setState( {
@@ -22,6 +34,10 @@ class OpenTable extends Component {
 	// }
 
 	render() {
+		const rids = this.props.attributes.restaurantIDs;
+		const ridsString = transformRIDs( rids );
+		const isMultiple = rids.length > 1;
+
 		const styles = [ 'wide', 'tall', 'standard', 'button' ];
 		if ( ! styles.includes( this.props.className.substring( this.props.className.lastIndexOf( '-' ) + 1 ) ) ) {
 			return (
@@ -30,9 +46,9 @@ class OpenTable extends Component {
 						id="opentable-iframe"
 						scrolling="no"
 						frameBorder="0"
-						style={ { width: '224px', height: '301px', display: 'block', margin: 'auto' } }
+						style={ { width: '224px', height: '302px', display: 'block', margin: 'auto' } }
 						title="open table frame"
-						src={ `//www.opentable.com/widget/reservation/canvas?rid=${ this.props.attributes.restaurantID }$&domain=com&type=standard&theme=standard&overlay=false&insideiframe=true` }
+						src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&theme=standard&overlay=false&insideiframe=true` }
 					/>
 				</div>
 
@@ -45,18 +61,18 @@ class OpenTable extends Component {
 						id="opentable-iframe"
 						frameBorder="0"
 						scrolling="no"
-						style={ { width: '289px', height: '491px', display: 'block', margin: 'auto' } }
+						style={ { width: '289px', height: isMultiple ? '551px' : '491px', display: 'block', margin: 'auto' } }
 						title="open table frame"
-						src={ `//www.opentable.com/widget/reservation/canvas?rid=${ this.props.attributes.restaurantID }$&domain=com&type=standard&theme=tall&overlay=false&insideiframe=true` }
+						src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&theme=tall&overlay=false&insideiframe=true` }
 					/>
 				), standard: (
 					<iframe
 						id="opentable-iframe"
 						frameBorder="0"
 						scrolling="no"
-						style={ { width: '225px', height: '302px', display: 'block', margin: 'auto' } }
+						style={ { width: '225px', height: isMultiple ? '362px' : '302px', display: 'block', margin: 'auto' } }
 						title="open table frame"
-						src={ `//www.opentable.com/widget/reservation/canvas?rid=${ this.props.attributes.restaurantID }$&domain=com&type=standard&theme=standard&overlay=false&insideiframe=true` }
+						src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&theme=standard&overlay=false&insideiframe=true` }
 					/>
 				), button: (
 					<iframe
@@ -65,7 +81,7 @@ class OpenTable extends Component {
 						scrolling="no"
 						style={ { width: '210px', height: '116px', display: 'block', margin: 'auto' } }
 						title="open table frame"
-						src={ `//www.opentable.com/widget/reservation/canvas?rid=${ this.props.attributes.restaurantID }$&domain=com&type=button&theme=standard&overlay=false&insideiframe=true` }
+						src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&type=button&theme=standard&overlay=false&insideiframe=true` }
 					/>
 				) }[ this.props.className.substring( this.props.className.lastIndexOf( '-' ) + 1 ) ]
 				}

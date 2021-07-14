@@ -36,31 +36,28 @@ const Edit = ( props ) => {
 
 	// const { className, noticeOperations, attributes, noticeUI, isSelected } = props;
 
-	// const [ restaurantID, setRestaurantID ] = useState();
 	const [ ridField, setRidField ] = useState( [] );
 
-	const [ queryResults, setQueryResults ] = useState( [] );
+	 const [ queryResults, setQueryResults ] = useState( [] );
+	const [ query, setQuery ] = useState( '' );
 	const { className, isSelected, attributes } = props;
 
 	//searches the opentable reservation network for restaurants with the given name or ID
-	const searchRestaurants = ( query ) => {
+	const searchRestaurants = ( token ) => {
 		fetch(
 			'https://www.opentable.com/widget/reservation/restaurant-search?pageSize=15' +
 				'&query=' +
-				encodeURIComponent( query )
+				encodeURIComponent( token )
 		)
 			.then( ( response ) => response.json() )
 			.then( ( json ) => {
 				setQueryResults( [] );
 				for ( const item in json.items ) {
-					const toAdd = {
-						value: ( decodeURIComponent( json.items[ item ].name ) + ' (' + json.items[ item ].rid + ')' ),
-						rid: json.items[ item ].rid,
-					};
-					console.log( toAdd );
-					setQueryResults( ( oldQueryResults ) => [ ...oldQueryResults, toAdd.value ] );
+					setQueryResults( ( oldQueryResults ) => [ ...oldQueryResults, ( decodeURIComponent( json.items[ item ].name ) + ' (' + json.items[ item ].rid + ')' ) ] );
 				}
+				console.log( queryResults );
 			} );
+		return queryResults;
 	};
 	useEffect( () => {
 		setRidField( attributes.restaurantIDs );
@@ -100,7 +97,7 @@ const Edit = ( props ) => {
 						<div className="components-placeholder__flex-fields">
 							<FormTokenField
 								value={ ridField || '' }
-								suggestions={ queryResults }
+								suggestions={ searchRestaurants( query ) }
 								className="components-placeholder__input"
 								placeholder={ __(
 									'Select restaurant(s)',
@@ -110,12 +107,12 @@ const Edit = ( props ) => {
 								onChange={ ( newRestaurantIDs ) => {
 									setRidField( newRestaurantIDs );
 								} }
-								onInputChange={ ( query ) => {
-									searchRestaurants( query );
+								onInputChange={ ( token ) => {
+									setQuery( token );
 								} }
-								// saveTransform={ () => {
-
-								// } }
+								saveTransform={ ( token ) => {
+									return token.substring( token.lastIndexOf( '(' ) + 1, token.length - 1 );
+								} }
 								__experimentalHowTo={ false }
 							/>
 							<Button
@@ -124,7 +121,7 @@ const Edit = ( props ) => {
 								type="submit"
 								disabled={ ! ridField }
 								onClick={ () => {
-									props.setAttributes( { restaurantID: ridField, pinned: true } );
+									props.setAttributes( { restaurantIDs: ridField, pinned: true } );
 								} }
 							>
 								{ __( 'Embed', 'coblocks' ) }
