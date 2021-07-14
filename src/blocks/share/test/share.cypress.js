@@ -89,10 +89,7 @@ describe( 'Test CoBlocks Share Block', function() {
 	/**
 	 * Test the coblocks share block button size.
 	 */
-	// Disable Reason: Social block size controls have not worked since the introduction of these tests.
-	// https://github.com/godaddy-wordpress/coblocks/issues/1926
-	// eslint-disable-next-line jest/no-disabled-tests
-	it.skip( 'Test the share block button size.', function() {
+	it( 'Test the share block button size.', function() {
 		helpers.addBlockToPost( 'coblocks/social', true );
 
 		helpers.toggleSettingCheckbox( 'Social colors' );
@@ -100,19 +97,17 @@ describe( 'Test CoBlocks Share Block', function() {
 		cy.get( '.components-coblocks-inspector__social-button-size select' )
 			.select( 'lrg' );
 
-		cy.get( '.wp-block-coblocks-social li:first-child .wp-block-coblocks-social__button' )
-			.should( 'have.css', 'width', '84px' );
+		cy.get( '.has-button-size-lrg' ).should( 'exist' );
 
-		helpers.savePage();
+		cy.get( '.components-coblocks-inspector__social-button-size select' )
+			.select( 'sml' );
 
-		helpers.checkForBlockErrors( 'coblocks/social' );
+		cy.get( '.has-button-size-sml' ).should( 'exist' );
 
-		helpers.viewPage();
+		cy.get( '.components-coblocks-inspector__social-button-size select' )
+			.select( 'med' );
 
-		cy.get( '.wp-block-coblocks-social li:first-child .wp-block-coblocks-social__button' )
-			.should( 'have.css', 'width', '66px' );
-
-		helpers.editPage();
+		cy.get( '.has-button-size-med' ).should( 'exist' );
 	} );
 
 	/**

@@ -71,7 +71,7 @@ class edit extends Component {
 		const isCircularStyle = includes( className, 'is-style-circular' );
 
 		const classes = classnames( className, {
-			[ `has-button-size-${ size }` ]: size !== 'med',
+			[ `has-button-size-${ size }` ]: size,
 			'has-colors': hasColors,
 			'has-background': blockBackgroundColor.color || customBlockBackgroundColor,
 			[ `has-text-align-${ textAlign }` ]: textAlign,

@@ -317,10 +317,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	/**
 	 * Test the coblocks social profiles button size.
 	 */
-	// Disable Reason: Social block size controls have not worked since the introduction of these tests.
-	// https://github.com/godaddy-wordpress/coblocks/issues/1926
-	// eslint-disable-next-line jest/no-disabled-tests
-	it.skip( 'Test the social profiles button size.', function() {
+	it( 'Test the social profiles button size.', function() {
 		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
 		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook profile"]' ).first().click();
@@ -338,19 +335,17 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 		cy.get( '.components-coblocks-inspector__social-button-size select' )
 			.select( 'lrg' );
 
-		cy.get( 'button[aria-label="Add Facebook profile"]' )
-			.should( 'have.css', 'width', '84px' );
+		cy.get( '.has-button-size-lrg' ).should( 'exist' );
 
-		helpers.savePage();
+		cy.get( '.components-coblocks-inspector__social-button-size select' )
+			.select( 'sml' );
 
-		helpers.checkForBlockErrors( 'coblocks/social-profiles' );
+		cy.get( '.has-button-size-sml' ).should( 'exist' );
 
-		helpers.viewPage();
+		cy.get( '.components-coblocks-inspector__social-button-size select' )
+			.select( 'med' );
 
-		cy.get( '.wp-block-coblocks-social-profiles ul li:first-child a' )
-			.should( 'have.css', 'width', '66px' );
-
-		helpers.editPage();
+		cy.get( '.has-button-size-med' ).should( 'exist' );
 	} );
 
 	/**

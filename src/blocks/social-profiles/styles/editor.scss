@@ -21,6 +21,23 @@
 			outline-offset: -2px;
 		}
 	}
+
+	&.has-button-size-med {
+		// Icon only style.
+		&:not(.is-style-text):not(.is-style-icon-and-text):not(.is-style-circular) .wp-block-coblocks-social__button {
+			padding: 12px 20px;
+		}
+
+		.wp-block-coblocks-social__icon {
+			height: 18px;
+			width: 18px;
+		}
+
+		.wp-block-coblocks-social__button {
+			font-size: 15px;
+			padding: 12px 14px;
+		}
+	}
 }
 
 .block-library-button__inline-link--coblocks {
