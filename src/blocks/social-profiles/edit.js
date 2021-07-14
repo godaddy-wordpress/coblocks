@@ -89,7 +89,7 @@ class edit extends Component {
 
 		const classes = classnames( className,
 			'wp-block-coblocks-social', {
-				[ `has-button-size-${ size }` ]: size !== 'med',
+				[ `has-button-size-${ size }` ]: size,
 				'has-colors': hasColors,
 				'has-background': blockBackgroundColor.color || customBlockBackgroundColor,
 			} );
