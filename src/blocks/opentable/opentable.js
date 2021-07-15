@@ -4,15 +4,15 @@
  */
 import { Component } from '@wordpress/element';
 
-export function transformRIDs( rids ) {
+export function transformRIDs( rids, className ) {
 	let output = rids[ 0 ];
 	if ( rids.length === 1 ) {
-		return output += '&type=standard';
+		return output += ( className === 'button' ) ? '&type=button' : '&type=standard';
 	}
 	for ( let i = 1; i < rids.length; i++ ) {
 		output += `%2C${ rids[ i ] }`;
 	}
-	output += '&type=multi';
+	output += ( className === 'button' ) ? '&type=button' : '&type=multi';
 	return output;
 }
 
@@ -34,11 +34,12 @@ class OpenTable extends Component {
 
 	render() {
 		const rids = this.props.attributes.restaurantIDs;
-		const ridsString = transformRIDs( rids );
+		const className = this.props.className.substring( this.props.className.lastIndexOf( '-' ) + 1 );
+		const ridsString = transformRIDs( rids, className );
 		const isMultiple = rids.length > 1;
 
 		const styles = [ 'wide', 'tall', 'standard', 'button' ];
-		if ( ! styles.includes( this.props.className.substring( this.props.className.lastIndexOf( '-' ) + 1 ) ) ) {
+		if ( ! styles.includes( className ) ) {
 			return (
 				<div className="iframe__overflow-wrapper">
 					<iframe
@@ -80,9 +81,9 @@ class OpenTable extends Component {
 						scrolling="no"
 						style={ { width: '210px', height: '116px', display: 'block', margin: 'auto' } }
 						title="open table frame"
-						src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&type=button&theme=standard&overlay=false&insideiframe=true` }
+						src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&theme=standard&overlay=false&insideiframe=true` }
 					/>
-				) }[ this.props.className.substring( this.props.className.lastIndexOf( '-' ) + 1 ) ]
+				) }[ className ]
 				}
 			</div>
 		);

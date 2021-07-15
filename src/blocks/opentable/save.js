@@ -3,12 +3,12 @@ import { transformRIDs } from './opentable';
 
 export default function save( { attributes } ) {
 	const rids = attributes.restaurantIDs;
-	const ridsString = transformRIDs( rids );
+	const className = ( attributes.className === undefined ) ? '' : attributes.className.substring( attributes.className.lastIndexOf( '-' ) + 1 );
+	const ridsString = transformRIDs( rids, className );
 	const isMultiple = rids.length > 1;
-	const className = attributes.className;
 
 	const styles = [ 'tall', 'standard', 'button' ];
-	if ( ( attributes.className === undefined || attributes.className === null ) || ( ! styles.includes( className.substring( className.lastIndexOf( '-' ) + 1 ) ) ) ) {
+	if ( ( attributes.className === undefined || attributes.className === null ) || ( ! styles.includes( className ) ) ) {
 		return (
 			<div className="iframe__overflow-wrapper">
 				<iframe
@@ -50,9 +50,9 @@ export default function save( { attributes } ) {
 					scrolling="no"
 					style={ { width: '210px', height: '116px', display: 'block', margin: 'auto' } }
 					title="open table frame"
-					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&type=button&theme=standard&overlay=false&insideiframe=true` }
+					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&theme=standard&overlay=false&insideiframe=true` }
 				/>
-			) }[ className.substring( className.lastIndexOf( '-' ) + 1 ) ]
+			) }[ className ]
 			}
 		</div>
 	);
