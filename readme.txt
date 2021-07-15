@@ -110,10 +110,5 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-### Enhancements 
-* Enhance Pricing Table block to allow any block to be nested [#1929](https://github.com/godaddy-wordpress/coblocks/pull/1929)
-* Update plugin versions to reflect WordPress 5.8 compatibility [#1934](https://github.com/godaddy-wordpress/coblocks/pull/1934) 
-
 ### Bug Fixes
-* Fix button size controls on Share and Social Profiles blocks [#1932](https://github.com/godaddy-wordpress/coblocks/pull/1932)
-* Fix console warning on Post and Post Carousel [#1931](https://github.com/godaddy-wordpress/coblocks/pull/1931)
+* Fix Social Profiles and Share blocks error [#1937](https://github.com/godaddy-wordpress/coblocks/pull/1937)
