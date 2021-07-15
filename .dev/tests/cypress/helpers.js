@@ -183,6 +183,8 @@ export function checkForBlockErrors( blockName ) {
 
 	cy.get( '.block-editor-warning' ).should( 'not.exist' );
 
+	cy.get( 'body.php-error' ).should( 'not.exist' );
+
 	cy.get( `[data-type="${ blockName }"]` ).should( 'exist' );
 }
 
