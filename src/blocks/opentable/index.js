@@ -62,7 +62,7 @@ const settings = {
 	example: {
 		attributes: {
 			align: 'wide',
-			restaurantID: '123456',
+			restaurantIDs: [ '123456' ],
 			pinned: true,
 		},
 	},

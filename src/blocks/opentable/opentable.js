@@ -2,10 +2,9 @@
 /**
  * Internal dependencies
  */
-import { Component, Fragment } from '@wordpress/element';
+import { Component } from '@wordpress/element';
 
-function transformRIDs( rids ) {
-	console.log( rids );
+export function transformRIDs( rids ) {
 	let output = rids[ 0 ];
 	if ( rids.length === 1 ) {
 		return output += '&type=standard';
@@ -46,7 +45,7 @@ class OpenTable extends Component {
 						id="opentable-iframe"
 						scrolling="no"
 						frameBorder="0"
-						style={ { width: '224px', height: '302px', display: 'block', margin: 'auto' } }
+						style={ { width: '224px', height: isMultiple ? '362px' : '302px', display: 'block', margin: 'auto' } }
 						title="open table frame"
 						src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&theme=standard&overlay=false&insideiframe=true` }
 					/>

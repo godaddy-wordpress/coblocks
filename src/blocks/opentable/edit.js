@@ -38,9 +38,8 @@ const Edit = ( props ) => {
 
 	const [ ridField, setRidField ] = useState( [] );
 
-	 const [ queryResults, setQueryResults ] = useState( [] );
-	const [ query, setQuery ] = useState( '' );
-	const { className, isSelected, attributes } = props;
+	const [ queryResults, setQueryResults ] = useState( [] );
+	const { className, attributes } = props;
 
 	//searches the opentable reservation network for restaurants with the given name or ID
 	const searchRestaurants = ( token ) => {
@@ -53,11 +52,10 @@ const Edit = ( props ) => {
 			.then( ( json ) => {
 				setQueryResults( [] );
 				for ( const item in json.items ) {
-					setQueryResults( ( oldQueryResults ) => [ ...oldQueryResults, ( decodeURIComponent( json.items[ item ].name ) + ' (' + json.items[ item ].rid + ')' ) ] );
+					const name = decodeURIComponent( json.items[ item ].name ) + ' (' + json.items[ item ].rid + ')';
+					setQueryResults( ( oldQueryResults ) => [ ...oldQueryResults, name ] );
 				}
-				console.log( queryResults );
 			} );
-		return queryResults;
 	};
 	useEffect( () => {
 		setRidField( attributes.restaurantIDs );
@@ -97,7 +95,7 @@ const Edit = ( props ) => {
 						<div className="components-placeholder__flex-fields">
 							<FormTokenField
 								value={ ridField || '' }
-								suggestions={ searchRestaurants( query ) }
+								suggestions={ queryResults }
 								className="components-placeholder__input"
 								placeholder={ __(
 									'Select restaurant(s)',
@@ -108,7 +106,7 @@ const Edit = ( props ) => {
 									setRidField( newRestaurantIDs );
 								} }
 								onInputChange={ ( token ) => {
-									setQuery( token );
+									searchRestaurants( token );
 								} }
 								saveTransform={ ( token ) => {
 									return token.substring( token.lastIndexOf( '(' ) + 1, token.length - 1 );
