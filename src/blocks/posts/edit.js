@@ -481,6 +481,7 @@ export default compose( [
 		const { getCurrentPost } = select( 'core/editor' );
 
 		const useUpdatedQueryControls = QueryControls.toString().includes( 'selectedCategories' );
+		const currentPost = getCurrentPost();
 
 		const deprecatedQuery = () => {
 			const latestPostsQuery = pickBy( {
@@ -488,6 +489,7 @@ export default compose( [
 				order,
 				orderby: orderBy,
 				per_page: postsToShow,
+				exclude: currentPost.id,
 			}, ( value ) => ! isUndefined( value ) );
 
 			let latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
@@ -512,6 +514,7 @@ export default compose( [
 				order,
 				orderby: orderBy,
 				per_page: postsToShow,
+				exclude: currentPost.id,
 			}, ( value ) => ! isUndefined( value ) );
 
 			const latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
@@ -542,12 +545,8 @@ export default compose( [
 				} );
 		};
 
-		const currentPost = getCurrentPost();
-		const queryResults = useUpdatedQueryControls ? updatedQuery() : deprecatedQuery();
-		const filteredResults = ( queryResults || [] ).filter( ( { id } ) => id !== currentPost.id );
-
 		return {
-			latestPosts: filteredResults,
+			latestPosts: useUpdatedQueryControls ? updatedQuery() : deprecatedQuery(),
 			useUpdatedQueryControls,
 		};
 	} ),
