@@ -1,4 +1,9 @@
 
+2.14.1 / 2021-07-15
+===================
+### Bug Fixes
+* Fix Social Profiles and Share blocks error [#1937](https://github.com/godaddy-wordpress/coblocks/pull/1937)
+
 2.14.0 / 2021-07-14
 ===================
 ### Enhancements 
