@@ -105,7 +105,12 @@ class CoBlocks_Block_Assets {
 			}
 		}
 
-		if ( ! $has_coblock && ! $this->is_page_gutenberg() ) {
+		/**
+		 * Force load the block assets
+		 */
+		$force_load_block_assets = apply_filters( 'coblocks_force_load_block_assets', false );
+
+		if ( ! $force_load_block_assets && ! $has_coblock && ! $this->is_page_gutenberg() ) {
 			return;
 		}
 
