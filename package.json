@@ -140,7 +140,7 @@
 		"trim": "^0.0.3",
 		"node-fetch": "^2.6.1",
 		"normalize-url": "^6.0.1",
-		"yargs-parser": "^18.1.2"
+		"yargs-parser": "^20.2.9"
 	},
 	"husky": {
 		"hooks": {
