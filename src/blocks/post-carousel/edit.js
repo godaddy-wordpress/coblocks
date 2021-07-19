@@ -339,7 +339,10 @@ export default compose( [
 	withSelect( ( select, props ) => {
 		const { postsToShow, order, orderBy, categories } = props.attributes;
 		const { getEntityRecords, getMedia } = select( 'core' );
-		const { isRTL } = select( 'core/editor' ).getEditorSettings();
+		const { getEditorSettings, getCurrentPost } = select( 'core/editor' );
+
+		const { isRTL } = getEditorSettings();
+		const currentPost = getCurrentPost();
 
 		const useUpdatedQueryControls = QueryControls.toString().includes( 'selectedCategories' );
 
@@ -349,6 +352,7 @@ export default compose( [
 				order,
 				orderby: orderBy,
 				per_page: postsToShow,
+				exclude: currentPost.id,
 			}, ( value ) => ! isUndefined( value ) );
 
 			let latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
@@ -373,6 +377,7 @@ export default compose( [
 				order,
 				orderby: orderBy,
 				per_page: postsToShow,
+				exclude: currentPost.id,
 			}, ( value ) => ! isUndefined( value ) );
 
 			const latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
