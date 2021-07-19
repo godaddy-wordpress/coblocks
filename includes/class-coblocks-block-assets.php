@@ -446,7 +446,7 @@ class CoBlocks_Block_Assets {
 	 * @since  2.14.2
 	 * @param  WP_Post $post_object Post object.
 	 *
-	 * @return boolean True when post content contains a coblock block.
+	 * @return boolean True when post content contains a CoBlocks block.
 	 */
 	public function has_coblocks_block( WP_Post $post_object ) {
 
