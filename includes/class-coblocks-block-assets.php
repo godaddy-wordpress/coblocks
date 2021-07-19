@@ -87,7 +87,7 @@ class CoBlocks_Block_Assets {
 			// in the coblocks/* namespace.
 			if ( $wp_post instanceof WP_Post ) {
 
-				$has_coblock = $this->has_coblock( $wp_post );
+				$has_coblock = $this->has_coblocks_block( $wp_post );
 
 			}
 
@@ -111,7 +111,7 @@ class CoBlocks_Block_Assets {
 
 				foreach ( $coblocks_template_part_query as $template_part ) {
 
-					$has_coblock = $this->has_coblock( $template_part );
+					$has_coblock = $this->has_coblocks_block( $template_part );
 
 				}
 			}
@@ -431,7 +431,7 @@ class CoBlocks_Block_Assets {
 	 * Clear transient when wp_template_part is saved/updated
 	 *
 	 * @access public
-	 * @since 2.14.2
+	 * @since  2.14.2
 	 */
 	public function clear_template_transients() {
 
@@ -440,13 +440,15 @@ class CoBlocks_Block_Assets {
 	}
 
 	/**
-	 * Determine if the given post content contains any
+	 * Determine if the given post content contains any CoBlocks blocks
 	 *
+	 * @access public
+	 * @since  2.14.2
 	 * @param  WP_Post $post_object Post object.
 	 *
-	 * @return boolean              True when post content contains a coblock block.
+	 * @return boolean True when post content contains a coblock block.
 	 */
-	public function has_coblock( WP_Post $post_object ) {
+	public function has_coblocks_block( WP_Post $post_object ) {
 
 		return ! empty(
 			array_filter(
