@@ -478,8 +478,10 @@ export default compose( [
 	withSelect( ( select, props ) => {
 		const { postsToShow, order, orderBy, categories } = props.attributes;
 		const { getEntityRecords, getMedia } = select( 'core' );
+		const { getCurrentPost } = select( 'core/editor' );
 
 		const useUpdatedQueryControls = QueryControls.toString().includes( 'selectedCategories' );
+		const currentPost = getCurrentPost();
 
 		const deprecatedQuery = () => {
 			const latestPostsQuery = pickBy( {
@@ -487,6 +489,7 @@ export default compose( [
 				order,
 				orderby: orderBy,
 				per_page: postsToShow,
+				exclude: currentPost.id,
 			}, ( value ) => ! isUndefined( value ) );
 
 			let latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
@@ -511,6 +514,7 @@ export default compose( [
 				order,
 				orderby: orderBy,
 				per_page: postsToShow,
+				exclude: currentPost.id,
 			}, ( value ) => ! isUndefined( value ) );
 
 			const latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
