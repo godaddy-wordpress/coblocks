@@ -86,23 +86,9 @@ class CoBlocks_Block_Assets {
 			// This is similar to has_block() in core, but will match anything
 			// in the coblocks/* namespace.
 			if ( $wp_post instanceof WP_Post ) {
-				$has_coblock = ! empty(
-					array_filter(
-						array(
-							false !== strpos( $wp_post->post_content, '<!-- wp:coblocks/' ),
-							has_block( 'core/block', $wp_post ),
-							has_block( 'core/button', $wp_post ),
-							has_block( 'core/cover', $wp_post ),
-							has_block( 'core/heading', $wp_post ),
-							has_block( 'core/image', $wp_post ),
-							has_block( 'core/gallery', $wp_post ),
-							has_block( 'core/list', $wp_post ),
-							has_block( 'core/paragraph', $wp_post ),
-							has_block( 'core/pullquote', $wp_post ),
-							has_block( 'core/quote', $wp_post ),
-						)
-					)
-				);
+
+				$has_coblock = $this->has_coblock( $wp_post );
+
 			}
 
 			$coblocks_template_part_query = get_transient( 'coblocks_template_parts_query' );
@@ -125,23 +111,8 @@ class CoBlocks_Block_Assets {
 
 				foreach ( $coblocks_template_part_query as $template_part ) {
 
-					$has_coblock = ! empty(
-						array_filter(
-							array(
-								false !== strpos( $template_part->post_content, '<!-- wp:coblocks/' ),
-								has_block( 'core/block', $template_part ),
-								has_block( 'core/button', $template_part ),
-								has_block( 'core/cover', $template_part ),
-								has_block( 'core/heading', $template_part ),
-								has_block( 'core/image', $template_part ),
-								has_block( 'core/gallery', $template_part ),
-								has_block( 'core/list', $template_part ),
-								has_block( 'core/paragraph', $template_part ),
-								has_block( 'core/pullquote', $template_part ),
-								has_block( 'core/quote', $template_part ),
-							)
-						)
-					);
+					$has_coblock = $this->has_coblock( $template_part );
+
 				}
 			}
 		}
@@ -465,6 +436,35 @@ class CoBlocks_Block_Assets {
 	public function clear_template_transients() {
 
 		delete_transient( 'coblocks_template_parts_query' );
+
+	}
+
+	/**
+	 * Determine if the given post content contains any
+	 *
+	 * @param  WP_Post $post_object Post object.
+	 *
+	 * @return boolean              True when post content contains a coblock block.
+	 */
+	public function has_coblock( WP_Post $post_object ) {
+
+		return ! empty(
+			array_filter(
+				array(
+					false !== strpos( $post_object->post_content, '<!-- wp:coblocks/' ),
+					has_block( 'core/block', $post_object ),
+					has_block( 'core/button', $post_object ),
+					has_block( 'core/cover', $post_object ),
+					has_block( 'core/heading', $post_object ),
+					has_block( 'core/image', $post_object ),
+					has_block( 'core/gallery', $post_object ),
+					has_block( 'core/list', $post_object ),
+					has_block( 'core/paragraph', $post_object ),
+					has_block( 'core/pullquote', $post_object ),
+					has_block( 'core/quote', $post_object ),
+				)
+			)
+		);
 
 	}
 
