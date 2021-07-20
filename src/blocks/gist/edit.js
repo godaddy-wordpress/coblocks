@@ -15,46 +15,30 @@ import Gist from './gist';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { compose, withState } from '@wordpress/compose';
-import { Component } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
 import { PlainText, RichText } from '@wordpress/block-editor';
 import { withNotices, Icon } from '@wordpress/components';
+import { useState, useEffect } from '@wordpress/element';
 
-/**
- * Block edit function
- */
-class Edit extends Component {
-	constructor() {
-		super( ...arguments );
-		this.updateURL = this.updateURL.bind( this );
-		this.handleErrors = this.handleErrors.bind( this );
-		this.clearErrors = this.clearErrors.bind( this );
-	}
+const Edit = ( props ) => {
+	const [ preview, setPreview ] = useState( props.attributes.preview ? props.attributes.preview : false );
 
-	componentDidMount() {
-		if ( this.props.attributes.url ) {
-			this.props.setState( { preview: true } );
+	useEffect( () => {
+		if ( props.attributes.url ) {
+			setPreview( true );
 		}
-	}
+	}, [] );
 
-	static __gistCallbackId = 0;
-
-	// Each time we request a new Gist, we have to provide a new
-	// global function name to serve as the JSONP callback.
-	static __nextGist() {
-		return 'embed_gist_callback_' + this.__gistCallbackId++;
-	}
-
-	updateURL( newURL ) {
-		this.props.setAttributes( { url: newURL, file: '' } );
+	const updateURL = ( newURL ) => {
+		props.setAttributes( { url: newURL, file: '' } );
 
 		if ( 'undefined' === typeof newURL || ! newURL.trim() ) {
-			this.props.setState( { preview: false } );
+			setPreview( false );
 			return;
 		}
 
-		if ( ! this.props.attributes.url ) {
-			this.props.setState( { preview: true } );
+		if ( ! props.attributes.url ) {
+			setPreview( true );
 		}
 
 		// Check for #file in the entered URL. If it's there, let's use it properly.
@@ -63,82 +47,86 @@ class Edit extends Component {
 		if ( newURL.match( /#file-*/ ) !== null ) {
 			const newURLWithNoFile = newURL.replace( file, '' ).replace( '#file-', '' );
 
-			this.props.setAttributes( { url: newURLWithNoFile } );
-			this.props.setAttributes( { file: file.replace( /-([^-]*)$/, '.' + '$1' ) } );
+			props.setAttributes( { url: newURLWithNoFile } );
+			props.setAttributes( { file: file.replace( /-([^-]*)$/, '.' + '$1' ) } );
 		}
-		this.clearErrors();
-	}
 
-	handleErrors() {
-		const { noticeOperations, setState } = this.props;
+		clearErrors();
+	};
+
+	const handleErrors = () => {
+		const { noticeOperations } = props;
 		noticeOperations.removeAllNotices();
 		noticeOperations.createErrorNotice( 'Sorry, this URL is not a GitHub Gist.' );
-		setState( { preview: false } );
-	}
+		setPreview( false );
+	};
 
-	clearErrors() {
-		const { noticeOperations } = this.props;
+	const clearErrors = () => {
+		const { noticeOperations } = props;
 		noticeOperations.removeAllNotices();
-	}
+	};
 
-	render() {
-		const {
-			attributes,
-			className,
-			isSelected,
-			preview,
-			setAttributes,
-			noticeUI,
-		} = this.props;
+	const {
+		attributes,
+		className,
+		isSelected,
+		setAttributes,
+		noticeUI,
+	} = props;
 
-		const { url, file, meta, caption } = attributes;
+	const { url, file, meta, caption } = attributes;
 
-		const { handleErrors } = this;
-
-		return (
-			<>
-				{ url && url.length > 0 && isSelected && <Controls { ...this.props } /> }
-				{ url && url.length > 0 && isSelected && <Inspector { ...this.props } /> }
-				{ preview ? (
-					url && (
-						<div className={ classnames( className, meta ? null : 'no-meta' ) }>
-							<Gist url={ url } file={ file } callbackId={ Edit.__nextGist() } onError={ () => {
-								handleErrors();
-							} } />
-							{ ( ! RichText.isEmpty( caption ) || isSelected ) && (
-								<RichText
-									tagName="figcaption"
-									placeholder={ __( 'Write caption…', 'coblocks' ) }
-									value={ caption }
-									onChange={ ( value ) => setAttributes( { caption: value } ) }
-									keepPlaceholderOnFocus
-									inlineToolbar
-								/>
-							) }
-						</div>
-					)
-				) : (
-					<>
-						{ noticeUI }
-						<div className={ className }>
-							<label htmlFor={ `gist-url-input-${ this.props.clientId }` }>
-								<Icon icon={ icon } />
-								{ __( 'Gist URL', 'coblocks' ) }
-							</label>
-							<PlainText
-								id={ `gist-url-input-${ this.props.clientId }` }
-								className="input-control"
-								value={ url }
-								placeholder={ __( 'Add GitHub Gist URL…', 'coblocks' ) }
-								onChange={ this.updateURL }
+	return (
+		<>
+			{ url && url.length > 0 && isSelected && <Controls { ...props } /> }
+			{ url && url.length > 0 && isSelected && <Inspector { ...props } /> }
+			{ preview ? (
+				url && (
+					<div className={ classnames( className, meta ? null : 'no-meta' ) }>
+						<Gist url={ url } file={ file } callbackId={ Edit.__nextGist() } onError={ () => {
+							handleErrors();
+						} } />
+						{ ( ! RichText.isEmpty( caption ) || isSelected ) && (
+							<RichText
+								tagName="figcaption"
+								placeholder={ __( 'Write caption…', 'coblocks' ) }
+								value={ caption }
+								onChange={ ( value ) => setAttributes( { caption: value } ) }
+								keepPlaceholderOnFocus
+								inlineToolbar
 							/>
-						</div>
-					</>
-				) }
+						) }
+					</div>
+				)
+			) : (
+				<>
+					{ noticeUI }
+					<div className={ className }>
+						<label htmlFor={ `gist-url-input-${ props.clientId }` }>
+							<Icon icon={ icon } />
+							{ __( 'Gist URL', 'coblocks' ) }
+						</label>
+						<PlainText
+							id={ `gist-url-input-${ props.clientId }` }
+							className="input-control"
+							value={ url }
+							placeholder={ __( 'Add GitHub Gist URL…', 'coblocks' ) }
+							onChange={ updateURL }
+						/>
+					</div>
+				</>
+			) }
 
-			</>
-		);
-	}
-}
+		</>
+	);
+};
 
-export default compose( [ withState( { preview: false } ), withNotices ] )( Edit );
+Edit.__gistCallbackId = 0;
+
+// Each time we request a new Gist, we have to provide a new
+// global function name to serve as the JSONP callback.
+Edit.__nextGist = () => {
+	return 'embed_gist_callback_' + Edit.__gistCallbackId++;
+};
+
+export default compose( withNotices )( Edit );
