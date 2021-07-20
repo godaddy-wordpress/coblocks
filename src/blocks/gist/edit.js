@@ -22,6 +22,13 @@ import { useState, useEffect } from '@wordpress/element';
 
 const Edit = ( props ) => {
 	const [ preview, setPreview ] = useState( props.attributes.preview ? props.attributes.preview : false );
+	const [ gistCallbackId, setGistCallbackId ] = useState( '' );
+
+	useEffect( () => {
+		if ( !! gistCallbackId === false ) {
+			setGistCallbackId( Edit.__nextGist() );
+		}
+	}, [ gistCallbackId ] );
 
 	useEffect( () => {
 		if ( props.attributes.url ) {
@@ -83,7 +90,7 @@ const Edit = ( props ) => {
 			{ preview ? (
 				url && (
 					<div className={ classnames( className, meta ? null : 'no-meta' ) }>
-						<Gist url={ url } file={ file } callbackId={ Edit.__nextGist() } onError={ () => {
+						<Gist url={ url } file={ file } callbackId={ gistCallbackId } onError={ () => {
 							handleErrors();
 						} } />
 						{ ( ! RichText.isEmpty( caption ) || isSelected ) && (
