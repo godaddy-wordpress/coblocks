@@ -48,11 +48,8 @@ const Edit = ( props ) => {
 			setPreview( true );
 		}
 
-		// Check for #file in the entered URL. If it's there, let's use it properly.
-		const file = newURL.split( '#file-' ).pop();
-
 		if ( newURL.match( /#file-*/ ) !== null ) {
-			const newURLWithNoFile = newURL.replace( file, '' ).replace( '#file-', '' );
+			const [ newURLWithNoFile, file ] = newURL.split( '#file-' );
 
 			props.setAttributes( { url: newURLWithNoFile } );
 			props.setAttributes( { file: file.replace( /-([^-]*)$/, '.' + '$1' ) } );

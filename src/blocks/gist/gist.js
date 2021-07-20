@@ -76,14 +76,6 @@ const Gist = ( props ) => {
 			return `&file=${ file }`;
 		}
 
-		// Else construct the file parameter from the `url` prop.
-		const fileSplit = url.split( '#' ).pop();
-
-		// If the file parameter exist in Gist url return that file.
-		if ( fileSplit.match( /file*/ ) !== null ) {
-			return `&file=${ fileSplit.replace( 'file-', '' ).replace( '-', '.' ) }`;
-		}
-
 		// Else the user wants to link the whole Gist.
 		return '';
 	};
