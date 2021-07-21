@@ -6,7 +6,6 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 describe( 'Test CoBlocks Gist Block', function() {
 	// setup gist block data.
 	const gistUrl = 'https://gist.github.com/AnthonyLedesma/33ad1a8cd86da3b6bddbdefa432cb51d';
-	const gistUrlWithFile = 'https://gist.github.com/AnthonyLedesma/33ad1a8cd86da3b6bddbdefa432cb51d#file-gistblocktest-text';
 
 	/**
 	 * Test that we can add a gist block to the content, not add any text or
@@ -95,17 +94,5 @@ describe( 'Test CoBlocks Gist Block', function() {
 		helpers.checkForBlockErrors( 'coblocks/gist' );
 
 		cy.get( '.wp-block-coblocks-gist' ).find( '.gist-file' ).should( 'have.length', 2 );
-	} );
-
-	it( 'Test gist with a file that has a capitalized letter in the name renders properly', function() {
-		helpers.addBlockToPost( 'coblocks/gist', true );
-
-		cy.get( '.wp-block-coblocks-gist textarea' ).invoke( 'val', gistUrlWithFile ).type( '{enter}' );
-
-		helpers.savePage();
-
-		helpers.checkForBlockErrors( 'coblocks/gist' );
-
-		cy.get( '.wp-block-coblocks-gist' ).find( '.gist-file' ).should( 'have.length', 1 );
 	} );
 } );
