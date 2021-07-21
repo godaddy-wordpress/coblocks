@@ -23,6 +23,7 @@ import { useState, useEffect } from '@wordpress/element';
 const Edit = ( props ) => {
 	const [ preview, setPreview ] = useState( props.attributes.preview ? props.attributes.preview : false );
 	const [ gistCallbackId, setGistCallbackId ] = useState( '' );
+	const [ fullUrl, setFullUrl ] = useState( '' );
 
 	useEffect( () => {
 		if ( !! gistCallbackId === false ) {
@@ -36,9 +37,46 @@ const Edit = ( props ) => {
 		}
 	}, [] );
 
-	const updateURL = ( newURL ) => {
-		props.setAttributes( { url: newURL, file: '' } );
+	useEffect( () => {
+		if ( fullUrl.includes( '#file-' ) ) {
+			const gistId = parseGistId( fullUrl );
+			const [ newURLWithNoFile, fileName ] = fullUrl.split( '#file-' );
 
+			// Transform file-js to file.js, for example
+			const fileNameWithDot = fileName.replace( /-([^-]*)$/, '.' + '$1' );
+
+			fetch( 'https://api.github.com/gists/' + gistId )
+				.then( ( data ) => data.json() )
+				// Retrieve the list of files that are the keys of the JSON object
+				.then( ( json ) => Object.keys( json.files ) )
+				.then( ( keys ) => props.setAttributes( {
+					url: newURLWithNoFile,
+					// Transform app.js to App.js, for example
+					file: getFileNameWithCapitalization( fileNameWithDot, keys ) } ) );
+		} else {
+			props.setAttributes( { url: fullUrl, file: '' } );
+		}
+	}, [ fullUrl ] );
+
+	const parseGistId = ( url ) => {
+		const urlWithNoFile = url.split( '#file-' )[ 0 ];
+		const [ gistId ] = urlWithNoFile.split( '/' ).slice( -1 );
+
+		return gistId;
+	};
+
+	const getFileNameWithCapitalization = ( fileName, gistFiles ) => {
+		const fileFound = gistFiles.filter( ( file ) => file.toLowerCase() === fileName );
+
+		if ( fileFound.length > 0 ) {
+			return fileFound[ 0 ];
+		}
+
+		// If no file found, we will load all the gist
+		return '';
+	};
+
+	const updateURL = ( newURL ) => {
 		if ( 'undefined' === typeof newURL || ! newURL.trim() ) {
 			setPreview( false );
 			return;
@@ -48,12 +86,7 @@ const Edit = ( props ) => {
 			setPreview( true );
 		}
 
-		if ( newURL.match( /#file-*/ ) !== null ) {
-			const [ newURLWithNoFile, file ] = newURL.split( '#file-' );
-
-			props.setAttributes( { url: newURLWithNoFile } );
-			props.setAttributes( { file: file.replace( /-([^-]*)$/, '.' + '$1' ) } );
-		}
+		setFullUrl( newURL );
 
 		clearErrors();
 	};
