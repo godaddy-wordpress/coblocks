@@ -38,8 +38,36 @@ const Edit = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		props.setAttributes( { file: newFile } );
+		if ( props.attributes.url ) {
+			const gistId = parseGistId( props.attributes.url );
+
+			fetch( 'https://api.github.com/gists/' + gistId )
+				.then( ( data ) => data.json() )
+				// Retrieve the list of files that are the keys of the JSON object
+				.then( ( json ) => Object.keys( json.files ) )
+				.then( ( keys ) => props.setAttributes( {
+					// Transform app.js to App.js, for example
+					file: getFileNameWithCapitalization( newFile, keys ),
+				} ) );
+		}
 	}, [ newFile ] );
+
+	const parseGistId = ( url ) => {
+		const [ gistId ] = url.split( '/' ).slice( -1 );
+
+		return gistId;
+	};
+
+	const getFileNameWithCapitalization = ( fileName, gistFiles ) => {
+		const fileFound = gistFiles.filter( ( file ) => file.toLowerCase() === fileName );
+
+		if ( fileFound.length > 0 ) {
+			return fileFound[ 0 ];
+		}
+
+		// If no file found, we will load all the gist
+		return '';
+	};
 
 	const updateURL = ( newURL ) => {
 		props.setAttributes( { url: newURL, file: '' } );
