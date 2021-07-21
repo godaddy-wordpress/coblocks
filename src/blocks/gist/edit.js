@@ -45,10 +45,14 @@ const Edit = ( props ) => {
 				.then( ( data ) => data.json() )
 				// Retrieve the list of files that are the keys of the JSON object
 				.then( ( json ) => Object.keys( json.files ) )
-				.then( ( keys ) => props.setAttributes( {
-					// Transform app.js to App.js, for example
-					file: getFileNameWithCapitalization( newFile, keys ),
-				} ) );
+				.then( ( keys ) => {
+					props.setAttributes( {
+						// Transform app.js to App.js, for example
+						file: getFileNameWithCapitalization( newFile, keys ),
+					} );
+
+					setPreview( true );
+				} );
 		}
 	}, [ newFile ] );
 
@@ -77,10 +81,6 @@ const Edit = ( props ) => {
 			return;
 		}
 
-		if ( ! props.attributes.url ) {
-			setPreview( true );
-		}
-
 		// Check for #file in the entered URL. If it's there, let's use it properly.
 		const file = newURL.split( '#file-' ).pop();
 
@@ -89,6 +89,8 @@ const Edit = ( props ) => {
 
 			props.setAttributes( { url: newURLWithNoFile } );
 			setNewFile( file.replace( /-([^-]*)$/, '.' + '$1' ) );
+		} else if ( ! props.attributes.url ) {
+			setPreview( true );
 		}
 
 		clearErrors();
