@@ -23,6 +23,7 @@ import { useState, useEffect } from '@wordpress/element';
 const Edit = ( props ) => {
 	const [ preview, setPreview ] = useState( props.attributes.preview ? props.attributes.preview : false );
 	const [ gistCallbackId, setGistCallbackId ] = useState( '' );
+	const [ newFile, setNewFile ] = useState( '' );
 
 	useEffect( () => {
 		if ( !! gistCallbackId === false ) {
@@ -35,6 +36,10 @@ const Edit = ( props ) => {
 			setPreview( true );
 		}
 	}, [] );
+
+	useEffect( () => {
+		props.setAttributes( { file: newFile } );
+	}, [ newFile ] );
 
 	const updateURL = ( newURL ) => {
 		props.setAttributes( { url: newURL, file: '' } );
@@ -55,7 +60,7 @@ const Edit = ( props ) => {
 			const newURLWithNoFile = newURL.replace( file, '' ).replace( '#file-', '' );
 
 			props.setAttributes( { url: newURLWithNoFile } );
-			props.setAttributes( { file: file.replace( /-([^-]*)$/, '.' + '$1' ) } );
+			setNewFile( file.replace( /-([^-]*)$/, '.' + '$1' ) );
 		}
 
 		clearErrors();
