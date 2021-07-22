@@ -107,7 +107,7 @@ class CoBlocks_Block_Assets {
 
 			}
 
-			if ( false === $has_coblock && ! empty( $coblocks_template_part_query ) ) {
+			if ( ! $has_coblock && ! empty( $coblocks_template_part_query ) ) {
 
 				foreach ( $coblocks_template_part_query as $template_part ) {
 
