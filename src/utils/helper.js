@@ -1,3 +1,5 @@
+/*global coblocksBlockData*/
+
 /**
  * External dependencies
  */
@@ -78,3 +80,16 @@ export const computeFontSize = ( fontSize ) => {
 	return RegExp( /([a-z])/ ).test( size ) ? size : size + 'px';
 };
 
+/**
+ * showFeature returns true when WordPress 5.7.2 is active and false with 5.8
+ *
+ * @type {Function} showFeature
+ * @return {boolean} True when running 5.7.2 and false with 5.8
+ */
+export const showFeature = () => {
+	if ( typeof coblocksBlockData === 'undefined' ) {
+		return false;
+	}
+
+	return !! coblocksBlockData?.isWP58 ? false : true;
+};

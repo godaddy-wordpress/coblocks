@@ -4,6 +4,7 @@
 import ResponsiveTabsControl from '../../components/responsive-tabs-control';
 import SizeControl from '../../components/size-control';
 import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
+import { showFeature } from '../../utils/helper';
 
 /**
  * WordPress dependencies
@@ -124,7 +125,7 @@ class Inspector extends Component {
 						help={ this.getCaptionsHelp }
 					/>
 
-					{ captions &&
+					{ showFeature() && captions &&
 						<FontSizePicker
 							value={ fontSize.size }
 							onChange={ setFontSize }

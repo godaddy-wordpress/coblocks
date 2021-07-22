@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import applyWithColors from './colors';
+import { showFeature } from '../../utils/helper';
 
 /**
  * WordPress dependencies
@@ -49,13 +50,15 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Text settings', 'coblocks' ) } className="blocks-font-size">
-						<FontSizePicker
-							fallbackFontSize={ fallbackFontSize }
-							value={ fontSize.size }
-							onChange={ setFontSize }
-						/>
-					</PanelBody>
+					{ showFeature() && (
+						<PanelBody title={ __( 'Text settings', 'coblocks' ) } className="blocks-font-size">
+							<FontSizePicker
+								fallbackFontSize={ fallbackFontSize }
+								value={ fontSize.size }
+								onChange={ setFontSize }
+							/>
+						</PanelBody>
+					) }
 					<PanelColorSettings
 						title={ __( 'Color settings', 'coblocks' ) }
 						initialOpen={ false }

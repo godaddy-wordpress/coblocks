@@ -208,6 +208,7 @@ class CoBlocks_Block_Assets {
 				'customIconConfigExists'         => file_exists( get_stylesheet_directory() . '/coblocks/icons/config.json' ),
 				'typographyControlsEnabled'      => $typography_controls_enabled,
 				'animationControlsEnabled'       => $animation_controls_enabled,
+				'isWP58'                         => version_compare( floatval( get_bloginfo( 'version' ) ), '5.8', '>=' ),
 			)
 		);
 
