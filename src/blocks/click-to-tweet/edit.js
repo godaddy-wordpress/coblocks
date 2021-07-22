@@ -31,9 +31,6 @@ const applyWithSelect = withSelect( ( select ) => {
 	};
 } );
 
-/**
- * Block edit function
- */
 const Edit = ( props ) => {
 	const {
 		attributes,
