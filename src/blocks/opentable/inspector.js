@@ -10,17 +10,25 @@
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { SelectControl, PanelBody } from '@wordpress/components';
+import { SelectControl, PanelBody, Notice } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 
 const Inspector = ( props ) => {
 	const {
 		attributes,
 		setAttributes,
+		className,
 	} = props;
 
 	return (
 		<InspectorControls>
+			{ ( className.substring( className.lastIndexOf( '-' ) + 1 ) === 'button' ) && ( attributes.restaurantIDs.length > 1 ) &&
+			<Notice
+				isDismissible={ false }
+				status="warning">
+				{ __( 'The button style does not support multiple restaurants. Clicking the button navigates to the first provided Restaurant.', 'coblocks' ) }
+			</Notice>
+			}
 			{ /* language selector */ }
 			<PanelBody title={ __( 'OpenTable settings', 'coblocks' ) } className="block-coblocks__inspector-block-settings-panel-body">
 				<SelectControl

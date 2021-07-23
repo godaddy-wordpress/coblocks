@@ -75,6 +75,7 @@ const Edit = ( props ) => {
 		<>
 			<Controls { ...props } />
 			<InspectorControls
+				className={ className }
 				attributes={ attributes }
 				setAttributes={ props.setAttributes }
 			/>
