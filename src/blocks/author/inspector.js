@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import { showFeature } from '../../utils/helper';
+import CoBlocksFontSizePicker from '../../components/fontsize-picker';
 
 /**
  * WordPress dependencies
@@ -9,7 +9,7 @@ import { showFeature } from '../../utils/helper';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { InspectorControls, ContrastChecker, PanelColorSettings, withColors, FontSizePicker, withFontSizes } from '@wordpress/block-editor';
+import { InspectorControls, ContrastChecker, PanelColorSettings, withColors, withFontSizes } from '@wordpress/block-editor';
 import { PanelBody, withFallbackStyles } from '@wordpress/components';
 
 const { getComputedStyle } = window;
@@ -33,8 +33,6 @@ class Inspector extends Component {
 			setBackgroundColor,
 			setTextColor,
 			textColor,
-			setFontSize,
-			fallbackFontSize,
 			fallbackTextColor,
 			fallbackBackgroundColor,
 			fontSize,
@@ -43,16 +41,9 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					{ showFeature() && (
-						<PanelBody title={ __( 'Author settings', 'coblocks' ) } className="blocks-font-size">
-							<FontSizePicker
-								label={ 'test' }
-								fallbackFontSize={ fallbackFontSize }
-								value={ fontSize.size }
-								onChange={ setFontSize }
-							/>
-						</PanelBody>
-					) }
+					<PanelBody title={ __( 'Author settings', 'coblocks' ) } className="blocks-font-size">
+						<CoBlocksFontSizePicker { ...this.props } />
+					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color settings', 'coblocks' ) }
 						initialOpen={ false }

@@ -4,7 +4,7 @@
 import ResponsiveTabsControl from '../../components/responsive-tabs-control';
 import SizeControl from '../../components/size-control';
 import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
-import { showFeature } from '../../utils/helper';
+import CoBlocksFontSizePicker from '../../components/fontsize-picker';
 
 /**
  * WordPress dependencies
@@ -13,7 +13,7 @@ import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
-import { InspectorControls, FontSizePicker, withFontSizes } from '@wordpress/block-editor';
+import { InspectorControls, withFontSizes } from '@wordpress/block-editor';
 import { PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
 
 /**
@@ -67,8 +67,6 @@ class Inspector extends Component {
 		const {
 			attributes,
 			setAttributes,
-			setFontSize,
-			fontSize,
 			wideControlsEnabled = false,
 		} = this.props;
 
@@ -125,11 +123,8 @@ class Inspector extends Component {
 						help={ this.getCaptionsHelp }
 					/>
 
-					{ showFeature() && captions &&
-						<FontSizePicker
-							value={ fontSize.size }
-							onChange={ setFontSize }
-						/>
+					{ captions &&
+						<CoBlocksFontSizePicker { ...this.props } />
 					}
 
 					{ ! fullwidth &&
