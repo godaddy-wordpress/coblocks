@@ -77,4 +77,3 @@ export const computeFontSize = ( fontSize ) => {
 	const size = fontSize?.size ?? fontSize;
 	return RegExp( /([a-z])/ ).test( size ) ? size : size + 'px';
 };
-
