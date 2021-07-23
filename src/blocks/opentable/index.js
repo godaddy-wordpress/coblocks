@@ -63,6 +63,7 @@ const settings = {
 		attributes: {
 			align: 'wide',
 			restaurantIDs: [ '123456' ],
+			language: 'en-US',
 			pinned: true,
 		},
 	},

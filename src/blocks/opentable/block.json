@@ -13,6 +13,10 @@
 		"pinned": {
 			"type": "boolean",
 			"default": false
+		},
+		"language": {
+			"type": "string",
+			"default": "en-US"
 		}
 	}
 }

@@ -17,7 +17,7 @@ export default function save( { attributes } ) {
 					frameBorder="0"
 					style={ { width: '224px', height: isMultiple ? '362px' : '302px', display: 'block', margin: 'auto' } }
 					title="open table frame"
-					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&theme=standard&overlay=false&insideiframe=true` }
+					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&lang=${ attributes.language }&theme=standard&overlay=false&insideiframe=true` }
 				/>
 			</div>
 
@@ -32,7 +32,7 @@ export default function save( { attributes } ) {
 					scrolling="no"
 					style={ { width: '289px', height: isMultiple ? '551px' : '491px', display: 'block', margin: 'auto' } }
 					title="open table frame"
-					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&theme=tall&overlay=false&insideiframe=true` }
+					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&lang=${ attributes.language }&theme=tall&overlay=false&insideiframe=true` }
 				/>
 			), standard: (
 				<iframe
@@ -41,7 +41,7 @@ export default function save( { attributes } ) {
 					scrolling="no"
 					style={ { width: '225px', height: isMultiple ? '362px' : '302px', display: 'block', margin: 'auto' } }
 					title="open table frame"
-					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&theme=standard&overlay=false&insideiframe=true` }
+					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&lang=${ attributes.language }&theme=standard&overlay=false&insideiframe=true` }
 				/>
 			), button: (
 				<iframe
@@ -50,7 +50,7 @@ export default function save( { attributes } ) {
 					scrolling="no"
 					style={ { width: '210px', height: '116px', display: 'block', margin: 'auto' } }
 					title="open table frame"
-					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&theme=standard&overlay=false&insideiframe=true` }
+					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&lang=${ attributes.language }&theme=standard&overlay=false&insideiframe=true` }
 				/>
 			) }[ className ]
 			}
