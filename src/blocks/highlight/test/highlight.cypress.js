@@ -39,9 +39,7 @@ describe( 'Block: Highlight', function() {
 	/**
 	 * Test the accordion block content font settings
 	 */
-	// Disabled because fontSize controls are hidden in 5.8. This should be fixed when we can fix the fontSize controls.
-	// eslint-disable-next-line jest/no-disabled-tests
-	it.skip( 'Test highlight block font size setting.', function() {
+	it( 'Test highlight block font size setting.', function() {
 		cy.get( 'p.wp-block-coblocks-highlight' ).find( 'mark' )
 			.type( 'highlighted text' );
 
@@ -60,7 +58,11 @@ describe( 'Block: Highlight', function() {
 
 		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content[style*="font-size: 30px;"]' );
 
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/highlight' );
+
+		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content[style*="font-size: 30px;"]' );
 	} );
 
 	/**
