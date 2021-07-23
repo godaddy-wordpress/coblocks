@@ -111,4 +111,5 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Bug Fixes
-* Fix Social Profiles and Share blocks error [#1937](https://github.com/godaddy-wordpress/coblocks/pull/1937)
+* Fix Font Size controls in WordPress 5.8 [#1949](https://github.com/godaddy-wordpress/coblocks/pull/1949)
+* Fix post visibility while using Posts and Post Carousel [#1936](https://github.com/godaddy-wordpress/coblocks/pull/1936)
