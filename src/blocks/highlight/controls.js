@@ -1,31 +1,28 @@
 /**
  * WordPress dependencies
  */
-import { Component, Fragment } from '@wordpress/element';
 import { BlockControls, AlignmentToolbar } from '@wordpress/block-editor';
 
-class Controls extends Component {
-	render() {
-		const {
-			attributes,
-			setAttributes,
-		} = this.props;
+const Controls = ( props ) => {
+	const {
+		attributes,
+		setAttributes,
+	} = props;
 
-		const {
-			align,
-		} = attributes;
+	const {
+		align,
+	} = attributes;
 
-		return (
-			<Fragment>
-				<BlockControls>
-					<AlignmentToolbar
-						value={ align }
-						onChange={ ( nextAlign ) => setAttributes( { align: nextAlign } ) }
-					/>
-				</BlockControls>
-			</Fragment>
-		);
-	}
-}
+	return (
+		<>
+			<BlockControls>
+				<AlignmentToolbar
+					value={ align }
+					onChange={ ( nextAlign ) => setAttributes( { align: nextAlign } ) }
+				/>
+			</BlockControls>
+		</>
+	);
+};
 
 export default Controls;
