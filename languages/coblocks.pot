@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-07-23T20:35:59+00:00\n"
+"POT-Creation-Date: 2021-07-26T19:06:18+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -879,12 +879,12 @@ msgstr ""
 msgid "Location…"
 msgstr ""
 
-#: src/blocks/events/event-item/index.js:20
+#: src/blocks/events/event-item/index.js:25
 msgctxt "block name"
 msgid "Event Item"
 msgstr ""
 
-#: src/blocks/events/event-item/index.js:21
+#: src/blocks/events/event-item/index.js:26
 msgid "An event within the events block."
 msgstr ""
 
