@@ -1,4 +1,10 @@
 
+2.14.2 / 2021-07-23
+===================
+### Bug Fixes
+* Fix Font Size controls in WordPress 5.8 [#1949](https://github.com/godaddy-wordpress/coblocks/pull/1949)
+* Fix post visibility while using Posts and Post Carousel [#1936](https://github.com/godaddy-wordpress/coblocks/pull/1936)
+
 2.14.1 / 2021-07-15
 ===================
 ### Bug Fixes

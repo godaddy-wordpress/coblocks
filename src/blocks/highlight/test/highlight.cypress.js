@@ -58,7 +58,11 @@ describe( 'Block: Highlight', function() {
 
 		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content[style*="font-size: 30px;"]' );
 
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/highlight' );
+
+		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content[style*="font-size: 30px;"]' );
 	} );
 
 	/**
