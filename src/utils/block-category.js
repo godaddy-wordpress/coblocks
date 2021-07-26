@@ -3,11 +3,11 @@
  */
 import { getCategories, setCategories, registerBlockCollection } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
+import CoBlocksIcon from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
  */
-import brandAssets from './brand-assets';
 import { supportsCollections } from './block-helpers';
 
 const categories = [
@@ -24,13 +24,13 @@ const categories = [
 if ( supportsCollections() ) {
 	registerBlockCollection( 'coblocks', {
 		title: 'CoBlocks',
-		icon: brandAssets.categoryIcon,
+		icon: CoBlocksIcon,
 	} );
 } else {
 	categories.unshift( {
 		slug: 'coblocks',
 		title: 'CoBlocks',
-		icon: brandAssets.categoryIcon,
+		icon: CoBlocksIcon,
 	}, );
 }
 
