@@ -186,3 +186,23 @@ addFilter(
 	'coblocks/withAnimationSettings',
 	withAnimationSettings
 );
+
+const ALLOWED_ANIMATION_BLOCKS = [ 'core/media-text' ];
+
+const withAnimationSafeCheck = ( settings, block ) => {
+	if ( ALLOWED_ANIMATION_BLOCKS.includes( block.name ) ) {
+		if ( settings.animation === undefined && settings.className?.includes( 'coblocks-animate' ) ) {
+			const settingsClass = settings.className.split( ' ' );
+
+			settings.className = settingsClass.filter( ( c ) => c !== 'coblocks-animate' ).join( ' ' );
+		}
+	}
+
+	return settings;
+};
+
+addFilter(
+	'blocks.getBlockAttributes',
+	'coblocks/withAnimationSafeCheck',
+	withAnimationSafeCheck
+);
