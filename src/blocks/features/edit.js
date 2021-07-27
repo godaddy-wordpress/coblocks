@@ -157,7 +157,7 @@ class Edit extends Component {
 							<InnerBlocks
 								template={ TEMPLATE }
 								allowedBlocks={ ALLOWED_BLOCKS }
-								templateInsertUpdatesSelection={ true }
+								templateInsertUpdatesSelection={ false }
 								__experimentalCaptureToolbars={ true }
 							/>
 						</div>

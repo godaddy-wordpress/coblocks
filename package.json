@@ -2,8 +2,8 @@
 	"name": "coblocks",
 	"title": "CoBlocks",
 	"description": "CoBlocks is a suite of professional page building blocks for the WordPress Gutenberg block editor.",
-	"version": "2.12.1",
-	"tested_up_to": "5.7",
+	"version": "2.14.2",
+	"tested_up_to": "5.8",
 	"author": "GoDaddy",
 	"license": "GPL-2.0",
 	"repository": "godaddy-wordpress/coblocks",
@@ -69,7 +69,7 @@
 		"zh_TW": "繁體中文"
 	},
 	"dependencies": {
-		"@godaddy-wordpress/coblocks-icons": "^1.5.3"
+		"@godaddy-wordpress/coblocks-icons": "1.6.0"
 	},
 	"devDependencies": {
 		"@babel/plugin-proposal-class-properties": "7.10.4",
@@ -87,8 +87,8 @@
 		"@wordpress/scripts": "7.1.4",
 		"autoprefixer": "^9.7.5",
 		"css-loader": "^3.2.1",
-		"cypress": "^6.6.0",
-		"cypress-file-upload": "^3.5.3",
+		"cypress": "^6.9.1",
+		"cypress-file-upload": "^5.0.8",
 		"cypress-log-to-output": "1.1.2",
 		"email-validator": "^2.0.4",
 		"enzyme": "^3.11.0",
@@ -130,6 +130,16 @@
 		"slick-carousel": "^1.8.1",
 		"style-loader": "^0.19.1",
 		"webpack-fix-style-only-entries": "^0.4.0"
+	},
+	"resolutions": {
+		"css-what": "^5.0.1",
+		"trim-newlines": "^3.0.1",
+		"glob-parent": "^5.1.2",
+		"ws": "^7.4.6",
+		"trim": "^0.0.3",
+		"node-fetch": "^2.6.1",
+		"normalize-url": "^6.0.1",
+		"yargs-parser": "^18.1.2"
 	},
 	"husky": {
 		"hooks": {

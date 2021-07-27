@@ -52,15 +52,17 @@ describe( 'Block: Highlight', function() {
 						.select( 'large' );
 				} else {
 					cy.get( Cypress.$( $settingSection ).closest( '.components-panel__body' ) )
-						.find( 'button[aria-label="Font size"]' ).click();
-					cy.get( '.components-custom-select-control__item' ).contains( /large/i ).click( { force: true } );
+						.find( 'input[type="number"]' ).focus().type( '30' );
 				}
 			} );
 
-		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
-			.should( 'have.class', 'has-large-font-size' );
+		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content[style*="font-size: 30px;"]' );
+
+		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/highlight' );
+
+		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content[style*="font-size: 30px;"]' );
 	} );
 
 	/**

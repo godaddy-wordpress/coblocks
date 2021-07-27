@@ -1,4 +1,33 @@
 
+2.14.2 / 2021-07-23
+===================
+### Bug Fixes
+* Fix Font Size controls in WordPress 5.8 [#1949](https://github.com/godaddy-wordpress/coblocks/pull/1949)
+* Fix post visibility while using Posts and Post Carousel [#1936](https://github.com/godaddy-wordpress/coblocks/pull/1936)
+
+2.14.1 / 2021-07-15
+===================
+### Bug Fixes
+* Fix Social Profiles and Share blocks error [#1937](https://github.com/godaddy-wordpress/coblocks/pull/1937)
+
+2.14.0 / 2021-07-14
+===================
+### Enhancements 
+* Enhance Pricing Table block to allow any block to be nested [#1929](https://github.com/godaddy-wordpress/coblocks/pull/1929)
+* Update plugin versions to reflect WordPress 5.8 compatibility [#1934](https://github.com/godaddy-wordpress/coblocks/pull/1934) 
+
+### Bug Fixes
+* Fix button size controls on Share and Social Profiles blocks [#1932](https://github.com/godaddy-wordpress/coblocks/pull/1932)
+* Fix console warning on Post and Post Carousel [#1931](https://github.com/godaddy-wordpress/coblocks/pull/1931)
+
+2.13.0 / 2021-07-07
+===================
+### Enhancements
+* Introduce WordPress 5.8 compatibility [#1923](https://github.com/godaddy-wordpress/coblocks/pull/1923)
+
+### Bug Fixes
+* Fix accordion items caret display in editor [#1915](https://github.com/godaddy-wordpress/coblocks/pull/1915)
+
 2.12.1 / 2021-06-09
 ===================
 ### Bug Fixes

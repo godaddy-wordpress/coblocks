@@ -1,14 +1,14 @@
 # Copyright (c) 2021 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 2.12.1\n"
+"Project-Id-Version: CoBlocks 2.14.2\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-06-22T21:03:44+00:00\n"
+"POT-Creation-Date: 2021-07-26T19:06:18+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -237,27 +237,27 @@ msgstr ""
 msgid "Google Map API key for map rendering"
 msgstr ""
 
-#: includes/class-coblocks-settings.php:100
+#: includes/class-coblocks-settings.php:108
 msgid "Setting use to disable or enable layout selector controls across the site."
 msgstr ""
 
-#: includes/class-coblocks-settings.php:112
+#: includes/class-coblocks-settings.php:120
 msgid "Setting use to disable or enable typography controls across the site."
 msgstr ""
 
-#: includes/class-coblocks-settings.php:124
+#: includes/class-coblocks-settings.php:132
 msgid "Setting use to disable or enable custom color controls across the site."
 msgstr ""
 
-#: includes/class-coblocks-settings.php:136
+#: includes/class-coblocks-settings.php:144
 msgid "Setting use to disable or enable all color controls across the site."
 msgstr ""
 
-#: includes/class-coblocks-settings.php:148
+#: includes/class-coblocks-settings.php:156
 msgid "Setting use to disable or enable gradient controls and presets across the site."
 msgstr ""
 
-#: includes/class-coblocks-settings.php:160
+#: includes/class-coblocks-settings.php:168
 msgid "Setting use to disable or enable animation controls across the site."
 msgstr ""
 
@@ -438,15 +438,15 @@ msgstr ""
 
 #: src/blocks/accordion/accordion-item/inspector.js:73
 #: src/blocks/alert/inspector.js:49
-#: src/blocks/author/inspector.js:50
-#: src/blocks/click-to-tweet/inspector.js:60
+#: src/blocks/author/inspector.js:48
+#: src/blocks/click-to-tweet/inspector.js:54
 #: src/blocks/dynamic-separator/inspector.js:63
 #: src/blocks/events/event-item/inspector.js:30
 #: src/blocks/features/feature/inspector.js:92
 #: src/blocks/features/inspector.js:159
 #: src/blocks/form/fields/submit-button/edit.js:113
 #: src/blocks/hero/inspector.js:137
-#: src/blocks/highlight/inspector.js:43
+#: src/blocks/highlight/inspector.js:32
 #: src/blocks/icon/inspector.js:309
 #: src/blocks/media-card/inspector.js:141
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:48
@@ -457,18 +457,18 @@ msgstr ""
 #: src/blocks/social-profiles/inspector.js:212
 #: src/components/form-label-colors/label-color-control.js:36
 #: src/extensions/colors/index.js:59
-#: src/extensions/colors/settings-modal-control.js:70
+#: src/extensions/colors/settings-modal-control.js:105
 msgid "Color settings"
 msgstr ""
 
 #: src/blocks/accordion/accordion-item/inspector.js:79
 #: src/blocks/alert/inspector.js:55
-#: src/blocks/author/inspector.js:56
+#: src/blocks/author/inspector.js:54
 #: src/blocks/dynamic-separator/inspector.js:69
 #: src/blocks/features/feature/inspector.js:110
 #: src/blocks/features/inspector.js:177
 #: src/blocks/hero/inspector.js:150
-#: src/blocks/highlight/inspector.js:49
+#: src/blocks/highlight/inspector.js:38
 #: src/blocks/icon/inspector.js:333
 #: src/blocks/media-card/inspector.js:155
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:53
@@ -485,13 +485,13 @@ msgstr ""
 
 #: src/blocks/accordion/accordion-item/inspector.js:84
 #: src/blocks/alert/inspector.js:60
-#: src/blocks/author/inspector.js:61
-#: src/blocks/click-to-tweet/inspector.js:66
+#: src/blocks/author/inspector.js:59
+#: src/blocks/click-to-tweet/inspector.js:60
 #: src/blocks/events/event-item/inspector.js:23
 #: src/blocks/features/feature/inspector.js:114
 #: src/blocks/features/inspector.js:181
 #: src/blocks/hero/inspector.js:155
-#: src/blocks/highlight/inspector.js:54
+#: src/blocks/highlight/inspector.js:43
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:58
 #: src/blocks/row/column/inspector.js:175
 #: src/blocks/row/inspector.js:227
@@ -605,22 +605,22 @@ msgid "Edit avatar"
 msgstr ""
 
 #. translators: image to represent the post author
-#: src/blocks/author/edit.js:78
+#: src/blocks/author/edit.js:79
 msgid "Drop to upload as avatar"
 msgstr ""
 
 #. translators: placeholder text used for the author name
-#: src/blocks/author/edit.js:140
+#: src/blocks/author/edit.js:141
 msgid "Write author name…"
 msgstr ""
 
 #. translators: placeholder text used for the biography
-#: src/blocks/author/edit.js:155
+#: src/blocks/author/edit.js:156
 msgid "Write a biography that distills objective credibility and authority to your readers…"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/author/edit.js:164
+#: src/blocks/author/edit.js:165
 msgid "Author link…"
 msgstr ""
 
@@ -654,7 +654,7 @@ msgstr ""
 msgid "Born to express, not to impress. A maker making the world I want."
 msgstr ""
 
-#: src/blocks/author/inspector.js:41
+#: src/blocks/author/inspector.js:44
 msgid "Author settings"
 msgstr ""
 
@@ -716,11 +716,11 @@ msgid "Username"
 msgstr ""
 
 #. translators: the text of the click to tweet element
-#: src/blocks/click-to-tweet/edit.js:82
+#: src/blocks/click-to-tweet/edit.js:83
 msgid "Add a quote to tweet…"
 msgstr ""
 
-#: src/blocks/click-to-tweet/edit.js:109
+#: src/blocks/click-to-tweet/edit.js:110
 msgid "Add button…"
 msgstr ""
 
@@ -751,11 +751,11 @@ msgstr ""
 msgid "The easiest way to promote and advertise your blog, website, and business on Twitter."
 msgstr ""
 
-#: src/blocks/click-to-tweet/inspector.js:52
+#: src/blocks/click-to-tweet/inspector.js:50
 msgid "Text settings"
 msgstr ""
 
-#: src/blocks/click-to-tweet/inspector.js:71
+#: src/blocks/click-to-tweet/inspector.js:65
 #: src/blocks/social-profiles/inspector.js:91
 msgid "Button Color"
 msgstr ""
@@ -879,12 +879,12 @@ msgstr ""
 msgid "Location…"
 msgstr ""
 
-#: src/blocks/events/event-item/index.js:20
+#: src/blocks/events/event-item/index.js:25
 msgctxt "block name"
 msgid "Event Item"
 msgstr ""
 
-#: src/blocks/events/event-item/index.js:21
+#: src/blocks/events/event-item/index.js:26
 msgid "An event within the events block."
 msgstr ""
 
@@ -1974,7 +1974,7 @@ msgstr ""
 #: src/blocks/gallery-carousel/inspector.js:49
 #: src/blocks/gallery-collage/inspector.js:50
 #: src/blocks/gallery-masonry/inspector.js:56
-#: src/blocks/gallery-stacked/inspector.js:61
+#: src/blocks/gallery-stacked/inspector.js:62
 #: src/extensions/lightbox-controls/index.js:35
 msgid "Image lightbox is enabled."
 msgstr ""
@@ -1982,7 +1982,7 @@ msgstr ""
 #: src/blocks/gallery-carousel/inspector.js:49
 #: src/blocks/gallery-collage/inspector.js:50
 #: src/blocks/gallery-masonry/inspector.js:57
-#: src/blocks/gallery-stacked/inspector.js:62
+#: src/blocks/gallery-stacked/inspector.js:63
 #: src/extensions/lightbox-controls/index.js:36
 msgid "Toggle to enable the image lightbox."
 msgstr ""
@@ -2001,7 +2001,7 @@ msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:93
 #: src/blocks/gallery-masonry/inspector.js:91
-#: src/blocks/gallery-stacked/inspector.js:104
+#: src/blocks/gallery-stacked/inspector.js:103
 #: src/blocks/share/inspector.js:120
 #: src/blocks/social-profiles/inspector.js:125
 #: src/components/background/panel.js:219
@@ -2012,7 +2012,7 @@ msgstr ""
 #: src/blocks/gallery-carousel/variations.js:143
 #: src/blocks/gallery-collage/inspector.js:100
 #: src/blocks/gallery-masonry/inspector.js:102
-#: src/blocks/gallery-stacked/inspector.js:114
+#: src/blocks/gallery-stacked/inspector.js:113
 #: src/extensions/lightbox-controls/index.js:46
 msgid "Lightbox"
 msgstr ""
@@ -2073,13 +2073,13 @@ msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:32
 #: src/blocks/gallery-masonry/inspector.js:50
-#: src/blocks/gallery-stacked/inspector.js:55
+#: src/blocks/gallery-stacked/inspector.js:56
 msgid "Showing captions for each media item."
 msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:32
 #: src/blocks/gallery-masonry/inspector.js:51
-#: src/blocks/gallery-stacked/inspector.js:56
+#: src/blocks/gallery-stacked/inspector.js:57
 msgid "Toggle to show media captions."
 msgstr ""
 
@@ -2089,14 +2089,14 @@ msgstr ""
 
 #. translators: block style
 #: src/blocks/gallery-collage/inspector.js:93
-#: src/blocks/gallery-stacked/inspector.js:138
+#: src/blocks/gallery-stacked/inspector.js:134
 #: src/extensions/button-styles/index.js:25
 msgid "Shadow"
 msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:106
 #: src/blocks/gallery-masonry/inspector.js:109
-#: src/blocks/gallery-stacked/inspector.js:121
+#: src/blocks/gallery-stacked/inspector.js:120
 msgid "Captions"
 msgstr ""
 
@@ -2153,23 +2153,23 @@ msgstr ""
 msgid "Display multiple images in a single column stacked gallery."
 msgstr ""
 
-#: src/blocks/gallery-stacked/inspector.js:49
+#: src/blocks/gallery-stacked/inspector.js:50
 msgid "Fullwidth images are enabled."
 msgstr ""
 
-#: src/blocks/gallery-stacked/inspector.js:50
+#: src/blocks/gallery-stacked/inspector.js:51
 msgid "Toggle to fill the available gallery area with completely fullwidth images."
 msgstr ""
 
-#: src/blocks/gallery-stacked/inspector.js:86
+#: src/blocks/gallery-stacked/inspector.js:85
 msgid "Stacked settings"
 msgstr ""
 
-#: src/blocks/gallery-stacked/inspector.js:90
+#: src/blocks/gallery-stacked/inspector.js:89
 msgid "Fullwidth images"
 msgstr ""
 
-#: src/blocks/gallery-stacked/inspector.js:90
+#: src/blocks/gallery-stacked/inspector.js:89
 msgid "Fullwidth image"
 msgstr ""
 
@@ -2182,6 +2182,7 @@ msgid "This gif has an empty alt attribute"
 msgstr ""
 
 #: src/blocks/gif/edit.js:229
+#: src/blocks/gist/edit.js:99
 #: src/components/block-gallery/gallery-image.js:267
 msgid "Write caption…"
 msgstr ""
@@ -2228,6 +2229,15 @@ msgstr ""
 msgid "View this gist on GitHub"
 msgstr ""
 
+#: src/blocks/gist/edit.js:114
+#: src/blocks/gist/inspector.js:51
+msgid "Gist URL"
+msgstr ""
+
+#: src/blocks/gist/edit.js:120
+msgid "Add GitHub Gist URL…"
+msgstr ""
+
 #: src/blocks/gist/gist.js:106
 msgid "Loading Gist"
 msgstr ""
@@ -2261,10 +2271,6 @@ msgstr ""
 
 #: src/blocks/gist/inspector.js:49
 msgid "Gist settings"
-msgstr ""
-
-#: src/blocks/gist/inspector.js:51
-msgid "Gist URL"
 msgstr ""
 
 #: src/blocks/gist/inspector.js:56
@@ -2328,7 +2334,7 @@ msgstr ""
 msgid "Content width in pixels"
 msgstr ""
 
-#: src/blocks/highlight/edit.js:113
+#: src/blocks/highlight/edit.js:104
 msgid "Add highlighted text…"
 msgstr ""
 
@@ -2351,7 +2357,7 @@ msgstr ""
 msgid "Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative."
 msgstr ""
 
-#: src/blocks/highlight/inspector.js:35
+#: src/blocks/highlight/inspector.js:28
 msgid "Highlight settings"
 msgstr ""
 
@@ -6346,7 +6352,7 @@ msgstr ""
 
 #. translators: %d: a digit 1-3
 #: src/blocks/pricing-table/edit.js:45
-#: src/blocks/pricing-table/edit.js:131
+#: src/blocks/pricing-table/edit.js:130
 msgid "Plan %d"
 msgstr ""
 
@@ -6399,19 +6405,19 @@ msgstr ""
 msgid "Pricing Table settings"
 msgstr ""
 
-#: src/blocks/pricing-table/pricing-table-item/edit.js:30
+#: src/blocks/pricing-table/pricing-table-item/edit.js:29
 msgid "Buy Now"
 msgstr ""
 
-#: src/blocks/pricing-table/pricing-table-item/edit.js:82
+#: src/blocks/pricing-table/pricing-table-item/edit.js:81
 msgid "Plan A"
 msgstr ""
 
-#: src/blocks/pricing-table/pricing-table-item/edit.js:92
+#: src/blocks/pricing-table/pricing-table-item/edit.js:91
 msgid "$"
 msgstr ""
 
-#: src/blocks/pricing-table/pricing-table-item/edit.js:112
+#: src/blocks/pricing-table/pricing-table-item/edit.js:111
 msgid "Add features"
 msgstr ""
 
@@ -7652,23 +7658,23 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: src/extensions/colors/settings-modal-control.js:71
+#: src/extensions/colors/settings-modal-control.js:106
 msgid "Allow color settings throughout the editor."
 msgstr ""
 
-#: src/extensions/colors/settings-modal-control.js:82
+#: src/extensions/colors/settings-modal-control.js:117
 msgid "Custom color pickers"
 msgstr ""
 
-#: src/extensions/colors/settings-modal-control.js:83
+#: src/extensions/colors/settings-modal-control.js:118
 msgid "Allow styling with custom colors."
 msgstr ""
 
-#: src/extensions/colors/settings-modal-control.js:94
+#: src/extensions/colors/settings-modal-control.js:129
 msgid "Gradient styles"
 msgstr ""
 
-#: src/extensions/colors/settings-modal-control.js:95
+#: src/extensions/colors/settings-modal-control.js:130
 msgid "Allow styling with gradient fills."
 msgstr ""
 

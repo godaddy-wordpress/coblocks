@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import applyWithColors from './colors';
+import CoBlocksFontSizePicker from '../../components/fontsize-picker';
 
 /**
  * WordPress dependencies
@@ -9,7 +10,7 @@ import applyWithColors from './colors';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { InspectorControls, ContrastChecker, PanelColorSettings, FontSizePicker, withFontSizes } from '@wordpress/block-editor';
+import { InspectorControls, ContrastChecker, PanelColorSettings, withFontSizes } from '@wordpress/block-editor';
 import { PanelBody, withFallbackStyles } from '@wordpress/components';
 
 /**
@@ -37,11 +38,8 @@ class Inspector extends Component {
 		const {
 			buttonColor,
 			fallbackButtonColor,
-			fallbackFontSize,
 			fallbackTextColor,
-			fontSize,
 			setButtonColor,
-			setFontSize,
 			setTextColor,
 			textColor,
 		} = this.props;
@@ -50,11 +48,7 @@ class Inspector extends Component {
 			<Fragment>
 				<InspectorControls>
 					<PanelBody title={ __( 'Text settings', 'coblocks' ) } className="blocks-font-size">
-						<FontSizePicker
-							fallbackFontSize={ fallbackFontSize }
-							value={ fontSize.size }
-							onChange={ setFontSize }
-						/>
+						<CoBlocksFontSizePicker { ...this.props } />
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color settings', 'coblocks' ) }
