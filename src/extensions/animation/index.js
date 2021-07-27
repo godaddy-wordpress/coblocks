@@ -187,7 +187,14 @@ addFilter(
 	withAnimationSettings
 );
 
-const ALLOWED_ANIMATION_BLOCKS = [ 'core/media-text' ];
+const ALLOWED_ANIMATION_BLOCKS = [
+	'core/media-text',
+	'core/image',
+	'core/group',
+	'core/gallery',
+	'core/cover',
+	'core/columns',
+];
 
 const withAnimationSafeCheck = ( settings, block ) => {
 	if ( ALLOWED_ANIMATION_BLOCKS.includes( block.name ) ) {
