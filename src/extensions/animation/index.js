@@ -187,17 +187,8 @@ addFilter(
 	withAnimationSettings
 );
 
-const ALLOWED_ANIMATION_BLOCKS = [
-	'core/media-text',
-	'core/image',
-	'core/group',
-	'core/gallery',
-	'core/cover',
-	'core/columns',
-];
-
 const withAnimationSafeCheck = ( settings, block ) => {
-	if ( ALLOWED_ANIMATION_BLOCKS.includes( block.name ) ) {
+	if ( allowedBlocks.some( ( allowedBlock ) => allowedBlock.blockType === block.name ) ) {
 		if ( settings.animation === undefined && settings.className?.includes( 'coblocks-animate' ) ) {
 			const settingsClass = settings.className.split( ' ' );
 
