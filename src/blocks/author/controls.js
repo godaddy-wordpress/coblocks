@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
+import { Component } from '@wordpress/element';
 import { BlockControls, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
 import { Toolbar, Button } from '@wordpress/components';
 import { edit } from '@wordpress/icons';
@@ -22,7 +22,7 @@ class Controls extends Component {
 		const onSelectImage = ( media ) => setAttributes( { imgUrl: media.url, imgId: media.id } );
 
 		return (
-			<Fragment>
+			<>
 				<BlockControls>
 					{ imgUrl &&
 						<MediaUploadCheck>
@@ -44,7 +44,7 @@ class Controls extends Component {
 						</MediaUploadCheck>
 					}
 				</BlockControls>
-			</Fragment>
+			</>
 		);
 	}
 }
