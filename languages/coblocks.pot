@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-07-28T18:10:41+00:00\n"
+"POT-Creation-Date: 2021-07-28T21:08:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -439,7 +439,7 @@ msgstr ""
 #: src/blocks/accordion/accordion-item/inspector.js:73
 #: src/blocks/alert/inspector.js:49
 #: src/blocks/author/inspector.js:46
-#: src/blocks/click-to-tweet/inspector.js:54
+#: src/blocks/click-to-tweet/inspector.js:48
 #: src/blocks/dynamic-separator/inspector.js:63
 #: src/blocks/events/event-item/inspector.js:30
 #: src/blocks/features/feature/inspector.js:92
@@ -486,7 +486,7 @@ msgstr ""
 #: src/blocks/accordion/accordion-item/inspector.js:84
 #: src/blocks/alert/inspector.js:60
 #: src/blocks/author/inspector.js:57
-#: src/blocks/click-to-tweet/inspector.js:60
+#: src/blocks/click-to-tweet/inspector.js:54
 #: src/blocks/events/event-item/inspector.js:23
 #: src/blocks/features/feature/inspector.js:114
 #: src/blocks/features/inspector.js:181
@@ -600,7 +600,7 @@ msgstr ""
 msgid "An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action."
 msgstr ""
 
-#: src/blocks/author/controls.js:37
+#: src/blocks/author/controls.js:34
 msgid "Edit avatar"
 msgstr ""
 
@@ -706,21 +706,21 @@ msgstr ""
 msgid "Toggle to stack buttons on mobile."
 msgstr ""
 
-#: src/blocks/click-to-tweet/controls.js:36
-#: src/blocks/click-to-tweet/controls.js:43
+#: src/blocks/click-to-tweet/controls.js:33
+#: src/blocks/click-to-tweet/controls.js:40
 msgid "Twitter Username"
 msgstr ""
 
-#: src/blocks/click-to-tweet/controls.js:47
+#: src/blocks/click-to-tweet/controls.js:44
 msgid "Username"
 msgstr ""
 
 #. translators: the text of the click to tweet element
-#: src/blocks/click-to-tweet/edit.js:83
+#: src/blocks/click-to-tweet/edit.js:74
 msgid "Add a quote to tweet…"
 msgstr ""
 
-#: src/blocks/click-to-tweet/edit.js:110
+#: src/blocks/click-to-tweet/edit.js:101
 msgid "Add button…"
 msgstr ""
 
@@ -751,11 +751,11 @@ msgstr ""
 msgid "The easiest way to promote and advertise your blog, website, and business on Twitter."
 msgstr ""
 
-#: src/blocks/click-to-tweet/inspector.js:50
+#: src/blocks/click-to-tweet/inspector.js:44
 msgid "Text settings"
 msgstr ""
 
-#: src/blocks/click-to-tweet/inspector.js:65
+#: src/blocks/click-to-tweet/inspector.js:59
 #: src/blocks/social-profiles/inspector.js:91
 msgid "Button Color"
 msgstr ""
