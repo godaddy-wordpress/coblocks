@@ -56,17 +56,14 @@ const settings = {
 			label: __( 'Button', 'coblocks' ),
 		},
 	],
-	supports: {
-		align: [ 'wide', 'full' ],
-	},
-	example: {
-		attributes: {
-			align: 'wide',
-			restaurantIDs: [ '123456' ],
-			language: 'en-US',
-			pinned: true,
-		},
-	},
+	// example: {
+	// 	attributes: {
+	// 		align: 'wide',
+	// 		restaurantIDs: [ '123456' ],
+	// 		language: 'en-US',
+	// 		pinned: true,
+	// 	},
+	// },
 	attributes,
 	edit,
 	save,
