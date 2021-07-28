@@ -22,34 +22,32 @@ const Controls = ( props ) => {
 	} = attributes;
 
 	return (
-		<>
-			<BlockControls>
-				<AlignmentToolbar
-					value={ textAlign }
-					onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
-				/>
-				<Toolbar>
-					<div className="wp-block-coblocks-click-to-tweet__via-wrapper">
-						<label
-							aria-label={ __( 'Twitter Username', 'coblocks' ) }
-							className="wp-block-coblocks-click-to-tweet__via-label"
-							htmlFor="wp-block-coblocks-click-to-tweet__via"
-						>
-							<Icon icon={ icon } />
-						</label>
-						<input
-							aria-label={ __( 'Twitter Username', 'coblocks' ) }
-							className="wp-block-coblocks-click-to-tweet__via"
-							id="wp-block-coblocks-click-to-tweet__via"
-							onChange={ ( event ) => setAttributes( { via: event.target.value } ) }
-							placeholder={ __( 'Username', 'coblocks' ) }
-							type="text"
-							value={ via }
-						/>
-					</div>
-				</Toolbar>
-			</BlockControls>
-		</>
+		<BlockControls>
+			<AlignmentToolbar
+				value={ textAlign }
+				onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
+			/>
+			<Toolbar>
+				<div className="wp-block-coblocks-click-to-tweet__via-wrapper">
+					<label
+						aria-label={ __( 'Twitter Username', 'coblocks' ) }
+						className="wp-block-coblocks-click-to-tweet__via-label"
+						htmlFor="wp-block-coblocks-click-to-tweet__via"
+					>
+						<Icon icon={ icon } />
+					</label>
+					<input
+						aria-label={ __( 'Twitter Username', 'coblocks' ) }
+						className="wp-block-coblocks-click-to-tweet__via"
+						id="wp-block-coblocks-click-to-tweet__via"
+						onChange={ ( event ) => setAttributes( { via: event.target.value } ) }
+						placeholder={ __( 'Username', 'coblocks' ) }
+						type="text"
+						value={ via }
+					/>
+				</div>
+			</Toolbar>
+		</BlockControls>
 	);
 };
 

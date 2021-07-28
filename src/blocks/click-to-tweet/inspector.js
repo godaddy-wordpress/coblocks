@@ -40,38 +40,36 @@ const Inspector = ( props ) => {
 	} = props;
 
 	return (
-		<>
-			<InspectorControls>
-				<PanelBody title={ __( 'Text settings', 'coblocks' ) } className="blocks-font-size">
-					<CoBlocksFontSizePicker { ...props } />
-				</PanelBody>
-				<PanelColorSettings
-					title={ __( 'Color settings', 'coblocks' ) }
-					initialOpen={ false }
-					colorSettings={ [
-						{
-							value: textColor.color,
-							onChange: setTextColor,
-							label: __( 'Text color', 'coblocks' ),
-						},
-						{
-							value: buttonColor.color,
-							onChange: setButtonColor,
-							label: __( 'Button Color', 'coblocks' ),
-						},
-					] }
-				>
-					<ContrastChecker
-						{ ...{
-							textColor: '#ffffff',
-							backgroundColor: buttonColor.color,
-							fallbackButtonColor,
-							fallbackTextColor,
-						} }
-					/>
-				</PanelColorSettings>
-			</InspectorControls>
-		</>
+		<InspectorControls>
+			<PanelBody title={ __( 'Text settings', 'coblocks' ) } className="blocks-font-size">
+				<CoBlocksFontSizePicker { ...props } />
+			</PanelBody>
+			<PanelColorSettings
+				title={ __( 'Color settings', 'coblocks' ) }
+				initialOpen={ false }
+				colorSettings={ [
+					{
+						value: textColor.color,
+						onChange: setTextColor,
+						label: __( 'Text color', 'coblocks' ),
+					},
+					{
+						value: buttonColor.color,
+						onChange: setButtonColor,
+						label: __( 'Button Color', 'coblocks' ),
+					},
+				] }
+			>
+				<ContrastChecker
+					{ ...{
+						textColor: '#ffffff',
+						backgroundColor: buttonColor.color,
+						fallbackButtonColor,
+						fallbackTextColor,
+					} }
+				/>
+			</PanelColorSettings>
+		</InspectorControls>
 	);
 };
 
