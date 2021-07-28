@@ -17,7 +17,6 @@ import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { mediaUpload } from '@wordpress/editor';
 import { withSelect, select } from '@wordpress/data';
-import { Fragment } from '@wordpress/element';
 import { Button, DropZone } from '@wordpress/components';
 import { image as icon } from '@wordpress/icons';
 import {
@@ -91,7 +90,7 @@ const AuthorEdit = ( props ) => {
 	const onUploadImage = ( media ) => setAttributes( { imgUrl: media.url, imgId: media.id } );
 
 	return (
-		<Fragment>
+		<>
 			{ isSelected && (
 				<Controls
 					{ ...props }
@@ -162,7 +161,7 @@ const AuthorEdit = ( props ) => {
 					/>
 				</div>
 			</div>
-		</Fragment>
+		</>
 	);
 };
 
