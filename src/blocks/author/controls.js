@@ -2,51 +2,46 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component } from '@wordpress/element';
 import { BlockControls, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
 import { Toolbar, Button } from '@wordpress/components';
 import { edit } from '@wordpress/icons';
 
-class Controls extends Component {
-	render() {
-		const {
-			attributes,
-			setAttributes,
-		} = this.props;
+const Controls = ( props ) => {
+	const {
+		attributes,
+		setAttributes,
+	} = props;
 
-		const {
-			imgUrl,
-			imgId,
-		} = attributes;
+	const {
+		imgUrl,
+		imgId,
+	} = attributes;
 
-		const onSelectImage = ( media ) => setAttributes( { imgUrl: media.url, imgId: media.id } );
+	const onSelectImage = ( media ) => setAttributes( { imgUrl: media.url, imgId: media.id } );
 
-		return (
-			<>
-				<BlockControls>
-					{ imgUrl &&
-						<MediaUploadCheck>
-							<Toolbar>
-								<MediaUpload
-									onSelect={ onSelectImage }
-									allowedTypes={ [ 'image' ] }
-									value={ imgId }
-									render={ ( { open } ) => (
-										<Button
-											className="components-toolbar__control"
-											label={ __( 'Edit avatar', 'coblocks' ) }
-											icon={ edit }
-											onClick={ open }
-										/>
-									) }
+	return (
+		<BlockControls>
+			{ imgUrl &&
+				<MediaUploadCheck>
+					<Toolbar>
+						<MediaUpload
+							onSelect={ onSelectImage }
+							allowedTypes={ [ 'image' ] }
+							value={ imgId }
+							render={ ( { open } ) => (
+								<Button
+									className="components-toolbar__control"
+									label={ __( 'Edit avatar', 'coblocks' ) }
+									icon={ edit }
+									onClick={ open }
 								/>
-							</Toolbar>
-						</MediaUploadCheck>
-					}
-				</BlockControls>
-			</>
-		);
-	}
-}
+							) }
+						/>
+					</Toolbar>
+				</MediaUploadCheck>
+			}
+		</BlockControls>
+	);
+};
 
 export default Controls;
