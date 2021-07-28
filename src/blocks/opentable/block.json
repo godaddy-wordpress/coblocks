@@ -8,7 +8,7 @@
 		},
 		"align": {
 			"type": "string",
-			"default": "center"
+			"default": ""
 		},
 		"pinned": {
 			"type": "boolean",

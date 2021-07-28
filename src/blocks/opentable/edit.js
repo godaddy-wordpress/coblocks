@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { OpentableIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-import { useState, useEffect } from '@wordpress/element';
+
 /**
  * Internal dependencies
  */
@@ -14,9 +14,11 @@ import InspectorControls from './inspector';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { compose } from '@wordpress/compose';
+import { useState, useEffect } from '@wordpress/element';
+import { compose, usePrevious } from '@wordpress/compose';
 import {
 	Placeholder,
+	Notice,
 	Button,
 	withNotices,
 	Icon,
@@ -24,22 +26,12 @@ import {
 } from '@wordpress/components';
 
 const Edit = ( props ) => {
-	// const onSelectImages = ( images ) => {
-	// 	props.setAttributes( { images: images.map( ( image ) => pickRelevantMediaFiles( image ) ) } );
-	// };
-
-	// const onDropImages = ( images ) => {
-	// 	const imagesNormalized = images.map( ( image ) => pickRelevantMediaFiles( image ) );
-	// 	const currentImages = props.attributes.images || [];
-	// 	props.setAttributes( { images: currentImages.concat( imagesNormalized )	} );
-	// };
-
-	// const { className, noticeOperations, attributes, noticeUI, isSelected } = props;
-
 	const [ ridField, setRidField ] = useState( [] );
-
 	const [ queryResults, setQueryResults ] = useState( [] );
 	const { className, attributes } = props;
+	const [ noResultsFound, setNoResultsFound ] = useState( false );
+
+	const prevIDs = usePrevious( attributes.restaurantIDs );
 
 	//searches the opentable reservation network for restaurants with the given name or ID
 	const searchRestaurants = ( token ) => {
@@ -50,16 +42,24 @@ const Edit = ( props ) => {
 		)
 			.then( ( response ) => response.json() )
 			.then( ( json ) => {
-				setQueryResults( [] );
+				const results = [];
 				for ( const item in json.items ) {
 					const name = decodeURIComponent( json.items[ item ].name ) + ' (' + json.items[ item ].rid + ')';
-					setQueryResults( ( oldQueryResults ) => [ ...oldQueryResults, name ] );
+					results.push( name );
+				}
+				setQueryResults( results );
+				if ( results.length === 0 ) {
+					setNoResultsFound( true );
+				} else {
+					setNoResultsFound( false );
 				}
 			} );
 	};
 	useEffect( () => {
-		setRidField( attributes.restaurantIDs );
-	}, [] );
+		if ( prevIDs !== attributes.restaurantIDs ) {
+			setRidField( attributes.restaurantIDs );
+		}
+	}, [ attributes.restaurantIDs ] );
 
 	// const renderOpenTable = ( event ) => {
 	// 	if ( event ) {
@@ -113,12 +113,13 @@ const Edit = ( props ) => {
 									return token.substring( token.lastIndexOf( '(' ) + 1, token.length - 1 );
 								} }
 								__experimentalHowTo={ false }
+								tokenizeOnSpace={ false }
 							/>
 							<Button
 								isPrimary={ !! ridField }
 								isSecondary={ ! ridField }
 								type="submit"
-								disabled={ ! ridField }
+								disabled={ ridField.length < 1 }
 								onClick={ () => {
 									props.setAttributes( { restaurantIDs: ridField, pinned: true } );
 								} }
@@ -127,6 +128,8 @@ const Edit = ( props ) => {
 							</Button>
 						</div>
 						{ /* </form> */ }
+						{ noResultsFound && <Notice isDismissible={ false }>No results found.</Notice> }
+						<div></div>
 						<div className="components-placeholder__opentable-help-links">
 							<a target="_blank" rel="noopener noreferrer" href="https://restaurant.opentable.com/get-started/">{ __( 'Sign up for OpenTable', 'coblocks' ) }</a>
 						</div>

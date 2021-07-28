@@ -23,7 +23,7 @@ function Controls( { attributes, setAttributes } ) {
 
 	return (
 		<BlockControls>
-			{ restaurantIDs &&
+			{ restaurantIDs.length > 0 &&
 				<Toolbar controls={ toolbarControls } />
 			}
 		</BlockControls>

@@ -8,7 +8,7 @@ export default function save( { attributes } ) {
 	const isMultiple = rids.length > 1;
 
 	const styles = [ 'tall', 'standard', 'button' ];
-	if ( ( attributes.className === undefined || attributes.className === null ) || ( ! styles.includes( className ) ) ) {
+	if ( ! attributes?.className || ( ! styles.includes( className ) ) ) {
 		return (
 			<div className="iframe__overflow-wrapper">
 				<iframe
