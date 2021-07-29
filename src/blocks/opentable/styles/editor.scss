@@ -1,3 +1,46 @@
+.components-panel__body {
+
+	.block-editor-block-styles {
+		
+		.block-editor-block-styles__item {
+		
+			&[aria-label="Standard"]{
+				.block-editor-block-styles__item-preview{
+					background-image: url(images/opentable/standard.png);
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position: center
+				}
+				.block-editor-block-preview__content {
+					display: none;
+				}
+			}
+			&[aria-label="Button"]{
+				.block-editor-block-styles__item-preview{
+					background-image: url(images/opentable/button.png);
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position: center
+				}
+				.block-editor-block-preview__content {
+					display: none;
+				}
+			}
+			&[aria-label="Tall"]{
+				.block-editor-block-styles__item-preview{
+					background-image: url(images/opentable/tall.png);
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position: center
+				}
+				.block-editor-block-preview__content {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
 .wp-block-coblocks-opentable {
 
 	img:focus {
