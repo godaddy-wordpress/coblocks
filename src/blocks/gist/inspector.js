@@ -7,12 +7,10 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
 
 const Inspector = ( props ) => {
-	const updateURL = ( newURL ) => {
-		props.setAttributes( { url: newURL } );
-	};
-
 	const updateFile = ( newFile ) => {
-		props.setAttributes( { file: newFile } );
+		// While editing Gist enter preview state.
+		props.setPreview( false );
+		props.setNewFile( newFile );
 	};
 
 	const getGistMetaHelp = ( checked ) => {
@@ -22,11 +20,12 @@ const Inspector = ( props ) => {
 	const {
 		attributes,
 		setAttributes,
+		updateURL,
+		newFile,
 	} = props;
 
 	const {
 		url,
-		file,
 		meta,
 	} = attributes;
 
@@ -41,7 +40,8 @@ const Inspector = ( props ) => {
 					/>
 					<TextControl
 						label={ __( 'Gist File', 'coblocks' ) }
-						value={ file }
+						// newFile is lowercase to match `props.attributes.file`.
+						value={ newFile.toLowerCase() }
 						onChange={ updateFile }
 					/>
 					<ToggleControl

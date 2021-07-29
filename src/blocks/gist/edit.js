@@ -21,9 +21,9 @@ import { withNotices, Icon } from '@wordpress/components';
 import { useState, useEffect } from '@wordpress/element';
 
 const Edit = ( props ) => {
-	const [ preview, setPreview ] = useState( props.attributes.preview ? props.attributes.preview : false );
+	const [ preview, setPreview ] = useState( false );
+	const [ newFile, setNewFile ] = useState( props.attributes.file ? props.attributes.file : '' );
 	const [ gistCallbackId, setGistCallbackId ] = useState( '' );
-	const [ newFile, setNewFile ] = useState( '' );
 
 	useEffect( () => {
 		if ( !! gistCallbackId === false ) {
@@ -32,7 +32,7 @@ const Edit = ( props ) => {
 	}, [ gistCallbackId ] );
 
 	useEffect( () => {
-		if ( props.attributes.url ) {
+		if ( !! props.attributes.url ) {
 			setPreview( true );
 		}
 	}, [] );
@@ -46,10 +46,9 @@ const Edit = ( props ) => {
 				// Retrieve the list of files that are the keys of the JSON object
 				.then( ( json ) => Object.keys( json.files ) )
 				.then( ( keys ) => {
-					props.setAttributes( {
-						// Transform app.js to App.js, for example
-						file: getFileNameWithCapitalization( newFile, keys ),
-					} );
+					// Transform app.js to App.js, for example
+					const normalizedFilename = getFileNameWithCapitalization( newFile, keys );
+					props.setAttributes( { file: normalizedFilename } );
 
 					setPreview( true );
 				} );
@@ -63,8 +62,10 @@ const Edit = ( props ) => {
 	};
 
 	const getFileNameWithCapitalization = ( fileName, gistFiles ) => {
-		const fileFound = gistFiles.filter( ( file ) => file.toLowerCase() === fileName );
+		const fileFound = gistFiles.filter( ( file ) => file.toLowerCase() === fileName.toLowerCase() );
 
+		// It is possible for a gist to contain two files that differentiate name only by case.
+		// We will return the first file just like Gist api behavior.
 		if ( fileFound.length > 0 ) {
 			return fileFound[ 0 ];
 		}
@@ -73,25 +74,33 @@ const Edit = ( props ) => {
 		return '';
 	};
 
-	const updateURL = ( newURL ) => {
-		props.setAttributes( { url: newURL, file: '' } );
+	const updateURL = ( newURL = '' ) => {
+		// While URL is editing enter preview state
+		setPreview( false );
 
-		if ( 'undefined' === typeof newURL || ! newURL.trim() ) {
-			setPreview( false );
+		// A forward slash suffix will result in not found error from Gist API so remove it here.
+		const normalizeURL = newURL
+			// Remove foward slash suffix at end of string.
+			.replace( /\/$/, '' )
+			// Remove forward slash suffix between `#file-` indicator.
+			.replace( /(.*)(\/)(#file-.*)/, '$1$3' );
+
+		// Handle no specified file.
+		if ( normalizeURL.match( /#file-*/ ) === null ) {
+			setNewFile( '' );
+			props.setAttributes( { url: normalizeURL } );
+
+			clearErrors();
 			return;
 		}
 
 		// Check for #file in the entered URL. If it's there, let's use it properly.
-		const file = newURL.split( '#file-' ).pop();
+		const file = normalizeURL.split( '#file-' ).pop();
 
-		if ( newURL.match( /#file-*/ ) !== null ) {
-			const newURLWithNoFile = newURL.replace( file, '' ).replace( '#file-', '' );
-
-			props.setAttributes( { url: newURLWithNoFile } );
-			setNewFile( file.replace( /-([^-]*)$/, '.' + '$1' ) );
-		} else if ( ! props.attributes.url ) {
-			setPreview( true );
-		}
+		// File specified.
+		const newURLWithNoFile = normalizeURL.replace( file, '' ).replace( '#file-', '' );
+		setNewFile( file.replace( /-([^-]*)$/, '.' + '$1' ) );
+		props.setAttributes( { url: newURLWithNoFile } );
 
 		clearErrors();
 	};
@@ -120,8 +129,21 @@ const Edit = ( props ) => {
 
 	return (
 		<>
-			{ url && url.length > 0 && isSelected && <Controls { ...props } /> }
-			{ url && url.length > 0 && isSelected && <Inspector { ...props } /> }
+			{ url && url.length > 0 && isSelected &&
+				<Controls
+					preview={ preview }
+					setPreview={ setPreview }
+				/>
+			}
+			{ url && url.length > 0 && isSelected &&
+				<Inspector
+					updateURL={ updateURL }
+					setPreview={ setPreview }
+					setNewFile={ setNewFile }
+					newFile={ newFile }
+					{ ...props }
+				/>
+			}
 			{ preview ? (
 				url && (
 					<div className={ classnames( className, meta ? null : 'no-meta' ) }>
