@@ -136,14 +136,24 @@ const withAnimationSettings = createHigherOrderComponent( ( BlockListBlock ) => 
 	return enhance( ( { select, ...props } ) => {
 		let wrapperProps = props.wrapperProps;
 
-		const block = select( 'core/block-editor' ).getBlock( props.rootClientId || props.clientId );
 		const blockName	= select( 'core/block-editor' ).getBlockName( props.rootClientId || props.clientId );
 
-		if ( ! allowedBlocks.some( ( allowedBlock ) => allowedBlock.blockType === blockName && ! allowedBlock.animateChildren ) || ! block?.attributes?.animation ) {
+		// Block not supported return unmodified.
+		if ( ! allowedBlocks.some( ( allowedBlock ) => allowedBlock.blockType === blockName && ! allowedBlock.animateChildren ) ) {
 			return <BlockListBlock { ...props } />;
 		}
 
-		const { animation } = block.attributes;
+		if ( ! props.attributes?.animation ) {
+			// If animation is unset ensure that `coblocks-animate` class is unset.
+			if ( props.attributes?.className?.includes( 'coblocks-animate' ) ) {
+				const classList = props.attributes?.className.split( ' ' );
+				props.attributes.className = classList.filter( ( c ) => c !== 'coblocks-animate' ).join( ' ' );
+			}
+
+			return <BlockListBlock { ...props } />;
+		}
+
+		const { animation } = props.attributes;
 
 		// Apply animation classes to block wrapper only if the animation attribute has changed.
 		const prevAnimation = useRef();
@@ -185,22 +195,4 @@ addFilter(
 	'editor.BlockListBlock',
 	'coblocks/withAnimationSettings',
 	withAnimationSettings
-);
-
-const withAnimationSafeCheck = ( settings, block ) => {
-	if ( allowedBlocks.some( ( allowedBlock ) => allowedBlock.blockType === block.name ) ) {
-		if ( settings.animation === undefined && settings.className?.includes( 'coblocks-animate' ) ) {
-			const settingsClass = settings.className.split( ' ' );
-
-			settings.className = settingsClass.filter( ( c ) => c !== 'coblocks-animate' ).join( ' ' );
-		}
-	}
-
-	return settings;
-};
-
-addFilter(
-	'blocks.getBlockAttributes',
-	'coblocks/withAnimationSafeCheck',
-	withAnimationSafeCheck
 );
