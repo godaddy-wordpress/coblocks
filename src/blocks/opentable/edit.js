@@ -1,3 +1,5 @@
+/* global coblocksBlockData */
+
 /**
  * External dependencies
  */
@@ -61,6 +63,34 @@ const Edit = ( props ) => {
 		}
 	}, [ attributes.restaurantIDs ] );
 
+	useEffect( () => {
+		if ( attributes.language === '' && typeof coblocksBlockData.localeCode !== 'undefined' ) {
+			switch ( coblocksBlockData.localeCode.substring( 0, coblocksBlockData.localeCode.indexOf( '_' ) ) ) {
+				case 'fr':
+					props.setAttributes( { language: 'fr-CA' } );
+					break;
+				case 'de':
+					props.setAttributes( { language: 'de-DE' } );
+					break;
+				case 'es':
+					props.setAttributes( { language: 'es-MX' } );
+					break;
+				case 'ja':
+					props.setAttributes( { language: 'ja-JP' } );
+					break;
+				case 'nl':
+					props.setAttributes( { language: 'nl-NL' } );
+					break;
+				case 'it':
+					props.setAttributes( { language: 'it-IT' } );
+					break;
+				default:
+					props.setAttributes( { language: 'en-US' } );
+					break;
+			}
+		}
+	}, [] );
+
 	// const renderOpenTable = ( event ) => {
 	// 	if ( event ) {
 	// 		event.preventDefault();
@@ -109,9 +139,6 @@ const Edit = ( props ) => {
 								onInputChange={ ( token ) => {
 									searchRestaurants( token );
 								} }
-								saveTransform={ ( token ) => {
-									return token.substring( token.lastIndexOf( '(' ) + 1, token.length - 1 );
-								} }
 								__experimentalHowTo={ false }
 								tokenizeOnSpace={ false }
 							/>
@@ -121,7 +148,12 @@ const Edit = ( props ) => {
 								type="submit"
 								disabled={ ridField.length < 1 }
 								onClick={ () => {
-									props.setAttributes( { restaurantIDs: ridField, pinned: true } );
+									const parsedRestaurants = [];
+									for ( const restaurant in ridField ) {
+										const r = ridField[ restaurant ];
+										parsedRestaurants.push( r.substring( r.lastIndexOf( '(' ) + 1, r.length - 1 ) );
+									}
+									props.setAttributes( { restaurantIDs: parsedRestaurants, pinned: true } );
 								} }
 							>
 								{ __( 'Embed', 'coblocks' ) }

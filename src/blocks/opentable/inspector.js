@@ -38,6 +38,7 @@ const Inspector = ( props ) => {
 						setAttributes( { language } );
 					} }
 					options={ [
+						{ value: '', label: __( 'Select language', 'coblocks' ), disabled: true },
 						{ value: 'en-US', label: 'English-US' },
 						{ value: 'fr-CA', label: 'Français-CA' },
 						{ value: 'de-DE', label: 'Deutsch-DE' },

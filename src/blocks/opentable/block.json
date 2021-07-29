@@ -16,7 +16,7 @@
 		},
 		"language": {
 			"type": "string",
-			"default": "en-US"
+			"default": ""
 		}
 	}
 }
