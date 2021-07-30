@@ -95,3 +95,13 @@ ul {
 		}
 	}
 }
+
+.rich-text {
+	p {
+		color: inherit !important;
+	}
+}
+
+.wp-block-quote__citation {
+	color: inherit !important;
+}
