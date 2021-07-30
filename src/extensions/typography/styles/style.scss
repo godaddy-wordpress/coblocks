@@ -96,12 +96,11 @@ ul {
 	}
 }
 
-.rich-text {
-	p {
-		color: inherit !important;
+.wp-block-quote[style*="color"],
+.editor-styles-wrapper .wp-block-quote[style*="color"] {
+	> div > p, 
+	p, 
+	cite {
+		color: inherit;
 	}
-}
-
-.wp-block-quote__citation {
-	color: inherit !important;
 }
