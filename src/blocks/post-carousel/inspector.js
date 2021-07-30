@@ -157,16 +157,18 @@ class Inspector extends Component {
 							{ postFeedType === 'internal' &&
 								useUpdatedQueryControls ? updatedQueryControls() : deprecatedQueryControls
 							}
-							<RadioControl
-								label={ __( 'Category relation', 'coblocks' ) }
-								help={ __( 'The logical relationship between each category when there is more than one.', 'coblocks' ) }
-								selected={ categoryRelation }
-								options={ [
-									{ label: __( 'Or', 'coblocks' ), value: 'or' },
-									{ label: __( 'And', 'coblocks' ), value: 'and' },
-								] }
-								onChange={ ( value ) => setAttributes( { categoryRelation: value } ) }
-							/>
+							{ categories && categories.length > 1 &&
+								<RadioControl
+									label={ __( 'Category relation', 'coblocks' ) }
+									help={ __( 'The logical relationship between each category when there is more than one.', 'coblocks' ) }
+									selected={ categoryRelation }
+									options={ [
+										{ label: __( 'Or', 'coblocks' ), value: 'or' },
+										{ label: __( 'And', 'coblocks' ), value: 'and' },
+									] }
+									onChange={ ( value ) => setAttributes( { categoryRelation: value } ) }
+								/>
+							}
 							<RangeControl
 								label={ __( 'Number of posts', 'coblocks' ) }
 								value={ postsToShow }
