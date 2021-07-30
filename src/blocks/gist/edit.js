@@ -79,7 +79,7 @@ const Edit = ( props ) => {
 		setPreview( false );
 
 		// A forward slash suffix will result in not found error from Gist API so remove it here.
-		const normalizeURL = newURL
+		const normalizeURL = newURL.trim()
 			// Remove foward slash suffix at end of string.
 			.replace( /\/$/, '' )
 			// Remove forward slash suffix between `#file-` indicator.
