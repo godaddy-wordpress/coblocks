@@ -84,12 +84,12 @@ const Gist = ( props ) => {
 			return `&file=${ fileSplit.replace( 'file-', '' ).replace( '-', '.' ) }`;
 		}
 
-		// Else the user wants to link the whole Gist repository.
+		// Else the user wants to link the whole Gist.
 		return '';
 	};
 
 	const _transformedURL = ( callback ) => {
-		// Construct a gist url that will allow us to redner the Gist into our page.
+		// Construct a gist url that will allow us to render the Gist into our page.
 		const id = _getID();
 		if ( ! id ) {
 			return false;
