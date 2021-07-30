@@ -3,7 +3,7 @@
  */
 import classnames from 'classnames';
 import Slick from 'react-slick';
-import { isUndefined, pickBy, get } from 'lodash';
+import { isUndefined, pickBy, get, isEqual } from 'lodash';
 import { PostCarouselIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
@@ -337,7 +337,7 @@ class PostCarousel extends Component {
 
 export default compose( [
 	withSelect( ( select, props ) => {
-		const { postsToShow, order, orderBy, categories } = props.attributes;
+		const { postsToShow, order, orderBy, categories, categoryRelation } = props.attributes;
 		const { getEntityRecords, getMedia } = select( 'core' );
 		const { getEditorSettings, getCurrentPost } = select( 'core/editor' );
 
@@ -376,11 +376,15 @@ export default compose( [
 				categories: catIds,
 				order,
 				orderby: orderBy,
-				per_page: postsToShow,
+				per_page: 'and' === categoryRelation ? '-1' : postsToShow,
 				exclude: currentPost.id,
 			}, ( value ) => ! isUndefined( value ) );
 
-			const latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
+			let latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
+
+			if ( 'and' === categoryRelation && latestPosts ) {
+				latestPosts = latestPosts.filter( ( post ) => isEqual( post.categories, catIds ) ).slice( 0, postsToShow );
+			}
 
 			return ! Array.isArray( latestPosts )
 				? latestPosts
