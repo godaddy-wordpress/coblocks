@@ -548,8 +548,6 @@ jobs:
           password: $DOCKERHUB_PASSWORD
     parallelism: 4
     steps:
-      - browser-tools/install-browser-tools:
-        firefox-version: 90.0.2
       - checkout
       - setup_e2e_env_var
       - changed_files_with_extension:
@@ -582,6 +580,8 @@ jobs:
           password: $DOCKERHUB_PASSWORD
     parallelism: 4
     steps:
+      - browser-tools/install-browser-tools:
+        firefox-version: 90.0.2
       - checkout
       - setup_e2e_env_var
       - changed_files_with_extension:
