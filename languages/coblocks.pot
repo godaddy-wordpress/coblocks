@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-08-03T01:13:08+00:00\n"
+"POT-Creation-Date: 2021-08-03T22:22:51+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -265,18 +265,18 @@ msgstr ""
 msgid "An error has occurred, check for calendar privileges to make sure it is public or try again later."
 msgstr ""
 
-#: src/blocks/post-carousel/index.php:40
-#: src/blocks/posts/index.php:40
+#: src/blocks/post-carousel/index.php:42
+#: src/blocks/posts/index.php:42
 msgid "RSS error:"
 msgstr ""
 
-#: src/blocks/post-carousel/index.php:51
-#: src/blocks/posts/index.php:51
+#: src/blocks/post-carousel/index.php:53
+#: src/blocks/posts/index.php:53
 msgid "An error has occurred, which probably means the feed is down. Try again later."
 msgstr ""
 
-#: src/blocks/post-carousel/index.php:191
-#: src/blocks/posts/index.php:171
+#: src/blocks/post-carousel/index.php:193
+#: src/blocks/posts/index.php:173
 msgctxt "placeholder when a post has no title"
 msgid "(no title)"
 msgstr ""
@@ -1012,8 +1012,8 @@ msgstr ""
 
 #: src/blocks/features/inspector.js:92
 #: src/blocks/food-and-drinks/inspector.js:103
-#: src/blocks/post-carousel/inspector.js:86
-#: src/blocks/posts/inspector.js:172
+#: src/blocks/post-carousel/inspector.js:87
+#: src/blocks/posts/inspector.js:173
 #: src/blocks/services/inspector.js:67
 msgid "Columns"
 msgstr ""
@@ -1242,7 +1242,7 @@ msgstr ""
 #. translators: abbreviation for small size
 #: src/blocks/food-and-drinks/inspector.js:41
 #: src/blocks/gallery-collage/inspector.js:71
-#: src/blocks/posts/inspector.js:65
+#: src/blocks/posts/inspector.js:66
 #: src/components/gutter-control/gutter-control.js:17
 #: src/components/option-selector-control/index.js:30
 #: src/components/size-control/index.js:47
@@ -1258,7 +1258,7 @@ msgstr ""
 #: src/blocks/food-and-drinks/inspector.js:42
 #: src/blocks/gallery-collage/inspector.js:72
 #: src/blocks/icon/icon-size-select.js:16
-#: src/blocks/posts/inspector.js:66
+#: src/blocks/posts/inspector.js:67
 #: src/blocks/share/inspector.js:72
 #: src/blocks/social-profiles/inspector.js:77
 #: src/components/dimensions-control/dimensions-select.js:15
@@ -1275,7 +1275,7 @@ msgstr ""
 #. translators: abbreviation for medium size
 #: src/blocks/food-and-drinks/inspector.js:47
 #: src/blocks/gallery-collage/inspector.js:77
-#: src/blocks/posts/inspector.js:70
+#: src/blocks/posts/inspector.js:71
 #: src/components/gutter-control/gutter-control.js:23
 #: src/components/option-selector-control/index.js:36
 #: src/components/size-control/index.js:54
@@ -1291,7 +1291,7 @@ msgstr ""
 #: src/blocks/food-and-drinks/inspector.js:48
 #: src/blocks/gallery-collage/inspector.js:78
 #: src/blocks/icon/icon-size-select.js:21
-#: src/blocks/posts/inspector.js:71
+#: src/blocks/posts/inspector.js:72
 #: src/blocks/share/inspector.js:73
 #: src/blocks/social-profiles/inspector.js:78
 #: src/components/dimensions-control/dimensions-select.js:20
@@ -1308,7 +1308,7 @@ msgstr ""
 #. translators: abbreviation for large size
 #: src/blocks/food-and-drinks/inspector.js:53
 #: src/blocks/gallery-collage/inspector.js:83
-#: src/blocks/posts/inspector.js:75
+#: src/blocks/posts/inspector.js:76
 #: src/components/gutter-control/gutter-control.js:29
 #: src/components/option-selector-control/index.js:42
 #: src/components/size-control/index.js:60
@@ -1324,7 +1324,7 @@ msgstr ""
 #: src/blocks/food-and-drinks/inspector.js:54
 #: src/blocks/gallery-collage/inspector.js:84
 #: src/blocks/icon/icon-size-select.js:26
-#: src/blocks/posts/inspector.js:76
+#: src/blocks/posts/inspector.js:77
 #: src/blocks/share/inspector.js:74
 #: src/blocks/social-profiles/inspector.js:79
 #: src/components/dimensions-control/dimensions-select.js:25
@@ -1341,7 +1341,7 @@ msgstr ""
 #. translators: abbreviation for largest size
 #. translators: abbreviation for extra large size
 #: src/blocks/food-and-drinks/inspector.js:59
-#: src/blocks/posts/inspector.js:80
+#: src/blocks/posts/inspector.js:81
 #: src/components/option-selector-control/index.js:48
 #: src/components/size-control/index.js:75
 #: src/components/size-control/index.js:122
@@ -1354,7 +1354,7 @@ msgstr ""
 #. translators: label for extra large size option
 #: src/blocks/food-and-drinks/inspector.js:60
 #: src/blocks/icon/icon-size-select.js:30
-#: src/blocks/posts/inspector.js:81
+#: src/blocks/posts/inspector.js:82
 #: src/components/dimensions-control/dimensions-select.js:30
 #: src/extensions/padding-controls/index.js:51
 msgid "Huge"
@@ -1362,7 +1362,7 @@ msgstr ""
 
 #: src/blocks/food-and-drinks/inspector.js:66
 #: src/blocks/map/inspector.js:105
-#: src/blocks/posts/inspector.js:283
+#: src/blocks/posts/inspector.js:298
 #: src/blocks/row/inspector.js:128
 #: src/blocks/services/inspector.js:31
 msgid "Styles"
@@ -6204,62 +6204,82 @@ msgstr ""
 msgid "rss"
 msgstr ""
 
-#: src/blocks/post-carousel/inspector.js:54
+#: src/blocks/post-carousel/inspector.js:55
 msgid "Post Carousel settings"
 msgstr ""
 
-#: src/blocks/post-carousel/inspector.js:57
-#: src/blocks/posts/inspector.js:143
+#: src/blocks/post-carousel/inspector.js:58
+#: src/blocks/posts/inspector.js:144
 msgid "Post date"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:61
-#: src/blocks/posts/inspector.js:147
-msgid "Showing the publish date."
 msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:62
 #: src/blocks/posts/inspector.js:148
+msgid "Showing the publish date."
+msgstr ""
+
+#: src/blocks/post-carousel/inspector.js:63
+#: src/blocks/posts/inspector.js:149
 msgid "Toggle to show the publish date."
 msgstr ""
 
-#: src/blocks/post-carousel/inspector.js:67
-#: src/blocks/posts/inspector.js:153
+#: src/blocks/post-carousel/inspector.js:68
+#: src/blocks/posts/inspector.js:154
 msgid "Post content"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:71
-#: src/blocks/posts/inspector.js:157
-msgid "Showing the post content."
 msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:72
 #: src/blocks/posts/inspector.js:158
+msgid "Showing the post content."
+msgstr ""
+
+#: src/blocks/post-carousel/inspector.js:73
+#: src/blocks/posts/inspector.js:159
 msgid "Toggle to show the post content."
 msgstr ""
 
-#: src/blocks/post-carousel/inspector.js:78
-#: src/blocks/posts/inspector.js:164
+#: src/blocks/post-carousel/inspector.js:79
+#: src/blocks/posts/inspector.js:165
 msgid "Max words in content"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:145
-#: src/blocks/posts/inspector.js:254
-msgid "Feed settings"
 msgstr ""
 
 #: src/blocks/post-carousel/inspector.js:149
 #: src/blocks/posts/inspector.js:258
+msgid "Feed settings"
+msgstr ""
+
+#: src/blocks/post-carousel/inspector.js:153
+#: src/blocks/posts/inspector.js:262
 msgid "My blog"
 msgstr ""
 
-#: src/blocks/post-carousel/inspector.js:150
-#: src/blocks/posts/inspector.js:259
+#: src/blocks/post-carousel/inspector.js:154
+#: src/blocks/posts/inspector.js:263
 msgid "External feed"
 msgstr ""
 
-#: src/blocks/post-carousel/inspector.js:160
-#: src/blocks/posts/inspector.js:270
+#: src/blocks/post-carousel/inspector.js:165
+#: src/blocks/posts/inspector.js:274
+msgid "Category relation"
+msgstr ""
+
+#: src/blocks/post-carousel/inspector.js:166
+#: src/blocks/posts/inspector.js:275
+msgid "The logical relationship between each category when there is more than one."
+msgstr ""
+
+#: src/blocks/post-carousel/inspector.js:169
+#: src/blocks/posts/inspector.js:278
+msgid "Or"
+msgstr ""
+
+#: src/blocks/post-carousel/inspector.js:170
+#: src/blocks/posts/inspector.js:279
+msgid "And"
+msgstr ""
+
+#: src/blocks/post-carousel/inspector.js:176
+#: src/blocks/posts/inspector.js:285
 msgid "Number of posts"
 msgstr ""
 
@@ -6294,47 +6314,47 @@ msgstr ""
 msgid "Display posts or an RSS feed as stacked or horizontal cards."
 msgstr ""
 
-#: src/blocks/posts/inspector.js:88
 #: src/blocks/posts/inspector.js:89
-#: src/blocks/posts/inspector.js:101
+#: src/blocks/posts/inspector.js:90
 #: src/blocks/posts/inspector.js:102
+#: src/blocks/posts/inspector.js:103
 #: src/blocks/services/utilities.js:40
 msgid "Square"
 msgstr ""
 
-#: src/blocks/posts/inspector.js:93
 #: src/blocks/posts/inspector.js:94
-#: src/blocks/posts/inspector.js:116
+#: src/blocks/posts/inspector.js:95
 #: src/blocks/posts/inspector.js:117
+#: src/blocks/posts/inspector.js:118
 #: src/blocks/services/utilities.js:45
 msgid "Circle"
 msgstr ""
 
-#: src/blocks/posts/inspector.js:106
+#: src/blocks/posts/inspector.js:107
 msgid "4:3"
 msgstr ""
 
-#: src/blocks/posts/inspector.js:107
+#: src/blocks/posts/inspector.js:108
 msgid "4:3 Aspect ratio"
 msgstr ""
 
-#: src/blocks/posts/inspector.js:111
+#: src/blocks/posts/inspector.js:112
 msgid "16:9"
 msgstr ""
 
-#: src/blocks/posts/inspector.js:112
+#: src/blocks/posts/inspector.js:113
 msgid "16:9 Aspect ratio"
 msgstr ""
 
-#: src/blocks/posts/inspector.js:140
+#: src/blocks/posts/inspector.js:141
 msgid "Posts settings"
 msgstr ""
 
-#: src/blocks/posts/inspector.js:185
+#: src/blocks/posts/inspector.js:186
 msgid "Thumbnail style"
 msgstr ""
 
-#: src/blocks/posts/inspector.js:193
+#: src/blocks/posts/inspector.js:194
 msgid "Thumbnail size"
 msgstr ""
 
