@@ -32,6 +32,7 @@ const Edit = ( props ) => {
 	const [ queryResults, setQueryResults ] = useState( [] );
 	const { className, attributes } = props;
 	const [ noResultsFound, setNoResultsFound ] = useState( false );
+	const [ isEditing, setIsEditing ] = useState( ! attributes.restaurantIDs.length );
 
 	const prevIDs = usePrevious( attributes.restaurantIDs );
 
@@ -97,7 +98,10 @@ const Edit = ( props ) => {
 
 	return (
 		<>
-			<Controls { ...props } />
+			<Controls
+				isEditing={ isEditing }
+				setIsEditing={ setIsEditing }
+				{ ...props } />
 			<InspectorControls
 				className={ className }
 				attributes={ attributes }
@@ -105,7 +109,7 @@ const Edit = ( props ) => {
 			/>
 			<div className={ className }>
 
-				{ ( ! attributes.pinned ) ? (
+				{ ( isEditing ) ? (
 					<Placeholder
 						icon={ <Icon icon={ icon } /> }
 						label={ __( 'OpenTable', 'coblocks' ) }
@@ -148,6 +152,7 @@ const Edit = ( props ) => {
 										parsedRestaurants.push( r.substring( r.lastIndexOf( '(' ) + 1, r.length - 1 ) );
 									}
 									props.setAttributes( { restaurantIDs: parsedRestaurants, pinned: true } );
+									setIsEditing( false );
 								} }
 							>
 								{ __( 'Embed', 'coblocks' ) }

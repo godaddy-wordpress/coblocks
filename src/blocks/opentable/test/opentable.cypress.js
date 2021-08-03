@@ -31,13 +31,17 @@ describe( 'Test CoBlocks OpenTable Block', function() {
 
 		cy.get( '.wp-block-coblocks-opentable .components-form-token-field__input' ).type( 'test' );
 
+		cy.wait( 1000 );
+
 		cy.get( '.components-form-token-field__suggestion' ).first().click();
 
-		// helpers.savePage();
+		cy.get( 'button[type="submit"]' ).click();
 
-		// helpers.checkForBlockErrors( 'coblocks/opentable' );
+		helpers.savePage();
 
-		// helpers.viewPage();
+		helpers.checkForBlockErrors( 'coblocks/opentable' );
+
+		helpers.viewPage();
 
 		// cy.get( '.wp-block-coblocks-opentable' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
 
