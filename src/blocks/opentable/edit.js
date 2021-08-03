@@ -4,6 +4,7 @@
  * External dependencies
  */
 import { OpentableIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { debounce } from 'lodash';
 
 /**
  * Internal dependencies
@@ -16,7 +17,7 @@ import InspectorControls from './inspector';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { useState, useEffect } from '@wordpress/element';
+import { useState, useEffect, useCallback } from '@wordpress/element';
 import { compose, usePrevious } from '@wordpress/compose';
 import {
 	Placeholder,
@@ -44,7 +45,7 @@ const Edit = ( props ) => {
 	};
 
 	//searches the opentable reservation network for restaurants with the given name or ID
-	const searchRestaurants = ( token ) => {
+	const searchRestaurants = useCallback( debounce( ( token ) => {
 		fetch(
 			'https://www.opentable.com/widget/reservation/restaurant-search?pageSize=15' +
 				'&query=' +
@@ -61,7 +62,8 @@ const Edit = ( props ) => {
 				setQueryResults( results );
 				setNoResultsFound( !! results?.length === 0 );
 			} );
-	};
+	}, 500 ), [] );
+
 	useEffect( () => {
 		if ( prevIDs !== attributes.restaurantIDs ) {
 			const restaurantNames = attributes.restaurantIDs.map( ( restaurantObject ) => restaurantObject.name );
