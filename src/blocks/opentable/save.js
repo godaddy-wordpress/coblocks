@@ -4,10 +4,14 @@ import { transformRIDs } from './opentable';
 export default function save( { attributes } ) {
 	const rids = attributes.restaurantIDs;
 	const className = ( attributes.className === undefined ) ? '' : attributes.className.substring( attributes.className.lastIndexOf( '-' ) + 1 );
-	const ridsString = transformRIDs( rids, className );
 	const isMultiple = rids.length > 1;
 
 	const styles = [ 'tall', 'standard', 'button' ];
+	if ( rids.length === 0 ) {
+		return;
+	}
+
+	const ridsString = transformRIDs( rids, className );
 	if ( ! attributes?.className || ( ! styles.includes( className ) ) ) {
 		return (
 			<div className="iframe__overflow-wrapper">

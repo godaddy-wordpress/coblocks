@@ -46,7 +46,8 @@ const Edit = ( props ) => {
 			.then( ( json ) => {
 				const results = [];
 				for ( const item in json.items ) {
-					const name = decodeURIComponent( json.items[ item ].name ) + ' (' + json.items[ item ].rid + ')';
+					const r = json.items[ item ];
+					const name = `${ decodeURIComponent( r.name ) },  ${ decodeURIComponent( r.addressResponse.city ) }, ${ decodeURIComponent( r.addressResponse.country ) } (${ r.rid })`;
 					results.push( name );
 				}
 				setQueryResults( results );
