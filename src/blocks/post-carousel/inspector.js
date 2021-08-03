@@ -136,6 +136,9 @@ class Inspector extends Component {
 						typeof token === 'string' ? suggestions[ token ] : token
 					);
 					setAttributes( { categories: allCategories } );
+					if ( tokens.length < 2 ) {
+						setAttributes( { categoryRelation: 'or' } );
+					}
 				} }
 			/> );
 		};
