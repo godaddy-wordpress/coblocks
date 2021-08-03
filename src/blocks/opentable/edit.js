@@ -35,6 +35,13 @@ const Edit = ( props ) => {
 
 	const prevIDs = usePrevious( attributes.restaurantIDs );
 
+	const getLocaleCode = () => {
+		if ( typeof coblocksBlockData.localeCode !== 'undefined' ) {
+			return coblocksBlockData.localeCode;
+		}
+		return '';
+	};
+
 	//searches the opentable reservation network for restaurants with the given name or ID
 	const searchRestaurants = ( token ) => {
 		fetch(
@@ -46,16 +53,12 @@ const Edit = ( props ) => {
 			.then( ( json ) => {
 				const results = [];
 				for ( const item in json.items ) {
-					const r = json.items[ item ];
-					const name = `${ decodeURIComponent( r.name ) },  ${ decodeURIComponent( r.addressResponse.city ) }, ${ decodeURIComponent( r.addressResponse.country ) } (${ r.rid })`;
+					const itemProps = json.items[ item ];
+					const name = `${ decodeURIComponent( itemProps.name ) },  ${ decodeURIComponent( itemProps.addressResponse.city ) }, ${ decodeURIComponent( itemProps.addressResponse.country ) } (${ itemProps.rid })`;
 					results.push( name );
 				}
 				setQueryResults( results );
-				if ( results.length === 0 ) {
-					setNoResultsFound( true );
-				} else {
-					setNoResultsFound( false );
-				}
+				setNoResultsFound( !! results?.length === 0 );
 			} );
 	};
 	useEffect( () => {
@@ -65,8 +68,8 @@ const Edit = ( props ) => {
 	}, [ attributes.restaurantIDs ] );
 
 	useEffect( () => {
-		if ( attributes.language === '' && typeof coblocksBlockData.localeCode !== 'undefined' ) {
-			switch ( coblocksBlockData.localeCode.substring( 0, coblocksBlockData.localeCode.indexOf( '_' ) ) ) {
+		if ( attributes.language === '' ) {
+			switch ( getLocaleCode().substring( 0, coblocksBlockData.localeCode.indexOf( '_' ) ) ) {
 				case 'fr':
 					props.setAttributes( { language: 'fr-CA' } );
 					break;
@@ -91,16 +94,6 @@ const Edit = ( props ) => {
 			}
 		}
 	}, [] );
-
-	// const renderOpenTable = ( event ) => {
-	// 	if ( event ) {
-	// 		event.preventDefault();
-	// 	}
-
-	// 	// setAttributes( { restaurantID: restaurantID } );
-	// };
-
-	// const hasRestaurantID = !! attributes.restaurantID.length;
 
 	return (
 		<>
