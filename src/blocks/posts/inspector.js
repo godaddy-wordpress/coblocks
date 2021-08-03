@@ -55,6 +55,7 @@ const Inspector = ( props ) => {
 		postFeedType,
 		postsToShow,
 		categories,
+		categoryRelation,
 	} = attributes;
 
 	const isHorizontalStyle = ( 'horizontal' === activeStyle.name );
@@ -246,6 +247,9 @@ const Inspector = ( props ) => {
 					typeof token === 'string' ? suggestions[ token ] : token
 				);
 				setAttributes( { categories: allCategories } );
+				if ( tokens.length < 2 ) {
+					setAttributes( { categoryRelation: 'or' } );
+				}
 			} }
 		/> );
 	};
@@ -264,7 +268,18 @@ const Inspector = ( props ) => {
 				? <Fragment>
 					{ postFeedType === 'internal' &&
 						useUpdatedQueryControls ? updatedQueryControls() : deprecatedQueryControls
-
+					}
+					{ categories && categories.length > 1 &&
+						<RadioControl
+							label={ __( 'Category relation', 'coblocks' ) }
+							help={ __( 'The logical relationship between each category when there is more than one.', 'coblocks' ) }
+							selected={ categoryRelation }
+							options={ [
+								{ label: __( 'Or', 'coblocks' ), value: 'or' },
+								{ label: __( 'And', 'coblocks' ), value: 'and' },
+							] }
+							onChange={ ( value ) => setAttributes( { categoryRelation: value } ) }
+						/>
 					}
 					<RangeControl
 						label={ __( 'Number of posts', 'coblocks' ) }
