@@ -60,7 +60,7 @@ const Edit = ( props ) => {
 					results.push( name );
 				}
 				setQueryResults( results );
-				setNoResultsFound( !! results?.length === 0 );
+				setNoResultsFound( results?.length === 0 );
 			} );
 	}, 500 ), [] );
 
