@@ -383,7 +383,10 @@ export default compose( [
 			let latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
 
 			if ( 'and' === categoryRelation && latestPosts ) {
-				latestPosts = latestPosts.filter( ( post ) => isEqual( post.categories, catIds ) ).slice( 0, postsToShow );
+				latestPosts = latestPosts.filter( ( post ) =>
+					// `concat` to prevent mutation `sort` to ensure order is consistent.
+					isEqual( post.categories.concat().sort(), catIds.concat().sort() ) )
+					.slice( 0, postsToShow );
 			}
 
 			return ! Array.isArray( latestPosts )
