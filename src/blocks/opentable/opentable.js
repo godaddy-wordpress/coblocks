@@ -16,7 +16,7 @@ export function transformRIDs( rids, className ) {
 }
 
 const OpenTable = ( props ) => {
-	const rids = props.attributes.restaurantIDs;
+	const rids = props.attributes.restaurantIDs.map( ( restaurantObject ) => restaurantObject.rid );
 	const className = props.className.substring( props.className.lastIndexOf( '-' ) + 1 );
 	const ridsString = transformRIDs( rids, className );
 	const isMultiple = rids.length > 1;

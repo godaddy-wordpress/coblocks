@@ -64,9 +64,10 @@ const Edit = ( props ) => {
 	};
 	useEffect( () => {
 		if ( prevIDs !== attributes.restaurantIDs ) {
-			setRidField( attributes.restaurantIDs );
+			const restaurantNames = attributes.restaurantIDs.map( ( restaurantObject ) => restaurantObject.name );
+			setRidField( restaurantNames );
 		}
-	}, [ attributes.restaurantIDs ] );
+	}, [] );
 
 	useEffect( () => {
 		if ( attributes.language === '' ) {
@@ -147,9 +148,12 @@ const Edit = ( props ) => {
 								disabled={ ridField.length < 1 }
 								onClick={ () => {
 									const parsedRestaurants = [];
-									for ( const restaurant in ridField ) {
-										const r = ridField[ restaurant ];
-										parsedRestaurants.push( r.substring( r.lastIndexOf( '(' ) + 1, r.length - 1 ) );
+									for ( const index in ridField ) {
+										const restaurantString = ridField[ index ];
+										parsedRestaurants.push( {
+											name: restaurantString,
+											rid: restaurantString.substring( restaurantString.lastIndexOf( '(' ) + 1, restaurantString.length - 1 ),
+										} );
 									}
 									props.setAttributes( { restaurantIDs: parsedRestaurants, pinned: true } );
 									setIsEditing( false );

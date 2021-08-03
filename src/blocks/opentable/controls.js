@@ -13,9 +13,7 @@ const Controls = ( props ) => {
 		setIsEditing,
 	} = props;
 
-	const {
-		restaurantIDs,
-	} = attributes;
+	const restaurantIDs = attributes.restaurantIDs.map( ( restaurantObject ) => restaurantObject.rid );
 
 	const toolbarControls = [
 		{
