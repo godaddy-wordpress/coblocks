@@ -58,7 +58,6 @@ const settings = {
 	],
 	example: {
 		attributes: {
-			align: 'wide',
 			restaurantIDs: [ { rid: '123456', name: 'Test Restaurant provided by CoBlocks ' } ],
 			language: 'en-US',
 			pinned: true,

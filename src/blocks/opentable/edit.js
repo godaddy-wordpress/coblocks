@@ -45,6 +45,7 @@ const Edit = ( props ) => {
 	};
 
 	//searches the opentable reservation network for restaurants with the given name or ID
+	//TODO: 400/500 error handling and show loading spinner
 	const searchRestaurants = useCallback( debounce( ( token ) => {
 		fetch(
 			'https://www.opentable.com/widget/reservation/restaurant-search?pageSize=15' +
@@ -52,6 +53,9 @@ const Edit = ( props ) => {
 				encodeURIComponent( token )
 		)
 			.then( ( response ) => response.json() )
+			.catch( () => {
+				setNoResultsFound( true );
+			} )
 			.then( ( json ) => {
 				const results = [];
 				for ( const item in json.items ) {
@@ -62,7 +66,7 @@ const Edit = ( props ) => {
 				setQueryResults( results );
 				setNoResultsFound( results?.length === 0 );
 			} );
-	}, 500 ), [] );
+	}, 400 ), [] );
 
 	useEffect( () => {
 		if ( prevIDs !== attributes.restaurantIDs ) {
@@ -161,7 +165,7 @@ const Edit = ( props ) => {
 									setIsEditing( false );
 								} }
 							>
-								{ __( 'Embed', 'coblocks' ) }
+								{ __( 'Save', 'coblocks' ) }
 							</Button>
 						</div>
 						{ /* </form> */ }

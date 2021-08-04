@@ -6,10 +6,6 @@
 			"type": "array",
 			"default": []
 		},
-		"align": {
-			"type": "string",
-			"default": ""
-		},
 		"language": {
 			"type": "string",
 			"default": ""
