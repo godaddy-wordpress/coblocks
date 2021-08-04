@@ -18,7 +18,7 @@ function coblocks_render_click_to_tweet_block( $attributes ) {
 
 	$custom_class   = isset( $attributes['className'] ) ? sprintf( ' %s', $attributes['className'] ) : '';
 	$content        = $attributes['content'];
-	$button_text    = isset( $attributes['buttonText'] ) ? $attributes['buttonText'] : 'Tweet';
+	$button_text    = $attributes['buttonText'];
 	$url            = sprintf( 'http://twitter.com/share?&text=%1$s&url=%2$s', $content, get_permalink( get_the_id() ) );
 	$content_styles = '';
 	$button_color   = isset( $attributes['customButtonColor'] ) ? sprintf( ' style=background:%s;', $attributes['customButtonColor'] ) : '';
