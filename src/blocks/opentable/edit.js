@@ -21,6 +21,7 @@ import { useState, useEffect, useCallback } from '@wordpress/element';
 import { compose, usePrevious } from '@wordpress/compose';
 import {
 	Placeholder,
+	Spinner,
 	Notice,
 	Button,
 	withNotices,
@@ -34,6 +35,7 @@ const Edit = ( props ) => {
 	const { className, attributes } = props;
 	const [ noResultsFound, setNoResultsFound ] = useState( false );
 	const [ isEditing, setIsEditing ] = useState( ! attributes.restaurantIDs.length );
+	const [ isLoading, setIsLoading ] = useState( false );
 
 	const prevIDs = usePrevious( attributes.restaurantIDs );
 
@@ -47,6 +49,7 @@ const Edit = ( props ) => {
 	//searches the opentable reservation network for restaurants with the given name or ID
 	//TODO: 400/500 error handling and show loading spinner
 	const searchRestaurants = useCallback( debounce( ( token ) => {
+		setIsLoading( true );
 		fetch(
 			'https://www.opentable.com/widget/reservation/restaurant-search?pageSize=15' +
 				'&query=' +
@@ -65,6 +68,7 @@ const Edit = ( props ) => {
 				}
 				setQueryResults( results );
 				setNoResultsFound( results?.length === 0 );
+				setIsLoading( false );
 			} );
 	}, 400 ), [] );
 
@@ -129,44 +133,47 @@ const Edit = ( props ) => {
 
 						{ /* <form onSubmit={ renderOpenTable }> */ }
 						<div className="components-placeholder__flex-fields">
-							<FormTokenField
-								value={ ridField || '' }
-								suggestions={ queryResults }
-								className="components-placeholder__input"
-								placeholder={ __(
-									'Select restaurant(s)',
-									'coblocks'
-								) }
-								maxSuggestions={ 15 }
-								onChange={ ( newRestaurantIDs ) => {
-									setRidField( newRestaurantIDs );
-								} }
-								onInputChange={ ( token ) => {
-									searchRestaurants( token );
-								} }
-								__experimentalHowTo={ false }
-								tokenizeOnSpace={ false }
-							/>
-							<Button
-								isPrimary={ !! ridField }
-								isSecondary={ ! ridField }
-								type="submit"
-								disabled={ ridField.length < 1 }
-								onClick={ () => {
-									const parsedRestaurants = [];
-									for ( const index in ridField ) {
-										const restaurantString = ridField[ index ];
-										parsedRestaurants.push( {
-											name: restaurantString,
-											rid: restaurantString.substring( restaurantString.lastIndexOf( '(' ) + 1, restaurantString.length - 1 ),
-										} );
-									}
-									props.setAttributes( { restaurantIDs: parsedRestaurants, pinned: true } );
-									setIsEditing( false );
-								} }
-							>
-								{ __( 'Save', 'coblocks' ) }
-							</Button>
+							<div className="components-placeholder__flex-fields-vertical-group">
+								<FormTokenField
+									value={ ridField || '' }
+									suggestions={ queryResults }
+									className="components-placeholder__input"
+									placeholder={ __(
+										'Select restaurant(s)',
+										'coblocks'
+									) }
+									maxSuggestions={ 15 }
+									onChange={ ( newRestaurantIDs ) => {
+										setRidField( newRestaurantIDs );
+									} }
+									onInputChange={ ( token ) => {
+										searchRestaurants( token );
+									} }
+									__experimentalHowTo={ false }
+									tokenizeOnSpace={ false }
+								/>
+								<Button
+									isPrimary={ !! ridField }
+									isSecondary={ ! ridField }
+									type="submit"
+									disabled={ ridField.length < 1 }
+									onClick={ () => {
+										const parsedRestaurants = [];
+										for ( const index in ridField ) {
+											const restaurantString = ridField[ index ];
+											parsedRestaurants.push( {
+												name: restaurantString,
+												rid: restaurantString.substring( restaurantString.lastIndexOf( '(' ) + 1, restaurantString.length - 1 ),
+											} );
+										}
+										props.setAttributes( { restaurantIDs: parsedRestaurants, pinned: true } );
+										setIsEditing( false );
+									} }
+								>
+									{ __( 'Save', 'coblocks' ) }
+								</Button>
+							</div>
+							{ isLoading && <Spinner /> }
 						</div>
 						{ /* </form> */ }
 						{ noResultsFound && <Notice isDismissible={ false }>No results found.</Notice> }

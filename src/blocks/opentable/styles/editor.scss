@@ -46,6 +46,17 @@
 	img:focus {
 		outline: none;
 	}
+	.components-placeholder__fieldset .components-button.is-primary {
+		margin: 0 10px;
+	}
+	.components-spinner {
+		margin: 0 10px;
+	}
+
+	.components-placeholder__flex-fields-vertical-group {
+		align-items: start;
+		display: inline-flex;
+	}
 
 	.block-editor-media-placeholder.is-appender {
 		margin-bottom: 0;
@@ -70,10 +81,7 @@
 	.components-placeholder__input {
 		min-height: 36px;
 		min-width: 300px;
-	}
-
-	.components-form-token-field {
-		margin-right: 10px;
+		margin: 0;
 	}
 
 	.components-form-token-field__help {
@@ -107,6 +115,7 @@
 	}
 
 	.components-placeholder__flex-fields {
+		align-items: center;
 		display: inline-flex;
 	}
 
