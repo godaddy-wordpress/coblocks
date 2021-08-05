@@ -36,7 +36,6 @@ const Edit = ( props ) => {
 	const [ noResultsFound, setNoResultsFound ] = useState( false );
 	const [ isEditing, setIsEditing ] = useState( ! attributes.restaurantIDs.length );
 	const [ isLoading, setIsLoading ] = useState( false );
-	const [ errorMessage, setError ] = useState( '' );
 
 	const prevIDs = usePrevious( attributes.restaurantIDs );
 
