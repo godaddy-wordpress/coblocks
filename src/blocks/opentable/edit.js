@@ -36,6 +36,7 @@ const Edit = ( props ) => {
 	const [ noResultsFound, setNoResultsFound ] = useState( false );
 	const [ isEditing, setIsEditing ] = useState( ! attributes.restaurantIDs.length );
 	const [ isLoading, setIsLoading ] = useState( false );
+	const [ errorMessage, setError ] = useState( '' );
 
 	const prevIDs = usePrevious( attributes.restaurantIDs );
 
@@ -47,17 +48,19 @@ const Edit = ( props ) => {
 	};
 
 	//searches the opentable reservation network for restaurants with the given name or ID
-	//TODO: 400/500 error handling and show loading spinner
 	const searchRestaurants = useCallback( debounce( ( token ) => {
 		setIsLoading( true );
+		setError( '' );
 		fetch(
 			'https://www.opentable.com/widget/reservation/restaurant-search?pageSize=15' +
 				'&query=' +
 				encodeURIComponent( token )
 		)
 			.then( ( response ) => response.json() )
-			.catch( () => {
-				setNoResultsFound( true );
+			.catch( ( error ) => {
+				setIsLoading( false );
+				setError( __( 'Error connecting to the OpenTable API. Please try again later.', 'coblocks' ) );
+				throw new Error( 'Error connecting to the OpenTable API: ' + error );
 			} )
 			.then( ( json ) => {
 				const results = [];
@@ -177,6 +180,7 @@ const Edit = ( props ) => {
 						</div>
 						{ /* </form> */ }
 						{ noResultsFound && <Notice isDismissible={ false }>No results found.</Notice> }
+						{ !! errorMessage && <Notice status="error" isDismissible={ false }>{ errorMessage }</Notice> }
 						<div></div>
 						<div className="components-placeholder__opentable-help-links">
 							<a target="_blank" rel="noopener noreferrer" href="https://restaurant.opentable.com/get-started/">{ __( 'Sign up for OpenTable', 'coblocks' ) }</a>
