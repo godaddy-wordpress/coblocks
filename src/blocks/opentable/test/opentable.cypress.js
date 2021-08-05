@@ -46,6 +46,10 @@ describe( 'Test CoBlocks OpenTable Block', function() {
 		helpers.editPage();
 	} );
 
+	/**
+	 * Test that we can add an OpenTable block to the content, add a restaurant and then
+	 * change the block style to tall and have it display correctly.
+	 */
 	it( 'Test OpenTable changing to Tall style.', function() {
 		helpers.addBlockToPost( 'coblocks/opentable', true );
 
