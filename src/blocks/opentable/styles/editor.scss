@@ -84,6 +84,10 @@
 		min-width: 300px;
 	}
 
+	.is-error > button:nth-child(2) { 
+		align-self: center;
+	}
+	
 	.components-form-token-field__help {
 		display: none;
 	}

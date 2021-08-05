@@ -32,7 +32,7 @@ import {
 const Edit = ( props ) => {
 	const [ ridField, setRidField ] = useState( [] );
 	const [ queryResults, setQueryResults ] = useState( [] );
-	const { className, attributes } = props;
+	const { className, attributes, noticeUI, noticeOperations } = props;
 	const [ noResultsFound, setNoResultsFound ] = useState( false );
 	const [ isEditing, setIsEditing ] = useState( ! attributes.restaurantIDs.length );
 	const [ isLoading, setIsLoading ] = useState( false );
@@ -50,16 +50,16 @@ const Edit = ( props ) => {
 	//searches the opentable reservation network for restaurants with the given name or ID
 	const searchRestaurants = useCallback( debounce( ( token ) => {
 		setIsLoading( true );
-		setError( '' );
+		noticeOperations.removeAllNotices();
 		fetch(
-			'https://www.opentable.com/widget/reservation/restaurant-search?pageSize=15' +
+			'https://www.opentable.com/widget/1reservation/restaurant-search?pageSize=15' +
 				'&query=' +
 				encodeURIComponent( token )
 		)
 			.then( ( response ) => response.json() )
 			.catch( ( error ) => {
 				setIsLoading( false );
-				setError( __( 'Error connecting to the OpenTable API. Please try again later.', 'coblocks' ) );
+				noticeOperations.createErrorNotice( __( 'Error connecting to the OpenTable API. Please try again later.', 'coblocks' ) );
 				throw new Error( 'Error connecting to the OpenTable API: ' + error );
 			} )
 			.then( ( json ) => {
@@ -133,7 +133,7 @@ const Edit = ( props ) => {
 						) }
 						isColumnLayout={ true }
 						notices={
-							errorMessage && <Notice status="error" isDismissible={ false }>{ errorMessage }</Notice>
+							noticeUI
 						}
 					>
 
