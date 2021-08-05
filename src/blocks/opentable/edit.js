@@ -132,6 +132,9 @@ const Edit = ( props ) => {
 							'coblocks'
 						) }
 						isColumnLayout={ true }
+						notices={
+							errorMessage && <Notice status="error" isDismissible={ false }>{ errorMessage }</Notice>
+						}
 					>
 
 						{ /* <form onSubmit={ renderOpenTable }> */ }
@@ -180,7 +183,6 @@ const Edit = ( props ) => {
 						</div>
 						{ /* </form> */ }
 						{ noResultsFound && <Notice isDismissible={ false }>No results found.</Notice> }
-						{ !! errorMessage && <Notice status="error" isDismissible={ false }>{ errorMessage }</Notice> }
 						<div></div>
 						<div className="components-placeholder__opentable-help-links">
 							<a target="_blank" rel="noopener noreferrer" href="https://restaurant.opentable.com/get-started/">{ __( 'Sign up for OpenTable', 'coblocks' ) }</a>
