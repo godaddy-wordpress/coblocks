@@ -51,7 +51,7 @@ const Edit = ( props ) => {
 		setIsLoading( true );
 		noticeOperations.removeAllNotices();
 		fetch(
-			'https://www.opentable.com/widget/1reservation/restaurant-search?pageSize=15' +
+			'https://www.opentable.com/widget/reservation/restaurant-search?pageSize=15' +
 				'&query=' +
 				encodeURIComponent( token )
 		)
