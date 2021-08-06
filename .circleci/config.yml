@@ -128,7 +128,7 @@ commands:
       - run:
           name: Set diff files env var
           command: |
-            FILES=$(git diff HEAD..origin/$BASE_BRANCH --name-only --diff-filter=M "*<< parameters.ext >>")
+            FILES=$(git diff HEAD..origin/$BASE_BRANCH --name-only --diff-filter=MAD "*<< parameters.ext >>")
             echo "export FILES='$FILES'" >> $BASH_ENV
             source $BASH_ENV
 
