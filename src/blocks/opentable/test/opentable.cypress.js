@@ -31,7 +31,7 @@ describe( 'Test CoBlocks OpenTable Block', function() {
 
 		cy.get( '.wp-block-coblocks-opentable .components-form-token-field__input' ).type( 'test' );
 
-		cy.wait( 1000 );
+		cy.wait( 30000 );
 
 		cy.get( '.components-form-token-field__suggestion' ).first().click();
 
