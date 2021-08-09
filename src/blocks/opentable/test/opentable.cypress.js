@@ -8,19 +8,19 @@ describe( 'Test CoBlocks OpenTable Block', function() {
 	 * Test that we can add an OpenTable block to the content, not add anything and save the block
 	 * without errors.
 	 */
-	// it( 'Test OpenTable block saves with empty values.', function() {
-	// 	helpers.addBlockToPost( 'coblocks/opentable', true );
+	it( 'Test OpenTable block saves with empty values.', function() {
+		helpers.addBlockToPost( 'coblocks/opentable', true );
 
-	// 	helpers.savePage();
+		helpers.savePage();
 
-	// 	helpers.checkForBlockErrors( 'coblocks/opentable' );
+		helpers.checkForBlockErrors( 'coblocks/opentable' );
 
-	// 	helpers.viewPage();
+		helpers.viewPage();
 
-	// 	cy.get( '.wp-block-coblocks-opentable' ).should( 'not.exist' );
+		cy.get( '.wp-block-coblocks-opentable' ).should( 'not.exist' );
 
-	// 	helpers.editPage();
-	// } );
+		helpers.editPage();
+	} );
 
 	/**
 	 * Test that we can add an OpenTable block to the content, add a restaurant and then
