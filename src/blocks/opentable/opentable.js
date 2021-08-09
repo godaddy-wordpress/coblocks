@@ -31,7 +31,7 @@ const OpenTable = ( props ) => {
 					frameBorder="0"
 					style={ { width: '224px', height: isMultiple ? '362px' : '302px', display: 'block', margin: 'auto' } }
 					title="open table frame"
-					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&lang=${ props.attributes.language }&theme=standard&overlay=false&insideiframe=true` }
+					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&lang=${ props.attributes.language }&theme=standard&overlay=false&insideiframe=true&disablega=true` }
 				/>
 			</div>
 
@@ -46,7 +46,7 @@ const OpenTable = ( props ) => {
 					scrolling="no"
 					style={ { width: '289px', height: isMultiple ? '551px' : '491px', display: 'block', margin: 'auto' } }
 					title="open table frame"
-					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&lang=${ props.attributes.language }&theme=tall&overlay=false&insideiframe=true` }
+					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&lang=${ props.attributes.language }&theme=tall&overlay=false&insideiframe=true&disablega=true` }
 				/>
 			), standard: (
 				<iframe
@@ -55,7 +55,7 @@ const OpenTable = ( props ) => {
 					scrolling="no"
 					style={ { width: '225px', height: isMultiple ? '362px' : '302px', display: 'block', margin: 'auto' } }
 					title="open table frame"
-					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&lang=${ props.attributes.language }&theme=standard&overlay=false&insideiframe=true` }
+					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&lang=${ props.attributes.language }&theme=standard&overlay=false&insideiframe=true&disablega=true` }
 				/>
 			), button: (
 				<iframe
@@ -64,7 +64,7 @@ const OpenTable = ( props ) => {
 					scrolling="no"
 					style={ { width: '210px', height: '116px', display: 'block', margin: 'auto' } }
 					title="open table frame"
-					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&lang=${ props.attributes.language }&theme=standard&overlay=false&insideiframe=true` }
+					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&lang=${ props.attributes.language }&theme=standard&overlay=false&insideiframe=true&disablega=true` }
 				/>
 			) }[ className ]
 			}

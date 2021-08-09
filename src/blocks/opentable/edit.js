@@ -4,6 +4,7 @@
  * External dependencies
  */
 import { OpentableIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { debounce } from 'lodash';
 
 /**
  * Internal dependencies
@@ -16,8 +17,8 @@ import InspectorControls from './inspector';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { useState, useEffect, useCallback } from '@wordpress/element';
-import { compose, usePrevious } from '@wordpress/compose';
+import { useState, useEffect } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
 import {
 	Placeholder,
 	Spinner,
@@ -29,14 +30,13 @@ import {
 } from '@wordpress/components';
 
 const Edit = ( props ) => {
-	const [ ridField, setRidField ] = useState( [] );
-	const [ queryResults, setQueryResults ] = useState( [] );
 	const { className, attributes, noticeUI, noticeOperations } = props;
+	const [ ridField, setRidField ] = useState( attributes.restaurantIDs?.map( ( restaurantObject ) => restaurantObject.name ) ?? [] );
+
+	const [ queryResults, setQueryResults ] = useState( [] );
 	const [ noResultsFound, setNoResultsFound ] = useState( false );
 	const [ isEditing, setIsEditing ] = useState( ! attributes.restaurantIDs.length );
 	const [ isLoading, setIsLoading ] = useState( false );
-
-	const prevIDs = usePrevious( attributes.restaurantIDs );
 
 	const getLocaleCode = () => {
 		if ( typeof coblocksBlockData.localeCode !== 'undefined' ) {
@@ -46,7 +46,7 @@ const Edit = ( props ) => {
 	};
 
 	//searches the opentable reservation network for restaurants with the given name or ID
-	const searchRestaurants = useCallback( ( token ) => {
+	const searchRestaurants = debounce( ( token ) => {
 		setIsLoading( true );
 		noticeOperations.removeAllNotices();
 		fetch(
@@ -54,13 +54,20 @@ const Edit = ( props ) => {
 				'&query=' +
 				encodeURIComponent( token )
 		)
-			.then( ( response ) => response.json() )
+			.then( ( response ) => {
+				return response.json();
+			} )
 			.catch( ( error ) => {
 				setIsLoading( false );
 				noticeOperations.createErrorNotice( __( 'Error connecting to the OpenTable API. Please try again later.', 'coblocks' ) );
 				throw new Error( 'Error connecting to the OpenTable API: ' + error );
 			} )
 			.then( ( json ) => {
+				if ( ! json ) {
+					setIsLoading( false );
+					throw new Error( `Error connecting to the OpenTable API: ${ json }` );
+					// return;
+				}
 				const results = [];
 				for ( const item in json.items ) {
 					const itemProps = json.items[ item ];
@@ -71,13 +78,6 @@ const Edit = ( props ) => {
 				setNoResultsFound( results?.length === 0 );
 				setIsLoading( false );
 			} );
-	}, [] );
-
-	useEffect( () => {
-		if ( prevIDs !== attributes.restaurantIDs ) {
-			const restaurantNames = attributes.restaurantIDs.map( ( restaurantObject ) => restaurantObject.name );
-			setRidField( restaurantNames );
-		}
 	}, [] );
 
 	useEffect( () => {
@@ -135,7 +135,6 @@ const Edit = ( props ) => {
 						}
 					>
 
-						{ /* <form onSubmit={ renderOpenTable }> */ }
 						<div className="components-placeholder__flex-fields">
 							<div className="components-placeholder__flex-fields-vertical-group">
 								<FormTokenField
@@ -147,12 +146,8 @@ const Edit = ( props ) => {
 										'coblocks'
 									) }
 									maxSuggestions={ 15 }
-									onChange={ ( newRestaurantIDs ) => {
-										setRidField( newRestaurantIDs );
-									} }
-									onInputChange={ ( token ) => {
-										searchRestaurants( token );
-									} }
+									onChange={ setRidField }
+									onInputChange={ searchRestaurants }
 									__experimentalHowTo={ false }
 									tokenizeOnSpace={ false }
 								/>
@@ -179,7 +174,6 @@ const Edit = ( props ) => {
 							</div>
 							{ isLoading && <Spinner /> }
 						</div>
-						{ /* </form> */ }
 						{ noResultsFound && <Notice isDismissible={ false }>No results found.</Notice> }
 						<div></div>
 						<div className="components-placeholder__opentable-help-links">
