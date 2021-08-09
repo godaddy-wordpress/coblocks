@@ -552,7 +552,7 @@ jobs:
           name: "Remove Chrome 86.0.4240.111"
           command: sudo rm -rf /usr/bin/google-chrome
       - browser-tools/install-browser-tools:
-          chrome-version: "92.0"
+          chrome-version: "latest"
       - checkout
       - setup_e2e_env_var
       - changed_files_with_extension:
