@@ -15,10 +15,14 @@
 function coblocks_render_click_to_tweet_block( $attributes ) {
 
 	ob_start();
+	include COBLOCKS_PLUGIN_DIR . 'src/blocks/click-to-tweet/block.json';
+	$metadata = json_decode( ob_get_clean(), true );
+
+	ob_start();
 
 	$custom_class   = isset( $attributes['className'] ) ? sprintf( ' %s', $attributes['className'] ) : '';
 	$content        = $attributes['content'];
-	$button_text    = isset( $attributes['buttonText'] ) ? $attributes['buttonText'] : 'Tweet';
+	$button_text    = isset( $attributes['buttonText'] ) ? $attributes['buttonText'] : $metadata['attributes']['buttonText']['default'];
 	$url            = sprintf( 'http://twitter.com/share?&text=%1$s&url=%2$s', $content, get_permalink( get_the_id() ) );
 	$content_styles = '';
 	$button_color   = isset( $attributes['customButtonColor'] ) ? sprintf( ' style=background:%s;', $attributes['customButtonColor'] ) : '';
@@ -53,7 +57,7 @@ function coblocks_render_click_to_tweet_block( $attributes ) {
 }
 
 /**
- * Registers the `posts` block on server.
+ * Registers the `click-to-tweet` block on server.
  */
 function coblocks_register_click_to_tweet_block() {
 	// Return early if this function does not exist.
@@ -63,7 +67,7 @@ function coblocks_register_click_to_tweet_block() {
 
 	// Load attributes from block.json.
 	ob_start();
-	include COBLOCKS_PLUGIN_DIR . 'src/blocks/posts/block.json';
+	include COBLOCKS_PLUGIN_DIR . 'src/blocks/click-to-tweet/block.json';
 	$metadata = json_decode( ob_get_clean(), true );
 
 	$slug = 'coblocks';
