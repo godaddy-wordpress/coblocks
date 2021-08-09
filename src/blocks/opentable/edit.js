@@ -31,8 +31,8 @@ import {
 
 const Edit = ( props ) => {
 	const { className, attributes, noticeUI, noticeOperations } = props;
-	const [ ridField, setRidField ] = useState( attributes.restaurantIDs?.map( ( restaurantObject ) => restaurantObject.name ) ?? [] );
 
+	const [ ridField, setRidField ] = useState( attributes.restaurantIDs?.map( ( restaurantObject ) => restaurantObject.name ) ?? [] );
 	const [ queryResults, setQueryResults ] = useState( [] );
 	const [ noResultsFound, setNoResultsFound ] = useState( false );
 	const [ isEditing, setIsEditing ] = useState( ! attributes.restaurantIDs.length );
@@ -54,20 +54,13 @@ const Edit = ( props ) => {
 				'&query=' +
 				encodeURIComponent( token )
 		)
-			.then( ( response ) => {
-				return response.json();
-			} )
+			.then( ( response ) => response.json() )
 			.catch( ( error ) => {
 				setIsLoading( false );
 				noticeOperations.createErrorNotice( __( 'Error connecting to the OpenTable API. Please try again later.', 'coblocks' ) );
 				throw new Error( 'Error connecting to the OpenTable API: ' + error );
 			} )
 			.then( ( json ) => {
-				if ( ! json ) {
-					setIsLoading( false );
-					throw new Error( `Error connecting to the OpenTable API: ${ json }` );
-					// return;
-				}
 				const results = [];
 				for ( const item in json.items ) {
 					const itemProps = json.items[ item ];
@@ -165,7 +158,7 @@ const Edit = ( props ) => {
 												rid: restaurantString.substring( restaurantString.lastIndexOf( '(' ) + 1, restaurantString.length - 1 ),
 											} );
 										}
-										props.setAttributes( { restaurantIDs: parsedRestaurants, pinned: true } );
+										props.setAttributes( { restaurantIDs: parsedRestaurants } );
 										setIsEditing( false );
 									} }
 								>
