@@ -35,7 +35,6 @@ describe( 'coblocks/click-to-tweet', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'Quote to tweet' );
-		expect( serializedBlock ).toContain( 'Tweet' );
 		expect( serializedBlock ).toContain( 'https://wordpress.org' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
