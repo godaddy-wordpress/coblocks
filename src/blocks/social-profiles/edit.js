@@ -466,7 +466,7 @@ const SocialProfilesEdit = ( props ) => {
 									}
 								) }
 								style={ buttonStyles }
-								onClick={ () => this.setState( { currentIcon: 'houzz' } ) }
+								onClick={ () => setCurrentIcon( 'houzz' ) }
 							>
 								<span
 									className="wp-block-coblocks-social__icon"
