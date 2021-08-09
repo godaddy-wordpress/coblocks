@@ -23,6 +23,11 @@ describe( 'Test CoBlocks OpenTable Block', function() {
 	} );
 
 	/**
+	 * Chrome does not seem to behave well with the network interactions we attempt with this block.
+	 * Tests are disabled for Chrome yet are enabled for Firefox.
+	 */
+	// if ( Cypress.browser.name === 'firefox' ) {
+	/**
 	 * Test that we can add an OpenTable block to the content, add a restaurant and then
 	 * successfully save the block without errors.
 	 */
@@ -31,9 +36,9 @@ describe( 'Test CoBlocks OpenTable Block', function() {
 
 		cy.get( '.wp-block-coblocks-opentable .components-form-token-field__input' ).type( 'test' );
 
-		cy.get( '.components-form-token-field__suggestions-list' );
+		// cy.get( '.components-form-token-field__suggestions-list' );
 
-		cy.get( '.components-form-token-field__suggestion' ).first().click();
+		cy.get( '.components-form-token-field__suggestion[id*="-0"]' ).click();
 
 		cy.get( 'button[type="submit"]' ).click();
 
@@ -54,10 +59,9 @@ describe( 'Test CoBlocks OpenTable Block', function() {
 		helpers.addBlockToPost( 'coblocks/opentable', true );
 
 		cy.get( '.wp-block-coblocks-opentable .components-form-token-field__input' ).type( 'test' );
+		// cy.get( '.components-form-token-field__suggestions-list' );
 
-		cy.get( '.components-form-token-field__suggestions-list' );
-
-		cy.get( '.components-form-token-field__suggestion' ).first().click();
+		cy.get( '.components-form-token-field__suggestion[id*="-0"]' ).click();
 
 		cy.get( 'button[type="submit"]' ).click();
 
@@ -95,4 +99,5 @@ describe( 'Test CoBlocks OpenTable Block', function() {
 
 		helpers.editPage();
 	} );
+	// }
 } );

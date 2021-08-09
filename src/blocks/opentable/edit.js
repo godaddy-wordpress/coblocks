@@ -71,7 +71,7 @@ const Edit = ( props ) => {
 				setNoResultsFound( results?.length === 0 );
 				setIsLoading( false );
 			} );
-	}, [] );
+	}, 500 );
 
 	useEffect( () => {
 		if ( attributes.language === '' ) {
