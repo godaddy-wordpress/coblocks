@@ -301,6 +301,8 @@ commands:
           command: |
             bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
+orbs:
+  browser-tools: circleci/browser-tools@1.1.3
 
 jobs:
 
@@ -546,6 +548,8 @@ jobs:
           password: $DOCKERHUB_PASSWORD
     parallelism: 4
     steps:
+      - browser-tools/install-browser-tools:
+        chrome-version: 92.0
       - checkout
       - setup_e2e_env_var
       - changed_files_with_extension:
