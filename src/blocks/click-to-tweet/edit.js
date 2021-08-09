@@ -17,18 +17,6 @@ import { computeFontSize } from '../../utils/helper';
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { RichText, withFontSizes } from '@wordpress/block-editor';
-import { withSelect } from '@wordpress/data';
-
-/**
- * Block constants
- */
-const applyWithSelect = withSelect( ( select ) => {
-	const { getPermalink } = select( 'core/editor' );
-
-	return {
-		postLink: getPermalink(),
-	};
-} );
 
 const Edit = ( props ) => {
 	const {
@@ -49,10 +37,6 @@ const Edit = ( props ) => {
 	} = attributes;
 
 	const blockquoteClasses = classnames( className, { [ `has-text-align-${ textAlign }` ]: textAlign } );
-
-	if ( props.postLink ) {
-		props.setAttributes( { url: props.postLink } );
-	}
 
 	return (
 		<>
@@ -119,7 +103,6 @@ const Edit = ( props ) => {
 };
 
 export default compose( [
-	applyWithSelect,
 	applyWithColors,
 	withFontSizes( 'fontSize' ),
 ] )( Edit );
