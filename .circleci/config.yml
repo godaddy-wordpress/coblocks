@@ -548,6 +548,9 @@ jobs:
           password: $DOCKERHUB_PASSWORD
     parallelism: 4
     steps:
+      - run:
+          name: "Remove Chrome 86.0.4240.111"
+          command: sudo rm -rf /usr/bin/google-chrome
       - browser-tools/install-browser-tools:
           chrome-version: "92.0"
       - checkout
