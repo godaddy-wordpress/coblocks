@@ -4,7 +4,6 @@
  * External dependencies
  */
 import { OpentableIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-import { debounce } from 'lodash';
 
 /**
  * Internal dependencies
@@ -47,7 +46,7 @@ const Edit = ( props ) => {
 	};
 
 	//searches the opentable reservation network for restaurants with the given name or ID
-	const searchRestaurants = useCallback( debounce( ( token ) => {
+	const searchRestaurants = useCallback( ( token ) => {
 		setIsLoading( true );
 		noticeOperations.removeAllNotices();
 		fetch(
@@ -72,7 +71,7 @@ const Edit = ( props ) => {
 				setNoResultsFound( results?.length === 0 );
 				setIsLoading( false );
 			} );
-	}, 400 ), [] );
+	}, [] );
 
 	useEffect( () => {
 		if ( prevIDs !== attributes.restaurantIDs ) {

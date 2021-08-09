@@ -29,9 +29,7 @@ describe( 'Test CoBlocks OpenTable Block', function() {
 	it( 'Test OpenTable block saves with single restaurant selection.', function() {
 		helpers.addBlockToPost( 'coblocks/opentable', true );
 
-		cy.get( '.wp-block-coblocks-opentable .components-form-token-field__input' )
-			.invoke( 'val', 'tes' )
-			.type( 't' );
+		cy.get( '.wp-block-coblocks-opentable .components-form-token-field__input' ).type( 'test' );
 
 		cy.get( '.components-form-token-field__suggestions-list' );
 
@@ -55,9 +53,7 @@ describe( 'Test CoBlocks OpenTable Block', function() {
 	it( 'Test OpenTable changing to Tall style.', function() {
 		helpers.addBlockToPost( 'coblocks/opentable', true );
 
-		cy.get( '.wp-block-coblocks-opentable .components-form-token-field__input' )
-			.invoke( 'val', 'tes' )
-			.type( 't' );
+		cy.get( '.wp-block-coblocks-opentable .components-form-token-field__input' ).type( 'test' );
 
 		cy.get( '.components-form-token-field__suggestions-list' );
 
@@ -87,9 +83,7 @@ describe( 'Test CoBlocks OpenTable Block', function() {
 	it( 'Test OpenTable block properly shows No results found on a superflouous query.', function() {
 		helpers.addBlockToPost( 'coblocks/opentable', true );
 
-		cy.get( '.wp-block-coblocks-opentable .components-form-token-field__input' )
-			.invoke( 'val', 'thereisnowaythiswouldeverreturnarealrestauran' )
-			.type( 't' );
+		cy.get( '.wp-block-coblocks-opentable .components-form-token-field__input' ).type( 'thereisnowaythiswouldeverreturnarealrestaurant' );
 
 		cy.get( '.components-notice__content' ).should( 'contain', 'No results found' );
 
