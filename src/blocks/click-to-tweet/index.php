@@ -15,11 +15,8 @@
 function coblocks_render_click_to_tweet_block( $attributes ) {
 
 	ob_start();
-	include COBLOCKS_PLUGIN_DIR . 'src/blocks/click-to-tweet/block.json';
-	$metadata = json_decode( ob_get_clean(), true );
 
-	ob_start();
-
+	$metadata       = coblocks_get_click_to_tweet_block_metadata();
 	$custom_class   = isset( $attributes['className'] ) ? sprintf( ' %s', $attributes['className'] ) : '';
 	$content        = $attributes['content'];
 	$button_text    = isset( $attributes['buttonText'] ) ? $attributes['buttonText'] : $metadata['attributes']['buttonText']['default'];
@@ -57,6 +54,21 @@ function coblocks_render_click_to_tweet_block( $attributes ) {
 }
 
 /**
+ * Retreive the `click-to-tweet` block metadata
+ *
+ * @return array Block metadata.
+ */
+function coblocks_get_click_to_tweet_block_metadata() {
+
+	ob_start();
+
+	include COBLOCKS_PLUGIN_DIR . 'src/blocks/click-to-tweet/block.json';
+
+	return json_decode( ob_get_clean(), true );
+
+}
+
+/**
  * Registers the `click-to-tweet` block on server.
  */
 function coblocks_register_click_to_tweet_block() {
@@ -66,11 +78,8 @@ function coblocks_register_click_to_tweet_block() {
 	}
 
 	// Load attributes from block.json.
-	ob_start();
-	include COBLOCKS_PLUGIN_DIR . 'src/blocks/click-to-tweet/block.json';
-	$metadata = json_decode( ob_get_clean(), true );
-
-	$slug = 'coblocks';
+	$metadata = coblocks_get_click_to_tweet_block_metadata();
+	$slug     = 'coblocks';
 
 	register_block_type(
 		$slug . '/click-to-tweet',
