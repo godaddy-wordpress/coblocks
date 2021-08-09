@@ -72,9 +72,12 @@ function coblocks_get_click_to_tweet_block_metadata() {
  * Registers the `click-to-tweet` block on server.
  */
 function coblocks_register_click_to_tweet_block() {
+
 	// Return early if this function does not exist.
 	if ( ! function_exists( 'register_block_type' ) ) {
+
 		return;
+
 	}
 
 	// Load attributes from block.json.
@@ -93,5 +96,6 @@ function coblocks_register_click_to_tweet_block() {
 			},
 		)
 	);
+
 }
 add_action( 'init', 'coblocks_register_click_to_tweet_block' );
