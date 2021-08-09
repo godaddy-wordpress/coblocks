@@ -14,6 +14,12 @@
  */
 function coblocks_render_click_to_tweet_block( $attributes ) {
 
+	if ( empty( $attributes['content'] ) ) {
+
+		return;
+
+	}
+
 	ob_start();
 
 	$metadata       = coblocks_get_click_to_tweet_block_metadata();
