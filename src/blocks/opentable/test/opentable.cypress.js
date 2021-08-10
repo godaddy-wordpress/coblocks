@@ -36,9 +36,7 @@ describe( 'Test CoBlocks OpenTable Block', function() {
 
 			cy.get( '.wp-block-coblocks-opentable .components-form-token-field__input' ).type( 'test' );
 
-			// cy.get( '.components-form-token-field__suggestions-list' );
-
-			cy.get( '.components-form-token-field__suggestion[id*="-0"]' ).click();
+			cy.get( '.components-form-token-field__suggestion:nth-child(1)' ).click();
 
 			cy.get( 'button[type="submit"]' ).click();
 
@@ -59,9 +57,8 @@ describe( 'Test CoBlocks OpenTable Block', function() {
 			helpers.addBlockToPost( 'coblocks/opentable', true );
 
 			cy.get( '.wp-block-coblocks-opentable .components-form-token-field__input' ).type( 'test' );
-			// cy.get( '.components-form-token-field__suggestions-list' );
 
-			cy.get( '.components-form-token-field__suggestion[id*="-0"]' ).click();
+			cy.get( '.components-form-token-field__suggestion:nth-child(1)' ).click();
 
 			cy.get( 'button[type="submit"]' ).click();
 
