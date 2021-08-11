@@ -128,7 +128,7 @@ commands:
       - run:
           name: Set diff files env var
           command: |
-            FILES=$(git diff HEAD..origin/$BASE_BRANCH --name-only --diff-filter=M "*<< parameters.ext >>")
+            FILES=$(git diff HEAD..origin/$BASE_BRANCH --name-only --diff-filter=MAD "*<< parameters.ext >>")
             echo "export FILES='$FILES'" >> $BASH_ENV
             source $BASH_ENV
 
@@ -538,7 +538,7 @@ jobs:
 
   e2e_chrome:
     docker:
-      - image: circleci/php:7.3.23-node-browsers
+      - image: circleci/php:7.3.23-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -548,6 +548,8 @@ jobs:
           password: $DOCKERHUB_PASSWORD
     parallelism: 4
     steps:
+      - browser-tools/install-browser-tools:
+          chrome-version: "latest"
       - checkout
       - setup_e2e_env_var
       - changed_files_with_extension:
@@ -570,7 +572,7 @@ jobs:
 
   e2e_firefox:
     docker:
-      - image: circleci/php:7.3.23-node-browsers
+      - image: circleci/php:7.3.23-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
