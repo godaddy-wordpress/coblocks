@@ -301,8 +301,6 @@ commands:
           command: |
             bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
-orbs:
-  browser-tools: circleci/browser-tools@1.1.3
 
 jobs:
 
@@ -548,11 +546,6 @@ jobs:
           password: $DOCKERHUB_PASSWORD
     parallelism: 4
     steps:
-      - run:
-          name: "Remove Chrome 86.0.4240.111"
-          command: sudo rm -rf /usr/bin/google-chrome
-      - browser-tools/install-browser-tools:
-          chrome-version: "latest"
       - checkout
       - setup_e2e_env_var
       - changed_files_with_extension:
