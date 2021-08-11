@@ -3,7 +3,7 @@
  */
 import classnames from 'classnames';
 import includes from 'lodash/includes';
-import { find, isUndefined, pickBy, some, get } from 'lodash';
+import { find, isUndefined, pickBy, some, get, isEqual } from 'lodash';
 import { PostsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
@@ -476,7 +476,7 @@ class PostsEdit extends Component {
 
 export default compose( [
 	withSelect( ( select, props ) => {
-		const { postsToShow, order, orderBy, categories } = props.attributes;
+		const { postsToShow, order, orderBy, categories, categoryRelation } = props.attributes;
 		const { getEntityRecords, getMedia } = select( 'core' );
 		const { getCurrentPost } = select( 'core/editor' );
 
@@ -513,11 +513,18 @@ export default compose( [
 				categories: catIds,
 				order,
 				orderby: orderBy,
-				per_page: postsToShow,
+				per_page: 'and' === categoryRelation ? '-1' : postsToShow,
 				exclude: currentPost.id,
 			}, ( value ) => ! isUndefined( value ) );
 
-			const latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
+			let latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
+
+			if ( 'and' === categoryRelation && latestPosts ) {
+				latestPosts = latestPosts.filter( ( post ) =>
+					// `concat` to prevent mutation `sort` to ensure order is consistent.
+					isEqual( post.categories.concat().sort(), catIds.concat().sort() ) )
+					.slice( 0, postsToShow );
+			}
 
 			return ! Array.isArray( latestPosts )
 				? latestPosts

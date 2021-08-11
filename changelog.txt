@@ -1,4 +1,18 @@
 
+2.15.0 / 2021-08-03
+===================
+### Enhancements 
+* Introduce Posts and Posts Carousel relational category controls [#1973](https://github.com/godaddy-wordpress/coblocks/pull/1973)
+* Enhance a11y accessibility for Alert block [#1952](https://github.com/godaddy-wordpress/coblocks/pull/1952)
+* Enhance Event Item block iconography [#1950](https://github.com/godaddy-wordpress/coblocks/pull/1950)
+
+### Bug Fixes
+* Fix Gist block improper parsing of valid Gist URLs [#1946](https://github.com/godaddy-wordpress/coblocks/pull/1946)
+* Fix color controls application within the Quite block [#1970](https://github.com/godaddy-wordpress/coblocks/pull/1970)
+* Fix invisible block states enabled by animation class [#1968](https://github.com/godaddy-wordpress/coblocks/pull/1968)
+* Fix missing CoBlocks styles in Full Site Editing mode [#1939](https://github.com/godaddy-wordpress/coblocks/pull/1939)
+* Fix theme.json specific settings being overridden [#1965](https://github.com/godaddy-wordpress/coblocks/pull/1965)
+
 2.14.2 / 2021-07-23
 ===================
 ### Bug Fixes

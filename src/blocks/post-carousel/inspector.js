@@ -34,6 +34,7 @@ class Inspector extends Component {
 			postsToShow,
 			columns,
 			categories,
+			categoryRelation,
 		} = attributes;
 
 		const columnsCountOnChange = ( selectedColumns ) => {
@@ -135,6 +136,9 @@ class Inspector extends Component {
 						typeof token === 'string' ? suggestions[ token ] : token
 					);
 					setAttributes( { categories: allCategories } );
+					if ( tokens.length < 2 ) {
+						setAttributes( { categoryRelation: 'or' } );
+					}
 				} }
 			/> );
 		};
@@ -155,6 +159,18 @@ class Inspector extends Component {
 						? <Fragment>
 							{ postFeedType === 'internal' &&
 								useUpdatedQueryControls ? updatedQueryControls() : deprecatedQueryControls
+							}
+							{ categories && categories.length > 1 &&
+								<RadioControl
+									label={ __( 'Category relation', 'coblocks' ) }
+									help={ __( 'The logical relationship between each category when there is more than one.', 'coblocks' ) }
+									selected={ categoryRelation }
+									options={ [
+										{ label: __( 'Or', 'coblocks' ), value: 'or' },
+										{ label: __( 'And', 'coblocks' ), value: 'and' },
+									] }
+									onChange={ ( value ) => setAttributes( { categoryRelation: value } ) }
+								/>
 							}
 							<RangeControl
 								label={ __( 'Number of posts', 'coblocks' ) }

@@ -27,7 +27,9 @@ function coblocks_render_posts_block( $attributes ) {
 
 	if ( isset( $attributes['categories'] ) ) {
 
-		$args['category__in'] = array_column( $attributes['categories'], 'id' );
+		$key = ( isset( $attributes['categoryRelation'] ) && 'and' === $attributes['categoryRelation'] ) ? 'category__and' : 'category__in';
+
+		$args[ $key ] = array_column( $attributes['categories'], 'id' );
 
 	}
 

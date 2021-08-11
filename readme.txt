@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 2.14.2
+Stable tag: 2.15.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,6 +110,14 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+### Enhancements 
+* Introduce Posts and Posts Carousel relational category controls [#1973](https://github.com/godaddy-wordpress/coblocks/pull/1973)
+* Enhance a11y accessibility for Alert block [#1952](https://github.com/godaddy-wordpress/coblocks/pull/1952)
+* Enhance Event Item block iconography [#1950](https://github.com/godaddy-wordpress/coblocks/pull/1950)
+
 ### Bug Fixes
-* Fix Font Size controls in WordPress 5.8 [#1949](https://github.com/godaddy-wordpress/coblocks/pull/1949)
-* Fix post visibility while using Posts and Post Carousel [#1936](https://github.com/godaddy-wordpress/coblocks/pull/1936)
+* Fix Gist block improper parsing of valid Gist URLs [#1946](https://github.com/godaddy-wordpress/coblocks/pull/1946)
+* Fix color controls application within the Quite block [#1970](https://github.com/godaddy-wordpress/coblocks/pull/1970)
+* Fix invisible block states enabled by animation class [#1968](https://github.com/godaddy-wordpress/coblocks/pull/1968)
+* Fix missing CoBlocks styles in Full Site Editing mode [#1939](https://github.com/godaddy-wordpress/coblocks/pull/1939)
+* Fix theme.json specific settings being overridden [#1965](https://github.com/godaddy-wordpress/coblocks/pull/1965)
