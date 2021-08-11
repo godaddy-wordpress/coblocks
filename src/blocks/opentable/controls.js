@@ -8,12 +8,10 @@ import { edit } from '@wordpress/icons';
 
 const Controls = ( props ) => {
 	const {
-		attributes,
 		isEditing,
 		setIsEditing,
+		showEditControls,
 	} = props;
-
-	const restaurantIDs = attributes.restaurantIDs.map( ( restaurantObject ) => restaurantObject.rid );
 
 	const toolbarControls = [
 		{
@@ -26,7 +24,7 @@ const Controls = ( props ) => {
 
 	return (
 		<BlockControls>
-			{ restaurantIDs.length > 0 &&
+			{ showEditControls &&
 				<Toolbar controls={ toolbarControls } />
 			}
 		</BlockControls>
