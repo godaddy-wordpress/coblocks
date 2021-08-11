@@ -106,7 +106,8 @@ const Edit = ( props ) => {
 			<Controls
 				isEditing={ isEditing }
 				setIsEditing={ setIsEditing }
-				{ ...props } />
+				showEditControls={ !! attributes.restaurantIDs.length }
+			/>
 			<InspectorControls
 				className={ className }
 				attributes={ attributes }
@@ -145,8 +146,7 @@ const Edit = ( props ) => {
 									tokenizeOnSpace={ false }
 								/>
 								<Button
-									isPrimary={ !! ridField }
-									isSecondary={ ! ridField }
+									isPrimary
 									type="submit"
 									disabled={ ridField.length < 1 }
 									onClick={ () => {
