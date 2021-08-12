@@ -1,4 +1,12 @@
 
+2.16.0 / 2021-08-12
+===================
+### Enhancements
+* Introduce OpenTable Reservations block [#1928](https://github.com/godaddy-wordpress/coblocks/pull/1928)
+
+### Bug Fixes
+* Fix color palette showing empty on certain themes [#1984](https://github.com/godaddy-wordpress/coblocks/pull/1984)
+
 2.15.0 / 2021-08-03
 ===================
 ### Enhancements 
