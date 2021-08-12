@@ -223,6 +223,7 @@ class CoBlocks_Block_Assets {
 				'customIconConfigExists'         => file_exists( get_stylesheet_directory() . '/coblocks/icons/config.json' ),
 				'typographyControlsEnabled'      => $typography_controls_enabled,
 				'animationControlsEnabled'       => $animation_controls_enabled,
+				'localeCode'                     => get_locale(),
 			)
 		);
 
