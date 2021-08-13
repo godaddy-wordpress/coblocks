@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-08-13T18:40:49+00:00\n"
+"POT-Creation-Date: 2021-08-13T18:49:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -440,7 +440,7 @@ msgstr ""
 #: src/blocks/alert/inspector.js:49
 #: src/blocks/author/inspector.js:46
 #: src/blocks/click-to-tweet/inspector.js:48
-#: src/blocks/dynamic-separator/inspector.js:63
+#: src/blocks/dynamic-separator/inspector.js:52
 #: src/blocks/events/event-item/inspector.js:30
 #: src/blocks/features/feature/inspector.js:92
 #: src/blocks/features/inspector.js:159
@@ -464,7 +464,7 @@ msgstr ""
 #: src/blocks/accordion/accordion-item/inspector.js:79
 #: src/blocks/alert/inspector.js:55
 #: src/blocks/author/inspector.js:52
-#: src/blocks/dynamic-separator/inspector.js:69
+#: src/blocks/dynamic-separator/inspector.js:58
 #: src/blocks/features/feature/inspector.js:110
 #: src/blocks/features/inspector.js:177
 #: src/blocks/hero/inspector.js:150
@@ -533,13 +533,13 @@ msgid "Supporting Internet Explorer by loading a JavaScript polyfill on this pag
 msgstr ""
 
 #. translators: placeholder text for input box
-#: src/blocks/alert/edit.js:95
+#: src/blocks/alert/edit.js:94
 #: src/blocks/services/service/edit.js:188
 msgid "Write title…"
 msgstr ""
 
 #. translators: placeholder text for input box
-#: src/blocks/alert/edit.js:104
+#: src/blocks/alert/edit.js:103
 msgid "Write text…"
 msgstr ""
 
@@ -805,18 +805,18 @@ msgid "Fullwidth"
 msgstr ""
 
 #. translators: hr is html markup (horizonal rule)
-#: src/blocks/dynamic-separator/inspector.js:46
+#: src/blocks/dynamic-separator/inspector.js:35
 msgid "Dynamic HR settings"
 msgstr ""
 
-#: src/blocks/dynamic-separator/inspector.js:47
+#: src/blocks/dynamic-separator/inspector.js:36
 #: src/blocks/gallery-carousel/inspector.js:103
 #: src/blocks/hero/inspector.js:108
 #: src/blocks/map/inspector.js:130
 msgid "Height in pixels"
 msgstr ""
 
-#: src/blocks/dynamic-separator/inspector.js:55
+#: src/blocks/dynamic-separator/inspector.js:44
 msgid "Height for the dynamic separator element in pixels."
 msgstr ""
 
