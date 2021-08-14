@@ -44,6 +44,7 @@ CoBlocks is the last page builder you’ll ever need: you get a winning mix of a
 * Masonry Gallery Block
 * Media Card Block
 * Offset Gallery Block
+* OpenTable Reservations Block
 * Post Carousel Block
 * Posts Block
 * Pricing Table Block
