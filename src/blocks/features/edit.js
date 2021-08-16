@@ -20,7 +20,7 @@ import { compose } from '@wordpress/compose';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { isBlobURL } from '@wordpress/blob';
 import { Spinner } from '@wordpress/components';
-import { withSelect, useSelect, useDispatch } from '@wordpress/data';
+import { withDispatch, withSelect, useSelect, useDispatch } from '@wordpress/data';
 import { createBlock } from '@wordpress/blocks';
 
 /**
@@ -46,6 +46,7 @@ const Edit = ( props ) => {
 		backgroundColor,
 		setAttributes,
 		clientId,
+		isSelected: isSelectedProps,
 	} = props;
 
 	const {
@@ -85,7 +86,7 @@ const Edit = ( props ) => {
 		const parentClientId = getBlockRootClientId( getBlockSelectionStart() );
 
 		return {
-			isSelected: isSelected || clientId === parentClientId,
+			isSelected: isSelectedProps || clientId === parentClientId,
 			innerBlocks: getBlocks( clientId ),
 		};
 	} );
@@ -183,6 +184,9 @@ export default compose( [
 	applyWithColors,
 	withSelect( ( select, blockData ) => ( {
 		innerBlocks: select( 'core/block-editor' ).getBlocks( blockData.clientId ),
+	} ) ),
+	withDispatch( ( dispatch ) => ( {
+		insertBlock: dispatch( 'core/block-editor' ).insertBlock,
 	} ) ),
 	// Ensure there is a minimum of one coblocks/feature innerBlock per column set.
 	( WrappedComponent ) => ( ownProps ) => {
