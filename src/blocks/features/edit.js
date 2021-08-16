@@ -70,6 +70,7 @@ const Edit = ( props ) => {
 
 	const {
 		updateBlockAttributes,
+		selectBlock,
 	} = useDispatch( 'core/block-editor' );
 
 	const {
@@ -158,7 +159,7 @@ const Edit = ( props ) => {
 				/>
 			) }
 			{ isSelected && (
-				<Inspector { ...props } />
+				<Inspector selectBlock={ selectBlock } { ...props } />
 			) }
 			<div
 				className={ classes }
