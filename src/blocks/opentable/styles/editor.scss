@@ -1,0 +1,138 @@
+.components-panel__body {
+
+	.block-editor-block-styles {
+
+		.block-editor-block-styles__item {
+
+			&[aria-label="Standard"] {
+				.block-editor-block-styles__item-preview {
+					background-image: url(images/opentable/standard.png);
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: contain;
+				}
+				.block-editor-block-preview__content {
+					display: none;
+				}
+			}
+			&[aria-label="Button"] {
+				.block-editor-block-styles__item-preview {
+					background-image: url(images/opentable/button.png);
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: contain;
+				}
+				.block-editor-block-preview__content {
+					display: none;
+				}
+			}
+			&[aria-label="Tall"] {
+				.block-editor-block-styles__item-preview {
+					background-image: url(images/opentable/tall.png);
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: contain;
+				}
+				.block-editor-block-preview__content {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+.wp-block-coblocks-opentable {
+
+	img:focus {
+		outline: none;
+	}
+	.components-placeholder__fieldset .components-button.is-primary {
+		margin: 0 10px;
+	}
+	.components-spinner {
+		margin: 0 10px;
+	}
+
+	.components-placeholder__flex-fields-vertical-group {
+		align-items: start;
+		display: inline-flex;
+	}
+
+	.block-editor-media-placeholder.is-appender {
+		margin-bottom: 0;
+		margin-top: 16px;
+		min-height: 100px;
+		outline: 1px dashed $dark-gray-150;
+
+		.components-placeholder__label,
+		.components-placeholder__instructions {
+			display: none;
+		}
+
+		.components-button {
+			margin-bottom: 1px;
+		}
+	}
+
+	.components-resizable-box__handle-left {
+		left: 13px;
+	}
+
+	.components-placeholder__input {
+		margin: 0;
+		min-height: 36px;
+		min-width: 300px;
+	}
+
+	.is-error > button:nth-child(2) {
+		align-self: center;
+	}
+
+	.components-form-token-field__help {
+		display: none;
+	}
+
+	.components-form-token-field__suggestions-list {
+		margin: 4px -4px -4px;
+		padding: 0;
+	}
+
+	.components-form-token-field__token-text {
+		align-items: center;
+		display: inline-flex;
+	}
+
+	.components-form-token-field__label {
+		display: none;
+	}
+
+	.components-resizable-box__handle-right {
+		right: 14px;
+	}
+
+	.components-text-control__input {
+		height: 36px;
+	}
+
+	.components-base-control {
+		margin-right: 15px;
+	}
+
+	.components-placeholder__flex-fields {
+		align-items: center;
+		display: inline-flex;
+	}
+
+	.components-placeholder__opentable-help-links a:link {
+		margin-right: 10px;
+	}
+
+	iframe {
+		transition: width 0.5s ease-in-out;
+	}
+
+}
+
+.edit-post-visual-editor .wp-block-coblocks-opentable .components-form-token-field__remove-token {
+	padding: 0;
+}

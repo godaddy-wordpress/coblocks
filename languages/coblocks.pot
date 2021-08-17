@@ -1,14 +1,14 @@
 # Copyright (c) 2021 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 2.15.0\n"
+"Project-Id-Version: CoBlocks 2.16.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-08-09T16:15:57+00:00\n"
+"POT-Creation-Date: 2021-08-17T15:08:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -62,15 +62,15 @@ msgstr ""
 msgid "Pattern Category"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:426
+#: includes/class-coblocks-block-assets.php:427
 msgid "Close Gallery"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:427
+#: includes/class-coblocks-block-assets.php:428
 msgid "Previous"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:428
+#: includes/class-coblocks-block-assets.php:429
 msgid "Next"
 msgstr ""
 
@@ -322,24 +322,24 @@ msgstr ""
 
 #: src/blocks/social-profiles/index.php:68
 #: src/blocks/share/inspector.js:162
-#: src/blocks/social-profiles/edit.js:159
+#: src/blocks/social-profiles/edit.js:150
 msgid "Facebook"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:72
 #: src/blocks/share/inspector.js:157
-#: src/blocks/social-profiles/edit.js:205
+#: src/blocks/social-profiles/edit.js:196
 msgid "Twitter"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:76
-#: src/blocks/social-profiles/edit.js:251
+#: src/blocks/social-profiles/edit.js:242
 msgid "Instagram"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:80
 #: src/blocks/share/inspector.js:167
-#: src/blocks/social-profiles/edit.js:299
+#: src/blocks/social-profiles/edit.js:290
 msgid "Pinterest"
 msgstr ""
 
@@ -348,17 +348,17 @@ msgid "Linkedin"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:89
-#: src/blocks/social-profiles/edit.js:393
+#: src/blocks/social-profiles/edit.js:384
 msgid "YouTube"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:93
-#: src/blocks/social-profiles/edit.js:439
+#: src/blocks/social-profiles/edit.js:430
 msgid "Yelp"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:97
-#: src/blocks/social-profiles/edit.js:485
+#: src/blocks/social-profiles/edit.js:476
 msgid "Houzz"
 msgstr ""
 
@@ -440,7 +440,7 @@ msgstr ""
 #: src/blocks/alert/inspector.js:49
 #: src/blocks/author/inspector.js:46
 #: src/blocks/click-to-tweet/inspector.js:48
-#: src/blocks/dynamic-separator/inspector.js:63
+#: src/blocks/dynamic-separator/inspector.js:52
 #: src/blocks/events/event-item/inspector.js:30
 #: src/blocks/features/feature/inspector.js:92
 #: src/blocks/features/inspector.js:159
@@ -457,14 +457,14 @@ msgstr ""
 #: src/blocks/social-profiles/inspector.js:212
 #: src/components/form-label-colors/label-color-control.js:36
 #: src/extensions/colors/index.js:59
-#: src/extensions/colors/settings-modal-control.js:106
+#: src/extensions/colors/settings-modal-control.js:123
 msgid "Color settings"
 msgstr ""
 
 #: src/blocks/accordion/accordion-item/inspector.js:79
 #: src/blocks/alert/inspector.js:55
 #: src/blocks/author/inspector.js:52
-#: src/blocks/dynamic-separator/inspector.js:69
+#: src/blocks/dynamic-separator/inspector.js:58
 #: src/blocks/features/feature/inspector.js:110
 #: src/blocks/features/inspector.js:177
 #: src/blocks/hero/inspector.js:150
@@ -533,13 +533,13 @@ msgid "Supporting Internet Explorer by loading a JavaScript polyfill on this pag
 msgstr ""
 
 #. translators: placeholder text for input box
-#: src/blocks/alert/edit.js:95
+#: src/blocks/alert/edit.js:94
 #: src/blocks/services/service/edit.js:188
 msgid "Write title…"
 msgstr ""
 
 #. translators: placeholder text for input box
-#: src/blocks/alert/edit.js:104
+#: src/blocks/alert/edit.js:103
 msgid "Write text…"
 msgstr ""
 
@@ -805,18 +805,18 @@ msgid "Fullwidth"
 msgstr ""
 
 #. translators: hr is html markup (horizonal rule)
-#: src/blocks/dynamic-separator/inspector.js:46
+#: src/blocks/dynamic-separator/inspector.js:35
 msgid "Dynamic HR settings"
 msgstr ""
 
-#: src/blocks/dynamic-separator/inspector.js:47
+#: src/blocks/dynamic-separator/inspector.js:36
 #: src/blocks/gallery-carousel/inspector.js:103
 #: src/blocks/hero/inspector.js:108
 #: src/blocks/map/inspector.js:130
 msgid "Height in pixels"
 msgstr ""
 
-#: src/blocks/dynamic-separator/inspector.js:55
+#: src/blocks/dynamic-separator/inspector.js:44
 msgid "Height for the dynamic separator element in pixels."
 msgstr ""
 
@@ -1236,6 +1236,7 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgsfocusable.js:902
 #: src/blocks/icon/svgs.js:902
 #: src/blocks/icon/svgs.js:1577
+#: src/blocks/opentable/index.js:33
 msgid "restaurant"
 msgstr ""
 
@@ -1552,6 +1553,7 @@ msgstr ""
 
 #: src/blocks/form/edit.js:437
 #: src/blocks/map/inspector.js:226
+#: src/blocks/opentable/edit.js:165
 msgid "Save"
 msgstr ""
 
@@ -4774,8 +4776,10 @@ msgid "wrist"
 msgstr ""
 
 #. translators: icon keyword
+#. translators: block keyword
 #: src/blocks/icon/svgs.js:675
 #: src/blocks/icon/svgs.js:1571
+#: src/blocks/opentable/index.js:37
 msgid "open"
 msgstr ""
 
@@ -6009,6 +6013,7 @@ msgstr ""
 
 #. translators: block style
 #: src/blocks/map/styles.js:13
+#: src/blocks/opentable/index.js:45
 msgid "Standard"
 msgstr ""
 
@@ -6118,6 +6123,73 @@ msgstr ""
 
 #: src/blocks/media-card/media-container.js:123
 msgid "Drop to replace media"
+msgstr ""
+
+#: src/blocks/opentable/controls.js:19
+msgid "Edit Restaurant"
+msgstr ""
+
+#: src/blocks/opentable/edit.js:60
+msgid "Error connecting to the OpenTable API. Please try again later."
+msgstr ""
+
+#. translators: block name
+#: src/blocks/opentable/edit.js:121
+#: src/blocks/opentable/index.js:26
+msgid "OpenTable"
+msgstr ""
+
+#: src/blocks/opentable/edit.js:122
+msgid "Select your OpenTable restaurant(s) to show the reservations widget."
+msgstr ""
+
+#: src/blocks/opentable/edit.js:138
+msgid "Select restaurant(s)"
+msgstr ""
+
+#: src/blocks/opentable/edit.js:173
+msgid "Sign up for OpenTable"
+msgstr ""
+
+#. translators: block description
+#: src/blocks/opentable/index.js:28
+msgid "Embed an OpenTable Reservations Widget."
+msgstr ""
+
+#. translators: block keyword
+#: src/blocks/opentable/index.js:35
+msgid "reservation"
+msgstr ""
+
+#. translators: block keyword
+#: src/blocks/opentable/index.js:39
+msgid "table"
+msgstr ""
+
+#. translators: block style
+#: src/blocks/opentable/index.js:51
+msgid "Tall"
+msgstr ""
+
+#. translators: block style
+#: src/blocks/opentable/index.js:56
+msgid "Button"
+msgstr ""
+
+#: src/blocks/opentable/inspector.js:29
+msgid "The button style does not support multiple restaurants. Clicking the button navigates to the first provided Restaurant."
+msgstr ""
+
+#: src/blocks/opentable/inspector.js:33
+msgid "OpenTable settings"
+msgstr ""
+
+#: src/blocks/opentable/inspector.js:35
+msgid "Language"
+msgstr ""
+
+#: src/blocks/opentable/inspector.js:41
+msgid "Select language"
 msgstr ""
 
 #: src/blocks/post-carousel/edit.js:125
@@ -6844,12 +6916,12 @@ msgid "Circular"
 msgstr ""
 
 #: src/blocks/share/inspector.js:25
-#: src/blocks/social-profiles/inspector.js:36
+#: src/blocks/social-profiles/inspector.js:37
 msgid "Share button colors are enabled."
 msgstr ""
 
 #: src/blocks/share/inspector.js:25
-#: src/blocks/social-profiles/inspector.js:37
+#: src/blocks/social-profiles/inspector.js:38
 msgid "Toggle to use official colors from each social media platform."
 msgstr ""
 
@@ -6878,7 +6950,7 @@ msgid "Icons"
 msgstr ""
 
 #: src/blocks/share/inspector.js:172
-#: src/blocks/social-profiles/edit.js:347
+#: src/blocks/social-profiles/edit.js:338
 msgid "LinkedIn"
 msgstr ""
 
@@ -6894,67 +6966,67 @@ msgstr ""
 msgid "Reddit"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:142
+#: src/blocks/social-profiles/edit.js:133
 msgid "Add Facebook profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:174
+#: src/blocks/social-profiles/edit.js:165
 msgid "https://facebook.com/"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:188
+#: src/blocks/social-profiles/edit.js:179
 msgid "Add Twitter profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:220
+#: src/blocks/social-profiles/edit.js:211
 msgid "https://twitter.com/"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:234
+#: src/blocks/social-profiles/edit.js:225
 msgid "Add Instagram profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:266
+#: src/blocks/social-profiles/edit.js:257
 msgid "https://instagram.com/"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:282
+#: src/blocks/social-profiles/edit.js:273
 msgid "Add Pinterest profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:314
+#: src/blocks/social-profiles/edit.js:305
 msgid "https://pinterest.com/"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:330
+#: src/blocks/social-profiles/edit.js:321
 msgid "Add LinkedIn profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:362
+#: src/blocks/social-profiles/edit.js:353
 msgid "https://linkedin.com/"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:376
+#: src/blocks/social-profiles/edit.js:367
 msgid "Add YouTube profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:408
+#: src/blocks/social-profiles/edit.js:399
 msgid "https://youtube.com/"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:422
+#: src/blocks/social-profiles/edit.js:413
 msgid "Add Yelp profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:454
+#: src/blocks/social-profiles/edit.js:445
 msgid "https://yelp.com/"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:468
+#: src/blocks/social-profiles/edit.js:459
 msgid "Add Houzz profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:500
+#: src/blocks/social-profiles/edit.js:491
 msgid "https://houzz.com/"
 msgstr ""
 
@@ -7686,23 +7758,23 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: src/extensions/colors/settings-modal-control.js:107
+#: src/extensions/colors/settings-modal-control.js:124
 msgid "Allow color settings throughout the editor."
 msgstr ""
 
-#: src/extensions/colors/settings-modal-control.js:118
+#: src/extensions/colors/settings-modal-control.js:135
 msgid "Custom color pickers"
 msgstr ""
 
-#: src/extensions/colors/settings-modal-control.js:119
+#: src/extensions/colors/settings-modal-control.js:136
 msgid "Allow styling with custom colors."
 msgstr ""
 
-#: src/extensions/colors/settings-modal-control.js:130
+#: src/extensions/colors/settings-modal-control.js:147
 msgid "Gradient styles"
 msgstr ""
 
-#: src/extensions/colors/settings-modal-control.js:131
+#: src/extensions/colors/settings-modal-control.js:148
 msgid "Allow styling with gradient fills."
 msgstr ""
 
