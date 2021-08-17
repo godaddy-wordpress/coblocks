@@ -492,7 +492,7 @@ jobs:
 
   js:
     docker:
-      - image: circleci/php:7.3.23-node-browsers
+      - image: cimg/php:7.3.23-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
