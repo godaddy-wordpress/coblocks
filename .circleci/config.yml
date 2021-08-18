@@ -536,7 +536,7 @@ jobs:
 
   e2e_chrome:
     docker:
-      - image: circleci/php:7.3.23-browsers
+      - image: circleci/php:7.3.23-node-browsers
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -568,7 +568,7 @@ jobs:
 
   e2e_firefox:
     docker:
-      - image: circleci/php:7.3.23-browsers
+      - image: circleci/php:7.3.23-node-browsers
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
