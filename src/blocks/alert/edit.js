@@ -14,17 +14,34 @@ import applyWithColors from './colors';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
-import { compose } from '@wordpress/compose';
+import { useEffect } from '@wordpress/element';
+import { compose, usePrevious } from '@wordpress/compose';
 import { RichText } from '@wordpress/block-editor';
 
 /**
  * Block edit function
+ *
+ * @param {Object} props
  */
-class Edit extends Component {
-	componentDidMount() {
-		const { attributes, setAttributes } = this.props;
+const Edit = ( props ) => {
+	const {
+		attributes,
+		backgroundColor,
+		className,
+		isSelected,
+		setAttributes,
+		textColor,
+	} = props;
 
+	const {
+		textAlign,
+		title,
+		value,
+	} = attributes;
+
+	const prevClassName = usePrevious( className );
+
+	useEffect( () => {
 		// Convert is-{type}-alert to is-style-{type}.
 		// See: https://github.com/godaddy-wordpress/coblocks/pull/781
 		if ( /is-\w+-alert/.test( attributes.className ) ) {
@@ -34,84 +51,65 @@ class Edit extends Component {
 			newClassName = newClassName.replace( /is-(\w+)-alert/, 'is-style-$1' );
 			setAttributes( { className: newClassName } );
 		}
-	}
+	}, [] );
 
-	componentDidUpdate( prevProps ) {
-		const { attributes, setAttributes } = this.props;
-
+	useEffect( () => {
 		// Reset color selections when a new style has been selected.
 		// If the legacy alert class is detected, we want to retain the custom color selections.
-		if ( ! /is-\w+-alert/.test( prevProps.attributes.className ) && prevProps.attributes.className !== attributes.className ) {
+		if ( ! /is-\w+-alert/.test( prevClassName ) && prevClassName !== attributes.className ) {
 			setAttributes( { backgroundColor: '', customBackgroundColor: '', textColor: '', customTextColor: '' } );
 		}
-	}
+	}, [ prevClassName, attributes ] );
 
-	render() {
-		const {
-			attributes,
-			backgroundColor,
-			className,
-			isSelected,
-			setAttributes,
-			textColor,
-		} = this.props;
-
-		const {
-			textAlign,
-			title,
-			value,
-		} = attributes;
-
-		return (
-			<Fragment>
-				{ isSelected && (
-					<Controls
-						{ ...this.props }
-					/>
+	return (
+		<>
+			{ isSelected && (
+				<Controls
+					{ ...props }
+				/>
+			) }
+			{ isSelected && (
+				<Inspector
+					{ ...props }
+				/>
+			) }
+			<div
+				className={ classnames(
+					className, {
+						'has-background': backgroundColor.color,
+						'has-text-color': textColor.color,
+						[ `has-text-align-${ textAlign }` ]: textAlign,
+						[ backgroundColor.class ]: backgroundColor.class,
+						[ textColor.class ]: textColor.class,
+					}
 				) }
-				{ isSelected && (
-					<Inspector
-						{ ...this.props }
-					/>
-				) }
-				<div
-					className={ classnames(
-						className, {
-							'has-background': backgroundColor.color,
-							'has-text-color': textColor.color,
-							[ `has-text-align-${ textAlign }` ]: textAlign,
-							[ backgroundColor.class ]: backgroundColor.class,
-							[ textColor.class ]: textColor.class,
-						}
-					) }
-					style={ {
-						backgroundColor: backgroundColor.color,
-						color: textColor.color,
-					} }
-				>
-					{ ( ! RichText.isEmpty( title ) || isSelected ) && (
-						<RichText
-							/* translators: placeholder text for input box */
-							placeholder={ __( 'Write title…', 'coblocks' ) }
-							value={ title }
-							className="wp-block-coblocks-alert__title"
-							onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
-							keepPlaceholderOnFocus
-						/>
-					) }
+				style={ {
+					backgroundColor: backgroundColor.color,
+					color: textColor.color,
+				} }
+			>
+				{ ( ! RichText.isEmpty( title ) || isSelected ) && (
 					<RichText
 						/* translators: placeholder text for input box */
-						placeholder={ __( 'Write text…', 'coblocks' ) }
-						value={ value }
-						className="wp-block-coblocks-alert__text"
-						onChange={ ( newValue ) => setAttributes( { value: newValue } ) }
+						placeholder={ __( 'Write title…', 'coblocks' ) }
+						value={ title }
+						className="wp-block-coblocks-alert__title"
+						onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
 						keepPlaceholderOnFocus
 					/>
-				</div>
-			</Fragment>
-		);
-	}
-}
+				) }
+				<RichText
+					/* translators: placeholder text for input box */
+					placeholder={ __( 'Write text…', 'coblocks' ) }
+					value={ value }
+					className="wp-block-coblocks-alert__text"
+					onChange={ ( newValue ) => setAttributes( { value: newValue } ) }
+					keepPlaceholderOnFocus
+				/>
+			</div>
+		</>
+	);
+};
 
 export default compose( [
 	applyWithColors,

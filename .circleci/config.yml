@@ -128,7 +128,7 @@ commands:
       - run:
           name: Set diff files env var
           command: |
-            FILES=$(git diff HEAD..origin/$BASE_BRANCH --name-only --diff-filter=M "*<< parameters.ext >>")
+            FILES=$(git diff HEAD..origin/$BASE_BRANCH --name-only --diff-filter=MAD "*<< parameters.ext >>")
             echo "export FILES='$FILES'" >> $BASH_ENV
             source $BASH_ENV
 
@@ -282,7 +282,7 @@ commands:
       - run:
           name: "Pre-Check files"
           command: |
-            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ] && [ "$CIRCLE_BRANCH" != *"run-all-tests"* ]; then
+            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ] && [[ "$CIRCLE_BRANCH" != *"run-all-tests"* ]]; then
               echo "Changes do not require testing."
               circleci-agent step halt
             fi
