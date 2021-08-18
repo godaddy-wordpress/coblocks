@@ -23,7 +23,7 @@ import {
  * WordPress dependencies
  */
 import { createBlock } from '@wordpress/blocks';
-import { Fragment, useEffect } from '@wordpress/element';
+import { useEffect } from '@wordpress/element';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { AlignmentToolbar, BlockControls, InnerBlocks } from '@wordpress/block-editor';
 
@@ -141,7 +141,7 @@ const Edit = ( props ) => {
 
 	const activeStyle = getActiveStyle( layoutOptions, className );
 	return (
-		<Fragment>
+		<>
 			<BlockControls>
 				<HeadingToolbar
 					minLevel={ 2 }
@@ -176,7 +176,7 @@ const Edit = ( props ) => {
 					</div>
 				</GutterWrapper>
 			</div>
-		</Fragment>
+		</>
 	);
 };
 
