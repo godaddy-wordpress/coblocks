@@ -143,7 +143,7 @@ commands:
           name: Install WordPress
           command: |
             sudo apt-get update && sudo apt-get install -y subversion default-mysql-client
-            sudo -E docker-php-ext-install mysqli
+            sudo -E docker-php-ext-install mysqli && docker-php-ext-enable mysqli
             mkdir -p /tmp/wordpress
             ./vendor/bin/wp core download --path=/tmp/wordpress
             ./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass='' --path=/tmp/wordpress
