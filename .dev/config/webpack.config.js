@@ -9,9 +9,16 @@ const nodeSassGlobImporter = require( 'node-sass-glob-importer' );
 
 const isProduction = process.env.NODE_ENV === 'production';
 
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
+( () => console.log(...defaultConfig.module.rules.
+	filter( ( rule ) => 
+	toString( rule.test ) !== toString( /\.(sc|sa)ss$/ ) 
+)))();
 module.exports = {
-	...defaultConfig,
-
+	mode: defaultConfig.mode,
+	optimization: {
+		...defaultConfig.optimization,
+	},
 	entry: {
 		coblocks: path.resolve( process.cwd(), 'src/blocks.js' ),
 
@@ -45,10 +52,12 @@ module.exports = {
 	},
 
 	module: {
-		...defaultConfig.module,
+		// ...defaultConfig.module,
 		rules: [
-			...defaultConfig.module.rules,
-
+			...defaultConfig.module.rules.
+				filter( ( rule ) => 
+				toString( rule.test ) !== toString( /\.(sc|sa)ss$/ ) 
+			),
 			{
 				test: /\.scss$/,
 				use: [
@@ -90,7 +99,9 @@ module.exports = {
 	plugins: [
 		...defaultConfig.plugins,
 
-		new FixStyleOnlyEntriesPlugin(),
+		// new FixStyleOnlyEntriesPlugin(),
+		// new RemoveEmptyScriptsPlugin({ extensions:['.scss'] }),
+		new RemoveEmptyScriptsPlugin(),
 		new MiniCssExtractPlugin( {
 			filename: '[name].css',
 		} ),
