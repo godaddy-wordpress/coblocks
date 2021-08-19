@@ -87,7 +87,12 @@ const deprecated = [
 					</blockquote>
 				)
 			);
-		} },
+		},
+	},
+	{
+		attributes,
+		save: () => null,
+	},
 ];
 
 export default deprecated;
