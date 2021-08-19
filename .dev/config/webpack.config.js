@@ -10,10 +10,7 @@ const nodeSassGlobImporter = require( 'node-sass-glob-importer' );
 const isProduction = process.env.NODE_ENV === 'production';
 
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
-( () => console.log(...defaultConfig.module.rules.
-	filter( ( rule ) => 
-	toString( rule.test ) !== toString( /\.(sc|sa)ss$/ ) 
-)))();
+
 module.exports = {
 	mode: defaultConfig.mode,
 	optimization: {
@@ -52,12 +49,27 @@ module.exports = {
 	},
 
 	module: {
-		// ...defaultConfig.module,
 		rules: [
 			...defaultConfig.module.rules.
 				filter( ( rule ) => 
 				toString( rule.test ) !== toString( /\.(sc|sa)ss$/ ) 
 			),
+			{
+				test: /\.js?$/,
+				use: [
+					require.resolve( 'thread-loader' ),
+					{
+						loader: require.resolve( 'babel-loader' ),
+						options: {
+							// Babel uses a directory within local node_modules
+							// by default. Use the environment variable option
+							// to enable more persistent caching.
+							cacheDirectory:
+								process.env.BABEL_CACHE_DIRECTORY || true,
+						},
+					},
+				],
+			},
 			{
 				test: /\.scss$/,
 				use: [
@@ -91,17 +103,13 @@ module.exports = {
 	},
 
 	stats: {
-		...defaultConfig.stats,
+		// ...defaultConfig.stats,
 		modules: false,
 		warnings: false,
 	},
 
 	plugins: [
-		...defaultConfig.plugins,
-
-		// new FixStyleOnlyEntriesPlugin(),
-		// new RemoveEmptyScriptsPlugin({ extensions:['.scss'] }),
-		new RemoveEmptyScriptsPlugin(),
+		new FixStyleOnlyEntriesPlugin(),
 		new MiniCssExtractPlugin( {
 			filename: '[name].css',
 		} ),
