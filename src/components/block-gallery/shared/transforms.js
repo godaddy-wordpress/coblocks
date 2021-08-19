@@ -25,9 +25,9 @@ function GalleryTransforms( props ) {
 		gridSize: props.gridSize,
 		gutterMobile: props.gutterMobile,
 		height: props.height,
-		images: props.images?.map((image, index) => {
-			return { ...helper.pickRelevantMediaFiles(image), index };
-		}),
+		images: props.images?.map( ( image, index ) => {
+			return { ...helper.pickRelevantMediaFiles( image ), index };
+		} ),
 		linkTo: props.linkTo,
 		pageDots: props.pageDots,
 		prevNextButtons: props.prevNextButtons,
