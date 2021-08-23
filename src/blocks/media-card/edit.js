@@ -17,12 +17,12 @@ import MediaContainer from './media-container';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { mediaUpload } from '@wordpress/editor';
 import { Spinner } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
+import { useState } from '@wordpress/element';
 
 /**
  * This block can recieve both image and video files.
@@ -85,47 +85,106 @@ const TEMPLATE = [
 
 /**
  * Block edit function
+ *
+ * @param {Object} props
  */
-class Edit extends Component {
-	constructor() {
-		super( ...arguments );
+const Edit = ( props ) => {
+	const {
+		attributes,
+		backgroundColor,
+		className,
+		isSelected,
+		setAttributes,
+	} = props;
 
-		this.onDropMedia = this.onDropMedia.bind( this );
-		this.onSelectMedia = this.onSelectMedia.bind( this );
-		this.onWidthChange = this.onWidthChange.bind( this );
-		this.commitWidthChange = this.commitWidthChange.bind( this );
-		this.state = {
-			mediaWidth: null,
-		};
-	}
+	const {
+		coblocks,
+		backgroundImg,
+		hasCardShadow,
+		paddingTop,
+		paddingRight,
+		paddingBottom,
+		paddingLeft,
+		paddingUnit,
+		paddingSize,
+		mediaUrl,
+		maxWidth,
+		mediaAlt,
+		isStackedOnMobile,
+		align,
+		mediaId,
+		mediaType,
+		mediaPosition,
+		hasImgShadow,
+	} = attributes;
 
-	onDropMedia( files ) {
-		mediaUpload( {
-			allowedTypes: ALLOWED_MEDIA_TYPES,
-			filesList: files,
-			onFileChange: ( [ media ] ) => this.onSelectMedia( media ),
+	const [ mediaWidth, setMediaWidth ] = useState( null );
+
+	const dropZone = (
+		<BackgroundDropZone
+			{ ...props }
+			label={ __( 'Add as background', 'coblocks' ) }
+		/>
+	);
+
+	const temporaryMediaWidth = mediaWidth;
+	const widthString = `${ temporaryMediaWidth || mediaWidth }%`;
+
+	const innerClasses = classnames(
+		'wp-block-coblocks-media-card__inner',
+		...BackgroundClasses( attributes ), {
+			'has-padding': paddingSize && paddingSize !== 'no',
+			[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' ),
 		} );
+
+	const innerStyles = {
+		...BackgroundStyles( attributes ),
+		backgroundColor: backgroundColor.color,
+		paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
+		paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
+		paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
+		paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
+	};
+
+	const wrapperStyles = {
+		gridTemplateColumns: 'right' === mediaPosition ? `auto ${ widthString }` : `${ widthString } auto`,
+		maxWidth: maxWidth ? ( 'full' === align || 'wide' === align ) && maxWidth : undefined,
+	};
+
+	let classes = classnames( className, { [ `is-style-${ mediaPosition }` ]: mediaPosition,
+		'has-no-media': ! mediaUrl || null,
+		'is-selected': isSelected,
+		'is-stacked-on-mobile': isStackedOnMobile }
+	);
+
+	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
+		classes = classnames( classes, `coblocks-media-card-${ coblocks.id }` );
 	}
 
-	onSelectMedia( media ) {
-		const { setAttributes } = this.props;
+	const commitWidthChange = ( width ) => {
+		setAttributes( {
+			mediaWidth: width,
+		} );
+		setMediaWidth( null );
+	};
 
-		let mediaType;
+	const onSelectMedia = ( media ) => {
+		let newMediaType;
 		let src;
 		// for media selections originated from a file upload.
 		if ( media.media_type ) {
 			if ( media.media_type === 'image' ) {
-				mediaType = 'image';
+				newMediaType = 'image';
 			} else {
 				// only images and videos are accepted so if the media_type is not an image we can assume it is a video.
 				// video contain the media type of 'file' in the object returned from the rest api.
-				mediaType = 'video';
+				newMediaType = 'video';
 			}
 		} else { // for media selections originated from existing files in the media library.
-			mediaType = media.type;
+			newMediaType = media.type;
 		}
 
-		if ( mediaType === 'image' ) {
+		if ( newMediaType === 'image' ) {
 			// Try the "large" size URL, falling back to the "full" size URL below.
 			src = get( media, [ 'sizes', 'large', 'url' ] ) || get( media, [ 'media_details', 'sizes', 'large', 'source_url' ] );
 		}
@@ -133,159 +192,83 @@ class Edit extends Component {
 		setAttributes( {
 			mediaAlt: media.alt,
 			mediaId: media.id,
-			mediaType,
+			mediaType: newMediaType,
 			mediaUrl: src || media.url,
 		} );
-	}
+	};
 
-	onWidthChange( width ) {
-		this.setState( {
-			mediaWidth: width,
+	const onWidthChange = ( width ) => {
+		setMediaWidth( width );
+	};
+
+	const onDropMedia = ( files ) => {
+		mediaUpload( {
+			allowedTypes: ALLOWED_MEDIA_TYPES,
+			filesList: files,
+			onFileChange: ( [ media ] ) => onSelectMedia( media ),
 		} );
-	}
+	};
 
-	commitWidthChange( width ) {
-		const { setAttributes } = this.props;
-
-		setAttributes( {
-			mediaWidth: width,
-		} );
-		this.setState( {
-			mediaWidth: null,
-		} );
-	}
-
-	renderMediaArea() {
-		const { attributes, className } = this.props;
-		const { mediaAlt, mediaId, mediaType, mediaUrl, mediaWidth, mediaPosition, hasImgShadow } = attributes;
-
+	const renderMediaArea = () => {
 		return (
-			<Fragment>
+			<>
 				<MediaContainer
 					className={ className }
 					figureClass="wp-block-coblocks-media-card__media-container"
-					onSelectMedia={ this.onSelectMedia }
-					onWidthChange={ this.onWidthChange }
-					commitWidthChange={ this.commitWidthChange }
-					onDropMedia={ this.onDropMedia }
+					onSelectMedia={ onSelectMedia }
+					onWidthChange={ onWidthChange }
+					commitWidthChange={ commitWidthChange }
+					onDropMedia={ onDropMedia }
 					{ ...{ mediaAlt, mediaId, mediaType, mediaUrl, mediaPosition, hasImgShadow, mediaWidth } }
 				/>
-			</Fragment>
+			</>
 		);
-	}
+	};
 
-	render() {
-		const {
-			attributes,
-			backgroundColor,
-			className,
-			isSelected,
-		} = this.props;
-
-		const {
-			coblocks,
-			backgroundImg,
-			hasCardShadow,
-			paddingTop,
-			paddingRight,
-			paddingBottom,
-			paddingLeft,
-			paddingUnit,
-			paddingSize,
-			mediaWidth,
-			mediaUrl,
-			maxWidth,
-			isStackedOnMobile,
-			align,
-			mediaPosition,
-		} = attributes;
-
-		const dropZone = (
-			<BackgroundDropZone
-				{ ...this.props }
-				label={ __( 'Add as background', 'coblocks' ) }
-			/>
-		);
-
-		const temporaryMediaWidth = this.state.mediaWidth;
-		const widthString = `${ temporaryMediaWidth || mediaWidth }%`;
-
-		const innerClasses = classnames(
-			'wp-block-coblocks-media-card__inner',
-			...BackgroundClasses( attributes ), {
-				'has-padding': paddingSize && paddingSize !== 'no',
-				[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' ),
-			} );
-
-		const innerStyles = {
-			...BackgroundStyles( attributes ),
-			backgroundColor: backgroundColor.color,
-			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
-			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
-			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
-			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
-		};
-
-		const wrapperStyles = {
-			gridTemplateColumns: 'right' === mediaPosition ? `auto ${ widthString }` : `${ widthString } auto`,
-			maxWidth: maxWidth ? ( 'full' === align || 'wide' === align ) && maxWidth : undefined,
-		};
-
-		let classes = classnames( className, { [ `is-style-${ mediaPosition }` ]: mediaPosition,
-			'has-no-media': ! mediaUrl || null,
-			'is-selected': isSelected,
-			'is-stacked-on-mobile': isStackedOnMobile }
-		);
-
-		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
-			classes = classnames( classes, `coblocks-media-card-${ coblocks.id }` );
-		}
-
-		return (
-			<Fragment>
-				{ dropZone }
-				{ isSelected && (
-					<Controls
-						{ ...this.props }
-					/>
-				) }
-				{ isSelected && (
-					<Inspector
-						{ ...this.props }
-					/>
-				) }
-				<div
-					className={ classes }
-				>
-					<div className={ innerClasses } style={ innerStyles } >
-						{ isBlobURL( backgroundImg ) && <Spinner /> }
-						{ BackgroundVideo( attributes ) }
-						<div className="wp-block-coblocks-media-card__wrapper" style={ wrapperStyles } >
-							{ this.renderMediaArea() }
-							<div
-								className={ classnames(
-									'wp-block-coblocks-media-card__content', {
-										'has-shadow': hasCardShadow,
-									}
-								) }
-							>
-								{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
-									<InnerBlocks
-										template={ TEMPLATE }
-										allowedBlocks={ ALLOWED_BLOCKS }
-										templateLock={ true }
-										templateInsertUpdatesSelection={ false }
-										__experimentalCaptureToolbars={ true }
-									/>
-								) }
-							</div>
+	return (
+		<>
+			{ dropZone }
+			{ isSelected && (
+				<Controls
+					{ ...props }
+				/>
+			) }
+			{ isSelected && (
+				<Inspector
+					{ ...props }
+				/>
+			) }
+			<div
+				className={ classes }
+			>
+				<div className={ innerClasses } style={ innerStyles } >
+					{ isBlobURL( backgroundImg ) && <Spinner /> }
+					{ BackgroundVideo( attributes ) }
+					<div className="wp-block-coblocks-media-card__wrapper" style={ wrapperStyles } >
+						{ renderMediaArea() }
+						<div
+							className={ classnames(
+								'wp-block-coblocks-media-card__content', {
+									'has-shadow': hasCardShadow,
+								}
+							) }
+						>
+							{ ( typeof props.insertBlocksAfter !== 'undefined' ) && (
+								<InnerBlocks
+									template={ TEMPLATE }
+									allowedBlocks={ ALLOWED_BLOCKS }
+									templateLock={ true }
+									templateInsertUpdatesSelection={ false }
+									__experimentalCaptureToolbars={ true }
+								/>
+							) }
 						</div>
 					</div>
 				</div>
-			</Fragment>
-		);
-	}
-}
+			</div>
+		</>
+	);
+};
 
 export default compose( [
 	applyWithColors,
