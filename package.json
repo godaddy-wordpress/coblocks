@@ -69,6 +69,7 @@
 		"zh_TW": "繁體中文"
 	},
 	"dependencies": {
+		"@emotion/react": "^11.4.1",
 		"@godaddy-wordpress/coblocks-icons": "1.6.0"
 	},
 	"devDependencies": {
