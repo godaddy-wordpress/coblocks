@@ -8,8 +8,8 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
-import { compose } from '@wordpress/compose';
+import { useEffect } from '@wordpress/element';
+import { compose, usePrevious } from '@wordpress/compose';
 import { withFallbackStyles } from '@wordpress/components';
 import { InspectorControls,
 	PanelColorSettings,
@@ -56,87 +56,89 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	};
 } );
 
-class CoBlocksSubmitButton extends Component {
-	componentDidUpdate( prevProps ) {
+const CoBlocksSubmitButton = ( props ) => {
+	const {
+		setAttributes,
+		customTextButtonColor,
+		customBackgroundButtonColor,
+		className,
+		attributes,
+		fallbackBackgroundColor,
+		fallbackTextColor,
+		setBackgroundButtonColor,
+		setTextButtonColor,
+	} = props;
+
+	const prevCustomTextButtonColor = usePrevious( customTextButtonColor );
+	const prevCustomerBackgroundButtonColor = usePrevious( customBackgroundButtonColor );
+
+	const backgroundColor = attributes.customBackgroundButtonColor || fallbackBackgroundColor;
+
+	const color = attributes.customTextButtonColor || fallbackTextColor;
+
+	const buttonStyle = { border: 'none', backgroundColor, color };
+
+	useEffect( () => {
 		if (
-			! isEqual( this.props.customTextButtonColor, prevProps.customTextButtonColor ) ||
-			! isEqual( this.props.customBackgroundButtonColor, prevProps.customBackgroundButtonColor )
+			! isEqual( customTextButtonColor, prevCustomTextButtonColor ) ||
+			! isEqual( customBackgroundButtonColor, prevCustomerBackgroundButtonColor )
 		) {
-			this.props.setAttributes( { submitButtonClasses: this.getButtonClasses() } );
+			setAttributes( { submitButtonClasses: getButtonClasses() } );
 		}
-	}
+	}, [ customTextButtonColor, prevCustomTextButtonColor, customBackgroundButtonColor, prevCustomerBackgroundButtonColor ] );
 
-	getButtonClasses() {
-		const { customTextButtonColor, customBackgroundButtonColor } = this.props;
-
+	const getButtonClasses = () => {
 		const backgroundClass = get( customBackgroundButtonColor, 'class' );
 
 		return classnames( 'wp-block-button__link', {
 			'has-background': customBackgroundButtonColor,
 			[ backgroundClass ]: backgroundClass,
 			'has-text-color': customTextButtonColor,
-			[ this.props.className ]: this.props.className,
+			[ className ]: className,
 		} );
-	}
+	};
 
-	render() {
-		const {
-			attributes,
-			fallbackBackgroundColor,
-			fallbackTextColor,
-			setAttributes,
-			setBackgroundButtonColor,
-			setTextButtonColor,
-		} = this.props;
-
-		const backgroundColor = attributes.customBackgroundButtonColor || fallbackBackgroundColor;
-
-		const color = attributes.customTextButtonColor || fallbackTextColor;
-
-		const buttonStyle = { border: 'none', backgroundColor, color };
-
-		return (
-			<Fragment>
-				<div className="coblocks-form__submit wp-block-button">
-					<RichText
-						placeholder={ __( 'Add text…', 'coblocks' ) }
-						value={ attributes.submitButtonText }
-						onChange={ ( nextValue ) => setAttributes( { submitButtonText: nextValue } ) }
-						className={ this.getButtonClasses() }
-						style={ buttonStyle }
-						allowedFormats={ [ 'bold', 'italic', 'strikethrough' ] }
-						keepPlaceholderOnFocus
-					/>
-				</div>
-				<InspectorControls>
-					<PanelColorSettings
-						title={ __( 'Color settings', 'coblocks' ) }
-						initialOpen={ false }
-						colorSettings={ [
-							{
-								value: backgroundColor,
-								onChange: ( nextColor ) => {
-									setBackgroundButtonColor( nextColor );
-									setAttributes( { customBackgroundButtonColor: nextColor } );
-								},
-								label: __( 'Button color', 'coblocks' ),
+	return (
+		<>
+			<div className="coblocks-form__submit wp-block-button">
+				<RichText
+					placeholder={ __( 'Add text…', 'coblocks' ) }
+					value={ attributes.submitButtonText }
+					onChange={ ( nextValue ) => setAttributes( { submitButtonText: nextValue } ) }
+					className={ getButtonClasses() }
+					style={ buttonStyle }
+					allowedFormats={ [ 'bold', 'italic', 'strikethrough' ] }
+					keepPlaceholderOnFocus
+				/>
+			</div>
+			<InspectorControls>
+				<PanelColorSettings
+					title={ __( 'Color settings', 'coblocks' ) }
+					initialOpen={ false }
+					colorSettings={ [
+						{
+							value: backgroundColor,
+							onChange: ( nextColor ) => {
+								setBackgroundButtonColor( nextColor );
+								setAttributes( { customBackgroundButtonColor: nextColor } );
 							},
-							{
-								value: color,
-								onChange: ( nextColor ) => {
-									setTextButtonColor( nextColor );
-									setAttributes( { customTextButtonColor: nextColor } );
-								},
-								label: __( 'Button text color', 'coblocks' ),
+							label: __( 'Button color', 'coblocks' ),
+						},
+						{
+							value: color,
+							onChange: ( nextColor ) => {
+								setTextButtonColor( nextColor );
+								setAttributes( { customTextButtonColor: nextColor } );
 							},
-						] }
-					/>
-					<ContrastChecker textColor={ color } backgroundColor={ backgroundColor } />
-				</InspectorControls>
-			</Fragment>
-		);
-	}
-}
+							label: __( 'Button text color', 'coblocks' ),
+						},
+					] }
+				/>
+				<ContrastChecker textColor={ color } backgroundColor={ backgroundColor } />
+			</InspectorControls>
+		</>
+	);
+};
 
 export default compose( [
 	withColors( 'backgroundButtonColor', { textButtonColor: 'color' } ),
