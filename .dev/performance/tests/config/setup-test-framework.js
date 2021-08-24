@@ -239,7 +239,7 @@ beforeAll( async () => {
 	await trashAllPosts();
 	await trashAllPosts( 'wp_block' );
 	await setupBrowser();
-	await activatePlugin( 'gutenberg-test-plugin-disables-the-css-animations' );
+	// await activatePlugin( 'gutenberg-test-plugin-disables-the-css-animations' );
 } );
 
 afterEach( async () => {
