@@ -130,6 +130,8 @@
 		"postcss": "8.2.10",
 		"postcss-color-function": "^4.1.0",
 		"postcss-loader": "^3.0.0",
+		"prop-types": "^15.7.2",
+		"puppeteer": "^10.2.0",
 		"puppeteer-testing-library": "^0.5.0",
 		"react-flickity-component": "^3.4.0",
 		"react-google-maps": "^9.4.5",
