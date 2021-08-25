@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-08-20T17:38:48+00:00\n"
+"POT-Creation-Date: 2021-08-25T15:08:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -386,19 +386,19 @@ msgstr ""
 
 #. translators: toggle label to display the accordion open
 #. translators: visually display open as opposed to closed
-#: src/blocks/accordion/accordion-item/controls.js:29
+#: src/blocks/accordion/accordion-item/controls.js:27
 #: src/blocks/accordion/accordion-item/inspector.js:66
 msgid "Display as open"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/accordion/accordion-item/edit.js:27
+#: src/blocks/accordion/accordion-item/edit.js:26
 #: src/blocks/media-card/edit.js:75
 msgid "Add content…"
 msgstr ""
 
 #. translators: Accordion is the block name
-#: src/blocks/accordion/accordion-item/edit.js:72
+#: src/blocks/accordion/accordion-item/edit.js:87
 msgid "Write accordion item title…"
 msgstr ""
 
@@ -501,8 +501,8 @@ msgstr ""
 msgid "Text color"
 msgstr ""
 
-#: src/blocks/accordion/edit.js:112
-#: src/blocks/accordion/edit.js:114
+#: src/blocks/accordion/edit.js:132
+#: src/blocks/accordion/edit.js:134
 msgid "Add accordion item"
 msgstr ""
 
