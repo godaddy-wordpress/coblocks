@@ -13,7 +13,7 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Fragment, useEffect } from '@wordpress/element';
+import { useEffect } from '@wordpress/element';
 import {
 	__experimentalImageURLInputUI as ImageURLInputUI,
 	BlockControls,
@@ -130,7 +130,7 @@ const Edit = ( props ) => {
 		);
 
 		return (
-			<Fragment>
+			<>
 				<figure className={ classes }>
 					{ isSelected && (
 						<ButtonGroup className="block-library-gallery-item__inline-menu is-right is-visible">
@@ -147,7 +147,7 @@ const Edit = ( props ) => {
 					{ isBlobURL( attributes.imageUrl ) && <Spinner /> }
 					<img src={ attributes.imageUrl } alt={ attributes.imageAlt } style={ { objectPosition: attributes.focalPoint ? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y * 100 }%` : undefined } } />
 				</figure>
-			</Fragment>
+			</>
 		);
 	};
 
@@ -201,7 +201,7 @@ const Edit = ( props ) => {
 	];
 
 	return (
-		<Fragment>
+		<>
 			<BlockControls>
 				{ imageUrl && (
 					<ImageURLInputUI
@@ -232,7 +232,7 @@ const Edit = ( props ) => {
 					/>
 				</div>
 			</div>
-		</Fragment>
+		</>
 	);
 };
 
