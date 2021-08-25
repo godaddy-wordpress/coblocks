@@ -4,6 +4,7 @@
 import ResponsiveTabsControl from '../../components/responsive-tabs-control';
 import SizeControl from '../../components/size-control';
 import SliderPanel from '../../components/slider-panel';
+import GutterControl from '../../components/gutter-control/gutter-control';
 
 /**
  * WordPress dependencies
@@ -59,6 +60,8 @@ const Inspector = ( props ) => {
 		align,
 		gridSize,
 		gutter,
+		gutterCustom,
+		maxValue,
 		height,
 		radius,
 		thumbnails,
@@ -79,24 +82,20 @@ const Inspector = ( props ) => {
 							resetValue={ 'xlrg' }
 						/>
 						{ gridSize !== null && ( align === 'wide' || align === 'full' ) &&
-						<ResponsiveTabsControl { ...props }
-							max={ 20 }
-						/>
+							<GutterControl { ...props } />
 						}
 						{ gridSize !== 'xlrg' && ! align &&
-						<ResponsiveTabsControl { ...props }
-							max={ 20 }
-						/>
+							<GutterControl { ...props } />
 						}
-						{ gutter > 0 &&
-						<RangeControl
-							label={ __( 'Rounded corners', 'coblocks' ) }
-							value={ radius }
-							onChange={ setRadiusTo }
-							min={ 0 }
-							max={ 20 }
-							step={ 1 }
-						/>
+						{ ( [ 'small', 'medium', 'large' ].includes( gutter ) || gutterCustom > 0 ) &&
+							<RangeControl
+								label={ __( 'Rounded corners', 'coblocks' ) }
+								value={ radius }
+								onChange={ setRadiusTo }
+								min={ 0 }
+								max={ 20 }
+								step={ 1 }
+							/>
 						}
 						{ ! responsiveHeight &&
 							<BaseControl

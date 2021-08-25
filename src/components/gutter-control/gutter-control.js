@@ -33,7 +33,7 @@ const gutterOptions = [
 
 export default class GutterControl extends Component {
 	get maxValue() {
-		const { maxValue = null } = this.props;
+		const { maxValue = null } = this.props.attributes;
 
 		if ( ! maxValue ) {
 			return this.props.attributes.align === 'full' ? 10 : 5;

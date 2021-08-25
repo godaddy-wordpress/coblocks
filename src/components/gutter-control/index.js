@@ -27,10 +27,6 @@ function addAttributes( settings, name ) {
 			type: 'string',
 			default: supportOverride.default || 'small',
 		},
-		gutterCustom: {
-			type: 'string',
-			default: supportOverride.customDefault?.toString() || '3',
-		},
 	};
 
 	return settings;

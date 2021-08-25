@@ -98,7 +98,7 @@ class Inspector extends Component {
 						/>
 					}
 
-					{ gutter > 0 &&
+					{ gutterCustom > 0 &&
 						<RangeControl
 							label={ __( 'Rounded corners', 'coblocks' ) }
 							value={ radius }

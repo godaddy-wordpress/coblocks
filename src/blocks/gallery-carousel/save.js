@@ -12,6 +12,7 @@ import { GalleryClasses } from '../../components/block-gallery/shared';
  * WordPress dependencies
  */
 import { RichText } from '@wordpress/block-editor';
+import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 
 const save = ( { attributes, className } ) => {
 	const {
@@ -58,8 +59,8 @@ const save = ( { attributes, className } ) => {
 		'has-carousel',
 		`has-carousel-${ gridSize }`, {
 			'has-aligned-cells': alignCells,
-			[ `has-margin-bottom-${ gutter }` ]: thumbnails && gutter > 0,
-			[ `has-margin-bottom-mobile-${ gutterMobile }` ]: thumbnails && gutterMobile > 0,
+			[ `has-margin-bottom-${ gutter }` ]: thumbnails,
+			[ `has-margin-bottom-mobile-${ gutterMobile }` ]: thumbnails,
 			[ navForClass ]: thumbnails,
 		}
 	);
@@ -69,12 +70,13 @@ const save = ( { attributes, className } ) => {
 	};
 
 	const figureClasses = classnames(
-		'coblocks-gallery--figure', {
+		'coblocks-gallery--figure',
+		{
 			[ `has-margin-left-${ gutter }` ]: gutter > 0,
 			[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			[ `has-margin-right-${ gutter }` ]: gutter > 0,
 			[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-		}
+		},
 	);
 
 	const flickityOptions = {
@@ -113,12 +115,14 @@ const save = ( { attributes, className } ) => {
 	);
 
 	const navFigureClasses = classnames(
-		'coblocks--figure', {
+		'coblocks--figure',
+		{
 			[ `has-margin-left-${ gutter }` ]: gutter > 0,
 			[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			[ `has-margin-right-${ gutter }` ]: gutter > 0,
 			[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-		}
+		},
+		`has-${gutter}-gutter`,
 	);
 
 	const navOptions = {
@@ -134,46 +138,48 @@ const save = ( { attributes, className } ) => {
 	};
 
 	return (
-		<div className={ classes }>
-			<div className={ innerClasses }>
-				<div
-					className={ flickityClasses }
-					style={ responsiveHeight ? undefined : flickityStyles }
-					data-flickity={ JSON.stringify( flickityOptions ) }
-				>
-					{ images.map( ( image ) => {
-						const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
+		<GutterWrapper { ...attributes }>
+			<div className={ classes }>
+				<div className={ innerClasses }>
+					<div
+						className={ flickityClasses }
+						style={ responsiveHeight ? undefined : flickityStyles }
+						data-flickity={ JSON.stringify( flickityOptions ) }
+					>
+						{ images.map( ( image ) => {
+							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
 
-						return (
-							<div key={ image.id || image.url } className="coblocks-gallery--item">
-								<figure className={ figureClasses }>
-									{ img }
-								</figure>
-							</div>
-						);
-					} ) }
+							return (
+								<div key={ image.id || image.url } className="coblocks-gallery--item">
+									<figure className={ figureClasses }>
+										{ img }
+									</figure>
+								</div>
+							);
+						} ) }
+					</div>
+					{ thumbnails
+						? (
+							<div
+								className={ navClasses }
+								data-flickity={ JSON.stringify( navOptions ) }
+							>
+								{ images.map( ( image ) => {
+									const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } />;
+									return (
+										<div key={ image.id || image.url } className="coblocks--item-thumbnail">
+											<figure className={ navFigureClasses }>
+												{ img }
+											</figure>
+										</div>
+									);
+								} ) }
+							</div> ) : null
+					}
 				</div>
-				{ thumbnails
-					? (
-						<div
-							className={ navClasses }
-							data-flickity={ JSON.stringify( navOptions ) }
-						>
-							{ images.map( ( image ) => {
-								const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } />;
-								return (
-									<div key={ image.id || image.url } className="coblocks--item-thumbnail">
-										<figure className={ navFigureClasses }>
-											{ img }
-										</figure>
-									</div>
-								);
-							} ) }
-						</div> ) : null
-				}
+				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } /> }
 			</div>
-			{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } /> }
-		</div>
+		</GutterWrapper>
 	);
 };
 

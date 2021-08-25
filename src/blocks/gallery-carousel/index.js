@@ -49,6 +49,9 @@ const settings = {
 	],
 	supports: {
 		align: [ 'wide', 'full' ],
+		gutter: {
+			default: 'small',
+		},
 		html: false,
 		coBlocksSpacing: true,
 	},

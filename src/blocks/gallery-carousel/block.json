@@ -3,8 +3,8 @@
 	"category": "media",
 	"attributes": {
 		"gutter": {
-			"type": "number",
-			"default": 5
+			"type": "string",
+			"default": "small"
 		},
 		"gutterMobile": {
 			"type": "number",
@@ -61,6 +61,14 @@
 		"responsiveHeight": {
 			"type": "boolean",
 			"default": false
+		},
+		"maxValue": {
+			"type": "integer",
+			"default": 30
+		},
+		"gutterCustom": {
+			"type": "integer",
+			"default": 0
 		}
 	}
 }

@@ -15,6 +15,7 @@ import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 import { CarouselGalleryVariationPicker, hasVariationSet } from './variations';
+import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 
 /**
  * WordPress dependencies
@@ -61,18 +62,19 @@ const GalleryCarouselEdit = ( props ) => {
 	}, [ prevSelected, props.isSelected, captionFocused ] );
 
 	useEffect( () => {
-		if ( props.attributes.gutter <= 0 && props.attributes.radius !== 0 ) {
+		if ( props.attributes.gutterCustom <= 0 && props.attributes.radius !== 0 ) {
 			props.setAttributes( { radius: 0 } );
 		}
-	}, [ props.attributes.gutter ] );
+	}, [ props.attributes.gutterCustom ] );
 
 	useEffect( () => {
 		if (
 			props.attributes.gridSize === 'xlrg' &&
 			prevAlign === undefined &&
-			( gutter !== 0 || gutterMobile !== 0 )
+			gutter === 'custom' &&
+			( gutterCustom <= 0 || gutterMobile !== 0 )
 		) {
-			props.setAttributes( { gutter: 0, gutterMobile: 0 } );
+			props.setAttributes( { gutter: 'small', gutterCustom: 0 } );
 		}
 	}, [ props.attributes.gridSize, prevAlign ] );
 
@@ -160,6 +162,7 @@ const GalleryCarouselEdit = ( props ) => {
 		gridSize,
 		gutter,
 		gutterMobile,
+		gutterCustom,
 		height,
 		images,
 		pageDots,
@@ -287,78 +290,80 @@ const GalleryCarouselEdit = ( props ) => {
 				</>
 			) }
 			{ noticeUI }
-			<ResizableBox
-				size={ {
-					height,
-					width: '100%',
-				} }
-				className={ classnames( {
-					'is-selected': isSelected,
-					'has-responsive-height': responsiveHeight,
-				} ) }
-				minHeight="0"
-				enable={ {
-					bottom: true,
-					bottomLeft: false,
-					bottomRight: false,
-					left: false,
-					right: false,
-					top: false,
-					topLeft: false,
-					topRight: false,
-				} }
-				onResizeStop={ ( _event, _direction, _elt, delta ) => {
-					setAttributes( {
-						height: parseInt( height + delta.height, 10 ),
-					} );
-				} }
-				showHandle={ isSelected }
-			>
-				<div className={ className }>
-					<div className={ innerClasses }>
-						<Flickity
-							className={ flickityClasses }
-							disableImagesLoaded={ true }
-							options={ flickityOptions }
-							reloadOnUpdate={ true }
-							updateOnEachImageLoad={ true }
-						>
-							{ images.map( ( img, index ) => {
-								const ariaLabel = sprintf(
-									/* translators: %1$d is the order number of the image, %2$d is the total number of images */
-									__( 'image %1$d of %2$d in gallery', 'coblocks' ),
-									( index + 1 ),
-									images.length
-								);
+				<ResizableBox
+					size={ {
+						height,
+						width: '100%',
+					} }
+					className={ classnames( {
+						'is-selected': isSelected,
+						'has-responsive-height': responsiveHeight,
+					} ) }
+					minHeight="0"
+					enable={ {
+						bottom: true,
+						bottomLeft: false,
+						bottomRight: false,
+						left: false,
+						right: false,
+						top: false,
+						topLeft: false,
+						topRight: false,
+					} }
+					onResizeStop={ ( _event, _direction, _elt, delta ) => {
+						setAttributes( {
+							height: parseInt( height + delta.height, 10 ),
+						} );
+					} }
+					showHandle={ isSelected }
+				>
+					<GutterWrapper { ...props.attributes }>
+						<div className={ className }>
+							<div className={ innerClasses }>
+								<Flickity
+									className={ flickityClasses }
+									disableImagesLoaded={ true }
+									options={ flickityOptions }
+									reloadOnUpdate={ true }
+									updateOnEachImageLoad={ true }
+								>
+									{ images.map( ( img, index ) => {
+										const ariaLabel = sprintf(
+											/* translators: %1$d is the order number of the image, %2$d is the total number of images */
+											__( 'image %1$d of %2$d in gallery', 'coblocks' ),
+											( index + 1 ),
+											images.length
+										);
 
-								return (
-									<div className="coblocks-gallery--item" role="button" tabIndex="0" key={ img.id || img.url } onKeyDown={ onItemClick } onClick={ onItemClick }>
-										<GalleryImage
-											url={ img.url }
-											alt={ img.alt }
-											id={ img.id }
-											gutter={ gutter }
-											gutterMobile={ gutterMobile }
-											marginRight={ true }
-											marginLeft={ true }
-											isSelected={ isSelected && selectedImage === index }
-											onRemove={ () => onRemoveImage( index ) }
-											onSelect={ () => onSelectImage( index ) }
-											setAttributes={ ( attrs ) => setImageAttributes( index, attrs ) }
-											caption={ img.caption }
-											aria-label={ ariaLabel }
-											supportsCaption={ false }
-											supportsMoving={ false }
-											imageIndex={ index }
-											replaceImage={ replaceImage }
-										/>
-									</div>
-								);
-							} ) }
-						</Flickity>
-					</div>
-				</div>
-			</ResizableBox>
+										return (
+											<div className="coblocks-gallery--item" role="button" tabIndex="0" key={ img.id || img.url } onKeyDown={ onItemClick } onClick={ onItemClick }>
+												<GalleryImage
+													url={ img.url }
+													alt={ img.alt }
+													id={ img.id }
+													gutter={ gutter }
+													gutterMobile={ gutterMobile }
+													marginRight={ true }
+													marginLeft={ true }
+													isSelected={ isSelected && selectedImage === index }
+													onRemove={ () => onRemoveImage( index ) }
+													onSelect={ () => onSelectImage( index ) }
+													setAttributes={ ( attrs ) => setImageAttributes( index, attrs ) }
+													caption={ img.caption }
+													aria-label={ ariaLabel }
+													supportsCaption={ false }
+													supportsMoving={ false }
+													imageIndex={ index }
+													replaceImage={ replaceImage }
+												/>
+											</div>
+										);
+									} ) }
+								</Flickity>
+							</div>
+						</div>
+					</GutterWrapper>
+				</ResizableBox>
 			{ thumbnails &&
 			<div className={ className }>
 				<div
@@ -375,9 +380,11 @@ const GalleryCarouselEdit = ( props ) => {
 						{ images.map( ( image ) => {
 							return (
 								<div className="coblocks--item-thumbnail" key={ image.id || image.url }>
-									<figure className={ navFigureClasses }>
-										<img src={ image.url } alt={ image.alt } data-link={ image.link } data-id={ image.id } className={ image.id ? `wp-image-${ image.id }` : null } />
-									</figure>
+									<GutterWrapper { ...props.attributes }>
+										<figure className={ navFigureClasses }>
+											<img src={ image.url } alt={ image.alt } data-link={ image.link } data-id={ image.id } className={ image.id ? `wp-image-${ image.id }` : null } />
+										</figure>
+									</GutterWrapper>
 								</div>
 							);
 						} ) }

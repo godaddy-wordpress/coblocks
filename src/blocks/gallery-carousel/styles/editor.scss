@@ -77,6 +77,28 @@
 	.wp-block-blockgallery-thumbnails {
 		overflow: visible;
 	}
+
+	.coblocks--item-thumbnail {
+		&:first-child {
+			figure {
+				&.has-small-gutter {
+					margin-left: var(--coblocks-spacing--1, #{map-get($spacing, 1)});
+				}
+
+				&.has-medium-gutter {
+					margin-left: var(--coblocks-spacing--2, #{map-get($spacing, 2)});
+				}
+
+				&.has-large-gutter {
+					margin-left: var(--coblocks-spacing--3, #{map-get($spacing, 3)});
+				}
+
+				&.has-custom-gutter {
+					margin-left: var(--coblocks-custom-gutter, #{map-get($spacing, 0)});
+				}
+			}
+		}
+	}
 }
 
 [data-type="core/group"] .components-resizable-box__container .wp-block-coblocks-gallery-carousel {
