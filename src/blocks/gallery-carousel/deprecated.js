@@ -38,6 +38,7 @@ const deprecated =
 			gridSize,
 			gutter,
 			gutterMobile,
+			gutterCustom,
 			height,
 			images,
 			pageDots,
@@ -81,8 +82,7 @@ const deprecated =
 			'is-cropped',
 			galleryClassesDeprecated,
 			...BackgroundClasses( attributes ), {
-				'has-horizontal-gutter': gutter > 0,
-
+				'has-horizontal-gutter': gutterCustom > 0,
 			}
 		);
 
@@ -94,7 +94,7 @@ const deprecated =
 			'has-carousel',
 			`has-carousel-${ gridSize }`, {
 				'has-aligned-cells': alignCells,
-				[ `has-margin-bottom-${ gutter }` ]: thumbnails && gutter > 0,
+				[ `has-margin-bottom-${ gutterCustom }` ]: thumbnails && gutterCustom > 0,
 				[ `has-margin-bottom-mobile-${ gutterMobile }` ]: thumbnails && gutterMobile > 0,
 			}
 		);
@@ -105,9 +105,9 @@ const deprecated =
 
 		const figureClasses = classnames(
 			'coblocks-gallery--figure', {
-				[ `has-margin-left-${ gutter }` ]: gutter > 0,
+				[ `has-margin-left-${ gutterCustom }` ]: gutterCustom > 0,
 				[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-				[ `has-margin-right-${ gutter }` ]: gutter > 0,
+				[ `has-margin-right-${ gutterCustom }` ]: gutterCustom > 0,
 				[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
 		);
@@ -142,20 +142,20 @@ const deprecated =
 
 		const navClasses = classnames(
 			'carousel-nav', {
-				[ `has-margin-top-${ gutter }` ]: gutter > 0,
+				[ `has-margin-top-${ gutterCustom }` ]: gutterCustom > 0,
 				[ `has-margin-top-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-				[ `has-negative-margin-left-${ gutter }` ]: gutter > 0,
+				[ `has-negative-margin-left-${ gutterCustom }` ]: gutterCustom > 0,
 				[ `has-negative-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-				[ `has-negative-margin-right-${ gutter }` ]: gutter > 0,
+				[ `has-negative-margin-right-${ gutterCustom }` ]: gutterCustom > 0,
 				[ `has-negative-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
 		);
 
 		const navFigureClasses = classnames(
 			'coblocks--figure', {
-				[ `has-margin-left-${ gutter }` ]: gutter > 0,
+				[ `has-margin-left-${ gutterCustom }` ]: gutterCustom > 0,
 				[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-				[ `has-margin-right-${ gutter }` ]: gutter > 0,
+				[ `has-margin-right-${ gutterCustom }` ]: gutterCustom > 0,
 				[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
 		);
@@ -240,6 +240,7 @@ const deprecated =
 			gridSize,
 			gutter,
 			gutterMobile,
+			gutterCustom,
 			height,
 			images,
 			pageDots,
@@ -255,7 +256,7 @@ const deprecated =
 			'is-cropped',
 			...GalleryClasses( attributes ),
 			...BackgroundClasses( attributes ), {
-				'has-horizontal-gutter': gutter > 0,
+				'has-horizontal-gutter': gutterCustom > 0,
 
 			}
 		);
@@ -277,9 +278,9 @@ const deprecated =
 
 		const figureClasses = classnames(
 			'coblocks-gallery--figure', {
-				[ `has-margin-left-${ gutter }` ]: gutter > 0,
+				[ `has-margin-left-${ gutterCustom }` ]: gutterCustom > 0,
 				[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-				[ `has-margin-right-${ gutter }` ]: gutter > 0,
+				[ `has-margin-right-${ gutterCustom }` ]: gutterCustom > 0,
 				[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
 		);
@@ -363,6 +364,7 @@ const deprecated =
 			gridSize,
 			gutter,
 			gutterMobile,
+			gutterCustom,
 			height,
 			images,
 			pageDots,
@@ -378,7 +380,7 @@ const deprecated =
 		const innerClasses = classnames(
 			'is-cropped',
 			...GalleryClasses( attributes ), {
-				'has-horizontal-gutter': gutter > 0,
+				'has-horizontal-gutter': gutterCustom > 0,
 			}
 		);
 
@@ -397,9 +399,9 @@ const deprecated =
 
 		const figureClasses = classnames(
 			'coblocks-gallery--figure', {
-				[ `has-margin-left-${ gutter }` ]: gutter > 0,
+				[ `has-margin-left-${ gutterCustom }` ]: gutterCustom > 0,
 				[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-				[ `has-margin-right-${ gutter }` ]: gutter > 0,
+				[ `has-margin-right-${ gutterCustom }` ]: gutterCustom > 0,
 				[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
 		);

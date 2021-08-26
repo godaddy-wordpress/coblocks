@@ -34,7 +34,7 @@ function GutterWrapper( { children, gutter, gutterCustom, className, condition =
 	if ( 'custom' === gutter ) {
 		attributes.style = {
 			...attributes.style,
-			'--coblocks-custom-gutter': `${ gutterCustom }px`,
+			'--coblocks-custom-gutter': `10px`,
 		};
 	}
 

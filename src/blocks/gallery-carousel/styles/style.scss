@@ -173,44 +173,54 @@
 	&.has-small-gutter {
 		margin-left: var(--coblocks-spacing--1, #{map-get($spacing, 1)});
 		margin-right: var(--coblocks-spacing--1, #{map-get($spacing, 1)});
+
+		.carousel-nav {
+			margin-left: calc(-1 * var(--coblocks-spacing--1, #{map-get($spacing, 1)}));
+		}
 	}
 
 	&.has-medium-gutter {
 		margin-left: var(--coblocks-spacing--2, #{map-get($spacing, 2)});
 		margin-right: var(--coblocks-spacing--2, #{map-get($spacing, 2)});
+
+		.carousel-nav {
+			margin-left: calc(-1 * var(--coblocks-spacing--2, #{map-get($spacing, 2)}));
+		}
 	}
 
 	&.has-large-gutter {
 		margin-left: var(--coblocks-spacing--3, #{map-get($spacing, 3)});
 		margin-right: var(--coblocks-spacing--3, #{map-get($spacing, 3)});
+
+		.carousel-nav {
+			margin-left: calc(-1 * var(--coblocks-spacing--3, #{map-get($spacing, 3)}));
+		}
 	}
 
 	&.has-custom-gutter {
 		margin: var(--coblocks-custom-gutter, 0);
-	}
 
-	figure {
-		&.has-small-gutter {
-			margin: var(--coblocks-spacing--1, #{map-get($spacing, 1)});
-		}
-
-		&.has-medium-gutter {
-			margin: var(--coblocks-spacing--2, #{map-get($spacing, 2)});
-		}
-
-		&.has-large-gutter {
-			margin: var(--coblocks-spacing--3, #{map-get($spacing, 3)});
-		}
-
-		&.has-custom-gutter {
-			margin: var(--coblocks-custom-gutter, 0);
+		.carousel-nav {
+			margin-left: calc(-1 * var(--coblocks-custom-gutter, 0));
 		}
 	}
 
 	.coblocks--item-thumbnail {
-		&:first-child {
-			figure {
-				margin-left: 0;
+		figure {
+			&.has-small-gutter {
+				margin: var(--coblocks-spacing--1, #{map-get($spacing, 1)});
+			}
+
+			&.has-medium-gutter {
+				margin: var(--coblocks-spacing--2, #{map-get($spacing, 2)});
+			}
+
+			&.has-large-gutter {
+				margin: var(--coblocks-spacing--3, #{map-get($spacing, 3)});
+			}
+
+			&.has-custom-gutter {
+				margin: var(--coblocks-custom-gutter, 0);
 			}
 		}
 	}

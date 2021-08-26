@@ -23,6 +23,7 @@ const save = ( { attributes, className } ) => {
 		gridSize,
 		gutter,
 		gutterMobile,
+		gutterCustom,
 		height,
 		images,
 		pageDots,
@@ -50,7 +51,7 @@ const save = ( { attributes, className } ) => {
 	const innerClasses = classnames(
 		'is-cropped',
 		...GalleryClasses( attributes ), {
-			'has-horizontal-gutter': gutter > 0,
+			'has-horizontal-gutter': [ 'small', 'medium', 'large' ].includes( gutter ) || gutterCustom > 0,
 			'has-lightbox': lightbox,
 		}
 	);
@@ -59,8 +60,8 @@ const save = ( { attributes, className } ) => {
 		'has-carousel',
 		`has-carousel-${ gridSize }`, {
 			'has-aligned-cells': alignCells,
-			[ `has-margin-bottom-${ gutter }` ]: thumbnails,
-			[ `has-margin-bottom-mobile-${ gutterMobile }` ]: thumbnails,
+			[ `has-margin-bottom-${ gutterCustom }` ]: thumbnails && gutterCustom > 0,
+			[ `has-margin-bottom-mobile-${ gutterMobile }` ]: thumbnails && gutterMobile > 0,
 			[ navForClass ]: thumbnails,
 		}
 	);
@@ -72,9 +73,9 @@ const save = ( { attributes, className } ) => {
 	const figureClasses = classnames(
 		'coblocks-gallery--figure',
 		{
-			[ `has-margin-left-${ gutter }` ]: gutter > 0,
+			[ `has-margin-left-${ gutterCustom }` ]: gutterCustom > 0,
 			[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-			[ `has-margin-right-${ gutter }` ]: gutter > 0,
+			[ `has-margin-right-${ gutterCustom }` ]: gutterCustom > 0,
 			[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 		},
 	);
@@ -105,11 +106,11 @@ const save = ( { attributes, className } ) => {
 
 	const navClasses = classnames(
 		'carousel-nav', {
-			[ `has-margin-top-${ gutter }` ]: gutter > 0,
+			[ `has-margin-top-${ gutterCustom }` ]: gutterCustom > 0,
 			[ `has-margin-top-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-			[ `has-negative-margin-left-${ gutter }` ]: gutter > 0,
+			[ `has-negative-margin-left-${ gutterCustom }` ]: gutterCustom > 0,
 			[ `has-negative-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-			[ `has-negative-margin-right-${ gutter }` ]: gutter > 0,
+			[ `has-negative-margin-right-${ gutterCustom }` ]: gutterCustom > 0,
 			[ `has-negative-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 		}
 	);
@@ -117,9 +118,9 @@ const save = ( { attributes, className } ) => {
 	const navFigureClasses = classnames(
 		'coblocks--figure',
 		{
-			[ `has-margin-left-${ gutter }` ]: gutter > 0,
+			[ `has-margin-left-${ gutterCustom }` ]: gutterCustom > 0,
 			[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-			[ `has-margin-right-${ gutter }` ]: gutter > 0,
+			[ `has-margin-right-${ gutterCustom }` ]: gutterCustom > 0,
 			[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 		},
 		`has-${gutter}-gutter`,

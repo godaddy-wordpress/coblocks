@@ -206,11 +206,15 @@ const GalleryCarouselEdit = ( props ) => {
 		return carouselGalleryPlaceholder;
 	}
 
+	console.log( 'THE ANSWER IS....' );
+	let hasHorizontalGutter = ( [ 'small', 'medium', 'large' ].includes( gutter ) || gutterCustom > 0 );
+	console.log( hasHorizontalGutter );
+
 	const innerClasses = classnames(
 		'is-cropped',
 		...GalleryClasses( attributes ), {
 			[ `align${ align }` ]: align,
-			'has-horizontal-gutter': gutter > 0,
+			'has-horizontal-gutter': [ 'small', 'medium', 'large' ].includes( gutter ) || ( 'custom' === gutter && gutterCustom > 0 ),
 			'has-no-dots': ! pageDots,
 			'has-no-arrows': ! prevNextButtons,
 			'is-selected': isSelected,
@@ -223,7 +227,7 @@ const GalleryCarouselEdit = ( props ) => {
 		'has-carousel',
 		`has-carousel-${ gridSize }`, {
 			'has-aligned-cells': alignCells,
-			[ `has-margin-bottom-${ gutter }` ]: thumbnails && gutter > 0,
+			[ `has-margin-bottom-${ gutterCustom }` ]: thumbnails && gutterCustom > 0,
 			[ `has-margin-bottom-mobile-${ gutterMobile }` ]: thumbnails && gutterMobile > 0,
 			[ navForClass ]: thumbnails,
 		}
@@ -231,11 +235,11 @@ const GalleryCarouselEdit = ( props ) => {
 
 	const navClasses = classnames(
 		'carousel-nav', {
-			[ `has-margin-top-${ gutter }` ]: gutter > 0,
+			[ `has-margin-top-${ gutterCustom }` ]: gutterCustom > 0,
 			[ `has-margin-top-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-			[ `has-negative-margin-left-${ gutter }` ]: gutter > 0,
+			[ `has-negative-margin-left-${ gutterCustom }` ]: gutterCustom > 0,
 			[ `has-negative-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-			[ `has-negative-margin-right-${ gutter }` ]: gutter > 0,
+			[ `has-negative-margin-right-${ gutterCustom }` ]: gutterCustom > 0,
 			[ `has-negative-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 		}
 	);
@@ -269,14 +273,14 @@ const GalleryCarouselEdit = ( props ) => {
 	};
 
 	const navStyles = {
-		marginTop: gutter > 0 && ! responsiveHeight ? ( gutter / 2 ) + 'px' : undefined,
+		marginTop: gutterCustom > 0 && ! responsiveHeight ? ( gutterCustom / 2 ) + 'px' : undefined,
 	};
 
 	const navFigureClasses = classnames(
 		'coblocks--figure', {
-			[ `has-margin-left-${ gutter }` ]: gutter > 0,
+			[ `has-margin-left-${ gutterCustom }` ]: gutterCustom > 0,
 			[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-			[ `has-margin-right-${ gutter }` ]: gutter > 0,
+			[ `has-margin-right-${ gutterCustom }` ]: gutterCustom > 0,
 			[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 		}
 	);
