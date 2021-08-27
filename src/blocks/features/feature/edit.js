@@ -15,12 +15,12 @@ import Inspector from './inspector';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { compose } from '@wordpress/compose';
-import { Component, Fragment } from '@wordpress/element';
+import { compose, usePrevious } from '@wordpress/compose';
+import { useEffect } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { Spinner } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
-import { dispatch, select } from '@wordpress/data';
+import { dispatch, useSelect } from '@wordpress/data';
 
 /**
  * Constants
@@ -57,30 +57,54 @@ const TEMPLATE = [
 
 /**
  * Block edit function
+ *
+ * @param {Object} props
  */
-class Edit extends Component {
-	constructor() {
-		super( ...arguments );
+const Edit = ( props ) => {
+	const {
+		attributes,
+		textColor,
+		className,
+		isSelected,
+		backgroundColor,
+		clientId,
+	} = props;
 
-		this.updateInnerAttributes = this.updateInnerAttributes.bind( this );
-	}
+	const {
+		coblocks,
+		backgroundImg,
+		contentAlign,
+		paddingTop,
+		paddingRight,
+		paddingBottom,
+		paddingLeft,
+		paddingSize,
+		paddingUnit,
+		headingLevel,
+	} = attributes;
 
-	componentDidUpdate( prevProps ) {
+	const prevHeadingLevel = usePrevious( headingLevel );
+
+	useEffect( () => {
 		if (
-			this.props.attributes.headingLevel !== prevProps.attributes.headingLevel
+			headingLevel !== prevHeadingLevel
 		) {
-			this.updateInnerAttributes( 'core/heading', {
-				level: this.props.attributes.headingLevel,
+			updateInnerAttributes( 'core/heading', {
+				level: headingLevel,
 			} );
 		}
-	}
+	}, [ headingLevel, prevHeadingLevel ] );
 
-	updateInnerAttributes( blockName, newAttributes ) {
-		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
-			this.props.clientId
-		)[ 0 ].innerBlocks;
+	const {
+		innerBlocks,
+	} = useSelect( ( select ) => {
+		return {
+			innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
+		};
+	} );
 
-		innerItems.forEach( ( item ) => {
+	const updateInnerAttributes = ( blockName, newAttributes ) => {
+		innerBlocks.forEach( ( item ) => {
 			if ( item.name === blockName ) {
 				dispatch( 'core/block-editor' ).updateBlockAttributes(
 					item.clientId,
@@ -88,93 +112,71 @@ class Edit extends Component {
 				);
 			}
 		} );
+	};
+
+	const dropZone = (
+		<BackgroundDropZone
+			{ ...props }
+			label={ __( 'Add as background', 'coblocks' ) }
+		/>
+	);
+
+	let classes = className;
+
+	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
+		classes = classnames( classes, `coblocks-feature-${ coblocks.id }` );
 	}
 
-	render() {
-		const {
-			attributes,
-			textColor,
-			className,
-			isSelected,
-			backgroundColor,
-		} = this.props;
-
-		const {
-			coblocks,
-			backgroundImg,
-			contentAlign,
-			paddingTop,
-			paddingRight,
-			paddingBottom,
-			paddingLeft,
-			paddingSize,
-			paddingUnit,
-		} = attributes;
-
-		const dropZone = (
-			<BackgroundDropZone
-				{ ...this.props }
-				label={ __( 'Add as background', 'coblocks' ) }
-			/>
-		);
-
-		let classes = className;
-
-		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
-			classes = classnames( classes, `coblocks-feature-${ coblocks.id }` );
+	const innerClasses = classnames(
+		'wp-block-coblocks-feature__inner',
+		...BackgroundClasses( attributes ), {
+			'has-text-color': textColor.color,
+			'has-padding': paddingSize && paddingSize !== 'no',
+			[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
+			[ `has-${ contentAlign }-content` ]: contentAlign,
 		}
+	);
 
-		const innerClasses = classnames(
-			'wp-block-coblocks-feature__inner',
-			...BackgroundClasses( attributes ), {
-				'has-text-color': textColor.color,
-				'has-padding': paddingSize && paddingSize !== 'no',
-				[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
-				[ `has-${ contentAlign }-content` ]: contentAlign,
-			}
-		);
+	const innerStyles = {
+		...BackgroundStyles( attributes, backgroundColor ),
+		color: textColor.color,
+		textAlign: contentAlign,
+		paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
+		paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
+		paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
+		paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
+	};
 
-		const innerStyles = {
-			...BackgroundStyles( attributes, backgroundColor ),
-			color: textColor.color,
-			textAlign: contentAlign,
-			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
-			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
-			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
-			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
-		};
-
-		return (
-			<Fragment>
-				{ dropZone }
-				{ isSelected && (
-					<Controls
-						{ ...this.props }
+	return (
+		<>
+			{ dropZone }
+			{ isSelected && (
+				<Controls
+					{ ...props }
+				/>
+			) }
+			{ isSelected && (
+				<Inspector
+					{ ...props }
+				/>
+			) }
+			<div className={ classes }>
+				<div className={ innerClasses } style={ innerStyles }>
+					{ isBlobURL( backgroundImg ) && <Spinner /> }
+					{ BackgroundVideo( attributes ) }
+					<InnerBlocks
+						allowedBlocks={ ALLOWED_BLOCKS }
+						template={ TEMPLATE }
+						templateLock={ false }
+						templateInsertUpdatesSelection={ false }
+						renderAppender={ () => ( null ) }
+						__experimentalCaptureToolbars={ true }
 					/>
-				) }
-				{ isSelected && (
-					<Inspector
-						{ ...this.props }
-					/>
-				) }
-				<div className={ classes }>
-					<div className={ innerClasses } style={ innerStyles }>
-						{ isBlobURL( backgroundImg ) && <Spinner /> }
-						{ BackgroundVideo( attributes ) }
-						<InnerBlocks
-							allowedBlocks={ ALLOWED_BLOCKS }
-							template={ TEMPLATE }
-							templateLock={ false }
-							templateInsertUpdatesSelection={ false }
-							renderAppender={ () => ( null ) }
-							__experimentalCaptureToolbars={ true }
-						/>
-					</div>
 				</div>
-			</Fragment>
-		);
-	}
-}
+			</div>
+		</>
+	);
+};
 
 export default compose( [
 	applyWithColors,
