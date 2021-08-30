@@ -93,6 +93,7 @@
 		"@wordpress/postcss-themes": "^2.2.0",
 		"@wordpress/scripts": "7.1.4",
 		"autoprefixer": "^9.7.5",
+		"chalk": "^4.1.2",
 		"css-loader": "^3.2.1",
 		"cypress": "^6.9.1",
 		"cypress-file-upload": "^5.0.8",
@@ -112,12 +113,8 @@
 		"gzip-size": "^4.1.0",
 		"html-react-parser": "^0.9.1",
 		"husky": "^3.1.0",
-		"jest": "^27.1.0",
-		"jest-cli": "^27.1.0",
+		"jest": "^24.8.0",
 		"jest-junit": "12.0.0",
-		"jest-puppeteer": "^5.0.4",
-		"jest-runner": "^27.0.6",
-		"jest-runtime": "^27.1.0",
 		"jquery": "^3.4.1",
 		"jsdom": "^15.2.1",
 		"lint-staged": "^9.5.0",
@@ -141,11 +138,6 @@
 		"slick-carousel": "^1.8.1",
 		"style-loader": "^0.19.1",
 		"webpack-fix-style-only-entries": "^0.4.0"
-	},
-	"peerDependencies": {
-		"jest": ">=26",
-		"jest-snapshot": ">=26",
-		"puppeteer": ">=1.19.0"
 	},
 	"resolutions": {
 		"css-what": "^5.0.1",

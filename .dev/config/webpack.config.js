@@ -10,10 +10,7 @@ const nodeSassGlobImporter = require( 'node-sass-glob-importer' );
 const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
-	mode: defaultConfig.mode,
-	optimization: {
-		...defaultConfig.optimization,
-	},
+	...defaultConfig,
 	entry: {
 		coblocks: path.resolve( process.cwd(), 'src/blocks.js' ),
 
