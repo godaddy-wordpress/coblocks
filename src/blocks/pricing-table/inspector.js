@@ -7,33 +7,30 @@ import GutterControl from '../../components/gutter-control/gutter-control';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody } from '@wordpress/components';
 
 /**
  * Inspector controls
+ *
+ * @param {Object} props
  */
-class Inspector extends Component {
-	render() {
-		const {
-			attributes,
-		} = this.props;
+const Inspector = ( props ) => {
+	const {
+		attributes,
+	} = props;
 
-		const {
-			count,
-		} = attributes;
+	const {
+		count,
+	} = attributes;
 
-		return (
-			<Fragment>
-				<InspectorControls>
-					<PanelBody title={ __( 'Pricing Table settings', 'coblocks' ) }>
-						{ count > 1 && <GutterControl { ...this.props } /> }
-					</PanelBody>
-				</InspectorControls>
-			</Fragment>
-		);
-	}
-}
+	return (
+		<InspectorControls>
+			<PanelBody title={ __( 'Pricing Table settings', 'coblocks' ) }>
+				{ count > 1 && <GutterControl { ...props } /> }
+			</PanelBody>
+		</InspectorControls>
+	);
+};
 
 export default Inspector;
