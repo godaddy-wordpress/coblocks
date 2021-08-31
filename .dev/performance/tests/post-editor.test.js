@@ -30,8 +30,6 @@ import {
 
 jest.setTimeout( 1000000 );
 
-const error_log = console.log;
-
 describe( 'Post Editor Performance', () => {
 	it( 'Loading, typing and selecting blocks', async () => {
 		const traceFile = __dirname + '/trace.json';
@@ -48,7 +46,7 @@ describe( 'Post Editor Performance', () => {
 		const html = readFile(
 			join( __dirname, './assets/large-post.html' )
 		);
-		error_log( html );
+
 		await createNewPost();
 		await page.evaluate( ( _html ) => {
 			const { parse } = window.wp.blocks;
