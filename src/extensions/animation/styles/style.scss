@@ -1,0 +1,163 @@
+.coblocks-animate {
+	// VARIABLES
+
+	$coblocks-animate-duration: 0.75s;
+	$coblocks-animate-translation: 5em;
+
+	// BLOCK STYLE
+
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-in;
+	opacity: 0;
+
+	&.animate-loop {
+		animation-iteration-count: infinite;
+	}
+
+	// FADE IN
+
+	&.fadeIn {
+		animation-duration: $coblocks-animate-duration;
+		animation-name: fadeIn;
+	}
+
+	@keyframes fadeIn {
+
+		0% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 1;
+		}
+	}
+
+	// FOCUS IN
+
+	&.zoomIn {
+		animation-duration: $coblocks-animate-duration;
+		animation-name: zoomIn;
+	}
+
+	@keyframes zoomIn {
+
+		0% {
+			opacity: 0;
+			transform: scale(0);
+		}
+
+		100% {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+
+	// SLIDE IN - LEFT
+
+	&.slideInLeft {
+		animation-duration: $coblocks-animate-duration;
+		animation-name: slideInLeft;
+	}
+
+	@keyframes slideInLeft {
+
+		0% {
+			opacity: 0;
+			transform: translateX(-#{ $coblocks-animate-translation });
+		}
+
+		100% {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+
+	// SLIDE IN - RIGHT
+
+	&.slideInRight {
+		animation-duration: $coblocks-animate-duration;
+		animation-name: slideInRight;
+	}
+
+	@keyframes slideInRight {
+
+		0% {
+			opacity: 0;
+			transform: translateX($coblocks-animate-translation);
+		}
+
+		100% {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+
+	// SLIDE IN - UP
+
+	&.slideInBottom {
+		animation-duration: $coblocks-animate-duration;
+		animation-name: slideInBottom;
+	}
+
+	@keyframes slideInBottom {
+
+		0% {
+			opacity: 0;
+			transform: translateY($coblocks-animate-translation);
+		}
+
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	// CLIP - HORIZONTAL
+
+	&.clipHorizontal {
+		animation-duration: $coblocks-animate-duration;
+		animation-name: clipHorizontal;
+	}
+
+	@keyframes clipHorizontal {
+
+		0% {
+			-webkit-clip-path: polygon(0% 50%, 0% 100%, 0% 100%, 0% 50%, 100% 50%, 100% 0%, 100% 0%, 100% 50%);
+			clip-path: polygon(0% 50%, 0% 100%, 0% 100%, 0% 50%, 100% 50%, 100% 0%, 100% 0%, 100% 50%);
+			opacity: 0;
+		}
+
+		100% {
+			-webkit-clip-path: polygon(0% 50%, 0% 100%, 100% 100%, 100% 50%, 100% 50%, 100% 0%, 0% 0%, 0% 50%);
+			clip-path: polygon(0% 50%, 0% 100%, 100% 100%, 100% 50%, 100% 50%, 100% 0%, 0% 0%, 0% 50%);
+			opacity: 1;
+		}
+	}
+
+	// CLIP - VERTICAL
+
+	&.clipVertical {
+		animation-duration: $coblocks-animate-duration;
+		animation-name: clipVertical;
+	}
+
+	@keyframes clipVertical {
+
+		0% {
+			-webkit-clip-path: polygon(50% 0%, 100% 0%, 100% 0%, 50% 0%, 50% 100%, 0% 100%, 0% 100%, 50% 100%);
+			clip-path: polygon(50% 0%, 100% 0%, 100% 0%, 50% 0%, 50% 100%, 0% 100%, 0% 100%, 50% 100%);
+			opacity: 0;
+		}
+
+		100% {
+			-webkit-clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 100%, 0% 100%, 0% 0%, 50% 0%);
+			clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 100%, 0% 100%, 0% 0%, 50% 0%);
+			opacity: 1;
+		}
+	}
+}
+
+// AMP support
+body.amp .coblocks-animate {
+	opacity: 1;
+}

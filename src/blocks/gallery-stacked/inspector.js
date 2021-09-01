@@ -4,6 +4,7 @@
 import ResponsiveTabsControl from '../../components/responsive-tabs-control';
 import SizeControl from '../../components/size-control';
 import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
+import CoBlocksFontSizePicker from '../../components/fontsize-picker';
 
 /**
  * WordPress dependencies
@@ -12,7 +13,7 @@ import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
-import { InspectorControls, FontSizePicker, withFontSizes } from '@wordpress/block-editor';
+import { InspectorControls, withFontSizes } from '@wordpress/block-editor';
 import { PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
 
 /**
@@ -45,29 +46,27 @@ class Inspector extends Component {
 	}
 
 	getFullwidthImagesHelp( checked ) {
-		return checked ?
-			__( 'Fullwidth images are enabled.', 'coblocks' ) :
-			__( 'Toggle to fill the available gallery area with completely fullwidth images.', 'coblocks' );
+		return checked
+			? __( 'Fullwidth images are enabled.', 'coblocks' )
+			: __( 'Toggle to fill the available gallery area with completely fullwidth images.', 'coblocks' );
 	}
 
 	getCaptionsHelp( checked ) {
-		return checked ?
-			__( 'Showing captions for each media item.', 'coblocks' ) :
-			__( 'Toggle to show media captions.', 'coblocks' );
+		return checked
+			? __( 'Showing captions for each media item.', 'coblocks' )
+			: __( 'Toggle to show media captions.', 'coblocks' );
 	}
 
 	getLightboxHelp( checked ) {
-		return checked ?
-			__( 'Image lightbox is enabled.', 'coblocks' ) :
-			__( 'Toggle to enable the image lightbox.', 'coblocks' );
+		return checked
+			? __( 'Image lightbox is enabled.', 'coblocks' )
+			: __( 'Toggle to enable the image lightbox.', 'coblocks' );
 	}
 
 	render() {
 		const {
 			attributes,
 			setAttributes,
-			setFontSize,
-			fontSize,
 			wideControlsEnabled = false,
 		} = this.props;
 
@@ -96,7 +95,6 @@ class Inspector extends Component {
 
 					{ images.length > 1 &&
 						<ResponsiveTabsControl { ...this.props }
-							label={ __( 'Gutter', 'coblocks' ) }
 						/>
 					}
 
@@ -126,10 +124,7 @@ class Inspector extends Component {
 					/>
 
 					{ captions &&
-						<FontSizePicker
-							value={ fontSize.size }
-							onChange={ setFontSize }
-						/>
+						<CoBlocksFontSizePicker { ...this.props } />
 					}
 
 					{ ! fullwidth &&

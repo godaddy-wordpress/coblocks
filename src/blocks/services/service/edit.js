@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import InspectorControls from './inspector';
+import { SERVICE_ALLOWED_BLOCKS as ALLOWED_BLOCKS } from '../utilities';
 
 /**
  * External dependencies.
@@ -12,139 +13,110 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
+import { useEffect } from '@wordpress/element';
 import {
+	__experimentalImageURLInputUI as ImageURLInputUI,
+	BlockControls,
 	InnerBlocks,
 	MediaPlaceholder,
 } from '@wordpress/block-editor';
-import {
-	DropZone,
-	Button,
-	Spinner,
-} from '@wordpress/components';
-import { dispatch, select } from '@wordpress/data';
+import { DropZone, Button, Spinner, ButtonGroup } from '@wordpress/components';
+import { useSelect, useDispatch } from '@wordpress/data';
 import { mediaUpload } from '@wordpress/editor';
 import { isBlobURL } from '@wordpress/blob';
+import { closeSmall } from '@wordpress/icons';
+import { createBlock } from '@wordpress/blocks';
 
-/**
- * Constants
- */
-const ALLOWED_BLOCKS = [ 'core/heading', 'core/button', 'core/paragraph' ];
+const Edit = ( props ) => {
+	const {	attributes, clientId, setAttributes } = props;
 
-class Edit extends Component {
-	constructor() {
-		super( ...arguments );
+	const innerItems = useSelect( ( select ) => select( 'core/block-editor' ).getBlocks( clientId ), [] );
+	const image = useSelect( ( select ) => select( 'core' ).getMedia( attributes.imageId ), [] );
 
-		this.updateInnerAttributes = this.updateInnerAttributes.bind( this );
-		this.manageInnerBlock = this.manageInnerBlock.bind( this );
-		this.onChangeAlignment = this.onChangeAlignment.bind( this );
-		this.toggleCta = this.toggleCta.bind( this );
-		this.replaceImage = this.replaceImage.bind( this );
-	}
+	/**
+	 * This functional components `props.isSelected` value does not detect when nested children blocks are selected.
+	 * Here we re-declare isSelected as a local variable with improved logic to detect when nested children have been selected.
+	 *
+	 * @type {boolean} Whether or not this Service block or one of its nested children are selected.
+	 */
+	const isSelected = useSelect( ( select ) => {
+		const {	getBlockHierarchyRootClientId, getSelectedBlockClientId } = select( 'core/block-editor' );
 
-	updateInnerAttributes( blockName, newAttributes ) {
-		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
-			this.props.clientId
-		)[ 0 ].innerBlocks;
+		// Get clientID of the parent block.
+		const rootClientId = getBlockHierarchyRootClientId( clientId );
+		const selectedRootClientId = getBlockHierarchyRootClientId( getSelectedBlockClientId() );
 
+		return props.isSelected || rootClientId === selectedRootClientId;
+	} );
+
+	const { updateBlockAttributes, insertBlock, removeBlocks } = useDispatch( 'core/block-editor' );
+
+	const updateInnerAttributes = ( blockName, newAttributes ) => {
 		innerItems.forEach( ( item ) => {
 			if ( item.name === blockName ) {
-				dispatch( 'core/block-editor' ).updateBlockAttributes(
+				updateBlockAttributes(
 					item.clientId,
 					newAttributes
 				);
 			}
 		} );
-	}
+	};
 
-	manageInnerBlock( blockName, blockAttributes, show = true ) {
-		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
-			this.props.clientId
-		)[ 0 ].innerBlocks;
+	const manageInnerBlock = ( blockName, blockAttributes, show = true ) => {
+		const migrateButton = innerItems.filter( ( item ) => item.name === 'core/button' );
+
+		// Migrate core/button to core/buttons block
+		if ( !! migrateButton.length ) {
+			removeBlocks( migrateButton.map( ( item ) => item.clientId ),	false );
+			const newBlock = createBlock( blockName, blockAttributes, migrateButton );
+			insertBlock( newBlock, innerItems.length, clientId, false );
+			return;
+		}
 
 		const targetBlock = innerItems.filter( ( item ) => item.name === blockName );
 
 		if ( ! targetBlock.length && show ) {
-			const newBlock = wp.blocks.createBlock( blockName, blockAttributes );
-			dispatch( 'core/block-editor' ).insertBlocks(
-				newBlock,
-				innerItems.length,
-				this.props.clientId,
-				false
-			);
+			const newButton = createBlock( 'core/button', {} );
+			const newBlock = createBlock( blockName, blockAttributes, [ newButton ] );
+			insertBlock( newBlock, innerItems.length, clientId, false );
 		}
 
 		if ( targetBlock.length && ! show ) {
-			dispatch( 'core/block-editor' ).removeBlocks(
-				targetBlock.map( ( item ) => item.clientId ),
-				false
-			);
+			removeBlocks( targetBlock.map( ( item ) => item.clientId ),	false );
 		}
-	}
+	};
 
-	componentDidUpdate( prevProps ) {
-		if (
-			this.props.attributes.headingLevel !== prevProps.attributes.headingLevel
-		) {
-			this.updateInnerAttributes( 'core/heading', {
-				level: this.props.attributes.headingLevel,
-			} );
-		}
+	/* istanbul ignore next */
+	useEffect( () => {
+		updateInnerAttributes( 'core/heading', { level: attributes.headingLevel } );
+	}, [ attributes.headingLevel ] );
 
-		if ( this.props.attributes.alignment !== prevProps.attributes.alignment ) {
-			this.updateInnerAttributes( 'core/heading', {
-				align: this.props.attributes.alignment,
-			} );
-			this.updateInnerAttributes( 'core/paragraph', {
-				align: this.props.attributes.alignment,
-			} );
-			this.updateInnerAttributes( 'core/button', {
-				align: this.props.attributes.alignment,
-			} );
-		}
+	/* istanbul ignore next */
+	useEffect( () => {
+		updateInnerAttributes( 'core/heading', { textAlign: attributes.alignment } );
+		updateInnerAttributes( 'core/paragraph', { align: attributes.alignment } );
+		updateInnerAttributes( 'core/buttons', { contentJustification: attributes.alignment } );
+	}, [ attributes.alignment ] );
 
-		if ( this.props.attributes.showCta !== prevProps.attributes.showCta ) {
-			this.manageInnerBlock( 'core/button', {
-				align: this.props.attributes.alignment,
-			}, this.props.attributes.showCta );
-		}
-	}
+	/* istanbul ignore next */
+	useEffect( () => {
+		manageInnerBlock( 'core/buttons', { contentJustification: attributes.alignment }, attributes.showCta );
+	}, [ attributes.showCta ] );
 
-	onChangeAlignment( alignment ) {
-		const { setAttributes } = this.props;
+	const toggleCta = () => {
+		setAttributes( { showCta: ! showCta } );
+	};
 
-		setAttributes( { alignment } );
-		this.updateInnerAttributes( 'core/heading', {
-			align: this.props.attributes.alignment,
-		} );
-		this.updateInnerAttributes( 'core/paragraph', {
-			align: this.props.attributes.alignment,
-		} );
-		this.updateInnerAttributes( 'core/button', {
-			align: this.props.attributes.alignment,
-		} );
-	}
-
-	toggleCta() {
-		const { attributes, setAttributes } = this.props;
-
-		const showCta = ! attributes.showCta;
-		setAttributes( { showCta } );
-		this.manageInnerBlock( 'core/button', {}, showCta );
-	}
-
-	replaceImage( files ) {
+	const replaceImage = ( files ) => {
 		mediaUpload( {
 			allowedTypes: [ 'image' ],
 			filesList: files,
 			onFileChange: ( [ media ] ) =>
-				this.props.setAttributes( { imageUrl: media.url, imageAlt: media.alt } ),
+				setAttributes( { imageUrl: media.url, imageAlt: media.alt, imageId: media.id } ),
 		} );
-	}
+	};
 
-	renderImage() {
-		const { attributes, setAttributes, isSelected } = this.props;
-
+	const renderImage = () => {
 		const classes = classnames( 'wp-block-coblocks-service__figure', {
 			'is-transient': isBlobURL( attributes.imageUrl ),
 			'is-selected': isSelected,
@@ -152,35 +124,34 @@ class Edit extends Component {
 
 		const dropZone = (
 			<DropZone
-				onFilesDrop={ this.replaceImage }
+				onFilesDrop={ replaceImage }
 				label={ __( 'Drop image to replace', 'coblocks' ) }
 			/>
 		);
 
 		return (
-			<Fragment>
+			<>
 				<figure className={ classes }>
 					{ isSelected && (
-						<div className="components-coblocks-gallery-item__remove-menu">
+						<ButtonGroup className="block-library-gallery-item__inline-menu is-right is-visible">
 							<Button
-								icon="no-alt"
-								onClick={ () => setAttributes( { imageUrl: '' } ) }
+								icon={ closeSmall }
+								onClick={ () => setAttributes( { imageUrl: '', imageAlt: '', imageId: null } ) }
 								className="coblocks-gallery-item__button"
 								label={ __( 'Remove image', 'coblocks' ) }
 								disabled={ ! isSelected }
 							/>
-						</div>
+						</ButtonGroup>
 					) }
 					{ dropZone }
 					{ isBlobURL( attributes.imageUrl ) && <Spinner /> }
 					<img src={ attributes.imageUrl } alt={ attributes.imageAlt } style={ { objectPosition: attributes.focalPoint ? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y * 100 }%` : undefined } } />
 				</figure>
-			</Fragment>
+			</>
 		);
-	}
+	};
 
-	renderPlaceholder() {
-		const { setAttributes } = this.props;
+	const renderPlaceholder = () => {
 		return (
 			<MediaPlaceholder
 				className="wp-block-coblocks-service__figure"
@@ -190,56 +161,79 @@ class Edit extends Component {
 				labels={ {
 					title: ' ',
 				} }
-				onSelect={ ( el ) => setAttributes( { imageUrl: el.url, imageAlt: el.alt } ) }
+				onSelect={ ( el ) => setAttributes( { imageUrl: el.url, imageAlt: el.alt, imageId: el.id } ) }
 			/>
 		);
-	}
+	};
 
-	render() {
-		const { className, attributes, setAttributes } = this.props;
+	const onSetHref = ( { href } ) => setAttributes( { href } );
 
-		const TEMPLATE = [
-			[
-				'core/heading',
-				{
-					placeholder: /* translators: placeholder text for input box */ __( 'Write title…', 'coblocks' ),
-					level: attributes.headingLevel,
-				},
-			],
-			[
-				'core/paragraph',
-				{
-					/* translators: content placeholder */
-					placeholder: __( 'Write description…', 'coblocks' ),
-				},
-			],
-		];
+	const { className } = props;
+	const {
+		headingLevel,
+		href,
+		imageUrl,
+		linkClass,
+		linkDestination,
+		linkTarget,
+		rel,
+		showCta,
+		alignment,
+	} = attributes;
 
-		if ( attributes.showCta ) {
-			TEMPLATE.push( [ 'core/button', {} ] );
-		}
+	const TEMPLATE = [
+		[
+			'core/heading',
+			{
+				placeholder: /* translators: placeholder text for input box */ __( 'Write title…', 'coblocks' ),
+				level: headingLevel,
+				textAlign: alignment,
+			},
+		],
+		[
+			'core/paragraph',
+			{
+				/* translators: content placeholder */
+				placeholder: __( 'Write description…', 'coblocks' ),
+				align: alignment,
+			},
+		],
+	];
 
-		return (
-			<Fragment>
-				<InspectorControls
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					onToggleCta={ this.toggleCta }
-				/>
-				<div className={ className }>
-					{ attributes.imageUrl ? this.renderImage() : this.renderPlaceholder() }
-					<div className="wp-block-coblocks-service__content">
-						<InnerBlocks
-							allowedBlocks={ ALLOWED_BLOCKS }
-							template={ TEMPLATE }
-							templateLock={ false }
-							templateInsertUpdatesSelection={ false }
-						/>
-					</div>
+	return (
+		<>
+			<BlockControls>
+				{ imageUrl && (
+					<ImageURLInputUI
+						url={ href || '' }
+						onChangeUrl={ onSetHref }
+						linkDestination={ linkDestination }
+						mediaUrl={ imageUrl }
+						mediaLink={ image && image.link }
+						linkTarget={ linkTarget }
+						linkClass={ linkClass }
+						rel={ rel }
+					/>
+				) }
+			</BlockControls>
+			<InspectorControls
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				onToggleCta={ toggleCta }
+			/>
+			<div className={ className }>
+				{ imageUrl ? renderImage() : renderPlaceholder() }
+				<div className="wp-block-coblocks-service__content">
+					<InnerBlocks
+						allowedBlocks={ ALLOWED_BLOCKS }
+						template={ TEMPLATE }
+						templateLock={ false }
+						templateInsertUpdatesSelection={ false }
+					/>
 				</div>
-			</Fragment>
-		);
-	}
-}
+			</div>
+		</>
+	);
+};
 
 export default Edit;

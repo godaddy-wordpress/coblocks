@@ -11,6 +11,8 @@ const variations = {
 	isStackedOnMobile: [ undefined, true, false ],
 	gutter: [ undefined, 'none', 'small', 'medium', 'large', 'xlarge' ],
 	stacked: [ undefined, true, false ],
+	lacked: [ undefined, true, false ],
+
 };
 
 helpers.testDeprecatedBlockVariations( name, settings, variations );

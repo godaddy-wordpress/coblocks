@@ -27,3 +27,21 @@
 	padding-top: 100%;
 	width: 100%;
 }
+
+body.rtl {
+
+	.slick-slider.coblocks-slick {
+		text-align: left; // opposite, rtl converts left to right.
+	}
+
+	.wp-block-coblocks-post-carousel:not(.alignwide) {
+
+		.slick-prev::before {
+			background-image: url(images/lightbox/arrow-right.svg);
+		}
+
+		.slick-next::before {
+			background-image: url(images/lightbox/arrow-left.svg);
+		}
+	}
+}

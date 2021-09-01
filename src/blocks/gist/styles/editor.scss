@@ -1,20 +1,55 @@
-.wp-block-coblocks-gist {
+[data-type="coblocks/gist"] {
+	align-items: flex-start;
+	background-color: #fff;
+	border-radius: 2px;
+	box-shadow: inset 0 0 0 1px #1e1e1e;
+	box-sizing: border-box;
+	color: #1e1e1e;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 200px;
+	outline: 1px solid transparent;
+	padding: 1em;
+	position: relative;
+	text-align: left;
+	width: 100%;
 
-	&.wp-block-shortcode {
-		display: flex;
-		flex-direction: row;
+	&[data-align="wide"] > .wp-block[data-align="wide"] {
+		height: 100%;
+		margin-bottom: 0;
+		margin-left: auto;
+		margin-right: auto;
+		// https://github.com/WordPress/gutenberg/blob/6c08026384a1dfd942d2e36e831544ce246d94ad/packages/base-styles/_variables.scss#L76
+		max-width: 1100px;
+		width: 100%;
 	}
 
-	> label {
+	label {
+		display: inline-flex;
+		margin-bottom: 16px;
 
 		svg {
 			margin-right: 1ch;
 		}
 	}
 
+	.wp-block-coblocks-gist {
+		width: 100%;
+	}
+
 	.block-editor-plain-text {
-		margin-left: 10px;
-		padding: 8px;
+		border: 1px solid #757575;
+		border-radius: 2px;
+		box-shadow: 0 0 0 transparent;
+		font-size: 16px;
+		line-height: normal;
+		padding: 6px 8px;
+		transition: box-shadow 0.1s linear;
+
+		@media (min-width: 600px) {
+			font-size: 13px;
+		}
 	}
 
 	.gist {
@@ -29,7 +64,7 @@
 
 	&__file-label {
 		align-items: center;
-		display: flex;
+		display: inline-flex;
 		flex-basis: 0;
 		font-size: 12px;
 		padding-left: 5px;
@@ -37,7 +72,7 @@
 		white-space: nowrap;
 
 		svg {
-			fill: $dark-gray-500;
+			fill: $gray-900;
 		}
 	}
 }

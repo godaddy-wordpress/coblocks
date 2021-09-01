@@ -1,5 +1,10 @@
 [data-type="coblocks/gallery-stacked"] {
 
+	// Remove selected state.
+	&.block-editor-block-list__block::after {
+		box-shadow: none !important;
+	}
+
 	&[data-align="left"],
 	&[data-align="right"] {
 
@@ -26,9 +31,9 @@
 
 	.components-coblocks-gallery-item__image-link ~ .coblocks-gallery--caption {
 		bottom: 3em;
+		justify-content: center;
 		position: absolute;
 		width: 100%;
-		justify-content: center;
 	}
 }
 

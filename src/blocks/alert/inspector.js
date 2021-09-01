@@ -7,7 +7,6 @@ import applyWithColors from './colors';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { InspectorControls, ContrastChecker, PanelColorSettings } from '@wordpress/block-editor';
 import { withFallbackStyles } from '@wordpress/components';
@@ -30,52 +29,52 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 
 /**
  * Inspector controls
+ *
+ * @param {Object} props
  */
-class Inspector extends Component {
-	render() {
-		const {
-			backgroundColor,
-			fallbackBackgroundColor,
-			fallbackTextColor,
-			setBackgroundColor,
-			setTextColor,
-			textColor,
-		} = this.props;
+const Inspector = ( props ) => {
+	const {
+		backgroundColor,
+		fallbackBackgroundColor,
+		fallbackTextColor,
+		setBackgroundColor,
+		setTextColor,
+		textColor,
+	} = props;
 
-		return (
-			<Fragment>
-				<InspectorControls>
-					<PanelColorSettings
-						title={ __( 'Color settings', 'coblocks' ) }
-						initialOpen={ false }
-						colorSettings={ [
-							{
-								value: backgroundColor.color,
-								onChange: setBackgroundColor,
-								label: __( 'Background color', 'coblocks' ),
-							},
-							{
-								value: textColor.color,
-								onChange: setTextColor,
-								label: __( 'Text color', 'coblocks' ),
-							},
-						] }
-					>
-						<ContrastChecker
-							{ ...{
-								isLargeText: false,
-								textColor: textColor.color,
-								backgroundColor: backgroundColor.color,
-								fallbackBackgroundColor,
-								fallbackTextColor,
-							} }
-						/>
-					</PanelColorSettings>
-				</InspectorControls>
-			</Fragment>
-		);
-	}
-}
+	return (
+		<>
+			<InspectorControls>
+				<PanelColorSettings
+					title={ __( 'Color settings', 'coblocks' ) }
+					initialOpen={ false }
+					colorSettings={ [
+						{
+							value: backgroundColor.color,
+							onChange: setBackgroundColor,
+							label: __( 'Background color', 'coblocks' ),
+						},
+						{
+							value: textColor.color,
+							onChange: setTextColor,
+							label: __( 'Text color', 'coblocks' ),
+						},
+					] }
+				>
+					<ContrastChecker
+						{ ...{
+							isLargeText: false,
+							textColor: textColor.color,
+							backgroundColor: backgroundColor.color,
+							fallbackBackgroundColor,
+							fallbackTextColor,
+						} }
+					/>
+				</PanelColorSettings>
+			</InspectorControls>
+		</>
+	);
+};
 
 export default compose( [
 	applyWithColors,

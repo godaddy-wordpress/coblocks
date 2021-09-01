@@ -4,9 +4,10 @@
 import classnames from 'classnames';
 
 /**
- * Internal dependencies
+ * WordPress dependencies
  */
-import icons from './icons';
+import { Icon } from '@wordpress/components';
+import { closeSmall as icon } from '@wordpress/icons';
 
 export default ( { children = null, isError = false, ...props } ) => {
 	const classes = classnames( 'coblocks-form__notice', {
@@ -16,7 +17,7 @@ export default ( { children = null, isError = false, ...props } ) => {
 	return (
 		children && (
 			<div className={ classes } { ...props }>
-				{ isError && icons.error }
+				<Icon icon={ icon } />
 				<span>{ children }</span>
 			</div>
 		)

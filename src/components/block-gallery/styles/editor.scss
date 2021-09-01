@@ -13,7 +13,44 @@
 	}
 }
 
+// 1910: Fix overlapping block editor toolbar
+.block-editor-block-contextual-toolbar {
+	display: inline-flex;
+}
+
 // Fix overflowing appender outline
 [data-type*="coblocks/gallery"] .is-appender {
 	outline-offset: -1px;
+}
+
+// Apply gallery placeholder styles to gallery blocks.
+[data-type*="coblocks/gallery"] {
+
+	.coblocks-gallery,
+	.coblocks-gallery--item,
+	.components-resizable-box__container {
+
+		~ div .coblocks-gallery--figure.is-appender .components-placeholder__label {
+			display: none; // Gallery has images - hide label div
+		}
+	}
+
+	.coblocks-gallery--figure,
+	figure {
+		.components-placeholder__fieldset .block-editor-media-placeholder__upload-button {
+			margin-bottom: 0 !important;
+		}
+
+		.is-appender {
+			margin-bottom: 12px;
+			padding: 12px;
+		}
+
+		.coblocks-gallery-item__button-replace {
+			border-radius: 0 !important;
+			border-right: solid 1px #1e1e1e;
+			box-shadow: none;
+		}
+	}
+
 }

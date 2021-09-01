@@ -56,10 +56,6 @@
 			"type": "number",
 			"default": 2
 		},
-		"gutter": {
-			"type": "string",
-			"default": "medium"
-		},
 		"order": {
 			"type": "string",
 			"default": "desc"
@@ -69,7 +65,19 @@
 			"default": "date"
 		},
 		"categories": {
-			"type": "array"
+			"type": "array",
+			"items": {
+				"type": "object"
+			}
+		},
+		"categoryRelation": {
+			"type": "string",
+			"default": "or"
+		}
+	},
+	"supports": {
+		"gutter": {
+			"default": "medium"
 		}
 	}
 }

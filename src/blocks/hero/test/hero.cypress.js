@@ -40,6 +40,11 @@ describe( 'Test CoBlocks Hero Block', function() {
 		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB } = heroData;
 		helpers.addBlockToPost( 'coblocks/hero', true );
 
+		helpers.selectBlock( 'hero' );
+
+		cy.get( '[data-type="core/heading"]' ).focus().type( 'Heading Text' );
+		cy.get( '[data-type="core/paragraph"]' ).first().focus().type( 'Paragraph Text' );
+
 		cy.get( '.wp-block-coblocks-hero' ).click( { force: true } );
 
 		helpers.setColorSetting( 'background color', backgroundColor );
@@ -83,5 +88,34 @@ describe( 'Test CoBlocks Hero Block', function() {
 		cy.get( '.wp-block-coblocks-hero' ).find( '.is-fullscreen' ).should( 'exist' );
 
 		helpers.editPage();
+	} );
+
+	it( 'should close media upload flow on media selection', function() {
+		helpers.addBlockToPost( 'coblocks/hero', true );
+
+		helpers.selectBlock( 'hero' );
+
+		cy.get( '.block-editor-block-toolbar .components-toolbar__control[aria-label="Add background image"]' ).click();
+
+		const { pathToFixtures, fileName } = helpers.upload.spec;
+
+		// Disable reason: cy.fixture should not return a value.
+		// eslint-disable-next-line jest/valid-expect-in-promise
+		cy.fixture( pathToFixtures + fileName, 'base64' ).then( ( fileContent ) => {
+			cy.get( '[class^="moxie"] [type="file"]' ).attachFile( { fileContent, filePath: pathToFixtures + fileName, mimeType: 'image/png', subjectType: 'drag-n-drop' }, { force: true } );
+		} );
+
+		cy.get( '.attachment.selected.save-ready' );
+		cy.get( '.media-toolbar-primary > .button' ).click();
+
+		//'.media-replace-flow button' was deprecated in 5.8.
+		// Media replace button should reside as the 5th button within the toolbar.
+		cy.get( '.block-editor-block-toolbar button:nth(4)' ).click();
+
+		cy.get( '.components-popover__content' ).should( 'be.visible' );
+
+		cy.get( '.block-editor-media-replace-flow__media-upload-menu .components-menu-item__button' ).contains( 'Open Media Library' ).click();
+
+		cy.get( '.components-popover__content' ).should( 'not.be.visible' );
 	} );
 } );

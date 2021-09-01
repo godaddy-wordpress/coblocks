@@ -1,30 +1,50 @@
 /**
- * External dependencies.
+ * Internal dependencies.
  */
-import { startCase } from 'lodash';
+import coblocksLayoutSelector from '../../../src/extensions/layout-selector/test/cypress-layouts';
 
 /**
  * Close layout selector.
  */
 export function closeLayoutSelector() {
-	if ( Cypress.$( '.coblocks-layout-selector-modal' ).length > 0 ) {
-		cy.get( '.coblocks-layout-selector-modal' )
-			.find( '.components-button[aria-label="Close dialog"]' ).first()
-			.click();
-	}
+	cy.get( '.coblocks-layout-selector-modal' ).its( 'length' ).then( ( layoutSelectorModal ) => {
+		if ( layoutSelectorModal > 0 ) {
+			cy.get( '.coblocks-layout-selector-modal' )
+				.find( '.components-button[aria-label="Close dialog"]' ).first()
+				.click();
+		}
+	} );
 
 	cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
+}
+
+/**
+ * Add Form block child element by name.
+ *
+ * @param {string} name the name of the child block to add.
+ */
+export function addFormChild( name ) {
+	cy.get( '[data-type="coblocks/form"] [data-type^="coblocks/field"]' ).first().click( { force: true } );
+	cy.get( '.block-editor-block-settings-menu' ).click();
+	cy.get( '.components-popover__content button' ).contains( /insert after/i ).click( { force: true } );
+	cy.get( '[data-type="coblocks/form"] [data-type="core/paragraph"]' ).click( { force: true } );
+
+	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click( { force: true } );
+	cy.get( '.block-editor-inserter__search' ).click().type( name );
+
+	cy.get( '.block-editor-inserter__content .editor-block-list-item-coblocks-field-' + name ).first().click( { force: true } );
+	cy.get( `[data-type="coblocks/field-${ name }"]` ).should( 'exist' ).click( { force: true } );
 }
 
 /**
  * Login to our test WordPress site
  */
 export function loginToSite() {
-	goTo( '/wp-admin/post-new.php?post_type=page' )
+	goTo( '/wp-admin/post-new.php?post_type=post' )
 		.then( ( window ) => {
 			if ( window.location.pathname === '/wp-login.php' ) {
-				// WordPress has a wp_attempt_focus() function that fires 200ms after the wp-login.php page loads.
-				// We need to wait a short time before trying to login.
+			// WordPress has a wp_attempt_focus() function that fires 200ms after the wp-login.php page loads.
+			// We need to wait a short time before trying to login.
 				cy.wait( 250 );
 
 				cy.get( '#user_login' ).type( Cypress.env( 'wpUsername' ) );
@@ -42,33 +62,64 @@ export function loginToSite() {
  * @param {string} path The URI path to go to.
  */
 export function goTo( path = '/wp-admin' ) {
-	return cy.visit( Cypress.env( 'testURL' ) + path );
+	cy.visit( Cypress.env( 'testURL' ) + path );
+
+	return getWindowObject().then( ( safeWin ) => {
+		// Only set global `safeWin.coblocksLayoutSelector` on new pages.
+		if ( safeWin.location.href.includes( 'post-new.php?post_type=page' ) ) {
+			safeWin.coblocksLayoutSelector = coblocksLayoutSelector;
+
+			safeWin.wp.data.dispatch( 'coblocks/template-selector' ).updateLayouts( coblocksLayoutSelector.layouts );
+			safeWin.wp.data.dispatch( 'coblocks/template-selector' ).updateCategories( coblocksLayoutSelector.categories );
+		}
+	} );
+}
+
+/**
+ * Safely obtain the window object or error
+ * when the window object is not available.
+ */
+export function getWindowObject() {
+	const editorUrlStrings = [ 'post-new.php', 'action=edit' ];
+	return cy.window().then( ( win ) => {
+		const isEditorPage = editorUrlStrings.filter( ( str ) => win.location.href.includes( str ) );
+
+		if ( isEditorPage.length === 0 ) {
+			throw new Error( 'Check the previous test, window property was invoked outside of Editor.' );
+		}
+
+		if ( ! win?.wp ) {
+			throw new Error( 'Window property was invoked within Editor but `win.wp` is not defined.' );
+		}
+
+		return win;
+	} );
 }
 
 /**
  * Disable Gutenberg Tips
  */
 export function disableGutenbergFeatures() {
-	cy.window().then( ( win ) => {
+	getWindowObject().then( ( safeWin ) => {
 		// Enable "Top Toolbar"
-		if ( ! win.wp.data.select( 'core/edit-post' ).isFeatureActive( 'fixedToolbar' ) ) {
-			win.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'fixedToolbar' );
+		if ( ! safeWin.wp.data.select( 'core/edit-post' ).isFeatureActive( 'fixedToolbar' ) ) {
+			safeWin.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'fixedToolbar' );
 		}
 
-		if ( !! win.wp.data.select( 'core/nux' ) ) { // < GB 7.2 || < WP 5.4
-			if ( ! win.wp.data.select( 'core/nux' ).areTipsEnabled() ) {
+		if ( !! safeWin.wp.data.select( 'core/nux' ) ) { // < GB 7.2 || < WP 5.4
+			if ( ! safeWin.wp.data.select( 'core/nux' ).areTipsEnabled() ) {
 				return;
 			}
 
-			win.wp.data.dispatch( 'core/nux' ).disableTips();
-			win.wp.data.dispatch( 'core/editor' ).disablePublishSidebar();
+			safeWin.wp.data.dispatch( 'core/nux' ).disableTips();
+			safeWin.wp.data.dispatch( 'core/editor' ).disablePublishSidebar();
 		} else { // GB 7.2 || WP 5.4
-			if ( ! win.wp.data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
+			if ( ! safeWin.wp.data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
 				return;
 			}
 
-			win.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
-			win.wp.data.dispatch( 'core/editor' ).disablePublishSidebar();
+			safeWin.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
+			safeWin.wp.data.dispatch( 'core/editor' ).disablePublishSidebar();
 		}
 	} );
 }
@@ -92,16 +143,20 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 		clearBlocks();
 	}
 
-	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click();
-	cy.get( '.block-editor-inserter__search' ).click().type(
-		blockID.split( '-' )[ 0 ]
-	);
+	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click();
+	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search' ).type( blockName );
 
 	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
-	cy.get( '.block-editor-inserter__block-list .editor-block-list-item' + targetClassName ).first().click();
+	cy.get( '.editor-block-list-item' + targetClassName ).first().click( { force: true } );
 
 	// Make sure the block was added to our page
-	cy.get( `[data-type="${ blockName }"]` ).should( 'exist' );
+	cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"]` ).should( 'exist' ).then( () => {
+		// Then close the block inserter if still open.
+		const inserterButton = Cypress.$( 'button[class*="__inserter-toggle"].is-pressed' );
+		if ( !! inserterButton.length ) {
+			cy.get( 'button[class*="__inserter-toggle"].is-pressed' ).click();
+		}
+	} );
 }
 
 /**
@@ -110,7 +165,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 export function savePage() {
 	cy.get( '.edit-post-header__settings button.is-primary' ).click();
 
-	cy.get( '.components-snackbar-list__notice-container', { timeout: 10000 } ).should( 'be.visible' );
+	cy.get( '.components-editor-notices__snackbar', { timeout: 10000 } ).should( 'not.be.empty' );
 
 	// Reload the page to ensure that we're not hitting any block errors
 	cy.reload();
@@ -124,13 +179,13 @@ export function savePage() {
  */
 
 export function checkForBlockErrors( blockName ) {
-	cy.get( '#editor' ).then( () => {
-		disableGutenbergFeatures();
+	disableGutenbergFeatures();
 
-		cy.get( '.block-editor-warning' ).should( 'not.exist' );
+	cy.get( '.block-editor-warning' ).should( 'not.exist' );
 
-		cy.get( `[data-type="${ blockName }"]` ).should( 'exist' );
-	} );
+	cy.get( 'body.php-error' ).should( 'not.exist' );
+
+	cy.get( `[data-type="${ blockName }"]` ).should( 'exist' );
 }
 
 /**
@@ -143,11 +198,7 @@ export function viewPage() {
 		}
 	} );
 
-	cy.get( 'button[data-label="Document"]' ).then( ( documentButton ) => {
-		if ( ! Cypress.$( documentButton ).hasClass( 'is-active' ) ) {
-			cy.get( documentButton ).click();
-		}
-	} );
+	cy.get( 'button[data-label="Post"]' );
 
 	openSettingsPanel( /permalink/i );
 
@@ -169,9 +220,9 @@ export function editPage() {
  * Clear all blocks from the editor
  */
 export function clearBlocks() {
-	cy.window().then( ( win ) => {
-		win.wp.data.dispatch( 'core/block-editor' ).removeBlocks(
-			win.wp.data.select( 'core/block-editor' ).getBlocks().map( ( block ) => block.clientId )
+	getWindowObject().then( ( safeWin ) => {
+		safeWin.wp.data.dispatch( 'core/block-editor' ).removeBlocks(
+			safeWin.wp.data.select( 'core/block-editor' ).getBlocks().map( ( block ) => block.clientId )
 		);
 	} );
 }
@@ -217,10 +268,17 @@ export function setBlockStyle( style ) {
  * Input parameter is the name of the block to select.
  *
  * @param {string} name The name of the block to select eg: highlight or click-to-tweet
+ * @param {boolean} isChildBlock  Optional selector for children blocks. Default will be top level blocks.
  */
-export function selectBlock( name ) {
-	cy.get( '.edit-post-header__toolbar button[aria-label="Block navigation"]' ).click();
-	cy.get( '.block-editor-block-navigation__container button' ).contains( startCase( name ) ).click();
+export function selectBlock( name, isChildBlock = false ) {
+	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle' ).click();
+	cy.get( '.block-editor-block-navigation-leaf' ).contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) ).click().then( () => {
+		// Then close the block navigator if still open.
+		const inserterButton = Cypress.$( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' );
+		if ( !! inserterButton.length ) {
+			cy.get( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' ).click();
+		}
+	} );
 }
 
 /**
@@ -239,7 +297,7 @@ export function setInputValue( panelName, settingName, value, ignoreCase = true 
 		.then( ( $settingSection ) => {
 			cy.get( Cypress.$( $settingSection ).parent() )
 				.find( 'input[type="number"]' )
-				.click()
+				.focus()
 				.type( `{selectall}${ value }` );
 		} );
 }
@@ -248,6 +306,7 @@ export function setInputValue( panelName, settingName, value, ignoreCase = true 
  * Upload helper object. Contains image fixture spec and uploader function.
  * `helpers.upload.spec` Object containing image spec.
  * `helpers.upload.imageToBlock` Function performs upload action on specified block.
+ * `helpers.upload.imageReplaceFlow` Function performs replace action on specified block.
  */
 export const upload = {
 	spec: {
@@ -264,15 +323,50 @@ export const upload = {
 	imageToBlock: ( blockName ) => {
 		const { fileName, pathToFixtures } = upload.spec;
 		cy.fixture( pathToFixtures + fileName ).then( ( fileContent ) => {
-			cy.get( `[data-type="${ blockName }"]` )
-				.find( 'input[type="file"]' )
-				.first()
-				.invoke( 'removeAttr', 'style' ) //makes element easier to interact with/accessible. Headless test fails without this.
-				.upload(
-					{ fileContent, fileName, mimeType: 'image/png' },
-					{ force: true }
-				);
+			cy.get( `[data-type="${ blockName }"] input[type="file"]` )
+				.attachFile( { fileContent, filePath: pathToFixtures + fileName, mimeType: 'image/png' }, { force: true } );
+
+			// Now validate upload is complete and is not a blob.
+			cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"] [src^="http"]` );
 		} );
+	},
+	/**
+	 * Upload image to input element and trigger replace image flow.
+	 *
+	 * @param {string} blockName The name of the block that is replace target
+	 * imageReplaceFlow works with CoBlocks Galleries: Carousel, Collage, Masonry, Offset, Stacked.
+	 */
+	imageReplaceFlow: ( blockName ) => {
+		const selectBlockBy = blockName.split( '-' )?.[ 1 ];
+
+		upload.imageToBlock( blockName );
+
+		selectBlock( selectBlockBy );
+
+		cy.get( '.coblocks-gallery-item__button-replace' ).should( 'not.exist' );
+
+		cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"] img` ).first().click( { force: true } );
+
+		cy.get( '.coblocks-gallery-item__button-replace' ).click( { force: true } );
+
+		cy.get( '#menu-item-browse' ).click();
+
+		cy.get( 'ul.attachments' );
+
+		// Replace the image.
+		const newImageBase = 'R150x150';
+		const newFilePath = `../.dev/tests/cypress/fixtures/images/${ newImageBase }.png`;
+		/* eslint-disable */
+		cy.fixture( newFilePath ).then( ( fileContent ) => {
+			cy.get( '[class^="moxie"] [type="file"]' )
+			.attachFile( { fileContent, filePath: newFilePath, mimeType: 'image/png' }, { force: true } );
+		} );
+		/* eslint-enable */
+
+		cy.get( '.attachment.selected.save-ready' );
+		cy.get( '.media-modal .media-button-select' ).click();
+
+		cy.get( '[class*="-visual-editor"]' ).find( `[data-type="${ blockName }"] img` ).first().should( 'have.attr', 'src' ).should( 'include', newImageBase );
 	},
 };
 
@@ -283,7 +377,7 @@ export const upload = {
  * @param {string} hexColor
  */
 export function setColorSetting( settingName, hexColor ) {
-	openSettingsPanel( /color settings/i );
+	openSettingsPanel( /color settings|color/i );
 	cy.get( '.components-base-control__field' )
 		.contains( RegExp( settingName, 'i' ) )
 		.then( ( $subColorPanel ) => {
@@ -302,31 +396,31 @@ export function setColorSetting( settingName, hexColor ) {
 /**
  * Open a certain settings panel in the right hand sidebar of the editor
  *
- * @param {string} panelText The panel label text to open. eg: Color Settings
+ * @param {RegExp} panelText The panel label text to open. eg: Color Settings
  */
 export function openSettingsPanel( panelText ) {
-	cy.get( '.components-panel__body-title' )
+	cy.get( '.components-panel__body' )
 		.contains( panelText )
 		.then( ( $panelTop ) => {
 			const $parentPanel = Cypress.$( $panelTop ).closest( 'div.components-panel__body' );
 			if ( ! $parentPanel.hasClass( 'is-opened' ) ) {
-				$panelTop.click();
+				$panelTop.trigger( 'click' );
 			}
 		} );
 }
 
 /**
- * Open a block heading controls located in block toolbar
+ * Open a block heading controls located in block toolbar.
  *
  * @param {number} headingLevel The button that should be located and clicked
  */
 export function openHeadingToolbarAndSelect( headingLevel ) {
-	cy.get( '.block-editor-block-toolbar' ).find( '.block-editor-block-toolbar__slot' ).first().find( 'button' ).each( ( button, index ) => {
+	cy.get( '.block-editor-block-toolbar .block-editor-block-toolbar__slot button' ).each( ( button, index ) => {
 		if ( index === 1 ) { // represents the second position in the toolbar
 			cy.get( button ).click( { force: true } );
 		}
 	} );
-	cy.get( '.components-popover__content' ).find( 'div[role="menu"]' ).find( 'button' ).contains( headingLevel ).click();
+	cy.get( '.components-popover__content div[role="menu"] button' ).contains( headingLevel ).focus().click();
 }
 
 /**
@@ -354,7 +448,7 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 	}
 
 	// Force click the target element so that we don't select any innerBlocks by mistake.
-	cy.get( '.wp-block[data-type="coblocks/' + blockID + '"]' ).last().click( { force: true } );
+	cy.get( '[class*="-visual-editor"] .wp-block[data-type="coblocks/' + blockID + '"]' ).last().click( { force: true } );
 
 	cy.get( '.block-editor-block-inspector__advanced' ).scrollIntoView().find( 'button' ).click();
 
@@ -376,7 +470,7 @@ export function addCustomBlockClass( classes, blockID = '' ) {
  * Press the Undo button in the header toolbar.
  */
 export function doEditorUndo() {
-	cy.get( '.editor-history__undo' ).click();
+	cy.get( '.editor-history__undo' ).click( { force: true } );
 }
 
 /**
@@ -391,10 +485,13 @@ export function doEditorRedo() {
  */
 export function openEditorSettingsModal() {
 	// Open "more" menu.
-	cy.get( '.edit-post-more-menu' ).find( 'button' ).click();
-	cy.get( '.components-menu-item__button' ).contains( 'Editor settings' ).click();
+	cy.get( '.edit-post-more-menu button' ).click();
+	cy.get( '.components-menu-group' ).contains( 'Editor settings' ).click();
 
 	cy.get( '.components-modal__frame' ).contains( 'Editor settings' ).should( 'exist' );
+
+	// Ensure settings have loaded.
+	cy.get( '.coblocks-settings-modal input[type="checkbox"]' ).should( 'have.length', 6 );
 }
 
 /**

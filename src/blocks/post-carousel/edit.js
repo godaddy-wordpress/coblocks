@@ -2,14 +2,14 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { isUndefined, pickBy, get } from 'lodash';
 import Slick from 'react-slick';
+import { isUndefined, pickBy, get, isEqual } from 'lodash';
+import { PostCarouselIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
  */
 import InspectorControls from './inspector';
-import icon from './icon';
 
 /**
  * WordPress dependencies
@@ -21,17 +21,19 @@ import { Component, RawHTML, Fragment } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
 import { dateI18n, format, __experimentalGetSettings } from '@wordpress/date';
 import { withSelect } from '@wordpress/data';
-import { BlockControls, PlainText, BlockIcon } from '@wordpress/block-editor';
+import { BlockControls, PlainText } from '@wordpress/block-editor';
 import {
-	Placeholder,
-	Spinner,
-	Toolbar,
-	TextControl,
 	Button,
 	Disabled,
-	ServerSideRender,
+	Icon,
+	Placeholder,
 	QueryControls,
+	ServerSideRender,
+	Spinner,
+	TextControl,
+	Toolbar,
 } from '@wordpress/components';
+import { edit } from '@wordpress/icons';
 
 /**
  * Module Constants
@@ -99,6 +101,7 @@ class PostCarousel extends Component {
 			setAttributes,
 			latestPosts,
 			className,
+			isRTL,
 		} = this.props;
 
 		const { categoriesList } = this.state;
@@ -118,7 +121,7 @@ class PostCarousel extends Component {
 
 		const editToolbarControls = [
 			{
-				icon: 'edit',
+				icon: edit,
 				title: __( 'Edit RSS URL', 'coblocks' ),
 				onClick: () => this.setState( { editing: true } ),
 			},
@@ -136,7 +139,8 @@ class PostCarousel extends Component {
 			adaptiveHeight: false,
 			speed: 500,
 			slidesToShow: columns,
-			slidesToScroll: 1,
+			slidesToScroll: isRTL ? -1 : 1,
+			rtl: isRTL ? true : false,
 			responsive: [
 				{
 					breakpoint: 1024,
@@ -173,7 +177,7 @@ class PostCarousel extends Component {
 						postCount={ latestPosts && latestPosts.length }
 					/>
 					<Placeholder
-						icon={ <BlockIcon icon={ icon } /> }
+						icon={ <Icon icon={ icon } /> }
 						label={ __( 'Post Carousel', 'coblocks' ) }
 					>
 						{ ! Array.isArray( latestPosts )
@@ -183,7 +187,6 @@ class PostCarousel extends Component {
 								<Button
 									className="components-placeholder__cancel-button"
 									title={ __( 'Retrieve an external feed', 'coblocks' ) }
-									isLarge
 									isSecondary
 									onClick={ () => {
 										setAttributes( { postFeedType: 'external' } );
@@ -210,7 +213,7 @@ class PostCarousel extends Component {
 						postCount={ latestPosts && latestPosts.length }
 					/>
 					<Placeholder
-						icon={ <BlockIcon icon={ icon } /> }
+						icon={ <Icon icon={ icon } /> }
 						label={ __( 'RSS Feed', 'coblocks' ) }
 						instructions={ __( 'RSS URLs are generally located at the /feed/ directory of a site.', 'coblocks' ) }
 					>
@@ -221,7 +224,7 @@ class PostCarousel extends Component {
 								onChange={ ( value ) => setAttributes( { externalRssUrl: value } ) }
 								className={ 'components-placeholder__input' }
 							/>
-							<Button isLarge type="submit" disabled={ ! externalRssUrl }>
+							<Button type="submit" disabled={ ! externalRssUrl }>
 								{ __( 'Use URL', 'coblocks' ) }
 							</Button>
 						</form>
@@ -334,8 +337,12 @@ class PostCarousel extends Component {
 
 export default compose( [
 	withSelect( ( select, props ) => {
-		const { postsToShow, order, orderBy, categories } = props.attributes;
+		const { postsToShow, order, orderBy, categories, categoryRelation } = props.attributes;
 		const { getEntityRecords, getMedia } = select( 'core' );
+		const { getEditorSettings, getCurrentPost } = select( 'core/editor' );
+
+		const { isRTL } = getEditorSettings();
+		const currentPost = getCurrentPost();
 
 		const useUpdatedQueryControls = QueryControls.toString().includes( 'selectedCategories' );
 
@@ -345,6 +352,7 @@ export default compose( [
 				order,
 				orderby: orderBy,
 				per_page: postsToShow,
+				exclude: currentPost.id,
 			}, ( value ) => ! isUndefined( value ) );
 
 			let latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
@@ -368,10 +376,18 @@ export default compose( [
 				categories: catIds,
 				order,
 				orderby: orderBy,
-				per_page: postsToShow,
+				per_page: 'and' === categoryRelation ? '-1' : postsToShow,
+				exclude: currentPost.id,
 			}, ( value ) => ! isUndefined( value ) );
 
-			const latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
+			let latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
+
+			if ( 'and' === categoryRelation && latestPosts ) {
+				latestPosts = latestPosts.filter( ( post ) =>
+					// `concat` to prevent mutation `sort` to ensure order is consistent.
+					isEqual( post.categories.concat().sort(), catIds.concat().sort() ) )
+					.slice( 0, postsToShow );
+			}
 
 			return ! Array.isArray( latestPosts )
 				? latestPosts
@@ -399,6 +415,7 @@ export default compose( [
 		return {
 			latestPosts: useUpdatedQueryControls ? updatedQuery() : deprecatedQuery(),
 			useUpdatedQueryControls,
+			isRTL,
 		};
 	} ),
 ] )( PostCarousel );

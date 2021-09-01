@@ -16,7 +16,7 @@ import { BackgroundControls } from '../../components/background';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { BlockControls, BlockVerticalAlignmentToolbar } from '@wordpress/block-editor';
-import { Toolbar } from '@wordpress/components';
+import { ToolbarGroup } from '@wordpress/components';
 
 class Controls extends Component {
 	// Switches the icon based on the layout selected,
@@ -71,7 +71,7 @@ class Controls extends Component {
 			<Fragment>
 				<BlockControls>
 					{ ( columns && selectedRows > 1 ) &&
-						<Toolbar
+						<ToolbarGroup
 							isCollapsed={ true }
 							icon={ this.layoutIcon() }
 							label={ __( 'Change row block layout', 'coblocks' ) }
@@ -96,18 +96,18 @@ class Controls extends Component {
 								};
 							} ) }
 						>
-						</Toolbar>
+						</ToolbarGroup>
 					}
 					<BlockVerticalAlignmentToolbar
 						onChange={ ( alignment ) => {
 							const children = getBlocksByClientId( clientId );
 							setAttributes( { verticalAlignment: alignment } );
 							if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
-								map( children[ 0 ].innerBlocks, ( blockProps, index ) => (
+								map( children[ 0 ].innerBlocks, ( blockProps ) => (
 									updateBlockAttributes( blockProps.clientId, { verticalAlignment: alignment } )
 								) );
 							}
-							} }
+						} }
 						value={ verticalAlignment }
 					/>
 					{ layout &&

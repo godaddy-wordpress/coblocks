@@ -2,14 +2,14 @@
 
 	.has-columns > .block-editor-inner-blocks [data-type="core/heading"],
 	.block-editor-inner-blocks [data-type="core/heading"] {
-		max-width: 100% !important;
 		flex-basis: 100% !important;
+		max-width: 100% !important;
 	}
 
 	.coblocks-block-appender {
 		flex: 1 100%;
-		max-width: 100% !important;
 		margin-top: 28px;
+		max-width: 100% !important;
 	}
 
 	// Hide this on Gutenberg 5.9+
@@ -54,8 +54,4 @@
 	align-items: center;
 	display: flex;
 	justify-content: center;
-
-	svg {
-		fill: $dark-gray-500;
-	}
 }

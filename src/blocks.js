@@ -1,12 +1,7 @@
 /**
  * WordPress dependencies
  */
-import {
-	getCategories,
-	registerBlockType,
-} from '@wordpress/blocks';
-
-import { __, sprintf } from '@wordpress/i18n';
+import { getCategories, registerBlockType } from '@wordpress/blocks';
 
 // Register block category
 import './utils/block-category';
@@ -15,13 +10,12 @@ import './utils/block-category';
 import './extensions/attributes';
 import './extensions/cover-styles';
 import './extensions/replace-image';
-import './extensions/coblocks-settings/';
+
+// Internal Extensions / Components
+import './components/gutter-control';
 
 // Formats
 import './formats';
-
-// Categories Helper
-import { supportsCollections } from './utils/block-helpers';
 
 // Deprecate Blocks
 import './js/deprecations/deprecate-coblocks-buttons.js';
@@ -55,7 +49,7 @@ const registerBlock = ( block ) => {
 	const { name, settings } = block;
 
 	// See https://github.com/Automattic/jetpack/issues/14598
-	const availableCategories = getCategories().map( category => category.slug );
+	const availableCategories = getCategories().map( ( c ) => c.slug );
 	switch ( name ) {
 		case 'coblocks/click-to-tweet':
 		case 'coblocks/logos':

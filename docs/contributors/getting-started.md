@@ -7,8 +7,8 @@ CoBlocks is a Node.js-based project, built primarily in JavaScript.
 The first step is to install the [latest active LTS release](https://github.com/nodejs/Release#release-schedule) of Node. Once you have Node installed, run these scripts from within your local CoBlocks repository:
 
 ```
-npm install
-npm run build
+yarn install
+yarn build
 ```
 
 This will build CoBlocks, ready to be used as a WordPress plugin!
@@ -29,7 +29,7 @@ To install Docker Compose, [follow their instructions here](https://docs.docker.
 Once Docker is installed and running, run this script to install WordPress, and build your local environment:
 
 ```
-npm run env install
+yarn env install
 ```
 
 #### Alternative Method: Using an Existing Local WordPress Install
@@ -39,7 +39,7 @@ If you already have WordPress checked out in a different directory, you can use 
 
 ```
 export WP_DEVELOP_DIR=/path/to/wordpress-develop
-npm run env connect
+yarn env connect
 ```
 
 This will use WordPress' own local environment, and mount your CoBlocks directory as a volume there.
@@ -60,7 +60,7 @@ Linux/macOS: `export LOCAL_PORT=7777`
 Windows using Command Prompt: `setx LOCAL_PORT "7777"`
 Windows using PowerShell: `$env:LOCAL_PORT = "7777"`
 
-To shut down this local WordPress instance run `npm run env stop`. To start it back up again, run `npm run env start`.
+To shut down this local WordPress instance run `yarn env stop`. To start it back up again, run `yarn env start`.
 
 #### Toggling Debug Systems
 
@@ -68,13 +68,13 @@ WordPress comes with specific [debug systems](https://wordpress.org/support/arti
 
 Example on Linux/MacOS:
 ```
-LOCAL_SCRIPT_DEBUG=false LOCAL_WP_DEBUG=false npm run env install
+LOCAL_SCRIPT_DEBUG=false LOCAL_WP_DEBUG=false yarn env install
 ```
 By default, both flags will be set to `true`.
 
 #### Troubleshooting
 
-You might find yourself stuck on a screen stating that "you are running WordPress without JavaScript and CSS files". If you tried installing WordPress via `npm run env install`, it probably means that something went wrong during the process. To fix it, try removing the `/wordpress` folder and running `npm run env install` again.
+You might find yourself stuck on a screen stating that "you are running WordPress without JavaScript and CSS files". If you tried installing WordPress via `yarn env install`, it probably means that something went wrong during the process. To fix it, try removing the `/wordpress` folder and running `yarn env install` again.
 
 ## Developer Tools
 
@@ -111,6 +111,6 @@ To use Prettier, you should install the [Prettier - Code formatter extension](ht
 
 This will use the `.prettierrc.js` file in the root folder of the CoBlocks repository and the version of Prettier that is installed in the root `node_modules` folder. To test it out prior to PR #18048 being merged, you should:
 
-1. git switch add/prettier
-2. npm ci
+1. `git switch add/prettier`
+2. `npm ci`
 3. Edit a JavaScript file and on save it will format it as defined

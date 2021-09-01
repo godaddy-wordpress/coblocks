@@ -4,11 +4,11 @@
 import classnames from 'classnames';
 import filter from 'lodash/filter';
 import Masonry from 'react-masonry-component';
+import { GalleryMasonryIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
  */
-import { icon } from './';
 import Inspector from './inspector';
 import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
@@ -22,7 +22,7 @@ import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
-import { withNotices } from '@wordpress/components';
+import { withNotices, Icon } from '@wordpress/components';
 
 /**
  * Block consts
@@ -42,6 +42,7 @@ class GalleryMasonryEdit extends Component {
 		this.onMoveForward = this.onMoveForward.bind( this );
 		this.onMoveBackward = this.onMoveBackward.bind( this );
 		this.setImageAttributes = this.setImageAttributes.bind( this );
+		this.replaceImage = this.replaceImage.bind( this );
 
 		this.state = {
 			selectedImage: null,
@@ -49,11 +50,19 @@ class GalleryMasonryEdit extends Component {
 	}
 
 	componentDidMount() {
-		if ( this.props.wideControlsEnabled === true && ! this.props.attributes.align && this.props.attributes.gridSize === 'xlrg' ) {
-			this.props.setAttributes( {
-				align: 'wide',
-				gridSize: 'lrg',
-			} );
+		const {
+			attributes,
+			setAttributes,
+			wideControlsEnabled,
+		} = this.props;
+
+		if ( typeof attributes.align !== 'undefined' && typeof attributes.gridSize !== 'undefined' ) {
+			if ( wideControlsEnabled === true && ! attributes.align && attributes.gridSize === 'xlrg' ) {
+				setAttributes( {
+					align: 'wide',
+					gridSize: 'lrg',
+				} );
+			}
 		}
 	}
 
@@ -113,6 +122,19 @@ class GalleryMasonryEdit extends Component {
 		};
 	}
 
+	/**
+	 * replaceImage is passed to GalleryImage component and is used to replace images
+	 *
+	 * @param {number} index Index of image to remove.
+	 * @param {Object} media Media object used to initialize attributes.
+	 */
+	replaceImage( index, media ) {
+		const images = [ ...this.props.attributes.images ];
+		images[ index ] = { ...media };
+
+		this.props.setAttributes( { images } );
+	}
+
 	setImageAttributes( index, attributes ) {
 		const { attributes: { images }, setAttributes } = this.props;
 		if ( ! images[ index ] ) {
@@ -143,6 +165,7 @@ class GalleryMasonryEdit extends Component {
 
 		const {
 			align,
+			animation,
 			captions,
 			gridSize,
 			gutter,
@@ -155,6 +178,22 @@ class GalleryMasonryEdit extends Component {
 		const hasImages = !! images.length;
 
 		const sidebarIsOpened = editorSidebarOpened || pluginSidebarOpened || publishSidebarOpened;
+
+		const masonryGalleryPlaceholder = (
+			<Fragment>
+				{ ! hasImages ? noticeUI : null }
+				<GalleryPlaceholder
+					{ ...this.props }
+					label={ __( 'Masonry', 'coblocks' ) }
+					icon={ <Icon icon={ icon } /> }
+					gutter={ gutter }
+				/>
+			</Fragment>
+		);
+
+		if ( ! hasImages ) {
+			return masonryGalleryPlaceholder;
+		}
 
 		const innerClasses = classnames(
 			...GalleryClasses( attributes ),
@@ -172,21 +211,11 @@ class GalleryMasonryEdit extends Component {
 			}
 		);
 
-		const masonryGalleryPlaceholder = (
-			<Fragment>
-				{ ! hasImages ? noticeUI : null }
-				<GalleryPlaceholder
-					{ ...this.props }
-					label={ __( 'Masonry', 'coblocks' ) }
-					icon={ icon }
-					gutter={ gutter }
-				/>
-			</Fragment>
+		const itemClasses = classnames(
+			'coblocks-gallery--item', {
+				[ `coblocks-animate ${ animation }` ]: animation,
+			}
 		);
-
-		if ( ! hasImages ) {
-			return masonryGalleryPlaceholder;
-		}
 
 		return (
 			<Fragment>
@@ -219,7 +248,7 @@ class GalleryMasonryEdit extends Component {
 								);
 
 								return (
-									<li className="coblocks-gallery--item" key={ img.id || img.url }>
+									<li className={ itemClasses } key={ img.id || img.url }>
 										<GalleryImage
 											url={ img.url }
 											alt={ img.alt }
@@ -238,6 +267,8 @@ class GalleryMasonryEdit extends Component {
 											aria-label={ ariaLabel }
 											captions={ captions }
 											supportsCaption={ true }
+											imageIndex={ index }
+											replaceImage={ this.replaceImage }
 										/>
 									</li>
 								);

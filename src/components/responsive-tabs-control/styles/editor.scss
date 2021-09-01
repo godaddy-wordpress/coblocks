@@ -17,8 +17,8 @@
 		align-items: center;
 		appearance: none;
 		background: transparent;
-		border-radius: 2px;
 		border: 1px solid var(--wp-admin-theme-color, #007cba);
+		border-radius: $radius-block-ui;
 		box-shadow: none;
 		color: var(--wp-admin-theme-color, #007cba);
 		height: auto !important;

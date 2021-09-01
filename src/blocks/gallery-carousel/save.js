@@ -32,7 +32,13 @@ const save = ( { attributes, className } ) => {
 		thumbnails,
 		responsiveHeight,
 		lightbox,
+		navForClass,
 	} = attributes;
+
+	// Return early if there are no images.
+	if ( images.length <= 0 ) {
+		return;
+	}
 
 	const classes = classnames(
 		className, {
@@ -54,6 +60,7 @@ const save = ( { attributes, className } ) => {
 			'has-aligned-cells': alignCells,
 			[ `has-margin-bottom-${ gutter }` ]: thumbnails && gutter > 0,
 			[ `has-margin-bottom-mobile-${ gutterMobile }` ]: thumbnails && gutterMobile > 0,
+			[ navForClass ]: thumbnails,
 		}
 	);
 
@@ -115,7 +122,7 @@ const save = ( { attributes, className } ) => {
 	);
 
 	const navOptions = {
-		asNavFor: '.has-carousel',
+		asNavFor: `.${ navForClass }`,
 		autoPlay: false,
 		contain: true,
 		cellAlign: 'left',
@@ -125,11 +132,6 @@ const save = ( { attributes, className } ) => {
 		prevNextButtons: false,
 		wrapAround: false,
 	};
-
-	// Return early if there are no images.
-	if ( images.length <= 0 ) {
-		return;
-	}
 
 	return (
 		<div className={ classes }>
@@ -151,22 +153,23 @@ const save = ( { attributes, className } ) => {
 						);
 					} ) }
 				</div>
-				{ thumbnails ?
-					<div
-						className={ navClasses }
-						data-flickity={ JSON.stringify( navOptions ) }
-					>
-						{ images.map( ( image ) => {
-							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } />;
-							return (
-								<div key={ image.id || image.url } className="coblocks--item-thumbnail">
-									<figure className={ navFigureClasses }>
-										{ img }
-									</figure>
-								</div>
-							);
-						} ) }
-					</div> : null
+				{ thumbnails
+					? (
+						<div
+							className={ navClasses }
+							data-flickity={ JSON.stringify( navOptions ) }
+						>
+							{ images.map( ( image ) => {
+								const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } />;
+								return (
+									<div key={ image.id || image.url } className="coblocks--item-thumbnail">
+										<figure className={ navFigureClasses }>
+											{ img }
+										</figure>
+									</div>
+								);
+							} ) }
+						</div> ) : null
 				}
 			</div>
 			{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } /> }

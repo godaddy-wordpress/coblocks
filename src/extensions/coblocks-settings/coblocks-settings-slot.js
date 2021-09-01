@@ -1,13 +1,27 @@
 /**
  * WordPress dependencies
  */
-import { createSlotFill } from '@wordpress/components';
+import {
+	createSlotFill,
+	__experimentalUseSlot as useSlot,
+} from '@wordpress/components';
 
-const { Fill, Slot } = createSlotFill( 'CoBlocksSettingsModalControls' );
+const slotName = 'CoBlocksSettingsModalControl';
 
-function CoBlocksSettingsModalControls( { children } ) {
-	return <Fill>{ children }</Fill>;
+const { Fill, Slot: CoBlocksSettingsModalControlSlot } = createSlotFill( slotName );
+
+function Slot( { children } ) {
+	const slot = useSlot( slotName );
+	const hasFills = Boolean( slot.fills && slot.fills.length );
+
+	if ( ! hasFills ) {
+		return children;
+	}
+
+	return <CoBlocksSettingsModalControlSlot bubblesVirtually />;
 }
 
-CoBlocksSettingsModalControls.Slot = Slot;
-export default CoBlocksSettingsModalControls;
+const CoBlocksSettingsModalControl = Fill;
+CoBlocksSettingsModalControl.Slot = Slot;
+
+export default CoBlocksSettingsModalControl;

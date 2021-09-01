@@ -3,68 +3,28 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import map from 'lodash/map';
 
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
-import { Component, Fragment, useState } from '@wordpress/element';
+import { __, sprintf } from '@wordpress/i18n';
+import { Component, isValidElement } from '@wordpress/element';
+import { applyFilters } from '@wordpress/hooks';
 import { registerPlugin } from '@wordpress/plugins';
-import { compose } from '@wordpress/compose';
-import { withSelect, withDispatch } from '@wordpress/data';
+import { compose, ifCondition } from '@wordpress/compose';
+import { withSelect, useSelect, withDispatch } from '@wordpress/data';
+import { useEntityProp } from '@wordpress/core-data';
 import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem } from '@wordpress/components';
-import { BlockPreview } from '@wordpress/block-editor';
-import { createBlock } from '@wordpress/blocks';
 
 /**
  * Internal dependencies
  */
 import './store';
-
-const getBlocksFromTemplate = ( name, attributes, innerBlocks = [] ) => {
-	return createBlock( name, attributes,
-		innerBlocks && innerBlocks.map( ( [ blockName, blockAttributes, blockInnerBlocks ] ) =>
-			getBlocksFromTemplate( blockName, blockAttributes, blockInnerBlocks )
-		)
-	);
-};
-
-const LayoutPreview = ( { layout, isSelected, registeredBlocks, onClick } ) => {
-	const [ overlay, setOverlay ] = useState( false );
-
-	return (
-		<a href="#!"
-			key={ layout }
-			className={ classnames( 'coblocks-layout-selector__layout', { 'is-selected': isSelected } ) }
-			onClick={ ( event ) => {
-				event.preventDefault();
-				onClick();
-			} }
-			onMouseEnter={ () => setOverlay( true ) }
-			onMouseLeave={ () => setOverlay( false ) }>
-
-			<div className={ classnames( 'coblocks-layout-selector__layout--overlay', { 'is-active': overlay } ) }>
-				<Button isLarge isPressed>
-					{ __( 'Select Layout', 'coblocks' ) }
-				</Button>
-			</div>
-
-			<BlockPreview
-				autoHeight
-				blocks={
-					layout.blocks
-						.filter( ( layout ) => registeredBlocks.includes( layout[ 0 ] ) )
-						.map(
-							( [ name, attributes, innerBlocks = [] ] ) => {
-								return getBlocksFromTemplate( name, attributes, innerBlocks );
-							}
-						)
-				}
-			/>
-		</a>
-	);
-};
+import { LayoutSelectorResults } from './layout-selector-results';
+import CoBlocksLayoutSelectorFill, { Slot } from './layout-selector-slot';
+import useComputedLayouts from './hooks/useComputedLayouts';
+import useCategories from './hooks/useCategories';
+import './settings-modal-control';
 
 const SidebarItem = ( { slug, title, isSelected, onClick } ) => {
 	return (
@@ -82,178 +42,129 @@ const SidebarItem = ( { slug, title, isSelected, onClick } ) => {
 };
 
 class LayoutSelector extends Component {
-	constructor() {
-		super( ...arguments );
-
-		this.state = {
-			selectedCategory: 'about',
-		};
-
-		this.useTemplateLayout = this.useTemplateLayout.bind( this );
-		this.useEmptyTemplateLayout = this.useEmptyTemplateLayout.bind( this );
-		this.renderContent = this.renderContent.bind( this );
-	}
-
-	useEmptyTemplateLayout() {
-		const {
-			editPost,
-		} = this.props;
-
-		editPost( { title: '', blocks: [] } );
-	}
-
-	// Replace any blocks with the selected layout.
-	useTemplateLayout( layout, registeredBlocks ) {
-		const {
-			editPost,
-		} = this.props;
-
-		editPost( {
-			title: layout.label,
-			blocks: layout.blocks.filter( ( layout ) => registeredBlocks.includes( layout[ 0 ] ) )
-				.map( ( [ name, attributes, innerBlocks = [] ] ) => {
-					return getBlocksFromTemplate( name, attributes, innerBlocks );
-				} ),
-		} );
-	}
-
-	getLayoutsInCategory( category ) {
-		return this.props.layouts.filter( ( layout ) => layout.category === category ) || [];
-	}
-
-	hasLayoutsInCategory( category ) {
-		return !! this.getLayoutsInCategory( category ).length;
-	}
-
-	renderContent( selectedCategory ) {
-		const registeredBlocks = map( wp.blocks.getBlockTypes(), 'name' );
-
-		const foundLayouts = this.getLayoutsInCategory( selectedCategory );
-
-		const layoutsCol1 = foundLayouts.slice( 0, Math.ceil( foundLayouts.length / 2 ) );
-		const layoutsCol2 = foundLayouts.slice( Math.ceil( foundLayouts.length / 2 ) );
-
-		return this.hasLayoutsInCategory( selectedCategory ) ? (
-			<div className="coblocks-layout-selector__layouts">
-				<div className="coblocks-layout-selector__layouts-column">
-					{ layoutsCol1.map( ( layout, index ) => (
-						<LayoutPreview
-							key={ index }
-							layout={ layout }
-							registeredBlocks={ registeredBlocks }
-							onClick={ () => {
-								this.useTemplateLayout( layout, registeredBlocks );
-								this.props.closeTemplateSelector();
-							} }
-						/>
-					) ) }
-				</div>
-				<div className="coblocks-layout-selector__layouts-column">
-					{ layoutsCol2.map( ( layout, index ) => (
-						<LayoutPreview
-							key={ index }
-							layout={ layout }
-							registeredBlocks={ registeredBlocks }
-							onClick={ () => {
-								this.useTemplateLayout( layout, registeredBlocks );
-								this.props.closeTemplateSelector();
-							} }
-						/>
-					) ) }
-				</div>
-			</div>
-		) : ( <p><em>{ __( 'No layouts are available for this category.', 'coblocks' ) }</em></p> );
-	}
-
 	render() {
-		const { selectedCategory } = this.state;
 		const {
+			categories,
+			selectedCategory,
+			updateSelectedCategory,
 			isActive,
-			closeTemplateSelector,
-			layoutSelectorEnabled,
+			isMobile,
+			useEmptyTemplateLayout,
+			useTemplateLayout,
 		} = this.props;
 
-		if ( ! layoutSelectorEnabled ) {
-			return null;
-		}
+		const settings = applyFilters( 'coblocks-layout-selector-controls', [] );
+
+		const coblocksCustomLayoutsSettings = (
+			<>
+				<Slot />
+
+				{
+					Array.isArray( settings ) &&
+					settings.map( ( Control, index ) => {
+						let ControlElem = Control;
+
+						if ( ! [ 'function', 'object' ].includes( typeof ControlElem ) ) {
+							return null;
+						}
+
+						if ( ! isValidElement( ControlElem ) ) {
+							ControlElem = <ControlElem />;
+						}
+
+						return (
+							<CoBlocksLayoutSelectorFill key={ `layout-control-${ index }` }>
+								{ ControlElem }
+							</CoBlocksLayoutSelectorFill>
+						);
+					} )
+				}
+			</>
+		);
 
 		return ! isActive ? null : (
 			<Modal
 				title={ (
-					<Fragment>
-						{ __( 'Add new page', 'coblocks' ) }
-						<span>{ __( 'Pick one of these layouts or start with a blank page', 'coblocks' ) }</span>
-					</Fragment>
+					<>
+						<div>{ __( 'Add New Page', 'coblocks' ) }</div>
+						<span>{ __( 'Pick one of these layouts or start with a blank page.', 'coblocks' ) }</span>
+					</>
 				) }
-				onRequestClose={ () => {
-					this.useEmptyTemplateLayout();
-					closeTemplateSelector();
-				} }
+				onRequestClose={ useEmptyTemplateLayout }
 				className="coblocks-layout-selector-modal">
 
 				<div className="coblocks-layout-selector">
-					<aside className="coblocks-layout-selector__sidebar">
-						<ul className="coblocks-layout-selector__sidebar__items">
-							{ this.props.categories.filter( ( category ) => this.hasLayoutsInCategory( category.slug ) ).map( ( category, index ) => (
-								<SidebarItem
-									key={ index }
-									slug={ category.slug }
-									title={ category.title }
-									isSelected={ category.slug === selectedCategory }
-									onClick={ () => this.setState( { selectedCategory: category.slug } ) }
-								/>
-							) ) }
-						</ul>
 
-						<Button
-							className="coblocks-layout-selector__add-button"
-							onClick={ () => {
-								this.useEmptyTemplateLayout();
-								closeTemplateSelector();
-							} }
-							isLink>
-							<span><SVG width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><Path d="M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z" ></Path></SVG></span>
-							{ __( 'Add blank page', 'coblocks' ) }
-						</Button>
-					</aside>
-
-					<div className="coblocks-layout-selector__topbar">
-						<div className="coblocks-layout-selector__topbar__left">
-							<strong>{ __( 'Layouts', 'coblocks' ) }:</strong> { selectedCategory }
-							<DropdownMenu label="Select a layout category">
-								{ ( { onClose } ) => (
-									<Fragment>
-										<MenuGroup onClick={ onClose }>
-											{ this.state.templates.map( ( category, index ) => {
-												return (
-													<MenuItem key={ index } onClick={ () => {
-														this.setState( { selectedCategory: category.label } );
-														onClose();
-													} }>
-														{ category.label }
-													</MenuItem>
-												);
-											} ) }
-										</MenuGroup>
-									</Fragment>
-								) }
-							</DropdownMenu>
+					{ isMobile && (
+						<div className="coblocks-layout-selector__topbar">
+							<div className="coblocks-layout-selector__topbar__left">
+								<div className="coblocks-layout-selector__topbar__left__settings">
+									{ coblocksCustomLayoutsSettings }
+								</div>
+								<div className="coblocks-layout-selector__topbar__left__category">
+									<strong>{ __( 'Layouts', 'coblocks' ) }:</strong> { categories.find( ( category ) => category.slug === selectedCategory )?.title }
+									<DropdownMenu label="Select a layout category">
+										{ ( { onClose } ) => (
+											<>
+												<MenuGroup onClick={ onClose }>
+													{ categories.map( ( category, index ) => (
+														<MenuItem key={ index } onClick={ () => {
+															updateSelectedCategory( category.slug );
+															onClose();
+														} }>
+															{ category.title }
+														</MenuItem>
+													) ) }
+												</MenuGroup>
+											</>
+										) }
+									</DropdownMenu>
+								</div>
+							</div>
+							<div className="coblocks-layout-selector__topbar__right">
+								<Button
+									className="coblocks-layout-selector__add-button"
+									onClick={ useEmptyTemplateLayout }
+									isLink>
+									<span><Icon icon="plus" size={ 16 } /></span> { __( 'Add blank page', 'coblocks' ) }
+								</Button>
+							</div>
 						</div>
-						<div className="coblocks-layout-selector__topbar__right">
+					) }
+
+					{ ! isMobile && (
+						<aside className="coblocks-layout-selector__sidebar">
+
+							{ coblocksCustomLayoutsSettings }
+
+							<ul className="coblocks-layout-selector__sidebar__items">
+								{ categories.map( ( category, index ) => (
+									<SidebarItem
+										key={ index }
+										slug={ category.slug }
+										title={ category.title }
+										isSelected={ category.slug === selectedCategory }
+										onClick={ () => updateSelectedCategory( category.slug ) }
+									/>
+								) ) }
+							</ul>
+
 							<Button
 								className="coblocks-layout-selector__add-button"
-								onClick={ () => {
-									this.useEmptyTemplateLayout();
-									closeTemplateSelector();
-								} }
+								onClick={ useEmptyTemplateLayout }
 								isLink>
-								<span><Icon icon="plus" size={ 16 } /></span> { __( 'Add blank page', 'coblocks' ) }
+								<span><SVG width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><Path d="M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z" /></SVG></span>
+								{ __( 'Add blank page', 'coblocks' ) }
 							</Button>
-						</div>
-					</div>
+						</aside>
+					) }
 
 					<div className="coblocks-layout-selector__content">
-						{ this.renderContent( selectedCategory ) }
+						<LayoutSelectorResults
+							layouts={ this.props.layouts }
+							category={ selectedCategory }
+							onInsert={ ( layout ) => useTemplateLayout( layout ) }
+						/>
 					</div>
 				</div>
 			</Modal>
@@ -264,30 +175,72 @@ class LayoutSelector extends Component {
 if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.postTypeEnabled ) {
 	registerPlugin( 'coblocks-layout-selector', {
 		render: compose( [
+			ifCondition( () => {
+				const [ layoutSelectorEnabled ] = useEntityProp( 'root', 'site', 'coblocks_layout_selector_controls_enabled' );
+
+				const {
+					hasLayouts,
+					hasCategories,
+				} = useSelect( ( select ) => select( 'coblocks/template-selector' ) );
+
+				return layoutSelectorEnabled && hasLayouts() && hasCategories();
+			} ),
 			withSelect( ( select ) => {
-				const { isTemplateSelectorActive } = select( 'coblocks/template-selector' );
-				const { hasEditorUndo, isCurrentPostPublished } = select( 'core/editor' );
-				const { getLayoutSelector } = select( 'coblocks-settings' );
+				const {
+					getSelectedCategory,
+					isTemplateSelectorActive,
+				} = select( 'coblocks/template-selector' );
 
-				const isCleanUnpublishedPost = ! isCurrentPostPublished() && ! hasEditorUndo();
+				const { isViewportMatch } = select( 'core/viewport' );
 
-				const layouts = coblocksLayoutSelector.layouts || [];
-				const categories = coblocksLayoutSelector.categories || [];
+				const layouts = useComputedLayouts();
 
 				return {
-					isActive: isCleanUnpublishedPost || isTemplateSelectorActive(),
-					layoutSelectorEnabled: getLayoutSelector() && !! layouts.length && !! categories.length,
+					isActive: isTemplateSelectorActive(),
+					isMobile: isViewportMatch( '< medium' ),
 					layouts,
-					categories,
+					categories: useCategories( layouts ),
+					selectedCategory: getSelectedCategory(),
 				};
 			} ),
 			withDispatch( ( dispatch ) => {
-				const { closeTemplateSelector } = dispatch( 'coblocks/template-selector' );
+				const {
+					closeTemplateSelector,
+					incrementLayoutUsage,
+					updateSelectedCategory,
+				} = dispatch( 'coblocks/template-selector' );
 				const { editPost } = dispatch( 'core/editor' );
+				const { createWarningNotice, createSuccessNotice } = dispatch( 'core/notices' );
 
 				return {
 					closeTemplateSelector,
+					createWarningNotice,
+					createSuccessNotice,
 					editPost,
+					updateSelectedCategory,
+
+					// Replace any blocks with the selected layout.
+					useTemplateLayout: ( layout ) => {
+						editPost( {
+							title: layout.label,
+							blocks: layout.blocks,
+						} );
+						closeTemplateSelector();
+						incrementLayoutUsage( layout );
+						createSuccessNotice(
+							sprintf(
+								// translators: %s is the post title.
+								__( '"%s" layout has been added to the page.', 'nextgen' ),
+								layout.label
+							),
+							{ type: 'snackbar' }
+						);
+					},
+
+					useEmptyTemplateLayout: () => {
+						editPost( { title: '', blocks: [] } );
+						closeTemplateSelector();
+					},
 				};
 			} ),
 		] )( LayoutSelector ),

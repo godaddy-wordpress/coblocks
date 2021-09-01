@@ -2,6 +2,7 @@
  * External dependencies
  */
 import filter from 'lodash/filter';
+import pick from 'lodash/pick';
 
 /**
  * Internal dependencies
@@ -23,9 +24,6 @@ const transforms = {
 				'coblocks/gallery-masonry',
 				'coblocks/gallery-stacked',
 				'coblocks/gallery-offset',
-				'blockgallery/carousel',
-				'blockgallery/masonry',
-				'blockgallery/stacked',
 				'core/gallery',
 			],
 			transform: ( attributes ) => (
@@ -39,16 +37,13 @@ const transforms = {
 			type: 'block',
 			isMultiBlock: true,
 			blocks: [ 'core/image' ],
-			transform: ( attributes ) => {
-				const validImages = filter( attributes, ( { id, url } ) => Number.isInteger( id ) && url );
-				if ( validImages.length > 0 ) {
-					return createBlock( metadata.name, {
-						images: validImages.map( ( { id, url, alt, caption } ) => ( { index: id, url, alt: alt || '', caption: caption || '' } ) ),
-						ids: validImages.map( ( { id } ) => id ),
-					} );
-				}
-				return createBlock( metadata.name );
-			},
+			isMatch: ( content ) => filter( content, ( { id, url } ) => Number.isInteger( id ) && url ),
+			transform: ( content ) =>
+				createBlock( metadata.name, {
+					images: content.map( ( attributes, index ) => ( { ...pick( attributes, [ 'id', 'url', 'alt', 'caption' ] ), index } ) ),
+					ids: content.map( ( { id } ) => id ),
+					captions: !! filter( content, ( { caption } ) => !! caption ),
+				} ),
 		},
 		{
 			type: 'prefix',
@@ -60,23 +55,15 @@ const transforms = {
 			},
 		},
 	],
-	to: ( function() {
-		return [
-			'coblocks/gallery-collage',
-			'coblocks/gallery-masonry',
-			'coblocks/gallery-stacked',
-			'coblocks/gallery-offset',
-			'core/gallery',
-		].map( ( x ) => {
-			return {
-				type: 'block',
-				blocks: [ x ],
-				transform: ( attributes ) => createBlock( x, {
-					...GalleryTransforms( attributes ),
-				} ),
-			};
-		} );
-	}() ),
+	to: [
+		{
+			type: 'block',
+			blocks: [ 'core/gallery' ],
+			transform: ( attributes ) => createBlock( 'core/gallery', {
+				...GalleryTransforms( attributes ),
+			} ),
+		},
+	],
 };
 
 export default transforms;

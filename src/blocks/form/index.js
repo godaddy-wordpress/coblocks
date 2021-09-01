@@ -1,8 +1,14 @@
+/* global coblocksBlockData */
+
+/**
+ * External dependencies
+ */
+import { FormIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+
 /**
  * Internal dependencies
  */
 import edit from './edit';
-import icon from './icon';
 import variations from './variations';
 
 /**
@@ -10,6 +16,10 @@ import variations from './variations';
  */
 import { __ } from '@wordpress/i18n';
 import { InnerBlocks } from '@wordpress/block-editor';
+import { Icon } from '@wordpress/components';
+
+// Note: Check that coblocksBlockData is set. So jest tests will pass.
+const successTextDefault = typeof coblocksBlockData === 'undefined' ? __( 'Your message was sent:', 'coblocks' ) : coblocksBlockData.form.successText;
 
 /**
  * Block constants
@@ -26,6 +36,10 @@ const metadata = {
 			type: 'string',
 			default: null,
 		},
+		successText: {
+			type: 'string',
+			default: successTextDefault,
+		},
 	},
 };
 
@@ -36,7 +50,7 @@ const settings = {
 	title: __( 'Form', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add a contact form to your page.', 'coblocks' ),
-	icon,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */
@@ -50,6 +64,7 @@ const settings = {
 		reusable: false,
 		html: false,
 		customClassName: false,
+		labelColor: true,
 	},
 	example: {
 		attributes: {

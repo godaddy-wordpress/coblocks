@@ -40,19 +40,19 @@
 					"attribute": "data-index"
 				},
 				"caption": {
-					"type": "array",
+					"type": "string",
 					"source": "children",
 					"selector": "figcaption"
 				}
 			}
 		},
-		"gutter": {
-			"type": "string",
-			"default": "small"
-		},
 		"shadow": {
 			"type": "string",
 			"default": "none"
+		},
+		"align": {
+			"type": "string",
+			"default": "wide"
 		}
 	}
 }

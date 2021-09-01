@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import OptionSelectorControl from '../../components/option-selector-control';
-import gutterOptions from '../../utils/gutter-options';
+import GutterControl from '../../components/gutter-control/gutter-control';
 
 /**
  * WordPress dependencies
@@ -55,6 +55,7 @@ const Inspector = ( props ) => {
 		postFeedType,
 		postsToShow,
 		categories,
+		categoryRelation,
 	} = attributes;
 
 	const isHorizontalStyle = ( 'horizontal' === activeStyle.name );
@@ -179,14 +180,7 @@ const Inspector = ( props ) => {
 					max={ isHorizontalStyle ? Math.min( 2, postCount ) : Math.min( 4, postCount ) }
 					required
 				/>
-				{ attributes.columns >= 2 &&
-					<OptionSelectorControl
-						label={ __( 'Gutter', 'coblocks' ) }
-						currentOption={ attributes.gutter }
-						options={ gutterOptions }
-						onChange={ ( gutter ) => setAttributes( { gutter } ) }
-					/>
-				}
+				{ attributes.columns >= 2 && <GutterControl { ...props } /> }
 				{ hasFeaturedImage &&
 					<OptionSelectorControl
 						label={ __( 'Thumbnail style', 'coblocks' ) }
@@ -253,6 +247,9 @@ const Inspector = ( props ) => {
 					typeof token === 'string' ? suggestions[ token ] : token
 				);
 				setAttributes( { categories: allCategories } );
+				if ( tokens.length < 2 ) {
+					setAttributes( { categoryRelation: 'or' } );
+				}
 			} }
 		/> );
 	};
@@ -271,7 +268,18 @@ const Inspector = ( props ) => {
 				? <Fragment>
 					{ postFeedType === 'internal' &&
 						useUpdatedQueryControls ? updatedQueryControls() : deprecatedQueryControls
-
+					}
+					{ categories && categories.length > 1 &&
+						<RadioControl
+							label={ __( 'Category relation', 'coblocks' ) }
+							help={ __( 'The logical relationship between each category when there is more than one.', 'coblocks' ) }
+							selected={ categoryRelation }
+							options={ [
+								{ label: __( 'Or', 'coblocks' ), value: 'or' },
+								{ label: __( 'And', 'coblocks' ), value: 'and' },
+							] }
+							onChange={ ( value ) => setAttributes( { categoryRelation: value } ) }
+						/>
 					}
 					<RangeControl
 						label={ __( 'Number of posts', 'coblocks' ) }

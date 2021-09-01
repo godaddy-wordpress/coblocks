@@ -4,8 +4,7 @@
 import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
 import captionOptions from '../../components/block-gallery/options/caption-options';
 import SizeControl from '../../components/size-control';
-import OptionSelectorControl from '../../components/option-selector-control';
-import gutterOptions from '../../utils/gutter-options';
+import GutterControl from '../../components/gutter-control/gutter-control';
 
 /**
  * WordPress dependencies
@@ -19,46 +18,56 @@ import { PanelBody, RangeControl, ToggleControl, SelectControl } from '@wordpres
  * Inspector controls
  */
 class Inspector extends Component {
-	constructor() {
-		super( ...arguments );
-
-		this.setLinkTo = this.setLinkTo.bind( this );
-		this.setRadiusTo = this.setRadiusTo.bind( this );
-		this.setSizeControl = this.setSizeControl.bind( this );
-		this.setCaptionStyleTo = this.setCaptionStyleTo.bind( this );
-		this.setFullwidthTo = this.setFullwidthTo.bind( this );
-	}
-
-	setLinkTo( value ) {
+	/**
+	 * setLinkTo
+	 *
+	 * @param {string} value
+	 */
+	setLinkTo = ( value ) => {
 		this.props.setAttributes( { linkTo: value } );
 	}
 
-	setRadiusTo( value ) {
+	/**
+	 * setRadiusTo
+	 *
+	 * @param {number} value
+	 */
+	setRadiusTo = ( value ) => {
 		this.props.setAttributes( { radius: value } );
 	}
 
-	setFullwidthTo() {
+	setFullwidthTo = () => {
 		this.props.setAttributes( { fullwidth: ! this.props.attributes.fullwidth } );
 	}
 
-	setSizeControl( value ) {
+	/**
+	 * setSizeControl
+	 *
+	 * @param {number} value
+	 */
+	setSizeControl = ( value ) => {
 		this.props.setAttributes( { gridSize: value } );
 	}
 
-	setCaptionStyleTo( value ) {
+	/**
+	 * setCaptionStyleTo
+	 *
+	 * @param {string} value
+	 */
+	setCaptionStyleTo = ( value ) => {
 		this.props.setAttributes( { captionStyle: value } );
 	}
 
 	getCaptionsHelp( checked ) {
-		return checked ?
-			__( 'Showing captions for each media item.', 'coblocks' ) :
-			__( 'Toggle to show media captions.', 'coblocks' );
+		return checked
+			? __( 'Showing captions for each media item.', 'coblocks' )
+			: __( 'Toggle to show media captions.', 'coblocks' );
 	}
 
 	getLightboxHelp( checked ) {
-		return checked ?
-			__( 'Image lightbox is enabled.', 'coblocks' ) :
-			__( 'Toggle to enable the image lightbox.', 'coblocks' );
+		return checked
+			? __( 'Image lightbox is enabled.', 'coblocks' )
+			: __( 'Toggle to enable the image lightbox.', 'coblocks' );
 	}
 
 	render() {
@@ -86,12 +95,7 @@ class Inspector extends Component {
 						value={ gridSize }
 						reset={ false }
 					/>
-					<OptionSelectorControl
-						label={ __( 'Gutter', 'coblocks' ) }
-						currentOption={ gutter }
-						options={ gutterOptions }
-						onChange={ ( gutter ) => setAttributes( { gutter } ) }
-					/>
+					<GutterControl { ...this.props } />
 					{ gutter !== 'no' && <RangeControl
 						label={ __( 'Rounded corners', 'coblocks' ) }
 						value={ radius }

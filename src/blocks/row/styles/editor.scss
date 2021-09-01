@@ -9,7 +9,7 @@
 	display: block;
 
 	.components-placeholder {
-		color: $dark-gray-900;
+		color: $gray-900;
 	}
 
 	.wp-block-coblocks-row__inner.has-no-gutter {
@@ -26,9 +26,9 @@
 	[data-type="coblocks/row"] & &__inner {
 
 		div[data-type="coblocks/column"] {
-			max-width: 100% !important;
-			margin-top: 0;
 			margin-bottom: 0;
+			margin-top: 0;
+			max-width: 100% !important;
 		}
 	}
 
@@ -77,6 +77,13 @@
 		// Adjust the individual column block.
 		> [data-type="coblocks/column"] {
 			margin-left: 0;
+
+			// Prevent the columns from growing wider than their distributed sizes.
+			min-width: 0;
+
+			// Prevent long unbroken words from overflowing.
+			overflow-wrap: break-word; // New standard.
+			word-break: break-word; // For back-compat.
 
 			.wp-block-coblocks-column {
 				margin: 0 !important;
@@ -140,13 +147,6 @@
 			> .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar {
 				margin-left: -$border-width;
 			}
-
-			// Prevent the columns from growing wider than their distributed sizes.
-			min-width: 0;
-
-			// Prevent long unbroken words from overflowing.
-			overflow-wrap: break-word; // New standard.
-			word-break: break-word; // For back-compat.
 
 			&.is-selected {
 
@@ -215,9 +215,11 @@
 
 		// Only show if the column is actively being resized.
 		// &.is-resizing {
-		// 	opacity: 1;
-		// 	transform: scale(1);
-		// 	transition: opacity 100ms cubic-bezier(0.39, 0.575, 0.565, 1), transform 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
+		// 	 opacity: 1;
+		// 	 transform: scale(1);
+		// 	 transition:
+		//     opacity 100ms cubic-bezier(0.39, 0.575, 0.565, 1),
+		//     transform 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
 		// }
 	}
 }
@@ -317,6 +319,25 @@
 	}
 }
 
+.has-custom-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"] {
+
+	&:nth-child(odd) {
+		margin-right: var(--coblocks-custom-gutter, 0);
+	}
+
+	&:nth-child(even) {
+		margin-left: var(--coblocks-custom-gutter, 0);
+	}
+
+	&:not(:first-child) {
+		margin-left: var(--coblocks-custom-gutter, 0);
+	}
+
+	&:not(:last-child) {
+		margin-right: var(--coblocks-custom-gutter, 0);
+	}
+}
+
 [class*="-gutter"] > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"]:last-child {
 	margin-right: 0;
 }
@@ -352,6 +373,10 @@
 
 	.is-stacked-on-mobile.has-huge-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"]:not(:last-child) {
 		margin-bottom: var(--coblocks-spacing--4, map-get($spacing, 4));
+	}
+
+	.is-stacked-on-mobile.has-custom-gutter > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="coblocks/column"]:not(:last-child) {
+		margin-bottom: var(--coblocks-custom-gutter, 0);
 	}
 }
 
@@ -391,6 +416,10 @@
 
 		.has-huge-gutter & {
 			right: calc(-0.9 * var(--coblocks-spacing--4, #{map-get($spacing, 4)}) - 0.75em);
+		}
+
+		.has-custom-gutter & {
+			right: calc(-0.9 * var(--coblocks-custom-gutter, 0) - 0.75em);
 		}
 
 		div[data-type="coblocks/row"].is-selected &,
@@ -466,7 +495,7 @@ div[data-type="coblocks/column"]:last-child {
 	.components-coblocks-row-placeholder__button {
 		align-items: center;
 		background: $white;
-		border-radius: 3px !important;
+		border-radius: $radius-block-ui !important;
 		height: auto;
 		margin: 0;
 		padding: 16px 10px;
@@ -474,7 +503,7 @@ div[data-type="coblocks/column"]:last-child {
 
 	.components-coblocks-row-placeholder__back {
 		align-self: center;
-		border-radius: 3px !important;
+		border-radius: $radius-block-ui !important;
 		margin-bottom: 0;
 		margin-right: 4px;
 	}

@@ -22,6 +22,12 @@
 	padding: var(--coblocks-spacing--4, map-get($spacing, 4));
 }
 
+.has-custom-padding,
+.has-custom-padding.wp-block-group,
+.has-custom-padding.wp-block-group.has-background {
+	padding: var(--coblocks-custom-padding);
+}
+
 .content-area__wrapper,
 .editor-styles-wrapper {
 
@@ -30,7 +36,7 @@
 	.has-small-padding.wp-block-group.has-background {
 		padding: var(--coblocks-spacing--1, map-get($spacing, 1));
 	}
-	
+
 	.has-medium-padding,
 	.has-medium-padding.wp-block-group,
 	.has-medium-padding.wp-block-group.has-background {
@@ -47,5 +53,11 @@
 	.has-huge-padding.wp-block-group,
 	.has-huge-padding.wp-block-group.has-background {
 		padding: var(--coblocks-spacing--4, map-get($spacing, 4));
+	}
+
+	.has-custom-padding,
+	.has-custom-padding.wp-block-group,
+	.has-custom-padding.wp-block-group.has-background {
+		padding: var(--coblocks-custom-padding);
 	}
 }

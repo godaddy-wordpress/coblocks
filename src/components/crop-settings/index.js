@@ -4,11 +4,6 @@
 import classnames from 'classnames';
 
 /**
- * Internal dependencies
- */
-import icons from './icons';
-
-/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
@@ -18,6 +13,7 @@ import { TextControl,
 	ButtonGroup,
 	Button,
 } from '@wordpress/components';
+import { rotateLeft, rotateRight } from '@wordpress/icons';
 
 class CropSettings extends Component {
 	constructor( props ) {
@@ -302,16 +298,14 @@ class CropSettings extends Component {
 				<div className="components-coblocks-rotate-control">
 					<ButtonGroup >
 						<Button
-							isLarge
 							isSecondary
-							icon={ icons.rotateLeft }
+							icon={ rotateLeft }
 							label={ __( 'Rotate counter-clockwise', 'coblocks' ) }
 							onClick={ () => this.applyRotation( self.state.r - 90 ) }
 						/>
 						<Button
-							isLarge
 							isSecondary
-							icon={ icons.rotateRight }
+							icon={ rotateRight }
 							label={ __( 'Rotate clockwise', 'coblocks' ) }
 							onClick={ () => this.applyRotation( self.state.r + 90 ) }
 						/>

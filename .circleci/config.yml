@@ -8,18 +8,15 @@ workflows:
               only: /^(?!canary).*$/
 
       # CODE LINTING
-      - lint_php:
+      - php:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
             - build
-      # - lint_js:
-      #     requires:
-      #       - build
-      # - lint_css:
-      #     requires:
-      #       - build
+      - css:
+         requires:
+           - build
 
       # UNIT TESTING
       # Support PHP Versions: http://php.net/supported-versions.php
@@ -28,20 +25,25 @@ workflows:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - lint_php
+            - php
       - unit_testing_php_73:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - lint_php
-      - unit_testing_js:
+            - php
+      - unit_testing_php_74:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - php
+      - js:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
             - build
-          #   - lint_js
 
       # END TO END TESTING
       - e2e_chrome:
@@ -49,19 +51,21 @@ workflows:
             tags:
               only: /^(?!canary).*$/
           requires:
-            # - lint_css
+            - css
             - unit_testing_php_56
             - unit_testing_php_73
-            - unit_testing_js
+            - unit_testing_php_74
+            - js
       - e2e_firefox:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
-            # - lint_css
+            - css
             - unit_testing_php_56
             - unit_testing_php_73
-            - unit_testing_js
+            - unit_testing_php_74
+            - js
 
       - canary-release:
           filters:
@@ -70,7 +74,8 @@ workflows:
           requires:
             - unit_testing_php_56
             - unit_testing_php_73
-            - unit_testing_js
+            - unit_testing_php_74
+            - js
       - i18n:
           filters:
             branches:
@@ -78,13 +83,15 @@ workflows:
           requires:
             - unit_testing_php_56
             - unit_testing_php_73
-            - unit_testing_js
+            - unit_testing_php_74
+            - js
 
       - deploy:
           requires:
             - unit_testing_php_56
             - unit_testing_php_73
-            - unit_testing_js
+            - unit_testing_php_74
+            - js
             # - e2e_firefox
             # - e2e_chrome
           filters:
@@ -105,15 +112,25 @@ commands:
         type: string
     steps:
       - run:
+          name: Get and set base branch env file
           command: |
             if [ -n "$CIRCLE_PULL_REQUEST" ]; then
               GH_API_ENDPOINT="${CIRCLE_PULL_REQUEST/github.com/api.github.com/repos}"
               GH_API_ENDPOINT="${GH_API_ENDPOINT/pull/pulls}"
               BASE_BRANCH=$(curl -s $GH_API_ENDPOINT | jq -r '.base.ref')
+              [ "${BASE_BRANCH}" = "null" ] && BASE_BRANCH="master"
             else
               BASE_BRANCH="master"
             fi
-      - run: FILES=$(git diff HEAD..$BASE_BRANCH --name-only --diff-filter=M '*<< parameters.ext >>')
+
+            echo "export BASE_BRANCH=$BASE_BRANCH" >> $BASH_ENV
+            source $BASH_ENV
+      - run:
+          name: Set diff files env var
+          command: |
+            FILES=$(git diff HEAD..origin/$BASE_BRANCH --name-only --diff-filter=MAD "*<< parameters.ext >>")
+            echo "export FILES='$FILES'" >> $BASH_ENV
+            source $BASH_ENV
 
   # Install and configure WordPress for end-to-end tests.
   install_wordpress_with_coblocks:
@@ -125,7 +142,7 @@ commands:
       - run:
           name: Install WordPress
           command: |
-            sudo apt-get update && sudo apt-get install -y subversion default-mysql-client
+            sudo apt-get update --allow-releaseinfo-change && sudo apt-get install -y subversion default-mysql-client
             sudo -E docker-php-ext-install mysqli
             mkdir -p /tmp/wordpress
             ./vendor/bin/wp core download --path=/tmp/wordpress
@@ -134,10 +151,22 @@ commands:
             ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=/tmp/wordpress
             ./vendor/bin/wp post generate --count=5 --path=/tmp/wordpress
       - run:
+          name: Install Go theme
+          command: |
+            ./vendor/bin/wp theme install go --activate --path=/tmp/wordpress
+      - run:
           name: Activate CoBlocks
           command: |
-            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
+            ln -s $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
             ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
+
+  # Enable debug mode for use in E2E tests.
+  enable_debug_mode_for_e2e:
+    description: ""
+    steps:
+      - run:
+          name: Enable Debug Mode
+          command: ./vendor/bin/wp config set WP_DEBUG true --path=/tmp/wordpress
 
   # Disable the xdebug PHP extension.
   disable_xdebug_php_extension:
@@ -151,6 +180,128 @@ commands:
             sudo rm -f /etc/php/*/conf.d/*xdebug.ini
             sudo rm -f /usr/local/etc/php/conf.d/*xdebug.ini
 
+  restore_composer_cache:
+    steps:
+      - restore_cache:
+          keys:
+            - composer-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "composer.lock" }}
+            - composer-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}
+            - composer-deps-{{ .Environment.CACHE_VERSION }}
+
+  restore_yarn_cache:
+    steps:
+      - restore_cache:
+          keys:
+            - yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}
+            - yarn-deps-{{ .Environment.CACHE_VERSION }}
+
+  restore_update_cypress_cache:
+    steps:
+      - restore_cache:
+          keys:
+            - cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}
+            - cypress-deps-{{ .Environment.CACHE_VERSION }}
+      - run:
+          name: Install CyPress Binaries
+          command: ./node_modules/.bin/cypress install
+      - save_cache:
+          key: cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/Cypress
+
+  run_e2e_tests:
+    parameters:
+      browser:
+        type: string
+    steps:
+      - run:
+          name: Run end to end tests (Cypress.io) - << parameters.browser >>
+          command: |
+            touch cypress.env.json
+            echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
+            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ] || [ "$CIRCLE_BRANCH" == *"run-all-tests"* ]; then
+              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>
+            else
+              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >> --spec "$(cat /tmp/specstring | xargs | sed -e 's/ /,/g')"
+            fi
+
+  start_wpcli_server:
+    steps:
+      - run:
+          name: Start WPCLI Server
+          command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root  --path=/tmp/wordpress
+          background: true
+
+  wait_for_mysql:
+    steps:
+      - run:
+          name: Waiting for MySQL to be ready
+          command: |
+            for i in `seq 1 10`;
+            do
+              nc -z 127.0.0.1 3306 && echo Success && exit 0
+              echo -n .
+              sleep 1
+            done
+            echo Failed waiting for MySQL && exit 1
+
+  setup_e2e_env_var:
+    steps:
+      - run:
+          name: Setup Environment Variables
+          command: |
+            echo "export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH" >> $BASH_ENV
+            source /home/circleci/.bashrc
+
+  install_mailhog:
+    steps:
+      - run:
+          name: "Install Mailhog"
+          command: bash .dev/bin/install-mailhog.sh
+
+  start_mailhog:
+    steps:
+      - run:
+          name: "Start Mailhog"
+          command: "MailHog"
+          background: true
+
+  setup_spec_files_diff_tree:
+    steps:
+      - run:
+          name: Setup spec files to run based on git diff-tree
+          command: |
+            if [[ "$CIRCLE_BRANCH" != "master" && "$CIRCLE_BRANCH" != "develop" && "$CIRCLE_BRANCH" != *"run-all-tests"* ]]; then
+              bash .dev/bin/setup-test-specs.sh $FILES
+            fi
+
+  pre_check_files:
+    steps:
+      - run:
+          name: "Pre-Check files"
+          command: |
+            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ] && [[ "$CIRCLE_BRANCH" != *"run-all-tests"* ]]; then
+              echo "Changes do not require testing."
+              circleci-agent step halt
+            fi
+
+  run_phpunit_singlesite_coverage_reports:
+    steps:
+      - run:
+          name: "Run PHPUnit - Single Site - Generate Coverage Reports"
+          command: composer run test -- --coverage-html=/tmp/artifacts/code-coverage/phpunit/html --log-junit=/tmp/artifacts/code-coverage/phpunit/results.xml
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+
+  install_wordpress_testing_suite:
+    steps:
+      - run:
+          name: "Install WordPress Testing Suite"
+          command: |
+            bash .dev/bin/install-dependencies.sh
+            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
+
 jobs:
 
   # 1. Download and cache node and composer dependencies.
@@ -159,37 +310,32 @@ jobs:
   build:
     docker:
       - image: circleci/php:7.3-node
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - disable_xdebug_php_extension
-      - restore_cache:
-          keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
-            - yarn-deps
+      - restore_yarn_cache
       - run:
           name: Install Node dependencies
           command: |
             PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
             yarn install --frozen-lockfile
       - save_cache:
-          key: yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
-            - ~/.cache/Cypress
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-            - composer-deps
+      - restore_composer_cache
       - run:
           name: Install Composer dependencies
           command: |
+            sudo composer self-update --1
             composer validate --strict
             composer install
       - save_cache:
-          key: composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
+          key: composer-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "composer.lock" }}
           paths:
             - ~/project/vendor
       - run:
@@ -208,82 +354,45 @@ jobs:
   # --------------------------------------------------
 
   # Run phpcs on changed php files only.
-  lint_php:
+  php:
     docker:
       - image: circleci/php:7.3
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - changed_files_with_extension:
           ext: ".php"
-      - run:
-          name: "Pre-Check"
-          command: |
-            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ]; then
-              echo "Changes do not require linting."
-              circleci-agent step halt
-            fi
+      - pre_check_files
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-            - composer-deps
+      - restore_composer_cache
+      - run:
+          name: Install Composer v1
+          command: sudo composer self-update --1
       - run:
           name: "Linting PHP"
           command: composer run lint $FILES
 
-  # Run eslint on changed javascript files only.
-  lint_js:
-    docker:
-      - image: circleci/node:latest
-    steps:
-      - checkout
-      - changed_files_with_extension:
-          ext: ".js"
-      - run:
-          name: "Pre-Check"
-          command: |
-            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ]; then
-              echo "Changes do not require linting."
-              circleci-agent step halt
-            fi
-      - attach_workspace:
-          at: ~/project
-      - restore_cache:
-          keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
-            - yarn-deps
-      - run:
-          name: "Linting JS"
-          command: npm run lint:js $FILES
-
   # Run stylelint on changed stylesheet files only.
-  lint_css:
+  css:
     docker:
       - image: circleci/node:latest
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - changed_files_with_extension:
           ext: ".scss"
-      - run:
-          name: "Pre-Check"
-          command: |
-            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ]; then
-              echo "Changes do not require linting."
-              circleci-agent step halt
-            fi
+      - pre_check_files
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
-            - yarn-deps
+      - restore_yarn_cache
       - run:
           name: "Linting CSS"
-          command: npm run lint:css $FILES
+          command: yarn lint:css $FILES
 
   # --------------------------------------------------
   # Unit Testing
@@ -292,35 +401,21 @@ jobs:
   unit_testing_php_56:
     docker:
       - image: circleci/php:5.6
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
       - image: circleci/mysql:5.7
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-            - composer-deps
-      - run:
-          name: Waiting for MySQL to be ready
-          command: |
-            for i in `seq 1 10`;
-            do
-              nc -z 127.0.0.1 3306 && echo Success && exit 0
-              echo -n .
-              sleep 1
-            done
-            echo Failed waiting for MySQL && exit 1
-      - run:
-          name: "Install WordPress Testing Suite"
-          command: |
-            bash .dev/bin/install-dependencies.sh
-            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
-      - run:
-          name: "Run PHPUnit - Single Site - Generate Coverage Reports"
-          command: composer run test -- --coverage-html=/tmp/artifacts/code-coverage/phpunit/html --log-junit=/tmp/artifacts/code-coverage/phpunit/results.xml
-          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+      - restore_composer_cache
+      - wait_for_mysql
+      - install_wordpress_testing_suite
+      - run_phpunit_singlesite_coverage_reports
       - store_artifacts:
           path: /tmp/artifacts/code-coverage/
           destination: phpunit-coverage
@@ -333,36 +428,25 @@ jobs:
 
   unit_testing_php_73:
     docker:
-      - image: circleci/php:7.3
+      - image: circleci/php:7.3.23-apache-node
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
       - image: circleci/mysql:5.7
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-            - composer-deps
+      - restore_composer_cache
       - run:
-          name: Waiting for MySQL to be ready
-          command: |
-            for i in `seq 1 10`;
-            do
-              nc -z 127.0.0.1 3306 && echo Success && exit 0
-              echo -n .
-              sleep 1
-            done
-            echo Failed waiting for MySQL && exit 1
-      - run:
-          name: "Install WordPress Testing Suite"
-          command: |
-            bash .dev/bin/install-dependencies.sh
-            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
-      - run:
-          name: "Run PHPUnit - Single Site - Generate Coverage Reports"
-          command: composer run test -- --coverage-html=/tmp/artifacts/code-coverage/phpunit/html --log-junit=/tmp/artifacts/code-coverage/phpunit/results.xml
-          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+          name: Install Composer v1
+          command: sudo composer self-update --1
+      - wait_for_mysql
+      - install_wordpress_testing_suite
+      - run_phpunit_singlesite_coverage_reports
       - store_artifacts:
           path: /tmp/artifacts/code-coverage/
           destination: phpunit-coverage
@@ -373,43 +457,78 @@ jobs:
           command: WP_MULTISITE=1 composer run test
           working_directory: /tmp/wordpress/wp-content/plugins/coblocks
 
-  unit_testing_js:
+  unit_testing_php_74:
     docker:
-      - image: circleci/node:latest-browsers-legacy
+      - image: circleci/php:7.4.15-apache-node
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+        environment:
+          XDEBUG_MODE=coverage
+      - image: circleci/mysql:5.7
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project
+      - restore_composer_cache
+      - run:
+          name: Install Composer v1
+          command: sudo composer self-update --1
+      - wait_for_mysql
+      - install_wordpress_testing_suite
+      - run_phpunit_singlesite_coverage_reports
+      - store_artifacts:
+          path: /tmp/artifacts/code-coverage/
+          destination: phpunit-coverage
+      - store_test_results:
+          path: /tmp/artifacts/code-coverage/
+      - run:
+          name: "Run PHPUnit - Multi Site"
+          command: WP_MULTISITE=1 composer run test
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+
+  js:
+    docker:
+      - image: cimg/php:7.3.23-node
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - changed_files_with_extension:
           ext: ".js"
-      - run:
-          name: "Pre-Check"
-          command: |
-            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ]; then
-              echo "Changes do not require testing."
-              circleci-agent step halt
-            fi
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
-            - yarn-deps
+      - restore_yarn_cache
       - run:
-          name: Run Jest tests
+          name: "Linting JS"
           command: |
-            JEST_JUNIT_OUTPUT_DIR="/tmp/artifacts/code-coverage/jest/"
-            JEST_JUNIT_OUTPUT_NAME="results.xml"
-
-            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
-              npm run test:unit -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html
+            if [ "$CIRCLE_BRANCH" == "master" ]; then
+              exit 0
             else
-              npm run test:unit -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html --findRelatedTests $FILES
+              yarn lint:js $FILES
             fi
+      - run:
+          name: "Test JS and Collect Coverage"
+          command: yarn test:js:coverage --maxWorkers=2 --reporters=default --reporters=jest-junit
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: /tmp/artifacts/tests-results/jest
       - store_artifacts:
-          path: /tmp/artifacts/code-coverage/
-          destination: jest-coverage
+          path: coverage
+          destination: coverage
       - store_test_results:
-          path: /tmp/artifacts/code-coverage/
+          path: /tmp/artifacts/tests-results/jest
+      - run:
+          name: Post coverage comment to GitHub
+          command: |
+            if [ -n "$CIRCLE_PULL_REQUEST" ]; then
+              npx @godaddy-wordpress/circleci-coverage-github-reporter
+            else
+              exit 0
+            fi
 
   # --------------------------------------------------
   # End to End Testing
@@ -417,137 +536,67 @@ jobs:
 
   e2e_chrome:
     docker:
-      - image: circleci/php:latest-node-browsers
+      - image: circleci/php:7.3.23-node-browsers
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
       - image: circleci/mysql:5.7
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     parallelism: 4
     steps:
       - checkout
-      - run:
-          name: "Setup Environment Variables"
-          command: |
-            echo "export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH" >> $BASH_ENV
-            source /home/circleci/.bashrc
+      - setup_e2e_env_var
       - changed_files_with_extension:
           ext: ".js"
-      - run:
-          name: Setup spec files to run based on git diff-tree
-          command: |
-            if [[ "$CIRCLE_BRANCH" != "master" && "$CIRCLE_BRANCH" != "develop" ]]; then
-              bash .dev/bin/setup-test-specs.sh $FILES
-            fi
+      - setup_spec_files_diff_tree
       - disable_xdebug_php_extension
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
-            - yarn-deps
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-            - composer-deps
-      - run:
-          name: Waiting for MySQL to be ready
-          command: |
-            for i in `seq 1 10`;
-            do
-              nc -z 127.0.0.1 3306 && echo Success && exit 0
-              echo -n .
-              sleep 1
-            done
-            echo Failed waiting for MySQL && exit 1
+      - restore_yarn_cache
+      - restore_update_cypress_cache
+      - restore_composer_cache
+      - wait_for_mysql
       - install_wordpress_with_coblocks
-      - run:
-          name: "Install Mailhog"
-          command: bash .dev/bin/install-mailhog.sh
-      - run:
-          name: "Start Mailhog"
-          command: "MailHog"
-          background: true
-      - run:
-          name: "Start WPCLI Server"
-          command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root  --path=/tmp/wordpress
-          background: true
-      - run:
-          name: "Run end to end tests (Cypress.io) - Chrome"
-          command: |
-            touch cypress.env.json
-            echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
-
-            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
-              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel --group e2e-chrome
-            else
-              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel --group e2e-chrome --spec "$(cat /tmp/specstring)"
-            fi
+      - enable_debug_mode_for_e2e
+      - install_mailhog
+      - start_mailhog
+      - start_wpcli_server
+      - run_e2e_tests:
+          browser: chrome
 
   e2e_firefox:
     docker:
-      - image: circleci/php:latest-node-browsers
+      - image: circleci/php:7.3.23-node-browsers
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
       - image: circleci/mysql:5.7
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     parallelism: 4
     steps:
       - checkout
-      - run:
-          name: "Setup Environment Variables"
-          command: |
-            echo "export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH" >> $BASH_ENV
-            source /home/circleci/.bashrc
+      - setup_e2e_env_var
       - changed_files_with_extension:
           ext: ".js"
-      - run:
-          name: Setup spec files to run based on git diff-tree
-          command: |
-            if [[ "$CIRCLE_BRANCH" != "master" && "$CIRCLE_BRANCH" != "develop" ]]; then
-              bash .dev/bin/setup-test-specs.sh $FILES
-            fi
+      - setup_spec_files_diff_tree
       - disable_xdebug_php_extension
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
-            - yarn-deps
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-            - composer-deps
-      - run:
-          name: Waiting for MySQL to be ready
-          command: |
-            for i in `seq 1 10`;
-            do
-              nc -z 127.0.0.1 3306 && echo Success && exit 0
-              echo -n .
-              sleep 1
-            done
-            echo Failed waiting for MySQL && exit 1
+      - restore_yarn_cache
+      - restore_update_cypress_cache
+      - restore_composer_cache
+      - wait_for_mysql
       - install_wordpress_with_coblocks
-      - run:
-          name: "Install Mailhog"
-          command: bash .dev/bin/install-mailhog.sh
-      - run:
-          name: "Start Mailhog"
-          command: "MailHog"
-          background: true
-      - run:
-          name: "Start WPCLI Server"
-          command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=80 --allow-root  --path=/tmp/wordpress
-          background: true
-      - run:
-          name: "Run end to end tests (Cypress.io) - Chrome"
-          command: |
-            touch cypress.env.json
-            echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
-
-            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
-              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser firefox --record --parallel --group e2e-firefox
-            else
-              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser firefox --record --parallel --group e2e-firefox --spec "$(cat /tmp/specstring)"
-            fi
+      - enable_debug_mode_for_e2e
+      - install_mailhog
+      - start_mailhog
+      - start_wpcli_server
+      - run_e2e_tests:
+          browser: firefox
 
   # --------------------------------------------------
   # Internationalization Processes
@@ -555,6 +604,9 @@ jobs:
   i18n:
     docker:
       - image: circleci/php:7.3-node-browsers-legacy
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -562,16 +614,8 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
-            - yarn-deps
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-            - composer-deps
+      - restore_yarn_cache
+      - restore_composer_cache
       - disable_xdebug_php_extension
       - run:
           name: Generate the translations
@@ -598,20 +642,15 @@ jobs:
   canary-release:
     docker:
       - image: circleci/golang:latest-node-browsers-legacy
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
-            - yarn-deps
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-            - composer-deps
+      - restore_yarn_cache
+      - restore_composer_cache
       - run:
           name: Install PHP
           command: sudo apt-get install php libapache2-mod-php php-mbstring php-xml php-curl
@@ -623,7 +662,7 @@ jobs:
           name: Install Composer
           command: |
             wget https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer -O composer-setup.php
-            php composer-setup.php
+            php composer-setup.php --version=1.10.16
             php -r "unlink('composer-setup.php');"
             sudo mv composer.phar /usr/local/bin/composer
       - run:
@@ -663,20 +702,15 @@ jobs:
   deploy:
     docker:
       - image: circleci/golang:latest-node-browsers-legacy
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - yarn-deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Branch }}
-            - yarn-deps
-      - restore_cache:
-          keys:
-            - composer-deps-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Branch }}
-            - composer-deps
+      - restore_yarn_cache
+      - restore_composer_cache
       - run:
           name: Install SVN
           command: sudo apt-get update && sudo apt-get install subversion
@@ -688,7 +722,7 @@ jobs:
           name: Install Composer
           command: |
             wget https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer -O composer-setup.php
-            php composer-setup.php
+            php composer-setup.php --version=1.10.16
             php -r "unlink('composer-setup.php');"
             sudo mv composer.phar /usr/local/bin/composer
       - run:

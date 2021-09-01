@@ -1,0 +1,15 @@
+.coblocks-option-selector-control .components-button-group .components-button {
+	justify-content: center;
+	min-width: 38px;
+	padding-left: 4px;
+	padding-right: 4px;
+	vertical-align: middle;
+}
+
+.coblocks-option-selector-control.is-custom {
+	margin-bottom: 14px;
+}
+
+.components-button-group .components-button.is-primary {
+	box-shadow: inset 0 0 0 1px var(--wp-admin-theme-color);
+}

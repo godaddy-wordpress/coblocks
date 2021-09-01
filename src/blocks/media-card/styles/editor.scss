@@ -1,7 +1,6 @@
 .wp-block-coblocks-media-card {
 
 	&__wrapper {
-
 		@include break-small-max() {
 			display: block !important;
 		}
@@ -19,16 +18,16 @@
 			"resizer resizer";
 	}
 
-	.__resizable_base__ {
+	.__resizable_base__ { // stylelint-disable-line selector-class-pattern
 		grid-area: resizer;
 	}
 
 	&__media-container {
+		align-items: center !important;
 		height: 100%;
 		margin: 0;
-		width: 100%;
 		text-align: center !important;
-		align-items: center !important;
+		width: 100%;
 
 		.components-placeholder__fieldset {
 			justify-content: center;
@@ -118,6 +117,11 @@
 		display: none;
 	}
 
+	// Hide the wide and full alignment settings on the row.
+	.block-editor-block-toolbar .components-toolbar:nth-child(2) {
+		display: none;
+	}
+
 	&.is-selected {
 
 		.editor-media-container__resizer .components-resizable-box__handle {
@@ -125,7 +129,6 @@
 		}
 
 		@include break-small-max() {
-
 			&.is-stacked-on-mobile {
 
 				.editor-media-container__resizer .components-resizable-box__handle {
@@ -136,7 +139,6 @@
 	}
 
 	@include break-small-max() {
-
 		&.is-selected.is-style-right {
 
 			.editor-media-container__resizer .components-resizable-box__handle {
@@ -144,9 +146,7 @@
 			}
 		}
 	}
-
 	@include break-small-max() {
-
 		&.is-stacked-on-mobile {
 
 			.wp-block-coblocks-media-card__wrapper {
@@ -242,14 +242,6 @@
 				}
 			}
 		}
-	}
-}
-
-// Hide the wide and full alignment settings on the row.
-.wp-block-coblocks-media-card {
-
-	.block-editor-block-toolbar .components-toolbar:nth-child(2) {
-		display: none;
 	}
 }
 

@@ -30,10 +30,15 @@
 		}
 	}
 
-	.wp-block-button {
-		margin-bottom: 0;
-		margin-top: 1.5em;
+	.wp-block-buttons {
+		margin: 0 0 1.5em;
+
+		.wp-block-button {
+			margin-bottom: 0;
+			margin-top: 1.5em;
+		}
 	}
+
 }
 
 .wp-block-coblocks-service__figure {
@@ -60,7 +65,7 @@
 		padding-top: 100%;
 	}
 
-	> img {
+	img {
 		height: 100%;
 		object-fit: cover;
 		position: absolute;

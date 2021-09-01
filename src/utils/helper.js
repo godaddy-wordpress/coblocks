@@ -12,9 +12,9 @@ import { isBlobURL } from '@wordpress/blob';
 
 // Set dim ratio.
 export function overlayToClass( ratio ) {
-	return ( ratio === 0 || ratio === 50 ) ?
-		null :
-		'has-background-overlay-' + ( 10 * Math.round( ratio / 10 ) );
+	return ( ratio === 0 || ratio === 50 )
+		? null
+		: 'has-background-overlay-' + ( 10 * Math.round( ratio / 10 ) );
 }
 
 // Pick image media attributes.
@@ -41,3 +41,39 @@ export const isTemporaryImage = ( id, url ) => ! id && isBlobURL( url );
 
 // Define accepted media for gallery blocks.
 export const ALLOWED_GALLERY_MEDIA_TYPES = [ 'image' ];
+
+export const hexToRGB = ( h ) => {
+	let r = 0,
+		g = 0,
+		b = 0;
+
+	switch ( h.length ) {
+		case 4: {
+			r = '0x' + h[ 1 ] + h[ 1 ];
+			g = '0x' + h[ 2 ] + h[ 2 ];
+			b = '0x' + h[ 3 ] + h[ 3 ];
+			break;
+		}
+		case 7: {
+			r = '0x' + h[ 1 ] + h[ 2 ];
+			g = '0x' + h[ 3 ] + h[ 4 ];
+			b = '0x' + h[ 5 ] + h[ 6 ];
+			break;
+		}
+	}
+
+	return `${ +r }, ${ +g }, ${ +b }`;
+};
+
+/**
+ * computeFontSize will return numeric fontSize value with appropriate css string suffix
+ * `em, px, or rem`.
+ *
+ * @param {Object|string} fontSize Object passed from withFontSizes HOC props or fontsize value.
+ *
+ * @return {string} fontSize string value that is ready for inline CSS.
+ */
+export const computeFontSize = ( fontSize ) => {
+	const size = fontSize?.size ?? fontSize;
+	return RegExp( /([a-z])/ ).test( size ) ? size : size + 'px';
+};

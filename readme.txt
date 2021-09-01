@@ -1,11 +1,11 @@
 === Page Builder Gutenberg Blocks – CoBlocks ===
 Author URI: https://www.godaddy.com
-Contributors: coblocks, godaddy, richtabor, phpbits, eherman24, jonathanbardo, jrtashjian, sbalakr2, dmatuszak, paranoia1906
+Contributors: godaddy, richtabor, eherman24, jonathanbardo, jrtashjian, paranoia1906, fjarrett
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
-Tested up to: 5.5
+Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 2.2.2
+Stable tag: 2.16.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,11 +18,6 @@ CoBlocks is the most innovative collection of page building WordPress blocks for
 With additional blocks and true row and column building, CoBlocks gives you a true page builder experience for Gutenberg.
 
 CoBlocks is powerful but lightweight: it adds functionality to the WordPress editor without bloat. This is the plugin you've been waiting for, and it will make you rethink what WordPress is capable of.
-
-
-= See For Yourself =
-https://www.youtube.com/watch?v=SfWoVX_uJ0M
-
 
 ## Make Beautiful Web Pages With Gutenberg & CoBlocks
 CoBlocks is the last page builder you’ll ever need: you get a winning mix of additional WordPress blocks, and page builder functionality. With CoBlocks you have everything you need to make beautiful web pages with the new block editor:
@@ -49,6 +44,7 @@ CoBlocks is the last page builder you’ll ever need: you get a winning mix of a
 * Masonry Gallery Block
 * Media Card Block
 * Offset Gallery Block
+* OpenTable Reservations Block
 * Post Carousel Block
 * Posts Block
 * Pricing Table Block
@@ -115,11 +111,8 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-### Enhancement
-* Hide form reCAPTCHA panel on initial load [#1621](https://github.com/godaddy-wordpress/coblocks/pull/1621)
+### Enhancements
+* Introduce OpenTable Reservations block [#1928](https://github.com/godaddy-wordpress/coblocks/pull/1928)
 
 ### Bug Fixes
-* Introduce Shape Divider deprecations related to extensions [#1633](https://github.com/godaddy-wordpress/coblocks/pull/1633)
-* Prevent columns css from overriding list-style css [#1635](https://github.com/godaddy-wordpress/coblocks/pull/1635)
-* Pull in SVG components from wp/5.3 release for deprecation [#1637](https://github.com/godaddy-wordpress/coblocks/pull/1637)
-* Style block appenders better for WordPress 5.5 [#1616](https://github.com/godaddy-wordpress/coblocks/pull/1616)
+* Fix color palette showing empty on certain themes [#1984](https://github.com/godaddy-wordpress/coblocks/pull/1984)

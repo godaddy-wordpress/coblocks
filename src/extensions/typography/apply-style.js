@@ -1,4 +1,9 @@
 /**
+ * Internal dependencies
+ */
+import { computeFontSize } from '../../utils/helper';
+
+/**
  * External dependencies
  */
 import { pickBy } from 'lodash';
@@ -9,7 +14,7 @@ function applyStyle( attributes, name ) {
 	const style = pickBy( attributes, ( value, key ) => !! value && styleAttributes.includes( key ) );
 
 	if ( typeof attributes.customFontSize !== 'undefined' ) {
-		style.fontSize = attributes.customFontSize + 'px';
+		style.fontSize = computeFontSize( attributes.customFontSize );
 	}
 
 	if ( typeof attributes.customTextColor !== 'undefined' ) {

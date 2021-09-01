@@ -94,8 +94,8 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		cy.get( 'a[title="Facebook"]' )
 			.should( 'have.attr', 'href', 'https://www.facebook.com/test' )
-			.should('have.attr', 'target', '_blank')
-			.should('have.attr', 'rel', 'noopener noreferrer');
+			.should( 'have.attr', 'target', '_blank' )
+			.should( 'have.attr', 'rel', 'noopener noreferrer' );
 
 		helpers.editPage();
 	} );
@@ -230,6 +230,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 	/**
 	 * Test the coblocks social profiles colors.
+	 * Go traditional style default color: rgb(200, 106, 25)
 	 */
 	it( 'Test the social profiles colors.', function() {
 		helpers.addBlockToPost( 'coblocks/social-profiles', true );
@@ -247,8 +248,8 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 		helpers.openSettingsPanel( 'Icon settings' );
 		helpers.toggleSettingCheckbox( 'Social colors' );
 
-		cy.get( 'button[aria-label="Add Facebook profile"]' )
-			.should( 'have.css', 'background-color', 'rgb(49, 55, 60)' );
+		cy.get( '.block-editor-writing-flow button[aria-label="Add Facebook profile"]' )
+			.should( 'have.css', 'background-color', 'rgb(200, 106, 25)' );
 
 		helpers.savePage();
 
@@ -257,7 +258,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 		helpers.viewPage();
 
 		cy.get( '.wp-block-coblocks-social-profiles ul li:first-child a' )
-			.should( 'have.css', 'background-color', 'rgb(49, 55, 60)' );
+			.should( 'have.css', 'background-color', 'rgb(200, 106, 25)' );
 
 		helpers.editPage();
 	} );
@@ -280,7 +281,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		helpers.openSettingsPanel( 'Icon settings' );
 
-		cy.get( 'input[aria-label="Rounded corners"][type="number"]' ).type( '{selectall}10' );
+		cy.get( 'input[aria-label="Rounded corners"][type="number"]' ).focus().type( '{selectall}10' );
 
 		if ( Cypress.browser.name === 'chrome' ) {
 			cy.get( 'button[aria-label="Add Facebook profile"]' )
@@ -334,19 +335,17 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 		cy.get( '.components-coblocks-inspector__social-button-size select' )
 			.select( 'lrg' );
 
-		cy.get( 'button[aria-label="Add Facebook profile"]' )
-			.should( 'have.css', 'width', '84px' );
+		cy.get( '.has-button-size-lrg' ).should( 'exist' );
 
-		helpers.savePage();
+		cy.get( '.components-coblocks-inspector__social-button-size select' )
+			.select( 'sml' );
 
-		helpers.checkForBlockErrors( 'coblocks/social-profiles' );
+		cy.get( '.has-button-size-sml' ).should( 'exist' );
 
-		helpers.viewPage();
+		cy.get( '.components-coblocks-inspector__social-button-size select' )
+			.select( 'med' );
 
-		cy.get( '.wp-block-coblocks-social-profiles ul li:first-child a' )
-			.should( 'have.css', 'width', '66px' );
-
-		helpers.editPage();
+		cy.get( '.has-button-size-med' ).should( 'exist' );
 	} );
 
 	/**

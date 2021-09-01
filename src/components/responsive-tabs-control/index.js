@@ -64,7 +64,7 @@ class ResponsiveTabsControl extends Component {
 											__( 'Mobile %s', 'coblocks' ),
 											label
 										) }
-										value={ attributes.valueMobile }
+										value={ attributes.valueMobile ?? attributes.gutterMobile }
 										onChange={ ( valueMobile ) => onChangeMobile( valueMobile ) }
 										min={ min }
 										max={ max }
@@ -75,7 +75,7 @@ class ResponsiveTabsControl extends Component {
 							return (
 								<RangeControl
 									label={ label }
-									value={ attributes.value }
+									value={ attributes.value ?? attributes.gutter }
 									onChange={ ( value ) => onChange( value ) }
 									min={ min }
 									max={ max }

@@ -4,9 +4,9 @@
 import { chunk } from 'lodash';
 
 export default function save( { attributes, className } ) {
-	const { images, align } = attributes;
+	const { align } = attributes;
 
-	const hasImages = !! images.length;
+	const hasImages = !! attributes.images.length;
 
 	if ( ! hasImages ) {
 		return null;
@@ -26,27 +26,31 @@ export default function save( { attributes, className } ) {
 			break;
 	}
 
-	const imageChunks = chunk( images, count );
+	const imageChunks = chunk( attributes.images, count );
 
 	return (
 		<div className={ className }>
-			{ Object.keys( imageChunks ).map( ( keyOuter ) => (
-				<div className="wp-block-coblocks-logos__row" key={ 'wrapper-' + keyOuter }>
-					{ imageChunks[ keyOuter ].map( ( img, index ) => {
-						return (
-							<div style={ { width: img.width || ( 100 / images.length ) + '%' } } key={ 'logo-' + keyOuter }>
-								<img
-									key={ 'img-' + index }
-									src={ img.url }
-									alt={ img.alt }
-									data-id={ img.id }
-									data-width={ img.width || ( 100 / images.length ) + '%' }
-								/>
-							</div>
-						);
-					} ) }
-				</div>
-			) ) }
+			{ Object.keys( imageChunks ).map( ( keyOuter ) => {
+				const images = imageChunks[ keyOuter ];
+
+				return (
+					<div className="wp-block-coblocks-logos__row" key={ 'wrapper-' + keyOuter }>
+						{ images.map( ( img, index ) => {
+							return (
+								<div style={ { width: img.width || ( 100 / images.length ) + '%' } } key={ 'logo-' + keyOuter }>
+									<img
+										key={ 'img-' + index }
+										src={ img.url }
+										alt={ img.alt }
+										data-id={ img.id }
+										data-width={ img.width || ( 100 / images.length ) + '%' }
+									/>
+								</div>
+							);
+						} ) }
+					</div>
+				);
+			} ) }
 		</div>
 	);
 }

@@ -3,11 +3,11 @@
  */
 import classnames from 'classnames';
 import filter from 'lodash/filter';
+import { GalleryStackedIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
  */
-import { icon } from './';
 import Inspector from './inspector';
 import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
@@ -21,7 +21,7 @@ import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
-import { withNotices } from '@wordpress/components';
+import { withNotices, Icon } from '@wordpress/components';
 import { withFontSizes } from '@wordpress/block-editor';
 
 class GalleryStackedEdit extends Component {
@@ -34,6 +34,7 @@ class GalleryStackedEdit extends Component {
 		this.onMoveForward = this.onMoveForward.bind( this );
 		this.onMoveBackward = this.onMoveBackward.bind( this );
 		this.setImageAttributes = this.setImageAttributes.bind( this );
+		this.replaceImage = this.replaceImage.bind( this );
 
 		this.state = {
 			selectedImage: null,
@@ -41,10 +42,11 @@ class GalleryStackedEdit extends Component {
 	}
 
 	componentDidMount() {
+		const { attributes, setAttributes } = this.props;
 		// This block does not support caption style.
-		this.props.setAttributes( {
-			captionStyle: undefined,
-		} );
+		if ( typeof attributes.captionStyle !== 'undefined' ) {
+			setAttributes( { captionStyle: undefined } );
+		}
 	}
 
 	componentDidUpdate( prevProps ) {
@@ -103,6 +105,19 @@ class GalleryStackedEdit extends Component {
 		};
 	}
 
+	/**
+	 * replaceImage is passed to GalleryImage component and is used to replace images
+	 *
+	 * @param {number} index Index of image to remove.
+	 * @param {Object} media Media object used to initialize attributes.
+	 */
+	replaceImage( index, media ) {
+		const images = [ ...this.props.attributes.images ];
+		images[ index ] = { ...media };
+
+		this.props.setAttributes( { images } );
+	}
+
 	setImageAttributes( index, attributes ) {
 		const { attributes: { images }, setAttributes } = this.props;
 		if ( ! images[ index ] ) {
@@ -131,6 +146,7 @@ class GalleryStackedEdit extends Component {
 
 		const {
 			align,
+			animation,
 			captions,
 			fullwidth,
 			gutter,
@@ -141,7 +157,22 @@ class GalleryStackedEdit extends Component {
 			lightbox,
 		} = attributes;
 
+		const stackedGalleryPlaceholder = (
+			<Fragment>
+				{ ! hasImages ? noticeUI : null }
+				<GalleryPlaceholder
+					{ ...this.props }
+					label={ __( 'Stacked', 'coblocks' ) }
+					icon={ <Icon icon={ icon } /> }
+					gutter={ gutter }
+				/>
+			</Fragment> );
+
 		const hasImages = !! images.length;
+
+		if ( ! hasImages ) {
+			return stackedGalleryPlaceholder;
+		}
 
 		const classes = classnames(
 			className, {
@@ -160,20 +191,11 @@ class GalleryStackedEdit extends Component {
 			}
 		);
 
-		const stackedGalleryPlaceholder = (
-			<Fragment>
-				{ ! hasImages ? noticeUI : null }
-				<GalleryPlaceholder
-					{ ...this.props }
-					label={ __( 'Stacked', 'coblocks' ) }
-					icon={ icon }
-					gutter={ gutter }
-				/>
-			</Fragment> );
-
-		if ( ! hasImages ) {
-			return stackedGalleryPlaceholder;
-		}
+		const itemClasses = classnames(
+			'coblocks-gallery--item', {
+				[ `coblocks-animate ${ animation }` ]: animation,
+			}
+		);
 
 		return (
 			<Fragment>
@@ -199,7 +221,7 @@ class GalleryStackedEdit extends Component {
 							);
 
 							return (
-								<li className="coblocks-gallery--item" key={ img.id || img.url }>
+								<li className={ itemClasses } key={ img.id || img.url }>
 									<GalleryImage
 										url={ img.url }
 										alt={ img.alt }
@@ -224,6 +246,8 @@ class GalleryStackedEdit extends Component {
 										supportsCaption={ true }
 										verticalMoving={ true }
 										fontSize={ fontSize.size }
+										imageIndex={ index }
+										replaceImage={ this.replaceImage }
 									/>
 								</li>
 							);

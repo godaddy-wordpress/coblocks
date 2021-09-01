@@ -1,7 +1,17 @@
 [data-type="coblocks/gallery-carousel"] {
 
+	// Remove selected state.
+	&.block-editor-block-list__block::after {
+		box-shadow: none !important;
+	}
+
 	&[data-align="full"] > figure {
 		width: auto;
+	}
+
+	.coblocks-gallery--figure {
+		margin-bottom: 3px !important;
+		margin-top: 3px !important;
 	}
 
 	// Set the appender to full height (second is the pre Gutenberg 5.6 method).
@@ -33,7 +43,8 @@
 
 	.has-responsive-height {
 
-		> span .components-resizable-box__handle {
+		> span .components-resizable-box__handle,
+		.components-resizable-box__handle {
 			display: none !important;
 		}
 

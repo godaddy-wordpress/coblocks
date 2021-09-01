@@ -8,6 +8,10 @@
 		margin-top: 5px;
 		order: 1;
 	}
+
+	.components-range-control {
+		width: 100%;
+	}
 }
 
 .coblocks-icon-types-list-wrapper {
@@ -55,7 +59,6 @@
 		@media screen and (max-width: 782px) {
 			width: 31.5%;
 		}
-
 		@media screen and (max-width: 600px) {
 			width: 31.1%;
 		}
@@ -63,11 +66,18 @@
 		.components-button {
 			align-items: center;
 			box-shadow: none;
+			color: $gray-900;
 			display: flex;
 			height: auto;
 			justify-content: center;
+			outline: 1px dotted transparent;
 			padding: 14px 0;
 			width: 100%;
+
+			&:hover:not(:disabled) {
+				box-shadow: inset 0 0 0 1px var(--wp-admin-theme-color, #007cba);
+				color: var(--wp-admin-theme-color, #007cba);
+			}
 
 			svg {
 				fill: currentColor;
@@ -88,12 +98,12 @@
 		&.selected-svg {
 
 			.components-button {
-				background: $light-gray-500;
-				border-color: $light-gray-500;
+				background: $gray-900;
+				border-color: $gray-900;
 				pointer-events: none;
 
 				svg {
-					fill: $dark-gray-500;
+					fill: $white;
 				}
 			}
 		}
@@ -126,38 +136,6 @@
 	}
 }
 
-
-// Editor style preview.
-.editor-block-preview,
-.block-editor-block-styles__item-preview {
-
-	.wp-block-coblocks-icon__inner {
-		align-items: center;
-		background: transparent !important;
-		display: flex;
-		height: 100% !important;
-		justify-content: center;
-		margin-top: 16px;
-		padding: 0 !important;
-		transform: scale(1.23);
-		width: 100% !important;
-
-		> svg {
-			fill: #3f464d;
-			height: 24px;
-			width: 24px;
-		}
-	}
-}
-
-.editor-block-preview {
-
-	.wp-block-coblocks-icon__inner {
-		margin-top: 3px;
-	}
-}
-
-// Hide screen reader label for Gutenberg < 6.4
 .components-coblocks-icon-size__controls {
 	align-items: center;
 	display: flex;
@@ -196,13 +174,15 @@
 }
 
 // Shim to get icons to display correctly in G 6.3+ only.
-.components-panel__body .block-editor-block-preview__container .wp-block-coblocks-icon {
+.block-editor-block-preview__container .wp-block-coblocks-icon {
 	align-content: center;
 	align-items: center;
 	display: flex;
 	justify-content: center;
 
-	svg {
-		transform: scale(4);
+	.components-resizable-box__container {
+		max-width: 16em !important;
+		padding: 4em !important;
+		width: 100% !important;
 	}
 }

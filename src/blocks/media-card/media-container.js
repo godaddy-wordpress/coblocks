@@ -7,15 +7,15 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import { ALLOWED_MEDIA_TYPES } from './edit';
-import icons from './icons';
+import { media as icon } from '@wordpress/icons';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { BlockControls, MediaPlaceholder, MediaUpload, BlockIcon } from '@wordpress/block-editor';
-import { Button, ResizableBox, Toolbar, DropZone, Spinner } from '@wordpress/components';
+import { BlockControls, MediaPlaceholder, MediaUpload } from '@wordpress/block-editor';
+import { Button, ResizableBox, Toolbar, DropZone, Spinner, Icon } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
 
 /**
@@ -95,19 +95,20 @@ class MediaContainer extends Component {
 							<img src={ mediaUrl } alt={ mediaAlt } />
 						</figure>
 					</Fragment>
-					:				<MediaPlaceholder
-						icon={ <BlockIcon icon={ icons.mediaContainer } /> }
-						labels={ {
-							title: __( 'Media area', 'coblocks' ),
-							instructions: __( 'Upload a media file or pick one from your media library', 'coblocks' ),
-						} }
-						className={ figureClass }
-						onSelect={ onSelectMedia }
-						accept="image/*,video/*"
-						allowedTypes={ ALLOWED_MEDIA_TYPES }
-					>
-					</MediaPlaceholder>
-				}
+					: (
+						<MediaPlaceholder
+							icon={ <Icon icon={ icon } /> }
+							labels={ {
+								title: __( 'Media area', 'coblocks' ),
+								instructions: __( 'Upload a media file or pick one from your media library', 'coblocks' ),
+							} }
+							className={ figureClass }
+							onSelect={ onSelectMedia }
+							accept="image/*,video/*"
+							allowedTypes={ ALLOWED_MEDIA_TYPES }
+						>
+						</MediaPlaceholder>
+					) }
 			</div>
 		);
 	}

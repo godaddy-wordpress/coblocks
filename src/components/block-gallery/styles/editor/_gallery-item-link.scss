@@ -5,9 +5,9 @@
 	display: flex;
 	flex-wrap: wrap;
 	font-family: $default-font;
-	font-size: 13px;
+	font-size: $default-font-size;
 	left: 0;
-	line-height: 1.4;
+	line-height: $default-line-height;
 	position: absolute;
 	right: 0;
 	z-index: 20;
@@ -44,7 +44,7 @@
 			box-shadow: none !important;
 
 			.dashicon {
-				color: $dark-gray-900 !important;
+				color: $gray-900 !important;
 			}
 		}
 	}
@@ -56,8 +56,8 @@
 		width: calc(100% - 73px);
 
 		.components-base-control__field {
-			margin-top: 4px;
 			margin-bottom: 4px;
+			margin-top: 4px;
 		}
 
 		input[type="text"] {

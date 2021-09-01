@@ -148,7 +148,7 @@ class FoodAndDrinksEdit extends Component {
 	toggleImages() {
 		const { attributes, setAttributes } = this.props;
 
-		const showImages = !attributes.showImages;
+		const showImages = ! attributes.showImages;
 		setAttributes( { showImages } );
 
 		this.updateInnerAttributes( 'coblocks/food-item', { showImage: showImages } );
@@ -157,7 +157,7 @@ class FoodAndDrinksEdit extends Component {
 	togglePrices() {
 		const { attributes, setAttributes } = this.props;
 
-		const showPrices = !attributes.showPrices;
+		const showPrices = ! attributes.showPrices;
 		setAttributes( { showPrices } );
 
 		this.updateInnerAttributes( 'coblocks/food-item', { showPrice: showPrices } );
@@ -230,8 +230,8 @@ class FoodAndDrinksEdit extends Component {
 		const classes = classnames( className, {
 			'has-columns': columns > 1,
 			'has-responsive-columns': columns > 1,
-			[ `has-${columns}-columns` ]: columns > 1,
-			[ `has-${gutter}-gutter` ]: gutter,
+			[ `has-${ columns }-columns` ]: columns > 1,
+			[ `has-${ gutter }-gutter` ]: gutter,
 		} );
 
 		return (
@@ -255,6 +255,7 @@ class FoodAndDrinksEdit extends Component {
 						allowedBlocks={ ALLOWED_BLOCKS }
 						template={ TEMPLATE }
 						templateInsertUpdatesSelection={ false }
+						__experimentalCaptureToolbars={ true }
 					/>
 					{ isSelected &&
 						<CustomAppender onClick={ this.insertNewItem } />

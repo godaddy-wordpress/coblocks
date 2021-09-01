@@ -47,9 +47,8 @@ describe( 'Block: Accordion', () => {
 	 */
 	it( 'can add multiple accordion item blocks', () => {
 		cy.get( '[data-type="coblocks/accordion"]' ).click( 'top', { force: true } );
-		
-		cy.get('.coblocks-block-appender button' ).trigger( 'mouseup' ); 
-		// Using trigger here instead of click to more accurately represent behavior of event bubbling from user interaction within the editor.
+
+		cy.get( '.coblocks-block-appender button' ).click();
 
 		cy.get( '[data-type="coblocks/accordion"]' ).find( '[data-type="coblocks/accordion-item"]' ).should( 'have.length', 2 );
 

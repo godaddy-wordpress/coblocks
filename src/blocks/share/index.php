@@ -219,7 +219,7 @@ function coblocks_render_share_block( $attributes ) {
 		$class .= ' has-colors';
 	}
 
-	if ( isset( $attributes['size'] ) && 'med' !== $attributes['size'] && ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-mask' ) === false ) ) {
+	if ( isset( $attributes['size'] ) && ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-mask' ) === false ) ) {
 		$class .= ' has-button-size-' . $attributes['size'];
 	}
 

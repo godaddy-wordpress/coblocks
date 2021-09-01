@@ -51,6 +51,8 @@
 	z-index: 2;
 
 	img {
+		display: flex;
+		margin: auto;
 		max-height: 70vh;
 		max-width: 70vw;
 
@@ -153,14 +155,21 @@
 }
 
 .coblocks-lightbox__caption {
-	color: #ffffff;
-	text-align: center;
+	color: $white;
 	margin-top: 10px;
+	text-align: center;
 }
 
 .has-lightbox > :not(.carousel-nav) {
 
 	figure:hover {
+		cursor: zoom-in;
+	}
+}
+
+.has-lightbox {
+
+	figure[class^="align"]:hover {
 		cursor: zoom-in;
 	}
 }

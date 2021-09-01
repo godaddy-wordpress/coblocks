@@ -12,6 +12,14 @@
 		margin-bottom: 1.75rem;
 	}
 
+	.coblocks-label {
+		font-weight: 800;
+	}
+
+	.coblocks-form__submit {
+		margin-top: -0.75em;
+	}
+
 	.coblocks-form__submit .wp-block-button__link {
 		margin-top: 0.1em;
 	}
@@ -34,17 +42,6 @@
 	}
 }
 
-.is-twentyseventeen {
-
-	.coblocks-label {
-		font-weight: 800;
-	}
-
-	.coblocks-form__submit {
-		margin-top: -0.75em;
-	}
-}
-
 .is-twentysixteen {
 
 	.coblocks-form {
@@ -53,7 +50,7 @@
 		.components-textarea-control__input {
 			background-color: #f7f7f7;
 			border-color: #d1d1d1;
-			border-radius: 2px;
+			border-radius: $radius-block-ui;
 			padding: 0.75rem 0;
 		}
 

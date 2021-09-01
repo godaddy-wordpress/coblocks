@@ -4,7 +4,7 @@ const postcssConfig = require( './postcss.config' );
 
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const RtlCssPlugin = require( 'rtlcss-webpack-plugin' );
-const FixStyleOnlyEntriesPlugin = require( "webpack-fix-style-only-entries" );
+const FixStyleOnlyEntriesPlugin = require( 'webpack-fix-style-only-entries' );
 const nodeSassGlobImporter = require( 'node-sass-glob-importer' );
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -13,10 +13,13 @@ module.exports = {
 	...defaultConfig,
 
 	entry: {
-		'coblocks': path.resolve( process.cwd(), 'src/blocks.js' ),
+		coblocks: path.resolve( process.cwd(), 'src/blocks.js' ),
+
+		// Styles
 		'coblocks-editor': path.resolve( process.cwd(), 'src/styles/editor.scss' ),
 		'coblocks-style': path.resolve( process.cwd(), 'src/styles/style.scss' ),
 
+		// Front-End Scripts
 		'js/coblocks-accordion-polyfill': path.resolve( process.cwd(), 'src/js/coblocks-accordion-polyfill.js' ),
 		'js/coblocks-accordion-carousel': path.resolve( process.cwd(), 'src/js/coblocks-accordion-carousel.js' ),
 		'js/coblocks-datepicker': path.resolve( process.cwd(), 'src/js/coblocks-datepicker.js' ),
@@ -29,6 +32,7 @@ module.exports = {
 		'js/coblocks-slick-initializer': path.resolve( process.cwd(), 'src/js/coblocks-slick-initializer.js' ),
 		'js/coblocks-slick-initializer-front': path.resolve( process.cwd(), 'src/js/coblocks-slick-initializer-front.js' ),
 
+		// Vendors
 		'js/vendors/flickity': path.resolve( process.cwd(), 'node_modules/flickity/dist/flickity.pkgd.js' ),
 		'js/vendors/slick': path.resolve( process.cwd(), 'node_modules/slick-carousel/slick/slick.js' ),
 	},
@@ -67,9 +71,9 @@ module.exports = {
 							sourceMap: ! isProduction,
 							sassOptions: {
 								importer: nodeSassGlobImporter(),
-							}
-						}
-					}
+							},
+						},
+					},
 				],
 			},
 		],
@@ -88,8 +92,8 @@ module.exports = {
 		new MiniCssExtractPlugin( {
 			filename: '[name].css',
 		} ),
-		new RtlCssPlugin( { 
-			filename: '[name]-rtl.css' 
+		new RtlCssPlugin( {
+			filename: '[name]-rtl.css',
 		} ),
 	],
 };

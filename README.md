@@ -34,6 +34,7 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 -   Masonry Gallery Block
 -   Media Card Block
 -   Offset Gallery Block
+-   OpenTable Reservations Block
 -   Post Carousel Block
 -   Posts Block
 -   Pricing Table Block
@@ -47,9 +48,6 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 ### Connect
 
 -   [Download on WordPress.org](https://wordpress.org/plugins/coblocks/)
--   [Follow on Twitter](https://twitter.com/coblocks)
--   [Join our Facebook Community](https://facebook.com/groups/coblocks)
--   [Like us on Facebook](https://www.facebook.com/coblocks/)
 
 ## Installation
 

@@ -21,11 +21,7 @@ const isEmpty = ( attributes ) => {
 		attributesToCheck.includes( key )
 	);
 
-	if ( typeof Object.fromEntries === 'undefined' ) {
-		return hasEmptyAttributes( fromEntries( newAttributes ) );
-	}
-
-	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
+	return hasEmptyAttributes( fromEntries( newAttributes ) );
 };
 
 export default function save( { attributes, className } ) {
@@ -60,9 +56,9 @@ export default function save( { attributes, className } ) {
 						alt={ alt }
 						itemProp="image"
 						style={ {
-							objectPosition: focalPoint ?
-								`${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` :
-								undefined,
+							objectPosition: focalPoint
+								? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%`
+								: undefined,
 						} }
 					/>
 				</figure>

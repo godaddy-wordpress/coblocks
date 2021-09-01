@@ -28,7 +28,7 @@ describe( 'Test CoBlocks Post Carousel Block', function() {
 	it( 'Test the post-carousel block column and post count controls.', function() {
 		helpers.addBlockToPost( 'coblocks/post-carousel', true );
 
-		helpers.selectBlock('post-carousel');
+		helpers.selectBlock( 'post carousel' );
 
 		cy.get( '.wp-block-coblocks-post-carousel__item' );
 
@@ -39,9 +39,9 @@ describe( 'Test CoBlocks Post Carousel Block', function() {
 
 		helpers.checkForBlockErrors( 'coblocks/post-carousel' );
 
-		[ 1, 2, 3, 4 ].forEach( ( number_of_posts ) => {
-			helpers.setInputValue( 'feed settings', 'number of posts', number_of_posts );
-			cy.get( '[data-type="coblocks/post-carousel"]' ).find( '.slick-slide:not(.slick-cloned)' ).should( 'have.length', number_of_posts );
+		[ 1, 2, 3, 4 ].forEach( ( numberOfPosts ) => {
+			helpers.setInputValue( 'feed settings', 'number of posts', numberOfPosts );
+			cy.get( '[data-type="coblocks/post-carousel"]' ).find( '.slick-slide:not(.slick-cloned)' ).should( 'have.length', numberOfPosts );
 		} );
 
 		helpers.checkForBlockErrors( 'coblocks/post-carousel' );

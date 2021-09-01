@@ -42,6 +42,26 @@ do
 			SPECS=( "${SPECS[@]}" "${testSpec}" )
 		fi
   fi
+
+    # Changed file matches /src/components/*
+  if [[ $FILE == *"src/components/"* ]]; then
+    testSpec=$(echo $FILE | cut -d'/' -f3)
+		foundwords=$(echo ${SPECS[@]} | grep -o "${testSpec}" | wc -w)
+		# Catch cases where no cypress spec file exists. 
+		if [[ $(ls -l src/components/${testSpec}/**/*.cypress.js | wc -l) -eq 0 ]]; then
+			continue
+		fi
+		# The test spec does not yet exist in the SPECS array
+		if [[ "${foundwords}" -eq 0 ]]; then
+			# Spec file string is empty, do not start string with a comma
+			if [[ ${#SPECSTRING} -eq 0 ]]; then
+				SPECSTRING="src/components/${testSpec}/**/*.cypress.js"
+			else
+				SPECSTRING="${SPECSTRING},src/components/${testSpec}/**/*.cypress.js"
+			fi
+			SPECS=( "${SPECS[@]}" "${testSpec}" )
+		fi
+  fi
 done
 
 # No spec files to run

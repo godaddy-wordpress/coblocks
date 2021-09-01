@@ -12,8 +12,8 @@
 			> h4,
 			> h5,
 			> h6 {
-				max-width: 100%;
 				flex-basis: 100%;
+				max-width: 100%;
 			}
 		}
 	}
@@ -23,9 +23,9 @@
 		&__content {
 
 			@include break-small() {
-				text-align: center;
 				flex-flow: column;
 				justify-content: center;
+				text-align: center;
 			}
 		}
 

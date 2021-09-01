@@ -59,7 +59,6 @@ class CoBlocks_Settings {
 			'coblocksSettings',
 			array(
 				'coblocksSettingsEnabled' => (bool) apply_filters( 'coblocks_show_settings_panel', true ),
-				'coblocksSettingsNonce'   => wp_create_nonce( 'wp_rest' ),
 			)
 		);
 	}
@@ -75,15 +74,23 @@ class CoBlocks_Settings {
 		}
 
 		if ( ! get_option( 'coblocks_gradient_presets_enabled' ) ) {
+			add_theme_support( 'editor-gradient-presets', array() );
+			add_theme_support( 'disable-custom-gradients' );
+
+			// 5.7.2 support
 			add_theme_support( '__experimental-editor-gradient-presets', array() );
 			add_theme_support( '__experimental-disable-custom-gradients', true );
 		}
 
 		if ( ! get_option( 'coblocks_color_panel_controls_enabled' ) ) {
 			add_theme_support( 'editor-color-palette', array() );
+			add_theme_support( 'editor-gradient-presets', array() );
+			add_theme_support( 'disable-custom-colors' );
+			add_theme_support( 'disable-custom-gradients' );
+
+			// 5.7.2 support
 			add_theme_support( '__experimental-editor-gradient-presets', array() );
 			add_theme_support( '__experimental-disable-custom-gradients', true );
-			add_theme_support( 'disable-custom-colors' );
 		}
 	}
 
@@ -152,6 +159,19 @@ class CoBlocks_Settings {
 				'default'           => true,
 			)
 		);
+
+		register_setting(
+			'coblocks_animation_controls_enabled',
+			'coblocks_animation_controls_enabled',
+			array(
+				'type'              => 'boolean',
+				'description'       => __( 'Setting use to disable or enable animation controls across the site.', 'coblocks' ),
+				'sanitize_callback' => null,
+				'show_in_rest'      => true,
+				'default'           => true,
+			)
+		);
+
 	}
 }
 

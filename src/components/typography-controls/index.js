@@ -18,10 +18,10 @@ import icons from './icons';
  */
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { compose } from '@wordpress/compose';
+import { compose, ifCondition } from '@wordpress/compose';
 import { DOWN } from '@wordpress/keycodes';
 import { RangeControl, withFallbackStyles, ToggleControl, Dropdown, ToolbarButton, SelectControl, Toolbar } from '@wordpress/components';
-import { withSelect, select } from '@wordpress/data';
+import { useEntityProp } from '@wordpress/core-data';
 
 /**
  * Export
@@ -47,32 +47,13 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	};
 } );
 
+const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/pricing-table', 'coblocks/highlight' ];
+
 /**
  * Typography Component
  */
 class TypographyControls extends Component {
-	constructor( props ) {
-		super( props );
-		this.state = {
-			allowedBlocks: [],
-		};
-	}
-
-	componentDidMount() {
-		if ( this.props.typographyEnabled ) {
-			this.setState( {
-				allowedBlocks: [ 'core/paragraph', 'core/heading', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/pricing-table', 'coblocks/highlight' ],
-			} );
-		}
-	}
-
 	render() {
-		if ( ! this.props.typographyEnabled ) {
-			return null;
-		}
-
-		const { allowedBlocks } = this.state;
-
 		const {
 			attributes,
 			setAttributes,
@@ -197,55 +178,62 @@ class TypographyControls extends Component {
 									className="components-base-control--with-flex components-coblocks-typography-dropdown__inner--font"
 								/>
 								{ ( ( typeof attributes.textPanelFontWeight === 'undefined' || ( typeof attributes.textPanelFontWeight !== 'undefined' && typeof attributes.textPanelFontWeight === 'undefined' ) ) )
-									? <SelectControl
-										label={ __( 'Weight', 'coblocks' ) }
-										value={ fontWeight }
-										options={ weight }
-										onChange={ ( nextFontWeight ) => setAttributes( { fontWeight: nextFontWeight } ) }
-										className="components-base-control--with-flex components-coblocks-typography-dropdown__inner--weight"
-									/> : null
+									? (
+										<SelectControl
+											label={ __( 'Weight', 'coblocks' ) }
+											value={ fontWeight }
+											options={ weight }
+											onChange={ ( nextFontWeight ) => setAttributes( { fontWeight: nextFontWeight } ) }
+											className="components-base-control--with-flex components-coblocks-typography-dropdown__inner--weight"
+										/>
+									)
+									: null
 								}
 								{ ( ( typeof attributes.textPanelTextTransform === 'undefined' || ( typeof attributes.textPanelTextTransform !== 'undefined' && typeof attributes.textPanelTextTransform === 'undefined' ) ) )
-									? <SelectControl
-										label={ __( 'Transform', 'coblocks' ) }
-										value={ textTransform }
-										options={ transform }
-										onChange={ ( nextTextTransform ) => setAttributes( { textTransform: nextTextTransform } ) }
-										className="components-base-control--with-flex components-coblocks-typography-dropdown__inner--transform"
-									/> : null
+									? (
+										<SelectControl
+											label={ __( 'Transform', 'coblocks' ) }
+											value={ textTransform }
+											options={ transform }
+											onChange={ ( nextTextTransform ) => setAttributes( { textTransform: nextTextTransform } ) }
+											className="components-base-control--with-flex components-coblocks-typography-dropdown__inner--transform"
+										/> ) : null
 								}
 								{ ( ( typeof attributes.textPanelHideSize === 'undefined' || ( typeof attributes.textPanelHideSize !== 'undefined' && typeof attributes.textPanelHideSize === 'undefined' ) ) )
-									? <RangeControl
-										label={ __( 'Size', 'coblocks' ) }
-										value={ parseFloat( customFontSize ) || undefined }
-										onChange={ ( nextFontSize ) => setAttributes( { customFontSize: nextFontSize } ) }
-										min={ 1 }
-										max={ 100 }
-										step={ 1 }
-										className="components-coblocks-typography-dropdown__inner--size"
-									/> : null
+									? (
+										<RangeControl
+											label={ __( 'Size', 'coblocks' ) }
+											value={ parseFloat( customFontSize ) || undefined }
+											onChange={ ( nextFontSize ) => setAttributes( { customFontSize: nextFontSize } ) }
+											min={ 1 }
+											max={ 100 }
+											step={ 1 }
+											className="components-coblocks-typography-dropdown__inner--size"
+										/> ) : null
 								}
 								{ ( ( typeof attributes.textPanelLineHeight === 'undefined' || ( typeof attributes.textPanelLineHeight !== 'undefined' && typeof attributes.textPanelLineHeight === 'undefined' ) ) )
-									? <RangeControl
-										label={ __( 'Line height', 'coblocks' ) }
-										value={ parseFloat( lineHeight ) || undefined }
-										onChange={ ( nextLineHeight ) => setAttributes( { lineHeight: nextLineHeight } ) }
-										min={ 1 }
-										max={ 3 }
-										step={ .01 }
-										className="components-coblocks-typography-dropdown__inner--line-height"
-									/> : null
+									? (
+										<RangeControl
+											label={ __( 'Line height', 'coblocks' ) }
+											value={ parseFloat( lineHeight ) || undefined }
+											onChange={ ( nextLineHeight ) => setAttributes( { lineHeight: nextLineHeight } ) }
+											min={ 1 }
+											max={ 3 }
+											step={ .01 }
+											className="components-coblocks-typography-dropdown__inner--line-height"
+										/> ) : null
 								}
 								{ ( ( typeof attributes.textPanelLetterSpacing === 'undefined' || ( typeof attributes.textPanelLetterSpacing !== 'undefined' && typeof attributes.textPanelLetterSpacing === 'undefined' ) ) )
-									? <RangeControl
-										label={ __( 'Letter spacing', 'coblocks' ) }
-										value={ parseFloat( letterSpacing ) || undefined }
-										onChange={ ( nextLetterSpacing ) => setAttributes( { letterSpacing: nextLetterSpacing } ) }
-										min={ -1 }
-										max={ 3 }n
-										step={ .1 }
-										className="components-coblocks-typography-dropdown__inner--letter-spacing"
-									/> : null
+									? (
+										<RangeControl
+											label={ __( 'Letter spacing', 'coblocks' ) }
+											value={ parseFloat( letterSpacing ) || undefined }
+											onChange={ ( nextLetterSpacing ) => setAttributes( { letterSpacing: nextLetterSpacing } ) }
+											min={ -1 }
+											max={ 3 }
+											step={ .1 }
+											className="components-coblocks-typography-dropdown__inner--letter-spacing"
+										/> ) : null
 								}
 								{ ( ( typeof attributes.textPanelShowSpacingControls !== 'undefined' && attributes.textPanelShowSpacingControls ) ) &&
 									<div className="components-coblocks-typography-dropdown__footer">
@@ -270,15 +258,10 @@ class TypographyControls extends Component {
 	}
 }
 
-const applyWithSelect = withSelect( () => {
-	const { getTypography } = select( 'coblocks-settings' );
-
-	return {
-		typographyEnabled: getTypography(),
-	};
-} );
-
 export default compose( [
 	applyFallbackStyles,
-	applyWithSelect,
+	ifCondition( () => {
+		const [ typographyEnabled ] = useEntityProp( 'root', 'site', 'coblocks_typography_controls_enabled' );
+		return typographyEnabled;
+	} ),
 ] )( TypographyControls );

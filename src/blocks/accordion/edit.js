@@ -105,6 +105,7 @@ class AccordionEdit extends Component {
 					<InnerBlocks
 						template={ getCount( count ) }
 						allowedBlocks={ ALLOWED_BLOCKS }
+						__experimentalCaptureToolbars={ true }
 					/>
 					{ isSelected && (
 						<div className="coblocks-block-appender">
@@ -112,7 +113,7 @@ class AccordionEdit extends Component {
 								<Button
 									label={ __( 'Add accordion item', 'coblocks' ) }
 									className="block-editor-button-block-appender"
-									onMouseUp={ handleEvent }
+									onMouseDown={ handleEvent }
 								>
 									<Icon icon={ plus } />
 								</Button>

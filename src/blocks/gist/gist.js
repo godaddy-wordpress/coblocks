@@ -2,123 +2,49 @@
  * External dependencies
  */
 import PropTypes from 'prop-types';
-
-/**
- * Internal dependencies
- */
-import icon from './icon';
+import { GithubIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component } from '@wordpress/element';
-import { BlockIcon } from '@wordpress/block-editor';
-import { Placeholder, Spinner } from '@wordpress/components';
+import { Placeholder, Spinner, Icon } from '@wordpress/components';
+import { useState, useEffect } from '@wordpress/element';
 
-// -- MAIN --
-// Extending PureComponent allow us to prevent re-rendering when the props DONT change.
-export default class Gist extends Component {
-	constructor( props ) {
-		super( props );
-		this.url = props.url;
-		this.file = props.file;
-		this.stylesheetAdded = false; // Ensures we only add the Gist's stylesheet one time.
-		this.state = {
-			loading: true, // We have not fetched the Gist yet.
-			gistContent: '', // Raw HTML of the Gist.
-		};
-		this._handleError = this._handleError.bind( this );
-	}
+const Gist = ( props ) => {
+	const [ isLoading, setIsLoading ] = useState( true );
+	const [ gistContent, setGistContent ] = useState( '' );
+	const [ stylesheetAdded, setStylesheetAdded ] = useState( false );
 
-	// Each time we request a new Gist, we have to provide a new
-	// global function name to serve as the JSONP callback.
-	static __gistCallbackId() {
-		return 0;
-	}
+	const url = props.url;
+	const file = props.file;
+	const gistCallback = props.callbackId;
 
-	static __nextGist() {
-		return 'embed_gist_callback_' + this.__gistCallbackId++;
-	}
+	useEffect( () => {
+		_buildGist();
+	}, [] );
 
-	// The Gist JSON data includes a stylesheet file.
-	// We ensure to add that file only one time in our page.
-	static __addStylesheet( href ) {
-		if ( ! this.stylesheetAdded ) {
+	const __addStylesheet = ( href ) => {
+		if ( ! stylesheetAdded ) {
 			const link = document.createElement( 'link' );
 			link.type = 'text/css';
 			link.rel = 'stylesheet';
 			link.href = href;
 			document.head.appendChild( link );
-			this.stylesheetAdded = true;
+			setStylesheetAdded( true );
 		}
-	}
+	};
 
-	componentDidMount() {
-		// Request the Gist iframe.
-		this._buildGist();
-	}
-
-	_handleError() {
-		const { onError } = this.props;
-		this.setState( {
-			loading: false,
-		} );
-		onError();
-	}
-
-	_getID() {
-		const { _handleError } = this;
-		// Extract a string in form `username/uniqueValue` from the provided Gist url.
-		if ( this.url.match( /(\.com\/)(.*?)([^#]+)/ ) === null ) {
-			_handleError();
-			return;
-		}
-		return this.url.match( /(\.com\/)(.*?)([^#]+)/ ).pop();
-	}
-
-	_getFile() {
-		// If `file` prop was provided return that.
-		if ( this.file !== undefined ) {
-			return `&file=${ this.file }`;
-		}
-
-		// Else construct the file parameter from the `url` prop.
-		const file = this.url.split( '#' ).pop();
-
-		// If the file parameter exist in Gist url return that file.
-		if ( file.match( /file*/ ) !== null ) {
-			return `&file=${ file.replace( 'file-', '' ).replace( '-', '.' ) }`;
-		}
-
-		// Else the user wants to link the whole Gist repository.
-		return '';
-	}
-
-	_tranformedURL( gistCallback ) {
-		// Construct a gist url that will allow us to redner the Gist into our page.
-		const id = this._getID();
-		if ( ! id ) {
-			return false;
-		}
-		const file = this._getFile();
-		return `https://gist.github.com/${ id }.json?callback=${ gistCallback }${ file }`;
-	}
-
-	_buildGist() {
-		const { _handleError } = this;
-		const gistCallback = Gist.__nextGist();
+	const _buildGist = () => {
 		window[ gistCallback ] = ( gist ) => {
-			Gist.__addStylesheet( gist.stylesheet );
-			this.setState( {
-				loading: false,
-				gistContent: gist.div,
-			} );
+			__addStylesheet( gist.stylesheet );
+			setIsLoading( false );
+			setGistContent( gist.div );
 		};
 
 		const gistScript = document.createElement( 'script' );
 		gistScript.type = 'text/javascript';
-		const transformedURL = this._tranformedURL( gistCallback );
+		const transformedURL = _transformedURL( gistCallback );
 		if ( ! transformedURL ) {
 			return;
 		}
@@ -127,31 +53,77 @@ export default class Gist extends Component {
 			_handleError();
 		};
 		document.head.appendChild( gistScript );
+	};
+
+	const _handleError = () => {
+		const { onError } = props;
+		setIsLoading( false );
+		onError();
+	};
+
+	const _getID = () => {
+		// Extract a string in form `username/uniqueValue` from the provided Gist url.
+		if ( url.match( /(\.com\/)(.*?)([^#]+)/ ) === null ) {
+			_handleError();
+			return;
+		}
+		return url.match( /(\.com\/)(.*?)([^#]+)/ ).pop();
+	};
+
+	const _getFile = () => {
+		// If `file` prop was provided return that.
+		if ( file !== undefined ) {
+			return `&file=${ file }`;
+		}
+
+		// Else construct the file parameter from the `url` prop.
+		const fileSplit = url.split( '#' ).pop();
+
+		// If the file parameter exist in Gist url return that file.
+		if ( fileSplit.match( /file*/ ) !== null ) {
+			return `&file=${ fileSplit.replace( 'file-', '' ).replace( '-', '.' ) }`;
+		}
+
+		// Else the user wants to link the whole Gist.
+		return '';
+	};
+
+	const _transformedURL = ( callback ) => {
+		// Construct a gist url that will allow us to render the Gist into our page.
+		const id = _getID();
+		if ( ! id ) {
+			return false;
+		}
+		const fileName = _getFile();
+		return `https://gist.github.com/${ id }.json?callback=${ callback }${ fileName }`;
+	};
+
+	if ( isLoading ) {
+		return (
+			<Placeholder
+				key="placeholder"
+				icon={ <Icon icon={ icon } /> }
+				label={ __( 'Loading Gist', 'coblocks' ) }
+			>
+				<Spinner />
+			</Placeholder>
+		);
 	}
 
-	render() {
-		if ( this.state.loading ) {
-			return (
-				<Placeholder
-					key="placeholder"
-					icon={ <BlockIcon icon={ icon } /> }
-					label={ __( 'Loading Gist', 'coblocks' ) }
-				>
-					<Spinner />
-				</Placeholder>
-			);
-		}
-		if ( this.state.gistContent ) {
-			// Render as html.
-			// https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml\
-			return <div dangerouslySetInnerHTML={ { __html: this.state.gistContent } } />;
-		}
+	if ( gistContent ) {
+		// Render as html.
+		// https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml\
+		return <div dangerouslySetInnerHTML={ { __html: gistContent } } />;
 	}
-}
+
+	return '';
+};
+
+export default Gist;
 
 // - PROP TYPES -
 Gist.propTypes = {
 	file: PropTypes.string,
-	onError: PropTypes.function,
+	onError: PropTypes.func,
 	url: PropTypes.string.isRequired,
 };

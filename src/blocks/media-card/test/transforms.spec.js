@@ -27,42 +27,6 @@ describe( 'coblocks/media-card transforms', () => {
 		registerBlockType( name, { category: 'common', ...settings } );
 	} );
 
-	it( 'should transform from core/image block', () => {
-		const coreImage = createBlock( 'core/image', { id: attributes.mediaId, url: attributes.mediaUrl, alt: attributes.mediaAlt } );
-		const transformed = switchToBlockType( coreImage, name );
-
-		expect( transformed[ 0 ].isValid ).toBe( true );
-		expect( transformed[ 0 ].name ).toBe( name );
-
-		expect( transformed[ 0 ].attributes.mediaUrl ).toBe( attributes.mediaUrl );
-		expect( transformed[ 0 ].attributes.mediaId ).toBe( attributes.mediaId );
-		expect( transformed[ 0 ].attributes.mediaAlt ).toBe( attributes.mediaAlt );
-	} );
-
-	it( 'should transform from core/video block', () => {
-		const coreImage = createBlock( 'core/video', { id: attributes.mediaId, src: attributes.mediaUrl } );
-		const transformed = switchToBlockType( coreImage, name );
-
-		expect( transformed[ 0 ].isValid ).toBe( true );
-		expect( transformed[ 0 ].name ).toBe( name );
-
-		expect( transformed[ 0 ].attributes.mediaUrl ).toBe( attributes.mediaUrl );
-		expect( transformed[ 0 ].attributes.mediaId ).toBe( attributes.mediaId );
-	} );
-
-	it( 'should transform from core/media-text block', () => {
-		const coreMediaText = createBlock( 'core/media-text', attributes );
-		const transformed = switchToBlockType( coreMediaText, name );
-
-		expect( transformed[ 0 ].isValid ).toBe( true );
-		expect( transformed[ 0 ].name ).toBe( name );
-
-		expect( transformed[ 0 ].attributes.mediaAlt ).toBe( attributes.mediaAlt );
-		expect( transformed[ 0 ].attributes.mediaUrl ).toBe( attributes.mediaUrl );
-		expect( transformed[ 0 ].attributes.mediaType ).toBe( attributes.mediaType );
-		expect( transformed[ 0 ].attributes.mediaPosition ).toBe( attributes.mediaPosition );
-	} );
-
 	it( 'should transform to core/image block', () => {
 		const block = createBlock( name, attributes );
 		const transformed = switchToBlockType( block, 'core/image' );
@@ -97,13 +61,5 @@ describe( 'coblocks/media-card transforms', () => {
 		expect( transformed[ 0 ].attributes.mediaUrl ).toBe( attributes.mediaUrl );
 		expect( transformed[ 0 ].attributes.mediaType ).toBe( attributes.mediaType );
 		expect( transformed[ 0 ].attributes.mediaPosition ).toBe( attributes.mediaPosition );
-	} );
-
-	it( 'should transform when :card prefix is seen', () => {
-		const prefix = ':card';
-		const block = helpers.performPrefixTransformation( name, prefix, prefix );
-
-		expect( block.isValid ).toBe( true );
-		expect( block.name ).toBe( name );
 	} );
 } );

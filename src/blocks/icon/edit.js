@@ -1,3 +1,5 @@
+/*global coblocksBlockData*/
+
 /**
  * External dependencies
  */
@@ -18,7 +20,6 @@ import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { ResizableBox } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
-import { domReady } from '@wordpress/dom-ready';
 
 /**
  * Set and export block values.
@@ -104,19 +105,13 @@ class Edit extends Component {
 			// In RTL mode the image is on the right by default.
 			// Show the right handle and hide the left handle only when it is aligned left.
 			// Otherwise always show the left handle.
-			if ( contentAlign === 'left' ) {
-				showRightHandle = true;
-			} else {
-				showLeftHandle = true;
-			}
+			showRightHandle = contentAlign === 'left' ? true : false;
+			showLeftHandle = contentAlign === 'left' ? false : true;
 		} else {
 			// Show the left handle and hide the right handle only when the image is aligned right.
 			// Otherwise always show the right handle.
-			if ( contentAlign === 'right' ) {
-				showLeftHandle = true;
-			} else {
-				showRightHandle = true;
-			}
+			showLeftHandle = contentAlign === 'right' ? true : false;
+			showRightHandle = contentAlign === 'right' ? false : true;
 		}
 
 		// If the parent block has set this block to not display alignment controls.

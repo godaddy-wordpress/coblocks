@@ -10,6 +10,7 @@ import times from 'lodash/times';
  * Internal dependencies
  */
 import Controls from './controls';
+import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 import Inspector from './inspector';
 
 /**
@@ -59,7 +60,6 @@ class PricingTableEdit extends Component {
 
 		const {
 			count,
-			gutter,
 			contentAlign,
 		} = attributes;
 
@@ -67,15 +67,6 @@ class PricingTableEdit extends Component {
 			className,
 			{
 				[ `has-text-align-${ contentAlign }` ]: contentAlign,
-			}
-		);
-
-		const innerClasses = classnames( 'wp-block-coblocks-pricing-table__inner',
-			{
-				'has-columns': count > 1,
-				[ `has-${ count }-columns` ]: count,
-				'has-responsive-columns': count > 1,
-				[ `has-${ gutter }-gutter` ]: gutter,
 			}
 		);
 
@@ -94,13 +85,21 @@ class PricingTableEdit extends Component {
 				<div
 					className={ classes }
 				>
-					<div className={ innerClasses }>
-						<InnerBlocks
-							template={ getCount( count ) }
-							templateLock="insert"
-							allowedBlocks={ ALLOWED_BLOCKS }
-							__experimentalMoverDirection={ count > 1 ? 'horizontal' : 'vertical' } />
-					</div>
+					<GutterWrapper { ...attributes }>
+						<div className={ classnames( 'wp-block-coblocks-pricing-table__inner',
+							{
+								'has-columns': count > 1,
+								[ `has-${ count }-columns` ]: count,
+								'has-responsive-columns': count > 1,
+							}
+						) }>
+							<InnerBlocks
+								template={ getCount( count ) }
+								allowedBlocks={ ALLOWED_BLOCKS }
+								orientation={ count > 1 ? 'horizontal' : 'vertical' }
+								__experimentalCaptureToolbars={ true } />
+						</div>
+					</GutterWrapper>
 				</div>
 			</Fragment>
 		);

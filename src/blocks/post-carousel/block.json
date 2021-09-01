@@ -61,7 +61,14 @@
 			"default": "date"
 		},
 		"categories": {
-			"type": "array"
+			"type": "array",
+			"items": {
+				"type": "object"
+			}
+		},
+		"categoryRelation": {
+			"type": "string",
+			"default": "or"
 		}
 	}
 }

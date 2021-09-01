@@ -305,97 +305,99 @@ export class Edit extends Component {
 											allowedBlocks={ ALLOWED_BLOCKS }
 											templateLock={ false }
 											templateInsertUpdatesSelection={ false }
+											__experimentalCaptureToolbars={ true }
 										/>
 									</ResizableBox>
 								</div>
 							) }
 						</div>
-						: <ResizableBox
-							className={ innerClasses }
-							style={ innerStyles }
-							size={ {
-								height: heightResizer.value,
-							} }
-							minHeight="500"
-							enable={ {
-								top: false,
-								right: false,
-								bottom: true,
-								left: false,
-								topRight: false,
-								bottomRight: false,
-								bottomLeft: false,
-								topLeft: false,
-							} }
-							onResizeStop={ ( _event, _direction, _elt, delta ) => {
-								switch ( heightResizer.target ) {
-									case 'heightTablet':
-										setAttributes( {
-											heightTablet: parseInt( heightResizer.value + delta.height, 10 ),
-										} );
-										break;
-
-									case 'heightMobile':
-										setAttributes( {
-											heightMobile: parseInt( heightResizer.value + delta.height, 10 ),
-										} );
-										break;
-
-									default:
-										setAttributes( {
-											height: parseInt( heightResizer.value + delta.height, 10 ),
-										} );
-										break;
-								}
-
-								//update meta
-								this.saveMeta( 'height' );
-							} }
-							showHandle={ isSelected }
-						>
-							{ isBlobURL( backgroundImg ) && <Spinner /> }
-							{ BackgroundVideo( attributes ) }
-							{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
-								<div className="wp-block-coblocks-hero__content-wrapper">
-									<ResizableBox
-										className={ classnames(
-											'wp-block-coblocks-hero__content',
-											'editor-media-container__resizer', {
-												'is-resizing': this.state.resizing,
-											}
-										) }
-										size={ { width: maxWidth } }
-										minWidth="400"
-										maxWidth="1000"
-										enable={ enablePositions }
-										onResizeStart={ () => {
-											this.setState( { resizing: true } );
-											const currentBlock = document.getElementById( 'block-' + clientId );
-											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.maxWidth = '';
-											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.width = maxWidth + 'px';
-										} }
-										onResizeStop={ ( _event, _direction, _elt, delta ) => {
+						: (
+							<ResizableBox
+								className={ innerClasses }
+								style={ innerStyles }
+								size={ {
+									height: heightResizer.value,
+								} }
+								minHeight="500"
+								enable={ {
+									top: false,
+									right: false,
+									bottom: true,
+									left: false,
+									topRight: false,
+									bottomRight: false,
+									bottomLeft: false,
+									topLeft: false,
+								} }
+								onResizeStop={ ( _event, _direction, _elt, delta ) => {
+									switch ( heightResizer.target ) {
+										case 'heightTablet':
 											setAttributes( {
-												maxWidth: parseInt( maxWidth + delta.width, 10 ),
+												heightTablet: parseInt( heightResizer.value + delta.height, 10 ),
 											} );
-											this.setState( { resizing: false } );
-											const currentBlock = document.getElementById( 'block-' + clientId );
-											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.width = 'auto';
-											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.maxWidth = parseInt( maxWidth + delta.width, 10 ) + 'px';
-										} }
-										showHandle={ isSelected }
-									>
-										<InnerBlocks
-											template={ TEMPLATE }
-											allowedBlocks={ ALLOWED_BLOCKS }
-											templateLock={ false }
-											templateInsertUpdatesSelection={ false }
-										/>
-									</ResizableBox>
-								</div>
-							) }
-						</ResizableBox>
-					}
+											break;
+
+										case 'heightMobile':
+											setAttributes( {
+												heightMobile: parseInt( heightResizer.value + delta.height, 10 ),
+											} );
+											break;
+
+										default:
+											setAttributes( {
+												height: parseInt( heightResizer.value + delta.height, 10 ),
+											} );
+											break;
+									}
+
+									//update meta
+									this.saveMeta( 'height' );
+								} }
+								showHandle={ isSelected }
+							>
+								{ isBlobURL( backgroundImg ) && <Spinner /> }
+								{ BackgroundVideo( attributes ) }
+								{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
+									<div className="wp-block-coblocks-hero__content-wrapper">
+										<ResizableBox
+											className={ classnames(
+												'wp-block-coblocks-hero__content',
+												'editor-media-container__resizer', {
+													'is-resizing': this.state.resizing,
+												}
+											) }
+											size={ { width: maxWidth } }
+											minWidth="400"
+											maxWidth="1000"
+											enable={ enablePositions }
+											onResizeStart={ () => {
+												this.setState( { resizing: true } );
+												const currentBlock = document.getElementById( 'block-' + clientId );
+												currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.maxWidth = '';
+												currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.width = maxWidth + 'px';
+											} }
+											onResizeStop={ ( _event, _direction, _elt, delta ) => {
+												setAttributes( {
+													maxWidth: parseInt( maxWidth + delta.width, 10 ),
+												} );
+												this.setState( { resizing: false } );
+												const currentBlock = document.getElementById( 'block-' + clientId );
+												currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.width = 'auto';
+												currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.maxWidth = parseInt( maxWidth + delta.width, 10 ) + 'px';
+											} }
+											showHandle={ isSelected }
+										>
+											<InnerBlocks
+												template={ TEMPLATE }
+												allowedBlocks={ ALLOWED_BLOCKS }
+												templateLock={ false }
+												templateInsertUpdatesSelection={ false }
+											/>
+										</ResizableBox>
+									</div>
+								) }
+							</ResizableBox>
+						) }
 				</div>
 			</Fragment>
 		);

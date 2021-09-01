@@ -45,7 +45,9 @@ class CoBlocks_Block_Assets {
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 		add_action( 'init', array( $this, 'editor_assets' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_scripts' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'frontend_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
+		add_action( 'save_post_wp_template_part', array( $this, 'clear_template_transients' ) );
 	}
 
 	/**
@@ -84,23 +86,37 @@ class CoBlocks_Block_Assets {
 			// This is similar to has_block() in core, but will match anything
 			// in the coblocks/* namespace.
 			if ( $wp_post instanceof WP_Post ) {
-				$has_coblock = ! empty(
-					array_filter(
-						array(
-							false !== strpos( $wp_post->post_content, '<!-- wp:coblocks/' ),
-							has_block( 'core/block', $wp_post ),
-							has_block( 'core/button', $wp_post ),
-							has_block( 'core/cover', $wp_post ),
-							has_block( 'core/heading', $wp_post ),
-							has_block( 'core/image', $wp_post ),
-							has_block( 'core/gallery', $wp_post ),
-							has_block( 'core/list', $wp_post ),
-							has_block( 'core/paragraph', $wp_post ),
-							has_block( 'core/pullquote', $wp_post ),
-							has_block( 'core/quote', $wp_post ),
-						)
+
+				$has_coblock = $this->has_coblocks_block( $wp_post );
+
+			}
+
+			$coblocks_template_part_query = get_transient( 'coblocks_template_parts_query' );
+
+			if ( false === $coblocks_template_part_query ) {
+
+				// Determine if template parts contain any coblocks/* namespace.
+				$coblocks_template_part_query = get_posts(
+					array(
+						'post_type'      => 'wp_template_part',
+						'posts_per_page' => -1,
 					)
 				);
+
+				set_transient( 'coblocks_template_parts_query', $coblocks_template_part_query, WEEK_IN_SECONDS );
+
+			}
+
+			if ( ! $has_coblock && ! empty( $coblocks_template_part_query ) ) {
+
+				foreach ( $coblocks_template_part_query as $template_part ) {
+
+					if ( $this->has_coblocks_block( $template_part ) ) {
+
+						$has_coblock = true;
+
+					}
+				}
 			}
 		}
 
@@ -142,7 +158,7 @@ class CoBlocks_Block_Assets {
 		);
 
 		// Scripts.
-		$name       = 'coblocks';
+		$name       = 'coblocks'; // coblocks.js.
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
 
@@ -154,123 +170,18 @@ class CoBlocks_Block_Assets {
 			true
 		);
 
-		$post_id    = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
-		$post_title = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
-
-		/**
-		 * Filter the default block email address value
-		 *
-		 * @param string  $to      Admin email.
-		 * @param integer $post_id Current post ID.
-		 */
-		$email_to = (string) apply_filters( 'coblocks_form_default_email', get_option( 'admin_email' ), (int) $post_id );
-
-		/**
-		 * Filter to disable the typography controls
-		 *
-		 * @param bool    true Whether or not the controls are enabled.
-		 * @param integer $post_id Current post ID.
-		 */
-		$typography_controls_enabled = (bool) apply_filters( 'coblocks_typography_controls_enabled', true, (int) $post_id );
-
-		/**
-		 * Filter to disable all bundled CoBlocks svg icons
-		 *
-		 * @param bool true Whether or not the bundled icons are displayed.
-		 */
-		$bundled_icons_enabled = (bool) apply_filters( 'coblocks_bundled_icons_enabled', true );
-
 		wp_localize_script(
 			'coblocks-editor',
 			'coblocksBlockData',
 			array(
-				'form'                           => array(
-					'adminEmail'   => $email_to,
-					'emailSubject' => $post_title,
-				),
-				'cropSettingsOriginalImageNonce' => wp_create_nonce( 'cropSettingsOriginalImageNonce' ),
-				'cropSettingsNonce'              => wp_create_nonce( 'cropSettingsNonce' ),
-				'bundledIconsEnabled'            => $bundled_icons_enabled,
-				'customIcons'                    => $this->get_custom_icons(),
-				'customIconConfigExists'         => file_exists( get_stylesheet_directory() . '/coblocks/icons/config.json' ),
-				'typographyControlsEnabled'      => $typography_controls_enabled,
+				'bundledIconsEnabled'       => false,
+				'customIcons'               => array(),
+				'customIconConfigExists'    => false,
+				'typographyControlsEnabled' => false,
+				'animationControlsEnabled'  => false,
+				'localeCode'                => get_locale(),
 			)
 		);
-
-	}
-
-	/**
-	 * Load custom icons from the theme directory, if they exist
-	 *
-	 * @return array Custom icons array if they exist, else empty array.
-	 */
-	public function get_custom_icons() {
-
-		$config = array();
-		$icons  = glob( get_stylesheet_directory() . '/coblocks/icons/*.svg' );
-
-		if ( empty( $icons ) ) {
-
-			return array();
-
-		}
-
-		if ( file_exists( get_stylesheet_directory() . '/coblocks/icons/config.json' ) ) {
-
-			$config = json_decode( file_get_contents( get_stylesheet_directory() . '/coblocks/icons/config.json' ), true );
-
-		}
-
-		$custom_icons = array();
-
-		foreach ( $icons as $icon ) {
-
-			$icon_slug = str_replace( '.svg', '', basename( $icon ) );
-			$icon_name = ucwords( str_replace( '-', ' ', $icon_slug ) );
-
-			if ( ! empty( $config ) ) {
-
-				// Icon exists in directory, but not found in config.
-				if ( ! array_key_exists( $icon_slug, $config ) ) {
-
-					continue;
-
-				}
-			}
-
-			ob_start();
-			include $icon;
-			$retrieved_icon = ob_get_clean();
-
-			$custom_icons[ $icon_slug ] = array(
-				'label'    => $icon_name,
-				'keywords' => strtolower( $icon_name ),
-				'icon'     => $retrieved_icon,
-			);
-
-		}
-
-		if ( ! empty( $config ) ) {
-
-			foreach ( $config as $icon => $metadata ) {
-
-				if ( ! array_key_exists( $icon, $custom_icons ) ) {
-
-					continue;
-
-				}
-
-				if ( array_key_exists( 'icon_outlined', $config[ $icon ] ) ) {
-
-					$metadata['icon_outlined'] = file_exists( get_stylesheet_directory() . '/coblocks/icons/' . $metadata['icon_outlined'] ) ? file_get_contents( get_stylesheet_directory() . '/coblocks/icons/' . $metadata['icon_outlined'] ) : '';
-
-				}
-
-				$custom_icons[ $icon ] = array_replace_recursive( $custom_icons[ $icon ], array_filter( $metadata ) );
-
-			}
-		}
-		return $custom_icons;
 
 	}
 
@@ -288,7 +199,7 @@ class CoBlocks_Block_Assets {
 		$vendors_dir = CoBlocks()->asset_source( 'js', 'vendors' );
 
 		// Masonry block.
-		if ( has_block( 'coblocks/gallery-masonry' ) || has_block( 'core/block' ) ) {
+		if ( $this->is_page_gutenberg() || has_block( 'coblocks/gallery-masonry' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
 				'coblocks-masonry',
 				$dir . 'coblocks-masonry.js',
@@ -317,6 +228,59 @@ class CoBlocks_Block_Assets {
 				true
 			);
 		}
+
+		wp_localize_script(
+			'coblocks-lightbox',
+			'coblocksLigthboxData',
+			array(
+				'closeLabel' => __( 'Close Gallery', 'coblocks' ),
+				'leftLabel'  => __( 'Previous', 'coblocks' ),
+				'rightLabel' => __( 'Next', 'coblocks' ),
+			)
+		);
+	}
+
+	/**
+	 * Clear transient when wp_template_part is saved/updated
+	 *
+	 * @access public
+	 * @since  2.14.2
+	 */
+	public function clear_template_transients() {
+
+		delete_transient( 'coblocks_template_parts_query' );
+
+	}
+
+	/**
+	 * Determine if the given post content contains any CoBlocks blocks
+	 *
+	 * @access public
+	 * @since  2.14.2
+	 * @param  WP_Post $post_object Post object.
+	 *
+	 * @return boolean True when post content contains a CoBlocks block.
+	 */
+	public function has_coblocks_block( WP_Post $post_object ) {
+
+		return ! empty(
+			array_filter(
+				array(
+					false !== strpos( $post_object->post_content, '<!-- wp:coblocks/' ),
+					has_block( 'core/block', $post_object ),
+					has_block( 'core/button', $post_object ),
+					has_block( 'core/cover', $post_object ),
+					has_block( 'core/heading', $post_object ),
+					has_block( 'core/image', $post_object ),
+					has_block( 'core/gallery', $post_object ),
+					has_block( 'core/list', $post_object ),
+					has_block( 'core/paragraph', $post_object ),
+					has_block( 'core/pullquote', $post_object ),
+					has_block( 'core/quote', $post_object ),
+				)
+			)
+		);
+
 	}
 
 	/**

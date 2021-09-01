@@ -13,7 +13,7 @@
 		blockquote#{&} {
 
 			p,
- cite {
+			cite {
 				font-family: inherit !important;
 			}
 		}
@@ -93,5 +93,14 @@ ul {
 		.wp-block-coblocks-click-to-tweet__twitter-btn {
 			text-transform: none;
 		}
+	}
+}
+
+.wp-block-quote[style*="color"],
+.editor-styles-wrapper .wp-block-quote[style*="color"] {
+	> div > p,
+	p,
+	cite {
+		color: inherit;
 	}
 }

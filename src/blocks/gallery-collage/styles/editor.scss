@@ -13,28 +13,40 @@
 		&.is-selected {
 
 			&::after {
+				border-radius: $radius-block-ui;
 				bottom: 0;
-				box-shadow: 0 0 0 1.5px var(--wp-admin-theme-color, #007cba);
+				box-shadow: 0 0 0 $border-width $white, 0 0 0 3px var(--wp-admin-theme-color, #007cba);
 				content: "";
 				left: 0;
 				position: absolute;
 				right: 0;
 				top: 0;
 				z-index: 1;
-				border-radius: 2px
 			}
 		}
 	}
 
-	//Hide image placeholder - necessary in 5.3 until GB 6.9+ is merged.
+	&__item {
+		transition: padding $animation-transition-default;
+	}
+
+	// Hide image placeholder - necessary in 5.3 until GB 6.9+ is merged.
 	.wp-block-coblocks-gallery-collage__figure:nth-child(2) {
 		display: none;
+	}
+
+	.coblocks-gallery-item__button-replace {
+		border: none;
+		box-shadow: none;
+		padding: 6px 12px;
 	}
 }
 
 [data-type="coblocks/gallery-collage"] {
+
+	// Remove selected state.
 	&.block-editor-block-list__block::after {
-		display: none;
+		box-shadow: none !important;
 	}
 
 	ul {
@@ -68,11 +80,6 @@
 		}
 	}
 
-	.block-editor-media-placeholder .components-placeholder__fieldset .components-button {
-		margin-bottom: 0 !important;
-		margin-right: 0 !important;
-	}
-
 	.block-editor-media-placeholder {
 		background: $dark-opacity-light-200;
 		min-height: inherit;
@@ -93,6 +100,8 @@
 			height: 100%;
 			justify-content: center;
 			left: 0;
+			margin-bottom: 0 !important;
+			margin-right: 0 !important;
 			max-width: 100%;
 			position: absolute;
 			top: 0;
@@ -107,7 +116,7 @@
 	.is-style-layered {
 
 		.block-editor-media-placeholder {
-			background: $light-gray-200;
+			background: $gray-200;
 		}
 
 		.components-form-file-upload {
@@ -115,7 +124,7 @@
 		}
 
 		// Move the close button where its visible on the Layered style.
-		li:nth-child(4) .components-coblocks-gallery-item__remove-menu {
+		li:nth-child(4) .block-library-gallery-item__inline-menu {
 			left: 2px;
 			right: auto;
 		}

@@ -1,0 +1,21 @@
+@import "node_modules/@wordpress/base-styles/variables";
+@import "node_modules/@wordpress/base-styles/colors";
+
+.coblocks-block-patterns__modal {
+
+	.components-modal__header-heading {
+		align-items: center;
+		display: flex;
+	}
+
+	.components-base-control__field {
+		margin-bottom: $grid-unit-20;
+	}
+}
+
+.coblocks-block-patterns__preview {
+	border: $border-width solid $gray-900;
+	border-radius: $radius-block-ui;
+	margin-bottom: $grid-unit-30;
+	padding: 9px;
+}

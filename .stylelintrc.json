@@ -1,6 +1,3 @@
 {
-	"extends": "stylelint-config-wordpress/scss",
-	"rules": {
-		"no-descending-specificity": null
-	}
+	"extends": "@godaddy-wordpress/stylelint-config"
 }

@@ -1,3 +1,6 @@
+/* eslint-disable jest/valid-expect-in-promise */
+// Disable reason: Cypress chained functions are not true promises and do not require a return.
+// https://docs.cypress.io/guides/core-concepts/introduction-to-cypress.html#Commands-Are-Not-Promises
 /*
  * Include our constants
  */
@@ -108,7 +111,7 @@ describe( 'Test CoBlocks Icon Block', function() {
 
 		cy.get( '.wp-block-coblocks-icon__inner a' )
 			.should( 'have.attr', 'href', 'https://www.google.com' )
-			.and( 'have.attr', 'rel', 'Link rel noopener noreferrer' )
+			.and( 'have.attr', 'rel', 'Link rel noreferrer noopener' )
 			.and( 'have.attr', 'target', '_blank' );
 
 		helpers.editPage();

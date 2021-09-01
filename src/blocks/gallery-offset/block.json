@@ -5,10 +5,6 @@
 		"gridSize": {
 			"type": "string",
 			"default": "small"
-		},
-		"gutter": {
-			"type": "string",
- 			"default": "medium"
 		}
 	}
 }

@@ -2,8 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import memoize from 'memize';
-import times from 'lodash/times';
 
 /**
  * Internal dependencies
@@ -12,6 +10,7 @@ import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZon
 import applyWithColors from './colors';
 import Inspector from './inspector';
 import Controls from './controls';
+import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 
 /**
  * WordPress dependencies
@@ -22,23 +21,18 @@ import { compose } from '@wordpress/compose';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { isBlobURL } from '@wordpress/blob';
 import { Spinner } from '@wordpress/components';
-import { dispatch, select } from '@wordpress/data';
+import { withDispatch, withSelect } from '@wordpress/data';
+import { createBlock } from '@wordpress/blocks';
 
 /**
  * Constants
  */
 const ALLOWED_BLOCKS = [ 'coblocks/feature' ];
 
-/**
- * Returns the layouts configuration for a given number of feature items.
- *
- * @param {number} count Number of feature items.
- *
- * @return {Object[]} Columns layout configuration.
- */
-const getCount = memoize( ( count ) => {
-	return times( count, () => [ 'coblocks/feature' ] );
-} );
+const TEMPLATE = [
+	[ 'coblocks/feature' ],
+	[ 'coblocks/feature' ],
+];
 
 /**
  * Block edit function
@@ -52,13 +46,12 @@ class Edit extends Component {
 	}
 
 	updateInnerAttributes( blockName, newAttributes ) {
-		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
-			this.props.clientId
-		)[ 0 ].innerBlocks;
+		const { updateBlockAttributes, getBlocksByClientId, clientId } = this.props;
+		const innerItems = getBlocksByClientId(	clientId )[ 0 ].innerBlocks;
 
-		innerItems.map( item => {
+		innerItems.forEach( ( item ) => {
 			if ( item.name === blockName ) {
-				dispatch( 'core/block-editor' ).updateBlockAttributes(
+				updateBlockAttributes(
 					item.clientId,
 					newAttributes
 				);
@@ -87,7 +80,6 @@ class Edit extends Component {
 			backgroundImg,
 			columns,
 			contentAlign,
-			gutter,
 			paddingTop,
 			paddingRight,
 			paddingBottom,
@@ -121,7 +113,6 @@ class Edit extends Component {
 				'has-columns': columns > 1,
 				[ `has-${ columns }-columns` ]: columns,
 				'has-responsive-columns': columns > 1,
-				[ `has-${ gutter }-gutter` ]: gutter,
 				'has-padding': paddingSize && paddingSize !== 'no',
 				[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'no' && paddingSize !== 'advanced' ),
 				'has-margin': marginSize && marginSize !== 'no',
@@ -159,16 +150,18 @@ class Edit extends Component {
 				<div
 					className={ classes }
 				>
-					<div className={ innerClasses } style={ innerStyles }>
-						{ isBlobURL( backgroundImg ) && <Spinner /> }
-						{ BackgroundVideo( attributes ) }
-						<InnerBlocks
-							template={ getCount( columns ) }
-							allowedBlocks={ ALLOWED_BLOCKS }
-							templateLock="all"
-							templateInsertUpdatesSelection={ false }
-							renderAppender={ () => ( null ) } />
-					</div>
+					<GutterWrapper { ...attributes }>
+						<div className={ innerClasses } style={ innerStyles }>
+							{ isBlobURL( backgroundImg ) && <Spinner /> }
+							{ BackgroundVideo( attributes ) }
+							<InnerBlocks
+								template={ TEMPLATE }
+								allowedBlocks={ ALLOWED_BLOCKS }
+								templateInsertUpdatesSelection={ false }
+								__experimentalCaptureToolbars={ true }
+							/>
+						</div>
+					</GutterWrapper>
 				</div>
 			</Fragment>
 		);
@@ -177,4 +170,54 @@ class Edit extends Component {
 
 export default compose( [
 	applyWithColors,
+	withDispatch( ( dispatch ) => {
+		const {
+			insertBlock,
+			updateBlockAttributes,
+			selectBlock,
+		} = dispatch( 'core/block-editor' );
+
+		return {
+			insertBlock,
+			updateBlockAttributes,
+			selectBlock,
+
+		};
+	} ),
+	withSelect( ( select, props ) => {
+		const {
+			getBlockRootClientId,
+			getBlockSelectionStart,
+			getBlocks,
+			getBlocksByClientId,
+		} = select( 'core/block-editor' );
+
+		// Get clientId of the parent block.
+		const parentClientId = getBlockRootClientId( getBlockSelectionStart() );
+
+		return {
+			getBlocksByClientId,
+			isSelected: props.isSelected || props.clientId === parentClientId,
+			innerBlocks: getBlocks( props.clientId ),
+		};
+	} ),
+	// Ensure there is a minimum of one coblocks/feature innerBlock per column set.
+	( WrappedComponent ) => ( ownProps ) => {
+		// This is a newly added block if we have zero innerBlocks. We want the TEMPLATE definition to be used in this case.
+		if ( ownProps.innerBlocks.length > 0 ) {
+			const featureBlocksCount = ownProps.innerBlocks.reduce( ( acc, cur ) => acc + ( cur.name === 'coblocks/feature' ), 0 );
+			// Add a new block if the count is less than the columns set.
+			// We don't need a loop here because this will trigger a component update as soon as we insert a block (triggering this HOC again).
+			if ( featureBlocksCount < ownProps.attributes.columns ) {
+				ownProps.insertBlock(
+					createBlock( 'coblocks/feature' ),
+					ownProps.innerBlocks.length,
+					ownProps.clientId,
+					false
+				);
+			}
+		}
+
+		return <WrappedComponent { ...ownProps } />;
+	},
 ] )( Edit );

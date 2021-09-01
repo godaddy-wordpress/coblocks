@@ -2,6 +2,8 @@
  * External dependencies.
  */
 import { kebabCase } from 'lodash';
+import { SettingsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import classnames from 'classnames';
 
 /**
  * WordPress dependencies
@@ -14,6 +16,7 @@ import {
 	PanelRow,
 	RangeControl,
 	Tooltip,
+	Icon,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
@@ -53,6 +56,12 @@ const NONE_OPTION = {
 	tooltip: __( 'None', 'coblocks' ),
 };
 
+const CUSTOM_OPTION = {
+	value: 'custom',
+	label: <Icon icon={ icon } />,
+	tooltip: __( 'Custom', 'coblocks' ),
+};
+
 export default class OptionSelectorControl extends Component {
 	render() {
 		const {
@@ -65,6 +74,7 @@ export default class OptionSelectorControl extends Component {
 			showAdvancedControls,
 			showIcons,
 			showNoneOption,
+			showCustomOption,
 		} = this.props;
 
 		let buttons = options || DEFAULT_OPTIONS;
@@ -73,43 +83,56 @@ export default class OptionSelectorControl extends Component {
 			buttons = [ NONE_OPTION, ...buttons ];
 		}
 
-		return ( showAdvancedControls && ( advancedMinValue !== false && advancedMaxValue !== false ) ?
+		if ( showCustomOption ) {
+			buttons = [ ...buttons, CUSTOM_OPTION ];
+		}
 
-			<RangeControl
-				label={ label }
-				value={ currentOption }
-				onChange={ ( value ) => onChange( value ) }
-				min={ advancedMinValue }
-				max={ advancedMaxValue }
-			/> :
+		return ( showAdvancedControls && ( advancedMinValue !== false && advancedMaxValue !== false )
 
-			<BaseControl id={ `coblocks-option-selector-${ kebabCase( label ) }` } label={ label }>
-				<PanelRow>
-					<ButtonGroup aria-label={ label }>
+			? (
+				<RangeControl
+					label={ label }
+					value={ currentOption }
+					onChange={ ( value ) => onChange( value ) }
+					min={ advancedMinValue }
+					max={ advancedMaxValue }
+				/>
+			) : (
+				<BaseControl
+					id={ `coblocks-option-selector-${ kebabCase( label ) }` }
+					label={ label }
+					className={ classnames(
+						'coblocks-option-selector-control',
+						{
+							'is-custom': currentOption === 'custom',
+						}
+					) }>
+					<PanelRow>
+						<ButtonGroup aria-label={ label }>
 
-						{ buttons.map( ( option ) => (
-							<Tooltip
-								key={ `option-${ option.value }` }
-								text={ option.tooltip }>
+							{ buttons.map( ( option ) => (
+								<Tooltip
+									key={ `option-${ option.value }` }
+									text={ option.tooltip }>
 
-								<Button
-									isLarge
-									isSecondary={ currentOption !== option.value }
-									isPrimary={ currentOption === option.value }
-									aria-pressed={ currentOption === option.value }
-									onClick={ () => onChange( option.value ) }
-									aria-label={ option.tooltip }>
+									<Button
+										isSecondary={ currentOption !== option.value }
+										isPrimary={ currentOption === option.value }
+										aria-pressed={ currentOption === option.value }
+										onClick={ () => onChange( option.value ) }
+										aria-label={ option.tooltip }>
 
-									{ showIcons ? option.icon : option.label }
+										{ showIcons ? option.icon : option.label }
 
-								</Button>
+									</Button>
 
-							</Tooltip>
-						) ) }
+								</Tooltip>
+							) ) }
 
-					</ButtonGroup>
-				</PanelRow>
-			</BaseControl>
+						</ButtonGroup>
+					</PanelRow>
+				</BaseControl>
+			)
 		);
 	}
 }

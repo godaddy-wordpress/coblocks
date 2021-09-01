@@ -12,11 +12,16 @@ import { RichText, getColorClassName, getFontSizeClass } from '@wordpress/block-
  * Internal dependencies
  */
 import { attributes } from './block.json';
-
+import { deprecateTypographyControls } from '../../extensions/typography';
+import save from './save';
 const deprecated = [
 	{
+		attributes: deprecateTypographyControls( attributes ),
+		save,
+	},
+	{
 		attributes,
-		save( { attributes } ) {
+		save( props ) {
 			const {
 				buttonColor,
 				buttonText,
@@ -29,7 +34,7 @@ const deprecated = [
 				textAlign,
 				url,
 				via,
-			} = attributes;
+			} = props.attributes;
 
 			const viaUrl = via ? `&via=${ via }` : '';
 

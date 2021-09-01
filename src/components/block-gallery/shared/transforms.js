@@ -12,6 +12,7 @@ import * as helper from './../../../utils/helper';
 function GalleryTransforms( props ) {
 	const transforms = {
 		align: props.align,
+		animation: props.animation,
 		autoPlay: props.autoPlay,
 		autoPlaySpeed: props.autoPlaySpeed,
 		captionColor: props.captionColor,
@@ -22,7 +23,6 @@ function GalleryTransforms( props ) {
 		filter: props.filter,
 		fontSize: props.fontSize,
 		gridSize: props.gridSize,
-		gutter: props.gutter,
 		gutterMobile: props.gutterMobile,
 		height: props.height,
 		images: props.images.map( ( image, index ) => {
@@ -40,7 +40,6 @@ function GalleryTransforms( props ) {
 		noBottomMargin: props.noBottomMargin,
 		noTopMargin: props.noTopMargin,
 	};
-
 	return transforms;
 }
 

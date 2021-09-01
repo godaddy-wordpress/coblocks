@@ -54,6 +54,10 @@
 			"type": "boolean",
 			"default": false
 		},
+		"navForClass": {
+			"type": "string",
+			"default": ""
+		},
 		"responsiveHeight": {
 			"type": "boolean",
 			"default": false

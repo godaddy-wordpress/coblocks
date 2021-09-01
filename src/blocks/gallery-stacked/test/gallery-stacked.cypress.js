@@ -46,12 +46,6 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/gallery-stacked' );
-
-		helpers.viewPage();
-
-		cy.get( '.coblocks-gallery--item' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -84,13 +78,6 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/gallery-stacked' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-gallery-stacked' ).should( 'exist' );
-		cy.get( '.wp-block-coblocks-gallery-stacked' ).find( 'img' ).should( 'have.attr', 'src' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -124,17 +111,63 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 		helpers.toggleSettingCheckbox( /captions/i );
 
 		cy.get( '.coblocks-gallery--item' ).first().click()
-			.find( 'figcaption' ).click( { force: true } ).type( caption );
+			.find( 'figcaption' ).focus().type( caption );
 
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/gallery-stacked' );
+	} );
 
-		helpers.viewPage();
+	/**
+	 * Test that we can add image captions with rich text options
+	 */
+	it( 'Test stacked captions allow rich text controls.', function() {
+		helpers.addBlockToPost( 'coblocks/gallery-stacked', true );
 
-		cy.get( '.wp-block-coblocks-gallery-stacked' ).should( 'exist' );
-		cy.get( '.wp-block-coblocks-gallery-stacked' ).contains( caption );
+		cy.get( '[data-type="coblocks/gallery-stacked"]' )
+			.click()
+			.contains( /media library/i )
+			.click();
 
-		helpers.editPage();
+		cy.get( '.media-modal-content' ).contains( /media library/i ).click();
+
+		cy.get( '.media-modal-content' ).find( 'li.attachment' )
+			.first( 'li' )
+			.click();
+
+		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
+			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			} else { // pre wp 5.4
+				cy.get( 'button' ).contains( /create a new gallery/i ).click();
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			}
+		} );
+
+		helpers.toggleSettingCheckbox( /captions/i );
+
+		cy.get( '.block-editor-format-toolbar' ).should( 'not.exist' );
+
+		cy.get( '.coblocks-gallery--item' ).first().click()
+			.find( 'figcaption' ).focus();
+
+		cy.get( '.block-editor-format-toolbar, .block-editor-rich-text__inline-format-toolbar-group' );
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/gallery-stacked' );
+	} );
+
+	/**
+	 * Test that we can add image and replace image.
+	 */
+	it( 'Test stacked replace image flow.', function() {
+		helpers.addBlockToPost( 'coblocks/gallery-stacked', true );
+
+		helpers.upload.imageReplaceFlow( 'coblocks/gallery-stacked' );
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/gallery-stacked' );
 	} );
 } );

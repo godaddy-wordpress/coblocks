@@ -26,7 +26,6 @@ import { RichText, InnerBlocks } from '@wordpress/block-editor';
  * @constant
  * @type {string[]}
  */
-const ALLOWED_BLOCKS = [ 'core/button', 'core/shortcode' ];
 const TEMPLATE = [ [ 'core/button', { placeholder: __( 'Buy Now', 'coblocks' ) } ] ];
 
 /**
@@ -51,7 +50,7 @@ class Edit extends Component {
 			placeholder,
 		} = attributes;
 
-		const formattingControls = [ 'bold', 'italic', 'strikethrough' ];
+		const allowedFormats = [ 'bold', 'italic', 'strikethrough' ];
 
 		return (
 			<Fragment>
@@ -80,7 +79,7 @@ class Edit extends Component {
 						onChange={ ( nextTitle ) => setAttributes( { title: nextTitle } ) }
 						value={ title }
 						placeholder={ placeholder || __( 'Plan A', 'coblocks' ) }
-						formattingControls={ formattingControls }
+						allowedFormats={ allowedFormats }
 						keepPlaceholderOnFocus
 					/>
 					<div className="wp-block-coblocks-pricing-table-item__price-wrapper">
@@ -90,7 +89,7 @@ class Edit extends Component {
 							onChange={ ( nextCurrency ) => setAttributes( { currency: nextCurrency } ) }
 							value={ currency }
 							placeholder={ __( '$', 'coblocks' ) }
-							formattingControls={ formattingControls }
+							allowedFormats={ allowedFormats }
 							keepPlaceholderOnFocus
 						/>
 						<RichText
@@ -99,7 +98,7 @@ class Edit extends Component {
 							onChange={ ( nextAmount ) => setAttributes( { amount: nextAmount } ) }
 							value={ amount }
 							placeholder="99"
-							formattingControls={ formattingControls }
+							allowedFormats={ allowedFormats }
 							keepPlaceholderOnFocus
 						/>
 					</div>
@@ -115,8 +114,8 @@ class Edit extends Component {
 					<InnerBlocks
 						template={ TEMPLATE }
 						templateLock={ false }
-						allowedBlocks={ ALLOWED_BLOCKS }
 						templateInsertUpdatesSelection={ false }
+						renderAppender={ InnerBlocks.ButtonBlockAppender }
 					/>
 				</div>
 			</Fragment>

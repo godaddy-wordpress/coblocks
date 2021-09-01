@@ -14,12 +14,6 @@ describe( 'Test CoBlocks Services Block', function() {
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/services' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-services' ).should( 'exist' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -29,64 +23,66 @@ describe( 'Test CoBlocks Services Block', function() {
 	it( 'Test services block saves with columns attribute.', function() {
 		helpers.addBlockToPost( 'coblocks/services', true );
 
-		cy.get( '.wp-block-coblocks-services' ).click( { force: true } );
+		// Select parent block
+		helpers.selectBlock( 'services' );
 
-		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 2 );
+		cy.get( '.edit-post-visual-editor [data-type="coblocks/service"]' ).should( 'have.length', 2 );
 
-		helpers.setInputValue( 'Services settings', 'Columns', 1, false );
+		helpers.setInputValue( 'Services settings', 'Columns', '{downarrow}', false );
+		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 1 ); // should only have one placeholder on one column.
 
-		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 2 ); // No longer pops children out of block.
-
-		helpers.setInputValue( 'Services settings', 'Columns', 3, false );
-
+		helpers.setInputValue( 'Services settings', 'Columns', '{uparrow}{uparrow}', false );
 		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 3 );
 
-		helpers.setInputValue( 'Services settings', 'Columns', 4, false );
-
+		helpers.setInputValue( 'Services settings', 'Columns', '{uparrow}', false );
 		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 4 );
-
-		cy.get( 'h3[aria-label="Write title…"]' ).each( ( $serviceHeading, index ) => {
-			cy.get( $serviceHeading ).click( { force: true } ).type( `Service ${ index }` );
-		} );
 
 		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/services' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-service' ).should( 'have.length', 4 );
-
-		helpers.editPage();
 	} );
 
 	/**
 	 * Test that we can add a services block to the content, change
 	 * heading level and  are able to successfully save the block without errors.
+	 *
+	 * This function has an extended timeout because settings
+	 * propagate down to children slowly
 	 */
 	it( 'Test services block saves with heading level set.', function() {
 		helpers.addBlockToPost( 'coblocks/services', true );
 
-		cy.get( '.wp-block-coblocks-services' ).click( { force: true } );
+		// Select parent block
+		helpers.selectBlock( 'services' );
 
-		helpers.addBlockToPost( 'coblocks/services', true );
-		cy.get( 'h3[data-type="core/heading"][aria-label="Write title…"]' );
-
-		cy.get( '.wp-block-coblocks-services' ).click();
 		helpers.openHeadingToolbarAndSelect( 2 );
-		cy.get( 'h2[data-type="core/heading"][aria-label="Write title…"]' );
-
-		cy.get( '.wp-block-coblocks-services' ).click();
+		cy.get( '.edit-post-visual-editor [data-type="coblocks/services"] h2' ).should( 'exist' );
 		helpers.openHeadingToolbarAndSelect( 3 );
-		cy.get( 'h3[data-type="core/heading"][aria-label="Write title…"]' );
-
-		cy.get( '.wp-block-coblocks-services' ).click();
+		cy.get( '.edit-post-visual-editor [data-type="coblocks/services"] h3' ).should( 'exist' );
 		helpers.openHeadingToolbarAndSelect( 4 );
-		cy.get( 'h4[data-type="core/heading"][aria-label="Write title…"]' );
-
-		cy.get( '.wp-block-coblocks-services' ).click();
+		cy.get( '.edit-post-visual-editor [data-type="coblocks/services"] h4' ).should( 'exist' );
 		helpers.openHeadingToolbarAndSelect( 5 );
-		cy.get( 'h5[data-type="core/heading"][aria-label="Write title…"]' );
+		cy.get( '.edit-post-visual-editor [data-type="coblocks/services"] h5' ).should( 'exist' );
+
+		helpers.savePage();
+		helpers.checkForBlockErrors( 'coblocks/services' );
+	} );
+
+	/**
+	 * Test that the service block move arrow orientation is correct
+	 */
+	it( 'Test service block has the proper arrow orientation.', function() {
+		helpers.addBlockToPost( 'coblocks/services', true );
+
+		cy.get( '.edit-post-visual-editor [data-type="coblocks/service"]:first-child' ).click();
+		cy.get( 'div.block-editor-block-mover' ).should( 'have.class', 'is-horizontal' );
+
+		// Select parent block
+		helpers.selectBlock( 'services' );
+
+		helpers.setInputValue( 'Services settings', 'Columns', 1, false );
+
+		cy.get( '.edit-post-visual-editor [data-type="coblocks/service"]:first-child' ).click();
+		cy.get( 'div.block-editor-block-mover' ).should( 'not.have.class', 'is-horizontal' );
 
 		helpers.savePage();
 		helpers.checkForBlockErrors( 'coblocks/services' );
@@ -103,7 +99,7 @@ describe( 'Test CoBlocks Services Block', function() {
 
 		helpers.toggleSettingCheckbox( /display buttons/i );
 
-		cy.get( 'div.wp-block-button' ).should( 'exist' );
+		cy.get( '.wp-block-buttons' ).should( 'have.length', 2 );
 
 		helpers.savePage();
 

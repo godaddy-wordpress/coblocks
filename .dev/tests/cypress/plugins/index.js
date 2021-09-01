@@ -1,8 +1,3 @@
-module.exports = ( on, config ) => {
-  on( 'task', {
-    log ( message ) {
-      console.log( message );
-      return null
-    }
-  } );
-}
+module.exports = ( on ) => {
+	require( 'cypress-log-to-output' ).install( on, ( type, event ) => event.level === 'error' || event.type === 'error' );
+};

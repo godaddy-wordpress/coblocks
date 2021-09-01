@@ -15,8 +15,8 @@ let serializedBlock;
 
 const baseAttributes = {
 	images: [
-		{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', id: 1 },
-		{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg', id: 2 },
+		{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', id: 1, index: 0 },
+		{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg', id: 2, index: 1 },
 	],
 };
 
@@ -60,7 +60,7 @@ describe( name, () => {
 			...block.attributes,
 			images: [
 				...block.attributes.images,
-				{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg', id: 3, caption: 'test caption' },
+				{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg', id: 3, index: 3, caption: 'test caption' },
 			],
 			captions: false,
 		};
@@ -83,7 +83,7 @@ describe( name, () => {
 					...block.attributes,
 					images: [
 						...block.attributes.images,
-						{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg', id: 3, caption: 'test caption' },
+						{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg', id: 3, index: 3, caption: 'test caption' },
 					],
 					captions: true,
 					captionStyle,
@@ -101,7 +101,7 @@ describe( name, () => {
 				...block.attributes,
 				images: [
 					...block.attributes.images,
-					{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg', id: 3, imgLink: 'http://google.com' },
+					{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg', id: 3, index: 3, imgLink: 'http://google.com' },
 				],
 				linkTo: 'custom',
 			};
@@ -117,7 +117,7 @@ describe( name, () => {
 				...block.attributes,
 				images: [
 					...block.attributes.images,
-					{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg', id: 3 },
+					{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg', id: 3, index: 3 },
 				],
 				linkTo: 'media',
 			};
@@ -133,7 +133,7 @@ describe( name, () => {
 				...block.attributes,
 				images: [
 					...block.attributes.images,
-					{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg', id: 3, link: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg' },
+					{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg', id: 3, index: 3, link: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg' },
 				],
 				linkTo: 'attachment',
 			};
@@ -154,7 +154,7 @@ describe( name, () => {
 		} );
 	} );
 
-	[ 'small', 'medium', 'large', 'xlarge' ].forEach( ( gutter ) => {
+	[ 'small', 'medium', 'large' ].forEach( ( gutter ) => {
 		it( `should have className 'has-${gutter}-gutter' with gutter set to '${gutter}'.`, () => {
 			block.attributes = { ...block.attributes, gutter };
 

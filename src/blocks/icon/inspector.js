@@ -74,20 +74,30 @@ class Inspector extends Component {
 		return Math.round( width / 4 );
 	}
 
-	onSetNewTab( value ) {
-		const { rel } = this.props.attributes;
-		const linkTarget = value ? '_blank' : undefined;
-
+	onSetNewTab( shouldOpenNewTab ) {
+		const { rel = '' } = this.props.attributes;
+		const linkTarget = shouldOpenNewTab ? '_blank' : undefined;
+		const linkRelAttributes = NEW_TAB_REL.split( ' ' );
 		let updatedRel = rel;
-		if ( linkTarget && ! rel ) {
-			updatedRel = NEW_TAB_REL;
-		} else if ( ! linkTarget && rel === NEW_TAB_REL ) {
-			updatedRel = undefined;
+
+		// Should open new tab and set block specified rel
+		if ( shouldOpenNewTab && linkRelAttributes.filter( ( att ) => updatedRel.includes( att ) ).length === 0 ) {
+			linkRelAttributes.forEach( ( att ) => {
+				updatedRel = updatedRel.includes( att ) ? updatedRel : updatedRel = `${ updatedRel } ${ att }`;
+			} );
+		}
+
+		// Should not open in new tab and should remove block specified rel
+		if ( ! shouldOpenNewTab && linkRelAttributes.filter( ( att ) => updatedRel.includes( att ) ).length > 0 ) {
+			linkRelAttributes.forEach( ( att ) => {
+				updatedRel = updatedRel.replace( att, '' );
+				updatedRel = updatedRel.trim();
+			} );
 		}
 
 		this.props.setAttributes( {
 			linkTarget,
-			rel: updatedRel,
+			rel: updatedRel || undefined,
 		} );
 	}
 
@@ -153,8 +163,8 @@ class Inspector extends Component {
 			<Fragment>
 				<InspectorControls>
 					<PanelBody title={ __( 'Icon settings', 'coblocks' ) }>
-						{ iconSize === 'advanced' ?
-							<Fragment>
+						{ iconSize === 'advanced'
+							? <Fragment>
 								<div className="components-base-control components-coblocks-icon-block--advanced-size">
 									<Button
 										type="button"
@@ -180,8 +190,8 @@ class Inspector extends Component {
 										step={ 1 }
 									/>
 								</div>
-							</Fragment> :
-							<BaseControl label={ label } help={ help }>
+							</Fragment>
+							: <BaseControl id={ `icon-size-control-${ clientId }` } label={ label } help={ help }>
 								<div className="components-coblocks-icon-size__controls">
 									<IconSizeSelect
 										setAttributes={ setAttributes }
@@ -233,10 +243,9 @@ class Inspector extends Component {
 						/>
 						<div className="coblocks-icon-types-list-wrapper">
 							<ul className="block-editor-block-types-list coblocks-icon-types-list">
-								{ ! this.state.isSearching ?
-									<li className="block-editor-block-types-list__list-item selected-svg">
+								{ ! this.state.isSearching
+									? <li className="block-editor-block-types-list__list-item selected-svg">
 										<Button
-											isLarge
 											className="editor-block-list-item-button"
 											onClick={ () => {
 												return false;
@@ -246,11 +255,11 @@ class Inspector extends Component {
 												{ icon && svg[ iconStyle ][ icon ].icon }
 											</span>
 										</Button>
-									</li> :
-									null
+									</li>
+									: null
 								}
-								{ Object.keys( this.state.filteredIcons[ iconStyle ] ).length > 0 ?
-									Object.keys( this.state.filteredIcons[ iconStyle ] ).map( ( keyName, i ) => {
+								{ Object.keys( this.state.filteredIcons[ iconStyle ] ).length > 0
+									? Object.keys( this.state.filteredIcons[ iconStyle ] ).map( ( keyName, i ) => {
 										return (
 											<li key={ `editor-pblock-types-list-item-${ i }` } className={ classnames(
 												'block-editor-block-types-list__list-item', {
@@ -258,7 +267,6 @@ class Inspector extends Component {
 											) }>
 												<Tooltip text={ ( svg[ iconStyle ][ keyName ].label ) ? svg[ iconStyle ][ keyName ].label : keyName }>
 													<Button
-														isLarge
 														isSecondary
 														isPrimary={ icon && icon === keyName }
 														className="editor-block-list-item-button"
@@ -273,8 +281,8 @@ class Inspector extends Component {
 												</Tooltip>
 											</li>
 										);
-									} ) :
-									<li className="no-results"> { __( 'No results found.', 'coblocks' ) } </li>
+									} )
+									: <li className="no-results"> { __( 'No results found.', 'coblocks' ) } </li>
 								}
 							</ul>
 						</div>

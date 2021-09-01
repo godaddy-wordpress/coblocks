@@ -6,7 +6,6 @@
   "supportFile": ".dev/tests/cypress/support/commands.js",
   "screenshotsFolder": ".dev/tests/cypress/screenshots",
   "projectId": "sovnn2",
-  "firefoxGcInterval": null,
   "integrationFolder": "./",
   "testFiles": "**/*.cypress.js",
   "viewportWidth": 1920,
@@ -15,5 +14,9 @@
     "testURL": "http://localhost:8889",
     "wpUsername": "admin",
     "wpPassword": "password"
+  },
+  "retries": {
+    "runMode": 0,
+    "openMode": 0
   }
 }

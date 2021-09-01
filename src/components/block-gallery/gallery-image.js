@@ -1,4 +1,9 @@
 /**
+ * Internal dependencies
+ */
+import * as helper from '../../utils/helper';
+
+/**
  * External Dependencies
  */
 import classnames from 'classnames';
@@ -9,11 +14,12 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { Button, Spinner, Dashicon } from '@wordpress/components';
-import { RichText, URLInput } from '@wordpress/block-editor';
+import { Spinner, Button, Dashicon, ButtonGroup } from '@wordpress/components';
+import { MediaUpload, MediaUploadCheck, RichText, URLInput } from '@wordpress/block-editor';
 import { withSelect } from '@wordpress/data';
 import { BACKSPACE, DELETE } from '@wordpress/keycodes';
 import { isBlobURL } from '@wordpress/blob';
+import { chevronLeft, chevronRight, chevronUp, chevronDown, closeSmall } from '@wordpress/icons';
 
 class GalleryImage extends Component {
 	constructor() {
@@ -129,6 +135,8 @@ class GalleryImage extends Component {
 			url,
 			'aria-label': ariaLabel,
 			imgLink,
+			imageIndex,
+			replaceImage,
 		} = this.props;
 
 		const imgClasses = classnames( {
@@ -176,19 +184,52 @@ class GalleryImage extends Component {
 		} );
 
 		const captionStyles = {
-			fontSize: fontSize ? fontSize + 'px' : undefined,
+			fontSize: helper.computeFontSize( fontSize ),
 		};
-
 		// Disable reason: Each block can be selected by clicking on it and we should keep the same saved markup
 		/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 		return (
 			<figure className={ className } tabIndex="-1" onKeyDown={ this.onKeyDown } ref={ this.bindContainer }>
+				{ isSelected && (
+					<>
+						<ButtonGroup className="block-library-gallery-item__inline-menu is-right is-visible">
+							<MediaUploadCheck>
+								<MediaUpload
+									allowedTypes={ [ 'image' ] }
+									onSelect={ ( selectedImg ) => {
+										const newAttributeProperty = helper.pickRelevantMediaFiles( selectedImg );
+										replaceImage( imageIndex, newAttributeProperty );
+									} }
+									value={ url }
+									render={ ( { open } ) => (
+										<Button
+											className="coblocks-gallery-item__button-replace"
+											onClick={ open }
+											label={ __( 'Replace Image', 'coblocks' ) }
+										>
+											{ __( 'Replace', 'coblocks' ) }
+										</Button>
+									) }
+								>
+								</MediaUpload>
+							</MediaUploadCheck>
+
+							<Button
+								icon={ closeSmall }
+								className="coblocks-gallery-item__button"
+								onClick={ onRemove }
+								label={ __( 'Remove image', 'coblocks' ) }
+								disabled={ ! isSelected }
+							/>
+						</ButtonGroup>
+					</>
+				) }
 				{ isSelected &&
 					<Fragment>
 						{ supportsMoving &&
-							<div className="components-coblocks-gallery-item__move-menu">
+							<ButtonGroup className="block-library-gallery-item__inline-menu is-left">
 								<Button
-									icon={ verticalMoving ? 'arrow-up' : 'arrow-left' }
+									icon={ verticalMoving ? chevronUp : chevronLeft }
 									onClick={ ! isFirstItem && onMoveBackward }
 									className="coblocks-gallery-item__button"
 									label={ __( 'Move image backward', 'coblocks' ) }
@@ -196,24 +237,15 @@ class GalleryImage extends Component {
 									disabled={ ! isSelected }
 								/>
 								<Button
-									icon={ verticalMoving ? 'arrow-down' : 'arrow-right' }
+									icon={ verticalMoving ? chevronDown : chevronRight }
 									onClick={ ! isLastItem && onMoveForward }
 									className="coblocks-gallery-item__button"
 									label={ __( 'Move image forward', 'coblocks' ) }
 									aria-disabled={ isLastItem }
 									disabled={ ! isSelected }
 								/>
-							</div>
+							</ButtonGroup>
 						}
-						<div className="components-coblocks-gallery-item__remove-menu">
-							<Button
-								icon="no-alt"
-								onClick={ onRemove }
-								className="coblocks-gallery-item__button"
-								label={ __( 'Remove image', 'coblocks' ) }
-								disabled={ ! isSelected }
-							/>
-						</div>
 						{ linkTo === 'custom' &&
 							<form
 								className="components-coblocks-gallery-item__image-link"

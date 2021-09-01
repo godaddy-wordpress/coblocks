@@ -27,7 +27,9 @@ function coblocks_render_post_carousel_block( $attributes ) {
 
 	if ( isset( $attributes['categories'] ) ) {
 
-		$args['category'] = $attributes['categories'];
+		$key = ( isset( $attributes['categoryRelation'] ) && 'and' === $attributes['categoryRelation'] ) ? 'category__and' : 'category__in';
+
+		$args[ $key ] = array_column( $attributes['categories'], 'id' );
 
 	}
 
@@ -105,6 +107,12 @@ function coblocks_post_carousel( $posts, $attributes ) {
 
 	}
 
+	$right_to_left = false;
+
+	if ( is_rtl() ) {
+		$right_to_left = true;
+	}
+
 	$block_content = sprintf(
 		'<div class="%1$s"><div class="coblocks-slick pb-8" data-slick="%2$s">',
 		esc_attr( $class ),
@@ -124,6 +132,7 @@ function coblocks_post_carousel( $posts, $attributes ) {
 						'infinite'       => true,
 						'adaptiveHeight' => false,
 						'draggable'      => true,
+						'rtl'            => $right_to_left,
 						'responsive'     => array(
 							array(
 								'breakpoint' => 1024,
@@ -341,3 +350,33 @@ function coblocks_register_post_carousel_block() {
 	);
 }
 add_action( 'init', 'coblocks_register_post_carousel_block' );
+
+/**
+ * Handles outdated versions of the `coblocks/post-carousel` block by converting
+ * attribute `categories` from a numeric string to an array with key `id`.
+ *
+ * This is done to accommodate the changes introduced in https://github.com/WordPress/gutenberg/pull/20781 that sought to
+ * add support for multiple categories to the block. However, given that this
+ * block is dynamic, the usual provisions for block migration are insufficient,
+ * as they only act when a block is loaded in the editor.
+ *
+ * Remove when and if the bottom client-side deprecation for this block is removed.
+ *
+ * @param array $block A single parsed block object.
+ *
+ * @return array The migrated block object.
+ */
+function coblocks_post_carousel_migrate_categories( $block ) {
+	if (
+		'coblocks/post-carousel' === $block['blockName'] &&
+		! empty( $block['attrs']['categories'] ) &&
+		is_string( $block['attrs']['categories'] )
+	) {
+		$block['attrs']['categories'] = array(
+			array( 'id' => absint( $block['attrs']['categories'] ) ),
+		);
+	}
+	return $block;
+}
+
+add_filter( 'render_block_data', 'coblocks_post_carousel_migrate_categories' );

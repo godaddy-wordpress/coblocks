@@ -28,7 +28,7 @@ const attributes = {
 const deprecated = [
 	{
 		attributes,
-		save( { attributes } ) {
+		save( deprecatedProps ) {
 			const {
 				coblocks,
 				layout,
@@ -45,7 +45,7 @@ const deprecated = [
 				focalPoint,
 				hasParallax,
 				height,
-			} = attributes;
+			} = deprecatedProps.attributes;
 
 			const textClass = getColorClassName( 'color', textColor );
 			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
@@ -65,7 +65,7 @@ const deprecated = [
 
 			const innerClasses = classnames(
 				'wp-block-coblocks-hero__inner',
-				...BackgroundClasses( attributes ), {
+				...BackgroundClasses( deprecatedProps.attributes ), {
 					[ `hero-${ layout }-align` ]: layout,
 					'has-text-color': textColor && textColor.color,
 					'has-padding': paddingSize && paddingSize !== 'no',
@@ -87,7 +87,7 @@ const deprecated = [
 			return (
 				<div className={ classes } style={ styles } >
 					<div className={ innerClasses } style={ innerStyles }>
-						{ BackgroundVideo( attributes ) }
+						{ BackgroundVideo( deprecatedProps.attributes ) }
 						<div className="wp-block-coblocks-hero__box" style={ { maxWidth: maxWidth ? maxWidth + 'px' : undefined } }>
 							<InnerBlocks.Content />
 						</div>
@@ -104,7 +104,7 @@ const deprecated = [
 				default: '#f3f3f3',
 			},
 		},
-		save: ( { attributes } ) => {
+		save: ( deprecatedProps ) => {
 			const {
 				coblocks,
 				layout,
@@ -121,7 +121,7 @@ const deprecated = [
 				focalPoint,
 				hasParallax,
 				height,
-			} = attributes;
+			} = deprecatedProps.attributes;
 
 			const textClass = getColorClassName( 'color', textColor );
 			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
@@ -141,7 +141,7 @@ const deprecated = [
 
 			const innerClasses = classnames(
 				'wp-block-coblocks-hero__inner',
-				...BackgroundClasses( attributes ), {
+				...BackgroundClasses( deprecatedProps.attributes ), {
 					[ `hero-${ layout }-align` ]: layout,
 					'has-text-color': textColor && textColor.color,
 					'has-padding': paddingSize && paddingSize !== 'no',
@@ -162,7 +162,78 @@ const deprecated = [
 			return (
 				<div className={ classes } style={ styles } >
 					<div className={ innerClasses } style={ innerStyles }>
-						{ BackgroundVideo( attributes ) }
+						{ BackgroundVideo( deprecatedProps.attributes ) }
+						<div className="wp-block-coblocks-hero__content-wrapper">
+							<div className="wp-block-coblocks-hero__content" style={ { maxWidth: maxWidth ? maxWidth + 'px' : undefined } }>
+								<InnerBlocks.Content />
+							</div>
+						</div>
+					</div>
+				</div>
+			);
+		},
+	},
+	{
+		attributes,
+		save: ( deprecatedProps ) => {
+			const {
+				coblocks,
+				layout,
+				fullscreen,
+				maxWidth,
+				backgroundImg,
+				backgroundType,
+				paddingSize,
+				backgroundColor,
+				customBackgroundColor,
+				customTextColor,
+				textColor,
+				contentAlign,
+				focalPoint,
+				hasParallax,
+				height,
+			} = deprecatedProps.attributes;
+
+			const textClass = getColorClassName( 'color', textColor );
+			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+
+			let classes = classnames( {
+				'has-text-color': textColor || customTextColor,
+				[ textClass ]: textClass,
+			} );
+
+			if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
+				classes = classnames( classnames, `coblocks-hero-${ coblocks.id }` );
+			}
+
+			const styles = {
+				color: textClass ? undefined : customTextColor,
+			};
+
+			const innerClasses = classnames(
+				'wp-block-coblocks-hero__inner',
+				...BackgroundClasses( deprecatedProps.attributes ), {
+					[ `hero-${ layout }-align` ]: layout,
+					'has-text-color': textColor && textColor.color,
+					'has-padding': paddingSize && paddingSize !== 'no',
+					[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
+					[ backgroundClass ]: backgroundClass,
+					[ `has-${ contentAlign }-content` ]: contentAlign,
+					'is-fullscreen': fullscreen,
+				} );
+
+			const innerStyles = {
+				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+				backgroundImage: backgroundImg && backgroundType === 'image' ? `url(${ backgroundImg })` : undefined,
+				color: textColor ? textColor.color : undefined,
+				backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
+				minHeight: fullscreen ? undefined : height,
+			};
+
+			return (
+				<div className={ classes } style={ styles } >
+					<div className={ innerClasses } style={ innerStyles }>
+						{ BackgroundVideo( deprecatedProps.attributes ) }
 						<div className="wp-block-coblocks-hero__content-wrapper">
 							<div className="wp-block-coblocks-hero__content" style={ { maxWidth: maxWidth ? maxWidth + 'px' : undefined } }>
 								<InnerBlocks.Content />

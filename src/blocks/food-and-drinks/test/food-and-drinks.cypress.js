@@ -3,17 +3,17 @@
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
-describe( 'Block: Food and Drinks', function () {
-
+describe( 'Block: Food and Drinks', function() {
 	beforeEach( () => {
 		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
+		helpers.selectBlock( 'food & drink' );
 	} );
 
 	/**
 	 * Test that we can add a food-and-drinks block to the content, not alter
 	 * any settings, and are able to successfully save the block without errors.
 	 */
-	it( 'can be inserted without errors', function () {
+	it( 'can be inserted without errors', function() {
 		cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'exist' );
 		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
 	} );
@@ -34,9 +34,9 @@ describe( 'Block: Food and Drinks', function () {
 		helpers.openSettingsPanel( /food & drinks settings/i );
 
 		[ 2, 3, 4 ].forEach( ( columns ) => {
-			cy.get( '.components-range-control' ).contains( /columns/i ).parent().find( '.components-range-control__number' ).type( `{selectall}${columns}` );
+			cy.get( '.components-range-control' ).contains( /columns/i ).parent().find( '.components-input-control__input' ).focus().type( `{selectall}${ columns }` );
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', 'has-columns' );
-			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', `has-${columns}-columns` );
+			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', `has-${ columns }-columns` );
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).find( '[data-type="coblocks/food-item"]' ).should( 'have.length', columns );
 		} );
 
@@ -49,8 +49,8 @@ describe( 'Block: Food and Drinks', function () {
 		helpers.openSettingsPanel( /food & drinks settings/i );
 
 		[ 'Small', 'Medium', 'Large', 'Huge' ].forEach( ( gutter ) => {
-			cy.get( '.components-base-control' ).contains( /gutter/i ).parent().find( `.components-button[aria-label="${gutter}"]` ).click();
-			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', `has-${gutter.toLowerCase()}-gutter` );
+			cy.get( '.components-base-control' ).contains( /gutter/i ).parent().find( `.components-button[aria-label="${ gutter }"]` ).click();
+			cy.get( '.wp-block-coblocks-food-and-drinks' ).first().should( 'have.class', `has-${ gutter.toLowerCase() }-gutter` );
 		} );
 
 		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
@@ -62,7 +62,7 @@ describe( 'Block: Food and Drinks', function () {
 			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'not.exist' );
 		} );
 
-		cy.get( '[data-type="coblocks/food-and-drinks"]' ).first().click();
+		helpers.selectBlock( 'Food & Drink' );
 
 		helpers.openSettingsPanel( /food & drinks settings/i );
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /images/i ).click();
@@ -81,7 +81,7 @@ describe( 'Block: Food and Drinks', function () {
 			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'exist' );
 		} );
 
-		cy.get( '[data-type="coblocks/food-and-drinks"]' ).first().click();
+		helpers.selectBlock( 'Food & Drink' );
 
 		helpers.openSettingsPanel( /food & drinks settings/i );
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /prices/i ).click();
@@ -100,7 +100,7 @@ describe( 'Block: Food and Drinks', function () {
 	it( 'Test the food-and-drinks block custom classes.', function() {
 		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
 
-		cy.get( '[data-type="coblocks/food-and-drinks"]' ).first().click();
+		helpers.selectBlock( 'food & drink' );
 
 		helpers.openSettingsPanel( /food & drinks settings/i );
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /prices/i ).click();
@@ -121,7 +121,7 @@ describe( 'Block: Food and Drinks', function () {
 		helpers.addCustomBlockClass( 'my-custom-class', 'food-and-drinks' );
 
 		// Click "Add Menu Section" and verify two blocks exist on the page.
-		cy.get( '[data-type="coblocks/food-and-drinks"]' ).click();
+		helpers.selectBlock( 'Food & Drink' );
 		cy.get( '[data-type="coblocks/food-and-drinks"]' ).find( '.block-editor-button-block-appender' ).click();
 		cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'have.length', 2 );
 

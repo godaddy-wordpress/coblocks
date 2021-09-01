@@ -7,4 +7,10 @@ module.exports = {
 	testMatch: [ '<rootDir>/src/**/test/*.spec.js' ],
 	setupFilesAfterEnv: [ '<rootDir>/.dev/tests/jest/setup-globals.js' ],
 	reporters: [ 'default' ],
+	moduleNameMapper: {
+		'@godaddy-wordpress/coblocks-icons': '<rootDir>/.dev/tests/jest/empty-class.js',
+	},
+	collectCoverageFrom: [
+		'<rootDir>/src/**/*.js',
+	],
 };

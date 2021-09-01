@@ -17,13 +17,14 @@ import classnames from 'classnames';
  */
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { Button, DropZone, Spinner } from '@wordpress/components';
+import { Button, DropZone, Spinner, ButtonGroup } from '@wordpress/components';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { RichText, MediaPlaceholder } from '@wordpress/block-editor';
 import { mediaUpload } from '@wordpress/editor';
 import { isBlobURL } from '@wordpress/blob';
 import { createBlock } from '@wordpress/blocks';
 import { compose } from '@wordpress/compose';
+import { closeSmall } from '@wordpress/icons';
 
 const isEmpty = ( attributes ) => {
 	const attributesToCheck = [ 'url', 'title', 'description', 'price' ];
@@ -31,20 +32,16 @@ const isEmpty = ( attributes ) => {
 		attributesToCheck.includes( key )
 	);
 
-	if ( typeof Object.fromEntries === 'undefined' ) {
-		return hasEmptyAttributes( fromEntries( newAttributes ) );
-	}
-
-	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
+	return hasEmptyAttributes( fromEntries( newAttributes ) );
 };
 
 class FoodItem extends Component {
 	constructor() {
 		super( ...arguments );
 		this.state = {
-			url: this.props.attributes.url ||'',
+			url: this.props.attributes.url || '',
 			price: this.props.attributes.price || '',
-		}
+		};
 		this.replaceImage = this.replaceImage.bind( this );
 		this.setSpicyTo = this.setSpicyTo.bind( this );
 		this.setHotTo = this.setHotTo.bind( this );
@@ -143,7 +140,7 @@ class FoodItem extends Component {
 			onFileChange: ( [ media ] ) => {
 				this.setState( { url: media.url } );
 				this.props.setAttributes( { url: media.url, alt: media.alt } );
-			}
+			},
 		} );
 	}
 
@@ -202,18 +199,18 @@ class FoodItem extends Component {
 			<Fragment>
 				<figure className={ classes }>
 					{ isSelected && (
-						<div className="wp-block-coblocks-food-item__remove-menu">
+						<ButtonGroup className="block-library-gallery-item__inline-menu is-right is-visible">
 							<Button
-								icon="no-alt"
+								icon={ closeSmall }
 								onClick={ () => {
-									setAttributes( { url: '' } )
+									setAttributes( { url: '' } );
 									this.setState( { url: '' } );
 								} }
 								className="coblocks-gallery-item__button"
 								label={ __( 'Remove image', 'coblocks' ) }
 								disabled={ ! isSelected }
 							/>
-						</div>
+						</ButtonGroup>
 					) }
 					{ dropZone }
 					{ isBlobURL( url ) && <Spinner /> }
@@ -221,10 +218,10 @@ class FoodItem extends Component {
 						src={ url }
 						alt={ alt }
 						style={ {
-							objectPosition: focalPoint ?
-								`${ focalPoint.x * 100 }% ${ focalPoint.y *
-										100 }%` :
-								undefined,
+							objectPosition: focalPoint
+								? `${ focalPoint.x * 100 }% ${ focalPoint.y *
+										100 }%`
+								: undefined,
 						} }
 					/>
 				</figure>
@@ -279,7 +276,7 @@ class FoodItem extends Component {
 
 		const richTextAttributes = {
 			keepPlaceholderOnFocus: true,
-			formattingControls: [ 'bold', 'italic' ],
+			allowedFormats: [ 'bold', 'italic' ],
 		};
 
 		return (
@@ -424,7 +421,7 @@ class FoodItem extends Component {
 								placeholder={ __( '$0.00', 'coblocks' ) }
 								onChange={ ( newPrice ) => {
 									this.setState( { price: newPrice } );
-									this.props.setAttributes( { price : newPrice}) 
+									this.props.setAttributes( { price: newPrice } );
 								} }
 								{ ...richTextAttributes }
 							/>

@@ -52,6 +52,18 @@ class CoBlocks_Form {
 	}
 
 	/**
+	 * Default success text
+	 *
+	 * @var string
+	 */
+	public function default_success_text() {
+		/**
+		 * Filter the sent notice above the success message.
+		 */
+		return (string) apply_filters( 'coblocks_form_sent_notice', __( 'Your message was sent:', 'coblocks' ) );
+	}
+
+	/**
 	 * The Constructor.
 	 */
 	public function __construct() {
@@ -203,7 +215,7 @@ class CoBlocks_Form {
 
 				if ( $submit_form ) {
 
-					$this->success_message();
+					$this->success_message( $atts );
 
 					print( '</div>' );
 
@@ -260,17 +272,20 @@ class CoBlocks_Form {
 
 		if ( $has_last_name ) {
 
-			?>
+			$style   = implode( ' ', (array) apply_filters( 'coblocks_render_label_color_wrapper_styles', array(), $atts ) );
+			$styles  = empty( $style ) ? '' : " style='$style'";
+			$classes = implode( ' ', (array) apply_filters( 'coblocks_render_label_color_wrapper_class', array( 'coblocks-form__subtext' ), $atts ) );
 
+			?>
 			<div class="coblocks-form__inline-fields">
 				<div class="coblocks-form__inline-field">
 					<input type="text" id="<?php echo esc_attr( $label_slug ); ?>-firstname" name="field-<?php echo esc_attr( $label_slug ); ?>[value][first-name]" class="coblocks-field coblocks-field--name first" <?php echo esc_attr( $required_attr ); ?> />
-					<small class="coblocks-form__subtext"><?php echo esc_html( $label_first_name ); ?></small>
+					<small class="<?php echo esc_attr( $classes ); ?>"<?php echo wp_kses_post( $styles ); ?>><?php echo esc_html( $label_first_name ); ?></small>
 				</div>
 
 				<div class="coblocks-form__inline-field">
 					<input type="text" id="<?php echo esc_attr( $label_slug ); ?>-lastname" name="field-<?php echo esc_attr( $label_slug ); ?>[value][last-name]" class="coblocks-field coblocks-field--name last" <?php echo esc_attr( $required_attr ); ?> />
-					<small class="coblocks-form__subtext"><?php echo esc_html( $label_last_name ); ?></small>
+					<small class="<?php echo esc_attr( $classes ); ?>"<?php echo wp_kses_post( $styles ); ?>><?php echo esc_html( $label_last_name ); ?></small>
 				</div>
 			</div>
 
@@ -475,9 +490,10 @@ class CoBlocks_Form {
 
 		$the_options = array_filter( $atts['options'] );
 
-		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Choose one', 'coblocks' );
-		$label_desc = sanitize_title( $label ) !== 'choose-one' ? sanitize_title( $label ) : 'radio';
-		$label_slug = $radio_count > 1 ? sanitize_title( $label_desc . '-' . $radio_count ) : sanitize_title( $label_desc );
+		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Choose one', 'coblocks' );
+		$label_desc    = sanitize_title( $label ) !== 'choose-one' ? sanitize_title( $label ) : 'choose-one';
+		$label_slug    = $radio_count > 1 ? sanitize_title( $label_desc . '-' . $radio_count ) : sanitize_title( $label_desc );
+		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? ' required' : '';
 
 		ob_start();
 
@@ -491,14 +507,15 @@ class CoBlocks_Form {
 
 		}
 
-		foreach ( $the_options as $value ) {
+		foreach ( $the_options as $key => $value ) {
 
 			printf(
-				'<input id="%1$s" type="radio" name="field-%2$s[value]" value="%3$s" class="radio">
-				<label class="coblocks-radio-label" for="%1$s">%4$s</label>',
+				'<input id="%1$s" type="radio" name="field-%2$s[value]" value="%3$s" class="radio"%4$s>
+				<label class="coblocks-radio-label" for="%1$s">%5$s</label>',
 				esc_attr( $label_slug . '-' . sanitize_title( $value ) ),
 				esc_attr( $label_slug ),
 				esc_attr( $value ),
+				0 === $key ? esc_attr( $required_attr ) : '',
 				esc_html( $value )
 			);
 
@@ -588,10 +605,39 @@ class CoBlocks_Form {
 
 		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Select', 'coblocks' );
 		$label_slug = $checkbox_count > 1 ? sanitize_title( $label . '-' . $checkbox_count ) : sanitize_title( $label );
+		$required   = ( isset( $atts['required'] ) && $atts['required'] );
+
+		if ( $required ) {
+
+			wp_enqueue_script(
+				'coblocks-checkbox-required',
+				CoBlocks()->asset_source( 'js' ) . 'coblocks-checkbox-required.js',
+				array(),
+				COBLOCKS_VERSION,
+				true
+			);
+
+		}
 
 		ob_start();
 
-		print( '<div class="coblocks-field">' );
+		printf(
+			'<div class="coblocks-field checkbox%1$s">
+				%2$s',
+			esc_attr( $required ? ' required' : '' ),
+			wp_kses_post(
+				$required ? sprintf(
+					'<div class="required-error hidden">%s</div>',
+					/**
+					* Filter the checkbox required text that displays when no checkbox is
+					* selected when the form is submitted.
+					*
+					* @param string $error_text Error text displayed to the user.
+					*/
+					apply_filters( 'coblocks_form_checkbox_required_text', __( 'Please select at least one checkbox.', 'coblocks' ) )
+				) : ''
+			)
+		);
 
 		$this->render_field_label( $atts, $label, $checkbox_count );
 
@@ -705,6 +751,8 @@ class CoBlocks_Form {
 
 		$label      = isset( $atts['label'] ) ? $atts['label'] : $field_label;
 		$label_slug = $count > 1 ? sanitize_title( $label . '-' . $count ) : sanitize_title( $label );
+		$styles     = implode( ' ', (array) apply_filters( 'coblocks_render_label_color_wrapper_styles', array(), $atts ) );
+		$classes    = implode( ' ', (array) apply_filters( 'coblocks_render_label_color_wrapper_class', array( 'coblocks-label' ), $atts ) );
 
 		/**
 		 * Filter the required text in the field label.
@@ -725,14 +773,14 @@ class CoBlocks_Form {
 		);
 
 		if ( ! isset( $atts['hidden'] ) ) {
-
 			printf(
-				'<label for="%1$s" class="coblocks-label">%2$s%3$s</label>',
+				'<label for="%1$s" class="%2$s"%3$s>%4$s%5$s</label>',
 				esc_attr( $label_slug ),
+				esc_attr( $classes ),
+				empty( $styles ) ? '' : wp_kses_post( " style='$styles'" ),
 				wp_kses_post( $label ),
 				wp_kses( $required_label, $allowed_html )
 			);
-
 		}
 
 		?>
@@ -922,7 +970,8 @@ class CoBlocks_Form {
 		 */
 		$email_content = (string) apply_filters( 'coblocks_form_email_content', $this->email_content, $_POST, $post_id );
 
-		$reply_to = isset( $_POST[ $email_field_id ]['value'] ) ? esc_html( $_POST[ $email_field_id ]['value'] ) : esc_html( get_bloginfo( 'admin_email' ) );
+		$reply_to  = isset( $_POST[ $email_field_id ]['value'] ) ? esc_html( $_POST[ $email_field_id ]['value'] ) : esc_html( get_bloginfo( 'admin_email' ) );
+		$from_name = ( isset( $_POST[ $name_field_id ]['value'] ) && ! empty( $_POST[ $name_field_id ]['value'] ) ) ? esc_html( $_POST[ $name_field_id ]['value'] ) . " <{$reply_to}>" : /* translators: 1. Reply to email address; eg: email@example.com */ sprintf( __( 'Form Submission <%s>', 'coblocks' ), $reply_to );
 
 		/**
 		 * Filter the form email headers.
@@ -934,6 +983,7 @@ class CoBlocks_Form {
 		$email_headers = (array) apply_filters(
 			'coblocks_form_email_headers',
 			array(
+				"From: {$from_name}",
 				"Reply-To: {$reply_to}",
 			),
 			$_POST,
@@ -1033,14 +1083,12 @@ class CoBlocks_Form {
 	/**
 	 * Display the form success data
 	 *
-	 * @return mixed Markup for a preview of the submitted data
+	 * @param  array $atts Block attributes array.
+	 * @return mixed Success Text followed by the submitted form data.
 	 */
-	public function success_message() {
+	public function success_message( $atts ) {
 
-		/**
-		 * Filter the sent notice above the success message.
-		 */
-		$sent_notice = (string) apply_filters( 'coblocks_form_sent_notice', __( 'Your message was sent:', 'coblocks' ) );
+		$sent_notice = ( isset( $atts['successText'] ) && ! empty( $atts['successText'] ) ) ? $atts['successText'] : $this->default_success_text();
 
 		/**
 		 * Filter the success message after a form submission
@@ -1052,7 +1100,7 @@ class CoBlocks_Form {
 		$success_message = (string) apply_filters(
 			'coblocks_form_success_message',
 			sprintf(
-				'<div class="coblocks-form__submitted">%s %s</div>',
+				'<div class="coblocks-form__submitted">%1$s %2$s</div>',
 				wp_kses_post( $sent_notice ),
 				wp_kses_post( $this->email_content )
 			),
