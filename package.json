@@ -74,6 +74,7 @@
 	"devDependencies": {
 		"@babel/plugin-proposal-class-properties": "7.10.4",
 	  	"@emotion/react": "^11.4.1",
+	  	"@emotion/styled": "^11.3.0",
 		"@godaddy-wordpress/stylelint-config": "^0.2.0",
 		"@testing-library/jest-dom": "^4.2.4",
 		"@wordpress/base-styles": "2.0.1",
@@ -86,6 +87,7 @@
 		"@wordpress/plugins": "2.6.0",
 		"@wordpress/postcss-themes": "^2.2.0",
 		"@wordpress/scripts": "7.1.4",
+	  	"@wp-g2/components": "^0.0.164",
 		"autoprefixer": "^9.7.5",
 		"css-loader": "^3.2.1",
 		"cypress": "^6.9.1",
