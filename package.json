@@ -73,6 +73,7 @@
 	},
 	"devDependencies": {
 		"@babel/plugin-proposal-class-properties": "7.10.4",
+	  	"@emotion/react": "^11.4.1",
 		"@godaddy-wordpress/stylelint-config": "^0.2.0",
 		"@testing-library/jest-dom": "^4.2.4",
 		"@wordpress/base-styles": "2.0.1",
