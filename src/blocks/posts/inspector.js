@@ -243,9 +243,19 @@ const Inspector = ( props ) => {
 			onCategoryChange={ ( tokens ) => {
 				// Categories that are already will be objects, while new additions will be strings (the name).
 				// allCategories nomalizes the array so that they are all objects.
-				const allCategories = tokens.map( ( token ) =>
-					typeof token === 'string' ? suggestions[ token ] : token
-				);
+				const allCategories = tokens.reduce( ( acc, curr ) => {
+					if ( typeof curr === 'string' ) {
+						const suggestedToken = suggestions[ curr ];
+
+						if ( suggestedToken ) {
+							acc.push( suggestedToken );
+						}
+					} else {
+						acc.push( curr );
+					}
+
+					return acc;
+				}, [] );
 				setAttributes( { categories: allCategories } );
 				if ( tokens.length < 2 ) {
 					setAttributes( { categoryRelation: 'or' } );
