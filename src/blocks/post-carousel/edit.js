@@ -356,12 +356,7 @@ export default compose( [
 
 		const updatedQuery = () => {
 			const catIds = categories && categories.length > 0
-				? categories.map( ( cat ) => {
-					if ( ! cat ) {
-						return null;
-					}
-					return cat.id;
-				} )
+				? categories.map( ( cat ) => cat?.id )
 				: [];
 
 			const latestPostsQuery = pickBy( {
