@@ -85,6 +85,7 @@ export default function save( { attributes, className } ) {
 										'wp-block-coblocks-food-item__attribute--popular',
 										'hint--top' ) }
 									aria-label={ __( 'Popular', 'coblocks' ) }
+									role="img"
 								>
 									<span
 										className="wp-block-coblocks-food-item__icon"
@@ -98,6 +99,7 @@ export default function save( { attributes, className } ) {
 										'wp-block-coblocks-food-item__attribute--spicy',
 										'hint--top' ) }
 									aria-label={ __( 'Spicy', 'coblocks' ) }
+									role="img"
 								>
 									<span
 										className="wp-block-coblocks-food-item__icon"
@@ -112,6 +114,7 @@ export default function save( { attributes, className } ) {
 										'wp-block-coblocks-food-item__attribute--spicier',
 										'hint--top' ) }
 									aria-label={ __( 'Spicier', 'coblocks' ) }
+									role="img"
 								>
 									<span
 										className="wp-block-coblocks-food-item__icon"
@@ -125,6 +128,7 @@ export default function save( { attributes, className } ) {
 										'wp-block-coblocks-food-item__attribute--vegetarian',
 										'hint--top' ) }
 									aria-label={ __( 'Vegetarian', 'coblocks' ) }
+									role="img"
 								>
 									<span
 										className="wp-block-coblocks-food-item__icon"
@@ -138,6 +142,7 @@ export default function save( { attributes, className } ) {
 										'wp-block-coblocks-food-item__attribute--gluten-free',
 										'hint--top' ) }
 									aria-label={ __( 'Gluten free', 'coblocks' ) }
+									role="img"
 								>
 									<span
 										className="wp-block-coblocks-food-item__icon"
@@ -151,6 +156,7 @@ export default function save( { attributes, className } ) {
 										'wp-block-coblocks-food-item__attribute--pescatarian',
 										'hint--top' ) }
 									aria-label={ __( 'Pescatarian', 'coblocks' ) }
+									role="img"
 								>
 									<span
 										className="wp-block-coblocks-food-item__icon"
@@ -164,6 +170,7 @@ export default function save( { attributes, className } ) {
 										'wp-block-coblocks-food-item__attribute--vegan',
 										'hint--top' ) }
 									aria-label={ __( 'Vegan', 'coblocks' ) }
+									role="img"
 								>
 									<span
 										className="wp-block-coblocks-food-item__icon"
