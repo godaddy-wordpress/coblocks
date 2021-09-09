@@ -511,24 +511,6 @@ jobs:
             else
               yarn lint:js $FILES
             fi
-      - run:
-          name: "Test JS and Collect Coverage"
-          command: yarn test:js:coverage --maxWorkers=2 --reporters=default --reporters=jest-junit
-          environment:
-            JEST_JUNIT_OUTPUT_DIR: /tmp/artifacts/tests-results/jest
-      - store_artifacts:
-          path: coverage
-          destination: coverage
-      - store_test_results:
-          path: /tmp/artifacts/tests-results/jest
-      - run:
-          name: Post coverage comment to GitHub
-          command: |
-            if [ -n "$CIRCLE_PULL_REQUEST" ]; then
-              npx @godaddy-wordpress/circleci-coverage-github-reporter
-            else
-              exit 0
-            fi
 
   # --------------------------------------------------
   # End to End Testing
