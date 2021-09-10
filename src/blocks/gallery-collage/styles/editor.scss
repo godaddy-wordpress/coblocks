@@ -81,7 +81,7 @@
 	}
 
 	.block-editor-media-placeholder {
-		background: $dark-opacity-light-200;
+		background: $white;
 		min-height: inherit;
 		outline-offset: -1px;
 
@@ -114,10 +114,6 @@
 	}
 
 	.is-style-layered {
-
-		.block-editor-media-placeholder {
-			background: $gray-200;
-		}
 
 		.components-form-file-upload {
 			display: none;

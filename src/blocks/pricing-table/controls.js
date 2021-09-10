@@ -7,7 +7,6 @@ import { find } from 'lodash';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
 import { AlignmentToolbar, BlockControls } from '@wordpress/block-editor';
 import { ToolbarGroup, Path, SVG } from '@wordpress/components';
 
@@ -35,49 +34,47 @@ const DEFAULT_ALIGNMENT_CONTROLS = [
 
 ];
 
-class Controls extends Component {
-	render() {
-		const {
-			attributes,
-			setAttributes,
-			updateTables,
-		} = this.props;
+const Controls = ( props ) => {
+	const {
+		attributes,
+		setAttributes,
+		updateTables,
+	} = props;
 
-		const {
-			count,
-			contentAlign,
-		} = attributes;
+	const {
+		count,
+		contentAlign,
+	} = attributes;
 
-		const activeCount = find( DEFAULT_ALIGNMENT_CONTROLS, ( control ) => control.count === count );
+	const activeCount = find( DEFAULT_ALIGNMENT_CONTROLS, ( control ) => control.count === count );
 
-		return (
-			<Fragment>
-				<BlockControls>
-					<AlignmentToolbar
-						value={ contentAlign }
-						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
-					/>
-					<ToolbarGroup
-						isCollapsed={ true }
-						icon={ activeCount.icon }
-						label={ __( 'Change pricing table count', 'coblocks' ) }
-						controls={ DEFAULT_ALIGNMENT_CONTROLS.map( ( control ) => {
-							const isActive = ( count === parseInt( control.count ) );
+	return (
+		<>
+			<BlockControls>
+				<AlignmentToolbar
+					value={ contentAlign }
+					onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
+				/>
+				<ToolbarGroup
+					isCollapsed={ true }
+					icon={ activeCount.icon }
+					label={ __( 'Change pricing table count', 'coblocks' ) }
+					controls={ DEFAULT_ALIGNMENT_CONTROLS.map( ( control ) => {
+						const isActive = ( count === parseInt( control.count ) );
 
-							return {
-								...control,
-								isActive,
-								onClick: () => {
-									setAttributes( { count: parseInt( control.count ) } );
-									updateTables( count, parseInt( control.count ) );
-								},
-							};
-						} ) }
-					/>
-				</BlockControls>
-			</Fragment>
-		);
-	}
-}
+						return {
+							...control,
+							isActive,
+							onClick: () => {
+								setAttributes( { count: parseInt( control.count ) } );
+								updateTables( count, parseInt( control.count ) );
+							},
+						};
+					} ) }
+				/>
+			</BlockControls>
+		</>
+	);
+};
 
 export default Controls;
