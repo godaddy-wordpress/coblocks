@@ -17,9 +17,8 @@ import classnames from 'classnames';
 import { Toolbar, Placeholder, Button, TextControl, ServerSideRender } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
-import { Component, Fragment } from '@wordpress/element';
-import { compose } from '@wordpress/compose';
-import { withSelect, dispatch } from '@wordpress/data';
+import { useState, useEffect, useRef } from '@wordpress/element';
+import { dispatch, useSelect } from '@wordpress/data';
 import { InnerBlocks, BlockControls } from '@wordpress/block-editor';
 import { edit } from '@wordpress/icons';
 
@@ -36,54 +35,42 @@ const EVENTS_RANGE_OPTIONS = [
 	{ value: 'all', label: __( 'Fetch all', 'coblocks' ) },
 ];
 
-class EventsEdit extends Component {
-	constructor() {
-		super( ...arguments );
-
-		const {
+const EventsEdit = ( props ) => {
+	const {
+		className,
+		attributes: {
 			externalCalendarUrl,
-		} = this.props.attributes;
+		},
+		setAttributes,
+		clientId,
+	} = props;
 
-		this.state = {
-			isEditing: false,
-			showExternalCalendarControls: !! externalCalendarUrl || false,
-			externalCalendarUrl,
+	const { innerBlocks } = useSelect( ( select ) => ( {
+		innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
+	} ) );
+
+	let observer = useRef( null );
+	let elementRef = useRef( null );
+	let slickTarget = useRef( null );
+
+	const [ isEditing, setIsEditing ] = useState( false );
+	const [ showExternalCalendarControls, setShowExternalCalendarControls ] = useState( !! externalCalendarUrl || false );
+	const [ stateExternalCalendarUrl, setStateExternalCalendarUrl ] = useState( externalCalendarUrl );
+
+	useEffect( () => {
+		observer = new MutationObserver( mutationObserverCallback );
+		observer.observe( elementRef, { childList: true } );
+	}, [] );
+
+	useEffect( () => {
+		return () => {
+			if ( !! externalCalendarUrl ) {
+				jQuery( slickTarget ).slick( 'unslick' );
+			}
+
+			observer.disconnect();
 		};
-
-		this.toggleExternalCalendarControls = this.toggleExternalCalendarControls.bind( this );
-		this.saveExternalCalendarUrl = this.saveExternalCalendarUrl.bind( this );
-		this.insertNewItem = this.insertNewItem.bind( this );
-
-		this.mutationObserverCallback = this.mutationObserverCallback.bind( this );
-	}
-
-	/**
-	 * Setup the MutationObserver.
-	 */
-	componentDidMount() {
-		this.observer = new MutationObserver( this.mutationObserverCallback );
-		this.observer.observe( this.el, { childList: true } );
-	}
-
-	/**
-	 * Refresh Slick to prevent display oddities when the block isSelected prop changes.
-	 */
-	componentDidUpdate() {
-		if ( !! this.props.attributes.externalCalendarUrl && this.slickTarget ) {
-			jQuery( this.slickTarget ).slick( 'slickSetOption', 'infinite', false, true );
-		}
-	}
-
-	/**
-	 * Disconnect the MutationObserver and remove Slick carousels.
-	 */
-	componentWillUnmount() {
-		if ( !! this.props.attributes.externalCalendarUrl ) {
-			jQuery( this.slickTarget ).slick( 'unslick' );
-		}
-
-		this.observer.disconnect();
-	}
+	}, [ externalCalendarUrl, observer ] );
 
 	/**
 	 * The callback for our MutationObserver.
@@ -93,15 +80,15 @@ class EventsEdit extends Component {
 	 *
 	 * @param {Array} mutationsList List of objects describing each change that occurred.
 	 */
-	mutationObserverCallback( mutationsList ) {
+	const mutationObserverCallback = ( mutationsList ) => {
 		for ( const mutation of mutationsList ) {
 			if ( mutation.type === 'childList' && mutation.addedNodes.length > 0 ) {
 				if ( mutation.addedNodes[ 0 ].outerHTML.match( 'wp-block-coblocks-events' ) ) {
-					this.slickTarget = mutation.addedNodes[ 0 ].children[ 0 ];
+					slickTarget = mutation.addedNodes[ 0 ].children[ 0 ];
 
-					jQuery( this.slickTarget ).slick( {
+					jQuery( slickTarget ).slick( {
 						infinite: false,
-						rows: this.slickTarget.dataset.perPage,
+						rows: slickTarget.dataset.perPage,
 
 						// Slick settings to disable within the Block Editor to prevent conflicts.
 						accessibility: false, // Disable tabbing and arrow key navigation.
@@ -112,110 +99,89 @@ class EventsEdit extends Component {
 				}
 			}
 		}
-	}
+	};
 
-	toggleExternalCalendarControls() {
-		const { showExternalCalendarControls } = this.state;
-
+	const toggleExternalCalendarControls = () => {
 		if ( ! showExternalCalendarControls === false ) {
-			this.props.setAttributes( { externalCalendarUrl: '' } );
+			setAttributes( { externalCalendarUrl: '' } );
 		}
 
-		this.setState( { showExternalCalendarControls: ! showExternalCalendarControls } );
-	}
+		setShowExternalCalendarControls( ! showExternalCalendarControls );
+	};
 
-	saveExternalCalendarUrl() {
-		this.props.setAttributes( { externalCalendarUrl: this.state.externalCalendarUrl } );
-		this.setState( { isEditing: false } );
-	}
+	const saveExternalCalendarUrl = () => {
+		setAttributes( { externalCalendarUrl: stateExternalCalendarUrl } );
+		setIsEditing( false );
+	};
 
-	insertNewItem() {
-		const { clientId, innerBlocks } = this.props;
+	const insertNewItem = () => {
 		const newEvent = createBlock( 'coblocks/event-item' );
 		dispatch( 'core/block-editor' ).insertBlock( newEvent, innerBlocks.length, clientId );
-	}
-
-	render() {
-		const {
-			className,
-			attributes,
-			setAttributes,
-		} = this.props;
-
-		const {
-			externalCalendarUrl,
-		} = attributes;
-
-		const toolbarControls = [
-			{
-				icon: edit,
-				title: __( 'Edit calendar URL', 'coblocks' ),
-				onClick: () => this.setState( { isEditing: ! this.state.isEditing } ),
-			},
-		];
-
-		return (
-			<Fragment>
-				<InspectorControls
-					attributes={ attributes }
-					toggleExternalCalendarControls={ this.toggleExternalCalendarControls }
-					showExternalCalendarControls={ this.state.showExternalCalendarControls }
-					eventsRangeOptions={ EVENTS_RANGE_OPTIONS }
-					onChangeEventsToShow={ ( eventsToShow ) => setAttributes( { eventsToShow } ) }
-					onChangeEventsRange={ ( eventsRange ) => setAttributes( { eventsRange } ) }
-				/>
-
-				{ !! externalCalendarUrl &&
-					<BlockControls>
-						<Toolbar controls={ toolbarControls } />
-					</BlockControls>
-				}
-
-				{ this.state.showExternalCalendarControls && ( ! externalCalendarUrl || this.state.isEditing ) &&
-					<Placeholder
-						icon="rss"
-						label={ __( 'Calendar URL', 'coblocks' ) }>
-
-						<TextControl
-							placeholder={ __( 'Enter URL here…', 'coblocks' ) }
-							value={ this.state.externalCalendarUrl }
-							onChange={ ( newExternalCalendarUrl ) => this.setState( { externalCalendarUrl: newExternalCalendarUrl } ) }
-							className={ 'components-placeholder__input' }
-						/>
-						<Button type="button" onClick={ this.saveExternalCalendarUrl } disabled={ ! this.state.externalCalendarUrl }>
-							{ __( 'Use URL', 'coblocks' ) }
-						</Button>
-					</Placeholder>
-				}
-
-				{ ! externalCalendarUrl && ! this.state.showExternalCalendarControls &&
-					<div className={ classnames( className, 'coblocks-custom-event' ) }>
-						<InnerBlocks
-							allowedBlocks={ ALLOWED_BLOCKS }
-							template={ TEMPLATE }
-							templateInsertUpdatesSelection={ false }
-							renderAppender={ () => <CustomAppender onClick={ this.insertNewItem } /> }
-						/>
-					</div>
-				}
-
-				<div ref={ ( el ) => this.el = el }>
-					{ !! externalCalendarUrl &&
-						<ServerSideRender
-							block="coblocks/events"
-							attributes={ this.props.attributes }
-						/>
-					}
-				</div>
-			</Fragment>
-		);
-	}
-}
-
-const applyWithSelect = withSelect( ( select, blockData ) => {
-	return {
-		innerBlocks: select( 'core/block-editor' ).getBlocks( blockData.clientId ),
 	};
-} );
 
-export default compose( [ applyWithSelect ] )( EventsEdit );
+	const toolbarControls = [
+		{
+			icon: edit,
+			title: __( 'Edit calendar URL', 'coblocks' ),
+			onClick: () => setIsEditing( ! isEditing ),
+		},
+	];
+
+	return (
+		<>
+			<InspectorControls
+				attributes={ props.attributes }
+				toggleExternalCalendarControls={ toggleExternalCalendarControls }
+				showExternalCalendarControls={ showExternalCalendarControls }
+				eventsRangeOptions={ EVENTS_RANGE_OPTIONS }
+				onChangeEventsToShow={ ( eventsToShow ) => setAttributes( { eventsToShow } ) }
+				onChangeEventsRange={ ( eventsRange ) => setAttributes( { eventsRange } ) }
+			/>
+
+			{ !! externalCalendarUrl &&
+				<BlockControls>
+					<Toolbar controls={ toolbarControls } />
+				</BlockControls>
+			}
+
+			{ showExternalCalendarControls && ( ! externalCalendarUrl || isEditing ) &&
+				<Placeholder
+					icon="rss"
+					label={ __( 'Calendar URL', 'coblocks' ) }
+				>
+					<TextControl
+						placeholder={ __( 'Enter URL here…', 'coblocks' ) }
+						value={ stateExternalCalendarUrl }
+						onChange={ ( newExternalCalendarUrl ) => setStateExternalCalendarUrl( newExternalCalendarUrl ) }
+						className={ 'components-placeholder__input' }
+					/>
+					<Button type="button" onClick={ saveExternalCalendarUrl } disabled={ ! stateExternalCalendarUrl }>
+						{ __( 'Use URL', 'coblocks' ) }
+					</Button>
+				</Placeholder>
+			}
+
+			{ ! externalCalendarUrl && ! showExternalCalendarControls &&
+				<div className={ classnames( className, 'coblocks-custom-event' ) }>
+					<InnerBlocks
+						allowedBlocks={ ALLOWED_BLOCKS }
+						template={ TEMPLATE }
+						templateInsertUpdatesSelection={ false }
+						renderAppender={ () => <CustomAppender onClick={ insertNewItem } /> }
+					/>
+				</div>
+			}
+
+			<div ref={ ( el ) => elementRef = el }>
+				{ !! externalCalendarUrl &&
+					<ServerSideRender
+						block="coblocks/events"
+						attributes={ props.attributes }
+					/>
+				}
+			</div>
+		</>
+	);
+};
+
+export default EventsEdit;
