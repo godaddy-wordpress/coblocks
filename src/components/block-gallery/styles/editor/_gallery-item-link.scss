@@ -27,28 +27,6 @@
 		width: 16px;
 	}
 
-	.components-icon-button {
-		margin-left: 1px;
-		margin-right: 3px;
-		padding: 6px;
-
-		&:not(:disabled):not([aria-disabled="true"]):hover {
-			background: var(--wp-admin-theme-color, #007cba) !important;
-			box-shadow: none;
-			color: $white !important;
-			opacity: 0.75;
-		}
-
-		&:focus,
-		&:active {
-			box-shadow: none !important;
-
-			.dashicon {
-				color: $gray-900 !important;
-			}
-		}
-	}
-
 	.block-editor-url-input {
 		flex: 1 2;
 		padding: 2px;
