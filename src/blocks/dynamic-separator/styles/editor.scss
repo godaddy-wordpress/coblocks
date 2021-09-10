@@ -5,10 +5,6 @@
 		&::before {
 			transition: width 300ms cubic-bezier(0.645, 0.045, 0.355, 1), max-width 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
 		}
-
-		&.is-selected {
-			background: $gray-200;
-		}
 	}
 }
 
