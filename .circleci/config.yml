@@ -492,7 +492,7 @@ jobs:
 
   js:
     docker:
-      - image: cimg/php:7.3.23-node
+      - image: cimg/php:7.4.22-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
