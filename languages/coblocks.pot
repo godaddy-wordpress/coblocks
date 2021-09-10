@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-08-17T15:08:49+00:00\n"
+"POT-Creation-Date: 2021-08-27T16:54:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -386,19 +386,19 @@ msgstr ""
 
 #. translators: toggle label to display the accordion open
 #. translators: visually display open as opposed to closed
-#: src/blocks/accordion/accordion-item/controls.js:29
+#: src/blocks/accordion/accordion-item/controls.js:27
 #: src/blocks/accordion/accordion-item/inspector.js:66
 msgid "Display as open"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/accordion/accordion-item/edit.js:27
+#: src/blocks/accordion/accordion-item/edit.js:26
 #: src/blocks/media-card/edit.js:75
 msgid "Add content…"
 msgstr ""
 
 #. translators: Accordion is the block name
-#: src/blocks/accordion/accordion-item/edit.js:72
+#: src/blocks/accordion/accordion-item/edit.js:87
 msgid "Write accordion item title…"
 msgstr ""
 
@@ -501,8 +501,8 @@ msgstr ""
 msgid "Text color"
 msgstr ""
 
-#: src/blocks/accordion/edit.js:112
-#: src/blocks/accordion/edit.js:114
+#: src/blocks/accordion/edit.js:132
+#: src/blocks/accordion/edit.js:134
 msgid "Add accordion item"
 msgstr ""
 
@@ -944,8 +944,8 @@ msgstr ""
 msgid "Show events from the period (100 events max)."
 msgstr ""
 
-#: src/blocks/features/edit.js:100
-#: src/blocks/features/feature/edit.js:117
+#: src/blocks/features/edit.js:114
+#: src/blocks/features/feature/edit.js:120
 #: src/blocks/media-card/edit.js:206
 msgid "Add as background"
 msgstr ""
@@ -1188,33 +1188,33 @@ msgid "Item attributes"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:97
-#: src/blocks/services/service/inspector.js:31
+#: src/blocks/services/service/inspector.js:30
 msgid "Image settings"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:99
 #: src/blocks/gif/inspector.js:31
 #: src/blocks/media-card/inspector.js:95
-#: src/blocks/services/service/inspector.js:33
+#: src/blocks/services/service/inspector.js:32
 msgid "Alt text (alternative text)"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:105
 #: src/blocks/gif/inspector.js:37
 #: src/blocks/media-card/inspector.js:101
-#: src/blocks/services/service/inspector.js:39
+#: src/blocks/services/service/inspector.js:38
 msgid "Describe the purpose of the image"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:107
 #: src/blocks/gif/inspector.js:39
 #: src/blocks/media-card/inspector.js:103
-#: src/blocks/services/service/inspector.js:41
+#: src/blocks/services/service/inspector.js:40
 msgid "Leave empty if the image is purely decorative."
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:112
-#: src/blocks/services/service/inspector.js:46
+#: src/blocks/services/service/inspector.js:45
 #: src/components/background/panel.js:189
 msgid "Focal point"
 msgstr ""
@@ -1563,7 +1563,7 @@ msgid "Remove"
 msgstr ""
 
 #: src/blocks/form/edit.js:486
-#: src/blocks/row/edit.js:326
+#: src/blocks/row/edit.js:325
 msgid "Select a variation to start with."
 msgstr ""
 
@@ -6531,7 +6531,7 @@ msgstr ""
 msgid "A pricing table to help visitors compare products and plans."
 msgstr ""
 
-#: src/blocks/row/column/edit.js:86
+#: src/blocks/row/column/edit.js:80
 msgid "Add background to column"
 msgstr ""
 
@@ -6558,74 +6558,74 @@ msgstr ""
 msgid "Width"
 msgstr ""
 
-#: src/blocks/row/controls.js:77
+#: src/blocks/row/controls.js:70
 msgid "Change row block layout"
 msgstr ""
 
-#: src/blocks/row/edit.js:55
+#: src/blocks/row/edit.js:92
 msgid "one"
 msgstr ""
 
-#: src/blocks/row/edit.js:57
+#: src/blocks/row/edit.js:94
 msgid "two"
 msgstr ""
 
-#: src/blocks/row/edit.js:59
+#: src/blocks/row/edit.js:96
 msgid "three"
 msgstr ""
 
-#: src/blocks/row/edit.js:61
+#: src/blocks/row/edit.js:98
 msgid "four"
 msgstr ""
 
-#: src/blocks/row/edit.js:114
+#: src/blocks/row/edit.js:113
 msgid "Add background to row"
 msgstr ""
 
-#: src/blocks/row/edit.js:119
+#: src/blocks/row/edit.js:118
 msgid "One column"
 msgstr ""
 
-#: src/blocks/row/edit.js:120
+#: src/blocks/row/edit.js:119
 msgid "Two columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:121
+#: src/blocks/row/edit.js:120
 msgid "Three columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:122
+#: src/blocks/row/edit.js:121
 msgid "Four columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:148
+#: src/blocks/row/edit.js:147
 msgid "Row layout"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/row/edit.js:148
+#: src/blocks/row/edit.js:147
 #: src/blocks/row/index.js:38
 msgid "Row"
 msgstr ""
 
 #. translators: %s: 'one' 'two' 'three' and 'four'
-#: src/blocks/row/edit.js:152
+#: src/blocks/row/edit.js:151
 msgid "Select a layout for this %s column row."
 msgstr ""
 
-#: src/blocks/row/edit.js:155
+#: src/blocks/row/edit.js:154
 msgid "Select the number of columns for this row."
 msgstr ""
 
-#: src/blocks/row/edit.js:159
+#: src/blocks/row/edit.js:158
 msgid "Select row columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:184
+#: src/blocks/row/edit.js:183
 msgid "Select row layout"
 msgstr ""
 
-#: src/blocks/row/edit.js:194
+#: src/blocks/row/edit.js:193
 msgid "Back to columns"
 msgstr ""
 
@@ -6765,19 +6765,19 @@ msgstr ""
 msgid "A single service item within a services block."
 msgstr ""
 
-#: src/blocks/services/service/inspector.js:18
+#: src/blocks/services/service/inspector.js:17
 msgid "Service settings"
 msgstr ""
 
-#: src/blocks/services/service/inspector.js:20
+#: src/blocks/services/service/inspector.js:19
 msgid "Display button"
 msgstr ""
 
-#: src/blocks/services/service/inspector.js:23
+#: src/blocks/services/service/inspector.js:22
 msgid "Showing the call to action button."
 msgstr ""
 
-#: src/blocks/services/service/inspector.js:24
+#: src/blocks/services/service/inspector.js:23
 msgid "Toggle to show a call to action button."
 msgstr ""
 
