@@ -22,8 +22,8 @@ import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
  * WordPress dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
-import { compose } from '@wordpress/compose';
+import { useState, useEffect } from '@wordpress/element';
+import { compose, usePrevious } from '@wordpress/compose';
 import { withSelect, useDispatch, withDispatch } from '@wordpress/data';
 import { InnerBlocks, __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 import { ButtonGroup, Button, Tooltip, Placeholder, Spinner, Icon } from '@wordpress/components';
@@ -31,147 +31,179 @@ import { isBlobURL } from '@wordpress/blob';
 
 /**
  * Block edit function
+ *
+ * @param {Object} props
  */
-class Edit extends Component {
-	constructor() {
-		super( ...arguments );
+const Edit = ( props ) => {
+	const {
+		attributes,
+		isSelected,
+		setAttributes,
+		className,
+		variations,
+		hasInnerBlocks,
+		defaultVariation,
+		replaceInnerBlocks,
+		blockType,
+		textColor,
+		backgroundColor,
+		clientId,
+	} = props;
 
-		this.state = {
-			layoutSelection: true,
-		};
-	}
+	const {
+		columns,
+		layout,
+		id,
+		backgroundImg,
+		coblocks,
+		paddingSize,
+		marginSize,
+		marginUnit,
+		marginTop,
+		marginRight,
+		marginBottom,
+		marginLeft,
+		paddingUnit,
+		paddingTop,
+		backgroundType,
+		hasParallax,
+		focalPoint,
+		paddingRight,
+		paddingBottom,
+		isStackedOnMobile,
+		paddingLeft,
+		verticalAlignment,
+	} = attributes;
 
-	componentDidUpdate( prevProps ) {
-		const { setAttributes, hasInnerBlocks } = this.props;
+	const prevHasInnerBlocks = usePrevious( hasInnerBlocks );
+
+	const [ layoutSelection, setLayoutSelection ] = useState( true );
+
+	useEffect( () => {
 		// Store the selected innerBlocks layout in state so that undo and redo functions work properly.
-		if ( prevProps.hasInnerBlocks && ! hasInnerBlocks ) {
-			this.setState( { layoutSelection: true } );
+		if ( prevHasInnerBlocks && ! hasInnerBlocks ) {
+			setLayoutSelection( true );
 			setAttributes( { layout: null, columns: null } );
 		}
-	}
+	}, [ hasInnerBlocks, prevHasInnerBlocks ] );
 
-	numberToText( columns ) {
-		if ( columns === 1 ) {
+	const numberToText = ( newColumns ) => {
+		if ( newColumns === 1 ) {
 			return __( 'one', 'coblocks' );
-		} else if ( columns === 2 ) {
+		} else if ( newColumns === 2 ) {
 			return __( 'two', 'coblocks' );
-		} else if ( columns === 3 ) {
+		} else if ( newColumns === 3 ) {
 			return __( 'three', 'coblocks' );
-		} else if ( columns === 4 ) {
+		} else if ( newColumns === 4 ) {
 			return __( 'four', 'coblocks' );
 		}
-	}
+	};
 
-	createBlocksFromInnerBlocksTemplate( innerBlocksTemplate ) {
-		return map( innerBlocksTemplate, ( [ name, attributes, innerBlocks = [] ] ) => createBlock( name, attributes, this.createBlocksFromInnerBlocksTemplate( innerBlocks ) ) );
-	}
+	const createBlocksFromInnerBlocksTemplate = ( innerBlocksTemplate ) => {
+		return map( innerBlocksTemplate, ( [ name, newAttributes, innerBlocks = [] ] ) => createBlock( name, newAttributes, createBlocksFromInnerBlocksTemplate( innerBlocks ) ) );
+	};
 
-	supportsBlockVariationPicker() {
+	const supportsBlockVariationPicker = () => {
 		return !! registerBlockVariation;
+	};
+
+	const dropZone = (
+		<BackgroundDropZone
+			{ ...props }
+			label={ __( 'Add background to row', 'coblocks' ) }
+		/>
+	);
+
+	const columnOptions = [
+		{ columns: 1, name: __( 'One column', 'coblocks' ), icon: rowIcons.colOne, key: '100' },
+		{ columns: 2, name: __( 'Two columns', 'coblocks' ), icon: rowIcons.colTwo },
+		{ columns: 3, name: __( 'Three columns', 'coblocks' ), icon: rowIcons.colThree },
+		{ columns: 4, name: __( 'Four columns', 'coblocks' ), icon: rowIcons.colFour },
+	];
+
+	let selectedRows = 1;
+
+	if ( columns ) {
+		selectedRows = parseInt( columns.toString().split( '-' ) );
 	}
 
-	render() {
-		const {
-			attributes,
-			isSelected,
-			setAttributes,
-			className,
-			variations,
-			hasInnerBlocks,
-			defaultVariation,
-			replaceInnerBlocks,
-			blockType,
-		} = this.props;
+	if ( ! layout && layoutSelection && ! supportsBlockVariationPicker() ) {
+		return (
+			<>
+				{ isSelected && (
+					<Controls
+						{ ...props }
+					/>
+				) }
+				{ isSelected && (
+					<Inspector
+						{ ...props }
+					/>
+				) }
+				<Placeholder
+					key="placeholder"
+					className="components-coblocks-row-placeholder"
+					icon={ <Icon icon={ icon } /> }
+					label={ columns ? __( 'Row layout', 'coblocks' ) : __( 'Row', 'coblocks' ) }
+					instructions={ columns
+						? sprintf(
+							/* translators: %s: 'one' 'two' 'three' and 'four' */
+							__( 'Select a layout for this %s column row.', 'coblocks' ),
+							numberToText( columns )
+						)
+						: __( 'Select the number of columns for this row.', 'coblocks' )
+					}
+				>
+					{ ! columns
+						? <ButtonGroup aria-label={ __( 'Select row columns', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
+							{ map( columnOptions, ( option ) => (
+								<Tooltip text={ option.name }>
+									<div className="components-coblocks-row-placeholder__button-wrapper">
+										<Button
+											className="components-coblocks-row-placeholder__button block-editor-inner-blocks__template-picker-option block-editor-block-pattern-picker__pattern"
+											isSecondary
+											onClick={ () => {
+												setAttributes( {
+													columns: option.columns,
+													layout: option.columns === 1 ? option.key : null,
+												} );
 
-		const {
-			columns,
-			layout,
-			id,
-			backgroundImg,
-			coblocks,
-			paddingSize,
-			marginSize,
-			marginUnit,
-			marginTop,
-			marginRight,
-			marginBottom,
-			marginLeft,
-			paddingUnit,
-			paddingTop,
-			backgroundType,
-			hasParallax,
-			focalPoint,
-			paddingRight,
-			paddingBottom,
-			isStackedOnMobile,
-			paddingLeft,
-			verticalAlignment,
-		} = attributes;
-
-		const dropZone = (
-			<BackgroundDropZone
-				{ ...this.props }
-				label={ __( 'Add background to row', 'coblocks' ) }
-			/>
-		);
-
-		const columnOptions = [
-			{ columns: 1, name: __( 'One column', 'coblocks' ), icon: rowIcons.colOne, key: '100' },
-			{ columns: 2, name: __( 'Two columns', 'coblocks' ), icon: rowIcons.colTwo },
-			{ columns: 3, name: __( 'Three columns', 'coblocks' ), icon: rowIcons.colThree },
-			{ columns: 4, name: __( 'Four columns', 'coblocks' ), icon: rowIcons.colFour },
-		];
-
-		let selectedRows = 1;
-
-		if ( columns ) {
-			selectedRows = parseInt( columns.toString().split( '-' ) );
-		}
-
-		if ( ! layout && this.state.layoutSelection && ! this.supportsBlockVariationPicker() ) {
-			return (
-				<Fragment>
-					{ isSelected && (
-						<Controls
-							{ ...this.props }
-						/>
-					) }
-					{ isSelected && (
-						<Inspector
-							{ ...this.props }
-						/>
-					) }
-					<Placeholder
-						key="placeholder"
-						className="components-coblocks-row-placeholder"
-						icon={ <Icon icon={ icon } /> }
-						label={ columns ? __( 'Row layout', 'coblocks' ) : __( 'Row', 'coblocks' ) }
-						instructions={ columns
-							? sprintf(
-								/* translators: %s: 'one' 'two' 'three' and 'four' */
-								__( 'Select a layout for this %s column row.', 'coblocks' ),
-								this.numberToText( columns )
-							)
-							: __( 'Select the number of columns for this row.', 'coblocks' )
-						}
-					>
-						{ ! columns
-							? <ButtonGroup aria-label={ __( 'Select row columns', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
-								{ map( columnOptions, ( option ) => (
+												if ( option.columns === 1 ) {
+													setLayoutSelection( false );
+												}
+											} }
+										>
+											{ option.icon }
+										</Button>
+									</div>
+								</Tooltip>
+							) ) }
+						</ButtonGroup>
+						: <>
+							<ButtonGroup aria-label={ __( 'Select row layout', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
+								<Button
+									icon="exit"
+									className="components-coblocks-row-placeholder__back"
+									onClick={ () => {
+										setAttributes( {
+											columns: null,
+										} );
+										setLayoutSelection( true );
+									} }
+									label={ __( 'Back to columns', 'coblocks' ) }
+								/>
+								{ map( layoutOptions[ selectedRows ], ( option ) => (
 									<Tooltip text={ option.name }>
 										<div className="components-coblocks-row-placeholder__button-wrapper">
 											<Button
+												key={ option.key }
 												className="components-coblocks-row-placeholder__button block-editor-inner-blocks__template-picker-option block-editor-block-pattern-picker__pattern"
 												isSecondary
 												onClick={ () => {
 													setAttributes( {
-														columns: option.columns,
-														layout: option.columns === 1 ? option.key : null,
+														layout: option.key,
 													} );
-
-													if ( option.columns === 1 ) {
-														this.setState( { layoutSelection: false } );
-													}
+													setLayoutSelection( false );
 												} }
 											>
 												{ option.icon }
@@ -180,158 +212,124 @@ class Edit extends Component {
 									</Tooltip>
 								) ) }
 							</ButtonGroup>
-							: <Fragment>
-								<ButtonGroup aria-label={ __( 'Select row layout', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
-									<Button
-										icon="exit"
-										className="components-coblocks-row-placeholder__back"
-										onClick={ () => {
-											setAttributes( {
-												columns: null,
-											} );
-											this.setState( { layoutSelection: true } );
-										} }
-										label={ __( 'Back to columns', 'coblocks' ) }
-									/>
-									{ map( layoutOptions[ selectedRows ], ( option ) => (
-										<Tooltip text={ option.name }>
-											<div className="components-coblocks-row-placeholder__button-wrapper">
-												<Button
-													key={ option.key }
-													className="components-coblocks-row-placeholder__button block-editor-inner-blocks__template-picker-option block-editor-block-pattern-picker__pattern"
-													isSecondary
-													onClick={ () => {
-														setAttributes( {
-															layout: option.key,
-														} );
-														this.setState( { layoutSelection: false } );
-													} }
-												>
-													{ option.icon }
-												</Button>
-											</div>
-										</Tooltip>
-									) ) }
-								</ButtonGroup>
-							</Fragment>
-						}
-					</Placeholder>
-				</Fragment>
-			);
-		}
-
-		let classes = classnames(
-			className, {
-				[ `coblocks-row--${ id }` ]: id,
-			}
-		);
-
-		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
-			classes = classnames( classes, `coblocks-row-${ coblocks.id }` );
-		}
-
-		const innerClasses = classnames(
-			'wp-block-coblocks-row__inner',
-			...BackgroundClasses( attributes ), {
-				'has-text-color': this.props.textColor.color,
-				'has-padding': paddingSize && paddingSize !== 'no',
-				[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
-				'has-margin': marginSize && marginSize !== 'no',
-				[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'advanced',
-				'is-stacked-on-mobile': isStackedOnMobile,
-				[ `are-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment,
-			}
-		);
-
-		const innerStyles = {
-			backgroundColor: this.props.backgroundColor.color,
-			backgroundImage: backgroundImg && backgroundType === 'image' ? `url(${ backgroundImg })` : undefined,
-			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
-			color: this.props.textColor.color,
-			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
-			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
-			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
-			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
-			marginTop: marginSize === 'advanced' && marginTop ? marginTop + marginUnit : undefined,
-			marginRight: marginSize === 'advanced' && marginRight ? marginRight + marginUnit : undefined,
-			marginBottom: marginSize === 'advanced' && marginBottom ? marginBottom + marginUnit : undefined,
-			marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
-		};
-
-		if ( hasInnerBlocks || !! layout ) {
-			const deprecatedInnerBlocks = () => (
-				<InnerBlocks
-					template={ template[ layout ] }
-					templateLock="all"
-					allowedBlocks={ allowedBlocks }
-					templateInsertUpdatesSelection={ columns === 1 }
-					renderAppender={ () => ( null ) }
-				/>
-			);
-
-			const variationInnerBlocks = () => (
-				<InnerBlocks
-					allowedBlocks={ allowedBlocks }
-					templateInsertUpdatesSelection={ columns === 1 }
-					renderAppender={ () => ( null ) }
-					templateLock="all" />
-			);
-
-			return (
-				<Fragment>
-					{ dropZone }
-					{ isSelected && (
-						<Controls
-							{ ...this.props }
-						/>
-					) }
-					{ isSelected && (
-						<Inspector
-							{ ...this.props }
-						/>
-					) }
-					<div className={ classes }>
-						{ isBlobURL( backgroundImg ) && <Spinner /> }
-						<GutterWrapper { ...attributes }>
-							<div className={ innerClasses } style={ innerStyles }>
-								{ BackgroundVideo( attributes ) }
-								{ this.supportsBlockVariationPicker()
-									? variationInnerBlocks()
-									: deprecatedInnerBlocks() }
-							</div>
-						</GutterWrapper>
-					</div>
-				</Fragment>
-			);
-		}
-
-		const blockVariationPickerOnSelect = ( nextVariation = defaultVariation ) => {
-			if ( nextVariation.attributes ) {
-				this.props.setAttributes( nextVariation.attributes );
-			}
-
-			if ( nextVariation.innerBlocks ) {
-				replaceInnerBlocks(
-					this.props.clientId,
-					this.createBlocksFromInnerBlocksTemplate( nextVariation.innerBlocks )
-				);
-			}
-		};
-
-		return (
-			<Fragment>
-				<__experimentalBlockVariationPicker
-					icon={ get( blockType, [ 'icon', 'src' ] ) }
-					label={ get( blockType, [ 'title' ] ) }
-					instructions={ __( 'Select a variation to start with.', 'coblocks' ) }
-					variations={ variations }
-					allowSkip
-					onSelect={ ( nextVariation ) => blockVariationPickerOnSelect( nextVariation ) }
-				/>
-			</Fragment>
+						</>
+					}
+				</Placeholder>
+			</>
 		);
 	}
-}
+
+	let classes = classnames(
+		className, {
+			[ `coblocks-row--${ id }` ]: id,
+		}
+	);
+
+	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
+		classes = classnames( classes, `coblocks-row-${ coblocks.id }` );
+	}
+
+	const innerClasses = classnames(
+		'wp-block-coblocks-row__inner',
+		...BackgroundClasses( attributes ), {
+			'has-text-color': textColor.color,
+			'has-padding': paddingSize && paddingSize !== 'no',
+			[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
+			'has-margin': marginSize && marginSize !== 'no',
+			[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'advanced',
+			'is-stacked-on-mobile': isStackedOnMobile,
+			[ `are-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment,
+		}
+	);
+
+	const innerStyles = {
+		backgroundColor: backgroundColor.color,
+		backgroundImage: backgroundImg && backgroundType === 'image' ? `url(${ backgroundImg })` : undefined,
+		backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
+		color: textColor.color,
+		paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
+		paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
+		paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
+		paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
+		marginTop: marginSize === 'advanced' && marginTop ? marginTop + marginUnit : undefined,
+		marginRight: marginSize === 'advanced' && marginRight ? marginRight + marginUnit : undefined,
+		marginBottom: marginSize === 'advanced' && marginBottom ? marginBottom + marginUnit : undefined,
+		marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
+	};
+
+	if ( hasInnerBlocks || !! layout ) {
+		const deprecatedInnerBlocks = () => (
+			<InnerBlocks
+				template={ template[ layout ] }
+				templateLock="all"
+				allowedBlocks={ allowedBlocks }
+				templateInsertUpdatesSelection={ columns === 1 }
+				renderAppender={ () => ( null ) }
+			/>
+		);
+
+		const variationInnerBlocks = () => (
+			<InnerBlocks
+				allowedBlocks={ allowedBlocks }
+				templateInsertUpdatesSelection={ columns === 1 }
+				renderAppender={ () => ( null ) }
+				templateLock="all" />
+		);
+
+		return (
+			<>
+				{ dropZone }
+				{ isSelected && (
+					<Controls
+						{ ...props }
+					/>
+				) }
+				{ isSelected && (
+					<Inspector
+						{ ...props }
+					/>
+				) }
+				<div className={ classes }>
+					{ isBlobURL( backgroundImg ) && <Spinner /> }
+					<GutterWrapper { ...attributes }>
+						<div className={ innerClasses } style={ innerStyles }>
+							{ BackgroundVideo( attributes ) }
+							{ supportsBlockVariationPicker()
+								? variationInnerBlocks()
+								: deprecatedInnerBlocks() }
+						</div>
+					</GutterWrapper>
+				</div>
+			</>
+		);
+	}
+
+	const blockVariationPickerOnSelect = ( nextVariation = defaultVariation ) => {
+		if ( nextVariation.attributes ) {
+			setAttributes( nextVariation.attributes );
+		}
+
+		if ( nextVariation.innerBlocks ) {
+			replaceInnerBlocks(
+				clientId,
+				createBlocksFromInnerBlocksTemplate( nextVariation.innerBlocks )
+			);
+		}
+	};
+
+	return (
+		<>
+			<__experimentalBlockVariationPicker
+				icon={ get( blockType, [ 'icon', 'src' ] ) }
+				label={ get( blockType, [ 'title' ] ) }
+				instructions={ __( 'Select a variation to start with.', 'coblocks' ) }
+				variations={ variations }
+				allowSkip
+				onSelect={ ( nextVariation ) => blockVariationPickerOnSelect( nextVariation ) }
+			/>
+		</>
+	);
+};
 
 const applyWithDispatch = withDispatch( ( dispatch ) => {
 	const { updateBlockAttributes } = dispatch( 'core/block-editor' );
