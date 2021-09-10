@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-09-10T19:08:54+00:00\n"
+"POT-Creation-Date: 2021-09-10T19:24:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -1011,7 +1011,7 @@ msgid "Features settings"
 msgstr ""
 
 #: src/blocks/features/inspector.js:92
-#: src/blocks/food-and-drinks/inspector.js:103
+#: src/blocks/food-and-drinks/inspector.js:102
 #: src/blocks/posts/inspector.js:173
 #: src/blocks/services/inspector.js:67
 msgid "Columns"
@@ -1046,7 +1046,7 @@ msgstr ""
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:190
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:132
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:91
-#: src/blocks/food-and-drinks/food-item/edit.js:314
+#: src/blocks/food-and-drinks/food-item/edit.js:269
 #: src/blocks/food-and-drinks/food-item/inspector.js:60
 #: src/blocks/food-and-drinks/food-item/save.js:87
 msgid "Popular"
@@ -1055,7 +1055,7 @@ msgstr ""
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:198
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:140
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:104
-#: src/blocks/food-and-drinks/food-item/edit.js:326
+#: src/blocks/food-and-drinks/food-item/edit.js:281
 #: src/blocks/food-and-drinks/food-item/inspector.js:75
 #: src/blocks/food-and-drinks/food-item/save.js:100
 msgid "Spicy"
@@ -1072,7 +1072,7 @@ msgstr ""
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:214
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:156
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:130
-#: src/blocks/food-and-drinks/food-item/edit.js:353
+#: src/blocks/food-and-drinks/food-item/edit.js:308
 #: src/blocks/food-and-drinks/food-item/inspector.js:90
 #: src/blocks/food-and-drinks/food-item/save.js:127
 msgid "Vegetarian"
@@ -1088,7 +1088,7 @@ msgstr ""
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIcons.js:230
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:172
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:156
-#: src/blocks/food-and-drinks/food-item/edit.js:381
+#: src/blocks/food-and-drinks/food-item/edit.js:336
 #: src/blocks/food-and-drinks/food-item/inspector.js:70
 #: src/blocks/food-and-drinks/food-item/save.js:153
 msgid "Pescatarian"
@@ -1102,35 +1102,35 @@ msgstr ""
 msgid "Vegan"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:194
+#: src/blocks/food-and-drinks/food-item/edit.js:178
 #: src/blocks/services/service/edit.js:128
 msgid "Drop image to replace"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:210
+#: src/blocks/food-and-drinks/food-item/edit.js:194
 #: src/blocks/services/service/edit.js:141
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Remove image"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:306
+#: src/blocks/food-and-drinks/food-item/edit.js:261
 msgid "Add title…"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:337
+#: src/blocks/food-and-drinks/food-item/edit.js:292
 msgid "Hot"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:373
+#: src/blocks/food-and-drinks/food-item/edit.js:328
 #: src/blocks/food-and-drinks/food-item/save.js:140
 msgid "Gluten free"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:412
+#: src/blocks/food-and-drinks/food-item/edit.js:367
 msgid "Add description…"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:421
+#: src/blocks/food-and-drinks/food-item/edit.js:376
 msgid "$0.00"
 msgstr ""
 
@@ -1240,7 +1240,7 @@ msgid "restaurant"
 msgstr ""
 
 #. translators: abbreviation for small size
-#: src/blocks/food-and-drinks/inspector.js:41
+#: src/blocks/food-and-drinks/inspector.js:40
 #: src/blocks/gallery-collage/inspector.js:71
 #: src/blocks/posts/inspector.js:66
 #: src/components/gutter-control/gutter-control.js:17
@@ -1255,7 +1255,7 @@ msgstr ""
 
 #. translators: abbreviation for small size
 #. translators: label for small size option
-#: src/blocks/food-and-drinks/inspector.js:42
+#: src/blocks/food-and-drinks/inspector.js:41
 #: src/blocks/gallery-collage/inspector.js:72
 #: src/blocks/icon/icon-size-select.js:16
 #: src/blocks/posts/inspector.js:67
@@ -1273,7 +1273,7 @@ msgid "Small"
 msgstr ""
 
 #. translators: abbreviation for medium size
-#: src/blocks/food-and-drinks/inspector.js:47
+#: src/blocks/food-and-drinks/inspector.js:46
 #: src/blocks/gallery-collage/inspector.js:77
 #: src/blocks/posts/inspector.js:71
 #: src/components/gutter-control/gutter-control.js:23
@@ -1288,7 +1288,7 @@ msgstr ""
 
 #. translators: abbreviation for medium size
 #. translators: label for medium size option
-#: src/blocks/food-and-drinks/inspector.js:48
+#: src/blocks/food-and-drinks/inspector.js:47
 #: src/blocks/gallery-collage/inspector.js:78
 #: src/blocks/icon/icon-size-select.js:21
 #: src/blocks/posts/inspector.js:72
@@ -1306,7 +1306,7 @@ msgid "Medium"
 msgstr ""
 
 #. translators: abbreviation for large size
-#: src/blocks/food-and-drinks/inspector.js:53
+#: src/blocks/food-and-drinks/inspector.js:52
 #: src/blocks/gallery-collage/inspector.js:83
 #: src/blocks/posts/inspector.js:76
 #: src/components/gutter-control/gutter-control.js:29
@@ -1321,7 +1321,7 @@ msgstr ""
 
 #. translators: abbreviation for large size
 #. translators: label for large size option
-#: src/blocks/food-and-drinks/inspector.js:54
+#: src/blocks/food-and-drinks/inspector.js:53
 #: src/blocks/gallery-collage/inspector.js:84
 #: src/blocks/icon/icon-size-select.js:26
 #: src/blocks/posts/inspector.js:77
@@ -1340,7 +1340,7 @@ msgstr ""
 
 #. translators: abbreviation for largest size
 #. translators: abbreviation for extra large size
-#: src/blocks/food-and-drinks/inspector.js:59
+#: src/blocks/food-and-drinks/inspector.js:58
 #: src/blocks/posts/inspector.js:81
 #: src/components/option-selector-control/index.js:48
 #: src/components/size-control/index.js:75
@@ -1352,7 +1352,7 @@ msgstr ""
 
 #. translators: abbreviation for extra large size
 #. translators: label for extra large size option
-#: src/blocks/food-and-drinks/inspector.js:60
+#: src/blocks/food-and-drinks/inspector.js:59
 #: src/blocks/icon/icon-size-select.js:30
 #: src/blocks/posts/inspector.js:82
 #: src/components/dimensions-control/dimensions-select.js:30
@@ -1360,7 +1360,7 @@ msgstr ""
 msgid "Huge"
 msgstr ""
 
-#: src/blocks/food-and-drinks/inspector.js:66
+#: src/blocks/food-and-drinks/inspector.js:65
 #: src/blocks/map/inspector.js:105
 #: src/blocks/posts/inspector.js:298
 #: src/blocks/row/inspector.js:128
@@ -1368,37 +1368,37 @@ msgstr ""
 msgid "Styles"
 msgstr ""
 
-#: src/blocks/food-and-drinks/inspector.js:99
+#: src/blocks/food-and-drinks/inspector.js:98
 msgid "Food & Drinks Settings"
 msgstr ""
 
-#: src/blocks/food-and-drinks/inspector.js:110
+#: src/blocks/food-and-drinks/inspector.js:109
 #: src/components/gutter-control/gutter-control.js:70
 #: src/components/responsive-tabs-control/index.js:31
 msgid "Gutter"
 msgstr ""
 
-#: src/blocks/food-and-drinks/inspector.js:118
+#: src/blocks/food-and-drinks/inspector.js:117
 msgid "Images"
 msgstr ""
 
-#: src/blocks/food-and-drinks/inspector.js:121
+#: src/blocks/food-and-drinks/inspector.js:120
 msgid "Showing images for each item"
 msgstr ""
 
-#: src/blocks/food-and-drinks/inspector.js:122
+#: src/blocks/food-and-drinks/inspector.js:121
 msgid "Toggle to show images for each item."
 msgstr ""
 
-#: src/blocks/food-and-drinks/inspector.js:128
+#: src/blocks/food-and-drinks/inspector.js:127
 msgid "Prices"
 msgstr ""
 
-#: src/blocks/food-and-drinks/inspector.js:131
+#: src/blocks/food-and-drinks/inspector.js:130
 msgid "Showing the price of each item"
 msgstr ""
 
-#: src/blocks/food-and-drinks/inspector.js:132
+#: src/blocks/food-and-drinks/inspector.js:131
 msgid "Toggle to show the price of each item."
 msgstr ""
 
