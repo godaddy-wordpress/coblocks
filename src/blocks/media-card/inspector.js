@@ -9,7 +9,6 @@ import DimensionsControl from '../../components/dimensions-control/';
  * WordPress dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import { Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
 import { PanelBody, ToggleControl, TextareaControl, RangeControl, ExternalLink } from '@wordpress/components';
@@ -97,12 +96,12 @@ const Inspector = ( props ) => {
 							value={ mediaAlt }
 							onChange={ ( nextMediaAlt ) => setAttributes( { mediaAlt: nextMediaAlt } ) }
 							help={
-								<Fragment>
+								<>
 									<ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
 										{ __( 'Describe the purpose of the image', 'coblocks' ) }
 									</ExternalLink>
 									{ __( 'Leave empty if the image is purely decorative.', 'coblocks' ) }
-								</Fragment>
+								</>
 							}
 						/>
 					) }
