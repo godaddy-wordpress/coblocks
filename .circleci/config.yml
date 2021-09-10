@@ -513,7 +513,7 @@ jobs:
             fi
       - run:
           name: "Test JS and Collect Coverage"
-          command: yarn test:js:coverage --maxWorkers=2 --reporters=default --reporters=jest-junit
+          command: yarn test:js:coverage --maxWorkers=1 --reporters=default --reporters=jest-junit
           environment:
             JEST_JUNIT_OUTPUT_DIR: /tmp/artifacts/tests-results/jest
       - store_artifacts:
