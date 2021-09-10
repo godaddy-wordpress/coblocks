@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-08-27T16:54:58+00:00\n"
+"POT-Creation-Date: 2021-09-10T18:19:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -282,17 +282,17 @@ msgid "(no title)"
 msgstr ""
 
 #: src/blocks/share/index.php:132
-#: src/blocks/share/edit.js:132
+#: src/blocks/share/edit.js:130
 msgid "Share on Facebook"
 msgstr ""
 
 #: src/blocks/share/index.php:136
-#: src/blocks/share/edit.js:148
+#: src/blocks/share/edit.js:146
 msgid "Share on Twitter"
 msgstr ""
 
 #: src/blocks/share/index.php:140
-#: src/blocks/share/edit.js:164
+#: src/blocks/share/edit.js:162
 msgid "Share on Pinterest"
 msgstr ""
 
@@ -301,22 +301,22 @@ msgid "Share on Linkedin"
 msgstr ""
 
 #: src/blocks/share/index.php:148
-#: src/blocks/share/edit.js:196
+#: src/blocks/share/edit.js:194
 msgid "Share via Email"
 msgstr ""
 
 #: src/blocks/share/index.php:152
-#: src/blocks/share/edit.js:212
+#: src/blocks/share/edit.js:210
 msgid "Share on Tumblr"
 msgstr ""
 
 #: src/blocks/share/index.php:156
-#: src/blocks/share/edit.js:228
+#: src/blocks/share/edit.js:226
 msgid "Share on Google"
 msgstr ""
 
 #: src/blocks/share/index.php:160
-#: src/blocks/share/edit.js:244
+#: src/blocks/share/edit.js:242
 msgid "Share on Reddit"
 msgstr ""
 
@@ -452,7 +452,7 @@ msgstr ""
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:48
 #: src/blocks/row/column/inspector.js:164
 #: src/blocks/row/inspector.js:206
-#: src/blocks/shape-divider/inspector.js:92
+#: src/blocks/shape-divider/inspector.js:81
 #: src/blocks/share/inspector.js:200
 #: src/blocks/social-profiles/inspector.js:212
 #: src/components/form-label-colors/label-color-control.js:36
@@ -474,7 +474,7 @@ msgstr ""
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:53
 #: src/blocks/row/column/inspector.js:170
 #: src/blocks/row/inspector.js:222
-#: src/blocks/shape-divider/inspector.js:103
+#: src/blocks/shape-divider/inspector.js:92
 #: src/blocks/share/inspector.js:81
 #: src/blocks/share/inspector.js:99
 #: src/blocks/social-profiles/inspector.js:86
@@ -825,37 +825,37 @@ msgstr ""
 msgid "Add event"
 msgstr ""
 
-#: src/blocks/events/edit.js:33
+#: src/blocks/events/edit.js:32
 msgid "1 week"
 msgstr ""
 
-#: src/blocks/events/edit.js:34
+#: src/blocks/events/edit.js:33
 msgid "2 weeks"
 msgstr ""
 
-#: src/blocks/events/edit.js:35
+#: src/blocks/events/edit.js:34
 msgid "1 month"
 msgstr ""
 
-#: src/blocks/events/edit.js:36
+#: src/blocks/events/edit.js:35
 msgid "Fetch all"
 msgstr ""
 
-#: src/blocks/events/edit.js:152
+#: src/blocks/events/edit.js:125
 msgid "Edit calendar URL"
 msgstr ""
 
-#: src/blocks/events/edit.js:177
+#: src/blocks/events/edit.js:150
 msgid "Calendar URL"
 msgstr ""
 
-#: src/blocks/events/edit.js:180
+#: src/blocks/events/edit.js:153
 msgid "Enter URL here…"
 msgstr ""
 
-#: src/blocks/events/edit.js:186
-#: src/blocks/post-carousel/edit.js:228
-#: src/blocks/posts/edit.js:335
+#: src/blocks/events/edit.js:159
+#: src/blocks/post-carousel/edit.js:216
+#: src/blocks/posts/edit.js:319
 msgid "Use URL"
 msgstr ""
 
@@ -1012,7 +1012,6 @@ msgstr ""
 
 #: src/blocks/features/inspector.js:92
 #: src/blocks/food-and-drinks/inspector.js:103
-#: src/blocks/post-carousel/inspector.js:87
 #: src/blocks/posts/inspector.js:173
 #: src/blocks/services/inspector.js:67
 msgid "Columns"
@@ -6192,53 +6191,53 @@ msgstr ""
 msgid "Select language"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:125
-#: src/blocks/posts/edit.js:241
+#: src/blocks/post-carousel/edit.js:113
+#: src/blocks/posts/edit.js:202
 msgid "Edit RSS URL"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/post-carousel/edit.js:181
+#: src/blocks/post-carousel/edit.js:169
 #: src/blocks/post-carousel/index.js:27
 msgid "Post Carousel"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:186
-#: src/blocks/posts/edit.js:288
+#: src/blocks/post-carousel/edit.js:174
+#: src/blocks/posts/edit.js:272
 msgid "No posts found. Start publishing or add posts from an RSS feed."
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:189
+#: src/blocks/post-carousel/edit.js:177
 msgid "Retrieve an external feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:195
-#: src/blocks/posts/edit.js:297
+#: src/blocks/post-carousel/edit.js:183
+#: src/blocks/posts/edit.js:281
 msgid "Use External Feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:217
-#: src/blocks/posts/edit.js:324
+#: src/blocks/post-carousel/edit.js:205
+#: src/blocks/posts/edit.js:308
 msgid "RSS Feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:218
-#: src/blocks/posts/edit.js:325
+#: src/blocks/post-carousel/edit.js:206
+#: src/blocks/posts/edit.js:309
 msgid "RSS URLs are generally located at the /feed/ directory of a site."
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:222
-#: src/blocks/posts/edit.js:329
+#: src/blocks/post-carousel/edit.js:210
+#: src/blocks/posts/edit.js:313
 msgid "https://example.com/feed…"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:304
-#: src/blocks/posts/edit.js:432
+#: src/blocks/post-carousel/edit.js:292
+#: src/blocks/posts/edit.js:416
 msgid "(no title)"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:322
-#: src/blocks/posts/edit.js:458
+#: src/blocks/post-carousel/edit.js:310
+#: src/blocks/posts/edit.js:442
 msgid "Read more"
 msgstr ""
 
@@ -6276,103 +6275,24 @@ msgstr ""
 msgid "rss"
 msgstr ""
 
-#: src/blocks/post-carousel/inspector.js:55
-msgid "Post Carousel settings"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:58
-#: src/blocks/posts/inspector.js:144
-msgid "Post date"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:62
-#: src/blocks/posts/inspector.js:148
-msgid "Showing the publish date."
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:63
-#: src/blocks/posts/inspector.js:149
-msgid "Toggle to show the publish date."
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:68
-#: src/blocks/posts/inspector.js:154
-msgid "Post content"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:72
-#: src/blocks/posts/inspector.js:158
-msgid "Showing the post content."
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:73
-#: src/blocks/posts/inspector.js:159
-msgid "Toggle to show the post content."
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:79
-#: src/blocks/posts/inspector.js:165
-msgid "Max words in content"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:149
-#: src/blocks/posts/inspector.js:258
-msgid "Feed settings"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:153
-#: src/blocks/posts/inspector.js:262
-msgid "My blog"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:154
-#: src/blocks/posts/inspector.js:263
-msgid "External feed"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:165
-#: src/blocks/posts/inspector.js:274
-msgid "Category relation"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:166
-#: src/blocks/posts/inspector.js:275
-msgid "The logical relationship between each category when there is more than one."
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:169
-#: src/blocks/posts/inspector.js:278
-msgid "Or"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:170
-#: src/blocks/posts/inspector.js:279
-msgid "And"
-msgstr ""
-
-#: src/blocks/post-carousel/inspector.js:176
-#: src/blocks/posts/inspector.js:285
-msgid "Number of posts"
-msgstr ""
-
 #. translators: block style
 #: src/blocks/posts/edit.js:60
 msgid "Horizontal"
 msgstr ""
 
-#: src/blocks/posts/edit.js:254
+#: src/blocks/posts/edit.js:215
 msgid "Image on left"
 msgstr ""
 
-#: src/blocks/posts/edit.js:259
+#: src/blocks/posts/edit.js:220
 msgid "Image on right"
 msgstr ""
 
-#: src/blocks/posts/edit.js:283
+#: src/blocks/posts/edit.js:267
 msgid "Blog Posts"
 msgstr ""
 
-#: src/blocks/posts/edit.js:291
+#: src/blocks/posts/edit.js:275
 msgid "Retrieve an External Feed"
 msgstr ""
 
@@ -6422,6 +6342,34 @@ msgstr ""
 msgid "Posts settings"
 msgstr ""
 
+#: src/blocks/posts/inspector.js:144
+msgid "Post date"
+msgstr ""
+
+#: src/blocks/posts/inspector.js:148
+msgid "Showing the publish date."
+msgstr ""
+
+#: src/blocks/posts/inspector.js:149
+msgid "Toggle to show the publish date."
+msgstr ""
+
+#: src/blocks/posts/inspector.js:154
+msgid "Post content"
+msgstr ""
+
+#: src/blocks/posts/inspector.js:158
+msgid "Showing the post content."
+msgstr ""
+
+#: src/blocks/posts/inspector.js:159
+msgid "Toggle to show the post content."
+msgstr ""
+
+#: src/blocks/posts/inspector.js:165
+msgid "Max words in content"
+msgstr ""
+
 #: src/blocks/posts/inspector.js:186
 msgid "Thumbnail style"
 msgstr ""
@@ -6430,29 +6378,61 @@ msgstr ""
 msgid "Thumbnail size"
 msgstr ""
 
-#: src/blocks/pricing-table/controls.js:17
+#: src/blocks/posts/inspector.js:258
+msgid "Feed settings"
+msgstr ""
+
+#: src/blocks/posts/inspector.js:262
+msgid "My blog"
+msgstr ""
+
+#: src/blocks/posts/inspector.js:263
+msgid "External feed"
+msgstr ""
+
+#: src/blocks/posts/inspector.js:274
+msgid "Category relation"
+msgstr ""
+
+#: src/blocks/posts/inspector.js:275
+msgid "The logical relationship between each category when there is more than one."
+msgstr ""
+
+#: src/blocks/posts/inspector.js:278
+msgid "Or"
+msgstr ""
+
+#: src/blocks/posts/inspector.js:279
+msgid "And"
+msgstr ""
+
+#: src/blocks/posts/inspector.js:285
+msgid "Number of posts"
+msgstr ""
+
+#: src/blocks/pricing-table/controls.js:16
 msgid "One Pricing Table"
 msgstr ""
 
-#: src/blocks/pricing-table/controls.js:22
+#: src/blocks/pricing-table/controls.js:21
 msgid "Two Pricing Tables"
 msgstr ""
 
-#: src/blocks/pricing-table/controls.js:27
+#: src/blocks/pricing-table/controls.js:26
 msgid "Three Pricing Tables"
 msgstr ""
 
-#: src/blocks/pricing-table/controls.js:32
+#: src/blocks/pricing-table/controls.js:31
 msgid "Four Pricing Tables"
 msgstr ""
 
-#: src/blocks/pricing-table/controls.js:63
+#: src/blocks/pricing-table/controls.js:61
 msgid "Change pricing table count"
 msgstr ""
 
 #. translators: %d: a digit 1-3
-#: src/blocks/pricing-table/edit.js:45
-#: src/blocks/pricing-table/edit.js:130
+#: src/blocks/pricing-table/edit.js:44
+#: src/blocks/pricing-table/edit.js:129
 msgid "Plan %d"
 msgstr ""
 
@@ -6501,11 +6481,11 @@ msgstr ""
 msgid "comparison"
 msgstr ""
 
-#: src/blocks/pricing-table/inspector.js:30
+#: src/blocks/pricing-table/inspector.js:29
 msgid "Pricing Table settings"
 msgstr ""
 
-#: src/blocks/pricing-table/pricing-table-item/edit.js:29
+#: src/blocks/pricing-table/pricing-table-item/edit.js:28
 msgid "Buy Now"
 msgstr ""
 
@@ -6781,11 +6761,11 @@ msgstr ""
 msgid "Toggle to show a call to action button."
 msgstr ""
 
-#: src/blocks/shape-divider/controls.js:28
+#: src/blocks/shape-divider/controls.js:26
 msgid "Flip horiztonally"
 msgstr ""
 
-#: src/blocks/shape-divider/controls.js:33
+#: src/blocks/shape-divider/controls.js:31
 msgid "Flip vertically"
 msgstr ""
 
@@ -6834,55 +6814,55 @@ msgstr ""
 msgid "Pointed"
 msgstr ""
 
-#: src/blocks/shape-divider/inspector.js:53
+#: src/blocks/shape-divider/inspector.js:42
 msgid "Divider settings"
 msgstr ""
 
-#: src/blocks/shape-divider/inspector.js:55
+#: src/blocks/shape-divider/inspector.js:44
 msgid "Shape height in pixels"
 msgstr ""
 
-#: src/blocks/shape-divider/inspector.js:73
+#: src/blocks/shape-divider/inspector.js:62
 msgid "Background height in pixels"
 msgstr ""
 
-#: src/blocks/shape-divider/inspector.js:98
+#: src/blocks/shape-divider/inspector.js:87
 msgid "Shape color"
 msgstr ""
 
-#: src/blocks/share/edit.js:128
+#: src/blocks/share/edit.js:126
 msgid "Add Facebook share button"
 msgstr ""
 
-#: src/blocks/share/edit.js:144
+#: src/blocks/share/edit.js:142
 msgid "Add Twitter share button"
 msgstr ""
 
-#: src/blocks/share/edit.js:160
+#: src/blocks/share/edit.js:158
 msgid "Add Pinterest share button"
 msgstr ""
 
-#: src/blocks/share/edit.js:176
+#: src/blocks/share/edit.js:174
 msgid "Add Linkedin share button"
 msgstr ""
 
-#: src/blocks/share/edit.js:180
+#: src/blocks/share/edit.js:178
 msgid "Share on LinkedIn"
 msgstr ""
 
-#: src/blocks/share/edit.js:192
+#: src/blocks/share/edit.js:190
 msgid "Add Email share button"
 msgstr ""
 
-#: src/blocks/share/edit.js:208
+#: src/blocks/share/edit.js:206
 msgid "Add Tumblr share button"
 msgstr ""
 
-#: src/blocks/share/edit.js:224
+#: src/blocks/share/edit.js:222
 msgid "Add Google share button"
 msgstr ""
 
-#: src/blocks/share/edit.js:240
+#: src/blocks/share/edit.js:238
 msgid "Add Reddit share button"
 msgstr ""
 
@@ -6915,12 +6895,12 @@ msgstr ""
 msgid "Circular"
 msgstr ""
 
-#: src/blocks/share/inspector.js:25
+#: src/blocks/share/inspector.js:26
 #: src/blocks/social-profiles/inspector.js:37
 msgid "Share button colors are enabled."
 msgstr ""
 
-#: src/blocks/share/inspector.js:25
+#: src/blocks/share/inspector.js:26
 #: src/blocks/social-profiles/inspector.js:38
 msgid "Toggle to use official colors from each social media platform."
 msgstr ""
