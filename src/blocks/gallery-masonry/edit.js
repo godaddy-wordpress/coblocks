@@ -58,7 +58,6 @@ const GalleryMasonryEdit = ( props ) => {
 	} = attributes;
 
 	const [ selectedImage, setSelectedImage ] = useState( null );
-	const [ , setCaptionSelected ] = useState( null );
 
 	const prevIsSelected = usePrevious( isSelected );
 
@@ -81,7 +80,6 @@ const GalleryMasonryEdit = ( props ) => {
 		// Deselect images when deselecting the block.
 		if ( ! isSelected && prevIsSelected ) {
 			setSelectedImage( null );
-			setCaptionSelected( false );
 		}
 	}, [ prevIsSelected, isSelected ] );
 
