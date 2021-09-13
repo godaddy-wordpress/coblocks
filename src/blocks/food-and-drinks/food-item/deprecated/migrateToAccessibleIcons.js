@@ -58,25 +58,25 @@ export default function migrateToAccessibleIcons( { attributes } ) {
 						value={ attributes.title }
 						itemprop="name"
 					/>
-					{ ( !! attributes.spicy ||
-                    !! attributes.vegetarian ||
-                    !! attributes.glutenFree ||
-                    !! attributes.pescatarian ||
-                    !! attributes.popular ||
-                    !! attributes.vegan ) && (
+					{ (
+						!! attributes.spicy ||
+							!! attributes.vegetarian ||
+							!! attributes.glutenFree ||
+							!! attributes.pescatarian ||
+							!! attributes.popular ||
+							!! attributes.vegan
+					) && (
 						<div className="wp-block-coblocks-food-item__attributes">
 							{ !! attributes.popular && (
 								<span
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
 										'wp-block-coblocks-food-item__attribute--popular',
-										'hint--top' ) }
+										'hint--top',
+									) }
 									aria-label={ __( 'Popular', 'coblocks' ) }
-
 								>
-									<span
-										className="wp-block-coblocks-food-item__icon"
-									/>
+									<span className="wp-block-coblocks-food-item__icon" />
 								</span>
 							) }
 							{ !! attributes.spicy && (
@@ -84,13 +84,11 @@ export default function migrateToAccessibleIcons( { attributes } ) {
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
 										'wp-block-coblocks-food-item__attribute--spicy',
-										'hint--top' ) }
+										'hint--top',
+									) }
 									aria-label={ __( 'Spicy', 'coblocks' ) }
-
 								>
-									<span
-										className="wp-block-coblocks-food-item__icon"
-									/>
+									<span className="wp-block-coblocks-food-item__icon" />
 								</span>
 							) }
 							{ !! attributes.spicier && !! attributes.spicy && (
@@ -99,13 +97,11 @@ export default function migrateToAccessibleIcons( { attributes } ) {
 										'wp-block-coblocks-food-item__attribute',
 										'wp-block-coblocks-food-item__attribute--spicy',
 										'wp-block-coblocks-food-item__attribute--spicier',
-										'hint--top' ) }
+										'hint--top',
+									) }
 									aria-label={ __( 'Spicier', 'coblocks' ) }
-
 								>
-									<span
-										className="wp-block-coblocks-food-item__icon"
-									/>
+									<span className="wp-block-coblocks-food-item__icon" />
 								</span>
 							) }
 							{ !! attributes.vegetarian && (
@@ -113,13 +109,11 @@ export default function migrateToAccessibleIcons( { attributes } ) {
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
 										'wp-block-coblocks-food-item__attribute--vegetarian',
-										'hint--top' ) }
+										'hint--top'
+									) }
 									aria-label={ __( 'Vegetarian', 'coblocks' ) }
-
 								>
-									<span
-										className="wp-block-coblocks-food-item__icon"
-									/>
+									<span className="wp-block-coblocks-food-item__icon" />
 								</span>
 							) }
 							{ !! attributes.glutenFree && (
@@ -131,9 +125,7 @@ export default function migrateToAccessibleIcons( { attributes } ) {
 									aria-label={ __( 'Gluten free', 'coblocks' ) }
 
 								>
-									<span
-										className="wp-block-coblocks-food-item__icon"
-									/>
+									<span className="wp-block-coblocks-food-item__icon" />
 								</span>
 							) }
 							{ !! attributes.pescatarian && (
@@ -141,13 +133,12 @@ export default function migrateToAccessibleIcons( { attributes } ) {
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
 										'wp-block-coblocks-food-item__attribute--pescatarian',
-										'hint--top' ) }
+										'hint--top'
+									) }
 									aria-label={ __( 'Pescatarian', 'coblocks' ) }
 
 								>
-									<span
-										className="wp-block-coblocks-food-item__icon"
-									/>
+									<span className="wp-block-coblocks-food-item__icon" />
 								</span>
 							) }
 							{ !! attributes.vegan && (
@@ -155,13 +146,12 @@ export default function migrateToAccessibleIcons( { attributes } ) {
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
 										'wp-block-coblocks-food-item__attribute--vegan',
-										'hint--top' ) }
+										'hint--top'
+									) }
 									aria-label={ __( 'Vegan', 'coblocks' ) }
 
 								>
-									<span
-										className="wp-block-coblocks-food-item__icon"
-									/>
+									<span className="wp-block-coblocks-food-item__icon" />
 								</span>
 							) }
 						</div>
