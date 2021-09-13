@@ -2,55 +2,47 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
 import { BlockControls, BlockAlignmentToolbar } from '@wordpress/block-editor';
 import { Toolbar, Button } from '@wordpress/components';
 
-class Controls extends Component {
-	constructor() {
-		super( ...arguments );
-		this.updateAlignment = this.updateAlignment.bind( this );
-	}
+const Controls = ( props ) => {
+	const {
+		setAttributes,
+		attributes,
+	} = props;
 
-	updateAlignment( nextAlign ) {
+	const {
+		align,
+		url,
+	} = attributes;
+
+	const updateAlignment = ( nextAlign ) => {
 		const extraUpdatedAttributes = [ 'wide', 'full' ].indexOf( nextAlign ) !== -1
 			? { width: undefined, height: undefined }
 			: {};
-		this.props.setAttributes( { ...extraUpdatedAttributes, align: nextAlign } );
-	}
+		setAttributes( { ...extraUpdatedAttributes, align: nextAlign } );
+	};
 
-	render() {
-		const {
-			attributes,
-			setAttributes,
-		} = this.props;
-
-		const {
-			align,
-			url,
-		} = attributes;
-
-		return (
-			<Fragment>
-				<BlockControls>
-					<BlockAlignmentToolbar
-						value={ align }
-						onChange={ this.updateAlignment }
-					/>
-					<Toolbar>
-						{ url &&
-							<Button
-								className="components-toolbar__control"
-								label={ __( 'Remove gif', 'coblocks' ) }
-								icon="trash"
-								onClick={ () => setAttributes( { url: '', width: '', height: '' } ) }
-							/>
-						}
-					</Toolbar>
-				</BlockControls>
-			</Fragment>
-		);
-	}
-}
+	return (
+		<>
+			<BlockControls>
+				<BlockAlignmentToolbar
+					value={ align }
+					onChange={ updateAlignment }
+				/>
+				<Toolbar>
+					{ url &&
+						<Button
+							className="components-toolbar__control"
+							label={ __( 'Remove gif', 'coblocks' ) }
+							icon="trash"
+							onClick={ () => setAttributes( { url: '', width: '', height: '' } ) }
+						/>
+					}
+				</Toolbar>
+			</BlockControls>
+		</>
+	);
+};
 
 export default Controls;

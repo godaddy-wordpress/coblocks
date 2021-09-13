@@ -93,8 +93,6 @@ const Edit = ( props ) => {
 
 	/* istanbul ignore next */
 	useEffect( () => {
-		updateInnerAttributes( 'core/heading', { textAlign: attributes.alignment } );
-		updateInnerAttributes( 'core/paragraph', { align: attributes.alignment } );
 		updateInnerAttributes( 'core/buttons', { contentJustification: attributes.alignment } );
 	}, [ attributes.alignment ] );
 

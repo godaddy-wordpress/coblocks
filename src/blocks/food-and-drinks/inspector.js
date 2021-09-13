@@ -12,7 +12,6 @@ import OptionSelectorControl from '../../components/option-selector-control';
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { Fragment } from '@wordpress/element';
 import { PanelBody, ToggleControl, RangeControl } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 import { ENTER, SPACE } from '@wordpress/keycodes';
@@ -98,7 +97,7 @@ const Inspector = ( props ) => {
 
 			<PanelBody title={ __( 'Food & Drinks Settings', 'coblocks' ) } initialOpen={ true }>
 				{ activeStyle.name === 'grid' &&
-					<Fragment>
+					<>
 						<RangeControl
 							label={ __( 'Columns', 'coblocks' ) }
 							value={ attributes.columns }
@@ -112,7 +111,7 @@ const Inspector = ( props ) => {
 							options={ gutterOptions }
 							onChange={ ( newGutter ) => onSetGutter( newGutter ) }
 						/>
-					</Fragment>
+					</>
 				}
 				<ToggleControl
 					label={ __( 'Images', 'coblocks' ) }
