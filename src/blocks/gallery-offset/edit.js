@@ -140,17 +140,17 @@ const Edit = ( props ) => {
 	 * @param {Object} attributes
 	 */
 	const setImageAttributes = ( index, newAttributes ) => {
-		if ( ! newAttributes.images[ index ] ) {
+		if ( ! attributes.images[ index ] ) {
 			return;
 		}
 		setAttributes( {
 			images: [
-				...newAttributes.images.slice( 0, index ),
+				...attributes.images.slice( 0, index ),
 				{
-					...newAttributes.images[ index ],
+					...attributes.images[ index ],
 					...newAttributes,
 				},
-				...newAttributes.images.slice( index + 1 ),
+				...attributes.images.slice( index + 1 ),
 			],
 		} );
 	};
