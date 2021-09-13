@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-09-10T19:47:34+00:00\n"
+"POT-Creation-Date: 2021-09-13T17:09:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -534,7 +534,7 @@ msgstr ""
 
 #. translators: placeholder text for input box
 #: src/blocks/alert/edit.js:94
-#: src/blocks/services/service/edit.js:186
+#: src/blocks/services/service/edit.js:201
 msgid "Write title…"
 msgstr ""
 
@@ -1102,12 +1102,12 @@ msgid "Vegan"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:178
-#: src/blocks/services/service/edit.js:126
+#: src/blocks/services/service/edit.js:122
 msgid "Drop image to replace"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:194
-#: src/blocks/services/service/edit.js:139
+#: src/blocks/services/service/edit.js:142
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Remove image"
 msgstr ""
@@ -1191,21 +1191,21 @@ msgid "Image settings"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:99
-#: src/blocks/gif/inspector.js:31
+#: src/blocks/gif/inspector.js:30
 #: src/blocks/media-card/inspector.js:95
 #: src/blocks/services/service/inspector.js:32
 msgid "Alt text (alternative text)"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:105
-#: src/blocks/gif/inspector.js:37
+#: src/blocks/gif/inspector.js:36
 #: src/blocks/media-card/inspector.js:101
 #: src/blocks/services/service/inspector.js:38
 msgid "Describe the purpose of the image"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:107
-#: src/blocks/gif/inspector.js:39
+#: src/blocks/gif/inspector.js:38
 #: src/blocks/media-card/inspector.js:103
 #: src/blocks/services/service/inspector.js:40
 msgid "Leave empty if the image is purely decorative."
@@ -2178,25 +2178,25 @@ msgstr ""
 msgid "Fullwidth image"
 msgstr ""
 
-#: src/blocks/gif/controls.js:44
+#: src/blocks/gif/controls.js:37
 msgid "Remove gif"
 msgstr ""
 
-#: src/blocks/gif/edit.js:137
+#: src/blocks/gif/edit.js:126
 msgid "This gif has an empty alt attribute"
 msgstr ""
 
-#: src/blocks/gif/edit.js:229
+#: src/blocks/gif/edit.js:218
 #: src/blocks/gist/edit.js:156
 #: src/components/block-gallery/gallery-image.js:267
 msgid "Write caption…"
 msgstr ""
 
-#: src/blocks/gif/edit.js:289
+#: src/blocks/gif/edit.js:278
 msgid "Search for that perfect gif on Giphy"
 msgstr ""
 
-#: src/blocks/gif/edit.js:295
+#: src/blocks/gif/edit.js:284
 msgid "Search for gifs"
 msgstr ""
 
@@ -2215,7 +2215,7 @@ msgstr ""
 msgid "animated"
 msgstr ""
 
-#: src/blocks/gif/inspector.js:29
+#: src/blocks/gif/inspector.js:28
 msgid "Gif settings"
 msgstr ""
 
@@ -6621,8 +6621,19 @@ msgstr ""
 msgid "Toggle to show call to action buttons."
 msgstr ""
 
+#: src/blocks/services/service/edit.js:148
+#: src/components/block-gallery/gallery-image.js:208
+#: src/extensions/replace-image/index.js:115
+msgid "Replace Image"
+msgstr ""
+
+#: src/blocks/services/service/edit.js:150
+#: src/components/block-gallery/gallery-image.js:210
+msgid "Replace"
+msgstr ""
+
 #. translators: content placeholder
-#: src/blocks/services/service/edit.js:195
+#: src/blocks/services/service/edit.js:210
 msgid "Write description…"
 msgstr ""
 
@@ -7071,15 +7082,6 @@ msgstr ""
 
 #: src/components/background/panel.js:294
 msgid "Clear Media"
-msgstr ""
-
-#: src/components/block-gallery/gallery-image.js:208
-#: src/extensions/replace-image/index.js:115
-msgid "Replace Image"
-msgstr ""
-
-#: src/components/block-gallery/gallery-image.js:210
-msgid "Replace"
 msgstr ""
 
 #: src/components/block-gallery/gallery-image.js:235
