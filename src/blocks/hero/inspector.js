@@ -102,9 +102,9 @@ const Inspector = ( props ) => {
 						dimensionSize={ paddingSize }
 						saveCoBlocksMeta={ saveCoBlocksMeta }
 					/>
-					<CSSGridControl { ...this.props } />
+					<CSSGridControl { ...props } />
 					{ ! fullscreen && (
-						<ResponsiveBaseControl { ...this.props }
+						<ResponsiveBaseControl { ...props }
 							label={ __( 'Height in pixels', 'coblocks' ) }
 							height={ height }
 							heightTablet={ heightTablet }
