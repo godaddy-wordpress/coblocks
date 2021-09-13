@@ -15,7 +15,6 @@ import CoBlocksFieldOption from './coblocks-option';
 
 const CoBlocksFieldMultiple = ( props ) => {
 	const {
-		options = [ '' ],
 		setAttributes,
 		type,
 		instanceId,
@@ -27,6 +26,12 @@ const CoBlocksFieldMultiple = ( props ) => {
 		customTextColor,
 		name,
 	} = props;
+
+	// from original component
+	let { options } = props;
+	if ( ! options.length ) {
+		options = [ '' ];
+	}
 
 	const [ inFocus, setInFocus ] = useState( 0 );
 
