@@ -143,17 +143,17 @@ const GalleryMasonryEdit = ( props ) => {
 	};
 
 	const setImageAttributes = ( index, newAttributes ) => {
-		if ( ! newAttributes.images[ index ] ) {
+		if ( ! images[ index ] ) {
 			return;
 		}
 		setAttributes( {
 			images: [
-				...newAttributes.images.slice( 0, index ),
+				...images.slice( 0, index ),
 				{
-					...newAttributes.images[ index ],
+					...images[ index ],
 					...newAttributes,
 				},
-				...newAttributes.images.slice( index + 1 ),
+				...images.slice( index + 1 ),
 			],
 		} );
 	};
