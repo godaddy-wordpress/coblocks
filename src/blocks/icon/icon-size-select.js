@@ -7,7 +7,7 @@ import {	SelectControl } from '@wordpress/components';
 
 import { DEFAULT_ICON_SIZE } from '.';
 
-export const IconSizeSelect = ( props ) => {
+const IconSizeSelect = ( props ) => {
 	const {
 		padding,
 		setAttributes,
@@ -79,3 +79,5 @@ export const IconSizeSelect = ( props ) => {
 		</>
 	);
 };
+
+export default IconSizeSelect;
