@@ -48,7 +48,6 @@ const Edit = ( props ) => {
 		gridSize,
 	} = attributes;
 
-	const [ , setCaptionSelected ] = useState( false );
 	const [ selectedImage, setSelectedImage ] = useState( null );
 
 	const prevIsSelected = usePrevious( isSelected );
@@ -57,7 +56,6 @@ const Edit = ( props ) => {
 		// Deselect images when deselecting the block
 		if ( ! isSelected && prevIsSelected ) {
 			setSelectedImage( null );
-			setCaptionSelected( false );
 		}
 
 		if ( wideControlsEnabled === true && typeof attributes.align === undefined ) {
