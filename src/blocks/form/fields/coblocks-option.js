@@ -18,7 +18,7 @@ const CoBlocksFieldOption = ( props ) => {
 	const textInput = useRef( null );
 
 	useEffect( () => {
-		if ( isInFocus === true ) {
+		if ( isInFocus ) {
 			textInput.current.focus();
 		}
 	}, [ isInFocus ] );
