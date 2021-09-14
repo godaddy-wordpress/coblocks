@@ -11,6 +11,13 @@ import { cloneElement, isValidElement } from '@wordpress/element';
 
 /**
  * Return an element Wrapped with Gutter Properties.
+ *
+ * @param {Object}  obj
+ * @param {Object}  obj.children     HTML Children elements
+ * @param {string}  obj.gutter       String representing gutter value.true
+ * @param {number}  obj.gutterCustom Number representing gutterCustom value
+ * @param {string}  obj.className    String representing block className string
+ * @param {boolean} obj.condition    Whether to conditionally disable className application
  */
 function GutterWrapper( { children, gutter, gutterCustom, className, condition = true } ) {
 	if ( ! isValidElement( children ) ) {

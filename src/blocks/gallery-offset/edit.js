@@ -27,7 +27,7 @@ import { withNotices, Icon } from '@wordpress/components';
 /**
  * Block edit function
  *
- * @param index
+ * @param  index
  */
 class Edit extends Component {
 	constructor() {

@@ -35,7 +35,6 @@ const ALLOWED_BLOCKS = [ 'coblocks/pricing-table-item' ];
  * Returns the layouts configuration for a given number of items.
  *
  * @param {number} count Number of pricing table items.
- *
  * @return {Object[]} Tables layout configuration.
  */
 const getCount = memoize( ( count ) => {

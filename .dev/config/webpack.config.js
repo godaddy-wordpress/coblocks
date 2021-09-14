@@ -9,7 +9,6 @@ const DependencyExtractionWebpackPlugin = require( '@wordpress/dependency-extrac
 const postcssConfig = require( './postcss.config' );
 const { hasBabelConfig } = require( './utils' );
 
-
 /**
  * External dependencies
  */

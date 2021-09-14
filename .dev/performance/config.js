@@ -2,7 +2,6 @@ const gitRepoOwner = 'godaddy-wordpress';
 
 /**
  * @typedef WPPluginCLIConfig
- *
  * @property {string} slug                    Slug.
  * @property {string} name                    Name.
  * @property {string} team                    Github Team Name.

@@ -18,7 +18,6 @@ const { log, formats } = require( './logger' );
  * Utility to run a child script
  *
  * @typedef {NodeJS.ProcessEnv} Env
- *
  * @param {string}  script Script to run.
  * @param {string=} cwd    Working directory.
  * @param {Env=}    env    Additional environment variables to pass to the script.

@@ -86,7 +86,6 @@ const withLightboxClasses = createHigherOrderComponent( ( BlockListBlock ) => {
  * @param {Object} extraProps Additional props applied to save element.
  * @param {Object} blockType  Block type.
  * @param {Object} attributes Current block attributes.
- *
  * @return {Object} Filtered props applied to save element.
  */
 function applyLightboxClasses( extraProps, blockType, attributes ) {

@@ -31,7 +31,6 @@ const ALLOWED_BLOCKS = [ 'coblocks/accordion-item' ];
  * Returns the layouts configuration for a given number of accordion items.
  *
  * @param {number} count Number of accordion items.
- *
  * @return {Object[]} Columns layout configuration.
  */
 const getCount = memoize( ( count ) => {

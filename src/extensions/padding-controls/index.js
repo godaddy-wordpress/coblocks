@@ -140,10 +140,9 @@ const withPaddingClasses = createHigherOrderComponent( ( BlockListBlock ) => {
 /**
  * Override props assigned to save component to inject padding classes.
  *
- * @param {Object} elem Original element produced by save element.
+ * @param {Object} elem       Original element produced by save element.
  * @param {Object} blockType  Block type.
  * @param {Object} attributes Current block attributes.
- *
  * @return {Object} Filtered elem applied to save element.
  */
 function applySavePadding( elem, blockType, attributes ) {

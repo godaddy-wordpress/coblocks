@@ -13,7 +13,6 @@ const { getRandomTemporaryPath } = require( './utils' );
  * Clones a Github repository.
  *
  * @param {string} repositoryUrl
- *
  * @return {Promise<string>} Repository local Path
  */
 async function clone( repositoryUrl ) {
@@ -43,7 +42,6 @@ async function fetch( gitWorkingDirectoryPath, options = [] ) {
  * @param {string}   gitWorkingDirectoryPath Local repository path.
  * @param {string}   message                 Commit message.
  * @param {string[]} filesToAdd              Files to add.
- *
  * @return {Promise<string>} Commit Hash
  */
 async function commit( gitWorkingDirectoryPath, message, filesToAdd = [] ) {

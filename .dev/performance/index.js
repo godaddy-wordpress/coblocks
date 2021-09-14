@@ -20,7 +20,6 @@ const config = require( './config' );
 
 /**
  * @typedef WPPerformanceCommandOptions
- *
  * @property {boolean=} ci          Run on CI.
  * @property {string=}  testsBranch The branch whose performance test files will be used for testing.
  * @property {string=}  wpVersion   The WordPress version to be used as the base install for testing.
@@ -28,7 +27,6 @@ const config = require( './config' );
 
 /**
  * @typedef WPRawPerformanceResults
- *
  * @property {number[]} load           Load Time.
  * @property {number[]} type           Average type time.
  * @property {number[]} focus          Average block selection time.
@@ -39,7 +37,6 @@ const config = require( './config' );
 
 /**
  * @typedef WPPerformanceResults
- *
  * @property {number=} load              Load Time.
  * @property {number=} type              Average type time.
  * @property {number=} minType           Minium type time.
@@ -62,7 +59,6 @@ const config = require( './config' );
  * Computes the average number from an array numbers.
  *
  * @param {number[]} array
- *
  * @return {number} Average.
  */
 function average( array ) {
@@ -73,7 +69,6 @@ function average( array ) {
  * Computes the median number from an array numbers.
  *
  * @param {number[]} array
- *
  * @return {number} Median.
  */
 function median( array ) {
@@ -88,7 +83,6 @@ function median( array ) {
  * Rounds and format a time passed in milliseconds.
  *
  * @param {number} number
- *
  * @return {number} Formatted time.
  */
 function formatTime( number ) {
@@ -100,7 +94,6 @@ function formatTime( number ) {
  * Curate the raw performance results.
  *
  * @param {WPRawPerformanceResults} results
- *
  * @return {WPPerformanceResults} Curated Performance results.
  */
 function curateResults( results ) {
@@ -150,7 +143,6 @@ async function setUpGitBranch( branch, environmentDirectory ) {
  *
  * @param {string} testSuite                Name of the tests set.
  * @param {string} performanceTestDirectory Path to the performance tests' clone.
- *
  * @return {Promise<WPPerformanceResults>} Performance results for the branch.
  */
 async function runTestSuite( testSuite, performanceTestDirectory ) {

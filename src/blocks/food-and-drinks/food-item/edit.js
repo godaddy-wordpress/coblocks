@@ -52,8 +52,8 @@ class FoodItem extends Component {
 	/**
 	 * Handle creation and removal of placeholder elements so that we always have one available to use.
 	 *
-	 * @param {number} childClientId The child block's ClientId.
-	 * @param {string} blockName The block to insert.
+	 * @param {number} childClientId   The child block's ClientId.
+	 * @param {string} blockName       The block to insert.
 	 * @param {Object} blockAttributes The attributes for the placeholder block.
 	 */
 	handlePlaceholderPlacement( childClientId, blockName, blockAttributes = {} ) {

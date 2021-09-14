@@ -19,7 +19,7 @@ import { PanelBody, RangeControl, ToggleControl, SelectControl, CheckboxControl 
 /**
  * Inspector controls
  *
- * @param props
+ * @param  props
  */
 const Inspector = ( props ) => {
 	const getHasColorsHelp = ( checked ) => {

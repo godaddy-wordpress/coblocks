@@ -33,7 +33,7 @@ function CoBlocksEditorSettingsControls() {
 	/**
 	 * Toggles an editor setting while maintaining the original setting in localStorage.
 	 *
-	 * @param {string} key The local storage key of the toggled option.
+	 * @param {string}  key       The local storage key of the toggled option.
 	 * @param {boolean} isEnabled The enabled state of the option.
 	 * @return {Array} The restored value or an empty array (if disabled).
 	 */
