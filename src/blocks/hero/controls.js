@@ -13,38 +13,35 @@ import CSSGridToolbar from '../../components/grid-control/toolbar';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
 import { AlignmentToolbar, BlockControls } from '@wordpress/block-editor';
 import { Toolbar, Icon } from '@wordpress/components';
 
-class Controls extends Component {
-	render() {
-		const {
-			attributes,
-			setAttributes,
-		} = this.props;
+const Controls = ( props ) => {
+	const {
+		attributes,
+		setAttributes,
+	} = props;
 
-		const { contentAlign } = attributes;
+	const { contentAlign } = attributes;
 
-		return (
-			<Fragment>
-				<BlockControls>
-					<Toolbar>
-						<CSSGridToolbar
-							icon={ <Icon icon={ icon } /> }
-							label={ __( 'Change layout', 'coblocks' ) }
-							props={ this.props }
-						/>
-					</Toolbar>
-					<AlignmentToolbar
-						value={ contentAlign }
-						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
+	return (
+		<>
+			<BlockControls>
+				<Toolbar>
+					<CSSGridToolbar
+						icon={ <Icon icon={ icon } /> }
+						label={ __( 'Change layout', 'coblocks' ) }
+						props={ props }
 					/>
-					<BackgroundControls { ...this.props } />
-				</BlockControls>
-			</Fragment>
-		);
-	}
-}
+				</Toolbar>
+				<AlignmentToolbar
+					value={ contentAlign }
+					onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
+				/>
+				<BackgroundControls { ...props } />
+			</BlockControls>
+		</>
+	);
+};
 
 export default Controls;
