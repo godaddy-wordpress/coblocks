@@ -10,122 +10,115 @@ import GalleryLinkSettings from '../../components/block-gallery/gallery-link-set
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component } from '@wordpress/element';
+import { useEffect } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, RangeControl, ToggleControl, SelectControl } from '@wordpress/components';
 
 /**
  * Inspector controls
+ *
+ * @param props
  */
-class Inspector extends Component {
-	constructor() {
-		super( ...arguments );
-		this.setSizeControl = this.setSizeControl.bind( this );
-		this.setRadiusTo = this.setRadiusTo.bind( this );
-		this.setCaptionStyleTo = this.setCaptionStyleTo.bind( this );
-	}
+const Inspector = ( props ) => {
+	const {
+		attributes,
+		setAttributes,
+	} = props;
 
-	componentDidUpdate() {
-		if ( this.props.attributes.gutter <= 0 ) {
-			this.props.setAttributes( {
+	const {
+		captions,
+		captionStyle,
+		gridSize,
+		gutter,
+		radius,
+		lightbox,
+	} = attributes;
+
+	useEffect( () => {
+		if ( attributes.gutter <= 0 ) {
+			setAttributes( {
 				radius: 0,
 			} );
 		}
-	}
+	}, [ attributes.gutter ] );
 
-	setRadiusTo( value ) {
-		this.props.setAttributes( { radius: value } );
-	}
+	const setRadiusTo = ( value ) => {
+		setAttributes( { radius: value } );
+	};
 
-	setSizeControl( value ) {
-		this.props.setAttributes( { gridSize: value } );
-	}
+	const setSizeControl = ( value ) => {
+		setAttributes( { gridSize: value } );
+	};
 
-	setCaptionStyleTo( value ) {
-		this.props.setAttributes( { captionStyle: value } );
-	}
+	const setCaptionStyleTo = ( value ) => {
+		setAttributes( { captionStyle: value } );
+	};
 
-	getCaptionsHelp( checked ) {
+	const getCaptionsHelp = ( checked ) => {
 		return checked
 			? __( 'Showing captions for each media item.', 'coblocks' )
 			: __( 'Toggle to show media captions.', 'coblocks' );
-	}
+	};
 
-	getLightboxHelp( checked ) {
+	const getLightboxHelp = ( checked ) => {
 		return checked
 			? __( 'Image lightbox is enabled.', 'coblocks' )
 			: __( 'Toggle to enable the image lightbox.', 'coblocks' );
-	}
+	};
 
-	render() {
-		const {
-			attributes,
-			setAttributes,
-		} = this.props;
+	return (
+		<InspectorControls>
+			<PanelBody title={ __( 'Masonry settings', 'coblocks' ) }>
 
-		const {
-			captions,
-			captionStyle,
-			gridSize,
-			gutter,
-			radius,
-			lightbox,
-		} = attributes;
+				<SizeControl { ...props }
+					type={ 'grid' }
+					label={ __( 'Size', 'coblocks' ) }
+					onChange={ setSizeControl }
+					value={ gridSize }
+					resetValue={ 'xlrg' }
+				/>
 
-		return (
-			<InspectorControls>
-				<PanelBody title={ __( 'Masonry settings', 'coblocks' ) }>
+				<ResponsiveTabsControl { ...props } />
 
-					<SizeControl { ...this.props }
-						type={ 'grid' }
-						label={ __( 'Size', 'coblocks' ) }
-						onChange={ this.setSizeControl }
-						value={ gridSize }
-						resetValue={ 'xlrg' }
+				{ gutter > 0 &&
+					<RangeControl
+						label={ __( 'Rounded corners', 'coblocks' ) }
+						aria-label={ __( 'Add rounded corners to the gallery items.', 'coblocks' ) }
+						value={ radius }
+						onChange={ setRadiusTo }
+						min={ 0 }
+						max={ 20 }
+						step={ 1 }
 					/>
+				}
 
-					<ResponsiveTabsControl { ...this.props } />
+				<ToggleControl
+					label={ __( 'Lightbox', 'coblocks' ) }
+					checked={ !! lightbox }
+					onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
+					help={ getLightboxHelp }
+				/>
 
-					{ gutter > 0 &&
-						<RangeControl
-							label={ __( 'Rounded corners', 'coblocks' ) }
-							aria-label={ __( 'Add rounded corners to the gallery items.', 'coblocks' ) }
-							value={ radius }
-							onChange={ this.setRadiusTo }
-							min={ 0 }
-							max={ 20 }
-							step={ 1 }
-						/>
-					}
+				<ToggleControl
+					label={ __( 'Captions', 'coblocks' ) }
+					checked={ !! captions }
+					onChange={ () => setAttributes( { captions: ! captions } ) }
+					help={ getCaptionsHelp }
+				/>
 
-					<ToggleControl
-						label={ __( 'Lightbox', 'coblocks' ) }
-						checked={ !! lightbox }
-						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
-						help={ this.getLightboxHelp }
+				{ captions &&
+					<SelectControl
+						label={ __( 'Caption style', 'coblocks' ) }
+						value={ captionStyle }
+						onChange={ setCaptionStyleTo }
+						options={ captionOptions }
 					/>
+				}
 
-					<ToggleControl
-						label={ __( 'Captions', 'coblocks' ) }
-						checked={ !! captions }
-						onChange={ () => setAttributes( { captions: ! captions } ) }
-						help={ this.getCaptionsHelp }
-					/>
-
-					{ captions &&
-						<SelectControl
-							label={ __( 'Caption style', 'coblocks' ) }
-							value={ captionStyle }
-							onChange={ this.setCaptionStyleTo }
-							options={ captionOptions }
-						/>
-					}
-
-				</PanelBody>
-				<GalleryLinkSettings { ...this.props } />
-			</InspectorControls>
-		);
-	}
-}
+			</PanelBody>
+			<GalleryLinkSettings { ...props } />
+		</InspectorControls>
+	);
+};
 
 export default Inspector;
