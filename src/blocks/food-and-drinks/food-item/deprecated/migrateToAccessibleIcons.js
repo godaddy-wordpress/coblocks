@@ -60,11 +60,11 @@ export default function migrateToAccessibleIcons( { attributes } ) {
 					/>
 					{ (
 						!! attributes.spicy ||
-							!! attributes.vegetarian ||
-							!! attributes.glutenFree ||
-							!! attributes.pescatarian ||
-							!! attributes.popular ||
-							!! attributes.vegan
+						!! attributes.vegetarian ||
+						!! attributes.glutenFree ||
+						!! attributes.pescatarian ||
+						!! attributes.popular ||
+						!! attributes.vegan
 					) && (
 						<div className="wp-block-coblocks-food-item__attributes">
 							{ !! attributes.popular && (
