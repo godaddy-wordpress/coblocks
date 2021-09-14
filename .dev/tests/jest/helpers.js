@@ -193,7 +193,7 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 							'coblocks/gallery-stacked', 
 							'coblocks/gallery-masonry' 
 						];
-						// The index refers to the block deprecated.js array of attributes and save functions.
+						// The indexToCheckAgainst refers to the block deprecated.js array of attributes and save functions.
 						// Index is relevant because specific deprecated save functions cause the keys bug reported in #2025.
 						const indexToCheckAgainst = ( blockName === 'coblocks/column' ) ? 1 : 0;
 						if( 
