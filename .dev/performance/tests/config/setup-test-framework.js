@@ -8,7 +8,6 @@ import { toMatchInlineSnapshot, toMatchSnapshot } from 'jest-snapshot';
  * WordPress dependencies
  */
 import {
-	activatePlugin,
 	activateTheme,
 	clearLocalStorage,
 	enablePageDialogAccept,
@@ -239,7 +238,6 @@ beforeAll( async () => {
 	await trashAllPosts();
 	await trashAllPosts( 'wp_block' );
 	await setupBrowser();
-	// await activatePlugin( 'gutenberg-test-plugin-disables-the-css-animations' );
 } );
 
 afterEach( async () => {

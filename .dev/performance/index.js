@@ -373,6 +373,7 @@ async function runPerformanceTests( branches, options ) {
 			},
 			invertedResult
 		);
+		// eslint-disable-next-line no-console
 		console.table( invertedResult );
 
 		const resultsFilename = testSuite + '-performance-results.json';

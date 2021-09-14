@@ -1,3 +1,6 @@
+// Disable issue: https://github.com/godaddy-wordpress/coblocks/issues/2000
+// Disable note: This is a stand-alone script and may not be able to refactor.
+// eslint-disable-next-line @wordpress/no-global-event-listener
 document.addEventListener( 'DOMContentLoaded', function() {
 	document.querySelectorAll( '.coblocks-form form' ).forEach( ( form ) => {
 		const requiredErrorDiv = form.getElementsByClassName( 'required-error' )[ 0 ];

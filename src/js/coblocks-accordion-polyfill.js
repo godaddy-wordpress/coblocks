@@ -19,6 +19,9 @@ void ( function( root, factory ) {
 	// Add a classname
 	document.documentElement.className += ' no-details';
 
+	// Disable issue: https://github.com/godaddy-wordpress/coblocks/issues/2000
+	// Disable note: This is a stand-alone script and may not be able to refactor.
+	// eslint-disable-next-line @wordpress/no-global-event-listener
 	window.addEventListener( 'click', clickHandler );
 
 	injectStyle( 'details-polyfill-style',
