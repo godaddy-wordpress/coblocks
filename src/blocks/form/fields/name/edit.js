@@ -13,7 +13,6 @@ import LabelColorWrapper from '../../../../components/form-label-colors/label-co
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Fragment } from '@wordpress/element';
 import { InspectorControls, RichText } from '@wordpress/block-editor';
 import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
 
@@ -22,7 +21,7 @@ function CoBlocksFieldName( props ) {
 	const { required, label, hasLastName, labelFirstName, labelLastName, textColor, customTextColor } = attributes;
 
 	return (
-		<Fragment>
+		<>
 			<div className={
 				classnames(
 					'coblocks-field',
@@ -94,7 +93,7 @@ function CoBlocksFieldName( props ) {
 					/>
 				</PanelBody>
 			</InspectorControls>
-		</Fragment>
+		</>
 	);
 }
 

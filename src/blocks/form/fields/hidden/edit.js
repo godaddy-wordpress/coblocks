@@ -6,7 +6,6 @@ import CoBlocksFieldLabel from '../field-label';
 /**
  * WordPress dependencies
  */
-import { Fragment } from '@wordpress/element';
 import { TextControl, PanelBody } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
@@ -16,7 +15,7 @@ function CoBlocksFieldHidden( props ) {
 	const { label, value } = attributes;
 
 	return (
-		<Fragment>
+		<>
 			<CoBlocksFieldLabel
 				label={ label }
 				setAttributes={ setAttributes }
@@ -36,7 +35,7 @@ function CoBlocksFieldHidden( props ) {
 					/>
 				</PanelBody>
 			</InspectorControls>
-		</Fragment>
+		</>
 	);
 }
 
