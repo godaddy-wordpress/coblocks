@@ -5,6 +5,7 @@ import { attributes } from './block.json';
 import deprecatedIcons from './deprecated/deprecatedIcons';
 import deprecatedIconsToBackgroundImage from './deprecated/deprecatedIconsToBackgroundImage';
 import migrateToColumnUtilityClasses from './deprecated/migrateToColumnUtilityClasses';
+import migrateToAccessibleIcons from './deprecated/migrateToAccessibleIcons';
 
 const deprecated = [
 	{
@@ -18,6 +19,10 @@ const deprecated = [
 	{
 		attributes,
 		save: migrateToColumnUtilityClasses,
+	},
+	{
+		attributes,
+		save: migrateToAccessibleIcons,
 	},
 ];
 
