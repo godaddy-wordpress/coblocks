@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-09-14T02:49:27+00:00\n"
+"POT-Creation-Date: 2021-09-14T03:01:39+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -80,7 +80,6 @@ msgid "Form submission from [%1$s]"
 msgstr ""
 
 #: includes/class-coblocks-form.php:63
-#: src/blocks/form/edit.js:320
 #: src/blocks/form/index.js:22
 msgid "Your message was sent:"
 msgstr ""
@@ -196,7 +195,6 @@ msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:803
-#: src/blocks/form/edit.js:145
 #: src/blocks/form/fields/submit-button/index.js:26
 #: src/blocks/form/fields/submit-button/index.js:34
 #: src/blocks/form/fields/submit-button/index.js:52
@@ -209,14 +207,12 @@ msgid "Form Submission <%s>"
 msgstr ""
 
 #: includes/class-coblocks-form.php:1036
-#: src/blocks/form/edit.js:313
 msgid "name"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
 #: includes/class-coblocks-form.php:1048
-#: src/blocks/form/edit.js:307
 #: src/blocks/form/fields/name/index.js:59
 #: src/blocks/form/index.js:57
 #: src/blocks/icon/deprecated/svgs.js:691
@@ -444,7 +440,7 @@ msgstr ""
 #: src/blocks/events/event-item/inspector.js:30
 #: src/blocks/features/feature/inspector.js:92
 #: src/blocks/features/inspector.js:159
-#: src/blocks/form/fields/submit-button/edit.js:113
+#: src/blocks/form/fields/submit-button/edit.js:116
 #: src/blocks/hero/inspector.js:137
 #: src/blocks/highlight/inspector.js:32
 #: src/blocks/icon/inspector.js:304
@@ -945,7 +941,7 @@ msgstr ""
 
 #: src/blocks/features/edit.js:114
 #: src/blocks/features/feature/edit.js:120
-#: src/blocks/media-card/edit.js:206
+#: src/blocks/media-card/edit.js:126
 msgid "Add as background"
 msgstr ""
 
@@ -1468,100 +1464,6 @@ msgstr ""
 msgid "Book Appointment"
 msgstr ""
 
-#. translators: %s: placeholder for an email address
-#: src/blocks/form/edit.js:201
-msgid "%s is not a valid email address."
-msgstr ""
-
-#. translators: %s1: placeholder for an email address. %s2: placeholder for an email address
-#: src/blocks/form/edit.js:211
-msgid "%s and %s are not valid email addresses."
-msgstr ""
-
-#. translators: %s1: placeholder for comma separated email addresses
-#: src/blocks/form/edit.js:219
-msgid "%s are not valid email addresses."
-msgstr ""
-
-#: src/blocks/form/edit.js:285
-msgid "Email address"
-msgstr ""
-
-#: src/blocks/form/edit.js:286
-msgid "name@example.com"
-msgstr ""
-
-#: src/blocks/form/edit.js:291
-msgid "Enter the email address where emails should be sent to."
-msgstr ""
-
-#: src/blocks/form/edit.js:297
-msgid "Subject"
-msgstr ""
-
-#: src/blocks/form/edit.js:302
-msgid "You may use the following tags in the subject field: "
-msgstr ""
-
-#: src/blocks/form/edit.js:319
-msgid "Success message"
-msgstr ""
-
-#: src/blocks/form/edit.js:324
-msgid "Form submission confirmation text."
-msgstr ""
-
-#: src/blocks/form/edit.js:395
-msgid "Form settings"
-msgstr ""
-
-#: src/blocks/form/edit.js:400
-msgid "Google reCAPTCHA"
-msgstr ""
-
-#: src/blocks/form/edit.js:403
-msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
-msgstr ""
-
-#: src/blocks/form/edit.js:409
-msgid "Generate keys"
-msgstr ""
-
-#: src/blocks/form/edit.js:410
-msgid "My keys"
-msgstr ""
-
-#: src/blocks/form/edit.js:413
-msgid "Get help"
-msgstr ""
-
-#: src/blocks/form/edit.js:417
-msgid "Site key"
-msgstr ""
-
-#: src/blocks/form/edit.js:423
-msgid "Secret key"
-msgstr ""
-
-#: src/blocks/form/edit.js:437
-#: src/components/block-gallery/gallery-image.js:258
-msgid "Saving"
-msgstr ""
-
-#: src/blocks/form/edit.js:437
-#: src/blocks/opentable/edit.js:165
-msgid "Save"
-msgstr ""
-
-#: src/blocks/form/edit.js:447
-msgid "Remove"
-msgstr ""
-
-#: src/blocks/form/edit.js:486
-#: src/blocks/row/edit.js:325
-msgid "Select a variation to start with."
-msgstr ""
-
 #. translators: block name
 #. translators: block style
 #: src/blocks/form/fields/checkbox/index.js:27
@@ -1583,11 +1485,11 @@ msgstr ""
 msgid "option"
 msgstr ""
 
-#: src/blocks/form/fields/coblocks-option.js:66
+#: src/blocks/form/fields/coblocks-option.js:61
 msgid "Write option…"
 msgstr ""
 
-#: src/blocks/form/fields/coblocks-option.js:74
+#: src/blocks/form/fields/coblocks-option.js:69
 msgid "Remove Option"
 msgstr ""
 
@@ -1640,8 +1542,8 @@ msgid "mail"
 msgstr ""
 
 #: src/blocks/form/fields/field-label.js:33
-#: src/blocks/form/fields/name/edit.js:59
-#: src/blocks/form/fields/name/edit.js:78
+#: src/blocks/form/fields/name/edit.js:58
+#: src/blocks/form/fields/name/edit.js:77
 msgid "Add label…"
 msgstr ""
 
@@ -1649,30 +1551,30 @@ msgstr ""
 msgid "Required"
 msgstr ""
 
-#: src/blocks/form/fields/helpers.js:35
+#: src/blocks/form/fields/helpers.js:34
 msgid "Display settings"
 msgstr ""
 
 #. translators: field type eg: checkbox
-#: src/blocks/form/fields/helpers.js:39
+#: src/blocks/form/fields/helpers.js:38
 msgid "Inline %s"
 msgstr ""
 
 #. translators: field type eg: checkbox
-#: src/blocks/form/fields/helpers.js:47
+#: src/blocks/form/fields/helpers.js:46
 msgid "Displaying the %s inline."
 msgstr ""
 
 #. translators: field type eg: checkbox
-#: src/blocks/form/fields/helpers.js:51
+#: src/blocks/form/fields/helpers.js:50
 msgid "Toggle to display the %s inline."
 msgstr ""
 
-#: src/blocks/form/fields/hidden/edit.js:30
+#: src/blocks/form/fields/hidden/edit.js:29
 msgid "Hidden Field settings"
 msgstr ""
 
-#: src/blocks/form/fields/hidden/edit.js:33
+#: src/blocks/form/fields/hidden/edit.js:32
 msgid "Field value"
 msgstr ""
 
@@ -1698,29 +1600,29 @@ msgstr ""
 msgid "text"
 msgstr ""
 
-#: src/blocks/form/fields/multi-field.js:115
-#: src/blocks/form/fields/multi-field.js:118
+#: src/blocks/form/fields/multi-field.js:120
+#: src/blocks/form/fields/multi-field.js:123
 msgid "Add option"
 msgstr ""
 
-#: src/blocks/form/fields/multi-field.js:115
-#: src/blocks/form/fields/multi-field.js:118
+#: src/blocks/form/fields/multi-field.js:120
+#: src/blocks/form/fields/multi-field.js:123
 msgid "Add checkbox"
 msgstr ""
 
-#: src/blocks/form/fields/name/edit.js:87
+#: src/blocks/form/fields/name/edit.js:86
 msgid "Name Field settings"
 msgstr ""
 
-#: src/blocks/form/fields/name/edit.js:89
+#: src/blocks/form/fields/name/edit.js:88
 msgid "Last name"
 msgstr ""
 
-#: src/blocks/form/fields/name/edit.js:93
+#: src/blocks/form/fields/name/edit.js:92
 msgid "Showing both first and last name fields."
 msgstr ""
 
-#: src/blocks/form/fields/name/edit.js:93
+#: src/blocks/form/fields/name/edit.js:92
 msgid "Toggle to add a last name field."
 msgstr ""
 
@@ -1799,16 +1701,16 @@ msgstr ""
 msgid "dropdown"
 msgstr ""
 
-#: src/blocks/form/fields/submit-button/edit.js:102
+#: src/blocks/form/fields/submit-button/edit.js:105
 msgid "Add text…"
 msgstr ""
 
-#: src/blocks/form/fields/submit-button/edit.js:122
+#: src/blocks/form/fields/submit-button/edit.js:125
 #: src/blocks/share/inspector.js:86
 msgid "Button color"
 msgstr ""
 
-#: src/blocks/form/fields/submit-button/edit.js:130
+#: src/blocks/form/fields/submit-button/edit.js:133
 msgid "Button text color"
 msgstr ""
 
@@ -1924,7 +1826,7 @@ msgstr ""
 
 #. translators: %1$d is the order number of the image, %2$d is the total number of images
 #: src/blocks/gallery-carousel/edit.js:329
-#: src/blocks/gallery-masonry/edit.js:245
+#: src/blocks/gallery-masonry/edit.js:222
 #: src/blocks/gallery-stacked/edit.js:218
 msgid "image %1$d of %2$d in gallery"
 msgstr ""
@@ -1978,7 +1880,7 @@ msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:49
 #: src/blocks/gallery-collage/inspector.js:50
-#: src/blocks/gallery-masonry/inspector.js:56
+#: src/blocks/gallery-masonry/inspector.js:65
 #: src/blocks/gallery-stacked/inspector.js:62
 #: src/extensions/lightbox-controls/index.js:35
 msgid "Image lightbox is enabled."
@@ -1986,7 +1888,7 @@ msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:49
 #: src/blocks/gallery-collage/inspector.js:50
-#: src/blocks/gallery-masonry/inspector.js:57
+#: src/blocks/gallery-masonry/inspector.js:66
 #: src/blocks/gallery-stacked/inspector.js:63
 #: src/extensions/lightbox-controls/index.js:36
 msgid "Toggle to enable the image lightbox."
@@ -1997,7 +1899,7 @@ msgid "Carousel settings"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:76
-#: src/blocks/gallery-masonry/inspector.js:81
+#: src/blocks/gallery-masonry/inspector.js:75
 #: src/blocks/icon/inspector.js:61
 #: src/blocks/icon/inspector.js:177
 #: src/components/typography-controls/index.js:205
@@ -2005,7 +1907,7 @@ msgid "Size"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:93
-#: src/blocks/gallery-masonry/inspector.js:91
+#: src/blocks/gallery-masonry/inspector.js:85
 #: src/blocks/gallery-stacked/inspector.js:103
 #: src/blocks/share/inspector.js:120
 #: src/blocks/social-profiles/inspector.js:125
@@ -2016,7 +1918,7 @@ msgstr ""
 #: src/blocks/gallery-carousel/inspector.js:130
 #: src/blocks/gallery-carousel/variations.js:143
 #: src/blocks/gallery-collage/inspector.js:100
-#: src/blocks/gallery-masonry/inspector.js:102
+#: src/blocks/gallery-masonry/inspector.js:96
 #: src/blocks/gallery-stacked/inspector.js:113
 #: src/extensions/lightbox-controls/index.js:46
 msgid "Lightbox"
@@ -2077,13 +1979,13 @@ msgid "Layered"
 msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:32
-#: src/blocks/gallery-masonry/inspector.js:50
+#: src/blocks/gallery-masonry/inspector.js:59
 #: src/blocks/gallery-stacked/inspector.js:56
 msgid "Showing captions for each media item."
 msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:32
-#: src/blocks/gallery-masonry/inspector.js:51
+#: src/blocks/gallery-masonry/inspector.js:60
 #: src/blocks/gallery-stacked/inspector.js:57
 msgid "Toggle to show media captions."
 msgstr ""
@@ -2100,18 +2002,18 @@ msgid "Shadow"
 msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:106
-#: src/blocks/gallery-masonry/inspector.js:109
+#: src/blocks/gallery-masonry/inspector.js:103
 #: src/blocks/gallery-stacked/inspector.js:120
 msgid "Captions"
 msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:112
-#: src/blocks/gallery-masonry/inspector.js:117
+#: src/blocks/gallery-masonry/inspector.js:111
 msgid "Caption style"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gallery-masonry/edit.js:187
+#: src/blocks/gallery-masonry/edit.js:164
 #: src/blocks/gallery-masonry/index.js:35
 msgid "Masonry"
 msgstr ""
@@ -2127,11 +2029,11 @@ msgstr ""
 msgid "lightbox"
 msgstr ""
 
-#: src/blocks/gallery-masonry/inspector.js:77
+#: src/blocks/gallery-masonry/inspector.js:71
 msgid "Masonry settings"
 msgstr ""
 
-#: src/blocks/gallery-masonry/inspector.js:92
+#: src/blocks/gallery-masonry/inspector.js:86
 msgid "Add rounded corners to the gallery items."
 msgstr ""
 
@@ -2286,7 +2188,7 @@ msgstr ""
 msgid "Gist Meta"
 msgstr ""
 
-#: src/blocks/hero/controls.js:35
+#: src/blocks/hero/controls.js:33
 msgid "Change layout"
 msgstr ""
 
@@ -2310,7 +2212,7 @@ msgstr ""
 msgid "Secondary button…"
 msgstr ""
 
-#: src/blocks/hero/edit.js:185
+#: src/blocks/hero/edit.js:180
 msgid "Add background to hero"
 msgstr ""
 
@@ -5934,11 +5836,11 @@ msgstr ""
 msgid "Aubergine"
 msgstr ""
 
-#: src/blocks/media-card/controls.js:28
+#: src/blocks/media-card/controls.js:26
 msgid "Show media on left"
 msgstr ""
 
-#: src/blocks/media-card/controls.js:33
+#: src/blocks/media-card/controls.js:31
 msgid "Show media on right"
 msgstr ""
 
@@ -5999,20 +5901,20 @@ msgstr ""
 msgid "Toggle to add an %s shadow"
 msgstr ""
 
-#: src/blocks/media-card/media-container.js:38
+#: src/blocks/media-card/media-container.js:31
+msgid "Drop to replace media"
+msgstr ""
+
+#: src/blocks/media-card/media-container.js:46
 msgid "Edit media"
 msgstr ""
 
-#: src/blocks/media-card/media-container.js:102
+#: src/blocks/media-card/media-container.js:104
 msgid "Media area"
 msgstr ""
 
-#: src/blocks/media-card/media-container.js:103
+#: src/blocks/media-card/media-container.js:105
 msgid "Upload a media file or pick one from your media library"
-msgstr ""
-
-#: src/blocks/media-card/media-container.js:123
-msgid "Drop to replace media"
 msgstr ""
 
 #: src/blocks/opentable/controls.js:19
@@ -6035,6 +5937,10 @@ msgstr ""
 
 #: src/blocks/opentable/edit.js:138
 msgid "Select restaurant(s)"
+msgstr ""
+
+#: src/blocks/opentable/edit.js:165
+msgid "Save"
 msgstr ""
 
 #: src/blocks/opentable/edit.js:173
@@ -6498,6 +6404,10 @@ msgstr ""
 
 #: src/blocks/row/edit.js:193
 msgid "Back to columns"
+msgstr ""
+
+#: src/blocks/row/edit.js:325
+msgid "Select a variation to start with."
 msgstr ""
 
 #. translators: block description
@@ -7090,6 +7000,10 @@ msgstr ""
 
 #: src/components/block-gallery/gallery-image.js:243
 msgid "Move image forward"
+msgstr ""
+
+#: src/components/block-gallery/gallery-image.js:258
+msgid "Saving"
 msgstr ""
 
 #: src/components/block-gallery/gallery-image.js:258
