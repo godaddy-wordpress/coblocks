@@ -41,6 +41,10 @@ describe( name, () => {
 	it( 'should render with images', () => {
 		serializedBlock = serialize( block );
 
+		// expect(console).toHaveErrored() should be removed with this issue.
+		// https://github.com/godaddy-wordpress/coblocks/issues/2024
+		expect(console).toHaveErrored()
+
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( baseAttributes.images[ 0 ].url );
 		expect( serializedBlock ).toContain( `data-id="${baseAttributes.images[ 0 ].id}"` );
