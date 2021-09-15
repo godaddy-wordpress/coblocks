@@ -36,7 +36,7 @@ const Inspector = ( props ) => {
 	};
 
 	const setBorderColor = () => {
-		this.props.setAttributes( {
+		props.setAttributes( {
 			borderColor: props.backgroundColor.color,
 		} );
 
