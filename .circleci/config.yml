@@ -68,7 +68,7 @@ workflows:
             - js
             
       # PERF TESTING
-      perf_tests:
+      - perf_tests:
           filters:
             tags:
               only: /^(?!canary).*$/
