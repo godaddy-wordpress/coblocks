@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-09-14T21:02:22+00:00\n"
+"POT-Creation-Date: 2021-09-15T15:55:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -383,7 +383,7 @@ msgstr ""
 #. translators: toggle label to display the accordion open
 #. translators: visually display open as opposed to closed
 #: src/blocks/accordion/accordion-item/controls.js:27
-#: src/blocks/accordion/accordion-item/inspector.js:66
+#: src/blocks/accordion/accordion-item/inspector.js:67
 msgid "Display as open"
 msgstr ""
 
@@ -420,19 +420,19 @@ msgstr ""
 msgid "faq"
 msgstr ""
 
-#: src/blocks/accordion/accordion-item/inspector.js:34
+#: src/blocks/accordion/accordion-item/inspector.js:35
 msgid "Accordion item is open by default."
 msgstr ""
 
-#: src/blocks/accordion/accordion-item/inspector.js:34
+#: src/blocks/accordion/accordion-item/inspector.js:35
 msgid "Toggle to set this accordion item to be open by default."
 msgstr ""
 
-#: src/blocks/accordion/accordion-item/inspector.js:63
+#: src/blocks/accordion/accordion-item/inspector.js:64
 msgid "Accordion Item settings"
 msgstr ""
 
-#: src/blocks/accordion/accordion-item/inspector.js:73
+#: src/blocks/accordion/accordion-item/inspector.js:74
 #: src/blocks/alert/inspector.js:49
 #: src/blocks/author/inspector.js:46
 #: src/blocks/click-to-tweet/inspector.js:48
@@ -457,7 +457,7 @@ msgstr ""
 msgid "Color settings"
 msgstr ""
 
-#: src/blocks/accordion/accordion-item/inspector.js:79
+#: src/blocks/accordion/accordion-item/inspector.js:80
 #: src/blocks/alert/inspector.js:55
 #: src/blocks/author/inspector.js:52
 #: src/blocks/dynamic-separator/inspector.js:58
@@ -479,7 +479,7 @@ msgstr ""
 msgid "Background color"
 msgstr ""
 
-#: src/blocks/accordion/accordion-item/inspector.js:84
+#: src/blocks/accordion/accordion-item/inspector.js:85
 #: src/blocks/alert/inspector.js:60
 #: src/blocks/author/inspector.js:57
 #: src/blocks/click-to-tweet/inspector.js:54
