@@ -19,40 +19,48 @@ import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
  * WordPress dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
-import { compose } from '@wordpress/compose';
+import { useState, useEffect } from '@wordpress/element';
+import { compose, usePrevious } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
 import { withNotices, Icon } from '@wordpress/components';
 
 /**
  * Block edit function
  *
- * @param  index
+ * @param {Object} props
  */
-class Edit extends Component {
-	constructor() {
-		super( ...arguments );
+const Edit = ( props ) => {
+	const {
+		isSelected,
+		wideControlsEnabled,
+		attributes,
+		setAttributes,
+		className,
+		noticeUI,
+	} = props;
 
-		this.state = {
-			selectedImage: null,
-		};
+	const {
+		animation,
+		captions,
+		linkTo,
+		lightbox,
+		gridSize,
+	} = attributes;
 
-		this.replaceImage = this.replaceImage.bind( this );
-	}
+	const [ selectedImage, setSelectedImage ] = useState( null );
 
-	componentDidUpdate( prevProps ) {
+	const prevIsSelected = usePrevious( isSelected );
+
+	useEffect( () => {
 		// Deselect images when deselecting the block
-		if ( ! this.props.isSelected && prevProps.isSelected ) {
-			this.setState( {
-				selectedImage: null,
-				captionSelected: false,
-			} );
+		if ( ! isSelected && prevIsSelected ) {
+			setSelectedImage( null );
 		}
 
-		if ( this.props.wideControlsEnabled === true && typeof this.props.attributes.align === undefined ) {
-			this.props.setAttributes( { align: 'wide' } );
+		if ( wideControlsEnabled === true && typeof attributes.align === undefined ) {
+			setAttributes( { align: 'wide' } );
 		}
-	}
+	}, [ wideControlsEnabled, isSelected, prevIsSelected, attributes.align ] );
 
 	/**
 	 * onMoveForward
@@ -60,94 +68,91 @@ class Edit extends Component {
 	 * @param {number} oldIndex
 	 * @param {number} newIndex
 	 */
-	onMove = ( oldIndex, newIndex ) => {
-		const images = [ ...this.props.attributes.images ];
-		images.splice( newIndex, 1, this.props.attributes.images[ oldIndex ] );
-		images.splice( oldIndex, 1, this.props.attributes.images[ newIndex ] );
-		this.setState( { selectedImage: newIndex } );
-		this.props.setAttributes( { images } );
-	}
+	const onMove = ( oldIndex, newIndex ) => {
+		const images = [ ...attributes.images ];
+		images.splice( newIndex, 1, attributes.images[ oldIndex ] );
+		images.splice( oldIndex, 1, attributes.images[ newIndex ] );
+		setSelectedImage( newIndex );
+		setAttributes( { images } );
+	};
 
 	/**
 	 * onMoveForward
 	 *
 	 * @param {number} oldIndex
 	 */
-	onMoveForward = ( oldIndex ) => {
+	const onMoveForward = ( oldIndex ) => {
 		return () => {
-			if ( oldIndex === this.props.attributes.images.length - 1 ) {
+			if ( oldIndex === attributes.images.length - 1 ) {
 				return;
 			}
-			this.onMove( oldIndex, oldIndex + 1 );
+			onMove( oldIndex, oldIndex + 1 );
 		};
-	}
+	};
 
 	/**
 	 * onMoveBackward
 	 *
 	 * @param {number} oldIndex
 	 */
-	onMoveBackward = ( oldIndex ) => {
+	const onMoveBackward = ( oldIndex ) => {
 		return () => {
 			if ( oldIndex === 0 ) {
 				return;
 			}
-			this.onMove( oldIndex, oldIndex - 1 );
+			onMove( oldIndex, oldIndex - 1 );
 		};
-	}
+	};
 
 	/**
 	 * onSelectImage
 	 *
 	 * @param {number} index
 	 */
-	onSelectImage = ( index ) => {
+	const onSelectImage = ( index ) => {
 		return () => {
-			if ( this.state.selectedImage !== index ) {
-				this.setState( {
-					selectedImage: index,
-				} );
+			if ( selectedImage !== index ) {
+				setSelectedImage( index );
 			}
 		};
-	}
+	};
 
 	/**
 	 * onRemoveImage
 	 *
 	 * @param {number} index
 	 */
-	onRemoveImage = ( index ) => {
+	const onRemoveImage = ( index ) => {
 		return () => {
-			const images = filter( this.props.attributes.images, ( img, i ) => index !== i );
-			this.setState( { selectedImage: null } );
-			this.props.setAttributes( {
+			const images = filter( attributes.images, ( img, i ) => index !== i );
+			setSelectedImage( null );
+			setAttributes( {
 				images,
 			} );
 		};
-	}
+	};
 
 	/**
 	 * setImageAttributes
 	 *
 	 * @param {number} index
-	 * @param {Object} attributes
+	 * @param {Object} newAttributes
 	 */
-	setImageAttributes = ( index, attributes ) => {
-		const { attributes: { images }, setAttributes } = this.props;
-		if ( ! images[ index ] ) {
+	const setImageAttributes = ( index, newAttributes ) => {
+		if ( ! attributes.images[ index ] ) {
 			return;
 		}
 		setAttributes( {
 			images: [
-				...images.slice( 0, index ),
+				...attributes.images.slice( 0, index ),
 				{
-					...images[ index ],
-					...attributes,
+					...attributes.images[ index ],
+					...newAttributes,
 				},
-				...images.slice( index + 1 ),
+				...attributes.images.slice( index + 1 ),
 			],
 		} );
-	}
+	};
 
 	/**
 	 * replaceImage is passed to GalleryImage component and is used to replace images
@@ -155,118 +160,100 @@ class Edit extends Component {
 	 * @param {number} index Index of image to remove.
 	 * @param {Object} media Media object used to initialize attributes.
 	 */
-	replaceImage( index, media ) {
-		const images = [ ...this.props.attributes.images ];
+	const replaceImage = ( index, media ) => {
+		const images = [ ...attributes.images ];
 		images[ index ] = { ...media };
 
-		this.props.setAttributes( { images } );
+		setAttributes( { images } );
+	};
+
+	const hasImages = !! attributes.images.length;
+
+	const offsetGalleryPlaceholder = (
+		<>
+			{ ! hasImages ? noticeUI : null }
+			<GalleryPlaceholder
+				{ ...props }
+				label={ __( 'Offset', 'coblocks' ) }
+				icon={ <Icon icon={ icon } /> }
+			/>
+		</>
+	);
+
+	if ( ! hasImages ) {
+		return offsetGalleryPlaceholder;
 	}
 
-	render() {
-		const {
-			attributes,
-			className,
-			isSelected,
-			noticeUI,
-		} = this.props;
-
-		const {
-			animation,
-			captions,
-			images,
-			linkTo,
-			lightbox,
-			gridSize,
-		} = attributes;
-
-		const hasImages = !! images.length;
-
-		const offsetGalleryPlaceholder = (
-			<Fragment>
-				{ ! hasImages ? noticeUI : null }
-				<GalleryPlaceholder
-					{ ...this.props }
-					label={ __( 'Offset', 'coblocks' ) }
-					icon={ <Icon icon={ icon } /> }
-				/>
-			</Fragment>
-		);
-
-		if ( ! hasImages ) {
-			return offsetGalleryPlaceholder;
+	const wrapperClasses = classnames(
+		className, {
+			'has-lightbox': lightbox,
 		}
+	);
 
-		const wrapperClasses = classnames(
-			className, {
-				'has-lightbox': lightbox,
-			}
-		);
+	const innerClasses = classnames(
+		...GalleryClasses( attributes ), {
+			[ `has-${ gridSize }-images` ]: gridSize,
+		}
+	);
 
-		const innerClasses = classnames(
-			...GalleryClasses( attributes ), {
-				[ `has-${ gridSize }-images` ]: gridSize,
-			}
-		);
+	const itemClasses = classnames(
+		'coblocks-gallery--item', {
+			[ `coblocks-animate ${ animation }` ]: animation,
+		}
+	);
 
-		const itemClasses = classnames(
-			'coblocks-gallery--item', {
-				[ `coblocks-animate ${ animation }` ]: animation,
-			}
-		);
+	return (
+		<>
+			<Controls { ...props } />
+			<Inspector
+				{ ...props }
+			/>
+			{ noticeUI }
+			<div className={ wrapperClasses }>
+				<GutterWrapper { ...attributes }>
+					<ul className={ innerClasses }>
+						{ attributes.images.map( ( img, index ) => {
+							const ariaLabel = sprintf(
+								/* translators: %1$d is the order number of the image, %2$d is the total number of images */
+								__( 'image %1$d of %2$d in gallery', 'coblocks' ),
+								( index + 1 ),
+								attributes.images.length
+							);
 
-		return (
-			<Fragment>
-				<Controls { ...this.props } />
-				<Inspector
-					{ ...this.props }
-				/>
-				{ noticeUI }
-				<div className={ wrapperClasses }>
-					<GutterWrapper { ...attributes }>
-						<ul className={ innerClasses }>
-							{ images.map( ( img, index ) => {
-								const ariaLabel = sprintf(
-									/* translators: %1$d is the order number of the image, %2$d is the total number of images */
-									__( 'image %1$d of %2$d in gallery', 'coblocks' ),
-									( index + 1 ),
-									images.length
-								);
-
-								return (
-									<li className={ itemClasses } key={ img.id || img.url }>
-										<GalleryImage
-											url={ img.url }
-											alt={ img.alt }
-											id={ img.id }
-											isSelected={ isSelected && this.state.selectedImage === index }
-											onRemove={ this.onRemoveImage( index ) }
-											onSelect={ this.onSelectImage( index ) }
-											setAttributes={ ( attrs ) => this.setImageAttributes( index, attrs ) }
-											caption={ img.caption }
-											aria-label={ ariaLabel }
-											captions={ captions }
-											supportsCaption={ true }
-											imgLink={ img.imgLink }
-											linkTo={ linkTo }
-											isFirstItem={ index === 0 }
-											isLastItem={ ( index + 1 ) === images.length }
-											onMoveBackward={ this.onMoveBackward( index ) }
-											onMoveForward={ this.onMoveForward( index ) }
-											newClass="wp-block-coblocks-gallery-offset__figure"
-											imageIndex={ index }
-											replaceImage={ this.replaceImage }
-										/>
-									</li>
-								);
-							} ) }
-						</ul>
-					</GutterWrapper>
-					{ offsetGalleryPlaceholder }
-				</div>
-			</Fragment>
-		);
-	}
-}
+							return (
+								<li className={ itemClasses } key={ img.id || img.url }>
+									<GalleryImage
+										url={ img.url }
+										alt={ img.alt }
+										id={ img.id }
+										isSelected={ isSelected && selectedImage === index }
+										onRemove={ onRemoveImage( index ) }
+										onSelect={ onSelectImage( index ) }
+										setAttributes={ ( attrs ) => setImageAttributes( index, attrs ) }
+										caption={ img.caption }
+										aria-label={ ariaLabel }
+										captions={ captions }
+										supportsCaption={ true }
+										imgLink={ img.imgLink }
+										linkTo={ linkTo }
+										isFirstItem={ index === 0 }
+										isLastItem={ ( index + 1 ) === attributes.images.length }
+										onMoveBackward={ onMoveBackward( index ) }
+										onMoveForward={ onMoveForward( index ) }
+										newClass="wp-block-coblocks-gallery-offset__figure"
+										imageIndex={ index }
+										replaceImage={ replaceImage }
+									/>
+								</li>
+							);
+						} ) }
+					</ul>
+				</GutterWrapper>
+				{ offsetGalleryPlaceholder }
+			</div>
+		</>
+	);
+};
 
 export default compose( [
 	withSelect( ( select ) => ( {

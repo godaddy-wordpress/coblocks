@@ -2,49 +2,47 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, TextareaControl, ExternalLink } from '@wordpress/components';
 
 /**
  * Inspector controls
+ *
+ * @param props
  */
-class Inspector extends Component {
-	constructor() {
-		super( ...arguments );
-		this.updateAlt = this.updateAlt.bind( this );
-	}
+const Inspector = ( props ) => {
+	const {
+		setAttributes,
+		attributes,
+	} = props;
 
-	updateAlt( newAlt ) {
-		this.props.setAttributes( { alt: newAlt } );
-	}
+	const { alt } = attributes;
 
-	render() {
-		const { attributes } = this.props;
-		const { alt } = attributes;
+	const updateAlt = ( newAlt ) => {
+		setAttributes( { alt: newAlt } );
+	};
 
-		return (
-			<Fragment>
-				<InspectorControls>
-					<PanelBody title={ __( 'Gif settings', 'coblocks' ) }>
-						<TextareaControl
-							label={ __( 'Alt text (alternative text)', 'coblocks' ) }
-							value={ alt }
-							onChange={ this.updateAlt }
-							help={
-								<Fragment>
-									<ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
-										{ __( 'Describe the purpose of the image', 'coblocks' ) }
-									</ExternalLink>
-									{ __( 'Leave empty if the image is purely decorative.', 'coblocks' ) }
-								</Fragment>
-							}
-						/>
-					</PanelBody>
-				</InspectorControls>
-			</Fragment>
-		);
-	}
-}
+	return (
+		<>
+			<InspectorControls>
+				<PanelBody title={ __( 'Gif settings', 'coblocks' ) }>
+					<TextareaControl
+						label={ __( 'Alt text (alternative text)', 'coblocks' ) }
+						value={ alt }
+						onChange={ updateAlt }
+						help={
+							<>
+								<ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
+									{ __( 'Describe the purpose of the image', 'coblocks' ) }
+								</ExternalLink>
+								{ __( 'Leave empty if the image is purely decorative.', 'coblocks' ) }
+							</>
+						}
+					/>
+				</PanelBody>
+			</InspectorControls>
+		</>
+	);
+};
 
 export default Inspector;

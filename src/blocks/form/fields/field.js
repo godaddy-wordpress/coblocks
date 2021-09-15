@@ -11,7 +11,6 @@ import CoBlocksFieldLabel from './field-label';
 /**
  * WordPress dependencies
  */
-import { Fragment } from '@wordpress/element';
 import { TextControl } from '@wordpress/components';
 
 function CoBlocksField( {
@@ -25,7 +24,7 @@ function CoBlocksField( {
 	name,
 } ) {
 	return (
-		<Fragment>
+		<>
 			<div className={ classnames( 'coblocks-field', { 'is-selected': isSelected } ) }>
 				<CoBlocksFieldLabel
 					required={ required }
@@ -38,7 +37,7 @@ function CoBlocksField( {
 				/>
 				<TextControl type={ type } />
 			</div>
-		</Fragment>
+		</>
 	);
 }
 

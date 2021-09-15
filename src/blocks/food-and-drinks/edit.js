@@ -16,8 +16,8 @@ import classnames from 'classnames';
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
-import { compose } from '@wordpress/compose';
+import { useEffect } from '@wordpress/element';
+import { compose, usePrevious } from '@wordpress/compose';
 import { withDispatch, withSelect } from '@wordpress/data';
 import { createBlock } from '@wordpress/blocks';
 import { InnerBlocks } from '@wordpress/block-editor';
@@ -93,39 +93,50 @@ function replaceActiveStyle( className, activeStyle, newStyle ) {
 	return list.value;
 }
 
-class FoodAndDrinksEdit extends Component {
-	constructor() {
-		super( ...arguments );
+const FoodAndDrinksEdit = ( props ) => {
+	const {
+		className,
+		attributes,
+		updateBlockAttributes,
+		innerBlocks,
+		setAttributes,
+		clientId,
+		insertBlock,
+		getBlockOrder,
+		isSelected,
+	} = props;
 
-		this.insertNewItem = this.insertNewItem.bind( this );
-		this.onChangeHeadingLevel = this.onChangeHeadingLevel.bind( this );
-		this.setColumns = this.setColumns.bind( this );
-		this.setGutter = this.setGutter.bind( this );
-		this.toggleImages = this.toggleImages.bind( this );
-		this.togglePrices = this.togglePrices.bind( this );
-		this.updateInnerAttributes = this.updateInnerAttributes.bind( this );
-		this.updateStyle = this.updateStyle.bind( this );
-	}
+	const prevClassName = usePrevious( className );
 
-	componentDidUpdate( prevProps ) {
-		const { attributes } = this.props;
-		const activeStyle = getActiveStyle( layoutOptions, attributes.className );
-		const lastActiveStyle = getActiveStyle( layoutOptions, prevProps.attributes.className );
+	const {
+		columns,
+		gutter,
+	} = attributes;
+
+	const activeStyle = getActiveStyle( layoutOptions, className );
+
+	const classes = classnames( className, {
+		'has-columns': columns > 1,
+		'has-responsive-columns': columns > 1,
+		[ `has-${ columns }-columns` ]: columns > 1,
+		[ `has-${ gutter }-gutter` ]: gutter,
+	} );
+
+	useEffect( () => {
+		const lastActiveStyle = getActiveStyle( layoutOptions, prevClassName );
 
 		if ( activeStyle !== lastActiveStyle ) {
 			if ( 'list' === activeStyle.name ) {
-				this.setColumns( 1 );
+				setColumns( 1 );
 			}
 
 			if ( 'grid' === activeStyle.name ) {
-				this.setColumns( 2 );
+				setColumns( 2 );
 			}
 		}
-	}
+	}, [ attributes, prevClassName ] );
 
-	updateInnerAttributes( blockName, newAttributes ) {
-		const { innerBlocks, updateBlockAttributes } = this.props;
-
+	const updateInnerAttributes = ( blockName, newAttributes ) => {
 		innerBlocks.forEach( ( item ) => {
 			if ( item.name === blockName ) {
 				updateBlockAttributes(
@@ -134,49 +145,34 @@ class FoodAndDrinksEdit extends Component {
 				);
 			}
 		} );
-	}
+	};
 
-	onChangeHeadingLevel( headingLevel ) {
-		const { setAttributes } = this.props;
-
+	const onChangeHeadingLevel = ( headingLevel ) => {
 		setAttributes( { headingLevel } );
-		this.updateInnerAttributes( 'coblocks/food-item', { headingLevel } );
-	}
+		updateInnerAttributes( 'coblocks/food-item', { headingLevel } );
+	};
 
-	toggleImages() {
-		const { attributes, setAttributes } = this.props;
-
+	const toggleImages = () => {
 		const showImages = ! attributes.showImages;
 		setAttributes( { showImages } );
+		updateInnerAttributes( 'coblocks/food-item', { showImage: showImages } );
+	};
 
-		this.updateInnerAttributes( 'coblocks/food-item', { showImage: showImages } );
-	}
-
-	togglePrices() {
-		const { attributes, setAttributes } = this.props;
-
+	const togglePrices = () => {
 		const showPrices = ! attributes.showPrices;
 		setAttributes( { showPrices } );
+		updateInnerAttributes( 'coblocks/food-item', { showPrice: showPrices } );
+	};
 
-		this.updateInnerAttributes( 'coblocks/food-item', { showPrice: showPrices } );
-	}
-
-	setColumns( value ) {
-		const { setAttributes } = this.props;
-
+	const setColumns = ( value ) => {
 		setAttributes( { columns: parseInt( value ) } );
-	}
+	};
 
-	setGutter( value ) {
-		const { setAttributes } = this.props;
-
+	const setGutter = ( value ) => {
 		setAttributes( { gutter: value } );
-	}
+	};
 
-	updateStyle( style ) {
-		const { className, attributes, setAttributes } = this.props;
-
-		const activeStyle = getActiveStyle( layoutOptions, className );
+	const updateStyle = ( style ) => {
 		const updatedClassName = replaceActiveStyle(
 			attributes.className,
 			activeStyle,
@@ -184,15 +180,13 @@ class FoodAndDrinksEdit extends Component {
 		);
 
 		setAttributes( { className: updatedClassName } );
-	}
+	};
 
-	insertNewItem() {
-		const { clientId, attributes, insertBlock, getBlockOrder } = this.props;
-
+	const insertNewItem = () => {
 		const blockOrder = getBlockOrder();
 		const insertAtIndex = blockOrder.indexOf( clientId ) + 1;
 
-		const innerBlocks = TEMPLATE.map( ( [ blockName, blockAttributes ] ) =>
+		const newInnerBlocks = TEMPLATE.map( ( [ blockName, blockAttributes ] ) =>
 			createBlock(
 				blockName,
 				Object.assign( {}, blockAttributes, {
@@ -205,64 +199,42 @@ class FoodAndDrinksEdit extends Component {
 		const newItem = createBlock(
 			'coblocks/food-and-drinks',
 			attributes,
-			innerBlocks
+			newInnerBlocks
 		);
 
 		insertBlock( newItem, insertAtIndex );
-	}
+	};
 
-	render() {
-		const {
-			className,
-			attributes,
-			isSelected,
-		} = this.props;
-
-		const activeStyle = getActiveStyle( layoutOptions, className );
-
-		const {
-			columns,
-			gutter,
-		} = attributes;
-
-		const classes = classnames( className, {
-			'has-columns': columns > 1,
-			'has-responsive-columns': columns > 1,
-			[ `has-${ columns }-columns` ]: columns > 1,
-			[ `has-${ gutter }-gutter` ]: gutter,
-		} );
-
-		return (
-			<Fragment>
-				<Controls
-					{ ...this.props }
-					onChangeHeadingLevel={ this.onChangeHeadingLevel }
+	return (
+		<>
+			<Controls
+				{ ...props }
+				onChangeHeadingLevel={ onChangeHeadingLevel }
+			/>
+			<Inspector
+				attributes={ attributes }
+				activeStyle={ activeStyle }
+				layoutOptions={ layoutOptions }
+				onToggleImages={ toggleImages }
+				onTogglePrices={ togglePrices }
+				onUpdateStyle={ updateStyle }
+				onSetColumns={ setColumns }
+				onSetGutter={ setGutter }
+			/>
+			<div className={ classes }>
+				<InnerBlocks
+					allowedBlocks={ ALLOWED_BLOCKS }
+					template={ TEMPLATE }
+					templateInsertUpdatesSelection={ false }
+					__experimentalCaptureToolbars={ true }
 				/>
-				<Inspector
-					attributes={ attributes }
-					activeStyle={ activeStyle }
-					layoutOptions={ layoutOptions }
-					onToggleImages={ this.toggleImages }
-					onTogglePrices={ this.togglePrices }
-					onUpdateStyle={ this.updateStyle }
-					onSetColumns={ this.setColumns }
-					onSetGutter={ this.setGutter }
-				/>
-				<div className={ classes }>
-					<InnerBlocks
-						allowedBlocks={ ALLOWED_BLOCKS }
-						template={ TEMPLATE }
-						templateInsertUpdatesSelection={ false }
-						__experimentalCaptureToolbars={ true }
-					/>
-					{ isSelected &&
-						<CustomAppender onClick={ this.insertNewItem } />
-					}
-				</div>
-			</Fragment>
-		);
-	}
-}
+				{ isSelected &&
+					<CustomAppender onClick={ insertNewItem } />
+				}
+			</div>
+		</>
+	);
+};
 
 export default compose( [
 

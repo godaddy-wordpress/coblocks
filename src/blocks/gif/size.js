@@ -1,69 +1,54 @@
 /**
  * WordPress dependencies
  */
-import { Component } from '@wordpress/element';
+import { useRef, useState, useEffect, useCallback } from '@wordpress/element';
 
-export default class Size extends Component {
-	constructor() {
-		super( ...arguments );
-		this.state = {
-			width: undefined,
-			height: undefined,
-		};
-		this.bindContainer = this.bindContainer.bind( this );
-		this.calculateSize = this.calculateSize.bind( this );
-	}
+const Size = ( props ) => {
+	const {
+		children,
+		src,
+	} = props;
 
-	bindContainer( ref ) {
-		this.container = ref;
-	}
+	const gif = useRef( null );
+	const container = useRef( null );
 
-	componentDidUpdate( prevProps ) {
-		if ( this.props.src !== prevProps.src ) {
-			this.setState( {
-				width: undefined,
-				height: undefined,
-			} );
-			this.fetchImageSize();
-		}
+	const [ height, setHeight ] = useState( undefined );
+	const [ width, setWidth ] = useState( undefined );
 
-		if ( this.props.dirtynessTrigger !== prevProps.dirtynessTrigger ) {
-			this.calculateSize();
-		}
-	}
+	useEffect( () => {
+		fetchImageSize();
+	}, [ src ] );
 
-	componentDidMount() {
-		this.fetchImageSize();
-	}
+	const fetchImageSize = useCallback( () => {
+		gif.current = new window.Image();
+		gif.current.onload = calculateSize;
+		gif.current.src = src;
+	}, [ src ] );
 
-	fetchImageSize() {
-		this.gif = new window.Image();
-		this.gif.onload = this.calculateSize;
-		this.gif.src = this.props.src;
-	}
+	const calculateSize = () => {
+		const maxWidth = container?.current?.clientWidth;
+		const exceedMaxWidth = gif?.current?.width > maxWidth;
+		const ratio = gif?.current?.height / gif?.current?.width;
+		const newWidth = exceedMaxWidth ? maxWidth : gif?.current?.width;
+		const newHeight = exceedMaxWidth ? maxWidth * ratio : gif?.current?.height;
+		setWidth( newWidth );
+		setHeight( newHeight );
+	};
 
-	calculateSize() {
-		const maxWidth = this.container.clientWidth;
-		const exceedMaxWidth = this.gif.width > maxWidth;
-		const ratio = this.gif.height / this.gif.width;
-		const width = exceedMaxWidth ? maxWidth : this.gif.width;
-		const height = exceedMaxWidth ? maxWidth * ratio : this.gif.height;
-		this.setState( { width, height } );
-	}
+	const sizes = {
+		imageWidth: gif?.current?.width,
+		imageHeight: gif?.current?.height,
+		containerWidth: container?.current?.clientWidth,
+		containerHeight: container?.current?.clientHeight,
+		imageWidthWithinContainer: width,
+		imageHeightWithinContainer: height,
+	};
 
-	render() {
-		const sizes = {
-			imageWidth: this.gif && this.gif.width,
-			imageHeight: this.gif && this.gif.height,
-			containerWidth: this.container && this.container.clientWidth,
-			containerHeight: this.container && this.container.clientHeight,
-			imageWidthWithinContainer: this.state.width,
-			imageHeightWithinContainer: this.state.height,
-		};
-		return (
-			<div ref={ this.bindContainer }>
-				{ this.props.children( sizes ) }
-			</div>
-		);
-	}
-}
+	return (
+		<div ref={ container }>
+			{ children( sizes ) }
+		</div>
+	);
+};
+
+export default Size;
