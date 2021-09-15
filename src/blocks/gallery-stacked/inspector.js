@@ -10,7 +10,6 @@ import CoBlocksFontSizePicker from '../../components/fontsize-picker';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
 import { InspectorControls, withFontSizes } from '@wordpress/block-editor';
@@ -18,130 +17,117 @@ import { PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
 
 /**
  * Inspector controls
+ *
+ * @param { Object } props
  */
-class Inspector extends Component {
-	constructor() {
-		super( ...arguments );
+const Inspector = ( props ) => {
+	const {
+		attributes,
+		setAttributes,
+		wideControlsEnabled = false,
+	} = props;
 
-		this.setLinkTo = this.setLinkTo.bind( this );
-		this.setRadiusTo = this.setRadiusTo.bind( this );
-		this.setFullwidthTo = this.setFullwidthTo.bind( this );
-		this.setShadowTo = this.setShadowTo.bind( this );
-	}
+	const {
+		images,
+		gutter,
+		fullwidth,
+		radius,
+		shadow,
+		captions,
+		lightbox,
+	} = attributes;
 
-	setLinkTo( value ) {
-		this.props.setAttributes( { linkTo: value } );
-	}
+	const setRadiusTo = ( value ) => {
+		setAttributes( { radius: value } );
+	};
 
-	setRadiusTo( value ) {
-		this.props.setAttributes( { radius: value } );
-	}
+	const setShadowTo = ( value ) => {
+		setAttributes( { shadow: value } );
+	};
 
-	setShadowTo( value ) {
-		this.props.setAttributes( { shadow: value } );
-	}
+	const setFullwidthTo = () => {
+		setAttributes( { fullwidth: ! fullwidth, shadow: 'none' } );
+	};
 
-	setFullwidthTo() {
-		this.props.setAttributes( { fullwidth: ! this.props.attributes.fullwidth, shadow: 'none' } );
-	}
-
-	getFullwidthImagesHelp( checked ) {
+	const getFullwidthImagesHelp = ( checked ) => {
 		return checked
 			? __( 'Fullwidth images are enabled.', 'coblocks' )
 			: __( 'Toggle to fill the available gallery area with completely fullwidth images.', 'coblocks' );
-	}
+	};
 
-	getCaptionsHelp( checked ) {
+	const getCaptionsHelp = ( checked ) => {
 		return checked
 			? __( 'Showing captions for each media item.', 'coblocks' )
 			: __( 'Toggle to show media captions.', 'coblocks' );
-	}
+	};
 
-	getLightboxHelp( checked ) {
+	const getLightboxHelp = ( checked ) => {
 		return checked
 			? __( 'Image lightbox is enabled.', 'coblocks' )
 			: __( 'Toggle to enable the image lightbox.', 'coblocks' );
-	}
+	};
 
-	render() {
-		const {
-			attributes,
-			setAttributes,
-			wideControlsEnabled = false,
-		} = this.props;
+	return (
+		<InspectorControls>
+			<PanelBody title={ __( 'Stacked settings', 'coblocks' ) }>
 
-		const {
-			images,
-			gutter,
-			fullwidth,
-			radius,
-			shadow,
-			captions,
-			lightbox,
-		} = attributes;
+				{ wideControlsEnabled &&
+				<ToggleControl
+					label={ images.length > 1 ? __( 'Fullwidth images', 'coblocks' ) : __( 'Fullwidth image', 'coblocks' ) }
+					checked={ !! fullwidth }
+					help={ getFullwidthImagesHelp }
+					onChange={ setFullwidthTo }
+				/>
+				}
 
-		return (
-			<InspectorControls>
-				<PanelBody title={ __( 'Stacked settings', 'coblocks' ) }>
+				{ images.length > 1 &&
+				<ResponsiveTabsControl { ...props }
+				/>
+				}
 
-					{ wideControlsEnabled &&
-						<ToggleControl
-							label={ images.length > 1 ? __( 'Fullwidth images', 'coblocks' ) : __( 'Fullwidth image', 'coblocks' ) }
-							checked={ !! fullwidth }
-							help={ this.getFullwidthImagesHelp }
-							onChange={ this.setFullwidthTo }
-						/>
-					}
+				{ gutter > 0 &&
+				<RangeControl
+					label={ __( 'Rounded corners', 'coblocks' ) }
+					value={ radius }
+					onChange={ setRadiusTo }
+					min={ 0 }
+					max={ 20 }
+					step={ 1 }
+				/>
+				}
 
-					{ images.length > 1 &&
-						<ResponsiveTabsControl { ...this.props }
-						/>
-					}
+				<ToggleControl
+					label={ __( 'Lightbox', 'coblocks' ) }
+					checked={ !! lightbox }
+					onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
+					help={ getLightboxHelp }
+				/>
 
-					{ gutter > 0 &&
-						<RangeControl
-							label={ __( 'Rounded corners', 'coblocks' ) }
-							value={ radius }
-							onChange={ this.setRadiusTo }
-							min={ 0 }
-							max={ 20 }
-							step={ 1 }
-						/>
-					}
+				<ToggleControl
+					label={ __( 'Captions', 'coblocks' ) }
+					checked={ !! captions }
+					onChange={ () => setAttributes( { captions: ! captions } ) }
+					help={ getCaptionsHelp }
+				/>
 
-					<ToggleControl
-						label={ __( 'Lightbox', 'coblocks' ) }
-						checked={ !! lightbox }
-						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
-						help={ this.getLightboxHelp }
-					/>
+				{ captions &&
+				<CoBlocksFontSizePicker { ...props } />
+				}
 
-					<ToggleControl
-						label={ __( 'Captions', 'coblocks' ) }
-						checked={ !! captions }
-						onChange={ () => setAttributes( { captions: ! captions } ) }
-						help={ this.getCaptionsHelp }
-					/>
+				{ ! fullwidth &&
+				<SizeControl { ...props }
+					onChange={ setShadowTo }
+					value={ shadow }
+					label={ __( 'Shadow', 'coblocks' ) }
+					reset={ false }
+				/>
+				}
 
-					{ captions &&
-						<CoBlocksFontSizePicker { ...this.props } />
-					}
-
-					{ ! fullwidth &&
-						<SizeControl { ...this.props }
-							onChange={ this.setShadowTo }
-							value={ shadow }
-							label={ __( 'Shadow', 'coblocks' ) }
-							reset={ false }
-						/>
-					}
-
-				</PanelBody>
-				<GalleryLinkSettings { ...this.props } />
-			</InspectorControls>
-		);
-	}
-}
+			</PanelBody>
+			<GalleryLinkSettings { ...props } />
+		</InspectorControls>
+	);
+};
 
 export default compose( [
 	withSelect( ( select ) => ( {
