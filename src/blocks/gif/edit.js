@@ -44,7 +44,7 @@ const applyWithSelect = withSelect( ( select ) => {
 /**
  * Block edit function
  *
- * @param props
+ * @param {Object} props
  */
 const Edit = ( props ) => {
 	const {

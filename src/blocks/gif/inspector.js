@@ -8,7 +8,7 @@ import { PanelBody, TextareaControl, ExternalLink } from '@wordpress/components'
 /**
  * Inspector controls
  *
- * @param props
+ * @param {Object} props
  */
 const Inspector = ( props ) => {
 	const {
