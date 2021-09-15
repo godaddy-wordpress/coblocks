@@ -125,7 +125,10 @@ export default withDispatch( ( dispatch, ownProps, registry ) => ( {
 			innerBlocks = [
 				...innerBlocks,
 				...times( newTables - previousTables, () => {
-					return createBlock( 'coblocks/pricing-table-item', { placeholder: sprintf( __( 'Plan %d', 'coblocks' ), parseInt( newTables ) ) } );
+					return createBlock( 'coblocks/pricing-table-item', { placeholder:
+						/* translators: %d is a placeholder for the nth plan number ( eg. Plan 1, Plan 2 )*/
+						sprintf( __( 'Plan %d', 'coblocks' ), parseInt( newTables ) ),
+					} );
 				} ),
 			];
 		} else {

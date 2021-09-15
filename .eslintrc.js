@@ -21,5 +21,8 @@ module.exports = {
 				assertFunctionNames: [ 'expect', 'cy.get', 'helpers.checkForBlockErrors' ],
 			},
 		],
+		'import/no-extraneous-dependencies': 0,
+		'@wordpress/no-unsafe-wp-apis': 0,
+		'import/named': 0,
 	},
 };
