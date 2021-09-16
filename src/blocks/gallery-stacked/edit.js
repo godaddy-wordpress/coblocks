@@ -18,7 +18,7 @@ import { GalleryClasses } from '../../components/block-gallery/shared';
  * WordPress dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
+import { Component } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
 import { withNotices, Icon } from '@wordpress/components';
@@ -157,8 +157,10 @@ class GalleryStackedEdit extends Component {
 			lightbox,
 		} = attributes;
 
+		const hasImages = !! images.length;
+
 		const stackedGalleryPlaceholder = (
-			<Fragment>
+			<>
 				{ ! hasImages ? noticeUI : null }
 				<GalleryPlaceholder
 					{ ...this.props }
@@ -166,9 +168,7 @@ class GalleryStackedEdit extends Component {
 					icon={ <Icon icon={ icon } /> }
 					gutter={ gutter }
 				/>
-			</Fragment> );
-
-		const hasImages = !! images.length;
+			</> );
 
 		if ( ! hasImages ) {
 			return stackedGalleryPlaceholder;
@@ -198,7 +198,7 @@ class GalleryStackedEdit extends Component {
 		);
 
 		return (
-			<Fragment>
+			<>
 				{ isSelected &&
 					<Controls
 						{ ...this.props }
@@ -255,7 +255,7 @@ class GalleryStackedEdit extends Component {
 						{ stackedGalleryPlaceholder }
 					</ul>
 				</div>
-			</Fragment>
+			</>
 		);
 	}
 }

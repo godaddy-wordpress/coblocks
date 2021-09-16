@@ -89,6 +89,10 @@ const FoodItem = ( props ) => {
 		if ( showImage !== prevShowPrice ) {
 			setAttributes( { url: showImage ? url : '' } );
 		}
+
+		if ( !! url && url !== attributes.url ) {
+			setAttributes( { url } );
+		}
 	}, [ prevShowPrice, isSelected, prevSelected, prevShowImage, clientId, showImage, showPrice, price, url, attributes ] );
 
 	/**
@@ -223,7 +227,15 @@ const FoodItem = ( props ) => {
 					labels={ {
 						title: ' ',
 					} }
-					onSelect={ ( el ) => setAttributes( { url: el.url, alt: el.alt } ) }
+					onSelect={ ( imageEntity ) => {
+						if ( isBlobURL( imageEntity?.url ) ) {
+							return;
+						}
+
+						setUrl( imageEntity?.url );
+						setAttributes( { alt: imageEntity?.alt } );
+					}
+					}
 				/>
 			</div>
 		);
