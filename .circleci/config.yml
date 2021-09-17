@@ -244,6 +244,10 @@ commands:
       - run:
           name: Run performance tests
           command: |
+            npx wp-env start
+      - run:
+          name: Run performance tests
+          command: |
             if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
               npx wp-scripts test-e2e --config .dev/performance/jest.performance.config.js
             else
