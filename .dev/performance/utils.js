@@ -59,31 +59,6 @@ function readJSONFile( fileName ) {
 }
 
 /**
- * Common logic wrapping a step in the process.
- *
- * @param {string}   name         Step name.
- * @param {string}   abortMessage Abort message.
- * @param {Function} handler      Step logic.
- */
-async function runStep( name, abortMessage, handler ) {
-	try {
-		await handler();
-	} catch ( exception ) {
-		log(
-			formats.error(
-				'The following error happened during the "' +
-					formats.warning( name ) +
-					'" step:'
-			) + '\n\n',
-			exception,
-			formats.error( '\n\n' + abortMessage )
-		);
-
-		process.exit( 1 );
-	}
-}
-
-/**
  * Asks the user for a confirmation to continue or abort otherwise.
  *
  * @param {string}  message      Confirmation message.
@@ -121,7 +96,6 @@ function getRandomTemporaryPath() {
 
 module.exports = {
 	askForConfirmation,
-	runStep,
 	readJSONFile,
 	runShellScript,
 	getRandomTemporaryPath,
