@@ -649,7 +649,7 @@ jobs:
       - restore_update_cypress_cache
       - restore_composer_cache
       - setup_remote_docker:
-        version: 19.03.13
+          version: 19.03.13
       - run_perf_tests
 
   # --------------------------------------------------
