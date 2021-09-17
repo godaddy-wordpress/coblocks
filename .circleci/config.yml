@@ -648,8 +648,8 @@ jobs:
       - restore_yarn_cache
       - restore_update_cypress_cache
       - restore_composer_cache
-
-      - start_wpcli_server
+      - setup_remote_docker:
+        version: 19.03.13
       - run_perf_tests
 
   # --------------------------------------------------
