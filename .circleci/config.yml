@@ -250,7 +250,10 @@ commands:
             ./vendor/bin/wp theme install go --activate --path=/tmp/wordpress
             ln -s $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
             ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
-            sudo ./vendor/bin/wp server --host=0.0.0.0 --port=8889 --allow-root  --path=/tmp/wordpress
+      - run:
+          name: Start WPCLI Server
+          command: sudo ./vendor/bin/wp server --host=0.0.0.0 --port=8889 --allow-root  --path=/tmp/wordpress
+          background: true
       - run:
           name: Run performance tests
           command: |
