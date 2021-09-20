@@ -241,7 +241,7 @@ commands:
             if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
               npx wp-scripts test-e2e --config .dev/performance/jest.performance.config.js
             else
-              ~/project/.dev/performance/.cli.js perf --ci
+              ~/project/.dev/performance/cli.js perf --ci
               echo "Changes do not require testing."
               circleci-agent step halt
             fi
@@ -639,8 +639,6 @@ jobs:
       - attach_workspace:
           at: ~/project
       - restore_yarn_cache
-      - restore_update_cypress_cache
-      - restore_composer_cache
       - wait_for_mysql
       - run_perf_tests
 
