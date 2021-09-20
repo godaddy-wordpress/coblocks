@@ -163,9 +163,8 @@ async function runTestSuite( testSuite, performanceTestDirectory ) {
  * Runs the performances tests on an array of branches and output the result.
  *
  * @param {string[]}                    branches Branches to compare
- * @param {WPPerformanceCommandOptions} options  Command options.
  */
-async function installDirectoryPerBranch( branches, { baseDirectory } ) {
+async function installDirectoryPerBranch( branches ) {
 	const branchDirectories = {};
 	for ( const branch of branches ) {
 		log( '    >> Branch: ' + branch );
@@ -183,10 +182,6 @@ async function installDirectoryPerBranch( branches, { baseDirectory } ) {
 		await runShellScript( `./vendor/bin/wp core install --url="http://localhost:8889" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp post generate --count=5 --path=${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp theme install go --activate --path=${ environmentDirectory }` );
-
-		await runShellScript( 'cp -R ' + baseDirectory + ' ' + environmentDirectory );
-		await setUpGitBranch( branch, environmentDirectory + '/wp-content/plugins/coblocks' );
-		await runShellScript( `./vendor/bin/wp plugin activate coblocks --path=${ environmentDirectory }` );
 	}
 	return branchDirectories;
 }
@@ -216,39 +211,14 @@ async function runPerformanceTests( branches, options ) {
 
 	// ` clone in repo prepare repo and then copy that over into the env dires
 
-	// 1- Preparing the tests directory.
-	log( '\n>> Preparing the tests directory' );
-	log( '    >> Cloning the repository' );
-	const baseDirectory = await git.clone( config.gitRepositoryURL );
-	const performanceTestDirectory = '/wp-content/plugins/coblocks';
-	await runShellScript(
-		'cp -R ' + baseDirectory + ' ' + performanceTestDirectory
-	);
-	if ( !! options.testsBranch ) {
-		log(
-			'    >> Fetching the test branch: ' +
-				formats.success( options.testsBranch ) +
-				' branch'
-		);
-		await git.checkoutRemoteBranch(
-			performanceTestDirectory,
-			options.testsBranch
-		);
-	}
-	log( '    >> Installing dependencies and building packages' );
-	await runShellScript(
-		'yarn && yarn build',
-		performanceTestDirectory
-	);
-
 	// 2- Preparing the environment directories per branch.
 	log( '\n>> Preparing an environment directory per branch' );
-	const branchDirectories = installDirectoryPerBranch( branches, { baseDirectory } );
+	const branchDirectories = installDirectoryPerBranch( branches );
 
 	// 3- Printing the used folders.
 	log(
 		'\n>> Perf Tests Directory : ' +
-			formats.success( performanceTestDirectory )
+			formats.success( 'wp-content/plugins/coblocks(staticstring)' )
 	);
 	for ( const branch of branches ) {
 		log(
@@ -277,6 +247,34 @@ async function runPerformanceTests( branches, options ) {
 			for ( const branch of branches ) {
 				// @ts-ignore
 				const environmentDirectory = branchDirectories[ branch ];
+
+				// 1- Preparing the tests directory.
+				log( '\n>> Preparing the tests directory' );
+				log( '    >> Cloning the repository' );
+				const baseDirectory = await git.clone( config.gitRepositoryURL );
+				const performanceTestDirectory = '/wp-content/plugins/coblocks';
+
+				await runShellScript( 'cp -R ' + baseDirectory + ' ' + environmentDirectory + '/wp-content/plugins' );
+				await setUpGitBranch( branch, environmentDirectory + '/wp-content/plugins/coblocks' );
+				await runShellScript( `./vendor/bin/wp plugin activate coblocks --path=${ environmentDirectory }` );
+
+				if ( !! options.testsBranch ) {
+					log(
+						'    >> Fetching the test branch: ' +
+						formats.success( options.testsBranch ) +
+						' branch'
+					);
+					await git.checkoutRemoteBranch(
+						environmentDirectory + performanceTestDirectory,
+						options.testsBranch
+					);
+				}
+				log( '    >> Installing dependencies and building packages' );
+				await runShellScript(
+					'yarn && yarn build',
+					performanceTestDirectory
+				);
+
 				log( '    >> Branch: ' + branch + ', Suite: ' + testSuite );
 				log( '        >> Starting the environment.' );
 
