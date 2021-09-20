@@ -165,6 +165,38 @@ async function runTestSuite( testSuite, performanceTestDirectory ) {
  * @param {string[]}                    branches Branches to compare
  * @param {WPPerformanceCommandOptions} options  Command options.
  */
+async function installDirectoryPerBranch( branches, { baseDirectory } ) {
+	const branchDirectories = {};
+	for ( const branch of branches ) {
+		log( '    >> Branch: ' + branch );
+		const environmentDirectory = `/tmp/${ getRandomTemporaryPath() }/wordpress`;
+
+		branchDirectories[ branch ] = environmentDirectory;
+
+		await runShellScript( 'echo 127.0.0.1 localhost | sudo tee -a /etc/hosts' );
+		await runShellScript( 'sudo apt-get update --allow-releaseinfo-change && sudo apt-get install -y subversion default-mysql-client' );
+		await runShellScript( 'sudo -E docker-php-ext-install mysqli' );
+		await runShellScript( `mkdir -p ${ environmentDirectory }` );
+		await runShellScript( `./vendor/bin/wp core download --path=${ environmentDirectory }` );
+		await runShellScript( './vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass=\'\' --path=/tmp/wordpress' );
+		await runShellScript( `./vendor/bin/wp db create --path=${ environmentDirectory }` );
+		await runShellScript( `./vendor/bin/wp core install --url="http://localhost:8889" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=${ environmentDirectory }` );
+		await runShellScript( `./vendor/bin/wp post generate --count=5 --path=${ environmentDirectory }` );
+		await runShellScript( `./vendor/bin/wp theme install go --activate --path=${ environmentDirectory }` );
+
+		await runShellScript( 'cp -R ' + baseDirectory + ' ' + environmentDirectory );
+		await setUpGitBranch( branch, environmentDirectory + '/wp-content/plugins/coblocks' );
+		await runShellScript( `./vendor/bin/wp plugin activate coblocks --path=${ environmentDirectory }` );
+	}
+	return branchDirectories;
+}
+
+/**
+ * Runs the performances tests on an array of branches and output the result.
+ *
+ * @param {string[]}                    branches Branches to compare
+ * @param {WPPerformanceCommandOptions} options  Command options.
+ */
 async function runPerformanceTests( branches, options ) {
 	// The default value doesn't work because commander provides an array.
 	if ( branches.length === 0 ) {
@@ -182,11 +214,13 @@ async function runPerformanceTests( branches, options ) {
 		await askForConfirmation( 'Ready to go? ' );
 	}
 
+	// ` clone in repo prepare repo and then copy that over into the env dires
+
 	// 1- Preparing the tests directory.
 	log( '\n>> Preparing the tests directory' );
 	log( '    >> Cloning the repository' );
 	const baseDirectory = await git.clone( config.gitRepositoryURL );
-	const performanceTestDirectory = getRandomTemporaryPath();
+	const performanceTestDirectory = '/wp-content/plugins/coblocks';
 	await runShellScript(
 		'cp -R ' + baseDirectory + ' ' + performanceTestDirectory
 	);
@@ -209,47 +243,7 @@ async function runPerformanceTests( branches, options ) {
 
 	// 2- Preparing the environment directories per branch.
 	log( '\n>> Preparing an environment directory per branch' );
-	const branchDirectories = {};
-	for ( const branch of branches ) {
-		log( '    >> Branch: ' + branch );
-		const environmentDirectory = getRandomTemporaryPath();
-		// @ts-ignore
-		branchDirectories[ branch ] = environmentDirectory;
-		await runShellScript(
-			'cp -R ' + baseDirectory + ' ' + environmentDirectory
-		);
-		await setUpGitBranch( branch, environmentDirectory );
-
-		if ( options.wpVersion ) {
-			// In order to match the topology of ZIP files at wp.org, remap .0
-			// patch versions to major versions:
-			//
-			//     5.7   -> 5.7   (unchanged)
-			//     5.7.0 -> 5.7   (changed)
-			//     5.7.2 -> 5.7.2 (unchanged)
-			const zipVersion = options.wpVersion.replace(
-				/^(\d+\.\d+).0/,
-				'$1'
-			);
-			const zipUrl = `https://wordpress.org/wordpress-${ zipVersion }.zip`;
-			log( `        Using WordPress version ${ zipVersion }` );
-
-			// Patch the environment's .wp-env.json config to use the specified WP
-			// version:
-			//
-			//     {
-			//         "core": "https://wordpress.org/wordpress-$VERSION.zip",
-			//         ...
-			//     }
-			const confPath = `${ environmentDirectory }/.wp-env.json`;
-			const conf = { ...readJSONFile( confPath ), core: zipUrl };
-			await fs.writeFileSync(
-				confPath,
-				JSON.stringify( conf, null, 2 ),
-				'utf8'
-			);
-		}
-	}
+	const branchDirectories = installDirectoryPerBranch( branches, { baseDirectory } );
 
 	// 3- Printing the used folders.
 	log(
@@ -285,19 +279,20 @@ async function runPerformanceTests( branches, options ) {
 				const environmentDirectory = branchDirectories[ branch ];
 				log( '    >> Branch: ' + branch + ', Suite: ' + testSuite );
 				log( '        >> Starting the environment.' );
+
 				await runShellScript(
-					'npx wp-env start',
-					environmentDirectory
+					`sudo ./vendor/bin/wp server --host=0.0.0.0 --port=8889 --allow-root  --path=${ environmentDirectory } &`
 				);
+
 				log( '        >> Running the test.' );
 				rawResults[ i ][ branch ] = await runTestSuite(
 					testSuite,
 					performanceTestDirectory
 				);
+
 				log( '        >> Stopping the environment' );
 				await runShellScript(
-					'npx wp-env stop',
-					environmentDirectory
+					'sudo kill $(ps ax | pgrep -f \'wp server\')'
 				);
 			}
 		}
