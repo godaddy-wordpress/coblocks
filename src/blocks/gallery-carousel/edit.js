@@ -47,6 +47,7 @@ const GalleryCarouselEdit = ( props ) => {
 	const [ captionFocused, setCaptionFocused ] = useState( false );
 
 	const prevSelected = usePrevious( props.isSelected );
+	const prevAlign = usePrevious( props.attributes.align );
 
 	useEffect( () => {
 		if ( ! props.isSelected && prevSelected ) {
@@ -64,6 +65,16 @@ const GalleryCarouselEdit = ( props ) => {
 			props.setAttributes( { radius: 0 } );
 		}
 	}, [ props.attributes.gutter ] );
+
+	useEffect( () => {
+		if (
+			props.attributes.gridSize === 'xlrg' &&
+			prevAlign === undefined &&
+			( props.attributes.gutter !== 0 || props.attributes.gutterMobile !== 0 )
+		) {
+			// props.setAttributes( { gutter: 0, gutterMobile: 0 } );
+		}
+	}, [ props.attributes.gridSize, prevAlign ] );
 
 	useEffect( () => {
 		if ( parsedNavForClass !== props.attributes.navForClass ) {
