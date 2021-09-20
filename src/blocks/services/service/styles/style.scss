@@ -39,6 +39,12 @@
 		}
 	}
 
+	&__content {
+		& > .has-background {
+			padding: 0;
+		}
+	}
+
 }
 
 .wp-block-coblocks-service__figure {

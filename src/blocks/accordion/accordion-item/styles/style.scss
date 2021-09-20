@@ -54,6 +54,10 @@
 		> div {
 			max-width: 100%;
 		}
+
+		& > .has-background {
+			padding: 0
+		}
 	}
 
 	.alignfull img {
