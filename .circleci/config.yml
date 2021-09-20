@@ -250,6 +250,7 @@ commands:
             ./vendor/bin/wp theme install go --activate --path=/tmp/wordpress
             ln -s $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
             ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
+            sudo ./vendor/bin/wp server --host=0.0.0.0 --port=8889 --allow-root  --path=/tmp/wordpress
       - run:
           name: Run performance tests
           command: |
@@ -644,7 +645,6 @@ jobs:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-    parallelism: 4
     steps:
       - checkout
       - setup_e2e_env_var
