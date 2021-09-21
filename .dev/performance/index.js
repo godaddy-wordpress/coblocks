@@ -189,7 +189,7 @@ async function runPerformanceTests( branches, options ) {
 	const branchDirectories = {};
 	for ( const branch of branches ) {
 		log( '    >> Branch: ' + branch );
-		const environmentDirectory = `/tmp/${ getRandomTemporaryPath() }/wordpress`;
+		const environmentDirectory = `${ getRandomTemporaryPath() }/wordpress`;
 
 		branchDirectories[ branch ] = environmentDirectory;
 

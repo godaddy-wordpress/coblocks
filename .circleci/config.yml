@@ -640,6 +640,12 @@ jobs:
           at: ~/project
       - restore_yarn_cache
       - wait_for_mysql
+      - run:
+          name: Install Composer dependencies
+          command: |
+            sudo composer self-update --1
+            composer validate --strict
+            composer install
       - run_perf_tests
 
   # --------------------------------------------------
