@@ -2,7 +2,7 @@
 
 	&.has-filter-grayscale img,
 	&.is-style-black-and-white img {
-		filter: grayscale(1) brightness(0);
+		filter: grayscale(1) brightness(0.9);
 	}
 
 	&.is-style-grayscale img {
