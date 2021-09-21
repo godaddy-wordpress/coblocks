@@ -160,33 +160,6 @@ async function runTestSuite( testSuite, performanceTestDirectory ) {
 }
 
 /**
- * Install local environments in temporary directory for performances tests.
- *
- * @param {string[]}                    branches Branches to compare
- */
-async function installDirectoryPerBranch( branches ) {
-	const branchDirectories = {};
-	for ( const branch of branches ) {
-		log( '    >> Branch: ' + branch );
-		const environmentDirectory = `/tmp/${ getRandomTemporaryPath() }/wordpress`;
-
-		branchDirectories[ branch ] = environmentDirectory;
-
-		await runShellScript( 'echo 127.0.0.1 localhost | sudo tee -a /etc/hosts' );
-		await runShellScript( 'sudo apt-get update --allow-releaseinfo-change && sudo apt-get install -y subversion default-mysql-client' );
-		await runShellScript( 'sudo -E docker-php-ext-install mysqli' );
-		await runShellScript( `mkdir -p ${ environmentDirectory }` );
-		await runShellScript( `./vendor/bin/wp core download --path=${ environmentDirectory }` );
-		await runShellScript( `./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass=\'\' --path=${ environmentDirectory }` );
-		await runShellScript( `./vendor/bin/wp db create --path=${ environmentDirectory }` );
-		await runShellScript( `./vendor/bin/wp core install --url="http://localhost:8889" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=${ environmentDirectory }` );
-		await runShellScript( `./vendor/bin/wp post generate --count=5 --path=${ environmentDirectory }` );
-		await runShellScript( `./vendor/bin/wp theme install go --activate --path=${ environmentDirectory }` );
-	}
-	return branchDirectories;
-}
-
-/**
  * Runs the performances tests on an array of branches and output the result.
  *
  * @param {string[]}                    branches Branches to compare
@@ -213,9 +186,24 @@ async function runPerformanceTests( branches, options ) {
 
 	// 2- Preparing the environment directories per branch.
 	log( '\n>> Preparing an environment directory per branch' );
-	const branchDirectories = installDirectoryPerBranch( branches );
+	const branchDirectories = {};
+	for ( const branch of branches ) {
+		log( '    >> Branch: ' + branch );
+		const environmentDirectory = `/tmp/${ getRandomTemporaryPath() }/wordpress`;
 
-	console.log( branchDirectories );
+		branchDirectories[ branch ] = environmentDirectory;
+
+		await runShellScript( 'echo 127.0.0.1 localhost | sudo tee -a /etc/hosts' );
+		await runShellScript( 'sudo apt-get update --allow-releaseinfo-change && sudo apt-get install -y subversion default-mysql-client' );
+		await runShellScript( 'sudo -E docker-php-ext-install mysqli' );
+		await runShellScript( `mkdir -p ${ environmentDirectory }` );
+		await runShellScript( `./vendor/bin/wp core download --path=${ environmentDirectory }` );
+		await runShellScript( `./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass=\'\' --path=${ environmentDirectory }` );
+		await runShellScript( `./vendor/bin/wp db create --path=${ environmentDirectory }` );
+		await runShellScript( `./vendor/bin/wp core install --url="http://localhost:8889" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=${ environmentDirectory }` );
+		await runShellScript( `./vendor/bin/wp post generate --count=5 --path=${ environmentDirectory }` );
+		await runShellScript( `./vendor/bin/wp theme install go --activate --path=${ environmentDirectory }` );
+	}
 
 	// 3- Printing the used folders.
 	log(
