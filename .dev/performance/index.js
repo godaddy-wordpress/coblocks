@@ -160,7 +160,7 @@ async function runTestSuite( testSuite, performanceTestDirectory ) {
 }
 
 /**
- * Runs the performances tests on an array of branches and output the result.
+ * Install local environments in temporary directory for performances tests.
  *
  * @param {string[]}                    branches Branches to compare
  */
@@ -177,7 +177,7 @@ async function installDirectoryPerBranch( branches ) {
 		await runShellScript( 'sudo -E docker-php-ext-install mysqli' );
 		await runShellScript( `mkdir -p ${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp core download --path=${ environmentDirectory }` );
-		await runShellScript( './vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass=\'\' --path=/tmp/wordpress' );
+		await runShellScript( `./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass=\'\' --path=${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp db create --path=${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp core install --url="http://localhost:8889" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp post generate --count=5 --path=${ environmentDirectory }` );
@@ -214,6 +214,8 @@ async function runPerformanceTests( branches, options ) {
 	// 2- Preparing the environment directories per branch.
 	log( '\n>> Preparing an environment directory per branch' );
 	const branchDirectories = installDirectoryPerBranch( branches );
+
+	console.log( branchDirectories );
 
 	// 3- Printing the used folders.
 	log(
@@ -252,10 +254,9 @@ async function runPerformanceTests( branches, options ) {
 				log( '\n>> Preparing the tests directory' );
 				log( '    >> Cloning the repository' );
 				const baseDirectory = await git.clone( config.gitRepositoryURL );
-				const performanceTestDirectory = '/wp-content/plugins/coblocks';
 
-				await runShellScript( 'cp -R ' + baseDirectory + ' ' + environmentDirectory + '/wp-content/plugins' );
-				await setUpGitBranch( branch, environmentDirectory + '/wp-content/plugins/coblocks' );
+				await runShellScript( `cp -R ${ baseDirectory } ${ environmentDirectory }/wp-content/plugins` );
+				await setUpGitBranch( branch, `${ environmentDirectory }'/wp-content/plugins/coblocks'` );
 				await runShellScript( `./vendor/bin/wp plugin activate coblocks --path=${ environmentDirectory }` );
 
 				if ( !! options.testsBranch ) {
@@ -265,14 +266,14 @@ async function runPerformanceTests( branches, options ) {
 						' branch'
 					);
 					await git.checkoutRemoteBranch(
-						environmentDirectory + performanceTestDirectory,
+						`${ environmentDirectory }'/wp-content/plugins/coblocks'`,
 						options.testsBranch
 					);
 				}
 				log( '    >> Installing dependencies and building packages' );
 				await runShellScript(
 					'yarn && yarn build',
-					performanceTestDirectory
+					`${ environmentDirectory }'/wp-content/plugins/coblocks'`
 				);
 
 				log( '    >> Branch: ' + branch + ', Suite: ' + testSuite );
@@ -285,7 +286,7 @@ async function runPerformanceTests( branches, options ) {
 				log( '        >> Running the test.' );
 				rawResults[ i ][ branch ] = await runTestSuite(
 					testSuite,
-					performanceTestDirectory
+					`${ environmentDirectory }'/wp-content/plugins/coblocks'`
 				);
 
 				log( '        >> Stopping the environment' );

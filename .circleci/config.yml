@@ -239,7 +239,7 @@ commands:
           name: Run performance tests
           command: |
             if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
-              npx wp-scripts test-e2e --config .dev/performance/jest.performance.config.js
+              ~/project/.dev/performance/cli.js perf --ci
             else
               ~/project/.dev/performance/cli.js perf --ci
               echo "Changes do not require testing."
