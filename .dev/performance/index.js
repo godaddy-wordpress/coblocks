@@ -195,6 +195,7 @@ async function runPerformanceTests( branches, options ) {
 
 		await runShellScript( 'echo 127.0.0.1 localhost | sudo tee -a /etc/hosts' );
 		await runShellScript( 'sudo apt-get update --allow-releaseinfo-change && sudo apt-get install -y subversion default-mysql-client' );
+		await runShellScript( 'sudo mkdir /conf.d/' );
 		await runShellScript( 'sudo -E docker-php-ext-install mysqli' );
 		await runShellScript( `mkdir -p ${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp core download --path=${ environmentDirectory }` );
