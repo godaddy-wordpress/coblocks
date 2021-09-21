@@ -168,7 +168,7 @@ async function runTestSuite( testSuite, performanceTestDirectory ) {
 async function runPerformanceTests( branches, options ) {
 	// The default value doesn't work because commander provides an array.
 	if ( branches.length === 0 ) {
-		branches = [ 'master' ];
+		branches = [ 'try/performance-tests-run-all-tests' ];
 	}
 
 	log(
@@ -203,6 +203,15 @@ async function runPerformanceTests( branches, options ) {
 		await runShellScript( `./vendor/bin/wp core install --url="http://localhost:8889" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp post generate --count=5 --path=${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp theme install go --activate --path=${ environmentDirectory }` );
+
+		// 1- Preparing the tests directory.
+		log( '\n>> Preparing the tests directory' );
+		log( '    >> Cloning the repository' );
+		const baseDirectory = await git.clone( config.gitRepositoryURL );
+
+		await runShellScript( `cp -R ${ baseDirectory } ${ environmentDirectory }/wp-content/plugins` );
+		await setUpGitBranch( branch, `${ environmentDirectory }'/wp-content/plugins/coblocks'` );
+		await runShellScript( `./vendor/bin/wp plugin activate coblocks --path=${ environmentDirectory }` );
 	}
 
 	// 3- Printing the used folders.
@@ -235,18 +244,7 @@ async function runPerformanceTests( branches, options ) {
 		for ( let i = 0; i < 3; i++ ) {
 			rawResults[ i ] = {};
 			for ( const branch of branches ) {
-				// @ts-ignore
 				const environmentDirectory = branchDirectories[ branch ];
-
-				// 1- Preparing the tests directory.
-				log( '\n>> Preparing the tests directory' );
-				log( '    >> Cloning the repository' );
-				const baseDirectory = await git.clone( config.gitRepositoryURL );
-
-				await runShellScript( `cp -R ${ baseDirectory } ${ environmentDirectory }/wp-content/plugins` );
-				await setUpGitBranch( branch, `${ environmentDirectory }'/wp-content/plugins/coblocks'` );
-				await runShellScript( `./vendor/bin/wp plugin activate coblocks --path=${ environmentDirectory }` );
-
 				if ( !! options.testsBranch ) {
 					log(
 						'    >> Fetching the test branch: ' +
