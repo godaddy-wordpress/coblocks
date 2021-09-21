@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-09-16T14:54:05+00:00\n"
+"POT-Creation-Date: 2021-09-21T17:33:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -1821,25 +1821,25 @@ msgid "Event"
 msgstr ""
 
 #. translators: %s: Type of gallery variation
-#: src/blocks/gallery-carousel/edit.js:185
+#: src/blocks/gallery-carousel/edit.js:182
 msgid "%s Carousel"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gallery-carousel/edit.js:195
+#: src/blocks/gallery-carousel/edit.js:192
 #: src/blocks/gallery-carousel/index.js:36
 msgid "Carousel"
 msgstr ""
 
 #. translators: %1$d is the order number of the image, %2$d is the total number of images
-#: src/blocks/gallery-carousel/edit.js:329
+#: src/blocks/gallery-carousel/edit.js:326
 #: src/blocks/gallery-masonry/edit.js:222
 #: src/blocks/gallery-offset/edit.js:219
 #: src/blocks/gallery-stacked/edit.js:218
 msgid "image %1$d of %2$d in gallery"
 msgstr ""
 
-#: src/blocks/gallery-carousel/edit.js:392
+#: src/blocks/gallery-carousel/edit.js:389
 msgid "Write gallery caption…"
 msgstr ""
 
