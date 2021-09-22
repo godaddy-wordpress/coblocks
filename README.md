@@ -34,6 +34,7 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 -   Masonry Gallery Block
 -   Media Card Block
 -   Offset Gallery Block
+-   OpenTable Reservations Block
 -   Post Carousel Block
 -   Posts Block
 -   Pricing Table Block

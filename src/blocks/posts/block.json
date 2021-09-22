@@ -69,6 +69,10 @@
 			"items": {
 				"type": "object"
 			}
+		},
+		"categoryRelation": {
+			"type": "string",
+			"default": "or"
 		}
 	},
 	"supports": {

@@ -19,8 +19,8 @@ import { GalleryClasses } from '../../components/block-gallery/shared';
  * WordPress dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
-import { compose } from '@wordpress/compose';
+import { useState, useEffect } from '@wordpress/element';
+import { compose, usePrevious } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
 import { withNotices, Icon } from '@wordpress/components';
 
@@ -32,95 +32,100 @@ const masonryOptions = {
 	percentPosition: true,
 };
 
-class GalleryMasonryEdit extends Component {
-	constructor() {
-		super( ...arguments );
+const GalleryMasonryEdit = ( props ) => {
+	const {
+		attributes,
+		setAttributes,
+		wideControlsEnabled,
+		isSelected,
+		className,
+		editorSidebarOpened,
+		noticeUI,
+		pluginSidebarOpened,
+		publishSidebarOpened,
+	} = props;
 
-		this.onSelectImage = this.onSelectImage.bind( this );
-		this.onRemoveImage = this.onRemoveImage.bind( this );
-		this.onMove = this.onMove.bind( this );
-		this.onMoveForward = this.onMoveForward.bind( this );
-		this.onMoveBackward = this.onMoveBackward.bind( this );
-		this.setImageAttributes = this.setImageAttributes.bind( this );
-		this.replaceImage = this.replaceImage.bind( this );
+	const {
+		align,
+		animation,
+		captions,
+		gridSize,
+		gutter,
+		gutterMobile,
+		linkTo,
+		lightbox,
+		images,
+	} = attributes;
 
-		this.state = {
-			selectedImage: null,
-		};
-	}
+	const [ selectedImage, setSelectedImage ] = useState( null );
 
-	componentDidMount() {
-		const {
-			attributes,
-			setAttributes,
-			wideControlsEnabled,
-		} = this.props;
+	const prevIsSelected = usePrevious( isSelected );
 
-		if ( typeof attributes.align !== 'undefined' && typeof attributes.gridSize !== 'undefined' ) {
-			if ( wideControlsEnabled === true && ! attributes.align && attributes.gridSize === 'xlrg' ) {
+	const hasImages = !! images.length;
+
+	const sidebarIsOpened = editorSidebarOpened || pluginSidebarOpened || publishSidebarOpened;
+
+	useEffect( () => {
+		if ( typeof align !== 'undefined' && typeof gridSize !== 'undefined' ) {
+			if ( wideControlsEnabled === true && ! align && gridSize === 'xlrg' ) {
 				setAttributes( {
 					align: 'wide',
 					gridSize: 'lrg',
 				} );
 			}
 		}
-	}
+	}, [ gridSize, align, wideControlsEnabled ] );
 
-	componentDidUpdate( prevProps ) {
+	useEffect( () => {
 		// Deselect images when deselecting the block.
-		if ( ! this.props.isSelected && prevProps.isSelected ) {
-			this.setState( {
-				selectedImage: null,
-				captionSelected: false,
-			} );
+		if ( ! isSelected && prevIsSelected ) {
+			setSelectedImage( null );
 		}
-	}
+	}, [ prevIsSelected, isSelected ] );
 
-	onSelectImage( index ) {
+	const onSelectImage = ( index ) => {
 		return () => {
-			if ( this.state.selectedImage !== index ) {
-				this.setState( {
-					selectedImage: index,
-				} );
+			if ( selectedImage !== index ) {
+				setSelectedImage( index );
 			}
 		};
-	}
+	};
 
-	onMove( oldIndex, newIndex ) {
-		const images = [ ...this.props.attributes.images ];
-		images.splice( newIndex, 1, this.props.attributes.images[ oldIndex ] );
-		images.splice( oldIndex, 1, this.props.attributes.images[ newIndex ] );
-		this.setState( { selectedImage: newIndex } );
-		this.props.setAttributes( { images } );
-	}
+	const onMove = ( oldIndex, newIndex ) => {
+		const newImages = [ ...attributes.images ];
+		newImages.splice( newIndex, 1, attributes.images[ oldIndex ] );
+		newImages.splice( oldIndex, 1, attributes.images[ newIndex ] );
+		setSelectedImage( newIndex );
+		setAttributes( { images: newImages } );
+	};
 
-	onMoveForward( oldIndex ) {
+	const onMoveForward = ( oldIndex ) => {
 		return () => {
-			if ( oldIndex === this.props.attributes.images.length - 1 ) {
+			if ( oldIndex === attributes.images.length - 1 ) {
 				return;
 			}
-			this.onMove( oldIndex, oldIndex + 1 );
+			onMove( oldIndex, oldIndex + 1 );
 		};
-	}
+	};
 
-	onMoveBackward( oldIndex ) {
+	const onMoveBackward = ( oldIndex ) => {
 		return () => {
 			if ( oldIndex === 0 ) {
 				return;
 			}
-			this.onMove( oldIndex, oldIndex - 1 );
+			onMove( oldIndex, oldIndex - 1 );
 		};
-	}
+	};
 
-	onRemoveImage( index ) {
+	const onRemoveImage = ( index ) => {
 		return () => {
-			const images = filter( this.props.attributes.images, ( _img, i ) => index !== i );
-			this.setState( { selectedImage: null } );
-			this.props.setAttributes( {
-				images,
+			const newImages = filter( attributes.images, ( _img, i ) => index !== i );
+			setSelectedImage( null );
+			setAttributes( {
+				images: newImages,
 			} );
 		};
-	}
+	};
 
 	/**
 	 * replaceImage is passed to GalleryImage component and is used to replace images
@@ -128,15 +133,14 @@ class GalleryMasonryEdit extends Component {
 	 * @param {number} index Index of image to remove.
 	 * @param {Object} media Media object used to initialize attributes.
 	 */
-	replaceImage( index, media ) {
-		const images = [ ...this.props.attributes.images ];
-		images[ index ] = { ...media };
+	const replaceImage = ( index, media ) => {
+		const newImages = [ ...attributes.images ];
+		newImages[ index ] = { ...media };
 
-		this.props.setAttributes( { images } );
-	}
+		setAttributes( { images: newImages } );
+	};
 
-	setImageAttributes( index, attributes ) {
-		const { attributes: { images }, setAttributes } = this.props;
+	const setImageAttributes = ( index, newAttributes ) => {
 		if ( ! images[ index ] ) {
 			return;
 		}
@@ -145,142 +149,114 @@ class GalleryMasonryEdit extends Component {
 				...images.slice( 0, index ),
 				{
 					...images[ index ],
-					...attributes,
+					...newAttributes,
 				},
 				...images.slice( index + 1 ),
 			],
 		} );
+	};
+
+	const masonryGalleryPlaceholder = (
+		<>
+			{ ! hasImages ? noticeUI : null }
+			<GalleryPlaceholder
+				{ ...props }
+				label={ __( 'Masonry', 'coblocks' ) }
+				icon={ <Icon icon={ icon } /> }
+				gutter={ gutter }
+			/>
+		</>
+	);
+
+	if ( ! hasImages ) {
+		return masonryGalleryPlaceholder;
 	}
 
-	render() {
-		const {
-			attributes,
-			className,
-			editorSidebarOpened,
-			isSelected,
-			noticeUI,
-			pluginSidebarOpened,
-			publishSidebarOpened,
-		} = this.props;
-
-		const {
-			align,
-			animation,
-			captions,
-			gridSize,
-			gutter,
-			gutterMobile,
-			images,
-			linkTo,
-			lightbox,
-		} = attributes;
-
-		const hasImages = !! images.length;
-
-		const sidebarIsOpened = editorSidebarOpened || pluginSidebarOpened || publishSidebarOpened;
-
-		const masonryGalleryPlaceholder = (
-			<Fragment>
-				{ ! hasImages ? noticeUI : null }
-				<GalleryPlaceholder
-					{ ...this.props }
-					label={ __( 'Masonry', 'coblocks' ) }
-					icon={ <Icon icon={ icon } /> }
-					gutter={ gutter }
-				/>
-			</Fragment>
-		);
-
-		if ( ! hasImages ) {
-			return masonryGalleryPlaceholder;
+	const innerClasses = classnames(
+		...GalleryClasses( attributes ),
+		sidebarIsOpened, {
+			[ `align${ align }` ]: align,
+			'has-gutter': gutter > 0,
+			'has-lightbox': lightbox,
 		}
+	);
 
-		const innerClasses = classnames(
-			...GalleryClasses( attributes ),
-			sidebarIsOpened, {
-				[ `align${ align }` ]: align,
-				'has-gutter': gutter > 0,
-				'has-lightbox': lightbox,
+	const masonryClasses = classnames(
+		`has-grid-${ gridSize }`, {
+			[ `has-gutter-${ gutter }` ]: gutter > 0,
+			[ `has-gutter-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+		}
+	);
+
+	const itemClasses = classnames(
+		'coblocks-gallery--item', {
+			[ `coblocks-animate ${ animation }` ]: animation,
+		}
+	);
+
+	return (
+		<>
+			{ isSelected &&
+				<Controls
+					{ ...props }
+				/>
 			}
-		);
-
-		const masonryClasses = classnames(
-			`has-grid-${ gridSize }`, {
-				[ `has-gutter-${ gutter }` ]: gutter > 0,
-				[ `has-gutter-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+			{ isSelected &&
+				<Inspector
+					{ ...props }
+				/>
 			}
-		);
+			{ noticeUI }
+			<div className={ className }>
+				<div className={ innerClasses }>
+					<Masonry
+						elementType={ 'ul' }
+						className={ masonryClasses }
+						options={ masonryOptions }
+						disableImagesLoaded={ false }
+						updateOnEachImageLoad={ false }
+					>
+						{ images.map( ( img, index ) => {
+							const ariaLabel = sprintf(
+								/* translators: %1$d is the order number of the image, %2$d is the total number of images */
+								__( 'image %1$d of %2$d in gallery', 'coblocks' ),
+								( index + 1 ),
+								images.length
+							);
 
-		const itemClasses = classnames(
-			'coblocks-gallery--item', {
-				[ `coblocks-animate ${ animation }` ]: animation,
-			}
-		);
-
-		return (
-			<Fragment>
-				{ isSelected &&
-					<Controls
-						{ ...this.props }
-					/>
-				}
-				{ isSelected &&
-					<Inspector
-						{ ...this.props }
-					/>
-				}
-				{ noticeUI }
-				<div className={ className }>
-					<div className={ innerClasses }>
-						<Masonry
-							elementType={ 'ul' }
-							className={ masonryClasses }
-							options={ masonryOptions }
-							disableImagesLoaded={ false }
-							updateOnEachImageLoad={ false }
-						>
-							{ images.map( ( img, index ) => {
-								const ariaLabel = sprintf(
-									/* translators: %1$d is the order number of the image, %2$d is the total number of images */
-									__( 'image %1$d of %2$d in gallery', 'coblocks' ),
-									( index + 1 ),
-									images.length
-								);
-
-								return (
-									<li className={ itemClasses } key={ img.id || img.url }>
-										<GalleryImage
-											url={ img.url }
-											alt={ img.alt }
-											id={ img.id }
-											imgLink={ img.imgLink }
-											linkTo={ linkTo }
-											isFirstItem={ index === 0 }
-											isLastItem={ ( index + 1 ) === images.length }
-											isSelected={ isSelected && this.state.selectedImage === index }
-											onMoveBackward={ this.onMoveBackward( index ) }
-											onMoveForward={ this.onMoveForward( index ) }
-											onRemove={ this.onRemoveImage( index ) }
-											onSelect={ this.onSelectImage( index ) }
-											setAttributes={ ( attrs ) => this.setImageAttributes( index, attrs ) }
-											caption={ img.caption }
-											aria-label={ ariaLabel }
-											captions={ captions }
-											supportsCaption={ true }
-											imageIndex={ index }
-											replaceImage={ this.replaceImage }
-										/>
-									</li>
-								);
-							} ) }
-						</Masonry>
-					</div>
-					{ masonryGalleryPlaceholder }
+							return (
+								<li className={ itemClasses } key={ img.id || img.url }>
+									<GalleryImage
+										url={ img.url }
+										alt={ img.alt }
+										id={ img.id }
+										imgLink={ img.imgLink }
+										linkTo={ linkTo }
+										isFirstItem={ index === 0 }
+										isLastItem={ ( index + 1 ) === images.length }
+										isSelected={ isSelected && selectedImage === index }
+										onMoveBackward={ onMoveBackward( index ) }
+										onMoveForward={ onMoveForward( index ) }
+										onRemove={ onRemoveImage( index ) }
+										onSelect={ onSelectImage( index ) }
+										setAttributes={ ( attrs ) => setImageAttributes( index, attrs ) }
+										caption={ img.caption }
+										aria-label={ ariaLabel }
+										captions={ captions }
+										supportsCaption={ true }
+										imageIndex={ index }
+										replaceImage={ replaceImage }
+									/>
+								</li>
+							);
+						} ) }
+					</Masonry>
 				</div>
-			</Fragment>
-		);
-	}
-}
+				{ masonryGalleryPlaceholder }
+			</div>
+		</>
+	);
+};
 
 export default compose( [
 	withSelect( ( select ) => ( {

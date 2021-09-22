@@ -1,0 +1,14 @@
+{
+	"name": "coblocks/opentable",
+	"category": "layout",
+	"attributes": {
+		"restaurantIDs": {
+			"type": "array",
+			"default": []
+		},
+		"language": {
+			"type": "string",
+			"default": ""
+		}
+	}
+}

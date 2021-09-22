@@ -17,7 +17,6 @@ import Inspector from './inspector';
  * WordPress dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { withDispatch } from '@wordpress/data';
 import { createBlock } from '@wordpress/blocks';
@@ -49,62 +48,62 @@ const getCount = memoize( ( count ) => {
 
 /**
  * Block edit function
+ *
+ * @param {Object} props
  */
-class PricingTableEdit extends Component {
-	render() {
-		const {
-			attributes,
-			className,
-			isSelected,
-		} = this.props;
+const PricingTableEdit = ( props ) => {
+	const {
+		attributes,
+		className,
+		isSelected,
+	} = props;
 
-		const {
-			count,
-			contentAlign,
-		} = attributes;
+	const {
+		count,
+		contentAlign,
+	} = attributes;
 
-		const classes = classnames(
-			className,
-			{
-				[ `has-text-align-${ contentAlign }` ]: contentAlign,
-			}
-		);
+	const classes = classnames(
+		className,
+		{
+			[ `has-text-align-${ contentAlign }` ]: contentAlign,
+		}
+	);
 
-		return (
-			<Fragment>
-				{ isSelected && (
-					<Controls
-						{ ...this.props }
-					/>
-				) }
-				{ isSelected && (
-					<Inspector
-						{ ...this.props }
-					/>
-				) }
-				<div
-					className={ classes }
-				>
-					<GutterWrapper { ...attributes }>
-						<div className={ classnames( 'wp-block-coblocks-pricing-table__inner',
-							{
-								'has-columns': count > 1,
-								[ `has-${ count }-columns` ]: count,
-								'has-responsive-columns': count > 1,
-							}
-						) }>
-							<InnerBlocks
-								template={ getCount( count ) }
-								allowedBlocks={ ALLOWED_BLOCKS }
-								orientation={ count > 1 ? 'horizontal' : 'vertical' }
-								__experimentalCaptureToolbars={ true } />
-						</div>
-					</GutterWrapper>
-				</div>
-			</Fragment>
-		);
-	}
-}
+	return (
+		<>
+			{ isSelected && (
+				<Controls
+					{ ...props }
+				/>
+			) }
+			{ isSelected && (
+				<Inspector
+					{ ...props }
+				/>
+			) }
+			<div
+				className={ classes }
+			>
+				<GutterWrapper { ...attributes }>
+					<div className={ classnames( 'wp-block-coblocks-pricing-table__inner',
+						{
+							'has-columns': count > 1,
+							[ `has-${ count }-columns` ]: count,
+							'has-responsive-columns': count > 1,
+						}
+					) }>
+						<InnerBlocks
+							template={ getCount( count ) }
+							allowedBlocks={ ALLOWED_BLOCKS }
+							orientation={ count > 1 ? 'horizontal' : 'vertical' }
+							__experimentalCaptureToolbars={ true } />
+					</div>
+				</GutterWrapper>
+			</div>
+		</>
+	);
+};
 
 export default withDispatch( ( dispatch, ownProps, registry ) => ( {
 

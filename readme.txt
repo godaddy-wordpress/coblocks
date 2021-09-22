@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 2.14.2
+Stable tag: 2.16.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,6 +44,7 @@ CoBlocks is the last page builder you’ll ever need: you get a winning mix of a
 * Masonry Gallery Block
 * Media Card Block
 * Offset Gallery Block
+* OpenTable Reservations Block
 * Post Carousel Block
 * Posts Block
 * Pricing Table Block
@@ -110,6 +111,8 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+### Enhancements
+* Introduce OpenTable Reservations block [#1928](https://github.com/godaddy-wordpress/coblocks/pull/1928)
+
 ### Bug Fixes
-* Fix Font Size controls in WordPress 5.8 [#1949](https://github.com/godaddy-wordpress/coblocks/pull/1949)
-* Fix post visibility while using Posts and Post Carousel [#1936](https://github.com/godaddy-wordpress/coblocks/pull/1936)
+* Fix color palette showing empty on certain themes [#1984](https://github.com/godaddy-wordpress/coblocks/pull/1984)

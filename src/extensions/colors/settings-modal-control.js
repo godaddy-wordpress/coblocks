@@ -42,27 +42,44 @@ function CoBlocksEditorSettingsControls() {
 		let settingValue;
 		switch ( key ) {
 			case '__experimentalFeatures.color.palette':
-				settingValue = settings?.__experimentalFeatures?.color?.palette ?? [];
+				settingValue = settings?.__experimentalFeatures?.color?.palette ?? { core: [] };
 				break;
 			case '__experimentalFeatures.color.gradients':
-				settingValue = settings?.__experimentalFeatures?.color?.gradients ?? [];
+				settingValue = settings?.__experimentalFeatures?.color?.gradients ?? { core: [] };
 				break;
 			default:
 				settingValue = settings[ key ];
 				break;
 		}
 
-		// Safely fetch the localStorage value
-		const localStorageValue = !! localStorage.getItem( key ) ? localStorage.getItem( key ) : false;
+		const localStorageValue = localStorage.getItem( key );
+		/**
+		 * Check whether the localStorage value is valid and should be used or discard to use original setting.
+		 *
+		 * @return {boolean} Whether or not the parsed localStorage is valid.
+		 */
+		const localStorageValueIsValid = () => {
+			if ( Array.isArray( localStorageValue ) && ! localStorageValue.length ) {
+				return false;
+			}
 
-		// Backup settings if no key exists.
-		if ( ! isEnabled && ! localStorageValue ) {
+			if ( localStorageValue?.constructor === Object && Object.keys( localStorageValue )?.length === 0 ) {
+				return false;
+			}
+
+			return true;
+		};
+
+		// Backup settings if no key exists or if invalid value saved.
+		if ( ! isEnabled && ! localStorageValueIsValid() ) {
 			localStorage.setItem( key, JSON.stringify( settingValue ) );
 		}
 
 		// Feature is enabled so parse the stored value or return existing setting value.
 		if ( isEnabled ) {
-			return localStorageValue ? JSON.parse( localStorageValue ) : settingValue;
+			// Check if stored value is empty array.
+			return localStorageValue && localStorageValueIsValid()
+				? JSON.parse( localStorageValue ) : settingValue;
 		}
 
 		// Feature is disabled return empty array to disable the setting.
@@ -86,6 +103,7 @@ function CoBlocksEditorSettingsControls() {
 
 			// Handle experimental features for WP 5.8
 			__experimentalFeatures: {
+				...settings?.__experimentalFeatures,
 				color: {
 					...settings?.__experimentalFeatures?.color,
 					palette: colorPanelEnabled

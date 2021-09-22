@@ -13,16 +13,17 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Fragment, useEffect } from '@wordpress/element';
+import { useEffect } from '@wordpress/element';
 import {
 	__experimentalImageURLInputUI as ImageURLInputUI,
 	BlockControls,
 	InnerBlocks,
 	MediaPlaceholder,
+	MediaUpload,
+	MediaUploadCheck,
 } from '@wordpress/block-editor';
 import { DropZone, Button, Spinner, ButtonGroup } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
-import { mediaUpload } from '@wordpress/editor';
 import { isBlobURL } from '@wordpress/blob';
 import { closeSmall } from '@wordpress/icons';
 import { createBlock } from '@wordpress/blocks';
@@ -93,8 +94,6 @@ const Edit = ( props ) => {
 
 	/* istanbul ignore next */
 	useEffect( () => {
-		updateInnerAttributes( 'core/heading', { textAlign: attributes.alignment } );
-		updateInnerAttributes( 'core/paragraph', { align: attributes.alignment } );
 		updateInnerAttributes( 'core/buttons', { contentJustification: attributes.alignment } );
 	}, [ attributes.alignment ] );
 
@@ -107,13 +106,8 @@ const Edit = ( props ) => {
 		setAttributes( { showCta: ! showCta } );
 	};
 
-	const replaceImage = ( files ) => {
-		mediaUpload( {
-			allowedTypes: [ 'image' ],
-			filesList: files,
-			onFileChange: ( [ media ] ) =>
-				setAttributes( { imageUrl: media.url, imageAlt: media.alt, imageId: media.id } ),
-		} );
+	const replaceImage = ( file ) => {
+		setAttributes( { imageUrl: file.url, imageAlt: file.alt, imageId: file.id } );
 	};
 
 	const renderImage = () => {
@@ -130,24 +124,43 @@ const Edit = ( props ) => {
 		);
 
 		return (
-			<Fragment>
+			<>
 				<figure className={ classes }>
 					{ isSelected && (
 						<ButtonGroup className="block-library-gallery-item__inline-menu is-right is-visible">
-							<Button
-								icon={ closeSmall }
-								onClick={ () => setAttributes( { imageUrl: '', imageAlt: '', imageId: null } ) }
-								className="coblocks-gallery-item__button"
-								label={ __( 'Remove image', 'coblocks' ) }
-								disabled={ ! isSelected }
-							/>
+							<MediaUploadCheck>
+								<MediaUpload
+									allowedTypes={ [ 'image' ] }
+									onSelect={ ( img ) => replaceImage( img ) }
+									value={ image.url }
+									render={ ( { open } ) => (
+										<>
+											<Button
+												icon={ closeSmall }
+												onClick={ () => setAttributes( { imageUrl: '', imageAlt: '', imageId: null } ) }
+												className="coblocks-gallery-item__button"
+												label={ __( 'Remove image', 'coblocks' ) }
+												disabled={ ! isSelected }
+											/>
+											<Button
+												className="coblocks-gallery-item__button-replace"
+												onClick={ open }
+												label={ __( 'Replace Image', 'coblocks' ) }
+											>
+												{ __( 'Replace', 'coblocks' ) }
+											</Button>
+										</>
+									) }
+								>
+								</MediaUpload>
+							</MediaUploadCheck>
 						</ButtonGroup>
 					) }
 					{ dropZone }
 					{ isBlobURL( attributes.imageUrl ) && <Spinner /> }
 					<img src={ attributes.imageUrl } alt={ attributes.imageAlt } style={ { objectPosition: attributes.focalPoint ? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y * 100 }%` : undefined } } />
 				</figure>
-			</Fragment>
+			</>
 		);
 	};
 
@@ -201,7 +214,7 @@ const Edit = ( props ) => {
 	];
 
 	return (
-		<Fragment>
+		<>
 			<BlockControls>
 				{ imageUrl && (
 					<ImageURLInputUI
@@ -232,7 +245,7 @@ const Edit = ( props ) => {
 					/>
 				</div>
 			</div>
-		</Fragment>
+		</>
 	);
 };
 

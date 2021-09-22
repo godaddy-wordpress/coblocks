@@ -3,7 +3,7 @@
  */
 import classnames from 'classnames';
 import includes from 'lodash/includes';
-import { find, isUndefined, pickBy, some, get } from 'lodash';
+import { find, isUndefined, pickBy, some, get, isEqual } from 'lodash';
 import { PostsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
@@ -17,8 +17,8 @@ import icons from './icons';
  */
 import apiFetch from '@wordpress/api-fetch';
 import { __ } from '@wordpress/i18n';
-import { compose } from '@wordpress/compose';
-import { Component, RawHTML, Fragment } from '@wordpress/element';
+import { compose, usePrevious } from '@wordpress/compose';
+import { RawHTML, useState, useEffect, useRef } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
 import { dateI18n, format, __experimentalGetSettings } from '@wordpress/date';
 import { withSelect } from '@wordpress/data';
@@ -109,374 +109,357 @@ function replaceActiveStyle( className, activeStyle, newStyle ) {
 	return list.value;
 }
 
-class PostsEdit extends Component {
-	constructor() {
-		super( ...arguments );
+const PostsEdit = ( props ) => {
+	const {
+		attributes,
+		setAttributes,
+		className,
+		latestPosts,
+	} = props;
 
-		this.state = {
-			categoriesList: [],
-			editing: ! this.props.attributes.externalRssUrl,
-			lastColumnValue: null,
+	const {
+		displayPostContent,
+		displayPostDate,
+		displayPostLink,
+		postLink,
+		postFeedType,
+		externalRssUrl,
+		columns,
+		postsToShow,
+		excerptLength,
+		listPosition,
+		imageSize,
+		imageStyle,
+	} = attributes;
 
-			stackedDefaultColumns: 2,
-			horizontalDefaultColumns: 1,
-			userModifiedColumn: false,
-		};
+	const [ categoriesList, setCategoriesList ] = useState( [] );
+	const [ editing, setEditing ] = useState( externalRssUrl );
+	const [ stackedDefaultColumns ] = useState( 2 );
+	const [ horizontalDefaultColumns ] = useState( 1 );
+	const [ userModifiedColumn, setUserModifiedColumn ] = useState(
+		( className.includes( 'is-style-stacked' ) && columns !== stackedDefaultColumns ) ||
+		( className.includes( 'is-style-horizontal' ) && columns !== horizontalDefaultColumns ) ? true : false
+	);
 
-		if (
-			( this.props.className.includes( 'is-style-stacked' ) && this.props.attributes.columns !== this.state.stackedDefaultColumns ) ||
-			( this.props.className.includes( 'is-style-horizontal' ) && this.props.attributes.columns !== this.state.horizontalDefaultColumns )
-		) {
-			this.state.userModifiedColumn = true;
-		}
+	const prevClassname = usePrevious( className );
 
-		this.onUserModifiedColumn = this.onUserModifiedColumn.bind( this );
-		this.onSubmitURL = this.onSubmitURL.bind( this );
-		this.updateStyle = this.updateStyle.bind( this );
-	}
+	let isStillMounted = useRef( true );
 
-	componentDidMount() {
-		const { className } = this.props;
-		const activeStyle = getActiveStyle( styleOptions, className );
+	const activeStyle = getActiveStyle( styleOptions, className );
 
-		this.updateStyle( activeStyle );
+	useEffect( () => {
+		updateStyle( activeStyle );
 
-		this.isStillMounted = true;
-		this.fetchRequest = apiFetch( {
+		apiFetch( {
 			path: addQueryArgs( '/wp/v2/categories', CATEGORIES_LIST_QUERY ),
 		} ).then(
-			( categoriesList ) => {
-				if ( this.isStillMounted ) {
-					this.setState( { categoriesList } );
+			( newCategoriesList ) => {
+				if ( isStillMounted ) {
+					setCategoriesList( newCategoriesList );
 				}
 			}
 		).catch(
 			() => {
-				if ( this.isStillMounted ) {
-					this.setState( { categoriesList: [] } );
+				if ( isStillMounted ) {
+					setCategoriesList( [] );
 				}
 			}
 		);
-	}
 
-	componentWillUnmount() {
-		this.isStillMounted = false;
-	}
+		return () => {
+			isStillMounted = false;
+		};
+	}, [] );
 
-	componentDidUpdate( prevProps ) {
-		const { displayPostContent, displayPostLink } = this.props.attributes;
+	useEffect( () => {
 		if ( displayPostLink && ! displayPostContent ) {
-			this.props.setAttributes( {
+			setAttributes( {
 				displayPostLink: false,
 			} );
 		}
 
-		if ( this.props.className !== prevProps.className ) {
-			if ( this.props.className.includes( 'is-style-stacked' ) ) {
-				this.props.setAttributes( { columns: this.state.userModifiedColumn ? this.props.attributes.columns : this.state.stackedDefaultColumns } );
+		if ( className !== prevClassname ) {
+			if ( className.includes( 'is-style-stacked' ) ) {
+				setAttributes( { columns: userModifiedColumn ? columns : stackedDefaultColumns } );
 			}
 
-			if ( this.props.className.includes( 'is-style-horizontal' ) ) {
-				this.props.setAttributes( { columns: this.state.userModifiedColumn ? this.props.attributes.columns : this.state.horizontalDefaultColumns } );
+			if ( className.includes( 'is-style-horizontal' ) ) {
+				setAttributes( { columns: userModifiedColumn ? columns : horizontalDefaultColumns } );
 			}
 		}
-	}
+	}, [
+		prevClassname,
+		className,
+		userModifiedColumn,
+		columns,
+		stackedDefaultColumns,
+		horizontalDefaultColumns,
+	] );
 
-	onUserModifiedColumn() {
-		this.setState( { userModifiedColumn: true } );
-	}
+	const editToolbarControls = [
+		{
+			icon: edit,
+			title: __( 'Edit RSS URL', 'coblocks' ),
+			onClick: () => setEditing( true ),
+		},
+	];
 
-	onSubmitURL( event ) {
-		event.preventDefault();
+	const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 
-		const { externalRssUrl } = this.props.attributes;
-		if ( externalRssUrl ) {
-			this.setState( { editing: false } );
-		}
-	}
+	const displayPosts = Array.isArray( latestPosts ) && latestPosts.length > postsToShow ? latestPosts.slice( 0, postsToShow ) : latestPosts;
 
-	updateStyle( style ) {
-		const { setAttributes, attributes, className } = this.props;
+	const hasFeaturedImage = some( displayPosts, 'featured_media_object' );
 
-		const activeStyle = getActiveStyle( styleOptions, className );
+	const toolbarControls = [ {
+		icon: <Icon icon={ pullLeft } />,
+		title: __( 'Image on left', 'coblocks' ),
+		isActive: listPosition === 'left',
+		onClick: () => setAttributes( { listPosition: 'left' } ),
+	}, {
+		icon: <Icon icon={ pullRight } />,
+		title: __( 'Image on right', 'coblocks' ),
+		isActive: listPosition === 'right',
+		onClick: () => setAttributes( { listPosition: 'right' } ),
+	} ];
+
+	const dateFormat = __experimentalGetSettings().formats.date; // eslint-disable-line no-restricted-syntax
+
+	const updateStyle = ( style ) => {
+		const newActiveStyle = getActiveStyle( styleOptions, className );
 		const updatedClassName = replaceActiveStyle(
 			attributes.className,
-			activeStyle,
+			newActiveStyle,
 			style
 		);
 
 		setAttributes( { className: updatedClassName } );
-	}
+	};
 
-	render() {
-		const {
-			attributes,
-			setAttributes,
-			className,
-			latestPosts,
-		} = this.props;
+	const onUserModifiedColumn = () => {
+		setUserModifiedColumn( true );
+	};
 
-		const { categoriesList } = this.state;
+	const onSubmitURL = ( event ) => {
+		event.preventDefault();
 
-		const activeStyle = getActiveStyle( styleOptions, className );
-
-		const {
-			displayPostContent,
-			displayPostDate,
-			displayPostLink,
-			postLink,
-			postFeedType,
-			externalRssUrl,
-			columns,
-			postsToShow,
-			excerptLength,
-			listPosition,
-			imageSize,
-			imageStyle,
-		} = attributes;
-
-		const editToolbarControls = [
-			{
-				icon: edit,
-				title: __( 'Edit RSS URL', 'coblocks' ),
-				onClick: () => this.setState( { editing: true } ),
-			},
-		];
-
-		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
-
-		const displayPosts = Array.isArray( latestPosts ) && latestPosts.length > postsToShow ? latestPosts.slice( 0, postsToShow ) : latestPosts;
-
-		const hasFeaturedImage = some( displayPosts, 'featured_media_object' );
-
-		const toolbarControls = [ {
-			icon: <Icon icon={ pullLeft } />,
-			title: __( 'Image on left', 'coblocks' ),
-			isActive: listPosition === 'left',
-			onClick: () => setAttributes( { listPosition: 'left' } ),
-		}, {
-			icon: <Icon icon={ pullRight } />,
-			title: __( 'Image on right', 'coblocks' ),
-			isActive: listPosition === 'right',
-			onClick: () => setAttributes( { listPosition: 'right' } ),
-		} ];
-
-		const dateFormat = __experimentalGetSettings().formats.date; // eslint-disable-line no-restricted-syntax
-
-		if ( ! hasPosts && postFeedType === 'internal' ) {
-			return (
-				<Fragment>
-					<InspectorControls
-						{ ...this.props }
-						attributes={ attributes }
-						hasPosts={ hasPosts }
-						hasFeaturedImage={ hasFeaturedImage }
-						editing={ this.state.editing }
-						activeStyle={ activeStyle }
-						styleOptions={ styleOptions }
-						onUpdateStyle={ this.updateStyle }
-						categoriesList={ categoriesList }
-						postCount={ latestPosts && latestPosts.length }
-					/>
-					<Placeholder
-						icon={ <Icon icon={ icon } /> }
-						label={ __( 'Blog Posts', 'coblocks' ) }
-					>
-						{ ! Array.isArray( latestPosts )
-							? <Spinner />
-							: <Fragment>
-								{ __( 'No posts found. Start publishing or add posts from an RSS feed.', 'coblocks' ) }
-								<Button
-									className="components-placeholder__cancel-button"
-									title={ __( 'Retrieve an External Feed', 'coblocks' ) }
-									isSecondary
-									onClick={ () => {
-										setAttributes( { postFeedType: 'external' } );
-									} }
-								>
-									{ __( 'Use External Feed', 'coblocks' ) }
-								</Button>
-							</Fragment>
-						}
-					</Placeholder>
-				</Fragment>
-			);
+		if ( externalRssUrl ) {
+			setEditing( false );
 		}
+	};
 
-		if ( this.state.editing && postFeedType === 'external' ) {
-			return (
-				<Fragment>
-					<InspectorControls
-						{ ...this.props }
-						onUserModifiedColumn={ this.onUserModifiedColumn }
-						attributes={ attributes }
-						hasPosts={ hasPosts }
-						hasFeaturedImage={ false }
-						editing={ this.state.editing }
-						activeStyle={ activeStyle }
-						styleOptions={ styleOptions }
-						onUpdateStyle={ this.updateStyle }
-						categoriesList={ categoriesList }
-						postCount={ latestPosts && latestPosts.length }
-					/>
-					<Placeholder
-						icon={ <Icon icon={ icon } /> }
-						label={ __( 'RSS Feed', 'coblocks' ) }
-						instructions={ __( 'RSS URLs are generally located at the /feed/ directory of a site.', 'coblocks' ) }
-					>
-						<form onSubmit={ this.onSubmitURL }>
-							<TextControl
-								placeholder={ __( 'https://example.com/feed…', 'coblocks' ) }
-								value={ externalRssUrl }
-								onChange={ ( value ) => setAttributes( { externalRssUrl: value } ) }
-								className={ 'components-placeholder__input' }
-							/>
-							<Button type="submit" disabled={ ! externalRssUrl }>
-								{ __( 'Use URL', 'coblocks' ) }
-							</Button>
-						</form>
-					</Placeholder>
-				</Fragment>
-			);
-		}
-
-		const isHorizontalStyle = includes( className, 'is-style-horizontal' );
-		const isStackedStyle = includes( className, 'is-style-stacked' );
-
+	if ( ! hasPosts && postFeedType === 'internal' ) {
 		return (
-			<Fragment>
+			<>
 				<InspectorControls
-					{ ...this.props }
-					onUserModifiedColumn={ this.onUserModifiedColumn }
+					{ ...props }
 					attributes={ attributes }
 					hasPosts={ hasPosts }
 					hasFeaturedImage={ hasFeaturedImage }
-					editing={ this.state.editing }
+					editing={ editing }
 					activeStyle={ activeStyle }
 					styleOptions={ styleOptions }
-					onUpdateStyle={ this.updateStyle }
+					onUpdateStyle={ updateStyle }
 					categoriesList={ categoriesList }
 					postCount={ latestPosts && latestPosts.length }
 				/>
-				<BlockControls>
-					{ isHorizontalStyle &&
-						<Toolbar
-							controls={ toolbarControls }
-						/>
+				<Placeholder
+					icon={ <Icon icon={ icon } /> }
+					label={ __( 'Blog Posts', 'coblocks' ) }
+				>
+					{ ! Array.isArray( latestPosts )
+						? <Spinner />
+						: <>
+							{ __( 'No posts found. Start publishing or add posts from an RSS feed.', 'coblocks' ) }
+							<Button
+								className="components-placeholder__cancel-button"
+								title={ __( 'Retrieve an External Feed', 'coblocks' ) }
+								isSecondary
+								onClick={ () => {
+									setAttributes( { postFeedType: 'external' } );
+								} }
+							>
+								{ __( 'Use External Feed', 'coblocks' ) }
+							</Button>
+						</>
 					}
-					{ postFeedType === 'external' &&
-						<Toolbar
-							controls={ editToolbarControls }
-						/>
-					}
-				</BlockControls>
-				{ postFeedType === 'external' &&
-					<Disabled>
-						<ServerSideRender
-							block="coblocks/posts"
-							attributes={ this.props.attributes }
-						/>
-					</Disabled>
-				}
-				{ postFeedType === 'internal' &&
-
-					<div className={ className }>
-						<GutterWrapper { ...attributes } condition={ attributes.columns >= 2 }>
-							<div className={ classnames( 'wp-block-coblocks-posts__inner', {
-								'has-columns': columns,
-								[ `has-${ columns }-columns` ]: columns,
-								'has-responsive-columns': columns,
-								'has-image-right': isHorizontalStyle && listPosition === 'right',
-								[ `has-${ imageSize }-image` ]: isHorizontalStyle,
-								[ `has-${ imageStyle }-image` ]: imageStyle,
-							} ) }>
-								{ displayPosts.map( ( post, i ) => {
-									const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
-									const featuredImageStyle = 'url(' + featuredImageUrl + ')';
-
-									const contentClasses = classnames( 'wp-block-coblocks-posts__content', {
-										'self-center': isHorizontalStyle && ! displayPostContent && columns <= 2,
-									} );
-
-									const titleTrimmed = post.title.rendered.trim();
-
-									let excerpt = post.excerpt.rendered;
-									if ( post.excerpt.raw === '' ) {
-										excerpt = post.content.raw;
-									}
-									const excerptElement = document.createElement( 'div' );
-									excerptElement.innerHTML = excerpt;
-									excerpt = excerptElement.textContent || excerptElement.innerText || '';
-
-									return (
-										<div key={ i } className="wp-block-coblocks-posts__item">
-											{ featuredImageUrl &&
-												<div className="wp-block-coblocks-posts__image">
-													<div className="bg-cover bg-center-center" style={ { backgroundImage: featuredImageStyle } }></div>
-												</div>
-											}
-											<div className={ contentClasses }>
-												{ isStackedStyle && displayPostDate && post.date_gmt &&
-													<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-posts__date">
-														{ dateI18n( dateFormat, post.date_gmt ) }
-													</time>
-												}
-												<Disabled>
-													<a href={ post.link } target="_blank" rel="noreferrer noopener" alt={ titleTrimmed }>
-														{ titleTrimmed ? (
-															<RawHTML>
-																{ titleTrimmed }
-															</RawHTML>
-														)
-															/* translators: placeholder when a post has no title */
-															: __( '(no title)', 'coblocks' )
-														}
-													</a>
-												</Disabled>
-												{ isHorizontalStyle && displayPostDate && post.date_gmt &&
-													<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-posts__date">
-														{ dateI18n( dateFormat, post.date_gmt ) }
-													</time>
-												}
-												{ displayPostContent &&
-													<div className="wp-block-coblocks-posts__excerpt">
-														<RawHTML
-															key="html"
-														>
-															{ excerptLength < excerpt.trim().split( ' ' ).length
-																? excerpt.trim().split( ' ', excerptLength ).join( ' ' ) + '…'
-																: excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
-														</RawHTML>
-													</div>
-												}
-												{ displayPostLink &&
-													<RichText
-														tagName="a"
-														className="wp-block-coblocks-posts__more-link"
-														onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
-														value={ postLink }
-														placeholder={ __( 'Read more', 'coblocks' ) }
-														multiline={ false }
-														withoutInteractiveFormatting={ false }
-														isSelected={ false }
-													/>
-												}
-											</div>
-										</div>
-									);
-								} ) }
-							</div>
-						</GutterWrapper>
-					</div>
-				}
-			</Fragment>
+				</Placeholder>
+			</>
 		);
 	}
-}
+
+	if ( editing && postFeedType === 'external' ) {
+		return (
+			<>
+				<InspectorControls
+					{ ...props }
+					onUserModifiedColumn={ onUserModifiedColumn }
+					attributes={ attributes }
+					hasPosts={ hasPosts }
+					hasFeaturedImage={ false }
+					editing={ editing }
+					activeStyle={ activeStyle }
+					styleOptions={ styleOptions }
+					onUpdateStyle={ updateStyle }
+					categoriesList={ categoriesList }
+					postCount={ latestPosts && latestPosts.length }
+				/>
+				<Placeholder
+					icon={ <Icon icon={ icon } /> }
+					label={ __( 'RSS Feed', 'coblocks' ) }
+					instructions={ __( 'RSS URLs are generally located at the /feed/ directory of a site.', 'coblocks' ) }
+				>
+					<form onSubmit={ onSubmitURL }>
+						<TextControl
+							placeholder={ __( 'https://example.com/feed…', 'coblocks' ) }
+							value={ externalRssUrl }
+							onChange={ ( value ) => setAttributes( { externalRssUrl: value } ) }
+							className={ 'components-placeholder__input' }
+						/>
+						<Button type="submit" disabled={ ! externalRssUrl }>
+							{ __( 'Use URL', 'coblocks' ) }
+						</Button>
+					</form>
+				</Placeholder>
+			</>
+		);
+	}
+
+	const isHorizontalStyle = includes( className, 'is-style-horizontal' );
+	const isStackedStyle = includes( className, 'is-style-stacked' );
+
+	return (
+		<>
+			<InspectorControls
+				{ ...props }
+				onUserModifiedColumn={ onUserModifiedColumn }
+				attributes={ attributes }
+				hasPosts={ hasPosts }
+				hasFeaturedImage={ hasFeaturedImage }
+				editing={ editing }
+				activeStyle={ activeStyle }
+				styleOptions={ styleOptions }
+				onUpdateStyle={ updateStyle }
+				categoriesList={ categoriesList }
+				postCount={ latestPosts && latestPosts.length }
+			/>
+			<BlockControls>
+				{ isHorizontalStyle &&
+					<Toolbar
+						controls={ toolbarControls }
+					/>
+				}
+				{ postFeedType === 'external' &&
+					<Toolbar
+						controls={ editToolbarControls }
+					/>
+				}
+			</BlockControls>
+			{ postFeedType === 'external' &&
+				<Disabled>
+					<ServerSideRender
+						block="coblocks/posts"
+						attributes={ attributes }
+					/>
+				</Disabled>
+			}
+			{ postFeedType === 'internal' &&
+
+				<div className={ className }>
+					<GutterWrapper { ...attributes } condition={ attributes.columns >= 2 }>
+						<div className={ classnames( 'wp-block-coblocks-posts__inner', {
+							'has-columns': columns,
+							[ `has-${ columns }-columns` ]: columns,
+							'has-responsive-columns': columns,
+							'has-image-right': isHorizontalStyle && listPosition === 'right',
+							[ `has-${ imageSize }-image` ]: isHorizontalStyle,
+							[ `has-${ imageStyle }-image` ]: imageStyle,
+						} ) }>
+							{ displayPosts.map( ( post, i ) => {
+								const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
+								const featuredImageStyle = 'url(' + featuredImageUrl + ')';
+
+								const contentClasses = classnames( 'wp-block-coblocks-posts__content', {
+									'self-center': isHorizontalStyle && ! displayPostContent && columns <= 2,
+								} );
+
+								const titleTrimmed = post.title.rendered.trim();
+
+								let excerpt = post.excerpt.rendered;
+								if ( post.excerpt.raw === '' ) {
+									excerpt = post.content.raw;
+								}
+								const excerptElement = document.createElement( 'div' );
+								excerptElement.innerHTML = excerpt;
+								excerpt = excerptElement.textContent || excerptElement.innerText || '';
+
+								return (
+									<div key={ i } className="wp-block-coblocks-posts__item">
+										{ featuredImageUrl &&
+											<div className="wp-block-coblocks-posts__image">
+												<div className="bg-cover bg-center-center" style={ { backgroundImage: featuredImageStyle } }></div>
+											</div>
+										}
+										<div className={ contentClasses }>
+											{ isStackedStyle && displayPostDate && post.date_gmt &&
+												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-posts__date">
+													{ dateI18n( dateFormat, post.date_gmt ) }
+												</time>
+											}
+											<Disabled>
+												<a href={ post.link } target="_blank" rel="noreferrer noopener" alt={ titleTrimmed }>
+													{ titleTrimmed ? (
+														<RawHTML>
+															{ titleTrimmed }
+														</RawHTML>
+													)
+														/* translators: placeholder when a post has no title */
+														: __( '(no title)', 'coblocks' )
+													}
+												</a>
+											</Disabled>
+											{ isHorizontalStyle && displayPostDate && post.date_gmt &&
+												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-posts__date">
+													{ dateI18n( dateFormat, post.date_gmt ) }
+												</time>
+											}
+											{ displayPostContent &&
+												<div className="wp-block-coblocks-posts__excerpt">
+													<RawHTML
+														key="html"
+													>
+														{ excerptLength < excerpt.trim().split( ' ' ).length
+															? excerpt.trim().split( ' ', excerptLength ).join( ' ' ) + '…'
+															: excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
+													</RawHTML>
+												</div>
+											}
+											{ displayPostLink &&
+												<RichText
+													tagName="a"
+													className="wp-block-coblocks-posts__more-link"
+													onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
+													value={ postLink }
+													placeholder={ __( 'Read more', 'coblocks' ) }
+													multiline={ false }
+													withoutInteractiveFormatting={ false }
+													isSelected={ false }
+												/>
+											}
+										</div>
+									</div>
+								);
+							} ) }
+						</div>
+					</GutterWrapper>
+				</div>
+			}
+		</>
+	);
+};
 
 export default compose( [
 	withSelect( ( select, props ) => {
-		const { postsToShow, order, orderBy, categories } = props.attributes;
+		const { postsToShow, order, orderBy, categories, categoryRelation } = props.attributes;
 		const { getEntityRecords, getMedia } = select( 'core' );
 		const { getCurrentPost } = select( 'core/editor' );
 
@@ -506,18 +489,25 @@ export default compose( [
 
 		const updatedQuery = () => {
 			const catIds = categories && categories.length > 0
-				? categories.map( ( cat ) => cat.id )
+				? categories.map( ( cat ) => cat?.id )
 				: [];
 
 			const latestPostsQuery = pickBy( {
 				categories: catIds,
 				order,
 				orderby: orderBy,
-				per_page: postsToShow,
+				per_page: 'and' === categoryRelation ? '-1' : postsToShow,
 				exclude: currentPost.id,
 			}, ( value ) => ! isUndefined( value ) );
 
-			const latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
+			let latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
+
+			if ( 'and' === categoryRelation && latestPosts ) {
+				latestPosts = latestPosts.filter( ( post ) =>
+					// `concat` to prevent mutation `sort` to ensure order is consistent.
+					isEqual( post.categories.concat().sort(), catIds.concat().sort() ) )
+					.slice( 0, postsToShow );
+			}
 
 			return ! Array.isArray( latestPosts )
 				? latestPosts

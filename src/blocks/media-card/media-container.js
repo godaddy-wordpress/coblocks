@@ -13,18 +13,26 @@ import { MultimediaIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
 import { BlockControls, MediaPlaceholder, MediaUpload } from '@wordpress/block-editor';
 import { Button, ResizableBox, Toolbar, DropZone, Spinner, Icon } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
 
 /**
  * MediaContainer component
+ *
+ * @param {Object} props
  */
-class MediaContainer extends Component {
-	renderToolbarEditButton() {
-		const { mediaId, onSelectMedia } = this.props;
+const MediaContainer = ( props ) => {
+	const { mediaAlt, hasImgShadow, figureClass, mediaId, onSelectMedia, mediaUrl, mediaType, mediaWidth, mediaPosition, commitWidthChange, onWidthChange, onDropMedia, isSelected } = props;
 
+	const imageDropZone = (
+		<DropZone
+			onFilesDrop={ onDropMedia }
+			label={ __( 'Drop to replace media', 'coblocks' ) }
+		/>
+	);
+
+	const renderToolbarEditButton = () => {
 		return (
 			<BlockControls>
 				<Toolbar>
@@ -44,31 +52,12 @@ class MediaContainer extends Component {
 				</Toolbar>
 			</BlockControls>
 		);
-	}
+	};
 
-	renderImage() {
-		const { mediaAlt, mediaUrl, hasImgShadow, figureClass } = this.props;
-
+	const renderVideo = () => {
 		return (
-			<Fragment>
-				{ this.renderToolbarEditButton() }
-				<figure className={ classnames(
-					figureClass, {
-						'has-shadow': hasImgShadow,
-					}
-				) } >
-					<img src={ mediaUrl } alt={ mediaAlt } />
-				</figure>
-			</Fragment>
-		);
-	}
-
-	renderVideo() {
-		const { mediaUrl, hasImgShadow, figureClass } = this.props;
-
-		return (
-			<Fragment>
-				{ this.renderToolbarEditButton() }
+			<>
+				{ renderToolbarEditButton() }
 				<figure className={ classnames(
 					figureClass, {
 						'has-shadow': hasImgShadow,
@@ -76,17 +65,30 @@ class MediaContainer extends Component {
 				) } >
 					<video controls src={ mediaUrl } />
 				</figure>
-			</Fragment>
+			</>
 		);
-	}
+	};
 
-	renderPlaceholder() {
-		const { onSelectMedia, figureClass, mediaAlt, mediaUrl } = this.props;
+	const renderImage = () => {
+		return (
+			<>
+				{ renderToolbarEditButton() }
+				<figure className={ classnames(
+					figureClass, {
+						'has-shadow': hasImgShadow,
+					}
+				) } >
+					<img src={ mediaUrl } alt={ mediaAlt } />
+				</figure>
+			</>
+		);
+	};
 
+	const renderPlaceholder = () => {
 		return (
 			<div className="wp-block-coblocks-media-card__placeholder">
 				{ isBlobURL( mediaUrl )
-					? <Fragment>
+					? <>
 						<Spinner />
 						<figure className={ classnames(
 							figureClass,
@@ -94,7 +96,7 @@ class MediaContainer extends Component {
 						) } >
 							<img src={ mediaUrl } alt={ mediaAlt } />
 						</figure>
-					</Fragment>
+					</>
 					: (
 						<MediaPlaceholder
 							icon={ <Icon icon={ icon } /> }
@@ -111,60 +113,47 @@ class MediaContainer extends Component {
 					) }
 			</div>
 		);
-	}
+	};
 
-	render() {
-		const { mediaUrl, mediaType, mediaWidth, mediaPosition, commitWidthChange, onWidthChange, onDropMedia, isSelected } = this.props;
+	if ( mediaType && mediaUrl ) {
+		const onResize = ( _event, _direction, elt ) => {
+			onWidthChange( parseInt( elt.style.width ) );
+		};
+		const onResizeStop = ( _event, _direction, elt ) => {
+			commitWidthChange( parseInt( elt.style.width ) );
+		};
+		const enablePositions = {
+			right: mediaPosition === 'left',
+			left: mediaPosition === 'right',
+		};
 
-		const imageDropZone = (
-			<Fragment>
-				<DropZone
-					onFilesDrop={ onDropMedia }
-					label={ __( 'Drop to replace media', 'coblocks' ) }
-				/>
-			</Fragment>
-		);
-
-		if ( mediaType && mediaUrl ) {
-			const onResize = ( _event, _direction, elt ) => {
-				onWidthChange( parseInt( elt.style.width ) );
-			};
-			const onResizeStop = ( _event, _direction, elt ) => {
-				commitWidthChange( parseInt( elt.style.width ) );
-			};
-			const enablePositions = {
-				right: mediaPosition === 'left',
-				left: mediaPosition === 'right',
-			};
-
-			let mediaElement = null;
-			switch ( mediaType ) {
-				case 'image':
-					mediaElement = this.renderImage();
-					break;
-				case 'video':
-					mediaElement = this.renderVideo();
-					break;
-			}
-			return (
-				<ResizableBox
-					className="editor-media-container__resizer"
-					size={ { width: mediaWidth + '%' } }
-					minWidth="30%"
-					maxWidth="100%"
-					enable={ enablePositions }
-					onResize={ onResize }
-					onResizeStop={ onResizeStop }
-					axis="x"
-					showHandle={ isSelected }
-				>
-					{ imageDropZone }
-					{ mediaElement }
-				</ResizableBox>
-			);
+		let mediaElement = null;
+		switch ( mediaType ) {
+			case 'image':
+				mediaElement = renderImage();
+				break;
+			case 'video':
+				mediaElement = renderVideo();
+				break;
 		}
-		return this.renderPlaceholder();
+		return (
+			<ResizableBox
+				className="editor-media-container__resizer"
+				size={ { width: mediaWidth + '%' } }
+				minWidth="30%"
+				maxWidth="100%"
+				enable={ enablePositions }
+				onResize={ onResize }
+				onResizeStop={ onResizeStop }
+				axis="x"
+				showHandle={ isSelected }
+			>
+				{ imageDropZone }
+				{ mediaElement }
+			</ResizableBox>
+		);
 	}
-}
+	return renderPlaceholder();
+};
 
 export default MediaContainer;

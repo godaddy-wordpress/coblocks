@@ -6,7 +6,6 @@ import CoBlocksFieldLabel from '../field-label';
 /**
  * WordPress dependencies
  */
-import { Fragment } from '@wordpress/element';
 import { TextControl } from '@wordpress/components';
 
 function CoBlocksFieldTextControl( props ) {
@@ -14,7 +13,7 @@ function CoBlocksFieldTextControl( props ) {
 	const { required, label, textColor, customTextColor } = attributes;
 
 	return (
-		<Fragment>
+		<>
 			<div className="coblocks-field">
 				<CoBlocksFieldLabel
 					required={ required }
@@ -27,7 +26,7 @@ function CoBlocksFieldTextControl( props ) {
 				/>
 				<TextControl />
 			</div>
-		</Fragment>
+		</>
 	);
 }
 

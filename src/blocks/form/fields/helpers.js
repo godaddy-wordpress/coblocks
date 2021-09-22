@@ -8,7 +8,6 @@ import CoBlocksFieldMultiple from './multi-field';
  */
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, ToggleControl } from '@wordpress/components';
-import { Fragment } from '@wordpress/element';
 import { sprintf, __ } from '@wordpress/i18n';
 
 export const editMultiField = ( type ) => ( props ) => {
@@ -16,7 +15,7 @@ export const editMultiField = ( type ) => ( props ) => {
 	const { required, label, isInline, options, textColor, customTextColor } = attributes;
 
 	return (
-		<Fragment>
+		<>
 			<CoBlocksFieldMultiple
 				{ ...props }
 				label={ label }
@@ -55,6 +54,6 @@ export const editMultiField = ( type ) => ( props ) => {
 					</PanelBody>
 				</InspectorControls>
 			) }
-		</Fragment>
+		</>
 	);
 };
