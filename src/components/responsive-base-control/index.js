@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import { TabletIcon, MobileIcon, DesktopIcon } from '@godaddy-wordpress/coblocks-icons';
+import { DesktopIcon, TabletIcon, MobileIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies

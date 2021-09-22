@@ -2,7 +2,7 @@
  * Internal dependencies
  */
 import { ALLOWED_BG_MEDIA_TYPES } from './';
-import { BackgroundIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { PaintCanIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies
@@ -36,7 +36,7 @@ function BackgroundControls( props ) {
 						? (
 							<BlockControls group="other">
 								<MediaReplaceFlow
-									name={ icon }
+									name={ PaintCanIcon }
 									mediaURL={ backgroundImg }
 									allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
 									accept="image/*"
@@ -61,7 +61,7 @@ function BackgroundControls( props ) {
 									<ToolbarButton
 										className="components-toolbar__control"
 										label={ __( 'Add background image', 'coblocks' ) }
-										icon={ icon }
+										icon={ PaintCanIcon }
 										onClick={ open }
 									/>
 								) }

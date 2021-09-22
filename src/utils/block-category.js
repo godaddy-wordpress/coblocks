@@ -3,12 +3,12 @@
  */
 import { getCategories, setCategories, registerBlockCollection } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
-import CoBlocksIcon from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
  */
 import { supportsCollections } from './block-helpers';
+import CoBlocksIcon from '@godaddy-wordpress/coblocks-icons';
 
 const categories = [
 	{

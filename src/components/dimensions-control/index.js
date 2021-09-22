@@ -7,7 +7,7 @@ import map from 'lodash/map';
 /**
  * Internal dependencies
  */
-import { TabletIcon, MobileIcon, DesktopIcon, SyncIcon } from '@godaddy-wordpress/coblocks-icons';
+import { DesktopIcon, TabletIcon, MobileIcon, SyncIcon } from '@godaddy-wordpress/coblocks-icons';
 import DimensionsSelect from './dimensions-select';
 
 /**
@@ -503,17 +503,17 @@ class DimensionsControl extends Component {
 									},
 									{
 										name: 'desktop',
-										title: MobileIcon,
+										title: DesktopIcon,
 										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--desktop components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--desktop`,
 									},
 									{
 										name: 'tablet',
-										title: DesktopIcon,
+										title: TabletIcon,
 										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--tablet components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--tablet`,
 									},
 									{
 										name: 'mobile',
-										title: TabletIcon,
+										title: MobileIcon,
 										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--mobile components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--mobile`,
 									},
 								] }>
@@ -590,7 +590,7 @@ class DimensionsControl extends Component {
 																data-device-type="Mobile"
 																isSmall
 															>
-																{ !! syncUnitsMobile ? SyncIcon : SyncIcon }
+																{ SyncIcon }
 															</Button>
 														</Tooltip>
 													</div>
@@ -667,7 +667,7 @@ class DimensionsControl extends Component {
 																data-device-type="Tablet"
 																isSmall
 															>
-																{ !! syncUnitsTablet ? SyncIcon : SyncIcon }
+																{ SyncIcon }
 															</Button>
 														</Tooltip>
 													</div>
@@ -743,7 +743,7 @@ class DimensionsControl extends Component {
 															data-device-type=""
 															isSmall
 														>
-															{ !! syncUnits ? SyncIcon : SyncIcon }
+															{ SyncIcon }
 														</Button>
 													</Tooltip>
 												</div>
