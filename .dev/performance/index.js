@@ -182,9 +182,7 @@ async function runPerformanceTests( branches, options ) {
 		await askForConfirmation( 'Ready to go? ' );
 	}
 
-	// ` clone in repo prepare repo and then copy that over into the env dires
-
-	// 2- Preparing the environment directories per branch.
+	// 1- Preparing the environment directories per branch.
 	log( '\n>> Preparing an environment directory per branch' );
 	const branchDirectories = {};
 	for ( const branch of branches ) {
@@ -201,7 +199,7 @@ async function runPerformanceTests( branches, options ) {
 		await runShellScript( `./vendor/bin/wp post generate --count=5 --path=${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp theme install go --activate --path=${ environmentDirectory }` );
 
-		// 1- Preparing the tests directory.
+		// 2- Clone CoBlocks repo into environment directory.
 		log( '\n>> Preparing the tests directory' );
 		log( '    >> Cloning the repository' );
 		const baseDirectory = await git.clone( config.gitRepositoryURL );
