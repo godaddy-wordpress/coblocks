@@ -257,9 +257,8 @@ async function runPerformanceTests( branches, options ) {
 
 				log( '    >> Branch: ' + branch + ', Suite: ' + testSuite );
 				log( '        >> Starting the environment.' );
-
 				await runShellScript(
-					`./vendor/bin/wp server --host=0.0.0.0 --port=8889 --allow-root  --path=${ environmentDirectory } &`
+					`./vendor/bin/wp server --host=0.0.0.0 --port=8889 --allow-root --path=${ environmentDirectory } > /dev/null 2>&1 &`
 				);
 
 				log( '        >> Running the test.' );
