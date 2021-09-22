@@ -249,14 +249,14 @@ async function runPerformanceTests( branches, options ) {
 						' branch'
 					);
 					await git.checkoutRemoteBranch(
-						`${ environmentDirectory }'/wp-content/plugins/coblocks'`,
+						`${ environmentDirectory }/wp-content/plugins/coblocks`,
 						options.testsBranch
 					);
 				}
 				log( '    >> Installing dependencies and building packages' );
 				await runShellScript(
 					'yarn && yarn build',
-					`${ environmentDirectory }'/wp-content/plugins/coblocks'`
+					`${ environmentDirectory }/wp-content/plugins/coblocks`
 				);
 
 				log( '    >> Branch: ' + branch + ', Suite: ' + testSuite );
@@ -269,7 +269,7 @@ async function runPerformanceTests( branches, options ) {
 				log( '        >> Running the test.' );
 				rawResults[ i ][ branch ] = await runTestSuite(
 					testSuite,
-					`${ environmentDirectory }'/wp-content/plugins/coblocks'`
+					`${ environmentDirectory }/wp-content/plugins/coblocks`
 				);
 
 				log( '        >> Stopping the environment' );
