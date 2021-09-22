@@ -207,6 +207,7 @@ async function runPerformanceTests( branches, options ) {
 		const baseDirectory = await git.clone( config.gitRepositoryURL );
 
 		await runShellScript( `cp -R ${ baseDirectory } ${ environmentDirectory }/wp-content/plugins` );
+		await runShellScript( `mv ${ baseDirectory } coblocks/` );
 		await setUpGitBranch( branch, `${ environmentDirectory }/wp-content/plugins/coblocks` );
 		await runShellScript( `./vendor/bin/wp plugin activate coblocks --path=${ environmentDirectory }` );
 	}

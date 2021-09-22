@@ -30,7 +30,6 @@ const config = {
 	githubRepositoryOwner: gitRepoOwner,
 	githubRepositoryName: 'coblocks',
 	pluginEntryPoint: 'class-coblocks.php',
-	// buildZipCommand: '/bin/bash bin/build-plugin-zip.sh',
 	githubRepositoryURL: 'https://github.com/' + gitRepoOwner + '/coblocks/',
 	wpRepositoryReleasesURL: 'https://github.com/godaddy-wordpress/coblocks/releases/',
 	gitRepositoryURL: 'https://github.com/' + gitRepoOwner + '/coblocks.git',
