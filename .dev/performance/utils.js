@@ -1,7 +1,6 @@
 /**
  * External dependencies
  */
-// @ts-ignore
 const inquirer = require( 'inquirer' );
 const fs = require( 'fs' );
 const childProcess = require( 'child_process' );

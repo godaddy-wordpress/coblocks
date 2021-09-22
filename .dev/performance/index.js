@@ -211,17 +211,13 @@ async function runPerformanceTests( branches, options ) {
 		await runShellScript( `./vendor/bin/wp plugin activate coblocks --path=${ environmentDirectory }` );
 	}
 
-	// 3- Printing the used folders.
-	log(
-		'\n>> Perf Tests Directory : ' +
-			formats.success( 'wp-content/plugins/coblocks(staticstring)' )
-	);
 	for ( const branch of branches ) {
+		// 3- Printing the used folders.
+		log( '\n>> Perf Tests Directory : ' + formats.success( `${ branchDirectories[ branch ] }/wp-content/plugins/coblocks` ) );
 		log(
 			'>> Environment Directory (' +
 				branch +
 				') : ' +
-				// @ts-ignore
 				formats.success( branchDirectories[ branch ] )
 		);
 	}
@@ -263,7 +259,7 @@ async function runPerformanceTests( branches, options ) {
 				log( '        >> Starting the environment.' );
 
 				await runShellScript(
-					`sudo ./vendor/bin/wp server --host=0.0.0.0 --port=8889 --allow-root  --path=${ environmentDirectory } &`
+					`./vendor/bin/wp server --host=0.0.0.0 --port=8889 --allow-root  --path=${ environmentDirectory } &`
 				);
 
 				log( '        >> Running the test.' );
@@ -273,9 +269,7 @@ async function runPerformanceTests( branches, options ) {
 				);
 
 				log( '        >> Stopping the environment' );
-				await runShellScript(
-					'sudo kill $(ps ax | pgrep -f \'wp server\')'
-				);
+				await runShellScript( 'kill $(ps ax | pgrep -f "wp server")' );
 			}
 		}
 
@@ -336,13 +330,10 @@ async function runPerformanceTests( branches, options ) {
 		Object.entries( results[ testSuite ] ).reduce(
 			( acc, [ key, val ] ) => {
 				for ( const entry of Object.keys( val ) ) {
-					// @ts-ignore
 					if ( ! acc[ entry ] && isFinite( val[ entry ] ) ) {
 						acc[ entry ] = {};
 					}
-					// @ts-ignore
 					if ( isFinite( val[ entry ] ) ) {
-						// @ts-ignore
 						acc[ entry ][ key ] = val[ entry ] + ' ms';
 					}
 				}
