@@ -189,7 +189,7 @@ async function runPerformanceTests( branches, options ) {
 	await runShellScript( 'echo 127.0.0.1 localhost | sudo tee -a /etc/hosts' );
 	await runShellScript( 'sudo apt-get update --allow-releaseinfo-change && sudo apt-get install -y subversion default-mysql-client' );
 	await runShellScript( 'sudo mkdir /conf.d/' ); // Dir does not exist in CI.
-	await runShellScript( 'sudo -E docker-php-ext-install mysqli' );
+	await runShellScript( 'sudo docker-php-ext-install mysqli' );
 	const branchDirectories = {};
 	for ( const branch of branches ) {
 		log( '    >> Branch: ' + branch );
@@ -201,7 +201,6 @@ async function runPerformanceTests( branches, options ) {
 		await runShellScript( `./vendor/bin/wp core download --path=${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass='' --path=${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp db create --path=${ environmentDirectory }` );
-		await runShellScript( 'sudo -E docker-php-ext-install mysqli' ); // Figure out why this is needed.
 		await runShellScript( `./vendor/bin/wp core install --url="http://localhost:8889" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp post generate --count=5 --path=${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp theme install go --activate --path=${ environmentDirectory }` );
