@@ -261,11 +261,11 @@ async function runPerformanceTests( branches, options ) {
 					`./vendor/bin/wp server --host=0.0.0.0 --port=8889 --allow-root --path=${ environmentDirectory } > /dev/null 2>&1 &`
 				);
 
-				// log( '        >> Running the test.' );
-				// rawResults[ i ][ branch ] = await runTestSuite(
-				// 	testSuite,
-				// 	`${ environmentDirectory }/wp-content/plugins/coblocks`
-				// );
+				log( '        >> Running the test.' );
+				rawResults[ i ][ branch ] = await runTestSuite(
+					testSuite,
+					`${ environmentDirectory }/wp-content/plugins/coblocks`
+				);
 
 				log( '        >> Stopping the environment' );
 				await runShellScript( 'sudo kill $(ps ax | pgrep -f "server") > /dev/null 2>&1 &' );
