@@ -268,7 +268,7 @@ async function runPerformanceTests( branches, options ) {
 				// );
 
 				log( '        >> Stopping the environment' );
-				await runShellScript( 'sudo kill $(ps ax | pgrep -f "wp server")' );
+				await runShellScript( 'sudo kill $(ps ax | pgrep -f "server")' );
 			}
 		}
 
