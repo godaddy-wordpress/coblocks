@@ -186,10 +186,6 @@ async function runPerformanceTests( branches, options ) {
 
 	// 2- Preparing the environment directories per branch.
 	log( '\n>> Preparing an environment directory per branch' );
-	await runShellScript( 'echo 127.0.0.1 localhost | sudo tee -a /etc/hosts' );
-	await runShellScript( 'sudo apt-get update --allow-releaseinfo-change && sudo apt-get install -y subversion default-mysql-client' );
-	await runShellScript( 'sudo mkdir /conf.d/' ); // Dir does not exist in CI.
-	await runShellScript( 'sudo docker-php-ext-install mysqli' );
 	const branchDirectories = {};
 	for ( const branch of branches ) {
 		log( '    >> Branch: ' + branch );
