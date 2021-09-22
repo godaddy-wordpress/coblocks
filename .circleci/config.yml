@@ -649,10 +649,10 @@ jobs:
       - run:
           name: Prepare MySQL for local testing
           command: |
-            	echo 127.0.0.1 localhost | sudo tee -a /etc/hosts
-	            sudo apt-get update --allow-releaseinfo-change && sudo apt-get install -y subversion default-mysql-client
-	            sudo mkdir /conf.d/
-	            sudo -E docker-php-ext-install mysqli
+            echo 127.0.0.1 localhost | sudo tee -a /etc/hosts
+            sudo apt-get update --allow-releaseinfo-change && sudo apt-get install -y subversion default-mysql-client
+            sudo mkdir /conf.d/
+            sudo -E docker-php-ext-install mysqli
       - run_perf_tests
 
   # --------------------------------------------------
