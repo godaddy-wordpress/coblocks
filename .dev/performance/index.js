@@ -181,13 +181,12 @@ async function runPerformanceTests( branches, options ) {
 	// 1- Preparing the environment directories per branch.
 	log( '\n>> Preparing an environment directory per branch' );
 	const branchDirectories = {}; // Used to store environment directory paths.
-	let index; // Used for database naming.
+	let index = 0; // Used for database naming.
 	for ( const branch of branches ) {
 		log( '    >> Branch: ' + branch );
 		const environmentDirectory = `${ getRandomTemporaryPath() }/wordpress`;
 
 		branchDirectories[ branch ] = environmentDirectory;
-		index++;
 
 		await runShellScript( `mkdir -p ${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp core download --path=${ environmentDirectory }` );
@@ -205,6 +204,7 @@ async function runPerformanceTests( branches, options ) {
 		await runShellScript( `mv ${ baseDirectory } coblocks && cp -R coblocks ${ environmentDirectory }/wp-content/plugins` );
 		await setUpGitBranch( branch, `${ environmentDirectory }/wp-content/plugins/coblocks` );
 		await runShellScript( `./vendor/bin/wp plugin activate coblocks --path=${ environmentDirectory }` );
+		index++;
 	}
 
 	for ( const branch of branches ) {
