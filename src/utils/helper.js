@@ -32,9 +32,8 @@ export const pickRelevantMediaFiles = ( image, images ) => {
  * Is the URL a temporary blob URL? A blob URL is one that is used temporarily
  * while the image is being uploaded and will not have an id yet allocated.
  *
- * @param {number=} id The id of the image.
+ * @param {number=} id  The id of the image.
  * @param {string=} url The url of the image.
- *
  * @return {boolean} Is the URL a Blob URL
  */
 export const isTemporaryImage = ( id, url ) => ! id && isBlobURL( url );
@@ -70,7 +69,6 @@ export const hexToRGB = ( h ) => {
  * `em, px, or rem`.
  *
  * @param {Object|string} fontSize Object passed from withFontSizes HOC props or fontsize value.
- *
  * @return {string} fontSize string value that is ready for inline CSS.
  */
 export const computeFontSize = ( fontSize ) => {

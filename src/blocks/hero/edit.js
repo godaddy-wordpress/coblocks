@@ -1,3 +1,5 @@
+// Disable issue: https://github.com/godaddy-wordpress/coblocks/issues/2000
+/* eslint-disable @wordpress/no-global-event-listener */
 /**
  * External dependencies
  */

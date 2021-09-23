@@ -157,6 +157,8 @@ class GalleryStackedEdit extends Component {
 			lightbox,
 		} = attributes;
 
+		const hasImages = !! images.length;
+
 		const stackedGalleryPlaceholder = (
 			<Fragment>
 				{ ! hasImages ? noticeUI : null }
@@ -167,8 +169,6 @@ class GalleryStackedEdit extends Component {
 					gutter={ gutter }
 				/>
 			</Fragment> );
-
-		const hasImages = !! images.length;
 
 		if ( ! hasImages ) {
 			return stackedGalleryPlaceholder;

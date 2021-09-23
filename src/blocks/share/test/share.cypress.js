@@ -116,11 +116,11 @@ describe( 'Test CoBlocks Share Block', function() {
 	it( 'Test the share block social network visibility using sidebar toggle.', function() {
 		helpers.addBlockToPost( 'coblocks/social', true );
 
-		toggleSocialNetwork( 'LinkedIn' );
-		toggleSocialNetwork( 'Email' );
-		toggleSocialNetwork( 'Tumblr' );
-		toggleSocialNetwork( 'Google' );
-		toggleSocialNetwork( 'Reddit' );
+		helpers.toggleSocialNetwork( 'LinkedIn' );
+		helpers.toggleSocialNetwork( 'Email' );
+		helpers.toggleSocialNetwork( 'Tumblr' );
+		helpers.toggleSocialNetwork( 'Google' );
+		helpers.toggleSocialNetwork( 'Reddit' );
 
 		helpers.savePage();
 
@@ -141,13 +141,13 @@ describe( 'Test CoBlocks Share Block', function() {
 
 		cy.get( '.wp-block-coblocks-social' ).click( { force: true } );
 
-		toggleSocialNetwork( 'Twitter' );
-		toggleSocialNetwork( 'Facebook' );
-		toggleSocialNetwork( 'Pinterest' );
-		toggleSocialNetwork( 'LinkedIn' );
-		toggleSocialNetwork( 'Email' );
-		toggleSocialNetwork( 'Tumblr' );
-		toggleSocialNetwork( 'Google' );
+		helpers.toggleSocialNetwork( 'Twitter' );
+		helpers.toggleSocialNetwork( 'Facebook' );
+		helpers.toggleSocialNetwork( 'Pinterest' );
+		helpers.toggleSocialNetwork( 'LinkedIn' );
+		helpers.toggleSocialNetwork( 'Email' );
+		helpers.toggleSocialNetwork( 'Tumblr' );
+		helpers.toggleSocialNetwork( 'Google' );
 
 		helpers.savePage();
 
@@ -236,16 +236,3 @@ describe( 'Test CoBlocks Share Block', function() {
 		helpers.editPage();
 	} );
 } );
-
-/**
- * Toggle a checkbox in the settings panel of the block editor
- *
- * @param {string} text The checkbox label text. eg: Facebook
- */
-export function toggleSocialNetwork( text ) {
-	cy.get( '.components-checkbox-control__label' )
-		.contains( text )
-		.parent( '.components-base-control__field' )
-		.find( '.components-checkbox-control__input-container' )
-		.click();
-}

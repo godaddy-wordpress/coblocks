@@ -31,7 +31,6 @@ const ALLOWED_BLOCKS = [ 'coblocks/accordion-item' ];
  * Returns the layouts configuration for a given number of accordion items.
  *
  * @param {number} count Number of accordion items.
- *
  * @return {Object[]} Columns layout configuration.
  */
 const getCount = memoize( ( count ) => {
@@ -53,22 +52,17 @@ const AccordionEdit = ( props ) => {
 	const { insertBlock } = useDispatch( 'core/block-editor' );
 
 	const {
-		getBlockAttributes,
 		getBlocksByClientId,
+		getBlockHierarchyRootClientId,
+		getSelectedBlockClientId,
+		getBlockAttributes,
 		isSelected,
-	} = useSelect( ( select ) => {
-		const blockEditorSelectors = select( 'core/block-editor' );
+	} = useSelect( 'core/block-editor' );
 
-		// Get clientID of the parent block.
-		const rootClientId = blockEditorSelectors.getBlockHierarchyRootClientId( clientId );
-		const selectedRootClientId = blockEditorSelectors.getBlockHierarchyRootClientId( blockEditorSelectors.getSelectedBlockClientId() );
-
-		return {
-			getBlockAttributes: blockEditorSelectors.getBlockAttributes,
-			getBlocksByClientId: blockEditorSelectors.getBlocksByClientId,
-			isSelected: isSelected || rootClientId === selectedRootClientId,
-		};
-	} );
+	// Get clientID of the parent block.
+	const rootClientId = getBlockHierarchyRootClientId( clientId );
+	const selectedRootClientId = getBlockHierarchyRootClientId( getSelectedBlockClientId() );
+	const isBlockSelected = isSelected || rootClientId === selectedRootClientId;
 
 	const {
 		count,
@@ -115,7 +109,7 @@ const AccordionEdit = ( props ) => {
 
 	return (
 		<Fragment>
-			{ isSelected && (
+			{ isBlockSelected && (
 				<Inspector
 					insertBlock={ insertBlock }
 					{ ...props }
@@ -127,7 +121,7 @@ const AccordionEdit = ( props ) => {
 					allowedBlocks={ ALLOWED_BLOCKS }
 					__experimentalCaptureToolbars={ true }
 				/>
-				{ isSelected && (
+				{ isBlockSelected && (
 					<div className="coblocks-block-appender">
 						<Tooltip text={ __( 'Add accordion item', 'coblocks' ) }>
 							<Button

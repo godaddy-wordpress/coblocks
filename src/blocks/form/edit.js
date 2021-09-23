@@ -196,8 +196,8 @@ const FormEdit = ( props ) => {
 
 			if ( errors.length === 2 ) {
 				return sprintf(
-					/* translators: %s1: placeholder for an email address. %s2: placeholder for an email address */
-					__( '%s and %s are not valid email addresses.', 'coblocks' ),
+					/* translators: %1$s: placeholder for an email address. %2$s: placeholder for an email address */
+					__( '%1$s and %2$s are not valid email addresses.', 'coblocks' ),
 					errors[ 0 ].email,
 					errors[ 1 ].email
 				);

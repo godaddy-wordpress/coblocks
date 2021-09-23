@@ -89,13 +89,17 @@ const FoodItem = ( props ) => {
 		if ( showImage !== prevShowPrice ) {
 			setAttributes( { url: showImage ? url : '' } );
 		}
+
+		if ( !! url && url !== attributes.url ) {
+			setAttributes( { url } );
+		}
 	}, [ prevShowPrice, isSelected, prevSelected, prevShowImage, clientId, showImage, showPrice, price, url, attributes ] );
 
 	/**
 	 * Handle creation and removal of placeholder elements so that we always have one available to use.
 	 *
-	 * @param {number} childClientId The child block's ClientId.
-	 * @param {string} blockName The block to insert.
+	 * @param {number} childClientId   The child block's ClientId.
+	 * @param {string} blockName       The block to insert.
 	 * @param {Object} blockAttributes The attributes for the placeholder block.
 	 */
 	const handlePlaceholderPlacement = ( childClientId, blockName, blockAttributes = {} ) => {
@@ -223,7 +227,15 @@ const FoodItem = ( props ) => {
 					labels={ {
 						title: ' ',
 					} }
-					onSelect={ ( el ) => setAttributes( { url: el.url, alt: el.alt } ) }
+					onSelect={ ( imageEntity ) => {
+						if ( isBlobURL( imageEntity?.url ) ) {
+							return;
+						}
+
+						setUrl( imageEntity?.url );
+						setAttributes( { alt: imageEntity?.alt } );
+					}
+					}
 				/>
 			</div>
 		);

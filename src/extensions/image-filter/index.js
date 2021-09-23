@@ -74,7 +74,6 @@ addFilter( 'editor.BlockListBlock', 'coblocks/with-style-classes', coreImageEdit
  * Add custom attribute to the core/image block
  *
  * @param {Object} settings Settings for the block.
- *
  * @return {Object} settings Modified settings.
  */
 function imageFilterAttributes( settings ) {
@@ -98,7 +97,6 @@ addFilter( 'blocks.registerBlockType', 'coblocks/imageFilterAttributes', imageFi
  * @param {Object} extraProps Block element.
  * @param {Object} blockType  Blocks object.
  * @param {Object} attributes Blocks attributes.
- *
  * @return {Object} extraProps Modified block element.
  */
 function imageBlockClass( extraProps, blockType, attributes ) {

@@ -74,9 +74,8 @@ export const registerFormBlocks = () => {
  * See: https://github.com/WordPress/gutenberg/blob/53857f67563eb97025d75c196afa643994f0bbcc/packages/block-editor/src/components/rich-text/index.js#L254-L284
  *
  * @param {string} blockName The registered block name.
- * @param {string} prefix The prefix to trigger the transform.
- * @param {string} content The content of the block when a prefix is found.
- *
+ * @param {string} prefix    The prefix to trigger the transform.
+ * @param {string} content   The content of the block when a prefix is found.
  * @return {Object} The block object.
  */
 export const performPrefixTransformation = ( blockName, prefix, content ) => {
@@ -93,8 +92,8 @@ export const performPrefixTransformation = ( blockName, prefix, content ) => {
 /**
  * Generate tests for each defined deprecation of a block.
  *
- * @param {string} blockName The registered block name.
- * @param {Object} blockSettings The registered block settings.
+ * @param {string} blockName       The registered block name.
+ * @param {Object} blockSettings   The registered block settings.
  * @param {Object} blockVariations The used attributes and value varitions.
  */
 export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVariations ) => {
@@ -185,6 +184,26 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 
 						const blocks = parse( deprecatedSerialized );
 
+						// This assertion should be removed when issue #2025 is resolved.
+						// https://github.com/godaddy-wordpress/coblocks/issues/2025
+						const IssueBlocks = [
+							'coblocks/column',
+							'coblocks/hero',
+							'coblocks/gallery-stacked',
+							'coblocks/gallery-masonry',
+						];
+						// The indexToCheckAgainst refers to the block deprecated.js array of attributes and save functions.
+						// Index is relevant because specific deprecated save functions cause the keys bug reported in #2025.
+						const indexToCheckAgainst = ( blockName === 'coblocks/column' ) ? 1 : 0;
+						if (
+							IssueBlocks.includes( blockName ) &&
+							attribute === 'backgroundType' &&
+							JSON.stringify( variation ) === '"video"' &&
+							index === indexToCheckAgainst
+						) {
+							expect( console ).toHaveErrored();
+						}
+
 						expect(
 							blocks.filter( ( block ) => ! block.isValid ).map( filterBlockObjectResult )
 						).toEqual( [] );
@@ -199,7 +218,6 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
  * Generate tests for each defined deprecation of a block.
  *
  * @param {Object} blockObject The block object returned from parse().
- *
  * @return {Object} The filtered block object.
  */
 export const filterBlockObjectResult = ( blockObject ) => {

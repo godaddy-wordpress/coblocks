@@ -127,8 +127,8 @@ export function disableGutenbergFeatures() {
 /**
  * From inside the WordPress editor open the CoBlocks Gutenberg editor panel
  *
- * @param {string} blockName The name to find in the block inserter
- * e.g 'core/image' or 'coblocks/accordion'.
+ * @param {string}  blockName   The name to find in the block inserter
+ *                              e.g 'core/image' or 'coblocks/accordion'.
  * @param {boolean} clearEditor Should clear editor of all blocks
  */
 export function addBlockToPost( blockName, clearEditor = false ) {
@@ -175,7 +175,7 @@ export function savePage() {
  * Check the page for block errors
  *
  * @param {string} blockName blockName the block to check for
- * e.g 'core/image' or 'coblocks/accordion'.
+ *                           e.g 'core/image' or 'coblocks/accordion'.
  */
 
 export function checkForBlockErrors( blockName ) {
@@ -253,7 +253,7 @@ export function getBlockSlug() {
 /**
  * Click on a style button within the style panel
  *
- * @param {string} style   Name of the style to apply
+ * @param {string} style Name of the style to apply
  */
 export function setBlockStyle( style ) {
 	openSettingsPanel( RegExp( 'styles', 'i' ) );
@@ -267,8 +267,8 @@ export function setBlockStyle( style ) {
  * Select the block using the Block navigation component.
  * Input parameter is the name of the block to select.
  *
- * @param {string} name The name of the block to select eg: highlight or click-to-tweet
- * @param {boolean} isChildBlock  Optional selector for children blocks. Default will be top level blocks.
+ * @param {string}  name         The name of the block to select eg: highlight or click-to-tweet
+ * @param {boolean} isChildBlock Optional selector for children blocks. Default will be top level blocks.
  */
 export function selectBlock( name, isChildBlock = false ) {
 	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle' ).click();
@@ -284,9 +284,9 @@ export function selectBlock( name, isChildBlock = false ) {
 /**
  * Set a value within the input box
  *
- * @param {string} panelName   Name of the panel to open
- * @param {string} settingName The name of the setting to search for
- * @param {string} value The value to type
+ * @param {string}  panelName   Name of the panel to open
+ * @param {string}  settingName The name of the setting to search for
+ * @param {string}  value       The value to type
  * @param {boolean} ignoreCase  Optional case sensitivity. Default will ignore case.
  */
 export function setInputValue( panelName, settingName, value, ignoreCase = true ) {
@@ -318,7 +318,7 @@ export const upload = {
 	 * Upload image to input element.
 	 *
 	 * @param {string} blockName The name of the block that is upload target
-	 * e.g 'core/image' or 'coblocks/accordion'.
+	 *                           e.g 'core/image' or 'coblocks/accordion'.
 	 */
 	imageToBlock: ( blockName ) => {
 		const { fileName, pathToFixtures } = upload.spec;
@@ -334,7 +334,7 @@ export const upload = {
 	 * Upload image to input element and trigger replace image flow.
 	 *
 	 * @param {string} blockName The name of the block that is replace target
-	 * imageReplaceFlow works with CoBlocks Galleries: Carousel, Collage, Masonry, Offset, Stacked.
+	 *                           imageReplaceFlow works with CoBlocks Galleries: Carousel, Collage, Masonry, Offset, Stacked.
 	 */
 	imageReplaceFlow: ( blockName ) => {
 		const selectBlockBy = blockName.split( '-' )?.[ 1 ];
@@ -557,11 +557,23 @@ export function hexToRGB( hex ) {
  * eg: hello world => Hello World
  *
  * @param {string} string The text to capitalize.
- *
  * @return {string} Altered string with capitalized letters.
  */
 export function capitalize( string ) {
 	return string.replace( /(?:^|\s)\S/g, function( a ) {
 		return a.toUpperCase();
 	} );
+}
+
+/**
+ * Toggle a checkbox in the settings panel of the block editor
+ *
+ * @param {string} text The checkbox label text. eg: Facebook
+ */
+export function toggleSocialNetwork( text ) {
+	cy.get( '.components-checkbox-control__label' )
+		.contains( text )
+		.parent( '.components-base-control__field' )
+		.find( '.components-checkbox-control__input-container' )
+		.click();
 }

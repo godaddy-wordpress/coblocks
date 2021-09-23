@@ -25,9 +25,8 @@ function deprecateCoBlocksButtonsSettings() {
 /**
  * Check whether or not core/buttons is available for use.
  *
- * @param {Object} coreButtons The results of getBlockType.
+ * @param {Object} coreButtons     The results of getBlockType.
  * @param {Object} coBlocksButtons The results of getBlockType.
- *
  * @return {boolean} True or false if block is deprecated.
  */
 export function buttonsBlockDeprecated( coreButtons = getBlockType( 'core/buttons' ), coBlocksButtons = getBlockType( 'coblocks/buttons' ) ) {

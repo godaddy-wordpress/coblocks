@@ -89,7 +89,7 @@ const Edit = ( props ) => {
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
 		},
-			fontSize?.class && {
+		fontSize?.class && {
 			[ fontSize?.class ]: fontSize?.class,
 		}
 	);

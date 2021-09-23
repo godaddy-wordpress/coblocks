@@ -25,9 +25,8 @@ function deprecateCoBlocksMediaCardSettings() {
 /**
  * Check whether or not core/media-card is available for use.
  *
- * @param {Object} coreMediaText The results of getBlockType.
+ * @param {Object} coreMediaText     The results of getBlockType.
  * @param {Object} coBlocksMediaCard The results of getBlockType.
- *
  * @return {boolean} True or false if block is deprecated.
  */
 export function mediaCardBlockDeprecated( coreMediaText, coBlocksMediaCard ) {
