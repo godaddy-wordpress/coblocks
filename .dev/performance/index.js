@@ -166,10 +166,7 @@ async function runTestSuite( testSuite, performanceTestDirectory ) {
  * @param {WPPerformanceCommandOptions} options  Command options.
  */
 async function runPerformanceTests( branches, options ) {
-	// The default value doesn't work because commander provides an array.
-	if ( branches.length === 0 ) {
-		branches = [ 'try/performance-tests-run-all-tests' ];
-	}
+	branches = [ 'master', ...branches ];
 
 	log(
 		formats.title( '\n💃 Performance Tests 🕺\n' ),
