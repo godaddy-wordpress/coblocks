@@ -317,13 +317,43 @@ async function runPerformanceTests( branches, options ) {
 			// Format results as times.
 			results[ testSuite ][ branch ] = mapValues( medians, formatTime );
 		}
+
+		const getDifference = ( valueArray ) => {
+			const x = valueArray[ 0 ],
+				y = valueArray[ 1 ];
+
+			return ( y - x ) / x;
+		};
+
+		// Computing difference.
+		const difference = mapValues(
+			{
+				load: getDifference( results[ testSuite ].map( ( result ) => result.load ) ),
+				type: getDifference( results[ testSuite ].map( ( result ) => result.type ) ),
+				minType: getDifference( results[ testSuite ].map( ( result ) => result.minType ) ),
+				maxType: getDifference( results[ testSuite ].map( ( result ) => result.maxType ) ),
+				focus: getDifference( results[ testSuite ].map( ( result ) => result.focus ) ),
+				minFocus: getDifference( results[ testSuite ].map( ( result ) => result.minFocus ) ),
+				maxFocus: getDifference( results[ testSuite ].map( ( result ) => result.maxFocus ) ),
+				inserterOpen: getDifference( results[ testSuite ].map( ( result ) => result.inserterOpen ) ),
+				minInserterOpen: getDifference( results[ testSuite ].map( ( result ) => result.minInserterOpen ) ),
+				maxInserterOpen: getDifference( results[ testSuite ].map( ( result ) => result.maxInserterOpen ) ),
+				inserterSearch: getDifference( results[ testSuite ].map( ( result ) => result.inserterSearch ) ),
+				minInserterSearch: getDifference( results[ testSuite ].map( ( result ) => result.minInserterSearch ) ),
+				maxInserterSearch: getDifference( results[ testSuite ].map( ( result ) => result.maxInserterSearch ) ),
+				inserterHover: getDifference( results[ testSuite ].map( ( result ) => result.inserterHover ) ),
+				minInserterHover: getDifference( results[ testSuite ].map( ( result ) => result.minInserterHover ) ),
+				maxInserterHover: getDifference( results[ testSuite ].map( ( result ) => result.maxInserterHover ) ),
+			},
+			median
+		);
+
+		results[ testSuite ][ 'change %' ] = difference;
 	}
 
 	// 5- Formatting the results.
 	log( '\n>> 🎉 Results.\n' );
 	for ( const testSuite of testSuites ) {
-		log( `\n>> ${ testSuite }\n` );
-
 		/** @type {Record<string, Record<string, string>>} */
 		const invertedResult = {};
 		Object.entries( results[ testSuite ] ).reduce(
