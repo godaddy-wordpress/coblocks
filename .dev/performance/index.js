@@ -180,16 +180,18 @@ async function runPerformanceTests( branches, options ) {
 
 	// 1- Preparing the environment directories per branch.
 	log( '\n>> Preparing an environment directory per branch' );
-	const branchDirectories = {};
+	const branchDirectories = {}; // Used to store environment directory paths.
+	let index; // Used for database naming.
 	for ( const branch of branches ) {
 		log( '    >> Branch: ' + branch );
 		const environmentDirectory = `${ getRandomTemporaryPath() }/wordpress`;
 
 		branchDirectories[ branch ] = environmentDirectory;
+		index++;
 
 		await runShellScript( `mkdir -p ${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp core download --path=${ environmentDirectory }` );
-		await runShellScript( `./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass='' --path=${ environmentDirectory }` );
+		await runShellScript( `./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks${ index } --dbuser=root --dbpass='' --path=${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp db create --path=${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp core install --url="http://localhost:8889" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp post generate --count=5 --path=${ environmentDirectory }` );
