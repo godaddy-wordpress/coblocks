@@ -180,10 +180,14 @@ async function runPerformanceTests( branches, options ) {
 
 	// 1- Preparing the environment directories per branch.
 	log( '\n>> Preparing an environment directory per branch' );
+
+	// Clone in CoBlocks and prepare repo for use with testing.
+	const baseDirectory = await git.clone( config.gitRepositoryURL );
+	await runShellScript( `mv ${ baseDirectory } coblocks` );
+
 	const branchDirectories = {}; // Used to store environment directory paths.
 	let index = 0; // Used for database naming.
 	for ( const branch of branches ) {
-		log( '    >> Branch: ' + branch );
 		const environmentDirectory = `${ getRandomTemporaryPath() }/wordpress`;
 
 		branchDirectories[ branch ] = environmentDirectory;
@@ -198,10 +202,10 @@ async function runPerformanceTests( branches, options ) {
 
 		// 2- Clone CoBlocks repo into environment directory.
 		log( '\n>> Preparing the tests directory' );
+		log( '    >> Branch: ' + branch );
 		log( '    >> Cloning the repository' );
-		const baseDirectory = await git.clone( config.gitRepositoryURL );
 
-		await runShellScript( `mv ${ baseDirectory } coblocks && cp -R coblocks ${ environmentDirectory }/wp-content/plugins` );
+		await runShellScript( `cp -R coblocks ${ environmentDirectory }/wp-content/plugins` );
 		await setUpGitBranch( branch, `${ environmentDirectory }/wp-content/plugins/coblocks` );
 		await runShellScript( `./vendor/bin/wp plugin activate coblocks --path=${ environmentDirectory }` );
 		index++;
