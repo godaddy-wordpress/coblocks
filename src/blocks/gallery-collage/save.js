@@ -7,6 +7,7 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 import { RichText } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Internal dependencies
@@ -31,13 +32,18 @@ const save = ( { attributes } ) => {
 		[ `shadow-${ shadow }` ]: shadow && shadow !== 'none',
 	} );
 
+	const getAriaLabel = () => {
+		return __( 'Gallery of pictures - collage', 'coblocks' );
+	};
+
 	return (
 		<GutterWrapper { ...attributes }>
-			<div className={ classnames( {
-				[ `has-filter-${ filter }` ]: filter !== 'none',
-				[ `has-caption-style-${ captionStyle }` ]: captions && captionStyle !== undefined,
-				'has-lightbox': lightbox,
-			} ) }>
+			<div aria-label={ getAriaLabel() }
+				className={ classnames( {
+					[ `has-filter-${ filter }` ]: filter !== 'none',
+					[ `has-caption-style-${ captionStyle }` ]: captions && captionStyle !== undefined,
+					'has-lightbox': lightbox,
+				} ) }>
 				<ul>
 					{ images.sort( ( a, b ) => parseInt( a.index ) - parseInt( b.index ) )
 						// Limit images output based on he selector style.
