@@ -319,11 +319,12 @@ async function runPerformanceTests( branches, options ) {
 		}
 
 		const getDifference = ( key ) => {
-			const valueArray = Object.entries( results[ testSuite ] ).filter( ( [ resultKey ] ) => resultKey === key );
-			const x = valueArray[ 0 ],
-				y = valueArray[ 1 ];
+			const valueArray = Object.keys( results[ testSuite ] );
 
-			return ( y - x ) / x;
+			const x = results[ testSuite ][ valueArray[ 0 ] ][ key ],
+				y = results[ testSuite ][ valueArray[ 1 ] ][ key ];
+
+			return parseFloat( ( ( ( y - x ) / x ) * 100 ).toFixed( 2 ) );
 		};
 
 		// Computing difference.
@@ -345,8 +346,7 @@ async function runPerformanceTests( branches, options ) {
 				inserterHover: getDifference( 'inserterHover' ),
 				minInserterHover: getDifference( 'minInserterHover' ),
 				maxInserterHover: getDifference( 'maxInserterHover' ),
-			},
-			median
+			}
 		);
 
 		results[ testSuite ][ 'change %' ] = difference;
@@ -360,11 +360,12 @@ async function runPerformanceTests( branches, options ) {
 		Object.entries( results[ testSuite ] ).reduce(
 			( acc, [ key, val ] ) => {
 				for ( const entry of Object.keys( val ) ) {
+					const suffix = key === 'change %' ? ' %' : ' ms';
 					if ( ! acc[ entry ] && isFinite( val[ entry ] ) ) {
 						acc[ entry ] = {};
 					}
 					if ( isFinite( val[ entry ] ) ) {
-						acc[ entry ][ key ] = val[ entry ] + ' ms';
+						acc[ entry ][ key ] = val[ entry ] + suffix;
 					}
 				}
 				return acc;
