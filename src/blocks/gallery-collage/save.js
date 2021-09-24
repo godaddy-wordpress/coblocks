@@ -33,6 +33,7 @@ const save = ( { attributes } ) => {
 	} );
 
 	const getAriaLabel = () => {
+		// eslint-disable-next-line no-restricted-syntax
 		return __( `Gallery with ${ images.length } pictures - collage`, 'coblocks' );
 	};
 
@@ -85,7 +86,7 @@ const save = ( { attributes } ) => {
 									<figure className={ classes }>
 										{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
 										{ captions && image.caption && (
-											<RichText.Content tagName="figcaption" className="wp-block-coblocks-gallery-collage__caption" value={ image.caption } />
+											<RichText.Content tagName="figcaption" className="wp-block-coblocks-gallery-collage__caption" value={ image.caption } aria-label={ 'Caption' } />
 										) }
 									</figure>
 									}
