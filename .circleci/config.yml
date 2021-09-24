@@ -72,6 +72,12 @@ workflows:
           filters:
             tags:
               only: /^(?!canary).*$/
+          requires:
+            - css
+            - unit_testing_php_56
+            - unit_testing_php_73
+            - unit_testing_php_74
+            - js
 
       - canary-release:
           filters:
