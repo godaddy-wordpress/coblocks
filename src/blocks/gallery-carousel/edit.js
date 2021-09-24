@@ -33,7 +33,7 @@ import { withNotices, ResizableBox } from '@wordpress/components';
  * @constant parseNavForClass
  * @type {Function}
  * @param {boolean} thumbnails This boolean value is equal to props.attributes.thumbnails.
- * @param {string} clientId This string value is equal to props.clientId.
+ * @param {string}  clientId   This string value is equal to props.clientId.
  * @return {string} Return parsed class string if thumbnails is truthy or an empty string.
  */
 export const parseNavForClass = ( thumbnails, clientId ) => thumbnails

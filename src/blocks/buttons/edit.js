@@ -28,7 +28,6 @@ const ALLOWED_BLOCKS = [ 'core/button' ];
  * Returns the layouts configuration for a given number of feature items.
  *
  * @param {number} count Number of feature items.
- *
  * @return {Object[]} Columns layout configuration.
  */
 const getCount = memoize( ( count ) => {
