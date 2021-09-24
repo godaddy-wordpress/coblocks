@@ -318,7 +318,8 @@ async function runPerformanceTests( branches, options ) {
 			results[ testSuite ][ branch ] = mapValues( medians, formatTime );
 		}
 
-		const getDifference = ( valueArray ) => {
+		const getDifference = ( key ) => {
+			const valueArray = Object.entries( results[ testSuite ] ).filter( ( [ resultKey ] ) => resultKey === key );
 			const x = valueArray[ 0 ],
 				y = valueArray[ 1 ];
 
@@ -328,22 +329,22 @@ async function runPerformanceTests( branches, options ) {
 		// Computing difference.
 		const difference = mapValues(
 			{
-				load: getDifference( results[ testSuite ].map( ( result ) => result.load ) ),
-				type: getDifference( results[ testSuite ].map( ( result ) => result.type ) ),
-				minType: getDifference( results[ testSuite ].map( ( result ) => result.minType ) ),
-				maxType: getDifference( results[ testSuite ].map( ( result ) => result.maxType ) ),
-				focus: getDifference( results[ testSuite ].map( ( result ) => result.focus ) ),
-				minFocus: getDifference( results[ testSuite ].map( ( result ) => result.minFocus ) ),
-				maxFocus: getDifference( results[ testSuite ].map( ( result ) => result.maxFocus ) ),
-				inserterOpen: getDifference( results[ testSuite ].map( ( result ) => result.inserterOpen ) ),
-				minInserterOpen: getDifference( results[ testSuite ].map( ( result ) => result.minInserterOpen ) ),
-				maxInserterOpen: getDifference( results[ testSuite ].map( ( result ) => result.maxInserterOpen ) ),
-				inserterSearch: getDifference( results[ testSuite ].map( ( result ) => result.inserterSearch ) ),
-				minInserterSearch: getDifference( results[ testSuite ].map( ( result ) => result.minInserterSearch ) ),
-				maxInserterSearch: getDifference( results[ testSuite ].map( ( result ) => result.maxInserterSearch ) ),
-				inserterHover: getDifference( results[ testSuite ].map( ( result ) => result.inserterHover ) ),
-				minInserterHover: getDifference( results[ testSuite ].map( ( result ) => result.minInserterHover ) ),
-				maxInserterHover: getDifference( results[ testSuite ].map( ( result ) => result.maxInserterHover ) ),
+				load: getDifference( 'load' ),
+				type: getDifference( 'type' ),
+				minType: getDifference( 'minType' ),
+				maxType: getDifference( 'maxType' ),
+				focus: getDifference( 'focus' ),
+				minFocus: getDifference( 'minFocus' ),
+				maxFocus: getDifference( 'maxFocus' ),
+				inserterOpen: getDifference( 'inserterOpen' ),
+				minInserterOpen: getDifference( 'minInserterOpen' ),
+				maxInserterOpen: getDifference( 'maxInserterOpen' ),
+				inserterSearch: getDifference( 'inserterSearch' ),
+				minInserterSearch: getDifference( 'minInserterSearch' ),
+				maxInserterSearch: getDifference( 'maxInserterSearch' ),
+				inserterHover: getDifference( 'inserterHover' ),
+				minInserterHover: getDifference( 'minInserterHover' ),
+				maxInserterHover: getDifference( 'maxInserterHover' ),
 			},
 			median
 		);
