@@ -146,3 +146,8 @@
 [data-type="coblocks/service"].is-selected.block-editor-block-list__block .wp-block-coblocks-service .wp-block-coblocks-service__figure:not(figure) {
 	box-shadow: inset 0 0 0 4px #0085ba;
 }
+
+.coblocks-gallery-item__button-replace {
+	border-left: solid 1px #1e1e1e;
+	box-shadow: none !important;
+}
