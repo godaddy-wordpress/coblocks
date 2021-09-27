@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-09-27T14:33:37+00:00\n"
+"POT-Creation-Date: 2021-09-27T20:41:56+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -729,29 +729,29 @@ msgid "Add button…"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/click-to-tweet/index.js:23
+#: src/blocks/click-to-tweet/index.js:24
 msgid "Click to Tweet"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/click-to-tweet/index.js:25
+#: src/blocks/click-to-tweet/index.js:26
 msgid "Add a quote for readers to tweet via Twitter."
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/click-to-tweet/index.js:30
+#: src/blocks/click-to-tweet/index.js:31
 #: src/blocks/icon/svgs.js:656
 #: src/blocks/social-profiles/index.js:35
 msgid "share"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/click-to-tweet/index.js:32
+#: src/blocks/click-to-tweet/index.js:33
 msgid "twitter"
 msgstr ""
 
-#: src/blocks/click-to-tweet/index.js:36
+#: src/blocks/click-to-tweet/index.js:37
 msgid "The easiest way to promote and advertise your blog, website, and business on Twitter."
 msgstr ""
 
@@ -5990,7 +5990,7 @@ msgstr ""
 #. translators: content placeholder
 #. translators: block name
 #: src/blocks/media-card/edit.js:67
-#: src/blocks/media-card/index.js:35
+#: src/blocks/media-card/index.js:31
 msgid "Media Card"
 msgstr ""
 
@@ -6000,7 +6000,7 @@ msgid "Replace this text with descriptive copy to go along with the card image. 
 msgstr ""
 
 #. translators: block description
-#: src/blocks/media-card/index.js:37
+#: src/blocks/media-card/index.js:33
 msgid "Add an image or video with an offset card side-by-side."
 msgstr ""
 
