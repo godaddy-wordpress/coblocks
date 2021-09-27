@@ -72,6 +72,12 @@ workflows:
           filters:
             tags:
               only: /^(?!canary).*$/
+          requires:
+            - css
+            - unit_testing_php_56
+            - unit_testing_php_73
+            - unit_testing_php_74
+            - js
 
       - canary-release:
           filters:
@@ -239,11 +245,10 @@ commands:
           name: Run performance tests
           command: |
             if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
-              ~/project/.dev/performance/cli.js perf --ci
-            else
-              ~/project/.dev/performance/cli.js perf --ci
               echo "Changes do not require testing."
               circleci-agent step halt
+            else
+              ~/project/.dev/performance/cli.js perf --ci $CIRCLE_BRANCH
             fi
 
   start_wpcli_server:
