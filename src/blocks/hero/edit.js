@@ -23,6 +23,7 @@ import { InnerBlocks } from '@wordpress/block-editor';
 import { ResizableBox, Spinner } from '@wordpress/components';
 import { withDispatch, withSelect } from '@wordpress/data';
 import { isBlobURL } from '@wordpress/blob';
+import { getBlockAttributes } from '@wordpress/blocks';
 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
@@ -87,7 +88,6 @@ const Edit = ( props ) => {
 		clientId,
 		attributes,
 		getEditedPostAttribute,
-		getBlock,
 		editPost,
 		name,
 		isSelected,
@@ -141,15 +141,15 @@ const Edit = ( props ) => {
 
 	const saveMeta = ( type ) => {
 		const meta = getEditedPostAttribute( 'meta' );
-		const block = getBlock( clientId );
+		const block = getBlockAttributes( clientId );
 		let dimensions = {};
 
 		if ( typeof attributes.coblocks !== 'undefined' && typeof attributes.coblocks.id !== 'undefined' ) {
 			const id = name.split( '/' ).join( '-' ) + '-' + attributes.coblocks.id;
 			const newHeight = {
-				height: block.attributes[ type ],
-				heightTablet: block.attributes[ type + 'Tablet' ],
-				heightMobile: block.attributes[ type + 'Mobile' ],
+				height: block[ type ],
+				heightTablet: block[ type + 'Tablet' ],
+				heightMobile: block[ type + 'Mobile' ],
 			};
 
 			if ( typeof meta._coblocks_responsive_height === 'undefined' || ( typeof meta._coblocks_responsive_height !== 'undefined' && meta._coblocks_responsive_height === '' ) ) {
@@ -414,12 +414,10 @@ export default compose( [
 	} ),
 
 	withSelect( ( select ) => {
-		const { getBlock } = select( 'core/block-editor' );
 		const { getEditedPostAttribute } = select( 'core/editor' );
 
 		return {
 			getEditedPostAttribute,
-			getBlock,
 		};
 	} ),
 ] )( Edit );
