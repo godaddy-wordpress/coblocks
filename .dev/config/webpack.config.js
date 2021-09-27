@@ -1,17 +1,26 @@
-const path = require( 'path' );
-const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
-const postcssConfig = require( './postcss.config' );
+/**
+ * WordPress dependencies
+ */
+const DependencyExtractionWebpackPlugin = require( '@wordpress/dependency-extraction-webpack-plugin' );
 
+/**
+ * Internal dependencies
+ */
+const postcssConfig = require( './postcss.config' );
+const { hasBabelConfig } = require( './utils' );
+
+/**
+ * External dependencies
+ */
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const RtlCssPlugin = require( 'rtlcss-webpack-plugin' );
+const path = require( 'path' );
 const FixStyleOnlyEntriesPlugin = require( 'webpack-fix-style-only-entries' );
 const nodeSassGlobImporter = require( 'node-sass-glob-importer' );
 
 const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
-	...defaultConfig,
-
 	entry: {
 		coblocks: path.resolve( process.cwd(), 'src/blocks.js' ),
 
@@ -45,10 +54,40 @@ module.exports = {
 	},
 
 	module: {
-		...defaultConfig.module,
 		rules: [
-			...defaultConfig.module.rules,
+			{
+				test: /\.svg$/,
+				use: [ '@svgr/webpack', 'url-loader' ],
+			},
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: [
+					require.resolve( 'thread-loader' ),
+					{
+						loader: require.resolve( 'babel-loader' ),
+						options: {
+							// Babel uses a directory within local node_modules
+							// by default. Use the environment variable option
+							// to enable more persistent caching.
+							cacheDirectory:
+								process.env.BABEL_CACHE_DIRECTORY || true,
 
+							// Provide a fallback configuration if there's not
+							// one explicitly available in the project.
+							...( ! hasBabelConfig() && {
+								babelrc: false,
+								configFile: false,
+								presets: [
+									require.resolve(
+										'@wordpress/babel-preset-default'
+									),
+								],
+							} ),
+						},
+					},
+				],
+			},
 			{
 				test: /\.scss$/,
 				use: [
@@ -82,18 +121,17 @@ module.exports = {
 	},
 
 	stats: {
-		...defaultConfig.stats,
+		children: false,
 		modules: false,
 		warnings: false,
 	},
 
 	plugins: [
-		...defaultConfig.plugins,
-
-		new FixStyleOnlyEntriesPlugin(),
+		new DependencyExtractionWebpackPlugin( { injectPolyfill: true } ),
 		new MiniCssExtractPlugin( {
 			filename: '[name].css',
 		} ),
+		new FixStyleOnlyEntriesPlugin(),
 		new RtlCssPlugin( {
 			filename: '[name]-rtl.css',
 		} ),

@@ -78,7 +78,7 @@ const Inspector = ( props ) => {
 							value={ gridSize }
 							resetValue={ 'xlrg' }
 						/>
-						{ gridSize !== null && ( align === 'wide' || align === 'full' ) &&
+						{ gridSize !== 'xlrg' && ( align === 'wide' || align === 'full' ) &&
 						<ResponsiveTabsControl { ...props }
 							max={ 20 }
 						/>

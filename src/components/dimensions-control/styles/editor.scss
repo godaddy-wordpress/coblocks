@@ -34,23 +34,9 @@
 			}
 
 			svg {
+				padding-left: 5px;
+				padding-top: 8px;
 				position: relative;
-			}
-
-			&--default svg {
-				top: 3px;
-			}
-
-			&--desktop svg {
-				top: 3px;
-			}
-
-			&--tablet svg {
-				top: 3px;
-			}
-
-			&--mobile svg {
-				top: 3px;
 			}
 		}
 
