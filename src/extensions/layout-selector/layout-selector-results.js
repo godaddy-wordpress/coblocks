@@ -16,6 +16,11 @@ import { applyFilters } from '@wordpress/hooks';
 
 /**
  * Render the layout previews into columns.
+ *
+ * @param {Object}   obj
+ * @param {Object}   obj.layouts  Object containing layout information
+ * @param {string}   obj.category String representing user chosen layout category
+ * @param {Function} obj.onInsert Function that acts as callback when layout is clicked
  */
 export const LayoutSelectorResults = ( { layouts, category, onInsert } ) => {
 	const getEntityRecord = useSelect( ( select ) => select( 'core' ).getEntityRecord, [] );
@@ -55,6 +60,10 @@ export const LayoutSelectorResults = ( { layouts, category, onInsert } ) => {
 
 /**
  * Renders the layout's block preview.
+ *
+ * @param {Object}   obj
+ * @param {string}   obj.layout  String representing layout choice
+ * @param {Function} obj.onClick Callback function used to select the choice.
  */
 export const LayoutPreview = ( { layout, onClick } ) => {
 	const sanitizedBlocks = sanitizeBlocks( layout.blocks );
@@ -108,6 +117,11 @@ export const LayoutPreviewPlaceholder = () => {
 /**
  * Renders a list of previews for the layouts passed. Placeholders rendered
  * for components not yet loaded async via `shownLayouts`.
+ *
+ * @param {Object}   obj
+ * @param {Array}    obj.layouts       Array of layouts available
+ * @param {Array}    obj.shownLayouts  Array of async filtered allowed layouts
+ * @param {Function} obj.onClickLayout Function used as callback to select layout
  */
 export const LayoutPreviewList = ( { layouts, shownLayouts, onClickLayout } ) => {
 	return layouts.map( ( layout, index ) => {

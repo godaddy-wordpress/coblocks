@@ -17,7 +17,7 @@ import { PanelBody, RangeControl, ToggleControl, SelectControl } from '@wordpres
 /**
  * Inspector controls
  *
- * @param props
+ * @param {Object} props
  */
 const Inspector = ( props ) => {
 	const {

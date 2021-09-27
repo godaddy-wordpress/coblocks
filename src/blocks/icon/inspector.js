@@ -44,7 +44,7 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 /**
  * Inspector controls
  *
- * @param props
+ * @param {Object} props
  */
 const Inspector = ( props ) => {
 	const {

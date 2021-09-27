@@ -12,6 +12,12 @@ import { hasBlockSupport } from '@wordpress/blocks';
 
 /**
  * Return an element Wrapped with Label Color Properties.
+ *
+ * @param {Object} obj
+ * @param {Object} obj.children        HTML Children elements
+ * @param {string} obj.name            String representing the block name
+ * @param {string} obj.textColor       String representing textColor name
+ * @param {string} obj.customTextColor String representing customTextColor values
  */
 function LabelColorWrapper( { children, name, textColor, customTextColor } ) {
 	if ( ! hasBlockSupport( name, 'labelColor', false ) ) {
