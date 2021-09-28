@@ -104,7 +104,7 @@
 		"autoprefixer": "^9.7.5",
 		"chalk": "^4.1.2",
 		"css-loader": "^3.2.1",
-		"cypress": "^6.9.1",
+		"cypress": "^8.5.0",
 		"cypress-file-upload": "^5.0.8",
 		"cypress-log-to-output": "1.1.2",
 		"email-validator": "^2.0.4",
