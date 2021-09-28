@@ -1,8 +1,6 @@
-const defaultConfig = require( '@wordpress/scripts/config/jest-unit.config' );
-
 module.exports = {
-	...defaultConfig,
-
+	testRunner: 'jest-circus/runner',
+	preset: '@wordpress/jest-preset-default',
 	rootDir: '../../../',
 	testMatch: [ '<rootDir>/src/**/test/*.spec.js' ],
 	setupFilesAfterEnv: [ '<rootDir>/.dev/tests/jest/setup-globals.js' ],

@@ -18,96 +18,92 @@ import { GalleryClasses } from '../../components/block-gallery/shared';
  * WordPress dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import { useEffect, useState } from '@wordpress/element';
-import { compose, usePrevious } from '@wordpress/compose';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
 import { withNotices, Icon } from '@wordpress/components';
 import { withFontSizes } from '@wordpress/block-editor';
 
-const GalleryStackedEdit = ( props ) => {
-	const {
-		attributes,
-		className,
-		fontSize,
-		isSelected,
-		noticeUI,
-		setAttributes,
-	} = props;
+class GalleryStackedEdit extends Component {
+	constructor() {
+		super( ...arguments );
 
-	const {
-		align,
-		animation,
-		captions,
-		fullwidth,
-		gutter,
-		gutterMobile,
-		images,
-		shadow,
-		linkTo,
-		lightbox,
-	} = attributes;
+		this.onSelectImage = this.onSelectImage.bind( this );
+		this.onRemoveImage = this.onRemoveImage.bind( this );
+		this.onMove = this.onMove.bind( this );
+		this.onMoveForward = this.onMoveForward.bind( this );
+		this.onMoveBackward = this.onMoveBackward.bind( this );
+		this.setImageAttributes = this.setImageAttributes.bind( this );
+		this.replaceImage = this.replaceImage.bind( this );
 
-	const [ selectedImage, setSelectedImage ] = useState( null );
+		this.state = {
+			selectedImage: null,
+		};
+	}
 
-	useEffect( () => {
+	componentDidMount() {
+		const { attributes, setAttributes } = this.props;
 		// This block does not support caption style.
 		if ( typeof attributes.captionStyle !== 'undefined' ) {
 			setAttributes( { captionStyle: undefined } );
 		}
-	}, [] );
+	}
 
-	const prevSelected = usePrevious( isSelected );
-
-	useEffect( () => {
+	componentDidUpdate( prevProps ) {
 		// Deselect images when deselecting the block
-		if ( ! isSelected && prevSelected ) {
-			setSelectedImage( null );
+		if ( ! this.props.isSelected && prevProps.isSelected ) {
+			this.setState( {
+				selectedImage: null,
+				captionSelected: false,
+			} );
 		}
-	}, [ isSelected ] );
+	}
 
-	const onSelectImage = ( index ) => {
+	onSelectImage( index ) {
 		return () => {
-			if ( selectedImage !== index ) {
-				setSelectedImage( index );
+			if ( this.state.selectedImage !== index ) {
+				this.setState( {
+					selectedImage: index,
+				} );
 			}
 		};
-	};
+	}
 
-	const onMove = ( oldIndex, newIndex ) => {
-		const newImages = [ ...attributes.images ];
-		newImages.splice( newIndex, 1, attributes.images[ oldIndex ] );
-		newImages.splice( oldIndex, 1, attributes.images[ newIndex ] );
-		setSelectedImage( newIndex );
-		setAttributes( { images: newImages } );
-	};
+	onMove( oldIndex, newIndex ) {
+		const images = [ ...this.props.attributes.images ];
+		images.splice( newIndex, 1, this.props.attributes.images[ oldIndex ] );
+		images.splice( oldIndex, 1, this.props.attributes.images[ newIndex ] );
+		this.setState( { selectedImage: newIndex } );
+		this.props.setAttributes( { images } );
+	}
 
-	const onMoveForward = ( oldIndex ) => {
+	onMoveForward( oldIndex ) {
 		return () => {
-			if ( oldIndex === attributes.images.length - 1 ) {
+			if ( oldIndex === this.props.attributes.images.length - 1 ) {
 				return;
 			}
-			onMove( oldIndex, oldIndex + 1 );
+			this.onMove( oldIndex, oldIndex + 1 );
 		};
-	};
+	}
 
-	const onMoveBackward = ( oldIndex ) => {
+	onMoveBackward( oldIndex ) {
 		return () => {
 			if ( oldIndex === 0 ) {
 				return;
 			}
-			onMove( oldIndex, oldIndex - 1 );
+			this.onMove( oldIndex, oldIndex - 1 );
 		};
-	};
+	}
 
-	const onRemoveImage = ( index ) => {
+	onRemoveImage( index ) {
 		return () => {
-			const filteredImages = filter( attributes.images, ( _img, i ) => index !== i );
-			setSelectedImage( null );
-			setAttributes( {
-				images: filteredImages,
+			const images = filter( this.props.attributes.images, ( _img, i ) => index !== i );
+			this.setState( { selectedImage: null } );
+			this.props.setAttributes( {
+				images,
 			} );
 		};
-	};
+	}
 
 	/**
 	 * replaceImage is passed to GalleryImage component and is used to replace images
@@ -115,16 +111,15 @@ const GalleryStackedEdit = ( props ) => {
 	 * @param {number} index Index of image to remove.
 	 * @param {Object} media Media object used to initialize attributes.
 	 */
-	const replaceImage = ( index, media ) => {
-		const newImages = [ ...attributes.images ];
-		newImages[ index ] = { ...media };
+	replaceImage( index, media ) {
+		const images = [ ...this.props.attributes.images ];
+		images[ index ] = { ...media };
 
-		setAttributes( {
-			images: newImages,
-		} );
-	};
+		this.props.setAttributes( { images } );
+	}
 
-	const setImageAttributes = ( index ) => {
+	setImageAttributes( index, attributes ) {
+		const { attributes: { images }, setAttributes } = this.props;
 		if ( ! images[ index ] ) {
 			return;
 		}
@@ -138,109 +133,132 @@ const GalleryStackedEdit = ( props ) => {
 				...images.slice( index + 1 ),
 			],
 		} );
-	};
-
-	const stackedGalleryPlaceholder = (
-		<>
-			{ ! hasImages ? noticeUI : null }
-			<GalleryPlaceholder
-				{ ...props }
-				label={ __( 'Stacked', 'coblocks' ) }
-				icon={ <Icon icon={ icon } /> }
-				gutter={ gutter }
-			/>
-		</> );
-
-	const hasImages = !! images.length;
-
-	if ( ! hasImages ) {
-		return stackedGalleryPlaceholder;
 	}
 
-	const classes = classnames(
-		className, {
-			'has-lightbox': lightbox,
-		}
-	);
+	render() {
+		const {
+			attributes,
+			className,
+			fontSize,
+			isSelected,
+			noticeUI,
+		} = this.props;
 
-	const innerClasses = classnames(
-		...GalleryClasses( attributes ), {
-			'has-fullwidth-images': fullwidth,
-			[ `align${ align }` ]: align,
-			'has-margin': gutter > 0,
-			'has-lightbox': lightbox,
-			[ `has-margin-bottom-${ gutter }` ]: gutter > 0,
-			[ `has-margin-bottom-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-		}
-	);
+		const {
+			align,
+			animation,
+			captions,
+			fullwidth,
+			gutter,
+			gutterMobile,
+			images,
+			shadow,
+			linkTo,
+			lightbox,
+		} = attributes;
 
-	const itemClasses = classnames(
-		'coblocks-gallery--item', {
-			[ `coblocks-animate ${ animation }` ]: animation,
-		}
-	);
+		const hasImages = !! images.length;
 
-	return (
-		<>
-			{ isSelected &&
-			<Controls
-				{ ...props }
-			/>
+		const stackedGalleryPlaceholder = (
+			<Fragment>
+				{ ! hasImages ? noticeUI : null }
+				<GalleryPlaceholder
+					{ ...this.props }
+					label={ __( 'Stacked', 'coblocks' ) }
+					icon={ <Icon icon={ icon } /> }
+					gutter={ gutter }
+				/>
+			</Fragment> );
+
+		if ( ! hasImages ) {
+			return stackedGalleryPlaceholder;
+		}
+
+		const classes = classnames(
+			className, {
+				'has-lightbox': lightbox,
 			}
-			{ isSelected &&
-			<Inspector
-				{ ...props }
-			/>
-			}
-			{ noticeUI }
-			<div className={ classes }>
-				<ul className={ innerClasses }>
-					{ images.map( ( img, index ) => {
-						const ariaLabel = sprintf(
-							/* translators: %1$d is the order number of the image, %2$d is the total number of images */
-							__( 'image %1$d of %2$d in gallery', 'coblocks' ),
-							( index + 1 ),
-							images.length
-						);
+		);
 
-						return (
-							<li className={ itemClasses } key={ img.id || img.url }>
-								<GalleryImage
-									url={ img.url }
-									alt={ img.alt }
-									id={ img.id }
-									imgLink={ img.imgLink }
-									linkTo={ linkTo }
-									gutter={ gutter }
-									gutterMobile={ gutterMobile }
-									marginBottom={ true }
-									shadow={ shadow }
-									isFirstItem={ index === 0 }
-									isLastItem={ ( index + 1 ) === images.length }
-									isSelected={ isSelected && selectedImage === index }
-									onMoveBackward={ onMoveBackward( index ) }
-									onMoveForward={ onMoveForward( index ) }
-									onRemove={ onRemoveImage( index ) }
-									onSelect={ onSelectImage( index ) }
-									setAttributes={ ( attrs ) => setImageAttributes( index, attrs ) }
-									caption={ img.caption }
-									aria-label={ ariaLabel }
-									captions={ captions }
-									supportsCaption={ true }
-									verticalMoving={ true }
-									fontSize={ fontSize.size }
-									imageIndex={ index }
-									replaceImage={ replaceImage }
-								/>
-							</li>
-						);
-					} ) }
-					{ stackedGalleryPlaceholder }
-				</ul>
-			</div>
-		</>
-	);
-};
+		const innerClasses = classnames(
+			...GalleryClasses( attributes ), {
+				'has-fullwidth-images': fullwidth,
+				[ `align${ align }` ]: align,
+				'has-margin': gutter > 0,
+				'has-lightbox': lightbox,
+				[ `has-margin-bottom-${ gutter }` ]: gutter > 0,
+				[ `has-margin-bottom-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+			}
+		);
+
+		const itemClasses = classnames(
+			'coblocks-gallery--item', {
+				[ `coblocks-animate ${ animation }` ]: animation,
+			}
+		);
+
+		return (
+			<Fragment>
+				{ isSelected &&
+				<Controls
+					{ ...this.props }
+				/>
+				}
+				{ isSelected &&
+				<Inspector
+					{ ...this.props }
+				/>
+				}
+				{ noticeUI }
+				<div className={ classes }>
+					<ul className={ innerClasses }>
+						{ images.map( ( img, index ) => {
+							const ariaLabel = sprintf(
+								/* translators: %1$d is the order number of the image, %2$d is the total number of images */
+								__( 'image %1$d of %2$d in gallery', 'coblocks' ),
+								( index + 1 ),
+								images.length
+							);
+
+							return (
+								<li className={ itemClasses } key={ img.id || img.url }>
+									<GalleryImage
+										url={ img.url }
+										alt={ img.alt }
+										id={ img.id }
+										imgLink={ img.imgLink }
+										linkTo={ linkTo }
+										gutter={ gutter }
+										gutterMobile={ gutterMobile }
+										marginBottom={ true }
+										shadow={ shadow }
+										isFirstItem={ index === 0 }
+										isLastItem={ ( index + 1 ) === images.length }
+										isSelected={ isSelected && this.state.selectedImage === index }
+										onMoveBackward={ this.onMoveBackward( index ) }
+										onMoveForward={ this.onMoveForward( index ) }
+										onRemove={ this.onRemoveImage( index ) }
+										onSelect={ this.onSelectImage( index ) }
+										setAttributes={ ( attrs ) => this.setImageAttributes( index, attrs ) }
+										caption={ img.caption }
+										aria-label={ ariaLabel }
+										captions={ captions }
+										supportsCaption={ true }
+										verticalMoving={ true }
+										fontSize={ fontSize.size }
+										imageIndex={ index }
+										replaceImage={ this.replaceImage }
+									/>
+								</li>
+							);
+						} ) }
+						{ stackedGalleryPlaceholder }
+					</ul>
+				</div>
+			</Fragment>
+		);
+	}
+}
 
 export default compose( [
 	withSelect( ( select ) => ( {

@@ -21,6 +21,8 @@ describe( 'Deploy .po files from Coblocks to WordPress.org', function() {
 		} );
 	} );
 
+	// Disable reason: This rule should be enabled if we ever allow cy.get - cy.get is considered an assertion.
+	// eslint-disable-next-line jest/expect-expect
 	it( 'Upload .po files to Glotpress', function() {
 		for ( const locale of Object.keys( pkg.locales ) ) {
 			const localeSplit = locale.split( /_(.+)/ )[ 0 ];

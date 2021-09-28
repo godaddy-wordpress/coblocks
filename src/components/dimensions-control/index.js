@@ -7,7 +7,7 @@ import map from 'lodash/map';
 /**
  * Internal dependencies
  */
-import icons from './icons';
+import { DesktopIcon, TabletIcon, MobileIcon, SyncIcon } from '@godaddy-wordpress/coblocks-icons';
 import DimensionsSelect from './dimensions-select';
 
 /**
@@ -498,22 +498,22 @@ class DimensionsControl extends Component {
 								tabs={ [
 									{
 										name: 'default',
-										title: icons.desktopChrome,
+										title: DesktopIcon,
 										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--default components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--default`,
 									},
 									{
 										name: 'desktop',
-										title: icons.mobile,
+										title: DesktopIcon,
 										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--desktop components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--desktop`,
 									},
 									{
 										name: 'tablet',
-										title: icons.desktopChrome,
+										title: TabletIcon,
 										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--tablet components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--tablet`,
 									},
 									{
 										name: 'mobile',
-										title: icons.tablet,
+										title: MobileIcon,
 										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--mobile components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--mobile`,
 									},
 								] }>
@@ -590,7 +590,7 @@ class DimensionsControl extends Component {
 																data-device-type="Mobile"
 																isSmall
 															>
-																{ !! syncUnitsMobile ? icons.sync : icons.sync }
+																{ SyncIcon }
 															</Button>
 														</Tooltip>
 													</div>
@@ -667,7 +667,7 @@ class DimensionsControl extends Component {
 																data-device-type="Tablet"
 																isSmall
 															>
-																{ !! syncUnitsTablet ? icons.sync : icons.sync }
+																{ SyncIcon }
 															</Button>
 														</Tooltip>
 													</div>
@@ -743,7 +743,7 @@ class DimensionsControl extends Component {
 															data-device-type=""
 															isSmall
 														>
-															{ !! syncUnits ? icons.sync : icons.sync }
+															{ SyncIcon }
 														</Button>
 													</Tooltip>
 												</div>

@@ -21,6 +21,7 @@ import {
 	MediaPlaceholder,
 	MediaUpload,
 	MediaUploadCheck,
+	MediaReplaceFlow,
 } from '@wordpress/block-editor';
 import { DropZone, Button, Spinner, ButtonGroup } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
@@ -132,7 +133,7 @@ const Edit = ( props ) => {
 								<MediaUpload
 									allowedTypes={ [ 'image' ] }
 									onSelect={ ( img ) => replaceImage( img ) }
-									value={ image.url }
+									value={ image?.url }
 									render={ ( { open } ) => (
 										<>
 											<Button
@@ -216,6 +217,13 @@ const Edit = ( props ) => {
 	return (
 		<>
 			<BlockControls>
+				<MediaReplaceFlow
+					allowedTypes={ [ 'image' ] }
+					mediaUrl={ null }
+					onSelect={ ( img ) => {
+						replaceImage( img );
+					} }
+				/>
 				{ imageUrl && (
 					<ImageURLInputUI
 						url={ href || '' }

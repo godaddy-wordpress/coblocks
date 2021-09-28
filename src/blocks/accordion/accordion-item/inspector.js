@@ -7,7 +7,6 @@ import applyWithColors from './colors';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { InspectorControls, ContrastChecker, PanelColorSettings } from '@wordpress/block-editor';
 import { PanelBody, withFallbackStyles, ToggleControl } from '@wordpress/components';
@@ -28,77 +27,78 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 
 /**
  * Inspector controls
+ *
+ * @param { Object } props
  */
-class Inspector extends Component {
-	getDisplayOpenHelp( checked ) {
+const Inspector = ( props ) => {
+	const getDisplayOpenHelp = ( checked ) => {
 		return checked ? __( 'Accordion item is open by default.', 'coblocks' ) : __( 'Toggle to set this accordion item to be open by default.', 'coblocks' );
-	}
+	};
 
-	setBorderColor() {
-		this.props.setAttributes( {
-			borderColor: this.props.backgroundColor.color,
+	const setBorderColor = () => {
+		props.setAttributes( {
+			borderColor: props.backgroundColor.color,
 		} );
 
-		return this.props.setBackgroundColor;
-	}
+		return setBackgroundColor;
+	};
 
-	render() {
-		const {
-			attributes,
-			setAttributes,
-			backgroundColor,
-			textColor,
-			fallbackBackgroundColor,
-			fallbackTextColor,
-			setTextColor,
-		} = this.props;
+	const {
+		attributes,
+		setAttributes,
+		backgroundColor,
+		textColor,
+		fallbackBackgroundColor,
+		fallbackTextColor,
+		setBackgroundColor,
+		setTextColor,
+	} = props;
 
-		const {
-			open,
-		} = attributes;
+	const {
+		open,
+	} = attributes;
 
-		return (
-			<Fragment>
-				<InspectorControls>
-					<PanelBody title={ __( 'Accordion Item settings', 'coblocks' ) }>
-						<ToggleControl
-							/* translators: visually display open as opposed to closed */
-							label={ __( 'Display as open', 'coblocks' ) }
-							checked={ !! open }
-							help={ this.getDisplayOpenHelp }
-							onChange={ () => setAttributes( { open: ! open } ) }
-						/>
-					</PanelBody>
-					<PanelColorSettings
-						title={ __( 'Color settings', 'coblocks' ) }
-						initialOpen={ false }
-						colorSettings={ [
-							{
-								value: backgroundColor.color,
-								onChange: this.setBorderColor(),
-								label: __( 'Background color', 'coblocks' ),
-							},
-							{
-								value: textColor.color,
-								onChange: setTextColor,
-								label: __( 'Text color', 'coblocks' ),
-							},
-						] }
-					>
-						<ContrastChecker
-							{ ...{
-								textColor: textColor.color,
-								backgroundColor: backgroundColor.color,
-								fallbackTextColor,
-								fallbackBackgroundColor,
-							} }
-						/>
-					</PanelColorSettings>
-				</InspectorControls>
-			</Fragment>
-		);
-	}
-}
+	return (
+		<>
+			<InspectorControls>
+				<PanelBody title={ __( 'Accordion Item settings', 'coblocks' ) }>
+					<ToggleControl
+						/* translators: visually display open as opposed to closed */
+						label={ __( 'Display as open', 'coblocks' ) }
+						checked={ !! open }
+						help={ getDisplayOpenHelp }
+						onChange={ () => setAttributes( { open: ! open } ) }
+					/>
+				</PanelBody>
+				<PanelColorSettings
+					title={ __( 'Color settings', 'coblocks' ) }
+					initialOpen={ false }
+					colorSettings={ [
+						{
+							value: backgroundColor.color,
+							onChange: setBorderColor(),
+							label: __( 'Background color', 'coblocks' ),
+						},
+						{
+							value: textColor.color,
+							onChange: setTextColor,
+							label: __( 'Text color', 'coblocks' ),
+						},
+					] }
+				>
+					<ContrastChecker
+						{ ...{
+							textColor: textColor.color,
+							backgroundColor: backgroundColor.color,
+							fallbackTextColor,
+							fallbackBackgroundColor,
+						} }
+					/>
+				</PanelColorSettings>
+			</InspectorControls>
+		</>
+	);
+};
 
 export default compose( [
 	applyWithColors,

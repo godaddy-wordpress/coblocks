@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import { MediaCardIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Internal dependencies
  */
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
@@ -12,6 +7,7 @@ import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
 import { BackgroundAttributes } from '../../components/background';
+import { MediaCardIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies

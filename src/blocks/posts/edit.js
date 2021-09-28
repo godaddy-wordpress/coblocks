@@ -66,9 +66,8 @@ const styleOptions = [
 /**
  * Returns the active style from the given className.
  *
- * @param {Array} styles Block style variations.
- * @param {string} className  Class name
- *
+ * @param {Array}  styles    Block style variations.
+ * @param {string} className Class name
  * @return {Object?} The active style.
  */
 function getActiveStyle( styles, className ) {
@@ -94,7 +93,6 @@ function getActiveStyle( styles, className ) {
  * @param {string}  className   Class name.
  * @param {Object?} activeStyle The replaced style.
  * @param {Object}  newStyle    The replacing style.
- *
  * @return {string} The updated className.
  */
 function replaceActiveStyle( className, activeStyle, newStyle ) {

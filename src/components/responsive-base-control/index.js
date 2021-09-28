@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import icons from './icons';
+import { DesktopIcon, TabletIcon, MobileIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies
@@ -126,22 +126,22 @@ class ResponsiveBaseControl extends Component {
 							tabs={ [
 								{
 									name: 'default',
-									title: icons.desktopChrome,
+									title: DesktopIcon,
 									className: `is-secondary components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default components-coblocks-dimensions-control__mobile-controls-item--default components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--default`,
 								},
 								{
 									name: 'desktop',
-									title: icons.mobile,
+									title: DesktopIcon,
 									className: `is-secondary components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default components-coblocks-dimensions-control__mobile-controls-item--desktop components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--desktop`,
 								},
 								{
 									name: 'tablet',
-									title: icons.desktopChrome,
+									title: TabletIcon,
 									className: `is-secondary components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default components-coblocks-dimensions-control__mobile-controls-item--tablet components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--tablet`,
 								},
 								{
 									name: 'mobile',
-									title: icons.tablet,
+									title: MobileIcon,
 									className: `is-secondary components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default components-coblocks-dimensions-control__mobile-controls-item--mobile components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--mobile`,
 								},
 							] }>

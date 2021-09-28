@@ -91,7 +91,6 @@ addFilter(
  * @param {Object} extraProps Additional props applied to save element.
  * @param {Object} blockType  Block type.
  * @param {Object} attributes Current block attributes.
- *
  * @return {Object} Filtered props applied to save element.
  */
 function applyAnimationSettings( extraProps, blockType, attributes ) {
@@ -124,7 +123,6 @@ const enhance = compose(
 	 * `originalBlockClientId` prop signals that the block is valid.
 	 *
 	 * @param {Function} WrappedBlockEdit A filtered BlockEdit instance.
-	 *
 	 * @return {Function} Enhanced component with merged state data props.
 	 */
 	withSelect( ( select ) => {

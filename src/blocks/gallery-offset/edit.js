@@ -27,8 +27,7 @@ import { withNotices, Icon } from '@wordpress/components';
 /**
  * Block edit function
  *
- * @param props
- * @param index
+ * @param {Object} props
  */
 const Edit = ( props ) => {
 	const {
@@ -137,7 +136,7 @@ const Edit = ( props ) => {
 	 * setImageAttributes
 	 *
 	 * @param {number} index
-	 * @param {Object} attributes
+	 * @param {Object} newAttributes
 	 */
 	const setImageAttributes = ( index, newAttributes ) => {
 		if ( ! attributes.images[ index ] ) {
