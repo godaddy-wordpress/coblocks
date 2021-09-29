@@ -72,7 +72,11 @@ const SocialProfilesEdit = ( props ) => {
 	}, [ isSelected, prevSelected, prevAlign, align, textAlign, currentIcon ] );
 
 	const getTextColor = ( isMaskStyle ) => {
-		return isMaskStyle ? backgroundColor.color : textColor.color;
+		if ( isMaskStyle ) {
+			return backgroundColor.color ? backgroundColor.color : 'black';
+		} 
+
+		return textColor.color;
 	};
 
 	const isMaskStyle = includes( className, 'is-style-mask' );
