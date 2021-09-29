@@ -40,34 +40,25 @@
 		}
 
 		&__results {
-			align-content: stretch;
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
 			justify-content: flex-start;
 			line-height: 1;
 			list-style: none;
-			margin: 0;
-			max-width: 430px;
+			margin: 1em 0 0 -5px;
 			padding: 0;
+			width: calc(100% + 10px);
 
 			li {
 				display: block;
 				flex: 0 0 auto;
-				height: 86px;
+				height: 100px;
 				margin: 0;
 				overflow: hidden;
-				padding: 3px;
+				padding: 5px;
 				position: relative;
-				width: 86px;
-
-				&:nth-child(1),
-				&:nth-child(2),
-				&:nth-child(3),
-				&:nth-child(4),
-				&:nth-child(5) {
-					margin-top: 1.5em;
-				}
+				width: auto;
 
 				img {
 					height: 100%;
