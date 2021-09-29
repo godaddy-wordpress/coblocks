@@ -44,8 +44,8 @@ const Edit = ( props ) => {
 	useEffect( () => {
 		// Convert is-{type}-alert to is-style-{type}.
 		// See: https://github.com/godaddy-wordpress/coblocks/pull/781
-		if ( /is-\w+-alert/.test( attributes.className ) ) {
-			let newClassName = attributes.className;
+		if ( /is-\w+-alert/.test( className ) ) {
+			let newClassName = className;
 
 			newClassName = newClassName.replace( 'is-default-alert', 'is-style-info' );
 			newClassName = newClassName.replace( /is-(\w+)-alert/, 'is-style-$1' );
@@ -56,10 +56,10 @@ const Edit = ( props ) => {
 	useEffect( () => {
 		// Reset color selections when a new style has been selected.
 		// If the legacy alert class is detected, we want to retain the custom color selections.
-		if ( ! /is-\w+-alert/.test( prevClassName ) && prevClassName !== attributes.className ) {
-			setAttributes( { backgroundColor: '', customBackgroundColor: '', textColor: '', customTextColor: '' } );
+		if ( !! prevClassName && ! /is-\w+-alert/.test( prevClassName ) && prevClassName !== className ) {
+			setAttributes( { backgroundColor: undefined, customBackgroundColor: undefined, textColor: undefined, customTextColor: undefined } );
 		}
-	}, [ prevClassName, attributes ] );
+	}, [ prevClassName, className ] );
 
 	return (
 		<>
