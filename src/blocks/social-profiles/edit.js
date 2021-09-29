@@ -74,7 +74,7 @@ const SocialProfilesEdit = ( props ) => {
 	const getTextColor = ( isMaskStyle ) => {
 		if ( isMaskStyle ) {
 			return backgroundColor.color ? backgroundColor.color : 'black';
-		} 
+		}
 
 		return textColor.color;
 	};
