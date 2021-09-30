@@ -1,3 +1,12 @@
 [data-type="coblocks/highlight"] {
 	background: transparent !important;
 }
+
+.block-editor-rich-text__editable.wp-block-coblocks-highlight__content {
+	display: inline-block;
+	line-height: 1.25;
+
+	[data-rich-text-placeholder]::after {
+		opacity: 0.4;
+	}
+}
