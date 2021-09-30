@@ -52,8 +52,31 @@
 	margin-top: 0;
 	width: 338px;
 
+	.dashicon {
+		flex: 0 1 auto;
+		margin: 0 0.25em 0 0.5em;
+
+		&.is-save {
+			&:hover {
+				color: var(--wp-admin-theme-color);
+				cursor: pointer;
+			}
+		}
+	}
+
 	.components-base-control__field {
 		margin-bottom: 0;
+	}
+
+	.components-text-control__input {
+		flex: 1 1 100%;
+		padding: 8px 0 !important;
+		width: 100% !important;
+
+		&:focus {
+			box-shadow: none;
+			outline: 0;
+		}
 	}
 
 	svg {
