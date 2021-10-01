@@ -13,6 +13,7 @@ import { GalleryClasses } from '../../components/block-gallery/shared';
  */
 import { RichText } from '@wordpress/block-editor';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
+import { __ } from '@wordpress/i18n';
 
 const save = ( { attributes, className } ) => {
 	const {
@@ -44,8 +45,13 @@ const save = ( { attributes, className } ) => {
 		}
 	);
 
+	const getAriaLabel = () => {
+		return __( `Offset Gallery`, 'coblocks' );
+	};
+
 	return (
-		<div className={ wrapperClasses }>
+		<div aria-label={ getAriaLabel() }
+			className={ wrapperClasses }>
 			<GutterWrapper { ...attributes }>
 				<ul className={ innerClasses } >
 					{ images.map( ( image ) => {
