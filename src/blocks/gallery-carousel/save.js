@@ -12,6 +12,7 @@ import { GalleryClasses } from '../../components/block-gallery/shared';
  * WordPress dependencies
  */
 import { RichText } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
 
 const save = ( { attributes, className } ) => {
 	const {
@@ -133,8 +134,13 @@ const save = ( { attributes, className } ) => {
 		wrapAround: false,
 	};
 
+	const getAriaLabel = () => {
+		return __( `Carousel Gallery`, 'coblocks' );
+	};
+
 	return (
-		<div className={ classes }>
+		<div aria-label={ getAriaLabel() }
+			className={ classes }>
 			<div className={ innerClasses }>
 				<div
 					className={ flickityClasses }
