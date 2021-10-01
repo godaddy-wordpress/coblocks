@@ -12,6 +12,7 @@ import { GalleryClasses, GalleryStyles } from '../../components/block-gallery/sh
  * WordPress dependencies
  */
 import { RichText } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
 
 const save = ( { attributes, className } ) => {
 	const {
@@ -51,8 +52,13 @@ const save = ( { attributes, className } ) => {
 		...GalleryStyles( attributes ),
 	};
 
+	const getAriaLabel = () => {
+		return __( `Masonry Gallery`, 'coblocks' );
+	};
+
 	return (
-		<div className={ className }>
+		<div aria-label={ getAriaLabel() }
+			className={ className }>
 			<div className={ innerClasses } >
 				<ul
 					className={ masonryClasses }

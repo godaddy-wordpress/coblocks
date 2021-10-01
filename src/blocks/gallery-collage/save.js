@@ -33,7 +33,7 @@ const save = ( { attributes } ) => {
 	} );
 
 	const getAriaLabel = () => {
-		return __( `Gallery Collage`, 'coblocks' );
+		return __( `Collage Gallery`, 'coblocks' );
 	};
 
 	return (
