@@ -5,14 +5,14 @@ import classnames from 'classnames';
 import { chunk, flatten } from 'lodash';
 
 /**
- * Internal dependencies
+ * WordPress dependencies
  */
-import { useState, useEffect } from '@wordpress/element';
-import { usePrevious } from '@wordpress/compose';
+import { useState, useEffect, forwardRef } from '@wordpress/element';
+import { usePrevious, useViewportMatch } from '@wordpress/compose';
 import { ResizableBox } from '@wordpress/components';
 import { BACKSPACE } from '@wordpress/keycodes';
 
-const Logos = ( props ) => {
+const Logos = ( props, ref ) => {
 	const {
 		isSelected,
 		attributes,
@@ -54,7 +54,9 @@ const Logos = ( props ) => {
 					<div className="wp-block-coblocks-logos__row" key={ 'wrapper-' + keyOuter }>
 						{ images.map( ( img, index ) => {
 							return (
-								<ResizableBox
+								<ResizableBoxContainer
+									axis="x"
+									ref={ ref }
 									key={ img.id + '-' + keyOuter + '-' + index }
 									minWidth="10%"
 									maxWidth={ ( 100 / images.length ) + '%' }
@@ -120,8 +122,7 @@ const Logos = ( props ) => {
 										data-width={ img.width || ( 100 / images.length ) + '%' }
 										tabIndex="0"
 									/>
-
-								</ResizableBox>
+								</ResizableBoxContainer>
 							);
 						} ) }
 					</div>
@@ -131,4 +132,19 @@ const Logos = ( props ) => {
 	);
 };
 
-export default Logos;
+const ResizableBoxContainer = forwardRef(
+	( { isSelected, isStackedOnMobile, ...props }, ref ) => {
+		const isMobile = useViewportMatch( 'small', '<' );
+		return (
+			<ResizableBox
+				ref={ ref }
+				showHandle={
+					isSelected && ( ! isMobile || ! isStackedOnMobile )
+				}
+				{ ...props }
+			/>
+		);
+	}
+);
+
+export default forwardRef( Logos );

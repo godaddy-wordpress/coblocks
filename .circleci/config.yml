@@ -72,6 +72,12 @@ workflows:
           filters:
             tags:
               only: /^(?!canary).*$/
+          requires:
+            - css
+            - unit_testing_php_56
+            - unit_testing_php_73
+            - unit_testing_php_74
+            - js
 
       - canary-release:
           filters:
@@ -134,7 +140,7 @@ commands:
       - run:
           name: Set diff files env var
           command: |
-            FILES=$(git diff HEAD..origin/$BASE_BRANCH --name-only --diff-filter=MAD "*<< parameters.ext >>")
+            FILES=$(git diff origin/$BASE_BRANCH..HEAD --name-only --diff-filter=MAd "*<< parameters.ext >>")
             echo "export FILES='$FILES'" >> $BASH_ENV
             source $BASH_ENV
 
@@ -239,11 +245,10 @@ commands:
           name: Run performance tests
           command: |
             if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
-              ~/project/.dev/performance/cli.js perf --ci
-            else
-              ~/project/.dev/performance/cli.js perf --ci
               echo "Changes do not require testing."
               circleci-agent step halt
+            else
+              ~/project/.dev/performance/cli.js perf --ci $CIRCLE_BRANCH
             fi
 
   start_wpcli_server:

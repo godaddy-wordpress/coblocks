@@ -166,10 +166,7 @@ async function runTestSuite( testSuite, performanceTestDirectory ) {
  * @param {WPPerformanceCommandOptions} options  Command options.
  */
 async function runPerformanceTests( branches, options ) {
-	// The default value doesn't work because commander provides an array.
-	if ( branches.length === 0 ) {
-		branches = [ 'try/performance-tests-run-all-tests' ];
-	}
+	branches = [ 'master', ...branches ];
 
 	log(
 		formats.title( '\n💃 Performance Tests 🕺\n' ),
@@ -183,16 +180,21 @@ async function runPerformanceTests( branches, options ) {
 
 	// 1- Preparing the environment directories per branch.
 	log( '\n>> Preparing an environment directory per branch' );
-	const branchDirectories = {};
+
+	// Clone in CoBlocks and prepare repo for use with testing.
+	const baseDirectory = await git.clone( config.gitRepositoryURL );
+	await runShellScript( `mv ${ baseDirectory } coblocks` );
+
+	const branchDirectories = {}; // Used to store environment directory paths.
+	let index = 0; // Used for database naming.
 	for ( const branch of branches ) {
-		log( '    >> Branch: ' + branch );
 		const environmentDirectory = `${ getRandomTemporaryPath() }/wordpress`;
 
 		branchDirectories[ branch ] = environmentDirectory;
 
 		await runShellScript( `mkdir -p ${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp core download --path=${ environmentDirectory }` );
-		await runShellScript( `./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass='' --path=${ environmentDirectory }` );
+		await runShellScript( `./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks${ index } --dbuser=root --dbpass='' --path=${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp db create --path=${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp core install --url="http://localhost:8889" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=${ environmentDirectory }` );
 		await runShellScript( `./vendor/bin/wp post generate --count=5 --path=${ environmentDirectory }` );
@@ -200,12 +202,13 @@ async function runPerformanceTests( branches, options ) {
 
 		// 2- Clone CoBlocks repo into environment directory.
 		log( '\n>> Preparing the tests directory' );
+		log( '    >> Branch: ' + branch );
 		log( '    >> Cloning the repository' );
-		const baseDirectory = await git.clone( config.gitRepositoryURL );
 
-		await runShellScript( `mv ${ baseDirectory } coblocks && cp -R coblocks ${ environmentDirectory }/wp-content/plugins` );
+		await runShellScript( `cp -R coblocks ${ environmentDirectory }/wp-content/plugins` );
 		await setUpGitBranch( branch, `${ environmentDirectory }/wp-content/plugins/coblocks` );
 		await runShellScript( `./vendor/bin/wp plugin activate coblocks --path=${ environmentDirectory }` );
+		index++;
 	}
 
 	for ( const branch of branches ) {
@@ -314,23 +317,55 @@ async function runPerformanceTests( branches, options ) {
 			// Format results as times.
 			results[ testSuite ][ branch ] = mapValues( medians, formatTime );
 		}
+
+		const getDifference = ( key ) => {
+			const valueArray = Object.keys( results[ testSuite ] );
+
+			const x = results[ testSuite ][ valueArray[ 0 ] ][ key ],
+				y = results[ testSuite ][ valueArray[ 1 ] ][ key ];
+
+			return parseFloat( ( ( ( y - x ) / x ) * 100 ).toFixed( 2 ) );
+		};
+
+		// Computing difference.
+		const difference = mapValues(
+			{
+				load: getDifference( 'load' ),
+				type: getDifference( 'type' ),
+				minType: getDifference( 'minType' ),
+				maxType: getDifference( 'maxType' ),
+				focus: getDifference( 'focus' ),
+				minFocus: getDifference( 'minFocus' ),
+				maxFocus: getDifference( 'maxFocus' ),
+				inserterOpen: getDifference( 'inserterOpen' ),
+				minInserterOpen: getDifference( 'minInserterOpen' ),
+				maxInserterOpen: getDifference( 'maxInserterOpen' ),
+				inserterSearch: getDifference( 'inserterSearch' ),
+				minInserterSearch: getDifference( 'minInserterSearch' ),
+				maxInserterSearch: getDifference( 'maxInserterSearch' ),
+				inserterHover: getDifference( 'inserterHover' ),
+				minInserterHover: getDifference( 'minInserterHover' ),
+				maxInserterHover: getDifference( 'maxInserterHover' ),
+			}
+		);
+
+		results[ testSuite ][ 'change %' ] = difference;
 	}
 
 	// 5- Formatting the results.
 	log( '\n>> 🎉 Results.\n' );
 	for ( const testSuite of testSuites ) {
-		log( `\n>> ${ testSuite }\n` );
-
 		/** @type {Record<string, Record<string, string>>} */
 		const invertedResult = {};
 		Object.entries( results[ testSuite ] ).reduce(
 			( acc, [ key, val ] ) => {
 				for ( const entry of Object.keys( val ) ) {
+					const suffix = key === 'change %' ? ' %' : ' ms';
 					if ( ! acc[ entry ] && isFinite( val[ entry ] ) ) {
 						acc[ entry ] = {};
 					}
 					if ( isFinite( val[ entry ] ) ) {
-						acc[ entry ][ key ] = val[ entry ] + ' ms';
+						acc[ entry ][ key ] = val[ entry ] + suffix;
 					}
 				}
 				return acc;

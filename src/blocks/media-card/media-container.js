@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import { ALLOWED_MEDIA_TYPES } from './edit';
-import { media as icon } from '@wordpress/icons';
+import { MultimediaIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies

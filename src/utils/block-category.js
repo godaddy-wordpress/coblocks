@@ -7,8 +7,8 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import brandAssets from './brand-assets';
 import { supportsCollections } from './block-helpers';
+import CoBlocksIcon from '@godaddy-wordpress/coblocks-icons';
 
 const categories = [
 	{
@@ -24,13 +24,13 @@ const categories = [
 if ( supportsCollections() ) {
 	registerBlockCollection( 'coblocks', {
 		title: 'CoBlocks',
-		icon: brandAssets.categoryIcon,
+		icon: CoBlocksIcon,
 	} );
 } else {
 	categories.unshift( {
 		slug: 'coblocks',
 		title: 'CoBlocks',
-		icon: brandAssets.categoryIcon,
+		icon: CoBlocksIcon,
 	}, );
 }
 
