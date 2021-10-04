@@ -8,6 +8,7 @@ import { ServicesIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  */
 import deprecated from './deprecated';
 import edit from './edit';
+import example from './example';
 import metadata from './block.json';
 import save from './save';
 
@@ -42,11 +43,7 @@ const settings = {
 		reusable: false,
 		html: false,
 	},
-	example: {
-		attributes: {
-			align: 'full',
-		},
-	},
+	example,
 	attributes,
 	edit,
 	save,
