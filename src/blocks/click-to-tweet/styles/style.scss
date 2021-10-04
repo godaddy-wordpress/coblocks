@@ -1,12 +1,11 @@
 .wp-block-coblocks-click-to-tweet {
 	border: 1px solid transparent;
 	border-radius: 4px;
-	margin-bottom: 1.9em;
 	padding-bottom: var(--coblocks-spacing--4);
 	padding-top: var(--coblocks-spacing--3);
 	position: relative;
 
-	.wp-block-coblocks-click-to-tweet__text {
+	&__text {
 		margin-bottom: 0;
 		padding-left: 40px;
 		padding-top: 0;
