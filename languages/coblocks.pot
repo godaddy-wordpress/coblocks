@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-04T21:32:02+00:00\n"
+"POT-Creation-Date: 2021-10-04T21:44:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -318,24 +318,24 @@ msgstr ""
 
 #: src/blocks/social-profiles/index.php:68
 #: src/blocks/share/inspector.js:162
-#: src/blocks/social-profiles/edit.js:114
+#: src/blocks/social-profiles/edit.js:115
 msgid "Facebook"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:72
 #: src/blocks/share/inspector.js:157
-#: src/blocks/social-profiles/edit.js:120
+#: src/blocks/social-profiles/edit.js:121
 msgid "Twitter"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:76
-#: src/blocks/social-profiles/edit.js:126
+#: src/blocks/social-profiles/edit.js:127
 msgid "Instagram"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:80
 #: src/blocks/share/inspector.js:167
-#: src/blocks/social-profiles/edit.js:132
+#: src/blocks/social-profiles/edit.js:133
 msgid "Pinterest"
 msgstr ""
 
@@ -344,17 +344,17 @@ msgid "Linkedin"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:89
-#: src/blocks/social-profiles/edit.js:144
+#: src/blocks/social-profiles/edit.js:145
 msgid "YouTube"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:93
-#: src/blocks/social-profiles/edit.js:150
+#: src/blocks/social-profiles/edit.js:151
 msgid "Yelp"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:97
-#: src/blocks/social-profiles/edit.js:156
+#: src/blocks/social-profiles/edit.js:157
 msgid "Houzz"
 msgstr ""
 
@@ -6893,7 +6893,7 @@ msgid "Icons"
 msgstr ""
 
 #: src/blocks/share/inspector.js:172
-#: src/blocks/social-profiles/edit.js:138
+#: src/blocks/social-profiles/edit.js:139
 msgid "LinkedIn"
 msgstr ""
 
@@ -6909,68 +6909,73 @@ msgstr ""
 msgid "Reddit"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:115
+#: src/blocks/social-profiles/edit.js:116
 msgid "https://facebook.com/"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:116
+#: src/blocks/social-profiles/edit.js:117
 msgid "Add Facebook profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:121
+#: src/blocks/social-profiles/edit.js:122
 msgid "https://twitter.com/"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:122
+#: src/blocks/social-profiles/edit.js:123
 msgid "Add Twitter profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:127
+#: src/blocks/social-profiles/edit.js:128
 msgid "https://instagram.com"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:128
+#: src/blocks/social-profiles/edit.js:129
 msgid "Add Instagram profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:133
+#: src/blocks/social-profiles/edit.js:134
 msgid "https://pinterest.com"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:134
+#: src/blocks/social-profiles/edit.js:135
 msgid "Add Pinterest profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:139
+#: src/blocks/social-profiles/edit.js:140
 msgid "https://linkedin.com"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:140
+#: src/blocks/social-profiles/edit.js:141
 msgid "Add LinkedIn profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:145
+#: src/blocks/social-profiles/edit.js:146
 msgid "https://youtube.com"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:146
+#: src/blocks/social-profiles/edit.js:147
 msgid "Add YouTube profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:151
+#: src/blocks/social-profiles/edit.js:152
 msgid "https://yelp.com"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:152
+#: src/blocks/social-profiles/edit.js:153
 msgid "Add Yelp profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:157
+#: src/blocks/social-profiles/edit.js:158
 msgid "https://houzz.com"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:158
+#: src/blocks/social-profiles/edit.js:159
 msgid "Add Houzz profile"
+msgstr ""
+
+#: src/blocks/social-profiles/edit.js:232
+#: src/components/block-gallery/gallery-image.js:260
+msgid "Apply"
 msgstr ""
 
 #. translators: block name
@@ -7155,10 +7160,6 @@ msgstr ""
 
 #: src/components/block-gallery/gallery-image.js:260
 msgid "Saving"
-msgstr ""
-
-#: src/components/block-gallery/gallery-image.js:260
-msgid "Apply"
 msgstr ""
 
 #: src/components/block-gallery/gallery-link-settings.js:76
