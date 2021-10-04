@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-04T19:11:58+00:00\n"
+"POT-Creation-Date: 2021-10-04T21:32:02+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -6635,18 +6635,34 @@ msgstr ""
 msgid "66 / 33"
 msgstr ""
 
+#: src/blocks/services/example.js:18
+msgid "Design"
+msgstr ""
+
+#: src/blocks/services/example.js:24
+msgid "We allow beautiful design to unfold as a reflection of a project’s unique vision, desires, and place in the landscape."
+msgstr ""
+
+#: src/blocks/services/example.js:38
+msgid "Landscape"
+msgstr ""
+
+#: src/blocks/services/example.js:44
+msgid "We believe that the best innovative landscape architecture is a blend of both art and science, with a touch of wild."
+msgstr ""
+
 #. translators: block name
-#: src/blocks/services/index.js:27
+#: src/blocks/services/index.js:28
 msgid "Services"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/services/index.js:29
+#: src/blocks/services/index.js:30
 msgid "Add up to four columns of services to display."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/services/index.js:34
+#: src/blocks/services/index.js:35
 msgid "features"
 msgstr ""
 
