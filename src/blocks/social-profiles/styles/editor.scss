@@ -55,12 +55,18 @@
 	.dashicon {
 		flex: 0 1 auto;
 		margin: 0 0.25em 0 0.5em;
+	}
 
-		&.is-save {
-			&:hover {
-				color: var(--wp-admin-theme-color);
-				cursor: pointer;
-			}
+	.is-save {
+		&:hover {
+			color: var(--wp-admin-theme-color);
+			cursor: pointer;
+		}
+
+		&:focus {
+			box-shadow: none;
+			color: var(--wp-admin-theme-color);
+			outline: none;
 		}
 	}
 

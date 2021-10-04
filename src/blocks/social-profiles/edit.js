@@ -17,7 +17,8 @@ import applyWithColors from './colors';
 import { __ } from '@wordpress/i18n';
 import { compose, usePrevious } from '@wordpress/compose';
 import { useState, useEffect } from '@wordpress/element';
-import { Dashicon, Popover, TextControl } from '@wordpress/components';
+import { Button, Dashicon, Popover, TextControl } from '@wordpress/components';
+import { keyboardReturn } from '@wordpress/icons';
 
 /**
  * Block edit function
@@ -206,7 +207,10 @@ const SocialProfilesEdit = ( props ) => {
 									<Popover>
 										<form
 											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
-											onSubmit={ ( event ) => event.preventDefault() }
+											onSubmit={ ( event ) => {
+												event.preventDefault();
+												setCurrentIcon( '' );
+											} }
 										>
 											<Dashicon icon="admin-links" />
 											<div className="block-editor-url-input block-editor-url-input editor-url-input--coblocks">
@@ -221,10 +225,13 @@ const SocialProfilesEdit = ( props ) => {
 													} }
 												/>
 											</div>
-											<Dashicon
-												icon="saved"
+											<Button
 												className="is-save"
-												onClick={ () => setCurrentIcon( '' ) } />
+												icon={ keyboardReturn }
+												iconSize={ 20 }
+												label={ __( 'Apply', 'coblocks' ) }
+												type="submit"
+											/>
 										</form>
 									</Popover>
 								) }
