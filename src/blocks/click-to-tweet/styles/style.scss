@@ -3,9 +3,12 @@
 	border-radius: 4px;
 	margin-bottom: 1.9em;
 	position: relative;
+	padding-top: var(--coblocks-spacing--3);
+	padding-bottom: var(--coblocks-spacing--4);
 
-	&__text {
+	.wp-block-coblocks-click-to-tweet__text {
 		margin-bottom: 0;
+		padding-top: 0;
 		padding-left: 40px;
 		position: relative;
 
@@ -15,12 +18,16 @@
 			content: "";
 			display: inline-block;
 			height: 24px;
-			left: 0;
+			left: 29px;
 			mask-image: url(images/social/twitter.svg);
 			opacity: 0.3;
 			position: absolute;
 			top: 5px;
 			width: 24px;
+		}
+
+		&::after {
+			content: none;
 		}
 
 		a {
