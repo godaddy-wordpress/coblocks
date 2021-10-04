@@ -52,12 +52,8 @@ const save = ( { attributes, className } ) => {
 		...GalleryStyles( attributes ),
 	};
 
-	const getAriaLabel = () => {
-		return __( `Masonry Gallery`, 'coblocks' );
-	};
-
 	return (
-		<div aria-label={ getAriaLabel() }
+		<div aria-label={ __( `Masonry Gallery`, 'coblocks' ) }
 			className={ className }>
 			<div className={ innerClasses } >
 				<ul

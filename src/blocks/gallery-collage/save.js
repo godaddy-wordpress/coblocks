@@ -32,13 +32,9 @@ const save = ( { attributes } ) => {
 		[ `shadow-${ shadow }` ]: shadow && shadow !== 'none',
 	} );
 
-	const getAriaLabel = () => {
-		return __( `Collage Gallery`, 'coblocks' );
-	};
-
 	return (
 		<GutterWrapper { ...attributes }>
-			<div aria-label={ getAriaLabel() }
+			<div aria-label={ __( `Collage Gallery`, 'coblocks' ) }
 				className={ classnames( {
 					[ `has-filter-${ filter }` ]: filter !== 'none',
 					[ `has-caption-style-${ captionStyle }` ]: captions && captionStyle !== undefined,

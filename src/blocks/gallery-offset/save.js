@@ -45,12 +45,8 @@ const save = ( { attributes, className } ) => {
 		}
 	);
 
-	const getAriaLabel = () => {
-		return __( `Offset Gallery`, 'coblocks' );
-	};
-
 	return (
-		<div aria-label={ getAriaLabel() }
+		<div aria-label={ __( `Offset Gallery`, 'coblocks' ) }
 			className={ wrapperClasses }>
 			<GutterWrapper { ...attributes }>
 				<ul className={ innerClasses } >

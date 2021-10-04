@@ -134,12 +134,8 @@ const save = ( { attributes, className } ) => {
 		wrapAround: false,
 	};
 
-	const getAriaLabel = () => {
-		return __( `Carousel Gallery`, 'coblocks' );
-	};
-
 	return (
-		<div aria-label={ getAriaLabel() }
+		<div aria-label={ __( `Carousel Gallery`, 'coblocks' ) }
 			className={ classes }>
 			<div className={ innerClasses }>
 				<div
