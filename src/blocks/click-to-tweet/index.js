@@ -2,11 +2,12 @@
  * Internal dependencies
  */
 import edit from './edit';
-import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
 import deprecated from './deprecated';
+import { Icon } from '@wordpress/components';
+import { TwitterIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies
@@ -23,7 +24,7 @@ const settings = {
 	title: __( 'Click to Tweet', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add a quote for readers to tweet via Twitter.', 'coblocks' ),
-	icon,
+	icon: <Icon icon={ TwitterIcon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

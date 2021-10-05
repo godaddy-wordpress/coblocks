@@ -19,7 +19,7 @@ import { PanelBody, RangeControl, ToggleControl, SelectControl, CheckboxControl 
 /**
  * Inspector controls
  *
- * @param {Object} props
+ * @param {Object} props Object contains props passed from edit.js
  */
 const Inspector = ( props ) => {
 	const getHasColorsHelp = ( checked ) => {

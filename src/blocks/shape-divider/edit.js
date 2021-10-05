@@ -1,3 +1,5 @@
+// Disable issue: https://github.com/godaddy-wordpress/coblocks/issues/2000
+/* eslint-disable @wordpress/no-global-event-listener */
 /**
  * External dependencies
  */
@@ -68,15 +70,15 @@ const Edit = ( props ) => {
 
 	const saveMeta = ( type ) => {
 		const meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
-		const block = wp.data.select( 'core/block-editor' ).getBlock( clientId );
+		const block = wp.data.select( 'core/block-editor' ).getBlockAttributes( clientId );
 		let dimensions = {};
 
 		if ( typeof attributes.coblocks !== 'undefined' && typeof attributes.coblocks.id !== 'undefined' ) {
 			const id = name.split( '/' ).join( '-' ) + '-' + attributes.coblocks.id;
 			const height = {
-				height: block.attributes[ type ],
-				heightTablet: block.attributes[ type + 'Tablet' ],
-				heightMobile: block.attributes[ type + 'Mobile' ],
+				height: block[ type ],
+				heightTablet: block[ type + 'Tablet' ],
+				heightMobile: block[ type + 'Mobile' ],
 			};
 
 			if ( typeof meta._coblocks_responsive_height === 'undefined' || ( typeof meta._coblocks_responsive_height !== 'undefined' && meta._coblocks_responsive_height === '' ) ) {

@@ -21,10 +21,18 @@
 	}
 
 	.components-resizable-box__handle-left {
-		left: 13px;
+		padding: 0 1.75vw;
+
+		&::before {
+			right: calc(41% + 0.25vw);
+		}
 	}
 
 	.components-resizable-box__handle-right {
-		right: 14px;
+		padding: 0 1.75vw;
+
+		&::before {
+			right: calc(39% + 0.25vw);
+		}
 	}
 }

@@ -102,7 +102,7 @@ const Edit = ( props ) => {
 	/**
 	 * Handle creation and removal of placeholder elements so that we always have one available to use.
 	 *
-	 * @param {string} blockName The block to insert.
+	 * @param {string} blockName       The block to insert.
 	 * @param {Object} blockAttributes The attributes for the placeholder block.
 	 */
 	const handlePlaceholderPlacement = ( blockName, blockAttributes = {} ) => {

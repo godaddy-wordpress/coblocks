@@ -11,7 +11,7 @@ import TypographyAttributes from './attributes';
 import TypograpyClasses from './classes';
 import TypographyTransforms from './transforms';
 import FontFamilyPicker from './../../components/font-family/index';
-import icons from './icons';
+import { TypographyIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies
@@ -57,7 +57,7 @@ class TypographyControls extends Component {
 		const {
 			attributes,
 			setAttributes,
-			icon = icons.typography,
+			icon = TypographyIcon,
 			label = __( 'Change typography', 'coblocks' ),
 		} = this.props;
 

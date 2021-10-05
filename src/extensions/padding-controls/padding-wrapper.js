@@ -11,6 +11,11 @@ import { cloneElement, isValidElement } from '@wordpress/element';
 
 /**
  * Return an element Wrapped with padding Properties.
+ *
+ * @param {Object} obj
+ * @param {Object} obj.children      HTML Children elements
+ * @param {string} obj.padding       String representing padding value
+ * @param {number} obj.paddingCustom Number representing paddingCustom value
  */
 function PaddingWrapper( { children, padding, paddingCustom } ) {
 	if ( ! isValidElement( children ) ) {

@@ -1,3 +1,5 @@
+// Disable issue: https://github.com/godaddy-wordpress/coblocks/issues/2000
+/* eslint-disable @wordpress/no-global-event-listener */
 /**
  * External dependencies
  */
@@ -85,7 +87,6 @@ const Edit = ( props ) => {
 		clientId,
 		attributes,
 		getEditedPostAttribute,
-		getBlock,
 		editPost,
 		name,
 		isSelected,
@@ -93,6 +94,7 @@ const Edit = ( props ) => {
 		textColor,
 		backgroundColor,
 		insertBlocksAfter,
+		getBlockAttributes,
 	} = props;
 
 	const {
@@ -139,15 +141,15 @@ const Edit = ( props ) => {
 
 	const saveMeta = ( type ) => {
 		const meta = getEditedPostAttribute( 'meta' );
-		const block = getBlock( clientId );
+		const block = getBlockAttributes( clientId );
 		let dimensions = {};
 
 		if ( typeof attributes.coblocks !== 'undefined' && typeof attributes.coblocks.id !== 'undefined' ) {
 			const id = name.split( '/' ).join( '-' ) + '-' + attributes.coblocks.id;
 			const newHeight = {
-				height: block.attributes[ type ],
-				heightTablet: block.attributes[ type + 'Tablet' ],
-				heightMobile: block.attributes[ type + 'Mobile' ],
+				height: block[ type ],
+				heightTablet: block[ type + 'Tablet' ],
+				heightMobile: block[ type + 'Mobile' ],
 			};
 
 			if ( typeof meta._coblocks_responsive_height === 'undefined' || ( typeof meta._coblocks_responsive_height !== 'undefined' && meta._coblocks_responsive_height === '' ) ) {
@@ -412,12 +414,12 @@ export default compose( [
 	} ),
 
 	withSelect( ( select ) => {
-		const { getBlock } = select( 'core/block-editor' );
 		const { getEditedPostAttribute } = select( 'core/editor' );
+		const { getBlockAttributes } = select( 'core/block-editor' );
 
 		return {
 			getEditedPostAttribute,
-			getBlock,
+			getBlockAttributes,
 		};
 	} ),
 ] )( Edit );

@@ -16,8 +16,7 @@
 	// Fix issue where selected images are not wider than the viewport.
 	.coblocks-gallery--item:not(.is-appender) .coblocks-gallery--figure {
 		display: inline-block;
-		margin-left: 0;
-		margin-right: 0;
+		margin: 0;
 	}
 
 	.has-fullwidth-images .coblocks-gallery--figure {
