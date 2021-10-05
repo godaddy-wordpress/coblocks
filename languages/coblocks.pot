@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-05T01:14:50+00:00\n"
+"POT-Creation-Date: 2021-10-05T14:32:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -2217,22 +2217,22 @@ msgid "Change layout"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/hero/edit.js:43
+#: src/blocks/hero/edit.js:42
 msgid "Add hero heading…"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/hero/edit.js:51
+#: src/blocks/hero/edit.js:50
 msgid "Add hero content, which is typically an introductory area of a page accompanied by call to action or two."
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/hero/edit.js:66
+#: src/blocks/hero/edit.js:65
 msgid "Primary button…"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/hero/edit.js:73
+#: src/blocks/hero/edit.js:72
 msgid "Secondary button…"
 msgstr ""
 
