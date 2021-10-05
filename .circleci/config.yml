@@ -404,13 +404,13 @@ commands:
     parameters:
       useComposerV1:
         type: boolean
-        default: true
+        default: false
     steps:
       - checkout
       - attach_workspace:
           at: ~/project
       - restore_composer_cache
-      - unless:
+      - when:
           condition: << parameters.useComposerV1 >>
           steps:
             - run:
@@ -520,18 +520,19 @@ jobs:
   unit_testing_php_56:
     executor: php_56_mysql
     steps:
-      - run_php_unit_tests:
-          useComposerV1: false
+      - run_php_unit_tests
 
   unit_testing_php_73:
     executor: php_73_mysql
     steps:
-      - run_php_unit_tests
+      - run_php_unit_tests:
+          useComposerV1: true
 
   unit_testing_php_74:
     executor: php_74_mysql
     steps:
-      - run_php_unit_tests
+      - run_php_unit_tests:
+          useComposerV1: true
 
   js:
     executor: php_74_node
