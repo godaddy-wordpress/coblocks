@@ -47,6 +47,8 @@ const settings = {
 		/* translators: block keyword */
 		__( 'photos', 'coblocks' ),
 	],
+	/*  Remove the example for this block until Flickity has been replaced with another package */
+	// example: {},
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,
