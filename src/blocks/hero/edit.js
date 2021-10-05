@@ -23,7 +23,6 @@ import { InnerBlocks } from '@wordpress/block-editor';
 import { ResizableBox, Spinner } from '@wordpress/components';
 import { withDispatch, withSelect } from '@wordpress/data';
 import { isBlobURL } from '@wordpress/blob';
-import { getBlockAttributes } from '@wordpress/blocks';
 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
@@ -95,6 +94,7 @@ const Edit = ( props ) => {
 		textColor,
 		backgroundColor,
 		insertBlocksAfter,
+		getBlockAttributes,
 	} = props;
 
 	const {
@@ -415,9 +415,11 @@ export default compose( [
 
 	withSelect( ( select ) => {
 		const { getEditedPostAttribute } = select( 'core/editor' );
+		const { getBlockAttributes } = select( 'core/block-editor' );
 
 		return {
 			getEditedPostAttribute,
+			getBlockAttributes,
 		};
 	} ),
 ] )( Edit );

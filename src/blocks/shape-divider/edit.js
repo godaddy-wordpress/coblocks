@@ -20,7 +20,6 @@ import InlineColorPicker from '../../components/inline-color-picker';
 import { useState, useEffect } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { ResizableBox } from '@wordpress/components';
-import { getBlockAttributes } from '@wordpress/blocks';
 
 /**
  * Block edit function
@@ -71,7 +70,7 @@ const Edit = ( props ) => {
 
 	const saveMeta = ( type ) => {
 		const meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
-		const block = getBlockAttributes( clientId );
+		const block = wp.data.select( 'core/block-editor' ).getBlockAttributes( clientId );
 		let dimensions = {};
 
 		if ( typeof attributes.coblocks !== 'undefined' && typeof attributes.coblocks.id !== 'undefined' ) {
