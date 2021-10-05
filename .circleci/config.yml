@@ -401,14 +401,21 @@ commands:
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
 
   run_php_unit_tests:
+    parameters:
+      useComposerV1:
+        type: boolean
+        default: true
     steps:
       - checkout
       - attach_workspace:
           at: ~/project
       - restore_composer_cache
-      - run:
-          name: Install Composer v1
-          command: sudo composer self-update --1
+      - unless:
+          condition: << parameters.useComposerV1 >>
+          steps:
+            - run:
+                name: Install Composer v1
+                command: sudo composer self-update --1
       - wait_for_mysql
       - install_wordpress_testing_suite
       - run_phpunit_singlesite_coverage_reports
@@ -513,7 +520,8 @@ jobs:
   unit_testing_php_56:
     executor: php_56_mysql
     steps:
-      - run_php_unit_tests
+      - run_php_unit_tests:
+          useComposerV1: false
 
   unit_testing_php_73:
     executor: php_73_mysql
