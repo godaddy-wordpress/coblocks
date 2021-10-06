@@ -47,7 +47,7 @@ const settings = {
 		/* translators: block keyword */
 		__( 'photos', 'coblocks' ),
 	],
-	/*  Remove the example for this block until Flickity has been replaced with another package */
+	// Disable reason: https://github.com/WordPress/gutenberg/issues/35229
 	// example: {},
 	supports: {
 		align: [ 'wide', 'full' ],
