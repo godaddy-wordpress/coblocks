@@ -49,7 +49,7 @@ const save = ( { attributes } ) => {
 					value={ title }
 					style={ titleStyles }
 				/>
-				<div className="wp-block-coblocks-accordion-item__content" style={ borderStyle }>
+				<div className="wp-block-coblocks-accordion-item__content" style={ borderStyle } tabIndex="0">
 					<InnerBlocks.Content />
 				</div>
 			</details>
