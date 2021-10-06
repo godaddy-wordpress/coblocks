@@ -25,7 +25,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_73_mysql:
     docker:
-      - image: circleci/php:7.3.23-apache-node
+      - image: circleci/php:7.3.31-apache-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -35,7 +35,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_73_node_browser_mysql:
     docker:
-      - image: circleci/php:7.3.23-node-browsers
+      - image: circleci/php:7.3.31-node-browsers
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -51,7 +51,19 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_74_mysql:
     docker:
-      - image: circleci/php:7.4.15-apache-node
+      - image: circleci/php:7.4.24-apache-node
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+        environment:
+          XDEBUG_MODE=coverage
+      - image: circleci/mysql:5.7
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_80_mysql:
+    docker:
+      - image: circleci/php:8.0.11-apache-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -63,7 +75,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_74_node:
     docker:
-      - image: cimg/php:7.4.22-node
+      - image: cimg/php:7.4.24-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -114,6 +126,12 @@ workflows:
               only: /^(?!canary).*$/
           requires:
             - php
+      - unit_testing_php_80:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - php
       - js:
           filters:
             tags:
@@ -131,6 +149,7 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
+            - unit_testing_php_80
             - js
       - e2e_firefox:
           filters:
@@ -141,6 +160,7 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
+            - unit_testing_php_80
             - js
 
       # PERF TESTING
@@ -163,6 +183,7 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
+            - unit_testing_php_80
             - js
       - i18n:
           filters:
@@ -172,6 +193,7 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
+            - unit_testing_php_80
             - js
 
       - deploy:
@@ -179,6 +201,7 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
+            - unit_testing_php_80
             - js
             # - e2e_firefox
             # - e2e_chrome
@@ -530,6 +553,12 @@ jobs:
 
   unit_testing_php_74:
     executor: php_74_mysql
+    steps:
+      - run_php_unit_tests:
+          useComposerV1: true
+
+  unit_testing_php_80:
+    executor: php_80_mysql
     steps:
       - run_php_unit_tests:
           useComposerV1: true
