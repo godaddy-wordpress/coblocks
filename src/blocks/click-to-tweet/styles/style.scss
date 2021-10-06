@@ -5,6 +5,11 @@
 	padding-top: var(--coblocks-spacing--3);
 	position: relative;
 
+	&::before,
+	&::after {
+		content: "";
+	}
+
 	&__text {
 		margin-bottom: 0;
 		padding-left: 40px;
@@ -17,7 +22,7 @@
 			content: "";
 			display: inline-block;
 			height: 24px;
-			left: 29px;
+			left: 0;
 			mask-image: url(images/social/twitter.svg);
 			opacity: 0.3;
 			position: absolute;
