@@ -7,7 +7,7 @@
 
 	&::before,
 	&::after {
-		content: "";
+		content: none;
 	}
 
 	&__text {
@@ -19,7 +19,7 @@
 		&::before {
 			background-color: currentColor;
 			background-size: cover;
-			content: "";
+			content: none;
 			display: inline-block;
 			height: 24px;
 			left: 0;
