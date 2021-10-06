@@ -19,7 +19,8 @@
 		"phpunit/phpunit": "^5",
 		"wp-cli/wp-cli-bundle": "^2.4",
 		"godaddy-wordpress/json2po": "^1.0",
-		"godaddy-wordpress/pot2json": "^1.0"
+		"godaddy-wordpress/pot2json": "^1.0",
+		"phpunit/php-token-stream": "^1.4"
 	},
 	"scripts": {
 		"lint": "@php ./vendor/bin/phpcs",

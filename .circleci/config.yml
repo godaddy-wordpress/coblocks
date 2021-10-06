@@ -35,16 +35,6 @@ executors:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-  php_73_node_browser_mysql:
-    docker:
-      - image: circleci/php:7.3.31-node-browsers
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
   php_73_node_browser_legacy:
      docker:
       - image: circleci/php:7.3-node-browsers-legacy
@@ -59,6 +49,16 @@ executors:
           password: $DOCKERHUB_PASSWORD
         environment:
           XDEBUG_MODE=coverage
+      - image: circleci/mysql:5.7
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_74_node_browser_mysql:
+    docker:
+      - image: circleci/php:7.4.24-node-browsers
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
       - image: circleci/mysql:5.7
         auth:
           username: $DOCKERHUB_USERNAME
@@ -507,7 +507,7 @@ jobs:
 
   # Run phpcs on changed php files only.
   php:
-    executor: php_73_node
+    executor: php_74_node
     steps:
       - checkout
       - changed_files_with_extension:
@@ -608,7 +608,7 @@ jobs:
   # --------------------------------------------------
 
   e2e_chrome:
-    executor: php_73_node_browser_mysql
+    executor: php_74_node_browser_mysql
     parallelism: 4
     steps:
       - checkout
@@ -632,7 +632,7 @@ jobs:
           browser: chrome
 
   e2e_firefox:
-    executor: php_73_node_browser_mysql
+    executor: php_74_node_browser_mysql
     parallelism: 4
     steps:
       - checkout
@@ -656,7 +656,7 @@ jobs:
           browser: firefox
 
   perf_tests:
-    executor: php_73_node_browser_mysql
+    executor: php_74_node_browser_mysql
     steps:
       - checkout
       - setup_e2e_env_var
