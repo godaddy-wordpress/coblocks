@@ -147,12 +147,12 @@ const deprecated =
 								className={ classnames( 'wp-block-coblocks-gallery-collage__item', gutterClasses ) }
 							>
 								{ img &&
-									<figure className={ classes }>
-										{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
-										{ captions && image.caption && (
-											<RichText.Content tagName="figcaption" className="wp-block-coblocks-gallery-collage__caption" value={ image.caption } />
-										) }
-									</figure>
+								<figure className={ classes }>
+									{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
+									{ captions && image.caption && (
+										<RichText.Content tagName="figcaption" className="wp-block-coblocks-gallery-collage__caption" value={ image.caption } />
+									) }
+								</figure>
 								}
 							</li>
 						);
