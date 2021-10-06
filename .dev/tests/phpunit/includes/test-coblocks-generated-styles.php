@@ -73,7 +73,7 @@ class CoBlocks_Generated_Styles_Tests extends WP_UnitTestCase {
 
 		$new_reflection::register();
 
-		$this->assertTrue( is_a( $instance->getValue( 'instance' ), 'CoBlocks_Generated_Styles' ) );
+		$this->assertTrue( is_a( $instance->getValue(), 'CoBlocks_Generated_Styles' ) );
 
 	}
 

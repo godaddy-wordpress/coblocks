@@ -29,6 +29,8 @@ executors:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
+        environment:
+          XDEBUG_MODE=coverage
       - image: circleci/mysql:5.7
         auth:
           username: $DOCKERHUB_USERNAME
