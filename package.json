@@ -163,7 +163,8 @@
 		"trim": "^0.0.3",
 		"node-fetch": "^2.6.1",
 		"normalize-url": "^6.0.1",
-		"yargs-parser": "^20.2.9"
+		"yargs-parser": "^20.2.9",
+	  	"tar": "^6.1.9"
 	},
 	"husky": {
 		"hooks": {
