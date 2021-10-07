@@ -19,7 +19,7 @@ executors:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7
+      - image: circleci/mysql:5.7-ram
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -31,7 +31,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
         environment:
           XDEBUG_MODE=coverage
-      - image: circleci/mysql:5.7
+      - image: circleci/mysql:5.7-ram
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -49,7 +49,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
         environment:
           XDEBUG_MODE=coverage
-      - image: circleci/mysql:5.7
+      - image: circleci/mysql:5.7-ram
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -59,7 +59,7 @@ executors:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7
+      - image: circleci/mysql:5.7-ram
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -71,7 +71,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
         environment:
           XDEBUG_MODE=coverage
-      - image: circleci/mysql:5.7
+      - image: circleci/mysql:5.7-ram
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -327,6 +327,23 @@ commands:
       browser:
         type: string
     steps:
+      - checkout
+      - setup_e2e_env_var
+      - changed_files_with_extension:
+          ext: ".js"
+      - setup_spec_files_diff_tree
+      - disable_xdebug_php_extension
+      - attach_workspace:
+          at: ~/project
+      - restore_yarn_cache
+      - restore_update_cypress_cache
+      - restore_composer_cache
+      - wait_for_mysql
+      - install_wordpress_with_coblocks
+      - enable_debug_mode_for_e2e
+      - install_mailhog
+      - start_mailhog
+      - start_wpcli_server
       - run:
           name: Run end to end tests (Cypress.io) - << parameters.browser >>
           command: |
@@ -632,23 +649,6 @@ jobs:
     executor: php_74_node_browser_mysql
     parallelism: 4
     steps:
-      - checkout
-      - setup_e2e_env_var
-      - changed_files_with_extension:
-          ext: ".js"
-      - setup_spec_files_diff_tree
-      - disable_xdebug_php_extension
-      - attach_workspace:
-          at: ~/project
-      - restore_yarn_cache
-      - restore_update_cypress_cache
-      - restore_composer_cache
-      - wait_for_mysql
-      - install_wordpress_with_coblocks
-      - enable_debug_mode_for_e2e
-      - install_mailhog
-      - start_mailhog
-      - start_wpcli_server
       - run_e2e_tests:
           browser: chrome
 
@@ -656,23 +656,6 @@ jobs:
     executor: php_74_node_browser_mysql
     parallelism: 4
     steps:
-      - checkout
-      - setup_e2e_env_var
-      - changed_files_with_extension:
-          ext: ".js"
-      - setup_spec_files_diff_tree
-      - disable_xdebug_php_extension
-      - attach_workspace:
-          at: ~/project
-      - restore_yarn_cache
-      - restore_update_cypress_cache
-      - restore_composer_cache
-      - wait_for_mysql
-      - install_wordpress_with_coblocks
-      - enable_debug_mode_for_e2e
-      - install_mailhog
-      - start_mailhog
-      - start_wpcli_server
       - run_e2e_tests:
           browser: firefox
 
