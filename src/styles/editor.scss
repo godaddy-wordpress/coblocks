@@ -4,9 +4,43 @@
 @import "editor/columns-responsive";
 @import "editor/is-transient";
 @import "editor/preview";
-@import "../components/**/editor.scss";
-@import "../extensions/**/editor.scss";
-@import "../blocks/**/editor.scss";
+// wpcom-disabled-start
+// @import "../components/**/editor.scss";
+// @import "../extensions/**/editor.scss";
+// @import "../blocks/**/editor.scss";
+// wpcom-disabled-end
+// wpcom-custom-start
+@import "../components/background/**/editor.scss";
+@import "../components/block-gallery/**/editor.scss";
+@import "../components/dimensions-control/**/editor.scss";
+@import "../components/font-family/**/editor.scss";
+@import "../components/fontsize-picker/**/editor.scss";
+@import "../components/grid-control/**/editor.scss";
+@import "../components/gutter-control/**/editor.scss";
+@import "../components/info-popover/**/editor.scss";
+@import "../components/media-filter-control/**/editor.scss";
+@import "../components/option-selector-control/**/editor.scss";
+@import "../components/responsive-base-control/**/editor.scss";
+@import "../components/responsive-tabs-control/**/editor.scss";
+@import "../components/size-control/**/editor.scss";
+@import "../components/slider-panel/**/editor.scss";
+@import "../components/typography-controls/**/editor.scss";
+@import "../extensions/attributes/**/editor.scss";
+@import "../extensions/block-patterns/**/editor.scss";
+@import "../extensions/cover-styles/**/editor.scss";
+@import "../extensions/replace-image/**/editor.scss";
+@import "../extensions/typography/**/editor.scss";
+@import "../blocks/buttons/**/editor.scss";
+@import "../blocks/click-to-tweet/**/editor.scss";
+@import "../blocks/dynamic-separator/**/editor.scss";
+@import "../blocks/gallery-collage/**/editor.scss";
+@import "../blocks/gallery-masonry/**/editor.scss";
+@import "../blocks/gallery-offset/**/editor.scss";
+@import "../blocks/gallery-stacked/**/editor.scss";
+@import "../blocks/hero/**/editor.scss";
+@import "../blocks/logos/**/editor.scss";
+@import "../blocks/pricing-table/**/editor.scss";
+// wpcom-custom-end
 
 // Legacy styling
 @import "legacy/margin-editor";

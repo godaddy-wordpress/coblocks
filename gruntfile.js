@@ -20,15 +20,27 @@ module.exports = function( grunt ) {
 							'!**/*.{ai,eps,psd}',
 							'LICENSE',
 							'class-' + pkg.name + '.php',
-							'dist/**',
-							'includes/**',
-							'readme.txt',
-							'src/**/*.php',
-							'src/blocks/events/*.json',
-							'src/blocks/post-carousel/*.json',
-							'src/blocks/posts/*.json',
-							'src/blocks/share/*.json',
-							'src/blocks/social-profiles/*.json',
+							// wpcom-disabled-start
+							// 'dist/**',
+							// 'includes/**',
+							// 'readme.txt',
+							// 'src/**/*.php',
+							// 'src/blocks/events/*.json',
+							// 'src/blocks/post-carousel/*.json',
+							// 'src/blocks/posts/*.json',
+							// 'src/blocks/share/*.json',
+							// 'src/blocks/social-profiles/*.json',
+							// wpcom-disabled-end
+							// wpcom-custom-start
+							'includes/class-coblocks-block-assets.php',
+							'includes/class-coblocks-body-classes.php',
+							'includes/class-coblocks-font-loader.php',
+							'includes/class-coblocks-generated-styles.php',
+							'includes/class-coblocks-post-meta.php',
+							'includes/class-coblocks-register-blocks.php',
+							'dist/**/*.{php,js,css}',
+							'dist/images/lightbox/**',
+							// wpcom-custom-end
 						],
 						dest: 'build/<%= pkg.name %>',
 					},
@@ -125,8 +137,12 @@ module.exports = function( grunt ) {
 	} );
 
 	require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
-
-	grunt.registerTask( 'build', [ 'shell:build', 'update-pot', 'replace', 'clean:build', 'copy:build' ] );
-	grunt.registerTask( 'update-pot', [ 'shell:translations', 'replace:languages' ] );
-	grunt.registerTask( 'version', [ 'replace' ] );
+	// wpcom-disabled-start
+	// grunt.registerTask( 'build', [ 'shell:build', 'update-pot', 'replace', 'clean:build', 'copy:build' ] );
+	// grunt.registerTask( 'update-pot', [ 'shell:translations', 'replace:languages' ] );
+	// grunt.registerTask( 'version', [ 'replace' ] );
+	// wpcom-disabled-end
+	// wpcom-custom-start
+	grunt.registerTask( 'build', [ 'shell:build', 'replace:php', 'clean:build', 'copy:build' ] );
+	// wpcom-custom-end
 };

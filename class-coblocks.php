@@ -18,6 +18,10 @@
  * along with CoBlocks. If not, see <http://www.gnu.org/licenses/>.
  *
  * @package CoBlocks
+ * wpcom-custom-start
+ * @phpcs:disable Squiz.Commenting.InlineComment
+ * @phpcs:disable Squiz.PHP.CommentedOutCode
+ * wpcom-custom-end
  */
 
 // Exit if accessed directly.
@@ -105,9 +109,38 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-register-blocks.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-generated-styles.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-body-classes.php';
+			// wpcom-disabled-start
+			// require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-form.php';
+			// wpcom-disabled-end
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-font-loader.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-post-meta.php';
+			// wpcom-disabled-start
+			// require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-google-map-block.php';
+			// require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-accordion-ie-support.php';
+			// wpcom-disabled-end
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-settings.php';
+			// wpcom-disabled-start
+			// require_once COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
+			// require_once COBLOCKS_PLUGIN_DIR . 'includes/ical-parser/class-coblocks-event.php';
+			// require_once COBLOCKS_PLUGIN_DIR . 'includes/ical-parser/class-coblocks-ical.php';
+
+			// Require the Gutenberg plugin for specific components.
+			// include_once ABSPATH . 'wp-admin/includes/plugin.php';
+			// $installed_plugins = get_plugins();
+
+			// $gutenberg_plugin_file    = 'gutenberg/gutenberg.php';
+			// $gutenberg_plugin_version = empty( $installed_plugins[ $gutenberg_plugin_file ] ) ? null : $installed_plugins[ $gutenberg_plugin_file ]['Version'];
+
+			// if ( is_admin() && is_plugin_active( $gutenberg_plugin_file ) && version_compare( $gutenberg_plugin_version, '8.0.0', '>=' ) ) {
+			// 	require_once COBLOCKS_PLUGIN_DIR . 'src/extensions/layout-selector/index.php';
+			// }
+
+			// if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
+			// 	require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-action-links.php';
+			// 	require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-install.php';
+			// 	require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-crop-settings.php';
+			// }
+			// wpcom-disabled-end
 		}
 
 		/**

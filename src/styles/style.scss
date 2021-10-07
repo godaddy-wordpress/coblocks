@@ -9,11 +9,30 @@
 @import "style/has-margin";
 @import "style/shadow";
 @import "style/tooltips";
-@import "style/datepicker";
-@import "../components/**/style.scss";
-@import "../extensions/**/style.scss";
-@import "../blocks/**/style.scss";
-@import "../formats/**/style.scss";
+// wpcom-disabled-start
+// @import "style/datepicker";
+// @import "../components/**/style.scss";
+// @import "../extensions/**/style.scss";
+// @import "../blocks/**/style.scss";
+// @import "../formats/**/style.scss";
+// wpcom-disabled-end
+// wpcom-custom-start
+@import "../components/background/styles/style.scss";
+@import "../components/block-gallery/styles/style.scss";
+@import "../components/media-filter-control/styles/style.scss";
+@import "../components/option-selector-control/styles/style.scss";
+@import "../extensions/cover-styles/styles/style.scss";
+@import "../blocks/buttons/styles/style.scss";
+@import "../blocks/click-to-tweet/styles/style.scss";
+@import "../blocks/dynamic-separator/styles/style.scss";
+@import "../blocks/gallery-collage/styles/style.scss";
+@import "../blocks/gallery-masonry/styles/style.scss";
+@import "../blocks/gallery-offset/styles/style.scss";
+@import "../blocks/gallery-stacked/styles/style.scss";
+@import "../blocks/hero/styles/style.scss";
+@import "../blocks/logos/styles/style.scss";
+@import "../blocks/pricing-table/styles/style.scss";
+// wpcom-custom-end
 
 // Legacy styling
 @import "legacy/margin";
