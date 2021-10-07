@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-07T16:38:36+00:00\n"
+"POT-Creation-Date: 2021-10-07T18:20:12+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -399,23 +399,23 @@ msgid "Write accordion item title…"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/accordion/accordion-item/index.js:26
+#: src/blocks/accordion/accordion-item/index.js:27
 msgid "Accordion Item"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/accordion/accordion-item/index.js:28
+#: src/blocks/accordion/accordion-item/index.js:29
 msgid "Add collapsable accordion items to accordions."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/accordion/accordion-item/index.js:33
+#: src/blocks/accordion/accordion-item/index.js:34
 #: src/blocks/accordion/index.js:34
 msgid "tabs"
 msgstr ""
 
 #. translators: block keyword (abbreviation for "frequently asked questions")
-#: src/blocks/accordion/accordion-item/index.js:35
+#: src/blocks/accordion/accordion-item/index.js:36
 #: src/blocks/accordion/index.js:36
 msgid "faq"
 msgstr ""
