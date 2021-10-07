@@ -40,7 +40,7 @@ class CoBlocks_Font_Loader_Tests extends WP_UnitTestCase {
 
 		$new_reflection::register();
 
-		$this->assertTrue( is_a( $instance->getValue( 'instance' ), 'CoBlocks_Font_Loader' ) );
+		$this->assertTrue( is_a( $instance->getValue(), 'CoBlocks_Font_Loader' ) );
 
 	}
 

@@ -40,7 +40,7 @@ class CoBlocks_Google_Map_Block_Tests extends WP_UnitTestCase {
 
 		$new_reflection::register();
 
-		$this->assertTrue( is_a( $instance->getValue( 'instance' ), 'CoBlocks_Google_Map_Block' ) );
+		$this->assertTrue( is_a( $instance->getValue(), 'CoBlocks_Google_Map_Block' ) );
 
 	}
 
