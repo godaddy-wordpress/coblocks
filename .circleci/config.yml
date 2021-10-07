@@ -49,7 +49,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
         environment:
           XDEBUG_MODE=coverage
-      - image: ccircleci/mysql:5.7-ram
+      - image: circleci/mysql:5.7-ram
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -59,7 +59,7 @@ executors:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7
+      - image: circleci/mysql:5.7-ram
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
