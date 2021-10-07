@@ -25,20 +25,12 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_73_mysql:
     docker:
-      - image: circleci/php:7.3.23-apache-node
+      - image: circleci/php:7.3.31-apache-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7-ram
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-  php_73_node_browser_mysql:
-    docker:
-      - image: circleci/php:7.3.23-node-browsers
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+        environment:
+          XDEBUG_MODE=coverage
       - image: circleci/mysql:5.7-ram
         auth:
           username: $DOCKERHUB_USERNAME
@@ -51,7 +43,29 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_74_mysql:
     docker:
-      - image: circleci/php:7.4.15-apache-node
+      - image: circleci/php:7.4.24-apache-node
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+        environment:
+          XDEBUG_MODE=coverage
+      - image: ccircleci/mysql:5.7-ram
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_74_node_browser_mysql:
+    docker:
+      - image: circleci/php:7.4.24-node-browsers
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+      - image: circleci/mysql:5.7
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_80_mysql:
+    docker:
+      - image: circleci/php:8.0.11-apache-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -63,7 +77,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_74_node:
     docker:
-      - image: cimg/php:7.4.22-node
+      - image: cimg/php:7.4.24-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -114,6 +128,12 @@ workflows:
               only: /^(?!canary).*$/
           requires:
             - php
+      - unit_testing_php_80:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - php
       - js:
           filters:
             tags:
@@ -131,6 +151,7 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
+            - unit_testing_php_80
             - js
       - e2e_firefox:
           filters:
@@ -141,6 +162,7 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
+            - unit_testing_php_80
             - js
 
       # PERF TESTING
@@ -163,6 +185,7 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
+            - unit_testing_php_80
             - js
       - i18n:
           filters:
@@ -172,6 +195,7 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
+            - unit_testing_php_80
             - js
 
       - deploy:
@@ -179,6 +203,7 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
+            - unit_testing_php_80
             - js
             # - e2e_firefox
             # - e2e_chrome
@@ -385,11 +410,23 @@ commands:
               circleci-agent step halt
             fi
 
-  run_phpunit_singlesite_coverage_reports:
+  run_phpunit_singlesite_with_coverage_reports:
     steps:
       - run:
           name: "Run PHPUnit - Single Site - Generate Coverage Reports"
           command: composer run test -- --coverage-html=/tmp/artifacts/code-coverage/phpunit/html --log-junit=/tmp/artifacts/code-coverage/phpunit/results.xml
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+
+  run_phpunit:
+    parameters:
+      multisite:
+        type: integer
+        default: 0
+    steps:
+      - run: echo "0 Single mode, 1 Multiside mode. Current mode = << parameters.multisite >>"
+      - run:
+          name: "Run PHPUnit"
+          command: WP_MULTISITE=<< parameters.multisite >> composer run test
           working_directory: /tmp/wordpress/wp-content/plugins/coblocks
 
   install_wordpress_testing_suite:
@@ -405,6 +442,9 @@ commands:
       useComposerV1:
         type: boolean
         default: false
+      reportCoverage:
+        type: boolean
+        default: true
     steps:
       - checkout
       - attach_workspace:
@@ -418,16 +458,21 @@ commands:
                 command: sudo composer self-update --1
       - wait_for_mysql
       - install_wordpress_testing_suite
-      - run_phpunit_singlesite_coverage_reports
-      - store_artifacts:
-          path: /tmp/artifacts/code-coverage/
-          destination: phpunit-coverage
-      - store_test_results:
-          path: /tmp/artifacts/code-coverage/
-      - run:
-          name: "Run PHPUnit - Multi Site"
-          command: WP_MULTISITE=1 composer run test
-          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+      - when:
+          condition: << parameters.reportCoverage >>
+          steps:
+            - run_phpunit_singlesite_with_coverage_reports
+            - store_artifacts:
+                path: /tmp/artifacts/code-coverage/
+                destination: phpunit-coverage
+            - store_test_results:
+                path: /tmp/artifacts/code-coverage/
+      - unless:
+          condition: << parameters.reportCoverage >>
+          steps:
+            - run_phpunit
+      - run_phpunit:
+          multisite: 1
 
 jobs:
 
@@ -482,7 +527,7 @@ jobs:
 
   # Run phpcs on changed php files only.
   php:
-    executor: php_73_node
+    executor: php_74_node
     steps:
       - checkout
       - changed_files_with_extension:
@@ -534,6 +579,13 @@ jobs:
       - run_php_unit_tests:
           useComposerV1: true
 
+  unit_testing_php_80:
+    executor: php_80_mysql
+    steps:
+      - run_php_unit_tests:
+          useComposerV1: true
+          reportCoverage: false # we are currently using an incompatible phpunit library for coverage reporting in PHP 8
+
   js:
     executor: php_74_node
     steps:
@@ -577,7 +629,7 @@ jobs:
   # --------------------------------------------------
 
   e2e_chrome:
-    executor: php_73_node_browser_mysql
+    executor: php_74_node_browser_mysql
     parallelism: 4
     steps:
       - checkout
@@ -601,7 +653,7 @@ jobs:
           browser: chrome
 
   e2e_firefox:
-    executor: php_73_node_browser_mysql
+    executor: php_74_node_browser_mysql
     parallelism: 4
     steps:
       - checkout
@@ -625,7 +677,7 @@ jobs:
           browser: firefox
 
   perf_tests:
-    executor: php_73_node_browser_mysql
+    executor: php_74_node_browser_mysql
     steps:
       - checkout
       - setup_e2e_env_var

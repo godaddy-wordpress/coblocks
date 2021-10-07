@@ -40,7 +40,7 @@ class CoBlocks_Register_Blocks_Tests extends WP_UnitTestCase {
 
 		$new_reflection::register();
 
-		$this->assertTrue( is_a( $instance->getValue( 'instance' ), 'CoBlocks_Register_Blocks' ) );
+		$this->assertTrue( is_a( $instance->getValue(), 'CoBlocks_Register_Blocks' ) );
 
 	}
 
