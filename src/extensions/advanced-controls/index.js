@@ -94,6 +94,10 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 		const withBlockSpacing = hasBlockSupport( name, 'coBlocksSpacing' );
 
 		const handleMargins = ( target ) => {
+			if ( ! target.querySelector ) {
+				return;
+			}
+
 			const innerAlignmentBlock = target.querySelector( '.wp-block[data-align]' );
 			const setInnerAlignmentBlock = ( margin, val ) => {
 				if ( !! innerAlignmentBlock ) {
