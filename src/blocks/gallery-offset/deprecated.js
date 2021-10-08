@@ -312,7 +312,7 @@ const deprecated = [
 			...metadata.attributes,
 			gutter: {
 				type: 'string',
-				default: 'medium',
+				default: 'small',
 			},
 		},
 		save: ( { attributes, className } ) => {
