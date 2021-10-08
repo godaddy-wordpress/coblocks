@@ -25,12 +25,12 @@ const example = {
 				{
 					name: 'coblocks/event-item',
 					attributes: {
-						title: __( 'Soccer Practice', 'coblocks' ),
+						title: __( 'Chess Club', 'coblocks' ),
 						description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat convallis porta.',
-						eventDay: '21',
+						eventDay: '23',
 						eventMonth: __( 'April', 'coblocks' ),
 						eventYear: '2021',
-						eventTime: __( '10:30 AM', 'coblocks' ),
+						eventTime: __( '3:30 PM', 'coblocks' ),
 						eventLocation: __( 'Middle School', 'coblocks' ),
 					},
 				},
