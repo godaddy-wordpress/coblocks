@@ -1,3 +1,93 @@
+version: 2.1
+
+executors:
+  node_latest:
+    docker:
+      - image: circleci/node:latest
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_73_node:
+    docker:
+      - image: circleci/php:7.3-node
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_56_mysql:
+    docker:
+      - image: circleci/php:5.6
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+      - image: circleci/mysql:5.7-ram
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_73_mysql:
+    docker:
+      - image: circleci/php:7.3.31-apache-node
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+        environment:
+          XDEBUG_MODE=coverage
+      - image: circleci/mysql:5.7-ram
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_73_node_browser_legacy:
+     docker:
+      - image: circleci/php:7.3-node-browsers-legacy
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_74_mysql:
+    docker:
+      - image: circleci/php:7.4.24-apache-node
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+        environment:
+          XDEBUG_MODE=coverage
+      - image: circleci/mysql:5.7-ram
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_74_node_browser_mysql:
+    docker:
+      - image: circleci/php:7.4.24-node-browsers
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+      - image: circleci/mysql:5.7-ram
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_80_mysql:
+    docker:
+      - image: circleci/php:8.0.11-apache-node
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+        environment:
+          XDEBUG_MODE=coverage
+      - image: circleci/mysql:5.7-ram
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_74_node:
+    docker:
+      - image: cimg/php:7.4.24-node
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  go_node_browser_legacy:
+    docker:
+      - image: circleci/golang:latest-node-browsers-legacy
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+
 workflows:
   version: 2
   main:
@@ -38,6 +128,12 @@ workflows:
               only: /^(?!canary).*$/
           requires:
             - php
+      - unit_testing_php_80:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - php
       - js:
           filters:
             tags:
@@ -55,6 +151,7 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
+            - unit_testing_php_80
             - js
       - e2e_firefox:
           filters:
@@ -65,8 +162,9 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
+            - unit_testing_php_80
             - js
-            
+
       # PERF TESTING
       - perf_tests:
           filters:
@@ -87,6 +185,7 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
+            - unit_testing_php_80
             - js
       - i18n:
           filters:
@@ -96,6 +195,7 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
+            - unit_testing_php_80
             - js
 
       - deploy:
@@ -103,6 +203,7 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
+            - unit_testing_php_80
             - js
             # - e2e_firefox
             # - e2e_chrome
@@ -111,8 +212,6 @@ workflows:
               only: /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*)?(\+[0-9-]+(\.[0-9]+)*)?/ # Run on semantic version tags only
             branches:
               ignore: /.*/
-
-version: 2.1
 
 commands:
 
@@ -228,6 +327,23 @@ commands:
       browser:
         type: string
     steps:
+      - checkout
+      - setup_e2e_env_var
+      - changed_files_with_extension:
+          ext: ".js"
+      - setup_spec_files_diff_tree
+      - disable_xdebug_php_extension
+      - attach_workspace:
+          at: ~/project
+      - restore_yarn_cache
+      - restore_update_cypress_cache
+      - restore_composer_cache
+      - wait_for_mysql
+      - install_wordpress_with_coblocks
+      - enable_debug_mode_for_e2e
+      - install_mailhog
+      - start_mailhog
+      - start_wpcli_server
       - run:
           name: Run end to end tests (Cypress.io) - << parameters.browser >>
           command: |
@@ -311,11 +427,23 @@ commands:
               circleci-agent step halt
             fi
 
-  run_phpunit_singlesite_coverage_reports:
+  run_phpunit_singlesite_with_coverage_reports:
     steps:
       - run:
           name: "Run PHPUnit - Single Site - Generate Coverage Reports"
           command: composer run test -- --coverage-html=/tmp/artifacts/code-coverage/phpunit/html --log-junit=/tmp/artifacts/code-coverage/phpunit/results.xml
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+
+  run_phpunit:
+    parameters:
+      multisite:
+        type: integer
+        default: 0
+    steps:
+      - run: echo "0 Single mode, 1 Multiside mode. Current mode = << parameters.multisite >>"
+      - run:
+          name: "Run PHPUnit"
+          command: WP_MULTISITE=<< parameters.multisite >> composer run test
           working_directory: /tmp/wordpress/wp-content/plugins/coblocks
 
   install_wordpress_testing_suite:
@@ -325,6 +453,43 @@ commands:
           command: |
             bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
+
+  run_php_unit_tests:
+    parameters:
+      useComposerV1:
+        type: boolean
+        default: false
+      reportCoverage:
+        type: boolean
+        default: true
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project
+      - restore_composer_cache
+      - when:
+          condition: << parameters.useComposerV1 >>
+          steps:
+            - run:
+                name: Install Composer v1
+                command: sudo composer self-update --1
+      - wait_for_mysql
+      - install_wordpress_testing_suite
+      - when:
+          condition: << parameters.reportCoverage >>
+          steps:
+            - run_phpunit_singlesite_with_coverage_reports
+            - store_artifacts:
+                path: /tmp/artifacts/code-coverage/
+                destination: phpunit-coverage
+            - store_test_results:
+                path: /tmp/artifacts/code-coverage/
+      - unless:
+          condition: << parameters.reportCoverage >>
+          steps:
+            - run_phpunit
+      - run_phpunit:
+          multisite: 1
 
 jobs:
 
@@ -379,11 +544,7 @@ jobs:
 
   # Run phpcs on changed php files only.
   php:
-    docker:
-      - image: circleci/php:7.3
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: php_74_node
     steps:
       - checkout
       - changed_files_with_extension:
@@ -401,11 +562,7 @@ jobs:
 
   # Run stylelint on changed stylesheet files only.
   css:
-    docker:
-      - image: circleci/node:latest
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: node_latest
     steps:
       - checkout
       - changed_files_with_extension:
@@ -423,103 +580,31 @@ jobs:
   # --------------------------------------------------
 
   unit_testing_php_56:
-    docker:
-      - image: circleci/php:5.6
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: php_56_mysql
     steps:
-      - checkout
-      - attach_workspace:
-          at: ~/project
-      - restore_composer_cache
-      - wait_for_mysql
-      - install_wordpress_testing_suite
-      - run_phpunit_singlesite_coverage_reports
-      - store_artifacts:
-          path: /tmp/artifacts/code-coverage/
-          destination: phpunit-coverage
-      - store_test_results:
-          path: /tmp/artifacts/code-coverage/
-      - run:
-          name: "Run PHPUnit - Multi Site"
-          command: WP_MULTISITE=1 composer run test
-          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+      - run_php_unit_tests
 
   unit_testing_php_73:
-    docker:
-      - image: circleci/php:7.3.23-apache-node
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: php_73_mysql
     steps:
-      - checkout
-      - attach_workspace:
-          at: ~/project
-      - restore_composer_cache
-      - run:
-          name: Install Composer v1
-          command: sudo composer self-update --1
-      - wait_for_mysql
-      - install_wordpress_testing_suite
-      - run_phpunit_singlesite_coverage_reports
-      - store_artifacts:
-          path: /tmp/artifacts/code-coverage/
-          destination: phpunit-coverage
-      - store_test_results:
-          path: /tmp/artifacts/code-coverage/
-      - run:
-          name: "Run PHPUnit - Multi Site"
-          command: WP_MULTISITE=1 composer run test
-          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+      - run_php_unit_tests:
+          useComposerV1: true
 
   unit_testing_php_74:
-    docker:
-      - image: circleci/php:7.4.15-apache-node
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-        environment:
-          XDEBUG_MODE=coverage
-      - image: circleci/mysql:5.7
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: php_74_mysql
     steps:
-      - checkout
-      - attach_workspace:
-          at: ~/project
-      - restore_composer_cache
-      - run:
-          name: Install Composer v1
-          command: sudo composer self-update --1
-      - wait_for_mysql
-      - install_wordpress_testing_suite
-      - run_phpunit_singlesite_coverage_reports
-      - store_artifacts:
-          path: /tmp/artifacts/code-coverage/
-          destination: phpunit-coverage
-      - store_test_results:
-          path: /tmp/artifacts/code-coverage/
-      - run:
-          name: "Run PHPUnit - Multi Site"
-          command: WP_MULTISITE=1 composer run test
-          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+      - run_php_unit_tests:
+          useComposerV1: true
+
+  unit_testing_php_80:
+    executor: php_80_mysql
+    steps:
+      - run_php_unit_tests:
+          useComposerV1: true
+          reportCoverage: false # we are currently using an incompatible phpunit library for coverage reporting in PHP 8
 
   js:
-    docker:
-      - image: cimg/php:7.4.22-node
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: php_74_node
     steps:
       - checkout
       - changed_files_with_extension:
@@ -561,79 +646,21 @@ jobs:
   # --------------------------------------------------
 
   e2e_chrome:
-    docker:
-      - image: circleci/php:7.3.23-node-browsers
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: php_74_node_browser_mysql
     parallelism: 4
     steps:
-      - checkout
-      - setup_e2e_env_var
-      - changed_files_with_extension:
-          ext: ".js"
-      - setup_spec_files_diff_tree
-      - disable_xdebug_php_extension
-      - attach_workspace:
-          at: ~/project
-      - restore_yarn_cache
-      - restore_update_cypress_cache
-      - restore_composer_cache
-      - wait_for_mysql
-      - install_wordpress_with_coblocks
-      - enable_debug_mode_for_e2e
-      - install_mailhog
-      - start_mailhog
-      - start_wpcli_server
       - run_e2e_tests:
           browser: chrome
 
   e2e_firefox:
-    docker:
-      - image: circleci/php:7.3.23-node-browsers
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: php_74_node_browser_mysql
     parallelism: 4
     steps:
-      - checkout
-      - setup_e2e_env_var
-      - changed_files_with_extension:
-          ext: ".js"
-      - setup_spec_files_diff_tree
-      - disable_xdebug_php_extension
-      - attach_workspace:
-          at: ~/project
-      - restore_yarn_cache
-      - restore_update_cypress_cache
-      - restore_composer_cache
-      - wait_for_mysql
-      - install_wordpress_with_coblocks
-      - enable_debug_mode_for_e2e
-      - install_mailhog
-      - start_mailhog
-      - start_wpcli_server
       - run_e2e_tests:
           browser: firefox
 
   perf_tests:
-    docker:
-      - image: circleci/php:7.3.23-node-browsers
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: php_74_node_browser_mysql
     steps:
       - checkout
       - setup_e2e_env_var
@@ -664,11 +691,7 @@ jobs:
   # Internationalization Processes
   # --------------------------------------------------
   i18n:
-    docker:
-      - image: circleci/php:7.3-node-browsers-legacy
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: php_73_node_browser_legacy
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -702,11 +725,7 @@ jobs:
             fi
 
   canary-release:
-    docker:
-      - image: circleci/golang:latest-node-browsers-legacy
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: go_node_browser_legacy
     steps:
       - checkout
       - attach_workspace:
@@ -762,11 +781,7 @@ jobs:
   # Plugin Deployment to WordPress.org
   # --------------------------------------------------
   deploy:
-    docker:
-      - image: circleci/golang:latest-node-browsers-legacy
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: go_node_browser_legacy
     steps:
       - checkout
       - attach_workspace:

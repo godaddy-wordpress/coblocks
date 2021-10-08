@@ -2,7 +2,7 @@
 	"name": "coblocks",
 	"title": "CoBlocks",
 	"description": "CoBlocks is a suite of professional page building blocks for the WordPress Gutenberg block editor.",
-	"version": "2.16.0",
+	"version": "2.17.0",
 	"tested_up_to": "5.8",
 	"author": "GoDaddy",
 	"license": "GPL-2.0",
@@ -163,7 +163,8 @@
 		"trim": "^0.0.3",
 		"node-fetch": "^2.6.1",
 		"normalize-url": "^6.0.1",
-		"yargs-parser": "^20.2.9"
+		"yargs-parser": "^20.2.9",
+	  	"tar": "^6.1.9"
 	},
 	"husky": {
 		"hooks": {

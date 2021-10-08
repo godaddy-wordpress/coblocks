@@ -40,6 +40,11 @@ const settings = {
 		html: false,
 	},
 	attributes,
+	example: {
+		attributes: {
+			count: 2,
+		},
+	},
 	transforms,
 	edit,
 	save() {

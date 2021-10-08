@@ -23,7 +23,15 @@ describe( 'Extension: CoBlocks Padding Controls', function() {
 
 		// Test custom padding
 		cy.get( '.components-base-control' ).contains( /padding/i ).closest( '.components-panel__body' ).find( 'input.components-input-control__input' ).focus().type( 5 ); // Panel body.
-		cy.get( '[data-type="core/group"]' ).should( 'have.attr', 'style', '--coblocks-custom-padding:5em;' );
+
+		// Firefox style is the same but does not calculate the same because of spacing.
+		if ( Cypress.browser.name === 'firefox' ) {
+			cy.get( '[data-type="core/group"]' ).should( 'have.attr', 'style', '--coblocks-custom-padding: 5em;' );
+		}
+
+		if ( Cypress.browser.name === 'chrome' ) {
+			cy.get( '[data-type="core/group"]' ).should( 'have.attr', 'style', '--coblocks-custom-padding:5em;' );
+		}
 
 		helpers.checkForBlockErrors( 'core/group' );
 	} );

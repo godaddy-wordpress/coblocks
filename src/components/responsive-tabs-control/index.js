@@ -18,6 +18,9 @@ class ResponsiveTabsControl extends Component {
 	}
 
 	setGutterTo( value ) {
+		if ( 0 === value ) {
+			this.props.setAttributes( { radius: value } );
+		}
 		this.props.setAttributes( { gutter: value } );
 	}
 
