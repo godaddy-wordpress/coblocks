@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-12T15:38:22+00:00\n"
+"POT-Creation-Date: 2021-10-12T16:22:53+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -892,23 +892,49 @@ msgstr ""
 msgid "An event within the events block."
 msgstr ""
 
-#: src/blocks/events/index.js:26
+#: src/blocks/events/example.js:16
+msgid "Soccer Practice"
+msgstr ""
+
+#: src/blocks/events/example.js:19
+#: src/blocks/events/example.js:31
+msgid "April"
+msgstr ""
+
+#: src/blocks/events/example.js:21
+msgid "10:30 AM"
+msgstr ""
+
+#: src/blocks/events/example.js:22
+#: src/blocks/events/example.js:34
+msgid "Middle School"
+msgstr ""
+
+#: src/blocks/events/example.js:28
+msgid "Chess Club"
+msgstr ""
+
+#: src/blocks/events/example.js:33
+msgid "3:30 PM"
+msgstr ""
+
+#: src/blocks/events/index.js:27
 msgctxt "block name"
 msgid "Events"
 msgstr ""
 
-#: src/blocks/events/index.js:27
+#: src/blocks/events/index.js:28
 msgid "Add a list of events or display events from a public calendar."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/events/index.js:32
+#: src/blocks/events/index.js:33
 #: src/blocks/form/fields/date/index.js:47
 msgid "calendar"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/events/index.js:34
+#: src/blocks/events/index.js:35
 msgid "date"
 msgstr ""
 
