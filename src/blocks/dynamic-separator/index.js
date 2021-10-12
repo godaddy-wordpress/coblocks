@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { DynamicHrIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { separator as icon } from '@wordpress/icons';
 
 /**
  * Internal dependencies
