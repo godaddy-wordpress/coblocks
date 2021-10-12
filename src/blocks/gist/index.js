@@ -9,7 +9,6 @@ import { GithubIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 import deprecated from './deprecated';
 import edit from './edit';
 import metadata from './block.json';
-import save from './save';
 import transforms from './transforms';
 import { hasFormattingCategory } from '../../utils/block-helpers';
 
@@ -44,7 +43,7 @@ const settings = {
 	attributes,
 	transforms,
 	edit,
-	save,
+	save: () => null,
 	deprecated,
 };
 
