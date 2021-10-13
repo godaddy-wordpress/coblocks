@@ -25,6 +25,7 @@ import { __, sprintf } from '@wordpress/i18n';
 import { useState, useEffect } from '@wordpress/element';
 import { compose, usePrevious } from '@wordpress/compose';
 import { withSelect, useDispatch, withDispatch } from '@wordpress/data';
+// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 import { InnerBlocks, __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 import { ButtonGroup, Button, Tooltip, Placeholder, Spinner, Icon } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';

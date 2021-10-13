@@ -19,6 +19,7 @@ import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { RawHTML, useState, useRef, useEffect } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
+// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 import { dateI18n, format, __experimentalGetSettings } from '@wordpress/date';
 import { withSelect } from '@wordpress/data';
 import { BlockControls, PlainText } from '@wordpress/block-editor';

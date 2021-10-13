@@ -3,6 +3,7 @@
  */
 import {
 	createSlotFill,
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalUseSlot as useSlot,
 } from '@wordpress/components';
 

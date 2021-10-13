@@ -15,6 +15,7 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { useEffect } from '@wordpress/element';
 import {
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalImageURLInputUI as ImageURLInputUI,
 	BlockControls,
 	InnerBlocks,
