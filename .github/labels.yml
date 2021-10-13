@@ -82,3 +82,6 @@
 - name: "[Type] Gutenberg"
   color: "465dd7"
   description: "Issues/PRs related to the current version of the Gutenberg plugin"
+- name: "[Type] Performance"
+  color: "99be6f"
+  description: "Issues/PRs related to CoBlocks plugin performance"

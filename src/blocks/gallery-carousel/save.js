@@ -12,6 +12,7 @@ import { GalleryClasses } from '../../components/block-gallery/shared';
  * WordPress dependencies
  */
 import { RichText } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
 
 const save = ( { attributes, className } ) => {
 	const {
@@ -134,7 +135,8 @@ const save = ( { attributes, className } ) => {
 	};
 
 	return (
-		<div className={ classes }>
+		<div aria-label={ __( `Carousel Gallery`, 'coblocks' ) }
+			className={ classes }>
 			<div className={ innerClasses }>
 				<div
 					className={ flickityClasses }
