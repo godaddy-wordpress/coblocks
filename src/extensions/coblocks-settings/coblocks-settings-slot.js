@@ -3,6 +3,7 @@
  */
 import {
 	createSlotFill,
+	// Disable reason: We choose to use unsafe APIs in our codebase.
 	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalUseSlot as useSlot,
 } from '@wordpress/components';
