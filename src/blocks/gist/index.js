@@ -7,7 +7,6 @@ import { GithubIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * Internal dependencies
  */
 import deprecated from './deprecated';
-import edit from './edit';
 import metadata from './block.json';
 import transforms from './transforms';
 import { hasFormattingCategory } from '../../utils/block-helpers';
@@ -17,6 +16,8 @@ import { hasFormattingCategory } from '../../utils/block-helpers';
  */
 import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
+import { dispatch } from '@wordpress/data';
+import { switchToBlockType } from '@wordpress/blocks';
 
 /**
  * Block constants
@@ -40,9 +41,17 @@ const settings = {
 		html: false,
 		align: [ 'wide' ],
 	},
+	parent: [],
 	attributes,
 	transforms,
-	edit,
+	edit: ( props ) => {
+		const { replaceBlocks } = dispatch( 'core/block-editor' );
+		replaceBlocks(
+			[ props.clientId ],
+			switchToBlockType( props, 'core/embed' )
+		);
+		return null;
+	},
 	save: () => null,
 	deprecated,
 };
