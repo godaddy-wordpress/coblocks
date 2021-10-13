@@ -234,9 +234,9 @@ const Edit = ( props ) => {
 		...BackgroundClasses( attributes ), {
 			'has-text-color': textColor.color,
 			'has-padding': paddingSize && paddingSize !== 'no',
-			[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
+			[ `has-${ paddingSize }-padding` ]: ! [ 'no', 'advanced' ].includes( paddingSize ),
 			'has-margin': marginSize && marginSize !== 'no',
-			[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'advanced',
+			[ `has-${ marginSize }-margin` ]: ! [ 'no', 'advanced' ].includes( marginSize ),
 			'is-stacked-on-mobile': isStackedOnMobile,
 			[ `are-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment,
 		}

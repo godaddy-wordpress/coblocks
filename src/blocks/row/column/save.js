@@ -41,8 +41,9 @@ const save = ( { attributes } ) => {
 			[ textClass ]: textClass,
 			'has-padding': paddingSize && paddingSize !== 'no',
 			'has-margin': marginSize && marginSize !== 'no',
-			[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' ),
-			[ `has-${ marginSize }-margin` ]: marginSize && ( marginSize !== 'advanced' ),
+			[ `has-${ paddingSize }-padding` ]:
+				paddingSize && ! [ 'no', 'advanced '].includes( paddingSize ),
+			[ `has-${ marginSize }-margin` ]: marginSize && ! [ 'no', 'advanced '].includes( marginSize ),
 		} );
 
 	const innerStyles = {

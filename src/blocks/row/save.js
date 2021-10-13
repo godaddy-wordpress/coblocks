@@ -51,9 +51,9 @@ function Save( { attributes } ) {
 		{ 'has-text-color': textColor || customTextColor },
 		{ [ textClass ]: textClass },
 		{ 'has-padding': paddingSize && paddingSize !== 'no' },
-		{ [ `has-${ paddingSize }-padding` ]: ! [ 'advanced' ].includes( paddingSize ) },
+		{ [ `has-${ paddingSize }-padding` ]: ! [ 'no', 'advanced' ].includes( paddingSize ) },
 		{ 'has-margin': marginSize && marginSize !== 'no' },
-		{ [ `has-${ marginSize }-margin` ]: ! [ 'advanced' ].includes( marginSize ) },
+		{ [ `has-${ marginSize }-margin` ]: ! [ 'no', 'advanced' ].includes( marginSize ) },
 		{ 'is-stacked-on-mobile': isStackedOnMobile },
 		{ [ `are-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment },
 	];
