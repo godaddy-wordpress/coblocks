@@ -18,7 +18,7 @@ import { Toolbar, Placeholder, Button, TextControl, ServerSideRender } from '@wo
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 import { useState, useEffect, useRef } from '@wordpress/element';
-import { dispatch, useSelect } from '@wordpress/data';
+import { useDispatch, useSelect } from '@wordpress/data';
 import { InnerBlocks, BlockControls } from '@wordpress/block-editor';
 import { edit } from '@wordpress/icons';
 
@@ -44,6 +44,8 @@ const EventsEdit = ( props ) => {
 		setAttributes,
 		clientId,
 	} = props;
+
+	const { insertBlock } = useDispatch( 'core/block-editor' );
 
 	const { innerBlocks } = useSelect( ( select ) => ( {
 		innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
@@ -116,7 +118,7 @@ const EventsEdit = ( props ) => {
 
 	const insertNewItem = () => {
 		const newEvent = createBlock( 'coblocks/event-item' );
-		dispatch( 'core/block-editor' ).insertBlock( newEvent, innerBlocks.length, clientId );
+		insertBlock( newEvent, innerBlocks.length, clientId );
 	};
 
 	const toolbarControls = [

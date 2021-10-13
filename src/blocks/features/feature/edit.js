@@ -20,7 +20,7 @@ import { useEffect } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { Spinner } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
-import { dispatch, useSelect } from '@wordpress/data';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 /**
  * Constants
@@ -85,6 +85,8 @@ const Edit = ( props ) => {
 
 	const prevHeadingLevel = usePrevious( headingLevel );
 
+	const { updateBlockAttributes } = useDispatch( 'core/block-editor' );
+
 	useEffect( () => {
 		if (
 			headingLevel !== prevHeadingLevel
@@ -106,7 +108,7 @@ const Edit = ( props ) => {
 	const updateInnerAttributes = ( blockName, newAttributes ) => {
 		innerBlocks.forEach( ( item ) => {
 			if ( item.name === blockName ) {
-				dispatch( 'core/block-editor' ).updateBlockAttributes(
+				updateBlockAttributes(
 					item.clientId,
 					newAttributes
 				);
