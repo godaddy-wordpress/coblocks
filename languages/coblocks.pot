@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-13T16:29:32+00:00\n"
+"POT-Creation-Date: 2021-10-13T16:57:19+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -1863,7 +1863,7 @@ msgstr ""
 #: src/blocks/gallery-carousel/edit.js:326
 #: src/blocks/gallery-masonry/edit.js:222
 #: src/blocks/gallery-offset/edit.js:218
-#: src/blocks/gallery-stacked/edit.js:218
+#: src/blocks/gallery-stacked/edit.js:201
 msgid "image %1$d of %2$d in gallery"
 msgstr ""
 
@@ -1918,7 +1918,7 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:50
 #: src/blocks/gallery-masonry/inspector.js:65
 #: src/blocks/gallery-offset/inspector.js:71
-#: src/blocks/gallery-stacked/inspector.js:62
+#: src/blocks/gallery-stacked/inspector.js:66
 #: src/extensions/lightbox-controls/index.js:35
 msgid "Image lightbox is enabled."
 msgstr ""
@@ -1927,7 +1927,7 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:50
 #: src/blocks/gallery-masonry/inspector.js:66
 #: src/blocks/gallery-offset/inspector.js:72
-#: src/blocks/gallery-stacked/inspector.js:63
+#: src/blocks/gallery-stacked/inspector.js:67
 #: src/extensions/lightbox-controls/index.js:36
 msgid "Toggle to enable the image lightbox."
 msgstr ""
@@ -1948,7 +1948,7 @@ msgstr ""
 #: src/blocks/gallery-carousel/inspector.js:93
 #: src/blocks/gallery-masonry/inspector.js:85
 #: src/blocks/gallery-offset/inspector.js:87
-#: src/blocks/gallery-stacked/inspector.js:103
+#: src/blocks/gallery-stacked/inspector.js:90
 #: src/blocks/share/inspector.js:120
 #: src/blocks/social-profiles/inspector.js:125
 #: src/components/background/panel.js:219
@@ -1960,7 +1960,7 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:100
 #: src/blocks/gallery-masonry/inspector.js:96
 #: src/blocks/gallery-offset/inspector.js:95
-#: src/blocks/gallery-stacked/inspector.js:113
+#: src/blocks/gallery-stacked/inspector.js:100
 #: src/extensions/lightbox-controls/index.js:46
 msgid "Lightbox"
 msgstr ""
@@ -2022,14 +2022,14 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:32
 #: src/blocks/gallery-masonry/inspector.js:59
 #: src/blocks/gallery-offset/inspector.js:65
-#: src/blocks/gallery-stacked/inspector.js:56
+#: src/blocks/gallery-stacked/inspector.js:60
 msgid "Showing captions for each media item."
 msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:32
 #: src/blocks/gallery-masonry/inspector.js:60
 #: src/blocks/gallery-offset/inspector.js:66
-#: src/blocks/gallery-stacked/inspector.js:57
+#: src/blocks/gallery-stacked/inspector.js:61
 msgid "Toggle to show media captions."
 msgstr ""
 
@@ -2039,7 +2039,7 @@ msgstr ""
 
 #. translators: block style
 #: src/blocks/gallery-collage/inspector.js:93
-#: src/blocks/gallery-stacked/inspector.js:134
+#: src/blocks/gallery-stacked/inspector.js:121
 #: src/extensions/button-styles/index.js:25
 msgid "Shadow"
 msgstr ""
@@ -2047,7 +2047,7 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:106
 #: src/blocks/gallery-masonry/inspector.js:103
 #: src/blocks/gallery-offset/inspector.js:101
-#: src/blocks/gallery-stacked/inspector.js:120
+#: src/blocks/gallery-stacked/inspector.js:107
 msgid "Captions"
 msgstr ""
 
@@ -2099,7 +2099,7 @@ msgstr ""
 
 #. translators: block name
 #. translators: block style
-#: src/blocks/gallery-stacked/edit.js:167
+#: src/blocks/gallery-stacked/edit.js:150
 #: src/blocks/gallery-stacked/index.js:35
 #: src/blocks/posts/edit.js:53
 msgid "Stacked"
@@ -2110,23 +2110,23 @@ msgstr ""
 msgid "Display multiple images in a single column stacked gallery."
 msgstr ""
 
-#: src/blocks/gallery-stacked/inspector.js:50
+#: src/blocks/gallery-stacked/inspector.js:54
 msgid "Fullwidth images are enabled."
 msgstr ""
 
-#: src/blocks/gallery-stacked/inspector.js:51
+#: src/blocks/gallery-stacked/inspector.js:55
 msgid "Toggle to fill the available gallery area with completely fullwidth images."
 msgstr ""
 
-#: src/blocks/gallery-stacked/inspector.js:85
+#: src/blocks/gallery-stacked/inspector.js:72
 msgid "Stacked settings"
 msgstr ""
 
-#: src/blocks/gallery-stacked/inspector.js:89
+#: src/blocks/gallery-stacked/inspector.js:76
 msgid "Fullwidth images"
 msgstr ""
 
-#: src/blocks/gallery-stacked/inspector.js:89
+#: src/blocks/gallery-stacked/inspector.js:76
 msgid "Fullwidth image"
 msgstr ""
 
