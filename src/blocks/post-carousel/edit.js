@@ -28,11 +28,11 @@ import {
 	Icon,
 	Placeholder,
 	QueryControls,
-	ServerSideRender,
 	Spinner,
 	TextControl,
 	Toolbar,
 } from '@wordpress/components';
+import ServerSideRender from '@wordpress/server-side-render';
 import { edit } from '@wordpress/icons';
 
 /**
