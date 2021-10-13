@@ -123,7 +123,7 @@ class CoBlocks_Body_Classes {
 	}
 
 	/**
-	 * Add script to remove the no-js body class if JS is not present.
+	 * Add script to remove the no-js body class if JS is present.
 	 * Based on admin-header.php.
 	 *
 	 * @access public
