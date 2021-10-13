@@ -124,7 +124,7 @@ const GalleryStackedEdit = ( props ) => {
 		} );
 	};
 
-	const setImageAttributes = ( index ) => {
+	const setImageAttributes = ( index, newAttributes ) => {
 		if ( ! images[ index ] ) {
 			return;
 		}
@@ -133,7 +133,7 @@ const GalleryStackedEdit = ( props ) => {
 				...images.slice( 0, index ),
 				{
 					...images[ index ],
-					...attributes,
+					...newAttributes,
 				},
 				...images.slice( index + 1 ),
 			],
