@@ -41,13 +41,7 @@ const deprecated = [
 		},
 	},
 	{
-		attributes: Object.assign( {}, metadata.attributes, {
-			caption: {
-				type: 'string',
-				source: 'html',
-				selector: 'figcaption',
-			},
-		} ),
+		attributes: metadata.attributes,
 		save: ( { attributes } ) => {
 			const { url, file, meta, caption } = attributes;
 
