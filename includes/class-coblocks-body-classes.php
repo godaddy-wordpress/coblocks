@@ -21,8 +21,12 @@ class CoBlocks_Body_Classes {
 	 * The Constructor.
 	 */
 	public function __construct() {
+		// Filters.
 		add_filter( 'body_class', array( $this, 'body_class' ) );
 		add_filter( 'admin_body_class', array( $this, 'admin_body_class' ) );
+
+		// Actions.
+		add_action( 'wp_body_open', array( $this, 'wp_body_open' ), 1 );
 	}
 
 	/**
@@ -71,6 +75,7 @@ class CoBlocks_Body_Classes {
 
 	/**
 	 * Add .is-{theme} class to the frontend for select themes.
+	 * Add no-js class to theme.
 	 *
 	 * @param array $classes Classes for the body element.
 	 * @return array (Maybe) filtered body classes.
@@ -85,6 +90,10 @@ class CoBlocks_Body_Classes {
 
 		if ( apply_filters( 'coblocks_is_amp', ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() && ! in_array( 'amp', $classes, true ) ) ) ) {
 			$classes[] = 'amp';
+		}
+
+		if ( ! in_array( 'no-js', $classes, true ) ) {
+			$classes[] = 'no-js';
 		}
 
 		return $classes;
@@ -111,6 +120,20 @@ class CoBlocks_Body_Classes {
 		}
 
 		return $classes;
+	}
+
+	/**
+	 * Add script to remove the no-js body class if JS is not present.
+	 * Based on admin-header.php.
+	 *
+	 * @access public
+	 */
+	public function wp_body_open() {
+		?>
+			<script type="text/javascript">
+				document.body.className = document.body.className.replace('no-js','js');
+			</script>
+		<?php
 	}
 }
 
