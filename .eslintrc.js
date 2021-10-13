@@ -25,7 +25,5 @@ module.exports = {
 		'import/no-extraneous-dependencies': 0,
 		// Disable issue: https://github.com/godaddy-wordpress/coblocks/issues/2037
 		'@wordpress/no-unsafe-wp-apis': 0,
-		// Disable issue: https://github.com/godaddy-wordpress/coblocks/issues/2038
-		'import/named': 0,
 	},
 };
