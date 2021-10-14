@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-14T16:40:29+00:00\n"
+"POT-Creation-Date: 2021-10-14T21:03:59+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -823,35 +823,35 @@ msgstr ""
 msgid "Add event"
 msgstr ""
 
-#: src/blocks/events/edit.js:32
+#: src/blocks/events/edit.js:33
 msgid "1 week"
 msgstr ""
 
-#: src/blocks/events/edit.js:33
+#: src/blocks/events/edit.js:34
 msgid "2 weeks"
 msgstr ""
 
-#: src/blocks/events/edit.js:34
+#: src/blocks/events/edit.js:35
 msgid "1 month"
 msgstr ""
 
-#: src/blocks/events/edit.js:35
+#: src/blocks/events/edit.js:36
 msgid "Fetch all"
 msgstr ""
 
-#: src/blocks/events/edit.js:125
+#: src/blocks/events/edit.js:126
 msgid "Edit calendar URL"
 msgstr ""
 
-#: src/blocks/events/edit.js:150
+#: src/blocks/events/edit.js:151
 msgid "Calendar URL"
 msgstr ""
 
-#: src/blocks/events/edit.js:153
+#: src/blocks/events/edit.js:154
 msgid "Enter URL here…"
 msgstr ""
 
-#: src/blocks/events/edit.js:159
+#: src/blocks/events/edit.js:160
 #: src/blocks/post-carousel/edit.js:218
 #: src/blocks/posts/edit.js:319
 msgid "Use URL"
