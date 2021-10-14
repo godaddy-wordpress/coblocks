@@ -17,7 +17,7 @@ import { hasFormattingCategory } from '../../utils/block-helpers';
 import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 import { dispatch } from '@wordpress/data';
-import { switchToBlockType } from '@wordpress/blocks';
+import { registerBlockVariation, switchToBlockType } from '@wordpress/blocks';
 
 /**
  * Block constants
@@ -57,3 +57,12 @@ const settings = {
 };
 
 export { name, category, metadata, settings };
+
+registerBlockVariation( 'core/embed', {
+	name: 'gist',
+	title: 'Gist',
+	icon: <Icon icon={ icon } />,
+	patterns: [ /https?:\/\/gist\.github\.com\/.+/i ],
+	attributes: { providerNameSlug: 'gist' },
+	isActive: () => [ 'providerNameSlug' ],
+} );
