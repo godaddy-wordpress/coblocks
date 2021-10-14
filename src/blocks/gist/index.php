@@ -9,38 +9,42 @@
  * Registers the Gist oembed handler.
  */
 function coblocks_register_gist_oembed() {
-	wp_embed_register_handler( 'gist', '#https?://gist.github.com/.*#i', 'coblocks_block_gist_handler' );
+	wp_embed_register_handler( 'gist', '/https?:\/\/gist\.github\.com\/([a-zA-Z0-9\/]+)(?:\#file\-([a-zA-Z0-9\_\-]+))?/', 'coblocks_block_gist_handler' );
 }
 add_action( 'init', 'coblocks_register_gist_oembed' );
 
 /**
  * Renders the oembed content.
  *
- * @param array $url_match The URL match from wp_embed_register_handler.
+ * @param array $matches The matches from wp_embed_register_handler.
  *
  * @return string The oembed output.
  */
-function coblocks_block_gist_handler( $url_match ) {
-	$url_parts = wp_parse_url( $url_match[0] );
-	$url       = $url_parts['scheme'] . '://' . $url_parts['host'] . $url_parts['path'];
+function coblocks_block_gist_handler( $matches ) {
+	$gist_url  = $matches[0];
+	$gist_path = empty( $matches[1] ) ? '' : $matches[1];
+	$gist_file = empty( $matches[2] ) ? '' : $matches[2];
 
-	$script_src   = $url;
-	$noscript_src = $url;
+	$script_src = $gist_path;
 
 	if ( ! preg_match( '/\.js$/', $script_src ) ) {
 		$script_src .= '.js';
 	}
 
-	if ( ! empty( $url_parts['query'] ) ) {
-		$script_src   .= '?' . $url_parts['query'];
-		$noscript_src .= '#' . sanitize_title( str_replace( '=', '-', $url_parts['query'] ) );
+	if ( ! empty( $gist_file ) ) {
+		$dash_position = strrpos( $gist_file, '-' );
+		if ( false !== $dash_position ) {
+			$gist_file = substr_replace( $gist_file, '.', $dash_position, 1 );
+		}
+
+		$script_src .= '?file=' . $gist_file;
 	}
 
 	return sprintf(
 		// phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript
-		'<script src="%1$s"></script><noscript><a href="%2$s">%3$s</a></noscript>',
-		esc_url( $script_src ),
-		esc_url( $noscript_src ),
+		'<script src="https://gist.github.com/%1$s"></script><noscript><a href="%2$s">%3$s</a></noscript>',
+		esc_attr( $script_src ),
+		esc_url( $gist_url ),
 		esc_html( __( 'View this gist on GitHub', 'coblocks' ) )
 	);
 }
