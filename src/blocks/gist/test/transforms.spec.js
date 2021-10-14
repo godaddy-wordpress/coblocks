@@ -9,8 +9,6 @@ registerCoreBlocks();
 /**
  * Internal dependencies.
  */
-import * as helpers from '../../../../.dev/tests/jest/helpers';
-
 import { name, settings } from '../index';
 
 describe( 'coblocks/gist transforms', () => {
