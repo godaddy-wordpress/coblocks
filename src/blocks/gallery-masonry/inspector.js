@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import ResponsiveTabsControl from '../../components/responsive-tabs-control';
+import GutterControl from '../../components/gutter-control/gutter-control';
 import captionOptions from '../../components/block-gallery/options/caption-options';
 import SizeControl from '../../components/size-control';
 import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
@@ -29,6 +29,7 @@ const Inspector = ( props ) => {
 		captions,
 		captionStyle,
 		gridSize,
+		gutterCustom,
 		gutter,
 		radius,
 		lightbox,
@@ -77,10 +78,9 @@ const Inspector = ( props ) => {
 					value={ gridSize }
 					resetValue={ 'xlrg' }
 				/>
+				<GutterControl { ...props } />
 
-				<ResponsiveTabsControl { ...props } />
-
-				{ gutter > 0 &&
+				{ gutter !== 'custom' && gutterCustom !== 0 &&
 					<RangeControl
 						label={ __( 'Rounded corners', 'coblocks' ) }
 						aria-label={ __( 'Add rounded corners to the gallery items.', 'coblocks' ) }

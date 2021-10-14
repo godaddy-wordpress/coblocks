@@ -1,4 +1,4 @@
-.has-grid-sml .coblocks-gallery--item {
+.has-grid-sml .coblocks-gallery--item:not(.brick) {
 	@media (min-width: 250px) {
 		width: 1 / 2 * 100%;
 	}
@@ -19,7 +19,7 @@
 	}
 }
 
-.has-grid-med .coblocks-gallery--item {
+.has-grid-med .coblocks-gallery--item:not(.brick) {
 	@media (min-width: 350px) {
 		width: 1 / 2 * 100%;
 	}
@@ -58,7 +58,7 @@
 	}
 }
 
-.has-grid-xlrg .coblocks-gallery--item {
+.has-grid-xlrg .coblocks-gallery--item:not(.brick) {
 	@media (min-width: 400px) {
 		width: 1 / 2 * 100%;
 	}
@@ -73,7 +73,7 @@
 	}
 }
 
-.has-no-alignment .has-grid-lrg .coblocks-gallery--item {
+.has-no-alignment .has-grid-lrg .coblocks-gallery--item:not(.brick) {
 	@media (min-width: 400px) {
 		width: 1 / 2 * 100%;
 	}

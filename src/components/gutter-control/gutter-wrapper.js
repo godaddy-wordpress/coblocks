@@ -38,7 +38,7 @@ function GutterWrapper( { children, gutter, gutterCustom, className, condition =
 		};
 	}
 
-	if ( 'custom' === gutter ) {
+	if ( 'custom' === gutter && undefined !== gutterCustom ) {
 		attributes.style = {
 			...attributes.style,
 			'--coblocks-custom-gutter': `${ gutterCustom }em`,
