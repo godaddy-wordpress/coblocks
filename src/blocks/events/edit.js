@@ -148,16 +148,26 @@ const EventsEdit = ( props ) => {
 				<Placeholder
 					icon="rss"
 					label={ __( 'Calendar URL', 'coblocks' ) }
+					instructions={ __(
+						'Enter a URL that loads and iCal formatted calendar.',
+						'coblocks'
+					) }
 				>
-					<TextControl
-						placeholder={ __( 'Enter URL here…', 'coblocks' ) }
-						value={ stateExternalCalendarUrl }
-						onChange={ ( newExternalCalendarUrl ) => setStateExternalCalendarUrl( newExternalCalendarUrl ) }
-						className={ 'components-placeholder__input' }
-					/>
-					<Button type="button" onClick={ saveExternalCalendarUrl } disabled={ ! stateExternalCalendarUrl }>
-						{ __( 'Use URL', 'coblocks' ) }
-					</Button>
+					<form onSubmit={ saveExternalCalendarUrl }>
+						<TextControl
+							className={ 'components-placeholder__input' }
+							onChange={ ( newExternalCalendarUrl ) => setStateExternalCalendarUrl( newExternalCalendarUrl ) }
+							placeholder={ __( 'Enter URL here…', 'coblocks' ) }
+							value={ stateExternalCalendarUrl }
+						/>
+						<Button
+							disabled={ ! stateExternalCalendarUrl }
+							isPrimary
+							type="submit"
+						>
+							{ __( 'Use URL', 'coblocks' ) }
+						</Button>
+					</form>
 				</Placeholder>
 			}
 
