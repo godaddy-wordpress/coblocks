@@ -12,7 +12,7 @@ const transforms = {
 				return createBlock( 'core/embed', {
 					providerNameSlug: 'gist',
 					type: 'rich',
-					url: url + '#file-' + file.replace( '.', '-' ),
+					url: url + ( file ? '#file-' + file.replace( '.', '-' ) : '' ),
 					caption,
 					className: ! meta && 'no-meta',
 				} );
