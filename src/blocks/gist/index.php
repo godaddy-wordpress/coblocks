@@ -25,7 +25,7 @@ function coblocks_block_gist_handler( $matches ) {
 	$gist_path = empty( $matches[1] ) ? '' : $matches[1];
 	$gist_file = empty( $matches[2] ) ? '' : $matches[2];
 
-	$script_src = $gist_path;
+	$script_src = untrailingslashit( $gist_path );
 
 	if ( ! preg_match( '/\.js$/', $script_src ) ) {
 		$script_src .= '.js';
