@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-13T20:00:43+00:00\n"
+"POT-Creation-Date: 2021-10-14T13:41:10+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -532,7 +532,7 @@ msgstr ""
 
 #. translators: placeholder text for input box
 #: src/blocks/alert/edit.js:94
-#: src/blocks/services/service/edit.js:202
+#: src/blocks/services/service/edit.js:204
 msgid "Write title…"
 msgstr ""
 
@@ -852,8 +852,8 @@ msgid "Enter URL here…"
 msgstr ""
 
 #: src/blocks/events/edit.js:159
-#: src/blocks/post-carousel/edit.js:216
-#: src/blocks/posts/edit.js:317
+#: src/blocks/post-carousel/edit.js:218
+#: src/blocks/posts/edit.js:319
 msgid "Use URL"
 msgstr ""
 
@@ -1139,12 +1139,12 @@ msgid "Gluten free"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:182
-#: src/blocks/services/service/edit.js:123
+#: src/blocks/services/service/edit.js:125
 msgid "Drop image to replace"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:198
-#: src/blocks/services/service/edit.js:143
+#: src/blocks/services/service/edit.js:145
 #: src/components/block-gallery/gallery-image.js:223
 msgid "Remove image"
 msgstr ""
@@ -1958,7 +1958,7 @@ msgid "Rounded corners"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:130
-#: src/blocks/gallery-carousel/variations.js:143
+#: src/blocks/gallery-carousel/variations.js:145
 #: src/blocks/gallery-collage/inspector.js:100
 #: src/blocks/gallery-masonry/inspector.js:96
 #: src/blocks/gallery-offset/inspector.js:95
@@ -1968,7 +1968,7 @@ msgid "Lightbox"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:136
-#: src/blocks/gallery-carousel/variations.js:85
+#: src/blocks/gallery-carousel/variations.js:87
 msgid "Thumbnails"
 msgstr ""
 
@@ -1976,15 +1976,15 @@ msgstr ""
 msgid "Responsive height"
 msgstr ""
 
-#: src/blocks/gallery-carousel/variations.js:106
+#: src/blocks/gallery-carousel/variations.js:108
 msgid "Full Autoplay"
 msgstr ""
 
-#: src/blocks/gallery-carousel/variations.js:123
+#: src/blocks/gallery-carousel/variations.js:125
 msgid "Full Scroll"
 msgstr ""
 
-#: src/blocks/gallery-carousel/variations.js:178
+#: src/blocks/gallery-carousel/variations.js:180
 msgid "Select a carousel variation to start with."
 msgstr ""
 
@@ -2103,7 +2103,7 @@ msgstr ""
 #. translators: block style
 #: src/blocks/gallery-stacked/edit.js:150
 #: src/blocks/gallery-stacked/index.js:35
-#: src/blocks/posts/edit.js:53
+#: src/blocks/posts/edit.js:55
 msgid "Stacked"
 msgstr ""
 
@@ -6150,53 +6150,53 @@ msgstr ""
 msgid "Select language"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:113
-#: src/blocks/posts/edit.js:200
+#: src/blocks/post-carousel/edit.js:115
+#: src/blocks/posts/edit.js:202
 msgid "Edit RSS URL"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/post-carousel/edit.js:169
+#: src/blocks/post-carousel/edit.js:171
 #: src/blocks/post-carousel/index.js:27
 msgid "Post Carousel"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:174
-#: src/blocks/posts/edit.js:270
+#: src/blocks/post-carousel/edit.js:176
+#: src/blocks/posts/edit.js:272
 msgid "No posts found. Start publishing or add posts from an RSS feed."
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:177
+#: src/blocks/post-carousel/edit.js:179
 msgid "Retrieve an external feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:183
-#: src/blocks/posts/edit.js:279
+#: src/blocks/post-carousel/edit.js:185
+#: src/blocks/posts/edit.js:281
 msgid "Use External Feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:205
-#: src/blocks/posts/edit.js:306
+#: src/blocks/post-carousel/edit.js:207
+#: src/blocks/posts/edit.js:308
 msgid "RSS Feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:206
-#: src/blocks/posts/edit.js:307
+#: src/blocks/post-carousel/edit.js:208
+#: src/blocks/posts/edit.js:309
 msgid "RSS URLs are generally located at the /feed/ directory of a site."
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:210
-#: src/blocks/posts/edit.js:311
+#: src/blocks/post-carousel/edit.js:212
+#: src/blocks/posts/edit.js:313
 msgid "https://example.com/feed…"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:292
-#: src/blocks/posts/edit.js:414
+#: src/blocks/post-carousel/edit.js:294
+#: src/blocks/posts/edit.js:416
 msgid "(no title)"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:310
-#: src/blocks/posts/edit.js:440
+#: src/blocks/post-carousel/edit.js:312
+#: src/blocks/posts/edit.js:442
 msgid "Read more"
 msgstr ""
 
@@ -6235,23 +6235,23 @@ msgid "rss"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/posts/edit.js:60
+#: src/blocks/posts/edit.js:62
 msgid "Horizontal"
 msgstr ""
 
-#: src/blocks/posts/edit.js:213
+#: src/blocks/posts/edit.js:215
 msgid "Image on left"
 msgstr ""
 
-#: src/blocks/posts/edit.js:218
+#: src/blocks/posts/edit.js:220
 msgid "Image on right"
 msgstr ""
 
-#: src/blocks/posts/edit.js:265
+#: src/blocks/posts/edit.js:267
 msgid "Blog Posts"
 msgstr ""
 
-#: src/blocks/posts/edit.js:273
+#: src/blocks/posts/edit.js:275
 msgid "Retrieve an External Feed"
 msgstr ""
 
@@ -6502,74 +6502,74 @@ msgstr ""
 msgid "Change row block layout"
 msgstr ""
 
-#: src/blocks/row/edit.js:92
+#: src/blocks/row/edit.js:94
 msgid "one"
 msgstr ""
 
-#: src/blocks/row/edit.js:94
+#: src/blocks/row/edit.js:96
 msgid "two"
 msgstr ""
 
-#: src/blocks/row/edit.js:96
+#: src/blocks/row/edit.js:98
 msgid "three"
 msgstr ""
 
-#: src/blocks/row/edit.js:98
+#: src/blocks/row/edit.js:100
 msgid "four"
 msgstr ""
 
-#: src/blocks/row/edit.js:113
+#: src/blocks/row/edit.js:115
 msgid "Add background to row"
 msgstr ""
 
-#: src/blocks/row/edit.js:118
+#: src/blocks/row/edit.js:120
 msgid "One column"
 msgstr ""
 
-#: src/blocks/row/edit.js:119
+#: src/blocks/row/edit.js:121
 msgid "Two columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:120
+#: src/blocks/row/edit.js:122
 msgid "Three columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:121
+#: src/blocks/row/edit.js:123
 msgid "Four columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:147
+#: src/blocks/row/edit.js:149
 msgid "Row layout"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/row/edit.js:147
+#: src/blocks/row/edit.js:149
 #: src/blocks/row/index.js:38
 msgid "Row"
 msgstr ""
 
 #. translators: %s: 'one' 'two' 'three' and 'four'
-#: src/blocks/row/edit.js:151
+#: src/blocks/row/edit.js:153
 msgid "Select a layout for this %s column row."
 msgstr ""
 
-#: src/blocks/row/edit.js:154
+#: src/blocks/row/edit.js:156
 msgid "Select the number of columns for this row."
 msgstr ""
 
-#: src/blocks/row/edit.js:158
+#: src/blocks/row/edit.js:160
 msgid "Select row columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:183
+#: src/blocks/row/edit.js:185
 msgid "Select row layout"
 msgstr ""
 
-#: src/blocks/row/edit.js:193
+#: src/blocks/row/edit.js:195
 msgid "Back to columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:325
+#: src/blocks/row/edit.js:327
 msgid "Select a variation to start with."
 msgstr ""
 
@@ -6710,19 +6710,19 @@ msgstr ""
 msgid "Toggle to show call to action buttons."
 msgstr ""
 
-#: src/blocks/services/service/edit.js:149
+#: src/blocks/services/service/edit.js:151
 #: src/components/block-gallery/gallery-image.js:210
 #: src/extensions/replace-image/index.js:115
 msgid "Replace Image"
 msgstr ""
 
-#: src/blocks/services/service/edit.js:151
+#: src/blocks/services/service/edit.js:153
 #: src/components/block-gallery/gallery-image.js:212
 msgid "Replace"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/services/service/edit.js:211
+#: src/blocks/services/service/edit.js:213
 msgid "Write description…"
 msgstr ""
 
