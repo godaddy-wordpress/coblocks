@@ -8,10 +8,13 @@ const transforms = {
 		{
 			type: 'block',
 			blocks: [ 'core/embed' ],
-			transform: ( { url, file, caption } ) => {
+			transform: ( { url, file, caption, meta } ) => {
 				return createBlock( 'core/embed', {
-					url: url + '?file=' + file,
+					providerNameSlug: 'gist',
+					type: 'rich',
+					url: url + '#file-' + file.replace( '.', '-' ),
 					caption,
+					className: ! meta && 'no-meta',
 				} );
 			},
 		},
