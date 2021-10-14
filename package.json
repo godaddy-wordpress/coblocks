@@ -71,7 +71,7 @@
 		"zh_TW": "繁體中文"
 	},
 	"dependencies": {
-		"@godaddy-wordpress/coblocks-icons": "1.6.0",
+		"@godaddy-wordpress/coblocks-icons": "1.7.0",
 		"@wp-g2/components": "^0.0.164"
 	},
 	"devDependencies": {
@@ -86,7 +86,7 @@
 		"@jest/core": "^27.1.0",
 		"@testing-library/jest-dom": "^4.2.4",
 		"@wordpress/base-styles": "2.0.1",
-		"@wordpress/block-editor": "3.1.0",
+		"@wordpress/block-editor": "4.3.10",
 		"@wordpress/block-library": "2.8.0",
 		"@wordpress/blocks": "^6.10.0",
 		"@wordpress/dom": "~2.16.2",

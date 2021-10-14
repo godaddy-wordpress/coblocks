@@ -14,7 +14,8 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies.
  */
-import { Toolbar, Placeholder, Button, TextControl, ServerSideRender } from '@wordpress/components';
+import { Toolbar, Placeholder, Button, TextControl } from '@wordpress/components';
+import ServerSideRender from '@wordpress/server-side-render';
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 import { useState, useEffect, useRef } from '@wordpress/element';

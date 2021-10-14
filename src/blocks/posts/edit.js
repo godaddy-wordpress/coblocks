@@ -31,11 +31,11 @@ import {
 	Icon,
 	Placeholder,
 	QueryControls,
-	ServerSideRender,
 	Spinner,
 	TextControl,
 	Toolbar,
 } from '@wordpress/components';
+import ServerSideRender from '@wordpress/server-side-render';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 import { pullLeft, pullRight, edit } from '@wordpress/icons';
 
