@@ -14,6 +14,8 @@ import memoize from 'memize';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+// Disable reason: We choose to use unsafe APIs in our codebase.
+// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 import { __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
 

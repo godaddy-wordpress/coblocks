@@ -22,6 +22,8 @@ import LabelColorControl from '../../components/form-label-colors/label-color-co
 import { __, sprintf } from '@wordpress/i18n';
 import { useState, useEffect } from '@wordpress/element';
 import { Button, PanelBody, TextControl, ExternalLink, TextareaControl } from '@wordpress/components';
+// Disable reason: We choose to use unsafe APIs in our codebase.
+// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 import { InspectorControls, InnerBlocks, __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
 import { compose, usePrevious } from '@wordpress/compose';

@@ -47,8 +47,8 @@ class CoBlocks_Form {
 	 * @var string
 	 */
 	public function default_subject() {
-		// translators: placeholder for email shortcode.
-		return sprintf( __( 'Form submission from [%1$s]', 'coblocks' ), 'email' );
+		// translators: placeholder for 'email' string.
+		return sprintf( __( 'Form submission from [%1$s]', 'coblocks' ), __( 'email', 'coblocks' ) );
 	}
 
 	/**
