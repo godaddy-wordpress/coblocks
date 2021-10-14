@@ -41,7 +41,14 @@ const deprecated = [
 		},
 	},
 	{
-		attributes: metadata.attributes,
+		attributes: {
+			...metadata.attributes,
+			caption: {
+				type: 'string',
+				source: 'html',
+				selector: 'figcaption',
+			},
+		},
 		save: ( { attributes } ) => {
 			const { url, file, meta, caption } = attributes;
 
