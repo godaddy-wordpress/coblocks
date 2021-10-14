@@ -9,7 +9,6 @@ import { GithubIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 import deprecated from './deprecated';
 import metadata from './block.json';
 import transforms from './transforms';
-import { hasFormattingCategory } from '../../utils/block-helpers';
 
 /**
  * WordPress dependencies
@@ -29,14 +28,7 @@ const settings = {
 	title: __( 'Gist', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Embed a GitHub Gist.', 'coblocks' ),
-	category: hasFormattingCategory ? 'common' : 'embed',
 	icon: <Icon icon={ icon } />,
-	keywords: [
-		'coblocks',
-		'github',
-		/* translators: block keyword */
-		__( 'code', 'coblocks' ),
-	],
 	supports: {
 		html: false,
 		align: [ 'wide' ],
@@ -60,8 +52,17 @@ export { name, category, metadata, settings };
 
 registerBlockVariation( 'core/embed', {
 	name: 'gist',
-	title: 'Gist',
+	/* translators: block name */
+	title: __( 'Gist', 'coblocks' ),
+	/* translators: block description */
+	description: __( 'Embed a GitHub Gist.', 'coblocks' ),
 	icon: <Icon icon={ icon } />,
+	keywords: [
+		'coblocks',
+		'github',
+		/* translators: block keyword */
+		__( 'code', 'coblocks' ),
+	],
 	patterns: [ /https?:\/\/gist\.github\.com\/.+/i ],
 	attributes: { providerNameSlug: 'gist' },
 	isActive: () => [ 'providerNameSlug' ],
