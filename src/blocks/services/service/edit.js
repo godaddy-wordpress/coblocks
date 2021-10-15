@@ -182,8 +182,6 @@ const Edit = ( props ) => {
 		);
 	};
 
-	const onSetHref = ( { href } ) => setAttributes( { href } );
-
 	const { className } = props;
 	const {
 		headingLevel,
@@ -196,6 +194,16 @@ const Edit = ( props ) => {
 		showCta,
 		alignment,
 	} = attributes;
+
+	const onSetHref = ( { href: newHref, ...restArgs } ) => {
+		const newAttributes = { ...restArgs };
+
+		if ( newHref !== undefined || newHref !== href ) {
+			newAttributes.href = newHref;
+		}
+
+		setAttributes( newAttributes );
+	};
 
 	const TEMPLATE = [
 		[
