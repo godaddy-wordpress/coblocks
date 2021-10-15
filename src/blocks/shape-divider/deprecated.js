@@ -122,13 +122,8 @@ const deprecated = [
 	{
 		attributes: {
 			...metadata.attributes,
-			coblocks: {
-				type: 'object',
-			},
-			justAdded: {
-				type: 'boolean',
-				default: 'true',
-			},
+			coblocks: { type: 'object' },
+			justAdded: { type: 'boolean', default: 'true' },
 		},
 		save: ( { attributes, className } ) => {
 			const {

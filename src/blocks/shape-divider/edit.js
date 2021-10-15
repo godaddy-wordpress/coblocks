@@ -1,5 +1,3 @@
-// Disable issue: https://github.com/godaddy-wordpress/coblocks/issues/2000
-/* eslint-disable @wordpress/no-global-event-listener */
 /**
  * External dependencies
  */
@@ -28,7 +26,6 @@ import { ResizableBox } from '@wordpress/components';
  */
 const Edit = ( props ) => {
 	const {
-		clientId,
 		attributes,
 		className,
 		isSelected,
@@ -40,117 +37,41 @@ const Edit = ( props ) => {
 	const {
 		coblocks,
 		shapeHeight,
-		shapeHeightTablet,
-		shapeHeightMobile,
 		backgroundHeight,
-		backgroundHeightTablet,
-		backgroundHeightMobile,
 		verticalFlip,
 		horizontalFlip,
-		justAdded,
 	} = attributes;
 
-	const [ innerWidth, setInnerWidth ] = useState( null );
+	useEffect( () => {
+		// Handle upgrading old alignment classes to the global `align` attribute.
+		const classNames = ( attributes.className || '' ).split( ' ' );
+
+		if ( classNames.includes( 'alignfull' ) ) {
+			setAttributes( {
+				align: 'full',
+				className: classNames.filter( ( classname ) => classname !== 'alignfull' ).join( ' ' ),
+			} );
+		}
+		if ( classNames.includes( 'alignwide' ) ) {
+			setAttributes( {
+				align: 'wide',
+				className: classNames.filter( ( classname ) => classname !== 'alignwide' ).join( ' ' ),
+			} );
+		}
+	}, [] );
+
 	const [ resizing, setResizing ] = useState( false );
 	const [ resizingAlt, setResizingAlt ] = useState( false );
 
-	useEffect( () => {
-		getBrowserWidth();
-		window.addEventListener( 'resize', getBrowserWidth );
-
-		return () => {
-			window.removeEventListener( 'resize', getBrowserWidth );
-		};
-	}, [] );
-
-	const getBrowserWidth = () => {
-		setInnerWidth( window.innerWidth );
-		return window.innerWidth;
-	};
-
-	const saveMeta = ( type ) => {
-		const meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
-		const block = wp.data.select( 'core/block-editor' ).getBlockAttributes( clientId );
-		let dimensions = {};
-
-		if ( typeof attributes.coblocks !== 'undefined' && typeof attributes.coblocks.id !== 'undefined' ) {
-			const id = name.split( '/' ).join( '-' ) + '-' + attributes.coblocks.id;
-			const height = {
-				height: block[ type ],
-				heightTablet: block[ type + 'Tablet' ],
-				heightMobile: block[ type + 'Mobile' ],
-			};
-
-			if ( typeof meta._coblocks_responsive_height === 'undefined' || ( typeof meta._coblocks_responsive_height !== 'undefined' && meta._coblocks_responsive_height === '' ) ) {
-				dimensions = {};
-			} else {
-				dimensions = JSON.parse( meta._coblocks_responsive_height );
-			}
-
-			if ( typeof dimensions[ id ] === 'undefined' ) {
-				dimensions[ id ] = {};
-				dimensions[ id ][ type ] = {};
-			} else if ( typeof dimensions[ id ][ type ] === 'undefined' ) {
-				dimensions[ id ][ type ] = {};
-			}
-
-			dimensions[ id ][ type ] = height;
-
-			// Save values to metadata.
-			wp.data.dispatch( 'core/editor' ).editPost( {
-				meta: {
-					_coblocks_responsive_height: JSON.stringify( dimensions ),
-				},
-			} );
-		}
-	};
-
-	let shapeHeightResizer = {
+	const shapeHeightResizer = {
 		target: 'shapeHeight',
 		value: shapeHeight,
 	};
 
-	let backgroundHeightResizer = {
+	const backgroundHeightResizer = {
 		target: 'shapeHeight',
 		value: backgroundHeight,
 	};
-
-	if ( innerWidth <= 768 && innerWidth > 514 ) {
-		shapeHeightResizer = {
-			target: 'shapeHeightTablet',
-			value: ( shapeHeightTablet ) ? shapeHeightTablet : shapeHeight,
-		};
-
-		backgroundHeightResizer = {
-			target: 'backgroundHeightTablet',
-			value: ( backgroundHeightTablet ) ? backgroundHeightTablet : backgroundHeight,
-		};
-	} else if ( innerWidth <= 514 ) {
-		shapeHeightResizer = {
-			target: 'shapeHeightMobile',
-			value: ( shapeHeightMobile ) ? shapeHeightMobile : shapeHeight,
-		};
-
-		backgroundHeightResizer = {
-			target: 'backgroundHeightMobile',
-			value: ( backgroundHeightMobile ) ? backgroundHeightMobile : backgroundHeight,
-		};
-	}
-
-	//modify blocks when added
-	if ( justAdded ) {
-		const prevBlockClientId = wp.data.select( 'core/block-editor' ).getPreviousBlockClientId( clientId );
-		const nextBlockClientId = wp.data.select( 'core/block-editor' ).getNextBlockClientId( clientId );
-
-		if ( prevBlockClientId ) {
-			wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( prevBlockClientId, { noBottomMargin: true, marginBottom: 0, marginBottomTablet: 0, marginBottomMobile: 0 } );
-		}
-
-		if ( nextBlockClientId ) {
-			wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( nextBlockClientId, { noTopMargin: true, marginTop: 0, marginTopTablet: 0, marginTopMobile: 0 } );
-		}
-		setAttributes( { justAdded: false } );
-	}
 
 	let classes = classnames(
 		className, {
@@ -200,30 +121,11 @@ const Edit = ( props ) => {
 						topLeft: false,
 					} }
 					onResizeStop={ ( _event, _direction, _elt, delta ) => {
-						switch ( shapeHeightResizer.target ) {
-							case 'shapeHeightTablet':
-								setAttributes( {
-									shapeHeightTablet: parseInt( shapeHeightResizer.value + delta.height, 10 ),
-								} );
-								break;
-
-							case 'shapeHeightMobile':
-								setAttributes( {
-									shapeHeightMobile: parseInt( shapeHeightResizer.value + delta.height, 10 ),
-								} );
-								break;
-
-							default:
-								setAttributes( {
-									shapeHeight: parseInt( shapeHeightResizer.value + delta.height, 10 ),
-								} );
-								break;
-						}
+						setAttributes( {
+							shapeHeight: parseInt( shapeHeightResizer.value + delta.height, 10 ),
+						} );
 
 						setResizing( false );
-
-						//update meta
-						saveMeta( 'shapeHeight' );
 					} }
 					onResizeStart={ () => {
 						setResizing( true );
@@ -255,29 +157,10 @@ const Edit = ( props ) => {
 						topLeft: false,
 					} }
 					onResizeStop={ ( _event, _direction, _elt, delta ) => {
-						switch ( backgroundHeightResizer.target ) {
-							case 'backgroundHeightTablet':
-								setAttributes( {
-									backgroundHeightTablet: parseInt( backgroundHeightResizer.value + delta.height, 10 ),
-								} );
-								break;
-
-							case 'backgroundHeightMobile':
-								setAttributes( {
-									backgroundHeightMobile: parseInt( backgroundHeightResizer.value + delta.height, 10 ),
-								} );
-								break;
-
-							default:
-								setAttributes( {
-									backgroundHeight: parseInt( backgroundHeightResizer.value + delta.height, 10 ),
-								} );
-								break;
-						}
-
+						setAttributes( {
+							backgroundHeight: parseInt( backgroundHeightResizer.value + delta.height, 10 ),
+						} );
 						setResizingAlt( false );
-
-						saveMeta( 'backgroundHeight' );
 					} }
 					onResizeStart={ () => {
 						setResizingAlt( true );

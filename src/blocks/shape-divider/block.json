@@ -2,44 +2,13 @@
 	"name": "coblocks/shape-divider",
 	"category": "layout",
 	"attributes": {
-		"align": {
-			"type": "string",
-			"default": "full"
-		},
-		"height": {
-			"type": "number",
-			"default": 100
-		},
-		"heightTablet": {
-			"type": "number"
-		},
-		"heightMobile": {
-			"type": "number"
-		},
 		"shapeHeight": {
 			"type": "number",
 			"default": 100
 		},
-		"shapeHeightTablet": {
-			"type": "number"
-		},
 		"backgroundHeight": {
 			"type": "number",
 			"default": 50
-		},
-		"backgroundHeightTablet": {
-			"type": "number"
-		},
-		"backgroundHeightMobile": {
-			"type": "number"
-		},
-		"syncHeight": {
-			"type": "boolean",
-			"default": true
-		},
-		"syncHeightAlt": {
-			"type": "boolean",
-			"default": true
 		},
 		"verticalFlip": {
 			"type": "boolean",
