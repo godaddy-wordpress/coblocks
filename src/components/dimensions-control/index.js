@@ -15,87 +15,82 @@ import DimensionsSelect from './dimensions-select';
  */
 import { __, sprintf } from '@wordpress/i18n';
 import { withInstanceId } from '@wordpress/compose';
-import { dispatch } from '@wordpress/data';
-import { Component, Fragment } from '@wordpress/element';
+import { useDispatch } from '@wordpress/data';
+import { Fragment } from '@wordpress/element';
 import { ButtonGroup, BaseControl, Button, Tooltip, TabPanel } from '@wordpress/components';
 
-class DimensionsControl extends Component {
-	constructor( props ) {
-		super( ...arguments );
-		this.onChangeTop = this.onChangeTop.bind( this );
-		this.onChangeRight = this.onChangeRight.bind( this );
-		this.onChangeBottom = this.onChangeBottom.bind( this );
-		this.onChangeLeft = this.onChangeLeft.bind( this );
-		this.onChangeAll = this.onChangeAll.bind( this );
-		this.onChangeUnits = this.onChangeUnits.bind( this );
-		this.onChangeSize = this.onChangeSize.bind( this );
-		this.syncUnits = this.syncUnits.bind( this );
-		this.saveMeta = this.saveMeta.bind( this );
+const DIRECTIONS = [
+	'Top',
+	'Right',
+	'Bottom',
+	'Left',
+];
 
-		if ( props.attributes.saveCoBlocksMeta ) {
-			this.saveMeta();
-			dispatch( 'core/block-editor' ).updateBlockAttributes( props.attributes.clientId, { saveCoBlocksMeta: false } );
-		}
+const LABELS = {
+	margin: {
+		top: __( 'Margin top', 'coblocks' ),
+		right: __( 'Margin right', 'coblocks' ),
+		bottom: __( 'Margin bottom', 'coblocks' ),
+		left: __( 'Margin left', 'coblocks' ),
+	},
+	padding: {
+		top: __( 'Padding top', 'coblocks' ),
+		right: __( 'Padding right', 'coblocks' ),
+		bottom: __( 'Padding bottom', 'coblocks' ),
+		left: __( 'Padding left', 'coblocks' ),
+	},
+};
+
+const DimensionsControl = ( props ) => {
+	const {
+		attributes,
+		clientId,
+		dimensionSize,
+		help,
+		instanceId,
+		label = __( 'Margin', 'coblocks' ),
+		setAttributes,
+		type = 'margin',
+		unit,
+	} = props;
+
+	const {
+		coblocks,
+		marginSize,
+		paddingSize,
+		saveCoBlocksMeta,
+	} = attributes;
+
+	const { updateBlockAttributes } = useDispatch( 'core/block-editor' );
+
+	if ( saveCoBlocksMeta ) {
+		saveMeta();
+		updateBlockAttributes( clientId, { saveCoBlocksMeta: false } );
 	}
 
-	onChangeTop( value, device ) {
-		if ( this.props.type === 'padding' ) {
-			this.props.setAttributes( { [ 'paddingTop' + device ]: value } );
-		} else {
-			this.props.setAttributes( { [ 'marginTop' + device ]: value } );
-		}
-		this.saveMeta();
-	}
+	const onChangeSingle = ( value, device, direction ) => {
+		setAttributes( { [ `${ type }${ direction }${ device }` ]: value } );
+		saveMeta();
+	};
 
-	onChangeRight( value, device ) {
-		if ( this.props.type === 'padding' ) {
-			this.props.setAttributes( { [ 'paddingRight' + device ]: value } );
-		} else {
-			this.props.setAttributes( { [ 'marginRight' + device ]: value } );
-		}
-		this.saveMeta();
-	}
+	const onChangeAll = ( value, device ) => {
+		setAttributes( {
+			[ `${ type }Top${ device }` ]: value,
+			[ `${ type }Right${ device }` ]: value,
+			[ `${ type }Bottom${ device }` ]: value,
+			[ `${ type }Left${ device }` ]: value,
+		} );
+		saveMeta();
+	};
 
-	onChangeBottom( value, device ) {
-		if ( this.props.type === 'padding' ) {
-			this.props.setAttributes( { [ 'paddingBottom' + device ]: value } );
-		} else {
-			this.props.setAttributes( { [ 'marginBottom' + device ]: value } );
-		}
-		this.saveMeta();
-	}
+	const onChangeUnits = ( value ) => {
+		setAttributes( { [ `${ type }Unit` ]: value } );
+		saveMeta();
+	};
 
-	onChangeLeft( value, device ) {
-		if ( this.props.type === 'padding' ) {
-			this.props.setAttributes( { [ 'paddingLeft' + device ]: value } );
-		} else {
-			this.props.setAttributes( { [ 'marginLeft' + device ]: value } );
-		}
-		this.saveMeta();
-	}
-
-	onChangeAll( value, device ) {
-		if ( this.props.type === 'padding' ) {
-			this.props.setAttributes( { [ 'paddingTop' + device ]: value, [ 'paddingRight' + device ]: value, [ 'paddingBottom' + device ]: value, [ 'paddingLeft' + device ]: value } );
-		} else {
-			this.props.setAttributes( { [ 'marginTop' + device ]: value, [ 'marginRight' + device ]: value, [ 'marginBottom' + device ]: value, [ 'marginLeft' + device ]: value } );
-		}
-		this.saveMeta();
-	}
-
-	onChangeUnits( value ) {
-		if ( this.props.type === 'padding' ) {
-			this.props.setAttributes( { paddingUnit: value } );
-		} else {
-			this.props.setAttributes( { marginUnit: value } );
-		}
-
-		this.saveMeta();
-	}
-
-	onChangeSize( value, size ) {
-		//fix reset for specific blocks
-		if ( [ 'coblocks/hero' ].includes( this.props.name ) && value === 'no' ) {
+	const onChangeSize = ( value, size ) => {
+		// fix reset for specific blocks
+		if ( [ 'coblocks/hero' ].includes( name ) && value === 'no' ) {
 			if ( size < 0 ) {
 				value = 'huge';
 				size = 60;
@@ -104,80 +99,87 @@ class DimensionsControl extends Component {
 			}
 		}
 
-		if ( this.props.type === 'padding' ) {
-			this.props.setAttributes( { paddingSyncUnits: true } );
-			this.props.setAttributes( { paddingSize: value } );
-			if ( size ) {
-				if ( size < 0 ) {
-					size = '';
-				}
-				this.props.setAttributes( { paddingTop: size, paddingRight: size, paddingBottom: size, paddingLeft: size, paddingUnit: 'px' } );
-			}
-		} else {
-			this.props.setAttributes( { marginSize: value } );
-			if ( size ) {
-				if ( size < 0 ) {
-					size = '';
-				}
-				this.props.setAttributes( { marginTop: size, marginRight: 0, marginBottom: size, marginLeft: 0, marginUnit: 'px' } );
-			}
+		if ( type === 'padding' ) {
+			setAttributes( { paddingSyncUnits: true } );
 		}
 
-		this.saveMeta();
-	}
+		setAttributes( { [ `${ type }Size` ]: value } );
 
-	syncUnits( value, device ) {
-		const numbers = [ this.props[ 'valueTop' + device ], this.props[ 'valueRight' + device ], this.props[ 'valueBottom' + device ], this.props[ 'valueLeft' + device ] ];
+		if ( size ) {
+			size = size < 0 ? '' : size;
+			setAttributes( {
+				[ `${ type }Top` ]: size,
+				[ `${ type }Right` ]: 0,
+				[ `${ type }Bottom` ]: size,
+				[ `${ type }Left` ]: 0,
+				[ `${ type }Unit` ]: 'px',
+			} );
+		}
 
+		saveMeta();
+	};
+
+	const syncUnitsOverwrite = ( device = '' ) => {
+		const numbers = [ props[ 'valueTop' + device ], props[ 'valueRight' + device ], props[ 'valueBottom' + device ], props[ 'valueLeft' + device ] ];
 		const syncValue = Math.max.apply( null, numbers );
 
-		if ( this.props.type === 'padding' ) {
-			this.props.setAttributes( { [ 'paddingSyncUnits' + device ]: ! this.props[ 'syncUnits' + device ] } );
-			this.props.setAttributes( { [ 'paddingTop' + device ]: syncValue, [ 'paddingRight' + device ]: syncValue, [ 'paddingBottom' + device ]: syncValue, [ 'paddingLeft' + device ]: syncValue } );
-		} else {
-			this.props.setAttributes( { [ 'marginSyncUnits' + device ]: ! this.props[ 'syncUnits' + device ] } );
-			this.props.setAttributes( { [ 'marginTop' + device ]: syncValue, [ 'marginRight' + device ]: syncValue, [ 'marginBottom' + device ]: syncValue, [ 'marginLeft' + device ]: syncValue } );
+		setAttributes( {
+			[ `${ type }SyncUnits${ device }` ]: ! props[ `syncUnits${ device }` ],
+			[ `${ type }Top${ device }` ]: syncValue,
+			[ `${ type }Right${ device }` ]: syncValue,
+			[ `${ type }Bottom${ device }` ]: syncValue,
+			[ `${ type }Left${ device }` ]: syncValue,
+		} );
+
+		saveMeta();
+	};
+
+	const getAttributeValue = ( value, valueUnit ) => {
+		return ( typeof value !== 'undefined' ) ? `${ value }${ valueUnit }` : null;
+	};
+
+	const getCssLine = ( value, property ) => {
+		if ( typeof value !== 'undefined' ) {
+			return `${ property }: ${ value } !important`;
 		}
+	};
 
-		this.saveMeta();
-	}
-
-	saveMeta() {
+	const saveMeta = () => {
 		const meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
-		const block = wp.data.select( 'core/block-editor' ).getBlock( this.props.clientId );
+		const block = wp.data.select( 'core/block-editor' ).getBlock( clientId );
 		let dimensions = {};
 
-		if ( typeof this.props.attributes.coblocks !== 'undefined' && typeof this.props.attributes.coblocks.id !== 'undefined' ) {
-			const id = this.props.name.split( '/' ).join( '-' ) + '-' + this.props.attributes.coblocks.id;
+		if ( typeof coblocks !== 'undefined' && typeof coblocks.id !== 'undefined' ) {
+			const id = name.split( '/' ).join( '-' ) + '-' + coblocks.id;
 			const paddingUnit = block.attributes.paddingUnit;
 			const marginUnit = block.attributes.marginUnit;
 			const padding = {
-				paddingTop: ( typeof block.attributes.paddingTop !== 'undefined' ) ? block.attributes.paddingTop + paddingUnit : null,
-				paddingRight: ( typeof block.attributes.paddingRight !== 'undefined' ) ? block.attributes.paddingRight + paddingUnit : null,
-				paddingBottom: ( typeof block.attributes.paddingBottom !== 'undefined' ) ? block.attributes.paddingBottom + paddingUnit : null,
-				paddingLeft: ( typeof block.attributes.paddingLeft !== 'undefined' ) ? block.attributes.paddingLeft + paddingUnit : null,
-				paddingTopTablet: ( typeof block.attributes.paddingTopTablet !== 'undefined' ) ? block.attributes.paddingTopTablet + paddingUnit : null,
-				paddingRightTablet: ( typeof block.attributes.paddingRightTablet !== 'undefined' ) ? block.attributes.paddingRightTablet + paddingUnit : null,
-				paddingBottomTablet: ( typeof block.attributes.paddingBottomTablet !== 'undefined' ) ? block.attributes.paddingBottomTablet + paddingUnit : null,
-				paddingLeftTablet: ( typeof block.attributes.paddingLeftTablet !== 'undefined' ) ? block.attributes.paddingLeftTablet + paddingUnit : null,
-				paddingTopMobile: ( typeof block.attributes.paddingTopMobile !== 'undefined' ) ? block.attributes.paddingTopMobile + paddingUnit : null,
-				paddingRightMobile: ( typeof block.attributes.paddingRightMobile !== 'undefined' ) ? block.attributes.paddingRightMobile + paddingUnit : null,
-				paddingBottomMobile: ( typeof block.attributes.paddingBottomMobile !== 'undefined' ) ? block.attributes.paddingBottomMobile + paddingUnit : null,
-				paddingLeftMobile: ( typeof block.attributes.paddingLeftMobile !== 'undefined' ) ? block.attributes.paddingLeftMobile + paddingUnit : null,
+				paddingTop: getAttributeValue( block.attributes.paddingTop, paddingUnit ),
+				paddingRight: getAttributeValue( block.attributes.paddingRight, paddingUnit ),
+				paddingBottom: getAttributeValue( block.attributes.paddingBottom, paddingUnit ),
+				paddingLeft: getAttributeValue( block.attributes.paddingLeft, paddingUnit ),
+				paddingTopTablet: getAttributeValue( block.attributes.paddingTopTablet, paddingUnit ),
+				paddingRightTablet: getAttributeValue( block.attributes.paddingRightTablet, paddingUnit ),
+				paddingBottomTablet: getAttributeValue( block.attributes.paddingBottomTablet, paddingUnit ),
+				paddingLeftTablet: getAttributeValue( block.attributes.paddingLeftTablet, paddingUnit ),
+				paddingTopMobile: getAttributeValue( block.attributes.paddingTopMobile, paddingUnit ),
+				paddingRightMobile: getAttributeValue( block.attributes.paddingRightMobile, paddingUnit ),
+				paddingBottomMobile: getAttributeValue( block.attributes.paddingBottomMobile, paddingUnit ),
+				paddingLeftMobile: getAttributeValue( block.attributes.paddingLeftMobile, paddingUnit ),
 			};
 			const margin = {
-				marginTop: ( typeof block.attributes.marginTop !== 'undefined' ) ? block.attributes.marginTop + marginUnit : null,
-				marginRight: ( typeof block.attributes.marginRight !== 'undefined' ) ? block.attributes.marginRight + marginUnit : null,
-				marginBottom: ( typeof block.attributes.marginBottom !== 'undefined' ) ? block.attributes.marginBottom + marginUnit : null,
-				marginLeft: ( typeof block.attributes.marginLeft !== 'undefined' ) ? block.attributes.marginLeft + marginUnit : null,
-				marginTopTablet: ( typeof block.attributes.marginTopTablet !== 'undefined' ) ? block.attributes.marginTopTablet + marginUnit : null,
-				marginRightTablet: ( typeof block.attributes.marginRightTablet !== 'undefined' ) ? block.attributes.marginRightTablet + marginUnit : null,
-				marginBottomTablet: ( typeof block.attributes.marginBottomTablet !== 'undefined' ) ? block.attributes.marginBottomTablet + marginUnit : null,
-				marginLeftTablet: ( typeof block.attributes.marginLeftTablet !== 'undefined' ) ? block.attributes.marginLeftTablet + marginUnit : null,
-				marginTopMobile: ( typeof block.attributes.marginTopMobile !== 'undefined' ) ? block.attributes.marginTopMobile + marginUnit : null,
-				marginRightMobile: ( typeof block.attributes.marginRightMobile !== 'undefined' ) ? block.attributes.marginRightMobile + marginUnit : null,
-				marginBottomMobile: ( typeof block.attributes.marginBottomMobile !== 'undefined' ) ? block.attributes.marginBottomMobile + marginUnit : null,
-				marginLeftMobile: ( typeof block.attributes.marginLeftMobile !== 'undefined' ) ? block.attributes.marginLeftMobile + marginUnit : null,
+				marginTop: getAttributeValue( block.attributes.marginTop, marginUnit ),
+				marginRight: getAttributeValue( block.attributes.marginRight, marginUnit ),
+				marginBottom: getAttributeValue( block.attributes.marginBottom, marginUnit ),
+				marginLeft: getAttributeValue( block.attributes.marginLeft, marginUnit ),
+				marginTopTablet: getAttributeValue( block.attributes.marginTopTablet, marginUnit ),
+				marginRightTablet: getAttributeValue( block.attributes.marginRightTablet, marginUnit ),
+				marginBottomTablet: getAttributeValue( block.attributes.marginBottomTablet, marginUnit ),
+				marginLeftTablet: getAttributeValue( block.attributes.marginLeftTablet, marginUnit ),
+				marginTopMobile: getAttributeValue( block.attributes.marginTopMobile, marginUnit ),
+				marginRightMobile: getAttributeValue( block.attributes.marginRightMobile, marginUnit ),
+				marginBottomMobile: getAttributeValue( block.attributes.marginBottomMobile, marginUnit ),
+				marginLeftMobile: getAttributeValue( block.attributes.marginLeftMobile, marginUnit ),
 			};
 
 			if ( typeof meta === 'undefined' || typeof meta._coblocks_dimensions === 'undefined' || ( typeof meta._coblocks_dimensions !== 'undefined' && meta._coblocks_dimensions === '' ) ) {
@@ -188,15 +190,15 @@ class DimensionsControl extends Component {
 
 			if ( typeof dimensions[ id ] === 'undefined' ) {
 				dimensions[ id ] = {};
-				dimensions[ id ][ this.props.type ] = {};
-			} else if ( typeof dimensions[ id ][ this.props.type ] === 'undefined' ) {
-				dimensions[ id ][ this.props.type ] = {};
+				dimensions[ id ][ type ] = {};
+			} else if ( typeof dimensions[ id ][ type ] === 'undefined' ) {
+				dimensions[ id ][ type ] = {};
 			}
 
-			if ( this.props.dimensionSize === 'advanced' ) {
-				dimensions[ id ][ this.props.type ] = ( this.props.type === 'padding' ) ? padding : margin;
+			if ( dimensionSize === 'advanced' ) {
+				dimensions[ id ][ type ] = type === 'padding' ? padding : margin;
 			} else {
-				dimensions[ id ][ this.props.type ] = {};
+				dimensions[ id ][ type ] = {};
 			}
 
 			// Save values to metadata.
@@ -209,71 +211,36 @@ class DimensionsControl extends Component {
 			//add CSS to head
 			const head = document.head || document.getElementsByTagName( 'head' )[ 0 ];
 			const style = document.createElement( 'style' );
-			let responsiveCss = '';
 			style.type = 'text/css';
 
-			//add responsive styling for tablet device
-			responsiveCss += '@media only screen and (max-width: 768px) {';
-			responsiveCss += '.' + id + ' > div{';
-			if ( typeof padding.paddingTopTablet !== 'undefined' ) {
-				responsiveCss += 'padding-top: ' + padding.paddingTopTablet + ' !important;';
-			}
-			if ( typeof padding.paddingBottomTablet !== 'undefined' ) {
-				responsiveCss += 'padding-bottom: ' + padding.paddingBottomTablet + ' !important;';
-			}
-			if ( typeof padding.paddingRightTablet !== 'undefined' ) {
-				responsiveCss += 'padding-right: ' + padding.paddingRightTablet + ' !important;';
-			}
-			if ( typeof padding.paddingLeftTablet !== 'undefined' ) {
-				responsiveCss += 'padding-left: ' + padding.paddingLeftTablet + ' !important;';
-			}
+			// add responsive styling
+			const responsiveCss = `
+				@media only screen and (max-width: 768px) {
+					.${ id } > div {
+						${ getCssLine( padding.paddingTopTablet, 'padding-top' ) }
+						${ getCssLine( padding.paddingRightTablet, 'padding-right' ) }
+						${ getCssLine( padding.paddingBottomTablet, 'padding-bottom' ) }
+						${ getCssLine( padding.paddingLeftTablet, 'padding-left' ) }
+						${ getCssLine( margin.marginTopTablet, 'margin-top' ) }
+						${ getCssLine( margin.marginRightTablet, 'margin-right' ) }
+						${ getCssLine( margin.marginBottomTablet, 'margin-bottom' ) }
+						${ getCssLine( margin.marginLeftTablet, 'margin-left' ) }
+					}
+				}
 
-			if ( typeof margin.marginTopTablet !== 'undefined' ) {
-				responsiveCss += 'margin-top: ' + margin.marginTopTablet + ' !important;';
-			}
-			if ( typeof margin.marginBottomTablet !== 'undefined' ) {
-				responsiveCss += 'margin-bottom: ' + margin.marginBottomTablet + ' !important;';
-			}
-			if ( typeof margin.marginRightTablet !== 'undefined' ) {
-				responsiveCss += 'margin-right: ' + margin.marginRightTablet + ' !important;';
-			}
-			if ( typeof margin.marginleLtTablet !== 'undefined' ) {
-				responsiveCss += 'margin-left: ' + margin.marginLeftTablet + ' !important;';
-			}
-
-			responsiveCss += '}';
-			responsiveCss += '}';
-
-			responsiveCss += '@media only screen and (max-width: 514px) {';
-			responsiveCss += '.' + id + ' > div{';
-			if ( typeof padding.paddingTopMobile !== 'undefined' ) {
-				responsiveCss += 'padding-top: ' + padding.paddingTopMobile + ' !important;';
-			}
-			if ( typeof padding.paddingBottomMobile !== 'undefined' ) {
-				responsiveCss += 'padding-bottom: ' + padding.paddingBottomMobile + ' !important;';
-			}
-			if ( typeof padding.paddingRightMobile !== 'undefined' ) {
-				responsiveCss += 'padding-right: ' + padding.paddingRightMobile + ' !important;';
-			}
-			if ( typeof padding.paddingLeftMobile !== 'undefined' ) {
-				responsiveCss += 'padding-left: ' + padding.paddingLeftMobile + ' !important;';
-			}
-
-			if ( typeof margin.marginTopMobile !== 'undefined' ) {
-				responsiveCss += 'margin-top: ' + margin.marginTopMobile + ' !important;';
-			}
-			if ( typeof margin.marginBottomMobile !== 'undefined' ) {
-				responsiveCss += 'margin-bottom: ' + margin.marginBottomMobile + ' !important;';
-			}
-			if ( typeof margin.marginRightMobile !== 'undefined' ) {
-				responsiveCss += 'margin-right: ' + margin.marginRightMobile + ' !important;';
-			}
-			if ( typeof margin.marginleLtMobile !== 'undefined' ) {
-				responsiveCss += 'margin-left: ' + margin.marginLeftMobile + ' !important;';
-			}
-
-			responsiveCss += '}';
-			responsiveCss += '}';
+				@media only screen and (max-width: 514px) {
+					.${ id } > div {
+						${ getCssLine( padding.paddingTopMobile, 'padding-top' ) }
+						${ getCssLine( padding.paddingRightMobile, 'padding-right' ) }
+						${ getCssLine( padding.paddingBottomMobile, 'padding-bottom' ) }
+						${ getCssLine( padding.paddingLeftMobile, 'padding-left' ) }
+						${ getCssLine( margin.marginTopMobile, 'margin-top' ) }
+						${ getCssLine( margin.marginRightMobile, 'margin-right' ) }
+						${ getCssLine( margin.marginBottomMobile, 'margin-bottom' ) }
+						${ getCssLine( margin.marginLeftMobile, 'margin-left' ) }
+					}
+				}
+			`;
 
 			if ( style.styleSheet ) {
 				style.styleSheet.cssText = responsiveCss;
@@ -283,513 +250,250 @@ class DimensionsControl extends Component {
 
 			head.appendChild( style );
 		}
-	}
+	};
 
-	render() {
-		const {
-			help,
-			instanceId,
-			label = __( 'Margin', 'coblocks' ),
-			type = 'margin',
-			unit,
-			valueBottom,
-			valueLeft,
-			valueRight,
-			valueTop,
-			valueBottomTablet,
-			valueLeftTablet,
-			valueRightTablet,
-			valueTopTablet,
-			valueBottomMobile,
-			valueLeftMobile,
-			valueRightMobile,
-			valueTopMobile,
-			syncUnits,
-			syncUnitsTablet,
-			syncUnitsMobile,
-			dimensionSize,
-			setAttributes,
-		} = this.props;
+	const classes = classnames(
+		'components-base-control',
+		'components-coblocks-dimensions-control', {
+		}
+	);
 
-		const { paddingSize, marginSize } = this.props.attributes;
+	const id = `inspector-coblocks-dimensions-control-${ instanceId }`;
 
-		const classes = classnames(
-			'components-base-control',
-			'components-coblocks-dimensions-control', {
-			}
-		);
+	const onChangeValue = ( event, direction ) => {
+		const newValue = ( event.target.value === '' ) ? undefined : Number( event.target.value );
 
-		const id = `inspector-coblocks-dimensions-control-${ instanceId }`;
+		let device = '';
+		if ( typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' && typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' ) {
+			device = event.target.getAttribute( 'data-device-type' );
+		}
 
-		const onChangeTopValue = ( event ) => {
-			const newValue = ( event.target.value === '' ) ? undefined : Number( event.target.value );
+		if ( props[ 'syncUnits' + device ] ) {
+			onChangeAll( newValue, device );
+		} else {
+			onChangeSingle( newValue, device, direction );
+		}
+	};
 
-			let device = '';
-			if ( typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' && typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' ) {
-				device = event.target.getAttribute( 'data-device-type' );
-			}
+	const unitSizes = [
+		{
+			/* translators: a unit of size (px) for css markup */
+			name: __( 'Pixel', 'coblocks' ),
+			unitValue: 'px',
+		},
+		{
+			/* translators: a unit of size (em) for css markup */
+			name: __( 'Em', 'coblocks' ),
+			unitValue: 'em',
+		},
+		{
+			/* translators: a unit of size (vw) for css markup */
+			name: __( 'Viewport width', 'coblocks' ),
+			unitValue: 'vw',
+		},
+		{
+			/* translators: a unit of size (vh) for css markup */
+			name: __( 'Viewport height', 'coblocks' ),
+			unitValue: 'vh',
+		},
+		{
+			/* translators: a unit of size for css markup */
+			name: __( 'Percentage', 'coblocks' ),
+			unitValue: '%',
+		},
+	];
 
-			if ( this.props[ 'syncUnits' + device ] ) {
-				this.onChangeAll( newValue, device );
-			} else {
-				this.onChangeTop( newValue, device );
-			}
-		};
+	const onSelect = ( tabName ) => {
+		let selected = 'desktop';
 
-		const onChangeRightValue = ( event ) => {
-			const newValue = ( event.target.value === '' ) ? undefined : Number( event.target.value );
+		switch ( tabName ) {
+			case 'desktop':
+				selected = 'tablet';
+				break;
+			case 'tablet':
+				selected = 'mobile';
+				break;
+			case 'mobile':
+				selected = 'desktop';
+				break;
+			default:
+				break;
+		}
 
-			let device = '';
-			if ( typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' && typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' ) {
-				device = event.target.getAttribute( 'data-device-type' );
-			}
+		// Reset z-index
+		const buttons = document.getElementsByClassName( `components-coblocks-dimensions-control__mobile-controls-item--${ type }` );
 
-			if ( this.props[ 'syncUnits' + device ] ) {
-				this.onChangeAll( newValue, device );
-			} else {
-				this.onChangeRight( newValue, device );
-			}
-		};
+		for ( let i = 0; i < buttons.length; i++ ) {
+			buttons[ i ].style.display = 'none';
+		}
+		if ( tabName === 'default' ) {
+			const button = document.getElementsByClassName( `components-coblocks-dimensions-control__mobile-controls-item-${ type }--tablet` );
+			button[ 0 ].click();
+		} else {
+			const button = document.getElementsByClassName( `components-coblocks-dimensions-control__mobile-controls-item-${ type }--${ selected }` );
+			button[ 0 ].style.display = 'block';
+		}
+	};
 
-		const onChangeBottomValue = ( event ) => {
-			const newValue = ( event.target.value === '' ) ? undefined : Number( event.target.value );
+	const capitalize = ( str ) => ( str && str[ 0 ].toUpperCase() + str.slice( 1 ) ) || '';
 
-			let device = '';
-			if ( typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' && typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' ) {
-				device = event.target.getAttribute( 'data-device-type' );
-			}
-
-			if ( this.props[ 'syncUnits' + device ] ) {
-				this.onChangeAll( newValue, device );
-			} else {
-				this.onChangeBottom( newValue, device );
-			}
-		};
-
-		const onChangeLeftValue = ( event ) => {
-			const newValue = ( event.target.value === '' ) ? undefined : Number( event.target.value );
-
-			let device = '';
-			if ( typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' && typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' ) {
-				device = event.target.getAttribute( 'data-device-type' );
-			}
-
-			if ( this.props[ 'syncUnits' + device ] ) {
-				this.onChangeAll( newValue, device );
-			} else {
-				this.onChangeLeft( newValue, device );
-			}
-		};
-
-		const unitSizes = [
-			{
-				/* translators: a unit of size (px) for css markup */
-				name: __( 'Pixel', 'coblocks' ),
-				unitValue: 'px',
-			},
-			{
-				/* translators: a unit of size (em) for css markup */
-				name: __( 'Em', 'coblocks' ),
-				unitValue: 'em',
-			},
-			{
-				/* translators: a unit of size (vw) for css markup */
-				name: __( 'Viewport width', 'coblocks' ),
-				unitValue: 'vw',
-			},
-			{
-				/* translators: a unit of size (vh) for css markup */
-				name: __( 'Viewport height', 'coblocks' ),
-				unitValue: 'vh',
-			},
-			{
-				/* translators: a unit of size for css markup */
-				name: __( 'Percentage', 'coblocks' ),
-				unitValue: '%',
-			},
-		];
-
-		const onSelect = ( tabName ) => {
-			let selected = 'desktop';
-
-			switch ( tabName ) {
-				case 'desktop':
-					selected = 'tablet';
-					break;
-				case 'tablet':
-					selected = 'mobile';
-					break;
-				case 'mobile':
-					selected = 'desktop';
-					break;
-				default:
-					break;
-			}
-
-			//Reset z-index
-			const buttons = document.getElementsByClassName( `components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type }` );
-
-			for ( let i = 0; i < buttons.length; i++ ) {
-				buttons[ i ].style.display = 'none';
-			}
-			if ( tabName === 'default' ) {
-				const button = document.getElementsByClassName( `components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--tablet` );
-				button[ 0 ].click();
-			} else {
-				const button = document.getElementsByClassName( `components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--${ selected }` );
-				button[ 0 ].style.display = 'block';
-			}
-		};
+	const renderAdvancedControls = ( device = '' ) => {
+		const syncMode = props[ `syncUnits${ device }` ];
 
 		return (
 			<Fragment>
-				<div className={ classes }>
-					{ dimensionSize === 'advanced'
-						? <Fragment>
-							<div className="components-coblocks-dimensions-control__header">
-								{ label && <p className={ 'components-coblocks-dimensions-control__label' }>{ label }</p> }
-								<div className="components-coblocks-dimensions-control__actions">
-									<ButtonGroup className="components-coblocks-dimensions-control__units" aria-label={ __( 'Select Units', 'coblocks' ) }>
-										{ map( unitSizes, ( { unitValue, name } ) => (
-											<Tooltip text={ sprintf(
+				<div className="components-coblocks-dimensions-control__inputs">
+					{ DIRECTIONS.map( ( direction ) => (
+						<input
+							key={ `coblocks-dimensions-control-number-${ device }-${ direction }` }
+							className="components-coblocks-dimensions-control__number"
+							type="number"
+							onChange={ ( event ) => onChangeValue( event, direction ) }
+							aria-label={ LABELS[ type ][ direction.toLowerCase() ] }
+							aria-describedby={ !! help ? id + '__help' : undefined }
+							value={ props[ `value${ direction }${ device }` ] }
+							min={ type === 'padding' ? 0 : undefined }
+							data-device-type={ device }
+						/>
+					) ) }
+					<Tooltip text={ !! syncMode ? __( 'Unsync', 'coblocks' ) : __( 'Sync', 'coblocks' ) } >
+						<Button
+							className="components-coblocks-dimensions-control_sync"
+							aria-label={ __( 'Sync units', 'coblocks' ) }
+							isPrimary={ syncMode ? true : false }
+							isSecondary={ syncMode ? false : true }
+							aria-pressed={ syncMode ? true : false }
+							onClick={ () => syncUnitsOverwrite( device ) }
+							data-device-type={ device }
+							isSmall
+						>
+							{ SyncIcon }
+						</Button>
+					</Tooltip>
+				</div>
+			</Fragment>
+		);
+	};
+
+	return (
+		<Fragment>
+			<div className={ classes }>
+				{ dimensionSize === 'advanced'
+					? <Fragment>
+						<div className="components-coblocks-dimensions-control__header">
+							{ label && <p className={ 'components-coblocks-dimensions-control__label' }>{ label }</p> }
+							<div className="components-coblocks-dimensions-control__actions">
+								<ButtonGroup className="components-coblocks-dimensions-control__units" aria-label={ __( 'Select Units', 'coblocks' ) }>
+									{ map( unitSizes, ( { unitValue, name } ) => (
+										<Tooltip
+											key={ `coblocks-dimensions-control-unit-tooltip-${ name }` }
+											text={ sprintf(
 												/* translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
 												__( '%s units', 'coblocks' ),
 												name
 											) }>
-												<Button
-													key={ unitValue }
-													className={ 'components-coblocks-dimensions-control__units--' + name }
-													isSmall
-													isPrimary={ unit === unitValue }
-													isSecondary={ unit !== unitValue }
-													aria-pressed={ unit === unitValue }
-													aria-label={ sprintf(
-														/* translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
-														__( '%s units', 'coblocks' ),
-														name
-													) }
-													onClick={ () => this.onChangeUnits( unitValue ) }
-												>
-													{ unitValue }
-												</Button>
-											</Tooltip>
-										) ) }
-									</ButtonGroup>
-									<Button
-										type="button"
-										onClick={ () => this.onChangeSize( 'no', -1 ) }
-										isSmall
-										isSecondary
-										aria-label={ sprintf(
-											/* translators: %s: a texual label  */
-											__( 'Turn off advanced %s settings', 'coblocks' ),
-											label.toLowerCase()
-										) }
-									>
-										{ __( 'Reset', 'coblocks' ) }
-									</Button>
-								</div>
-							</div>
-							<TabPanel
-								className="components-coblocks-dimensions-control__mobile-controls"
-								activeClass="is-active"
-								initialTabName="default"
-								onSelect={ onSelect }
-								tabs={ [
-									{
-										name: 'default',
-										title: DesktopIcon,
-										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--default components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--default`,
-									},
-									{
-										name: 'desktop',
-										title: DesktopIcon,
-										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--desktop components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--desktop`,
-									},
-									{
-										name: 'tablet',
-										title: TabletIcon,
-										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--tablet components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--tablet`,
-									},
-									{
-										name: 'mobile',
-										title: MobileIcon,
-										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--mobile components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--mobile`,
-									},
-								] }>
-								{
-									( tab ) => {
-										if ( 'mobile' === tab.name ) {
-											return (
-												<Fragment>
-													<div className="components-coblocks-dimensions-control__inputs">
-														<input
-															className="components-coblocks-dimensions-control__number"
-															type="number"
-															onChange={ onChangeTopValue }
-															aria-label={ sprintf(
-																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
-																__( '%s top', 'coblocks' ),
-																label
-															) }
-															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueTopMobile !== '' ? valueTopMobile : '' }
-															min={ type === 'padding' ? 0 : undefined }
-															data-device-type="Mobile"
-														/>
-														<input
-															className="components-coblocks-dimensions-control__number"
-															type="number"
-															onChange={ onChangeRightValue }
-															aria-label={ sprintf(
-																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
-																__( '%s right', 'coblocks' ),
-																label
-															) }
-															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueRightMobile !== '' ? valueRightMobile : '' }
-															min={ type === 'padding' ? 0 : undefined }
-															data-device-type="Mobile"
-														/>
-														<input
-															className="components-coblocks-dimensions-control__number"
-															type="number"
-															onChange={ onChangeBottomValue }
-															aria-label={ sprintf(
-																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
-																__( '%s bottom', 'coblocks' ),
-																label
-															) }
-															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueBottomMobile !== '' ? valueBottomMobile : '' }
-															min={ type === 'padding' ? 0 : undefined }
-															data-device-type="Mobile"
-														/>
-														<input
-															className="components-coblocks-dimensions-control__number"
-															type="number"
-															onChange={ onChangeLeftValue }
-															aria-label={ sprintf(
-																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
-																__( '%s left', 'coblocks' ),
-																label
-															) }
-															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueLeftMobile !== '' ? valueLeftMobile : '' }
-															min={ type === 'padding' ? 0 : undefined }
-															data-device-type="Mobile"
-														/>
-														<Tooltip text={ !! syncUnitsMobile ? __( 'Unsync', 'coblocks' ) : __( 'Sync', 'coblocks' ) } >
-															<Button
-																className="components-coblocks-dimensions-control_sync"
-																aria-label={ __( 'Sync units', 'coblocks' ) }
-																isPrimary={ syncUnitsMobile ? true : false }
-																isSecondary={ syncUnitsMobile ? false : true }
-																aria-pressed={ syncUnitsMobile ? true : false }
-																onClick={ ( value ) => this.syncUnits( value, 'Mobile' ) }
-																data-device-type="Mobile"
-																isSmall
-															>
-																{ SyncIcon }
-															</Button>
-														</Tooltip>
-													</div>
-												</Fragment>
-											);
-										} else if ( 'tablet' === tab.name ) {
-											return (
-												<Fragment>
-													<div className="components-coblocks-dimensions-control__inputs">
-														<input
-															className="components-coblocks-dimensions-control__number"
-															type="number"
-															onChange={ onChangeTopValue }
-															aria-label={ sprintf(
-																/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-																__( '%s top', 'coblocks' ),
-																label
-															) }
-															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueTopTablet !== '' ? valueTopTablet : '' }
-															min={ type === 'padding' ? 0 : undefined }
-															data-device-type="Tablet"
-														/>
-														<input
-															className="components-coblocks-dimensions-control__number"
-															type="number"
-															onChange={ onChangeRightValue }
-															aria-label={ sprintf(
-																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
-																__( '%s right', 'coblocks' ),
-																label
-															) }
-															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueRightTablet !== '' ? valueRightTablet : '' }
-															min={ type === 'padding' ? 0 : undefined }
-															data-device-type="Tablet"
-														/>
-														<input
-															className="components-coblocks-dimensions-control__number"
-															type="number"
-															onChange={ onChangeBottomValue }
-															aria-label={ sprintf(
-																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
-																__( '%s bottom', 'coblocks' ),
-																label
-															) }
-															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueBottomTablet !== '' ? valueBottomTablet : '' }
-															min={ type === 'padding' ? 0 : undefined }
-															data-device-type="Tablet"
-														/>
-														<input
-															className="components-coblocks-dimensions-control__number"
-															type="number"
-															onChange={ onChangeLeftValue }
-															aria-label={ sprintf(
-																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
-																__( '%s left', 'coblocks' ),
-																label
-															) }
-															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueLeftTablet !== '' ? valueLeftTablet : '' }
-															min={ type === 'padding' ? 0 : undefined }
-															data-device-type="Tablet"
-														/>
-														<Tooltip text={ !! syncUnitsTablet ? __( 'Unsync', 'coblocks' ) : __( 'Sync', 'coblocks' ) } >
-															<Button
-																className="components-coblocks-dimensions-control_sync"
-																aria-label={ __( 'Sync units', 'coblocks' ) }
-																isPrimary={ syncUnitsTablet ? true : false }
-																isSecondary={ syncUnitsTablet ? false : true }
-																aria-pressed={ syncUnitsTablet ? true : false }
-																onClick={ ( value ) => this.syncUnits( value, 'Tablet' ) }
-																data-device-type="Tablet"
-																isSmall
-															>
-																{ SyncIcon }
-															</Button>
-														</Tooltip>
-													</div>
-												</Fragment>
-											);
-										}
-										return (
-											<Fragment>
-												<div className="components-coblocks-dimensions-control__inputs">
-													<input
-														className="components-coblocks-dimensions-control__number"
-														type="number"
-														onChange={ onChangeTopValue }
-														aria-label={ sprintf(
-															/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
-															__( '%s top', 'coblocks' ),
-															label
-														) }
-														aria-describedby={ !! help ? id + '__help' : undefined }
-														value={ valueTop !== '' ? valueTop : '' }
-														min={ type === 'padding' ? 0 : undefined }
-														data-device-type=""
-													/>
-													<input
-														className="components-coblocks-dimensions-control__number"
-														type="number"
-														onChange={ onChangeRightValue }
-														aria-label={ sprintf(
-															/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
-															__( '%s right', 'coblocks' ),
-															label
-														) }
-														aria-describedby={ !! help ? id + '__help' : undefined }
-														value={ valueRight !== '' ? valueRight : '' }
-														min={ type === 'padding' ? 0 : undefined }
-														data-device-type=""
-													/>
-													<input
-														className="components-coblocks-dimensions-control__number"
-														type="number"
-														onChange={ onChangeBottomValue }
-														aria-label={ sprintf(
-															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-															__( '%s bottom', 'coblocks' ),
-															label
-														) }
-														aria-describedby={ !! help ? id + '__help' : undefined }
-														value={ valueBottom !== '' ? valueBottom : '' }
-														min={ type === 'padding' ? 0 : undefined }
-														data-device-type=""
-													/>
-													<input
-														className="components-coblocks-dimensions-control__number"
-														type="number"
-														onChange={ onChangeLeftValue }
-														aria-label={ sprintf(
-															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-															__( '%s left', 'coblocks' ), label
-														) }
-														aria-describedby={ !! help ? id + '__help' : undefined }
-														value={ valueLeft !== '' ? valueLeft : '' }
-														min={ type === 'padding' ? 0 : undefined }
-														data-device-type=""
-													/>
-													<Tooltip text={ !! syncUnits ? __( 'Unsync', 'coblocks' ) : __( 'Sync', 'coblocks' ) } >
-														<Button
-															className="components-coblocks-dimensions-control_sync"
-															aria-label={ __( 'Sync units', 'coblocks' ) }
-															isPrimary={ syncUnits ? true : false }
-															isSecondary={ syncUnits ? false : true }
-															aria-pressed={ syncUnits ? true : false }
-															onClick={ ( value ) => this.syncUnits( value, '' ) }
-															data-device-type=""
-															isSmall
-														>
-															{ SyncIcon }
-														</Button>
-													</Tooltip>
-												</div>
-											</Fragment>
-										);
-									}
-								}
-							</TabPanel>
-							<div className="components-coblocks-dimensions-control__input-labels">
-								<span className="components-coblocks-dimensions-control__number-label">{ __( 'Top', 'coblocks' ) }</span>
-								<span className="components-coblocks-dimensions-control__number-label">{ __( 'Right', 'coblocks' ) }</span>
-								<span className="components-coblocks-dimensions-control__number-label">{ __( 'Bottom', 'coblocks' ) }</span>
-								<span className="components-coblocks-dimensions-control__number-label">{ __( 'Left', 'coblocks' ) }</span>
-								<span className="components-coblocks-dimensions-control__number-label-blank"></span>
-							</div>
-						</Fragment>
-						:						<BaseControl id="textarea-1" label={ label } help={ help }>
-							<div className="components-font-size-picker__controls">
-								<DimensionsSelect
-									type={ type }
-									setAttributes={ setAttributes }
-									paddingSize={ paddingSize }
-									marginSize={ marginSize }
-								/>
-
+											<Button
+												key={ unitValue }
+												className={ 'components-coblocks-dimensions-control__units--' + name }
+												isSmall
+												isPrimary={ unit === unitValue }
+												isSecondary={ unit !== unitValue }
+												aria-pressed={ unit === unitValue }
+												aria-label={ sprintf(
+													/* translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
+													__( '%s units', 'coblocks' ),
+													name
+												) }
+												onClick={ () => onChangeUnits( unitValue ) }
+											>
+												{ unitValue }
+											</Button>
+										</Tooltip>
+									) ) }
+								</ButtonGroup>
 								<Button
 									type="button"
-									onClick={ () => this.onChangeSize( 'advanced', '' ) }
+									onClick={ () => onChangeSize( 'no', -1 ) }
 									isSmall
 									isSecondary
 									aria-label={ sprintf(
-										/* translators: %s: a texual label */
-										__( 'Advanced %s settings', 'coblocks' ),
+										/* translators: %s: a texual label  */
+										__( 'Turn off advanced %s settings', 'coblocks' ),
 										label.toLowerCase()
 									) }
-									isPrimary={ dimensionSize === 'advanced' }
 								>
-									{ __( 'Advanced', 'coblocks' ) }
+									{ __( 'Reset', 'coblocks' ) }
 								</Button>
 							</div>
-						</BaseControl>
-					}
-				</div>
-			</Fragment>
-		);
-	}
-}
+						</div>
+						<TabPanel
+							className="components-coblocks-dimensions-control__mobile-controls"
+							activeClass="is-active"
+							initialTabName="default"
+							onSelect={ onSelect }
+							tabs={ [
+								{
+									name: 'default',
+									title: DesktopIcon,
+									className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--default components-coblocks-dimensions-control__mobile-controls-item-${ type }--default`,
+								},
+								{
+									name: 'desktop',
+									title: DesktopIcon,
+									className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--desktop components-coblocks-dimensions-control__mobile-controls-item-${ type }--desktop`,
+								},
+								{
+									name: 'tablet',
+									title: TabletIcon,
+									className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--tablet components-coblocks-dimensions-control__mobile-controls-item-${ type }--tablet`,
+								},
+								{
+									name: 'mobile',
+									title: MobileIcon,
+									className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--mobile components-coblocks-dimensions-control__mobile-controls-item-${ type }--mobile`,
+								},
+							] }>
+							{
+								( tab ) => renderAdvancedControls( tab.name === 'default' || tab.name === 'desktop' ? '' : capitalize( tab.name ) )
+							}
+						</TabPanel>
+						<div className="components-coblocks-dimensions-control__input-labels">
+							<span className="components-coblocks-dimensions-control__number-label">{ __( 'Top', 'coblocks' ) }</span>
+							<span className="components-coblocks-dimensions-control__number-label">{ __( 'Right', 'coblocks' ) }</span>
+							<span className="components-coblocks-dimensions-control__number-label">{ __( 'Bottom', 'coblocks' ) }</span>
+							<span className="components-coblocks-dimensions-control__number-label">{ __( 'Left', 'coblocks' ) }</span>
+							<span className="components-coblocks-dimensions-control__number-label-blank"></span>
+						</div>
+					</Fragment>
+					: <BaseControl id="textarea-1" label={ label } help={ help }>
+						<div className="components-font-size-picker__controls">
+							<DimensionsSelect
+								type={ type }
+								setAttributes={ setAttributes }
+								paddingSize={ paddingSize }
+								marginSize={ marginSize }
+							/>
+
+							<Button
+								type="button"
+								onClick={ () => onChangeSize( 'advanced', '' ) }
+								isSmall
+								isSecondary
+								aria-label={ sprintf(
+									/* translators: %s: a texual label */
+									__( 'Advanced %s settings', 'coblocks' ),
+									label.toLowerCase()
+								) }
+								isPrimary={ dimensionSize === 'advanced' }
+							>
+								{ __( 'Advanced', 'coblocks' ) }
+							</Button>
+						</div>
+					</BaseControl>
+				}
+			</div>
+		</Fragment>
+	);
+};
 
 export default withInstanceId( DimensionsControl );
