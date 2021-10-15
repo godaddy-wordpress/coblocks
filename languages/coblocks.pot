@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-15T14:56:40+00:00\n"
+"POT-Creation-Date: 2021-10-15T15:40:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -261,6 +261,12 @@ msgstr ""
 
 #: src/blocks/events/index.php:122
 msgid "An error has occurred, check for calendar privileges to make sure it is public or try again later."
+msgstr ""
+
+#: src/blocks/gist/index.php:56
+#: src/blocks/gist/deprecated.js:37
+#: src/blocks/gist/deprecated.js:73
+msgid "View this gist on GitHub"
 msgstr ""
 
 #: src/blocks/post-carousel/index.php:42
@@ -2145,7 +2151,6 @@ msgid "This gif has an empty alt attribute"
 msgstr ""
 
 #: src/blocks/gif/edit.js:218
-#: src/blocks/gist/edit.js:156
 #: src/components/block-gallery/gallery-image.js:269
 msgid "Write caption…"
 msgstr ""
@@ -2177,71 +2182,25 @@ msgstr ""
 msgid "Gif settings"
 msgstr ""
 
-#. translators: %s: "Gist", the name of a code sharing platform
-#: src/blocks/gist/controls.js:21
-msgid "Return to %s"
-msgstr ""
-
-#. translators: %s: "Gist", the name of a code sharing platform
-#: src/blocks/gist/controls.js:26
-msgid "Edit %s URL"
-msgstr ""
-
-#: src/blocks/gist/deprecated.js:36
-#: src/blocks/gist/save.js:33
-msgid "View this gist on GitHub"
-msgstr ""
-
-#: src/blocks/gist/edit.js:171
-#: src/blocks/gist/inspector.js:37
-msgid "Gist URL"
-msgstr ""
-
-#: src/blocks/gist/edit.js:177
-msgid "Add GitHub Gist URL…"
-msgstr ""
-
-#: src/blocks/gist/gist.js:106
-msgid "Loading Gist"
-msgstr ""
-
 #. translators: block name
-#: src/blocks/gist/index.js:29
+#: src/blocks/gist/index.js:28
+#: src/blocks/gist/index.js:56
 msgid "Gist"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/gist/index.js:31
+#: src/blocks/gist/index.js:30
+#: src/blocks/gist/index.js:58
 msgid "Embed a GitHub Gist."
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/gist/index.js:38
+#: src/blocks/gist/index.js:64
 #: src/blocks/icon/deprecated/svgs.js:462
 #: src/blocks/icon/deprecated/svgsfocusable.js:461
 #: src/blocks/icon/svgs.js:440
 msgid "code"
-msgstr ""
-
-#: src/blocks/gist/inspector.js:17
-msgid "Showing gist meta data."
-msgstr ""
-
-#: src/blocks/gist/inspector.js:17
-msgid "Toggle to show the gist meta data."
-msgstr ""
-
-#: src/blocks/gist/inspector.js:35
-msgid "Gist settings"
-msgstr ""
-
-#: src/blocks/gist/inspector.js:42
-msgid "Gist File"
-msgstr ""
-
-#: src/blocks/gist/inspector.js:48
-msgid "Gist Meta"
 msgstr ""
 
 #: src/blocks/hero/controls.js:33
