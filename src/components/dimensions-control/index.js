@@ -150,7 +150,7 @@ const DimensionsControl = ( props ) => {
 		let dimensions = {};
 
 		if ( typeof coblocks !== 'undefined' && typeof coblocks.id !== 'undefined' ) {
-			const id = name.split( '/' ).join( '-' ) + '-' + coblocks.id;
+			const id = props.name.split( '/' ).join( '-' ) + '-' + coblocks.id;
 			const paddingUnit = block.attributes.paddingUnit;
 			const marginUnit = block.attributes.marginUnit;
 			const padding = {
