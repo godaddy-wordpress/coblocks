@@ -69,10 +69,6 @@
 		"noTopMargin": {
 			"type": "boolean",
 			"default": true
-		},
-		"justAdded": {
-			"type": "boolean",
-			"default": true
 		}
 	}
 }
