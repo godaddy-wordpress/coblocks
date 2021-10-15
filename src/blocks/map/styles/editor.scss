@@ -1,25 +1,6 @@
 [data-type="coblocks/map"] {
 
-	.components-placeholder {
-		height: 100%;
-
-		.components-placeholder__fieldset {
-
-			.components-placeholder__input {
-				margin-right: 5px;
-				min-width: 50%;
-
-				.components-base-control__field {
-					height: 36px;
-					margin-right: 8px;
-				}
-			}
-
-			input {
-				height: 36px;
-			}
-		}
-
+	@include input-submit-placeholder {
 		.components-placeholder__label {
 
 			svg {
