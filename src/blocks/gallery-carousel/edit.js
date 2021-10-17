@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import filter from 'lodash/filter';
 import Flickity from 'react-flickity-component';
 import { GalleryCarouselIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { v4 as uuid } from 'uuid';
 
 /**
  * Internal dependencies
@@ -15,6 +16,7 @@ import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 import { CarouselGalleryVariationPicker, hasVariationSet } from './variations';
+import Swiper from '../../components/swiper';
 
 /**
  * WordPress dependencies
@@ -264,6 +266,7 @@ const GalleryCarouselEdit = ( props ) => {
 
 	const navStyles = {
 		marginTop: gutter > 0 && ! responsiveHeight ? ( gutter / 2 ) + 'px' : undefined,
+		height: height / 3
 	};
 
 	const navFigureClasses = classnames(
@@ -274,6 +277,14 @@ const GalleryCarouselEdit = ( props ) => {
 			[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 		}
 	);
+
+	const swiperCarouselUuid = uuid();
+	const swiperThumbnailUuid = uuid();
+
+	console.log('nav stuff', {
+		navClasses,
+		navOptions
+	})
 
 	return (
 		<>
@@ -313,74 +324,73 @@ const GalleryCarouselEdit = ( props ) => {
 			>
 				<div className={ className }>
 					<div className={ innerClasses }>
-						<Flickity
-							className={ flickityClasses }
-							disableImagesLoaded={ true }
-							options={ flickityOptions }
-							reloadOnUpdate={ true }
-							updateOnEachImageLoad={ true }
+						<Swiper
+							list={images}
+							uuid={swiperCarouselUuid}
 						>
-							{ images.map( ( img, index ) => {
+							{({
+								item,
+								index,
+							}) => {
 								const ariaLabel = sprintf(
-									/* translators: %1$d is the order number of the image, %2$d is the total number of images */
 									__( 'image %1$d of %2$d in gallery', 'coblocks' ),
 									( index + 1 ),
 									images.length
 								);
 
 								return (
-									<div className="coblocks-gallery--item" role="button" tabIndex="0" key={ img.id || img.url } onKeyDown={ onItemClick } onClick={ onItemClick }>
-										<GalleryImage
-											url={ img.url }
-											alt={ img.alt }
-											id={ img.id }
-											gutter={ gutter }
-											gutterMobile={ gutterMobile }
-											marginRight={ true }
-											marginLeft={ true }
-											isSelected={ isSelected && selectedImage === index }
-											onRemove={ () => onRemoveImage( index ) }
-											onSelect={ () => onSelectImage( index ) }
-											setAttributes={ ( attrs ) => setImageAttributes( index, attrs ) }
-											caption={ img.caption }
-											aria-label={ ariaLabel }
-											supportsCaption={ false }
-											supportsMoving={ false }
-											imageIndex={ index }
-											replaceImage={ replaceImage }
-										/>
+									<div style={{ height: '100%', width: '100%' }} className="coblocks-gallery--item" role="button" tabIndex="0" key={ item.id || item.url } onKeyDown={ onItemClick } onClick={ onItemClick }>
+											<GalleryImage
+												url={ item.url }
+												alt={ item.alt }
+												id={ item.id }
+												gutter={ gutter }
+												gutterMobile={ gutterMobile }
+												marginRight={ true }
+												marginLeft={ true }
+												isSelected={ isSelected && selectedImage === index }
+												onRemove={ () => onRemoveImage( index ) }
+												onSelect={ () => onSelectImage( index ) }
+												setAttributes={ ( attrs ) => setImageAttributes( index, attrs ) }
+												caption={ item.caption }
+												aria-label={ ariaLabel }
+												supportsCaption={ false }
+												supportsMoving={ false }
+												imageIndex={ index }
+												replaceImage={ replaceImage }
+											/>
 									</div>
 								);
-							} ) }
-						</Flickity>
+							}}
+						</Swiper>
 					</div>
 				</div>
 			</ResizableBox>
-			{ thumbnails &&
-			<div className={ className }>
-				<div
-					className={ innerClasses }
-					style={ navStyles }
-				>
-					<Flickity
-						className={ navClasses }
-						options={ navOptions }
-						disableImagesLoaded={ true }
-						reloadOnUpdate={ true }
-						updateOnEachImageLoad={ true }
+			{ thumbnails /* thumbnails */ &&
+				<div className={ className }>
+					<div
+						className={ innerClasses }
+						style={ navStyles }
 					>
-						{ images.map( ( image ) => {
-							return (
-								<div className="coblocks--item-thumbnail" key={ image.id || image.url }>
-									<figure className={ navFigureClasses }>
-										<img src={ image.url } alt={ image.alt } data-link={ image.link } data-id={ image.id } className={ image.id ? `wp-image-${ image.id }` : null } />
-									</figure>
-								</div>
-							);
-						} ) }
-					</Flickity>
+						<Swiper
+							list={images}
+							uuid={swiperThumbnailUuid}
+						>
+							{({
+								item,
+								index
+							}) => {
+								return (
+									<div className="coblocks--item-thumbnail" key={ item.id || item.url }>
+										<figure className={ navFigureClasses }>
+											<img src={ item.url } alt={ item.alt } data-link={ item.link } data-id={ item.id } className={ item.id ? `wp-image-${ item.id }` : null } />
+										</figure>
+									</div>
+								);
+							}}
+						</Swiper>
+					</div>
 				</div>
-			</div>
 			}
 			{ carouselGalleryPlaceholder }
 			{ ( ! RichText.isEmpty( primaryCaption ) || isSelected ) && (
@@ -398,6 +408,130 @@ const GalleryCarouselEdit = ( props ) => {
 			) }
 		</>
 	);
+
+	// return (
+	// 	<>
+	// 		{ isSelected && (
+	// 			<>
+	// 				<Controls { ...props } />
+	// 				<Inspector { ...props } />
+	// 			</>
+	// 		) }
+	// 		{ noticeUI }
+	// 		<ResizableBox
+	// 			size={ {
+	// 				height,
+	// 				width: '100%',
+	// 			} }
+	// 			className={ classnames( {
+	// 				'is-selected': isSelected,
+	// 				'has-responsive-height': responsiveHeight,
+	// 			} ) }
+	// 			minHeight="0"
+	// 			enable={ {
+	// 				bottom: true,
+	// 				bottomLeft: false,
+	// 				bottomRight: false,
+	// 				left: false,
+	// 				right: false,
+	// 				top: false,
+	// 				topLeft: false,
+	// 				topRight: false,
+	// 			} }
+	// 			onResizeStop={ ( _event, _direction, _elt, delta ) => {
+	// 				setAttributes( {
+	// 					height: parseInt( height + delta.height, 10 ),
+	// 				} );
+	// 			} }
+	// 			showHandle={ isSelected }
+	// 		>
+	// 			<div className={ className }>
+	// 				<div className={ innerClasses }>
+	// 					<Flickity
+	// 						className={ flickityClasses }
+	// 						disableImagesLoaded={ true }
+	// 						options={ flickityOptions }
+	// 						reloadOnUpdate={ true }
+	// 						updateOnEachImageLoad={ true }
+	// 					>
+	// 						{ images.map( ( img, index ) => {
+	// 							const ariaLabel = sprintf(
+	// 								/* translators: %1$d is the order number of the image, %2$d is the total number of images */
+	// 								__( 'image %1$d of %2$d in gallery', 'coblocks' ),
+	// 								( index + 1 ),
+	// 								images.length
+	// 							);
+
+	// 							return (
+	// 								<div className="coblocks-gallery--item" role="button" tabIndex="0" key={ img.id || img.url } onKeyDown={ onItemClick } onClick={ onItemClick }>
+	// 									<GalleryImage
+	// 										url={ img.url }
+	// 										alt={ img.alt }
+	// 										id={ img.id }
+	// 										gutter={ gutter }
+	// 										gutterMobile={ gutterMobile }
+	// 										marginRight={ true }
+	// 										marginLeft={ true }
+	// 										isSelected={ isSelected && selectedImage === index }
+	// 										onRemove={ () => onRemoveImage( index ) }
+	// 										onSelect={ () => onSelectImage( index ) }
+	// 										setAttributes={ ( attrs ) => setImageAttributes( index, attrs ) }
+	// 										caption={ img.caption }
+	// 										aria-label={ ariaLabel }
+	// 										supportsCaption={ false }
+	// 										supportsMoving={ false }
+	// 										imageIndex={ index }
+	// 										replaceImage={ replaceImage }
+	// 									/>
+	// 								</div>
+	// 							);
+	// 						} ) }
+	// 					</Flickity>
+	// 				</div>
+	// 			</div>
+	// 		</ResizableBox>
+	// 		{ thumbnails &&
+	// 		<div className={ className }>
+	// 			<div
+	// 				className={ innerClasses }
+	// 				style={ navStyles }
+	// 			>
+	// 				<Flickity
+	// 					className={ navClasses }
+	// 					options={ navOptions }
+	// 					disableImagesLoaded={ true }
+	// 					reloadOnUpdate={ true }
+	// 					updateOnEachImageLoad={ true }
+	// 				>
+	// 					{ images.map( ( image ) => {
+	// 						return (
+	// 							<div className="coblocks--item-thumbnail" key={ image.id || image.url }>
+	// 								<figure className={ navFigureClasses }>
+	// 									<img src={ image.url } alt={ image.alt } data-link={ image.link } data-id={ image.id } className={ image.id ? `wp-image-${ image.id }` : null } />
+	// 								</figure>
+	// 							</div>
+	// 						);
+	// 					} ) }
+	// 				</Flickity>
+	// 			</div>
+	// 		</div>
+	// 		}
+	// 		{ carouselGalleryPlaceholder }
+	// 		{ ( ! RichText.isEmpty( primaryCaption ) || isSelected ) && (
+	// 			<RichText
+	// 				tagName="figcaption"
+	// 				placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
+	// 				value={ primaryCaption }
+	// 				className="coblocks-gallery--caption coblocks-gallery--primary-caption"
+	// 				unstableOnFocus={ onFocusCaption }
+	// 				onChange={ ( value ) => setAttributes( { primaryCaption: value } ) }
+	// 				isSelected={ captionFocused }
+	// 				keepPlaceholderOnFocus
+	// 				inlineToolbar
+	// 			/>
+	// 		) }
+	// 	</>
+	// );
 };
 
 export default compose( [
