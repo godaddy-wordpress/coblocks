@@ -91,10 +91,6 @@ describe( 'coblocks/media-card', () => {
 		block.attributes.videoLoop = true;
 		block.attributes.videoMuted = true;
 		serializedBlock = serialize( block );
-		
-		// This assertion should be removed when issue #2025 is resolved.
-		// https://github.com/godaddy-wordpress/coblocks/issues/2025
-		expect( console ).toHaveErrored();
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'src="150x150.mp4"' );
