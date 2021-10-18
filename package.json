@@ -122,7 +122,7 @@
 	  	"@wordpress/url": "^2.22.2",
 		"autoprefixer": "^9.7.5",
 		"chalk": "^4.1.2",
-	  	"classnames": "^2.3.1",
+	  	"classnames": "^2.2.5",
 	  	"commander": "^2.20.0",
 		"css-loader": "^3.2.1",
 		"cypress": "^6.9.1",

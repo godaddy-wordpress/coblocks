@@ -1,0 +1,4 @@
+{
+  "core": "https://wordpress.org/nightly-builds/wordpress-latest.zip",
+  "plugins": [ "." ]
+}
