@@ -28,6 +28,10 @@ const { name, category } = metadata;
 const attributes = {
 	...GalleryAttributes,
 	...metadata.attributes,
+	gutter: {
+		type: 'string',
+		default: 'medium',
+	},
 };
 
 const settings = {
