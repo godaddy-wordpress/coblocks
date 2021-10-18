@@ -327,6 +327,8 @@ const GalleryCarouselEdit = ( props ) => {
 						<Swiper
 							list={images}
 							uuid={swiperCarouselUuid}
+							navigation
+							thumbnails
 						>
 							{({
 								item,
@@ -366,32 +368,6 @@ const GalleryCarouselEdit = ( props ) => {
 					</div>
 				</div>
 			</ResizableBox>
-			{ thumbnails /* thumbnails */ &&
-				<div className={ className }>
-					<div
-						className={ innerClasses }
-						style={ navStyles }
-					>
-						<Swiper
-							list={images}
-							uuid={swiperThumbnailUuid}
-						>
-							{({
-								item,
-								index
-							}) => {
-								return (
-									<div className="coblocks--item-thumbnail" key={ item.id || item.url }>
-										<figure className={ navFigureClasses }>
-											<img src={ item.url } alt={ item.alt } data-link={ item.link } data-id={ item.id } className={ item.id ? `wp-image-${ item.id }` : null } />
-										</figure>
-									</div>
-								);
-							}}
-						</Swiper>
-					</div>
-				</div>
-			}
 			{ carouselGalleryPlaceholder }
 			{ ( ! RichText.isEmpty( primaryCaption ) || isSelected ) && (
 				<RichText

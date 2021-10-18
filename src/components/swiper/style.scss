@@ -23,3 +23,46 @@
 	position: relative;
 	width: 100%;
 }
+
+.nav-button  {
+		&__prev {
+			background-color: var(--wp-admin-theme-color, #007cba);
+
+			transform: translateY(-50%);
+			margin: 0 1%;
+			padding: 15px;
+			height: 62px;
+			left: 0;
+			width: 62px;
+			top: 50%;
+			position: absolute;
+			cursor: pointer;
+
+			border-radius: 100%;
+			border: none;
+		}
+
+		&__next {
+			background-color: var(--wp-admin-theme-color, #007cba);
+
+			transform: translateY(-50%);
+			margin: 0 1%;
+			padding: 15px;
+		    height: 62px;
+			width: 62px;
+			top: 50%;
+			position: absolute;
+			right: 0;
+			cursor: pointer;
+			border-radius: 100%;
+			border: none;
+		}
+}
+
+.icon {
+	mask-image: url(images/lightbox/arrow-right.svg);
+	height: 32px;
+	width: 32px;
+
+	background-color: white;
+}
