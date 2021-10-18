@@ -1,10 +1,12 @@
 /**
  * External dependencies
  */
+import ReactDOMServer from 'react-dom/server';
 import classnames from 'classnames';
 import filter from 'lodash/filter';
 import Flickity from 'react-flickity-component';
 import { GalleryCarouselIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { useDispatch } from '@wordpress/data';
 import { v4 as uuid } from 'uuid';
 
 /**
@@ -47,6 +49,10 @@ const GalleryCarouselEdit = ( props ) => {
 
 	const [ selectedImage, setSelectedImage ] = useState( null );
 	const [ captionFocused, setCaptionFocused ] = useState( false );
+
+	const { selectBlock } = useDispatch( 'core/block-editor' );
+
+	const [carouselCurrentStep, setCarouselCurrentStep] = useState( 0 );
 
 	const prevSelected = usePrevious( props.isSelected );
 
@@ -138,7 +144,7 @@ const GalleryCarouselEdit = ( props ) => {
 
 	const onItemClick = () => {
 		if ( ! props.isSelected ) {
-			props.onSelect();
+			selectBlock();
 		}
 
 		if ( captionFocused ) {
@@ -281,109 +287,130 @@ const GalleryCarouselEdit = ( props ) => {
 	const swiperCarouselUuid = uuid();
 	const swiperThumbnailUuid = uuid();
 
-	console.log('nav stuff', {
-		navClasses,
-		navOptions
-	})
+	console.log('height stuff', {
+		height,
+		responsiveHeight
+	});
 
-	return (
-		<>
-			{ isSelected && (
-				<>
-					<Controls { ...props } />
-					<Inspector { ...props } />
-				</>
-			) }
-			{ noticeUI }
-			<ResizableBox
-				size={ {
-					height,
-					width: '100%',
-				} }
-				className={ classnames( {
-					'is-selected': isSelected,
-					'has-responsive-height': responsiveHeight,
-				} ) }
-				minHeight="0"
-				enable={ {
-					bottom: true,
-					bottomLeft: false,
-					bottomRight: false,
-					left: false,
-					right: false,
-					top: false,
-					topLeft: false,
-					topRight: false,
-				} }
-				onResizeStop={ ( _event, _direction, _elt, delta ) => {
-					setAttributes( {
-						height: parseInt( height + delta.height, 10 ),
-					} );
-				} }
-				showHandle={ isSelected }
-			>
-				<div className={ className }>
-					<div className={ innerClasses }>
-						<Swiper
-							list={images}
-							uuid={swiperCarouselUuid}
-							navigation
-							thumbnails
-						>
-							{({
-								item,
-								index,
-							}) => {
-								const ariaLabel = sprintf(
-									__( 'image %1$d of %2$d in gallery', 'coblocks' ),
-									( index + 1 ),
-									images.length
-								);
+	// return (
+	// 	<>
+	// 		{ isSelected && (
+	// 			<>
+	// 				<Controls { ...props } />
+	// 				<Inspector { ...props } />
+	// 			</>
+	// 		) }
+	// 		{ noticeUI }
+	// 		<ResizableBox
+	// 			size={ {
+	// 				height: 'auto',
+	// 				minHeight: height,
+	// 				width: '100%',
+	// 			} }
+	// 			className={ classnames( {
+	// 				'is-selected': isSelected,
+	// 				'has-responsive-height': responsiveHeight,
+	// 			} ) }
+	// 			minHeight="0"
+	// 			enable={ {
+	// 				bottom: true,
+	// 				bottomLeft: false,
+	// 				bottomRight: false,
+	// 				left: false,
+	// 				right: false,
+	// 				top: false,
+	// 				topLeft: false,
+	// 				topRight: false,
+	// 			} }
+	// 			onResizeStop={ ( _event, _direction, _elt, delta ) => {
+	// 				setAttributes( {
+	// 					height: parseInt( height + delta.height, 10 ),
+	// 				} );
+	// 			} }
+	// 			showHandle={ isSelected }
+	// 		>
+	// 			<div className={ className }>
+	// 				<div className={ innerClasses }>
+	// 					<Swiper
+	// 					    stepChangeCallback={step => setCarouselCurrentStep(step)}
+	// 						list={images}
+	// 						uuid={swiperCarouselUuid}
+	// 						navigation
+	// 						PaginationControl={{
+	// 							class: "wp-block-coblocks-gallery-carousel-thumbnail-pagination",
+	// 							render: ({ index, className: pageClassName }) => {
+	// 								const item = images[index];
 
-								return (
-									<div style={{ height: '100%', width: '100%' }} className="coblocks-gallery--item" role="button" tabIndex="0" key={ item.id || item.url } onKeyDown={ onItemClick } onClick={ onItemClick }>
-											<GalleryImage
-												url={ item.url }
-												alt={ item.alt }
-												id={ item.id }
-												gutter={ gutter }
-												gutterMobile={ gutterMobile }
-												marginRight={ true }
-												marginLeft={ true }
-												isSelected={ isSelected && selectedImage === index }
-												onRemove={ () => onRemoveImage( index ) }
-												onSelect={ () => onSelectImage( index ) }
-												setAttributes={ ( attrs ) => setImageAttributes( index, attrs ) }
-												caption={ item.caption }
-												aria-label={ ariaLabel }
-												supportsCaption={ false }
-												supportsMoving={ false }
-												imageIndex={ index }
-												replaceImage={ replaceImage }
-											/>
-									</div>
-								);
-							}}
-						</Swiper>
-					</div>
-				</div>
-			</ResizableBox>
-			{ carouselGalleryPlaceholder }
-			{ ( ! RichText.isEmpty( primaryCaption ) || isSelected ) && (
-				<RichText
-					tagName="figcaption"
-					placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
-					value={ primaryCaption }
-					className="coblocks-gallery--caption coblocks-gallery--primary-caption"
-					unstableOnFocus={ onFocusCaption }
-					onChange={ ( value ) => setAttributes( { primaryCaption: value } ) }
-					isSelected={ captionFocused }
-					keepPlaceholderOnFocus
-					inlineToolbar
-				/>
-			) }
-		</>
-	);
+	// 								// return ReactDOMServer.renderToStaticMarkup(
+	// 								// 	<div className={`${pageClassName} wp-block-coblocks-gallery-carousel-thumbnail`} style={{ height: '80px', width: '100px' }} >
+	// 								// 		<img src={ item.url } alt={ item.alt } data-link={ item.link } data-id={ item.id } style={{ height: '100%', width: '100%' }} />	
+	// 								// 	</div>
+	// 								// );
+
+	// 								return (
+	// 									<div className={`wp-block-coblocks-gallery-carousel-thumbnail`} style={{ height: '80px', width: '100px' }} >
+	// 										<img src={ item.url } alt={ item.alt } data-link={ item.link } data-id={ item.id } style={{ height: '100%', width: '100%' }} />	
+	// 									</div>
+	// 								);
+	// 							}
+	// 						}}
+	// 					>
+	// 						{({
+	// 							item,
+	// 							index,
+	// 						}) => {
+	// 							const ariaLabel = sprintf(
+	// 								__( 'image %1$d of %2$d in gallery', 'coblocks' ),
+	// 								( index + 1 ),
+	// 								images.length
+	// 							);
+
+	// 							return (
+	// 								<div style={{ height: thumbnails ? height + 80 : height, width: '100%' }} className="coblocks-gallery--item" role="button" tabIndex="0" key={ item.id || item.url } onKeyDown={ onItemClick } onClick={ onItemClick } >
+	// 										<GalleryImage
+	// 											url={ item.url }
+	// 											alt={ item.alt }
+	// 											id={ item.id }
+	// 											gutter={ gutter }
+	// 											gutterMobile={ gutterMobile }
+	// 											marginRight={ true }
+	// 											marginLeft={ true }
+	// 											isSelected={ isSelected && selectedImage === index }
+	// 											onRemove={ () => onRemoveImage( index ) }
+	// 											onSelect={ () => {
+	// 												onSelectImage( index );
+	// 											} }
+	// 											setAttributes={ ( attrs ) => setImageAttributes( index, attrs ) }
+	// 											caption={ item.caption }
+	// 											aria-label={ ariaLabel }
+	// 											supportsCaption={ false }
+	// 											supportsMoving={ false }
+	// 											imageIndex={ index }
+	// 											replaceImage={ replaceImage }
+	// 										/>
+	// 								</div>
+	// 							);
+	// 						}}
+	// 					</Swiper>
+	// 				</div>
+	// 			</div>
+	// 		</ResizableBox>
+	// 		{ carouselGalleryPlaceholder }
+	// 		{ ( ! RichText.isEmpty( primaryCaption ) || isSelected ) && (
+	// 			<RichText
+	// 				tagName="figcaption"
+	// 				placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
+	// 				value={ primaryCaption }
+	// 				className="coblocks-gallery--caption coblocks-gallery--primary-caption"
+	// 				unstableOnFocus={ onFocusCaption }
+	// 				onChange={ ( value ) => setAttributes( { primaryCaption: value } ) }
+	// 				isSelected={ captionFocused }
+	// 				keepPlaceholderOnFocus
+	// 				inlineToolbar
+	// 			/>
+	// 		) }
+	// 	</>
+	// );
 
 	// return (
 	// 	<>
@@ -508,6 +535,120 @@ const GalleryCarouselEdit = ( props ) => {
 	// 		) }
 	// 	</>
 	// );
+
+	console.log('isSelected', isSelected);
+
+	return (
+		<>
+			{ isSelected && (
+				<>
+					<Controls { ...props } />
+					<Inspector { ...props } />
+				</>
+			) }
+			{ noticeUI }
+			<ResizableBox
+				size={ {
+					height,
+					width: '100%',
+				} }
+				className={ classnames( {
+					'is-selected': isSelected,
+					'has-responsive-height': responsiveHeight,
+				} ) }
+				minHeight="0"
+				enable={ {
+					bottom: true,
+					bottomLeft: false,
+					bottomRight: false,
+					left: false,
+					right: false,
+					top: false,
+					topLeft: false,
+					topRight: false,
+				} }
+				onResizeStop={ ( _event, _direction, _elt, delta ) => {
+					setAttributes( {
+						height: parseInt( height + delta.height, 10 ),
+					} );
+				} }
+				showHandle={ isSelected }
+			>
+				<div className={ className } onClick={() => selectBlock(props.clientId)}>
+					<div className={ innerClasses }>
+						<Swiper
+							list={images}
+							uuid={swiperCarouselUuid}
+							navigation
+							{...(thumbnails ? {
+								PaginationControl: {
+									class: "wp-block-coblocks-gallery-carousel-thumbnail-pagination",
+									render: ({ index, className: pageClassName }) => {
+										const item = images[index];
+	
+										return (
+											<div className={`wp-block-coblocks-gallery-carousel-thumbnail`} style={{ height: '80px', width: '100px' }} >
+												<img src={ item.url } alt={ item.alt } data-link={ item.link } data-id={ item.id } style={{ height: '100%', width: '100%' }} />	
+											</div>
+										);
+									}							
+								}
+							} : {})}
+						>
+							{({
+								item,
+								index,
+							}) => {
+								const ariaLabel = sprintf(
+									/* translators: %1$d is the order number of the image, %2$d is the total number of images */
+									__( 'image %1$d of %2$d in gallery', 'coblocks' ),
+									( index + 1 ),
+									images.length
+								);
+								
+								return (
+									<div className="coblocks-gallery--item" role="button" tabIndex="0" key={ item.id || item.url } onKeyDown={ onItemClick } onClick={ onItemClick }>
+										<GalleryImage
+											url={ item.url }
+											alt={ item.alt }
+											id={ item.id }
+											gutter={ gutter }
+											gutterMobile={ gutterMobile }
+											marginRight={ true }
+											marginLeft={ true }
+											isSelected={ isSelected && selectedImage === index }
+											onRemove={ () => onRemoveImage( index ) }
+											onSelect={ () => onSelectImage( index ) }
+											setAttributes={ ( attrs ) => setImageAttributes( index, attrs ) }
+											caption={ item.caption }
+											aria-label={ ariaLabel }
+											supportsCaption={ false }
+											supportsMoving={ false }
+											imageIndex={ index }
+											replaceImage={ replaceImage }
+										/>
+									</div>
+								);									
+							}}
+						</Swiper>
+					</div>
+				</div>
+			</ResizableBox>
+			{ ( ! RichText.isEmpty( primaryCaption ) || isSelected ) && (
+				<RichText
+					tagName="figcaption"
+					placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
+					value={ primaryCaption }
+					className="coblocks-gallery--caption coblocks-gallery--primary-caption"
+					unstableOnFocus={ onFocusCaption }
+					onChange={ ( value ) => setAttributes( { primaryCaption: value } ) }
+					isSelected={ captionFocused }
+					keepPlaceholderOnFocus
+					inlineToolbar
+				/>
+			) }
+		</>
+	);
 };
 
 export default compose( [

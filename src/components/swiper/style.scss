@@ -1,27 +1,59 @@
+.coblocks-swiper-container {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+
 .swiper-container,
 .swiper-wrapper {
 	height: 100%;
 	margin: 0;
 	padding: 0;
 	width: 100%;
+	display: flex;
+}
+
+.swiper-plugin-pagination {
+	height: auto;
+	width: auto;
 }
 
 /* basic */
 .swiper-container {
 	overflow: hidden;
+}
+
+.swiper-container-thumbnails {
+	overflow: hidden;
 	position: relative;
+
+	height: 80px;
+}
+
+.swiper-wrapper-thumbnails {
+	transform: none !important;
+	transition: none !important;
+
+	background-color: blue;
 }
 
 
 .swiper-slide {
+
+	flex-shrink: 0;
+	font-size: 18px;
+}
+
+.swiper-slide-thumbnail {
 	align-items: center;
 	display: flex;
 	flex-shrink: 0;
 	font-size: 18px;
-	height: 100%;
+	
 	justify-content: center;
 	position: relative;
-	width: 100%;
+	width: 100px;
+	height: 80px;
 }
 
 .nav-button  {

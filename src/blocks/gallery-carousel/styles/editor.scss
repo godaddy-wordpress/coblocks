@@ -10,6 +10,7 @@
 	}
 
 	.coblocks-gallery--figure {
+		// set the margin top 
 		margin-bottom: 3px !important;
 		margin-top: 3px !important;
 	}
@@ -25,7 +26,17 @@
 		&,
 		.coblocks-gallery {
 			height: 100%;
+			overflow: visible;
 		}
+	}
+
+	.wp-block-coblocks-gallery-carousel-thumbnail-pagination {
+		height: auto;
+		width: auto;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
 	}
 
 	// Fixes issue with multiple dropzones displaying when dropping in an image.
@@ -79,6 +90,22 @@
 	.wp-block-blockgallery-thumbnails {
 		overflow: visible;
 	}
+}
+
+.wp-block-coblocks-gallery-carousel-thumbnail-pagination .is-clickable {
+	cursor: pointer;
+}
+
+.swiper-plugin-pagination__item {
+	opacity: 0.4;
+}
+
+.swiper-plugin-pagination__item + .is-active:first-of-type {
+	opacity: 1;
+}
+
+.swiper-plugin-pagination__item + .is-active {
+	opacity: 1;
 }
 
 [data-type="core/group"] .components-resizable-box__container .wp-block-coblocks-gallery-carousel {
