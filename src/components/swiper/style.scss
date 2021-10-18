@@ -1,27 +1,25 @@
 .swiper-container,
 .swiper-wrapper {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	width: 100%;
 }
 
 /* basic */
 .swiper-container {
-    position: relative;
-    overflow: hidden;
+	overflow: hidden;
+	position: relative;
 }
 
-  
+
 .swiper-slide {
-    position: relative;
-    display: flex;
-    flex-shrink: 0;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    font-size: 18px;
-    align-items: center;
-    cursor: grab;
+	align-items: center;
+	display: flex;
+	flex-shrink: 0;
+	font-size: 18px;
+	height: 100%;
+	justify-content: center;
+	position: relative;
+	width: 100%;
 }
-  

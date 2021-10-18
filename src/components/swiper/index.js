@@ -5,7 +5,6 @@ import TinySwiper from 'tiny-swiper';
 import './style.scss';
 
 const Swiper = ({ list, uuid, children, slidesPerView = 1 }) => {
-
     useEffect(() => {
         const swiperContainer = document.getElementById(uuid);
         const swiper = new TinySwiper(swiperContainer);
