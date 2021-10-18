@@ -19,8 +19,8 @@ void ( function( root, factory ) {
 	// Add a classname
 	document.documentElement.className += ' no-details';
 
-	// Disable issue: https://github.com/godaddy-wordpress/coblocks/issues/2000
-	// Disable note: This is a stand-alone script and may not be able to refactor.
+	// Disable note: This rule is only meant to be used for React components
+	// See https://github.com/WordPress/gutenberg/pull/26810
 	// eslint-disable-next-line @wordpress/no-global-event-listener
 	window.addEventListener( 'click', clickHandler );
 
