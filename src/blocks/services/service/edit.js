@@ -198,7 +198,7 @@ const Edit = ( props ) => {
 	const onSetHref = ( { href: newHref, ...restArgs } ) => {
 		const newAttributes = { ...restArgs };
 
-		if ( newHref !== undefined || newHref !== href ) {
+		if ( newHref !== undefined ) {
 			newAttributes.href = newHref;
 		}
 
