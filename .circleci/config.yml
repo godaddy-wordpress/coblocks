@@ -623,7 +623,7 @@ jobs:
           name: "Test JS and Collect Coverage"
           command: |
             rm -rf node_modules/ && yarn && yarn build
-            yarn test:js:coverage --maxWorkers=1 --reporters=default --reporters=jest-junit
+            yarn test:js:coverage --maxWorkers=2 --reporters=default --reporters=jest-junit
           environment:
             JEST_JUNIT_OUTPUT_DIR: /tmp/artifacts/tests-results/jest
       - store_artifacts:

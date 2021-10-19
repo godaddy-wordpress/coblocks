@@ -1,5 +1,3 @@
-// Disable issue: https://github.com/godaddy-wordpress/coblocks/issues/2000
-/* eslint-disable @wordpress/no-global-event-listener */
 /**
  * External dependencies
  */
@@ -55,17 +53,21 @@ const Edit = ( props ) => {
 	const [ resizingAlt, setResizingAlt ] = useState( false );
 
 	useEffect( () => {
+		const win = document.defaultView;
+
 		getBrowserWidth();
-		window.addEventListener( 'resize', getBrowserWidth );
+		win.addEventListener( 'resize', getBrowserWidth );
 
 		return () => {
-			window.removeEventListener( 'resize', getBrowserWidth );
+			win.removeEventListener( 'resize', getBrowserWidth );
 		};
 	}, [] );
 
 	const getBrowserWidth = () => {
-		setInnerWidth( window.innerWidth );
-		return window.innerWidth;
+		const win = document.defaultView;
+
+		setInnerWidth( win.innerWidth );
+		return win.innerWidth;
 	};
 
 	const saveMeta = ( type ) => {
