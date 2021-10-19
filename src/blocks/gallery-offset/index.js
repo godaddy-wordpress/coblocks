@@ -30,7 +30,7 @@ const attributes = {
 	...metadata.attributes,
 	gutter: {
 		type: 'string',
-		default: 'medium',
+		default: 'small',
 	},
 };
 
