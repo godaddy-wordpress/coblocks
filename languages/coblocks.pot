@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-19T15:48:23+00:00\n"
+"POT-Creation-Date: 2021-10-19T16:45:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -728,11 +728,11 @@ msgid "Username"
 msgstr ""
 
 #. translators: the text of the click to tweet element
-#: src/blocks/click-to-tweet/edit.js:74
+#: src/blocks/click-to-tweet/edit.js:70
 msgid "Add a quote to tweet…"
 msgstr ""
 
-#: src/blocks/click-to-tweet/edit.js:101
+#: src/blocks/click-to-tweet/edit.js:97
 msgid "Add button…"
 msgstr ""
 
