@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-19T18:15:00+00:00\n"
+"POT-Creation-Date: 2021-10-19T18:50:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -2208,26 +2208,26 @@ msgid "Change layout"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/hero/edit.js:42
+#: src/blocks/hero/edit.js:40
 msgid "Add hero heading…"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/hero/edit.js:50
+#: src/blocks/hero/edit.js:48
 msgid "Add hero content, which is typically an introductory area of a page accompanied by call to action or two."
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/hero/edit.js:65
+#: src/blocks/hero/edit.js:63
 msgid "Primary button…"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/hero/edit.js:72
+#: src/blocks/hero/edit.js:70
 msgid "Secondary button…"
 msgstr ""
 
-#: src/blocks/hero/edit.js:182
+#: src/blocks/hero/edit.js:184
 msgid "Add background to hero"
 msgstr ""
 
@@ -4498,7 +4498,7 @@ msgid "Reset icon size"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:174
-#: src/components/crop-settings/index.js:322
+#: src/components/crop-settings/index.js:324
 #: src/components/dimensions-control/index.js:489
 #: src/components/size-control/index.js:209
 msgid "Reset"
@@ -7194,39 +7194,39 @@ msgstr ""
 msgid "Custom URL"
 msgstr ""
 
-#: src/components/crop-settings/index.js:264
-#: src/components/crop-settings/index.js:267
+#: src/components/crop-settings/index.js:266
+#: src/components/crop-settings/index.js:269
 msgid "Crop settings image placeholder"
 msgstr ""
 
 #. translators: label for horizontal positioning input
-#: src/components/crop-settings/index.js:273
+#: src/components/crop-settings/index.js:275
 msgid "Horizontal pos."
 msgstr ""
 
 #. translators: label for vertical positioning input
-#: src/components/crop-settings/index.js:282
+#: src/components/crop-settings/index.js:284
 msgid "Vertical pos."
 msgstr ""
 
 #. translators: label for the control that allows zooming in on the image
-#: src/components/crop-settings/index.js:292
+#: src/components/crop-settings/index.js:294
 msgid "Image zoom"
 msgstr ""
 
-#: src/components/crop-settings/index.js:299
+#: src/components/crop-settings/index.js:301
 msgid "Image orientation"
 msgstr ""
 
-#: src/components/crop-settings/index.js:305
+#: src/components/crop-settings/index.js:307
 msgid "Rotate counter-clockwise"
 msgstr ""
 
-#: src/components/crop-settings/index.js:311
+#: src/components/crop-settings/index.js:313
 msgid "Rotate clockwise"
 msgstr ""
 
-#: src/components/crop-settings/index.js:320
+#: src/components/crop-settings/index.js:322
 msgid "Reset image cropping options"
 msgstr ""
 
