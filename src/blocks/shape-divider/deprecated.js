@@ -83,6 +83,8 @@ const deprecated = [
 	{
 		attributes: {
 			...metadata.attributes,
+			shapeHeight: { type: 'number', default: 100 },
+			backgroundHeight: { type: 'number', default: 50 },
 		},
 		save( props ) {
 			const { attributes } = props;
@@ -116,6 +118,8 @@ const deprecated = [
 	{
 		attributes: {
 			...metadata.attributes,
+			shapeHeight: { type: 'number', default: 100 },
+			backgroundHeight: { type: 'number', default: 50 },
 		},
 		save: deprecatedSVGs,
 	},
@@ -123,9 +127,25 @@ const deprecated = [
 		attributes: {
 			...metadata.attributes,
 			coblocks: { type: 'object' },
-			justAdded: { type: 'boolean', default: 'true' },
+			align: { type: 'string', default: 'full' },
+			height: { type: 'number', default: 100 },
+			heightTablet: { type: 'number' },
+			heightMobile: { type: 'number' },
 			shapeHeight: { type: 'number', default: 100 },
+			shapeHeightTablet: { type: 'number' },
 			backgroundHeight: { type: 'number', default: 50 },
+			backgroundHeightTablet: { type: 'number' },
+			backgroundHeightMobile: { type: 'number' },
+			syncHeight: { type: 'boolean', default: true },
+			syncHeightAlt: { type: 'boolean', default: true },
+			justAdded: { type: 'boolean', default: true },
+		},
+		migrate: ( attributes ) => {
+			return {
+				...attributes,
+				shapeHeight: parseInt( attributes.shapeHeight ) + 'px',
+				backgroundHeight: parseInt( attributes.backgroundHeight ) + 'px',
+			};
 		},
 		save: ( { attributes, className } ) => {
 			const {
