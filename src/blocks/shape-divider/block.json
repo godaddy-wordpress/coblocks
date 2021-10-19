@@ -3,12 +3,12 @@
 	"category": "layout",
 	"attributes": {
 		"shapeHeight": {
-			"type": "number",
-			"default": 100
+			"type": "string",
+			"default": "100px"
 		},
 		"backgroundHeight": {
-			"type": "number",
-			"default": 50
+			"type": "string",
+			"default": "50px"
 		},
 		"verticalFlip": {
 			"type": "boolean",

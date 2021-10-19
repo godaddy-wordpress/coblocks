@@ -124,6 +124,8 @@ const deprecated = [
 			...metadata.attributes,
 			coblocks: { type: 'object' },
 			justAdded: { type: 'boolean', default: 'true' },
+			shapeHeight: { type: 'number', default: 100 },
+			backgroundHeight: { type: 'number', default: 50 },
 		},
 		save: ( { attributes, className } ) => {
 			const {

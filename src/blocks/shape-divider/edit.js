@@ -80,21 +80,16 @@ const Edit = ( props ) => {
 							'is-selected': isSelected,
 						}
 					) }
-					size={ {
-						height: shapeHeight,
-					} }
-					minHeight="20"
+					size={ { height: shapeHeight } }
+					minWidth="100%"
 					enable={ { bottom: true } }
-					onResizeStop={ ( _event, _direction, _elt, delta ) => {
+					onResizeStop={ ( _event, _direction, element ) => {
 						setAttributes( {
-							shapeHeight: parseInt( shapeHeight + delta.height, 10 ),
+							shapeHeight: parseInt( element.offsetHeight, 10 ) + 'px',
 						} );
-
 						toggleSelection( true );
 					} }
-					onResizeStart={ () => {
-						toggleSelection( false );
-					} }
+					onResizeStart={ () => toggleSelection( false ) }
 					showHandle={ isSelected }
 				>
 					{ getDividerFromStyle( className ) }
@@ -105,22 +100,16 @@ const Edit = ( props ) => {
 							'is-selected': isSelected,
 						}
 					) }
-					size={ {
-						height: backgroundHeight,
-					} }
+					size={ { height: backgroundHeight } }
 					minWidth="100%"
-					minHeight="20"
 					enable={ { bottom: true } }
-					onResizeStop={ ( _event, _direction, _elt, delta ) => {
+					onResizeStop={ ( _event, _direction, element ) => {
 						setAttributes( {
-							backgroundHeight: parseInt( backgroundHeight + delta.height, 10 ),
+							backgroundHeight: parseInt( element.offsetHeight, 10 ) + 'px',
 						} );
-
 						toggleSelection( true );
 					} }
-					onResizeStart={ () => {
-						toggleSelection( false );
-					} }
+					onResizeStart={ () => toggleSelection( false ) }
 					showHandle={ isSelected }
 				>
 				</ResizableBox>
