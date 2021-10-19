@@ -62,14 +62,10 @@ const Edit = ( props ) => {
 	return (
 		<>
 			{ isSelected && (
-				<Inspector
-					{ ...props }
-				/>
-			) }
-			{ isSelected && (
-				<Controls
-					{ ...props }
-				/>
+				<>
+					<Inspector { ...props } />
+					<Controls { ...props } />
+				</>
 			) }
 			<div
 				className={ classnames( className, {
@@ -88,16 +84,7 @@ const Edit = ( props ) => {
 						height: shapeHeight,
 					} }
 					minHeight="20"
-					enable={ {
-						top: false,
-						right: false,
-						bottom: true,
-						left: false,
-						topRight: false,
-						bottomRight: false,
-						bottomLeft: false,
-						topLeft: false,
-					} }
+					enable={ { bottom: true } }
 					onResizeStop={ ( _event, _direction, _elt, delta ) => {
 						setAttributes( {
 							shapeHeight: parseInt( shapeHeight + delta.height, 10 ),
@@ -123,16 +110,7 @@ const Edit = ( props ) => {
 					} }
 					minWidth="100%"
 					minHeight="20"
-					enable={ {
-						top: false,
-						right: false,
-						bottom: true,
-						left: false,
-						topRight: false,
-						bottomRight: false,
-						bottomLeft: false,
-						topLeft: false,
-					} }
+					enable={ { bottom: true } }
 					onResizeStop={ ( _event, _direction, _elt, delta ) => {
 						setAttributes( {
 							backgroundHeight: parseInt( backgroundHeight + delta.height, 10 ),
