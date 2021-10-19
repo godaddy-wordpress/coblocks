@@ -15,7 +15,7 @@ import InlineColorPicker from '../../components/inline-color-picker';
 /**
  * WordPress dependencies
  */
-import { useState, useEffect } from '@wordpress/element';
+import { useEffect } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { ResizableBox } from '@wordpress/components';
 
@@ -32,10 +32,10 @@ const Edit = ( props ) => {
 		setAttributes,
 		backgroundColor,
 		color,
+		toggleSelection,
 	} = props;
 
 	const {
-		coblocks,
 		shapeHeight,
 		backgroundHeight,
 		verticalFlip,
@@ -60,29 +60,6 @@ const Edit = ( props ) => {
 		}
 	}, [] );
 
-	const [ resizing, setResizing ] = useState( false );
-	const [ resizingAlt, setResizingAlt ] = useState( false );
-
-	const shapeHeightResizer = {
-		target: 'shapeHeight',
-		value: shapeHeight,
-	};
-
-	const backgroundHeightResizer = {
-		target: 'shapeHeight',
-		value: backgroundHeight,
-	};
-
-	let classes = classnames(
-		className, {
-			'is-vertically-flipped': verticalFlip,
-			'is-horizontally-flipped': horizontalFlip,
-		} );
-
-	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
-		classes = classnames( classes, `coblocks-shape-divider-${ coblocks.id }` );
-	}
-
 	return (
 		<>
 			{ isSelected && (
@@ -96,18 +73,20 @@ const Edit = ( props ) => {
 				/>
 			) }
 			<div
-				className={ classes }
+				className={ classnames( className, {
+					'is-vertically-flipped': verticalFlip,
+					'is-horizontally-flipped': horizontalFlip,
+				} ) }
 				style={ { backgroundColor: backgroundColor.color, color: color.color } }
 			>
 				<ResizableBox
 					className={ classnames(
 						'wp-block-coblocks-shape-divider__svg-wrapper', {
 							'is-selected': isSelected,
-							'is-resizing': resizing,
 						}
 					) }
 					size={ {
-						height: shapeHeightResizer.value,
+						height: shapeHeight,
 					} }
 					minHeight="20"
 					enable={ {
@@ -122,13 +101,13 @@ const Edit = ( props ) => {
 					} }
 					onResizeStop={ ( _event, _direction, _elt, delta ) => {
 						setAttributes( {
-							shapeHeight: parseInt( shapeHeightResizer.value + delta.height, 10 ),
+							shapeHeight: parseInt( shapeHeight + delta.height, 10 ),
 						} );
 
-						setResizing( false );
+						toggleSelection( true );
 					} }
 					onResizeStart={ () => {
-						setResizing( true );
+						toggleSelection( false );
 					} }
 					showHandle={ isSelected }
 				>
@@ -138,11 +117,10 @@ const Edit = ( props ) => {
 					className={ classnames(
 						'wp-block-coblocks-shape-divider__alt-wrapper', {
 							'is-selected': isSelected,
-							'is-resizing': resizingAlt,
 						}
 					) }
 					size={ {
-						height: backgroundHeightResizer.value,
+						height: backgroundHeight,
 					} }
 					minWidth="100%"
 					minHeight="20"
@@ -158,12 +136,13 @@ const Edit = ( props ) => {
 					} }
 					onResizeStop={ ( _event, _direction, _elt, delta ) => {
 						setAttributes( {
-							backgroundHeight: parseInt( backgroundHeightResizer.value + delta.height, 10 ),
+							backgroundHeight: parseInt( backgroundHeight + delta.height, 10 ),
 						} );
-						setResizingAlt( false );
+
+						toggleSelection( true );
 					} }
 					onResizeStart={ () => {
-						setResizingAlt( true );
+						toggleSelection( false );
 					} }
 					showHandle={ isSelected }
 				>

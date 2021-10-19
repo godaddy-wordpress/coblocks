@@ -61,12 +61,6 @@
 		z-index: 29;
 	}
 
-	.wp-block-coblocks-shape-divider__svg-wrapper.is-resizing::after,
-	.wp-block-coblocks-shape-divider__alt-wrapper.is-resizing::after {
-		background: var(--wp-admin-theme-color, #007cba);
-		opacity: 1;
-	}
-
 	.wp-block-coblocks-shape-divider__svg-wrapper::after {
 		left: 0;
 		right: 0;
