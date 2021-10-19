@@ -10,7 +10,6 @@ import Controls from './controls';
 import Inspector from './inspector';
 import applyWithColors from './colors';
 import { getDividerFromStyle } from './utils';
-import InlineColorPicker from '../../components/inline-color-picker';
 
 /**
  * WordPress dependencies
@@ -146,12 +145,6 @@ const Edit = ( props ) => {
 					} }
 					showHandle={ isSelected }
 				>
-					{ isSelected && (
-						<InlineColorPicker
-							value={ color.color }
-							onChange={ ( newColor ) => setAttributes( { color: null, customColor: newColor } ) }
-						/>
-					) }
 				</ResizableBox>
 			</div>
 		</>
