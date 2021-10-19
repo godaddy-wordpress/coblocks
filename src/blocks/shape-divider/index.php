@@ -67,6 +67,14 @@ function coblocks_render_block_shape_divider( $attributes ) {
 		? $attributes['backgroundHeight']
 		: '50px';
 
+	$no_bottom_margin_class = ! isset( $attributes['noBottomMargin'] ) || ( isset( $attributes['noBottomMargin'] ) && false !== $attributes['noBottomMargin'] )
+		? 'mb-0'
+		: false;
+
+	$no_top_margin_class = ! isset( $attributes['noTopMargin'] ) || ( isset( $attributes['noTopMargin'] ) && false !== $attributes['noTopMargin'] )
+		? 'mt-0'
+		: false;
+
 	$wrapper_classes = implode(
 		' ',
 		array_filter(
@@ -77,6 +85,8 @@ function coblocks_render_block_shape_divider( $attributes ) {
 				$background_color_class,
 				$is_vertically_flipped,
 				$is_horizontally_flipped,
+				$no_top_margin_class,
+				$no_bottom_margin_class,
 			)
 		)
 	);
