@@ -62,11 +62,8 @@ export const Gallery = ( props ) => {
 			{ ...innerBlocksProps }
 			className={ classnames(
 				blockProps.className,
-				'blocks-gallery-grid',
 				{
 					[ `align${ align }` ]: align,
-					[ `columns-${ columns }` ]: columns !== undefined,
-					[ `columns-default` ]: columns === undefined,
 					'is-cropped': imageCrop,
 				}
 			) }

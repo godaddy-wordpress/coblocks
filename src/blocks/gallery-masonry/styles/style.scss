@@ -1,71 +1,120 @@
-.is-selected .wp-block-coblocks-gallery-masonry .masonry .brick {
-	// display: inline-block;
-	// background-color: $gray-900;
-	// height: 150px;
-	// width: 150px;
+// .is-selected .wp-block-coblocks-gallery-masonry .masonry .brick {
+// 	// display: inline-block;
+// 	// background-color: $gray-900;
+// 	// height: 150px;
+// 	// width: 150px;
 
-	figure {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: 150px;
-		width: 150px;
-		margin: auto;
-		img {
-			height: 100px;
-			width: auto;
+// 	figure {
+// 		display: flex;
+// 		align-items: center;
+// 		justify-content: center;
+// 		height: 150px;
+// 		width: 150px;
+// 		margin: auto;
+// 		img {
+// 			height: 100px;
+// 			width: auto;
+// 		}
+// 	}
+// }
+
+div[data-type="coblocks/gallery-masonry"] {
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 1.5em;
+	padding-right: 1.5em;
+	padding-left: 1.5em;
+	// max-width: 1080px;
+ 
+  
+
+figure.wp-block-coblocks-gallery-masonry {
+    transition: all .5s ease-in-out;
+    column-gap: 30px;
+    column-fill: initial;
+// }
+	// width: unset;
+	// display: grid;
+    // grid-gap: 10px;
+    // grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+    // grid-auto-rows: 0;
+
+	> figure {
+		// vertical-align: top; /* Keep the item on the very top */
+		// width: 100%;
+		// height: 100%;
+		// width: min-content;
+    /* height: 64%; */
+    	// display: inline-grid;
+    // margin: 0 !important;
+    // padding: 0;
+	margin-bottom: 30px;
+    display: inline-block;
+    vertical-align: top;
+	// width: unset !important;
+	// height: min-content !important;
+	}
+
+	  /* Masonry on tablets */
+	  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+		& {
+		  column-count: 2;
 		}
-	}
+	  }
+	  
+	  /* Masonry on big screens */
+	  @media only screen and (min-width: 1024px) {
+		& {
+			column-count: 3;	
+		}
+	} 
 }
-
-
-.wp-block-coblocks-gallery-masonry {
-
+}
 /* Masonry grid */
-.masonry {
-	transition: all .5s ease-in-out;
-	column-gap: 30px;
-	column-fill: initial;
-  }
+// .masonry {
+// 	transition: all .5s ease-in-out;
+// 	column-gap: 30px;
+// 	column-fill: initial;
+//   }
   
-  /* Masonry item */
-  .masonry .brick {
-	// margin-bottom: 30px;
-	// display: contents; /* Fix the misalignment of items */
-	vertical-align: top; /* Keep the item on the very top */
-  }
+//   /* Masonry item */
+//   .masonry .brick {
+// 	// margin-bottom: 30px;
+// 	// display: contents; /* Fix the misalignment of items */
+// 	vertical-align: top; /* Keep the item on the very top */
+//   }
   
-  /* Masonry image effects */
-  .masonry .brick img {
-	transition: all .5s ease-in-out;
-	backface-visibility: hidden; /* Remove Image flickering on hover */
-  }
+//   /* Masonry image effects */
+//   .masonry .brick img {
+// 	transition: all .5s ease-in-out;
+// 	backface-visibility: hidden; /* Remove Image flickering on hover */
+//   }
   
-  .masonry .brick:hover img {
-	opacity: .75;
-  }
+//   .masonry .brick:hover img {
+// 	opacity: .75;
+//   }
 
-  /* Masonry on tablets */
-  @media only screen and (min-width: 768px) and (max-width: 1023px) {
-	.masonry {
-	  column-count: 2;
-	}
-  }
+//   /* Masonry on tablets */
+//   @media only screen and (min-width: 768px) and (max-width: 1023px) {
+// 	&{
+// 	  column-count: 2;
+// 	}
+//   }
   
-  /* Masonry on big screens */
-  @media only screen and (min-width: 1024px) {
-	.desc {
-	  font-size: 1.25em;
-	}
+//   /* Masonry on big screens */
+//   @media only screen and (min-width: 1024px) {
+// 	.desc {
+// 		column-count: 3;	
+// 	}
   
-	.intro {
-	  letter-spacing: 1px;
-	}
+// 	.intro {
+// 	  letter-spacing: 1px;
+// 	}
   
-	.masonry {
-	  column-count: 3;
-	}
-  }
+// 	.masonry {
+// 	  column-count: 3;
+// 	}
+//   }
   
 	// position: relative;
 
@@ -82,52 +131,52 @@
 	// 	margin: 0 !important;
 	// }
 
-	figure {
-		margin: 0;
-		overflow: hidden;
-		transition: width 2s, height 2s, transform 2s, display 2s, align-items 2s, justify-content 2s, margin 2s;
-		transition-duration: 2s;
-		transition-delay: 1s;
-		transition-property: display;
-	}
+	// figure {
+	// 	margin: 0;
+	// 	overflow: hidden;
+	// 	transition: width 2s, height 2s, transform 2s, display 2s, align-items 2s, justify-content 2s, margin 2s;
+	// 	transition-duration: 2s;
+	// 	transition-delay: 1s;
+	// 	transition-property: display;
+	// }
 
-	img {
-		height: auto;
-		// vertical-align: bottom;
-		width: 100%;
-	}
+	// img {
+	// 	height: auto;
+	// 	// vertical-align: bottom;
+	// 	width: 100%;
+	// }
 
-	.has-small-gutter {
-		column-gap: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) * 2);
+	// .has-small-gutter {
+	// 	column-gap: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) * 2);
 
-		.brick {
-			margin-bottom: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) * 2);
-		}
-	}
+	// 	.brick {
+	// 		margin-bottom: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) * 2);
+	// 	}
+	// }
 
-	.has-medium-gutter {
-		column-gap: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * 2);
+	// .has-medium-gutter {
+	// 	column-gap: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * 2);
 
-		.brick {
-			margin-bottom: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * 2);
-		}
-	}
+	// 	.brick {
+	// 		margin-bottom: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * 2);
+	// 	}
+	// }
 
-	.has-large-gutter {
-		column-gap: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) * 2);
+	// .has-large-gutter {
+	// 	column-gap: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) * 2);
 
-		.brick {
-			margin-bottom: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) * 2);
-		}
-	}
+	// 	.brick {
+	// 		margin-bottom: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) * 2);
+	// 	}
+	// }
 
-	.has-huge-gutter {
-		column-gap: calc(var(--coblocks-spacing--4, #{map-get($spacing, 4)}) * 2);
+	// .has-huge-gutter {
+	// 	column-gap: calc(var(--coblocks-spacing--4, #{map-get($spacing, 4)}) * 2);
 
-		.brick {
-			margin-bottom: calc(var(--coblocks-spacing--4, #{map-get($spacing, 4)}) * 2);
-		}
-	}
+	// 	.brick {
+	// 		margin-bottom: calc(var(--coblocks-spacing--4, #{map-get($spacing, 4)}) * 2);
+	// 	}
+	// }
 
 	// .has-medium-gutter {
 	// 	@include break-small() {
@@ -165,25 +214,25 @@
 	// 	}
 	// }
 
-	.has-custom-gutter {
-		// margin-bottom: calc(var(--coblocks-custom-gutter, 0) * -1 * 2);
-		column-gap: calc(var(--coblocks-custom-gutter, 0em) * 2);
+	// .has-custom-gutter {
+	// 	// margin-bottom: calc(var(--coblocks-custom-gutter, 0) * -1 * 2);
+	// 	column-gap: calc(var(--coblocks-custom-gutter, 0em) * 2);
 
-		.brick {
-			margin-bottom: calc(var(--coblocks-custom-gutter, 0) * 2);
-			// margin-left: calc(var(--coblocks-custom-gutter, 0) * 2);
-		}
+	// 	.brick {
+	// 		margin-bottom: calc(var(--coblocks-custom-gutter, 0) * 2);
+	// 		// margin-left: calc(var(--coblocks-custom-gutter, 0) * 2);
+	// 	}
 
-		@include break-small() {
-			// margin-bottom: calc(var(--coblocks-custom-gutter, 0) * -1 * 2);
-			// column-gap: calc(var(--coblocks-custom-gutter, 0) * -0.5 * 2);
+	// 	@include break-small() {
+	// 		// margin-bottom: calc(var(--coblocks-custom-gutter, 0) * -1 * 2);
+	// 		// column-gap: calc(var(--coblocks-custom-gutter, 0) * -0.5 * 2);
 
-			// figure {
-			// 	margin-bottom: calc(var(--coblocks-custom-gutter, 0) * 2);
-			// 	margin-left: calc(var(--coblocks-custom-gutter, 0) * 2);
-			// }
-		}
-	}
+	// 		// figure {
+	// 		// 	margin-bottom: calc(var(--coblocks-custom-gutter, 0) * 2);
+	// 		// 	margin-left: calc(var(--coblocks-custom-gutter, 0) * 2);
+	// 		// }
+	// 	}
+	// }
 
 	// figcaption {
 	// 	background: linear-gradient(0deg, rgba($color: $black, $alpha: 0.7) 0, rgba($color: $black, $alpha: 0.3) 50%, transparent);
@@ -201,4 +250,4 @@
 	// 		display: inline;
 	// 	}
 	// }
-}
+// }

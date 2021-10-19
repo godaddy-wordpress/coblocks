@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-// import classnames from 'classnames';
+import classnames from 'classnames';
 // import filter from 'lodash/filter';
 // import Masonry from 'react-masonry-component';
 import { GalleryMasonryIcon as icon } from '@godaddy-wordpress/coblocks-icons';
@@ -58,7 +58,7 @@ import { store as noticesStore } from '@wordpress/notices';
 /**
  * Internal dependencies
  */
-//  import { pickRelevantMediaFiles } from './shared';
+import { pickRelevantMediaFiles } from './shared';
 import { getHrefAndDestination, getUpdatedLinkTargetSettings, getImageSizeAttributes } from './utils';
 import Gallery from './gallery';
 import {
@@ -236,7 +236,7 @@ function GalleryEdit( props ) {
 				}
 
 				return file;
-			  } )
+			} )
 			: selectedImages;
 
 		if ( ! imageArray.every( isValidFileType ) ) {
@@ -276,7 +276,7 @@ function GalleryEdit( props ) {
 				processedImages.find(
 					( img ) => img.id === block.attributes.id
 				)
-			  )
+			)
 			: innerBlockImages;
 
 		const newImageList = processedImages.filter(
