@@ -5,8 +5,8 @@ exports[`coblocks/click-to-tweet should render with buttonColor 1`] = `"<!-- wp:
 exports[`coblocks/click-to-tweet should render with className 1`] = `"<!-- wp:coblocks/click-to-tweet {\\"className\\":\\"my-custom-class\\"} /-->"`;
 
 exports[`coblocks/click-to-tweet should render with content 1`] = `
-"<!-- wp:coblocks/click-to-tweet {\\"url\\":\\"https://wordpress.org\\"} -->
-<blockquote class=\\"wp-block-coblocks-click-to-tweet\\"><p class=\\"wp-block-coblocks-click-to-tweet__text\\">Quote to tweet</p><a class=\\"wp-block-coblocks-click-to-tweet__twitter-btn\\" href=\\"http://twitter.com/share?&amp;text=Quote%20to%20tweet&amp;url=https://wordpress.org\\" target=\\"_blank\\" rel=\\"noopener noreferrer\\">Tweet</a></blockquote>
+"<!-- wp:coblocks/click-to-tweet -->
+<blockquote class=\\"wp-block-coblocks-click-to-tweet\\"><p class=\\"wp-block-coblocks-click-to-tweet__text\\">Quote to tweet</p><a class=\\"wp-block-coblocks-click-to-tweet__twitter-btn\\" href=\\"http://twitter.com/share?&amp;text=Quote%20to%20tweet&amp;url=[post_permalink]\\" target=\\"_blank\\" rel=\\"noopener noreferrer\\">Tweet</a></blockquote>
 <!-- /wp:coblocks/click-to-tweet -->"
 `;
 

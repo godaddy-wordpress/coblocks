@@ -19,13 +19,13 @@ const save = ( { attributes } ) => {
 		fontSize,
 		textColor,
 		textAlign,
-		url,
 		via,
 	} = attributes;
 
 	const viaUrl = via ? `&via=${ via }` : '';
 
-	const tweetUrl = `http://twitter.com/share?&text=${ encodeURIComponent( content ) }&url=${ url }${ viaUrl }`;
+	// See PHP filter render_block_coblocks/click-to-tweet for [post_permalink] token replacement.
+	const tweetUrl = `http://twitter.com/share?&text=${ encodeURIComponent( content ) }&url=[post_permalink]${ viaUrl }`;
 
 	const textColorClass = getColorClassName( 'color', textColor );
 
