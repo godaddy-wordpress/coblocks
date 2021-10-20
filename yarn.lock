@@ -1350,10 +1350,10 @@
   dependencies:
     "@wordpress/primitives" "^1.7.0"
 
-"@godaddy-wordpress/eslint-config@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/eslint-config/-/eslint-config-0.3.0.tgz#221d15c3d013db1d05ca606b7c42761e306cfabd"
-  integrity sha512-n8ef8UbawDpYH+LtqWWVCsibvb6tFv/1H+0sSpRy8NotZtXaxUWSnoRubWiwqp/VsgmBM/6QCr1ISsM80L4/hw==
+"@godaddy-wordpress/eslint-config@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/eslint-config/-/eslint-config-0.4.0.tgz#2b6023b7c423aa7cf8510176ed35784c8293646a"
+  integrity sha512-+jGC9j3JJ0Fw2kMLYAFNbtcPJ55sKfsE7ikLCrxQCCHdufYTbAfla36dLiPHwpvVmjzg+n2adsuN8tGTQBz1hg==
 
 "@godaddy-wordpress/stylelint-config@^0.2.0":
   version "0.2.0"
