@@ -16,7 +16,6 @@ import DimensionsSelect from './dimensions-select';
 import { __, sprintf } from '@wordpress/i18n';
 import { withInstanceId } from '@wordpress/compose';
 import { useDispatch } from '@wordpress/data';
-import { Fragment } from '@wordpress/element';
 import { ButtonGroup, BaseControl, Button, Tooltip, TabPanel } from '@wordpress/components';
 
 const DIRECTIONS = [
@@ -341,7 +340,7 @@ const DimensionsControl = ( props ) => {
 		const syncMode = props[ `syncUnits${ device }` ];
 
 		return (
-			<Fragment>
+			<>
 				<div className="components-coblocks-dimensions-control__inputs">
 					{ DIRECTIONS.map( ( direction ) => (
 						<input
@@ -371,15 +370,15 @@ const DimensionsControl = ( props ) => {
 						</Button>
 					</Tooltip>
 				</div>
-			</Fragment>
+			</>
 		);
 	};
 
 	return (
-		<Fragment>
+		<>
 			<div className={ classes }>
 				{ dimensionSize === 'advanced'
-					? <Fragment>
+					? <>
 						<div className="components-coblocks-dimensions-control__header">
 							{ label && <p className={ 'components-coblocks-dimensions-control__label' }>{ label }</p> }
 							<div className="components-coblocks-dimensions-control__actions">
@@ -454,7 +453,7 @@ const DimensionsControl = ( props ) => {
 								},
 							] }>
 							{
-								( tab ) => renderAdvancedControls( tab.name === 'default' || tab.name === 'desktop' ? '' : capitalize( tab.name ) )
+								( tab ) => renderAdvancedControls( [ 'default', 'desktop' ].includes( tab.name ) ? '' : capitalize( tab.name ) )
 							}
 						</TabPanel>
 						<div className="components-coblocks-dimensions-control__input-labels">
@@ -464,7 +463,7 @@ const DimensionsControl = ( props ) => {
 							<span className="components-coblocks-dimensions-control__number-label">{ __( 'Left', 'coblocks' ) }</span>
 							<span className="components-coblocks-dimensions-control__number-label-blank"></span>
 						</div>
-					</Fragment>
+					</>
 					: <BaseControl id="textarea-1" label={ label } help={ help }>
 						<div className="components-font-size-picker__controls">
 							<DimensionsSelect
@@ -492,7 +491,7 @@ const DimensionsControl = ( props ) => {
 					</BaseControl>
 				}
 			</div>
-		</Fragment>
+		</>
 	);
 };
 
