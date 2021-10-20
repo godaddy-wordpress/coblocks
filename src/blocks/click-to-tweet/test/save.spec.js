@@ -30,13 +30,12 @@ describe( 'coblocks/click-to-tweet', () => {
 	it( 'should render with content', () => {
 		block.attributes.content = 'Quote to tweet';
 		block.attributes.buttonText = 'Tweet';
-		block.attributes.url = 'https://wordpress.org';
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'Quote to tweet' );
 		expect( serializedBlock ).toContain( 'Tweet' );
-		expect( serializedBlock ).toContain( 'https://wordpress.org' );
+		expect( serializedBlock ).toContain( '[post_permalink]' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 

@@ -1,5 +1,3 @@
-// Disable issue: https://github.com/godaddy-wordpress/coblocks/issues/2000
-/* eslint-disable @wordpress/no-global-event-listener */
 /**
  * External dependencies
  */
@@ -86,8 +84,10 @@ class CropSettings extends Component {
 	}
 
 	captureMouseEvents() {
-		document.addEventListener( 'mouseup', this.mouseUpListener, true );
-		document.addEventListener( 'mousemove', this.mouseMoveListener, true );
+		const doc = this.imageContainer.current.ownerDocument;
+
+		doc.addEventListener( 'mouseup', this.mouseUpListener, true );
+		doc.addEventListener( 'mousemove', this.mouseMoveListener, true );
 	}
 
 	mouseMoveListener( e ) {
@@ -102,8 +102,10 @@ class CropSettings extends Component {
 		e.preventDefault();
 		e.stopPropagation();
 
-		document.removeEventListener( 'mouseup', this.mouseUpListener, true );
-		document.removeEventListener( 'mousemove', this.mouseMoveListener, true );
+		const doc = this.imageContainer.current.ownerDocument;
+
+		doc.removeEventListener( 'mouseup', this.mouseUpListener, true );
+		doc.removeEventListener( 'mousemove', this.mouseMoveListener, true );
 	}
 
 	applyRotation( r ) {

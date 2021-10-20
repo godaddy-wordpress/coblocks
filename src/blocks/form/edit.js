@@ -178,7 +178,6 @@ const FormEdit = ( props ) => {
 			return;
 		}
 
-		this.setState( { toError: null } );
 		setToError( null );
 		setAttributes( { to } );
 	};

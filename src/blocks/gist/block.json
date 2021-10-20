@@ -13,9 +13,7 @@
 			"default": true
 		},
 		"caption": {
-			"type": "string",
-			"source": "html",
-			"selector": "figcaption"
+			"type": "string"
 		}
 	}
 }
