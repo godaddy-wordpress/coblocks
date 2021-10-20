@@ -776,7 +776,7 @@ jobs:
             mv coblocks-canary.zip /tmp/artifacts/coblocks-canary.zip
       - run:
           name: Create a canary release on GitHub
-          command: ghr -t ${GH_ACCESS_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "Latest build of the master branch. This bleeding edge version is for testing purposes only and should not be used in production." -delete -prerelease -replace canary /tmp/artifacts/coblocks-canary.zip
+          command: ghr -t ${GH_AUTH_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "Latest build of the master branch. This bleeding edge version is for testing purposes only and should not be used in production." -delete -prerelease -replace canary /tmp/artifacts/coblocks-canary.zip
       - deploy:
           name: Deploy CoBlocks canary to the WPNUX site
           command: |
