@@ -28,7 +28,6 @@ module.exports = {
 		} ],
 
 		// Temp override to slowly change everything
-		'import/no-extraneous-dependencies': 0,
 		'sort-imports': [ 'warn', {
 			allowSeparatedGroups: true,
 			ignoreCase: true,
