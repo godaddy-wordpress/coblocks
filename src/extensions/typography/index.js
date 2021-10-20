@@ -19,7 +19,7 @@ import { addFilter } from '@wordpress/hooks';
 import { Fragment }	from '@wordpress/element';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
-const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/pullquote', 'core/cover', 'core/quote', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/alert', 'coblocks/highlight', 'coblocks/pricing-table', 'coblocks/features' ];
+const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/pullquote', 'core/cover', 'core/quote', 'core/button', 'core/list', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/alert', 'coblocks/highlight', 'coblocks/pricing-table', 'coblocks/features' ];
 const deprecatedBlocks = [ 'coblocks/click-to-tweet' ];
 
 /**

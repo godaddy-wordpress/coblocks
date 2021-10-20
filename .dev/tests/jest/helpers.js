@@ -160,8 +160,8 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 				if ( blockVariations[ attribute ] && Array.isArray( blockVariations[ attribute ] ) ) {
 					testVariations = blockVariations[ attribute ];
 				} else {
-					testVariations = blockVariations[ attribute ].values;
-					testBaseAttributes = blockVariations[ attribute ].baseAttributes || {};
+					testVariations = blockVariations[ attribute ]?.values || [];
+					testBaseAttributes = blockVariations[ attribute ]?.baseAttributes || {};
 				}
 
 				testVariations.forEach( ( variation ) => {
@@ -192,14 +192,14 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 							'coblocks/gallery-stacked',
 							'coblocks/gallery-masonry',
 						];
-						// The indexToCheckAgainst refers to the block deprecated.js array of attributes and save functions.
-						// Index is relevant because specific deprecated save functions cause the keys bug reported in #2025.
+							// The indexToCheckAgainst refers to the block deprecated.js array of attributes and save functions.
+							// Index is relevant because specific deprecated save functions cause the keys bug reported in #2025.
 						const indexToCheckAgainst = ( blockName === 'coblocks/column' ) ? 1 : 0;
 						if (
 							IssueBlocks.includes( blockName ) &&
-							attribute === 'backgroundType' &&
-							JSON.stringify( variation ) === '"video"' &&
-							index === indexToCheckAgainst
+								attribute === 'backgroundType' &&
+								JSON.stringify( variation ) === '"video"' &&
+								index === indexToCheckAgainst
 						) {
 							expect( console ).toHaveErrored();
 						}
