@@ -1,11 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import ReactDOMServer from 'react-dom/server';
+import { usePrevious } from '@wordpress/compose';
+import { v4 as uuid } from 'uuid';
 
 import TinySwiper from 'tiny-swiper';
 import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
 import SwiperPluginPagination from 'tiny-swiper/lib/modules/pagination.min.js';
 
 import './style.scss';
+
+const SwiperHOC = (Component) => {
+    return (props) => {
+        const swiperUuid = uuid();
+
+        return <Component key={swiperUuid} {...props} />;
+    }
+}
 
 const Swiper = ({ 
     list, 
@@ -16,6 +26,8 @@ const Swiper = ({
     PaginationControl = null,
 }) => {
     const [currentStep, setCurrentStep] = useState(0);
+
+    let swiper = useRef( null );
 
     useEffect(() => {
         const swiperContainer = document.getElementById(uuid);
@@ -33,33 +45,31 @@ const Swiper = ({
             swiperPlugins = [ ...swiperPlugins, SwiperPluginPagination ];
         }
 
-        const swiper = new TinySwiper(swiperContainer, {
+        swiper = new TinySwiper(swiperContainer, {
             ...(navigation === true ? ({
                 navigation: {
                     prevEl: swiperBackButton,
                     nextEl: swiperNextButton
                   },
             } ) : {}),
-            ...(PaginationControl ? ({
-                pagination: {
-                    el: `.${PaginationControl.class}`,
-                    clickable: true,
-                    bulletClass: "swiper-plugin-pagination__item",
-                    bulletActiveClass: "is-active",
-                    clickableClass: 'is-clickable',
-                    // the tiny swiper package requires a string implementation of the pagination componennt
-                    // renderBullet: (index, className) => PaginationControl.render({ index, className })
-                    renderBullet: (index, className) => ReactDOMServer.renderToStaticMarkup( 
-                        <div className={`is-clickable ${className}`}>
-                            {PaginationControl.render({ index, className })}
-                        </div>
-                    )
-                  },
-            } ) : {}),
+            pagination: {
+                el: `.${PaginationControl?.class}`,
+                clickable: true,
+                bulletClass: "swiper-plugin-pagination__item",
+                bulletActiveClass: "is-active",
+                clickableClass: 'is-clickable',
+                // the tiny swiper package requires a string implementation of the pagination componennt
+                // renderBullet: (index, className) => PaginationControl.render({ index, className })
+                renderBullet: (index, className) => PaginationControl?.render ? ReactDOMServer.renderToStaticMarkup( 
+                    <div className={`is-clickable ${className}`}>
+                        {PaginationControl.render({ index, className })}
+                    </div>
+                ) : null
+            },
             plugins: swiperPlugins,
             loop: true,
         });
-    }, []);
+    }, [ PaginationControl ]);
 
     useEffect(() => {
         if ( stepChangeCallback ) {
@@ -71,7 +81,7 @@ const Swiper = ({
     const goNext = () => setCurrentStep(currentStep + 1);
     
     return (
-        <div className="coblocks-swiper-container">
+        <div className="coblocks-swiper-container" ref={swiper}>
             <div className="swiper-container" id={uuid}>
                 <div className="swiper-wrapper">
                     {list.map((item, index) => (
@@ -141,6 +151,14 @@ const Swiper = ({
     //     )}
     //     </>
     // )
-}
+};
 
-export default Swiper;
+const SwiperMemo =  React.memo(Swiper, (prevProps, nextProps) => {
+    console.log('memo comparison within swiper component', {
+        prevProps,
+        nextProps
+    });
+    return true;
+});
+
+export default SwiperHOC(SwiperMemo);

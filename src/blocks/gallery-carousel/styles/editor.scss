@@ -80,6 +80,10 @@
 			opacity: 0.4;
 			height: 100%;
 			width: auto;
+
+			&:hover {
+				opacity: 0.7;
+			}
 		}
 
 		.coblocks--item-thumbnail:first-of-type {

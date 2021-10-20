@@ -633,20 +633,20 @@ const GalleryCarouselEdit = ( props ) => {
 						</Swiper>
 					</div>
 				</div>
+				{ ( ! RichText.isEmpty( primaryCaption ) || isSelected ) && (
+					<RichText
+						tagName="figcaption"
+						placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
+						value={ primaryCaption }
+						className="coblocks-gallery--caption coblocks-gallery--primary-caption"
+						unstableOnFocus={ onFocusCaption }
+						onChange={ ( value ) => setAttributes( { primaryCaption: value } ) }
+						isSelected={ captionFocused }
+						keepPlaceholderOnFocus
+						inlineToolbar
+					/>
+				) }
 			</ResizableBox>
-			{ ( ! RichText.isEmpty( primaryCaption ) || isSelected ) && (
-				<RichText
-					tagName="figcaption"
-					placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
-					value={ primaryCaption }
-					className="coblocks-gallery--caption coblocks-gallery--primary-caption"
-					unstableOnFocus={ onFocusCaption }
-					onChange={ ( value ) => setAttributes( { primaryCaption: value } ) }
-					isSelected={ captionFocused }
-					keepPlaceholderOnFocus
-					inlineToolbar
-				/>
-			) }
 		</>
 	);
 };
