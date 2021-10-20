@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-20T15:00:15+00:00\n"
+"POT-Creation-Date: 2021-10-20T15:17:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -1890,9 +1890,9 @@ msgstr ""
 
 #. translators: block keyword
 #: src/blocks/gallery-carousel/index.js:46
-#: src/blocks/gallery-collage/index.js:43
+#: src/blocks/gallery-collage/index.js:47
 #: src/blocks/gallery-masonry/index.js:43
-#: src/blocks/gallery-offset/index.js:43
+#: src/blocks/gallery-offset/index.js:47
 #: src/blocks/gallery-stacked/index.js:43
 msgid "gallery"
 msgstr ""
@@ -1900,9 +1900,9 @@ msgstr ""
 #. translators: block keyword
 #. translators: icon keyword
 #: src/blocks/gallery-carousel/index.js:48
-#: src/blocks/gallery-collage/index.js:45
+#: src/blocks/gallery-collage/index.js:49
 #: src/blocks/gallery-masonry/index.js:45
-#: src/blocks/gallery-offset/index.js:45
+#: src/blocks/gallery-offset/index.js:49
 #: src/blocks/gallery-stacked/index.js:45
 #: src/blocks/icon/deprecated/svgs.js:204
 #: src/blocks/icon/deprecated/svgsfocusable.js:203
@@ -1999,18 +1999,18 @@ msgid "Select a carousel variation to start with."
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gallery-collage/index.js:35
+#: src/blocks/gallery-collage/index.js:39
 msgid "Collage"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/gallery-collage/index.js:37
+#: src/blocks/gallery-collage/index.js:41
 msgid "Assemble images into a beautiful collage gallery."
 msgstr ""
 
 #. translators: block style
 #. translators: typography style
-#: src/blocks/gallery-collage/index.js:51
+#: src/blocks/gallery-collage/index.js:55
 #: src/blocks/logos/index.js:48
 #: src/components/typography-controls/index.js:84
 #: src/components/typography-controls/index.js:102
@@ -2022,12 +2022,12 @@ msgid "Default"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/gallery-collage/index.js:57
+#: src/blocks/gallery-collage/index.js:61
 msgid "Tiled"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/gallery-collage/index.js:62
+#: src/blocks/gallery-collage/index.js:66
 msgid "Layered"
 msgstr ""
 
@@ -2096,12 +2096,12 @@ msgstr ""
 
 #. translators: block name
 #: src/blocks/gallery-offset/edit.js:177
-#: src/blocks/gallery-offset/index.js:35
+#: src/blocks/gallery-offset/index.js:39
 msgid "Offset"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/gallery-offset/index.js:37
+#: src/blocks/gallery-offset/index.js:41
 msgid "Display images in an offset brick pattern gallery."
 msgstr ""
 
