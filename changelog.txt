@@ -1,3 +1,27 @@
+2.18.0 / 2021-10-20
+===================
+### Enhancements
+* Enhance reliability and compatibility of Gist Block. [#2079](https://github.com/godaddy-wordpress/coblocks/pull/2079)
+* Enhance Form Block to use dynamic translated email strings [#2084](https://github.com/godaddy-wordpress/coblocks/pull/2084)
+* Enhance Events Block preview within block inserter [#2054](https://github.com/godaddy-wordpress/coblocks/pull/2054)
+* Enhance Dynamic HR icon for clarity [#2076](https://github.com/godaddy-wordpress/coblocks/pull/2076)
+* Enhance Click to tweet styles [#2055](https://github.com/godaddy-wordpress/coblocks/pull/2055)
+* Enhance Accessibility of Gallery blocks [#2040](https://github.com/godaddy-wordpress/coblocks/pull/2040)
+* Enhance Accessibility of Accordion block [#2060](https://github.com/godaddy-wordpress/coblocks/pull/2060)
+
+### Bug Fixes
+* Fix Gutter type errors across Collage and Offset [#2099](https://github.com/godaddy-wordpress/coblocks/pull/2099)
+* Fix Form Block error when attempting set email address [#2102](https://github.com/godaddy-wordpress/coblocks/pull/2102)
+* Fix Click to tweet post permalink and UX in editor [#2098](https://github.com/godaddy-wordpress/coblocks/pull/2098)
+* Fix Form Block Recaptcha bypass [#2092](https://github.com/godaddy-wordpress/coblocks/pull/2092)
+* Fix Services Block error related to URIs [#2091](https://github.com/godaddy-wordpress/coblocks/pull/2091)
+* Fix improper is-selected state on Accordion block [#2065](https://github.com/godaddy-wordpress/coblocks/pull/2065)
+* Fix Events block ical file parser and UX improvements [#2088](https://github.com/godaddy-wordpress/coblocks/pull/2088)
+* Fix broken animations when JS not present [#2082](https://github.com/godaddy-wordpress/coblocks/pull/2082)
+* Fix crash with advanced margin controls [#2066](https://github.com/godaddy-wordpress/coblocks/pull/2066)
+* Fix hidden social profile icons due to a missing default color [#2046](https://github.com/godaddy-wordpress/coblocks/pull/2046)
+
+
 2.17.0 / 2021-10-05
 ===================
 ### Enhancements
