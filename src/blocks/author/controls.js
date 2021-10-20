@@ -23,7 +23,7 @@ const Controls = ( props ) => {
 		<BlockControls>
 			{ imgUrl &&
 				<MediaUploadCheck>
-					<Toolbar>
+					<Toolbar label={ __( 'Author controls', 'coblocks' ) }>
 						<MediaUpload
 							onSelect={ onSelectImage }
 							allowedTypes={ [ 'image' ] }

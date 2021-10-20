@@ -157,7 +157,7 @@ class MediaFilterControl extends Component {
 		];
 
 		return (
-			<Toolbar>
+			<Toolbar label={ __( 'Media Filter controls', 'coblocks' ) }>
 				<DropdownMenu
 					icon={ <Icon icon={ FilterMainIcon } /> }
 					label={ __( 'Apply filter', 'coblocks' ) }

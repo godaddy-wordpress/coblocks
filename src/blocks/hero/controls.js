@@ -27,7 +27,7 @@ const Controls = ( props ) => {
 	return (
 		<>
 			<BlockControls>
-				<Toolbar>
+				<Toolbar label={ __( 'Hero controls', 'coblocks' ) }>
 					<CSSGridToolbar
 						icon={ <Icon icon={ icon } /> }
 						label={ __( 'Change layout', 'coblocks' ) }

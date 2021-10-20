@@ -31,7 +31,9 @@ function BackgroundControls( props ) {
 	return (
 		<Fragment>
 			<MediaUploadCheck>
-				<Toolbar className={ backgroundImg ? 'components-dropdown-menu' : '' }>
+				<Toolbar className={ backgroundImg ? 'components-dropdown-menu' : '' }
+					label={ __( 'Background controls', 'coblocks' ) }
+				>
 					{ backgroundImg
 						? (
 							<BlockControls group="other">

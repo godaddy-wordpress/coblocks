@@ -30,7 +30,7 @@ const Controls = ( props ) => {
 					value={ align }
 					onChange={ updateAlignment }
 				/>
-				<Toolbar>
+				<Toolbar label={ __( 'Gif block controls', 'coblocks' ) }>
 					{ url &&
 						<Button
 							className="components-toolbar__control"

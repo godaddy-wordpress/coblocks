@@ -24,7 +24,9 @@ function Controls( { attributes, setAttributes } ) {
 	return (
 		<BlockControls>
 			{ address &&
-				<Toolbar controls={ toolbarControls } />
+				<Toolbar controls={ toolbarControls }
+					label={ __( 'Map block controls', 'coblocks' ) }
+				/>
 			}
 		</BlockControls>
 	);

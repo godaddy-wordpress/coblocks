@@ -27,7 +27,7 @@ const Controls = ( props ) => {
 				value={ textAlign }
 				onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
 			/>
-			<Toolbar>
+			<Toolbar label={ __( 'Click to Tweet controls', 'coblocks' ) }>
 				<div className="wp-block-coblocks-click-to-tweet__via-wrapper">
 					<label
 						aria-label={ __( 'Twitter Username', 'coblocks' ) }

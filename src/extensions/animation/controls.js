@@ -102,10 +102,10 @@ class Controls extends Component {
 
 		return (
 			<BlockControls>
-				<Toolbar>
+				<Toolbar label={ __( 'Animation controls', 'coblocks' ) }>
 					<DropdownMenu
 						icon={ AnimationIcon }
-						label={ __( 'Add animation' ) }
+						label={ __( 'Add animation', 'coblocks' ) }
 						popoverProps={ POPOVER_PROPS }
 						className={ classnames( 'components-coblocks-animation-toggle', animation ? 'has-animation' : '' ) }
 						noIcons

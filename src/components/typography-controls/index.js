@@ -142,7 +142,7 @@ class TypographyControls extends Component {
 		};
 
 		return (
-			<Toolbar>
+			<Toolbar label={ __( 'Typography controls', 'coblocks' ) } >
 				<Dropdown
 					className={ classnames( 'components-dropdown-menu', 'components-coblocks-typography-dropdown' ) }
 					contentClassName="components-dropdown-menu__popover components-coblocks-typography-dropdown"

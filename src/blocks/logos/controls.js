@@ -33,7 +33,7 @@ const Controls = ( props ) => {
 		<BlockControls>
 			{ hasImages && (
 				<>
-					<Toolbar>
+					<Toolbar label={ __( 'Logos controls', 'coblocks' ) }>
 						<MediaUploadCheck>
 							<MediaUpload
 								onSelect={ onSelectImages }

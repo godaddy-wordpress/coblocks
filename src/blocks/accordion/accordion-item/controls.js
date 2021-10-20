@@ -33,7 +33,9 @@ const Controls = ( props ) => {
 	return (
 		<>
 			<BlockControls>
-				<Toolbar controls={ customControls } />
+				<Toolbar
+					controls={ customControls }
+					label={ __( 'Accordion controls', 'coblocks' ) } />
 			</BlockControls>
 		</>
 	);

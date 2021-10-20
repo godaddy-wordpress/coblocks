@@ -35,7 +35,7 @@ const MediaContainer = ( props ) => {
 	const renderToolbarEditButton = () => {
 		return (
 			<BlockControls>
-				<Toolbar>
+				<Toolbar label={ __( 'Media Card controls', 'coblocks' ) } >
 					<MediaUpload
 						onSelect={ onSelectMedia }
 						allowedTypes={ ALLOWED_MEDIA_TYPES }

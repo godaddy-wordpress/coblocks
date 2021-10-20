@@ -36,7 +36,9 @@ const Controls = ( props ) => {
 	return (
 		<>
 			<BlockControls>
-				<Toolbar controls={ toolbarControls } />
+				<Toolbar controls={ toolbarControls }
+					label={ __( 'Shape divider controls', 'coblocks' ) }
+				/>
 			</BlockControls>
 		</>
 	);

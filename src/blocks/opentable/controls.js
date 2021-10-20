@@ -25,7 +25,9 @@ const Controls = ( props ) => {
 	return (
 		<BlockControls>
 			{ showEditControls &&
-				<Toolbar controls={ toolbarControls } />
+				<Toolbar controls={ toolbarControls }
+					label={ __( 'OpenTable controls', 'coblocks' ) }
+				/>
 			}
 		</BlockControls>
 	);

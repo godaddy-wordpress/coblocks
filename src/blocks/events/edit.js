@@ -143,7 +143,9 @@ const EventsEdit = ( props ) => {
 
 			{ !! externalCalendarUrl &&
 				<BlockControls>
-					<Toolbar controls={ toolbarControls } />
+					<Toolbar controls={ toolbarControls }
+						label={ __( 'Events block controls', 'coblocks' ) }
+					/>
 				</BlockControls>
 			}
 
