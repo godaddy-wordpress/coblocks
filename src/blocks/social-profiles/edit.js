@@ -40,6 +40,7 @@ const SocialProfilesEdit = ( props ) => {
 			pinterest,
 			size,
 			textAlign,
+			tiktok,
 			twitter,
 			yelp,
 			youtube,
@@ -133,6 +134,12 @@ const SocialProfilesEdit = ( props ) => {
 			ariaLabel: __( 'Add Instagram profile', 'coblocks' ),
 		},
 		{
+			slug: 'tiktok',
+			name: __( 'TikTok', 'coblocks' ),
+			placeholder: __( 'https://tiktok.com', 'coblocks' ),
+			ariaLabel: __( 'Add TikTok profile', 'coblocks' ),
+		},
+		{
 			slug: 'pinterest',
 			name: __( 'Pinterest', 'coblocks' ),
 			placeholder: __( 'https://pinterest.com', 'coblocks' ),
@@ -168,6 +175,7 @@ const SocialProfilesEdit = ( props ) => {
 		facebook ||
 		twitter ||
 		instagram ||
+		tiktok ||
 		pinterest ||
 		linkedin ||
 		youtube ||

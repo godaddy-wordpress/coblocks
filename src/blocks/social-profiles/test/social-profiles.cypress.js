@@ -19,6 +19,9 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Instagram profile"]' ).first().click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.instagram.com/test' );
 
+		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add TikTok profile"]' ).first().click();
+		cy.get( '.block-editor-url-input' ).type( 'https://www.tiktok.com/test' );
+
 		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Pinterest profile"]' ).first().click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.pinterest.com/test' );
 
@@ -52,6 +55,9 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		cy.get( 'a[title="Instagram"]' )
 			.should( 'have.attr', 'href', 'https://www.instagram.com/test' );
+
+		cy.get( 'a[title="TikTok"]' )
+			.should( 'have.attr', 'href', 'https://www.tiktok.com/test' );
 
 		cy.get( 'a[title="Pinterest"]' )
 			.should( 'have.attr', 'href', 'https://www.pinterest.com/test' );
