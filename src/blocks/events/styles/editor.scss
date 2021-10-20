@@ -1,5 +1,7 @@
 [data-type="coblocks/events"] {
 
+	@include input-submit-placeholder;
+
 	.coblocks-block-appender {
 		margin-top: 28px;
 	}

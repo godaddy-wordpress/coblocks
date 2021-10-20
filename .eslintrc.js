@@ -21,11 +21,5 @@ module.exports = {
 				assertFunctionNames: [ 'expect', 'cy.get', 'helpers.checkForBlockErrors' ],
 			},
 		],
-		// Disable issue: https://github.com/godaddy-wordpress/coblocks/issues/2036
-		'import/no-extraneous-dependencies': 0,
-		// Disable issue: https://github.com/godaddy-wordpress/coblocks/issues/2037
-		'@wordpress/no-unsafe-wp-apis': 0,
-		// Disable issue: https://github.com/godaddy-wordpress/coblocks/issues/2038
-		'import/named': 0,
 	},
 };

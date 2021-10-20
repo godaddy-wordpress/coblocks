@@ -63,6 +63,20 @@ executors:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
+  php_74_node_browser_mysql_mailhog:
+    docker:
+      - image: circleci/php:7.4.24-node-browsers
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+      - image: circleci/mysql:5.7-ram
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+      - image: mailhog/mailhog:v1.0.1
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
   php_80_mysql:
     docker:
       - image: circleci/php:8.0.11-apache-node
@@ -239,7 +253,7 @@ commands:
       - run:
           name: Set diff files env var
           command: |
-            FILES=$(git diff origin/$BASE_BRANCH..HEAD --name-only --diff-filter=MAd "*<< parameters.ext >>")
+            FILES=$(git diff $(git merge-base HEAD $BASE_BRANCH) --name-only --diff-filter=MAd "*<< parameters.ext >>")
             echo "export FILES='$FILES'" >> $BASH_ENV
             source $BASH_ENV
 
@@ -341,8 +355,7 @@ commands:
       - wait_for_mysql
       - install_wordpress_with_coblocks
       - enable_debug_mode_for_e2e
-      - install_mailhog
-      - start_mailhog
+      - install_mailhog_plugin
       - start_wpcli_server
       - run:
           name: Run end to end tests (Cypress.io) - << parameters.browser >>
@@ -395,18 +408,13 @@ commands:
             echo "export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH" >> $BASH_ENV
             source /home/circleci/.bashrc
 
-  install_mailhog:
+  install_mailhog_plugin:
     steps:
       - run:
-          name: "Install Mailhog"
-          command: bash .dev/bin/install-mailhog.sh
-
-  start_mailhog:
-    steps:
-      - run:
-          name: "Start Mailhog"
-          command: "MailHog"
-          background: true
+          name: "Install Mailhog WP Plugin"
+          command: |
+            mkdir /tmp/wordpress/wp-content/mu-plugins
+            cp /home/circleci/project/.dev/mailhog.php /tmp/wordpress/wp-content/mu-plugins/mailhog.php
 
   setup_spec_files_diff_tree:
     steps:
@@ -624,7 +632,7 @@ jobs:
           name: "Test JS and Collect Coverage"
           command: |
             rm -rf node_modules/ && yarn && yarn build
-            yarn test:js:coverage --maxWorkers=1 --reporters=default --reporters=jest-junit
+            yarn test:js:coverage --maxWorkers=2 --reporters=default --reporters=jest-junit
           environment:
             JEST_JUNIT_OUTPUT_DIR: /tmp/artifacts/tests-results/jest
       - store_artifacts:
@@ -646,14 +654,14 @@ jobs:
   # --------------------------------------------------
 
   e2e_chrome:
-    executor: php_74_node_browser_mysql
+    executor: php_74_node_browser_mysql_mailhog
     parallelism: 4
     steps:
       - run_e2e_tests:
           browser: chrome
 
   e2e_firefox:
-    executor: php_74_node_browser_mysql
+    executor: php_74_node_browser_mysql_mailhog
     parallelism: 4
     steps:
       - run_e2e_tests:
@@ -768,7 +776,7 @@ jobs:
             mv coblocks-canary.zip /tmp/artifacts/coblocks-canary.zip
       - run:
           name: Create a canary release on GitHub
-          command: ghr -t ${GH_ACCESS_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "Latest build of the master branch. This bleeding edge version is for testing purposes only and should not be used in production." -delete -prerelease -replace canary /tmp/artifacts/coblocks-canary.zip
+          command: ghr -t ${GH_AUTH_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "Latest build of the master branch. This bleeding edge version is for testing purposes only and should not be used in production." -delete -prerelease -replace canary /tmp/artifacts/coblocks-canary.zip
       - deploy:
           name: Deploy CoBlocks canary to the WPNUX site
           command: |

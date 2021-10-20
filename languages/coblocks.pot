@@ -1,14 +1,14 @@
 # Copyright (c) 2021 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 2.17.0\n"
+"Project-Id-Version: CoBlocks 2.18.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-13T16:29:32+00:00\n"
+"POT-Creation-Date: 2021-10-20T18:50:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -74,9 +74,30 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#. translators: placeholder for email shortcode.
+#. translators: placeholder for 'email' string.
 #: includes/class-coblocks-form.php:51
 msgid "Form submission from [%1$s]"
+msgstr ""
+
+#. translators: placeholder for 'email' string.
+#. translators: block keyword
+#. translators: icon keyword
+#: includes/class-coblocks-form.php:51
+#: includes/class-coblocks-form.php:1049
+#: src/blocks/form/fields/name/index.js:59
+#: src/blocks/form/index.js:57
+#: src/blocks/icon/deprecated/svgs.js:691
+#: src/blocks/icon/deprecated/svgs.js:709
+#: src/blocks/icon/deprecated/svgs.js:728
+#: src/blocks/icon/deprecated/svgs.js:747
+#: src/blocks/icon/deprecated/svgsfocusable.js:690
+#: src/blocks/icon/deprecated/svgsfocusable.js:708
+#: src/blocks/icon/deprecated/svgsfocusable.js:727
+#: src/blocks/icon/deprecated/svgsfocusable.js:746
+#: src/blocks/icon/svgs.js:689
+#: src/blocks/icon/svgs.js:713
+#: src/blocks/icon/svgs.js:732
+msgid "email"
 msgstr ""
 
 #: includes/class-coblocks-form.php:63
@@ -202,31 +223,12 @@ msgid "Submit"
 msgstr ""
 
 #. translators: 1. Reply to email address; eg: email@example.com
-#: includes/class-coblocks-form.php:974
+#: includes/class-coblocks-form.php:975
 msgid "Form Submission <%s>"
 msgstr ""
 
-#: includes/class-coblocks-form.php:1036
+#: includes/class-coblocks-form.php:1037
 msgid "name"
-msgstr ""
-
-#. translators: block keyword
-#. translators: icon keyword
-#: includes/class-coblocks-form.php:1048
-#: src/blocks/form/fields/name/index.js:59
-#: src/blocks/form/index.js:57
-#: src/blocks/icon/deprecated/svgs.js:691
-#: src/blocks/icon/deprecated/svgs.js:709
-#: src/blocks/icon/deprecated/svgs.js:728
-#: src/blocks/icon/deprecated/svgs.js:747
-#: src/blocks/icon/deprecated/svgsfocusable.js:690
-#: src/blocks/icon/deprecated/svgsfocusable.js:708
-#: src/blocks/icon/deprecated/svgsfocusable.js:727
-#: src/blocks/icon/deprecated/svgsfocusable.js:746
-#: src/blocks/icon/svgs.js:689
-#: src/blocks/icon/svgs.js:713
-#: src/blocks/icon/svgs.js:732
-msgid "email"
 msgstr ""
 
 #: includes/class-coblocks-google-map-block.php:120
@@ -259,6 +261,12 @@ msgstr ""
 
 #: src/blocks/events/index.php:122
 msgid "An error has occurred, check for calendar privileges to make sure it is public or try again later."
+msgstr ""
+
+#: src/blocks/gist/index.php:56
+#: src/blocks/gist/deprecated.js:37
+#: src/blocks/gist/deprecated.js:73
+msgid "View this gist on GitHub"
 msgstr ""
 
 #: src/blocks/post-carousel/index.php:42
@@ -394,7 +402,7 @@ msgid "Add content…"
 msgstr ""
 
 #. translators: Accordion is the block name
-#: src/blocks/accordion/accordion-item/edit.js:87
+#: src/blocks/accordion/accordion-item/edit.js:97
 msgid "Write accordion item title…"
 msgstr ""
 
@@ -530,7 +538,7 @@ msgstr ""
 
 #. translators: placeholder text for input box
 #: src/blocks/alert/edit.js:94
-#: src/blocks/services/service/edit.js:202
+#: src/blocks/services/service/edit.js:212
 msgid "Write title…"
 msgstr ""
 
@@ -720,11 +728,11 @@ msgid "Username"
 msgstr ""
 
 #. translators: the text of the click to tweet element
-#: src/blocks/click-to-tweet/edit.js:74
+#: src/blocks/click-to-tweet/edit.js:70
 msgid "Add a quote to tweet…"
 msgstr ""
 
-#: src/blocks/click-to-tweet/edit.js:101
+#: src/blocks/click-to-tweet/edit.js:97
 msgid "Add button…"
 msgstr ""
 
@@ -821,37 +829,41 @@ msgstr ""
 msgid "Add event"
 msgstr ""
 
-#: src/blocks/events/edit.js:32
+#: src/blocks/events/edit.js:33
 msgid "1 week"
 msgstr ""
 
-#: src/blocks/events/edit.js:33
+#: src/blocks/events/edit.js:34
 msgid "2 weeks"
 msgstr ""
 
-#: src/blocks/events/edit.js:34
+#: src/blocks/events/edit.js:35
 msgid "1 month"
 msgstr ""
 
-#: src/blocks/events/edit.js:35
+#: src/blocks/events/edit.js:36
 msgid "Fetch all"
 msgstr ""
 
-#: src/blocks/events/edit.js:125
+#: src/blocks/events/edit.js:128
 msgid "Edit calendar URL"
 msgstr ""
 
-#: src/blocks/events/edit.js:150
+#: src/blocks/events/edit.js:153
 msgid "Calendar URL"
 msgstr ""
 
-#: src/blocks/events/edit.js:153
+#: src/blocks/events/edit.js:154
+msgid "Enter a URL that loads and iCal formatted calendar."
+msgstr ""
+
+#: src/blocks/events/edit.js:163
 msgid "Enter URL here…"
 msgstr ""
 
-#: src/blocks/events/edit.js:159
-#: src/blocks/post-carousel/edit.js:216
-#: src/blocks/posts/edit.js:317
+#: src/blocks/events/edit.js:171
+#: src/blocks/post-carousel/edit.js:218
+#: src/blocks/posts/edit.js:319
 msgid "Use URL"
 msgstr ""
 
@@ -967,7 +979,7 @@ msgid "Show events from the period (100 events max)."
 msgstr ""
 
 #: src/blocks/features/edit.js:114
-#: src/blocks/features/feature/edit.js:120
+#: src/blocks/features/feature/edit.js:122
 #: src/blocks/media-card/edit.js:126
 msgid "Add as background"
 msgstr ""
@@ -1137,12 +1149,12 @@ msgid "Gluten free"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:182
-#: src/blocks/services/service/edit.js:123
+#: src/blocks/services/service/edit.js:125
 msgid "Drop image to replace"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:198
-#: src/blocks/services/service/edit.js:143
+#: src/blocks/services/service/edit.js:145
 #: src/components/block-gallery/gallery-image.js:223
 msgid "Remove image"
 msgstr ""
@@ -1863,7 +1875,7 @@ msgstr ""
 #: src/blocks/gallery-carousel/edit.js:326
 #: src/blocks/gallery-masonry/edit.js:222
 #: src/blocks/gallery-offset/edit.js:218
-#: src/blocks/gallery-stacked/edit.js:218
+#: src/blocks/gallery-stacked/edit.js:201
 msgid "image %1$d of %2$d in gallery"
 msgstr ""
 
@@ -1878,9 +1890,9 @@ msgstr ""
 
 #. translators: block keyword
 #: src/blocks/gallery-carousel/index.js:46
-#: src/blocks/gallery-collage/index.js:43
+#: src/blocks/gallery-collage/index.js:47
 #: src/blocks/gallery-masonry/index.js:43
-#: src/blocks/gallery-offset/index.js:43
+#: src/blocks/gallery-offset/index.js:47
 #: src/blocks/gallery-stacked/index.js:43
 msgid "gallery"
 msgstr ""
@@ -1888,9 +1900,9 @@ msgstr ""
 #. translators: block keyword
 #. translators: icon keyword
 #: src/blocks/gallery-carousel/index.js:48
-#: src/blocks/gallery-collage/index.js:45
+#: src/blocks/gallery-collage/index.js:49
 #: src/blocks/gallery-masonry/index.js:45
-#: src/blocks/gallery-offset/index.js:45
+#: src/blocks/gallery-offset/index.js:49
 #: src/blocks/gallery-stacked/index.js:45
 #: src/blocks/icon/deprecated/svgs.js:204
 #: src/blocks/icon/deprecated/svgsfocusable.js:203
@@ -1918,7 +1930,7 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:50
 #: src/blocks/gallery-masonry/inspector.js:65
 #: src/blocks/gallery-offset/inspector.js:71
-#: src/blocks/gallery-stacked/inspector.js:62
+#: src/blocks/gallery-stacked/inspector.js:66
 #: src/extensions/lightbox-controls/index.js:35
 msgid "Image lightbox is enabled."
 msgstr ""
@@ -1927,7 +1939,7 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:50
 #: src/blocks/gallery-masonry/inspector.js:66
 #: src/blocks/gallery-offset/inspector.js:72
-#: src/blocks/gallery-stacked/inspector.js:63
+#: src/blocks/gallery-stacked/inspector.js:67
 #: src/extensions/lightbox-controls/index.js:36
 msgid "Toggle to enable the image lightbox."
 msgstr ""
@@ -1948,7 +1960,7 @@ msgstr ""
 #: src/blocks/gallery-carousel/inspector.js:93
 #: src/blocks/gallery-masonry/inspector.js:85
 #: src/blocks/gallery-offset/inspector.js:87
-#: src/blocks/gallery-stacked/inspector.js:103
+#: src/blocks/gallery-stacked/inspector.js:90
 #: src/blocks/share/inspector.js:120
 #: src/blocks/social-profiles/inspector.js:125
 #: src/components/background/panel.js:219
@@ -1956,17 +1968,17 @@ msgid "Rounded corners"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:130
-#: src/blocks/gallery-carousel/variations.js:143
+#: src/blocks/gallery-carousel/variations.js:145
 #: src/blocks/gallery-collage/inspector.js:100
 #: src/blocks/gallery-masonry/inspector.js:96
 #: src/blocks/gallery-offset/inspector.js:95
-#: src/blocks/gallery-stacked/inspector.js:113
+#: src/blocks/gallery-stacked/inspector.js:100
 #: src/extensions/lightbox-controls/index.js:46
 msgid "Lightbox"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:136
-#: src/blocks/gallery-carousel/variations.js:85
+#: src/blocks/gallery-carousel/variations.js:87
 msgid "Thumbnails"
 msgstr ""
 
@@ -1974,31 +1986,31 @@ msgstr ""
 msgid "Responsive height"
 msgstr ""
 
-#: src/blocks/gallery-carousel/variations.js:106
+#: src/blocks/gallery-carousel/variations.js:108
 msgid "Full Autoplay"
 msgstr ""
 
-#: src/blocks/gallery-carousel/variations.js:123
+#: src/blocks/gallery-carousel/variations.js:125
 msgid "Full Scroll"
 msgstr ""
 
-#: src/blocks/gallery-carousel/variations.js:178
+#: src/blocks/gallery-carousel/variations.js:180
 msgid "Select a carousel variation to start with."
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gallery-collage/index.js:35
+#: src/blocks/gallery-collage/index.js:39
 msgid "Collage"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/gallery-collage/index.js:37
+#: src/blocks/gallery-collage/index.js:41
 msgid "Assemble images into a beautiful collage gallery."
 msgstr ""
 
 #. translators: block style
 #. translators: typography style
-#: src/blocks/gallery-collage/index.js:51
+#: src/blocks/gallery-collage/index.js:55
 #: src/blocks/logos/index.js:48
 #: src/components/typography-controls/index.js:84
 #: src/components/typography-controls/index.js:102
@@ -2010,26 +2022,26 @@ msgid "Default"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/gallery-collage/index.js:57
+#: src/blocks/gallery-collage/index.js:61
 msgid "Tiled"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/gallery-collage/index.js:62
+#: src/blocks/gallery-collage/index.js:66
 msgid "Layered"
 msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:32
 #: src/blocks/gallery-masonry/inspector.js:59
 #: src/blocks/gallery-offset/inspector.js:65
-#: src/blocks/gallery-stacked/inspector.js:56
+#: src/blocks/gallery-stacked/inspector.js:60
 msgid "Showing captions for each media item."
 msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:32
 #: src/blocks/gallery-masonry/inspector.js:60
 #: src/blocks/gallery-offset/inspector.js:66
-#: src/blocks/gallery-stacked/inspector.js:57
+#: src/blocks/gallery-stacked/inspector.js:61
 msgid "Toggle to show media captions."
 msgstr ""
 
@@ -2039,7 +2051,7 @@ msgstr ""
 
 #. translators: block style
 #: src/blocks/gallery-collage/inspector.js:93
-#: src/blocks/gallery-stacked/inspector.js:134
+#: src/blocks/gallery-stacked/inspector.js:121
 #: src/extensions/button-styles/index.js:25
 msgid "Shadow"
 msgstr ""
@@ -2047,7 +2059,7 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:106
 #: src/blocks/gallery-masonry/inspector.js:103
 #: src/blocks/gallery-offset/inspector.js:101
-#: src/blocks/gallery-stacked/inspector.js:120
+#: src/blocks/gallery-stacked/inspector.js:107
 msgid "Captions"
 msgstr ""
 
@@ -2084,12 +2096,12 @@ msgstr ""
 
 #. translators: block name
 #: src/blocks/gallery-offset/edit.js:177
-#: src/blocks/gallery-offset/index.js:35
+#: src/blocks/gallery-offset/index.js:39
 msgid "Offset"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/gallery-offset/index.js:37
+#: src/blocks/gallery-offset/index.js:41
 msgid "Display images in an offset brick pattern gallery."
 msgstr ""
 
@@ -2099,9 +2111,9 @@ msgstr ""
 
 #. translators: block name
 #. translators: block style
-#: src/blocks/gallery-stacked/edit.js:167
+#: src/blocks/gallery-stacked/edit.js:150
 #: src/blocks/gallery-stacked/index.js:35
-#: src/blocks/posts/edit.js:53
+#: src/blocks/posts/edit.js:55
 msgid "Stacked"
 msgstr ""
 
@@ -2110,23 +2122,23 @@ msgstr ""
 msgid "Display multiple images in a single column stacked gallery."
 msgstr ""
 
-#: src/blocks/gallery-stacked/inspector.js:50
+#: src/blocks/gallery-stacked/inspector.js:54
 msgid "Fullwidth images are enabled."
 msgstr ""
 
-#: src/blocks/gallery-stacked/inspector.js:51
+#: src/blocks/gallery-stacked/inspector.js:55
 msgid "Toggle to fill the available gallery area with completely fullwidth images."
 msgstr ""
 
-#: src/blocks/gallery-stacked/inspector.js:85
+#: src/blocks/gallery-stacked/inspector.js:72
 msgid "Stacked settings"
 msgstr ""
 
-#: src/blocks/gallery-stacked/inspector.js:89
+#: src/blocks/gallery-stacked/inspector.js:76
 msgid "Fullwidth images"
 msgstr ""
 
-#: src/blocks/gallery-stacked/inspector.js:89
+#: src/blocks/gallery-stacked/inspector.js:76
 msgid "Fullwidth image"
 msgstr ""
 
@@ -2139,7 +2151,6 @@ msgid "This gif has an empty alt attribute"
 msgstr ""
 
 #: src/blocks/gif/edit.js:218
-#: src/blocks/gist/edit.js:156
 #: src/components/block-gallery/gallery-image.js:269
 msgid "Write caption…"
 msgstr ""
@@ -2171,71 +2182,25 @@ msgstr ""
 msgid "Gif settings"
 msgstr ""
 
-#. translators: %s: "Gist", the name of a code sharing platform
-#: src/blocks/gist/controls.js:21
-msgid "Return to %s"
-msgstr ""
-
-#. translators: %s: "Gist", the name of a code sharing platform
-#: src/blocks/gist/controls.js:26
-msgid "Edit %s URL"
-msgstr ""
-
-#: src/blocks/gist/deprecated.js:36
-#: src/blocks/gist/save.js:33
-msgid "View this gist on GitHub"
-msgstr ""
-
-#: src/blocks/gist/edit.js:171
-#: src/blocks/gist/inspector.js:37
-msgid "Gist URL"
-msgstr ""
-
-#: src/blocks/gist/edit.js:177
-msgid "Add GitHub Gist URL…"
-msgstr ""
-
-#: src/blocks/gist/gist.js:106
-msgid "Loading Gist"
-msgstr ""
-
 #. translators: block name
-#: src/blocks/gist/index.js:29
+#: src/blocks/gist/index.js:28
+#: src/blocks/gist/index.js:56
 msgid "Gist"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/gist/index.js:31
+#: src/blocks/gist/index.js:30
+#: src/blocks/gist/index.js:58
 msgid "Embed a GitHub Gist."
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/gist/index.js:38
+#: src/blocks/gist/index.js:64
 #: src/blocks/icon/deprecated/svgs.js:462
 #: src/blocks/icon/deprecated/svgsfocusable.js:461
 #: src/blocks/icon/svgs.js:440
 msgid "code"
-msgstr ""
-
-#: src/blocks/gist/inspector.js:17
-msgid "Showing gist meta data."
-msgstr ""
-
-#: src/blocks/gist/inspector.js:17
-msgid "Toggle to show the gist meta data."
-msgstr ""
-
-#: src/blocks/gist/inspector.js:35
-msgid "Gist settings"
-msgstr ""
-
-#: src/blocks/gist/inspector.js:42
-msgid "Gist File"
-msgstr ""
-
-#: src/blocks/gist/inspector.js:48
-msgid "Gist Meta"
 msgstr ""
 
 #: src/blocks/hero/controls.js:33
@@ -2243,26 +2208,26 @@ msgid "Change layout"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/hero/edit.js:42
+#: src/blocks/hero/edit.js:40
 msgid "Add hero heading…"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/hero/edit.js:50
+#: src/blocks/hero/edit.js:48
 msgid "Add hero content, which is typically an introductory area of a page accompanied by call to action or two."
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/hero/edit.js:65
+#: src/blocks/hero/edit.js:63
 msgid "Primary button…"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/hero/edit.js:72
+#: src/blocks/hero/edit.js:70
 msgid "Secondary button…"
 msgstr ""
 
-#: src/blocks/hero/edit.js:182
+#: src/blocks/hero/edit.js:184
 msgid "Add background to hero"
 msgstr ""
 
@@ -4533,7 +4498,7 @@ msgid "Reset icon size"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:174
-#: src/components/crop-settings/index.js:322
+#: src/components/crop-settings/index.js:324
 #: src/components/dimensions-control/index.js:489
 #: src/components/size-control/index.js:209
 msgid "Reset"
@@ -6148,53 +6113,53 @@ msgstr ""
 msgid "Select language"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:113
-#: src/blocks/posts/edit.js:200
+#: src/blocks/post-carousel/edit.js:115
+#: src/blocks/posts/edit.js:202
 msgid "Edit RSS URL"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/post-carousel/edit.js:169
+#: src/blocks/post-carousel/edit.js:171
 #: src/blocks/post-carousel/index.js:27
 msgid "Post Carousel"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:174
-#: src/blocks/posts/edit.js:270
+#: src/blocks/post-carousel/edit.js:176
+#: src/blocks/posts/edit.js:272
 msgid "No posts found. Start publishing or add posts from an RSS feed."
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:177
+#: src/blocks/post-carousel/edit.js:179
 msgid "Retrieve an external feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:183
-#: src/blocks/posts/edit.js:279
+#: src/blocks/post-carousel/edit.js:185
+#: src/blocks/posts/edit.js:281
 msgid "Use External Feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:205
-#: src/blocks/posts/edit.js:306
+#: src/blocks/post-carousel/edit.js:207
+#: src/blocks/posts/edit.js:308
 msgid "RSS Feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:206
-#: src/blocks/posts/edit.js:307
+#: src/blocks/post-carousel/edit.js:208
+#: src/blocks/posts/edit.js:309
 msgid "RSS URLs are generally located at the /feed/ directory of a site."
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:210
-#: src/blocks/posts/edit.js:311
+#: src/blocks/post-carousel/edit.js:212
+#: src/blocks/posts/edit.js:313
 msgid "https://example.com/feed…"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:292
-#: src/blocks/posts/edit.js:414
+#: src/blocks/post-carousel/edit.js:294
+#: src/blocks/posts/edit.js:416
 msgid "(no title)"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:310
-#: src/blocks/posts/edit.js:440
+#: src/blocks/post-carousel/edit.js:312
+#: src/blocks/posts/edit.js:442
 msgid "Read more"
 msgstr ""
 
@@ -6233,23 +6198,23 @@ msgid "rss"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/posts/edit.js:60
+#: src/blocks/posts/edit.js:62
 msgid "Horizontal"
 msgstr ""
 
-#: src/blocks/posts/edit.js:213
+#: src/blocks/posts/edit.js:215
 msgid "Image on left"
 msgstr ""
 
-#: src/blocks/posts/edit.js:218
+#: src/blocks/posts/edit.js:220
 msgid "Image on right"
 msgstr ""
 
-#: src/blocks/posts/edit.js:265
+#: src/blocks/posts/edit.js:267
 msgid "Blog Posts"
 msgstr ""
 
-#: src/blocks/posts/edit.js:273
+#: src/blocks/posts/edit.js:275
 msgid "Retrieve an External Feed"
 msgstr ""
 
@@ -6500,74 +6465,74 @@ msgstr ""
 msgid "Change row block layout"
 msgstr ""
 
-#: src/blocks/row/edit.js:92
+#: src/blocks/row/edit.js:94
 msgid "one"
 msgstr ""
 
-#: src/blocks/row/edit.js:94
+#: src/blocks/row/edit.js:96
 msgid "two"
 msgstr ""
 
-#: src/blocks/row/edit.js:96
+#: src/blocks/row/edit.js:98
 msgid "three"
 msgstr ""
 
-#: src/blocks/row/edit.js:98
+#: src/blocks/row/edit.js:100
 msgid "four"
 msgstr ""
 
-#: src/blocks/row/edit.js:113
+#: src/blocks/row/edit.js:115
 msgid "Add background to row"
 msgstr ""
 
-#: src/blocks/row/edit.js:118
+#: src/blocks/row/edit.js:120
 msgid "One column"
 msgstr ""
 
-#: src/blocks/row/edit.js:119
+#: src/blocks/row/edit.js:121
 msgid "Two columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:120
+#: src/blocks/row/edit.js:122
 msgid "Three columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:121
+#: src/blocks/row/edit.js:123
 msgid "Four columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:147
+#: src/blocks/row/edit.js:149
 msgid "Row layout"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/row/edit.js:147
+#: src/blocks/row/edit.js:149
 #: src/blocks/row/index.js:38
 msgid "Row"
 msgstr ""
 
 #. translators: %s: 'one' 'two' 'three' and 'four'
-#: src/blocks/row/edit.js:151
+#: src/blocks/row/edit.js:153
 msgid "Select a layout for this %s column row."
 msgstr ""
 
-#: src/blocks/row/edit.js:154
+#: src/blocks/row/edit.js:156
 msgid "Select the number of columns for this row."
 msgstr ""
 
-#: src/blocks/row/edit.js:158
+#: src/blocks/row/edit.js:160
 msgid "Select row columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:183
+#: src/blocks/row/edit.js:185
 msgid "Select row layout"
 msgstr ""
 
-#: src/blocks/row/edit.js:193
+#: src/blocks/row/edit.js:195
 msgid "Back to columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:325
+#: src/blocks/row/edit.js:327
 msgid "Select a variation to start with."
 msgstr ""
 
@@ -6708,19 +6673,19 @@ msgstr ""
 msgid "Toggle to show call to action buttons."
 msgstr ""
 
-#: src/blocks/services/service/edit.js:149
+#: src/blocks/services/service/edit.js:151
 #: src/components/block-gallery/gallery-image.js:210
 #: src/extensions/replace-image/index.js:115
 msgid "Replace Image"
 msgstr ""
 
-#: src/blocks/services/service/edit.js:151
+#: src/blocks/services/service/edit.js:153
 #: src/components/block-gallery/gallery-image.js:212
 msgid "Replace"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/services/service/edit.js:211
+#: src/blocks/services/service/edit.js:221
 msgid "Write description…"
 msgstr ""
 
@@ -7229,39 +7194,39 @@ msgstr ""
 msgid "Custom URL"
 msgstr ""
 
-#: src/components/crop-settings/index.js:264
-#: src/components/crop-settings/index.js:267
+#: src/components/crop-settings/index.js:266
+#: src/components/crop-settings/index.js:269
 msgid "Crop settings image placeholder"
 msgstr ""
 
 #. translators: label for horizontal positioning input
-#: src/components/crop-settings/index.js:273
+#: src/components/crop-settings/index.js:275
 msgid "Horizontal pos."
 msgstr ""
 
 #. translators: label for vertical positioning input
-#: src/components/crop-settings/index.js:282
+#: src/components/crop-settings/index.js:284
 msgid "Vertical pos."
 msgstr ""
 
 #. translators: label for the control that allows zooming in on the image
-#: src/components/crop-settings/index.js:292
+#: src/components/crop-settings/index.js:294
 msgid "Image zoom"
 msgstr ""
 
-#: src/components/crop-settings/index.js:299
+#: src/components/crop-settings/index.js:301
 msgid "Image orientation"
 msgstr ""
 
-#: src/components/crop-settings/index.js:305
+#: src/components/crop-settings/index.js:307
 msgid "Rotate counter-clockwise"
 msgstr ""
 
-#: src/components/crop-settings/index.js:311
+#: src/components/crop-settings/index.js:313
 msgid "Rotate clockwise"
 msgstr ""
 
-#: src/components/crop-settings/index.js:320
+#: src/components/crop-settings/index.js:322
 msgid "Reset image cropping options"
 msgstr ""
 

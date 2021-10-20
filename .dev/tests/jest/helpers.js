@@ -184,7 +184,7 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 
 						const blocks = parse( deprecatedSerialized );
 
-						// This assertion should be removed when issue #2025 is resolved.
+            // This assertion should be removed when issue #2025 is resolved.
 						// https://github.com/godaddy-wordpress/coblocks/issues/2025
 						const IssueBlocks = [
 							'coblocks/column',
@@ -203,7 +203,7 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 						) {
 							expect( console ).toHaveErrored();
 						}
-
+            
 						expect(
 							blocks.filter( ( block ) => ! block.isValid ).map( filterBlockObjectResult )
 						).toEqual( [] );

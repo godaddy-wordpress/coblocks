@@ -14,11 +14,12 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies.
  */
-import { Toolbar, Placeholder, Button, TextControl, ServerSideRender } from '@wordpress/components';
+import { Toolbar, Placeholder, Button, TextControl } from '@wordpress/components';
+import ServerSideRender from '@wordpress/server-side-render';
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 import { useState, useEffect, useRef } from '@wordpress/element';
-import { dispatch, useSelect } from '@wordpress/data';
+import { useDispatch, useSelect } from '@wordpress/data';
 import { InnerBlocks, BlockControls } from '@wordpress/block-editor';
 import { edit } from '@wordpress/icons';
 
@@ -44,6 +45,8 @@ const EventsEdit = ( props ) => {
 		setAttributes,
 		clientId,
 	} = props;
+
+	const { insertBlock } = useDispatch( 'core/block-editor' );
 
 	const { innerBlocks } = useSelect( ( select ) => ( {
 		innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
@@ -116,7 +119,7 @@ const EventsEdit = ( props ) => {
 
 	const insertNewItem = () => {
 		const newEvent = createBlock( 'coblocks/event-item' );
-		dispatch( 'core/block-editor' ).insertBlock( newEvent, innerBlocks.length, clientId );
+		insertBlock( newEvent, innerBlocks.length, clientId );
 	};
 
 	const toolbarControls = [
@@ -148,16 +151,26 @@ const EventsEdit = ( props ) => {
 				<Placeholder
 					icon="rss"
 					label={ __( 'Calendar URL', 'coblocks' ) }
+					instructions={ __(
+						'Enter a URL that loads and iCal formatted calendar.',
+						'coblocks'
+					) }
 				>
-					<TextControl
-						placeholder={ __( 'Enter URL here…', 'coblocks' ) }
-						value={ stateExternalCalendarUrl }
-						onChange={ ( newExternalCalendarUrl ) => setStateExternalCalendarUrl( newExternalCalendarUrl ) }
-						className={ 'components-placeholder__input' }
-					/>
-					<Button type="button" onClick={ saveExternalCalendarUrl } disabled={ ! stateExternalCalendarUrl }>
-						{ __( 'Use URL', 'coblocks' ) }
-					</Button>
+					<form onSubmit={ saveExternalCalendarUrl }>
+						<TextControl
+							className={ 'components-placeholder__input' }
+							onChange={ ( newExternalCalendarUrl ) => setStateExternalCalendarUrl( newExternalCalendarUrl ) }
+							placeholder={ __( 'Enter URL here…', 'coblocks' ) }
+							value={ stateExternalCalendarUrl }
+						/>
+						<Button
+							disabled={ ! stateExternalCalendarUrl }
+							isPrimary
+							type="submit"
+						>
+							{ __( 'Use URL', 'coblocks' ) }
+						</Button>
+					</form>
 				</Placeholder>
 			}
 
