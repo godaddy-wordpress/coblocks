@@ -10,5 +10,6 @@ module.exports = {
 	},
 	collectCoverageFrom: [
 		'<rootDir>/src/**/*.js',
+		'!<rootDir>/src/**/test/*.js',
 	],
 };
