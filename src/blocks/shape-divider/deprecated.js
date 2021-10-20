@@ -197,6 +197,8 @@ const deprecated = [
 	deprecated.push( {
 		attributes: {
 			...metadata.attributes,
+			shapeHeight: { type: 'number', default: 100 },
+			backgroundHeight: { type: 'number', default: 50 },
 			[ attr ]: false,
 		},
 		save: deprecatedSVGs,
