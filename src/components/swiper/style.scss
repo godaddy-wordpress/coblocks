@@ -1,16 +1,16 @@
 .coblocks-swiper-container {
-	position: relative;
 	height: 100%;
+	position: relative;
 	width: 100%;
 }
 
 .swiper-container,
 .swiper-wrapper {
+	display: flex;
 	height: 100%;
 	margin: 0;
 	padding: 0;
 	width: 100%;
-	display: flex;
 }
 
 .swiper-plugin-pagination {
@@ -24,23 +24,23 @@
 }
 
 .swiper-container-thumbnails {
-	overflow: hidden;
-	position: relative;
 
 	height: 80px;
+	overflow: hidden;
+	position: relative;
 }
 
 .swiper-wrapper-thumbnails {
-	transform: none !important;
-	transition: none !important;
 
 	background-color: blue;
+	transform: none !important;
+	transition: none !important;
 }
 
 .coblocks-gallery--caption {
-	width: 100% !important;
-	position: absolute !important; 
 	bottom: 0 !important;
+	position: absolute !important;
+	width: 100% !important;
 }
 
 
@@ -55,52 +55,52 @@
 	display: flex;
 	flex-shrink: 0;
 	font-size: 18px;
-	
+	height: 80px;
+
 	justify-content: center;
 	position: relative;
 	width: 100px;
-	height: 80px;
 }
 
-.nav-button  {
-		&__prev {
-			background-color: var(--wp-admin-theme-color, #007cba);
+.nav-button {
+	&__prev {
+		background-color: var(--wp-admin-theme-color, #007cba);
+		border: none;
 
-			transform: translateY(-50%);
-			margin: 0 1%;
-			padding: 15px;
-			height: 62px;
-			left: 0;
-			width: 62px;
-			top: 50%;
-			position: absolute;
-			cursor: pointer;
+		border-radius: 100%;
+		cursor: pointer;
+		height: 62px;
+		left: 0;
+		margin: 0 1%;
+		padding: 15px;
+		position: absolute;
+		top: 50%;
 
-			border-radius: 100%;
-			border: none;
-		}
+		transform: translateY(-50%);
+		width: 62px;
+	}
 
-		&__next {
-			background-color: var(--wp-admin-theme-color, #007cba);
+	&__next {
+		background-color: var(--wp-admin-theme-color, #007cba);
+		border: none;
+		border-radius: 100%;
+		cursor: pointer;
+		height: 62px;
+		margin: 0 1%;
+		padding: 15px;
+		position: absolute;
+		right: 0;
+		top: 50%;
 
-			transform: translateY(-50%);
-			margin: 0 1%;
-			padding: 15px;
-		    height: 62px;
-			width: 62px;
-			top: 50%;
-			position: absolute;
-			right: 0;
-			cursor: pointer;
-			border-radius: 100%;
-			border: none;
-		}
+		transform: translateY(-50%);
+		width: 62px;
+	}
 }
 
 .icon {
-	mask-image: url(images/lightbox/arrow-right.svg);
-	height: 32px;
-	width: 32px;
 
 	background-color: white;
+	height: 32px;
+	mask-image: url(images/lightbox/arrow-right.svg);
+	width: 32px;
 }

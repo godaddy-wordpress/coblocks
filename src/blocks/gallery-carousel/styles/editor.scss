@@ -10,7 +10,7 @@
 	}
 
 	.coblocks-gallery--figure {
-		// set the margin top 
+		// set the margin top
 		margin-bottom: 3px !important;
 		margin-top: 3px !important;
 	}
@@ -31,12 +31,12 @@
 	}
 
 	.wp-block-coblocks-gallery-carousel-thumbnail-pagination {
-		height: auto;
-		width: auto;
+		align-items: center;
 		display: flex;
 		flex-direction: row;
+		height: auto;
 		justify-content: flex-start;
-		align-items: center;
+		width: auto;
 	}
 
 	// Fixes issue with multiple dropzones displaying when dropping in an image.
@@ -77,8 +77,8 @@
 	.carousel-nav {
 
 		.coblocks--item-thumbnail {
-			opacity: 0.4;
 			height: 100%;
+			opacity: 0.4;
 			width: auto;
 
 			&:hover {
@@ -108,7 +108,11 @@
 	opacity: 1;
 }
 
-.swiper-plugin-pagination__item + .is-active {
+// .swiper-plugin-pagination__item + .is-active {
+// 	opacity: 1;
+// }
+
+.swiper-plugin-pagination__item.is-active {
 	opacity: 1;
 }
 
