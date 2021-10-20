@@ -23,16 +23,7 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 	 */
 	it( 'Test shape-divider block saves with empty values.', function() {
 		helpers.addBlockToPost( 'coblocks/shape-divider', true );
-
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/shape-divider' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-shape-divider' ).should( 'exist' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -45,20 +36,29 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 
 		cy.get( '.edit-post-visual-editor .wp-block-coblocks-shape-divider' ).click();
 
-		helpers.setInputValue( 'divider settings', 'shape height', shapeHeight );
-		helpers.setInputValue( 'divider settings', 'background height', backgroundHeight );
+		helpers.openSettingsPanel( 'Divider settings' );
 
-		helpers.savePage();
+		cy.get( '.edit-post-sidebar' )
+			.contains( 'Shape height' ).not( '.block-editor-block-card__description' )
+			.then( ( $settingSection ) => {
+				cy.get( Cypress.$( $settingSection ).parent().parent() )
+					.find( 'input[type="number"]' )
+					.focus()
+					.type( `{selectall}${ shapeHeight }` );
+			} );
 
+		cy.get( '.edit-post-sidebar' )
+			.contains( 'Background height' ).not( '.block-editor-block-card__description' )
+			.then( ( $settingSection ) => {
+				cy.get( Cypress.$( $settingSection ).parent().parent() )
+					.find( 'input[type="number"]' )
+					.focus()
+					.type( `{selectall}${ backgroundHeight }` );
+			} );
+
+		// helpers.setInputValue( 'divider settings', 'shape height', shapeHeight );
+		// helpers.setInputValue( 'divider settings', 'background height', backgroundHeight );
 		helpers.checkForBlockErrors( 'coblocks/shape-divider' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-shape-divider' ).should( 'exist' );
-		cy.get( '.wp-block-coblocks-shape-divider__svg-wrapper' ).should( 'have.attr', 'style' ).should( 'include', shapeHeight );
-		cy.get( '.wp-block-coblocks-shape-divider__alt-wrapper' ).should( 'have.attr', 'style' ).should( 'include', backgroundHeight );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -66,25 +66,13 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 	 * and are able to successfully save the block without errors.
 	 */
 	it( 'Test shape-divider block saves with color values set.', function() {
-		const { shapeColor, backgroundColor, shapeColorRGB, backgroundColorRGB } = shapeDividerData;
+		const { shapeColor, backgroundColor } = shapeDividerData;
 		helpers.addBlockToPost( 'coblocks/shape-divider', true );
 
 		cy.get( '.edit-post-visual-editor .wp-block-coblocks-shape-divider' ).click();
 		helpers.setColorSetting( 'shape color', shapeColor );
 		helpers.setColorSetting( 'background color', backgroundColor );
-
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/shape-divider' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-shape-divider' ).should( 'exist' );
-		cy.get( '.wp-block-coblocks-shape-divider' )
-			.should( 'have.css', 'background-color', backgroundColorRGB )
-			.should( 'have.css', 'color', shapeColorRGB );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -98,17 +86,6 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 		cy.get( '.edit-post-visual-editor .wp-block-coblocks-shape-divider' ).click();
 
 		helpers.setBlockStyle( style );
-
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/shape-divider' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-shape-divider' ).should( 'exist' );
-
-		cy.get( '.wp-block-coblocks-shape-divider' ).should( 'have.class', `is-style-${ style }` );
-
-		helpers.editPage();
 	} );
 } );
