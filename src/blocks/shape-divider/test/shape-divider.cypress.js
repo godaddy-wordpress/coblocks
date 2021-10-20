@@ -36,8 +36,28 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 
 		cy.get( '.edit-post-visual-editor .wp-block-coblocks-shape-divider' ).click();
 
-		helpers.setInputValue( 'divider settings', 'shape height', shapeHeight );
-		helpers.setInputValue( 'divider settings', 'background height', backgroundHeight );
+		helpers.openSettingsPanel( 'Divider settings' );
+
+		cy.get( '.edit-post-sidebar' )
+			.contains( 'Shape height' ).not( '.block-editor-block-card__description' )
+			.then( ( $settingSection ) => {
+				cy.get( Cypress.$( $settingSection ).parent().parent() )
+					.find( 'input[type="number"]' )
+					.focus()
+					.type( `{selectall}${ shapeHeight }` );
+			} );
+
+		cy.get( '.edit-post-sidebar' )
+			.contains( 'Background height' ).not( '.block-editor-block-card__description' )
+			.then( ( $settingSection ) => {
+				cy.get( Cypress.$( $settingSection ).parent().parent() )
+					.find( 'input[type="number"]' )
+					.focus()
+					.type( `{selectall}${ backgroundHeight }` );
+			} );
+
+		// helpers.setInputValue( 'divider settings', 'shape height', shapeHeight );
+		// helpers.setInputValue( 'divider settings', 'background height', backgroundHeight );
 		helpers.checkForBlockErrors( 'coblocks/shape-divider' );
 	} );
 
