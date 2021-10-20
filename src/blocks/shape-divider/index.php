@@ -35,7 +35,7 @@ function coblocks_render_block_shape_divider( $attributes ) {
 		? "has-{$attributes['color']}-color"
 		: false;
 
-	$foreground_color_custom = isset( $attributes['customColor'] ) && ! isset( $foreground_color_class )
+	$foreground_color_custom = isset( $attributes['customColor'] ) && empty( $foreground_color_class )
 		? "color: {$attributes['customColor']};"
 		: false;
 
@@ -47,7 +47,7 @@ function coblocks_render_block_shape_divider( $attributes ) {
 		? "has-{$attributes['backgroundColor']}-background-color"
 		: false;
 
-	$background_color_custom = isset( $attributes['customBackgroundColor'] ) && ! isset( $background_color_class )
+	$background_color_custom = isset( $attributes['customBackgroundColor'] ) && empty( $background_color_class )
 		? "background-color: {$attributes['customBackgroundColor']};"
 		: false;
 
