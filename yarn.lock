@@ -1350,6 +1350,11 @@
   dependencies:
     "@wordpress/primitives" "^1.7.0"
 
+"@godaddy-wordpress/eslint-config@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/eslint-config/-/eslint-config-0.3.0.tgz#221d15c3d013db1d05ca606b7c42761e306cfabd"
+  integrity sha512-n8ef8UbawDpYH+LtqWWVCsibvb6tFv/1H+0sSpRy8NotZtXaxUWSnoRubWiwqp/VsgmBM/6QCr1ISsM80L4/hw==
+
 "@godaddy-wordpress/stylelint-config@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@godaddy-wordpress/stylelint-config/-/stylelint-config-0.2.0.tgz#f735d96c4ac81ee1c70a788541787c232343431b"
@@ -7290,7 +7295,7 @@ eslint-plugin-react-hooks@^4.2.0:
   resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.2.0.tgz#8c229c268d468956334c943bb45fc860280f5556"
   integrity sha512-623WEiZJqxR7VdxFCKLI6d6LLpwJkGPYKODnkH3D7WpOG5KM8yWueBd8TLsNAetEJNF5iJmolaAKO3F8yzyVBQ==
 
-eslint-plugin-react@^7.22.0:
+eslint-plugin-react@7.26.1, eslint-plugin-react@^7.22.0:
   version "7.26.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.26.1.tgz#41bcfe3e39e6a5ac040971c1af94437c80daa40e"
   integrity sha512-Lug0+NOFXeOE+ORZ5pbsh6mSKjBKXDXItUD2sQoT+5Yl0eoT82DqnXeTMfUare4QVCn9QwXbfzO/dBLjLXwVjQ==
