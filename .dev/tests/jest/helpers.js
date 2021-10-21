@@ -184,7 +184,7 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 
 						const blocks = parse( deprecatedSerialized );
 
-            			// This assertion should be removed when issue #2025 is resolved.
+						// This assertion should be removed when issue #2025 is resolved.
 						// https://github.com/godaddy-wordpress/coblocks/issues/2025
 						const IssueBlocks = [
 							'coblocks/column',
@@ -192,8 +192,9 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 							'coblocks/gallery-stacked',
 							'coblocks/gallery-masonry',
 						];
-							// The indexToCheckAgainst refers to the block deprecated.js array of attributes and save functions.
-							// Index is relevant because specific deprecated save functions cause the keys bug reported in #2025.
+
+						// The indexToCheckAgainst refers to the block deprecated.js array of attributes and save functions.
+						// Index is relevant because specific deprecated save functions cause the keys bug reported in #2025.
 						const indexToCheckAgainst = ( blockName === 'coblocks/column' ) ? 1 : 0;
 						if (
 							IssueBlocks.includes( blockName ) &&
