@@ -184,27 +184,6 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 
 						const blocks = parse( deprecatedSerialized );
 
-						// This assertion should be removed when issue #2025 is resolved.
-						// https://github.com/godaddy-wordpress/coblocks/issues/2025
-						const IssueBlocks = [
-							'coblocks/column',
-							'coblocks/hero',
-							'coblocks/gallery-stacked',
-							'coblocks/gallery-masonry',
-						];
-
-						// The indexToCheckAgainst refers to the block deprecated.js array of attributes and save functions.
-						// Index is relevant because specific deprecated save functions cause the keys bug reported in #2025.
-						const indexToCheckAgainst = ( blockName === 'coblocks/column' ) ? 1 : 0;
-						if (
-							IssueBlocks.includes( blockName ) &&
-								attribute === 'backgroundType' &&
-								JSON.stringify( variation ) === '"video"' &&
-								index === indexToCheckAgainst
-						) {
-							expect( console ).toHaveErrored();
-						}
-
 						expect(
 							blocks.filter( ( block ) => ! block.isValid ).map( filterBlockObjectResult )
 						).toEqual( [] );
