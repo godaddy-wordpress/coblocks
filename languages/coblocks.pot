@@ -1,14 +1,14 @@
 # Copyright (c) 2021 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 2.17.0\n"
+"Project-Id-Version: CoBlocks 2.18.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-20T15:17:40+00:00\n"
+"POT-Creation-Date: 2021-10-21T01:14:59+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -456,7 +456,7 @@ msgstr ""
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:48
 #: src/blocks/row/column/inspector.js:164
 #: src/blocks/row/inspector.js:206
-#: src/blocks/shape-divider/inspector.js:81
+#: src/blocks/shape-divider/inspector.js:71
 #: src/blocks/share/inspector.js:200
 #: src/blocks/social-profiles/inspector.js:212
 #: src/components/form-label-colors/label-color-control.js:36
@@ -478,7 +478,7 @@ msgstr ""
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:53
 #: src/blocks/row/column/inspector.js:170
 #: src/blocks/row/inspector.js:222
-#: src/blocks/shape-divider/inspector.js:92
+#: src/blocks/shape-divider/inspector.js:82
 #: src/blocks/share/inspector.js:81
 #: src/blocks/share/inspector.js:99
 #: src/blocks/social-profiles/inspector.js:86
@@ -789,7 +789,7 @@ msgstr ""
 
 #. translators: block keyword
 #: src/blocks/dynamic-separator/index.js:38
-#: src/blocks/shape-divider/index.js:37
+#: src/blocks/shape-divider/index.js:36
 msgid "separator"
 msgstr ""
 
@@ -3769,7 +3769,7 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:829
 #: src/blocks/icon/deprecated/svgsfocusable.js:828
 #: src/blocks/icon/svgs.js:822
-#: src/blocks/shape-divider/index.js:58
+#: src/blocks/shape-divider/index.js:57
 msgid "Waves"
 msgstr ""
 
@@ -6724,63 +6724,63 @@ msgid "Flip vertically"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/shape-divider/index.js:28
+#: src/blocks/shape-divider/index.js:27
 msgid "Shape Divider"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/shape-divider/index.js:30
+#: src/blocks/shape-divider/index.js:29
 msgid "Add a shape divider to visually distinquish page sections."
 msgstr ""
 
 #. translators: block style
-#: src/blocks/shape-divider/index.js:47
+#: src/blocks/shape-divider/index.js:46
 msgid "Wavy"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/shape-divider/index.js:53
+#: src/blocks/shape-divider/index.js:52
 msgid "Hills"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/shape-divider/index.js:63
+#: src/blocks/shape-divider/index.js:62
 msgid "Angled"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/shape-divider/index.js:68
+#: src/blocks/shape-divider/index.js:67
 msgid "Sloped"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/shape-divider/index.js:73
+#: src/blocks/shape-divider/index.js:72
 msgid "Rounded"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/shape-divider/index.js:78
+#: src/blocks/shape-divider/index.js:77
 msgid "Triangle"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/shape-divider/index.js:83
+#: src/blocks/shape-divider/index.js:82
 msgid "Pointed"
 msgstr ""
 
-#: src/blocks/shape-divider/inspector.js:42
+#: src/blocks/shape-divider/inspector.js:52
 msgid "Divider settings"
 msgstr ""
 
-#: src/blocks/shape-divider/inspector.js:44
-msgid "Shape height in pixels"
+#: src/blocks/shape-divider/inspector.js:56
+msgid "Shape height"
 msgstr ""
 
-#: src/blocks/shape-divider/inspector.js:62
-msgid "Background height in pixels"
+#: src/blocks/shape-divider/inspector.js:64
+msgid "Background height"
 msgstr ""
 
-#: src/blocks/shape-divider/inspector.js:87
+#: src/blocks/shape-divider/inspector.js:77
 msgid "Shape color"
 msgstr ""
 

@@ -21,14 +21,14 @@ const transforms = {
 			type: 'block',
 			blocks: [ 'core/spacer' ],
 			transform: ( { height } ) => createBlock( metadata.name, {
-				height,
+				shapeHeight: height,
 			} ),
 		},
 		{
 			type: 'block',
 			blocks: [ 'coblocks/dynamic-separator' ],
 			transform: ( { height } ) => createBlock( metadata.name, {
-				height,
+				shapeHeight: height,
 			} ),
 		},
 		{
