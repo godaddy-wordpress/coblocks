@@ -372,7 +372,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		helpers.openSettingsPanel( 'Profiles' );
 
-		cy.get( '.components-social-links-list .components-base-control:nth-child(5) input' )
+		cy.get( '.components-social-links-list .components-base-control:nth-child(6) input' )
 			.type( 'https://www.linkedin.com/test' );
 
 		cy.get( 'button[aria-label="Add LinkedIn profile"]' )
