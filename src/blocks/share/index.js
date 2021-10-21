@@ -1,20 +1,13 @@
 /**
- * External dependencies
- */
-import { ShareIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Internal dependencies
  */
 import metadata from './block.json';
 import transforms from './transforms';
-import { hasFormattingCategory } from '../../utils/block-helpers';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
 import { dispatch } from '@wordpress/data';
 import { switchToBlockType } from '@wordpress/blocks';
 
@@ -28,13 +21,7 @@ const settings = {
 	title: __( 'Share', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add social sharing links to help you get likes and shares.', 'coblocks' ),
-	category: hasFormattingCategory ? 'common' : 'widgets',
-	icon: <Icon icon={ icon } />,
-	keywords: [
-		'coblocks',
-		/* translators: block keyword */
-		__( 'social', 'coblocks' ),
-	],
+	parent: [],
 	styles: [
 		{
 			name: 'mask',
@@ -63,17 +50,6 @@ const settings = {
 			label: __( 'Circular', 'coblocks' ),
 		},
 	],
-	example: {
-		attributes: {
-			facebook: '#',
-			twitter: '#',
-			pinterest: '#',
-			linkedin: '#',
-			email: '#',
-			tumblr: '#',
-			textAlign: 'center',
-		},
-	},
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
