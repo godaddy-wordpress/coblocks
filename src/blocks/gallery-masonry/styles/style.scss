@@ -32,6 +32,8 @@ figure.wp-block-coblocks-gallery-masonry {
     transition: all .5s ease-in-out;
     column-gap: 30px;
     column-fill: initial;
+	// display: flex;
+
 // }
 	// width: unset;
 	// display: grid;
@@ -53,6 +55,17 @@ figure.wp-block-coblocks-gallery-masonry {
     vertical-align: top;
 	// width: unset !important;
 	// height: min-content !important;
+	// display: flex;
+	// width: 33%;
+
+	img {
+		flex: 1;
+		height: 100%;
+		-o-object-fit: cover;
+		object-fit: cover;
+		width: 100%;
+	}
+
 	}
 
 	  /* Masonry on tablets */
