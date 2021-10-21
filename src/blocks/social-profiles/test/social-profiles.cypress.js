@@ -19,6 +19,9 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Instagram profile"]' ).first().click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.instagram.com/test' );
 
+		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add TikTok profile"]' ).first().click();
+		cy.get( '.block-editor-url-input' ).type( 'https://www.tiktok.com/test' );
+
 		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Pinterest profile"]' ).first().click();
 		cy.get( '.block-editor-url-input' ).type( 'https://www.pinterest.com/test' );
 
@@ -42,7 +45,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		cy.get( '.wp-block-coblocks-social-profiles ul li' )
 			.its( 'length' )
-			.should( 'equal', 8 );
+			.should( 'equal', 9 );
 
 		cy.get( 'a[title="Facebook"]' )
 			.should( 'have.attr', 'href', 'https://www.facebook.com/test' );
@@ -52,6 +55,9 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		cy.get( 'a[title="Instagram"]' )
 			.should( 'have.attr', 'href', 'https://www.instagram.com/test' );
+
+		cy.get( 'a[title="TikTok"]' )
+			.should( 'have.attr', 'href', 'https://www.tiktok.com/test' );
 
 		cy.get( 'a[title="Pinterest"]' )
 			.should( 'have.attr', 'href', 'https://www.pinterest.com/test' );
@@ -366,7 +372,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		helpers.openSettingsPanel( 'Profiles' );
 
-		cy.get( '.components-social-links-list .components-base-control:nth-child(5) input' )
+		cy.get( '.components-social-links-list .components-base-control:nth-child(6) input' )
 			.type( 'https://www.linkedin.com/test' );
 
 		cy.get( 'button[aria-label="Add LinkedIn profile"]' )
