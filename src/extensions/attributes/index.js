@@ -4,7 +4,7 @@
 import { addFilter } from '@wordpress/hooks';
 import { createHigherOrderComponent } from '@wordpress/compose';
 
-const allowedBlocks = [ 'coblocks/row', 'coblocks/column', 'coblocks/features', 'coblocks/feature', 'coblocks/media-card', 'coblocks/shape-divider', 'coblocks/hero' ];
+const allowedBlocks = [ 'coblocks/row', 'coblocks/column', 'coblocks/features', 'coblocks/feature', 'coblocks/media-card', 'coblocks/hero' ];
 
 /**
  * Filters registered block settings, extending attributes with settings

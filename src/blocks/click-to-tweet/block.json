@@ -8,9 +8,6 @@
 			"selector": "p",
 			"default": ""
 		},
-		"url": {
-			"type": "attribute"
-		},
 		"textAlign": {
 			"type": "string"
 		},

@@ -15,6 +15,8 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { useEffect } from '@wordpress/element';
 import {
+	// Disable reason: We choose to use unsafe APIs in our codebase.
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalImageURLInputUI as ImageURLInputUI,
 	BlockControls,
 	InnerBlocks,
@@ -180,8 +182,6 @@ const Edit = ( props ) => {
 		);
 	};
 
-	const onSetHref = ( { href } ) => setAttributes( { href } );
-
 	const { className } = props;
 	const {
 		headingLevel,
@@ -194,6 +194,16 @@ const Edit = ( props ) => {
 		showCta,
 		alignment,
 	} = attributes;
+
+	const onSetHref = ( { href: newHref, ...restArgs } ) => {
+		const newAttributes = { ...restArgs };
+
+		if ( newHref !== undefined ) {
+			newAttributes.href = newHref;
+		}
+
+		setAttributes( newAttributes );
+	};
 
 	const TEMPLATE = [
 		[

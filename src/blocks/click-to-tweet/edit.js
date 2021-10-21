@@ -50,10 +50,6 @@ const Edit = ( props ) => {
 
 	const blockquoteClasses = classnames( className, { [ `has-text-align-${ textAlign }` ]: textAlign } );
 
-	if ( props.postLink ) {
-		props.setAttributes( { url: props.postLink } );
-	}
-
 	return (
 		<>
 			{ isSelected && (

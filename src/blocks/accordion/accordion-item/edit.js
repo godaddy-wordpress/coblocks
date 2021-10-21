@@ -26,6 +26,16 @@ const TEMPLATE = [
 	[ 'core/paragraph', { placeholder: __( 'Add content…', 'coblocks' ) } ],
 ];
 
+const anySelectedBlocks = ( blocks, selectedClientId ) => {
+	return blocks.some( ( block ) => {
+		if ( block.clientId === selectedClientId ) {
+			return true;
+		}
+
+		return anySelectedBlocks( block.innerBlocks, selectedClientId );
+	} );
+};
+
 /**
  * Block edit function
  *
@@ -49,14 +59,14 @@ const AccordionItemEdit = ( props ) => {
 	} = useSelect( ( select ) => {
 		const {
 			getSelectedBlockClientId,
-			getBlockRootClientId,
 			getBlocks,
 		} = select( 'core/block-editor' );
 
-		const hasSelectedChildren = getBlocks( props.clientId ).filter( ( elem ) => elem.clientId === getSelectedBlockClientId() || elem.clientId === getBlockRootClientId( getSelectedBlockClientId() ) );
+		const selectedBlock = getSelectedBlockClientId();
+		const anySelectedChildrenBlocks = anySelectedBlocks( getBlocks( props.clientId ), selectedBlock );
 
 		return {
-			isEditing: getSelectedBlockClientId() === props.clientId || hasSelectedChildren.length > 0,
+			isEditing: getSelectedBlockClientId() === props.clientId || anySelectedChildrenBlocks,
 		};
 	} );
 

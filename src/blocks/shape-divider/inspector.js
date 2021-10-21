@@ -2,7 +2,6 @@
  * Internal dependencies
  */
 import applyWithColors from './colors';
-import ResponsiveBaseControl from '../../components/responsive-base-control';
 
 /**
  * WordPress dependencies
@@ -10,7 +9,12 @@ import ResponsiveBaseControl from '../../components/responsive-base-control';
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
-import { PanelBody } from '@wordpress/components';
+import {
+	PanelBody,
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
+	__experimentalUnitControl as UnitControl,
+	PanelRow,
+} from '@wordpress/components';
 
 /**
  * Inspector controls
@@ -29,53 +33,39 @@ const Inspector = ( props ) => {
 
 	const {
 		shapeHeight,
-		shapeHeightTablet,
-		shapeHeightMobile,
 		backgroundHeight,
-		backgroundHeightMobile,
-		backgroundHeightTablet,
-		syncHeight,
 	} = attributes;
+
+	const unitControlProps = {
+		labelPosition: 'edge',
+		units: [
+			{ value: 'px', label: 'px', default: 20 },
+			{ value: 'vh', label: 'vh', default: 20 },
+			{ value: 'vw', label: 'vw', default: 20 },
+		],
+		min: 0,
+		__unstableInputWidth: '80px',
+	};
 
 	return (
 		<InspectorControls>
 			<PanelBody title={ __( 'Divider settings', 'coblocks' ) }>
-				<ResponsiveBaseControl { ...props }
-					label={ __( 'Shape height in pixels', 'coblocks' ) }
-					height={ shapeHeight }
-					heightTablet={ shapeHeightTablet }
-					heightMobile={ shapeHeightMobile }
-					onChange={ ( event ) => {
-						setAttributes( { shapeHeight: parseInt( event.target.value, 10 ) } );
-					} }
-					onChangeTablet={ ( event ) => {
-						setAttributes( { shapeHeightTablet: parseInt( event.target.value, 10 ) } );
-					} }
-					onChangeMobile={ ( event ) => {
-						setAttributes( { shapeHeightMobile: parseInt( event.target.value, 10 ) } );
-					} }
-					sync={ syncHeight }
-					type="shapeHeight"
-					min="40"
-				/>
-				<ResponsiveBaseControl { ...props }
-					label={ __( 'Background height in pixels', 'coblocks' ) }
-					height={ backgroundHeight }
-					heightTablet={ backgroundHeightTablet }
-					heightMobile={ backgroundHeightMobile }
-					onChange={ ( event ) => {
-						setAttributes( { backgroundHeight: parseInt( event.target.value, 10 ) } );
-					} }
-					onChangeTablet={ ( event ) => {
-						setAttributes( { backgroundHeightTablet: parseInt( event.target.value, 10 ) } );
-					} }
-					onChangeMobile={ ( event ) => {
-						setAttributes( { backgroundHeightMobile: parseInt( event.target.value, 10 ) } );
-					} }
-					sync={ syncHeight }
-					type="backgroundHeight"
-					min="20"
-				/>
+				<PanelRow>
+					<UnitControl
+						{ ...unitControlProps }
+						label={ __( 'Shape height', 'coblocks' ) }
+						onChange={ ( newShapeHeight ) => setAttributes( { shapeHeight: newShapeHeight } ) }
+						value={ shapeHeight }
+					/>
+				</PanelRow>
+				<PanelRow>
+					<UnitControl
+						{ ...unitControlProps }
+						label={ __( 'Background height', 'coblocks' ) }
+						onChange={ ( newBackgroundHeight ) => setAttributes( { backgroundHeight: newBackgroundHeight } ) }
+						value={ backgroundHeight }
+					/>
+				</PanelRow>
 			</PanelBody>
 			<PanelColorSettings
 				title={ __( 'Color settings', 'coblocks' ) }
