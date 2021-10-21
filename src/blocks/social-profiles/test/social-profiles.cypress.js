@@ -45,7 +45,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 
 		cy.get( '.wp-block-coblocks-social-profiles ul li' )
 			.its( 'length' )
-			.should( 'equal', 8 );
+			.should( 'equal', 9 );
 
 		cy.get( 'a[title="Facebook"]' )
 			.should( 'have.attr', 'href', 'https://www.facebook.com/test' );
