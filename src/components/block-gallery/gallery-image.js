@@ -68,10 +68,9 @@ class GalleryImage extends Component {
 	}
 
 	onKeyDown( event ) {
-		const doc = this.container.current.ownerDocument;
-
 		if (
-			this.container === doc.activeElement &&
+			// eslint-disable-next-line @wordpress/no-global-active-element
+			this.container === document.activeElement &&
 			this.props.isSelected && [ BACKSPACE, DELETE ].indexOf( event.keyCode ) !== -1
 		) {
 			event.stopPropagation();
