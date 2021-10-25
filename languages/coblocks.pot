@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-25T16:20:54+00:00\n"
+"POT-Creation-Date: 2021-10-25T18:18:13+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -1160,7 +1160,7 @@ msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:198
 #: src/blocks/services/service/edit.js:145
-#: src/components/block-gallery/gallery-image.js:223
+#: src/components/block-gallery/gallery-image.js:219
 msgid "Remove image"
 msgstr ""
 
@@ -2156,7 +2156,7 @@ msgid "This gif has an empty alt attribute"
 msgstr ""
 
 #: src/blocks/gif/edit.js:218
-#: src/components/block-gallery/gallery-image.js:269
+#: src/components/block-gallery/gallery-image.js:265
 msgid "Write caption…"
 msgstr ""
 
@@ -6679,13 +6679,13 @@ msgid "Toggle to show call to action buttons."
 msgstr ""
 
 #: src/blocks/services/service/edit.js:151
-#: src/components/block-gallery/gallery-image.js:210
+#: src/components/block-gallery/gallery-image.js:206
 #: src/extensions/replace-image/index.js:115
 msgid "Replace Image"
 msgstr ""
 
 #: src/blocks/services/service/edit.js:153
-#: src/components/block-gallery/gallery-image.js:212
+#: src/components/block-gallery/gallery-image.js:208
 msgid "Replace"
 msgstr ""
 
@@ -6978,7 +6978,7 @@ msgid "Add Houzz profile"
 msgstr ""
 
 #: src/blocks/social-profiles/edit.js:244
-#: src/components/block-gallery/gallery-image.js:260
+#: src/components/block-gallery/gallery-image.js:256
 msgid "Apply"
 msgstr ""
 
@@ -7154,15 +7154,15 @@ msgstr ""
 msgid "Clear Media"
 msgstr ""
 
-#: src/components/block-gallery/gallery-image.js:237
+#: src/components/block-gallery/gallery-image.js:233
 msgid "Move image backward"
 msgstr ""
 
-#: src/components/block-gallery/gallery-image.js:245
+#: src/components/block-gallery/gallery-image.js:241
 msgid "Move image forward"
 msgstr ""
 
-#: src/components/block-gallery/gallery-image.js:260
+#: src/components/block-gallery/gallery-image.js:256
 msgid "Saving"
 msgstr ""
 
