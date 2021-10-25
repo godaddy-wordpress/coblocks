@@ -4,6 +4,13 @@
 	width: 100%;
 }
 
+.no-autoplay {
+	-webkit-transition: none !important;
+  	-moz-transition: none !important;
+  	-o-transition: none !important;
+  	transition: none !important;
+}
+
 .swiper-container,
 .swiper-wrapper {
 	display: flex;
@@ -45,7 +52,7 @@
 
 
 .swiper-slide {
-
+	max-width: 100%;
 	flex-shrink: 0;
 	font-size: 18px;
 }
