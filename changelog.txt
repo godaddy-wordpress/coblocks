@@ -1,3 +1,12 @@
+2.18.1 / 2021-10-21
+===================
+### Enhancements
+* Enhance Social Profiles block with TikTok option [#2111](https://github.com/godaddy-wordpress/coblocks/pull/2111)
+
+### Bug Fixes
+* Fix theme and plugin compatibility bug [#2113](https://github.com/godaddy-wordpress/coblocks/pull/2113)
+* Fix Shape Divider block SVG permissions issue [#2107](https://github.com/godaddy-wordpress/coblocks/pull/2107)
+
 2.18.0 / 2021-10-20
 ===================
 ### Enhancements
