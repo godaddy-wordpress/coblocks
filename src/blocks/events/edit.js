@@ -14,7 +14,7 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies.
  */
-import { Toolbar, Placeholder, Button, TextControl } from '@wordpress/components';
+import { Placeholder, Button, TextControl, ToolbarGroup } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
@@ -143,9 +143,7 @@ const EventsEdit = ( props ) => {
 
 			{ !! externalCalendarUrl &&
 				<BlockControls>
-					<Toolbar controls={ toolbarControls }
-						label={ __( 'Events block controls', 'coblocks' ) }
-					/>
+					<ToolbarGroup controls={ toolbarControls } />
 				</BlockControls>
 			}
 

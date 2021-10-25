@@ -3,7 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { BlockControls, BlockAlignmentToolbar } from '@wordpress/block-editor';
-import { Toolbar, Button } from '@wordpress/components';
+import { Toolbar, ToolbarButton } from '@wordpress/components';
 
 const Controls = ( props ) => {
 	const {
@@ -32,7 +32,7 @@ const Controls = ( props ) => {
 				/>
 				<Toolbar label={ __( 'Gif block controls', 'coblocks' ) }>
 					{ url &&
-						<Button
+						<ToolbarButton
 							className="components-toolbar__control"
 							label={ __( 'Remove gif', 'coblocks' ) }
 							icon="trash"

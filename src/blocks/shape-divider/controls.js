@@ -3,7 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { BlockControls } from '@wordpress/block-editor';
-import { Toolbar, Icon } from '@wordpress/components';
+import { ToolbarGroup, Icon } from '@wordpress/components';
 
 /**
  * External dependencies
@@ -36,9 +36,7 @@ const Controls = ( props ) => {
 	return (
 		<>
 			<BlockControls>
-				<Toolbar controls={ toolbarControls }
-					label={ __( 'Shape divider controls', 'coblocks' ) }
-				/>
+				<ToolbarGroup controls={ toolbarControls } />
 			</BlockControls>
 		</>
 	);

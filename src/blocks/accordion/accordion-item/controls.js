@@ -8,7 +8,7 @@ import { OpenIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  */
 import { __ } from '@wordpress/i18n';
 import { BlockControls } from '@wordpress/block-editor';
-import { Toolbar, Icon } from '@wordpress/components';
+import { Icon, ToolbarGroup } from '@wordpress/components';
 
 const Controls = ( props ) => {
 	const {
@@ -33,9 +33,7 @@ const Controls = ( props ) => {
 	return (
 		<>
 			<BlockControls>
-				<Toolbar
-					controls={ customControls }
-					label={ __( 'Accordion controls', 'coblocks' ) } />
+				<ToolbarGroup controls={ customControls } />
 			</BlockControls>
 		</>
 	);

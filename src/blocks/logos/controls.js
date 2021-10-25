@@ -7,7 +7,7 @@ import * as helper from './../../utils/helper';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Button, Toolbar } from '@wordpress/components';
+import { Toolbar, ToolbarButton } from '@wordpress/components';
 import {
 	BlockControls,
 	MediaUpload,
@@ -42,7 +42,7 @@ const Controls = ( props ) => {
 								gallery
 								value={ attributes.images.map( ( img ) => img.id ) }
 								render={ ( { open } ) => (
-									<Button
+									<ToolbarButton
 										className="components-toolbar__control"
 										label={ __( 'Edit logos', 'coblocks' ) }
 										icon={ edit }

@@ -8,7 +8,7 @@ import { BackgroundControls } from '../../components/background';
  */
 import { __ } from '@wordpress/i18n';
 import { BlockControls } from '@wordpress/block-editor';
-import { Toolbar, Icon } from '@wordpress/components';
+import { ToolbarGroup, Icon } from '@wordpress/components';
 import { pullLeft, pullRight } from '@wordpress/icons';
 
 const Controls = ( props ) => {
@@ -36,7 +36,7 @@ const Controls = ( props ) => {
 	return (
 		<>
 			<BlockControls>
-				<Toolbar
+				<ToolbarGroup
 					controls={ toolbarControls }
 				/>
 				{ BackgroundControls( props ) }

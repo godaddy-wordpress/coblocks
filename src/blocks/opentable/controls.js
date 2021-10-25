@@ -3,7 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { BlockControls } from '@wordpress/block-editor';
-import { Toolbar } from '@wordpress/components';
+import { ToolbarGroup } from '@wordpress/components';
 import { edit } from '@wordpress/icons';
 
 const Controls = ( props ) => {
@@ -25,9 +25,7 @@ const Controls = ( props ) => {
 	return (
 		<BlockControls>
 			{ showEditControls &&
-				<Toolbar controls={ toolbarControls }
-					label={ __( 'OpenTable controls', 'coblocks' ) }
-				/>
+				<ToolbarGroup controls={ toolbarControls } />
 			}
 		</BlockControls>
 	);

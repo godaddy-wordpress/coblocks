@@ -3,7 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { BlockControls } from '@wordpress/block-editor';
-import { Toolbar } from '@wordpress/components';
+import { ToolbarGroup } from '@wordpress/components';
 import { edit } from '@wordpress/icons';
 
 function Controls( { attributes, setAttributes } ) {
@@ -24,9 +24,7 @@ function Controls( { attributes, setAttributes } ) {
 	return (
 		<BlockControls>
 			{ address &&
-				<Toolbar controls={ toolbarControls }
-					label={ __( 'Map block controls', 'coblocks' ) }
-				/>
+				<ToolbarGroup controls={ toolbarControls } />
 			}
 		</BlockControls>
 	);
