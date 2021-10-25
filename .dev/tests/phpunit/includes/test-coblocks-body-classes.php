@@ -141,7 +141,7 @@ class CoBlocks_Body_Classes_Tests extends WP_UnitTestCase {
 			}
 		);
 
-		$this->assertEquals( $this->coblocks_body_classes->body_class( [ 'existing' ] ), [ 'existing', 'is-twentynineteen', 'no-js' ] );
+		$this->assertEquals( $this->coblocks_body_classes->body_class( [ 'existing' ] ), [ 'existing', 'is-twentynineteen' ] );
 
 	}
 
