@@ -66,6 +66,10 @@
 			"type": "string",
 			"default": ""
 		},
+		"tiktok": {
+			"type": "string",
+			"default": ""
+		},
 		"pinterest": {
 			"type": "string",
 			"default": ""
