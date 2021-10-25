@@ -392,7 +392,6 @@ const GalleryCarouselEdit = ( props ) => {
 					unstableOnFocus={ onFocusCaption }
 					onChange={ ( value ) => setAttributes( { primaryCaption: value } ) }
 					isSelected={ captionFocused }
-					keepPlaceholderOnFocus
 					inlineToolbar
 				/>
 			) }
