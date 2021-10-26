@@ -1,0 +1,16 @@
+{
+	"name": "coblocks/faq-item",
+	"category": "layout",
+	"attributes": {
+		"answer": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-coblocks-faq__answer"
+		},
+		"question": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-coblocks-faq__question"
+		}
+	}
+}

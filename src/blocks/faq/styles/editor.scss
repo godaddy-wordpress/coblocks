@@ -1,0 +1,20 @@
+[data-type="coblocks/faq"] {
+
+	@include input-submit-placeholder;
+
+	.coblocks-block-appender {
+		margin-top: 28px;
+	}
+
+	&.is-selected,
+	&.has-child-selected {
+
+		.block-list-appender {
+			display: block;
+		}
+	}
+}
+
+.wp-block-coblocks-faq {
+
+}
