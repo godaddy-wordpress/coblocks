@@ -51,8 +51,6 @@ const Swiper = ({
             swiperPlugins = [ ...swiperPlugins, SwiperPluginAutoPlay ];
         }
 
-        console.log('mount');
-
         swiper = new TinySwiper(swiperContainer, {
             ...(navigation === true ? ({
                 navigation: {

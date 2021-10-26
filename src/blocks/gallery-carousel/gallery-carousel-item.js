@@ -32,16 +32,18 @@ const GalleryCarouselItem = ({
 	};
 
     const handleCaptionChange = ( value ) => {
-        setAttributes({
-            images: images.map( ( image, imageIndex ) => {
-                if ( index === imageIndex ) {
-                    return {
-                        ...image,
-                        caption: value,
-                    }
+        console.log('value', value);
+        const newImages = images.map( ( image, imageIndex ) => {
+            if ( index === imageIndex ) {
+                return {
+                    ...image,
+                    caption: value,
                 }
-                return image;
-            })
+            }
+            return image;
+        });
+        setAttributes({
+            images: newImages
         });
     };
     
@@ -71,15 +73,15 @@ const GalleryCarouselItem = ({
                     imageIndex={ index }      								
                 />	
             </div>
-            { isSelected && selectedImage === index && (
+            { ! RichText.isEmpty( item.caption ) || (isSelected && selectedImage === index) && (
                 <RichText
                     tagName="figcaption"
                     placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
                     value={ item.caption }
                     className="coblocks-gallery--caption coblocks-gallery--primary-caption"
-                    onChange={ ( value ) => handleCaptionChange( value) }
+                    onChange={ handleCaptionChange }
                     isSelected={ captionFocused }
-                    unstableOnFocus={onFocusCaption}
+                    unstableOnFocus={ onFocusCaption }
                     keepPlaceholderOnFocus
                     inlineToolbar
                 />

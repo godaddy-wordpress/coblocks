@@ -108,6 +108,8 @@ const GalleryCollageEdit = ( props ) => {
 			Object.assign( {}, image, newAttributes ),
 		];
 
+		console.log('new images', images);
+
 		setAttributes( { images } );
 	};
 

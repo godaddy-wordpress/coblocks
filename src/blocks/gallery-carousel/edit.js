@@ -188,10 +188,10 @@ const GalleryCarouselEdit = ( props ) => {
 		);
 	}
 
+	console.log('images', images);
+
 	const renderSwiper = useMemo(() => {
 		const swiperCarouselUuid = uuid();
-
-		console.log('images', images);
 
 		return (
 			<Swiper

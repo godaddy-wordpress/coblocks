@@ -6,9 +6,9 @@
 
 .no-autoplay {
 	-webkit-transition: none !important;
-  	-moz-transition: none !important;
-  	-o-transition: none !important;
-  	transition: none !important;
+	-moz-transition: none !important;
+	-o-transition: none !important;
+	transition: none !important;
 }
 
 .swiper-container,
@@ -52,9 +52,9 @@
 
 
 .swiper-slide {
-	max-width: 100%;
 	flex-shrink: 0;
 	font-size: 18px;
+	max-width: 100%;
 }
 
 .swiper-slide-thumbnail {
