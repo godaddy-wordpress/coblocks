@@ -14,6 +14,7 @@
 	"scripts": {
 		"setup": "composer install && yarn install && yarn run build && wp-scripts env install",
 		"start": "wp-scripts start --config .dev/config/webpack.config.js --progress",
+		"start:debug": "DEBUG_MODE=on wp-scripts start --config .dev/config/webpack.config.js --progress",
 		"build": "wp-scripts build --config .dev/config/webpack.config.js",
 		"clean": "wp-scripts env stop && rm -rf build dist/*.* dist/js node_modules vendor wordpress",
 		"version": "grunt version && grunt update-pot && git add -A .",
