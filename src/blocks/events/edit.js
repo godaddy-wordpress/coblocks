@@ -14,13 +14,14 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies.
  */
-import { Placeholder, Button, TextControl, ToolbarGroup } from '@wordpress/components';
-import ServerSideRender from '@wordpress/server-side-render';
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
-import { useState, useEffect, useRef } from '@wordpress/element';
+import ServerSideRender from '@wordpress/server-side-render';
+import { BlockControls, InnerBlocks } from '@wordpress/block-editor';
+import { Button, Placeholder, TextControl, ToolbarGroup } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
-import { InnerBlocks, BlockControls } from '@wordpress/block-editor';
+import { useEffect, useRef, useState } from '@wordpress/element';
+
 import { edit } from '@wordpress/icons';
 
 const ALLOWED_BLOCKS = [ 'coblocks/event-item' ];
@@ -30,18 +31,16 @@ const TEMPLATE = [
 ];
 
 const EVENTS_RANGE_OPTIONS = [
-	{ value: '1 week', label: __( '1 week', 'coblocks' ) },
-	{ value: '2 weeks', label: __( '2 weeks', 'coblocks' ) },
-	{ value: '1 month', label: __( '1 month', 'coblocks' ) },
-	{ value: 'all', label: __( 'Fetch all', 'coblocks' ) },
+	{ label: __( '1 week', 'coblocks' ), value: '1 week' },
+	{ label: __( '2 weeks', 'coblocks' ), value: '2 weeks' },
+	{ label: __( '1 month', 'coblocks' ), value: '1 month' },
+	{ label: __( 'Fetch all', 'coblocks' ), value: 'all' },
 ];
 
 const EventsEdit = ( props ) => {
 	const {
 		className,
-		attributes: {
-			externalCalendarUrl,
-		},
+		attributes,
 		setAttributes,
 		clientId,
 	} = props;
@@ -56,6 +55,7 @@ const EventsEdit = ( props ) => {
 	let elementRef = useRef( null );
 	let slickTarget = useRef( null );
 
+	const externalCalendarUrl = attributes.externalCalendarUrl;
 	const [ isEditing, setIsEditing ] = useState( false );
 	const [ showExternalCalendarControls, setShowExternalCalendarControls ] = useState( !! externalCalendarUrl || false );
 	const [ stateExternalCalendarUrl, setStateExternalCalendarUrl ] = useState( externalCalendarUrl );
@@ -90,12 +90,11 @@ const EventsEdit = ( props ) => {
 					slickTarget = mutation.addedNodes[ 0 ].children[ 0 ];
 
 					jQuery( slickTarget ).slick( {
-						infinite: false,
-						rows: slickTarget.dataset.perPage,
-
 						// Slick settings to disable within the Block Editor to prevent conflicts.
 						accessibility: false, // Disable tabbing and arrow key navigation.
 						draggable: false, // Disable mouse dragging slides.
+						infinite: false,
+						rows: slickTarget.dataset.perPage,
 						swipe: false, // Disable swiping slides.
 						touchMove: false, // Disable touch swiping slides.
 					} );
@@ -125,20 +124,20 @@ const EventsEdit = ( props ) => {
 	const toolbarControls = [
 		{
 			icon: edit,
-			title: __( 'Edit calendar URL', 'coblocks' ),
 			onClick: () => setIsEditing( ! isEditing ),
+			title: __( 'Edit calendar URL', 'coblocks' ),
 		},
 	];
 
 	return (
 		<>
 			<InspectorControls
-				attributes={ props.attributes }
-				toggleExternalCalendarControls={ toggleExternalCalendarControls }
-				showExternalCalendarControls={ showExternalCalendarControls }
+				attributes={ attributes }
 				eventsRangeOptions={ EVENTS_RANGE_OPTIONS }
-				onChangeEventsToShow={ ( eventsToShow ) => setAttributes( { eventsToShow } ) }
 				onChangeEventsRange={ ( eventsRange ) => setAttributes( { eventsRange } ) }
+				onChangeEventsToShow={ ( eventsToShow ) => setAttributes( { eventsToShow } ) }
+				showExternalCalendarControls={ showExternalCalendarControls }
+				toggleExternalCalendarControls={ toggleExternalCalendarControls }
 			/>
 
 			{ !! externalCalendarUrl &&
@@ -150,11 +149,11 @@ const EventsEdit = ( props ) => {
 			{ showExternalCalendarControls && ( ! externalCalendarUrl || isEditing ) &&
 				<Placeholder
 					icon="rss"
-					label={ __( 'Calendar URL', 'coblocks' ) }
 					instructions={ __(
 						'Enter a URL that loads an iCal formatted calendar.',
 						'coblocks'
 					) }
+					label={ __( 'Calendar URL', 'coblocks' ) }
 				>
 					<form onSubmit={ saveExternalCalendarUrl }>
 						<TextControl
@@ -178,9 +177,9 @@ const EventsEdit = ( props ) => {
 				<div className={ classnames( className, 'coblocks-custom-event' ) }>
 					<InnerBlocks
 						allowedBlocks={ ALLOWED_BLOCKS }
+						renderAppender={ () => <CustomAppender onClick={ insertNewItem } /> }
 						template={ TEMPLATE }
 						templateInsertUpdatesSelection={ false }
-						renderAppender={ () => <CustomAppender onClick={ insertNewItem } /> }
 					/>
 				</div>
 			}
@@ -188,8 +187,8 @@ const EventsEdit = ( props ) => {
 			<div ref={ ( el ) => elementRef = el }>
 				{ !! externalCalendarUrl &&
 					<ServerSideRender
+						attributes={ attributes }
 						block="coblocks/events"
-						attributes={ props.attributes }
 					/>
 				}
 			</div>

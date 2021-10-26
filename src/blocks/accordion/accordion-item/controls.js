@@ -23,10 +23,10 @@ const Controls = ( props ) => {
 	const customControls = [
 		{
 			icon: <Icon icon={ icon } />,
+			isActive: open === true,
+			onClick: () => setAttributes( { open: ! open } ),
 			/* translators: toggle label to display the accordion open */
 			title: __( 'Display as open', 'coblocks' ),
-			onClick: () => setAttributes( { open: ! open } ),
-			isActive: open === true,
 		},
 	];
 
