@@ -24,13 +24,13 @@ const Controls = ( props ) => {
 	const toolbarControls = [ {
 		icon: <Icon icon={ FlipHorizontalIcon } />,
 		title: __( 'Flip horiztonally', 'coblocks' ),
-		isActive: !! verticalFlip,
-		onClick: () => setAttributes( { verticalFlip: ! verticalFlip } ),
+		isActive: !! horizontalFlip,
+		onClick: () => setAttributes( { horizontalFlip: ! horizontalFlip } ),
 	}, {
 		icon: <Icon icon={ FlipVerticalIcon } />,
 		title: __( 'Flip vertically', 'coblocks' ),
-		isActive: !! horizontalFlip,
-		onClick: () => setAttributes( { horizontalFlip: ! horizontalFlip } ),
+		isActive: !! verticalFlip,
+		onClick: () => setAttributes( { verticalFlip: ! verticalFlip } ),
 	} ];
 
 	return (

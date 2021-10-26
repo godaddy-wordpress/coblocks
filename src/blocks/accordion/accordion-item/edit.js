@@ -107,7 +107,6 @@ const AccordionItemEdit = ( props ) => {
 						color: textColor.color,
 					} }
 					onChange={ ( nextTitle ) => setAttributes( { title: nextTitle } ) }
-					keepPlaceholderOnFocus
 					onRemove={ ( forward ) => {
 						const hasEmptyTitle = typeof title === 'undefined' || ( typeof title !== 'undefined' && title.length === 0 );
 
