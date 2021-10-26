@@ -1,32 +1,23 @@
 /**
  * WordPress dependencies
  */
-const DependencyExtractionWebpackPlugin = require( '@wordpress/dependency-extraction-webpack-plugin' );
-
-/**
- * Internal dependencies
- */
-const postcssConfig = require( './postcss.config' );
-const { hasBabelConfig } = require( './utils' );
+const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 
 /**
  * External dependencies
  */
-const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const RtlCssPlugin = require( 'rtlcss-webpack-plugin' );
 const path = require( 'path' );
-const FixStyleOnlyEntriesPlugin = require( 'webpack-fix-style-only-entries' );
-const nodeSassGlobImporter = require( 'node-sass-glob-importer' );
 
-const isProduction = process.env.NODE_ENV === 'production';
+defaultConfig.module.rules[ 1 ].use[ 1 ].options = {
+	...defaultConfig.module.rules[ 1 ].use[ 1 ].options,
+	url: false,
+};
 
 module.exports = {
+	...defaultConfig,
 	entry: {
 		coblocks: path.resolve( process.cwd(), 'src/blocks.js' ),
-
-		// Styles
-		'coblocks-editor': path.resolve( process.cwd(), 'src/styles/editor.scss' ),
-		'coblocks-style': path.resolve( process.cwd(), 'src/styles/style.scss' ),
 
 		// Front-End Scripts
 		'js/coblocks-animation': path.resolve( process.cwd(), 'src/js/coblocks-animation.js' ),
@@ -53,73 +44,6 @@ module.exports = {
 		path: path.resolve( process.cwd(), 'dist/' ),
 	},
 
-	module: {
-		rules: [
-			{
-				test: /\.svg$/,
-				use: [ '@svgr/webpack', 'url-loader' ],
-			},
-			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				use: [
-					require.resolve( 'thread-loader' ),
-					{
-						loader: require.resolve( 'babel-loader' ),
-						options: {
-							// Babel uses a directory within local node_modules
-							// by default. Use the environment variable option
-							// to enable more persistent caching.
-							cacheDirectory:
-								process.env.BABEL_CACHE_DIRECTORY || true,
-
-							// Provide a fallback configuration if there's not
-							// one explicitly available in the project.
-							...( ! hasBabelConfig() && {
-								babelrc: false,
-								configFile: false,
-								presets: [
-									require.resolve(
-										'@wordpress/babel-preset-default'
-									),
-								],
-							} ),
-						},
-					},
-				],
-			},
-			{
-				test: /\.scss$/,
-				use: [
-					MiniCssExtractPlugin.loader,
-					{
-						loader: 'css-loader',
-						options: {
-							url: false,
-							sourceMap: ! isProduction,
-						},
-					},
-					{
-						loader: 'postcss-loader',
-						options: {
-							...postcssConfig,
-							sourceMap: ! isProduction,
-						},
-					},
-					{
-						loader: 'sass-loader',
-						options: {
-							sourceMap: ! isProduction,
-							sassOptions: {
-								importer: nodeSassGlobImporter(),
-							},
-						},
-					},
-				],
-			},
-		],
-	},
-
 	stats: {
 		children: false,
 		modules: false,
@@ -127,11 +51,7 @@ module.exports = {
 	},
 
 	plugins: [
-		new DependencyExtractionWebpackPlugin( { injectPolyfill: true } ),
-		new MiniCssExtractPlugin( {
-			filename: '[name].css',
-		} ),
-		new FixStyleOnlyEntriesPlugin(),
+		...defaultConfig.plugins,
 		new RtlCssPlugin( {
 			filename: '[name]-rtl.css',
 		} ),
