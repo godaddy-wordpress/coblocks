@@ -19,6 +19,7 @@ import { View } from '@wordpress/primitives';
 const allowedBlocks = [ 'core/image' ];
 
 export const Gallery = ( props ) => {
+	// console.log( props );
 	const {
 		attributes,
 		isSelected,
@@ -68,7 +69,9 @@ export const Gallery = ( props ) => {
 				}
 			) }
 		>
-			{ children }
+			<div className="masonry-grid">
+				{ children }
+			</div>
 
 			<View
 				className="blocks-gallery-media-placeholder-wrapper"

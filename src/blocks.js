@@ -118,6 +118,7 @@ const registerBlock = ( block ) => {
 	}
 
 	registerBlockType( name, {
+		...block.metadata,
 		category,
 		...settings,
 	} );
