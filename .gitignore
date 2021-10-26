@@ -15,7 +15,6 @@ coverage/
 .dev/tests/cypress/snapshots
 sftp.json
 dist/*
-!dist/images/
 sandbox.json
 /.idea/
 **/.DS_Store
