@@ -8,7 +8,10 @@ module.exports = function( grunt ) {
 		pkg,
 
 		clean: {
-			build: [ 'build/' ],
+			build: [
+				'build/',
+				'dist/**/*.map',
+			],
 		},
 
 		copy: {

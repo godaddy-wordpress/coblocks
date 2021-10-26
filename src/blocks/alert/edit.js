@@ -95,7 +95,6 @@ const Edit = ( props ) => {
 						value={ title }
 						className="wp-block-coblocks-alert__title"
 						onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
-						keepPlaceholderOnFocus
 					/>
 				) }
 				<RichText
@@ -104,7 +103,6 @@ const Edit = ( props ) => {
 					value={ value }
 					className="wp-block-coblocks-alert__text"
 					onChange={ ( newValue ) => setAttributes( { value: newValue } ) }
-					keepPlaceholderOnFocus
 				/>
 			</div>
 		</>

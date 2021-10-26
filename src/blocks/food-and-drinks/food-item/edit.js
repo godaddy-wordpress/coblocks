@@ -242,7 +242,6 @@ const FoodItem = ( props ) => {
 	};
 
 	const richTextAttributes = {
-		keepPlaceholderOnFocus: true,
 		allowedFormats: [ 'bold', 'italic' ],
 	};
 
