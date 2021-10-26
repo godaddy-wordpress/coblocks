@@ -1,10 +1,7 @@
 /**
  * External dependencies
  */
-import ReactDOMServer from 'react-dom/server';
 import classnames from 'classnames';
-import filter from 'lodash/filter';
-import Flickity from 'react-flickity-component';
 import { GalleryCarouselIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 import { useDispatch } from '@wordpress/data';
 import { v4 as uuid } from 'uuid';
@@ -14,7 +11,6 @@ import { v4 as uuid } from 'uuid';
  */
 import Inspector from './inspector';
 import Controls from './controls';
-import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 import { CarouselGalleryVariationPicker, hasVariationSet } from './variations';
@@ -27,9 +23,10 @@ import { GalleryContextProvider, GalleryCarouselContext } from './context';
  */
 import { Icon } from '@wordpress/icons';
 import { __, sprintf } from '@wordpress/i18n';
-import { useState, useEffect, useMemo, useContext} from '@wordpress/element';
-import { compose, usePrevious } from '@wordpress/compose';
+import { useMemo, useContext} from '@wordpress/element';
+import { compose } from '@wordpress/compose';
 import { withNotices, ResizableBox } from '@wordpress/components';
+import { RichText } from '@wordpress/block-editor';
 
 /**
  * Function will dynamically process a string for use with the `navForClass` block attribute.
@@ -46,51 +43,7 @@ export const parseNavForClass = ( thumbnails, clientId ) => thumbnails
 	: '';
 
 const GalleryCarouselEdit = ( props ) => {
-	const parsedNavForClass = parseNavForClass( props.attributes.thumbnails, props.clientId );
-
-	// const [ selectedImage, setSelectedImage ] = useState( null );
-	// const [ captionFocused, setCaptionFocused ] = useState( false );
-
 	const { selectBlock } = useDispatch( 'core/block-editor' );
-
-	// const prevSelected = usePrevious( props.isSelected );
-
-	// useEffect( () => {
-	// 	if ( ! props.isSelected && prevSelected ) {
-	// 		// setSelectedImage( null );
-	// 		setCaptionFocused( false );
-	// 	}
-
-	// 	if ( ! props.isSelected && prevSelected && captionFocused ) {
-	// 		setCaptionFocused( false );
-	// 	}
-	// }, [ prevSelected, props.isSelected, captionFocused ] );
-
-	useEffect( () => {
-		if ( props.attributes.gutter <= 0 && props.attributes.radius !== 0 ) {
-			props.setAttributes( { radius: 0 } );
-		}
-	}, [ props.attributes.gutter ] );
-
-	useEffect( () => {
-		if (
-			props.attributes.gridSize === 'xlrg'
-		) {
-			props.setAttributes( { gutter: 0, gutterMobile: 0 } );
-		}
-	}, [ props.attributes.gridSize ] );
-
-	useEffect( () => {
-		if ( parsedNavForClass !== props.attributes.navForClass ) {
-			setAttributes( { navForClass: parsedNavForClass } );
-		}
-	}, [ props.attributes.navForClass, parsedNavForClass ] );
-
-	useEffect( () => {
-		if ( !! props.attributes.thumbnails && props.attributes.pageDots ) {
-			setAttributes( { pageDots: false } );
-		}
-	}, [ props.attributes.thumbnails, props.attributes.pageDots ] );
 
 	const {
 		attributes,
@@ -102,33 +55,23 @@ const GalleryCarouselEdit = ( props ) => {
 
 	const {
 		align,
-		gridSize,
 		gutter,
-		gutterMobile,
 		height,
 		images,
 		pageDots,
 		prevNextButtons,
-		primaryCaption,
-		alignCells,
 		thumbnails,
 		responsiveHeight,
 		lightbox,
-		navForClass,
 		draggable,
 		freeScroll,
 		autoPlaySpeed,
 		autoPlay,
 		pauseHover,
+		
 	} = attributes;
 
-	console.log('prevNextButtons', prevNextButtons);
-
-	// console.log('attributes', attributes);
-
-	const { setSelectedImage, setCaptionFocused } = useContext(GalleryCarouselContext);
-    
-	const variatonSelected = hasVariationSet( attributes );
+	const { selectedImage, setSelectedImage } = useContext(GalleryCarouselContext);
 
 	const innerClasses = classnames(
 		'is-cropped',
@@ -143,36 +86,43 @@ const GalleryCarouselEdit = ( props ) => {
 		}
 	);
 
-	const handleSwipe = ( newIndex, state ) => {
+	const handleSwipe = ( newIndex ) => {
 		setSelectedImage( newIndex );
 	};
 
 	const handleSelectCarousel = () => {
 		if ( ! isSelected ) {
 			selectBlock(props.clientId);
-			setCaptionFocused(true);
 		}
 	}
 
-	const hasImages = !! images.length;
-
-	if ( 
-		! hasImages && 
-		! variatonSelected &&
-		variatonSelected !== 'skip' 
-	) {
-		return ( 
-			<CarouselGalleryVariationPicker { ...props } />
-		 );
+	const handleCaptionChange = (val) => {
+		setAttributes({
+			images: images.map((image, index) => {
+				if (index === selectedImage) {
+					return {
+						...image,
+						caption: val
+					}
+				}
+				return image;
+			})
+		})
 	}
 
-	if ( ! hasImages ) {
+	const variatonSelected = hasVariationSet( attributes );
+
+	if ( !images.length && ! variatonSelected  ) {
+		return ( 
+			<CarouselGalleryVariationPicker { ...props } />
+		);
+	} else if ( !images.length && variatonSelected ) {
 		const variationLabel = ( !! variatonSelected && variatonSelected !== 'skip' )
-		? sprintf(
-		/* translators: %s: Type of gallery variation */
-			__( '%s Carousel', 'coblocks' ),
-			variatonSelected
-		) : false;
+			? sprintf(
+				/* translators: %s: Type of gallery variation */
+				__( '%s Carousel', 'coblocks' ),
+				variatonSelected
+			) : false;
 
 		return (
 			<>
@@ -182,13 +132,11 @@ const GalleryCarouselEdit = ( props ) => {
 					variationLabel={ variationLabel }
 					label={ __( 'Carousel', 'coblocks' ) }
 					icon={ <Icon icon={ icon } /> }
-					gutter={ gutter }
+					gutter={ attributes.gutter }
 				/>
-			</>
-		);
+			</>			
+		);						
 	}
-
-	console.log('images', images);
 
 	const renderSwiper = useMemo(() => {
 		const swiperCarouselUuid = uuid();
@@ -219,7 +167,6 @@ const GalleryCarouselEdit = ( props ) => {
 				} : {})}			
 			>
 				{({
-					item,
 					index,
 				}) => {
 					const ariaLabel = sprintf(
@@ -227,22 +174,33 @@ const GalleryCarouselEdit = ( props ) => {
 						__( 'image %1$d of %2$d in gallery', 'coblocks' ),
 						( index + 1 ),
 						images.length
-					);	
+					);
 					
 					return (
 						<GalleryCarouselItem 
-							item={item} 
 							index={index} 
 							ariaLabel={ariaLabel}
-							isSelected={isSelected}
-							setAttributes={setAttributes}
-							images={images}
 						/>	
 					);
 				}}			
 			</Swiper>
 		);
-	}, [ isSelected ]); // going to move the isSelected to within the gallery carousel item to prevent this re-mounting the swiper
+	}, [ prevNextButtons, draggable ]);
+
+	const renderCaption = useMemo(() => {
+		return (
+			<RichText
+				tagName="figcaption"
+				placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
+				value={ images[selectedImage]?.caption }
+				className="coblocks-gallery--caption coblocks-gallery--primary-caption"
+				onChange={ val => handleCaptionChange(val) }
+				isSelected={isSelected }
+				keepPlaceholderOnFocus
+				inlineToolbar   
+			/>
+		)
+	}, [selectedImage, isSelected]);
 
 	return (
 		<>
@@ -279,10 +237,12 @@ const GalleryCarouselEdit = ( props ) => {
 					} );
 				} }
 				showHandle={ isSelected }
+				onClick={handleSelectCarousel}
 			>
-				<div className={ className } onClick={handleSelectCarousel}>
+				<div className={ className }>
 					<div className={ innerClasses }>
 						{renderSwiper}
+						{renderCaption}
 					</div>
 				</div>
 			</ResizableBox>
@@ -290,10 +250,14 @@ const GalleryCarouselEdit = ( props ) => {
 	);
 };
 
-function withGalleryCarouselState( Component ) {
+const withGalleryCarouselState = ( Component ) => {
 	return (props) => {
+		const defaultGalleryState = {
+			isSelected: props.isSelected,
+			images: props.attributes?.images
+		}
 		return (
-			<GalleryContextProvider>
+			<GalleryContextProvider {...defaultGalleryState} >
 				<Component {...props} />
 			</GalleryContextProvider>
 		)
@@ -302,4 +266,5 @@ function withGalleryCarouselState( Component ) {
 
 export default compose( [
 	withNotices,
-] )( withGalleryCarouselState(GalleryCarouselEdit) );
+	withGalleryCarouselState
+] )( GalleryCarouselEdit );

@@ -37,7 +37,7 @@ const GalleryAttributes = {
 				attribute: 'data-id',
 			},
 			caption: {
-				type: 'string',
+				type: 'array',
 				source: 'children',
 				selector: 'figcaption',
 			},

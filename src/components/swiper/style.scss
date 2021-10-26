@@ -104,6 +104,21 @@
 	}
 }
 
+.no-navigation {
+	display: none;
+}
+
+.drag-container {
+	height: auto;
+	width: auto;
+}
+
+.no-drag {
+	pointer-events: none !important;
+	touch-action: none !important;
+	user-select: none !important;
+}
+
 .icon {
 
 	background-color: white;
