@@ -62,77 +62,6 @@ const DimensionsControl = ( props ) => {
 
 	const { updateBlockAttributes } = useDispatch( 'core/block-editor' );
 
-	if ( saveCoBlocksMeta ) {
-		saveMeta();
-		updateBlockAttributes( clientId, { saveCoBlocksMeta: false } );
-	}
-
-	const onChangeSingle = ( value, device, direction ) => {
-		setAttributes( { [ `${ type }${ direction }${ device }` ]: value } );
-		saveMeta();
-	};
-
-	const onChangeAll = ( value, device ) => {
-		setAttributes( {
-			[ `${ type }Top${ device }` ]: value,
-			[ `${ type }Right${ device }` ]: value,
-			[ `${ type }Bottom${ device }` ]: value,
-			[ `${ type }Left${ device }` ]: value,
-		} );
-		saveMeta();
-	};
-
-	const onChangeUnits = ( value ) => {
-		setAttributes( { [ `${ type }Unit` ]: value } );
-		saveMeta();
-	};
-
-	const onChangeSize = ( value, size ) => {
-		// fix reset for specific blocks
-		if ( [ 'coblocks/hero' ].includes( name ) && value === 'no' ) {
-			if ( size < 0 ) {
-				value = 'huge';
-				size = 60;
-			} else {
-				size = -1;
-			}
-		}
-
-		if ( type === 'padding' ) {
-			setAttributes( { paddingSyncUnits: true } );
-		}
-
-		setAttributes( { [ `${ type }Size` ]: value } );
-
-		if ( size ) {
-			size = size < 0 ? '' : size;
-			setAttributes( {
-				[ `${ type }Top` ]: size,
-				[ `${ type }Right` ]: 0,
-				[ `${ type }Bottom` ]: size,
-				[ `${ type }Left` ]: 0,
-				[ `${ type }Unit` ]: 'px',
-			} );
-		}
-
-		saveMeta();
-	};
-
-	const syncUnitsOverwrite = ( device = '' ) => {
-		const numbers = [ props[ 'valueTop' + device ], props[ 'valueRight' + device ], props[ 'valueBottom' + device ], props[ 'valueLeft' + device ] ];
-		const syncValue = Math.max.apply( null, numbers );
-
-		setAttributes( {
-			[ `${ type }SyncUnits${ device }` ]: ! props[ `syncUnits${ device }` ],
-			[ `${ type }Top${ device }` ]: syncValue,
-			[ `${ type }Right${ device }` ]: syncValue,
-			[ `${ type }Bottom${ device }` ]: syncValue,
-			[ `${ type }Left${ device }` ]: syncValue,
-		} );
-
-		saveMeta();
-	};
-
 	const getAttributeValue = ( value, valueUnit ) => {
 		return ( typeof value !== 'undefined' ) ? `${ value }${ valueUnit }` : null;
 	};
@@ -249,6 +178,77 @@ const DimensionsControl = ( props ) => {
 
 			head.appendChild( style );
 		}
+	};
+
+	if ( saveCoBlocksMeta ) {
+		saveMeta();
+		updateBlockAttributes( clientId, { saveCoBlocksMeta: false } );
+	}
+
+	const onChangeSingle = ( value, device, direction ) => {
+		setAttributes( { [ `${ type }${ direction }${ device }` ]: value } );
+		saveMeta();
+	};
+
+	const onChangeAll = ( value, device ) => {
+		setAttributes( {
+			[ `${ type }Top${ device }` ]: value,
+			[ `${ type }Right${ device }` ]: value,
+			[ `${ type }Bottom${ device }` ]: value,
+			[ `${ type }Left${ device }` ]: value,
+		} );
+		saveMeta();
+	};
+
+	const onChangeUnits = ( value ) => {
+		setAttributes( { [ `${ type }Unit` ]: value } );
+		saveMeta();
+	};
+
+	const onChangeSize = ( value, size ) => {
+		// fix reset for specific blocks
+		if ( [ 'coblocks/hero' ].includes( props.name ) && value === 'no' ) {
+			if ( size < 0 ) {
+				value = 'huge';
+				size = 60;
+			} else {
+				size = -1;
+			}
+		}
+
+		if ( type === 'padding' ) {
+			setAttributes( { paddingSyncUnits: true } );
+		}
+
+		setAttributes( { [ `${ type }Size` ]: value } );
+
+		if ( size ) {
+			size = size < 0 ? '' : size;
+			setAttributes( {
+				[ `${ type }Top` ]: size,
+				[ `${ type }Right` ]: 0,
+				[ `${ type }Bottom` ]: size,
+				[ `${ type }Left` ]: 0,
+				[ `${ type }Unit` ]: 'px',
+			} );
+		}
+
+		saveMeta();
+	};
+
+	const syncUnitsOverwrite = ( device = '' ) => {
+		const numbers = [ props[ 'valueTop' + device ], props[ 'valueRight' + device ], props[ 'valueBottom' + device ], props[ 'valueLeft' + device ] ];
+		const syncValue = Math.max.apply( null, numbers );
+
+		setAttributes( {
+			[ `${ type }SyncUnits${ device }` ]: ! props[ `syncUnits${ device }` ],
+			[ `${ type }Top${ device }` ]: syncValue,
+			[ `${ type }Right${ device }` ]: syncValue,
+			[ `${ type }Bottom${ device }` ]: syncValue,
+			[ `${ type }Left${ device }` ]: syncValue,
+		} );
+
+		saveMeta();
 	};
 
 	const classes = classnames(
