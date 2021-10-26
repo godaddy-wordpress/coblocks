@@ -113,11 +113,11 @@
 
 	.arrow-left {
 		left: -1px;
-		mask-image: url(images/lightbox/arrow-left.svg);
+		mask-image: url(../assets/lightbox/arrow-left.svg);
 	}
 
 	.arrow-right {
-		mask-image: url(images/lightbox/arrow-right.svg);
+		mask-image: url(../assets/lightbox/arrow-right.svg);
 		right: -1px;
 	}
 }
@@ -132,7 +132,7 @@
 	background-repeat: no-repeat;
 	cursor: pointer;
 	height: 26px;
-	mask-image: url(images/lightbox/close.svg);
+	mask-image: url(../assets/lightbox/close.svg);
 	mask-size: contain;
 	padding: 7px;
 	transition: transform 0.15s linear;

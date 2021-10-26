@@ -52,7 +52,7 @@ $styles: ("standard"), ("silver"), ("retro"), ("dark"), ("night"), ("aubergine")
 		@each $style in $styles {
 
 			&--#{$style} {
-				background-image: url(images/map/#{$style}.jpg) !important;
+				background-image: url(../assets/map/#{$style}.jpg) !important;
 				background-position: center center;
 				background-repeat: no-repeat;
 				background-size: cover !important;
