@@ -207,8 +207,8 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 				'src/js/coblocks-slick-initializer.js',
 			],
 			'css' => [
-				'dist/coblocks-editor.css',
-				'dist/coblocks-style.css',
+				'dist/coblocks.css',
+				'dist/style-coblocks.css',
 			],
 		];
 
