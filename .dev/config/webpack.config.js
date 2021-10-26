@@ -9,11 +9,6 @@ const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 const RtlCssPlugin = require( 'rtlcss-webpack-plugin' );
 const path = require( 'path' );
 
-defaultConfig.module.rules[ 1 ].use[ 1 ].options = {
-	...defaultConfig.module.rules[ 1 ].use[ 1 ].options,
-	url: false,
-};
-
 module.exports = {
 	...defaultConfig,
 	entry: {

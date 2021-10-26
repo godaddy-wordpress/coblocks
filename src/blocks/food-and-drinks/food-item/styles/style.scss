@@ -104,7 +104,7 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (gluten-free);
 	@each $icon in $icons {
 
 		&__attribute--#{$icon} &__icon {
-			mask-image: url(../assets/food-attribute/#{$icon}.svg);
+			mask-image: url(/assets/food-attribute/#{$icon}.svg);
 
 			&:last-of-type {
 				margin-right: 0;
@@ -115,7 +115,7 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (gluten-free);
 		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 
 			&__attribute--#{$icon} &__icon {
-				background-image: url(../assets/food-attribute/#{$icon}.svg);
+				background-image: url(/assets/food-attribute/#{$icon}.svg);
 				color: transparent !important;
 			}
 		}

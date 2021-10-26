@@ -67,7 +67,6 @@ const EventItemEdit = ( props ) => {
 						className="wp-block-coblocks-events__day"
 						placeholder={ __( 'Day…', 'coblocks' ) }
 						onChange={ ( newEventDay ) => setAttributes( { eventDay: newEventDay } ) }
-						keepPlaceholderOnFocus
 					/>
 					<div>
 						<RichText
@@ -76,7 +75,6 @@ const EventItemEdit = ( props ) => {
 							className="wp-block-coblocks-events__month"
 							placeholder={ __( 'Month…', 'coblocks' ) }
 							onChange={ ( newEventMonth ) => setAttributes( { eventMonth: newEventMonth } ) }
-							keepPlaceholderOnFocus
 						/>
 						<RichText
 							value={ eventYear }
@@ -84,7 +82,6 @@ const EventItemEdit = ( props ) => {
 							className="wp-block-coblocks-events__year"
 							placeholder={ __( 'Year…', 'coblocks' ) }
 							onChange={ ( newEventYear ) => setAttributes( { eventYear: newEventYear } ) }
-							keepPlaceholderOnFocus
 						/>
 					</div>
 				</div>
@@ -95,7 +92,6 @@ const EventItemEdit = ( props ) => {
 						className="wp-block-coblocks-events__title"
 						placeholder={ __( 'Write event title…', 'coblocks' ) }
 						onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
-						keepPlaceholderOnFocus
 					/>
 					<RichText
 						value={ description }
@@ -103,7 +99,6 @@ const EventItemEdit = ( props ) => {
 						className="wp-block-coblocks-events__description"
 						placeholder={ __( 'Write event description…', 'coblocks' ) }
 						onChange={ ( newDescription ) => setAttributes( { description: newDescription } ) }
-						keepPlaceholderOnFocus
 					/>
 				</div>
 				<div className="wp-block-coblocks-events__details">
@@ -113,7 +108,6 @@ const EventItemEdit = ( props ) => {
 						className="wp-block-coblocks-events__time"
 						placeholder={ __( 'Time…', 'coblocks' ) }
 						onChange={ ( newEventTime ) => setAttributes( { eventTime: newEventTime } ) }
-						keepPlaceholderOnFocus
 					/>
 					<RichText
 						value={ eventLocation }
@@ -121,7 +115,6 @@ const EventItemEdit = ( props ) => {
 						className="wp-block-coblocks-events__location"
 						placeholder={ __( 'Location…', 'coblocks' ) }
 						onChange={ ( newEventLocation ) => setAttributes( { eventLocation: newEventLocation } ) }
-						keepPlaceholderOnFocus
 					/>
 				</div>
 			</div>

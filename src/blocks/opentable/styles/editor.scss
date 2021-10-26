@@ -6,7 +6,7 @@
 
 			&[aria-label="Standard"] {
 				.block-editor-block-styles__item-preview {
-					background-image: url(../assets/opentable/standard.png);
+					background-image: url(/assets/opentable/standard.png);
 					background-position: center;
 					background-repeat: no-repeat;
 					background-size: contain;
@@ -17,7 +17,7 @@
 			}
 			&[aria-label="Button"] {
 				.block-editor-block-styles__item-preview {
-					background-image: url(../assets/opentable/button.png);
+					background-image: url(/assets/opentable/button.png);
 					background-position: center;
 					background-repeat: no-repeat;
 					background-size: contain;
@@ -28,7 +28,7 @@
 			}
 			&[aria-label="Tall"] {
 				.block-editor-block-styles__item-preview {
-					background-image: url(../assets/opentable/tall.png);
+					background-image: url(/assets/opentable/tall.png);
 					background-position: center;
 					background-repeat: no-repeat;
 					background-size: contain;
