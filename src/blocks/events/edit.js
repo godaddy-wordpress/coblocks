@@ -16,13 +16,12 @@ import classnames from 'classnames';
  */
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
+import { edit } from '@wordpress/icons';
 import ServerSideRender from '@wordpress/server-side-render';
 import { BlockControls, InnerBlocks } from '@wordpress/block-editor';
 import { Button, Placeholder, TextControl, ToolbarGroup } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { useEffect, useRef, useState } from '@wordpress/element';
-
-import { edit } from '@wordpress/icons';
 
 const ALLOWED_BLOCKS = [ 'coblocks/event-item' ];
 

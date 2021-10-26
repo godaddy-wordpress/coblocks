@@ -13,9 +13,9 @@ import { MultimediaIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { BlockControls, MediaPlaceholder, MediaUpload } from '@wordpress/block-editor';
-import { Button, ResizableBox, Toolbar, DropZone, Spinner, Icon } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
+import { BlockControls, MediaPlaceholder, MediaUpload } from '@wordpress/block-editor';
+import { Button, DropZone, Icon, ResizableBox, Spinner, Toolbar } from '@wordpress/components';
 
 /**
  * MediaContainer component
@@ -27,8 +27,8 @@ const MediaContainer = ( props ) => {
 
 	const imageDropZone = (
 		<DropZone
-			onFilesDrop={ onDropMedia }
 			label={ __( 'Drop to replace media', 'coblocks' ) }
+			onFilesDrop={ onDropMedia }
 		/>
 	);
 
@@ -37,17 +37,17 @@ const MediaContainer = ( props ) => {
 			<BlockControls>
 				<Toolbar label={ __( 'Media Card controls', 'coblocks' ) } >
 					<MediaUpload
-						onSelect={ onSelectMedia }
 						allowedTypes={ ALLOWED_MEDIA_TYPES }
-						value={ mediaId }
+						onSelect={ onSelectMedia }
 						render={ ( { open } ) => (
 							<Button
 								className="components-toolbar__control"
-								label={ __( 'Edit media', 'coblocks' ) }
 								icon="edit"
+								label={ __( 'Edit media', 'coblocks' ) }
 								onClick={ open }
 							/>
 						) }
+						value={ mediaId }
 					/>
 				</Toolbar>
 			</BlockControls>
@@ -78,7 +78,7 @@ const MediaContainer = ( props ) => {
 						'has-shadow': hasImgShadow,
 					}
 				) } >
-					<img src={ mediaUrl } alt={ mediaAlt } />
+					<img alt={ mediaAlt } src={ mediaUrl } />
 				</figure>
 			</>
 		);
@@ -94,20 +94,20 @@ const MediaContainer = ( props ) => {
 							figureClass,
 							'is-transient', {}
 						) } >
-							<img src={ mediaUrl } alt={ mediaAlt } />
+							<img alt={ mediaAlt } src={ mediaUrl } />
 						</figure>
 					</>
 					: (
 						<MediaPlaceholder
-							icon={ <Icon icon={ icon } /> }
-							labels={ {
-								title: __( 'Media area', 'coblocks' ),
-								instructions: __( 'Upload a media file or pick one from your media library', 'coblocks' ),
-							} }
-							className={ figureClass }
-							onSelect={ onSelectMedia }
 							accept="image/*,video/*"
 							allowedTypes={ ALLOWED_MEDIA_TYPES }
+							className={ figureClass }
+							icon={ <Icon icon={ icon } /> }
+							labels={ {
+								instructions: __( 'Upload a media file or pick one from your media library', 'coblocks' ),
+								title: __( 'Media area', 'coblocks' ),
+							} }
+							onSelect={ onSelectMedia }
 						>
 						</MediaPlaceholder>
 					) }
@@ -123,8 +123,8 @@ const MediaContainer = ( props ) => {
 			commitWidthChange( parseInt( elt.style.width ) );
 		};
 		const enablePositions = {
-			right: mediaPosition === 'left',
 			left: mediaPosition === 'right',
+			right: mediaPosition === 'left',
 		};
 
 		let mediaElement = null;
@@ -138,15 +138,15 @@ const MediaContainer = ( props ) => {
 		}
 		return (
 			<ResizableBox
+				axis="x"
 				className="editor-media-container__resizer"
-				size={ { width: mediaWidth + '%' } }
-				minWidth="30%"
-				maxWidth="100%"
 				enable={ enablePositions }
+				maxWidth="100%"
+				minWidth="30%"
 				onResize={ onResize }
 				onResizeStop={ onResizeStop }
-				axis="x"
 				showHandle={ isSelected }
+				size={ { width: mediaWidth + '%' } }
 			>
 				{ imageDropZone }
 				{ mediaElement }

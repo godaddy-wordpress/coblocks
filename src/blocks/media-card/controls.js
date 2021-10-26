@@ -8,7 +8,7 @@ import { BackgroundControls } from '../../components/background';
  */
 import { __ } from '@wordpress/i18n';
 import { BlockControls } from '@wordpress/block-editor';
-import { ToolbarGroup, Icon } from '@wordpress/components';
+import { Icon, ToolbarGroup } from '@wordpress/components';
 import { pullLeft, pullRight } from '@wordpress/icons';
 
 const Controls = ( props ) => {
@@ -23,14 +23,14 @@ const Controls = ( props ) => {
 
 	const toolbarControls = [ {
 		icon: <Icon icon={ pullLeft } />,
-		title: __( 'Show media on left', 'coblocks' ),
 		isActive: mediaPosition === 'left',
 		onClick: () => setAttributes( { mediaPosition: 'left' } ),
+		title: __( 'Show media on left', 'coblocks' ),
 	}, {
 		icon: <Icon icon={ pullRight } />,
-		title: __( 'Show media on right', 'coblocks' ),
 		isActive: mediaPosition === 'right',
 		onClick: () => setAttributes( { mediaPosition: 'right' } ),
+		title: __( 'Show media on right', 'coblocks' ),
 	} ];
 
 	return (

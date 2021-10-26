@@ -3,8 +3,8 @@
  */
 import { __ } from '@wordpress/i18n';
 import { BlockControls } from '@wordpress/block-editor';
-import { ToolbarGroup } from '@wordpress/components';
 import { edit } from '@wordpress/icons';
+import { ToolbarGroup } from '@wordpress/components';
 
 const Controls = ( props ) => {
 	const {
@@ -16,9 +16,9 @@ const Controls = ( props ) => {
 	const toolbarControls = [
 		{
 			icon: edit,
-			title: __( 'Edit Restaurant', 'coblocks' ),
 			isActive: isEditing,
 			onClick: () => setIsEditing( ! isEditing ),
+			title: __( 'Edit Restaurant', 'coblocks' ),
 		},
 	];
 

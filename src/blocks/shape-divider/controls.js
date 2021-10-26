@@ -3,7 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { BlockControls } from '@wordpress/block-editor';
-import { ToolbarGroup, Icon } from '@wordpress/components';
+import { Icon, ToolbarGroup } from '@wordpress/components';
 
 /**
  * External dependencies
@@ -23,14 +23,14 @@ const Controls = ( props ) => {
 
 	const toolbarControls = [ {
 		icon: <Icon icon={ FlipHorizontalIcon } />,
-		title: __( 'Flip horiztonally', 'coblocks' ),
 		isActive: !! horizontalFlip,
 		onClick: () => setAttributes( { horizontalFlip: ! horizontalFlip } ),
+		title: __( 'Flip horiztonally', 'coblocks' ),
 	}, {
 		icon: <Icon icon={ FlipVerticalIcon } />,
-		title: __( 'Flip vertically', 'coblocks' ),
 		isActive: !! verticalFlip,
 		onClick: () => setAttributes( { verticalFlip: ! verticalFlip } ),
+		title: __( 'Flip vertically', 'coblocks' ),
 	} ];
 
 	return (

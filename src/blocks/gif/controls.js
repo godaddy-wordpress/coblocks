@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { BlockControls, BlockAlignmentToolbar } from '@wordpress/block-editor';
+import { BlockAlignmentToolbar, BlockControls } from '@wordpress/block-editor';
 import { Toolbar, ToolbarButton } from '@wordpress/components';
 
 const Controls = ( props ) => {
@@ -18,7 +18,7 @@ const Controls = ( props ) => {
 
 	const updateAlignment = ( nextAlign ) => {
 		const extraUpdatedAttributes = [ 'wide', 'full' ].indexOf( nextAlign ) !== -1
-			? { width: undefined, height: undefined }
+			? { height: undefined, width: undefined }
 			: {};
 		setAttributes( { ...extraUpdatedAttributes, align: nextAlign } );
 	};
@@ -27,16 +27,16 @@ const Controls = ( props ) => {
 		<>
 			<BlockControls>
 				<BlockAlignmentToolbar
-					value={ align }
 					onChange={ updateAlignment }
+					value={ align }
 				/>
 				<Toolbar label={ __( 'Gif block controls', 'coblocks' ) }>
 					{ url &&
 						<ToolbarButton
 							className="components-toolbar__control"
-							label={ __( 'Remove gif', 'coblocks' ) }
 							icon="trash"
-							onClick={ () => setAttributes( { url: '', width: '', height: '' } ) }
+							label={ __( 'Remove gif', 'coblocks' ) }
+							onClick={ () => setAttributes( { height: '', url: '', width: '' } ) }
 						/>
 					}
 				</Toolbar>

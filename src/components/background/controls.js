@@ -9,7 +9,7 @@ import { PaintCanIcon } from '@godaddy-wordpress/coblocks-icons';
  */
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
-import { MediaUpload, MediaUploadCheck, MediaReplaceFlow, BlockControls } from '@wordpress/block-editor';
+import { MediaReplaceFlow, MediaUpload, MediaUploadCheck, BlockControls } from '@wordpress/block-editor';
 import { Toolbar, ToolbarButton } from '@wordpress/components';
 
 /**
@@ -38,27 +38,26 @@ function BackgroundControls( props ) {
 						? (
 							<BlockControls group="other">
 								<MediaReplaceFlow
-									name={ PaintCanIcon }
-									mediaURL={ backgroundImg }
-									allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
 									accept="image/*"
+									allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
+									mediaURL={ backgroundImg }
+									name={ PaintCanIcon }
+									onError={ () => {
+										setAttributes( { backgroundImg: undefined, backgroundType: undefined } );
+									} }
 									onSelect={ ( media ) => {
 										if ( media ) {
 											setAttributes( { backgroundImg: media.url, backgroundType: ( media.media_type || media.type ) } );
 										}
 									} }
-									onError={ () => {
-										setAttributes( { backgroundImg: undefined, backgroundType: undefined } );
-									} }
 								/>
 							</BlockControls>
 						) : (
 							<MediaUpload
+								allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
 								onSelect={ ( media ) => {
 									setAttributes( { backgroundImg: media.url, backgroundType: media.type } );
 								} }
-								allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
-								value={ backgroundImg }
 								render={ ( { open } ) => (
 									<ToolbarButton
 										className="components-toolbar__control"
@@ -67,6 +66,7 @@ function BackgroundControls( props ) {
 										onClick={ open }
 									/>
 								) }
+								value={ backgroundImg }
 							/>
 						) }
 				</Toolbar>
