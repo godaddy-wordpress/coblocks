@@ -2,25 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
-// import filter from 'lodash/filter';
-// import Masonry from 'react-masonry-component';
 import { GalleryMasonryIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
- * Internal dependencies
- */
-import Inspector from './inspector';
-import Controls from './controls';
-import GalleryImage from '../../components/block-gallery/gallery-image';
-import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
-import { GalleryClasses } from '../../components/block-gallery/shared';
-import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
-
-/**
- * WordPress dependencies
- */
-// import { __, sprintf } from '@wordpress/i18n';
-import { compose, usePrevious } from '@wordpress/compose';
 
 /**
  * External dependencies
@@ -30,23 +12,15 @@ import { concat, find } from 'lodash';
 /**
  * WordPress dependencies
  */
-import {
-	BaseControl,
-	PanelBody,
-	SelectControl,
-	ToggleControl,
-	withNotices,
-	RangeControl,
-	Spinner,
-	Icon,
-} from '@wordpress/components';
+import { withNotices, Icon, PanelBody, ToggleControl, BaseControl, Spinner, SelectControl } from '@wordpress/components';
+import { compose } from '@wordpress/compose';
 import {
 	store as blockEditorStore,
 	MediaPlaceholder,
 	InspectorControls,
 	useBlockProps,
 } from '@wordpress/block-editor';
-import { Platform, useEffect, useMemo, useState } from '@wordpress/element';
+import { Platform, useEffect, useMemo } from '@wordpress/element';
 import { __, _x, sprintf } from '@wordpress/i18n';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { withViewportMatch } from '@wordpress/viewport';
@@ -58,20 +32,21 @@ import { store as noticesStore } from '@wordpress/notices';
 /**
  * Internal dependencies
  */
-import { pickRelevantMediaFiles } from './shared';
-import { getHrefAndDestination, getUpdatedLinkTargetSettings, getImageSizeAttributes } from './utils';
-import Gallery from './gallery';
+import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
+import Controls from './controls';
+import { pickRelevantMediaFiles } from '../../components/block-gallery/shared';
+import { getHrefAndDestination, getUpdatedLinkTargetSettings, getImageSizeAttributes } from '../../components/block-gallery/utils';
+import Gallery from '../../components/block-gallery/gallery';
 import {
 	LINK_DESTINATION_ATTACHMENT,
 	LINK_DESTINATION_MEDIA,
 	LINK_DESTINATION_NONE,
-} from './constants';
-import useImageSizes from './use-image-sizes';
-import useShortCodeTransform from './use-short-code-transform';
-import useGetNewImages from './use-get-new-images';
-import useGetMedia from './use-get-media';
+} from '../../components/block-gallery/constants';
+import useImageSizes from '../../components/block-gallery/use-image-sizes';
+import useShortCodeTransform from '../../components/block-gallery/use-short-code-transform';
+import useGetNewImages from '../../components/block-gallery/use-get-new-images';
+import useGetMedia from '../../components/block-gallery/use-get-media';
 
-const MAX_COLUMNS = 8;
 const linkOptions = [
 	{ value: LINK_DESTINATION_ATTACHMENT, label: __( 'Attachment Page' ) },
 	{ value: LINK_DESTINATION_MEDIA, label: __( 'Media File' ) },
@@ -86,9 +61,7 @@ const PLACEHOLDER_TEXT = Platform.isNative
 	? __( 'ADD MEDIA' )
 	: __( 'Drag images, upload new ones or select files from your library.' );
 
-const MOBILE_CONTROL_PROPS_RANGE_CONTROL = Platform.isNative
-	? { type: 'stepper' }
-	: {};
+const MOBILE_CONTROL_PROPS_RANGE_CONTROL = Platform.isNative ? { type: 'stepper' } : {};
 
 function GalleryEdit( props ) {
 	const {
@@ -103,12 +76,12 @@ function GalleryEdit( props ) {
 	} = props;
 
 	const {
-		columns,
 		imageCrop,
 		linkTarget,
 		linkTo,
 		shortCodeTransforms,
 		sizeSlug,
+		lightbox,
 	} = attributes;
 
 	const {
@@ -342,10 +315,6 @@ function GalleryEdit( props ) {
 		);
 	}
 
-	function setColumnsNumber( value ) {
-		setAttributes( { columns: value } );
-	}
-
 	function toggleImageCrop() {
 		setAttributes( { imageCrop: ! imageCrop } );
 	}
@@ -452,7 +421,7 @@ function GalleryEdit( props ) {
 	);
 
 	const blockProps = useBlockProps( {
-		className: classnames( className, 'has-nested-images' ),
+		className: classnames( className, 'has-nested-images', { 'has-lightbox': lightbox } ),
 	} );
 
 	if ( ! hasImages ) {
@@ -463,7 +432,8 @@ function GalleryEdit( props ) {
 
 	return (
 		<>
-			{ /* <InspectorControls>
+			<Controls { ...props } />
+			<InspectorControls>
 				<PanelBody title={ __( 'Gallery settings' ) }>
 					<ToggleControl
 						label={ __( 'Crop images' ) }
@@ -506,15 +476,17 @@ function GalleryEdit( props ) {
 						</BaseControl>
 					) }
 				</PanelBody>
-			</InspectorControls> */ }
+			</InspectorControls>
 			{ noticeUI }
-			<Gallery
-				{ ...props }
-				images={ images }
-				mediaPlaceholder={ mediaPlaceholder }
-				blockProps={ blockProps }
-				insertBlocksAfter={ insertBlocksAfter }
-			/>
+			<GutterWrapper { ...attributes }>
+				<Gallery
+					{ ...props }
+					images={ images }
+					mediaPlaceholder={ mediaPlaceholder }
+					blockProps={ blockProps }
+					insertBlocksAfter={ insertBlocksAfter }
+				/>
+			</GutterWrapper>
 		</>
 	);
 }
@@ -522,248 +494,3 @@ export default compose( [
 	withNotices,
 	withViewportMatch( { isNarrow: '< small' } ),
 ] )( GalleryEdit );
-
-// const GalleryMasonryEdit = ( props ) => {
-// 	const {
-// 		attributes,
-// 		setAttributes,
-// 		wideControlsEnabled,
-// 		isSelected,
-// 		className,
-// 		editorSidebarOpened,
-// 		noticeUI,
-// 		pluginSidebarOpened,
-// 		publishSidebarOpened,
-// 	} = props;
-
-// 	const {
-// 		align,
-// 		animation,
-// 		captions,
-// 		gridSize,
-// 		linkTo,
-// 		lightbox,
-// 		images,
-// 	} = attributes;
-
-// 	const [ selectedImage, setSelectedImage ] = useState( null );
-
-// 	const prevIsSelected = usePrevious( isSelected );
-
-// 	const hasImages = !! images.length;
-
-// 	const sidebarIsOpened = editorSidebarOpened || pluginSidebarOpened || publishSidebarOpened;
-
-// 	useEffect( () => {
-// 		if ( typeof align !== 'undefined' && typeof gridSize !== 'undefined' ) {
-// 			if ( wideControlsEnabled === true && ! align && gridSize === 'xlrg' ) {
-// 				setAttributes( {
-// 					align: 'wide',
-// 					gridSize: 'lrg',
-// 				} );
-// 			}
-// 		}
-// 	}, [ gridSize, align, wideControlsEnabled ] );
-
-// 	useEffect( () => {
-// 		// Deselect images when deselecting the block.
-// 		if ( ! isSelected && prevIsSelected ) {
-// 			setSelectedImage( null );
-// 		}
-// 	}, [ prevIsSelected, isSelected ] );
-
-// 	const onSelectImage = ( index ) => {
-// 		return () => {
-// 			if ( selectedImage !== index ) {
-// 				setSelectedImage( index );
-// 			}
-// 		};
-// 	};
-
-// 	const onMove = ( oldIndex, newIndex ) => {
-// 		const newImages = [ ...attributes.images ];
-// 		newImages.splice( newIndex, 1, attributes.images[ oldIndex ] );
-// 		newImages.splice( oldIndex, 1, attributes.images[ newIndex ] );
-// 		setSelectedImage( newIndex );
-// 		setAttributes( { images: newImages } );
-// 	};
-
-// 	const onMoveForward = ( oldIndex ) => {
-// 		const imageCount = attributes.images.length;
-// 		return () => {
-// 			if ( oldIndex === imageCount - 1 ) {
-// 				return;
-// 			}
-// 			const calculatedIndex = Math.floor( imageCount / 3 ) + 1;
-// 			console.log( calculatedIndex );
-
-// 			if ( oldIndex + calculatedIndex >= imageCount ) {
-// 				onMove( oldIndex, imageCount - 1 );
-// 				return;
-// 			}
-
-// 			onMove( oldIndex, oldIndex + calculatedIndex );
-// 		};
-// 	};
-
-// 	const onMoveBackward = ( oldIndex ) => {
-// 		const imageCount = attributes.images.length;
-// 		return () => {
-// 			if ( oldIndex === 0 ) {
-// 				return;
-// 			}
-// 			const calculatedIndex = Math.floor( imageCount / 3 ) + 1;
-// 			console.log( calculatedIndex );
-
-// 			if ( oldIndex - calculatedIndex <= 0 ) {
-// 				onMove( oldIndex, 0 );
-// 				return;
-// 			}
-
-// 			onMove( oldIndex, oldIndex - calculatedIndex );
-// 		};
-// 	};
-
-// 	const onRemoveImage = ( index ) => {
-// 		return () => {
-// 			const newImages = filter( attributes.images, ( _img, i ) => index !== i );
-// 			setSelectedImage( null );
-// 			setAttributes( {
-// 				images: newImages,
-// 			} );
-// 		};
-// 	};
-
-// 	/**
-// 	 * replaceImage is passed to GalleryImage component and is used to replace images
-// 	 *
-// 	 * @param {number} index Index of image to remove.
-// 	 * @param {Object} media Media object used to initialize attributes.
-// 	 */
-// 	const replaceImage = ( index, media ) => {
-// 		const newImages = [ ...attributes.images ];
-// 		newImages[ index ] = { ...media };
-
-// 		setAttributes( { images: newImages } );
-// 	};
-
-// 	const setImageAttributes = ( index, newAttributes ) => {
-// 		if ( ! images[ index ] ) {
-// 			return;
-// 		}
-// 		setAttributes( {
-// 			images: [
-// 				...images.slice( 0, index ),
-// 				{
-// 					...images[ index ],
-// 					...newAttributes,
-// 				},
-// 				...images.slice( index + 1 ),
-// 			],
-// 		} );
-// 	};
-
-// 	const masonryGalleryPlaceholder = (
-// 		<>
-// 			{ ! hasImages ? noticeUI : null }
-// 			<GalleryPlaceholder
-// 				{ ...props }
-// 				label={ __( 'Masonry', 'coblocks' ) }
-// 				icon={ <Icon icon={ icon } /> }
-// 			/>
-// 		</>
-// 	);
-
-// 	if ( ! hasImages ) {
-// 		return masonryGalleryPlaceholder;
-// 	}
-
-// 	const innerClasses = classnames(
-// 		...GalleryClasses( attributes ),
-// 		sidebarIsOpened, {
-// 			[ `align${ align }` ]: align,
-// 			'has-lightbox': lightbox,
-// 		}
-// 	);
-
-// 	const masonryClasses = classnames(
-// 		'masonry',
-// 		`has-grid-${ gridSize }`
-// 	);
-
-// 	const itemClasses = classnames(
-// 		'brick',
-// 		'coblocks-gallery--item', {
-// 			[ `coblocks-animate ${ animation }` ]: animation,
-// 		}
-// 	);
-
-// 	return (
-// 		<>
-// 			{ isSelected &&
-// 				<Controls
-// 					{ ...props }
-// 				/>
-// 			}
-// 			{ isSelected &&
-// 				<Inspector
-// 					{ ...props }
-// 				/>
-// 			}
-// 			{ noticeUI }
-// 			<div className={ className }>
-// 				<div className={ innerClasses }>
-// 					<GutterWrapper { ...attributes }>
-
-// 						<div className={ masonryClasses }>
-// 							{ images.map( ( img, index ) => {
-// 								const ariaLabel = sprintf(
-// 								/* translators: %1$d is the order number of the image, %2$d is the total number of images */
-// 									__( 'image %1$d of %2$d in gallery', 'coblocks' ),
-// 									( index + 1 ),
-// 									images.length
-// 								);
-// 								return (
-// 									<div key={ img.id || img.url } className={ itemClasses }>
-// 										<GalleryImage
-// 											url={ img.url }
-// 											alt={ img.alt }
-// 											id={ img.id }
-// 											imgLink={ img.imgLink }
-// 											linkTo={ linkTo }
-// 											isFirstItem={ index === 0 }
-// 											isLastItem={ ( index + 1 ) === images.length }
-// 											isSelected={ isSelected && selectedImage === index }
-// 											onMoveBackward={ onMoveBackward( index ) }
-// 											onMoveForward={ onMoveForward( index ) }
-// 											onRemove={ onRemoveImage( index ) }
-// 											onSelect={ onSelectImage( index ) }
-// 											setAttributes={ ( attrs ) => setImageAttributes( index, attrs ) }
-// 											caption={ img.caption }
-// 											aria-label={ ariaLabel }
-// 											captions={ captions }
-// 											supportsCaption={ true }
-// 											imageIndex={ index }
-// 											replaceImage={ replaceImage }
-// 										/>
-// 									</div>
-// 								);
-// 							} ) }
-// 						</div>
-// 					</GutterWrapper>
-// 				</div>
-// 				{ masonryGalleryPlaceholder }
-// 			</div>
-// 		</>
-// 	);
-// };
-
-// export default compose( [
-// 	withSelect( ( select ) => ( {
-// 		editorSidebarOpened: select( 'core/edit-post' ).isEditorSidebarOpened(),
-// 		pluginSidebarOpened: select( 'core/edit-post' ).isPluginSidebarOpened(),
-// 		publishSidebarOpened: select( 'core/edit-post' ).isPublishSidebarOpened(),
-// 		wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
-// 	} ) ),
-// 	withNotices,
-// ] )( GalleryMasonryEdit );

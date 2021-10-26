@@ -117,10 +117,14 @@ const registerBlock = ( block ) => {
 		category = 'coblocks';
 	}
 
+	const v2Settings = block?.metadata?.apiVersion === 2 ? block?.metadata : '';
+
 	registerBlockType( name, {
-		...block.metadata,
 		category,
 		...settings,
+
+		// V2 Block API Upgrades
+		// ...v2Settings,
 	} );
 };
 

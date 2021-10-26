@@ -74,7 +74,7 @@ export const Gallery = ( props ) => {
 			</div>
 
 			<View
-				className="blocks-gallery-media-placeholder-wrapper"
+				className="masonry-gallery-media-placeholder-wrapper"
 				onClick={ removeCaptionFocus }
 			>
 				{ mediaPlaceholder }

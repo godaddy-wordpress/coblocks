@@ -46,6 +46,7 @@ const variations = {
 	className: [ undefined, '', 'random classes' ],
 	noBottomMargin: [ undefined, true, false ],
 	noTopMargin: [ undefined, true, false ],
+	gridSize: [ undefined, 'sml', 'med', 'lrg', 'xlrg' ],
 };
 
 helpers.testDeprecatedBlockVariations( name, settings, variations );

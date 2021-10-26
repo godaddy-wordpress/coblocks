@@ -5,7 +5,7 @@
 	"category": "media",
 	"description": "Display multiple images in a masonry style gallery.",
 	"keywords": [ "images", "photos" ],
-	"textdomain": "default",
+	"textdomain": "coblocks",
 	"attributes": {
 		"images": {
 			"type": "array",
@@ -97,6 +97,6 @@
 		"anchor": true,
 		"align": true
 	},
-	"editorStyle": "wp-block-gallery-editor",
+	"editorStyle": "wp-block-coblocks-gallery-masonry-editor",
 	"style": "wp-block-coblocks-gallery-masonry"
 }
