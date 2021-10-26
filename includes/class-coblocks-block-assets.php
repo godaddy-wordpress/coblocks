@@ -125,7 +125,7 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Styles.
-		$name       = 'coblocks-style';
+		$name       = 'style-coblocks';
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
 		$rtl        = ! is_rtl() ? '' : '-rtl';
@@ -145,7 +145,7 @@ class CoBlocks_Block_Assets {
 	 */
 	public function editor_assets() {
 		// Styles.
-		$name       = 'coblocks-editor';
+		$name       = 'coblocks';
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
 		$rtl        = ! is_rtl() ? '' : '-rtl';
