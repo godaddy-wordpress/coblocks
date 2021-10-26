@@ -16,8 +16,8 @@ const transforms = {
 			type: 'block',
 			blocks: [ 'core/social-links' ],
 			transform: ( attributes ) => {
-				const { link, title } = select( 'core/editor' ).getCurrentPost();
-				const { colors } = select( 'core/block-editor' ).getSettings();
+				const { link = '', title = '' } = select( 'core/editor' )?.getCurrentPost() || {};
+				const { colors } = select( 'core/block-editor' )?.getSettings() || {};
 
 				const innerBlocks = [];
 				[
