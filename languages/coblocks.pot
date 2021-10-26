@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-25T18:18:13+00:00\n"
+"POT-Creation-Date: 2021-10-26T14:55:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -453,7 +453,7 @@ msgstr ""
 #: src/blocks/events/event-item/inspector.js:30
 #: src/blocks/features/feature/inspector.js:92
 #: src/blocks/features/inspector.js:159
-#: src/blocks/form/fields/submit-button/edit.js:116
+#: src/blocks/form/fields/submit-button/edit.js:115
 #: src/blocks/hero/inspector.js:137
 #: src/blocks/highlight/inspector.js:32
 #: src/blocks/icon/inspector.js:304
@@ -548,7 +548,7 @@ msgid "Write title…"
 msgstr ""
 
 #. translators: placeholder text for input box
-#: src/blocks/alert/edit.js:103
+#: src/blocks/alert/edit.js:102
 msgid "Write text…"
 msgstr ""
 
@@ -632,12 +632,12 @@ msgid "Write author name…"
 msgstr ""
 
 #. translators: placeholder text used for the biography
-#: src/blocks/author/edit.js:148
+#: src/blocks/author/edit.js:147
 msgid "Write a biography that distills objective credibility and authority to your readers…"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/author/edit.js:157
+#: src/blocks/author/edit.js:155
 msgid "Author link…"
 msgstr ""
 
@@ -737,7 +737,7 @@ msgstr ""
 msgid "Add a quote to tweet…"
 msgstr ""
 
-#: src/blocks/click-to-tweet/edit.js:97
+#: src/blocks/click-to-tweet/edit.js:96
 msgid "Add button…"
 msgstr ""
 
@@ -859,7 +859,7 @@ msgid "Calendar URL"
 msgstr ""
 
 #: src/blocks/events/edit.js:154
-msgid "Enter a URL that loads and iCal formatted calendar."
+msgid "Enter a URL that loads an iCal formatted calendar."
 msgstr ""
 
 #: src/blocks/events/edit.js:163
@@ -876,27 +876,27 @@ msgstr ""
 msgid "Day…"
 msgstr ""
 
-#: src/blocks/events/event-item/edit.js:77
+#: src/blocks/events/event-item/edit.js:76
 msgid "Month…"
 msgstr ""
 
-#: src/blocks/events/event-item/edit.js:85
+#: src/blocks/events/event-item/edit.js:83
 msgid "Year…"
 msgstr ""
 
-#: src/blocks/events/event-item/edit.js:96
+#: src/blocks/events/event-item/edit.js:93
 msgid "Write event title…"
 msgstr ""
 
-#: src/blocks/events/event-item/edit.js:104
+#: src/blocks/events/event-item/edit.js:100
 msgid "Write event description…"
 msgstr ""
 
-#: src/blocks/events/event-item/edit.js:114
+#: src/blocks/events/event-item/edit.js:109
 msgid "Time…"
 msgstr ""
 
-#: src/blocks/events/event-item/edit.js:122
+#: src/blocks/events/event-item/edit.js:116
 msgid "Location…"
 msgstr ""
 
@@ -1086,7 +1086,7 @@ msgstr ""
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:132
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToAccessibleIcons.js:77
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:91
-#: src/blocks/food-and-drinks/food-item/edit.js:281
+#: src/blocks/food-and-drinks/food-item/edit.js:280
 #: src/blocks/food-and-drinks/food-item/inspector.js:60
 #: src/blocks/food-and-drinks/food-item/save.js:87
 msgid "Popular"
@@ -1096,7 +1096,7 @@ msgstr ""
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:140
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToAccessibleIcons.js:89
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:104
-#: src/blocks/food-and-drinks/food-item/edit.js:293
+#: src/blocks/food-and-drinks/food-item/edit.js:292
 #: src/blocks/food-and-drinks/food-item/inspector.js:75
 #: src/blocks/food-and-drinks/food-item/save.js:101
 msgid "Spicy"
@@ -1115,7 +1115,7 @@ msgstr ""
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:156
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToAccessibleIcons.js:114
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:130
-#: src/blocks/food-and-drinks/food-item/edit.js:320
+#: src/blocks/food-and-drinks/food-item/edit.js:319
 #: src/blocks/food-and-drinks/food-item/inspector.js:90
 #: src/blocks/food-and-drinks/food-item/save.js:130
 msgid "Vegetarian"
@@ -1132,7 +1132,7 @@ msgstr ""
 #: src/blocks/food-and-drinks/food-item/deprecated/deprecatedIconsToBackgroundImage.js:172
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToAccessibleIcons.js:138
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToColumnUtilityClasses.js:156
-#: src/blocks/food-and-drinks/food-item/edit.js:348
+#: src/blocks/food-and-drinks/food-item/edit.js:347
 #: src/blocks/food-and-drinks/food-item/inspector.js:70
 #: src/blocks/food-and-drinks/food-item/save.js:158
 msgid "Pescatarian"
@@ -1148,7 +1148,7 @@ msgid "Vegan"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/deprecated/migrateToAccessibleIcons.js:125
-#: src/blocks/food-and-drinks/food-item/edit.js:340
+#: src/blocks/food-and-drinks/food-item/edit.js:339
 #: src/blocks/food-and-drinks/food-item/save.js:144
 msgid "Gluten free"
 msgstr ""
@@ -1164,19 +1164,19 @@ msgstr ""
 msgid "Remove image"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:273
+#: src/blocks/food-and-drinks/food-item/edit.js:272
 msgid "Add title…"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:304
+#: src/blocks/food-and-drinks/food-item/edit.js:303
 msgid "Hot"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:379
+#: src/blocks/food-and-drinks/food-item/edit.js:378
 msgid "Add description…"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:388
+#: src/blocks/food-and-drinks/food-item/edit.js:387
 msgid "$0.00"
 msgstr ""
 
@@ -1757,12 +1757,12 @@ msgstr ""
 msgid "Add text…"
 msgstr ""
 
-#: src/blocks/form/fields/submit-button/edit.js:125
+#: src/blocks/form/fields/submit-button/edit.js:124
 #: src/blocks/share/inspector.js:86
 msgid "Button color"
 msgstr ""
 
-#: src/blocks/form/fields/submit-button/edit.js:133
+#: src/blocks/form/fields/submit-button/edit.js:132
 msgid "Button text color"
 msgstr ""
 
@@ -6421,11 +6421,11 @@ msgstr ""
 msgid "Plan A"
 msgstr ""
 
-#: src/blocks/pricing-table/pricing-table-item/edit.js:91
+#: src/blocks/pricing-table/pricing-table-item/edit.js:90
 msgid "$"
 msgstr ""
 
-#: src/blocks/pricing-table/pricing-table-item/edit.js:111
+#: src/blocks/pricing-table/pricing-table-item/edit.js:108
 msgid "Add features"
 msgstr ""
 

@@ -108,7 +108,6 @@ const CoBlocksSubmitButton = ( props ) => {
 					className={ getButtonClasses() }
 					style={ buttonStyle }
 					allowedFormats={ [ 'bold', 'italic', 'strikethrough' ] }
-					keepPlaceholderOnFocus
 				/>
 			</div>
 			<InspectorControls>
