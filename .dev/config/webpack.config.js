@@ -10,9 +10,9 @@ const RtlCssPlugin = require( 'rtlcss-webpack-plugin' );
 const path = require( 'path' );
 
 const scripts = [
-	'coblocks-animation',
-	'coblocks-accordion-polyfill',
 	'coblocks-accordion-carousel',
+	'coblocks-accordion-polyfill',
+	'coblocks-animation',
 	'coblocks-checkbox-required',
 	'coblocks-datepicker',
 	'coblocks-events',
@@ -21,8 +21,8 @@ const scripts = [
 	'coblocks-google-recaptcha',
 	'coblocks-lightbox',
 	'coblocks-masonry',
-	'coblocks-slick-initializer',
 	'coblocks-slick-initializer-front',
+	'coblocks-slick-initializer',
 ];
 
 module.exports = {
@@ -41,14 +41,8 @@ module.exports = {
 	},
 
 	output: {
-		filename: '[name].js',
+		...defaultConfig.output,
 		path: path.resolve( process.cwd(), 'dist/' ),
-	},
-
-	stats: {
-		children: false,
-		modules: false,
-		warnings: false,
 	},
 
 	plugins: [
