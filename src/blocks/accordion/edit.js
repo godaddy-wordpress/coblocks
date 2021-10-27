@@ -57,7 +57,7 @@ const AccordionEdit = ( props ) => {
 		getSelectedBlockClientId,
 		getBlockAttributes,
 		isSelected,
-	} = useSelect( 'core/block-editor' );
+	} = useSelect( ( select ) => select( 'core/block-editor' ), [] );
 
 	// Get clientID of the parent block.
 	const rootClientId = getBlockHierarchyRootClientId( clientId );
