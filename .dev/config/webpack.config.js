@@ -9,25 +9,31 @@ const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 const RtlCssPlugin = require( 'rtlcss-webpack-plugin' );
 const path = require( 'path' );
 
+const scripts = [
+	'coblocks-animation',
+	'coblocks-accordion-polyfill',
+	'coblocks-accordion-carousel',
+	'coblocks-checkbox-required',
+	'coblocks-datepicker',
+	'coblocks-events',
+	'coblocks-fromEntries',
+	'coblocks-google-maps',
+	'coblocks-google-recaptcha',
+	'coblocks-lightbox',
+	'coblocks-masonry',
+	'coblocks-slick-initializer',
+	'coblocks-slick-initializer-front',
+];
+
 module.exports = {
 	...defaultConfig,
 	entry: {
 		coblocks: path.resolve( process.cwd(), 'src/blocks.js' ),
 
-		// Front-End Scripts
-		'js/coblocks-animation': path.resolve( process.cwd(), 'src/js/coblocks-animation.js' ),
-		'js/coblocks-accordion-polyfill': path.resolve( process.cwd(), 'src/js/coblocks-accordion-polyfill.js' ),
-		'js/coblocks-accordion-carousel': path.resolve( process.cwd(), 'src/js/coblocks-accordion-carousel.js' ),
-		'js/coblocks-checkbox-required': path.resolve( process.cwd(), 'src/js/coblocks-checkbox-required.js' ),
-		'js/coblocks-datepicker': path.resolve( process.cwd(), 'src/js/coblocks-datepicker.js' ),
-		'js/coblocks-events': path.resolve( process.cwd(), 'src/js/coblocks-events.js' ),
-		'js/coblocks-fromEntries': path.resolve( process.cwd(), 'src/js/coblocks-fromEntries.js' ),
-		'js/coblocks-google-maps': path.resolve( process.cwd(), 'src/js/coblocks-google-maps.js' ),
-		'js/coblocks-google-recaptcha': path.resolve( process.cwd(), 'src/js/coblocks-google-recaptcha.js' ),
-		'js/coblocks-lightbox': path.resolve( process.cwd(), 'src/js/coblocks-lightbox.js' ),
-		'js/coblocks-masonry': path.resolve( process.cwd(), 'src/js/coblocks-masonry.js' ),
-		'js/coblocks-slick-initializer': path.resolve( process.cwd(), 'src/js/coblocks-slick-initializer.js' ),
-		'js/coblocks-slick-initializer-front': path.resolve( process.cwd(), 'src/js/coblocks-slick-initializer-front.js' ),
+		...scripts.reduce( ( memo, script ) => {
+			memo[ `js/${ script }` ] = path.resolve( process.cwd(), 'src', 'js', `${ script }.js` );
+			return memo;
+		}, {} ),
 
 		// Vendors
 		'js/vendors/flickity': path.resolve( process.cwd(), 'node_modules/flickity/dist/flickity.pkgd.js' ),
