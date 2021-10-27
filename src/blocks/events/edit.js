@@ -152,7 +152,7 @@ const EventsEdit = ( props ) => {
 					icon="rss"
 					label={ __( 'Calendar URL', 'coblocks' ) }
 					instructions={ __(
-						'Enter a URL that loads and iCal formatted calendar.',
+						'Enter a URL that loads an iCal formatted calendar.',
 						'coblocks'
 					) }
 				>

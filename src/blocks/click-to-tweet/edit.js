@@ -82,7 +82,6 @@ const Edit = ( props ) => {
 						fontSize: computeFontSize( fontSize ),
 					} }
 					onChange={ ( nextContent ) => setAttributes( { content: nextContent } ) }
-					keepPlaceholderOnFocus
 					onRemove={ ( forward ) => {
 						const hasEmptyTweet = content.length === 0 || content.length === 1;
 
@@ -107,7 +106,6 @@ const Edit = ( props ) => {
 						backgroundColor: buttonColor.color,
 					} }
 					onChange={ ( nextButtonText ) => setAttributes( { buttonText: nextButtonText } ) }
-					keepPlaceholderOnFocus
 				/>
 			</blockquote>
 		</>
