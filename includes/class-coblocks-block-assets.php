@@ -321,7 +321,7 @@ class CoBlocks_Block_Assets {
 		$dir = CoBlocks()->asset_source( 'js' );
 
 		// Define where the vendor asset is loaded from.
-		$vendors_dir = CoBlocks()->asset_source( 'js', 'vendors' );
+		$vendors_dir = CoBlocks()->asset_source( 'js/vendors' );
 
 		// Enqueue for coblocks animations.
 		wp_enqueue_script(
@@ -482,7 +482,7 @@ class CoBlocks_Block_Assets {
 	 */
 	public function editor_scripts() {
 		// Define where the vendor asset is loaded from.
-		$vendors_dir = CoBlocks()->asset_source( 'js', 'vendors' );
+		$vendors_dir = CoBlocks()->asset_source( 'js/vendors' );
 
 		// Required by the events block.
 		wp_enqueue_script(
