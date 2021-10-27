@@ -357,6 +357,7 @@ commands:
         type: string
       wpversion:
         type: string
+        default: latest
     steps:
       - checkout
       - setup_e2e_env_var
