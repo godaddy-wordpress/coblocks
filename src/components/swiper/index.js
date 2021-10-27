@@ -1,21 +1,18 @@
-import { useMemo, useEffect, useRef } from '@wordpress/element';
+import { 
+    useMemo, 
+    useEffect, 
+    useCallback, 
+    useState,
+} from '@wordpress/element';
+import { usePrevious } from '@wordpress/compose';
 import ReactDOMServer from 'react-dom/server';
 import { v4 as generateUuid } from 'uuid';
 
 import TinySwiper from 'tiny-swiper';
 import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
 import SwiperPluginPagination from 'tiny-swiper/lib/modules/pagination.min.js';
-import SwiperPluginAutoPlay from 'tiny-swiper/lib/modules/autoPlay.min.js'
 
 import './style.scss';
-
-const SwiperHOC = (Component) => {
-    return (props) => {
-        const swiperUuid = generateUuid();
-
-        return <Component key={swiperUuid} {...props} />;
-    }
-}
 
 const Swiper = ({ 
     list, 
@@ -28,69 +25,26 @@ const Swiper = ({
     pauseHover = null,
     onSwipe = null,
 }) => {
-    let swiper = useRef( null );
+    const [ swiper, setSwiper ] = useState( null );
+    const [ autoPlay, setAutoPlay ] = useState( null );
+    const [ hovering, setHovering ] = useState( false );
 
-    // useEffect(() => {
-    //     const swiperContainer = document.getElementById(uuid);
+    const prevHovering = usePrevious( hovering );
+    const prevAutoPlaySpeed = usePrevious( autoPlaySpeed );
 
-    //     const swiperBackButton = document.getElementById(`${uuid}-prev`);
-    //     const swiperNextButton = document.getElementById(`${uuid}-next`);
+    useEffect(() => {
+        const swiperWrapper = document.querySelector('.swiper-wrapper');
 
-    //     let swiperPlugins = [];
+        if ( ! isDraggable ) {
+            swiperWrapper.addEventListener('mousedown', stopDrag);
 
-    //     if ( navigation === true ) {
-    //         swiperPlugins = [ ...swiperPlugins, TinySwiperPluginNavigation ];
-    //     }
+            return () => {
+                swiperWrapper.removeEventListener('mousedown', stopDrag);
+            }
+        }
+    }, [ isDraggable ]);
 
-    //     if ( paginationControl !== null ) {
-    //         swiperPlugins = [ ...swiperPlugins, SwiperPluginPagination ];
-    //     }
-
-    //     if ( autoPlaySpeed ) {
-    //         swiperPlugins = [ ...swiperPlugins, SwiperPluginAutoPlay ];
-    //     }
-
-    //     swiper = new TinySwiper(swiperContainer, {
-    //         ...(navigation === true ? ({
-    //             navigation: {
-    //                 prevEl: swiperBackButton,
-    //                 nextEl: swiperNextButton
-    //               },
-    //         } ) : {}),
-    //         ...(paginationControl ? {
-    //             pagination: {
-    //                 el: `.${paginationControl?.class}`,
-    //                 clickable: true,
-    //                 bulletClass: "swiper-plugin-pagination__item",
-    //                 bulletActiveClass: "is-active",
-    //                 clickableClass: 'is-clickable',
-    //                 // the tiny swiper package requires a string implementation of the pagination componennt
-    //                 // renderBullet: (index, className) => PaginationControl.render({ index, className })
-    //                 renderBullet: (index, className) => paginationControl?.render ? ReactDOMServer.renderToStaticMarkup( 
-    //                     <div className={`is-clickable ${className}`}>
-    //                         {paginationControl.render({ index, className })}
-    //                     </div>
-    //                 ) : null
-    //             }
-    //         } : {}),
-    //         ...(autoPlaySpeed ? {
-    //             autoplay: {
-    //                 delay: autoPlaySpeed,
-    //                 disableOnInteraction: true,
-    //             },
-    //         } : {}),
-    //         plugins: swiperPlugins,
-    //         loop: true,
-    //         centeredSlides: true,
-    //         touchStartForcePreventDefault: !isDraggable, 
-    //         freeMode: freeScroll,
-    //         longSwipesRatio: 0.8,
-    //         touchStartPreventDefault: false,
-    //         touchStartForcePreventDefault: true,
-    //     });
-
-    //     swiper.on('after-slide', onSwipe);
-    // }, [ pauseHover, autoPlaySpeed, freeScroll, isDraggable, navigation, paginationControl ]);
+    const stopDrag = e => e.stopPropagation();
 
     useEffect(() => {
         const swiperContainer = document.getElementById(uuid);
@@ -100,21 +54,10 @@ const Swiper = ({
 
         let swiperPlugins = [
             TinySwiperPluginNavigation,
+            SwiperPluginPagination,
         ];
 
-        // if ( navigation === true ) {
-        //     swiperPlugins = [ ...swiperPlugins, TinySwiperPluginNavigation ];
-        // }
-
-        if ( paginationControl !== null ) {
-            swiperPlugins = [ ...swiperPlugins, SwiperPluginPagination ];
-        }
-
-        if ( autoPlaySpeed ) {
-            swiperPlugins = [ ...swiperPlugins, SwiperPluginAutoPlay ];
-        }
-
-        swiper = new TinySwiper(swiperContainer, {
+        const newSwiper = new TinySwiper(swiperContainer, {
             navigation: {
                 prevEl: swiperBackButton,
                 nextEl: swiperNextButton
@@ -135,44 +78,62 @@ const Swiper = ({
                     ) : null
                 }
             } : {}),
-            ...(autoPlaySpeed ? {
-                autoplay: {
-                    delay: autoPlaySpeed,
-                    disableOnInteraction: true,
-                },
-            } : {}),
             plugins: swiperPlugins,
             loop: true,
             centeredSlides: true,
+            passiveListeners: true,
             longSwipesRatio: 0.8,
+            touchable: false,
         });
 
-        swiper.on('after-slide', onSwipe);
+        newSwiper.on('after-slide', onSwipe);
+
+        setSwiper( newSwiper );
     }, []);
 
     useEffect(() => {
-        if ( isDraggable === false ) {
-            const swiperContainer = document.getElementById(uuid);
-
-            swiperContainer.addEventListener('mousedown', (e) => {
-                console.log('eeeeeeee mousedown', e);
-                e.preventDefault();
-                e.stopPropagation();
-            });
+        // pause autoplay during hover
+        if ( hovering === true && pauseHover === true && autoPlaySpeed !== null ) {
+            clearInterval(autoPlay);
         }
-    }, [ isDraggable ]);
 
-    const handleSwiperHover = () => {
-        if ( autoPlaySpeed && pauseHover ) {
-            console.log('pausing');
+        // restart autoplay after no longer hovering 
+        if ( hovering === false && prevHovering === true && pauseHover === true ) {
+            setAutoPlay(setInterval( startAutoplay, autoPlaySpeed ));
         }
-    };
 
-    const handleSwiperUnHover = () => {
-        if ( autoPlaySpeed && pauseHover ) {
-            console.log('un pause');
+        // turn on autoplay
+        if ( prevAutoPlaySpeed === null && autoPlaySpeed !== null ) {
+            setAutoPlay(setInterval( startAutoplay, autoPlaySpeed ));
         }
-    };
+
+        // turn off auto play
+        if ( prevAutoPlaySpeed !== null && autoPlaySpeed === null ) {
+            clearInterval(autoPlay);
+        }
+
+        // change auto play speed
+        if ( prevAutoPlaySpeed !== null && autoPlaySpeed !== null && autoPlaySpeed !== prevAutoPlaySpeed ) {
+            clearInterval( autoPlay );
+            setAutoPlay(setInterval( startAutoplay, autoPlaySpeed ));
+        }
+    }, [ swiper, autoPlaySpeed, prevAutoPlaySpeed, autoPlay, hovering, pauseHover ]);
+
+    const startAutoplay = useCallback(() => {
+        swiper.slideTo( swiper.state.index + 1 );
+    }, [ swiper, hovering ]);
+
+    const handleMouseEnter = () => {
+        if ( pauseHover === true && autoPlay !== null ) {
+            setHovering( true );
+        }
+    }
+
+    const handleMouseLeave = () => {
+        if ( pauseHover === true && autoPlay !== null ) {
+            setHovering( false );
+        }
+    }    
 
     const renderList = useMemo(() => {
         return list.map((item, index) => (
@@ -199,17 +160,24 @@ const Swiper = ({
     }, [ navigation ]);
     
     return (
-        <div className={`coblocks-swiper-container`} ref={swiper}>
-            <div className="swiper-container" id={uuid} onMouseEnter={handleSwiperHover} onMouseLeave={handleSwiperUnHover} >
+        <div 
+            className={`coblocks-swiper-container`} 
+            onMouseEnter={handleMouseEnter} 
+            onMouseLeave={handleMouseLeave}
+        >
+            <div 
+                className="swiper-container" 
+                id={uuid} 
+            >
                 <div className="swiper-wrapper" >
                     {renderList}
                 </div>
                 {renderNavigation}
-            </div>
+            </div> 
             {paginationControl && (
-                <div className={paginationControl.class} />
-            )}               
-        </div>               
+                <div className={paginationControl.class} />  
+            )}
+         </div>       
     );
 };
 

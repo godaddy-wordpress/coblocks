@@ -68,7 +68,6 @@ const GalleryCarouselEdit = ( props ) => {
 		autoPlaySpeed,
 		autoPlay,
 		pauseHover,
-		
 	} = attributes;
 
 	const { selectedImage, setSelectedImage } = useContext(GalleryCarouselContext);
@@ -185,7 +184,14 @@ const GalleryCarouselEdit = ( props ) => {
 				}}			
 			</Swiper>
 		);
-	}, [ prevNextButtons, draggable ]);
+	}, [ 
+		thumbnails, 
+		pauseHover, 
+		prevNextButtons, 
+		draggable, 
+		autoPlaySpeed, 
+		autoPlay 
+	]);
 
 	const renderCaption = useMemo(() => {
 		return (
@@ -199,7 +205,7 @@ const GalleryCarouselEdit = ( props ) => {
 				keepPlaceholderOnFocus
 				inlineToolbar   
 			/>
-		)
+		);
 	}, [selectedImage, isSelected]);
 
 	return (

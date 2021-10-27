@@ -1,4 +1,4 @@
-import { useContext, useMemo } from '@wordpress/element';
+import { useContext, useMemo, useEffect } from '@wordpress/element';
 
 import { __ } from '@wordpress/i18n';
 
@@ -27,6 +27,7 @@ const GalleryCarouselItem = ({
                 className="coblocks-gallery--item" 
                 role="button" 
                 tabIndex={index}
+                style={{ pointerEvents: 'none', touchAction: 'none' }}
             >
                 <GalleryImage
                     url={ item.url }
