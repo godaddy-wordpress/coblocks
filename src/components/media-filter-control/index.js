@@ -25,7 +25,7 @@ import {
 	MenuGroup,
 	MenuItem,
 	Popover,
-	Toolbar,
+	ToolbarGroup,
 } from '@wordpress/components';
 
 function PreviewImageFilterPopover( { hoveredFilter } ) {
@@ -157,7 +157,7 @@ class MediaFilterControl extends Component {
 		];
 
 		return (
-			<Toolbar label={ __( 'Media Filter controls', 'coblocks' ) }>
+			<ToolbarGroup>
 				<DropdownMenu
 					className={ classnames( 'components-coblocks-media-filter', ( 'none' !== filter ) ? 'has-filter' : '' ) }
 					icon={ <Icon icon={ FilterMainIcon } /> }
@@ -188,7 +188,7 @@ class MediaFilterControl extends Component {
 						</Fragment>
 					) }
 				</DropdownMenu>
-			</Toolbar>
+			</ToolbarGroup>
 		);
 	}
 }

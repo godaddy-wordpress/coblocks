@@ -13,7 +13,7 @@ import {
 	MediaUpload,
 	MediaUploadCheck,
 } from '@wordpress/block-editor';
-import { Toolbar, ToolbarButton } from '@wordpress/components';
+import { ToolbarButton, ToolbarGroup } from '@wordpress/components';
 
 const Controls = ( props ) => {
 	const {
@@ -33,7 +33,7 @@ const Controls = ( props ) => {
 		<BlockControls>
 			{ hasImages && (
 				<>
-					<Toolbar label={ __( 'Logos controls', 'coblocks' ) }>
+					<ToolbarGroup>
 						<MediaUploadCheck>
 							<MediaUpload
 								allowedTypes={ [ 'image' ] }
@@ -51,7 +51,7 @@ const Controls = ( props ) => {
 								value={ attributes.images.map( ( img ) => img.id ) }
 							/>
 						</MediaUploadCheck>
-					</Toolbar>
+					</ToolbarGroup>
 				</>
 			) }
 		</BlockControls>

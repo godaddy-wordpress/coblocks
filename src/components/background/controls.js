@@ -9,8 +9,8 @@ import { PaintCanIcon } from '@godaddy-wordpress/coblocks-icons';
  */
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
-import { MediaReplaceFlow, MediaUpload, MediaUploadCheck, BlockControls } from '@wordpress/block-editor';
-import { Toolbar, ToolbarButton } from '@wordpress/components';
+import { BlockControls, MediaReplaceFlow, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
+import { ToolbarButton, ToolbarGroup } from '@wordpress/components';
 
 /**
  * Background image block toolbar controls.
@@ -31,9 +31,7 @@ function BackgroundControls( props ) {
 	return (
 		<Fragment>
 			<MediaUploadCheck>
-				<Toolbar className={ backgroundImg ? 'components-dropdown-menu' : '' }
-					label={ __( 'Background controls', 'coblocks' ) }
-				>
+				<ToolbarGroup className={ backgroundImg ? 'components-dropdown-menu' : '' }>
 					{ backgroundImg
 						? (
 							<BlockControls group="other">
@@ -61,15 +59,15 @@ function BackgroundControls( props ) {
 								render={ ( { open } ) => (
 									<ToolbarButton
 										className="components-toolbar__control"
-										label={ __( 'Add background image', 'coblocks' ) }
 										icon={ PaintCanIcon }
+										label={ __( 'Add background image', 'coblocks' ) }
 										onClick={ open }
 									/>
 								) }
 								value={ backgroundImg }
 							/>
 						) }
-				</Toolbar>
+				</ToolbarGroup>
 			</MediaUploadCheck>
 		</Fragment>
 	);

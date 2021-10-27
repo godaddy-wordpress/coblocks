@@ -25,7 +25,7 @@ import {
 	MenuItem,
 	Popover,
 	Tip,
-	Toolbar,
+	ToolbarGroup,
 } from '@wordpress/components';
 
 function PreviewAnimationPopover( { hoveredAnimation, selected } ) {
@@ -102,7 +102,7 @@ class Controls extends Component {
 
 		return (
 			<BlockControls>
-				<Toolbar label={ __( 'Animation controls', 'coblocks' ) }>
+				<ToolbarGroup>
 					<DropdownMenu
 						className={ classnames( 'components-coblocks-animation-toggle', animation ? 'has-animation' : '' ) }
 						icon={ AnimationIcon }
@@ -144,7 +144,7 @@ class Controls extends Component {
 							</Fragment>
 						) }
 					</DropdownMenu>
-				</Toolbar>
+				</ToolbarGroup>
 			</BlockControls>
 		);
 	}

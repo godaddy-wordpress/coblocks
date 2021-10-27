@@ -3,7 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { BlockAlignmentToolbar, BlockControls } from '@wordpress/block-editor';
-import { Toolbar, ToolbarButton } from '@wordpress/components';
+import { ToolbarButton, ToolbarGroup } from '@wordpress/components';
 
 const Controls = ( props ) => {
 	const {
@@ -30,7 +30,7 @@ const Controls = ( props ) => {
 					onChange={ updateAlignment }
 					value={ align }
 				/>
-				<Toolbar label={ __( 'Gif block controls', 'coblocks' ) }>
+				<ToolbarGroup>
 					{ url &&
 						<ToolbarButton
 							className="components-toolbar__control"
@@ -39,7 +39,7 @@ const Controls = ( props ) => {
 							onClick={ () => setAttributes( { height: '', url: '', width: '' } ) }
 						/>
 					}
-				</Toolbar>
+				</ToolbarGroup>
 			</BlockControls>
 		</>
 	);

@@ -21,7 +21,15 @@ import { DOWN } from '@wordpress/keycodes';
 import { useEntityProp } from '@wordpress/core-data';
 import { Component, Fragment } from '@wordpress/element';
 import { compose, ifCondition } from '@wordpress/compose';
-import { Dropdown, RangeControl, SelectControl, ToggleControl, Toolbar, ToolbarButton, withFallbackStyles } from '@wordpress/components';
+import {
+	Dropdown,
+	RangeControl,
+	SelectControl,
+	ToggleControl,
+	ToolbarButton,
+	ToolbarGroup,
+	withFallbackStyles,
+} from '@wordpress/components';
 
 /**
  * Export
@@ -143,7 +151,7 @@ class TypographyControls extends Component {
 		};
 
 		return (
-			<Toolbar label={ __( 'Typography controls', 'coblocks' ) } >
+			<ToolbarGroup>
 				<Dropdown
 					className={ classnames( 'components-dropdown-menu', 'components-coblocks-typography-dropdown' ) }
 					contentClassName="components-dropdown-menu__popover components-coblocks-typography-dropdown"
@@ -254,7 +262,7 @@ class TypographyControls extends Component {
 						);
 					} }
 				/>
-			</Toolbar>
+			</ToolbarGroup>
 		);
 	}
 }

@@ -14,7 +14,7 @@ import CSSGridToolbar from '../../components/grid-control/toolbar';
  */
 import { __ } from '@wordpress/i18n';
 import { AlignmentToolbar, BlockControls } from '@wordpress/block-editor';
-import { Icon, Toolbar } from '@wordpress/components';
+import { Icon, ToolbarGroup } from '@wordpress/components';
 
 const Controls = ( props ) => {
 	const {
@@ -27,13 +27,13 @@ const Controls = ( props ) => {
 	return (
 		<>
 			<BlockControls>
-				<Toolbar label={ __( 'Hero controls', 'coblocks' ) }>
+				<ToolbarGroup>
 					<CSSGridToolbar
 						icon={ <Icon icon={ icon } /> }
 						label={ __( 'Change layout', 'coblocks' ) }
 						props={ props }
 					/>
-				</Toolbar>
+				</ToolbarGroup>
 				<AlignmentToolbar
 					onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
 					value={ contentAlign }
