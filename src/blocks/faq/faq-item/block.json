@@ -2,15 +2,14 @@
 	"name": "coblocks/faq-item",
 	"category": "layout",
 	"attributes": {
-		"answer": {
-			"type": "string",
-			"source": "html",
-			"selector": ".wp-block-coblocks-faq-item__answer"
+		"open": {
+			"type": "boolean",
+			"default": false
 		},
 		"question": {
 			"type": "string",
 			"source": "html",
-			"selector": ".wp-block-coblocks-faq-item__question__button"
+			"selector": ".wp-block-coblocks-faq-item__question__content"
 		}
 	}
 }

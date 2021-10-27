@@ -1,9 +1,19 @@
 [data-type="coblocks/faq"] {
 
-	@include input-submit-placeholder;
+	.block-list-appender {
+		display: none;
+		margin: 0;
+	}
 
 	.coblocks-block-appender {
-		margin-top: 28px;
+		display: flex;
+		justify-content: space-between;
+		margin: 1.75em 0 0;
+
+		.block-editor-button-block-appender {
+			flex-direction: row;
+			width: 48%;
+		}
 	}
 
 	&.is-selected,
@@ -13,8 +23,4 @@
 			display: block;
 		}
 	}
-}
-
-.wp-block-coblocks-faq {
-
 }

@@ -12,6 +12,7 @@ import { hasEmptyAttributes } from '../../../utils/block-helpers';
 /**
  * WordPress dependencies.
  */
+import { InnerBlocks } from '@wordpress/block-editor';
 import { getColorClassName, RichText } from '@wordpress/block-editor';
 
 const isEmpty = ( attributes ) => {
@@ -25,13 +26,11 @@ const isEmpty = ( attributes ) => {
 
 export default function save( { className, attributes } ) {
 	const {
-		answer,
 		customTextColor,
+		open,
 		question,
 		textColor,
 	} = attributes;
-
-	console.log('Saving item', attributes);
 
 	const colorClass = getColorClassName( 'color', textColor );
 
@@ -41,25 +40,22 @@ export default function save( { className, attributes } ) {
 	} );
 
 	return isEmpty( attributes ) ? null : (
-		<dl
+		<details
 			className={ classes }
+			open={ open }
 			style={ { color: colorClass ? undefined : customTextColor } }
 		>
-			<dt className="wp-block-coblocks-faq-item__question">
+			<summary className="wp-block-coblocks-faq-item__question">
 				<RichText.Content
-					aria-controls="faq1_desc"
-					aria-expanded="false" 
-					className="wp-block-coblocks-faq-item__question__button"
-					tagName="button"
+					className="wp-block-coblocks-faq-item__question__content"
+					tagName="div"
 					value={ question }
 				/>
-			</dt>
-			<RichText.Content
-				className="wp-block-coblocks-faq-item__answer"
-				id="faq1_desc"
-				tagName="dd"
-				value={ answer }
-			/>
-		</dl>
+				<svg className="wp-block-coblocks-faq-item__question__icon" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M19.39 14.99l-1.41 1.41L12 10.43 6.02 16.4l-1.41-1.41L12 7.6l7.39 7.39z" fill="#111"/></svg>
+			</summary>
+			<div className="wp-block-coblocks-faq-item__answer" tabIndex="0">
+				<InnerBlocks.Content />
+			</div>
+		</details>
 	);
 }

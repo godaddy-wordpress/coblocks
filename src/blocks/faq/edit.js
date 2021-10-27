@@ -1,7 +1,13 @@
 /**
+ * External dependencies
+ */
+ import classnames from 'classnames';
+
+/**
  * Internal dependencies.
  */
 import CustomAppender from './appender';
+import GutterWrapper from './../../components/gutter-control/gutter-wrapper';
 import Inspector from './inspector';
 
 /**
@@ -11,9 +17,12 @@ import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { createBlock } from '@wordpress/blocks';
 import { InnerBlocks } from '@wordpress/block-editor';
-import { useSelect, withDispatch, withSelect } from '@wordpress/data';
+import { useDispatch, useSelect, withDispatch, withSelect } from '@wordpress/data';
 
-const ALLOWED_BLOCKS = [ 'coblocks/faq-item' ];
+const ALLOWED_BLOCKS = [ 
+	'coblocks/faq-item',
+	'core/heading',
+];
 
 const TEMPLATE = [
 	[ 'core/heading', {
@@ -30,6 +39,7 @@ const Edit = ( props ) => {
 		className,
 		clientId,
 		insertBlock,
+		isSelected,
 		setAttributes,
 	} = props;
 
@@ -41,6 +51,10 @@ const Edit = ( props ) => {
 	const { innerBlocks } = useSelect( ( select ) => ( {
 		innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
 	} ) );
+
+	const {
+		selectBlock,
+	} = useDispatch( 'core/block-editor' );
 
 	const setColumns = ( value ) => {
 		setAttributes( { columns: parseInt( value ) } );
@@ -55,21 +69,41 @@ const Edit = ( props ) => {
 		insertBlock( newItem, innerBlocks.length, clientId );
 	};
 
+	const insertNewHeading = () => {
+		const newHeading = createBlock( 'core/heading', {
+			className: 'wp-block-coblocks-faq__heading',
+			level: 4,
+			placeholder: __( 'Category name', 'coblocks' ),
+		} );
+		insertBlock( newHeading, innerBlocks.length, clientId );
+	};
+
+	const innerClasses = classnames(
+		'wp-block-coblocks-faq__inner', 
+		{
+			'has-columns': columns > 1,
+			[ `has-${ columns }-columns` ]: columns,
+			'has-responsive-columns': columns > 1,
+		}
+	);
+
 	return (
 		<>
-			<Inspector
-				attributes={ attributes }
-				onSetColumns={ setColumns }
-				onSetGutter={ setGutter }
-			/>
-			<dl className={ className }>
-				<InnerBlocks
-					allowedBlocks={ ALLOWED_BLOCKS }
-					renderAppender={ () => <CustomAppender onClick={ insertNewItem } /> }
-					template={ TEMPLATE }
-					templateInsertUpdatesSelection={ false }
-				/>
-			</dl>
+			{ isSelected && (
+				<Inspector selectBlock={ selectBlock } { ...props } />
+			) }
+			<div className={ className }>
+				<div className={ innerClasses }>
+					<GutterWrapper { ...attributes }>
+						<InnerBlocks
+							allowedBlocks={ ALLOWED_BLOCKS }
+							renderAppender={ () => <CustomAppender onAddNewItem={ insertNewItem } onAddNewHeading={ insertNewHeading } /> }
+							template={ TEMPLATE }
+							templateInsertUpdatesSelection={ false }
+						/>
+					</GutterWrapper>
+				</div>
+			</div>
 		</>
 	);
 };
