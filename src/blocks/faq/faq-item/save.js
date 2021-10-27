@@ -15,7 +15,7 @@ import { hasEmptyAttributes } from '../../../utils/block-helpers';
 import { getColorClassName, RichText } from '@wordpress/block-editor';
 
 const isEmpty = ( attributes ) => {
-	const attributesToCheck = [ 'title', 'description', 'eventDay', 'eventMonth', 'eventYear', 'eventTime', 'eventLocation' ];
+	const attributesToCheck = [ 'answer', 'question' ];
 	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
 		attributesToCheck.includes( key )
 	);
@@ -31,6 +31,8 @@ export default function save( { className, attributes } ) {
 		textColor,
 	} = attributes;
 
+	console.log('Saving item', attributes);
+
 	const colorClass = getColorClassName( 'color', textColor );
 
 	const classes = classnames( className, {
@@ -43,13 +45,18 @@ export default function save( { className, attributes } ) {
 			className={ classes }
 			style={ { color: colorClass ? undefined : customTextColor } }
 		>
+			<dt className="wp-block-coblocks-faq-item__question">
+				<RichText.Content
+					aria-controls="faq1_desc"
+					aria-expanded="false" 
+					className="wp-block-coblocks-faq-item__question__button"
+					tagName="button"
+					value={ question }
+				/>
+			</dt>
 			<RichText.Content
-				className="wp-block-coblocks-faq__question"
-				tagName="dt"
-				value={ question }
-			/>
-			<RichText.Content
-				className="wp-block-coblocks-faq__answer"
+				className="wp-block-coblocks-faq-item__answer"
+				id="faq1_desc"
 				tagName="dd"
 				value={ answer }
 			/>

@@ -26,7 +26,7 @@ const settings = {
 	description: __( 'A question/answer within the FAQ block.', 'coblocks' ),
 	edit,
 	icon: <Icon icon={ icon } />,
-	parent: [ 'coblocks/events' ],
+	parent: [ 'coblocks/faq' ],
 	save,
 	supports: {
 		html: false,

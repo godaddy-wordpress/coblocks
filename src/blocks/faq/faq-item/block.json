@@ -5,12 +5,12 @@
 		"answer": {
 			"type": "string",
 			"source": "html",
-			"selector": ".wp-block-coblocks-faq__answer"
+			"selector": ".wp-block-coblocks-faq-item__answer"
 		},
 		"question": {
 			"type": "string",
 			"source": "html",
-			"selector": ".wp-block-coblocks-faq__question"
+			"selector": ".wp-block-coblocks-faq-item__question__button"
 		}
 	}
 }

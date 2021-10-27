@@ -1,3 +1,26 @@
 .wp-block-coblocks-faq-item {
+	border-bottom: 1px solid hsla(240, 5%, 57%, 0.1);
+	margin: 0;
+	padding: 1em 0;
+
+	&__question {
+		font-weight: bold;
+
+		&__button {
+			background: none;
+			color: inherit;
+			display: block;
+			font-weight: inherit;
+			padding: 0;
+			text-transform: inherit;
+		}
+	}
+
+	&__answer {
+		display: none;
+		margin-left: 0;
+		margin-bottom: 0;
+	}
+
 	@include break-medium() {}
 }

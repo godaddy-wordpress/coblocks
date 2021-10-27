@@ -59,14 +59,14 @@ const FaqItemEdit = ( props ) => {
 				<RichText
 					className="wp-block-coblocks-faq-item__question"
 					onChange={ ( newQuestion ) => setAttributes( { question: newQuestion } ) }
-					placeholder={ __( 'Write FAQ question…', 'coblocks' ) }
+					placeholder={ __( 'Write a question', 'coblocks' ) }
 					tagName="dt"
 					value={ question }
 				/>
 				<RichText
 					className="wp-block-coblocks-faq-item__answer"
 					onChange={ ( newAnswer ) => setAttributes( { answer: newAnswer } ) }
-					placeholder={ __( 'Write FAQ answer…', 'coblocks' ) }
+					placeholder={ __( 'Enter the answer to the question', 'coblocks' ) }
 					tagName="dd"
 					value={ answer }
 				/>

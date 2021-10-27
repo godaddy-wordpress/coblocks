@@ -19,7 +19,7 @@ const TEMPLATE = [
 	[ 'core/heading', {
 		align: 'center',
 		level: 3,
-		placeholder: __( 'FAQ title…', 'coblocks' )
+		placeholder: __( 'FAQ title', 'coblocks' ),
 	} ],
 	[ 'coblocks/faq-item' ],
 ];
