@@ -359,9 +359,9 @@ const DimensionsControl = ( props ) => {
 						<Button
 							className="components-coblocks-dimensions-control_sync"
 							aria-label={ __( 'Sync units', 'coblocks' ) }
-							isPrimary={ syncMode ? true : false }
-							isSecondary={ syncMode ? false : true }
-							aria-pressed={ syncMode ? true : false }
+							isPrimary={ !! syncMode }
+							isSecondary={ ! syncMode }
+							aria-pressed={ !! syncMode }
 							onClick={ () => syncUnitsOverwrite( device ) }
 							data-device-type={ device }
 							isSmall
@@ -461,7 +461,7 @@ const DimensionsControl = ( props ) => {
 							<span className="components-coblocks-dimensions-control__number-label">{ __( 'Right', 'coblocks' ) }</span>
 							<span className="components-coblocks-dimensions-control__number-label">{ __( 'Bottom', 'coblocks' ) }</span>
 							<span className="components-coblocks-dimensions-control__number-label">{ __( 'Left', 'coblocks' ) }</span>
-							<span className="components-coblocks-dimensions-control__number-label-blank"></span>
+							<span className="components-coblocks-dimensions-control__number-label-blank" />
 						</div>
 					</>
 					: <BaseControl id="textarea-1" label={ label } help={ help }>
