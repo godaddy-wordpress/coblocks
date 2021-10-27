@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { createBlock } from '@wordpress/blocks';
 import { InnerBlocks } from '@wordpress/block-editor';
-import { withDispatch, withSelect } from '@wordpress/data';
+import { useSelect, withDispatch, withSelect } from '@wordpress/data';
 
 const ALLOWED_BLOCKS = [ 'coblocks/faq-item' ];
 
@@ -29,7 +29,6 @@ const Edit = ( props ) => {
 		attributes,
 		className,
 		clientId,
-		getBlockOrder,
 		insertBlock,
 		setAttributes,
 	} = props;
@@ -38,6 +37,10 @@ const Edit = ( props ) => {
 		columns,
 		gutter,
 	} = attributes;
+
+	const { innerBlocks } = useSelect( ( select ) => ( {
+		innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
+	} ) );
 
 	const setColumns = ( value ) => {
 		setAttributes( { columns: parseInt( value ) } );
@@ -48,26 +51,8 @@ const Edit = ( props ) => {
 	};
 
 	const insertNewItem = () => {
-		const blockOrder = getBlockOrder();
-		const insertAtIndex = blockOrder.indexOf( clientId ) + 1;
-
-		const newInnerBlocks = TEMPLATE.map( ( [ blockName, blockAttributes ] ) =>
-			createBlock(
-				blockName,
-				Object.assign( {}, blockAttributes, {
-					showImage: attributes.showImages,
-					showPrice: attributes.showPrices,
-				} )
-			)
-		);
-
-		const newItem = createBlock(
-			'coblocks/faq-item',
-			attributes,
-			newInnerBlocks
-		);
-
-		insertBlock( newItem, insertAtIndex );
+		const newItem = createBlock( 'coblocks/faq-item' );
+		insertBlock( newItem, innerBlocks.length, clientId );
 	};
 
 	return (
