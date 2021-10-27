@@ -156,7 +156,7 @@ workflows:
             - build
 
       # END TO END TESTING
-      - e2e_chrome:
+      - e2e_chrome_wp_latest:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -167,7 +167,18 @@ workflows:
             - unit_testing_php_74
             - unit_testing_php_80
             - js
-      - e2e_firefox:
+      - e2e_firefox_wp_latest:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - css
+            - unit_testing_php_56
+            - unit_testing_php_73
+            - unit_testing_php_74
+            - unit_testing_php_80
+            - js
+      - e2e_chrome_wp_5_7:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -260,6 +271,10 @@ commands:
   # Install and configure WordPress for end-to-end tests.
   install_wordpress_with_coblocks:
     description: ""
+    parameters:
+      wpversion:
+        type: string
+        default: latest
     steps:
       - run:
           name: Update hosts
@@ -270,7 +285,7 @@ commands:
             sudo apt-get update --allow-releaseinfo-change && sudo apt-get install -y subversion default-mysql-client
             sudo -E docker-php-ext-install mysqli
             mkdir -p /tmp/wordpress
-            ./vendor/bin/wp core download --path=/tmp/wordpress
+            ./vendor/bin/wp core download --version=<< parameters.wpversion >> --path=/tmp/wordpress
             ./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass='' --path=/tmp/wordpress
             ./vendor/bin/wp db create --path=/tmp/wordpress
             ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=/tmp/wordpress
@@ -340,6 +355,8 @@ commands:
     parameters:
       browser:
         type: string
+      wpversion:
+        type: string
     steps:
       - checkout
       - setup_e2e_env_var
@@ -353,7 +370,8 @@ commands:
       - restore_update_cypress_cache
       - restore_composer_cache
       - wait_for_mysql
-      - install_wordpress_with_coblocks
+      - install_wordpress_with_coblocks:
+          wpversion: "<< parameters.wpversion >>"
       - enable_debug_mode_for_e2e
       - install_mailhog_plugin
       - start_wpcli_server
@@ -653,19 +671,27 @@ jobs:
   # End to End Testing
   # --------------------------------------------------
 
-  e2e_chrome:
+  e2e_chrome_wp_latest:
     executor: php_74_node_browser_mysql_mailhog
     parallelism: 4
     steps:
       - run_e2e_tests:
           browser: chrome
 
-  e2e_firefox:
+  e2e_firefox_wp_latest:
     executor: php_74_node_browser_mysql_mailhog
     parallelism: 4
     steps:
       - run_e2e_tests:
           browser: firefox
+
+  e2e_chrome_wp_5_7:
+    executor: php_74_node_browser_mysql_mailhog
+    parallelism: 4
+    steps:
+      - run_e2e_tests:
+          browser: chrome
+          wpversion: '5.7'
 
   perf_tests:
     executor: php_74_node_browser_mysql
