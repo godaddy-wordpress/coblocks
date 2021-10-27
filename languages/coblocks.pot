@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-26T17:12:53+00:00\n"
+"POT-Creation-Date: 2021-10-27T14:52:55+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -1059,7 +1059,7 @@ msgstr ""
 #: src/blocks/features/inspector.js:138
 #: src/blocks/row/column/inspector.js:131
 #: src/blocks/row/inspector.js:183
-#: src/components/dimensions-control/index.js:292
+#: src/components/dimensions-control/index.js:50
 msgid "Margin"
 msgstr ""
 
@@ -4504,7 +4504,7 @@ msgstr ""
 
 #: src/blocks/icon/inspector.js:174
 #: src/components/crop-settings/index.js:324
-#: src/components/dimensions-control/index.js:489
+#: src/components/dimensions-control/index.js:424
 #: src/components/size-control/index.js:209
 msgid "Reset"
 msgstr ""
@@ -7243,117 +7243,112 @@ msgstr ""
 msgid "Reset image cropping options"
 msgstr ""
 
+#: src/components/dimensions-control/index.js:30
+msgid "Margin top"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:31
+msgid "Margin right"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:32
+msgid "Margin bottom"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:33
+msgid "Margin left"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:36
+msgid "Padding top"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:37
+msgid "Padding right"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:38
+msgid "Padding bottom"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:39
+msgid "Padding left"
+msgstr ""
+
 #. translators: a unit of size (px) for css markup
-#: src/components/dimensions-control/index.js:387
+#: src/components/dimensions-control/index.js:280
 msgid "Pixel"
 msgstr ""
 
 #. translators: a unit of size (em) for css markup
-#: src/components/dimensions-control/index.js:392
+#: src/components/dimensions-control/index.js:285
 msgid "Em"
 msgstr ""
 
 #. translators: a unit of size (vw) for css markup
-#: src/components/dimensions-control/index.js:397
+#: src/components/dimensions-control/index.js:290
 msgid "Viewport width"
 msgstr ""
 
 #. translators: a unit of size (vh) for css markup
-#: src/components/dimensions-control/index.js:402
+#: src/components/dimensions-control/index.js:295
 msgid "Viewport height"
 msgstr ""
 
 #. translators: a unit of size for css markup
-#: src/components/dimensions-control/index.js:407
+#: src/components/dimensions-control/index.js:300
 msgid "Percentage"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:452
+#: src/components/dimensions-control/index.js:358
+msgid "Unsync"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:358
+msgid "Sync"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:361
+msgid "Sync units"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:385
 msgid "Select Units"
 msgstr ""
 
 #. translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
-#: src/components/dimensions-control/index.js:456
-#: src/components/dimensions-control/index.js:468
+#: src/components/dimensions-control/index.js:391
+#: src/components/dimensions-control/index.js:403
 msgid "%s units"
 msgstr ""
 
 #. translators: %s: a texual label
-#: src/components/dimensions-control/index.js:485
+#: src/components/dimensions-control/index.js:420
 msgid "Turn off advanced %s settings"
 msgstr ""
 
-#. translators: %s: values associated with CSS syntax, 'Margin', 'Padding'
-#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:532
-#: src/components/dimensions-control/index.js:609
-#: src/components/dimensions-control/index.js:686
-msgid "%s top"
-msgstr ""
-
-#. translators: %s: values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:546
-#: src/components/dimensions-control/index.js:623
-#: src/components/dimensions-control/index.js:700
-msgid "%s right"
-msgstr ""
-
-#. translators: %s: values associated with CSS syntax, 'Margin', 'Padding'
-#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:560
-#: src/components/dimensions-control/index.js:637
-#: src/components/dimensions-control/index.js:714
-msgid "%s bottom"
-msgstr ""
-
-#. translators: %s: values associated with CSS syntax, 'Margin', 'Padding'
-#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:574
-#: src/components/dimensions-control/index.js:651
-#: src/components/dimensions-control/index.js:728
-msgid "%s left"
-msgstr ""
-
-#: src/components/dimensions-control/index.js:582
-#: src/components/dimensions-control/index.js:659
-#: src/components/dimensions-control/index.js:735
-msgid "Unsync"
-msgstr ""
-
-#: src/components/dimensions-control/index.js:582
-#: src/components/dimensions-control/index.js:659
-#: src/components/dimensions-control/index.js:735
-msgid "Sync"
-msgstr ""
-
-#: src/components/dimensions-control/index.js:585
-#: src/components/dimensions-control/index.js:662
-#: src/components/dimensions-control/index.js:738
-msgid "Sync units"
-msgstr ""
-
-#: src/components/dimensions-control/index.js:756
+#: src/components/dimensions-control/index.js:460
 msgid "Top"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:757
+#: src/components/dimensions-control/index.js:461
 msgid "Right"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:758
+#: src/components/dimensions-control/index.js:462
 msgid "Bottom"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:759
+#: src/components/dimensions-control/index.js:463
 msgid "Left"
 msgstr ""
 
 #. translators: %s: a texual label
-#: src/components/dimensions-control/index.js:779
+#: src/components/dimensions-control/index.js:483
 msgid "Advanced %s settings"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:784
+#: src/components/dimensions-control/index.js:488
 msgid "Advanced"
 msgstr ""
 
