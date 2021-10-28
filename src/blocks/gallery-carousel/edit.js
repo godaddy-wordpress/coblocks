@@ -23,7 +23,7 @@ import { GalleryContextProvider, GalleryCarouselContext } from './context';
  */
 import { Icon } from '@wordpress/icons';
 import { __, sprintf } from '@wordpress/i18n';
-import { useMemo, useContext} from '@wordpress/element';
+import { useMemo, useContext, useCallback } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withNotices, ResizableBox } from '@wordpress/components';
 import { RichText } from '@wordpress/block-editor';
@@ -137,33 +137,31 @@ const GalleryCarouselEdit = ( props ) => {
 		);						
 	}
 
-	const renderSwiper = useMemo(() => {
-		const swiperCarouselUuid = uuid();
+	const renderGalleryPagination = useCallback(({ changeStep }) => {
+		return (
+			<div className="wp-block-coblocks-gallery-carousel-thumbnail-pagination" style={{ width: images.length * 100 }}>
+				{images.map((item, index) => (
+					<GalleryCarouselThumbnail 
+						changeStep={changeStep} 
+						index={index} 
+						item={item} 
+					/>
+				))}
+			</div>
+		);
+	}, [ selectedImage ]);
 
+	const renderSwiper = useMemo(() => {
 		return (
 			<Swiper
 				list={images}
-				uuid={swiperCarouselUuid}
 				navigation={prevNextButtons}
 				isDraggable={draggable}
 				freeScroll={freeScroll}
 				autoPlaySpeed={autoPlay ? autoPlaySpeed : null}
 				pauseHover={autoPlay ? pauseHover : null}
+				Pagination={thumbnails ? renderGalleryPagination : null}
 				onSwipe={handleSwipe}
-				{...(thumbnails ? {
-					paginationControl: {
-						class: "wp-block-coblocks-gallery-carousel-thumbnail-pagination",
-						render: ({ index, className: pageClassName }) => {
-							const item = images[index];
-
-							return (
-								<div className={`wp-block-coblocks-gallery-carousel-thumbnail`} style={{ height: '80px', width: '100px' }} >
-									<img src={ item.url } alt={ item.alt } data-link={ item.link } data-id={ item.id } style={{ height: '100%', width: '100%' }} />	
-								</div>
-							);
-						}							
-					}
-				} : {})}			
 			>
 				{({
 					index,
@@ -185,7 +183,7 @@ const GalleryCarouselEdit = ( props ) => {
 			</Swiper>
 		);
 	}, [ 
-		thumbnails, 
+		thumbnails,
 		pauseHover, 
 		prevNextButtons, 
 		draggable, 
@@ -256,11 +254,25 @@ const GalleryCarouselEdit = ( props ) => {
 	);
 };
 
+const GalleryCarouselThumbnail = ({ changeStep, item, index }) => {
+	const { selectedImage } = useContext(GalleryCarouselContext);
+
+	return (
+		<div className={classnames( {
+			'wp-block-coblocks-gallery-carousel-thumbnail': true,
+			'is-active': index === selectedImage,
+		} )} style={{ height: '80px', width: '100px' }} onClick={() => changeStep( index )} >
+			<img src={ item.url } alt={ item.alt } data-link={ item.link } data-id={ item.id } style={{ height: '100%', width: '100%' }} />	
+		</div>
+	);
+}
+
 const withGalleryCarouselState = ( Component ) => {
 	return (props) => {
 		const defaultGalleryState = {
 			isSelected: props.isSelected,
-			images: props.attributes?.images
+			images: props.attributes?.images,
+			showThumbnails: props.attributes.thumbnails,
 		}
 		return (
 			<GalleryContextProvider {...defaultGalleryState} >

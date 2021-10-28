@@ -96,8 +96,13 @@
 	}
 }
 
-.wp-block-coblocks-gallery-carousel-thumbnail-pagination .is-clickable {
+.wp-block-coblocks-gallery-carousel-thumbnail {
+	opacity: 0.4;
 	cursor: pointer;
+}
+
+.wp-block-coblocks-gallery-carousel-thumbnail.is-active {
+	opacity: 1;
 }
 
 .swiper-plugin-pagination__item {
@@ -107,10 +112,6 @@
 .swiper-plugin-pagination__item + .is-active:first-of-type {
 	opacity: 1;
 }
-
-// .swiper-plugin-pagination__item + .is-active {
-// 	opacity: 1;
-// }
 
 .swiper-plugin-pagination__item.is-active {
 	opacity: 1;

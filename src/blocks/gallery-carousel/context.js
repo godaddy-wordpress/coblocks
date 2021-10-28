@@ -7,9 +7,10 @@ const GalleryCarouselContext = createContext({
 	captionFocused: false,
     images: [],
     isSelected: false,
+    showThumbnails: false,
 });
 
-const GalleryContextProvider = ({  children, images, isSelected, }) => {
+const GalleryContextProvider = ({  showThumbnails, children, images, isSelected, }) => {
     const [ selectedImage, setSelectedImage ] = useState( null );
     const [ captionFocused, setCaptionFocused ] = useState( false );
 
@@ -20,6 +21,7 @@ const GalleryContextProvider = ({  children, images, isSelected, }) => {
         setCaptionFocused,
         images,
         isSelected,
+        showThumbnails
     }
 
     return (

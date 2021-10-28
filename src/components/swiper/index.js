@@ -5,25 +5,22 @@ import {
     useState,
 } from '@wordpress/element';
 import { usePrevious } from '@wordpress/compose';
-import ReactDOMServer from 'react-dom/server';
 import { v4 as generateUuid } from 'uuid';
 
 import TinySwiper from 'tiny-swiper';
 import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
-import SwiperPluginPagination from 'tiny-swiper/lib/modules/pagination.min.js';
 
 import './style.scss';
 
 const Swiper = ({ 
     list, 
-    uuid, 
     children, 
     navigation = false, 
-    paginationControl = null,
     isDraggable = true,
     autoPlaySpeed = null,
     pauseHover = null,
     onSwipe = null,
+    Pagination = null,
 }) => {
     const [ swiper, setSwiper ] = useState( null );
     const [ autoPlay, setAutoPlay ] = useState( null );
@@ -32,19 +29,19 @@ const Swiper = ({
     const prevHovering = usePrevious( hovering );
     const prevAutoPlaySpeed = usePrevious( autoPlaySpeed );
 
+    const [ uuid, setUuid ] = useState( generateUuid() );
+
     useEffect(() => {
         const swiperWrapper = document.querySelector('.swiper-wrapper');
 
         if ( ! isDraggable ) {
-            swiperWrapper.addEventListener('mousedown', stopDrag);
+            swiperWrapper.addEventListener('mousedown', e => e.stopPropagation());
 
             return () => {
-                swiperWrapper.removeEventListener('mousedown', stopDrag);
+                swiperWrapper.removeEventListener('mousedown', e => e.stopPropagation());
             }
         }
     }, [ isDraggable ]);
-
-    const stopDrag = e => e.stopPropagation();
 
     useEffect(() => {
         const swiperContainer = document.getElementById(uuid);
@@ -52,33 +49,14 @@ const Swiper = ({
         const swiperBackButton = document.getElementById(`${uuid}-prev`);
         const swiperNextButton = document.getElementById(`${uuid}-next`);
 
-        let swiperPlugins = [
-            TinySwiperPluginNavigation,
-            SwiperPluginPagination,
-        ];
-
         const newSwiper = new TinySwiper(swiperContainer, {
             navigation: {
                 prevEl: swiperBackButton,
                 nextEl: swiperNextButton
             },
-            ...(paginationControl ? {
-                pagination: {
-                    el: `.${paginationControl?.class}`,
-                    clickable: true,
-                    bulletClass: "swiper-plugin-pagination__item",
-                    bulletActiveClass: "is-active",
-                    clickableClass: 'is-clickable',
-                    // the tiny swiper package requires a string implementation of the pagination componennt
-                    // renderBullet: (index, className) => PaginationControl.render({ index, className })
-                    renderBullet: (index, className) => paginationControl?.render ? ReactDOMServer.renderToStaticMarkup( 
-                        <div className={`is-clickable ${className}`}>
-                            {paginationControl.render({ index, className })}
-                        </div>
-                    ) : null
-                }
-            } : {}),
-            plugins: swiperPlugins,
+            plugins: [
+                TinySwiperPluginNavigation
+            ],
             loop: true,
             centeredSlides: true,
             passiveListeners: true,
@@ -117,7 +95,14 @@ const Swiper = ({
             clearInterval( autoPlay );
             setAutoPlay(setInterval( startAutoplay, autoPlaySpeed ));
         }
-    }, [ swiper, autoPlaySpeed, prevAutoPlaySpeed, autoPlay, hovering, pauseHover ]);
+    }, [ 
+        swiper, 
+        autoPlaySpeed, 
+        prevAutoPlaySpeed, 
+        autoPlay, 
+        hovering, 
+        pauseHover 
+    ]);
 
     const startAutoplay = useCallback(() => {
         swiper.slideTo( swiper.state.index + 1 );
@@ -158,6 +143,16 @@ const Swiper = ({
             </>
         )
     }, [ navigation ]);
+
+    const changeStep = ( index ) => {
+        swiper.slideTo( index );
+    };
+
+    const renderPagination = useMemo(() => {
+        if ( Pagination ) {
+            return Pagination({ changeStep });
+        }
+    }, [ Pagination, swiper ]);
     
     return (
         <div 
@@ -174,9 +169,7 @@ const Swiper = ({
                 </div>
                 {renderNavigation}
             </div> 
-            {paginationControl && (
-                <div className={paginationControl.class} />  
-            )}
+            {renderPagination}
          </div>       
     );
 };
