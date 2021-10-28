@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  jq: circleci/jq@2.2.0
+
 executors:
   node_latest:
     docker:
@@ -178,7 +181,7 @@ workflows:
             - unit_testing_php_74
             - unit_testing_php_80
             - js
-      - e2e_chrome_wp_5_7:
+      - e2e_chrome_wp_last:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -686,13 +689,18 @@ jobs:
       - run_e2e_tests:
           browser: firefox
 
-  e2e_chrome_wp_5_7:
+  e2e_chrome_wp_last:
     executor: php_74_node_browser_mysql_mailhog
     parallelism: 4
     steps:
+      - jq/install
+      - run:
+          name: Get last major WordPress release version
+          command: |
+            echo 'export WPVERSION=$(curl http://api.wordpress.org/core/stable-check/1.0/ -s | jq 'keys' | jq -r 'map(select(. | test("^[\\d]+.[\\d]+$")))' | jq '.[-2]')' >> $BASH_ENV
       - run_e2e_tests:
           browser: chrome
-          wpversion: '5.7'
+          wpversion: $WPVERSION
 
   perf_tests:
     executor: php_74_node_browser_mysql
