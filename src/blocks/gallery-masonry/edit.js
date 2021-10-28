@@ -3,56 +3,43 @@
  */
 import classnames from 'classnames';
 import { GalleryMasonryIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
- * External dependencies
- */
 import { concat, find } from 'lodash';
 
 /**
  * WordPress dependencies
  */
-import { withNotices, Icon, PanelBody, ToggleControl, BaseControl, Spinner, SelectControl } from '@wordpress/components';
 import { compose } from '@wordpress/compose';
-import {
-	store as blockEditorStore,
-	MediaPlaceholder,
-	InspectorControls,
-	useBlockProps,
-} from '@wordpress/block-editor';
-import { Platform, useEffect, useMemo } from '@wordpress/element';
-import { __, _x, sprintf } from '@wordpress/i18n';
-import { useSelect, useDispatch } from '@wordpress/data';
-import { withViewportMatch } from '@wordpress/viewport';
-import { View } from '@wordpress/primitives';
-import { createBlock } from '@wordpress/blocks';
 import { createBlobURL } from '@wordpress/blob';
+import { createBlock } from '@wordpress/blocks';
 import { store as noticesStore } from '@wordpress/notices';
+import { View } from '@wordpress/primitives';
+import { withViewportMatch } from '@wordpress/viewport';
+import { __, _x, sprintf } from '@wordpress/i18n';
+import { BaseControl, Icon, PanelBody, SelectControl, Spinner, ToggleControl, withNotices } from '@wordpress/components';
+import { store as blockEditorStore, InspectorControls, MediaPlaceholder, useBlockProps } from '@wordpress/block-editor';
+import { Platform, useEffect, useMemo } from '@wordpress/element';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 /**
  * Internal dependencies
  */
-import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 import Controls from './controls';
-import { pickRelevantMediaFiles } from '../../components/block-gallery/shared';
-import { getHrefAndDestination, getUpdatedLinkTargetSettings, getImageSizeAttributes } from '../../components/block-gallery/utils';
 import Gallery from '../../components/block-gallery/gallery';
-import {
-	LINK_DESTINATION_ATTACHMENT,
-	LINK_DESTINATION_MEDIA,
-	LINK_DESTINATION_NONE,
-} from '../../components/block-gallery/constants';
+import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
+import { pickRelevantMediaFiles } from '../../components/block-gallery/shared-helpers';
+import useGetMedia from '../../components/block-gallery/use-get-media';
+import useGetNewImages from '../../components/block-gallery/use-get-new-images';
 import useImageSizes from '../../components/block-gallery/use-image-sizes';
 import useShortCodeTransform from '../../components/block-gallery/use-short-code-transform';
-import useGetNewImages from '../../components/block-gallery/use-get-new-images';
-import useGetMedia from '../../components/block-gallery/use-get-media';
+import { getHrefAndDestination, getImageSizeAttributes, getUpdatedLinkTargetSettings } from '../../components/block-gallery/utils';
+import { LINK_DESTINATION_ATTACHMENT, LINK_DESTINATION_MEDIA, LINK_DESTINATION_NONE } from '../../components/block-gallery/constants';
 
 const linkOptions = [
-	{ value: LINK_DESTINATION_ATTACHMENT, label: __( 'Attachment Page' ) },
-	{ value: LINK_DESTINATION_MEDIA, label: __( 'Media File' ) },
+	{ label: __( 'Attachment Page' ), value: LINK_DESTINATION_ATTACHMENT },
+	{ label: __( 'Media File' ), value: LINK_DESTINATION_MEDIA },
 	{
-		value: LINK_DESTINATION_NONE,
 		label: _x( 'None', 'Media item link option' ),
+		value: LINK_DESTINATION_NONE,
 	},
 ];
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
@@ -61,7 +48,7 @@ const PLACEHOLDER_TEXT = Platform.isNative
 	? __( 'ADD MEDIA' )
 	: __( 'Drag images, upload new ones or select files from your library.' );
 
-const MOBILE_CONTROL_PROPS_RANGE_CONTROL = Platform.isNative ? { type: 'stepper' } : {};
+// const MOBILE_CONTROL_PROPS_RANGE_CONTROL = Platform.isNative ? { type: 'stepper' } : {};
 
 function GalleryEdit( props ) {
 	const {
@@ -112,11 +99,11 @@ function GalleryEdit( props ) {
 	const images = useMemo(
 		() =>
 			innerBlockImages?.map( ( block ) => ( {
+				attributes: block.attributes,
 				clientId: block.clientId,
+				fromSavedContent: Boolean( block.originalContent ),
 				id: block.attributes.id,
 				url: block.attributes.url,
-				attributes: block.attributes,
-				fromSavedContent: Boolean( block.originalContent ),
 			} ) ),
 		[ innerBlockImages ]
 	);
@@ -129,8 +116,8 @@ function GalleryEdit( props ) {
 		newImages?.forEach( ( newImage ) => {
 			updateBlockAttributes( newImage.clientId, {
 				...buildImageAttributes( false, newImage.attributes ),
-				id: newImage.id,
 				align: undefined,
+				id: newImage.id,
 			} );
 		} );
 	}, [ newImages ] );
@@ -399,24 +386,24 @@ function GalleryEdit( props ) {
 
 	const mediaPlaceholder = (
 		<MediaPlaceholder
+			accept="image/*"
 			addToGallery={ hasImageIds }
-			handleUpload={ false }
-			isAppender={ hasImages }
+			allowedTypes={ ALLOWED_MEDIA_TYPES }
 			disableMediaButtons={
 				( hasImages && ! isSelected ) || imagesUploading
 			}
+			handleUpload={ false }
 			icon={ ! hasImages && <Icon icon={ icon } /> }
+			isAppender={ hasImages }
 			labels={ {
-				title: ! hasImages && __( 'Gallery' ),
 				instructions: ! hasImages && PLACEHOLDER_TEXT,
+				title: ! hasImages && __( 'Gallery' ),
 			} }
-			onSelect={ updateImages }
-			accept="image/*"
-			allowedTypes={ ALLOWED_MEDIA_TYPES }
 			multiple
-			value={ hasImageIds ? images : {} }
-			onError={ onUploadError }
 			notices={ hasImages ? undefined : noticeUI }
+			onError={ onUploadError }
+			onSelect={ updateImages }
+			value={ hasImageIds ? images : {} }
 		/>
 	);
 
@@ -436,32 +423,32 @@ function GalleryEdit( props ) {
 			<InspectorControls>
 				<PanelBody title={ __( 'Gallery settings' ) }>
 					<ToggleControl
-						label={ __( 'Crop images' ) }
 						checked={ !! imageCrop }
-						onChange={ toggleImageCrop }
 						help={ getImageCropHelp }
+						label={ __( 'Crop images' ) }
+						onChange={ toggleImageCrop }
 					/>
 					<SelectControl
+						hideCancelButton={ true }
 						label={ __( 'Link to' ) }
-						value={ linkTo }
 						onChange={ setLinkTo }
 						options={ linkOptions }
-						hideCancelButton={ true }
+						value={ linkTo }
 					/>
 					{ hasLinkTo && (
 						<ToggleControl
-							label={ __( 'Open in new tab' ) }
 							checked={ linkTarget === '_blank' }
+							label={ __( 'Open in new tab' ) }
 							onChange={ toggleOpenInNewTab }
 						/>
 					) }
 					{ imageSizeOptions?.length > 0 && (
 						<SelectControl
-							label={ __( 'Image size' ) }
-							value={ sizeSlug }
-							options={ imageSizeOptions }
-							onChange={ updateImagesSize }
 							hideCancelButton={ true }
+							label={ __( 'Image size' ) }
+							onChange={ updateImagesSize }
+							options={ imageSizeOptions }
+							value={ sizeSlug }
 						/>
 					) }
 					{ Platform.isWeb && ! imageSizeOptions && (
@@ -481,10 +468,10 @@ function GalleryEdit( props ) {
 			<GutterWrapper { ...attributes }>
 				<Gallery
 					{ ...props }
-					images={ images }
-					mediaPlaceholder={ mediaPlaceholder }
 					blockProps={ blockProps }
+					images={ images }
 					insertBlocksAfter={ insertBlocksAfter }
+					mediaPlaceholder={ mediaPlaceholder }
 				/>
 			</GutterWrapper>
 		</>

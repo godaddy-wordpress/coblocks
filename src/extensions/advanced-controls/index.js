@@ -148,11 +148,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 					<InspectorAdvancedControls>
 						{ hasStackedControl && (
 							<ToggleControl
-								label={ __( 'Stack on mobile', 'coblocks' ) }
 								checked={ !! isStackedOnMobile }
-								onChange={ () =>
-									setAttributes( { isStackedOnMobile: ! isStackedOnMobile } )
-								}
 								help={
 									!! isStackedOnMobile
 										? __( 'Responsiveness is enabled.', 'coblocks' )
@@ -160,12 +156,17 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 											'Toggle to stack elements on top of each other on smaller viewports.', 'coblocks'
 										)
 								}
+								label={ __( 'Stack on mobile', 'coblocks' ) }
+								onChange={ () =>
+									setAttributes( { isStackedOnMobile: ! isStackedOnMobile } )
+								}
 							/>
 						) }
 						{ withBlockSpacing && (
 							<ToggleControl
-								label={ __( 'Remove top spacing', 'coblocks' ) }
 								checked={ !! noTopMargin }
+								help={ !! noTopMargin ? __( 'Toggle to add top margin back.', 'coblocks' ) : __( 'Toggle to remove any top margin.', 'coblocks' ) }
+								label={ __( 'Remove top spacing', 'coblocks' ) }
 								onChange={ () =>
 									setAttributes( {
 										noTopMargin: ! noTopMargin,
@@ -174,13 +175,13 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 										marginTopMobile: 0,
 									} )
 								}
-								help={ !! noTopMargin ? __( 'Toggle to add top margin back.', 'coblocks' ) : __( 'Toggle to remove any top margin.', 'coblocks' ) }
 							/>
 						) }
 						{ withBlockSpacing && (
 							<ToggleControl
-								label={ __( 'Remove bottom spacing', 'coblocks' ) }
 								checked={ !! noBottomMargin }
+								help={ !! noBottomMargin ? __( 'Toggle to add bottom margin back.', 'coblocks' ) : __( 'Toggle to remove any bottom margin.', 'coblocks' ) }
+								label={ __( 'Remove bottom spacing', 'coblocks' ) }
 								onChange={ () => {
 									setAttributes( {
 										noBottomMargin: ! noBottomMargin,
@@ -202,7 +203,6 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 											} );
 									}
 								} }
-								help={ !! noBottomMargin ? __( 'Toggle to add bottom margin back.', 'coblocks' ) : __( 'Toggle to remove any bottom margin.', 'coblocks' ) }
 							/>
 						) }
 					</InspectorAdvancedControls>

@@ -6,8 +6,8 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import { GalleryAttributes, GalleryClasses, GalleryStyles } from '../../components/block-gallery/shared';
 import { BackgroundAttributes, BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
+import { GalleryAttributes, GalleryClasses, GalleryStyles } from '../../components/block-gallery/shared/index';
 import metadata from './block.json';
 
 /**
@@ -16,12 +16,23 @@ import metadata from './block.json';
 import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 
+const deprecatedAttributes = {
+	name: 'coblocks/gallery-masonry',
+	category: 'media',
+	attributes: {
+		gridSize: {
+			type: 'string',
+			default: 'xlrg',
+		},
+	},
+};
+
 const deprecated =
 [ {
 	attributes: {
 		...GalleryAttributes,
 		...BackgroundAttributes,
-		...metadata.attributes,
+		...deprecatedAttributes,
 	},
 	save( { attributes, className } ) {
 		const {
@@ -85,14 +96,14 @@ const deprecated =
 								href = image.imgLink;
 							}
 
-							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
+							const img = <img alt={ image.alt } className={ image.id ? `wp-image-${ image.id }` : null } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } src={ image.url } />;
 
 							return (
-								<li key={ image.id || image.url } className={ itemClasses } data-coblocks-animation={ animation }>
+								<li className={ itemClasses } data-coblocks-animation={ animation } key={ image.id || image.url }>
 									<figure className="coblocks-gallery--figure">
-										{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
+										{ href ? <a href={ href } rel={ rel } target={ target }>{ img }</a> : img }
 										{ captions && image.caption && image.caption.length > 0 && (
-											<RichText.Content tagName="figcaption" className="coblocks-gallery--caption" value={ image.caption } />
+											<RichText.Content className="coblocks-gallery--caption" tagName="figcaption" value={ image.caption } />
 										) }
 									</figure>
 								</li>
@@ -108,7 +119,7 @@ const deprecated =
 	attributes: {
 		...GalleryAttributes,
 		...BackgroundAttributes,
-		...metadata.attributes,
+		...deprecatedAttributes,
 	},
 	save( { attributes, className } ) {
 		const {
@@ -191,14 +202,14 @@ const deprecated =
 								href = image.imgLink;
 							}
 
-							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } data-imglink={ image.imgLink } className={ image.id ? `wp-image-${ image.id }` : null } />;
+							const img = <img alt={ image.alt } className={ image.id ? `wp-image-${ image.id }` : null } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } src={ image.url } />;
 
 							return (
-								<li key={ image.id || image.url } className="coblocks-gallery--item">
+								<li className="coblocks-gallery--item" key={ image.id || image.url }>
 									<figure className="coblocks-gallery--figure">
-										{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
+										{ href ? <a href={ href } rel={ rel } target={ target }>{ img }</a> : img }
 										{ captions && image.caption && image.caption.length > 0 && (
-											<RichText.Content tagName="figcaption" className="coblocks-gallery--caption" value={ image.caption } />
+											<RichText.Content className="coblocks-gallery--caption" tagName="figcaption" value={ image.caption } />
 										) }
 									</figure>
 								</li>
@@ -214,7 +225,7 @@ const deprecated =
 	attributes: {
 		...GalleryAttributes,
 		...BackgroundAttributes,
-		...metadata.attributes,
+		...deprecatedAttributes,
 	},
 	save( { attributes, className } ) {
 		const {
@@ -278,14 +289,14 @@ const deprecated =
 								href = image.imgLink;
 							}
 
-							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
+							const img = <img alt={ image.alt } className={ image.id ? `wp-image-${ image.id }` : null } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } src={ image.url } />;
 
 							return (
-								<li key={ image.id || image.url } className="coblocks-gallery--item">
+								<li className="coblocks-gallery--item" key={ image.id || image.url }>
 									<figure className="coblocks-gallery--figure">
-										{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
+										{ href ? <a href={ href } rel={ rel } target={ target }>{ img }</a> : img }
 										{ captions && image.caption && image.caption.length > 0 && (
-											<RichText.Content tagName="figcaption" className="coblocks-gallery--caption" value={ image.caption } />
+											<RichText.Content className="coblocks-gallery--caption" tagName="figcaption" value={ image.caption } />
 										) }
 									</figure>
 								</li>
@@ -300,7 +311,7 @@ const deprecated =
 {
 	attributes: {
 		...GalleryAttributes,
-		...metadata.attributes,
+		...deprecatedAttributes,
 	},
 	save: ( { attributes, className } ) => {
 		const {
@@ -365,14 +376,14 @@ const deprecated =
 								href = image.imgLink;
 							}
 
-							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
+							const img = <img alt={ image.alt } className={ image.id ? `wp-image-${ image.id }` : null } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } src={ image.url } />;
 
 							return (
-								<li key={ image.id || image.url } className={ itemClasses } data-coblocks-animation={ animation }>
+								<li className={ itemClasses } data-coblocks-animation={ animation } key={ image.id || image.url }>
 									<figure className="coblocks-gallery--figure">
-										{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
+										{ href ? <a href={ href } rel={ rel } target={ target }>{ img }</a> : img }
 										{ captions && image.caption && image.caption.length > 0 && (
-											<RichText.Content tagName="figcaption" className="coblocks-gallery--caption" value={ image.caption } />
+											<RichText.Content className="coblocks-gallery--caption" tagName="figcaption" value={ image.caption } />
 										) }
 									</figure>
 								</li>
