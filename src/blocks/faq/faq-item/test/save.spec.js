@@ -1,7 +1,6 @@
 /**
  * External dependencies
  */
-import { JSDOM } from 'jsdom';
 import '@testing-library/jest-dom/extend-expect';
 import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
 
@@ -12,7 +11,6 @@ import { name, settings } from '../index';
 
 // Make variables accessible for all tests.
 let block;
-let blockDOM;
 let serializedBlock;
 
 describe( name, () => {

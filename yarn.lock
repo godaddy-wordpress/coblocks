@@ -1343,10 +1343,10 @@
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.2.tgz#30aa825f11d438671d585bd44e7fd564535fc210"
   integrity sha512-82cpyJyKRoQoRi+14ibCeGPu0CwypgtBAdBhq1WfvagpCZNKqwXbKwXllYSMG91DhmG4jt9gN8eP6lGOtozuaw==
 
-"@godaddy-wordpress/coblocks-icons@1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/coblocks-icons/-/coblocks-icons-1.7.0.tgz#c25d83612181f73df9aad30ef6c74fd86fb74f18"
-  integrity sha512-OqWqrh+2Yv6fy4J17Sz6h6z4vELXbjrWJpnJDJRmYeRqg/DA0lW2reXiDOC7Mrqyvkn6TLRanBEjV3pRnbz7VQ==
+"@godaddy-wordpress/coblocks-icons@1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/coblocks-icons/-/coblocks-icons-1.8.0.tgz#fd64c3de4b4448ad0f3f79a82ee45c155476d96b"
+  integrity sha512-D2hz1s8Yh1auZFJs++6gxbmft9snQDN6BxuM9uNYHo98TC9vqVj2kxrHrDC+D58kwQQrY2OapRukHmcrX4AUnw==
   dependencies:
     "@wordpress/primitives" "^1.7.0"
 
