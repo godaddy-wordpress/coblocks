@@ -1,5 +1,9 @@
 .wp-block-coblocks-faq {
-    &__heading {
-        margin: 1rem 0 0 !important;
-    }
+	&__title {
+		margin-bottom: 0.5rem !important;
+	}
+
+	&__heading {
+		margin: 1.25rem 0 0 !important;
+	}
 }
