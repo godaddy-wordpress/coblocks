@@ -139,7 +139,7 @@ const GalleryCarouselEdit = ( props ) => {
 
 	const renderGalleryPagination = useCallback(({ changeStep }) => {
 		return (
-			<div className="wp-block-coblocks-gallery-carousel-thumbnail-pagination" style={{ width: images.length * 100 }}>
+			<div className="wp-block-coblocks-gallery-carousel-thumbnail-pagination">
 				{images.map((item, index) => (
 					<GalleryCarouselThumbnail 
 						changeStep={changeStep} 
