@@ -68,9 +68,7 @@ const Edit = ( props ) => {
 export default compose( [
 
 	withSelect( ( select, props ) => {
-		const {
-			getBlocks,
-		} = select( 'core/block-editor' );
+		const { getBlocks } = select( 'core/block-editor' );
 
 		return {
 			innerBlocks: getBlocks( props.clientId ),
@@ -78,9 +76,7 @@ export default compose( [
 	} ),
 
 	withDispatch( ( dispatch ) => {
-		const {
-			insertBlock,
-		} = dispatch( 'core/block-editor' );
+		const { insertBlock } = dispatch( 'core/block-editor' );
 
 		return {
 			insertBlock,

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/faq-item should render with content 1`] = `
+"<!-- wp:coblocks/faq-item -->
+<details class=\\"wp-block-coblocks-faq-item\\"><summary class=\\"wp-block-coblocks-faq-item__question\\"><div class=\\"wp-block-coblocks-faq-item__question__content\\">Some question</div><svg class=\\"wp-block-coblocks-faq-item__question__icon\\" width=\\"24\\" height=\\"24\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\"><path fillrule=\\"evenodd\\" cliprule=\\"evenodd\\" d=\\"M19.39 14.99l-1.41 1.41L12 10.43 6.02 16.4l-1.41-1.41L12 7.6l7.39 7.39z\\"></path></svg></summary><div class=\\"wp-block-coblocks-faq-item__answer\\"></div></details>
+<!-- /wp:coblocks/faq-item -->"
+`;
