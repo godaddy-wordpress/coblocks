@@ -7,13 +7,13 @@ import * as helper from './../../utils/helper';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Button, Toolbar } from '@wordpress/components';
+import { edit } from '@wordpress/icons';
 import {
 	BlockControls,
 	MediaUpload,
 	MediaUploadCheck,
 } from '@wordpress/block-editor';
-import { edit } from '@wordpress/icons';
+import { ToolbarButton, ToolbarGroup } from '@wordpress/components';
 
 const Controls = ( props ) => {
 	const {
@@ -33,25 +33,25 @@ const Controls = ( props ) => {
 		<BlockControls>
 			{ hasImages && (
 				<>
-					<Toolbar>
+					<ToolbarGroup>
 						<MediaUploadCheck>
 							<MediaUpload
-								onSelect={ onSelectImages }
 								allowedTypes={ [ 'image' ] }
-								multiple
 								gallery
-								value={ attributes.images.map( ( img ) => img.id ) }
+								multiple
+								onSelect={ onSelectImages }
 								render={ ( { open } ) => (
-									<Button
+									<ToolbarButton
 										className="components-toolbar__control"
-										label={ __( 'Edit logos', 'coblocks' ) }
 										icon={ edit }
+										label={ __( 'Edit logos', 'coblocks' ) }
 										onClick={ open }
 									/>
 								) }
+								value={ attributes.images.map( ( img ) => img.id ) }
 							/>
 						</MediaUploadCheck>
-					</Toolbar>
+					</ToolbarGroup>
 				</>
 			) }
 		</BlockControls>

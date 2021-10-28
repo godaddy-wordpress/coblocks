@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-26T17:12:53+00:00\n"
+"POT-Creation-Date: 2021-10-28T16:11:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -395,7 +395,7 @@ msgstr ""
 
 #. translators: toggle label to display the accordion open
 #. translators: visually display open as opposed to closed
-#: src/blocks/accordion/accordion-item/controls.js:27
+#: src/blocks/accordion/accordion-item/controls.js:29
 #: src/blocks/accordion/accordion-item/inspector.js:67
 msgid "Display as open"
 msgstr ""
@@ -511,7 +511,7 @@ msgid "Text color"
 msgstr ""
 
 #: src/blocks/accordion/edit.js:126
-#: src/blocks/accordion/edit.js:128
+#: src/blocks/accordion/edit.js:129
 msgid "Add accordion item"
 msgstr ""
 
@@ -615,6 +615,10 @@ msgstr ""
 
 #: src/blocks/alert/save.js:47
 msgid "Alert section"
+msgstr ""
+
+#: src/blocks/author/controls.js:26
+msgid "Author controls"
 msgstr ""
 
 #: src/blocks/author/controls.js:34
@@ -850,23 +854,23 @@ msgstr ""
 msgid "Fetch all"
 msgstr ""
 
-#: src/blocks/events/edit.js:128
+#: src/blocks/events/edit.js:127
 msgid "Edit calendar URL"
 msgstr ""
 
-#: src/blocks/events/edit.js:153
-msgid "Calendar URL"
-msgstr ""
-
-#: src/blocks/events/edit.js:154
+#: src/blocks/events/edit.js:151
 msgid "Enter a URL that loads an iCal formatted calendar."
 msgstr ""
 
-#: src/blocks/events/edit.js:163
+#: src/blocks/events/edit.js:155
+msgid "Calendar URL"
+msgstr ""
+
+#: src/blocks/events/edit.js:161
 msgid "Enter URL here…"
 msgstr ""
 
-#: src/blocks/events/edit.js:171
+#: src/blocks/events/edit.js:169
 #: src/blocks/post-carousel/edit.js:218
 #: src/blocks/posts/edit.js:319
 msgid "Use URL"
@@ -1059,7 +1063,7 @@ msgstr ""
 #: src/blocks/features/inspector.js:138
 #: src/blocks/row/column/inspector.js:131
 #: src/blocks/row/inspector.js:183
-#: src/components/dimensions-control/index.js:292
+#: src/components/dimensions-control/index.js:50
 msgid "Margin"
 msgstr ""
 
@@ -1958,7 +1962,7 @@ msgstr ""
 #: src/blocks/gallery-offset/inspector.js:79
 #: src/blocks/icon/inspector.js:61
 #: src/blocks/icon/inspector.js:177
-#: src/components/typography-controls/index.js:205
+#: src/components/typography-controls/index.js:193
 msgid "Size"
 msgstr ""
 
@@ -2017,8 +2021,8 @@ msgstr ""
 #. translators: typography style
 #: src/blocks/gallery-collage/index.js:55
 #: src/blocks/logos/index.js:48
-#: src/components/typography-controls/index.js:84
-#: src/components/typography-controls/index.js:102
+#: src/components/typography-controls/index.js:92
+#: src/components/typography-controls/index.js:110
 #: src/extensions/cover-styles/index.js:11
 #: src/extensions/image-styles/index.js:11
 #: src/extensions/list-styles/index.js:11
@@ -2147,7 +2151,7 @@ msgstr ""
 msgid "Fullwidth image"
 msgstr ""
 
-#: src/blocks/gif/controls.js:37
+#: src/blocks/gif/controls.js:38
 msgid "Remove gif"
 msgstr ""
 
@@ -3238,7 +3242,7 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:495
 #: src/blocks/icon/deprecated/svgsfocusable.js:494
 #: src/blocks/icon/svgs.js:477
-#: src/components/typography-controls/index.js:175
+#: src/components/typography-controls/index.js:163
 msgid "Font"
 msgstr ""
 
@@ -4504,7 +4508,7 @@ msgstr ""
 
 #: src/blocks/icon/inspector.js:174
 #: src/components/crop-settings/index.js:324
-#: src/components/dimensions-control/index.js:489
+#: src/components/dimensions-control/index.js:424
 #: src/components/size-control/index.js:209
 msgid "Reset"
 msgstr ""
@@ -5766,7 +5770,7 @@ msgstr ""
 msgid "Black & White"
 msgstr ""
 
-#: src/blocks/map/controls.js:18
+#: src/blocks/map/controls.js:20
 msgid "Edit Location"
 msgstr ""
 
@@ -5970,11 +5974,11 @@ msgstr ""
 msgid "Aubergine"
 msgstr ""
 
-#: src/blocks/media-card/controls.js:26
+#: src/blocks/media-card/controls.js:28
 msgid "Show media on left"
 msgstr ""
 
-#: src/blocks/media-card/controls.js:31
+#: src/blocks/media-card/controls.js:33
 msgid "Show media on right"
 msgstr ""
 
@@ -6035,23 +6039,27 @@ msgstr ""
 msgid "Toggle to add an %s shadow"
 msgstr ""
 
-#: src/blocks/media-card/media-container.js:31
+#: src/blocks/media-card/media-container.js:30
 msgid "Drop to replace media"
+msgstr ""
+
+#: src/blocks/media-card/media-container.js:38
+msgid "Media Card controls"
 msgstr ""
 
 #: src/blocks/media-card/media-container.js:46
 msgid "Edit media"
 msgstr ""
 
-#: src/blocks/media-card/media-container.js:104
-msgid "Media area"
-msgstr ""
-
-#: src/blocks/media-card/media-container.js:105
+#: src/blocks/media-card/media-container.js:107
 msgid "Upload a media file or pick one from your media library"
 msgstr ""
 
-#: src/blocks/opentable/controls.js:19
+#: src/blocks/media-card/media-container.js:108
+msgid "Media area"
+msgstr ""
+
+#: src/blocks/opentable/controls.js:21
 msgid "Edit Restaurant"
 msgstr ""
 
@@ -6720,11 +6728,11 @@ msgstr ""
 msgid "Toggle to show a call to action button."
 msgstr ""
 
-#: src/blocks/shape-divider/controls.js:26
+#: src/blocks/shape-divider/controls.js:28
 msgid "Flip horiztonally"
 msgstr ""
 
-#: src/blocks/shape-divider/controls.js:31
+#: src/blocks/shape-divider/controls.js:33
 msgid "Flip vertically"
 msgstr ""
 
@@ -7243,117 +7251,112 @@ msgstr ""
 msgid "Reset image cropping options"
 msgstr ""
 
+#: src/components/dimensions-control/index.js:30
+msgid "Margin top"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:31
+msgid "Margin right"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:32
+msgid "Margin bottom"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:33
+msgid "Margin left"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:36
+msgid "Padding top"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:37
+msgid "Padding right"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:38
+msgid "Padding bottom"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:39
+msgid "Padding left"
+msgstr ""
+
 #. translators: a unit of size (px) for css markup
-#: src/components/dimensions-control/index.js:387
+#: src/components/dimensions-control/index.js:280
 msgid "Pixel"
 msgstr ""
 
 #. translators: a unit of size (em) for css markup
-#: src/components/dimensions-control/index.js:392
+#: src/components/dimensions-control/index.js:285
 msgid "Em"
 msgstr ""
 
 #. translators: a unit of size (vw) for css markup
-#: src/components/dimensions-control/index.js:397
+#: src/components/dimensions-control/index.js:290
 msgid "Viewport width"
 msgstr ""
 
 #. translators: a unit of size (vh) for css markup
-#: src/components/dimensions-control/index.js:402
+#: src/components/dimensions-control/index.js:295
 msgid "Viewport height"
 msgstr ""
 
 #. translators: a unit of size for css markup
-#: src/components/dimensions-control/index.js:407
+#: src/components/dimensions-control/index.js:300
 msgid "Percentage"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:452
+#: src/components/dimensions-control/index.js:358
+msgid "Unsync"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:358
+msgid "Sync"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:361
+msgid "Sync units"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:385
 msgid "Select Units"
 msgstr ""
 
 #. translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
-#: src/components/dimensions-control/index.js:456
-#: src/components/dimensions-control/index.js:468
+#: src/components/dimensions-control/index.js:391
+#: src/components/dimensions-control/index.js:403
 msgid "%s units"
 msgstr ""
 
 #. translators: %s: a texual label
-#: src/components/dimensions-control/index.js:485
+#: src/components/dimensions-control/index.js:420
 msgid "Turn off advanced %s settings"
 msgstr ""
 
-#. translators: %s: values associated with CSS syntax, 'Margin', 'Padding'
-#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:532
-#: src/components/dimensions-control/index.js:609
-#: src/components/dimensions-control/index.js:686
-msgid "%s top"
-msgstr ""
-
-#. translators: %s: values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:546
-#: src/components/dimensions-control/index.js:623
-#: src/components/dimensions-control/index.js:700
-msgid "%s right"
-msgstr ""
-
-#. translators: %s: values associated with CSS syntax, 'Margin', 'Padding'
-#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:560
-#: src/components/dimensions-control/index.js:637
-#: src/components/dimensions-control/index.js:714
-msgid "%s bottom"
-msgstr ""
-
-#. translators: %s: values associated with CSS syntax, 'Margin', 'Padding'
-#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:574
-#: src/components/dimensions-control/index.js:651
-#: src/components/dimensions-control/index.js:728
-msgid "%s left"
-msgstr ""
-
-#: src/components/dimensions-control/index.js:582
-#: src/components/dimensions-control/index.js:659
-#: src/components/dimensions-control/index.js:735
-msgid "Unsync"
-msgstr ""
-
-#: src/components/dimensions-control/index.js:582
-#: src/components/dimensions-control/index.js:659
-#: src/components/dimensions-control/index.js:735
-msgid "Sync"
-msgstr ""
-
-#: src/components/dimensions-control/index.js:585
-#: src/components/dimensions-control/index.js:662
-#: src/components/dimensions-control/index.js:738
-msgid "Sync units"
-msgstr ""
-
-#: src/components/dimensions-control/index.js:756
+#: src/components/dimensions-control/index.js:460
 msgid "Top"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:757
+#: src/components/dimensions-control/index.js:461
 msgid "Right"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:758
+#: src/components/dimensions-control/index.js:462
 msgid "Bottom"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:759
+#: src/components/dimensions-control/index.js:463
 msgid "Left"
 msgstr ""
 
 #. translators: %s: a texual label
-#: src/components/dimensions-control/index.js:779
+#: src/components/dimensions-control/index.js:483
 msgid "Advanced %s settings"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:784
+#: src/components/dimensions-control/index.js:488
 msgid "Advanced"
 msgstr ""
 
@@ -7547,59 +7550,59 @@ msgstr ""
 msgid "Align cells"
 msgstr ""
 
-#: src/components/typography-controls/index.js:61
+#: src/components/typography-controls/index.js:69
 msgid "Change typography"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:89
-#: src/components/typography-controls/index.js:122
+#: src/components/typography-controls/index.js:97
+#: src/components/typography-controls/index.js:130
 msgid "Normal"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:94
+#: src/components/typography-controls/index.js:102
 msgid "Bold"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:107
+#: src/components/typography-controls/index.js:115
 #: src/formats/uppercase/index.js:25
 #: src/formats/uppercase/index.js:40
 msgid "Uppercase"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:112
+#: src/components/typography-controls/index.js:120
 msgid "Lowercase"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:117
+#: src/components/typography-controls/index.js:125
 msgid "Capitalize"
 msgstr ""
 
-#: src/components/typography-controls/index.js:183
+#: src/components/typography-controls/index.js:171
 msgid "Weight"
 msgstr ""
 
-#: src/components/typography-controls/index.js:195
+#: src/components/typography-controls/index.js:183
 msgid "Transform"
 msgstr ""
 
-#: src/components/typography-controls/index.js:217
+#: src/components/typography-controls/index.js:205
 msgid "Line height"
 msgstr ""
 
-#: src/components/typography-controls/index.js:229
+#: src/components/typography-controls/index.js:217
 msgid "Letter spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:241
+#: src/components/typography-controls/index.js:229
 msgid "No top spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:246
+#: src/components/typography-controls/index.js:234
 msgid "No bottom spacing"
 msgstr ""
 

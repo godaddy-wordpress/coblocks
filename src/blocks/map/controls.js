@@ -3,8 +3,8 @@
  */
 import { __ } from '@wordpress/i18n';
 import { BlockControls } from '@wordpress/block-editor';
-import { Toolbar } from '@wordpress/components';
 import { edit } from '@wordpress/icons';
+import { ToolbarGroup } from '@wordpress/components';
 
 function Controls( { attributes, setAttributes } ) {
 	const {
@@ -15,16 +15,16 @@ function Controls( { attributes, setAttributes } ) {
 	const toolbarControls = [
 		{
 			icon: edit,
-			title: __( 'Edit Location', 'coblocks' ),
 			isActive: ! pinned,
 			onClick: () => setAttributes( { pinned: ! pinned } ),
+			title: __( 'Edit Location', 'coblocks' ),
 		},
 	];
 
 	return (
 		<BlockControls>
 			{ address &&
-				<Toolbar controls={ toolbarControls } />
+				<ToolbarGroup controls={ toolbarControls } />
 			}
 		</BlockControls>
 	);

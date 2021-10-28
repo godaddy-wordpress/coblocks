@@ -6,29 +6,37 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
+import FontFamilyPicker from './../../components/font-family/index';
 import googleFonts from './../../components/font-family/fonts';
 import TypographyAttributes from './attributes';
-import TypograpyClasses from './classes';
-import TypographyTransforms from './transforms';
-import FontFamilyPicker from './../../components/font-family/index';
+import TypographyClasses from './classes';
 import { TypographyIcon } from '@godaddy-wordpress/coblocks-icons';
+import TypographyTransforms from './transforms';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { DOWN } from '@wordpress/keycodes';
+import { useEntityProp } from '@wordpress/core-data';
 import { Component, Fragment } from '@wordpress/element';
 import { compose, ifCondition } from '@wordpress/compose';
-import { DOWN } from '@wordpress/keycodes';
-import { RangeControl, withFallbackStyles, ToggleControl, Dropdown, ToolbarButton, SelectControl, Toolbar } from '@wordpress/components';
-import { useEntityProp } from '@wordpress/core-data';
+import {
+	Dropdown,
+	RangeControl,
+	SelectControl,
+	ToggleControl,
+	ToolbarButton,
+	ToolbarGroup,
+	withFallbackStyles,
+} from '@wordpress/components';
 
 /**
  * Export
  */
 export {
 	TypographyAttributes,
-	TypograpyClasses,
+	TypographyClasses,
 	TypographyTransforms,
 };
 
@@ -42,8 +50,8 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	//verify if editableNode is available, before using getComputedStyle.
 	const computedStyles = editableNode ? getComputedStyle( editableNode ) : undefined;
 	return {
-		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
 		fallbackFontSize: fontSize || customFontSize || ! computedStyles ? undefined : parseInt( computedStyles.fontSize ) || undefined,
+		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
 	};
 } );
 
@@ -59,10 +67,11 @@ class TypographyControls extends Component {
 			setAttributes,
 			icon = TypographyIcon,
 			label = __( 'Change typography', 'coblocks' ),
+			name,
 		} = this.props;
 
 		// Show line height on appropriate blocks.
-		if ( ! allowedBlocks.includes( this.props.name ) ) {
+		if ( ! allowedBlocks.includes( name ) ) {
 			return null;
 		}
 
@@ -79,54 +88,54 @@ class TypographyControls extends Component {
 
 		const weight = [
 			{
-				value: '',
 				/* translators: typography style */
 				label: __( 'Default', 'coblocks' ),
+				value: '',
 			},
 			{
-				value: 'normal',
 				/* translators: typography style */
 				label: __( 'Normal', 'coblocks' ),
+				value: 'normal',
 			},
 			{
-				value: 'bold',
 				/* translators: typography style */
 				label: __( 'Bold', 'coblocks' ),
+				value: 'bold',
 			},
 		];
 
 		const transform = [
 			{
-				value: '',
 				/* translators: typography style */
 				label: __( 'Default', 'coblocks' ),
+				value: '',
 			},
 			{
-				value: 'uppercase',
 				/* translators: typography style */
 				label: __( 'Uppercase', 'coblocks' ),
+				value: 'uppercase',
 			},
 			{
-				value: 'lowercase',
 				/* translators: typography style */
 				label: __( 'Lowercase', 'coblocks' ),
+				value: 'lowercase',
 			},
 			{
-				value: 'capitalize',
 				/* translators: typography style */
 				label: __( 'Capitalize', 'coblocks' ),
+				value: 'capitalize',
 			},
 			{
-				value: 'initial',
 				/* translators: typography style */
 				label: __( 'Normal', 'coblocks' ),
+				value: 'initial',
 			},
 		];
 
 		if ( typeof googleFonts[ fontFamily ] !== 'undefined' && typeof googleFonts[ fontFamily ].weight !== 'undefined' ) {
 			googleFonts[ fontFamily ].weight.forEach( ( k ) => {
 				weight.push(
-					{ value: k, label: k }
+					{ label: k, value: k }
 				);
 			} );
 		}
@@ -142,10 +151,94 @@ class TypographyControls extends Component {
 		};
 
 		return (
-			<Toolbar>
+			<ToolbarGroup>
 				<Dropdown
 					className={ classnames( 'components-dropdown-menu', 'components-coblocks-typography-dropdown' ) }
 					contentClassName="components-dropdown-menu__popover components-coblocks-typography-dropdown"
+					renderContent={ () => (
+						<Fragment>
+							<div className="components-coblocks-typography-dropdown__inner">
+								<FontFamilyPicker
+									className="components-base-control--with-flex components-coblocks-typography-dropdown__inner--font"
+									label={ __( 'Font', 'coblocks' ) }
+									onChange={ ( nextFontFamily ) => onFontChange( nextFontFamily ) }
+									value={ fontFamily }
+								/>
+								{ ( ( typeof attributes.textPanelFontWeight === 'undefined' || ( typeof attributes.textPanelFontWeight !== 'undefined' && typeof attributes.textPanelFontWeight === 'undefined' ) ) )
+									? (
+										<SelectControl
+											className="components-base-control--with-flex components-coblocks-typography-dropdown__inner--weight"
+											label={ __( 'Weight', 'coblocks' ) }
+											onChange={ ( nextFontWeight ) => setAttributes( { fontWeight: nextFontWeight } ) }
+											options={ weight }
+											value={ fontWeight }
+										/>
+									)
+									: null
+								}
+								{ ( ( typeof attributes.textPanelTextTransform === 'undefined' || ( typeof attributes.textPanelTextTransform !== 'undefined' && typeof attributes.textPanelTextTransform === 'undefined' ) ) )
+									? (
+										<SelectControl
+											className="components-base-control--with-flex components-coblocks-typography-dropdown__inner--transform"
+											label={ __( 'Transform', 'coblocks' ) }
+											onChange={ ( nextTextTransform ) => setAttributes( { textTransform: nextTextTransform } ) }
+											options={ transform }
+											value={ textTransform }
+										/> ) : null
+								}
+								{ ( ( typeof attributes.textPanelHideSize === 'undefined' || ( typeof attributes.textPanelHideSize !== 'undefined' && typeof attributes.textPanelHideSize === 'undefined' ) ) )
+									? (
+										<RangeControl
+											className="components-coblocks-typography-dropdown__inner--size"
+											label={ __( 'Size', 'coblocks' ) }
+											max={ 100 }
+											min={ 1 }
+											onChange={ ( nextFontSize ) => setAttributes( { customFontSize: nextFontSize } ) }
+											step={ 1 }
+											value={ parseFloat( customFontSize ) || undefined }
+										/> ) : null
+								}
+								{ ( ( typeof attributes.textPanelLineHeight === 'undefined' || ( typeof attributes.textPanelLineHeight !== 'undefined' && typeof attributes.textPanelLineHeight === 'undefined' ) ) )
+									? (
+										<RangeControl
+											className="components-coblocks-typography-dropdown__inner--line-height"
+											label={ __( 'Line height', 'coblocks' ) }
+											max={ 3 }
+											min={ 1 }
+											onChange={ ( nextLineHeight ) => setAttributes( { lineHeight: nextLineHeight } ) }
+											step={ .01 }
+											value={ parseFloat( lineHeight ) || undefined }
+										/> ) : null
+								}
+								{ ( ( typeof attributes.textPanelLetterSpacing === 'undefined' || ( typeof attributes.textPanelLetterSpacing !== 'undefined' && typeof attributes.textPanelLetterSpacing === 'undefined' ) ) )
+									? (
+										<RangeControl
+											className="components-coblocks-typography-dropdown__inner--letter-spacing"
+											label={ __( 'Letter spacing', 'coblocks' ) }
+											max={ 3 }
+											min={ -1 }
+											onChange={ ( nextLetterSpacing ) => setAttributes( { letterSpacing: nextLetterSpacing } ) }
+											step={ .1 }
+											value={ parseFloat( letterSpacing ) || undefined }
+										/> ) : null
+								}
+								{ ( ( typeof attributes.textPanelShowSpacingControls !== 'undefined' && attributes.textPanelShowSpacingControls ) ) &&
+									<div className="components-coblocks-typography-dropdown__footer">
+										<ToggleControl
+											checked={ !! noTopSpacing }
+											label={ __( 'No top spacing', 'coblocks' ) }
+											onChange={ () => setAttributes( { noTopSpacing: ! noTopSpacing } ) }
+										/>
+										<ToggleControl
+											checked={ !! noBottomSpacing }
+											label={ __( 'No bottom spacing', 'coblocks' ) }
+											onChange={ () => setAttributes( { noBottomSpacing: ! noBottomSpacing } ) }
+										/>
+									</div>
+								}
+							</div>
+						</Fragment>
+					) }
 					renderToggle={ ( { isOpen, onToggle } ) => {
 						const openOnArrowDown = ( event ) => {
 							if ( ! isOpen && event.keyCode === DOWN ) {
@@ -157,103 +250,19 @@ class TypographyControls extends Component {
 
 						return (
 							<ToolbarButton
+								aria-expanded={ isOpen }
+								aria-haspopup="true"
 								className="components-dropdown-menu__toggle"
 								icon={ icon }
+								label={ label }
 								onClick={ onToggle }
 								onKeyDown={ openOnArrowDown }
-								aria-haspopup="true"
-								aria-expanded={ isOpen }
-								label={ label }
 								tooltip={ label }
 							/>
 						);
 					} }
-					renderContent={ () => (
-						<Fragment>
-							<div className="components-coblocks-typography-dropdown__inner">
-								<FontFamilyPicker
-									label={ __( 'Font', 'coblocks' ) }
-									value={ fontFamily }
-									onChange={ ( nextFontFamily ) => onFontChange( nextFontFamily ) }
-									className="components-base-control--with-flex components-coblocks-typography-dropdown__inner--font"
-								/>
-								{ ( ( typeof attributes.textPanelFontWeight === 'undefined' || ( typeof attributes.textPanelFontWeight !== 'undefined' && typeof attributes.textPanelFontWeight === 'undefined' ) ) )
-									? (
-										<SelectControl
-											label={ __( 'Weight', 'coblocks' ) }
-											value={ fontWeight }
-											options={ weight }
-											onChange={ ( nextFontWeight ) => setAttributes( { fontWeight: nextFontWeight } ) }
-											className="components-base-control--with-flex components-coblocks-typography-dropdown__inner--weight"
-										/>
-									)
-									: null
-								}
-								{ ( ( typeof attributes.textPanelTextTransform === 'undefined' || ( typeof attributes.textPanelTextTransform !== 'undefined' && typeof attributes.textPanelTextTransform === 'undefined' ) ) )
-									? (
-										<SelectControl
-											label={ __( 'Transform', 'coblocks' ) }
-											value={ textTransform }
-											options={ transform }
-											onChange={ ( nextTextTransform ) => setAttributes( { textTransform: nextTextTransform } ) }
-											className="components-base-control--with-flex components-coblocks-typography-dropdown__inner--transform"
-										/> ) : null
-								}
-								{ ( ( typeof attributes.textPanelHideSize === 'undefined' || ( typeof attributes.textPanelHideSize !== 'undefined' && typeof attributes.textPanelHideSize === 'undefined' ) ) )
-									? (
-										<RangeControl
-											label={ __( 'Size', 'coblocks' ) }
-											value={ parseFloat( customFontSize ) || undefined }
-											onChange={ ( nextFontSize ) => setAttributes( { customFontSize: nextFontSize } ) }
-											min={ 1 }
-											max={ 100 }
-											step={ 1 }
-											className="components-coblocks-typography-dropdown__inner--size"
-										/> ) : null
-								}
-								{ ( ( typeof attributes.textPanelLineHeight === 'undefined' || ( typeof attributes.textPanelLineHeight !== 'undefined' && typeof attributes.textPanelLineHeight === 'undefined' ) ) )
-									? (
-										<RangeControl
-											label={ __( 'Line height', 'coblocks' ) }
-											value={ parseFloat( lineHeight ) || undefined }
-											onChange={ ( nextLineHeight ) => setAttributes( { lineHeight: nextLineHeight } ) }
-											min={ 1 }
-											max={ 3 }
-											step={ .01 }
-											className="components-coblocks-typography-dropdown__inner--line-height"
-										/> ) : null
-								}
-								{ ( ( typeof attributes.textPanelLetterSpacing === 'undefined' || ( typeof attributes.textPanelLetterSpacing !== 'undefined' && typeof attributes.textPanelLetterSpacing === 'undefined' ) ) )
-									? (
-										<RangeControl
-											label={ __( 'Letter spacing', 'coblocks' ) }
-											value={ parseFloat( letterSpacing ) || undefined }
-											onChange={ ( nextLetterSpacing ) => setAttributes( { letterSpacing: nextLetterSpacing } ) }
-											min={ -1 }
-											max={ 3 }
-											step={ .1 }
-											className="components-coblocks-typography-dropdown__inner--letter-spacing"
-										/> ) : null
-								}
-								{ ( ( typeof attributes.textPanelShowSpacingControls !== 'undefined' && attributes.textPanelShowSpacingControls ) ) &&
-									<div className="components-coblocks-typography-dropdown__footer">
-										<ToggleControl
-											label={ __( 'No top spacing', 'coblocks' ) }
-											checked={ !! noTopSpacing }
-											onChange={ () => setAttributes( { noTopSpacing: ! noTopSpacing } ) }
-										/>
-										<ToggleControl
-											label={ __( 'No bottom spacing', 'coblocks' ) }
-											checked={ !! noBottomSpacing }
-											onChange={ () => setAttributes( { noBottomSpacing: ! noBottomSpacing } ) }
-										/>
-									</div>
-								}
-							</div>
-						</Fragment>
-					) }
 				/>
-			</Toolbar>
+			</ToolbarGroup>
 		);
 	}
 }
