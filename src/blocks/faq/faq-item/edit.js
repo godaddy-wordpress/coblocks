@@ -16,7 +16,6 @@ import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { InnerBlocks, RichText } from '@wordpress/block-editor';
 import { useEffect } from '@wordpress/element';
-import { withDispatch, withSelect } from '@wordpress/data';
 
 const TEMPLATE = [
 	[ 'core/paragraph', { placeholder: __( 'Enter the answer to the question', 'coblocks' ) } ],
@@ -67,7 +66,7 @@ const FaqItemEdit = ( props ) => {
 						tagName="div"
 						value={ question }
 					/>
-					<svg className="wp-block-coblocks-faq-item__question__icon" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M19.39 14.99l-1.41 1.41L12 10.43 6.02 16.4l-1.41-1.41L12 7.6l7.39 7.39z" fill="#111" /></svg>
+					<svg className="wp-block-coblocks-faq-item__question__icon" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M19.39 14.99l-1.41 1.41L12 10.43 6.02 16.4l-1.41-1.41L12 7.6l7.39 7.39z" /></svg>
 				</div>
 				<div className="wp-block-coblocks-faq-item__answer">
 					<InnerBlocks
@@ -81,38 +80,4 @@ const FaqItemEdit = ( props ) => {
 	);
 };
 
-const applyWithSelect = withSelect( ( select, props ) => {
-	const {
-		getBlockRootClientId,
-		getBlockSelectionStart,
-		getBlocksByClientId,
-	} = select( 'core/block-editor' );
-
-	const selectedClientId = getBlockSelectionStart();
-	const parentClientId = getBlockRootClientId( selectedClientId );
-	const innerItems = getBlocksByClientId( props.clientId )[ 0 ].innerBlocks;
-
-	return {
-		getBlockRootClientId,
-		getBlockSelectionStart,
-		getBlocksByClientId,
-		innerItems,
-		selectedParentClientId: parentClientId,
-	};
-} );
-
-const applyWithDispatch = withDispatch( ( dispatch ) => {
-	const {
-		insertBlocks,
-		removeBlocks,
-		updateBlockAttributes,
-	} = dispatch( 'core/block-editor' );
-
-	return {
-		insertBlocks,
-		removeBlocks,
-		updateBlockAttributes,
-	};
-} );
-
-export default compose( [ applyWithColors, applyWithDispatch, applyWithSelect ] )( FaqItemEdit );
+export default compose( [ applyWithColors ] )( FaqItemEdit );

@@ -11,6 +11,14 @@ const example = {
 			innerBlocks: [
 				{
 					attributes: {
+						className: 'wp-block-coblocks-faq__title',
+						content: __( 'FAQ', 'coblocks' ),
+						level: 3,
+					},
+					name: 'core/heading',
+				},
+				{
+					attributes: {
 						answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat convallis porta.',
 						question: __( 'I am sick and I need to visit my doctor today. Can I get a priority appointment?', 'coblocks' ),
 					},

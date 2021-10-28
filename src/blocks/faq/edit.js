@@ -19,7 +19,6 @@ const ALLOWED_BLOCKS = [
 
 const TEMPLATE = [
 	[ 'core/heading', {
-		align: 'center',
 		className: 'wp-block-coblocks-faq__title',
 		level: 3,
 		placeholder: __( 'FAQ title', 'coblocks' ),
@@ -71,16 +70,10 @@ export default compose( [
 	withSelect( ( select, props ) => {
 		const {
 			getBlocks,
-			getBlockRootClientId,
-			getBlockSelectionStart,
 		} = select( 'core/block-editor' );
-
-		// Get clientId of the parent block.
-		const parentClientId = getBlockRootClientId( getBlockSelectionStart() );
 
 		return {
 			innerBlocks: getBlocks( props.clientId ),
-			isSelected: props.isSelected || props.clientId === parentClientId,
 		};
 	} ),
 

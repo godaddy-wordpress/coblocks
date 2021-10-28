@@ -1,5 +1,4 @@
 [data-type="coblocks/faq"] {
-
 	.block-list-appender {
 		display: none;
 		margin: 0;
@@ -18,7 +17,6 @@
 
 	&.is-selected,
 	&.has-child-selected {
-
 		.block-list-appender {
 			display: block;
 		}

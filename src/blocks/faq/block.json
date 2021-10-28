@@ -2,19 +2,8 @@
 	"name": "coblocks/faq",
 	"category": "layout",
 	"attributes": {
-		"align": {
-			"type": "string"
-		},
-		"columns": {
-			"type": "number",
-			"default": 1
-		},
 		"customTextColor": {
 			"type": "string"
-		},
-		"gutter": {
-			"type": "string",
-			"default": "medium"
 		},
 		"textColor": {
 			"type": "string"
