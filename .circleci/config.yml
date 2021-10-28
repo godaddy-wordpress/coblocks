@@ -181,7 +181,7 @@ workflows:
             - unit_testing_php_74
             - unit_testing_php_80
             - js
-      - e2e_chrome_wp_last:
+      - e2e_chrome_wp_last_major:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -287,7 +287,7 @@ commands:
           name: 'Determine which version to install'
           command: |
             WPVERSION=<< parameters.wpversion >>
-            if [ "$WPVERSION" == "last" ]; then
+            if [ "$WPVERSION" == "last_major" ]; then
               WPVERSION=$(curl -s http://api.wordpress.org/core/stable-check/1.0/ | jq 'keys' | jq -r 'map(select(. | test("^[\\d]+.[\\d]+$")))' | jq .[-2])
             fi
             echo "export WPVERSION=$WPVERSION" >> $BASH_ENV
@@ -395,9 +395,9 @@ commands:
             touch cypress.env.json
             echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
             if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ] || [ "$CIRCLE_BRANCH" == *"run-all-tests"* ]; then
-              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>-wp<< parameters.wpversion >>
+              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>-wp-<< parameters.wpversion >>
             else
-              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>-wp<< parameters.wpversion >> --spec "$(cat /tmp/specstring | xargs | sed -e 's/ /,/g')"
+              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>-wp-<< parameters.wpversion >> --spec "$(cat /tmp/specstring | xargs | sed -e 's/ /,/g')"
             fi
 
   run_perf_tests:
@@ -699,13 +699,13 @@ jobs:
       - run_e2e_tests:
           browser: firefox
 
-  e2e_chrome_wp_last:
+  e2e_chrome_wp_last_major:
     executor: php_74_node_browser_mysql_mailhog
     parallelism: 4
     steps:
       - run_e2e_tests:
           browser: chrome
-          wpversion: last
+          wpversion: last_major
 
   perf_tests:
     executor: php_74_node_browser_mysql
