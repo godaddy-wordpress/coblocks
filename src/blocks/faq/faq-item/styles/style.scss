@@ -20,8 +20,8 @@
 			display: inline-block;
 			position: absolute;
 			right: 0;
-			top: 50%;
-			transform: translateY(-50%) scaleY(-1);
+			top: 3px;
+			transform: scaleY(-1);
 			transition: transform 0.2s;
 		}
 	}
@@ -35,7 +35,7 @@
 	// Open state
 	&[open] {
 		.wp-block-coblocks-faq-item__question__icon {
-			transform: translateY(-50%) scaleY(1);
+			transform: scaleY(1);
 		}
 	}
 }
