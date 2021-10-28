@@ -12,8 +12,7 @@ import { hasEmptyAttributes } from '../../../utils/block-helpers';
 /**
  * WordPress dependencies.
  */
-import { InnerBlocks } from '@wordpress/block-editor';
-import { getColorClassName, RichText } from '@wordpress/block-editor';
+import { getColorClassName, InnerBlocks, RichText } from '@wordpress/block-editor';
 
 const isEmpty = ( attributes ) => {
 	const attributesToCheck = [ 'answer', 'question' ];
@@ -51,7 +50,7 @@ export default function save( { className, attributes } ) {
 					tagName="div"
 					value={ question }
 				/>
-				<svg className="wp-block-coblocks-faq-item__question__icon" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M19.39 14.99l-1.41 1.41L12 10.43 6.02 16.4l-1.41-1.41L12 7.6l7.39 7.39z" fill="#111"/></svg>
+				<svg className="wp-block-coblocks-faq-item__question__icon" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M19.39 14.99l-1.41 1.41L12 10.43 6.02 16.4l-1.41-1.41L12 7.6l7.39 7.39z" fill="#111" /></svg>
 			</summary>
 			<div className="wp-block-coblocks-faq-item__answer" tabIndex="0">
 				<InnerBlocks.Content />
