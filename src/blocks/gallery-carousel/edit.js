@@ -71,7 +71,7 @@ const GalleryCarouselEdit = ( props ) => {
 	} = attributes;
 
 	const { selectedImage, setSelectedImage } = useContext(GalleryCarouselContext);
-
+	
 	const innerClasses = classnames(
 		'is-cropped',
 		...GalleryClasses( attributes ), {
@@ -153,35 +153,42 @@ const GalleryCarouselEdit = ( props ) => {
 
 	const renderSwiper = useMemo(() => {
 		return (
-			<Swiper
-				list={images}
-				navigation={prevNextButtons}
-				isDraggable={draggable}
-				freeScroll={freeScroll}
-				autoPlaySpeed={autoPlay ? autoPlaySpeed : null}
-				pauseHover={autoPlay ? pauseHover : null}
-				Pagination={thumbnails ? renderGalleryPagination : null}
-				onSwipe={handleSwipe}
-			>
-				{({
-					index,
-				}) => {
-					const ariaLabel = sprintf(
-						/* translators: %1$d is the order number of the image, %2$d is the total number of images */
-						__( 'image %1$d of %2$d in gallery', 'coblocks' ),
-						( index + 1 ),
-						images.length
-					);
-					
-					return (
-						<GalleryCarouselItem 
-							index={index} 
-							ariaLabel={ariaLabel}
-						/>	
-					);
-				}}			
+			<Swiper type='edit' uuid={'12345'} list={images}>
+				{({ index }) => {
+					return <p>{index}</p>
+				}}
 			</Swiper>
 		);
+		// return (
+		// 	<Swiper
+		// 		list={images}
+		// 		navigation={prevNextButtons}
+		// 		isDraggable={draggable}
+		// 		freeScroll={freeScroll}
+		// 		autoPlaySpeed={autoPlay ? autoPlaySpeed : null}
+		// 		pauseHover={autoPlay ? pauseHover : null}
+		// 		Pagination={thumbnails ? renderGalleryPagination : null}
+		// 		onSwipe={handleSwipe}
+		// 	>
+		// 		{({
+		// 			index,
+		// 		}) => {
+		// 			const ariaLabel = sprintf(
+		// 				/* translators: %1$d is the order number of the image, %2$d is the total number of images */
+		// 				__( 'image %1$d of %2$d in gallery', 'coblocks' ),
+		// 				( index + 1 ),
+		// 				images.length
+		// 			);
+					
+		// 			return (
+		// 				<GalleryCarouselItem 
+		// 					index={index} 
+		// 					ariaLabel={ariaLabel}
+		// 				/>	
+		// 			);
+		// 		}}			
+		// 	</Swiper>
+		// );
 	}, [ 
 		thumbnails,
 		pauseHover, 
@@ -191,20 +198,72 @@ const GalleryCarouselEdit = ( props ) => {
 		autoPlay 
 	]);
 
-	const renderCaption = useMemo(() => {
-		return (
-			<RichText
-				tagName="figcaption"
-				placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
-				value={ images[selectedImage]?.caption }
-				className="coblocks-gallery--caption coblocks-gallery--primary-caption"
-				onChange={ val => handleCaptionChange(val) }
-				isSelected={isSelected }
-				keepPlaceholderOnFocus
-				inlineToolbar   
-			/>
-		);
-	}, [selectedImage, isSelected]);
+	// const renderCaption = useMemo(() => {
+	// 	return (
+	// 		<RichText
+	// 			tagName="figcaption"
+	// 			placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
+	// 			value={ images[selectedImage]?.caption }
+	// 			className="coblocks-gallery--caption coblocks-gallery--primary-caption"
+	// 			onChange={ val => handleCaptionChange(val) }
+	// 			isSelected={isSelected }
+	// 			keepPlaceholderOnFocus
+	// 			inlineToolbar   
+	// 		/>
+	// 	);
+	// }, [selectedImage, isSelected]);
+
+	// return (
+	// 	<>
+	// 		{ isSelected && (
+	// 			<>
+	// 				<Controls { ...props } />
+	// 				<Inspector { ...props } />
+	// 			</>
+	// 		) }
+	// 		{ noticeUI }
+	// 		<ResizableBox
+	// 			size={ {
+	// 				height,
+	// 				width: '100%',
+	// 			} }
+	// 			className={ classnames( {
+	// 				'is-selected': isSelected,
+	// 				'has-responsive-height': responsiveHeight,
+	// 			} ) }
+	// 			minHeight="0"
+	// 			enable={ {
+	// 				bottom: true,
+	// 				bottomLeft: false,
+	// 				bottomRight: false,
+	// 				left: false,
+	// 				right: false,
+	// 				top: false,
+	// 				topLeft: false,
+	// 				topRight: false,
+	// 			} }
+	// 			onResizeStop={ ( _event, _direction, _elt, delta ) => {
+	// 				setAttributes( {
+	// 					height: parseInt( height + delta.height, 10 ),
+	// 				} );
+	// 			} }
+	// 			showHandle={ isSelected }
+	// 			onClick={handleSelectCarousel}
+	// 		>
+	// 			<div className={ className }>
+	// 				<div className={ innerClasses }>
+	// 					{renderSwiper}
+	// 					{renderCaption}
+	// 				</div>
+	// 			</div>
+	// 		</ResizableBox>
+	// 	</>
+	// );
+
+	console.log('edit function stuff', {
+		className,
+		innerClasses
+	})
 
 	return (
 		<>
@@ -246,7 +305,6 @@ const GalleryCarouselEdit = ( props ) => {
 				<div className={ className }>
 					<div className={ innerClasses }>
 						{renderSwiper}
-						{renderCaption}
 					</div>
 				</div>
 			</ResizableBox>

@@ -5,7 +5,6 @@ import {
     useState,
 } from '@wordpress/element';
 import { usePrevious } from '@wordpress/compose';
-import { v4 as generateUuid } from 'uuid';
 
 import TinySwiper from 'tiny-swiper';
 import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
@@ -21,15 +20,29 @@ const Swiper = ({
     pauseHover = null,
     onSwipe = null,
     Pagination = null,
+    uuid = null,
+    type,
 }) => {
+
+    console.log('swiper props', {
+        list,
+        children,
+        navigation,
+        isDraggable,
+        autoPlaySpeed,
+        pauseHover,
+        onSwipe,
+        Pagination,
+        type
+    });
+
+
     const [ swiper, setSwiper ] = useState( null );
     const [ autoPlay, setAutoPlay ] = useState( null );
     const [ hovering, setHovering ] = useState( false );
 
     const prevHovering = usePrevious( hovering );
     const prevAutoPlaySpeed = usePrevious( autoPlaySpeed );
-
-    const [ uuid, setUuid ] = useState( generateUuid() );
 
     useEffect(() => {
         const swiperWrapper = document.querySelector('.swiper-wrapper');
@@ -64,7 +77,9 @@ const Swiper = ({
             touchable: false,
         });
 
-        newSwiper.on('after-slide', onSwipe);
+        if ( onSwipe ) {
+            newSwiper.on('after-slide', onSwipe);
+        }
 
         setSwiper( newSwiper );
     }, []);
@@ -121,12 +136,18 @@ const Swiper = ({
     }    
 
     const renderList = useMemo(() => {
+        // return list.map((item, index) => (
+        //     <div key={uuid} className={`swiper-slide`}>
+        //         {children({
+        //             item,
+        //             index,
+        //         })}
+        //     </div>
+        // ));
+
         return list.map((item, index) => (
-            <div key={generateUuid()} className={`swiper-slide`}>
-                {children({
-                    item,
-                    index,
-                })}
+            <div key={uuid} className={`swiper-slide`}>
+                <p>test swiper</p>
             </div>
         ));
     }, [ isDraggable ]);
