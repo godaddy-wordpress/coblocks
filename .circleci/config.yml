@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  jq: circleci/jq@2.2.0
+
 executors:
   node_latest:
     docker:
@@ -60,6 +63,20 @@ executors:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
       - image: circleci/mysql:5.7-ram
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_74_node_browser_mysql_mailhog:
+    docker:
+      - image: circleci/php:7.4.24-node-browsers
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+      - image: circleci/mysql:5.7-ram
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+      - image: mailhog/mailhog:v1.0.1
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -142,7 +159,7 @@ workflows:
             - build
 
       # END TO END TESTING
-      - e2e_chrome:
+      - e2e_chrome_wp_latest:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -153,7 +170,18 @@ workflows:
             - unit_testing_php_74
             - unit_testing_php_80
             - js
-      - e2e_firefox:
+      - e2e_firefox_wp_latest:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - css
+            - unit_testing_php_56
+            - unit_testing_php_73
+            - unit_testing_php_74
+            - unit_testing_php_80
+            - js
+      - e2e_chrome_wp_last_major:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -246,17 +274,31 @@ commands:
   # Install and configure WordPress for end-to-end tests.
   install_wordpress_with_coblocks:
     description: ""
+    parameters:
+      wpversion:
+        type: string
+        default: latest
     steps:
       - run:
           name: Update hosts
           command: echo 127.0.0.1 coblocks.test | sudo tee -a /etc/hosts
+      - jq/install
+      - run:
+          name: 'Determine which version to install'
+          command: |
+            WPVERSION=<< parameters.wpversion >>
+            if [ "$WPVERSION" == "last_major" ]; then
+              WPVERSION=$(curl -s http://api.wordpress.org/core/stable-check/1.0/ | jq 'keys' | jq -r 'map(select(. | test("^[\\d]+.[\\d]+$")))' | jq .[-2])
+            fi
+            echo "export WPVERSION=$WPVERSION" >> $BASH_ENV
+            source $BASH_ENV
       - run:
           name: Install WordPress
           command: |
             sudo apt-get update --allow-releaseinfo-change && sudo apt-get install -y subversion default-mysql-client
             sudo -E docker-php-ext-install mysqli
             mkdir -p /tmp/wordpress
-            ./vendor/bin/wp core download --path=/tmp/wordpress
+            ./vendor/bin/wp core download --version=$WPVERSION --path=/tmp/wordpress
             ./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass='' --path=/tmp/wordpress
             ./vendor/bin/wp db create --path=/tmp/wordpress
             ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=/tmp/wordpress
@@ -326,6 +368,9 @@ commands:
     parameters:
       browser:
         type: string
+      wpversion:
+        type: string
+        default: latest
     steps:
       - checkout
       - setup_e2e_env_var
@@ -339,10 +384,10 @@ commands:
       - restore_update_cypress_cache
       - restore_composer_cache
       - wait_for_mysql
-      - install_wordpress_with_coblocks
+      - install_wordpress_with_coblocks:
+          wpversion: "<< parameters.wpversion >>"
       - enable_debug_mode_for_e2e
-      - install_mailhog
-      - start_mailhog
+      - install_mailhog_plugin
       - start_wpcli_server
       - run:
           name: Run end to end tests (Cypress.io) - << parameters.browser >>
@@ -350,9 +395,9 @@ commands:
             touch cypress.env.json
             echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
             if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ] || [ "$CIRCLE_BRANCH" == *"run-all-tests"* ]; then
-              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>
+              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>-wp-<< parameters.wpversion >>
             else
-              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >> --spec "$(cat /tmp/specstring | xargs | sed -e 's/ /,/g')"
+              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>-wp-<< parameters.wpversion >> --spec "$(cat /tmp/specstring | xargs | sed -e 's/ /,/g')"
             fi
 
   run_perf_tests:
@@ -395,18 +440,13 @@ commands:
             echo "export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH" >> $BASH_ENV
             source /home/circleci/.bashrc
 
-  install_mailhog:
+  install_mailhog_plugin:
     steps:
       - run:
-          name: "Install Mailhog"
-          command: bash .dev/bin/install-mailhog.sh
-
-  start_mailhog:
-    steps:
-      - run:
-          name: "Start Mailhog"
-          command: "MailHog"
-          background: true
+          name: "Install Mailhog WP Plugin"
+          command: |
+            mkdir /tmp/wordpress/wp-content/mu-plugins
+            cp /home/circleci/project/.dev/mailhog.php /tmp/wordpress/wp-content/mu-plugins/mailhog.php
 
   setup_spec_files_diff_tree:
     steps:
@@ -624,7 +664,7 @@ jobs:
           name: "Test JS and Collect Coverage"
           command: |
             rm -rf node_modules/ && yarn && yarn build
-            yarn test:js:coverage --maxWorkers=1 --reporters=default --reporters=jest-junit
+            yarn test:js:coverage --maxWorkers=2 --reporters=default --reporters=jest-junit
           environment:
             JEST_JUNIT_OUTPUT_DIR: /tmp/artifacts/tests-results/jest
       - store_artifacts:
@@ -645,19 +685,27 @@ jobs:
   # End to End Testing
   # --------------------------------------------------
 
-  e2e_chrome:
-    executor: php_74_node_browser_mysql
+  e2e_chrome_wp_latest:
+    executor: php_74_node_browser_mysql_mailhog
     parallelism: 4
     steps:
       - run_e2e_tests:
           browser: chrome
 
-  e2e_firefox:
-    executor: php_74_node_browser_mysql
+  e2e_firefox_wp_latest:
+    executor: php_74_node_browser_mysql_mailhog
     parallelism: 4
     steps:
       - run_e2e_tests:
           browser: firefox
+
+  e2e_chrome_wp_last_major:
+    executor: php_74_node_browser_mysql_mailhog
+    parallelism: 4
+    steps:
+      - run_e2e_tests:
+          browser: chrome
+          wpversion: last_major
 
   perf_tests:
     executor: php_74_node_browser_mysql
@@ -768,7 +816,7 @@ jobs:
             mv coblocks-canary.zip /tmp/artifacts/coblocks-canary.zip
       - run:
           name: Create a canary release on GitHub
-          command: ghr -t ${GH_ACCESS_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "Latest build of the master branch. This bleeding edge version is for testing purposes only and should not be used in production." -delete -prerelease -replace canary /tmp/artifacts/coblocks-canary.zip
+          command: ghr -t ${GH_AUTH_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "Latest build of the master branch. This bleeding edge version is for testing purposes only and should not be used in production." -delete -prerelease -replace canary /tmp/artifacts/coblocks-canary.zip
       - deploy:
           name: Deploy CoBlocks canary to the WPNUX site
           command: |

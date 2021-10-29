@@ -19,6 +19,7 @@ const FixStyleOnlyEntriesPlugin = require( 'webpack-fix-style-only-entries' );
 const nodeSassGlobImporter = require( 'node-sass-glob-importer' );
 
 const isProduction = process.env.NODE_ENV === 'production';
+const isDebugMode = process.env.DEBUG_MODE === 'on';
 
 module.exports = {
 	entry: {
@@ -136,4 +137,6 @@ module.exports = {
 			filename: '[name]-rtl.css',
 		} ),
 	],
+
+	devtool: isDebugMode ? 'source-map' : false,
 };

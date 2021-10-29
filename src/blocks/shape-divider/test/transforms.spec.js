@@ -30,7 +30,7 @@ describe( 'coblocks/shape-divider transforms', () => {
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
 		expect( transformed[ 0 ].name ).toBe( name );
-		expect( transformed[ 0 ].attributes.height ).toBe( attributes.height );
+		expect( transformed[ 0 ].attributes.height ).toBe( attributes.shapeHeight );
 	} );
 
 	it( 'should transform from core/separator block', () => {
@@ -49,7 +49,7 @@ describe( 'coblocks/shape-divider transforms', () => {
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
 		expect( transformed[ 0 ].name ).toBe( name );
-		expect( transformed[ 0 ].attributes.height ).toBe( attributes.height );
+		expect( transformed[ 0 ].attributes.height ).toBe( attributes.shapeHeight );
 	} );
 
 	it( 'should transform when :divider prefix is seen', () => {

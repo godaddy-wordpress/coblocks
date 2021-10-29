@@ -61,6 +61,7 @@ const Inspector = ( props ) => {
 		facebook,
 		twitter,
 		instagram,
+		tiktok,
 		pinterest,
 		linkedin,
 		youtube,
@@ -178,6 +179,11 @@ const Inspector = ( props ) => {
 							label="Instagram"
 							value={ instagram }
 							onChange={ ( value ) => setAttributes( { instagram: escape( value ) } ) }
+						/>
+						<TextControl
+							label="TikTok"
+							value={ tiktok }
+							onChange={ ( value ) => setAttributes( { tiktok: escape( value ) } ) }
 						/>
 						<TextControl
 							label="Pinterest"

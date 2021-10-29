@@ -80,7 +80,6 @@ const Edit = ( props ) => {
 					value={ title }
 					placeholder={ placeholder || __( 'Plan A', 'coblocks' ) }
 					allowedFormats={ allowedFormats }
-					keepPlaceholderOnFocus
 				/>
 				<div className="wp-block-coblocks-pricing-table-item__price-wrapper">
 					<RichText
@@ -90,7 +89,6 @@ const Edit = ( props ) => {
 						value={ currency }
 						placeholder={ __( '$', 'coblocks' ) }
 						allowedFormats={ allowedFormats }
-						keepPlaceholderOnFocus
 					/>
 					<RichText
 						tagName="span"
@@ -99,7 +97,6 @@ const Edit = ( props ) => {
 						value={ amount }
 						placeholder="99"
 						allowedFormats={ allowedFormats }
-						keepPlaceholderOnFocus
 					/>
 				</div>
 				<RichText
@@ -109,7 +106,6 @@ const Edit = ( props ) => {
 					onChange={ ( nextFeatures ) => setAttributes( { features: nextFeatures } ) }
 					value={ features }
 					placeholder={ __( 'Add features', 'coblocks' ) }
-					keepPlaceholderOnFocus
 				/>
 				<InnerBlocks
 					template={ TEMPLATE }

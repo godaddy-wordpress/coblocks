@@ -36,8 +36,8 @@
 		flex-direction: row;
 		height: auto;
 		justify-content: flex-start;
-		width: auto;
 		overflow: hidden;
+		width: auto;
 	}
 
 	// Fixes issue with multiple dropzones displaying when dropping in an image.
@@ -98,9 +98,9 @@
 }
 
 .wp-block-coblocks-gallery-carousel-thumbnail {
-	opacity: 0.4;
 	cursor: pointer;
 	min-width: 100px;
+	opacity: 0.4;
 }
 
 .wp-block-coblocks-gallery-carousel-thumbnail.is-active {

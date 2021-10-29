@@ -60,6 +60,15 @@ describe( 'coblocks/social-profiles', () => {
 		expect( serializedBlock ).toContain( JSON.stringify( { instagram: url } ) );
 	} );
 
+	it( 'should render with TikTok link', () => {
+		const url = 'https://tiktok.com';
+		block.attributes.tiktok = url;
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( JSON.stringify( { tiktok: url } ) );
+	} );
+
 	it( 'should render with Pinterest link', () => {
 		const url = 'https://pinterest.com';
 		block.attributes.pinterest = url;
