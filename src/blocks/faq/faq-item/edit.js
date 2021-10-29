@@ -75,9 +75,9 @@ const FaqItemEdit = ( props ) => {
 				</div>
 				<div className="wp-block-coblocks-faq-item__answer">
 					<InnerBlocks
+						__experimentalCaptureToolbars={ true }
 						template={ TEMPLATE }
 						templateInsertUpdatesSelection={ false }
-						__experimentalCaptureToolbars={ true }
 					/>
 				</div>
 			</div>

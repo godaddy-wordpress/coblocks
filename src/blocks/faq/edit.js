@@ -56,7 +56,12 @@ const Edit = ( props ) => {
 			<div className={ className }>
 				<InnerBlocks
 					allowedBlocks={ ALLOWED_BLOCKS }
-					renderAppender={ () => <CustomAppender onAddNewItem={ insertNewItem } onAddNewHeading={ insertNewHeading } /> }
+					renderAppender={ () =>
+						<CustomAppender
+							onAddNewHeading={ insertNewHeading }
+							onAddNewItem={ insertNewItem }
+						/>
+					}
 					template={ TEMPLATE }
 					templateInsertUpdatesSelection={ false }
 				/>
