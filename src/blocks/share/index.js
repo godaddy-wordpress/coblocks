@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { find } from 'lodash';
+
+/**
  * Internal dependencies
  */
 import metadata from './block.json';
@@ -8,8 +13,8 @@ import transforms from './transforms';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { dispatch } from '@wordpress/data';
-import { switchToBlockType } from '@wordpress/blocks';
+import { dispatch, select } from '@wordpress/data';
+import { createBlock, switchToBlockType } from '@wordpress/blocks';
 
 /**
  * Block constants
@@ -57,9 +62,33 @@ const settings = {
 	transforms,
 	edit: ( props ) => {
 		const { replaceBlocks } = dispatch( 'core/block-editor' );
+		const { colors } = select( 'core/block-editor' )?.getSettings() || {};
+
+		let transformedBlock = switchToBlockType( props, 'core/social-links' );
+
+		// Wrap in a group block if blockBackground is set.
+		const groupProps = {
+			backgroundColor: props.attributes.blockBackgroundColor,
+			style: {
+				color: {
+					background: props.attributes.customBlockBackgroundColor,
+				},
+			},
+		};
+
+		if ( !! groupProps.backgroundColor || !! groupProps.style.color.background ) {
+			const backgroundColorObj = find( colors, { slug: groupProps.background } );
+
+			if ( backgroundColorObj ) {
+				groupProps.style.color.background = backgroundColorObj.color;
+			}
+
+			transformedBlock = createBlock( 'core/group', groupProps, transformedBlock );
+		}
+
 		replaceBlocks(
 			[ props.clientId ],
-			switchToBlockType( props, 'core/social-links' )
+			transformedBlock,
 		);
 		return null;
 	},
