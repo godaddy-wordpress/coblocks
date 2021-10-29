@@ -31,12 +31,7 @@ const Inspector = ( props ) => {
 				initialOpen={ false }
 				title={ __( 'Color settings', 'coblocks' ) }
 			>
-				<ContrastChecker
-					{ ...{
-						isLargeText: true,
-						textColor: textColor.color,
-					} }
-				/>
+				<ContrastChecker isLargeText textColor={ textColor.color } />
 			</PanelColorSettings>
 		</InspectorControls>
 	);
