@@ -21,60 +21,34 @@ const GalleryCarouselItem = ({
     const isItemSelected = isSelected && selectedImage === index;
     const item = images[index];
 
-    // const renderGalleryItem = useMemo(() => {
-    //     console.log('item for save maybe????', item);
-    //     return (
-    //         <div 
-    //             className="coblocks-gallery--item" 
-    //             role="button" 
-    //             tabIndex={index}
-    //             style={{ pointerEvents: 'none', touchAction: 'none' }}
-    //         >
-    //             <GalleryImage
-    //                 url={ item.url }
-    //                 alt={ item.alt }
-    //                 id={ item.id }
-    //                 marginRight={ true }
-    //                 marginLeft={ true }
-    //                 onSelect={() => {
-    //                     setSelectedImage( index );
-    //                 }}
-    //                 isSelected={ isSelected }
-    //                 aria-label={ ariaLabel }
-    //                 supportsCaption={ false }
-    //                 supportsMoving={ false }
-    //                 imageIndex={ index }      								
-    //             />	
-    //         </div>				
-    //     );  
-    // }, [ isItemSelected ]);
+    const renderGalleryItem = useMemo(() => {
+        return (
+            <div 
+                className="coblocks-gallery--item" 
+                role="button" 
+                tabIndex={index}
+                style={{ pointerEvents: 'none', touchAction: 'none' }}
+            >
+                <GalleryImage
+                    url={ item.url }
+                    alt={ item.alt }
+                    id={ item.id }
+                    marginRight={ true }
+                    marginLeft={ true }
+                    onSelect={() => {
+                        setSelectedImage( index );
+                    }}
+                    isSelected={ isSelected }
+                    aria-label={ ariaLabel }
+                    supportsCaption={ false }
+                    supportsMoving={ false }
+                    imageIndex={ index }      								
+                />	
+            </div>				
+        );  
+    }, [ isItemSelected ]);
 
-    // return renderGalleryItem;
-
-    return (
-        <div 
-            className="coblocks-gallery--item" 
-            role="button" 
-            tabIndex={index}
-            style={{ pointerEvents: 'none', touchAction: 'none' }}
-        >
-            <GalleryImage
-                url={ item.url }
-                alt={ item.alt }
-                id={ item.id }
-                marginRight={ true }
-                marginLeft={ true }
-                onSelect={() => {
-                    setSelectedImage( index );
-                }}
-                isSelected={ isSelected }
-                aria-label={ ariaLabel }
-                supportsCaption={ false }
-                supportsMoving={ false }
-                imageIndex={ index }      								
-            />	
-        </div>				
-    );  
+    return renderGalleryItem;
 }
 
 export default GalleryCarouselItem;

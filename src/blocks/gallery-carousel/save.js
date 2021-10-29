@@ -33,8 +33,6 @@ const save = ( { attributes, className } ) => {
 		pageDots,
 	} = attributes;
 
-	console.log('images.length', images.length);
-
 	if ( images.length <= 0 ) {
 		return null;
 	}
@@ -90,18 +88,6 @@ const save = ( { attributes, className } ) => {
 			</div>
 		</div>
 	);
-
-	// return (
-	// 	<div aria-label={ __( `Carousel Gallery`, 'coblocks' ) } className={ classes } >
-	// 		<div className={ innerClasses }>
-	// 				<Swiper type='save' uuid={'12345'} list={images}>
-	// 					{({ index }) => {
-	// 						return <p>{index}</p>
-	// 					}}
-	// 				</Swiper>
-	// 		</div>
-	// 	</div>
-	// );
 }
 
 export default save;
