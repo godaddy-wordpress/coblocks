@@ -33,6 +33,8 @@ const save = ( { attributes, className } ) => {
 		pageDots,
 	} = attributes;
 
+	console.log('images.length', images.length);
+
 	if ( images.length <= 0 ) {
 		return null;
 	}
@@ -56,49 +58,50 @@ const save = ( { attributes, className } ) => {
 		}
 	);
 
-	// return (
-	// 	<div aria-label={ __( `Carousel Gallery`, 'coblocks' ) } className={ classes } >
-	// 		<div className={ innerClasses }>
-	// 			<Swiper
-	// 				list={images}
-	// 				navigation={prevNextButtons}
-	// 				isDraggable={draggable}
-	// 				autoPlaySpeed={autoPlay ? autoPlaySpeed : null}
-	// 				pauseHover={autoPlay ? pauseHover : null}
-	// 			>
-	// 				{({
-	// 					index,
-	// 				}) => {
-	// 					const ariaLabel = sprintf(
-	// 						/* translators: %1$d is the order number of the image, %2$d is the total number of images */
-	// 						__( 'image %1$d of %2$d in gallery', 'coblocks' ),
-	// 						( index + 1 ),
-	// 						images.length
-	// 					);
-						
-	// 					return (
-	// 						<GalleryCarouselItem 
-	// 							index={index} 
-	// 							ariaLabel={ariaLabel}
-	// 						/>	
-	// 					);
-	// 				}}			
-	// 			</Swiper>
-	// 		</div>
-	// 	</div>
-	// );
-
 	return (
 		<div aria-label={ __( `Carousel Gallery`, 'coblocks' ) } className={ classes } >
 			<div className={ innerClasses }>
-					<Swiper type='save' uuid={'12345'} list={images}>
-						{({ index }) => {
-							return <p>{index}</p>
-						}}
-					</Swiper>
+				<Swiper
+				    uuid={'12345'}
+					list={images}
+					navigation={prevNextButtons}
+					isDraggable={draggable}
+					autoPlaySpeed={autoPlay ? autoPlaySpeed : null}
+					pauseHover={autoPlay ? pauseHover : null}
+				>
+					{({
+						index,
+					}) => {
+						const ariaLabel = sprintf(
+							/* translators: %1$d is the order number of the image, %2$d is the total number of images */
+							__( 'image %1$d of %2$d in gallery', 'coblocks' ),
+							( index + 1 ),
+							images.length
+						);
+						
+						return (
+							<GalleryCarouselItem 
+								index={index} 
+								ariaLabel={ariaLabel}
+							/>	
+						);
+					}}			
+				</Swiper>
 			</div>
 		</div>
 	);
+
+	// return (
+	// 	<div aria-label={ __( `Carousel Gallery`, 'coblocks' ) } className={ classes } >
+	// 		<div className={ innerClasses }>
+	// 				<Swiper type='save' uuid={'12345'} list={images}>
+	// 					{({ index }) => {
+	// 						return <p>{index}</p>
+	// 					}}
+	// 				</Swiper>
+	// 		</div>
+	// 	</div>
+	// );
 }
 
 export default save;

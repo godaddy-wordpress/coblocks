@@ -136,18 +136,12 @@ const Swiper = ({
     }    
 
     const renderList = useMemo(() => {
-        // return list.map((item, index) => (
-        //     <div key={uuid} className={`swiper-slide`}>
-        //         {children({
-        //             item,
-        //             index,
-        //         })}
-        //     </div>
-        // ));
-
         return list.map((item, index) => (
             <div key={uuid} className={`swiper-slide`}>
-                <p>test swiper</p>
+                {children({
+                    item,
+                    index,
+                })}
             </div>
         ));
     }, [ isDraggable ]);
