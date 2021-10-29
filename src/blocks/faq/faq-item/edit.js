@@ -16,8 +16,8 @@ import { __ } from '@wordpress/i18n';
 import { CaretIcon } from '@godaddy-wordpress/coblocks-icons';
 import { compose } from '@wordpress/compose';
 import { Icon } from '@wordpress/icons';
-import { InnerBlocks, RichText } from '@wordpress/block-editor';
 import { useEffect } from '@wordpress/element';
+import { InnerBlocks, RichText } from '@wordpress/block-editor';
 
 const TEMPLATE = [
 	[ 'core/paragraph', { placeholder: __( 'Enter the answer to the question', 'coblocks' ) } ],
