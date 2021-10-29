@@ -49,8 +49,7 @@ const FaqItemEdit = ( props ) => {
 
 	return (
 		<>
-			<InspectorControls { ...props }
-			/>
+			<InspectorControls { ...props } />
 			<div
 				className={ classnames( className,
 					{

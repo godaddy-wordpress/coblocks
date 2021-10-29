@@ -9,7 +9,8 @@ module.exports = {
 		'@godaddy-wordpress/coblocks-icons': '<rootDir>/.dev/tests/jest/empty-class.js',
 	},
 	collectCoverageFrom: [
-		'<rootDir>/src/**/*.js',
-		'!<rootDir>/src/**/test/*.js',
+		'<rootDir>/src/**/deprecated.js',
+		'<rootDir>/src/**/save.js',
+		'<rootDir>/src/**/transforms.js',
 	],
 };

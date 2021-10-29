@@ -7,10 +7,9 @@ import CustomAppender from './appender';
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { compose } from '@wordpress/compose';
 import { createBlock } from '@wordpress/blocks';
 import { InnerBlocks } from '@wordpress/block-editor';
-import { useSelect, withDispatch, withSelect } from '@wordpress/data';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 const ALLOWED_BLOCKS = [
 	'coblocks/faq-item',
@@ -30,12 +29,13 @@ const Edit = ( props ) => {
 	const {
 		className,
 		clientId,
-		insertBlock,
 	} = props;
 
 	const { innerBlocks } = useSelect( ( select ) => ( {
 		innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
 	} ) );
+
+	const { insertBlock } = useDispatch( 'core/block-editor' );
 
 	const insertNewItem = () => {
 		const newItem = createBlock( 'coblocks/faq-item' );
@@ -70,22 +70,4 @@ const Edit = ( props ) => {
 	);
 };
 
-export default compose( [
-
-	withSelect( ( select, props ) => {
-		const { getBlocks } = select( 'core/block-editor' );
-
-		return {
-			innerBlocks: getBlocks( props.clientId ),
-		};
-	} ),
-
-	withDispatch( ( dispatch ) => {
-		const { insertBlock } = dispatch( 'core/block-editor' );
-
-		return {
-			insertBlock,
-		};
-	} ),
-
-] )( Edit );
+export default Edit;
