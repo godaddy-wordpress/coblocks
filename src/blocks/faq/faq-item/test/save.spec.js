@@ -27,6 +27,13 @@ describe( name, () => {
 		serializedBlock = '';
 	} );
 
+	it( 'should render', () => {
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
 	it( 'should render with content', () => {
 		block.attributes.question = 'Some question';
 		serializedBlock = serialize( block );

@@ -13,11 +13,11 @@ import { hasEmptyAttributes } from '../../../utils/block-helpers';
  * WordPress dependencies.
  */
 import { CaretIcon } from '@godaddy-wordpress/coblocks-icons';
-import { Icon } from '@wordpress/icons';
+import { Icon } from '@wordpress/components';
 import { getColorClassName, InnerBlocks, RichText } from '@wordpress/block-editor';
 
 const isEmpty = ( attributes ) => {
-	const attributesToCheck = [ 'answer', 'question' ];
+	const attributesToCheck = [ 'question' ];
 	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
 		attributesToCheck.includes( key )
 	);
