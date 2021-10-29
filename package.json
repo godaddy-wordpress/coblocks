@@ -192,6 +192,7 @@
 		"glob-parent": "^5.1.2",
 		"node-fetch": "^2.6.1",
 		"normalize-url": "^6.0.1",
+		"nth-check": "^2.0.1",
 		"set-value": "^4.0.1",
 		"tar": "^6.1.9",
 		"trim": "^0.0.3",
