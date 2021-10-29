@@ -48,8 +48,6 @@ const PLACEHOLDER_TEXT = Platform.isNative
 	? __( 'ADD MEDIA' )
 	: __( 'Drag images, upload new ones or select files from your library.' );
 
-// const MOBILE_CONTROL_PROPS_RANGE_CONTROL = Platform.isNative ? { type: 'stepper' } : {};
-
 function GalleryEdit( props ) {
 	const {
 		setAttributes,
@@ -248,10 +246,10 @@ function GalleryEdit( props ) {
 
 		const newBlocks = newImageList.map( ( image ) => {
 			return createBlock( 'core/image', {
+				alt: image.alt,
+				caption: image.caption,
 				id: image.id,
 				url: image.url,
-				caption: image.caption,
-				alt: image.alt,
 			} );
 		} );
 
@@ -408,7 +406,7 @@ function GalleryEdit( props ) {
 	);
 
 	const blockProps = useBlockProps( {
-		className: classnames( className, 'has-nested-images', { 'has-lightbox': lightbox } ),
+		className: classnames( className, 'masonry-grid' ),
 	} );
 
 	if ( ! hasImages ) {

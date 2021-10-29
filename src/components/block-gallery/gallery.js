@@ -6,20 +6,21 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-import {
-	RichText,
-	__experimentalUseInnerBlocksProps as useInnerBlocksProps,
-} from '@wordpress/block-editor';
-import { VisuallyHidden } from '@wordpress/components';
-import { useState, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 import { View } from '@wordpress/primitives';
+import { VisuallyHidden } from '@wordpress/components';
+import {
+	RichText,
+	// Disable reason: We choose to use an experimental API here.
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
+	__experimentalUseInnerBlocksProps as useInnerBlocksProps,
+} from '@wordpress/block-editor';
+import { useEffect, useState } from '@wordpress/element';
 
 const allowedBlocks = [ 'core/image' ];
 
 export const Gallery = ( props ) => {
-	// console.log( props );
 	const {
 		attributes,
 		isSelected,
@@ -29,13 +30,13 @@ export const Gallery = ( props ) => {
 		blockProps,
 	} = props;
 
-	const { align, columns, caption, imageCrop } = attributes;
+	const { align, caption, imageCrop, lightbox } = attributes;
 
 	const { children, ...innerBlocksProps } = useInnerBlocksProps( blockProps, {
+		__experimentalLayout: { alignments: [], type: 'default' },
 		allowedBlocks,
 		orientation: 'horizontal',
 		renderAppender: false,
-		__experimentalLayout: { type: 'default', alignments: [] },
 	} );
 
 	const [ captionFocused, setCaptionFocused ] = useState( false );
@@ -66,13 +67,15 @@ export const Gallery = ( props ) => {
 				{
 					[ `align${ align }` ]: align,
 					'is-cropped': imageCrop,
+					'has-lightbox': lightbox,
 				}
 			) }
 		>
-			<div className="masonry-grid">
+			<View
+				className="masonry-grid"
+			>
 				{ children }
-			</div>
-
+			</View>
 			<View
 				className="masonry-gallery-media-placeholder-wrapper"
 				onClick={ removeCaptionFocus }
@@ -80,19 +83,19 @@ export const Gallery = ( props ) => {
 				{ mediaPlaceholder }
 			</View>
 			<RichTextVisibilityHelper
-				isHidden={ ! isSelected && RichText.isEmpty( caption ) }
-				captionFocused={ captionFocused }
-				onFocusCaption={ onFocusCaption }
-				tagName="figcaption"
-				className="blocks-gallery-caption"
-				aria-label={ __( 'Gallery caption text' ) }
-				placeholder={ __( 'Write gallery caption…' ) }
-				value={ caption }
-				onChange={ ( value ) => setAttributes( { caption: value } ) }
-				inlineToolbar
 				__unstableOnSplitAtEnd={ () =>
 					insertBlocksAfter( createBlock( 'core/paragraph' ) )
 				}
+				aria-label={ __( 'Gallery caption text' ) }
+				captionFocused={ captionFocused }
+				className="blocks-gallery-caption"
+				inlineToolbar
+				isHidden={ ! isSelected && RichText.isEmpty( caption ) }
+				onChange={ ( value ) => setAttributes( { caption: value } ) }
+				onFocusCaption={ onFocusCaption }
+				placeholder={ __( 'Write gallery caption…' ) }
+				tagName="figcaption"
+				value={ caption }
 			/>
 		</figure>
 	);
@@ -115,13 +118,13 @@ function RichTextVisibilityHelper( {
 
 	return (
 		<RichText
-			ref={ captionRef }
-			value={ value }
-			placeholder={ placeholder }
 			className={ className }
-			tagName={ tagName }
 			isSelected={ captionFocused }
 			onClick={ onFocusCaption }
+			placeholder={ placeholder }
+			ref={ captionRef }
+			tagName={ tagName }
+			value={ value }
 			{ ...richTextProps }
 		/>
 	);
