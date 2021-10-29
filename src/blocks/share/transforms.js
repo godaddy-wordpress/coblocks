@@ -78,9 +78,9 @@ const transforms = {
 					attributes.customTextColor = iconColorObj.color;
 				}
 
-				const iconBackgroundColorObj = find( colors, { slug: attributes.iconBackgroundColor } );
+				const iconBackgroundColorObj = find( colors, { slug: attributes.backgroundColor } );
 				if ( iconBackgroundColorObj ) {
-					attributes.customTextColor = iconBackgroundColorObj.color;
+					attributes.customBackgroundColor = iconBackgroundColorObj.color;
 				}
 
 				// Convert old sizes into new size strings.
@@ -107,7 +107,7 @@ const transforms = {
 						},
 						{
 							old: 'is-style-icon-and-text',
-							new: 'is-style-default',
+							new: 'is-style-pill-shape',
 						},
 						{
 							old: 'is-style-circular',
