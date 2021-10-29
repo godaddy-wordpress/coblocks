@@ -406,7 +406,7 @@ function GalleryEdit( props ) {
 	);
 
 	const blockProps = useBlockProps( {
-		className: classnames( className, 'masonry-grid' ),
+		className: classnames( className ),
 	} );
 
 	if ( ! hasImages ) {

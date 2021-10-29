@@ -29,3 +29,66 @@
 		}
 	}
 }
+
+figure.wp-block-coblocks-gallery-masonry {
+	&.alignwide,
+	&.alignfull {
+		margin: 0;
+	}
+
+	> .masonry-grid {
+		column-fill: initial;
+		column-gap: 30px;
+		transition: all 0.5s ease-in-out;
+
+		figure {
+			display: block;
+			margin-bottom: 30px;
+
+			img {
+				border: 0;
+				display: block;
+				font: inherit;
+				font-size: 100%;
+				height: auto;
+				margin: 0;
+				max-width: 100%;
+				padding: 0;
+				width: 100%;
+			}
+
+			figcaption {
+				background: linear-gradient(0deg, rgba($color: $black, $alpha: 0.7) 0, rgba($color: $black, $alpha: 0.3) 50%, transparent);
+				bottom: 0;
+				font-size: 13px;
+				margin-bottom: 0;
+				max-height: 100% !important;
+				opacity: 0.9;
+				overflow: auto;
+				padding: 30px 10px 10px !important;
+				position: absolute !important;
+				text-align: center;
+				width: 100%;
+
+				img {
+					display: inline;
+				}
+			}
+
+		}
+
+		/* Masonry on tablets */
+		@media only screen and (min-width: 768px) and (max-width: 1023px) {
+			& {
+				column-count: 2;
+			}
+		}
+
+		/* Masonry on big screens */
+		@media only screen and (min-width: 1024px) {
+			& {
+				column-count: 3;
+			}
+		}
+	}
+}
