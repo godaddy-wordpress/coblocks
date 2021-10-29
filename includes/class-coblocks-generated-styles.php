@@ -148,30 +148,9 @@ class CoBlocks_Generated_Styles {
 									$output .= 'min-height:' . $divider_el_obj->heightTablet . 'px !important'; // @codingStandardsIgnoreLine
 								$output     .= '}';
 							}
-
-							if ( 'shapeHeight' === $divider_element && isset( $divider_el_obj->heightTablet ) ) { // @codingStandardsIgnoreLine
-								$output     .= sprintf( '.%1$s > .wp-block-coblocks-shape-divider__svg-wrapper {', esc_attr( $divider_key ) );
-									$output .= 'min-height:' . $divider_el_obj->heightTablet . 'px !important'; // @codingStandardsIgnoreLine
-								$output     .= '}';
-							}
-							if ( 'backgroundHeight' === $divider_element && isset( $divider_el_obj->heightTablet ) ) { // @codingStandardsIgnoreLine
-								$output     .= sprintf( '.%1$s > .wp-block-coblocks-shape-divider__alt-wrapper {', esc_attr( $divider_key ) );
-									$output .= 'min-height:' . $divider_el_obj->heightTablet . 'px !important'; // @codingStandardsIgnoreLine
-								$output     .= '}';
-							}
 							$output .= '}';
 
 							$output .= '@media only screen and (max-width: ' . apply_filters( 'coblocks_desktop_breakpoint', '514px' ) . ') {';
-							if ( 'shapeHeight' === $divider_element && isset( $divider_el_obj->heightMobile ) ) { // @codingStandardsIgnoreLine
-								$output     .= sprintf( '.%1$s > .wp-block-coblocks-shape-divider__svg-wrapper {', esc_attr( $divider_key ) );
-									$output .= 'min-height:' . $divider_el_obj->heightMobile . 'px !important'; // @codingStandardsIgnoreLine
-								$output     .= '}';
-							}
-							if ( 'backgroundHeight' === $divider_element && isset( $divider_el_obj->heightMobile ) ) { // @codingStandardsIgnoreLine
-								$output     .= sprintf( '.%1$s > .wp-block-coblocks-shape-divider__alt-wrapper {', esc_attr( $divider_key ) );
-									$output .= 'min-height:' . $divider_el_obj->heightMobile . 'px !important'; // @codingStandardsIgnoreLine
-								$output     .= '}';
-							}
 							if ( 'height' === $divider_element && isset( $divider_el_obj->heightMobile ) ) { // @codingStandardsIgnoreLine
 								$output     .= sprintf( '.%1$s > [class*="__inner"]:not(.is-fullscreen)  {', esc_attr( $divider_key ) );
 									$output .= 'min-height:' . $divider_el_obj->heightMobile . 'px !important'; // @codingStandardsIgnoreLine

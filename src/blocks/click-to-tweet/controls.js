@@ -7,8 +7,8 @@ import { AtIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Icon, Toolbar } from '@wordpress/components';
 import { AlignmentToolbar, BlockControls } from '@wordpress/block-editor';
+import { Icon, ToolbarGroup } from '@wordpress/components';
 
 const Controls = ( props ) => {
 	const {
@@ -24,10 +24,10 @@ const Controls = ( props ) => {
 	return (
 		<BlockControls>
 			<AlignmentToolbar
-				value={ textAlign }
 				onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
+				value={ textAlign }
 			/>
-			<Toolbar>
+			<ToolbarGroup>
 				<div className="wp-block-coblocks-click-to-tweet__via-wrapper">
 					<label
 						aria-label={ __( 'Twitter Username', 'coblocks' ) }
@@ -46,7 +46,7 @@ const Controls = ( props ) => {
 						value={ via }
 					/>
 				</div>
-			</Toolbar>
+			</ToolbarGroup>
 		</BlockControls>
 	);
 };

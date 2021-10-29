@@ -113,7 +113,6 @@ const Edit = ( props ) => {
 						color: textColor?.color,
 						fontSize: computeFontSize( fontSize ) ?? undefined,
 					} }
-					keepPlaceholderOnFocus
 				/>
 			</p>
 		</>
