@@ -187,6 +187,7 @@
 		"webpack-fix-style-only-entries": "^0.4.0"
 	},
 	"resolutions": {
+		"ansi-regex": "^5.0.1",
 		"color-string": "^1.5.5",
 		"css-what": "^5.0.1",
 		"glob-parent": "^5.1.2",
