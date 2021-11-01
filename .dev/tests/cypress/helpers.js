@@ -144,7 +144,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	}
 
 	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click();
-	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search' ).type( blockName );
+	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search' ).click().type( blockName );
 
 	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
 	cy.get( '.editor-block-list-item' + targetClassName ).first().click( { force: true } );
@@ -232,9 +232,9 @@ export function clearBlocks() {
  * eg: accordion.js => Accordion
  */
 export function getBlockName() {
-	const specFile = Cypress.spec.name,
-		fileBase = capitalize( specFile.split( '/' ).pop().replace( '.cypress.js', '' ).replace( '-', ' ' ) ),
-		blockName = fileBase.charAt( 0 ).toUpperCase() + fileBase.slice( 1 );
+	const specFile = Cypress.spec.name;
+	const fileBase = capitalize( specFile.split( '/' ).pop().replace( '.cypress.js', '' ).replace( '-', ' ' ) );
+	const blockName = fileBase.charAt( 0 ).toUpperCase() + fileBase.slice( 1 );
 
 	return blockName;
 }
@@ -244,8 +244,8 @@ export function getBlockName() {
  * eg: accordion.js => accordion
  */
 export function getBlockSlug() {
-	const specFile = Cypress.spec.name,
-		fileBase = ( specFile.split( '/' ).pop().replace( '.cypress.js', '' ) );
+	const specFile = Cypress.spec.name;
+	const fileBase = ( specFile.split( '/' ).pop().replace( '.cypress.js', '' ) );
 
 	return fileBase;
 }
@@ -309,27 +309,6 @@ export function setInputValue( panelName, settingName, value, ignoreCase = true 
  * `helpers.upload.imageReplaceFlow` Function performs replace action on specified block.
  */
 export const upload = {
-	spec: {
-		fileName: '150x150.png',
-		imageBase: '150x150',
-		pathToFixtures: '../.dev/tests/cypress/fixtures/images/',
-	},
-	/**
-	 * Upload image to input element.
-	 *
-	 * @param {string} blockName The name of the block that is upload target
-	 *                           e.g 'core/image' or 'coblocks/accordion'.
-	 */
-	imageToBlock: ( blockName ) => {
-		const { fileName, pathToFixtures } = upload.spec;
-		cy.fixture( pathToFixtures + fileName ).then( ( fileContent ) => {
-			cy.get( `[data-type="${ blockName }"] input[type="file"]` )
-				.attachFile( { fileContent, filePath: pathToFixtures + fileName, mimeType: 'image/png' }, { force: true } );
-
-			// Now validate upload is complete and is not a blob.
-			cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"] [src^="http"]` );
-		} );
-	},
 	/**
 	 * Upload image to input element and trigger replace image flow.
 	 *
@@ -367,6 +346,27 @@ export const upload = {
 		cy.get( '.media-modal .media-button-select' ).click();
 
 		cy.get( '[class*="-visual-editor"]' ).find( `[data-type="${ blockName }"] img` ).first().should( 'have.attr', 'src' ).should( 'include', newImageBase );
+	},
+	/**
+	 * Upload image to input element.
+	 *
+	 * @param {string} blockName The name of the block that is upload target
+	 *                           e.g 'core/image' or 'coblocks/accordion'.
+	 */
+	imageToBlock: ( blockName ) => {
+		const { fileName, pathToFixtures } = upload.spec;
+		cy.fixture( pathToFixtures + fileName ).then( ( fileContent ) => {
+			cy.get( `[data-type="${ blockName }"] input[type="file"]` )
+				.attachFile( { fileContent, filePath: pathToFixtures + fileName, mimeType: 'image/png' }, { force: true } );
+
+			// Now validate upload is complete and is not a blob.
+			cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"] [src^="http"]` );
+		} );
+	},
+	spec: {
+		fileName: '150x150.png',
+		imageBase: '150x150',
+		pathToFixtures: '../.dev/tests/cypress/fixtures/images/',
 	},
 };
 
@@ -533,9 +533,9 @@ export function turnOnEditorSetting( settingName ) {
  * @return {string} RGB string.
  */
 export function hexToRGB( hex ) {
-	let r = 0,
+	let b = 0,
 		g = 0,
-		b = 0;
+		r = 0;
 
 	// 3 digits
 	if ( hex.length === 4 ) {
