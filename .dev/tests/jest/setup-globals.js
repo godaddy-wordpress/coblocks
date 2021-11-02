@@ -7,6 +7,8 @@ configure( { adapter: new Adapter() } );
 // Backbone REST API client
 global.wp = {};
 
+global.CSS = {};
+
 // Prevent console messages when running tests.
 console = {
 	...console,

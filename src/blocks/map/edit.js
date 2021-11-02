@@ -141,7 +141,7 @@ class Edit extends Component {
 
 		const marker = {
 			url:
-				'/wp-content/plugins/coblocks/dist/images/markers/' +
+				'/wp-content/plugins/coblocks/assets/images/markers/' +
 				skin +
 				'.svg',
 			scaledSize: { width: iconSize, height: iconSize },

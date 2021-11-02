@@ -8,7 +8,7 @@ import { OpenIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  */
 import { __ } from '@wordpress/i18n';
 import { BlockControls } from '@wordpress/block-editor';
-import { Toolbar, Icon } from '@wordpress/components';
+import { Icon, ToolbarGroup } from '@wordpress/components';
 
 const Controls = ( props ) => {
 	const {
@@ -23,17 +23,17 @@ const Controls = ( props ) => {
 	const customControls = [
 		{
 			icon: <Icon icon={ icon } />,
+			isActive: open === true,
+			onClick: () => setAttributes( { open: ! open } ),
 			/* translators: toggle label to display the accordion open */
 			title: __( 'Display as open', 'coblocks' ),
-			onClick: () => setAttributes( { open: ! open } ),
-			isActive: open === true,
 		},
 	];
 
 	return (
 		<>
 			<BlockControls>
-				<Toolbar controls={ customControls } />
+				<ToolbarGroup controls={ customControls } />
 			</BlockControls>
 		</>
 	);

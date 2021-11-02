@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-26T17:12:53+00:00\n"
+"POT-Creation-Date: 2021-11-02T15:48:52+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -124,7 +124,6 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgsfocusable.js:687
 #: src/blocks/icon/deprecated/svgsfocusable.js:705
 #: src/blocks/icon/svgs.js:666
-#: src/blocks/share/inspector.js:177
 msgid "Email"
 msgstr ""
 
@@ -158,7 +157,7 @@ msgstr ""
 #: src/blocks/form/fields/text/index.js:27
 #: src/blocks/form/fields/text/index.js:40
 #: src/blocks/form/fields/text/transforms.js:14
-#: src/blocks/share/index.js:51
+#: src/blocks/share/index.js:44
 #: src/blocks/social-profiles/index.js:56
 msgid "Text"
 msgstr ""
@@ -286,17 +285,17 @@ msgid "(no title)"
 msgstr ""
 
 #: src/blocks/share/index.php:132
-#: src/blocks/share/edit.js:130
+#: src/blocks/share/transforms.js:25
 msgid "Share on Facebook"
 msgstr ""
 
 #: src/blocks/share/index.php:136
-#: src/blocks/share/edit.js:146
+#: src/blocks/share/transforms.js:30
 msgid "Share on Twitter"
 msgstr ""
 
 #: src/blocks/share/index.php:140
-#: src/blocks/share/edit.js:162
+#: src/blocks/share/transforms.js:35
 msgid "Share on Pinterest"
 msgstr ""
 
@@ -305,33 +304,30 @@ msgid "Share on Linkedin"
 msgstr ""
 
 #: src/blocks/share/index.php:148
-#: src/blocks/share/edit.js:194
+#: src/blocks/share/transforms.js:45
 msgid "Share via Email"
 msgstr ""
 
 #: src/blocks/share/index.php:152
-#: src/blocks/share/edit.js:210
+#: src/blocks/share/transforms.js:50
 msgid "Share on Tumblr"
 msgstr ""
 
 #: src/blocks/share/index.php:156
-#: src/blocks/share/edit.js:226
 msgid "Share on Google"
 msgstr ""
 
 #: src/blocks/share/index.php:160
-#: src/blocks/share/edit.js:242
+#: src/blocks/share/transforms.js:55
 msgid "Share on Reddit"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:68
-#: src/blocks/share/inspector.js:162
 #: src/blocks/social-profiles/edit.js:120
 msgid "Facebook"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:72
-#: src/blocks/share/inspector.js:157
 #: src/blocks/social-profiles/edit.js:126
 msgid "Twitter"
 msgstr ""
@@ -347,7 +343,6 @@ msgid "TikTok"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:84
-#: src/blocks/share/inspector.js:167
 #: src/blocks/social-profiles/edit.js:144
 msgid "Pinterest"
 msgstr ""
@@ -395,7 +390,7 @@ msgstr ""
 
 #. translators: toggle label to display the accordion open
 #. translators: visually display open as opposed to closed
-#: src/blocks/accordion/accordion-item/controls.js:27
+#: src/blocks/accordion/accordion-item/controls.js:29
 #: src/blocks/accordion/accordion-item/inspector.js:67
 msgid "Display as open"
 msgstr ""
@@ -462,7 +457,6 @@ msgstr ""
 #: src/blocks/row/column/inspector.js:164
 #: src/blocks/row/inspector.js:206
 #: src/blocks/shape-divider/inspector.js:71
-#: src/blocks/share/inspector.js:200
 #: src/blocks/social-profiles/inspector.js:218
 #: src/components/form-label-colors/label-color-control.js:36
 #: src/extensions/colors/index.js:59
@@ -484,8 +478,6 @@ msgstr ""
 #: src/blocks/row/column/inspector.js:170
 #: src/blocks/row/inspector.js:222
 #: src/blocks/shape-divider/inspector.js:82
-#: src/blocks/share/inspector.js:81
-#: src/blocks/share/inspector.js:99
 #: src/blocks/social-profiles/inspector.js:87
 #: src/blocks/social-profiles/inspector.js:105
 #: src/extensions/colors/index.js:47
@@ -504,14 +496,13 @@ msgstr ""
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:58
 #: src/blocks/row/column/inspector.js:175
 #: src/blocks/row/inspector.js:227
-#: src/blocks/share/inspector.js:66
 #: src/blocks/social-profiles/inspector.js:97
 #: src/extensions/colors/index.js:54
 msgid "Text color"
 msgstr ""
 
 #: src/blocks/accordion/edit.js:126
-#: src/blocks/accordion/edit.js:128
+#: src/blocks/accordion/edit.js:129
 msgid "Add accordion item"
 msgstr ""
 
@@ -615,6 +606,10 @@ msgstr ""
 
 #: src/blocks/alert/save.js:47
 msgid "Alert section"
+msgstr ""
+
+#: src/blocks/author/controls.js:26
+msgid "Author controls"
 msgstr ""
 
 #: src/blocks/author/controls.js:34
@@ -850,23 +845,23 @@ msgstr ""
 msgid "Fetch all"
 msgstr ""
 
-#: src/blocks/events/edit.js:128
+#: src/blocks/events/edit.js:127
 msgid "Edit calendar URL"
 msgstr ""
 
-#: src/blocks/events/edit.js:153
-msgid "Calendar URL"
-msgstr ""
-
-#: src/blocks/events/edit.js:154
+#: src/blocks/events/edit.js:151
 msgid "Enter a URL that loads an iCal formatted calendar."
 msgstr ""
 
-#: src/blocks/events/edit.js:163
+#: src/blocks/events/edit.js:155
+msgid "Calendar URL"
+msgstr ""
+
+#: src/blocks/events/edit.js:161
 msgid "Enter URL here…"
 msgstr ""
 
-#: src/blocks/events/edit.js:171
+#: src/blocks/events/edit.js:169
 #: src/blocks/post-carousel/edit.js:218
 #: src/blocks/posts/edit.js:319
 msgid "Use URL"
@@ -1059,7 +1054,7 @@ msgstr ""
 #: src/blocks/features/inspector.js:138
 #: src/blocks/row/column/inspector.js:131
 #: src/blocks/row/inspector.js:183
-#: src/components/dimensions-control/index.js:292
+#: src/components/dimensions-control/index.js:50
 msgid "Margin"
 msgstr ""
 
@@ -1305,7 +1300,6 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:72
 #: src/blocks/icon/icon-size-select.js:19
 #: src/blocks/posts/inspector.js:67
-#: src/blocks/share/inspector.js:72
 #: src/blocks/social-profiles/inspector.js:78
 #: src/components/dimensions-control/dimensions-select.js:15
 #: src/components/gutter-control/gutter-control.js:18
@@ -1338,7 +1332,6 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:78
 #: src/blocks/icon/icon-size-select.js:24
 #: src/blocks/posts/inspector.js:72
-#: src/blocks/share/inspector.js:73
 #: src/blocks/social-profiles/inspector.js:79
 #: src/components/dimensions-control/dimensions-select.js:20
 #: src/components/gutter-control/gutter-control.js:24
@@ -1371,7 +1364,6 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:84
 #: src/blocks/icon/icon-size-select.js:29
 #: src/blocks/posts/inspector.js:77
-#: src/blocks/share/inspector.js:74
 #: src/blocks/social-profiles/inspector.js:80
 #: src/components/dimensions-control/dimensions-select.js:25
 #: src/components/gutter-control/gutter-control.js:30
@@ -1758,7 +1750,6 @@ msgid "Add text…"
 msgstr ""
 
 #: src/blocks/form/fields/submit-button/edit.js:124
-#: src/blocks/share/inspector.js:86
 msgid "Button color"
 msgstr ""
 
@@ -1958,7 +1949,7 @@ msgstr ""
 #: src/blocks/gallery-offset/inspector.js:79
 #: src/blocks/icon/inspector.js:61
 #: src/blocks/icon/inspector.js:177
-#: src/components/typography-controls/index.js:205
+#: src/components/typography-controls/index.js:193
 msgid "Size"
 msgstr ""
 
@@ -1966,7 +1957,6 @@ msgstr ""
 #: src/blocks/gallery-masonry/inspector.js:85
 #: src/blocks/gallery-offset/inspector.js:87
 #: src/blocks/gallery-stacked/inspector.js:90
-#: src/blocks/share/inspector.js:120
 #: src/blocks/social-profiles/inspector.js:126
 #: src/components/background/panel.js:219
 msgid "Rounded corners"
@@ -2017,8 +2007,8 @@ msgstr ""
 #. translators: typography style
 #: src/blocks/gallery-collage/index.js:55
 #: src/blocks/logos/index.js:48
-#: src/components/typography-controls/index.js:84
-#: src/components/typography-controls/index.js:102
+#: src/components/typography-controls/index.js:92
+#: src/components/typography-controls/index.js:110
 #: src/extensions/cover-styles/index.js:11
 #: src/extensions/image-styles/index.js:11
 #: src/extensions/list-styles/index.js:11
@@ -2147,7 +2137,7 @@ msgstr ""
 msgid "Fullwidth image"
 msgstr ""
 
-#: src/blocks/gif/controls.js:37
+#: src/blocks/gif/controls.js:38
 msgid "Remove gif"
 msgstr ""
 
@@ -3238,7 +3228,7 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:495
 #: src/blocks/icon/deprecated/svgsfocusable.js:494
 #: src/blocks/icon/svgs.js:477
-#: src/components/typography-controls/index.js:175
+#: src/components/typography-controls/index.js:163
 msgid "Font"
 msgstr ""
 
@@ -3505,11 +3495,9 @@ msgid "hub"
 msgstr ""
 
 #. translators: icon keyword
-#. translators: block keyword
 #: src/blocks/icon/deprecated/svgs.js:680
 #: src/blocks/icon/deprecated/svgsfocusable.js:679
 #: src/blocks/icon/svgs.js:658
-#: src/blocks/share/index.js:34
 msgid "social"
 msgstr ""
 
@@ -4466,7 +4454,7 @@ msgstr ""
 #. translators: block name
 #. translators: block style
 #: src/blocks/icon/index.js:33
-#: src/blocks/share/index.js:45
+#: src/blocks/share/index.js:39
 #: src/blocks/social-profiles/index.js:50
 msgid "Icon"
 msgstr ""
@@ -4493,7 +4481,6 @@ msgid "Filled"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:160
-#: src/blocks/share/inspector.js:111
 #: src/blocks/social-profiles/inspector.js:117
 msgid "Icon settings"
 msgstr ""
@@ -4504,7 +4491,7 @@ msgstr ""
 
 #: src/blocks/icon/inspector.js:174
 #: src/components/crop-settings/index.js:324
-#: src/components/dimensions-control/index.js:489
+#: src/components/dimensions-control/index.js:424
 #: src/components/size-control/index.js:209
 msgid "Reset"
 msgstr ""
@@ -4555,8 +4542,6 @@ msgid "Open in new tab"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:311
-#: src/blocks/share/inspector.js:68
-#: src/blocks/share/inspector.js:104
 #: src/blocks/social-profiles/inspector.js:97
 #: src/blocks/social-profiles/inspector.js:110
 msgid "Icon color"
@@ -5766,7 +5751,7 @@ msgstr ""
 msgid "Black & White"
 msgstr ""
 
-#: src/blocks/map/controls.js:18
+#: src/blocks/map/controls.js:20
 msgid "Edit Location"
 msgstr ""
 
@@ -5970,11 +5955,11 @@ msgstr ""
 msgid "Aubergine"
 msgstr ""
 
-#: src/blocks/media-card/controls.js:26
+#: src/blocks/media-card/controls.js:28
 msgid "Show media on left"
 msgstr ""
 
-#: src/blocks/media-card/controls.js:31
+#: src/blocks/media-card/controls.js:33
 msgid "Show media on right"
 msgstr ""
 
@@ -6035,23 +6020,27 @@ msgstr ""
 msgid "Toggle to add an %s shadow"
 msgstr ""
 
-#: src/blocks/media-card/media-container.js:31
+#: src/blocks/media-card/media-container.js:30
 msgid "Drop to replace media"
+msgstr ""
+
+#: src/blocks/media-card/media-container.js:38
+msgid "Media Card controls"
 msgstr ""
 
 #: src/blocks/media-card/media-container.js:46
 msgid "Edit media"
 msgstr ""
 
-#: src/blocks/media-card/media-container.js:104
-msgid "Media area"
-msgstr ""
-
-#: src/blocks/media-card/media-container.js:105
+#: src/blocks/media-card/media-container.js:107
 msgid "Upload a media file or pick one from your media library"
 msgstr ""
 
-#: src/blocks/opentable/controls.js:19
+#: src/blocks/media-card/media-container.js:108
+msgid "Media area"
+msgstr ""
+
+#: src/blocks/opentable/controls.js:21
 msgid "Edit Restaurant"
 msgstr ""
 
@@ -6720,11 +6709,11 @@ msgstr ""
 msgid "Toggle to show a call to action button."
 msgstr ""
 
-#: src/blocks/shape-divider/controls.js:26
+#: src/blocks/shape-divider/controls.js:28
 msgid "Flip horiztonally"
 msgstr ""
 
-#: src/blocks/shape-divider/controls.js:31
+#: src/blocks/shape-divider/controls.js:33
 msgid "Flip vertically"
 msgstr ""
 
@@ -6789,42 +6778,6 @@ msgstr ""
 msgid "Shape color"
 msgstr ""
 
-#: src/blocks/share/edit.js:126
-msgid "Add Facebook share button"
-msgstr ""
-
-#: src/blocks/share/edit.js:142
-msgid "Add Twitter share button"
-msgstr ""
-
-#: src/blocks/share/edit.js:158
-msgid "Add Pinterest share button"
-msgstr ""
-
-#: src/blocks/share/edit.js:174
-msgid "Add Linkedin share button"
-msgstr ""
-
-#: src/blocks/share/edit.js:178
-msgid "Share on LinkedIn"
-msgstr ""
-
-#: src/blocks/share/edit.js:190
-msgid "Add Email share button"
-msgstr ""
-
-#: src/blocks/share/edit.js:206
-msgid "Add Tumblr share button"
-msgstr ""
-
-#: src/blocks/share/edit.js:222
-msgid "Add Google share button"
-msgstr ""
-
-#: src/blocks/share/edit.js:238
-msgid "Add Reddit share button"
-msgstr ""
-
 #. translators: block name
 #: src/blocks/share/index.js:26
 msgid "Share"
@@ -6836,73 +6789,26 @@ msgid "Add social sharing links to help you get likes and shares."
 msgstr ""
 
 #. translators: block style
-#: src/blocks/share/index.js:40
+#: src/blocks/share/index.js:33
 #: src/blocks/social-profiles/index.js:45
 msgid "Mask"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/share/index.js:56
+#: src/blocks/share/index.js:49
 #: src/blocks/social-profiles/index.js:61
 msgid "Icon & Text"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/share/index.js:61
+#: src/blocks/share/index.js:54
 #: src/blocks/social-profiles/index.js:66
 #: src/extensions/button-styles/index.js:11
 msgid "Circular"
 msgstr ""
 
-#: src/blocks/share/inspector.js:26
-#: src/blocks/social-profiles/inspector.js:37
-msgid "Share button colors are enabled."
-msgstr ""
-
-#: src/blocks/share/inspector.js:26
-#: src/blocks/social-profiles/inspector.js:38
-msgid "Toggle to use official colors from each social media platform."
-msgstr ""
-
-#: src/blocks/share/inspector.js:113
-#: src/blocks/social-profiles/inspector.js:119
-msgid "Social colors"
-msgstr ""
-
-#: src/blocks/share/inspector.js:129
-#: src/blocks/social-profiles/inspector.js:135
-msgid "Icon size"
-msgstr ""
-
-#: src/blocks/share/inspector.js:138
-#: src/blocks/social-profiles/inspector.js:144
-msgid "Circle size"
-msgstr ""
-
-#: src/blocks/share/inspector.js:147
-#: src/blocks/social-profiles/inspector.js:153
-msgid "Button size"
-msgstr ""
-
-#: src/blocks/share/inspector.js:155
-msgid "Icons"
-msgstr ""
-
-#: src/blocks/share/inspector.js:172
-#: src/blocks/social-profiles/edit.js:150
-msgid "LinkedIn"
-msgstr ""
-
-#: src/blocks/share/inspector.js:182
-msgid "Tumblr"
-msgstr ""
-
-#: src/blocks/share/inspector.js:187
-msgid "Google"
-msgstr ""
-
-#: src/blocks/share/inspector.js:192
-msgid "Reddit"
+#: src/blocks/share/transforms.js:40
+msgid "Share on LinkedIn"
 msgstr ""
 
 #: src/blocks/social-profiles/edit.js:121
@@ -6943,6 +6849,10 @@ msgstr ""
 
 #: src/blocks/social-profiles/edit.js:146
 msgid "Add Pinterest profile"
+msgstr ""
+
+#: src/blocks/social-profiles/edit.js:150
+msgid "LinkedIn"
 msgstr ""
 
 #: src/blocks/social-profiles/edit.js:151
@@ -6995,6 +6905,30 @@ msgstr ""
 #. translators: block keyword
 #: src/blocks/social-profiles/index.js:37
 msgid "links"
+msgstr ""
+
+#: src/blocks/social-profiles/inspector.js:37
+msgid "Share button colors are enabled."
+msgstr ""
+
+#: src/blocks/social-profiles/inspector.js:38
+msgid "Toggle to use official colors from each social media platform."
+msgstr ""
+
+#: src/blocks/social-profiles/inspector.js:119
+msgid "Social colors"
+msgstr ""
+
+#: src/blocks/social-profiles/inspector.js:135
+msgid "Icon size"
+msgstr ""
+
+#: src/blocks/social-profiles/inspector.js:144
+msgid "Circle size"
+msgstr ""
+
+#: src/blocks/social-profiles/inspector.js:153
+msgid "Button size"
 msgstr ""
 
 #: src/blocks/social-profiles/inspector.js:161
@@ -7243,117 +7177,112 @@ msgstr ""
 msgid "Reset image cropping options"
 msgstr ""
 
+#: src/components/dimensions-control/index.js:30
+msgid "Margin top"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:31
+msgid "Margin right"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:32
+msgid "Margin bottom"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:33
+msgid "Margin left"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:36
+msgid "Padding top"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:37
+msgid "Padding right"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:38
+msgid "Padding bottom"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:39
+msgid "Padding left"
+msgstr ""
+
 #. translators: a unit of size (px) for css markup
-#: src/components/dimensions-control/index.js:387
+#: src/components/dimensions-control/index.js:280
 msgid "Pixel"
 msgstr ""
 
 #. translators: a unit of size (em) for css markup
-#: src/components/dimensions-control/index.js:392
+#: src/components/dimensions-control/index.js:285
 msgid "Em"
 msgstr ""
 
 #. translators: a unit of size (vw) for css markup
-#: src/components/dimensions-control/index.js:397
+#: src/components/dimensions-control/index.js:290
 msgid "Viewport width"
 msgstr ""
 
 #. translators: a unit of size (vh) for css markup
-#: src/components/dimensions-control/index.js:402
+#: src/components/dimensions-control/index.js:295
 msgid "Viewport height"
 msgstr ""
 
 #. translators: a unit of size for css markup
-#: src/components/dimensions-control/index.js:407
+#: src/components/dimensions-control/index.js:300
 msgid "Percentage"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:452
+#: src/components/dimensions-control/index.js:358
+msgid "Unsync"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:358
+msgid "Sync"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:361
+msgid "Sync units"
+msgstr ""
+
+#: src/components/dimensions-control/index.js:385
 msgid "Select Units"
 msgstr ""
 
 #. translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
-#: src/components/dimensions-control/index.js:456
-#: src/components/dimensions-control/index.js:468
+#: src/components/dimensions-control/index.js:391
+#: src/components/dimensions-control/index.js:403
 msgid "%s units"
 msgstr ""
 
 #. translators: %s: a texual label
-#: src/components/dimensions-control/index.js:485
+#: src/components/dimensions-control/index.js:420
 msgid "Turn off advanced %s settings"
 msgstr ""
 
-#. translators: %s: values associated with CSS syntax, 'Margin', 'Padding'
-#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:532
-#: src/components/dimensions-control/index.js:609
-#: src/components/dimensions-control/index.js:686
-msgid "%s top"
-msgstr ""
-
-#. translators: %s: values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:546
-#: src/components/dimensions-control/index.js:623
-#: src/components/dimensions-control/index.js:700
-msgid "%s right"
-msgstr ""
-
-#. translators: %s: values associated with CSS syntax, 'Margin', 'Padding'
-#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:560
-#: src/components/dimensions-control/index.js:637
-#: src/components/dimensions-control/index.js:714
-msgid "%s bottom"
-msgstr ""
-
-#. translators: %s: values associated with CSS syntax, 'Margin', 'Padding'
-#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:574
-#: src/components/dimensions-control/index.js:651
-#: src/components/dimensions-control/index.js:728
-msgid "%s left"
-msgstr ""
-
-#: src/components/dimensions-control/index.js:582
-#: src/components/dimensions-control/index.js:659
-#: src/components/dimensions-control/index.js:735
-msgid "Unsync"
-msgstr ""
-
-#: src/components/dimensions-control/index.js:582
-#: src/components/dimensions-control/index.js:659
-#: src/components/dimensions-control/index.js:735
-msgid "Sync"
-msgstr ""
-
-#: src/components/dimensions-control/index.js:585
-#: src/components/dimensions-control/index.js:662
-#: src/components/dimensions-control/index.js:738
-msgid "Sync units"
-msgstr ""
-
-#: src/components/dimensions-control/index.js:756
+#: src/components/dimensions-control/index.js:460
 msgid "Top"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:757
+#: src/components/dimensions-control/index.js:461
 msgid "Right"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:758
+#: src/components/dimensions-control/index.js:462
 msgid "Bottom"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:759
+#: src/components/dimensions-control/index.js:463
 msgid "Left"
 msgstr ""
 
 #. translators: %s: a texual label
-#: src/components/dimensions-control/index.js:779
+#: src/components/dimensions-control/index.js:483
 msgid "Advanced %s settings"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:784
+#: src/components/dimensions-control/index.js:488
 msgid "Advanced"
 msgstr ""
 
@@ -7547,59 +7476,59 @@ msgstr ""
 msgid "Align cells"
 msgstr ""
 
-#: src/components/typography-controls/index.js:61
+#: src/components/typography-controls/index.js:69
 msgid "Change typography"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:89
-#: src/components/typography-controls/index.js:122
+#: src/components/typography-controls/index.js:97
+#: src/components/typography-controls/index.js:130
 msgid "Normal"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:94
+#: src/components/typography-controls/index.js:102
 msgid "Bold"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:107
+#: src/components/typography-controls/index.js:115
 #: src/formats/uppercase/index.js:25
 #: src/formats/uppercase/index.js:40
 msgid "Uppercase"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:112
+#: src/components/typography-controls/index.js:120
 msgid "Lowercase"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:117
+#: src/components/typography-controls/index.js:125
 msgid "Capitalize"
 msgstr ""
 
-#: src/components/typography-controls/index.js:183
+#: src/components/typography-controls/index.js:171
 msgid "Weight"
 msgstr ""
 
-#: src/components/typography-controls/index.js:195
+#: src/components/typography-controls/index.js:183
 msgid "Transform"
 msgstr ""
 
-#: src/components/typography-controls/index.js:217
+#: src/components/typography-controls/index.js:205
 msgid "Line height"
 msgstr ""
 
-#: src/components/typography-controls/index.js:229
+#: src/components/typography-controls/index.js:217
 msgid "Letter spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:241
+#: src/components/typography-controls/index.js:229
 msgid "No top spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:246
+#: src/components/typography-controls/index.js:234
 msgid "No bottom spacing"
 msgstr ""
 

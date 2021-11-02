@@ -39,15 +39,7 @@ describe( 'Test CoBlocks Row Block', function() {
 
 		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 1 );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/row' );
-
-		helpers.viewPage();
-
-		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 1 );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -66,15 +58,7 @@ describe( 'Test CoBlocks Row Block', function() {
 
 		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 2 );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/row' );
-
-		helpers.viewPage();
-
-		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 2 );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -93,15 +77,7 @@ describe( 'Test CoBlocks Row Block', function() {
 
 		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 3 );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/row' );
-
-		helpers.viewPage();
-
-		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 3 );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -120,15 +96,7 @@ describe( 'Test CoBlocks Row Block', function() {
 
 		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 4 );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/row' );
-
-		helpers.viewPage();
-
-		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 4 );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -136,7 +104,7 @@ describe( 'Test CoBlocks Row Block', function() {
 	 * and are able to successfully save the block without errors.
 	 */
 	it( 'Test row block saves with color values set.', function() {
-		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB } = rowData;
+		const { backgroundColor, textColor } = rowData;
 		helpers.addBlockToPost( 'coblocks/row', true );
 
 		if ( testAgainstVariationsPicker ) {
@@ -150,18 +118,7 @@ describe( 'Test CoBlocks Row Block', function() {
 		helpers.setColorSetting( 'background color', backgroundColor );
 		helpers.setColorSetting( 'text color', textColor );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/row' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-row' ).should( 'exist' );
-		cy.get( '.wp-block-coblocks-row__inner' )
-			.should( 'have.css', 'background-color', backgroundColorRGB )
-			.should( 'have.css', 'color', textColorRGB );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -182,19 +139,10 @@ describe( 'Test CoBlocks Row Block', function() {
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'row' );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/row' );
 
 		cy.get( '.wp-block-coblocks-row' )
 			.should( 'have.class', 'my-custom-class' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-row' )
-			.should( 'have.class', 'my-custom-class' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -241,8 +189,6 @@ describe( 'Test CoBlocks Row Block', function() {
 		cy.get( '.wp-block-coblocks-column' )
 			.should( 'have.class', 'is-vertically-aligned-bottom' );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/row' );
 
 		cy.get( '.wp-block-coblocks-row__inner' )
@@ -250,15 +196,5 @@ describe( 'Test CoBlocks Row Block', function() {
 
 		cy.get( '.wp-block-coblocks-column' )
 			.should( 'have.class', 'is-vertically-aligned-bottom' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-row__inner' )
-			.should( 'have.class', 'are-vertically-aligned-bottom' );
-
-		cy.get( '.wp-block-coblocks-column' )
-			.should( 'have.class', 'is-vertically-aligned-bottom' );
-
-		helpers.editPage();
 	} );
 } );

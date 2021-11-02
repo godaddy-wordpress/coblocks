@@ -1,7 +1,7 @@
 @include break-small() {
 	@for $i from 1 through 10 {
 
-		&.has-margin-top-#{ $i * 5 } {
+		.has-margin-top-#{ $i * 5 } {
 			margin-top: #{ round($i * 5 / 2) }px !important;
 		}
 	}
@@ -9,7 +9,7 @@
 @include break-small-max() {
 	@for $i from 1 through 10 {
 
-		&.has-margin-top-mobile-#{ $i * 5 } {
+		.has-margin-top-mobile-#{ $i * 5 } {
 			margin-top: #{ round($i * 5 / 2) }px !important;
 		}
 	}
