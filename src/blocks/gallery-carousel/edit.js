@@ -44,7 +44,6 @@ export const parseNavForClass = ( thumbnails, clientId ) => thumbnails
 	: '';
 
 const GalleryCarouselEdit = ( props ) => {
-	try {
 	const { selectBlock } = useDispatch( 'core/block-editor' );
 
 	const {
@@ -282,9 +281,6 @@ const GalleryCarouselEdit = ( props ) => {
 			</ResizableBox>
 		</GalleryContextProvider>
 	);
-			} catch (error) {
-				console.log('getting over wordpress here', error);
-			}
 };
 
 const GalleryCarouselThumbnail = ({ changeStep, item, index }) => {

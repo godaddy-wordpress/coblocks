@@ -20,103 +20,6 @@
 		}
 	}
 
-	.flickity-button {
-		align-items: center;
-		border-radius: 100%;
-		color: $white;
-		cursor: pointer;
-		display: flex;
-		height: auto;
-		margin: 0 1%;
-		padding: 15px;
-		position: absolute;
-		right: 0;
-		top: 50%;
-		transform: translateY(-50%);
-		transition: 250ms background-color linear;
-		width: auto;
-		z-index: 3;
-
-		&:hover {
-			background-color: rgba(255, 255, 255, 0.15);
-		}
-
-		&:focus {
-			background-color: rgba(255, 255, 255, 0.25);
-			box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.25);
-			outline: none;
-		}
-
-		@include break-small() {
-			margin: 0 2%;
-
-			&:hover {
-				background-color: rgba(255, 255, 255, 0.25);
-			}
-		}
-
-		&-icon {
-			display: none;
-		}
-
-		&::after {
-			background-color: $white;
-			content: "";
-			display: block;
-			height: 28px;
-			mask-repeat: no-repeat;
-			position: relative;
-			width: 28px;
-
-			@include break-large() {
-				height: 32px;
-				width: 32px;
-			}
-		}
-
-		&.previous {
-			height: 62px;
-			left: 0;
-			width: 62px;
-
-			&::after {
-				height: 32px;
-				left: -1px;
-				mask-image: url(images/lightbox/arrow-left.svg);
-				width: 32px;
-			}
-		}
-
-		&.next {
-			height: 62px;
-			width: 62px;
-
-			&::after {
-				height: 32px;
-				mask-image: url(images/lightbox/arrow-right.svg);
-				right: -1px;
-				width: 32px;
-			}
-		}
-
-		// IE 10+ Support
-		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-
-			&.previous::after {
-				background-color: transparent !important;
-				background-image: url(images/lightbox/arrow-left.svg);
-				color: transparent !important;
-			}
-
-			&.next::after {
-				background-color: transparent !important;
-				background-image: url(images/lightbox/arrow-right.svg);
-				color: transparent !important;
-
-			}
-		}
-	}
-
 	.carousel-nav {
 		height: auto;
 
@@ -160,6 +63,26 @@
 			}
 		}
 	}
+}
+
+.wp-block-coblocks-gallery-carousel-thumbnail-pagination {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	height: auto;
+	justify-content: flex-start;
+	overflow: hidden;
+	width: auto;
+}
+
+.wp-block-coblocks-gallery-carousel-thumbnail {
+	cursor: pointer;
+	min-width: 100px;
+	opacity: 0.4;
+}
+
+.wp-block-coblocks-gallery-carousel-thumbnail.is-active {
+	opacity: 1;
 }
 
 .has-responsive-height {

@@ -354,7 +354,7 @@ class CoBlocks_Block_Assets {
 			);
 
 			wp_enqueue_script(
-				'coblocks-tiny-swiper',
+				'coblocks-tinyswiper-initializer',
 				$dir . 'coblocks-tinyswiper-initializer.js',
 				array(),
 				COBLOCKS_VERSION,
