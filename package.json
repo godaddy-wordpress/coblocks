@@ -118,7 +118,6 @@
 		"chalk": "^4.1.2",
 		"classnames": "^2.2.5",
 		"commander": "^2.20.0",
-		"css-loader": "6.2.0",
 		"cypress": "^6.9.1",
 		"cypress-file-upload": "^5.0.8",
 		"cypress-log-to-output": "1.1.2",
@@ -154,8 +153,6 @@
 		"matchdep": "^2.0.0",
 		"memize": "^1.0.5",
 		"po2json": "^1.0.0-alpha",
-		"postcss": "8.2.15",
-		"postcss-loader": "6.1.1",
 		"prop-types": "^15.7.2",
 		"puppeteer": ">=1.19.0",
 		"react-flickity-component": "^3.4.0",
@@ -165,11 +162,8 @@
 		"react-test-renderer": "^16.13.1",
 		"recompose": "^0.30.0",
 		"rtlcss-webpack-plugin": "^4.0.3",
-		"sass": "1.35.2",
-		"sass-loader": "12.1.0",
 		"simple-git": "^2.35.0",
 		"slick-carousel": "^1.8.1",
-		"style-loader": "^0.19.1",
 		"uuid": "^8.3.2"
 	},
 	"resolutions": {
