@@ -117,7 +117,7 @@
 		"@wordpress/url": "^3.2.3",
 		"chalk": "^4.1.2",
 		"classnames": "^2.2.5",
-		"commander": "^2.20.0",
+		"commander": "^8.3.0",
 		"cypress": "^6.9.1",
 		"cypress-file-upload": "^5.0.8",
 		"cypress-log-to-output": "1.1.2",
