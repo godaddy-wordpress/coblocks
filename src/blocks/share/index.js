@@ -1,20 +1,20 @@
 /**
  * External dependencies
  */
-import { ShareIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { find } from 'lodash';
 
 /**
  * Internal dependencies
  */
-import edit from './edit';
 import metadata from './block.json';
-import { hasFormattingCategory } from '../../utils/block-helpers';
+import transforms from './transforms';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
+import { dispatch, select } from '@wordpress/data';
+import { createBlock, switchToBlockType } from '@wordpress/blocks';
 
 /**
  * Block constants
@@ -26,57 +26,72 @@ const settings = {
 	title: __( 'Share', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add social sharing links to help you get likes and shares.', 'coblocks' ),
-	category: hasFormattingCategory ? 'common' : 'widgets',
-	icon: <Icon icon={ icon } />,
-	keywords: [
-		'coblocks',
-		/* translators: block keyword */
-		__( 'social', 'coblocks' ),
-	],
+	parent: [],
 	styles: [
 		{
-			name: 'mask',
 			/* translators: block style */
 			label: __( 'Mask', 'coblocks' ),
+			name: 'mask',
 		},
 		{
-			name: 'icon',
+			isDefault: true,
 			/* translators: block style */
 			label: __( 'Icon', 'coblocks' ),
-			isDefault: true,
+			name: 'icon',
 		},
 		{
-			name: 'text',
 			/* translators: block style */
 			label: __( 'Text', 'coblocks' ),
+			name: 'text',
 		},
 		{
-			name: 'icon-and-text',
 			/* translators: block style */
 			label: __( 'Icon & Text', 'coblocks' ),
+			name: 'icon-and-text',
 		},
 		{
-			name: 'circular',
 			/* translators: block style */
 			label: __( 'Circular', 'coblocks' ),
+			name: 'circular',
 		},
 	],
-	example: {
-		attributes: {
-			facebook: '#',
-			twitter: '#',
-			pinterest: '#',
-			linkedin: '#',
-			email: '#',
-			tumblr: '#',
-			textAlign: 'center',
-		},
-	},
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 	},
-	edit,
+	transforms,
+	edit: ( props ) => {
+		const { replaceBlocks } = dispatch( 'core/block-editor' );
+		const { colors } = select( 'core/block-editor' )?.getSettings() || {};
+
+		let transformedBlock = switchToBlockType( props, 'core/social-links' );
+
+		// Wrap in a group block if blockBackground is set.
+		const groupProps = {
+			backgroundColor: props.attributes.blockBackgroundColor,
+			style: {
+				color: {
+					background: props.attributes.customBlockBackgroundColor,
+				},
+			},
+		};
+
+		if ( !! groupProps.backgroundColor || !! groupProps.style.color.background ) {
+			const backgroundColorObj = find( colors, { slug: groupProps.background } );
+
+			if ( backgroundColorObj ) {
+				groupProps.style.color.background = backgroundColorObj.color;
+			}
+
+			transformedBlock = createBlock( 'core/group', groupProps, transformedBlock );
+		}
+
+		replaceBlocks(
+			[ props.clientId ],
+			transformedBlock,
+		);
+		return null;
+	},
 	save() {
 		return null;
 	},

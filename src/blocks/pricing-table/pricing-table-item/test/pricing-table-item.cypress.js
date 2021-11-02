@@ -8,15 +8,15 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 	 * Setup Pricing Table Item data
 	 */
 	const pricingTableItemData = {
-		title: 'Plan 1',
-		currency: '$',
 		amount: '33',
-		features: 'Lorem ipsum dolor.',
-		buttonText: 'Consectetur.',
 		backgroundColor: '#ff0000',
-		textColor: '#ffffff',
 		backgroundColorRGB: 'rgb(255, 0, 0)',
+		buttonText: 'Consectetur.',
+		currency: '$',
+		features: 'Lorem ipsum dolor.',
+		textColor: '#ffffff',
 		textColorRGB: 'rgb(255, 255, 255)',
+		title: 'Plan 1',
 	};
 
 	/**
@@ -26,15 +26,7 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 	it( 'Test pricing-table-item block saves with empty values.', function() {
 		helpers.addBlockToPost( 'coblocks/pricing-table', true );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/pricing-table-item' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-pricing-table-item' ).should( 'not.exist' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -60,11 +52,7 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 		helpers.setColorSetting( 'background color', backgroundColor );
 		helpers.setColorSetting( 'text color', textColor );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/pricing-table' );
-
-		helpers.viewPage();
 
 		cy.get( '.wp-block-coblocks-pricing-table' ).should( 'exist' );
 		cy.get( '.wp-block-coblocks-pricing-table-item' ).first()
@@ -75,8 +63,6 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__currency' ).should( 'have.html', currency );
 		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__amount' ).should( 'have.html', amount );
 		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__features > li' ).should( 'have.html', features );
-		firstTableItem().find( '.wp-block-button > a' ).should( 'have.html', buttonText );
-
-		helpers.editPage();
+		firstTableItem().find( '.wp-block-button' ).should( 'have.text', buttonText );
 	} );
 } );
