@@ -205,6 +205,7 @@ const GalleryCarouselEdit = ( props ) => {
 			</Swiper>
 		);
 	}, [
+		freeScroll,
 		images,
 		thumbnails,
 		pauseHover, 

@@ -50,7 +50,8 @@ const handleSwipe = (newIndex, state) => {
           passiveListeners: true,
           longSwipesRatio: 0.8,
           touchable: false,
-          plugins: []
+          plugins: [],
+          freeMode: true,
         };
 
         if ( parsedSwiperOptions.navigation ) {
@@ -77,6 +78,14 @@ const handleSwipe = (newIndex, state) => {
         }
 
         swiper.on('after-slide', handleSwipe);
+
+        if ( parsedSwiperOptions.draggable !== true ) {
+          const swiperWrapper = document.getElementById('swiper-wrapper');
+
+          swiperWrapper?.addEventListener('mousedown', e => {
+            e.stopPropagation()
+          });
+        }
       }
     }
 }());

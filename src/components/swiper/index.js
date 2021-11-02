@@ -13,16 +13,12 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 
 import './style.scss';
 
-/*
-    we cannot mutate the tinyswiper class.
-    in order to elegantly reinitialize a TinySwiper class,
-    we need to remount the component in which it is initialized upon mount
-    this HOC component changes Swiper component key on the list props update 
-    so that a remount is triggered
-*/
 const SwiperHOC = ( Component ) => {
     return (props) => {
-        const swiperUuid = useMemo(() => generateUuid(), [ props.list ]);
+        const swiperUuid = useMemo(() => 
+            generateUuid(), 
+            [ props.list, props.freeScroll ]
+        );
 
         return <Component key={swiperUuid} uuid={swiperUuid} {...props} />
     }
@@ -37,6 +33,7 @@ const Swiper = ({
     pauseHover = null,
     onSwipe = null,
     Pagination = null,
+    freeScroll = false,
     uuid = null
 }) => {
     const [ swiper, setSwiper ] = useState( null );
@@ -78,6 +75,7 @@ const Swiper = ({
                 passiveListeners: true,
                 longSwipesRatio: 0.8,
                 touchable: false,
+                freeMode: freeScroll,
             });
 
             if ( onSwipe ) {
@@ -197,5 +195,3 @@ const Swiper = ({
 };
 
 export default SwiperHOC(Swiper);
-
-// export default Swiper;
