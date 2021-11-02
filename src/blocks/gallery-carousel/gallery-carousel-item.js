@@ -1,4 +1,4 @@
-import { useContext, useMemo, useEffect } from '@wordpress/element';
+import { useContext, useMemo } from '@wordpress/element';
 
 import { __ } from '@wordpress/i18n';
 
@@ -6,28 +6,30 @@ import GalleryImage from '../../components/block-gallery/gallery-image';
 
 import { GalleryCarouselContext } from './context';
 
-
 const GalleryCarouselItem = ({ 
     ariaLabel, 
     index,
+    handleRemoveImage,
+    handleReplaceImage,
 }) => {
     const {
         setSelectedImage,
-        selectedImage,
         isSelected,
         images,
     } = useContext(GalleryCarouselContext);
 
-    const isItemSelected = isSelected && selectedImage === index;
     const item = images[index];
 
+    if ( !item ) {
+        return null;
+    }
+
     const renderGalleryItem = useMemo(() => {
-        return (
+         return (
             <div 
                 className="coblocks-gallery--item" 
                 role="button" 
                 tabIndex={index}
-                style={{ pointerEvents: 'none', touchAction: 'none' }}
             >
                 <GalleryImage
                     url={ item.url }
@@ -38,6 +40,10 @@ const GalleryCarouselItem = ({
                     onSelect={() => {
                         setSelectedImage( index );
                     }}
+                    onRemove={() => {
+                        handleRemoveImage(index);
+                    }}
+                    replaceImage={ handleReplaceImage }
                     isSelected={ isSelected }
                     aria-label={ ariaLabel }
                     supportsCaption={ false }
@@ -46,7 +52,7 @@ const GalleryCarouselItem = ({
                 />	
             </div>				
         );  
-    }, [ isItemSelected ]);
+    }, [ isSelected, item ]);
 
     return renderGalleryItem;
 }

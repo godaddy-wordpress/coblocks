@@ -346,6 +346,22 @@ class CoBlocks_Block_Assets {
 		// Carousel block.
 		if ( $this->is_page_gutenberg() || has_block( 'coblocks/gallery-carousel' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
+				'coblocks-tiny-swiper',
+				$vendors_dir . '/tiny-swiper.js',
+				array(),
+				COBLOCKS_VERSION,
+				true
+			);
+
+			wp_enqueue_script(
+				'coblocks-tiny-swiper',
+				$dir . 'coblocks-tinyswiper-initializer.js',
+				array(),
+				COBLOCKS_VERSION,
+				true
+			);
+
+			wp_enqueue_script(
 				'coblocks-flickity',
 				$vendors_dir . '/flickity.js',
 				array( 'jquery' ),

@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import ReactDOMServer from 'react-dom/server';
 import { GalleryCarouselIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 import { useDispatch } from '@wordpress/data';
 import { v4 as uuid } from 'uuid';
@@ -23,8 +24,8 @@ import { GalleryContextProvider, GalleryCarouselContext } from './context';
  */
 import { Icon } from '@wordpress/icons';
 import { __, sprintf } from '@wordpress/i18n';
-import { useMemo, useContext, useCallback } from '@wordpress/element';
-import { compose } from '@wordpress/compose';
+import { useEffect, useMemo, useContext, useState, useCallback } from '@wordpress/element';
+import { compose, usePrevious } from '@wordpress/compose';
 import { withNotices, ResizableBox } from '@wordpress/components';
 import { RichText } from '@wordpress/block-editor';
 
@@ -43,6 +44,7 @@ export const parseNavForClass = ( thumbnails, clientId ) => thumbnails
 	: '';
 
 const GalleryCarouselEdit = ( props ) => {
+	try {
 	const { selectBlock } = useDispatch( 'core/block-editor' );
 
 	const {
@@ -109,6 +111,25 @@ const GalleryCarouselEdit = ( props ) => {
 		})
 	}
 
+	const handleRemoveImage = (removeIndex) => {
+		setAttributes({
+			images: images.filter((img, index) => {
+				return index !== removeIndex;
+			})
+		})
+	}
+
+	const handleReplaceImage = ( replaceIndex, newImage ) => {
+		setAttributes({
+			images: images.map(( img, index ) => {
+				if ( index === replaceIndex) {
+					return newImage;
+				}
+				return img;
+			})
+		})
+	}
+
 	const variatonSelected = hasVariationSet( attributes );
 
 	if ( !images.length && ! variatonSelected  ) {
@@ -149,12 +170,11 @@ const GalleryCarouselEdit = ( props ) => {
 				))}
 			</div>
 		);
-	}, [ selectedImage ]);
+	}, [ selectedImage, images ]);
 
 	const renderSwiper = useMemo(() => {
 		return (
 			<Swiper
-			    uuid={'12345'}
 				list={images}
 				navigation={prevNextButtons}
 				isDraggable={draggable}
@@ -178,12 +198,15 @@ const GalleryCarouselEdit = ( props ) => {
 						<GalleryCarouselItem 
 							index={index} 
 							ariaLabel={ariaLabel}
+							handleRemoveImage={handleRemoveImage}
+							handleReplaceImage={handleReplaceImage}
 						/>	
 					);
 				}}			
 			</Swiper>
 		);
-	}, [ 
+	}, [
+		images,
 		thumbnails,
 		pauseHover, 
 		prevNextButtons, 
@@ -207,8 +230,14 @@ const GalleryCarouselEdit = ( props ) => {
 		);
 	}, [selectedImage, isSelected]);
 
+	const defaultGalleryState = {
+		isSelected,
+		images,
+		showThumbnails: thumbnails,
+	}
+
 	return (
-		<>
+		<GalleryContextProvider {...defaultGalleryState}>
 			{ isSelected && (
 				<>
 					<Controls { ...props } />
@@ -251,59 +280,11 @@ const GalleryCarouselEdit = ( props ) => {
 					</div>
 				</div>
 			</ResizableBox>
-		</>
+		</GalleryContextProvider>
 	);
-
-	// console.log('edit function stuff', {
-	// 	className,
-	// 	innerClasses
-	// })
-
-	// return (
-	// 	<>
-	// 		{ isSelected && (
-	// 			<>
-	// 				<Controls { ...props } />
-	// 				<Inspector { ...props } />
-	// 			</>
-	// 		) }
-	// 		{ noticeUI }
-	// 		<ResizableBox
-	// 			size={ {
-	// 				height,
-	// 				width: '100%',
-	// 			} }
-	// 			className={ classnames( {
-	// 				'is-selected': isSelected,
-	// 				'has-responsive-height': responsiveHeight,
-	// 			} ) }
-	// 			minHeight="0"
-	// 			enable={ {
-	// 				bottom: true,
-	// 				bottomLeft: false,
-	// 				bottomRight: false,
-	// 				left: false,
-	// 				right: false,
-	// 				top: false,
-	// 				topLeft: false,
-	// 				topRight: false,
-	// 			} }
-	// 			onResizeStop={ ( _event, _direction, _elt, delta ) => {
-	// 				setAttributes( {
-	// 					height: parseInt( height + delta.height, 10 ),
-	// 				} );
-	// 			} }
-	// 			showHandle={ isSelected }
-	// 			onClick={handleSelectCarousel}
-	// 		>
-	// 			<div className={ className }>
-	// 				<div className={ innerClasses }>
-	// 					{renderSwiper}
-	// 				</div>
-	// 			</div>
-	// 		</ResizableBox>
-	// 	</>
-	// );
+			} catch (error) {
+				console.log('getting over wordpress here', error);
+			}
 };
 
 const GalleryCarouselThumbnail = ({ changeStep, item, index }) => {
@@ -319,22 +300,6 @@ const GalleryCarouselThumbnail = ({ changeStep, item, index }) => {
 	);
 }
 
-const withGalleryCarouselState = ( Component ) => {
-	return (props) => {
-		const defaultGalleryState = {
-			isSelected: props.isSelected,
-			images: props.attributes?.images,
-			showThumbnails: props.attributes.thumbnails,
-		}
-		return (
-			<GalleryContextProvider {...defaultGalleryState} >
-				<Component {...props} />
-			</GalleryContextProvider>
-		)
-	}
-}
-
 export default compose( [
 	withNotices,
-	withGalleryCarouselState
 ] )( GalleryCarouselEdit );

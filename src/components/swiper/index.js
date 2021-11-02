@@ -3,13 +3,24 @@ import {
     useEffect, 
     useCallback, 
     useState,
+    useRef
 } from '@wordpress/element';
 import { usePrevious } from '@wordpress/compose';
+import { v4 as generateUuid } from 'uuid';
 
 import TinySwiper from 'tiny-swiper';
 import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
 
 import './style.scss';
+
+// we need to remount the  
+const SwiperHOC = ( Component ) => {
+    return (props) => {
+        const swiperUuid = useMemo(() => generateUuid(), [ props.list ]);
+
+        return <Component key={swiperUuid} uuid={swiperUuid} {...props} />
+    }
+}
 
 const Swiper = ({ 
     list, 
@@ -20,23 +31,8 @@ const Swiper = ({
     pauseHover = null,
     onSwipe = null,
     Pagination = null,
-    uuid = null,
-    type,
+    uuid = null
 }) => {
-
-    console.log('swiper props', {
-        list,
-        children,
-        navigation,
-        isDraggable,
-        autoPlaySpeed,
-        pauseHover,
-        onSwipe,
-        Pagination,
-        type
-    });
-
-
     const [ swiper, setSwiper ] = useState( null );
     const [ autoPlay, setAutoPlay ] = useState( null );
     const [ hovering, setHovering ] = useState( false );
@@ -44,44 +40,48 @@ const Swiper = ({
     const prevHovering = usePrevious( hovering );
     const prevAutoPlaySpeed = usePrevious( autoPlaySpeed );
 
-    useEffect(() => {
-        const swiperWrapper = document.querySelector('.swiper-wrapper');
+    const swiperWrapperRef = useRef( null );
 
+    useEffect(() => {
         if ( ! isDraggable ) {
-            swiperWrapper.addEventListener('mousedown', e => e.stopPropagation());
+            swiperWrapperRef.current.addEventListener('mousedown', e => e.stopPropagation());
 
             return () => {
-                swiperWrapper.removeEventListener('mousedown', e => e.stopPropagation());
+                swiperWrapperRef.current.removeEventListener('mousedown', e => e.stopPropagation());
             }
         }
     }, [ isDraggable ]);
 
     useEffect(() => {
-        const swiperContainer = document.getElementById(uuid);
+        try {
+            const swiperContainer = document.getElementById(uuid);
 
-        const swiperBackButton = document.getElementById(`${uuid}-prev`);
-        const swiperNextButton = document.getElementById(`${uuid}-next`);
+            const swiperBackButton = document.getElementById(`${uuid}-prev`);
+            const swiperNextButton = document.getElementById(`${uuid}-next`);
 
-        const newSwiper = new TinySwiper(swiperContainer, {
-            navigation: {
-                prevEl: swiperBackButton,
-                nextEl: swiperNextButton
-            },
-            plugins: [
-                TinySwiperPluginNavigation
-            ],
-            loop: true,
-            centeredSlides: true,
-            passiveListeners: true,
-            longSwipesRatio: 0.8,
-            touchable: false,
-        });
+            const newSwiper = new TinySwiper(swiperContainer, {
+                navigation: {
+                    prevEl: swiperBackButton,
+                    nextEl: swiperNextButton
+                },
+                plugins: [
+                    TinySwiperPluginNavigation
+                ],
+                loop: true,
+                centeredSlides: true,
+                passiveListeners: true,
+                longSwipesRatio: 0.8,
+                touchable: false,
+            });
 
-        if ( onSwipe ) {
-            newSwiper.on('after-slide', onSwipe);
+            if ( onSwipe ) {
+                newSwiper.on('after-slide', onSwipe);
+            }
+
+            setSwiper( newSwiper );
+        } catch (error) {
+            console.log('swiper init error', error);
         }
-
-        setSwiper( newSwiper );
     }, []);
 
     useEffect(() => {
@@ -137,7 +137,7 @@ const Swiper = ({
 
     const renderList = useMemo(() => {
         return list.map((item, index) => (
-            <div key={uuid} className={`swiper-slide`}>
+            <div className={`swiper-slide`}>
                 {children({
                     item,
                     index,
@@ -174,12 +174,13 @@ const Swiper = ({
             className={`coblocks-swiper-container`} 
             onMouseEnter={handleMouseEnter} 
             onMouseLeave={handleMouseLeave}
+            
         >
             <div 
                 className="swiper-container" 
                 id={uuid} 
             >
-                <div className="swiper-wrapper" >
+                <div className="swiper-wrapper" id="swiper-wrapper" ref={swiperWrapperRef} >
                     {renderList}
                 </div>
                 {renderNavigation}
@@ -187,6 +188,25 @@ const Swiper = ({
             {renderPagination}
          </div>       
     );
+
+    // return (
+    //     <div 
+    //         className={`coblocks-swiper-container`} 
+    //         onMouseEnter={handleMouseEnter} 
+    //         onMouseLeave={handleMouseLeave}
+    //     >
+    //         <div 
+    //             className="swiper-container" 
+    //             id={uuid} 
+    //         >
+    //             <div className="swiper-wrapper" id="swiper-wrapper" ref={swiperWrapperRef} >
+    //                 {renderList}
+    //             </div>
+    //         </div> 
+    //      </div>       
+    // );
 };
 
-export default Swiper;
+export default SwiperHOC(Swiper);
+
+// export default Swiper;
