@@ -17,7 +17,7 @@ const transforms = {
 				const blockAttributes = getBlockAttributes( metadata.name, node.outerHTML );
 				return createBlock( metadata.name, {
 					...blockAttributes,
-					count: blockAttributes.className ? parseInt( blockAttributes.className.match( /(\d+)/ )[ 0 ] ) : 2,
+					count: parseInt( node.className.match( /has-([0-9]+)-columns/ )[ 1 ] ) ?? 2,
 				} );
 			},
 		},

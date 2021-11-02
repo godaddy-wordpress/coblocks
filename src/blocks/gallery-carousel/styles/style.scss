@@ -82,7 +82,7 @@
 			&::after {
 				height: 32px;
 				left: -1px;
-				mask-image: url(images/lightbox/arrow-left.svg);
+				mask-image: url(/assets/lightbox/arrow-left.svg);
 				width: 32px;
 			}
 		}
@@ -93,7 +93,7 @@
 
 			&::after {
 				height: 32px;
-				mask-image: url(images/lightbox/arrow-right.svg);
+				mask-image: url(/assets/lightbox/arrow-right.svg);
 				right: -1px;
 				width: 32px;
 			}
@@ -104,13 +104,13 @@
 
 			&.previous::after {
 				background-color: transparent !important;
-				background-image: url(images/lightbox/arrow-left.svg);
+				background-image: url(/assets/lightbox/arrow-left.svg);
 				color: transparent !important;
 			}
 
 			&.next::after {
 				background-color: transparent !important;
-				background-image: url(images/lightbox/arrow-right.svg);
+				background-image: url(/assets/lightbox/arrow-right.svg);
 				color: transparent !important;
 
 			}

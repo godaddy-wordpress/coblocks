@@ -11,12 +11,12 @@ import { getColorClassName, InnerBlocks, RichText } from '@wordpress/block-edito
 /**
  * Internal dependencies
  */
-import { attributes as blockAttributes } from './block.json';
+import { default as currentBlock } from './block.json';
 
 const deprecated = [
 	{
 		attributes: {
-			...blockAttributes,
+			...currentBlock.attributes,
 		},
 
 		save( { attributes } ) {

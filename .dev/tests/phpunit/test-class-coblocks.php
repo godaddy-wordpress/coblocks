@@ -162,7 +162,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 	 */
 	public function test_custom_css_asset_source() {
 
-		$this->assertRegexp( '/\/coblocks\/dist\/css\/custom/', coblocks()->asset_source( 'css', 'custom' ) );
+		$this->assertRegexp( '/\/coblocks\/dist\/css\/custom/', coblocks()->asset_source( 'css/custom' ) );
 
 	}
 
@@ -207,8 +207,8 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 				'src/js/coblocks-slick-initializer.js',
 			],
 			'css' => [
-				'dist/coblocks-editor.css',
-				'dist/coblocks-style.css',
+				'dist/coblocks.css',
+				'dist/style-coblocks.css',
 			],
 		];
 
