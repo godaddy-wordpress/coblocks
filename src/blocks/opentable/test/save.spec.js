@@ -33,6 +33,15 @@
         expect( serializedBlock ).toMatchSnapshot();
      } );
  
+     it( 'should not render when no rid defined', () => {
+        block.attributes.restaurantIDs = [ { name: 'Nuno-Restaurant (Test Restaurant added by CoBlocks)' } ];
+        block.attributes.language = 'en-US';
+        serializedBlock = serialize( block );
+
+        expect( serializedBlock ).toBeDefined();
+        expect( serializedBlock ).toContain();
+     } );
+ 
      it( 'should render with preassigned restaurants', () => {
         block.attributes.restaurantIDs = [
             { rid: '123456', name: 'Nuno-Restaurant (Test Restaurant added by CoBlocks)'},

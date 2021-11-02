@@ -37,20 +37,32 @@ exports[`coblocks/media-card should render padding classes 5`] = `
 `;
 
 exports[`coblocks/media-card should render with align attribute 1`] = `
-"<!-- wp:coblocks/media-card {\\"align\\":\\"full\\"} -->
-<div class=\\"wp-block-coblocks-media-card alignfull is-style-left has-no-media\\"><div class=\\"wp-block-coblocks-media-card__inner has-no-padding\\"><div class=\\"wp-block-coblocks-media-card__wrapper\\"><figure class=\\"wp-block-coblocks-media-card__media\\"></figure><div class=\\"wp-block-coblocks-media-card__content\\"></div></div></div></div>
+"<!-- wp:coblocks/media-card {\\"align\\":\\"full\\",\\"maxWidth\\":\\"100px\\"} -->
+<div class=\\"wp-block-coblocks-media-card alignfull is-style-left has-no-media\\"><div class=\\"wp-block-coblocks-media-card__inner has-no-padding\\"><div class=\\"wp-block-coblocks-media-card__wrapper\\" style=\\"max-width:100px\\"><figure class=\\"wp-block-coblocks-media-card__media\\"></figure><div class=\\"wp-block-coblocks-media-card__content\\"></div></div></div></div>
 <!-- /wp:coblocks/media-card -->"
 `;
 
 exports[`coblocks/media-card should render with align attribute 2`] = `
+"<!-- wp:coblocks/media-card {\\"maxWidth\\":\\"100px\\"} -->
+<div class=\\"wp-block-coblocks-media-card alignwide is-style-left has-no-media\\"><div class=\\"wp-block-coblocks-media-card__inner has-no-padding\\"><div class=\\"wp-block-coblocks-media-card__wrapper\\" style=\\"max-width:100px\\"><figure class=\\"wp-block-coblocks-media-card__media\\"></figure><div class=\\"wp-block-coblocks-media-card__content\\"></div></div></div></div>
+<!-- /wp:coblocks/media-card -->"
+`;
+
+exports[`coblocks/media-card should render with appropriate id class 1`] = `
 "<!-- wp:coblocks/media-card -->
-<div class=\\"wp-block-coblocks-media-card alignwide is-style-left has-no-media\\"><div class=\\"wp-block-coblocks-media-card__inner has-no-padding\\"><div class=\\"wp-block-coblocks-media-card__wrapper\\"><figure class=\\"wp-block-coblocks-media-card__media\\"></figure><div class=\\"wp-block-coblocks-media-card__content\\"></div></div></div></div>
+<div class=\\"wp-block-coblocks-media-card alignwide is-style-left has-no-media coblocks-media-card-1234\\"><div class=\\"wp-block-coblocks-media-card__inner has-no-padding\\"><div class=\\"wp-block-coblocks-media-card__wrapper\\"><figure class=\\"wp-block-coblocks-media-card__media\\"></figure><div class=\\"wp-block-coblocks-media-card__content\\"></div></div></div></div>
 <!-- /wp:coblocks/media-card -->"
 `;
 
 exports[`coblocks/media-card should render with background image attributes 1`] = `
 "<!-- wp:coblocks/media-card {\\"backgroundImg\\":\\"150x150.png\\",\\"backgroundSize\\":\\"contain\\",\\"backgroundOverlay\\":50,\\"focalPoint\\":{\\"x\\":0.6352941176470588,\\"y\\":0.3729411405675552},\\"mediaPosition\\":\\"right\\",\\"mediaType\\":\\"image\\",\\"hasImgShadow\\":true} -->
-<div class=\\"wp-block-coblocks-media-card alignwide is-style-right\\"><div class=\\"wp-block-coblocks-media-card__inner has-background-overlay bg-contain has-background-image bg-no-repeat bg-center-center has-no-padding\\" style=\\"background-image:url(150x150.png);background-position:63.52941176470588% 37.29411405675552%\\"><div class=\\"wp-block-coblocks-media-card__wrapper\\"><figure class=\\"wp-block-coblocks-media-card__media has-shadow\\"><img src=\\"150x150.png\\" alt=\\"\\"/></figure><div class=\\"wp-block-coblocks-media-card__content\\"></div></div></div></div>
+<div class=\\"wp-block-coblocks-media-card is-style-right\\"><div class=\\"wp-block-coblocks-media-card__inner has-background-overlay bg-contain has-background-image bg-no-repeat\\" style=\\"background-image:url(150x150.png);background-position:63.52941176470588% 37.29411405675552%\\"><div class=\\"wp-block-coblocks-media-card__wrapper\\" style=\\"grid-template-columns:auto undefined%\\"><figure class=\\"wp-block-coblocks-media-card__media has-shadow\\"><img src=\\"150x150.png\\"/></figure><div class=\\"wp-block-coblocks-media-card__content\\"></div></div></div></div>
+<!-- /wp:coblocks/media-card -->"
+`;
+
+exports[`coblocks/media-card should render with background image attributes with media id 1`] = `
+"<!-- wp:coblocks/media-card {\\"backgroundImg\\":\\"150x150.png\\",\\"backgroundSize\\":\\"contain\\",\\"backgroundOverlay\\":50,\\"focalPoint\\":{\\"x\\":0.6352941176470588,\\"y\\":0.3729411405675552},\\"mediaPosition\\":\\"right\\",\\"mediaId\\":\\"1234\\",\\"mediaType\\":\\"image\\",\\"hasImgShadow\\":true} -->
+<div class=\\"wp-block-coblocks-media-card is-style-right\\"><div class=\\"wp-block-coblocks-media-card__inner has-background-overlay bg-contain has-background-image bg-no-repeat\\" style=\\"background-image:url(150x150.png);background-position:63.52941176470588% 37.29411405675552%\\"><div class=\\"wp-block-coblocks-media-card__wrapper\\" style=\\"grid-template-columns:auto undefined%\\"><figure class=\\"wp-block-coblocks-media-card__media has-shadow\\"><img src=\\"150x150.png\\" class=\\"wp-image-1234\\"/></figure><div class=\\"wp-block-coblocks-media-card__content\\"></div></div></div></div>
 <!-- /wp:coblocks/media-card -->"
 `;
 
@@ -63,5 +75,17 @@ exports[`coblocks/media-card should render with background video attributes 1`] 
 exports[`coblocks/media-card should render with className attribute 1`] = `
 "<!-- wp:coblocks/media-card {\\"className\\":\\"my-custom-class\\"} -->
 <div class=\\"wp-block-coblocks-media-card alignwide is-style-left has-no-media my-custom-class\\"><div class=\\"wp-block-coblocks-media-card__inner has-no-padding\\"><div class=\\"wp-block-coblocks-media-card__wrapper\\"><figure class=\\"wp-block-coblocks-media-card__media\\"></figure><div class=\\"wp-block-coblocks-media-card__content\\"></div></div></div></div>
+<!-- /wp:coblocks/media-card -->"
+`;
+
+exports[`coblocks/media-card should render with grid template column classes 1`] = `
+"<!-- wp:coblocks/media-card {\\"mediaWidth\\":\\"100\\"} -->
+<div class=\\"wp-block-coblocks-media-card alignwide is-style-left has-no-media\\"><div class=\\"wp-block-coblocks-media-card__inner has-no-padding\\"><div class=\\"wp-block-coblocks-media-card__wrapper\\" style=\\"grid-template-columns:100% auto\\"><figure class=\\"wp-block-coblocks-media-card__media\\"></figure><div class=\\"wp-block-coblocks-media-card__content\\"></div></div></div></div>
+<!-- /wp:coblocks/media-card -->"
+`;
+
+exports[`coblocks/media-card should render with grid template column classes 2`] = `
+"<!-- wp:coblocks/media-card {\\"mediaPosition\\":\\"right\\",\\"mediaWidth\\":\\"100\\"} -->
+<div class=\\"wp-block-coblocks-media-card alignwide is-style-right has-no-media\\"><div class=\\"wp-block-coblocks-media-card__inner has-no-padding\\"><div class=\\"wp-block-coblocks-media-card__wrapper\\" style=\\"grid-template-columns:auto 100%\\"><figure class=\\"wp-block-coblocks-media-card__media\\"></figure><div class=\\"wp-block-coblocks-media-card__content\\"></div></div></div></div>
 <!-- /wp:coblocks/media-card -->"
 `;

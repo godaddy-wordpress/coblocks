@@ -11,7 +11,6 @@ import { name, settings } from '../index';
 
 // Make variables accessible for all tests.
 let block;
-let serializedBlock;
 
 describe( 'coblocks/icon', () => {
 	beforeAll( () => {
@@ -22,14 +21,11 @@ describe( 'coblocks/icon', () => {
 	beforeEach( () => {
 		// Create the block with the minimum attributes.
 		block = createBlock( name );
-
-		// Reset the reused variables.
-		serializedBlock = '';
 	} );
 
 	it( 'should render', () => {
 		block.attributes.icon = 'coblocks';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '"icon":"coblocks"' );
@@ -39,7 +35,7 @@ describe( 'coblocks/icon', () => {
 	it( 'should render with height and width', () => {
 		block.attributes.height = '200';
 		block.attributes.width = '200';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '"height":"200"' );
@@ -50,7 +46,7 @@ describe( 'coblocks/icon', () => {
 	it( 'should render with borderRadius and padding', () => {
 		block.attributes.borderRadius = '200';
 		block.attributes.padding = '30';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '"borderRadius":"200"' );
@@ -62,7 +58,7 @@ describe( 'coblocks/icon', () => {
 		block.attributes.href = 'https://wordpress.org';
 		block.attributes.rel = 'rel';
 		block.attributes.linkTarget = '_blank';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'href="https://wordpress.org"' );
@@ -73,7 +69,7 @@ describe( 'coblocks/icon', () => {
 
 	it( 'should render with iconColor', () => {
 		block.attributes.iconColor = 'primary';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '{"iconColor":"primary"}' );
@@ -82,7 +78,7 @@ describe( 'coblocks/icon', () => {
 
 	it( 'should render with customIconColor', () => {
 		block.attributes.customIconColor = '#da5d5d';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '{"customIconColor":"#da5d5d"}' );
@@ -91,7 +87,7 @@ describe( 'coblocks/icon', () => {
 
 	it( 'should render with backgroundColor', () => {
 		block.attributes.backgroundColor = 'primary';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '{"backgroundColor":"primary"}' );
@@ -100,7 +96,7 @@ describe( 'coblocks/icon', () => {
 
 	it( 'should render with customBackgroundColor', () => {
 		block.attributes.customBackgroundColor = '#da5d5d';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '{"customBackgroundColor":"#da5d5d"}' );
@@ -108,11 +104,22 @@ describe( 'coblocks/icon', () => {
 	} );
 
 	it( 'should render with className', () => {
-		block.attributes.className = 'my-custom-class';
-		serializedBlock = serialize( block );
+		block.attributes.className = 'my-custom-class is-style-filled';
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '{"className":"my-custom-class"}' );
+		expect( serializedBlock ).toContain( '{"className":"my-custom-class is-style-filled"}' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with an icon', () => {
+		block.attributes.icon = 'coblocks';
+		block.attributes.href = "https://www.godaddy.com";
+		const serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'wp-block-coblocks-icon' );
+		expect( serializedBlock ).toContain( 'https://www.godaddy.com' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 } );
