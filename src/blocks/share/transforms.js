@@ -6,9 +6,9 @@ import { find } from 'lodash';
 /**
  * WordPress dependencies
  */
-import { __, sprintf } from '@wordpress/i18n';
-import { select } from '@wordpress/data';
 import { createBlock } from '@wordpress/blocks';
+import { select } from '@wordpress/data';
+import { __, sprintf } from '@wordpress/i18n';
 
 const transforms = {
 	to: [
@@ -22,46 +22,46 @@ const transforms = {
 				const innerBlocks = [];
 				[
 					{
-						slug: 'facebook',
 						label: __( 'Share on Facebook', 'coblocks' ),
+						slug: 'facebook',
 						url: 'https://facebook.com/sharer/sharer.php?u=%s&title=%s',
 					},
 					{
-						slug: 'twitter',
 						label: __( 'Share on Twitter', 'coblocks' ),
+						slug: 'twitter',
 						url: 'https://twitter.com/share?url=%s&link=%s',
 					},
 					{
-						slug: 'pinterest',
 						label: __( 'Share on Pinterest', 'coblocks' ),
+						slug: 'pinterest',
 						url: 'https://pinterest.com/pin/create/button/?url=%s&description=%s',
 					},
 					{
-						slug: 'linkedin',
 						label: __( 'Share on LinkedIn', 'coblocks' ),
+						slug: 'linkedin',
 						url: 'https://linkedin.com/shareArticle?url=%s&title=%s',
 					},
 					{
-						slug: 'email',
 						label: __( 'Share via Email', 'coblocks' ),
+						slug: 'email',
 						url: 'mailto:?body=%s&subject=%s',
 					},
 					{
-						slug: 'tumblr',
 						label: __( 'Share on Tumblr', 'coblocks' ),
+						slug: 'tumblr',
 						url: 'https://tumblr.com/share/link?url=%s&name=%s',
 					},
 					{
-						slug: 'reddit',
 						label: __( 'Share on Reddit', 'coblocks' ),
+						slug: 'reddit',
 						url: 'https://reddit.com/submit?url=%s&title=%s',
 					},
 				].forEach( ( { slug, label, url } ) => {
 					if ( !! attributes[ slug ] ) {
 						innerBlocks.push(
 							createBlock( 'core/social-link', {
-								service: slug,
 								label,
+								service: slug,
 								url: sprintf(
 									url,
 									encodeURIComponent( link ),
@@ -85,33 +85,33 @@ const transforms = {
 
 				// Convert old sizes into new size strings.
 				const sizeValueTransform = {
-					sml: 'has-small-icon-size',
-					med: 'has-normal-icon-size',
 					lrg: 'has-large-icon-size',
+					med: 'has-normal-icon-size',
+					sml: 'has-small-icon-size',
 				};
 
 				// Convert old styles into new style classNames.
 				if ( !! attributes.className ) {
 					[
 						{
-							old: 'is-style-mask',
 							new: 'is-style-logos-only',
+							old: 'is-style-mask',
 						},
 						{
+							new: 'is-style-pill-shape',
 							old: 'is-style-icon',
-							new: 'is-style-pill-shape',
 						},
 						{
+							new: 'is-style-default',
 							old: 'is-style-text',
-							new: 'is-style-default',
 						},
 						{
-							old: 'is-style-icon-and-text',
 							new: 'is-style-pill-shape',
+							old: 'is-style-icon-and-text',
 						},
 						{
-							old: 'is-style-circular',
 							new: 'is-style-default',
+							old: 'is-style-circular',
 						},
 					].forEach( ( className ) => {
 						attributes.className = attributes.className.replace( className.old, className.new );
@@ -119,16 +119,16 @@ const transforms = {
 				}
 
 				return createBlock( 'core/social-links', {
-					className: attributes.className,
 					align: attributes.textAlign,
-					size: sizeValueTransform[ attributes.size ] ?? 'normal',
-					openInNewTab: true,
-					iconColor: attributes.textColor,
-					customIconColor: attributes.customTextColor,
-					iconColorValue: attributes.customTextColor,
-					iconBackgroundColor: attributes.backgroundColor,
+					className: attributes.className,
 					customIconBackgroundColor: attributes.customBackgroundColor,
+					customIconColor: attributes.customTextColor,
+					iconBackgroundColor: attributes.backgroundColor,
 					iconBackgroundColorValue: attributes.customBackgroundColor,
+					iconColor: attributes.textColor,
+					iconColorValue: attributes.customTextColor,
+					openInNewTab: true,
+					size: sizeValueTransform[ attributes.size ] ?? 'normal',
 				}, innerBlocks );
 			},
 		},

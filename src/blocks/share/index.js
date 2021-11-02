@@ -29,30 +29,30 @@ const settings = {
 	parent: [],
 	styles: [
 		{
-			name: 'mask',
 			/* translators: block style */
 			label: __( 'Mask', 'coblocks' ),
+			name: 'mask',
 		},
 		{
-			name: 'icon',
+			isDefault: true,
 			/* translators: block style */
 			label: __( 'Icon', 'coblocks' ),
-			isDefault: true,
+			name: 'icon',
 		},
 		{
-			name: 'text',
 			/* translators: block style */
 			label: __( 'Text', 'coblocks' ),
+			name: 'text',
 		},
 		{
-			name: 'icon-and-text',
 			/* translators: block style */
 			label: __( 'Icon & Text', 'coblocks' ),
+			name: 'icon-and-text',
 		},
 		{
-			name: 'circular',
 			/* translators: block style */
 			label: __( 'Circular', 'coblocks' ),
+			name: 'circular',
 		},
 	],
 	supports: {

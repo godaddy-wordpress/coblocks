@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { registerCoreBlocks } from '@wordpress/block-library';
-import { registerBlockType, createBlock, switchToBlockType, serialize, parse, rawHandler } from '@wordpress/blocks';
+import { registerBlockType, createBlock, switchToBlockType } from '@wordpress/blocks';
 
 registerCoreBlocks();
 
