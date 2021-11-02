@@ -8,22 +8,17 @@ import classnames from 'classnames';
  */
 import { BackgroundAttributes, BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
 import { GalleryAttributes, GalleryClasses, GalleryStyles } from '../../components/block-gallery/shared/index';
-import metadata from './block.json';
 
 /**
  * WordPress dependencies
  */
-import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
+import { RichText } from '@wordpress/block-editor';
 
 const deprecatedAttributes = {
-	name: 'coblocks/gallery-masonry',
-	category: 'media',
-	attributes: {
-		gridSize: {
-			type: 'string',
-			default: 'xlrg',
-		},
+	gridSize: {
+		default: 'xlrg',
+		type: 'string',
 	},
 };
 
