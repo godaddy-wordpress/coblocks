@@ -533,9 +533,9 @@ export function turnOnEditorSetting( settingName ) {
  * @return {string} RGB string.
  */
 export function hexToRGB( hex ) {
-	let b = 0,
-		g = 0,
-		r = 0;
+	let r = 0;
+	let g = 0;
+	let b = 0;
 
 	// 3 digits
 	if ( hex.length === 4 ) {
