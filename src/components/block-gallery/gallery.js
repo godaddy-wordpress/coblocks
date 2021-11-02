@@ -30,7 +30,7 @@ export const Gallery = ( props ) => {
 		blockProps,
 	} = props;
 
-	const { align, caption, imageCrop, lightbox } = attributes;
+	const { align, caption, imageCrop, lightbox, gutter } = attributes;
 
 	const { children, ...innerBlocksProps } = useInnerBlocksProps( blockProps, {
 		__experimentalLayout: { alignments: [], type: 'default' },
@@ -66,14 +66,12 @@ export const Gallery = ( props ) => {
 				blockProps.className,
 				{
 					[ `align${ align }` ]: align,
-					'is-cropped': imageCrop,
 					'has-lightbox': lightbox,
+					'is-cropped': imageCrop,
 				}
 			) }
 		>
-			<View
-				className="masonry-grid"
-			>
+			<View className={ classnames( 'masonry-grid', { [ `has-${ gutter }-gutter` ]: gutter } ) } >
 				{ children }
 			</View>
 			<View

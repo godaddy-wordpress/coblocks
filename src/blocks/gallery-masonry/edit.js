@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import GutterControl from '../../components/gutter-control/gutter-control';
 import { GalleryMasonryIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 import { concat, find } from 'lodash';
 
@@ -15,7 +16,7 @@ import { store as noticesStore } from '@wordpress/notices';
 import { View } from '@wordpress/primitives';
 import { withViewportMatch } from '@wordpress/viewport';
 import { __, _x, sprintf } from '@wordpress/i18n';
-import { BaseControl, Icon, PanelBody, SelectControl, Spinner, ToggleControl, withNotices } from '@wordpress/components';
+import { BaseControl, Icon, PanelBody, RangeControl, SelectControl, Spinner, ToggleControl, withNotices } from '@wordpress/components';
 import { store as blockEditorStore, InspectorControls, MediaPlaceholder, useBlockProps } from '@wordpress/block-editor';
 import { Platform, useEffect, useMemo } from '@wordpress/element';
 import { useDispatch, useSelect } from '@wordpress/data';
@@ -67,6 +68,9 @@ function GalleryEdit( props ) {
 		shortCodeTransforms,
 		sizeSlug,
 		lightbox,
+		gutter,
+		gutterCustom,
+		radius,
 	} = attributes;
 
 	const {
@@ -405,8 +409,20 @@ function GalleryEdit( props ) {
 		/>
 	);
 
+	const getLightboxHelp = ( checked ) => {
+		return checked
+			? __( 'Image lightbox is enabled.', 'coblocks' )
+			: __( 'Toggle to enable the image lightbox.', 'coblocks' );
+	};
+
+	const setRadiusTo = ( value ) => {
+		setAttributes( { radius: value } );
+	};
+
 	const blockProps = useBlockProps( {
-		className: classnames( className ),
+		className: classnames( className, {
+			'has-gutter': gutter > 0,
+		} ),
 	} );
 
 	if ( ! hasImages ) {
@@ -460,6 +476,43 @@ function GalleryEdit( props ) {
 							</View>
 						</BaseControl>
 					) }
+
+					<GutterControl { ...props } />
+
+					{ gutter !== 'custom' && gutterCustom !== 0 &&
+					<RangeControl
+						aria-label={ __( 'Add rounded corners to the gallery items.', 'coblocks' ) }
+						label={ __( 'Rounded corners', 'coblocks' ) }
+						max={ 20 }
+						min={ 0 }
+						onChange={ setRadiusTo }
+						step={ 1 }
+						value={ radius }
+					/>
+					}
+
+					<ToggleControl
+						checked={ !! lightbox }
+						help={ getLightboxHelp }
+						label={ __( 'Lightbox', 'coblocks' ) }
+						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
+					/>
+
+					{ /* <ToggleControl
+						checked={ !! captions }
+						help={ getCaptionsHelp }
+						label={ __( 'Captions', 'coblocks' ) }
+						onChange={ () => setAttributes( { captions: ! captions } ) }
+					/> */ }
+
+					{ /* { captions &&
+					<SelectControl
+						label={ __( 'Caption style', 'coblocks' ) }
+						onChange={ setCaptionStyleTo }
+						options={ captionOptions }
+						value={ captionStyle }
+					/>
+					} */ }
 				</PanelBody>
 			</InspectorControls>
 			{ noticeUI }
