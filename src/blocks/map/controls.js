@@ -9,7 +9,7 @@ import { ToolbarGroup } from '@wordpress/components';
 function Controls( { attributes, setAttributes } ) {
 	const {
 		address,
-		pinned,
+		pinned, 
 	} = attributes;
 
 	const toolbarControls = [
