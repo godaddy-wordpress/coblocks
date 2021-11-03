@@ -7,26 +7,26 @@ import { animationTypes } from './animation-types';
  * External dependencies
  */
 import _ from 'lodash';
-import classnames from 'classnames';
 import { AnimationIcon } from '@godaddy-wordpress/coblocks-icons';
+import classnames from 'classnames';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
+import { check } from '@wordpress/icons';
+import { useEntityProp } from '@wordpress/core-data';
 import { BlockControls, BlockPreview } from '@wordpress/block-editor';
+import { Component, Fragment } from '@wordpress/element';
+import { compose, ifCondition } from '@wordpress/compose';
 import {
 	DropdownMenu,
-	MenuItem,
 	MenuGroup,
+	MenuItem,
 	Popover,
-	Toolbar,
 	Tip,
+	ToolbarGroup,
 } from '@wordpress/components';
-import { check } from '@wordpress/icons';
-import { compose, ifCondition } from '@wordpress/compose';
-import { useEntityProp } from '@wordpress/core-data';
 
 function PreviewAnimationPopover( { hoveredAnimation, selected } ) {
 	if ( ! hoveredAnimation ) {
@@ -42,8 +42,8 @@ function PreviewAnimationPopover( { hoveredAnimation, selected } ) {
 			<div className="block-editor-block-switcher__popover__preview__container">
 				<Popover
 					className="block-editor-block-switcher__preview__popover"
-					position="bottom right"
 					focusOnMount={ false }
+					position="bottom right"
 				>
 					<div className="block-editor-block-switcher__preview coblocks__preview">
 						<div className="block-editor-block-switcher__preview-title">
@@ -102,13 +102,13 @@ class Controls extends Component {
 
 		return (
 			<BlockControls>
-				<Toolbar>
+				<ToolbarGroup>
 					<DropdownMenu
-						icon={ AnimationIcon }
-						label={ __( 'Add animation' ) }
-						popoverProps={ POPOVER_PROPS }
 						className={ classnames( 'components-coblocks-animation-toggle', animation ? 'has-animation' : '' ) }
+						icon={ AnimationIcon }
+						label={ __( 'Add animation', 'coblocks' ) }
 						noIcons
+						popoverProps={ POPOVER_PROPS }
 					>
 						{ ( { onClose } ) => (
 							<Fragment>
@@ -117,14 +117,14 @@ class Controls extends Component {
 									{
 										animationTypes.map( ( animationItem ) => (
 											<MenuItem
-												role="menuitemradio"
+												icon={ animation === animationItem.className ? check : animationItem.icon }
+												isSelected={ animation === animationItem.className }
+												key={ `coblocks-animation-${ animationItem.className }` }
 												label={ animationItem.label }
 												onClick={ this.onAnimationClick( onClose, animationItem.className ) }
 												onMouseEnter={ () => this.onChangeHoveredAnimation( animationItem.className ) }
 												onMouseLeave={ () => this.onChangeHoveredAnimation( null ) }
-												isSelected={ animation === animationItem.className }
-												icon={ animation === animationItem.className ? check : animationItem.icon }
-												key={ `coblocks-animation-${ animationItem.className }` }>
+												role="menuitemradio">
 												{ animationItem.label }
 											</MenuItem>
 										) )
@@ -133,10 +133,10 @@ class Controls extends Component {
 								{ animation &&
 									<MenuGroup>
 										<MenuItem
-											role="menuitemradio"
+											isSelected={ false }
 											label={ __( 'Remove animation', 'coblocks' ) }
 											onClick={ this.onAnimationClick( onClose ) }
-											isSelected={ false } >
+											role="menuitemradio" >
 											{ __( 'Remove animation', 'coblocks' ) }
 										</MenuItem>
 									</MenuGroup>
@@ -144,7 +144,7 @@ class Controls extends Component {
 							</Fragment>
 						) }
 					</DropdownMenu>
-				</Toolbar>
+				</ToolbarGroup>
 			</BlockControls>
 		);
 	}

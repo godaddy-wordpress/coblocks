@@ -9,8 +9,8 @@ import { PaintCanIcon } from '@godaddy-wordpress/coblocks-icons';
  */
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
-import { MediaUpload, MediaUploadCheck, MediaReplaceFlow, BlockControls } from '@wordpress/block-editor';
-import { Toolbar, ToolbarButton } from '@wordpress/components';
+import { BlockControls, MediaReplaceFlow, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
+import { ToolbarButton, ToolbarGroup } from '@wordpress/components';
 
 /**
  * Background image block toolbar controls.
@@ -31,43 +31,43 @@ function BackgroundControls( props ) {
 	return (
 		<Fragment>
 			<MediaUploadCheck>
-				<Toolbar className={ backgroundImg ? 'components-dropdown-menu' : '' }>
+				<ToolbarGroup className={ backgroundImg ? 'components-dropdown-menu' : '' }>
 					{ backgroundImg
 						? (
 							<BlockControls group="other">
 								<MediaReplaceFlow
-									name={ PaintCanIcon }
-									mediaURL={ backgroundImg }
-									allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
 									accept="image/*"
+									allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
+									mediaURL={ backgroundImg }
+									name={ PaintCanIcon }
+									onError={ () => {
+										setAttributes( { backgroundImg: undefined, backgroundType: undefined } );
+									} }
 									onSelect={ ( media ) => {
 										if ( media ) {
 											setAttributes( { backgroundImg: media.url, backgroundType: ( media.media_type || media.type ) } );
 										}
 									} }
-									onError={ () => {
-										setAttributes( { backgroundImg: undefined, backgroundType: undefined } );
-									} }
 								/>
 							</BlockControls>
 						) : (
 							<MediaUpload
+								allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
 								onSelect={ ( media ) => {
 									setAttributes( { backgroundImg: media.url, backgroundType: media.type } );
 								} }
-								allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
-								value={ backgroundImg }
 								render={ ( { open } ) => (
 									<ToolbarButton
 										className="components-toolbar__control"
-										label={ __( 'Add background image', 'coblocks' ) }
 										icon={ PaintCanIcon }
+										label={ __( 'Add background image', 'coblocks' ) }
 										onClick={ open }
 									/>
 								) }
+								value={ backgroundImg }
 							/>
 						) }
-				</Toolbar>
+				</ToolbarGroup>
 			</MediaUploadCheck>
 		</Fragment>
 	);
