@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/faq should render with content 1`] = `
+"<!-- wp:coblocks/faq -->
+<div class=\\"wp-block-coblocks-faq\\"></div>
+<!-- /wp:coblocks/faq -->"
+`;
