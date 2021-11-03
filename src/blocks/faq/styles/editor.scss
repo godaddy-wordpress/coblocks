@@ -1,0 +1,24 @@
+[data-type="coblocks/faq"] {
+	.block-list-appender {
+		display: none;
+		margin: 0;
+	}
+
+	.coblocks-block-appender {
+		display: flex;
+		justify-content: space-between;
+		margin: 1.75em 0 0;
+
+		.block-editor-button-block-appender {
+			flex-direction: row;
+			width: 48%;
+		}
+	}
+
+	&.is-selected,
+	&.has-child-selected {
+		.block-list-appender {
+			display: block;
+		}
+	}
+}

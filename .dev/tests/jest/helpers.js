@@ -39,6 +39,7 @@ import { name as formRadioBlockName, settings as formRadioBlockSettings } from '
  * WordPress dependencies
  */
 import { registerBlockType, unregisterBlockType, createBlock, getBlockTransforms, serialize, parse } from '@wordpress/blocks';
+import { removeFilter } from '@wordpress/hooks';
 
 /**
  * Register all gallery blocks to be used for transforms testing.
@@ -102,6 +103,8 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 	let deprecatedSettings;
 	let deprecatedBlockType;
 
+	removeFilter( 'blocks.registerBlockType', 'core/lock/addAttribute' );
+
 	blockSettings.deprecated.forEach( ( deprecated, index ) => {
 		// Register the deprecated block to get the attributes with filters applied.
 		deprecatedSettings = Object.assign(
@@ -160,8 +163,8 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 				if ( blockVariations[ attribute ] && Array.isArray( blockVariations[ attribute ] ) ) {
 					testVariations = blockVariations[ attribute ];
 				} else {
-					testVariations = blockVariations[ attribute ].values;
-					testBaseAttributes = blockVariations[ attribute ].baseAttributes || {};
+					testVariations = blockVariations[ attribute ]?.values || [];
+					testBaseAttributes = blockVariations[ attribute ]?.baseAttributes || {};
 				}
 
 				testVariations.forEach( ( variation ) => {

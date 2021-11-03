@@ -145,19 +145,12 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		}
 
 		/**
-		 * If debug is on, serve unminified source assets.
+		 * Returns URL to the asset path.
 		 *
-		 * @since 1.0.0
-		 * @param string|string $type The type of resource.
-		 * @param string|string $directory Any extra directories needed.
+		 * @param string $path Any extra directories needed.
 		 */
-		public function asset_source( $type = 'js', $directory = null ) {
-
-			if ( 'js' === $type ) {
-				return COBLOCKS_PLUGIN_URL . 'dist/' . $type . '/' . $directory;
-			} else {
-				return COBLOCKS_PLUGIN_URL . 'dist/css/' . $directory;
-			}
+		public function asset_source( $path = null ) {
+			return COBLOCKS_PLUGIN_URL . trailingslashit( path_join( 'dist', $path ) );
 		}
 
 		/**

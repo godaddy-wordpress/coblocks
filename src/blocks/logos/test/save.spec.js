@@ -3,7 +3,7 @@
  */
 import '@testing-library/jest-dom/extend-expect';
 import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
-import { replaceActiveStyle } from '@wordpress/block-editor/build/components/block-styles';
+import { replaceActiveStyle } from '@wordpress/block-editor/build/components/block-styles/utils';
 
 /**
  * Internal dependencies.

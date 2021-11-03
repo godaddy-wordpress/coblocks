@@ -15,10 +15,10 @@ const transforms = {
 			selector: '.wp-block-coblocks-pricing-table',
 			transform( node ) {
 				const blockAttributes = getBlockAttributes( metadata.name, node.outerHTML );
-				const classNameNumberParse = blockAttributes?.className.match( /(\d+)/ );
+				const classNameNumberParse = node.className.match( /has-([0-9]+)-columns/ );
 				return createBlock( metadata.name, {
 					...blockAttributes,
-					count: classNameNumberParse ? parseInt( classNameNumberParse[ 0 ] ) : 2,
+					count: classNameNumberParse ? parseInt( classNameNumberParse[ 1 ] ) : 2,
 				} );
 			},
 		},

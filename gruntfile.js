@@ -23,6 +23,7 @@ module.exports = function( grunt ) {
 							'!**/*.{ai,eps,psd}',
 							'LICENSE',
 							'class-' + pkg.name + '.php',
+							'assets/**',
 							'dist/**',
 							'includes/**',
 							'readme.txt',
