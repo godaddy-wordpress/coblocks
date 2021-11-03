@@ -1047,9 +1047,6 @@ const mapStyles = ( key ) => {
 	return GMapStyles[ key ];
 };
 
-// Disable note: This rule is only meant to be used for React components
-// See https://github.com/WordPress/gutenberg/pull/26810
-// eslint-disable-next-line @wordpress/no-global-event-listener
 document.addEventListener( 'DOMContentLoaded', function() {
 	const elements = document.getElementsByClassName( 'wp-block-coblocks-map' );
 
