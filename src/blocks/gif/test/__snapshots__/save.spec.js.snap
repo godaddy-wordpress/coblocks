@@ -36,6 +36,12 @@ exports[`coblocks/gif should render with alt attribute 1`] = `
 <!-- /wp:coblocks/gif -->"
 `;
 
+exports[`coblocks/gif should render with caption 1`] = `
+"<!-- wp:coblocks/gif -->
+<figure class=\\"wp-block-coblocks-gif\\"><img alt=\\"\\"/><figcaption>Some caption</figcaption></figure>
+<!-- /wp:coblocks/gif -->"
+`;
+
 exports[`coblocks/gif should render with url attribute 1`] = `
 "<!-- wp:coblocks/gif -->
 <figure class=\\"wp-block-coblocks-gif\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.gif\\" alt=\\"\\"/></figure>

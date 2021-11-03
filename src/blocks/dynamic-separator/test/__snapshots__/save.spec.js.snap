@@ -13,8 +13,8 @@ exports[`coblocks/dynamic-separator should render with className 1`] = `
 `;
 
 exports[`coblocks/dynamic-separator should render with color 1`] = `
-"<!-- wp:coblocks/dynamic-separator {\\"color\\":\\"primary\\"} -->
-<hr class=\\"wp-block-coblocks-dynamic-separator has-background has-primary-color\\" style=\\"height:50px\\"/>
+"<!-- wp:coblocks/dynamic-separator {\\"height\\":null,\\"color\\":\\"primary\\"} -->
+<hr class=\\"wp-block-coblocks-dynamic-separator has-background has-primary-color\\"/>
 <!-- /wp:coblocks/dynamic-separator -->"
 `;
 

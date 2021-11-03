@@ -1,10 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`coblocks/opentable should not render when no rid defined 1`] = `
-"<!-- wp:coblocks/opentable {\\"restaurantIDs\\":[{\\"name\\":\\"Nuno-Restaurant (Test Restaurant added by CoBlocks)\\"}],\\"language\\":\\"en-US\\"} -->
-<div class=\\"wp-block-coblocks-opentable iframe__overflow-wrapper\\"><iframe id=\\"opentable-iframe\\" scrolling=\\"no\\" frameborder=\\"0\\" style=\\"width:224px;height:302px;display:block;margin:auto\\" title=\\"open table frame\\" src=\\"//www.opentable.com/widget/reservation/canvas?rid=undefined&amp;type=standard&amp;domain=com&amp;lang=en-US&amp;theme=standard&amp;overlay=false&amp;insideiframe=true&amp;disablega=true\\"></iframe></div>
-<!-- /wp:coblocks/opentable -->"
-`;
+exports[`coblocks/opentable should not render when no rid defined 1`] = `"<!-- wp:coblocks/opentable {\\"restaurantIDs\\":[{\\"name\\":\\"Nuno-Restaurant (Test Restaurant added by CoBlocks)\\"}],\\"language\\":\\"en-US\\"} /-->"`;
 
 exports[`coblocks/opentable should render with multiple restaurants selected 1`] = `
 "<!-- wp:coblocks/opentable {\\"restaurantIDs\\":[{\\"rid\\":\\"123456\\",\\"name\\":\\"Nuno-Restaurant (Test Restaurant added by CoBlocks)\\"},{\\"rid\\":\\"246847\\",\\"name\\":\\"Jines Restaurant (Test Restaurant added by CoBlocks)\\"}],\\"language\\":\\"en-US\\"} -->
@@ -33,5 +29,11 @@ exports[`coblocks/opentable should render with style "Button" 1`] = `
 exports[`coblocks/opentable should render with style "Tall" 1`] = `
 "<!-- wp:coblocks/opentable {\\"restaurantIDs\\":[{\\"rid\\":\\"123456\\",\\"name\\":\\"Nuno-Restaurant (Test Restaurant added by CoBlocks)\\"}],\\"language\\":\\"en-US\\",\\"className\\":\\"is-style-tall\\"} -->
 <div class=\\"wp-block-coblocks-opentable iframe__overflow-wrapper is-style-tall\\"><iframe id=\\"opentable-iframe\\" frameborder=\\"0\\" scrolling=\\"no\\" style=\\"width:289px;height:491px;display:block;margin:auto\\" title=\\"open table frame\\" src=\\"//www.opentable.com/widget/reservation/canvas?rid=123456&amp;type=standard&amp;domain=com&amp;lang=en-US&amp;theme=tall&amp;overlay=false&amp;insideiframe=true&amp;disablega=true\\"></iframe></div>
+<!-- /wp:coblocks/opentable -->"
+`;
+
+exports[`coblocks/opentable should render with style "Tall" with multiple 1`] = `
+"<!-- wp:coblocks/opentable {\\"restaurantIDs\\":[{\\"rid\\":\\"123456\\",\\"name\\":\\"Nuno-Restaurant (Test Restaurant added by CoBlocks)\\"},{\\"rid\\":\\"246847\\",\\"name\\":\\"Jines Restaurant (Test Restaurant added by CoBlocks)\\"}],\\"language\\":\\"en-US\\",\\"className\\":\\"is-style-tall\\"} -->
+<div class=\\"wp-block-coblocks-opentable iframe__overflow-wrapper is-style-tall\\"><iframe id=\\"opentable-iframe\\" frameborder=\\"0\\" scrolling=\\"no\\" style=\\"width:289px;height:551px;display:block;margin:auto\\" title=\\"open table frame\\" src=\\"//www.opentable.com/widget/reservation/canvas?rid=123456%2C246847&amp;type=multi&amp;domain=com&amp;lang=en-US&amp;theme=tall&amp;overlay=false&amp;insideiframe=true&amp;disablega=true\\"></iframe></div>
 <!-- /wp:coblocks/opentable -->"
 `;

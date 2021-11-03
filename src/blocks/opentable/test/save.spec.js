@@ -39,7 +39,7 @@
         serializedBlock = serialize( block );
 
         expect( serializedBlock ).toBeDefined();
-        expect( serializedBlock ).toContain();
+        expect( serializedBlock ).not.toContain( 'wp-block-coblocks-opentable' );
      } );
  
      it( 'should render with preassigned restaurants', () => {
@@ -67,6 +67,24 @@
 
         expect( serializedBlock ).toBeDefined();
         expect( serializedBlock ).toContain( 'is-style-tall' );
+     } );
+ 
+     it( 'should render with style "Tall" with multiple', () => {
+        block.attributes.restaurantIDs = [
+            { rid: '123456', name: 'Nuno-Restaurant (Test Restaurant added by CoBlocks)'},
+            { rid: '246847', name: 'Jines Restaurant (Test Restaurant added by CoBlocks)'},
+        ];
+        block.attributes.language = 'en-US';
+
+        const activeStyle = undefined;
+        const newStyle = { name: 'tall' };
+        block.attributes.className = replaceActiveStyle( block.attributes.className, activeStyle, newStyle );
+
+        serializedBlock = serialize( block );
+
+        expect( serializedBlock ).toBeDefined();
+        expect( serializedBlock ).toContain( 'is-style-tall' );
+        expect( serializedBlock ).toContain( 'height:551px' );
      } );
  
      it( 'should render with style "Button"', () => {
