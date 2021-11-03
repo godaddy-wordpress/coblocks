@@ -36,7 +36,8 @@
 		"test:js": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js",
 		"test:js:coverage": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js --coverage",
 		"test:performance": "wp-scripts test-e2e --config .dev/performance/jest.performance.config.js",
-		"wp-env": "wp-env"
+		"wp-env": "wp-env",
+		"prepare": "husky install"
 	},
 	"wp-env": {
 		"plugin-dir": "coblocks",
