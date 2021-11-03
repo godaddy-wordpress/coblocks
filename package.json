@@ -159,7 +159,7 @@
 		"jest-snapshot": "^26.6.2",
 		"jquery": "^3.4.1",
 		"jsdom": "^15.2.1",
-		"lint-staged": "^9.5.0",
+		"lint-staged": "^11.2.6",
 		"lodash": "^4.17.21",
 		"matchdep": "^2.0.0",
 		"memize": "^1.0.5",
