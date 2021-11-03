@@ -67,20 +67,20 @@ export default class GutterControl extends Component {
 		return (
 			<Fragment>
 				<OptionSelectorControl
-					label={ __( 'Gutter', 'coblocks' ) }
 					currentOption={ gutter }
+					label={ __( 'Gutter', 'coblocks' ) }
+					onChange={ ( newGutter ) => setAttributes( { gutter: newGutter } ) }
 					options={ gutterOptions }
-					showCustomOption
-					onChange={ ( newGutter ) => setAttributes( { gutter: newGutter } ) } />
+					showCustomOption />
 				{
 					gutter === 'custom' &&
 					<RangeControl
-						step={ 0.1 }
 						initialValue={ 0 }
-						value={ parseFloat( gutterCustom ) || 0 }
-						onChange={ ( newGutter ) => setAttributes( { gutterCustom: newGutter.toString() } ) }
-						min={ 0 }
 						max={ this.maxValue }
+						min={ 0 }
+						onChange={ ( newGutter ) => setAttributes( { gutterCustom: newGutter.toString() } ) }
+						step={ 0.1 }
+						value={ parseFloat( gutterCustom ) || 0 }
 						withInputField
 					/>
 				}

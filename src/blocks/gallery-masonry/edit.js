@@ -423,6 +423,9 @@ function GalleryEdit( props ) {
 		className: classnames( className, {
 			'has-gutter': gutter > 0,
 		} ),
+		style: {
+			'--coblocks-custom-gutter': `${ gutterCustom }em`,
+		},
 	} );
 
 	if ( ! hasImages ) {
