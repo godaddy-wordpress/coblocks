@@ -4,6 +4,7 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 
 let swiper = null;
 let activeIndex = 0;
+let isHovering = false;
 
 const swiperContainer = document.querySelector('.swiper-container');
 
@@ -20,7 +21,7 @@ const updateThumbnails = ( newIndex ) => {
 };
 
 const handleThumbnailClick = (newIndex) => {
-    swiper.slideTo( newIndex );
+    swiper?.slideTo( newIndex );
     updateThumbnails(newIndex);
     activeIndex = newIndex;
 }
@@ -54,6 +55,7 @@ const handleSwipe = (newIndex, state) => {
           freeMode: true,
         };
 
+        // add button navigation
         if ( parsedSwiperOptions.navigation ) {
             swiperConfig.plugins = [ ...swiperConfig.plugins, TinySwiperPluginNavigation ];
 
@@ -65,6 +67,7 @@ const handleSwipe = (newIndex, state) => {
 
         swiper = new TinySwiper(swiperContainer, swiperConfig);
 
+        // add thumbnail pagination
         if ( parsedSwiperOptions.thumbnails ) {
           const paginationThumbnails = document.getElementsByClassName('wp-block-coblocks-gallery-carousel-thumbnail');
 
@@ -77,8 +80,7 @@ const handleSwipe = (newIndex, state) => {
           firstThumbnailImage.classList.add('is-active');
         }
 
-        swiper.on('after-slide', handleSwipe);
-
+        // add draggable functionality
         if ( parsedSwiperOptions.draggable !== true ) {
           const swiperWrapper = document.getElementById('swiper-wrapper');
 
@@ -86,6 +88,32 @@ const handleSwipe = (newIndex, state) => {
             e.stopPropagation()
           });
         }
+
+        // add autoplay functionality
+        if ( parsedSwiperOptions.autoPlay === true  && parsedSwiperOptions.autoPlaySpeed ) {
+          
+          // add pause on hover functionality
+          if ( parsedSwiperOptions.pauseHover === true ) {
+              swiperContainer.addEventListener('mouseenter', () => {
+                isHovering = true;
+              });
+
+              swiperContainer.addEventListener('mouseleave', () => {
+                isHovering = false;
+              });
+          }  
+          
+          setInterval(() => {
+              if ( parsedSwiperOptions.pauseHover === true  && isHovering === true) {
+                return;
+              }
+              
+              swiper?.slideTo( swiper.state.index + 1 );
+            }, parsedSwiperOptions.autoPlaySpeed);
+        }
+
+        // register the swipe callback
+        swiper.on('after-slide', handleSwipe);
       }
     }
 }());

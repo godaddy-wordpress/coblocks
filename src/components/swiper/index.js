@@ -124,7 +124,7 @@ const Swiper = ({
     ]);
 
     const startAutoplay = useCallback(() => {
-        swiper.slideTo( swiper.state.index + 1 );
+        swiper?.slideTo( swiper.state.index + 1 );
     }, [ swiper, hovering ]);
 
     const handleMouseEnter = () => {
@@ -164,7 +164,7 @@ const Swiper = ({
     }, [ navigation ]);
 
     const changeStep = ( index ) => {
-        swiper.slideTo( index );
+        swiper?.slideTo( index );
     };
 
     const renderPagination = useMemo(() => {
