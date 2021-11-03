@@ -11,15 +11,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 	it( 'Test logos block saves with empty values.', function() {
 		helpers.addBlockToPost( 'coblocks/logos', true );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/logos' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-logos' ).should( 'not.exist' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -36,15 +28,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 
 		cy.get( '.wp-block-coblocks-logos img[src*="http"]' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/logos' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-logos' ).find( 'img' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -75,16 +59,10 @@ describe( 'Test CoBlocks Logos Block', function() {
 			}
 		} );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/logos' );
-
-		helpers.viewPage();
 
 		cy.get( '.wp-block-coblocks-logos' ).should( 'exist' );
 		cy.get( '.wp-block-coblocks-logos' ).find( 'img' ).should( 'have.attr', 'src' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -119,15 +97,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 
 		cy.get( '.wp-block-coblocks-logos' ).should( 'have.class', 'is-style-black-and-white' );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/logos' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-logos' ).should( 'have.class', 'is-style-black-and-white' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -162,15 +132,7 @@ describe( 'Test CoBlocks Logos Block', function() {
 
 		cy.get( '.wp-block-coblocks-logos' ).should( 'have.class', 'is-style-grayscale' );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/logos' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-logos' ).should( 'have.class', 'is-style-grayscale' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -205,14 +167,6 @@ describe( 'Test CoBlocks Logos Block', function() {
 
 		cy.get( '.wp-block-coblocks-logos' ).should( 'have.class', 'is-style-default' );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/logos' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-logos' ).should( 'have.class', 'is-style-default' );
-
-		helpers.editPage();
 	} );
 } );

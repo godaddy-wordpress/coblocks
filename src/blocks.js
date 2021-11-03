@@ -5,6 +5,10 @@ import {
 	registerBlockType,
 } from '@wordpress/blocks';
 
+// Styles
+import './styles/index.scss';
+import './styles/style.scss';
+
 // Register block category
 import './utils/block-category';
 

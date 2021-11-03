@@ -82,7 +82,7 @@ const coblocksMap = {
 				position: new google.maps.LatLng( gmapAttr.lat, gmapAttr.lng ),
 				map,
 				icon: {
-					url: coblocksGoogleMaps.url + '/dist/images/markers/' + gmapAttr.skin + '.svg',
+					url: coblocksGoogleMaps.url + '/assets/images/markers/' + gmapAttr.skin + '.svg',
 					scaledSize: new google.maps.Size(
 						gmapAttr.iconSize,
 						gmapAttr.iconSize

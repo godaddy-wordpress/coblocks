@@ -11,13 +11,13 @@ import { RichText, getColorClassName, getFontSizeClass } from '@wordpress/block-
 /**
  * Internal dependencies
  */
-import { attributes } from './block.json';
+import { default as currentBlock } from './block.json';
 import { deprecateTypographyControls } from '../../extensions/typography';
 import save from './save';
 const deprecated = [
 	{
 		attributes: {
-			...attributes,
+			...currentBlock.attributes,
 			url: {
 				type: 'attribute',
 			},
@@ -93,11 +93,11 @@ const deprecated = [
 		},
 	},
 	{
-		attributes: deprecateTypographyControls( attributes ),
+		attributes: deprecateTypographyControls( currentBlock.attributes ),
 		save,
 	},
 	{
-		attributes,
+		attributes: currentBlock.attributes,
 		save( props ) {
 			const {
 				buttonColor,

@@ -41,7 +41,7 @@
 }
 
 .wp-block-coblocks-post-carousel__date {
-	color: $dark-gray-300;
+	color: #6c7781;
 	display: block;
 	font-size: $editor-font-size;
 	margin-bottom: var(--coblocks-spacing--1, map-get($spacing, 1));
@@ -88,11 +88,11 @@ body.rtl {
 	.wp-block-coblocks-post-carousel:not(.alignwide) {
 
 		.slick-prev::before {
-			background-image: url(images/lightbox/arrow-right.svg);
+			background-image: url(/assets/lightbox/arrow-right.svg);
 		}
 
 		.slick-next::before {
-			background-image: url(images/lightbox/arrow-left.svg);
+			background-image: url(/assets/lightbox/arrow-left.svg);
 		}
 	}
 }
