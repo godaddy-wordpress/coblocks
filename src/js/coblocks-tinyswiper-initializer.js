@@ -67,6 +67,13 @@ const handleSwipe = (newIndex, state) => {
 
         swiper = new TinySwiper(swiperContainer, swiperConfig);
 
+        // register swiper resize observer
+        const resizeObserver = new ResizeObserver(entries => {        
+          swiper.update();
+        });
+        
+        resizeObserver.observe(swiperContainer);
+
         // add thumbnail pagination
         if ( parsedSwiperOptions.thumbnails ) {
           const paginationThumbnails = document.getElementsByClassName('wp-block-coblocks-gallery-carousel-thumbnail');

@@ -56,6 +56,16 @@ const Swiper = ({
     }, [ isDraggable ]);
 
     useEffect(() => {
+        const swiperContainer = document.getElementById(uuid);
+
+        const resizeObserver = new ResizeObserver(entries => {        
+            swiper?.update();
+        });
+        
+        resizeObserver.observe(swiperContainer);
+    }, [ swiper ]);
+
+    useEffect(() => {
         try {
             const swiperContainer = document.getElementById(uuid);
 
