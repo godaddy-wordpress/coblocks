@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import captionOptions from '../../components/block-gallery/options/caption-options';
+//import captionOptions from '../../components/block-gallery/options/caption-options';
 import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
 import SizeControl from '../../components/size-control';
 
@@ -25,13 +25,13 @@ const Inspector = ( props ) => {
 	} = props;
 
 	const {
-		captions,
-		captionStyle,
+		//captions,
+		//captionStyle,
 		gridSize,
-		gutterCustom,
-		gutter,
-		radius,
-		lightbox,
+		//gutterCustom,
+		//gutter,
+		//radius,
+		//lightbox,
 	} = attributes;
 
 	useEffect( () => {
@@ -46,7 +46,7 @@ const Inspector = ( props ) => {
 		setAttributes( { gridSize: value } );
 	};
 
-	const setCaptionStyleTo = ( value ) => {
+	/*const setCaptionStyleTo = ( value ) => {
 		setAttributes( { captionStyle: value } );
 	};
 
@@ -54,7 +54,7 @@ const Inspector = ( props ) => {
 		return checked
 			? __( 'Showing captions for each media item.', 'coblocks' )
 			: __( 'Toggle to show media captions.', 'coblocks' );
-	};
+	};*/
 
 	return (
 		<InspectorControls>
