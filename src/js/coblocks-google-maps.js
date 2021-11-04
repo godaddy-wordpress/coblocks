@@ -583,7 +583,7 @@ const mapStyles = ( key ) => {
 		{
 			elementType: 'geometry',
 			featureType: 'transit.station',
-			stylers: [ { color: '#3a4762', },
+			stylers: [ { color: '#3a4762' },
 			],
 		},
 		{
