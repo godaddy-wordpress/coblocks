@@ -127,7 +127,7 @@
 		"eslint-plugin-cypress": "^2.10.3",
 		"eslint-plugin-jsdoc": "36.1.0",
 		"eslint-plugin-react": "7.26.1",
-		"expect-puppeteer": "^4.4.0",
+		"expect-puppeteer": "^6.0.0",
 		"flickity": "^2.2.2",
 		"grunt": "^1.1.0",
 		"grunt-contrib-clean": "^1.0.0",
