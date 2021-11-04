@@ -1,8 +1,8 @@
 /**
  * Internal Dependencies
  */
-import Controls from './controls';
 import applyStyle from './apply-style';
+import Controls from './controls';
 import { TypographyAttributes } from '../../components/typography-controls';
 import './settings-modal-control';
 
@@ -14,12 +14,12 @@ import classnames from 'classnames';
 /**
  * WordPress Dependencies
  */
-import { withSelect } from '@wordpress/data';
 import { addFilter } from '@wordpress/hooks';
 import { Fragment }	from '@wordpress/element';
+import { withSelect } from '@wordpress/data';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
-const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/pullquote', 'core/cover', 'core/quote', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/alert', 'coblocks/highlight', 'coblocks/pricing-table', 'coblocks/features' ];
+const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/pullquote', 'core/cover', 'core/quote', 'core/button', 'core/list', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/alert', 'coblocks/highlight', 'coblocks/pricing-table', 'coblocks/features' ];
 const deprecatedBlocks = [ 'coblocks/click-to-tweet' ];
 
 /**
@@ -69,10 +69,15 @@ function addAttributes( settings ) {
  */
 const withControls = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
+		const {
+			isSelected,
+			name,
+		} = props;
+
 		return (
 			<Fragment>
 				<BlockEdit { ...props } />
-				{ props.isSelected && allowedBlocks.includes( props.name ) && <Controls { ...{ ...props } } /> }
+				{ isSelected && allowedBlocks.includes( name ) && <Controls { ...{ ...props } } /> }
 			</Fragment>
 		);
 	};
@@ -97,7 +102,7 @@ const enhance = compose(
 	 * @return {Function} Enhanced component with merged state data props.
 	 */
 	withSelect( ( select ) => {
-		return { selected: select( 'core/block-editor' ).getSelectedBlock(), select };
+		return { select, selected: select( 'core/block-editor' ).getSelectedBlock() };
 	} )
 );
 
