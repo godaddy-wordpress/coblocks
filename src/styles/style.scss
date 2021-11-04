@@ -10,10 +10,65 @@
 @import "style/shadow";
 @import "style/tooltips";
 @import "style/datepicker";
-@import "../components/**/style.scss";
-@import "../extensions/**/style.scss";
-@import "../blocks/**/style.scss";
-@import "../formats/**/style.scss";
+
+// @import "../components/**/style.scss";
+@import "../components/background/styles/style.scss";
+@import "../components/option-selector-control/styles/style.scss";
+@import "../components/block-gallery/styles/style.scss";
+@import "../components/media-filter-control/styles/style.scss";
+
+// @import "../extensions/**/style.scss";
+@import "../extensions/list-styles/styles/style.scss";
+@import "../extensions/advanced-controls/styles/style.scss";
+@import "../extensions/block-patterns/styles/style.scss";
+@import "../extensions/animation/styles/style.scss";
+@import "../extensions/lightbox-controls/styles/style.scss";
+@import "../extensions/coblocks-settings/styles/style.scss";
+@import "../extensions/image-styles/styles/style.scss";
+@import "../extensions/button-controls/styles/style.scss";
+@import "../extensions/button-styles/styles/style.scss";
+@import "../extensions/typography/styles/style.scss";
+@import "../extensions/cover-styles/styles/style.scss";
+@import "../extensions/replace-image/style.scss";
+@import "../extensions/media-text-styles/styles/style.scss";
+
+// @import "../blocks/**/style.scss";
+@import "../blocks/gallery-stacked/styles/style.scss";
+@import "../blocks/gallery-carousel/styles/style.scss";
+@import "../blocks/form/styles/style.scss";
+@import "../blocks/posts/styles/style.scss";
+@import "../blocks/gallery-offset/styles/style.scss";
+@import "../blocks/buttons/styles/style.scss";
+@import "../blocks/gallery-collage/styles/style.scss";
+@import "../blocks/media-card/styles/style.scss";
+@import "../blocks/highlight/styles/style.scss";
+@import "../blocks/alert/styles/style.scss";
+@import "../blocks/accordion/styles/style.scss";
+@import "../blocks/accordion/accordion-item/styles/style.scss";
+@import "../blocks/author/styles/style.scss";
+@import "../blocks/opentable/styles/style.scss";
+@import "../blocks/features/styles/style.scss";
+@import "../blocks/food-and-drinks/food-item/styles/style.scss";
+@import "../blocks/food-and-drinks/styles/style.scss";
+@import "../blocks/logos/styles/style.scss";
+@import "../blocks/pricing-table/styles/style.scss";
+@import "../blocks/post-carousel/styles/style.scss";
+@import "../blocks/row/styles/style.scss";
+@import "../blocks/click-to-tweet/styles/style.scss";
+@import "../blocks/gallery-masonry/styles/style.scss";
+@import "../blocks/shape-divider/styles/style.scss";
+@import "../blocks/icon/styles/style.scss";
+@import "../blocks/hero/styles/style.scss";
+@import "../blocks/events/event-item/styles/style.scss";
+@import "../blocks/events/styles/style.scss";
+@import "../blocks/services/styles/style.scss";
+@import "../blocks/services/service/styles/style.scss";
+@import "../blocks/share/styles/style.scss";
+@import "../blocks/gif/styles/style.scss";
+@import "../blocks/dynamic-separator/styles/style.scss";
+
+// @import "../formats/**/style.scss";
+@import "../formats/uppercase/style.scss";
 
 // Legacy styling
 @import "legacy/margin";

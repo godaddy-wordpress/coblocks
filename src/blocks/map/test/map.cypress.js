@@ -14,15 +14,7 @@ describe( 'Test CoBlocks Map Block', function() {
 	it( 'can save without content values set.', function() {
 		helpers.addBlockToPost( 'coblocks/map', true );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/map' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-map' ).should( 'exist' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -37,15 +29,9 @@ describe( 'Test CoBlocks Map Block', function() {
 			.parents( '.components-placeholder__fieldset' )
 			.find( 'button' ).contains( /search/i ).click();
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/map' );
 
-		helpers.viewPage();
-
 		cy.get( '.wp-block-coblocks-map' ).should( 'exist' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -63,15 +49,7 @@ describe( 'Test CoBlocks Map Block', function() {
 
 		cy.get( 'div[data-type="coblocks/map"]' ).find( '.is-selected' ).should( 'have.css', 'height', '800px' );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/map' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-map' ).should( 'have.css', 'min-height', '800px' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -89,14 +67,6 @@ describe( 'Test CoBlocks Map Block', function() {
 
 		cy.get( '.wp-block-coblocks-map' ).should( 'have.class', 'my-custom-class' );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/map' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-map' ).should( 'have.class', 'my-custom-class' );
-
-		helpers.editPage();
 	} );
 } );

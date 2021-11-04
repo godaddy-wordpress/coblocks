@@ -1,83 +1,85 @@
+@use "sass:math";
+
 .has-grid-sml .coblocks-gallery--item {
 	@media (min-width: 250px) {
-		width: 1 / 2 * 100%;
+		width: math.div(1, 2) * 100%;
 	}
 	@media (min-width: 500px) {
-		width: 1 / 3 * 100%;
+		width: math.div(1, 3) * 100%;
 	}
 	@media (min-width: 800px) {
-		width: 1 / 4 * 100%;
+		width: math.div(1, 4) * 100%;
 	}
 	@media (min-width: 1300px) {
-		width: 1 / 5 * 100%;
+		width: math.div(1, 5) * 100%;
 	}
 	@media (min-width: 1700px) {
-		width: 1 / 6 * 100%;
+		width: math.div(1, 6) * 100%;
 	}
 	@media (min-width: 1900px) {
-		width: 1 / 7 * 100%;
+		width: math.div(1, 7) * 100%;
 	}
 }
 
 .has-grid-med .coblocks-gallery--item {
 	@media (min-width: 350px) {
-		width: 1 / 2 * 100%;
+		width: math.div(1, 2) * 100%;
 	}
 	@media (min-width: 650px) {
-		width: 1 / 3 * 100%;
+		width: math.div(1, 3) * 100%;
 	}
 	@media (min-width: 1100px) {
-		width: 1 / 4 * 100%;
+		width: math.div(1, 4) * 100%;
 	}
 
 	.alignfull & {
 		@media (min-width: 1600px) {
-			width: 1 / 5 * 100%;
+			width: math.div(1, 5) * 100%;
 		}
 		@media (min-width: 1900px) {
-			width: 1 / 6 * 100%;
+			width: math.div(1, 6) * 100%;
 		}
 	}
 }
 
 .has-grid-lrg .coblocks-gallery--item {
 	@media (min-width: 400px) {
-		width: 1 / 2 * 100%;
+		width: math.div(1, 2) * 100%;
 	}
 	@media (min-width: 800px) {
-		width: 1 / 3 * 100%;
+		width: math.div(1, 3) * 100%;
 	}
 
 	.alignfull & {
 		@media (min-width: 1600px) {
-			width: 1 / 4 * 100%;
+			width: math.div(1, 4) * 100%;
 		}
 		@media (min-width: 1900px) {
-			width: 1 / 5 * 100%;
+			width: math.div(1, 5) * 100%;
 		}
 	}
 }
 
 .has-grid-xlrg .coblocks-gallery--item {
 	@media (min-width: 400px) {
-		width: 1 / 2 * 100%;
+		width: math.div(1, 2) * 100%;
 	}
 
 	.alignfull & {
 		@media (min-width: 1600px) {
-			width: 1 / 3 * 100%;
+			width: math.div(1, 3) * 100%;
 		}
 		@media (min-width: 1900px) {
-			width: 1 / 4 * 100%;
+			width: math.div(1, 4) * 100%;
 		}
 	}
 }
 
 .has-no-alignment .has-grid-lrg .coblocks-gallery--item {
 	@media (min-width: 400px) {
-		width: 1 / 2 * 100%;
+		width: math.div(1, 2) * 100%;
 	}
 	@media (min-width: 900px) {
-		width: 1 / 3 * 100%;
+		width: math.div(1, 3) * 100%;
 	}
 }

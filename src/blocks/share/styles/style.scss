@@ -104,13 +104,13 @@ $icons:
 
 	@each $icon, $color in $icons {
 		&__button--#{$icon} &__icon {
-			mask-image: url(images/social/#{$icon}.svg);
+			mask-image: url(/assets/social/#{$icon}.svg);
 		}
 
 		// IE 10+ Support
 		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 			&__button--#{$icon} &__icon {
-				background-image: url(images/social/#{$icon}.svg);
+				background-image: url(/assets/social/#{$icon}.svg);
 				color: transparent !important;
 			}
 		}

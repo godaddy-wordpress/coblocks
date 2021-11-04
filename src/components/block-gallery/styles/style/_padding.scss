@@ -1,7 +1,7 @@
 @include break-small() {
 	@for $i from 1 through 20 {
 
-		&.has-padding-#{ $i * 5 } {
+		.has-padding-#{ $i * 5 } {
 			padding: #{ $i * 5 }px !important;
 		}
 	}
@@ -9,7 +9,7 @@
 @include break-small-max() {
 	@for $i from 1 through 20 {
 
-		&.has-padding-mobile-#{ $i * 5 } {
+		.has-padding-mobile-#{ $i * 5 } {
 			padding: #{ $i * 5 }px !important;
 		}
 	}
