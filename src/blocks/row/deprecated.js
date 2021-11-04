@@ -1,10 +1,10 @@
 /**
  * Internal dependencies
  */
-import { BackgroundClasses, BackgroundVideo } from '../../components/background';
+import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 import metadata from './block.json';
-import DimensionsAttributes from '../../components/dimensions-control/attributes';
+import { BackgroundClasses, BackgroundVideo } from '../../components/background';
 
 /**
  * External dependencies
@@ -68,7 +68,7 @@ function Deprecation( { attributes } ) {
 	};
 
 	return (
-		<div className={ classes } data-id={ id } data-columns={ columns } data-layout={ layout } style={ styles } >
+		<div className={ classes } data-columns={ columns } data-id={ id } data-layout={ layout } style={ styles } >
 			<div className={ innerClasses } style={ innerStyles }>
 				<InnerBlocks.Content />
 			</div>
@@ -129,7 +129,7 @@ function DeprecationVideo( { attributes } ) {
 	};
 
 	return (
-		<div className={ classes } data-id={ id } data-columns={ columns } data-layout={ layout } >
+		<div className={ classes } data-columns={ columns } data-id={ id } data-layout={ layout } >
 			{ BackgroundVideo( attributes ) }
 			<div className={ innerClasses } style={ innerStyles }>
 				<InnerBlocks.Content />
@@ -190,7 +190,7 @@ function GutterDeprecation( { attributes } ) {
 	};
 
 	return (
-		<div className={ classes } data-id={ id } data-columns={ columns } data-layout={ layout } >
+		<div className={ classes } data-columns={ columns } data-id={ id } data-layout={ layout } >
 			<GutterWrapper { ...attributes }>
 				<div className={ classnames( innerClasses ) } style={ innerStyles }>
 					{ BackgroundVideo( attributes ) }
@@ -218,8 +218,8 @@ const deprecated = [
 	{
 		attributes: {
 			isStackedOnMobile: {
-				type: 'boolean',
 				default: true,
+				type: 'boolean',
 			},
 			...metadata.attributes,
 		},
