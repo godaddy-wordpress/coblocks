@@ -127,7 +127,7 @@
 		"classnames": "^2.2.5",
 		"commander": "^2.20.0",
 		"css-loader": "6.2.0",
-		"cypress": "^6.9.1",
+		"cypress": "^8.7.0",
 		"cypress-file-upload": "^5.0.8",
 		"cypress-log-to-output": "1.1.2",
 		"email-validator": "^2.0.4",
