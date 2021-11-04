@@ -10,7 +10,6 @@ module.exports = {
 	},
 	plugins: [
 		'cypress',
-		'chai-friendly',
 	],
 
 	// Specific Globals used in CoBlocks
