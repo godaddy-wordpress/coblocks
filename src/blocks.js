@@ -63,6 +63,8 @@ import * as column from './blocks/row/column';
 import * as dynamicSeparator from './blocks/dynamic-separator';
 import * as eventItem from './blocks/events/event-item';
 import * as events from './blocks/events';
+import * as faq from './blocks/faq';
+import * as faqItem from './blocks/faq/faq-item';
 import * as feature from './blocks/features/feature';
 import * as features from './blocks/features';
 import * as fieldCheckbox from './blocks/form/fields/checkbox';
@@ -149,6 +151,8 @@ export const registerCoBlocksBlocks = () => {
 		dynamicSeparator,
 		events,
 		eventItem,
+		faq,
+		faqItem,
 		feature,
 		features,
 		fieldDate,

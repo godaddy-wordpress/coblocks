@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-11-02T15:48:52+00:00\n"
+"POT-Creation-Date: 2021-11-04T01:12:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -446,6 +446,7 @@ msgstr ""
 #: src/blocks/click-to-tweet/inspector.js:48
 #: src/blocks/dynamic-separator/inspector.js:52
 #: src/blocks/events/event-item/inspector.js:30
+#: src/blocks/faq/faq-item/inspector.js:32
 #: src/blocks/features/feature/inspector.js:92
 #: src/blocks/features/inspector.js:159
 #: src/blocks/form/fields/submit-button/edit.js:115
@@ -489,6 +490,7 @@ msgstr ""
 #: src/blocks/author/inspector.js:57
 #: src/blocks/click-to-tweet/inspector.js:54
 #: src/blocks/events/event-item/inspector.js:23
+#: src/blocks/faq/faq-item/inspector.js:21
 #: src/blocks/features/feature/inspector.js:114
 #: src/blocks/features/inspector.js:181
 #: src/blocks/hero/inspector.js:155
@@ -976,6 +978,64 @@ msgstr ""
 
 #: src/blocks/events/inspector.js:50
 msgid "Show events from the period (100 events max)."
+msgstr ""
+
+#: src/blocks/faq/appender.js:18
+#: src/blocks/faq/appender.js:21
+msgid "Add Question"
+msgstr ""
+
+#: src/blocks/faq/appender.js:26
+#: src/blocks/faq/appender.js:29
+msgid "Category Title"
+msgstr ""
+
+#: src/blocks/faq/edit.js:23
+msgid "FAQ title"
+msgstr ""
+
+#: src/blocks/faq/edit.js:49
+msgid "Category name"
+msgstr ""
+
+#. translators: block keyword
+#: src/blocks/faq/example.js:15
+#: src/blocks/faq/index.js:33
+msgid "FAQ"
+msgstr ""
+
+#: src/blocks/faq/example.js:23
+msgid "I am sick and I need to visit my doctor today. Can I get a priority appointment?"
+msgstr ""
+
+#: src/blocks/faq/example.js:30
+msgid "When can I get my lab results?"
+msgstr ""
+
+#: src/blocks/faq/faq-item/edit.js:23
+msgid "Enter the answer to the question"
+msgstr ""
+
+#: src/blocks/faq/faq-item/edit.js:66
+msgid "Write a question"
+msgstr ""
+
+#: src/blocks/faq/faq-item/index.js:26
+msgid "A question/answer within the FAQ block."
+msgstr ""
+
+#: src/blocks/faq/faq-item/index.js:35
+msgctxt "block name"
+msgid "FAQ Item"
+msgstr ""
+
+#: src/blocks/faq/index.js:26
+msgid "Add a list of questions and answers."
+msgstr ""
+
+#: src/blocks/faq/index.js:39
+msgctxt "block name"
+msgid "FAQ"
 msgstr ""
 
 #: src/blocks/features/edit.js:114
