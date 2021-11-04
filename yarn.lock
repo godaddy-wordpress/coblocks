@@ -1289,15 +1289,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@gar/promisify@^1.0.1":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.2.tgz#30aa825f11d438671d585bd44e7fd564535fc210"
-  integrity sha512-82cpyJyKRoQoRi+14ibCeGPu0CwypgtBAdBhq1WfvagpCZNKqwXbKwXllYSMG91DhmG4jt9gN8eP6lGOtozuaw==
-
-"@godaddy-wordpress/coblocks-icons@1.8.0":
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/coblocks-icons/-/coblocks-icons-1.8.0.tgz#fd64c3de4b4448ad0f3f79a82ee45c155476d96b"
-  integrity sha512-D2hz1s8Yh1auZFJs++6gxbmft9snQDN6BxuM9uNYHo98TC9vqVj2kxrHrDC+D58kwQQrY2OapRukHmcrX4AUnw==
+"@godaddy-wordpress/coblocks-icons@1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/coblocks-icons/-/coblocks-icons-1.8.1.tgz#6c0b70729d2501f4ba7e159ddbfa86f58911dd5b"
+  integrity sha512-udzuMwPtaSVuME0Xs/7RHeY4c+7SjxiqwYM8sZ75U3KTFK4F6qKXLqABFTZV8zdeMZSdQjgNQWHlwPa3rbcXzA==
   dependencies:
     "@wordpress/primitives" "^1.7.0"
 
