@@ -61,25 +61,27 @@ import * as clickToTweet from './blocks/click-to-tweet';
 import * as collage from './blocks/gallery-collage';
 import * as column from './blocks/row/column';
 import * as dynamicSeparator from './blocks/dynamic-separator';
-import * as events from './blocks/events';
 import * as eventItem from './blocks/events/event-item';
+import * as events from './blocks/events';
+import * as faq from './blocks/faq';
+import * as faqItem from './blocks/faq/faq-item';
 import * as feature from './blocks/features/feature';
 import * as features from './blocks/features';
+import * as fieldCheckbox from './blocks/form/fields/checkbox';
+import * as fieldDate from './blocks/form/fields/date';
+import * as fieldEmail from './blocks/form/fields/email';
+import * as fieldHidden from './blocks/form/fields/hidden';
+import * as fieldName from './blocks/form/fields/name';
+import * as fieldRadio from './blocks/form/fields/radio';
+import * as fieldSelect from './blocks/form/fields/select';
+import * as fieldSubmitButton from './blocks/form/fields/submit-button';
+import * as fieldTelephone from './blocks/form/fields/phone';
+import * as fieldText from './blocks/form/fields/text';
+import * as fieldTextarea from './blocks/form/fields/textarea';
+import * as fieldWebsite from './blocks/form/fields/website';
 import * as foodAndDrinks from './blocks/food-and-drinks';
 import * as foodItem from './blocks/food-and-drinks/food-item';
 import * as form from './blocks/form';
-import * as fieldDate from './blocks/form/fields/date';
-import * as fieldEmail from './blocks/form/fields/email';
-import * as fieldName from './blocks/form/fields/name';
-import * as fieldRadio from './blocks/form/fields/radio';
-import * as fieldTelephone from './blocks/form/fields/phone';
-import * as fieldTextarea from './blocks/form/fields/textarea';
-import * as fieldText from './blocks/form/fields/text';
-import * as fieldSelect from './blocks/form/fields/select';
-import * as fieldSubmitButton from './blocks/form/fields/submit-button';
-import * as fieldCheckbox from './blocks/form/fields/checkbox';
-import * as fieldWebsite from './blocks/form/fields/website';
-import * as fieldHidden from './blocks/form/fields/hidden';
 import * as gif from './blocks/gif';
 import * as gist from './blocks/gist';
 import * as hero from './blocks/hero';
@@ -91,8 +93,8 @@ import * as masonry from './blocks/gallery-masonry';
 import * as mediaCard from './blocks/media-card';
 import * as offset from './blocks/gallery-offset';
 import * as openTable from './blocks/opentable';
-import * as posts from './blocks/posts';
 import * as postCarousel from './blocks/post-carousel';
+import * as posts from './blocks/posts';
 import * as pricingTable from './blocks/pricing-table';
 import * as pricingTableItem from './blocks/pricing-table/pricing-table-item';
 import * as row from './blocks/row';
@@ -144,6 +146,8 @@ export const registerCoBlocksBlocks = () => {
 		dynamicSeparator,
 		events,
 		eventItem,
+		faq,
+		faqItem,
 		feature,
 		features,
 		fieldDate,

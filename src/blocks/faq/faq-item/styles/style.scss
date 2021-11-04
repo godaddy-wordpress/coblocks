@@ -1,0 +1,41 @@
+.wp-block-coblocks-faq-item {
+	border-bottom: 1px solid hsla(240, 5%, 57%, 0.1);
+	margin: 0;
+	padding: 1rem 0;
+
+	&__question {
+		font-weight: 600;
+		list-style: none;
+		position: relative;
+
+		&:hover {
+			cursor: pointer;
+		}
+
+		&__content {
+			padding-right: 2em;
+		}
+
+		&__icon {
+			display: inline-block;
+			position: absolute;
+			right: 0;
+			top: 3px;
+			transform: scaleY(-1);
+			transition: transform 0.2s;
+		}
+	}
+
+	&__answer {
+		margin-bottom: 0;
+		margin-left: 0;
+		padding-top: 0.25rem;
+	}
+
+	// Open state
+	&[open] {
+		.wp-block-coblocks-faq-item__question__icon {
+			transform: scaleY(1);
+		}
+	}
+}
