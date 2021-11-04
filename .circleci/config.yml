@@ -181,7 +181,7 @@ workflows:
             - unit_testing_php_74
             - unit_testing_php_80
             - js
-      - e2e_chrome_wp_last_major:
+      - e2e_chrome_wp_previous_major:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -287,7 +287,7 @@ commands:
           name: 'Determine which version to install'
           command: |
             WPVERSION=<< parameters.wpversion >>
-            if [ "$WPVERSION" == "last_major" ]; then
+            if [ "$WPVERSION" == "previous_major" ]; then
               WPVERSION=$(curl -s http://api.wordpress.org/core/stable-check/1.0/ | jq 'keys' | jq -r 'map(select(. | test("^[\\d]+.[\\d]+$")))' | jq .[-2])
             fi
             echo "export WPVERSION=$WPVERSION" >> $BASH_ENV
@@ -699,13 +699,13 @@ jobs:
       - run_e2e_tests:
           browser: firefox
 
-  e2e_chrome_wp_last_major:
+  e2e_chrome_wp_previous_major:
     executor: php_74_node_browser_mysql_mailhog
     parallelism: 4
     steps:
       - run_e2e_tests:
           browser: chrome
-          wpversion: last_major
+          wpversion: previous_major
 
   perf_tests:
     executor: php_74_node_browser_mysql
