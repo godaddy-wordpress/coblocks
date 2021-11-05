@@ -27,7 +27,6 @@ import { __, sprintf } from '@wordpress/i18n';
 import { useEffect, useMemo, useContext, useState, useCallback } from '@wordpress/element';
 import { compose, usePrevious } from '@wordpress/compose';
 import { withNotices, ResizableBox } from '@wordpress/components';
-import { RichText } from '@wordpress/block-editor';
 
 /**
  * Function will dynamically process a string for use with the `navForClass` block attribute.
@@ -94,20 +93,6 @@ const GalleryCarouselEdit = ( props ) => {
 		if ( ! isSelected ) {
 			selectBlock(props.clientId);
 		}
-	}
-
-	const handleCaptionChange = (val) => {
-		setAttributes({
-			images: images.map((image, index) => {
-				if (index === selectedImage) {
-					return {
-						...image,
-						caption: val
-					}
-				}
-				return image;
-			})
-		})
 	}
 
 	const handleRemoveImage = (removeIndex) => {
@@ -194,17 +179,21 @@ const GalleryCarouselEdit = ( props ) => {
 					);
 					
 					return (
-						<GalleryCarouselItem 
-							index={index} 
-							ariaLabel={ariaLabel}
-							handleRemoveImage={handleRemoveImage}
-							handleReplaceImage={handleReplaceImage}
-						/>	
+						<>
+							<GalleryCarouselItem 
+								index={index} 
+								ariaLabel={ariaLabel}
+								handleRemoveImage={handleRemoveImage}
+								handleReplaceImage={handleReplaceImage}
+								setAttributes={setAttributes}
+							/>
+						</>	
 					);
 				}}			
 			</Swiper>
 		);
 	}, [
+		selectedImage,
 		freeScroll,
 		images,
 		thumbnails,
@@ -215,29 +204,8 @@ const GalleryCarouselEdit = ( props ) => {
 		autoPlay 
 	]);
 
-	const renderCaption = useMemo(() => {
-		return (
-			<RichText
-				tagName="figcaption"
-				placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
-				value={ images[selectedImage]?.caption }
-				className="coblocks-gallery--caption coblocks-gallery--primary-caption"
-				onChange={ val => handleCaptionChange(val) }
-				isSelected={isSelected }
-				keepPlaceholderOnFocus
-				inlineToolbar   
-			/>
-		);
-	}, [selectedImage, isSelected]);
-
-	const defaultGalleryState = {
-		isSelected,
-		images,
-		showThumbnails: thumbnails,
-	}
-
 	return (
-		<GalleryContextProvider {...defaultGalleryState}>
+		<>
 			{ isSelected && (
 				<>
 					<Controls { ...props } />
@@ -276,11 +244,10 @@ const GalleryCarouselEdit = ( props ) => {
 				<div className={ className }>
 					<div className={ innerClasses }>
 						{renderSwiper}
-						{renderCaption}
 					</div>
 				</div>
 			</ResizableBox>
-		</GalleryContextProvider>
+		</>
 	);
 };
 
@@ -297,6 +264,23 @@ const GalleryCarouselThumbnail = ({ changeStep, item, index }) => {
 	);
 }
 
+const withGalleryCarouselState = ( Component ) => {
+	return ( props ) => {
+		const defaultGalleryState = {
+			isSelected: props.isSelected,
+			images: props.attributes.images,
+			showThumbnails: props.attributes.thumbnails,
+		};
+
+		return (
+			<GalleryContextProvider {...defaultGalleryState}>
+				<Component {...props} />
+			</GalleryContextProvider>
+		)
+	}
+};
+
 export default compose( [
 	withNotices,
+	withGalleryCarouselState
 ] )( GalleryCarouselEdit );

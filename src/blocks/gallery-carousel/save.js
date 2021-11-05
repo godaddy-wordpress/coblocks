@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import { RichText } from '@wordpress/block-editor';
 
 /**
  * Internal dependencies
@@ -65,6 +66,11 @@ const save = (props) => {
 		}
 	);
 
+	const captionClasses = classnames(
+		'coblocks-gallery--caption',
+		'coblocks-gallery--primary-caption', {}
+	);
+
 	const swiperStyles = { height: height ? `${height}px` : undefined };
 
 	const uuid = '12345';
@@ -109,6 +115,7 @@ const save = (props) => {
 													className={ image.id ? `wp-image-${ image.id }` : null } 
 												/>
                             				</figure>	
+											<RichText.Content tagName="figcaption" className={ captionClasses } value={ image.caption } />
 										</div>
 									</div>
 								);
@@ -127,17 +134,19 @@ const save = (props) => {
 					</div>
 					{thumbnails && (
 						<div className="wp-block-coblocks-gallery-carousel-thumbnail-pagination">
-							{images.map((item, index) => (
-								<div id={`wp-block-coblocks-gallery-carousel-thumbnail-${ index }`} className={'wp-block-coblocks-gallery-carousel-thumbnail'} style={{ height: '80px', width: '100px' }} >
-									<img 
-										src={ item.url } 
-										alt={ item.alt } 
-										data-link={ item.link } 
-										data-id={ item.id } 
-										style={{ height: '100%', width: '100%' }} 
-									/>	
-								</div>
-							))}
+							{images.map((item, index) => {
+								return (
+									<div id={`wp-block-coblocks-gallery-carousel-thumbnail-${ index }`} className={'wp-block-coblocks-gallery-carousel-thumbnail'} style={{ height: '80px', width: '100px' }} >
+										<img 
+											src={ item.url } 
+											alt={ item.alt } 
+											data-link={ item.link } 
+											data-id={ item.id } 
+											style={{ height: '100%', width: '100%' }} 
+										/>	
+									</div>
+								);
+							})}
 						</div>
 					)}
 				</div>

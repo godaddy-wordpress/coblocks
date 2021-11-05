@@ -17,7 +17,10 @@ const SwiperHOC = ( Component ) => {
     return (props) => {
         const swiperUuid = useMemo(() => 
             generateUuid(), 
-            [ props.list, props.freeScroll ]
+            [ 
+                props.list.length, 
+                props.freeScroll 
+            ]
         );
 
         return <Component key={swiperUuid} uuid={swiperUuid} {...props} />
@@ -58,11 +61,13 @@ const Swiper = ({
     useEffect(() => {
         const swiperContainer = document.getElementById(uuid);
 
-        const resizeObserver = new ResizeObserver(entries => {        
-            swiper?.update();
-        });
-        
-        resizeObserver.observe(swiperContainer);
+        if ( swiperContainer ) {
+            const resizeObserver = new ResizeObserver(entries => {        
+                swiper?.update();
+            });
+            
+            resizeObserver.observe(swiperContainer);
+        }
     }, [ swiper ]);
 
     useEffect(() => {
