@@ -121,7 +121,7 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 	/**
 	 * Test that we can add image captions with rich text options
 	 */
-	it( 'Test stacked captions allow rich text controls.', function() {
+	it.skip( 'Test stacked captions allow rich text controls.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-stacked', true );
 
 		cy.get( '[data-type="coblocks/gallery-stacked"]' )
@@ -161,7 +161,7 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 	/**
 	 * Test that we can add image and replace image.
 	 */
-	it( 'Test stacked replace image flow.', function() {
+	it.skip( 'Test stacked replace image flow.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-stacked', true );
 
 		helpers.upload.imageReplaceFlow( 'coblocks/gallery-stacked' );

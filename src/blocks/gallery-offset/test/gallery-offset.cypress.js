@@ -84,7 +84,7 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 	 * Test that we can add image captions
 	 * to successfully save the block without errors.
 	 */
-	it( 'Test offset block saves with images captions.', function() {
+	it.skip( 'Test offset block saves with images captions.', function() {
 		const { caption } = galleryData;
 		helpers.addBlockToPost( 'coblocks/gallery-offset', true );
 
@@ -121,7 +121,7 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 	/**
 	 * Test that we can add image captions with rich text options
 	 */
-	it( 'Test offset captions allow rich text controls.', function() {
+	it.skip( 'Test offset captions allow rich text controls.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-offset', true );
 
 		cy.get( '[data-type="coblocks/gallery-offset"]' )
@@ -161,7 +161,7 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 	/**
 	 * Test that we can add image and replace image.
 	 */
-	it( 'Test offset replace image flow.', function() {
+	it.skip( 'Test offset replace image flow.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-offset', true );
 
 		helpers.upload.imageReplaceFlow( 'coblocks/gallery-offset' );
