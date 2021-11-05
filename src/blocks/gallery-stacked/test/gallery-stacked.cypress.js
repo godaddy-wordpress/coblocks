@@ -3,7 +3,7 @@
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
-describe( 'Test CoBlocks Gallery Stacked Block', function() {
+describe.skip( 'Test CoBlocks Gallery Stacked Block', function() {
 	/**
 	 * Setup Gallery data
 	 */
