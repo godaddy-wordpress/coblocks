@@ -6,7 +6,7 @@
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
-describe( 'Test CoBlocks Icon Block', function() {
+describe.skip( 'Test CoBlocks Icon Block', function() {
 	/**
 	 * Test the coblocks icon block.
 	 */

@@ -6,7 +6,7 @@
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
-describe( 'Test CoBlocks Gallery Carousel Block', function() {
+describe.skip( 'Test CoBlocks Gallery Carousel Block', function() {
 	/**
 	 * Setup Gallery data
 	 */
