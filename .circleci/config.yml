@@ -376,7 +376,6 @@ commands:
       - setup_e2e_env_var
       - changed_files_with_extension:
           ext: ".js"
-      - setup_spec_files_diff_tree
       - disable_xdebug_php_extension
       - attach_workspace:
           at: ~/project
