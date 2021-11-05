@@ -394,18 +394,14 @@ commands:
           command: |
             touch cypress.env.json
             echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
-            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ] || [ "$CIRCLE_BRANCH" == *"run-all-tests"* ]; then
-              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>-wp-<< parameters.wpversion >>
-            else
-              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>-wp-<< parameters.wpversion >> --spec "$(cat /tmp/specstring | xargs | sed -e 's/ /,/g')"
-            fi
+            ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>-wp-<< parameters.wpversion >>
 
   run_perf_tests:
     steps:
       - run:
           name: Run performance tests
           command: |
-            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
+            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ] || [ "$CIRCLE_BRANCH" != *"perf" ]; then
               echo "Changes do not require testing."
               circleci-agent step halt
             else
@@ -687,21 +683,21 @@ jobs:
 
   e2e_chrome_wp_latest:
     executor: php_74_node_browser_mysql_mailhog
-    parallelism: 4
+    parallelism: 12
     steps:
       - run_e2e_tests:
           browser: chrome
 
   e2e_firefox_wp_latest:
     executor: php_74_node_browser_mysql_mailhog
-    parallelism: 4
+    parallelism: 12
     steps:
       - run_e2e_tests:
           browser: firefox
 
   e2e_chrome_wp_previous_major:
     executor: php_74_node_browser_mysql_mailhog
-    parallelism: 4
+    parallelism: 12
     steps:
       - run_e2e_tests:
           browser: chrome
