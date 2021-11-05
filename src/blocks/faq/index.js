@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { EventsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { FaqIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies.
