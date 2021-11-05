@@ -687,21 +687,21 @@ jobs:
 
   e2e_chrome_wp_latest:
     executor: php_74_node_browser_mysql_mailhog
-    parallelism: 4
+    parallelism: 10
     steps:
       - run_e2e_tests:
           browser: chrome
 
   e2e_firefox_wp_latest:
     executor: php_74_node_browser_mysql_mailhog
-    parallelism: 4
+    parallelism: 10
     steps:
       - run_e2e_tests:
           browser: firefox
 
   e2e_chrome_wp_previous_major:
     executor: php_74_node_browser_mysql_mailhog
-    parallelism: 4
+    parallelism: 10
     steps:
       - run_e2e_tests:
           browser: chrome
