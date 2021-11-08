@@ -570,7 +570,7 @@ jobs:
       - run:
           name: Build the plugin
           command: |
-            npx wp-scripts build --config .dev/config/webpack.ci.config.js
+            yarn build
             npx grunt clean:build copy:build
       - persist_to_workspace:
           root: ~/project
