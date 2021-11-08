@@ -3,7 +3,7 @@
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
-describe.skip( 'Test CoBlocks Media Text styles extension', function() {
+describe( 'Test CoBlocks Media Text styles extension', function() {
 	/**
 	 * Test that we can add a media-text block as well as save and use alternate styles.
 	 */
