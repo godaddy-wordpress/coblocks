@@ -52,7 +52,7 @@ describe.skip( 'Test CoBlocks Gallery Masonry Block', function() {
 	 * Test that we can add image from library and are able
 	 * to successfully save the block without errors.
 	 */
-	it.skip( 'Test masonry block saves with images from media library.', function() {
+	it( 'Test masonry block saves with images from media library.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
 		cy.get( '[data-type="coblocks/gallery-masonry"]' )
@@ -84,7 +84,7 @@ describe.skip( 'Test CoBlocks Gallery Masonry Block', function() {
 	 * Test that we can add image captions
 	 * to successfully save the block without errors.
 	 */
-	it.skip( 'Test masonry block saves with images captions.', function() {
+	it( 'Test masonry block saves with images captions.', function() {
 		const { caption } = galleryData;
 		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
@@ -124,7 +124,7 @@ describe.skip( 'Test CoBlocks Gallery Masonry Block', function() {
 	/**
 	 * Test that we can add image captions with rich text options
 	 */
-	it.skip( 'Test masonry captions allow rich text controls.', function() {
+	it( 'Test masonry captions allow rich text controls.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
 		cy.get( '[data-type="coblocks/gallery-masonry"]' )
@@ -165,7 +165,7 @@ describe.skip( 'Test CoBlocks Gallery Masonry Block', function() {
 	/**
 	 * Test that we can add image and replace image.
 	 */
-	it.skip( 'Test masonry replace image flow.', function() {
+	it( 'Test masonry replace image flow.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
 		helpers.upload.imageReplaceFlow( 'coblocks/gallery-masonry' );

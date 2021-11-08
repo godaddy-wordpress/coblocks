@@ -16,7 +16,7 @@ describe( 'Test CoBlocks Click to Tweet Block', function() {
 	/**
 	 * Test that we can save a Click to Tweet block with custom data
 	 */
-	it.skip( 'Test Click to Tweet block saves with custom data.', function() {
+	it( 'Test Click to Tweet block saves with custom data.', function() {
 		helpers.addBlockToPost( 'coblocks/click-to-tweet', true );
 
 		cy.get( '.wp-block-coblocks-click-to-tweet' ).click( { force: true } );

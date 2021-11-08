@@ -95,7 +95,7 @@ describe.skip( 'Test CoBlocks Gallery Carousel Block', function() {
 	 * Test that we can add image captions
 	 * to successfully save the block without errors.
 	 */
-	it.skip( 'Test carousel block saves with images captions.', function() {
+	it( 'Test carousel block saves with images captions.', function() {
 		const { caption } = galleryData;
 		helpers.addBlockToPost( 'coblocks/gallery-carousel', true );
 
@@ -131,7 +131,7 @@ describe.skip( 'Test CoBlocks Gallery Carousel Block', function() {
 	/**
 	 * Test that we can add image captions with rich text options
 	 */
-	it.skip( 'Test carousel captions allow rich text controls.', function() {
+	it( 'Test carousel captions allow rich text controls.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-carousel', true );
 
 		handleVariation();
@@ -170,7 +170,7 @@ describe.skip( 'Test CoBlocks Gallery Carousel Block', function() {
 	/**
 	 * Test that we can add image and replace image.
 	 */
-	it.skip( 'Test carousel replace image flow.', function() {
+	it( 'Test carousel replace image flow.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-carousel', true );
 
 		handleVariation();

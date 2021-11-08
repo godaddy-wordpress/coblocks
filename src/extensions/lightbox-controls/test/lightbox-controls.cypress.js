@@ -72,7 +72,7 @@ describe.skip( 'Test CoBlocks Lightbox Controls extension', function() {
 	 * Test that we can add a gallery block to the content add image,
 	 * and alter image using the Lightbox Controls extension
 	 */
-	it.skip( 'Test core/gallery block extends with Lightbox Controls component.', function() {
+	it( 'Test core/gallery block extends with Lightbox Controls component.', function() {
 		const { imageBase } = helpers.upload.spec;
 		helpers.addBlockToPost( 'core/gallery', true );
 

@@ -130,7 +130,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 		helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
 	} );
 
-	it.skip( 'can replace the existing image through the "Replace" button', () => {
+	it( 'can replace the existing image through the "Replace" button', () => {
 		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
 
 		helpers.upload.imageReplaceFlow( 'coblocks/gallery-collage' );

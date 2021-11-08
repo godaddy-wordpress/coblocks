@@ -109,7 +109,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	/**
 	 * Test the coblocks social profiles block styles.
 	 */
-	it.skip( 'Test the social profiles block styles.', function() {
+	it( 'Test the social profiles block styles.', function() {
 		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
 		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook profile"]' ).first().click();
@@ -238,7 +238,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	 * Test the coblocks social profiles colors.
 	 * Go traditional style default color: rgb(200, 106, 25)
 	 */
-	it.skip( 'Test the social profiles colors.', function() {
+	it( 'Test the social profiles colors.', function() {
 		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
 		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook profile"]' ).first().click();
@@ -272,7 +272,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	/**
 	 * Test the coblocks social profiles rounded corners.
 	 */
-	it.skip( 'Test the social profiles rounded corners.', function() {
+	it( 'Test the social profiles rounded corners.', function() {
 		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
 		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook profile"]' ).first().click();
@@ -323,7 +323,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	/**
 	 * Test the coblocks social profiles button size.
 	 */
-	it.skip( 'Test the social profiles button size.', function() {
+	it( 'Test the social profiles button size.', function() {
 		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
 		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook profile"]' ).first().click();
@@ -357,7 +357,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	/**
 	 * Test the coblocks social profiles links input fields.
 	 */
-	it.skip( 'Test the social profiles links input fields.', function() {
+	it( 'Test the social profiles links input fields.', function() {
 		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
 		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook profile"]' ).first().click();
@@ -394,7 +394,7 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	/**
 	 * Test the coblocks social profiles custom classes & top/bottom spacing.
 	 */
-	it.skip( 'Test the social profiles custom classes and top/bottom spacing.', function() {
+	it( 'Test the social profiles custom classes and top/bottom spacing.', function() {
 		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
 		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook profile"]' ).first().click();

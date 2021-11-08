@@ -7,7 +7,7 @@ describe.skip( 'Test CoBlocks Media Text styles extension', function() {
 	/**
 	 * Test that we can add a media-text block as well as save and use alternate styles.
 	 */
-	it.skip( 'Test core/media-text block extends with Media-Text styles extension.', function() {
+	it( 'Test core/media-text block extends with Media-Text styles extension.', function() {
 		const { imageBase } = helpers.upload.spec;
 		helpers.addBlockToPost( 'core/media-text', true );
 		helpers.upload.imageToBlock( 'core/media-text' );
