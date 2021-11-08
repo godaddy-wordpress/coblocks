@@ -3,7 +3,7 @@
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
-describe.skip( 'Test CoBlocks Lightbox Controls extension', function() {
+describe( 'Test CoBlocks Lightbox Controls extension', function() {
 	/**
 	 * Test that we can add a image block to the content add image,
 	 * and alter image using the Lightbox Controls extension

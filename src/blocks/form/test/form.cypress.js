@@ -373,7 +373,7 @@ describe( 'Test CoBlocks Form Block', function() {
 	/**
 	 * Test the [email] and [name] links work and that the custom subject line field is used in the email.
 	 */
-	it.skip( 'Test the form block custom subject line sends as intended.', function() {
+	it( 'Test the form block custom subject line sends as intended.', function() {
 		helpers.addBlockToPost( 'coblocks/form', true );
 
 		cy.get( '[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
@@ -448,7 +448,7 @@ describe( 'Test CoBlocks Form Block', function() {
 	/**
 	 * Test the custom success message displays as intended.
 	 */
-	it.skip( 'Test the custom success message displays as intended.', function() {
+	it( 'Test the custom success message displays as intended.', function() {
 		helpers.addBlockToPost( 'coblocks/form', true );
 
 		cy.get( '[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
@@ -506,7 +506,7 @@ describe( 'Test CoBlocks Form Block', function() {
 	 * Test that we can add a Form block to the content, adjust colors
 	 * and are able to successfully save the block without errors.
 	 */
-	it.skip( 'Test that color values are able to set and save.', function() {
+	it( 'Test that color values are able to set and save.', function() {
 		const { textColor, textColorRGB } = formData;
 		helpers.addBlockToPost( 'coblocks/form', true );
 
