@@ -6,121 +6,120 @@ let swiper = null;
 let activeIndex = 0;
 let isHovering = false;
 
-const swiperContainer = document.querySelector('.swiper-container');
+const swiperContainer = document.querySelector( '.swiper-container' );
 
 const updateThumbnails = ( newIndex ) => {
-  const currentActiveThumbnail = document.getElementById(`wp-block-coblocks-gallery-carousel-thumbnail-${activeIndex}`);
+	const currentActiveThumbnail = document.getElementById( `wp-block-coblocks-gallery-carousel-thumbnail-${ activeIndex }` );
 
-  if (currentActiveThumbnail ) {
-      currentActiveThumbnail.classList.remove('is-active');
+	if ( currentActiveThumbnail ) {
+		currentActiveThumbnail.classList.remove( 'is-active' );
 
-      const nextActiveThumbnail = document.getElementById(`wp-block-coblocks-gallery-carousel-thumbnail-${newIndex}`);
-      
-      nextActiveThumbnail.classList.add("is-active");
-  }
+		const nextActiveThumbnail = document.getElementById( `wp-block-coblocks-gallery-carousel-thumbnail-${ newIndex }` );
+
+		nextActiveThumbnail.classList.add( 'is-active' );
+	}
 };
 
-const handleThumbnailClick = (newIndex) => {
-    swiper?.slideTo( newIndex );
-    updateThumbnails(newIndex);
-    activeIndex = newIndex;
-}
+const handleThumbnailClick = ( newIndex ) => {
+	swiper?.slideTo( newIndex );
+	updateThumbnails( newIndex );
+	activeIndex = newIndex;
+};
 
-const handleSwipe = (newIndex, state) => {
-  if ( newIndex !== activeIndex ) {
-      updateThumbnails( newIndex );
-      activeIndex = newIndex;
-  }
-}
+const handleSwipe = ( newIndex ) => {
+	if ( newIndex !== activeIndex ) {
+		updateThumbnails( newIndex );
+		activeIndex = newIndex;
+	}
+};
 
 ( function() {
-    'use strict';
+	'use strict';
 
-    if ( swiperContainer ) {
-      const swiperOptions = swiperContainer.getAttribute('data-swiper');
+	if ( swiperContainer ) {
+		const swiperOptions = swiperContainer.getAttribute( 'data-swiper' );
 
-      if ( swiperOptions ) {
-        const parsedSwiperOptions = JSON.parse( swiperOptions );
+		if ( swiperOptions ) {
+			const parsedSwiperOptions = JSON.parse( swiperOptions );
 
-        const swiperBackButton = document.getElementById(`${parsedSwiperOptions.uuid}-prev`);
-        const swiperNextButton = document.getElementById(`${parsedSwiperOptions.uuid}-next`);
+			const swiperBackButton = document.getElementById( `${ parsedSwiperOptions.uuid }-prev` );
+			const swiperNextButton = document.getElementById( `${ parsedSwiperOptions.uuid }-next` );
 
-        const swiperConfig = {
-          loop: true,
-          centeredSlides: true,
-          passiveListeners: true,
-          longSwipesRatio: 0.8,
-          touchable: false,
-          plugins: [],
-          freeMode: true,
-        };
+			const swiperConfig = {
+				centeredSlides: true,
+				freeMode: true,
+				longSwipesRatio: 0.8,
+				loop: true,
+				passiveListeners: true,
+				plugins: [],
+				touchable: false,
+			};
 
-        // add button navigation
-        if ( parsedSwiperOptions.navigation ) {
-            swiperConfig.plugins = [ ...swiperConfig.plugins, TinySwiperPluginNavigation ];
+			// add button navigation
+			if ( parsedSwiperOptions.navigation ) {
+				swiperConfig.plugins = [ ...swiperConfig.plugins, TinySwiperPluginNavigation ];
 
-            swiperConfig.navigation = {
-              prevEl: swiperBackButton,
-              nextEl: swiperNextButton
-            }
-        }
+				swiperConfig.navigation = {
+					prevEl: swiperBackButton,
+					nextEl: swiperNextButton,
+				};
+			}
 
-        swiper = new TinySwiper(swiperContainer, swiperConfig);
+			swiper = new TinySwiper( swiperContainer, swiperConfig );
 
-        // register swiper resize observer
-        const resizeObserver = new ResizeObserver(entries => {        
-          swiper.update();
-        });
-        
-        resizeObserver.observe(swiperContainer);
+			// register swiper resize observer
+			const resizeObserver = new ResizeObserver( () => {
+				swiper.update();
+			} );
 
-        // add thumbnail pagination
-        if ( parsedSwiperOptions.thumbnails ) {
-          const paginationThumbnails = document.getElementsByClassName('wp-block-coblocks-gallery-carousel-thumbnail');
+			resizeObserver.observe( swiperContainer );
 
-          for (const [index, thumbnail] of Object.entries(paginationThumbnails)) {
-            thumbnail.addEventListener('click', e => handleThumbnailClick(index))
-          }
+			// add thumbnail pagination
+			if ( parsedSwiperOptions.thumbnails ) {
+				const paginationThumbnails = document.getElementsByClassName( 'wp-block-coblocks-gallery-carousel-thumbnail' );
 
-          const firstThumbnailImage = document.getElementById(`wp-block-coblocks-gallery-carousel-thumbnail-${0}`);
+				for ( const [ index, thumbnail ] of Object.entries( paginationThumbnails ) ) {
+					thumbnail.addEventListener( ( 'click' ), () => handleThumbnailClick( index ) );
+				}
 
-          firstThumbnailImage.classList.add('is-active');
-        }
+				const firstThumbnailImage = document.getElementById( `wp-block-coblocks-gallery-carousel-thumbnail-${ 0 }` );
 
-        // add draggable functionality
-        if ( parsedSwiperOptions.draggable !== true ) {
-          const swiperWrapper = document.getElementById('swiper-wrapper');
+				firstThumbnailImage.classList.add( 'is-active' );
+			}
 
-          swiperWrapper?.addEventListener('mousedown', e => {
-            e.stopPropagation()
-          });
-        }
+			// add draggable functionality
+			if ( parsedSwiperOptions.draggable !== true ) {
+				const swiperWrapper = document.getElementById( 'swiper-wrapper' );
 
-        // add autoplay functionality
-        if ( parsedSwiperOptions.autoPlay === true  && parsedSwiperOptions.autoPlaySpeed ) {
-          
-          // add pause on hover functionality
-          if ( parsedSwiperOptions.pauseHover === true ) {
-              swiperContainer.addEventListener('mouseenter', () => {
-                isHovering = true;
-              });
+				swiperWrapper?.addEventListener( ( 'mousedown' ), ( e ) => {
+					e.stopPropagation();
+				} );
+			}
 
-              swiperContainer.addEventListener('mouseleave', () => {
-                isHovering = false;
-              });
-          }  
-          
-          setInterval(() => {
-              if ( parsedSwiperOptions.pauseHover === true  && isHovering === true) {
-                return;
-              }
-              
-              swiper?.slideTo( swiper.state.index + 1 );
-            }, parsedSwiperOptions.autoPlaySpeed);
-        }
+			// add autoplay functionality
+			if ( parsedSwiperOptions.autoPlay === true && parsedSwiperOptions.autoPlaySpeed ) {
+				// add pause on hover functionality
+				if ( parsedSwiperOptions.pauseHover === true ) {
+					swiperContainer.addEventListener( 'mouseenter', () => {
+						isHovering = true;
+					} );
 
-        // register the swipe callback
-        swiper.on('after-slide', handleSwipe);
-      }
-    }
-}());
+					swiperContainer.addEventListener( 'mouseleave', () => {
+						isHovering = false;
+					} );
+				}
+
+				setInterval( () => {
+					if ( parsedSwiperOptions.pauseHover === true && isHovering === true ) {
+						return;
+					}
+
+					swiper?.slideTo( swiper.state.index + 1 );
+				}, parsedSwiperOptions.autoPlaySpeed );
+			}
+
+			// register the swipe callback
+			swiper.on( 'after-slide', handleSwipe );
+		}
+	}
+}() );

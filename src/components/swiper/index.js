@@ -1,9 +1,9 @@
-import { 
-    useMemo, 
-    useEffect, 
-    useCallback, 
-    useState,
-    useRef
+import {
+	useCallback, 
+	useEffect, 
+	useMemo,
+	useRef,
+	useState,
 } from '@wordpress/element';
 import { usePrevious } from '@wordpress/compose';
 import { v4 as generateUuid } from 'uuid';
@@ -14,17 +14,17 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 import './style.scss';
 
 const SwiperHOC = ( Component ) => {
-    return (props) => {
-        const swiperUuid = useMemo(() => 
-            generateUuid(), 
-            [ 
-                props.list.length, 
-                props.freeScroll 
-            ]
-        );
+	return (props) => {
+		const swiperUuid = useMemo(() => 
+			generateUuid(), 
+				[ 
+					props.list.length, 
+					props.freeScroll 
+				]
+			);
 
-        return <Component key={swiperUuid} uuid={swiperUuid} {...props} />
-    }
+			return <Component key={swiperUuid} uuid={swiperUuid} {...props} />;
+	}
 }
 
 const Swiper = ({ 
