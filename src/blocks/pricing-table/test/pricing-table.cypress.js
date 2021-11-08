@@ -11,15 +11,7 @@ describe( 'Test CoBlocks Pricing Table Block', function() {
 	it( 'Test pricing-table block saves with empty values.', function() {
 		helpers.addBlockToPost( 'coblocks/pricing-table', true );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/pricing-table' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-pricing-table' ).should( 'exist' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -51,8 +43,6 @@ describe( 'Test CoBlocks Pricing Table Block', function() {
 
 		cy.get( '.wp-block-coblocks-pricing-table-item' ).should( 'have.length', 4 );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/pricing-table' );
 	} );
 
@@ -64,18 +54,9 @@ describe( 'Test CoBlocks Pricing Table Block', function() {
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'pricing-table' );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/pricing-table' );
 
 		cy.get( '.wp-block-coblocks-pricing-table' )
 			.should( 'have.class', 'my-custom-class' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-pricing-table' )
-			.should( 'have.class', 'my-custom-class' );
-
-		helpers.editPage();
 	} );
 } );

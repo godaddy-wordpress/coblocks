@@ -6,9 +6,9 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import Inspector from './inspector';
-import Controls from './controls';
 import applyWithColors from './colors';
+import Controls from './controls';
+import Inspector from './inspector';
 import {
 	BackgroundClasses,
 	BackgroundDropZone,
@@ -20,12 +20,12 @@ import {
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { useState } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { withSelect, withDispatch } from '@wordpress/data';
 import { InnerBlocks } from '@wordpress/block-editor';
-import { ResizableBox, Spinner } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
+import { useState } from '@wordpress/element';
+import { ResizableBox, Spinner } from '@wordpress/components';
+import { withDispatch, withSelect } from '@wordpress/data';
 
 /**
  * Block edit function
@@ -99,12 +99,12 @@ const Edit = ( props ) => {
 		'wp-block-coblocks-column__inner',
 		...BackgroundClasses( attributes ),
 		{
-			'has-text-color': textColor.color,
-			'has-padding': paddingSize && paddingSize !== 'no',
 			'has-margin': marginSize && marginSize !== 'no',
+			'has-padding': paddingSize && paddingSize !== 'no',
+			'has-text-color': textColor.color,
 			[ `has-${ paddingSize }-padding` ]:
-				paddingSize && paddingSize !== 'advanced',
-			[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'advanced',
+				paddingSize && ! [ 'no', 'advanced' ].includes( paddingSize ),
+			[ `has-${ marginSize }-margin` ]: marginSize && ! [ 'no', 'advanced' ].includes( marginSize ),
 		}
 	);
 
@@ -112,13 +112,21 @@ const Edit = ( props ) => {
 		...BackgroundStyles( attributes ),
 		backgroundColor: backgroundColor.color,
 		color: textColor.color,
-		paddingTop:
-			paddingSize === 'advanced' && paddingTop
-				? paddingTop + paddingUnit
+		marginBottom:
+			marginSize === 'advanced' && marginBottom
+				? marginBottom + marginUnit
 				: undefined,
-		paddingRight:
-			paddingSize === 'advanced' && paddingRight
-				? paddingRight + paddingUnit
+		marginLeft:
+			marginSize === 'advanced' && marginLeft
+				? marginLeft + marginUnit
+				: undefined,
+		marginRight:
+			marginSize === 'advanced' && marginRight
+				? marginRight + marginUnit
+				: undefined,
+		marginTop:
+			marginSize === 'advanced' && marginTop
+				? marginTop + marginUnit
 				: undefined,
 		paddingBottom:
 			paddingSize === 'advanced' && paddingBottom
@@ -128,21 +136,13 @@ const Edit = ( props ) => {
 			paddingSize === 'advanced' && paddingLeft
 				? paddingLeft + paddingUnit
 				: undefined,
-		marginTop:
-			marginSize === 'advanced' && marginTop
-				? marginTop + marginUnit
+		paddingRight:
+			paddingSize === 'advanced' && paddingRight
+				? paddingRight + paddingUnit
 				: undefined,
-		marginRight:
-			marginSize === 'advanced' && marginRight
-				? marginRight + marginUnit
-				: undefined,
-		marginBottom:
-			marginSize === 'advanced' && marginBottom
-				? marginBottom + marginUnit
-				: undefined,
-		marginLeft:
-			marginSize === 'advanced' && marginLeft
-				? marginLeft + marginUnit
+		paddingTop:
+			paddingSize === 'advanced' && paddingTop
+				? paddingTop + paddingUnit
 				: undefined,
 	};
 
@@ -165,7 +165,7 @@ const Edit = ( props ) => {
 					<div className="wp-block-coblocks-column">
 						<div className={ innerClasses } style={ innerStyles }>
 							{ BackgroundVideo( attributes ) }
-							<InnerBlocks templateLock={ false } renderAppender={ ! hasInnerBlocks && InnerBlocks.ButtonBlockAppender } />
+							<InnerBlocks renderAppender={ ! hasInnerBlocks && InnerBlocks.ButtonBlockAppender } templateLock={ false } />
 						</div>
 					</div>
 				</div>
@@ -190,33 +190,21 @@ const Edit = ( props ) => {
 			</span>
 			<ResizableBox
 				className={ classnames( className, {
-					'is-selected-column': isSelected,
 					'is-resizing': resizing,
+					'is-selected-column': isSelected,
 				} ) }
+				enable={ {
+					bottom: false,
+					bottomLeft: false,
+					bottomRight: false,
+					left: false,
+					right: true,
+					top: false,
+					topLeft: false,
+					topRight: false,
+				} }
 				maxWidth={ maxWidth }
 				minHeight="20"
-				enable={ {
-					top: false,
-					right: true,
-					bottom: false,
-					left: false,
-					topRight: false,
-					bottomRight: false,
-					bottomLeft: false,
-					topLeft: false,
-				} }
-				onResizeStop={ () => {
-					const currentBlock = document.getElementById(
-						'block-' + clientId
-					);
-
-					//Remove resizing class
-					currentBlock.classList.remove( 'is-resizing' );
-					document
-						.getElementById( 'block-' + parentId )
-						.classList.remove( 'is-resizing' );
-					setResizing( false );
-				} }
 				onResize={ ( _event, _direction, _elt, delta ) => {
 					const parentBlockClientRect = document
 						.getElementById( 'block-' + parentId )
@@ -262,6 +250,18 @@ const Edit = ( props ) => {
 					setSelectedWidth( currentBlockClientRect.width );
 					setResizing( true );
 				} }
+				onResizeStop={ () => {
+					const currentBlock = document.getElementById(
+						'block-' + clientId
+					);
+
+					//Remove resizing class
+					currentBlock.classList.remove( 'is-resizing' );
+					document
+						.getElementById( 'block-' + parentId )
+						.classList.remove( 'is-resizing' );
+					setResizing( false );
+				} }
 				showHandle={ isSelected }
 			>
 				<div
@@ -271,7 +271,7 @@ const Edit = ( props ) => {
 					{ isBlobURL( backgroundImg ) && <Spinner /> }
 					{ BackgroundVideo( attributes ) }
 					<div className={ innerClasses } style={ innerStyles }>
-						<InnerBlocks templateLock={ false } renderAppender={ ! hasInnerBlocks && InnerBlocks.ButtonBlockAppender } />
+						<InnerBlocks renderAppender={ ! hasInnerBlocks && InnerBlocks.ButtonBlockAppender } templateLock={ false } />
 					</div>
 				</div>
 			</ResizableBox>
@@ -291,17 +291,13 @@ const applyWithSelect = withSelect( ( select, { clientId } ) => {
 	const lastId = ( parentBlocks[ 0 ].innerBlocks !== 'undefined' ) ? parentBlocks[ 0 ].innerBlocks[ parentBlocks[ 0 ].innerBlocks.length - 1 ].clientId : clientId;
 
 	return {
+		getBlockRootClientId,
 		hasInnerBlocks: !! ( columnBlocks && columnBlocks.innerBlocks.length ),
-		parentId,
+		lastId,
 		nextBlockClient,
 		nextBlockClientId,
-
-		// Used in controls
-		getBlockRootClientId,
-
-		// Used in inspector
-		lastId,
 		parentBlocks,
+		parentId,
 	};
 } );
 

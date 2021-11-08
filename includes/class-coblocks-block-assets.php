@@ -125,7 +125,7 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Styles.
-		$name       = 'coblocks-style';
+		$name       = 'style-coblocks';
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
 		$rtl        = ! is_rtl() ? '' : '-rtl';
@@ -145,7 +145,7 @@ class CoBlocks_Block_Assets {
 	 */
 	public function editor_assets() {
 		// Styles.
-		$name       = 'coblocks-editor';
+		$name       = 'coblocks';
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
 		$rtl        = ! is_rtl() ? '' : '-rtl';
@@ -321,7 +321,7 @@ class CoBlocks_Block_Assets {
 		$dir = CoBlocks()->asset_source( 'js' );
 
 		// Define where the vendor asset is loaded from.
-		$vendors_dir = CoBlocks()->asset_source( 'js', 'vendors' );
+		$vendors_dir = CoBlocks()->asset_source( 'js/vendors' );
 
 		// Enqueue for coblocks animations.
 		wp_enqueue_script(
@@ -498,7 +498,7 @@ class CoBlocks_Block_Assets {
 	 */
 	public function editor_scripts() {
 		// Define where the vendor asset is loaded from.
-		$vendors_dir = CoBlocks()->asset_source( 'js', 'vendors' );
+		$vendors_dir = CoBlocks()->asset_source( 'js/vendors' );
 
 		// Required by the events block.
 		wp_enqueue_script(

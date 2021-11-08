@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-29T15:43:57+00:00\n"
+"POT-Creation-Date: 2021-11-04T19:35:00+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -124,7 +124,6 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgsfocusable.js:687
 #: src/blocks/icon/deprecated/svgsfocusable.js:705
 #: src/blocks/icon/svgs.js:666
-#: src/blocks/share/inspector.js:177
 msgid "Email"
 msgstr ""
 
@@ -158,7 +157,7 @@ msgstr ""
 #: src/blocks/form/fields/text/index.js:27
 #: src/blocks/form/fields/text/index.js:40
 #: src/blocks/form/fields/text/transforms.js:14
-#: src/blocks/share/index.js:51
+#: src/blocks/share/index.js:44
 #: src/blocks/social-profiles/index.js:56
 msgid "Text"
 msgstr ""
@@ -286,17 +285,17 @@ msgid "(no title)"
 msgstr ""
 
 #: src/blocks/share/index.php:132
-#: src/blocks/share/edit.js:130
+#: src/blocks/share/transforms.js:25
 msgid "Share on Facebook"
 msgstr ""
 
 #: src/blocks/share/index.php:136
-#: src/blocks/share/edit.js:146
+#: src/blocks/share/transforms.js:30
 msgid "Share on Twitter"
 msgstr ""
 
 #: src/blocks/share/index.php:140
-#: src/blocks/share/edit.js:162
+#: src/blocks/share/transforms.js:35
 msgid "Share on Pinterest"
 msgstr ""
 
@@ -305,33 +304,30 @@ msgid "Share on Linkedin"
 msgstr ""
 
 #: src/blocks/share/index.php:148
-#: src/blocks/share/edit.js:194
+#: src/blocks/share/transforms.js:45
 msgid "Share via Email"
 msgstr ""
 
 #: src/blocks/share/index.php:152
-#: src/blocks/share/edit.js:210
+#: src/blocks/share/transforms.js:50
 msgid "Share on Tumblr"
 msgstr ""
 
 #: src/blocks/share/index.php:156
-#: src/blocks/share/edit.js:226
 msgid "Share on Google"
 msgstr ""
 
 #: src/blocks/share/index.php:160
-#: src/blocks/share/edit.js:242
+#: src/blocks/share/transforms.js:55
 msgid "Share on Reddit"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:68
-#: src/blocks/share/inspector.js:162
 #: src/blocks/social-profiles/edit.js:120
 msgid "Facebook"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:72
-#: src/blocks/share/inspector.js:157
 #: src/blocks/social-profiles/edit.js:126
 msgid "Twitter"
 msgstr ""
@@ -347,7 +343,6 @@ msgid "TikTok"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:84
-#: src/blocks/share/inspector.js:167
 #: src/blocks/social-profiles/edit.js:144
 msgid "Pinterest"
 msgstr ""
@@ -451,6 +446,7 @@ msgstr ""
 #: src/blocks/click-to-tweet/inspector.js:48
 #: src/blocks/dynamic-separator/inspector.js:52
 #: src/blocks/events/event-item/inspector.js:30
+#: src/blocks/faq/faq-item/inspector.js:32
 #: src/blocks/features/feature/inspector.js:92
 #: src/blocks/features/inspector.js:159
 #: src/blocks/form/fields/submit-button/edit.js:115
@@ -462,7 +458,6 @@ msgstr ""
 #: src/blocks/row/column/inspector.js:164
 #: src/blocks/row/inspector.js:206
 #: src/blocks/shape-divider/inspector.js:71
-#: src/blocks/share/inspector.js:200
 #: src/blocks/social-profiles/inspector.js:218
 #: src/components/form-label-colors/label-color-control.js:36
 #: src/extensions/colors/index.js:59
@@ -484,8 +479,6 @@ msgstr ""
 #: src/blocks/row/column/inspector.js:170
 #: src/blocks/row/inspector.js:222
 #: src/blocks/shape-divider/inspector.js:82
-#: src/blocks/share/inspector.js:81
-#: src/blocks/share/inspector.js:99
 #: src/blocks/social-profiles/inspector.js:87
 #: src/blocks/social-profiles/inspector.js:105
 #: src/extensions/colors/index.js:47
@@ -497,6 +490,7 @@ msgstr ""
 #: src/blocks/author/inspector.js:57
 #: src/blocks/click-to-tweet/inspector.js:54
 #: src/blocks/events/event-item/inspector.js:23
+#: src/blocks/faq/faq-item/inspector.js:21
 #: src/blocks/features/feature/inspector.js:114
 #: src/blocks/features/inspector.js:181
 #: src/blocks/hero/inspector.js:155
@@ -504,7 +498,6 @@ msgstr ""
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:58
 #: src/blocks/row/column/inspector.js:175
 #: src/blocks/row/inspector.js:227
-#: src/blocks/share/inspector.js:66
 #: src/blocks/social-profiles/inspector.js:97
 #: src/extensions/colors/index.js:54
 msgid "Text color"
@@ -987,6 +980,64 @@ msgstr ""
 msgid "Show events from the period (100 events max)."
 msgstr ""
 
+#: src/blocks/faq/appender.js:18
+#: src/blocks/faq/appender.js:21
+msgid "Add Question"
+msgstr ""
+
+#: src/blocks/faq/appender.js:26
+#: src/blocks/faq/appender.js:29
+msgid "Category Title"
+msgstr ""
+
+#: src/blocks/faq/edit.js:23
+msgid "FAQ title"
+msgstr ""
+
+#: src/blocks/faq/edit.js:49
+msgid "Category name"
+msgstr ""
+
+#. translators: block keyword
+#: src/blocks/faq/example.js:15
+#: src/blocks/faq/index.js:33
+msgid "FAQ"
+msgstr ""
+
+#: src/blocks/faq/example.js:23
+msgid "I am sick and I need to visit my doctor today. Can I get a priority appointment?"
+msgstr ""
+
+#: src/blocks/faq/example.js:30
+msgid "When can I get my lab results?"
+msgstr ""
+
+#: src/blocks/faq/faq-item/edit.js:23
+msgid "Enter the answer to the question"
+msgstr ""
+
+#: src/blocks/faq/faq-item/edit.js:66
+msgid "Write a question"
+msgstr ""
+
+#: src/blocks/faq/faq-item/index.js:26
+msgid "A question/answer within the FAQ block."
+msgstr ""
+
+#: src/blocks/faq/faq-item/index.js:35
+msgctxt "block name"
+msgid "FAQ Item"
+msgstr ""
+
+#: src/blocks/faq/index.js:26
+msgid "Add a list of questions and answers."
+msgstr ""
+
+#: src/blocks/faq/index.js:39
+msgctxt "block name"
+msgid "FAQ"
+msgstr ""
+
 #: src/blocks/features/edit.js:114
 #: src/blocks/features/feature/edit.js:122
 #: src/blocks/media-card/edit.js:126
@@ -1309,7 +1360,6 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:72
 #: src/blocks/icon/icon-size-select.js:19
 #: src/blocks/posts/inspector.js:67
-#: src/blocks/share/inspector.js:72
 #: src/blocks/social-profiles/inspector.js:78
 #: src/components/dimensions-control/dimensions-select.js:15
 #: src/components/gutter-control/gutter-control.js:18
@@ -1342,7 +1392,6 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:78
 #: src/blocks/icon/icon-size-select.js:24
 #: src/blocks/posts/inspector.js:72
-#: src/blocks/share/inspector.js:73
 #: src/blocks/social-profiles/inspector.js:79
 #: src/components/dimensions-control/dimensions-select.js:20
 #: src/components/gutter-control/gutter-control.js:24
@@ -1375,7 +1424,6 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:84
 #: src/blocks/icon/icon-size-select.js:29
 #: src/blocks/posts/inspector.js:77
-#: src/blocks/share/inspector.js:74
 #: src/blocks/social-profiles/inspector.js:80
 #: src/components/dimensions-control/dimensions-select.js:25
 #: src/components/gutter-control/gutter-control.js:30
@@ -1762,7 +1810,6 @@ msgid "Add text…"
 msgstr ""
 
 #: src/blocks/form/fields/submit-button/edit.js:124
-#: src/blocks/share/inspector.js:86
 msgid "Button color"
 msgstr ""
 
@@ -1970,7 +2017,6 @@ msgstr ""
 #: src/blocks/gallery-masonry/inspector.js:85
 #: src/blocks/gallery-offset/inspector.js:87
 #: src/blocks/gallery-stacked/inspector.js:90
-#: src/blocks/share/inspector.js:120
 #: src/blocks/social-profiles/inspector.js:126
 #: src/components/background/panel.js:219
 msgid "Rounded corners"
@@ -3509,11 +3555,9 @@ msgid "hub"
 msgstr ""
 
 #. translators: icon keyword
-#. translators: block keyword
 #: src/blocks/icon/deprecated/svgs.js:680
 #: src/blocks/icon/deprecated/svgsfocusable.js:679
 #: src/blocks/icon/svgs.js:658
-#: src/blocks/share/index.js:34
 msgid "social"
 msgstr ""
 
@@ -4470,7 +4514,7 @@ msgstr ""
 #. translators: block name
 #. translators: block style
 #: src/blocks/icon/index.js:33
-#: src/blocks/share/index.js:45
+#: src/blocks/share/index.js:39
 #: src/blocks/social-profiles/index.js:50
 msgid "Icon"
 msgstr ""
@@ -4497,7 +4541,6 @@ msgid "Filled"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:160
-#: src/blocks/share/inspector.js:111
 #: src/blocks/social-profiles/inspector.js:117
 msgid "Icon settings"
 msgstr ""
@@ -4559,8 +4602,6 @@ msgid "Open in new tab"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:311
-#: src/blocks/share/inspector.js:68
-#: src/blocks/share/inspector.js:104
 #: src/blocks/social-profiles/inspector.js:97
 #: src/blocks/social-profiles/inspector.js:110
 msgid "Icon color"
@@ -6514,23 +6555,23 @@ msgstr ""
 msgid "Four columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:149
+#. translators: %s: 'one' 'two' 'three' and 'four'
+#: src/blocks/row/edit.js:151
+msgid "Select a layout for this %s column row."
+msgstr ""
+
+#: src/blocks/row/edit.js:154
+msgid "Select the number of columns for this row."
+msgstr ""
+
+#: src/blocks/row/edit.js:157
 msgid "Row layout"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/row/edit.js:149
+#: src/blocks/row/edit.js:157
 #: src/blocks/row/index.js:38
 msgid "Row"
-msgstr ""
-
-#. translators: %s: 'one' 'two' 'three' and 'four'
-#: src/blocks/row/edit.js:153
-msgid "Select a layout for this %s column row."
-msgstr ""
-
-#: src/blocks/row/edit.js:156
-msgid "Select the number of columns for this row."
 msgstr ""
 
 #: src/blocks/row/edit.js:160
@@ -6541,7 +6582,7 @@ msgstr ""
 msgid "Select row layout"
 msgstr ""
 
-#: src/blocks/row/edit.js:195
+#: src/blocks/row/edit.js:189
 msgid "Back to columns"
 msgstr ""
 
@@ -6797,42 +6838,6 @@ msgstr ""
 msgid "Shape color"
 msgstr ""
 
-#: src/blocks/share/edit.js:126
-msgid "Add Facebook share button"
-msgstr ""
-
-#: src/blocks/share/edit.js:142
-msgid "Add Twitter share button"
-msgstr ""
-
-#: src/blocks/share/edit.js:158
-msgid "Add Pinterest share button"
-msgstr ""
-
-#: src/blocks/share/edit.js:174
-msgid "Add Linkedin share button"
-msgstr ""
-
-#: src/blocks/share/edit.js:178
-msgid "Share on LinkedIn"
-msgstr ""
-
-#: src/blocks/share/edit.js:190
-msgid "Add Email share button"
-msgstr ""
-
-#: src/blocks/share/edit.js:206
-msgid "Add Tumblr share button"
-msgstr ""
-
-#: src/blocks/share/edit.js:222
-msgid "Add Google share button"
-msgstr ""
-
-#: src/blocks/share/edit.js:238
-msgid "Add Reddit share button"
-msgstr ""
-
 #. translators: block name
 #: src/blocks/share/index.js:26
 msgid "Share"
@@ -6844,73 +6849,26 @@ msgid "Add social sharing links to help you get likes and shares."
 msgstr ""
 
 #. translators: block style
-#: src/blocks/share/index.js:40
+#: src/blocks/share/index.js:33
 #: src/blocks/social-profiles/index.js:45
 msgid "Mask"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/share/index.js:56
+#: src/blocks/share/index.js:49
 #: src/blocks/social-profiles/index.js:61
 msgid "Icon & Text"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/share/index.js:61
+#: src/blocks/share/index.js:54
 #: src/blocks/social-profiles/index.js:66
 #: src/extensions/button-styles/index.js:11
 msgid "Circular"
 msgstr ""
 
-#: src/blocks/share/inspector.js:26
-#: src/blocks/social-profiles/inspector.js:37
-msgid "Share button colors are enabled."
-msgstr ""
-
-#: src/blocks/share/inspector.js:26
-#: src/blocks/social-profiles/inspector.js:38
-msgid "Toggle to use official colors from each social media platform."
-msgstr ""
-
-#: src/blocks/share/inspector.js:113
-#: src/blocks/social-profiles/inspector.js:119
-msgid "Social colors"
-msgstr ""
-
-#: src/blocks/share/inspector.js:129
-#: src/blocks/social-profiles/inspector.js:135
-msgid "Icon size"
-msgstr ""
-
-#: src/blocks/share/inspector.js:138
-#: src/blocks/social-profiles/inspector.js:144
-msgid "Circle size"
-msgstr ""
-
-#: src/blocks/share/inspector.js:147
-#: src/blocks/social-profiles/inspector.js:153
-msgid "Button size"
-msgstr ""
-
-#: src/blocks/share/inspector.js:155
-msgid "Icons"
-msgstr ""
-
-#: src/blocks/share/inspector.js:172
-#: src/blocks/social-profiles/edit.js:150
-msgid "LinkedIn"
-msgstr ""
-
-#: src/blocks/share/inspector.js:182
-msgid "Tumblr"
-msgstr ""
-
-#: src/blocks/share/inspector.js:187
-msgid "Google"
-msgstr ""
-
-#: src/blocks/share/inspector.js:192
-msgid "Reddit"
+#: src/blocks/share/transforms.js:40
+msgid "Share on LinkedIn"
 msgstr ""
 
 #: src/blocks/social-profiles/edit.js:121
@@ -6951,6 +6909,10 @@ msgstr ""
 
 #: src/blocks/social-profiles/edit.js:146
 msgid "Add Pinterest profile"
+msgstr ""
+
+#: src/blocks/social-profiles/edit.js:150
+msgid "LinkedIn"
 msgstr ""
 
 #: src/blocks/social-profiles/edit.js:151
@@ -7003,6 +6965,30 @@ msgstr ""
 #. translators: block keyword
 #: src/blocks/social-profiles/index.js:37
 msgid "links"
+msgstr ""
+
+#: src/blocks/social-profiles/inspector.js:37
+msgid "Share button colors are enabled."
+msgstr ""
+
+#: src/blocks/social-profiles/inspector.js:38
+msgid "Toggle to use official colors from each social media platform."
+msgstr ""
+
+#: src/blocks/social-profiles/inspector.js:119
+msgid "Social colors"
+msgstr ""
+
+#: src/blocks/social-profiles/inspector.js:135
+msgid "Icon size"
+msgstr ""
+
+#: src/blocks/social-profiles/inspector.js:144
+msgid "Circle size"
+msgstr ""
+
+#: src/blocks/social-profiles/inspector.js:153
+msgid "Button size"
 msgstr ""
 
 #: src/blocks/social-profiles/inspector.js:161

@@ -6,8 +6,8 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import { BackgroundClasses, BackgroundVideo } from '../../components/background';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
+import { BackgroundClasses, BackgroundVideo } from '../../components/background';
 
 /**
  * WordPress dependencies
@@ -51,9 +51,9 @@ function Save( { attributes } ) {
 		{ 'has-text-color': textColor || customTextColor },
 		{ [ textClass ]: textClass },
 		{ 'has-padding': paddingSize && paddingSize !== 'no' },
-		{ [ `has-${ paddingSize }-padding` ]: ! [ 'advanced' ].includes( paddingSize ) },
+		{ [ `has-${ paddingSize }-padding` ]: ! [ 'no', 'advanced' ].includes( paddingSize ) },
 		{ 'has-margin': marginSize && marginSize !== 'no' },
-		{ [ `has-${ marginSize }-margin` ]: ! [ 'advanced' ].includes( marginSize ) },
+		{ [ `has-${ marginSize }-margin` ]: ! [ 'no', 'advanced' ].includes( marginSize ) },
 		{ 'is-stacked-on-mobile': isStackedOnMobile },
 		{ [ `are-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment },
 	];
@@ -66,7 +66,7 @@ function Save( { attributes } ) {
 	};
 
 	return (
-		<div className={ classes } data-id={ id } data-columns={ columns } data-layout={ layout } >
+		<div className={ classes } data-columns={ columns } data-id={ id } data-layout={ layout } >
 			<GutterWrapper { ...attributes }>
 				<div className={ classnames( innerClasses ) } style={ innerStyles }>
 					{ BackgroundVideo( attributes ) }

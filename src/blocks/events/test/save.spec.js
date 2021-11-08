@@ -12,7 +12,6 @@ import { name, settings } from '../index';
 
 // Make variables accessible for all tests.
 let block;
-let serializedBlock;
 
 describe( 'coblocks/events', () => {
 	beforeAll( () => {
@@ -23,20 +22,17 @@ describe( 'coblocks/events', () => {
 	beforeEach( () => {
 		// Create the block with the minimum attributes.
 		block = createBlock( name );
-
-		// Reset the reused variables.
-		serializedBlock = '';
 	} );
 
 	it( 'should render without content', () => {
-		serializedBlock = serialize( createBlock( name ) );
+		const serializedBlock = serialize( createBlock( name ) );
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	it( 'should render with className', () => {
 		block.attributes.className = 'my-custom-class';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '{"className":"my-custom-class"}' );
@@ -45,7 +41,7 @@ describe( 'coblocks/events', () => {
 
 	it( 'should render with externalCalendarUrl', () => {
 		block.attributes.externalCalendarUrl = 'wordpress.org';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '{"externalCalendarUrl":"wordpress.org"}' );
@@ -54,7 +50,7 @@ describe( 'coblocks/events', () => {
 
 	it( 'should render with eventsRange', () => {
 		block.attributes.eventsRange = '1 month';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '{"eventsRange":"1 month"}' );
@@ -63,7 +59,7 @@ describe( 'coblocks/events', () => {
 
 	it( 'should render with eventsToShow', () => {
 		block.attributes.eventsToShow = '8';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '{"eventsToShow":"8"}' );
