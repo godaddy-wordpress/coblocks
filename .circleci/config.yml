@@ -400,7 +400,7 @@ commands:
       - run:
           name: Run performance tests
           command: |
-            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ] || [ "$CIRCLE_BRANCH" != *"perf" ]; then
+            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
               echo "Changes do not require testing."
               circleci-agent step halt
             else
