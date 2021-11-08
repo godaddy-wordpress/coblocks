@@ -36,7 +36,8 @@
 		"test:js": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js",
 		"test:js:coverage": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js --coverage",
 		"test:performance": "wp-scripts test-e2e --config .dev/performance/jest.performance.config.js",
-		"wp-env": "wp-env"
+		"wp-env": "wp-env",
+		"prepare": "husky install .dev/husky"
 	},
 	"wp-env": {
 		"plugin-dir": "coblocks",
@@ -132,14 +133,14 @@
 		"grunt-text-replace": "^0.4.0",
 		"grunt-wp-readme-to-markdown": "^2.0.1",
 		"html-react-parser": "^1.4.0",
-		"husky": "^3.1.0",
+		"husky": "^7.0.4",
 		"inquirer": "^7.1.0",
 		"jest-environment-puppeteer": "^6.0.0",
 		"jest-junit": "13.0.0",
 		"jest-snapshot": "^27.3.1",
 		"jquery": "^3.4.1",
 		"jsdom": "^16.7.0",
-		"lint-staged": "^9.5.0",
+		"lint-staged": "^11.2.6",
 		"lodash": "^4.17.21",
 		"matchdep": "^2.0.0",
 		"memize": "^1.0.5",
@@ -163,11 +164,6 @@
 		"react-dom": "17.0.1",
 		"react": "17.0.1",
 		"set-value": "^4.0.1"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
 	},
 	"lint-staged": {
 		"*.scss": [
