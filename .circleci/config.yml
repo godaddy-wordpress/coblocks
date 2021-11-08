@@ -389,6 +389,7 @@ commands:
       - enable_debug_mode_for_e2e
       - install_mailhog_plugin
       - start_wpcli_server
+      - wait_for_wpcli
       - run:
           name: Run end to end tests (Cypress.io) - << parameters.browser >>
           command: |
@@ -431,6 +432,19 @@ commands:
               sleep 1
             done
             echo Failed waiting for MySQL && exit 1
+
+  wait_for_wpcli:
+    steps:
+      - run:
+          name: Waiting for MySQL to be ready
+          command: |
+            for i in `seq 1 10`;
+            do
+              nc -z 127.0.0.1 80 && echo Success && exit 0
+              echo -n .
+              sleep 1
+            done
+            echo Failed waiting for WP CLI && exit 1
 
   setup_e2e_env_var:
     steps:
