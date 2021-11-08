@@ -438,7 +438,7 @@ commands:
       - run:
           name: Waiting for Website to be ready
           command: |
-            sleep 30
+            sleep 90
 
   setup_e2e_env_var:
     steps:
