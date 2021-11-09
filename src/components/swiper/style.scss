@@ -38,8 +38,6 @@
 }
 
 .swiper-wrapper-thumbnails {
-
-	background-color: blue;
 	transform: none !important;
 	transition: none !important;
 }
@@ -52,14 +50,14 @@
 
 
 .swiper-slide {
-	flex-shrink: 0;
-	font-size: 18px;
-	max-width: 100%;
+	align-items: center;
 
 	display: flex;
 	flex-direction: row;
+	flex-shrink: 0;
+	font-size: 18px;
 	justify-content: center;
-	align-items: center;
+	max-width: 100%;
 }
 
 .swiper-slide-thumbnail {
@@ -134,8 +132,6 @@
 }
 
 .icon {
-
-	background-color: white;
 	height: 32px;
 	mask-image: url(/assets/lightbox/arrow-right.svg);
 	width: 32px;
