@@ -143,8 +143,8 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 		clearBlocks();
 	}
 
-	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click();
-	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search' ).click().type( blockName );
+	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click( { force: true } );
+	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search' ).click( { force: true } ).type( blockName );
 
 	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
 	cy.get( '.editor-block-list-item' + targetClassName ).first().click( { force: true } );
@@ -154,7 +154,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 		// Then close the block inserter if still open.
 		const inserterButton = Cypress.$( 'button[class*="__inserter-toggle"].is-pressed' );
 		if ( !! inserterButton.length ) {
-			cy.get( 'button[class*="__inserter-toggle"].is-pressed' ).click();
+			cy.get( 'button[class*="__inserter-toggle"].is-pressed' ).click( { force: true } );
 		}
 	} );
 }
@@ -271,12 +271,12 @@ export function setBlockStyle( style ) {
  * @param {boolean} isChildBlock Optional selector for children blocks. Default will be top level blocks.
  */
 export function selectBlock( name, isChildBlock = false ) {
-	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle' ).click();
-	cy.get( '.block-editor-block-navigation-leaf' ).contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) ).click().then( () => {
+	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle' ).click( { force: true } );
+	cy.get( '.block-editor-block-navigation-leaf' ).contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) ).click( { force: true } ).then( () => {
 		// Then close the block navigator if still open.
 		const inserterButton = Cypress.$( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' );
 		if ( !! inserterButton.length ) {
-			cy.get( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' ).click();
+			cy.get( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' ).click( { force: true } );
 		}
 	} );
 }
@@ -328,7 +328,7 @@ export const upload = {
 
 		cy.get( '.coblocks-gallery-item__button-replace' ).click( { force: true } );
 
-		cy.get( '#menu-item-browse' ).click();
+		cy.get( '#menu-item-browse' ).click( { force: true } );
 
 		cy.get( 'ul.attachments' );
 
@@ -343,7 +343,7 @@ export const upload = {
 		/* eslint-enable */
 
 		cy.get( '.attachment.selected.save-ready' );
-		cy.get( '.media-modal .media-button-select' ).click();
+		cy.get( '.media-modal .media-button-select' ).click( { force: true } );
 
 		cy.get( '[class*="-visual-editor"]' ).find( `[data-type="${ blockName }"] img` ).first().should( 'have.attr', 'src' ).should( 'include', newImageBase );
 	},
