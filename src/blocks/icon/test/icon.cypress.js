@@ -54,7 +54,7 @@ describe( 'Test CoBlocks Icon Block', function() {
 	/**
 	 * Test the coblocks icon block resize.
 	 */
-	it( 'Test the icon block resize and change icon.', function() {
+	it.skip( 'Test the icon block resize and change icon.', function() {
 		helpers.addBlockToPost( 'coblocks/icon', true );
 
 		cy.get( '.components-base-control__label' ).contains( 'Size' ).then( ( $settingLabel ) => {
