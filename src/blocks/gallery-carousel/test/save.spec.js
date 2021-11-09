@@ -49,167 +49,148 @@ describe( name, () => {
 		expect( serializedBlock ).toContain( `wp-image-${baseAttributes.images[ 0 ].id}` );
 	} );
 
-	// it( 'should have className \'has-lightbox\' with lightbox enabled.', () => {
-	// 	block.attributes = { ...block.attributes, lightbox: true };
-	// 	serializedBlock = serialize( block );
+	it( 'should have className \'has-lightbox\' with lightbox enabled.', () => {
+		block.attributes = { ...block.attributes, lightbox: true };
+		serializedBlock = serialize( block );
 
-	// 	expect( serializedBlock ).toBeDefined();
-	// 	expect( serializedBlock ).toContain( 'has-lightbox' );
-	// } );
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'has-lightbox' );
+	} );
 
-	// it( 'should have asNavFor flickity setting of \'\.${ attributes.navForClass }\' with thumbnails enabled.', () => {
-	// 	block.attributes = { ...block.attributes, thumbnails: true, navForClass: 'has-nav-abc123' };
-	// 	serializedBlock = serialize( block );
+	it( 'should have thumbnails on swiper if thumbnails enabled', () => {
+		block.attributes = { ...block.attributes, thumbnails: true };
+		serializedBlock = serialize( block );
 
-	// 	expect( serializedBlock ).toBeDefined();
-	// 	expect( serializedBlock ).toContain( '.has-nav-abc123' );
-	// } );
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'wp-block-coblocks-gallery-carousel-thumbnail-pagination' );
+	})
 
-	// it( 'should have className \'has-responsive-height\' with responsiveHeight enabled.', () => {
-	// 	block.attributes = { ...block.attributes, responsiveHeight: true };
-	// 	serializedBlock = serialize( block );
+	it( 'should have navigation swiper setting of \'\.${ attributes.navigation }\' with arrow navigation buttons enabled', () => {
+		block.attributes = { ...block.attributes, prevNextButtons: true };
+		serializedBlock = serialize( block );
 
-	// 	expect( serializedBlock ).toBeDefined();
-	// 	expect( serializedBlock ).toContain( 'has-responsive-height' );
-	// } );
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'nav-button__prev' );
+	});
 
-	// [ 'large', 'xlarge' ].forEach( ( gridSize ) => {
-	// 	it( `should have className 'has-carousel-${gridSize}' with gridSize set to '${gridSize}'.`, () => {
-	// 		block.attributes = { ...block.attributes, gridSize };
+	it( 'should have className \'has-responsive-height\' with responsiveHeight enabled.', () => {
+		block.attributes = { ...block.attributes, responsiveHeight: true };
+		serializedBlock = serialize( block );
 
-	// 		serializedBlock = serialize( block );
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'has-responsive-height' );
+	} );
 
-	// 		expect( serializedBlock ).toBeDefined();
-	// 		expect( serializedBlock ).toContain( `has-carousel-${ gridSize }` );
-	// 	} );
-	// } );
+	[ 'large', 'xlarge' ].forEach( ( gridSize ) => {
+		it( `should have className 'has-carousel-${gridSize}' with gridSize set to '${gridSize}'.`, () => {
+			block.attributes = { ...block.attributes, gridSize };
 
-	// [ 'grayscale', 'sepia', 'saturation', 'dim', 'vintage' ].forEach( ( filter ) => {
-	// 	it( `should have className \'has-filter-${filter}\' with filter set to '${filter}'.`, () => {
-	// 		block.attributes = { ...block.attributes, filter };
-	// 		serializedBlock = serialize( block );
+			serializedBlock = serialize( block );
 
-	// 		expect( serializedBlock ).toBeDefined();
-	// 		expect( serializedBlock ).toContain( `has-filter-${ filter }` );
-	// 	} );
-	// } );
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( `has-carousel-${ gridSize }` );
+		} );
+	} );
 
-	// it( 'should have \'autoPlay\' property set in the data-flickity attribute when autoPlay enabled.', () => {
-	// 	block.attributes = { ...block.attributes, autoPlay: false };
-	// 	serializedBlock = serialize( block );
+	[ 'grayscale', 'sepia', 'saturation', 'dim', 'vintage' ].forEach( ( filter ) => {
+		it( `should have className \'has-filter-${filter}\' with filter set to '${filter}'.`, () => {
+			block.attributes = { ...block.attributes, filter };
+			serializedBlock = serialize( block );
 
-	// 	expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( `has-filter-${ filter }` );
+		} );
+	} );
 
-	// 	let flickityData = {};
+	it( 'should have \'autoPlay\' property set in the data-flickity attribute when autoPlay enabled.', () => {
+		block.attributes = { ...block.attributes, autoPlay: false, autoPlaySpeed: 3000 };
+		serializedBlock = serialize( block );
 
-	// 	blockDOM = new JSDOM( serializedBlock );
-	// 	flickityData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.flickity );
-	// 	expect( flickityData.autoPlay ).toBe( false );
+		expect( serializedBlock ).toBeDefined();
 
-	// 	block.attributes = { ...block.attributes, autoPlay: true };
-	// 	serializedBlock = serialize( block );
+		let swiperData = {};
 
-	// 	blockDOM = new JSDOM( serializedBlock );
-	// 	flickityData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.flickity );
-	// 	expect( flickityData.autoPlay ).not.toBe( false );
+		blockDOM = new JSDOM( serializedBlock );
+		swiperData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel')[ 0 ].dataset.swiper);
+		expect( swiperData.autoPlay ).toBe( false );
 
-	// 	block.attributes = { ...block.attributes, autoPlay: true, autoPlaySpeed: 2000 };
-	// 	serializedBlock = serialize( block );
+		block.attributes = { ...block.attributes, autoPlay: true };
+		serializedBlock = serialize( block );
 
-	// 	blockDOM = new JSDOM( serializedBlock );
-	// 	flickityData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.flickity );
-	// 	expect( flickityData.autoPlay ).toBe( 2000 );
-	// } );
+		blockDOM = new JSDOM( serializedBlock );
+		swiperData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel')[ 0 ].dataset.swiper);
+		expect( swiperData.autoPlay ).toBe( true );
+	} );
 
-	// it( 'should have \'draggable\' property set in the data-flickity attribute when draggable enabled.', () => {
-	// 	block.attributes = { ...block.attributes, draggable: false };
-	// 	serializedBlock = serialize( block );
+	it( 'should have \'draggable\' property set in the data-swiper attribute when draggable enabled.', () => {
+		block.attributes = { ...block.attributes, draggable: true };
+		serializedBlock = serialize( block );
 
-	// 	expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toBeDefined();
 
-	// 	let flickityData = {};
+		let swiperData = {};
 
-	// 	blockDOM = new JSDOM( serializedBlock );
-	// 	flickityData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.flickity );
-	// 	expect( flickityData.draggable ).toBe( false );
+		blockDOM = new JSDOM( serializedBlock );
+		swiperData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.swiper );
+		expect( swiperData.draggable ).toBe( true );
 
-	// 	block.attributes = { ...block.attributes, draggable: true };
-	// 	serializedBlock = serialize( block );
+		block.attributes = { ...block.attributes, draggable: false };
+		serializedBlock = serialize( block );
 
-	// 	blockDOM = new JSDOM( serializedBlock );
-	// 	flickityData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.flickity );
-	// 	expect( flickityData.draggable ).not.toBe( false );
-	// } );
+		blockDOM = new JSDOM( serializedBlock );
+		swiperData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.swiper );
+		expect( swiperData.draggable ).toBe( false );
+	} );
 
-	// it( 'should have \'prevNextButtons\' property set in the data-flickity attribute when prevNextButtons enabled.', () => {
-	// 	block.attributes = { ...block.attributes, prevNextButtons: false };
-	// 	serializedBlock = serialize( block );
+	it( 'should have \'pageDots\' property set in the data-flickity attribute when pageDots enabled.', () => {
+		block.attributes = { ...block.attributes, pageDots: false };
+		serializedBlock = serialize( block );
 
-	// 	expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toBeDefined();
 
-	// 	let flickityData = {};
+		let swiperData = {};
 
-	// 	blockDOM = new JSDOM( serializedBlock );
-	// 	flickityData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.flickity );
-	// 	expect( flickityData.prevNextButtons ).toBe( false );
+		blockDOM = new JSDOM( serializedBlock );
+		swiperData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.swiper );
+		expect( swiperData.pageDots ).toBe( false );
 
-	// 	block.attributes = { ...block.attributes, prevNextButtons: true };
-	// 	serializedBlock = serialize( block );
+		block.attributes = { ...block.attributes, pageDots: true };
+		serializedBlock = serialize( block );
 
-	// 	blockDOM = new JSDOM( serializedBlock );
-	// 	flickityData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.flickity );
-	// 	expect( flickityData.prevNextButtons ).not.toBe( false );
-	// } );
+		blockDOM = new JSDOM( serializedBlock );
+		swiperData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.swiper );
+		expect( swiperData.pageDots ).toBe( true );
+	} );
 
-	// it( 'should have \'pageDots\' property set in the data-flickity attribute when pageDots enabled.', () => {
-	// 	block.attributes = { ...block.attributes, pageDots: false };
-	// 	serializedBlock = serialize( block );
+	it( 'should have className \'has-aligned-cells\' with alignCells enabled.', () => {
+		block.attributes = { ...block.attributes, alignCells: false };
+		serializedBlock = serialize( block );
 
-	// 	expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toBeDefined();
 
-	// 	let flickityData = {};
+		blockDOM = new JSDOM( serializedBlock );
+		expect(
+			blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ]
+		).not.toHaveClass( 'has-aligned-cells' );
 
-	// 	blockDOM = new JSDOM( serializedBlock );
-	// 	flickityData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.flickity );
-	// 	expect( flickityData.pageDots ).toBe( false );
+		block.attributes = { ...block.attributes, alignCells: true };
+		serializedBlock = serialize( block );
 
-	// 	block.attributes = { ...block.attributes, pageDots: true };
-	// 	serializedBlock = serialize( block );
+		blockDOM = new JSDOM( serializedBlock );
+		expect(
+			blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ]
+		).toHaveClass( 'has-aligned-cells' );
+	} );
 
-	// 	blockDOM = new JSDOM( serializedBlock );
-	// 	flickityData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.flickity );
-	// 	expect( flickityData.pageDots ).not.toBe( false );
-	// } );
+	it( 'should have \'height\' property within the \'style\' attribute with the height attribute set.', () => {
+		block.attributes = { ...block.attributes, height: 500 };
+		serializedBlock = serialize( block );
 
-	// it( 'should have className \'has-aligned-cells\' with alignCells enabled.', () => {
-	// 	block.attributes = { ...block.attributes, alignCells: false };
-	// 	serializedBlock = serialize( block );
+		expect( serializedBlock ).toBeDefined();
 
-	// 	expect( serializedBlock ).toBeDefined();
-
-	// 	blockDOM = new JSDOM( serializedBlock );
-	// 	expect(
-	// 		blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ]
-	// 	).not.toHaveClass( 'has-aligned-cells' );
-
-	// 	block.attributes = { ...block.attributes, alignCells: true };
-	// 	serializedBlock = serialize( block );
-
-	// 	blockDOM = new JSDOM( serializedBlock );
-	// 	expect(
-	// 		blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ]
-	// 	).toHaveClass( 'has-aligned-cells' );
-	// } );
-
-	// it( 'should have \'height\' property within the \'style\' attribute with the height attribute set.', () => {
-	// 	block.attributes = { ...block.attributes, height: 500 };
-	// 	serializedBlock = serialize( block );
-
-	// 	expect( serializedBlock ).toBeDefined();
-
-	// 	blockDOM = new JSDOM( serializedBlock );
-	// 	expect(
-	// 		blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ]
-	// 	).toHaveStyle( 'height: 500px' );
-	// } );
+		blockDOM = new JSDOM( serializedBlock );
+		expect(
+			blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ]
+		).toHaveStyle( 'height: 500px' );
+	} );
 } );

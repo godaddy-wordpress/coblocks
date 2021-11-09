@@ -69,6 +69,7 @@
 		 autoPlay,
 		 pauseHover,
 		 gridSize,
+		 alignCells,
 	 } = attributes;
  
 	 const { selectedImage, setSelectedImage } = useContext(GalleryCarouselContext);
@@ -77,7 +78,8 @@
 		 'is-cropped',
 		 'has-carousel',
 		 `has-carousel-${ gridSize }`,
-		 ...GalleryClasses( attributes ), {
+		 ...GalleryClasses( attributes ), 
+		 {
 			 [ `align${ align }` ]: align,
 			 'has-horizontal-gutter': gutter > 0,
 			 'has-no-dots': ! pageDots,
@@ -85,6 +87,7 @@
 			 'is-selected': isSelected,
 			 'has-no-thumbnails': ! thumbnails,
 			 'has-lightbox': lightbox,
+			 'has-aligned-cells': alignCells,
 		 }
 	 );
  

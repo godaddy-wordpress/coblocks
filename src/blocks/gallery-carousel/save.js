@@ -50,7 +50,6 @@
 			 'has-no-dots': ! pageDots,
 				'has-no-arrows': ! prevNextButtons,
 			 'has-no-thumbnails': ! thumbnails,
-			 'has-aligned-cells': alignCells,
 		 }
 	 );
  
@@ -74,6 +73,7 @@
 		`has-carousel-${ gridSize }`,
 		{
 			'has-responsive-height': responsiveHeight,
+			'has-aligned-cells': alignCells,
 		}
 	 );
 
@@ -115,7 +115,7 @@
 													 data-link={ image.link } 
 													 className={ image.id ? `wp-image-${ image.id }` : null } 
 												 />
-																		 </figure>	
+												</figure>	
 											 <RichText.Content tagName="figcaption" className={ captionClasses } value={ image.caption } />
 										 </div>
 									 </div>
@@ -137,7 +137,7 @@
 						 <div className="wp-block-coblocks-gallery-carousel-thumbnail-pagination">
 							 {images.map((item, index) => {
 								 return (
-									 <div id={`wp-block-coblocks-gallery-carousel-thumbnail-${ index }`} className={'wp-block-coblocks-gallery-carousel-thumbnail'} style={{ height: '80px', width: '100px' }} >
+									 <div key={ index } id={`wp-block-coblocks-gallery-carousel-thumbnail-${ index }`} className={'wp-block-coblocks-gallery-carousel-thumbnail'} style={{ height: '80px', width: '100px' }} >
 										 <img 
 											 src={ item.url } 
 											 alt={ item.alt } 
