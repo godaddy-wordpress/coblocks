@@ -639,7 +639,7 @@ const deprecated =
 		...BackgroundAttributes,
 		...metadata.attributes,
 	},
-	save( { attributes, className } ) { 
+	save( { attributes, className } ) {
 		const {
 			autoPlay,
 			autoPlaySpeed,
@@ -802,8 +802,8 @@ const deprecated =
 				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } /> }
 			</div>
 		);
-	}
-}
+	},
+},
 ];
 
 export default deprecated;

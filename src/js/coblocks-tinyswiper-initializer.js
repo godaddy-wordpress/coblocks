@@ -87,7 +87,7 @@ const handleSwipe = ( newIndex ) => {
 				firstThumbnailImage.classList.add( 'is-active' );
 			}
 
-			if ( !parsedSwiperOptions.thumbnails && parsedSwiperOptions.pageDots ) {
+			if ( ! parsedSwiperOptions.thumbnails && parsedSwiperOptions.pageDots ) {
 				const paginationThumbnails = document.getElementsByClassName( 'wp-block-coblocks-gallery-carousel-page-dot-pagination' );
 
 				for ( const [ index, thumbnail ] of Object.entries( paginationThumbnails ) ) {
