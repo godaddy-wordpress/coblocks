@@ -100,7 +100,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 	 * No assertion that rich text options do not exist.
 	 * Collage block has always-focused rich text options.
 	 */
-	it( 'Test collage captions allow rich text controls.', function() {
+	it.skip( 'Test collage captions allow rich text controls.', function() {
 		createNewPost();
 		cy.get( '[data-type="coblocks/gallery-collage"]' )
 			.find( '.components-button' )
@@ -130,7 +130,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 		helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
 	} );
 
-	it( 'can replace the existing image through the "Replace" button', () => {
+	it.skip( 'can replace the existing image through the "Replace" button', () => {
 		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
 
 		helpers.upload.imageReplaceFlow( 'coblocks/gallery-collage' );

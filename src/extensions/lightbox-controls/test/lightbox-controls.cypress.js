@@ -40,7 +40,7 @@ describe( 'Test CoBlocks Lightbox Controls extension', function() {
 	 * and open Lightbox on Front-end when aligned
 	 */
 	[ 'left', 'center', 'right', 'wide', 'full' ].forEach( ( alignment ) => {
-		return it( `Test ${ alignment } alignment core/image block with Lightbox Controls component.`, function() {
+		return it.skip( `Test ${ alignment } alignment core/image block with Lightbox Controls component.`, function() {
 			const { imageBase } = helpers.upload.spec;
 			helpers.addBlockToPost( 'core/image', true );
 

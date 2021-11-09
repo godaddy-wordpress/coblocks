@@ -90,7 +90,7 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 	 * Test that we can add a gallery block to the content add image,
 	 * and alter image using the Lightbox Controls extension
 	 */
-	it( 'Test core/gallery block extends with Media Filter Control component.', function() {
+	it.skip( 'Test core/gallery block extends with Media Filter Control component.', function() {
 		helpers.addBlockToPost( 'core/gallery', true );
 
 		helpers.upload.imageToBlock( 'core/gallery' );
