@@ -10,6 +10,6 @@ exports[`coblocks/faq-item should render text color 1`] = `
 
 exports[`coblocks/faq-item should render with content 1`] = `
 "<!-- wp:coblocks/faq-item -->
-<details class=\\"wp-block-coblocks-faq-item\\"><summary class=\\"wp-block-coblocks-faq-item__question\\"><div class=\\"wp-block-coblocks-faq-item__question__content\\">Some question</div></summary><div class=\\"wp-block-coblocks-faq-item__answer\\"></div></details>
+<details class=\\"wp-block-coblocks-faq-item\\" itemprop=\\"mainEntity\\" itemscope itemtype=\\"https://schema.org/Question\\"><summary class=\\"wp-block-coblocks-faq-item__question\\" itemprop=\\"name\\"><div class=\\"wp-block-coblocks-faq-item__question__content\\">Some question</div></summary><div class=\\"wp-block-coblocks-faq-item__answer\\" itemprop=\\"acceptedAnswer\\" itemscope itemtype=\\"https://schema.org/Answer\\"><div itemprop=\\"text\\"></div></div></details>
 <!-- /wp:coblocks/faq-item -->"
 `;
