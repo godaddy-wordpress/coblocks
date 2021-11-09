@@ -53,3 +53,8 @@ module.exports = {
 		} ),
 	],
 };
+
+// Set parallelism to 1 in CircleCI.
+if ( process.env.CI ) {
+	module.exports.parallelism = 1;
+}

@@ -47,7 +47,6 @@
 			 [ `align${ align }` ]: align,
 			 'has-horizontal-gutter': gutter > 0,
 			 'has-lightbox': lightbox,
-			 'has-no-dots': ! pageDots,
 				'has-no-arrows': ! prevNextButtons,
 			 'has-no-thumbnails': ! thumbnails,
 		 }
@@ -91,6 +90,7 @@
 		 navigation: prevNextButtons,
 		 uuid,
 		 thumbnails,
+		 pageDots,
 	 }
  
 	 const galleryCarousel = (
@@ -149,6 +149,15 @@
 								 );
 							 })}
 						 </div>
+					 )}
+					 {!thumbnails && pageDots && (
+							<div className="wp-block-coblocks-gallery-carousel-page-dot-pagination-container">
+								<div className="wp-block-coblocks-gallery-carousel-page-dot-wrapper" >
+									{images.map((item, index) => (
+										<div key={ index } id={`wp-block-coblocks-gallery-carousel-page-dot-${ index }`} className="wp-block-coblocks-gallery-carousel-page-dot-pagination" />
+									))}
+								</div>
+							</div>
 					 )}
 				 </div>
 			 </div>	

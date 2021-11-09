@@ -82,7 +82,6 @@
 		 {
 			 [ `align${ align }` ]: align,
 			 'has-horizontal-gutter': gutter > 0,
-			 'has-no-dots': ! pageDots,
 				'has-no-arrows': ! prevNextButtons,
 			 'is-selected': isSelected,
 			 'has-no-thumbnails': ! thumbnails,
@@ -161,6 +160,18 @@
 			 </div>
 		 );
 	 }, [ selectedImage, images ]);
+
+	 const renderPageDots = useCallback(({ changeStep }) => {
+		return (
+			<div className="wp-block-coblocks-gallery-carousel-page-dot-pagination-container">
+				<div className="wp-block-coblocks-gallery-carousel-page-dot-wrapper" >
+					{images.map((item, index) => (
+						<div onClick={() => changeStep( index ) } className="wp-block-coblocks-gallery-carousel-page-dot-pagination" />
+					))}
+				</div>
+			</div>
+		);
+	 }, [ selectedImage, images ]);
  
 	 const renderSwiper = useMemo(() => {
 		 let slidesPerView = 1;
@@ -181,7 +192,7 @@
 				 freeScroll={freeScroll}
 				 autoPlaySpeed={autoPlay ? autoPlaySpeed : null}
 				 pauseHover={autoPlay ? pauseHover : null}
-				 Pagination={thumbnails ? renderGalleryPagination : null}
+				 Pagination={thumbnails ? renderGalleryPagination : pageDots ? renderPageDots : null}
 				 onSwipe={handleSwipe}
 				 slidesPerView={slidesPerView}
 			 >
@@ -210,7 +221,8 @@
 			 </Swiper>
 		 );
 	 }, [
-		gridSize,
+		pageDots,
+			gridSize,
 		 selectedImage,
 		 freeScroll,
 		 images,

@@ -87,6 +87,18 @@ const handleSwipe = ( newIndex ) => {
 				firstThumbnailImage.classList.add( 'is-active' );
 			}
 
+			if ( !parsedSwiperOptions.thumbnails && parsedSwiperOptions.pageDots ) {
+				const paginationThumbnails = document.getElementsByClassName( 'wp-block-coblocks-gallery-carousel-page-dot-pagination' );
+
+				for ( const [ index, thumbnail ] of Object.entries( paginationThumbnails ) ) {
+					thumbnail.addEventListener( ( 'click' ), () => handleThumbnailClick( index ) );
+				}
+
+				const firstThumbnailImage = document.getElementById( `wp-block-coblocks-gallery-carousel-page-dot--${ 0 }` );
+
+				firstThumbnailImage.classList.add( 'is-active' );
+			}
+
 			// add draggable functionality
 			if ( parsedSwiperOptions.draggable !== true ) {
 				const swiperWrapper = document.getElementById( 'swiper-wrapper' );
