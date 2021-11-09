@@ -1,5 +1,5 @@
 {
-  "chromeWebSecurity": false,
+  "chromeWebSecurity": true,
   "defaultCommandTimeout": 7000,
   "fixturesFolder": "languages",
   "pluginsFile": ".dev/tests/cypress/plugins/index.js",
@@ -16,7 +16,8 @@
     "wpPassword": "password"
   },
   "retries": {
-    "runMode": 0,
+    "runMode": 2,
     "openMode": 0
-  }
+  },
+  "pageLoadTimeout": 120000
 }
