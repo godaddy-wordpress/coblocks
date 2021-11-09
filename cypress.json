@@ -19,5 +19,7 @@
     "runMode": 2,
     "openMode": 0
   },
-  "pageLoadTimeout": 120000
+  "pageLoadTimeout": 120000,
+  "waitForAnimations": false,
+  "animationDistanceThreshold": 50
 }
