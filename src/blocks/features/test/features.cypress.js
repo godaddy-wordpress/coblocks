@@ -64,7 +64,7 @@ describe( 'Test CoBlocks Features Block', function() {
 	 * Test that we can add a features block to the content, add text
 	 * adjust colors and are able to successfully save the block without errors.
 	 */
-	it( 'Test features block saves with content values set.', function() {
+	it.skip( 'Test features block saves with content values set.', function() {
 		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB } = featuresData;
 		helpers.addBlockToPost( 'coblocks/features', true );
 
