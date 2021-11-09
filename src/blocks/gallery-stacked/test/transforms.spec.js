@@ -91,6 +91,14 @@ describe( 'coblocks/gallery-stacked transforms', () => {
 		expect( transformed[ 0 ].attributes.images[ 0 ].url ).toBe( coreImage.attributes.url );
 	} );
 
+	it( 'should transform from core/image block when no valid image', () => {
+		const coreImage = createBlock( 'core/image', { url: attributes.images[ 0 ].url } );
+		const transformed = switchToBlockType( coreImage, name );
+
+		expect( transformed[ 0 ].isValid ).toBe( true );
+		expect( transformed[ 0 ].attributes.images.length ).toBe( 0 );
+	} );
+
 	it( 'should transform to coblocks/gallery-offset block', () => {
 		const block = createBlock( name, attributes );
 		const transformed = switchToBlockType( block, 'coblocks/gallery-offset' );

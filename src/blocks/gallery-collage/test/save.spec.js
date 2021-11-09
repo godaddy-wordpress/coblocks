@@ -47,6 +47,14 @@ describe( name, () => {
 		expect( serializedBlock ).toContain( `wp-image-${baseAttributes.images[ 0 ].id}` );
 	} );
 
+	it( 'should not render image if URL is not defined', () => {
+		block.attributes = { images: [ { id: 1, index: 0 } ] };
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).not.toContain( 'img' );
+	} );
+
 	it( 'should have className \'has-lightbox\' with lightbox enabled.', () => {
 		block.attributes = { ...block.attributes, lightbox: true };
 		serializedBlock = serialize( block );
@@ -93,6 +101,20 @@ describe( name, () => {
 
 			expect( serializedBlock ).toBeDefined();
 			expect( serializedBlock ).toContain( `has-caption-style-${ captionStyle }` );
+		} );
+	} );
+
+	[ 'is-style-tiled', 'is-style-layered' ].forEach( ( layoutStyle ) => {
+		it( `should have className \'${ layoutStyle }\'.`, () => {
+			block.attributes = {
+					...block.attributes,
+					className: layoutStyle
+				};
+
+			serializedBlock = serialize( block );
+
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( layoutStyle );
 		} );
 	} );
 

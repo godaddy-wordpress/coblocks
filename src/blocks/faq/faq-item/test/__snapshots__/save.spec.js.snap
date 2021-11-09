@@ -2,6 +2,12 @@
 
 exports[`coblocks/faq-item should render 1`] = `"<!-- wp:coblocks/faq-item /-->"`;
 
+exports[`coblocks/faq-item should render text color 1`] = `
+"<!-- wp:coblocks/faq-item -->
+<details class=\\"wp-block-coblocks-faq-item has-333333-color has-text-color\\"><summary class=\\"wp-block-coblocks-faq-item__question\\"><div class=\\"wp-block-coblocks-faq-item__question__content\\">Some question</div></summary><div class=\\"wp-block-coblocks-faq-item__answer\\"></div></details>
+<!-- /wp:coblocks/faq-item -->"
+`;
+
 exports[`coblocks/faq-item should render with content 1`] = `
 "<!-- wp:coblocks/faq-item -->
 <details class=\\"wp-block-coblocks-faq-item\\"><summary class=\\"wp-block-coblocks-faq-item__question\\"><div class=\\"wp-block-coblocks-faq-item__question__content\\">Some question</div></summary><div class=\\"wp-block-coblocks-faq-item__answer\\"></div></details>

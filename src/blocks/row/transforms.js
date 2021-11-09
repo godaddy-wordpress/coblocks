@@ -20,6 +20,7 @@ function generateLayout( columns ) {
 	let defaultLayout;
 
 	switch ( columns ) {
+		/* istanbul ignore next */
 		default:
 		case 2:
 			defaultLayout = '50-50';
