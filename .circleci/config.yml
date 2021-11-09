@@ -400,12 +400,7 @@ commands:
       - run:
           name: Run performance tests
           command: |
-            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
-              echo "Changes do not require testing."
-              circleci-agent step halt
-            else
-              ~/project/.dev/performance/cli.js perf --ci $CIRCLE_BRANCH
-            fi
+            ~/project/.dev/performance/cli.js perf --ci $CIRCLE_BRANCH
 
   start_wpcli_server:
     steps:
