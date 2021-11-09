@@ -66,32 +66,30 @@
 }
 
 .wp-block-coblocks-gallery-carousel-page-dot-pagination-container {
-	position: absolute;
+	align-items: center;
 	bottom: 2.2rem;
-	width: 100%;
-	
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	align-items: center;
+	position: absolute;
+	width: 100%;
 
 	& > .wp-block-coblocks-gallery-carousel-page-dot-wrapper {
-		min-width: 45px;
-		flex-grow: 0.1;
-
+		align-items: center;
 		display: flex;
 		flex-direction: row;
+		flex-grow: 0.1;
 		justify-content: space-evenly;
-		align-items: center;
+		min-width: 45px;
 
 		& > .wp-block-coblocks-gallery-carousel-page-dot-pagination {
-			height: 8px;
-			width: 8px;
-			transition: background .2s;
-			cursor: pointer;
-			border-radius: 50%;
 			background: #fff;
 			border: none;
+			border-radius: 50%;
+			cursor: pointer;
+			height: 8px;
+			transition: background 0.2s;
+			width: 8px;
 		}
 	}
 }
