@@ -14,7 +14,6 @@ import { createBlobURL } from '@wordpress/blob';
 import { createBlock } from '@wordpress/blocks';
 import { store as noticesStore } from '@wordpress/notices';
 import { View } from '@wordpress/primitives';
-import { withViewportMatch } from '@wordpress/viewport';
 import { __, _x, sprintf } from '@wordpress/i18n';
 import { BaseControl, Icon, PanelBody, RangeControl, SelectControl, Spinner, ToggleControl, withNotices } from '@wordpress/components';
 import { store as blockEditorStore, InspectorControls, MediaPlaceholder, useBlockProps } from '@wordpress/block-editor';
@@ -420,12 +419,7 @@ function GalleryEdit( props ) {
 	};
 
 	const blockProps = useBlockProps( {
-		className: classnames( className, {
-			'has-gutter': gutter > 0,
-		} ),
-		style: {
-			'--coblocks-custom-gutter': `${ gutterCustom }em`,
-		},
+		className: classnames( className ),
 	} );
 
 	if ( ! hasImages ) {
@@ -526,6 +520,7 @@ function GalleryEdit( props ) {
 					images={ images }
 					insertBlocksAfter={ insertBlocksAfter }
 					mediaPlaceholder={ mediaPlaceholder }
+					wrapperClass="masonry-grid"
 				/>
 			</GutterWrapper>
 		</>
@@ -533,5 +528,4 @@ function GalleryEdit( props ) {
 }
 export default compose( [
 	withNotices,
-	withViewportMatch( { isNarrow: '< small' } ),
 ] )( GalleryEdit );

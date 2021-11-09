@@ -24,6 +24,22 @@ function GutterWrapper( { children, gutter, gutterCustom, className, condition =
 		return children;
 	}
 
+	// V2 API Blocks work differently because there is no HTML wrapper for the React component.
+	// This is specifically true for Masonry but may be true for future v2 blocks.
+	if ( typeof children.props.blockProps !== 'undefined' ) {
+		const attributes = {
+			blockProps: {
+				className: classnames( children.props.blockProps.className, { [ `has-${ gutter }-gutter` ]: gutter && !! condition } ),
+			},
+		};
+
+		if ( 'custom' === gutter && undefined !== gutterCustom ) {
+			attributes.blockProps.style = { '--coblocks-custom-gutter': `${ gutterCustom }em` };
+		}
+
+		return cloneElement( children, attributes );
+	}
+
 	const attributes = {
 		className: classnames(
 			className,

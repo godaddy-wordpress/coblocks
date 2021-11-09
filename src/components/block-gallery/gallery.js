@@ -28,9 +28,10 @@ export const Gallery = ( props ) => {
 		mediaPlaceholder,
 		insertBlocksAfter,
 		blockProps,
+		wrapperClass = '',
 	} = props;
 
-	const { align, caption, imageCrop, lightbox, gutter } = attributes;
+	const { align, caption, imageCrop, lightbox } = attributes;
 
 	const { children, ...innerBlocksProps } = useInnerBlocksProps( blockProps, {
 		__experimentalLayout: { alignments: [], type: 'default' },
@@ -71,11 +72,11 @@ export const Gallery = ( props ) => {
 				}
 			) }
 		>
-			<View className={ classnames( 'masonry-grid', { [ `has-${ gutter }-gutter` ]: gutter } ) } >
+			<View className={ classnames( wrapperClass ) } >
 				{ children }
 			</View>
 			<View
-				className="masonry-gallery-media-placeholder-wrapper"
+				className="gallery-media-placeholder-wrapper"
 				onClick={ removeCaptionFocus }
 			>
 				{ mediaPlaceholder }

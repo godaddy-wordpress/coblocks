@@ -95,7 +95,10 @@
 	},
 	"supports": {
 		"anchor": true,
-		"align": true
+		"align": true,
+		"gutter": {
+			"default": "medium"
+		}
 	},
 	"editorStyle": "wp-block-coblocks-gallery-masonry-editor",
 	"style": "wp-block-coblocks-gallery-masonry"

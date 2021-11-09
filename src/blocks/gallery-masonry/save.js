@@ -8,6 +8,11 @@ import classnames from 'classnames';
  */
 import { InnerBlocks, RichText, useBlockProps } from '@wordpress/block-editor';
 
+/**
+ * Internal dependencies
+ */
+import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
+
 export default function saveWithInnerBlocks( { attributes } ) {
 	const { caption, lightbox, imageCrop } = attributes;
 
@@ -17,15 +22,18 @@ export default function saveWithInnerBlocks( { attributes } ) {
 	} );
 
 	return (
-		<figure { ...useBlockProps.save( { className } ) }>
-			<InnerBlocks.Content />
-			{ ! RichText.isEmpty( caption ) && (
-				<RichText.Content
-					className="blocks-gallery-caption"
-					tagName="figcaption"
-					value={ caption }
-				/>
-			) }
-		</figure>
+		<GutterWrapper { ...attributes }>
+			<figure { ...useBlockProps.save( { className } ) }>
+				<InnerBlocks.Content />
+				{ ! RichText.isEmpty( caption ) && (
+					<RichText.Content
+						className="blocks-gallery-caption"
+						tagName="figcaption"
+						value={ caption }
+					/>
+				) }
+			</figure>
+		</GutterWrapper>
+
 	);
 }

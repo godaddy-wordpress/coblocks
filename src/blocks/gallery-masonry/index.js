@@ -8,11 +8,11 @@ import { GalleryMasonryIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  */
 import deprecated from './deprecated';
 import edit from './edit';
+import { GalleryAttributes } from '../../components/block-gallery/shared';
+import { hasFormattingCategory } from '../../utils/block-helpers';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
-import { GalleryAttributes } from '../../components/block-gallery/shared';
-import { hasFormattingCategory } from '../../utils/block-helpers';
 
 /**
  * WordPress dependencies
@@ -31,11 +31,24 @@ const attributes = {
 };
 
 const settings = {
-	/* translators: block name */
-	title: __( 'Masonry', 'coblocks' ),
+	attributes,
+	category: hasFormattingCategory ? 'coblocks-galleries' : 'media',
+	deprecated,
 	/* translators: block description */
 	description: __( 'Display multiple images in an organized masonry gallery.', 'coblocks' ),
-	category: hasFormattingCategory ? 'coblocks-galleries' : 'media',
+	edit,
+	example: {
+		attributes: {
+			gutter: 'sml',
+			images: [
+				{ index: 0, url: 'https://s.w.org/images/core/5.3/Sediment_off_the_Yucatan_Peninsula.jpg' },
+				{ index: 1, url: 'https://s.w.org/images/core/5.3/Windbuchencom.jpg' },
+				{ index: 2, url: 'https://s.w.org/images/core/5.3/Biologia_Centrali-Americana_-_Cantorchilus_semibadius_1902.jpg' },
+				{ index: 3, url: 'https://s.w.org/images/core/5.3/MtBlanc1.jpg' },
+				{ index: 4, url: 'https://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg' },
+			],
+		},
+	},
 	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
@@ -46,29 +59,15 @@ const settings = {
 		/* translators: block keyword */
 		__( 'lightbox', 'coblocks' ),
 	],
+	save,
 	supports: {
 		align: [ 'wide', 'full' ],
-		html: false,
 		coBlocksSpacing: true,
+		html: false,
 	},
-	example: {
-		attributes: {
-			gridSize: 'lrg',
-			gutter: 5,
-			images: [
-				{ index: 0, url: 'https://s.w.org/images/core/5.3/Sediment_off_the_Yucatan_Peninsula.jpg' },
-				{ index: 1, url: 'https://s.w.org/images/core/5.3/Windbuchencom.jpg' },
-				{ index: 2, url: 'https://s.w.org/images/core/5.3/Biologia_Centrali-Americana_-_Cantorchilus_semibadius_1902.jpg' },
-				{ index: 3, url: 'https://s.w.org/images/core/5.3/MtBlanc1.jpg' },
-				{ index: 4, url: 'https://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg' },
-			],
-		},
-	},
-	attributes,
+	/* translators: block name */
+	title: __( 'Masonry', 'coblocks' ),
 	transforms,
-	edit,
-	save,
-	deprecated,
 };
 
 export { name, category, metadata, settings };
