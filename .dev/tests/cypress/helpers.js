@@ -80,13 +80,13 @@ export function goTo( path = '/wp-admin' ) {
  * when the window object is not available.
  */
 export function getWindowObject() {
-	const editorUrlStrings = [ 'post-new.php', 'action=edit' ];
+	//const editorUrlStrings = [ 'post-new.php', 'action=edit' ];
 	return cy.window().then( ( win ) => {
-		const isEditorPage = editorUrlStrings.filter( ( str ) => win.location.href.includes( str ) );
+		//const isEditorPage = editorUrlStrings.filter( ( str ) => win.location.href.includes( str ) );
 
-		if ( isEditorPage.length === 0 ) {
+		/*if ( isEditorPage.length === 0 ) {
 			throw new Error( 'Check the previous test, window property was invoked outside of Editor.' );
-		}
+		}*/
 
 		if ( ! win?.wp ) {
 			throw new Error( 'Window property was invoked within Editor but `win.wp` is not defined.' );
