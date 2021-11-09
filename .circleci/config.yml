@@ -181,7 +181,7 @@ workflows:
             - unit_testing_php_74
             - unit_testing_php_80
             - js
-      - e2e_chrome_wp_previous_major:
+      - e2e_chrome_wp_next_major:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -700,13 +700,13 @@ jobs:
       - run_e2e_tests:
           browser: firefox
 
-  e2e_chrome_wp_previous_major:
+  e2e_chrome_wp_next_major: # WP 5.9
     executor: php_74_node_browser_mysql_mailhog
     parallelism: 11
     steps:
       - run_e2e_tests:
           browser: chrome
-          wpversion: previous_major
+          wpversion: nightly
 
   perf_tests:
     executor: php_74_node_browser_mysql
