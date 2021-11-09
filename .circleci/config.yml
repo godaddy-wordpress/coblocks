@@ -710,6 +710,7 @@ jobs:
 
   perf_tests:
     executor: php_74_node_browser_mysql
+    parallelism: 40
     steps:
       - checkout
       - setup_e2e_env_var
