@@ -23,6 +23,7 @@ const scripts = [
 	'coblocks-masonry',
 	'coblocks-slick-initializer-front',
 	'coblocks-slick-initializer',
+	'coblocks-tinyswiper-initializer',
 ];
 
 module.exports = {

@@ -1,0 +1,142 @@
+.coblocks-swiper-container {
+	height: 100%;
+	position: relative;
+	width: 100%;
+}
+
+.no-autoplay {
+	-webkit-transition: none !important;
+	-moz-transition: none !important;
+	-o-transition: none !important;
+	transition: none !important;
+}
+
+.swiper-container,
+.swiper-wrapper {
+	display: flex;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.swiper-plugin-pagination {
+	height: auto;
+	width: auto;
+}
+
+/* basic */
+.swiper-container {
+	overflow: hidden;
+}
+
+.swiper-container-thumbnails {
+
+	height: 80px;
+	overflow: hidden;
+	position: relative;
+}
+
+.swiper-wrapper-thumbnails {
+
+	background-color: blue;
+	transform: none !important;
+	transition: none !important;
+}
+
+.coblocks-gallery--caption {
+	bottom: 0 !important;
+	position: absolute !important;
+	width: 100% !important;
+}
+
+
+.swiper-slide {
+	flex-shrink: 0;
+	font-size: 18px;
+	max-width: 100%;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.swiper-slide-thumbnail {
+	align-items: center;
+	display: flex;
+	flex-shrink: 0;
+	font-size: 18px;
+	height: 80px;
+
+	justify-content: center;
+	position: relative;
+	width: 100px;
+}
+
+.nav-button {
+	&__prev {
+		background-color: var(--wp-admin-theme-color, #007cba);
+		border: none;
+
+		border-radius: 100%;
+		cursor: pointer;
+		height: 62px;
+		left: 0;
+		margin: 0 1%;
+		padding: 15px;
+		position: absolute;
+		top: 50%;
+
+		transform: translateY(-50%);
+		width: 62px;
+	}
+
+	&__next {
+		background-color: var(--wp-admin-theme-color, #007cba);
+		border: none;
+		border-radius: 100%;
+		cursor: pointer;
+		height: 62px;
+		margin: 0 1%;
+		padding: 15px;
+		position: absolute;
+		right: 0;
+		top: 50%;
+
+		transform: translateY(-50%);
+		width: 62px;
+	}
+}
+
+.no-navigation {
+	display: none;
+}
+
+.drag-container {
+	height: auto;
+	width: auto;
+}
+
+.swiper-block {
+	height: 100%;
+	pointer-events: none !important;
+	position: absolute;
+	touch-action: none !important;
+	width: 100%;
+	z-index: 999999;
+}
+
+.no-drag {
+	pointer-events: none !important;
+	touch-action: none !important;
+	user-select: none !important;
+}
+
+.icon {
+
+	background-color: white;
+	height: 32px;
+	mask-image: url(/assets/lightbox/arrow-right.svg);
+	width: 32px;
+}
