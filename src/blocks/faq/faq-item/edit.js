@@ -19,6 +19,12 @@ import { Icon } from '@wordpress/icons';
 import { useEffect } from '@wordpress/element';
 import { InnerBlocks, RichText } from '@wordpress/block-editor';
 
+const ALLOWED_BLOCKS = [
+	'core/heading',
+	'core/list',
+	'core/paragraph',
+];
+
 const TEMPLATE = [
 	[ 'core/paragraph', { placeholder: __( 'Enter the answer to the question', 'coblocks' ) } ],
 ];
@@ -75,6 +81,7 @@ const FaqItemEdit = ( props ) => {
 				<div className="wp-block-coblocks-faq-item__answer">
 					<InnerBlocks
 						__experimentalCaptureToolbars={ true }
+						allowedBlocks={ ALLOWED_BLOCKS }
 						template={ TEMPLATE }
 						templateInsertUpdatesSelection={ false }
 					/>
