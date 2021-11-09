@@ -84,7 +84,7 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 	 * Test that we can add image captions
 	 * to successfully save the block without errors.
 	 */
-	it( 'Test offset block saves with images captions.', function() {
+	it.skip( 'Test offset block saves with images captions.', function() {
 		const { caption } = galleryData;
 		helpers.addBlockToPost( 'coblocks/gallery-offset', true );
 
