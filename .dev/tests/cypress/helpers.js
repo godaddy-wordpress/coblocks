@@ -144,7 +144,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	}
 
 	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click();
-	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search' ).click().type( blockName );
+	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search, .components-search-control__input' ).click().type( blockName );
 
 	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
 	cy.get( '.editor-block-list-item' + targetClassName ).first().click( { force: true } );
