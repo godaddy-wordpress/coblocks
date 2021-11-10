@@ -381,15 +381,31 @@ export function setColorSetting( settingName, hexColor ) {
 	cy.get( '.components-base-control__field' )
 		.contains( RegExp( settingName, 'i' ) )
 		.then( ( $subColorPanel ) => {
-			cy.get( Cypress.$( $subColorPanel ).closest( '.components-base-control' ) )
-				.contains( /custom color/i )
-				.click();
-			cy.get( '.components-color-picker__inputs-field input[type="text"]' )
-				.clear()
-				.type( hexColor );
-			cy.get( Cypress.$( $subColorPanel ).closest( '.components-base-control' ) )
-				.contains( /custom color/i )
-				.click();
+			// < WP 5.9
+			if ( ! $subColorPanel.find( '.components-color-palette__custom-color' ) ) {
+				cy.get( Cypress.$( $subColorPanel ).closest( '.components-base-control' ) )
+					.contains( /custom color/i )
+					.click();
+				cy.get( '.components-color-picker__inputs-field input[type="text"]' )
+					.clear()
+					.type( hexColor );
+				cy.get( Cypress.$( $subColorPanel ).closest( '.components-base-control' ) )
+					.contains( /custom color/i )
+					.click();
+			// WP 5.9
+			} else {
+				cy.get( '.components-color-palette__custom-color' ).first()
+					.click();
+				cy.get( '.components-color-picker' )
+					.find( '.components-button' )
+					.click();
+				cy.get( '.components-color-picker' )
+					.find( '.components-input-control' )
+					.clear()
+					.type( hexColor );
+				cy.get( '.components-color-palette__custom-color' ).first()
+					.click();
+			}
 		} );
 }
 
