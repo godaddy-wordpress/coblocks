@@ -2,25 +2,21 @@
  * Internal dependencies
  */
 import {
-	LINK_DESTINATION_ATTACHMENT,
-	LINK_DESTINATION_MEDIA,
-	LINK_DESTINATION_NONE,
-} from './constants';
-import {
 	LINK_DESTINATION_ATTACHMENT as IMAGE_LINK_DESTINATION_ATTACHMENT,
 	LINK_DESTINATION_MEDIA as IMAGE_LINK_DESTINATION_MEDIA,
 	LINK_DESTINATION_NONE as IMAGE_LINK_DESTINATION_NONE,
 	NEW_TAB_REL,
 } from './image-constants';
+import {
+	LINK_DESTINATION_ATTACHMENT,
+	LINK_DESTINATION_MEDIA,
+	LINK_DESTINATION_NONE,
+} from './constants';
 
 /**
  * External dependencies
  */
-import { isEmpty, each, get } from 'lodash';
-
-/**
- * Internal dependencies
- */
+import { each, get, isEmpty } from 'lodash';
 
 /**
  * Determines new href and linkDestination values for an image block from the
@@ -113,7 +109,7 @@ export function getImageSizeAttributes( image, size ) {
 	const url = get( image, [ 'media_details', 'sizes', size, 'source_url' ] );
 
 	if ( url ) {
-		return { url, width: undefined, height: undefined, sizeSlug: size };
+		return { height: undefined, sizeSlug: size, url, width: undefined };
 	}
 
 	return {};

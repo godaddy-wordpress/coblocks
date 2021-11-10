@@ -60,11 +60,6 @@ const settings = {
 		__( 'lightbox', 'coblocks' ),
 	],
 	save,
-	supports: {
-		align: [ 'wide', 'full' ],
-		coBlocksSpacing: true,
-		html: false,
-	},
 	/* translators: block name */
 	title: __( 'Masonry', 'coblocks' ),
 	transforms,

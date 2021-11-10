@@ -9,9 +9,7 @@ figure.wp-block-coblocks-gallery-masonry.masonry-grid {
 	}
 
 	figure {
-		display: block;
-		margin-bottom: 30px;
-		margin-top: 0;
+		position: relative;
 
 		img {
 			border: 0;
@@ -30,11 +28,11 @@ figure.wp-block-coblocks-gallery-masonry.masonry-grid {
 			bottom: 0;
 			font-size: 13px;
 			margin-bottom: 0;
-			margin-top: -31%;
 			max-height: 100% !important;
 			opacity: 0.9;
 			overflow: auto;
 			padding: 30px 10px 10px !important;
+			position: absolute !important;
 			text-align: center;
 			width: 100%;
 
