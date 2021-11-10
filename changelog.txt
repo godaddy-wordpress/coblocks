@@ -1,3 +1,25 @@
+2.19.0 / 2021-11-10
+===================
+### Enhancements
+* Introduce FAQ block [#2125](https://github.com/godaddy-wordpress/coblocks/pull/2125)
+* Enhance FAQ iconography [#2138](https://github.com/godaddy-wordpress/coblocks/pull/2138)
+* Enhance FAQ SEO schema [#2143](https://github.com/godaddy-wordpress/coblocks/pull/2143)
+* Enhance performance of DimensionsControl component [#2090](https://github.com/godaddy-wordpress/coblocks/pull/2090)
+* Enhance Share block by migrating to Core Social Links block [#2120](https://github.com/godaddy-wordpress/coblocks/pull/2120)
+
+### Bug Fixes
+* Fix typo in Events block [#2116](https://github.com/godaddy-wordpress/coblocks/pull/2116)
+* Fix Accordion block editing in WP 5.7.2 [#2121](https://github.com/godaddy-wordpress/coblocks/pull/2121)
+* Fix instances of unused classes applied to blocks [#2109](https://github.com/godaddy-wordpress/coblocks/pull/2109)
+* Fix deprecated Toolbars warnings [#2110](https://github.com/godaddy-wordpress/coblocks/pull/2110)
+* Fix keepPlaceholderOnFocus warnings [#2114](https://github.com/godaddy-wordpress/coblocks/pull/2114)
+* Fix animation on AMP by disabling completely
+
+### Misc
+* Update supported minimum WP version to 5.5 [#2142](https://github.com/godaddy-wordpress/coblocks/pull/2142)
+* Remove jQuery from Map block Recaptcha script [#2131](https://github.com/godaddy-wordpress/coblocks/pull/2131)
+* Remove jQuery from Map block Google script [#2130](https://github.com/godaddy-wordpress/coblocks/pull/2130)
+
 2.18.1 / 2021-10-21
 ===================
 ### Enhancements
