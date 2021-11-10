@@ -360,7 +360,7 @@ class CoBlocks_Block_Assets {
 				COBLOCKS_VERSION,
 				true
 			);
-			
+
 			wp_enqueue_script(
 				'coblocks-flickity',
 				$vendors_dir . '/flickity.js',
