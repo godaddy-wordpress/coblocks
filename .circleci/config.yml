@@ -80,6 +80,7 @@ executors:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
+    resource_class: large
   php_80_mysql:
     docker:
       - image: circleci/php:8.0.11-apache-node
