@@ -33,6 +33,14 @@ describe( 'coblocks/alert transforms', () => {
 		expect( transformed[ 0 ].attributes.content ).toBe( 'paragraph content' );
 	} );
 
+	it( 'should transform to core/paragraph block and split title', () => {
+		const block = createBlock( name, { value: 'paragraph content', title: 'title content' } );
+		const transformed = switchToBlockType( block, 'core/paragraph' );
+
+		expect( transformed[ 0 ].isValid ).toBe( true );
+		expect( transformed[ 0 ].attributes.content ).toBe( 'title content<br />paragraph content' );
+	} );
+
 	it( 'should transform to core/paragraph block without content', () => {
 		const block = createBlock( name, { } );
 		const transformed = switchToBlockType( block, 'core/paragraph' );

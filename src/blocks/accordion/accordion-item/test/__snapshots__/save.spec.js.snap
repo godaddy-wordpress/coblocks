@@ -6,6 +6,12 @@ exports[`coblocks/accordion-item should render with background color 1`] = `
 <!-- /wp:coblocks/accordion-item -->"
 `;
 
+exports[`coblocks/accordion-item should render with border color 1`] = `
+"<!-- wp:coblocks/accordion-item {\\"borderColor\\":\\"#111111\\"} -->
+<div class=\\"wp-block-coblocks-accordion-item\\"></div>
+<!-- /wp:coblocks/accordion-item -->"
+`;
+
 exports[`coblocks/accordion-item should render with content 1`] = `
 "<!-- wp:coblocks/accordion-item {\\"title\\":\\"Accordion title\\"} -->
 <div class=\\"wp-block-coblocks-accordion-item\\"><details><summary class=\\"wp-block-coblocks-accordion-item__title\\">Accordion title</summary><div class=\\"wp-block-coblocks-accordion-item__content\\" tabindex=\\"0\\"></div></details></div>

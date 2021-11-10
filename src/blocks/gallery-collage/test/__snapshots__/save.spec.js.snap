@@ -72,6 +72,18 @@ exports[`coblocks/gallery-collage should have className 'has-small-gutter' with 
 <!-- /wp:coblocks/gallery-collage -->"
 `;
 
+exports[`coblocks/gallery-collage should have className 'is-style-layered'. 1`] = `
+"<!-- wp:coblocks/gallery-collage {\\"className\\":\\"is-style-layered\\"} -->
+<div aria-label=\\"Collage Gallery\\" class=\\"wp-block-coblocks-gallery-collage alignwide is-style-layered has-small-gutter\\"><ul><li class=\\"wp-block-coblocks-gallery-collage__item item-1\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-index=\\"0\\" data-id=\\"1\\" class=\\"wp-image-1\\"/></figure></li><li class=\\"wp-block-coblocks-gallery-collage__item item-2\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" data-index=\\"1\\" data-id=\\"2\\" class=\\"wp-image-2\\"/></figure></li></ul></div>
+<!-- /wp:coblocks/gallery-collage -->"
+`;
+
+exports[`coblocks/gallery-collage should have className 'is-style-tiled'. 1`] = `
+"<!-- wp:coblocks/gallery-collage {\\"className\\":\\"is-style-tiled\\"} -->
+<div aria-label=\\"Collage Gallery\\" class=\\"wp-block-coblocks-gallery-collage alignwide is-style-tiled has-small-gutter\\"><ul><li class=\\"wp-block-coblocks-gallery-collage__item item-1\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-index=\\"0\\" data-id=\\"1\\" class=\\"wp-image-1\\"/></figure></li><li class=\\"wp-block-coblocks-gallery-collage__item item-2\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" data-index=\\"1\\" data-id=\\"2\\" class=\\"wp-image-2\\"/></figure></li></ul></div>
+<!-- /wp:coblocks/gallery-collage -->"
+`;
+
 exports[`coblocks/gallery-collage should have custom link when linkTo is set to "custom" 1`] = `
 "<!-- wp:coblocks/gallery-collage {\\"linkTo\\":\\"custom\\"} -->
 <div aria-label=\\"Collage Gallery\\" class=\\"wp-block-coblocks-gallery-collage alignwide has-small-gutter\\"><ul><li class=\\"wp-block-coblocks-gallery-collage__item item-1\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-index=\\"0\\" data-id=\\"1\\" class=\\"wp-image-1\\"/></figure></li><li class=\\"wp-block-coblocks-gallery-collage__item item-2\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" data-index=\\"1\\" data-id=\\"2\\" class=\\"wp-image-2\\"/></figure></li><li class=\\"wp-block-coblocks-gallery-collage__item item-3\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><a href=\\"http://google.com\\" rel=\\"\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\" data-index=\\"3\\" data-id=\\"3\\" data-imglink=\\"http://google.com\\" class=\\"wp-image-3\\"/></a></figure></li></ul></div>
@@ -87,6 +99,12 @@ exports[`coblocks/gallery-collage should have figcaption element with captions e
 exports[`coblocks/gallery-collage should have media link when linkTo is set to "media" 1`] = `
 "<!-- wp:coblocks/gallery-collage {\\"linkTo\\":\\"media\\"} -->
 <div aria-label=\\"Collage Gallery\\" class=\\"wp-block-coblocks-gallery-collage alignwide has-small-gutter\\"><ul><li class=\\"wp-block-coblocks-gallery-collage__item item-1\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><a href=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" rel=\\"\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-index=\\"0\\" data-id=\\"1\\" class=\\"wp-image-1\\"/></a></figure></li><li class=\\"wp-block-coblocks-gallery-collage__item item-2\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><a href=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" rel=\\"\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" data-index=\\"1\\" data-id=\\"2\\" class=\\"wp-image-2\\"/></a></figure></li><li class=\\"wp-block-coblocks-gallery-collage__item item-3\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><a href=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\" rel=\\"\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\" data-index=\\"3\\" data-id=\\"3\\" class=\\"wp-image-3\\"/></a></figure></li></ul></div>
+<!-- /wp:coblocks/gallery-collage -->"
+`;
+
+exports[`coblocks/gallery-collage should not render image if URL is not defined 1`] = `
+"<!-- wp:coblocks/gallery-collage -->
+<div aria-label=\\"Collage Gallery\\" class=\\"wp-block-coblocks-gallery-collage has-filter-undefined\\"><ul><li class=\\"wp-block-coblocks-gallery-collage__item item-1\\"></li></ul></div>
 <!-- /wp:coblocks/gallery-collage -->"
 `;
 

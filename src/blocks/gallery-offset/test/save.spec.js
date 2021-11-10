@@ -17,6 +17,7 @@ const baseAttributes = {
 	images: [
 		{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', id: 1 },
 		{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg', id: 2 },
+		{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg' },
 	],
 };
 

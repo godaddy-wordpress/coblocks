@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { EventsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { FaqIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies.
@@ -35,6 +35,7 @@ const settings = {
 	save,
 	supports: {
 		align: [ 'wide', 'full' ],
+		multiple: false,
 	},
 	title: _x( 'FAQ', 'block name', 'coblocks' ),
 };

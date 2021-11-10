@@ -6,6 +6,12 @@ exports[`coblocks/icon should render 1`] = `
 <!-- /wp:coblocks/icon -->"
 `;
 
+exports[`coblocks/icon should render with an icon 1`] = `
+"<!-- wp:coblocks/icon {\\"icon\\":\\"coblocks\\"} -->
+<div class=\\"wp-block-coblocks-icon\\"><div class=\\"wp-block-coblocks-icon__inner\\" style=\\"height:60px;width:60px\\"><a href=\\"https://www.godaddy.com\\"><svg viewbox=\\"0 0 20 20\\" xmlns=\\"http://www.w3.org/2000/svg\\" role=\\"img\\" aria-hidden=\\"true\\"><path d=\\"m5.17346763.00163164 9.55661877-.00163126c1.8075616-.00030854 2.4639368.18821016 3.1264625.54230616.6625258.35409601 1.183646.8737945 1.5402492 1.53604705.3566032.66225256.5479761 1.31916921.5567132 3.13082116l.0461929 9.57824455c.0087371 1.811652-.1762994 2.4686329-.5265143 3.1310061s-.8663216 1.1822487-1.5254309 1.5365703c-.6591092.3543216-1.313665.5430641-3.1212266.5433727l-9.55661876.0016312c-1.80756159.0003086-2.46393681-.1882101-3.12646255-.5423061-.66252575-.354096-1.18364596-.8737945-1.54024916-1.5360471-.3566032-.6622525-.54797616-1.3191692-.5567132-3.1308212l-.04619294-9.57824454c-.00873705-1.81165196.17629938-2.46863286.52651432-3.13100606.35021493-.6623732.8663216-1.18224875 1.52543086-1.53657035s1.31366506-.54306407 3.12122666-.54337261zm-.72902319 3.33170169c-.61364972 0-1.11111111.49746139-1.11111111 1.11111111v11.11111116c0 .6136497.49746139 1.1111111 1.11111111 1.1111111h3.33333334c.61364972 0 1.11111111-.4974614 1.11111111-1.1111111v-11.11111116c0-.61364972-.49746139-1.11111111-1.11111111-1.11111111zm7.77777776 7.77777777c-.6136497 0-1.1111111.4974614-1.1111111 1.1111111v3.3333334c0 .6136497.4974614 1.1111111 1.1111111 1.1111111h3.3333334c.6136497 0 1.1111111-.4974614 1.1111111-1.1111111v-3.3333334c0-.6136497-.4974614-1.1111111-1.1111111-1.1111111zm0-7.77777777c-.6136497 0-1.1111111.49746139-1.1111111 1.11111111v3.33333334c0 .61364972.4974614 1.11111111 1.1111111 1.11111111h3.3333334c.6136497 0 1.1111111-.49746139 1.1111111-1.11111111v-3.33333334c0-.61364972-.4974614-1.11111111-1.1111111-1.11111111z\\" fillrule=\\"evenodd\\"></path></svg></a></div></div>
+<!-- /wp:coblocks/icon -->"
+`;
+
 exports[`coblocks/icon should render with backgroundColor 1`] = `
 "<!-- wp:coblocks/icon {\\"backgroundColor\\":\\"primary\\"} -->
 <div class=\\"wp-block-coblocks-icon\\"><div class=\\"wp-block-coblocks-icon__inner has-background has-primary-background-color\\" style=\\"height:60px;width:60px\\"></div></div>
@@ -19,8 +25,8 @@ exports[`coblocks/icon should render with borderRadius and padding 1`] = `
 `;
 
 exports[`coblocks/icon should render with className 1`] = `
-"<!-- wp:coblocks/icon {\\"className\\":\\"my-custom-class\\"} -->
-<div class=\\"wp-block-coblocks-icon my-custom-class\\"><div class=\\"wp-block-coblocks-icon__inner\\" style=\\"height:60px;width:60px\\"></div></div>
+"<!-- wp:coblocks/icon {\\"className\\":\\"my-custom-class is-style-filled\\"} -->
+<div class=\\"wp-block-coblocks-icon my-custom-class is-style-filled\\"><div class=\\"wp-block-coblocks-icon__inner\\" style=\\"height:60px;width:60px\\"></div></div>
 <!-- /wp:coblocks/icon -->"
 `;
 

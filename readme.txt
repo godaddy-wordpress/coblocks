@@ -2,8 +2,8 @@
 Author URI: https://www.godaddy.com
 Contributors: godaddy, richtabor, eherman24, jonathanbardo, jrtashjian, paranoia1906, fjarrett
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
-Requires at least: 5.0
-Tested up to: 5.8
+Requires at least: 5.5
+Tested up to: 5.8.1
 Requires PHP: 5.6
 Stable tag: 2.18.1
 License: GPL-2.0
