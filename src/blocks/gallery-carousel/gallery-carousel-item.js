@@ -1,4 +1,4 @@
-import { useContext, useMemo } from '@wordpress/element';
+import { useContext, useMemo, useState } from '@wordpress/element';
 import { RichText } from '@wordpress/block-editor';
 
 import { __ } from '@wordpress/i18n';
@@ -21,6 +21,8 @@ const GalleryCarouselItem = ( {
 		images,
 	} = useContext( GalleryCarouselContext );
 
+	const [ captionFocused, setCaptionFocused ] = useState( false );
+
 	const item = images[ index ];
 
 	const handleCaptionChange = ( val ) => {
@@ -40,41 +42,51 @@ const GalleryCarouselItem = ( {
 	const renderCaption = useMemo( () => {
 		return (
 			<RichText
-				tagName="figcaption"
-				placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
-				value={ images[ selectedImage ]?.caption }
 				className="coblocks-gallery--caption coblocks-gallery--primary-caption"
-				onChange={ ( val ) => handleCaptionChange( val ) }
-				isSelected={ isSelected }
-				keepPlaceholderOnFocus
 				inlineToolbar
+				isSelected={ captionFocused }
+				onChange={ ( val ) => handleCaptionChange( val ) }
+				placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
+				tagName="figcaption"
+				unstableOnFocus={ () => {
+					setCaptionFocused( ! captionFocused );
+				} }
+				value={ images[ selectedImage ]?.caption }
 			/>
 		);
-	}, [ selectedImage, isSelected ] );
+	}, [ selectedImage, captionFocused ] );
+
+	const handleImageClick = () => {
+		if ( captionFocused === true ) {
+			setCaptionFocused( false );
+		}
+	};
 
 	const renderGalleryItem = useMemo( () => {
 		return (
-			<GalleryImage
-				url={ item.url }
-				alt={ item.alt }
-				id={ item.id }
-				marginRight={ true }
-				marginLeft={ true }
-				onSelect={ () => {
-					setSelectedImage( index );
-				} }
-				onRemove={ () => {
-					handleRemoveImage( index );
-				} }
-				replaceImage={ handleReplaceImage }
-				isSelected={ isSelected }
-				aria-label={ ariaLabel }
-				supportsCaption={ false }
-				supportsMoving={ false }
-				imageIndex={ index }
-			/>
+			<span tabIndex={ 0 } role="button" onClick={ handleImageClick } onKeyDown={ handleImageClick } >
+				<GalleryImage
+					url={ item.url }
+					alt={ item.alt }
+					id={ item.id }
+					marginRight={ true }
+					marginLeft={ true }
+					onSelect={ () => {
+						setSelectedImage( index );
+					} }
+					onRemove={ () => {
+						handleRemoveImage( index );
+					} }
+					replaceImage={ handleReplaceImage }
+					isSelected={ isSelected }
+					aria-label={ ariaLabel }
+					supportsCaption={ false }
+					supportsMoving={ false }
+					imageIndex={ index }
+				/>
+			</span>
 		);
-	}, [ isSelected, item ] );
+	}, [ captionFocused, isSelected, item ] );
 
 	if ( ! item ) {
 		return null;

@@ -13,29 +13,31 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 
 import './style.scss';
 
-const SwiperContainer = ( { children, slidesPerView, list, freeScroll, ...restProps } ) => {
-	const swiperUuid = useMemo( () => generateUuid(), [ list.length, freeScroll, slidesPerView ] );
+const SwiperWrapper = ( props ) => {
+	const swiperUuid = useMemo( () => generateUuid(), [ props.list.length, props.freeScroll, props.slidesPerView ] );
 
-	return children( {
-		key: swiperUuid,
-		uuid: swiperUuid,
-		...restProps,
-	} );
+	return (
+		<span key={ swiperUuid }>
+			<Swiper uuid={ swiperUuid } { ...props } />
+		</span>
+	);
 };
 
-const Swiper = ( {
-	list,
-	children,
-	navigation = false,
-	isDraggable = true,
-	autoPlaySpeed = null,
-	pauseHover = null,
-	onSwipe = null,
-	Pagination = null,
-	freeScroll = false,
-	uuid = null,
-	slidesPerView = 1,
-} ) => {
+const Swiper = ( props ) => {
+	const {
+		list,
+		children,
+		navigation = false,
+		isDraggable = true,
+		autoPlaySpeed = null,
+		pauseHover = null,
+		onSwipe = null,
+		Pagination = null,
+		freeScroll = false,
+		uuid = null,
+		slidesPerView = 1,
+	} = props;
+
 	const [ swiper, setSwiper ] = useState( null );
 	const [ autoPlay, setAutoPlay ] = useState( null );
 	const [ hovering, setHovering ] = useState( false );
@@ -189,27 +191,23 @@ const Swiper = ( {
 	}, [ Pagination, swiper ] );
 
 	return (
-		<SwiperContainer>
+		<div
+			className={ `coblocks-swiper-container` }
+			onMouseEnter={ handleMouseEnter }
+			onMouseLeave={ handleMouseLeave }
+		>
 			<div
-				className={ `coblocks-swiper-container` }
-				onMouseEnter={ handleMouseEnter }
-				onMouseLeave={ handleMouseLeave }
-
+				className="swiper-container"
+				id={ uuid }
 			>
-				<div
-					className="swiper-container"
-					id={ uuid }
-				>
-					<div className="swiper-wrapper" id="swiper-wrapper" ref={ swiperWrapperRef } >
-						{ renderList }
-					</div>
-					{ renderNavigation }
+				<div className="swiper-wrapper" id="swiper-wrapper" ref={ swiperWrapperRef } >
+					{ renderList }
 				</div>
-				{ renderPagination }
+				{ renderNavigation }
 			</div>
-		</SwiperContainer>
+			{ renderPagination }
+		</div>
 	);
 };
 
-// export default SwiperHOC(Swiper);
-export default Swiper;
+export default SwiperWrapper;

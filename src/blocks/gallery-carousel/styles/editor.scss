@@ -115,6 +115,11 @@
 	}
 }
 
+.block-editor-rich-text__editable.coblocks-gallery--caption.coblocks-gallery--primary-caption.rich-text {
+	bottom: 0.8rem !important;
+	position: absolute !important;
+}
+
 .wp-block-coblocks-gallery-carousel-thumbnail {
 	cursor: pointer;
 	min-width: 100px;
