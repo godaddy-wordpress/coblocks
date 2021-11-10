@@ -72,6 +72,10 @@ const GalleryCarouselEdit = ( props ) => {
 
 	const { selectedImage, setSelectedImage } = useContext( GalleryCarouselContext );
 
+	const swiperStyles = {
+		marginTop: gutter > 0 && ! responsiveHeight ? ( gutter / 2 ) + 'px' : undefined,
+	};
+
 	const innerClasses = classnames(
 		'is-cropped',
 		'has-carousel',
@@ -281,7 +285,7 @@ const GalleryCarouselEdit = ( props ) => {
 				onClick={ handleSelectCarousel }
 			>
 				<div className={ className }>
-					<div className={ innerClasses }>
+					<div className={ innerClasses } style={ swiperStyles }>
 						{ renderSwiper }
 					</div>
 				</div>
@@ -309,6 +313,8 @@ const withGalleryCarouselState = ( Component ) => {
 			isSelected: props.isSelected,
 			images: props.attributes.images,
 			showThumbnails: props.attributes.thumbnails,
+			gutter: props.attributes.gutter,
+			gutterMobile: props.attributes.gutterMobile,
 		};
 
 		return (

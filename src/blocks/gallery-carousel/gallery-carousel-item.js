@@ -1,6 +1,8 @@
 import { useContext, useMemo, useState } from '@wordpress/element';
 import { RichText } from '@wordpress/block-editor';
 
+import classnames from 'classnames';
+
 import { __ } from '@wordpress/i18n';
 
 import GalleryImage from '../../components/block-gallery/gallery-image';
@@ -19,6 +21,8 @@ const GalleryCarouselItem = ( {
 		selectedImage,
 		isSelected,
 		images,
+		gutter,
+		gutterMobile,
 	} = useContext( GalleryCarouselContext );
 
 	const [ captionFocused, setCaptionFocused ] = useState( false );
@@ -86,15 +90,28 @@ const GalleryCarouselItem = ( {
 				/>
 			</span>
 		);
-	}, [ captionFocused, isSelected, item ] );
+	}, [ gutter, gutterMobile, captionFocused, isSelected, item ] );
 
 	if ( ! item ) {
 		return null;
 	}
 
+	const galleryItemClasses = classnames(
+		'coblocks-gallery--item',
+		{
+			[ `has-margin-top-${ gutter }` ]: gutter > 0,
+			[ `has-margin-top-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+			[ `has-negative-margin-left-${ gutter }` ]: gutter > 0,
+			[ `has-negative-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+			[ `has-negative-margin-right-${ gutter }` ]: gutter > 0,
+			[ `has-negative-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+
+		}
+	);
+
 	return (
 		<div
-			className="coblocks-gallery--item"
+			className={ galleryItemClasses }
 			role="button"
 			tabIndex={ index }
 		>
