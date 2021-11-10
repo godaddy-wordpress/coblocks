@@ -13,7 +13,6 @@ import { name, settings } from '../index';
 // Make variables accessible for all tests.
 let block;
 let blockDOM;
-let serializedBlock;
 
 describe( name, () => {
 	beforeAll( () => {
@@ -24,14 +23,11 @@ describe( name, () => {
 	beforeEach( () => {
 		// Create the block with the minimum attributes.
 		block = createBlock( name );
-
-		// Reset the reused variables.
-		serializedBlock = '';
 	} );
 
 	it( 'should render with content', () => {
 		block.attributes.title = 'Accordion title';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'Accordion title' );
@@ -40,7 +36,7 @@ describe( name, () => {
 
 	it( 'should render with text color', () => {
 		block.attributes.textColor = 'primary';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '{"textColor":"primary"}' );
@@ -49,10 +45,19 @@ describe( name, () => {
 
 	it( 'should render with background color', () => {
 		block.attributes.backgroundColor = '#111111';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '{"backgroundColor":"#111111"}' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with border color', () => {
+		block.attributes.borderColor = '#111111';
+		const serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '{"borderColor":"#111111"}' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
@@ -60,7 +65,7 @@ describe( name, () => {
 		block.attributes.title = 'Accordion Item title';
 		block.attributes.customBackgroundColor = '#111111';
 		block.attributes.backgroundColor = undefined;
-		serializedBlock = serialize( block );
+		let serializedBlock = serialize( block );
 
 		blockDOM = new JSDOM( serializedBlock );
 		expect(
@@ -80,7 +85,7 @@ describe( name, () => {
 	it( 'should apply has-primary-background-color class if selected from the color palette', () => {
 		block.attributes.title = 'Accordion Item title';
 		block.attributes.backgroundColor = 'primary';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		blockDOM = new JSDOM( serializedBlock );
 		expect(
@@ -91,7 +96,7 @@ describe( name, () => {
 	it( 'should apply custom background color with inline css', () => {
 		block.attributes.title = 'Accordion Item title';
 		block.attributes.customBackgroundColor = '#123456';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		blockDOM = new JSDOM( serializedBlock );
 		expect(
@@ -102,7 +107,7 @@ describe( name, () => {
 	it( 'should render with custom background color', () => {
 		block.attributes.title = 'Accordion Item title';
 		block.attributes.customBackgroundColor = '#111111';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '"customBackgroundColor":"#111111"' );

@@ -11,7 +11,19 @@ import { name, settings } from '../index';
 
 // Make variables accessible for all tests.
 let block;
-let serializedBlock;
+
+const DEFAULT_IMAGE_ATTRIBUTES = {
+	backgroundImg: '150x150.png',
+	mediaUrl: '150x150.png',
+	mediaPosition: 'right',
+	mediaType: 'image',
+	backgroundOverlay: 50,
+	backgroundRepeat: 'no-repeat',
+	backgroundSize: 'contain',
+	backgroundType: 'image',
+	hasImgShadow: true,
+	focalPoint: { x: 0.6352941176470588, y: 0.3729411405675552 },
+}
 
 describe( 'coblocks/media-card', () => {
 	beforeAll( () => {
@@ -22,33 +34,53 @@ describe( 'coblocks/media-card', () => {
 	beforeEach( () => {
 		// Create the block with the minimum attributes.
 		block = createBlock( name );
-
-		// Reset the reused variables.
-		serializedBlock = '';
 	} );
 
 	it( 'should render', () => {
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with appropriate id class', () => {
+		block.attributes.coblocks = { id: '1234' };
+		const serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'coblocks-media-card-1234' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with grid template column classes', () => {
+		[ 'left', 'right' ].forEach( ( position ) => {
+			block.attributes.mediaPosition = position;
+			block.attributes.mediaWidth = '100';
+			const serializedBlock = serialize( block );
+
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( position === 'right' ? 'auto 100%' : '100% auto' );
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
 	} );
 
 	it( 'should render with align attribute', () => {
 		const alignOptions = [ 'full', 'wide' ];
 		alignOptions.forEach( ( alignOption ) => {
 			block.attributes.align = alignOption;
-			serializedBlock = serialize( block );
+			block.attributes.maxWidth = '100px';
+			const serializedBlock = serialize( block );
 
 			expect( serializedBlock ).toBeDefined();
 			expect( serializedBlock ).toContain( `align${ alignOption }` );
+			expect( serializedBlock ).toContain( 'max-width:100px' );
 			expect( serializedBlock ).toMatchSnapshot();
 		} );
 	} );
 
 	it( 'should render with className attribute', () => {
 		block.attributes.className = 'my-custom-class';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '"className":"my-custom-class"' );
@@ -56,17 +88,8 @@ describe( 'coblocks/media-card', () => {
 	} );
 
 	it( 'should render with background image attributes', () => {
-		block.attributes.backgroundImg = '150x150.png';
-		block.attributes.mediaUrl = '150x150.png';
-		block.attributes.mediaPosition = 'right';
-		block.attributes.mediaType = 'image';
-		block.attributes.backgroundOverlay = 50;
-		block.attributes.backgroundRepeat = 'no-repeat';
-		block.attributes.backgroundSize = 'contain';
-		block.attributes.backgroundType = 'image';
-		block.attributes.hasImgShadow = true;
-		block.attributes.focalPoint = { x: 0.6352941176470588, y: 0.3729411405675552 };
-		serializedBlock = serialize( block );
+		block.attributes = DEFAULT_IMAGE_ATTRIBUTES;
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'src="150x150.png"' );
@@ -81,6 +104,16 @@ describe( 'coblocks/media-card', () => {
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
+	it( 'should render with background image attributes with media id', () => {
+		block.attributes = DEFAULT_IMAGE_ATTRIBUTES;
+		block.attributes.mediaId = '1234';
+		const serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'wp-image-1234' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
 	it( 'should render with background video attributes', () => {
 		block.attributes.backgroundImg = '150x150.mp4';
 		block.attributes.backgroundType = 'video';
@@ -90,7 +123,7 @@ describe( 'coblocks/media-card', () => {
 		block.attributes.hasCardShadow = true;
 		block.attributes.videoLoop = true;
 		block.attributes.videoMuted = true;
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'src="150x150.mp4"' );
@@ -109,7 +142,7 @@ describe( 'coblocks/media-card', () => {
 	it( 'should render padding classes', () => {
 		[ 'none', 'small', 'medium', 'large', 'huge' ].forEach( ( paddingSize ) => {
 			block.attributes.paddingSize = paddingSize;
-			serializedBlock = serialize( block );
+			const serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();
 			expect( serializedBlock ).toContain( 'has-' + paddingSize + '-padding' );
 			expect( serializedBlock ).toMatchSnapshot();

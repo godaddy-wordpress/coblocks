@@ -11,6 +11,7 @@ registerCoreBlocks();
  */
 import * as helpers from '../../../../.dev/tests/jest/helpers';
 import { name } from '../index';
+import transforms from '../transforms';
 
 describe( 'coblocks/gallery-offset transforms', () => {
 	// Shared attributes
@@ -89,6 +90,10 @@ describe( 'coblocks/gallery-offset transforms', () => {
 
 		expect( transformed[ 0 ].attributes.images[ 0 ].index ).toBe( coreImage.attributes.id );
 		expect( transformed[ 0 ].attributes.images[ 0 ].url ).toBe( coreImage.attributes.url );
+	} );
+	
+	it( 'should transform from core/image block only if match', () => {
+		expect( transforms.from[ 1 ].isMatch( [ { id: 1234, url: 'someUrl' }, { id: "1234", url: 'someUrl' } ] ) ).toHaveLength( 1 );
 	} );
 
 	it( 'should transform to coblocks/gallery-stacked block', () => {

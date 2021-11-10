@@ -47,6 +47,15 @@ describe( 'coblocks/gif', () => {
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
+	it( 'should render with caption', () => {
+		block.attributes.caption = 'Some caption';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( '<figcaption>Some caption</figcaption>' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
 	it( 'should render with align attribute', () => {
 		const alignOptions = [
 			'left', 'center', 'right', 'full', 'wide',

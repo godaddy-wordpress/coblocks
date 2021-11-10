@@ -43,10 +43,15 @@ export default function save( { className, attributes } ) {
 	return isEmpty( attributes ) ? null : (
 		<details
 			className={ classes }
+			itemProp="mainEntity"
+			itemScope
+			itemType="https://schema.org/Question"
 			open={ open }
 			style={ { color: colorClass ? undefined : customTextColor } }
 		>
-			<summary className="wp-block-coblocks-faq-item__question">
+			<summary
+				className="wp-block-coblocks-faq-item__question"
+				itemProp="name">
 				<RichText.Content
 					className="wp-block-coblocks-faq-item__question__content"
 					tagName="div"
@@ -57,8 +62,14 @@ export default function save( { className, attributes } ) {
 					icon={ CaretIcon }
 				/>
 			</summary>
-			<div className="wp-block-coblocks-faq-item__answer">
-				<InnerBlocks.Content />
+			<div
+				className="wp-block-coblocks-faq-item__answer"
+				itemProp="acceptedAnswer"
+				itemScope
+				itemType="https://schema.org/Answer">
+				<div itemProp="text">
+					<InnerBlocks.Content />
+				</div>
 			</div>
 		</details>
 	);

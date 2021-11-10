@@ -591,9 +591,15 @@ jobs:
       - run:
           name: Install Composer v1
           command: sudo composer self-update --1
+      - restore_cache:
+          key: phpcs-coblocks-cache
       - run:
           name: "Linting PHP"
           command: composer run lint $FILES
+      - save_cache:
+          key: phpcs-coblocks-cache
+          paths:
+            - /tmp/phpcs-coblocks-cache
 
   # Run stylelint on changed stylesheet files only.
   css:

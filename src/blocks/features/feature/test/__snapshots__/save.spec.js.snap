@@ -71,3 +71,9 @@ exports[`coblocks/feature should render text color 1`] = `
 <div class=\\"wp-block-coblocks-feature\\"><div class=\\"wp-block-coblocks-feature__inner has-text-color has-333333-color has-no-padding\\"></div></div>
 <!-- /wp:coblocks/feature -->"
 `;
+
+exports[`coblocks/feature should render with appropriate id class 1`] = `
+"<!-- wp:coblocks/feature -->
+<div class=\\"wp-block-coblocks-feature coblocks-feature-1234\\"><div class=\\"wp-block-coblocks-feature__inner has-no-padding\\"></div></div>
+<!-- /wp:coblocks/feature -->"
+`;

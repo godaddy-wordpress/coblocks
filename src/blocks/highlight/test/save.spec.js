@@ -13,7 +13,6 @@ import { name, settings } from '../index';
 // Make variables accessible for all tests.
 let block;
 let blockDOM;
-let serializedBlock;
 
 describe( 'coblocks/highlight', () => {
 	beforeAll( () => {
@@ -27,11 +26,10 @@ describe( 'coblocks/highlight', () => {
 
 		// Reset the reused variables.
 		blockDOM = undefined;
-		serializedBlock = '';
 	} );
 
 	it( 'should render with content', () => {
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'highlighted content' );
@@ -39,13 +37,13 @@ describe( 'coblocks/highlight', () => {
 	} );
 
 	it( 'should not render without content', () => {
-		serializedBlock = serialize( createBlock( name ) );
+		const serializedBlock = serialize( createBlock( name ) );
 		expect( serializedBlock ).toEqual( `<!-- wp:${ name } /-->` );
 	} );
 
 	it( 'should center align text with inline css', () => {
 		block.attributes.align = 'center';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		blockDOM = new JSDOM( serializedBlock );
 		expect(
@@ -56,7 +54,7 @@ describe( 'coblocks/highlight', () => {
 	it( 'should apply has-background class if any background color is selected', () => {
 		block.attributes.customBackgroundColor = '#000000';
 		block.attributes.backgroundColor = undefined;
-		serializedBlock = serialize( block );
+		let serializedBlock = serialize( block );
 
 		blockDOM = new JSDOM( serializedBlock );
 		expect(
@@ -75,7 +73,7 @@ describe( 'coblocks/highlight', () => {
 
 	it( 'should apply has-primary-background-color class if the primary color is selected from the color palette', () => {
 		block.attributes.backgroundColor = 'primary';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		blockDOM = new JSDOM( serializedBlock );
 		expect(
@@ -85,7 +83,7 @@ describe( 'coblocks/highlight', () => {
 
 	it( 'should apply custom background color with inline css', () => {
 		block.attributes.customBackgroundColor = '#123456';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		blockDOM = new JSDOM( serializedBlock );
 		expect(
@@ -95,7 +93,7 @@ describe( 'coblocks/highlight', () => {
 
 	it( 'should apply has-small-font-size class if the small font size is selected', () => {
 		block.attributes.fontSize = 'small';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		blockDOM = new JSDOM( serializedBlock );
 		expect(
@@ -105,11 +103,18 @@ describe( 'coblocks/highlight', () => {
 
 	it( 'should apply custom font size with inline css', () => {
 		block.attributes.customFontSize = 50;
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		blockDOM = new JSDOM( serializedBlock );
 		expect(
 			blockDOM.window.document.querySelector( '.wp-block-coblocks-highlight__content' )
 		).toHaveStyle( `font-size: ${ block.attributes.customFontSize }px` );
+	} );
+
+	it( 'should apply custom text color with inline css', () => {
+		block.attributes.textColor = '#123456';
+		const serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toContain( 'has-text-color' );
 	} );
 } );

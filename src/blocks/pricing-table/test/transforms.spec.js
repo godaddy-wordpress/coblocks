@@ -15,16 +15,16 @@ describe( 'coblocks/pricing-table transforms', () => {
 		registerBlockType( name, { category: 'common', ...settings } );
 	} );
 
-	for ( let x = 1; x <= 4; x++ ) {
+	for ( let x = 0; x <= 4; x++ ) {
 		it( `should transform raw html to ${ x } column block`, () => {
 			const HTML =
-			`<div class="wp-block-coblocks-pricing-table has-${ x }-columns has-text-align-center"><div class="wp-block-coblocks-pricing-table__inner"></div><div class="wp-block-coblocks-pricing-table__inner"></div><div class="wp-block-coblocks-pricing-table__inner"></div></div></div>`;
+			`<div class="wp-block-coblocks-pricing-table ${ ( x > 0 ) && `has-${ x }-columns` } has-text-align-center"><div class="wp-block-coblocks-pricing-table__inner"></div><div class="wp-block-coblocks-pricing-table__inner"></div><div class="wp-block-coblocks-pricing-table__inner"></div></div></div>`;
 
 			const block = rawHandler( { HTML } );
 
 			expect( block[ 0 ].isValid ).toBe( true );
 			expect( block[ 0 ].name ).toBe( name );
-			expect( block[ 0 ].attributes.count ).toBe( x );
+			expect( block[ 0 ].attributes.count ).toBe( ( x > 0 ) ? x : 2 );
 		} );
 	}
 
@@ -35,4 +35,3 @@ describe( 'coblocks/pricing-table transforms', () => {
 		expect( block.name ).toBe( name );
 	} );
 } );
-
