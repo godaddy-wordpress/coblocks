@@ -2,7 +2,7 @@
 import { transformRIDs } from './opentable';
 
 export default function save( { attributes } ) {
-	const rids = attributes.restaurantIDs.map( ( restaurantObject ) => restaurantObject.rid );
+	const rids = attributes.restaurantIDs.filter( ( restaurant ) => restaurant.rid ).map( ( restaurant ) => restaurant.rid );
 	const className = ( attributes.className === undefined ) ? '' : attributes.className.substring( attributes.className.lastIndexOf( '-' ) + 1 );
 	const isMultiple = rids.length > 1;
 

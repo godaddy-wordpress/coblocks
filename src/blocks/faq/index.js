@@ -35,6 +35,7 @@ const settings = {
 	save,
 	supports: {
 		align: [ 'wide', 'full' ],
+		multiple: false,
 	},
 	title: _x( 'FAQ', 'block name', 'coblocks' ),
 };

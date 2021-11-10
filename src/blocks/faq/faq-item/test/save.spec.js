@@ -38,4 +38,14 @@ describe( name, () => {
 		expect( serializedBlock ).toContain( 'Some question' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
+
+	it( 'should render text color', () => {
+		block.attributes.question = 'Some question';;
+		block.attributes.textColor = '#333333';
+		const serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'has-333333-color' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
 } );

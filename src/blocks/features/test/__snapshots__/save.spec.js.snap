@@ -143,3 +143,9 @@ exports[`coblocks/features should render text color 1`] = `
 <div class=\\"wp-block-coblocks-features\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-text-color has-333333-color has-center-content\\"></div></div>
 <!-- /wp:coblocks/features -->"
 `;
+
+exports[`coblocks/features should render with appropriate id class 1`] = `
+"<!-- wp:coblocks/features -->
+<div class=\\"wp-block-coblocks-features coblocks-features-1234\\"><div class=\\"wp-block-coblocks-features__inner has-columns has-2-columns has-responsive-columns has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;
