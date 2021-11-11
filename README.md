@@ -15,12 +15,12 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 -   Accordion Block
 -   Alert Block
 -   Author Profile Block
--   Buttons Block
 -   Carousel Gallery Block
 -   Click to Tweet Block
 -   Collage Gallery Block
 -   Dynamic Separator Block
--   Events Block (New!)
+-   Events Block
+-   FAQ Block (New!)
 -   Features Block
 -   Food & Drinks Block
 -   Form Block
