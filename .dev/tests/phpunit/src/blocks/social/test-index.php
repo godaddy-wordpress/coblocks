@@ -8,9 +8,9 @@ class CoBlocks_Social_Index_Tests extends WP_UnitTestCase {
 
 	private $thumbnail_id;
 
-	public function setUp() {
+	public function set_up() {
 
-		parent::setUp();
+		parent::set_up();
 
 		include_once COBLOCKS_PLUGIN_DIR . 'src/blocks/share/index.php';
 
@@ -18,9 +18,9 @@ class CoBlocks_Social_Index_Tests extends WP_UnitTestCase {
 
 	}
 
-	public function tearDown() {
+	public function tear_down() {
 
-		parent::tearDown();
+		parent::tear_down();
 
 		unset( $GLOBALS['current_screen'] );
 
