@@ -144,7 +144,9 @@ class CoBlocks_Social_Index_Tests extends WP_UnitTestCase {
 			'pinterest' => true,
 		];
 
-		$this->assertRegExp( '/<a href="https:\/\/pinterest.com\/pin\/create\/button\/\?&#038;url=http:\/\/example.org\/\?p=' . $post_id . '&#038;description=CoBlocks%20Social&#038;media=http:\/\/example.org\/wp-content\/uploads\/[0-9]{4}\/[0-9]{2}\/[a-zA-Z0-9-]+.jpeg" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--pinterest     " title="Share on Pinterest" style="">/', coblocks_render_share_block( $attributes ) );
+		$site_url = str_replace( '/', '\/', get_site_url() );
+
+		$this->assertRegExp( '/<a href="https:\/\/pinterest.com\/pin\/create\/button\/\?&#038;url=' . $site_url . '\/\?p=' . $post_id . '&#038;description=CoBlocks%20Social&#038;media=' . $site_url . '\/wp-content\/uploads\/[0-9]{4}\/[0-9]{2}\/[a-zA-Z0-9-]+.jpeg" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--pinterest     " title="Share on Pinterest" style="">/', coblocks_render_share_block( $attributes ) );
 
 	}
 
