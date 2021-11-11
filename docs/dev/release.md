@@ -20,16 +20,21 @@ git changelog --tag x.x.x
 
 The script will output a generated changelog, grouped by pull request label. You will need to manually review and curate the changelog entries.
 
+To assist with formatting and removal of superfluous characters you may use the following search/replace regex to remove unwanted spacing and entries as well as automating links back to the PR on GitHub. Most IDE's have the functionality to search and replace via regex, so this is how you can accomplish it:
+
+| Search for     | Replace with | Description
+| ----------- | ----------- | ----------- |
+| `\(#([0-9]+)\)` | `[#$1](https://github.com/godaddy-wordpress/coblocks/pull/$1)` | Generate PR Links
+| `^  \* \[skip ci\].*` | | Remove CI Automation Message |
+| `^  \* GoLF.*` | | Remove Translation Message |
+| `(^  )(\*.*$)(\n*)`| `$2\n` | Remove empty lines and preceeding spaces |
+
+
 Guidelines for proof-reading include:
 
 - Fix spelling errors or clarify wording. Phrasing should be easy to understand where the intended audience are those who use the plugin or are keeping up with ongoing development.
 - Create new groupings as applicable, and move pull requests between. We categorize changes into "Enhancements", "Bug Fixes", and "Misc" (for toolset, deployment, and changes not important for the end user).
 - When multiple pull requests relate to the same task (such as a follow-up pull request), try to combine them to a single entry.
-
-Link the PR number to the PR on Github with a simple search/replace. Most IDE's have the functionality to search and replace via regex, so this is how you can accomplish it:
-
-Search for: `\(#([0-9]+)\)`
-Replace with: `[#$1](https://github.com/godaddy-wordpress/coblocks/pull/$1)`
 
 Finally replace the latest changelog added at the end of the readme file with this updated one. And commit to master (don't push yet).
 
