@@ -1,15 +1,15 @@
 import { createContext, useState } from '@wordpress/element';
 
 const GalleryCarouselContext = createContext( {
-	setSelectedImage: () => {},
-	setCaptionFocused: () => {},
-	selectedImage: null,
 	captionFocused: false,
-	images: [],
-	isSelected: false,
-	showThumbnails: false,
 	gutter: 0,
 	gutterMobile: 0,
+	images: [],
+	isSelected: false,
+	selectedImage: null,
+	setCaptionFocused: () => {},
+	setSelectedImage: () => {},
+	showThumbnails: false,
 } );
 
 const GalleryContextProvider = ( { gutter, gutterMobile, showThumbnails, children, images, isSelected } ) => {
@@ -17,15 +17,15 @@ const GalleryContextProvider = ( { gutter, gutterMobile, showThumbnails, childre
 	const [ captionFocused, setCaptionFocused ] = useState( false );
 
 	const galleryContext = {
-		selectedImage,
-		setSelectedImage,
 		captionFocused,
-		setCaptionFocused,
-		images,
-		isSelected,
-		showThumbnails,
 		gutter,
 		gutterMobile,
+		images,
+		isSelected,
+		selectedImage,
+		setCaptionFocused,
+		setSelectedImage,
+		showThumbnails,
 	};
 
 	return (

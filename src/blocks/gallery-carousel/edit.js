@@ -6,36 +6,36 @@ import { GalleryCarouselIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 import { useDispatch } from '@wordpress/data';
 
 /**
-	* Internal dependencies
-	*/
-import Inspector from './inspector';
+ * Internal dependencies
+ */
 import Controls from './controls';
-import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
-import { GalleryClasses } from '../../components/block-gallery/shared';
-import { CarouselGalleryVariationPicker, hasVariationSet } from './variations';
-import Swiper from '../../components/swiper';
 import GalleryCarouselItem from './gallery-carousel-item';
-import { GalleryContextProvider, GalleryCarouselContext } from './context';
+import { GalleryClasses } from '../../components/block-gallery/shared';
+import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
+import Inspector from './inspector';
+import Swiper from '../../components/swiper';
+import { CarouselGalleryVariationPicker, hasVariationSet } from './variations';
+import { GalleryCarouselContext, GalleryContextProvider } from './context';
 
 /**
-	* WordPress dependencies
-	*/
+ * WordPress dependencies
+ */
+import { compose } from '@wordpress/compose';
 import { Icon } from '@wordpress/icons';
 import { __, sprintf } from '@wordpress/i18n';
-import { useMemo, useContext, useCallback } from '@wordpress/element';
-import { compose } from '@wordpress/compose';
-import { withNotices, ResizableBox } from '@wordpress/components';
+import { ResizableBox, withNotices } from '@wordpress/components';
+import { useCallback, useContext, useMemo } from '@wordpress/element';
 
 /**
-	* Function will dynamically process a string for use with the `navForClass` block attribute.
-	* This attribute should only be truthy when the corresponding `thumbnails` attribute is also set.
-	*
-	* @constant parseNavForClass
-	* @type {Function}
-	* @param {boolean} thumbnails This boolean value is equal to props.attributes.thumbnails.
-	* @param {string}  clientId   This string value is equal to props.clientId.
-	* @return {string} Return parsed class string if thumbnails is truthy or an empty string.
-	*/
+ * Function will dynamically process a string for use with the `navForClass` block attribute.
+ * This attribute should only be truthy when the corresponding `thumbnails` attribute is also set.
+ *
+ * @constant parseNavForClass
+ * @type {Function}
+ * @param {boolean} thumbnails This boolean value is equal to props.attributes.thumbnails.
+ * @param {string}  clientId   This string value is equal to props.clientId.
+ * @return {string} Return parsed class string if thumbnails is truthy or an empty string.
+ */
 export const parseNavForClass = ( thumbnails, clientId ) => thumbnails
 	? `has-nav-${ clientId.split( '-' )[ 0 ] }`
 	: '';
@@ -83,12 +83,12 @@ const GalleryCarouselEdit = ( props ) => {
 		...GalleryClasses( attributes ),
 		{
 			[ `align${ align }` ]: align,
-			'has-horizontal-gutter': gutter > 0,
-			'has-no-arrows': ! prevNextButtons,
-			'is-selected': isSelected,
-			'has-no-thumbnails': ! thumbnails,
-			'has-lightbox': lightbox,
 			'has-aligned-cells': alignCells,
+			'has-horizontal-gutter': gutter > 0,
+			'has-lightbox': lightbox,
+			'has-no-arrows': ! prevNextButtons,
+			'has-no-thumbnails': ! thumbnails,
+			'is-selected': isSelected,
 		}
 	);
 
@@ -143,7 +143,7 @@ const GalleryCarouselEdit = ( props ) => {
 			<div className="wp-block-coblocks-gallery-carousel-page-dot-pagination-container">
 				<div className="wp-block-coblocks-gallery-carousel-page-dot-wrapper" >
 					{ images.map( ( item, index ) => (
-						<button key={ index } onClick={ () => changeStep( index ) } className="wp-block-coblocks-gallery-carousel-page-dot-pagination" />
+						<button className="wp-block-coblocks-gallery-carousel-page-dot-pagination" key={ index } onClick={ () => changeStep( index ) } />
 					) ) }
 				</div>
 			</div>
@@ -158,26 +158,26 @@ const GalleryCarouselEdit = ( props ) => {
 		}
 
 		return null;
-	}, [ thumbnails, selectedImage, images ] );
+	}, [ images, selectedImage, thumbnails ] );
 
 	const renderSwiper = useMemo( () => {
 		const swiperSizing = {
-			xlrg: 1,
 			lrg: 2,
 			med: 4,
 			sml: 5,
+			xlrg: 1,
 		};
 
 		return (
 			<Swiper
+				autoPlaySpeed={ autoPlay ? autoPlaySpeed : null }
+				freeScroll={ freeScroll }
+				isDraggable={ draggable }
 				list={ images }
 				navigation={ prevNextButtons }
-				isDraggable={ draggable }
-				freeScroll={ freeScroll }
-				autoPlaySpeed={ autoPlay ? autoPlaySpeed : null }
-				pauseHover={ autoPlay ? pauseHover : null }
-				Pagination={ renderPagination }
 				onSwipe={ handleSwipe }
+				Pagination={ renderPagination }
+				pauseHover={ autoPlay ? pauseHover : null }
 				slidesPerView={ swiperSizing[ gridSize ] }
 			>
 				{ ( {
@@ -193,10 +193,10 @@ const GalleryCarouselEdit = ( props ) => {
 					return (
 						<>
 							<GalleryCarouselItem
-								index={ index }
 								ariaLabel={ ariaLabel }
 								handleRemoveImage={ handleRemoveImage }
 								handleReplaceImage={ handleReplaceImage }
+								index={ index }
 								setAttributes={ setAttributes }
 							/>
 						</>
@@ -205,17 +205,17 @@ const GalleryCarouselEdit = ( props ) => {
 			</Swiper>
 		);
 	}, [
-		pageDots,
-		gridSize,
-		selectedImage,
+		autoPlay,
+		autoPlaySpeed,
+		draggable,
 		freeScroll,
+		gridSize,
 		images,
-		thumbnails,
+		pageDots,
 		pauseHover,
 		prevNextButtons,
-		draggable,
-		autoPlaySpeed,
-		autoPlay,
+		selectedImage,
+		thumbnails,
 	] );
 
 	if ( ! images.length && ! variatonSelected ) {
@@ -235,10 +235,10 @@ const GalleryCarouselEdit = ( props ) => {
 				{ noticeUI }
 				<GalleryPlaceholder
 					{ ...props }
-					variationLabel={ variationLabel }
-					label={ __( 'Carousel', 'coblocks' ) }
-					icon={ <Icon icon={ icon } /> }
 					gutter={ attributes.gutter }
+					icon={ <Icon icon={ icon } /> }
+					label={ __( 'Carousel', 'coblocks' ) }
+					variationLabel={ variationLabel }
 				/>
 			</>
 		);
@@ -254,15 +254,10 @@ const GalleryCarouselEdit = ( props ) => {
 			) }
 			{ noticeUI }
 			<ResizableBox
-				size={ {
-					height,
-					width: '100%',
-				} }
 				className={ classnames( {
-					'is-selected': isSelected,
 					'has-responsive-height': responsiveHeight,
+					'is-selected': isSelected,
 				} ) }
-				minHeight="0"
 				enable={ {
 					bottom: true,
 					bottomLeft: false,
@@ -273,13 +268,18 @@ const GalleryCarouselEdit = ( props ) => {
 					topLeft: false,
 					topRight: false,
 				} }
+				minHeight="0"
+				onClick={ handleSelectCarousel }
 				onResizeStop={ ( _event, _direction, _elt, delta ) => {
 					setAttributes( {
 						height: parseInt( height + delta.height, 10 ),
 					} );
 				} }
 				showHandle={ isSelected }
-				onClick={ handleSelectCarousel }
+				size={ {
+					height,
+					width: '100%',
+				} }
 			>
 				<div className={ className }>
 					<div className={ innerClasses } style={ swiperStyles }>
@@ -296,22 +296,24 @@ const GalleryCarouselThumbnail = ( { changeStep, item, index } ) => {
 
 	return (
 		<button className={ classnames( {
-			'wp-block-coblocks-gallery-carousel-thumbnail': true,
 			'is-active': index === selectedImage,
-		} ) } style={ { height: '80px', width: '100px' } } onClick={ () => changeStep( index ) } >
-			<img src={ item.url } alt={ item.alt } data-link={ item.link } data-id={ item.id } style={ { height: '100%', width: '100%' } } />
+			'wp-block-coblocks-gallery-carousel-thumbnail': true,
+		} ) } onClick={ () => changeStep( index ) } style={ { height: '80px', width: '100px' } } >
+			<img alt={ item.alt } data-id={ item.id } data-link={ item.link } src={ item.url } style={ { height: '100%', width: '100%' } } />
 		</button>
 	);
 };
 
 const withGalleryCarouselState = ( Component ) => {
 	return ( props ) => {
+		const { attributes, isSelected } = props;
+
 		const defaultGalleryState = {
-			isSelected: props.isSelected,
-			images: props.attributes.images,
-			showThumbnails: props.attributes.thumbnails,
-			gutter: props.attributes.gutter,
-			gutterMobile: props.attributes.gutterMobile,
+			gutter: attributes.gutter,
+			gutterMobile: attributes.gutterMobile,
+			images: attributes.images,
+			isSelected,
+			showThumbnails: attributes.thumbnails,
 		};
 
 		return (

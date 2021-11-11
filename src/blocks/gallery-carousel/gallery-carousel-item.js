@@ -1,5 +1,5 @@
-import { useContext, useMemo, useState } from '@wordpress/element';
 import { RichText } from '@wordpress/block-editor';
+import { useContext, useMemo, useState } from '@wordpress/element';
 
 import classnames from 'classnames';
 
@@ -68,25 +68,25 @@ const GalleryCarouselItem = ( {
 
 	const renderGalleryItem = useMemo( () => {
 		return (
-			<span tabIndex={ 0 } role="button" onClick={ handleImageClick } onKeyDown={ handleImageClick } >
+			<span onClick={ handleImageClick } onKeyDown={ handleImageClick } role="button" tabIndex={ 0 } >
 				<GalleryImage
-					url={ item.url }
 					alt={ item.alt }
+					aria-label={ ariaLabel }
 					id={ item.id }
-					marginRight={ true }
+					imageIndex={ index }
+					isSelected={ isSelected }
 					marginLeft={ true }
-					onSelect={ () => {
-						setSelectedImage( index );
-					} }
+					marginRight={ true }
 					onRemove={ () => {
 						handleRemoveImage( index );
 					} }
+					onSelect={ () => {
+						setSelectedImage( index );
+					} }
 					replaceImage={ handleReplaceImage }
-					isSelected={ isSelected }
-					aria-label={ ariaLabel }
 					supportsCaption={ false }
 					supportsMoving={ false }
-					imageIndex={ index }
+					url={ item.url }
 				/>
 			</span>
 		);
@@ -112,10 +112,10 @@ const GalleryCarouselItem = ( {
 	return (
 		<div
 			className={ galleryItemClasses }
+			role="button"
 			style={ {
 				position: 'relative',
 			} }
-			role="button"
 			tabIndex={ index }
 		>
 			{ renderGalleryItem }

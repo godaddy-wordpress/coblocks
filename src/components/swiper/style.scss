@@ -73,23 +73,7 @@
 }
 
 .nav-button {
-	&__prev {
-		background-color: var(--wp-admin-theme-color, #007cba);
-		border: none;
-
-		border-radius: 100%;
-		cursor: pointer;
-		height: 62px;
-		left: 0;
-		margin: 0 1%;
-		padding: 15px;
-		position: absolute;
-		top: 50%;
-
-		transform: translateY(-50%);
-		width: 62px;
-	}
-
+	&__prev,
 	&__next {
 		background-color: var(--wp-admin-theme-color, #007cba);
 		border: none;
@@ -99,11 +83,18 @@
 		margin: 0 1%;
 		padding: 15px;
 		position: absolute;
-		right: 0;
 		top: 50%;
 
 		transform: translateY(-50%);
 		width: 62px;
+	}
+
+	&__prev {
+		left: 0;
+	}
+
+	&__next {
+		right: 0;
 	}
 }
 

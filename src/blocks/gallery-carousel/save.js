@@ -5,13 +5,13 @@ import classnames from 'classnames';
 import { RichText } from '@wordpress/block-editor';
 
 /**
-	* Internal dependencies
-	*/
+ * Internal dependencies
+ */
 import { GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
-	* WordPress dependencies
-	*/
+ * WordPress dependencies
+ */
 import { __ } from '@wordpress/i18n';
 
 const save = ( props ) => {
@@ -71,8 +71,8 @@ const save = ( props ) => {
 		'has-carousel',
 		`has-carousel-${ gridSize }`,
 		{
-			'has-responsive-height': responsiveHeight,
 			'has-aligned-cells': alignCells,
+			'has-responsive-height': responsiveHeight,
 		}
 	);
 
@@ -83,33 +83,33 @@ const save = ( props ) => {
 	const uuid = '12345';
 
 	const swiperSizing = {
-		sml: 5,
-		med: 4,
 		lrg: 2,
+		med: 4,
+		sml: 5,
 		xlrg: 1,
 	};
 
 	const swiperOptions = {
-		autoPlaySpeed,
 		autoPlay,
-		pauseHover,
+		autoPlaySpeed,
 		draggable,
 		navigation: prevNextButtons,
-		uuid,
-		thumbnails,
 		pageDots,
+		pauseHover,
 		slidesPerView: swiperSizing[ gridSize ],
+		thumbnails,
+		uuid,
 	};
 
 	const galleryCarousel = (
 		<div aria-label={ __( `Carousel Gallery`, 'coblocks' ) } >
 			<div className={ innerClasses }>
 				<div className="coblocks-swiper-container">
-					<div className={ swiperClasses } id={ uuid } data-swiper={ JSON.stringify( swiperOptions ) } style={ responsiveHeight ? undefined : swiperStyles } >
+					<div className={ swiperClasses } data-swiper={ JSON.stringify( swiperOptions ) } id={ uuid } style={ responsiveHeight ? undefined : swiperStyles } >
 						<div className="swiper-wrapper" id="swiper-wrapper">
 							{ images.map( ( image, index ) => {
 								return (
-									<div key={ index } className="swiper-slide">
+									<div className="swiper-slide" key={ index }>
 										<div
 											className="coblocks-gallery--item"
 											role="button"
@@ -117,14 +117,14 @@ const save = ( props ) => {
 										>
 											<figure className={ figureClasses }>
 												<img
-													src={ image.url }
 													alt={ image.alt }
+													className={ image.id ? `wp-image-${ image.id }` : null }
 													data-id={ image.id }
 													data-link={ image.link }
-													className={ image.id ? `wp-image-${ image.id }` : null }
+													src={ image.url }
 												/>
 											</figure>
-											<RichText.Content tagName="figcaption" className={ captionClasses } value={ image.caption } />
+											<RichText.Content className={ captionClasses } tagName="figcaption" value={ image.caption } />
 										</div>
 									</div>
 								);
@@ -132,10 +132,10 @@ const save = ( props ) => {
 						</div>
 						{ prevNextButtons && (
 							<>
-								<button id={ `${ uuid }-prev` } className={ `nav-button__prev` } >
+								<button className={ `nav-button__prev` } id={ `${ uuid }-prev` } >
 									<svg className="icon" style={ { transform: 'rotate(180deg)' } } />
 								</button>
-								<button id={ `${ uuid }-next` } className={ `nav-button__next` } >
+								<button className={ `nav-button__next` } id={ `${ uuid }-next` } >
 									<svg className="icon" />
 								</button>
 							</>
@@ -145,12 +145,12 @@ const save = ( props ) => {
 						<div className="wp-block-coblocks-gallery-carousel-thumbnail-pagination">
 							{ images.map( ( item, index ) => {
 								return (
-									<div key={ index } id={ `wp-block-coblocks-gallery-carousel-thumbnail-${ index }` } className={ 'wp-block-coblocks-gallery-carousel-thumbnail' } style={ { height: '80px', width: '100px' } } >
+									<div className={ 'wp-block-coblocks-gallery-carousel-thumbnail' } id={ `wp-block-coblocks-gallery-carousel-thumbnail-${ index }` } key={ index } style={ { height: '80px', width: '100px' } } >
 										<img
-											src={ item.url }
 											alt={ item.alt }
-											data-link={ item.link }
 											data-id={ item.id }
+											data-link={ item.link }
+											src={ item.url }
 											style={ { height: '100%', width: '100%' } }
 										/>
 									</div>
@@ -162,7 +162,7 @@ const save = ( props ) => {
 						<div className="wp-block-coblocks-gallery-carousel-page-dot-pagination-container">
 							<div className="wp-block-coblocks-gallery-carousel-page-dot-wrapper" >
 								{ images.map( ( item, index ) => (
-									<div key={ index } id={ `wp-block-coblocks-gallery-carousel-page-dot-${ index }` } className="wp-block-coblocks-gallery-carousel-page-dot-pagination" />
+									<div className="wp-block-coblocks-gallery-carousel-page-dot-pagination" id={ `wp-block-coblocks-gallery-carousel-page-dot-${ index }` } key={ index } />
 								) ) }
 							</div>
 						</div>
