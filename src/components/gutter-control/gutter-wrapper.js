@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 /**
  * WordPress dependencies
  */
-import { cloneElement, isValidElement } from '@wordpress/element';
+import { cloneElement, isValidElement, useMemo } from '@wordpress/element';
 
 /**
  * Return an element Wrapped with Gutter Properties.
@@ -19,7 +19,7 @@ import { cloneElement, isValidElement } from '@wordpress/element';
  * @param {string}  obj.className    String representing block className string
  * @param {boolean} obj.condition    Whether to conditionally disable className application
  */
-function GutterWrapper( { children, gutter, gutterCustom, className, condition = true } ) {
+const GutterWrapper = ( { children, gutter, gutterCustom, className, condition = true } ) => {
 	if ( ! isValidElement( children ) ) {
 		return children;
 	}
@@ -29,7 +29,11 @@ function GutterWrapper( { children, gutter, gutterCustom, className, condition =
 	if ( typeof children.props.blockProps !== 'undefined' ) {
 		const attributes = {
 			blockProps: {
-				className: classnames( children.props.blockProps.className, { [ `has-${ gutter }-gutter` ]: gutter && !! condition } ),
+				...children.props.blockProps,
+				className: classnames(
+					children.props.blockProps.className,
+					{ [ `has-${ gutter }-gutter` ]: gutter && !! condition }
+				),
 			},
 		};
 
@@ -62,7 +66,7 @@ function GutterWrapper( { children, gutter, gutterCustom, className, condition =
 	}
 
 	return cloneElement( children, attributes );
-}
+};
 
 GutterWrapper.propTypes = {
 	gutter: PropTypes.string,

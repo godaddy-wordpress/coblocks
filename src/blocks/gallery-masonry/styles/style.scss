@@ -8,8 +8,12 @@ figure.wp-block-coblocks-gallery-masonry.masonry-grid {
 		margin: 0;
 	}
 
-	figure {
+	figure.wp-block-image {
 		position: relative;
+
+		&:nth-of-type(1) {
+			margin-top: 0 !important;
+		}
 
 		img {
 			border: 0;
