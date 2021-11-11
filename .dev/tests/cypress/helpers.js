@@ -396,7 +396,7 @@ export function setColorSetting( settingName, hexColor ) {
 			} else {
 				cy.get( Cypress.$( $subColorPanel ).closest( '.components-flex' ) )
 					.find( '.components-color-palette__custom-color' )
-					.click();
+					.click( { force: true } );
 				cy.get( '.components-color-picker' )
 					.find( '.components-button' )
 					.click();
@@ -406,7 +406,7 @@ export function setColorSetting( settingName, hexColor ) {
 					.type( hexColor.substring( 1 ) ); // remove the #
 				cy.get( Cypress.$( $subColorPanel ).closest( '.components-flex' ) )
 					.find( '.components-color-palette__custom-color' )
-					.click();
+					.click( { force: true } );
 			}
 		} );
 }
