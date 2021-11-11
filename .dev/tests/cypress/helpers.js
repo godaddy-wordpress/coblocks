@@ -385,7 +385,7 @@ export function setColorSetting( settingName, hexColor ) {
 		.contains( RegExp( settingName, 'i' ) )
 		.then( ( $subColorPanel ) => {
 			// < WP 5.9
-			if ( ! $subColorPanel.find( '.components-color-palette__custom-color' ) ) {
+			if ( Cypress.$( '.components-color-palette__custom-color' ).length === 0 ) {
 				cy.get( Cypress.$( $subColorPanel ).closest( '.components-base-control' ) )
 					.contains( /custom color/i )
 					.click();
