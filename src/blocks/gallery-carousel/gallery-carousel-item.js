@@ -112,6 +112,9 @@ const GalleryCarouselItem = ( {
 	return (
 		<div
 			className={ galleryItemClasses }
+			style={ {
+				position: 'relative',
+			} }
 			role="button"
 			tabIndex={ index }
 		>

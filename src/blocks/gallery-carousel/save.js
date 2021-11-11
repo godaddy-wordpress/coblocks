@@ -82,6 +82,13 @@ const save = ( props ) => {
 
 	const uuid = '12345';
 
+	const swiperSizing = {
+		sml: 5,
+		med: 4,
+		lrg: 2,
+		xlrg: 1,
+	};
+
 	const swiperOptions = {
 		autoPlaySpeed,
 		autoPlay,
@@ -91,6 +98,7 @@ const save = ( props ) => {
 		uuid,
 		thumbnails,
 		pageDots,
+		slidesPerView: swiperSizing[ gridSize ],
 	};
 
 	const galleryCarousel = (

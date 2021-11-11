@@ -45,14 +45,19 @@ const handleSwipe = ( newIndex ) => {
 			const swiperNextButton = document.getElementById( `${ parsedSwiperOptions.uuid }-next` );
 
 			const swiperConfig = {
-				centeredSlides: true,
+				centeredSlides: false,
 				freeMode: true,
 				longSwipesRatio: 0.8,
 				loop: true,
 				passiveListeners: true,
 				plugins: [],
 				touchable: false,
+				slidesPerView: 1,
 			};
+
+			if ( parsedSwiperOptions.slidesPerView ) {
+				swiperConfig.slidesPerView = parsedSwiperOptions.slidesPerView;
+			}
 
 			// add button navigation
 			if ( parsedSwiperOptions.navigation ) {
