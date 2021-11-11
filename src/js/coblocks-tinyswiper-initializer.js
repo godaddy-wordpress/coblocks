@@ -1,4 +1,3 @@
-// import jQuery from 'jquery';
 import TinySwiper from 'tiny-swiper';
 import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
 

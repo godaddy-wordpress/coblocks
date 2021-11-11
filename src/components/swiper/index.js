@@ -85,7 +85,7 @@ const Swiper = ( props ) => {
 					TinySwiperPluginNavigation,
 				],
 				loop: true,
-				centeredSlides: true,
+				centeredSlides: false,
 				passiveListeners: true,
 				longSwipesRatio: 0.8,
 				touchable: false,

@@ -161,15 +161,12 @@ const GalleryCarouselEdit = ( props ) => {
 	}, [ thumbnails, selectedImage, images ] );
 
 	const renderSwiper = useMemo( () => {
-		let slidesPerView = 1;
-
-		if ( gridSize === 'lrg' ) {
-			slidesPerView = 2;
-		} else if ( gridSize === 'med' ) {
-			slidesPerView = 3;
-		} else if ( gridSize === 'sml' ) {
-			slidesPerView = 4;
-		}
+		const swiperSizing = {
+			xlrg: 1,
+			lrg: 2,
+			med: 4,
+			sml: 5,
+		};
 
 		return (
 			<Swiper
@@ -181,7 +178,7 @@ const GalleryCarouselEdit = ( props ) => {
 				pauseHover={ autoPlay ? pauseHover : null }
 				Pagination={ renderPagination }
 				onSwipe={ handleSwipe }
-				slidesPerView={ slidesPerView }
+				slidesPerView={ swiperSizing[ gridSize ] }
 			>
 				{ ( {
 					index,
