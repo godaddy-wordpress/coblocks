@@ -394,7 +394,8 @@ export function setColorSetting( settingName, hexColor ) {
 					.click();
 			// WP 5.9
 			} else {
-				cy.get( '.components-color-palette__custom-color' ).first()
+				cy.get( Cypress.$( $subColorPanel ).closest( '.components-flex' ) )
+					.find( '.components-color-palette__custom-color' )
 					.click();
 				cy.get( '.components-color-picker' )
 					.find( '.components-button' )
@@ -402,8 +403,9 @@ export function setColorSetting( settingName, hexColor ) {
 				cy.get( '.components-color-picker' )
 					.find( '.components-input-control' )
 					.clear()
-					.type( hexColor );
-				cy.get( '.components-color-palette__custom-color' ).first()
+					.type( hexColor.substring( 1 ) ); // remove the #
+				cy.get( Cypress.$( $subColorPanel ).closest( '.components-flex' ) )
+					.find( '.components-color-palette__custom-color' )
 					.click();
 			}
 		} );
