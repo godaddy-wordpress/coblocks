@@ -123,6 +123,14 @@ function GalleryEdit( props ) {
 		} );
 	}, [ newImages ] );
 
+	useEffect( () => {
+		if ( attributes.gutterCustom === '0' ) {
+			setAttributes( {
+				radius: 0,
+			} );
+		}
+	}, [ attributes.gutterCustom ] );
+
 	const shortCodeImages = useShortCodeTransform( shortCodeTransforms );
 
 	useEffect( () => {
@@ -157,14 +165,9 @@ function GalleryEdit( props ) {
 			return existingBlock.attributes;
 		}
 
-		let newClassName;
-		if ( image.className && image.className !== '' ) {
-			newClassName = image.className;
-		} else {
-			newClassName = preferredStyle
-				? `is-style-${ preferredStyle }`
-				: undefined;
-		}
+		const newClassName = classnames( image.className, 'masonry-brick', {
+			[ `is-style-${ preferredStyle }` ]: preferredStyle,
+		} );
 
 		return {
 			...pickRelevantMediaFiles( image, sizeSlug ),
@@ -495,21 +498,6 @@ function GalleryEdit( props ) {
 						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
 					/>
 
-					{ /* <ToggleControl
-						checked={ !! captions }
-						help={ getCaptionsHelp }
-						label={ __( 'Captions', 'coblocks' ) }
-						onChange={ () => setAttributes( { captions: ! captions } ) }
-					/> */ }
-
-					{ /* { captions &&
-					<SelectControl
-						label={ __( 'Caption style', 'coblocks' ) }
-						onChange={ setCaptionStyleTo }
-						options={ captionOptions }
-						value={ captionStyle }
-					/>
-					} */ }
 				</PanelBody>
 			</InspectorControls>
 			{ noticeUI }

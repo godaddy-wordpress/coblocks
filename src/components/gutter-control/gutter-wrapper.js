@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 /**
  * WordPress dependencies
  */
-import { cloneElement, isValidElement, useMemo } from '@wordpress/element';
+import { cloneElement, isValidElement } from '@wordpress/element';
 
 /**
  * Return an element Wrapped with Gutter Properties.

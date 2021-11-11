@@ -50,14 +50,17 @@
 		arrowLeft.setAttribute( 'aria-label', leftLabel );
 
 		const imageSelector = [
-				`.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure img`,
-				`figure.has-lightbox.lightbox-${ lightboxIndex } > img`,
-				`.has-lightbox.lightbox-${ lightboxIndex } > figure[class^="align"] img`,
-			].join( ', ' ),
+			`.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure img`,
+			`figure.has-lightbox.lightbox-${ lightboxIndex } > img`,
+			`.has-lightbox.lightbox-${ lightboxIndex } > figure[class^="align"] img`,
+			`.masonry-grid.has-lightbox.lightbox-${ lightboxIndex } figure img`,
+		].join( ', ' );
 
-			captionSelector = [
-				`.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure figcaption`,
-			].join( ', ' );
+		const captionSelector = [
+			`.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure figcaption`,
+			`.masonry-grid.has-lightbox.lightbox-${ lightboxIndex } figure figcaption`,
+
+		].join( ', ' );
 
 		const images = document.querySelectorAll( imageSelector );
 		const captions = document.querySelectorAll( captionSelector );

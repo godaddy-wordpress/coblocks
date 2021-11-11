@@ -36,7 +36,7 @@ export const Gallery = ( props ) => {
 	const { children, ...innerBlocksProps } = useInnerBlocksProps( blockProps, {
 		__experimentalLayout: { alignments: [], type: 'default' },
 		allowedBlocks,
-		orientation: 'horizontal',
+		orientation: 'vertical',
 		renderAppender: false,
 	} );
 
