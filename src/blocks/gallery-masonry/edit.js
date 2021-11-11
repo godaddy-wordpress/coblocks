@@ -243,6 +243,18 @@ function GalleryEdit( props ) {
 			)
 			: innerBlockImages;
 
+		const newCaptions = selectedImages?.reduce( ( previous, image ) => {
+			const previousReturnedObject = !! previous?.mime ? {} : previous;
+			return { ...previousReturnedObject, [`${ image.id }`]: image.caption }
+		} );
+
+		existingImageBlocks?.forEach( (image) => {
+			const compareCaption = newCaptions[image.attributes.id];
+			if ( image.attributes.caption !== compareCaption ) {
+				image.attributes.caption = compareCaption;
+			}
+		} )
+
 		const newImageList = processedImages.filter(
 			( img ) =>
 				! existingImageBlocks.find(

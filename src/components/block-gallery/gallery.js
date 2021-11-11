@@ -72,9 +72,17 @@ export const Gallery = ( props ) => {
 				}
 			) }
 		>
-			<View className={ classnames( wrapperClass ) } >
-				{ children }
-			</View>
+			{ ( () => {
+				/**
+				 * Conditionally wrap the children image blocks
+				 */
+				if ( ! wrapperClass ) {
+					return ( { children } );
+				}
+				return ( <View className={ classnames( wrapperClass ) } >
+					{ children }
+				</View> );
+			} )() }
 			<View
 				className="gallery-media-placeholder-wrapper"
 				onClick={ removeCaptionFocus }
