@@ -6,15 +6,15 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
+import metadata from './block.json';
 import { BackgroundAttributes, BackgroundClasses, BackgroundStyles } from '../../components/background';
 import { GalleryAttributes, GalleryClasses } from '../../components/block-gallery/shared';
-import metadata from './block.json';
 
 /**
  * WordPress dependencies
  */
-import { getColorClassName, RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
+import { getColorClassName, RichText } from '@wordpress/block-editor';
 
 const deprecated =
 [ {
@@ -88,22 +88,24 @@ const deprecated =
 		);
 
 		const flickityOptions = {
-			autoPlay: autoPlay && autoPlaySpeed ? parseFloat( autoPlaySpeed ) : false,
-			draggable,
-			pageDots,
-			prevNextButtons,
-			wrapAround: true,
-			cellAlign: alignCells ? 'left' : 'center',
-			pauseAutoPlayOnHover: pauseHover,
-			freeScroll,
 			arrowShape: {
 				x0: 10,
-				x1: 60, y1: 50,
-				x2: 65, y2: 45,
+				x1: 60,
+				x2: 65,
 				x3: 20,
+				y1: 50,
+				y2: 45,
 			},
-			thumbnails,
+			autoPlay: autoPlay && autoPlaySpeed ? parseFloat( autoPlaySpeed ) : false,
+			cellAlign: alignCells ? 'left' : 'center',
+			draggable,
+			freeScroll,
+			pageDots,
+			pauseAutoPlayOnHover: pauseHover,
+			prevNextButtons,
 			responsiveHeight,
+			thumbnails,
+			wrapAround: true,
 		};
 
 		const captionClasses = classnames(
@@ -134,12 +136,12 @@ const deprecated =
 		const navOptions = {
 			asNavFor: `.${ navForClass }`,
 			autoPlay: false,
-			contain: true,
 			cellAlign: 'left',
-			pageDots: false,
-			thumbnails: false,
+			contain: true,
 			draggable,
+			pageDots: false,
 			prevNextButtons: false,
+			thumbnails: false,
 			wrapAround: false,
 		};
 
@@ -148,14 +150,14 @@ const deprecated =
 				<div className={ innerClasses }>
 					<div
 						className={ flickityClasses }
-						style={ responsiveHeight ? undefined : flickityStyles }
 						data-flickity={ JSON.stringify( flickityOptions ) }
+						style={ responsiveHeight ? undefined : flickityStyles }
 					>
 						{ images.map( ( image ) => {
-							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
+							const img = <img alt={ image.alt } className={ image.id ? `wp-image-${ image.id }` : null } data-id={ image.id } data-link={ image.link } src={ image.url } />;
 
 							return (
-								<div key={ image.id || image.url } className="coblocks-gallery--item">
+								<div className="coblocks-gallery--item" key={ image.id || image.url }>
 									<figure className={ figureClasses }>
 										{ img }
 									</figure>
@@ -170,9 +172,9 @@ const deprecated =
 								data-flickity={ JSON.stringify( navOptions ) }
 							>
 								{ images.map( ( image ) => {
-									const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } />;
+									const img = <img alt={ image.alt } data-id={ image.id } data-link={ image.link } src={ image.url } />;
 									return (
-										<div key={ image.id || image.url } className="coblocks--item-thumbnail">
+										<div className="coblocks--item-thumbnail" key={ image.id || image.url }>
 											<figure className={ navFigureClasses }>
 												{ img }
 											</figure>
@@ -182,7 +184,7 @@ const deprecated =
 							</div> ) : null
 					}
 				</div>
-				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } /> }
+				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content className={ captionClasses } tagName="figcaption" value={ primaryCaption } /> }
 			</div>
 		);
 	},
@@ -229,13 +231,13 @@ const deprecated =
 
 		const galleryClassesDeprecated = classnames(
 			'coblocks-gallery', {
-				'has-no-alignment': ! align,
-				[ `has-border-radius-${ radius }` ]: radius > 0,
-				[ `has-filter-${ filter }` ]: filter !== 'none',
-				[ `has-caption-style-${ captionStyle }` ]: captionStyle !== undefined,
-				'has-caption-color': captionColorClass || customCaptionColor,
 				captionColorClass,
 				[ `has-background-border-radius-${ attributes.backgroundRadius }` ]: attributes.backgroundRadius > 0,
+				[ `has-border-radius-${ radius }` ]: radius > 0,
+				'has-caption-color': captionColorClass || customCaptionColor,
+				[ `has-caption-style-${ captionStyle }` ]: captionStyle !== undefined,
+				[ `has-filter-${ filter }` ]: filter !== 'none',
+				'has-no-alignment': ! align,
 				'has-padding': backgroundPadding > 0,
 				[ `has-padding-${ backgroundPadding }` ]: backgroundPadding > 0,
 				[ `has-padding-mobile-${ backgroundPaddingMobile }` ]: backgroundPaddingMobile > 0,
@@ -284,22 +286,24 @@ const deprecated =
 		);
 
 		const flickityOptions = {
-			autoPlay: autoPlay && autoPlaySpeed ? parseFloat( autoPlaySpeed ) : false,
-			draggable,
-			pageDots,
-			prevNextButtons,
-			wrapAround: true,
-			cellAlign: alignCells ? 'left' : 'center',
-			pauseAutoPlayOnHover: pauseHover,
-			freeScroll,
 			arrowShape: {
 				x0: 10,
-				x1: 60, y1: 50,
-				x2: 65, y2: 45,
+				x1: 60,
+				x2: 65,
 				x3: 20,
+				y1: 50,
+				y2: 45,
 			},
-			thumbnails,
+			autoPlay: autoPlay && autoPlaySpeed ? parseFloat( autoPlaySpeed ) : false,
+			cellAlign: alignCells ? 'left' : 'center',
+			draggable,
+			freeScroll,
+			pageDots,
+			pauseAutoPlayOnHover: pauseHover,
+			prevNextButtons,
 			responsiveHeight,
+			thumbnails,
+			wrapAround: true,
 		};
 
 		const captionClasses = classnames(
@@ -334,12 +338,12 @@ const deprecated =
 		const navOptions = {
 			asNavFor: '.has-carousel',
 			autoPlay: false,
-			contain: true,
 			cellAlign: 'left',
-			pageDots: false,
-			thumbnails: false,
+			contain: true,
 			draggable,
+			pageDots: false,
 			prevNextButtons: false,
+			thumbnails: false,
 			wrapAround: false,
 		};
 
@@ -355,14 +359,14 @@ const deprecated =
 				>
 					<div
 						className={ flickityClasses }
-						style={ responsiveHeight ? undefined : flickityStyles }
 						data-flickity={ JSON.stringify( flickityOptions ) }
+						style={ responsiveHeight ? undefined : flickityStyles }
 					>
 						{ images.map( ( image ) => {
-							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
+							const img = <img alt={ image.alt } className={ image.id ? `wp-image-${ image.id }` : null } data-id={ image.id } data-link={ image.link } src={ image.url } />;
 
 							return (
-								<div key={ image.id || image.url } className="coblocks-gallery--item">
+								<div className="coblocks-gallery--item" key={ image.id || image.url }>
 									<figure className={ figureClasses }>
 										{ img }
 									</figure>
@@ -377,9 +381,9 @@ const deprecated =
 								data-flickity={ JSON.stringify( navOptions ) }
 							>
 								{ images.map( ( image ) => {
-									const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } />;
+									const img = <img alt={ image.alt } data-id={ image.id } data-link={ image.link } src={ image.url } />;
 									return (
-										<div key={ image.id || image.url } className="coblocks--item-thumbnail">
+										<div className="coblocks--item-thumbnail" key={ image.id || image.url }>
 											<figure className={ navFigureClasses }>
 												{ img }
 											</figure>
@@ -389,7 +393,7 @@ const deprecated =
 							</div> ) : null
 					}
 				</div>
-				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } style={ captionStyles } /> }
+				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content className={ captionClasses } style={ captionStyles } tagName="figcaption" value={ primaryCaption } /> }
 			</div>
 		);
 	},
@@ -456,22 +460,25 @@ const deprecated =
 		);
 
 		const flickityOptions = {
-			autoPlay: autoPlay && autoPlaySpeed ? parseFloat( autoPlaySpeed ) : false,
-			draggable,
-			pageDots,
-			prevNextButtons,
-			wrapAround: true,
-			cellAlign: alignCells ? 'left' : 'center',
-			pauseAutoPlayOnHover: pauseHover,
-			freeScroll,
 			arrowShape: {
 				x0: 10,
-				x1: 60, y1: 50,
-				x2: 65, y2: 45,
+				x1: 60,
+				x2: 65,
 				x3: 20,
+				y1: 50,
+				y2: 45,
+
 			},
-			thumbnails,
+			autoPlay: autoPlay && autoPlaySpeed ? parseFloat( autoPlaySpeed ) : false,
+			cellAlign: alignCells ? 'left' : 'center',
+			draggable,
+			freeScroll,
+			pageDots,
+			pauseAutoPlayOnHover: pauseHover,
+			prevNextButtons,
 			responsiveHeight,
+			thumbnails,
+			wrapAround: true,
 		};
 
 		const captionColorClass = getColorClassName( 'color', captionColor );
@@ -497,14 +504,14 @@ const deprecated =
 				>
 					<div
 						className={ flickityClasses }
-						style={ flickityStyles }
 						data-flickity={ JSON.stringify( flickityOptions ) }
+						style={ flickityStyles }
 					>
 						{ images.map( ( image ) => {
-							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
+							const img = <img alt={ image.alt } className={ image.id ? `wp-image-${ image.id }` : null } data-id={ image.id } data-link={ image.link } src={ image.url } />;
 
 							return (
-								<div key={ image.id || image.url } className="coblocks-gallery--item">
+								<div className="coblocks-gallery--item" key={ image.id || image.url }>
 									<figure className={ figureClasses }>
 										{ img }
 									</figure>
@@ -513,7 +520,7 @@ const deprecated =
 						} ) }
 					</div>
 				</div>
-				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } style={ captionStyles } /> }
+				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content className={ captionClasses } style={ captionStyles } tagName="figcaption" value={ primaryCaption } /> }
 			</div>
 		);
 	},
@@ -576,17 +583,19 @@ const deprecated =
 		);
 
 		const flickityOptions = {
+			arrowShape: {
+				x0: 10,
+				x1: 60,
+				x2: 65,
+				x3: 20,
+				y1: 50,
+				y2: 45,
+			},
 			autoPlay: autoPlay && autoPlaySpeed ? parseFloat( autoPlaySpeed ) : false,
 			draggable,
 			pageDots,
 			prevNextButtons,
 			wrapAround: true,
-			arrowShape: {
-				x0: 10,
-				x1: 60, y1: 50,
-				x2: 65, y2: 45,
-				x3: 20,
-			},
 		};
 
 		const captionColorClass = getColorClassName( 'color', captionColor );
@@ -612,14 +621,14 @@ const deprecated =
 				>
 					<div
 						className={ flickityClasses }
-						style={ flickityStyles }
 						data-flickity={ JSON.stringify( flickityOptions ) }
+						style={ flickityStyles }
 					>
 						{ images.map( ( image ) => {
-							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
+							const img = <img alt={ image.alt } className={ image.id ? `wp-image-${ image.id }` : null } data-id={ image.id } data-link={ image.link } src={ image.url } />;
 
 							return (
-								<div key={ image.id || image.url } className="coblocks-gallery--item">
+								<div className="coblocks-gallery--item" key={ image.id || image.url }>
 									<figure className={ figureClasses }>
 										{ img }
 									</figure>
@@ -628,7 +637,7 @@ const deprecated =
 						} ) }
 					</div>
 				</div>
-				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } style={ captionStyles } /> }
+				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content className={ captionClasses } style={ captionStyles } tagName="figcaption" value={ primaryCaption } /> }
 			</div>
 		);
 	},
@@ -704,22 +713,24 @@ const deprecated =
 		);
 
 		const flickityOptions = {
-			autoPlay: autoPlay && autoPlaySpeed ? parseFloat( autoPlaySpeed ) : false,
-			draggable,
-			pageDots,
-			prevNextButtons,
-			wrapAround: true,
-			cellAlign: alignCells ? 'left' : 'center',
-			pauseAutoPlayOnHover: pauseHover,
-			freeScroll,
 			arrowShape: {
 				x0: 10,
-				x1: 60, y1: 50,
-				x2: 65, y2: 45,
+				x1: 60,
+				x2: 65,
 				x3: 20,
+				y1: 50,
+				y2: 45,
 			},
-			thumbnails,
+			autoPlay: autoPlay && autoPlaySpeed ? parseFloat( autoPlaySpeed ) : false,
+			cellAlign: alignCells ? 'left' : 'center',
+			draggable,
+			freeScroll,
+			pageDots,
+			pauseAutoPlayOnHover: pauseHover,
+			prevNextButtons,
 			responsiveHeight,
+			thumbnails,
+			wrapAround: true,
 		};
 
 		const captionClasses = classnames(
@@ -750,12 +761,12 @@ const deprecated =
 		const navOptions = {
 			asNavFor: `.${ navForClass }`,
 			autoPlay: false,
-			contain: true,
 			cellAlign: 'left',
-			pageDots: false,
-			thumbnails: false,
+			contain: true,
 			draggable,
+			pageDots: false,
 			prevNextButtons: false,
+			thumbnails: false,
 			wrapAround: false,
 		};
 
@@ -765,14 +776,14 @@ const deprecated =
 				<div className={ innerClasses }>
 					<div
 						className={ flickityClasses }
-						style={ responsiveHeight ? undefined : flickityStyles }
 						data-flickity={ JSON.stringify( flickityOptions ) }
+						style={ responsiveHeight ? undefined : flickityStyles }
 					>
 						{ images.map( ( image ) => {
-							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
+							const img = <img alt={ image.alt } className={ image.id ? `wp-image-${ image.id }` : null } data-id={ image.id } data-link={ image.link } src={ image.url } />;
 
 							return (
-								<div key={ image.id || image.url } className="coblocks-gallery--item">
+								<div className="coblocks-gallery--item" key={ image.id || image.url }>
 									<figure className={ figureClasses }>
 										{ img }
 									</figure>
@@ -787,9 +798,9 @@ const deprecated =
 								data-flickity={ JSON.stringify( navOptions ) }
 							>
 								{ images.map( ( image ) => {
-									const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } />;
+									const img = <img alt={ image.alt } data-id={ image.id } data-link={ image.link } src={ image.url } />;
 									return (
-										<div key={ image.id || image.url } className="coblocks--item-thumbnail">
+										<div className="coblocks--item-thumbnail" key={ image.id || image.url }>
 											<figure className={ navFigureClasses }>
 												{ img }
 											</figure>
@@ -799,7 +810,7 @@ const deprecated =
 							</div> ) : null
 					}
 				</div>
-				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } /> }
+				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content className={ captionClasses } tagName="figcaption" value={ primaryCaption } /> }
 			</div>
 		);
 	},
