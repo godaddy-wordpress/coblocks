@@ -228,18 +228,6 @@ export function clearBlocks() {
 }
 
 /**
- * Attempts to retrieve the block name from the current spec file being run
- * eg: accordion.js => Accordion
- */
-export function getBlockName() {
-	const specFile = Cypress.spec.name;
-	const fileBase = capitalize( specFile.split( '/' ).pop().replace( '.cypress.js', '' ).replace( '-', ' ' ) );
-	const blockName = fileBase.charAt( 0 ).toUpperCase() + fileBase.slice( 1 );
-
-	return blockName;
-}
-
-/**
  * Attempts to retrieve the block slug from the current spec file being run
  * eg: accordion.js => accordion
  */
@@ -402,7 +390,7 @@ export function setColorSetting( settingName, hexColor ) {
 					.click( { force: true } );
 				cy.get( '.components-color-picker' )
 					.find( '.components-button' )
-					.click();
+					.click( { force: true } );
 				cy.get( '.components-color-picker' )
 					.find( '.components-input-control' )
 					.clear()

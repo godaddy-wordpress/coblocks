@@ -125,7 +125,9 @@ describe( 'Test CoBlocks Icon Block', function() {
 
 		helpers.openSettingsPanel( 'Color settings' );
 
-		cy.get( '.components-base-control__field' )
+		helpers.setColorSetting( 'background', '#55e7ff' );
+		helpers.setColorSetting( 'icon', '#e60099' );
+		/*cy.get( '.components-base-control__field' )
 			.contains( /icon color/i )
 			.then( ( $backgroundPanel ) => {
 				cy.get( Cypress.$( $backgroundPanel ).parents( '.components-base-control__field' ) )
@@ -151,7 +153,7 @@ describe( 'Test CoBlocks Icon Block', function() {
 				cy.get( Cypress.$( $backgroundPanel ).parents( '.components-base-control__field' ) )
 					.contains( /custom color/i )
 					.click();
-			} );
+			} );*/
 
 		helpers.savePage();
 
