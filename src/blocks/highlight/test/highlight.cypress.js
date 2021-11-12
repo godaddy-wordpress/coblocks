@@ -47,7 +47,7 @@ describe( 'Block: Highlight', function() {
 			.contains( RegExp( 'Highlight settings', 'i' ) )
 			.then( ( $settingSection ) => {
 				// >= WP 5.9
-				if ( Cypress.$( '.components-custom-select-control__button' ).length > 0 ) {
+				if ( Cypress.$( '[aria-label="Set custom size"]' ).length > 0 ) {
 					cy.get( '[aria-label="Set custom size"]' )
 						.click();
 					cy.get( '.components-input-control__input' ).focus().type( '30' );
