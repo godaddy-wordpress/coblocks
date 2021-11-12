@@ -1224,10 +1224,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@godaddy-wordpress/coblocks-icons@1.8.1":
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/coblocks-icons/-/coblocks-icons-1.8.1.tgz#6c0b70729d2501f4ba7e159ddbfa86f58911dd5b"
-  integrity sha512-udzuMwPtaSVuME0Xs/7RHeY4c+7SjxiqwYM8sZ75U3KTFK4F6qKXLqABFTZV8zdeMZSdQjgNQWHlwPa3rbcXzA==
+"@godaddy-wordpress/coblocks-icons@1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/coblocks-icons/-/coblocks-icons-1.9.0.tgz#23b4d337675151f7f1f727df9e668596e6a2e30f"
+  integrity sha512-ADG6120lpFWZduss0N6PJMojivvOY+7eob3YP6//0m/EGqFRwqViw7s635CNXOH1mRrAR0woEanV7LyOrZWlcA==
   dependencies:
     "@wordpress/primitives" "^1.7.0"
 
