@@ -1,7 +1,12 @@
 /**
- * WordPress dependencies.
+ * External dependencies.
  */
 import { chunk } from 'lodash';
+
+/**
+ * WordPress dependencies.
+ */
+import { __ } from '@wordpress/i18n';
 
 export default function save( { attributes, className } ) {
 	const { align } = attributes;
@@ -29,7 +34,9 @@ export default function save( { attributes, className } ) {
 	const imageChunks = chunk( attributes.images, count );
 
 	return (
-		<div className={ className }>
+		<div
+			aria-label={ __( `List of logos`, 'coblocks' ) }
+			className={ className }>
 			{ Object.keys( imageChunks ).map( ( keyOuter ) => {
 				const images = imageChunks[ keyOuter ];
 
@@ -37,13 +44,15 @@ export default function save( { attributes, className } ) {
 					<div className="wp-block-coblocks-logos__row" key={ 'wrapper-' + keyOuter }>
 						{ images.map( ( img, index ) => {
 							return (
-								<div style={ { width: img.width || ( 100 / images.length ) + '%' } } key={ 'logo-' + keyOuter }>
+								<div
+									key={ 'logo-' + keyOuter }
+									style={ { width: img.width || ( 100 / images.length ) + '%' } }>
 									<img
-										key={ 'img-' + index }
-										src={ img.url }
 										alt={ img.alt }
 										data-id={ img.id }
 										data-width={ img.width || ( 100 / images.length ) + '%' }
+										key={ 'img-' + index }
+										src={ img.url }
 									/>
 								</div>
 							);
