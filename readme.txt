@@ -111,6 +111,11 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+2.19.1 / 2021-11-15
+===================
+### Bug Fixes
+  * Fix Row block deprecation bug [#2153](https://github.com/godaddy-wordpress/coblocks/pull/2153)
+
 2.19.0 / 2021-11-10
 ===================
 ### Enhancements
