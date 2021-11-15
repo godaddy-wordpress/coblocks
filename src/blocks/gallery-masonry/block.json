@@ -12,52 +12,40 @@
 			"type": "array",
 			"default": [],
 			"source": "query",
-			"selector": ".blocks-gallery-item",
+			"selector": ".coblocks-gallery--item",
 			"query": {
 				"url": {
-					"type": "string",
 					"source": "attribute",
 					"selector": "img",
 					"attribute": "src"
 				},
-				"fullUrl": {
-					"type": "string",
-					"source": "attribute",
-					"selector": "img",
-					"attribute": "data-full-url"
-				},
 				"link": {
-					"type": "string",
 					"source": "attribute",
 					"selector": "img",
 					"attribute": "data-link"
 				},
+				"imgLink": {
+					"source": "attribute",
+					"selector": "img",
+					"attribute": "data-imglink"
+				},
 				"alt": {
-					"type": "string",
 					"source": "attribute",
 					"selector": "img",
 					"attribute": "alt",
 					"default": ""
 				},
 				"id": {
-					"type": "string",
 					"source": "attribute",
 					"selector": "img",
 					"attribute": "data-id"
 				},
 				"caption": {
-					"type": "string",
-					"source": "html",
-					"selector": ".blocks-gallery-item__caption"
+					"type": "array",
+					"source": "children",
+					"selector": "figcaption"
 				}
 			}
-		},
-		"ids": {
-			"type": "array",
-			"items": {
-				"type": "number"
-			},
-			"default": []
 		},
 		"shortCodeTransforms": {
 			"type": "array",

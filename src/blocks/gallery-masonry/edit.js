@@ -23,7 +23,6 @@ import { useDispatch, useSelect } from '@wordpress/data';
 /**
  * Internal dependencies
  */
-import Controls from './controls';
 import Gallery from '../../components/block-gallery/gallery';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 import { pickRelevantMediaFiles } from '../../components/block-gallery/shared-helpers';
@@ -112,6 +111,16 @@ function GalleryEdit( props ) {
 	const imageData = useGetMedia( innerBlockImages );
 
 	const newImages = useGetNewImages( images, imageData );
+
+	useEffect( () => {
+		const changedAttributes = {};
+		const blocks = [];
+		getBlock( clientId ).innerBlocks.forEach( ( block ) => {
+			blocks.push( block.clientId );
+			changedAttributes[ block.clientId ] = { className: 'masonry-brick' };
+		} );
+		updateBlockAttributes( blocks, changedAttributes, true );
+	}, [] );
 
 	useEffect( () => {
 		newImages?.forEach( ( newImage ) => {
@@ -445,7 +454,6 @@ function GalleryEdit( props ) {
 
 	return (
 		<>
-			<Controls { ...props } />
 			<InspectorControls>
 				<PanelBody title={ __( 'Gallery settings' ) }>
 					<ToggleControl

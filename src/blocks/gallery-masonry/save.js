@@ -25,14 +25,14 @@ export default function saveWithInnerBlocks( { attributes } ) {
 		<GutterWrapper { ...attributes }>
 			<figure { ...useBlockProps.save( { className } ) }>
 				<InnerBlocks.Content />
-				{ ! RichText.isEmpty( caption ) && (
-					<RichText.Content
-						className="blocks-gallery-caption"
-						tagName="figcaption"
-						value={ caption }
-					/>
-				) }
 			</figure>
+			{ ! RichText.isEmpty( caption ) && (
+				<RichText.Content
+					className="blocks-gallery-caption"
+					tagName="figcaption"
+					value={ caption }
+				/>
+			) }
 		</GutterWrapper>
 
 	);

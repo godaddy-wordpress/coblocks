@@ -59,7 +59,6 @@
 		const captionSelector = [
 			`.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure figcaption`,
 			`.masonry-grid.has-lightbox.lightbox-${ lightboxIndex } figure figcaption`,
-
 		].join( ', ' );
 
 		const images = document.querySelectorAll( imageSelector );

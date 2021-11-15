@@ -13,7 +13,8 @@ const variations = {
 	target: [ '', '_blank', '_self', '_parent' ],
 	rel: [ '', 'alternate', 'author', 'preload' ],
 	align: [ '', 'wide', 'full', 'left', 'center', 'right' ],
-	gutter: [ 0, 10, 100 ],
+	gutter: [ undefined, 'none', 'small', 'medium', 'large' ],
+	// gutter: [ 0, 10, 100 ],
 	gutterMobile: [ 0, 10, 100 ],
 	radius: [ undefined, 0, 20 ],
 	shadow: [ undefined, 'none', 'sml', 'med', 'lrg', 'xlrg' ],
@@ -46,7 +47,6 @@ const variations = {
 	className: [ undefined, '', 'random classes' ],
 	noBottomMargin: [ undefined, true, false ],
 	noTopMargin: [ undefined, true, false ],
-	gridSize: [ undefined, 'sml', 'med', 'lrg', 'xlrg' ],
 };
 
 helpers.testDeprecatedBlockVariations( name, settings, variations );

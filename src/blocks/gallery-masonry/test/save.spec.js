@@ -179,45 +179,14 @@ describe( name, () => {
 		expect( serializedBlock ).toContain( 'has-border-radius-10' );
 	} );
 
-	it( 'should have className \'has-gutter\' with gutter set.', () => {
-		block.attributes = { ...block.attributes, gutter: 0, gutterMobile: 0 };
-		serializedBlock = serialize( block );
+	[ 'small', 'medium', 'large' ].forEach( ( gutter ) => {
+		it( `should have className 'has-${gutter}-gutter' with gutter set to '${gutter}'.`, () => {
+			block.attributes = { ...block.attributes, gutter };
 
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).not.toContain( 'has-gutter' );
+			serializedBlock = serialize( block );
 
-		block.attributes = { ...block.attributes, gutter: 20, gutterMobile: 0 };
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'has-gutter' );
-	} );
-
-	it( 'should have className \'has-gutter-30\' with gutter set to 30.', () => {
-		block.attributes = { ...block.attributes, gutter: 0, gutterMobile: 0 };
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).not.toContain( 'has-gutter-30' );
-
-		block.attributes = { ...block.attributes, gutter: 30, gutterMobile: 0 };
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'has-gutter-30' );
-	} );
-
-	it( 'should have className \'has-gutter-mobile-30\' with mobile gutter set to 30.', () => {
-		block.attributes = { ...block.attributes, gutter: 0, gutterMobile: 0 };
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).not.toContain( 'has-gutter-mobile-30' );
-
-		block.attributes = { ...block.attributes, gutter: 0, gutterMobile: 30 };
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'has-gutter-mobile-30' );
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( `has-${ gutter }-gutter` );
+		} );
 	} );
 } );

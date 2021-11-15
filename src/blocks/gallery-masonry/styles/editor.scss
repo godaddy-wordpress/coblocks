@@ -75,6 +75,15 @@ figure.wp-block-coblocks-gallery-masonry {
 					display: inline;
 				}
 			}
+
+			// Fix needed for pre 5.9 WordPress
+			.components-resizable-box__container {
+				display:block;
+
+				.components-resizable-box__handle {
+					display:none;
+				}
+			}
 		}
 
 		/* Masonry on tablets */
