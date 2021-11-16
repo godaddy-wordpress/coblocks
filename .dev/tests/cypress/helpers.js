@@ -165,7 +165,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 export function savePage() {
 	cy.get( '.edit-post-header__settings button.is-primary' ).click();
 
-	cy.get( '.components-editor-notices__snackbar', { timeout: 10000 } ).should( 'not.be.empty' );
+	cy.get( '.components-editor-notices__snackbar', { timeout: 30000 } ).should( 'not.be.empty' );
 
 	// Reload the page to ensure that we're not hitting any block errors
 	cy.reload();
