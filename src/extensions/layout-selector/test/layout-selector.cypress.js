@@ -58,8 +58,8 @@ describe( 'Extension: Layout Selector', () => {
 	it( 'inserts layout into page', () => {
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(1)' ).find( 'a' ).click();
 
-		// WP 5.9 - layout is loaded but did not pick up the element
-		//cy.get( '[data-type="core/paragraph"]' ); // Ensure layout is loaded
+		// TODO : WP 5.9 - layout is loaded but did not pick up the element
+		cy.get( '[data-type="core/paragraph"]' ); // Ensure layout is loaded
 
 		cy.get( '.coblocks-layout-selector__layout' ).first().click();
 
