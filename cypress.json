@@ -1,6 +1,6 @@
 {
   "chromeWebSecurity": false,
-  "defaultCommandTimeout": 120000,
+  "defaultCommandTimeout": 180000,
   "fixturesFolder": "languages",
   "pluginsFile": ".dev/tests/cypress/plugins/index.js",
   "supportFile": ".dev/tests/cypress/support/commands.js",
@@ -19,5 +19,5 @@
     "runMode": 0,
     "openMode": 0
   },
-  "pageLoadTimeout": 120000
+  "pageLoadTimeout": 180000
 }
