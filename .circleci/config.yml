@@ -604,7 +604,7 @@ jobs:
 
   pr_artifact_comment:
     docker:
-      - image: circleci/php:7.3-node
+      - image: circleci/php:7.4-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
