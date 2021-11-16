@@ -584,11 +584,11 @@ jobs:
               COBLOCKS_VERSION_LINE=$(awk '/\* Version:/' ./build/coblocks/class-coblocks.php)
               VER_NUMBER=$(echo "$COBLOCKS_VERSION_LINE" | tr -dc '0-9.')
               COBLOCKS_COMMIT_HASH=$(git rev-parse --verify HEAD | head -c 7)
-              sed -i -e "s/${VER_NUMBER}/${VER_NUMBER}-${CIRCLE_PR_NUMBER}+${COBLOCKS_COMMIT_HASH}/g" build/coblocks/class-coblocks.php
+              sed -i -e "s/${VER_NUMBER}/${VER_NUMBER}-${CIRCLE_PULL_REQUEST##*/}+${COBLOCKS_COMMIT_HASH}/g" build/coblocks/class-coblocks.php
             fi
             npx grunt compress
             if [ "$CIRCLE_JOB" != 'master' ]; then
-              mv build/coblocks-*.zip "build/coblocks-${CIRCLE_PR_NUMBER}.zip"
+              mv build/coblocks-*.zip "build/coblocks-${CIRCLE_PULL_REQUEST##*/}.zip"
             fi
             mv build/*.zip /tmp/artifacts
       - store_artifacts:
