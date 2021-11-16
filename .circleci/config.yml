@@ -586,7 +586,6 @@ jobs:
               COBLOCKS_COMMIT_HASH=$(git rev-parse --verify HEAD | head -c 7)
               sed -i -e "s/${VER_NUMBER}/${VER_NUMBER}-${CIRCLE_PULL_REQUEST##*/}+${COBLOCKS_COMMIT_HASH}/g" build/coblocks/class-coblocks.php
             fi
-            npx grunt compress
             if [ "$CIRCLE_JOB" == 'master' ]; then
               zip -r "coblocks-v${VER_NUMBER}.zip" coblocks
             else
