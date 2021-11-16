@@ -54,6 +54,40 @@ const deprecated = [
 			const {
 				contentAlign,
 				count,
+				gutter,
+			} = attributes;
+
+			const classes = classnames(
+				{
+					[ `has-text-align-${ contentAlign }` ]: contentAlign,
+				}
+			);
+
+			const innerClasses = classnames( 'wp-block-coblocks-pricing-table__inner',
+				{
+					'has-columns': count > 1,
+					[ `has-${ count }-columns` ]: count,
+					'has-responsive-columns': count > 1,
+					[ `has-${ gutter }-gutter` ]: gutter,
+				}
+			);
+
+			return (
+
+				<div className={ classes }>
+					<div className={ innerClasses }>
+						<InnerBlocks.Content />
+					</div>
+				</div>
+			);
+		},
+	},
+	{
+		attributes: currentBlock.attributes,
+		save( { attributes } ) {
+			const {
+				contentAlign,
+				count,
 			} = attributes;
 
 			const classes = classnames(
