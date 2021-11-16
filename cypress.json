@@ -1,6 +1,6 @@
 {
   "chromeWebSecurity": false,
-  "defaultCommandTimeout": 7000,
+  "defaultCommandTimeout": 120000,
   "fixturesFolder": "languages",
   "pluginsFile": ".dev/tests/cypress/plugins/index.js",
   "supportFile": ".dev/tests/cypress/support/commands.js",
@@ -8,8 +8,8 @@
   "projectId": "sovnn2",
   "integrationFolder": "./",
   "testFiles": "**/*.cypress.js",
-  "viewportWidth": 1920,
-  "viewportHeight": 1080,
+  "viewportWidth": 2560,
+  "viewportHeight": 1440,
   "env": {
     "testURL": "http://localhost:8889",
     "wpUsername": "admin",
@@ -18,5 +18,6 @@
   "retries": {
     "runMode": 0,
     "openMode": 0
-  }
+  },
+  "pageLoadTimeout": 120000
 }
