@@ -588,7 +588,7 @@ jobs:
             fi
             npx grunt compress
             if [ "$CIRCLE_JOB" != 'master' ]; then
-              mv build/coblocks-*.zip build/coblocks-${CIRCLE_PR_NUMBER}.zip
+              mv build/coblocks-*.zip "build/coblocks-${CIRCLE_PR_NUMBER}.zip"
             fi
             mv build/*.zip /tmp/artifacts
       - store_artifacts:
