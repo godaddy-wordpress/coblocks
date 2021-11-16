@@ -69,7 +69,7 @@ describe( 'Post Editor Performance', () => {
 		while ( i-- ) {
 			const startTime = new Date();
 			await page.reload();
-			await page.waitForSelector( '.wp-block' );
+			await page.waitForSelector( '.wp-block', { timeout: 120000 } );
 			results.load.push( new Date() - startTime );
 		}
 

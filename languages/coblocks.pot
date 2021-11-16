@@ -1,14 +1,14 @@
 # Copyright (c) 2021 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 2.19.0\n"
+"Project-Id-Version: CoBlocks 2.19.1\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-11-10T22:04:00+00:00\n"
+"POT-Creation-Date: 2021-11-16T19:38:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -6555,23 +6555,23 @@ msgstr ""
 msgid "Four columns"
 msgstr ""
 
-#. translators: %s: 'one' 'two' 'three' and 'four'
-#: src/blocks/row/edit.js:151
-msgid "Select a layout for this %s column row."
-msgstr ""
-
-#: src/blocks/row/edit.js:154
-msgid "Select the number of columns for this row."
-msgstr ""
-
-#: src/blocks/row/edit.js:157
+#: src/blocks/row/edit.js:149
 msgid "Row layout"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/row/edit.js:157
+#: src/blocks/row/edit.js:149
 #: src/blocks/row/index.js:38
 msgid "Row"
+msgstr ""
+
+#. translators: %s: 'one' 'two' 'three' and 'four'
+#: src/blocks/row/edit.js:153
+msgid "Select a layout for this %s column row."
+msgstr ""
+
+#: src/blocks/row/edit.js:156
+msgid "Select the number of columns for this row."
 msgstr ""
 
 #: src/blocks/row/edit.js:160
@@ -6582,7 +6582,7 @@ msgstr ""
 msgid "Select row layout"
 msgstr ""
 
-#: src/blocks/row/edit.js:189
+#: src/blocks/row/edit.js:195
 msgid "Back to columns"
 msgstr ""
 
