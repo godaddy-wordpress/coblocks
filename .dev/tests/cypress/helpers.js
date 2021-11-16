@@ -144,7 +144,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	}
 
 	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click();
-	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search' ).click().type( blockName );
+	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search, .components-search-control__input' ).click().type( blockName );
 
 	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
 	cy.get( '.editor-block-list-item' + targetClassName ).first().click( { force: true } );
@@ -165,7 +165,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 export function savePage() {
 	cy.get( '.edit-post-header__settings button.is-primary' ).click();
 
-	cy.get( '.components-editor-notices__snackbar', { timeout: 10000 } ).should( 'not.be.empty' );
+	cy.get( '.components-editor-notices__snackbar', { timeout: 120000 } ).should( 'not.be.empty' );
 
 	// Reload the page to ensure that we're not hitting any block errors
 	cy.reload();
@@ -228,18 +228,6 @@ export function clearBlocks() {
 }
 
 /**
- * Attempts to retrieve the block name from the current spec file being run
- * eg: accordion.js => Accordion
- */
-export function getBlockName() {
-	const specFile = Cypress.spec.name;
-	const fileBase = capitalize( specFile.split( '/' ).pop().replace( '.cypress.js', '' ).replace( '-', ' ' ) );
-	const blockName = fileBase.charAt( 0 ).toUpperCase() + fileBase.slice( 1 );
-
-	return blockName;
-}
-
-/**
  * Attempts to retrieve the block slug from the current spec file being run
  * eg: accordion.js => accordion
  */
@@ -272,13 +260,16 @@ export function setBlockStyle( style ) {
  */
 export function selectBlock( name, isChildBlock = false ) {
 	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle' ).click();
-	cy.get( '.block-editor-block-navigation-leaf' ).contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) ).click().then( () => {
+	cy.get( '.block-editor-block-navigation-leaf,.block-editor-list-view-leaf' )
+		.contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) )
+		.click()
+		.then( () => {
 		// Then close the block navigator if still open.
-		const inserterButton = Cypress.$( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' );
-		if ( !! inserterButton.length ) {
-			cy.get( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' ).click();
-		}
-	} );
+			const inserterButton = Cypress.$( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' );
+			if ( !! inserterButton.length ) {
+				cy.get( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' ).click();
+			}
+		} );
 }
 
 /**
@@ -381,15 +372,33 @@ export function setColorSetting( settingName, hexColor ) {
 	cy.get( '.components-base-control__field' )
 		.contains( RegExp( settingName, 'i' ) )
 		.then( ( $subColorPanel ) => {
-			cy.get( Cypress.$( $subColorPanel ).closest( '.components-base-control' ) )
-				.contains( /custom color/i )
-				.click();
-			cy.get( '.components-color-picker__inputs-field input[type="text"]' )
-				.clear()
-				.type( hexColor );
-			cy.get( Cypress.$( $subColorPanel ).closest( '.components-base-control' ) )
-				.contains( /custom color/i )
-				.click();
+			// < WP 5.9
+			if ( Cypress.$( '.components-color-palette__custom-color' ).length === 0 ) {
+				cy.get( Cypress.$( $subColorPanel ).closest( '.components-base-control' ) )
+					.contains( /custom color/i )
+					.click();
+				cy.get( '.components-color-picker__inputs-field input[type="text"]' )
+					.clear()
+					.type( hexColor );
+				cy.get( Cypress.$( $subColorPanel ).closest( '.components-base-control' ) )
+					.contains( /custom color/i )
+					.click();
+			// WP 5.9
+			} else {
+				cy.get( Cypress.$( $subColorPanel ).closest( '.components-flex' ) )
+					.find( '.components-color-palette__custom-color' )
+					.click( { force: true } );
+				cy.get( '.components-color-picker' )
+					.find( '.components-button' )
+					.click( { force: true } );
+				cy.get( '.components-color-picker' )
+					.find( '.components-input-control' )
+					.clear()
+					.type( hexColor.substring( 1 ) ); // remove the #
+				cy.get( Cypress.$( $subColorPanel ).closest( '.components-flex' ) )
+					.find( '.components-color-palette__custom-color' )
+					.click( { force: true } );
+			}
 		} );
 }
 
