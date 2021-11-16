@@ -613,49 +613,8 @@ jobs:
       - attach_workspace:
           at: ~/project
       - run:
-          name: Install Ruby
-          command: |
-            sudo apt-get update --allow-releaseinfo-change
-            sudo apt-get install ruby-full
-      - run:
-          name: Install GHI
-          command: |
-            curl -sL https://raw.githubusercontent.com/stephencelis/ghi/master/ghi > ghi
-            chmod +x ghi
-            sudo mv ghi /usr/local/bin
-      - run:
-          name: Check Token and PR status
-          command: |
-            if [[ -z "${GH_AUTH_TOKEN}" ]]; then
-              echo "GH_AUTH_TOKEN not set"
-              /bin/false
-            fi
-            if [[ -z "${CIRCLE_PULL_REQUEST}" ]]; then
-              echo "Not a pull request."
-              circleci-agent step halt
-              exit
-            fi
-      - run:
           name: Send Comment
-          command: |
-            GH_LOGIN=$(curl -sS -H "Authorization: token $GH_AUTH_TOKEN" https://api.github.com/user | jq '.login' --raw-output)
-            git config github.user $GH_LOGIN
-            git config ghi.token $GH_AUTH_TOKEN
-            echo "Authenticated with $GH_LOGIN"
-            PR_URL=${CIRCLE_PULL_REQUEST}
-            PR_ID=${PR_URL##*/}
-            echo "PR_ID=$PR_ID"
-            PREV_BUILD_ID=$(cat ~/project/build-num.txt)
-            ARTIFACT_URL=$(curl -H "Circle-Token: $CIRCLE_TOKEN" https://circleci.com/api/v1.1/project/gh/godaddy-wordpress/coblocks/${PREV_BUILD_ID}/artifacts | jq .[0].url | tr -d "\042")
-            if [ -z $PR_ID ]; then
-              echo "No PR found, skipping"
-            else
-              if [ $(/usr/local/bin/ghi comment --list $PR_ID | grep -c godaddy-wordpress-bot) -ge 1 ]; then
-                /usr/local/bin/ghi comment --amend "Download CoBlocks.zip: ${ARTIFACT_URL}" $PR_ID
-              else
-                /usr/local/bin/ghi comment -m "Download CoBlocks.zip: ${ARTIFACT_URL}" $PR_ID
-              fi
-            fi
+          command: bash .dev/bin/comment-on-pr.sh
 
   # --------------------------------------------------
   # Code Quality Checks
