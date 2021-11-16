@@ -84,7 +84,7 @@ const Swiper = ( props ) => {
 				plugins: [
 					TinySwiperPluginNavigation,
 				],
-				loop: true,
+				loop: false,
 				centeredSlides: false,
 				passiveListeners: true,
 				longSwipesRatio: 0.8,
@@ -158,7 +158,7 @@ const Swiper = ( props ) => {
 
 	const renderList = useMemo( () => {
 		return list.map( ( item, index ) => (
-			<div key={ index } className={ `swiper-slide` }>
+			<div id={ index } key={ index } className={ `swiper-slide` }>
 				{ children( {
 					item,
 					index,

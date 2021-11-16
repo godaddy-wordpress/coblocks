@@ -24,7 +24,7 @@ import { compose } from '@wordpress/compose';
 import { Icon } from '@wordpress/icons';
 import { __, sprintf } from '@wordpress/i18n';
 import { ResizableBox, withNotices } from '@wordpress/components';
-import { useCallback, useContext, useMemo } from '@wordpress/element';
+import { useCallback, useContext, useEffect, useMemo } from '@wordpress/element';
 
 /**
  * Function will dynamically process a string for use with the `navForClass` block attribute.
@@ -54,6 +54,7 @@ const GalleryCarouselEdit = ( props ) => {
 	const {
 		align,
 		gutter,
+		gutterMobile,
 		height,
 		images,
 		pageDots,
@@ -76,6 +77,12 @@ const GalleryCarouselEdit = ( props ) => {
 		marginTop: gutter > 0 && ! responsiveHeight ? ( gutter / 2 ) + 'px' : undefined,
 	};
 
+	useEffect( () => {
+		if ( isSelected === false && selectedImage !== null ) {
+			setSelectedImage( null );
+		}
+	}, [ isSelected ] );
+
 	const innerClasses = classnames(
 		'is-cropped',
 		'has-carousel',
@@ -93,7 +100,11 @@ const GalleryCarouselEdit = ( props ) => {
 	);
 
 	const handleSwipe = ( newIndex ) => {
-		setSelectedImage( newIndex );
+		if ( gridSize === ' xlrg' ) {
+			setSelectedImage( newIndex );
+		} else {
+			setSelectedImage( null );
+		}
 	};
 
 	const handleSelectCarousel = () => {
@@ -124,19 +135,29 @@ const GalleryCarouselEdit = ( props ) => {
 	const variatonSelected = hasVariationSet( attributes );
 
 	const renderGalleryPagination = useCallback( ( { changeStep } ) => {
+		const paginationClasses = classnames(
+			'wp-block-coblocks-gallery-carousel-thumbnail-pagination',
+			{
+				[ `has-margin-top-${ gutter }` ]: gutter > 0,
+				[ `has-margin-top-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+			}
+		);
+
 		return (
-			<div className="wp-block-coblocks-gallery-carousel-thumbnail-pagination">
+			<div className={ paginationClasses }>
 				{ images.map( ( item, index ) => (
 					<GalleryCarouselThumbnail
 						changeStep={ changeStep }
 						index={ index }
 						item={ item }
 						key={ index }
+						gutter={ gutter }
+						gutterMobile={ gutterMobile }
 					/>
 				) ) }
 			</div>
 		);
-	}, [ selectedImage, images ] );
+	}, [ gutter, gutterMobile, images ] );
 
 	const renderPageDots = useCallback( ( { changeStep } ) => {
 		return (
@@ -158,7 +179,7 @@ const GalleryCarouselEdit = ( props ) => {
 		}
 
 		return null;
-	}, [ images, selectedImage, thumbnails ] );
+	}, [ gutter, gutterMobile, images, thumbnails ] );
 
 	const renderSwiper = useMemo( () => {
 		const swiperSizing = {
@@ -210,22 +231,19 @@ const GalleryCarouselEdit = ( props ) => {
 		draggable,
 		freeScroll,
 		gridSize,
+		gutter,
+		gutterMobile,
 		images,
 		pageDots,
 		pauseHover,
 		prevNextButtons,
-		selectedImage,
 		thumbnails,
 	] );
 
-	if ( ! images.length && ! variatonSelected ) {
-		return (
-			<CarouselGalleryVariationPicker { ...props } />
-		);
-	} else if ( ! images.length && variatonSelected ) {
+	const renderGalleryPlaceholder = () => {
 		const variationLabel = ( !! variatonSelected && variatonSelected !== 'skip' )
 			? sprintf(
-				/* translators: %s: Type of gallery variation */
+			/* translators: %s: Type of gallery variation */
 				__( '%s Carousel', 'coblocks' ),
 				variatonSelected
 			) : false;
@@ -242,6 +260,14 @@ const GalleryCarouselEdit = ( props ) => {
 				/>
 			</>
 		);
+	};
+
+	if ( ! images.length && ! variatonSelected ) {
+		return (
+			<CarouselGalleryVariationPicker { ...props } />
+		);
+	} else if ( ! images.length && variatonSelected ) {
+		return renderGalleryPlaceholder();
 	}
 
 	return (
@@ -287,18 +313,29 @@ const GalleryCarouselEdit = ( props ) => {
 					</div>
 				</div>
 			</ResizableBox>
+			{ renderGalleryPlaceholder() }
 		</>
 	);
 };
 
-const GalleryCarouselThumbnail = ( { changeStep, item, index } ) => {
+const GalleryCarouselThumbnail = ( { gutter, gutterMobile, changeStep, item, index } ) => {
 	const { selectedImage } = useContext( GalleryCarouselContext );
 
+	const thumbnailClasses = classnames( {
+		'is-active': index === selectedImage,
+		'wp-block-coblocks-gallery-carousel-thumbnail': true,
+		[ `has-margin-top-${ gutter }` ]: gutter > 0,
+		[ `has-margin-top-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+		[ `has-margin-right-${ gutter }` ]: gutter > 0,
+		[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+		[ `has-margin-bottom-${ gutter }` ]: gutter > 0,
+		[ `has-margin-bottom-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+		[ `has-margin-left-${ gutter }` ]: gutter > 0,
+		[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+	} );
+
 	return (
-		<button className={ classnames( {
-			'is-active': index === selectedImage,
-			'wp-block-coblocks-gallery-carousel-thumbnail': true,
-		} ) } onClick={ () => changeStep( index ) } style={ { height: '80px', width: '100px' } } >
+		<button className={ thumbnailClasses } onClick={ () => changeStep( index ) } style={ { height: '80px', width: '100px' } } >
 			<img alt={ item.alt } data-id={ item.id } data-link={ item.link } src={ item.url } style={ { height: '100%', width: '100%' } } />
 		</button>
 	);

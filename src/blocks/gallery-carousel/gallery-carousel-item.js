@@ -19,7 +19,6 @@ const GalleryCarouselItem = ( {
 	const {
 		setSelectedImage,
 		selectedImage,
-		isSelected,
 		images,
 		gutter,
 		gutterMobile,
@@ -28,6 +27,7 @@ const GalleryCarouselItem = ( {
 	const [ captionFocused, setCaptionFocused ] = useState( false );
 
 	const item = images[ index ];
+	const isItemSelected = selectedImage === index;
 
 	const handleCaptionChange = ( val ) => {
 		setAttributes( {
@@ -74,7 +74,7 @@ const GalleryCarouselItem = ( {
 					aria-label={ ariaLabel }
 					id={ item.id }
 					imageIndex={ index }
-					isSelected={ isSelected }
+					isSelected={ isItemSelected }
 					marginLeft={ true }
 					marginRight={ true }
 					onRemove={ () => {
@@ -87,10 +87,12 @@ const GalleryCarouselItem = ( {
 					supportsCaption={ false }
 					supportsMoving={ false }
 					url={ item.url }
+					gutter={ gutter }
+					gutterMobile={ gutterMobile }
 				/>
 			</span>
 		);
-	}, [ gutter, gutterMobile, captionFocused, isSelected, item ] );
+	}, [ isItemSelected, gutter, gutterMobile, captionFocused, item ] );
 
 	if ( ! item ) {
 		return null;
@@ -101,11 +103,6 @@ const GalleryCarouselItem = ( {
 		{
 			[ `has-margin-top-${ gutter }` ]: gutter > 0,
 			[ `has-margin-top-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-			[ `has-negative-margin-left-${ gutter }` ]: gutter > 0,
-			[ `has-negative-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-			[ `has-negative-margin-right-${ gutter }` ]: gutter > 0,
-			[ `has-negative-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-
 		}
 	);
 
