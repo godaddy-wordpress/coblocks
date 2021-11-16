@@ -48,12 +48,16 @@ const handleSwipe = ( newIndex ) => {
 				centeredSlides: false,
 				freeMode: true,
 				longSwipesRatio: 0.8,
-				loop: true,
+				loop: false,
 				passiveListeners: true,
 				plugins: [],
 				touchable: false,
 				slidesPerView: 1,
 			};
+
+			if ( parsedSwiperOptions.loop === true ) {
+				swiperConfig.loop = parsedSwiperOptions.loop;
+			}
 
 			if ( parsedSwiperOptions.slidesPerView ) {
 				swiperConfig.slidesPerView = parsedSwiperOptions.slidesPerView;

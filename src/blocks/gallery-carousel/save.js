@@ -29,6 +29,7 @@ const save = ( props ) => {
 		thumbnails,
 		responsiveHeight,
 		lightbox,
+		loop,
 		pageDots,
 		gutterMobile,
 		height,
@@ -60,6 +61,24 @@ const save = ( props ) => {
 			[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 		}
 	);
+
+	const thumbnailClasses = classnames(
+		'wp-block-coblocks-gallery-carousel-thumbnail',
+		{
+			[ `has-margin-left-${ gutter }` ]: gutter > 0,
+			[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+			[ `has-margin-right-${ gutter }` ]: gutter > 0,
+			[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+		}
+	);
+
+	const thumbnailContainerClasses = classnames(
+		"wp-block-coblocks-gallery-carousel-thumbnail-pagination",
+		{
+			[ `has-margin-top-${ gutter }` ]: gutter > 0,
+			[ `has-margin-top-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+		}
+	)
 
 	const captionClasses = classnames(
 		'coblocks-gallery--caption',
@@ -93,6 +112,7 @@ const save = ( props ) => {
 		autoPlay,
 		autoPlaySpeed,
 		draggable,
+		loop,
 		navigation: prevNextButtons,
 		pageDots,
 		pauseHover,
@@ -142,10 +162,10 @@ const save = ( props ) => {
 						) }
 					 </div>
 					 { thumbnails && (
-						<div className="wp-block-coblocks-gallery-carousel-thumbnail-pagination">
+						<div className={ thumbnailContainerClasses }>
 							{ images.map( ( item, index ) => {
 								return (
-									<div className={ 'wp-block-coblocks-gallery-carousel-thumbnail' } id={ `wp-block-coblocks-gallery-carousel-thumbnail-${ index }` } key={ index } style={ { height: '80px', width: '100px' } } >
+									<div className={ thumbnailClasses } id={ `wp-block-coblocks-gallery-carousel-thumbnail-${ index }` } key={ index } style={ { height: '80px', width: '100px' } } >
 										<img
 											alt={ item.alt }
 											data-id={ item.id }
