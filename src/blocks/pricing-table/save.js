@@ -36,7 +36,7 @@ const save = ( { attributes } ) => {
 	return (
 		<div className={ classes }>
 			<GutterWrapper { ...attributes } >
-				<div className={ innerClasses } role="list">
+				<div className={ innerClasses }>
 					<InnerBlocks.Content />
 				</div>
 			</GutterWrapper>
