@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.5
 Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 2.19.0
+Stable tag: 2.19.1
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,6 +110,11 @@ Any properly developed WordPress theme will work with CoBlocks, though if you're
 Developers can also apply minor style touch-ups to their themes if necessary. If you're a developer and you need help, don't hesitate to [reach out](https://wordpress.org/support/plugin/coblocks/).
 
 == Changelog ==
+
+2.19.1 / 2021-11-15
+===================
+### Bug Fixes
+  * Fix Row block deprecation bug [#2153](https://github.com/godaddy-wordpress/coblocks/pull/2153)
 
 2.19.0 / 2021-11-10
 ===================

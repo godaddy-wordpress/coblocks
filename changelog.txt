@@ -1,3 +1,9 @@
+
+2.19.1 / 2021-11-15
+===================
+### Bug Fixes
+  * Fix Row block deprecation bug [#2153](https://github.com/godaddy-wordpress/coblocks/pull/2153)
+
 2.19.0 / 2021-11-10
 ===================
 ### Enhancements
@@ -92,7 +98,7 @@
 
 2.15.0 / 2021-08-03
 ===================
-### Enhancements 
+### Enhancements
 * Introduce Posts and Posts Carousel relational category controls [#1973](https://github.com/godaddy-wordpress/coblocks/pull/1973)
 * Enhance a11y accessibility for Alert block [#1952](https://github.com/godaddy-wordpress/coblocks/pull/1952)
 * Enhance Event Item block iconography [#1950](https://github.com/godaddy-wordpress/coblocks/pull/1950)
@@ -117,9 +123,9 @@
 
 2.14.0 / 2021-07-14
 ===================
-### Enhancements 
+### Enhancements
 * Enhance Pricing Table block to allow any block to be nested [#1929](https://github.com/godaddy-wordpress/coblocks/pull/1929)
-* Update plugin versions to reflect WordPress 5.8 compatibility [#1934](https://github.com/godaddy-wordpress/coblocks/pull/1934) 
+* Update plugin versions to reflect WordPress 5.8 compatibility [#1934](https://github.com/godaddy-wordpress/coblocks/pull/1934)
 
 ### Bug Fixes
 * Fix button size controls on Share and Social Profiles blocks [#1932](https://github.com/godaddy-wordpress/coblocks/pull/1932)
