@@ -11,6 +11,10 @@ import { __, sprintf } from '@wordpress/i18n';
 import { PanelBody, ToggleControl, SelectControl } from '@wordpress/components';
 
 const SliderPanel = ( props ) => {
+	const getLoopHelp = ( checked ) => {
+		return checked ? __( 'Set limit to carousel', 'coblocks' ) : __( 'Set the carousel to an infinite loop', 'coblocks' );
+	}
+
 	const getAutoPlayHelp = ( checked ) => {
 		// Retrieve the height value and divide it to display full seconds.
 		const speed = props.attributes.autoPlaySpeed / 1000;
@@ -57,6 +61,7 @@ const SliderPanel = ( props ) => {
 		autoPlaySpeed,
 		draggable,
 		freeScroll,
+		loop,
 		pageDots,
 		prevNextButtons,
 		alignCells,
@@ -67,6 +72,12 @@ const SliderPanel = ( props ) => {
 	return (
 		<>
 			<PanelBody title={ __( 'Slider settings', 'coblocks' ) } initialOpen={ false }>
+			<ToggleControl
+					label={ __( 'Loop', 'coblocks' ) }
+					checked={ !! loop }
+					onChange={ () => setAttributes( { loop: ! loop } ) }
+					help={ getLoopHelp }
+				/>
 				<ToggleControl
 					label={ __( 'Autoplay', 'coblocks' ) }
 					checked={ !! autoPlay }

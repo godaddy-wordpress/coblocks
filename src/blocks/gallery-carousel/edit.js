@@ -62,6 +62,7 @@ const GalleryCarouselEdit = ( props ) => {
 		thumbnails,
 		responsiveHeight,
 		lightbox,
+		loop,
 		draggable,
 		freeScroll,
 		autoPlaySpeed,
@@ -195,6 +196,7 @@ const GalleryCarouselEdit = ( props ) => {
 				freeScroll={ freeScroll }
 				isDraggable={ draggable }
 				list={ images }
+				loop={ loop }
 				navigation={ prevNextButtons }
 				onSwipe={ handleSwipe }
 				Pagination={ renderPagination }
@@ -234,6 +236,7 @@ const GalleryCarouselEdit = ( props ) => {
 		gutter,
 		gutterMobile,
 		images,
+		loop,
 		pageDots,
 		pauseHover,
 		prevNextButtons,

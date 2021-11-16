@@ -26,6 +26,10 @@
 			"type": "boolean",
 			"default": true
 		},
+		"loop": {
+			"type": "boolean",
+			"default": true
+		},
 		"autoPlay": {
 			"type": "boolean",
 			"default": false

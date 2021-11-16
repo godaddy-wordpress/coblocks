@@ -14,7 +14,7 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 import './style.scss';
 
 const SwiperWrapper = ( props ) => {
-	const swiperUuid = useMemo( () => generateUuid(), [ props.list.length, props.freeScroll, props.slidesPerView ] );
+	const swiperUuid = useMemo( () => generateUuid(), [ props.list.length, props.freeScroll, props.slidesPerView, props.loop ] );
 
 	return (
 		<span key={ swiperUuid }>
@@ -31,6 +31,7 @@ const Swiper = ( props ) => {
 		isDraggable = true,
 		autoPlaySpeed = null,
 		pauseHover = null,
+		loop = true,
 		onSwipe = null,
 		Pagination = null,
 		freeScroll = false,
@@ -84,10 +85,10 @@ const Swiper = ( props ) => {
 				plugins: [
 					TinySwiperPluginNavigation,
 				],
-				loop: false,
 				centeredSlides: false,
 				passiveListeners: true,
 				longSwipesRatio: 0.8,
+				loop,
 				touchable: false,
 				freeMode: freeScroll,
 				slidesPerView,
