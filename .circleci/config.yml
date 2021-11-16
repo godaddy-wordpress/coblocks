@@ -213,16 +213,16 @@ workflows:
             - unit_testing_php_74
             - js
 
-      - canary-release
-          # filters:
-          #   branches:
-          #     only: master
-          # requires:
-          #   - unit_testing_php_56
-          #   - unit_testing_php_73
-          #   - unit_testing_php_74
-          #   - unit_testing_php_80
-          #   - js
+      - canary-release:
+          filters:
+            branches:
+              only: master
+          requires:
+            - unit_testing_php_56
+            - unit_testing_php_73
+            - unit_testing_php_74
+            - unit_testing_php_80
+            - js
       - i18n:
           filters:
             branches:
@@ -580,7 +580,16 @@ jobs:
             mkdir -p /tmp/artifacts
             yarn build
             npx grunt clean:build copy:build
+            if [ "$CIRCLE_JOB" != 'master' ]; then
+              COBLOCKS_VERSION_LINE=$(awk '/\* Version:/' ./build/coblocks/class-coblocks.php)
+              VER_NUMBER=$(echo "$COBLOCKS_VERSION_LINE" | tr -dc '0-9.')
+              COBLOCKS_COMMIT_HASH=$(git rev-parse --verify HEAD | head -c 7)
+              sed -i -e "s/${VER_NUMBER}/${VER_NUMBER}-${CIRCLE_PR_NUMBER}+${COBLOCKS_COMMIT_HASH}/g" build/coblocks/class-coblocks.php
+            fi
             npx grunt compress
+            if [ "$CIRCLE_JOB" != 'master' ]; then
+              mv build/coblocks-*.zip build/coblocks-${CIRCLE_PR_NUMBER}.zip
+            fi
             mv build/*.zip /tmp/artifacts
       - store_artifacts:
           path: /tmp/artifacts
