@@ -9,8 +9,8 @@ describe( 'Block: Highlight', function() {
 	 */
 	const highlightData = {
 		backgroundColor: '#ff0000',
-		textColor: '#ffffff',
 		backgroundColorRGB: 'rgb(255, 0, 0)',
+		textColor: '#ffffff',
 		textColorRGB: 'rgb(255, 255, 255)',
 	};
 
@@ -46,7 +46,13 @@ describe( 'Block: Highlight', function() {
 		cy.get( '.edit-post-sidebar' )
 			.contains( RegExp( 'Highlight settings', 'i' ) )
 			.then( ( $settingSection ) => {
-				if ( Cypress.$( '.components-select-control__input' ).length > 0 ) {
+				// >= WP 5.9
+				if ( Cypress.$( '[aria-label="Set custom size"]' ).length > 0 ) {
+					cy.get( '[aria-label="Set custom size"]' )
+						.click();
+					cy.get( '.components-input-control__input' ).focus().type( '30' );
+				// < WP 5.9
+				} else if ( Cypress.$( '.components-select-control__input' ).length > 0 ) {
 					cy.get( Cypress.$( $settingSection ).closest( '.components-panel__body' ) )
 						.find( '.components-select-control__input' )
 						.select( 'large' );
