@@ -28,14 +28,14 @@ describe( 'Extension: Layout Selector', () => {
 			win.wp.data.dispatch( 'coblocks/template-selector' ).updateLayouts(
 				[
 					{
+						blocks: [ [ 'core/paragraph', { content: 'Test One paragraph.' }, [] ] ],
 						category: 'test-one',
 						label: 'Test One',
-						blocks: [ [ 'core/paragraph', { content: 'Test One paragraph.' }, [] ] ],
 					},
 					{
+						blocks: [ [ 'core/paragraph', { content: 'Test Two paragraph.' }, [] ] ],
 						category: 'test-two',
 						label: 'Test Two',
-						blocks: [ [ 'core/paragraph', { content: 'Test Two paragraph.' }, [] ] ],
 					},
 				]
 			);

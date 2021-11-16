@@ -1,8 +1,8 @@
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 import {
-	COLORS_FEATURE_ENABLED_KEY,
 	COLORS_CUSTOM_FEATURE_ENABLED_KEY,
+	COLORS_FEATURE_ENABLED_KEY,
 	COLORS_GRADIENT_FEATURE_ENABLED_KEY,
 } from '../constants';
 
@@ -15,23 +15,23 @@ describe( 'Settings Modal: Colors feature', () => {
 		// Reset settings.
 		helpers.getWindowObject().then( ( win ) => {
 			win.wp.data.dispatch( 'core' ).saveEntityRecord( 'root', 'site', {
-				[ COLORS_FEATURE_ENABLED_KEY ]: true,
 				[ COLORS_CUSTOM_FEATURE_ENABLED_KEY ]: true,
+				[ COLORS_FEATURE_ENABLED_KEY ]: true,
 				[ COLORS_GRADIENT_FEATURE_ENABLED_KEY ]: true,
 			} );
 
 			win.wp.data.dispatch( 'core/block-editor' ).updateSettings( {
 				colors: [
 					{
+						color: 'rgb(255,255,255)',
 						name: 'Primary',
 						slug: 'primary',
-						color: 'rgb(255,255,255)',
 					},
 				],
 				gradients: [
 					{
-						name: 'Primary to Secondary',
 						gradient: 'linear-gradient(135deg, rgb(0,0,0) 0%, rgb(255,255,255) 100%)',
+						name: 'Primary to Secondary',
 						slug: 'primary-to-secondary',
 					},
 				],

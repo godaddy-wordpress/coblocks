@@ -9,8 +9,8 @@ describe( 'Block: Highlight', function() {
 	 */
 	const highlightData = {
 		backgroundColor: '#ff0000',
-		textColor: '#ffffff',
 		backgroundColorRGB: 'rgb(255, 0, 0)',
+		textColor: '#ffffff',
 		textColorRGB: 'rgb(255, 255, 255)',
 	};
 
