@@ -214,15 +214,15 @@ workflows:
             - js
 
       - canary-release:
-          filters:
-            branches:
-              only: master
-          requires:
-            - unit_testing_php_56
-            - unit_testing_php_73
-            - unit_testing_php_74
-            - unit_testing_php_80
-            - js
+          # filters:
+          #   branches:
+          #     only: master
+          # requires:
+          #   - unit_testing_php_56
+          #   - unit_testing_php_73
+          #   - unit_testing_php_74
+          #   - unit_testing_php_80
+          #   - js
       - i18n:
           filters:
             branches:
@@ -888,16 +888,16 @@ jobs:
             cp -r languages/ build/coblocks/languages/
             cd build && zip -r coblocks-canary.zip coblocks
             mv coblocks-canary.zip /tmp/artifacts/coblocks-canary.zip
-      - run:
-          name: Create a canary release on GitHub
-          command: ghr -t ${GH_AUTH_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "Latest build of the master branch. This bleeding edge version is for testing purposes only and should not be used in production." -delete -prerelease -replace canary /tmp/artifacts/coblocks-canary.zip
-      - deploy:
-          name: Deploy CoBlocks canary to the WPNUX site
-          command: |
-            curl https://wpnux.godaddy.com/v2/webhook-install-canary.php \
-            -H 'Content-Type: application/json' \
-            -H "X-Authorization: Bearer ${WPNUX_SITE_X_AUTHORIZATION}" \
-            -d '[ "coblocks" ]'
+      # - run:
+      #     name: Create a canary release on GitHub
+      #     command: ghr -t ${GH_AUTH_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "Latest build of the master branch. This bleeding edge version is for testing purposes only and should not be used in production." -delete -prerelease -replace canary /tmp/artifacts/coblocks-canary.zip
+      # - deploy:
+      #     name: Deploy CoBlocks canary to the WPNUX site
+      #     command: |
+      #       curl https://wpnux.godaddy.com/v2/webhook-install-canary.php \
+      #       -H 'Content-Type: application/json' \
+      #       -H "X-Authorization: Bearer ${WPNUX_SITE_X_AUTHORIZATION}" \
+      #       -d '[ "coblocks" ]'
 
   # --------------------------------------------------
   # Plugin Deployment to WordPress.org
