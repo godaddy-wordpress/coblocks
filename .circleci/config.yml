@@ -587,8 +587,10 @@ jobs:
               sed -i -e "s/${VER_NUMBER}/${VER_NUMBER}-${CIRCLE_PULL_REQUEST##*/}+${COBLOCKS_COMMIT_HASH}/g" build/coblocks/class-coblocks.php
             fi
             npx grunt compress
-            if [ "$CIRCLE_JOB" != 'master' ]; then
-              mv build/coblocks-*.zip "build/coblocks-${CIRCLE_PULL_REQUEST##*/}.zip"
+            if [ "$CIRCLE_JOB" == 'master' ]; then
+              zip -r "coblocks-v${VER_NUMBER}.zip" coblocks
+            else
+              zip -r "coblocks-${CIRCLE_PULL_REQUEST##*/}.zip" coblocks
             fi
             mv build/*.zip /tmp/artifacts
       - store_artifacts:
