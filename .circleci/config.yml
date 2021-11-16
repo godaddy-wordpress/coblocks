@@ -877,9 +877,10 @@ jobs:
           command: |
             mkdir -p /tmp/artifacts
             npx grunt build
-            COBLOCKS_VERSION_LINE=$(awk '/\* Version:/{ print NR; exit }' build/coblocks/class-coblocks.php)
+            COBLOCKS_VERSION_LINE=$(awk '/\* Version:/' ./build/coblocks/class-coblocks.php)
+            VER_NUMBER=$(echo "$COBLOCKS_VERSION_LINE" | tr -dc '0-9.')
             COBLOCKS_COMMIT_HASH=$(git rev-parse --verify HEAD | head -c 7)
-            sed -i -e "${COBLOCKS_VERSION_LINE}s/$/-${COBLOCKS_COMMIT_HASH}/" build/coblocks/class-coblocks.php
+            sed -i -e "s/${VER_NUMBER}/${VER_NUMBER}-canary+${COBLOCKS_COMMIT_HASH}/g" build/coblocks/class-coblocks.php
             npm run json2po
             npm run po2mo
             npm run po2jed
