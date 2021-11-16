@@ -3,9 +3,9 @@ Author URI: https://www.godaddy.com
 Contributors: godaddy, richtabor, eherman24, jonathanbardo, jrtashjian, paranoia1906, fjarrett
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.5
-Tested up to: 5.8.1
+Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 2.18.1
+Stable tag: 2.19.1
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,12 +25,12 @@ CoBlocks is the last page builder you’ll ever need: you get a winning mix of a
 * Accordion Block
 * Alert Block
 * Author Profile Block
-* Buttons Block
 * Carousel Gallery Block
 * Click to Tweet Block
 * Collage Gallery Block
 * Dynamic Separator Block
-* Events Block (New!)
+* Events Block
+* FAQ Block (New!)
 * Features Block
 * Food & Drinks Block
 * Form Block
@@ -111,6 +111,33 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+2.19.1 / 2021-11-15
+===================
+### Bug Fixes
+  * Fix Row block deprecation bug [#2153](https://github.com/godaddy-wordpress/coblocks/pull/2153)
+
+2.19.0 / 2021-11-10
+===================
+### Enhancements
+* Introduce FAQ block [#2125](https://github.com/godaddy-wordpress/coblocks/pull/2125)
+* Enhance FAQ iconography [#2138](https://github.com/godaddy-wordpress/coblocks/pull/2138)
+* Enhance FAQ SEO schema [#2143](https://github.com/godaddy-wordpress/coblocks/pull/2143)
+* Enhance performance of DimensionsControl component [#2090](https://github.com/godaddy-wordpress/coblocks/pull/2090)
+* Enhance Share block by migrating to Core Social Links block [#2120](https://github.com/godaddy-wordpress/coblocks/pull/2120)
+
+### Bug Fixes
+* Fix typo in Events block [#2116](https://github.com/godaddy-wordpress/coblocks/pull/2116)
+* Fix Accordion block editing in WP 5.7.2 [#2121](https://github.com/godaddy-wordpress/coblocks/pull/2121)
+* Fix instances of unused classes applied to blocks [#2109](https://github.com/godaddy-wordpress/coblocks/pull/2109)
+* Fix deprecated Toolbars warnings [#2110](https://github.com/godaddy-wordpress/coblocks/pull/2110)
+* Fix keepPlaceholderOnFocus warnings [#2114](https://github.com/godaddy-wordpress/coblocks/pull/2114)
+* Fix animation on AMP by disabling completely
+
+### Misc
+* Update supported minimum WP version to 5.5 [#2142](https://github.com/godaddy-wordpress/coblocks/pull/2142)
+* Remove jQuery from Map block Recaptcha script [#2131](https://github.com/godaddy-wordpress/coblocks/pull/2131)
+* Remove jQuery from Map block Google script [#2130](https://github.com/godaddy-wordpress/coblocks/pull/2130)
+
 2.18.1 / 2021-10-21
 ===================
 ### Enhancements
@@ -119,3 +146,26 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 ### Bug Fixes
 * Fix theme and plugin compatibility bug [#2113](https://github.com/godaddy-wordpress/coblocks/pull/2113)
 * Fix Shape Divider block SVG permissions issue [#2107](https://github.com/godaddy-wordpress/coblocks/pull/2107)
+
+2.18.0 / 2021-10-20
+===================
+### Enhancements
+* Enhance reliability and compatibility of Gist Block. [#2079](https://github.com/godaddy-wordpress/coblocks/pull/2079)
+* Enhance Form Block to use dynamic translated email strings [#2084](https://github.com/godaddy-wordpress/coblocks/pull/2084)
+* Enhance Events Block preview within block inserter [#2054](https://github.com/godaddy-wordpress/coblocks/pull/2054)
+* Enhance Dynamic HR icon for clarity [#2076](https://github.com/godaddy-wordpress/coblocks/pull/2076)
+* Enhance Click to tweet styles [#2055](https://github.com/godaddy-wordpress/coblocks/pull/2055)
+* Enhance Accessibility of Gallery blocks [#2040](https://github.com/godaddy-wordpress/coblocks/pull/2040)
+* Enhance Accessibility of Accordion block [#2060](https://github.com/godaddy-wordpress/coblocks/pull/2060)
+
+### Bug Fixes
+* Fix Gutter type errors across Collage and Offset [#2099](https://github.com/godaddy-wordpress/coblocks/pull/2099)
+* Fix Form Block error when attempting set email address [#2102](https://github.com/godaddy-wordpress/coblocks/pull/2102)
+* Fix Click to tweet post permalink and UX in editor [#2098](https://github.com/godaddy-wordpress/coblocks/pull/2098)
+* Fix Form Block Recaptcha bypass [#2092](https://github.com/godaddy-wordpress/coblocks/pull/2092)
+* Fix Services Block error related to URIs [#2091](https://github.com/godaddy-wordpress/coblocks/pull/2091)
+* Fix improper is-selected state on Accordion block [#2065](https://github.com/godaddy-wordpress/coblocks/pull/2065)
+* Fix Events block ical file parser and UX improvements [#2088](https://github.com/godaddy-wordpress/coblocks/pull/2088)
+* Fix broken animations when JS not present [#2082](https://github.com/godaddy-wordpress/coblocks/pull/2082)
+* Fix crash with advanced margin controls [#2066](https://github.com/godaddy-wordpress/coblocks/pull/2066)
+* Fix hidden social profile icons due to a missing default color [#2046](https://github.com/godaddy-wordpress/coblocks/pull/2046)

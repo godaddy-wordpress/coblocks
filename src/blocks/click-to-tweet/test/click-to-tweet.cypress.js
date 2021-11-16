@@ -10,7 +10,13 @@ describe( 'Test CoBlocks Click to Tweet Block', function() {
 	it( 'Test Click to Tweet block saves with empty values.', function() {
 		helpers.addBlockToPost( 'coblocks/click-to-tweet', true );
 
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/click-to-tweet' );
+
+		helpers.viewPage();
+
+		helpers.editPage();
 	} );
 
 	/**
@@ -25,6 +31,8 @@ describe( 'Test CoBlocks Click to Tweet Block', function() {
 		cy.get( '.wp-block-coblocks-click-to-tweet__text' ).focus().type( 'Some custom data here.' );
 		cy.get( '.wp-block-coblocks-click-to-tweet__twitter-btn' ).focus().type( 'Click to tweet' );
 
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/click-to-tweet' );
 
 		cy.get( '.wp-block-coblocks-click-to-tweet' )
@@ -35,5 +43,9 @@ describe( 'Test CoBlocks Click to Tweet Block', function() {
 
 		cy.get( '.wp-block-coblocks-click-to-tweet__twitter-btn' )
 			.contains( 'Click to tweet' );
+
+		helpers.viewPage();
+
+		helpers.editPage();
 	} );
 } );

@@ -181,17 +181,17 @@ workflows:
             - unit_testing_php_74
             - unit_testing_php_80
             - js
-      - e2e_chrome_wp_previous_major:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
-          requires:
-            - css
-            - unit_testing_php_56
-            - unit_testing_php_73
-            - unit_testing_php_74
-            - unit_testing_php_80
-            - js
+      #- e2e_chrome_wp_previous_major:
+      #    filters:
+      #      tags:
+      #        only: /^(?!canary).*$/
+      #    requires:
+      #      - css
+      #      - unit_testing_php_56
+      #      - unit_testing_php_73
+      #      - unit_testing_php_74
+      #      - unit_testing_php_80
+      #      - js
 
       # PERF TESTING
       - perf_tests:
@@ -659,7 +659,6 @@ jobs:
       - run:
           name: "Test JS and Collect Coverage"
           command: |
-            rm -rf node_modules/ && yarn && yarn build
             yarn test:js:coverage --maxWorkers=2 --reporters=default --reporters=jest-junit
           environment:
             JEST_JUNIT_OUTPUT_DIR: /tmp/artifacts/tests-results/jest
