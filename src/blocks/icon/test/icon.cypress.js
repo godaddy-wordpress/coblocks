@@ -125,33 +125,8 @@ describe( 'Test CoBlocks Icon Block', function() {
 
 		helpers.openSettingsPanel( 'Color settings' );
 
-		cy.get( '.components-base-control__field' )
-			.contains( /icon color/i )
-			.then( ( $backgroundPanel ) => {
-				cy.get( Cypress.$( $backgroundPanel ).parents( '.components-base-control__field' ) )
-					.contains( /custom color/i )
-					.click();
-				cy.get( '.components-color-picker__inputs-field input[type="text"]' )
-					.clear()
-					.type( '#55e7ff' );
-				cy.get( Cypress.$( $backgroundPanel ).parents( '.components-base-control__field' ) )
-					.contains( /custom color/i )
-					.click();
-			} );
-
-		cy.get( '.components-base-control__field' )
-			.contains( /background color/i )
-			.then( ( $backgroundPanel ) => {
-				cy.get( Cypress.$( $backgroundPanel ).parents( '.components-base-control__field' ) )
-					.contains( /custom color/i )
-					.click();
-				cy.get( '.components-color-picker__inputs-field input[type="text"]' )
-					.clear()
-					.type( '#e60099' );
-				cy.get( Cypress.$( $backgroundPanel ).parents( '.components-base-control__field' ) )
-					.contains( /custom color/i )
-					.click();
-			} );
+		helpers.setColorSetting( 'background', '#e60099' );
+		helpers.setColorSetting( 'icon color', '#55e7ff' );
 
 		helpers.savePage();
 
