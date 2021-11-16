@@ -58,11 +58,12 @@ describe( 'Extension: Layout Selector', () => {
 	it( 'inserts layout into page', () => {
 		cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(1)' ).find( 'a' ).click();
 
-		cy.get( '[data-type="core/paragraph"]' ); // Ensure layout is loaded
+		// WP 5.9 - layout is loaded but did not pick up the element
+		//cy.get( '[data-type="core/paragraph"]' ); // Ensure layout is loaded
 
 		cy.get( '.coblocks-layout-selector__layout' ).first().click();
 
-		cy.get( '.editor-post-title__block' ).contains( 'Test One' );
+		cy.get( '.editor-post-title__block, .editor-post-title' ).contains( 'Test One' );
 		cy.get( '.edit-post-visual-editor' ).contains( 'Test One paragraph.' );
 	} );
 
@@ -71,7 +72,7 @@ describe( 'Extension: Layout Selector', () => {
 		cy.get( '.coblocks-layout-selector__add-button' ).first().click();
 
 		// Post title block should be empty.
-		cy.get( '.editor-post-title__block' ).find( 'textarea' ).should( 'be.empty' );
+		cy.get( '.editor-post-title__block, .editor-post-title' ).find( 'textarea, span' ).should( 'be.empty' );
 
 		// The first block should be the default prompt.
 		cy.get( '.edit-post-visual-editor .block-editor-block-list__layout .wp-block' );
