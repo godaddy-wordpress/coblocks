@@ -2,13 +2,17 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { hasEmptyAttributes } from '../../../utils/block-helpers';
-import fromEntries from '../../../js/coblocks-fromEntries';
 
 /**
  * WordPress dependencies
  */
-import { RichText, getColorClassName, InnerBlocks } from '@wordpress/block-editor';
+import { getColorClassName, InnerBlocks, RichText } from '@wordpress/block-editor';
+
+/**
+ * Internal dependencies
+ */
+import fromEntries from '../../../js/coblocks-fromEntries';
+import { hasEmptyAttributes } from '../../../utils/block-helpers';
 
 const isEmpty = ( attributes ) => {
 	const attributesToCheck = [ 'title', 'features', 'currency', 'amount' ];
@@ -50,12 +54,13 @@ const save = ( { attributes } ) => {
 	return isEmpty( attributes ) ? null : (
 		<div
 			className={ classes }
+			role="listitem"
 			style={ styles }
 		>
 			{ ! RichText.isEmpty( title ) && (
 				<RichText.Content
-					tagName="span"
 					className="wp-block-coblocks-pricing-table-item__title"
+					tagName="span"
 					value={ title }
 				/>
 			) }
@@ -63,23 +68,23 @@ const save = ( { attributes } ) => {
 				<div className={ 'wp-block-coblocks-pricing-table-item__price-wrapper' }>
 					{ ! RichText.isEmpty( currency ) && (
 						<RichText.Content
-							tagName="span"
 							className="wp-block-coblocks-pricing-table-item__currency"
+							tagName="span"
 							value={ currency }
 						/>
 					) }
 					<RichText.Content
-						tagName="span"
 						className="wp-block-coblocks-pricing-table-item__amount"
+						tagName="span"
 						value={ amount }
 					/>
 				</div>
 			) }
 			{ ! RichText.isEmpty( features ) && (
 				<RichText.Content
-					tagName="ul"
-					multiline="li"
 					className="wp-block-coblocks-pricing-table-item__features"
+					multiline="li"
+					tagName="ul"
 					value={ features }
 				/>
 			) }
