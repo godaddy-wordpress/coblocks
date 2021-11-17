@@ -57,6 +57,7 @@ const settings = {
 	attributes,
 	transforms,
 	edit,
+	example: { attributes: {} },
 	save,
 	deprecated,
 };
