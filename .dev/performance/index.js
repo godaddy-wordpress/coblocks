@@ -166,7 +166,7 @@ async function runTestSuite( testSuite, performanceTestDirectory ) {
  * @param {WPPerformanceCommandOptions} options  Command options.
  */
 async function runPerformanceTests( branches, options ) {
-	branches = [ 'master', ...branches ];
+	branches = [ ...branches ];
 
 	log(
 		formats.title( '\n💃 Performance Tests 🕺\n' ),
