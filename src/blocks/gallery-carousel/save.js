@@ -18,7 +18,6 @@ const save = ( props ) => {
 	const { attributes } = props;
 
 	const {
-		align,
 		autoPlay,
 		autoPlaySpeed,
 		draggable,
@@ -122,65 +121,65 @@ const save = ( props ) => {
 		uuid,
 		alignCells,
 		freeScroll,
-		responsiveHeight
+		responsiveHeight,
 	};
 
 	return (
 		<div aria-label={ __( `Carousel Gallery`, 'coblocks' ) } >
 			<div className={ innerClasses }>
-					<div className={ swiperClasses } data-swiper={ JSON.stringify( swiperOptions ) } id={ uuid } style={ responsiveHeight ? undefined : swiperStyles } >
-						<div className="swiper-wrapper" id="swiper-wrapper">
-							{ images.map( ( image, index ) => {
-								return (
-									<div className="swiper-slide" key={ index }>
-										<div
-											className="coblocks-gallery--item"
-											role="button"
-											tabIndex={ index }
-										>
-											<figure className={ figureClasses }>
-												<img
-													alt={ image.alt }
-													className={ image.id ? `wp-image-${ image.id }` : null }
-													data-id={ image.id }
-													data-link={ image.link }
-													src={ image.url }
-												/>
-											</figure>
-											<RichText.Content className={ captionClasses } tagName="figcaption" value={ image.caption } />
-										</div>
+				<div className={ swiperClasses } data-swiper={ JSON.stringify( swiperOptions ) } id={ uuid } style={ responsiveHeight ? undefined : swiperStyles } >
+					<div className="swiper-wrapper" id="swiper-wrapper">
+						{ images.map( ( image, index ) => {
+							return (
+								<div className="swiper-slide" key={ index }>
+									<div
+										className="coblocks-gallery--item"
+										role="button"
+										tabIndex={ index }
+									>
+										<figure className={ figureClasses }>
+											<img
+												alt={ image.alt }
+												className={ image.id ? `wp-image-${ image.id }` : null }
+												data-id={ image.id }
+												data-link={ image.link }
+												src={ image.url }
+											/>
+										</figure>
+										<RichText.Content className={ captionClasses } tagName="figcaption" value={ image.caption } />
 									</div>
-								);
-							} ) }
-						</div>
-						{ prevNextButtons && (
-							<>
-								<button className={ `nav-button__prev` } id={ `${ uuid }-prev` } >
-									<svg className="icon" style={ { transform: 'rotate(180deg)' } } />
-								</button>
-								<button className={ `nav-button__next` } id={ `${ uuid }-next` } >
-									<svg className="icon" />
-								</button>
-							</>
-						) }
-					 </div>
-					 { thumbnails && (
-						<div className={ thumbnailContainerClasses }>
-							{ images.map( ( item, index ) => {
-								return (
-									<div className={ thumbnailClasses } id={ `wp-block-coblocks-gallery-carousel-thumbnail-${ index }` } key={ index } style={ { height: '80px', width: '100px' } } >
-										<img
-											alt={ item.alt }
-											data-id={ item.id }
-											data-link={ item.link }
-											src={ item.url }
-											style={ { height: '100%', width: '100%' } }
-										/>
-									</div>
-								);
-							} ) }
-						</div>
+								</div>
+							);
+						} ) }
+					</div>
+					{ prevNextButtons && (
+						<>
+							<button className={ `nav-button__prev` } id={ `${ uuid }-prev` } >
+								<svg className="icon" style={ { transform: 'rotate(180deg)' } } />
+							</button>
+							<button className={ `nav-button__next` } id={ `${ uuid }-next` } >
+								<svg className="icon" />
+							</button>
+						</>
 					) }
+				</div>
+				{ thumbnails && (
+					<div className={ thumbnailContainerClasses }>
+						{ images.map( ( item, index ) => {
+							return (
+								<div className={ thumbnailClasses } id={ `wp-block-coblocks-gallery-carousel-thumbnail-${ index }` } key={ index } style={ { height: '80px', width: '100px' } } >
+									<img
+										alt={ item.alt }
+										data-id={ item.id }
+										data-link={ item.link }
+										src={ item.url }
+										style={ { height: '100%', width: '100%' } }
+									/>
+								</div>
+							);
+						} ) }
+					</div>
+				) }
 			</div>
 		</div>
 	);
