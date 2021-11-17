@@ -99,16 +99,12 @@
 	display: flex;
 	flex-direction: row;
 	height: auto;
-	justify-content: center;
+	justify-content: flex-start;
 
 	margin: 0 auto;
 	overflow: hidden;
 
 	width: 100%;
-
-	@media (min-width: 1200px) {
-		width: 80%;
-	}
 }
 
 .wp-block-coblocks-gallery-carousel-thumbnail {
