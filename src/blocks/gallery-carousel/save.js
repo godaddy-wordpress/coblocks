@@ -109,19 +109,19 @@ const save = ( props ) => {
 	};
 
 	const swiperOptions = {
+		alignCells,
 		autoPlay,
 		autoPlaySpeed,
 		draggable,
+		freeScroll,
 		loop,
 		navigation: prevNextButtons,
 		pageDots,
 		pauseHover,
+		responsiveHeight,
 		slidesPerView: swiperSizing[ gridSize ],
 		thumbnails,
 		uuid,
-		alignCells,
-		freeScroll,
-		responsiveHeight,
 	};
 
 	return (
