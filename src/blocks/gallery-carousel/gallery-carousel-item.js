@@ -116,7 +116,7 @@ const GalleryCarouselItem = ( {
 			tabIndex={ index }
 		>
 			{ renderGalleryItem }
-			{ renderCaption }
+			{ isItemSelected ? renderCaption : null }
 		</div>
 	);
 };
