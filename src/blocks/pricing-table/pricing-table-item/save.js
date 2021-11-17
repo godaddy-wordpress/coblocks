@@ -2,17 +2,13 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import { hasEmptyAttributes } from '../../../utils/block-helpers';
+import fromEntries from '../../../js/coblocks-fromEntries';
 
 /**
  * WordPress dependencies
  */
-import { getColorClassName, InnerBlocks, RichText } from '@wordpress/block-editor';
-
-/**
- * Internal dependencies
- */
-import fromEntries from '../../../js/coblocks-fromEntries';
-import { hasEmptyAttributes } from '../../../utils/block-helpers';
+import { RichText, getColorClassName, InnerBlocks } from '@wordpress/block-editor';
 
 const isEmpty = ( attributes ) => {
 	const attributesToCheck = [ 'title', 'features', 'currency', 'amount' ];
@@ -54,13 +50,12 @@ const save = ( { attributes } ) => {
 	return isEmpty( attributes ) ? null : (
 		<div
 			className={ classes }
-			role="listitem"
 			style={ styles }
 		>
 			{ ! RichText.isEmpty( title ) && (
 				<RichText.Content
-					className="wp-block-coblocks-pricing-table-item__title"
 					tagName="span"
+					className="wp-block-coblocks-pricing-table-item__title"
 					value={ title }
 				/>
 			) }
@@ -68,23 +63,23 @@ const save = ( { attributes } ) => {
 				<div className={ 'wp-block-coblocks-pricing-table-item__price-wrapper' }>
 					{ ! RichText.isEmpty( currency ) && (
 						<RichText.Content
-							className="wp-block-coblocks-pricing-table-item__currency"
 							tagName="span"
+							className="wp-block-coblocks-pricing-table-item__currency"
 							value={ currency }
 						/>
 					) }
 					<RichText.Content
-						className="wp-block-coblocks-pricing-table-item__amount"
 						tagName="span"
+						className="wp-block-coblocks-pricing-table-item__amount"
 						value={ amount }
 					/>
 				</div>
 			) }
 			{ ! RichText.isEmpty( features ) && (
 				<RichText.Content
-					className="wp-block-coblocks-pricing-table-item__features"
-					multiline="li"
 					tagName="ul"
+					multiline="li"
+					className="wp-block-coblocks-pricing-table-item__features"
 					value={ features }
 				/>
 			) }
