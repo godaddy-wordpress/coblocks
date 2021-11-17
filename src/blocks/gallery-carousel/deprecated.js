@@ -17,7 +17,8 @@ import { __ } from '@wordpress/i18n';
 import { getColorClassName, RichText } from '@wordpress/block-editor';
 
 const deprecated =
-[ {
+[
+{
 	attributes: {
 		...GalleryAttributes,
 		...BackgroundAttributes,
@@ -642,13 +643,13 @@ const deprecated =
 		);
 	},
 },
-{
-	attributes: {
+ {
+	 attributes: {
 		...GalleryAttributes,
 		...BackgroundAttributes,
 		...metadata.attributes,
-	},
-	save( { attributes, className } ) {
+	 },
+	 save: ( { attributes, className } ) => {
 		const {
 			autoPlay,
 			autoPlaySpeed,
@@ -669,18 +670,18 @@ const deprecated =
 			lightbox,
 			navForClass,
 		} = attributes;
-
+	
 		// Return early if there are no images.
 		if ( images.length <= 0 ) {
 			return;
 		}
-
+	
 		const classes = classnames(
 			className, {
 				'has-responsive-height': responsiveHeight,
 			}
 		);
-
+	
 		const innerClasses = classnames(
 			'is-cropped',
 			...GalleryClasses( attributes ), {
@@ -688,7 +689,7 @@ const deprecated =
 				'has-lightbox': lightbox,
 			}
 		);
-
+	
 		const flickityClasses = classnames(
 			'has-carousel',
 			`has-carousel-${ gridSize }`, {
@@ -698,11 +699,11 @@ const deprecated =
 				[ navForClass ]: thumbnails,
 			}
 		);
-
+	
 		const flickityStyles = {
 			height: height ? height + 'px' : undefined,
 		};
-
+	
 		const figureClasses = classnames(
 			'coblocks-gallery--figure', {
 				[ `has-margin-left-${ gutter }` ]: gutter > 0,
@@ -711,33 +712,31 @@ const deprecated =
 				[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
 		);
-
+	
 		const flickityOptions = {
+			autoPlay: autoPlay && autoPlaySpeed ? parseFloat( autoPlaySpeed ) : false,
+			draggable,
+			pageDots,
+			prevNextButtons,
+			wrapAround: true,
+			cellAlign: alignCells ? 'left' : 'center',
+			pauseAutoPlayOnHover: pauseHover,
+			freeScroll,
 			arrowShape: {
 				x0: 10,
-				x1: 60,
-				x2: 65,
+				x1: 60, y1: 50,
+				x2: 65, y2: 45,
 				x3: 20,
-				y1: 50,
-				y2: 45,
 			},
-			autoPlay: autoPlay && autoPlaySpeed ? parseFloat( autoPlaySpeed ) : false,
-			cellAlign: alignCells ? 'left' : 'center',
-			draggable,
-			freeScroll,
-			pageDots,
-			pauseAutoPlayOnHover: pauseHover,
-			prevNextButtons,
-			responsiveHeight,
 			thumbnails,
-			wrapAround: true,
+			responsiveHeight,
 		};
-
+	
 		const captionClasses = classnames(
 			'coblocks-gallery--caption',
 			'coblocks-gallery--primary-caption', {}
 		);
-
+	
 		const navClasses = classnames(
 			'carousel-nav', {
 				[ `has-margin-top-${ gutter }` ]: gutter > 0,
@@ -748,7 +747,7 @@ const deprecated =
 				[ `has-negative-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
 		);
-
+	
 		const navFigureClasses = classnames(
 			'coblocks--figure', {
 				[ `has-margin-left-${ gutter }` ]: gutter > 0,
@@ -757,33 +756,33 @@ const deprecated =
 				[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
 		);
-
+	
 		const navOptions = {
 			asNavFor: `.${ navForClass }`,
 			autoPlay: false,
-			cellAlign: 'left',
 			contain: true,
-			draggable,
+			cellAlign: 'left',
 			pageDots: false,
-			prevNextButtons: false,
 			thumbnails: false,
+			draggable,
+			prevNextButtons: false,
 			wrapAround: false,
 		};
-
+	
 		return (
 			<div aria-label={ __( `Carousel Gallery`, 'coblocks' ) }
 				className={ classes }>
 				<div className={ innerClasses }>
 					<div
 						className={ flickityClasses }
-						data-flickity={ JSON.stringify( flickityOptions ) }
 						style={ responsiveHeight ? undefined : flickityStyles }
+						data-flickity={ JSON.stringify( flickityOptions ) }
 					>
 						{ images.map( ( image ) => {
-							const img = <img alt={ image.alt } className={ image.id ? `wp-image-${ image.id }` : null } data-id={ image.id } data-link={ image.link } src={ image.url } />;
-
+							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
+	
 							return (
-								<div className="coblocks-gallery--item" key={ image.id || image.url }>
+								<div key={ image.id || image.url } className="coblocks-gallery--item">
 									<figure className={ figureClasses }>
 										{ img }
 									</figure>
@@ -798,9 +797,9 @@ const deprecated =
 								data-flickity={ JSON.stringify( navOptions ) }
 							>
 								{ images.map( ( image ) => {
-									const img = <img alt={ image.alt } data-id={ image.id } data-link={ image.link } src={ image.url } />;
+									const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } />;
 									return (
-										<div className="coblocks--item-thumbnail" key={ image.id || image.url }>
+										<div key={ image.id || image.url } className="coblocks--item-thumbnail">
 											<figure className={ navFigureClasses }>
 												{ img }
 											</figure>
@@ -810,11 +809,11 @@ const deprecated =
 							</div> ) : null
 					}
 				</div>
-				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content className={ captionClasses } tagName="figcaption" value={ primaryCaption } /> }
+				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } /> }
 			</div>
 		);
-	},
-},
+	 }
+ }
 ];
 
 export default deprecated;

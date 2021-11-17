@@ -58,6 +58,7 @@ const variations = {
 	noBottomMargin: [ undefined, true, false ],
 	noTopMargin: [ undefined, true, false ],
 	navForClass: [ undefined, '', 'has-nav-abc123'],
+	loop: [ true, false, ]
 };
 
 helpers.testDeprecatedBlockVariations( name, settings, variations );

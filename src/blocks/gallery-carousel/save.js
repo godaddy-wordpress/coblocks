@@ -25,6 +25,7 @@ const save = ( props ) => {
 		gutter,
 		images,
 		pauseHover,
+		freeScroll,
 		prevNextButtons,
 		thumbnails,
 		responsiveHeight,
@@ -35,6 +36,7 @@ const save = ( props ) => {
 		height,
 		alignCells,
 		gridSize,
+		navForClass,
 	} = attributes;
 
 	if ( images.length <= 0 ) {
@@ -45,10 +47,8 @@ const save = ( props ) => {
 		'is-cropped',
 		...GalleryClasses( attributes ),
 		{
-			[ `align${ align }` ]: align,
 			'has-horizontal-gutter': gutter > 0,
 			'has-lightbox': lightbox,
-			'has-no-arrows': ! prevNextButtons,
 			'has-no-thumbnails': ! thumbnails,
 		}
 	);
@@ -86,12 +86,13 @@ const save = ( props ) => {
 	);
 
 	const swiperClasses = classnames(
-		'swiper-container',
 		'has-carousel',
 		`has-carousel-${ gridSize }`,
+		'swiper-container',
 		{
 			'has-aligned-cells': alignCells,
 			'has-responsive-height': responsiveHeight,
+			[ navForClass ]: thumbnails,
 		}
 	);
 
@@ -119,12 +120,14 @@ const save = ( props ) => {
 		slidesPerView: swiperSizing[ gridSize ],
 		thumbnails,
 		uuid,
+		alignCells,
+		freeScroll,
+		responsiveHeight
 	};
 
-	const galleryCarousel = (
+	return (
 		<div aria-label={ __( `Carousel Gallery`, 'coblocks' ) } >
 			<div className={ innerClasses }>
-				<div className="coblocks-swiper-container">
 					<div className={ swiperClasses } data-swiper={ JSON.stringify( swiperOptions ) } id={ uuid } style={ responsiveHeight ? undefined : swiperStyles } >
 						<div className="swiper-wrapper" id="swiper-wrapper">
 							{ images.map( ( image, index ) => {
@@ -178,21 +181,9 @@ const save = ( props ) => {
 							} ) }
 						</div>
 					) }
-					{ ! thumbnails && pageDots && (
-						<div className="wp-block-coblocks-gallery-carousel-page-dot-pagination-container">
-							<div className="wp-block-coblocks-gallery-carousel-page-dot-wrapper" >
-								{ images.map( ( item, index ) => (
-									<div className="wp-block-coblocks-gallery-carousel-page-dot-pagination" id={ `wp-block-coblocks-gallery-carousel-page-dot-${ index }` } key={ index } />
-								) ) }
-							</div>
-						</div>
-					) }
-				</div>
 			</div>
 		</div>
 	);
-
-	return galleryCarousel;
 };
 
 export default save;
