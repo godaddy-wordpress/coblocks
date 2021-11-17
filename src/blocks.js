@@ -60,6 +60,7 @@ import * as carousel from './blocks/gallery-carousel';
 import * as clickToTweet from './blocks/click-to-tweet';
 import * as collage from './blocks/gallery-collage';
 import * as column from './blocks/row/column';
+import * as countdownTimer from './blocks/countdown-timer';
 import * as dynamicSeparator from './blocks/dynamic-separator';
 import * as eventItem from './blocks/events/event-item';
 import * as events from './blocks/events';
@@ -143,6 +144,7 @@ export const registerCoBlocksBlocks = () => {
 		clickToTweet,
 		collage,
 		column,
+		countdownTimer,
 		dynamicSeparator,
 		events,
 		eventItem,
