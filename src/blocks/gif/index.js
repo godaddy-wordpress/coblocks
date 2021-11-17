@@ -45,6 +45,11 @@ const settings = {
 			return { 'data-align': align, 'data-resized': !! width };
 		}
 	},
+	example: {
+		attributes: {
+
+		},
+	},
 	edit,
 	save,
 };
