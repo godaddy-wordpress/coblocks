@@ -96,6 +96,19 @@ function GalleryEdit( props ) {
 		[ clientId ]
 	);
 
+	// innerBlockImages = useMemo(
+	// 	() => {
+	// 		if ( !! attributes?.images?.length && ! innerBlockImages?.length ) {
+	// 			return attributes.images.map( ( { url, id, alt } ) => createBlock( 'core/image', {
+	// 				alt,
+	// 				id: id ? parseInt( id, 10 ) : null,
+	// 				url,
+	// 			} ) );
+	// 		}
+	// 	},
+	// 	[ attributes?.images?.length ]
+	// );
+
 	const images = useMemo(
 		() =>
 			innerBlockImages?.map( ( block ) => ( {
@@ -108,9 +121,17 @@ function GalleryEdit( props ) {
 		[ innerBlockImages ]
 	);
 
+	useEffect( () => {
+		if ( !! attributes?.images?.length && ! images?.length ) {
+			updateImages( attributes.images );
+		}
+	}, [] );
+
 	const imageData = useGetMedia( innerBlockImages );
 
 	const newImages = useGetNewImages( images, imageData );
+
+	// console.log( imageData, newImages );
 
 	useEffect( () => {
 		const changedAttributes = {};
@@ -188,6 +209,7 @@ function GalleryEdit( props ) {
 	}
 
 	function isValidFileType( file ) {
+		console.log( file, file.type );
 		return (
 			ALLOWED_MEDIA_TYPES.some(
 				( mediaType ) => file.type?.indexOf( mediaType ) === 0
@@ -212,7 +234,7 @@ function GalleryEdit( props ) {
 			} )
 			: selectedImages;
 
-		if ( ! imageArray.every( isValidFileType ) ) {
+		if ( !! newFileUploads && ! imageArray.every( isValidFileType ) ) {
 			noticeOperations.removeAllNotices();
 			noticeOperations.createErrorNotice(
 				__(
@@ -254,15 +276,15 @@ function GalleryEdit( props ) {
 
 		const newCaptions = selectedImages?.reduce( ( previous, image ) => {
 			const previousReturnedObject = !! previous?.mime ? {} : previous;
-			return { ...previousReturnedObject, [`${ image.id }`]: image.caption }
+			return { ...previousReturnedObject, [ `${ image.id }` ]: image.caption };
 		} );
 
-		existingImageBlocks?.forEach( (image) => {
-			const compareCaption = newCaptions[image.attributes.id];
+		existingImageBlocks?.forEach( ( image ) => {
+			const compareCaption = newCaptions[ image.attributes.id ];
 			if ( image.attributes.caption !== compareCaption ) {
 				image.attributes.caption = compareCaption;
 			}
-		} )
+		} );
 
 		const newImageList = processedImages.filter(
 			( img ) =>

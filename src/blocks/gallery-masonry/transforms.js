@@ -14,8 +14,6 @@ import metadata from './block.json';
  */
 import { addFilter } from '@wordpress/hooks';
 import { createBlock } from '@wordpress/blocks';
-import { select } from '@wordpress/data';
-import { store as blockEditorStore } from '@wordpress/block-editor';
 
 /**
  * Third party block plugins don't have an easy way to detect if the
@@ -32,13 +30,10 @@ import { store as blockEditorStore } from '@wordpress/block-editor';
  * @return   {Block}                 The transformed block.
  */
 function updateThirdPartyTransformToGallery( block ) {
-	console.log( 'updateThirdPartyTransformToGallery is running' );
-	console.log( block );
 	if (
 		block.name === 'coblocks/gallery-masonry' &&
 		block.attributes?.images?.length > 0
 	) {
-		console.log( 'updateThirdPartyTransformToGallery is running' );
 		const innerBlocks = block.attributes.images.map(
 			( { url, id, alt } ) => {
 				return createBlock( 'core/image', {
@@ -60,7 +55,7 @@ function updateThirdPartyTransformToGallery( block ) {
 }
 addFilter(
 	'blocks.switchToBlockType.transformedBlock',
-	'core/gallery/update-third-party-transform-to',
+	'coblocks/gallery-masonry/update-third-party-transform-to',
 	updateThirdPartyTransformToGallery
 );
 
@@ -127,7 +122,6 @@ const transforms = {
 				const validImages = filter( attributes, ( { id, url } ) => Number.isInteger( id ) && url );
 				const hasCaption = !! filter( attributes, ( { caption } ) => !! caption );
 
-				console.log( validImages );
 				if ( validImages.length > 0 ) {
 					const innerBlocks = attributes.images.map(
 						( { url, id, alt } ) => {
