@@ -119,9 +119,6 @@ const Edit = ( props ) => {
 		showLeftHandle = true;
 	}
 
-
-	console.log('selectedIcon most likely in preview', selectedIcon);
-
 	return (
 		<>
 			{ isSelected && (
