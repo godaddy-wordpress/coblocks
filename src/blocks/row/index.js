@@ -62,6 +62,9 @@ const settings = {
 	variations,
 	transforms,
 	edit,
+	example: {
+		attributes: {}
+	},
 	getEditWrapperProps,
 	save,
 	deprecated,
