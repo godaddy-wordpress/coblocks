@@ -109,10 +109,10 @@ workflows:
   version: 2
   main:
     jobs:
-      - build:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
+      # - build:
+      #     filters:
+      #       tags:
+      #         only: /^(?!canary).*$/
 
       # - pr_artifact_comment:
       #     requires:
