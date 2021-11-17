@@ -580,14 +580,14 @@ jobs:
             mkdir -p /tmp/artifacts
             yarn build
             npx grunt clean:build copy:build
-            if [ "$CIRCLE_JOB" != 'master' ]; then
-              COBLOCKS_VERSION_LINE=$(awk '/\* Version:/' ./build/coblocks/class-coblocks.php)
-              VER_NUMBER=$(echo "$COBLOCKS_VERSION_LINE" | tr -dc '0-9.')
+            COBLOCKS_VERSION_LINE=$(awk '/\* Version:/' ./build/coblocks/class-coblocks.php)
+            VER_NUMBER=$(echo "$COBLOCKS_VERSION_LINE" | tr -dc '0-9.')
+            if [ "$CIRCLE_BRANCH" != 'master' ]; then
               COBLOCKS_COMMIT_HASH=$(git rev-parse --verify HEAD | head -c 7)
               sed -i -e "s/${VER_NUMBER}/${VER_NUMBER}-${CIRCLE_PULL_REQUEST##*/}+${COBLOCKS_COMMIT_HASH}/g" build/coblocks/class-coblocks.php
             fi
             cd build
-            if [ "$CIRCLE_JOB" == 'master' ]; then
+            if [ "$CIRCLE_BRANCH" == 'master' ]; then
               zip -r "coblocks-v${VER_NUMBER}.zip" coblocks
             else
               zip -r "coblocks-${CIRCLE_PULL_REQUEST##*/}.zip" coblocks
