@@ -149,11 +149,11 @@ const GalleryCarouselEdit = ( props ) => {
 				{ images.map( ( item, index ) => (
 					<GalleryCarouselThumbnail
 						changeStep={ changeStep }
+						gutter={ gutter }
+						gutterMobile={ gutterMobile }
 						index={ index }
 						item={ item }
 						key={ index }
-						gutter={ gutter }
-						gutterMobile={ gutterMobile }
 					/>
 				) ) }
 			</div>
@@ -308,6 +308,9 @@ const GalleryCarouselEdit = ( props ) => {
 				size={ {
 					height,
 					width: '100%',
+				} }
+				style={ {
+					marginBottom: thumbnails ? '80px' : null,
 				} }
 			>
 				<div className={ className }>

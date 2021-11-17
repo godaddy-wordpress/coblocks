@@ -1,3 +1,19 @@
+/**
+ * External dependencies
+ */
+import { v4 as generateUuid } from 'uuid';
+import TinySwiper from 'tiny-swiper';
+import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
+
+/**
+ * Internal dependencies
+ */
+import './style.scss';
+
+/**
+ * WordPress dependencies
+ */
+import { usePrevious } from '@wordpress/compose';
 import {
 	useCallback,
 	useEffect,
@@ -5,13 +21,6 @@ import {
 	useRef,
 	useState,
 } from '@wordpress/element';
-import { usePrevious } from '@wordpress/compose';
-import { v4 as generateUuid } from 'uuid';
-
-import TinySwiper from 'tiny-swiper';
-import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
-
-import './style.scss';
 
 const SwiperWrapper = ( props ) => {
 	const swiperUuid = useMemo( () => generateUuid(), [ props.list.length, props.freeScroll, props.slidesPerView, props.loop ] );
@@ -78,20 +87,20 @@ const Swiper = ( props ) => {
 			const swiperNextButton = document.getElementById( `${ uuid }-next` );
 
 			const newSwiper = new TinySwiper( swiperContainer, {
+				centeredSlides: false,
+				freeMode: freeScroll,
+				longSwipesRatio: 0.8,
+				loop,
 				navigation: {
-					prevEl: swiperBackButton,
 					nextEl: swiperNextButton,
+					prevEl: swiperBackButton,
 				},
+				passiveListeners: true,
 				plugins: [
 					TinySwiperPluginNavigation,
 				],
-				centeredSlides: false,
-				passiveListeners: true,
-				longSwipesRatio: 0.8,
-				loop,
-				touchable: false,
-				freeMode: freeScroll,
 				slidesPerView,
+				touchable: false,
 			} );
 
 			if ( onSwipe ) {
@@ -171,10 +180,10 @@ const Swiper = ( props ) => {
 	const renderNavigation = useMemo( () => {
 		return (
 			<>
-				<button id={ `${ uuid }-prev` } className={ `nav-button__prev ${ navigation === false && 'no-navigation' }` } >
+				<button className={ `nav-button__prev ${ navigation === false && 'no-navigation' }` } id={ `${ uuid }-prev` }>
 					<svg className="icon" style={ { transform: 'rotate(180deg)' } } />
 				</button>
-				<button id={ `${ uuid }-next` } className={ `nav-button__next ${ navigation === false && 'no-navigation' }` } >
+				<button className={ `nav-button__next ${ navigation === false && 'no-navigation' }` } id={ `${ uuid }-next` }>
 					<svg className="icon" />
 				</button>
 			</>
