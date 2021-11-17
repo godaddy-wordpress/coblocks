@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/countdown-timer should render with content 1`] = `
+"<!-- wp:coblocks/countdown-timer -->
+<div>This is the save Countdown</div>
+<!-- /wp:coblocks/countdown-timer -->"
+`;
