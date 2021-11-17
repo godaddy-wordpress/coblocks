@@ -46,9 +46,7 @@ const settings = {
 		}
 	},
 	example: {
-		attributes: {
-
-		},
+		attributes: {},
 	},
 	edit,
 	save,
