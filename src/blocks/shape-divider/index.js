@@ -86,7 +86,7 @@ const settings = {
 	transforms,
 	edit,
 	example: {
-		attributes: {}
+		attributes: {},
 	},
 	save: () => null,
 	deprecated,

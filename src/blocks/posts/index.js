@@ -49,7 +49,7 @@ const settings = {
 	transforms,
 	edit,
 	example: {
-		attributes: {}
+		attributes: {},
 	},
 	deprecated,
 	save() {

@@ -63,7 +63,7 @@ const settings = {
 	transforms,
 	edit,
 	example: {
-		attributes: {}
+		attributes: {},
 	},
 	getEditWrapperProps,
 	save,
