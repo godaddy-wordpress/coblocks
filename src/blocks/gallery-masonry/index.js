@@ -7,7 +7,7 @@ import { GalleryMasonryIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * Internal dependencies
  */
 import deprecated from './deprecated';
-import edit from './edit';
+import edit from './edit-wrapper';
 import { GalleryAttributes } from '../../components/block-gallery/shared';
 import { hasFormattingCategory } from '../../utils/block-helpers';
 import metadata from './block.json';
@@ -38,16 +38,31 @@ const settings = {
 	description: __( 'Display multiple images in an organized masonry gallery.', 'coblocks' ),
 	edit,
 	example: {
-		attributes: {
-			gutter: 'sml',
-			images: [
-				{ index: 0, url: 'https://s.w.org/images/core/5.3/Sediment_off_the_Yucatan_Peninsula.jpg' },
-				{ index: 1, url: 'https://s.w.org/images/core/5.3/Windbuchencom.jpg' },
-				{ index: 2, url: 'https://s.w.org/images/core/5.3/Biologia_Centrali-Americana_-_Cantorchilus_semibadius_1902.jpg' },
-				{ index: 3, url: 'https://s.w.org/images/core/5.3/MtBlanc1.jpg' },
-				{ index: 4, url: 'https://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg' },
-			],
-		},
+		innerBlocks: [
+			{
+				attributes: { url: 'https://s.w.org/images/core/5.3/Sediment_off_the_Yucatan_Peninsula.jpg' },
+				name: 'core/image',
+			},
+			{
+				attributes: { url: 'https://s.w.org/images/core/5.3/Windbuchencom.jpg' },
+				name: 'core/image',
+
+			},
+			{
+				attributes: { url: 'https://s.w.org/images/core/5.3/Biologia_Centrali-Americana_-_Cantorchilus_semibadius_1902.jpg' },
+				name: 'core/image',
+
+			},
+			{
+				attributes: { url: 'https://s.w.org/images/core/5.3/MtBlanc1.jpg' },
+				name: 'core/image',
+
+			},
+			{
+				attributes: { url: 'hhttps://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg' },
+				name: 'core/image',
+			},
+		],
 	},
 	icon: <Icon icon={ icon } />,
 	keywords: [

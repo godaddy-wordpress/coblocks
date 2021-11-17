@@ -84,7 +84,7 @@ function GalleryEdit( props ) {
 			settings.__experimentalPreferredStyleVariations;
 		return {
 			getBlock: select( blockEditorStore ).getBlock,
-			getSettings: select( blockEditorStore ).getSettings,
+			getSettings: select( blockEditorStore )?.getSettings || {},
 			preferredStyle: preferredStyleVariations?.value?.[ 'core/image' ],
 		};
 	}, [] );
@@ -95,19 +95,6 @@ function GalleryEdit( props ) {
 		},
 		[ clientId ]
 	);
-
-	// innerBlockImages = useMemo(
-	// 	() => {
-	// 		if ( !! attributes?.images?.length && ! innerBlockImages?.length ) {
-	// 			return attributes.images.map( ( { url, id, alt } ) => createBlock( 'core/image', {
-	// 				alt,
-	// 				id: id ? parseInt( id, 10 ) : null,
-	// 				url,
-	// 			} ) );
-	// 		}
-	// 	},
-	// 	[ attributes?.images?.length ]
-	// );
 
 	const images = useMemo(
 		() =>

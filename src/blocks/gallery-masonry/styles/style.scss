@@ -1,3 +1,6 @@
+// Import styles for rendering the static content of deprecated gallery versions.
+@import "../v1/deprecated.scss";
+
 figure.wp-block-coblocks-gallery-masonry.masonry-grid {
 	column-fill: initial;
 	column-gap: 30px;
