@@ -11,7 +11,7 @@ import {
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 
 /**
@@ -110,9 +110,14 @@ const variations = [
 			} ],
 			[ 'coblocks/field-textarea', { label: __( 'Describe your project', 'coblocks' ) } ],
 			[ 'coblocks/field-checkbox', {
-				label: `<a href="#" target="_blank" rel="noreferrer noopener">${ __( 'Terms and conditions', 'coblocks' ) }</a>`,
+				label: sprintf(
+					/* translators: %1$s: opening anchor link. %2$s: closing anchor link */
+					__( 'By submitting this form, you agree to our %1$sterms and conditions%2$s and %1$sprivacy policy%2$s', 'coblocks' ),
+					'<a href="#" target="_blank" rel="noreferrer noopener">',
+					'</a>'
+				),
 				options: [
-					__( 'By submitting this form, you agree to the terms and conditions.', 'coblocks' ),
+					__( 'I have read and agree to the terms and conditions and privacy policy.', 'coblocks' ),
 				],
 				required: true,
 			} ],
