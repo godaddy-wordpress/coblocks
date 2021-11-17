@@ -73,12 +73,12 @@ const save = ( props ) => {
 	);
 
 	const thumbnailContainerClasses = classnames(
-		"wp-block-coblocks-gallery-carousel-thumbnail-pagination",
+		'wp-block-coblocks-gallery-carousel-thumbnail-pagination',
 		{
 			[ `has-margin-top-${ gutter }` ]: gutter > 0,
 			[ `has-margin-top-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 		}
-	)
+	);
 
 	const captionClasses = classnames(
 		'coblocks-gallery--caption',
