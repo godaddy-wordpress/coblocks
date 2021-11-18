@@ -182,7 +182,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 
 		$expected_assets = [
 			'js'  => [
-				'dist/coblocks.js',
+				'dist/coblocks-1.js',
 				'dist/js/coblocks-accordion-polyfill.js',
 				'dist/js/coblocks-checkbox-required.js',
 				'dist/js/coblocks-datepicker.js',
