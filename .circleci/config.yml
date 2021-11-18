@@ -830,10 +830,7 @@ jobs:
           at: ~/project
       - run:
           name: Aggregate performance test results
-          command: echo "Aggregate the results here."
-      - run:
-          name: "Check for median test results"
-          command: "ls -la | grep *-median-results.json"
+          command: .dev/performance/cli-results.js ${CIRCLE_BRANCH}
 
   # --------------------------------------------------
   # Internationalization Processes
