@@ -109,121 +109,109 @@ workflows:
   version: 2
   main:
     jobs:
-      # - build:
-      #     filters:
-      #       tags:
-      #         only: /^(?!canary).*$/
+      - build:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
 
-      # - pr_artifact_comment:
-      #     requires:
-      #       - build
-      #     filters:
-      #       branches:
-      #         ignore:
-      #           - master
-      #
-      # # CODE LINTING
-      # - php:
-      #     filters:
-      #       tags:
-      #         only: /^(?!canary).*$/
-      #     requires:
-      #       - build
-      # - css:
-      #    requires:
-      #      - build
-      #
-      # # UNIT TESTING
-      # # Support PHP Versions: http://php.net/supported-versions.php
-      # - unit_testing_php_56:
-      #     filters:
-      #       tags:
-      #         only: /^(?!canary).*$/
-      #     requires:
-      #       - php
-      # - unit_testing_php_73:
-      #     filters:
-      #       tags:
-      #         only: /^(?!canary).*$/
-      #     requires:
-      #       - php
-      # - unit_testing_php_74:
-      #     filters:
-      #       tags:
-      #         only: /^(?!canary).*$/
-      #     requires:
-      #       - php
-      # - unit_testing_php_80:
-      #     filters:
-      #       tags:
-      #         only: /^(?!canary).*$/
-      #     requires:
-      #       - php
-      # - js:
-      #     filters:
-      #       tags:
-      #         only: /^(?!canary).*$/
-      #     requires:
-      #       - build
-      #
-      # # END TO END TESTING
-      # - e2e_chrome_wp_latest:
-      #     filters:
-      #       tags:
-      #         only: /^(?!canary).*$/
-      #     requires:
-      #       - css
-      #       - unit_testing_php_56
-      #       - unit_testing_php_73
-      #       - unit_testing_php_74
-      #       - unit_testing_php_80
-      #       - js
-      # - e2e_firefox_wp_latest:
-      #     filters:
-      #       tags:
-      #         only: /^(?!canary).*$/
-      #     requires:
-      #       - css
-      #       - unit_testing_php_56
-      #       - unit_testing_php_73
-      #       - unit_testing_php_74
-      #       - unit_testing_php_80
-      #       - js
+      - pr_artifact_comment:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore:
+                - master
 
-      #- e2e_chrome_wp_previous_major:
-      #    filters:
-      #      tags:
-      #        only: /^(?!canary).*$/
-      #    requires:
-      #      - css
-      #      - unit_testing_php_56
-      #      - unit_testing_php_73
-      #      - unit_testing_php_74
-      #      - unit_testing_php_80
-      #      - js
+      # CODE LINTING
+      - php:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - build
+      - css:
+         requires:
+           - build
+
+      # UNIT TESTING
+      # Support PHP Versions: http://php.net/supported-versions.php
+      - unit_testing_php_56:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - php
+      - unit_testing_php_73:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - php
+      - unit_testing_php_74:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - php
+      - unit_testing_php_80:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - php
+      - js:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - build
+
+      # END TO END TESTING
+      - e2e_chrome_wp_latest:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - css
+            - unit_testing_php_56
+            - unit_testing_php_73
+            - unit_testing_php_74
+            - unit_testing_php_80
+            - js
+      - e2e_firefox_wp_latest:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - css
+            - unit_testing_php_56
+            - unit_testing_php_73
+            - unit_testing_php_74
+            - unit_testing_php_80
+            - js
+
+      - e2e_chrome_wp_previous_major:
+         filters:
+           tags:
+             only: /^(?!canary).*$/
+         requires:
+           - css
+           - unit_testing_php_56
+           - unit_testing_php_73
+           - unit_testing_php_74
+           - unit_testing_php_80
+           - js
 
       # PERF TESTING
       - master_perf_tests:
           filters:
             tags:
               only: /^(?!canary).*$/
-          # requires:
-          #   - css
-          #   - unit_testing_php_56
-          #   - unit_testing_php_73
-          #   - unit_testing_php_74
-          #   - js
 
       - current_perf_tests:
           filters:
             tags:
               only: /^(?!canary).*$/
-          # requires:
-          #   - css
-          #   - unit_testing_php_56
-          #   - unit_testing_php_73
-          #   - unit_testing_php_74
-          #   - js
 
       - aggregate_perf_test_results:
           filters:
@@ -233,41 +221,41 @@ workflows:
             - current_perf_tests
             - master_perf_tests
 
-      # - canary-release:
-      #     filters:
-      #       branches:
-      #         only: master
-      #     requires:
-      #       - unit_testing_php_56
-      #       - unit_testing_php_73
-      #       - unit_testing_php_74
-      #       - unit_testing_php_80
-      #       - js
-      # - i18n:
-      #     filters:
-      #       branches:
-      #         only: master
-      #     requires:
-      #       - unit_testing_php_56
-      #       - unit_testing_php_73
-      #       - unit_testing_php_74
-      #       - unit_testing_php_80
-      #       - js
-      #
-      # - deploy:
-      #     requires:
-      #       - unit_testing_php_56
-      #       - unit_testing_php_73
-      #       - unit_testing_php_74
-      #       - unit_testing_php_80
-      #       - js
-      #       # - e2e_firefox
-      #       # - e2e_chrome
-      #     filters:
-      #       tags:
-      #         only: /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*)?(\+[0-9-]+(\.[0-9]+)*)?/ # Run on semantic version tags only
-      #       branches:
-      #         ignore: /.*/
+      - canary-release:
+          filters:
+            branches:
+              only: master
+          requires:
+            - unit_testing_php_56
+            - unit_testing_php_73
+            - unit_testing_php_74
+            - unit_testing_php_80
+            - js
+      - i18n:
+          filters:
+            branches:
+              only: master
+          requires:
+            - unit_testing_php_56
+            - unit_testing_php_73
+            - unit_testing_php_74
+            - unit_testing_php_80
+            - js
+
+      - deploy:
+          requires:
+            - unit_testing_php_56
+            - unit_testing_php_73
+            - unit_testing_php_74
+            - unit_testing_php_80
+            - js
+            # - e2e_firefox
+            # - e2e_chrome
+          filters:
+            tags:
+              only: /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*)?(\+[0-9-]+(\.[0-9]+)*)?/ # Run on semantic version tags only
+            branches:
+              ignore: /.*/
 
 commands:
 
