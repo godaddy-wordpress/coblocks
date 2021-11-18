@@ -1,72 +1,90 @@
 // Read the test results from master and current branch at ~/project/[branch]-median-results.json files
 // combine them into a single results array with structure results[ testSuite ][ branch ] = results.json
+const fs = require( 'fs' );
+const path = require( 'path' );
+const { mapValues, merge } = require( 'lodash' );
 
-const testSuites = [ 'post-editor' ];
-const results = [];
+/**
+ * Internal dependencies
+ */
+const { formats, log } = require( './logger' );
 
-for ( const testSuite of testSuites ) {
-	results[ testSuite ] = {};
+/**
+ * Get the performance test results and output it a table
+ */
+async function getPerformanceTestResults( branch ) {
 
-	const getDifference = ( key ) => {
-		const valueArray = Object.keys( results[ testSuite ] );
+	const testSuites = [ 'post-editor' ];
+	const master_data = fs.readFileSync( 'master-median-results.json' );
+	const current_data = fs.readFileSync( branch + '-median-results.json' );
+	const results = merge( JSON.parse( master_data ), JSON.parse( current_data ) );
 
-		const x = results[ testSuite ][ valueArray[ 0 ] ][ key ],
-			y = results[ testSuite ][ valueArray[ 1 ] ][ key ];
+	for ( const testSuite of testSuites ) {
+		const getDifference = ( key ) => {
+			const valueArray = Object.keys( results[ testSuite ] );
 
-		return parseFloat( ( ( ( y - x ) / x ) * 100 ).toFixed( 2 ) );
-	};
+			const x = results[ testSuite ][ valueArray[ 0 ] ][ key ],
+				y = results[ testSuite ][ valueArray[ 1 ] ][ key ];
 
-	// Computing difference.
-	const difference = mapValues(
-		{
-			load: getDifference( 'load' ),
-			type: getDifference( 'type' ),
-			minType: getDifference( 'minType' ),
-			maxType: getDifference( 'maxType' ),
-			focus: getDifference( 'focus' ),
-			minFocus: getDifference( 'minFocus' ),
-			maxFocus: getDifference( 'maxFocus' ),
-			inserterOpen: getDifference( 'inserterOpen' ),
-			minInserterOpen: getDifference( 'minInserterOpen' ),
-			maxInserterOpen: getDifference( 'maxInserterOpen' ),
-			inserterSearch: getDifference( 'inserterSearch' ),
-			minInserterSearch: getDifference( 'minInserterSearch' ),
-			maxInserterSearch: getDifference( 'maxInserterSearch' ),
-			inserterHover: getDifference( 'inserterHover' ),
-			minInserterHover: getDifference( 'minInserterHover' ),
-			maxInserterHover: getDifference( 'maxInserterHover' ),
-		}
-	);
+			return parseFloat( ( ( ( y - x ) / x ) * 100 ).toFixed( 2 ) );
+		};
 
-	results[ testSuite ][ 'change %' ] = difference;
-}
-
-// 5- Formatting the results.
-log( '\n>> 🎉 Results.\n' );
-for ( const testSuite of testSuites ) {
-	/** @type {Record<string, Record<string, string>>} */
-	const invertedResult = {};
-	Object.entries( results[ testSuite ] ).reduce(
-		( acc, [ key, val ] ) => {
-			for ( const entry of Object.keys( val ) ) {
-				const suffix = key === 'change %' ? ' %' : ' ms';
-				if ( ! acc[ entry ] && isFinite( val[ entry ] ) ) {
-					acc[ entry ] = {};
-				}
-				if ( isFinite( val[ entry ] ) ) {
-					acc[ entry ][ key ] = val[ entry ] + suffix;
-				}
+		// Computing difference.
+		const difference = mapValues(
+			{
+				load: getDifference( 'load' ),
+				type: getDifference( 'type' ),
+				minType: getDifference( 'minType' ),
+				maxType: getDifference( 'maxType' ),
+				focus: getDifference( 'focus' ),
+				minFocus: getDifference( 'minFocus' ),
+				maxFocus: getDifference( 'maxFocus' ),
+				inserterOpen: getDifference( 'inserterOpen' ),
+				minInserterOpen: getDifference( 'minInserterOpen' ),
+				maxInserterOpen: getDifference( 'maxInserterOpen' ),
+				inserterSearch: getDifference( 'inserterSearch' ),
+				minInserterSearch: getDifference( 'minInserterSearch' ),
+				maxInserterSearch: getDifference( 'maxInserterSearch' ),
+				inserterHover: getDifference( 'inserterHover' ),
+				minInserterHover: getDifference( 'minInserterHover' ),
+				maxInserterHover: getDifference( 'maxInserterHover' ),
 			}
-			return acc;
-		},
-		invertedResult
-	);
-	// eslint-disable-next-line no-console
-	console.table( invertedResult );
+		);
 
-	const resultsFilename = testSuite + '-performance-results.json';
-	fs.writeFileSync(
-		path.resolve( __dirname, '../../../', resultsFilename ),
-		JSON.stringify( results[ testSuite ], null, 2 )
-	);
+		results[ testSuite ][ 'change %' ] = difference;
+	}
+
+	// 5- Formatting the results.
+	log( '\n>> 🎉 Results.\n' );
+	for ( const testSuite of testSuites ) {
+		/** @type {Record<string, Record<string, string>>} */
+		const invertedResult = {};
+		Object.entries( results[ testSuite ] ).reduce(
+			( acc, [ key, val ] ) => {
+				for ( const entry of Object.keys( val ) ) {
+					const suffix = key === 'change %' ? ' %' : ' ms';
+					if ( ! acc[ entry ] && isFinite( val[ entry ] ) ) {
+						acc[ entry ] = {};
+					}
+					if ( isFinite( val[ entry ] ) ) {
+						acc[ entry ][ key ] = val[ entry ] + suffix;
+					}
+				}
+				return acc;
+			},
+			invertedResult
+		);
+		// eslint-disable-next-line no-console
+		console.table( invertedResult );
+
+		const resultsFilename = testSuite + '-performance-results.json';
+		fs.writeFileSync(
+			path.resolve( __dirname, '../../../', resultsFilename ),
+			JSON.stringify( results[ testSuite ], null, 2 )
+		);
+	}
 }
+
+module.exports = {
+	getPerformanceTestResults,
+};

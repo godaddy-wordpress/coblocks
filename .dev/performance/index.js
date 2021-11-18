@@ -233,22 +233,11 @@ async function runPerformanceTests( branches, options ) {
 		results[ testSuite ] = {};
 		/** @type {Array<Record<string, WPPerformanceResults>>} */
 		const rawResults = [];
-		// Alternate three times between branches
+		// Run the test three times
 		for ( let i = 0; i < 3; i++ ) {
 			rawResults[ i ] = {};
 			for ( const branch of branches ) {
 				const environmentDirectory = branchDirectories[ branch ];
-				if ( !! options.testsBranch ) {
-					log(
-						'    >> Fetching the test branch: ' +
-						formats.success( options.testsBranch ) +
-						' branch'
-					);
-					await git.checkoutRemoteBranch(
-						`${ environmentDirectory }/wp-content/plugins/coblocks`,
-						options.testsBranch
-					);
-				}
 				log( '    >> Installing dependencies and building packages' );
 				await runShellScript(
 					'yarn && yarn build',
