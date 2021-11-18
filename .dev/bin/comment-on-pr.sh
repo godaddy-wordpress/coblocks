@@ -18,12 +18,12 @@ PR_ID=${PR_URL##*/}
 
 if [[ -z "${GH_AUTH_TOKEN}" ]]; then
   error "GH_AUTH_TOKEN is not set"
-  exit 0
+  exit 1
 fi
 
 if [[ -z "$PR_ID" ]]; then
   error "This is not a pull request"
-  exit 1
+  exit 0
 fi
 
 GH_LOGIN=$(curl -sS -H "Authorization: token $GH_AUTH_TOKEN" https://api.github.com/user | jq '.login' --raw-output)
