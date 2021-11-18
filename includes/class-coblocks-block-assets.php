@@ -157,13 +157,20 @@ class CoBlocks_Block_Assets {
 			$asset_file['version']
 		);
 
-		// Scripts.
-		$name       = 'coblocks-extensions'; // coblocks-extensions.js.
+		$name       = 'coblocks-extensions';
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
+		$rtl        = ! is_rtl() ? '' : '-rtl';
+
+		wp_enqueue_style(
+			$name,
+			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
+			array(),
+			$asset_file['version']
+		);
 
 		wp_enqueue_script(
-			'coblocks-extensions',
+			$name,
 			COBLOCKS_PLUGIN_URL . $filepath . '.js',
 			array_merge( $asset_file['dependencies'], array( 'wp-api' ) ),
 			$asset_file['version'],

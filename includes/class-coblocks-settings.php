@@ -55,7 +55,7 @@ class CoBlocks_Settings {
 	 */
 	public function coblocks_settings_assets() {
 		wp_localize_script(
-			'coblocks-1',
+			'coblocks-extensions',
 			'coblocksSettings',
 			array(
 				'coblocksSettingsEnabled' => (bool) apply_filters( 'coblocks_show_settings_panel', true ),
