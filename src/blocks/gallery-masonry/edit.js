@@ -25,6 +25,7 @@ import { useDispatch, useSelect } from '@wordpress/data';
  */
 import Gallery from '../../components/block-gallery/gallery';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
+import { metadata } from './';
 import { pickRelevantMediaFiles } from '../../components/block-gallery/shared-helpers';
 import useGetMedia from '../../components/block-gallery/use-get-media';
 import useGetNewImages from '../../components/block-gallery/use-get-new-images';
@@ -73,6 +74,7 @@ function GalleryEdit( props ) {
 
 	const {
 		__unstableMarkNextChangeAsNotPersistent,
+		replaceBlocks,
 		replaceInnerBlocks,
 		updateBlockAttributes,
 	} = useDispatch( blockEditorStore );
@@ -110,15 +112,27 @@ function GalleryEdit( props ) {
 
 	useEffect( () => {
 		if ( !! attributes?.images?.length && ! images?.length ) {
-			updateImages( attributes.images );
+			const newBlocks = attributes?.images.map( ( image ) => {
+				return createBlock( 'core/image', {
+					alt: image.alt,
+					caption: image.caption?.toString(),
+					id: parseInt( image.id ),
+					url: image.url,
+				} );
+			} );
+
+			const transformedBlock = createBlock( 'coblocks/gallery-masonry', {}, newBlocks );
+
+			replaceBlocks(
+				[ clientId ],
+				transformedBlock,
+			);
 		}
 	}, [] );
 
 	const imageData = useGetMedia( innerBlockImages );
 
 	const newImages = useGetNewImages( images, imageData );
-
-	// console.log( imageData, newImages );
 
 	useEffect( () => {
 		const changedAttributes = {};
@@ -196,7 +210,6 @@ function GalleryEdit( props ) {
 	}
 
 	function isValidFileType( file ) {
-		console.log( file, file.type );
 		return (
 			ALLOWED_MEDIA_TYPES.some(
 				( mediaType ) => file.type?.indexOf( mediaType ) === 0

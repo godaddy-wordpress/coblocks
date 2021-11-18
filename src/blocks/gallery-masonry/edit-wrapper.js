@@ -17,14 +17,12 @@ import EditWithoutInnerBlocks from './v1/edit';
 import { registerBlockType, unregisterBlockType } from '@wordpress/blocks';
 
 /*
-  * Using a wrapper around the logic to load the edit for v1 of Gallery block
+  * Using a wrapper around the logic to load the edit for v1 of Masonry Gallery block
   * or the refactored version with InnerBlocks. This is to prevent conditional
   * use of hooks lint errors if adding this logic to the top of the edit component.
   */
 export default function GalleryEditWrapper( props ) {
-	// This logic is used to infer version information from content with higher
-	// precedence than the flag. New galleries (and existing empty galleries) will
-	// honor the flag.
+	// This logic is used to infer version information based on existed of getBlock and getSettings selectors.
 	const { getBlock, getSettings } = useSelect( ( select ) => {
 		return {
 			getBlock: select( blockEditorStore )?.getBlock ?? undefined,
