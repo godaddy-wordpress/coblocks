@@ -23,6 +23,7 @@ const catchException = ( command ) => {
 const { getPerformanceTestResults } = require( './results.js' );
 
 program
+	.command( 'get-test-results [branches...]' )
 	.action( catchException( getPerformanceTestResults ) );
 
 program.parse( process.argv );
