@@ -816,6 +816,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/project
+      - setup_spec_files_diff_tree
       - restore_yarn_cache
       - run:
           name: Install Node dependencies
