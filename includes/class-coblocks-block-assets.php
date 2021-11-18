@@ -229,7 +229,7 @@ class CoBlocks_Block_Assets {
 		$success_text = $form->default_success_text();
 
 		wp_localize_script(
-			'coblocks-1',
+			'coblocks-extensions',
 			'coblocksBlockData',
 			array(
 				'form'                           => array(
