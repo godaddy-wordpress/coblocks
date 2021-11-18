@@ -251,8 +251,8 @@ function coblocks_register_share_block() {
 	register_block_type(
 		'coblocks/social',
 		array(
-			'editor_script'   => 'coblocks-editor',
-			'editor_style'    => 'coblocks-editor',
+			'editor_script'   => 'coblocks-1',
+			'editor_style'    => 'coblocks-1',
 			'style'           => 'coblocks-frontend',
 			'attributes'      => $metadata['attributes'],
 			'render_callback' => 'coblocks_render_share_block',

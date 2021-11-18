@@ -119,7 +119,7 @@ class CoBlocks_Layout_Selector_Tests extends WP_UnitTestCase {
 		$coblocks_block_assets->editor_assets();
 
 		coblocks_localize_layout_selector();
-		$localized = $wp_scripts->get_data( 'coblocks-editor', 'data' );
+		$localized = $wp_scripts->get_data( 'coblocks-1', 'data' );
 
 		$layouts = coblocks_layout_selector_layouts();
 		$categories = coblocks_layout_selector_categories();
@@ -144,7 +144,7 @@ class CoBlocks_Layout_Selector_Tests extends WP_UnitTestCase {
 		$coblocks_block_assets->editor_assets();
 
 		coblocks_localize_layout_selector();
-		$localized = $wp_scripts->get_data( 'coblocks-editor', 'data' );
+		$localized = $wp_scripts->get_data( 'coblocks-1', 'data' );
 
 		$this->assertContains( 'var coblocksLayoutSelector', $localized );
 		$this->assertContains( '"postTypeEnabled":""', $localized );

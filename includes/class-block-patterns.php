@@ -116,7 +116,7 @@ class CoBlocks_Block_Patterns {
 	 */
 	public function conditional_load_patterns() {
 		wp_localize_script(
-			'coblocks-editor',
+			'coblocks-1',
 			'coblocksBlockPatterns',
 			array(
 				'patternsEnabled' => is_wp_version_compatible( '5.5' ),

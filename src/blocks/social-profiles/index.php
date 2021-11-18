@@ -196,8 +196,8 @@ function coblocks_register_social_profiles_block() {
 	register_block_type(
 		'coblocks/social-profiles',
 		array(
-			'editor_script'   => 'coblocks-editor',
-			'editor_style'    => 'coblocks-editor',
+			'editor_script'   => 'coblocks-1',
+			'editor_style'    => 'coblocks-1',
 			'style'           => 'coblocks-frontend',
 			'attributes'      => $metadata['attributes'],
 			'render_callback' => 'coblocks_render_social_profiles_block',
