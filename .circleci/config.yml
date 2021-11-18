@@ -805,6 +805,10 @@ jobs:
       - setup_perf_tests
       - run_perf_tests:
           branch: master
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - *-median-results.json
 
   current_perf_tests:
     executor: php_74_node_browser_mysql
@@ -813,14 +817,23 @@ jobs:
       - setup_perf_tests
       - run_perf_tests:
           branch: ${CIRCLE_BRANCH}
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - *-median-results.json
 
   aggregate_perf_test_results:
     executor: php_74_node_browser_mysql
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/project
       - run:
           name: Aggregate performance test results
           command: echo "Aggregate the results here."
+      - run:
+          name: "Check for median test results"
+          command: "ls -la | grep *-median-results.json"
 
   # --------------------------------------------------
   # Internationalization Processes
