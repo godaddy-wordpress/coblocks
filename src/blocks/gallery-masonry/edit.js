@@ -465,7 +465,9 @@ function GalleryEdit( props ) {
 	};
 
 	const blockProps = useBlockProps( {
-		className: classnames( className ),
+		className: classnames( className, {
+			[ `has-border-radius-${ radius }` ]: radius > 0,
+		} ),
 	} );
 
 	if ( ! hasImages ) {

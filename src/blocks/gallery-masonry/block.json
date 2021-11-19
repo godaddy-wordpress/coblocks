@@ -69,6 +69,10 @@
 		"linkTo": {
 			"type": "string"
 		},
+		"radius": {
+			"type": "number",
+			"default": 0
+		},
 		"sizeSlug": {
 			"type": "string",
 			"default": "large"

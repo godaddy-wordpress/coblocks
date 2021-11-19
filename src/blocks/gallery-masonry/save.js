@@ -26,18 +26,21 @@ export default function saveWithInnerBlocks( { attributes } ) {
 		return saveWithoutInnerBlocks( { attributes } );
 	}
 
-	const { caption, lightbox, imageCrop } = attributes;
+	const { caption, lightbox, imageCrop, radius } = attributes;
 
 	const className = classnames( 'masonry-grid', {
 		'has-lightbox': lightbox,
 		'is-cropped': imageCrop,
+		[ `has-border-radius-${ radius }` ]: radius > 0,
 	} );
 
 	return (
-		<GutterWrapper { ...attributes }>
-			<figure { ...useBlockProps.save( { className } ) }>
-				<InnerBlocks.Content />
-			</figure>
+		<>
+			<GutterWrapper { ...attributes }>
+				<figure { ...useBlockProps.save( { className } ) }>
+					<InnerBlocks.Content />
+				</figure>
+			</GutterWrapper>
 			{ ! RichText.isEmpty( caption ) && (
 				<RichText.Content
 					className="blocks-gallery-caption"
@@ -45,7 +48,6 @@ export default function saveWithInnerBlocks( { attributes } ) {
 					value={ caption }
 				/>
 			) }
-		</GutterWrapper>
-
+		</>
 	);
 }

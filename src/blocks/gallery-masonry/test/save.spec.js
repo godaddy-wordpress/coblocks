@@ -1,8 +1,15 @@
 /**
+ * WordPress dependencies
+ */
+ import { registerCoreBlocks } from '@wordpress/block-library';
+ import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
+
+registerCoreBlocks();
+
+/**
  * External dependencies
  */
 import '@testing-library/jest-dom/extend-expect';
-import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
 
 /**
  * Internal dependencies.
@@ -14,11 +21,21 @@ let block;
 let serializedBlock;
 
 const baseAttributes = {
-	images: [
-		{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', id: 1 },
-		{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg', id: 2 },
-	],
+	gutter: 'medium',
 };
+
+const baseInnerBlocks = [
+	createBlock( 'core/image', { 
+		url: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', 
+		id: 1, 
+		link: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', 
+	} ),
+	createBlock( 'core/image', { 
+		url: 'https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg', 
+		id: 2, 
+		link: 'https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg', 
+	} ),
+]
 
 describe( name, () => {
 	beforeAll( () => {
@@ -28,7 +45,7 @@ describe( name, () => {
 
 	beforeEach( () => {
 		// Create the block with the minimum attributes.
-		block = createBlock( name, baseAttributes );
+		block = createBlock( name, baseAttributes, baseInnerBlocks );
 		// Reset the reused variables.
 		serializedBlock = '';
 	} );
@@ -38,14 +55,14 @@ describe( name, () => {
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
-	it( 'should render with images', () => {
+	it( 'should have `core/image` innerBlocks rendered', () => {
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( baseAttributes.images[ 0 ].url );
-		expect( serializedBlock ).toContain( `data-id="${baseAttributes.images[ 0 ].id}"` );
-		expect( serializedBlock ).toContain( `wp-image-${baseAttributes.images[ 0 ].id}` );
+		expect( serializedBlock ).toContain( 'src="https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg"' );
+		expect( serializedBlock ).toContain( 'wp:image' );
 	} );
+
 
 	it( 'should have className \'has-lightbox\' with lightbox enabled.', () => {
 		block.attributes = { ...block.attributes, lightbox: true };
@@ -55,114 +72,29 @@ describe( name, () => {
 		expect( serializedBlock ).toContain( 'has-lightbox' );
 	} );
 
-	it( 'should have figcaption element with captions enabled and caption text.', () => {
-		block.attributes = {
-			...block.attributes,
-			images: [
-				...block.attributes.images,
-				{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg', id: 3, caption: 'test caption' },
-			],
-			captions: false,
-		};
+	it( 'should have caption with `core/image` and caption with `coblocks/masonry`.', () => {
+		block.innerBlocks = [
+			...block.innerBlocks,
+			createBlock( 'core/image', { 
+				url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg', 
+				id: 3, 
+				link: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg',
+				caption: 'Test Caption', 
+			} ),
+		]
 
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).not.toContain( '<figcaption class="coblocks-gallery--caption">' );
+		expect( serializedBlock ).toContain( `src="https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg"` );
+		expect( serializedBlock ).toContain( '<figcaption>Test Caption</figcaption>' );
+		expect( serializedBlock ).not.toContain( '<figcaption class="blocks-gallery-caption">' );
 
-		block.attributes.captions = true;
+		block.attributes.caption = 'Masonry Caption';
 		serializedBlock = serialize( block );
 
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '<figcaption class="coblocks-gallery--caption">' );
-	} );
-
-	[ 'light', 'dark' ].forEach( ( captionStyle ) => {
-		it( `should have className \'has-caption-style-${ captionStyle }\' with captionStyle set to '${captionStyle}'.`, () => {
-			block.attributes = {
-					...block.attributes,
-					images: [
-						...block.attributes.images,
-						{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg', id: 3, caption: 'test caption' },
-					],
-					captions: true,
-					captionStyle,
-				};
-
-			serializedBlock = serialize( block );
-
-			expect( serializedBlock ).toBeDefined();
-			expect( serializedBlock ).toContain( `has-caption-style-${ captionStyle }` );
-		} );
-	} );
-
-	[ 'large', 'xlarge' ].forEach( ( gridSize ) => {
-		it( `should have className 'has-grid-${gridSize}' with gridSize set to '${gridSize}'.`, () => {
-			block.attributes = { ...block.attributes, gridSize };
-
-			serializedBlock = serialize( block );
-
-			expect( serializedBlock ).toBeDefined();
-			expect( serializedBlock ).toContain( `has-grid-${ gridSize }` );
-		} );
-	} );
-
-	it( 'should have custom link when linkTo is set to "custom"', () => {
-		block.attributes = {
-				...block.attributes,
-				images: [
-					...block.attributes.images,
-					{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg', id: 3, imgLink: 'http://google.com' },
-				],
-				linkTo: 'custom',
-			};
-
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'href="http://google.com"' );
-	} );
-
-	it( 'should have media link when linkTo is set to "media"', () => {
-		block.attributes = {
-				...block.attributes,
-				images: [
-					...block.attributes.images,
-					{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg', id: 3 },
-				],
-				linkTo: 'media',
-			};
-
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'href="https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg"' );
-	} );
-
-	it( 'should have attachment link when linkTo is set to "attachment"', () => {
-		block.attributes = {
-				...block.attributes,
-				images: [
-					...block.attributes.images,
-					{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg', id: 3, link: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg' },
-				],
-				linkTo: 'attachment',
-			};
-
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'href="https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg"' );
-	} );
-
-	[ 'grayscale', 'sepia', 'saturation', 'dim', 'vintage' ].forEach( ( filter ) => {
-		it( `should have className \'has-filter-${filter}\' with filter set to '${filter}'.`, () => {
-			block.attributes = { ...block.attributes, filter };
-			serializedBlock = serialize( block );
-
-			expect( serializedBlock ).toBeDefined();
-			expect( serializedBlock ).toContain( `has-filter-${ filter }` );
-		} );
+		expect( serializedBlock ).toContain( '<figcaption class="blocks-gallery-caption">' );
+		expect( serializedBlock ).toContain( 'Masonry Caption' );
 	} );
 
 	it( 'should have className \'has-border-radius-10\' with radius set to 10.', () => {
