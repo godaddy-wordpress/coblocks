@@ -50,7 +50,7 @@ BOT_COMMENTS=$(curl -sS \
   -H "Accept: application/vnd.github.v3+json" \
   "https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/issues/$PR_ID/comments")
 
-COMMENT=$(echo $BOT_COMMENTS | jq '[.[] | select( .user.login == "godaddy-wordpress-bot" and ( .body | contains( "Code Coverage" ) | not ) and ( .body | contains( "Test summary" ) | not ) )]' | jq '.[-1]')
+COMMENT=$(echo $BOT_COMMENTS | jq '[.[] | select( .user.login == "godaddy-wordpress-bot" and ( .body | contains( "Code Coverage" ) | not ) )]' | jq '.[-1]')
 
 # Bot has not commented on the issue, create new comment
 if [ 'null' == "$COMMENT" ]; then
