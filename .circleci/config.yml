@@ -127,11 +127,11 @@ workflows:
           filters:
             tags:
               only: /^(?!canary).*$/
-          requires:
-            - build
+
       - css:
-         requires:
-           - build
+          filters:
+            tags:
+              only: /^(?!canary).*$/
 
       # UNIT TESTING
       # Support PHP Versions: http://php.net/supported-versions.php
@@ -140,25 +140,25 @@ workflows:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - php
+            - build
       - unit_testing_php_73:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - php
+            - build
       - unit_testing_php_74:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - php
+            - build
       - unit_testing_php_80:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - php
+            - build
       - js:
           filters:
             tags:
@@ -172,52 +172,33 @@ workflows:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - css
-            - unit_testing_php_56
-            - unit_testing_php_73
-            - unit_testing_php_74
-            - unit_testing_php_80
-            - js
+            - build
       - e2e_firefox_wp_latest:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - css
-            - unit_testing_php_56
-            - unit_testing_php_73
-            - unit_testing_php_74
-            - unit_testing_php_80
-            - js
-      #- e2e_chrome_wp_previous_major:
+            - build
+      # - e2e_chrome_wp_previous_major:
       #    filters:
       #      tags:
       #        only: /^(?!canary).*$/
-      #    requires:
-      #      - css
-      #      - unit_testing_php_56
-      #      - unit_testing_php_73
-      #      - unit_testing_php_74
-      #      - unit_testing_php_80
-      #      - js
+      #     requires:
+      #       - build
 
       # PERF TESTING
       - perf_tests:
           filters:
             tags:
               only: /^(?!canary).*$/
-          requires:
-            - css
-            - unit_testing_php_56
-            - unit_testing_php_73
-            - unit_testing_php_74
-            - js
 
       - canary-release:
           filters:
             branches:
               only: master
           requires:
+            - php
+            - css
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
@@ -228,6 +209,8 @@ workflows:
             branches:
               only: master
           requires:
+            - php
+            - css
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
@@ -236,6 +219,8 @@ workflows:
 
       - deploy:
           requires:
+            - php
+            - css
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
