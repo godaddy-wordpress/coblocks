@@ -53,6 +53,7 @@ module.exports = {
 	output: {
 		...defaultConfig.output,
 		path: path.resolve( process.cwd(), 'dist/' ),
+		publicPath: 'auto',
 	},
 
 	plugins: [
