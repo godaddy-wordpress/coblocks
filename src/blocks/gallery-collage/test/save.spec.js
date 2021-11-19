@@ -41,14 +41,18 @@ describe( name, () => {
 	it( 'should render with images', () => {
 		serializedBlock = serialize( block );
 
-		// expect(console).toHaveErrored() should be removed with this issue.
-		// https://github.com/godaddy-wordpress/coblocks/issues/2024
-		expect(console).toHaveErrored()
-
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( baseAttributes.images[ 0 ].url );
 		expect( serializedBlock ).toContain( `data-id="${baseAttributes.images[ 0 ].id}"` );
 		expect( serializedBlock ).toContain( `wp-image-${baseAttributes.images[ 0 ].id}` );
+	} );
+
+	it( 'should not render image if URL is not defined', () => {
+		block.attributes = { images: [ { id: 1, index: 0 } ] };
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).not.toContain( 'img' );
 	} );
 
 	it( 'should have className \'has-lightbox\' with lightbox enabled.', () => {
@@ -97,6 +101,20 @@ describe( name, () => {
 
 			expect( serializedBlock ).toBeDefined();
 			expect( serializedBlock ).toContain( `has-caption-style-${ captionStyle }` );
+		} );
+	} );
+
+	[ 'is-style-tiled', 'is-style-layered' ].forEach( ( layoutStyle ) => {
+		it( `should have className \'${ layoutStyle }\'.`, () => {
+			block.attributes = {
+					...block.attributes,
+					className: layoutStyle
+				};
+
+			serializedBlock = serialize( block );
+
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( layoutStyle );
 		} );
 	} );
 

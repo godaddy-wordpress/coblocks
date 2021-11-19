@@ -39,6 +39,7 @@ import { name as formRadioBlockName, settings as formRadioBlockSettings } from '
  * WordPress dependencies
  */
 import { registerBlockType, unregisterBlockType, createBlock, getBlockTransforms, serialize, parse } from '@wordpress/blocks';
+import { removeFilter } from '@wordpress/hooks';
 
 /**
  * Register all gallery blocks to be used for transforms testing.
@@ -102,6 +103,8 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 	let deprecatedSettings;
 	let deprecatedBlockType;
 
+	removeFilter( 'blocks.registerBlockType', 'core/lock/addAttribute' );
+
 	blockSettings.deprecated.forEach( ( deprecated, index ) => {
 		// Register the deprecated block to get the attributes with filters applied.
 		deprecatedSettings = Object.assign(
@@ -160,8 +163,8 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 				if ( blockVariations[ attribute ] && Array.isArray( blockVariations[ attribute ] ) ) {
 					testVariations = blockVariations[ attribute ];
 				} else {
-					testVariations = blockVariations[ attribute ].values;
-					testBaseAttributes = blockVariations[ attribute ].baseAttributes || {};
+					testVariations = blockVariations[ attribute ]?.values || [];
+					testBaseAttributes = blockVariations[ attribute ]?.baseAttributes || {};
 				}
 
 				testVariations.forEach( ( variation ) => {
@@ -183,26 +186,6 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 						registerBlockType( blockName, { category: 'common', ...blockSettings } );
 
 						const blocks = parse( deprecatedSerialized );
-
-						// This assertion should be removed when issue #2025 is resolved.
-						// https://github.com/godaddy-wordpress/coblocks/issues/2025
-						const IssueBlocks = [
-							'coblocks/column',
-							'coblocks/hero',
-							'coblocks/gallery-stacked',
-							'coblocks/gallery-masonry',
-						];
-						// The indexToCheckAgainst refers to the block deprecated.js array of attributes and save functions.
-						// Index is relevant because specific deprecated save functions cause the keys bug reported in #2025.
-						const indexToCheckAgainst = ( blockName === 'coblocks/column' ) ? 1 : 0;
-						if (
-							IssueBlocks.includes( blockName ) &&
-							attribute === 'backgroundType' &&
-							JSON.stringify( variation ) === '"video"' &&
-							index === indexToCheckAgainst
-						) {
-							expect( console ).toHaveErrored();
-						}
 
 						expect(
 							blocks.filter( ( block ) => ! block.isValid ).map( filterBlockObjectResult )

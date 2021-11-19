@@ -16,9 +16,6 @@ describe( 'Test CoBlocks Click to Tweet Block', function() {
 
 		helpers.viewPage();
 
-		cy.get( '.wp-block-coblocks-click-to-tweet' )
-			.should( 'not.exist' );
-
 		helpers.editPage();
 	} );
 
@@ -32,12 +29,11 @@ describe( 'Test CoBlocks Click to Tweet Block', function() {
 
 		cy.get( '.wp-block-coblocks-click-to-tweet__via' ).type( 'TestUsername' );
 		cy.get( '.wp-block-coblocks-click-to-tweet__text' ).focus().type( 'Some custom data here.' );
+		cy.get( '.wp-block-coblocks-click-to-tweet__twitter-btn' ).focus().type( 'Click to tweet' );
 
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/click-to-tweet' );
-
-		helpers.viewPage();
 
 		cy.get( '.wp-block-coblocks-click-to-tweet' )
 			.should( 'exist' );
@@ -46,9 +42,9 @@ describe( 'Test CoBlocks Click to Tweet Block', function() {
 			.contains( 'Some custom data here.' );
 
 		cy.get( '.wp-block-coblocks-click-to-tweet__twitter-btn' )
-			.should( 'have.attr', 'href' )
-			.and( 'match', /Some\%20custom%20data%20here/ )
-			.and( 'match', /&via\=TestUsername/ );
+			.contains( 'Click to tweet' );
+
+		helpers.viewPage();
 
 		helpers.editPage();
 	} );

@@ -1,11 +1,8 @@
-import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-
-configure( { adapter: new Adapter() } );
-
 // TODO: Utilize the REST API without the global.
 // Backbone REST API client
 global.wp = {};
+
+global.CSS = {};
 
 // Prevent console messages when running tests.
 console = {
@@ -19,8 +16,12 @@ console = {
 	 * `expect( console ).toHaveWarned();` however there are inconsistent results between
 	 * various assertions making it difficult to conditionally assert with `jest-console`
 	 */
+	groupCollapsed: () => { },
 	info: () => { },
 	warn: () => { },
 };
 
-global.coblocksLayoutSelector = { layouts: [], categories: [] };
+global.coblocksLayoutSelector = {
+	categories: [],
+	layouts: [],
+};

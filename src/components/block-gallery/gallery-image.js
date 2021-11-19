@@ -12,7 +12,7 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
+import { Component, Fragment, createRef } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { Spinner, Button, Dashicon, ButtonGroup } from '@wordpress/components';
 import { MediaUpload, MediaUploadCheck, RichText, URLInput } from '@wordpress/block-editor';
@@ -28,7 +28,6 @@ class GalleryImage extends Component {
 		this.onImageClick = this.onImageClick.bind( this );
 		this.onSelectCaption = this.onSelectCaption.bind( this );
 		this.onKeyDown = this.onKeyDown.bind( this );
-		this.bindContainer = this.bindContainer.bind( this );
 		this.saveCustomLink = this.saveCustomLink.bind( this );
 
 		this.state = {
@@ -36,10 +35,7 @@ class GalleryImage extends Component {
 			captionFocused: false,
 			isSaved: false,
 		};
-	}
-
-	bindContainer( ref ) {
-		this.container = ref;
+		this.container = createRef();
 	}
 
 	onSelectCaption() {
@@ -68,10 +64,10 @@ class GalleryImage extends Component {
 	}
 
 	onKeyDown( event ) {
+		const doc = this.container.current.ownerDocument;
+
 		if (
-			// Disable issue: https://github.com/godaddy-wordpress/coblocks/issues/2000
-			// eslint-disable-next-line @wordpress/no-global-active-element
-			this.container === document.activeElement &&
+			this.container === doc.activeElement &&
 			this.props.isSelected && [ BACKSPACE, DELETE ].indexOf( event.keyCode ) !== -1
 		) {
 			event.stopPropagation();
@@ -191,7 +187,7 @@ class GalleryImage extends Component {
 		// Disable reason: Each block can be selected by clicking on it and we should keep the same saved markup
 		/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 		return (
-			<figure className={ className } tabIndex="-1" onKeyDown={ this.onKeyDown } ref={ this.bindContainer }>
+			<figure className={ className } tabIndex="-1" onKeyDown={ this.onKeyDown } ref={ this.container }>
 				{ isSelected && (
 					<>
 						<ButtonGroup className="block-library-gallery-item__inline-menu is-right is-visible">

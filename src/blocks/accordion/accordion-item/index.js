@@ -9,6 +9,7 @@ import { AccordionItemIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 import edit from './edit';
 import metadata from './block.json';
 import save from './save';
+import deprecated from './deprecated';
 
 /**
  * WordPress dependencies
@@ -43,6 +44,7 @@ const settings = {
 	attributes,
 	edit,
 	save,
+	deprecated,
 };
 
 export { name, category, metadata, settings };

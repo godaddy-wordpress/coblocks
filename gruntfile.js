@@ -8,7 +8,10 @@ module.exports = function( grunt ) {
 		pkg,
 
 		clean: {
-			build: [ 'build/' ],
+			build: [
+				'build/',
+				'dist/**/*.map',
+			],
 		},
 
 		copy: {
@@ -20,6 +23,7 @@ module.exports = function( grunt ) {
 							'!**/*.{ai,eps,psd}',
 							'LICENSE',
 							'class-' + pkg.name + '.php',
+							'assets/**',
 							'dist/**',
 							'includes/**',
 							'readme.txt',

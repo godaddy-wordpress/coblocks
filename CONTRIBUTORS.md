@@ -48,3 +48,5 @@ This list is manually curated to include valuable contributions by volunteers th
 | @kishanjasani     | @kishanjasani          |
 | @olafleur         |                        |
 | @ehamwey          |                        |
+| @amenk            |                        |
+| @frozzare         |                        |

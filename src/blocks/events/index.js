@@ -7,6 +7,7 @@ import { EventsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * Internal dependencies.
  */
 import edit from './edit';
+import example from './example';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
@@ -36,6 +37,7 @@ const settings = {
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
+	example,
 	transforms,
 	edit,
 	save,

@@ -1,20 +1,20 @@
 /**
  * External dependencies
  */
-import times from 'lodash/times';
-import memoize from 'memize';
 import Inspector from './inspector';
+import memoize from 'memize';
+import times from 'lodash/times';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { createBlock } from '@wordpress/blocks';
 import { Fragment } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { Button, Tooltip } from '@wordpress/components';
-import { useSelect, useDispatch } from '@wordpress/data';
-import { createBlock } from '@wordpress/blocks';
 import { Icon, plus } from '@wordpress/icons';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
@@ -57,7 +57,7 @@ const AccordionEdit = ( props ) => {
 		getSelectedBlockClientId,
 		getBlockAttributes,
 		isSelected,
-	} = useSelect( 'core/block-editor' );
+	} = useSelect( ( select ) => select( 'core/block-editor' ), [] );
 
 	// Get clientID of the parent block.
 	const rootClientId = getBlockHierarchyRootClientId( clientId );
@@ -117,16 +117,16 @@ const AccordionEdit = ( props ) => {
 			) }
 			<div className={ className }>
 				<InnerBlocks
-					template={ getCount( count ) }
-					allowedBlocks={ ALLOWED_BLOCKS }
 					__experimentalCaptureToolbars={ true }
+					allowedBlocks={ ALLOWED_BLOCKS }
+					template={ getCount( count ) }
 				/>
 				{ isBlockSelected && (
 					<div className="coblocks-block-appender">
 						<Tooltip text={ __( 'Add accordion item', 'coblocks' ) }>
 							<Button
-								label={ __( 'Add accordion item', 'coblocks' ) }
 								className="block-editor-button-block-appender"
+								label={ __( 'Add accordion item', 'coblocks' ) }
 								onMouseDown={ handleEvent }
 							>
 								<Icon icon={ plus } />

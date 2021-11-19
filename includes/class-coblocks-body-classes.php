@@ -21,6 +21,7 @@ class CoBlocks_Body_Classes {
 	 * The Constructor.
 	 */
 	public function __construct() {
+		// Filters.
 		add_filter( 'body_class', array( $this, 'body_class' ) );
 		add_filter( 'admin_body_class', array( $this, 'admin_body_class' ) );
 	}
@@ -112,6 +113,7 @@ class CoBlocks_Body_Classes {
 
 		return $classes;
 	}
+
 }
 
 new CoBlocks_Body_Classes();

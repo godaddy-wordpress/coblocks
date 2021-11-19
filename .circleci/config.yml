@@ -1,3 +1,110 @@
+version: 2.1
+
+orbs:
+  jq: circleci/jq@2.2.0
+
+executors:
+  node_latest:
+    docker:
+      - image: circleci/node:latest
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_73_node:
+    docker:
+      - image: circleci/php:7.3-node
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_56_mysql:
+    docker:
+      - image: circleci/php:5.6
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+      - image: circleci/mysql:5.7-ram
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_73_mysql:
+    docker:
+      - image: circleci/php:7.3.31-apache-node
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+        environment:
+          XDEBUG_MODE=coverage
+      - image: circleci/mysql:5.7-ram
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_73_node_browser_legacy:
+     docker:
+      - image: circleci/php:7.3-node-browsers-legacy
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_74_mysql:
+    docker:
+      - image: circleci/php:7.4.24-apache-node
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+        environment:
+          XDEBUG_MODE=coverage
+      - image: circleci/mysql:5.7-ram
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_74_node_browser_mysql:
+    docker:
+      - image: circleci/php:7.4.24-node-browsers
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+      - image: circleci/mysql:5.7-ram
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_74_node_browser_mysql_mailhog:
+    docker:
+      - image: circleci/php:7.4.24-node-browsers
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+      - image: circleci/mysql:5.7-ram
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+      - image: mailhog/mailhog:v1.0.1
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_80_mysql:
+    docker:
+      - image: circleci/php:8.0.11-apache-node
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+        environment:
+          XDEBUG_MODE=coverage
+      - image: circleci/mysql:5.7-ram
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_74_node:
+    docker:
+      - image: cimg/php:7.4.24-node
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  go_node_browser_legacy:
+    docker:
+      - image: circleci/golang:latest-node-browsers-legacy
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+
 workflows:
   version: 2
   main:
@@ -6,6 +113,14 @@ workflows:
           filters:
             tags:
               only: /^(?!canary).*$/
+
+      - pr_artifact_comment:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore:
+                - master
 
       # CODE LINTING
       - php:
@@ -38,6 +153,12 @@ workflows:
               only: /^(?!canary).*$/
           requires:
             - php
+      - unit_testing_php_80:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - php
       - js:
           filters:
             tags:
@@ -46,7 +167,7 @@ workflows:
             - build
 
       # END TO END TESTING
-      - e2e_chrome:
+      - e2e_chrome_wp_latest:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -55,8 +176,9 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
+            - unit_testing_php_80
             - js
-      - e2e_firefox:
+      - e2e_firefox_wp_latest:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -65,8 +187,20 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
+            - unit_testing_php_80
             - js
-            
+      #- e2e_chrome_wp_previous_major:
+      #    filters:
+      #      tags:
+      #        only: /^(?!canary).*$/
+      #    requires:
+      #      - css
+      #      - unit_testing_php_56
+      #      - unit_testing_php_73
+      #      - unit_testing_php_74
+      #      - unit_testing_php_80
+      #      - js
+
       # PERF TESTING
       - perf_tests:
           filters:
@@ -87,6 +221,7 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
+            - unit_testing_php_80
             - js
       - i18n:
           filters:
@@ -96,6 +231,7 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
+            - unit_testing_php_80
             - js
 
       - deploy:
@@ -103,6 +239,7 @@ workflows:
             - unit_testing_php_56
             - unit_testing_php_73
             - unit_testing_php_74
+            - unit_testing_php_80
             - js
             # - e2e_firefox
             # - e2e_chrome
@@ -111,8 +248,6 @@ workflows:
               only: /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*)?(\+[0-9-]+(\.[0-9]+)*)?/ # Run on semantic version tags only
             branches:
               ignore: /.*/
-
-version: 2.1
 
 commands:
 
@@ -140,24 +275,38 @@ commands:
       - run:
           name: Set diff files env var
           command: |
-            FILES=$(git diff origin/$BASE_BRANCH..HEAD --name-only --diff-filter=MAd "*<< parameters.ext >>")
+            FILES=$(git diff $(git merge-base HEAD $BASE_BRANCH) --name-only --diff-filter=MAd "*<< parameters.ext >>")
             echo "export FILES='$FILES'" >> $BASH_ENV
             source $BASH_ENV
 
   # Install and configure WordPress for end-to-end tests.
   install_wordpress_with_coblocks:
     description: ""
+    parameters:
+      wpversion:
+        type: string
+        default: latest
     steps:
       - run:
           name: Update hosts
           command: echo 127.0.0.1 coblocks.test | sudo tee -a /etc/hosts
+      - jq/install
+      - run:
+          name: 'Determine which version to install'
+          command: |
+            WPVERSION=<< parameters.wpversion >>
+            if [ "$WPVERSION" == "previous_major" ]; then
+              WPVERSION=$(curl -s http://api.wordpress.org/core/stable-check/1.0/ | jq 'keys' | jq -r 'map(select(. | test("^[\\d]+.[\\d]+$")))' | jq .[-2])
+            fi
+            echo "export WPVERSION=$WPVERSION" >> $BASH_ENV
+            source $BASH_ENV
       - run:
           name: Install WordPress
           command: |
             sudo apt-get update --allow-releaseinfo-change && sudo apt-get install -y subversion default-mysql-client
             sudo -E docker-php-ext-install mysqli
             mkdir -p /tmp/wordpress
-            ./vendor/bin/wp core download --path=/tmp/wordpress
+            ./vendor/bin/wp core download --version=$WPVERSION --path=/tmp/wordpress
             ./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass='' --path=/tmp/wordpress
             ./vendor/bin/wp db create --path=/tmp/wordpress
             ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=/tmp/wordpress
@@ -227,17 +376,32 @@ commands:
     parameters:
       browser:
         type: string
+      wpversion:
+        type: string
+        default: latest
     steps:
+      - checkout
+      - setup_e2e_env_var
+      - changed_files_with_extension:
+          ext: ".js"
+      - disable_xdebug_php_extension
+      - attach_workspace:
+          at: ~/project
+      - restore_yarn_cache
+      - restore_update_cypress_cache
+      - restore_composer_cache
+      - wait_for_mysql
+      - install_wordpress_with_coblocks:
+          wpversion: "<< parameters.wpversion >>"
+      - enable_debug_mode_for_e2e
+      - install_mailhog_plugin
+      - start_wpcli_server
       - run:
           name: Run end to end tests (Cypress.io) - << parameters.browser >>
           command: |
             touch cypress.env.json
             echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
-            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ] || [ "$CIRCLE_BRANCH" == *"run-all-tests"* ]; then
-              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>
-            else
-              ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >> --spec "$(cat /tmp/specstring | xargs | sed -e 's/ /,/g')"
-            fi
+            ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>-wp-<< parameters.wpversion >>
 
   run_perf_tests:
     steps:
@@ -279,18 +443,13 @@ commands:
             echo "export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH" >> $BASH_ENV
             source /home/circleci/.bashrc
 
-  install_mailhog:
+  install_mailhog_plugin:
     steps:
       - run:
-          name: "Install Mailhog"
-          command: bash .dev/bin/install-mailhog.sh
-
-  start_mailhog:
-    steps:
-      - run:
-          name: "Start Mailhog"
-          command: "MailHog"
-          background: true
+          name: "Install Mailhog WP Plugin"
+          command: |
+            mkdir /tmp/wordpress/wp-content/mu-plugins
+            cp /home/circleci/project/.dev/mailhog.php /tmp/wordpress/wp-content/mu-plugins/mailhog.php
 
   setup_spec_files_diff_tree:
     steps:
@@ -311,11 +470,23 @@ commands:
               circleci-agent step halt
             fi
 
-  run_phpunit_singlesite_coverage_reports:
+  run_phpunit_singlesite_with_coverage_reports:
     steps:
       - run:
           name: "Run PHPUnit - Single Site - Generate Coverage Reports"
           command: composer run test -- --coverage-html=/tmp/artifacts/code-coverage/phpunit/html --log-junit=/tmp/artifacts/code-coverage/phpunit/results.xml
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+
+  run_phpunit:
+    parameters:
+      multisite:
+        type: integer
+        default: 0
+    steps:
+      - run: echo "0 Single mode, 1 Multiside mode. Current mode = << parameters.multisite >>"
+      - run:
+          name: "Run PHPUnit"
+          command: WP_MULTISITE=<< parameters.multisite >> composer run test
           working_directory: /tmp/wordpress/wp-content/plugins/coblocks
 
   install_wordpress_testing_suite:
@@ -325,6 +496,43 @@ commands:
           command: |
             bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
+
+  run_php_unit_tests:
+    parameters:
+      useComposerV1:
+        type: boolean
+        default: false
+      reportCoverage:
+        type: boolean
+        default: true
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project
+      - restore_composer_cache
+      - when:
+          condition: << parameters.useComposerV1 >>
+          steps:
+            - run:
+                name: Install Composer v1
+                command: sudo composer self-update --1
+      - wait_for_mysql
+      - install_wordpress_testing_suite
+      - when:
+          condition: << parameters.reportCoverage >>
+          steps:
+            - run_phpunit_singlesite_with_coverage_reports
+            - store_artifacts:
+                path: /tmp/artifacts/code-coverage/
+                destination: phpunit-coverage
+            - store_test_results:
+                path: /tmp/artifacts/code-coverage/
+      - unless:
+          condition: << parameters.reportCoverage >>
+          steps:
+            - run_phpunit
+      - run_phpunit:
+          multisite: 1
 
 jobs:
 
@@ -341,6 +549,10 @@ jobs:
       - checkout
       - disable_xdebug_php_extension
       - restore_yarn_cache
+      - run:
+          name: Store the build number
+          command: |
+            echo ${CIRCLE_BUILD_NUM} > build-num.txt
       - run:
           name: Install Node dependencies
           command: |
@@ -365,13 +577,44 @@ jobs:
       - run:
           name: Build the plugin
           command: |
-            npx wp-scripts build --config .dev/config/webpack.ci.config.js
+            mkdir -p /tmp/artifacts
+            yarn build
             npx grunt clean:build copy:build
+            COBLOCKS_VERSION_LINE=$(awk '/\* Version:/' ./build/coblocks/class-coblocks.php)
+            VER_NUMBER=$(echo "$COBLOCKS_VERSION_LINE" | tr -dc '0-9.')
+            if [ "$CIRCLE_BRANCH" != 'master' ]; then
+              COBLOCKS_COMMIT_HASH=$(git rev-parse --verify HEAD | head -c 7)
+              sed -i -e "s/${VER_NUMBER}/${VER_NUMBER}-${CIRCLE_PULL_REQUEST##*/}+${COBLOCKS_COMMIT_HASH}/g" build/coblocks/class-coblocks.php
+            fi
+            cd build
+            if [ "$CIRCLE_BRANCH" == 'master' ]; then
+              zip -r "coblocks-v${VER_NUMBER}.zip" coblocks
+            else
+              zip -r "coblocks-${CIRCLE_PULL_REQUEST##*/}.zip" coblocks
+            fi
+            mv ~/project/build/*.zip /tmp/artifacts
+      - store_artifacts:
+          path: /tmp/artifacts
       - persist_to_workspace:
           root: ~/project
           paths:
             - build
             - dist
+            - build-num.txt
+
+  pr_artifact_comment:
+    docker:
+      - image: circleci/php:7.4-node
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Send Comment
+          command: bash .dev/bin/comment-on-pr.sh
 
   # --------------------------------------------------
   # Code Quality Checks
@@ -379,11 +622,7 @@ jobs:
 
   # Run phpcs on changed php files only.
   php:
-    docker:
-      - image: circleci/php:7.3
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: php_74_node
     steps:
       - checkout
       - changed_files_with_extension:
@@ -395,17 +634,19 @@ jobs:
       - run:
           name: Install Composer v1
           command: sudo composer self-update --1
+      - restore_cache:
+          key: phpcs-coblocks-cache
       - run:
           name: "Linting PHP"
           command: composer run lint $FILES
+      - save_cache:
+          key: phpcs-coblocks-cache
+          paths:
+            - /tmp/phpcs-coblocks-cache
 
   # Run stylelint on changed stylesheet files only.
   css:
-    docker:
-      - image: circleci/node:latest
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: node_latest
     steps:
       - checkout
       - changed_files_with_extension:
@@ -423,103 +664,31 @@ jobs:
   # --------------------------------------------------
 
   unit_testing_php_56:
-    docker:
-      - image: circleci/php:5.6
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: php_56_mysql
     steps:
-      - checkout
-      - attach_workspace:
-          at: ~/project
-      - restore_composer_cache
-      - wait_for_mysql
-      - install_wordpress_testing_suite
-      - run_phpunit_singlesite_coverage_reports
-      - store_artifacts:
-          path: /tmp/artifacts/code-coverage/
-          destination: phpunit-coverage
-      - store_test_results:
-          path: /tmp/artifacts/code-coverage/
-      - run:
-          name: "Run PHPUnit - Multi Site"
-          command: WP_MULTISITE=1 composer run test
-          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+      - run_php_unit_tests
 
   unit_testing_php_73:
-    docker:
-      - image: circleci/php:7.3.23-apache-node
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: php_73_mysql
     steps:
-      - checkout
-      - attach_workspace:
-          at: ~/project
-      - restore_composer_cache
-      - run:
-          name: Install Composer v1
-          command: sudo composer self-update --1
-      - wait_for_mysql
-      - install_wordpress_testing_suite
-      - run_phpunit_singlesite_coverage_reports
-      - store_artifacts:
-          path: /tmp/artifacts/code-coverage/
-          destination: phpunit-coverage
-      - store_test_results:
-          path: /tmp/artifacts/code-coverage/
-      - run:
-          name: "Run PHPUnit - Multi Site"
-          command: WP_MULTISITE=1 composer run test
-          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+      - run_php_unit_tests:
+          useComposerV1: true
 
   unit_testing_php_74:
-    docker:
-      - image: circleci/php:7.4.15-apache-node
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-        environment:
-          XDEBUG_MODE=coverage
-      - image: circleci/mysql:5.7
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: php_74_mysql
     steps:
-      - checkout
-      - attach_workspace:
-          at: ~/project
-      - restore_composer_cache
-      - run:
-          name: Install Composer v1
-          command: sudo composer self-update --1
-      - wait_for_mysql
-      - install_wordpress_testing_suite
-      - run_phpunit_singlesite_coverage_reports
-      - store_artifacts:
-          path: /tmp/artifacts/code-coverage/
-          destination: phpunit-coverage
-      - store_test_results:
-          path: /tmp/artifacts/code-coverage/
-      - run:
-          name: "Run PHPUnit - Multi Site"
-          command: WP_MULTISITE=1 composer run test
-          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+      - run_php_unit_tests:
+          useComposerV1: true
+
+  unit_testing_php_80:
+    executor: php_80_mysql
+    steps:
+      - run_php_unit_tests:
+          useComposerV1: true
+          reportCoverage: false # we are currently using an incompatible phpunit library for coverage reporting in PHP 8
 
   js:
-    docker:
-      - image: cimg/php:7.4.22-node
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: php_74_node
     steps:
       - checkout
       - changed_files_with_extension:
@@ -530,7 +699,7 @@ jobs:
       - run:
           name: "Linting JS"
           command: |
-            if [ "$CIRCLE_BRANCH" == "master" ]; then
+            if [[ "$CIRCLE_BRANCH" == "master" || -z "$FILES" ]]; then
               exit 0
             else
               yarn lint:js $FILES
@@ -538,8 +707,7 @@ jobs:
       - run:
           name: "Test JS and Collect Coverage"
           command: |
-            rm -rf node_modules/ && yarn && yarn build
-            yarn test:js:coverage --maxWorkers=1 --reporters=default --reporters=jest-junit
+            yarn test:js:coverage --maxWorkers=2 --reporters=default --reporters=jest-junit
           environment:
             JEST_JUNIT_OUTPUT_DIR: /tmp/artifacts/tests-results/jest
       - store_artifacts:
@@ -560,80 +728,30 @@ jobs:
   # End to End Testing
   # --------------------------------------------------
 
-  e2e_chrome:
-    docker:
-      - image: circleci/php:7.3.23-node-browsers
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-    parallelism: 4
+  e2e_chrome_wp_latest:
+    executor: php_74_node_browser_mysql_mailhog
+    parallelism: 11
     steps:
-      - checkout
-      - setup_e2e_env_var
-      - changed_files_with_extension:
-          ext: ".js"
-      - setup_spec_files_diff_tree
-      - disable_xdebug_php_extension
-      - attach_workspace:
-          at: ~/project
-      - restore_yarn_cache
-      - restore_update_cypress_cache
-      - restore_composer_cache
-      - wait_for_mysql
-      - install_wordpress_with_coblocks
-      - enable_debug_mode_for_e2e
-      - install_mailhog
-      - start_mailhog
-      - start_wpcli_server
       - run_e2e_tests:
           browser: chrome
 
-  e2e_firefox:
-    docker:
-      - image: circleci/php:7.3.23-node-browsers
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-    parallelism: 4
+  e2e_firefox_wp_latest:
+    executor: php_74_node_browser_mysql_mailhog
+    parallelism: 11
     steps:
-      - checkout
-      - setup_e2e_env_var
-      - changed_files_with_extension:
-          ext: ".js"
-      - setup_spec_files_diff_tree
-      - disable_xdebug_php_extension
-      - attach_workspace:
-          at: ~/project
-      - restore_yarn_cache
-      - restore_update_cypress_cache
-      - restore_composer_cache
-      - wait_for_mysql
-      - install_wordpress_with_coblocks
-      - enable_debug_mode_for_e2e
-      - install_mailhog
-      - start_mailhog
-      - start_wpcli_server
       - run_e2e_tests:
           browser: firefox
 
+  e2e_chrome_wp_previous_major:
+    executor: php_74_node_browser_mysql_mailhog
+    parallelism: 11
+    steps:
+      - run_e2e_tests:
+          browser: chrome
+          wpversion: previous_major
+
   perf_tests:
-    docker:
-      - image: circleci/php:7.3.23-node-browsers
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: php_74_node_browser_mysql
     steps:
       - checkout
       - setup_e2e_env_var
@@ -664,11 +782,7 @@ jobs:
   # Internationalization Processes
   # --------------------------------------------------
   i18n:
-    docker:
-      - image: circleci/php:7.3-node-browsers-legacy
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: php_73_node_browser_legacy
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -702,11 +816,7 @@ jobs:
             fi
 
   canary-release:
-    docker:
-      - image: circleci/golang:latest-node-browsers-legacy
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: go_node_browser_legacy
     steps:
       - checkout
       - attach_workspace:
@@ -736,9 +846,10 @@ jobs:
           command: |
             mkdir -p /tmp/artifacts
             npx grunt build
-            COBLOCKS_VERSION_LINE=$(awk '/\* Version:/{ print NR; exit }' build/coblocks/class-coblocks.php)
+            COBLOCKS_VERSION_LINE=$(awk '/\* Version:/' ./build/coblocks/class-coblocks.php)
+            VER_NUMBER=$(echo "$COBLOCKS_VERSION_LINE" | tr -dc '0-9.')
             COBLOCKS_COMMIT_HASH=$(git rev-parse --verify HEAD | head -c 7)
-            sed -i -e "${COBLOCKS_VERSION_LINE}s/$/-${COBLOCKS_COMMIT_HASH}/" build/coblocks/class-coblocks.php
+            sed -i -e "s/${VER_NUMBER}/${VER_NUMBER}-canary+${COBLOCKS_COMMIT_HASH}/g" build/coblocks/class-coblocks.php
             npm run json2po
             npm run po2mo
             npm run po2jed
@@ -749,7 +860,7 @@ jobs:
             mv coblocks-canary.zip /tmp/artifacts/coblocks-canary.zip
       - run:
           name: Create a canary release on GitHub
-          command: ghr -t ${GH_ACCESS_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "Latest build of the master branch. This bleeding edge version is for testing purposes only and should not be used in production." -delete -prerelease -replace canary /tmp/artifacts/coblocks-canary.zip
+          command: ghr -t ${GH_AUTH_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "Latest build of the master branch. This bleeding edge version is for testing purposes only and should not be used in production." -delete -prerelease -replace canary /tmp/artifacts/coblocks-canary.zip
       - deploy:
           name: Deploy CoBlocks canary to the WPNUX site
           command: |
@@ -762,11 +873,7 @@ jobs:
   # Plugin Deployment to WordPress.org
   # --------------------------------------------------
   deploy:
-    docker:
-      - image: circleci/golang:latest-node-browsers-legacy
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+    executor: go_node_browser_legacy
     steps:
       - checkout
       - attach_workspace:

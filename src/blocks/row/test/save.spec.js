@@ -12,7 +12,6 @@ import { layoutOptions } from '../utilities';
 
 // Make variables accessible for all tests.
 let block;
-let serializedBlock;
 
 describe( name, () => {
 	beforeAll( () => {
@@ -23,15 +22,12 @@ describe( name, () => {
 	beforeEach( () => {
 		// Create the block with the minimum attributes.
 		block = createBlock( name );
-
-		// Reset the reused variables.
-		serializedBlock = '';
 	} );
 
 	it( 'should render column counts', () => {
 		[ 1, 2, 3, 4 ].forEach( columnCount => {
 			block.attributes.columns = columnCount;
-			serializedBlock = serialize( block );
+			const serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();
 			expect( serializedBlock ).toContain( 'data-columns="' + columnCount + '"' );
 			expect( serializedBlock ).toMatchSnapshot();
@@ -43,7 +39,7 @@ describe( name, () => {
 		// Single column, 100% layout
 		block.attributes.columns = 1;
 		block.attributes.layout = '100';
-		serializedBlock = serialize( block );
+		let serializedBlock = serialize( block );
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'data-columns="1"' );
 		expect( serializedBlock ).toContain( 'data-layout="100"' );
@@ -67,5 +63,17 @@ describe( name, () => {
 				}
 			}
 		}
+	} );
+
+	it( 'should apply custom classes with inline css', () => {
+		block.attributes.backgroundColor = '#123456';
+		block.attributes.backgroundImg = 'http://background.img';
+		block.attributes.backgroundType = 'image';
+		block.attributes.focalPoint = { x: 0.1, y: 0.25 };
+		const serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toContain( 'has-123456-background-color' );
+		expect( serializedBlock ).toContain( `url(${ block.attributes.backgroundImg })` );
+		expect( serializedBlock ).toContain( 'background-position:10% 25%' );
 	} );
 } );

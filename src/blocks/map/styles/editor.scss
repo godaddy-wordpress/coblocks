@@ -1,25 +1,6 @@
 [data-type="coblocks/map"] {
 
-	.components-placeholder {
-		height: 100%;
-
-		.components-placeholder__fieldset {
-
-			.components-placeholder__input {
-				margin-right: 5px;
-				min-width: 50%;
-
-				.components-base-control__field {
-					height: 36px;
-					margin-right: 8px;
-				}
-			}
-
-			input {
-				height: 36px;
-			}
-		}
-
+	@include input-submit-placeholder {
 		.components-placeholder__label {
 
 			svg {
@@ -61,7 +42,7 @@
 }
 
 // Map styles.
-$styles: (standard), (silver), (retro), (dark), (night), (aubergine);
+$styles: ("standard"), ("silver"), ("retro"), ("dark"), ("night"), ("aubergine");
 
 // Style the custom styles component buttons.
 .components-coblocks-map-styles__button-wrapper {
@@ -71,7 +52,7 @@ $styles: (standard), (silver), (retro), (dark), (night), (aubergine);
 		@each $style in $styles {
 
 			&--#{$style} {
-				background-image: url(images/map/#{$style}.jpg) !important;
+				background-image: url(/assets/map/#{$style}.jpg) !important;
 				background-position: center center;
 				background-repeat: no-repeat;
 				background-size: cover !important;

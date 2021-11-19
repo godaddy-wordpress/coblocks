@@ -47,8 +47,8 @@ class CoBlocks_Form {
 	 * @var string
 	 */
 	public function default_subject() {
-		// translators: placeholder for email shortcode.
-		return sprintf( __( 'Form submission from [%1$s]', 'coblocks' ), 'email' );
+		// translators: placeholder for 'email' string.
+		return sprintf( __( 'Form submission from [%1$s]', 'coblocks' ), __( 'email', 'coblocks' ) );
 	}
 
 	/**
@@ -914,9 +914,10 @@ class CoBlocks_Form {
 
 		unset( $_POST['form-submit'], $_POST['_wp_http_referer'], $_POST['action'], $_POST['form-hash'], $_POST['coblocks-verify-email'], $_POST['email-field-id'], $_POST['name-field-id'] );
 
-		if ( isset( $_POST['g-recaptcha-token'] ) ) {
-
-			if ( ! $this->verify_recaptcha( $_POST['g-recaptcha-token'] ) ) {
+		$recaptcha_site_key   = get_option( 'coblocks_google_recaptcha_site_key' );
+		$recaptcha_secret_key = get_option( 'coblocks_google_recaptcha_secret_key' );
+		if ( $recaptcha_site_key && $recaptcha_secret_key ) {
+			if ( ! isset( $_POST['g-recaptcha-token'] ) || ! $this->verify_recaptcha( $_POST['g-recaptcha-token'] ) ) {
 
 				$this->remove_url_form_hash();
 

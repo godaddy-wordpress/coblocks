@@ -136,7 +136,6 @@ const AuthorEdit = ( props ) => {
 						onChange={ ( nextName ) => {
 							setAttributes( { name: nextName } );
 						} }
-						keepPlaceholderOnFocus={ true }
 					/>
 					<RichText
 						identifier="biography"
@@ -151,7 +150,6 @@ const AuthorEdit = ( props ) => {
 						onChange={ ( nextBio ) => {
 							setAttributes( { biography: nextBio } );
 						} }
-						keepPlaceholderOnFocus={ true }
 					/>
 					<InnerBlocks
 						template={ [ [ 'core/button', { placeholder: /* translators: content placeholder */ __( 'Author link…', 'coblocks' ) } ] ] }

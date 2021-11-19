@@ -11,7 +11,6 @@ import { name, settings } from '../index';
 
 // Make variables accessible for all tests.
 let block;
-let serializedBlock;
 
 describe( name, () => {
 	beforeAll( () => {
@@ -22,9 +21,6 @@ describe( name, () => {
 	beforeEach( () => {
 		// Create the block with the minimum attributes.
 		block = createBlock( name );
-
-		// Reset the reused variables.
-		serializedBlock = '';
 	} );
 
 	it( 'should render with content', () => {
@@ -43,7 +39,7 @@ describe( name, () => {
 		block.attributes.vegan = 1;
 		block.attributes.showImage = 1;
 		block.attributes.showPrice = 1;
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'Food item title' );
@@ -61,7 +57,18 @@ describe( name, () => {
 	} );
 
 	it( 'should not render without content', () => {
-		serializedBlock = serialize( createBlock( name ) );
+		const serializedBlock = serialize( createBlock( name ) );
 		expect( serializedBlock ).toEqual( `<!-- wp:${ name } /-->` );
+	} );
+
+	it( 'should not render object-position style without focal point', () => {
+		block.attributes.title = 'Food item title';
+		block.attributes.description = 'Food item description';
+		block.attributes.price = '$1.00';
+		block.attributes.url = 'https://www.google.com';
+		block.attributes.alt = 'Alt Tag';
+		block.attributes.showImage = 1;
+		const serializedBlock = serialize( block );
+		expect( serializedBlock ).toContain( '<img src="https://www.google.com" alt="Alt Tag" itemprop="image"/>' );
 	} );
 } );

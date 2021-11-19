@@ -6,26 +6,26 @@ import classnames from 'classnames';
 import {
 	FilterDarkIcon,
 	FilterGrayscaleIcon,
+	FilterMainIcon,
 	FilterNoneIcon,
 	FilterSaturationIcon,
 	FilterSepiaIcon,
 	FilterVintageIcon,
-	FilterMainIcon,
 } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
 import { BlockPreview } from '@wordpress/block-editor';
+import { Component, Fragment } from '@wordpress/element';
 import {
-	MenuItem,
-	MenuGroup,
-	Popover,
-	Toolbar,
 	DropdownMenu,
 	Icon,
+	MenuGroup,
+	MenuItem,
+	Popover,
+	ToolbarGroup,
 } from '@wordpress/components';
 
 function PreviewImageFilterPopover( { hoveredFilter } ) {
@@ -42,8 +42,8 @@ function PreviewImageFilterPopover( { hoveredFilter } ) {
 			<div className="block-editor-block-switcher__popover__preview__container">
 				<Popover
 					className="block-editor-block-switcher__preview__popover coblocks-image-filter-popover"
-					position="bottom right"
 					focusOnMount={ false }
+					position="bottom right"
 				>
 					<div className="block-editor-block-switcher__preview coblocks__preview">
 						<div className="block-editor-block-switcher__preview-title">
@@ -96,74 +96,74 @@ class MediaFilterControl extends Component {
 		const filterControls = [
 			{
 				icon: <Icon icon={ FilterNoneIcon } />,
-				/* translators: image style */
-				title: __( 'Original', 'coblocks' ),
-				slug: 'none',
+				isActive: filter === 'none',
 				onClick: () => {
 					setAttributes( { filter: 'none' } );
 				},
-				isActive: filter === 'none',
+				slug: 'none',
+				/* translators: image style */
+				title: __( 'Original', 'coblocks' ),
 			},
 			{
 				icon: <Icon icon={ FilterGrayscaleIcon } />,
-				/* translators: image style */
-				title: __( 'Grayscale filter', 'coblocks' ),
-				slug: 'grayscale',
+				isActive: filter === 'grayscale',
 				onClick: () => {
 					setAttributes( { filter: 'grayscale' } );
 				},
-				isActive: filter === 'grayscale',
+				slug: 'grayscale',
+				/* translators: image style */
+				title: __( 'Grayscale filter', 'coblocks' ),
 			},
 			{
 				icon: <Icon icon={ FilterSepiaIcon } />,
-				/* translators: image style */
-				title: __( 'Sepia filter', 'coblocks' ),
-				slug: 'sepia',
+				isActive: filter === 'sepia',
 				onClick: () => {
 					setAttributes( { filter: 'sepia' } );
 				},
-				isActive: filter === 'sepia',
+				slug: 'sepia',
+				/* translators: image style */
+				title: __( 'Sepia filter', 'coblocks' ),
 			},
 			{
 				icon: <Icon icon={ FilterSaturationIcon } />,
-				/* translators: image style */
-				title: __( 'Saturation filter', 'coblocks' ),
-				slug: 'saturation',
+				isActive: filter === 'saturation',
 				onClick: () => {
 					setAttributes( { filter: 'saturation' } );
 				},
-				isActive: filter === 'saturation',
+				slug: 'saturation',
+				/* translators: image style */
+				title: __( 'Saturation filter', 'coblocks' ),
 			},
 			{
 				icon: <Icon icon={ FilterDarkIcon } />,
-				/* translators: image style */
-				title: __( 'Dim filter', 'coblocks' ),
-				slug: 'dim',
+				isActive: filter === 'dim',
 				onClick: () => {
 					setAttributes( { filter: 'dim' } );
 				},
-				isActive: filter === 'dim',
+				slug: 'dim',
+				/* translators: image style */
+				title: __( 'Dim filter', 'coblocks' ),
 			},
 			{
 				icon: <Icon icon={ FilterVintageIcon } />,
-				/* translators: image style */
-				title: __( 'Vintage filter', 'coblocks' ),
-				slug: 'vintage',
+				isActive: filter === 'vintage',
 				onClick: () => {
 					setAttributes( { filter: 'vintage' } );
 				},
-				isActive: filter === 'vintage',
+				slug: 'vintage',
+				/* translators: image style */
+				title: __( 'Vintage filter', 'coblocks' ),
 			},
 		];
 
 		return (
-			<Toolbar>
+			<ToolbarGroup>
 				<DropdownMenu
+					className={ classnames( 'components-coblocks-media-filter', ( 'none' !== filter ) ? 'has-filter' : '' ) }
 					icon={ <Icon icon={ FilterMainIcon } /> }
 					label={ __( 'Apply filter', 'coblocks' ) }
-					popoverProps={ POPOVER_PROPS }
-					className={ classnames( 'components-coblocks-media-filter', ( 'none' !== filter ) ? 'has-filter' : '' ) }
 					noIcons
+					popoverProps={ POPOVER_PROPS }
 				>
 					{ () => (
 						<Fragment>
@@ -172,14 +172,14 @@ class MediaFilterControl extends Component {
 								{
 									filterControls.map( ( imageFilter ) => (
 										<MenuItem
-											role="menuitemradio"
+											icon={ imageFilter.icon }
+											isSelected={ filter === imageFilter.slug }
+											key={ `coblocks-image-filter-${ imageFilter.slug }` }
 											label={ imageFilter.title }
 											onClick={ imageFilter.onClick }
 											onMouseEnter={ () => this.onChangeHoveredFilter( imageFilter.slug ) }
 											onMouseLeave={ () => this.onChangeHoveredFilter( null ) }
-											isSelected={ filter === imageFilter.slug }
-											icon={ imageFilter.icon }
-											key={ `coblocks-image-filter-${ imageFilter.slug }` }>
+											role="menuitemradio">
 											{ imageFilter.title }
 										</MenuItem>
 									) )
@@ -188,7 +188,7 @@ class MediaFilterControl extends Component {
 						</Fragment>
 					) }
 				</DropdownMenu>
-			</Toolbar>
+			</ToolbarGroup>
 		);
 	}
 }

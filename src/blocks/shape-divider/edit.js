@@ -1,5 +1,3 @@
-// Disable issue: https://github.com/godaddy-wordpress/coblocks/issues/2000
-/* eslint-disable @wordpress/no-global-event-listener */
 /**
  * External dependencies
  */
@@ -12,15 +10,13 @@ import Controls from './controls';
 import Inspector from './inspector';
 import applyWithColors from './colors';
 import { getDividerFromStyle } from './utils';
-import InlineColorPicker from '../../components/inline-color-picker';
 
 /**
  * WordPress dependencies
  */
-import { useState, useEffect } from '@wordpress/element';
+import { useEffect } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { ResizableBox } from '@wordpress/components';
-import { getBlockAttributes } from '@wordpress/blocks';
 
 /**
  * Block edit function
@@ -29,206 +25,71 @@ import { getBlockAttributes } from '@wordpress/blocks';
  */
 const Edit = ( props ) => {
 	const {
-		clientId,
 		attributes,
 		className,
 		isSelected,
 		setAttributes,
 		backgroundColor,
 		color,
+		toggleSelection,
 	} = props;
 
 	const {
-		coblocks,
 		shapeHeight,
-		shapeHeightTablet,
-		shapeHeightMobile,
 		backgroundHeight,
-		backgroundHeightTablet,
-		backgroundHeightMobile,
 		verticalFlip,
 		horizontalFlip,
-		justAdded,
 	} = attributes;
 
-	const [ innerWidth, setInnerWidth ] = useState( null );
-	const [ resizing, setResizing ] = useState( false );
-	const [ resizingAlt, setResizingAlt ] = useState( false );
-
 	useEffect( () => {
-		getBrowserWidth();
-		window.addEventListener( 'resize', getBrowserWidth );
+		// Handle upgrading old alignment classes to the global `align` attribute.
+		const classNames = ( attributes.className || '' ).split( ' ' );
 
-		return () => {
-			window.removeEventListener( 'resize', getBrowserWidth );
-		};
-	}, [] );
-
-	const getBrowserWidth = () => {
-		setInnerWidth( window.innerWidth );
-		return window.innerWidth;
-	};
-
-	const saveMeta = ( type ) => {
-		const meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
-		const block = getBlockAttributes( clientId );
-		let dimensions = {};
-
-		if ( typeof attributes.coblocks !== 'undefined' && typeof attributes.coblocks.id !== 'undefined' ) {
-			const id = name.split( '/' ).join( '-' ) + '-' + attributes.coblocks.id;
-			const height = {
-				height: block[ type ],
-				heightTablet: block[ type + 'Tablet' ],
-				heightMobile: block[ type + 'Mobile' ],
-			};
-
-			if ( typeof meta._coblocks_responsive_height === 'undefined' || ( typeof meta._coblocks_responsive_height !== 'undefined' && meta._coblocks_responsive_height === '' ) ) {
-				dimensions = {};
-			} else {
-				dimensions = JSON.parse( meta._coblocks_responsive_height );
-			}
-
-			if ( typeof dimensions[ id ] === 'undefined' ) {
-				dimensions[ id ] = {};
-				dimensions[ id ][ type ] = {};
-			} else if ( typeof dimensions[ id ][ type ] === 'undefined' ) {
-				dimensions[ id ][ type ] = {};
-			}
-
-			dimensions[ id ][ type ] = height;
-
-			// Save values to metadata.
-			wp.data.dispatch( 'core/editor' ).editPost( {
-				meta: {
-					_coblocks_responsive_height: JSON.stringify( dimensions ),
-				},
+		if ( classNames.includes( 'alignfull' ) ) {
+			setAttributes( {
+				align: 'full',
+				className: classNames.filter( ( classname ) => classname !== 'alignfull' ).join( ' ' ),
 			} );
 		}
-	};
-
-	let shapeHeightResizer = {
-		target: 'shapeHeight',
-		value: shapeHeight,
-	};
-
-	let backgroundHeightResizer = {
-		target: 'shapeHeight',
-		value: backgroundHeight,
-	};
-
-	if ( innerWidth <= 768 && innerWidth > 514 ) {
-		shapeHeightResizer = {
-			target: 'shapeHeightTablet',
-			value: ( shapeHeightTablet ) ? shapeHeightTablet : shapeHeight,
-		};
-
-		backgroundHeightResizer = {
-			target: 'backgroundHeightTablet',
-			value: ( backgroundHeightTablet ) ? backgroundHeightTablet : backgroundHeight,
-		};
-	} else if ( innerWidth <= 514 ) {
-		shapeHeightResizer = {
-			target: 'shapeHeightMobile',
-			value: ( shapeHeightMobile ) ? shapeHeightMobile : shapeHeight,
-		};
-
-		backgroundHeightResizer = {
-			target: 'backgroundHeightMobile',
-			value: ( backgroundHeightMobile ) ? backgroundHeightMobile : backgroundHeight,
-		};
-	}
-
-	//modify blocks when added
-	if ( justAdded ) {
-		const prevBlockClientId = wp.data.select( 'core/block-editor' ).getPreviousBlockClientId( clientId );
-		const nextBlockClientId = wp.data.select( 'core/block-editor' ).getNextBlockClientId( clientId );
-
-		if ( prevBlockClientId ) {
-			wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( prevBlockClientId, { noBottomMargin: true, marginBottom: 0, marginBottomTablet: 0, marginBottomMobile: 0 } );
+		if ( classNames.includes( 'alignwide' ) ) {
+			setAttributes( {
+				align: 'wide',
+				className: classNames.filter( ( classname ) => classname !== 'alignwide' ).join( ' ' ),
+			} );
 		}
-
-		if ( nextBlockClientId ) {
-			wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( nextBlockClientId, { noTopMargin: true, marginTop: 0, marginTopTablet: 0, marginTopMobile: 0 } );
-		}
-		setAttributes( { justAdded: false } );
-	}
-
-	let classes = classnames(
-		className, {
-			'is-vertically-flipped': verticalFlip,
-			'is-horizontally-flipped': horizontalFlip,
-		} );
-
-	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
-		classes = classnames( classes, `coblocks-shape-divider-${ coblocks.id }` );
-	}
+	}, [] );
 
 	return (
 		<>
 			{ isSelected && (
-				<Inspector
-					{ ...props }
-				/>
-			) }
-			{ isSelected && (
-				<Controls
-					{ ...props }
-				/>
+				<>
+					<Inspector { ...props } />
+					<Controls { ...props } />
+				</>
 			) }
 			<div
-				className={ classes }
+				className={ classnames( className, {
+					'is-vertically-flipped': verticalFlip,
+					'is-horizontally-flipped': horizontalFlip,
+				} ) }
 				style={ { backgroundColor: backgroundColor.color, color: color.color } }
 			>
 				<ResizableBox
 					className={ classnames(
 						'wp-block-coblocks-shape-divider__svg-wrapper', {
 							'is-selected': isSelected,
-							'is-resizing': resizing,
 						}
 					) }
-					size={ {
-						height: shapeHeightResizer.value,
+					size={ { height: shapeHeight } }
+					minWidth="100%"
+					enable={ { bottom: true } }
+					onResizeStop={ ( _event, _direction, element ) => {
+						setAttributes( {
+							shapeHeight: parseInt( element.offsetHeight, 10 ) + 'px',
+						} );
+						toggleSelection( true );
 					} }
-					minHeight="20"
-					enable={ {
-						top: false,
-						right: false,
-						bottom: true,
-						left: false,
-						topRight: false,
-						bottomRight: false,
-						bottomLeft: false,
-						topLeft: false,
-					} }
-					onResizeStop={ ( _event, _direction, _elt, delta ) => {
-						switch ( shapeHeightResizer.target ) {
-							case 'shapeHeightTablet':
-								setAttributes( {
-									shapeHeightTablet: parseInt( shapeHeightResizer.value + delta.height, 10 ),
-								} );
-								break;
-
-							case 'shapeHeightMobile':
-								setAttributes( {
-									shapeHeightMobile: parseInt( shapeHeightResizer.value + delta.height, 10 ),
-								} );
-								break;
-
-							default:
-								setAttributes( {
-									shapeHeight: parseInt( shapeHeightResizer.value + delta.height, 10 ),
-								} );
-								break;
-						}
-
-						setResizing( false );
-
-						//update meta
-						saveMeta( 'shapeHeight' );
-					} }
-					onResizeStart={ () => {
-						setResizing( true );
-					} }
+					onResizeStart={ () => toggleSelection( false ) }
 					showHandle={ isSelected }
 				>
 					{ getDividerFromStyle( className ) }
@@ -237,60 +98,20 @@ const Edit = ( props ) => {
 					className={ classnames(
 						'wp-block-coblocks-shape-divider__alt-wrapper', {
 							'is-selected': isSelected,
-							'is-resizing': resizingAlt,
 						}
 					) }
-					size={ {
-						height: backgroundHeightResizer.value,
-					} }
+					size={ { height: backgroundHeight } }
 					minWidth="100%"
-					minHeight="20"
-					enable={ {
-						top: false,
-						right: false,
-						bottom: true,
-						left: false,
-						topRight: false,
-						bottomRight: false,
-						bottomLeft: false,
-						topLeft: false,
+					enable={ { bottom: true } }
+					onResizeStop={ ( _event, _direction, element ) => {
+						setAttributes( {
+							backgroundHeight: parseInt( element.offsetHeight, 10 ) + 'px',
+						} );
+						toggleSelection( true );
 					} }
-					onResizeStop={ ( _event, _direction, _elt, delta ) => {
-						switch ( backgroundHeightResizer.target ) {
-							case 'backgroundHeightTablet':
-								setAttributes( {
-									backgroundHeightTablet: parseInt( backgroundHeightResizer.value + delta.height, 10 ),
-								} );
-								break;
-
-							case 'backgroundHeightMobile':
-								setAttributes( {
-									backgroundHeightMobile: parseInt( backgroundHeightResizer.value + delta.height, 10 ),
-								} );
-								break;
-
-							default:
-								setAttributes( {
-									backgroundHeight: parseInt( backgroundHeightResizer.value + delta.height, 10 ),
-								} );
-								break;
-						}
-
-						setResizingAlt( false );
-
-						saveMeta( 'backgroundHeight' );
-					} }
-					onResizeStart={ () => {
-						setResizingAlt( true );
-					} }
+					onResizeStart={ () => toggleSelection( false ) }
 					showHandle={ isSelected }
 				>
-					{ isSelected && (
-						<InlineColorPicker
-							value={ color.color }
-							onChange={ ( newColor ) => setAttributes( { color: null, customColor: newColor } ) }
-						/>
-					) }
 				</ResizableBox>
 			</div>
 		</>

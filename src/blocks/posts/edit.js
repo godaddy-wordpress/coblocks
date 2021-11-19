@@ -20,6 +20,8 @@ import { __ } from '@wordpress/i18n';
 import { compose, usePrevious } from '@wordpress/compose';
 import { RawHTML, useState, useEffect, useRef } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
+// Disable reason: We choose to use unsafe APIs in our codebase.
+// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 import { dateI18n, format, __experimentalGetSettings } from '@wordpress/date';
 import { withSelect } from '@wordpress/data';
 import { BlockControls, RichText } from '@wordpress/block-editor';
@@ -29,11 +31,11 @@ import {
 	Icon,
 	Placeholder,
 	QueryControls,
-	ServerSideRender,
 	Spinner,
 	TextControl,
 	Toolbar,
 } from '@wordpress/components';
+import ServerSideRender from '@wordpress/server-side-render';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 import { pullLeft, pullRight, edit } from '@wordpress/icons';
 

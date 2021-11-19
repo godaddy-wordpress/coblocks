@@ -1,12 +1,19 @@
 .wp-block-coblocks-click-to-tweet {
 	border: 1px solid transparent;
 	border-radius: 4px;
-	margin-bottom: 1.9em;
+	padding-bottom: var(--coblocks-spacing--4);
+	padding-top: var(--coblocks-spacing--3);
 	position: relative;
+
+	&::before,
+	&::after {
+		content: none;
+	}
 
 	&__text {
 		margin-bottom: 0;
 		padding-left: 40px;
+		padding-top: 0;
 		position: relative;
 
 		&::before {
@@ -16,11 +23,15 @@
 			display: inline-block;
 			height: 24px;
 			left: 0;
-			mask-image: url(images/social/twitter.svg);
+			mask-image: url(/assets/social/twitter.svg);
 			opacity: 0.3;
 			position: absolute;
 			top: 5px;
 			width: 24px;
+		}
+
+		&::after {
+			content: none;
 		}
 
 		a {
@@ -60,7 +71,7 @@
 			display: inline-block;
 			height: 18px;
 			margin-right: 5px;
-			mask-image: url(images/social/twitter.svg);
+			mask-image: url(/assets/social/twitter.svg);
 			position: relative;
 			top: 4px;
 			width: 18px;

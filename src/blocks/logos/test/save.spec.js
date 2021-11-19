@@ -3,7 +3,7 @@
  */
 import '@testing-library/jest-dom/extend-expect';
 import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
-import { replaceActiveStyle } from '@wordpress/block-editor/build/components/block-styles';
+import { replaceActiveStyle } from '@wordpress/block-editor/build/components/block-styles/utils';
 
 /**
  * Internal dependencies.
@@ -42,6 +42,23 @@ describe( 'coblocks/logos', () => {
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg' );
 		expect( serializedBlock ).toContain( 'data-id="1"' );
+	} );
+
+	it( 'should render content align classes', () => {
+		[ 'wide', 'full' ].forEach( alignment => {
+			block.attributes.align = alignment;
+			block.attributes.images = [
+				{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', id: 1 },
+				{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg', id: 2 },
+				{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg', id: 3 },
+				{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-4.jpg', id: 4 },
+				{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-5.jpg', id: 5 },
+			];
+			serializedBlock = serialize( block );
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( 'align' + alignment );
+			expect( serializedBlock ).toMatchSnapshot();
+		} );
 	} );
 
 	it( 'should render with style "Black & White"', () => {

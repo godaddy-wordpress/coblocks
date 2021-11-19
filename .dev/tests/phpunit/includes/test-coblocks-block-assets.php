@@ -44,7 +44,7 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 
 		$object = $new_reflection::register();
 
-		$this->assertTrue( is_a( $instance->getValue( 'instance' ), 'CoBlocks_Block_Assets' ) );
+		$this->assertTrue( is_a( $instance->getValue(), 'CoBlocks_Block_Assets' ) );
 
 	}
 

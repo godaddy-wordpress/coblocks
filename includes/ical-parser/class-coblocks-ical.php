@@ -1813,8 +1813,6 @@ class CoBlocks_ICal {
 										$event_start_timestamp += self::SECONDS_IN_A_WEEK;
 									} while ( $event_start_timestamp <= $last_day_time_stamp );
 
-									// Move forwards
-									//                                  $recurring_timestamp = strtotime($offset, Carbon::createFromTimestamp($recurring_timestamp)->day(1)->timestamp);
 								}
 							}
 
@@ -2338,7 +2336,7 @@ class CoBlocks_ICal {
 
 		unset( $valid[''] );
 
-		if ( isset( $valid[ $timezone ] ) || in_array( $timezone, timezone_identifiers_list( \date_timezone::ALL_WITH_BC ), true ) ) {
+		if ( isset( $valid[ $timezone ] ) || in_array( $timezone, timezone_identifiers_list( \DateTimeZone::ALL_WITH_BC ), true ) ) {
 			$this->valid_iana_timezones[] = $timezone;
 
 			return true;
@@ -2371,7 +2369,7 @@ class CoBlocks_ICal {
 	 * Parses a duration and applies it to a date
 	 *
 	 * @param  string $date
-	 * @param  string $duration
+	 * @param  object $duration
 	 * @param  string $format
 	 * @return integer|\DateTime
 	 */
@@ -2628,7 +2626,7 @@ class CoBlocks_ICal {
 						$current_time_zone = self::TIME_ZONE_UTC;
 					}
 
-					$output[] = new \DateTime( $ical_date, $current_time_zone );
+					$output[] = new \DateTime( $ical_date, new \DateTimeZone( $current_time_zone ) );
 
 					if ( $key === $final_key ) {
 						// Reset to default
@@ -2766,7 +2764,7 @@ class CoBlocks_ICal {
 	/**
 	 * Checks if an excluded date matches a given date by reconciling time zones.
 	 *
-	 * @param  Carbon  $exdate
+	 * @param  DateTime  $exdate
 	 * @param  array   $an_event
 	 * @param  integer $recurring_offset
 	 * @return boolean
@@ -2775,16 +2773,16 @@ class CoBlocks_ICal {
 		$search_date = $an_event['DTSTART'];
 
 		if ( substr( $search_date, -1 ) === 'Z' ) {
-			$timezone = self::TIME_ZONE_UTC;
+			$timezone = new \DateTimeZone(self::TIME_ZONE_UTC);
 		} elseif ( isset( $an_event['DTSTART_array'][0]['TZID'] ) ) {
 			$timezone = $this->timezone_string_to_date_timezone( $an_event['DTSTART_array'][0]['TZID'] );
 		} else {
-			$timezone = $this->default_time_zone;
+			$timezone = new \DateTimeZone($this->default_time_zone);
 		}
 
 		$a = new \DateTime( $search_date, $timezone );
-		$b = $exdate->addSeconds( $recurring_offset );
+		$b = $exdate->add( \DateInterval::createFromDateString( $recurring_offset . ' seconds' ) );
 
-		return $a->eq( $b );
+		return $a == $b;
 	}
 }

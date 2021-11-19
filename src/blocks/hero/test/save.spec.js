@@ -13,7 +13,6 @@ import { name, settings } from '../index';
 // Make variables accessible for all tests.
 let block;
 let blockDOM;
-let serializedBlock;
 
 describe( 'coblocks/hero', () => {
 	beforeAll( () => {
@@ -27,11 +26,10 @@ describe( 'coblocks/hero', () => {
 
 		// Reset the reused variables.
 		blockDOM = undefined;
-		serializedBlock = '';
 	} );
 
 	it( 'should render', () => {
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toMatchSnapshot();
@@ -39,7 +37,7 @@ describe( 'coblocks/hero', () => {
 
 	it( 'should apply hero-center-center-align class if the "Center Center" layout option is selected', () => {
 		block.attributes.layout = 'center-center';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		blockDOM = new JSDOM( serializedBlock );
 		expect(
@@ -49,7 +47,7 @@ describe( 'coblocks/hero', () => {
 
 	it( 'should apply has-no-padding class if the "none" padding setting is selected', () => {
 		block.attributes.paddingSize = 'no';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		blockDOM = new JSDOM( serializedBlock );
 		expect(
@@ -59,7 +57,7 @@ describe( 'coblocks/hero', () => {
 
 	it( 'should apply has-padding class if any padding setting is applied', () => {
 		block.attributes.paddingSize = 'advanced';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		blockDOM = new JSDOM( serializedBlock );
 		expect(
@@ -69,7 +67,7 @@ describe( 'coblocks/hero', () => {
 
 	it( 'should apply has-small-padding class if the small padding size is selected', () => {
 		block.attributes.paddingSize = 'small';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		blockDOM = new JSDOM( serializedBlock );
 		expect(
@@ -79,7 +77,7 @@ describe( 'coblocks/hero', () => {
 
 	it( 'should set content max width with inline css', () => {
 		block.attributes.maxWidth = 750;
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		blockDOM = new JSDOM( serializedBlock );
 		expect(
@@ -87,9 +85,16 @@ describe( 'coblocks/hero', () => {
 		).toHaveStyle( 'max-width: 750px' );
 	} );
 
+	it( 'should not set content max width when not defined', () => {
+		block.attributes.maxWidth = null;
+		const serializedBlock = serialize( block );
+
+		expect( serializedBlock ).not.toContain( 'max-width' );
+	} );
+
 	it( 'should render with backgroundColor attribute', () => {
 		block.attributes.backgroundColor = 'accent';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '"backgroundColor":"accent"' );
@@ -99,7 +104,7 @@ describe( 'coblocks/hero', () => {
 
 	it( 'should render with customBackgroundColor attribute', () => {
 		block.attributes.customBackgroundColor = '#5a4a4f';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '"customBackgroundColor":"#5a4a4f"' );
@@ -109,7 +114,7 @@ describe( 'coblocks/hero', () => {
 
 	it( 'should render with textColor attribute', () => {
 		block.attributes.textColor = 'accent';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '"textColor":"accent"' );
@@ -118,7 +123,7 @@ describe( 'coblocks/hero', () => {
 
 	it( 'should render with customTextColor attribute', () => {
 		block.attributes.customTextColor = '#5a4a4f';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '"customTextColor":"#5a4a4f"' );
@@ -128,7 +133,7 @@ describe( 'coblocks/hero', () => {
 
 	it( 'should render with className attribute', () => {
 		block.attributes.className = 'my-custom-class';
-		serializedBlock = serialize( block );
+		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '"className":"my-custom-class"' );
@@ -139,7 +144,7 @@ describe( 'coblocks/hero', () => {
 		const alignOptions = [ 'left', 'center', 'right' ];
 		alignOptions.forEach( ( alignOption ) => {
 			block.attributes.contentAlign = alignOption;
-			serializedBlock = serialize( block );
+			const serializedBlock = serialize( block );
 
 			expect( serializedBlock ).toBeDefined();
 			expect( serializedBlock ).toContain( `"contentAlign":"${ alignOption }"` );
@@ -157,7 +162,7 @@ describe( 'coblocks/hero', () => {
 		layoutOptions.forEach( ( layoutOption ) => {
 			block.attributes.fullscreen = 'true';
 			block.attributes.layout = layoutOption;
-			serializedBlock = serialize( block );
+			const serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();
 			expect( serializedBlock ).toContain( '"fullscreen":"true"' );
 			expect( serializedBlock ).toContain( 'is-fullscreen' );

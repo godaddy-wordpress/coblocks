@@ -73,7 +73,7 @@ class CoBlocks_Generated_Styles_Tests extends WP_UnitTestCase {
 
 		$new_reflection::register();
 
-		$this->assertTrue( is_a( $instance->getValue( 'instance' ), 'CoBlocks_Generated_Styles' ) );
+		$this->assertTrue( is_a( $instance->getValue(), 'CoBlocks_Generated_Styles' ) );
 
 	}
 
@@ -198,7 +198,7 @@ class CoBlocks_Generated_Styles_Tests extends WP_UnitTestCase {
 
 		$post = get_post( $post_id );
 
-		$this->assertEquals( '.element > div {height:300px;}@media only screen and (max-width: 768px) {.element > div {:height: 300px; color: green;;}}@media only screen and (max-width: 514px) {.element > div {:height: 200px; color: red;;}}@media only screen and (max-width: 768px) {.divider_key > [class*="__inner"]:not(.is-fullscreen) {min-height:200px !important}}@media only screen and (max-width: 514px) {.divider_key > [class*="__inner"]:not(.is-fullscreen)  {min-height:300px !important}}@media only screen and (max-width: 768px) {.divider_key > .wp-block-coblocks-shape-divider__svg-wrapper {min-height:300px !important}}@media only screen and (max-width: 514px) {.divider_key > .wp-block-coblocks-shape-divider__svg-wrapper {min-height:400px !important}}@media only screen and (max-width: 768px) {.divider_key > .wp-block-coblocks-shape-divider__alt-wrapper {min-height:400px !important}}@media only screen and (max-width: 514px) {.divider_key > .wp-block-coblocks-shape-divider__alt-wrapper {min-height:500px !important}}', $this->coblocks_generated_styles->styles() );
+		$this->assertEquals( '.element > div {height:300px;}@media only screen and (max-width: 768px) {.element > div {:height: 300px; color: green;;}}@media only screen and (max-width: 514px) {.element > div {:height: 200px; color: red;;}}@media only screen and (max-width: 768px) {.divider_key > [class*="__inner"]:not(.is-fullscreen) {min-height:200px !important}}@media only screen and (max-width: 514px) {.divider_key > [class*="__inner"]:not(.is-fullscreen)  {min-height:300px !important}}@media only screen and (max-width: 768px) {}@media only screen and (max-width: 514px) {}@media only screen and (max-width: 768px) {}@media only screen and (max-width: 514px) {}', $this->coblocks_generated_styles->styles() );
 
 	}
 }

@@ -69,7 +69,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 		$reflection_method->invoke( coblocks() );
 
 		$expected = [
-			'version' => '2.16.0',
+			'version' => '2.19.1',
 			'plugin_dir'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_path( __FILE__ ) ),
 			'plugin_url'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_url( __FILE__ ) ),
 			'plugin_file' => str_replace( '.dev/tests/phpunit/test-class-coblocks.php', 'class-coblocks.php', __FILE__ ),
@@ -162,7 +162,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 	 */
 	public function test_custom_css_asset_source() {
 
-		$this->assertRegexp( '/\/coblocks\/dist\/css\/custom/', coblocks()->asset_source( 'css', 'custom' ) );
+		$this->assertRegexp( '/\/coblocks\/dist\/css\/custom/', coblocks()->asset_source( 'css/custom' ) );
 
 	}
 
@@ -207,8 +207,8 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 				'src/js/coblocks-slick-initializer.js',
 			],
 			'css' => [
-				'dist/coblocks-editor.css',
-				'dist/coblocks-style.css',
+				'dist/coblocks.css',
+				'dist/style-coblocks.css',
 			],
 		];
 

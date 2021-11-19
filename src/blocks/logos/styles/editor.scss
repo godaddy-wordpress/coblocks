@@ -8,7 +8,7 @@
 		margin-bottom: 0;
 		margin-top: 16px;
 		min-height: 100px;
-		outline: 1px dashed $dark-gray-150;
+		outline: 1px dashed #8d96a0;
 
 		.components-placeholder__label,
 		.components-placeholder__instructions {
@@ -21,10 +21,18 @@
 	}
 
 	.components-resizable-box__handle-left {
-		left: 13px;
+		padding: 0 1.75vw;
+
+		&::before {
+			right: calc(41% + 0.25vw);
+		}
 	}
 
 	.components-resizable-box__handle-right {
-		right: 14px;
+		padding: 0 1.75vw;
+
+		&::before {
+			right: calc(39% + 0.25vw);
+		}
 	}
 }

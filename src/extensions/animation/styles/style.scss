@@ -1,4 +1,4 @@
-.coblocks-animate {
+body:not(.amp) .coblocks-animate {
 	// VARIABLES
 
 	$coblocks-animate-duration: 0.75s;
@@ -155,9 +155,4 @@
 			opacity: 1;
 		}
 	}
-}
-
-// AMP support
-body.amp .coblocks-animate {
-	opacity: 1;
 }

@@ -17,6 +17,7 @@ const baseAttributes = {
 	images: [
 		{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', id: 1 },
 		{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg', id: 2 },
+		{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg' },
 	],
 };
 
@@ -40,10 +41,6 @@ describe( name, () => {
 
 	it( 'should render with images', () => {
 		serializedBlock = serialize( block );
-
-		// expect(console).toHaveErrored() should be removed with this issue.
-		// https://github.com/godaddy-wordpress/coblocks/issues/2024
-		expect(console).toHaveErrored()
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( baseAttributes.images[ 0 ].url );

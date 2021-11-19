@@ -4,7 +4,7 @@
  * Description: CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
  * Author: GoDaddy
  * Author URI: https://www.godaddy.com
- * Version: 2.16.0
+ * Version: 2.19.1
  * Text Domain: coblocks
  * Domain Path: /languages
  * Tested up to: 5.8
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'COBLOCKS_VERSION', '2.16.0' );
+define( 'COBLOCKS_VERSION', '2.19.1' );
 define( 'COBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'COBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'COBLOCKS_PLUGIN_FILE', __FILE__ );
@@ -145,19 +145,12 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		}
 
 		/**
-		 * If debug is on, serve unminified source assets.
+		 * Returns URL to the asset path.
 		 *
-		 * @since 1.0.0
-		 * @param string|string $type The type of resource.
-		 * @param string|string $directory Any extra directories needed.
+		 * @param string $path Any extra directories needed.
 		 */
-		public function asset_source( $type = 'js', $directory = null ) {
-
-			if ( 'js' === $type ) {
-				return COBLOCKS_PLUGIN_URL . 'dist/' . $type . '/' . $directory;
-			} else {
-				return COBLOCKS_PLUGIN_URL . 'dist/css/' . $directory;
-			}
+		public function asset_source( $path = null ) {
+			return COBLOCKS_PLUGIN_URL . trailingslashit( path_join( 'dist', $path ) );
 		}
 
 		/**

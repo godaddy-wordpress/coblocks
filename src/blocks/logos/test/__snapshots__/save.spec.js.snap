@@ -1,27 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`coblocks/logos should render content align classes 1`] = `
+"<!-- wp:coblocks/logos {\\"align\\":\\"wide\\"} -->
+<div aria-label=\\"List of logos\\" class=\\"wp-block-coblocks-logos alignwide\\"><div class=\\"wp-block-coblocks-logos__row\\"><div style=\\"width:25%\\"><img data-id=\\"1\\" data-width=\\"25%\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\"/></div><div style=\\"width:25%\\"><img data-id=\\"2\\" data-width=\\"25%\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\"/></div><div style=\\"width:25%\\"><img data-id=\\"3\\" data-width=\\"25%\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\"/></div><div style=\\"width:25%\\"><img data-id=\\"4\\" data-width=\\"25%\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-4.jpg\\"/></div></div><div class=\\"wp-block-coblocks-logos__row\\"><div style=\\"width:100%\\"><img data-id=\\"5\\" data-width=\\"100%\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-5.jpg\\"/></div></div></div>
+<!-- /wp:coblocks/logos -->"
+`;
+
+exports[`coblocks/logos should render content align classes 2`] = `
+"<!-- wp:coblocks/logos {\\"align\\":\\"full\\"} -->
+<div aria-label=\\"List of logos\\" class=\\"wp-block-coblocks-logos alignfull\\"><div class=\\"wp-block-coblocks-logos__row\\"><div style=\\"width:20%\\"><img data-id=\\"1\\" data-width=\\"20%\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\"/></div><div style=\\"width:20%\\"><img data-id=\\"2\\" data-width=\\"20%\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\"/></div><div style=\\"width:20%\\"><img data-id=\\"3\\" data-width=\\"20%\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\"/></div><div style=\\"width:20%\\"><img data-id=\\"4\\" data-width=\\"20%\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-4.jpg\\"/></div><div style=\\"width:20%\\"><img data-id=\\"5\\" data-width=\\"20%\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-5.jpg\\"/></div></div></div>
+<!-- /wp:coblocks/logos -->"
+`;
+
+exports[`coblocks/logos should render content align classes 3`] = `
+"<!-- wp:coblocks/logos {\\"align\\":\\"full\\"} -->
+<div aria-label=\\"List of logos\\" class=\\"wp-block-coblocks-logos alignfull\\"><div class=\\"wp-block-coblocks-logos__row\\"><div style=\\"width:20%\\"><img data-id=\\"1\\" data-width=\\"20%\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\"/></div><div style=\\"width:20%\\"><img data-id=\\"2\\" data-width=\\"20%\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\"/></div><div style=\\"width:20%\\"><img data-id=\\"3\\" data-width=\\"20%\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\"/></div><div style=\\"width:20%\\"><img data-id=\\"4\\" data-width=\\"20%\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-4.jpg\\"/></div><div style=\\"width:20%\\"><img data-id=\\"5\\" data-width=\\"20%\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-5.jpg\\"/></div></div></div>
+<!-- /wp:coblocks/logos -->"
+`;
+
 exports[`coblocks/logos should render with className attribute 1`] = `"<!-- wp:coblocks/logos {\\"className\\":\\"my-custom-class\\"} /-->"`;
 
 exports[`coblocks/logos should render with images attribute 1`] = `
 "<!-- wp:coblocks/logos -->
-<div class=\\"wp-block-coblocks-logos\\"><div class=\\"wp-block-coblocks-logos__row\\"><div style=\\"width:100%\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" data-width=\\"100%\\"/></div></div></div>
+<div aria-label=\\"List of logos\\" class=\\"wp-block-coblocks-logos\\"><div class=\\"wp-block-coblocks-logos__row\\"><div style=\\"width:100%\\"><img data-id=\\"1\\" data-width=\\"100%\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\"/></div></div></div>
 <!-- /wp:coblocks/logos -->"
 `;
 
 exports[`coblocks/logos should render with images.width attribute 1`] = `
 "<!-- wp:coblocks/logos -->
-<div class=\\"wp-block-coblocks-logos\\"><div class=\\"wp-block-coblocks-logos__row\\"><div style=\\"width:60.6897%\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" data-width=\\"60.6897%\\"/></div></div></div>
+<div aria-label=\\"List of logos\\" class=\\"wp-block-coblocks-logos\\"><div class=\\"wp-block-coblocks-logos__row\\"><div style=\\"width:60.6897%\\"><img data-id=\\"1\\" data-width=\\"60.6897%\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\"/></div></div></div>
 <!-- /wp:coblocks/logos -->"
 `;
 
 exports[`coblocks/logos should render with style "Black & White" 1`] = `
 "<!-- wp:coblocks/logos {\\"className\\":\\"is-style-black-and-white\\"} -->
-<div class=\\"wp-block-coblocks-logos is-style-black-and-white\\"><div class=\\"wp-block-coblocks-logos__row\\"><div style=\\"width:100%\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" data-width=\\"100%\\"/></div></div></div>
+<div aria-label=\\"List of logos\\" class=\\"wp-block-coblocks-logos is-style-black-and-white\\"><div class=\\"wp-block-coblocks-logos__row\\"><div style=\\"width:100%\\"><img data-id=\\"1\\" data-width=\\"100%\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\"/></div></div></div>
 <!-- /wp:coblocks/logos -->"
 `;
 
 exports[`coblocks/logos should render with style "Grayscale" 1`] = `
 "<!-- wp:coblocks/logos {\\"className\\":\\"is-style-grayscale\\"} -->
-<div class=\\"wp-block-coblocks-logos is-style-grayscale\\"><div class=\\"wp-block-coblocks-logos__row\\"><div style=\\"width:100%\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" data-width=\\"100%\\"/></div></div></div>
+<div aria-label=\\"List of logos\\" class=\\"wp-block-coblocks-logos is-style-grayscale\\"><div class=\\"wp-block-coblocks-logos__row\\"><div style=\\"width:100%\\"><img data-id=\\"1\\" data-width=\\"100%\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\"/></div></div></div>
 <!-- /wp:coblocks/logos -->"
 `;

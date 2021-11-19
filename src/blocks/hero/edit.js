@@ -1,5 +1,3 @@
-// Disable issue: https://github.com/godaddy-wordpress/coblocks/issues/2000
-/* eslint-disable @wordpress/no-global-event-listener */
 /**
  * External dependencies
  */
@@ -23,7 +21,6 @@ import { InnerBlocks } from '@wordpress/block-editor';
 import { ResizableBox, Spinner } from '@wordpress/components';
 import { withDispatch, withSelect } from '@wordpress/data';
 import { isBlobURL } from '@wordpress/blob';
-import { getBlockAttributes } from '@wordpress/blocks';
 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
@@ -95,6 +92,7 @@ const Edit = ( props ) => {
 		textColor,
 		backgroundColor,
 		insertBlocksAfter,
+		getBlockAttributes,
 	} = props;
 
 	const {
@@ -126,17 +124,21 @@ const Edit = ( props ) => {
 			currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.maxWidth = attributes.maxWidth + 'px';
 		}
 
+		const win = document.defaultView;
+
 		getBrowserWidth();
-		window.addEventListener( 'resize', getBrowserWidth );
+		win.addEventListener( 'resize', getBrowserWidth );
 
 		return () => {
-			window.removeEventListener( 'resize', getBrowserWidth );
+			win.removeEventListener( 'resize', getBrowserWidth );
 		};
 	}, [] );
 
 	const getBrowserWidth = () => {
-		setInnerWidth( window.innerWidth );
-		return window.innerWidth;
+		const win = document.defaultView;
+
+		setInnerWidth( win.innerWidth );
+		return win.innerWidth;
 	};
 
 	const saveMeta = ( type ) => {
@@ -415,9 +417,11 @@ export default compose( [
 
 	withSelect( ( select ) => {
 		const { getEditedPostAttribute } = select( 'core/editor' );
+		const { getBlockAttributes } = select( 'core/block-editor' );
 
 		return {
 			getEditedPostAttribute,
+			getBlockAttributes,
 		};
 	} ),
 ] )( Edit );

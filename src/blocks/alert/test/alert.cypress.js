@@ -11,16 +11,7 @@ describe( 'Test CoBlocks Alert Block', function() {
 	it( 'Test alert block saves with empty values.', function() {
 		helpers.addBlockToPost( 'coblocks/alert', true );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/alert' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-alert' )
-			.should( 'be.empty' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -39,11 +30,7 @@ describe( 'Test CoBlocks Alert Block', function() {
 			.focus()
 			.type( 'Test text' );
 
-		helpers.savePage();
-
 		helpers.checkForBlockErrors( 'coblocks/alert' );
-
-		helpers.viewPage();
 
 		cy.get( '.wp-block-coblocks-alert__title' )
 			.should( 'not.be.empty' )
@@ -52,8 +39,6 @@ describe( 'Test CoBlocks Alert Block', function() {
 		cy.get( '.wp-block-coblocks-alert__text' )
 			.should( 'not.be.empty' )
 			.contains( 'Test text' );
-
-		helpers.editPage();
 	} );
 
 	/**
