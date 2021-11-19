@@ -44,16 +44,18 @@ export default function useGetNewImages( images, imageData ) {
 
 		// Now check for any new images that have been added to InnerBlocks and for which
 		// we have the imageData we need for setting default block attributes.
-		const newImages = images.filter(
-			( image ) =>
-				! newCurrentImages.find(
-					( currentImage ) =>
-						image.clientId &&
-                         currentImage.clientId === image.clientId
-				) &&
-                 imageData?.find( ( img ) => img.id === image.id ) &&
-                 ! image.fromSavedConent
-		);
+		let newImages;
+		if ( !! imageData ) {
+			newImages = images.filter(
+				( image ) =>
+					! newCurrentImages.find(
+						( currentImage ) =>
+							image.clientId && currentImage.clientId === image.clientId
+					) &&
+					imageData?.find( ( img ) => img.id === image.id ) &&
+					! image.fromSavedConent
+			);
+		}
 
 		if ( imagesUpdated || newImages?.length > 0 ) {
 			setCurrentImages( [ ...newCurrentImages, ...newImages ] );

@@ -25,7 +25,6 @@ import { useDispatch, useSelect } from '@wordpress/data';
  */
 import Gallery from '../../components/block-gallery/gallery';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
-import { metadata } from './';
 import { pickRelevantMediaFiles } from '../../components/block-gallery/shared-helpers';
 import useGetMedia from '../../components/block-gallery/use-get-media';
 import useGetNewImages from '../../components/block-gallery/use-get-new-images';
@@ -111,6 +110,11 @@ function GalleryEdit( props ) {
 	);
 
 	useEffect( () => {
+		/**
+		 * This logic should only fire in the case of block deprecations.
+		 * Deprecated markup come in with old attributes and the block
+		 *must be replaced for proper instantiation.
+		 */
 		if ( !! attributes?.images?.length && ! images?.length ) {
 			const newBlocks = attributes?.images.map( ( image ) => {
 				return createBlock( 'core/image', {
@@ -171,6 +175,18 @@ function GalleryEdit( props ) {
 		updateImages( shortCodeImages );
 		setAttributes( { shortCodeTransforms: undefined } );
 	}, [ shortCodeTransforms, shortCodeImages ] );
+
+	useEffect( () => {
+		// linkTo attribute must be saved so blocks don't break when changing image_default_link_type in options.php
+		if ( ! linkTo ) {
+			__unstableMarkNextChangeAsNotPersistent();
+			setAttributes( {
+				linkTo:
+					window?.wp?.media?.view?.settings?.defaultProps?.link ||
+					LINK_DESTINATION_NONE,
+			} );
+		}
+	}, [ linkTo ] );
 
 	const imageSizeOptions = useImageSizes(
 		imageData,
@@ -413,18 +429,6 @@ function GalleryEdit( props ) {
 		);
 	}
 
-	useEffect( () => {
-		// linkTo attribute must be saved so blocks don't break when changing image_default_link_type in options.php
-		if ( ! linkTo ) {
-			__unstableMarkNextChangeAsNotPersistent();
-			setAttributes( {
-				linkTo:
-					window?.wp?.media?.view?.settings?.defaultProps?.link ||
-					LINK_DESTINATION_NONE,
-			} );
-		}
-	}, [ linkTo ] );
-
 	const hasImages = !! images.length;
 	const hasImageIds = hasImages && images.some( ( image ) => !! image.id );
 	const imagesUploading = images.some(
@@ -469,10 +473,6 @@ function GalleryEdit( props ) {
 			[ `has-border-radius-${ radius }` ]: radius > 0,
 		} ),
 	} );
-
-	if ( ! hasImages ) {
-		return <View { ...blockProps }>{ mediaPlaceholder }</View>;
-	}
 
 	const hasLinkTo = linkTo && linkTo !== 'none';
 

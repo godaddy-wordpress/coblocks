@@ -31,16 +31,14 @@ export default function useGetMedia( innerBlockImages ) {
 
 			return select( coreStore ).getMediaItems( {
 				include: imageIds.join( ',' ),
-				per_page: -1,
 			} );
 		},
 		[ innerBlockImages ]
 	);
 
 	if (
-		imageMedia?.length !== currentImageMedia?.length ||
-        imageMedia?.some( ( newImage ) => ! currentImageMedia.find(	( currentImage ) => currentImage.id === newImage.id	)
-        )
+		!! imageMedia && ( imageMedia?.length !== currentImageMedia?.length ||
+        imageMedia?.some( ( newImage ) => ! currentImageMedia.find(	( currentImage ) => currentImage.id === newImage.id	) ) )
 	) {
 		setCurrentImageMedia( imageMedia );
 		return imageMedia;
