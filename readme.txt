@@ -21,7 +21,7 @@ CoBlocks is powerful but lightweight: it adds functionality to the WordPress edi
 
 ## Make Beautiful Web Pages With Gutenberg & CoBlocks
 CoBlocks is the last page builder you’ll ever need: you get a winning mix of additional WordPress blocks, and page builder functionality. With CoBlocks you have everything you need to make beautiful web pages with the new block editor:
-
+ 
 * Accordion Block
 * Alert Block
 * Author Profile Block
