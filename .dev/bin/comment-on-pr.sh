@@ -21,8 +21,8 @@ if [[ -z "${GH_AUTH_TOKEN}" ]]; then
   exit 1
 fi
 
+# If this is not a pull request, no need to execute the script
 if [[ -z "$PR_ID" ]]; then
-  error "This is not a pull request"
   exit 0
 fi
 
