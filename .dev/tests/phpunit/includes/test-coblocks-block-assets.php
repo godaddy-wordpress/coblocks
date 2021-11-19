@@ -86,7 +86,7 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 		$this->go_to( '/wp-admin/post-new.php' );
 		$this->coblocks_block_assets->editor_assets();
 
-		$this->assertTrue( array_key_exists( 'coblocks-1', $wp_styles->registered ) );
+		$this->assertTrue( array_key_exists( 'coblocks-editor', $wp_styles->registered ) );
 	}
 
 	/**
@@ -98,7 +98,7 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 		$this->go_to( '/wp-admin/post-new.php' );
 		$this->coblocks_block_assets->editor_assets();
 
-		$this->assertTrue( array_key_exists( 'coblocks-1', $wp_scripts->registered ) );
+		$this->assertTrue( array_key_exists( 'coblocks-editor', $wp_scripts->registered ) );
 	}
 
 	/**
@@ -109,7 +109,7 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 
 		$this->coblocks_block_assets->editor_assets();
 
-		$this->assertRegExp( '/admin@example.org/', $wp_scripts->registered['coblocks-extensions']->extra['data'] );
+		$this->assertRegExp( '/admin@example.org/', $wp_scripts->registered['coblocks-editor']->extra['data'] );
 	}
 
 	public function test_block_assets_not_loaded_when_no_coblocks_block() {

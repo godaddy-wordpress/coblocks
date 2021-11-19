@@ -151,7 +151,7 @@ class CoBlocks_Block_Assets {
 		$rtl        = ! is_rtl() ? '' : '-rtl';
 
 		wp_enqueue_style(
-			$name,
+			'coblocks-editor',
 			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
 			array(),
 			$asset_file['version']
@@ -163,14 +163,14 @@ class CoBlocks_Block_Assets {
 		$rtl        = ! is_rtl() ? '' : '-rtl';
 
 		wp_enqueue_style(
-			$name,
+			'coblocks-extensions',
 			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
 			array(),
 			$asset_file['version']
 		);
 
 		wp_enqueue_script(
-			$name,
+			'coblocks-editor',
 			COBLOCKS_PLUGIN_URL . $filepath . '.js',
 			array_merge( $asset_file['dependencies'], array( 'wp-api' ) ),
 			$asset_file['version'],
@@ -185,7 +185,7 @@ class CoBlocks_Block_Assets {
 			wp_enqueue_script(
 				$name,
 				COBLOCKS_PLUGIN_URL . $filepath . '.js',
-				array_merge( $asset_file['dependencies'], array( 'wp-api', 'coblocks-extensions' ) ),
+				array_merge( $asset_file['dependencies'], array( 'wp-api', 'coblocks-editor' ) ),
 				$asset_file['version'],
 				true
 			);
@@ -229,7 +229,7 @@ class CoBlocks_Block_Assets {
 		$success_text = $form->default_success_text();
 
 		wp_localize_script(
-			'coblocks-extensions',
+			'coblocks-editor',
 			'coblocksBlockData',
 			array(
 				'form'                           => array(

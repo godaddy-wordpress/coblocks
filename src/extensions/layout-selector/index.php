@@ -70,7 +70,7 @@ function coblocks_localize_layout_selector() {
 	);
 
 	wp_localize_script(
-		'coblocks-extensions',
+		'coblocks-editor',
 		'coblocksLayoutSelector',
 		array(
 			'postTypeEnabled' => in_array( $screen_post_type, $allowed_post_types, true ),

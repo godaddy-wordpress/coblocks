@@ -28,7 +28,7 @@ const scripts = [
 // If you want to add a new chunk simply increase the lenght of the array.
 // This function produces based on array length { 'coblocks-1': 'src/blocks-1.js' }
 // Don't forget to increment the range in includes/class-coblocks-block-assets.php if you increase it here.
-const coblocksChunks = Array.from( { length: 8 }, ( _, i ) => i + 1 )
+const coblocksChunks = Array.from( { length: 7 }, ( _, i ) => i + 1 )
 	.reduce(
 		( a, i ) => ( { ...a, [ `coblocks-${ i }` ]: path.resolve( process.cwd(), `src/blocks-${ i }.js` ) } ),
 		{}
