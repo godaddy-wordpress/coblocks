@@ -191,6 +191,8 @@ workflows:
           filters:
             tags:
               only: /^(?!canary).*$/
+          requires:
+            - build
 
       - canary-release:
           filters:
