@@ -33,7 +33,7 @@
 		"lint:js": "wp-scripts lint-js",
 		"lint:php": "wp-scripts env lint-php",
 		"test:php": "wp-scripts env test-php",
-		"test:js": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js --env=./.dev/tests/jest/custom-test-env.js",
+		"test:js": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js",
 		"test:js:coverage": "yarn test:js --coverage",
 		"test:performance": "wp-scripts test-e2e --config .dev/performance/jest.performance.config.js",
 		"wp-env": "wp-env",
