@@ -1235,12 +1235,12 @@
   resolved "https://registry.yarnpkg.com/@godaddy-wordpress/eslint-config/-/eslint-config-0.4.0.tgz#2b6023b7c423aa7cf8510176ed35784c8293646a"
   integrity sha512-+jGC9j3JJ0Fw2kMLYAFNbtcPJ55sKfsE7ikLCrxQCCHdufYTbAfla36dLiPHwpvVmjzg+n2adsuN8tGTQBz1hg==
 
-"@godaddy-wordpress/stylelint-config@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/stylelint-config/-/stylelint-config-0.2.0.tgz#f735d96c4ac81ee1c70a788541787c232343431b"
-  integrity sha512-hVGhLdKFjnKuJnJdUzJsrcjeynGqSGvM/45Fhu1F/2dkfnvQ4jlj2N2U0ZHODTN9vvH3MxjGz2jPhb+5kUjuwA==
+"@godaddy-wordpress/stylelint-config@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/stylelint-config/-/stylelint-config-0.4.0.tgz#dc303d935ac29b1b927f4f2f929431b55def896b"
+  integrity sha512-p1JYUSkA/lJ3329v+r3xxmatCKmeWhCo1K7nhJ08X6WKLuFps4I0BoumXBWaj/Rvbb0D3UHD+bwsGi65wVdcfg==
   dependencies:
-    stylelint-config-wordpress "^17.0.0"
+    "@wordpress/stylelint-config" "^19.1.0"
     stylelint-order "4.1.0"
 
 "@hapi/hoek@^9.0.0":
@@ -12678,15 +12678,6 @@ stylelint-config-recommended@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/stylelint-config-recommended/-/stylelint-config-recommended-5.0.0.tgz#fb5653f495a60b4938f2ad3e77712d9e1039ae78"
   integrity sha512-c8aubuARSu5A3vEHLBeOSJt1udOdS+1iue7BmJDTSXoCBmfEQmmWX+59vYIj3NQdJBY6a/QRv1ozVFpaB9jaqA==
-
-stylelint-config-wordpress@^17.0.0:
-  version "17.0.0"
-  resolved "https://registry.yarnpkg.com/stylelint-config-wordpress/-/stylelint-config-wordpress-17.0.0.tgz#26014da588b8e8f60e11af841ee16ec28490ae97"
-  integrity sha512-qUU2kVMd2ezIV9AzRdgietIfnavRRENt4180A1OMoVXIowRjjhohZgBiyVPV5EtNKo3GTO63l8g/QGNG27/h9g==
-  dependencies:
-    stylelint-config-recommended "^3.0.0"
-    stylelint-config-recommended-scss "^4.2.0"
-    stylelint-scss "^3.17.2"
 
 stylelint-order@4.1.0:
   version "4.1.0"

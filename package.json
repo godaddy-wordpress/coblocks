@@ -78,7 +78,7 @@
 	"devDependencies": {
 		"@es-joy/jsdoccomment": "0.10.8",
 		"@godaddy-wordpress/eslint-config": "^0.4.0",
-		"@godaddy-wordpress/stylelint-config": "^0.2.0",
+		"@godaddy-wordpress/stylelint-config": "^0.4.0",
 		"@jest/core": "^27.1.0",
 		"@testing-library/jest-dom": "^5.15.0",
 		"@wordpress/api-fetch": "^5.2.4",
