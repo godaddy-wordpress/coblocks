@@ -126,7 +126,7 @@
 		"expect-puppeteer": "^6.0.0",
 		"flickity": "^2.2.2",
 		"grunt": "^1.1.0",
-		"grunt-contrib-clean": "^1.0.0",
+		"grunt-contrib-clean": "^2.0.0",
 		"grunt-contrib-compress": "^1.4.1",
 		"grunt-contrib-copy": "^1.0.0",
 		"grunt-shell": "^3.0.1",
