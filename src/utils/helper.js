@@ -1,14 +1,18 @@
 /**
  * External dependencies
  */
-import pick from 'lodash/pick';
-import get from 'lodash/get';
 import findIndex from 'lodash/findIndex';
+import get from 'lodash/get';
+import pick from 'lodash/pick';
+
+// Categories Helper
+import { supportsCollections } from './block-helpers';
 
 /**
  * WordPress dependencies
  */
 import { isBlobURL } from '@wordpress/blob';
+import { registerBlockType } from '@wordpress/blocks';
 
 // Set dim ratio.
 export function overlayToClass( ratio ) {
@@ -74,4 +78,28 @@ export const hexToRGB = ( h ) => {
 export const computeFontSize = ( fontSize ) => {
 	const size = fontSize?.size ?? fontSize;
 	return RegExp( /([a-z])/ ).test( size ) ? size : size + 'px';
+};
+
+/**
+ * Function to register an individual block.
+ *
+ * @param {Object} block The block to be registered.
+ */
+export const registerBlock = ( block ) => {
+	if ( ! block ) {
+		return;
+	}
+
+	let { category } = block;
+
+	const { name, settings } = block;
+
+	if ( ! supportsCollections() && ! name.includes( 'gallery' ) ) {
+		category = 'coblocks';
+	}
+
+	registerBlockType( name, {
+		category,
+		...settings,
+	} );
 };
