@@ -823,6 +823,13 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/project
+      - run:
+          name: Check for performance test result files.
+          command: |
+            if [ ! -f "../master-median-results.json" ] || [ ! -f "../$CIRCLE_BRANCH-median-results.json" ]; then
+              echo "Performance tests results not found."
+              exit 1
+            fi
       - changed_files_with_extension:
           ext: ".js"
       - setup_spec_files_diff_tree
