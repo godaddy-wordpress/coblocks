@@ -125,7 +125,7 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Styles.
-		$name       = 'style-coblocks';
+		$name       = 'style-coblocks-1';
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
 		$rtl        = ! is_rtl() ? '' : '-rtl';
@@ -145,30 +145,51 @@ class CoBlocks_Block_Assets {
 	 */
 	public function editor_assets() {
 		// Styles.
-		$name       = 'coblocks';
+		$name       = 'coblocks-1';
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
 		$rtl        = ! is_rtl() ? '' : '-rtl';
 
-		wp_register_style(
+		wp_enqueue_style(
 			'coblocks-editor',
 			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
 			array(),
 			$asset_file['version']
 		);
 
-		// Scripts.
-		$name       = 'coblocks'; // coblocks.js.
+		$name       = 'coblocks-extensions';
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
+		$rtl        = ! is_rtl() ? '' : '-rtl';
 
-		wp_register_script(
+		wp_enqueue_style(
+			'coblocks-extensions',
+			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
+			array(),
+			$asset_file['version']
+		);
+
+		wp_enqueue_script(
 			'coblocks-editor',
 			COBLOCKS_PLUGIN_URL . $filepath . '.js',
 			array_merge( $asset_file['dependencies'], array( 'wp-api' ) ),
 			$asset_file['version'],
 			true
 		);
+
+		foreach ( range( 1, 8 ) as $number ) {
+			$name       = "coblocks-$number"; // coblocks-1.js.
+			$filepath   = 'dist/' . $name;
+			$asset_file = $this->get_asset_file( $filepath );
+
+			wp_enqueue_script(
+				$name,
+				COBLOCKS_PLUGIN_URL . $filepath . '.js',
+				array_merge( $asset_file['dependencies'], array( 'wp-api', 'coblocks-editor' ) ),
+				$asset_file['version'],
+				true
+			);
+		}
 
 		$post_id = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
 

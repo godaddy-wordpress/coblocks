@@ -1,14 +1,18 @@
 /**
  * External dependencies
  */
-import pick from 'lodash/pick';
-import get from 'lodash/get';
 import findIndex from 'lodash/findIndex';
+import get from 'lodash/get';
+import pick from 'lodash/pick';
+
+// Categories Helper
+import { supportsCollections } from './block-helpers';
 
 /**
  * WordPress dependencies
  */
 import { isBlobURL } from '@wordpress/blob';
+import { registerBlockType } from '@wordpress/blocks';
 
 // Set dim ratio.
 export function overlayToClass( ratio ) {
@@ -42,9 +46,9 @@ export const isTemporaryImage = ( id, url ) => ! id && isBlobURL( url );
 export const ALLOWED_GALLERY_MEDIA_TYPES = [ 'image' ];
 
 export const hexToRGB = ( h ) => {
-	let r = 0,
+	let b = 0,
 		g = 0,
-		b = 0;
+		r = 0;
 
 	switch ( h.length ) {
 		case 4: {
@@ -74,4 +78,33 @@ export const hexToRGB = ( h ) => {
 export const computeFontSize = ( fontSize ) => {
 	const size = fontSize?.size ?? fontSize;
 	return RegExp( /([a-z])/ ).test( size ) ? size : size + 'px';
+};
+
+/**
+ * Function to register an individual block.
+ *
+ * @param {Object} block The block to be registered.
+ */
+export const registerBlock = ( block ) => {
+	if ( ! block ) {
+		return;
+	}
+
+	let { category } = block;
+
+	const { name, settings } = block;
+
+	if ( ! supportsCollections() && ! name.includes( 'gallery' ) ) {
+		category = 'coblocks';
+	}
+
+	const v2Settings = block?.metadata?.apiVersion === 2 ? block?.metadata : {};
+
+	registerBlockType( name, {
+		category,
+		...settings,
+
+		// V2 Block API Upgrades
+		...v2Settings,
+	} );
 };
