@@ -1,9 +1,9 @@
 /**
  * WordPress dependencies
  */
-import { useState } from '@wordpress/element';
-import { useSelect } from '@wordpress/data';
 import { store as coreStore } from '@wordpress/core-data';
+import { useSelect } from '@wordpress/data';
+import { useState } from '@wordpress/element';
 
 /**
  * Retrieves the extended media info for each gallery image from the store. This is used to

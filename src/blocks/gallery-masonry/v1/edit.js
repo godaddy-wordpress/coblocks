@@ -35,9 +35,6 @@ const masonryOptions = {
 	percentPosition: true,
 };
 
-// import './styles/editor.scss';
-// import './styles/style.scss';
-
 const GalleryMasonryEdit = ( props ) => {
 	const {
 		attributes,

@@ -12,7 +12,7 @@ import { View } from '@wordpress/primitives';
 import { VisuallyHidden } from '@wordpress/components';
 import {
 	// Disable reason: We choose to use an experimental API here.
-	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
+	// eslint-disable-next-line import/named, @wordpress/no-unsafe-wp-apis
 	__experimentalUseInnerBlocksProps,
 	useInnerBlocksProps as promotedUseInnerBlocksProps,
 	RichText,

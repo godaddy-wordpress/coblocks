@@ -60,6 +60,6 @@ export default function useImageSizes( images, isSelected, getSettings ) {
 			.filter( ( { slug } ) =>
 				some( resizedImages, ( sizes ) => sizes[ slug ] )
 			)
-			.map( ( { name, slug } ) => ( { value: slug, label: name } ) );
+			.map( ( { name, slug } ) => ( { label: name, value: slug } ) );
 	}
 }

@@ -11,9 +11,9 @@ import * as helper from './../../utils/helper';
 /**
  * WordPress dependencies
  */
-import { __, sprintf } from '@wordpress/i18n';
-import { MediaPlaceholder } from '@wordpress/block-editor';
 import { Icon } from '@wordpress/components';
+import { MediaPlaceholder } from '@wordpress/block-editor';
+import { __, sprintf } from '@wordpress/i18n';
 
 const GalleryPlaceholder = ( props ) => {
 	const selectCaption = ( newImage, images ) => {
@@ -27,8 +27,9 @@ const GalleryPlaceholder = ( props ) => {
 	};
 
 	const onSelectImages = ( newImages ) => {
-		const { images } = props.attributes;
-		props.setAttributes( {
+		const { attributes, setAttributes } = props;
+		const { images } = attributes;
+		setAttributes( {
 			images: newImages.map( ( image ) => ( {
 				...helper.pickRelevantMediaFiles( image ),
 				caption: selectCaption( image, images ),
@@ -47,6 +48,9 @@ const GalleryPlaceholder = ( props ) => {
 		attributes,
 		gutter,
 		isSelected,
+		variationLabel,
+		label,
+		icon,
 	} = props;
 
 	const {
@@ -59,30 +63,30 @@ const GalleryPlaceholder = ( props ) => {
 		marginTop: gutter + 'px',
 	};
 
-	const title = ! hasImages && ( props.variationLabel || sprintf(
+	const title = ! hasImages && ( variationLabel || sprintf(
 		/* translators: %s: Type of gallery */
 		__( '%s Gallery', 'coblocks' ),
-		props.label
+		label
 	) );
 
 	return (
 		<div style={ styles }>
 			<MediaPlaceholder
+				accept="image/*"
 				addToGallery={ hasImages }
-				isAppender={ hasImages }
+				allowedTypes={ helper.ALLOWED_GALLERY_MEDIA_TYPES }
 				className="coblocks-gallery--figure"
 				disableMediaButtons={ hasImages && ! isSelected }
-				icon={ ! hasImages && <Icon icon={ props.icon } /> }
+				icon={ ! hasImages && <Icon icon={ icon } /> }
+				isAppender={ hasImages }
 				labels={ {
-					title,
 					instructions: ! hasImages && __( 'Drag images, upload new ones or select files from your library.', 'coblocks' ),
+					title,
 				} }
-				onSelect={ onSelectImages }
-				accept="image/*"
-				allowedTypes={ helper.ALLOWED_GALLERY_MEDIA_TYPES }
 				multiple
-				value={ hasImages ? images : undefined }
 				onError={ onUploadError }
+				onSelect={ onSelectImages }
+				value={ hasImages ? images : undefined }
 			/>
 		</div>
 	);

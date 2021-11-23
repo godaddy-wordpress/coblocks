@@ -6,8 +6,8 @@ import { every } from 'lodash';
 /**
  * WordPress dependencies
  */
-import { useSelect } from '@wordpress/data';
 import { store as coreStore } from '@wordpress/core-data';
+import { useSelect } from '@wordpress/data';
 
 /**
  * Shortcode transforms don't currently have a tranform method and so can't use a selector to
@@ -27,12 +27,12 @@ export default function useShortCodeTransform( shortCodeTransforms ) {
 				const imageData = getMedia( image.id );
 				if ( imageData ) {
 					return {
+						alt: imageData.alt_text,
 						id: imageData.id,
+						link: imageData.link,
+						mime: imageData.mime_type,
 						type: 'image',
 						url: imageData.source_url,
-						mime: imageData.mime_type,
-						alt: imageData.alt_text,
-						link: imageData.link,
 					};
 				}
 				return undefined;
