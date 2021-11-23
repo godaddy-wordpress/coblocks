@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import PropTypes from 'prop-types';
 
 /**
  * WordPress dependencies
@@ -66,11 +65,6 @@ const GutterWrapper = ( { children, gutter, gutterCustom, className, condition =
 	}
 
 	return cloneElement( children, attributes );
-};
-
-GutterWrapper.propTypes = {
-	gutter: PropTypes.string,
-	gutterCustom: PropTypes.oneOfType( [ PropTypes.string, PropTypes.number ] ),
 };
 
 export default GutterWrapper;

@@ -35,13 +35,13 @@ const GutterControl = ( props ) => {
 	const { attributes, setAttributes } = props;
 	const { align, gutter, gutterCustom } = attributes;
 
-	const maxValue = attributes.align === 'full' ? 10 : 5;
+	const maxValue = align === 'full' ? 10 : 5;
 
 	useEffect( () => {
 		if ( gutterCustom > maxValue ) {
 			setAttributes( { gutterCustom: maxValue } );
 		}
-	}, [ gutterCustom, align ] );
+	}, [ gutterCustom, maxValue ] );
 
 	return (
 		<>

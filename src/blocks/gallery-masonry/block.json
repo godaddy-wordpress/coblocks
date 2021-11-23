@@ -88,8 +88,7 @@
 	},
 	"supports": {
 		"anchor": true,
-		"gutter": {	"default": "medium"	},
-		"gutterCustom": { "default": 0.2 },
+		"gutter": {	"default": "medium", "customDefault": 0.2	},
 		"align": [ "wide", "full" ],
 		"coBlocksSpacing": true,
 		"html": false

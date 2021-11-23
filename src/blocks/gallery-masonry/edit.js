@@ -141,7 +141,7 @@ function GalleryEdit( props ) {
 	useEffect( () => {
 		const changedAttributes = {};
 		const blocks = [];
-		getBlock( clientId ).innerBlocks.forEach( ( block ) => {
+		getBlock( clientId )?.innerBlocks.forEach( ( block ) => {
 			blocks.push( block.clientId );
 			changedAttributes[ block.clientId ] = { className: 'masonry-brick' };
 		} );

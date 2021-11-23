@@ -13,7 +13,7 @@ exports[`coblocks/gallery-collage should have className 'has-caption-style-dark'
 `;
 
 exports[`coblocks/gallery-collage should have className 'has-caption-style-light' with captionStyle set to 'light'. 1`] = `
-"<!-- wp:coblocks/gallery-collage {\\"captions\\":true,\\"captionStyle\\":\\"light\\"} -->
+"<!-- wp:coblocks/gallery-collage {\\"captionStyle\\":\\"light\\",\\"captions\\":true} -->
 <div aria-label=\\"Collage Gallery\\" class=\\"wp-block-coblocks-gallery-collage alignwide has-caption-style-light has-small-gutter\\"><ul><li class=\\"wp-block-coblocks-gallery-collage__item item-1\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-index=\\"0\\" data-id=\\"1\\" class=\\"wp-image-1\\"/></figure></li><li class=\\"wp-block-coblocks-gallery-collage__item item-2\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" data-index=\\"1\\" data-id=\\"2\\" class=\\"wp-image-2\\"/></figure></li><li class=\\"wp-block-coblocks-gallery-collage__item item-3\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\" data-index=\\"3\\" data-id=\\"3\\" class=\\"wp-image-3\\"/><figcaption class=\\"wp-block-coblocks-gallery-collage__caption\\">test caption</figcaption></figure></li></ul></div>
 <!-- /wp:coblocks/gallery-collage -->"
 `;
