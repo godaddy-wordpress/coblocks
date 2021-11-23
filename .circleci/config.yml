@@ -813,9 +813,23 @@ jobs:
   aggregate_perf_test_results:
     executor: php_74_node_browser_mysql
     steps:
+      - run:
+          name: Check branch
+          command: |
+            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
+              echo "Performance tests are not run on this branch."
+              circleci-agent step halt
+            fi
       - checkout
       - attach_workspace:
           at: ~/project
+      - run:
+          name: Check for performance test result files.
+          command: |
+            if [ ! -f "../master-median-results.json" ] || [ ! -f "../$CIRCLE_BRANCH-median-results.json" ]; then
+              echo "Performance tests results not found."
+              exit 1
+            fi
       - changed_files_with_extension:
           ext: ".js"
       - setup_spec_files_diff_tree
