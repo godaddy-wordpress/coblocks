@@ -813,6 +813,13 @@ jobs:
   aggregate_perf_test_results:
     executor: php_74_node_browser_mysql
     steps:
+      - run:
+          name: Check branch
+          run: |
+            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
+              echo "Performance tests are not run on this branch."
+              circleci-agent step halt
+            fi
       - checkout
       - attach_workspace:
           at: ~/project
