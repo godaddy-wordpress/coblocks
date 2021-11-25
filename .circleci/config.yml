@@ -189,7 +189,8 @@ workflows:
             - unit_testing_php_74
             - unit_testing_php_80
             - js
-      #- e2e_chrome_wp_previous_major:
+
+      # - e2e_chrome_wp_previous_major:
       #    filters:
       #      tags:
       #        only: /^(?!canary).*$/
@@ -202,16 +203,23 @@ workflows:
       #      - js
 
       # PERF TESTING
-      - perf_tests:
+      - master_perf_tests:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+
+      - current_perf_tests:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+
+      - aggregate_perf_test_results:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - css
-            - unit_testing_php_56
-            - unit_testing_php_73
-            - unit_testing_php_74
-            - js
+            - current_perf_tests
+            - master_perf_tests
 
       - canary-release:
           filters:
@@ -323,7 +331,6 @@ commands:
 
   # Enable debug mode for use in E2E tests.
   enable_debug_mode_for_e2e:
-    description: ""
     steps:
       - run:
           name: Enable Debug Mode
@@ -403,7 +410,36 @@ commands:
             echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
             ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>-wp-<< parameters.wpversion >>
 
+  setup_perf_tests:
+    steps:
+      - setup_e2e_env_var
+      - changed_files_with_extension:
+          ext: ".js"
+      - setup_spec_files_diff_tree
+      - disable_xdebug_php_extension
+      - attach_workspace:
+          at: ~/project
+      - restore_yarn_cache
+      - wait_for_mysql
+      - run:
+          name: Install Composer dependencies
+          command: |
+            sudo composer self-update --1
+            composer validate --strict
+            composer install
+      - run:
+          name: Prepare MySQL for local testing
+          command: |
+            echo 127.0.0.1 localhost | sudo tee -a /etc/hosts
+            sudo apt-get update --allow-releaseinfo-change && sudo apt-get install -y subversion default-mysql-client
+            sudo mkdir /conf.d/
+            sudo -E docker-php-ext-install mysqli
+
   run_perf_tests:
+    parameters:
+      branch:
+        description: Branch to run performance tests against
+        type: string
     steps:
       - run:
           name: Run performance tests
@@ -412,7 +448,7 @@ commands:
               echo "Changes do not require testing."
               circleci-agent step halt
             else
-              ~/project/.dev/performance/cli.js perf --ci $CIRCLE_BRANCH
+              ~/project/.dev/performance/cli.js perf --ci << parameters.branch >>
             fi
 
   start_wpcli_server:
@@ -750,33 +786,62 @@ jobs:
           browser: chrome
           wpversion: previous_major
 
-  perf_tests:
+  master_perf_tests:
     executor: php_74_node_browser_mysql
     steps:
       - checkout
-      - setup_e2e_env_var
+      - setup_perf_tests
+      - run_perf_tests:
+          branch: master
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - ./*-median-results.json
+
+  current_perf_tests:
+    executor: php_74_node_browser_mysql
+    steps:
+      - checkout
+      - setup_perf_tests
+      - run_perf_tests:
+          branch: ${CIRCLE_BRANCH}
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - ./*-median-results.json
+
+  aggregate_perf_test_results:
+    executor: php_74_node_browser_mysql
+    steps:
+      - run:
+          name: Check branch
+          command: |
+            if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CIRCLE_BRANCH" == "develop" ]; then
+              echo "Performance tests are not run on this branch."
+              circleci-agent step halt
+            fi
+      - checkout
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Check for performance test result files.
+          command: |
+            if [ ! -f "../master-median-results.json" ] || [ ! -f "../$CIRCLE_BRANCH-median-results.json" ]; then
+              echo "Performance tests results not found."
+              circleci-agent step halt
+            fi
       - changed_files_with_extension:
           ext: ".js"
       - setup_spec_files_diff_tree
-      - disable_xdebug_php_extension
-      - attach_workspace:
-          at: ~/project
       - restore_yarn_cache
-      - wait_for_mysql
       - run:
-          name: Install Composer dependencies
+          name: Install Node dependencies
           command: |
-            sudo composer self-update --1
-            composer validate --strict
-            composer install
+            PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+            yarn install --frozen-lockfile
       - run:
-          name: Prepare MySQL for local testing
-          command: |
-            echo 127.0.0.1 localhost | sudo tee -a /etc/hosts
-            sudo apt-get update --allow-releaseinfo-change && sudo apt-get install -y subversion default-mysql-client
-            sudo mkdir /conf.d/
-            sudo -E docker-php-ext-install mysqli
-      - run_perf_tests
+          name: Aggregate performance test results
+          command: .dev/performance/cli-results.js get-test-results "${CIRCLE_BRANCH}"
 
   # --------------------------------------------------
   # Internationalization Processes
