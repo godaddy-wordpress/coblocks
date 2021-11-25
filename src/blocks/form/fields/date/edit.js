@@ -10,7 +10,7 @@ function CoBlocksFieldDate( props ) {
 	return (
 		<>
 			<CoBlocksField
-				type="text"
+				type="date"
 				label={ label }
 				required={ required }
 				setAttributes={ setAttributes }

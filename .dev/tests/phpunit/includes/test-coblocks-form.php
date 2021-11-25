@@ -326,19 +326,6 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test the datepicker script is enqueued
-	 */
-	public function test_field_date_scripts() {
-
-		$this->coblocks_form->render_field_date( [], '' );
-
-		global $wp_scripts;
-
-		$this->assertArrayHasKey( 'coblocks-datepicker', $wp_scripts->registered );
-
-	}
-
-	/**
 	 * Test the date field markup is as expected
 	 */
 	public function test_render_field_date() {
