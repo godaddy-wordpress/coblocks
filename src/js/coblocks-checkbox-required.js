@@ -1,6 +1,3 @@
-// Disable note: This rule is only meant to be used for React components
-// See https://github.com/WordPress/gutenberg/pull/26810
-// eslint-disable-next-line @wordpress/no-global-event-listener
 document.addEventListener( 'DOMContentLoaded', function() {
 	document.querySelectorAll( '.coblocks-form form' ).forEach( ( form ) => {
 		const requiredErrorDiv = form.getElementsByClassName( 'required-error' )[ 0 ];

@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/godaddy-wordpress/coblocks/tree/master.svg?style=svg)](https://circleci.com/gh/godaddy-wordpress/coblocks/tree/master) [![WordPress plugin](https://img.shields.io/wordpress/plugin/dt/coblocks.svg?style=flat)](https://wordpress.org/plugins/coblocks/) [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/coblocks.svg?style=flat)](https://wordpress.org/plugins/coblocks/) [![WordPress](https://img.shields.io/wordpress/v/coblocks.svg?style=flat)]() [![License](https://img.shields.io/badge/license-GPL--2.0%2B-red.svg)](https://github.com/godaddy-wordpress/coblocks/blob/master/LICENSE)
 
-[CoBlocks](https://wordpress.org/plugins/coblocks/) is a suite of professional page building content blocks for the WordPress Gutenberg block editor. This the most innovative collection of page building WordPress blocks for the new Gutenberg block editor. We will make you rethink what WordPress is capable of.
+[CoBlocks](https://wordpress.org/plugins/coblocks/) is a suite of professional page building content blocks for the WordPress Gutenberg block editor. This is the most innovative collection of page building WordPress blocks for the new Gutenberg block editor. We will make you rethink what WordPress is capable of.
 
 [![CoBlocks, a suite of page builder Gutenberg blocks](https://user-images.githubusercontent.com/1813435/74267026-494fd300-4cd3-11ea-8a0f-e5bca5bc844f.jpg)](https://wordpress.org/plugins/coblocks/)
 

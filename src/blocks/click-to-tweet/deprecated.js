@@ -12,7 +12,7 @@ import { RichText, getColorClassName, getFontSizeClass } from '@wordpress/block-
  * Internal dependencies
  */
 import { default as currentBlock } from './block.json';
-import { deprecateTypographyControls } from '../../extensions/typography';
+import { deprecateTypographyControls } from '../../extensions/typography/deprecated';
 import save from './save';
 const deprecated = [
 	{

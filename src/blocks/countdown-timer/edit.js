@@ -2,9 +2,9 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { TimerIcon } from '@godaddy-wordpress/coblocks-icons';
 import { useBlockProps } from '@wordpress/block-editor';
 import { Icon, Placeholder } from '@wordpress/components';
-// import { TimerIcon } from '@godaddy-wordpress/coblocks-icons';
 
 const Edit = () => {
 	const blockProps = useBlockProps( {
@@ -16,10 +16,10 @@ const Edit = () => {
 	return (
 		<>
 			<Placeholder
+				icon={ <Icon icon={ TimerIcon } /> }
 				instructions={ __( 'todo', 'coblocks' ) }
 				key="placeholder"
 				label="Countdown Timer"
-				// icon={ <Icon icon={ TimerIcon } /> }
 				{ ...blockProps }
 			>
 

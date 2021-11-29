@@ -14,25 +14,27 @@ const CoBlocksFieldLabel = ( { setAttributes, label, resetFocus, isSelected, req
 	return (
 		<div className="coblocks-field-label">
 			<div className="coblocks-field-label__input-wrapper">
-				<LabelColorWrapper
-					label={ label }
-					textColor={ textColor }
-					customTextColor={ customTextColor }
-					name={ name }
-				>
-					<RichText
-						tagName="label"
-						className="coblocks-label coblocks-field-label__input"
-						value={ label }
-						onChange={ ( value ) => {
-							if ( resetFocus ) {
-								resetFocus();
-							}
-							setAttributes( { label: value } );
-						} }
-						placeholder={ __( 'Add label…', 'coblocks' ) }
-					/>
-				</LabelColorWrapper>
+				{ label && (
+					<LabelColorWrapper
+						label={ label }
+						textColor={ textColor }
+						customTextColor={ customTextColor }
+						name={ name }
+					>
+						<RichText
+							tagName="label"
+							className="coblocks-label coblocks-field-label__input"
+							value={ label }
+							onChange={ ( value ) => {
+								if ( resetFocus ) {
+									resetFocus();
+								}
+								setAttributes( { label: value } );
+							} }
+							placeholder={ __( 'Add label…', 'coblocks' ) }
+						/>
+					</LabelColorWrapper>
+				) }
 
 				{ required && (
 					<span className="required">*</span>

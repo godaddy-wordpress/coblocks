@@ -17,4 +17,5 @@ module.exports = {
 		'<rootDir>/.dev/tests/jest/setup-globals.js',
 	],
 	testMatch: [ '**/test/*.spec.js' ],
+	testEnvironment: '<rootDir>/.dev/tests/jest/custom-test-env.js',
 };
