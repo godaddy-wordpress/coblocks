@@ -28,7 +28,7 @@
 		},
 		"loop": {
 			"type": "boolean",
-			"default": true
+			"default": false
 		},
 		"autoPlay": {
 			"type": "boolean",
