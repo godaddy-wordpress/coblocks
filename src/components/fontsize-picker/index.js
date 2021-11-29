@@ -11,16 +11,13 @@ import { FontSizePicker } from '@wordpress/block-editor';
  */
 const CoBlocksFontSizePicker = ( props ) => {
 	const { fallbackFontSize, fontSize, setFontSize } = props;
+
 	return (
 		<FontSizePicker
 			fallbackFontSize={ fallbackFontSize }
 			value={ fontSize.size }
-			onChange={ ( value ) => {
-				const fontSizeValue = value ? parseInt( value, 10 ) : undefined;
-
-				if ( ! Number.isNaN( fontSizeValue ) ) {
-					setFontSize( fontSizeValue );
-				}
+			onChange={ ( newFontSize ) => {
+				setFontSize( newFontSize ?? 'inherit' );
 			} }
 		/>
 	);
