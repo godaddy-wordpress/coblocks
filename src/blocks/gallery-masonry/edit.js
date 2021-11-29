@@ -23,6 +23,7 @@ import { useDispatch, useSelect } from '@wordpress/data';
 /**
  * Internal dependencies
  */
+import Controls from './controls.js';
 import Gallery from '../../components/block-gallery/gallery';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 import { pickRelevantMediaFiles } from '../../components/block-gallery/shared-helpers';
@@ -60,6 +61,7 @@ function GalleryEdit( props ) {
 	} = props;
 
 	const {
+		filter,
 		imageCrop,
 		linkTarget,
 		linkTo,
@@ -470,6 +472,7 @@ function GalleryEdit( props ) {
 
 	const blockProps = useBlockProps( {
 		className: classnames( className, {
+			[ `has-filter-${ filter }` ]: filter !== 'none',
 			[ `has-border-radius-${ radius }` ]: radius > 0,
 		} ),
 	} );
@@ -478,6 +481,7 @@ function GalleryEdit( props ) {
 
 	return (
 		<>
+			<Controls { ...props } innerBlocks={ images } />
 			<InspectorControls>
 				<PanelBody title={ __( 'Gallery settings' ) }>
 					<ToggleControl
