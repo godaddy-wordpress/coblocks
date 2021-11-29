@@ -576,15 +576,13 @@ export function capitalize( string ) {
 	} );
 }
 
-/**
- * Toggle a checkbox in the settings panel of the block editor
- *
- * @param {string} text The checkbox label text. eg: Facebook
- */
-export function toggleSocialNetwork( text ) {
-	cy.get( '.components-checkbox-control__label' )
-		.contains( text )
-		.parent( '.components-base-control__field' )
-		.find( '.components-checkbox-control__input-container' )
-		.click();
+function getIframeDocument( containerClass ) {
+	return cy.get( containerClass + ' iframe' ).its( '0.contentDocument' ).should( 'exist' );
+}
+
+export function getIframeBody( containerClass ) {
+	return getIframeDocument( containerClass ).its( 'body' ).should( 'not.be.undefined' )
+		// wraps "body" DOM element to allow
+		// chaining more Cypress commands, like ".find(...)"
+		.then( cy.wrap );
 }

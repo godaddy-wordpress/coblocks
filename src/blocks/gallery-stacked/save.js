@@ -11,7 +11,8 @@ import { GalleryClasses } from '../../components/block-gallery/shared';
 /**
  * WordPress dependencies
  */
-import { RichText, getFontSizeClass } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
+import { getFontSizeClass, RichText } from '@wordpress/block-editor';
 
 const save = ( { attributes, className } ) => {
 	const {
@@ -69,7 +70,9 @@ const save = ( { attributes, className } ) => {
 	};
 
 	return (
-		<div className={ classes }>
+		<div
+			aria-label={ __( `Stacked Gallery`, 'coblocks' ) }
+			className={ classes }>
 			<ul className={ innerClasses }>
 				{ images.map( ( image ) => {
 					let href;
@@ -93,14 +96,14 @@ const save = ( { attributes, className } ) => {
 							[ `has-shadow-${ shadow }` ]: shadow !== 'none' || shadow !== undefined,
 						} );
 
-					const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ imgClasses } />;
+					const img = <img alt={ image.alt } className={ imgClasses } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } src={ image.url } />;
 
 					return (
-						<li key={ image.id || image.url } className={ itemClasses } data-coblocks-animation={ animation }>
+						<li className={ itemClasses } data-coblocks-animation={ animation } key={ image.id || image.url }>
 							<figure className={ figureClasses }>
-								{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
+								{ href ? <a href={ href } rel={ rel } target={ target }>{ img }</a> : img }
 								{ captions && image.caption && image.caption.length > 0 && (
-									<RichText.Content tagName="figcaption" className={ captionClasses } value={ image.caption } style={ captionStyles } />
+									<RichText.Content className={ captionClasses } style={ captionStyles } tagName="figcaption" value={ image.caption } />
 								) }
 							</figure>
 						</li>
