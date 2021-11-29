@@ -1,9 +1,101 @@
 .coblocks-gallery--item {
-	height: 100%;
-	margin: 0 !important;
-	width: 100%;
-}
+	.has-no-alignment .has-carousel-lrg & {
+		@media (min-width: 1300px) {
+			width: 70%;
+		}
+	}
 
-.has-carousel {
-	width: 100%;
+	.has-no-alignment .has-carousel-xlrg & {
+		width: 100%;
+	}
+
+	.has-carousel-sml & {
+		width: 65%;
+
+		@media (min-width: 700px) {
+			width: 33.333%;
+		}
+		@media (min-width: 1100px) {
+			width: 25%;
+		}
+		@media (min-width: 1600px) {
+			width: 20%;
+		}
+	}
+
+	.has-carousel-sml.has-aligned-cells & {
+		width: 100%;
+
+		@media (min-width: 700px) {
+			width: 33.333%;
+		}
+		@media (min-width: 1100px) {
+			width: 25%;
+		}
+		@media (min-width: 1600px) {
+			width: 20%;
+		}
+	}
+
+	.has-carousel-med & {
+		width: 70%;
+
+		@media (min-width: 700px) {
+			width: 33.333%;
+		}
+		@media (min-width: 1800px) {
+			width: 25%;
+		}
+	}
+
+	.has-carousel-med.has-aligned-cells & {
+		width: 100%;
+
+		@include break-small() {
+			width: 50%;
+		}
+
+		@media (min-width: 900px) {
+			width: 33.333%;
+		}
+		@media (min-width: 1200px) {
+			width: 25%;
+		}
+	}
+
+	.has-carousel-lrg & {
+		width: 80%;
+
+		@include break-small() {
+			width: 70%;
+		}
+
+		@media (min-width: 1300px) {
+			width: 60%;
+		}
+	}
+
+	.has-carousel-lrg.has-aligned-cells & {
+		width: 100%;
+
+		@include break-small() {
+			width: 50%;
+		}
+
+		@media (min-width: 1800px) {
+			width: 33.333%;
+		}
+	}
+
+	.has-carousel-xlrg & {
+		width: 100%;
+
+		@media (min-width: 1200px) {
+			width: 80%;
+		}
+	}
+
+	.has-carousel-xlrg.has-aligned-cells & {
+		width: 100%;
+	}
 }
