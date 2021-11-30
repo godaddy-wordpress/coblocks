@@ -15,7 +15,7 @@ import {
  */
 
 // The Jest timeout is increased because these tests are a bit slow
-jest.setTimeout( 100000 );
+jest.setTimeout( 1000000 );
 
 async function setupBrowser() {
 	await clearLocalStorage();
