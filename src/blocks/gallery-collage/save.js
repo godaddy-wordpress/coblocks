@@ -6,8 +6,8 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
+import { RichText } from '@wordpress/block-editor';
 
 /**
  * Internal dependencies
@@ -19,7 +19,6 @@ const save = ( { attributes } ) => {
 		animation,
 		captions,
 		captionStyle,
-		filter,
 		images,
 		lightbox,
 		linkTo,
@@ -36,7 +35,6 @@ const save = ( { attributes } ) => {
 		<GutterWrapper { ...attributes }>
 			<div aria-label={ __( `Collage Gallery`, 'coblocks' ) }
 				className={ classnames( {
-					[ `has-filter-${ filter }` ]: filter !== 'none',
 					[ `has-caption-style-${ captionStyle }` ]: captions && captionStyle !== undefined,
 					'has-lightbox': lightbox,
 				} ) }>
@@ -69,19 +67,19 @@ const save = ( { attributes } ) => {
 								}
 							);
 							const imgClasses = classnames( image.id && [ `wp-image-${ image.id }` ] );
-							const img = typeof image.url === 'undefined' ? null : ( <img src={ image.url } alt={ image.alt } data-index={ image.index } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ imgClasses } /> );
+							const img = typeof image.url === 'undefined' ? null : ( <img alt={ image.alt } className={ imgClasses } data-id={ image.id } data-imglink={ image.imgLink } data-index={ image.index } data-link={ image.link } src={ image.url } /> );
 
 							return (
 								<li
-									key={ `image-${ index }` }
 									className={ itemClasses }
 									data-coblocks-animation={ animation }
+									key={ `image-${ index }` }
 								>
 									{ img &&
 									<figure className={ classes }>
-										{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
+										{ href ? <a href={ href } rel={ rel } target={ target }>{ img }</a> : img }
 										{ captions && image.caption && (
-											<RichText.Content tagName="figcaption" className="wp-block-coblocks-gallery-collage__caption" value={ image.caption } />
+											<RichText.Content className="wp-block-coblocks-gallery-collage__caption" tagName="figcaption" value={ image.caption } />
 										) }
 									</figure>
 									}

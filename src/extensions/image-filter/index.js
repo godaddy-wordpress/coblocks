@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * Internal dependencies
  */
 import MediaFilterControl from '../../components/media-filter-control';
@@ -26,31 +21,9 @@ const allowedBlocks = [
  */
 const coreImageFilter = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-		const { name, attributes, setAttributes } = props;
-		const { filter, className } = attributes;
-
+		const { name } = props;
 		if ( ! allowedBlocks.includes( name ) ) {
 			return <BlockEdit { ...props } />;
-		}
-
-		const filterClass = classnames( { [ `has-filter-${ filter }` ]: filter !== 'none' } );
-		const existingFilterClass = className?.match( 'has-filter-[a-z]*' )?.[ 0 ];
-
-		const shouldAddClass = !! filterClass && ! className?.includes( filterClass );
-		const shouldRemoveClass = !! existingFilterClass && filterClass !== existingFilterClass;
-
-		const classnamesApplied = classnames(
-			shouldRemoveClass
-				// Remove existing class, remove double spaces and trim ends of string.
-				? className.replace( existingFilterClass, '' ).replace( '  ', ' ' ).trim()
-				: className,
-			{
-				[ `has-filter-${ filter }` ]: filter !== 'none',
-			}
-		);
-
-		if ( !! shouldAddClass || !! shouldRemoveClass ) {
-			setAttributes( { className: classnamesApplied } );
 		}
 
 		return (
@@ -88,25 +61,3 @@ function imageFilterAttributes( settings ) {
 }
 
 addFilter( 'blocks.registerBlockType', 'coblocks/imageFilterAttributes', imageFilterAttributes );
-
-/**
- * Add custom class in save element.
- *
- * @param {Object} extraProps Block element.
- * @param {Object} blockType  Blocks object.
- * @param {Object} attributes Blocks attributes.
- * @return {Object} extraProps Modified block element.
- */
-function imageBlockClass( extraProps, blockType, attributes ) {
-	if ( allowedBlocks.includes( blockType.name ) && typeof attributes.filter !== 'undefined' ) {
-		extraProps.className = classnames(
-			extraProps.className,
-			{
-				[ `has-filter-${ attributes.filter }` ]: attributes.filter !== 'none',
-			}
-		);
-	}
-	return extraProps;
-}
-
-addFilter( 'blocks.getSaveContent.extraProps', 'coblocks/imageApplyExtraClass', imageBlockClass );

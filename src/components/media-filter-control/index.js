@@ -19,7 +19,6 @@ import {
 import { __ } from '@wordpress/i18n';
 import { BlockPreview } from '@wordpress/block-editor';
 import { select } from '@wordpress/data';
-import { useState } from '@wordpress/element';
 import {
 	DropdownMenu,
 	Icon,
@@ -28,6 +27,7 @@ import {
 	Popover,
 	ToolbarGroup,
 } from '@wordpress/components';
+import { useEffect, useState } from '@wordpress/element';
 
 const PreviewImageFilterPopover = ( { hoveredFilter } ) => {
 	if ( ! hoveredFilter ) {
@@ -75,19 +75,50 @@ const MediaFilterControl = ( props ) => {
 
 	const {
 		filter,
+		className,
 	} = attributes;
 
 	const POPOVER_PROPS = {
 		className: 'components-coblocks-dropdown',
 	};
 
+	useEffect( () => {
+		// Handle situations where filter is set without the className being set.
+		setClassName( filter );
+	}, [ className, filter ] );
+
+	const setClassName = ( newFilter ) => {
+		const filterClass = classnames( { [ `has-filter-${ newFilter }` ]: newFilter !== 'none' } );
+		const existingFilterClass = className?.match( 'has-filter-[a-z]*' )?.[ 0 ];
+
+		const shouldAddClass = !! filterClass && ! className?.includes( filterClass );
+		const shouldRemoveClass = !! existingFilterClass && filterClass !== existingFilterClass;
+
+		const classnamesApplied = classnames(
+			shouldRemoveClass
+				// Remove existing class, remove double spaces and trim ends of string.
+				? className.replace( existingFilterClass, '' ).replace( '  ', ' ' ).trim()
+				: className,
+			filterClass,
+		);
+
+		if ( !! shouldAddClass || !! shouldRemoveClass ) {
+			setAttributes( { className: classnamesApplied, filter: newFilter } );
+			return;
+		}
+
+		if ( filter === newFilter ) {
+			return;
+		}
+
+		setAttributes( { filter: newFilter } );
+	};
+
 	const filterControls = [
 		{
 			icon: <Icon icon={ FilterNoneIcon } />,
 			isActive: filter === 'none',
-			onClick: () => {
-				setAttributes( { filter: 'none' } );
-			},
+			onClick: () => setClassName( 'none' ),
 			slug: 'none',
 			/* translators: image style */
 			title: __( 'Original', 'coblocks' ),
@@ -95,9 +126,7 @@ const MediaFilterControl = ( props ) => {
 		{
 			icon: <Icon icon={ FilterGrayscaleIcon } />,
 			isActive: filter === 'grayscale',
-			onClick: () => {
-				setAttributes( { filter: 'grayscale' } );
-			},
+			onClick: () => setClassName( 'grayscale' ),
 			slug: 'grayscale',
 			/* translators: image style */
 			title: __( 'Grayscale filter', 'coblocks' ),
@@ -105,9 +134,7 @@ const MediaFilterControl = ( props ) => {
 		{
 			icon: <Icon icon={ FilterSepiaIcon } />,
 			isActive: filter === 'sepia',
-			onClick: () => {
-				setAttributes( { filter: 'sepia' } );
-			},
+			onClick: () => setClassName( 'sepia' ),
 			slug: 'sepia',
 			/* translators: image style */
 			title: __( 'Sepia filter', 'coblocks' ),
@@ -115,9 +142,7 @@ const MediaFilterControl = ( props ) => {
 		{
 			icon: <Icon icon={ FilterSaturationIcon } />,
 			isActive: filter === 'saturation',
-			onClick: () => {
-				setAttributes( { filter: 'saturation' } );
-			},
+			onClick: () => setClassName( 'saturation' ),
 			slug: 'saturation',
 			/* translators: image style */
 			title: __( 'Saturation filter', 'coblocks' ),
@@ -125,9 +150,7 @@ const MediaFilterControl = ( props ) => {
 		{
 			icon: <Icon icon={ FilterDarkIcon } />,
 			isActive: filter === 'dim',
-			onClick: () => {
-				setAttributes( { filter: 'dim' } );
-			},
+			onClick: () => setClassName( 'dim' ),
 			slug: 'dim',
 			/* translators: image style */
 			title: __( 'Dim filter', 'coblocks' ),
@@ -135,9 +158,7 @@ const MediaFilterControl = ( props ) => {
 		{
 			icon: <Icon icon={ FilterVintageIcon } />,
 			isActive: filter === 'vintage',
-			onClick: () => {
-				setAttributes( { filter: 'vintage' } );
-			},
+			onClick: () => setClassName( 'vintage' ),
 			slug: 'vintage',
 			/* translators: image style */
 			title: __( 'Vintage filter', 'coblocks' ),

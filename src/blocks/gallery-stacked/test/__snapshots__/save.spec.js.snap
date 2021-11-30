@@ -6,36 +6,6 @@ exports[`coblocks/gallery-stacked should have attachment link when linkTo is set
 <!-- /wp:coblocks/gallery-stacked -->"
 `;
 
-exports[`coblocks/gallery-stacked should have className 'has-filter-dim' with filter set to 'dim'. 1`] = `
-"<!-- wp:coblocks/gallery-stacked {\\"filter\\":\\"dim\\"} -->
-<div aria-label=\\"Stacked Gallery\\" class=\\"wp-block-coblocks-gallery-stacked alignfull\\"><ul class=\\"coblocks-gallery has-filter-dim has-fullwidth-images\\"><li class=\\"coblocks-gallery--item\\"><figure class=\\"coblocks-gallery--figure\\"><img class=\\"wp-image-1 has-shadow-none\\" data-id=\\"1\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"coblocks-gallery--figure\\"><img class=\\"wp-image-2 has-shadow-none\\" data-id=\\"2\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"coblocks-gallery--figure\\"><img class=\\"has-shadow-none\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\"/></figure></li></ul></div>
-<!-- /wp:coblocks/gallery-stacked -->"
-`;
-
-exports[`coblocks/gallery-stacked should have className 'has-filter-grayscale' with filter set to 'grayscale'. 1`] = `
-"<!-- wp:coblocks/gallery-stacked {\\"filter\\":\\"grayscale\\"} -->
-<div aria-label=\\"Stacked Gallery\\" class=\\"wp-block-coblocks-gallery-stacked alignfull\\"><ul class=\\"coblocks-gallery has-filter-grayscale has-fullwidth-images\\"><li class=\\"coblocks-gallery--item\\"><figure class=\\"coblocks-gallery--figure\\"><img class=\\"wp-image-1 has-shadow-none\\" data-id=\\"1\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"coblocks-gallery--figure\\"><img class=\\"wp-image-2 has-shadow-none\\" data-id=\\"2\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"coblocks-gallery--figure\\"><img class=\\"has-shadow-none\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\"/></figure></li></ul></div>
-<!-- /wp:coblocks/gallery-stacked -->"
-`;
-
-exports[`coblocks/gallery-stacked should have className 'has-filter-saturation' with filter set to 'saturation'. 1`] = `
-"<!-- wp:coblocks/gallery-stacked {\\"filter\\":\\"saturation\\"} -->
-<div aria-label=\\"Stacked Gallery\\" class=\\"wp-block-coblocks-gallery-stacked alignfull\\"><ul class=\\"coblocks-gallery has-filter-saturation has-fullwidth-images\\"><li class=\\"coblocks-gallery--item\\"><figure class=\\"coblocks-gallery--figure\\"><img class=\\"wp-image-1 has-shadow-none\\" data-id=\\"1\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"coblocks-gallery--figure\\"><img class=\\"wp-image-2 has-shadow-none\\" data-id=\\"2\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"coblocks-gallery--figure\\"><img class=\\"has-shadow-none\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\"/></figure></li></ul></div>
-<!-- /wp:coblocks/gallery-stacked -->"
-`;
-
-exports[`coblocks/gallery-stacked should have className 'has-filter-sepia' with filter set to 'sepia'. 1`] = `
-"<!-- wp:coblocks/gallery-stacked {\\"filter\\":\\"sepia\\"} -->
-<div aria-label=\\"Stacked Gallery\\" class=\\"wp-block-coblocks-gallery-stacked alignfull\\"><ul class=\\"coblocks-gallery has-filter-sepia has-fullwidth-images\\"><li class=\\"coblocks-gallery--item\\"><figure class=\\"coblocks-gallery--figure\\"><img class=\\"wp-image-1 has-shadow-none\\" data-id=\\"1\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"coblocks-gallery--figure\\"><img class=\\"wp-image-2 has-shadow-none\\" data-id=\\"2\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"coblocks-gallery--figure\\"><img class=\\"has-shadow-none\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\"/></figure></li></ul></div>
-<!-- /wp:coblocks/gallery-stacked -->"
-`;
-
-exports[`coblocks/gallery-stacked should have className 'has-filter-vintage' with filter set to 'vintage'. 1`] = `
-"<!-- wp:coblocks/gallery-stacked {\\"filter\\":\\"vintage\\"} -->
-<div aria-label=\\"Stacked Gallery\\" class=\\"wp-block-coblocks-gallery-stacked alignfull\\"><ul class=\\"coblocks-gallery has-filter-vintage has-fullwidth-images\\"><li class=\\"coblocks-gallery--item\\"><figure class=\\"coblocks-gallery--figure\\"><img class=\\"wp-image-1 has-shadow-none\\" data-id=\\"1\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"coblocks-gallery--figure\\"><img class=\\"wp-image-2 has-shadow-none\\" data-id=\\"2\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"coblocks-gallery--figure\\"><img class=\\"has-shadow-none\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\"/></figure></li></ul></div>
-<!-- /wp:coblocks/gallery-stacked -->"
-`;
-
 exports[`coblocks/gallery-stacked should have className 'has-fullwidth-images' with Fullwidth Images enabled. 1`] = `
 "<!-- wp:coblocks/gallery-stacked -->
 <div aria-label=\\"Stacked Gallery\\" class=\\"wp-block-coblocks-gallery-stacked alignfull\\"><ul class=\\"coblocks-gallery has-fullwidth-images\\"><li class=\\"coblocks-gallery--item\\"><figure class=\\"coblocks-gallery--figure\\"><img class=\\"wp-image-1 has-shadow-none\\" data-id=\\"1\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"coblocks-gallery--figure\\"><img class=\\"wp-image-2 has-shadow-none\\" data-id=\\"2\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"coblocks-gallery--figure\\"><img class=\\"has-shadow-none\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\"/></figure></li></ul></div>
