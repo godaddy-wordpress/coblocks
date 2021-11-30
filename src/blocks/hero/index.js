@@ -6,15 +6,15 @@ import { HeroIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 /**
  * Internal dependencies
  */
+import { BackgroundAttributes } from '../../components/background';
+import CSSGridAttributes from '../../components/grid-control/attributes';
 import deprecated from './deprecated';
+import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import edit from './edit';
 import metadata from './block.json';
+import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
 import save from './save';
 import transforms from './transforms';
-import CSSGridAttributes from '../../components/grid-control/attributes';
-import DimensionsAttributes from '../../components/dimensions-control/attributes';
-import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
-import { BackgroundAttributes } from '../../components/background';
 
 /**
  * WordPress dependencies
@@ -36,10 +36,50 @@ const attributes = {
 };
 
 const settings = {
-	/* translators: block name */
-	title: __( 'Hero', 'coblocks' ),
+	attributes,
+	deprecated,
 	/* translators: block description */
 	description: __( 'An introductory area of a page accompanied by a small amount of text and a call to action.', 'coblocks' ),
+	edit,
+	example: {
+		attributes: {},
+		innerBlocks: [
+			{
+				attributes: {
+					content: 'Welcome to CoBlocks',
+				},
+				name: 'core/heading',
+			},
+			{
+				attributes: {
+					content: 'CoBlocks is the most innovative collection of page building WordPress blocks for the new Gutenberg WordPress block editor.',
+				},
+				name: 'core/paragraph',
+			},
+			{
+				attributes: {
+					gutter: 'medium',
+					items: 2,
+				},
+				innerBlocks: [
+					{
+						attributes: {
+							text: 'See more',
+						},
+						name: 'core/button',
+					},
+					{
+						attributes: {
+							className: 'is-style-outline',
+							text: 'Contact Us',
+						},
+						name: 'core/button',
+					},
+				],
+				name: 'core/buttons',
+			},
+		],
+	},
 	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
@@ -50,16 +90,14 @@ const settings = {
 		/* translators: block keyword */
 		__( 'call to action', 'coblocks' ),
 	],
+	save,
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 	},
-	attributes,
+	/* translators: block name */
+	title: __( 'Hero', 'coblocks' ),
 	transforms,
-	edit,
-	example: { attributes: {} },
-	save,
-	deprecated,
 };
 
 export { name, category, metadata, settings, attributes };
