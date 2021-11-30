@@ -47,13 +47,6 @@
 				}
 			}
 		},
-		"shortCodeTransforms": {
-			"type": "array",
-			"default": [],
-			"items": {
-				"type": "object"
-			}
-		},
 		"caption": {
 			"type": "string",
 			"source": "html",

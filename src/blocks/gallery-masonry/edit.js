@@ -30,7 +30,6 @@ import { pickRelevantMediaFiles } from '../../components/block-gallery/shared-he
 import useGetMedia from '../../components/block-gallery/use-get-media';
 import useGetNewImages from '../../components/block-gallery/use-get-new-images';
 import useImageSizes from '../../components/block-gallery/use-image-sizes';
-import useShortCodeTransform from '../../components/block-gallery/use-short-code-transform';
 import { getHrefAndDestination, getImageSizeAttributes, getUpdatedLinkTargetSettings } from '../../components/block-gallery/utils';
 import { LINK_DESTINATION_ATTACHMENT, LINK_DESTINATION_MEDIA, LINK_DESTINATION_NONE } from '../../components/block-gallery/constants';
 
@@ -65,7 +64,6 @@ function GalleryEdit( props ) {
 		imageCrop,
 		linkTarget,
 		linkTo,
-		shortCodeTransforms,
 		sizeSlug,
 		lightbox,
 		gutter,
@@ -167,16 +165,6 @@ function GalleryEdit( props ) {
 			} );
 		}
 	}, [ attributes.gutterCustom ] );
-
-	const shortCodeImages = useShortCodeTransform( shortCodeTransforms );
-
-	useEffect( () => {
-		if ( ! shortCodeTransforms || ! shortCodeImages ) {
-			return;
-		}
-		updateImages( shortCodeImages );
-		setAttributes( { shortCodeTransforms: undefined } );
-	}, [ shortCodeTransforms, shortCodeImages ] );
 
 	useEffect( () => {
 		// linkTo attribute must be saved so blocks don't break when changing image_default_link_type in options.php

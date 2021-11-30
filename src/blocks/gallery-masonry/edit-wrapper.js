@@ -22,7 +22,7 @@ import { registerBlockType, unregisterBlockType } from '@wordpress/blocks';
   * use of hooks lint errors if adding this logic to the top of the edit component.
   */
 export default function GalleryEditWrapper( props ) {
-	// This logic is used to infer version information based on existed of getBlock and getSettings selectors.
+	// This logic is used to infer version information based on existence of getBlock and getSettings selectors.
 	const { getBlock, getSettings } = useSelect( ( select ) => {
 		return {
 			getBlock: select( blockEditorStore )?.getBlock ?? undefined,

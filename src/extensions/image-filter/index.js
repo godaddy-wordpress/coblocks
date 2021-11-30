@@ -11,10 +11,9 @@ import MediaFilterControl from '../../components/media-filter-control';
 /**
  * WordPress dependencies
  */
-import { Fragment } from '@wordpress/element';
 import { addFilter } from '@wordpress/hooks';
-import { createHigherOrderComponent } from '@wordpress/compose';
 import { BlockControls } from '@wordpress/block-editor';
+import { createHigherOrderComponent } from '@wordpress/compose';
 
 const allowedBlocks = [
 	'core/image',
@@ -22,53 +21,40 @@ const allowedBlocks = [
 ];
 
 /**
- * Add the MediaFilterControl component to the core/image and core/gallery block
+ * Add the MediaFilterControl component and classnames to the core/image and core/gallery block
+ * Add custom `has-filter-${ filter }` class to the core/image block
  */
 const coreImageFilter = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-		if ( ! allowedBlocks.includes( props.name ) ) {
+		const { name, attributes, className, setAttributes } = props;
+		const { filter } = attributes;
+
+		if ( ! allowedBlocks.includes( name ) ) {
 			return <BlockEdit { ...props } />;
 		}
 
+		const filterClasses = classnames( className,
+			{
+				[ `has-filter-${ filter }` ]: filter !== 'none',
+			}
+		);
+
+		setAttributes( { className: filterClasses } );
+
 		return (
-			<Fragment>
+			<>
 				<BlockEdit { ...props } />
 				<BlockControls>
 					<MediaFilterControl
 						{ ...props }
 					/>
 				</BlockControls>
-			</Fragment>
+			</>
 		);
 	};
 }, 'withGalleryExtension' );
 
 addFilter( 'editor.BlockEdit', 'coblocks/coreImageFilter', coreImageFilter );
-
-/**
- * Add custom `has-filter-${ filter }` class to the core/image block
- */
-const coreImageEditorStyles = createHigherOrderComponent( ( BlockListBlock ) => {
-	return ( props ) => {
-		if ( ! allowedBlocks.includes( props.name ) ) {
-			return <BlockListBlock { ...props } />;
-		}
-
-		const {
-			filter,
-		} = props.attributes;
-
-		const className = classnames(
-			{
-				[ `has-filter-${ filter }` ]: filter !== 'none',
-			}
-		);
-
-		return <BlockListBlock { ...props } className={ className } />;
-	};
-}, 'withStyleClasses' );
-
-addFilter( 'editor.BlockListBlock', 'coblocks/with-style-classes', coreImageEditorStyles );
 
 /**
  * Add custom attribute to the core/image block
@@ -80,8 +66,8 @@ function imageFilterAttributes( settings ) {
 	if ( allowedBlocks.includes( settings.name ) && typeof settings.attributes !== 'undefined' ) {
 		settings.attributes = Object.assign( settings.attributes, {
 			filter: {
-				type: 'strig',
 				default: 'none',
+				type: 'string',
 			},
 		} );
 	}
