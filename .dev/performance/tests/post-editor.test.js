@@ -28,7 +28,7 @@ import {
 	getSelectionEventDurations,
 } from './utils';
 
-jest.setTimeout( 10000000 );
+jest.setTimeout( 1000000 );
 
 describe( 'Post Editor Performance', () => {
 	it( 'Loading, typing and selecting blocks', async () => {
