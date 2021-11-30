@@ -410,16 +410,6 @@ class CoBlocks_Form {
 
 		static $date_count = 1;
 
-		wp_enqueue_script(
-			'coblocks-datepicker',
-			CoBlocks()->asset_source( 'js' ) . 'coblocks-datepicker.js',
-			array( 'jquery', 'jquery-ui-datepicker' ),
-			COBLOCKS_VERSION,
-			true
-		);
-
-		wp_localize_jquery_ui_datepicker();
-
 		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Date', 'coblocks' );
 		$label_slug    = $date_count > 1 ? sanitize_title( $label . '-' . $date_count ) : sanitize_title( $label );
 		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
@@ -430,7 +420,7 @@ class CoBlocks_Form {
 
 		?>
 
-		<input type="text" id="<?php echo esc_attr( $label_slug ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--date" <?php echo esc_attr( $required_attr ); ?> />
+		<input type="date" id="<?php echo esc_attr( $label_slug ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--date" <?php echo esc_attr( $required_attr ); ?> />
 
 		<?php
 

@@ -10,14 +10,14 @@ function CoBlocksFieldDate( props ) {
 	return (
 		<>
 			<CoBlocksField
-				type="text"
+				customTextColor={ customTextColor }
+				isSelected={ isSelected }
 				label={ label }
+				name={ name }
 				required={ required }
 				setAttributes={ setAttributes }
-				isSelected={ isSelected }
 				textColor={ textColor }
-				customTextColor={ customTextColor }
-				name={ name }
+				type="date"
 			/>
 		</>
 	);
