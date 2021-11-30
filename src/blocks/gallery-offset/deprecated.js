@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys */
 /**
  * External dependencies
  */
@@ -394,6 +395,10 @@ const deprecated = [
 		attributes: {
 			...GalleryAttributes,
 			...metadata.attributes,
+			gutter: {
+				type: 'string',
+				default: 'small',
+			},
 		},
 		save: ( { attributes, className } ) => {
 			const {
