@@ -13,10 +13,9 @@ import {
  *
  * @type {string|undefined}
  */
-const PUPPETEER_TIMEOUT = process.env.PUPPETEER_TIMEOUT;
 
 // The Jest timeout is increased because these tests are a bit slow
-jest.setTimeout( PUPPETEER_TIMEOUT || 100000 );
+jest.setTimeout( 100000 );
 
 async function setupBrowser() {
 	await clearLocalStorage();
