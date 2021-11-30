@@ -9,7 +9,6 @@ import classnames from 'classnames';
 import applyWithColors from './colors';
 import Controls from './controls';
 import Inspector from './inspector';
-import { computeFontSize } from '../../utils/helper';
 
 /**
  * WordPress dependencies
@@ -98,7 +97,7 @@ const Edit = ( props ) => {
 		<>
 			<Controls { ...props } />
 			<Inspector { ...props } />
-			<p className={ className } style={ { textAlign: align } }>
+			<p className={ className } style={ { textAlign: align, fontSize: fontSize.size ?? undefined, } }>
 				<RichText
 					tagName="mark"
 					placeholder={ __( 'Add highlighted text…', 'coblocks' ) }
@@ -111,7 +110,7 @@ const Edit = ( props ) => {
 					style={ {
 						backgroundColor: backgroundColor?.color,
 						color: textColor?.color,
-						fontSize: computeFontSize( fontSize ) ?? undefined,
+						fontSize: fontSize.size ?? undefined,
 					} }
 				/>
 			</p>

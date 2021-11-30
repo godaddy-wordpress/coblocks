@@ -26,7 +26,7 @@
 			"type": "string"
 		},
 		"customFontSize": {
-			"type": "number"
+			"type": "string"
 		}
 	}
 }
