@@ -22,24 +22,36 @@ const allowedBlocks = [
 
 /**
  * Add the MediaFilterControl component and classnames to the core/image and core/gallery block
- * Add custom `has-filter-${ filter }` class to the core/image block
+ * Add custom `has-filter-${ filter }` class to the extended blocks.
  */
 const coreImageFilter = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-		const { name, attributes, className, setAttributes } = props;
-		const { filter } = attributes;
+		const { name, attributes, setAttributes } = props;
+		const { filter, className } = attributes;
 
 		if ( ! allowedBlocks.includes( name ) ) {
 			return <BlockEdit { ...props } />;
 		}
 
-		const filterClasses = classnames( className,
+		const filterClass = classnames( { [ `has-filter-${ filter }` ]: filter !== 'none' } );
+		const existingFilterClass = className?.match( 'has-filter-[a-z]*' )?.[ 0 ];
+
+		const shouldAddClass = !! filterClass && ! className?.includes( filterClass );
+		const shouldRemoveClass = !! existingFilterClass && filterClass !== existingFilterClass;
+
+		const classnamesApplied = classnames(
+			shouldRemoveClass
+				// Remove existing class, remove double spaces and trim ends of string.
+				? className.replace( existingFilterClass, '' ).replace( '  ', ' ' ).trim()
+				: className,
 			{
 				[ `has-filter-${ filter }` ]: filter !== 'none',
 			}
 		);
 
-		setAttributes( { className: filterClasses } );
+		if ( !! shouldAddClass || !! shouldRemoveClass ) {
+			setAttributes( { className: classnamesApplied } );
+		}
 
 		return (
 			<>
