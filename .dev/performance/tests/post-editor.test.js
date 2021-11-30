@@ -74,7 +74,7 @@ describe( 'Post Editor Performance', () => {
 		}
 
 		// Measure time to open inserter
-		await page.waitForSelector( '.edit-post-layout' );
+		await page.waitForSelector( '.edit-post-layout', { timeout: 120000 } );
 		for ( let j = 0; j < 10; j++ ) {
 			await page.tracing.start( {
 				path: traceFile,
