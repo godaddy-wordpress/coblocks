@@ -320,10 +320,12 @@ const deprecated =
 			lightbox,
 			rel,
 			target,
+			filter,
 		} = attributes;
 
 		const innerClasses = classnames(
 			...GalleryClasses( attributes ), {
+				[ `has-filter-${ filter }` ]: filter !== 'none',
 				'has-gutter': gutter > 0,
 				'has-lightbox': lightbox,
 			}

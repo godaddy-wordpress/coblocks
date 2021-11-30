@@ -6,13 +6,14 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import { GalleryAttributes, GalleryClasses } from '../../components/block-gallery/shared';
-import metadata from './block.json';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
+import metadata from './block.json';
+import { GalleryAttributes, GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
  * WordPress dependencies
  */
+import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 
 const deprecated = [
@@ -122,14 +123,14 @@ const deprecated = [
 								image.id ? [ `wp-image-${ image.id }` ] : null, {}
 							);
 
-							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ imgClasses } />;
+							const img = <img alt={ image.alt } className={ imgClasses } data-id={ image.id } data-link={ image.link } src={ image.url } />;
 
 							return (
-								<li key={ image.id || image.url } className="coblocks-gallery--item">
+								<li className="coblocks-gallery--item" key={ image.id || image.url }>
 									<figure className="wp-block-coblocks-gallery-offset__figure">
-										{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
+										{ href ? <a href={ href } rel={ rel } target={ target }>{ img }</a> : img }
 										{ captions && image.caption && image.caption.length > 0 && (
-											<RichText.Content tagName="figcaption" className="coblocks-gallery--caption" value={ image.caption } />
+											<RichText.Content className="coblocks-gallery--caption" tagName="figcaption" value={ image.caption } />
 										) }
 									</figure>
 								</li>
@@ -205,14 +206,14 @@ const deprecated = [
 								image.id ? [ `wp-image-${ image.id }` ] : null, {}
 							);
 
-							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ imgClasses } />;
+							const img = <img alt={ image.alt } className={ imgClasses } data-id={ image.id } data-link={ image.link } src={ image.url } />;
 
 							return (
-								<li key={ image.id || image.url } className="coblocks-gallery--item">
+								<li className="coblocks-gallery--item" key={ image.id || image.url }>
 									<figure className="wp-block-coblocks-gallery-offset__figure">
-										{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
+										{ href ? <a href={ href } rel={ rel } target={ target }>{ img }</a> : img }
 										{ captions && image.caption && image.caption.length > 0 && (
-											<RichText.Content tagName="figcaption" className="coblocks-gallery--caption" value={ image.caption } />
+											<RichText.Content className="coblocks-gallery--caption" tagName="figcaption" value={ image.caption } />
 										) }
 									</figure>
 								</li>
@@ -287,14 +288,14 @@ const deprecated = [
 									image.id ? [ `wp-image-${ image.id }` ] : null, {}
 								);
 
-								const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ imgClasses } />;
+								const img = <img alt={ image.alt } className={ imgClasses } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } src={ image.url } />;
 
 								return (
-									<li key={ image.id || image.url } className={ itemClasses } data-coblocks-animation={ animation }>
+									<li className={ itemClasses } data-coblocks-animation={ animation } key={ image.id || image.url }>
 										<figure className="wp-block-coblocks-gallery-offset__figure">
-											{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
+											{ href ? <a href={ href } rel={ rel } target={ target }>{ img }</a> : img }
 											{ captions && image.caption && image.caption.length > 0 && (
-												<RichText.Content tagName="figcaption" className="coblocks-gallery--caption" value={ image.caption } />
+												<RichText.Content className="coblocks-gallery--caption" tagName="figcaption" value={ image.caption } />
 											) }
 										</figure>
 									</li>
@@ -370,14 +371,96 @@ const deprecated = [
 									image.id ? [ `wp-image-${ image.id }` ] : null, {}
 								);
 
-								const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ imgClasses } />;
+								const img = <img alt={ image.alt } className={ imgClasses } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } src={ image.url } />;
 
 								return (
-									<li key={ image.id || image.url } className={ itemClasses } data-coblocks-animation={ animation }>
+									<li className={ itemClasses } data-coblocks-animation={ animation } key={ image.id || image.url }>
 										<figure className="wp-block-coblocks-gallery-offset__figure">
-											{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
+											{ href ? <a href={ href } rel={ rel } target={ target }>{ img }</a> : img }
 											{ captions && image.caption && image.caption.length > 0 && (
-												<RichText.Content tagName="figcaption" className="coblocks-gallery--caption" value={ image.caption } />
+												<RichText.Content className="coblocks-gallery--caption" tagName="figcaption" value={ image.caption } />
+											) }
+										</figure>
+									</li>
+								);
+							} ) }
+						</ul>
+					</GutterWrapper>
+				</div>
+			);
+		},
+	},
+	{
+		attributes: {
+			...GalleryAttributes,
+			...metadata.attributes,
+		},
+		save: ( { attributes, className } ) => {
+			const {
+				animation,
+				captions,
+				gridSize,
+				images,
+				lightbox,
+				linkTo,
+				rel,
+				target,
+				filter,
+			} = attributes;
+
+			const wrapperClasses = classnames(
+				className, {
+					'has-lightbox': lightbox,
+				}
+			);
+
+			const innerClasses = classnames(
+				...GalleryClasses( attributes ), {
+					[ `has-filter-${ filter }` ]: filter !== 'none',
+					[ `has-${ gridSize }-images` ]: gridSize,
+				},
+			);
+
+			const itemClasses = classnames(
+				'coblocks-gallery--item', {
+					[ `coblocks-animate` ]: animation,
+				}
+			);
+
+			return (
+				<div aria-label={ __( `Offset Gallery`, 'coblocks' ) }
+					className={ wrapperClasses }>
+					<GutterWrapper { ...attributes }>
+						<ul className={ innerClasses } >
+							{ images.map( ( image ) => {
+								let href;
+
+								switch ( linkTo ) {
+									case 'media':
+										href = image.url;
+										break;
+									case 'attachment':
+										href = image.link;
+										break;
+								}
+
+								// If an image has a custom link, override the linkTo selection.
+								if ( image.imgLink ) {
+									href = image.imgLink;
+								}
+
+								const imgClasses = classnames(
+									image.id ? [ `wp-image-${ image.id }` ] : null, {}
+								);
+
+								const img = <img alt={ image.alt } className={ imgClasses } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } src={ image.url } />;
+
+								return (
+									<li className={ itemClasses } data-coblocks-animation={ animation } key={ image.id || image.url }>
+										<figure className="wp-block-coblocks-gallery-offset__figure">
+											{ href ? <a href={ href } rel={ rel } target={ target }>{ img }</a> : img }
+											{ captions && image.caption && image.caption.length > 0 && (
+												<RichText.Content className="coblocks-gallery--caption" tagName="figcaption" value={ image.caption } />
 											) }
 										</figure>
 									</li>
