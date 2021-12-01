@@ -24,6 +24,36 @@ exports[`coblocks/gallery-offset should have className 'has-caption-style-light'
 <!-- /wp:coblocks/gallery-offset -->"
 `;
 
+exports[`coblocks/gallery-offset should have className 'has-filter-dim' with filter set to 'dim'. 1`] = `
+"<!-- wp:coblocks/gallery-offset {\\"filter\\":\\"dim\\"} -->
+<div aria-label=\\"Offset Gallery\\" class=\\"wp-block-coblocks-gallery-offset\\"><ul class=\\"coblocks-gallery has-no-alignment has-filter-dim has-caption-style-dark has-small-images has-small-gutter\\"><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" class=\\"wp-image-1\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" data-id=\\"2\\" class=\\"wp-image-2\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\" class=\\"\\"/></figure></li></ul></div>
+<!-- /wp:coblocks/gallery-offset -->"
+`;
+
+exports[`coblocks/gallery-offset should have className 'has-filter-grayscale' with filter set to 'grayscale'. 1`] = `
+"<!-- wp:coblocks/gallery-offset {\\"filter\\":\\"grayscale\\"} -->
+<div aria-label=\\"Offset Gallery\\" class=\\"wp-block-coblocks-gallery-offset\\"><ul class=\\"coblocks-gallery has-no-alignment has-filter-grayscale has-caption-style-dark has-small-images has-small-gutter\\"><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" class=\\"wp-image-1\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" data-id=\\"2\\" class=\\"wp-image-2\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\" class=\\"\\"/></figure></li></ul></div>
+<!-- /wp:coblocks/gallery-offset -->"
+`;
+
+exports[`coblocks/gallery-offset should have className 'has-filter-saturation' with filter set to 'saturation'. 1`] = `
+"<!-- wp:coblocks/gallery-offset {\\"filter\\":\\"saturation\\"} -->
+<div aria-label=\\"Offset Gallery\\" class=\\"wp-block-coblocks-gallery-offset\\"><ul class=\\"coblocks-gallery has-no-alignment has-filter-saturation has-caption-style-dark has-small-images has-small-gutter\\"><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" class=\\"wp-image-1\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" data-id=\\"2\\" class=\\"wp-image-2\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\" class=\\"\\"/></figure></li></ul></div>
+<!-- /wp:coblocks/gallery-offset -->"
+`;
+
+exports[`coblocks/gallery-offset should have className 'has-filter-sepia' with filter set to 'sepia'. 1`] = `
+"<!-- wp:coblocks/gallery-offset {\\"filter\\":\\"sepia\\"} -->
+<div aria-label=\\"Offset Gallery\\" class=\\"wp-block-coblocks-gallery-offset\\"><ul class=\\"coblocks-gallery has-no-alignment has-filter-sepia has-caption-style-dark has-small-images has-small-gutter\\"><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" class=\\"wp-image-1\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" data-id=\\"2\\" class=\\"wp-image-2\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\" class=\\"\\"/></figure></li></ul></div>
+<!-- /wp:coblocks/gallery-offset -->"
+`;
+
+exports[`coblocks/gallery-offset should have className 'has-filter-vintage' with filter set to 'vintage'. 1`] = `
+"<!-- wp:coblocks/gallery-offset {\\"filter\\":\\"vintage\\"} -->
+<div aria-label=\\"Offset Gallery\\" class=\\"wp-block-coblocks-gallery-offset\\"><ul class=\\"coblocks-gallery has-no-alignment has-filter-vintage has-caption-style-dark has-small-images has-small-gutter\\"><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" class=\\"wp-image-1\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" data-id=\\"2\\" class=\\"wp-image-2\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\" class=\\"\\"/></figure></li></ul></div>
+<!-- /wp:coblocks/gallery-offset -->"
+`;
+
 exports[`coblocks/gallery-offset should have className 'has-large-gutter' with gutter set to 'large'. 1`] = `
 "<!-- wp:coblocks/gallery-offset {\\"gutter\\":\\"large\\"} -->
 <div aria-label=\\"Offset Gallery\\" class=\\"wp-block-coblocks-gallery-offset\\"><ul class=\\"coblocks-gallery has-no-alignment has-caption-style-dark has-small-images has-large-gutter\\"><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" class=\\"wp-image-1\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" data-id=\\"2\\" class=\\"wp-image-2\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\" class=\\"\\"/></figure></li></ul></div>

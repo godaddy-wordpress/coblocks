@@ -18,6 +18,36 @@ exports[`coblocks/gallery-collage should have className 'has-caption-style-light
 <!-- /wp:coblocks/gallery-collage -->"
 `;
 
+exports[`coblocks/gallery-collage should have className 'has-filter-dim' with filter set to 'dim'. 1`] = `
+"<!-- wp:coblocks/gallery-collage {\\"filter\\":\\"dim\\"} -->
+<div aria-label=\\"Collage Gallery\\" class=\\"wp-block-coblocks-gallery-collage alignwide has-filter-dim has-small-gutter\\"><ul><li class=\\"wp-block-coblocks-gallery-collage__item item-1\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img class=\\"wp-image-1\\" data-id=\\"1\\" data-index=\\"0\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\"/></figure></li><li class=\\"wp-block-coblocks-gallery-collage__item item-2\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img class=\\"wp-image-2\\" data-id=\\"2\\" data-index=\\"1\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\"/></figure></li></ul></div>
+<!-- /wp:coblocks/gallery-collage -->"
+`;
+
+exports[`coblocks/gallery-collage should have className 'has-filter-grayscale' with filter set to 'grayscale'. 1`] = `
+"<!-- wp:coblocks/gallery-collage {\\"filter\\":\\"grayscale\\"} -->
+<div aria-label=\\"Collage Gallery\\" class=\\"wp-block-coblocks-gallery-collage alignwide has-filter-grayscale has-small-gutter\\"><ul><li class=\\"wp-block-coblocks-gallery-collage__item item-1\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img class=\\"wp-image-1\\" data-id=\\"1\\" data-index=\\"0\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\"/></figure></li><li class=\\"wp-block-coblocks-gallery-collage__item item-2\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img class=\\"wp-image-2\\" data-id=\\"2\\" data-index=\\"1\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\"/></figure></li></ul></div>
+<!-- /wp:coblocks/gallery-collage -->"
+`;
+
+exports[`coblocks/gallery-collage should have className 'has-filter-saturation' with filter set to 'saturation'. 1`] = `
+"<!-- wp:coblocks/gallery-collage {\\"filter\\":\\"saturation\\"} -->
+<div aria-label=\\"Collage Gallery\\" class=\\"wp-block-coblocks-gallery-collage alignwide has-filter-saturation has-small-gutter\\"><ul><li class=\\"wp-block-coblocks-gallery-collage__item item-1\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img class=\\"wp-image-1\\" data-id=\\"1\\" data-index=\\"0\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\"/></figure></li><li class=\\"wp-block-coblocks-gallery-collage__item item-2\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img class=\\"wp-image-2\\" data-id=\\"2\\" data-index=\\"1\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\"/></figure></li></ul></div>
+<!-- /wp:coblocks/gallery-collage -->"
+`;
+
+exports[`coblocks/gallery-collage should have className 'has-filter-sepia' with filter set to 'sepia'. 1`] = `
+"<!-- wp:coblocks/gallery-collage {\\"filter\\":\\"sepia\\"} -->
+<div aria-label=\\"Collage Gallery\\" class=\\"wp-block-coblocks-gallery-collage alignwide has-filter-sepia has-small-gutter\\"><ul><li class=\\"wp-block-coblocks-gallery-collage__item item-1\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img class=\\"wp-image-1\\" data-id=\\"1\\" data-index=\\"0\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\"/></figure></li><li class=\\"wp-block-coblocks-gallery-collage__item item-2\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img class=\\"wp-image-2\\" data-id=\\"2\\" data-index=\\"1\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\"/></figure></li></ul></div>
+<!-- /wp:coblocks/gallery-collage -->"
+`;
+
+exports[`coblocks/gallery-collage should have className 'has-filter-vintage' with filter set to 'vintage'. 1`] = `
+"<!-- wp:coblocks/gallery-collage {\\"filter\\":\\"vintage\\"} -->
+<div aria-label=\\"Collage Gallery\\" class=\\"wp-block-coblocks-gallery-collage alignwide has-filter-vintage has-small-gutter\\"><ul><li class=\\"wp-block-coblocks-gallery-collage__item item-1\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img class=\\"wp-image-1\\" data-id=\\"1\\" data-index=\\"0\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\"/></figure></li><li class=\\"wp-block-coblocks-gallery-collage__item item-2\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img class=\\"wp-image-2\\" data-id=\\"2\\" data-index=\\"1\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\"/></figure></li></ul></div>
+<!-- /wp:coblocks/gallery-collage -->"
+`;
+
 exports[`coblocks/gallery-collage should have className 'has-large-gutter' with gutter set to 'large'. 1`] = `
 "<!-- wp:coblocks/gallery-collage {\\"gutter\\":\\"large\\"} -->
 <div aria-label=\\"Collage Gallery\\" class=\\"wp-block-coblocks-gallery-collage alignwide has-large-gutter\\"><ul><li class=\\"wp-block-coblocks-gallery-collage__item item-1\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img class=\\"wp-image-1\\" data-id=\\"1\\" data-index=\\"0\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\"/></figure></li><li class=\\"wp-block-coblocks-gallery-collage__item item-2\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img class=\\"wp-image-2\\" data-id=\\"2\\" data-index=\\"1\\" src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\"/></figure></li></ul></div>
