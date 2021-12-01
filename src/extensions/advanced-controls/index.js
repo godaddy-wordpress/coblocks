@@ -190,7 +190,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 									} );
 
 									const nextBlockClientId = wp.data
-										.select( 'core/editor' )
+										.select( 'core/block-editor' )
 										.getNextBlockClientId( clientId );
 									if ( nextBlockClientId && ! noBottomMargin ) {
 										wp.data
