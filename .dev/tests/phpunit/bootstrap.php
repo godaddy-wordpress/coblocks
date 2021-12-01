@@ -5,8 +5,9 @@
  * @package CoBlocks
  */
 
-// Require composer dependencies.
-require_once dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) . '/vendor/autoload.php';
+// Require dependencies.
+require_once dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) . '/vendor/wp-phpunit/wp-phpunit/__loaded.php';
+require_once dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) . '/vendor/yoast/phpunit-polyfills/phpunitpolyfills-autoload.php';
 
 // If we're running in WP's build directory, ensure that WP knows that, too.
 if ( 'build' === getenv( 'LOCAL_DIR' ) ) {
