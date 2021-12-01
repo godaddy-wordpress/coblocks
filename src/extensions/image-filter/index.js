@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * Internal dependencies
  */
 import MediaFilterControl from '../../components/media-filter-control';
@@ -21,14 +26,23 @@ const allowedBlocks = [
  */
 const coreImageFilter = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-		const { name } = props;
+		const { name, attributes } = props;
 		if ( ! allowedBlocks.includes( name ) ) {
 			return <BlockEdit { ...props } />;
 		}
 
+		const {
+			filter,
+		} = attributes;
+
+		const className = classnames(
+			{
+				[ `has-filter-${ filter }` ]: filter !== 'none',
+			}
+		);
 		return (
 			<>
-				<BlockEdit { ...props } />
+				<BlockEdit { ...props } className={ className } />
 				<BlockControls>
 					<MediaFilterControl
 						{ ...props }
@@ -61,3 +75,25 @@ function imageFilterAttributes( settings ) {
 }
 
 addFilter( 'blocks.registerBlockType', 'coblocks/imageFilterAttributes', imageFilterAttributes );
+
+/**
+ * Add custom class in save element.
+ *
+ * @param {Object} extraProps Block element.
+ * @param {Object} blockType  Blocks object.
+ * @param {Object} attributes Blocks attributes.
+ * @return {Object} extraProps Modified block element.
+ */
+function imageBlockClass( extraProps, blockType, attributes ) {
+	if ( allowedBlocks.includes( blockType.name ) && typeof attributes.filter !== 'undefined' ) {
+		extraProps.className = classnames(
+			extraProps.className,
+			{
+				[ `has-filter-${ attributes.filter }` ]: attributes.filter !== 'none',
+			}
+		);
+	}
+	return extraProps;
+}
+
+addFilter( 'blocks.getSaveContent.extraProps', 'coblocks/imageApplyExtraClass', imageBlockClass );

@@ -52,6 +52,10 @@
 			"source": "html",
 			"selector": ".blocks-gallery-caption"
 		},
+		"filter": {
+			"default": "none",
+			"type": "string"
+		},
 		"imageCrop": {
 			"type": "boolean",
 			"default": true

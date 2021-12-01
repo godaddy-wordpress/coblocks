@@ -377,7 +377,6 @@ const deprecated =
 			rel,
 			shadow,
 			target,
-			filter,
 		} = attributes;
 
 		const classes = classnames( 'wp-block-coblocks-gallery-collage__figure', {
@@ -388,7 +387,6 @@ const deprecated =
 			<GutterWrapper { ...attributes }>
 				<div aria-label={ __( `Collage Gallery`, 'coblocks' ) }
 					className={ classnames( {
-						[ `has-filter-${ filter }` ]: filter !== 'none',
 						[ `has-caption-style-${ captionStyle }` ]: captions && captionStyle !== undefined,
 						'has-lightbox': lightbox,
 					} ) }>

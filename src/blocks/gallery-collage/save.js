@@ -19,6 +19,7 @@ const save = ( { attributes } ) => {
 		animation,
 		captions,
 		captionStyle,
+		filter,
 		images,
 		lightbox,
 		linkTo,
@@ -35,6 +36,7 @@ const save = ( { attributes } ) => {
 		<GutterWrapper { ...attributes }>
 			<div aria-label={ __( `Collage Gallery`, 'coblocks' ) }
 				className={ classnames( {
+					[ `has-filter-${ filter }` ]: filter !== 'none',
 					[ `has-caption-style-${ captionStyle }` ]: captions && captionStyle !== undefined,
 					'has-lightbox': lightbox,
 				} ) }>

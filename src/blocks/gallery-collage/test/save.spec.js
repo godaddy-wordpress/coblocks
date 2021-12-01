@@ -48,7 +48,7 @@ describe( name, () => {
 	} );
 
 	it( 'should not render image if URL is not defined', () => {
-		block.attributes = { images: [ { id: 1, index: 0 } ] };
+		block.attributes = { ...block.attributes, images: [ { id: 1, index: 0 } ] };
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();

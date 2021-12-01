@@ -74,7 +74,7 @@ exports[`coblocks/gallery-collage should have media link when linkTo is set to "
 
 exports[`coblocks/gallery-collage should not render image if URL is not defined 1`] = `
 "<!-- wp:coblocks/gallery-collage -->
-<div aria-label=\\"Collage Gallery\\" class=\\"wp-block-coblocks-gallery-collage\\"><ul><li class=\\"wp-block-coblocks-gallery-collage__item item-1\\"></li></ul></div>
+<div aria-label=\\"Collage Gallery\\" class=\\"wp-block-coblocks-gallery-collage alignwide has-small-gutter\\"><ul><li class=\\"wp-block-coblocks-gallery-collage__item item-1\\"></li></ul></div>
 <!-- /wp:coblocks/gallery-collage -->"
 `;
 
