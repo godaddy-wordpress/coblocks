@@ -167,7 +167,7 @@ workflows:
             - build
 
       # END TO END TESTING
-      - e2e_chrome_wp_latest:
+      - e2e_chrome_wp59beta1:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -178,7 +178,7 @@ workflows:
             - unit_testing_php_74
             - unit_testing_php_80
             - js
-      - e2e_firefox_wp_latest:
+      - e2e_firefox_wp59beta1:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -771,20 +771,21 @@ jobs:
       - run_e2e_tests:
           browser: chrome
 
-  e2e_firefox_wp_latest:
+  e2e_firefox_wp59beta1:
     executor: php_74_node_browser_mysql_mailhog
     parallelism: 11
     steps:
       - run_e2e_tests:
           browser: firefox
+          wpversion: 5.9-beta1
 
-  e2e_chrome_wp_previous_major:
+  e2e_chrome_wp59beta1:
     executor: php_74_node_browser_mysql_mailhog
     parallelism: 11
     steps:
       - run_e2e_tests:
           browser: chrome
-          wpversion: previous_major
+          wpversion: 5.9-beta1
 
   master_perf_tests:
     executor: php_74_node_browser_mysql
