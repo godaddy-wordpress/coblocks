@@ -166,6 +166,16 @@ describe( name, () => {
 		expect( serializedBlock ).toContain( 'href="https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg"' );
 	} );
 
+	[ 'grayscale', 'sepia', 'saturation', 'dim', 'vintage' ].forEach( ( filter ) => {
+		it( `should have className \'has-filter-${filter}\' with filter set to '${filter}'.`, () => {
+			block.attributes = { ...block.attributes, filter };
+			serializedBlock = serialize( block );
+
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( `has-filter-${ filter }` );
+		} );
+	} );
+
 	[ 'small', 'medium', 'large' ].forEach( ( gutter ) => {
 		it( `should have className 'has-${gutter}-gutter' with gutter set to '${gutter}'.`, () => {
 			block.attributes = { ...block.attributes, gutter };

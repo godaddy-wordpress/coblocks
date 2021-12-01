@@ -84,6 +84,16 @@ describe( name, () => {
 		} );
 	} );
 
+	[ 'grayscale', 'sepia', 'saturation', 'dim', 'vintage' ].forEach( ( filter ) => {
+		it( `should have className \'has-filter-${filter}\' with filter set to '${filter}'.`, () => {
+			block.attributes = { ...block.attributes, filter };
+			serializedBlock = serialize( block );
+
+			expect( serializedBlock ).toBeDefined();
+			expect( serializedBlock ).toContain( `has-filter-${ filter }` );
+		} );
+	} );
+
 	it( 'should have \'autoPlay\' property set in the data-flickity attribute when autoPlay enabled.', () => {
 		block.attributes = { ...block.attributes, autoPlay: false };
 		serializedBlock = serialize( block );
