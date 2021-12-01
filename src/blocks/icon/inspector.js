@@ -73,8 +73,6 @@ const Inspector = ( props ) => {
 		linkTarget,
 	} = attributes;
 
-	console.log('icon', icon);
-
 	const [ filteredIcons, setFilteredIcons ] = useState( svg );
 	const [ searchValue, setSearchValue ] = useState( '' );
 	const [ isSearching, setIsSearching ] = useState( false );

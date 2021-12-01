@@ -48,7 +48,7 @@ const createFile = ( svgs ) => {
 					/* translators: icon keyword */
 					__( '${ keyword }', 'coblocks' )
 				` ) } ],
-				icon: <Icon icon={ CoblocksIcons[ '${ `${ toPascalCase( svg ) }Icon` }' ] } />
+				${ Object.keys( styles ).map( ( key ) => `icon${ key !== 'default' ? `_${ key }` : '' }: <Icon icon={ CoblocksIcons[ '${ `${ toPascalCase( svg ) }Styles` }' ][ '${ key }' ] } />` ) }
 			},\r\n`;
 	} );
 
