@@ -11,7 +11,7 @@ import classnames from 'classnames';
 import applyWithColors from './colors';
 import Inspector from './inspector';
 import Controls from './controls';
-import svgs from './svgs';
+import svgs from './svgs-v2';
 
 /**
  * WordPress dependencies
@@ -54,7 +54,8 @@ const Edit = ( props ) => {
 	useEffect( () => {
 		if ( attributes.icon === '' ) {
 			// Randomized the default icon when first added.
-			let defaultIcons = [ 'aperture', 'gesture', 'scatter_plot', 'waves', 'blocks', 'coblocks', 'drafts', 'device_hub', 'marker' ];
+			//let defaultIcons = [ 'aperture', 'gesture', 'scatter_plot', 'waves', 'blocks', 'coblocks', 'drafts', 'device_hub', 'marker' ];
+			let defaultIcons = [ 'marker' ];
 			if ( ! bundledIconsEnabled && Object.keys( coblocksBlockData.customIcons ).length ) {
 				defaultIcons = Object.keys( coblocksBlockData.customIcons );
 			}
