@@ -828,7 +828,7 @@ jobs:
           command: |
             if [ ! -f "../master-median-results.json" ] || [ ! -f "../$CIRCLE_BRANCH-median-results.json" ]; then
               echo "Performance tests results not found."
-              exit 1
+              circleci-agent step halt
             fi
       - changed_files_with_extension:
           ext: ".js"

@@ -53,7 +53,7 @@ const renderMap = ( elements ) => {
 					gmapAttr.iconSize,
 					gmapAttr.iconSize
 				),
-				url: coblocksGoogleMaps.url + '/assets/images/markers/' + gmapAttr.skin + '.svg',
+				url: coblocksGoogleMaps.url + '/assets/markers/' + gmapAttr.skin + '.svg',
 			},
 			map,
 			position: new google.maps.LatLng( gmapAttr.lat, gmapAttr.lng ),
