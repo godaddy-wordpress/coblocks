@@ -125,7 +125,12 @@ function GalleryEdit( props ) {
 				} );
 			} );
 
-			const transformedBlock = createBlock( 'coblocks/gallery-masonry', {}, newBlocks );
+			const migratedAttributes = { ...attributes };
+			delete migratedAttributes.images;
+			delete migratedAttributes.gutter;
+			delete migratedAttributes.gutterCustom;
+
+			const transformedBlock = createBlock( 'coblocks/gallery-masonry', { ...migratedAttributes }, newBlocks );
 
 			replaceBlocks(
 				[ clientId ],
