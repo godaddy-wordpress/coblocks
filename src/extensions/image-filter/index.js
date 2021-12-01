@@ -26,23 +26,14 @@ const allowedBlocks = [
  */
 const coreImageFilter = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-		const { name, attributes } = props;
+		const { name } = props;
 		if ( ! allowedBlocks.includes( name ) ) {
 			return <BlockEdit { ...props } />;
 		}
 
-		const {
-			filter,
-		} = attributes;
-
-		const className = classnames(
-			{
-				[ `has-filter-${ filter }` ]: filter !== 'none',
-			}
-		);
 		return (
 			<>
-				<BlockEdit { ...props } className={ className } />
+				<BlockEdit { ...props } />
 				<BlockControls>
 					<MediaFilterControl
 						{ ...props }
@@ -54,6 +45,36 @@ const coreImageFilter = createHigherOrderComponent( ( BlockEdit ) => {
 }, 'withGalleryExtension' );
 
 addFilter( 'editor.BlockEdit', 'coblocks/coreImageFilter', coreImageFilter );
+
+/**
+ * Add custom `has-filter-${ filter }` class to the core/image block
+ */
+const coreImageEditorStyles = createHigherOrderComponent( ( BlockListBlock ) => {
+	return ( props ) => {
+		const { attributes, name } = props;
+		if ( ! allowedBlocks.includes( name ) ) {
+			return <BlockListBlock { ...props } />;
+		}
+
+		const {
+			filter,
+		} = attributes;
+
+		const blockProps = {
+			...props,
+			attributes: {
+				...attributes,
+				className: classnames( {
+					[ `has-filter-${ filter }` ]: filter !== 'none',
+				} ),
+			},
+		};
+
+		return <BlockListBlock { ...blockProps } />;
+	};
+}, 'withStyleClasses' );
+
+addFilter( 'editor.BlockListBlock', 'coblocks/with-style-classes', coreImageEditorStyles );
 
 /**
  * Add custom attribute to the core/image block
