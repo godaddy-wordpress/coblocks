@@ -14,7 +14,6 @@ const scripts = [
 	'coblocks-accordion-polyfill',
 	'coblocks-animation',
 	'coblocks-checkbox-required',
-	'coblocks-datepicker',
 	'coblocks-events',
 	'coblocks-fromEntries',
 	'coblocks-google-maps',
@@ -25,10 +24,20 @@ const scripts = [
 	'coblocks-slick-initializer',
 ];
 
+// If you want to add a new chunk simply increase the lenght of the array.
+// This function produces based on array length { 'coblocks-1': 'src/blocks-1.js' }
+// Don't forget to increment the range in includes/class-coblocks-block-assets.php if you increase it here.
+const coblocksChunks = Array.from( { length: 8 }, ( _, i ) => i + 1 )
+	.reduce(
+		( a, i ) => ( { ...a, [ `coblocks-${ i }` ]: path.resolve( process.cwd(), `src/blocks-${ i }.js` ) } ),
+		{}
+	);
+
 module.exports = {
 	...defaultConfig,
 	entry: {
-		coblocks: path.resolve( process.cwd(), 'src/blocks.js' ),
+		...coblocksChunks,
+		'coblocks-extensions': path.resolve( process.cwd(), 'src/extensions.js' ),
 
 		...scripts.reduce( ( memo, script ) => {
 			memo[ `js/${ script }` ] = path.resolve( process.cwd(), 'src', 'js', `${ script }.js` );
@@ -43,6 +52,7 @@ module.exports = {
 	output: {
 		...defaultConfig.output,
 		path: path.resolve( process.cwd(), 'dist/' ),
+		publicPath: 'auto',
 	},
 
 	plugins: [

@@ -19,9 +19,6 @@ void ( function( root, factory ) {
 	// Add a classname
 	document.documentElement.className += ' no-details';
 
-	// Disable note: This rule is only meant to be used for React components
-	// See https://github.com/WordPress/gutenberg/pull/26810
-	// eslint-disable-next-line @wordpress/no-global-event-listener
 	window.addEventListener( 'click', clickHandler );
 
 	injectStyle( 'details-polyfill-style',
