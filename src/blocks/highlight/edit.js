@@ -97,7 +97,7 @@ const Edit = ( props ) => {
 		<>
 			<Controls { ...props } />
 			<Inspector { ...props } />
-			<p className={ className } style={ { textAlign: align, fontSize: fontSize.size ?? undefined, } }>
+			<p className={ className } style={ { textAlign: align, fontSize: fontSize.size ?? undefined } }>
 				<RichText
 					tagName="mark"
 					placeholder={ __( 'Add highlighted text…', 'coblocks' ) }

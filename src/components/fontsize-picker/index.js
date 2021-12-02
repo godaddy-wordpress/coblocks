@@ -15,10 +15,10 @@ const CoBlocksFontSizePicker = ( props ) => {
 	return (
 		<FontSizePicker
 			fallbackFontSize={ fallbackFontSize }
-			value={ fontSize.size }
 			onChange={ ( newFontSize ) => {
-				setFontSize( newFontSize ?? false );
+				setFontSize( parseInt( newFontSize ) ?? false );
 			} }
+			value={ `${ fontSize.size }px` }
 		/>
 	);
 };

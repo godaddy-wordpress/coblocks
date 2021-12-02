@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { computeFontSize } from '../../utils/helper';
 
 /**
  * WordPress dependencies
