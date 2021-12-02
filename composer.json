@@ -6,6 +6,11 @@
 	"require": {
 		"php": ">=5.6"
 	},
+	"config": {
+		"platform": {
+			"php": "5.6.20"
+		}
+	},
 	"require-dev": {
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
 		"godaddy-wordpress/json2po": "^1.0",
