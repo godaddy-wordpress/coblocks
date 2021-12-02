@@ -494,6 +494,9 @@ commands:
       useComposerV1:
         type: boolean
         default: false
+      reinstallDependencies:
+        type: boolean
+        default: false
       reportCoverage:
         type: boolean
         default: true
@@ -508,6 +511,12 @@ commands:
             - run:
                 name: Install Composer v1
                 command: sudo composer self-update --1
+      - when:
+          condition: << parameters.reinstallDependencies >>
+          steps:
+            - run:
+                name: Reinstalling Composer dependencies
+                command: composer validate --strict && composer install
       - wait_for_mysql
       - install_wordpress_testing_suite
       - when:
@@ -623,7 +632,8 @@ jobs:
   unit_testing_php_56:
     executor: php_56_mysql
     steps:
-      - run_php_unit_tests
+      - run_php_unit_tests:
+          reinstallDependencies: true
 
   unit_testing_php_73:
     executor: php_73_mysql
