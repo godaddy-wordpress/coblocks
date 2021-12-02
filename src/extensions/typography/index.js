@@ -1,8 +1,9 @@
 /**
  * Internal Dependencies
  */
-import Controls from './controls';
 import applyStyle from './apply-style';
+import Controls from './controls';
+import { deprecatedBlocks } from './constants';
 import { TypographyAttributes } from '../../components/typography-controls';
 import './settings-modal-control';
 
@@ -14,37 +15,12 @@ import classnames from 'classnames';
 /**
  * WordPress Dependencies
  */
-import { withSelect } from '@wordpress/data';
 import { addFilter } from '@wordpress/hooks';
 import { Fragment }	from '@wordpress/element';
+import { withSelect } from '@wordpress/data';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
 const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/pullquote', 'core/cover', 'core/quote', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/alert', 'coblocks/highlight', 'coblocks/pricing-table', 'coblocks/features' ];
-const deprecatedBlocks = [ 'coblocks/click-to-tweet' ];
-
-/**
- * Compares against list of blocks with deprecated typography controls and prepares
- * attributes for deprecation when needed.
- *
- * Does not modify settings for registered block - Will only modify attributes
- * used within the deprecated function.
- *
- * @param {Object} attributes Original registered block attributes.
- * @return {Object} Block attributes filtered for deprecation .
- */
-export function deprecateTypographyControls( attributes ) {
-	addFilter(
-		'blocks.registerBlockType',
-		'coblocks/inspector/attributes',
-		( settings ) => {
-			if ( deprecatedBlocks.includes( settings.name ) ) {
-				attributes = Object.assign( attributes, TypographyAttributes );
-			}
-			return settings;
-		}
-	);
-	return attributes;
-}
 
 /**
  * Filters registered block settings, extending attributes with settings

@@ -34,7 +34,7 @@
 		"lint:php": "wp-scripts env lint-php",
 		"test:php": "wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/coblocks/phpunit.xml.dist --verbose'",
 		"test:js": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js",
-		"test:js:coverage": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js --coverage",
+		"test:js:coverage": "yarn test:js --coverage",
 		"test:performance": "wp-scripts test-e2e --config .dev/performance/jest.performance.config.js",
 		"wp-env": "wp-env",
 		"prepare": "husky install .dev/husky"
@@ -73,12 +73,12 @@
 		"zh_TW": "繁體中文"
 	},
 	"dependencies": {
-		"@godaddy-wordpress/coblocks-icons": "1.8.1"
+		"@godaddy-wordpress/coblocks-icons": "1.10.0"
 	},
 	"devDependencies": {
-		"@es-joy/jsdoccomment": "0.10.8",
-		"@godaddy-wordpress/eslint-config": "^0.4.0",
-		"@godaddy-wordpress/stylelint-config": "^0.2.0",
+		"@es-joy/jsdoccomment": "0.12.0",
+		"@godaddy-wordpress/eslint-config": "^0.5.0",
+		"@godaddy-wordpress/stylelint-config": "^0.4.0",
 		"@jest/core": "^27.1.0",
 		"@testing-library/jest-dom": "^5.15.0",
 		"@wordpress/api-fetch": "^5.2.4",
@@ -93,7 +93,6 @@
 		"@wordpress/data": "^6.1.2",
 		"@wordpress/data-controls": "^2.2.5",
 		"@wordpress/date": "^4.2.2",
-		"@wordpress/dependency-extraction-webpack-plugin": "^3.2.1",
 		"@wordpress/dom": "^3.2.5",
 		"@wordpress/dom-ready": "^3.2.2",
 		"@wordpress/e2e-test-utils": "^5.4.5",
@@ -118,7 +117,7 @@
 		"chalk": "^4.1.2",
 		"classnames": "^2.2.5",
 		"commander": "^8.3.0",
-		"cypress": "^6.9.1",
+		"cypress": "^9.0.0",
 		"cypress-file-upload": "^5.0.8",
 		"cypress-log-to-output": "1.1.2",
 		"email-validator": "^2.0.4",
@@ -126,21 +125,22 @@
 		"expect-puppeteer": "^6.0.0",
 		"flickity": "^2.2.2",
 		"grunt": "^1.1.0",
-		"grunt-contrib-clean": "^1.0.0",
-		"grunt-contrib-compress": "^1.4.1",
+		"grunt-contrib-clean": "^2.0.0",
+		"grunt-contrib-compress": "^2.0.0",
 		"grunt-contrib-copy": "^1.0.0",
 		"grunt-shell": "^3.0.1",
 		"grunt-text-replace": "^0.4.0",
 		"grunt-wp-readme-to-markdown": "^2.0.1",
 		"html-react-parser": "^1.4.0",
 		"husky": "^7.0.4",
-		"inquirer": "^7.1.0",
+		"inquirer": "^8.2.0",
+		"jest-environment-jsdom": "^27.3.1",
 		"jest-environment-puppeteer": "^6.0.0",
 		"jest-junit": "13.0.0",
 		"jest-snapshot": "^27.3.1",
 		"jquery": "^3.4.1",
-		"jsdom": "^16.7.0",
-		"lint-staged": "^11.2.6",
+		"jsdom": "^18.1.1",
+		"lint-staged": "^12.1.1",
 		"lodash": "^4.17.21",
 		"matchdep": "^2.0.0",
 		"memize": "^1.0.5",
@@ -159,11 +159,11 @@
 	},
 	"resolutions": {
 		"ansi-regex": "^5.0.1",
-		"node-fetch": "^2.6.1",
+		"json-schema": "^0.4.0",
+		"node-fetch": "^2.6.6",
 		"nth-check": "^2.0.1",
-		"react-dom": "17.0.1",
-		"react": "17.0.1",
-		"set-value": "^4.0.1"
+		"react-dom": "17.0.2",
+		"react": "17.0.2"
 	},
 	"lint-staged": {
 		"*.scss": [

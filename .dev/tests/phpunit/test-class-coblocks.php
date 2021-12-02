@@ -182,10 +182,9 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 
 		$expected_assets = [
 			'js'  => [
-				'dist/coblocks.js',
+				'dist/coblocks-1.js',
 				'dist/js/coblocks-accordion-polyfill.js',
 				'dist/js/coblocks-checkbox-required.js',
-				'dist/js/coblocks-datepicker.js',
 				'dist/js/coblocks-fromEntries.js',
 				'dist/js/coblocks-google-maps.js',
 				'dist/js/coblocks-google-recaptcha.js',
@@ -197,7 +196,6 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 				'dist/js/vendors/slick.js',
 				'src/js/coblocks-accordion-polyfill.js',
 				'src/js/coblocks-checkbox-required.js',
-				'src/js/coblocks-datepicker.js',
 				'src/js/coblocks-fromEntries.js',
 				'src/js/coblocks-google-maps.js',
 				'src/js/coblocks-google-recaptcha.js',
@@ -207,8 +205,8 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 				'src/js/coblocks-slick-initializer.js',
 			],
 			'css' => [
-				'dist/coblocks.css',
-				'dist/style-coblocks.css',
+				'dist/coblocks-1.css',
+				'dist/style-coblocks-1.css',
 			],
 		];
 

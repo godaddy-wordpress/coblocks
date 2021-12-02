@@ -47,21 +47,12 @@ const settings = {
 		/* translators: block keyword */
 		__( 'photos', 'coblocks' ),
 	],
+	// Disable reason: https://github.com/WordPress/gutenberg/issues/35229
+	// example: {},
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,
 		coBlocksSpacing: true,
-	},
-	example: {
-		attributes: {
-			gridSize: 'lrg',
-			gutter: 5,
-			images: [
-				{ url: 'https://s.w.org/images/core/5.3/Biologia_Centrali-Americana_-_Cantorchilus_semibadius_1902.jpg' },
-				{ url: 'https://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg' },
-				{ url: 'https://s.w.org/images/core/5.3/MtBlanc1.jpg' },
-			],
-		},
 	},
 	transforms,
 	edit,
