@@ -80,7 +80,6 @@ describe( 'Test CoBlocks Click to Tweet Block', function() {
 
 		cy.get( '#downshift-1-toggle-button' ).click();
 		cy.get( '#downshift-1-menu li' ).contains( 'Custom' ).click();
-		cy.get( '#downshift-1-toggle-button' ).contains( 'Default' );
 		cy.get( '.components-input-control__container input[aria-label="Custom"]' ).type( '5' );
 		cy.get( '#downshift-1-toggle-button' ).contains( 'Custom' );
 		cy.get( '.wp-block-coblocks-click-to-tweet .block-editor-rich-text__editable' ).should( 'have.css', 'font-size' ).and( 'match', /5px/ );
