@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+ import PropTypes from 'prop-types';
+
+/**
  * Internal dependencies
  */
 import { ALLOWED_BG_MEDIA_TYPES, BLOCKS_WITH_AUTOPADDING } from './';
@@ -54,5 +59,12 @@ class BackgroundDropZone extends Component {
 		);
 	}
 }
+
+BackgroundDropZone.propTypes = {
+	attributes: PropTypes.object,
+	label: PropTypes.string,
+	name: PropTypes.string,
+	setAttributes: PropTypes.func
+};
 
 export default BackgroundDropZone;

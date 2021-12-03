@@ -3,6 +3,7 @@
  */
 import classnames from 'classnames';
 import map from 'lodash/map';
+import PropTypes from 'prop-types';
 
 /**
  * Internal dependencies
@@ -494,5 +495,18 @@ const DimensionsControl = ( props ) => {
 		</>
 	);
 };
+
+DimensionsControl.propTypes = {
+	attributes: PropTypes.number,
+	clientId: PropTypes.number,
+	dimensionSize: PropTypes.number,
+	help: PropTypes.bool,
+	instanceId: PropTypes.number,
+	label: PropTypes.string,
+	name: PropTypes.string,
+	setAttributes: PropTypes.func,
+	type: PropTypes.string,
+	unit: PropTypes.number,
+}
 
 export default withInstanceId( DimensionsControl );

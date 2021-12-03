@@ -2,6 +2,7 @@
  * External dependencies
  */
 import isEmpty from 'lodash/isEmpty';
+import PropTypes from 'prop-types';
 
 /**
  * Internal dependencies
@@ -298,6 +299,12 @@ class BackgroundPanel extends Component {
 			</Fragment>
 		);
 	}
+}
+
+BackgroundPanel.propTypes = {
+	attributes: PropTypes.object,
+	name: PropTypes.string,
+	setAttributes: PropTypes.func,
 }
 
 export default BackgroundPanel;

@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import PropTypes from 'prop-types';
+
+/**
  * Internal dependencies
  */
 import linkOptions from './options/link-options';
@@ -98,6 +103,16 @@ class GalleryLinkSettings extends Component {
 			</Fragment>
 		);
 	}
+}
+
+GalleryLinkSettings.propTypes = {
+	attributes: PropTypes.shape({
+			lightbox: PropTypes.bool,
+			linkTo: PropTypes.string,
+			target: PropTypes.string,
+			rel: PropTypes.string,
+	}),
+	setAttributes: PropTypes.func,
 }
 
 export default GalleryLinkSettings;

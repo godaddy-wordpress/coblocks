@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import PropTypes from 'prop-types';
+
+/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
@@ -109,4 +114,11 @@ export default class DimensionsSelect extends Component {
 			</Fragment>
 		);
 	}
+}
+
+DimensionsSelect.propTypes = {
+	setAttributes: PropTypes.func,
+	marginSize: PropTypes.number,
+	paddingSize: PropTypes.number,
+	type: PropTypes.string,
 }

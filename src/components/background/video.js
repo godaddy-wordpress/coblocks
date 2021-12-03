@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import PropTypes from 'prop-types';
+
+/**
  * Background Video.
  *
  * @param {Object} attributes The attributes.
@@ -18,5 +23,14 @@ function BackgroundVideo( attributes ) {
 		</div>
 		: null;
 }
+
+BackgroundVideo.propTypes = {
+	attributes: PropTypes.shape({
+		backgroundImg: PropTypes.string,
+		backgroundType: PropTypes.string,
+		videoLoop: PropTypes.bool,
+		videoMuted: PropTypes.bool,
+	}),
+};
 
 export default BackgroundVideo;

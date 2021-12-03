@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import PropTypes from 'prop-types';
+
+/**
  * Internal dependencies
  */
 import CropSettings from './';
@@ -82,6 +87,16 @@ class CropControl extends Component {
 			/>
 		);
 	}
+}
+
+CropControl.propTypes = {
+	attachmentId: PropTypes.number,
+	cropHeight: PropTypes.number,
+	cropWidth: PropTypes.number,
+	offsetX: PropTypes.number,
+	offsetY: PropTypes.number,
+	onChange: PropTypes.func,
+	rotation: PropTypes.number,
 }
 
 export default CropControl;

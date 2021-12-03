@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 /**
  * WordPress dependencies
@@ -329,5 +330,15 @@ class CropSettings extends Component {
 		/* eslint-enable jsx-a11y/no-static-element-interactions */
 	}
 }
+
+CropSettings.propTypes = {
+	cropWidth: PropTypes.number, 
+	cropHeight: PropTypes.number,
+	imageUrl: PropTypes.string,
+	offsetX: PropTypes.number, 
+	offsetY: PropTypes.number, 
+	onChange: PropTypes.func,
+	rotation: PropTypes.number,
+};
 
 export default CropSettings;

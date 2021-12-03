@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import PropTypes from 'prop-types';
+
+/**
  * WordPress dependencies
  */
 import { mediaUpload } from '@wordpress/editor';
@@ -27,5 +32,10 @@ const GalleryDropZone = ( props ) => {
 		/>
 	);
 };
+
+GalleryDropZone.propTypes = {
+	label: PropTypes.string,
+	onSelect: PropTypes.func,
+}
 
 export default GalleryDropZone;
