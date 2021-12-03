@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-12-02T17:31:48+00:00\n"
+"POT-Creation-Date: 2021-12-03T16:05:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -691,13 +691,13 @@ msgstr ""
 
 #. translators: block keyword (abbreviation for "call to action")
 #: src/blocks/buttons/index.js:32
-#: src/blocks/hero/index.js:49
+#: src/blocks/hero/index.js:89
 msgid "cta"
 msgstr ""
 
 #. translators: block keyword
 #: src/blocks/buttons/index.js:34
-#: src/blocks/hero/index.js:51
+#: src/blocks/hero/index.js:91
 msgid "call to action"
 msgstr ""
 
@@ -1248,7 +1248,7 @@ msgstr ""
 #. translators: block keyword
 #. translators: icon keyword
 #: src/blocks/food-and-drinks/food-item/index.js:34
-#: src/blocks/food-and-drinks/index.js:36
+#: src/blocks/food-and-drinks/index.js:67
 #: src/blocks/icon/deprecated/svgs.js:901
 #: src/blocks/icon/deprecated/svgsfocusable.js:900
 #: src/blocks/icon/svgs.js:900
@@ -1319,11 +1319,6 @@ msgstr ""
 msgid "Focal point"
 msgstr ""
 
-#. translators: block name
-#: src/blocks/food-and-drinks/index.js:27
-msgid "Food & Drink"
-msgstr ""
-
 #. translators: block description
 #: src/blocks/food-and-drinks/index.js:29
 msgid "Display a menu or price list."
@@ -1331,13 +1326,18 @@ msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/food-and-drinks/index.js:34
+#: src/blocks/food-and-drinks/index.js:65
 #: src/blocks/icon/deprecated/svgs.js:903
 #: src/blocks/icon/deprecated/svgsfocusable.js:902
 #: src/blocks/icon/svgs.js:902
 #: src/blocks/icon/svgs.js:1577
 #: src/blocks/opentable/index.js:33
 msgid "restaurant"
+msgstr ""
+
+#. translators: block name
+#: src/blocks/food-and-drinks/index.js:74
+msgid "Food & Drink"
 msgstr ""
 
 #. translators: abbreviation for small size
@@ -1829,7 +1829,7 @@ msgstr ""
 
 #. translators: block keyword
 #: src/blocks/form/fields/submit-button/index.js:61
-#: src/blocks/hero/index.js:47
+#: src/blocks/hero/index.js:87
 msgid "button"
 msgstr ""
 
@@ -2245,19 +2245,19 @@ msgstr ""
 msgid "Search for gifs"
 msgstr ""
 
-#. translators: block name
-#: src/blocks/gif/index.js:27
-msgid "Gif"
-msgstr ""
-
 #. translators: block description
 #: src/blocks/gif/index.js:29
 msgid "Pick a gif, any gif."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/gif/index.js:35
+#: src/blocks/gif/index.js:46
 msgid "animated"
+msgstr ""
+
+#. translators: block name
+#: src/blocks/gif/index.js:54
+msgid "Gif"
 msgstr ""
 
 #: src/blocks/gif/inspector.js:28
@@ -2313,14 +2313,14 @@ msgstr ""
 msgid "Add background to hero"
 msgstr ""
 
-#. translators: block name
-#: src/blocks/hero/index.js:40
-msgid "Hero"
-msgstr ""
-
 #. translators: block description
 #: src/blocks/hero/index.js:42
 msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
+msgstr ""
+
+#. translators: block name
+#: src/blocks/hero/index.js:99
+msgid "Hero"
 msgstr ""
 
 #: src/blocks/hero/inspector.js:81
