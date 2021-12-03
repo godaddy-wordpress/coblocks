@@ -235,7 +235,7 @@ const Edit = ( props ) => {
 					} }
 				>
 					{ !! apiKeyState
-						? GoogleMapWithApiKey : GoogleMapIframeRender() }
+						? GoogleMapWithApiKey() : GoogleMapIframeRender() }
 				</ResizableBox>
 			) : (
 				<Placeholder
