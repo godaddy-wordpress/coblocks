@@ -49,6 +49,7 @@ const Edit = ( props ) => {
 		borderRadius,
 		padding,
 		hasContentAlign,
+		preview,
 	} = attributes;
 
 	useEffect( () => {
@@ -117,6 +118,22 @@ const Edit = ( props ) => {
 	if ( hasContentAlign === false ) {
 		showRightHandle = true;
 		showLeftHandle = true;
+	}
+
+	if ( preview ) {
+		return (
+			<>
+				<Inspector
+					{ ...props }
+				/>
+				<Controls
+					{ ...props }
+				/>
+				<div className={ classes }>
+					{ selectedIcon ? selectedIcon.icon : null }
+				</div>
+			</>
+		);
 	}
 
 	return (
