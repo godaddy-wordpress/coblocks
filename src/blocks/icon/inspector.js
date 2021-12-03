@@ -8,7 +8,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import applyWithColors from './colors';
-import svg from './svgs';
+import svg from './svgs-v2';
 import { DEFAULT_ICON_SIZE } from '.';
 import { MIN_ICON_SIZE, MAX_ICON_SIZE } from './edit';
 import IconSizeSelect from './icon-size-select';
