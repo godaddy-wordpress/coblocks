@@ -191,23 +191,23 @@ workflows:
             - js
 
       # PERF TESTING
-      - master_perf_tests:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
+      # - master_perf_tests:
+      #    filters:
+      #      tags:
+      #        only: /^(?!canary).*$/
 
-      - current_perf_tests:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
+      # - current_perf_tests:
+      #    filters:
+      #      tags:
+      #        only: /^(?!canary).*$/
 
-      - aggregate_perf_test_results:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
-          requires:
-            - current_perf_tests
-            - master_perf_tests
+      # - aggregate_perf_test_results:
+      #    filters:
+      #      tags:
+      #        only: /^(?!canary).*$/
+      #    requires:
+      #      - current_perf_tests
+      #      - master_perf_tests
 
       - canary-release:
           filters:

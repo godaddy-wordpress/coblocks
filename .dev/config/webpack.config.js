@@ -14,7 +14,6 @@ const scripts = [
 	'coblocks-accordion-polyfill',
 	'coblocks-animation',
 	'coblocks-checkbox-required',
-	'coblocks-datepicker',
 	'coblocks-events',
 	'coblocks-fromEntries',
 	'coblocks-google-maps',
