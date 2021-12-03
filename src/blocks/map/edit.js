@@ -2,334 +2,297 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import {
-	withScriptjs,
-	withGoogleMap,
-	GoogleMap,
-	Marker,
-} from 'react-google-maps';
-import { withProps, lifecycle } from 'recompose';
 import { MapIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 
 /**
  * Internal dependencies
  */
 import Controls from './controls';
-import Inspector from './inspector';
 import GMapStyles from './map-styles';
+import Inspector from './inspector';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import apiFetch from '@wordpress/api-fetch';
 import { compose } from '@wordpress/compose';
 import {
-	Placeholder,
 	Button,
-	ResizableBox,
-	withNotices,
 	Icon,
+	Placeholder,
+	ResizableBox,
 	TextControl,
+	withNotices,
 } from '@wordpress/components';
-import { Fragment, Component } from '@wordpress/element';
-import apiFetch from '@wordpress/api-fetch';
+import { useCallback, useEffect, useState } from '@wordpress/element';
 
-class Edit extends Component {
-	constructor() {
-		super( ...arguments );
-		this.state = {
-			apiKey: '',
-			address: this.props.attributes.address,
-			coords: null,
-			hasError: false,
-			isSavedKey: false,
-			keySaved: false,
-		};
+const Edit = ( props ) => {
+	const {
+		attributes,
+		className,
+		isSelected,
+		setAttributes,
+	} = props;
 
-		this.updateApiKey = this.updateApiKey.bind( this );
-		this.saveApiKey = this.saveApiKey.bind( this );
-	}
+	const {
+		address,
+		hasApiKey,
+		pinned,
+		height,
+		iconSize,
+		skin,
+		mapTypeControl,
+		zoomControl,
+		streetViewControl,
+		fullscreenControl,
+		zoom,
+	} = attributes;
 
-	componentDidMount() {
+	const [ apiKeyState, setApiKey ] = useState( '' );
+	const [ addressState, setAddress ] = useState( address );
+	const [ coords, setCoords ] = useState( null );
+
+	useEffect( () => {
 		apiFetch( { path: '/wp/v2/settings' } ).then( ( res ) => {
-			this.setState( {
-				apiKey: res.coblocks_google_maps_api_key,
-				isSavedKey: res.coblocks_google_maps_api_key !== '',
-			} );
+			setApiKey( res.coblocks_google_maps_api_key );
 		} );
-	}
+	}, [] );
 
-	componentDidUpdate() {
-		if ( !! this.state.apiKey && ! this.props.attributes.hasApiKey ) {
-			this.props.setAttributes( { hasApiKey: true } );
+	useEffect( () => {
+		if ( !! apiKeyState && ! hasApiKey ) {
+			setAttributes( { hasApiKey: true } );
 		}
 
-		if (
-			! this.props.isSelected &&
-			! this.props.attributes.pinned &&
-			this.state.address &&
-			Object.keys( this.state.address ).length
-		) {
-			this.props.setAttributes( {
-				address: this.state.address,
+		if ( ! isSelected && ! pinned && addressState && Object.keys( addressState ).length ) {
+			setAttributes( {
+				address: addressState,
 				pinned: true,
 			} );
 		}
-	}
+	}, [ apiKeyState, hasApiKey, isSelected, pinned, addressState ] );
 
-	updateApiKey( apiKey = this.state.apiKey ) {
-		const { attributes, setAttributes } = this.props;
-
+	const updateApiKey = ( apiKey = apiKeyState ) => {
 		apiKey = apiKey.trim();
 
-		this.saveApiKey( apiKey );
+		saveApiKey( apiKey );
 
 		if ( apiKey === '' ) {
 			setAttributes( { hasApiKey: false } );
 
-			if ( ! attributes.address ) {
+			if ( ! address ) {
 				setAttributes( { pinned: false } );
 			}
 
 			return;
 		}
 
-		if ( attributes.address ) {
+		if ( address ) {
 			setAttributes( { pinned: true } );
 		}
-	}
+	};
 
-	saveApiKey( apiKey = this.state.apiKey ) {
-		this.setState( { apiKey } );
+	const saveApiKey = ( apiKey = apiKeyState ) => {
+		setApiKey( apiKey );
+
 		apiFetch( {
-			path: '/wp/v2/settings',
-			method: 'POST',
 			data: { coblocks_google_maps_api_key: apiKey },
+			method: 'POST',
+			path: '/wp/v2/settings',
 		} ).then( () => {
-			this.setState( {
-				isSavedKey: true,
-				keySaved: true,
-			} );
+			// Everything went well
 		} );
-	}
+	};
 
-	render() {
-		const { attributes, setAttributes, isSelected, className } = this.props;
+	const locale = document.documentElement.lang;
 
-		const {
-			address,
-			height,
-			iconSize,
-			pinned,
-			skin,
-			mapTypeControl,
-			zoomControl,
-			streetViewControl,
-			fullscreenControl,
-			zoom,
-		} = attributes;
+	const renderMap = ( event ) => {
+		if ( event ) {
+			event.preventDefault();
+		}
 
-		const locale = document.documentElement.lang;
+		setAttributes( { address: addressState, pinned: true } );
+	};
 
-		const renderMap = ( event ) => {
-			if ( event ) {
-				event.preventDefault();
-			}
+	const marker = {
+		scaledSize: { height: iconSize, width: iconSize },
+		url:
+			'/wp-content/plugins/coblocks/assets/markers/' +
+			skin +
+			'.svg',
+	};
 
-			setAttributes( { address: this.state.address, pinned: true } );
-		};
-
-		const marker = {
-			url:
-				'/wp-content/plugins/coblocks/assets/markers/' +
-				skin +
-				'.svg',
-			scaledSize: { width: iconSize, height: iconSize },
-		};
-
-		const GoogleMapIframeRender = () => (
-			<Fragment>
-				<div
-					style={ { width: '100%', height, position: 'absolute' } }
+	const GoogleMapIframeRender = () => (
+		<>
+			<div
+				style={ { height, position: 'absolute', width: '100%' } }
+			/>
+			<div className="iframe__overflow-wrapper">
+				<iframe
+					frameBorder="0"
+					src={ `https://www.google.com/maps?q=${ encodeURIComponent(
+						address
+					) }&output=embed&hl=${ locale }&z=${ zoom }` }
+					style={ { minHeight: height + 'px', width: '100%' } }
+					title={ __( 'Google Map', 'coblocks' ) }
 				/>
-				<div className="iframe__overflow-wrapper">
-					<iframe
-						title={ __( 'Google Map', 'coblocks' ) }
-						frameBorder="0"
-						style={ { width: '100%', minHeight: height + 'px' } }
-						src={ `https://www.google.com/maps?q=${ encodeURIComponent(
-							address
-						) }&output=embed&hl=${ locale }&z=${ zoom }` }
-					/>
-				</div>
-			</Fragment>
-		);
+			</div>
+		</>
+	);
 
-		return (
-			<Fragment>
-				{ isSelected && (
-					<Inspector
-						{ ...this.props }
-						apiKey={ this.state.apiKey }
-						updateApiKeyCallBack={ this.updateApiKey }
-					/>
-				) }
-				{ isSelected && (
-					<Controls { ...this.props } apiKey={ this.state.apiKey } />
-				) }
-				{ pinned ? (
-					<ResizableBox
-						size={ {
-							height,
-							width: '100%',
-						} }
-						className={ classnames( className, {
-							'is-selected': isSelected,
-						} ) }
-						minHeight="200"
-						enable={ {
-							bottom: true,
-							bottomLeft: false,
-							bottomRight: false,
-							left: false,
-							right: false,
-							top: false,
-							topLeft: false,
-							topRight: false,
-						} }
-						onResizeStop={ ( _event, _direction, _elt, delta ) => {
-							setAttributes( {
-								height: parseInt( height + delta.height, 10 ),
-							} );
-						} }
-						showHandle={ isSelected }
-					>
-						{ !! this.state.apiKey
-							? ( compose( withProps( {
-								googleMapURL:
-									`https://maps.googleapis.com/maps/api/js?key=${ this.state.apiKey }` +
-									`&language=${ locale }` +
-									'&v=3.exp&libraries=geometry,drawing,places',
-								loadingElement: <div style={ { height: '100%' } } />,
-								containerElement: <div style={ { height: '100%' } } />,
-								mapElement: <div style={ { height: '100%' } } />,
-								coords: null,
-								props: this.props,
-							} ),
-							withScriptjs,
-							withGoogleMap,
-							lifecycle( {
-								componentDidMount() {
-									const geocoder = new window.google.maps.Geocoder();
-									geocoder.geocode(
-										{ address },
-										function( results, status ) {
-											if ( status !== 'OK' ) {
-												this.props.props.setAttributes( {
-													pinned: false,
-													hasError: __( 'Invalid API key, or too many requests', 'coblocks' ),
-												} );
-												return;
-											}
+	const GoogleMapWithApiKey = () => {
+		const { isLoaded } = useJsApiLoader( {
+			googleMapsApiKey: apiKeyState,
+			id: 'google-map-script',
+		} );
 
-											this.setState( {
-												coords: results[ 0 ].geometry.location.toJSON(),
-											} );
+		const onLoad = useCallback( () => {
+			const geocoder = new window.google.maps.Geocoder();
 
-											this.props.props.setAttributes( {
-												lat: results[ 0 ].geometry.location.toJSON().lat.toString(),
-												lng: results[ 0 ].geometry.location.toJSON().lng.toString(),
-												hasError: '',
-											} );
-										}.bind( this )
-									);
-								},
-							} )
-							)( ( props ) => [
-								props.coords ? (
-									<GoogleMap
-										isMarkerShown={ true }
-										defaultZoom={ props.props.attributes.zoom }
-										defaultCenter={ new window.google.maps.LatLng( props.coords ) }
-										defaultOptions={ {
-											styles: GMapStyles[ skin ],
-											draggable: false,
-											mapTypeControl,
-											zoomControl,
-											streetViewControl,
-											fullscreenControl,
-										} }
-									>
-										<Marker
-											position={ new window.google.maps.LatLng( props.coords ) }
-											icon={ marker }
-										/>
-									</GoogleMap>
-								) : null,
-							] ) )() : GoogleMapIframeRender() }
-					</ResizableBox>
-				) : (
-					<Placeholder
-						icon={ <Icon icon={ icon } /> }
-						label={ __( 'Map', 'coblocks' ) }
-						instructions={ __(
-							'Enter a location or address to drop a pin on a Google map.',
-							'coblocks'
-						) }
-					>
-						<form onSubmit={ renderMap }>
-							<TextControl
-								value={ this.state.address || '' }
-								className="components-placeholder__input"
-								placeholder={ __(
-									'Search for a place or address…',
-									'coblocks'
-								) }
-								onChange={ ( nextAddress ) =>
-									this.setState( {
-										address: nextAddress,
-									} )
-								}
-							/>
-							<Button
-								isPrimary={ !! this.state.address }
-								isSecondary={ ! this.state.address }
-								type="submit"
-								disabled={ ! this.state.address }
-							>
-								{ __( 'Search', 'coblocks' ) }
-							</Button>
-							<div className="components-placeholder__learn-more">
-								{ address && (
-									<Button
-										isTertiary
-										className="components-placeholder__cancel-button"
-										title={ __( 'Cancel', 'coblocks' ) }
-										onClick={ () => {
-											setAttributes( { pinned: ! pinned } );
-											this.setState( {
-												address: this.props.attributes
-													.address,
-											} );
-										} }
-										disabled={ ! address }
-									>
-										{ __( 'Cancel', 'coblocks' ) }
-									</Button>
-								) }
-							</div>
-						</form>
-						{ attributes.lng && attributes.hasError && (
-							<span className="invalid-google-maps-api-key">
-								{ attributes.hasError }
-							</span>
-						) }
-					</Placeholder>
-				) }
-			</Fragment>
-		);
-	}
-}
+			geocoder.geocode(
+				{ address },
+				function( results, status ) {
+					if ( status !== 'OK' ) {
+						setAttributes( {
+							hasError: __( 'Invalid API key, or too many requests', 'coblocks' ),
+							pinned: false,
+						} );
+						return;
+					}
+
+					setCoords( results[ 0 ].geometry.location.toJSON() );
+
+					setAttributes( {
+						hasError: '',
+						lat: results[ 0 ].geometry.location.toJSON().lat.toString(),
+						lng: results[ 0 ].geometry.location.toJSON().lng.toString(),
+					} );
+				}.bind( this )
+			);
+		} );
+
+		return isLoaded && coords ? (
+			<GoogleMap
+				defaultCenter={ new window.google.maps.LatLng( coords ) }
+				defaultOptions={ {
+					draggable: false,
+					fullscreenControl,
+					mapTypeControl,
+					streetViewControl,
+					styles: GMapStyles[ skin ],
+					zoomControl,
+				} }
+				defaultZoom={ zoom }
+				isMarkerShown={ true }
+				onLoad={ onLoad }
+			>
+				<Marker
+					icon={ marker }
+					position={ new window.google.maps.LatLng( coords ) }
+				/>
+			</GoogleMap>
+		) : <></>;
+	};
+
+	return (
+		<>
+			{ isSelected && (
+				<Inspector
+					{ ...props }
+					apiKey={ apiKeyState }
+					updateApiKeyCallBack={ updateApiKey }
+				/>
+			) }
+			{ isSelected && (
+				<Controls { ...props } apiKey={ apiKeyState } />
+			) }
+			{ pinned ? (
+				<ResizableBox
+					className={ classnames( className, {
+						'is-selected': isSelected,
+					} ) }
+					enable={ {
+						bottom: true,
+						bottomLeft: false,
+						bottomRight: false,
+						left: false,
+						right: false,
+						top: false,
+						topLeft: false,
+						topRight: false,
+					} }
+					minHeight="200"
+					onResizeStop={ ( _event, _direction, _elt, delta ) => {
+						setAttributes( {
+							height: parseInt( height + delta.height, 10 ),
+						} );
+					} }
+					showHandle={ isSelected }
+					size={ {
+						height,
+						width: '100%',
+					} }
+				>
+					{ !! apiKeyState
+						? GoogleMapWithApiKey : GoogleMapIframeRender() }
+				</ResizableBox>
+			) : (
+				<Placeholder
+					icon={ <Icon icon={ icon } /> }
+					instructions={ __(
+						'Enter a location or address to drop a pin on a Google map.',
+						'coblocks'
+					) }
+					label={ __( 'Map', 'coblocks' ) }
+				>
+					<form onSubmit={ renderMap }>
+						<TextControl
+							className="components-placeholder__input"
+							onChange={ ( nextAddress ) =>
+								setAddress( nextAddress )
+							}
+							placeholder={ __(
+								'Search for a place or address…',
+								'coblocks'
+							) }
+							value={ addressState || '' }
+						/>
+						<Button
+							disabled={ ! addressState }
+							isPrimary={ !! addressState }
+							isSecondary={ ! addressState }
+							type="submit"
+						>
+							{ __( 'Search', 'coblocks' ) }
+						</Button>
+						<div className="components-placeholder__learn-more">
+							{ address && (
+								<Button
+									className="components-placeholder__cancel-button"
+									disabled={ ! address }
+									isTertiary
+									onClick={ () => {
+										setAttributes( { pinned: ! pinned } );
+										setAddress( address );
+									} }
+									title={ __( 'Cancel', 'coblocks' ) }
+								>
+									{ __( 'Cancel', 'coblocks' ) }
+								</Button>
+							) }
+						</div>
+					</form>
+					{ attributes.lng && attributes.hasError && (
+						<span className="invalid-google-maps-api-key">
+							{ attributes.hasError }
+						</span>
+					) }
+				</Placeholder>
+			) }
+		</>
+	);
+};
 
 export default compose( [ withNotices ] )( Edit );
 
