@@ -22,15 +22,15 @@ function Save( { attributes } ) {
 
 	const mapAttributes = {
 		address,
-		fullscreenControl,
-		iconSize,
 		lat,
 		lng,
-		mapTypeControl,
 		skin,
-		streetViewControl,
 		zoom,
+		iconSize,
+		mapTypeControl,
 		zoomControl,
+		streetViewControl,
+		fullscreenControl,
 	};
 
 	const locale = document.documentElement.lang;
@@ -47,10 +47,10 @@ function Save( { attributes } ) {
 			{
 				! hasApiKey &&
 				<iframe
-					frameBorder="0"
-					src={ `https://www.google.com/maps?q=${ encodeURIComponent( address ) }&output=embed&hl=${ locale }&z=${ zoom }` }
-					style={ { minHeight: height + 'px', width: '100%' } }
 					title={ __( 'Google Map', 'coblocks' ) }
+					frameBorder="0"
+					style={ { width: '100%', minHeight: height + 'px' } }
+					src={ `https://www.google.com/maps?q=${ encodeURIComponent( address ) }&output=embed&hl=${ locale }&z=${ zoom }` }
 				/>
 			}
 		</div>

@@ -30,15 +30,15 @@ const deprecatedIframeEmbed = ( deprecated ) => {
 
 	const mapAttributes = {
 		address,
-		fullscreenControl,
-		iconSize,
 		lat,
 		lng,
-		mapTypeControl,
 		skin,
-		streetViewControl,
 		zoom,
+		iconSize,
+		mapTypeControl,
 		zoomControl,
+		streetViewControl,
+		fullscreenControl,
 	};
 
 	const attr = Object.keys( mapAttributes )
@@ -72,15 +72,15 @@ const deprecatedUserLocale = ( deprecated ) => {
 
 	const mapAttributes = {
 		address,
-		fullscreenControl,
-		iconSize,
 		lat,
 		lng,
-		mapTypeControl,
 		skin,
-		streetViewControl,
 		zoom,
+		iconSize,
+		mapTypeControl,
 		zoomControl,
+		streetViewControl,
+		fullscreenControl,
 	};
 
 	const attr = Object.keys( mapAttributes )
@@ -93,15 +93,15 @@ const deprecatedUserLocale = ( deprecated ) => {
 		<div style={ backgroundStyles } { ...dataMap }>
 			{ ! hasApiKey && (
 				<iframe
+					title={ __( 'Google Map', 'coblocks' ) }
 					frameBorder="0"
+					style={ { width: '100%', minHeight: height + 'px' } }
 					src={
 						'https://www.google.com/maps?q=' +
 						encodeURIComponent( address ) +
 						'&language=ja&output=embed&hl=%s&z=' +
 						zoom
 					}
-					style={ { minHeight: height + 'px', width: '100%' } }
-					title={ __( 'Google Map', 'coblocks' ) }
 				/>
 			) }
 		</div>
