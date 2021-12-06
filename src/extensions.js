@@ -5,6 +5,7 @@ import './utils/block-category';
 import './js/coblocks-color-fix';
 
 // Extensions
+import './extensions/apply-extensions';
 import './extensions/animation';
 import './extensions/colors/inspector';
 import './extensions/typography';

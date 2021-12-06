@@ -7,13 +7,11 @@ import classnames from 'classnames';
  * WordPress Dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { addFilter } from '@wordpress/hooks';
-import { withSelect } from '@wordpress/data';
 import { hasBlockSupport } from '@wordpress/blocks';
-import { ToggleControl } from '@wordpress/components';
-import { Fragment, useEffect } from '@wordpress/element';
 import { InspectorAdvancedControls } from '@wordpress/block-editor';
-import { compose, createHigherOrderComponent } from '@wordpress/compose';
+import { ToggleControl } from '@wordpress/components';
+import { useEffect } from '@wordpress/element';
+import { dispatch, select } from '@wordpress/data';
 
 const blocksWithSpacingSupport = [
 	'core/image',
@@ -29,15 +27,15 @@ const blocksWithSpacingSupport = [
  * @param {Object} settings Original block settings.
  * @return {Object} Filtered block settings.
  */
-function addAttributes( settings ) {
+function applyAttributes( settings ) {
 	// Add custom attribute
 	if ( hasBlockSupport( settings, 'stackedOnMobile' ) ) {
 		if ( typeof settings.attributes !== 'undefined' ) {
 			if ( ! settings.attributes.isStackedOnMobile ) {
 				settings.attributes = Object.assign( settings.attributes, {
 					isStackedOnMobile: {
-						type: 'boolean',
 						default: true,
+						type: 'boolean',
 					},
 				} );
 			}
@@ -59,16 +57,16 @@ function addAttributes( settings ) {
 			if ( ! settings.attributes.noBottomMargin ) {
 				settings.attributes = Object.assign( settings.attributes, {
 					noBottomMargin: {
-						type: 'boolean',
 						default: false,
+						type: 'boolean',
 					},
 				} );
 			}
 			if ( ! settings.attributes.noTopMargin ) {
 				settings.attributes = Object.assign( settings.attributes, {
 					noTopMargin: {
-						type: 'boolean',
 						default: false,
+						type: 'boolean',
 					},
 				} );
 			}
@@ -79,138 +77,135 @@ function addAttributes( settings ) {
 }
 
 /**
- * Add custom CoBlocks attributes to selected blocks
+ * React hook function to extend the block editor with custom controls.
  *
- * @param {Function} BlockEdit Original component.
- * @return {string} Wrapped component.
+ * @function useAdvancedControls
+ * @param {Object} props Block props object.
+ * @return {string} Conditionally rendered block controls.
  */
-const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
-	return ( props ) => {
-		const { name, clientId, attributes, setAttributes, isSelected } = props;
+const useAdvancedControls = ( props ) => {
+	const { name, clientId, attributes, setAttributes, isSelected } = props;
 
-		const { isStackedOnMobile, noBottomMargin, noTopMargin } = attributes;
+	const { isStackedOnMobile, noBottomMargin, noTopMargin } = attributes;
 
-		const hasStackedControl = hasBlockSupport( name, 'stackedOnMobile' );
-		const withBlockSpacing = hasBlockSupport( name, 'coBlocksSpacing' );
+	const hasStackedControl = hasBlockSupport( name, 'stackedOnMobile' );
+	const withBlockSpacing = hasBlockSupport( name, 'coBlocksSpacing' );
 
-		const handleMargins = ( target ) => {
-			if ( ! target.querySelector ) {
-				return;
-			}
+	const handleMargins = ( target ) => {
+		if ( ! target.querySelector ) {
+			return;
+		}
 
-			const innerAlignmentBlock = target.querySelector( '.wp-block[data-align]' );
-			const setInnerAlignmentBlock = ( margin, val ) => {
-				if ( !! innerAlignmentBlock ) {
-					innerAlignmentBlock.style[ margin ] = val;
-				}
-			};
-			switch ( target.outerHTML.includes( 'data-coblocks-bottom-spacing' ) ) {
-				case true:
-					target.style.marginBottom = 0;
-					setInnerAlignmentBlock( 'marginBottom', 0 );
-					break;
-				case false:
-					target.style.marginBottom = null;
-					setInnerAlignmentBlock( 'marginBottom', null );
-					break;
-			}
-			switch ( target.outerHTML.includes( 'data-coblocks-top-spacing' ) ) {
-				case true:
-					target.style.marginTop = 0;
-					setInnerAlignmentBlock( 'marginTop', 0 );
-					break;
-				case false:
-					target.style.marginTop = null;
-					setInnerAlignmentBlock( 'marginTop', null );
-
-					break;
+		const innerAlignmentBlock = target.querySelector( '.wp-block[data-align]' );
+		const setInnerAlignmentBlock = ( margin, val ) => {
+			if ( !! innerAlignmentBlock ) {
+				innerAlignmentBlock.style[ margin ] = val;
 			}
 		};
+		switch ( target.outerHTML.includes( 'data-coblocks-bottom-spacing' ) ) {
+			case true:
+				target.style.marginBottom = 0;
+				setInnerAlignmentBlock( 'marginBottom', 0 );
+				break;
+			case false:
+				target.style.marginBottom = null;
+				setInnerAlignmentBlock( 'marginBottom', null );
+				break;
+		}
+		switch ( target.outerHTML.includes( 'data-coblocks-top-spacing' ) ) {
+			case true:
+				target.style.marginTop = 0;
+				setInnerAlignmentBlock( 'marginTop', 0 );
+				break;
+			case false:
+				target.style.marginTop = null;
+				setInnerAlignmentBlock( 'marginTop', null );
 
-		useEffect( ( ) => {
-			// Check if alignment wrapper has been applied - Gutenberg 8.2.1
-			if ( !! document.getElementsByClassName( 'block-editor-block-list__layout is-root-container' ).length ) {
-				const targetElems = document.querySelectorAll( '.block-editor-block-list__layout' );
-				targetElems.forEach( ( elem ) => {
-					elem.childNodes.forEach( ( child ) => {
-						handleMargins( child );
-					} );
-				} );
-			}
-		}, [ noBottomMargin, noTopMargin ] );
-
-		const hasAdvancedControl = !! hasStackedControl || !! withBlockSpacing;
-
-		return (
-			<Fragment>
-				<BlockEdit { ...props } />
-				{ isSelected && hasAdvancedControl && (
-					<InspectorAdvancedControls>
-						{ hasStackedControl && (
-							<ToggleControl
-								label={ __( 'Stack on mobile', 'coblocks' ) }
-								checked={ !! isStackedOnMobile }
-								onChange={ () =>
-									setAttributes( { isStackedOnMobile: ! isStackedOnMobile } )
-								}
-								help={
-									!! isStackedOnMobile
-										? __( 'Responsiveness is enabled.', 'coblocks' )
-										: __(
-											'Toggle to stack elements on top of each other on smaller viewports.', 'coblocks'
-										)
-								}
-							/>
-						) }
-						{ withBlockSpacing && (
-							<ToggleControl
-								label={ __( 'Remove top spacing', 'coblocks' ) }
-								checked={ !! noTopMargin }
-								onChange={ () =>
-									setAttributes( {
-										noTopMargin: ! noTopMargin,
-										marginTop: 0,
-										marginTopTablet: 0,
-										marginTopMobile: 0,
-									} )
-								}
-								help={ !! noTopMargin ? __( 'Toggle to add top margin back.', 'coblocks' ) : __( 'Toggle to remove any top margin.', 'coblocks' ) }
-							/>
-						) }
-						{ withBlockSpacing && (
-							<ToggleControl
-								label={ __( 'Remove bottom spacing', 'coblocks' ) }
-								checked={ !! noBottomMargin }
-								onChange={ () => {
-									setAttributes( {
-										noBottomMargin: ! noBottomMargin,
-										marginBottom: 0,
-										marginBottomTablet: 0,
-										marginBottomMobile: 0,
-									} );
-
-									const nextBlockClientId = wp.data
-										.select( 'core/block-editor' )
-										.getNextBlockClientId( clientId );
-									if ( nextBlockClientId && ! noBottomMargin ) {
-										wp.data
-											.dispatch( 'core/block-editor' ).updateBlockAttributes( nextBlockClientId, {
-												noTopMargin: ! noTopMargin,
-												marginTop: 0,
-												marginTopTablet: 0,
-												marginTopMobile: 0,
-											} );
-									}
-								} }
-								help={ !! noBottomMargin ? __( 'Toggle to add bottom margin back.', 'coblocks' ) : __( 'Toggle to remove any bottom margin.', 'coblocks' ) }
-							/>
-						) }
-					</InspectorAdvancedControls>
-				) }
-			</Fragment>
-		);
+				break;
+		}
 	};
-}, 'withAdvancedControls' );
+
+	useEffect( ( ) => {
+		// Check if alignment wrapper has been applied - Gutenberg 8.2.1
+		if ( !! document.getElementsByClassName( 'block-editor-block-list__layout is-root-container' ).length ) {
+			const targetElems = document.querySelectorAll( '.block-editor-block-list__layout' );
+			targetElems.forEach( ( elem ) => {
+				elem.childNodes.forEach( ( child ) => {
+					handleMargins( child );
+				} );
+			} );
+		}
+	}, [ noBottomMargin, noTopMargin ] );
+
+	const hasAdvancedControl = !! hasStackedControl || !! withBlockSpacing;
+
+	return (
+		<>
+			{ isSelected && hasAdvancedControl && (
+				<InspectorAdvancedControls>
+					{ hasStackedControl && (
+						<ToggleControl
+							checked={ !! isStackedOnMobile }
+							help={
+								!! isStackedOnMobile
+									? __( 'Responsiveness is enabled.', 'coblocks' )
+									: __(
+										'Toggle to stack elements on top of each other on smaller viewports.', 'coblocks'
+									)
+							}
+							label={ __( 'Stack on mobile', 'coblocks' ) }
+							onChange={ () =>
+								setAttributes( { isStackedOnMobile: ! isStackedOnMobile } )
+							}
+						/>
+					) }
+					{ withBlockSpacing && (
+						<ToggleControl
+							checked={ !! noTopMargin }
+							help={ !! noTopMargin ? __( 'Toggle to add top margin back.', 'coblocks' ) : __( 'Toggle to remove any top margin.', 'coblocks' ) }
+							label={ __( 'Remove top spacing', 'coblocks' ) }
+							onChange={ () =>
+								setAttributes( {
+									marginTop: 0,
+									marginTopMobile: 0,
+									marginTopTablet: 0,
+									noTopMargin: ! noTopMargin,
+
+								} )
+							}
+						/>
+					) }
+					{ withBlockSpacing && (
+						<ToggleControl
+							checked={ !! noBottomMargin }
+							help={ !! noBottomMargin ? __( 'Toggle to add bottom margin back.', 'coblocks' ) : __( 'Toggle to remove any bottom margin.', 'coblocks' ) }
+							label={ __( 'Remove bottom spacing', 'coblocks' ) }
+							onChange={ () => {
+								setAttributes( {
+									marginBottom: 0,
+									marginBottomMobile: 0,
+									marginBottomTablet: 0,
+									noBottomMargin: ! noBottomMargin,
+								} );
+
+								const nextBlockClientId = select( 'core/block-editor' )
+									.getNextBlockClientId( clientId );
+								if ( nextBlockClientId && ! noBottomMargin ) {
+									dispatch( 'core/block-editor' ).updateBlockAttributes( nextBlockClientId, {
+										marginTop: 0,
+										marginTopMobile: 0,
+										marginTopTablet: 0,
+										noTopMargin: ! noTopMargin,
+									} );
+								}
+							} }
+						/>
+					) }
+				</InspectorAdvancedControls>
+			) }
+		</>
+	);
+};
 
 /**
  * Override props assigned to save component to inject attributes
@@ -220,7 +215,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
  * @param {Object} attributes Current block attributes.
  * @return {Object} Filtered props applied to save element.
  */
-function applySpacingClass( extraProps, blockType, attributes ) {
+function applySaveProps( extraProps, blockType, attributes ) {
 	const withBlockSpacing = hasBlockSupport( blockType.name, 'coBlocksSpacing' );
 
 	if ( withBlockSpacing ) {
@@ -239,95 +234,54 @@ function applySpacingClass( extraProps, blockType, attributes ) {
 }
 
 /**
- * Override the default block element to add wrapper props.
+ * React hook function to override the default block element to add wrapper props.
  *
- * @param {Function} BlockListBlock Original component
- * @return {Function} Wrapped component
+ * @function useEditorProps
+ * @param {Object} block        Contains the selected block.
+ * @param {string} blockName    String referencing the selected block.
+ * @param {Object} props        Object with block props.
+ * @param {Object} wrapperProps Object with wrapper props used to extend selected block.
+ * @return {Object} Wrapper props to apply to block.
  */
+const useEditorProps = ( block, blockName, props, wrapperProps ) => {
+	const withBlockSpacing = hasBlockSupport( blockName, 'coBlocksSpacing' );
+	let withAlignSupport = hasBlockSupport( blockName, 'align' );
 
-const enhance = compose(
-	/**
-	 * For blocks whose block type doesn't support `multiple`, provides the
-	 * wrapped component with `originalBlockClientId` -- a reference to the
-	 * first block of the same type in the content -- if and only if that
-	 * "original" block is not the current one. Thus, an inexisting
-	 * `originalBlockClientId` prop signals that the block is valid.
-	 *
-	 * @param {Function} WrappedBlockEdit A filtered BlockEdit instance.
-	 * @return {Function} Enhanced component with merged state data props.
-	 */
-	withSelect( ( select ) => {
-		return {
-			selected: select( 'core/block-editor' ).getSelectedBlock(),
-			select,
-		};
-	} ),
-);
+	if ( [ 'core/image' ].includes( blockName ) ) {
+		withAlignSupport = true;
+	}
 
-const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
-	return enhance( ( { select, ...props } ) => {
-		let wrapperProps = props.wrapperProps;
-		let customData = {};
+	let customData = {};
 
-		const block = select( 'core/block-editor' ).getBlock( props.rootClientId || props.clientId );
-		const blockName = select( 'core/block-editor' ).getBlockName( props.rootClientId || props.clientId );
+	if ( withBlockSpacing && block?.attributes ) {
+		const { noBottomMargin, noTopMargin } = block.attributes;
 
-		const withBlockSpacing = hasBlockSupport( blockName, 'coBlocksSpacing' );
-		let withAlignSupport = hasBlockSupport( blockName, 'align' );
-
-		if ( [ 'core/image' ].includes( blockName ) ) {
-			withAlignSupport = true;
-		}
-
-		if ( withBlockSpacing && block?.attributes ) {
-			const { noBottomMargin, noTopMargin } = block.attributes;
-
-			if ( typeof noTopMargin !== 'undefined' && noTopMargin ) {
-				customData = Object.assign( customData, {
-					'data-coblocks-top-spacing': 1,
-				} );
-			}
-
-			if ( typeof noBottomMargin !== 'undefined' && noBottomMargin ) {
-				customData = Object.assign( customData, {
-					'data-coblocks-bottom-spacing': 1,
-				} );
-			}
-		}
-
-		if ( withAlignSupport ) {
+		if ( typeof noTopMargin !== 'undefined' && noTopMargin ) {
 			customData = Object.assign( customData, {
-				'data-coblocks-align-support': 1,
+				'data-coblocks-top-spacing': 1,
 			} );
 		}
 
-		if ( withBlockSpacing || withAlignSupport ) {
-			wrapperProps = {
-				...wrapperProps,
-				...customData,
-			};
+		if ( typeof noBottomMargin !== 'undefined' && noBottomMargin ) {
+			customData = Object.assign( customData, {
+				'data-coblocks-bottom-spacing': 1,
+			} );
 		}
+	}
 
-		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
-	} );
-}, 'addEditorBlockAttributes' );
+	if ( withAlignSupport ) {
+		customData = Object.assign( customData, {
+			'data-coblocks-align-support': 1,
+		} );
+	}
 
-addFilter(
-	'blocks.registerBlockType',
-	'coblocks/AdvancedControls/attributes',
-	addAttributes
-);
+	if ( withBlockSpacing || withAlignSupport ) {
+		wrapperProps = {
+			...wrapperProps,
+			...customData,
+		};
+	}
+	return wrapperProps;
+};
 
-addFilter( 'editor.BlockEdit', 'coblocks/advanced', withAdvancedControls );
-
-addFilter(
-	'blocks.getSaveContent.extraProps',
-	'coblocks/applySpacingClass',
-	applySpacingClass
-);
-
-addFilter(
-	'editor.BlockListBlock',
-	'coblocks/addEditorBlockAttributes',
-	addEditorBlockAttributes
-);
+export { applyAttributes, useAdvancedControls, useEditorProps, applySaveProps };
