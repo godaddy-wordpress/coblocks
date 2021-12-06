@@ -7,7 +7,7 @@ import { name, settings } from '../index';
 const variations = {
 	images: [
 		[],
-		[ { url: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', id: 1, href: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', caption: 'image-1 caption' } ],
+		[ { url: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', id: 1, link: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', alt: '', caption: 'image-1 caption' } ],
 	],
 	linkTo: [ undefined, 'none', 'media', 'attachment', 'custom' ],
 	target: [ '', '_blank', '_self', '_parent' ],
@@ -58,6 +58,7 @@ const variations = {
 	noBottomMargin: [ undefined, true, false ],
 	noTopMargin: [ undefined, true, false ],
 	navForClass: [ undefined, '', 'has-nav-abc123'],
+	loop: [ true, false, ]
 };
 
 helpers.testDeprecatedBlockVariations( name, settings, variations );
