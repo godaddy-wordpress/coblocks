@@ -47,6 +47,9 @@ const settings = {
 	},
 	transforms,
 	edit,
+	example: {
+		attributes: {},
+	},
 	deprecated,
 	save() {
 		return null;

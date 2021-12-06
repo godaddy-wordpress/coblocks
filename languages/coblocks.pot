@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-12-01T14:41:08+00:00\n"
+"POT-Creation-Date: 2021-12-06T23:28:39+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -62,15 +62,15 @@ msgstr ""
 msgid "Pattern Category"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:448
+#: includes/class-coblocks-block-assets.php:464
 msgid "Close Gallery"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:449
+#: includes/class-coblocks-block-assets.php:465
 msgid "Previous"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:450
+#: includes/class-coblocks-block-assets.php:466
 msgid "Next"
 msgstr ""
 
@@ -691,13 +691,13 @@ msgstr ""
 
 #. translators: block keyword (abbreviation for "call to action")
 #: src/blocks/buttons/index.js:32
-#: src/blocks/hero/index.js:49
+#: src/blocks/hero/index.js:89
 msgid "cta"
 msgstr ""
 
 #. translators: block keyword
 #: src/blocks/buttons/index.js:34
-#: src/blocks/hero/index.js:51
+#: src/blocks/hero/index.js:91
 msgid "call to action"
 msgstr ""
 
@@ -1248,7 +1248,7 @@ msgstr ""
 #. translators: block keyword
 #. translators: icon keyword
 #: src/blocks/food-and-drinks/food-item/index.js:34
-#: src/blocks/food-and-drinks/index.js:36
+#: src/blocks/food-and-drinks/index.js:67
 #: src/blocks/icon/deprecated/svgs.js:901
 #: src/blocks/icon/deprecated/svgsfocusable.js:900
 #: src/blocks/icon/svgs.js:900
@@ -1319,11 +1319,6 @@ msgstr ""
 msgid "Focal point"
 msgstr ""
 
-#. translators: block name
-#: src/blocks/food-and-drinks/index.js:27
-msgid "Food & Drink"
-msgstr ""
-
 #. translators: block description
 #: src/blocks/food-and-drinks/index.js:29
 msgid "Display a menu or price list."
@@ -1331,13 +1326,18 @@ msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/food-and-drinks/index.js:34
+#: src/blocks/food-and-drinks/index.js:65
 #: src/blocks/icon/deprecated/svgs.js:903
 #: src/blocks/icon/deprecated/svgsfocusable.js:902
 #: src/blocks/icon/svgs.js:902
 #: src/blocks/icon/svgs.js:1577
 #: src/blocks/opentable/index.js:33
 msgid "restaurant"
+msgstr ""
+
+#. translators: block name
+#: src/blocks/food-and-drinks/index.js:74
+msgid "Food & Drink"
 msgstr ""
 
 #. translators: abbreviation for small size
@@ -1829,7 +1829,7 @@ msgstr ""
 
 #. translators: block keyword
 #: src/blocks/form/fields/submit-button/index.js:61
-#: src/blocks/hero/index.js:47
+#: src/blocks/hero/index.js:87
 msgid "button"
 msgstr ""
 
@@ -1943,26 +1943,26 @@ msgstr ""
 msgid "Request a Quote"
 msgstr ""
 
-#. translators: %s: Type of gallery variation
-#: src/blocks/gallery-carousel/edit.js:182
-msgid "%s Carousel"
-msgstr ""
-
-#. translators: block name
-#: src/blocks/gallery-carousel/edit.js:192
-#: src/blocks/gallery-carousel/index.js:36
-msgid "Carousel"
-msgstr ""
-
 #. translators: %1$d is the order number of the image, %2$d is the total number of images
-#: src/blocks/gallery-carousel/edit.js:326
+#: src/blocks/gallery-carousel/edit.js:211
 #: src/blocks/gallery-masonry/edit.js:222
 #: src/blocks/gallery-offset/edit.js:218
 #: src/blocks/gallery-stacked/edit.js:201
 msgid "image %1$d of %2$d in gallery"
 msgstr ""
 
-#: src/blocks/gallery-carousel/edit.js:389
+#. translators: %s: Type of gallery variation
+#: src/blocks/gallery-carousel/edit.js:250
+msgid "%s Carousel"
+msgstr ""
+
+#. translators: block name
+#: src/blocks/gallery-carousel/edit.js:261
+#: src/blocks/gallery-carousel/index.js:36
+msgid "Carousel"
+msgstr ""
+
+#: src/blocks/gallery-carousel/gallery-carousel-item.js:53
 msgid "Write gallery caption…"
 msgstr ""
 
@@ -2245,19 +2245,19 @@ msgstr ""
 msgid "Search for gifs"
 msgstr ""
 
-#. translators: block name
-#: src/blocks/gif/index.js:27
-msgid "Gif"
-msgstr ""
-
 #. translators: block description
 #: src/blocks/gif/index.js:29
 msgid "Pick a gif, any gif."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/gif/index.js:35
+#: src/blocks/gif/index.js:46
 msgid "animated"
+msgstr ""
+
+#. translators: block name
+#: src/blocks/gif/index.js:54
+msgid "Gif"
 msgstr ""
 
 #: src/blocks/gif/inspector.js:28
@@ -2313,14 +2313,14 @@ msgstr ""
 msgid "Add background to hero"
 msgstr ""
 
-#. translators: block name
-#: src/blocks/hero/index.js:40
-msgid "Hero"
-msgstr ""
-
 #. translators: block description
 #: src/blocks/hero/index.js:42
 msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
+msgstr ""
+
+#. translators: block name
+#: src/blocks/hero/index.js:99
+msgid "Hero"
 msgstr ""
 
 #: src/blocks/hero/inspector.js:81
@@ -7457,104 +7457,116 @@ msgstr ""
 msgid "Ten Seconds"
 msgstr ""
 
-#: src/components/slider-panel/index.js:17
+#: src/components/slider-panel/index.js:15
+msgid "Set limit to carousel"
+msgstr ""
+
+#: src/components/slider-panel/index.js:15
+msgid "Set the carousel to an infinite loop"
+msgstr ""
+
+#: src/components/slider-panel/index.js:21
 msgid "seconds"
 msgstr ""
 
-#: src/components/slider-panel/index.js:17
+#: src/components/slider-panel/index.js:21
 msgid "second"
 msgstr ""
 
 #. translators: %1$d: Speed of the slider, %2$d: Time until the slide advances
-#: src/components/slider-panel/index.js:21
+#: src/components/slider-panel/index.js:25
 msgid "Advancing after %1$d %2$s."
 msgstr ""
 
-#: src/components/slider-panel/index.js:24
+#: src/components/slider-panel/index.js:28
 msgid "Automatically advance to the next slide."
 msgstr ""
 
-#: src/components/slider-panel/index.js:28
+#: src/components/slider-panel/index.js:32
 msgid "Dragging and flicking enabled."
 msgstr ""
 
-#: src/components/slider-panel/index.js:28
+#: src/components/slider-panel/index.js:32
 msgid "Toggle to enable drag functionality."
 msgstr ""
 
-#: src/components/slider-panel/index.js:32
+#: src/components/slider-panel/index.js:36
 msgid "Showing slide navigation arrows."
 msgstr ""
 
-#: src/components/slider-panel/index.js:32
+#: src/components/slider-panel/index.js:36
 msgid "Toggle to show slide navigation arrows."
 msgstr ""
 
-#: src/components/slider-panel/index.js:36
+#: src/components/slider-panel/index.js:40
 msgid "Showing dot navigation."
 msgstr ""
 
-#: src/components/slider-panel/index.js:36
+#: src/components/slider-panel/index.js:40
 msgid "Toggle to show dot navigation."
 msgstr ""
 
-#: src/components/slider-panel/index.js:40
+#: src/components/slider-panel/index.js:44
 msgid "Aligning slides to the left."
 msgstr ""
 
-#: src/components/slider-panel/index.js:40
+#: src/components/slider-panel/index.js:44
 msgid "Aligning slides to the center."
 msgstr ""
 
-#: src/components/slider-panel/index.js:43
+#: src/components/slider-panel/index.js:47
 msgid "Pausing autoplay when hovering."
 msgstr ""
 
-#: src/components/slider-panel/index.js:43
+#: src/components/slider-panel/index.js:47
 msgid "Toggle to pause autoplay when hovered."
 msgstr ""
 
-#: src/components/slider-panel/index.js:47
+#: src/components/slider-panel/index.js:51
 msgid "Scrolling without fixed slides enabled."
 msgstr ""
 
-#: src/components/slider-panel/index.js:47
+#: src/components/slider-panel/index.js:51
 msgid "Toggle to scroll without fixed slides."
 msgstr ""
 
-#: src/components/slider-panel/index.js:69
+#: src/components/slider-panel/index.js:74
 msgid "Slider settings"
 msgstr ""
 
-#: src/components/slider-panel/index.js:71
+#: src/components/slider-panel/index.js:76
+msgid "Loop"
+msgstr ""
+
+#: src/components/slider-panel/index.js:82
 msgid "Autoplay"
 msgstr ""
 
-#: src/components/slider-panel/index.js:78
+#: src/components/slider-panel/index.js:89
 msgid "Transition speed"
 msgstr ""
 
-#: src/components/slider-panel/index.js:85
+#: src/components/slider-panel/index.js:96
 msgid "Pause on hover"
 msgstr ""
 
-#: src/components/slider-panel/index.js:93
+#: src/components/slider-panel/index.js:104
 msgid "Draggable"
 msgstr ""
 
-#: src/components/slider-panel/index.js:99
+#: src/components/slider-panel/index.js:110
 msgid "Free scroll"
 msgstr ""
 
-#: src/components/slider-panel/index.js:105
+#: src/components/slider-panel/index.js:116
 msgid "Arrow navigation"
 msgstr ""
 
-#: src/components/slider-panel/index.js:112
+#: src/components/slider-panel/index.js:123
 msgid "Dot navigation"
 msgstr ""
 
-#: src/components/slider-panel/index.js:118
+#: src/components/slider-panel/index.js:129
 msgid "Align cells"
 msgstr ""
 

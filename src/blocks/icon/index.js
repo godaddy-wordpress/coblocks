@@ -56,6 +56,11 @@ const settings = {
 	],
 	attributes,
 	edit,
+	example: {
+		attributes: {
+			preview: true,
+		},
+	},
 	save,
 	deprecated,
 };
