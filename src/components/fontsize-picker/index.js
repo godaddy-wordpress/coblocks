@@ -20,7 +20,7 @@ const CoBlocksFontSizePicker = ( props ) => {
 
 				setFontSize( newFontSize );
 			} }
-			value={ fontSize.size ? `${fontSize.size}px` : undefined }
+			value={ fontSize.size ? `${ fontSize.size }px` : undefined }
 		/>
 	);
 };
