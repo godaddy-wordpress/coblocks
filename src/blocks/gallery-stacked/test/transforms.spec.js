@@ -20,6 +20,11 @@ describe( 'coblocks/gallery-stacked transforms', () => {
 			{ index: 1, url: 'https://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg' },
 		] };
 
+	const innerBlocks = [ 
+		createBlock( 'core/image', attributes.images[0], [] ),
+		createBlock( 'core/image', attributes.images[1], [] )
+	];
+
 	beforeAll( () => {
 		// Register all gallery blocks.
 		helpers.registerGalleryBlocks();
@@ -37,7 +42,7 @@ describe( 'coblocks/gallery-stacked transforms', () => {
 	} );
 
 	it( 'should transform from coblocks/gallery-masonry block', () => {
-		const galleryMasonry = createBlock( 'coblocks/gallery-masonry', attributes );
+		const galleryMasonry = createBlock( 'coblocks/gallery-masonry', {}, innerBlocks );
 		const transformed = switchToBlockType( galleryMasonry, name );
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
@@ -112,13 +117,12 @@ describe( 'coblocks/gallery-stacked transforms', () => {
 
 	it( 'should transform to coblocks/gallery-masonry block', () => {
 		const block = createBlock( name, attributes );
-		const transformed = switchToBlockType( block, 'coblocks/gallery-masonry' );
+		const transformed = switchToBlockType( block, 'coblocks/gallery-masonry' )[0];
 
-		expect( transformed[ 0 ].isValid ).toBe( true );
-		for ( let i = 0; i < attributes.images.length; i++ ) {
-			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
-			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
-		}
+		expect( transformed.isValid ).toBe( true );
+		transformed.innerBlocks.forEach( ( image, index ) => {
+			expect( image.attributes.url ).toBe( attributes.images[ index ].url );
+		} );
 	} );
 
 	it( 'should transform to coblocks/gallery-carousel block', () => {

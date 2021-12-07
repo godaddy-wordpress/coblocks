@@ -110,8 +110,9 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 
 		helpers.toggleSettingCheckbox( /captions/i );
 
-		cy.get( '.coblocks-gallery--item' ).first().click()
-			.find( 'figcaption' ).focus().type( caption );
+		cy.get( '.coblocks-gallery--item' ).find( 'img' ).first().click();
+
+		cy.get( '.coblocks-gallery--item' ).find( 'figcaption' ).focus().type( caption );
 
 		helpers.savePage();
 
@@ -148,7 +149,9 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 
 		cy.get( '.block-editor-format-toolbar' ).should( 'not.exist' );
 
-		cy.get( '.coblocks-gallery--item' ).first().click()
+		cy.get( '.coblocks-gallery--item' ).find( 'img' ).click();
+
+		cy.get( '.coblocks-gallery--item' )
 			.find( 'figcaption' ).focus();
 
 		cy.get( '.block-editor-format-toolbar, .block-editor-rich-text__inline-format-toolbar-group' );

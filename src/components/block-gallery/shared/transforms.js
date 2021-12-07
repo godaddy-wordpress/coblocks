@@ -28,7 +28,10 @@ function GalleryTransforms( props ) {
 		images: props.images?.map( ( image, index ) => {
 			return { ...helper.pickRelevantMediaFiles( image ), index };
 		} ),
+		lightbox: props.lightbox,
 		linkTo: props.linkTo,
+		noBottomMargin: props.noBottomMargin,
+		noTopMargin: props.noTopMargin,
 		pageDots: props.pageDots,
 		prevNextButtons: props.prevNextButtons,
 		primaryCaption: props.primaryCaption,
@@ -36,9 +39,6 @@ function GalleryTransforms( props ) {
 		rel: props.rel,
 		shadow: props.shadow,
 		target: props.target,
-		lightbox: props.lightbox,
-		noBottomMargin: props.noBottomMargin,
-		noTopMargin: props.noTopMargin,
 	};
 	return transforms;
 }
