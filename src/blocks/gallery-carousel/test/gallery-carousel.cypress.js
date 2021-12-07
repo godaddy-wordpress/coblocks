@@ -121,7 +121,9 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 			}
 		} );
 
-		cy.get( '[data-type="coblocks/gallery-carousel"]' ).find( 'figcaption' ).focus().type( caption );
+		cy.get( '[data-type="coblocks/gallery-carousel"]' ).click();
+
+		cy.get( '[data-type="coblocks/gallery-carousel"]' ).find( 'figcaption' ).first().focus().type( caption );
 
 		helpers.savePage();
 
@@ -158,7 +160,9 @@ describe( 'Test CoBlocks Gallery Carousel Block', function() {
 
 		cy.get( '.block-editor-format-toolbar, .block-editor-rich-text__inline-format-toolbar-group' ).should( 'not.exist' );
 
-		cy.get( '[data-type="coblocks/gallery-carousel"]' ).find( 'figcaption' ).focus();
+		cy.get( '.coblocks-swiper-container' ).click();
+
+		cy.get( '[data-type="coblocks/gallery-carousel"]' ).find( 'figcaption' ).first().focus();
 
 		cy.get( '.block-editor-format-toolbar, .block-editor-rich-text__inline-format-toolbar-group' );
 

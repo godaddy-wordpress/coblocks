@@ -22,6 +22,7 @@ const variations = {
 	href: [ undefined, '', 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg' ],
 	rel: [ '', 'alternate', 'author', 'preload' ],
 	linkTarget: [ '', '_blank', '_self', '_parent' ],
+	preview: [ true, false ]
 };
 
 helpers.testDeprecatedBlockVariations( name, settings, variations );
