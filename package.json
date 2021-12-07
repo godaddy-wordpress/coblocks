@@ -84,7 +84,7 @@
 		"@wordpress/api-fetch": "^5.2.4",
 		"@wordpress/base-styles": "^4.0.2",
 		"@wordpress/blob": "^3.2.1",
-		"@wordpress/block-editor": "^7.0.4",
+		"@wordpress/block-editor": "8.0.1",
 		"@wordpress/block-library": "^6.0.2",
 		"@wordpress/blocks": "^11.1.2",
 		"@wordpress/components": "^19.0.0",
@@ -108,7 +108,9 @@
 		"@wordpress/jest-preset-default": "^7.1.2",
 		"@wordpress/jest-puppeteer-axe": "^3.1.0",
 		"@wordpress/keycodes": "^3.2.3",
+		"@wordpress/notices": "^3.2.5",
 		"@wordpress/plugins": "^4.0.4",
+		"@wordpress/primitives": "^3.0.3",
 		"@wordpress/rich-text": "^5.0.4",
 		"@wordpress/scripts": "^19.0.0",
 		"@wordpress/server-side-render": "^3.0.4",
@@ -155,6 +157,7 @@
 		"rtlcss-webpack-plugin": "^4.0.3",
 		"simple-git": "^2.35.0",
 		"slick-carousel": "^1.8.1",
+		"tiny-swiper": "^2.1.2",
 		"uuid": "^8.3.2"
 	},
 	"resolutions": {

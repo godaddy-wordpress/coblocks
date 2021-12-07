@@ -8,15 +8,15 @@ function GalleryClasses( attributes ) {
 	const {
 		align,
 		radius,
-		filter,
 		captionStyle,
+		filter,
 	} = attributes;
 
 	return [
 		'coblocks-gallery',
 		{ 'has-no-alignment': ! align },
-		{ [ `has-border-radius-${ radius }` ]: radius > 0 },
 		{ [ `has-filter-${ filter }` ]: filter !== 'none' },
+		{ [ `has-border-radius-${ radius }` ]: radius > 0 },
 		{ [ `has-caption-style-${ captionStyle }` ]: captionStyle !== undefined },
 	];
 }

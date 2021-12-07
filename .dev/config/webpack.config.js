@@ -22,6 +22,7 @@ const scripts = [
 	'coblocks-masonry',
 	'coblocks-slick-initializer-front',
 	'coblocks-slick-initializer',
+	'coblocks-tinyswiper-initializer',
 ];
 
 // If you want to add a new chunk simply increase the lenght of the array.
@@ -47,6 +48,7 @@ module.exports = {
 		// Vendors
 		'js/vendors/flickity': path.resolve( process.cwd(), 'node_modules/flickity/dist/flickity.pkgd.js' ),
 		'js/vendors/slick': path.resolve( process.cwd(), 'node_modules/slick-carousel/slick/slick.js' ),
+		'js/vendors/tiny-swiper': path.resolve( process.cwd(), 'node_modules/tiny-swiper/lib/index.js' ),
 	},
 
 	output: {
