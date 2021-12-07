@@ -199,16 +199,8 @@ const GalleryMasonryEdit = ( props ) => {
 
 	return (
 		<>
-			{ isSelected &&
-			<Controls
-				{ ...props }
-			/>
-			}
-			{ isSelected &&
-			<Inspector
-				{ ...props }
-			/>
-			}
+			{ isSelected &&	<Controls { ...props } /> }
+			{ isSelected && <Inspector { ...props } /> }
 			{ noticeUI }
 			<div className={ className }>
 				<div className={ innerClasses }>
