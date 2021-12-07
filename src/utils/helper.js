@@ -46,9 +46,9 @@ export const isTemporaryImage = ( id, url ) => ! id && isBlobURL( url );
 export const ALLOWED_GALLERY_MEDIA_TYPES = [ 'image' ];
 
 export const hexToRGB = ( h ) => {
-	let r = 0,
+	let b = 0,
 		g = 0,
-		b = 0;
+		r = 0;
 
 	switch ( h.length ) {
 		case 4: {
@@ -98,8 +98,13 @@ export const registerBlock = ( block ) => {
 		category = 'coblocks';
 	}
 
+	const v2Settings = block?.metadata?.apiVersion === 2 ? block?.metadata : {};
+
 	registerBlockType( name, {
 		category,
 		...settings,
+
+		// V2 Block API Upgrades
+		...v2Settings,
 	} );
 };

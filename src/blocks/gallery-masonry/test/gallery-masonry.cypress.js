@@ -21,12 +21,6 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/gallery-masonry' );
-
-		helpers.viewPage();
-
-		cy.get( '.wp-block-coblocks-gallery-masonry' ).find( 'ul' ).should( 'be.empty' );
-
-		helpers.editPage();
 	} );
 
 	/**
@@ -41,7 +35,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 
 		helpers.upload.imageToBlock( 'coblocks/gallery-masonry' );
 
-		cy.get( '.coblocks-gallery--item img[src*="http"]' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
+		cy.get( 'figure[data-type="core/image"] img[src*="http"]' ).should( 'have.attr', 'src' ).should( 'include', imageBase );
 
 		helpers.savePage();
 
@@ -108,13 +102,11 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 			}
 		} );
 
-		helpers.toggleSettingCheckbox( /captions/i );
+		cy.get( 'figure[data-type="core/image"] img[src*="http"]' ).click();
 
-		cy.get( '.coblocks-gallery--item img[src*="http"]' ).click();
+		cy.get( '.edit-post-visual-editor figcaption[role="textbox"] span' ).click( { force: true } );
 
-		cy.get( 'figcaption[role="textbox"] span' ).click( { force: true } );
-
-		cy.get( 'figcaption[role="textbox"]' ).focus().type( caption );
+		cy.get( '.edit-post-visual-editor figcaption[role="textbox"]' ).focus().type( caption );
 
 		helpers.savePage();
 
@@ -147,13 +139,11 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 			}
 		} );
 
-		helpers.toggleSettingCheckbox( /captions/i );
-
-		cy.get( '.coblocks-gallery--item img[src*="http"]' ).click();
+		cy.get( 'figure[data-type="core/image"] img[src*="http"]' ).click();
 
 		cy.get( '.block-editor-format-toolbar' ).should( 'not.exist' );
 
-		cy.get( 'figcaption[role="textbox"]' ).focus();
+		cy.get( '.edit-post-visual-editor figcaption[role="textbox"]' ).focus();
 
 		cy.get( '.block-editor-format-toolbar, .block-editor-rich-text__inline-format-toolbar-group' );
 
@@ -168,7 +158,39 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 	it( 'Test masonry replace image flow.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
-		helpers.upload.imageReplaceFlow( 'coblocks/gallery-masonry' );
+		cy.get( '[data-type="coblocks/gallery-masonry"]' )
+			.click()
+			.contains( /media library/i )
+			.click();
+
+		cy.get( '.media-modal-content' ).contains( /media library/i ).click();
+
+		cy.get( '.media-modal-content' ).find( 'li.attachment' )
+			.first( 'li' )
+			.click();
+
+		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
+			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			} else { // pre wp 5.4
+				cy.get( 'button' ).contains( /create a new gallery/i ).click();
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			}
+		} );
+
+		helpers.selectBlock( 'image' );
+
+		//'.media-replace-flow button' was deprecated in 5.8.
+		// Media replace button should reside as the 5th button within the toolbar.
+		cy.get( '.block-editor-block-toolbar div:nth-of-type(4) button' ).contains( 'Replace' ).click();
+
+		cy.get( '.components-popover__content' ).should( 'be.visible' );
+
+		cy.get( '.block-editor-media-replace-flow__media-upload-menu .components-menu-item__button' ).contains( 'Open Media Library' );
+
+		cy.get( '.block-editor-block-toolbar div:nth-of-type(4) button' ).contains( 'Replace' ).click();
+
+		cy.get( '.components-popover__content' ).should( 'not.exist' );
 
 		helpers.savePage();
 

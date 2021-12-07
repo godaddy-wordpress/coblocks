@@ -1,5 +1,4 @@
 [data-type="coblocks/gallery-masonry"] {
-
 	// Remove selected state.
 	&.block-editor-block-list__block::after {
 		box-shadow: none !important;
@@ -18,118 +17,122 @@
 		}
 	}
 
-	// Fixes issue where figures are set to display 100% if alignfull is set.
-	.coblocks-gallery--figure {
-		width: auto !important;
+	.gallery-media-placeholder-wrapper {
+		margin-top: 20px;
 
-		&.is-selected {
-			border-radius: $radius-block-ui + 2; // Additional because we modify the selected state.
+		.components-placeholder__fieldset {
+			align-items: center;
 
-			&::after {
-				border-radius: $radius-block-ui + 2;
-				box-shadow: inset 0 0 0 $border-width + 1 var(--wp-admin-theme-color, #007cba), inset 0 0 0 3px $white;
-			}
-		}
-
-		img {
-			vertical-align: bottom;
-		}
-	}
-
-	// Fixes issue with multiple dropzones displaying when dropping in an image.
-	.components-drop-zone.is-active {
-
-		+ ul li:last-child .components-drop-zone {
-			display: none;
-		}
-	}
-
-	// Captions.
-	.block-editor-rich-text {
-		bottom: 0;
-		left: 0;
-		max-height: 100%;
-		overflow-y: auto;
-		position: absolute;
-		right: 0;
-		width: 100%;
-
-		.editor-rich-text__tinymce {
-			color: inherit;
-
-			a {
-				color: inherit;
-			}
-
-			&:not(.mce-content-body) {
-				opacity: 0.6;
-			}
-
-			&:focus a[data-mce-selected] {
-				opacity: 0.2;
+			button {
+				margin-bottom: 0;
 			}
 		}
 	}
+}
 
-	.block-editor-rich-text figcaption:not([data-is-placeholder-visible="true"]) {
-		overflow: hidden;
-		position: relative !important;
-	}
-
-	.is-selected .block-editor-rich-text {
-		// IE calculates this incorrectly, so leave it to modern browsers.
-		@supports (position: sticky) {
-			bottom: 4px;
-			left: 4px;
-			margin-top: -4px;
-			right: 4px;
-			width: calc(100% - 8px);
-		}
-
-		figcaption {
-			padding-bottom: 6px !important;
-		}
-
-		// Override negative margins so this toolbar isn't hidden by overflow.
-		// Overflow is needed for long captions.
-		.editor-rich-text__inline-toolbar {
-			top: 0;
-		}
-
-		// Make extra space for the inline toolbar.
-		.editor-rich-text__tinymce {
-			padding-top: 48px;
-		}
-	}
-
-	// Tweak the position of the figcaption if Custom URL is set.
-	.components-coblocks-gallery-item__image-link + img + .block-editor-rich-text {
-		margin-bottom: 34px;
-	}
-
-	.wp-block-coblocks-gallery-masonry ul {
+// We utilize similar styles here as in the style.scss for Masonry block.
+// Because of differing markup produced in edit and save we have variation on selectors.
+// Eventually we should try to improve these selectors to reduce the code duplication in editor.scss.
+figure.wp-block-coblocks-gallery-masonry {
+	&.alignwide,
+	&.alignfull {
 		margin: 0;
 	}
-}
 
-[data-type="core/group"] .wp-block-coblocks-gallery-masonry {
-	margin-bottom: 40px !important;
-	margin-top: 40px !important;
-}
+	> .masonry-grid {
+		column-fill: initial;
+		column-gap: 30px;
+		transition: all 0.5s ease-in-out;
 
-// Shim to fix styles in the previewer.
-.block-editor-inserter__preview-content .wp-block-coblocks-gallery-masonry {
+		figure {
+			display: block;
+			margin-bottom: 30px;
+			margin-top: 0;
 
-	.coblocks-gallery--item:last-child {
-		display: none;
+			img {
+				border: 0;
+				display: block;
+				font: inherit;
+				font-size: 100%;
+				height: auto;
+				margin: 0;
+				max-width: 100%;
+				padding: 0;
+				width: 100%;
+			}
+
+			figcaption {
+				background: linear-gradient(0deg, rgba($color: $black, $alpha: 0.7) 0, rgba($color: $black, $alpha: 0.3) 50%, transparent);
+				bottom: 0;
+				font-size: 13px;
+				margin-bottom: 0;
+				max-height: 100% !important;
+				opacity: 0.9;
+				overflow: auto;
+				padding: 30px 10px 10px !important;
+				position: absolute !important;
+				text-align: center;
+				width: 100%;
+
+				img {
+					display: inline;
+				}
+			}
+
+			// Fix needed for pre 5.9 WordPress
+			.components-resizable-box__container {
+				display: block;
+
+				.components-resizable-box__handle {
+					display: none;
+				}
+			}
+		}
+
+		/* Masonry on tablets */
+		@media only screen and (min-width: 768px) and (max-width: 1023px) {
+			& {
+				column-count: 2;
+			}
+		}
+
+		/* Masonry on big screens */
+		@media only screen and (min-width: 1024px) {
+			& {
+				column-count: 3;
+			}
+		}
 	}
-}
 
-// Needed until GB 6.9 is merged into core or backward support.
-// Hide the placeholder when not selected.
-.block-editor-block-list__block[data-type="coblocks/gallery-masonry"]:not(.is-selected):not(.is-focused) .coblocks-gallery {
+	&.has-small-gutter .masonry-grid {
+		column-gap: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) * 2);
 
-	div.components-form-file-upload {
-		display: none;
+		> figure {
+			margin-bottom: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) * 2);
+		}
+	}
+
+	&.has-medium-gutter .masonry-grid {
+		column-gap: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * 2);
+
+		> figure {
+			margin-bottom: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * 2);
+		}
+	}
+
+	&.has-large-gutter .masonry-grid {
+		column-gap: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) * 2);
+
+		> figure {
+			margin-bottom: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) * 2);
+		}
+	}
+
+	&.has-custom-gutter .masonry-grid {
+		column-gap: calc(var(--coblocks-custom-gutter, 0em) * 2);
+
+		> figure {
+			margin-bottom: calc(var(--coblocks-custom-gutter, 0) * 2);
+		}
 	}
 }

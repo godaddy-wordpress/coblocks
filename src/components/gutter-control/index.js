@@ -2,7 +2,7 @@
  * WordPress Dependencies
  */
 import { addFilter } from '@wordpress/hooks';
-import { hasBlockSupport, getBlockSupport } from '@wordpress/blocks';
+import { getBlockSupport, hasBlockSupport } from '@wordpress/blocks';
 
 addFilter(
 	'blocks.registerBlockType',
@@ -24,12 +24,12 @@ function addAttributes( settings, name ) {
 	settings.attributes = {
 		...settings.attributes,
 		gutter: {
-			type: 'string',
 			default: supportOverride.default || 'small',
+			type: 'string',
 		},
 		gutterCustom: {
-			type: 'string',
 			default: supportOverride.customDefault?.toString() || '3',
+			type: 'string',
 		},
 	};
 

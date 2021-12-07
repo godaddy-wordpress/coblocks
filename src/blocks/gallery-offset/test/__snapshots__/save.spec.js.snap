@@ -19,7 +19,7 @@ exports[`coblocks/gallery-offset should have className 'has-caption-style-dark' 
 `;
 
 exports[`coblocks/gallery-offset should have className 'has-caption-style-light' with captionStyle set to 'light'. 1`] = `
-"<!-- wp:coblocks/gallery-offset {\\"captions\\":true,\\"captionStyle\\":\\"light\\"} -->
+"<!-- wp:coblocks/gallery-offset {\\"captionStyle\\":\\"light\\",\\"captions\\":true} -->
 <div aria-label=\\"Offset Gallery\\" class=\\"wp-block-coblocks-gallery-offset\\"><ul class=\\"coblocks-gallery has-no-alignment has-caption-style-light has-small-images has-small-gutter\\"><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" class=\\"wp-image-1\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" data-id=\\"2\\" class=\\"wp-image-2\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\" class=\\"\\"/></figure></li><li class=\\"coblocks-gallery--item\\"><figure class=\\"wp-block-coblocks-gallery-offset__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\" data-id=\\"3\\" class=\\"wp-image-3\\"/><figcaption class=\\"coblocks-gallery--caption\\">test caption</figcaption></figure></li></ul></div>
 <!-- /wp:coblocks/gallery-offset -->"
 `;

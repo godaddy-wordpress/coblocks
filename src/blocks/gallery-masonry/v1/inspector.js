@@ -1,10 +1,13 @@
+/* eslint-disable sort-keys */
+/* eslint-disable sort-imports */
+// Disable reason: V1 files do not require updating.
 /**
  * Internal dependencies
  */
-import ResponsiveTabsControl from '../../components/responsive-tabs-control';
-import captionOptions from '../../components/block-gallery/options/caption-options';
-import SizeControl from '../../components/size-control';
-import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
+import ResponsiveTabsControl from '../../../components/responsive-tabs-control';
+import captionOptions from '../../../components/block-gallery/options/caption-options';
+import SizeControl from '../../../components/size-control';
+import GalleryLinkSettings from '../../../components/block-gallery/gallery-link-settings';
 
 /**
  * WordPress dependencies
@@ -12,12 +15,12 @@ import GalleryLinkSettings from '../../components/block-gallery/gallery-link-set
 import { __ } from '@wordpress/i18n';
 import { useEffect } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, RangeControl, ToggleControl, SelectControl } from '@wordpress/components';
+import { PanelBody, RangeControl, SelectControl, ToggleControl } from '@wordpress/components';
 
 /**
  * Inspector controls
  *
- * @param {Object} props
+ * @param {Object} props Block Props
  */
 const Inspector = ( props ) => {
 	const {
@@ -71,48 +74,48 @@ const Inspector = ( props ) => {
 			<PanelBody title={ __( 'Masonry settings', 'coblocks' ) }>
 
 				<SizeControl { ...props }
-					type={ 'grid' }
 					label={ __( 'Size', 'coblocks' ) }
 					onChange={ setSizeControl }
-					value={ gridSize }
 					resetValue={ 'xlrg' }
+					type={ 'grid' }
+					value={ gridSize }
 				/>
 
 				<ResponsiveTabsControl { ...props } />
 
 				{ gutter > 0 &&
-					<RangeControl
-						label={ __( 'Rounded corners', 'coblocks' ) }
-						aria-label={ __( 'Add rounded corners to the gallery items.', 'coblocks' ) }
-						value={ radius }
-						onChange={ setRadiusTo }
-						min={ 0 }
-						max={ 20 }
-						step={ 1 }
-					/>
+				<RangeControl
+					aria-label={ __( 'Add rounded corners to the gallery items.', 'coblocks' ) }
+					label={ __( 'Rounded corners', 'coblocks' ) }
+					max={ 20 }
+					min={ 0 }
+					onChange={ setRadiusTo }
+					step={ 1 }
+					value={ radius }
+				/>
 				}
 
 				<ToggleControl
-					label={ __( 'Lightbox', 'coblocks' ) }
 					checked={ !! lightbox }
-					onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
 					help={ getLightboxHelp }
+					label={ __( 'Lightbox', 'coblocks' ) }
+					onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
 				/>
 
 				<ToggleControl
-					label={ __( 'Captions', 'coblocks' ) }
 					checked={ !! captions }
-					onChange={ () => setAttributes( { captions: ! captions } ) }
 					help={ getCaptionsHelp }
+					label={ __( 'Captions', 'coblocks' ) }
+					onChange={ () => setAttributes( { captions: ! captions } ) }
 				/>
 
 				{ captions &&
-					<SelectControl
-						label={ __( 'Caption style', 'coblocks' ) }
-						value={ captionStyle }
-						onChange={ setCaptionStyleTo }
-						options={ captionOptions }
-					/>
+				<SelectControl
+					label={ __( 'Caption style', 'coblocks' ) }
+					onChange={ setCaptionStyleTo }
+					options={ captionOptions }
+					value={ captionStyle }
+				/>
 				}
 
 			</PanelBody>

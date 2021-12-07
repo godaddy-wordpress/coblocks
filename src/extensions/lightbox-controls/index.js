@@ -8,9 +8,9 @@ import classnames from 'classnames';
  */
 import { __ } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
+import { createHigherOrderComponent } from '@wordpress/compose';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelRow, ToggleControl } from '@wordpress/components';
-import { createHigherOrderComponent } from '@wordpress/compose';
 
 /**
  * Internal dependencies.
@@ -26,9 +26,11 @@ const blocksWithLightboxSupport = [ 'core/gallery', 'core/image' ];
 const withLightbox = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		const { name, attributes, setAttributes, isSelected } = props;
-		const { lightbox } = attributes;
-
-		const supportsLightbox = blocksWithLightboxSupport.includes( name );
+		const { lightbox, images, id, className } = attributes;
+		let supportsLightbox = false;
+		supportsLightbox = blocksWithLightboxSupport.includes( name ) &&
+			// We ensure that the `core/image` block is not nested within the masonry.
+			! className?.includes( 'masonry-brick' );
 
 		const getLightboxHelp = ( checked ) => {
 			return checked
@@ -39,14 +41,14 @@ const withLightbox = createHigherOrderComponent( ( BlockEdit ) => {
 		return (
 			<>
 				<BlockEdit { ...props } />
-				{ isSelected && supportsLightbox && ( !! props.attributes?.images?.length || !! props.attributes.id ) && (
+				{ isSelected && supportsLightbox && ( !! images?.length || !! id ) && (
 					<InspectorControls>
 						<PanelRow className={ 'coblocks-lightbox-controls' }>
 							<ToggleControl
-								label={ __( 'Lightbox', 'coblocks' ) }
 								checked={ !! lightbox }
-								onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
 								help={ getLightboxHelp }
+								label={ __( 'Lightbox', 'coblocks' ) }
+								onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
 							/>
 						</PanelRow>
 					</InspectorControls>
@@ -64,19 +66,23 @@ const withLightbox = createHigherOrderComponent( ( BlockEdit ) => {
  */
 const withLightboxClasses = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
-		const { name, attributes } = props;
-		const { lightbox } = attributes;
-		const supportsLightbox = blocksWithLightboxSupport.includes( name );
+		const { name, attributes, wrapperProps } = props;
+		const { lightbox, className } = attributes;
 
-		let wrapperProps;
-		let newClassName = props.className;
+		let newWrapperProps;
+		let newClassName = className;
+
+		let supportsLightbox = false;
+		supportsLightbox = blocksWithLightboxSupport.includes( name ) &&
+			// We ensure that the `core/image` block is not nested within the masonry.
+			! className?.includes( 'masonry-brick' );
 
 		if ( supportsLightbox ) {
-			wrapperProps = props?.wrapperProps;
-			newClassName = classnames( props.className, { [ `has-lightbox` ]: lightbox } );
+			newWrapperProps = wrapperProps;
+			newClassName = classnames( className, { [ `has-lightbox` ]: lightbox } );
 		}
 
-		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } className={ newClassName } />;
+		return <BlockListBlock { ...props } className={ newClassName } wrapperProps={ newWrapperProps } />;
 	};
 }, 'withlightboxClasses' );
 
@@ -89,7 +95,10 @@ const withLightboxClasses = createHigherOrderComponent( ( BlockListBlock ) => {
  * @return {Object} Filtered props applied to save element.
  */
 function applyLightboxClasses( extraProps, blockType, attributes ) {
-	const supportsLightbox = blocksWithLightboxSupport.includes( blockType?.name );
+	let supportsLightbox = false;
+	supportsLightbox = blocksWithLightboxSupport.includes( blockType?.name ) &&
+		// We ensure that the `core/image` block is not nested within the masonry.
+		! extraProps?.className?.includes( 'masonry-brick' );
 
 	if ( supportsLightbox ) {
 		const { lightbox } = attributes;
@@ -103,6 +112,9 @@ function applyLightboxClasses( extraProps, blockType, attributes ) {
 /**
  * Filters registered block settings, extends block with lightbox attributes.
  *
+ * ***Unable to prevent insertion of attributes into conditionally allowed blocks such as the `core/image` block
+ * nested within the `coblocks/gallery-masonry` block.***
+ *
  * @param {Object} settings Original block settings.
  * @return {Object} Filtered block settings.
  */
@@ -113,8 +125,8 @@ function addAttributes( settings ) {
 		if ( ! settings?.attributes?.lightbox ) {
 			settings.attributes = Object.assign( settings.attributes, {
 				lightbox: {
-					type: 'boolean',
 					default: false,
+					type: 'boolean',
 				},
 			} );
 		}
