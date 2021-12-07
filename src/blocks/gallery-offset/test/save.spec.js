@@ -177,7 +177,7 @@ describe( name, () => {
 			expect( serializedBlock ).toContain( `has-filter-${ filter }` );
 		} );
 	} );
-	
+
 	it( 'should have className \'has-border-radius-10\' with radius set to 10.', () => {
 		block.attributes = { ...block.attributes, radius: 0 };
 		serializedBlock = serialize( block );
