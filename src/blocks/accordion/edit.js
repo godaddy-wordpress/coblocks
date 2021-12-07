@@ -9,7 +9,7 @@ import times from 'lodash/times';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { createBlock } from '@wordpress/blocks';
+import { createBlock } from '@wordpress/blocks'; 
 import { Fragment } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { Button, Tooltip } from '@wordpress/components';
