@@ -420,11 +420,6 @@ commands:
       - attach_workspace:
           at: ~/project
       - restore_yarn_cache
-      - run:
-          name: Install Node dependencies
-          command: |
-            PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-            yarn install --frozen-lockfile
       - wait_for_mysql
       - run:
           name: Install Composer dependencies
