@@ -73,7 +73,7 @@
 		"zh_TW": "繁體中文"
 	},
 	"dependencies": {
-		"@godaddy-wordpress/coblocks-icons": "1.10.0"
+		"@godaddy-wordpress/coblocks-icons": "2.0.1"
 	},
 	"devDependencies": {
 		"@es-joy/jsdoccomment": "0.12.0",

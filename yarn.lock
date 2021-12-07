@@ -1232,10 +1232,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@godaddy-wordpress/coblocks-icons@1.10.0":
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/coblocks-icons/-/coblocks-icons-1.10.0.tgz#81a65a1f2c2599018bf88a6b7ca9241f9659d6de"
-  integrity sha512-eRXlcwILIstL2N/8WkD4aPeRQ66R0iLra7OslFGsBlommej+SXiT1NXbTMnvWpDdTBL6z0S9SxoZw+GJCaTGnA==
+"@godaddy-wordpress/coblocks-icons@2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/coblocks-icons/-/coblocks-icons-2.0.1.tgz#7ff9f6c3d8741377b2fc6a28a1dc7455291a082e"
+  integrity sha512-Pac7OLr2h6JzpIgY4BVaG1poLiLia3xO/U+i8DjC4ZBLM6UCpgiFnc6FUeBVCSeB8riQTzIrMTqn8HAiqMbpBQ==
   dependencies:
     "@wordpress/primitives" "^1.7.0"
 
