@@ -1,6 +1,9 @@
 // Import styles for rendering the static content of deprecated gallery versions.
 @import "../v1/deprecated.scss";
 
+// We utilize similar styles here as in the editor.scss for Masonry block.
+// Because of differing markup produced in edit and save we have variation on selectors.
+// Eventually we should try to improve these selectors to reduce the code duplication in editor.scss.
 figure.wp-block-coblocks-gallery-masonry.masonry-grid {
 	column-fill: initial;
 	column-gap: 30px;
