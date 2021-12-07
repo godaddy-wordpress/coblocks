@@ -5,7 +5,7 @@
 /**
  * WordPress dependencies
  */
-import { BlockControls, AlignmentToolbar } from '@wordpress/block-editor';
+import { AlignmentToolbar, BlockControls } from '@wordpress/block-editor';
 
 const Controls = ( props ) => {
 	const {
@@ -23,8 +23,8 @@ const Controls = ( props ) => {
 			{ hasContentAlign && (
 				<BlockControls>
 					<AlignmentToolbar
-						value={ contentAlign }
 						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
+						value={ contentAlign }
 					/>
 				</BlockControls>
 			) }

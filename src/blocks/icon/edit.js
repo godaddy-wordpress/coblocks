@@ -9,16 +9,16 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import applyWithColors from './colors';
-import Inspector from './inspector';
 import Controls from './controls';
-import svgs from './svgs-v2';
+import Inspector from './inspector';
+import svgs from './svgs';
 
 /**
  * WordPress dependencies
  */
-import { useEffect } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { ResizableBox } from '@wordpress/components';
+import { useEffect } from '@wordpress/element';
 import { withSelect } from '@wordpress/data';
 
 /**
@@ -79,9 +79,9 @@ const Edit = ( props ) => {
 
 	const innerStyles = {
 		backgroundColor: backgroundColor.color,
+		borderRadius: borderRadius + 'px',
 		color: iconColor.color,
 		fill: iconColor.color,
-		borderRadius: borderRadius + 'px',
 		padding: padding + 'px',
 	};
 
@@ -152,27 +152,27 @@ const Edit = ( props ) => {
 			<div className={ classes }>
 				<ResizableBox
 					className={ innerClasses }
-					style={ innerStyles }
-					size={ { width } }
-					minWidth={ padding ? MIN_ICON_SIZE + 28 : MIN_ICON_SIZE }
-					maxWidth={ MAX_ICON_SIZE }
 					enable={ {
-						top: false,
-						right: showRightHandle,
 						bottom: true,
 						left: showLeftHandle,
+						right: showRightHandle,
+						top: false,
 					} }
 					lockAspectRatio
+					maxWidth={ MAX_ICON_SIZE }
+					minWidth={ padding ? MIN_ICON_SIZE + 28 : MIN_ICON_SIZE }
+					onResizeStart={ () => {
+						setAttributes( { iconSize: 'advanced' } );
+					} }
 					onResizeStop={ ( _event, _direction, _elt, delta ) => {
 						setAttributes( {
 							height: parseInt( width + delta.width, 10 ),
 							width: parseInt( width + delta.width, 10 ),
 						} );
 					} }
-					onResizeStart={ () => {
-						setAttributes( { iconSize: 'advanced' } );
-					} }
 					showHandle={ isSelected }
+					size={ { width } }
+					style={ innerStyles }
 				>
 					{ selectedIcon ? selectedIcon.icon : null }
 				</ResizableBox>

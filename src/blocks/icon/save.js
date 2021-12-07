@@ -46,20 +46,20 @@ const save = ( { attributes, className } ) => {
 	} );
 
 	const innerClasses = classnames( 'wp-block-coblocks-icon__inner', {
+		[ backgroundClass ]: backgroundClass,
+		'has-background': backgroundColor || customBackgroundColor,
 		'has-text-color': iconColor || customIconColor,
 		[ textClass ]: textClass,
-		'has-background': backgroundColor || customBackgroundColor,
-		[ backgroundClass ]: backgroundClass,
 	} );
 
 	const innerStyles = {
 		backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+		borderRadius: borderRadius ? borderRadius + 'px' : undefined,
 		color: textClass ? undefined : customIconColor,
 		fill: textClass ? undefined : customIconColor,
 		height,
-		width,
-		borderRadius: borderRadius ? borderRadius + 'px' : undefined,
 		padding: padding ? padding + 'px' : undefined,
+		width,
 	};
 
 	return (
@@ -67,7 +67,7 @@ const save = ( { attributes, className } ) => {
 			<div className={ innerClasses } style={ innerStyles }>
 				{ typeof icon !== 'undefined' &&
 					( href
-						? <a href={ href } target={ linkTarget } rel={ rel }>
+						? <a href={ href } rel={ rel } target={ linkTarget }>
 							{ svgs[ iconStyle ][ icon ] && svgs[ iconStyle ][ icon ].icon }
 						</a>
 						: svgs[ iconStyle ][ icon ] && svgs[ iconStyle ][ icon ].icon

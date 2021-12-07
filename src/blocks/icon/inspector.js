@@ -8,19 +8,19 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import applyWithColors from './colors';
-import svg from './svgs-v2';
 import { DEFAULT_ICON_SIZE } from '.';
-import { MIN_ICON_SIZE, MAX_ICON_SIZE } from './edit';
 import IconSizeSelect from './icon-size-select';
+import svg from './svgs';
+import { MAX_ICON_SIZE, MIN_ICON_SIZE } from './edit';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { useState } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { InspectorControls, ContrastChecker, PanelColorSettings } from '@wordpress/block-editor';
-import { PanelBody, withFallbackStyles, RangeControl, TextControl, Button, BaseControl, Tooltip, ToggleControl } from '@wordpress/components';
+import { useState } from '@wordpress/element';
+import { BaseControl, Button, PanelBody, RangeControl, TextControl, ToggleControl, Tooltip, withFallbackStyles } from '@wordpress/components';
+import { ContrastChecker, InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
 
 /**
  * Module constants
@@ -48,29 +48,29 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  */
 const Inspector = ( props ) => {
 	const {
-		setAttributes,
 		attributes,
-		clientId,
 		backgroundColor,
-		iconColor,
+		className,
+		clientId,
 		fallbackBackgroundColor,
 		fallbackIconColor,
+		help,
+		iconColor,
+		label = __( 'Size', 'coblocks' ),
+		setAttributes,
 		setBackgroundColor,
 		setIconColor,
-		className,
-		label = __( 'Size', 'coblocks' ),
-		help,
 	} = props;
 
 	const {
-		rel = '',
-		icon,
 		borderRadius,
-		padding,
-		iconSize,
-		width,
 		href,
+		icon,
+		iconSize,
 		linkTarget,
+		padding,
+		rel = '',
+		width,
 	} = attributes;
 
 	const [ filteredIcons, setFilteredIcons ] = useState( svg );
@@ -162,44 +162,47 @@ const Inspector = ( props ) => {
 						? <>
 							<div className="components-base-control components-coblocks-icon-block--advanced-size">
 								<Button
-									type="button"
+									aria-label={ __( 'Reset icon size', 'coblocks' ) }
+									isSecondary
+									isSmall
 									onClick={ () => {
 										document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[ 0 ].style.height = 'auto';
 										onChangeSize( 'medium', DEFAULT_ICON_SIZE );
 									} }
-									isSmall
-									isSecondary
-									aria-label={ __( 'Reset icon size', 'coblocks' ) }
+									type="button"
 								>
 									{ __( 'Reset', 'coblocks' ) }
 								</Button>
 								<RangeControl
 									label={ __( 'Size', 'coblocks' ) }
-									value={ width }
+									max={ MAX_ICON_SIZE }
+									min={ padding ? MIN_ICON_SIZE + 28 : MIN_ICON_SIZE }
 									onChange={ ( nextWidth ) => {
 										document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[ 0 ].style.height = 'auto';
-										setAttributes( { width: nextWidth, height: nextWidth } );
+										setAttributes( {
+											height: nextWidth,
+											width: nextWidth,
+										} );
 									} }
-									min={ padding ? MIN_ICON_SIZE + 28 : MIN_ICON_SIZE }
-									max={ MAX_ICON_SIZE }
 									step={ 1 }
+									value={ width }
 								/>
 							</div>
 						</>
-						: <BaseControl id={ `icon-size-control-${ clientId }` } label={ label } help={ help }>
+						: <BaseControl help={ help } id={ `icon-size-control-${ clientId }` } label={ label }>
 							<div className="components-coblocks-icon-size__controls">
 								<IconSizeSelect
-									setAttributes={ setAttributes }
 									iconSize={ iconSize }
+									setAttributes={ setAttributes }
 									width={ width }
 								/>
 								<Button
-									type="button"
-									onClick={ () => onChangeSize( 'advanced', '' ) }
-									isSmall
-									isSecondary
 									aria-label={ __( 'Apply custom size', 'coblocks' ) }
 									isPrimary={ iconSize === 'advanced' }
+									isSecondary
+									isSmall
+									onClick={ () => onChangeSize( 'advanced', '' ) }
+									type="button"
 								>
 									{ __( 'Custom', 'coblocks' ) }
 								</Button>
@@ -210,31 +213,31 @@ const Inspector = ( props ) => {
 						<>
 							<RangeControl
 								label={ __( 'Radius', 'coblocks' ) }
-								value={ borderRadius }
-								onChange={ ( nextBorderRadius ) => setAttributes( { borderRadius: nextBorderRadius } ) }
-								min={ 0 }
 								max={ 200 }
+								min={ 0 }
+								onChange={ ( nextBorderRadius ) => setAttributes( { borderRadius: nextBorderRadius } ) }
 								step={ 1 }
+								value={ borderRadius }
 							/>
 							<RangeControl
 								label={ __( 'Padding', 'coblocks' ) }
-								value={ padding }
-								onChange={ ( nextPadding ) => setAttributes( { padding: nextPadding } ) }
-								min={ 5 }
 								max={ generateMaxPadding( width ) }
+								min={ 5 }
+								onChange={ ( nextPadding ) => setAttributes( { padding: nextPadding } ) }
 								step={ 1 }
+								value={ padding }
 							/>
 						</>
 					}
 					<TextControl
-						type="text"
 						autoComplete="off"
-						label={ __( 'Icon search', 'coblocks' ) }
-						value={ searchValue }
 						className="coblocks-icon-types-list__search"
+						label={ __( 'Icon search', 'coblocks' ) }
 						onChange={ ( evt ) => {
 							filterList( evt );
 						} }
+						type="text"
+						value={ searchValue }
 					/>
 					<div className="coblocks-icon-types-list-wrapper">
 						<ul className="block-editor-block-types-list coblocks-icon-types-list">
@@ -256,15 +259,14 @@ const Inspector = ( props ) => {
 							{ Object.keys( filteredIcons[ iconStyle ] ).length > 0
 								? Object.keys( filteredIcons[ iconStyle ] ).map( ( keyName, i ) => {
 									return (
-										<li key={ `editor-pblock-types-list-item-${ i }` } className={ classnames(
-											'block-editor-block-types-list__list-item', {
-											},
-										) }>
+										<li
+											className={ classnames( 'block-editor-block-types-list__list-item', {}, ) }
+											key={ `editor-pblock-types-list-item-${ i }` } >
 											<Tooltip text={ ( svg[ iconStyle ][ keyName ].label ) ? svg[ iconStyle ][ keyName ].label : keyName }>
 												<Button
-													isSecondary
-													isPrimary={ icon && icon === keyName }
 													className="editor-block-list-item-button"
+													isPrimary={ icon && icon === keyName }
+													isSecondary
 													onClick={ () => {
 														setAttributes( { icon: keyName } );
 													} }
@@ -283,35 +285,35 @@ const Inspector = ( props ) => {
 					</div>
 				</PanelBody>
 				<PanelBody
-					title={ __( 'Link settings', 'coblocks' ) }
-					initialOpen={ false } >
+					initialOpen={ false }
+					title={ __( 'Link settings', 'coblocks' ) } >
 					<TextControl
 						label={ __( 'Link URL', 'coblocks' ) }
-						value={ href || '' }
 						onChange={ ( value ) => setAttributes( { href: value } ) }
-						placeholder="https://" />
+						placeholder="https://"
+						value={ href || '' }
+					/>
 					<TextControl
 						label={ __( 'Link rel', 'coblocks' ) }
-						value={ rel || '' }
 						onChange={ ( value ) => setAttributes( { rel: value } ) }
+						value={ rel || '' }
 					/>
 					<ToggleControl
+						checked={ linkTarget === '_blank' }
 						label={ !! linkTarget ? __( 'Opening in new tab', 'coblocks' ) : __( 'Open in new tab', 'coblocks' ) }
 						onChange={ onSetNewTab }
-						checked={ linkTarget === '_blank' } />
+					/>
 				</PanelBody>
 				<PanelColorSettings
-					title={ __( 'Color settings', 'coblocks' ) }
-					initialOpen={ false }
 					colorSettings={ [
 						{
 							isLargeText: true,
-							value: iconColor.color,
-							onChange: setIconColor,
 							label: __( 'Icon color', 'coblocks' ),
+							onChange: setIconColor,
+							value: iconColor.color,
 						},
 						{
-							value: backgroundColor.color,
+							label: __( 'Background color', 'coblocks' ),
 							onChange: ( newBackground ) => {
 								// Auto assign padding.
 								if ( padding === 0 ) {
@@ -320,22 +322,23 @@ const Inspector = ( props ) => {
 
 								// Reset padding when colors are cleared.
 								if ( ! newBackground ) {
-									setAttributes( { padding: 0, borderRadius: 0 } );
+									setAttributes( { borderRadius: 0, padding: 0 } );
 								}
 
 								setBackgroundColor( newBackground );
 							},
-							label: __( 'Background color', 'coblocks' ),
+							value: backgroundColor.color,
 						},
-
 					] }
+					initialOpen={ false }
+					title={ __( 'Color settings', 'coblocks' ) }
 				>
 					<ContrastChecker
 						{ ...{
-							iconColor: iconColor.color,
 							backgroundColor: backgroundColor.color,
-							fallbackIconColor,
 							fallbackBackgroundColor,
+							fallbackIconColor,
+							iconColor: iconColor.color,
 						} }
 					/>
 				</PanelColorSettings>

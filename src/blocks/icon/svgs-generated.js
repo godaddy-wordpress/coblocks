@@ -29,7 +29,11 @@ const svgs = {
 		label: __('Accordion Item', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('interface', 'coblocks'),
+			/* translators: icon keyword */
+			__('modal', 'coblocks'),
+			/* translators: icon keyword */
+			__('window', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['AccordionItemStyles']['default']} />,
 	},
@@ -38,7 +42,9 @@ const svgs = {
 		label: __('Accordion', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('item', 'coblocks'),
+			/* translators: icon keyword */
+			__('window', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['AccordionStyles']['default']} />,
 	},
@@ -89,7 +95,15 @@ const svgs = {
 		label: __('Alert', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('bell', 'coblocks'),
+			/* translators: icon keyword */
+			__('danger', 'coblocks'),
+			/* translators: icon keyword */
+			__('ring', 'coblocks'),
+			/* translators: icon keyword */
+			__('sound', 'coblocks'),
+			/* translators: icon keyword */
+			__('warning', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['AlertStyles']['default']} />,
 	},
@@ -113,7 +127,13 @@ const svgs = {
 		label: __('Animation', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('balls', 'coblocks'),
+			/* translators: icon keyword */
+			__('loading', 'coblocks'),
+			/* translators: icon keyword */
+			__('movement', 'coblocks'),
+			/* translators: icon keyword */
+			__('progression', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['AnimationStyles']['default']} />,
 	},
@@ -144,7 +164,19 @@ const svgs = {
 		label: __('At', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('at sign', 'coblocks'),
+			/* translators: icon keyword */
+			__('email', 'coblocks'),
+			/* translators: icon keyword */
+			__('letter', 'coblocks'),
+			/* translators: icon keyword */
+			__('mail', 'coblocks'),
+			/* translators: icon keyword */
+			__('mention', 'coblocks'),
+			/* translators: icon keyword */
+			__('message', 'coblocks'),
+			/* translators: icon keyword */
+			__('symbol', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['AtStyles']['default']} />,
 	},
@@ -175,7 +207,13 @@ const svgs = {
 		label: __('Author', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('head', 'coblocks'),
+			/* translators: icon keyword */
+			__('human', 'coblocks'),
+			/* translators: icon keyword */
+			__('people', 'coblocks'),
+			/* translators: icon keyword */
+			__('person', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['AuthorStyles']['default']} />,
 	},
@@ -280,7 +318,13 @@ const svgs = {
 		label: __('Calendar', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('date', 'coblocks'),
+			/* translators: icon keyword */
+			__('day', 'coblocks'),
+			/* translators: icon keyword */
+			__('month', 'coblocks'),
+			/* translators: icon keyword */
+			__('time', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['CalendarStyles']['default']} />,
 	},
@@ -311,7 +355,11 @@ const svgs = {
 		label: __('Caret', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('arrow', 'coblocks'),
+			/* translators: icon keyword */
+			__('direction', 'coblocks'),
+			/* translators: icon keyword */
+			__('up', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['CaretStyles']['default']} />,
 	},
@@ -341,7 +389,15 @@ const svgs = {
 		label: __('Checklist', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('check', 'coblocks'),
+			/* translators: icon keyword */
+			__('done', 'coblocks'),
+			/* translators: icon keyword */
+			__('list', 'coblocks'),
+			/* translators: icon keyword */
+			__('okay', 'coblocks'),
+			/* translators: icon keyword */
+			__('task', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['ChecklistStyles']['default']} />,
 	},
@@ -350,7 +406,13 @@ const svgs = {
 		label: __('Checkmark circle', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('check', 'coblocks'),
+			/* translators: icon keyword */
+			__('confirm', 'coblocks'),
+			/* translators: icon keyword */
+			__('done', 'coblocks'),
+			/* translators: icon keyword */
+			__('okay', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['CheckmarkCircleStyles']['default']} />,
 	},
@@ -505,7 +567,11 @@ const svgs = {
 		label: __('Column', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('divider', 'coblocks'),
+			/* translators: icon keyword */
+			__('middle', 'coblocks'),
+			/* translators: icon keyword */
+			__('separator', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['ColumnStyles']['default']} />,
 	},
@@ -536,7 +602,11 @@ const svgs = {
 		label: __('Content', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('line', 'coblocks'),
+			/* translators: icon keyword */
+			__('paragraph', 'coblocks'),
+			/* translators: icon keyword */
+			__('text', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['ContentStyles']['default']} />,
 	},
@@ -590,7 +660,11 @@ const svgs = {
 		label: __('Custom typography', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('alphabet', 'coblocks'),
+			/* translators: icon keyword */
+			__('letter', 'coblocks'),
+			/* translators: icon keyword */
+			__('text', 'coblocks'),
 		],
 		icon: (
 			<Icon icon={CoblocksIcons['CustomTypographyStyles']['default']} />
@@ -644,7 +718,9 @@ const svgs = {
 		label: __('Desktop', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('square', 'coblocks'),
+			/* translators: icon keyword */
+			__('window', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['DesktopStyles']['default']} />,
 	},
@@ -765,7 +841,11 @@ const svgs = {
 		label: __('Duplicate', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('copy', 'coblocks'),
+			/* translators: icon keyword */
+			__('paper', 'coblocks'),
+			/* translators: icon keyword */
+			__('text', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['DuplicateStyles']['default']} />,
 	},
@@ -774,7 +854,11 @@ const svgs = {
 		label: __('Dynamic HR', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('cursor', 'coblocks'),
+			/* translators: icon keyword */
+			__('divider', 'coblocks'),
+			/* translators: icon keyword */
+			__('horizontal rule', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['DynamicHrStyles']['default']} />,
 	},
@@ -803,7 +887,15 @@ const svgs = {
 		label: __('Event item', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('calendar', 'coblocks'),
+			/* translators: icon keyword */
+			__('date', 'coblocks'),
+			/* translators: icon keyword */
+			__('day', 'coblocks'),
+			/* translators: icon keyword */
+			__('month', 'coblocks'),
+			/* translators: icon keyword */
+			__('time', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['EventItemStyles']['default']} />,
 	},
@@ -812,7 +904,17 @@ const svgs = {
 		label: __('Events', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('calendar', 'coblocks'),
+			/* translators: icon keyword */
+			__('date', 'coblocks'),
+			/* translators: icon keyword */
+			__('day', 'coblocks'),
+			/* translators: icon keyword */
+			__('month', 'coblocks'),
+			/* translators: icon keyword */
+			__('schedule', 'coblocks'),
+			/* translators: icon keyword */
+			__('time', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['EventsStyles']['default']} />,
 	},
@@ -885,7 +987,11 @@ const svgs = {
 		label: __('Facebook', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('media', 'coblocks'),
+			/* translators: icon keyword */
+			__('share', 'coblocks'),
+			/* translators: icon keyword */
+			__('social', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FacebookStyles']['default']} />,
 	},
@@ -894,7 +1000,11 @@ const svgs = {
 		label: __('FAQ', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('answer', 'coblocks'),
+			/* translators: icon keyword */
+			__('frequently asked questions', 'coblocks'),
+			/* translators: icon keyword */
+			__('question', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FaqStyles']['default']} />,
 	},
@@ -903,7 +1013,11 @@ const svgs = {
 		label: __('Feature', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('list', 'coblocks'),
+			/* translators: icon keyword */
+			__('pointer', 'coblocks'),
+			/* translators: icon keyword */
+			__('stack', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FeatureStyles']['default']} />,
 	},
@@ -936,7 +1050,9 @@ const svgs = {
 		label: __('Filter - Dark', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('moon', 'coblocks'),
+			/* translators: icon keyword */
+			__('night', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FilterDarkStyles']['default']} />,
 	},
@@ -945,7 +1061,9 @@ const svgs = {
 		label: __('Filter - Grayscale', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('black', 'coblocks'),
+			/* translators: icon keyword */
+			__('white', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FilterGrayscaleStyles']['default']} />,
 	},
@@ -954,7 +1072,9 @@ const svgs = {
 		label: __('Filter - Main', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('shine', 'coblocks'),
+			/* translators: icon keyword */
+			__('star', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FilterMainStyles']['default']} />,
 	},
@@ -963,7 +1083,9 @@ const svgs = {
 		label: __('Filter - None', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('default', 'coblocks'),
+			/* translators: icon keyword */
+			__('mountain', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FilterNoneStyles']['default']} />,
 	},
@@ -972,7 +1094,11 @@ const svgs = {
 		label: __('Filter - Saturation', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('drop', 'coblocks'),
+			/* translators: icon keyword */
+			__('water', 'coblocks'),
+			/* translators: icon keyword */
+			__('wet', 'coblocks'),
 		],
 		icon: (
 			<Icon icon={CoblocksIcons['FilterSaturationStyles']['default']} />
@@ -983,7 +1109,15 @@ const svgs = {
 		label: __('Filter - Sepia', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('flower', 'coblocks'),
+			/* translators: icon keyword */
+			__('old', 'coblocks'),
+			/* translators: icon keyword */
+			__('shine', 'coblocks'),
+			/* translators: icon keyword */
+			__('star', 'coblocks'),
+			/* translators: icon keyword */
+			__('vintage', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FilterSepiaStyles']['default']} />,
 	},
@@ -992,7 +1126,11 @@ const svgs = {
 		label: __('Filter - Vintage', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('flower', 'coblocks'),
+			/* translators: icon keyword */
+			__('old', 'coblocks'),
+			/* translators: icon keyword */
+			__('sepia', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FilterVintageStyles']['default']} />,
 	},
@@ -1064,7 +1202,11 @@ const svgs = {
 		label: __('Filter - Horizontal', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('divider', 'coblocks'),
+			/* translators: icon keyword */
+			__('flip', 'coblocks'),
+			/* translators: icon keyword */
+			__('separator', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FlipHorizontalStyles']['default']} />,
 	},
@@ -1073,7 +1215,11 @@ const svgs = {
 		label: __('Flip vertical', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('divider', 'coblocks'),
+			/* translators: icon keyword */
+			__('flip', 'coblocks'),
+			/* translators: icon keyword */
+			__('separator', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FlipVerticalStyles']['default']} />,
 	},
@@ -1120,7 +1266,9 @@ const svgs = {
 		label: __('Food and Drink', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('bell', 'coblocks'),
+			/* translators: icon keyword */
+			__('ring', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FoodDrinkStyles']['default']} />,
 	},
@@ -1129,7 +1277,13 @@ const svgs = {
 		label: __('Food item', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('eat', 'coblocks'),
+			/* translators: icon keyword */
+			__('restaurant', 'coblocks'),
+			/* translators: icon keyword */
+			__('tomato', 'coblocks'),
+			/* translators: icon keyword */
+			__('vegetable', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FoodItemStyles']['default']} />,
 	},
@@ -1138,7 +1292,13 @@ const svgs = {
 		label: __('Form - Checkbox', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('check', 'coblocks'),
+			/* translators: icon keyword */
+			__('confirm', 'coblocks'),
+			/* translators: icon keyword */
+			__('okay', 'coblocks'),
+			/* translators: icon keyword */
+			__('success', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FormCheckboxStyles']['default']} />,
 	},
@@ -1147,7 +1307,13 @@ const svgs = {
 		label: __('Form - Date', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('date', 'coblocks'),
+			/* translators: icon keyword */
+			__('day', 'coblocks'),
+			/* translators: icon keyword */
+			__('month', 'coblocks'),
+			/* translators: icon keyword */
+			__('time', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FormDateStyles']['default']} />,
 	},
@@ -1156,7 +1322,19 @@ const svgs = {
 		label: __('Form - Email', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('at sign', 'coblocks'),
+			/* translators: icon keyword */
+			__('email', 'coblocks'),
+			/* translators: icon keyword */
+			__('letter', 'coblocks'),
+			/* translators: icon keyword */
+			__('mail', 'coblocks'),
+			/* translators: icon keyword */
+			__('mention', 'coblocks'),
+			/* translators: icon keyword */
+			__('message', 'coblocks'),
+			/* translators: icon keyword */
+			__('symbol', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FormEmailStyles']['default']} />,
 	},
@@ -1165,7 +1343,9 @@ const svgs = {
 		label: __('Form - Hidden', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('eye', 'coblocks'),
+			/* translators: icon keyword */
+			__('secret', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FormHiddenStyles']['default']} />,
 	},
@@ -1174,7 +1354,11 @@ const svgs = {
 		label: __('Form - Name', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('paragraph', 'coblocks'),
+			/* translators: icon keyword */
+			__('person', 'coblocks'),
+			/* translators: icon keyword */
+			__('text', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FormNameStyles']['default']} />,
 	},
@@ -1183,7 +1367,13 @@ const svgs = {
 		label: __('Form - Phone', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('call', 'coblocks'),
+			/* translators: icon keyword */
+			__('mobile', 'coblocks'),
+			/* translators: icon keyword */
+			__('number', 'coblocks'),
+			/* translators: icon keyword */
+			__('tablet', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FormPhoneStyles']['default']} />,
 	},
@@ -1192,7 +1382,11 @@ const svgs = {
 		label: __('Form - Radio', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('circle', 'coblocks'),
+			/* translators: icon keyword */
+			__('round', 'coblocks'),
+			/* translators: icon keyword */
+			__('select', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FormRadioStyles']['default']} />,
 	},
@@ -1201,7 +1395,11 @@ const svgs = {
 		label: __('Form - Select', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('collapse', 'coblocks'),
+			/* translators: icon keyword */
+			__('dropdown', 'coblocks'),
+			/* translators: icon keyword */
+			__('option', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FormSelectStyles']['default']} />,
 	},
@@ -1210,7 +1408,7 @@ const svgs = {
 		label: __('Form - Submit', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('input', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FormSubmitStyles']['default']} />,
 	},
@@ -1219,7 +1417,9 @@ const svgs = {
 		label: __('Form - Text', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('input', 'coblocks'),
+			/* translators: icon keyword */
+			__('rectangle', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FormTextStyles']['default']} />,
 	},
@@ -1228,7 +1428,9 @@ const svgs = {
 		label: __('Form - Textarea', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('paragraph', 'coblocks'),
+			/* translators: icon keyword */
+			__('text', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FormTextareaStyles']['default']} />,
 	},
@@ -1237,7 +1439,11 @@ const svgs = {
 		label: __('Form - Website', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('browser', 'coblocks'),
+			/* translators: icon keyword */
+			__('safari', 'coblocks'),
+			/* translators: icon keyword */
+			__('web', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FormWebsiteStyles']['default']} />,
 	},
@@ -1246,7 +1452,9 @@ const svgs = {
 		label: __('Form', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('envelope', 'coblocks'),
+			/* translators: icon keyword */
+			__('write', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['FormStyles']['default']} />,
 	},
@@ -1297,7 +1505,9 @@ const svgs = {
 		label: __('Gallery - Carousel', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('display', 'coblocks'),
+			/* translators: icon keyword */
+			__('mountains', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['GalleryCarouselStyles']['default']} />,
 	},
@@ -1306,7 +1516,9 @@ const svgs = {
 		label: __('Gallery - Collage', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('display', 'coblocks'),
+			/* translators: icon keyword */
+			__('mountains', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['GalleryCollageStyles']['default']} />,
 	},
@@ -1315,7 +1527,9 @@ const svgs = {
 		label: __('Gallery - Masonry', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('display', 'coblocks'),
+			/* translators: icon keyword */
+			__('mountains', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['GalleryMasonryStyles']['default']} />,
 	},
@@ -1324,7 +1538,9 @@ const svgs = {
 		label: __('Gallery - Offset', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('display', 'coblocks'),
+			/* translators: icon keyword */
+			__('mountains', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['GalleryOffsetStyles']['default']} />,
 	},
@@ -1333,7 +1549,9 @@ const svgs = {
 		label: __('Gallery - Stacked', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('display', 'coblocks'),
+			/* translators: icon keyword */
+			__('mountains', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['GalleryStackedStyles']['default']} />,
 	},
@@ -1405,7 +1623,13 @@ const svgs = {
 		label: __('Gif', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('animated', 'coblocks'),
+			/* translators: icon keyword */
+			__('image', 'coblocks'),
+			/* translators: icon keyword */
+			__('photo', 'coblocks'),
+			/* translators: icon keyword */
+			__('picture', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['GifStyles']['default']} />,
 	},
@@ -1414,7 +1638,13 @@ const svgs = {
 		label: __('GitHub', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('cat', 'coblocks'),
+			/* translators: icon keyword */
+			__('profile', 'coblocks'),
+			/* translators: icon keyword */
+			__('share', 'coblocks'),
+			/* translators: icon keyword */
+			__('social', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['GithubStyles']['default']} />,
 	},
@@ -1442,7 +1672,13 @@ const svgs = {
 		label: __('Grid position', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('align', 'coblocks'),
+			/* translators: icon keyword */
+			__('centered', 'coblocks'),
+			/* translators: icon keyword */
+			__('dots', 'coblocks'),
+			/* translators: icon keyword */
+			__('position', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['GridPositionStyles']['default']} />,
 	},
@@ -1524,7 +1760,7 @@ const svgs = {
 		label: __('Hero', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('display', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['HeroStyles']['default']} />,
 	},
@@ -1533,7 +1769,15 @@ const svgs = {
 		label: __('Highlight', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('annotate', 'coblocks'),
+			/* translators: icon keyword */
+			__('pen', 'coblocks'),
+			/* translators: icon keyword */
+			__('trace', 'coblocks'),
+			/* translators: icon keyword */
+			__('underline', 'coblocks'),
+			/* translators: icon keyword */
+			__('write', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['HighlightStyles']['default']} />,
 	},
@@ -1564,7 +1808,13 @@ const svgs = {
 		label: __('Icon', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('arrow', 'coblocks'),
+			/* translators: icon keyword */
+			__('d-pad', 'coblocks'),
+			/* translators: icon keyword */
+			__('direction', 'coblocks'),
+			/* translators: icon keyword */
+			__('pad', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['IconStyles']['default']} />,
 	},
@@ -1698,7 +1948,9 @@ const svgs = {
 		label: __('Logos', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('certified', 'coblocks'),
+			/* translators: icon keyword */
+			__('checkmark', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['LogosStyles']['default']} />,
 	},
@@ -1707,7 +1959,13 @@ const svgs = {
 		label: __('Map', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('location', 'coblocks'),
+			/* translators: icon keyword */
+			__('marker', 'coblocks'),
+			/* translators: icon keyword */
+			__('position', 'coblocks'),
+			/* translators: icon keyword */
+			__('world', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['MapStyles']['default']} />,
 	},
@@ -1738,7 +1996,7 @@ const svgs = {
 		label: __('Media card', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('square', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['MediaCardStyles']['default']} />,
 	},
@@ -1785,7 +2043,13 @@ const svgs = {
 		label: __('Mobile', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('call', 'coblocks'),
+			/* translators: icon keyword */
+			__('number', 'coblocks'),
+			/* translators: icon keyword */
+			__('phone', 'coblocks'),
+			/* translators: icon keyword */
+			__('tablet', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['MobileStyles']['default']} />,
 	},
@@ -1820,7 +2084,13 @@ const svgs = {
 		label: __('Multimedia', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('media', 'coblocks'),
+			/* translators: icon keyword */
+			__('photo', 'coblocks'),
+			/* translators: icon keyword */
+			__('picture', 'coblocks'),
+			/* translators: icon keyword */
+			__('video', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['MultimediaStyles']['default']} />,
 	},
@@ -1855,6 +2125,8 @@ const svgs = {
 		label: __('Releases', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
+			__('exclamation', 'coblocks'),
+			/* translators: icon keyword */
 			__('new', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['NewreleasesStyles']['default']} />,
@@ -1887,7 +2159,13 @@ const svgs = {
 		label: __('Open', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('arrows', 'coblocks'),
+			/* translators: icon keyword */
+			__('down', 'coblocks'),
+			/* translators: icon keyword */
+			__('up', 'coblocks'),
+			/* translators: icon keyword */
+			__('vertical', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['OpenStyles']['default']} />,
 	},
@@ -1896,7 +2174,11 @@ const svgs = {
 		label: __('OpenTable', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('profile', 'coblocks'),
+			/* translators: icon keyword */
+			__('share', 'coblocks'),
+			/* translators: icon keyword */
+			__('social', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['OpentableStyles']['default']} />,
 	},
@@ -1905,7 +2187,11 @@ const svgs = {
 		label: __('Page duplicate', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('corner', 'coblocks'),
+			/* translators: icon keyword */
+			__('ghost', 'coblocks'),
+			/* translators: icon keyword */
+			__('paper', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['PageDuplicateStyles']['default']} />,
 	},
@@ -1914,7 +2200,9 @@ const svgs = {
 		label: __('Page', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('corner', 'coblocks'),
+			/* translators: icon keyword */
+			__('paper', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['PageStyles']['default']} />,
 	},
@@ -1923,7 +2211,15 @@ const svgs = {
 		label: __('Paint can', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('artist', 'coblocks'),
+			/* translators: icon keyword */
+			__('colors', 'coblocks'),
+			/* translators: icon keyword */
+			__('creative', 'coblocks'),
+			/* translators: icon keyword */
+			__('design', 'coblocks'),
+			/* translators: icon keyword */
+			__('palette', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['PaintCanStyles']['default']} />,
 	},
@@ -1978,7 +2274,11 @@ const svgs = {
 		label: __('Post carousel', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('lines', 'coblocks'),
+			/* translators: icon keyword */
+			__('list', 'coblocks'),
+			/* translators: icon keyword */
+			__('text', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['PostCarouselStyles']['default']} />,
 	},
@@ -1987,7 +2287,11 @@ const svgs = {
 		label: __('Posts', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('double', 'coblocks'),
+			/* translators: icon keyword */
+			__('text', 'coblocks'),
+			/* translators: icon keyword */
+			__('twice', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['PostsStyles']['default']} />,
 	},
@@ -1996,7 +2300,13 @@ const svgs = {
 		label: __('Pricing table - Item', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('cash', 'coblocks'),
+			/* translators: icon keyword */
+			__('money', 'coblocks'),
+			/* translators: icon keyword */
+			__('paper', 'coblocks'),
+			/* translators: icon keyword */
+			__('sign', 'coblocks'),
 		],
 		icon: (
 			<Icon icon={CoblocksIcons['PricingTableItemStyles']['default']} />
@@ -2007,7 +2317,13 @@ const svgs = {
 		label: __('Pricing table', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('cash', 'coblocks'),
+			/* translators: icon keyword */
+			__('money', 'coblocks'),
+			/* translators: icon keyword */
+			__('paper', 'coblocks'),
+			/* translators: icon keyword */
+			__('sign', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['PricingTableStyles']['default']} />,
 	},
@@ -2071,7 +2387,13 @@ const svgs = {
 		label: __('Request', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('bullets', 'coblocks'),
+			/* translators: icon keyword */
+			__('list', 'coblocks'),
+			/* translators: icon keyword */
+			__('paper', 'coblocks'),
+			/* translators: icon keyword */
+			__('text', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['RequestStyles']['default']} />,
 	},
@@ -2080,7 +2402,9 @@ const svgs = {
 		label: __('Row', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('divider', 'coblocks'),
+			/* translators: icon keyword */
+			__('line', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['RowStyles']['default']} />,
 	},
@@ -2171,7 +2495,11 @@ const svgs = {
 		label: __('Service item', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('bubble', 'coblocks'),
+			/* translators: icon keyword */
+			__('lines', 'coblocks'),
+			/* translators: icon keyword */
+			__('text', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['ServiceItemStyles']['default']} />,
 	},
@@ -2180,7 +2508,11 @@ const svgs = {
 		label: __('Services', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('bubble', 'coblocks'),
+			/* translators: icon keyword */
+			__('lines', 'coblocks'),
+			/* translators: icon keyword */
+			__('text', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['ServicesStyles']['default']} />,
 	},
@@ -2189,7 +2521,13 @@ const svgs = {
 		label: __('Settings', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('dots', 'coblocks'),
+			/* translators: icon keyword */
+			__('lines', 'coblocks'),
+			/* translators: icon keyword */
+			__('preferences', 'coblocks'),
+			/* translators: icon keyword */
+			__('sliders', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['SettingsStyles']['default']} />,
 	},
@@ -2198,7 +2536,9 @@ const svgs = {
 		label: __('Shape divider', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('rectangle', 'coblocks'),
+			/* translators: icon keyword */
+			__('wave', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['ShapeDividerStyles']['default']} />,
 	},
@@ -2207,7 +2547,13 @@ const svgs = {
 		label: __('Share', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('dots', 'coblocks'),
+			/* translators: icon keyword */
+			__('line', 'coblocks'),
+			/* translators: icon keyword */
+			__('path', 'coblocks'),
+			/* translators: icon keyword */
+			__('share', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['ShareStyles']['default']} />,
 	},
@@ -2283,7 +2629,15 @@ const svgs = {
 		label: __('Social profiles', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('people', 'coblocks'),
+			/* translators: icon keyword */
+			__('person', 'coblocks'),
+			/* translators: icon keyword */
+			__('profiles', 'coblocks'),
+			/* translators: icon keyword */
+			__('share', 'coblocks'),
+			/* translators: icon keyword */
+			__('social', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['SocialProfilesStyles']['default']} />,
 	},
@@ -2388,7 +2742,15 @@ const svgs = {
 		label: __('Sync', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('arrows', 'coblocks'),
+			/* translators: icon keyword */
+			__('circle', 'coblocks'),
+			/* translators: icon keyword */
+			__('refresh', 'coblocks'),
+			/* translators: icon keyword */
+			__('synchronize', 'coblocks'),
+			/* translators: icon keyword */
+			__('update', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['SyncStyles']['default']} />,
 	},
@@ -2420,7 +2782,21 @@ const svgs = {
 		label: __('Tablet', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('computer', 'coblocks'),
+			/* translators: icon keyword */
+			__('device', 'coblocks'),
+			/* translators: icon keyword */
+			__('ipad', 'coblocks'),
+			/* translators: icon keyword */
+			__('monitor', 'coblocks'),
+			/* translators: icon keyword */
+			__('office', 'coblocks'),
+			/* translators: icon keyword */
+			__('pc', 'coblocks'),
+			/* translators: icon keyword */
+			__('screen', 'coblocks'),
+			/* translators: icon keyword */
+			__('surface', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['TabletStyles']['default']} />,
 	},
@@ -2429,7 +2805,17 @@ const svgs = {
 		label: __('Timer', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('chrono', 'coblocks'),
+			/* translators: icon keyword */
+			__('hour', 'coblocks'),
+			/* translators: icon keyword */
+			__('start', 'coblocks'),
+			/* translators: icon keyword */
+			__('stop', 'coblocks'),
+			/* translators: icon keyword */
+			__('time', 'coblocks'),
+			/* translators: icon keyword */
+			__('watch', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['TimerStyles']['default']} />,
 	},
@@ -2488,7 +2874,15 @@ const svgs = {
 		label: __('Trash confirm', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('confirm', 'coblocks'),
+			/* translators: icon keyword */
+			__('delete', 'coblocks'),
+			/* translators: icon keyword */
+			__('garbage', 'coblocks'),
+			/* translators: icon keyword */
+			__('half full', 'coblocks'),
+			/* translators: icon keyword */
+			__('remove', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['TrashConfirmStyles']['default']} />,
 	},
@@ -2497,7 +2891,13 @@ const svgs = {
 		label: __('Trash', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('delete', 'coblocks'),
+			/* translators: icon keyword */
+			__('empty', 'coblocks'),
+			/* translators: icon keyword */
+			__('garbage', 'coblocks'),
+			/* translators: icon keyword */
+			__('remove', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['TrashStyles']['default']} />,
 	},
@@ -2506,7 +2906,11 @@ const svgs = {
 		label: __('Twitter', 'coblocks'),
 		keywords: [
 			/* translators: icon keyword */
-			__('keyword', 'coblocks'),
+			__('media', 'coblocks'),
+			/* translators: icon keyword */
+			__('share', 'coblocks'),
+			/* translators: icon keyword */
+			__('social', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['TwitterStyles']['default']} />,
 	},
