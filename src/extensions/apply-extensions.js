@@ -10,6 +10,30 @@ import {
 	useEditorProps as animationEditorProps,
 	applySaveProps as animationSaveProps,
 } from './animation';
+import {
+	useButtonControls as buttonControls,
+	applyAttributes as buttonControlsApplyAttributes,
+	useEditorProps as buttonControlsEditorProps,
+	applySaveProps as buttonControlsSaveProps,
+} from './button-controls';
+import {
+	applyAttributes as coblocksApplyAttributes,
+	useAttributes as coblocksAttributes,
+} from './attributes';
+import {
+	useColorControls as colorControls,
+	applyAttributes as colorControlsApplyAttributes,
+} from './colors/inspector';
+import {
+	useImageFilter as imageFilter,
+	applyAttributes as imageFilterApplyAttributes,
+	useEditorProps as imageFilterEditorProps,
+	applySaveProps as imageFilterSaveProps,
+} from './image-filter';
+import {
+	usePositioningControl as positioningControl,
+	applyAttributes as positioningControlApplyAttributes,
+} from './image-crop';
 
 /**
  * WordPress Dependencies
@@ -49,12 +73,20 @@ const enhance = compose(
  */
 const addAllEditorProps = createHigherOrderComponent( ( BlockListBlock ) => {
 	return enhance( ( { select, ...props } ) => {
-		const block = select( 'core/block-editor' ).getBlock( props.rootClientId || props.clientId );
-		const blockName = select( 'core/block-editor' ).getBlockName( props.rootClientId || props.clientId );
+		/**
+		 * Some controls must use the parent blocks like for
+		 * galleries but others will use children like buttonControls
+		 */
+		const parentBlock = select( 'core/block-editor' ).getBlock( props.rootClientId || props.clientId );
+		const parentBlockName = select( 'core/block-editor' ).getBlockName( props.rootClientId || props.clientId );
+		const childBlock = select( 'core/block-editor' ).getBlock( props.clientId );
+		const childBlockName = select( 'core/block-editor' ).getBlockName( props.clientId );
 
 		const wrapperProps = {
-			...advancedControlsEditorProps( block, blockName, props, props.wrapperProps ),
-			...animationEditorProps( block, blockName, props, props.wrapperProps ),
+			...advancedControlsEditorProps( parentBlock, parentBlockName, props, props.wrapperProps ),
+			...animationEditorProps( parentBlock, parentBlockName, props, props.wrapperProps ),
+			...buttonControlsEditorProps( childBlock, childBlockName, props, props.wrapperProps ),
+			...imageFilterEditorProps( props, props.wrapperProps ),
 		};
 
 		// Extra features are JSX conditionals and should be rendered outside of the
@@ -97,6 +129,11 @@ function applyAllAttributes( settings ) {
 	const extendedSettings = {
 		...advancedControlsApplyAttributes( settings ),
 		...animationApplyAttributes( settings ),
+		...coblocksApplyAttributes( settings ),
+		...buttonControlsApplyAttributes( settings ),
+		...colorControlsApplyAttributes( settings ),
+		...positioningControlApplyAttributes( settings ),
+		...imageFilterApplyAttributes( settings ),
 	};
 
 	return extendedSettings;
@@ -114,6 +151,8 @@ function applyAllSaveProps( extraProps, blockType, attributes ) {
 	const extendedExtraProps = {
 		...animationSaveProps( extraProps, blockType, attributes ),
 		...advancedControlsSaveProps( extraProps, blockType, attributes ),
+		...buttonControlsSaveProps( extraProps, blockType, attributes ),
+		...imageFilterSaveProps( extraProps, blockType, attributes ),
 	};
 
 	return extendedExtraProps;
@@ -126,12 +165,19 @@ function applyAllSaveProps( extraProps, blockType, attributes ) {
  * @return {string} Wrapped component.
  */
 const applyAllControls = createHigherOrderComponent( ( BlockEdit ) => {
-	return ( props ) => {
+	return ( blockProps ) => {
+		const props = {
+			...coblocksAttributes( blockProps ),
+		};
 		return (
 			<>
 				<BlockEdit { ...props } />
 				{ advancedControls( props ) }
 				{ animationControls( props ) }
+				{ buttonControls( props ) }
+				{ colorControls( props ) }
+				{ positioningControl( props ) }
+				{ imageFilter( props ) }
 			</>
 		);
 	};

@@ -11,9 +11,7 @@ import MediaFilterControl from '../../components/media-filter-control';
 /**
  * WordPress dependencies
  */
-import { addFilter } from '@wordpress/hooks';
 import { BlockControls } from '@wordpress/block-editor';
-import { createHigherOrderComponent } from '@wordpress/compose';
 
 const allowedBlocks = [
 	'core/image',
@@ -22,59 +20,49 @@ const allowedBlocks = [
 
 /**
  * Add the MediaFilterControl component and classnames to the core/image and core/gallery block
- * Add custom `has-filter-${ filter }` class to the extended blocks.
+ *
+ * @param {Object} props Object containing selected block props.
  */
-const coreImageFilter = createHigherOrderComponent( ( BlockEdit ) => {
-	return ( props ) => {
-		const { name } = props;
-		if ( ! allowedBlocks.includes( name ) ) {
-			return <BlockEdit { ...props } />;
-		}
+const useImageFilter = ( props ) => {
+	const { name } = props;
+	if ( ! allowedBlocks.includes( name ) ) {
+		return;
+	}
 
-		return (
-			<>
-				<BlockEdit { ...props } />
-				<BlockControls>
-					<MediaFilterControl
-						{ ...props }
-					/>
-				</BlockControls>
-			</>
-		);
-	};
-}, 'withGalleryExtension' );
-
-addFilter( 'editor.BlockEdit', 'coblocks/coreImageFilter', coreImageFilter );
+	return (
+		<>
+			<BlockControls>
+				<MediaFilterControl { ...props } />
+			</BlockControls>
+		</>
+	);
+};
 
 /**
  * Add custom `has-filter-${ filter }` class to the core/image block
+ *
+ * @param {Object} props        Object containing selected block props.
+ * @param {Object} wrapperProps Object containing existing wrapper props.
  */
-const coreImageEditorStyles = createHigherOrderComponent( ( BlockListBlock ) => {
-	return ( props ) => {
-		const { attributes, name } = props;
-		if ( ! allowedBlocks.includes( name ) ) {
-			return <BlockListBlock { ...props } />;
-		}
+const useEditorProps = ( props, wrapperProps ) => {
+	const { attributes, name } = props;
+	if ( ! allowedBlocks.includes( name ) ) {
+		return;
+	}
 
-		const {
-			filter,
-		} = attributes;
+	const {
+		filter,
+	} = attributes;
 
-		const blockProps = {
-			...props,
-			attributes: {
-				...attributes,
-				className: classnames( {
-					[ `has-filter-${ filter }` ]: filter !== 'none',
-				} ),
-			},
-		};
-
-		return <BlockListBlock { ...blockProps } />;
+	wrapperProps = {
+		...wrapperProps,
+		className: classnames( {
+			[ `has-filter-${ filter }` ]: filter !== 'none',
+		} ),
 	};
-}, 'withStyleClasses' );
 
-addFilter( 'editor.BlockListBlock', 'coblocks/with-style-classes', coreImageEditorStyles );
+	return wrapperProps;
+};
 
 /**
  * Add custom attribute to the core/image block
@@ -82,7 +70,7 @@ addFilter( 'editor.BlockListBlock', 'coblocks/with-style-classes', coreImageEdit
  * @param {Object} settings Settings for the block.
  * @return {Object} settings Modified settings.
  */
-function imageFilterAttributes( settings ) {
+const applyAttributes = ( settings ) => {
 	if ( allowedBlocks.includes( settings.name ) && typeof settings.attributes !== 'undefined' ) {
 		settings.attributes = Object.assign( settings.attributes, {
 			filter: {
@@ -93,9 +81,7 @@ function imageFilterAttributes( settings ) {
 	}
 
 	return settings;
-}
-
-addFilter( 'blocks.registerBlockType', 'coblocks/imageFilterAttributes', imageFilterAttributes );
+};
 
 /**
  * Add custom class in save element.
@@ -105,7 +91,7 @@ addFilter( 'blocks.registerBlockType', 'coblocks/imageFilterAttributes', imageFi
  * @param {Object} attributes Blocks attributes.
  * @return {Object} extraProps Modified block element.
  */
-function imageBlockClass( extraProps, blockType, attributes ) {
+const applySaveProps = ( extraProps, blockType, attributes ) => {
 	if ( allowedBlocks.includes( blockType.name ) && typeof attributes.filter !== 'undefined' ) {
 		extraProps.className = classnames(
 			extraProps.className,
@@ -115,6 +101,6 @@ function imageBlockClass( extraProps, blockType, attributes ) {
 		);
 	}
 	return extraProps;
-}
+};
 
-addFilter( 'blocks.getSaveContent.extraProps', 'coblocks/imageApplyExtraClass', imageBlockClass );
+export { applyAttributes, applySaveProps, useEditorProps, useImageFilter };
