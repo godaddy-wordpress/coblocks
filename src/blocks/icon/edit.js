@@ -11,15 +11,14 @@ import classnames from 'classnames';
 import applyWithColors from './colors';
 import Controls from './controls';
 import Inspector from './inspector';
-import svgs from './svgs';
 
 /**
  * WordPress dependencies
  */
 import { compose } from '@wordpress/compose';
-import { ResizableBox } from '@wordpress/components';
-import { useEffect } from '@wordpress/element';
 import { withSelect } from '@wordpress/data';
+import { ResizableBox, Spinner } from '@wordpress/components';
+import { useEffect, useState } from '@wordpress/element';
 
 /**
  * Set and export block values.
@@ -49,21 +48,31 @@ const Edit = ( props ) => {
 		borderRadius,
 		padding,
 		hasContentAlign,
-		preview,
 	} = attributes;
 
+	const [ svgs, setSvgs ] = useState( null );
+
 	useEffect( () => {
-		if ( attributes.icon === '' ) {
-			// Randomized the default icon when first added.
-			//let defaultIcons = [ 'aperture', 'gesture', 'scatter_plot', 'waves', 'blocks', 'coblocks', 'drafts', 'device_hub', 'marker' ];
-			let defaultIcons = [ 'marker' ];
-			if ( ! bundledIconsEnabled && Object.keys( coblocksBlockData.customIcons ).length ) {
-				defaultIcons = Object.keys( coblocksBlockData.customIcons );
+		( async () => {
+			const importedSvgs = await import( './svgs' );
+
+			setSvgs( importedSvgs.default );
+
+			if ( attributes.icon === '' ) {
+				// Randomized the default icon when first added.
+				let defaultIcons = [ 'aperture', 'gesture', 'scatter_plot', 'waves', 'blocks', 'coblocks', 'drafts', 'device_hub', 'marker' ];
+				if ( ! bundledIconsEnabled && Object.keys( coblocksBlockData.customIcons ).length ) {
+					defaultIcons = Object.keys( coblocksBlockData.customIcons );
+				}
+				const rand = defaultIcons[ Math.floor( Math.random() * defaultIcons.length ) ];
+				setAttributes( { icon: rand } );
 			}
-			const rand = defaultIcons[ Math.floor( Math.random() * defaultIcons.length ) ];
-			setAttributes( { icon: rand } );
-		}
+		} )();
 	}, [] );
+
+	if ( ! svgs ) {
+		return <Spinner />;
+	}
 
 	const classes = classnames( className, {
 		[ `has-text-align-${ contentAlign }` ]: contentAlign,
@@ -121,33 +130,13 @@ const Edit = ( props ) => {
 		showLeftHandle = true;
 	}
 
-	if ( preview ) {
-		return (
-			<>
-				<Inspector
-					{ ...props }
-				/>
-				<Controls
-					{ ...props }
-				/>
-				<div className={ classes }>
-					{ selectedIcon ? selectedIcon.icon : null }
-				</div>
-			</>
-		);
-	}
-
 	return (
 		<>
 			{ isSelected && (
-				<Inspector
-					{ ...props }
-				/>
-			) }
-			{ isSelected && (
-				<Controls
-					{ ...props }
-				/>
+				<>
+					<Inspector { ...props } />
+					<Controls { ...props } />
+				</>
 			) }
 			<div className={ classes }>
 				<ResizableBox
@@ -161,20 +150,18 @@ const Edit = ( props ) => {
 					lockAspectRatio
 					maxWidth={ MAX_ICON_SIZE }
 					minWidth={ padding ? MIN_ICON_SIZE + 28 : MIN_ICON_SIZE }
-					onResizeStart={ () => {
-						setAttributes( { iconSize: 'advanced' } );
-					} }
-					onResizeStop={ ( _event, _direction, _elt, delta ) => {
+					onResizeStart={ () => setAttributes( { iconSize: 'advanced' } ) }
+					onResizeStop={ ( _event, _direction, _elt, delta ) =>
 						setAttributes( {
 							height: parseInt( width + delta.width, 10 ),
 							width: parseInt( width + delta.width, 10 ),
-						} );
-					} }
+						} )
+					}
 					showHandle={ isSelected }
 					size={ { width } }
 					style={ innerStyles }
 				>
-					{ selectedIcon ? selectedIcon.icon : null }
+					{ selectedIcon ? selectedIcon.icon : <Spinner /> }
 				</ResizableBox>
 			</div>
 		</>

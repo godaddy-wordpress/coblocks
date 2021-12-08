@@ -10,7 +10,6 @@ import deprecated from './deprecated';
 import edit from './edit';
 import { hasFormattingCategory } from '../../utils/block-helpers';
 import metadata from './block.json';
-import save from './save';
 
 /**
  * WordPress dependencies
@@ -32,14 +31,11 @@ const settings = {
 	attributes,
 	category: hasFormattingCategory ? 'common' : 'design',
 	deprecated,
+	// We can't enable example on this block without breaking style previews as attributes are completely replaced by the example.
+	//example: {}
 	/* translators: block description */
 	description: __( 'Add a stylized graphic symbol to communicate something more.', 'coblocks' ),
 	edit,
-	example: {
-		attributes: {
-			preview: true,
-		},
-	},
 	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
@@ -47,7 +43,7 @@ const settings = {
 		/* translators: block keyword */
 		__( 'icons', 'coblocks' ),
 	],
-	save,
+	save: () => null,
 	styles: [
 		{
 			isDefault: true,

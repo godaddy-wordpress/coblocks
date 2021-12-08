@@ -10,7 +10,6 @@ import classnames from 'classnames';
 import applyWithColors from './colors';
 import { DEFAULT_ICON_SIZE } from '.';
 import IconSizeSelect from './icon-size-select';
-import svg from './svgs';
 import { MAX_ICON_SIZE, MIN_ICON_SIZE } from './edit';
 
 /**
@@ -18,9 +17,9 @@ import { MAX_ICON_SIZE, MIN_ICON_SIZE } from './edit';
  */
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
-import { useState } from '@wordpress/element';
-import { BaseControl, Button, PanelBody, RangeControl, TextControl, ToggleControl, Tooltip, withFallbackStyles } from '@wordpress/components';
+import { BaseControl, Button, PanelBody, RangeControl, Spinner, TextControl, ToggleControl, Tooltip, withFallbackStyles } from '@wordpress/components';
 import { ContrastChecker, InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
+import { useEffect, useState } from '@wordpress/element';
 
 /**
  * Module constants
@@ -73,9 +72,23 @@ const Inspector = ( props ) => {
 		width,
 	} = attributes;
 
-	const [ filteredIcons, setFilteredIcons ] = useState( svg );
+	const [ svgs, setSvgs ] = useState();
+	const [ filteredIcons, setFilteredIcons ] = useState();
 	const [ searchValue, setSearchValue ] = useState( '' );
 	const [ isSearching, setIsSearching ] = useState( false );
+
+	useEffect( () => {
+		( async () => {
+			const importedSvgs = await import( './svgs' );
+
+			setSvgs( importedSvgs.default );
+			setFilteredIcons( importedSvgs.default );
+		} )();
+	}, [] );
+
+	if ( ! svgs || ! filteredIcons ) {
+		return <Spinner />;
+	}
 
 	const onChangeSize = ( value, size ) => {
 		setAttributes( { iconSize: value } );
@@ -138,7 +151,7 @@ const Inspector = ( props ) => {
 			setIsSearching( false );
 		}
 
-		const updatedList = Object.entries( svg[ iconStyle ] ).filter( function( item ) {
+		const updatedList = Object.entries( svgs[ iconStyle ] ).filter( function( item ) {
 			const text = item[ 0 ] + ' ' + item[ 1 ].keywords;
 			return text.toLowerCase().search(
 				event.toLowerCase() ) !== -1;
@@ -147,8 +160,8 @@ const Inspector = ( props ) => {
 		filtered.outlined = {};
 		filtered.filled = {};
 		updatedList.forEach( ( [ key ] ) => {
-			filtered.outlined[ key ] = svg.outlined[ key ];
-			filtered.filled[ key ] = svg.filled[ key ];
+			filtered.outlined[ key ] = svgs.outlined[ key ];
+			filtered.filled[ key ] = svgs.filled[ key ];
 		} );
 
 		setFilteredIcons( filtered );
@@ -250,7 +263,7 @@ const Inspector = ( props ) => {
 										} }
 									>
 										<span className="block-editor-block-types-list__item-icon">
-											{ icon && svg[ iconStyle ][ icon ].icon }
+											{ icon && svgs[ iconStyle ][ icon ].icon }
 										</span>
 									</Button>
 								</li>
@@ -262,7 +275,7 @@ const Inspector = ( props ) => {
 										<li
 											className={ classnames( 'block-editor-block-types-list__list-item', {}, ) }
 											key={ `editor-pblock-types-list-item-${ i }` } >
-											<Tooltip text={ ( svg[ iconStyle ][ keyName ].label ) ? svg[ iconStyle ][ keyName ].label : keyName }>
+											<Tooltip text={ ( svgs[ iconStyle ][ keyName ].label ) ? svgs[ iconStyle ][ keyName ].label : keyName }>
 												<Button
 													className="editor-block-list-item-button"
 													isPrimary={ icon && icon === keyName }
@@ -272,7 +285,7 @@ const Inspector = ( props ) => {
 													} }
 												>
 													<span className="block-editor-block-types-list__item-icon">
-														{ icon && svg[ iconStyle ][ keyName ].icon }
+														{ icon && svgs[ iconStyle ][ keyName ].icon }
 													</span>
 												</Button>
 											</Tooltip>

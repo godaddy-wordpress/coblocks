@@ -11,12 +11,10 @@ import { getColorClassName } from '@wordpress/block-editor';
 /**
  * Internal dependencies
  */
-import metadata from './block.json';
-import svgs from './svgs';
 import deprecatedSvgs from './deprecated/svgs';
 import deprecatedSvgsFocusable from './deprecated/svgsfocusable';
-
-import save from './save';
+import metadata from './block.json';
+import svgs from './deprecated/svgsv1';
 
 /**
  * Internal dependencies

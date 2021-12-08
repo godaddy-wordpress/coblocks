@@ -1,7 +1,7 @@
 require = require( 'esm' )( module );
 
 const CoblocksIcons = require( '@godaddy-wordpress/coblocks-icons/build/index.js' );
-const fs = require( 'fs' );
+const fs = require( 'fs' ).promises;
 const prettier = require( 'prettier' );
 
 const path = __dirname + '/';
@@ -13,10 +13,10 @@ const warningHeader = `// --
 /**
  * Scan for all the files inside /svg
  */
-const init = () => {
+const init = async () => {
 	console.log( 'Generating SVGS file ...' ); /* eslint-disable-line */
 
-	createFile( CoblocksIcons.IconsList );
+	await createFile( CoblocksIcons.IconsList );
 };
 
 /**
@@ -24,7 +24,7 @@ const init = () => {
  *
  * @param {Array} svgs - An array of all the SVGs
  */
-const createFile = ( svgs ) => {
+const createFile = async ( svgs ) => {
 	let content = `
 		${ warningHeader }
 
@@ -35,7 +35,7 @@ const createFile = ( svgs ) => {
 
 		const svgs = {`;
 
-	svgs.forEach( ( svg ) => {
+	svgs.forEach( async ( svg ) => {
 		const metas = CoblocksIcons[ `${ toPascalCase( svg ) }Meta` ];
 		const styles = CoblocksIcons[ `${ toPascalCase( svg ) }Styles` ];
 
@@ -61,7 +61,7 @@ const createFile = ( svgs ) => {
 		useTabs: true,
 	} );
 
-	fs.writeFileSync( `${ path }svgs-generated.js`, content );
+	await fs.writeFile( `${ path }svgs-generated.js`, content );
 };
 
 /**

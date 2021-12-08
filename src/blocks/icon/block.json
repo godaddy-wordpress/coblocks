@@ -62,10 +62,6 @@
 			"source": "attribute",
 			"selector": "div > div > a",
 			"attribute": "target"
-		},
-		"preview": {
-			"type": "boolean",
-			"default": false
 		}
 	}
 }
