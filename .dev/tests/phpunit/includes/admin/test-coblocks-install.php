@@ -8,9 +8,9 @@ class CoBlocks_Install_Tests extends WP_UnitTestCase {
 
 	private $coblocks_install;
 
-	public function setUp() {
+	public function set_up() {
 
-		parent::setUp();
+		parent::set_up();
 
 		include_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-install.php';
 
@@ -20,9 +20,9 @@ class CoBlocks_Install_Tests extends WP_UnitTestCase {
 
 	}
 
-	public function tearDown() {
+	public function tear_down() {
 
-		parent::tearDown();
+		parent::tear_down();
 
 		unset( $GLOBALS['current_screen'] );
 

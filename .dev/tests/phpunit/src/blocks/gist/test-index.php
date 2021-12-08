@@ -6,15 +6,15 @@
  */
 class CoBlocks_Gist_Index_Tests extends WP_UnitTestCase {
 
-	public function setUp() {
-		parent::setUp();
+	public function set_up() {
+		parent::set_up();
 
 		include_once COBLOCKS_PLUGIN_DIR . 'src/blocks/gist/index.php';
 		set_current_screen( 'edit-post' );
 	}
 
-	public function tearDown() {
-		parent::tearDown();
+	public function tear_down() {
+		parent::tear_down();
 
 		unset( $GLOBALS['current_screen'] );
 	}

@@ -32,7 +32,7 @@
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
 		"lint:php": "wp-scripts env lint-php",
-		"test:php": "wp-scripts env test-php",
+		"test:php": "wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/coblocks/phpunit.xml.dist --verbose'",
 		"test:js": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js",
 		"test:js:coverage": "yarn test:js --coverage",
 		"test:performance": "wp-scripts test-e2e --config .dev/performance/jest.performance.config.js",
