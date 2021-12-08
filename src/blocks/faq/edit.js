@@ -10,7 +10,6 @@ import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { useDispatch, useSelect } from '@wordpress/data';
-import { useEffect, useRef } from '@wordpress/element';
 
 const ALLOWED_BLOCKS = [
 	'coblocks/faq-item',
@@ -32,28 +31,11 @@ const Edit = ( props ) => {
 		clientId,
 	} = props;
 
-	const prevCountRef = useRef();
-
 	const { innerBlocks } = useSelect( ( select ) => ( {
 		innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
 	} ) );
 
-	const innerFAQItems = useSelect( ( select ) => select( 'core/block-editor' ).getBlocks( clientId ), [] );
-
-	const { insertBlock, removeBlock } = useDispatch( 'core/block-editor' );
-
-	useEffect( () => {
-		prevCountRef.current = innerFAQItems.length;
-
-		// When we go from a number of blocks to 0 blocks,
-		// we need to remove the whole block to prevent having
-		// an empty one (because this block can only be added once)
-		if ( prevCountRef.current === 0 && prevCount > 0 ) {
-			removeBlock( clientId, false );
-		}
-	}, [ innerFAQItems ] );
-
-	const prevCount = prevCountRef.current;
+	const { insertBlock } = useDispatch( 'core/block-editor' );
 
 	const insertNewItem = () => {
 		const newItem = createBlock( 'coblocks/faq-item' );
@@ -74,6 +56,7 @@ const Edit = ( props ) => {
 			<div className={ className }>
 				<InnerBlocks
 					allowedBlocks={ ALLOWED_BLOCKS }
+					placeholder={ ( <em>{ __( 'Click here to add an item to the FAQ', 'coblocks' ) }</em> ) }
 					renderAppender={ () =>
 						<CustomAppender
 							onAddNewHeading={ insertNewHeading }
