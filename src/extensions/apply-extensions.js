@@ -31,6 +31,12 @@ import {
 	applySaveProps as imageFilterSaveProps,
 } from './image-filter';
 import {
+	applyAttributes as lightboxApplyAttributes,
+	useEditorProps as lightboxEditorProps,
+	applySaveProps as lightboxSaveProps,
+	useLightbox as lightbox,
+} from './lightbox-controls';
+import {
 	usePositioningControl as positioningControl,
 	applyAttributes as positioningControlApplyAttributes,
 } from './image-crop';
@@ -87,6 +93,7 @@ const addAllEditorProps = createHigherOrderComponent( ( BlockListBlock ) => {
 			...animationEditorProps( parentBlock, parentBlockName, props, props.wrapperProps ),
 			...buttonControlsEditorProps( childBlock, childBlockName, props, props.wrapperProps ),
 			...imageFilterEditorProps( props, props.wrapperProps ),
+			...lightboxEditorProps( props, props.wrapperProps ),
 		};
 
 		// Extra features are JSX conditionals and should be rendered outside of the
@@ -134,6 +141,7 @@ function applyAllAttributes( settings ) {
 		...colorControlsApplyAttributes( settings ),
 		...positioningControlApplyAttributes( settings ),
 		...imageFilterApplyAttributes( settings ),
+		...lightboxApplyAttributes( settings ),
 	};
 
 	return extendedSettings;
@@ -153,6 +161,7 @@ function applyAllSaveProps( extraProps, blockType, attributes ) {
 		...advancedControlsSaveProps( extraProps, blockType, attributes ),
 		...buttonControlsSaveProps( extraProps, blockType, attributes ),
 		...imageFilterSaveProps( extraProps, blockType, attributes ),
+		...lightboxSaveProps( extraProps, blockType, attributes ),
 	};
 
 	return extendedExtraProps;
@@ -178,6 +187,7 @@ const applyAllControls = createHigherOrderComponent( ( BlockEdit ) => {
 				{ colorControls( props ) }
 				{ positioningControl( props ) }
 				{ imageFilter( props ) }
+				{ lightbox( props ) }
 			</>
 		);
 	};
