@@ -793,6 +793,10 @@ jobs:
       - setup_perf_tests
       - run_perf_tests:
           branch: master
+      - run:
+          name: Stop Server on Failure
+          when: on_fail
+          command: sudo kill $(ps ax | pgrep -f "server") > /dev/null 2>&1 &
       - persist_to_workspace:
           root: ~/
           paths:
@@ -805,6 +809,10 @@ jobs:
       - setup_perf_tests
       - run_perf_tests:
           branch: ${CIRCLE_BRANCH}
+      - run:
+          name: Stop Server on Failure
+          when: on_fail
+          command: sudo kill $(ps ax | pgrep -f "server") > /dev/null 2>&1 &
       - persist_to_workspace:
           root: ~/
           paths:
