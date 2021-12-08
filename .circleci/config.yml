@@ -364,21 +364,6 @@ commands:
             - yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}
             - yarn-deps-{{ .Environment.CACHE_VERSION }}
 
-  restore_update_cypress_cache:
-    steps:
-      - restore_cache:
-          keys:
-            - cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}
-            - cypress-deps-{{ .Environment.CACHE_VERSION }}
-      - run:
-          name: Install CyPress Binaries
-          command: ./node_modules/.bin/cypress install
-      - save_cache:
-          key: cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/Cypress
-
   run_e2e_tests:
     parameters:
       browser:
@@ -395,7 +380,6 @@ commands:
       - attach_workspace:
           at: ~/project
       - restore_yarn_cache
-      - restore_update_cypress_cache
       - restore_composer_cache
       - wait_for_mysql
       - install_wordpress_with_coblocks:
@@ -584,7 +568,6 @@ jobs:
     steps:
       - checkout
       - disable_xdebug_php_extension
-      - restore_yarn_cache
       - run:
           name: Store the build number
           command: |
@@ -599,7 +582,6 @@ jobs:
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
-      - restore_composer_cache
       - run:
           name: Install Composer dependencies
           command: |
@@ -670,15 +652,9 @@ jobs:
       - run:
           name: Install Composer v1
           command: sudo composer self-update --1
-      - restore_cache:
-          key: phpcs-coblocks-cache
       - run:
           name: "Linting PHP"
           command: composer run lint $FILES
-      - save_cache:
-          key: phpcs-coblocks-cache
-          paths:
-            - /tmp/phpcs-coblocks-cache
 
   # Run stylelint on changed stylesheet files only.
   css:
