@@ -10,6 +10,7 @@ import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { useDispatch, useSelect } from '@wordpress/data';
+import { useEffect, useRef } from '@wordpress/element';
 
 const ALLOWED_BLOCKS = [
 	'coblocks/faq-item',
@@ -35,7 +36,20 @@ const Edit = ( props ) => {
 		innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
 	} ) );
 
-	const { insertBlock } = useDispatch( 'core/block-editor' );
+	const innerFAQItems = useSelect( ( select ) => select( 'core/block-editor' ).getBlocks( clientId ), [] );
+
+	const { insertBlock, removeBlock } = useDispatch( 'core/block-editor' );
+	const prevCountRef = useRef();
+
+	useEffect( () => {
+		prevCountRef.current = innerFAQItems.length;
+
+		if ( prevCountRef.current === 0 && prevCount > 0 ) {
+			removeBlock( clientId, false );
+		}
+	}, [ innerFAQItems ] );
+
+	const prevCount = prevCountRef.current;
 
 	const insertNewItem = () => {
 		const newItem = createBlock( 'coblocks/faq-item' );

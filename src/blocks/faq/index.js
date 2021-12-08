@@ -31,13 +31,15 @@ const settings = {
 		'coblocks',
 		/* translators: block keyword */
 		__( 'FAQ', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'Frequently asked questions', 'coblocks' ),
 	],
 	save,
 	supports: {
 		align: [ 'wide', 'full' ],
 		multiple: false,
 	},
-	title: _x( 'FAQ', 'block name', 'coblocks' ),
+	title: _x( 'FAQ - Frequently Asked Questions', 'block name', 'coblocks' ),
 };
 
 export { metadata, name, category, settings };
