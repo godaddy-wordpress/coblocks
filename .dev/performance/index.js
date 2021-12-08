@@ -254,7 +254,7 @@ async function runPerformanceTests( branches, options ) {
 				);
 
 				// Stop the environment on the 3rd iteration
-				if ( i === 3 ) {
+				if ( i === 2 ) {
 					log( '        >> Stopping the environment' );
 					await runShellScript( 'sudo kill $(ps ax | pgrep -f "server") > /dev/null 2>&1 &' );
 				}
