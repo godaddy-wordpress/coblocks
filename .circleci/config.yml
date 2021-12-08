@@ -212,8 +212,6 @@ workflows:
          filters:
            tags:
              only: /^(?!canary).*$/
-         requires:
-           - master_perf_tests
 
       - aggregate_perf_test_results:
          filters:
