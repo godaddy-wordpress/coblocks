@@ -826,8 +826,9 @@ jobs:
       - run:
           name: Check for performance test result files.
           command: |
-            if [ ! -f "../master-median-results.json" ] || [ ! -f "../$CIRCLE_BRANCH-median-results.json" ]; then
+            if [ ! -f "./master-median-results.json" ] || [ ! -f "./$CIRCLE_BRANCH-median-results.json" ]; then
               echo "Performance tests results not found."
+              circleci-agent step halt
             fi
       - changed_files_with_extension:
           ext: ".js"
