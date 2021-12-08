@@ -835,6 +835,8 @@ jobs:
           name: Check for performance test result files.
           command: |
             if [ ! -f "../master-median-results.json" ] || [ ! -f "../$CIRCLE_BRANCH-median-results.json" ]; then
+              pwd
+              ls -la
               echo "Performance tests results not found."
             fi
       - changed_files_with_extension:
