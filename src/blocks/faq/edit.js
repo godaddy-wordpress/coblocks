@@ -32,6 +32,8 @@ const Edit = ( props ) => {
 		clientId,
 	} = props;
 
+	const prevCountRef = useRef();
+
 	const { innerBlocks } = useSelect( ( select ) => ( {
 		innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
 	} ) );
@@ -39,11 +41,13 @@ const Edit = ( props ) => {
 	const innerFAQItems = useSelect( ( select ) => select( 'core/block-editor' ).getBlocks( clientId ), [] );
 
 	const { insertBlock, removeBlock } = useDispatch( 'core/block-editor' );
-	const prevCountRef = useRef();
 
 	useEffect( () => {
 		prevCountRef.current = innerFAQItems.length;
 
+		// When we go from a number of blocks to 0 blocks,
+		// we need to remove the whole block to prevent having
+		// an empty one (because this block can only be added once)
 		if ( prevCountRef.current === 0 && prevCount > 0 ) {
 			removeBlock( clientId, false );
 		}
