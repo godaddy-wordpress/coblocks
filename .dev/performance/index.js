@@ -234,7 +234,7 @@ async function runPerformanceTests( branches, options ) {
 		/** @type {Array<Record<string, WPPerformanceResults>>} */
 		const rawResults = [];
 		// Run the test three times
-		for ( let i = 0; i < 3; i++ ) {
+		for ( let i = 0; i < 1; i++ ) {
 			rawResults[ i ] = {};
 			for ( const branch of branches ) {
 				const environmentDirectory = branchDirectories[ branch ];
@@ -254,7 +254,7 @@ async function runPerformanceTests( branches, options ) {
 				);
 
 				// Stop the environment on the 3rd iteration
-				if ( i === 2 ) {
+				if ( i === 1 ) {
 					log( '        >> Stopping the environment' );
 					await runShellScript( 'sudo kill $(ps ax | pgrep -f "server") > /dev/null 2>&1 &' );
 				}
