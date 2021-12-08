@@ -80,7 +80,7 @@ async function getPerformanceTestResults( branch ) {
 		const resultsFilename = testSuite + '-performance-results.json';
 		fs.writeFileSync(
 			path.resolve( __dirname, '../../../', resultsFilename ),
-			JSON.stringify( results[ testSuite ], null, 2 )
+			console.table( invertedResult )
 		);
 	}
 }

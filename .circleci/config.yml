@@ -834,10 +834,9 @@ jobs:
       - run:
           name: Check for performance test result files.
           command: |
-            if [ ! -f "./master-median-results.json" ] || [ ! -f "./$CIRCLE_BRANCH-median-results.json" ]; then
-              pwd
-              ls -la
+            if [ ! -f "../master-median-results.json" ] || [ ! -f "../$CIRCLE_BRANCH-median-results.json" ]; then
               echo "Performance tests results not found."
+              circleci-agent step halt
             fi
       - changed_files_with_extension:
           ext: ".js"
@@ -851,6 +850,9 @@ jobs:
       - run:
           name: Aggregate performance test results
           command: .dev/performance/cli-results.js get-test-results "${CIRCLE_BRANCH}"
+      - run:
+          name: Comment Performance Test Results on PR
+          command: bash .dev/bin/comment-perf-results-on-pr.sh
 
   # --------------------------------------------------
   # Internationalization Processes
