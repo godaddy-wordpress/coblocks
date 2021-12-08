@@ -7,17 +7,18 @@ const { mapValues, merge } = require( 'lodash' );
 /**
  * Internal dependencies
  */
-const { formats, log } = require( './logger' );
+const { log } = require( './logger' );
 
 /**
  * Get the performance test results and output it a table
+ *
+ * @param {string} branch The Branch name
  */
 async function getPerformanceTestResults( branch ) {
-
 	const testSuites = [ 'post-editor' ];
-	const master_data = fs.readFileSync( 'master-median-results.json' );
-	const current_data = fs.readFileSync( branch + '-median-results.json' );
-	const results = merge( JSON.parse( master_data ), JSON.parse( current_data ) );
+	const masterData = fs.readFileSync( 'master-median-results.json' );
+	const currentData = fs.readFileSync( branch + '-median-results.json' );
+	const results = merge( JSON.parse( masterData ), JSON.parse( currentData ) );
 
 	for ( const testSuite of testSuites ) {
 		const getDifference = ( key ) => {
@@ -80,7 +81,7 @@ async function getPerformanceTestResults( branch ) {
 		const resultsFilename = testSuite + '-performance-results.json';
 		fs.writeFileSync(
 			path.resolve( __dirname, '../../../', resultsFilename ),
-			console.table( invertedResult )
+			invertedResult
 		);
 	}
 }
