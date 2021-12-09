@@ -961,7 +961,8 @@ class CoBlocks_Form {
 		 */
 		$email_content = (string) apply_filters( 'coblocks_form_email_content', $this->email_content, $_POST, $post_id );
 
-		$reply_to = isset( $_POST[ $email_field_id ]['value'] ) ? esc_html( $_POST[ $email_field_id ]['value'] ) : esc_html( get_bloginfo( 'admin_email' ) );
+		$sender_name  = isset( $_POST[ $name_field_id ]['value'] ) ? esc_html( $_POST[ $name_field_id ]['value'] ) : '';
+		$sender_email = isset( $_POST[ $email_field_id ]['value'] ) ? esc_html( $_POST[ $email_field_id ]['value'] ) : '';
 
 		/**
 		 * Filter the form email headers.
@@ -973,7 +974,7 @@ class CoBlocks_Form {
 		$email_headers = (array) apply_filters(
 			'coblocks_form_email_headers',
 			array(
-				"Reply-To: {$reply_to}",
+				"Reply-To: {$sender_name} <{$sender_email}>",
 			),
 			$_POST,
 			$post_id
