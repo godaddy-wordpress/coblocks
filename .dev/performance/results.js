@@ -74,14 +74,44 @@ async function getPerformanceTestResults( branch ) {
 			},
 			invertedResult
 		);
+
 		// eslint-disable-next-line no-console
 		console.table( invertedResult );
 
-		// Write the file to use to report back to Github
-		const resultsFilename = testSuite + '-performance-results.json';
-		// eslint-disable-next-line no-console
-		const myConsole = new console.Console( fs.createWriteStream( resultsFilename ) );
-		myConsole.table( invertedResult );
+		let resultsTable = '';
+		let headers = '';
+		let iteration = 1;
+		let dataKey;
+		const dataKeys = Object.keys( results[ testSuite ].master );
+
+		for ( const [ key ] of Object.entries( results[ testSuite ] ) ) {
+			if ( iteration === 1 ) {
+				headers += '|index';
+			}
+
+			headers += '|' + key;
+
+			if ( iteration === 3 ) {
+				headers += '|\n';
+				headers += '| --- | --- | --- | --- |';
+			}
+
+			iteration++;
+		}
+
+		// eslint-disable-next-line
+		for ( dataKey in dataKeys ) {
+			resultsTable += '|' + dataKeys[ dataKey ];
+			// eslint-disable-next-line
+			resultsTable += '|' + results[ testSuite ][ 'master' ][ dataKeys[ dataKey ] ] + '|' + results[ testSuite ][ branch ][ dataKeys[ dataKey ] ] + '|' + results[ testSuite ][ 'change %' ][ dataKeys[ dataKey ] ] + '%\n';
+		}
+
+		resultsTable = headers + '\n' + resultsTable;
+
+		fs.writeFileSync(
+			testSuite + '-performance-results.json',
+			resultsTable
+		);
 	}
 }
 
