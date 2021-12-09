@@ -1,19 +1,13 @@
 /*global coblocksSettings*/
-
-/**
- * Styles
- */
-import './styles/style.scss';
-
 /**
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Fragment, useState } from '@wordpress/element';
+import { Modal } from '@wordpress/components';
 import { PluginMoreMenuItem } from '@wordpress/edit-post';
 import { useDispatch } from '@wordpress/data';
-import { registerPlugin, getPlugin, unregisterPlugin } from '@wordpress/plugins';
-import { Modal } from '@wordpress/components';
+import { useState } from '@wordpress/element';
+import { getPlugin, registerPlugin, unregisterPlugin } from '@wordpress/plugins';
 
 /**
  * Internal dependencies
@@ -34,7 +28,7 @@ export default function CoBlocksSettings() {
 	};
 
 	return (
-		<Fragment>
+		<>
 			<PluginMoreMenuItem onClick={ openModal }>
 				{ __( 'Editor settings', 'coblocks' ) }
 			</PluginMoreMenuItem>
@@ -42,10 +36,10 @@ export default function CoBlocksSettings() {
 			{ isOpen && (
 				<Modal
 					className="coblocks-settings-modal"
-					title={ __( 'Editor settings', 'coblocks' ) }
 					closeLabel={ __( 'Close', 'coblocks' ) }
 					onRequestClose={ closeModal }
 					shouldCloseOnClickOutside={ false }
+					title={ __( 'Editor settings', 'coblocks' ) }
 				>
 					<section className="edit-post-preferences-modal__section">
 						<h2 className="edit-post-preferences-modal__section-title">
@@ -79,7 +73,7 @@ export default function CoBlocksSettings() {
 					</section>
 				</Modal>
 			) }
-		</Fragment>
+		</>
 	);
 }
 
