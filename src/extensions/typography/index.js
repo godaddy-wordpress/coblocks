@@ -13,13 +13,8 @@ import './settings-modal-control';
 import classnames from 'classnames';
 
 /**
- * WordPress Dependencies
+ * Constants
  */
-import { addFilter } from '@wordpress/hooks';
-import { Fragment }	from '@wordpress/element';
-import { withSelect } from '@wordpress/data';
-import { compose, createHigherOrderComponent } from '@wordpress/compose';
-
 const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/pullquote', 'core/cover', 'core/quote', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/alert', 'coblocks/highlight', 'coblocks/pricing-table', 'coblocks/features' ];
 
 /**
@@ -28,114 +23,91 @@ const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/pullquote', 'cor
  * @param {Object} settings Original block settings.
  * @return {Object} Filtered block settings.
  */
-function addAttributes( settings ) {
+const applyAttributes = ( settings ) => {
 	// Use Lodash's assign to gracefully handle if attributes are undefined
 	if ( allowedBlocks.includes( settings.name ) ) {
 		settings.attributes = Object.assign( settings.attributes, TypographyAttributes );
 	}
 
 	return settings;
-}
+};
 
 /**
- * Override the default edit UI to include a new block toolbar control
+ * React hook function to extend the block editor with custom controls.
  *
- * @param {Function} BlockEdit Original component.
- * @return {string} Wrapped component.
+ * @function useTypography
+ * @param {Object} props Block props.
+ * @return {JSX} Conditionally include typography controls.
  */
-const withControls = createHigherOrderComponent( ( BlockEdit ) => {
-	return ( props ) => {
-		return (
-			<Fragment>
-				<BlockEdit { ...props } />
-				{ props.isSelected && allowedBlocks.includes( props.name ) && <Controls { ...{ ...props } } /> }
-			</Fragment>
-		);
-	};
-}, 'withControls' );
-
-/**
- * Override the default block element to add	wrapper props.
- *
- * @param {Function} BlockListBlock Original component
- * @return {Function} Wrapped component
- */
-
-const enhance = compose(
-	/**
-	 * For blocks whose block type doesn't support `multiple`, provides the
-	 * wrapped component with `originalBlockClientId` -- a reference to the
-	 * first block of the same type in the content -- if and only if that
-	 * "original" block is not the current one. Thus, an inexisting
-	 * `originalBlockClientId` prop signals that the block is valid.
-	 *
-	 * @param {Function} WrappedBlockEdit A filtered BlockEdit instance.
-	 * @return {Function} Enhanced component with merged state data props.
-	 */
-	withSelect( ( select ) => {
-		return { selected: select( 'core/block-editor' ).getSelectedBlock(), select };
-	} )
+const useTypography = ( props ) => (
+	<>
+		{ props.isSelected && allowedBlocks.includes( props.name ) && <Controls { ...{ ...props } } /> }
+	</>
 );
 
-const withFontSettings = createHigherOrderComponent( ( BlockListBlock ) => {
-	return enhance( ( { select, ...props } ) => {
-		let wrapperProps 	= props.wrapperProps;
-		let customData 	 	= {};
+/**
+ * React hook function to override the default block element to add wrapper props.
+ *
+ * @function useEditorProps
+ * @param {Object} block        Contains the selected block.
+ * @param {string} blockName    String referencing the selected block.
+ * @param {Object} props        Object with block props.
+ * @param {Object} wrapperProps Object with wrapper props used to extend selected block.
+ * @return {Object} Wrapper props to apply to block.
+ */
+const useEditorProps = ( block, blockName, props, wrapperProps ) => {
+	let customData 	 	= {};
 
-		const block = select( 'core/block-editor' ).getBlock( props.clientId );
-		const blockName	= select( 'core/block-editor' ).getBlockName( props.clientId );
+	if ( allowedBlocks.includes( blockName ) && block?.attributes ) {
+		const { customFontSize, fontFamily, lineHeight, fontWeight, letterSpacing, textTransform, customTextColor } = block.attributes;
 
-		if ( allowedBlocks.includes( blockName ) && block?.attributes ) {
-			const { customFontSize, fontFamily, lineHeight, fontWeight, letterSpacing, textTransform, customTextColor } = block.attributes;
-
-			if ( customFontSize ) {
-				customData = Object.assign( customData, { 'data-custom-fontsize': 1 } );
-			}
-
-			if ( lineHeight ) {
-				customData = Object.assign( customData, { 'data-custom-lineheight': 1 } );
-			}
-
-			if ( fontFamily ) {
-				customData = Object.assign( customData, { 'data-coblocks-font': 1 } );
-			}
-
-			if ( fontWeight ) {
-				customData = Object.assign( customData, { 'data-custom-fontweight': 1 } );
-			}
-
-			if ( textTransform ) {
-				customData = Object.assign( customData, { 'data-custom-texttransform': 1 } );
-			}
-
-			if ( customTextColor ) {
-				customData = Object.assign( customData, { 'data-custom-textcolor': 1 } );
-			}
-
-			if ( letterSpacing ) {
-				customData = Object.assign( customData, { 'data-custom-letterspacing': 1 } );
-			}
-
-			wrapperProps = {
-				...wrapperProps,
-				style: applyStyle( block.attributes, blockName ),
-				...customData,
-			};
+		if ( customFontSize ) {
+			customData = Object.assign( customData, { 'data-custom-fontsize': 1 } );
 		}
 
-		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
-	} );
-}, 'withFontSettings' );
+		if ( lineHeight ) {
+			customData = Object.assign( customData, { 'data-custom-lineheight': 1 } );
+		}
+
+		if ( fontFamily ) {
+			customData = Object.assign( customData, { 'data-coblocks-font': 1 } );
+		}
+
+		if ( fontWeight ) {
+			customData = Object.assign( customData, { 'data-custom-fontweight': 1 } );
+		}
+
+		if ( textTransform ) {
+			customData = Object.assign( customData, { 'data-custom-texttransform': 1 } );
+		}
+
+		if ( customTextColor ) {
+			customData = Object.assign( customData, { 'data-custom-textcolor': 1 } );
+		}
+
+		if ( letterSpacing ) {
+			customData = Object.assign( customData, { 'data-custom-letterspacing': 1 } );
+		}
+
+		wrapperProps = {
+			...wrapperProps,
+			style: applyStyle( block.attributes, blockName ),
+			...customData,
+		};
+	}
+
+	return wrapperProps;
+};
 
 /**
- * Override props assigned to save component to inject atttributes
+ * Override props assigned to save component to inject attributes
  *
  * @param {Object} extraProps Additional props applied to save element.
  * @param {Object} blockType  Block type.
  * @param {Object} attributes Current block attributes.
  * @return {Object} Filtered props applied to save element.
  */
-function applyFontSettings( extraProps, blockType, attributes ) {
+const applySaveProps = ( extraProps, blockType, attributes ) => {
 	if ( allowedBlocks.includes( blockType.name ) || deprecatedBlocks.includes( blockType.name ) ) {
 		if ( typeof extraProps.style !== 'undefined' ) {
 			extraProps.style = Object.assign( extraProps.style, applyStyle( attributes, blockType.name ) );
@@ -175,28 +147,6 @@ function applyFontSettings( extraProps, blockType, attributes ) {
 	}
 
 	return extraProps;
-}
+};
 
-addFilter(
-	'blocks.registerBlockType',
-	'coblocks/inspector/attributes',
-	addAttributes
-);
-
-addFilter(
-	'editor.BlockEdit',
-	'coblocks/typography',
-	withControls
-);
-
-addFilter(
-	'editor.BlockListBlock',
-	'coblocks/withFontSettings',
-	withFontSettings
-);
-
-addFilter(
-	'blocks.getSaveContent.extraProps',
-	'coblocks/applyFontSettings',
-	applyFontSettings
-);
+export { useEditorProps, applySaveProps, useTypography, applyAttributes };

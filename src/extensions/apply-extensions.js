@@ -1,6 +1,9 @@
 /**
- * Extension controls and logic.
+ * Extension and components.
  */
+import { applyAttributes as formLabelColorsApplyAttributes } from '../components/form-label-colors';
+import { applyAttributes as gutterControlApplyAttributes } from '../components/gutter-control';
+import { useReplaceImage as replaceImage } from './replace-image';
 import {
 	useAdvancedControls as advancedControls,
 	applyAttributes as advancedControlsApplyAttributes,
@@ -49,6 +52,12 @@ import {
 	usePositioningControl as positioningControl,
 	applyAttributes as positioningControlApplyAttributes,
 } from './image-crop';
+import {
+	useTypography as typography,
+	applyAttributes as typographyApplyAttributes,
+	useEditorProps as typographyEditorProps,
+	applySaveProps as typographySaveProps,
+} from './typography';
 
 /**
  * External dependencies
@@ -67,12 +76,6 @@ import { compose, createHigherOrderComponent } from '@wordpress/compose';
  */
 const enhance = compose(
 	/**
-	 * For blocks whose block type doesn't support `multiple`, provides the
-	 * wrapped component with `originalBlockClientId` -- a reference to the
-	 * first block of the same type in the content -- if and only if that
-	 * "original" block is not the current one. Thus, an inexisting
-	 * `originalBlockClientId` prop signals that the block is valid.
-	 *
 	 * @param {Function} WrappedBlockEdit A filtered BlockEdit instance.
 	 * @return {Function} Enhanced component with merged state data props.
 	 */
@@ -113,17 +116,19 @@ const addAllEditorProps = createHigherOrderComponent( ( BlockListBlock ) => {
 			imageFilterEditorProps( props, props.wrapperProps ),
 			lightboxEditorProps( props, props.wrapperProps ),
 			paddingControlsEditorProps( props, props.wrapperProps ),
+			typographyEditorProps( childBlock, childBlockName, props, props.wrapperProps ),
 		];
 
 		/**
-		 * Merge props from all extensions.
+		 * Merge classes from all extensions.
 		 */
 		const mergeClasses = classnames(
 			...everyExtension.map( ( extendedProps ) => extendedProps?.className )
 		);
 
 		/**
-		 * Merge props from all extensions.
+		 * @function renderFeature Merge props from all extensions.
+		 * @return {Object} The merged props from all extensions
 		 */
 		const mergeProps = () => {
 			let mergedProps = {};
@@ -152,7 +157,6 @@ const addAllEditorProps = createHigherOrderComponent( ( BlockListBlock ) => {
 		const wrapperProps = {
 			...mergeProps(),
 		};
-		console.log( wrapperProps );
 
 		/**
 		 * Extra features are JSX conditionals and should be rendered outside of the
@@ -211,6 +215,9 @@ function applyAllAttributes( settings ) {
 		...imageFilterApplyAttributes( settings ),
 		...lightboxApplyAttributes( settings ),
 		...paddingControlsApplyAttributes( settings ),
+		...typographyApplyAttributes( settings ),
+		...gutterControlApplyAttributes( settings ),
+		...formLabelColorsApplyAttributes( settings ),
 	};
 
 	return extendedSettings;
@@ -232,6 +239,7 @@ function applyAllSaveProps( extraProps, blockType, attributes ) {
 		...imageFilterSaveProps( extraProps, blockType, attributes ),
 		...lightboxSaveProps( extraProps, blockType, attributes ),
 		...paddingControlsSaveProps( extraProps, blockType, attributes ),
+		...typographySaveProps( extraProps, blockType, attributes ),
 	};
 
 	return extendedExtraProps;
@@ -259,6 +267,8 @@ const applyAllControls = createHigherOrderComponent( ( BlockEdit ) => {
 				{ imageFilter( props ) }
 				{ lightbox( props ) }
 				{ paddingControls( props ) }
+				{ replaceImage( props ) }
+				{ typography( props ) }
 			</>
 		);
 	};
