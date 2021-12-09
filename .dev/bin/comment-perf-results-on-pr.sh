@@ -52,6 +52,7 @@ if [ 'null' == "$COMMENT" ]; then
     -H "Accept: application/vnd.github.v3+json" \
     "https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/issues/$PR_ID/comments" \
     -d "{\"body\": \"$COMMENT_BODY\"}")
+  success "Done."
   exit 0
 fi
 
