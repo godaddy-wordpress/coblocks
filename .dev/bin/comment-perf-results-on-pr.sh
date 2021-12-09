@@ -33,8 +33,7 @@ git config github.user $GH_LOGIN
 
 success "Pull Request ID: $PR_ID"
 
-PERF_TEST_RESULTS=$(cat ~/project/post-editor-performance-results.json)
-COMMENT_BODY="Performance Test Results: $PERF_TEST_RESULTS"
+PERF_TEST_RESULTS=$(cat ~/project/post-editor-performance-results.txt)
 
 BOT_COMMENTS=$(curl -sS \
   -u $GH_LOGIN:$GH_AUTH_TOKEN \
@@ -51,9 +50,8 @@ if [ 'null' == "$COMMENT" ]; then
     -u $GH_LOGIN:$GH_AUTH_TOKEN \
     -H "Accept: application/vnd.github.v3+json" \
     "https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/issues/$PR_ID/comments" \
-    -d "{\"body\": \"$COMMENT_BODY\"}")
+    -d '{"body": "Performance Test Results: <br />'"$PERF_TEST_RESULTS"'"}')
   success "Done."
-  exit 0
 fi
 
 success "Updating existing comment."
@@ -70,6 +68,6 @@ NEW_COMMENT=$(curl -sS \
   -u $GH_LOGIN:$GH_AUTH_TOKEN \
   -H "Accept: application/vnd.github.v3+json" \
   "https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/issues/comments/$COMMENT_ID" \
-  -d "{\"body\": \"$COMMENT_BODY\"}")
+  -d '{"body": "Performance Test Results: <br />'"$PERF_TEST_RESULTS"'"}')
 
 success "Done."
