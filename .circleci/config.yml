@@ -838,15 +838,6 @@ jobs:
               echo "Performance tests results not found."
               circleci-agent step halt
             fi
-      - changed_files_with_extension:
-          ext: ".js"
-      - setup_spec_files_diff_tree
-      - restore_yarn_cache
-      - run:
-          name: Install Node dependencies
-          command: |
-            PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-            yarn install --frozen-lockfile
       - run:
           name: Aggregate performance test results
           command: .dev/performance/cli-results.js get-test-results "${CIRCLE_BRANCH}"
