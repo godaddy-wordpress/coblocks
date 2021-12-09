@@ -233,8 +233,8 @@ async function runPerformanceTests( branches, options ) {
 		results[ testSuite ] = {};
 		/** @type {Array<Record<string, WPPerformanceResults>>} */
 		const rawResults = [];
-		// Run the test three times
-		for ( let i = 0; i < 1; i++ ) {
+		// Run the test two times
+		for ( let i = 0; i < 2; i++ ) {
 			rawResults[ i ] = {};
 			for ( const branch of branches ) {
 				const environmentDirectory = branchDirectories[ branch ];
@@ -253,7 +253,7 @@ async function runPerformanceTests( branches, options ) {
 					`${ environmentDirectory }/wp-content/plugins/coblocks`
 				);
 
-				// Stop the environment on the 3rd iteration
+				// Stop the environment on the 2nd iteration
 				if ( i === 1 ) {
 					log( '        >> Stopping the environment' );
 					await runShellScript( 'sudo kill $(ps ax | pgrep -f "server") > /dev/null 2>&1 &' );
