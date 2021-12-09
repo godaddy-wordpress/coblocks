@@ -131,7 +131,7 @@ const Inspector = ( props ) => {
 
 		setAttributes( {
 			linkTarget: newLinkTarget,
-			rel: updatedRel || undefined,
+			rel: updatedRel.trim() || undefined,
 		} );
 	};
 
@@ -316,6 +316,17 @@ const Inspector = ( props ) => {
 						label={ !! linkTarget ? __( 'Opening in new tab', 'coblocks' ) : __( 'Open in new tab', 'coblocks' ) }
 						onChange={ onSetNewTab }
 					/>
+					<Button
+						disabled={ ! href }
+						isSecondary
+						isSmall
+						onClick={ () => setAttributes( {
+							href: undefined,
+							linkTarget: undefined,
+							rel: undefined,
+						} ) }>
+						{ __( 'Remove Link', 'coblocks' ) }
+					</Button>
 				</PanelBody>
 				<PanelColorSettings
 					colorSettings={ [

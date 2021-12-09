@@ -19,35 +19,44 @@ function coblocks_render_icon_block( $attrs ) {
 
 	$wrapper_classes = array(
 		'wp-block-coblocks-icon',
-		isset( $attrs['contentAlign'] ) ? "has-text-align-{$attrs['contentAlign']}" : false,
-		isset( $attrs['className'] ) ? $attrs['className'] : false,
+		! empty( $attrs['contentAlign'] ) ? "has-text-align-{$attrs['contentAlign']}" : false,
+		! empty( $attrs['className'] ) ? $attrs['className'] : false,
 	);
 
-	$icon_color_class = isset( $attrs['iconColor'] )
+	$icon_color_class = ! empty( $attrs['iconColor'] )
 		? _wp_to_kebab_case( $attrs['iconColor'] )
 		: false;
 
-	$background_color_class = isset( $attrs['backgroundColor'] )
+	$background_color_class = ! empty( $attrs['backgroundColor'] )
 		? _wp_to_kebab_case( $attrs['backgroundColor'] )
 		: false;
 
 	$inner_classes = array(
 		'wp-block-coblocks-icon__inner',
-		$background_color_class ? "has-{$background_color_class}-color" : false,
-		( isset( $attrs['backgroundColor'] ) || isset( $attrs['customBackgroundColor'] ) ) ? 'has-background' : false,
-		( isset( $attrs['iconColor'] ) || isset( $attrs['customIconColor'] ) ) ? 'has-text-color' : false,
+		$background_color_class ? "has-{$background_color_class}-background-color" : false,
+		( ! empty( $attrs['backgroundColor'] ) || ! empty( $attrs['customBackgroundColor'] ) ) ? 'has-background' : false,
+		( ! empty( $attrs['iconColor'] ) || ! empty( $attrs['customIconColor'] ) ) ? 'has-text-color' : false,
 		$icon_color_class ? "has-{$icon_color_class}-color" : false,
 	);
 
-	$inner_styles = array(
-		isset( $attrs['customBackgroundColor'] ) ? "background-color: {$attrs['customBackgroundColor']};" : false,
-		isset( $attrs['borderRadius'] ) ? "border-radius: {$attrs['borderRadius']}px;" : false,
-		isset( $attrs['customIconColor'] ) ? "color: {$attrs['customIconColor']}; fill: {$attrs['customIconColor']};" : false,
-		isset( $attrs['height'] ) ? "height: {$attrs['height']}px;" : false,
-		isset( $attrs['padding'] ) ? "padding: {$attrs['padding']}px;" : false,
-		isset( $attrs['width'] ) ? "width: {$attrs['width']}px;" : false,
+	$color_styles = array(
+		! empty( $attrs['customBackgroundColor'] ) ? "background-color: {$attrs['customBackgroundColor']};" : false,
+		! empty( $attrs['customIconColor'] ) ? "color: {$attrs['customIconColor']}; fill: {$attrs['customIconColor']};" : false,
 	);
 
+	$inner_styles = array(
+		! empty( $attrs['borderRadius'] ) ? "border-radius: {$attrs['borderRadius']}px;" : false,
+		! empty( $attrs['height'] ) ? "height: {$attrs['height']}px;" : false,
+		! empty( $attrs['padding'] ) ? "padding: {$attrs['padding']}px;" : false,
+		! empty( $attrs['width'] ) ? "width: {$attrs['width']}px;" : false,
+	);
+
+	// If there is no anchor put the color styles on the outter div.
+	if ( empty( $attrs['href'] ) ) {
+		$inner_styles = array_merge( $inner_styles, $color_styles );
+	}
+
+	$color_styles    = implode( ' ', array_filter( $color_styles ) );
 	$wrapper_classes = implode( ' ', array_filter( $wrapper_classes ) );
 	$inner_classes   = implode( ' ', array_filter( $inner_classes ) );
 	$inner_styles    = implode( ' ', array_filter( $inner_styles ) );
@@ -71,12 +80,13 @@ function coblocks_render_icon_block( $attrs ) {
 		$icon = file_get_contents( $icon_path );
 	}
 
-	if ( isset( $attrs['href'] ) ) {
+	if ( ! empty( $attrs['href'] ) ) {
 		$icon = sprintf(
-			'<a href="%1$s" rel="%2$s" target="%3$s">%4$s</a>',
+			'<a href="%1$s" rel="%2$s" target="%3$s" style="%4$s">%5$s</a>',
 			$attrs['href'],
-			$attrs['rel'],
-			$attrs['linkTarget'],
+			! empty( $attrs['rel'] ) ? esc_attr( $attrs['rel'] ) : '',
+			! empty( $attrs['linkTarget'] ) ? esc_attr( $attrs['linkTarget'] ) : '_self',
+			esc_attr( $color_styles ), // To make sure the color gets to the svg when there is an anchor.
 			$icon
 		);
 	}
