@@ -1,7 +1,6 @@
 // Read the test results from master and current branch at ~/project/[branch]-median-results.json files
 // combine them into a single results array with structure results[ testSuite ][ branch ] = results.json
 const fs = require( 'fs' );
-const path = require( 'path' );
 const { mapValues, merge } = require( 'lodash' );
 
 /**
@@ -78,11 +77,11 @@ async function getPerformanceTestResults( branch ) {
 		// eslint-disable-next-line no-console
 		console.table( invertedResult );
 
+		// Write the file to use to report back to Github
 		const resultsFilename = testSuite + '-performance-results.json';
-		fs.writeFileSync(
-			path.resolve( __dirname, '../../../', resultsFilename ),
-			invertedResult
-		);
+		// eslint-disable-next-line no-console
+		const myConsole = new console.Console( fs.createWriteStream( resultsFilename ) );
+		myConsole.table( invertedResult );
 	}
 }
 

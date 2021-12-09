@@ -33,7 +33,7 @@ git config github.user $GH_LOGIN
 
 success "Pull Request ID: $PR_ID"
 
-PERF_TEST_RESULTS=$(cat ~/post-editor-performance-results.json)
+PERF_TEST_RESULTS=$(cat ~/project/post-editor-performance-results.json)
 COMMENT_BODY="Performance Test Results: $PERF_TEST_RESULTS"
 
 BOT_COMMENTS=$(curl -sS \
