@@ -103,7 +103,7 @@ async function getPerformanceTestResults( branch ) {
 		for ( dataKey in dataKeys ) {
 			resultsTable += dataKeys[ dataKey ];
 			// eslint-disable-next-line
-			resultsTable += ' | ' + results[ testSuite ][ 'master' ][ dataKeys[ dataKey ] ] + ' | ' + results[ testSuite ][ branch ][ dataKeys[ dataKey ] ] + ' | ' + results[ testSuite ][ 'change' ][ dataKeys[ dataKey ] ] + '\r\n';
+			resultsTable += ' | ' + results[ testSuite ][ 'master' ][ dataKeys[ dataKey ] ] + ' | ' + results[ testSuite ][ branch ][ dataKeys[ dataKey ] ] + ' | ' + results[ testSuite ][ 'change %' ][ dataKeys[ dataKey ] ] + '%\r\n';
 		}
 
 		resultsTable = headers + '\r\n' + resultsTable;
