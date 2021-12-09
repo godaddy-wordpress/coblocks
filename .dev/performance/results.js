@@ -86,14 +86,14 @@ async function getPerformanceTestResults( branch ) {
 
 		for ( const [ key ] of Object.entries( results[ testSuite ] ) ) {
 			if ( iteration === 1 ) {
-				headers += '| index';
+				headers += 'index';
 			}
 
-			headers += '| ' + key;
+			headers += ' | ' + key;
 
 			if ( iteration === 3 ) {
-				headers += ' |\n';
-				headers += '| --- | --- | --- | --- |';
+				headers += '\r\n';
+				headers += '--- | --- | --- | ---';
 			}
 
 			iteration++;
@@ -101,12 +101,12 @@ async function getPerformanceTestResults( branch ) {
 
 		// eslint-disable-next-line
 		for ( dataKey in dataKeys ) {
-			resultsTable += ' | ' + dataKeys[ dataKey ];
+			resultsTable += dataKeys[ dataKey ];
 			// eslint-disable-next-line
-			resultsTable += ' | ' + results[ testSuite ][ 'master' ][ dataKeys[ dataKey ] ] + ' | ' + results[ testSuite ][ branch ][ dataKeys[ dataKey ] ] + ' | ' + results[ testSuite ][ 'change %' ][ dataKeys[ dataKey ] ] + '% |\n';
+			resultsTable += ' | ' + results[ testSuite ][ 'master' ][ dataKeys[ dataKey ] ] + ' | ' + results[ testSuite ][ branch ][ dataKeys[ dataKey ] ] + ' | ' + results[ testSuite ][ 'change %' ][ dataKeys[ dataKey ] ] + '%\r\n';
 		}
 
-		resultsTable = headers + '\n' + resultsTable;
+		resultsTable = headers + '\r\n' + resultsTable;
 
 		fs.writeFileSync(
 			testSuite + '-performance-results.json',
