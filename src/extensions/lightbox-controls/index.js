@@ -80,7 +80,7 @@ const useEditorProps = ( props, wrapperProps ) => {
 	let supportsLightbox = false;
 	supportsLightbox = blocksWithLightboxSupport.includes( name ) && !! hasParentGallery;
 
-	if ( supportsLightbox ) {
+	if ( supportsLightbox && lightbox ) {
 		wrapperProps = {
 			...wrapperProps,
 			className: classnames( wrapperProps?.className, {

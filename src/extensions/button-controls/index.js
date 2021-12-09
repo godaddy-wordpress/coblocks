@@ -108,7 +108,7 @@ const useEditorProps = ( block, blockName, props, wrapperProps ) => {
 		const { isFullwidth } = block.attributes;
 
 		if ( typeof isFullwidth !== 'undefined' && isFullwidth ) {
-			customData = Object.assign( customData, { 'data-coblocks-button-fullwidth': 1 } );
+			customData = Object.assign( { 'data-coblocks-button-fullwidth': 1 } );
 		}
 	}
 

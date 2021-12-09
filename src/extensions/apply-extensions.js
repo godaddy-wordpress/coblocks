@@ -1,3 +1,6 @@
+/**
+ * Extension controls and logic.
+ */
 import {
 	useAdvancedControls as advancedControls,
 	applyAttributes as advancedControlsApplyAttributes,
@@ -31,15 +34,26 @@ import {
 	applySaveProps as imageFilterSaveProps,
 } from './image-filter';
 import {
+	useLightbox as lightbox,
 	applyAttributes as lightboxApplyAttributes,
 	useEditorProps as lightboxEditorProps,
 	applySaveProps as lightboxSaveProps,
-	useLightbox as lightbox,
 } from './lightbox-controls';
+import {
+	usePaddingControls as paddingControls,
+	applyAttributes as paddingControlsApplyAttributes,
+	useEditorProps as paddingControlsEditorProps,
+	applySaveProps as paddingControlsSaveProps,
+} from './padding-controls';
 import {
 	usePositioningControl as positioningControl,
 	applyAttributes as positioningControlApplyAttributes,
 } from './image-crop';
+
+/**
+ * External dependencies
+ */
+import classnames from 'classnames';
 
 /**
  * WordPress Dependencies
@@ -88,19 +102,70 @@ const addAllEditorProps = createHigherOrderComponent( ( BlockListBlock ) => {
 		const childBlock = select( 'core/block-editor' ).getBlock( props.clientId );
 		const childBlockName = select( 'core/block-editor' ).getBlockName( props.clientId );
 
-		const wrapperProps = {
-			...advancedControlsEditorProps( parentBlock, parentBlockName, props, props.wrapperProps ),
-			...animationEditorProps( parentBlock, parentBlockName, props, props.wrapperProps ),
-			...buttonControlsEditorProps( childBlock, childBlockName, props, props.wrapperProps ),
-			...imageFilterEditorProps( props, props.wrapperProps ),
-			...lightboxEditorProps( props, props.wrapperProps ),
+		/**
+		 * Group extensions in an array to minimize code duplication and
+		 * allow a source of truth for all applied extensions.
+		 */
+		const everyExtension = [
+			advancedControlsEditorProps( parentBlock, parentBlockName, props, props.wrapperProps ),
+			animationEditorProps( parentBlock, parentBlockName, props, props.wrapperProps ),
+			buttonControlsEditorProps( childBlock, childBlockName, props, props.wrapperProps ),
+			imageFilterEditorProps( props, props.wrapperProps ),
+			lightboxEditorProps( props, props.wrapperProps ),
+			paddingControlsEditorProps( props, props.wrapperProps ),
+		];
+
+		/**
+		 * Merge props from all extensions.
+		 */
+		const mergeClasses = classnames(
+			...everyExtension.map( ( extendedProps ) => extendedProps?.className )
+		);
+
+		/**
+		 * Merge props from all extensions.
+		 */
+		const mergeProps = () => {
+			let mergedProps = {};
+
+			/**
+			 * Be aware of overriding existing props with matching properties names when adding new extensions.
+			 * Classes are a known collision point and must be merged separately.
+			 */
+			everyExtension.forEach( ( extendedProps ) => {
+				mergedProps = {
+					...mergedProps,
+					...extendedProps,
+				};
+			} );
+
+			// Classnames collide due to matching property names. We delete them here and merge them separately.
+			delete mergedProps.className;
+			return mergedProps;
 		};
 
-		// Extra features are JSX conditionals and should be rendered outside of the
-		// wrapper thus should be stripped from `wrapperProps` applied to the DOM.
+		/**
+		 * Extended wrapperProps applied to BlockListBlock.
+		 * wrapperProps would be element attributes in the DOM
+		 * such as `[data-coblocks-align-support: 1]` but should not contain the className.
+		 */
+		const wrapperProps = {
+			...mergeProps(),
+		};
+		console.log( wrapperProps );
+
+		/**
+		 * Extra features are JSX conditionals and should be rendered outside of the
+		 * wrapper thus should be stripped from `wrapperProps` applied to the DOM.
+		 */
 		const extraFeatures = wrapperProps.extraFeatures || {};
 		delete wrapperProps.extraFeatures;
 
+		/**
+		 * @function renderFeature Used when iterating attached features to apply a conditional JSX to the DOM.
+		 * @param {Object} featureObject Represents an attached feature.
+		 *                               Example = { [key]: { conditional: {Boolean}, jsx: {Function} } }
+		 */
 		const renderFeature = ( featureObject ) => {
 			const key = featureObject?.[ 0 ];
 			const feature = featureObject?.[ 1 ];
@@ -113,11 +178,14 @@ const addAllEditorProps = createHigherOrderComponent( ( BlockListBlock ) => {
 			return conditional && jsx;
 		};
 
+		/**
+		 * Array of JSX conditionals processed by the `renderFeature` function.
+		 */
 		const featureMap = Object.entries( extraFeatures ).map( ( feature ) => renderFeature( feature ) );
 
 		return (
 			<>
-				<BlockListBlock { ...props } wrapperProps={ wrapperProps } />
+				<BlockListBlock { ...{ ...props, className: mergeClasses } } wrapperProps={ wrapperProps } />
 				{ featureMap.map( ( feature, index ) => {
 					return <span key={ index }>{ feature }</span> || null;
 				} ) }
@@ -142,6 +210,7 @@ function applyAllAttributes( settings ) {
 		...positioningControlApplyAttributes( settings ),
 		...imageFilterApplyAttributes( settings ),
 		...lightboxApplyAttributes( settings ),
+		...paddingControlsApplyAttributes( settings ),
 	};
 
 	return extendedSettings;
@@ -162,6 +231,7 @@ function applyAllSaveProps( extraProps, blockType, attributes ) {
 		...buttonControlsSaveProps( extraProps, blockType, attributes ),
 		...imageFilterSaveProps( extraProps, blockType, attributes ),
 		...lightboxSaveProps( extraProps, blockType, attributes ),
+		...paddingControlsSaveProps( extraProps, blockType, attributes ),
 	};
 
 	return extendedExtraProps;
@@ -188,6 +258,7 @@ const applyAllControls = createHigherOrderComponent( ( BlockEdit ) => {
 				{ positioningControl( props ) }
 				{ imageFilter( props ) }
 				{ lightbox( props ) }
+				{ paddingControls( props ) }
 			</>
 		);
 	};

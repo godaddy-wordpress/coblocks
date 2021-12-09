@@ -19,7 +19,7 @@ import { useEffect, useRef, useState } from '@wordpress/element';
 const allowedBlocks = [
 	{ animateChildren: false, blockType: 'coblocks/gallery-carousel' },
 	{ animateChildren: true, blockType: 'coblocks/gallery-collage' },
-	{ animateChildren: true, blockType: 'coblocks/gallery-masonry' },
+	{ animateChildren: false, blockType: 'coblocks/gallery-masonry' },
 	{ animateChildren: true, blockType: 'coblocks/gallery-offset' },
 	{ animateChildren: true, blockType: 'coblocks/gallery-stacked' },
 	{ animateChildren: false, blockType: 'core/columns' },
@@ -45,7 +45,8 @@ const useAnimationControls = ( ( props ) => {
 
 	return (
 		<>
-			{ props.isSelected && allowedBlocks.some( ( allowedBlock ) => allowedBlock.blockType === props.name ) && <Controls { ...{ ...props, selectedBlock: block } } /> }
+			{ props.isSelected && allowedBlocks.some( ( allowedBlock ) => allowedBlock.blockType === props.name ) &&
+				<Controls { ...{ ...props, selected: block } } /> }
 		</>
 	);
 } );
@@ -120,7 +121,7 @@ const useEditorProps = ( block, blockName, props, wrapperProps ) => {
 
 	// Block not supported return unmodified.
 	if ( ! blockIsAllowed ) {
-		return;
+		return wrapperProps;
 	}
 
 	if ( ! animation ) {
@@ -130,7 +131,7 @@ const useEditorProps = ( block, blockName, props, wrapperProps ) => {
 			props.attributes.className = classList.filter( ( c ) => c !== 'coblocks-animate' ).join( ' ' );
 		}
 
-		return;
+		return wrapperProps;
 	}
 
 	const willAnimate = prevAnimation.current !== animation;
@@ -158,7 +159,6 @@ const useEditorProps = ( block, blockName, props, wrapperProps ) => {
 			jsx: ( <style dangerouslySetInnerHTML={ { __html: `.block-editor-block-contextual-toolbar, .block-editor-rich-text__inline-format-toolbar { display: none !important; }` } } /> ),
 		},
 	};
-
 	return wrapperProps;
 };
 

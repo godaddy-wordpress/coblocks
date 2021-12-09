@@ -47,19 +47,21 @@ const useImageFilter = ( props ) => {
 const useEditorProps = ( props, wrapperProps ) => {
 	const { attributes, name } = props;
 	if ( ! allowedBlocks.includes( name ) ) {
-		return;
+		return wrapperProps;
 	}
 
 	const {
 		filter,
 	} = attributes;
 
-	wrapperProps = {
-		...wrapperProps,
-		className: classnames( {
-			[ `has-filter-${ filter }` ]: filter !== 'none',
-		} ),
-	};
+	if ( !! filter && filter !== 'none' ) {
+		wrapperProps = {
+			...wrapperProps,
+			className: classnames( wrapperProps?.className, {
+				[ `has-filter-${ filter }` ]: filter !== 'none',
+			} ),
+		};
+	}
 
 	return wrapperProps;
 };
