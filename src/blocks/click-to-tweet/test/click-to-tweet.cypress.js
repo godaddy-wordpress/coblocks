@@ -55,45 +55,58 @@ describe( 'Test CoBlocks Click to Tweet Block', function() {
 	it( 'Test the text sizes change as expected.', function() {
 		helpers.addBlockToPost( 'coblocks/click-to-tweet', true );
 
-		cy.get( '.wp-block-coblocks-click-to-tweet' ).click( { force: true } );
-		cy.get( '.wp-block-coblocks-click-to-tweet__text' ).focus().type( 'Some custom data here.' );
+		cy.get( '.components-font-size-picker' ).then( () => {
+			if ( Cypress.$( '#toggle-group-control-0' ).length > 0 ) {
+				cy.get( '.wp-block-coblocks-click-to-tweet' ).click( { force: true } );
+				cy.get( '.wp-block-coblocks-click-to-tweet__text' ).focus().type( 'Some custom data here.' );
 
-		cy.get( '#downshift-1-toggle-button' ).click();
-		cy.get( '#downshift-1-menu li' ).contains( 'Small' ).click();
-		cy.get( '#downshift-1-toggle-button' ).contains( 'Small' );
-		cy.get( '.wp-block-coblocks-click-to-tweet .block-editor-rich-text__editable' ).should( 'have.css', 'font-size' ).and( 'match', /17px/ );
+				cy.get( '#toggle-group-control-0' ).find( '[data-value="17px"]' ).click();
+				cy.get( '.wp-block-coblocks-click-to-tweet .block-editor-rich-text__editable' ).should( 'have.css', 'font-size' ).and( 'match', /17px/ );
 
-		cy.get( '#downshift-1-toggle-button' ).click();
-		cy.get( '#downshift-1-menu li' ).contains( 'Medium' ).click();
-		cy.get( '#downshift-1-toggle-button' ).contains( 'Medium' );
-		cy.get( '.wp-block-coblocks-click-to-tweet .block-editor-rich-text__editable' ).should( 'have.css', 'font-size' ).and( 'match', /21px/ );
+				cy.get( '#toggle-group-control-0' ).find( '[data-value="24px"]' ).click();
+				cy.get( '.wp-block-coblocks-click-to-tweet .block-editor-rich-text__editable' ).should( 'have.css', 'font-size' ).and( 'match', /24px/ );
+			} else {
+				cy.get( '.wp-block-coblocks-click-to-tweet' ).click( { force: true } );
+				cy.get( '.wp-block-coblocks-click-to-tweet__text' ).focus().type( 'Some custom data here.' );
 
-		cy.get( '#downshift-1-toggle-button' ).click();
-		cy.get( '#downshift-1-menu li' ).contains( 'Large' ).click();
-		cy.get( '#downshift-1-toggle-button' ).contains( 'Large' );
-		cy.get( '.wp-block-coblocks-click-to-tweet .block-editor-rich-text__editable' ).should( 'have.css', 'font-size' ).and( 'match', /24px/ );
+				cy.get( '#downshift-1-toggle-button' ).click();
+				cy.get( '#downshift-1-menu li' ).contains( 'Small' ).click();
+				cy.get( '#downshift-1-toggle-button' ).contains( 'Small' );
+				cy.get( '.wp-block-coblocks-click-to-tweet .block-editor-rich-text__editable' ).should( 'have.css', 'font-size' ).and( 'match', /17px/ );
 
-		cy.get( '#downshift-1-toggle-button' ).click();
-		cy.get( '#downshift-1-menu li' ).contains( 'Huge' ).click();
-		cy.get( '#downshift-1-toggle-button' ).contains( 'Huge' );
-		cy.get( '.wp-block-coblocks-click-to-tweet .block-editor-rich-text__editable' ).should( 'have.css', 'font-size' ).and( 'match', /30px/ );
+				cy.get( '#downshift-1-toggle-button' ).click();
+				cy.get( '#downshift-1-menu li' ).contains( 'Medium' ).click();
+				cy.get( '#downshift-1-toggle-button' ).contains( 'Medium' );
+				cy.get( '.wp-block-coblocks-click-to-tweet .block-editor-rich-text__editable' ).should( 'have.css', 'font-size' ).and( 'match', /21px/ );
 
-		cy.get( '#downshift-1-toggle-button' ).click();
-		cy.get( '#downshift-1-menu li' ).contains( 'Custom' ).click();
-		cy.get( '.components-input-control__container input[aria-label="Custom"]' ).type( '5' );
-		cy.get( '#downshift-1-toggle-button' ).contains( 'Custom' );
-		cy.get( '.wp-block-coblocks-click-to-tweet .block-editor-rich-text__editable' ).should( 'have.css', 'font-size' ).and( 'match', /5px/ );
+				cy.get( '#downshift-1-toggle-button' ).click();
+				cy.get( '#downshift-1-menu li' ).contains( 'Large' ).click();
+				cy.get( '#downshift-1-toggle-button' ).contains( 'Large' );
+				cy.get( '.wp-block-coblocks-click-to-tweet .block-editor-rich-text__editable' ).should( 'have.css', 'font-size' ).and( 'match', /24px/ );
 
-		cy.get( '#downshift-1-toggle-button' ).click();
-		cy.get( '#downshift-1-menu li' ).contains( 'Default' ).click();
-		cy.get( '#downshift-1-toggle-button' ).contains( 'Default' );
+				cy.get( '#downshift-1-toggle-button' ).click();
+				cy.get( '#downshift-1-menu li' ).contains( 'Huge' ).click();
+				cy.get( '#downshift-1-toggle-button' ).contains( 'Huge' );
+				cy.get( '.wp-block-coblocks-click-to-tweet .block-editor-rich-text__editable' ).should( 'have.css', 'font-size' ).and( 'match', /30px/ );
 
-		// Test the reset button
-		cy.get( '#downshift-1-toggle-button' ).click();
-		cy.get( '#downshift-1-menu li' ).contains( 'Huge' ).click();
-		cy.get( '#downshift-1-toggle-button' ).contains( 'Huge' );
-		cy.get( '.wp-block-coblocks-click-to-tweet .block-editor-rich-text__editable' ).should( 'have.css', 'font-size' ).and( 'match', /30px/ );
-		cy.get( '.components-font-size-picker__controls button' ).contains( 'Reset' ).click();
-		cy.get( '#downshift-1-toggle-button' ).contains( 'Default' );
+				cy.get( '#downshift-1-toggle-button' ).click();
+				cy.get( '#downshift-1-menu li' ).contains( 'Custom' ).click();
+				cy.get( '.components-input-control__container input[aria-label="Custom"]' ).type( '5' );
+				cy.get( '#downshift-1-toggle-button' ).contains( 'Custom' );
+				cy.get( '.wp-block-coblocks-click-to-tweet .block-editor-rich-text__editable' ).should( 'have.css', 'font-size' ).and( 'match', /5px/ );
+
+				cy.get( '#downshift-1-toggle-button' ).click();
+				cy.get( '#downshift-1-menu li' ).contains( 'Default' ).click();
+				cy.get( '#downshift-1-toggle-button' ).contains( 'Default' );
+
+				// Test the reset button
+				cy.get( '#downshift-1-toggle-button' ).click();
+				cy.get( '#downshift-1-menu li' ).contains( 'Huge' ).click();
+				cy.get( '#downshift-1-toggle-button' ).contains( 'Huge' );
+				cy.get( '.wp-block-coblocks-click-to-tweet .block-editor-rich-text__editable' ).should( 'have.css', 'font-size' ).and( 'match', /30px/ );
+				cy.get( '.components-font-size-picker__controls button' ).contains( 'Reset' ).click();
+				cy.get( '#downshift-1-toggle-button' ).contains( 'Default' );
+			}
+		} );
 	} );
 } );
