@@ -24,9 +24,9 @@ class CoBlocks_Post_Meta_Tests extends WP_Test_REST_TestCase {
 
 	}
 
-	public function setUp() {
+	public function set_up() {
 
-		parent::setUp();
+		parent::set_up();
 
 		set_current_screen( 'dashboard' );
 
@@ -44,9 +44,9 @@ class CoBlocks_Post_Meta_Tests extends WP_Test_REST_TestCase {
 
 	}
 
-	public function tearDown() {
+	public function tear_down() {
 
-		parent::tearDown();
+		parent::tear_down();
 
 		unset( $GLOBALS['current_screen'] );
 

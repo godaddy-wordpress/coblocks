@@ -5,6 +5,10 @@
  * @package CoBlocks
  */
 
+// Require dependencies.
+require_once dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) . '/vendor/wp-phpunit/wp-phpunit/__loaded.php';
+require_once dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) . '/vendor/yoast/phpunit-polyfills/phpunitpolyfills-autoload.php';
+
 // If we're running in WP's build directory, ensure that WP knows that, too.
 if ( 'build' === getenv( 'LOCAL_DIR' ) ) {
 	define( 'WP_RUN_CORE_TESTS', true );
@@ -14,9 +18,14 @@ if ( 'build' === getenv( 'LOCAL_DIR' ) ) {
 // Try the WP_TESTS_DIR environment variable first.
 $_tests_dir = getenv( 'WP_TESTS_DIR' );
 
+// Next, try the WP_PHPUNIT composer package if we're inside wp-env.
+if ( ! $_tests_dir && 'tests-mysql' === getenv( 'WORDPRESS_DB_HOST' ) ) {
+	$_tests_dir = getenv( 'WP_PHPUNIT__DIR' );
+}
+
 // See if we're installed inside an existing WP dev instance.
 if ( ! $_tests_dir ) {
-	$_try_tests_dir = dirname( __FILE__ ) . '/../../../../../../../tests/phpunit';
+	$_try_tests_dir = dirname( __FILE__ ) . '/../../../../../tests/phpunit';
 	if ( file_exists( $_try_tests_dir . '/includes/functions.php' ) ) {
 		$_tests_dir = $_try_tests_dir;
 	}
