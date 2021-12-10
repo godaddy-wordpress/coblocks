@@ -56,6 +56,7 @@ const Edit = ( props ) => {
 			<div className={ className }>
 				<InnerBlocks
 					allowedBlocks={ ALLOWED_BLOCKS }
+					placeholder={ ( <em>{ __( 'Click here to add an item to the FAQ', 'coblocks' ) }</em> ) }
 					renderAppender={ () =>
 						<CustomAppender
 							onAddNewHeading={ insertNewHeading }
