@@ -9,6 +9,8 @@ import CustomAppender from './appender';
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 import { InnerBlocks } from '@wordpress/block-editor';
+import { useEffect } from '@wordpress/element';
+import { usePrevious } from '@wordpress/compose';
 import { useDispatch, useSelect } from '@wordpress/data';
 
 const ALLOWED_BLOCKS = [
@@ -35,7 +37,16 @@ const Edit = ( props ) => {
 		innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
 	} ) );
 
-	const { insertBlock } = useDispatch( 'core/block-editor' );
+	const { insertBlock, removeBlock } = useDispatch( 'core/block-editor' );
+
+	const currentCount = innerBlocks.length;
+	const prevCount = usePrevious( innerBlocks.length );
+
+	useEffect( () => {
+		if ( currentCount === 0 && prevCount > 0 ) {
+			removeBlock( clientId, false );
+		}
+	}, [ currentCount, prevCount ] );
 
 	const insertNewItem = () => {
 		const newItem = createBlock( 'coblocks/faq-item' );
@@ -52,22 +63,19 @@ const Edit = ( props ) => {
 	};
 
 	return (
-		<>
-			<div className={ className }>
-				<InnerBlocks
-					allowedBlocks={ ALLOWED_BLOCKS }
-					placeholder={ ( <em>{ __( 'Click here to add an item to the FAQ', 'coblocks' ) }</em> ) }
-					renderAppender={ () =>
-						<CustomAppender
-							onAddNewHeading={ insertNewHeading }
-							onAddNewItem={ insertNewItem }
-						/>
-					}
-					template={ TEMPLATE }
-					templateInsertUpdatesSelection={ false }
-				/>
-			</div>
-		</>
+		<div className={ className }>
+			<InnerBlocks
+				allowedBlocks={ ALLOWED_BLOCKS }
+				renderAppender={ () =>
+					<CustomAppender
+						onAddNewHeading={ insertNewHeading }
+						onAddNewItem={ insertNewItem }
+					/>
+				}
+				template={ TEMPLATE }
+				templateInsertUpdatesSelection={ false }
+			/>
+		</div>
 	);
 };
 
