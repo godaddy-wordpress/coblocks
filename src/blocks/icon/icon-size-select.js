@@ -2,8 +2,8 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { SelectControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
-import {	SelectControl } from '@wordpress/components';
 
 import { DEFAULT_ICON_SIZE } from '.';
 
@@ -51,7 +51,10 @@ const IconSizeSelect = ( props ) => {
 	const onChangeValue = ( event ) => {
 		const selectedUtil = utilitySizes.find( ( util ) => util.slug === event );
 		if ( selectedUtil ) {
-			setAttributes( { width: selectedUtil.size, height: selectedUtil.size } );
+			setAttributes( {
+				height: selectedUtil.size,
+				width: selectedUtil.size,
+			} );
 			setCurrentSelectValue(
 				getSelectValuesFromUtilitySizes( utilitySizes, selectedUtil.slug )
 			);
@@ -61,8 +64,8 @@ const IconSizeSelect = ( props ) => {
 	const getSelectOptions = ( optionsArray ) => {
 		return [
 			...optionsArray.map( ( option ) => ( {
-				value: option.slug,
 				label: option.name,
+				value: option.slug,
 			} ) ),
 		];
 	};
@@ -70,11 +73,11 @@ const IconSizeSelect = ( props ) => {
 	return (
 		<>
 			<SelectControl
-				label={ __( 'Choose icon size preset', 'coblocks' ) }
 				hideLabelFromVision={ true }
-				value={ iconSize }
+				label={ __( 'Choose icon size preset', 'coblocks' ) }
 				onChange={ onChangeValue }
 				options={ getSelectOptions( utilitySizes ) }
+				value={ iconSize }
 			/>
 		</>
 	);
