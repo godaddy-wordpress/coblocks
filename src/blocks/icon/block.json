@@ -46,26 +46,13 @@
 			"default": 0
 		},
 		"href": {
-			"type": "string",
-			"source": "attribute",
-			"selector": "div > div > a",
-			"attribute": "href"
+			"type": "string"
 		},
 		"rel": {
-			"type": "string",
-			"source": "attribute",
-			"selector": "div > div > a",
-			"attribute": "rel"
+			"type": "string"
 		},
 		"linkTarget": {
-			"type": "string",
-			"source": "attribute",
-			"selector": "div > div > a",
-			"attribute": "target"
-		},
-		"preview": {
-			"type": "boolean",
-			"default": false
+			"type": "string"
 		}
 	}
 }

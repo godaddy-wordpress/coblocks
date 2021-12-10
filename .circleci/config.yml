@@ -577,7 +577,7 @@ jobs:
   # 3. Persist project folder to workspace for other jobs.
   build:
     docker:
-      - image: circleci/php:7.3-node
+      - image: circleci/php:7.4-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD

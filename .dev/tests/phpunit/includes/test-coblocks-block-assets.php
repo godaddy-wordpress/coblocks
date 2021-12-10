@@ -8,9 +8,9 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 
 	private $coblocks_block_assets;
 
-	public function setUp() {
+	public function set_up() {
 
-		parent::setUp();
+		parent::set_up();
 
 		$this->coblocks_block_assets = new CoBlocks_Block_Assets();
 
@@ -22,9 +22,9 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 		$wp_styles = new WP_Styles();
 	}
 
-	public function tearDown() {
+	public function tear_down() {
 
-		parent::tearDown();
+		parent::tear_down();
 
 		unset( $GLOBALS['current_screen'] );
 
