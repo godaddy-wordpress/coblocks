@@ -1,0 +1,53 @@
+{
+	"name": "coblocks/testimonial",
+	"category": "layout",
+	"attributes": {
+		"alt": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "alt",
+			"default": ""
+		},
+		"description": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-coblocks-food-item__description",
+			"default": ""
+		},
+		"focalPoint": {
+			"type": "object"
+		},
+		"headingLevel": {
+			"type": "integer",
+			"default": 4
+		},
+		"name": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-coblocks-food-item__heading",
+			"default": ""
+		},
+		"showImage": {
+			"type": "boolean",
+			"default": false
+		},
+		"showTitle": {
+			"type": "boolean",
+			"default": true
+		},
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-coblocks-food-item__price span",
+			"default": ""
+		},
+		"url": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "src",
+			"default": ""
+		}
+	}
+}

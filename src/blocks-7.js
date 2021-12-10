@@ -7,6 +7,8 @@ import * as offset from './blocks/gallery-offset';
 import * as openTable from './blocks/opentable';
 import * as postCarousel from './blocks/post-carousel';
 import * as posts from './blocks/posts';
+import * as testimonial from './blocks/testimonials/testimonial';
+import * as testimonials from './blocks/testimonials';
 
 /**
  * Function to register blocks provided by CoBlocks.
@@ -16,6 +18,8 @@ import * as posts from './blocks/posts';
 	mediaCard,
 	offset,
 	openTable,
-	posts,
 	postCarousel,
+	posts,
+	testimonial,
+	testimonials,
 ].forEach( registerBlock );
