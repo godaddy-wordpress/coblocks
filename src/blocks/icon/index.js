@@ -31,11 +31,11 @@ const settings = {
 	attributes,
 	category: hasFormattingCategory ? 'common' : 'design',
 	deprecated,
-	// We can't enable example on this block without breaking style previews as attributes are completely replaced by the example.
-	//example: {}
 	/* translators: block description */
 	description: __( 'Add a stylized graphic symbol to communicate something more.', 'coblocks' ),
 	edit,
+	// We can't enable example on this block without breaking style previews as attributes are completely replaced by the example.
+	//example: {}
 	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',

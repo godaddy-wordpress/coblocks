@@ -59,7 +59,7 @@ const Edit = ( props ) => {
 			setSvgs( importedSvgs.default );
 
 			if ( attributes.icon === '' ) {
-				// Randomized the default icon when first added.
+				// Randomize the default icon when first added.
 				let defaultIcons = [ 'aperture', 'gesture', 'scatter_plot', 'waves', 'blocks', 'coblocks', 'drafts', 'device_hub', 'marker' ];
 				if ( ! bundledIconsEnabled && Object.keys( coblocksBlockData.customIcons ).length ) {
 					defaultIcons = Object.keys( coblocksBlockData.customIcons );

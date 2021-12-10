@@ -51,7 +51,7 @@ function coblocks_render_icon_block( $attrs ) {
 		! empty( $attrs['width'] ) ? "width: {$attrs['width']}px;" : false,
 	);
 
-	// If there is no anchor put the color styles on the outter div.
+	// If there is no anchor put the color styles on the outer div.
 	if ( empty( $attrs['href'] ) ) {
 		$inner_styles = array_merge( $inner_styles, $color_styles );
 	}
