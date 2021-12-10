@@ -8,9 +8,8 @@ import { IconIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  */
 import deprecated from './deprecated';
 import edit from './edit';
-import metadata from './block.json';
-import save from './save';
 import { hasFormattingCategory } from '../../utils/block-helpers';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -29,11 +28,14 @@ export const DEFAULT_ICON_SIZE = 60;
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: block name */
-	title: __( 'Icon', 'coblocks' ),
+	attributes,
+	category: hasFormattingCategory ? 'common' : 'design',
+	deprecated,
 	/* translators: block description */
 	description: __( 'Add a stylized graphic symbol to communicate something more.', 'coblocks' ),
-	category: hasFormattingCategory ? 'common' : 'design',
+	edit,
+	// We can't enable example on this block without breaking style previews as attributes are completely replaced by the example.
+	//example: {}
 	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
@@ -41,28 +43,22 @@ const settings = {
 		/* translators: block keyword */
 		__( 'icons', 'coblocks' ),
 	],
+	save: () => null,
 	styles: [
 		{
-			name: 'outlined',
+			isDefault: true,
 			/* translators: block style */
 			label: __( 'Outlined', 'coblocks' ),
-			isDefault: true,
+			name: 'outlined',
 		},
 		{
-			name: 'filled',
 			/* translators: block style */
 			label: __( 'Filled', 'coblocks' ),
+			name: 'filled',
 		},
 	],
-	attributes,
-	edit,
-	example: {
-		attributes: {
-			preview: true,
-		},
-	},
-	save,
-	deprecated,
+	/* translators: block name */
+	title: __( 'Icon', 'coblocks' ),
 };
 
 export { name, category, metadata, settings };
