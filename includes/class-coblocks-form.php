@@ -964,7 +964,7 @@ class CoBlocks_Form {
 		$sender_email = isset( $_POST[ $email_field_id ]['value'] ) ? esc_html( $_POST[ $email_field_id ]['value'] ) : '';
 		$sender_name  = isset( $_POST[ $name_field_id ]['value'] ) ? esc_html( $_POST[ $name_field_id ]['value'] ) : '';
 
-		$headers = [];
+		$headers = array();
 
 		if ( ! empty( $sender_email ) ) {
 
