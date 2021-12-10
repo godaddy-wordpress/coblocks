@@ -961,8 +961,16 @@ class CoBlocks_Form {
 		 */
 		$email_content = (string) apply_filters( 'coblocks_form_email_content', $this->email_content, $_POST, $post_id );
 
-		$sender_name  = isset( $_POST[ $name_field_id ]['value'] ) ? esc_html( $_POST[ $name_field_id ]['value'] ) : '';
 		$sender_email = isset( $_POST[ $email_field_id ]['value'] ) ? esc_html( $_POST[ $email_field_id ]['value'] ) : '';
+		$sender_name  = isset( $_POST[ $name_field_id ]['value'] ) ? esc_html( $_POST[ $name_field_id ]['value'] ) : '';
+
+		$headers = [];
+
+		if ( ! empty( $sender_email ) ) {
+
+			$headers[] = empty( $sender_name ) ? "Reply-To: {$sender_email}" : "Reply-To: {$sender_name} <{$sender_email}>";
+
+		}
 
 		/**
 		 * Filter the form email headers.
@@ -973,9 +981,7 @@ class CoBlocks_Form {
 		 */
 		$email_headers = (array) apply_filters(
 			'coblocks_form_email_headers',
-			array(
-				"Reply-To: {$sender_name} <{$sender_email}>",
-			),
+			$headers,
 			$_POST,
 			$post_id
 		);
