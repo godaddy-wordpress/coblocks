@@ -109,16 +109,6 @@ function GalleryEdit( props ) {
 		[ innerBlockImages ]
 	);
 
-	const wasBlockJustInserted = useSelect(
-		( select ) => {
-			return select( blockEditorStore ).wasBlockJustInserted(
-				clientId,
-				'inserter_menu'
-			);
-		},
-		[ clientId ]
-	);
-
 	useEffect( () => {
 		/**
 		 * This logic should only fire in the case of block deprecations.
@@ -449,9 +439,6 @@ function GalleryEdit( props ) {
 			accept="image/*"
 			addToGallery={ hasImageIds }
 			allowedTypes={ ALLOWED_MEDIA_TYPES }
-			autoOpenMediaUpload={
-				! hasImages && isSelected && wasBlockJustInserted
-			}
 			disableMediaButtons={
 				( hasImages && ! isSelected ) || imagesUploading
 			}
