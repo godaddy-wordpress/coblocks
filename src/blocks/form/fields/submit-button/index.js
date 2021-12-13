@@ -48,10 +48,11 @@ const metadata = {
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: block name */
-	title: __( 'Submit', 'coblocks' ),
-	/* translators: block description */
+	attributes,
 	description: __( 'A button for submitting form data.', 'coblocks' ),
+	edit,
+
+	/* translators: block description */
 	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
@@ -61,22 +62,22 @@ const settings = {
 		__( 'button', 'coblocks' ),
 	],
 	parent: [ 'coblocks/form' ],
+	save: () => null,
+	styles: [
+		{ isDefault: true, label: __( 'Fill', 'coblocks' ), name: 'fill' },
+		{ label: __( 'Outline', 'coblocks' ), name: 'outline' },
+		{ label: __( 'Circular', 'coblocks' ), name: 'circular' },
+		{ label: __( '3D', 'coblocks' ), name: '3d' },
+		{ label: __( 'Shadow', 'coblocks' ), name: 'shadow' },
+	],
 	supports: {
-		reusable: false,
+		customClassName: true,
 		html: false,
 		multiple: false,
-		customClassName: true,
+		reusable: false,
 	},
-	styles: [
-		{ name: 'fill', label: __( 'Fill' ), isDefault: true },
-		{ name: 'outline', label: __( 'Outline' ) },
-		{ name: 'circular', label: __( 'Circular' ) },
-		{ name: '3d', label: __( '3D' ) },
-		{ name: 'shadow', label: __( 'Shadow' ) },
-	],
-	attributes,
-	edit,
-	save: () => null,
+	/* translators: block name */
+	title: __( 'Submit', 'coblocks' ),
 };
 
 export { name, category, metadata, settings };
