@@ -284,7 +284,7 @@ function GalleryEdit( props ) {
 			)
 			: innerBlockImages;
 
-		const newCaptions = Array.from( selectedImages )?.reduce( ( previous, image ) => {
+		const newCaptions = Array.from( selectedImages ).reduce( ( previous, image ) => {
 			const previousReturnedObject = !! previous?.mime ? {} : previous;
 			return { ...previousReturnedObject, [ `${ image.id }` ]: image.caption };
 		} );
