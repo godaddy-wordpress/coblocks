@@ -92,7 +92,7 @@ async function getPerformanceTestResults( branch ) {
 			headers += ' | ' + key;
 
 			if ( iteration === 3 ) {
-				headers += '\r\n';
+				headers += '\\r\\n';
 				headers += ':--- | :---: | :---: | :---:';
 			}
 
@@ -103,10 +103,10 @@ async function getPerformanceTestResults( branch ) {
 		for ( dataKey in dataKeys ) {
 			resultsTable += dataKeys[ dataKey ];
 			// eslint-disable-next-line
-			resultsTable += ' | ' + results[ testSuite ][ 'master' ][ dataKeys[ dataKey ] ] + ' | ' + results[ testSuite ][ branch ][ dataKeys[ dataKey ] ] + ' | ' + results[ testSuite ][ 'change %' ][ dataKeys[ dataKey ] ] + '%\r\n';
+			resultsTable += ' | ' + results[ testSuite ][ 'master' ][ dataKeys[ dataKey ] ] + ' | ' + results[ testSuite ][ branch ][ dataKeys[ dataKey ] ] + ' | ' + results[ testSuite ][ 'change %' ][ dataKeys[ dataKey ] ] + '%\\r\\n';
 		}
 
-		resultsTable = headers + '\r\n' + resultsTable;
+		resultsTable = headers + '\\r\\n' + resultsTable;
 
 		fs.writeFileSync(
 			testSuite + '-performance-results.txt',
