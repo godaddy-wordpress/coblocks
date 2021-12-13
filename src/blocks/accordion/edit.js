@@ -34,7 +34,6 @@ const ALLOWED_BLOCKS = [ 'coblocks/accordion-item' ];
  * @return {Object[]} Columns layout configuration.
  */
 const getCount = memoize( ( count ) => {
-	console.log( 'test' ); // eslint-disable-line
 	return times( count, () => [ 'coblocks/accordion-item' ] );
 } );
 
