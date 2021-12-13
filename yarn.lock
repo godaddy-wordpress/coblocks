@@ -1232,10 +1232,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@godaddy-wordpress/coblocks-icons@1.10.0":
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/coblocks-icons/-/coblocks-icons-1.10.0.tgz#81a65a1f2c2599018bf88a6b7ca9241f9659d6de"
-  integrity sha512-eRXlcwILIstL2N/8WkD4aPeRQ66R0iLra7OslFGsBlommej+SXiT1NXbTMnvWpDdTBL6z0S9SxoZw+GJCaTGnA==
+"@godaddy-wordpress/coblocks-icons@2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/coblocks-icons/-/coblocks-icons-2.0.1.tgz#7ff9f6c3d8741377b2fc6a28a1dc7455291a082e"
+  integrity sha512-Pac7OLr2h6JzpIgY4BVaG1poLiLia3xO/U+i8DjC4ZBLM6UCpgiFnc6FUeBVCSeB8riQTzIrMTqn8HAiqMbpBQ==
   dependencies:
     "@wordpress/primitives" "^1.7.0"
 
@@ -6033,6 +6033,11 @@ eslint@^7.17.0:
     table "^6.0.9"
     text-table "^0.2.0"
     v8-compile-cache "^2.0.3"
+
+esm@^3.2.25:
+  version "3.2.25"
+  resolved "https://registry.yarnpkg.com/esm/-/esm-3.2.25.tgz#342c18c29d56157688ba5ce31f8431fbb795cc10"
+  integrity sha512-U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==
 
 espree@^7.3.0, espree@^7.3.1:
   version "7.3.1"
@@ -11077,6 +11082,11 @@ prettier-linter-helpers@^1.0.0:
   integrity sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==
   dependencies:
     fast-diff "^1.1.2"
+
+prettier@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.5.1.tgz#fff75fa9d519c54cf0fce328c1017d94546bc56a"
+  integrity sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==
 
 "prettier@npm:wp-prettier@2.2.1-beta-1":
   version "2.2.1-beta-1"
