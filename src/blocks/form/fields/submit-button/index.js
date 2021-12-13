@@ -51,7 +51,6 @@ const settings = {
 	attributes,
 	description: __( 'A button for submitting form data.', 'coblocks' ),
 	edit,
-
 	/* translators: block description */
 	icon: <Icon icon={ icon } />,
 	keywords: [
