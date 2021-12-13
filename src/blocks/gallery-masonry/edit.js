@@ -211,7 +211,7 @@ function GalleryEdit( props ) {
 		} );
 
 		return {
-			...pickRelevantMediaFiles( image, sizeSlug ),
+			...pickRelevantMediaFiles( imageAttributes, sizeSlug ),
 			...getHrefAndDestination( image, linkTo ),
 			...getUpdatedLinkTargetSettings( linkTarget, attributes ),
 			className: newClassName,
@@ -269,7 +269,7 @@ function GalleryEdit( props ) {
 		// Because we are reusing existing innerImage blocks any reordering
 		// done in the media library will be lost so we need to reapply that ordering
 		// once the new image blocks are merged in with existing.
-		const newOrderMap = processedImages.reduce(
+		const newOrderMap = processedImages?.reduce(
 			( result, image, index ) => (
 				( result[ image.id ] = index ), result
 			),
@@ -284,7 +284,7 @@ function GalleryEdit( props ) {
 			)
 			: innerBlockImages;
 
-		const newCaptions = selectedImages?.reduce( ( previous, image ) => {
+		const newCaptions = Array.from( selectedImages )?.reduce( ( previous, image ) => {
 			const previousReturnedObject = !! previous?.mime ? {} : previous;
 			return { ...previousReturnedObject, [ `${ image.id }` ]: image.caption };
 		} );
