@@ -57,7 +57,7 @@ export default function useGetMedia( innerBlockImages ) {
 
 	if (
 		imageMedia?.length !== currentImageMedia?.length ||
-        imageMedia?.some( ( newImage ) => ! currentImageMedia.find(	( currentImage ) => currentImage.id === newImage.id	) )
+        imageMedia?.some( ( newImage ) => ! currentImageMedia.find( ( currentImage ) => currentImage.id === newImage.id ) )
 	) {
 		setCurrentImageMedia( imageMedia );
 		return imageMedia;
