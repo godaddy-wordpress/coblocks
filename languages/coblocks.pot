@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-12-13T15:18:36+00:00\n"
+"POT-Creation-Date: 2021-12-13T17:51:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -2220,7 +2220,7 @@ msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:49
 #: src/blocks/gallery-collage/inspector.js:50
-#: src/blocks/gallery-masonry/edit.js:458
+#: src/blocks/gallery-masonry/edit.js:457
 #: src/blocks/gallery-masonry/v1/inspector.js:68
 #: src/blocks/gallery-offset/inspector.js:71
 #: src/blocks/gallery-stacked/inspector.js:66
@@ -2230,7 +2230,7 @@ msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:49
 #: src/blocks/gallery-collage/inspector.js:50
-#: src/blocks/gallery-masonry/edit.js:459
+#: src/blocks/gallery-masonry/edit.js:458
 #: src/blocks/gallery-masonry/v1/inspector.js:69
 #: src/blocks/gallery-offset/inspector.js:72
 #: src/blocks/gallery-stacked/inspector.js:67
@@ -2252,7 +2252,7 @@ msgid "Size"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:93
-#: src/blocks/gallery-masonry/edit.js:526
+#: src/blocks/gallery-masonry/edit.js:525
 #: src/blocks/gallery-masonry/v1/inspector.js:89
 #: src/blocks/gallery-offset/inspector.js:87
 #: src/blocks/gallery-stacked/inspector.js:90
@@ -2264,7 +2264,7 @@ msgstr ""
 #: src/blocks/gallery-carousel/inspector.js:130
 #: src/blocks/gallery-carousel/variations.js:145
 #: src/blocks/gallery-collage/inspector.js:100
-#: src/blocks/gallery-masonry/edit.js:538
+#: src/blocks/gallery-masonry/edit.js:537
 #: src/blocks/gallery-masonry/v1/inspector.js:101
 #: src/blocks/gallery-offset/inspector.js:95
 #: src/blocks/gallery-stacked/inspector.js:100
@@ -2399,7 +2399,7 @@ msgstr ""
 msgid "Masonry Gallery"
 msgstr ""
 
-#: src/blocks/gallery-masonry/edit.js:525
+#: src/blocks/gallery-masonry/edit.js:524
 #: src/blocks/gallery-masonry/v1/inspector.js:88
 msgid "Add rounded corners to the gallery items."
 msgstr ""
