@@ -97,5 +97,4 @@ describe( 'Test CoBlocks OpenTable Block', function() {
 
 		helpers.editPage();
 	} );
-	//}
 } );
