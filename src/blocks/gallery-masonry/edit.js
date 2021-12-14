@@ -156,7 +156,7 @@ function GalleryEdit( props ) {
 	useEffect( () => {
 		newImages?.forEach( ( newImage ) => {
 			updateBlockAttributes( newImage.clientId, {
-				...buildImageAttributes( false, newImage.attributes ),
+				...buildImageAttributes( newImage.attributes ),
 				align: undefined,
 				id: newImage.id,
 			} );
@@ -198,21 +198,20 @@ function GalleryEdit( props ) {
 	 * it already existed in the gallery. If the image is in fact new, we need
 	 * to apply the gallery's current settings to the image.
 	 *
-	 * @param {Object} existingBlock Existing Image block that still exists after gallery update.
-	 * @param {Object} image         Media object for the actual image.
+	 * @param {Object} imageAttributes Media object for the actual image.
 	 * @return {Object}               Attributes to set on the new image block.
 	 */
-	function buildImageAttributes( existingBlock, image ) {
-		if ( existingBlock ) {
-			return existingBlock.attributes;
-		}
+	function buildImageAttributes( imageAttributes ) {
+		const image = imageAttributes.id
+			? find( imageData, { id: imageAttributes.id } )
+			: null;
 
-		const newClassName = classnames( image.className, 'masonry-brick', {
+		const newClassName = classnames( imageAttributes.className, 'masonry-brick', {
 			[ `is-style-${ preferredStyle }` ]: preferredStyle,
 		} );
 
 		return {
-			...pickRelevantMediaFiles( image, sizeSlug ),
+			...pickRelevantMediaFiles( imageAttributes, sizeSlug ),
 			...getHrefAndDestination( image, linkTo ),
 			...getUpdatedLinkTargetSettings( linkTarget, attributes ),
 			className: newClassName,
@@ -270,7 +269,7 @@ function GalleryEdit( props ) {
 		// Because we are reusing existing innerImage blocks any reordering
 		// done in the media library will be lost so we need to reapply that ordering
 		// once the new image blocks are merged in with existing.
-		const newOrderMap = processedImages.reduce(
+		const newOrderMap = processedImages?.reduce(
 			( result, image, index ) => (
 				( result[ image.id ] = index ), result
 			),
@@ -285,7 +284,7 @@ function GalleryEdit( props ) {
 			)
 			: innerBlockImages;
 
-		const newCaptions = selectedImages?.reduce( ( previous, image ) => {
+		const newCaptions = Array.from( selectedImages ).reduce( ( previous, image ) => {
 			const previousReturnedObject = !! previous?.mime ? {} : previous;
 			return { ...previousReturnedObject, [ `${ image.id }` ]: image.caption };
 		} );
