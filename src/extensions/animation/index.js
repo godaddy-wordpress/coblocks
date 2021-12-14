@@ -43,12 +43,8 @@ const dataAnimationHolder = 'data-coblocks-animation';
 const useAnimationControls = ( ( props ) => {
 	const block = select( 'core/block-editor' ).getBlock( props.clientId );
 
-	return (
-		<>
-			{ props.isSelected && allowedBlocks.some( ( allowedBlock ) => allowedBlock.blockType === props.name ) &&
-				<Controls { ...{ ...props, selected: block } } /> }
-		</>
-	);
+	return props.isSelected && allowedBlocks.some( ( allowedBlock ) => allowedBlock.blockType === props.name )
+		? ( <Controls { ...{ ...props, selected: block } } /> ) : null;
 } );
 
 /**

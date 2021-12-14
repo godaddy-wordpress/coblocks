@@ -94,28 +94,26 @@ const useReplaceImage = ( props ) => {
 		};
 
 		return (
-			<>
-				<InspectorControls>
-					<div className="components-coblocks-replace-image">
-						<MediaUploadCheck>
-							<MediaUpload
-								allowedTypes={ [ 'image' ] }
-								onSelect={ onSelectImage }
-								render={ ( { open } ) => (
-									<Button
-										isSecondary
-										isSmall
-										onClick={ open }>
-										{ __( 'Replace Image', 'coblocks' ) }
-									</Button>
-								) }
-								value={ props.url }
-							>
-							</MediaUpload>
-						</MediaUploadCheck>
-					</div>
-				</InspectorControls>
-			</>
+			<InspectorControls>
+				<div className="components-coblocks-replace-image">
+					<MediaUploadCheck>
+						<MediaUpload
+							allowedTypes={ [ 'image' ] }
+							onSelect={ onSelectImage }
+							render={ ( { open } ) => (
+								<Button
+									isSecondary
+									isSmall
+									onClick={ open }>
+									{ __( 'Replace Image', 'coblocks' ) }
+								</Button>
+							) }
+							value={ props.url }
+						>
+						</MediaUpload>
+					</MediaUploadCheck>
+				</div>
+			</InspectorControls>
 		);
 	}
 };

@@ -39,11 +39,9 @@ const applyAttributes = ( settings ) => {
  * @param {Object} props Block props.
  * @return {JSX} Conditionally include typography controls.
  */
-const useTypography = ( props ) => (
-	<>
-		{ props.isSelected && allowedBlocks.includes( props.name ) && <Controls { ...{ ...props } } /> }
-	</>
-);
+const useTypography = ( props ) => props.isSelected && allowedBlocks.includes( props.name )
+	? ( <Controls { ...{ ...props } } /> )
+	: null;
 
 /**
  * React hook function to override the default block element to add wrapper props.

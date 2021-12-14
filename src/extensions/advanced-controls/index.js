@@ -139,72 +139,68 @@ const useAdvancedControls = ( props ) => {
 
 	const hasAdvancedControl = !! hasStackedControl || !! withBlockSpacing;
 
-	return (
-		<>
-			{ isSelected && hasAdvancedControl && (
-				<InspectorAdvancedControls>
-					{ hasStackedControl && (
-						<ToggleControl
-							checked={ !! isStackedOnMobile }
-							help={
-								!! isStackedOnMobile
-									? __( 'Responsiveness is enabled.', 'coblocks' )
-									: __(
-										'Toggle to stack elements on top of each other on smaller viewports.', 'coblocks'
-									)
-							}
-							label={ __( 'Stack on mobile', 'coblocks' ) }
-							onChange={ () =>
-								setAttributes( { isStackedOnMobile: ! isStackedOnMobile } )
-							}
-						/>
-					) }
-					{ withBlockSpacing && (
-						<ToggleControl
-							checked={ !! noTopMargin }
-							help={ !! noTopMargin ? __( 'Toggle to add top margin back.', 'coblocks' ) : __( 'Toggle to remove any top margin.', 'coblocks' ) }
-							label={ __( 'Remove top spacing', 'coblocks' ) }
-							onChange={ () =>
-								setAttributes( {
-									marginTop: 0,
-									marginTopMobile: 0,
-									marginTopTablet: 0,
-									noTopMargin: ! noTopMargin,
-
-								} )
-							}
-						/>
-					) }
-					{ withBlockSpacing && (
-						<ToggleControl
-							checked={ !! noBottomMargin }
-							help={ !! noBottomMargin ? __( 'Toggle to add bottom margin back.', 'coblocks' ) : __( 'Toggle to remove any bottom margin.', 'coblocks' ) }
-							label={ __( 'Remove bottom spacing', 'coblocks' ) }
-							onChange={ () => {
-								setAttributes( {
-									marginBottom: 0,
-									marginBottomMobile: 0,
-									marginBottomTablet: 0,
-									noBottomMargin: ! noBottomMargin,
-								} );
-
-								const nextBlockClientId = select( 'core/block-editor' )
-									.getNextBlockClientId( clientId );
-								if ( nextBlockClientId && ! noBottomMargin ) {
-									dispatch( 'core/block-editor' ).updateBlockAttributes( nextBlockClientId, {
-										marginTop: 0,
-										marginTopMobile: 0,
-										marginTopTablet: 0,
-										noTopMargin: ! noTopMargin,
-									} );
-								}
-							} }
-						/>
-					) }
-				</InspectorAdvancedControls>
+	return isSelected && hasAdvancedControl ? (
+		<InspectorAdvancedControls>
+			{ hasStackedControl && (
+				<ToggleControl
+					checked={ !! isStackedOnMobile }
+					help={
+						!! isStackedOnMobile
+							? __( 'Responsiveness is enabled.', 'coblocks' )
+							: __(
+								'Toggle to stack elements on top of each other on smaller viewports.', 'coblocks'
+							)
+					}
+					label={ __( 'Stack on mobile', 'coblocks' ) }
+					onChange={ () =>
+						setAttributes( { isStackedOnMobile: ! isStackedOnMobile } )
+					}
+				/>
 			) }
-		</>
-	);
+			{ withBlockSpacing && (
+				<ToggleControl
+					checked={ !! noTopMargin }
+					help={ !! noTopMargin ? __( 'Toggle to add top margin back.', 'coblocks' ) : __( 'Toggle to remove any top margin.', 'coblocks' ) }
+					label={ __( 'Remove top spacing', 'coblocks' ) }
+					onChange={ () =>
+						setAttributes( {
+							marginTop: 0,
+							marginTopMobile: 0,
+							marginTopTablet: 0,
+							noTopMargin: ! noTopMargin,
+
+						} )
+					}
+				/>
+			) }
+			{ withBlockSpacing && (
+				<ToggleControl
+					checked={ !! noBottomMargin }
+					help={ !! noBottomMargin ? __( 'Toggle to add bottom margin back.', 'coblocks' ) : __( 'Toggle to remove any bottom margin.', 'coblocks' ) }
+					label={ __( 'Remove bottom spacing', 'coblocks' ) }
+					onChange={ () => {
+						setAttributes( {
+							marginBottom: 0,
+							marginBottomMobile: 0,
+							marginBottomTablet: 0,
+							noBottomMargin: ! noBottomMargin,
+						} );
+
+						const nextBlockClientId = select( 'core/block-editor' )
+							.getNextBlockClientId( clientId );
+						if ( nextBlockClientId && ! noBottomMargin ) {
+							dispatch( 'core/block-editor' ).updateBlockAttributes( nextBlockClientId, {
+								marginTop: 0,
+								marginTopMobile: 0,
+								marginTopTablet: 0,
+								noTopMargin: ! noTopMargin,
+							} );
+						}
+					} }
+				/>
+			) }
+		</InspectorAdvancedControls>
+	) : null;
 };
 
 /**

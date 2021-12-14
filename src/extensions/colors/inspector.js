@@ -67,11 +67,9 @@ function applyAttributes( settings ) {
  */
 const useColorControls = ( props ) => {
 	const allowedBlocks = [ 'core/list', 'core/quote' ];
-	return (
-		<>
-			{ props.isSelected && allowedBlocks.includes( props.name ) && <Inspector { ... { ...props } } /> }
-		</>
-	);
+	return props.isSelected && allowedBlocks.includes( props.name )
+		? ( <Inspector { ... { ...props } } /> )
+		: null;
 };
 
 export { useColorControls, applyAttributes };

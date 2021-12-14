@@ -55,20 +55,16 @@ const useButtonControls = ( props ) => {
 
 	const hasFullwidth = allowedBlocks.includes( name );
 
-	return (
-		<>
-			{ hasFullwidth &&
-			<InspectorAdvancedControls>
-				<ToggleControl
-					checked={ !! isFullwidth }
-					help={ !! isFullwidth ? __( 'Displaying as full width.', 'coblocks' ) : __( 'Toggle to display button as full width.', 'coblocks' ) }
-					label={ __( 'Display fullwidth', 'coblocks' ) }
-					onChange={ () => setAttributes( { isFullwidth: ! isFullwidth } ) }
-				/>
-			</InspectorAdvancedControls>
-			}
-		</>
-	);
+	return hasFullwidth ? (
+		<InspectorAdvancedControls>
+			<ToggleControl
+				checked={ !! isFullwidth }
+				help={ !! isFullwidth ? __( 'Displaying as full width.', 'coblocks' ) : __( 'Toggle to display button as full width.', 'coblocks' ) }
+				label={ __( 'Display fullwidth', 'coblocks' ) }
+				onChange={ () => setAttributes( { isFullwidth: ! isFullwidth } ) }
+			/>
+		</InspectorAdvancedControls>
+	) : null;
 };
 
 /**

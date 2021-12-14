@@ -154,27 +154,25 @@ const usePositioningControl = ( props ) => {
 	};
 
 	return (
-		<>
-			<InspectorControls>
-				<PanelBody initialOpen={ false } title={ __( 'Crop settings', 'coblocks' ) }>
-					<CropControl
-						attachmentId={ extendedAttributes.id }
-						cropHeight={ cropHeight }
-						cropWidth={ cropWidth }
-						offsetX={ cropX }
-						offsetY={ cropY }
-						onChange={ ( val ) => applyCropAttributes( {
-							cropHeight: val.h,
-							cropRotation: val.r,
-							cropWidth: val.w,
-							cropX: val.x,
-							cropY: val.y,
-						} ) }
-						rotation={ cropRotation }
-					/>
-				</PanelBody>
-			</InspectorControls>
-		</>
+		<InspectorControls>
+			<PanelBody initialOpen={ false } title={ __( 'Crop settings', 'coblocks' ) }>
+				<CropControl
+					attachmentId={ extendedAttributes.id }
+					cropHeight={ cropHeight }
+					cropWidth={ cropWidth }
+					offsetX={ cropX }
+					offsetY={ cropY }
+					onChange={ ( val ) => applyCropAttributes( {
+						cropHeight: val.h,
+						cropRotation: val.r,
+						cropWidth: val.w,
+						cropX: val.x,
+						cropY: val.y,
+					} ) }
+					rotation={ cropRotation }
+				/>
+			</PanelBody>
+		</InspectorControls>
 	);
 };
 

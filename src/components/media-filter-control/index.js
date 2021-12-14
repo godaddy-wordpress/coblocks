@@ -154,26 +154,24 @@ const MediaFilterControl = ( props ) => {
 				popoverProps={ POPOVER_PROPS }
 			>
 				{ () => (
-					<>
-						<MenuGroup>
-							<PreviewImageFilterPopover hoveredFilter={ hoveredFilter } />
-							{
-								filterControls.map( ( imageFilter ) => (
-									<MenuItem
-										icon={ imageFilter.icon }
-										isSelected={ filter === imageFilter.slug }
-										key={ `coblocks-image-filter-${ imageFilter.slug }` }
-										label={ imageFilter.title }
-										onClick={ imageFilter.onClick }
-										onMouseEnter={ () => onChangeHoveredFilter( imageFilter.slug ) }
-										onMouseLeave={ () => onChangeHoveredFilter( null ) }
-										role="menuitemradio">
-										{ imageFilter.title }
-									</MenuItem>
-								) )
-							}
-						</MenuGroup>
-					</>
+					<MenuGroup>
+						<PreviewImageFilterPopover hoveredFilter={ hoveredFilter } />
+						{
+							filterControls.map( ( imageFilter ) => (
+								<MenuItem
+									icon={ imageFilter.icon }
+									isSelected={ filter === imageFilter.slug }
+									key={ `coblocks-image-filter-${ imageFilter.slug }` }
+									label={ imageFilter.title }
+									onClick={ imageFilter.onClick }
+									onMouseEnter={ () => onChangeHoveredFilter( imageFilter.slug ) }
+									onMouseLeave={ () => onChangeHoveredFilter( null ) }
+									role="menuitemradio">
+									{ imageFilter.title }
+								</MenuItem>
+							) )
+						}
+					</MenuGroup>
 				) }
 			</DropdownMenu>
 		</ToolbarGroup>

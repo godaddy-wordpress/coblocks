@@ -42,22 +42,18 @@ const useLightbox = ( props ) => {
 			: __( 'Toggle to enable the image lightbox.', 'coblocks' );
 	};
 
-	return (
-		<>
-			{ isSelected && supportsLightbox && ( !! images?.length || !! id ) && (
-				<InspectorControls>
-					<PanelRow className={ 'coblocks-lightbox-controls' }>
-						<ToggleControl
-							checked={ !! lightbox }
-							help={ getLightboxHelp }
-							label={ __( 'Lightbox', 'coblocks' ) }
-							onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
-						/>
-					</PanelRow>
-				</InspectorControls>
-			) }
-		</>
-	);
+	return isSelected && supportsLightbox && ( !! images?.length || !! id ) ? (
+		<InspectorControls>
+			<PanelRow className={ 'coblocks-lightbox-controls' }>
+				<ToggleControl
+					checked={ !! lightbox }
+					help={ getLightboxHelp }
+					label={ __( 'Lightbox', 'coblocks' ) }
+					onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
+				/>
+			</PanelRow>
+		</InspectorControls>
+	) : null;
 };
 
 /**

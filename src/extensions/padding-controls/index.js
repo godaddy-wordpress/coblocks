@@ -66,39 +66,35 @@ const usePaddingControls = ( props ) => {
 
 	const supportsPaddingControls = blocksWithPaddingSupport.includes( name );
 	const panelTitle = startCase( name.split( '/' )[ 1 ] );
-	return (
-		<>
-			{ isSelected && supportsPaddingControls && (
-				<InspectorControls>
-					<PanelBody title={ sprintf(
-						/* translators: %1$s is placeholder for block name such as Group, or Embed */
-						__( '%1$s settings', 'coblocks' ),
-						panelTitle
-					) }>
-						<OptionSelectorControl
-							currentOption={ padding }
-							label={ __( 'Padding', 'coblocks' ) }
-							onChange={ ( newPadding ) => setAttributes( { padding: newPadding } ) }
-							options={ paddingOptions }
-							showCustomOption
-						/>
-						{
-							padding === 'custom' &&
-								<RangeControl
-									initialValue={ 0 }
-									max={ maxValue }
-									min={ 0 }
-									onChange={ ( newPadding ) => setAttributes( { paddingCustom: newPadding.toString() } ) }
-									step={ 0.1 }
-									value={ parseFloat( paddingCustom ) || 0 }
-									withInputField
-								/>
-						}
-					</PanelBody>
-				</InspectorControls>
-			) }
-		</>
-	);
+	return isSelected && supportsPaddingControls ? (
+		<InspectorControls>
+			<PanelBody title={ sprintf(
+				/* translators: %1$s is placeholder for block name such as Group, or Embed */
+				__( '%1$s settings', 'coblocks' ),
+				panelTitle
+			) }>
+				<OptionSelectorControl
+					currentOption={ padding }
+					label={ __( 'Padding', 'coblocks' ) }
+					onChange={ ( newPadding ) => setAttributes( { padding: newPadding } ) }
+					options={ paddingOptions }
+					showCustomOption
+				/>
+				{
+					padding === 'custom' &&
+					<RangeControl
+						initialValue={ 0 }
+						max={ maxValue }
+						min={ 0 }
+						onChange={ ( newPadding ) => setAttributes( { paddingCustom: newPadding.toString() } ) }
+						step={ 0.1 }
+						value={ parseFloat( paddingCustom ) || 0 }
+						withInputField
+					/>
+				}
+			</PanelBody>
+		</InspectorControls>
+	) : null;
 };
 
 /**

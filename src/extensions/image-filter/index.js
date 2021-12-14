@@ -30,11 +30,9 @@ const useImageFilter = ( props ) => {
 	}
 
 	return (
-		<>
-			<BlockControls>
-				<MediaFilterControl { ...props } />
-			</BlockControls>
-		</>
+		<BlockControls>
+			<MediaFilterControl { ...props } />
+		</BlockControls>
 	);
 };
 
