@@ -72,35 +72,18 @@ const AccordionEdit = ( props ) => {
 	const handleEvent = ( ) => {
 		const lastId = items[ 0 ].innerBlocks[ items[ 0 ].innerBlocks.length - 1 ]?.clientId;
 		let copyAttributes = {};
-
 		if ( !! lastId ) {
 			const lastBlockClient = getBlockAttributes( lastId );
-			if ( lastBlockClient.backgroundColor ) {
-				copyAttributes = Object.assign( copyAttributes, {
-					backgroundColor: lastBlockClient.backgroundColor,
-				} );
-			}
-
-			if ( lastBlockClient.borderColor ) {
-				copyAttributes = Object.assign( copyAttributes, {
-					borderColor: lastBlockClient.borderColor,
-				} );
-			}
-
-			if ( lastBlockClient.textColor ) {
-				copyAttributes = Object.assign( copyAttributes, {
-					textColor: lastBlockClient.textColor,
-				} );
-			}
-
-			if ( lastBlockClient.customTextColor ) {
-				copyAttributes = Object.assign( copyAttributes, {
-					customTextColor: lastBlockClient.customTextColor,
-				} );
-			}
+			[ 'backgroundColor', 'borderColor', 'textColor', 'customTextColor' ].forEach( ( property ) => {
+				if ( !! lastBlockClient?.[ property ] ) {
+					copyAttributes = {
+						...copyAttributes,
+						[ property ]: lastBlockClient[ property ],
+					};
+				}
+			} );
 		}
-
-		const created = createBlock( 'coblocks/accordion-item', copyAttributes );
+		const created = createBlock( 'coblocks/accordion-item', copyAttributes, [] );
 		insertBlock( created, undefined, clientId );
 	};
 
