@@ -3,7 +3,7 @@
  */
 import classnames from 'classnames';
 import { MapIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
 
 /**
  * Internal dependencies
@@ -22,7 +22,7 @@ import {
 	Button,
 	Icon,
 	Placeholder,
-	ResizableBox,
+	ResizableBox, Spinner,
 	TextControl,
 	withNotices,
 } from '@wordpress/components';
@@ -52,7 +52,6 @@ const Edit = ( props ) => {
 
 	const [ apiKeyState, setApiKey ] = useState( '' );
 	const [ addressState, setAddress ] = useState( address );
-	const [ coords, setCoords ] = useState( null );
 
 	useEffect( () => {
 		apiFetch( { path: '/wp/v2/settings' } ).then( ( res ) => {
@@ -141,58 +140,45 @@ const Edit = ( props ) => {
 		</>
 	);
 
-	const GoogleMapWithApiKey = () => {
-		const { isLoaded } = useJsApiLoader( {
-			googleMapsApiKey: apiKeyState,
-			id: 'google-map-script',
+	const GoogleMapWithApiKey = ( props ) => {
+		const { isLoaded, loadError } = useLoadScript({
+			googleMapsApiKey: props.apiKey,
 		} );
 
-		const onLoad = useCallback( () => {
-			const geocoder = new window.google.maps.Geocoder();
+		const onLoad = useCallback(
+			function onLoad (mapInstance) {
+				console.log(mapInstance)
+			}
+		)
+		//
 
-			geocoder.geocode(
-				{ address },
-				function( results, status ) {
-					if ( status !== 'OK' ) {
-						setAttributes( {
-							hasError: __( 'Invalid API key, or too many requests', 'coblocks' ),
-							pinned: false,
-						} );
-						return;
-					}
-
-					setCoords( results[ 0 ].geometry.location.toJSON() );
-
-					setAttributes( {
-						hasError: '',
-						lat: results[ 0 ].geometry.location.toJSON().lat.toString(),
-						lng: results[ 0 ].geometry.location.toJSON().lng.toString(),
-					} );
-				}.bind( this )
-			);
-		} );
-
-		return isLoaded && coords ? (
-			<GoogleMap
-				defaultCenter={ new window.google.maps.LatLng( coords ) }
-				defaultOptions={ {
-					draggable: false,
-					fullscreenControl,
-					mapTypeControl,
-					streetViewControl,
-					styles: GMapStyles[ skin ],
-					zoomControl,
-				} }
-				defaultZoom={ zoom }
-				isMarkerShown={ true }
-				onLoad={ onLoad }
+		const renderMap = () => {
+			return <GoogleMap
+				id="circle-example"
+				mapContainerStyle={{
+					height: "400px",
+					width: "100%"
+				}}
+				zoom={7}
+				center={{
+					lat: -3.745,
+					lng: -38.523
+				}}
+				onLoad={onLoad}
 			>
-				<Marker
-					icon={ marker }
-					position={ new window.google.maps.LatLng( coords ) }
-				/>
+				<Marker position={{
+					lat: -3.745,
+					lng: -38.523
+				}}
+						/>
 			</GoogleMap>
-		) : <></>;
+		}
+
+		if (loadError) {
+			return <div>Oups</div>
+		}
+
+		return isLoaded ? renderMap() : <Spinner />;
 	};
 
 	return (
@@ -235,7 +221,7 @@ const Edit = ( props ) => {
 					} }
 				>
 					{ !! apiKeyState
-						? GoogleMapWithApiKey() : GoogleMapIframeRender() }
+						? <GoogleMapWithApiKey apiKey={ apiKeyState } /> : GoogleMapIframeRender() }
 				</ResizableBox>
 			) : (
 				<Placeholder
