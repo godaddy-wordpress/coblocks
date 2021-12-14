@@ -177,3 +177,11 @@
 figure.has-lightbox:hover {
 	cursor: zoom-in;
 }
+
+figure.has-lightbox.masonry-grid {
+	cursor: default;
+
+	figure.masonry-brick:hover {
+		cursor: zoom-in;
+	}
+}

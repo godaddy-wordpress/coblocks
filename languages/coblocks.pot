@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-12-10T15:15:36+00:00\n"
+"POT-Creation-Date: 2021-12-13T19:30:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -85,7 +85,7 @@ msgstr ""
 #. translators: block keyword
 #. translators: icon keyword
 #: includes/class-coblocks-form.php:51
-#: includes/class-coblocks-form.php:1039
+#: includes/class-coblocks-form.php:1044
 #: src/blocks/form/edit.js:288
 #: src/blocks/form/fields/name/index.js:59
 #: src/blocks/form/index.js:62
@@ -232,12 +232,7 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
-#. translators: 1. Reply to email address; eg: email@example.com
-#: includes/class-coblocks-form.php:965
-msgid "Form Submission <%s>"
-msgstr ""
-
-#: includes/class-coblocks-form.php:1027
+#: includes/class-coblocks-form.php:1032
 #: src/blocks/form/edit.js:294
 msgid "name"
 msgstr ""
@@ -1044,11 +1039,11 @@ msgstr ""
 msgid "Category Title"
 msgstr ""
 
-#: src/blocks/faq/edit.js:23
+#: src/blocks/faq/edit.js:25
 msgid "FAQ title"
 msgstr ""
 
-#: src/blocks/faq/edit.js:49
+#: src/blocks/faq/edit.js:60
 msgid "Category name"
 msgstr ""
 
@@ -1089,9 +1084,14 @@ msgstr ""
 msgid "Add a list of questions and answers."
 msgstr ""
 
-#: src/blocks/faq/index.js:40
+#. translators: block keyword
+#: src/blocks/faq/index.js:35
+msgid "Frequently asked questions"
+msgstr ""
+
+#: src/blocks/faq/index.js:42
 msgctxt "block name"
-msgid "FAQ"
+msgid "FAQ - Frequently Asked Questions"
 msgstr ""
 
 #: src/blocks/features/edit.js:114
@@ -2220,7 +2220,7 @@ msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:49
 #: src/blocks/gallery-collage/inspector.js:50
-#: src/blocks/gallery-masonry/edit.js:458
+#: src/blocks/gallery-masonry/edit.js:457
 #: src/blocks/gallery-masonry/v1/inspector.js:68
 #: src/blocks/gallery-offset/inspector.js:71
 #: src/blocks/gallery-stacked/inspector.js:66
@@ -2230,7 +2230,7 @@ msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:49
 #: src/blocks/gallery-collage/inspector.js:50
-#: src/blocks/gallery-masonry/edit.js:459
+#: src/blocks/gallery-masonry/edit.js:458
 #: src/blocks/gallery-masonry/v1/inspector.js:69
 #: src/blocks/gallery-offset/inspector.js:72
 #: src/blocks/gallery-stacked/inspector.js:67
@@ -2252,7 +2252,7 @@ msgid "Size"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:93
-#: src/blocks/gallery-masonry/edit.js:526
+#: src/blocks/gallery-masonry/edit.js:525
 #: src/blocks/gallery-masonry/v1/inspector.js:89
 #: src/blocks/gallery-offset/inspector.js:87
 #: src/blocks/gallery-stacked/inspector.js:90
@@ -2264,7 +2264,7 @@ msgstr ""
 #: src/blocks/gallery-carousel/inspector.js:130
 #: src/blocks/gallery-carousel/variations.js:145
 #: src/blocks/gallery-collage/inspector.js:100
-#: src/blocks/gallery-masonry/edit.js:538
+#: src/blocks/gallery-masonry/edit.js:537
 #: src/blocks/gallery-masonry/v1/inspector.js:101
 #: src/blocks/gallery-offset/inspector.js:95
 #: src/blocks/gallery-stacked/inspector.js:100
@@ -2399,7 +2399,7 @@ msgstr ""
 msgid "Masonry Gallery"
 msgstr ""
 
-#: src/blocks/gallery-masonry/edit.js:525
+#: src/blocks/gallery-masonry/edit.js:524
 #: src/blocks/gallery-masonry/v1/inspector.js:88
 msgid "Add rounded corners to the gallery items."
 msgstr ""
@@ -9373,115 +9373,115 @@ msgid "Ten Seconds"
 msgstr ""
 
 #: src/components/slider-panel/index.js:15
-msgid "Set limit to carousel"
+msgid "Prevent the carousel from looping"
 msgstr ""
 
 #: src/components/slider-panel/index.js:15
 msgid "Set the carousel to an infinite loop"
 msgstr ""
 
-#: src/components/slider-panel/index.js:21
+#: src/components/slider-panel/index.js:23
 msgid "seconds"
 msgstr ""
 
-#: src/components/slider-panel/index.js:21
+#: src/components/slider-panel/index.js:23
 msgid "second"
 msgstr ""
 
 #. translators: %1$d: Speed of the slider, %2$d: Time until the slide advances
-#: src/components/slider-panel/index.js:25
+#: src/components/slider-panel/index.js:27
 msgid "Advancing after %1$d %2$s."
 msgstr ""
 
-#: src/components/slider-panel/index.js:28
+#: src/components/slider-panel/index.js:30
 msgid "Automatically advance to the next slide."
 msgstr ""
 
-#: src/components/slider-panel/index.js:32
+#: src/components/slider-panel/index.js:34
 msgid "Dragging and flicking enabled."
 msgstr ""
 
-#: src/components/slider-panel/index.js:32
+#: src/components/slider-panel/index.js:34
 msgid "Toggle to enable drag functionality."
 msgstr ""
 
-#: src/components/slider-panel/index.js:36
+#: src/components/slider-panel/index.js:38
 msgid "Showing slide navigation arrows."
 msgstr ""
 
-#: src/components/slider-panel/index.js:36
+#: src/components/slider-panel/index.js:38
 msgid "Toggle to show slide navigation arrows."
 msgstr ""
 
-#: src/components/slider-panel/index.js:40
+#: src/components/slider-panel/index.js:42
 msgid "Showing dot navigation."
 msgstr ""
 
-#: src/components/slider-panel/index.js:40
+#: src/components/slider-panel/index.js:42
 msgid "Toggle to show dot navigation."
 msgstr ""
 
-#: src/components/slider-panel/index.js:44
+#: src/components/slider-panel/index.js:46
 msgid "Aligning slides to the left."
 msgstr ""
 
-#: src/components/slider-panel/index.js:44
+#: src/components/slider-panel/index.js:46
 msgid "Aligning slides to the center."
 msgstr ""
 
-#: src/components/slider-panel/index.js:47
+#: src/components/slider-panel/index.js:49
 msgid "Pausing autoplay when hovering."
 msgstr ""
 
-#: src/components/slider-panel/index.js:47
+#: src/components/slider-panel/index.js:49
 msgid "Toggle to pause autoplay when hovered."
 msgstr ""
 
-#: src/components/slider-panel/index.js:51
+#: src/components/slider-panel/index.js:53
 msgid "Scrolling without fixed slides enabled."
 msgstr ""
 
-#: src/components/slider-panel/index.js:51
+#: src/components/slider-panel/index.js:53
 msgid "Toggle to scroll without fixed slides."
 msgstr ""
 
-#: src/components/slider-panel/index.js:74
+#: src/components/slider-panel/index.js:76
 msgid "Slider settings"
 msgstr ""
 
-#: src/components/slider-panel/index.js:76
+#: src/components/slider-panel/index.js:80
 msgid "Loop"
 msgstr ""
 
-#: src/components/slider-panel/index.js:82
+#: src/components/slider-panel/index.js:86
 msgid "Autoplay"
 msgstr ""
 
-#: src/components/slider-panel/index.js:89
+#: src/components/slider-panel/index.js:92
 msgid "Transition speed"
 msgstr ""
 
-#: src/components/slider-panel/index.js:96
+#: src/components/slider-panel/index.js:100
 msgid "Pause on hover"
 msgstr ""
 
-#: src/components/slider-panel/index.js:104
+#: src/components/slider-panel/index.js:108
 msgid "Draggable"
 msgstr ""
 
-#: src/components/slider-panel/index.js:110
+#: src/components/slider-panel/index.js:114
 msgid "Free scroll"
 msgstr ""
 
-#: src/components/slider-panel/index.js:116
+#: src/components/slider-panel/index.js:120
 msgid "Arrow navigation"
 msgstr ""
 
-#: src/components/slider-panel/index.js:123
+#: src/components/slider-panel/index.js:127
 msgid "Dot navigation"
 msgstr ""
 
-#: src/components/slider-panel/index.js:129
+#: src/components/slider-panel/index.js:133
 msgid "Align cells"
 msgstr ""
 
