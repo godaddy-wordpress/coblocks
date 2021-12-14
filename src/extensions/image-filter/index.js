@@ -11,10 +11,9 @@ import MediaFilterControl from '../../components/media-filter-control';
 /**
  * WordPress dependencies
  */
-import { Fragment } from '@wordpress/element';
 import { addFilter } from '@wordpress/hooks';
-import { createHigherOrderComponent } from '@wordpress/compose';
 import { BlockControls } from '@wordpress/block-editor';
+import { createHigherOrderComponent } from '@wordpress/compose';
 
 const allowedBlocks = [
 	'core/image',
@@ -22,23 +21,25 @@ const allowedBlocks = [
 ];
 
 /**
- * Add the MediaFilterControl component to the core/image and core/gallery block
+ * Add the MediaFilterControl component and classnames to the core/image and core/gallery block
+ * Add custom `has-filter-${ filter }` class to the extended blocks.
  */
 const coreImageFilter = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-		if ( ! allowedBlocks.includes( props.name ) ) {
+		const { name } = props;
+		if ( ! allowedBlocks.includes( name ) ) {
 			return <BlockEdit { ...props } />;
 		}
 
 		return (
-			<Fragment>
+			<>
 				<BlockEdit { ...props } />
 				<BlockControls>
 					<MediaFilterControl
 						{ ...props }
 					/>
 				</BlockControls>
-			</Fragment>
+			</>
 		);
 	};
 }, 'withGalleryExtension' );
@@ -50,21 +51,26 @@ addFilter( 'editor.BlockEdit', 'coblocks/coreImageFilter', coreImageFilter );
  */
 const coreImageEditorStyles = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
-		if ( ! allowedBlocks.includes( props.name ) ) {
+		const { attributes, name } = props;
+		if ( ! allowedBlocks.includes( name ) ) {
 			return <BlockListBlock { ...props } />;
 		}
 
 		const {
 			filter,
-		} = props.attributes;
+		} = attributes;
 
-		const className = classnames(
-			{
-				[ `has-filter-${ filter }` ]: filter !== 'none',
-			}
-		);
+		const blockProps = {
+			...props,
+			attributes: {
+				...attributes,
+				className: classnames( {
+					[ `has-filter-${ filter }` ]: filter !== 'none',
+				} ),
+			},
+		};
 
-		return <BlockListBlock { ...props } className={ className } />;
+		return <BlockListBlock { ...blockProps } />;
 	};
 }, 'withStyleClasses' );
 
@@ -80,8 +86,8 @@ function imageFilterAttributes( settings ) {
 	if ( allowedBlocks.includes( settings.name ) && typeof settings.attributes !== 'undefined' ) {
 		settings.attributes = Object.assign( settings.attributes, {
 			filter: {
-				type: 'strig',
 				default: 'none',
+				type: 'string',
 			},
 		} );
 	}

@@ -1,3 +1,4 @@
+
 /**
  * Internal dependencies
  */
@@ -9,18 +10,13 @@ import MediaFilterControl from '../../components/media-filter-control';
 import { BlockControls } from '@wordpress/block-editor';
 
 const Controls = ( props ) => {
-	const { attributes } = props;
+	const { attributes, innerBlocks } = props;
 	const { images } = attributes;
-
-	const hasImages = !! images.length;
+	const hasImages = !! images.length || !! innerBlocks?.length;
 
 	return (
 		<BlockControls>
-			{ hasImages && (
-				<MediaFilterControl
-					{ ...props }
-				/>
-			) }
+			{ hasImages && <MediaFilterControl { ...props } /> }
 		</BlockControls>
 	);
 };
