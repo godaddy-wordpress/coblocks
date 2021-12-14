@@ -6,6 +6,7 @@ module.exports = {
 	collectCoverageFrom: [
 		'<rootDir>/src/blocks/**/save.js',
 		'<rootDir>/src/blocks/**/transforms.js',
+		'!<rootDir>/src/blocks/gallery-masonry/v1/*.js',
 	],
 	moduleNameMapper: {
 		'@godaddy-wordpress/coblocks-icons': require.resolve(
