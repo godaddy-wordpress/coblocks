@@ -61,9 +61,9 @@ describe( 'coblocks/icon', () => {
 		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'href="https://wordpress.org"' );
-		expect( serializedBlock ).toContain( 'rel="rel"' );
-		expect( serializedBlock ).toContain( 'target="_blank"' );
+		expect( serializedBlock ).toContain( '"href":"https://wordpress.org"' );
+		expect( serializedBlock ).toContain( '"rel":"rel"' );
+		expect( serializedBlock ).toContain( '"linkTarget":"_blank"' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
@@ -114,11 +114,11 @@ describe( 'coblocks/icon', () => {
 
 	it( 'should render with an icon', () => {
 		block.attributes.icon = 'coblocks';
-		block.attributes.href = "https://www.godaddy.com";
+		block.attributes.href = 'https://www.godaddy.com';
 		const serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'wp-block-coblocks-icon' );
+		expect( serializedBlock ).toContain( '"icon":"coblocks"' );
 		expect( serializedBlock ).toContain( 'https://www.godaddy.com' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );

@@ -1,5 +1,4 @@
 [data-type="coblocks/gallery-carousel"] {
-
 	// Remove selected state.
 	&.block-editor-block-list__block::after {
 		box-shadow: none !important;
@@ -25,7 +24,18 @@
 		&,
 		.coblocks-gallery {
 			height: 100%;
+			overflow: visible;
 		}
+	}
+
+	.wp-block-coblocks-gallery-carousel-thumbnail-pagination {
+		align-items: center;
+		display: flex;
+		flex-direction: row;
+		height: auto;
+		justify-content: flex-start;
+		overflow: hidden;
+		width: 100%;
 	}
 
 	// Fixes issue with multiple dropzones displaying when dropping in an image.
@@ -34,11 +44,6 @@
 		+ .wp-block-coblocks-gallery-carousel div div div div div:last-child .components-drop-zone {
 			display: none;
 		}
-	}
-
-	.flickity-enabled {
-		height: 100% !important;
-		position: inherit;
 	}
 
 	.has-responsive-height {
@@ -53,12 +58,6 @@
 		}
 	}
 
-	.has-responsive-height .has-carousel.flickity-enabled {
-		height: auto !important;
-		padding-bottom: 56.25%;
-		position: relative;
-	}
-
 	.has-responsive-height.components-resizable-box__container {
 		height: auto !important;
 	}
@@ -66,7 +65,13 @@
 	.carousel-nav {
 
 		.coblocks--item-thumbnail {
+			height: 100%;
 			opacity: 0.4;
+			width: auto;
+
+			&:hover {
+				opacity: 0.7;
+			}
 		}
 
 		.coblocks--item-thumbnail:first-of-type {
@@ -77,6 +82,65 @@
 	.wp-block-blockgallery-thumbnails {
 		overflow: visible;
 	}
+}
+
+.wp-block-coblocks-gallery-carousel-page-dot-pagination-container {
+	align-items: center;
+	bottom: 2.2rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	position: absolute;
+	width: 100%;
+
+	& > .wp-block-coblocks-gallery-carousel-page-dot-wrapper {
+		align-items: center;
+		display: flex;
+		flex-direction: row;
+		flex-grow: 0.1;
+		justify-content: space-evenly;
+		min-width: 45px;
+
+		& > .wp-block-coblocks-gallery-carousel-page-dot-pagination {
+			background: #fff;
+			border: none;
+			border-radius: 50%;
+			cursor: pointer;
+			height: 8px;
+			transition: background 0.2s;
+			width: 8px;
+		}
+	}
+}
+
+
+.block-editor-rich-text__editable.coblocks-gallery--caption.coblocks-gallery--primary-caption.rich-text {
+	bottom: 0.8rem !important;
+	position: absolute !important;
+}
+
+.wp-block-coblocks-gallery-carousel-thumbnail {
+	border: none;
+	cursor: pointer;
+	min-width: 100px;
+	opacity: 0.4;
+	padding: 0;
+}
+
+.wp-block-coblocks-gallery-carousel-thumbnail.is-active {
+	opacity: 1;
+}
+
+.swiper-plugin-pagination__item {
+	opacity: 0.4;
+}
+
+.swiper-plugin-pagination__item + .is-active:first-of-type {
+	opacity: 1;
+}
+
+.swiper-plugin-pagination__item.is-active {
+	opacity: 1;
 }
 
 [data-type="core/group"] .components-resizable-box__container .wp-block-coblocks-gallery-carousel {
@@ -99,4 +163,14 @@
 	div.components-form-file-upload {
 		display: none;
 	}
+}
+
+.wp-block-coblocks-gallery-carousel .coblocks-gallery--item {
+	height: 100%;
+	margin: 0 !important;
+	width: 100% !important;
+}
+
+.wp-block-coblocks-gallery-carousel .has-carousel {
+	width: 100%;
 }

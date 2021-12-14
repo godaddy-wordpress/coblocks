@@ -8,7 +8,7 @@ import linkOptions from './options/link-options';
  */
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { SelectControl, ToggleControl, PanelBody, TextControl } from '@wordpress/components';
+import { PanelBody, SelectControl, TextControl, ToggleControl } from '@wordpress/components';
 
 class GalleryLinkSettings extends Component {
 	constructor() {
@@ -28,15 +28,19 @@ class GalleryLinkSettings extends Component {
 	}
 
 	setLinkTo( value ) {
-		this.props.setAttributes( { linkTo: value } );
+		const { setAttributes } = this.props;
+		setAttributes( { linkTo: value } );
 	}
 
 	setLinkRel( value ) {
-		this.props.setAttributes( { rel: value } );
+		const { setAttributes } = this.props;
+		setAttributes( { rel: value } );
 	}
 
 	setNewTab( value ) {
-		const { rel } = this.props.attributes;
+		const { attributes, setAttributes } = this.props;
+		const { rel } = attributes;
+
 		const target = value ? '_blank' : undefined;
 
 		let updatedRel = rel;
@@ -46,9 +50,9 @@ class GalleryLinkSettings extends Component {
 			updatedRel = undefined;
 		}
 
-		this.props.setAttributes( {
-			target,
+		setAttributes( {
 			rel: updatedRel,
+			target,
 		} );
 	}
 
@@ -69,27 +73,27 @@ class GalleryLinkSettings extends Component {
 			<Fragment>
 				{ ! lightbox &&
 					<PanelBody
-						title={ __( 'Link settings', 'coblocks' ) }
 						initialOpen={ false }
+						title={ __( 'Link settings', 'coblocks' ) }
 					>
 						<SelectControl
 							label={ __( 'Link to', 'coblocks' ) }
-							value={ linkTo }
-							options={ linkOptions }
 							onChange={ this.setLinkTo }
+							options={ linkOptions }
+							value={ linkTo }
 						/>
 						{ linkTo !== 'none' &&
 							<Fragment>
 								<ToggleControl
+									checked={ target === '_blank' }
 									label={ __( 'Open in new tab', 'coblocks' ) }
 									onChange={ this.setNewTab }
-									checked={ target === '_blank' }
 								/>
 								<TextControl
 									/* translators: html attribute that specifies the relationship between two pages */
 									label={ __( 'Link rel', 'coblocks' ) }
-									value={ rel }
 									onChange={ ( value ) => setAttributes( { rel: value } ) }
+									value={ rel }
 								/>
 							</Fragment>
 						}
