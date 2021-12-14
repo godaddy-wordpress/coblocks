@@ -18,7 +18,7 @@ export default function useGetMedia( innerBlockImages ) {
 	const imageMedia = useSelect(
 		( select ) => {
 			if ( ! innerBlockImages?.length ) {
-				return currentImageMedia;
+				return [];
 			}
 
 			const imageIds = innerBlockImages
@@ -26,19 +26,38 @@ export default function useGetMedia( innerBlockImages ) {
 				.filter( ( id ) => id !== undefined );
 
 			if ( imageIds.length === 0 ) {
-				return currentImageMedia;
+				return [];
 			}
 
-			return select( coreStore ).getMediaItems( {
+			if ( imageIds.length > 100 ) {
+				// If there are more than 100 images in the Masonry gallery we must run getMediaItems
+				// once per 100 in order to get all of the image attributes correctly.
+				const imageIdsClone = [ ...imageIds ];
+				let imageMediaCompilation = [];
+				while ( imageIdsClone.length ) {
+					const mediaData = select( coreStore ).getMediaItems( {
+						include: imageIdsClone.splice( 0, 100 ).join( ',' ),
+						per_page: 100,
+					} ) ?? [];
+
+					imageMediaCompilation = [ ...imageMediaCompilation, ...mediaData ];
+				}
+				return imageMediaCompilation;
+			}
+
+			const mediaData = select( coreStore ).getMediaItems( {
 				include: imageIds.join( ',' ),
+				per_page: 100,
 			} );
+
+			return mediaData || [];
 		},
 		[ innerBlockImages ]
 	);
 
 	if (
-		!! imageMedia && ( imageMedia?.length !== currentImageMedia?.length ||
-        imageMedia?.some( ( newImage ) => ! currentImageMedia.find(	( currentImage ) => currentImage.id === newImage.id	) ) )
+		imageMedia?.length !== currentImageMedia?.length ||
+        imageMedia?.some( ( newImage ) => ! currentImageMedia.find( ( currentImage ) => currentImage.id === newImage.id ) )
 	) {
 		setCurrentImageMedia( imageMedia );
 		return imageMedia;
