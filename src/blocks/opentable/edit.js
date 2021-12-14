@@ -1,36 +1,37 @@
-/* global coblocksBlockData */
+/* global coblocksBlockData, coblocksOpentable */
 
 /**
  * External dependencies
  */
-import { OpentableIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 import { debounce } from 'lodash';
+import { OpentableIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
  */
 import Controls from './controls';
-import OpenTable from './opentable';
 import InspectorControls from './inspector';
+import OpenTable from './opentable';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { useState, useEffect } from '@wordpress/element';
+import apiFetch from '@wordpress/api-fetch';
 import { compose } from '@wordpress/compose';
 import {
+	Button,
+	FormTokenField,
+	Icon,
+	Notice,
 	Placeholder,
 	Spinner,
-	Notice,
-	Button,
 	withNotices,
-	Icon,
-	FormTokenField,
 } from '@wordpress/components';
+import { useEffect, useState } from '@wordpress/element';
 
 const Edit = ( props ) => {
-	const { className, attributes, noticeUI, noticeOperations } = props;
+	const { className, attributes, noticeUI, noticeOperations, setAttributes } = props;
 
 	const [ ridField, setRidField ] = useState( attributes.restaurantIDs?.map( ( restaurantObject ) => restaurantObject.name ) ?? [] );
 	const [ queryResults, setQueryResults ] = useState( [] );
@@ -47,19 +48,13 @@ const Edit = ( props ) => {
 
 	//searches the opentable reservation network for restaurants with the given name or ID
 	const searchRestaurants = debounce( ( token ) => {
+		if ( ! token ) {
+			return;
+		}
+
 		setIsLoading( true );
 		noticeOperations.removeAllNotices();
-		fetch(
-			'https://www.opentable.com/widget/reservation/restaurant-search?pageSize=15' +
-				'&query=' +
-				encodeURIComponent( token )
-		)
-			.then( ( response ) => response.json() )
-			.catch( ( error ) => {
-				setIsLoading( false );
-				noticeOperations.createErrorNotice( __( 'Error connecting to the OpenTable API. Please try again later.', 'coblocks' ) );
-				throw new Error( 'Error connecting to the OpenTable API: ' + error );
-			} )
+		apiFetch( { path: coblocksOpentable.searchProxy + encodeURIComponent( token ) } )
 			.then( ( json ) => {
 				const results = [];
 				for ( const item in json.items ) {
@@ -70,6 +65,11 @@ const Edit = ( props ) => {
 				setQueryResults( results );
 				setNoResultsFound( results?.length === 0 );
 				setIsLoading( false );
+			} )
+			.catch( ( error ) => {
+				setIsLoading( false );
+				noticeOperations.createErrorNotice( __( 'Error connecting to the OpenTable API. Please try again later.', 'coblocks' ) );
+				throw new Error( 'Error connecting to the OpenTable API: ' + error );
 			} );
 	}, 500 );
 
@@ -77,25 +77,25 @@ const Edit = ( props ) => {
 		if ( attributes.language === '' ) {
 			switch ( getLocaleCode().substring( 0, coblocksBlockData.localeCode.indexOf( '_' ) ) ) {
 				case 'fr':
-					props.setAttributes( { language: 'fr-CA' } );
+					setAttributes( { language: 'fr-CA' } );
 					break;
 				case 'de':
-					props.setAttributes( { language: 'de-DE' } );
+					setAttributes( { language: 'de-DE' } );
 					break;
 				case 'es':
-					props.setAttributes( { language: 'es-MX' } );
+					setAttributes( { language: 'es-MX' } );
 					break;
 				case 'ja':
-					props.setAttributes( { language: 'ja-JP' } );
+					setAttributes( { language: 'ja-JP' } );
 					break;
 				case 'nl':
-					props.setAttributes( { language: 'nl-NL' } );
+					setAttributes( { language: 'nl-NL' } );
 					break;
 				case 'it':
-					props.setAttributes( { language: 'it-IT' } );
+					setAttributes( { language: 'it-IT' } );
 					break;
 				default:
-					props.setAttributes( { language: 'en-US' } );
+					setAttributes( { language: 'en-US' } );
 					break;
 			}
 		}
@@ -109,21 +109,21 @@ const Edit = ( props ) => {
 				showEditControls={ !! attributes.restaurantIDs.length }
 			/>
 			<InspectorControls
-				className={ className }
 				attributes={ attributes }
-				setAttributes={ props.setAttributes }
+				className={ className }
+				setAttributes={ setAttributes }
 			/>
 			<div className={ className }>
 
 				{ ( isEditing ) ? (
 					<Placeholder
 						icon={ <Icon icon={ icon } /> }
-						label={ __( 'OpenTable', 'coblocks' ) }
 						instructions={ __(
 							'Select your OpenTable restaurant(s) to show the reservations widget.',
 							'coblocks'
 						) }
 						isColumnLayout={ true }
+						label={ __( 'OpenTable', 'coblocks' ) }
 						notices={
 							noticeUI
 						}
@@ -132,23 +132,19 @@ const Edit = ( props ) => {
 						<div className="components-placeholder__flex-fields">
 							<div className="components-placeholder__flex-fields-vertical-group">
 								<FormTokenField
-									value={ ridField || '' }
-									suggestions={ queryResults }
+									__experimentalHowTo={ false }
 									className="components-placeholder__input"
-									placeholder={ __(
-										'Select restaurant(s)',
-										'coblocks'
-									) }
 									maxSuggestions={ 15 }
 									onChange={ setRidField }
 									onInputChange={ searchRestaurants }
-									__experimentalHowTo={ false }
+									placeholder={ __( 'Select restaurant(s)', 'coblocks' ) }
+									suggestions={ queryResults }
 									tokenizeOnSpace={ false }
+									value={ ridField || '' }
 								/>
 								<Button
-									isPrimary
-									type="submit"
 									disabled={ ridField.length < 1 }
+									isPrimary
 									onClick={ () => {
 										const parsedRestaurants = [];
 										for ( const index in ridField ) {
@@ -158,9 +154,10 @@ const Edit = ( props ) => {
 												rid: restaurantString.substring( restaurantString.lastIndexOf( '(' ) + 1, restaurantString.length - 1 ),
 											} );
 										}
-										props.setAttributes( { restaurantIDs: parsedRestaurants } );
+										setAttributes( { restaurantIDs: parsedRestaurants } );
 										setIsEditing( false );
 									} }
+									type="submit"
 								>
 									{ __( 'Save', 'coblocks' ) }
 								</Button>
@@ -170,14 +167,19 @@ const Edit = ( props ) => {
 						{ noResultsFound && <Notice isDismissible={ false }>No results found.</Notice> }
 						<div></div>
 						<div className="components-placeholder__opentable-help-links">
-							<a target="_blank" rel="noopener noreferrer" href="https://restaurant.opentable.com/get-started/">{ __( 'Sign up for OpenTable', 'coblocks' ) }</a>
+							<a
+								href="https://restaurant.opentable.com/get-started/"
+								rel="noopener noreferrer"
+								target="_blank">
+								{ __( 'Sign up for OpenTable', 'coblocks' ) }
+							</a>
 						</div>
 
 					</Placeholder>
 				)
 					: <>
 						<div
-							style={ { width: '100%', height: '100%', position: 'absolute' } }
+							style={ { height: '100%', position: 'absolute', width: '100%' } }
 						/>
 						<OpenTable { ...props } />
 					</>

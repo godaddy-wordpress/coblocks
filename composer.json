@@ -26,6 +26,7 @@
 	},
 	"scripts": {
 		"lint": "@php ./vendor/bin/phpcs",
+		"lint:fix": "@php ./vendor/bin/phpcbf",
 		"test": "@php ./vendor/bin/phpunit"
 	}
 }
