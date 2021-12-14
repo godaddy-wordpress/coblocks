@@ -23,78 +23,78 @@ describe( 'Test CoBlocks OpenTable Block', function() {
 	} );
 
 	/**
-	 * Chrome does not seem to behave well with the network interactions we attempt with this block.
-	 * Tests are disabled for Chrome yet are enabled for Firefox.
-	 */
-	if ( Cypress.browser.name === 'firefox' ) {
-	/**
 	 * Test that we can add an OpenTable block to the content, add a restaurant and then
 	 * successfully save the block without errors.
 	 */
-		it( 'Test OpenTable block saves with single restaurant selection.', function() {
-			helpers.addBlockToPost( 'coblocks/opentable', true );
+	it( 'Test OpenTable block saves with single restaurant selection.', function() {
+		helpers.addBlockToPost( 'coblocks/opentable', true );
 
-			cy.get( '.wp-block-coblocks-opentable .components-form-token-field__input' ).type( 'test' );
+		cy.intercept( 'GET', 'index.php?rest_route=%2Fcoblocks%2Fopentable%2Fsearch*', { fixture: '../.dev/tests/cypress/fixtures/network/restaurants.json' } );
 
-			cy.get( '.components-form-token-field__suggestion:nth-child(1)' ).click();
+		cy.get( '.wp-block-coblocks-opentable .components-form-token-field__input' ).type( 'test' );
 
-			cy.get( 'button[type="submit"]' ).click();
+		cy.get( '.components-form-token-field__suggestion:nth-child(1)' ).click();
 
-			helpers.savePage();
+		cy.get( 'button[type="submit"]' ).click();
 
-			helpers.checkForBlockErrors( 'coblocks/opentable' );
+		helpers.savePage();
 
-			helpers.viewPage();
+		helpers.checkForBlockErrors( 'coblocks/opentable' );
 
-			helpers.editPage();
-		} );
+		helpers.viewPage();
 
-		/**
-		 * Test that we can add an OpenTable block to the content, add a restaurant and then
-		 * change the block style to tall and have it display correctly.
-		 */
-		it( 'Test OpenTable changing to Tall style.', function() {
-			helpers.addBlockToPost( 'coblocks/opentable', true );
+		helpers.editPage();
+	} );
 
-			cy.get( '.wp-block-coblocks-opentable .components-form-token-field__input' ).type( 'test' );
+	/**
+	 * Test that we can add an OpenTable block to the content, add a restaurant and then
+	 * change the block style to tall and have it display correctly.
+	 */
+	it( 'Test OpenTable changing to Tall style.', function() {
+		helpers.addBlockToPost( 'coblocks/opentable', true );
 
-			cy.get( '.components-form-token-field__suggestion:nth-child(1)' ).click();
+		cy.intercept( 'GET', 'index.php?rest_route=%2Fcoblocks%2Fopentable%2Fsearch*', { fixture: '../.dev/tests/cypress/fixtures/network/restaurants.json' } );
 
-			cy.get( 'button[type="submit"]' ).click();
+		cy.get( '.wp-block-coblocks-opentable .components-form-token-field__input' ).type( 'test' );
 
-			helpers.selectBlock( 'opentable' );
+		cy.get( '.components-form-token-field__suggestion:nth-child(1)' ).click();
 
-			cy.get( 'button[aria-label="Edit Restaurant"]' ).should( 'exist' ).click();
+		cy.get( 'button[type="submit"]' ).click();
 
-			cy.get( '.block-editor-block-styles__item[aria-label="Tall"]' ).should( 'exist' ).click();
+		helpers.selectBlock( 'opentable' );
 
-			helpers.savePage();
+		cy.get( 'button[aria-label="Edit Restaurant"]' ).should( 'exist' ).click();
 
-			helpers.checkForBlockErrors( 'coblocks/opentable' );
+		cy.get( '.block-editor-block-styles__item[aria-label="Tall"]' ).should( 'exist' ).click();
 
-			helpers.viewPage();
+		helpers.savePage();
 
-			cy.get( 'div[class="wp-block-coblocks-opentable iframe__overflow-wrapper is-style-tall"]' ).should( 'exist' );
+		helpers.checkForBlockErrors( 'coblocks/opentable' );
 
-			helpers.editPage();
-		} );
-		/**
-		 * Test that the No results found message is displayed when no restaurants are found.
-		 */
-		it( 'Test OpenTable block properly shows No results found on a superflouous query.', function() {
-			helpers.addBlockToPost( 'coblocks/opentable', true );
+		helpers.viewPage();
 
-			cy.get( '.wp-block-coblocks-opentable .components-form-token-field__input' ).type( 'thereisnowaythiswouldeverreturnarealrestaurant' );
+		cy.get( 'div[class="wp-block-coblocks-opentable iframe__overflow-wrapper is-style-tall"]' ).should( 'exist' );
 
-			cy.get( '.components-notice__content' ).should( 'contain', 'No results found' );
+		helpers.editPage();
+	} );
+	/**
+	 * Test that the No results found message is displayed when no restaurants are found.
+	 */
+	it( 'Test OpenTable block properly shows No results found on a superflouous query.', function() {
+		helpers.addBlockToPost( 'coblocks/opentable', true );
 
-			helpers.savePage();
+		cy.intercept( 'GET', 'index.php?rest_route=%2Fcoblocks%2Fopentable%2Fsearch*', { fixture: '../.dev/tests/cypress/fixtures/network/none.json' } );
 
-			helpers.checkForBlockErrors( 'coblocks/opentable' );
+		cy.get( '.wp-block-coblocks-opentable .components-form-token-field__input' ).type( 'thereisnowaythiswouldeverreturnarealrestaurant' );
 
-			helpers.viewPage();
+		cy.get( '.components-notice__content' ).should( 'contain', 'No results found' );
 
-			helpers.editPage();
-		} );
-	}
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/opentable' );
+
+		helpers.viewPage();
+
+		helpers.editPage();
+	} );
 } );
