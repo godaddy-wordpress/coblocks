@@ -29,6 +29,8 @@ describe( 'Test CoBlocks OpenTable Block', function() {
 	it( 'Test OpenTable block saves with single restaurant selection.', function() {
 		helpers.addBlockToPost( 'coblocks/opentable', true );
 
+		cy.intercept( 'GET', 'index.php?rest_route=%2Fcoblocks%2Fopentable%2Fsearch*', { fixture: '../.dev/tests/cypress/fixtures/network/restaurants.json' } );
+
 		cy.get( '.wp-block-coblocks-opentable .components-form-token-field__input' ).type( 'test' );
 
 		cy.get( '.components-form-token-field__suggestion:nth-child(1)' ).click();
@@ -50,6 +52,8 @@ describe( 'Test CoBlocks OpenTable Block', function() {
 	 */
 	it( 'Test OpenTable changing to Tall style.', function() {
 		helpers.addBlockToPost( 'coblocks/opentable', true );
+
+		cy.intercept( 'GET', 'index.php?rest_route=%2Fcoblocks%2Fopentable%2Fsearch*', { fixture: '../.dev/tests/cypress/fixtures/network/restaurants.json' } );
 
 		cy.get( '.wp-block-coblocks-opentable .components-form-token-field__input' ).type( 'test' );
 
@@ -78,6 +82,8 @@ describe( 'Test CoBlocks OpenTable Block', function() {
 	 */
 	it( 'Test OpenTable block properly shows No results found on a superflouous query.', function() {
 		helpers.addBlockToPost( 'coblocks/opentable', true );
+
+		cy.intercept( 'GET', 'index.php?rest_route=%2Fcoblocks%2Fopentable%2Fsearch*', { fixture: '../.dev/tests/cypress/fixtures/network/none.json' } );
 
 		cy.get( '.wp-block-coblocks-opentable .components-form-token-field__input' ).type( 'thereisnowaythiswouldeverreturnarealrestaurant' );
 
