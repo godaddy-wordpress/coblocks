@@ -48,7 +48,7 @@ const PreviewImageFilterPopover = ( { hoveredFilter } ) => {
 				>
 					<div className="block-editor-block-switcher__preview coblocks__preview">
 						<div className="block-editor-block-switcher__preview-title">
-							{ __( 'Preview filter' ) }
+							{ __( 'Preview filter', 'coblocks' ) }
 						</div>
 						<BlockPreview
 							autoHeight

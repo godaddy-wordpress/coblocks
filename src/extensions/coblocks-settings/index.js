@@ -43,7 +43,7 @@ export default function CoBlocksSettings() {
 				>
 					<section className="edit-post-preferences-modal__section">
 						<h2 className="edit-post-preferences-modal__section-title">
-							{ __( 'General' ) }
+							{ __( 'General', 'coblocks' ) }
 						</h2>
 
 						<CoBlocksSettingsModalControl.Slot>
