@@ -98,14 +98,14 @@ export const Gallery = ( props ) => {
 				__unstableOnSplitAtEnd={ () =>
 					insertBlocksAfter( createBlock( 'core/paragraph' ) )
 				}
-				aria-label={ __( 'Gallery caption text' ) }
+				aria-label={ __( 'Gallery caption text', 'coblocks' ) }
 				captionFocused={ captionFocused }
 				className="blocks-gallery-caption"
 				inlineToolbar
 				isHidden={ ! isSelected && RichText.isEmpty( caption ) }
 				onChange={ ( value ) => setAttributes( { caption: value } ) }
 				onFocusCaption={ onFocusCaption }
-				placeholder={ __( 'Write gallery caption…' ) }
+				placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
 				tagName="figcaption"
 				value={ caption }
 			/>
