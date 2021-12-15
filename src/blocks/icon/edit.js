@@ -135,10 +135,10 @@ const Edit = ( props ) => {
 		<>
 			{ isSelected && (
 				<>
+					<Controls { ...props } />
 					<InspectorLoader>
 						<Inspector { ...props } />
 					</InspectorLoader>
-					<Controls { ...props } />
 				</>
 			) }
 			<div className={ classes }>
