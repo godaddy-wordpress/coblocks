@@ -6,19 +6,20 @@
 import classnames from 'classnames';
 
 /**
- * Internal dependencies
- */
-import applyWithColors from './colors';
-import Controls from './controls';
-import Inspector from './inspector';
-
-/**
  * WordPress dependencies
  */
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
+import { lazy, useEffect, useState } from '@wordpress/element';
 import { ResizableBox, Spinner } from '@wordpress/components';
-import { useEffect, useState } from '@wordpress/element';
+
+/**
+ * Internal dependencies
+ */
+import applyWithColors from './colors';
+import Controls from './controls';
+import InspectorLoader from '../../components/inspector-loader';
+const Inspector = lazy( () => import( './inspector' ) );
 
 /**
  * Set and export block values.
@@ -134,7 +135,9 @@ const Edit = ( props ) => {
 		<>
 			{ isSelected && (
 				<>
-					<Inspector { ...props } />
+					<InspectorLoader>
+						<Inspector { ...props } />
+					</InspectorLoader>
 					<Controls { ...props } />
 				</>
 			) }
