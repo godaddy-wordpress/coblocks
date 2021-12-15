@@ -12,6 +12,7 @@ export default function save( { attributes, className } ) {
 	const {
 		columns,
 		gutter,
+		styleName,
 	} = attributes;
 
 	const classes = classnames( className, {
@@ -19,6 +20,7 @@ export default function save( { attributes, className } ) {
 		'has-responsive-columns': columns > 1,
 		[ `has-${ columns }-columns` ]: columns > 1,
 		[ `has-${ gutter }-gutter` ]: gutter,
+		[ `is-style-${ styleName }` ]: styleName,
 	} );
 
 	return (

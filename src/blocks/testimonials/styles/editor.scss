@@ -1,3 +1,12 @@
 [data-type="coblocks/testimonials"] {
+	.coblocks-block-appender {
+		flex: 1 100%;
+		margin-top: 28px;
+		max-width: 100% !important;
+	}
 
+	// Hide this on Gutenberg 5.9+
+	.block-list-appender {
+		display: none !important;
+	}
 }

@@ -16,7 +16,7 @@ const Inspector = ( props ) => {
 		alt,
 		focalPoint,
 		showImage,
-		showTitle,
+		showRole,
 		url,
 	} = attributes;
 
@@ -30,18 +30,18 @@ const Inspector = ( props ) => {
 							? __( 'Showing an image for this item.', 'coblocks' )
 							: __( 'Toggle to show an image for this item.', 'coblocks' )
 					}
-					label={ __( 'Image', 'coblocks' ) }
+					label={ __( 'Customer Image', 'coblocks' ) }
 					onChange={ () => setAttributes( { showImage: ! showImage } ) }
 				/>
 				<ToggleControl
-					checked={ showTitle }
+					checked={ showRole }
 					help={
-						showTitle
-							? __( 'Showing the title for this item.', 'coblocks' )
-							: __( 'Toggle to show the title for this item.', 'coblocks' )
+						showRole
+							? __( 'Showing the role of each reviewer.', 'coblocks' )
+							: __( 'Toggle to show the role for this item.', 'coblocks' )
 					}
-					label={ __( 'Title', 'coblocks' ) }
-					onChange={ () => setAttributes( { showTitle: ! showTitle } ) }
+					label={ __( 'Customer Role', 'coblocks' ) }
+					onChange={ () => setAttributes( { showRole: ! showRole } ) }
 				/>
 			</PanelBody>
 			{ url &&

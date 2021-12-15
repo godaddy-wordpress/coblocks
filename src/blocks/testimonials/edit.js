@@ -8,25 +8,18 @@ import Inspector from './inspector';
  * External dependencies.
  */
 import classnames from 'classnames';
-import { find } from 'lodash';
 
 /**
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
+import { compose } from '@wordpress/compose';
 import { createBlock } from '@wordpress/blocks';
-import { InnerBlocks } from '@wordpress/block-editor';
-import TokenList from '@wordpress/token-list';
 import { useEffect } from '@wordpress/element';
-import { compose, usePrevious } from '@wordpress/compose';
-import { withDispatch, withSelect } from '@wordpress/data';
+import { InnerBlocks, withColors } from '@wordpress/block-editor';
+import { useDispatch, useSelect } from '@wordpress/data';
 
-const ALLOWED_BLOCKS = [ 'coblocks/food-item' ];
-
-const TEMPLATE = [
-	[ 'coblocks/testimonial' ],
-	[ 'coblocks/testimonial' ],
-];
+const ALLOWED_BLOCKS = [ 'coblocks/testimonial' ];
 
 const layoutOptions = [
 	{
@@ -34,111 +27,78 @@ const layoutOptions = [
 		iconWithImages: ( <div>Icon</div> ),
 		isDefault: true,
 		/* translators: block style */
-		label: __( 'Column', 'coblocks' ),
-		name: 'column',
+		label: __( 'Boxy', 'coblocks' ),
+		name: 'boxy',
 	},
 	{
 		icon: ( <div>Icon</div> ),
 		iconWithImages: ( <div>Icon</div> ),
 		/* translators: block style */
-		label: __( 'Row', 'coblocks' ),
-		name: 'row',
+		label: __( 'Conversation', 'coblocks' ),
+		name: 'conversation',
 	},
 	{
 		icon: ( <div>Icon</div> ),
 		iconWithImages: ( <div>Icon</div> ),
 		/* translators: block style */
-		label: __( 'Bubble', 'coblocks' ),
-		name: 'bubble',
+		label: __( 'Horizontal', 'coblocks' ),
+		name: 'horizontal',
 	},
 ];
 
-/**
- * Returns the active style from the given className.
- *
- * @param {Array}  styles    Block style variations.
- * @param {string} className Class name
- * @return {Object?} The active style.
- */
-function getActiveStyle( styles, className ) {
-	for ( const style of new TokenList( className ).values() ) {
-		if ( style.indexOf( 'is-style-' ) === -1 ) {
-			continue;
-		}
-
-		const potentialStyleName = style.substring( 9 );
-		const activeStyle = find( styles, { name: potentialStyleName } );
-
-		if ( activeStyle ) {
-			return activeStyle;
-		}
-	}
-
-	return find( styles, 'isDefault' );
-}
-
-/**
- * Replaces the active style in the block's className.
- *
- * @param {string}  className   Class name.
- * @param {Object?} activeStyle The replaced style.
- * @param {Object}  newStyle    The replacing style.
- * @return {string} The updated className.
- */
-function replaceActiveStyle( className, activeStyle, newStyle ) {
-	const list = new TokenList( className );
-
-	if ( activeStyle ) {
-		list.remove( 'is-style-' + activeStyle.name );
-	}
-
-	list.add( 'is-style-' + newStyle.name );
-
-	return list.value;
-}
-
 const Edit = ( props ) => {
 	const {
-		className,
 		attributes,
-		updateBlockAttributes,
-		innerBlocks,
-		setAttributes,
+		className,
 		clientId,
-		insertBlock,
-		getBlockOrder,
-		isSelected,
+		setAttributes,
+		backgroundColor,
+		textColor,
 	} = props;
-
-	const prevClassName = usePrevious( className );
 
 	const {
 		columns,
 		gutter,
+		styleName,
 	} = attributes;
 
-	const activeStyle = getActiveStyle( layoutOptions, className );
+	const { insertBlock, updateBlockAttributes } = useDispatch( 'core/block-editor' );
+
+	const { innerBlocks } = useSelect( ( select ) => ( {
+		innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
+	} ) );
+
+	useEffect( () => {
+		const testimonialBlocksCount = innerBlocks.reduce( ( acc, cur ) => acc + ( cur.name === 'coblocks/testimonial' ), 0 );
+
+		if ( testimonialBlocksCount < columns ) {
+			insertBlock(
+				createBlock( 'coblocks/testimonial', {
+					showImage: attributes.showImages,
+					showRole: attributes.showRoles,
+				} ),
+				innerBlocks.length,
+				clientId,
+				false
+			);
+		}
+	}, [ columns, innerBlocks ] );
+
+	useEffect( () => {
+		console.log('Updating BGC for ', backgroundColor);
+		updateInnerAttributes( 'coblocks/testimonial', {
+			backgroundColor,
+			textColor,
+		} );
+	}, [ backgroundColor, textColor ] );
 
 	const classes = classnames( className, {
 		'has-columns': columns > 1,
 		'has-responsive-columns': columns > 1,
 		[ `has-${ columns }-columns` ]: columns > 1,
 		[ `has-${ gutter }-gutter` ]: gutter,
+		[ `is-style-${ styleName }` ]: styleName,
 	} );
-
-	useEffect( () => {
-		const lastActiveStyle = getActiveStyle( layoutOptions, prevClassName );
-
-		if ( activeStyle !== lastActiveStyle ) {
-			if ( 'list' === activeStyle.name ) {
-				setColumns( 1 );
-			}
-
-			if ( 'grid' === activeStyle.name ) {
-				setColumns( 2 );
-			}
-		}
-	}, [ attributes, prevClassName ] );
 
 	const updateInnerAttributes = ( blockName, newAttributes ) => {
 		innerBlocks.forEach( ( item ) => {
@@ -162,10 +122,10 @@ const Edit = ( props ) => {
 		updateInnerAttributes( 'coblocks/testimonial', { showImage: showImages } );
 	};
 
-	const toggleTitles = () => {
-		const showTitles = ! attributes.showTitles;
-		setAttributes( { showTitles } );
-		updateInnerAttributes( 'coblocks/testimonial', { showPrice: showTitles } );
+	const toggleRoles = () => {
+		const showRoles = ! attributes.showRoles;
+		setAttributes( { showRoles } );
+		updateInnerAttributes( 'coblocks/testimonial', { showRole: showRoles } );
 	};
 
 	const setColumns = ( value ) => {
@@ -176,14 +136,9 @@ const Edit = ( props ) => {
 		setAttributes( { gutter: value } );
 	};
 
-	const updateStyle = ( style ) => {
-		const updatedClassName = replaceActiveStyle(
-			attributes.className,
-			activeStyle,
-			style
-		);
-
-		setAttributes( { className: updatedClassName } );
+	const setStyleName = ( value ) => {
+		setAttributes( { styleName: value.name } );
+		updateInnerAttributes( 'coblocks/testimonial', { styleName: value.name } );
 	};
 
 	return (
@@ -193,20 +148,20 @@ const Edit = ( props ) => {
 				onChangeHeadingLevel={ onChangeHeadingLevel }
 			/>
 			<Inspector
-				activeStyle={ activeStyle }
+				{ ...props }
+				activeStyle={ styleName }
 				attributes={ attributes }
 				layoutOptions={ layoutOptions }
 				onSetColumns={ setColumns }
 				onSetGutter={ setGutter }
 				onToggleImages={ toggleImages }
-				onToggleTitles={ toggleTitles }
-				onUpdateStyle={ updateStyle }
+				onToggleRoles={ toggleRoles }
+				onUpdateStyleName={ setStyleName }
 			/>
 			<div className={ classes }>
 				<InnerBlocks
 					__experimentalCaptureToolbars={ true }
 					allowedBlocks={ ALLOWED_BLOCKS }
-					template={ TEMPLATE }
 					templateInsertUpdatesSelection={ false }
 				/>
 			</div>
@@ -215,63 +170,5 @@ const Edit = ( props ) => {
 };
 
 export default compose( [
-
-	withSelect( ( select, props ) => {
-		const {
-			getBlockOrder,
-			getBlockRootClientId,
-			getBlockSelectionStart,
-			getBlocks,
-			getBlocksByClientId,
-		} = select( 'core/block-editor' );
-
-		// Get clientId of the parent block.
-		const parentClientId = getBlockRootClientId( getBlockSelectionStart() );
-
-		return {
-			getBlockOrder,
-			getBlocksByClientId,
-			isSelected: props.isSelected || props.clientId === parentClientId,
-			innerBlocks: getBlocks( props.clientId ),
-		};
-	} ),
-
-	withDispatch( ( dispatch ) => {
-		const {
-			insertBlock,
-			insertBlocks,
-			updateBlockAttributes,
-		} = dispatch( 'core/block-editor' );
-
-		return {
-			insertBlock,
-			insertBlocks,
-			updateBlockAttributes,
-		};
-	} ),
-
-	// Ensure there is a minimum of one coblocks/food-item innerBlock per column set.
-	( WrappedComponent ) => ( ownProps ) => {
-		// This is a newly added block if we have zero innerBlocks. We want the TEMPLATE definition to be used in this case.
-		if ( ownProps.innerBlocks.length > 0 ) {
-			const foodItemBlocksCount = ownProps.innerBlocks.reduce( ( acc, cur ) => acc + ( cur.name === 'coblocks/food-item' ), 0 );
-
-			// Add a new block if the count is less than the columns set.
-			// We don't need a loop here because this will trigger a component update as soon as we insert a block (triggering this HOC again).
-			if ( foodItemBlocksCount < ownProps.attributes.columns ) {
-				ownProps.insertBlock(
-					createBlock( 'coblocks/food-item', {
-						showImage: ownProps.attributes.showImages,
-						showPrice: ownProps.attributes.showPrices,
-					} ),
-					ownProps.innerBlocks.length,
-					ownProps.clientId,
-					false
-				);
-			}
-		}
-
-		return <WrappedComponent { ...ownProps } />;
-	},
-
+	withColors( 'backgroundColor', { textColor: 'color' } ),
 ] )( Edit );

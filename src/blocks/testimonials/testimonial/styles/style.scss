@@ -1,3 +1,86 @@
-.wp-block-coblocks-testimonial {
+.wp-block-coblocks-testimonials .wp-block-coblocks-testimonial {
+	background-color: #fff;
+	display: flex;
+	padding: 2em 1.5em;
 
+	&__heading {
+		margin-bottom: 1.5em;
+
+		&__name {
+			margin: 0;
+		}
+
+		&__role {
+			line-height: 1.2;
+			margin: 0.5em 0 0;
+		}
+	}
+
+	&__text {
+		line-height: 1.5;
+		margin: 0;
+	}
+}
+
+// Style-specific
+
+// -> Boxy
+.is-style-boxy .wp-block-coblocks-testimonial {
+	align-items: center;
+	flex-direction: column;
+	text-align: center;
+
+	&__image {
+		margin: 0 0 1em;
+		width: 100%;
+	}
+}
+
+// -> Conversation
+.is-style-conversation .wp-block-coblocks-testimonial {
+	flex-direction: column;
+
+	&__text {
+		background-color: #ddd;
+		margin-bottom: 2em;
+		padding: 1em;
+		position: relative;
+		width: 100%;
+
+		&::after {
+			background-color: red;
+			bottom: -20px;
+			content: "";
+			display: block;
+			height: 20px;
+			left: 1em;
+			position: absolute;
+			width: 20px;
+		}
+	}
+
+	&__image {
+		margin: 0 1em 0 0;
+	}
+
+	&__content {
+		align-items: center;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+}
+
+// -> Horizontal
+.is-style-horizontal .wp-block-coblocks-testimonial {
+	&__image {
+		margin: 0 1em 0 0;
+	}
+
+	&__content {
+		align-items: flex-start;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
 }

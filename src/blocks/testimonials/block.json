@@ -2,14 +2,6 @@
 	"name": "coblocks/testimonials",
 	"category": "layout",
 	"attributes": {
-		"showImages": {
-			"type": "boolean",
-			"default": false
-		},
-		"showTitles": {
-			"type": "boolean",
-			"default": true
-		},
 		"columns": {
 			"type": "number",
 			"default": 2
@@ -21,6 +13,30 @@
 		"headingLevel": {
 			"type": "integer",
 			"default": 4
+		},
+		"showRoles": {
+			"type": "boolean",
+			"default": true
+		},
+		"showImages": {
+			"type": "boolean",
+			"default": false
+		},
+		"styleName": {
+			"type": "string",
+			"default": "boxy"
+		},
+		"backgroundColor": {
+			"type": "string"
+		},
+		"customBackgroundColor": {
+			"type": "string"
+		},
+		"textColor": {
+			"type": "string"
+		},
+		"customTextColor": {
+			"type": "string"
 		}
 	}
 }

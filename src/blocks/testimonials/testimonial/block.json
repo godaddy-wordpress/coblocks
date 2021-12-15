@@ -9,12 +9,6 @@
 			"attribute": "alt",
 			"default": ""
 		},
-		"description": {
-			"type": "string",
-			"source": "html",
-			"selector": ".wp-block-coblocks-food-item__description",
-			"default": ""
-		},
 		"focalPoint": {
 			"type": "object"
 		},
@@ -25,21 +19,27 @@
 		"name": {
 			"type": "string",
 			"source": "html",
-			"selector": ".wp-block-coblocks-food-item__heading",
+			"selector": ".wp-block-coblocks-testimonial__name",
+			"default": ""
+		},
+		"role": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-coblocks-testimonial__role",
 			"default": ""
 		},
 		"showImage": {
 			"type": "boolean",
 			"default": false
 		},
-		"showTitle": {
+		"showRole": {
 			"type": "boolean",
 			"default": true
 		},
-		"title": {
+		"text": {
 			"type": "string",
 			"source": "html",
-			"selector": ".wp-block-coblocks-food-item__price span",
+			"selector": ".wp-block-coblocks-testimonial__description",
 			"default": ""
 		},
 		"url": {
@@ -48,6 +48,16 @@
 			"selector": "img",
 			"attribute": "src",
 			"default": ""
+		},
+		"styleName": {
+			"type": "string",
+			"default": "boxy"
+		},
+		"backgroundColor": {
+			"type": "string"
+		},
+		"textColor": {
+			"type": "string"
 		}
 	}
 }
