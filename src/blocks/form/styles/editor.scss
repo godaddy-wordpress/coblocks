@@ -128,6 +128,19 @@
 		}
 	}
 
+	// Reset disabled styles in editor so we can see the inputs.
+	input.disabled,
+	input:disabled,
+	select.disabled,
+	select:disabled,
+	textarea.disabled,
+	textarea:disabled {
+		background: initial;
+		border-color: initial;
+		box-shadow: initial;
+		color: initial;
+	}
+
 	.coblocks-option__type.coblocks-option__type {
 		margin-top: 0;
 	}
