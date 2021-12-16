@@ -33,24 +33,14 @@ git config github.user $GH_LOGIN
 
 success "Pull Request ID: $PR_ID"
 
-PREV_BUILD_ID=$(cat ~/project/build-num.txt)
-ARTIFACT_URL=$(curl -sS -H "Circle-Token: $CIRCLE_TOKEN" "https://circleci.com/api/v1.1/project/gh/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$PREV_BUILD_ID/artifacts" | jq .[0].url | tr -d "\042")
-
-if [ -z "$ARTIFACT_URL" ]; then
-  error "Could not get the artifact URL"
-  exit 1
-fi
-
-success "Article URL Found - $ARTIFACT_URL"
-
-COMMENT_BODY="Download $CIRCLE_PROJECT_REPONAME.zip: $ARTIFACT_URL"
+PERF_TEST_RESULTS=$(cat ~/project/post-editor-performance-results.txt)
 
 BOT_COMMENTS=$(curl -sS \
   -u $GH_LOGIN:$GH_AUTH_TOKEN \
   -H "Accept: application/vnd.github.v3+json" \
   "https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/issues/$PR_ID/comments")
 
-COMMENT=$(echo $BOT_COMMENTS | jq '[.[] | select( .user.login == "godaddy-wordpress-bot" and ( .body | contains( "Download" ) ) )]' | jq '.[-1]')
+COMMENT=$(echo $BOT_COMMENTS | jq '[.[] | select( .user.login == "godaddy-wordpress-bot" and ( .body | contains( "Performance Test Results" ) ) )]' | jq '.[-1]')
 
 # Bot has not commented on the issue, create new comment
 if [ 'null' == "$COMMENT" ]; then
@@ -60,7 +50,7 @@ if [ 'null' == "$COMMENT" ]; then
     -u $GH_LOGIN:$GH_AUTH_TOKEN \
     -H "Accept: application/vnd.github.v3+json" \
     "https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/issues/$PR_ID/comments" \
-    -d "{\"body\": \"$COMMENT_BODY\"}")
+    -d '{"body": "## Performance Test Results: \r\n '"$PERF_TEST_RESULTS"'"}')
   success "Done."
   exit 0
 fi
@@ -79,6 +69,6 @@ NEW_COMMENT=$(curl -sS \
   -u $GH_LOGIN:$GH_AUTH_TOKEN \
   -H "Accept: application/vnd.github.v3+json" \
   "https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/issues/comments/$COMMENT_ID" \
-  -d "{\"body\": \"$COMMENT_BODY\"}")
+  -d '{"body": "## Performance Test Results: \r\n '"$PERF_TEST_RESULTS"'"}')
 
 success "Done."
