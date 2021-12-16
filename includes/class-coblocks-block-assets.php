@@ -178,9 +178,9 @@ class CoBlocks_Block_Assets {
 		);
 
 		foreach ( glob( COBLOCKS_PLUGIN_DIR . 'dist/coblocks-*.js' ) as $file ) {
-			$name = str_replace( '.js', '', basename( $file ) ); // coblocks-1
+			$name = str_replace( '.js', '', basename( $file ) ); // coblocks-1.
 
-			if ( ! preg_match( '/coblocks-\d+/' , $name ) ) {
+			if ( ! preg_match( '/coblocks-\d+/', $name ) ) {
 				continue;
 			}
 
