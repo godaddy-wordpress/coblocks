@@ -16,7 +16,6 @@ import Inspector from './inspector';
 import Swiper from '../../components/swiper';
 import { CarouselGalleryVariationPicker, hasVariationSet } from './variations';
 import { GalleryCarouselContext, GalleryContextProvider } from './context';
-import { parseNavForClass } from './util';
 
 /**
  * WordPress dependencies
