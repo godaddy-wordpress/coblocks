@@ -3,13 +3,14 @@
  */
 import classnames from 'classnames';
 import { MapIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
 
 /**
  * Internal dependencies
  */
 import Controls from './controls';
 import GMapStyles from './map-styles';
+import GoogleMapIframeRender from './edit-gmaps-iframe-render';
+import GoogleMapWithApiKey from './edit-gmaps-with-api-key';
 import Inspector from './inspector';
 
 /**
@@ -27,7 +28,6 @@ import {
 	withNotices,
 } from '@wordpress/components';
 import { useCallback, useEffect, useState } from '@wordpress/element';
-import GoogleMapWithApiKey from './edit-gmaps-with-api-key';
 
 const Edit = ( props ) => {
 	const {
@@ -105,8 +105,6 @@ const Edit = ( props ) => {
 		} );
 	};
 
-	const locale = document.documentElement.lang;
-
 	const renderMap = ( event ) => {
 		if ( event ) {
 			event.preventDefault();
@@ -122,65 +120,6 @@ const Edit = ( props ) => {
 			skin +
 			'.svg',
 	};
-
-	const GoogleMapIframeRender = () => (
-		<>
-			<div
-				style={ { height, position: 'absolute', width: '100%' } }
-			/>
-			<div className="iframe__overflow-wrapper">
-				<iframe
-					frameBorder="0"
-					src={ `https://www.google.com/maps?q=${ encodeURIComponent(
-						address
-					) }&output=embed&hl=${ locale }&z=${ zoom }` }
-					style={ { minHeight: height + 'px', width: '100%' } }
-					title={ __( 'Google Map', 'coblocks' ) }
-				/>
-			</div>
-		</>
-	);
-
-	// const GoogleMapWithApiKey = ( props ) => {
-	// 	const { isLoaded, loadError } = useLoadScript({
-	// 		googleMapsApiKey: props.apiKey,
-	// 	} );
-	//
-	// 	const onLoad = useCallback(
-	// 		function onLoad (mapInstance) {
-	// 			console.log(mapInstance)
-	// 		}
-	// 	)
-	// 	//
-	//
-	// 	const renderMap = () => {
-	// 		return <GoogleMap
-	// 			id="circle-example"
-	// 			mapContainerStyle={{
-	// 				height: "400px",
-	// 				width: "100%"
-	// 			}}
-	// 			zoom={7}
-	// 			center={{
-	// 				lat: -3.745,
-	// 				lng: -38.523
-	// 			}}
-	// 			onLoad={onLoad}
-	// 		>
-	// 			<Marker position={{
-	// 				lat: -3.745,
-	// 				lng: -38.523
-	// 			}}
-	// 					/>
-	// 		</GoogleMap>
-	// 	}
-	//
-	// 	if (loadError) {
-	// 		return <div>Oups</div>
-	// 	}
-	//
-	// 	return isLoaded ? renderMap() : <Spinner />;
-	// };
 
 	return (
 		<>
@@ -222,7 +161,7 @@ const Edit = ( props ) => {
 					} }
 				>
 					{ !! apiKeyState
-						? <GoogleMapWithApiKey apiKey={ apiKeyState } /> : GoogleMapIframeRender() }
+						? <GoogleMapWithApiKey apiKey={ apiKeyState } /> : GoogleMapIframeRender( props ) }
 				</ResizableBox>
 			) : (
 				<Placeholder

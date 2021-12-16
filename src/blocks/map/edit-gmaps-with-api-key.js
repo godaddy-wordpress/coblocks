@@ -1,17 +1,24 @@
+/**
+ * External dependencies
+ */
 import { GoogleMap, useLoadScript } from '@react-google-maps/api';
-import { useCallback } from '@wordpress/element';
-import { Spinner } from '@wordpress/components';
 
-const GoogleMapWithApiKey = ( props ) => {
+/**
+ * WordPress dependencies
+ */
+import { Spinner } from '@wordpress/components';
+import { useCallback } from '@wordpress/element';
+
+const GoogleMapWithApiKey = ( { apiKey } ) => {
 	const { isLoaded, loadError } = useLoadScript({
-		googleMapsApiKey: props.apiKey,
+		googleMapsApiKey: apiKey,
 	} );
 
 	const onLoad = useCallback(
-		function onLoad (mapInstance) {
-			console.log(mapInstance)
+		function onLoad ( mapInstance ) {
+			console.log( mapInstance )
 		}
-	)
+	);
 	//
 
 	const renderMap = () => {
