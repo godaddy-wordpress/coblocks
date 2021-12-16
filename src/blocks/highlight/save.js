@@ -37,11 +37,14 @@ const save = ( { attributes } ) => {
 	const styles = {
 		backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 		color: textClass ? undefined : customTextColor,
-		fontSize: fontSizeClass ? undefined : customFontSize,
+		fontSize: customFontSize ?? undefined,
 	};
 
 	return RichText.isEmpty( content ) ? null : (
-		<p style={ { textAlign: align } }>
+		<p style={ {
+			textAlign: align,
+			fontSize: customFontSize ?? undefined,
+		} }>
 			<RichText.Content
 				tagName="mark"
 				className={ classes }

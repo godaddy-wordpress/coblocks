@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-12-13T19:30:01+00:00\n"
+"POT-Creation-Date: 2021-12-15T19:00:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -34,8 +34,8 @@ msgstr ""
 msgid "https://www.godaddy.com"
 msgstr ""
 
-#: class-coblocks.php:81
-#: class-coblocks.php:93
+#: class-coblocks.php:82
+#: class-coblocks.php:94
 msgid "Something went wrong."
 msgstr ""
 
@@ -228,7 +228,7 @@ msgstr ""
 #: src/blocks/form/edit.js:131
 #: src/blocks/form/fields/submit-button/index.js:26
 #: src/blocks/form/fields/submit-button/index.js:34
-#: src/blocks/form/fields/submit-button/index.js:52
+#: src/blocks/form/fields/submit-button/index.js:79
 msgid "Submit"
 msgstr ""
 
@@ -1712,7 +1712,7 @@ msgstr ""
 
 #: src/blocks/form/edit.js:402
 #: src/blocks/map/inspector.js:226
-#: src/blocks/opentable/edit.js:165
+#: src/blocks/opentable/edit.js:162
 msgid "Save"
 msgstr ""
 
@@ -2013,8 +2013,7 @@ msgstr ""
 msgid "Button text color"
 msgstr ""
 
-#. translators: block description
-#: src/blocks/form/fields/submit-button/index.js:54
+#: src/blocks/form/fields/submit-button/index.js:52
 msgid "A button for submitting form data."
 msgstr ""
 
@@ -2027,6 +2026,38 @@ msgstr ""
 #: src/blocks/form/fields/submit-button/index.js:61
 #: src/blocks/hero/index.js:87
 msgid "button"
+msgstr ""
+
+#: src/blocks/form/fields/submit-button/index.js:66
+msgid "Fill"
+msgstr ""
+
+#. translators: block style
+#: src/blocks/form/fields/submit-button/index.js:67
+#: src/extensions/media-text-styles/index.js:31
+msgid "Outline"
+msgstr ""
+
+#. translators: block style
+#: src/blocks/form/fields/submit-button/index.js:68
+#: src/blocks/share/index.js:54
+#: src/blocks/social-profiles/index.js:66
+#: src/extensions/button-styles/index.js:11
+msgid "Circular"
+msgstr ""
+
+#. translators: block style
+#: src/blocks/form/fields/submit-button/index.js:69
+#: src/extensions/button-styles/index.js:18
+msgid "3D"
+msgstr ""
+
+#. translators: block style
+#: src/blocks/form/fields/submit-button/index.js:70
+#: src/blocks/gallery-collage/inspector.js:93
+#: src/blocks/gallery-stacked/inspector.js:121
+#: src/extensions/button-styles/index.js:25
+msgid "Shadow"
 msgstr ""
 
 #. translators: block description
@@ -2169,6 +2200,7 @@ msgid "Carousel"
 msgstr ""
 
 #: src/blocks/gallery-carousel/gallery-carousel-item.js:53
+#: src/components/block-gallery/gallery.js:108
 msgid "Write gallery caption…"
 msgstr ""
 
@@ -2220,7 +2252,7 @@ msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:49
 #: src/blocks/gallery-collage/inspector.js:50
-#: src/blocks/gallery-masonry/edit.js:457
+#: src/blocks/gallery-masonry/edit.js:462
 #: src/blocks/gallery-masonry/v1/inspector.js:68
 #: src/blocks/gallery-offset/inspector.js:71
 #: src/blocks/gallery-stacked/inspector.js:66
@@ -2230,7 +2262,7 @@ msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:49
 #: src/blocks/gallery-collage/inspector.js:50
-#: src/blocks/gallery-masonry/edit.js:458
+#: src/blocks/gallery-masonry/edit.js:463
 #: src/blocks/gallery-masonry/v1/inspector.js:69
 #: src/blocks/gallery-offset/inspector.js:72
 #: src/blocks/gallery-stacked/inspector.js:67
@@ -2252,7 +2284,7 @@ msgid "Size"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:93
-#: src/blocks/gallery-masonry/edit.js:525
+#: src/blocks/gallery-masonry/edit.js:530
 #: src/blocks/gallery-masonry/v1/inspector.js:89
 #: src/blocks/gallery-offset/inspector.js:87
 #: src/blocks/gallery-stacked/inspector.js:90
@@ -2264,7 +2296,7 @@ msgstr ""
 #: src/blocks/gallery-carousel/inspector.js:130
 #: src/blocks/gallery-carousel/variations.js:145
 #: src/blocks/gallery-collage/inspector.js:100
-#: src/blocks/gallery-masonry/edit.js:537
+#: src/blocks/gallery-masonry/edit.js:542
 #: src/blocks/gallery-masonry/v1/inspector.js:101
 #: src/blocks/gallery-offset/inspector.js:95
 #: src/blocks/gallery-stacked/inspector.js:100
@@ -2375,13 +2407,6 @@ msgstr ""
 msgid "Collage settings"
 msgstr ""
 
-#. translators: block style
-#: src/blocks/gallery-collage/inspector.js:93
-#: src/blocks/gallery-stacked/inspector.js:121
-#: src/extensions/button-styles/index.js:25
-msgid "Shadow"
-msgstr ""
-
 #: src/blocks/gallery-collage/inspector.js:106
 #: src/blocks/gallery-masonry/v1/inspector.js:108
 #: src/blocks/gallery-offset/inspector.js:101
@@ -2396,10 +2421,87 @@ msgid "Caption style"
 msgstr ""
 
 #: src/blocks/gallery-masonry/deprecated.js:350
+#: src/blocks/gallery-masonry/edit.js:450
 msgid "Masonry Gallery"
 msgstr ""
 
-#: src/blocks/gallery-masonry/edit.js:524
+#: src/blocks/gallery-masonry/edit.js:37
+msgid "Attachment Page"
+msgstr ""
+
+#: src/blocks/gallery-masonry/edit.js:38
+msgid "Media File"
+msgstr ""
+
+#: src/blocks/gallery-masonry/edit.js:47
+msgid "ADD MEDIA"
+msgstr ""
+
+#: src/blocks/gallery-masonry/edit.js:48
+#: src/blocks/logos/edit.js:53
+#: src/components/block-gallery/gallery-placeholder.js:83
+msgid "Drag images, upload new ones or select files from your library."
+msgstr ""
+
+#: src/blocks/gallery-masonry/edit.js:255
+msgid "If uploading to a gallery all files need to be image formats"
+msgstr ""
+
+#. translators: %s: image size settings
+#: src/blocks/gallery-masonry/edit.js:357
+msgid "All gallery image links updated to: %s"
+msgstr ""
+
+#: src/blocks/gallery-masonry/edit.js:373
+msgid "Thumbnails are cropped to align."
+msgstr ""
+
+#: src/blocks/gallery-masonry/edit.js:374
+msgid "Thumbnails are not cropped."
+msgstr ""
+
+#: src/blocks/gallery-masonry/edit.js:391
+msgid "All gallery images updated to open in new tab"
+msgstr ""
+
+#: src/blocks/gallery-masonry/edit.js:392
+msgid "All gallery images updated to not open in new tab"
+msgstr ""
+
+#. translators: %s: image size settings
+#: src/blocks/gallery-masonry/edit.js:421
+msgid "All gallery image sizes updated to: %s"
+msgstr ""
+
+#: src/blocks/gallery-masonry/edit.js:483
+msgid "Gallery settings"
+msgstr ""
+
+#: src/blocks/gallery-masonry/edit.js:487
+msgid "Crop images"
+msgstr ""
+
+#: src/blocks/gallery-masonry/edit.js:492
+#: src/components/block-gallery/gallery-link-settings.js:80
+msgid "Link to"
+msgstr ""
+
+#: src/blocks/gallery-masonry/edit.js:500
+#: src/blocks/icon/inspector.js:316
+#: src/components/block-gallery/gallery-link-settings.js:89
+msgid "Open in new tab"
+msgstr ""
+
+#: src/blocks/gallery-masonry/edit.js:507
+#: src/blocks/gallery-masonry/edit.js:516
+msgid "Image size"
+msgstr ""
+
+#: src/blocks/gallery-masonry/edit.js:520
+msgid "Loading options…"
+msgstr ""
+
+#: src/blocks/gallery-masonry/edit.js:529
 #: src/blocks/gallery-masonry/v1/inspector.js:88
 msgid "Add rounded corners to the gallery items."
 msgstr ""
@@ -2600,7 +2702,7 @@ msgstr ""
 msgid "Content width in pixels"
 msgstr ""
 
-#: src/blocks/highlight/edit.js:104
+#: src/blocks/highlight/edit.js:103
 msgid "Add highlighted text…"
 msgstr ""
 
@@ -6754,11 +6856,6 @@ msgstr ""
 msgid "Opening in new tab"
 msgstr ""
 
-#: src/blocks/icon/inspector.js:316
-#: src/components/block-gallery/gallery-link-settings.js:89
-msgid "Open in new tab"
-msgstr ""
-
 #: src/blocks/icon/inspector.js:328
 msgid "Remove Link"
 msgstr ""
@@ -7483,7 +7580,7 @@ msgstr ""
 #. translators: icon label
 #. translators: block name
 #: src/blocks/icon/svgs-generated.js:2174
-#: src/blocks/opentable/edit.js:121
+#: src/blocks/opentable/edit.js:126
 #: src/blocks/opentable/index.js:26
 msgid "OpenTable"
 msgstr ""
@@ -7719,11 +7816,6 @@ msgstr ""
 
 #: src/blocks/logos/edit.js:52
 msgid "Logos & Badges"
-msgstr ""
-
-#: src/blocks/logos/edit.js:53
-#: src/components/block-gallery/gallery-placeholder.js:83
-msgid "Drag images, upload new ones or select files from your library."
 msgstr ""
 
 #. translators: block description
@@ -8048,19 +8140,19 @@ msgstr ""
 msgid "Edit Restaurant"
 msgstr ""
 
-#: src/blocks/opentable/edit.js:60
+#: src/blocks/opentable/edit.js:71
 msgid "Error connecting to the OpenTable API. Please try again later."
 msgstr ""
 
-#: src/blocks/opentable/edit.js:122
+#: src/blocks/opentable/edit.js:121
 msgid "Select your OpenTable restaurant(s) to show the reservations widget."
 msgstr ""
 
-#: src/blocks/opentable/edit.js:138
+#: src/blocks/opentable/edit.js:140
 msgid "Select restaurant(s)"
 msgstr ""
 
-#: src/blocks/opentable/edit.js:173
+#: src/blocks/opentable/edit.js:174
 msgid "Sign up for OpenTable"
 msgstr ""
 
@@ -8776,13 +8868,6 @@ msgstr ""
 msgid "Icon & Text"
 msgstr ""
 
-#. translators: block style
-#: src/blocks/share/index.js:54
-#: src/blocks/social-profiles/index.js:66
-#: src/extensions/button-styles/index.js:11
-msgid "Circular"
-msgstr ""
-
 #: src/blocks/share/transforms.js:40
 msgid "Share on LinkedIn"
 msgstr ""
@@ -9067,13 +9152,13 @@ msgstr ""
 msgid "Move image forward"
 msgstr ""
 
-#: src/components/block-gallery/gallery-link-settings.js:80
-msgid "Link to"
-msgstr ""
-
 #. translators: %s: Type of gallery
 #: src/components/block-gallery/gallery-placeholder.js:68
 msgid "%s Gallery"
+msgstr ""
+
+#: src/components/block-gallery/gallery.js:101
+msgid "Gallery caption text"
 msgstr ""
 
 #. translators: visual style option
@@ -9106,6 +9191,10 @@ msgstr ""
 
 #: src/components/block-gallery/options/link-options.js:13
 msgid "Custom URL"
+msgstr ""
+
+#: src/components/block-gallery/shared-helpers.js:28
+msgid "Image gallery image"
 msgstr ""
 
 #: src/components/crop-settings/index.js:266
@@ -9274,12 +9363,20 @@ msgid "Toggle to enable fullscreen mode."
 msgstr ""
 
 #. translators: %s: heading level e.g: "1", "2", "3"
-#: src/components/heading-toolbar/index.js:25
+#: src/components/heading-toolbar/index.js:27
 msgid "Heading %d"
+msgstr ""
+
+#: src/components/heading-toolbar/index.js:47
+msgid "Change heading level"
 msgstr ""
 
 #: src/components/inline-color-picker/index.js:25
 msgid "Custom color picker"
+msgstr ""
+
+#: src/components/media-filter-control/index.js:51
+msgid "Preview filter"
 msgstr ""
 
 #. translators: image style
@@ -9601,6 +9698,10 @@ msgstr ""
 msgid "Clip vertically"
 msgstr ""
 
+#: src/extensions/animation/controls.js:50
+msgid "Preview animation"
+msgstr ""
+
 #: src/extensions/animation/controls.js:57
 msgid "Animations occur as a visitor scrolls this block into view."
 msgstr ""
@@ -9675,18 +9776,17 @@ msgstr ""
 msgid "Toggle to display button as full width."
 msgstr ""
 
-#. translators: block style
-#: src/extensions/button-styles/index.js:18
-msgid "3D"
-msgstr ""
-
 #: src/extensions/coblocks-settings/index.js:39
-#: src/extensions/coblocks-settings/index.js:45
+#: src/extensions/coblocks-settings/index.js:48
 msgid "Editor settings"
 msgstr ""
 
-#: src/extensions/coblocks-settings/index.js:46
+#: src/extensions/coblocks-settings/index.js:45
 msgid "Close"
+msgstr ""
+
+#: src/extensions/coblocks-settings/index.js:52
+msgid "General"
 msgstr ""
 
 #: src/extensions/colors/settings-modal-control.js:124
@@ -9725,21 +9825,26 @@ msgstr ""
 msgid "Crop settings"
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:89
+#: src/extensions/layout-selector/index.js:93
 msgid "Add New Page"
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:90
+#: src/extensions/layout-selector/index.js:94
 msgid "Pick one of these layouts or start with a blank page."
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:105
+#: src/extensions/layout-selector/index.js:107
 msgid "Layouts"
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:129
-#: src/extensions/layout-selector/index.js:157
+#: src/extensions/layout-selector/index.js:131
+#: src/extensions/layout-selector/index.js:159
 msgid "Add blank page"
+msgstr ""
+
+#. translators: %s is the post title.
+#: src/extensions/layout-selector/index.js:240
+msgid "\"%s\" layout has been added to the page."
 msgstr ""
 
 #: src/extensions/layout-selector/layout-selector-results.js:58
@@ -9762,11 +9867,6 @@ msgstr ""
 #. translators: block style
 #: src/extensions/media-text-styles/index.js:24
 msgid "Overlap"
-msgstr ""
-
-#. translators: block style
-#: src/extensions/media-text-styles/index.js:31
-msgid "Outline"
 msgstr ""
 
 #. translators: %1$s is placeholder for block name such as Group, or Embed

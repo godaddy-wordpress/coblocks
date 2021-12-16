@@ -47,7 +47,7 @@ function PreviewAnimationPopover( { hoveredAnimation, selected } ) {
 				>
 					<div className="block-editor-block-switcher__preview coblocks__preview">
 						<div className="block-editor-block-switcher__preview-title">
-							{ __( 'Preview animation' ) }
+							{ __( 'Preview animation', 'coblocks' ) }
 						</div>
 						<BlockPreview
 							autoHeight
