@@ -61,7 +61,6 @@ function GalleryEdit( props ) {
 
 	const {
 		filter,
-		imageCrop,
 		linkTarget,
 		linkTo,
 		sizeSlug,
@@ -364,16 +363,6 @@ function GalleryEdit( props ) {
 		);
 	}
 
-	function toggleImageCrop() {
-		setAttributes( { imageCrop: ! imageCrop } );
-	}
-
-	function getImageCropHelp( checked ) {
-		return checked
-			? __( 'Thumbnails are cropped to align.', 'coblocks' )
-			: __( 'Thumbnails are not cropped.', 'coblocks' );
-	}
-
 	function toggleOpenInNewTab( openInNewTab ) {
 		const newLinkTarget = openInNewTab ? '_blank' : undefined;
 		setAttributes( { linkTarget: newLinkTarget } );
@@ -481,26 +470,7 @@ function GalleryEdit( props ) {
 			<Controls { ...props } innerBlocks={ images } />
 			<InspectorControls>
 				<PanelBody title={ __( 'Gallery settings', 'coblocks' ) }>
-					<ToggleControl
-						checked={ !! imageCrop }
-						help={ getImageCropHelp }
-						label={ __( 'Crop images', 'coblocks' ) }
-						onChange={ toggleImageCrop }
-					/>
-					<SelectControl
-						hideCancelButton={ true }
-						label={ __( 'Link to', 'coblocks' ) }
-						onChange={ setLinkTo }
-						options={ linkOptions }
-						value={ linkTo }
-					/>
-					{ hasLinkTo && (
-						<ToggleControl
-							checked={ linkTarget === '_blank' }
-							label={ __( 'Open in new tab', 'coblocks' ) }
-							onChange={ toggleOpenInNewTab }
-						/>
-					) }
+					<GutterControl { ...props } />
 					{ imageSizeOptions?.length > 0 && (
 						<SelectControl
 							hideCancelButton={ true }
@@ -522,8 +492,6 @@ function GalleryEdit( props ) {
 						</BaseControl>
 					) }
 
-					<GutterControl { ...props } />
-
 					{ gutter !== 'custom' && gutterCustom !== 0 &&
 					<RangeControl
 						aria-label={ __( 'Add rounded corners to the gallery items.', 'coblocks' ) }
@@ -535,14 +503,26 @@ function GalleryEdit( props ) {
 						value={ radius }
 					/>
 					}
-
 					<ToggleControl
 						checked={ !! lightbox }
 						help={ getLightboxHelp }
 						label={ __( 'Lightbox', 'coblocks' ) }
 						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
 					/>
-
+					<SelectControl
+						hideCancelButton={ true }
+						label={ __( 'Link to', 'coblocks' ) }
+						onChange={ setLinkTo }
+						options={ linkOptions }
+						value={ linkTo }
+					/>
+					{ hasLinkTo && (
+						<ToggleControl
+							checked={ linkTarget === '_blank' }
+							label={ __( 'Open in new tab', 'coblocks' ) }
+							onChange={ toggleOpenInNewTab }
+						/>
+					) }
 				</PanelBody>
 			</InspectorControls>
 			{ noticeUI }
