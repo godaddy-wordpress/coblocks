@@ -233,22 +233,19 @@ async function runPerformanceTests( branches, options ) {
 		results[ testSuite ] = {};
 		/** @type {Array<Record<string, WPPerformanceResults>>} */
 		const rawResults = [];
-		// Run the test three times
-		for ( let i = 0; i < 3; i++ ) {
+		// Run the test two times
+		for ( let i = 0; i < 2; i++ ) {
 			rawResults[ i ] = {};
 			for ( const branch of branches ) {
 				const environmentDirectory = branchDirectories[ branch ];
-				log( '    >> Installing dependencies and building packages' );
-				await runShellScript(
-					'yarn && yarn build',
-					`${ environmentDirectory }/wp-content/plugins/coblocks`
-				);
-
 				log( '    >> Branch: ' + branch + ', Suite: ' + testSuite );
-				log( '        >> Starting the environment.' );
-				await runShellScript(
-					`./vendor/bin/wp server --host=0.0.0.0 --port=8889 --allow-root --path=${ environmentDirectory } > /dev/null 2>&1 &`
-				);
+				// Start the server on the first iteration
+				if ( i === 0 ) {
+					log( '        >> Starting the environment.' );
+					await runShellScript(
+						`./vendor/bin/wp server --host=0.0.0.0 --port=8889 --allow-root --path=${ environmentDirectory } > /dev/null 2>&1 &`
+					);
+				}
 
 				log( '        >> Running the test.' );
 				rawResults[ i ][ branch ] = await runTestSuite(
@@ -256,8 +253,11 @@ async function runPerformanceTests( branches, options ) {
 					`${ environmentDirectory }/wp-content/plugins/coblocks`
 				);
 
-				log( '        >> Stopping the environment' );
-				await runShellScript( 'sudo kill $(ps ax | pgrep -f "server") > /dev/null 2>&1 &' );
+				// Stop the environment on the 2nd iteration
+				if ( i === 1 ) {
+					log( '        >> Stopping the environment' );
+					await runShellScript( 'sudo kill $(ps ax | pgrep -f "server") > /dev/null 2>&1 &' );
+				}
 			}
 		}
 
