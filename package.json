@@ -11,6 +11,9 @@
 	"bugs": {
 		"url": "https://github.com/godaddy-wordpress/coblocks/issues"
 	},
+	"browserslist": [
+		"extends @wordpress/browserslist-config"
+	],
 	"scripts": {
 		"build": "wp-scripts build --config .dev/config/webpack.config.js",
 		"clean": "wp-scripts env stop && rm -rf build dist/* node_modules vendor wordpress",
@@ -91,6 +94,7 @@
 		"@wordpress/block-editor": "8.0.11",
 		"@wordpress/block-library": "^6.0.2",
 		"@wordpress/blocks": "^11.1.2",
+		"@wordpress/browserslist-config": "^4.1.0",
 		"@wordpress/components": "^19.1.5",
 		"@wordpress/compose": "^5.0.4",
 		"@wordpress/core-data": "^4.0.8",
