@@ -16,7 +16,7 @@ const { log } = require( './logger' );
 async function getPerformanceTestResults( branch ) {
 	const testSuites = [ 'post-editor' ];
 	const masterData = fs.readFileSync( 'master-median-results.json' );
-	const currentData = fs.readFileSync( branch + '-median-results.json' );
+	const currentData = fs.readFileSync( branch.replace( '/', '-' ) + '-median-results.json' );
 	const results = merge( JSON.parse( masterData ), JSON.parse( currentData ) );
 
 	for ( const testSuite of testSuites ) {
