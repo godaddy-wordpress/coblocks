@@ -1,3 +1,5 @@
+/*global coblocksBlockData*/
+
 /**
  * External dependencies
  */
@@ -18,7 +20,6 @@ import TypographyTransforms from './transforms';
  */
 import { __ } from '@wordpress/i18n';
 import { DOWN } from '@wordpress/keycodes';
-import { useEntityProp } from '@wordpress/core-data';
 import { Component, Fragment } from '@wordpress/element';
 import { compose, ifCondition } from '@wordpress/compose';
 import {
@@ -270,7 +271,9 @@ class TypographyControls extends Component {
 export default compose( [
 	applyFallbackStyles,
 	ifCondition( () => {
-		const [ typographyEnabled ] = useEntityProp( 'root', 'site', 'coblocks_typography_controls_enabled' );
-		return typographyEnabled;
+		if ( Boolean( coblocksBlockData.typographyControlsEnabled ) === true ) {
+			return true;
+		}
+		return false;
 	} ),
 ] )( TypographyControls );
