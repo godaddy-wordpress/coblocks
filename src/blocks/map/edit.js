@@ -27,6 +27,7 @@ import {
 	withNotices,
 } from '@wordpress/components';
 import { useCallback, useEffect, useState } from '@wordpress/element';
+import GoogleMapWithApiKey from './edit-gmaps-with-api-key';
 
 const Edit = ( props ) => {
 	const {
@@ -140,46 +141,46 @@ const Edit = ( props ) => {
 		</>
 	);
 
-	const GoogleMapWithApiKey = ( props ) => {
-		const { isLoaded, loadError } = useLoadScript({
-			googleMapsApiKey: props.apiKey,
-		} );
-
-		const onLoad = useCallback(
-			function onLoad (mapInstance) {
-				console.log(mapInstance)
-			}
-		)
-		//
-
-		const renderMap = () => {
-			return <GoogleMap
-				id="circle-example"
-				mapContainerStyle={{
-					height: "400px",
-					width: "100%"
-				}}
-				zoom={7}
-				center={{
-					lat: -3.745,
-					lng: -38.523
-				}}
-				onLoad={onLoad}
-			>
-				<Marker position={{
-					lat: -3.745,
-					lng: -38.523
-				}}
-						/>
-			</GoogleMap>
-		}
-
-		if (loadError) {
-			return <div>Oups</div>
-		}
-
-		return isLoaded ? renderMap() : <Spinner />;
-	};
+	// const GoogleMapWithApiKey = ( props ) => {
+	// 	const { isLoaded, loadError } = useLoadScript({
+	// 		googleMapsApiKey: props.apiKey,
+	// 	} );
+	//
+	// 	const onLoad = useCallback(
+	// 		function onLoad (mapInstance) {
+	// 			console.log(mapInstance)
+	// 		}
+	// 	)
+	// 	//
+	//
+	// 	const renderMap = () => {
+	// 		return <GoogleMap
+	// 			id="circle-example"
+	// 			mapContainerStyle={{
+	// 				height: "400px",
+	// 				width: "100%"
+	// 			}}
+	// 			zoom={7}
+	// 			center={{
+	// 				lat: -3.745,
+	// 				lng: -38.523
+	// 			}}
+	// 			onLoad={onLoad}
+	// 		>
+	// 			<Marker position={{
+	// 				lat: -3.745,
+	// 				lng: -38.523
+	// 			}}
+	// 					/>
+	// 		</GoogleMap>
+	// 	}
+	//
+	// 	if (loadError) {
+	// 		return <div>Oups</div>
+	// 	}
+	//
+	// 	return isLoaded ? renderMap() : <Spinner />;
+	// };
 
 	return (
 		<>
