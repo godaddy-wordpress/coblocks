@@ -1,5 +1,5 @@
 /**
- * External dependencies
+ * External dependencies a
  */
 import { AccordionIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
