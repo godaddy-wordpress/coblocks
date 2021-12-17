@@ -307,7 +307,7 @@ async function runPerformanceTests( branches, options ) {
 			results[ testSuite ][ branch ] = mapValues( medians, formatTime );
 
 			// Write the results to a file for use in the aggregator build
-			const mediansFilename = branch.replace( '/', '-' ) + '-median-results.json';
+			const mediansFilename = branch + '-median-results.json';
 			fs.writeFileSync(
 				path.resolve( __dirname, '../../../', mediansFilename ),
 				JSON.stringify( results, null, 2 )
