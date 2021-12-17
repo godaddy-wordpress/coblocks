@@ -22,6 +22,7 @@ import { __ } from '@wordpress/i18n';
 import { DOWN } from '@wordpress/keycodes';
 import { Component, Fragment } from '@wordpress/element';
 import { compose, ifCondition } from '@wordpress/compose';
+import { useEntityProp } from '@wordpress/core-data';
 import {
 	Dropdown,
 	RangeControl,
@@ -271,7 +272,9 @@ class TypographyControls extends Component {
 export default compose( [
 	applyFallbackStyles,
 	ifCondition( () => {
-		if ( Boolean( coblocksBlockData.typographyControlsEnabled ) === true ) {
+		const [ typographyEnabled ] = useEntityProp( 'root', 'site', 'coblocks_typography_controls_enabled' );
+
+		if ( Boolean( coblocksBlockData.typographyControlsEnabled ) === true && typographyEnabled !== false  ) {
 			return true;
 		}
 		return false;
