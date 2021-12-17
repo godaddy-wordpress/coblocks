@@ -22,7 +22,6 @@ import './extensions/replace-image';
 import './extensions/image-crop';
 import './extensions/image-filter';
 import './extensions/coblocks-settings';
-import './extensions/layout-selector';
 import './extensions/block-patterns';
 
 // Internal Extensions / Components

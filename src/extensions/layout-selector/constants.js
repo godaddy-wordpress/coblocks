@@ -1,1 +1,0 @@
-export const LAYOUT_SELECTOR_FEATURE_ENABLED_KEY = 'coblocks_layout_selector_controls_enabled';

@@ -1,24 +1,4 @@
 /**
- * Internal dependencies.
- */
-import coblocksLayoutSelector from '../../../src/extensions/layout-selector/test/cypress-layouts';
-
-/**
- * Close layout selector.
- */
-export function closeLayoutSelector() {
-	cy.get( '.coblocks-layout-selector-modal' ).its( 'length' ).then( ( layoutSelectorModal ) => {
-		if ( layoutSelectorModal > 0 ) {
-			cy.get( '.coblocks-layout-selector-modal' )
-				.find( '.components-button[aria-label="Close dialog"]' ).first()
-				.click();
-		}
-	} );
-
-	cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
-}
-
-/**
  * Add Form block child element by name.
  *
  * @param {string} name the name of the child block to add.
@@ -63,16 +43,6 @@ export function loginToSite() {
  */
 export function goTo( path = '/wp-admin' ) {
 	cy.visit( Cypress.env( 'testURL' ) + path );
-
-	return getWindowObject().then( ( safeWin ) => {
-		// Only set global `safeWin.coblocksLayoutSelector` on new pages.
-		if ( safeWin.location.href.includes( 'post-new.php?post_type=page' ) ) {
-			safeWin.coblocksLayoutSelector = coblocksLayoutSelector;
-
-			safeWin.wp.data.dispatch( 'coblocks/template-selector' ).updateLayouts( coblocksLayoutSelector.layouts );
-			safeWin.wp.data.dispatch( 'coblocks/template-selector' ).updateCategories( coblocksLayoutSelector.categories );
-		}
-	} );
 }
 
 /**

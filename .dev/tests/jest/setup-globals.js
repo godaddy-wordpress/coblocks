@@ -20,8 +20,3 @@ console = {
 	info: () => { },
 	warn: () => { },
 };
-
-global.coblocksLayoutSelector = {
-	categories: [],
-	layouts: [],
-};
