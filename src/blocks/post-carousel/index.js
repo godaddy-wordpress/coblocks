@@ -4,18 +4,19 @@
 import { PostCarouselIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
- * Internal dependencies
- */
-import edit from './edit';
-import metadata from './block.json';
-import transforms from './transforms';
-import deprecated from './deprecated';
-
-/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
+import { Icon, Spinner } from '@wordpress/components';
+import { lazy, Suspense } from '@wordpress/element';
+
+/**
+ * Internal dependencies
+ */
+import deprecated from './deprecated';
+const Edit = lazy( () => import( './edit' ) );
+import metadata from './block.json';
+import transforms from './transforms';
 
 /**
  * Block constants
@@ -46,7 +47,11 @@ const settings = {
 		html: false,
 	},
 	transforms,
-	edit,
+	edit: ( props ) => (
+		<Suspense fallback={ <Spinner /> }>
+			<Edit { ...props } />
+		</Suspense>
+	),
 	example: {
 		attributes: {},
 	},

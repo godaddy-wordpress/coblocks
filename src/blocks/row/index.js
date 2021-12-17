@@ -4,23 +4,24 @@
 import { RowIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
+ * WordPress dependencies
+ */
+import { __ } from '@wordpress/i18n';
+import { Icon, Spinner } from '@wordpress/components';
+import { lazy, Suspense } from '@wordpress/element';
+
+/**
  * Internal dependencies
  */
+import { BackgroundAttributes } from '../../components/background';
 import deprecated from './deprecated';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
-import edit from './edit';
+const Edit = lazy( () => import( './edit' ) );
+import { getEditWrapperProps } from './utilities';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
 import variations from './variations';
-import { BackgroundAttributes } from '../../components/background';
-import { getEditWrapperProps } from './utilities';
-
-/**
- * WordPress dependencies
- */
-import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
 
 /**
  * Block constants
@@ -61,7 +62,11 @@ const settings = {
 	attributes,
 	variations,
 	transforms,
-	edit,
+	edit: ( props ) => (
+		<Suspense fallback={ <Spinner /> }>
+			<Edit { ...props } />
+		</Suspense>
+	),
 	example: {
 		attributes: {},
 	},
