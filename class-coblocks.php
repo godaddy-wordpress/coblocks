@@ -31,6 +31,7 @@ define( 'COBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'COBLOCKS_PLUGIN_FILE', __FILE__ );
 define( 'COBLOCKS_PLUGIN_BASE', plugin_basename( __FILE__ ) );
 define( 'COBLOCKS_REVIEW_URL', 'https://wordpress.org/support/plugin/coblocks/reviews/?filter=5' );
+define( 'COBLOCKS_API_NAMESPACE', 'coblocks' );
 
 if ( ! class_exists( 'CoBlocks' ) ) :
 	/**

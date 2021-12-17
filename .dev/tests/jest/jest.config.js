@@ -6,6 +6,7 @@ module.exports = {
 	collectCoverageFrom: [
 		'<rootDir>/src/blocks/**/save.js',
 		'<rootDir>/src/blocks/**/transforms.js',
+		'!<rootDir>/src/blocks/gallery-masonry/v1/*.js',
 	],
 	moduleNameMapper: {
 		'@godaddy-wordpress/coblocks-icons': require.resolve(
@@ -17,5 +18,4 @@ module.exports = {
 		'<rootDir>/.dev/tests/jest/setup-globals.js',
 	],
 	testMatch: [ '**/test/*.spec.js' ],
-	testEnvironment: '<rootDir>/.dev/tests/jest/custom-test-env.js',
 };

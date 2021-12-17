@@ -1,4 +1,8 @@
-.has-lightbox figure,
-figure.has-lightbox {
-	cursor: default !important;
+.edit-post-visual-editor {
+	// These styles load on the front-end causing lightbox hover state to be invalid.
+	// Modified to be within `.edit-post-visual-editor` selector.
+	.has-lightbox figure
+	figure.has-lightbox {
+		cursor: default !important;
+	}
 }

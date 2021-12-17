@@ -203,23 +203,23 @@ workflows:
       #      - js
 
       # PERF TESTING
-      # - master_perf_tests:
-      #    filters:
-      #      tags:
-      #        only: /^(?!canary).*$/
+      - perf_tests_master:
+         filters:
+           tags:
+             only: /^(?!canary).*$/
 
-      # - current_perf_tests:
-      #    filters:
-      #      tags:
-      #        only: /^(?!canary).*$/
+      - perf_tests_current:
+         filters:
+           tags:
+             only: /^(?!canary).*$/
 
-      # - aggregate_perf_test_results:
-      #    filters:
-      #      tags:
-      #        only: /^(?!canary).*$/
-      #    requires:
-      #      - current_perf_tests
-      #      - master_perf_tests
+      - aggregate_perf_test_results:
+         filters:
+           tags:
+             only: /^(?!canary).*$/
+         requires:
+           - perf_tests_current
+           - perf_tests_master
 
       - canary-release:
           filters:
@@ -786,25 +786,33 @@ jobs:
           browser: chrome
           wpversion: previous_major
 
-  master_perf_tests:
+  perf_tests_master:
     executor: php_74_node_browser_mysql
     steps:
       - checkout
       - setup_perf_tests
       - run_perf_tests:
           branch: master
+      - run:
+          name: Stop Server on Failure
+          when: on_fail
+          command: sudo kill $(ps ax | pgrep -f "server") > /dev/null 2>&1 &
       - persist_to_workspace:
           root: ~/
           paths:
             - ./*-median-results.json
 
-  current_perf_tests:
+  perf_tests_current:
     executor: php_74_node_browser_mysql
     steps:
       - checkout
       - setup_perf_tests
       - run_perf_tests:
           branch: ${CIRCLE_BRANCH}
+      - run:
+          name: Stop Server on Failure
+          when: on_fail
+          command: sudo kill $(ps ax | pgrep -f "server") > /dev/null 2>&1 &
       - persist_to_workspace:
           root: ~/
           paths:
@@ -826,7 +834,7 @@ jobs:
       - run:
           name: Check for performance test result files.
           command: |
-            if [ ! -f "../master-median-results.json" ] || [ ! -f "../$CIRCLE_BRANCH-median-results.json" ]; then
+            if [ ! -f "./master-median-results.json" ] || [ ! -f "./$CIRCLE_BRANCH-median-results.json" ]; then
               echo "Performance tests results not found."
               circleci-agent step halt
             fi
@@ -842,6 +850,9 @@ jobs:
       - run:
           name: Aggregate performance test results
           command: .dev/performance/cli-results.js get-test-results "${CIRCLE_BRANCH}"
+      - run:
+          name: Comment Performance Test Results on PR
+          command: bash .dev/bin/comment-perf-results-on-pr.sh
 
   # --------------------------------------------------
   # Internationalization Processes

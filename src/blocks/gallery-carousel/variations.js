@@ -2,7 +2,7 @@
  * Internal dependencies
  */
 import icons from './icons';
-import { parseNavForClass } from './edit';
+import { parseNavForClass } from './util';
 
 /**
  * External dependencies

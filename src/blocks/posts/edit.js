@@ -7,18 +7,12 @@ import { find, isUndefined, pickBy, some, get, isEqual } from 'lodash';
 import { PostsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
- * Internal dependencies
- */
-import InspectorControls from './inspector';
-import icons from './icons';
-
-/**
  * WordPress dependencies
  */
 import apiFetch from '@wordpress/api-fetch';
 import { __ } from '@wordpress/i18n';
 import { compose, usePrevious } from '@wordpress/compose';
-import { RawHTML, useState, useEffect, useRef } from '@wordpress/element';
+import { lazy, RawHTML, useState, useEffect, useRef } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
 // Disable reason: We choose to use unsafe APIs in our codebase.
 // eslint-disable-next-line @wordpress/no-unsafe-wp-apis
@@ -38,6 +32,13 @@ import {
 import ServerSideRender from '@wordpress/server-side-render';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 import { pullLeft, pullRight, edit } from '@wordpress/icons';
+
+/**
+ * Internal dependencies
+ */
+import icons from './icons';
+import InspectorLoader from '../../components/inspector-loader';
+const Inspector = lazy( () => import( './inspector' ) );
 
 /**
  * Module Constants
@@ -250,18 +251,20 @@ const PostsEdit = ( props ) => {
 	if ( ! hasPosts && postFeedType === 'internal' ) {
 		return (
 			<>
-				<InspectorControls
-					{ ...props }
-					attributes={ attributes }
-					hasPosts={ hasPosts }
-					hasFeaturedImage={ hasFeaturedImage }
-					editing={ editing }
-					activeStyle={ activeStyle }
-					styleOptions={ styleOptions }
-					onUpdateStyle={ updateStyle }
-					categoriesList={ categoriesList }
-					postCount={ latestPosts && latestPosts.length }
-				/>
+				<InspectorLoader>
+					<Inspector
+						{ ...props }
+						attributes={ attributes }
+						hasPosts={ hasPosts }
+						hasFeaturedImage={ hasFeaturedImage }
+						editing={ editing }
+						activeStyle={ activeStyle }
+						styleOptions={ styleOptions }
+						onUpdateStyle={ updateStyle }
+						categoriesList={ categoriesList }
+						postCount={ latestPosts && latestPosts.length }
+					/>
+				</InspectorLoader>
 				<Placeholder
 					icon={ <Icon icon={ icon } /> }
 					label={ __( 'Blog Posts', 'coblocks' ) }
@@ -290,19 +293,21 @@ const PostsEdit = ( props ) => {
 	if ( editing && postFeedType === 'external' ) {
 		return (
 			<>
-				<InspectorControls
-					{ ...props }
-					onUserModifiedColumn={ onUserModifiedColumn }
-					attributes={ attributes }
-					hasPosts={ hasPosts }
-					hasFeaturedImage={ false }
-					editing={ editing }
-					activeStyle={ activeStyle }
-					styleOptions={ styleOptions }
-					onUpdateStyle={ updateStyle }
-					categoriesList={ categoriesList }
-					postCount={ latestPosts && latestPosts.length }
-				/>
+				<InspectorLoader>
+					<Inspector
+						{ ...props }
+						onUserModifiedColumn={ onUserModifiedColumn }
+						attributes={ attributes }
+						hasPosts={ hasPosts }
+						hasFeaturedImage={ false }
+						editing={ editing }
+						activeStyle={ activeStyle }
+						styleOptions={ styleOptions }
+						onUpdateStyle={ updateStyle }
+						categoriesList={ categoriesList }
+						postCount={ latestPosts && latestPosts.length }
+					/>
+				</InspectorLoader>
 				<Placeholder
 					icon={ <Icon icon={ icon } /> }
 					label={ __( 'RSS Feed', 'coblocks' ) }
@@ -329,19 +334,21 @@ const PostsEdit = ( props ) => {
 
 	return (
 		<>
-			<InspectorControls
-				{ ...props }
-				onUserModifiedColumn={ onUserModifiedColumn }
-				attributes={ attributes }
-				hasPosts={ hasPosts }
-				hasFeaturedImage={ hasFeaturedImage }
-				editing={ editing }
-				activeStyle={ activeStyle }
-				styleOptions={ styleOptions }
-				onUpdateStyle={ updateStyle }
-				categoriesList={ categoriesList }
-				postCount={ latestPosts && latestPosts.length }
-			/>
+			<InspectorLoader>
+				<Inspector
+					{ ...props }
+					onUserModifiedColumn={ onUserModifiedColumn }
+					attributes={ attributes }
+					hasPosts={ hasPosts }
+					hasFeaturedImage={ hasFeaturedImage }
+					editing={ editing }
+					activeStyle={ activeStyle }
+					styleOptions={ styleOptions }
+					onUpdateStyle={ updateStyle }
+					categoriesList={ categoriesList }
+					postCount={ latestPosts && latestPosts.length }
+				/>
+			</InspectorLoader>
 			<BlockControls>
 				{ isHorizontalStyle &&
 					<Toolbar

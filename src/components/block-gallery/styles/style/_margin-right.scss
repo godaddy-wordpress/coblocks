@@ -2,7 +2,7 @@
 	@for $i from 1 through 10 {
 
 		.has-margin-right-#{ $i * 5 } {
-			margin-right: #{ round($i * 5 / 2) }px !important;
+			margin-right: #{ round($i * 5 * 0.5) }px !important;
 		}
 	}
 }
@@ -10,7 +10,7 @@
 	@for $i from 1 through 10 {
 
 		.has-margin-right-mobile-#{ $i * 5 } {
-			margin-right: #{ round($i * 5 / 2) }px !important;
+			margin-right: #{ round($i * 5 * 0.5) }px !important;
 		}
 	}
 }
