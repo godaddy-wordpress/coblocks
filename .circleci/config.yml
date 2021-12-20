@@ -171,10 +171,14 @@ workflows:
           filters:
             tags:
               only: /^(?!canary).*$/
+          requires:
+            - build
       - e2e_firefox_wp_latest:
           filters:
             tags:
               only: /^(?!canary).*$/
+          requires:
+            - build
 
       # - e2e_chrome_wp_previous_major:
       #    filters:
