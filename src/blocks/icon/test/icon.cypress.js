@@ -144,6 +144,8 @@ describe( 'Test CoBlocks Icon Block', function() {
 	it( 'Test the icon block custom class.', function() {
 		helpers.addBlockToPost( 'coblocks/icon', true );
 
+		cy.wait( 250 );
+
 		cy.get( '.components-panel__body-title' ).contains( 'Icon settings' ).then( ( $panelTop ) => {
 			const $parentPanel = Cypress.$( $panelTop ).closest( 'div.components-panel__body' );
 			if ( $parentPanel.hasClass( 'is-opened' ) ) {
