@@ -400,8 +400,7 @@ export function setColorSetting( settingName, hexColor ) {
  * @param {RegExp} panelText The panel label text to open. eg: Color Settings
  */
 export function openSettingsPanel( panelText ) {
-	cy.get( '.components-panel__body' )
-		.contains( panelText )
+	cy.contains( panelText )
 		.then( ( $panelTop ) => {
 			const $parentPanel = Cypress.$( $panelTop ).closest( 'div.components-panel__body' );
 			if ( ! $parentPanel.hasClass( 'is-opened' ) ) {
