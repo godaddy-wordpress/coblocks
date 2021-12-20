@@ -238,7 +238,7 @@ export function setBlockStyle( style ) {
 
 	cy.get( '.edit-post-sidebar [class*="editor-block-styles"]' )
 		.contains( RegExp( style, 'i' ) )
-		.click( { force: true } );
+		.click();
 }
 
 /**
