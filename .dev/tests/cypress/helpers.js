@@ -400,6 +400,7 @@ export function setColorSetting( settingName, hexColor ) {
  * @param {RegExp} panelText The panel label text to open. eg: Color Settings
  */
 export function openSettingsPanel( panelText ) {
+	cy.wait( 250 );
 	cy.get( '.components-panel__body' )
 		.contains( panelText )
 		.then( ( $panelTop ) => {
