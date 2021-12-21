@@ -161,7 +161,7 @@ const Edit = ( props ) => {
 					} }
 				>
 					{ !! apiKeyState
-						? <GoogleMapWithApiKey apiKey={ apiKeyState } /> : GoogleMapIframeRender( props ) }
+						? <GoogleMapWithApiKey apiKey={ apiKeyState } props={ props } /> : GoogleMapIframeRender( props ) }
 				</ResizableBox>
 			) : (
 				<Placeholder
