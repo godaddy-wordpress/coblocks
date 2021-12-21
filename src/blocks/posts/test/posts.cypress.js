@@ -42,7 +42,7 @@ describe( 'Test CoBlocks Posts Block', function() {
 
 		cy.get( '.wp-block-coblocks-posts' ).click();
 
-		cy.contains( 'feed settings' );
+		cy.contains( 'Feed settings' );
 
 		helpers.setInputValue( 'feed settings', 'number of posts', 3 );
 
