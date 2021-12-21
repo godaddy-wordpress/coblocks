@@ -4,23 +4,24 @@
 import { HeroIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
+ * WordPress dependencies
+ */
+import { __ } from '@wordpress/i18n';
+import { Icon, Spinner } from '@wordpress/components';
+import { lazy, Suspense } from '@wordpress/element';
+
+/**
  * Internal dependencies
  */
 import { BackgroundAttributes } from '../../components/background';
 import CSSGridAttributes from '../../components/grid-control/attributes';
 import deprecated from './deprecated';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
-import edit from './edit';
+const Edit = lazy( () => import( './edit' ) );
 import metadata from './block.json';
 import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
 import save from './save';
 import transforms from './transforms';
-
-/**
- * WordPress dependencies
- */
-import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
 
 /**
  * Block constants
@@ -40,7 +41,11 @@ const settings = {
 	deprecated,
 	/* translators: block description */
 	description: __( 'An introductory area of a page accompanied by a small amount of text and a call to action.', 'coblocks' ),
-	edit,
+	edit: ( props ) => (
+		<Suspense fallback={ <Spinner /> }>
+			<Edit { ...props } />
+		</Suspense>
+	),
 	example: {
 		attributes: {},
 		innerBlocks: [
