@@ -31,6 +31,7 @@ describe( 'Test CoBlocks Icon Block', function() {
 	it( 'Test the icon block style.', function() {
 		helpers.addBlockToPost( 'coblocks/icon', true );
 
+		// Make sure that controls who are lazy loaded finished loading
 		cy.contains( 'Styles' );
 
 		helpers.openSettingsPanel( 'Styles' );
@@ -91,6 +92,7 @@ describe( 'Test CoBlocks Icon Block', function() {
 	it( 'Test the icon block link settings.', function() {
 		helpers.addBlockToPost( 'coblocks/icon', true );
 
+		// Make sure that controls who are lazy loaded finished loading
 		cy.contains( 'Link settings' );
 
 		helpers.openSettingsPanel( 'Link settings' );
@@ -127,6 +129,7 @@ describe( 'Test CoBlocks Icon Block', function() {
 	it( 'Test the icon block color settings.', function() {
 		helpers.addBlockToPost( 'coblocks/icon', true );
 
+		// Make sure that controls who are lazy loaded finished loading
 		cy.contains( 'Color settings' );
 
 		helpers.openSettingsPanel( 'Color settings' );

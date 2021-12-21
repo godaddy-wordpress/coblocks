@@ -30,6 +30,7 @@ describe( 'Test CoBlocks Posts Block', function() {
 
 		cy.get( '.wp-block-coblocks-posts' ).find( '.has-2-columns' );
 
+		// Make sure that controls who are lazy loaded finished loading
 		cy.contains( 'Posts settings' );
 
 		helpers.setInputValue( 'posts settings', 'columns', 1 );
@@ -42,6 +43,7 @@ describe( 'Test CoBlocks Posts Block', function() {
 
 		cy.get( '.wp-block-coblocks-posts' ).click();
 
+		// Make sure that controls who are lazy loaded finished loading
 		cy.contains( 'Feed settings' );
 
 		helpers.setInputValue( 'feed settings', 'number of posts', 3 );
@@ -96,6 +98,7 @@ describe( 'Test CoBlocks Posts Block', function() {
 
 		cy.get( '.wp-block-coblocks-posts' ).find( '.has-2-columns' ).should( 'exist' );
 
+		// Make sure that controls who are lazy loaded finished loading
 		cy.contains( 'Styles' );
 
 		helpers.setBlockStyle( 'horizontal' );
