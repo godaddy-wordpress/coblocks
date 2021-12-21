@@ -30,7 +30,7 @@ describe( 'Test CoBlocks Posts Block', function() {
 
 		cy.get( '.wp-block-coblocks-posts' ).find( '.has-2-columns' );
 
-		cy.contains( 'posts settings' );
+		cy.contains( 'Posts settings' );
 
 		helpers.setInputValue( 'posts settings', 'columns', 1 );
 
