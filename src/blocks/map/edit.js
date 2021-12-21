@@ -22,11 +22,11 @@ import {
 	Button,
 	Icon,
 	Placeholder,
-	ResizableBox, Spinner,
+	ResizableBox,
 	TextControl,
 	withNotices,
 } from '@wordpress/components';
-import { useCallback, useEffect, useState } from '@wordpress/element';
+import { useEffect, useState } from '@wordpress/element';
 
 const Edit = ( props ) => {
 	const {
@@ -41,13 +41,6 @@ const Edit = ( props ) => {
 		hasApiKey,
 		pinned,
 		height,
-		iconSize,
-		skin,
-		mapTypeControl,
-		zoomControl,
-		streetViewControl,
-		fullscreenControl,
-		zoom,
 	} = attributes;
 
 	const [ apiKeyState, setApiKey ] = useState( '' );
@@ -99,8 +92,6 @@ const Edit = ( props ) => {
 			data: { coblocks_google_maps_api_key: apiKey },
 			method: 'POST',
 			path: '/wp/v2/settings',
-		} ).then( () => {
-			// Everything went well
 		} );
 	};
 
