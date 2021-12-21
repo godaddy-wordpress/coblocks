@@ -36,7 +36,6 @@ const settings = {
 		},
 	},
 	icon: <Icon icon={ icon } />,
-	/* translators: block name */
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */
@@ -53,6 +52,7 @@ const settings = {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 	},
+	/* translators: block name */
 	title: __( 'Map', 'coblocks' ),
 	transforms,
 };
