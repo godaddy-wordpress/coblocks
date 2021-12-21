@@ -3,6 +3,8 @@
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
+const API_KEY = undefined;
+
 describe( 'Test CoBlocks Map Block', function() {
 	//setup map block data.
 	const mapAddress = '10 First Street, SE Washington, DC 20540';
@@ -69,4 +71,31 @@ describe( 'Test CoBlocks Map Block', function() {
 
 		helpers.checkForBlockErrors( 'coblocks/map' );
 	} );
+
+	if ( API_KEY ) {
+		it( 'renders a map when the user has an API key', () => {
+			helpers.addBlockToPost( 'coblocks/map', true );
+
+			cy.get( 'input[placeholder="Search for a place or address…"]' )
+				.type( mapAddress )
+				.parents( '.components-placeholder__fieldset' )
+				.find( 'button' ).contains( /search/i ).click();
+
+			cy.contains( 'Google Maps API key' );
+
+			helpers.openSettingsPanel( 'Google Maps API key' );
+
+			cy.get( '.components-block-coblocks-map-api-key__custom-input input' )
+				.clear()
+				.type( API_KEY );
+
+			helpers.savePage();
+
+			helpers.checkForBlockErrors( 'coblocks/map' );
+
+			helpers.viewPage();
+
+			cy.get( '.wp-block-coblocks-map' ).should( 'exist' );
+		} );
+	}
 } );
