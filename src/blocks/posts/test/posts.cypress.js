@@ -30,6 +30,8 @@ describe( 'Test CoBlocks Posts Block', function() {
 
 		cy.get( '.wp-block-coblocks-posts' ).find( '.has-2-columns' );
 
+		cy.contains( 'posts settings' );
+
 		helpers.setInputValue( 'posts settings', 'columns', 1 );
 
 		cy.get( '.wp-block-coblocks-posts' ).find( '.has-1-columns' ).should( 'exist' );
@@ -39,6 +41,8 @@ describe( 'Test CoBlocks Posts Block', function() {
 		helpers.checkForBlockErrors( 'coblocks/posts' );
 
 		cy.get( '.wp-block-coblocks-posts' ).click();
+
+		cy.contains( 'feed settings' );
 
 		helpers.setInputValue( 'feed settings', 'number of posts', 3 );
 
@@ -91,6 +95,8 @@ describe( 'Test CoBlocks Posts Block', function() {
 		helpers.addBlockToPost( 'coblocks/posts', true );
 
 		cy.get( '.wp-block-coblocks-posts' ).find( '.has-2-columns' ).should( 'exist' );
+
+		cy.contains( 'Styles' );
 
 		helpers.setBlockStyle( 'horizontal' );
 
