@@ -1,16 +1,22 @@
 /**
  * External dependencies
  */
-import { GoogleMap, useLoadScript } from '@react-google-maps/api';
+import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
 
 /**
  * WordPress dependencies
  */
+import { __ } from '@wordpress/i18n';
 import { Spinner } from '@wordpress/components';
-import { useCallback, useEffect, useState } from '@wordpress/element';
+import { useEffect, useState } from '@wordpress/element';
+
+/**
+ * Internal dependencies
+ */
+import GMapStyles from './map-styles';
 
 const GoogleMapWithApiKey = ( { apiKey, props } ) => {
-	const { isLoaded, loadError } = useLoadScript({
+	const { isLoaded } = useLoadScript( {
 		googleMapsApiKey: apiKey,
 	} );
 
@@ -20,7 +26,13 @@ const GoogleMapWithApiKey = ( { apiKey, props } ) => {
 
 	const {
 		address,
+		fullscreenControl,
+		iconSize,
+		mapTypeControl,
+		skin,
+		streetViewControl,
 		zoom,
+		zoomControl,
 	} = attributes;
 
 	const [ coords, setCoords ] = useState( null );
@@ -51,39 +63,53 @@ const GoogleMapWithApiKey = ( { apiKey, props } ) => {
 		}
 	}, [ address, isLoaded ] );
 
-	// const onLoad = useCallback(
-	// 	function onLoad ( mapInstance ) {
-	// 		if ( coords ) {
-	// 			mapInstance.setCenter( {
-	// 				lat: coords.lat,
-	// 				lng: coords.lng,
-	// 			});
-	// 		}
-	// 	}
-	// );
-	//
+	const marker = {
+		scaledSize: { height: iconSize, width: iconSize },
+		url:
+			'/wp-content/plugins/coblocks/assets/markers/' +
+			skin +
+			'.svg',
+	};
 
 	const renderMap = () => {
 		return coords ? <GoogleMap
-			id="circle-example"
-			mapContainerStyle={{
-				height: "100%",
-				width: "100%"
-			}}
+			center={
+				{
+					lat: coords.lat,
+					lng: coords.lng,
+				}
+			}
+			id="coblocks-google-maps"
+			mapContainerStyle={
+				{
+					height: '100%',
+				}
+			}
+			options={
+				{
+					draggable: false,
+					fullscreenControl,
+					mapTypeControl,
+					streetViewControl,
+					styles: GMapStyles[ skin ],
+					zoomControl,
+				}
+			}
 			zoom={ zoom }
-			center={{
-				lat: coords.lat,
-				lng: coords.lng,
-			}}
-			//onLoad={onLoad}
-		/> : <></>;
+		>
+			<Marker
+				icon={ marker }
+				position={
+					{
+						lat: coords.lat,
+						lng: coords.lng,
+					}
+				}
+			/>
+		</GoogleMap> : <></>;
 	};
 
-	if (loadError) {
-		return <div>Oups</div>
-	}
-
-	return isLoaded ? renderMap() : <Spinner />
+	return isLoaded ? renderMap() : <Spinner />;
 };
 
 export default GoogleMapWithApiKey;

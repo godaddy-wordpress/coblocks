@@ -8,7 +8,6 @@ import { MapIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * Internal dependencies
  */
 import Controls from './controls';
-import GMapStyles from './map-styles';
 import GoogleMapIframeRender from './edit-gmaps-iframe-render';
 import GoogleMapWithApiKey from './edit-gmaps-with-api-key';
 import Inspector from './inspector';
@@ -111,14 +110,6 @@ const Edit = ( props ) => {
 		}
 
 		setAttributes( { address: addressState, pinned: true } );
-	};
-
-	const marker = {
-		scaledSize: { height: iconSize, width: iconSize },
-		url:
-			'/wp-content/plugins/coblocks/assets/markers/' +
-			skin +
-			'.svg',
 	};
 
 	return (
