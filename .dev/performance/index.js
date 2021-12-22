@@ -147,7 +147,7 @@ async function setUpGitBranch( branch, environmentDirectory ) {
  */
 async function runTestSuite( testSuite, performanceTestDirectory ) {
 	await runShellScript(
-		`npx wp-scripts test-e2e --config .dev/performance/jest.performance.config.js -- .dev/performance/tests/post-editor.test.js`,
+		`npx wp-scripts test-e2e --forceExit --config .dev/performance/jest.performance.config.js -- .dev/performance/tests/post-editor.test.js`,
 		performanceTestDirectory
 	);
 	const rawResults = await readJSONFile(
