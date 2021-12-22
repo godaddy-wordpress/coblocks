@@ -33,6 +33,6 @@ beforeAll( async () => {
 	await setupBrowser();
 } );
 
-// afterEach( async () => {
-// 	await setupBrowser();
-// } );
+afterEach( async () => {
+	await setupBrowser();
+} );
