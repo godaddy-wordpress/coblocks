@@ -227,4 +227,8 @@ describe( 'Post Editor Performance', () => {
 
 		expect( true ).toBe( true );
 	} );
+
+	it( 'another test', () => {
+		expect( false ).toBe( false );
+	} );
 } );
