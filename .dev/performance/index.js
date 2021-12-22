@@ -253,8 +253,6 @@ async function runPerformanceTests( branches, options ) {
 					`${ environmentDirectory }/wp-content/plugins/coblocks`
 				);
 
-				log( 'AFTER TEST RUN' );
-
 				// Stop the environment on the 2nd iteration
 				if ( i === 1 ) {
 					log( '        >> Stopping the environment' );
@@ -263,8 +261,7 @@ async function runPerformanceTests( branches, options ) {
 			}
 		}
 
-		log( 'COMPUTING' );
-		// Computing medians.
+		log( 'Computing the medians' );
 		for ( const branch of branches ) {
 			const medians = mapValues(
 				{
