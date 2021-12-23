@@ -1560,7 +1560,7 @@
   "907c68bd83c835eaa055000ecab5b3f5": "Nie udało się zapisać nowego wzoru.",
   "b799d27cfba9b880907105d8578f5103": "Zapisz wzór projektu",
   "475ae918a90c6f9956005c270e70c41f": "Wzory projektów",
-  "1a24d7f31d33c9250f5abc49bc089a9c": "Utwórz treści wielokrotnego użytku i projekty, które można szybko dodać w dowolnym miejscu, ale które nie są powiązane z innymi kopiami (tzn. zmiana jednej z nich nie wpłynie na inne).",
+  "1a24d7f31d33c9250f5abc49bc089a9c": "Wzory projektów to skróty umożliwiające ponowne użycie tego samego rozmieszczenia bloków w sekcji. Edycja jednego wystąpienia nie wpływa na inne miejsca, w których użyto wzoru.",
   "3adbdb3ac060038aa0e6e6c138ef9873": "Kategoria",
   "8f4dc281c5053e8ca5946f7eaea59c30": "Wybierz kategorię wzorów",
   "e3bf49a80a90e704f87c6ad80f1eb0d4": "Zapisz wzór",

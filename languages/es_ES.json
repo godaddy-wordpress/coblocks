@@ -1560,7 +1560,7 @@
   "907c68bd83c835eaa055000ecab5b3f5": "No se ha podido guardar el nuevo patrón.",
   "b799d27cfba9b880907105d8578f5103": "Guardar patrón de diseño",
   "475ae918a90c6f9956005c270e70c41f": "Patrones de diseño",
-  "1a24d7f31d33c9250f5abc49bc089a9c": "Crea contenidos y diseños reutilizables que se pueden añadir de forma rápida en cualquier lugar, sin estar vinculados a las demás variaciones del mismo contenido (es decir, cambiar uno no afectará a los demás).",
+  "1a24d7f31d33c9250f5abc49bc089a9c": "Crea patrones con contenidos y diseños reutilizables que se pueden añadir de forma rápida en cualquier lugar, sin estar vinculados a las demás variaciones del mismo patrón (es decir, cambiar uno no afectará a los demás).",
   "3adbdb3ac060038aa0e6e6c138ef9873": "Categoría",
   "8f4dc281c5053e8ca5946f7eaea59c30": "Seleccionar una categoría de patrones",
   "e3bf49a80a90e704f87c6ad80f1eb0d4": "Guardar patrón",
@@ -1593,5 +1593,5 @@
   "e820640530c6bea41853a0e7c4ea7aab": "Permitir uso de controles de tipografía a nivel de bloque.",
   "1cdfaaf3776ecdc58afa4b9e93dca980": "Galerías",
   "3af57e779c501f8a6c2e582cc5eb9a88": "Mostrar múltiples imágenes en una galería de estilo muro.",
-  "59b514174bffe4ae402b3d63aad79fe0": "Imágenes"
+  "59b514174bffe4ae402b3d63aad79fe0": "imágenes"
 }

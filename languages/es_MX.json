@@ -1560,7 +1560,7 @@
   "907c68bd83c835eaa055000ecab5b3f5": "No fue posible guardar el nuevo patrón.",
   "b799d27cfba9b880907105d8578f5103": "Guardar patrón de diseño",
   "475ae918a90c6f9956005c270e70c41f": "Patrones de diseño",
-  "1a24d7f31d33c9250f5abc49bc089a9c": "Crea contenido y diseños reusables que se pueden agregar rápidamente en cualquier lugar, sin estar vinculados a otras copias del mismo material (es decir, cambiar una no afectará a las demás).",
+  "1a24d7f31d33c9250f5abc49bc089a9c": "Los patrones de diseño son métodos abreviados que podrás usar para reutilizar el mismo arreglo de bloques de una sección. Al editar una instancia, esto no afecta otros lugares en donde usas dicho patrón.",
   "3adbdb3ac060038aa0e6e6c138ef9873": "Categoría",
   "8f4dc281c5053e8ca5946f7eaea59c30": "Selecciona una categoría de patrón",
   "e3bf49a80a90e704f87c6ad80f1eb0d4": "Guardar patrón",

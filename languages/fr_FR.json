@@ -1560,7 +1560,7 @@
   "907c68bd83c835eaa055000ecab5b3f5": "Impossible d’enregistrer le nouveau modèle.",
   "b799d27cfba9b880907105d8578f5103": "Ajouter un modèle de design",
   "475ae918a90c6f9956005c270e70c41f": "Modèles de design",
-  "1a24d7f31d33c9250f5abc49bc089a9c": "Créez du contenu et des designs réutilisables qui peuvent être rapidement ajoutés n'importe où, mais qui ne sont liés à aucune autre copie d'eux-mêmes (la modification de l'un n'affectera pas les autres).",
+  "1a24d7f31d33c9250f5abc49bc089a9c": "Les modèles de conception sont des raccourcis qui vous permettent de réutiliser la même disposition des blocs dans une section. Lorsque vous modifiez une instance, cela n'affecte pas les autres emplacements où vous utilisez le modèle.",
   "3adbdb3ac060038aa0e6e6c138ef9873": "Catégorie",
   "8f4dc281c5053e8ca5946f7eaea59c30": "Sélectionner une catégorie de modèle",
   "e3bf49a80a90e704f87c6ad80f1eb0d4": "Enregistrer le modèle",
