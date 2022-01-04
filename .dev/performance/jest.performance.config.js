@@ -14,5 +14,4 @@ module.exports = {
 	transformIgnorePatterns: [
 		'/node_modules/',
 	],
-	reporters: [ 'default', '<rootDir>.dev/performance/tests/config/performance-reporter.js' ],
 };
