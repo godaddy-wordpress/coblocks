@@ -1,16 +1,10 @@
 /**
  * WordPress Dependencies
  */
-import { addFilter } from '@wordpress/hooks';
 import { getBlockSupport, hasBlockSupport } from '@wordpress/blocks';
 
-addFilter(
-	'blocks.registerBlockType',
-	'coblocks/GutterControl/attributes',
-	addAttributes
-);
-
-function addAttributes( settings, name ) {
+const applyAttributes = ( settings ) => {
+	const { name } = settings;
 	if ( ! name.startsWith( 'coblocks/' ) ) {
 		return settings;
 	}
@@ -34,4 +28,6 @@ function addAttributes( settings, name ) {
 	};
 
 	return settings;
-}
+};
+
+export { applyAttributes };

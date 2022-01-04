@@ -72,69 +72,67 @@ const SliderPanel = ( props ) => {
 	} = attributes;
 
 	return (
-		<>
-			<PanelBody initialOpen={ false } title={ __( 'Slider settings', 'coblocks' ) }>
-				<ToggleControl
-					checked={ !! loop }
-					help={ getLoopHelp }
-					label={ __( 'Loop', 'coblocks' ) }
-					onChange={ () => setAttributes( { loop: ! loop } ) }
+		<PanelBody initialOpen={ false } title={ __( 'Slider settings', 'coblocks' ) }>
+			<ToggleControl
+				checked={ !! loop }
+				help={ getLoopHelp }
+				label={ __( 'Loop', 'coblocks' ) }
+				onChange={ () => setAttributes( { loop: ! loop } ) }
+			/>
+			<ToggleControl
+				checked={ !! autoPlay }
+				help={ getAutoPlayHelp }
+				label={ __( 'Autoplay', 'coblocks' ) }
+				onChange={ () => setAttributes( { autoPlay: ! autoPlay } ) }
+			/>
+			{ autoPlay && <>
+				<SelectControl
+					className="components-coblocks-gallery-inspector__autoplayspeed-select"
+					label={ __( 'Transition speed', 'coblocks' ) }
+					onChange={ ( value ) => setAttributes( { autoPlaySpeed: value } ) }
+					options={ autoPlayOptions }
+					value={ autoPlaySpeed }
 				/>
 				<ToggleControl
-					checked={ !! autoPlay }
-					help={ getAutoPlayHelp }
-					label={ __( 'Autoplay', 'coblocks' ) }
-					onChange={ () => setAttributes( { autoPlay: ! autoPlay } ) }
+					checked={ pauseHover }
+					help={ getPauseAutoplayOnHoverHelp }
+					label={ __( 'Pause on hover', 'coblocks' ) }
+					onChange={ () => setAttributes( { pauseHover: ! pauseHover } ) }
 				/>
-				{ autoPlay && <>
-					<SelectControl
-						className="components-coblocks-gallery-inspector__autoplayspeed-select"
-						label={ __( 'Transition speed', 'coblocks' ) }
-						onChange={ ( value ) => setAttributes( { autoPlaySpeed: value } ) }
-						options={ autoPlayOptions }
-						value={ autoPlaySpeed }
-					/>
-					<ToggleControl
-						checked={ pauseHover }
-						help={ getPauseAutoplayOnHoverHelp }
-						label={ __( 'Pause on hover', 'coblocks' ) }
-						onChange={ () => setAttributes( { pauseHover: ! pauseHover } ) }
-					/>
-				</>
-				}
+			</>
+			}
+			<ToggleControl
+				checked={ !! draggable }
+				help={ getDraggableHelp }
+				label={ __( 'Draggable', 'coblocks' ) }
+				onChange={ () => setAttributes( { draggable: ! draggable } ) }
+			/>
+			{ draggable && <ToggleControl
+				checked={ !! freeScroll }
+				help={ getfreeScrollHelp }
+				label={ __( 'Free scroll', 'coblocks' ) }
+				onChange={ () => setAttributes( { freeScroll: ! freeScroll } ) }
+			/> }
+			<ToggleControl
+				checked={ !! prevNextButtons }
+				help={ getArrowNavigationHelp }
+				label={ __( 'Arrow navigation', 'coblocks' ) }
+				onChange={ () => setAttributes( { prevNextButtons: ! prevNextButtons } ) }
+			/>
+			{ !! thumbnails ? null	: (
 				<ToggleControl
-					checked={ !! draggable }
-					help={ getDraggableHelp }
-					label={ __( 'Draggable', 'coblocks' ) }
-					onChange={ () => setAttributes( { draggable: ! draggable } ) }
-				/>
-				{ draggable && <ToggleControl
-					checked={ !! freeScroll }
-					help={ getfreeScrollHelp }
-					label={ __( 'Free scroll', 'coblocks' ) }
-					onChange={ () => setAttributes( { freeScroll: ! freeScroll } ) }
-				/> }
-				<ToggleControl
-					checked={ !! prevNextButtons }
-					help={ getArrowNavigationHelp }
-					label={ __( 'Arrow navigation', 'coblocks' ) }
-					onChange={ () => setAttributes( { prevNextButtons: ! prevNextButtons } ) }
-				/>
-				{ !! thumbnails ? null	: (
-					<ToggleControl
-						checked={ !! pageDots }
-						help={ getDotNavigationHelp }
-						label={ __( 'Dot navigation', 'coblocks' ) }
-						onChange={ () => setAttributes( { pageDots: ! pageDots } ) } />
-				) }
-				<ToggleControl
-					checked={ !! alignCells }
-					help={ getAlignCellsHelp }
-					label={ __( 'Align cells', 'coblocks' ) }
-					onChange={ () => setAttributes( { alignCells: ! alignCells } ) }
-				/>
-			</PanelBody>
-		</>
+					checked={ !! pageDots }
+					help={ getDotNavigationHelp }
+					label={ __( 'Dot navigation', 'coblocks' ) }
+					onChange={ () => setAttributes( { pageDots: ! pageDots } ) } />
+			) }
+			<ToggleControl
+				checked={ !! alignCells }
+				help={ getAlignCellsHelp }
+				label={ __( 'Align cells', 'coblocks' ) }
+				onChange={ () => setAttributes( { alignCells: ! alignCells } ) }
+			/>
+		</PanelBody>
 	);
 };
 
