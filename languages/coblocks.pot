@@ -1,4 +1,4 @@
-# Copyright (c) 2021 GoDaddy Operating Company, LLC. All Rights Reserved.
+# Copyright (c) 2022 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
 "Project-Id-Version: CoBlocks 2.19.1\n"
@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-12-30T17:07:43+00:00\n"
+"POT-Creation-Date: 2022-01-04T17:07:24+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -2279,7 +2279,7 @@ msgstr ""
 #: src/blocks/gallery-offset/inspector.js:79
 #: src/blocks/icon/inspector.js:58
 #: src/blocks/icon/inspector.js:189
-#: src/components/typography-controls/index.js:193
+#: src/components/typography-controls/index.js:195
 msgid "Size"
 msgstr ""
 
@@ -2370,8 +2370,8 @@ msgstr ""
 #: src/blocks/gallery-collage/index.js:56
 #: src/blocks/logos/index.js:48
 #: src/components/font-family/index.js:16
-#: src/components/typography-controls/index.js:92
-#: src/components/typography-controls/index.js:110
+#: src/components/typography-controls/index.js:94
+#: src/components/typography-controls/index.js:112
 #: src/extensions/cover-styles/index.js:11
 #: src/extensions/image-styles/index.js:11
 #: src/extensions/list-styles/index.js:11
@@ -3889,7 +3889,7 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgsfocusable.js:494
 #: src/blocks/icon/deprecated/svgsv1.js:477
 #: src/blocks/icon/svgs-generated.js:1250
-#: src/components/typography-controls/index.js:163
+#: src/components/typography-controls/index.js:165
 msgid "Font"
 msgstr ""
 
@@ -9586,59 +9586,59 @@ msgstr ""
 msgid "Align cells"
 msgstr ""
 
-#: src/components/typography-controls/index.js:69
+#: src/components/typography-controls/index.js:71
 msgid "Change typography"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:97
-#: src/components/typography-controls/index.js:130
+#: src/components/typography-controls/index.js:99
+#: src/components/typography-controls/index.js:132
 msgid "Normal"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:102
+#: src/components/typography-controls/index.js:104
 msgid "Bold"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:115
+#: src/components/typography-controls/index.js:117
 #: src/formats/uppercase/index.js:25
 #: src/formats/uppercase/index.js:40
 msgid "Uppercase"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:120
+#: src/components/typography-controls/index.js:122
 msgid "Lowercase"
 msgstr ""
 
 #. translators: typography style
-#: src/components/typography-controls/index.js:125
+#: src/components/typography-controls/index.js:127
 msgid "Capitalize"
 msgstr ""
 
-#: src/components/typography-controls/index.js:171
+#: src/components/typography-controls/index.js:173
 msgid "Weight"
 msgstr ""
 
-#: src/components/typography-controls/index.js:183
+#: src/components/typography-controls/index.js:185
 msgid "Transform"
 msgstr ""
 
-#: src/components/typography-controls/index.js:205
+#: src/components/typography-controls/index.js:207
 msgid "Line height"
 msgstr ""
 
-#: src/components/typography-controls/index.js:217
+#: src/components/typography-controls/index.js:219
 msgid "Letter spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:229
+#: src/components/typography-controls/index.js:231
 msgid "No top spacing"
 msgstr ""
 
-#: src/components/typography-controls/index.js:234
+#: src/components/typography-controls/index.js:236
 msgid "No bottom spacing"
 msgstr ""
 
