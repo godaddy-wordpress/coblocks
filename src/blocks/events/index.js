@@ -37,7 +37,7 @@ const settings = {
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
-	example,
+	// example,
 	transforms,
 	edit,
 	save,

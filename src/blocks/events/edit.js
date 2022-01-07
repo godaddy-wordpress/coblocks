@@ -9,6 +9,7 @@ import InspectorControls from './inspector';
 /**
  * External dependencies.
  */
+import { v4 as generateUuid } from 'uuid';
 import classnames from 'classnames';
 import TinySwiper from 'tiny-swiper';
 import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
@@ -18,14 +19,13 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
  */
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
-import { edit } from '@wordpress/icons';
+import { edit, handle } from '@wordpress/icons';
 import ServerSideRender from '@wordpress/server-side-render';
 import { BlockControls, InnerBlocks } from '@wordpress/block-editor';
 import { Button, Placeholder, TextControl, ToolbarGroup } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
-import { useEffect, useRef, useState } from '@wordpress/element';
+import { useEffect, useRef, useState, useMemo } from '@wordpress/element';
 import { usePrevious } from '@wordpress/compose';
-import { isEmpty } from 'lodash';
 
 const ALLOWED_BLOCKS = [ 'coblocks/event-item' ];
 
@@ -42,13 +42,11 @@ const EVENTS_RANGE_OPTIONS = [
 
 const EventsEdit = ( props ) => {
 	const {
-		className,
 		attributes,
 		setAttributes,
 		clientId,
 		isSelected,
-		selected,
-		...restProps
+		selected
 	} = props;
 
 	const { selectBlock, insertBlock } = useDispatch( 'core/block-editor' );
@@ -58,73 +56,20 @@ const EventsEdit = ( props ) => {
 	} ) );
 
 	const prevIsSelected = usePrevious( isSelected );
-
-	let observer = useRef( null );
-	// let elementRef = useRef( null );
-	let slickTarget = useRef( null );
-	let blockContainerRef = useRef( null );
+	const prevInnerBlocksLength = usePrevious( innerBlocks.length );
 
 	const externalCalendarUrl = attributes.externalCalendarUrl;
 	const [ isEditing, setIsEditing ] = useState( false );
 	const [ showExternalCalendarControls, setShowExternalCalendarControls ] = useState( !! externalCalendarUrl || false );
 	const [ stateExternalCalendarUrl, setStateExternalCalendarUrl ] = useState( externalCalendarUrl );
 
+	const [carouselCssText, setCarouselCssText] = useState( null );
+	const [swiper, setSwiper] = useState( null );
+	const eventsContainerRef = useRef( null );
+
 	const closeEditing = () => setIsEditing( false );
 
-	useEffect(() => {
-			const innerBlockSelected = innerBlocks.some(({ clientId }) => clientId === selected?.clientId);
-			if ( prevIsSelected !== isSelected && isSelected === false && !innerBlockSelected ) {
-				setIsEditing( false );
-			}
-	}, [ prevIsSelected, isSelected, innerBlocks, selected ]);
-
-	// useEffect(() => {
-	// 	console.log('blockContainerRef', blockContainerRef);
-	// 	blockContainerRef?.current?.addEventListener('')
-	// },[]);
-
-	// useEffect( () => {
-	// 	observer = new MutationObserver( mutationObserverCallback );
-	// 	observer.observe( elementRef, { childList: true } );
-	// }, [] );
-
-	// useEffect( () => {
-	// 	return () => {
-	// 		if ( !! externalCalendarUrl ) {
-	// 			jQuery( slickTarget ).slick( 'unslick' );
-	// 		}
-
-	// 		observer.disconnect();
-	// 	};
-	// }, [ externalCalendarUrl, observer ] );
-
-	/**
-	 * The callback for our MutationObserver.
-	 *
-	 * A React Ref is used to track changes to our ServerSideRender component
-	 * in order to initialize Slick Carousel for the rendered content.
-	 *
-	 * @param {Array} mutationsList List of objects describing each change that occurred.
-	 */
-	// const mutationObserverCallback = ( mutationsList ) => {
-	// 	for ( const mutation of mutationsList ) {
-	// 		if ( mutation.type === 'childList' && mutation.addedNodes.length > 0 ) {
-	// 			if ( mutation.addedNodes[ 0 ].outerHTML.match( 'wp-block-coblocks-events' ) ) {
-	// 				slickTarget = mutation.addedNodes[ 0 ].children[ 0 ];
-
-	// 				jQuery( slickTarget ).slick( {
-	// 					// Slick settings to disable within the Block Editor to prevent conflicts.
-	// 					accessibility: false, // Disable tabbing and arrow key navigation.
-	// 					draggable: false, // Disable mouse dragging slides.
-	// 					infinite: false,
-	// 					rows: slickTarget.dataset.perPage,
-	// 					swipe: false, // Disable swiping slides.
-	// 					touchMove: false, // Disable touch swiping slides.
-	// 				} );
-	// 			}
-	// 		}
-	// 	}
-	// };
+	const carouselUuid = useMemo( () => generateUuid(), [] );
 
 	const handleSelectBlock = () => {
 		if ( !isSelected ) {
@@ -160,11 +105,201 @@ const EventsEdit = ( props ) => {
 		},
 	];
 
-	// if ( isEditing === true ) {
-	// 	return (
-	// 		<EditMode insertNewItem={insertNewItem} showExternalCalendarControls={ showExternalCalendarControls } innerBlocks={innerBlocks} {...props} />
-	// 	); 
-	// }
+	// return (
+	// 	<>
+	// 		<InspectorControls
+	// 			attributes={ attributes }
+	// 			eventsRangeOptions={ EVENTS_RANGE_OPTIONS }
+	// 			onChangeEventsRange={ ( eventsRange ) => setAttributes( { eventsRange } ) }
+	// 			onChangeEventsToShow={ ( eventsToShow ) => setAttributes( { eventsToShow } ) }
+	// 			showExternalCalendarControls={ showExternalCalendarControls }
+	// 			toggleExternalCalendarControls={ toggleExternalCalendarControls }
+	// 		/>
+
+	// 		{ isSelected &&
+	// 			<BlockControls>
+	// 				<ToolbarGroup controls={ toolbarControls } />
+	// 			</BlockControls>
+	// 		}
+
+	// 		{isEditing ? (
+	// 				<EditMode 
+	// 					insertNewItem={insertNewItem} 
+	// 					showExternalCalendarControls={ showExternalCalendarControls } 
+	// 					innerBlocks={innerBlocks} 
+	// 					closeEditing={closeEditing}
+	// 					saveExternalCalendarUrl={saveExternalCalendarUrl}
+	// 					{...props} 
+	// 				/>
+	// 		) : (
+	// 			<div onClick={ handleSelectBlock } >
+	// 				<EventsCarousel innerBlocks={innerBlocks} />
+	// 			</div>
+	// 		)}
+	// 	</>
+	// );
+
+			// 	{isEditing ? (
+			// 		<EditMode 
+			// 			insertNewItem={insertNewItem} 
+			// 			showExternalCalendarControls={ showExternalCalendarControls } 
+			// 			innerBlocks={innerBlocks} 
+			// 			closeEditing={closeEditing}
+			// 			saveExternalCalendarUrl={saveExternalCalendarUrl}
+			// 			{...props} 
+			// 		/>
+			// ) : (
+				// <div onClick={ handleSelectBlock } >
+				// 	<EventsCarousel innerBlocks={innerBlocks} />
+				// </div>
+			// )}
+
+	// const handleClickOutside = (event) => {
+	// 	if ( !eventsContainerRef.current.contains( event.target) && isEditing === true ) {
+	// 		setIsEditing( false );
+	// 	}
+	// };
+		
+	// useEffect(() => {
+	// 	if ( eventsContainerRef.current ) {
+	// 		document.body.addEventListener('click', handleClickOutside);
+		
+	// 		return () => {
+	// 			document.body.removeEventListener('click', handleClickOutside);
+	// 		}	
+	// 	}
+	// }, [ isEditing ]);
+
+	const formatSwiperStructure = ( swiperWrapper ) => {
+		// for each inner block we need to have it wrapped in a div
+		// with the swiper-side class
+		const allEventItems = document.querySelectorAll('[data-type="coblocks/event-item"]');
+		for (let i = 0; i < allEventItems.length; i++) {
+			const swiperSlideContainer = document.createElement('div');
+			swiperSlideContainer.setAttribute('class', 'swiper-slide');
+	
+			swiperWrapper.appendChild( swiperSlideContainer );
+	
+			swiperSlideContainer.appendChild(allEventItems[i]);
+		}
+	}
+		
+	useEffect(() => {
+		const innerBlockSelected = innerBlocks.some(({ clientId }) => clientId === selected?.clientId);
+
+		if ( innerBlockSelected === true && isEditing === true ) {
+			handleSelectBlock();
+		}
+
+		if ( 
+			prevIsSelected !== isSelected && 
+			isSelected === false && 
+			! innerBlockSelected
+		) {
+			setIsEditing( false );
+		}
+	}, [ prevIsSelected, isSelected, selected, innerBlocks, isEditing ]);
+
+	useEffect(() => {
+		if ( innerBlocks.length !== prevInnerBlocksLength ) {
+			alert('update the swiper');
+			
+		}
+	}, [ innerBlocks.length, prevInnerBlocksLength, swiper ]);
+ 
+	// create the required tiny swiper architecture on mount
+	useEffect(() => {
+		console.log('useEffect here----', {
+			isEditing,
+			swiper,
+			carouselCssText
+		});
+
+		const innerBlocksContainer = document.querySelectorAll(`#coblocks-events-swiper-container-${carouselUuid} > .block-editor-inner-blocks > .block-editor-block-list__layout`)[0];
+
+		// coming from edit mode to carousel
+		if ( isEditing === false && swiper !== null && carouselCssText !== null ) {
+			const swiperEditModeContainer = innerBlocksContainer.querySelectorAll('.swiper-wrapper-edit')[0];
+			alert( `from edit to carousel --- ${innerBlocks.length}` );
+
+			swiperEditModeContainer?.classList.remove('swiper-wrapper-edit');
+			swiperEditModeContainer?.classList.add('swiper-wrapper');
+
+			if ( swiperEditModeContainer?.style?.cssText ) {
+				swiperEditModeContainer.style.cssText = carouselCssText;
+			}
+
+			setCarouselCssText(null);
+		}
+
+		// coming from carousel to edit mode
+		// need to also format original DOM structure
+		if ( isEditing === true && swiper !== null && carouselCssText === null ) {			
+			const swiperWrapperAfter = innerBlocksContainer.querySelectorAll('.swiper-wrapper')[0];
+
+			alert( `from carousel to edit --- ${innerBlocks.length}` )
+			swiperWrapperAfter?.classList.remove('swiper-wrapper');
+			swiperWrapperAfter?.classList.add('swiper-wrapper-edit');
+
+			setCarouselCssText(swiperWrapperAfter?.style['cssText']);
+
+			if ( swiperWrapperAfter?.style?.cssText ) {
+					swiperWrapperAfter.style.cssText = '';
+			}
+		}
+
+		// first mount and coming from editing to carousel
+		if ( swiper === null ) {
+			alert( `mount the original swiper --- ${innerBlocks.length}` );
+			// swiper root container
+			const swiperContainer = document.createElement('div');
+			swiperContainer.setAttribute('class', 'swiper-container');
+	
+			innerBlocksContainer.appendChild( swiperContainer );
+	
+			// swiper slides wrapper
+			const swiperWrapper = document.createElement('div');
+			swiperWrapper.setAttribute('class', 'swiper-wrapper');
+	
+			swiperContainer.appendChild( swiperWrapper );
+	
+			formatSwiperStructure( swiperWrapper );
+	
+			const swiperBackButton = document.getElementById( `coblocks-event-swiper-prev` );
+			const swiperNextButton = document.getElementById( `coblocks-event-swiper-next` );
+	
+			const newSwiper = new TinySwiper(swiperContainer, {
+				touchable: false,
+				plugins: [
+					TinySwiperPluginNavigation,
+				],
+				navigation: {
+					prevEl: swiperBackButton,
+					nextEl: swiperNextButton,
+				},
+			});
+	
+			setSwiper( newSwiper );	
+		}
+	}, [ isEditing, swiper, carouselCssText ]);
+
+	const renderInnerBlocks = () => {
+		return (
+			<InnerBlocks
+					allowedBlocks={ ALLOWED_BLOCKS }
+					template={ TEMPLATE }
+					templateInsertUpdatesSelection={ false }
+					renderAppender={ () => isEditing && <CustomAppender onClick={ insertNewItem } /> }
+			/>
+		);
+	}
+
+	console.log('render main', {
+		isEditing,
+		selected,
+		swiper,
+		innerBlocks
+	});
 
 	return (
 		<>
@@ -183,36 +318,37 @@ const EventsEdit = ( props ) => {
 				</BlockControls>
 			}
 
-			{isEditing ? (
-					<EditMode 
-						insertNewItem={insertNewItem} 
-						showExternalCalendarControls={ showExternalCalendarControls } 
-						innerBlocks={innerBlocks} 
-						isEditing={isEditing}
-						closeEditing={closeEditing}
-						saveExternalCalendarUrl={saveExternalCalendarUrl}
-						{...props} 
-					/>
-			) : (
-				<div onClick={ handleSelectBlock }>
-							<EventsCarousel />
-				</div>
-			)}
+			<div ref={ eventsContainerRef } onClick={ handleSelectBlock } id={`coblocks-events-swiper-container-${carouselUuid}`} className="coblocks-events-swiper-container" >
+				{renderInnerBlocks()}
+				{!isEditing && (
+					<>
+						<button className={ `coblocks-events-nav-button__prev` } id={ `coblocks-event-swiper-prev` } />
+						<button className={ `coblocks-events-nav-button__next` } id={ `coblocks-event-swiper-next` } />
+					</>
+				)}
+			</div>
 		</>
 	);
 };
 
 const EditMode = ( props ) => {
-	const { closeEditing, isEditing, insertNewItem, className, attributes, showExternalCalendarControls } = props;
+	const { closeEditing, insertNewItem, className, attributes, showExternalCalendarControls, innerBlocks } = props;
 	const {
 		externalCalendarUrl
 	} = attributes;
+
+	console.log('edit mode innerBlocks', innerBlocks);
 
 	const editContentContainerRef = useRef( null );
 
 	const handleClickOutside = ( e ) => {
 		const toolbarNode = document.querySelector('.components-popover__content');
-		if ( !editContentContainerRef.current.contains( e.target ) && !toolbarNode?.contains( e.target) ) {
+
+		if ( 
+			!editContentContainerRef.current.contains( e.target ) && 
+			!toolbarNode?.contains( e.target) && 
+			!e.target.classList.contains( 'block-editor-button-block-appender' ) 
+		) {			
 			closeEditing();
 		}
 	};
@@ -276,52 +412,105 @@ const EditMode = ( props ) => {
 };
 
 const EventsCarousel = (props) => {
-	const { className, externalCalendarUrl, showExternalCalendarControls } = props;
+	const { className, externalCalendarUrl, showExternalCalendarControls, ...restProps } = props;
+
+	let swiper;
+
+	// useEffect(() => {
+	// 	const innerBlocksContainer = document.querySelector('.coblocks-events-swiper-container > .block-editor-inner-blocks > .block-editor-block-list__layout');
+
+	// 	console.log('innerBlocksContainer', innerBlocksContainer);
+	// 	console.log('events  carousel inner blocks props', props);
+	// }, []);
+
+	// useEffect(() => {
+	// 	const innerBlocksContainer = document.querySelector('.coblocks-events-swiper-container > .block-editor-inner-blocks > .block-editor-block-list__layout');
+
+	// 	console.log('innerBlocksContainer, innerBlocksContainer', innerBlocksContainer);
+
+	// 	if ( !innerBlocksContainer ) {
+	// 		return;
+	// 	}
+
+	// 	const swiperContainer = document.createElement('div');
+	// 	swiperContainer.setAttribute('class', 'swiper-container');
+
+	// 	innerBlocksContainer.appendChild( swiperContainer );
+
+	// 	const swiperWrapper = document.createElement('div');
+	// 	swiperWrapper.setAttribute('class', 'swiper-wrapper');
+
+	// 	swiperContainer.appendChild( swiperWrapper );
+
+	// 	const eventItemBlocks = document.querySelectorAll('[data-type="coblocks/event-item"]');
+		
+	// 	console.log('eventItemBlocks', eventItemBlocks);
+	// 	for ( let i = 0; i < eventItemBlocks.length; i++ ) {
+	// 		const eventItem = eventItemBlocks[i];
+
+	// 		const swiperSlideWrapper = document.createElement('div');
+	// 		swiperSlideWrapper.setAttribute('class', 'swiper-slide');
+
+	// 		console.log('eventItem', eventItem);
+	// 		swiperSlideWrapper.appendChild( eventItem );
+
+	// 		swiperWrapper.appendChild( swiperSlideWrapper );
+
+	// 		swiperSlideWrapper.appendChild( eventItem );
+	// 	}
+			
+	// 	// console.log('swiperContainer', swiperContainer);
+
+	// 	// const swiperBackButton = document.getElementById( `coblocks-event-swiper-prev` );
+	// 	// const swiperNextButton = document.getElementById( `coblocks-event-swiper-next` );
+
+	// 	// swiper = new TinySwiper(swiperContainer, {
+	// 	// 	touchable: false,
+	// 	// 	plugins: [
+	// 	// 		TinySwiperPluginNavigation,
+	// 	// 	],
+	// 	// 	navigation: {
+	// 	// 		prevEl: swiperBackButton,
+	// 	// 		nextEl: swiperNextButton,
+	// 	// 	},
+	// 	// });
+	// }, []);
 
 	useEffect(() => {
-		const innerBlocksContainer = document.querySelector('.coblocks-events-swiper-container > .block-editor-inner-blocks > .block-editor-block-list__layout');
+			console.log('rest props  events carousel', restProps);
+			console.log('EventsCarousel EventsCarousel EventsCarousel mount -- need to RUN THIS AFTERWARDS');
 
-		if ( !innerBlocksContainer ) {
-			return;
-		}
+			// const swiperBackButton = document.getElementById( `coblocks-event-swiper-prev` );
+			// const swiperNextButton = document.getElementById( `coblocks-event-swiper-next` );
 
-		const swiperContainer = document.createElement('div');
-		swiperContainer.setAttribute('class', 'swiper-container');
+			// const swiperContainer = document.getElementById('swiper-container');
 
-		innerBlocksContainer.appendChild( swiperContainer );
+			// console.log('swiperContainer', swiperContainer);
 
-		const swiperWrapper = document.createElement('div');
-		swiperWrapper.setAttribute('class', 'swiper-wrapper');
-
-		swiperContainer.appendChild( swiperWrapper );
-
-		const eventItemBlocks = document.querySelectorAll('[data-type="coblocks/event-item"]');
-
-		for ( let i = 0; i < eventItemBlocks.length; i++ ) {
-			const eventItem = eventItemBlocks[i];
-
-			const swiperSlideWrapper = document.createElement('div');
-			swiperSlideWrapper.setAttribute('class', 'swiper-slide');
-
-			swiperSlideWrapper.appendChild( eventItem );
-
-			swiperWrapper.appendChild( swiperSlideWrapper );
-		}
-
-		const swiperBackButton = document.getElementById( `coblocks-event-swiper-prev` );
-		const swiperNextButton = document.getElementById( `coblocks-event-swiper-next` );
-
-		new TinySwiper(swiperContainer, {
-			touchable: false,
-			plugins: [
-				TinySwiperPluginNavigation,
-			],
-			navigation: {
-				prevEl: swiperBackButton,
-				nextEl: swiperNextButton,
-			},
-		})
+			// swiper = new TinySwiper(swiperContainer, {
+			// 	touchable: false,
+			// 	plugins: [
+			// 		TinySwiperPluginNavigation,
+			// 	],
+			// 	navigation: {
+			// 		prevEl: swiperBackButton,
+			// 		nextEl: swiperNextButton,
+			// 	},
+			// });		
 	}, []);
+
+	// return (
+	// 	<div className={ classnames( className, 'coblocks-custom-event' ) }>
+	// 		<div className="coblocks-events-swiper-container">
+	// 			<InnerBlocks
+	// 				allowedBlocks={ ALLOWED_BLOCKS }
+	// 				template={ TEMPLATE }
+	// 				templateInsertUpdatesSelection={ false }
+	// 				templateLock="all"
+	// 			/>
+	// 		</div>
+	// 	</div>
+	// );
 
 	return (
 		<>
@@ -332,6 +521,7 @@ const EventsCarousel = (props) => {
 								allowedBlocks={ ALLOWED_BLOCKS }
 								template={ TEMPLATE }
 								templateInsertUpdatesSelection={ false }
+								templateLock="all"
 							/>
 						</div>
 				</div>
