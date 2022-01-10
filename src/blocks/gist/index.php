@@ -24,7 +24,7 @@ function coblocks_block_gist_handler( $matches ) {
 	$gist_url  = empty( $matches[0] ) ? '' : $matches[0];
 	$gist_path = empty( $matches[1] ) ? '' : $matches[1];
 	$gist_file = empty( $matches[2] ) ? '' : $matches[2];
-	$gist_id   = explode( '/', $gist_path )[1];
+	$gist_id   = empty( $gist_path ) ? '' : explode( '/', $gist_path )[1];
 
 	if (
 		empty( $gist_url ) ||
