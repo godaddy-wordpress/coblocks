@@ -26,8 +26,16 @@ function coblocks_block_gist_handler( $matches ) {
 	$gist_file = empty( $matches[2] ) ? '' : $matches[2];
 	$gist_id   = explode( '/', $gist_path )[1];
 
-	// Fetch from API list of all files.
-	// in cases where only uppercase files are present.
+	if (
+		empty( $gist_url ) ||
+		empty( $gist_path ) ||
+		! preg_match( '/https?:\/\/gist\.github\.com/', $gist_url )
+	) {
+		return '';
+	}
+
+	// Fetch from GitHub API list of all files.
+	// in cases where only uppercase files are present this allows us to embed the proper file.
 	$api_resp = wp_remote_get(
 		'https://api.github.com/gists/' . $gist_id,
 		array(
@@ -37,10 +45,12 @@ function coblocks_block_gist_handler( $matches ) {
 		)
 	);
 
+	// JSON decode the response body.
+	// Then grab files from JSON object.
 	$body  = json_decode( $api_resp['body'], true );
 	$files = empty( $body['files'] ) ? array() : $body['files'];
 
-	// Map all files into filenames array.
+	// Map files object into filenames array.
 	$file_list = array_map(
 		function( $file ) {
 			return $file['filename'];
@@ -48,26 +58,18 @@ function coblocks_block_gist_handler( $matches ) {
 		$files
 	);
 
-	if (
-		empty( $gist_url ) ||
-		empty( $gist_path ) ||
-		! preg_match( '/https?:\/\/gist\.github\.com/', $gist_url )
-	) {
-		return '';
-	}
-
 	$script_src = untrailingslashit( $gist_path );
 	// .js suffix is needed after gist path for proper embed.
 	$script_src .= '.js';
 
 	if ( ! empty( $gist_file ) ) {
-		// We replace the fash to obtain true filename.
+		// We replace the dash to obtain true filename.
 		$dash_position = strrpos( $gist_file, '-' );
 		if ( false !== $dash_position ) {
 			$gist_file = substr_replace( $gist_file, '.', $dash_position, 1 );
 		}
 
-		// Compare against files from API request. Return the first matching filename regardless of case.
+		// Return the first matching filename regardless of case to mimic GitHub behavior.
 		$matched_file = array_search( $gist_file, array_map( 'strtolower', $file_list ), true );
 		$script_src  .= '?file=' . $matched_file;
 
