@@ -6,11 +6,6 @@ import TinySwiper from 'tiny-swiper';
 import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
 
 /**
- * Internal dependencies
- */
-import './style.scss';
-
-/**
  * WordPress dependencies
  */
 import { usePrevious } from '@wordpress/compose';
@@ -23,7 +18,8 @@ import {
 } from '@wordpress/element';
 
 const SwiperWrapper = ( props ) => {
-	const swiperUuid = useMemo( () => generateUuid(), [ props.list.length, props.freeScroll, props.slidesPerView, props.loop ] );
+	const { list, freeScroll, slidesPerView, loop } = props;
+	const swiperUuid = useMemo( () => generateUuid(), [ list.length, freeScroll, slidesPerView, loop ] );
 
 	return (
 		<span key={ swiperUuid }>
@@ -168,10 +164,10 @@ const Swiper = ( props ) => {
 
 	const renderList = useMemo( () => {
 		return list.map( ( item, index ) => (
-			<div id={ index } key={ index } className={ `swiper-slide` }>
+			<div className={ `swiper-slide` } id={ index } key={ index }>
 				{ children( {
-					item,
 					index,
+					item,
 				} ) }
 			</div>
 		) );

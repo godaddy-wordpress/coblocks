@@ -31,6 +31,9 @@ describe( 'Test CoBlocks Icon Block', function() {
 	it( 'Test the icon block style.', function() {
 		helpers.addBlockToPost( 'coblocks/icon', true );
 
+		// Make sure that controls who are lazy loaded finished loading
+		cy.contains( 'Styles' );
+
 		helpers.openSettingsPanel( 'Styles' );
 
 		cy.get( '.block-editor-block-styles__item[aria-label="Filled"]' ).click();
@@ -89,6 +92,9 @@ describe( 'Test CoBlocks Icon Block', function() {
 	it( 'Test the icon block link settings.', function() {
 		helpers.addBlockToPost( 'coblocks/icon', true );
 
+		// Make sure that controls who are lazy loaded finished loading
+		cy.contains( 'Link settings' );
+
 		helpers.openSettingsPanel( 'Link settings' );
 
 		cy.get( '.components-base-control__label' ).contains( 'Link URL' ).then( ( $settingLabel ) => {
@@ -123,6 +129,9 @@ describe( 'Test CoBlocks Icon Block', function() {
 	it( 'Test the icon block color settings.', function() {
 		helpers.addBlockToPost( 'coblocks/icon', true );
 
+		// Make sure that controls who are lazy loaded finished loading
+		cy.contains( 'Color settings' );
+
 		helpers.openSettingsPanel( 'Color settings' );
 
 		helpers.setColorSetting( 'background', '#e60099' );
@@ -143,6 +152,9 @@ describe( 'Test CoBlocks Icon Block', function() {
 
 	it( 'Test the icon block custom class.', function() {
 		helpers.addBlockToPost( 'coblocks/icon', true );
+
+		// Make sure that controls who are lazy loaded finished loading
+		cy.contains( 'Icon settings' );
 
 		cy.get( '.components-panel__body-title' ).contains( 'Icon settings' ).then( ( $panelTop ) => {
 			const $parentPanel = Cypress.$( $panelTop ).closest( 'div.components-panel__body' );
