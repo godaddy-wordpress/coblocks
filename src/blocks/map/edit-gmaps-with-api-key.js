@@ -42,7 +42,7 @@ const GoogleMapWithApiKey = ( { apiKey, props } ) => {
 			const geocoder = new window.google.maps.Geocoder();
 			geocoder.geocode(
 				{ address },
-				function( results, status ) {
+				( results, status ) => {
 					if ( status !== 'OK' ) {
 						props.setAttributes( {
 							hasError: __( 'Invalid API key, or too many requests', 'coblocks' ),
@@ -58,7 +58,7 @@ const GoogleMapWithApiKey = ( { apiKey, props } ) => {
 						lat: results[ 0 ].geometry.location.toJSON().lat.toString(),
 						lng: results[ 0 ].geometry.location.toJSON().lng.toString(),
 					} );
-				}.bind( this )
+				}
 			);
 		}
 	}, [ address, isLoaded ] );
