@@ -4,7 +4,7 @@
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 // Enter a value here if you want to test the block with an API key
-// For example : const API_KEY = 'AIzaSyC2wdYyKCl-pAiJzg6iWgS4K7nTxHVIUeP'; (not a real key)
+// For example : const API_KEY = '7uafds7udfsa7usaf8ia0sd0uaj'; (not a real key)
 const API_KEY = undefined;
 
 describe( 'Test CoBlocks Map Block', function() {
