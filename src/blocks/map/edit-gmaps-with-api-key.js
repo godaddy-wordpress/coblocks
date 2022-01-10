@@ -106,7 +106,7 @@ const GoogleMapWithApiKey = ( { apiKey, props } ) => {
 					}
 				}
 			/>
-		</GoogleMap> : <></>;
+		</GoogleMap> : null;
 	};
 
 	return isLoaded ? renderMap() : <Spinner />;

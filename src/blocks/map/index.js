@@ -31,7 +31,7 @@ const settings = {
 	edit,
 	example: {
 		attributes: {
-			address: 'Scottsdale, Arizona',
+			address: 'Tempe, Arizona',
 			align: 'wide',
 		},
 	},
