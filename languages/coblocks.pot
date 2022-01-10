@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-01-04T17:07:24+00:00\n"
+"POT-Creation-Date: 2022-01-10T18:05:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -516,8 +516,8 @@ msgstr ""
 msgid "Text color"
 msgstr ""
 
-#: src/blocks/accordion/edit.js:126
-#: src/blocks/accordion/edit.js:129
+#: src/blocks/accordion/edit.js:106
+#: src/blocks/accordion/edit.js:109
 msgid "Add accordion item"
 msgstr ""
 
@@ -736,7 +736,7 @@ msgstr ""
 
 #. translators: visually stack buttons one on top of another
 #: src/blocks/buttons/inspector.js:46
-#: src/extensions/advanced-controls/index.js:159
+#: src/extensions/advanced-controls/index.js:154
 msgid "Stack on mobile"
 msgstr ""
 
@@ -1144,7 +1144,7 @@ msgstr ""
 #: src/blocks/row/column/inspector.js:109
 #: src/blocks/row/inspector.js:159
 #: src/components/background/panel.js:209
-#: src/extensions/padding-controls/index.js:81
+#: src/extensions/padding-controls/index.js:78
 msgid "Padding"
 msgstr ""
 
@@ -1415,7 +1415,7 @@ msgstr ""
 #: src/components/size-control/index.js:93
 #: src/components/size-control/index.js:104
 #: src/components/size-control/index.js:136
-#: src/extensions/padding-controls/index.js:32
+#: src/extensions/padding-controls/index.js:29
 msgid "S"
 msgstr ""
 
@@ -1432,7 +1432,7 @@ msgstr ""
 #: src/components/size-control/index.js:94
 #: src/components/size-control/index.js:105
 #: src/components/size-control/index.js:137
-#: src/extensions/padding-controls/index.js:33
+#: src/extensions/padding-controls/index.js:30
 msgid "Small"
 msgstr ""
 
@@ -1446,7 +1446,7 @@ msgstr ""
 #: src/components/size-control/index.js:84
 #: src/components/size-control/index.js:110
 #: src/components/size-control/index.js:143
-#: src/extensions/padding-controls/index.js:38
+#: src/extensions/padding-controls/index.js:35
 msgid "M"
 msgstr ""
 
@@ -1463,7 +1463,7 @@ msgstr ""
 #: src/components/size-control/index.js:85
 #: src/components/size-control/index.js:111
 #: src/components/size-control/index.js:144
-#: src/extensions/padding-controls/index.js:39
+#: src/extensions/padding-controls/index.js:36
 msgid "Medium"
 msgstr ""
 
@@ -1477,7 +1477,7 @@ msgstr ""
 #: src/components/size-control/index.js:69
 #: src/components/size-control/index.js:116
 #: src/components/size-control/index.js:152
-#: src/extensions/padding-controls/index.js:44
+#: src/extensions/padding-controls/index.js:41
 msgid "L"
 msgstr ""
 
@@ -1494,7 +1494,7 @@ msgstr ""
 #: src/components/size-control/index.js:70
 #: src/components/size-control/index.js:117
 #: src/components/size-control/index.js:153
-#: src/extensions/padding-controls/index.js:45
+#: src/extensions/padding-controls/index.js:42
 msgid "Large"
 msgstr ""
 
@@ -1506,7 +1506,7 @@ msgstr ""
 #: src/components/size-control/index.js:75
 #: src/components/size-control/index.js:122
 #: src/components/size-control/index.js:161
-#: src/extensions/padding-controls/index.js:50
+#: src/extensions/padding-controls/index.js:48
 msgid "XL"
 msgstr ""
 
@@ -1515,7 +1515,7 @@ msgstr ""
 #: src/blocks/icon/icon-size-select.js:33
 #: src/blocks/posts/inspector.js:80
 #: src/components/dimensions-control/dimensions-select.js:30
-#: src/extensions/padding-controls/index.js:51
+#: src/extensions/padding-controls/index.js:49
 msgid "Huge"
 msgstr ""
 
@@ -2256,7 +2256,7 @@ msgstr ""
 #: src/blocks/gallery-masonry/v1/inspector.js:68
 #: src/blocks/gallery-offset/inspector.js:71
 #: src/blocks/gallery-stacked/inspector.js:66
-#: src/extensions/lightbox-controls/index.js:37
+#: src/extensions/lightbox-controls/index.js:41
 msgid "Image lightbox is enabled."
 msgstr ""
 
@@ -2266,7 +2266,7 @@ msgstr ""
 #: src/blocks/gallery-masonry/v1/inspector.js:69
 #: src/blocks/gallery-offset/inspector.js:72
 #: src/blocks/gallery-stacked/inspector.js:67
-#: src/extensions/lightbox-controls/index.js:38
+#: src/extensions/lightbox-controls/index.js:42
 msgid "Toggle to enable the image lightbox."
 msgstr ""
 
@@ -2300,7 +2300,7 @@ msgstr ""
 #: src/blocks/gallery-masonry/v1/inspector.js:101
 #: src/blocks/gallery-offset/inspector.js:95
 #: src/blocks/gallery-stacked/inspector.js:100
-#: src/extensions/lightbox-controls/index.js:50
+#: src/extensions/lightbox-controls/index.js:51
 msgid "Lightbox"
 msgstr ""
 
@@ -2333,7 +2333,7 @@ msgstr ""
 #: src/blocks/gallery-collage/edit.js:156
 #: src/blocks/services/service/edit.js:151
 #: src/components/block-gallery/gallery-image.js:213
-#: src/extensions/replace-image/index.js:115
+#: src/extensions/replace-image/index.js:108
 msgid "Replace Image"
 msgstr ""
 
@@ -9176,8 +9176,8 @@ msgstr ""
 #: src/components/size-control/index.js:41
 #: src/components/size-control/index.js:42
 #: src/extensions/list-styles/index.js:18
-#: src/extensions/padding-controls/index.js:26
-#: src/extensions/padding-controls/index.js:27
+#: src/extensions/padding-controls/index.js:23
+#: src/extensions/padding-controls/index.js:24
 msgid "None"
 msgstr ""
 
@@ -9546,43 +9546,43 @@ msgstr ""
 msgid "Toggle to scroll without fixed slides."
 msgstr ""
 
-#: src/components/slider-panel/index.js:76
+#: src/components/slider-panel/index.js:75
 msgid "Slider settings"
 msgstr ""
 
-#: src/components/slider-panel/index.js:80
+#: src/components/slider-panel/index.js:79
 msgid "Loop"
 msgstr ""
 
-#: src/components/slider-panel/index.js:86
+#: src/components/slider-panel/index.js:85
 msgid "Autoplay"
 msgstr ""
 
-#: src/components/slider-panel/index.js:92
+#: src/components/slider-panel/index.js:91
 msgid "Transition speed"
 msgstr ""
 
-#: src/components/slider-panel/index.js:100
+#: src/components/slider-panel/index.js:99
 msgid "Pause on hover"
 msgstr ""
 
-#: src/components/slider-panel/index.js:108
+#: src/components/slider-panel/index.js:107
 msgid "Draggable"
 msgstr ""
 
-#: src/components/slider-panel/index.js:114
+#: src/components/slider-panel/index.js:113
 msgid "Free scroll"
 msgstr ""
 
-#: src/components/slider-panel/index.js:120
+#: src/components/slider-panel/index.js:119
 msgid "Arrow navigation"
 msgstr ""
 
-#: src/components/slider-panel/index.js:127
+#: src/components/slider-panel/index.js:126
 msgid "Dot navigation"
 msgstr ""
 
-#: src/components/slider-panel/index.js:133
+#: src/components/slider-panel/index.js:132
 msgid "Align cells"
 msgstr ""
 
@@ -9642,35 +9642,35 @@ msgstr ""
 msgid "No bottom spacing"
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:154
+#: src/extensions/advanced-controls/index.js:149
 msgid "Responsiveness is enabled."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:155
+#: src/extensions/advanced-controls/index.js:150
 msgid "Toggle to stack elements on top of each other on smaller viewports."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:168
+#: src/extensions/advanced-controls/index.js:163
 msgid "Toggle to add top margin back."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:168
+#: src/extensions/advanced-controls/index.js:163
 msgid "Toggle to remove any top margin."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:169
+#: src/extensions/advanced-controls/index.js:164
 msgid "Remove top spacing"
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:183
+#: src/extensions/advanced-controls/index.js:179
 msgid "Toggle to add bottom margin back."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:183
+#: src/extensions/advanced-controls/index.js:179
 msgid "Toggle to remove any bottom margin."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:184
+#: src/extensions/advanced-controls/index.js:180
 msgid "Remove bottom spacing"
 msgstr ""
 
@@ -9727,7 +9727,7 @@ msgstr ""
 msgid "Allow animations to be used on blocks."
 msgstr ""
 
-#: src/extensions/block-patterns/index.js:35
+#: src/extensions/block-patterns/index.js:34
 msgid "Add Design Pattern"
 msgstr ""
 
@@ -9768,28 +9768,28 @@ msgstr ""
 msgid "Save Pattern"
 msgstr ""
 
-#: src/extensions/button-controls/index.js:65
-msgid "Display fullwidth"
-msgstr ""
-
-#: src/extensions/button-controls/index.js:68
+#: src/extensions/button-controls/index.js:62
 msgid "Displaying as full width."
 msgstr ""
 
-#: src/extensions/button-controls/index.js:68
+#: src/extensions/button-controls/index.js:62
 msgid "Toggle to display button as full width."
 msgstr ""
 
-#: src/extensions/coblocks-settings/index.js:39
-#: src/extensions/coblocks-settings/index.js:48
+#: src/extensions/button-controls/index.js:63
+msgid "Display fullwidth"
+msgstr ""
+
+#: src/extensions/coblocks-settings/index.js:33
+#: src/extensions/coblocks-settings/index.js:42
 msgid "Editor settings"
 msgstr ""
 
-#: src/extensions/coblocks-settings/index.js:45
+#: src/extensions/coblocks-settings/index.js:39
 msgid "Close"
 msgstr ""
 
-#: src/extensions/coblocks-settings/index.js:52
+#: src/extensions/coblocks-settings/index.js:46
 msgid "General"
 msgstr ""
 
@@ -9825,7 +9825,7 @@ msgstr ""
 msgid "Top Wave"
 msgstr ""
 
-#: src/extensions/image-crop/index.js:170
+#: src/extensions/image-crop/index.js:158
 msgid "Crop settings"
 msgstr ""
 
@@ -9874,7 +9874,7 @@ msgid "Overlap"
 msgstr ""
 
 #. translators: %1$s is placeholder for block name such as Group, or Embed
-#: src/extensions/padding-controls/index.js:77
+#: src/extensions/padding-controls/index.js:73
 msgid "%1$s settings"
 msgstr ""
 
