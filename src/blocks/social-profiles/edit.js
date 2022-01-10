@@ -5,20 +5,21 @@ import classnames from 'classnames';
 import includes from 'lodash/includes';
 
 /**
- * Internal dependencies
- */
-import Controls from './controls';
-import Inspector from './inspector';
-import applyWithColors from './colors';
-
-/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { compose, usePrevious } from '@wordpress/compose';
-import { useState, useEffect } from '@wordpress/element';
-import { Button, Dashicon, Popover, TextControl } from '@wordpress/components';
 import { keyboardReturn } from '@wordpress/icons';
+import { Button, Dashicon, Popover, TextControl } from '@wordpress/components';
+import { compose, usePrevious } from '@wordpress/compose';
+import { lazy, useEffect, useState } from '@wordpress/element';
+
+/**
+ * Internal dependencies
+ */
+import applyWithColors from './colors';
+import Controls from './controls';
+import InspectorLoader from '../../components/inspector-loader';
+const Inspector = lazy( () => import( './inspector' ) );
 
 /**
  * Block edit function
@@ -185,8 +186,14 @@ const SocialProfilesEdit = ( props ) => {
 
 	return (
 		<>
-			{ isSelected && <Controls { ...props } /> }
-			{ isSelected && <Inspector { ...props } /> }
+			{ isSelected && (
+				<>
+					<Controls { ...props } />
+					<InspectorLoader>
+						<Inspector { ...props } />
+					</InspectorLoader>
+				</>
+			) }
 
 			<div className={ classes } style={ { textAlign, backgroundColor: blockBackgroundColor.color || '' } }>
 				<ul>

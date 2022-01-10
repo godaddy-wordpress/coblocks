@@ -6,15 +6,13 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import OptionSelectorControl from '../../components/option-selector-control';
 import GutterControl from '../../components/gutter-control/gutter-control';
+import OptionSelectorControl from '../../components/option-selector-control';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Fragment } from '@wordpress/element';
-import { InspectorControls } from '@wordpress/block-editor';
 import {
 	ENTER,
 	SPACE,
@@ -139,7 +137,7 @@ const Inspector = ( props ) => {
 
 	const settings = (
 		<PanelBody title={ __( 'Posts settings', 'coblocks' ) }>
-			<Fragment>
+			<>
 				<ToggleControl
 					label={ __( 'Post date', 'coblocks' ) }
 					checked={ displayPostDate }
@@ -198,7 +196,7 @@ const Inspector = ( props ) => {
 					/>
 				}
 
-			</Fragment>
+			</>
 		</PanelBody>
 	);
 
@@ -275,7 +273,7 @@ const Inspector = ( props ) => {
 				onChange={ ( value ) => setAttributes( { postFeedType: value } ) }
 			/>
 			{ hasPosts || ( !! categories && categories?.length > 0 )
-				? <Fragment>
+				? <>
 					{ postFeedType === 'internal' &&
 						useUpdatedQueryControls ? updatedQueryControls() : deprecatedQueryControls
 					}
@@ -298,12 +296,12 @@ const Inspector = ( props ) => {
 						min={ 1 }
 						max={ 20 }
 					/>
-				</Fragment> : null }
+				</> : null }
 		</PanelBody>
 	);
 
 	return (
-		<InspectorControls>
+		<>
 			{ hasPosts
 				? <PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
 					<div className="block-editor-block-styles coblocks-editor-block-styles">
@@ -344,7 +342,7 @@ const Inspector = ( props ) => {
 				</PanelBody> : null }
 			{ hasPosts ? settings : null }
 			{ feedSettings }
-		</InspectorControls>
+		</>
 	);
 };
 

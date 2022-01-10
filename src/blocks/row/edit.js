@@ -2,34 +2,35 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import map from 'lodash/map';
 import get from 'lodash/get';
 import { RowIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
- * Internal dependencies
- */
-import { template, allowedBlocks, layoutOptions } from './utilities';
-import Inspector from './inspector';
-import Controls from './controls';
-import applyWithColors from './colors';
-import rowIcons from './icons';
-import { createBlock, registerBlockVariation } from '@wordpress/blocks';
-import { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../components/background';
-import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
+import map from 'lodash/map';
 
 /**
  * WordPress dependencies
  */
+import { isBlobURL } from '@wordpress/blob';
 import { __, sprintf } from '@wordpress/i18n';
-import { useState, useEffect } from '@wordpress/element';
+import { Button, ButtonGroup, Icon, Placeholder, Spinner, Tooltip } from '@wordpress/components';
 import { compose, usePrevious } from '@wordpress/compose';
-import { withSelect, useDispatch, withDispatch } from '@wordpress/data';
+import { lazy, useEffect, useState } from '@wordpress/element';
+import { useDispatch, withDispatch, withSelect } from '@wordpress/data';
 // Disable reason: We choose to use unsafe APIs in our codebase.
 // eslint-disable-next-line @wordpress/no-unsafe-wp-apis
-import { InnerBlocks, __experimentalBlockVariationPicker } from '@wordpress/block-editor';
-import { ButtonGroup, Button, Tooltip, Placeholder, Spinner, Icon } from '@wordpress/components';
-import { isBlobURL } from '@wordpress/blob';
+import { __experimentalBlockVariationPicker, InnerBlocks } from '@wordpress/block-editor';
+
+/**
+ * Internal dependencies
+ */
+const Inspector = lazy( () => import( './inspector' ) );
+import applyWithColors from './colors';
+import Controls from './controls';
+import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
+import InspectorLoader from '../../components/inspector-loader';
+import rowIcons from './icons';
+import { allowedBlocks, layoutOptions, template } from './utilities';
+import { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../components/background';
+import { createBlock, registerBlockVariation } from '@wordpress/blocks';
 
 /**
  * Block edit function
@@ -133,14 +134,12 @@ const Edit = ( props ) => {
 		return (
 			<>
 				{ isSelected && (
-					<Controls
-						{ ...props }
-					/>
-				) }
-				{ isSelected && (
-					<Inspector
-						{ ...props }
-					/>
+					<>
+						<Controls { ...props } />
+						<InspectorLoader>
+							<Inspector { ...props } />
+						</InspectorLoader>
+					</>
 				) }
 				<Placeholder
 					key="placeholder"
@@ -282,14 +281,12 @@ const Edit = ( props ) => {
 			<>
 				{ dropZone }
 				{ isSelected && (
-					<Controls
-						{ ...props }
-					/>
-				) }
-				{ isSelected && (
-					<Inspector
-						{ ...props }
-					/>
+					<>
+						<Controls { ...props } />
+						<InspectorLoader>
+							<Inspector { ...props } />
+						</InspectorLoader>
+					</>
 				) }
 				<div className={ classes }>
 					{ isBlobURL( backgroundImg ) && <Spinner /> }

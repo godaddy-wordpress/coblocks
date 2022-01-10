@@ -172,42 +172,32 @@ workflows:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - css
-            - unit_testing_php_56
-            - unit_testing_php_73
-            - unit_testing_php_74
-            - unit_testing_php_80
-            - js
+            - build
       - e2e_chrome_wp_next_major:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - css
-            - unit_testing_php_56
-            - unit_testing_php_73
-            - unit_testing_php_74
-            - unit_testing_php_80
-            - js
+            - build
 
       # PERF TESTING
-      # - master_perf_tests:
-      #    filters:
-      #      tags:
-      #        only: /^(?!canary).*$/
+      - perf_tests_master:
+         filters:
+           tags:
+             only: /^(?!canary).*$/
 
-      # - current_perf_tests:
-      #    filters:
-      #      tags:
-      #        only: /^(?!canary).*$/
+      - perf_tests_current:
+         filters:
+           tags:
+             only: /^(?!canary).*$/
 
-      # - aggregate_perf_test_results:
-      #    filters:
-      #      tags:
-      #        only: /^(?!canary).*$/
-      #    requires:
-      #      - current_perf_tests
-      #      - master_perf_tests
+      - aggregate_perf_test_results:
+         filters:
+           tags:
+             only: /^(?!canary).*$/
+         requires:
+           - perf_tests_current
+           - perf_tests_master
 
       - canary-release:
           filters:
@@ -340,30 +330,27 @@ commands:
     steps:
       - restore_cache:
           keys:
-            - composer-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}
+            - composer-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "composer.lock" }}
             - composer-deps-{{ .Environment.CACHE_VERSION }}
 
   restore_yarn_cache:
     steps:
       - restore_cache:
           keys:
-            - yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}
+            - yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
             - yarn-deps-{{ .Environment.CACHE_VERSION }}
 
   restore_update_cypress_cache:
     steps:
       - restore_cache:
           keys:
-            - cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}
+            - cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
             - cypress-deps-{{ .Environment.CACHE_VERSION }}
       - run:
           name: Install CyPress Binaries
           command: ./node_modules/.bin/cypress install
       - save_cache:
-          key: cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/Cypress
 
@@ -583,7 +570,7 @@ jobs:
             PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
             yarn install --frozen-lockfile
       - save_cache:
-          key: yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
@@ -595,7 +582,7 @@ jobs:
             composer validate --strict
             composer install
       - save_cache:
-          key: composer-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "composer.lock" }}
+          key: composer-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "composer.lock" }}
           paths:
             - ~/project/vendor
       - run:
@@ -775,25 +762,33 @@ jobs:
           browser: chrome
           wpversion: nightly
 
-  master_perf_tests:
+  perf_tests_master:
     executor: php_74_node_browser_mysql
     steps:
       - checkout
       - setup_perf_tests
       - run_perf_tests:
           branch: master
+      - run:
+          name: Stop Server on Failure
+          when: on_fail
+          command: sudo kill $(ps ax | pgrep -f "server") > /dev/null 2>&1 &
       - persist_to_workspace:
           root: ~/
           paths:
             - ./*-median-results.json
 
-  current_perf_tests:
+  perf_tests_current:
     executor: php_74_node_browser_mysql
     steps:
       - checkout
       - setup_perf_tests
       - run_perf_tests:
           branch: ${CIRCLE_BRANCH}
+      - run:
+          name: Stop Server on Failure
+          when: on_fail
+          command: sudo kill $(ps ax | pgrep -f "server") > /dev/null 2>&1 &
       - persist_to_workspace:
           root: ~/
           paths:
@@ -815,7 +810,7 @@ jobs:
       - run:
           name: Check for performance test result files.
           command: |
-            if [ ! -f "../master-median-results.json" ] || [ ! -f "../$CIRCLE_BRANCH-median-results.json" ]; then
+            if [ ! -f "./master-median-results.json" ] || [ ! -f "./$CIRCLE_BRANCH-median-results.json" ]; then
               echo "Performance tests results not found."
               circleci-agent step halt
             fi
@@ -831,6 +826,9 @@ jobs:
       - run:
           name: Aggregate performance test results
           command: .dev/performance/cli-results.js get-test-results "${CIRCLE_BRANCH}"
+      - run:
+          name: Comment Performance Test Results on PR
+          command: bash .dev/bin/comment-perf-results-on-pr.sh
 
   # --------------------------------------------------
   # Internationalization Processes
