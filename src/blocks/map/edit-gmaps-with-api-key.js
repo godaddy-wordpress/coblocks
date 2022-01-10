@@ -38,29 +38,31 @@ const GoogleMapWithApiKey = ( { apiKey, props } ) => {
 	const [ coords, setCoords ] = useState( null );
 
 	useEffect( () => {
-		if ( isLoaded ) {
-			const geocoder = new window.google.maps.Geocoder();
-			geocoder.geocode(
-				{ address },
-				( results, status ) => {
-					if ( status !== 'OK' ) {
-						props.setAttributes( {
-							hasError: __( 'Invalid API key, or too many requests', 'coblocks' ),
-							pinned: false,
-						} );
-						return;
-					}
-
-					setCoords( results[ 0 ].geometry.location.toJSON() );
-
-					props.setAttributes( {
-						hasError: '',
-						lat: results[ 0 ].geometry.location.toJSON().lat.toString(),
-						lng: results[ 0 ].geometry.location.toJSON().lng.toString(),
-					} );
-				}
-			);
+		if ( ! isLoaded ) {
+			return;
 		}
+
+		const geocoder = new window.google.maps.Geocoder();
+		geocoder.geocode(
+			{ address },
+			( results, status ) => {
+				if ( status !== 'OK' ) {
+					props.setAttributes( {
+						hasError: __( 'Invalid API key, or too many requests', 'coblocks' ),
+						pinned: false,
+					} );
+					return;
+				}
+
+				setCoords( results[ 0 ].geometry.location.toJSON() );
+
+				props.setAttributes( {
+					hasError: '',
+					lat: results[ 0 ].geometry.location.toJSON().lat.toString(),
+					lng: results[ 0 ].geometry.location.toJSON().lng.toString(),
+				} );
+			}
+		);
 	}, [ address, isLoaded ] );
 
 	const marker = {
