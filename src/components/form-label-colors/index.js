@@ -1,16 +1,10 @@
 /**
  * WordPress Dependencies
  */
-import { addFilter } from '@wordpress/hooks';
 import { hasBlockSupport } from '@wordpress/blocks';
 
-addFilter(
-	'blocks.registerBlockType',
-	'coblocks/LabelColors/attributes',
-	addAttributes
-);
-
-function addAttributes( settings, name ) {
+const applyAttributes = ( settings ) => {
+	const { name } = settings;
 	if ( ! name.startsWith( 'coblocks/' ) ) {
 		return settings;
 	}
@@ -21,13 +15,15 @@ function addAttributes( settings, name ) {
 
 	settings.attributes = {
 		...settings.attributes,
-		textColor: {
+		customTextColor: {
 			type: 'string',
 		},
-		customTextColor: {
+		textColor: {
 			type: 'string',
 		},
 	};
 
 	return settings;
-}
+};
+
+export { applyAttributes };
