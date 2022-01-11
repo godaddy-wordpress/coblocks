@@ -99,10 +99,15 @@ const EventsEdit = ( props ) => {
 		{
 			icon: edit,
 			onClick: () => {
-				setIsEditing( ! isEditing )
+				if ( !! externalCalendarUrl ) {
+					setStateExternalCalendarUrl( null );
+					setAttributes( { externalCalendarUrl: null } );
+				} else {
+					setIsEditing( ! isEditing )
+				}		
 			},
 			title: __( !! externalCalendarUrl ? 'Edit calendar URL' : 'Edit Events', 'coblocks' ),
-		},
+		}
 	];
 
 	const carouselButtonStyle = () => {
@@ -113,7 +118,6 @@ const EventsEdit = ( props ) => {
 
 		return carouselButtonStyles;
 	}
-
 
 	const formatSwiperStructure = ( swiperWrapper ) => {
 		// for each inner block we need to have it wrapped in a div
@@ -159,6 +163,35 @@ const EventsEdit = ( props ) => {
 			handleSelectBlock();
 		}
 	}, [ prevIsSelected, isSelected, selected, innerBlocks, isEditing ]);
+
+	useEffect(() => {
+		if ( !! externalCalendarUrl ) {
+			const serverSideRenderCarouselContainer = document.querySelectorAll(`#coblocks-events-swiper-container-${carouselUuid}`)[0];
+
+			// Before we query the DOM to invoke the swiper we need to await that the server side rendering has been completed
+			setTimeout(() => {
+				const swiperContainer = serverSideRenderCarouselContainer.querySelectorAll('.swiper-container')[0];
+
+				const swiperBackButton = document.getElementById( `coblocks-event-swiper-prev` );
+				const swiperNextButton = document.getElementById( `coblocks-event-swiper-next` );
+		
+				const newSwiper = new TinySwiper(swiperContainer, {
+					touchable: false,
+					plugins: [
+						TinySwiperPluginNavigation,
+					],
+					navigation: {
+						prevEl: swiperBackButton,
+						nextEl: swiperNextButton,
+					},
+				});
+		
+				setSwiper( newSwiper );	
+	
+				swiper.update();
+			}, 600);
+		}
+	}, [ externalCalendarUrl ]);
  
 	useEffect(() => {
 		const innerBlocksContainer = document.querySelectorAll(`#coblocks-events-swiper-container-${carouselUuid} > .coblocks-events-block-inner-blocks-container > .block-editor-inner-blocks > .block-editor-block-list__layout`)[0];
@@ -287,6 +320,7 @@ const EventsEdit = ( props ) => {
 				</div>
 		);
 	}
+	
 
 	if ( showExternalCalendarControls && ! externalCalendarUrl ) {
 		return (
@@ -315,13 +349,6 @@ const EventsEdit = ( props ) => {
 					</form>
 			</Placeholder>
 		);
-	} else if ( showExternalCalendarControls && !! externalCalendarUrl ) {
-		return (
-			<ServerSideRender
-					attributes={ attributes }
-					block="coblocks/events"
-			/>
-		)
 	}
 
 	return (
@@ -344,7 +371,14 @@ const EventsEdit = ( props ) => {
 			}
 
 			<div ref={ innerBlocksRef } onClick={ handleSelectBlock } id={`coblocks-events-swiper-container-${carouselUuid}`} className="coblocks-events-swiper-container" >
-				{renderInnerBlocks()}
+				{showExternalCalendarControls && !! externalCalendarUrl ? (
+					<ServerSideRender
+						attributes={ attributes }
+						block="coblocks/events"
+					/>
+				) : (
+					renderInnerBlocks()
+				)}
 				<button style={ { ...carouselButtonStyle() } } className={ `coblocks-events-nav-button__prev` } id={ `coblocks-event-swiper-prev` } />
 				<button style={ { ...carouselButtonStyle() } } className={ `coblocks-events-nav-button__next` } id={ `coblocks-event-swiper-next` } />
 			</div>
