@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-01-10T21:05:43+00:00\n"
+"POT-Creation-Date: 2022-01-11T15:49:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -859,7 +859,7 @@ msgstr ""
 #: src/blocks/dynamic-separator/inspector.js:36
 #: src/blocks/gallery-carousel/inspector.js:103
 #: src/blocks/hero/inspector.js:108
-#: src/blocks/map/inspector.js:130
+#: src/blocks/map/inspector.js:107
 msgid "Height in pixels"
 msgstr ""
 
@@ -1520,7 +1520,7 @@ msgid "Huge"
 msgstr ""
 
 #: src/blocks/food-and-drinks/inspector.js:65
-#: src/blocks/map/inspector.js:105
+#: src/blocks/map/inspector.js:82
 #: src/blocks/posts/inspector.js:306
 #: src/blocks/row/inspector.js:127
 #: src/blocks/services/inspector.js:31
@@ -1711,13 +1711,13 @@ msgid "Saving"
 msgstr ""
 
 #: src/blocks/form/edit.js:402
-#: src/blocks/map/inspector.js:226
+#: src/blocks/map/inspector.js:203
 #: src/blocks/opentable/edit.js:162
 msgid "Save"
 msgstr ""
 
 #: src/blocks/form/edit.js:412
-#: src/blocks/map/inspector.js:235
+#: src/blocks/map/inspector.js:212
 msgid "Remove"
 msgstr ""
 
@@ -4439,7 +4439,7 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgsfocusable.js:801
 #: src/blocks/icon/deprecated/svgsv1.js:785
 #: src/blocks/icon/svgs-generated.js:1979
-#: src/blocks/map/index.js:41
+#: src/blocks/map/index.js:48
 msgid "directions"
 msgstr ""
 
@@ -7527,8 +7527,8 @@ msgstr ""
 #. translators: icon label
 #. translators: block name
 #: src/blocks/icon/svgs-generated.js:1959
-#: src/blocks/map/edit.js:274
-#: src/blocks/map/index.js:28
+#: src/blocks/map/edit.js:165
+#: src/blocks/map/index.js:56
 msgid "Map"
 msgstr ""
 
@@ -7867,29 +7867,29 @@ msgid "Edit Location"
 msgstr ""
 
 #: src/blocks/map/deprecated.js:96
-#: src/blocks/map/edit.js:157
+#: src/blocks/map/edit-gmaps-iframe-render.js:22
 #: src/blocks/map/save.js:50
 msgid "Google Map"
 msgstr ""
 
-#: src/blocks/map/edit.js:230
+#: src/blocks/map/edit-gmaps-with-api-key.js:59
 msgid "Invalid API key, or too many requests"
 msgstr ""
 
-#: src/blocks/map/edit.js:275
+#: src/blocks/map/edit.js:161
 msgid "Enter a location or address to drop a pin on a Google map."
 msgstr ""
 
-#: src/blocks/map/edit.js:284
+#: src/blocks/map/edit.js:173
 msgid "Search for a place or address…"
 msgstr ""
 
-#: src/blocks/map/edit.js:300
+#: src/blocks/map/edit.js:185
 msgid "Search"
 msgstr ""
 
-#: src/blocks/map/edit.js:307
-#: src/blocks/map/edit.js:317
+#: src/blocks/map/edit.js:197
+#: src/blocks/map/edit.js:199
 msgid "Cancel"
 msgstr ""
 
@@ -7899,155 +7899,155 @@ msgid "Add an address or location to drop a pin on a Google map."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/map/index.js:35
+#: src/blocks/map/index.js:42
 msgid "address"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/map/index.js:37
+#: src/blocks/map/index.js:44
 msgid "maps"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/map/index.js:39
+#: src/blocks/map/index.js:46
 msgid "google"
 msgstr ""
 
-#: src/blocks/map/inspector.js:107
+#: src/blocks/map/inspector.js:84
 msgid "Select map style"
 msgstr ""
 
-#: src/blocks/map/inspector.js:128
+#: src/blocks/map/inspector.js:105
 msgid "Map settings"
 msgstr ""
 
-#: src/blocks/map/inspector.js:133
+#: src/blocks/map/inspector.js:109
 msgid "Height for the map in pixels"
 msgstr ""
 
-#: src/blocks/map/inspector.js:141
+#: src/blocks/map/inspector.js:118
 msgid "Zoom Level"
 msgstr ""
 
-#: src/blocks/map/inspector.js:151
+#: src/blocks/map/inspector.js:128
 msgid "Marker size"
 msgstr ""
 
-#: src/blocks/map/inspector.js:162
-#: src/blocks/map/inspector.js:173
-msgid "Map controls"
-msgstr ""
-
-#: src/blocks/map/inspector.js:165
+#: src/blocks/map/inspector.js:140
 msgid "Fine control options are enabled."
 msgstr ""
 
-#: src/blocks/map/inspector.js:165
+#: src/blocks/map/inspector.js:140
 msgid "Toggle to enable map control options."
 msgstr ""
 
-#: src/blocks/map/inspector.js:177
-msgid "Map type"
+#: src/blocks/map/inspector.js:141
+#: src/blocks/map/inspector.js:151
+msgid "Map controls"
 msgstr ""
 
-#: src/blocks/map/inspector.js:180
+#: src/blocks/map/inspector.js:155
 msgid "Switching between standard and satellite map views is enabled."
 msgstr ""
 
-#: src/blocks/map/inspector.js:180
+#: src/blocks/map/inspector.js:155
 msgid "Toggle to enable switching between standard and satellite maps."
 msgstr ""
 
-#: src/blocks/map/inspector.js:183
-msgid "Zoom controls"
+#: src/blocks/map/inspector.js:156
+msgid "Map type"
 msgstr ""
 
-#: src/blocks/map/inspector.js:186
+#: src/blocks/map/inspector.js:161
 msgid "Showing map zoom controls."
 msgstr ""
 
-#: src/blocks/map/inspector.js:186
+#: src/blocks/map/inspector.js:161
 msgid "Toggle to enable zooming in and out on the map with zoom controls."
 msgstr ""
 
-#: src/blocks/map/inspector.js:189
-msgid "Street view"
+#: src/blocks/map/inspector.js:162
+msgid "Zoom controls"
 msgstr ""
 
-#: src/blocks/map/inspector.js:192
+#: src/blocks/map/inspector.js:167
 msgid "Showing the street view map control."
 msgstr ""
 
-#: src/blocks/map/inspector.js:192
+#: src/blocks/map/inspector.js:167
 msgid "Toggle to show the street view control at the bottom right."
 msgstr ""
 
-#: src/blocks/map/inspector.js:195
-msgid "Fullscreen toggle"
+#: src/blocks/map/inspector.js:168
+msgid "Street view"
 msgstr ""
 
-#: src/blocks/map/inspector.js:198
+#: src/blocks/map/inspector.js:173
 msgid "Showing the fullscreen map control."
 msgstr ""
 
-#: src/blocks/map/inspector.js:198
+#: src/blocks/map/inspector.js:173
 msgid "Toggle to show the fullscreen map control."
 msgstr ""
 
-#: src/blocks/map/inspector.js:203
+#: src/blocks/map/inspector.js:174
+msgid "Fullscreen toggle"
+msgstr ""
+
+#: src/blocks/map/inspector.js:182
 msgid "Google Maps API key"
 msgstr ""
 
-#: src/blocks/map/inspector.js:207
+#: src/blocks/map/inspector.js:184
 msgid "Add a Google Maps API key. Updating this API key will set all your maps to use the new key."
 msgstr ""
 
-#: src/blocks/map/inspector.js:210
+#: src/blocks/map/inspector.js:187
 msgid "Get a key"
 msgstr ""
 
-#: src/blocks/map/inspector.js:211
+#: src/blocks/map/inspector.js:188
 msgid "Need help?"
 msgstr ""
 
-#: src/blocks/map/inspector.js:217
+#: src/blocks/map/inspector.js:195
 msgid "Add Google API key…"
 msgstr ""
 
-#: src/blocks/map/inspector.js:226
+#: src/blocks/map/inspector.js:203
 msgid "Saved"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/map/styles.js:13
+#: src/blocks/map/styles.js:12
 #: src/blocks/opentable/index.js:45
 msgid "Standard"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/map/styles.js:18
+#: src/blocks/map/styles.js:17
 msgid "Silver"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/map/styles.js:23
+#: src/blocks/map/styles.js:22
 msgid "Retro"
 msgstr ""
 
 #. translators: block style
 #. translators: visual style option
-#: src/blocks/map/styles.js:28
+#: src/blocks/map/styles.js:27
 #: src/components/block-gallery/options/caption-options.js:12
 msgid "Dark"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/map/styles.js:33
+#: src/blocks/map/styles.js:32
 msgid "Night"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/map/styles.js:38
+#: src/blocks/map/styles.js:37
 msgid "Aubergine"
 msgstr ""
 
