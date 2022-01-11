@@ -86,6 +86,7 @@
 		"@es-joy/jsdoccomment": "0.13.0",
 		"@godaddy-wordpress/eslint-config": "^0.5.0",
 		"@godaddy-wordpress/stylelint-config": "^0.4.0",
+		"@react-google-maps/api": "^2.7.0",
 		"@jest/core": "^27.4.5",
 		"@testing-library/jest-dom": "^5.16.1",
 		"@wordpress/api-fetch": "^5.2.4",
@@ -159,10 +160,8 @@
 		"prop-types": "^15.7.2",
 		"puppeteer": ">=1.19.0",
 		"react-flickity-component": "^3.4.0",
-		"react-google-maps": "^9.4.5",
 		"react-masonry-component": "^6.2.1",
 		"react-slick": "^0.28.1",
-		"recompose": "^0.30.0",
 		"rtlcss-webpack-plugin": "^4.0.3",
 		"simple-git": "^2.48.0",
 		"slick-carousel": "^1.8.1",
@@ -171,7 +170,6 @@
 	},
 	"resolutions": {
 		"ansi-regex": "^5.0.1",
-		"node-fetch": "^2.6.6",
 		"nth-check": "^2.0.1",
 		"react-dom": "17.0.2",
 		"react": "17.0.2"
