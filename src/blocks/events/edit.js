@@ -288,6 +288,42 @@ const EventsEdit = ( props ) => {
 		);
 	}
 
+	if ( showExternalCalendarControls && ! externalCalendarUrl ) {
+		return (
+			<Placeholder
+					icon="rss"
+					instructions={ __(
+						'Enter a URL that loads an iCal formatted calendar.',
+						'coblocks'
+					) }
+					label={ __( 'Calendar URL', 'coblocks' ) }
+				>
+					<form onSubmit={ saveExternalCalendarUrl }>
+						<TextControl
+							className={ 'components-placeholder__input' }
+							onChange={ ( newExternalCalendarUrl ) => setStateExternalCalendarUrl( newExternalCalendarUrl ) }
+							placeholder={ __( 'Enter URL here…', 'coblocks' ) }
+							value={ stateExternalCalendarUrl }
+						/>
+						<Button
+							disabled={ ! stateExternalCalendarUrl }
+							isPrimary
+							type="submit"
+						>
+							{ __( 'Use URL', 'coblocks' ) }
+						</Button>
+					</form>
+			</Placeholder>
+		);
+	} else if ( showExternalCalendarControls && !! externalCalendarUrl ) {
+		return (
+			<ServerSideRender
+					attributes={ attributes }
+					block="coblocks/events"
+			/>
+		)
+	}
+
 	return (
 		<>
 			<InspectorControls
