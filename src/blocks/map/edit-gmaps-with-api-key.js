@@ -7,7 +7,9 @@ import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { store as blockEditorStore } from '@wordpress/block-editor';
 import { Spinner } from '@wordpress/components';
+import { useDispatch } from '@wordpress/data';
 import { useEffect, useState } from '@wordpress/element';
 
 /**
@@ -37,6 +39,10 @@ const GoogleMapWithApiKey = ( { apiKey, props } ) => {
 
 	const [ coords, setCoords ] = useState( null );
 
+	const { __unstableMarkNextChangeAsNotPersistent } = useDispatch(
+		blockEditorStore
+	);
+
 	useEffect( () => {
 		if ( ! isLoaded ) {
 			return;
@@ -47,6 +53,8 @@ const GoogleMapWithApiKey = ( { apiKey, props } ) => {
 			{ address },
 			( results, status ) => {
 				if ( status !== 'OK' ) {
+					// This side-effect should not create an undo level.
+					__unstableMarkNextChangeAsNotPersistent();
 					props.setAttributes( {
 						hasError: __( 'Invalid API key, or too many requests', 'coblocks' ),
 						pinned: false,
@@ -56,6 +64,8 @@ const GoogleMapWithApiKey = ( { apiKey, props } ) => {
 
 				setCoords( results[ 0 ].geometry.location.toJSON() );
 
+				// This side-effect should not create an undo level.
+				__unstableMarkNextChangeAsNotPersistent();
 				props.setAttributes( {
 					hasError: '',
 					lat: results[ 0 ].geometry.location.toJSON().lat.toString(),

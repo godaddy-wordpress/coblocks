@@ -17,7 +17,9 @@ import Inspector from './inspector';
  */
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
+import { store as blockEditorStore } from '@wordpress/block-editor';
 import { compose } from '@wordpress/compose';
+import { useDispatch } from '@wordpress/data';
 import {
 	Button,
 	Icon,
@@ -46,6 +48,10 @@ const Edit = ( props ) => {
 	const [ apiKeyState, setApiKey ] = useState( '' );
 	const [ addressState, setAddress ] = useState( address );
 
+	const { __unstableMarkNextChangeAsNotPersistent } = useDispatch(
+		blockEditorStore
+	);
+
 	useEffect( () => {
 		apiFetch( { path: '/wp/v2/settings' } ).then( ( res ) => {
 			setApiKey( res.coblocks_google_maps_api_key );
@@ -54,10 +60,14 @@ const Edit = ( props ) => {
 
 	useEffect( () => {
 		if ( !! apiKeyState && ! hasApiKey ) {
+			// This side-effect should not create an undo level.
+			__unstableMarkNextChangeAsNotPersistent();
 			setAttributes( { hasApiKey: true } );
 		}
 
 		if ( ! isSelected && ! pinned && addressState && Object.keys( addressState ).length ) {
+			// This side-effect should not create an undo level.
+			__unstableMarkNextChangeAsNotPersistent();
 			setAttributes( {
 				address: addressState,
 				pinned: true,
