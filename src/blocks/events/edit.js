@@ -5,6 +5,7 @@
  */
 import CustomAppender from './appender';
 import InspectorControls from './inspector';
+import { withEventsState, EventsContext } from './context';
 
 /**
  * External dependencies.
@@ -24,8 +25,8 @@ import ServerSideRender from '@wordpress/server-side-render';
 import { BlockControls, InnerBlocks } from '@wordpress/block-editor';
 import { Button, Placeholder, TextControl, ToolbarGroup } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
-import { useEffect, useRef, useState, useMemo } from '@wordpress/element';
-import { usePrevious } from '@wordpress/compose';
+import { useEffect, useRef, useState, useMemo, useContext, useCallback } from '@wordpress/element';
+import { compose, usePrevious } from '@wordpress/compose';
 
 const ALLOWED_BLOCKS = [ 'coblocks/event-item' ];
 
@@ -50,6 +51,7 @@ const EventsEdit = ( props ) => {
 	} = props;
 
 	const { selectBlock, insertBlock } = useDispatch( 'core/block-editor' );
+	const { isEditing, setIsEditing } = useContext( EventsContext );
 
 	const { innerBlocks } = useSelect( ( select ) => ( {
 		innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
@@ -59,18 +61,18 @@ const EventsEdit = ( props ) => {
 	const prevInnerBlocksLength = usePrevious( innerBlocks.length );
 
 	const externalCalendarUrl = attributes.externalCalendarUrl;
-	const [ isEditing, setIsEditing ] = useState( false );
 	const [ showExternalCalendarControls, setShowExternalCalendarControls ] = useState( !! externalCalendarUrl || false );
 	const [ stateExternalCalendarUrl, setStateExternalCalendarUrl ] = useState( externalCalendarUrl );
 
 	const [carouselCssText, setCarouselCssText] = useState( null );
 	const [swiper, setSwiper] = useState( null );
-	const eventsContainerRef = useRef( null );
+	const innerBlocksRef = useRef( null );
+	const toolbarRef = useRef( null );
 
 	const carouselUuid = useMemo( () => generateUuid(), [] );
 
 	const handleSelectBlock = () => {
-		if ( !isSelected ) {
+		if ( !isSelected && !isEditing ) {
 			selectBlock( clientId );
 		}
 	};
@@ -126,35 +128,54 @@ const EventsEdit = ( props ) => {
 			swiperSlideContainer.appendChild(allEventItems[i]);
 		}
 	}
+
+	const handleInnerBlockOutsideClick = useCallback((event) => {
+		const isOutsideClick = ! innerBlocksRef?.current?.contains( event.target );
+		const toolbarContainer = document.querySelectorAll('.block-editor-block-contextual-toolbar')[0];
+
+		const isToolbarClick = toolbarContainer?.contains( event.target );
+
+		if ( isEditing && isOutsideClick && !isToolbarClick ) {
+			setIsEditing( false );
+		}
+	}, [ isEditing ]);
+
+	// register the inner blocks outside click handler 
+	useEffect(() => {
+		document.body.addEventListener('click', handleInnerBlockOutsideClick);
+
+		return () => {
+			document.body.removeEventListener('click', handleInnerBlockOutsideClick);
+		}
+	}, [ isEditing ]);
 		
 	useEffect(() => {
 		const innerBlockSelected = innerBlocks.some(({ clientId }) => clientId === selected?.clientId);
 
-		if ( innerBlockSelected === true && isEditing === true ) {
-			handleSelectBlock();
-		}
-
 		if ( 
-			prevIsSelected !== isSelected && 
-			isSelected === false && 
-			! innerBlockSelected
+			innerBlockSelected === true && 
+			isEditing === true 
 		) {
-			setIsEditing( false );
+			handleSelectBlock();
 		}
 	}, [ prevIsSelected, isSelected, selected, innerBlocks, isEditing ]);
  
 	useEffect(() => {
-		const innerBlocksContainer = document.querySelectorAll(`#coblocks-events-swiper-container-${carouselUuid} > .block-editor-inner-blocks > .block-editor-block-list__layout`)[0];
+		const innerBlocksContainer = document.querySelectorAll(`#coblocks-events-swiper-container-${carouselUuid} > .coblocks-events-block-inner-blocks-container > .block-editor-inner-blocks > .block-editor-block-list__layout`)[0];
 
 		// coming from edit mode to carousel
 		if ( isEditing === false && swiper !== null && carouselCssText !== null ) {
-			const swiperEditModeContainer = innerBlocksContainer.querySelectorAll('.swiper-wrapper-edit')[0];
+			const swiperEditModeWrapper = innerBlocksContainer.querySelectorAll('.swiper-wrapper-edit')[0];
+			const swiperEditModeContainer = innerBlocksContainer.querySelectorAll('.swiper-container-edit')[0];
 
-			swiperEditModeContainer?.classList.remove('swiper-wrapper-edit');
-			swiperEditModeContainer?.classList.add('swiper-wrapper');
+			swiperEditModeWrapper?.classList.remove('swiper-wrapper-edit');
+			swiperEditModeWrapper?.classList.add('swiper-wrapper');
 
-			if ( swiperEditModeContainer?.style?.cssText ) {
-				swiperEditModeContainer.style.cssText = carouselCssText;
+			swiperEditModeContainer?.classList.remove('swiper-container-edit');
+			swiperEditModeContainer?.classList.add('swiper-container');
+
+			if ( swiperEditModeWrapper?.style?.cssText ) {
+				swiperEditModeWrapper.style.cssText = carouselCssText;
 			}
 
 			setCarouselCssText(null);
@@ -176,16 +197,36 @@ const EventsEdit = ( props ) => {
 						newSwiperSlideWrapper.appendChild( childElement );
 
 						currentSwiperWrapper.appendChild( newSwiperSlideWrapper );
-
-						swiper.update();
 					}
 			}
+
+			swiper.update();
+
+			const swiperBackButton = document.getElementById( `coblocks-event-swiper-prev` );
+			const swiperNextButton = document.getElementById( `coblocks-event-swiper-next` );
+	
+			const newSwiper = new TinySwiper(swiperEditModeContainer, {
+				touchable: false,
+				plugins: [
+					TinySwiperPluginNavigation,
+				],
+				navigation: {
+					prevEl: swiperBackButton,
+					nextEl: swiperNextButton,
+				},
+			});
+	
+			setSwiper( newSwiper );	
 		}
 
 		// coming from carousel to edit mode
 		// need to also format original DOM structure
 		if ( isEditing === true && swiper !== null && carouselCssText === null ) {			
 			const swiperWrapperAfter = innerBlocksContainer.querySelectorAll('.swiper-wrapper')[0];
+			const swiperContainerAfter = innerBlocksContainer.querySelectorAll('.swiper-container')[0];
+
+			swiperContainerAfter?.classList.remove('swiper-container');
+			swiperContainerAfter?.classList.add('swiper-container-edit');
 
 			swiperWrapperAfter?.classList.remove('swiper-wrapper');
 			swiperWrapperAfter?.classList.add('swiper-wrapper-edit');
@@ -195,6 +236,8 @@ const EventsEdit = ( props ) => {
 			if ( swiperWrapperAfter?.style?.cssText ) {
 					swiperWrapperAfter.style.cssText = '';
 			}
+
+			swiper.destroy();
 		}
 
 		// first mount and coming from editing to carousel
@@ -233,12 +276,15 @@ const EventsEdit = ( props ) => {
 
 	const renderInnerBlocks = () => {
 		return (
-			<InnerBlocks
-					allowedBlocks={ ALLOWED_BLOCKS }
-					template={ TEMPLATE }
-					templateInsertUpdatesSelection={ false }
-					renderAppender={ () => isEditing && <CustomAppender onClick={ insertNewItem } /> }
-			/>
+				<div className="coblocks-events-block-inner-blocks-container">
+					<InnerBlocks
+						allowedBlocks={ ALLOWED_BLOCKS }
+						template={ TEMPLATE }
+						templateInsertUpdatesSelection={ false }
+						renderAppender={ () => isEditing && <CustomAppender onClick={ insertNewItem } /> }
+						isEditing={ isEditing }
+					/>
+				</div>
 		);
 	}
 
@@ -254,12 +300,14 @@ const EventsEdit = ( props ) => {
 			/>
 
 			{ isSelected &&
-				<BlockControls>
-					<ToolbarGroup controls={ toolbarControls } />
-				</BlockControls>
+				<span ref={ toolbarRef }>
+					<BlockControls>
+						<ToolbarGroup controls={ toolbarControls } />
+					</BlockControls>
+				</span>
 			}
 
-			<div ref={ eventsContainerRef } onClick={ handleSelectBlock } id={`coblocks-events-swiper-container-${carouselUuid}`} className="coblocks-events-swiper-container" >
+			<div ref={ innerBlocksRef } onClick={ handleSelectBlock } id={`coblocks-events-swiper-container-${carouselUuid}`} className="coblocks-events-swiper-container" >
 				{renderInnerBlocks()}
 				<button style={ { ...carouselButtonStyle() } } className={ `coblocks-events-nav-button__prev` } id={ `coblocks-event-swiper-prev` } />
 				<button style={ { ...carouselButtonStyle() } } className={ `coblocks-events-nav-button__next` } id={ `coblocks-event-swiper-next` } />
@@ -268,4 +316,6 @@ const EventsEdit = ( props ) => {
 	);
 };
 
-export default EventsEdit;
+export default compose( [
+	withEventsState
+] )( EventsEdit );

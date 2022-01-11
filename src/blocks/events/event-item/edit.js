@@ -8,6 +8,7 @@ import classnames from 'classnames';
  */
 import applyWithColors from './colors';
 import InspectorControls from './inspector';
+import { withEventsState, EventsContext } from '../context';
 
 /**
  * WordPress dependencies.
@@ -15,7 +16,8 @@ import InspectorControls from './inspector';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 import { compose } from '@wordpress/compose';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useContext } from '@wordpress/element';
+import { useDispatch } from '@wordpress/data';
 
 const EventItemEdit = ( props ) => {
 	const {
@@ -24,7 +26,13 @@ const EventItemEdit = ( props ) => {
 		setAttributes,
 		setTextColor,
 		textColor,
+		clientId,
+		isSelected
 	} = props;
+
+	const { isEditing } = useContext( EventsContext );
+
+	const { selectBlock } = useDispatch( 'core/block-editor' );
 
 	const {
 		description,
@@ -38,6 +46,7 @@ const EventItemEdit = ( props ) => {
 
 	const textStyles = {
 		color: textColor.color,
+		pointerEvents: isEditing === false && 'none' 
 	};
 
 	useEffect( () => {
@@ -46,6 +55,12 @@ const EventItemEdit = ( props ) => {
 			setTextColor( attributes.textColor );
 		}
 	}, [ attributes ] );
+
+	const handleSelectBlock = () => {
+		if ( !isSelected && isEditing === true ) {
+			selectBlock( clientId );
+		}
+	}
 
 	return (
 		<>
@@ -59,6 +74,7 @@ const EventItemEdit = ( props ) => {
 					}
 				) }
 				style={ textStyles }
+				onClick={ handleSelectBlock }
 			>
 				<div className="wp-block-coblocks-events__date">
 					<RichText
