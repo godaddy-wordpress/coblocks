@@ -39,7 +39,7 @@ export default function save( { className, attributes } ) {
 
 	const colorClass = getColorClassName( 'color', textColor );
 
-	const classes = classnames( className, {
+	const classes = classnames( className, 'swiper-slide', {
 		'has-text-color': textColor || customTextColor,
 		[ colorClass ]: colorClass,
 	} );

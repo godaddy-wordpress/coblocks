@@ -11,6 +11,7 @@ import example from './example';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
+import deprecated from './deprecated';
 
 /**
  * WordPress dependencies.
@@ -41,6 +42,7 @@ const settings = {
 	transforms,
 	edit,
 	save,
+	deprecated
 };
 
 export { metadata, name, category, settings };
