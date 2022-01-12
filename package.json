@@ -15,24 +15,24 @@
 		"extends @wordpress/browserslist-config"
 	],
 	"scripts": {
-		"build": "wp-scripts build --config .dev/config/webpack.config.js",
-		"clean": "wp-scripts env stop && rm -rf build dist/* node_modules vendor wordpress",
+		"build": "wp-scripts build",
+		"clean": "wp-env stop && rm -rf build dist/* node_modules vendor wordpress",
 		"deploy-i18n": "./node_modules/.bin/cypress run -s './.dev/tests/cypress/integration/deploy-translations.js'",
-		"env": "wp-scripts env",
 		"json2po": "cd languages && find . -name '*.json' ! -name 'coblocks*.json' -execdir /bin/bash -c 'FROM=\"$0\" && TO=\"coblocks-`basename $0 .json`.po\" && echo \"$FROM > $TO\" && ../vendor/bin/json2po coblocks.json $FROM $TO && msgmerge --previous $TO coblocks.pot > $TO-msgmerge && mv $TO-msgmerge $TO && if [[ \"$OSTYPE\" == \"darwin\"* ]]; then sed -i \"\" -e \"/^#, fuzzy$/d\" $TO; else sed -i -e \"/^#, fuzzy$/d\" $TO; fi;' '{}' \\;",
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
-		"lint:php": "wp-scripts env lint-php",
+		"lint:php": "wp-env run phpunit 'composer run lint -d /var/www/html/wp-content/plugins/coblocks/'; #we use phpunit container because composer container only use php 8;",
 		"makepot": "./vendor/bin/wp i18n make-pot . --skip-audit --exclude=\".dev,.github,.wordpress-org,build,docs,dist,node_modules,vendor,wordpress\" --headers='{\"Last-Translator\":\"plugins@godaddy.com\",\"Report-Msgid-Bugs-To\":\"https://github.com/godaddy-wordpress/coblocks/issues\"}' --file-comment=\"Copyright (c) $(date +'%Y') GoDaddy Operating Company, LLC. All Rights Reserved.\" languages/coblocks.pot && yarn run pot2json",
+		"php:composer:install": "wp-env run phpunit 'composer run install -d /var/www/html/wp-content/plugins/coblocks/'",
 		"po2jed": "cd languages && find . -name '*.po' -execdir /bin/bash -c 'FROM=\"$0\" && TO=\"`basename $0 .po`-coblocks-editor.json\" && echo \"$FROM > $TO\" && po2json $FROM $TO -f jed' '{}' \\;",
 		"po2mo": "cd languages && find . -name '*.po' -execdir /bin/bash -c 'FROM=\"$0\" && TO=\"`basename $0 .po`.mo\" && echo \"$FROM > $TO\" && msgfmt $FROM -o $TO' '{}' \\;",
 		"postinstall": "yarn update:icon",
 		"postversion": "git push && git push --tags",
 		"pot2json": "./vendor/bin/pot2json languages/coblocks.pot languages/coblocks.json",
 		"prepare": "husky install .dev/husky",
-		"setup": "composer install && yarn install && yarn run build && wp-scripts env install",
-		"start:debug": "DEBUG_MODE=on wp-scripts start --config .dev/config/webpack.config.js --progress",
-		"start": "wp-scripts start --config .dev/config/webpack.config.js --progress",
+		"setup": "yarn install && yarn run build && wp-env start && yarn php:composer:install",
+		"start:debug": "DEBUG_MODE=on wp-scripts start --progress",
+		"start": "wp-scripts start --progress",
 		"test:e2e": "cypress run --config video=false --browser chrome",
 		"test:e2e:debug": "npx cypress open",
 		"test:e2e:headed": "yarn test:e2e --headed",
@@ -43,13 +43,7 @@
 		"test:performance": "wp-scripts test-e2e --config .dev/performance/jest.performance.config.js",
 		"test:php": "wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/coblocks/phpunit.xml.dist --verbose'",
 		"update:icon": "node src/blocks/icon/svgs-generator.js && cp -R node_modules/@godaddy-wordpress/coblocks-icons/src/svg src/blocks/icon/svgs",
-		"version": "grunt version && grunt update-pot && git add -A .",
-		"wp-env": "wp-env"
-	},
-	"wp-env": {
-		"plugin-dir": "coblocks",
-		"plugin-name": "CoBlocks",
-		"welcome-build-command": "yarn start"
+		"version": "grunt version && grunt update-pot && git add -A ."
 	},
 	"locales": {
 		"ar": "العربية",
@@ -142,7 +136,6 @@
 		"grunt-contrib-copy": "^1.0.0",
 		"grunt-shell": "^3.0.1",
 		"grunt-text-replace": "^0.4.0",
-		"grunt-wp-readme-to-markdown": "^2.0.1",
 		"html-react-parser": "^1.4.3",
 		"husky": "^7.0.4",
 		"inquirer": "^8.2.0",
@@ -183,7 +176,7 @@
 			"yarn lint:js"
 		],
 		"*.php": [
-			"composer run lint"
+			"yarn lint:php"
 		]
 	}
 }
