@@ -442,6 +442,17 @@ class CoBlocks_Block_Assets {
 			);
 		}
 
+		// Counter block.
+		if ( $this->is_page_gutenberg() || has_block( 'coblocks/counter' ) || has_block( 'core/block' ) ) {
+			wp_enqueue_script(
+				'coblocks-counter-script',
+				$dir . '/coblocks-counter.js',
+				array(),
+				COBLOCKS_VERSION,
+				true
+			);
+		}
+
 		// Lightbox.
 		if (
 			has_block( 'coblocks/gallery-masonry' ) ||
