@@ -7,17 +7,17 @@ import classnames from 'classnames';
  * Internal dependencies.
  */
 import applyWithColors from './colors';
+import { EventsContext } from '../context';
 import InspectorControls from './inspector';
-import { withEventsState, EventsContext } from '../context';
 
 /**
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { RichText } from '@wordpress/block-editor';
 import { compose } from '@wordpress/compose';
-import { useEffect, useContext } from '@wordpress/element';
+import { RichText } from '@wordpress/block-editor';
 import { useDispatch } from '@wordpress/data';
+import { useContext, useEffect } from '@wordpress/element';
 
 const EventItemEdit = ( props ) => {
 	const {
@@ -27,7 +27,7 @@ const EventItemEdit = ( props ) => {
 		setTextColor,
 		textColor,
 		clientId,
-		isSelected
+		isSelected,
 	} = props;
 
 	const { isEditing } = useContext( EventsContext );
@@ -46,7 +46,7 @@ const EventItemEdit = ( props ) => {
 
 	const textStyles = {
 		color: textColor.color,
-		pointerEvents: isEditing === false && 'none' 
+		pointerEvents: isEditing === false && 'none',
 	};
 
 	useEffect( () => {
@@ -57,10 +57,10 @@ const EventItemEdit = ( props ) => {
 	}, [ attributes ] );
 
 	const handleSelectBlock = () => {
-		if ( !isSelected && isEditing === true ) {
+		if ( ! isSelected && isEditing === true ) {
 			selectBlock( clientId );
 		}
-	}
+	};
 
 	return (
 		<>
@@ -73,64 +73,67 @@ const EventItemEdit = ( props ) => {
 						[ textColor.class ]: textColor.class,
 					}
 				) }
-				style={ textStyles }
 				onClick={ handleSelectBlock }
+				onKeyDown={ handleSelectBlock }
+				role="button"
+				style={ textStyles }
+				tabIndex="0"
 			>
 				<div className="wp-block-coblocks-events__date">
 					<RichText
-						value={ eventDay }
-						tagName="span"
 						className="wp-block-coblocks-events__day"
-						placeholder={ __( 'Day…', 'coblocks' ) }
 						onChange={ ( newEventDay ) => setAttributes( { eventDay: newEventDay } ) }
+						placeholder={ __( 'Day…', 'coblocks' ) }
+						tagName="span"
+						value={ eventDay }
 					/>
 					<div>
 						<RichText
-							value={ eventMonth }
-							tagName="span"
 							className="wp-block-coblocks-events__month"
-							placeholder={ __( 'Month…', 'coblocks' ) }
 							onChange={ ( newEventMonth ) => setAttributes( { eventMonth: newEventMonth } ) }
+							placeholder={ __( 'Month…', 'coblocks' ) }
+							tagName="span"
+							value={ eventMonth }
 						/>
 						<RichText
-							value={ eventYear }
-							tagName="span"
 							className="wp-block-coblocks-events__year"
-							placeholder={ __( 'Year…', 'coblocks' ) }
 							onChange={ ( newEventYear ) => setAttributes( { eventYear: newEventYear } ) }
+							placeholder={ __( 'Year…', 'coblocks' ) }
+							tagName="span"
+							value={ eventYear }
 						/>
 					</div>
 				</div>
 				<div className="wp-block-coblocks-events__content">
 					<RichText
-						value={ title }
-						tagName="span"
 						className="wp-block-coblocks-events__title"
-						placeholder={ __( 'Write event title…', 'coblocks' ) }
 						onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
+						placeholder={ __( 'Write event title…', 'coblocks' ) }
+						tagName="span"
+						value={ title }
 					/>
 					<RichText
-						value={ description }
-						tagName="span"
 						className="wp-block-coblocks-events__description"
-						placeholder={ __( 'Write event description…', 'coblocks' ) }
 						onChange={ ( newDescription ) => setAttributes( { description: newDescription } ) }
+						placeholder={ __( 'Write event description…', 'coblocks' ) }
+						tagName="span"
+						value={ description }
 					/>
 				</div>
 				<div className="wp-block-coblocks-events__details">
 					<RichText
-						value={ eventTime }
-						tagName="span"
 						className="wp-block-coblocks-events__time"
-						placeholder={ __( 'Time…', 'coblocks' ) }
 						onChange={ ( newEventTime ) => setAttributes( { eventTime: newEventTime } ) }
+						placeholder={ __( 'Time…', 'coblocks' ) }
+						tagName="span"
+						value={ eventTime }
 					/>
 					<RichText
-						value={ eventLocation }
-						tagName="span"
 						className="wp-block-coblocks-events__location"
-						placeholder={ __( 'Location…', 'coblocks' ) }
 						onChange={ ( newEventLocation ) => setAttributes( { eventLocation: newEventLocation } ) }
+						placeholder={ __( 'Location…', 'coblocks' ) }
+						tagName="span"
+						value={ eventLocation }
 					/>
 				</div>
 			</div>

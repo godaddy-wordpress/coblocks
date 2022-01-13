@@ -4,7 +4,7 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 ( function() {
 	'use strict';
 
-	window.addEventListener( 'load', ( event ) => {
+	window.addEventListener( 'load', () => {
 		setTimeout( () => {
 			const eventsCarouselContainer = document.querySelector( '.wp-block-coblocks-front-events-swiper-container' );
 

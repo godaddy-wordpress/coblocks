@@ -1,9 +1,9 @@
 /**
  * Internal dependencies
  */
- import metadata from './block.json';
+import metadata from './block.json';
 
- /**
+/**
  * WordPress dependencies.
  */
 import { InnerBlocks } from '@wordpress/block-editor';
@@ -21,8 +21,8 @@ const deprecated = [
 					<InnerBlocks.Content />
 				</div>
 			);
-		}
-	}
+		},
+	},
 ];
 
 export default deprecated;

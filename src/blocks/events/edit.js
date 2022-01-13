@@ -1,5 +1,3 @@
-/*global jQuery*/
-
 /**
  * Internal dependencies.
  */
@@ -11,7 +9,6 @@ import { EventsContext, withEventsState } from './context';
  * External dependencies.
  */
 import { v4 as generateUuid } from 'uuid';
-import classnames from 'classnames';
 import TinySwiper from 'tiny-swiper';
 import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
 
@@ -20,13 +17,13 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
  */
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
-import { edit, handle } from '@wordpress/icons';
+import { edit } from '@wordpress/icons';
 import ServerSideRender from '@wordpress/server-side-render';
 import { BlockControls, InnerBlocks } from '@wordpress/block-editor';
 import { Button, Placeholder, TextControl, ToolbarGroup } from '@wordpress/components';
-import { useDispatch, useSelect } from '@wordpress/data';
-import { useCallback, useContext, useEffect, useMemo, useRef, useState } from '@wordpress/element';
 import { compose, usePrevious } from '@wordpress/compose';
+import { useCallback, useContext, useEffect, useMemo, useRef, useState } from '@wordpress/element';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 const ALLOWED_BLOCKS = [ 'coblocks/event-item' ];
 
@@ -68,7 +65,6 @@ const EventsEdit = ( props ) => {
 	const [ swiper, setSwiper ] = useState( null );
 	const innerBlocksRef = useRef( null );
 	const toolbarRef = useRef( null );
-	const appenderRef = useRef( null );
 
 	const carouselUuid = useMemo( () => generateUuid(), [] );
 
@@ -157,7 +153,7 @@ const EventsEdit = ( props ) => {
 	}, [ isEditing ] );
 
 	useEffect( () => {
-		const innerBlockSelected = innerBlocks.some( ( { clientId } ) => clientId === selected?.clientId );
+		const innerBlockSelected = innerBlocks.some( ( { clientId: innerBlockClientId } ) => innerBlockClientId === selected?.clientId );
 
 		if (
 			innerBlockSelected === true &&
@@ -397,7 +393,15 @@ const EventsEdit = ( props ) => {
 				</span>
 			}
 
-			<div className="coblocks-events-swiper-container" id={ `coblocks-events-swiper-container-${ carouselUuid }` } onClick={ handleSelectBlock } ref={ innerBlocksRef } >
+			<div
+				className="coblocks-events-swiper-container"
+				id={ `coblocks-events-swiper-container-${ carouselUuid }` }
+				onClick={ handleSelectBlock }
+				onKeyDown={ handleSelectBlock }
+				ref={ innerBlocksRef }
+				role="button"
+				tabIndex="0"
+			>
 				{ showExternalCalendarControls && !! externalCalendarUrl ? (
 					<ServerSideRender
 						attributes={ attributes }

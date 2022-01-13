@@ -6,18 +6,18 @@ import { EventsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 /**
  * Internal dependencies.
  */
+import deprecated from './deprecated';
 import edit from './edit';
-import example from './example';
+// import example from './example';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
-import deprecated from './deprecated';
 
 /**
  * WordPress dependencies.
  */
-import { __, _x } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
+import { __, _x } from '@wordpress/i18n';
 
 /**
  * Block constants.
@@ -25,8 +25,9 @@ import { Icon } from '@wordpress/components';
 const { name, category } = metadata;
 
 const settings = {
-	title: _x( 'Events', 'block name', 'coblocks' ),
+	deprecated,
 	description: __( 'Add a list of events or display events from a public calendar.', 'coblocks' ),
+	edit,
 	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
@@ -35,14 +36,13 @@ const settings = {
 		/* translators: block keyword */
 		__( 'date', 'coblocks' ),
 	],
+	save,
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
 	// example,
+	title: _x( 'Events', 'block name', 'coblocks' ),
 	transforms,
-	edit,
-	save,
-	deprecated
 };
 
 export { metadata, name, category, settings };

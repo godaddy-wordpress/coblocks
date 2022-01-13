@@ -6,13 +6,13 @@ import classnames from 'classnames';
 /**
  * Internal dependencies.
  */
-import { hasEmptyAttributes } from '../../../utils/block-helpers';
 import fromEntries from '../../../js/coblocks-fromEntries';
+import { hasEmptyAttributes } from '../../../utils/block-helpers';
 
 /**
  * WordPress dependencies.
  */
-import { RichText, getColorClassName } from '@wordpress/block-editor';
+import { getColorClassName, RichText } from '@wordpress/block-editor';
 
 const isEmpty = ( attributes ) => {
 	const attributesToCheck = [ 'title', 'description', 'eventDay', 'eventMonth', 'eventYear', 'eventTime', 'eventLocation' ];
@@ -40,8 +40,8 @@ export default function save( { className, attributes } ) {
 	const colorClass = getColorClassName( 'color', textColor );
 
 	const classes = classnames( className, 'swiper-slide', {
-		'has-text-color': textColor || customTextColor,
 		[ colorClass ]: colorClass,
+		'has-text-color': textColor || customTextColor,
 	} );
 
 	return isEmpty( attributes ) ? null : (
@@ -52,46 +52,46 @@ export default function save( { className, attributes } ) {
 		>
 			<div className="wp-block-coblocks-events__date">
 				<RichText.Content
-					tagName="span"
 					className="wp-block-coblocks-events__day"
+					tagName="span"
 					value={ eventDay }
 				/>
 				<div>
 					<RichText.Content
-						value={ eventMonth }
-						tagName="span"
 						className="wp-block-coblocks-events__month"
+						tagName="span"
+						value={ eventMonth }
 					/>
 					<RichText.Content
-						value={ eventYear }
-						tagName="span"
 						className="wp-block-coblocks-events__year"
+						tagName="span"
+						value={ eventYear }
 					/>
 				</div>
 			</div>
 			<div className="wp-block-coblocks-events__content">
 				<RichText.Content
-					value={ title }
-					tagName="span"
 					className="wp-block-coblocks-events__title"
+					tagName="span"
+					value={ title }
 				/>
 				<RichText.Content
-					value={ description }
-					tagName="span"
 					className="wp-block-coblocks-events__description"
 					itemprop="description"
+					tagName="span"
+					value={ description }
 				/>
 			</div>
 			<div className="wp-block-coblocks-events__details">
 				<RichText.Content
-					value={ eventTime }
-					tagName="span"
 					className="wp-block-coblocks-events__time"
+					tagName="span"
+					value={ eventTime }
 				/>
 				<RichText.Content
-					value={ eventLocation }
-					tagName="span"
 					className="wp-block-coblocks-events__location"
+					tagName="span"
+					value={ eventLocation }
 				/>
 			</div>
 		</div>

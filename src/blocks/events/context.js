@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from '@wordpress/element';
+import { createContext, useContext, useState } from '@wordpress/element';
 
 const EventsContext = createContext( {
 	isEditing: false,
@@ -15,10 +15,10 @@ const EventsContextProvider = ( { children } ) => {
 
 	return (
 		<EventsContext.Provider value={ context }>
-				{ children }
+			{ children }
 		</EventsContext.Provider>
 	);
-}
+};
 
 const withEventsState = ( Component ) => {
 	return ( props ) => {
@@ -26,14 +26,14 @@ const withEventsState = ( Component ) => {
 
 		return (
 			<EventsContextProvider>
-				<Component {...eventsContext} {...props} />
+				<Component { ...eventsContext } { ...props } />
 			</EventsContextProvider>
 		);
-	}
-}
+	};
+};
 
 export {
 	EventsContext,
 	EventsContextProvider,
-	withEventsState
+	withEventsState,
 };
