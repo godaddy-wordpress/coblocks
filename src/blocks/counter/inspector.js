@@ -45,6 +45,9 @@ export default function Inspector( props ) {
 	};
 
 	useEffect( () => {
+		if ( ! counterText?.length ) {
+			return;
+		}
 		// We either apply international formatting or remove formatting from numbers depending on numberFormatting attribute.
 		const formattedCounterText = applyInternationalFormatting( numberFormatting );
 		if ( formattedCounterText !== counterText ) {
@@ -53,6 +56,9 @@ export default function Inspector( props ) {
 	}, [ numberFormatting ] );
 
 	useEffect( () => {
+		if ( ! counterText?.length ) {
+			return;
+		}
 		// Trailing periods like for sentence punctuation are triggered as empty decimals by counterup2.
 		// To resolve superfluous counter digits appearing around periods we remove the punctuation.
 		const counterTextWithoutPeriod = counterText.replace( /\w+(\.+)/g, ( match, group ) => {
