@@ -80,7 +80,8 @@
 		"zh_TW": "繁體中文"
 	},
 	"dependencies": {
-		"@godaddy-wordpress/coblocks-icons": "2.0.1"
+		"@godaddy-wordpress/coblocks-icons": "2.0.2",
+		"copy-webpack-plugin": "^10.2.0"
 	},
 	"devDependencies": {
 		"@es-joy/jsdoccomment": "0.13.0",

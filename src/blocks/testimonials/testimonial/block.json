@@ -19,18 +19,30 @@
 		"name": {
 			"type": "string",
 			"source": "html",
-			"selector": ".wp-block-coblocks-testimonial__name",
+			"selector": ".wp-block-coblocks-testimonial__heading__name",
 			"default": ""
 		},
 		"role": {
 			"type": "string",
 			"source": "html",
-			"selector": ".wp-block-coblocks-testimonial__role",
+			"selector": ".wp-block-coblocks-testimonial__heading__role",
 			"default": ""
 		},
 		"showImage": {
 			"type": "boolean",
 			"default": false
+		},
+		"imageSize": {
+			"type": "string",
+			"default": "medium"
+		},
+		"imageHeight": {
+			"type": "number",
+			"default": 100
+		},
+		"imageWidth": {
+			"type": "number",
+			"default": 100
 		},
 		"showRole": {
 			"type": "boolean",
@@ -39,7 +51,7 @@
 		"text": {
 			"type": "string",
 			"source": "html",
-			"selector": ".wp-block-coblocks-testimonial__description",
+			"selector": ".wp-block-coblocks-testimonial__text",
 			"default": ""
 		},
 		"url": {

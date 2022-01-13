@@ -3,10 +3,28 @@
 	display: flex;
 	padding: 2em 1.5em;
 
+	&__image {
+		border: 1px solid #000;
+		border-radius: 100%;
+		flex-grow: 0;
+		flex-shrink: 0;
+		height: 100px;
+		overflow: hidden;
+		position: relative;
+		width: 100px;
+
+		img {
+			height: 100%;
+			object-fit: cover;
+			width: 100%;
+		}
+	}
+
 	&__heading {
 		margin-bottom: 1.5em;
 
 		&__name {
+			color: inherit;
 			margin: 0;
 		}
 
@@ -32,7 +50,6 @@
 
 	&__image {
 		margin: 0 0 1em;
-		width: 100%;
 	}
 }
 
@@ -40,47 +57,55 @@
 .is-style-conversation .wp-block-coblocks-testimonial {
 	flex-direction: column;
 
+	&__heading {
+		margin-bottom: 0;
+	}
+
 	&__text {
-		background-color: #ddd;
-		margin-bottom: 2em;
+		background-color: #d6d6d6;
+		border-radius: 8px;
+		margin-bottom: 1em;
 		padding: 1em;
 		position: relative;
 		width: 100%;
 
 		&::after {
-			background-color: #ff0000;
-			bottom: -20px;
+			border-left: 15px solid transparent;
+			border-right: 15px solid transparent;
+			border-top: 30px solid #d6d6d6;
+			bottom: -30px;
 			content: "";
 			display: block;
-			height: 20px;
+			height: 40px;
 			left: 1em;
 			position: absolute;
-			width: 20px;
+			transform: rotate(-20deg);
+			width: 30px;
 		}
 	}
 
 	&__image {
-		margin: 0 1em 0 0;
+		margin: 0 1em 0 2em;
 	}
 
 	&__content {
 		align-items: center;
 		display: flex;
 		flex-direction: row;
-		justify-content: center;
+		justify-content: flex-start;
 	}
 }
 
 // -> Horizontal
 .is-style-horizontal .wp-block-coblocks-testimonial {
 	&__image {
-		margin: 0 1em 0 0;
+		margin: 0 1.25em 0 0;
 	}
 
 	&__content {
 		align-items: flex-start;
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: flex-start;
 	}
 }

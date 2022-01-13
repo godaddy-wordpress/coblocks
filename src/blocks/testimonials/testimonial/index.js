@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { FoodItemIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { TestimonialIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies.
@@ -15,6 +15,11 @@ import save from './save';
  */
 import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
+
+/**
+ * Set default image size equivalent to "Medium".
+ */
+export const DEFAULT_IMAGE_SIZE = 100;
 
 /**
  * Block constants.

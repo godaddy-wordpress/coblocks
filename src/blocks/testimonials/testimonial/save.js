@@ -7,10 +7,10 @@ import { hasEmptyAttributes } from '../../../utils/block-helpers';
 /**
  * WordPress dependencies.
  */
-import { RichText } from '@wordpress/block-editor';
+import { getColorClassName, RichText } from '@wordpress/block-editor';
 
 const isEmpty = ( attributes ) => {
-	const attributesToCheck = [ 'name', 'description' ];
+	const attributesToCheck = [ 'name' ];
 	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
 		attributesToCheck.includes( key )
 	);
@@ -26,6 +26,8 @@ export default function save( { attributes } ) {
 		customTextColor,
 		focalPoint,
 		headingLevel,
+		imageHeight,
+		imageWidth,
 		name,
 		role,
 		showImage,
@@ -40,13 +42,18 @@ export default function save( { attributes } ) {
 	const textClass = getColorClassName( 'color', textColor );
 
 	const styles = {
-		backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-		color: textClass ? undefined : customTextColor,
+		backgroundColor: backgroundClass ? backgroundClass : customBackgroundColor,
+		color: textClass ? textClass : customTextColor,
 	};
 
 	const renderImage = () => {
+		const imageStyles = {
+			height: imageHeight,
+			width: imageWidth,
+		};
+
 		return !! showImage && url ? (
-			<figure className="wp-block-coblocks-testimonial__image">
+			<figure className="wp-block-coblocks-testimonial__image" style={ imageStyles }>
 				<img
 					alt={ alt }
 					src={ url }
@@ -85,6 +92,8 @@ export default function save( { attributes } ) {
 			value={ text }
 		/>
 	);
+
+	console.log(styles);
 
 	return isEmpty( attributes ) ? null : (
 		<div className="wp-block-coblocks-testimonial" style={ styles }>

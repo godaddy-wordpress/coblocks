@@ -23,23 +23,17 @@ const ALLOWED_BLOCKS = [ 'coblocks/testimonial' ];
 
 const layoutOptions = [
 	{
-		icon: ( <div>Icon</div> ),
-		iconWithImages: ( <div>Icon</div> ),
 		isDefault: true,
 		/* translators: block style */
 		label: __( 'Boxy', 'coblocks' ),
 		name: 'boxy',
 	},
 	{
-		icon: ( <div>Icon</div> ),
-		iconWithImages: ( <div>Icon</div> ),
 		/* translators: block style */
 		label: __( 'Conversation', 'coblocks' ),
 		name: 'conversation',
 	},
 	{
-		icon: ( <div>Icon</div> ),
-		iconWithImages: ( <div>Icon</div> ),
 		/* translators: block style */
 		label: __( 'Horizontal', 'coblocks' ),
 		name: 'horizontal',
@@ -102,6 +96,7 @@ const Edit = ( props ) => {
 
 	const updateInnerAttributes = ( blockName, newAttributes ) => {
 		innerBlocks.forEach( ( item ) => {
+			console.log('item', item);
 			if ( item.name === blockName ) {
 				updateBlockAttributes(
 					item.clientId,

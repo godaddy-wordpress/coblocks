@@ -107,9 +107,7 @@ const Inspector = ( props ) => {
 							role="button"
 							tabIndex="0"
 						>
-							<div className="block-editor-block-styles__item-preview block-editor-block-styles__item-preview">
-								{ showImages ? style.iconWithImages : style.icon }
-							</div>
+							{ <img alt="" src={ `/wp-content/plugins/coblocks/dist/images/testimonial-style-${ style.name }${ ! showImages ? '--noimage' : '' }.png` } /> }
 							<div className="block-editor-block-styles__item-label block-editor-block-styles__item-label">
 								{ style.label || style.name }
 							</div>

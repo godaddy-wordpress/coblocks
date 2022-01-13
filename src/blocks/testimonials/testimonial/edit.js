@@ -1,12 +1,4 @@
 /**
- * Internal dependencies.
- */
-import Controls from '../controls';
-import fromEntries from '../../../js/coblocks-fromEntries';
-import { hasEmptyAttributes } from '../../../utils/block-helpers';
-import Inspector from './inspector';
-
-/**
  * External dependencies.
  */
 import classnames from 'classnames';
@@ -15,22 +7,27 @@ import classnames from 'classnames';
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { closeSmall } from '@wordpress/icons';
 import { isBlobURL } from '@wordpress/blob';
 import { mediaUpload } from '@wordpress/editor';
 import { usePrevious } from '@wordpress/compose';
+import { BlockIcon, MediaUpload, MediaUploadCheck, RichText } from '@wordpress/block-editor';
 import { Button, ButtonGroup, DropZone, Spinner } from '@wordpress/components';
-import { MediaPlaceholder, RichText } from '@wordpress/block-editor';
-import { useEffect, useState } from '@wordpress/element';
+import { closeSmall, image } from '@wordpress/icons';
+import { lazy, useEffect, useState } from '@wordpress/element';
 
-const isEmpty = ( attributes ) => {
-	const attributesToCheck = [ 'url', 'role', 'description', 'name' ];
-	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
-		attributesToCheck.includes( key )
-	);
+/**
+ * Internal dependencies.
+ */
+import Controls from '../controls';
+import Inspector from './inspector';
 
-	return hasEmptyAttributes( fromEntries( newAttributes ) );
-};
+/**
+ * Set and export block values.
+ */
+const MIN_IMAGE_SIZE = 50;
+const MAX_IMAGE_SIZE = 250;
+
+export { MIN_IMAGE_SIZE, MAX_IMAGE_SIZE };
 
 const Edit = ( props ) => {
 	const {
@@ -100,29 +97,48 @@ const Edit = ( props ) => {
 		} );
 	};
 
-	const renderPlaceholder = () => (
-		<div className="wp-block-coblocks-testimonial__image">
-			<MediaPlaceholder
-				allowedTypes={ [ 'image' ] }
-				icon="format-image"
-				labels={ { title: ' ' } }
-				multiple={ false }
-				onSelect={ ( imageEntity ) => {
-					if ( isBlobURL( imageEntity?.url ) ) {
-						return;
-					}
+	const richTextAttributes = {
+		allowedFormats: [ 'bold', 'italic' ],
+	};
 
-					setAttributes( { alt: imageEntity?.alt } );
-					setUrl( imageEntity?.url );
-				} }
-			/>
-		</div>
+	const styles = {
+		backgroundColor: backgroundColor?.color,
+		color: textColor?.color,
+	};
+
+	const renderPlaceholder = () => (
+		<figure className="wp-block-coblocks-testimonial__image wp-block-coblocks-testimonial__image--placeholder">
+			<MediaUploadCheck>
+				<MediaUpload
+					allowedTypes={ [ 'image' ] }
+					onSelect={ ( imageEntity ) => {
+						if ( isBlobURL( imageEntity?.url ) ) {
+							return;
+						}
+						setAttributes( { alt: imageEntity?.alt } );
+						setUrl( imageEntity?.url );
+					} }
+					render={ ( { open } ) => (
+						<Button onClick={ open }>
+							{ ! url
+								? <BlockIcon icon={ image } />
+								: <img alt="" src={ url } />
+							}
+						</Button>
+					) }
+					value={ url }
+				>
+				</MediaUpload>
+			</MediaUploadCheck>
+		</figure>
 	);
 
 	const renderImage = () => {
 		const {
 			alt,
 			focalPoint,
+			imageHeight,
+			imageWidth,
 			url: attributeUrl,
 		} = attributes;
 
@@ -138,10 +154,29 @@ const Edit = ( props ) => {
 			/>
 		);
 
+		const imageStyles = {
+			height: imageHeight,
+			width: imageWidth,
+		};
+
 		return (
-			<figure className={ classes }>
+			<div className="wp-block-coblocks-testimonial__image-container">
+				<figure className={ classes } style={ imageStyles }>
+					{ dropZone }
+					{ isBlobURL( attributeUrl ) && <Spinner /> }
+					<img
+						alt={ alt }
+						src={ attributeUrl }
+						style={ {
+							objectPosition: focalPoint
+								? `${ focalPoint.x * 100 }% ${ focalPoint.y *
+										100 }%`
+								: undefined,
+						} }
+					/>
+				</figure>
 				{ isSelected && (
-					<ButtonGroup className="block-library-gallery-item__inline-menu is-right is-visible">
+					<ButtonGroup className="block-library-gallery-item__inline-menu wp-block-coblocks-testimonial__remove-image is-visible">
 						<Button
 							className="coblocks-gallery-item__button"
 							disabled={ ! isSelected }
@@ -154,19 +189,7 @@ const Edit = ( props ) => {
 						/>
 					</ButtonGroup>
 				) }
-				{ dropZone }
-				{ isBlobURL( attributeUrl ) && <Spinner /> }
-				<img
-					alt={ alt }
-					src={ attributeUrl }
-					style={ {
-						objectPosition: focalPoint
-							? `${ focalPoint.x * 100 }% ${ focalPoint.y *
-									100 }%`
-							: undefined,
-					} }
-				/>
-			</figure>
+			</div>
 		);
 	};
 
@@ -204,15 +227,6 @@ const Edit = ( props ) => {
 		/>
 	);
 
-	const richTextAttributes = {
-		allowedFormats: [ 'bold', 'italic' ],
-	};
-
-	const styles = {
-		backgroundColor: backgroundColor?.color,
-		color: textColor?.color,
-	};
-
 	return (
 		<>
 			<Controls
@@ -223,9 +237,7 @@ const Edit = ( props ) => {
 				{ ...props }
 			/>
 			<div
-				className={ classnames( className, {
-					'is-empty': isEmpty( attributes ),
-				} ) }
+				className={ classnames( className ) }
 				style={ styles }
 			>
 				{ styleName === 'boxy' && (
