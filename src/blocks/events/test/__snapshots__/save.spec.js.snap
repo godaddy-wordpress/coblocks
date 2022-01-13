@@ -2,19 +2,19 @@
 
 exports[`coblocks/events should render with className 1`] = `
 "<!-- wp:coblocks/events {\\"className\\":\\"my-custom-class\\"} -->
-<div class=\\"wp-block-coblocks-events my-custom-class\\"></div>
+<div class=\\"wp-block-coblocks-events wp-block-coblocks-events-front-container my-custom-class\\"><div class=\\"my-custom-class wp-block-coblocks-front-events-swiper-container\\"><div class=\\"swiper-wrapper\\"></div></div><button class=\\"wp-coblocks-events-nav-button__prev\\" id=\\"wp-coblocks-event-swiper-prev\\"></button><button class=\\"wp-coblocks-events-nav-button__next\\" id=\\"wp-coblocks-event-swiper-next\\"></button></div>
 <!-- /wp:coblocks/events -->"
 `;
 
 exports[`coblocks/events should render with eventsRange 1`] = `
 "<!-- wp:coblocks/events {\\"eventsRange\\":\\"1 month\\"} -->
-<div class=\\"wp-block-coblocks-events\\"></div>
+<div class=\\"wp-block-coblocks-events wp-block-coblocks-events-front-container\\"><div class=\\"wp-block-coblocks-front-events-swiper-container\\"><div class=\\"swiper-wrapper\\"></div></div><button class=\\"wp-coblocks-events-nav-button__prev\\" id=\\"wp-coblocks-event-swiper-prev\\"></button><button class=\\"wp-coblocks-events-nav-button__next\\" id=\\"wp-coblocks-event-swiper-next\\"></button></div>
 <!-- /wp:coblocks/events -->"
 `;
 
 exports[`coblocks/events should render with eventsToShow 1`] = `
 "<!-- wp:coblocks/events {\\"eventsToShow\\":\\"8\\"} -->
-<div class=\\"wp-block-coblocks-events\\"></div>
+<div class=\\"wp-block-coblocks-events wp-block-coblocks-events-front-container\\"><div class=\\"wp-block-coblocks-front-events-swiper-container\\"><div class=\\"swiper-wrapper\\"></div></div><button class=\\"wp-coblocks-events-nav-button__prev\\" id=\\"wp-coblocks-event-swiper-prev\\"></button><button class=\\"wp-coblocks-events-nav-button__next\\" id=\\"wp-coblocks-event-swiper-next\\"></button></div>
 <!-- /wp:coblocks/events -->"
 `;
 
@@ -22,6 +22,6 @@ exports[`coblocks/events should render with externalCalendarUrl 1`] = `"<!-- wp:
 
 exports[`coblocks/events should render without content 1`] = `
 "<!-- wp:coblocks/events -->
-<div class=\\"wp-block-coblocks-events\\"></div>
+<div class=\\"wp-block-coblocks-events wp-block-coblocks-events-front-container\\"><div class=\\"wp-block-coblocks-front-events-swiper-container\\"><div class=\\"swiper-wrapper\\"></div></div><button class=\\"wp-coblocks-events-nav-button__prev\\" id=\\"wp-coblocks-event-swiper-prev\\"></button><button class=\\"wp-coblocks-events-nav-button__next\\" id=\\"wp-coblocks-event-swiper-next\\"></button></div>
 <!-- /wp:coblocks/events -->"
 `;
