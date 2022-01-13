@@ -24,7 +24,7 @@ const Counter = ( props ) => {
 			{ ...blockProps }
 			className={ counterClasses }
 			onChange={ ( nextValue ) => setAttributes( { counterText: nextValue } ) }
-			placeholder={ __( '1,234.56', 'coblocks' ) }
+			placeholder={ `${ __( '10,000', 'coblocks' ) }\n${ __( 'Hours Worked', 'coblocks' ) }` }
 			value={ counterText }
 		/>
 	);

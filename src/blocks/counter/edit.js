@@ -6,24 +6,19 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-// import { useEffect } from '@wordpress/element';
-import {
-	// store as blockEditorStore,
-	useBlockProps } from '@wordpress/block-editor';
-// import { useDispatch, useSelect } from '@wordpress/data';
+import { useBlockProps } from '@wordpress/block-editor';
 
 /**
  * Internal dependencies
  */
 import Controls from './controls';
 import Counter from './counter';
+import Inspector from './inspector';
 
 function CounterEdit( props ) {
 	const {
-		// setAttributes,
 		attributes,
 		className,
-		// clientId,
 		isSelected,
 	} = props;
 
@@ -34,20 +29,6 @@ function CounterEdit( props ) {
 		counterText,
 		align,
 	} = attributes;
-
-	// const {
-	// 	__unstableMarkNextChangeAsNotPersistent,
-	// } = useDispatch( blockEditorStore );
-
-	// const { getBlock } = useSelect( ( select ) => {
-	// 	return {
-	// 		getBlock: select( blockEditorStore ).getBlock,
-	// 	};
-	// }, [] );
-
-	// useEffect( () => {
-
-	// }, [] );
 
 	const blockProps = useBlockProps( {
 		className: classnames( className, {
@@ -60,19 +41,18 @@ function CounterEdit( props ) {
 			{ isSelected && (
 				<>
 					<Controls { ...props } />
-					{ /* <Inspector { ...props } /> */ }
+					<Inspector { ...props } />
 				</>
 			) }
 			<Counter
-				{
-					...{
-						blockProps,
-						counterSpeed,
-						counterText,
-						endingCount,
-						startingCount,
-						...props,
-					} }
+				{ ...{
+					blockProps,
+					counterSpeed,
+					counterText,
+					endingCount,
+					startingCount,
+					...props,
+				} }
 			/>
 		</>
 	);

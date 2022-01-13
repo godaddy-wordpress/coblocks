@@ -25,6 +25,10 @@
         },
 		"counterText": {
 			"type": "string"
+		},
+		"numberFormatting": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"supports": {

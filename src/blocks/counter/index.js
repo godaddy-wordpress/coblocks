@@ -29,9 +29,11 @@ const attributes = {
 const settings = {
 	attributes,
 	edit,
-	//  example: {
-
-	//  },
+	example: {
+		attributes: {
+			counterText: '450\nCups of Coffee',
+		},
+	},
 	icon: <Icon icon={ icon } />,
 	save,
 	/* translators: block name */
