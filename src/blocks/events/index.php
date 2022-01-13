@@ -56,8 +56,10 @@ function coblocks_render_events_block( $attributes, $content ) {
 			$class .= ' align' . $attributes['align'];
 		}
 
-		$events_layout = sprintf(
-			'<div class="swiper-container"><div class="%1$s" data-per-page="%2$s">',
+		$events_layout = '<div class="wp-block-coblocks-events wp-block-coblocks-events-front-container" >';
+
+		$events_layout .= sprintf(
+			'<div class="swiper-container wp-block-coblocks-front-events-swiper-container"><div class="%1$s" data-per-page="%2$s">',
 			esc_attr( $class ),
 			esc_attr( $attributes['eventsToShow'] )
 		);
@@ -113,7 +115,14 @@ function coblocks_render_events_block( $attributes, $content ) {
 			$events_layout .= '</div>';
 		}
 
-		$events_layout .= '</div></div>';
+		$events_layout .= '</div>';
+
+		$events_layout .= '<button class="wp-coblocks-events-nav-button__prev" id="wp-coblocks-event-swiper-prev" />';
+		$events_layout .= '<button class="wp-coblocks-events-nav-button__next" id="wp-coblocks-event-swiper-next" />';
+
+		$events_layout .= '</div>';
+
+		$events_layout .= '</div>';
 
 		return $events_layout;
 

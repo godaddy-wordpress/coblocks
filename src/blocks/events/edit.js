@@ -68,6 +68,7 @@ const EventsEdit = ( props ) => {
 	const [swiper, setSwiper] = useState( null );
 	const innerBlocksRef = useRef( null );
 	const toolbarRef = useRef( null );
+	const appenderRef = useRef( null );
 
 	const carouselUuid = useMemo( () => generateUuid(), [] );
 
@@ -92,7 +93,7 @@ const EventsEdit = ( props ) => {
 
 	const insertNewItem = () => {
 		const newEvent = createBlock( 'coblocks/event-item' );
-		insertBlock( newEvent, innerBlocks.length, clientId );
+		insertBlock( newEvent, innerBlocks.length, clientId, true );
 	};
 
 	const toolbarControls = [
@@ -127,19 +128,20 @@ const EventsEdit = ( props ) => {
 			const swiperSlideContainer = document.createElement('div');
 			swiperSlideContainer.setAttribute('class', 'swiper-slide');
 	
-			swiperWrapper.appendChild( swiperSlideContainer );
+			swiperWrapper?.appendChild( swiperSlideContainer );
 	
-			swiperSlideContainer.appendChild(allEventItems[i]);
+			swiperSlideContainer?.appendChild(allEventItems[i]);
 		}
 	}
 
 	const handleInnerBlockOutsideClick = useCallback((event) => {
 		const isOutsideClick = ! innerBlocksRef?.current?.contains( event.target );
-		const toolbarContainer = document.querySelectorAll('.block-editor-block-contextual-toolbar')[0];
+		const toolbarContainer = document.querySelector('.block-editor-block-contextual-toolbar');
 
 		const isToolbarClick = toolbarContainer?.contains( event.target );
+		const isAppenderClick = event.target.classList.contains( 'block-editor-button-block-appender' );
 
-		if ( isEditing && isOutsideClick && !isToolbarClick ) {
+		if ( isEditing && isOutsideClick && ! isToolbarClick && ! isAppenderClick ) {
 			setIsEditing( false );
 		}
 	}, [ isEditing ]);
@@ -194,7 +196,7 @@ const EventsEdit = ( props ) => {
 	}, [ externalCalendarUrl ]);
  
 	useEffect(() => {
-		const innerBlocksContainer = document.querySelectorAll(`#coblocks-events-swiper-container-${carouselUuid} > .coblocks-events-block-inner-blocks-container > .block-editor-inner-blocks > .block-editor-block-list__layout`)[0];
+		const innerBlocksContainer = document.querySelector(`#coblocks-events-swiper-container-${carouselUuid} > .coblocks-events-block-inner-blocks-container > .block-editor-inner-blocks > .block-editor-block-list__layout`);
 
 		// coming from edit mode to carousel
 		if ( isEditing === false && swiper !== null && carouselCssText !== null ) {
@@ -222,14 +224,14 @@ const EventsEdit = ( props ) => {
 
 					// move the new event item to within the swiper wrapper div
 					if ( childElement.dataset?.type === 'coblocks/event-item' ) {
-						const currentSwiperWrapper = document.querySelectorAll('.swiper-wrapper')[0];
+						const currentSwiperWrapper = document.querySelector('.swiper-wrapper');
 
 						const newSwiperSlideWrapper = document.createElement('div');
 						newSwiperSlideWrapper.setAttribute('class', 'swiper-slide');
 
-						newSwiperSlideWrapper.appendChild( childElement );
+						newSwiperSlideWrapper?.appendChild( childElement );
 
-						currentSwiperWrapper.appendChild( newSwiperSlideWrapper );
+						currentSwiperWrapper?.appendChild( newSwiperSlideWrapper );
 					}
 			}
 
@@ -279,13 +281,13 @@ const EventsEdit = ( props ) => {
 			const swiperContainer = document.createElement('div');
 			swiperContainer.setAttribute('class', 'swiper-container');
 	
-			innerBlocksContainer.appendChild( swiperContainer );
+			innerBlocksContainer?.appendChild( swiperContainer );
 	
 			// swiper slides wrapper
 			const swiperWrapper = document.createElement('div');
 			swiperWrapper.setAttribute('class', 'swiper-wrapper');
 	
-			swiperContainer.appendChild( swiperWrapper );
+			swiperContainer?.appendChild( swiperWrapper );
 	
 			formatSwiperStructure( swiperWrapper );
 	
@@ -305,7 +307,24 @@ const EventsEdit = ( props ) => {
 	
 			setSwiper( newSwiper );	
 		}
-	}, [ isEditing, swiper, carouselCssText, innerBlocks, prevInnerBlocksLength ]);
+	}, [ isEditing, swiper, carouselCssText ]);
+
+	useEffect(() => {
+		if ( innerBlocks.length !== prevInnerBlocksLength && isEditing ) {
+			const innerBlocksContainer = document.querySelector(`#coblocks-events-swiper-container-${carouselUuid} > .coblocks-events-block-inner-blocks-container > .block-editor-inner-blocks > .block-editor-block-list__layout`);
+
+			const newlyAddedEventItem = Array.from(innerBlocksContainer.children).find(node => node.dataset?.type === 'coblocks/event-item');
+
+			const currentSwiperWrapper = document.querySelector('.swiper-wrapper-edit');
+
+			const newSwiperSlideWrapper = document.createElement('div');
+			newSwiperSlideWrapper.setAttribute('class', 'swiper-slide');
+
+			newSwiperSlideWrapper?.appendChild( newlyAddedEventItem );
+
+			currentSwiperWrapper?.appendChild( newSwiperSlideWrapper );
+		}
+	}, [ innerBlocks.length, prevInnerBlocksLength, isEditing ]);
 
 	const renderInnerBlocks = () => {
 		return (

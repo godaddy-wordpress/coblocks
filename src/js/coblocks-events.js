@@ -4,11 +4,9 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 ( function() {
 	'use strict';
 
-	const eventsCarouselContainer = document.querySelectorAll('.wp-block-coblocks-front-events-swiper-container')[0];
+	const eventsCarouselContainer = document.querySelector('.wp-block-coblocks-front-events-swiper-container');
 
 	if ( eventsCarouselContainer ) {
-		console.log('eventsCarouselContainer', eventsCarouselContainer);
-
 		const swiperBackButton = document.getElementById( `wp-coblocks-event-swiper-prev` );
 		const swiperNextButton = document.getElementById( `wp-coblocks-event-swiper-next` );
 
@@ -17,28 +15,10 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 			plugins: [
 				TinySwiperPluginNavigation,
 			],
-			// slideClass: 'wp-block-coblocks-event-item',
 			navigation: {
 				prevEl: swiperBackButton,
 				nextEl: swiperNextButton,
 			},
 		});
-	}
-	// $( document ).ready( function() {
-	// 	const calendars = $( '.wp-block-coblocks-events[data-per-page]' );
-
-	// 	console.log('we need this one i think...?');
-
-	// 	if ( calendars ) {
-	// 		calendars.each( function() {
-	// 			$( this ).slick( {
-	// 				infinite: false,
-	// 				rows: this.dataset.perPage,
-	// 				waitForAnimate: false,
-	// 			} );
-	// 		} );
-	// 	}
-	// } );
-
-	
+	}	
 }() );

@@ -1,3 +1,11 @@
+.wp-block-coblocks-events-front-container {
+	position: relative;
+}
+
+.wp-block-coblocks-front-events-swiper-container {
+	overflow: hidden;
+}
+
 .wp-block-coblocks-events {
 
 	&.slick-slider {
@@ -190,11 +198,11 @@
 	}
 
 	&__prev {
-		left: 0;
+		left: -5em;
 		transform: rotate(180deg);
 	}
 
 	&__next {
-		right: 0;
+		right: -5em;
 	}
 }
