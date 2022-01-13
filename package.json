@@ -23,7 +23,7 @@
 		"lint:js": "wp-scripts lint-js",
 		"lint:php": "wp-env run phpunit 'composer run lint -d /var/www/html/wp-content/plugins/coblocks/'; #we use phpunit container because composer container only use php 8;",
 		"makepot": "./vendor/bin/wp i18n make-pot . --skip-audit --exclude=\".dev,.github,.wordpress-org,build,docs,dist,node_modules,vendor,wordpress\" --headers='{\"Last-Translator\":\"plugins@godaddy.com\",\"Report-Msgid-Bugs-To\":\"https://github.com/godaddy-wordpress/coblocks/issues\"}' --file-comment=\"Copyright (c) $(date +'%Y') GoDaddy Operating Company, LLC. All Rights Reserved.\" languages/coblocks.pot && yarn run pot2json",
-		"php:composer:install": "wp-env run phpunit 'composer run install -d /var/www/html/wp-content/plugins/coblocks/'",
+		"php:composer:install": "wp-env run phpunit 'composer install -d /var/www/html/wp-content/plugins/coblocks/'",
 		"po2jed": "cd languages && find . -name '*.po' -execdir /bin/bash -c 'FROM=\"$0\" && TO=\"`basename $0 .po`-coblocks-editor.json\" && echo \"$FROM > $TO\" && po2json $FROM $TO -f jed' '{}' \\;",
 		"po2mo": "cd languages && find . -name '*.po' -execdir /bin/bash -c 'FROM=\"$0\" && TO=\"`basename $0 .po`.mo\" && echo \"$FROM > $TO\" && msgfmt $FROM -o $TO' '{}' \\;",
 		"postinstall": "yarn update:icon",
