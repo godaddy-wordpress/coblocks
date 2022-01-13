@@ -1,10 +1,4 @@
 /*global coblocksSettings*/
-
-/**
- * Styles
- */
-import './styles/style.scss';
-
 /**
  * External dependencies
  */
@@ -12,7 +6,7 @@ import { __ } from '@wordpress/i18n';
 import { Modal } from '@wordpress/components';
 import { PluginMoreMenuItem } from '@wordpress/edit-post';
 import { useDispatch } from '@wordpress/data';
-import { Fragment, useState } from '@wordpress/element';
+import { useState } from '@wordpress/element';
 import { getPlugin, registerPlugin, unregisterPlugin } from '@wordpress/plugins';
 
 /**
@@ -34,7 +28,7 @@ export default function CoBlocksSettings() {
 	};
 
 	return (
-		<Fragment>
+		<>
 			<PluginMoreMenuItem onClick={ openModal }>
 				{ __( 'Editor settings', 'coblocks' ) }
 			</PluginMoreMenuItem>
@@ -79,7 +73,7 @@ export default function CoBlocksSettings() {
 					</section>
 				</Modal>
 			) }
-		</Fragment>
+		</>
 	);
 }
 

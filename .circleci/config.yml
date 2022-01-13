@@ -172,23 +172,13 @@ workflows:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - css
-            - unit_testing_php_56
-            - unit_testing_php_73
-            - unit_testing_php_74
-            - unit_testing_php_80
-            - js
+            - build
       - e2e_firefox_wp_latest:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - css
-            - unit_testing_php_56
-            - unit_testing_php_73
-            - unit_testing_php_74
-            - unit_testing_php_80
-            - js
+            - build
 
       # - e2e_chrome_wp_previous_major:
       #    filters:
@@ -352,30 +342,27 @@ commands:
     steps:
       - restore_cache:
           keys:
-            - composer-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}
+            - composer-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "composer.lock" }}
             - composer-deps-{{ .Environment.CACHE_VERSION }}
 
   restore_yarn_cache:
     steps:
       - restore_cache:
           keys:
-            - yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}
+            - yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
             - yarn-deps-{{ .Environment.CACHE_VERSION }}
 
   restore_update_cypress_cache:
     steps:
       - restore_cache:
           keys:
-            - cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}
+            - cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
             - cypress-deps-{{ .Environment.CACHE_VERSION }}
       - run:
           name: Install CyPress Binaries
           command: ./node_modules/.bin/cypress install
       - save_cache:
-          key: cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/Cypress
 
@@ -546,12 +533,6 @@ commands:
       - attach_workspace:
           at: ~/project
       - restore_composer_cache
-      - when:
-          condition: << parameters.useComposerV1 >>
-          steps:
-            - run:
-                name: Install Composer v1
-                command: sudo composer self-update --1
       - wait_for_mysql
       - install_wordpress_testing_suite
       - when:
@@ -595,7 +576,7 @@ jobs:
             PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
             yarn install --frozen-lockfile
       - save_cache:
-          key: yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
@@ -607,7 +588,7 @@ jobs:
             composer validate --strict
             composer install
       - save_cache:
-          key: composer-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "composer.lock" }}
+          key: composer-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "composer.lock" }}
           paths:
             - ~/project/vendor
       - run:
@@ -707,20 +688,17 @@ jobs:
   unit_testing_php_73:
     executor: php_73_mysql
     steps:
-      - run_php_unit_tests:
-          useComposerV1: true
+      - run_php_unit_tests
 
   unit_testing_php_74:
     executor: php_74_mysql
     steps:
-      - run_php_unit_tests:
-          useComposerV1: true
+      - run_php_unit_tests
 
   unit_testing_php_80:
     executor: php_80_mysql
     steps:
       - run_php_unit_tests:
-          useComposerV1: true
           reportCoverage: false # we are currently using an incompatible phpunit library for coverage reporting in PHP 8
 
   js:

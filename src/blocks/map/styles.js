@@ -8,33 +8,33 @@ import { __ } from '@wordpress/i18n';
  */
 export const styleOptions = [
 	{
-		value: 'standard',
 		/* translators: block style */
 		label: __( 'Standard', 'coblocks' ),
+		value: 'standard',
 	},
 	{
-		value: 'silver',
 		/* translators: block style */
 		label: __( 'Silver', 'coblocks' ),
+		value: 'silver',
 	},
 	{
-		value: 'retro',
 		/* translators: block style */
 		label: __( 'Retro', 'coblocks' ),
+		value: 'retro',
 	},
 	{
-		value: 'dark',
 		/* translators: block style */
 		label: __( 'Dark', 'coblocks' ),
+		value: 'dark',
 	},
 	{
-		value: 'night',
 		/* translators: block style */
 		label: __( 'Night', 'coblocks' ),
+		value: 'night',
 	},
 	{
-		value: 'aubergine',
 		/* translators: block style */
 		label: __( 'Aubergine', 'coblocks' ),
+		value: 'aubergine',
 	},
 ];
