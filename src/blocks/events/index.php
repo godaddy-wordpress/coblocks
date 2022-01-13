@@ -56,7 +56,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 			$class .= ' align' . $attributes['align'];
 		}
 
-		$events_layout = '<div class="wp-block-coblocks-events wp-block-coblocks-events-front-container" >';
+		$events_layout = '<div class="wp-block-coblocks-events wp-block-coblocks-events-front-container">';
 
 		$events_layout .= sprintf(
 			'<div class="swiper-container wp-block-coblocks-front-events-swiper-container"><div class="%1$s" data-per-page="%2$s">',

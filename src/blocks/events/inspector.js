@@ -2,7 +2,7 @@
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { PanelBody, ToggleControl, SelectControl, RangeControl } from '@wordpress/components';
+import { PanelBody, RangeControl, SelectControl, ToggleControl } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 
 const Inspector = ( props ) => {
@@ -22,33 +22,33 @@ const Inspector = ( props ) => {
 
 	return (
 		<InspectorControls>
-			<PanelBody title={ __( 'Events settings', 'coblocks' ) } initialOpen={ true }>
+			<PanelBody initialOpen={ true } title={ __( 'Events settings', 'coblocks' ) }>
 				<ToggleControl
-					label={ __( 'Link a calendar', 'coblocks' ) }
+					checked={ showExternalCalendarControls }
 					help={
 						showExternalCalendarControls
 							? __( 'Showing public calendar.', 'coblocks' )
 							: __( 'Toggle to link a public calendar.', 'coblocks' )
 					}
-					checked={ showExternalCalendarControls }
+					label={ __( 'Link a calendar', 'coblocks' ) }
 					onChange={ () => toggleExternalCalendarControls() }
 				/>
 				{ showExternalCalendarControls &&
 					<RangeControl
 						label={ __( 'Events per page', 'coblocks' ) }
-						value={ eventsToShow }
-						onChange={ ( value ) => onChangeEventsToShow( value ) }
-						min={ 1 }
 						max={ 15 }
+						min={ 1 }
+						onChange={ ( value ) => onChangeEventsToShow( value ) }
+						value={ eventsToShow }
 					/>
 				}
 				{ showExternalCalendarControls &&
 					<SelectControl
-						label={ __( 'Period', 'coblocks' ) }
-						value={ eventsRange }
-						options={ eventsRangeOptions }
 						help={ __( 'Show events from the period (100 events max).', 'coblocks' ) }
+						label={ __( 'Period', 'coblocks' ) }
 						onChange={ ( value ) => onChangeEventsRange( value ) }
+						options={ eventsRangeOptions }
+						value={ eventsRange }
 					/>
 				}
 			</PanelBody>

@@ -33,7 +33,7 @@
 // Add selected padding.
 .block-editor-block-list__block[data-type="coblocks/events"].has-child-selected .wp-block-coblocks-events,
 .block-editor-block-list__block[data-type="coblocks/events"].is-selected .wp-block-coblocks-events {
-	padding: 14px 14px 0;
+	// padding: 14px 14px 0;
 }
 
 .block-editor-block-list__block[data-type="coblocks/events"].is-selected
@@ -51,7 +51,7 @@
 		border: none;
 		border-radius: 100%;
 		cursor: pointer;
-		
+
 		margin: 0 1%;
 		padding: 15px;
 		position: absolute;
@@ -71,6 +71,17 @@
 	}
 }
 
+.coblocks-events-block-inner-blocks-container .block-editor-inner-blocks .block-editor-block-list__layout {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: stretch;
+}
+
 .coblocks-events-block-inner-blocks-container .block-editor-inner-blocks .block-editor-block-list__layout .block-list-appender {
-	bottom: -25px;
+	position: relative;
+
+	& > .coblocks-block-appender {
+		margin-top: 0;
+	}
 }
