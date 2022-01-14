@@ -1,7 +1,16 @@
-[data-type="coblocks/faq"] {
+.block-editor-block-list__block[data-type="coblocks/faq"] {
 	.block-list-appender {
+		bottom: 0;
 		display: none;
+		// This is to override 5.8 style
 		margin: 0;
+		padding: 0;
+
+		// Those are 5.9 style that we force apply to 5.8
+		position: absolute;
+		right: 0;
+		width: 100%;
+		z-index: 2;
 	}
 
 	.coblocks-block-appender {
