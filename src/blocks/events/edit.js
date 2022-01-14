@@ -16,6 +16,7 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
+import classNames from 'classnames';
 import { createBlock } from '@wordpress/blocks';
 import { edit } from '@wordpress/icons';
 import ServerSideRender from '@wordpress/server-side-render';
@@ -45,6 +46,7 @@ const EventsEdit = ( props ) => {
 		clientId,
 		isSelected,
 		selected,
+		className,
 	} = props;
 
 	const { selectBlock, insertBlock } = useDispatch( 'core/block-editor' );
@@ -145,10 +147,12 @@ const EventsEdit = ( props ) => {
 
 	// register the inner blocks outside click handler
 	useEffect( () => {
-		document.body.addEventListener( 'click', handleInnerBlockOutsideClick );
+		const editorBody = document.querySelector( '.edit-post-visual-editor' );
+
+		editorBody.addEventListener( 'click', handleInnerBlockOutsideClick );
 
 		return () => {
-			document.body.removeEventListener( 'click', handleInnerBlockOutsideClick );
+			editorBody.removeEventListener( 'click', handleInnerBlockOutsideClick );
 		};
 	}, [ isEditing ] );
 
@@ -394,7 +398,10 @@ const EventsEdit = ( props ) => {
 			}
 
 			<div
-				className="coblocks-events-swiper-container"
+				className={ classNames(
+					'coblocks-events-swiper-container',
+					className
+				) }
 				id={ `coblocks-events-swiper-container-${ carouselUuid }` }
 				onClick={ handleSelectBlock }
 				onKeyDown={ handleSelectBlock }

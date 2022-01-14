@@ -43,6 +43,8 @@ describe( 'Block: Event Item', () => {
 	it( 'can save with custom content without errors', () => {
 		const { date, event, time, location } = eventItemData;
 
+		cy.get( `[aria-label="Edit Events"]` ).click();
+
 		cy.get( '[data-type="coblocks/events"]' ).first().within( () => {
 			cy.get( '.wp-block-coblocks-events__day' ).type( date.day );
 			cy.get( '.wp-block-coblocks-events__month' ).type( date.month );
@@ -65,7 +67,11 @@ describe( 'Block: Event Item', () => {
 		const { textColor, textColorRGB } = eventItemData.color;
 		const { date } = eventItemData;
 
+		cy.get( '[data-type="coblocks/events"]' ).click();
+		cy.get( `[aria-label="Edit Events"]` ).click();
+
 		cy.get( '.wp-block-coblocks-event-item' ).click();
+
 		cy.get( '.wp-block-coblocks-events__day' ).type( date.day );
 
 		helpers.setColorSetting( 'text color', textColor );
@@ -79,6 +85,9 @@ describe( 'Block: Event Item', () => {
 	 */
 	it( 'Test event-item block saves with custom classes.', () => {
 		const { date } = eventItemData;
+
+		cy.get( '[data-type="coblocks/events"]' ).click();
+		cy.get( `[aria-label="Edit Events"]` ).click();
 
 		cy.get( '.wp-block-coblocks-event-item' ).click();
 		cy.get( '.wp-block-coblocks-events__day' ).type( date.day );
