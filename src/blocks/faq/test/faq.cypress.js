@@ -71,7 +71,7 @@ describe( 'Block: FAQ', () => {
 	 * Test the accordion block custom classes
 	 */
 	it( 'can have custom classes', () => {
-		cy.get( '[data-type="coblocks/faq-item"]' ).first().click( { force: true } );
+		cy.get( '[data-type="coblocks/faq-item"]' ).first().click();
 		helpers.addCustomBlockClass( 'my-custom-class', 'faq-item' );
 
 		helpers.checkForBlockErrors( 'coblocks/faq' );
