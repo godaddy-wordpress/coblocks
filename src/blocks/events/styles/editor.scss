@@ -46,18 +46,16 @@
 .coblocks-events-nav-button {
 	&__prev,
 	&__next {
-		background-image: url(/assets/lightbox/arrow-right.svg);
 		background-color: transparent;
+		background-image: url(/assets/lightbox/arrow-right.svg);
 		border: none;
 		border-radius: 100%;
 		cursor: pointer;
-
+		height: 62px;
 		margin: 0 1%;
 		padding: 15px;
 		position: absolute;
 		top: 50%;
-
-		height: 62px;
 		width: 62px;
 	}
 
@@ -72,10 +70,10 @@
 }
 
 .coblocks-events-block-inner-blocks-container .block-editor-inner-blocks .block-editor-block-list__layout {
+	align-items: stretch;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	align-items: stretch;
 }
 
 .coblocks-events-block-inner-blocks-container .block-editor-inner-blocks .block-editor-block-list__layout .block-list-appender {
