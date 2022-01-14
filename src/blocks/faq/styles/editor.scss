@@ -1,4 +1,8 @@
 .block-editor-block-list__block[data-type="coblocks/faq"] {
+	.wp-block-coblocks-faq__heading {
+		min-height: 80px;
+	}
+
 	.block-list-appender {
 		bottom: 0;
 		display: none;
@@ -16,7 +20,6 @@
 	.coblocks-block-appender {
 		display: flex;
 		justify-content: space-between;
-		margin: 1.75em 0 0;
 
 		.block-editor-button-block-appender {
 			flex-direction: row;
