@@ -103,7 +103,7 @@ const EventsEdit = ( props ) => {
 					setIsEditing( ! isEditing );
 				}
 			},
-			title: __( !! externalCalendarUrl ? 'Edit calendar URL' : 'Edit Events', 'coblocks' ),
+			title: !! externalCalendarUrl ? __( 'Edit calendar URL', 'coblocks' ) : __( 'Edit Events', 'coblocks' ),
 		},
 	];
 
