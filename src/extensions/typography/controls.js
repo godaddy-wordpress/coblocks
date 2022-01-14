@@ -8,8 +8,8 @@ import TypographyControls from './../../components/typography-controls';
 /**
  * WordPress dependencies
  */
-import { Component } from '@wordpress/element';
 import { BlockControls } from '@wordpress/block-editor';
+import { Component } from '@wordpress/element';
 
 class Controls extends Component {
 	render() {

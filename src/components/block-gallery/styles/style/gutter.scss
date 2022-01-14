@@ -7,7 +7,7 @@
 	@for $i from 1 through 10 {
 
 		.has-gutter-#{ $i * 5 } {
-			margin: -#{round($i * 5 / 2)}px !important;
+			margin: -#{round($i * 5 * 0.5)}px !important;
 			max-width: calc(100% + #{round($i * 5)}px) !important;
 		}
 	}
@@ -18,7 +18,7 @@
 		.has-gutter-#{ $i * 5 } {
 
 			.coblocks-gallery--figure {
-				margin: #{round($i * 5 / 2)}px;
+				margin: #{round($i * 5 * 0.5)}px;
 			}
 		}
 	}
@@ -28,11 +28,11 @@
 	@for $i from 1 through 10 {
 
 		.has-gutter-mobile-#{ $i * 5 } {
-			margin: -#{round($i * 5 / 2)}px !important;
+			margin: -#{round($i * 5 * 0.5)}px !important;
 			max-width: calc(100% + #{round($i * 5)}px) !important;
 
 			.coblocks-gallery--figure {
-				margin: #{round($i * 5 / 2)}px;
+				margin: #{round($i * 5 * 0.5)}px;
 			}
 		}
 	}

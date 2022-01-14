@@ -24,10 +24,17 @@ import { Icon } from '@wordpress/components';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: block name */
-	title: __( 'Map', 'coblocks' ),
+	attributes,
+	deprecated,
 	/* translators: block description */
 	description: __( 'Add an address or location to drop a pin on a Google map.', 'coblocks' ),
+	edit,
+	example: {
+		attributes: {
+			address: 'Tempe, Arizona',
+			align: 'wide',
+		},
+	},
 	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
@@ -40,21 +47,14 @@ const settings = {
 		/* translators: block keyword */
 		__( 'directions', 'coblocks' ),
 	],
+	save,
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 	},
-	example: {
-		attributes: {
-			align: 'wide',
-			address: 'Scottsdale, Arizona',
-		},
-	},
-	attributes,
+	/* translators: block name */
+	title: __( 'Map', 'coblocks' ),
 	transforms,
-	edit,
-	save,
-	deprecated,
 };
 
 export { name, category, metadata, settings };

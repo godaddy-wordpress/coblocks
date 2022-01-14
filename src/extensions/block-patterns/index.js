@@ -3,16 +3,15 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { registerPlugin } from '@wordpress/plugins';
-import { Fragment, useState } from '@wordpress/element';
 import { BlockSettingsMenuControls } from '@wordpress/block-editor';
 import { MenuItem } from '@wordpress/components';
+import { registerPlugin } from '@wordpress/plugins';
+import { useState } from '@wordpress/element';
 
 /**
  * Internal dependencies
  */
 import CoBlocksBlockPatternsModal from './modal';
-import './styles/style.scss';
 
 const CoBlocksBlockPatterns = () => {
 	const [ isOpen, setOpen ] = useState( false );
@@ -20,10 +19,10 @@ const CoBlocksBlockPatterns = () => {
 	const openModal = () => setOpen( true );
 	const closeModal = () => setOpen( false );
 
-	const props = { isOpen, openModal, closeModal };
+	const props = { closeModal, isOpen, openModal };
 
 	return (
-		<Fragment>
+		<>
 			<BlockSettingsMenuControls>
 				{ ( { onClose } ) => (
 					<MenuItem
@@ -37,7 +36,7 @@ const CoBlocksBlockPatterns = () => {
 				) }
 			</BlockSettingsMenuControls>
 			<CoBlocksBlockPatternsModal { ...props } />
-		</Fragment>
+		</>
 	);
 };
 

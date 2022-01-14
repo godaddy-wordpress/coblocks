@@ -25,8 +25,8 @@ const variations = {
 	backgroundColor: [ undefined, 'primary' ],
 	customBackgroundColor: [ undefined, '#123456' ],
 	justAdded: [ undefined, true, false ],
-	noBottomMargin: [ true, false ],
-	noTopMargin: [ true, false ],
+	noBottomMargin: [ undefined, true, false ],
+	noTopMargin: [ undefined, true, false ],
 };
 
 helpers.testDeprecatedBlockVariations( name, settings, variations );
