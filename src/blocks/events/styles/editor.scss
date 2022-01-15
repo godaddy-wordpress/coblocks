@@ -1,9 +1,27 @@
-[data-type="coblocks/events"] {
+.block-editor-block-list__block[data-type="coblocks/events"] {
 
 	@include input-submit-placeholder;
 
+	padding-bottom: 5px;
+
+	.block-list-appender {
+		bottom: -30px;
+		display: none;
+		// This is to override 5.8 style
+		margin: 0;
+		padding: 0;
+		// Those are 5.9 style that we force apply to 5.8
+		position: absolute;
+		right: 0;
+		z-index: 2;
+	}
+
 	.coblocks-block-appender {
 		margin-top: 28px;
+
+		.block-editor-button-block-appender {
+			padding: 3px 6px;
+		}
 	}
 
 	&.is-selected,
@@ -28,12 +46,6 @@
 
 [data-type="coblocks/events"] > .block-editor-block-list__block-edit > [data-block] {
 	margin-bottom: 0;
-}
-
-// Add selected padding.
-.block-editor-block-list__block[data-type="coblocks/events"].has-child-selected .wp-block-coblocks-events,
-.block-editor-block-list__block[data-type="coblocks/events"].is-selected .wp-block-coblocks-events {
-	padding: 14px 14px 0;
 }
 
 .block-editor-block-list__block[data-type="coblocks/events"].is-selected
