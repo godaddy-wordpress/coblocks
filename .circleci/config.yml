@@ -939,7 +939,7 @@ jobs:
           command: sudo apt-get update && sudo apt-get install subversion
       - run:
           name: Install PHP
-          command: sudo apt-get install php libapache2-mod-php php-mbstring php-xml php-curl
+          command: sudo apt update && sudo apt-get install php libapache2-mod-php php-mbstring php-xml php-curl
       - disable_xdebug_php_extension
       - run:
           name: Install Composer
