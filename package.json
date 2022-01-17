@@ -79,7 +79,7 @@
 	"devDependencies": {
 		"@es-joy/jsdoccomment": "0.13.0",
 		"@godaddy-wordpress/eslint-config": "^0.5.0",
-		"@godaddy-wordpress/stylelint-config": "^0.4.0",
+		"@godaddy-wordpress/stylelint-config": "^0.5.0",
 		"@react-google-maps/api": "^2.7.0",
 		"@jest/core": "^27.4.5",
 		"@testing-library/jest-dom": "^5.16.1",
@@ -166,7 +166,6 @@
 		"follow-redirects": "^1.14.7",
 		"markdown-it": "^12.3.2",
 		"nth-check": "^2.0.1",
-		"postcss": "^8.2.13",
 		"react-dom": "17.0.2",
 		"react": "17.0.2"
 	},
