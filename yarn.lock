@@ -3541,10 +3541,10 @@
     memize "^1.1.0"
     rememo "^3.0.0"
 
-"@wordpress/scripts@^19.0.0":
-  version "19.2.2"
-  resolved "https://registry.yarnpkg.com/@wordpress/scripts/-/scripts-19.2.2.tgz#6afc09e29694ad6bd388cb447edb5a8bfa6c141c"
-  integrity sha512-cH1NVhBKScNHIHXc3Af7FBOdsZBrA72IJVcZwUx79/BJVEhPVG3B9Kn4xkXP9RtYCkWETQ+s/KodzolL9RuHmQ==
+"@wordpress/scripts@^19.2.3":
+  version "19.2.3"
+  resolved "https://registry.yarnpkg.com/@wordpress/scripts/-/scripts-19.2.3.tgz#0f9ac1e8e945b7674c46e6b6c326b6abb1c43153"
+  integrity sha512-jloIx5KlolaUy6dURK0UZNzfJtBrWXMQ2xeiKD2LLktAQQXu/rz63hFmQrjB49e97WdQJNA1yTiNxums2BeGDg==
   dependencies:
     "@svgr/webpack" "^5.5.0"
     "@wordpress/babel-preset-default" "^6.4.1"
@@ -3578,7 +3578,7 @@
     markdownlint "^0.23.1"
     markdownlint-cli "^0.27.1"
     merge-deep "^3.0.3"
-    mini-css-extract-plugin "^2.1.0"
+    mini-css-extract-plugin "^2.5.0"
     minimist "^1.2.0"
     npm-package-json-lint "^5.0.0"
     postcss "^8.2.15"
@@ -6830,10 +6830,10 @@ flickity@^2.3.0:
     unidragger "^2.4.0"
     unipointer "^2.4.0"
 
-follow-redirects@^1.14.0:
-  version "1.14.5"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.5.tgz#f09a5848981d3c772b5392309778523f8d85c381"
-  integrity sha512-wtphSXy7d4/OR+MvIFbCVBDzZ5520qV8XfPklSN5QtxuMUJZ+b0Wnst1e1lCDocfzuCkHqj8k0FpZqO+UIaKNA==
+follow-redirects@^1.14.0, follow-redirects@^1.14.7:
+  version "1.14.7"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.7.tgz#2004c02eb9436eee9a21446a6477debf17e81685"
+  integrity sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==
 
 for-in@^0.1.3:
   version "0.1.8"
@@ -9809,10 +9809,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-markdown-it@12.0.4:
-  version "12.0.4"
-  resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-12.0.4.tgz#eec8247d296327eac3ba9746bdeec9cfcc751e33"
-  integrity sha512-34RwOXZT8kyuOJy25oJNJoulO8L0bTHYWXcdZBYZqFnjIy3NgjeoM3FmPXIOFQ26/lSHYMr8oc62B6adxXcb3Q==
+markdown-it@12.0.4, markdown-it@^12.3.2:
+  version "12.3.2"
+  resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-12.3.2.tgz#bf92ac92283fe983fe4de8ff8abfb5ad72cd0c90"
+  integrity sha512-TchMembfxfNVpHkbtriWltGWc+m3xszaRD0CZup7GFFhzIgQqxIfn3eGj1yZpfuflzPvfkt611B2Q/Bsk1YnGg==
   dependencies:
     argparse "^2.0.1"
     entities "~2.1.0"
@@ -10059,10 +10059,10 @@ min-indent@^1.0.0:
   resolved "https://registry.yarnpkg.com/min-indent/-/min-indent-1.0.1.tgz#a63f681673b30571fbe8bc25686ae746eefa9869"
   integrity sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==
 
-mini-css-extract-plugin@^2.1.0:
-  version "2.4.5"
-  resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-2.4.5.tgz#191d6c170226037212c483af1180b4010b7b9eef"
-  integrity sha512-oEIhRucyn1JbT/1tU2BhnwO6ft1jjH1iCX9Gc59WFMg0n5773rQU0oyQ0zzeYFFuBfONaRbQJyGoPtuNseMxjA==
+mini-css-extract-plugin@^2.5.0:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-2.5.1.tgz#af8c7c40d08251f165ac3e046a5cae9d2c1a58c8"
+  integrity sha512-CRC6E2yedNjfOA3nQjpqAkpnranxhxmilhBPYtldnXcPT/QZb3aJFzvt0pp8W1jhuLR/E0zDa+QEHuC/HhhaLQ==
   dependencies:
     schema-utils "^4.0.0"
 
@@ -12122,7 +12122,7 @@ rsvp@^4.8.4:
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-4.8.5.tgz#c8f155311d167f68f21e168df71ec5b083113734"
   integrity sha512-nfMOlASu9OnRJo1mbEk2cz0D56a1MBNrJ7orjRZQG10XDyuvwksKbuXNp6qa+kbn839HwjwhBzhFmdsaEAfauA==
 
-rtlcss-webpack-plugin@^4.0.3:
+rtlcss-webpack-plugin@^4.0.6:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/rtlcss-webpack-plugin/-/rtlcss-webpack-plugin-4.0.6.tgz#4cc6ac4f1b0008bef485308a0e0717d8625bd920"
   integrity sha512-sWWr/SPVGckqniXpTXWZqh1tDh9LghlUygtnAeNKMrHEiq6xoPDWQo+/0NCZ8KPsju0hovWtvI+jS1kYjTDZwQ==
