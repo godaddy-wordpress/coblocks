@@ -150,7 +150,7 @@
 		"memize": "^1.0.5",
 		"po2json": "^1.0.0-alpha",
 		"prettier": "^2.5.1",
-		"prop-types": "^15.7.2",
+		"prop-types": "^15.8.1",
 		"puppeteer": ">=1.19.0",
 		"react-flickity-component": "^3.4.0",
 		"react-masonry-component": "^6.2.1",
