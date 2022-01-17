@@ -7388,11 +7388,6 @@ grunt-text-replace@^0.4.0:
   resolved "https://registry.yarnpkg.com/grunt-text-replace/-/grunt-text-replace-0.4.0.tgz#db9d9ce59e2fe49da277e9dbc195c3e11cfb16c2"
   integrity sha1-252c5Z4v5J2id+nbwZXD4Rz7FsI=
 
-grunt-wp-readme-to-markdown@^2.0.1:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/grunt-wp-readme-to-markdown/-/grunt-wp-readme-to-markdown-2.1.0.tgz#89f9eeba5d709565f919b4955b4a247547bcd836"
-  integrity sha512-32OYDYNaKgykI2vxVsbqzvYBA9xHJI3XqXHSwXbLzUd1wa0ZepoceHYCs4rYFLo3ZxKpPExxvVuH3gLUS/Fq1Q==
-
 grunt@^1.1.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/grunt/-/grunt-1.4.1.tgz#7d1e17db1f9c8108777f7273d6b9359755576f50"
