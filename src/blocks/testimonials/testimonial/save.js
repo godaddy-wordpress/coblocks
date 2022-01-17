@@ -1,8 +1,14 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * Internal dependencies.
  */
 import fromEntries from '../../../js/coblocks-fromEntries';
 import { hasEmptyAttributes } from '../../../utils/block-helpers';
+import { BackgroundStyles } from '../../../components/background';
 
 /**
  * WordPress dependencies.
@@ -42,9 +48,19 @@ export default function save( { attributes } ) {
 	const textClass = getColorClassName( 'color', textColor );
 
 	const styles = {
-		backgroundColor: backgroundClass ? backgroundClass : customBackgroundColor,
-		color: textClass ? textClass : customTextColor,
+		...BackgroundStyles( attributes ),
+		background: backgroundClass ? undefined : customBackgroundColor,
+		color: textClass ? undefined : customTextColor,
 	};
+
+	const classes = classnames(
+		'wp-block-coblocks-testimonial', {
+			[ backgroundClass ]: backgroundClass,
+			'has-background-color': backgroundColor || customBackgroundColor,
+			'has-text-color': textColor || customTextColor,
+			[ textClass ]: textClass,
+		}
+	);
 
 	const renderImage = () => {
 		const imageStyles = {
@@ -93,10 +109,8 @@ export default function save( { attributes } ) {
 		/>
 	);
 
-	console.log(styles);
-
 	return isEmpty( attributes ) ? null : (
-		<div className="wp-block-coblocks-testimonial" style={ styles }>
+		<div className={ classes } style={ styles }>
 			{ styleName === 'boxy' && (
 				<>
 					{ renderImage() }

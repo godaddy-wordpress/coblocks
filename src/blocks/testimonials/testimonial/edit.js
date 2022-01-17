@@ -10,10 +10,10 @@ import { __ } from '@wordpress/i18n';
 import { isBlobURL } from '@wordpress/blob';
 import { mediaUpload } from '@wordpress/editor';
 import { usePrevious } from '@wordpress/compose';
-import { BlockIcon, MediaUpload, MediaUploadCheck, RichText } from '@wordpress/block-editor';
+import { BlockIcon, getColorClassName, MediaUpload, MediaUploadCheck, RichText } from '@wordpress/block-editor';
 import { Button, ButtonGroup, DropZone, Spinner } from '@wordpress/components';
 import { closeSmall, image } from '@wordpress/icons';
-import { lazy, useEffect, useState } from '@wordpress/element';
+import { useEffect, useState } from '@wordpress/element';
 
 /**
  * Internal dependencies.
@@ -39,6 +39,8 @@ const Edit = ( props ) => {
 	} = props;
 
 	const {
+		customBackgroundColor,
+		customTextColor,
 		backgroundColor,
 		headingLevel,
 		name,
@@ -55,7 +57,9 @@ const Edit = ( props ) => {
 	const prevShowRole = usePrevious( showRole );
 	const prevShowImage = usePrevious( showImage );
 	const prevBackgroundColor = usePrevious( backgroundColor );
+	const prevCustomBackgroundColor = usePrevious( customBackgroundColor );
 	const prevTextColor = usePrevious( textColor );
+	const prevCustomTextColor = usePrevious( customTextColor );
 
 	useEffect( () => {
 		if ( showRole !== prevShowRole ) {
@@ -71,11 +75,19 @@ const Edit = ( props ) => {
 		}
 
 		if ( backgroundColor !== prevBackgroundColor ) {
-			setAttributes( { backgroundColor: backgroundColor ?? '' } );
+			setAttributes( { backgroundColor: backgroundColor ?? null } );
+		}
+
+		if ( customBackgroundColor !== prevCustomBackgroundColor ) {
+			setAttributes( { customBackgroundColor: customBackgroundColor ?? null } );
 		}
 
 		if ( textColor !== prevTextColor ) {
-			setAttributes( { textColor: textColor ?? '' } );
+			setAttributes( { textColor: textColor ?? null } );
+		}
+
+		if ( customTextColor !== prevCustomTextColor ) {
+			setAttributes( { customTextColor: customTextColor ?? null } );
 		}
 	}, [ isSelected, clientId, showImage, showRole, role, url, attributes, backgroundColor, textColor ] );
 
@@ -101,10 +113,22 @@ const Edit = ( props ) => {
 		allowedFormats: [ 'bold', 'italic' ],
 	};
 
+	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+	const textClass = getColorClassName( 'color', textColor );
+
 	const styles = {
-		backgroundColor: backgroundColor?.color,
-		color: textColor?.color,
+		backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+		color: textClass ? undefined : customTextColor,
 	};
+
+	const classes = classnames(
+		'wp-block-coblocks-testimonial', {
+			[ backgroundClass ]: backgroundClass,
+			'has-background-color': backgroundColor || customBackgroundColor,
+			'has-text-color': textColor || customTextColor,
+			[ textClass ]: textClass,
+		}
+	);
 
 	const renderPlaceholder = () => (
 		<figure className="wp-block-coblocks-testimonial__image wp-block-coblocks-testimonial__image--placeholder">
@@ -142,7 +166,7 @@ const Edit = ( props ) => {
 			url: attributeUrl,
 		} = attributes;
 
-		const classes = classnames( 'wp-block-coblocks-testimonial__image', {
+		const imageClasses = classnames( 'wp-block-coblocks-testimonial__image', {
 			'is-selected': isSelected,
 			'is-transient': isBlobURL( attributeUrl ),
 		} );
@@ -161,7 +185,7 @@ const Edit = ( props ) => {
 
 		return (
 			<div className="wp-block-coblocks-testimonial__image-container">
-				<figure className={ classes } style={ imageStyles }>
+				<figure className={ imageClasses } style={ imageStyles }>
 					{ dropZone }
 					{ isBlobURL( attributeUrl ) && <Spinner /> }
 					<img
@@ -237,7 +261,7 @@ const Edit = ( props ) => {
 				{ ...props }
 			/>
 			<div
-				className={ classnames( className ) }
+				className={ classes }
 				style={ styles }
 			>
 				{ styleName === 'boxy' && (

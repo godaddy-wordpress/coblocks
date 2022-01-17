@@ -45,6 +45,8 @@ const Edit = ( props ) => {
 		attributes,
 		className,
 		clientId,
+		customBackgroundColor,
+		customTextColor,
 		setAttributes,
 		backgroundColor,
 		textColor,
@@ -79,12 +81,13 @@ const Edit = ( props ) => {
 	}, [ columns, innerBlocks ] );
 
 	useEffect( () => {
-		console.log('Updating BGC for ', backgroundColor);
 		updateInnerAttributes( 'coblocks/testimonial', {
-			backgroundColor,
-			textColor,
+			backgroundColor: backgroundColor?.slug,
+			customBackgroundColor: backgroundColor?.class ? undefined : backgroundColor.color,
+			customTextColor: textColor?.class ? undefined : textColor.color,
+			textColor: textColor?.slug,
 		} );
-	}, [ backgroundColor, textColor ] );
+	}, [ backgroundColor, customBackgroundColor, customTextColor, textColor ] );
 
 	const classes = classnames( className, {
 		'has-columns': columns > 1,
@@ -96,7 +99,6 @@ const Edit = ( props ) => {
 
 	const updateInnerAttributes = ( blockName, newAttributes ) => {
 		innerBlocks.forEach( ( item ) => {
-			console.log('item', item);
 			if ( item.name === blockName ) {
 				updateBlockAttributes(
 					item.clientId,
