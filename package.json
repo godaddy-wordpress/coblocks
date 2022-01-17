@@ -129,7 +129,7 @@
 		"eslint-plugin-cypress": "^2.10.3",
 		"esm": "^3.2.25",
 		"expect-puppeteer": "^6.0.2",
-		"flickity": "^2.2.2",
+		"flickity": "^2.3.0",
 		"grunt": "^1.1.0",
 		"grunt-contrib-clean": "^2.0.0",
 		"grunt-contrib-compress": "^2.0.0",
