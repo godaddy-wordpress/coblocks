@@ -1,4 +1,6 @@
-[data-type="coblocks/faq-item"] {
+.block-editor-block-list__block[data-type="coblocks/faq-item"] {
+	min-height: 140px; // For the custom appender not to overlap.
+
 	&.wp-block {
 		margin: 0 !important;
 
