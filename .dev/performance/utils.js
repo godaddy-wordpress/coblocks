@@ -22,7 +22,7 @@ const { log, formats } = require( './logger' );
  * @param {Env=}    env    Additional environment variables to pass to the script.
  */
 function runShellScript( script, cwd, env = {} ) {
-	return new Promise( ( resolve, reject ) => {
+	return new Promise( ( resolve ) => {
 		childProcess.exec(
 			script,
 			{
@@ -38,7 +38,7 @@ function runShellScript( script, cwd, env = {} ) {
 				if ( error ) {
 					// eslint-disable-next-line no-console
 					console.log( stderr );
-					reject( error );
+					resolve( true );
 				} else {
 					resolve( true );
 				}
