@@ -3,8 +3,8 @@
  */
 import GalleryAttributes from './attributes';
 import GalleryClasses from './classes';
-import GalleryTransforms from './transforms';
 import GalleryStyles from './styles';
+import GalleryTransforms from './transforms';
 
 /**
  * Export
@@ -12,6 +12,6 @@ import GalleryStyles from './styles';
 export {
 	GalleryAttributes,
 	GalleryClasses,
-	GalleryTransforms,
 	GalleryStyles,
+	GalleryTransforms,
 };

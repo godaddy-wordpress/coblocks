@@ -172,23 +172,13 @@ workflows:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - css
-            - unit_testing_php_56
-            - unit_testing_php_73
-            - unit_testing_php_74
-            - unit_testing_php_80
-            - js
+            - build
       - e2e_firefox_wp_latest:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
-            - css
-            - unit_testing_php_56
-            - unit_testing_php_73
-            - unit_testing_php_74
-            - unit_testing_php_80
-            - js
+            - build
 
       # - e2e_chrome_wp_previous_major:
       #    filters:
@@ -203,23 +193,23 @@ workflows:
       #      - js
 
       # PERF TESTING
-      - master_perf_tests:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
+      - perf_tests_master:
+         filters:
+           tags:
+             only: /^(?!canary).*$/
 
-      - current_perf_tests:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
+      - perf_tests_current:
+         filters:
+           tags:
+             only: /^(?!canary).*$/
 
       - aggregate_perf_test_results:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
-          requires:
-            - current_perf_tests
-            - master_perf_tests
+         filters:
+           tags:
+             only: /^(?!canary).*$/
+         requires:
+           - perf_tests_current
+           - perf_tests_master
 
       - canary-release:
           filters:
@@ -352,30 +342,27 @@ commands:
     steps:
       - restore_cache:
           keys:
-            - composer-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}
+            - composer-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "composer.lock" }}
             - composer-deps-{{ .Environment.CACHE_VERSION }}
 
   restore_yarn_cache:
     steps:
       - restore_cache:
           keys:
-            - yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}
+            - yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
             - yarn-deps-{{ .Environment.CACHE_VERSION }}
 
   restore_update_cypress_cache:
     steps:
       - restore_cache:
           keys:
-            - cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}
+            - cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
             - cypress-deps-{{ .Environment.CACHE_VERSION }}
       - run:
           name: Install CyPress Binaries
           command: ./node_modules/.bin/cypress install
       - save_cache:
-          key: cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/Cypress
 
@@ -546,12 +533,6 @@ commands:
       - attach_workspace:
           at: ~/project
       - restore_composer_cache
-      - when:
-          condition: << parameters.useComposerV1 >>
-          steps:
-            - run:
-                name: Install Composer v1
-                command: sudo composer self-update --1
       - wait_for_mysql
       - install_wordpress_testing_suite
       - when:
@@ -577,7 +558,7 @@ jobs:
   # 3. Persist project folder to workspace for other jobs.
   build:
     docker:
-      - image: circleci/php:7.3-node
+      - image: circleci/php:7.4-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -595,7 +576,7 @@ jobs:
             PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
             yarn install --frozen-lockfile
       - save_cache:
-          key: yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
@@ -607,7 +588,7 @@ jobs:
             composer validate --strict
             composer install
       - save_cache:
-          key: composer-deps-{{ .Environment.CACHE_VERSION }}-{{ .Branch }}-{{ checksum "composer.lock" }}
+          key: composer-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "composer.lock" }}
           paths:
             - ~/project/vendor
       - run:
@@ -707,20 +688,17 @@ jobs:
   unit_testing_php_73:
     executor: php_73_mysql
     steps:
-      - run_php_unit_tests:
-          useComposerV1: true
+      - run_php_unit_tests
 
   unit_testing_php_74:
     executor: php_74_mysql
     steps:
-      - run_php_unit_tests:
-          useComposerV1: true
+      - run_php_unit_tests
 
   unit_testing_php_80:
     executor: php_80_mysql
     steps:
       - run_php_unit_tests:
-          useComposerV1: true
           reportCoverage: false # we are currently using an incompatible phpunit library for coverage reporting in PHP 8
 
   js:
@@ -786,25 +764,33 @@ jobs:
           browser: chrome
           wpversion: previous_major
 
-  master_perf_tests:
+  perf_tests_master:
     executor: php_74_node_browser_mysql
     steps:
       - checkout
       - setup_perf_tests
       - run_perf_tests:
           branch: master
+      - run:
+          name: Stop Server on Failure
+          when: on_fail
+          command: sudo kill $(ps ax | pgrep -f "server") > /dev/null 2>&1 &
       - persist_to_workspace:
           root: ~/
           paths:
             - ./*-median-results.json
 
-  current_perf_tests:
+  perf_tests_current:
     executor: php_74_node_browser_mysql
     steps:
       - checkout
       - setup_perf_tests
       - run_perf_tests:
           branch: ${CIRCLE_BRANCH}
+      - run:
+          name: Stop Server on Failure
+          when: on_fail
+          command: sudo kill $(ps ax | pgrep -f "server") > /dev/null 2>&1 &
       - persist_to_workspace:
           root: ~/
           paths:
@@ -826,7 +812,7 @@ jobs:
       - run:
           name: Check for performance test result files.
           command: |
-            if [ ! -f "../master-median-results.json" ] || [ ! -f "../$CIRCLE_BRANCH-median-results.json" ]; then
+            if [ ! -f "./master-median-results.json" ] || [ ! -f "./$CIRCLE_BRANCH-median-results.json" ]; then
               echo "Performance tests results not found."
               circleci-agent step halt
             fi
@@ -842,6 +828,9 @@ jobs:
       - run:
           name: Aggregate performance test results
           command: .dev/performance/cli-results.js get-test-results "${CIRCLE_BRANCH}"
+      - run:
+          name: Comment Performance Test Results on PR
+          command: bash .dev/bin/comment-perf-results-on-pr.sh
 
   # --------------------------------------------------
   # Internationalization Processes
@@ -890,7 +879,7 @@ jobs:
       - restore_composer_cache
       - run:
           name: Install PHP
-          command: sudo apt-get install php libapache2-mod-php php-mbstring php-xml php-curl
+          command: sudo apt update && sudo apt-get install php libapache2-mod-php php-mbstring php-xml php-curl
       - run:
           name: Install gettext
           command: sudo apt-get install gettext
@@ -950,7 +939,7 @@ jobs:
           command: sudo apt-get update && sudo apt-get install subversion
       - run:
           name: Install PHP
-          command: sudo apt-get install php libapache2-mod-php php-mbstring php-xml php-curl
+          command: sudo apt update && sudo apt-get install php libapache2-mod-php php-mbstring php-xml php-curl
       - disable_xdebug_php_extension
       - run:
           name: Install Composer

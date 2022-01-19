@@ -57,13 +57,21 @@ describe( name, () => {
 		expect( serializedBlock ).toContain( 'has-lightbox' );
 	} );
 
-	it( 'should have asNavFor flickity setting of \'\.${ attributes.navForClass }\' with thumbnails enabled.', () => {
-		block.attributes = { ...block.attributes, thumbnails: true, navForClass: 'has-nav-abc123' };
+	it( 'should have thumbnails on swiper if thumbnails enabled', () => {
+		block.attributes = { ...block.attributes, thumbnails: true };
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '.has-nav-abc123' );
-	} );
+		expect( serializedBlock ).toContain( 'wp-block-coblocks-gallery-carousel-thumbnail-pagination' );
+	})
+
+	it( 'should have navigation swiper setting of \'\.${ attributes.navigation }\' with arrow navigation buttons enabled', () => {
+		block.attributes = { ...block.attributes, prevNextButtons: true };
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'nav-button__prev' );
+	});
 
 	it( 'should have className \'has-responsive-height\' with responsiveHeight enabled.', () => {
 		block.attributes = { ...block.attributes, responsiveHeight: true };
@@ -95,70 +103,43 @@ describe( name, () => {
 	} );
 
 	it( 'should have \'autoPlay\' property set in the data-flickity attribute when autoPlay enabled.', () => {
-		block.attributes = { ...block.attributes, autoPlay: false };
+		block.attributes = { ...block.attributes, autoPlay: false, autoPlaySpeed: 3000 };
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 
-		let flickityData = {};
+		let swiperData = {};
 
 		blockDOM = new JSDOM( serializedBlock );
-		flickityData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.flickity );
-		expect( flickityData.autoPlay ).toBe( false );
+		swiperData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel')[ 0 ].dataset.swiper);
+		expect( swiperData.autoPlay ).toBe( false );
 
 		block.attributes = { ...block.attributes, autoPlay: true };
 		serializedBlock = serialize( block );
 
 		blockDOM = new JSDOM( serializedBlock );
-		flickityData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.flickity );
-		expect( flickityData.autoPlay ).not.toBe( false );
-
-		block.attributes = { ...block.attributes, autoPlay: true, autoPlaySpeed: 2000 };
-		serializedBlock = serialize( block );
-
-		blockDOM = new JSDOM( serializedBlock );
-		flickityData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.flickity );
-		expect( flickityData.autoPlay ).toBe( 2000 );
+		swiperData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel')[ 0 ].dataset.swiper);
+		expect( swiperData.autoPlay ).toBe( true );
 	} );
 
-	it( 'should have \'draggable\' property set in the data-flickity attribute when draggable enabled.', () => {
-		block.attributes = { ...block.attributes, draggable: false };
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-
-		let flickityData = {};
-
-		blockDOM = new JSDOM( serializedBlock );
-		flickityData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.flickity );
-		expect( flickityData.draggable ).toBe( false );
-
+	it( 'should have \'draggable\' property set in the data-swiper attribute when draggable enabled.', () => {
 		block.attributes = { ...block.attributes, draggable: true };
 		serializedBlock = serialize( block );
 
-		blockDOM = new JSDOM( serializedBlock );
-		flickityData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.flickity );
-		expect( flickityData.draggable ).not.toBe( false );
-	} );
-
-	it( 'should have \'prevNextButtons\' property set in the data-flickity attribute when prevNextButtons enabled.', () => {
-		block.attributes = { ...block.attributes, prevNextButtons: false };
-		serializedBlock = serialize( block );
-
 		expect( serializedBlock ).toBeDefined();
 
-		let flickityData = {};
+		let swiperData = {};
 
 		blockDOM = new JSDOM( serializedBlock );
-		flickityData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.flickity );
-		expect( flickityData.prevNextButtons ).toBe( false );
+		swiperData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.swiper );
+		expect( swiperData.draggable ).toBe( true );
 
-		block.attributes = { ...block.attributes, prevNextButtons: true };
+		block.attributes = { ...block.attributes, draggable: false };
 		serializedBlock = serialize( block );
 
 		blockDOM = new JSDOM( serializedBlock );
-		flickityData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.flickity );
-		expect( flickityData.prevNextButtons ).not.toBe( false );
+		swiperData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.swiper );
+		expect( swiperData.draggable ).toBe( false );
 	} );
 
 	it( 'should have \'pageDots\' property set in the data-flickity attribute when pageDots enabled.', () => {
@@ -167,18 +148,18 @@ describe( name, () => {
 
 		expect( serializedBlock ).toBeDefined();
 
-		let flickityData = {};
+		let swiperData = {};
 
 		blockDOM = new JSDOM( serializedBlock );
-		flickityData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.flickity );
-		expect( flickityData.pageDots ).toBe( false );
+		swiperData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.swiper );
+		expect( swiperData.pageDots ).toBe( false );
 
 		block.attributes = { ...block.attributes, pageDots: true };
 		serializedBlock = serialize( block );
 
 		blockDOM = new JSDOM( serializedBlock );
-		flickityData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.flickity );
-		expect( flickityData.pageDots ).not.toBe( false );
+		swiperData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.swiper );
+		expect( swiperData.pageDots ).toBe( true );
 	} );
 
 	it( 'should have className \'has-aligned-cells\' with alignCells enabled.', () => {

@@ -1,16 +1,10 @@
 /**
  * WordPress Dependencies
  */
-import { addFilter } from '@wordpress/hooks';
-import { hasBlockSupport, getBlockSupport } from '@wordpress/blocks';
+import { getBlockSupport, hasBlockSupport } from '@wordpress/blocks';
 
-addFilter(
-	'blocks.registerBlockType',
-	'coblocks/GutterControl/attributes',
-	addAttributes
-);
-
-function addAttributes( settings, name ) {
+const applyAttributes = ( settings ) => {
+	const { name } = settings;
 	if ( ! name.startsWith( 'coblocks/' ) ) {
 		return settings;
 	}
@@ -24,14 +18,16 @@ function addAttributes( settings, name ) {
 	settings.attributes = {
 		...settings.attributes,
 		gutter: {
-			type: 'string',
 			default: supportOverride.default || 'small',
+			type: 'string',
 		},
 		gutterCustom: {
-			type: 'string',
 			default: supportOverride.customDefault?.toString() || '3',
+			type: 'string',
 		},
 	};
 
 	return settings;
-}
+};
+
+export { applyAttributes };

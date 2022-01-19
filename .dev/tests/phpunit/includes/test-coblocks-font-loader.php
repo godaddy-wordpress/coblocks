@@ -8,9 +8,9 @@ class CoBlocks_Font_Loader_Tests extends WP_UnitTestCase {
 
 	private $coblocks_font_loader;
 
-	public function setUp() {
+	public function set_up() {
 
-		parent::setUp();
+		parent::set_up();
 
 		$this->coblocks_font_loader = new CoBlocks_Font_Loader();
 
@@ -18,9 +18,9 @@ class CoBlocks_Font_Loader_Tests extends WP_UnitTestCase {
 
 	}
 
-	public function tearDown() {
+	public function tear_down() {
 
-		parent::tearDown();
+		parent::tear_down();
 
 		unset( $GLOBALS['current_screen'] );
 

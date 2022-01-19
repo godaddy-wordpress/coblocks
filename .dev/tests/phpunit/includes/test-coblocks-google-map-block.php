@@ -8,9 +8,9 @@ class CoBlocks_Google_Map_Block_Tests extends WP_UnitTestCase {
 
 	private $coblocks_google_map_block;
 
-	public function setUp() {
+	public function set_up() {
 
-		parent::setUp();
+		parent::set_up();
 
 		set_current_screen( 'dashboard' );
 
@@ -18,9 +18,9 @@ class CoBlocks_Google_Map_Block_Tests extends WP_UnitTestCase {
 
 	}
 
-	public function tearDown() {
+	public function tear_down() {
 
-		parent::tearDown();
+		parent::tear_down();
 
 		unset( $GLOBALS['current_screen'] );
 
@@ -168,8 +168,9 @@ class CoBlocks_Google_Map_Block_Tests extends WP_UnitTestCase {
 		do_action( 'wp_enqueue_scripts' );
 
 		$wp_scripts = wp_scripts();
+		$site_url = str_replace( '/', '\/', get_site_url() );
 
-		$this->assertRegExp( '/var coblocksGoogleMaps = {"url":"http:\/\/example.org\/wp-content\/plugins/', stripslashes_deep( $wp_scripts->registered['coblocks-google-maps']->extra['data'] ) );
+		$this->assertRegExp( '/var coblocksGoogleMaps = {"url":"' . $site_url . '\/wp-content\/plugins/', stripslashes_deep( $wp_scripts->registered['coblocks-google-maps']->extra['data'] ) );
 
 	}
 

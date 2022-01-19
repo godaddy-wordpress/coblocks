@@ -6,9 +6,9 @@
  */
 class CoBlocks_Tests extends WP_UnitTestCase {
 
-	public function setUp() {
+	public function set_up() {
 
-		parent::setUp();
+		parent::set_up();
 
 		set_current_screen( 'dashboard' );
 
@@ -23,9 +23,9 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 
 	}
 
-	public function tearDown() {
+	public function tear_down() {
 
-		parent::tearDown();
+		parent::tear_down();
 
 		unset( $GLOBALS['current_screen'] );
 
@@ -185,7 +185,6 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 				'dist/coblocks-1.js',
 				'dist/js/coblocks-accordion-polyfill.js',
 				'dist/js/coblocks-checkbox-required.js',
-				'dist/js/coblocks-datepicker.js',
 				'dist/js/coblocks-fromEntries.js',
 				'dist/js/coblocks-google-maps.js',
 				'dist/js/coblocks-google-recaptcha.js',
@@ -197,7 +196,6 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 				'dist/js/vendors/slick.js',
 				'src/js/coblocks-accordion-polyfill.js',
 				'src/js/coblocks-checkbox-required.js',
-				'src/js/coblocks-datepicker.js',
 				'src/js/coblocks-fromEntries.js',
 				'src/js/coblocks-google-maps.js',
 				'src/js/coblocks-google-recaptcha.js',

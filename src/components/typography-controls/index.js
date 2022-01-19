@@ -1,3 +1,5 @@
+/*global coblocksBlockData*/
+
 /**
  * External dependencies
  */
@@ -271,6 +273,10 @@ export default compose( [
 	applyFallbackStyles,
 	ifCondition( () => {
 		const [ typographyEnabled ] = useEntityProp( 'root', 'site', 'coblocks_typography_controls_enabled' );
-		return typographyEnabled;
+
+		if ( Boolean( coblocksBlockData.typographyControlsEnabled ) === true && typographyEnabled !== false ) {
+			return true;
+		}
+		return false;
 	} ),
 ] )( TypographyControls );

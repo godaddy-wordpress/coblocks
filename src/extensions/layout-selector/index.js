@@ -7,30 +7,31 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-import { __, sprintf } from '@wordpress/i18n';
-import { Component, isValidElement } from '@wordpress/element';
 import { applyFilters } from '@wordpress/hooks';
+
 import { registerPlugin } from '@wordpress/plugins';
-import { compose, ifCondition } from '@wordpress/compose';
-import { withSelect, useSelect, withDispatch } from '@wordpress/data';
 import { useEntityProp } from '@wordpress/core-data';
-import { Button, Modal, Icon, SVG, Path, DropdownMenu, MenuGroup, MenuItem } from '@wordpress/components';
+import { __, sprintf } from '@wordpress/i18n';
+import { Button, DropdownMenu, Icon, MenuGroup, MenuItem, Modal, Path, SVG } from '@wordpress/components';
+import { Component, isValidElement } from '@wordpress/element';
+import { compose, ifCondition } from '@wordpress/compose';
+import { useSelect, withDispatch, withSelect } from '@wordpress/data';
 
 /**
  * Internal dependencies
  */
-import './store';
 import { LayoutSelectorResults } from './layout-selector-results';
-import CoBlocksLayoutSelectorFill, { Slot } from './layout-selector-slot';
-import useComputedLayouts from './hooks/useComputedLayouts';
 import useCategories from './hooks/useCategories';
+import useComputedLayouts from './hooks/useComputedLayouts';
+import CoBlocksLayoutSelectorFill, { Slot } from './layout-selector-slot';
 import './settings-modal-control';
+import './store';
 
 const SidebarItem = ( { slug, title, isSelected, onClick } ) => {
 	return (
-		<li key={ slug } className="coblocks-layout-selector__sidebar__item">
-			<a href={ `#${ slug }` }
-				className={ classnames( { 'is-selected': isSelected } ) }
+		<li className="coblocks-layout-selector__sidebar__item" key={ slug }>
+			<a className={ classnames( { 'is-selected': isSelected } ) }
+				href={ `#${ slug }` }
 				onClick={ ( event ) => {
 					event.preventDefault();
 					onClick();
@@ -51,6 +52,7 @@ class LayoutSelector extends Component {
 			isMobile,
 			useEmptyTemplateLayout,
 			useTemplateLayout,
+			layouts,
 		} = this.props;
 
 		const settings = applyFilters( 'coblocks-layout-selector-controls', [] );
@@ -84,14 +86,14 @@ class LayoutSelector extends Component {
 
 		return ! isActive ? null : (
 			<Modal
+				className="coblocks-layout-selector-modal"
+				onRequestClose={ useEmptyTemplateLayout }
 				title={ (
 					<>
 						<div>{ __( 'Add New Page', 'coblocks' ) }</div>
 						<span>{ __( 'Pick one of these layouts or start with a blank page.', 'coblocks' ) }</span>
 					</>
-				) }
-				onRequestClose={ useEmptyTemplateLayout }
-				className="coblocks-layout-selector-modal">
+				) }>
 
 				<div className="coblocks-layout-selector">
 
@@ -124,8 +126,8 @@ class LayoutSelector extends Component {
 							<div className="coblocks-layout-selector__topbar__right">
 								<Button
 									className="coblocks-layout-selector__add-button"
-									onClick={ useEmptyTemplateLayout }
-									isLink>
+									isLink
+									onClick={ useEmptyTemplateLayout }>
 									<span><Icon icon="plus" size={ 16 } /></span> { __( 'Add blank page', 'coblocks' ) }
 								</Button>
 							</div>
@@ -140,20 +142,20 @@ class LayoutSelector extends Component {
 							<ul className="coblocks-layout-selector__sidebar__items">
 								{ categories.map( ( category, index ) => (
 									<SidebarItem
+										isSelected={ category.slug === selectedCategory }
 										key={ index }
+										onClick={ () => updateSelectedCategory( category.slug ) }
 										slug={ category.slug }
 										title={ category.title }
-										isSelected={ category.slug === selectedCategory }
-										onClick={ () => updateSelectedCategory( category.slug ) }
 									/>
 								) ) }
 							</ul>
 
 							<Button
 								className="coblocks-layout-selector__add-button"
-								onClick={ useEmptyTemplateLayout }
-								isLink>
-								<span><SVG width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><Path d="M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z" /></SVG></span>
+								isLink
+								onClick={ useEmptyTemplateLayout }>
+								<span><SVG aria-hidden="true" focusable="false" height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><Path d="M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z" /></SVG></span>
 								{ __( 'Add blank page', 'coblocks' ) }
 							</Button>
 						</aside>
@@ -161,8 +163,8 @@ class LayoutSelector extends Component {
 
 					<div className="coblocks-layout-selector__content">
 						<LayoutSelectorResults
-							layouts={ this.props.layouts }
 							category={ selectedCategory }
+							layouts={ layouts }
 							onInsert={ ( layout ) => useTemplateLayout( layout ) }
 						/>
 					</div>
@@ -196,10 +198,10 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 				const layouts = useComputedLayouts();
 
 				return {
+					categories: useCategories( layouts ),
 					isActive: isTemplateSelectorActive(),
 					isMobile: isViewportMatch( '< medium' ),
 					layouts,
-					categories: useCategories( layouts ),
 					selectedCategory: getSelectedCategory(),
 				};
 			} ),
@@ -214,32 +216,32 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 
 				return {
 					closeTemplateSelector,
-					createWarningNotice,
 					createSuccessNotice,
+					createWarningNotice,
 					editPost,
 					updateSelectedCategory,
+
+					useEmptyTemplateLayout: () => {
+						editPost( { blocks: [], title: '' } );
+						closeTemplateSelector();
+					},
 
 					// Replace any blocks with the selected layout.
 					useTemplateLayout: ( layout ) => {
 						editPost( {
-							title: layout.label,
 							blocks: layout.blocks,
+							title: layout.label,
 						} );
 						closeTemplateSelector();
 						incrementLayoutUsage( layout );
 						createSuccessNotice(
 							sprintf(
 								// translators: %s is the post title.
-								__( '"%s" layout has been added to the page.', 'nextgen' ),
+								__( '"%s" layout has been added to the page.', 'coblocks' ),
 								layout.label
 							),
 							{ type: 'snackbar' }
 						);
-					},
-
-					useEmptyTemplateLayout: () => {
-						editPost( { title: '', blocks: [] } );
-						closeTemplateSelector();
 					},
 				};
 			} ),

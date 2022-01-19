@@ -227,31 +227,3 @@
 		margin-right: 0;
 	}
 }
-
-// Added for Gutenberg 6.3+
-.block-editor-block-list__layout .block-editor-block-list__block[data-type="coblocks/form"].is-selected,
-.block-editor-block-list__layout .block-editor-block-list__block[data-type="coblocks/form"].has-child-selected {
-
-	.coblocks-form {
-
-		[data-block] {
-			margin-bottom: 42px;
-		}
-	}
-}
-
-.block-editor-block-list__layout .block-editor-block-list__block[data-type="coblocks/form"] .wp-block:first-child {
-
-	[data-block] {
-		margin-top: 2px;
-	}
-}
-
-.block-editor-block-list__layout
-.block-editor-block-list__block[data-type="coblocks/form"].has-child-selected > .block-editor-block-list__block-edit > [data-block] > div
-.block-editor-inner-blocks,
-.block-editor-block-list__block[data-type="coblocks/form"].is-selected > .block-editor-block-list__block-edit > [data-block] > div > .block-editor-inner-blocks
-.block-editor-block-list__layout {
-	padding: 14px;
-	padding-bottom: 0;
-}

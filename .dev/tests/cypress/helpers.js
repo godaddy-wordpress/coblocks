@@ -106,21 +106,12 @@ export function disableGutenbergFeatures() {
 			safeWin.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'fixedToolbar' );
 		}
 
-		if ( !! safeWin.wp.data.select( 'core/nux' ) ) { // < GB 7.2 || < WP 5.4
-			if ( ! safeWin.wp.data.select( 'core/nux' ).areTipsEnabled() ) {
-				return;
-			}
-
-			safeWin.wp.data.dispatch( 'core/nux' ).disableTips();
-			safeWin.wp.data.dispatch( 'core/editor' ).disablePublishSidebar();
-		} else { // GB 7.2 || WP 5.4
-			if ( ! safeWin.wp.data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
-				return;
-			}
-
-			safeWin.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
-			safeWin.wp.data.dispatch( 'core/editor' ).disablePublishSidebar();
+		if ( ! safeWin.wp.data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
+			return;
 		}
+
+		safeWin.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
+		safeWin.wp.data.dispatch( 'core/editor' ).disablePublishSidebar();
 	} );
 }
 
@@ -147,7 +138,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search, .components-search-control__input' ).click().type( blockName );
 
 	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
-	cy.get( '.editor-block-list-item' + targetClassName ).first().click( { force: true } );
+	cy.get( '.editor-block-list-item' + targetClassName ).first().click();
 
 	// Make sure the block was added to our page
 	cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"]` ).should( 'exist' ).then( () => {
@@ -233,9 +224,8 @@ export function clearBlocks() {
  */
 export function getBlockSlug() {
 	const specFile = Cypress.spec.name;
-	const fileBase = ( specFile.split( '/' ).pop().replace( '.cypress.js', '' ) );
 
-	return fileBase;
+	return ( specFile.split( '/' ).pop().replace( '.cypress.js', '' ) );
 }
 
 /**
@@ -248,7 +238,7 @@ export function setBlockStyle( style ) {
 
 	cy.get( '.edit-post-sidebar [class*="editor-block-styles"]' )
 		.contains( RegExp( style, 'i' ) )
-		.click( { force: true } );
+		.click();
 }
 
 /**
@@ -314,6 +304,8 @@ export const upload = {
 		selectBlock( selectBlockBy );
 
 		cy.get( '.coblocks-gallery-item__button-replace' ).should( 'not.exist' );
+
+		cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"]` ).click();
 
 		cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"] img` ).first().click( { force: true } );
 
@@ -476,20 +468,6 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 }
 
 /**
- * Press the Undo button in the header toolbar.
- */
-export function doEditorUndo() {
-	cy.get( '.editor-history__undo' ).click( { force: true } );
-}
-
-/**
- * Press the Redo button in the header toolbar.
- */
-export function doEditorRedo() {
-	cy.get( '.editor-history__redo' ).click();
-}
-
-/**
  * Open the Editor Settings panel.
  */
 export function openEditorSettingsModal() {
@@ -501,38 +479,6 @@ export function openEditorSettingsModal() {
 
 	// Ensure settings have loaded.
 	cy.get( '.coblocks-settings-modal input[type="checkbox"]' ).should( 'have.length', 6 );
-}
-
-/**
- * Turn off a setting from the Editor Settings panel.
- *
- * @param {string} settingName The label of the setting control.
- */
-export function turnOffEditorSetting( settingName ) {
-	cy.get( '.components-base-control' ).contains( settingName ).parent().find( 'input[type=checkbox]' )
-		.then( ( element ) => {
-			if ( element[ 0 ].checked ) {
-				element.click();
-			}
-		} );
-
-	cy.get( '.components-base-control' ).contains( settingName ).parent().find( 'input[type=checkbox]' ).should( 'not.be.checked' );
-}
-
-/**
- * Turn on a setting from the Editor Settings panel.
- *
- * @param {string} settingName The label of the setting control.
- */
-export function turnOnEditorSetting( settingName ) {
-	cy.get( '.components-base-control' ).contains( settingName ).parent().find( 'input[type=checkbox]' )
-		.then( ( element ) => {
-			if ( ! element[ 0 ].checked ) {
-				element.click();
-			}
-		} );
-
-	cy.get( '.components-base-control' ).contains( settingName ).parent().find( 'input[type=checkbox]' ).should( 'be.checked' );
 }
 
 /**
@@ -559,19 +505,6 @@ export function hexToRGB( hex ) {
 	}
 
 	return 'rgb(' + +r + ', ' + +g + ', ' + +b + ')';
-}
-
-/**
- * Capitalize the first letter of each word in a string.
- * eg: hello world => Hello World
- *
- * @param {string} string The text to capitalize.
- * @return {string} Altered string with capitalized letters.
- */
-export function capitalize( string ) {
-	return string.replace( /(?:^|\s)\S/g, function( a ) {
-		return a.toUpperCase();
-	} );
 }
 
 function getIframeDocument( containerClass ) {

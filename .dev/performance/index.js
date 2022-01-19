@@ -11,6 +11,7 @@ const { mapValues } = require( 'lodash' );
 const { formats, log } = require( './logger' );
 const {
 	runShellScript,
+	runShellScriptIgnoreFailing,
 	readJSONFile,
 	askForConfirmation,
 	getRandomTemporaryPath,
@@ -20,9 +21,9 @@ const config = require( './config' );
 
 /**
  * @typedef WPPerformanceCommandOptions
- * @property {boolean=} ci          Run on CI.
- * @property {string=}  testsBranch The branch whose performance test files will be used for testing.
- * @property {string=}  wpVersion   The WordPress version to be used as the base install for testing.
+ * @property {boolean} ci          Run on CI.
+ * @property {string}  testsBranch The branch whose performance test files will be used for testing.
+ * @property {string}  wpVersion   The WordPress version to be used as the base install for testing.
  */
 
 /**
@@ -37,22 +38,22 @@ const config = require( './config' );
 
 /**
  * @typedef WPPerformanceResults
- * @property {number=} load              Load Time.
- * @property {number=} type              Average type time.
- * @property {number=} minType           Minium type time.
- * @property {number=} maxType           Maximum type time.
- * @property {number=} focus             Average block selection time.
- * @property {number=} minFocus          Min block selection time.
- * @property {number=} maxFocus          Max block selection time.
- * @property {number=} inserterOpen      Average time to open global inserter.
- * @property {number=} minInserterOpen   Min time to open global inserter.
- * @property {number=} maxInserterOpen   Max time to open global inserter.
- * @property {number=} inserterSearch    Average time to open global inserter.
- * @property {number=} minInserterSearch Min time to open global inserter.
- * @property {number=} maxInserterSearch Max time to open global inserter.
- * @property {number=} inserterHover     Average time to move mouse between two block item in the inserter.
- * @property {number=} minInserterHover  Min time to move mouse between two block item in the inserter.
- * @property {number=} maxInserterHover  Max time to move mouse between two block item in the inserter.
+ * @property {number} load              Load Time.
+ * @property {number} type              Average type time.
+ * @property {number} minType           Minium type time.
+ * @property {number} maxType           Maximum type time.
+ * @property {number} focus             Average block selection time.
+ * @property {number} minFocus          Min block selection time.
+ * @property {number} maxFocus          Max block selection time.
+ * @property {number} inserterOpen      Average time to open global inserter.
+ * @property {number} minInserterOpen   Min time to open global inserter.
+ * @property {number} maxInserterOpen   Max time to open global inserter.
+ * @property {number} inserterSearch    Average time to open global inserter.
+ * @property {number} minInserterSearch Min time to open global inserter.
+ * @property {number} maxInserterSearch Max time to open global inserter.
+ * @property {number} inserterHover     Average time to move mouse between two block item in the inserter.
+ * @property {number} minInserterHover  Min time to move mouse between two block item in the inserter.
+ * @property {number} maxInserterHover  Max time to move mouse between two block item in the inserter.
  */
 
 /**
@@ -98,22 +99,22 @@ function formatTime( number ) {
  */
 function curateResults( results ) {
 	return {
-		load: average( results.load ),
-		type: average( results.type ),
-		minType: Math.min( ...results.type ),
-		maxType: Math.max( ...results.type ),
 		focus: average( results.focus ),
-		minFocus: Math.min( ...results.focus ),
-		maxFocus: Math.max( ...results.focus ),
-		inserterOpen: average( results.inserterOpen ),
-		minInserterOpen: Math.min( ...results.inserterOpen ),
-		maxInserterOpen: Math.max( ...results.inserterOpen ),
-		inserterSearch: average( results.inserterSearch ),
-		minInserterSearch: Math.min( ...results.inserterSearch ),
-		maxInserterSearch: Math.max( ...results.inserterSearch ),
 		inserterHover: average( results.inserterHover ),
-		minInserterHover: Math.min( ...results.inserterHover ),
+		inserterOpen: average( results.inserterOpen ),
+		inserterSearch: average( results.inserterSearch ),
+		load: average( results.load ),
+		maxFocus: Math.max( ...results.focus ),
 		maxInserterHover: Math.max( ...results.inserterHover ),
+		maxInserterOpen: Math.max( ...results.inserterOpen ),
+		maxInserterSearch: Math.max( ...results.inserterSearch ),
+		maxType: Math.max( ...results.type ),
+		minFocus: Math.min( ...results.focus ),
+		minInserterHover: Math.min( ...results.inserterHover ),
+		minInserterOpen: Math.min( ...results.inserterOpen ),
+		minInserterSearch: Math.min( ...results.inserterSearch ),
+		minType: Math.min( ...results.type ),
+		type: average( results.type ),
 	};
 }
 
@@ -146,7 +147,7 @@ async function setUpGitBranch( branch, environmentDirectory ) {
  * @return {Promise<WPPerformanceResults>} Performance results for the branch.
  */
 async function runTestSuite( testSuite, performanceTestDirectory ) {
-	await runShellScript(
+	await runShellScriptIgnoreFailing(
 		`npx wp-scripts test-e2e --config .dev/performance/jest.performance.config.js -- .dev/performance/tests/post-editor.test.js`,
 		performanceTestDirectory
 	);
@@ -233,22 +234,19 @@ async function runPerformanceTests( branches, options ) {
 		results[ testSuite ] = {};
 		/** @type {Array<Record<string, WPPerformanceResults>>} */
 		const rawResults = [];
-		// Run the test three times
-		for ( let i = 0; i < 3; i++ ) {
+		// Run the test two times
+		for ( let i = 0; i < 2; i++ ) {
 			rawResults[ i ] = {};
 			for ( const branch of branches ) {
 				const environmentDirectory = branchDirectories[ branch ];
-				log( '    >> Installing dependencies and building packages' );
-				await runShellScript(
-					'yarn && yarn build',
-					`${ environmentDirectory }/wp-content/plugins/coblocks`
-				);
-
 				log( '    >> Branch: ' + branch + ', Suite: ' + testSuite );
-				log( '        >> Starting the environment.' );
-				await runShellScript(
-					`./vendor/bin/wp server --host=0.0.0.0 --port=8889 --allow-root --path=${ environmentDirectory } > /dev/null 2>&1 &`
-				);
+				// Start the server on the first iteration
+				if ( i === 0 ) {
+					log( '        >> Starting the environment.' );
+					await runShellScript(
+						`./vendor/bin/wp server --host=0.0.0.0 --port=8889 --allow-root --path=${ environmentDirectory } > /dev/null 2>&1 &`
+					);
+				}
 
 				log( '        >> Running the test.' );
 				rawResults[ i ][ branch ] = await runTestSuite(
@@ -256,8 +254,11 @@ async function runPerformanceTests( branches, options ) {
 					`${ environmentDirectory }/wp-content/plugins/coblocks`
 				);
 
-				log( '        >> Stopping the environment' );
-				await runShellScript( 'sudo kill $(ps ax | pgrep -f "server") > /dev/null 2>&1 &' );
+				// Stop the environment on the 2nd iteration
+				if ( i === 1 ) {
+					log( '        >> Stopping the environment' );
+					await runShellScript( 'sudo kill $(ps ax | pgrep -f "server") > /dev/null 2>&1 &' );
+				}
 			}
 		}
 
@@ -265,40 +266,40 @@ async function runPerformanceTests( branches, options ) {
 		for ( const branch of branches ) {
 			const medians = mapValues(
 				{
-					load: rawResults.map( ( r ) => r[ branch ].load ),
-					type: rawResults.map( ( r ) => r[ branch ].type ),
-					minType: rawResults.map( ( r ) => r[ branch ].minType ),
-					maxType: rawResults.map( ( r ) => r[ branch ].maxType ),
 					focus: rawResults.map( ( r ) => r[ branch ].focus ),
-					minFocus: rawResults.map( ( r ) => r[ branch ].minFocus ),
-					maxFocus: rawResults.map( ( r ) => r[ branch ].maxFocus ),
+					inserterHover: rawResults.map(
+						( r ) => r[ branch ].inserterHover
+					),
 					inserterOpen: rawResults.map(
 						( r ) => r[ branch ].inserterOpen
-					),
-					minInserterOpen: rawResults.map(
-						( r ) => r[ branch ].minInserterOpen
-					),
-					maxInserterOpen: rawResults.map(
-						( r ) => r[ branch ].maxInserterOpen
 					),
 					inserterSearch: rawResults.map(
 						( r ) => r[ branch ].inserterSearch
 					),
-					minInserterSearch: rawResults.map(
-						( r ) => r[ branch ].minInserterSearch
+					load: rawResults.map( ( r ) => r[ branch ].load ),
+					maxFocus: rawResults.map( ( r ) => r[ branch ].maxFocus ),
+					maxInserterHover: rawResults.map(
+						( r ) => r[ branch ].maxInserterHover
+					),
+					maxInserterOpen: rawResults.map(
+						( r ) => r[ branch ].maxInserterOpen
 					),
 					maxInserterSearch: rawResults.map(
 						( r ) => r[ branch ].maxInserterSearch
 					),
-					inserterHover: rawResults.map(
-						( r ) => r[ branch ].inserterHover
-					),
+					maxType: rawResults.map( ( r ) => r[ branch ].maxType ),
+					minFocus: rawResults.map( ( r ) => r[ branch ].minFocus ),
 					minInserterHover: rawResults.map(
 						( r ) => r[ branch ].minInserterHover
 					),
-					maxInserterHover: rawResults.map(
-						( r ) => r[ branch ].maxInserterHover
+					minInserterOpen: rawResults.map(
+						( r ) => r[ branch ].minInserterOpen
 					),
+					minInserterSearch: rawResults.map(
+						( r ) => r[ branch ].minInserterSearch
+					),
+					minType: rawResults.map( ( r ) => r[ branch ].minType ),
+					type: rawResults.map( ( r ) => r[ branch ].type ),
 				},
 				median
 			);

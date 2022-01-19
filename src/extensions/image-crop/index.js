@@ -14,9 +14,6 @@ import CropControl from '../../components/crop-settings/crop-control';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { addFilter } from '@wordpress/hooks';
-import { createHigherOrderComponent } from '@wordpress/compose';
-import { Fragment } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody } from '@wordpress/components';
 
@@ -24,31 +21,31 @@ const supportedBlocks = [
 	'core/cover',
 ];
 
-const addPositioningControl = ( settings, name ) => {
-	if ( ! supportedBlocks.includes( name ) ) {
+const applyAttributes = ( settings ) => {
+	if ( ! supportedBlocks.includes( settings.name ) ) {
 		return settings;
 	}
 
 	settings.attributes = assign( settings.attributes, {
-		cropX: {
-			type: 'number',
-			default: 0,
-		},
-		cropY: {
-			type: 'number',
-			default: 0,
-		},
-		cropWidth: {
-			type: 'number',
-			default: 100,
-		},
 		cropHeight: {
-			type: 'number',
 			default: 100,
+			type: 'number',
 		},
 		cropRotation: {
-			type: 'number',
 			default: 0,
+			type: 'number',
+		},
+		cropWidth: {
+			default: 100,
+			type: 'number',
+		},
+		cropX: {
+			default: 0,
+			type: 'number',
+		},
+		cropY: {
+			default: 0,
+			type: 'number',
 		},
 	} );
 
@@ -56,141 +53,128 @@ const addPositioningControl = ( settings, name ) => {
 };
 
 const positioningControlData = {
+	editing: false,
+	loadingCount: 0,
 	updateDebounce: _.debounce( function( callback ) {
 		callback();
 	}, 250 ),
-	loadingCount: 0,
-	editing: false,
 };
 
-const positioningControl = createHigherOrderComponent( ( BlockEdit ) => {
-	return ( props ) => {
-		// Do nothing if it's another block than our defined ones.
-		if ( ! supportedBlocks.includes( props.name ) ) {
-			return (
-				<BlockEdit { ...props } />
-			);
+const usePositioningControl = ( props ) => {
+	// Do nothing if it's another block than our defined ones.
+	if ( ! supportedBlocks.includes( props.name ) ) {
+		return;
+	}
+
+	const {
+		attributes,
+		setAttributes,
+	} = props;
+
+	const { cropX, cropY, cropWidth, cropHeight, cropRotation } = attributes;
+	let extendedAttributes = { ...attributes };
+
+	// Only Gallery images supported at this time
+	if ( ! extendedAttributes.id ) {
+		return;
+	}
+
+	if ( extendedAttributes.backgroundType === 'video' ) {
+		return;
+	}
+
+	const removeCropClass = ( classes ) => {
+		if ( ! classes ) {
+			classes = '';
 		}
 
-		const {
-			attributes,
-			setAttributes,
-		} = props;
+		classes = classes.replace( / ?is-cropping/g, '' );
 
-		const { cropX, cropY, cropWidth, cropHeight, cropRotation } = attributes;
-		let currentAttributes = _.extend( {}, attributes );
-
-		// Only Gallery images supported at this time
-		if ( ! currentAttributes.id ) {
-			return (
-				<BlockEdit { ...props } />
-			);
-		}
-
-		if ( currentAttributes.backgroundType === 'video' ) {
-			return (
-				<BlockEdit { ...props } />
-			);
-		}
-
-		const removeCropClass = function( classes ) {
-			if ( ! classes ) {
-				classes = '';
-			}
-
-			classes = classes.replace( / ?is-cropping/g, '' );
-
-			return classes;
-		};
-
-		const updateImage = function() {
-			positioningControlData.editing = false;
-			++positioningControlData.loadingCount;
-
-			fetch( global.ajaxurl,
-				{
-					method: 'POST',
-					headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
-					body: [
-						`action=${ 'coblocks_crop_settings' }`,
-						`nonce=${ coblocksBlockData.cropSettingsNonce }`,
-						`id=${ currentAttributes.id }`,
-						`cropX=${ currentAttributes.cropX }`,
-						`cropY=${ currentAttributes.cropY }`,
-						`cropWidth=${ currentAttributes.cropWidth }`,
-						`cropHeight=${ currentAttributes.cropHeight }`,
-						`cropRotation=${ currentAttributes.cropRotation }`,
-					].join( '&' ),
-				} )
-				.then( ( response ) => {
-					return response.json();
-				} )
-				.then( ( response ) => {
-					--positioningControlData.loadingCount;
-					const data = response.data;
-
-					if ( ! data ) {
-						return;
-					}
-
-					if ( positioningControlData.loadingCount > 0 || positioningControlData.editing ) {
-						return;
-					}
-
-					const removedCrop = removeCropClass( currentAttributes.className );
-
-					setAttributes( {
-						id: data.id,
-						url: data.url,
-						className: removedCrop !== '' ? removedCrop : null,
-					} );
-				} );
-		};
-
-		const applyAttributes = function( changeAttributes ) {
-			const attributeDifference = _.reduce( changeAttributes, function( result, value, key ) {
-				return result || ! _.isEqual( value, currentAttributes[ key ] );
-			}, false );
-
-			positioningControlData.editing = true;
-
-			if ( attributeDifference ) {
-				changeAttributes.className = removeCropClass( currentAttributes.className ) + ' is-cropping';
-			}
-
-			setAttributes( changeAttributes );
-			currentAttributes = _.extend( {}, currentAttributes, changeAttributes );
-			positioningControlData.updateDebounce( updateImage );
-		};
-
-		return (
-			<Fragment>
-				<BlockEdit { ...props } />
-				<InspectorControls>
-					<PanelBody title={ __( 'Crop settings', 'coblocks' ) } initialOpen={ false }>
-						<CropControl
-							attachmentId={ currentAttributes.id }
-							offsetX={ cropX }
-							offsetY={ cropY }
-							cropWidth={ cropWidth }
-							cropHeight={ cropHeight }
-							rotation={ cropRotation }
-							onChange={ ( val ) => applyAttributes( {
-								cropX: val.x,
-								cropY: val.y,
-								cropWidth: val.w,
-								cropHeight: val.h,
-								cropRotation: val.r,
-							} ) }
-						/>
-					</PanelBody>
-				</InspectorControls>
-			</Fragment>
-		);
+		return classes;
 	};
-},
-'positioningControl'
-);
 
-addFilter( 'blocks.registerBlockType', 'coblocks/imagePositioning/attributes', addPositioningControl );
-addFilter( 'editor.BlockEdit', 'coblocks/positioning', positioningControl );
+	const updateImage = () => {
+		positioningControlData.editing = false;
+		++positioningControlData.loadingCount;
+
+		fetch( global.ajaxurl,
+			{
+				body: [
+					`action=${ 'coblocks_crop_settings' }`,
+					`nonce=${ coblocksBlockData.cropSettingsNonce }`,
+					`id=${ extendedAttributes.id }`,
+					`cropX=${ extendedAttributes.cropX }`,
+					`cropY=${ extendedAttributes.cropY }`,
+					`cropWidth=${ extendedAttributes.cropWidth }`,
+					`cropHeight=${ extendedAttributes.cropHeight }`,
+					`cropRotation=${ extendedAttributes.cropRotation }`,
+				].join( '&' ),
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+				method: 'POST',
+			} )
+			.then( ( response ) => {
+				return response.json();
+			} )
+			.then( ( response ) => {
+				--positioningControlData.loadingCount;
+				const data = response.data;
+
+				if ( ! data ) {
+					return;
+				}
+
+				if ( positioningControlData.loadingCount > 0 || positioningControlData.editing ) {
+					return;
+				}
+
+				const removedCrop = removeCropClass( extendedAttributes.className );
+
+				setAttributes( {
+					className: removedCrop !== '' ? removedCrop : null,
+					id: data.id,
+					url: data.url,
+				} );
+			} );
+	};
+
+	const applyCropAttributes = function( changeAttributes ) {
+		const attributeDifference = _.reduce( changeAttributes, function( result, value, key ) {
+			return result || ! _.isEqual( value, extendedAttributes[ key ] );
+		}, false );
+
+		positioningControlData.editing = true;
+
+		if ( attributeDifference ) {
+			changeAttributes.className = removeCropClass( extendedAttributes.className ) + ' is-cropping';
+		}
+
+		setAttributes( changeAttributes );
+		extendedAttributes = { ...extendedAttributes, ...changeAttributes };
+		positioningControlData.updateDebounce( updateImage );
+	};
+
+	return (
+		<InspectorControls>
+			<PanelBody initialOpen={ false } title={ __( 'Crop settings', 'coblocks' ) }>
+				<CropControl
+					attachmentId={ extendedAttributes.id }
+					cropHeight={ cropHeight }
+					cropWidth={ cropWidth }
+					offsetX={ cropX }
+					offsetY={ cropY }
+					onChange={ ( val ) => applyCropAttributes( {
+						cropHeight: val.h,
+						cropRotation: val.r,
+						cropWidth: val.w,
+						cropX: val.x,
+						cropY: val.y,
+					} ) }
+					rotation={ cropRotation }
+				/>
+			</PanelBody>
+		</InspectorControls>
+	);
+};
+
+export { usePositioningControl, applyAttributes };
+
