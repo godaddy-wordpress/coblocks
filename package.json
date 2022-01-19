@@ -79,7 +79,7 @@
 	"devDependencies": {
 		"@es-joy/jsdoccomment": "0.13.0",
 		"@godaddy-wordpress/eslint-config": "^0.5.0",
-		"@godaddy-wordpress/stylelint-config": "^0.4.0",
+		"@godaddy-wordpress/stylelint-config": "^0.5.0",
 		"@react-google-maps/api": "^2.7.0",
 		"@jest/core": "^27.4.5",
 		"@testing-library/jest-dom": "^5.16.1",
@@ -115,7 +115,7 @@
 		"@wordpress/plugins": "^4.0.4",
 		"@wordpress/primitives": "^3.0.3",
 		"@wordpress/rich-text": "^5.0.4",
-		"@wordpress/scripts": "^19.0.0",
+		"@wordpress/scripts": "^19.2.3",
 		"@wordpress/server-side-render": "^3.0.15",
 		"@wordpress/token-list": "^2.2.1",
 		"@wordpress/url": "^3.2.3",
@@ -129,7 +129,7 @@
 		"eslint-plugin-cypress": "^2.10.3",
 		"esm": "^3.2.25",
 		"expect-puppeteer": "^6.0.2",
-		"flickity": "^2.2.2",
+		"flickity": "^2.3.0",
 		"grunt": "^1.1.0",
 		"grunt-contrib-clean": "^2.0.0",
 		"grunt-contrib-compress": "^2.0.0",
@@ -150,12 +150,12 @@
 		"memize": "^1.0.5",
 		"po2json": "^1.0.0-alpha",
 		"prettier": "^2.5.1",
-		"prop-types": "^15.7.2",
+		"prop-types": "^15.8.1",
 		"puppeteer": ">=1.19.0",
 		"react-flickity-component": "^3.4.0",
 		"react-masonry-component": "^6.2.1",
 		"react-slick": "^0.28.1",
-		"rtlcss-webpack-plugin": "^4.0.3",
+		"rtlcss-webpack-plugin": "^4.0.6",
 		"simple-git": "^2.48.0",
 		"slick-carousel": "^1.8.1",
 		"tiny-swiper": "^2.1.2",
@@ -163,9 +163,12 @@
 	},
 	"resolutions": {
 		"ansi-regex": "^5.0.1",
+		"follow-redirects": "^1.14.7",
+		"markdown-it": "^12.3.2",
 		"nth-check": "^2.0.1",
 		"react-dom": "17.0.2",
-		"react": "17.0.2"
+		"react": "17.0.2",
+		"rtlcss": "^3.5.0"
 	},
 	"lint-staged": {
 		"*.scss": [
