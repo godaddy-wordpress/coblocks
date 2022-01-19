@@ -4,25 +4,23 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 ( function() {
 	'use strict';
 
-	window.addEventListener( 'load', () => {
-		setTimeout( () => {
-			const eventsCarouselContainer = document.querySelector( '.wp-block-coblocks-front-events-swiper-container' );
+	document.addEventListener( 'DOMContentLoaded', () => {
+		const eventsCarouselContainer = document.querySelector( '.wp-block-coblocks-front-events-swiper-container' );
 
-			if ( eventsCarouselContainer ) {
-				const swiperBackButton = document.getElementById( `wp-coblocks-event-swiper-prev` );
-				const swiperNextButton = document.getElementById( `wp-coblocks-event-swiper-next` );
+		if ( eventsCarouselContainer ) {
+			const swiperBackButton = document.getElementById( `wp-coblocks-event-swiper-prev` );
+			const swiperNextButton = document.getElementById( `wp-coblocks-event-swiper-next` );
 
-				new TinySwiper( eventsCarouselContainer, {
-					navigation: {
-						nextEl: swiperNextButton,
-						prevEl: swiperBackButton,
-					},
-					plugins: [
-						TinySwiperPluginNavigation,
-					],
-					touchable: false,
-				} );
-			}
-		}, 1200 );
-	} );
+			new TinySwiper( eventsCarouselContainer, {
+				navigation: {
+					nextEl: swiperNextButton,
+					prevEl: swiperBackButton,
+				},
+				plugins: [
+					TinySwiperPluginNavigation,
+				],
+				touchable: false,
+			} );
+		}
+	}, false );
 }() );
