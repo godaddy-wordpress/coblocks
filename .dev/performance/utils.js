@@ -28,9 +28,9 @@ function runShellScript( script, cwd, env = {} ) {
 			{
 				cwd,
 				env: {
+					HOME: process.env.HOME,
 					NO_CHECKS: 'true',
 					PATH: process.env.PATH,
-					HOME: process.env.HOME,
 					...env,
 				},
 			},
@@ -39,6 +39,33 @@ function runShellScript( script, cwd, env = {} ) {
 					// eslint-disable-next-line no-console
 					console.log( stderr );
 					reject( error );
+				} else {
+					resolve( true );
+				}
+			}
+		);
+	} );
+}
+
+function runShellScriptIgnoreFailing( script, cwd, env = {} ) {
+	return new Promise( ( resolve ) => {
+		childProcess.exec(
+			script,
+			{
+				cwd,
+				env: {
+					HOME: process.env.HOME,
+					NO_CHECKS: 'true',
+					PATH: process.env.PATH,
+					...env,
+				},
+			},
+			function( error, _, stderr ) {
+				if ( error ) {
+					// eslint-disable-next-line no-console
+					console.log( stderr );
+					// We make the promise resolve even if the script fails
+					resolve( true );
 				} else {
 					resolve( true );
 				}
@@ -71,10 +98,10 @@ async function askForConfirmation(
 ) {
 	const { isReady } = await inquirer.prompt( [
 		{
-			type: 'confirm',
-			name: 'isReady',
 			default: isDefault,
 			message,
+			name: 'isReady',
+			type: 'confirm',
 		},
 	] );
 
@@ -95,7 +122,8 @@ function getRandomTemporaryPath() {
 
 module.exports = {
 	askForConfirmation,
+	getRandomTemporaryPath,
 	readJSONFile,
 	runShellScript,
-	getRandomTemporaryPath,
+	runShellScriptIgnoreFailing,
 };
