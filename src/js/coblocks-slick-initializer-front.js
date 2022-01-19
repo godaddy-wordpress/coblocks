@@ -1,13 +1,28 @@
-import jQuery from 'jquery';
+import TinySwiper from 'tiny-swiper';
+import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
 
-( function( $ ) {
+( function() {
 	'use strict';
 
-	$( document ).ready( function() {
-		const carousel = $( '.coblocks-slick' );
+	window.addEventListener( 'load', () => {
+		setTimeout( () => {
+			const postCarouselWrapper = document.querySelector( '.coblocks-post-carousel-swiper-container > .swiper-container' );
 
-		if ( carousel ) {
-			carousel.slick();
-		}
-	} );
-}( jQuery ) );
+			if ( postCarouselWrapper ) {
+				const swiperBackButton = document.getElementById( `coblocks-post-carousel-swiper__prev` );
+				const swiperNextButton = document.getElementById( `coblocks-post-carousel-swiper__next` );
+
+				new TinySwiper( postCarouselWrapper, {
+					navigation: {
+						nextEl: swiperNextButton,
+						prevEl: swiperBackButton,
+					},
+					plugins: [
+						TinySwiperPluginNavigation,
+					],
+					touchable: false,
+				} );
+			}
+		}, 2200 );
+	 } );
+}() );

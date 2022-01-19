@@ -45,3 +45,29 @@ body.rtl {
 		}
 	}
 }
+
+.coblocks-post-carousel-swiper {
+	&__prev,
+	&__next {
+		background-color: transparent;
+		background-image: url(/assets/lightbox/arrow-right.svg);
+		border: none;
+		border-radius: 100%;
+		cursor: pointer;
+		height: 62px;
+		margin: 0 1%;
+		padding: 15px;
+		position: absolute;
+		top: 50%;
+		width: 62px;
+	}
+
+	&__prev {
+		left: -5em;
+		transform: rotate(180deg);
+	}
+
+	&__next {
+		right: -5em;
+	}
+}
