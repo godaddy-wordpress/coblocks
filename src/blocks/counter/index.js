@@ -6,6 +6,7 @@ import { CounterIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 /**
  * WordPress dependencies
  */
+import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 
 /**
@@ -36,6 +37,7 @@ const settings = {
 	},
 	icon: <Icon icon={ icon } />,
 	save,
+	title: __( 'Counter', 'coblocks' ),
 };
 
 export { name, category, metadata, settings };
