@@ -66,7 +66,7 @@ describe( 'Test CoBlocks Counter Block', function() {
 		helpers.addBlockToPost( 'coblocks/counter', true );
 
 		cy.get( '.wp-block-coblocks-counter' ).focus().type( counterData.counterText );
-		helpers.selectBlock( 'icon' ).should( 'not.exist' );
+		cy.get( '[data-type="coblocks/icon"]' ).should( 'not.exist' );
 
 		helpers.selectBlock( 'counter' );
 		helpers.toggleSettingCheckbox( 'Show Icon Block', );
