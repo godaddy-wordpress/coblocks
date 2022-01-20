@@ -10,6 +10,10 @@
 	}
 }
 
+[data-type="coblocks/event-item"] {
+	width: 100%;
+}
+
 .wp-block-coblocks-events__date {
 	margin-bottom: var(--coblocks-spacing--3, map-get($spacing, 3));
 

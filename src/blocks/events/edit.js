@@ -49,6 +49,8 @@ const EventsEdit = ( props ) => {
 		className,
 	} = props;
 
+	const { showCarousel } = attributes;
+
 	const { selectBlock, insertBlock } = useDispatch( 'core/block-editor' );
 	const { isEditing, setIsEditing } = useContext( EventsContext );
 
@@ -56,6 +58,7 @@ const EventsEdit = ( props ) => {
 		innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
 	} ) );
 
+	const prevShowCarousel = usePrevious( showCarousel );
 	const prevIsSelected = usePrevious( isSelected );
 	const prevInnerBlocksLength = usePrevious( innerBlocks.length );
 
@@ -74,6 +77,10 @@ const EventsEdit = ( props ) => {
 		if ( ! isSelected && ! isEditing ) {
 			selectBlock( clientId );
 		}
+	};
+
+	const toggleShowCarousel = () => {
+		setAttributes( { showCarousel: ! showCarousel } );
 	};
 
 	const toggleExternalCalendarControls = () => {
@@ -140,10 +147,10 @@ const EventsEdit = ( props ) => {
 		const isToolbarClick = toolbarContainer?.contains( event.target );
 		const isAppenderClick = event.target.classList.contains( 'block-editor-button-block-appender' );
 
-		if ( isEditing && isOutsideClick && ! isToolbarClick && ! isAppenderClick ) {
+		if ( showCarousel === true && isEditing && isOutsideClick && ! isToolbarClick && ! isAppenderClick ) {
 			setIsEditing( false );
 		}
-	}, [ isEditing ] );
+	}, [ isEditing, showCarousel ] );
 
 	// register the inner blocks outside click handler
 	useEffect( () => {
@@ -154,7 +161,7 @@ const EventsEdit = ( props ) => {
 		return () => {
 			editorBody.removeEventListener( 'click', handleInnerBlockOutsideClick );
 		};
-	}, [ isEditing ] );
+	}, [ isEditing, showCarousel ] );
 
 	useEffect( () => {
 		const innerBlockSelected = innerBlocks.some( ( { clientId: innerBlockClientId } ) => innerBlockClientId === selected?.clientId );
@@ -195,6 +202,14 @@ const EventsEdit = ( props ) => {
 			}, 600 );
 		}
 	}, [ externalCalendarUrl ] );
+
+	useEffect( () => {
+		if ( showCarousel === false ) {
+			setIsEditing( true );
+		} else if ( showCarousel === true && prevShowCarousel === false ) {
+			setIsEditing( false );
+		}
+	}, [ showCarousel, prevShowCarousel ] );
 
 	useEffect( () => {
 		const innerBlocksContainer = document.querySelector( `#coblocks-events-swiper-container-${ carouselUuid } > .coblocks-events-block-inner-blocks-container > .block-editor-inner-blocks > .block-editor-block-list__layout` );
@@ -315,7 +330,7 @@ const EventsEdit = ( props ) => {
 	}, [ isEditing, swiper, carouselCssText, externalCalendarUrl ] );
 
 	useEffect( () => {
-		if ( innerBlocks.length !== prevInnerBlocksLength && isEditing ) {
+		if ( showCarousel === true && innerBlocks.length !== prevInnerBlocksLength && isEditing ) {
 			const innerBlocksContainer = document.querySelector( `#coblocks-events-swiper-container-${ carouselUuid } > .coblocks-events-block-inner-blocks-container > .block-editor-inner-blocks > .block-editor-block-list__layout` );
 
 			const newlyAddedEventItem = Array.from( innerBlocksContainer.children ).find( ( node ) => node.dataset?.type === 'coblocks/event-item' );
@@ -329,7 +344,7 @@ const EventsEdit = ( props ) => {
 
 			currentSwiperWrapper?.appendChild( newSwiperSlideWrapper );
 		}
-	}, [ innerBlocks.length, prevInnerBlocksLength, isEditing ] );
+	}, [ showCarousel, innerBlocks.length, prevInnerBlocksLength, isEditing ] );
 
 	const renderInnerBlocks = () => {
 		return (
@@ -343,8 +358,13 @@ const EventsEdit = ( props ) => {
 						templateInsertUpdatesSelection={ false }
 					/>
 				</div>
-				<button className={ `coblocks-events-nav-button__prev` } id={ `coblocks-event-swiper-prev` } style={ { ...carouselButtonStyle() } } />
-				<button className={ `coblocks-events-nav-button__next` } id={ `coblocks-event-swiper-next` } style={ { ...carouselButtonStyle() } } />
+				{ showCarousel === true && (
+					<>
+						<button className={ `coblocks-events-nav-button__prev` } id={ `coblocks-event-swiper-prev` } style={ { ...carouselButtonStyle() } } />
+						<button className={ `coblocks-events-nav-button__next` } id={ `coblocks-event-swiper-next` } style={ { ...carouselButtonStyle() } } />
+
+					</>
+				) }
 			</>
 		);
 	};
@@ -387,6 +407,7 @@ const EventsEdit = ( props ) => {
 				onChangeEventsToShow={ ( eventsToShow ) => setAttributes( { eventsToShow } ) }
 				showExternalCalendarControls={ showExternalCalendarControls }
 				toggleExternalCalendarControls={ toggleExternalCalendarControls }
+				toggleShowCarousel={ toggleShowCarousel }
 			/>
 
 			{ isSelected &&
