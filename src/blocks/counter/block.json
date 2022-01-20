@@ -11,14 +11,6 @@
 		"align": {
 			"type": "string"
 		},
-		"startingCount": {
-			"type": "number",
-			"default": 0
-		},
-        "endingCount": {
-			"type": "number",
-			"default": 1000
-		},
         "counterSpeed": {
             "type": "number",
             "default": 1

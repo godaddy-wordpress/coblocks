@@ -8,8 +8,7 @@ import { RichText, useBlockProps } from '@wordpress/block-editor';
 const save = ( { attributes } ) => {
 	const {
 		align,
-		// startingCount,
-		// endingCount,
+		counterSpeed,
 		counterText,
 	} = attributes;
 
@@ -22,6 +21,7 @@ const save = ( { attributes } ) => {
 			{ ! RichText.isEmpty( counterText ) && (
 				<RichText.Content
 					{ ...useBlockProps.save( { className } ) }
+					data-counter-speed={ counterSpeed }
 					tagName="div"
 					value={ counterText }
 				/>

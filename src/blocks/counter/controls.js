@@ -12,7 +12,7 @@ const Controls = ( props ) => {
 			<AlignmentControl
 				onChange={ ( newAlign ) => setAttributes( { align: newAlign } ) }
 				value={ align }
-			/>;
+			/>
 		</BlockControls>
 	);
 };

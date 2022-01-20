@@ -12,19 +12,19 @@ import classnames from 'classnames';
 const Counter = ( props ) => {
 	const {
 		blockProps,
-		// startingCount,
-		// endingCount,
 		counterText,
 		setAttributes,
+		counterSpeed,
 	} = props;
-	const counterClasses = classnames( blockProps.className, 'count' );
+	const counterClasses = classnames( blockProps.className );
 
 	return (
 		<RichText
 			{ ...blockProps }
 			className={ counterClasses }
+			data-counter-speed={ counterSpeed }
 			onChange={ ( nextValue ) => setAttributes( { counterText: nextValue } ) }
-			placeholder={ `${ __( '10,000', 'coblocks' ) }\n${ __( 'Hours Worked', 'coblocks' ) }` }
+			placeholder={ `${ __( '10,000', 'coblocks' ) }\n${ __( 'Problems solved', 'coblocks' ) }` }
 			value={ counterText }
 		/>
 	);

@@ -4,17 +4,20 @@
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
 import { useEffect } from '@wordpress/element';
-import { PanelBody, ToggleControl } from '@wordpress/components';
+import { PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
 
 export default function Inspector( props ) {
 	const {
 		attributes,
 		setAttributes,
+		hasIconShowing,
+		processIcon,
 	} = props;
 
 	const {
 		counterText,
 		numberFormatting,
+		counterSpeed,
 	} = attributes;
 
 	/**
@@ -53,24 +56,20 @@ export default function Inspector( props ) {
 		if ( formattedCounterText !== counterText ) {
 			setAttributes( { counterText: formattedCounterText } );
 		}
-	}, [ numberFormatting ] );
-
-	useEffect( () => {
-		if ( ! counterText?.length ) {
-			return;
-		}
 		// Trailing periods like for sentence punctuation are triggered as empty decimals by counterup2.
 		// To resolve superfluous counter digits appearing around periods we remove the punctuation.
-		const counterTextWithoutPeriod = counterText.replace( /\w+(\.+)/g, ( match, group ) => {
-			return match.replace( group, '' );
-		} );
+		const counterTextWithoutPeriod = counterText.replace( /\w+(\.+)/g, ( match, group ) => match.replace( group, '' ) );
 		if ( counterTextWithoutPeriod !== counterText ) {
 			setAttributes( { counterText: counterTextWithoutPeriod } );
 		}
-	}, [ counterText ] );
+	}, [ numberFormatting, counterText ] );
 
 	const getFormattingHelp = ( checked ) => {
 		return checked ? __( 'Number is locale formatted.', 'coblocks' ) : __( 'Number without locale formatting.', 'coblocks' );
+	};
+
+	const getIconHelp = ( checked ) => {
+		return checked ? __( 'Icon block precedes the Counter block.', 'coblocks' ) : __( 'No Icon block preceding the Counter block.', 'coblocks' );
 	};
 
 	return (
@@ -82,6 +81,24 @@ export default function Inspector( props ) {
 					help={ getFormattingHelp }
 					label={ __( 'Locale number formatting', 'coblocks' ) }
 					onChange={ () => setAttributes( { numberFormatting: ! numberFormatting } ) }
+				/>
+
+				<ToggleControl
+					checked={ !! hasIconShowing }
+					help={ getIconHelp }
+					label={ __( 'Show Icon Block', 'coblocks' ) }
+					onChange={ ( value ) => processIcon( value ) }
+				/>
+
+				<RangeControl
+					initialValue={ counterSpeed }
+					label={ __( 'Seconds until counter completes', 'coblocks' ) }
+					max={ 10 }
+					min={ 1 }
+					onChange={ ( newCounterSpeed ) => setAttributes( { counterSpeed: newCounterSpeed } ) }
+					step={ 1 }
+					value={ counterSpeed }
+					withInputField
 				/>
 
 			</PanelBody>

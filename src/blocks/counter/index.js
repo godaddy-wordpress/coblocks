@@ -1,12 +1,11 @@
 /**
  * External dependencies
  */
-import { GalleryMasonryIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { CounterIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 
 /**
@@ -15,7 +14,6 @@ import { Icon } from '@wordpress/components';
 import edit from './edit';
 import metadata from './block.json';
 import save from './save';
-// import transforms from './transforms';
 
 /**
  * Block constants
@@ -31,14 +29,13 @@ const settings = {
 	edit,
 	example: {
 		attributes: {
-			counterText: '450\nCups of Coffee',
+			align: 'center',
+			counterText: `10 years, 2 months, 20 days, 4 hours`,
+			fontSize: 'medium',
 		},
 	},
 	icon: <Icon icon={ icon } />,
 	save,
-	/* translators: block name */
-	title: __( 'Masonry', 'coblocks' ),
-	// transforms,
 };
 
 export { name, category, metadata, settings };
