@@ -13,7 +13,7 @@ class CoBlocksCounter {
 	callback = ( entries ) => {
 		entries.forEach( ( entry ) => {
 			const el = entry.target;
-			const counterSpeed = parseInt( el.getAttribute( 'data-counter-speed' ) ) * 1000;
+			const counterSpeed = parseInt( el?.getAttribute( 'data-counter-speed' ) || 1 ) * 1000;
 			if ( ! el.classList.contains( ACTIVE ) && entry.isIntersecting ) {
 				setTimeout( () => {
 					counterUp( el, { duration: counterSpeed } );
