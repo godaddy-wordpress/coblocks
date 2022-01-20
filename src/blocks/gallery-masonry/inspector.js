@@ -41,7 +41,6 @@ export default function Inspector( props ) {
 	} = props;
 
 	const {
-		imageCrop,
 		linkTarget,
 		linkTo,
 		sizeSlug,
