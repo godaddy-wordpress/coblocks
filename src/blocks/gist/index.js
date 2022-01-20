@@ -14,8 +14,8 @@ import transforms from './transforms';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
 import { dispatch } from '@wordpress/data';
+import { Icon } from '@wordpress/components';
 import { registerBlockVariation, switchToBlockType } from '@wordpress/blocks';
 
 /**
@@ -24,18 +24,10 @@ import { registerBlockVariation, switchToBlockType } from '@wordpress/blocks';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: block name */
-	title: __( 'Gist', 'coblocks' ),
+	attributes,
+	deprecated,
 	/* translators: block description */
 	description: __( 'Embed a GitHub Gist.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
-	supports: {
-		html: false,
-		align: [ 'wide' ],
-	},
-	parent: [],
-	attributes,
-	transforms,
 	edit: ( props ) => {
 		const { replaceBlocks } = dispatch( 'core/block-editor' );
 		replaceBlocks(
@@ -44,26 +36,34 @@ const settings = {
 		);
 		return null;
 	},
+	icon: <Icon icon={ icon } />,
+	parent: [],
 	save: () => null,
-	deprecated,
+	supports: {
+		align: [ 'wide' ],
+		html: false,
+	},
+	/* translators: block name */
+	title: __( 'Gist', 'coblocks' ),
+	transforms,
 };
 
 export { name, category, metadata, settings };
 
 registerBlockVariation( 'core/embed', {
-	name: 'gist',
-	/* translators: block name */
-	title: __( 'Gist', 'coblocks' ),
+	attributes: { providerNameSlug: 'gist' },
 	/* translators: block description */
 	description: __( 'Embed a GitHub Gist.', 'coblocks' ),
 	icon: <Icon icon={ icon } />,
+	isActive: [ 'providerNameSlug' ],
 	keywords: [
 		'coblocks',
 		'github',
 		/* translators: block keyword */
 		__( 'code', 'coblocks' ),
 	],
+	name: 'gist',
 	patterns: [ /https?:\/\/gist\.github\.com\/.+/i ],
-	attributes: { providerNameSlug: 'gist' },
-	isActive: () => [ 'providerNameSlug' ],
+	/* translators: block name */
+	title: __( 'Gist', 'coblocks' ),
 } );

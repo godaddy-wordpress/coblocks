@@ -10,7 +10,6 @@ import times from 'lodash/times';
  */
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
-import { Fragment } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { Button, Tooltip } from '@wordpress/components';
 import { Icon, plus } from '@wordpress/icons';
@@ -71,44 +70,25 @@ const AccordionEdit = ( props ) => {
 	const items = getBlocksByClientId( clientId );
 
 	const handleEvent = ( ) => {
-		if ( items[ 0 ].innerBlocks ) {
-			const lastId = items[ 0 ].innerBlocks[ items[ 0 ].innerBlocks.length - 1 ].clientId;
-			let copyAttributes = {};
-
-			if ( lastId ) {
-				const lastBlockClient = getBlockAttributes( lastId );
-				if ( lastBlockClient.backgroundColor ) {
-					copyAttributes = Object.assign( copyAttributes, {
-						backgroundColor: lastBlockClient.backgroundColor,
-					} );
+		const lastId = items[ 0 ].innerBlocks[ items[ 0 ].innerBlocks.length - 1 ]?.clientId;
+		let copyAttributes = {};
+		if ( !! lastId ) {
+			const lastBlockClient = getBlockAttributes( lastId );
+			[ 'backgroundColor', 'borderColor', 'textColor', 'customTextColor' ].forEach( ( property ) => {
+				if ( !! lastBlockClient?.[ property ] ) {
+					copyAttributes = {
+						...copyAttributes,
+						[ property ]: lastBlockClient[ property ],
+					};
 				}
-
-				if ( lastBlockClient.borderColor ) {
-					copyAttributes = Object.assign( copyAttributes, {
-						borderColor: lastBlockClient.borderColor,
-					} );
-				}
-
-				if ( lastBlockClient.textColor ) {
-					copyAttributes = Object.assign( copyAttributes, {
-						textColor: lastBlockClient.textColor,
-					} );
-				}
-
-				if ( lastBlockClient.customTextColor ) {
-					copyAttributes = Object.assign( copyAttributes, {
-						customTextColor: lastBlockClient.customTextColor,
-					} );
-				}
-			}
-
-			const created = createBlock( 'coblocks/accordion-item', copyAttributes );
-			insertBlock( created, undefined, clientId );
+			} );
 		}
+		const created = createBlock( 'coblocks/accordion-item', copyAttributes, [] );
+		insertBlock( created, undefined, clientId );
 	};
 
 	return (
-		<Fragment>
+		<>
 			{ isBlockSelected && (
 				<Inspector
 					insertBlock={ insertBlock }
@@ -135,7 +115,7 @@ const AccordionEdit = ( props ) => {
 					</div>
 				) }
 			</div>
-		</Fragment>
+		</>
 	);
 };
 

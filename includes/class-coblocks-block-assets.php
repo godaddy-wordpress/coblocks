@@ -177,8 +177,13 @@ class CoBlocks_Block_Assets {
 			true
 		);
 
-		foreach ( range( 1, 8 ) as $number ) {
-			$name       = "coblocks-$number"; // coblocks-1.js.
+		foreach ( glob( COBLOCKS_PLUGIN_DIR . 'dist/coblocks-*.js' ) as $file ) {
+			$name = str_replace( '.js', '', basename( $file ) ); // coblocks-1.
+
+			if ( ! preg_match( '/coblocks-\d+/', $name ) ) {
+				continue;
+			}
+
 			$filepath   = 'dist/' . $name;
 			$asset_file = $this->get_asset_file( $filepath );
 

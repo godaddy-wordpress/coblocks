@@ -1,14 +1,12 @@
 /**
  * WordPress dependencies
  */
+import { info } from '@wordpress/icons';
 import { useState } from '@wordpress/element';
 import {
 	Button,
 	Popover,
 } from '@wordpress/components';
-import { info } from '@wordpress/icons';
-
-import './styles/editor.scss';
 
 export const InfoPopover = ( { title, children, popoverProps } ) => {
 	const [ isVisible, setIsVisible ] = useState( false );
@@ -23,8 +21,8 @@ export const InfoPopover = ( { title, children, popoverProps } ) => {
 			{ isVisible && (
 				<Popover
 					className="coblocks-info-popover"
-					headerTitle={ title }
 					focusOnMount={ false }
+					headerTitle={ title }
 					noArrow={ false }
 					{ ...popoverProps }
 				>

@@ -33,11 +33,4 @@ describe( 'coblocks/posts', () => {
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
-
-	it( 'should render with className attribute', () => {
-		block.attributes.className = 'my-custom-class';
-
-		serializedBlock = serialize( block );
-		expect( serializedBlock ).toContain( 'my-custom-class' );
-	} );
 } );

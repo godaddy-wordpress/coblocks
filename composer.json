@@ -9,10 +9,13 @@
 	"config": {
 		"platform": {
 			"php": "5.6.20"
+		},
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
 		}
 	},
 	"require-dev": {
-		"dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
 		"godaddy-wordpress/json2po": "^1.0",
 		"godaddy-wordpress/pot2json": "^1.0",
 		"johnpbloch/wordpress-core": "^5.8",
