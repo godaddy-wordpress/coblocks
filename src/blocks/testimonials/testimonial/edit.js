@@ -33,15 +33,18 @@ const Edit = ( props ) => {
 	const {
 		attributes,
 		className,
-		clientId,
 		isSelected,
 		setAttributes,
 	} = props;
 
 	const {
 		customBackgroundColor,
+		customBubbleBackgroundColor,
+		customBubbleTextColor,
 		customTextColor,
 		backgroundColor,
+		bubbleBackgroundColor,
+		bubbleTextColor,
 		headingLevel,
 		name,
 		role,
@@ -60,20 +63,12 @@ const Edit = ( props ) => {
 	const prevCustomBackgroundColor = usePrevious( customBackgroundColor );
 	const prevTextColor = usePrevious( textColor );
 	const prevCustomTextColor = usePrevious( customTextColor );
+	const prevBubbleBackgroundColor = usePrevious( bubbleBackgroundColor );
+	const prevCustomBubbleBackgroundColor = usePrevious( customBubbleBackgroundColor );
+	const prevBubbleTextColor = usePrevious( bubbleTextColor );
+	const prevCustomBubbleTextColor = usePrevious( customBubbleTextColor );
 
 	useEffect( () => {
-		if ( showRole !== prevShowRole ) {
-			setAttributes( { role: showRole ? role : '' } );
-		}
-
-		if ( showImage !== prevShowImage ) {
-			setAttributes( { url: showImage ? url : '' } );
-		}
-
-		if ( !! url && url !== attributes.url ) {
-			setAttributes( { url } );
-		}
-
 		if ( backgroundColor !== prevBackgroundColor ) {
 			setAttributes( { backgroundColor: backgroundColor ?? null } );
 		}
@@ -89,7 +84,37 @@ const Edit = ( props ) => {
 		if ( customTextColor !== prevCustomTextColor ) {
 			setAttributes( { customTextColor: customTextColor ?? null } );
 		}
-	}, [ isSelected, clientId, showImage, showRole, role, url, attributes, backgroundColor, textColor ] );
+
+		if ( bubbleBackgroundColor !== prevBubbleBackgroundColor ) {
+			setAttributes( { bubbleBackgroundColor: bubbleBackgroundColor ?? null } );
+		}
+
+		if ( customBubbleBackgroundColor !== prevCustomBubbleBackgroundColor ) {
+			setAttributes( { customBubbleBackgroundColor: customBubbleBackgroundColor ?? null } );
+		}
+
+		if ( bubbleTextColor !== prevBubbleTextColor ) {
+			setAttributes( { bubbleTextColor: bubbleTextColor ?? null } );
+		}
+
+		if ( customBubbleTextColor !== prevCustomBubbleTextColor ) {
+			setAttributes( { customBubbleTextColor: customBubbleTextColor ?? null } );
+		}
+	}, [ backgroundColor, bubbleBackgroundColor, bubbleTextColor, customBackgroundColor, customBubbleBackgroundColor, customBubbleTextColor, customTextColor, textColor ] );
+
+	useEffect( () => {
+		if ( showRole !== prevShowRole ) {
+			setAttributes( { role: showRole ? role : '' } );
+		}
+
+		if ( showImage !== prevShowImage ) {
+			setAttributes( { url: showImage ? url : '' } );
+		}
+
+		if ( !! url && url !== attributes.url ) {
+			setAttributes( { url } );
+		}
+	}, [ role, showImage, showRole, url ] );
 
 	const onChangeHeadingLevel = ( newHeadingLevel ) => {
 		setAttributes( { headingLevel: newHeadingLevel } );
@@ -109,16 +134,18 @@ const Edit = ( props ) => {
 		} );
 	};
 
-	const richTextAttributes = {
-		allowedFormats: [ 'bold', 'italic' ],
-	};
-
 	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 	const textClass = getColorClassName( 'color', textColor );
-
 	const styles = {
 		backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 		color: textClass ? undefined : customTextColor,
+	};
+
+	const bubbleBackgroundClass = getColorClassName( 'background-color', bubbleBackgroundColor );
+	const bubbleTextClass = getColorClassName( 'color', bubbleTextColor );
+	const bubbleStyles = {
+		backgroundColor: bubbleBackgroundClass ? undefined : customBubbleBackgroundColor,
+		color: bubbleTextClass ? undefined : customBubbleTextColor,
 	};
 
 	const classes = classnames(
@@ -184,7 +211,7 @@ const Edit = ( props ) => {
 		};
 
 		return (
-			<div className="wp-block-coblocks-testimonial__image-container">
+			<div className="wp-block-coblocks-testimonial__image-container" style={ styles }>
 				<figure className={ imageClasses } style={ imageStyles }>
 					{ dropZone }
 					{ isBlobURL( attributeUrl ) && <Spinner /> }
@@ -225,7 +252,6 @@ const Edit = ( props ) => {
 				placeholder={ __( 'Enter Name', 'coblocks' ) }
 				tagName={ `h${ headingLevel }` }
 				value={ name }
-				{ ...richTextAttributes }
 			/>
 			{ !! showRole && (
 				<RichText
@@ -234,7 +260,6 @@ const Edit = ( props ) => {
 					placeholder={ __( 'Who are they?', 'coblocks' ) }
 					tagName="p"
 					value={ role }
-					{ ...richTextAttributes }
 				/>
 			) }
 		</div>
@@ -242,13 +267,37 @@ const Edit = ( props ) => {
 
 	const renderText = () => (
 		<RichText
-			className={ `${ className }__text` }
+			className={ classnames(
+				`${ className }__text`, {
+					[ bubbleBackgroundClass ]: bubbleBackgroundClass && styleName === 'conversation',
+					[ bubbleTextClass ]: bubbleTextClass && styleName === 'conversation',
+					'has-background-color': bubbleBackgroundClass || customBubbleBackgroundColor,
+					'has-text-color': bubbleTextColor || customBubbleTextColor,
+				}
+			) }
+			identifier="text"
 			onChange={ ( newText ) => setAttributes( { text: newText } ) }
 			placeholder={ __( 'Testimonial goes here…', 'coblocks' ) }
+			style={ styleName === 'conversation' ? bubbleStyles : null }
 			tagName="p"
 			value={ text }
-			{ ...richTextAttributes }
 		/>
+	);
+
+	const renderTextBubble = () => (
+		<div className={ `${ className }__text-bubble` }>
+			{ renderText() }
+			<span className={ classnames(
+				`${ className }__text-bubble__tip-back`, {
+					[ bubbleBackgroundClass ]: bubbleBackgroundClass,
+				}
+			) } style={ { backgroundColor: bubbleBackgroundClass ? undefined : customBubbleBackgroundColor } }></span>
+			<span className={ classnames(
+				`${ className }__text-bubble__tip-front`, {
+					[ backgroundClass ]: backgroundClass,
+				}
+			) } style={ { backgroundColor: backgroundClass ? undefined : customBackgroundColor } }></span>
+		</div>
 	);
 
 	return (
@@ -273,7 +322,7 @@ const Edit = ( props ) => {
 				) }
 				{ styleName === 'conversation' && (
 					<>
-						{ renderText() }
+						{ renderTextBubble() }
 						<div className={ `${ className }__content` }>
 							{ !! showImage && ( url ? renderImage() : renderPlaceholder() ) }
 							{ renderHeading() }

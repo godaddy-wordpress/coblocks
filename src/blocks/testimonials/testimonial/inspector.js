@@ -43,7 +43,7 @@ const Inspector = ( props ) => {
 
 	return (
 		<InspectorControls>
-			<PanelBody title={ __( 'Item settings', 'coblocks' ) } initialOpen={ true }>
+			<PanelBody initialOpen={ true } title={ __( 'Item settings', 'coblocks' ) }>
 				<ToggleControl
 					checked={ showImage }
 					help={

@@ -21,10 +21,10 @@ const Controls = ( props ) => {
 	return (
 		<BlockControls>
 			<HeadingToolbar
-				minLevel={ 2 }
 				maxLevel={ 5 }
-				selectedLevel={ headingLevel }
+				minLevel={ 2 }
 				onChange={ onChangeHeadingLevel }
+				selectedLevel={ headingLevel }
 			/>
 		</BlockControls>
 	);

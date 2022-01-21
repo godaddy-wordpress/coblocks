@@ -76,6 +76,18 @@
 		},
 		"customBackgroundColor": {
 			"type": "string"
+		},
+		"bubbleBackgroundColor": {
+			"type": "string"
+		},
+		"bubbleTextColor": {
+			"type": "string"
+		},
+		"customBubbleTextColor": {
+			"type": "string"
+		},
+		"customBubbleBackgroundColor": {
+			"type": "string"
 		}
 	}
 }

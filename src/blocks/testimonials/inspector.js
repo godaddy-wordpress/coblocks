@@ -6,6 +6,7 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
+import CoBlocksFontSizePicker from '../../components/fontsize-picker';
 import OptionSelectorControl from '../../components/option-selector-control';
 
 /**
@@ -14,7 +15,7 @@ import OptionSelectorControl from '../../components/option-selector-control';
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { ENTER, SPACE } from '@wordpress/keycodes';
-import { InspectorControls, PanelColorSettings, withColors } from '@wordpress/block-editor';
+import { InspectorControls, PanelColorSettings, withColors, withFontSizes } from '@wordpress/block-editor';
 import { PanelBody, RangeControl, ToggleControl, withFallbackStyles } from '@wordpress/components';
 
 const { getComputedStyle } = window;
@@ -34,19 +35,20 @@ const Inspector = ( props ) => {
 	const {
 		activeStyle,
 		attributes,
+		backgroundColor,
+		bubbleBackgroundColor,
+		bubbleTextColor,
 		layoutOptions,
 		onSetColumns,
 		onSetGutter,
 		onToggleImages,
 		onToggleRoles,
 		onUpdateStyleName,
-
-		backgroundColor,
 		setBackgroundColor,
+		setBubbleBackgroundColor,
+		setBubbleTextColor,
 		setTextColor,
 		textColor,
-		fallbackTextColor,
-		fallbackBackgroundColor,
 	} = props;
 
 	const {
@@ -119,6 +121,7 @@ const Inspector = ( props ) => {
 			<PanelBody
 				initialOpen={ true }
 				title={ __( 'Testimonials Settings', 'coblocks' ) }>
+				<CoBlocksFontSizePicker { ...props } />
 				<>
 					<RangeControl
 						label={ __( 'Columns', 'coblocks' ) }
@@ -172,11 +175,34 @@ const Inspector = ( props ) => {
 				initialOpen={ false }
 				title={ __( 'Color settings', 'coblocks' ) }
 			/>
+
+			{ activeStyle === 'conversation' && <PanelColorSettings
+				colorSettings={ [
+					{
+						label: __( 'Background color', 'coblocks' ),
+						onChange: setBubbleBackgroundColor,
+						value: bubbleBackgroundColor.color,
+					},
+					{
+						label: __( 'Text color', 'coblocks' ),
+						onChange: setBubbleTextColor,
+						value: bubbleTextColor.color,
+					},
+				] }
+				initialOpen={ false }
+				title={ __( 'Bubble color settings', 'coblocks' ) }
+			/> }
 		</InspectorControls>
 	);
 };
 
 export default compose( [
-	withColors( 'backgroundColor', { textColor: 'color' } ),
+	withColors(
+		'backgroundColor',
+		'bubbleBackgroundColor',
+		{ bubbleTextColor: 'color' },
+		{ textColor: 'color' }
+	),
+	withFontSizes( 'fontSize' ),
 	applyFallbackStyles,
 ] )( Inspector );

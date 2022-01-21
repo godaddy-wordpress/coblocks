@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { TestimonialIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { BubbleIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies.

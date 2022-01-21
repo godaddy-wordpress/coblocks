@@ -1,7 +1,7 @@
 .wp-block-coblocks-testimonials .wp-block-coblocks-testimonial {
 	background-color: #fff;
 	display: flex;
-	padding: 2em 1.5em;
+	padding: 2rem 1.5rem;
 
 	&__image {
 		border: 1px solid #000;
@@ -25,16 +25,19 @@
 
 		&__name {
 			color: inherit;
+			line-height: 1;
 			margin: 0;
 		}
 
 		&__role {
+			font-size: 1.2em;
 			line-height: 1.2;
-			margin: 0.5em 0 0;
+			margin: 0.25em 0 0;
 		}
 	}
 
 	&__text {
+		font-size: 1em;
 		line-height: 1.5;
 		margin: 0;
 	}
@@ -61,31 +64,46 @@
 		margin-bottom: 0;
 	}
 
-	&__text {
-		background-color: #d6d6d6;
-		border-radius: 8px;
-		margin-bottom: 1em;
-		padding: 1em;
+	&__text-bubble {
+		margin-bottom: 1.5rem;
 		position: relative;
-		width: 100%;
 
-		&::after {
-			border-left: 15px solid transparent;
-			border-right: 15px solid transparent;
-			border-top: 30px solid #d6d6d6;
-			bottom: -30px;
-			content: "";
+		&__tip-back {
+			background-color: #d6d6d6;
+			bottom: -18px;
 			display: block;
 			height: 40px;
-			left: 1em;
+			left: 22px;
 			position: absolute;
-			transform: rotate(-20deg);
+			transform: rotate(-40deg);
 			width: 30px;
+			z-index: 1;
+		}
+
+		&__tip-front {
+			background-color: #fff;
+			bottom: -32px;
+			display: block;
+			height: 40px;
+			left: 38px;
+			position: absolute;
+			transform: rotate(15deg);
+			width: 30px;
+			z-index: 2;
 		}
 	}
 
+	&__text {
+		background-color: #d6d6d6;
+		border-radius: 8px;
+		padding: 1em;
+		position: relative;
+		width: 100%;
+		z-index: 3;
+	}
+
 	&__image {
-		margin: 0 1em 0 2em;
+		margin: 0 1em 0 1rem;
 	}
 
 	&__content {
@@ -93,6 +111,7 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-start;
+		z-index: 2;
 	}
 }
 

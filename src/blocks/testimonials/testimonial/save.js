@@ -6,9 +6,9 @@ import classnames from 'classnames';
 /**
  * Internal dependencies.
  */
+import { BackgroundStyles } from '../../../components/background';
 import fromEntries from '../../../js/coblocks-fromEntries';
 import { hasEmptyAttributes } from '../../../utils/block-helpers';
-import { BackgroundStyles } from '../../../components/background';
 
 /**
  * WordPress dependencies.
@@ -28,7 +28,11 @@ export default function save( { attributes } ) {
 	const {
 		alt,
 		backgroundColor,
+		bubbleBackgroundColor,
+		bubbleTextColor,
 		customBackgroundColor,
+		customBubbleBackgroundColor,
+		customBubbleTextColor,
 		customTextColor,
 		focalPoint,
 		headingLevel,
@@ -46,11 +50,17 @@ export default function save( { attributes } ) {
 
 	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 	const textClass = getColorClassName( 'color', textColor );
-
 	const styles = {
 		...BackgroundStyles( attributes ),
 		background: backgroundClass ? undefined : customBackgroundColor,
 		color: textClass ? undefined : customTextColor,
+	};
+
+	const bubbleBackgroundClass = getColorClassName( 'background-color', bubbleBackgroundColor );
+	const bubbleTextClass = getColorClassName( 'color', bubbleTextColor );
+	const bubbleStyles = {
+		backgroundColor: bubbleBackgroundClass ? undefined : customBubbleBackgroundColor,
+		color: bubbleTextClass ? undefined : customBubbleTextColor,
 	};
 
 	const classes = classnames(
@@ -102,11 +112,35 @@ export default function save( { attributes } ) {
 
 	const renderText = () => (
 		<RichText.Content
-			className="wp-block-coblocks-testimonial__text"
+			className={ classnames(
+				'wp-block-coblocks-testimonial__text', {
+					[ bubbleBackgroundClass ]: bubbleBackgroundClass && styleName === 'conversation',
+					[ bubbleTextClass ]: bubbleTextClass && styleName === 'conversation',
+					'has-background-color': bubbleBackgroundClass || customBubbleBackgroundColor,
+					'has-text-color': bubbleTextColor || customBubbleTextColor,
+				}
+			) }
 			itemprop="description"
+			style={ styleName === 'conversation' ? bubbleStyles : null }
 			tagName="p"
 			value={ text }
 		/>
+	);
+
+	const renderTextBubble = () => (
+		<div className="wp-block-coblocks-testimonial__text-bubble">
+			{ renderText() }
+			<span className={ classnames(
+				'wp-block-coblocks-testimonial__text-bubble__tip-back', {
+					[ bubbleBackgroundClass ]: bubbleBackgroundClass,
+				}
+			) } style={ { backgroundColor: bubbleBackgroundClass ? undefined : customBubbleBackgroundColor } }></span>
+			<span className={ classnames(
+				'wp-block-coblocks-testimonial__text-bubble__tip-front', {
+					[ backgroundClass ]: backgroundClass,
+				}
+			) } style={ { backgroundColor: backgroundClass ? undefined : customBackgroundColor } }></span>
+		</div>
 	);
 
 	return isEmpty( attributes ) ? null : (
@@ -120,7 +154,7 @@ export default function save( { attributes } ) {
 			) }
 			{ styleName === 'conversation' && (
 				<>
-					{ renderText() }
+					{ renderTextBubble() }
 					<div className="wp-block-coblocks-testimonial__content">
 						{ renderImage() }
 						{ renderHeading() }
