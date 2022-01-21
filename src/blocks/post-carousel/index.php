@@ -118,11 +118,17 @@ function coblocks_post_carousel( $posts, $attributes ) {
 	// );
 
 	$block_content = sprintf(
-		'<div class="%1$s"><div class="coblocks-post-carousel-swiper-container pb-8">',
+		'<div class="%1$s"><div class="coblocks-post-carousel-swiper-container swiper-container pb-8" data-swiper=%2$s>',
 		esc_attr( $class ),
+		esc_attr(
+			wp_json_encode(
+				array(
+					'slidesToShow' => $attributes['columns'],
+				)
+			)
+		)
 	);
 
-	$block_content .= '<div class="swiper-container">';
 	$block_content .= '<div class="swiper-wrapper">';
 
 
@@ -175,7 +181,11 @@ function coblocks_post_carousel( $posts, $attributes ) {
 	$list_items_markup = '';
 
 	foreach ( $posts as $post ) {
-		$list_items_markup .= '<div class="wp-block-coblocks-post-carousel__item swiper-slide">';
+		$list_items_markup .= '<div class="swiper-slide">';
+
+		// $list_items_markup .= '<p>swiper slide</p>';
+
+		// $list_items_markup .= '</div>';
 
 		if ( null !== $post['thumbnailURL'] && $post['thumbnailURL'] ) {
 
@@ -229,13 +239,10 @@ function coblocks_post_carousel( $posts, $attributes ) {
 		}
 
 		$list_items_markup .= '</div></div>';
-
-		// $list_items_markup .= '</div>';
 	}
 
 	$block_content .= $list_items_markup;
 
-	$block_content .= '</div>';
 	$block_content .= '</div>';
 
 	$block_content .= '<button class="coblocks-post-carousel-swiper__prev" id="coblocks-post-carousel-swiper__prev" />';

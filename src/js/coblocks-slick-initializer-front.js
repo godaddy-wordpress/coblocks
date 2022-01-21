@@ -4,25 +4,25 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 ( function() {
 	'use strict';
 
-	window.addEventListener( 'load', () => {
-		setTimeout( () => {
-			const postCarouselWrapper = document.querySelector( '.coblocks-post-carousel-swiper-container > .swiper-container' );
+	// window.addEventListener( 'load', () => {
+	// 	setTimeout( () => {
+	// 		const postCarouselWrapper = document.querySelector( '.coblocks-post-carousel-swiper-container > .swiper-container' );
 
-			if ( postCarouselWrapper ) {
-				const swiperBackButton = document.getElementById( `coblocks-post-carousel-swiper__prev` );
-				const swiperNextButton = document.getElementById( `coblocks-post-carousel-swiper__next` );
+	// 		if ( postCarouselWrapper ) {
+	// 			const swiperBackButton = document.getElementById( `coblocks-post-carousel-swiper__prev` );
+	// 			const swiperNextButton = document.getElementById( `coblocks-post-carousel-swiper__next` );
 
-				new TinySwiper( postCarouselWrapper, {
-					navigation: {
-						nextEl: swiperNextButton,
-						prevEl: swiperBackButton,
-					},
-					plugins: [
-						TinySwiperPluginNavigation,
-					],
-					touchable: false,
-				} );
-			}
-		}, 2200 );
-	 } );
+	// 			new TinySwiper( postCarouselWrapper, {
+	// 				navigation: {
+	// 					nextEl: swiperNextButton,
+	// 					prevEl: swiperBackButton,
+	// 				},
+	// 				plugins: [
+	// 					TinySwiperPluginNavigation,
+	// 				],
+	// 				touchable: false,
+	// 			} );
+	// 		}
+	// 	}, 2200 );
+	//  } );
 }() );
