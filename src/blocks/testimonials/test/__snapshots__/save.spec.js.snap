@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/testimonials should render with content 1`] = `
+"<!-- wp:coblocks/testimonials -->
+<div class=\\"wp-block-coblocks-testimonials has-columns has-responsive-columns has-2-columns has-medium-gutter is-style-boxy\\" data-columns=\\"2\\"></div>
+<!-- /wp:coblocks/testimonials -->"
+`;

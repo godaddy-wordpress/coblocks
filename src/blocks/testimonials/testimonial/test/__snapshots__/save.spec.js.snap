@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/testimonial should render with content 1`] = `
+"<!-- wp:coblocks/testimonial -->
+<div class=\\"wp-block-coblocks-testimonial\\"><div class=\\"wp-block-coblocks-testimonial__heading\\"><h4 class=\\"wp-block-coblocks-testimonial__heading__name\\">Some name</h4><p class=\\"wp-block-coblocks-testimonial__heading__role\\">Some role</p></div><p class=\\"wp-block-coblocks-testimonial__text\\" itemprop=\\"description\\">Some text</p></div>
+<!-- /wp:coblocks/testimonial -->"
+`;
