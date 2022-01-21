@@ -24,6 +24,8 @@ const Edit = () => {
 				<Button variant="primary">
 					Create Timer
 				</Button>
+				<div>TODO : Show Current Time Zone</div>
+				You can adjust the time zone under <a href={ '/wp-admin/options-general.php' }>Site Settings</a>
 			</Placeholder>
 		</div>
 	);
