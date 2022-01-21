@@ -41,7 +41,6 @@ export default function Inspector( props ) {
 	} = props;
 
 	const {
-		imageCrop,
 		linkTarget,
 		linkTo,
 		sizeSlug,
@@ -75,16 +74,6 @@ export default function Inspector( props ) {
 		isSelected,
 		getSettings
 	);
-
-	function getImageCropHelp( checked ) {
-		return checked
-			? __( 'Thumbnails are cropped to align.', 'coblocks' )
-			: __( 'Thumbnails are not cropped.', 'coblocks' );
-	}
-
-	function toggleImageCrop() {
-		setAttributes( { imageCrop: ! imageCrop } );
-	}
 
 	function setLinkTo( value ) {
 		setAttributes( { linkTo: value } );
@@ -189,26 +178,19 @@ export default function Inspector( props ) {
 	return (
 		<InspectorControls>
 			<PanelBody title={ __( 'Gallery settings', 'coblocks' ) }>
-				<ToggleControl
-					checked={ !! imageCrop }
-					help={ getImageCropHelp }
-					label={ __( 'Crop images', 'coblocks' ) }
-					onChange={ toggleImageCrop }
+				<GutterControl { ...props } />
+
+				{ gutter !== 'custom' && gutterCustom !== 0 &&
+				<RangeControl
+					aria-label={ __( 'Add rounded corners to the gallery items.', 'coblocks' ) }
+					label={ __( 'Rounded corners', 'coblocks' ) }
+					max={ 20 }
+					min={ 0 }
+					onChange={ setRadiusTo }
+					step={ 1 }
+					value={ radius }
 				/>
-				<SelectControl
-					hideCancelButton={ true }
-					label={ __( 'Link to', 'coblocks' ) }
-					onChange={ setLinkTo }
-					options={ linkOptions }
-					value={ linkTo }
-				/>
-				{ hasLinkTo && (
-					<ToggleControl
-						checked={ linkTarget === '_blank' }
-						label={ __( 'Open in new tab', 'coblocks' ) }
-						onChange={ toggleOpenInNewTab }
-					/>
-				) }
+				}
 				{ imageSizeOptions?.length > 0 && (
 					<SelectControl
 						hideCancelButton={ true }
@@ -230,20 +212,6 @@ export default function Inspector( props ) {
 					</BaseControl>
 				) }
 
-				<GutterControl { ...props } />
-
-				{ gutter !== 'custom' && gutterCustom !== 0 &&
-				<RangeControl
-					aria-label={ __( 'Add rounded corners to the gallery items.', 'coblocks' ) }
-					label={ __( 'Rounded corners', 'coblocks' ) }
-					max={ 20 }
-					min={ 0 }
-					onChange={ setRadiusTo }
-					step={ 1 }
-					value={ radius }
-				/>
-				}
-
 				<ToggleControl
 					checked={ !! lightbox }
 					help={ getLightboxHelp }
@@ -251,6 +219,20 @@ export default function Inspector( props ) {
 					onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
 				/>
 
+				<SelectControl
+					hideCancelButton={ true }
+					label={ __( 'Link to', 'coblocks' ) }
+					onChange={ setLinkTo }
+					options={ linkOptions }
+					value={ linkTo }
+				/>
+				{ hasLinkTo && (
+					<ToggleControl
+						checked={ linkTarget === '_blank' }
+						label={ __( 'Open in new tab', 'coblocks' ) }
+						onChange={ toggleOpenInNewTab }
+					/>
+				) }
 			</PanelBody>
 		</InspectorControls>
 	);

@@ -26,11 +26,10 @@ export default function saveWithInnerBlocks( { attributes } ) {
 		return saveWithoutInnerBlocks( { attributes } );
 	}
 
-	const { caption, lightbox, imageCrop, radius, filter } = attributes;
+	const { caption, lightbox, radius, filter } = attributes;
 
 	const className = classnames( 'masonry-grid', {
 		'has-lightbox': lightbox,
-		'is-cropped': imageCrop,
 		[ `has-filter-${ filter }` ]: filter !== 'none',
 		[ `has-border-radius-${ radius }` ]: radius > 0,
 	} );

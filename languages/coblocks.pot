@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-01-04T17:07:24+00:00\n"
+"POT-Creation-Date: 2022-01-20T20:53:51+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -269,7 +269,7 @@ msgstr ""
 msgid "An error has occurred, check for calendar privileges to make sure it is public or try again later."
 msgstr ""
 
-#: src/blocks/gist/index.php:56
+#: src/blocks/gist/index.php:83
 #: src/blocks/gist/deprecated.js:37
 #: src/blocks/gist/deprecated.js:73
 msgid "View this gist on GitHub"
@@ -516,8 +516,8 @@ msgstr ""
 msgid "Text color"
 msgstr ""
 
-#: src/blocks/accordion/edit.js:126
-#: src/blocks/accordion/edit.js:129
+#: src/blocks/accordion/edit.js:106
+#: src/blocks/accordion/edit.js:109
 msgid "Add accordion item"
 msgstr ""
 
@@ -736,7 +736,7 @@ msgstr ""
 
 #. translators: visually stack buttons one on top of another
 #: src/blocks/buttons/inspector.js:46
-#: src/extensions/advanced-controls/index.js:159
+#: src/extensions/advanced-controls/index.js:154
 msgid "Stack on mobile"
 msgstr ""
 
@@ -859,7 +859,7 @@ msgstr ""
 #: src/blocks/dynamic-separator/inspector.js:36
 #: src/blocks/gallery-carousel/inspector.js:103
 #: src/blocks/hero/inspector.js:108
-#: src/blocks/map/inspector.js:130
+#: src/blocks/map/inspector.js:107
 msgid "Height in pixels"
 msgstr ""
 
@@ -1144,7 +1144,7 @@ msgstr ""
 #: src/blocks/row/column/inspector.js:109
 #: src/blocks/row/inspector.js:159
 #: src/components/background/panel.js:209
-#: src/extensions/padding-controls/index.js:81
+#: src/extensions/padding-controls/index.js:78
 msgid "Padding"
 msgstr ""
 
@@ -1415,7 +1415,7 @@ msgstr ""
 #: src/components/size-control/index.js:93
 #: src/components/size-control/index.js:104
 #: src/components/size-control/index.js:136
-#: src/extensions/padding-controls/index.js:32
+#: src/extensions/padding-controls/index.js:29
 msgid "S"
 msgstr ""
 
@@ -1432,7 +1432,7 @@ msgstr ""
 #: src/components/size-control/index.js:94
 #: src/components/size-control/index.js:105
 #: src/components/size-control/index.js:137
-#: src/extensions/padding-controls/index.js:33
+#: src/extensions/padding-controls/index.js:30
 msgid "Small"
 msgstr ""
 
@@ -1446,7 +1446,7 @@ msgstr ""
 #: src/components/size-control/index.js:84
 #: src/components/size-control/index.js:110
 #: src/components/size-control/index.js:143
-#: src/extensions/padding-controls/index.js:38
+#: src/extensions/padding-controls/index.js:35
 msgid "M"
 msgstr ""
 
@@ -1463,7 +1463,7 @@ msgstr ""
 #: src/components/size-control/index.js:85
 #: src/components/size-control/index.js:111
 #: src/components/size-control/index.js:144
-#: src/extensions/padding-controls/index.js:39
+#: src/extensions/padding-controls/index.js:36
 msgid "Medium"
 msgstr ""
 
@@ -1477,7 +1477,7 @@ msgstr ""
 #: src/components/size-control/index.js:69
 #: src/components/size-control/index.js:116
 #: src/components/size-control/index.js:152
-#: src/extensions/padding-controls/index.js:44
+#: src/extensions/padding-controls/index.js:41
 msgid "L"
 msgstr ""
 
@@ -1494,7 +1494,7 @@ msgstr ""
 #: src/components/size-control/index.js:70
 #: src/components/size-control/index.js:117
 #: src/components/size-control/index.js:153
-#: src/extensions/padding-controls/index.js:45
+#: src/extensions/padding-controls/index.js:42
 msgid "Large"
 msgstr ""
 
@@ -1506,7 +1506,7 @@ msgstr ""
 #: src/components/size-control/index.js:75
 #: src/components/size-control/index.js:122
 #: src/components/size-control/index.js:161
-#: src/extensions/padding-controls/index.js:50
+#: src/extensions/padding-controls/index.js:48
 msgid "XL"
 msgstr ""
 
@@ -1515,12 +1515,12 @@ msgstr ""
 #: src/blocks/icon/icon-size-select.js:33
 #: src/blocks/posts/inspector.js:80
 #: src/components/dimensions-control/dimensions-select.js:30
-#: src/extensions/padding-controls/index.js:51
+#: src/extensions/padding-controls/index.js:49
 msgid "Huge"
 msgstr ""
 
 #: src/blocks/food-and-drinks/inspector.js:65
-#: src/blocks/map/inspector.js:105
+#: src/blocks/map/inspector.js:82
 #: src/blocks/posts/inspector.js:306
 #: src/blocks/row/inspector.js:127
 #: src/blocks/services/inspector.js:31
@@ -1711,13 +1711,13 @@ msgid "Saving"
 msgstr ""
 
 #: src/blocks/form/edit.js:402
-#: src/blocks/map/inspector.js:226
+#: src/blocks/map/inspector.js:203
 #: src/blocks/opentable/edit.js:162
 msgid "Save"
 msgstr ""
 
 #: src/blocks/form/edit.js:412
-#: src/blocks/map/inspector.js:235
+#: src/blocks/map/inspector.js:212
 msgid "Remove"
 msgstr ""
 
@@ -2252,21 +2252,21 @@ msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:49
 #: src/blocks/gallery-collage/inspector.js:50
-#: src/blocks/gallery-masonry/inspector.js:179
+#: src/blocks/gallery-masonry/inspector.js:168
 #: src/blocks/gallery-masonry/v1/inspector.js:68
 #: src/blocks/gallery-offset/inspector.js:71
 #: src/blocks/gallery-stacked/inspector.js:66
-#: src/extensions/lightbox-controls/index.js:37
+#: src/extensions/lightbox-controls/index.js:41
 msgid "Image lightbox is enabled."
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:49
 #: src/blocks/gallery-collage/inspector.js:50
-#: src/blocks/gallery-masonry/inspector.js:180
+#: src/blocks/gallery-masonry/inspector.js:169
 #: src/blocks/gallery-masonry/v1/inspector.js:69
 #: src/blocks/gallery-offset/inspector.js:72
 #: src/blocks/gallery-stacked/inspector.js:67
-#: src/extensions/lightbox-controls/index.js:38
+#: src/extensions/lightbox-controls/index.js:42
 msgid "Toggle to enable the image lightbox."
 msgstr ""
 
@@ -2284,7 +2284,7 @@ msgid "Size"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:93
-#: src/blocks/gallery-masonry/inspector.js:238
+#: src/blocks/gallery-masonry/inspector.js:186
 #: src/blocks/gallery-masonry/v1/inspector.js:89
 #: src/blocks/gallery-offset/inspector.js:87
 #: src/blocks/gallery-stacked/inspector.js:90
@@ -2296,11 +2296,11 @@ msgstr ""
 #: src/blocks/gallery-carousel/inspector.js:130
 #: src/blocks/gallery-carousel/variations.js:145
 #: src/blocks/gallery-collage/inspector.js:100
-#: src/blocks/gallery-masonry/inspector.js:250
+#: src/blocks/gallery-masonry/inspector.js:218
 #: src/blocks/gallery-masonry/v1/inspector.js:101
 #: src/blocks/gallery-offset/inspector.js:95
 #: src/blocks/gallery-stacked/inspector.js:100
-#: src/extensions/lightbox-controls/index.js:50
+#: src/extensions/lightbox-controls/index.js:51
 msgid "Lightbox"
 msgstr ""
 
@@ -2333,7 +2333,7 @@ msgstr ""
 #: src/blocks/gallery-collage/edit.js:156
 #: src/blocks/services/service/edit.js:151
 #: src/components/block-gallery/gallery-image.js:213
-#: src/extensions/replace-image/index.js:115
+#: src/extensions/replace-image/index.js:108
 msgid "Replace Image"
 msgstr ""
 
@@ -2467,63 +2467,51 @@ msgstr ""
 msgid "Media File"
 msgstr ""
 
-#: src/blocks/gallery-masonry/inspector.js:81
-msgid "Thumbnails are cropped to align."
-msgstr ""
-
-#: src/blocks/gallery-masonry/inspector.js:82
-msgid "Thumbnails are not cropped."
-msgstr ""
-
 #. translators: %s: image size settings
-#: src/blocks/gallery-masonry/inspector.js:111
+#: src/blocks/gallery-masonry/inspector.js:100
 msgid "All gallery image links updated to: %s"
 msgstr ""
 
-#: src/blocks/gallery-masonry/inspector.js:136
+#: src/blocks/gallery-masonry/inspector.js:125
 msgid "All gallery images updated to open in new tab"
 msgstr ""
 
-#: src/blocks/gallery-masonry/inspector.js:137
+#: src/blocks/gallery-masonry/inspector.js:126
 msgid "All gallery images updated to not open in new tab"
 msgstr ""
 
 #. translators: %s: image size settings
-#: src/blocks/gallery-masonry/inspector.js:167
+#: src/blocks/gallery-masonry/inspector.js:156
 msgid "All gallery image sizes updated to: %s"
 msgstr ""
 
-#: src/blocks/gallery-masonry/inspector.js:191
+#: src/blocks/gallery-masonry/inspector.js:180
 msgid "Gallery settings"
 msgstr ""
 
-#: src/blocks/gallery-masonry/inspector.js:195
-msgid "Crop images"
+#: src/blocks/gallery-masonry/inspector.js:185
+#: src/blocks/gallery-masonry/v1/inspector.js:88
+msgid "Add rounded corners to the gallery items."
 msgstr ""
 
-#: src/blocks/gallery-masonry/inspector.js:200
+#: src/blocks/gallery-masonry/inspector.js:197
+#: src/blocks/gallery-masonry/inspector.js:206
+msgid "Image size"
+msgstr ""
+
+#: src/blocks/gallery-masonry/inspector.js:210
+msgid "Loading options…"
+msgstr ""
+
+#: src/blocks/gallery-masonry/inspector.js:224
 #: src/components/block-gallery/gallery-link-settings.js:80
 msgid "Link to"
 msgstr ""
 
-#: src/blocks/gallery-masonry/inspector.js:208
+#: src/blocks/gallery-masonry/inspector.js:232
 #: src/blocks/icon/inspector.js:315
 #: src/components/block-gallery/gallery-link-settings.js:89
 msgid "Open in new tab"
-msgstr ""
-
-#: src/blocks/gallery-masonry/inspector.js:215
-#: src/blocks/gallery-masonry/inspector.js:224
-msgid "Image size"
-msgstr ""
-
-#: src/blocks/gallery-masonry/inspector.js:228
-msgid "Loading options…"
-msgstr ""
-
-#: src/blocks/gallery-masonry/inspector.js:237
-#: src/blocks/gallery-masonry/v1/inspector.js:88
-msgid "Add rounded corners to the gallery items."
 msgstr ""
 
 #: src/blocks/gallery-masonry/v1/inspector.js:74
@@ -2625,21 +2613,21 @@ msgstr ""
 msgid "Gif settings"
 msgstr ""
 
-#. translators: block name
-#: src/blocks/gist/index.js:28
-#: src/blocks/gist/index.js:56
-msgid "Gist"
-msgstr ""
-
 #. translators: block description
 #: src/blocks/gist/index.js:30
-#: src/blocks/gist/index.js:58
+#: src/blocks/gist/index.js:56
 msgid "Embed a GitHub Gist."
+msgstr ""
+
+#. translators: block name
+#: src/blocks/gist/index.js:47
+#: src/blocks/gist/index.js:68
+msgid "Gist"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/gist/index.js:64
+#: src/blocks/gist/index.js:63
 #: src/blocks/icon/deprecated/svgs.js:462
 #: src/blocks/icon/deprecated/svgsfocusable.js:461
 #: src/blocks/icon/deprecated/svgsv1.js:440
@@ -4439,7 +4427,7 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgsfocusable.js:801
 #: src/blocks/icon/deprecated/svgsv1.js:785
 #: src/blocks/icon/svgs-generated.js:1979
-#: src/blocks/map/index.js:41
+#: src/blocks/map/index.js:48
 msgid "directions"
 msgstr ""
 
@@ -7527,8 +7515,8 @@ msgstr ""
 #. translators: icon label
 #. translators: block name
 #: src/blocks/icon/svgs-generated.js:1959
-#: src/blocks/map/edit.js:274
-#: src/blocks/map/index.js:28
+#: src/blocks/map/edit.js:165
+#: src/blocks/map/index.js:56
 msgid "Map"
 msgstr ""
 
@@ -7867,29 +7855,29 @@ msgid "Edit Location"
 msgstr ""
 
 #: src/blocks/map/deprecated.js:96
-#: src/blocks/map/edit.js:157
+#: src/blocks/map/edit-gmaps-iframe-render.js:22
 #: src/blocks/map/save.js:50
 msgid "Google Map"
 msgstr ""
 
-#: src/blocks/map/edit.js:230
+#: src/blocks/map/edit-gmaps-with-api-key.js:59
 msgid "Invalid API key, or too many requests"
 msgstr ""
 
-#: src/blocks/map/edit.js:275
+#: src/blocks/map/edit.js:161
 msgid "Enter a location or address to drop a pin on a Google map."
 msgstr ""
 
-#: src/blocks/map/edit.js:284
+#: src/blocks/map/edit.js:173
 msgid "Search for a place or address…"
 msgstr ""
 
-#: src/blocks/map/edit.js:300
+#: src/blocks/map/edit.js:185
 msgid "Search"
 msgstr ""
 
-#: src/blocks/map/edit.js:307
-#: src/blocks/map/edit.js:317
+#: src/blocks/map/edit.js:197
+#: src/blocks/map/edit.js:199
 msgid "Cancel"
 msgstr ""
 
@@ -7899,155 +7887,155 @@ msgid "Add an address or location to drop a pin on a Google map."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/map/index.js:35
+#: src/blocks/map/index.js:42
 msgid "address"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/map/index.js:37
+#: src/blocks/map/index.js:44
 msgid "maps"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/map/index.js:39
+#: src/blocks/map/index.js:46
 msgid "google"
 msgstr ""
 
-#: src/blocks/map/inspector.js:107
+#: src/blocks/map/inspector.js:84
 msgid "Select map style"
 msgstr ""
 
-#: src/blocks/map/inspector.js:128
+#: src/blocks/map/inspector.js:105
 msgid "Map settings"
 msgstr ""
 
-#: src/blocks/map/inspector.js:133
+#: src/blocks/map/inspector.js:109
 msgid "Height for the map in pixels"
 msgstr ""
 
-#: src/blocks/map/inspector.js:141
+#: src/blocks/map/inspector.js:118
 msgid "Zoom Level"
 msgstr ""
 
-#: src/blocks/map/inspector.js:151
+#: src/blocks/map/inspector.js:128
 msgid "Marker size"
 msgstr ""
 
-#: src/blocks/map/inspector.js:162
-#: src/blocks/map/inspector.js:173
-msgid "Map controls"
-msgstr ""
-
-#: src/blocks/map/inspector.js:165
+#: src/blocks/map/inspector.js:140
 msgid "Fine control options are enabled."
 msgstr ""
 
-#: src/blocks/map/inspector.js:165
+#: src/blocks/map/inspector.js:140
 msgid "Toggle to enable map control options."
 msgstr ""
 
-#: src/blocks/map/inspector.js:177
-msgid "Map type"
+#: src/blocks/map/inspector.js:141
+#: src/blocks/map/inspector.js:151
+msgid "Map controls"
 msgstr ""
 
-#: src/blocks/map/inspector.js:180
+#: src/blocks/map/inspector.js:155
 msgid "Switching between standard and satellite map views is enabled."
 msgstr ""
 
-#: src/blocks/map/inspector.js:180
+#: src/blocks/map/inspector.js:155
 msgid "Toggle to enable switching between standard and satellite maps."
 msgstr ""
 
-#: src/blocks/map/inspector.js:183
-msgid "Zoom controls"
+#: src/blocks/map/inspector.js:156
+msgid "Map type"
 msgstr ""
 
-#: src/blocks/map/inspector.js:186
+#: src/blocks/map/inspector.js:161
 msgid "Showing map zoom controls."
 msgstr ""
 
-#: src/blocks/map/inspector.js:186
+#: src/blocks/map/inspector.js:161
 msgid "Toggle to enable zooming in and out on the map with zoom controls."
 msgstr ""
 
-#: src/blocks/map/inspector.js:189
-msgid "Street view"
+#: src/blocks/map/inspector.js:162
+msgid "Zoom controls"
 msgstr ""
 
-#: src/blocks/map/inspector.js:192
+#: src/blocks/map/inspector.js:167
 msgid "Showing the street view map control."
 msgstr ""
 
-#: src/blocks/map/inspector.js:192
+#: src/blocks/map/inspector.js:167
 msgid "Toggle to show the street view control at the bottom right."
 msgstr ""
 
-#: src/blocks/map/inspector.js:195
-msgid "Fullscreen toggle"
+#: src/blocks/map/inspector.js:168
+msgid "Street view"
 msgstr ""
 
-#: src/blocks/map/inspector.js:198
+#: src/blocks/map/inspector.js:173
 msgid "Showing the fullscreen map control."
 msgstr ""
 
-#: src/blocks/map/inspector.js:198
+#: src/blocks/map/inspector.js:173
 msgid "Toggle to show the fullscreen map control."
 msgstr ""
 
-#: src/blocks/map/inspector.js:203
+#: src/blocks/map/inspector.js:174
+msgid "Fullscreen toggle"
+msgstr ""
+
+#: src/blocks/map/inspector.js:182
 msgid "Google Maps API key"
 msgstr ""
 
-#: src/blocks/map/inspector.js:207
+#: src/blocks/map/inspector.js:184
 msgid "Add a Google Maps API key. Updating this API key will set all your maps to use the new key."
 msgstr ""
 
-#: src/blocks/map/inspector.js:210
+#: src/blocks/map/inspector.js:187
 msgid "Get a key"
 msgstr ""
 
-#: src/blocks/map/inspector.js:211
+#: src/blocks/map/inspector.js:188
 msgid "Need help?"
 msgstr ""
 
-#: src/blocks/map/inspector.js:217
+#: src/blocks/map/inspector.js:195
 msgid "Add Google API key…"
 msgstr ""
 
-#: src/blocks/map/inspector.js:226
+#: src/blocks/map/inspector.js:203
 msgid "Saved"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/map/styles.js:13
+#: src/blocks/map/styles.js:12
 #: src/blocks/opentable/index.js:45
 msgid "Standard"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/map/styles.js:18
+#: src/blocks/map/styles.js:17
 msgid "Silver"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/map/styles.js:23
+#: src/blocks/map/styles.js:22
 msgid "Retro"
 msgstr ""
 
 #. translators: block style
 #. translators: visual style option
-#: src/blocks/map/styles.js:28
+#: src/blocks/map/styles.js:27
 #: src/components/block-gallery/options/caption-options.js:12
 msgid "Dark"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/map/styles.js:33
+#: src/blocks/map/styles.js:32
 msgid "Night"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/map/styles.js:38
+#: src/blocks/map/styles.js:37
 msgid "Aubergine"
 msgstr ""
 
@@ -9176,8 +9164,8 @@ msgstr ""
 #: src/components/size-control/index.js:41
 #: src/components/size-control/index.js:42
 #: src/extensions/list-styles/index.js:18
-#: src/extensions/padding-controls/index.js:26
-#: src/extensions/padding-controls/index.js:27
+#: src/extensions/padding-controls/index.js:23
+#: src/extensions/padding-controls/index.js:24
 msgid "None"
 msgstr ""
 
@@ -9546,43 +9534,43 @@ msgstr ""
 msgid "Toggle to scroll without fixed slides."
 msgstr ""
 
-#: src/components/slider-panel/index.js:76
+#: src/components/slider-panel/index.js:75
 msgid "Slider settings"
 msgstr ""
 
-#: src/components/slider-panel/index.js:80
+#: src/components/slider-panel/index.js:79
 msgid "Loop"
 msgstr ""
 
-#: src/components/slider-panel/index.js:86
+#: src/components/slider-panel/index.js:85
 msgid "Autoplay"
 msgstr ""
 
-#: src/components/slider-panel/index.js:92
+#: src/components/slider-panel/index.js:91
 msgid "Transition speed"
 msgstr ""
 
-#: src/components/slider-panel/index.js:100
+#: src/components/slider-panel/index.js:99
 msgid "Pause on hover"
 msgstr ""
 
-#: src/components/slider-panel/index.js:108
+#: src/components/slider-panel/index.js:107
 msgid "Draggable"
 msgstr ""
 
-#: src/components/slider-panel/index.js:114
+#: src/components/slider-panel/index.js:113
 msgid "Free scroll"
 msgstr ""
 
-#: src/components/slider-panel/index.js:120
+#: src/components/slider-panel/index.js:119
 msgid "Arrow navigation"
 msgstr ""
 
-#: src/components/slider-panel/index.js:127
+#: src/components/slider-panel/index.js:126
 msgid "Dot navigation"
 msgstr ""
 
-#: src/components/slider-panel/index.js:133
+#: src/components/slider-panel/index.js:132
 msgid "Align cells"
 msgstr ""
 
@@ -9642,35 +9630,35 @@ msgstr ""
 msgid "No bottom spacing"
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:154
+#: src/extensions/advanced-controls/index.js:149
 msgid "Responsiveness is enabled."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:155
+#: src/extensions/advanced-controls/index.js:150
 msgid "Toggle to stack elements on top of each other on smaller viewports."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:168
+#: src/extensions/advanced-controls/index.js:163
 msgid "Toggle to add top margin back."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:168
+#: src/extensions/advanced-controls/index.js:163
 msgid "Toggle to remove any top margin."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:169
+#: src/extensions/advanced-controls/index.js:164
 msgid "Remove top spacing"
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:183
+#: src/extensions/advanced-controls/index.js:179
 msgid "Toggle to add bottom margin back."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:183
+#: src/extensions/advanced-controls/index.js:179
 msgid "Toggle to remove any bottom margin."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:184
+#: src/extensions/advanced-controls/index.js:180
 msgid "Remove bottom spacing"
 msgstr ""
 
@@ -9727,7 +9715,7 @@ msgstr ""
 msgid "Allow animations to be used on blocks."
 msgstr ""
 
-#: src/extensions/block-patterns/index.js:35
+#: src/extensions/block-patterns/index.js:34
 msgid "Add Design Pattern"
 msgstr ""
 
@@ -9768,28 +9756,28 @@ msgstr ""
 msgid "Save Pattern"
 msgstr ""
 
-#: src/extensions/button-controls/index.js:65
-msgid "Display fullwidth"
-msgstr ""
-
-#: src/extensions/button-controls/index.js:68
+#: src/extensions/button-controls/index.js:62
 msgid "Displaying as full width."
 msgstr ""
 
-#: src/extensions/button-controls/index.js:68
+#: src/extensions/button-controls/index.js:62
 msgid "Toggle to display button as full width."
 msgstr ""
 
-#: src/extensions/coblocks-settings/index.js:39
-#: src/extensions/coblocks-settings/index.js:48
+#: src/extensions/button-controls/index.js:63
+msgid "Display fullwidth"
+msgstr ""
+
+#: src/extensions/coblocks-settings/index.js:33
+#: src/extensions/coblocks-settings/index.js:42
 msgid "Editor settings"
 msgstr ""
 
-#: src/extensions/coblocks-settings/index.js:45
+#: src/extensions/coblocks-settings/index.js:39
 msgid "Close"
 msgstr ""
 
-#: src/extensions/coblocks-settings/index.js:52
+#: src/extensions/coblocks-settings/index.js:46
 msgid "General"
 msgstr ""
 
@@ -9825,7 +9813,7 @@ msgstr ""
 msgid "Top Wave"
 msgstr ""
 
-#: src/extensions/image-crop/index.js:170
+#: src/extensions/image-crop/index.js:158
 msgid "Crop settings"
 msgstr ""
 
@@ -9874,7 +9862,7 @@ msgid "Overlap"
 msgstr ""
 
 #. translators: %1$s is placeholder for block name such as Group, or Embed
-#: src/extensions/padding-controls/index.js:77
+#: src/extensions/padding-controls/index.js:73
 msgid "%1$s settings"
 msgstr ""
 
