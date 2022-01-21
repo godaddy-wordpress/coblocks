@@ -101,20 +101,18 @@ const EventsEdit = ( props ) => {
 		insertBlock( newEvent, innerBlocks.length, clientId, true );
 	};
 
-	const toolbarControls = [
-		{
-			icon: edit,
-			onClick: () => {
-				if ( !! externalCalendarUrl ) {
-					setStateExternalCalendarUrl( null );
-					setAttributes( { externalCalendarUrl: null } );
-				} else {
-					setIsEditing( ! isEditing );
-				}
-			},
-			title: !! externalCalendarUrl ? __( 'Edit calendar URL', 'coblocks' ) : __( 'Edit Events', 'coblocks' ),
+	const toolbarControls = showCarousel ? [ {
+		icon: edit,
+		onClick: () => {
+			if ( !! externalCalendarUrl ) {
+				setStateExternalCalendarUrl( null );
+				setAttributes( { externalCalendarUrl: null } );
+			} else {
+				setIsEditing( ! isEditing );
+			}
 		},
-	];
+		title: !! externalCalendarUrl ? __( 'Edit calendar URL', 'coblocks' ) : __( 'Edit Events', 'coblocks' ),
+	} ] : [];
 
 	const carouselButtonStyle = () => {
 		const carouselButtonStyles = {};
@@ -216,8 +214,8 @@ const EventsEdit = ( props ) => {
 
 		// coming from edit mode to carousel
 		if ( isEditing === false && swiper !== null && carouselCssText !== null && innerBlocksContainer ) {
-			const swiperEditModeWrapper = innerBlocksContainer.querySelectorAll( '.swiper-wrapper-edit' )[ 0 ];
-			const swiperEditModeContainer = innerBlocksContainer.querySelectorAll( '.swiper-container-edit' )[ 0 ];
+			const swiperEditModeWrapper = innerBlocksContainer.querySelector( '.swiper-wrapper-edit' );
+			const swiperEditModeContainer = innerBlocksContainer.querySelector( '.swiper-container-edit' );
 
 			swiperEditModeWrapper?.classList.remove( 'swiper-wrapper-edit' );
 			swiperEditModeWrapper?.classList.add( 'swiper-wrapper' );
@@ -275,8 +273,8 @@ const EventsEdit = ( props ) => {
 		// coming from carousel to edit mode
 		// need to also format original DOM structure
 		if ( isEditing === true && swiper !== null && carouselCssText === null ) {
-			const swiperWrapperAfter = innerBlocksContainer.querySelectorAll( '.swiper-wrapper' )[ 0 ];
-			const swiperContainerAfter = innerBlocksContainer.querySelectorAll( '.swiper-container' )[ 0 ];
+			const swiperWrapperAfter = innerBlocksContainer.querySelector( '.swiper-wrapper' ) || innerBlocksContainer.querySelector( '.swiper-wrapper-edit' );
+			const swiperContainerAfter = innerBlocksContainer.querySelector( '.swiper-container' ) || innerBlocksContainer.querySelector( '.swiper-container-edit' );
 
 			swiperContainerAfter?.classList.remove( 'swiper-container' );
 			swiperContainerAfter?.classList.add( 'swiper-container-edit' );
@@ -297,13 +295,15 @@ const EventsEdit = ( props ) => {
 		if ( swiper === null && ! externalCalendarUrl ) {
 			// swiper root container
 			const swiperContainer = document.createElement( 'div' );
-			swiperContainer.setAttribute( 'class', 'swiper-container' );
+			const swiperContainerClass = showCarousel === false ? 'swiper-container-edit' : 'swiper-container';
+			swiperContainer.setAttribute( 'class', swiperContainerClass );
 
 			innerBlocksContainer?.insertBefore( swiperContainer, innerBlocksContainer.firstChild );
 
 			// swiper slides wrapper
 			const swiperWrapper = document.createElement( 'div' );
-			swiperWrapper.setAttribute( 'class', 'swiper-wrapper' );
+			const swiperWrapperClass = showCarousel === false ? 'swiper-wrapper-edit' : 'swiper-wrapper';
+			swiperWrapper.setAttribute( 'class', swiperWrapperClass );
 
 			swiperContainer?.appendChild( swiperWrapper );
 
@@ -431,10 +431,12 @@ const EventsEdit = ( props ) => {
 				tabIndex="0"
 			>
 				{ showExternalCalendarControls && !! externalCalendarUrl ? (
-					<ServerSideRender
-						attributes={ attributes }
-						block="coblocks/events"
-					/>
+					<span className="coblocks-events-swiper-container-external-calendar">
+						<ServerSideRender
+							attributes={ attributes }
+							block="coblocks/events"
+						/>
+					</span>
 				) : (
 					renderInnerBlocks()
 				) }
