@@ -3,7 +3,9 @@
   "name": "coblocks/countdown-timer",
   "category": "layout",
   "attributes": {
-
-  },
-  "title": "Countdown Timer"
+	"align": {
+	  "type": "string",
+	  "default": "wide"
+	}
+  }
 }

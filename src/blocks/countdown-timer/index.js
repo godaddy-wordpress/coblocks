@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-// import { TimerIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { TimerIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies.
@@ -14,7 +14,7 @@ import save from './save';
 /**
  * WordPress dependencies.
  */
-//import { Icon } from '@wordpress/components';
+import { Icon } from '@wordpress/components';
 import { __, _x } from '@wordpress/i18n';
 
 /**
@@ -25,7 +25,7 @@ const { name, category } = metadata;
 const settings = {
 	description: __( 'Add a countdown timer to promote limited time offers or upcoming events.', 'coblocks' ),
 	edit,
-	//icon: <Icon icon={ icon } />,
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */
