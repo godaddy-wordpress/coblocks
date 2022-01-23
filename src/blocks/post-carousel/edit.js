@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import Slick from 'react-slick';
 import { get, isEqual, isUndefined, pickBy } from 'lodash';
 import { PostCarouselIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
@@ -11,6 +10,7 @@ import { PostCarouselIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  */
 import InspectorControls from './inspector';
 import Swiper from '../../components/swiper';
+import PostItem from './post-item';
 
 /**
  * WordPress dependencies
@@ -18,13 +18,12 @@ import Swiper from '../../components/swiper';
 import apiFetch from '@wordpress/api-fetch';
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
-import { RawHTML, useEffect, useRef, useState } from '@wordpress/element';
+import { useEffect, useMemo, useRef, useState } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
 // Disable reason: We choose to use unsafe APIs in our codebase.
 // eslint-disable-next-line @wordpress/no-unsafe-wp-apis
-import { __experimentalGetSettings, dateI18n, format } from '@wordpress/date';
 import { useDispatch, withSelect } from '@wordpress/data';
-import { BlockControls, PlainText } from '@wordpress/block-editor';
+import { BlockControls } from '@wordpress/block-editor';
 import {
 	Button,
 	Disabled,
@@ -51,7 +50,6 @@ const PostCarousel = ( props ) => {
 		setAttributes,
 		latestPosts,
 		className,
-		isRTL,
 		clientId,
 	} = props;
 
@@ -59,10 +57,8 @@ const PostCarousel = ( props ) => {
 		displayPostContent,
 		displayPostDate,
 		displayPostLink,
-		excerptLength,
 		externalRssUrl,
 		postFeedType,
-		postLink,
 		postsToShow,
 		columns,
 		align,
@@ -120,8 +116,8 @@ const PostCarousel = ( props ) => {
 	const editToolbarControls = [
 		{
 			icon: edit,
-			title: __( 'Edit RSS URL', 'coblocks' ),
 			onClick: () => setEditing( true ),
+			title: __( 'Edit RSS URL', 'coblocks' ),
 		},
 	];
 
@@ -129,9 +125,7 @@ const PostCarousel = ( props ) => {
 
 	const displayPosts = Array.isArray( latestPosts ) && latestPosts.length > postsToShow ? latestPosts.slice( 0, postsToShow ) : latestPosts;
 
-	const dateFormat = __experimentalGetSettings().formats.date; // eslint-disable-line no-restricted-syntax
-
-	const renderCarousel = () => {
+	const renderCarousel = useMemo( () => {
 		return (
 			<>
 				<div
@@ -144,77 +138,20 @@ const PostCarousel = ( props ) => {
 					tabIndex="0"
 				>
 					<Swiper
-						list={ displayPosts }
+						list={ displayPosts || [] }
 						navigation
 						slidesPerView={ columns }
 					>
 						{ ( { index: i, item: post } ) => {
-							const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
-							const featuredImageStyle = 'url(' + featuredImageUrl + ')';
-							const titleTrimmed = post.title.rendered.trim();
-
-							let excerpt = post.excerpt.rendered;
-							if ( post.excerpt.raw === '' ) {
-								excerpt = post.content.raw;
-							}
-							const excerptElement = document.createElement( 'div' );
-
-							excerptElement.innerHTML = excerpt;
-							excerpt = excerptElement.textContent || excerptElement.innerText || '';
-
 							return (
-								<div className="wp-block-coblocks-post-carousel__item" key={ i }>
-									{ featuredImageUrl &&
-									<div className="wp-block-coblocks-post-carousel__image">
-										<div className="bg-cover bg-center-center" style={ { backgroundImage: featuredImageStyle } }></div>
-									</div>
-									}
-									<div className={ classnames( 'wp-block-coblocks-post-carousel__content', {
-										'full-height': ! featuredImageUrl,
-									} ) }>
-										{ displayPostDate && post.date_gmt &&
-										<time className="wp-block-coblocks-post-carousel__date" dateTime={ format( 'c', post.date_gmt ) }>
-											{ dateI18n( dateFormat, post.date_gmt ) }
-										</time>
-										}
-										<Disabled>
-											<a alt={ titleTrimmed } href={ post.link } rel="noreferrer noopener" target="_blank">
-												{ titleTrimmed ? (
-													<RawHTML>
-														{ titleTrimmed }
-													</RawHTML>
-												)
-												/* translators: placeholder when a post has no title */
-													: __( '(no title)', 'coblocks' )
-												}
-											</a>
-										</Disabled>
-										{ displayPostContent &&
-										<div className="wp-block-coblocks-post-carousel__excerpt">
-											<RawHTML
-												key="html"
-											>
-												{ excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
-											</RawHTML>
-										</div>
-										}
-										{ displayPostLink &&
-										<PlainText
-											className="wp-block-coblocks-post-carousel__more-link"
-											onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
-											placeholder={ __( 'Read more', 'coblocks' ) }
-											value={ postLink }
-										/>
-										}
-									</div>
-								</div>
+								<PostItem clientId={ clientId } key={ i } post={ post } setAttributes={ setAttributes } />
 							);
 						} }
 					</Swiper>
 				</div>
 			</>
 		);
-	};
+	}, [ columns, displayPostContent, displayPostDate, displayPostLink, displayPosts ] );
 
 	if ( ! hasPosts && postFeedType === 'internal' ) {
 		return (
@@ -308,7 +245,7 @@ const PostCarousel = ( props ) => {
 					className="coblocks-slick pb-8"
 				/>
 			}
-			{ postFeedType === 'internal' && renderCarousel() }
+			{ postFeedType === 'internal' && renderCarousel }
 		</>
 	);
 };
@@ -327,10 +264,10 @@ export default compose( [
 		const deprecatedQuery = () => {
 			const latestPostsQuery = pickBy( {
 				categories,
+				exclude: currentPost.id,
 				order,
 				orderby: orderBy,
 				per_page: postsToShow,
-				exclude: currentPost.id,
 			}, ( value ) => ! isUndefined( value ) );
 
 			let latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
