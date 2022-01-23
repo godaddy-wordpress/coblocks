@@ -139,6 +139,7 @@ const PostCarousel = ( props ) => {
 				>
 					<Swiper
 						list={ displayPosts || [] }
+						loop={ false }
 						navigation
 						slidesPerView={ columns }
 					>
