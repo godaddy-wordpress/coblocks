@@ -4,6 +4,8 @@
 import classnames from 'classnames';
 import { get, isEqual, isUndefined, pickBy } from 'lodash';
 import { PostCarouselIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import TinySwiper from 'tiny-swiper';
+import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
 
 /**
  * Internal dependencies
@@ -17,7 +19,7 @@ import PostItem from './post-item';
  */
 import apiFetch from '@wordpress/api-fetch';
 import { __ } from '@wordpress/i18n';
-import { compose } from '@wordpress/compose';
+import { compose, usePrevious } from '@wordpress/compose';
 import { useEffect, useMemo, useRef, useState } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
 // Disable reason: We choose to use unsafe APIs in our codebase.
@@ -66,6 +68,9 @@ const PostCarousel = ( props ) => {
 
 	const [ categoriesList, setCategoriesList ] = useState( [] );
 	const [ editing, setEditing ] = useState( externalRssUrl );
+	const [ swiper, setSwiper ] = useState( null );
+
+	const prevPostFeedType = usePrevious( postFeedType );
 
 	const { selectBlock } = useDispatch( 'core/block-editor' );
 
@@ -100,6 +105,25 @@ const PostCarousel = ( props ) => {
 			} );
 		}
 	}, [ displayPostLink, displayPostContent ] );
+
+	useEffect( () => {
+		if ( postFeedType === 'external' && ! editing ) {
+			setTimeout( () => {
+				const postCarouselContainer = document.querySelector( '.wp-block-coblocks-post-carousel.external' );
+
+				// remove the swiper classes so that the external feed does not display within carousel in editor
+				const swiperWrapper = postCarouselContainer.querySelector( '.swiper-wrapper' );
+				swiperWrapper.classList.remove( 'swiper-wrapper' );
+				swiperWrapper.classList.add( 'swiper-wrapper-editor' );
+
+				const swiperBackButton = postCarouselContainer.querySelector( '#wp-coblocks-post-carousel-swiper-prev' );
+				const swiperNextButton = postCarouselContainer.querySelector( '#wp-coblocks-post-carousel-swiper-next' );
+
+				swiperBackButton.style.display = 'none';
+				swiperNextButton.style.display = 'none';
+			}, 600 );
+		}
+	}, [ postFeedType, prevPostFeedType, editing, swiper, columns ] );
 
 	const onSubmitURL = ( event ) => {
 		event.preventDefault();

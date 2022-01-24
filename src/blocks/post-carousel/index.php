@@ -93,7 +93,7 @@ function coblocks_render_post_carousel_block( $attributes ) {
  */
 function coblocks_post_carousel( $posts, $attributes ) {
 
-	$class = 'wp-block-coblocks-post-carousel';
+	$class = 'wp-block-coblocks-post-carousel external';
 
 	if ( isset( $attributes['className'] ) ) {
 
@@ -232,6 +232,10 @@ function coblocks_post_carousel( $posts, $attributes ) {
 
 	$block_content .= '</div>';
 	$block_content .= '</div>';
+
+	$block_content .= '<button class="wp-coblocks-post-carousel-nav-button__prev" id="wp-coblocks-post-carousel-swiper-prev" />';
+	$block_content .= '<button class="wp-coblocks-post-carousel-nav-button__next" id="wp-coblocks-post-carousel-swiper-next" />';
+
 	$block_content .= '</div>';
 
 	return $block_content;
