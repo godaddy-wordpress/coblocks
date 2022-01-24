@@ -5,9 +5,12 @@ import { __ } from '@wordpress/i18n';
 import { TimerIcon } from '@godaddy-wordpress/coblocks-icons';
 import { useBlockProps } from '@wordpress/block-editor';
 import { Button, Icon, Placeholder } from '@wordpress/components';
+import { useState } from '@wordpress/element';
 
-const Edit = () => {
+const Edit = ( { attributes, setAttributes } ) => {
 	const blockProps = useBlockProps();
+
+	const [ value, setValue ] = useState( -1 );
 
 	return (
 		<div { ...blockProps }>
@@ -21,11 +24,16 @@ const Edit = () => {
 				<input type={ 'date' } />
 				End time
 				<input type={ 'time' } />
-				<Button variant="primary">
-					Create Timer
-				</Button>
 				<div>TODO : Show Current Time Zone</div>
 				You can adjust the time zone under <a href={ '/wp-admin/options-general.php' }>Site Settings</a>
+				<input type={ 'number' } value={ attributes.eventTime } onChange={ ( nextAddress ) =>
+					setValue( parseInt( nextAddress.target.value ) )
+				} />
+				<Button variant="primary" onClick={ () => {
+					setAttributes( { eventTime: value } );
+				} }>
+					Create Timer
+				</Button>
 			</Placeholder>
 		</div>
 	);

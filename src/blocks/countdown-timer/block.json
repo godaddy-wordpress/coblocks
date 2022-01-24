@@ -6,6 +6,9 @@
 	"align": {
 	  "type": "string",
 	  "default": "wide"
+	},
+	"eventTime": {
+	  "type": "number"
 	}
   }
 }
