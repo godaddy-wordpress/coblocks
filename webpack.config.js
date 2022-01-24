@@ -21,6 +21,7 @@ const scripts = [
 	'coblocks-google-recaptcha',
 	'coblocks-lightbox',
 	'coblocks-masonry',
+	'coblocks-post-carousel-front',
 	'coblocks-slick-initializer-front',
 	'coblocks-slick-initializer',
 	'coblocks-tinyswiper-initializer',

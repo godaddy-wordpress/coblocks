@@ -4,104 +4,104 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 ( function() {
 	'use strict';
 
-	let swiper = null;
+	const swiper = null;
 
 	const MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 
-	document.addEventListener( 'DOMContentLoaded', function() {
-		console.log( 'dom loaded' );
+	// document.addEventListener( 'DOMContentLoaded', function() {
+	// 	console.log( 'dom loaded' );
 
-		setTimeout( () => {
-			const blockEditorContainer = document.querySelector( '.edit-post-visual-editor' );
+	// 	setTimeout( () => {
+	// 		const blockEditorContainer = document.querySelector( '.edit-post-visual-editor' );
 
-			if ( blockEditorContainer ) {
-				const postCarouselContainer = document.querySelector( '[data-type="coblocks/post-carousel"]' );
+	// 		if ( blockEditorContainer ) {
+	// 			const postCarouselContainer = document.querySelector( '[data-type="coblocks/post-carousel"]' );
 
-				if ( postCarouselContainer ) {
-					if ( swiper === null ) {
-						const postCarouselSwiperContainer = document.querySelector( '.coblocks-post-carousel-swiper-container' );
-						const swiperBackButton = document.getElementById( `coblocks-post-carousel-swiper__prev` );
-						const swiperNextButton = document.getElementById( `coblocks-post-carousel-swiper__next` );
+	// 			if ( postCarouselContainer ) {
+	// 				if ( swiper === null ) {
+	// 					const postCarouselSwiperContainer = document.querySelector( '.coblocks-post-carousel-swiper-container' );
+	// 					const swiperBackButton = document.getElementById( `coblocks-post-carousel-swiper__prev` );
+	// 					const swiperNextButton = document.getElementById( `coblocks-post-carousel-swiper__next` );
 
-						if ( postCarouselSwiperContainer && swiperBackButton && swiperNextButton ) {
-							const swiperData = JSON.parse( postCarouselSwiperContainer?.dataset?.swiper );
+	// 					if ( postCarouselSwiperContainer && swiperBackButton && swiperNextButton ) {
+	// 						const swiperData = JSON.parse( postCarouselSwiperContainer?.dataset?.swiper );
 
-							swiper = new TinySwiper( postCarouselSwiperContainer, {
-								centeredSlides: false,
-								navigation: {
-									nextEl: swiperNextButton,
-									prevEl: swiperBackButton,
-								},
-								plugins: [
-									TinySwiperPluginNavigation,
-								],
-								slidesPerView: swiperData.slidesToShow,
-								touchable: false,
-							} );
+	// 						swiper = new TinySwiper( postCarouselSwiperContainer, {
+	// 							centeredSlides: false,
+	// 							navigation: {
+	// 								nextEl: swiperNextButton,
+	// 								prevEl: swiperBackButton,
+	// 							},
+	// 							plugins: [
+	// 								TinySwiperPluginNavigation,
+	// 							],
+	// 							slidesPerView: swiperData.slidesToShow,
+	// 							touchable: false,
+	// 						} );
 
-							const observer = new MutationObserver( function( mutations ) {
-								console.log( 'change???' );
-							} );
+	// 						const observer = new MutationObserver( function( mutations ) {
+	// 							console.log( 'change???' );
+	// 						} );
 
-							observer.observe( postCarouselContainer, {
-								attributes: false,
-								characterData: false,
-								childList: true,
-								subtree: true,
-							} );
-						}
-					} else {
-						console.log( 'change???' );
-					}
-				}
-			}
-		}, 1900 );
+	// 						observer.observe( postCarouselContainer, {
+	// 							attributes: false,
+	// 							characterData: false,
+	// 							childList: true,
+	// 							subtree: true,
+	// 						} );
+	// 					}
+	// 				} else {
+	// 					console.log( 'change???' );
+	// 				}
+	// 			}
+	// 		}
+	// 	}, 1900 );
 
-		const observer = new MutationObserver( function( mutations ) {
+	// 	const observer = new MutationObserver( function( mutations ) {
 
-			// mutations.forEach( function( mutation ) {
-			// 	for ( let i = 0; i < mutation.addedNodes.length; i++ ) {
-			// 		if ( mutation.target.className === 'block-editor-block-list__block wp-block' ) {
-			// 			console.log( 'swiper before the condish', swiper );
-			// 			if ( swiper === null ) {
-			// 				const postCarouselContainer = document.querySelector( '.coblocks-post-carousel-swiper-container > .swiper-container' );
-			// 				const swiperNode = document.querySelector( '[data-swiper]' );
+	// 		// mutations.forEach( function( mutation ) {
+	// 		// 	for ( let i = 0; i < mutation.addedNodes.length; i++ ) {
+	// 		// 		if ( mutation.target.className === 'block-editor-block-list__block wp-block' ) {
+	// 		// 			console.log( 'swiper before the condish', swiper );
+	// 		// 			if ( swiper === null ) {
+	// 		// 				const postCarouselContainer = document.querySelector( '.coblocks-post-carousel-swiper-container > .swiper-container' );
+	// 		// 				const swiperNode = document.querySelector( '[data-swiper]' );
 
-			// 				if ( swiperNode ) {
-			// 					const swiperData = JSON.parse( swiperNode?.dataset?.swiper );
+	// 		// 				if ( swiperNode ) {
+	// 		// 					const swiperData = JSON.parse( swiperNode?.dataset?.swiper );
 
-			// 					const swiperBackButton = document.getElementById( `coblocks-post-carousel-swiper__prev` );
-			// 					const swiperNextButton = document.getElementById( `coblocks-post-carousel-swiper__next` );
+	// 		// 					const swiperBackButton = document.getElementById( `coblocks-post-carousel-swiper__prev` );
+	// 		// 					const swiperNextButton = document.getElementById( `coblocks-post-carousel-swiper__next` );
 
-			// 					swiper = new TinySwiper( postCarouselContainer, {
-			// 						centeredSlides: false,
-			// 						navigation: {
-			// 							nextEl: swiperNextButton,
-			// 							prevEl: swiperBackButton,
-			// 						},
-			// 						plugins: [
-			// 							TinySwiperPluginNavigation,
-			// 						],
-			// 						slidesPerView: 3,
-			// 						touchable: false,
-			// 					} );
-			// 				}
-			// 			} else {
-			// 				console.log( 'update swiper', swiper );
-			// 				swiper.update();
-			// 			}
-			// 		}
-			// 	}
-			// } );
-		} );
+	// 		// 					swiper = new TinySwiper( postCarouselContainer, {
+	// 		// 						centeredSlides: false,
+	// 		// 						navigation: {
+	// 		// 							nextEl: swiperNextButton,
+	// 		// 							prevEl: swiperBackButton,
+	// 		// 						},
+	// 		// 						plugins: [
+	// 		// 							TinySwiperPluginNavigation,
+	// 		// 						],
+	// 		// 						slidesPerView: 3,
+	// 		// 						touchable: false,
+	// 		// 					} );
+	// 		// 				}
+	// 		// 			} else {
+	// 		// 				console.log( 'update swiper', swiper );
+	// 		// 				swiper.update();
+	// 		// 			}
+	// 		// 		}
+	// 		// 	}
+	// 		// } );
+	// 	} );
 
-		observer.observe( document.body, {
-			attributes: false,
-			characterData: false,
-			childList: true,
-			subtree: true,
-		} );
-	} );
+	// 	observer.observe( document.body, {
+	// 		attributes: false,
+	// 		characterData: false,
+	// 		childList: true,
+	// 		subtree: true,
+	// 	} );
+	// } );
 
 	// ----------------------------------------------------------
 

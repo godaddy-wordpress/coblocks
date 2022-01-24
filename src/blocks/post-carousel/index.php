@@ -114,7 +114,7 @@ function coblocks_post_carousel( $posts, $attributes ) {
 	}
 
 	$block_content = sprintf(
-		'<div class="%1$s"><div class="coblocks-slick pb-8" data-slick="%2$s">',
+		'<div class="%1$s"><div class="coblocks-swiper swiper-container pb-8" data-swiper="%2$s">',
 		esc_attr( $class ),
 		esc_attr(
 			wp_json_encode(
@@ -159,11 +159,13 @@ function coblocks_post_carousel( $posts, $attributes ) {
 		)
 	);
 
+	$block_content .= '<div class="swiper-wrapper" >';
+
 	$list_items_markup = '';
 
 	foreach ( $posts as $post ) {
 
-		$list_items_markup .= '<div class="wp-block-coblocks-post-carousel__item">';
+		$list_items_markup .= '<div class="wp-block-coblocks-post-carousel__item swiper-slide">';
 
 		if ( null !== $post['thumbnailURL'] && $post['thumbnailURL'] ) {
 
@@ -227,6 +229,8 @@ function coblocks_post_carousel( $posts, $attributes ) {
 	}
 
 	$block_content .= $list_items_markup;
+
+	$block_content .= '</div>';
 	$block_content .= '</div>';
 	$block_content .= '</div>';
 
@@ -345,7 +349,7 @@ function coblocks_register_post_carousel_block() {
 		array(
 			'attributes'      => $metadata['attributes'],
 			'render_callback' => 'coblocks_render_post_carousel_block',
-			'editor_script'   => 'coblocks-slick-initializer',
+			// 'editor_script'   => 'coblocks-slick-initializer',
 		)
 	);
 }
