@@ -743,7 +743,7 @@ jobs:
     steps:
       - run_e2e_tests:
           browser: firefox
-          wpversion: 5.9-RC3
+          wpversion: 5.9-RC4
 
   e2e_chrome_wp_next_major:
     executor: php_74_node_browser_mysql_mailhog
@@ -751,7 +751,7 @@ jobs:
     steps:
       - run_e2e_tests:
           browser: chrome
-          wpversion: 5.9-RC3
+          wpversion: 5.9-RC4
 
   perf_tests_master:
     executor: php_74_node_browser_mysql
