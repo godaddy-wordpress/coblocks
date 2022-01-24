@@ -5,3 +5,9 @@ exports[`coblocks/testimonials should render with content 1`] = `
 <div class=\\"wp-block-coblocks-testimonials has-columns has-responsive-columns has-2-columns has-medium-gutter is-style-boxy\\" data-columns=\\"2\\"></div>
 <!-- /wp:coblocks/testimonials -->"
 `;
+
+exports[`coblocks/testimonials should render with font size 1`] = `
+"<!-- wp:coblocks/testimonials {\\"fontSize\\":\\"200\\"} -->
+<div class=\\"wp-block-coblocks-testimonials has-200-font-size has-columns has-responsive-columns has-2-columns has-medium-gutter is-style-boxy\\" data-columns=\\"2\\"></div>
+<!-- /wp:coblocks/testimonials -->"
+`;

@@ -31,6 +31,16 @@ describe( 'coblocks/testimonials', () => {
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'wp-block-coblocks-testimonials' );
+		expect( serializedBlock ).toMatchSnapshot();
+	} );
+
+	it( 'should render with font size', () => {
+		block.attributes.fontSize = '200';
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'has-200-font-size' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 } );
