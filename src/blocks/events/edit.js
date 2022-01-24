@@ -23,7 +23,7 @@ import ServerSideRender from '@wordpress/server-side-render';
 import { BlockControls, InnerBlocks } from '@wordpress/block-editor';
 import { Button, Placeholder, TextControl, ToolbarGroup } from '@wordpress/components';
 import { compose, usePrevious } from '@wordpress/compose';
-import { useCallback, useContext, useEffect, useMemo, useRef, useState } from '@wordpress/element';
+import { useContext, useEffect, useMemo, useRef, useState } from '@wordpress/element';
 import { useDispatch, useSelect } from '@wordpress/data';
 
 const ALLOWED_BLOCKS = [ 'coblocks/event-item' ];
@@ -126,7 +126,7 @@ const EventsEdit = ( props ) => {
 	const formatSwiperStructure = ( swiperWrapper ) => {
 		// for each inner block we need to have it wrapped in a div
 		// with the swiper-side class
-		const allEventItems = document.querySelectorAll( '[data-type="coblocks/event-item"]' );
+		const allEventItems = document.querySelectorAll( `#coblocks-events-swiper-container-${ carouselUuid } [data-type="coblocks/event-item"]` );
 
 		for ( let i = 0; i < allEventItems.length; i++ ) {
 			const swiperSlideContainer = document.createElement( 'div' );
@@ -137,29 +137,6 @@ const EventsEdit = ( props ) => {
 			swiperSlideContainer?.appendChild( allEventItems[ i ] );
 		}
 	};
-
-	const handleInnerBlockOutsideClick = useCallback( ( event ) => {
-		const isOutsideClick = ! innerBlocksRef?.current?.contains( event.target );
-		const toolbarContainer = document.querySelector( '.block-editor-block-contextual-toolbar' );
-
-		const isToolbarClick = toolbarContainer?.contains( event.target );
-		const isAppenderClick = event.target.classList.contains( 'block-editor-button-block-appender' );
-
-		if ( showCarousel === true && isEditing && isOutsideClick && ! isToolbarClick && ! isAppenderClick ) {
-			setIsEditing( false );
-		}
-	}, [ isEditing, showCarousel ] );
-
-	// register the inner blocks outside click handler
-	useEffect( () => {
-		const editorBody = document.querySelector( '.edit-post-visual-editor' );
-
-		editorBody.addEventListener( 'click', handleInnerBlockOutsideClick );
-
-		return () => {
-			editorBody.removeEventListener( 'click', handleInnerBlockOutsideClick );
-		};
-	}, [ isEditing, showCarousel ] );
 
 	useEffect( () => {
 		const innerBlockSelected = innerBlocks.some( ( { clientId: innerBlockClientId } ) => innerBlockClientId === selected?.clientId );
@@ -176,12 +153,12 @@ const EventsEdit = ( props ) => {
 		if ( !! externalCalendarUrl ) {
 			// Before we query the DOM to invoke the swiper we need to await that the server side rendering has been completed
 			setTimeout( () => {
-				const serverSideRenderCarouselContainer = document.querySelectorAll( `#coblocks-events-swiper-container-${ carouselUuid }` )[ 0 ];
+				const serverSideRenderCarouselContainer = document.querySelector( `#coblocks-events-swiper-container-${ carouselUuid }` );
 
-				const swiperContainer = serverSideRenderCarouselContainer?.querySelector( '.swiper-container' );
+				const swiperContainer = serverSideRenderCarouselContainer.querySelector( '.swiper-container' );
 
-				const swiperBackButton = document.getElementById( `wp-coblocks-event-swiper-prev` );
-				const swiperNextButton = document.getElementById( `wp-coblocks-event-swiper-next` );
+				const swiperBackButton = serverSideRenderCarouselContainer.querySelector( `#wp-coblocks-event-swiper-prev` );
+				const swiperNextButton = serverSideRenderCarouselContainer.querySelector( `#wp-coblocks-event-swiper-next` );
 
 				if ( swiperContainer && swiperBackButton && swiperNextButton ) {
 					const newSwiper = new TinySwiper( swiperContainer, {
@@ -197,7 +174,7 @@ const EventsEdit = ( props ) => {
 
 					setSwiper( newSwiper );
 				}
-			}, 600 );
+			}, 1000 );
 		}
 	}, [ externalCalendarUrl ] );
 
@@ -211,6 +188,10 @@ const EventsEdit = ( props ) => {
 
 	useEffect( () => {
 		const innerBlocksContainer = document.querySelector( `#coblocks-events-swiper-container-${ carouselUuid } > .coblocks-events-block-inner-blocks-container > .block-editor-inner-blocks > .block-editor-block-list__layout` );
+
+		const eventsBlocksContainer = document.querySelector( `#coblocks-events-swiper-container-${ carouselUuid }` );
+		const swiperBackButton = eventsBlocksContainer.querySelector( `#coblocks-event-swiper-prev` );
+		const swiperNextButton = eventsBlocksContainer.querySelector( `#coblocks-event-swiper-next` );
 
 		// coming from edit mode to carousel
 		if ( isEditing === false && swiper !== null && carouselCssText !== null && innerBlocksContainer ) {
@@ -251,9 +232,6 @@ const EventsEdit = ( props ) => {
 
 			swiper.update();
 
-			const swiperBackButton = document.getElementById( `coblocks-event-swiper-prev` );
-			const swiperNextButton = document.getElementById( `coblocks-event-swiper-next` );
-
 			if ( swiperEditModeContainer && swiperBackButton && swiperNextButton ) {
 				const newSwiper = new TinySwiper( swiperEditModeContainer, {
 					navigation: {
@@ -272,7 +250,7 @@ const EventsEdit = ( props ) => {
 
 		// coming from carousel to edit mode
 		// need to also format original DOM structure
-		if ( isEditing === true && swiper !== null && carouselCssText === null ) {
+		if ( isEditing === true && swiper !== null && carouselCssText === null && innerBlocksContainer ) {
 			const swiperWrapperAfter = innerBlocksContainer.querySelector( '.swiper-wrapper' ) || innerBlocksContainer.querySelector( '.swiper-wrapper-edit' );
 			const swiperContainerAfter = innerBlocksContainer.querySelector( '.swiper-container' ) || innerBlocksContainer.querySelector( '.swiper-container-edit' );
 
@@ -308,9 +286,6 @@ const EventsEdit = ( props ) => {
 			swiperContainer?.appendChild( swiperWrapper );
 
 			formatSwiperStructure( swiperWrapper );
-
-			const swiperBackButton = document.getElementById( `coblocks-event-swiper-prev` );
-			const swiperNextButton = document.getElementById( `coblocks-event-swiper-next` );
 
 			if ( swiperContainer && swiperBackButton && swiperNextButton ) {
 				const newSwiper = new TinySwiper( swiperContainer, {
