@@ -34,14 +34,14 @@ describe( 'Test CoBlocks Post Carousel Block', function() {
 
 		[ 1, 2, 3, 4 ].forEach( ( columns ) => {
 			helpers.setInputValue( 'post carousel settings', 'columns', columns );
-			cy.get( '[data-type="coblocks/post-carousel"]' ).find( '.slick-slide[aria-hidden="false"]' ).should( 'have.length', columns );
+			cy.get( '[data-type="coblocks/post-carousel"]' ).find( '.swiper-slide:visible' ).should( 'have.length', columns );
 		} );
 
 		helpers.checkForBlockErrors( 'coblocks/post-carousel' );
 
 		[ 1, 2, 3, 4 ].forEach( ( numberOfPosts ) => {
 			helpers.setInputValue( 'feed settings', 'number of posts', numberOfPosts );
-			cy.get( '[data-type="coblocks/post-carousel"]' ).find( '.slick-slide:not(.slick-cloned)' ).should( 'have.length', numberOfPosts );
+			cy.get( '[data-type="coblocks/post-carousel"]' ).find( '.swiper-slide' ).should( 'have.length', numberOfPosts );
 		} );
 
 		helpers.checkForBlockErrors( 'coblocks/post-carousel' );
@@ -63,11 +63,11 @@ describe( 'Test CoBlocks Post Carousel Block', function() {
 
 		helpers.checkForBlockErrors( 'coblocks/post-carousel' );
 
-		cy.get( '.my-custom-class > .coblocks-slick' ).should( 'exist' );
+		cy.get( '.my-custom-class .coblocks-swiper-container' ).should( 'exist' );
 
 		helpers.viewPage();
 
-		cy.get( '.my-custom-class > .coblocks-slick' ).should( 'exist' );
+		cy.get( '.my-custom-class .swiper-container' ).should( 'exist' );
 
 		helpers.editPage();
 	} );
