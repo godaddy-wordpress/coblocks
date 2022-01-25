@@ -160,9 +160,6 @@ class CoBlocks_Block_Assets {
 		$name       = 'coblocks-extensions';
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
-<<<<<<< HEAD
-=======
-		$rtl        = ! is_rtl() ? '' : '-rtl';
 
 		wp_enqueue_style(
 			$name,
@@ -170,7 +167,6 @@ class CoBlocks_Block_Assets {
 			array(),
 			$asset_file['version']
 		);
->>>>>>> master
 
 		wp_enqueue_script(
 			'coblocks-editor',
