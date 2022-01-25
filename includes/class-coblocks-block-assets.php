@@ -164,7 +164,7 @@ class CoBlocks_Block_Assets {
 
 		wp_enqueue_style(
 			'coblocks-extensions',
-			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
+			COBLOCKS_PLUGIN_URL . 'dist/style-coblocks-extensions' . $rtl . '.css',
 			array(),
 			$asset_file['version']
 		);
