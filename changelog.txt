@@ -1,4 +1,9 @@
 
+2.20.1 / 2022-01-25
+===================
+### Bug Fixes
+  * Fix CSS issue with CoBlocks extensions [#2236](https://github.com/godaddy-wordpress/coblocks/pull/2236)
+
 2.20.0 / 2022-01-24
 ==================
 ### Enhancements

@@ -1,4 +1,4 @@
-@import "../common";
+@import "./common";
 @import "editor/common";
 @import "editor/columns";
 @import "editor/columns-gutter";
@@ -68,6 +68,9 @@
 @import "../blocks/shape-divider/styles/editor.scss";
 @import "../blocks/share/styles/editor.scss";
 @import "../blocks/social-profiles/styles/editor.scss";
+
+// @import "../formats/**/style.scss";
+@import "../formats/uppercase/style.scss";
 
 // Legacy styling
 @import "legacy/margin-editor";
