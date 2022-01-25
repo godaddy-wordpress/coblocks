@@ -157,7 +157,7 @@
 }
 
 .flickity-page-dots .dot {
-	background: hsla(0, 0%, 0, 0.3);
+	background: hsla(0, 0%, 0%, 0.3);
 	border-radius: 50%;
 	cursor: pointer;
 	display: inline-block;
@@ -167,5 +167,5 @@
 }
 
 .flickity-page-dots .dot.is-selected {
-	background: hsla(0, 0, 100%, 0.75);
+	background: hsla(0, 0%, 100%, 0.75);
 }

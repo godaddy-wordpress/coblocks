@@ -13,14 +13,14 @@ import PropTypes from 'prop-types';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment, createRef } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { Spinner, Button, Dashicon, ButtonGroup } from '@wordpress/components';
-import { MediaUpload, MediaUploadCheck, RichText, URLInput } from '@wordpress/block-editor';
+import { isBlobURL } from '@wordpress/blob';
 import { withSelect } from '@wordpress/data';
 import { BACKSPACE, DELETE } from '@wordpress/keycodes';
-import { isBlobURL } from '@wordpress/blob';
-import { chevronLeft, chevronRight, chevronUp, chevronDown, closeSmall } from '@wordpress/icons';
+import { Button, ButtonGroup, Dashicon, Spinner } from '@wordpress/components';
+import { chevronDown, chevronLeft, chevronRight, chevronUp, closeSmall } from '@wordpress/icons';
+import { Component, createRef, Fragment } from '@wordpress/element';
+import { MediaUpload, MediaUploadCheck, RichText, URLInput } from '@wordpress/block-editor';
 
 class GalleryImage extends Component {
 	constructor() {
@@ -32,48 +32,54 @@ class GalleryImage extends Component {
 		this.saveCustomLink = this.saveCustomLink.bind( this );
 
 		this.state = {
-			captionSelected: false,
 			captionFocused: false,
+			captionSelected: false,
 			isSaved: false,
 		};
 		this.container = createRef();
 	}
 
 	onSelectCaption() {
-		if ( ! this.state.captionSelected ) {
+		const { captionSelected } = this.state;
+		if ( ! captionSelected ) {
 			this.setState( {
 				captionSelected: true,
 			} );
 		}
 
-		if ( ! this.props.isSelected ) {
-			this.props.onSelect();
+		const { isSelected, onSelect } = this.props;
+		if ( ! isSelected ) {
+			onSelect();
 		}
 	}
 
 	onImageClick() {
-		if ( ! this.props.isSelected ) {
-			this.props.onSelect();
+		const { isSelected, onSelect } = this.props;
+
+		if ( ! isSelected ) {
+			onSelect();
 		}
 
-		if ( this.state.captionSelected ) {
+		const { captionSelected } = this.state;
+		if ( captionSelected ) {
 			this.setState( {
-				captionSelected: false,
 				captionFocused: false,
+				captionSelected: false,
 			} );
 		}
 	}
 
 	onKeyDown( event ) {
 		const doc = this.container.current.ownerDocument;
+		const { isSelected, onRemove } = this.props;
 
 		if (
 			this.container === doc.activeElement &&
-			this.props.isSelected && [ BACKSPACE, DELETE ].indexOf( event.keyCode ) !== -1
+			isSelected && [ BACKSPACE, DELETE ].indexOf( event.keyCode ) !== -1
 		) {
 			event.stopPropagation();
 			event.preventDefault();
-			this.props.onRemove();
+			onRemove();
 		}
 	}
 
@@ -82,20 +88,21 @@ class GalleryImage extends Component {
 	}
 
 	componentDidUpdate( prevProps ) {
-		const { isSelected, image, url, imgLink } = this.props;
+		const { isSelected, image, url, imgLink, setAttributes } = this.props;
 		if ( image && ! url ) {
-			this.props.setAttributes( {
-				url: image.source_url,
+			setAttributes( {
 				alt: image.alt_text,
+				url: image.source_url,
 			} );
 		}
 
 		// unselect the caption so when the user selects other image and comeback
 		// the caption is not immediately selected
-		if ( this.state.captionSelected && ! isSelected && prevProps.isSelected ) {
+		const { captionSelected } = this.state;
+		if ( captionSelected && ! isSelected && prevProps.isSelected ) {
 			this.setState( {
-				captionSelected: false,
 				captionFocused: false,
+				captionSelected: false,
 			} );
 		}
 
@@ -138,6 +145,8 @@ class GalleryImage extends Component {
 			replaceImage,
 		} = this.props;
 
+		const { captionSelected, isSaved } = this.state;
+
 		const imgClasses = classnames( {
 			[ `has-shadow-${ shadow }` ]: shadow !== 'none' || shadow !== undefined,
 		} );
@@ -151,15 +160,15 @@ class GalleryImage extends Component {
 			/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 			<Fragment>
 				<img
-					src={ url }
-					className={ imgClasses }
 					alt={ alt }
+					aria-label={ ariaLabel }
+					className={ imgClasses }
 					data-id={ id }
 					data-imglink={ imgLink }
 					onClick={ this.onImageClick }
-					tabIndex="0"
 					onKeyDown={ this.onImageClick }
-					aria-label={ ariaLabel }
+					src={ url }
+					tabIndex="0"
 				/>
 				{ isBlobURL( url ) && <Spinner /> }
 			</Fragment>
@@ -188,7 +197,7 @@ class GalleryImage extends Component {
 		// Disable reason: Each block can be selected by clicking on it and we should keep the same saved markup
 		/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 		return (
-			<figure className={ className } tabIndex="-1" onKeyDown={ this.onKeyDown } ref={ this.container }>
+			<figure className={ className } onKeyDown={ this.onKeyDown } ref={ this.container } tabIndex="-1">
 				{ isSelected && (
 					<>
 						<ButtonGroup className="block-library-gallery-item__inline-menu is-right is-visible">
@@ -199,26 +208,26 @@ class GalleryImage extends Component {
 										const newAttributeProperty = helper.pickRelevantMediaFiles( selectedImg );
 										replaceImage( imageIndex, newAttributeProperty );
 									} }
-									value={ url }
 									render={ ( { open } ) => (
 										<Button
 											className="coblocks-gallery-item__button-replace"
-											onClick={ open }
 											label={ __( 'Replace Image', 'coblocks' ) }
+											onClick={ open }
 										>
 											{ __( 'Replace', 'coblocks' ) }
 										</Button>
 									) }
+									value={ url }
 								>
 								</MediaUpload>
 							</MediaUploadCheck>
 
 							<Button
-								icon={ closeSmall }
 								className="coblocks-gallery-item__button"
-								onClick={ onRemove }
-								label={ __( 'Remove image', 'coblocks' ) }
 								disabled={ ! isSelected }
+								icon={ closeSmall }
+								label={ __( 'Remove image', 'coblocks' ) }
+								onClick={ onRemove }
 							/>
 						</ButtonGroup>
 					</>
@@ -228,20 +237,20 @@ class GalleryImage extends Component {
 						{ supportsMoving &&
 							<ButtonGroup className="block-library-gallery-item__inline-menu is-left">
 								<Button
-									icon={ verticalMoving ? chevronUp : chevronLeft }
-									onClick={ ! isFirstItem && onMoveBackward }
-									className="coblocks-gallery-item__button"
-									label={ __( 'Move image backward', 'coblocks' ) }
 									aria-disabled={ isFirstItem }
+									className="coblocks-gallery-item__button"
 									disabled={ ! isSelected }
+									icon={ verticalMoving ? chevronUp : chevronLeft }
+									label={ __( 'Move image backward', 'coblocks' ) }
+									onClick={ ! isFirstItem && onMoveBackward }
 								/>
 								<Button
-									icon={ verticalMoving ? chevronDown : chevronRight }
-									onClick={ ! isLastItem && onMoveForward }
-									className="coblocks-gallery-item__button"
-									label={ __( 'Move image forward', 'coblocks' ) }
 									aria-disabled={ isLastItem }
+									className="coblocks-gallery-item__button"
 									disabled={ ! isSelected }
+									icon={ verticalMoving ? chevronDown : chevronRight }
+									label={ __( 'Move image forward', 'coblocks' ) }
+									onClick={ ! isLastItem && onMoveForward }
 								/>
 							</ButtonGroup>
 						}
@@ -251,10 +260,10 @@ class GalleryImage extends Component {
 								onSubmit={ ( event ) => event.preventDefault() }>
 								<Dashicon icon="admin-links" />
 								<URLInput
-									value={ imgLink }
 									onChange={ ( value ) => setAttributes( { imgLink: value } ) }
+									value={ imgLink }
 								/>
-								<Button icon={ this.state.isSaved ? 'saved' : 'editor-break' } label={ this.state.isSaved ? __( 'Saving', 'coblocks' ) : __( 'Apply', 'coblocks' ) } onClick={ this.saveCustomLink } type="submit" />
+								<Button icon={ isSaved ? 'saved' : 'editor-break' } label={ isSaved ? __( 'Saving', 'coblocks' ) : __( 'Apply', 'coblocks' ) } onClick={ this.saveCustomLink } type="submit" />
 							</form>
 						}
 					</Fragment>
@@ -262,15 +271,15 @@ class GalleryImage extends Component {
 				{ img }
 				{ ( supportsCaption === true ) && ( ! RichText.isEmpty( caption ) || isSelected ) && captions ? (
 					<RichText
-						tagName="figcaption"
-						placeholder={ __( 'Write caption…', 'coblocks' ) }
 						className="coblocks-gallery--caption"
-						style={ captionStyles }
-						value={ caption }
-						isSelected={ this.state.captionSelected }
-						onChange={ ( newCaption ) => setAttributes( { caption: newCaption } ) }
-						unstableOnFocus={ this.onSelectCaption }
 						inlineToolbar
+						isSelected={ captionSelected }
+						onChange={ ( newCaption ) => setAttributes( { caption: newCaption } ) }
+						placeholder={ __( 'Write caption…', 'coblocks' ) }
+						style={ captionStyles }
+						tagName="figcaption"
+						unstableOnFocus={ this.onSelectCaption }
+						value={ caption }
 					/>
 				) : null }
 			</figure>

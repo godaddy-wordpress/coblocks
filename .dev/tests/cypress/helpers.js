@@ -138,7 +138,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search, .components-search-control__input' ).click().type( blockName );
 
 	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
-	cy.get( '.editor-block-list-item' + targetClassName ).first().click( { force: true } );
+	cy.get( '.editor-block-list-item' + targetClassName ).first().click();
 
 	// Make sure the block was added to our page
 	cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"]` ).should( 'exist' ).then( () => {
@@ -238,7 +238,7 @@ export function setBlockStyle( style ) {
 
 	cy.get( '.edit-post-sidebar [class*="editor-block-styles"]' )
 		.contains( RegExp( style, 'i' ) )
-		.click( { force: true } );
+		.click();
 }
 
 /**
@@ -304,6 +304,8 @@ export const upload = {
 		selectBlock( selectBlockBy );
 
 		cy.get( '.coblocks-gallery-item__button-replace' ).should( 'not.exist' );
+
+		cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"]` ).click();
 
 		cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"] img` ).first().click( { force: true } );
 

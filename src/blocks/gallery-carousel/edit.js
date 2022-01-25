@@ -2,147 +2,32 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import filter from 'lodash/filter';
-import Flickity from 'react-flickity-component';
 import { GalleryCarouselIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { useDispatch } from '@wordpress/data';
 
 /**
  * Internal dependencies
  */
-import Inspector from './inspector';
 import Controls from './controls';
-import GalleryImage from '../../components/block-gallery/gallery-image';
-import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
+import GalleryCarouselItem from './gallery-carousel-item';
 import { GalleryClasses } from '../../components/block-gallery/shared';
+import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
+import Inspector from './inspector';
+import Swiper from '../../components/swiper';
 import { CarouselGalleryVariationPicker, hasVariationSet } from './variations';
+import { GalleryCarouselContext, GalleryContextProvider } from './context';
 
 /**
  * WordPress dependencies
  */
+import { compose } from '@wordpress/compose';
 import { Icon } from '@wordpress/icons';
-import { RichText } from '@wordpress/block-editor';
 import { __, sprintf } from '@wordpress/i18n';
-import { useState, useEffect } from '@wordpress/element';
-import { compose, usePrevious } from '@wordpress/compose';
-import { withNotices, ResizableBox } from '@wordpress/components';
-
-/**
- * Function will dynamically process a string for use with the `navForClass` block attribute.
- * This attribute should only be truthy when the corresponding `thumbnails` attribute is also set.
- *
- * @constant parseNavForClass
- * @type {Function}
- * @param {boolean} thumbnails This boolean value is equal to props.attributes.thumbnails.
- * @param {string}  clientId   This string value is equal to props.clientId.
- * @return {string} Return parsed class string if thumbnails is truthy or an empty string.
- */
-export const parseNavForClass = ( thumbnails, clientId ) => thumbnails
-	? `has-nav-${ clientId.split( '-' )[ 0 ] }`
-	: '';
+import { ResizableBox, withNotices } from '@wordpress/components';
+import { useCallback, useContext, useEffect, useMemo } from '@wordpress/element';
 
 const GalleryCarouselEdit = ( props ) => {
-	const parsedNavForClass = parseNavForClass( props.attributes.thumbnails, props.clientId );
-
-	const [ selectedImage, setSelectedImage ] = useState( null );
-	const [ captionFocused, setCaptionFocused ] = useState( false );
-
-	const prevSelected = usePrevious( props.isSelected );
-
-	useEffect( () => {
-		if ( ! props.isSelected && prevSelected ) {
-			setSelectedImage( null );
-			setCaptionFocused( false );
-		}
-
-		if ( ! props.isSelected && prevSelected && captionFocused ) {
-			setCaptionFocused( false );
-		}
-	}, [ prevSelected, props.isSelected, captionFocused ] );
-
-	useEffect( () => {
-		if ( props.attributes.gutter <= 0 && props.attributes.radius !== 0 ) {
-			props.setAttributes( { radius: 0 } );
-		}
-	}, [ props.attributes.gutter ] );
-
-	useEffect( () => {
-		if (
-			props.attributes.gridSize === 'xlrg'
-		) {
-			props.setAttributes( { gutter: 0, gutterMobile: 0 } );
-		}
-	}, [ props.attributes.gridSize ] );
-
-	useEffect( () => {
-		if ( parsedNavForClass !== props.attributes.navForClass ) {
-			setAttributes( { navForClass: parsedNavForClass } );
-		}
-	}, [ props.attributes.navForClass, parsedNavForClass ] );
-
-	useEffect( () => {
-		if ( !! props.attributes.thumbnails && props.attributes.pageDots ) {
-			setAttributes( { pageDots: false } );
-		}
-	}, [ props.attributes.thumbnails, props.attributes.pageDots ] );
-
-	const onSelectImage = ( index ) => {
-		if ( selectedImage !== index ) {
-			setSelectedImage( index );
-			setCaptionFocused( false );
-		}
-	};
-
-	const onRemoveImage = ( index ) => {
-		const images = filter( props.attributes.images, ( _img, i ) => index !== i );
-		setSelectedImage( null );
-		props.setAttributes( { images } );
-	};
-
-	/**
-	 * replaceImage is passed to GalleryImage component and is used to replace images
-	 *
-	 * @param {number} index Index of image to remove.
-	 * @param {Object} media Media object used to initialize attributes.
-	 */
-	const replaceImage = ( index, media ) => {
-		const images = [ ...props.attributes.images ];
-		images[ index ] = { ...media };
-
-		props.setAttributes( { images } );
-	};
-
-	const setImageAttributes = ( index, attributes ) => {
-		const { attributes: { images }, setAttributes } = props;
-		if ( ! images[ index ] ) {
-			return;
-		}
-		setAttributes( {
-			images: [
-				...images.slice( 0, index ),
-				{
-					...images[ index ],
-					...attributes,
-				},
-				...images.slice( index + 1 ),
-			],
-		} );
-	};
-
-	const onFocusCaption = () => {
-		if ( ! captionFocused ) {
-			setCaptionFocused( true );
-		}
-	};
-
-	const onItemClick = () => {
-		if ( ! props.isSelected ) {
-			props.onSelect();
-		}
-
-		if ( captionFocused ) {
-			setCaptionFocused( false );
-		}
-	};
+	const { selectBlock } = useDispatch( 'core/block-editor' );
 
 	const {
 		attributes,
@@ -154,126 +39,225 @@ const GalleryCarouselEdit = ( props ) => {
 
 	const {
 		align,
-		gridSize,
 		gutter,
 		gutterMobile,
 		height,
 		images,
 		pageDots,
 		prevNextButtons,
-		primaryCaption,
-		alignCells,
 		thumbnails,
 		responsiveHeight,
 		lightbox,
-		navForClass,
+		loop,
+		draggable,
+		freeScroll,
+		autoPlaySpeed,
+		autoPlay,
+		pauseHover,
+		gridSize,
+		alignCells,
 	} = attributes;
 
-	const variatonSelected = hasVariationSet( attributes );
-	const hasImages = !! images.length;
+	const { selectedImage, setSelectedImage } = useContext( GalleryCarouselContext );
 
-	if ( ! hasImages && ! variatonSelected && variatonSelected !== 'skip' ) {
-		return ( <CarouselGalleryVariationPicker { ...props } /> );
-	}
-
-	const variationLabel = ( !! variatonSelected && variatonSelected !== 'skip' )
-		? sprintf(
-		/* translators: %s: Type of gallery variation */
-			__( '%s Carousel', 'coblocks' ),
-			variatonSelected
-		) : false;
-
-	const carouselGalleryPlaceholder = (
-		<>
-			{ noticeUI }
-			<GalleryPlaceholder
-				{ ...props }
-				variationLabel={ variationLabel }
-				label={ __( 'Carousel', 'coblocks' ) }
-				icon={ <Icon icon={ icon } /> }
-				gutter={ gutter }
-			/>
-		</>
-	);
-
-	if ( ! hasImages ) {
-		return carouselGalleryPlaceholder;
-	}
-
-	const innerClasses = classnames(
-		'is-cropped',
-		...GalleryClasses( attributes ), {
-			[ `align${ align }` ]: align,
-			'has-horizontal-gutter': gutter > 0,
-			'has-no-dots': ! pageDots,
-			'has-no-arrows': ! prevNextButtons,
-			'is-selected': isSelected,
-			'has-no-thumbnails': ! thumbnails,
-			'has-lightbox': lightbox,
-		}
-	);
-
-	const flickityClasses = classnames(
-		'has-carousel',
-		`has-carousel-${ gridSize }`, {
-			'has-aligned-cells': alignCells,
-			[ `has-margin-bottom-${ gutter }` ]: thumbnails && gutter > 0,
-			[ `has-margin-bottom-mobile-${ gutterMobile }` ]: thumbnails && gutterMobile > 0,
-			[ navForClass ]: thumbnails,
-		}
-	);
-
-	const navClasses = classnames(
-		'carousel-nav', {
-			[ `has-margin-top-${ gutter }` ]: gutter > 0,
-			[ `has-margin-top-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-			[ `has-negative-margin-left-${ gutter }` ]: gutter > 0,
-			[ `has-negative-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-			[ `has-negative-margin-right-${ gutter }` ]: gutter > 0,
-			[ `has-negative-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-		}
-	);
-
-	const flickityOptions = {
-		draggable: false,
-		pageDots: true,
-		prevNextButtons: true,
-		wrapAround: true,
-		autoPlay: false,
-		cellAlign: alignCells ? 'left' : 'center',
-		arrowShape: {
-			x0: 10,
-			x1: 60, y1: 50,
-			x2: 65, y2: 45,
-			x3: 20,
-		},
-		responsiveHeight,
-		thumbnails,
-	};
-
-	const navOptions = {
-		asNavFor: `.${ navForClass }`,
-		draggable: false,
-		pageDots: true,
-		prevNextButtons: false,
-		wrapAround: true,
-		autoPlay: false,
-		thumbnails: false,
-		cellAlign: 'left',
-	};
-
-	const navStyles = {
+	const swiperStyles = {
 		marginTop: gutter > 0 && ! responsiveHeight ? ( gutter / 2 ) + 'px' : undefined,
 	};
 
-	const navFigureClasses = classnames(
-		'coblocks--figure', {
-			[ `has-margin-left-${ gutter }` ]: gutter > 0,
-			[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-			[ `has-margin-right-${ gutter }` ]: gutter > 0,
-			[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+	useEffect( () => {
+		if ( isSelected === false && selectedImage !== null ) {
+			setSelectedImage( null );
+		}
+	}, [ isSelected ] );
+
+	const innerClasses = classnames(
+		'is-cropped',
+		'has-carousel',
+		`has-carousel-${ gridSize }`,
+		...GalleryClasses( attributes ),
+		{
+			[ `align${ align }` ]: align,
+			'has-aligned-cells': alignCells,
+			'has-horizontal-gutter': gutter > 0,
+			'has-lightbox': lightbox,
+			'has-no-arrows': ! prevNextButtons,
+			'has-no-thumbnails': ! thumbnails,
+			'is-selected': isSelected,
 		}
 	);
+
+	const handleSwipe = ( newIndex ) => {
+		if ( gridSize === ' xlrg' ) {
+			setSelectedImage( newIndex );
+		} else {
+			setSelectedImage( null );
+		}
+	};
+
+	const handleSelectCarousel = () => {
+		if ( ! isSelected ) {
+			selectBlock( props.clientId );
+		}
+	};
+
+	const handleRemoveImage = ( removeIndex ) => {
+		setAttributes( {
+			images: images.filter( ( img, index ) => {
+				return index !== removeIndex;
+			} ),
+		} );
+	};
+
+	const handleReplaceImage = ( replaceIndex, newImage ) => {
+		setAttributes( {
+			images: images.map( ( img, index ) => {
+				if ( index === replaceIndex ) {
+					return newImage;
+				}
+				return img;
+			} ),
+		} );
+	};
+
+	const variatonSelected = hasVariationSet( attributes );
+
+	const renderGalleryPagination = useCallback( ( { changeStep } ) => {
+		const paginationClasses = classnames(
+			'wp-block-coblocks-gallery-carousel-thumbnail-pagination',
+			{
+				[ `has-margin-top-${ gutter }` ]: gutter > 0,
+				[ `has-margin-top-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+			}
+		);
+
+		return (
+			<div className={ paginationClasses }>
+				{ images.map( ( item, index ) => (
+					<GalleryCarouselThumbnail
+						changeStep={ changeStep }
+						gutter={ gutter }
+						gutterMobile={ gutterMobile }
+						index={ index }
+						item={ item }
+						key={ index }
+					/>
+				) ) }
+			</div>
+		);
+	}, [ gutter, gutterMobile, images ] );
+
+	const renderPageDots = useCallback( ( { changeStep } ) => {
+		return (
+			<div className="wp-block-coblocks-gallery-carousel-page-dot-pagination-container">
+				<div className="wp-block-coblocks-gallery-carousel-page-dot-wrapper" >
+					{ images.map( ( item, index ) => (
+						<button className="wp-block-coblocks-gallery-carousel-page-dot-pagination" key={ index } onClick={ () => changeStep( index ) } />
+					) ) }
+				</div>
+			</div>
+		);
+	}, [ selectedImage, images ] );
+
+	const renderPagination = useCallback( ( { changeStep } ) => {
+		if ( thumbnails ) {
+			return renderGalleryPagination( { changeStep } );
+		} else if ( pageDots ) {
+			return renderPageDots( { changeStep } );
+		}
+
+		return null;
+	}, [ gutter, gutterMobile, images, thumbnails ] );
+
+	const renderSwiper = useMemo( () => {
+		const swiperSizing = {
+			lrg: 2,
+			med: 4,
+			sml: 5,
+			xlrg: 1,
+		};
+
+		return (
+			<Swiper
+				autoPlaySpeed={ autoPlay ? autoPlaySpeed : null }
+				freeScroll={ freeScroll }
+				isDraggable={ draggable }
+				list={ images }
+				loop={ loop }
+				navigation={ prevNextButtons }
+				onSwipe={ handleSwipe }
+				Pagination={ renderPagination }
+				pauseHover={ autoPlay ? pauseHover : null }
+				slidesPerView={ swiperSizing[ gridSize ] }
+			>
+				{ ( {
+					index,
+				} ) => {
+					const ariaLabel = sprintf(
+						/* translators: %1$d is the order number of the image, %2$d is the total number of images */
+						__( 'image %1$d of %2$d in gallery', 'coblocks' ),
+						( index + 1 ),
+						images.length
+					);
+
+					return (
+						<>
+							<GalleryCarouselItem
+								ariaLabel={ ariaLabel }
+								handleRemoveImage={ handleRemoveImage }
+								handleReplaceImage={ handleReplaceImage }
+								index={ index }
+								setAttributes={ setAttributes }
+							/>
+						</>
+					);
+				} }
+			</Swiper>
+		);
+	}, [
+		autoPlay,
+		autoPlaySpeed,
+		draggable,
+		freeScroll,
+		gridSize,
+		gutter,
+		gutterMobile,
+		images,
+		loop,
+		pageDots,
+		pauseHover,
+		prevNextButtons,
+		thumbnails,
+	] );
+
+	const renderGalleryPlaceholder = () => {
+		const variationLabel = ( !! variatonSelected && variatonSelected !== 'skip' )
+			? sprintf(
+			/* translators: %s: Type of gallery variation */
+				__( '%s Carousel', 'coblocks' ),
+				variatonSelected
+			) : false;
+
+		return (
+			<>
+				{ noticeUI }
+				<GalleryPlaceholder
+					{ ...props }
+					gutter={ attributes.gutter }
+					icon={ <Icon icon={ icon } /> }
+					label={ __( 'Carousel', 'coblocks' ) }
+					variationLabel={ variationLabel }
+				/>
+			</>
+		);
+	};
+
+	if ( ! images.length && ! variatonSelected ) {
+		return (
+			<CarouselGalleryVariationPicker { ...props } />
+		);
+	} else if ( ! images.length && variatonSelected ) {
+		return renderGalleryPlaceholder();
+	}
 
 	return (
 		<>
@@ -285,15 +269,10 @@ const GalleryCarouselEdit = ( props ) => {
 			) }
 			{ noticeUI }
 			<ResizableBox
-				size={ {
-					height,
-					width: '100%',
-				} }
 				className={ classnames( {
-					'is-selected': isSelected,
 					'has-responsive-height': responsiveHeight,
+					'is-selected': isSelected,
 				} ) }
-				minHeight="0"
 				enable={ {
 					bottom: true,
 					bottomLeft: false,
@@ -304,101 +283,77 @@ const GalleryCarouselEdit = ( props ) => {
 					topLeft: false,
 					topRight: false,
 				} }
+				minHeight="0"
+				onClick={ handleSelectCarousel }
 				onResizeStop={ ( _event, _direction, _elt, delta ) => {
 					setAttributes( {
 						height: parseInt( height + delta.height, 10 ),
 					} );
 				} }
 				showHandle={ isSelected }
+				size={ {
+					height,
+					width: '100%',
+				} }
+				style={ {
+					marginBottom: thumbnails ? '80px' : null,
+				} }
 			>
 				<div className={ className }>
-					<div className={ innerClasses }>
-						<Flickity
-							className={ flickityClasses }
-							disableImagesLoaded={ true }
-							options={ flickityOptions }
-							reloadOnUpdate={ true }
-							updateOnEachImageLoad={ true }
-						>
-							{ images.map( ( img, index ) => {
-								const ariaLabel = sprintf(
-									/* translators: %1$d is the order number of the image, %2$d is the total number of images */
-									__( 'image %1$d of %2$d in gallery', 'coblocks' ),
-									( index + 1 ),
-									images.length
-								);
-
-								return (
-									<div className="coblocks-gallery--item" role="button" tabIndex="0" key={ img.id || img.url } onKeyDown={ onItemClick } onClick={ onItemClick }>
-										<GalleryImage
-											url={ img.url }
-											alt={ img.alt }
-											id={ img.id }
-											gutter={ gutter }
-											gutterMobile={ gutterMobile }
-											marginRight={ true }
-											marginLeft={ true }
-											isSelected={ isSelected && selectedImage === index }
-											onRemove={ () => onRemoveImage( index ) }
-											onSelect={ () => onSelectImage( index ) }
-											setAttributes={ ( attrs ) => setImageAttributes( index, attrs ) }
-											caption={ img.caption }
-											aria-label={ ariaLabel }
-											supportsCaption={ false }
-											supportsMoving={ false }
-											imageIndex={ index }
-											replaceImage={ replaceImage }
-										/>
-									</div>
-								);
-							} ) }
-						</Flickity>
+					<div className={ innerClasses } style={ swiperStyles }>
+						{ renderSwiper }
 					</div>
 				</div>
 			</ResizableBox>
-			{ thumbnails &&
-			<div className={ className }>
-				<div
-					className={ innerClasses }
-					style={ navStyles }
-				>
-					<Flickity
-						className={ navClasses }
-						options={ navOptions }
-						disableImagesLoaded={ true }
-						reloadOnUpdate={ true }
-						updateOnEachImageLoad={ true }
-					>
-						{ images.map( ( image ) => {
-							return (
-								<div className="coblocks--item-thumbnail" key={ image.id || image.url }>
-									<figure className={ navFigureClasses }>
-										<img src={ image.url } alt={ image.alt } data-link={ image.link } data-id={ image.id } className={ image.id ? `wp-image-${ image.id }` : null } />
-									</figure>
-								</div>
-							);
-						} ) }
-					</Flickity>
-				</div>
-			</div>
-			}
-			{ carouselGalleryPlaceholder }
-			{ ( ! RichText.isEmpty( primaryCaption ) || isSelected ) && (
-				<RichText
-					tagName="figcaption"
-					placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
-					value={ primaryCaption }
-					className="coblocks-gallery--caption coblocks-gallery--primary-caption"
-					unstableOnFocus={ onFocusCaption }
-					onChange={ ( value ) => setAttributes( { primaryCaption: value } ) }
-					isSelected={ captionFocused }
-					inlineToolbar
-				/>
-			) }
+			{ renderGalleryPlaceholder() }
 		</>
 	);
 };
 
+const GalleryCarouselThumbnail = ( { gutter, gutterMobile, changeStep, item, index } ) => {
+	const { selectedImage } = useContext( GalleryCarouselContext );
+
+	const thumbnailClasses = classnames( {
+		'is-active': index === selectedImage,
+		'wp-block-coblocks-gallery-carousel-thumbnail': true,
+		[ `has-margin-top-${ gutter }` ]: gutter > 0,
+		[ `has-margin-top-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+		[ `has-margin-right-${ gutter }` ]: gutter > 0,
+		[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+		[ `has-margin-bottom-${ gutter }` ]: gutter > 0,
+		[ `has-margin-bottom-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+		[ `has-margin-left-${ gutter }` ]: gutter > 0,
+		[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+	} );
+
+	return (
+		<button className={ thumbnailClasses } onClick={ () => changeStep( index ) } style={ { height: '80px', width: '100px' } } >
+			<img alt={ item.alt } data-id={ item.id } data-link={ item.link } src={ item.url } style={ { height: '100%', width: '100%' } } />
+		</button>
+	);
+};
+
+const withGalleryCarouselState = ( Component ) => {
+	return ( props ) => {
+		const { attributes, isSelected } = props;
+
+		const defaultGalleryState = {
+			gutter: attributes.gutter,
+			gutterMobile: attributes.gutterMobile,
+			images: attributes.images,
+			isSelected,
+			showThumbnails: attributes.thumbnails,
+		};
+
+		return (
+			<GalleryContextProvider { ...defaultGalleryState }>
+				<Component { ...props } />
+			</GalleryContextProvider>
+		);
+	};
+};
+
 export default compose( [
 	withNotices,
+	withGalleryCarouselState,
 ] )( GalleryCarouselEdit );

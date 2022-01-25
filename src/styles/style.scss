@@ -1,12 +1,13 @@
-@import "../common";
-@import "style/columns";
-@import "style/columns-responsive";
-@import "style/columns-gutter";
+@import "./common";
 @import "style/background-classes";
 @import "style/background-overlay";
 @import "style/background-parallax";
-@import "style/has-padding";
+@import "style/columns-gutter";
+@import "style/columns-responsive";
+@import "style/columns";
+@import "style/ellipsis-loading";
 @import "style/has-margin";
+@import "style/has-padding";
 @import "style/shadow";
 @import "style/tooltips";
 
@@ -15,6 +16,7 @@
 @import "../components/block-gallery/styles/style.scss";
 @import "../components/media-filter-control/styles/style.scss";
 @import "../components/option-selector-control/styles/style.scss";
+@import "../components/swiper/style.scss";
 
 // @import "../extensions/**/style.scss";
 @import "../extensions/advanced-controls/styles/style.scss";

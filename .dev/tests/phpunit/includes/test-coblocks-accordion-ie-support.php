@@ -6,17 +6,17 @@
  */
 class CoBlocks_Accordion_IE_Support_Tests extends WP_UnitTestCase {
 
-	public function setUp() {
+	public function set_up() {
 
-		parent::setUp();
+		parent::set_up();
 
 		set_current_screen( 'edit-post' );
 
 	}
 
-	public function tearDown() {
+	public function tear_down() {
 
-		parent::tearDown();
+		parent::tear_down();
 
 	}
 

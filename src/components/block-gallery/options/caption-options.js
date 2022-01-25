@@ -8,19 +8,19 @@ import { __ } from '@wordpress/i18n';
  */
 const captionOptions = [
 	{
-		value: 'dark',
 		/* translators: visual style option */
 		label: __( 'Dark', 'coblocks' ),
+		value: 'dark',
 	},
 	{
-		value: 'light',
 		/* translators: visual style option */
 		label: __( 'Light', 'coblocks' ),
+		value: 'light',
 	},
 	{
-		value: 'none',
 		/* translators: visual style option */
 		label: __( 'None', 'coblocks' ),
+		value: 'none',
 	},
 ];
 

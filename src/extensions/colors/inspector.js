@@ -8,9 +8,6 @@ import './settings-modal-control';
  * WordPress dependencies
  */
 import { InspectorControls } from '@wordpress/block-editor';
-import { addFilter } from '@wordpress/hooks';
-import { Fragment } from '@wordpress/element';
-import { createHigherOrderComponent } from '@wordpress/compose';
 
 /**
  * Inspector.
@@ -21,24 +18,28 @@ import { createHigherOrderComponent } from '@wordpress/compose';
 const Inspector = ( props ) => {
 	const allowedBlocks = [ 'core/cover', 'core/button', 'core/list', 'core/quote' ];
 
+	const { name: blockName } = props;
+
+	const extendedProps = { ...props };
+
 	// Display on the allowedBlocks only.
-	if ( ! allowedBlocks.includes( props.name ) ) {
-		props.attributes.textPanelHideSize = true;
+	if ( ! allowedBlocks.includes( blockName ) ) {
+		extendedProps.attributes.textPanelHideSize = true;
 	} else {
-		props.attributes.textPanelHeadingFontSizes = true;
+		extendedProps.attributes.textPanelHeadingFontSizes = true;
 	}
 
 	// Show line height on appropriate blocks.
-	if ( ! [ 'core/paragraph', 'core/cover', 'core/button' ].includes( props.name ) ) {
-		props.attributes.textPanelLineHeight = true;
+	if ( ! [ 'core/paragraph', 'core/cover', 'core/button' ].includes( blockName ) ) {
+		extendedProps.attributes.textPanelLineHeight = true;
 	}
 
-	props.attributes.textPanelHideColor = true;
-	props.attributes.textPanelShowSpacingControls = true;
+	extendedProps.attributes.textPanelHideColor = true;
+	extendedProps.attributes.textPanelShowSpacingControls = true;
 
 	return (
 		<InspectorControls>
-			<ColorSettings { ...props } />
+			<ColorSettings { ...extendedProps } />
 		</InspectorControls>
 	);
 };
@@ -49,7 +50,7 @@ const Inspector = ( props ) => {
  * @param {Object} settings Original block settings.
  * @return {Object} Filtered block settings.
  */
-function addAttributes( settings ) {
+function applyAttributes( settings ) {
 	const allowedBlocks = [ 'core/list', 'core/quote' ];
 	// Use Lodash's assign to gracefully handle if attributes are undefined
 	if ( allowedBlocks.includes( settings.name ) ) {
@@ -62,29 +63,14 @@ function addAttributes( settings ) {
 /**
  * Override the default edit UI to include a new block inspector control
  *
- * @param {Function} BlockEdit Original component.
- * @return {string} Wrapped component.
+ * @param {Object} props Selected block props.
  */
-const withInspectorControl = createHigherOrderComponent( ( BlockEdit ) => {
-	return ( props ) => {
-		const allowedBlocks = [ 'core/list', 'core/quote' ];
-		return (
-			<Fragment>
-				<BlockEdit { ...props } />
-				{ props.isSelected && allowedBlocks.includes( props.name ) && <Inspector { ... { ...props } } /> }
-			</Fragment>
-		);
-	};
-}, 'withInspectorControl' );
+const useColorControls = ( props ) => {
+	const allowedBlocks = [ 'core/list', 'core/quote' ];
+	return props.isSelected && allowedBlocks.includes( props.name )
+		? ( <Inspector { ... { ...props } } /> )
+		: null;
+};
 
-addFilter(
-	'blocks.registerBlockType',
-	'coblocks/colors/attributes',
-	addAttributes
-);
+export { useColorControls, applyAttributes };
 
-addFilter(
-	'editor.BlockEdit',
-	'coblocks/colors',
-	withInspectorControl
-);

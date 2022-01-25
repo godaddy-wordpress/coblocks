@@ -10,5 +10,15 @@
 		.coblocks-gallery--item figcaption {
 			border-radius: 0 0 #{$i}px #{$i}px;
 		}
+
+		// Masonry Gallery
+		.masonry-brick {
+			border-radius: #{$i}px;
+
+			figcaption {
+				border-bottom-left-radius: #{$i - 4}px !important;
+				border-bottom-right-radius: #{$i - 4}px !important;
+			}
+		}
 	}
 }

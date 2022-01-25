@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-sort-props, sort-keys */
 /**
  * External dependencies
  */
@@ -7,9 +8,9 @@ import includes from 'lodash/includes';
 /**
  * Internal dependencies
  */
+import dividers from './deprecated/dividers';
 import { getDividerFromStyle } from './utils';
 import metadata from './block.json';
-import dividers from './deprecated/dividers';
 
 /**
  * WordPress dependencies
@@ -199,7 +200,7 @@ const deprecated = [
 			...metadata.attributes,
 			shapeHeight: { type: 'number', default: 100 },
 			backgroundHeight: { type: 'number', default: 50 },
-			[ attr ]: false,
+			[ attr ]: { type: 'boolean', default: false },
 		},
 		save: deprecatedSVGs,
 	} );

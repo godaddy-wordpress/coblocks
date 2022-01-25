@@ -6,9 +6,9 @@
  */
 class CoBlocks_Tests extends WP_UnitTestCase {
 
-	public function setUp() {
+	public function set_up() {
 
-		parent::setUp();
+		parent::set_up();
 
 		set_current_screen( 'dashboard' );
 
@@ -23,9 +23,9 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 
 	}
 
-	public function tearDown() {
+	public function tear_down() {
 
-		parent::tearDown();
+		parent::tear_down();
 
 		unset( $GLOBALS['current_screen'] );
 
@@ -69,7 +69,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 		$reflection_method->invoke( coblocks() );
 
 		$expected = [
-			'version' => '2.19.1',
+			'version' => '2.20.0',
 			'plugin_dir'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_path( __FILE__ ) ),
 			'plugin_url'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_url( __FILE__ ) ),
 			'plugin_file' => str_replace( '.dev/tests/phpunit/test-class-coblocks.php', 'class-coblocks.php', __FILE__ ),

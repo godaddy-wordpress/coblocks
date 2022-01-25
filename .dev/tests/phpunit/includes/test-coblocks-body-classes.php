@@ -8,9 +8,9 @@ class CoBlocks_Body_Classes_Tests extends WP_UnitTestCase {
 
 	private $coblocks_body_classes;
 
-	public function setUp() {
+	public function set_up() {
 
-		parent::setUp();
+		parent::set_up();
 
 		$this->coblocks_body_classes = new CoBlocks_Body_Classes();
 
@@ -18,9 +18,9 @@ class CoBlocks_Body_Classes_Tests extends WP_UnitTestCase {
 
 	}
 
-	public function tearDown() {
+	public function tear_down() {
 
-		parent::tearDown();
+		parent::tear_down();
 
 		unset( $GLOBALS['current_screen'] );
 

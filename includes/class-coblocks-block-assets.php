@@ -160,14 +160,6 @@ class CoBlocks_Block_Assets {
 		$name       = 'coblocks-extensions';
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
-		$rtl        = ! is_rtl() ? '' : '-rtl';
-
-		wp_enqueue_style(
-			'coblocks-extensions',
-			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
-			array(),
-			$asset_file['version']
-		);
 
 		wp_enqueue_script(
 			'coblocks-editor',
@@ -177,8 +169,13 @@ class CoBlocks_Block_Assets {
 			true
 		);
 
-		foreach ( range( 1, 8 ) as $number ) {
-			$name       = "coblocks-$number"; // coblocks-1.js.
+		foreach ( glob( COBLOCKS_PLUGIN_DIR . 'dist/coblocks-*.js' ) as $file ) {
+			$name = str_replace( '.js', '', basename( $file ) ); // coblocks-1.
+
+			if ( ! preg_match( '/coblocks-\d+/', $name ) ) {
+				continue;
+			}
+
 			$filepath   = 'dist/' . $name;
 			$asset_file = $this->get_asset_file( $filepath );
 
@@ -366,6 +363,22 @@ class CoBlocks_Block_Assets {
 
 		// Carousel block.
 		if ( $this->is_page_gutenberg() || has_block( 'coblocks/gallery-carousel' ) || has_block( 'core/block' ) ) {
+			wp_enqueue_script(
+				'coblocks-tiny-swiper',
+				$vendors_dir . '/tiny-swiper.js',
+				array(),
+				COBLOCKS_VERSION,
+				true
+			);
+
+			wp_enqueue_script(
+				'coblocks-tinyswiper-initializer',
+				$dir . 'coblocks-tinyswiper-initializer.js',
+				array(),
+				COBLOCKS_VERSION,
+				true
+			);
+
 			wp_enqueue_script(
 				'coblocks-flickity',
 				$vendors_dir . '/flickity.js',

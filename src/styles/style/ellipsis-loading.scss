@@ -1,0 +1,21 @@
+.coblocks-ellipsis-loading::after {
+	animation: coblocks-ellipsis steps(4, end) 1000ms infinite;
+	content: "\2026"; /* ascii code for the ellipsis character */
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: bottom;
+	width: 0;
+}
+
+@keyframes coblocks-ellipsis {
+	25% {
+		opacity: 1;
+	}
+	75% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		width: 1.1em;
+	}
+}

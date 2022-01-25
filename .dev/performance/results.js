@@ -1,23 +1,23 @@
 // Read the test results from master and current branch at ~/project/[branch]-median-results.json files
 // combine them into a single results array with structure results[ testSuite ][ branch ] = results.json
 const fs = require( 'fs' );
-const path = require( 'path' );
 const { mapValues, merge } = require( 'lodash' );
 
 /**
  * Internal dependencies
  */
-const { formats, log } = require( './logger' );
+const { log } = require( './logger' );
 
 /**
  * Get the performance test results and output it a table
+ *
+ * @param {string} branch The Branch name
  */
 async function getPerformanceTestResults( branch ) {
-
 	const testSuites = [ 'post-editor' ];
-	const master_data = fs.readFileSync( 'master-median-results.json' );
-	const current_data = fs.readFileSync( branch + '-median-results.json' );
-	const results = merge( JSON.parse( master_data ), JSON.parse( current_data ) );
+	const masterData = fs.readFileSync( 'master-median-results.json' );
+	const currentData = fs.readFileSync( branch + '-median-results.json' );
+	const results = merge( JSON.parse( masterData ), JSON.parse( currentData ) );
 
 	for ( const testSuite of testSuites ) {
 		const getDifference = ( key ) => {
@@ -74,13 +74,43 @@ async function getPerformanceTestResults( branch ) {
 			},
 			invertedResult
 		);
+
 		// eslint-disable-next-line no-console
 		console.table( invertedResult );
 
-		const resultsFilename = testSuite + '-performance-results.json';
+		let resultsTable = '';
+		let headers = '';
+		let iteration = 1;
+		let dataKey;
+		const dataKeys = Object.keys( results[ testSuite ].master );
+
+		for ( const [ key ] of Object.entries( results[ testSuite ] ) ) {
+			if ( iteration === 1 ) {
+				headers += 'index';
+			}
+
+			headers += ' | ' + key;
+
+			if ( iteration === 3 ) {
+				headers += '\\r\\n';
+				headers += ':--- | :---: | :---: | :---:';
+			}
+
+			iteration++;
+		}
+
+		// eslint-disable-next-line
+		for ( dataKey in dataKeys ) {
+			resultsTable += dataKeys[ dataKey ];
+			// eslint-disable-next-line
+			resultsTable += ` | ${ results[ testSuite ][ 'master' ][ dataKeys[ dataKey ] ] } | ${ results[ testSuite ][ branch ][ dataKeys[ dataKey ] ] } | ${ results[ testSuite ][ 'change %' ][ dataKeys[ dataKey ] ] }%\\r\\n`;
+		}
+
+		resultsTable = headers + '\\r\\n' + resultsTable;
+
 		fs.writeFileSync(
-			path.resolve( __dirname, '../../../', resultsFilename ),
-			JSON.stringify( results[ testSuite ], null, 2 )
+			testSuite + '-performance-results.txt',
+			resultsTable
 		);
 	}
 }
