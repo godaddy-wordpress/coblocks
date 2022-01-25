@@ -345,7 +345,6 @@ function coblocks_register_post_carousel_block() {
 		array(
 			'attributes'      => $metadata['attributes'],
 			'render_callback' => 'coblocks_render_post_carousel_block',
-			// 'editor_script'   => 'coblocks-slick-initializer',
 		)
 	);
 }
