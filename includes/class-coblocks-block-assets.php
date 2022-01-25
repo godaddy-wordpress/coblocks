@@ -161,13 +161,6 @@ class CoBlocks_Block_Assets {
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
 
-		wp_enqueue_style(
-			$name,
-			COBLOCKS_PLUGIN_URL . 'dist/style-' . $name . $rtl . '.css',
-			array(),
-			$asset_file['version']
-		);
-
 		wp_enqueue_script(
 			'coblocks-editor',
 			COBLOCKS_PLUGIN_URL . $filepath . '.js',
