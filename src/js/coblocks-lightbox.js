@@ -51,6 +51,7 @@
 
 		const imageSelector = [
 			`.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure img`,
+			`.has-lightbox.lightbox-${ lightboxIndex } > figure img`,
 			`figure.has-lightbox.lightbox-${ lightboxIndex } > img`,
 			`.has-lightbox.lightbox-${ lightboxIndex } > figure[class^="align"] img`,
 			`.masonry-grid.has-lightbox.lightbox-${ lightboxIndex } figure img`,
