@@ -64,4 +64,4 @@ $color-alert-error-color: var(--coblocks-alert-error--color--text, $color-alert-
 $color-alert-success-bg: var(--coblocks-alert-default--color--background, $color-alert-success-bg);
 $color-alert-success-color: var(--coblocks-alert-error--color--text, $color-alert-success-color);
 
-@import "styles/mixins";
+@import "./mixins";
