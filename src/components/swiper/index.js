@@ -42,6 +42,7 @@ const Swiper = ( props ) => {
 		freeScroll = false,
 		uuid = null,
 		slidesPerView = 1,
+		navigationClass = null,
 	} = props;
 
 	const [ swiper, setSwiper ] = useState( null );
@@ -176,10 +177,10 @@ const Swiper = ( props ) => {
 	const renderNavigation = useMemo( () => {
 		return (
 			<>
-				<button className={ `nav-button__prev ${ navigation === false && 'no-navigation' }` } id={ `${ uuid }-prev` }>
+				<button className={ navigationClass ? `${ navigationClass }__prev` : `nav-button__prev ${ navigation === false && 'no-navigation' }` } id={ `${ uuid }-prev` }>
 					<svg className="icon" style={ { transform: 'rotate(180deg)' } } />
 				</button>
-				<button className={ `nav-button__next ${ navigation === false && 'no-navigation' }` } id={ `${ uuid }-next` }>
+				<button className={ navigationClass ? `${ navigationClass }__next` : `nav-button__next ${ navigation === false && 'no-navigation' }` } id={ `${ uuid }-next` }>
 					<svg className="icon" />
 				</button>
 			</>

@@ -176,6 +176,7 @@ const PostCarousel = ( props ) => {
 						list={ displayPosts || [] }
 						loop={ false }
 						navigation
+						navigationClass="wp-coblocks-post-carousel-nav-button"
 						slidesPerView={ columns }
 					>
 						{ ( { index: i, item: post } ) => {
