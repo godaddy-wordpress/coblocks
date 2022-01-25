@@ -111,6 +111,11 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+2.20.1 / 2022-01-25
+===================
+### Bug Fixes
+  * Fix CSS issue with CoBlocks extensions [#2236](https://github.com/godaddy-wordpress/coblocks/pull/2236)
+
 2.20.0 / 2022-01-24
 ==================
 ### Enhancements
@@ -152,7 +157,7 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
   * Upgrade to Cypress 9 [#2155](https://github.com/godaddy-wordpress/coblocks/pull/2155)
   * Setup phpunit to run inside wp-env [#2150](https://github.com/godaddy-wordpress/coblocks/pull/2150)
   * Create a link to a zip file of the plugin in PRs [#2154](https://github.com/godaddy-wordpress/coblocks/pull/2154)
-  
+
 2.19.1 / 2021-11-15
 ===================
 ### Bug Fixes
