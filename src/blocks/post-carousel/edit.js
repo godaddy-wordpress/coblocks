@@ -4,6 +4,7 @@
 import classnames from 'classnames';
 import { get, isEqual, isUndefined, pickBy } from 'lodash';
 import { PostCarouselIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { v4 as generateUuid } from 'uuid';
 import TinySwiper from 'tiny-swiper';
 import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
 
@@ -64,11 +65,14 @@ const PostCarousel = ( props ) => {
 		postsToShow,
 		columns,
 		align,
+		orderBy,
 	} = attributes;
 
 	const [ categoriesList, setCategoriesList ] = useState( [] );
 	const [ editing, setEditing ] = useState( externalRssUrl );
 	const [ swiper, setSwiper ] = useState( null );
+
+	const carouselUuid = useMemo( () => generateUuid(), [] );
 
 	const prevPostFeedType = usePrevious( postFeedType );
 
@@ -109,21 +113,28 @@ const PostCarousel = ( props ) => {
 	useEffect( () => {
 		if ( postFeedType === 'external' && ! editing ) {
 			setTimeout( () => {
-				const postCarouselContainer = document.querySelector( '.wp-block-coblocks-post-carousel.external' );
+				const postCarouselContainer = document.querySelector( `.wp-block-coblocks-post-carousel-external-container-${ carouselUuid }` );
 
 				// remove the swiper classes so that the external feed does not display within carousel in editor
 				const swiperWrapper = postCarouselContainer.querySelector( '.swiper-wrapper' );
-				swiperWrapper.classList.remove( 'swiper-wrapper' );
-				swiperWrapper.classList.add( 'swiper-wrapper-editor' );
 
-				const swiperBackButton = postCarouselContainer.querySelector( '#wp-coblocks-post-carousel-swiper-prev' );
-				const swiperNextButton = postCarouselContainer.querySelector( '#wp-coblocks-post-carousel-swiper-next' );
+				if ( swiperWrapper ) {
+					swiperWrapper.classList.remove( 'swiper-wrapper' );
+					swiperWrapper.classList.add( 'swiper-wrapper-editor' );
 
-				swiperBackButton.style.display = 'none';
-				swiperNextButton.style.display = 'none';
-			}, 600 );
+					const swiperBackButton = postCarouselContainer.querySelector( '#wp-coblocks-post-carousel-swiper-prev' );
+					const swiperNextButton = postCarouselContainer.querySelector( '#wp-coblocks-post-carousel-swiper-next' );
+
+					swiperBackButton.style.display = 'none';
+					swiperNextButton.style.display = 'none';
+				}
+			}, 1000 );
 		}
-	}, [ postFeedType, prevPostFeedType, editing, swiper, columns ] );
+	}, [
+		attributes,
+		editing,
+		postFeedType,
+	] );
 
 	const onSubmitURL = ( event ) => {
 		event.preventDefault();
@@ -264,11 +275,13 @@ const PostCarousel = ( props ) => {
 				}
 			</BlockControls>
 			{ postFeedType === 'external' &&
-				<ServerSideRender
-					attributes={ attributes }
-					block="coblocks/post-carousel"
-					className="coblocks-slick pb-8"
-				/>
+				<span className={ `wp-block-coblocks-post-carousel-external-container-${ carouselUuid }` }>
+					<ServerSideRender
+						attributes={ attributes }
+						block="coblocks/post-carousel"
+						className="coblocks-slick pb-8"
+					/>
+				</span>
 			}
 			{ postFeedType === 'internal' && renderCarousel }
 		</>
