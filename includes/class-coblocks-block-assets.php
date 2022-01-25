@@ -163,8 +163,8 @@ class CoBlocks_Block_Assets {
 		$rtl        = ! is_rtl() ? '' : '-rtl';
 
 		wp_enqueue_style(
-			'coblocks-extensions',
-			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
+			$name,
+			COBLOCKS_PLUGIN_URL . 'dist/style-' . $name . $rtl . '.css',
 			array(),
 			$asset_file['version']
 		);
