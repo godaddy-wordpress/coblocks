@@ -190,8 +190,6 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 				'dist/js/coblocks-google-recaptcha.js',
 				'dist/js/coblocks-lightbox.js',
 				'dist/js/coblocks-masonry.js',
-				'dist/js/coblocks-slick-initializer-front.js',
-				'dist/js/coblocks-slick-initializer.js',
 				'dist/js/vendors/flickity.js',
 				'dist/js/vendors/slick.js',
 				'src/js/coblocks-accordion-polyfill.js',
@@ -201,8 +199,6 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 				'src/js/coblocks-google-recaptcha.js',
 				'src/js/coblocks-lightbox.js',
 				'src/js/coblocks-masonry.js',
-				'src/js/coblocks-slick-initializer-front.js',
-				'src/js/coblocks-slick-initializer.js',
 			],
 			'css' => [
 				'dist/coblocks-1.css',

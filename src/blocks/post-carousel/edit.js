@@ -2,34 +2,32 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { get, isEqual, isUndefined, pickBy } from 'lodash';
-import { PostCarouselIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 import { v4 as generateUuid } from 'uuid';
-import TinySwiper from 'tiny-swiper';
-import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
+import { PostCarouselIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { get, isEqual, isUndefined, pickBy } from 'lodash';
 
 /**
  * Internal dependencies
  */
 import InspectorControls from './inspector';
-import Swiper from '../../components/swiper';
 import PostItem from './post-item';
+import Swiper from '../../components/swiper';
 
 /**
  * WordPress dependencies
  */
-import apiFetch from '@wordpress/api-fetch';
 import { __ } from '@wordpress/i18n';
-import { compose, usePrevious } from '@wordpress/compose';
-import { useEffect, useMemo, useRef, useState } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
+import apiFetch from '@wordpress/api-fetch';
+import { BlockControls } from '@wordpress/block-editor';
+import { compose } from '@wordpress/compose';
+import { useEffect, useMemo, useRef, useState } from '@wordpress/element';
 // Disable reason: We choose to use unsafe APIs in our codebase.
 // eslint-disable-next-line @wordpress/no-unsafe-wp-apis
-import { useDispatch, withSelect } from '@wordpress/data';
-import { BlockControls } from '@wordpress/block-editor';
+import { edit } from '@wordpress/icons';
+import ServerSideRender from '@wordpress/server-side-render';
 import {
 	Button,
-	Disabled,
 	Icon,
 	Placeholder,
 	QueryControls,
@@ -37,8 +35,7 @@ import {
 	TextControl,
 	Toolbar,
 } from '@wordpress/components';
-import ServerSideRender from '@wordpress/server-side-render';
-import { edit } from '@wordpress/icons';
+import { useDispatch, withSelect } from '@wordpress/data';
 
 /**
  * Module Constants
@@ -65,16 +62,12 @@ const PostCarousel = ( props ) => {
 		postsToShow,
 		columns,
 		align,
-		orderBy,
 	} = attributes;
 
 	const [ categoriesList, setCategoriesList ] = useState( [] );
 	const [ editing, setEditing ] = useState( externalRssUrl );
-	const [ swiper, setSwiper ] = useState( null );
 
 	const carouselUuid = useMemo( () => generateUuid(), [] );
-
-	const prevPostFeedType = usePrevious( postFeedType );
 
 	const { selectBlock } = useDispatch( 'core/block-editor' );
 
@@ -328,10 +321,10 @@ export default compose( [
 
 			const latestPostsQuery = pickBy( {
 				categories: catIds,
+				exclude: currentPost.id,
 				order,
 				orderby: orderBy,
 				per_page: 'and' === categoryRelation ? '-1' : postsToShow,
-				exclude: currentPost.id,
 			}, ( value ) => ! isUndefined( value ) );
 
 			let latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
@@ -367,9 +360,9 @@ export default compose( [
 		};
 
 		return {
+			isRTL,
 			latestPosts: useUpdatedQueryControls ? updatedQuery() : deprecatedQuery(),
 			useUpdatedQueryControls,
-			isRTL,
 		};
 	} ),
 ] )( PostCarousel );

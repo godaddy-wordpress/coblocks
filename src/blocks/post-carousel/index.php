@@ -335,14 +335,6 @@ function coblocks_register_post_carousel_block() {
 
 	$dir = CoBlocks()->asset_source( 'js' );
 
-	wp_register_script(
-		'coblocks-slick-initializer',
-		$dir . 'coblocks-slick-initializer.js',
-		array( 'jquery' ),
-		COBLOCKS_VERSION,
-		true
-	);
-
 	// Load attributes from block.json.
 	ob_start();
 	include COBLOCKS_PLUGIN_DIR . 'src/blocks/post-carousel/block.json';
