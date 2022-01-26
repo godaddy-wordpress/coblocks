@@ -15,6 +15,7 @@ export default function Inspector( props ) {
 	} = props;
 
 	const {
+		align,
 		counterText,
 		numberFormatting,
 		counterSpeed,
@@ -87,7 +88,7 @@ export default function Inspector( props ) {
 					checked={ !! hasIconShowing }
 					help={ getIconHelp }
 					label={ __( 'Show Icon Block', 'coblocks' ) }
-					onChange={ ( value ) => processIcon( value ) }
+					onChange={ ( value ) => processIcon( value, align ) }
 				/>
 
 				<RangeControl
