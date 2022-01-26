@@ -25,7 +25,7 @@ const { name, category } = metadata;
 
 const settings = {
 	/* translators: block name */
-	title: __( 'Posts', 'coblocks' ),
+	title: __( 'Posts (CoBlocks)', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Display posts or an RSS feed as stacked or horizontal cards.', 'coblocks' ),
 	icon: <Icon icon={ icon } />,
