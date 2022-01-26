@@ -43,7 +43,7 @@ class CoBlocks_Block_Assets {
 	 */
 	public function __construct() {
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_scripts' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_assets' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'frontend_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
 		add_action( 'save_post_wp_template_part', array( $this, 'clear_template_transients' ) );
@@ -142,7 +142,7 @@ class CoBlocks_Block_Assets {
 	 *
 	 * @access public
 	 */
-	public function editor_scripts() {
+	public function editor_assets() {
 		// Define where the vendor asset is loaded from.
 		$vendors_dir = CoBlocks()->asset_source( 'js/vendors' );
 
