@@ -11,6 +11,9 @@
 		"align": {
 			"type": "string"
 		},
+		"counterDescription": {
+			"type": "string"
+		},
         "counterSpeed": {
             "type": "number",
             "default": 1

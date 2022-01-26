@@ -31,6 +31,7 @@ function CounterEdit( props ) {
 	const {
 		startingCount,
 		endingCount,
+		counterDescription,
 		counterSpeed,
 		counterText,
 		align,
@@ -105,6 +106,7 @@ function CounterEdit( props ) {
 			<Counter
 				{ ...{
 					blockProps,
+					counterDescription,
 					counterSpeed,
 					counterText,
 					endingCount,
