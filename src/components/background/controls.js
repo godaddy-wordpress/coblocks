@@ -8,7 +8,7 @@ import { PaintCanIcon } from '@godaddy-wordpress/coblocks-icons';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Fragment } from '@wordpress/element';
+import { Icon } from '@wordpress/icons';
 import { BlockControls, MediaReplaceFlow, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
 import { ToolbarButton, ToolbarGroup } from '@wordpress/components';
 
@@ -29,27 +29,25 @@ function BackgroundControls( props ) {
 	} = attributes;
 
 	return (
-		<Fragment>
-			<MediaUploadCheck>
+		<MediaUploadCheck>
+			<BlockControls group="other">
 				<ToolbarGroup className={ backgroundImg ? 'components-dropdown-menu' : '' }>
 					{ backgroundImg
 						? (
-							<BlockControls group="other">
-								<MediaReplaceFlow
-									accept="image/*"
-									allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
-									mediaURL={ backgroundImg }
-									name={ PaintCanIcon }
-									onError={ () => {
-										setAttributes( { backgroundImg: undefined, backgroundType: undefined } );
-									} }
-									onSelect={ ( media ) => {
-										if ( media ) {
-											setAttributes( { backgroundImg: media.url, backgroundType: ( media.media_type || media.type ) } );
-										}
-									} }
-								/>
-							</BlockControls>
+							<MediaReplaceFlow
+								accept="image/*"
+								allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
+								mediaURL={ backgroundImg }
+								name={ <Icon icon={ PaintCanIcon } /> }
+								onError={ () => {
+									setAttributes( { backgroundImg: undefined, backgroundType: undefined } );
+								} }
+								onSelect={ ( media ) => {
+									if ( media ) {
+										setAttributes( { backgroundImg: media.url, backgroundType: ( media.media_type || media.type ) } );
+									}
+								} }
+							/>
 						) : (
 							<MediaUpload
 								allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
@@ -68,8 +66,8 @@ function BackgroundControls( props ) {
 							/>
 						) }
 				</ToolbarGroup>
-			</MediaUploadCheck>
-		</Fragment>
+			</BlockControls>
+		</MediaUploadCheck>
 	);
 }
 
