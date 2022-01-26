@@ -56,10 +56,6 @@
 			"default": "none",
 			"type": "string"
 		},
-		"imageCrop": {
-			"type": "boolean",
-			"default": true
-		},
 		"linkTarget": {
 			"type": "string"
 		},

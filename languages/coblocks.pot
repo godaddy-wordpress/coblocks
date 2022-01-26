@@ -1,14 +1,14 @@
 # Copyright (c) 2022 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 2.19.1\n"
+"Project-Id-Version: CoBlocks 2.20.1\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-01-18T22:49:16+00:00\n"
+"POT-Creation-Date: 2022-01-26T02:47:59+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -64,15 +64,15 @@ msgstr ""
 msgid "Pattern Category"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:469
+#: includes/class-coblocks-block-assets.php:461
 msgid "Close Gallery"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:470
+#: includes/class-coblocks-block-assets.php:462
 msgid "Previous"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:471
+#: includes/class-coblocks-block-assets.php:463
 msgid "Next"
 msgstr ""
 
@@ -2252,21 +2252,21 @@ msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:49
 #: src/blocks/gallery-collage/inspector.js:50
-#: src/blocks/gallery-masonry/inspector.js:179
+#: src/blocks/gallery-masonry/inspector.js:168
 #: src/blocks/gallery-masonry/v1/inspector.js:68
 #: src/blocks/gallery-offset/inspector.js:71
 #: src/blocks/gallery-stacked/inspector.js:66
-#: src/extensions/lightbox-controls/index.js:41
+#: src/extensions/lightbox-controls/index.js:47
 msgid "Image lightbox is enabled."
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:49
 #: src/blocks/gallery-collage/inspector.js:50
-#: src/blocks/gallery-masonry/inspector.js:180
+#: src/blocks/gallery-masonry/inspector.js:169
 #: src/blocks/gallery-masonry/v1/inspector.js:69
 #: src/blocks/gallery-offset/inspector.js:72
 #: src/blocks/gallery-stacked/inspector.js:67
-#: src/extensions/lightbox-controls/index.js:42
+#: src/extensions/lightbox-controls/index.js:48
 msgid "Toggle to enable the image lightbox."
 msgstr ""
 
@@ -2284,7 +2284,7 @@ msgid "Size"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:93
-#: src/blocks/gallery-masonry/inspector.js:238
+#: src/blocks/gallery-masonry/inspector.js:186
 #: src/blocks/gallery-masonry/v1/inspector.js:89
 #: src/blocks/gallery-offset/inspector.js:87
 #: src/blocks/gallery-stacked/inspector.js:90
@@ -2296,11 +2296,11 @@ msgstr ""
 #: src/blocks/gallery-carousel/inspector.js:130
 #: src/blocks/gallery-carousel/variations.js:145
 #: src/blocks/gallery-collage/inspector.js:100
-#: src/blocks/gallery-masonry/inspector.js:250
+#: src/blocks/gallery-masonry/inspector.js:218
 #: src/blocks/gallery-masonry/v1/inspector.js:101
 #: src/blocks/gallery-offset/inspector.js:95
 #: src/blocks/gallery-stacked/inspector.js:100
-#: src/extensions/lightbox-controls/index.js:51
+#: src/extensions/lightbox-controls/index.js:57
 msgid "Lightbox"
 msgstr ""
 
@@ -2467,63 +2467,51 @@ msgstr ""
 msgid "Media File"
 msgstr ""
 
-#: src/blocks/gallery-masonry/inspector.js:81
-msgid "Thumbnails are cropped to align."
-msgstr ""
-
-#: src/blocks/gallery-masonry/inspector.js:82
-msgid "Thumbnails are not cropped."
-msgstr ""
-
 #. translators: %s: image size settings
-#: src/blocks/gallery-masonry/inspector.js:111
+#: src/blocks/gallery-masonry/inspector.js:100
 msgid "All gallery image links updated to: %s"
 msgstr ""
 
-#: src/blocks/gallery-masonry/inspector.js:136
+#: src/blocks/gallery-masonry/inspector.js:125
 msgid "All gallery images updated to open in new tab"
 msgstr ""
 
-#: src/blocks/gallery-masonry/inspector.js:137
+#: src/blocks/gallery-masonry/inspector.js:126
 msgid "All gallery images updated to not open in new tab"
 msgstr ""
 
 #. translators: %s: image size settings
-#: src/blocks/gallery-masonry/inspector.js:167
+#: src/blocks/gallery-masonry/inspector.js:156
 msgid "All gallery image sizes updated to: %s"
 msgstr ""
 
-#: src/blocks/gallery-masonry/inspector.js:191
+#: src/blocks/gallery-masonry/inspector.js:180
 msgid "Gallery settings"
 msgstr ""
 
-#: src/blocks/gallery-masonry/inspector.js:195
-msgid "Crop images"
+#: src/blocks/gallery-masonry/inspector.js:185
+#: src/blocks/gallery-masonry/v1/inspector.js:88
+msgid "Add rounded corners to the gallery items."
 msgstr ""
 
-#: src/blocks/gallery-masonry/inspector.js:200
+#: src/blocks/gallery-masonry/inspector.js:197
+#: src/blocks/gallery-masonry/inspector.js:206
+msgid "Image size"
+msgstr ""
+
+#: src/blocks/gallery-masonry/inspector.js:210
+msgid "Loading options…"
+msgstr ""
+
+#: src/blocks/gallery-masonry/inspector.js:224
 #: src/components/block-gallery/gallery-link-settings.js:80
 msgid "Link to"
 msgstr ""
 
-#: src/blocks/gallery-masonry/inspector.js:208
+#: src/blocks/gallery-masonry/inspector.js:232
 #: src/blocks/icon/inspector.js:315
 #: src/components/block-gallery/gallery-link-settings.js:89
 msgid "Open in new tab"
-msgstr ""
-
-#: src/blocks/gallery-masonry/inspector.js:215
-#: src/blocks/gallery-masonry/inspector.js:224
-msgid "Image size"
-msgstr ""
-
-#: src/blocks/gallery-masonry/inspector.js:228
-msgid "Loading options…"
-msgstr ""
-
-#: src/blocks/gallery-masonry/inspector.js:237
-#: src/blocks/gallery-masonry/v1/inspector.js:88
-msgid "Add rounded corners to the gallery items."
 msgstr ""
 
 #: src/blocks/gallery-masonry/v1/inspector.js:74
@@ -9603,8 +9591,8 @@ msgstr ""
 
 #. translators: typography style
 #: src/components/typography-controls/index.js:117
-#: src/formats/uppercase/index.js:25
-#: src/formats/uppercase/index.js:40
+#: src/formats/uppercase/index.js:20
+#: src/formats/uppercase/index.js:35
 msgid "Uppercase"
 msgstr ""
 
