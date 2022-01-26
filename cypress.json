@@ -19,5 +19,6 @@
     "runMode": 0,
     "openMode": 0
   },
-  "pageLoadTimeout": 120000
+  "pageLoadTimeout": 120000,
+  "videoCompression": false
 }
