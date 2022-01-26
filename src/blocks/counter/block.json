@@ -29,6 +29,9 @@
 	"supports": {
 		"anchor": true,
 		"html": false,
+		"color": {
+			"link": true
+		},
 		"typography": {
 			"fontSize": true,
 			"lineHeight": true,
