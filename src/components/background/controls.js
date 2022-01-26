@@ -5,6 +5,11 @@ import { ALLOWED_BG_MEDIA_TYPES } from './';
 import { PaintCanIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
+ * External Dependencies
+ */
+import PropTypes from 'prop-types';
+
+/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
@@ -74,3 +79,10 @@ function BackgroundControls( props ) {
 }
 
 export default BackgroundControls;
+
+BackgroundControls.propTypes = {
+	attributes: PropTypes.object.shape( {
+		backgroundImg: PropTypes.string.isRequired,
+	} ),
+	setAttributes: PropTypes.func.isRequired,
+};
