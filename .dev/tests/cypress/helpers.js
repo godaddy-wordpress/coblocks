@@ -195,7 +195,7 @@ export function viewPage() {
 
 	cy.get( '.edit-post-post-link__link' ).then( ( pageLink ) => {
 		const linkAddress = Cypress.$( pageLink ).attr( 'href' );
-		cy.visit( linkAddress );
+		return cy.visit( linkAddress );
 	} );
 }
 
