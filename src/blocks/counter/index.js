@@ -31,7 +31,8 @@ const settings = {
 	example: {
 		attributes: {
 			align: 'center',
-			counterText: `10 years, 2 months, 20 days, 4 hours`,
+			counterDescription: ' ',
+			counterText: '10 years, 2 months, 20 days, 4 hours',
 			fontSize: 'medium',
 		},
 	},
