@@ -167,30 +167,25 @@ workflows:
             - build
 
       # END TO END TESTING
-      - e2e_chrome_wp_latest:
+      - e2e_chrome_wp_nightly:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
             - build
-      - e2e_firefox_wp_latest:
+      - e2e_firefox_wp_nightly:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
             - build
 
-      # - e2e_chrome_wp_previous_major:
-      #    filters:
-      #      tags:
-      #        only: /^(?!canary).*$/
-      #    requires:
-      #      - css
-      #      - unit_testing_php_56
-      #      - unit_testing_php_73
-      #      - unit_testing_php_74
-      #      - unit_testing_php_80
-      #      - js
+      - e2e_chrome_wp_previous_major:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - build
 
       # PERF TESTING
       - perf_tests_master:
@@ -742,19 +737,21 @@ jobs:
   # End to End Testing
   # --------------------------------------------------
 
-  e2e_chrome_wp_latest:
+  e2e_chrome_wp_nightly:
     executor: php_74_node_browser_mysql_mailhog
     parallelism: 11
     steps:
       - run_e2e_tests:
           browser: chrome
+          wpversion: nightly
 
-  e2e_firefox_wp_latest:
+  e2e_firefox_wp_nightly:
     executor: php_74_node_browser_mysql_mailhog
     parallelism: 11
     steps:
       - run_e2e_tests:
           browser: firefox
+          wpversion: nightly
 
   e2e_chrome_wp_previous_major:
     executor: php_74_node_browser_mysql_mailhog
