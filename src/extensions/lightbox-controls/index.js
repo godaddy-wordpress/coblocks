@@ -7,8 +7,8 @@ import classnames from 'classnames';
  * WordPress Dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { InspectorControls } from '@wordpress/block-editor';
 import { select } from '@wordpress/data';
+import { store as blockEditorStore, InspectorControls } from '@wordpress/block-editor';
 import { PanelRow, ToggleControl } from '@wordpress/components';
 
 /**
@@ -24,7 +24,7 @@ const blocksWithLightboxSupport = [ 'core/gallery', 'core/image' ];
  * @return {JSX} Wrapped component.
  */
 const useLightbox = ( props ) => {
-	const { name, attributes, setAttributes, isSelected } = props;
+	const { name, attributes, setAttributes, isSelected, clientId } = props;
 	const { lightbox, images, id } = attributes;
 
 	const hasParentGallery = select( 'core/block-editor' ).
@@ -32,6 +32,12 @@ const useLightbox = ( props ) => {
 			props.clientId,
 			[ 'core/gallery', 'coblocks/gallery-masonry' ]
 		)?.length === 0;
+
+	let hasInnerImageBlocks = false;
+
+	if ( name === 'core/gallery' ) {
+		hasInnerImageBlocks = select( blockEditorStore )?.getBlock( clientId )?.innerBlocks?.length > 0;
+	}
 
 	let supportsLightbox = false;
 	supportsLightbox = blocksWithLightboxSupport.includes( name ) && !! hasParentGallery;
@@ -42,7 +48,7 @@ const useLightbox = ( props ) => {
 			: __( 'Toggle to enable the image lightbox.', 'coblocks' );
 	};
 
-	return isSelected && supportsLightbox && ( !! images?.length || !! id ) ? (
+	return isSelected && supportsLightbox && ( !! images?.length || !! id || !! hasInnerImageBlocks ) ? (
 		<InspectorControls>
 			<PanelRow className={ 'coblocks-lightbox-controls' }>
 				<ToggleControl
