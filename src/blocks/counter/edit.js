@@ -8,8 +8,10 @@ import classnames from 'classnames';
  */
 import { createBlock } from '@wordpress/blocks';
 import { useEffect } from '@wordpress/element';
-import { store as blockEditorStore, useBlockProps } from '@wordpress/block-editor';
+import { store, useBlockProps } from '@wordpress/block-editor';
 import { useDispatch, useSelect } from '@wordpress/data';
+// Backward compatibility for 5.6
+const blockEditorStore = !! store ? store : 'core/block-editor';
 
 /**
  * Internal dependencies
@@ -51,7 +53,7 @@ function CounterEdit( props ) {
 
 		/**
 		 * We pass in align attribute to use in the function. This is because this function
-		 * is memoized and does not have access to the live props.attributes object.
+		 * is memoized and its execution context does not have access to the live props.attributes object.
 		 *
 		 * @function updateIconAlignment Change preceding icon alignment if present.
 		 * @param {string} alignString Same as props.attributes.align.
@@ -62,7 +64,7 @@ function CounterEdit( props ) {
 
 		/**
 		 * We pass in align attribute to use in the function. This is because this function
-		 * is memoized and does not have access to the live props.attributes object.
+		 * is memoized and its execution context does not have access to the live props.attributes object.
 		 *
 		 * @function handleIconPresence Insert or remove icon block.
 		 * @param {boolean} insert      Whether to insert the icon block or to remove it.
@@ -84,7 +86,7 @@ function CounterEdit( props ) {
 			processIcon: handleIconPresence,
 			processIconAlignment: updateIconAlignment,
 		};
-	}, [ align ] );
+	}, [] );
 
 	useEffect( () => {
 		if ( hasIconShowing ) {

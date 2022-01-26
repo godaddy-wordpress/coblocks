@@ -1,7 +1,13 @@
 /**
  * WordPress dependencies
  */
-import { AlignmentControl, BlockControls } from '@wordpress/block-editor';
+import {
+	AlignmentControl as alignControls,
+	AlignmentToolbar as alignToolbar,
+	BlockControls,
+} from '@wordpress/block-editor';
+// Backward compatibility for 5.6
+const AlignmentControl = !! alignControls ? alignControls : alignToolbar;
 
 const Controls = ( props ) => {
 	const { attributes, setAttributes } = props;
