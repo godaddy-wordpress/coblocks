@@ -21,6 +21,7 @@ let block;
 let serializedBlock;
 
 const baseAttributes = {
+	counterDescription: 'Always always tested 1000 times',
 	counterText: '10000 hours 20000 days',
 };
 
@@ -51,6 +52,20 @@ describe( name, () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'data-counter-speed=\"5\"' );
+	} );
+
+	it( 'should have attribute \'counterText\' defined.', () => {
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'counterText' );
+	} );
+
+	it( 'should have attribute \'counterDescription\' defined.', () => {
+		serializedBlock = serialize( block );
+
+		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'counterDescription' );
 	} );
 
     [ 'left', 'center', 'right' ].forEach( ( align ) => {

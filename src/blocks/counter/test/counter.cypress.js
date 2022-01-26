@@ -8,6 +8,7 @@ describe( 'Test CoBlocks Counter Block', function() {
 	 * Setup counter data
 	 */
 	const counterData = {
+		counterDescription: 'Always always tested 1000 times',
 		counterSpeed: 5,
 		counterText: '10000 hours{enter}20000 years',
 	};
@@ -31,7 +32,8 @@ describe( 'Test CoBlocks Counter Block', function() {
 	it( 'Test counter block saves with text content.', function() {
 		helpers.addBlockToPost( 'coblocks/counter', true );
 
-		cy.get( '.wp-block-coblocks-counter' ).focus().type( counterData.counterText );
+		cy.get( '.wp-block-coblocks-counter.rich-text' ).first().focus().type( counterData.counterText );
+		cy.get( '.wp-block-coblocks-counter.rich-text' ).last().focus().type( counterData.counterDescription );
 
 		helpers.savePage();
 
@@ -45,7 +47,8 @@ describe( 'Test CoBlocks Counter Block', function() {
 	it( 'Test counter block saves with custom counter speed.', function() {
 		helpers.addBlockToPost( 'coblocks/counter', true );
 
-		cy.get( '.wp-block-coblocks-counter' ).focus().type( counterData.counterText );
+		cy.get( '.wp-block-coblocks-counter.rich-text' ).first().focus().type( counterData.counterText );
+		cy.get( '.wp-block-coblocks-counter.rich-text' ).last().focus().type( counterData.counterDescription );
 		cy.get( '.wp-block-coblocks-counter[data-counter-speed="1"]' );
 
 		helpers.selectBlock( 'counter' );
@@ -65,7 +68,8 @@ describe( 'Test CoBlocks Counter Block', function() {
 	it( 'Test counter block allows user to add icon block.', function() {
 		helpers.addBlockToPost( 'coblocks/counter', true );
 
-		cy.get( '.wp-block-coblocks-counter' ).focus().type( counterData.counterText );
+		cy.get( '.wp-block-coblocks-counter.rich-text' ).first().focus().type( counterData.counterText );
+		cy.get( '.wp-block-coblocks-counter.rich-text' ).last().focus().type( counterData.counterDescription );
 		cy.get( '[data-type="coblocks/icon"]' ).should( 'not.exist' );
 
 		helpers.selectBlock( 'counter' );
@@ -85,13 +89,14 @@ describe( 'Test CoBlocks Counter Block', function() {
 	it( 'Test counter block allows user to use locale formatting.', function() {
 		helpers.addBlockToPost( 'coblocks/counter', true );
 
-		cy.get( '.wp-block-coblocks-counter' ).focus().type( counterData.counterText );
-		cy.get( '.wp-block-coblocks-counter' ).contains( '10000 hours' );
+		cy.get( '.wp-block-coblocks-counter.rich-text' ).first().focus().type( counterData.counterText );
+		cy.get( '.wp-block-coblocks-counter.rich-text' ).last().focus().type( counterData.counterDescription );
+		cy.get( '.wp-block-coblocks-counter.rich-text' ).first().contains( '10000 hours' );
 
 		helpers.selectBlock( 'counter' );
 		helpers.toggleSettingCheckbox( 'Locale number formatting', );
 
-		cy.get( '.wp-block-coblocks-counter' ).contains( '10,000 hours' );
+		cy.get( '.wp-block-coblocks-counter.rich-text' ).first().contains( '10,000 hours' );
 
 		helpers.savePage();
 
