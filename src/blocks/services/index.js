@@ -9,6 +9,7 @@ import { ServicesIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 import deprecated from './deprecated';
 import edit from './edit';
 import example from './example';
+import { getBlockIconColor } from '../../utils/helper';
 import metadata from './block.json';
 import save from './save';
 
@@ -28,7 +29,10 @@ const settings = {
 	title: __( 'Services', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add up to four columns of services to display.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
+	icon: {
+		foreground: getBlockIconColor(),
+		src: <Icon icon={ icon } />,
+	},
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

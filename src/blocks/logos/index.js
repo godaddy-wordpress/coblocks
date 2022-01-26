@@ -8,6 +8,7 @@ import { LogosIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  */
 import deprecated from './deprecated';
 import edit from './edit';
+import { getBlockIconColor } from '../../utils/helper';
 import metadata from './block.json';
 import save from './save';
 
@@ -27,7 +28,10 @@ const settings = {
 	title: __( 'Logos', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add logos, badges, or certifications to build credibility.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
+	icon: {
+		foreground: getBlockIconColor(),
+		src: <Icon icon={ icon } />,
+	},
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

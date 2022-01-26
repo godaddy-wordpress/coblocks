@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { FeatureIcon } from '@godaddy-wordpress/coblocks-icons';
+import { FeatureIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
@@ -9,6 +9,7 @@ import { FeatureIcon } from '@godaddy-wordpress/coblocks-icons';
 import { BackgroundAttributes } from '../../../components/background';
 import DimensionsAttributes from '../../../components/dimensions-control/attributes';
 import edit from './edit';
+import { getBlockIconColor } from '../../../utils/helper';
 import metadata from './block.json';
 import save from './save';
 
@@ -34,7 +35,10 @@ const settings = {
 	title: __( 'Feature', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'A singular child column within a parent features block.', 'coblocks' ),
-	icon: <Icon icon={ FeatureIcon } />,
+	icon: {
+		foreground: getBlockIconColor(),
+		src: <Icon icon={ icon } />,
+	},
 	parent: [ 'coblocks/features' ],
 	supports: {
 		inserter: false,

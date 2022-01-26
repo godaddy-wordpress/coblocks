@@ -1,14 +1,16 @@
 /**
  * WordPress dependencies
  */
-import { getCategories, setCategories, registerBlockCollection } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
+import { getCategories, setCategories, registerBlockCollection } from '@wordpress/blocks';
 
 /**
  * Internal dependencies
  */
-import { supportsCollections } from './block-helpers';
 import { CoblocksIcon } from '@godaddy-wordpress/coblocks-icons';
+import { getBlockIconColor } from './helper';
+import { supportsCollections } from './block-helpers';
 
 const categories = [
 	{
@@ -24,13 +26,13 @@ const categories = [
 if ( supportsCollections() ) {
 	registerBlockCollection( 'coblocks', {
 		title: 'CoBlocks',
-		icon: CoblocksIcon,
+		icon: <Icon icon={ CoblocksIcon } style={ { color: getBlockIconColor() } } />,
 	} );
 } else {
 	categories.unshift( {
 		slug: 'coblocks',
 		title: 'CoBlocks',
-		icon: CoblocksIcon,
+		icon: <Icon icon={ CoblocksIcon } style={ { color: getBlockIconColor() } } />,
 	}, );
 }
 

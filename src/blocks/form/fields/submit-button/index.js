@@ -7,6 +7,7 @@ import { FormSubmitIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * Internal dependencies
  */
 import edit from './edit';
+import { getBlockIconColor } from '../../../../utils/helper';
 
 /**
  * WordPress dependencies
@@ -52,7 +53,10 @@ const settings = {
 	description: __( 'A button for submitting form data.', 'coblocks' ),
 	edit,
 	/* translators: block description */
-	icon: <Icon icon={ icon } />,
+	icon: {
+		foreground: getBlockIconColor(),
+		src: <Icon icon={ icon } />,
+	},
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

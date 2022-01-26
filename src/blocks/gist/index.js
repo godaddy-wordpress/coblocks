@@ -7,6 +7,7 @@ import { GithubIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * Internal dependencies
  */
 import deprecated from './deprecated';
+import { getBlockIconColor } from '../../utils/helper';
 import metadata from './block.json';
 import transforms from './transforms';
 
@@ -36,7 +37,10 @@ const settings = {
 		);
 		return null;
 	},
-	icon: <Icon icon={ icon } />,
+	icon: {
+		foreground: getBlockIconColor(),
+		src: <Icon icon={ icon } />,
+	},
 	parent: [],
 	save: () => null,
 	supports: {
@@ -54,7 +58,10 @@ registerBlockVariation( 'core/embed', {
 	attributes: { providerNameSlug: 'gist' },
 	/* translators: block description */
 	description: __( 'Embed a GitHub Gist.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
+	icon: {
+		foreground: getBlockIconColor(),
+		src: <Icon icon={ icon } />,
+	},
 	isActive: [ 'providerNameSlug' ],
 	keywords: [
 		'coblocks',

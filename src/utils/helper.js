@@ -108,3 +108,10 @@ export const registerBlock = ( block ) => {
 		...v2Settings,
 	} );
 };
+
+/**
+ * Returns the color used for Icon Color in the block editor.
+ */
+export function getBlockIconColor() {
+	return '#00a4a6';
+}

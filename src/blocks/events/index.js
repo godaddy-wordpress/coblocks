@@ -8,6 +8,7 @@ import { EventsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  */
 import edit from './edit';
 import example from './example';
+import { getBlockIconColor } from '../../utils/helper';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
@@ -26,7 +27,10 @@ const { name, category } = metadata;
 const settings = {
 	title: _x( 'Events', 'block name', 'coblocks' ),
 	description: __( 'Add a list of events or display events from a public calendar.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
+	icon: {
+		foreground: getBlockIconColor(),
+		src: <Icon icon={ icon } />,
+	},
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

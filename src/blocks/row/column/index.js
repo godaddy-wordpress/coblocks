@@ -6,12 +6,13 @@ import { ColumnIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 /**
  * Internal dependencies
  */
+import { BackgroundAttributes } from '../../../components/background';
 import deprecated from './deprecated';
 import DimensionsAttributes from '../../../components/dimensions-control/attributes';
 import edit from './edit';
+import { getBlockIconColor } from '../../../utils/helper';
 import metadata from './block.json';
 import save from './save';
-import { BackgroundAttributes } from '../../../components/background';
 
 /**
  * WordPress dependencies
@@ -35,7 +36,10 @@ const settings = {
 	title: __( 'Column', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'An immediate child of a row.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
+	icon: {
+		foreground: getBlockIconColor(),
+		src: <Icon icon={ icon } />,
+	},
 	parent: [ 'coblocks/row' ],
 	supports: {
 		inserter: false,

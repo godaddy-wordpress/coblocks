@@ -6,12 +6,13 @@ import { PricingTableIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 /**
  * Internal dependencies
  */
+import deprecated from './deprecated';
 import edit from './edit';
 import example from './example';
+import { getBlockIconColor } from '../../utils/helper';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
-import deprecated from './deprecated';
 
 /**
  * WordPress dependencies
@@ -29,7 +30,10 @@ const settings = {
 	title: __( 'Pricing Table', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add pricing tables to help visitors compare products and plans.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
+	icon: {
+		foreground: getBlockIconColor(),
+		src: <Icon icon={ icon } />,
+	},
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */
