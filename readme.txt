@@ -112,6 +112,14 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+2.21.1 / 2022-01-27
+===================
+### Enhancements
+* Improve visual styles for CoBlocks blocks [#2242](https://github.com/godaddy-wordpress/coblocks/pull/2242)
+
+### Bug Fixes
+* Fix occurrence of unregistered block [#2247](https://github.com/godaddy-wordpress/coblocks/pull/2247)
+
 2.21.0 / 2022-01-26
 ===================
 ### Enhancements
