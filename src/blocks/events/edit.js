@@ -20,7 +20,7 @@ import ServerSideRender from '@wordpress/server-side-render';
 import { BlockControls, InnerBlocks } from '@wordpress/block-editor';
 import { Button, Placeholder, TextControl, ToolbarGroup } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
-import { useEffect, useMemo, useRef, useState } from '@wordpress/element';
+import { useMemo, useRef, useState } from '@wordpress/element';
 
 const ALLOWED_BLOCKS = [ 'coblocks/event-item' ];
 
@@ -95,40 +95,6 @@ const EventsEdit = ( props ) => {
 		},
 		title: __( 'Edit calendar URL', 'coblocks' ),
 	} ] : [];
-
-	useEffect( () => {
-		if ( !! externalCalendarUrl ) {
-			const externalCalendarContainer = document.querySelector( ` #coblocks-events-swiper-container-${ carouselUuid } .coblocks-events-swiper-container-external-calendar` );
-
-			const MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
-
-			const observer = new MutationObserver( function( mutations ) {
-				mutations.forEach( function( mutation ) {
-					for ( let i = 0; i < mutation.addedNodes.length; i++ ) {
-						if ( mutation.target.className === 'coblocks-events-swiper-container-external-calendar' ) {
-							const swiperContainer = externalCalendarContainer.querySelector( '.swiper-container-external' );
-
-							if ( swiperContainer ) {
-								const swiperWrapper = swiperContainer.querySelector( '.swiper-wrapper' );
-
-								if ( swiperWrapper ) {
-									swiperWrapper.classList.remove( 'swiper-wrapper' );
-									swiperWrapper.classList.add( 'swiper-wrapper-editor' );
-								}
-							}
-						}
-					}
-				} );
-			} );
-
-			observer.observe( externalCalendarContainer, {
-				attributes: false,
-				characterData: false,
-				childList: true,
-				subtree: true,
-			} );
-		}
-	}, [ externalCalendarUrl ] );
 
 	const renderInnerBlocks = () => {
 		return (

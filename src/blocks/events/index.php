@@ -47,7 +47,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 		$text_color_class  = is_array( $attributes ) && isset( $attributes['textColor'] ) ? "has-{$attributes['textColor']}-color" : false;
 		$custom_text_color = is_array( $attributes ) && isset( $attributes['customTextColor'] ) && isset( $attributes['hasColors'] ) && ( ! $attributes['hasColors'] && ! isset( $attributes['textColor'] ) ) ? "color: {$attributes['customTextColor']};" : '';
 
-		$class = 'wp-block-coblocks-events swiper-wrapper';
+		$class = 'wp-block-coblocks-events swiper-wrapper-loading';
 		if ( isset( $attributes['className'] ) ) {
 			$class .= ' ' . $attributes['className'];
 		}

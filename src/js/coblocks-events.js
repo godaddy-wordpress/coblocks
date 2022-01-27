@@ -6,13 +6,20 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 
 	document.addEventListener( 'DOMContentLoaded', function() {
 		setTimeout( () => {
-			const frontEndContainers = document.querySelectorAll( '.wp-block-coblocks-front-events-swiper-container' );
+			const frontEndContainers = document.querySelectorAll( '.wp-block-post-content .wp-block-coblocks-front-events-swiper-container' );
 
 			// there may be multiple event blocks
 			for ( let j = 0; j < frontEndContainers.length; j++ ) {
 				const frontEndContainer = frontEndContainers[ j ];
 
 				if ( frontEndContainer ) {
+					const swiperWrapper = frontEndContainer.querySelector( '.swiper-wrapper-loading' );
+
+					if ( swiperWrapper ) {
+						swiperWrapper.classList.remove( 'swiper-wrapper-loading' );
+						swiperWrapper.classList.add( 'swiper-wrapper' );
+					}
+
 					const totalSlides = frontEndContainer.querySelectorAll( '.swiper-slide' );
 
 					const swiperBackButton = frontEndContainer.parentNode.querySelector( `#wp-coblocks-event-swiper-prev` );
