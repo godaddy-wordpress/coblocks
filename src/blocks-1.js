@@ -1,7 +1,9 @@
 import { registerBlock } from './utils/helper';
 
 // Styles
+// index.scss name implies editor styles. Output will be coblocks-1.js.
 import './styles/index.scss';
+// style.scss name implies frontend styles. Output will be style-coblocks-1.js.
 import './styles/style.scss';
 
 // Deprecate Blocks
@@ -26,5 +28,4 @@ import * as carousel from './blocks/gallery-carousel';
 	author,
 	buttons,
 	carousel,
-
 ].forEach( registerBlock );
