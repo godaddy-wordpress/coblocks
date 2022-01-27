@@ -7,7 +7,6 @@ import { ServiceItemIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * Internal dependencies.
  */
 import edit from './edit';
-import { getBlockIconColor } from '../../../utils/helper';
 import metadata from './block.json';
 import save from './save';
 
@@ -27,10 +26,7 @@ const settings = {
 	title: __( 'Service', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'A single service item within a services block.', 'coblocks' ),
-	icon: {
-		foreground: getBlockIconColor(),
-		src: <Icon icon={ icon } />,
-	},
+	icon: <Icon icon={ icon } />,
 	keywords: [],
 	supports: {
 		reusable: false,

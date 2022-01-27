@@ -4,7 +4,6 @@
 import { BackgroundAttributes } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import edit from './edit';
-import { getBlockIconColor } from '../../utils/helper';
 import { MediaCardIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 import metadata from './block.json';
 import save from './save';
@@ -32,10 +31,7 @@ const settings = {
 	title: __( 'Media Card', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add an image or video with an offset card side-by-side.', 'coblocks' ),
-	icon: {
-		foreground: getBlockIconColor(),
-		src: <Icon icon={ icon } />,
-	},
+	icon: <Icon icon={ icon } />,
 	supports: {
 		align: [ 'wide', 'full' ],
 		stackedOnMobile: true,

@@ -3,7 +3,6 @@
  */
 import deprecated from './deprecated';
 import edit from './edit';
-import { getBlockIconColor } from '../../utils/helper';
 import { Icon } from '@wordpress/components';
 import { TwitterIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 import metadata from './block.json';
@@ -25,10 +24,7 @@ const settings = {
 	title: __( 'Click to Tweet', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add a quote for readers to tweet via Twitter.', 'coblocks' ),
-	icon: {
-		foreground: getBlockIconColor(),
-		src: <Icon icon={ icon } />,
-	},
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

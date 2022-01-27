@@ -7,7 +7,6 @@ import { FormTextareaIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * Internal dependencies
  */
 import edit from './edit';
-import { getBlockIconColor } from '../../../../utils/helper';
 import transforms from './transforms';
 
 /**
@@ -41,10 +40,7 @@ const settings = {
 	title: __( 'Textarea', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'A text box for longer responses.', 'coblocks' ),
-	icon: {
-		foreground: getBlockIconColor(),
-		src: <Icon icon={ icon } />,
-	},
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

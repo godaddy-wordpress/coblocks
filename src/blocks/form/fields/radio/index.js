@@ -7,7 +7,6 @@ import { FormRadioIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * Internal dependencies
  */
 import { editMultiField } from '../helpers';
-import { getBlockIconColor } from '../../../../utils/helper';
 import transforms from './transforms';
 
 /**
@@ -49,10 +48,7 @@ const settings = {
 	title: __( 'Radio', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'A field with multiple options where only one choice can be made.', 'coblocks' ),
-	icon: {
-		foreground: getBlockIconColor(),
-		src: <Icon icon={ icon } />,
-	},
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

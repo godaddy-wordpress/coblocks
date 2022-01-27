@@ -10,7 +10,6 @@ import { BackgroundAttributes } from '../../../components/background';
 import deprecated from './deprecated';
 import DimensionsAttributes from '../../../components/dimensions-control/attributes';
 import edit from './edit';
-import { getBlockIconColor } from '../../../utils/helper';
 import metadata from './block.json';
 import save from './save';
 
@@ -36,10 +35,7 @@ const settings = {
 	title: __( 'Column', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'An immediate child of a row.', 'coblocks' ),
-	icon: {
-		foreground: getBlockIconColor(),
-		src: <Icon icon={ icon } />,
-	},
+	icon: <Icon icon={ icon } />,
 	parent: [ 'coblocks/row' ],
 	supports: {
 		inserter: false,
