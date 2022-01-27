@@ -8,7 +8,6 @@ import { FoodDrinkIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  */
 import deprecated from './deprecated';
 import edit from './edit';
-import { getBlockIconColor } from '../../utils/helper';
 import metadata from './block.json';
 import save from './save';
 
@@ -59,10 +58,7 @@ const settings = {
 	getEditWrapperProps( atts ) {
 		return { 'data-columns': atts.columns };
 	},
-	icon: {
-		foreground: getBlockIconColor(),
-		src: <Icon icon={ icon } />,
-	},
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

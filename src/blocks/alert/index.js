@@ -8,7 +8,6 @@ import { AlertIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  */
 import deprecated from './deprecated';
 import edit from './edit';
-import { getBlockIconColor } from '../../utils/helper';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
@@ -29,10 +28,7 @@ const settings = {
 	title: __( 'Alert', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Provide contextual feedback messages or notices.', 'coblocks' ),
-	icon: {
-		foreground: getBlockIconColor(),
-		src: <Icon icon={ icon } />,
-	},
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

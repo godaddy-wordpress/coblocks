@@ -8,7 +8,6 @@ import { FaqIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  */
 import edit from './edit';
 import example from './example';
-import { getBlockIconColor } from '../../utils/helper';
 import metadata from './block.json';
 import save from './save';
 
@@ -27,10 +26,7 @@ const settings = {
 	description: __( 'Add a list of questions and answers.', 'coblocks' ),
 	edit,
 	example,
-	icon: {
-		foreground: getBlockIconColor(),
-		src: <Icon icon={ icon } />,
-	},
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

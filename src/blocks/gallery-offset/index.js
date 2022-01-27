@@ -9,7 +9,6 @@ import { GalleryOffsetIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 import deprecated from './deprecated';
 import edit from './edit';
 import { GalleryAttributes } from '../../components/block-gallery/shared';
-import { getBlockIconColor } from '../../utils/helper';
 import { hasFormattingCategory } from '../../utils/block-helpers';
 import metadata from './block.json';
 import save from './save';
@@ -41,10 +40,7 @@ const settings = {
 	/* translators: block description */
 	description: __( 'Display images in an offset brick pattern gallery.', 'coblocks' ),
 	category: hasFormattingCategory ? 'coblocks-galleries' : 'media',
-	icon: {
-		foreground: getBlockIconColor(),
-		src: <Icon icon={ icon } />,
-	},
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

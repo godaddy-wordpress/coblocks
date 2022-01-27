@@ -7,7 +7,6 @@ import { HighlightIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * Internal dependencies
  */
 import edit from './edit';
-import { getBlockIconColor } from '../../utils/helper';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
@@ -28,10 +27,7 @@ const settings = {
 	title: __( 'Highlight', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Draw attention and emphasize important narrative.', 'coblocks' ),
-	icon: {
-		foreground: getBlockIconColor(),
-		src: <Icon icon={ icon } />,
-	},
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

@@ -18,7 +18,6 @@ import CSSGridAttributes from '../../components/grid-control/attributes';
 import deprecated from './deprecated';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 const Edit = lazy( () => import( './edit' ) );
-import { getBlockIconColor } from '../../utils/helper';
 import metadata from './block.json';
 import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
 import save from './save';
@@ -86,10 +85,7 @@ const settings = {
 			},
 		],
 	},
-	icon: {
-		foreground: getBlockIconColor(),
-		src: <Icon icon={ icon } />,
-	},
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

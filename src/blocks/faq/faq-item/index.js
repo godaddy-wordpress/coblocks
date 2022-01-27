@@ -7,7 +7,6 @@ import { EventItemIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * Internal dependencies.
  */
 import edit from './edit';
-import { getBlockIconColor } from '../../../utils/helper';
 import metadata from './block.json';
 import save from './save';
 
@@ -26,10 +25,7 @@ const settings = {
 	attributes,
 	description: __( 'A question/answer within the FAQ block.', 'coblocks' ),
 	edit,
-	icon: {
-		foreground: getBlockIconColor(),
-		src: <Icon icon={ icon } />,
-	},
+	icon: <Icon icon={ icon } />,
 	parent: [ 'coblocks/faq' ],
 	save,
 	supports: {

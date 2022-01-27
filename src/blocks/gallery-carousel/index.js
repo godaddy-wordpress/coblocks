@@ -16,7 +16,6 @@ import { lazy, Suspense } from '@wordpress/element';
 import deprecated from './deprecated';
 const Edit = lazy( () => import( './edit' ) );
 import { GalleryAttributes } from '../../components/block-gallery/shared';
-import { getBlockIconColor } from '../../utils/helper';
 import { hasFormattingCategory } from '../../utils/block-helpers';
 import metadata from './block.json';
 import save from './save';
@@ -41,10 +40,7 @@ const settings = {
 	category: hasFormattingCategory ? 'coblocks-galleries' : 'media',
 	attributes,
 	variations,
-	icon: {
-		foreground: getBlockIconColor(),
-		src: <Icon icon={ icon } />,
-	},
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

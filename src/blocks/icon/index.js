@@ -8,7 +8,6 @@ import { IconIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  */
 import deprecated from './deprecated';
 import edit from './edit';
-import { getBlockIconColor } from '../../utils/helper';
 import { hasFormattingCategory } from '../../utils/block-helpers';
 import metadata from './block.json';
 
@@ -37,10 +36,7 @@ const settings = {
 	edit,
 	// We can't enable example on this block without breaking style previews as attributes are completely replaced by the example.
 	//example: {}
-	icon: {
-		foreground: getBlockIconColor(),
-		src: <Icon icon={ icon } />,
-	},
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		'svg',

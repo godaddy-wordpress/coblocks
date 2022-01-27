@@ -8,7 +8,6 @@ import { FeatureIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  */
 import deprecated from './deprecated';
 import edit from './edit';
-import { getBlockIconColor } from '../../utils/helper';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
@@ -37,10 +36,7 @@ const settings = {
 	title: __( 'Features', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add up to four columns of small notes for your product or service.', 'coblocks' ),
-	icon: {
-		foreground: getBlockIconColor(),
-		src: <Icon icon={ icon } />,
-	},
+	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 	],
