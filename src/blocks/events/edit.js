@@ -49,8 +49,9 @@ const EventsEdit = ( props ) => {
 	const { selectBlock, insertBlock } = useDispatch( 'core/block-editor' );
 	const [ isEditing, setIsEditing ] = useState( false );
 
-	const { innerBlocks } = useSelect( ( select ) => ( {
+	const { innerBlocks, selectedBlock } = useSelect( ( select ) => ( {
 		innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
+		selectedBlock: select( 'core/block-editor' ).getSelectedBlock(),
 	} ) );
 
 	const externalCalendarUrl = attributes.externalCalendarUrl;
@@ -63,7 +64,8 @@ const EventsEdit = ( props ) => {
 	const carouselUuid = useMemo( () => generateUuid(), [] );
 
 	const handleSelectBlock = () => {
-		if ( ! isSelected && ! isEditing ) {
+		const innerBlockSelected = innerBlocks.some( ( innerBlock ) => innerBlock.clientId === selectedBlock.clientId );
+		if ( ! isSelected && ! isEditing && ! innerBlockSelected ) {
 			selectBlock( clientId );
 		}
 	};
@@ -86,7 +88,7 @@ const EventsEdit = ( props ) => {
 		insertBlock( newEvent, innerBlocks.length, clientId, true );
 	};
 
-	const toolbarControls = [ {
+	const toolbarControls = showExternalCalendarControls ? [ {
 		icon: edit,
 		onClick: () => {
 			if ( !! externalCalendarUrl ) {
@@ -94,9 +96,10 @@ const EventsEdit = ( props ) => {
 			}
 		},
 		title: __( 'Edit calendar URL', 'coblocks' ),
-	} ];
+	} ] : [];
 
 	useEffect( () => {
+		let swiper = null;
 		if ( !! externalCalendarUrl ) {
 			// Before we query the DOM to invoke the swiper we need to await that the server side rendering has been completed
 			setTimeout( () => {
@@ -108,7 +111,7 @@ const EventsEdit = ( props ) => {
 				const swiperNextButton = serverSideRenderCarouselContainer.querySelector( `#wp-coblocks-event-swiper-next` );
 
 				if ( swiperContainer && swiperBackButton && swiperNextButton ) {
-					new TinySwiper( swiperContainer, {
+					swiper = new TinySwiper( swiperContainer, {
 						navigation: {
 							nextEl: swiperNextButton,
 							prevEl: swiperBackButton,
@@ -119,7 +122,30 @@ const EventsEdit = ( props ) => {
 						touchable: false,
 					} );
 				}
-			}, 1000 );
+
+				const MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+
+				const observer = new MutationObserver( function( mutations ) {
+					mutations.forEach( function( mutation ) {
+						for ( let i = 0; i < mutation.addedNodes.length; i++ ) {
+							if ( mutation.target.className === 'coblocks-events-swiper-container-external-calendar' ) {
+								const eventsCarouselContainer = document.querySelector( '.wp-block-coblocks-front-events-swiper-container' );
+
+								if ( eventsCarouselContainer ) {
+									swiper.update();
+								}
+							}
+						}
+					} );
+				} );
+
+				observer.observe( document.body, {
+					attributes: false,
+					characterData: false,
+					childList: true,
+					subtree: true,
+				} );
+			}, 1500 );
 		}
 	}, [ externalCalendarUrl ] );
 

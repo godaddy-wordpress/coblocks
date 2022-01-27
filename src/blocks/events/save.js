@@ -20,8 +20,8 @@ export default function save( { attributes } ) {
 					<InnerBlocks.Content />
 				</div>
 			</div>
-			<button className={ `wp-coblocks-events-nav-button__prev` } id={ `wp-coblocks-event-swiper-prev` } />
-			<button className={ `wp-coblocks-events-nav-button__next` } id={ `wp-coblocks-event-swiper-next` } />
+			<button className={ `wp-coblocks-events-nav-button__prev` } id={ `wp-coblocks-event-swiper-prev` } style={ { visibility: 'hidden' } } />
+			<button className={ `wp-coblocks-events-nav-button__next` } id={ `wp-coblocks-event-swiper-next` } style={ { visibility: 'hidden' } } />
 		</div>
 	);
 }

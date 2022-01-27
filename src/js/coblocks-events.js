@@ -10,8 +10,6 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 
 			// there may be multiple event blocks
 			for ( let j = 0; j < frontEndContainers.length; j++ ) {
-				let swiper = null;
-
 				const frontEndContainer = frontEndContainers[ j ];
 
 				if ( frontEndContainer ) {
@@ -21,6 +19,9 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 					const swiperNextButton = frontEndContainer.parentNode.querySelector( `#wp-coblocks-event-swiper-next` );
 
 					if ( totalSlides.length > 1 ) {
+						swiperBackButton.style.visibility = 'visible';
+						swiperNextButton.style.visibility = 'visible';
+
 						new TinySwiper( frontEndContainer, {
 							navigation: {
 								nextEl: swiperNextButton,
@@ -31,51 +32,9 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 							],
 							touchable: false,
 						} );
-					} else if ( totalSlides.length === 1 ) {
-						swiperBackButton.style.display = 'none';
-						swiperNextButton.style.display = 'none';
 					}
-				} else {
-					const MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
-
-					const observer = new MutationObserver( function( mutations ) {
-						mutations.forEach( function( mutation ) {
-							for ( let i = 0; i < mutation.addedNodes.length; i++ ) {
-								if ( mutation.target.className === 'coblocks-events-swiper-container-external-calendar' ) {
-									if ( swiper === null ) {
-										const eventsCarouselContainer = document.querySelector( '.wp-block-coblocks-front-events-swiper-container' );
-
-										if ( eventsCarouselContainer ) {
-											const swiperBackButton = eventsCarouselContainer.parentNode.querySelector( `#wp-coblocks-event-swiper-prev` );
-											const swiperNextButton = eventsCarouselContainer.parentNode.querySelector( `#wp-coblocks-event-swiper-next` );
-
-											swiper = new TinySwiper( eventsCarouselContainer, {
-												navigation: {
-													nextEl: swiperNextButton,
-													prevEl: swiperBackButton,
-												},
-												plugins: [
-													TinySwiperPluginNavigation,
-												],
-												touchable: false,
-											} );
-										}
-									} else {
-										swiper.update();
-									}
-								}
-							}
-						} );
-					} );
-
-					observer.observe( document.body, {
-						attributes: false,
-						characterData: false,
-						childList: true,
-						subtree: true,
-					} );
 				}
 			}
-		}, 1600 );
+		}, 500 );
 	}, false );
 }() );
