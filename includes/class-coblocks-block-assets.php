@@ -146,15 +146,6 @@ class CoBlocks_Block_Assets {
 		// Define where the vendor asset is loaded from.
 		$vendors_dir = CoBlocks()->asset_source( 'js/vendors' );
 
-		// Required by the events block.
-		wp_enqueue_script(
-			'coblocks-slick',
-			$vendors_dir . '/slick.js',
-			array( 'jquery' ),
-			COBLOCKS_VERSION,
-			true
-		);
-
 		// Styles.
 		$name       = 'coblocks-1';
 		$filepath   = 'dist/' . $name;
