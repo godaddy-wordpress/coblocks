@@ -154,6 +154,12 @@ const PostCarousel = ( props ) => {
 	const displayPosts = Array.isArray( latestPosts ) && latestPosts.length > postsToShow ? latestPosts.slice( 0, postsToShow ) : latestPosts;
 
 	const renderCarousel = useMemo( () => {
+		if ( displayPosts?.length === 1 ) {
+			return (
+				<PostItem clientId={ clientId } post={ displayPosts[ 0 ] } setAttributes={ setAttributes } />
+			);
+		}
+
 		return (
 			<>
 				<div

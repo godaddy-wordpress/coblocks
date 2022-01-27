@@ -18,19 +18,26 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 					const swiperBackButton = frontEndContainer.querySelector( `#wp-coblocks-post-carousel-swiper-prev` );
 					const swiperNextButton = frontEndContainer.querySelector( `#wp-coblocks-post-carousel-swiper-next` );
 
-					new TinySwiper( swiperContainer, {
-						centeredSlides: false,
-						loop: true,
-						navigation: {
-							nextEl: swiperNextButton,
-							prevEl: swiperBackButton,
-						},
-						plugins: [
-							TinySwiperPluginNavigation,
-						],
-						slidesPerView: swiperData.slidesToShow,
-						touchable: false,
-					} );
+					const swiperSlies = frontEndContainer.querySelectorAll( '.swiper-slide' );
+
+					if ( swiperSlies.length > 1 ) {
+						swiperBackButton.style.visibility = 'visible';
+						swiperNextButton.style.visibility = 'visible';
+
+						new TinySwiper( swiperContainer, {
+							centeredSlides: false,
+							loop: true,
+							navigation: {
+								nextEl: swiperNextButton,
+								prevEl: swiperBackButton,
+							},
+							plugins: [
+								TinySwiperPluginNavigation,
+							],
+							slidesPerView: swiperData.slidesToShow,
+							touchable: false,
+						} );
+					}
 				}
 			}
 		}, 1500 );
