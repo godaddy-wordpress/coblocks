@@ -15,6 +15,7 @@ const scripts = [
 	'coblocks-accordion-polyfill',
 	'coblocks-animation',
 	'coblocks-checkbox-required',
+	'coblocks-counter',
 	'coblocks-events',
 	'coblocks-fromEntries',
 	'coblocks-google-maps',

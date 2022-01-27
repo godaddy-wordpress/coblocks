@@ -1238,10 +1238,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@godaddy-wordpress/coblocks-icons@2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/coblocks-icons/-/coblocks-icons-2.0.1.tgz#7ff9f6c3d8741377b2fc6a28a1dc7455291a082e"
-  integrity sha512-Pac7OLr2h6JzpIgY4BVaG1poLiLia3xO/U+i8DjC4ZBLM6UCpgiFnc6FUeBVCSeB8riQTzIrMTqn8HAiqMbpBQ==
+"@godaddy-wordpress/coblocks-icons@2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/coblocks-icons/-/coblocks-icons-2.0.3.tgz#faba19a750f3fa35b0e86b5ee30d7ea4d62d6750"
+  integrity sha512-CvgQ4CjGqymA3JnxSuImxIBRrYQRxt9oc5tww7I20U1aJVk5SO7bM2zmjcWjtaGmPSp8CdNdLZgHQk8snPJ56g==
   dependencies:
     "@wordpress/primitives" "^1.7.0"
 
@@ -5163,6 +5163,11 @@ cosmiconfig@^7.0.0, cosmiconfig@^7.0.1:
     parse-json "^5.0.0"
     path-type "^4.0.0"
     yaml "^1.10.0"
+
+counterup2@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/counterup2/-/counterup2-2.0.2.tgz#f7475f8b738599a081355fa67f6e20e0c70d50d8"
+  integrity sha512-+drmqOOcOa17KJG9o5+wGuEgLVh4wdb2pkpGlCu3MtQ2idB73V8yJEb8WyINZ1+Fjy7dLiWKa0wihvYzk/n32A==
 
 crc-32@^1.2.0:
   version "1.2.0"
