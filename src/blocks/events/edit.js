@@ -8,8 +8,6 @@ import InspectorControls from './inspector';
  * External dependencies.
  */
 import { v4 as generateUuid } from 'uuid';
-import TinySwiper from 'tiny-swiper';
-import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
 
 /**
  * WordPress dependencies.
@@ -21,8 +19,8 @@ import { edit } from '@wordpress/icons';
 import ServerSideRender from '@wordpress/server-side-render';
 import { BlockControls, InnerBlocks } from '@wordpress/block-editor';
 import { Button, Placeholder, TextControl, ToolbarGroup } from '@wordpress/components';
-import { useEffect, useMemo, useRef, useState } from '@wordpress/element';
 import { useDispatch, useSelect } from '@wordpress/data';
+import { useEffect, useMemo, useRef, useState } from '@wordpress/element';
 
 const ALLOWED_BLOCKS = [ 'coblocks/event-item' ];
 
@@ -92,60 +90,43 @@ const EventsEdit = ( props ) => {
 		icon: edit,
 		onClick: () => {
 			if ( !! externalCalendarUrl ) {
-				setStateExternalCalendarUrl( null );
+				setAttributes( { externalCalendarUrl: null } );
 			}
 		},
 		title: __( 'Edit calendar URL', 'coblocks' ),
 	} ] : [];
 
 	useEffect( () => {
-		let swiper = null;
 		if ( !! externalCalendarUrl ) {
-			// Before we query the DOM to invoke the swiper we need to await that the server side rendering has been completed
-			setTimeout( () => {
-				const serverSideRenderCarouselContainer = document.querySelector( `#coblocks-events-swiper-container-${ carouselUuid }` );
+			const externalCalendarContainer = document.querySelector( ` #coblocks-events-swiper-container-${ carouselUuid } .coblocks-events-swiper-container-external-calendar` );
 
-				const swiperContainer = serverSideRenderCarouselContainer.querySelector( '.swiper-container' );
+			const MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 
-				const swiperBackButton = serverSideRenderCarouselContainer.querySelector( `#wp-coblocks-event-swiper-prev` );
-				const swiperNextButton = serverSideRenderCarouselContainer.querySelector( `#wp-coblocks-event-swiper-next` );
+			const observer = new MutationObserver( function( mutations ) {
+				mutations.forEach( function( mutation ) {
+					for ( let i = 0; i < mutation.addedNodes.length; i++ ) {
+						if ( mutation.target.className === 'coblocks-events-swiper-container-external-calendar' ) {
+							const swiperContainer = externalCalendarContainer.querySelector( '.swiper-container-external' );
 
-				if ( swiperContainer && swiperBackButton && swiperNextButton ) {
-					swiper = new TinySwiper( swiperContainer, {
-						navigation: {
-							nextEl: swiperNextButton,
-							prevEl: swiperBackButton,
-						},
-						plugins: [
-							TinySwiperPluginNavigation,
-						],
-						touchable: false,
-					} );
-				}
+							if ( swiperContainer ) {
+								const swiperWrapper = swiperContainer.querySelector( '.swiper-wrapper' );
 
-				const MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
-
-				const observer = new MutationObserver( function( mutations ) {
-					mutations.forEach( function( mutation ) {
-						for ( let i = 0; i < mutation.addedNodes.length; i++ ) {
-							if ( mutation.target.className === 'coblocks-events-swiper-container-external-calendar' ) {
-								const eventsCarouselContainer = document.querySelector( '.wp-block-coblocks-front-events-swiper-container' );
-
-								if ( eventsCarouselContainer ) {
-									swiper.update();
+								if ( swiperWrapper ) {
+									swiperWrapper.classList.remove( 'swiper-wrapper' );
+									swiperWrapper.classList.add( 'swiper-wrapper-editor' );
 								}
 							}
 						}
-					} );
+					}
 				} );
+			} );
 
-				observer.observe( document.body, {
-					attributes: false,
-					characterData: false,
-					childList: true,
-					subtree: true,
-				} );
-			}, 1500 );
+			observer.observe( externalCalendarContainer, {
+				attributes: false,
+				characterData: false,
+				childList: true,
+				subtree: true,
+			} );
 		}
 	}, [ externalCalendarUrl ] );
 
