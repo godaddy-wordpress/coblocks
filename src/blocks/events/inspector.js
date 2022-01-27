@@ -13,13 +13,11 @@ const Inspector = ( props ) => {
 		eventsRangeOptions,
 		onChangeEventsToShow,
 		onChangeEventsRange,
-		toggleShowCarousel,
 	} = props;
 
 	const {
 		eventsToShow,
 		eventsRange,
-		showCarousel,
 	} = attributes;
 
 	return (
@@ -35,16 +33,6 @@ const Inspector = ( props ) => {
 					label={ __( 'Link a calendar', 'coblocks' ) }
 					onChange={ () => toggleExternalCalendarControls() }
 				/>
-				{ ! showExternalCalendarControls && (
-					<ToggleControl
-						checked={ showCarousel }
-						help={
-							__( 'Showing carousel for events.', 'coblocks' )
-						}
-						label={ __( 'Show Carousel', 'coblocks' ) }
-						onChange={ () => toggleShowCarousel() }
-					/>
-				) }
 				{ showExternalCalendarControls &&
 					<RangeControl
 						label={ __( 'Events per page', 'coblocks' ) }

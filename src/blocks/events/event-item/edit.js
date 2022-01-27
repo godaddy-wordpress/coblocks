@@ -7,7 +7,6 @@ import classnames from 'classnames';
  * Internal dependencies.
  */
 import applyWithColors from './colors';
-import { EventsContext } from '../context';
 import InspectorControls from './inspector';
 
 /**
@@ -17,7 +16,7 @@ import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { RichText } from '@wordpress/block-editor';
 import { useDispatch } from '@wordpress/data';
-import { useContext, useEffect } from '@wordpress/element';
+import { useEffect } from '@wordpress/element';
 
 const EventItemEdit = ( props ) => {
 	const {
@@ -29,8 +28,6 @@ const EventItemEdit = ( props ) => {
 		clientId,
 		isSelected,
 	} = props;
-
-	const { isEditing } = useContext( EventsContext );
 
 	const { selectBlock } = useDispatch( 'core/block-editor' );
 
@@ -46,7 +43,6 @@ const EventItemEdit = ( props ) => {
 
 	const textStyles = {
 		color: textColor.color,
-		pointerEvents: isEditing === false && 'none',
 	};
 
 	useEffect( () => {
@@ -57,7 +53,7 @@ const EventItemEdit = ( props ) => {
 	}, [ attributes ] );
 
 	const handleSelectBlock = () => {
-		if ( ! isSelected && isEditing === true ) {
+		if ( ! isSelected ) {
 			selectBlock( clientId );
 		}
 	};

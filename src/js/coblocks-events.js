@@ -15,19 +15,26 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 				const frontEndContainer = frontEndContainers[ j ];
 
 				if ( frontEndContainer ) {
+					const totalSlides = frontEndContainer.querySelectorAll( '.swiper-slide' );
+
 					const swiperBackButton = frontEndContainer.parentNode.querySelector( `#wp-coblocks-event-swiper-prev` );
 					const swiperNextButton = frontEndContainer.parentNode.querySelector( `#wp-coblocks-event-swiper-next` );
 
-					new TinySwiper( frontEndContainer, {
-						navigation: {
-							nextEl: swiperNextButton,
-							prevEl: swiperBackButton,
-						},
-						plugins: [
-							TinySwiperPluginNavigation,
-						],
-						touchable: false,
-					} );
+					if ( totalSlides.length > 1 ) {
+						new TinySwiper( frontEndContainer, {
+							navigation: {
+								nextEl: swiperNextButton,
+								prevEl: swiperBackButton,
+							},
+							plugins: [
+								TinySwiperPluginNavigation,
+							],
+							touchable: false,
+						} );
+					} else if ( totalSlides.length === 1 ) {
+						swiperBackButton.style.display = 'none';
+						swiperNextButton.style.display = 'none';
+					}
 				} else {
 					const MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 
