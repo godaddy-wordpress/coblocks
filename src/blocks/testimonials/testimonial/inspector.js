@@ -43,13 +43,13 @@ const Inspector = ( props ) => {
 
 	return (
 		<InspectorControls>
-			<PanelBody initialOpen={ true } title={ __( 'Item settings', 'coblocks' ) }>
+			<PanelBody initialOpen={ true } title={ __( 'Testimonial settings', 'coblocks' ) }>
 				<ToggleControl
 					checked={ showImage }
 					help={
 						showImage
-							? __( 'Showing an image for this item.', 'coblocks' )
-							: __( 'Toggle to show an image for this item.', 'coblocks' )
+							? __( 'Showing an image for this testimonial.', 'coblocks' )
+							: __( 'Toggle to show an image for this testimonial.', 'coblocks' )
 					}
 					label={ __( 'Customer Image', 'coblocks' ) }
 					onChange={ () => setAttributes( { showImage: ! showImage } ) }
@@ -59,7 +59,7 @@ const Inspector = ( props ) => {
 					help={
 						showRole
 							? __( 'Showing the role of each reviewer.', 'coblocks' )
-							: __( 'Toggle to show the role for this item.', 'coblocks' )
+							: __( 'Toggle to show the role for this testimonial.', 'coblocks' )
 					}
 					label={ __( 'Customer Role', 'coblocks' ) }
 					onChange={ () => setAttributes( { showRole: ! showRole } ) }

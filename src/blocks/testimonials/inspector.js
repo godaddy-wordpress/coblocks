@@ -121,7 +121,6 @@ const Inspector = ( props ) => {
 			<PanelBody
 				initialOpen={ true }
 				title={ __( 'Testimonials Settings', 'coblocks' ) }>
-				<CoBlocksFontSizePicker { ...props } />
 				<>
 					<RangeControl
 						label={ __( 'Columns', 'coblocks' ) }
@@ -157,6 +156,12 @@ const Inspector = ( props ) => {
 					label={ __( 'Customer Roles', 'coblocks' ) }
 					onChange={ onToggleRoles }
 				/>
+			</PanelBody>
+
+			<PanelBody
+				initialOpen={ false }
+				title={ __( 'Typography', 'coblocks' ) }>
+				<CoBlocksFontSizePicker { ...props } />
 			</PanelBody>
 
 			<PanelColorSettings

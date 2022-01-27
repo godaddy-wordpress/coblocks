@@ -9,7 +9,6 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { isBlobURL } from '@wordpress/blob';
 import { mediaUpload } from '@wordpress/editor';
-import { usePrevious } from '@wordpress/compose';
 import { BlockIcon, getColorClassName, MediaUpload, MediaUploadCheck, RichText } from '@wordpress/block-editor';
 import { Button, ButtonGroup, DropZone, Spinner } from '@wordpress/components';
 import { closeSmall, image } from '@wordpress/icons';
@@ -57,59 +56,24 @@ const Edit = ( props ) => {
 
 	const [ url, setUrl ] = useState( attributes.url || '' );
 
-	const prevShowRole = usePrevious( showRole );
-	const prevShowImage = usePrevious( showImage );
-	const prevBackgroundColor = usePrevious( backgroundColor );
-	const prevCustomBackgroundColor = usePrevious( customBackgroundColor );
-	const prevTextColor = usePrevious( textColor );
-	const prevCustomTextColor = usePrevious( customTextColor );
-	const prevBubbleBackgroundColor = usePrevious( bubbleBackgroundColor );
-	const prevCustomBubbleBackgroundColor = usePrevious( customBubbleBackgroundColor );
-	const prevBubbleTextColor = usePrevious( bubbleTextColor );
-	const prevCustomBubbleTextColor = usePrevious( customBubbleTextColor );
-
 	useEffect( () => {
-		if ( backgroundColor !== prevBackgroundColor ) {
-			setAttributes( { backgroundColor: backgroundColor ?? null } );
-		}
-
-		if ( customBackgroundColor !== prevCustomBackgroundColor ) {
-			setAttributes( { customBackgroundColor: customBackgroundColor ?? null } );
-		}
-
-		if ( textColor !== prevTextColor ) {
-			setAttributes( { textColor: textColor ?? null } );
-		}
-
-		if ( customTextColor !== prevCustomTextColor ) {
-			setAttributes( { customTextColor: customTextColor ?? null } );
-		}
-
-		if ( bubbleBackgroundColor !== prevBubbleBackgroundColor ) {
-			setAttributes( { bubbleBackgroundColor: bubbleBackgroundColor ?? null } );
-		}
-
-		if ( customBubbleBackgroundColor !== prevCustomBubbleBackgroundColor ) {
-			setAttributes( { customBubbleBackgroundColor: customBubbleBackgroundColor ?? null } );
-		}
-
-		if ( bubbleTextColor !== prevBubbleTextColor ) {
-			setAttributes( { bubbleTextColor: bubbleTextColor ?? null } );
-		}
-
-		if ( customBubbleTextColor !== prevCustomBubbleTextColor ) {
-			setAttributes( { customBubbleTextColor: customBubbleTextColor ?? null } );
-		}
+		setAttributes( {
+			backgroundColor: backgroundColor ?? null,
+			bubbleBackgroundColor: bubbleBackgroundColor ?? null,
+			bubbleTextColor: bubbleTextColor ?? null,
+			customBackgroundColor: customBackgroundColor ?? null,
+			customBubbleBackgroundColor: customBubbleBackgroundColor ?? null,
+			customBubbleTextColor: customBubbleTextColor ?? null,
+			customTextColor: customTextColor ?? null,
+			textColor: textColor ?? null,
+		} );
 	}, [ backgroundColor, bubbleBackgroundColor, bubbleTextColor, customBackgroundColor, customBubbleBackgroundColor, customBubbleTextColor, customTextColor, textColor ] );
 
 	useEffect( () => {
-		if ( showRole !== prevShowRole ) {
-			setAttributes( { role: showRole ? role : '' } );
-		}
-
-		if ( showImage !== prevShowImage ) {
-			setAttributes( { url: showImage ? url : '' } );
-		}
+		setAttributes( {
+			role: showRole ? role : '',
+			url: showImage ? url : '',
+		} );
 
 		if ( !! url && url !== attributes.url ) {
 			setAttributes( { url } );
