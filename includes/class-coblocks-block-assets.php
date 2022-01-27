@@ -524,17 +524,6 @@ class CoBlocks_Block_Assets {
 	}
 
 	/**
-	 * Enqueue editor scripts for blocks.
-	 *
-	 * @access public
-	 * @since 1.9.5
-	 */
-	public function editor_scripts() {
-		// Define where the vendor asset is loaded from.
-		$vendors_dir = CoBlocks()->asset_source( 'js/vendors' );
-	}
-
-	/**
 	 * Return whether a post type should display the Block Editor.
 	 *
 	 * @param string $post_type The post_type slug to check.
