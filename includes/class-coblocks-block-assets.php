@@ -43,8 +43,7 @@ class CoBlocks_Block_Assets {
 	 */
 	public function __construct() {
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
-		add_action( 'init', array( $this, 'editor_assets' ) );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_scripts' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_assets' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'frontend_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
 		add_action( 'save_post_wp_template_part', array( $this, 'clear_template_transients' ) );
@@ -144,6 +143,18 @@ class CoBlocks_Block_Assets {
 	 * @access public
 	 */
 	public function editor_assets() {
+		// Define where the vendor asset is loaded from.
+		$vendors_dir = CoBlocks()->asset_source( 'js/vendors' );
+
+		// Required by the events block.
+		wp_enqueue_script(
+			'coblocks-slick',
+			$vendors_dir . '/slick.js',
+			array( 'jquery' ),
+			COBLOCKS_VERSION,
+			true
+		);
+
 		// Styles.
 		$name       = 'coblocks-1';
 		$filepath   = 'dist/' . $name;
@@ -421,6 +432,17 @@ class CoBlocks_Block_Assets {
 			wp_enqueue_script(
 				'coblocks-events',
 				$dir . 'coblocks-events.js',
+				array(),
+				COBLOCKS_VERSION,
+				true
+			);
+		}
+
+		// Counter block.
+		if ( $this->is_page_gutenberg() || has_block( 'coblocks/counter' ) || has_block( 'core/block' ) ) {
+			wp_enqueue_script(
+				'coblocks-counter-script',
+				$dir . '/coblocks-counter.js',
 				array(),
 				COBLOCKS_VERSION,
 				true

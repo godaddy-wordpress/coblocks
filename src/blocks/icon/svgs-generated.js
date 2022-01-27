@@ -632,6 +632,25 @@ const svgs = {
 		icon: <Icon icon={CoblocksIcons['CouchStyles']['default']} />,
 		icon_outlined: <Icon icon={CoblocksIcons['CouchStyles']['outlined']} />,
 	},
+	counter: {
+		/* translators: icon label */
+		label: __('Counter', 'coblocks'),
+		keywords: [
+			/* translators: icon keyword */
+			__('count', 'coblocks'),
+			/* translators: icon keyword */
+			__('number', 'coblocks'),
+			/* translators: icon keyword */
+			__('stats', 'coblocks'),
+			/* translators: icon keyword */
+			__('ticker', 'coblocks'),
+			/* translators: icon keyword */
+			__('time', 'coblocks'),
+			/* translators: icon keyword */
+			__('watch', 'coblocks'),
+		],
+		icon: <Icon icon={CoblocksIcons['CounterStyles']['default']} />,
+	},
 	credit_card: {
 		/* translators: icon label */
 		label: __('Credit Card', 'coblocks'),
@@ -2799,6 +2818,31 @@ const svgs = {
 			__('surface', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['TabletStyles']['default']} />,
+	},
+	testimonial: {
+		/* translators: icon label */
+		label: __('Testimonial', 'coblocks'),
+		keywords: [
+			/* translators: icon keyword */
+			__('bubble', 'coblocks'),
+			/* translators: icon keyword */
+			__('conversation', 'coblocks'),
+			/* translators: icon keyword */
+			__('head', 'coblocks'),
+			/* translators: icon keyword */
+			__('human', 'coblocks'),
+			/* translators: icon keyword */
+			__('people', 'coblocks'),
+			/* translators: icon keyword */
+			__('person', 'coblocks'),
+			/* translators: icon keyword */
+			__('speach', 'coblocks'),
+			/* translators: icon keyword */
+			__('speak', 'coblocks'),
+			/* translators: icon keyword */
+			__('talk', 'coblocks'),
+		],
+		icon: <Icon icon={CoblocksIcons['TestimonialStyles']['default']} />,
 	},
 	timer: {
 		/* translators: icon label */
