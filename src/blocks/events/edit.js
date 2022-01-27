@@ -3,7 +3,6 @@
  */
 import CustomAppender from './appender';
 import InspectorControls from './inspector';
-import { EventsContext, withEventsState } from './context';
 
 /**
  * External dependencies.
@@ -22,8 +21,7 @@ import { edit } from '@wordpress/icons';
 import ServerSideRender from '@wordpress/server-side-render';
 import { BlockControls, InnerBlocks } from '@wordpress/block-editor';
 import { Button, Placeholder, TextControl, ToolbarGroup } from '@wordpress/components';
-import { compose, usePrevious } from '@wordpress/compose';
-import { useContext, useEffect, useMemo, useRef, useState } from '@wordpress/element';
+import { useEffect, useMemo, useRef, useState } from '@wordpress/element';
 import { useDispatch, useSelect } from '@wordpress/data';
 
 const ALLOWED_BLOCKS = [ 'coblocks/event-item' ];
@@ -49,7 +47,7 @@ const EventsEdit = ( props ) => {
 	} = props;
 
 	const { selectBlock, insertBlock } = useDispatch( 'core/block-editor' );
-	const { isEditing, setIsEditing } = useContext( EventsContext );
+	const [ isEditing, setIsEditing ] = useState( false );
 
 	const { innerBlocks } = useSelect( ( select ) => ( {
 		innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ),
@@ -213,6 +211,4 @@ const EventsEdit = ( props ) => {
 	);
 };
 
-export default compose( [
-	withEventsState,
-] )( EventsEdit );
+export default EventsEdit;
