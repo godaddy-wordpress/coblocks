@@ -7,6 +7,7 @@ import { FormDateIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * Internal dependencies
  */
 import edit from './edit';
+import { getBlockIconColor } from '../../../../utils/helper';
 import transforms from './transforms';
 
 /**
@@ -40,7 +41,10 @@ const settings = {
 	title: __( 'Date', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'A field for requesting date selections with a date picker.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
+	icon: {
+		foreground: getBlockIconColor(),
+		src: <Icon icon={ icon } />,
+	},
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

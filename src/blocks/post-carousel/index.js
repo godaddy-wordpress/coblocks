@@ -17,6 +17,7 @@ import deprecated from './deprecated';
 const Edit = lazy( () => import( './edit' ) );
 import metadata from './block.json';
 import transforms from './transforms';
+import { getBlockIconColor } from '../../utils/helper';
 
 /**
  * Block constants
@@ -25,10 +26,13 @@ const { name, category } = metadata;
 
 const settings = {
 	/* translators: block name */
-	title: __( 'Post Carousel', 'coblocks' ),
+	title: __( 'Post Carousel (CoBlocks)', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Display posts or an external blog feed as a carousel.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
+	icon: {
+		foreground: getBlockIconColor(),
+		src: <Icon icon={ icon } />,
+	},
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

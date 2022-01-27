@@ -8,6 +8,7 @@ import { GifIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  */
 import edit from './edit';
 import { hasFormattingCategory } from '../../utils/block-helpers';
+import { getBlockIconColor } from '../../utils/helper';
 import metadata from './block.json';
 import save from './save';
 
@@ -39,7 +40,10 @@ const settings = {
 			return { 'data-align': align, 'data-resized': !! width };
 		}
 	},
-	icon: <Icon icon={ icon } />,
+	icon: {
+		foreground: getBlockIconColor(),
+		src: <Icon icon={ icon } />,
+	},
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

@@ -8,6 +8,7 @@ import { ShapeDividerIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  */
 import deprecated from './deprecated';
 import edit from './edit';
+import { getBlockIconColor } from '../../utils/helper';
 import metadata from './block.json';
 import transforms from './transforms';
 
@@ -27,7 +28,10 @@ const settings = {
 	title: __( 'Shape Divider', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add a shape divider to visually distinquish page sections.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
+	icon: {
+		foreground: getBlockIconColor(),
+		src: <Icon icon={ icon } />,
+	},
 	keywords: [
 		'coblocks',
 		'hr',

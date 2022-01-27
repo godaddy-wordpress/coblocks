@@ -8,6 +8,7 @@ import { separator as icon } from '@wordpress/icons';
  */
 import deprecated from './deprecated';
 import edit from './edit';
+import { getBlockIconColor } from '../../utils/helper';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
@@ -28,7 +29,10 @@ const settings = {
 	title: __( 'Dynamic HR', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add a resizable spacer between other blocks.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
+	icon: {
+		foreground: getBlockIconColor(),
+		src: <Icon icon={ icon } />,
+	},
 	keywords: [
 		'coblocks',
 		'hr',

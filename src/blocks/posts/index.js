@@ -15,6 +15,7 @@ import { lazy, Suspense } from '@wordpress/element';
  */
 import deprecated from './deprecated';
 const Edit = lazy( () => import( './edit' ) );
+import { getBlockIconColor } from '../../utils/helper';
 import metadata from './block.json';
 import transforms from './transforms';
 
@@ -25,10 +26,13 @@ const { name, category } = metadata;
 
 const settings = {
 	/* translators: block name */
-	title: __( 'Posts', 'coblocks' ),
+	title: __( 'Posts (CoBlocks)', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Display posts or an RSS feed as stacked or horizontal cards.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
+	icon: {
+		foreground: getBlockIconColor(),
+		src: <Icon icon={ icon } />,
+	},
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */

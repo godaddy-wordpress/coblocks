@@ -16,6 +16,7 @@ import { lazy, Suspense } from '@wordpress/element';
 import { BackgroundAttributes } from '../../components/background';
 import deprecated from './deprecated';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
+import { getBlockIconColor } from '../../utils/helper';
 const Edit = lazy( () => import( './edit' ) );
 import { getEditWrapperProps } from './utilities';
 import metadata from './block.json';
@@ -39,7 +40,10 @@ const settings = {
 	title: __( 'Row', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add a structured wrapper for column blocks, then add content blocks you’d like to the columns.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
+	icon: {
+		foreground: getBlockIconColor(),
+		src: <Icon icon={ icon } />,
+	},
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */
