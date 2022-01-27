@@ -29,7 +29,7 @@ module.exports = function( grunt ) {
 							'readme.txt',
 							'src/**/*.php',
 							'src/blocks/**/*.json',
-							'src/blocks/icon/svgs',
+							'src/blocks/icon/svgs/*',
 						],
 						dest: 'build/<%= pkg.name %>',
 					},
