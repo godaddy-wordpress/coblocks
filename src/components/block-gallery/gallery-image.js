@@ -319,12 +319,12 @@ GalleryImage.PropTypes = {
 	supportsMoving: PropTypes.bool.isRequired,
 	verticalMoving: PropTypes.bool.isRequired,
 	url: PropTypes.string,
-}
+};
 
 GalleryImage.defaultProps = {
 	supportsMoving: true,
 	verticalMoving: false,
-}
+};
 
 export default compose( [
 	withSelect( ( select, ownProps ) => {

@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import PropTypes from 'prop-types';
+
+/**
  * Internal dependencies
  */
 import googleFonts from './fonts';
@@ -81,15 +86,15 @@ function FontFamilyPicker( { label, value, help, instanceId, onChange, className
 	};
 
 	return (
-		<BaseControl label={ label } id={ id } help={ help } className={ className }>
+		<BaseControl className={ className } help={ help } id={ id } label={ label }>
 			{ /* Disable reason: onChange needed to pass user selection onto logic.
 				Tested with Keyboard events and working as expected */ }
 			{ /* eslint-disable-next-line jsx-a11y/no-onchange */ }
 			<select
-				id={ id }
-				className="components-select-control__input components-select-control__input--coblocks-fontfamily"
-				onChange={ onChangeValue }
 				aria-describedby={ !! help ? `${ id }__help` : undefined }
+				className="components-select-control__input components-select-control__input--coblocks-fontfamily"
+				id={ id }
+				onChange={ onChangeValue }
 				value={ value }
 				{ ...props }
 			>
@@ -107,3 +112,13 @@ function FontFamilyPicker( { label, value, help, instanceId, onChange, className
 }
 
 export default withInstanceId( FontFamilyPicker );
+
+FontFamilyPicker.propTypes = {
+	className: PropTypes.string,
+	help: PropTypes.any,
+	id: PropTypes.number,
+	instanceId: PropTypes.number,
+	label: PropTypes.string,
+	onChange: PropTypes.func,
+	value: PropTypes.string,
+};

@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
- import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 /**
  * Internal dependencies
@@ -52,8 +52,8 @@ class BackgroundDropZone extends Component {
 		return (
 			<Fragment>
 				<DropZone
-					onFilesDrop={ this.addFile }
 					label={ this.props.label }
+					onFilesDrop={ this.addFile }
 				/>
 			</Fragment>
 		);
@@ -64,7 +64,7 @@ BackgroundDropZone.propTypes = {
 	attributes: PropTypes.object,
 	label: PropTypes.string,
 	name: PropTypes.string,
-	setAttributes: PropTypes.func
+	setAttributes: PropTypes.func,
 };
 
 export default BackgroundDropZone;

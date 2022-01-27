@@ -110,13 +110,13 @@ class GalleryLinkSettings extends Component {
 }
 
 GalleryLinkSettings.propTypes = {
-	attributes: PropTypes.shape({
-			lightbox: PropTypes.bool,
-			linkTo: PropTypes.string,
-			target: PropTypes.string,
-			rel: PropTypes.string,
-	}),
+	attributes: PropTypes.shape( {
+		lightbox: PropTypes.bool,
+		linkTo: PropTypes.string,
+		target: PropTypes.string,
+		rel: PropTypes.string,
+	} ),
 	setAttributes: PropTypes.func,
-}
+};
 
 export default GalleryLinkSettings;

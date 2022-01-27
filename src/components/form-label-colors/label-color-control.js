@@ -4,9 +4,14 @@
 import { compose } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
-import { InspectorControls, withColors, PanelColorSettings } from '@wordpress/block-editor';
+import { InspectorControls, PanelColorSettings, withColors } from '@wordpress/block-editor';
 import { withDispatch, withSelect } from '@wordpress/data';
 import { hasBlockSupport } from '@wordpress/blocks';
+
+/**
+ * External dependencies
+ */
+import PropTypes from 'prop-types';
 
 /**
  * Color Settings
@@ -33,9 +38,9 @@ class LabelColorControl extends Component {
 		return (
 			<InspectorControls>
 				<PanelColorSettings
-					title={ __( 'Color settings', 'coblocks' ) }
-					initialOpen={ false }
 					colorSettings={ colorSettings }
+					initialOpen={ false }
+					title={ __( 'Color settings', 'coblocks' ) }
 				>
 				</PanelColorSettings>
 			</InspectorControls>
@@ -74,3 +79,9 @@ export default compose( [
 		};
 	} ),
 ] )( LabelColorControl );
+
+LabelColorControl.propTypes = {
+	attributes: PropTypes.object,
+	setTextColor: PropTypes.func,
+	updateInnerAttributes: PropTypes.func,
+};

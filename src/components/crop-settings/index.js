@@ -8,11 +8,11 @@ import PropTypes from 'prop-types';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment, createRef } from '@wordpress/element';
-import { TextControl,
-	RangeControl,
+import { Component, createRef, Fragment } from '@wordpress/element';
+import { Button,
 	ButtonGroup,
-	Button,
+	RangeControl,
+	TextControl,
 } from '@wordpress/components';
 import { rotateLeft, rotateRight } from '@wordpress/icons';
 
@@ -262,65 +262,65 @@ class CropSettings extends Component {
 		/* eslint-disable jsx-a11y/no-static-element-interactions */
 		return (
 			<Fragment>
-				<div ref={ this.imageContainer } className={ mainClass } onMouseDown={ this.mouseDownListener } style={ containerStyle }>
+				<div className={ mainClass } onMouseDown={ this.mouseDownListener } ref={ this.imageContainer } style={ containerStyle }>
 					<div>
-						<img ref={ this.imageReference } src={ imageUrl } style={ style } alt={ __( 'Crop settings image placeholder', 'coblocks' ) } onLoad={ this.handleImageLoaded } />
+						<img alt={ __( 'Crop settings image placeholder', 'coblocks' ) } onLoad={ this.handleImageLoaded } ref={ this.imageReference } src={ imageUrl } style={ style } />
 					</div>
 					<div ref={ this.selectedAreaReference }>
-						<img src={ imageUrl } style={ style } alt={ __( 'Crop settings image placeholder', 'coblocks' ) } />
+						<img alt={ __( 'Crop settings image placeholder', 'coblocks' ) } src={ imageUrl } style={ style } />
 					</div>
 				</div>
 				<div className={ offsetClass }>
 					<TextControl
 						/* translators: label for horizontal positioning input */
 						label={ __( 'Horizontal pos.', 'coblocks' ) }
-						value={ self.state.x }
-						type={ 'number' }
-						min={ 0 }
 						max={ 100 }
+						min={ 0 }
 						onChange={ ( val ) => this.updateState( val, self.state.y, self.state.w, self.state.h, self.state.r ) }
+						type={ 'number' }
+						value={ self.state.x }
 					/>
 					<TextControl
 						/* translators: label for vertical positioning input */
 						label={ __( 'Vertical pos.', 'coblocks' ) }
-						value={ self.state.y }
-						type={ 'number' }
-						min={ 0 }
 						max={ 100 }
+						min={ 0 }
 						onChange={ ( val ) => this.updateState( self.state.x, val, self.state.w, self.state.h, self.state.r ) }
+						type={ 'number' }
+						value={ self.state.y }
 					/>
 				</div>
 				<RangeControl
 					/* translators: label for the control that allows zooming in on the image */
-					label={ __( 'Image zoom', 'coblocks' ) }
 					className="components-coblocks-zoom-control"
-					value={ this.getCurrentScale() }
-					onChange={ ( val ) => this.setNewZoom( val, self.state.r ) }
-					min={ 100 }
+					label={ __( 'Image zoom', 'coblocks' ) }
 					max={ 1000 }
+					min={ 100 }
+					onChange={ ( val ) => this.setNewZoom( val, self.state.r ) }
+					value={ this.getCurrentScale() }
 				/>
 				<p>{ __( 'Image orientation', 'coblocks' ) }</p>
 				<div className="components-coblocks-rotate-control">
 					<ButtonGroup >
 						<Button
-							isSecondary
 							icon={ rotateLeft }
+							isSecondary
 							label={ __( 'Rotate counter-clockwise', 'coblocks' ) }
 							onClick={ () => this.applyRotation( self.state.r - 90 ) }
 						/>
 						<Button
-							isSecondary
 							icon={ rotateRight }
+							isSecondary
 							label={ __( 'Rotate clockwise', 'coblocks' ) }
 							onClick={ () => this.applyRotation( self.state.r + 90 ) }
 						/>
 					</ButtonGroup>
 					<Button
-						type="button"
-						onClick={ () => this.resetControl() }
-						isSmall
-						isSecondary
 						aria-label={ __( 'Reset image cropping options', 'coblocks' ) }
+						isSecondary
+						isSmall
+						onClick={ () => this.resetControl() }
+						type="button"
 					>
 						{ __( 'Reset', 'coblocks' ) }
 					</Button>
@@ -332,11 +332,11 @@ class CropSettings extends Component {
 }
 
 CropSettings.propTypes = {
-	cropWidth: PropTypes.number, 
 	cropHeight: PropTypes.number,
+	cropWidth: PropTypes.number,
 	imageUrl: PropTypes.string,
-	offsetX: PropTypes.number, 
-	offsetY: PropTypes.number, 
+	offsetX: PropTypes.number,
+	offsetY: PropTypes.number,
 	onChange: PropTypes.func,
 	rotation: PropTypes.number,
 };

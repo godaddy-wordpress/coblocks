@@ -101,6 +101,6 @@ GalleryPlaceholder.propTypes = {
 	label: PropTypes.string,
 	setAttributes: PropTypes.func,
 	variationLabel: PropTypes.string,
-} 
+};
 
 export default GalleryPlaceholder;
