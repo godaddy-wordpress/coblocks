@@ -3,14 +3,15 @@
  */
 import classnames from 'classnames';
 import map from 'lodash/map';
+import PropTypes from 'prop-types';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { withInstanceId, compose } from '@wordpress/compose';
+import { compose, withInstanceId } from '@wordpress/compose';
 import { Component, Fragment } from '@wordpress/element';
-import { ButtonGroup, Button, Tooltip, ToggleControl } from '@wordpress/components';
+import { Button, ButtonGroup, ToggleControl, Tooltip } from '@wordpress/components';
 import { withDispatch, withSelect } from '@wordpress/data';
 
 /**
@@ -195,12 +196,12 @@ class CSSGridControl extends Component {
 						{ map( layoutOptions, ( { label, value }, index ) => {
 							if ( tooltip ) {
 								return (
-									<Tooltip text={ label } key={ `grid-tooltip-${ index }` }>
+									<Tooltip key={ `grid-tooltip-${ index }` } text={ label }>
 										<div className={ ( value === layout ) ? 'is-selected' : null }>
 											<Button
-												isSmall
-												isSecondary={ value !== layout }
 												isPrimary={ value === layout }
+												isSecondary={ value !== layout }
+												isSmall
 												onClick={ () => {
 													setAttributes( { layout: value } );
 													updateButtonsAttributes( value.split( '-' )[ 1 ] );
@@ -217,9 +218,9 @@ class CSSGridControl extends Component {
 							return (
 								<div className={ ( value === layout ) ? 'is-selected' : null }>
 									<Button
-										isSmall
-										isSecondary={ value !== layout }
 										isPrimary={ value === layout }
+										isSecondary={ value !== layout }
+										isSmall
 										onClick={ () => {
 											setAttributes( { layout: value } );
 											if ( layoutAttributes[ value ].wrapper ) {
@@ -235,8 +236,9 @@ class CSSGridControl extends Component {
 					</ButtonGroup>
 				</div>
 				<ToggleControl
-					label={ __( 'Fullscreen', 'coblocks' ) }
 					checked={ !! fullscreen }
+					help={ !! fullscreen ? __( 'Fullscreen mode is enabled.', 'coblocks' ) : __( 'Toggle to enable fullscreen mode.', 'coblocks' ) }
+					label={ __( 'Fullscreen', 'coblocks' ) }
 					onChange={ () => {
 						if ( fullscreen ) {
 							if ( [ 'bottom-left', 'top-left' ].includes( layout ) ) {
@@ -256,7 +258,6 @@ class CSSGridControl extends Component {
 						}
 						setAttributes( { fullscreen: ! fullscreen } );
 					} }
-					help={ !! fullscreen ? __( 'Fullscreen mode is enabled.', 'coblocks' ) : __( 'Toggle to enable fullscreen mode.', 'coblocks' ) }
 				/>
 			</Fragment>
 		);
@@ -281,3 +282,15 @@ export default withInstanceId( compose( [
 		};
 	} ),
 ] )( CSSGridControl ) );
+
+CSSGridControl.propTypes = {
+	clientId: PropTypes.number,
+	innerBlocks: PropTypes.array,
+	setAttributes: PropTypes.func,
+	tooltip: PropTypes.bool.isRequired,
+	updateBlockAttributes: PropTypes.func,
+};
+
+CSSGridControl.defaultProps = {
+	tooltip: false,
+};

@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import PropTypes from 'prop-types';
+
+/**
  * WordPress dependencies
  */
 import { info } from '@wordpress/icons';
@@ -36,4 +41,13 @@ export const InfoPopover = ( { title, children, popoverProps } ) => {
 			) }
 		</Button>
 	);
+};
+
+InfoPopover.propTypes = {
+	children: PropTypes.oneOfType( [
+		PropTypes.arrayOf( PropTypes.node ),
+		PropTypes.node,
+	] ),
+	popoverProps: PropTypes.object,
+	title: PropTypes.string,
 };

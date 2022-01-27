@@ -4,6 +4,7 @@
 import { kebabCase } from 'lodash';
 import { SettingsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 /**
  * WordPress dependencies
@@ -13,10 +14,10 @@ import {
 	BaseControl,
 	Button,
 	ButtonGroup,
+	Icon,
 	PanelRow,
 	RangeControl,
 	Tooltip,
-	Icon,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
@@ -92,21 +93,21 @@ export default class OptionSelectorControl extends Component {
 			? (
 				<RangeControl
 					label={ label }
-					value={ currentOption }
-					onChange={ ( value ) => onChange( value ) }
-					min={ advancedMinValue }
 					max={ advancedMaxValue }
+					min={ advancedMinValue }
+					onChange={ ( value ) => onChange( value ) }
+					value={ currentOption }
 				/>
 			) : (
 				<BaseControl
-					id={ `coblocks-option-selector-${ kebabCase( label ) }` }
-					label={ label }
 					className={ classnames(
 						'coblocks-option-selector-control',
 						{
 							'is-custom': currentOption === 'custom',
 						}
-					) }>
+					) }
+					id={ `coblocks-option-selector-${ kebabCase( label ) }` }
+					label={ label }>
 					<PanelRow>
 						<ButtonGroup aria-label={ label }>
 
@@ -116,11 +117,11 @@ export default class OptionSelectorControl extends Component {
 									text={ option.tooltip }>
 
 									<Button
-										isSecondary={ currentOption !== option.value }
-										isPrimary={ currentOption === option.value }
+										aria-label={ option.tooltip }
 										aria-pressed={ currentOption === option.value }
-										onClick={ () => onChange( option.value ) }
-										aria-label={ option.tooltip }>
+										isPrimary={ currentOption === option.value }
+										isSecondary={ currentOption !== option.value }
+										onClick={ () => onChange( option.value ) }>
 
 										{ showIcons ? option.icon : option.label }
 
@@ -136,3 +137,19 @@ export default class OptionSelectorControl extends Component {
 		);
 	}
 }
+
+OptionSelectorControl.propTypes = {
+	advancedMaxValue: PropTypes.number,
+	advancedMinValue: PropTypes.number,
+	currentOption: PropTypes.oneOfType( [
+		PropTypes.string,
+		PropTypes.number,
+	] ),
+	label: PropTypes.string,
+	onChange: PropTypes.func,
+	options: PropTypes.array,
+	showAdvancedControls: PropTypes.bool,
+	showCustomOption: PropTypes.bool,
+	showIcons: PropTypes.bool,
+	showNoneOption: PropTypes.bool,
+};

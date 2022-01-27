@@ -3,6 +3,7 @@
  */
 import _ from 'lodash';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import {
 	FilterDarkIcon,
 	FilterGrayscaleIcon,
@@ -179,3 +180,8 @@ const MediaFilterControl = ( props ) => {
 };
 
 export default MediaFilterControl;
+
+MediaFilterControl.propTypes = {
+	attributes: PropTypes.object,
+	setAttributes: PropTypes.func,
+};

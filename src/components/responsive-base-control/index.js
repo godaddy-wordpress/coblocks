@@ -2,11 +2,12 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 /**
  * Internal dependencies
  */
-import { DesktopIcon, TabletIcon, MobileIcon } from '@godaddy-wordpress/coblocks-icons';
+import { DesktopIcon, MobileIcon, TabletIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies
@@ -119,8 +120,8 @@ class ResponsiveBaseControl extends Component {
 					<Fragment>
 						<span className="components-base-control__label">{ label }</span>
 						<TabPanel
-							className="components-coblocks-dimensions-control__mobile-controls"
 							activeClass="is-active"
+							className="components-coblocks-dimensions-control__mobile-controls"
 							initialTabName="default"
 							onSelect={ onSelect }
 							tabs={ [
@@ -153,15 +154,15 @@ class ResponsiveBaseControl extends Component {
 												<div className="components-coblocks-dimensions-control__inputs component-coblocks-is-mobile">
 													<BaseControl>
 														<input
-															type="number"
+															max={ max }
+															min={ min }
 															onChange={ ( newValue ) => {
 																onChangeMobile( newValue );
 																this.saveMeta();
 															} }
-															value={ heightMobile ? heightMobile : '' }
-															min={ min }
 															step={ step }
-															max={ max }
+															type="number"
+															value={ heightMobile ? heightMobile : '' }
 														/>
 													</BaseControl>
 												</div>
@@ -173,15 +174,15 @@ class ResponsiveBaseControl extends Component {
 												<div className="components-coblocks-dimensions-control__inputs component-coblocks-is-tablet">
 													<BaseControl>
 														<input
-															type="number"
+															max={ max }
+															min={ min }
 															onChange={ ( newValue ) => {
 																onChangeTablet( newValue );
 																this.saveMeta();
 															} }
-															value={ heightTablet ? heightTablet : '' }
-															min={ min }
 															step={ step }
-															max={ max }
+															type="number"
+															value={ heightTablet ? heightTablet : '' }
 														/>
 													</BaseControl>
 												</div>
@@ -193,15 +194,15 @@ class ResponsiveBaseControl extends Component {
 											<div className="components-coblocks-dimensions-control__inputs component-coblocks-is-desktop">
 												<BaseControl>
 													<input
-														type="number"
+														max={ max }
+														min={ min }
 														onChange={ ( newValue ) => {
 															onChange( newValue );
 															this.saveMeta();
 														} }
-														value={ height ? height : '' }
-														min={ min }
 														step={ step }
-														max={ max }
+														type="number"
+														value={ height ? height : '' }
 													/>
 												</BaseControl>
 											</div>
@@ -218,3 +219,32 @@ class ResponsiveBaseControl extends Component {
 }
 
 export default withInstanceId( ResponsiveBaseControl );
+
+ResponsiveBaseControl.propTypes = {
+	height: PropTypes.oneOfType( [
+		PropTypes.number,
+		PropTypes.string,
+	] ),
+	heightMobile: PropTypes.oneOfType( [
+		PropTypes.number,
+		PropTypes.string,
+	] ),
+	heightTablet: PropTypes.oneOfType( [
+		PropTypes.number,
+		PropTypes.string,
+	] ),
+	label: PropTypes.string.isRequired,
+	max: PropTypes.number.isRequired,
+	min: PropTypes.number.isRequired,
+	onChange: PropTypes.func,
+	onChangeMobile: PropTypes.func,
+	onChangeTablet: PropTypes.func,
+	step: PropTypes.number.isRequired,
+};
+
+ResponsiveBaseControl.defaultProps = {
+	label: __( 'Height', 'coblocks' ),
+	max: 1000,
+	min: 10,
+	step: 1,
+};
