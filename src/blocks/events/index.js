@@ -8,7 +8,6 @@ import { EventsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  */
 import deprecated from './deprecated';
 import edit from './edit';
-// import example from './example';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
