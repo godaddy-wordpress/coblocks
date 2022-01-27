@@ -13,6 +13,7 @@ import { Icon } from '@wordpress/components';
  * Internal dependencies
  */
 import edit from './edit';
+import { getBlockIconColor } from '../../utils/helper';
 import metadata from './block.json';
 import save from './save';
 
@@ -36,7 +37,10 @@ const settings = {
 			fontSize: 'medium',
 		},
 	},
-	icon: <Icon icon={ icon } />,
+	icon: {
+		foreground: getBlockIconColor(),
+		src: <Icon icon={ icon } />,
+	},
 	save,
 	title: __( 'Counter', 'coblocks' ),
 };
