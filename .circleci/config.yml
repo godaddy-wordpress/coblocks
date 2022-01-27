@@ -310,9 +310,9 @@ commands:
             ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=/tmp/wordpress
             ./vendor/bin/wp post generate --count=5 --path=/tmp/wordpress
       - run:
-          name: Install Go theme
+          name: Install Twenty Twenty-Two theme
           command: |
-            ./vendor/bin/wp theme install go --activate --path=/tmp/wordpress
+            ./vendor/bin/wp theme install twentytwentytwo --activate --path=/tmp/wordpress
       - run:
           name: Activate CoBlocks
           command: |
