@@ -31,7 +31,7 @@ CoBlocks is the last page builder you’ll ever need: you get a winning mix of a
 * Counter Block (New!)
 * Dynamic Separator Block
 * Events Block
-* FAQ Block (New!)
+* FAQ Block
 * Features Block
 * Food & Drinks Block
 * Form Block
@@ -111,6 +111,11 @@ Any properly developed WordPress theme will work with CoBlocks, though if you're
 Developers can also apply minor style touch-ups to their themes if necessary. If you're a developer and you need help, don't hesitate to [reach out](https://wordpress.org/support/plugin/coblocks/).
 
 == Changelog ==
+
+2.21.2 / 2022-01-27
+===================
+### Bug Fixes
+* Ensure SVGs are bundled with release [#2248](https://github.com/godaddy-wordpress/coblocks/pull/2248)
 
 2.21.1 / 2022-01-27
 ===================
