@@ -48,7 +48,7 @@ describe( 'Test CoBlocks Post Carousel Block', function() {
 			}
 		} );
 
-		// helpers.checkForBlockErrors( 'coblocks/post-carousel' );
+		helpers.checkForBlockErrors( 'coblocks/post-carousel' );
 	} );
 
 	/**
