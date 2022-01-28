@@ -12,7 +12,7 @@ describe( 'Test CoBlocks Media Text styles extension', function() {
 		helpers.addBlockToPost( 'core/media-text', true );
 		helpers.upload.imageToBlock( 'core/media-text' );
 
-		const selectBlock = () => cy.get( `img[src*="${ imageBase }"]` ).click();
+		const selectBlock = () => cy.get( `img[src*="${ imageBase }"]` ).click( { force: true } );
 
 		cy.get( `img[src*="${ imageBase }"]` );
 
