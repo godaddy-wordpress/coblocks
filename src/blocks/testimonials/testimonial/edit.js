@@ -115,8 +115,6 @@ const Edit = ( props ) => {
 	const classes = classnames(
 		'wp-block-coblocks-testimonial', {
 			[ backgroundClass ]: backgroundClass,
-			'has-background-color': backgroundColor || customBackgroundColor,
-			'has-text-color': textColor || customTextColor,
 			[ textClass ]: textClass,
 		}
 	);
@@ -235,8 +233,6 @@ const Edit = ( props ) => {
 				`${ className }__text`, {
 					[ bubbleBackgroundClass ]: bubbleBackgroundClass && styleName === 'conversation',
 					[ bubbleTextClass ]: bubbleTextClass && styleName === 'conversation',
-					'has-background-color': bubbleBackgroundClass || customBubbleBackgroundColor,
-					'has-text-color': bubbleTextColor || customBubbleTextColor,
 				}
 			) }
 			identifier="text"

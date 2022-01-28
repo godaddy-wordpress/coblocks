@@ -66,8 +66,6 @@ export default function save( { attributes } ) {
 	const classes = classnames(
 		'wp-block-coblocks-testimonial', {
 			[ backgroundClass ]: backgroundClass,
-			'has-background-color': backgroundColor || customBackgroundColor,
-			'has-text-color': textColor || customTextColor,
 			[ textClass ]: textClass,
 		}
 	);
@@ -116,8 +114,6 @@ export default function save( { attributes } ) {
 				'wp-block-coblocks-testimonial__text', {
 					[ bubbleBackgroundClass ]: bubbleBackgroundClass && styleName === 'conversation',
 					[ bubbleTextClass ]: bubbleTextClass && styleName === 'conversation',
-					'has-background-color': bubbleBackgroundClass || customBubbleBackgroundColor,
-					'has-text-color': bubbleTextColor || customBubbleTextColor,
 				}
 			) }
 			itemprop="description"
