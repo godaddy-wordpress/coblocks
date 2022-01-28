@@ -112,6 +112,11 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+v2.21.4 / 2022-01-28
+=====================
+### Bug fixes
+* Fix console error related to blocks icons. [#2254](https://github.com/godaddy-wordpress/coblocks/pull/2254)
+
 2.21.3 / 2022-01-28
 ===================
 ### Bug Fixes
