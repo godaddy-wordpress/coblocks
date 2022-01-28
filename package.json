@@ -115,7 +115,7 @@
 		"@wordpress/plugins": "^4.0.4",
 		"@wordpress/primitives": "^3.0.3",
 		"@wordpress/rich-text": "^5.0.4",
-		"@wordpress/scripts": "^19.2.3",
+		"@wordpress/scripts": "^20.0.1",
 		"@wordpress/server-side-render": "^3.0.15",
 		"@wordpress/token-list": "^2.2.1",
 		"@wordpress/url": "^3.2.3",
