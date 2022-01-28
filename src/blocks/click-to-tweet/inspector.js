@@ -2,14 +2,13 @@
  * Internal dependencies
  */
 import applyWithColors from './colors';
-import CoBlocksFontSizePicker from '../../components/fontsize-picker';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
-import { InspectorControls, ContrastChecker, PanelColorSettings, withFontSizes } from '@wordpress/block-editor';
+import { ContrastChecker, InspectorControls, PanelColorSettings, withFontSizes } from '@wordpress/block-editor';
 import { PanelBody, withFallbackStyles } from '@wordpress/components';
 
 /**
@@ -25,7 +24,6 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	return {
 		fallbackButtonColor: buttonColor || ! computedStyles ? undefined : computedStyles.buttonColor,
 		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
-		fallbackFontSize: fontSize || customFontSize || ! computedStyles ? undefined : parseInt( computedStyles.fontSize ) || undefined,
 	};
 } );
 
@@ -41,12 +39,7 @@ const Inspector = ( props ) => {
 
 	return (
 		<InspectorControls>
-			<PanelBody title={ __( 'Text settings', 'coblocks' ) } className="blocks-font-size">
-				<CoBlocksFontSizePicker { ...props } />
-			</PanelBody>
 			<PanelColorSettings
-				title={ __( 'Color settings', 'coblocks' ) }
-				initialOpen={ false }
 				colorSettings={ [
 					{
 						value: textColor.color,
@@ -59,6 +52,8 @@ const Inspector = ( props ) => {
 						label: __( 'Button Color', 'coblocks' ),
 					},
 				] }
+				initialOpen={ false }
+				title={ __( 'Color settings', 'coblocks' ) }
 			>
 				<ContrastChecker
 					{ ...{
@@ -76,5 +71,4 @@ const Inspector = ( props ) => {
 export default compose( [
 	applyWithColors,
 	applyFallbackStyles,
-	withFontSizes( 'fontSize' ),
 ] )( Inspector );

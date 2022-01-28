@@ -9,14 +9,13 @@ import classnames from 'classnames';
 import applyWithColors from './colors';
 import Inspector from './inspector';
 import Controls from './controls';
-import { computeFontSize } from '../../utils/helper';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
-import { RichText, withFontSizes } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 import { withSelect } from '@wordpress/data';
 
 /**
@@ -38,7 +37,6 @@ const Edit = ( props ) => {
 		isSelected,
 		setAttributes,
 		textColor,
-		fontSize,
 		onReplace,
 	} = props;
 
@@ -49,6 +47,8 @@ const Edit = ( props ) => {
 	} = attributes;
 
 	const blockquoteClasses = classnames( className, { [ `has-text-align-${ textAlign }` ]: textAlign } );
+
+	const blockProps = useBlockProps();
 
 	return (
 		<>
@@ -62,25 +62,17 @@ const Edit = ( props ) => {
 					{ ...props }
 				/>
 			) }
-			<blockquote className={ blockquoteClasses }>
+			<blockquote className={ blockquoteClasses } { ...{ ...blockProps } }>
 				<RichText
-					tagName="p"
-					multiline="false"
-					/* translators: the text of the click to tweet element */
-					placeholder={ __( 'Add a quote to tweet…', 'coblocks' ) }
-					value={ content }
-					allowedFormats={ [] } // disable controls
+					allowedFormats={ [] }
 					className={ classnames(
 						'wp-block-coblocks-click-to-tweet__text', {
 							'has-text-color': textColor.color,
 							[ textColor.class ]: textColor.class,
-							[ fontSize?.class ]: fontSize?.class,
 						}
 					) }
-					style={ {
-						color: textColor.color,
-						fontSize: computeFontSize( fontSize ),
-					} }
+					/* translators: the text of the click to tweet element */
+					multiline="false"
 					onChange={ ( nextContent ) => setAttributes( { content: nextContent } ) }
 					onRemove={ ( forward ) => {
 						const hasEmptyTweet = content.length === 0 || content.length === 1;
@@ -88,24 +80,30 @@ const Edit = ( props ) => {
 						if ( ! forward && hasEmptyTweet ) {
 							onReplace( [] );
 						}
+					} } // disable controls
+					placeholder={ __( 'Add a quote to tweet…', 'coblocks' ) }
+					style={ {
+						color: textColor.color,
 					} }
+					tagName="p"
+					value={ content }
 				/>
 				<RichText
-					tagName="span"
-					multiline="false"
-					placeholder={ __( 'Add button…', 'coblocks' ) }
-					value={ buttonText }
-					allowedFormats={ [] } // disable controls
+					allowedFormats={ [] }
 					className={ classnames(
 						'wp-block-coblocks-click-to-tweet__twitter-btn', {
 							'has-button-color': buttonColor.color,
 							[ buttonColor.class ]: buttonColor.class,
 						}
 					) }
+					multiline="false"
+					onChange={ ( nextButtonText ) => setAttributes( { buttonText: nextButtonText } ) }
+					placeholder={ __( 'Add button…', 'coblocks' ) } // disable controls
 					style={ {
 						backgroundColor: buttonColor.color,
 					} }
-					onChange={ ( nextButtonText ) => setAttributes( { buttonText: nextButtonText } ) }
+					tagName="span"
+					value={ buttonText }
 				/>
 			</blockquote>
 		</>
@@ -115,5 +113,4 @@ const Edit = ( props ) => {
 export default compose( [
 	applyWithSelect,
 	applyWithColors,
-	withFontSizes( 'fontSize' ),
 ] )( Edit );
