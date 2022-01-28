@@ -15,17 +15,15 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 				if ( frontEndContainer ) {
 					const swiperWrapper = frontEndContainer.querySelector( '.swiper-wrapper-loading' );
 
-					if ( swiperWrapper ) {
-						swiperWrapper.classList.remove( 'swiper-wrapper-loading' );
-						swiperWrapper.classList.add( 'swiper-wrapper' );
-					}
-
 					const totalSlides = frontEndContainer.querySelectorAll( '.swiper-slide' );
 
 					const swiperBackButton = frontEndContainer.parentNode.querySelector( `#wp-coblocks-event-swiper-prev` );
 					const swiperNextButton = frontEndContainer.parentNode.querySelector( `#wp-coblocks-event-swiper-next` );
 
-					if ( totalSlides.length > 1 ) {
+					if ( totalSlides.length > 1 && swiperWrapper ) {
+						swiperWrapper.classList.remove( 'swiper-wrapper-loading' );
+						swiperWrapper.classList.add( 'swiper-wrapper' );
+
 						swiperBackButton.style.visibility = 'visible';
 						swiperNextButton.style.visibility = 'visible';
 

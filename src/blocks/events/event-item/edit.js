@@ -80,6 +80,7 @@ const EventItemEdit = ( props ) => {
 						className="wp-block-coblocks-events__day"
 						onChange={ ( newEventDay ) => setAttributes( { eventDay: newEventDay } ) }
 						placeholder={ __( 'Day…', 'coblocks' ) }
+						tabIndex="0"
 						tagName="span"
 						value={ eventDay }
 					/>
@@ -88,6 +89,7 @@ const EventItemEdit = ( props ) => {
 							className="wp-block-coblocks-events__month"
 							onChange={ ( newEventMonth ) => setAttributes( { eventMonth: newEventMonth } ) }
 							placeholder={ __( 'Month…', 'coblocks' ) }
+							tabIndex="0"
 							tagName="span"
 							value={ eventMonth }
 						/>
@@ -95,6 +97,7 @@ const EventItemEdit = ( props ) => {
 							className="wp-block-coblocks-events__year"
 							onChange={ ( newEventYear ) => setAttributes( { eventYear: newEventYear } ) }
 							placeholder={ __( 'Year…', 'coblocks' ) }
+							tabIndex="0"
 							tagName="span"
 							value={ eventYear }
 						/>
@@ -105,6 +108,7 @@ const EventItemEdit = ( props ) => {
 						className="wp-block-coblocks-events__title"
 						onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
 						placeholder={ __( 'Write event title…', 'coblocks' ) }
+						tabIndex="0"
 						tagName="span"
 						value={ title }
 					/>
@@ -112,6 +116,7 @@ const EventItemEdit = ( props ) => {
 						className="wp-block-coblocks-events__description"
 						onChange={ ( newDescription ) => setAttributes( { description: newDescription } ) }
 						placeholder={ __( 'Write event description…', 'coblocks' ) }
+						tabIndex="0"
 						tagName="span"
 						value={ description }
 					/>
@@ -121,6 +126,7 @@ const EventItemEdit = ( props ) => {
 						className="wp-block-coblocks-events__time"
 						onChange={ ( newEventTime ) => setAttributes( { eventTime: newEventTime } ) }
 						placeholder={ __( 'Time…', 'coblocks' ) }
+						tabIndex="0"
 						tagName="span"
 						value={ eventTime }
 					/>
@@ -128,6 +134,7 @@ const EventItemEdit = ( props ) => {
 						className="wp-block-coblocks-events__location"
 						onChange={ ( newEventLocation ) => setAttributes( { eventLocation: newEventLocation } ) }
 						placeholder={ __( 'Location…', 'coblocks' ) }
+						tabIndex="0"
 						tagName="span"
 						value={ eventLocation }
 					/>

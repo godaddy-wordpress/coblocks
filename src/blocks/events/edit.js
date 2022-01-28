@@ -76,6 +76,10 @@ const EventsEdit = ( props ) => {
 		setShowExternalCalendarControls( ! showExternalCalendarControls );
 	};
 
+	const toggleShowCarousel = () => {
+		setAttributes( { showCarousel: ! attributes.showCarousel } );
+	};
+
 	const saveExternalCalendarUrl = () => {
 		setAttributes( { externalCalendarUrl: stateExternalCalendarUrl } );
 		setIsEditing( false );
@@ -147,6 +151,7 @@ const EventsEdit = ( props ) => {
 				onChangeEventsToShow={ ( eventsToShow ) => setAttributes( { eventsToShow } ) }
 				showExternalCalendarControls={ showExternalCalendarControls }
 				toggleExternalCalendarControls={ toggleExternalCalendarControls }
+				toggleShowCarousel={ toggleShowCarousel }
 			/>
 
 			{ isSelected &&
