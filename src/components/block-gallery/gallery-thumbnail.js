@@ -17,7 +17,7 @@ export default GalleryCarouselThumbnail;
 GalleryCarouselThumbnail.propTypes = {
 	changeStep: PropTypes.func,
 	index: PropTypes.number,
-	item: PropTypes.object.shape( {
+	item: PropTypes.shape( {
 		alt: PropTypes.string,
 		id: PropTypes.number,
 		link: PropTypes.string,

@@ -34,7 +34,7 @@ export default CoBlocksFontSizePicker;
 
 CoBlocksFontSizePicker.propTypes = {
 	fallbackFontSize: PropTypes.number,
-	fontSize: PropTypes.object.shape( {
+	fontSize: PropTypes.shape( {
 		size: PropTypes.string,
 	} ),
 	setFontSize: PropTypes.func,

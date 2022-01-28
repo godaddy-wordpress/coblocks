@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import PropTypes from 'prop-types';
-
-/**
  * Background Video.
  *
  * @param {Object} attributes The attributes.
@@ -19,18 +14,9 @@ function BackgroundVideo( attributes ) {
 
 	return backgroundType === 'video'
 		? <div className="coblocks-video-bg position-absolute overflow-hidden w-full h-full pin-t pin-r pin-b pin-l">
-			<video autoPlay="" className="w-full h-full bg-center-center object-cover object-position" loop={ videoLoop } muted={ videoMuted } playsinline="" src={ backgroundImg }></video>
+			<video className="w-full h-full bg-center-center object-cover object-position" playsinline="" autoPlay="" muted={ videoMuted } loop={ videoLoop } src={ backgroundImg }></video>
 		</div>
 		: null;
 }
-
-BackgroundVideo.propTypes = {
-	attributes: PropTypes.shape( {
-		backgroundImg: PropTypes.string,
-		backgroundType: PropTypes.string,
-		videoLoop: PropTypes.bool,
-		videoMuted: PropTypes.bool,
-	} ),
-};
 
 export default BackgroundVideo;
