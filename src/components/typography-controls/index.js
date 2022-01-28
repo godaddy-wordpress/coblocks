@@ -4,6 +4,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 /**
  * Internal dependencies
@@ -280,3 +281,15 @@ export default compose( [
 		return false;
 	} ),
 ] )( TypographyControls );
+
+TypographyControls.propTypes = {
+	attributes: PropTypes.object,
+	setAttributes: PropTypes.func,
+	icon: PropTypes.any,
+	label: PropTypes.string.isRequired,
+	name: PropTypes.string,
+};
+
+TypographyControls.defaultProps = {
+	label: __( 'Change typography', 'coblocks' ),
+};

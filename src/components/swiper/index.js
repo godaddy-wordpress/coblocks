@@ -4,6 +4,7 @@
 import { v4 as generateUuid } from 'uuid';
 import TinySwiper from 'tiny-swiper';
 import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
+import PropTypes from 'prop-types';
 
 /**
  * WordPress dependencies
@@ -214,6 +215,30 @@ const Swiper = ( props ) => {
 			{ renderPagination }
 		</div>
 	);
+};
+
+Swiper.propTypes = {
+	list: PropTypes.array,
+	children: PropTypes.node,
+	navigation: PropTypes.bool.isRequired,
+	isDraggable: PropTypes.bool.isRequired,
+	autoPlaySpeed: PropTypes.number.isRequired,
+	pauseHover: PropTypes.any,
+	loop: PropTypes.bool.isRequired,
+	onSwipe: PropTypes.func,
+	Pagination: PropTypes.node,
+	freeScroll: PropTypes.bool.isRequired,
+	uuid: PropTypes.string,
+	slidesPerView: PropTypes.number.isRequired,
+};
+
+Swiper.defaultProps = {
+	navigation: false,
+	isDraggable: true,
+	autoPlaySpeed: null,
+	loop: true,
+	freeScroll: false,
+	slidesPerView: 1,
 };
 
 export default SwiperWrapper;

@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import PropTypes from 'prop-types';
+
+/**
  * Internal dependencies
  */
 import OptionSelectorControl from '../option-selector-control';
@@ -9,7 +14,7 @@ import OptionSelectorControl from '../option-selector-control';
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { Component } from '@wordpress/element';
-import { Button, BaseControl, PanelRow } from '@wordpress/components';
+import { BaseControl, Button, PanelRow } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
 
 class SizeControl extends Component {
@@ -198,12 +203,12 @@ class SizeControl extends Component {
 				<PanelRow>
 					<OptionSelectorControl
 						currentOption={ value }
-						options={ this.getSizes() }
-						onChange={ ( size ) => onChange( size ) } />
+						onChange={ ( size ) => onChange( size ) }
+						options={ this.getSizes() } />
 					{ reset &&
 						<Button
-							isSmall
 							isSecondary
+							isSmall
 							onClick={ () => onChange( resetValue ) }
 						>
 							{ __( 'Reset', 'coblocks' ) }
@@ -220,3 +225,11 @@ export default compose( [
 		wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
 	} ) ),
 ] )( SizeControl );
+
+SizeControl.propTypes = {
+	onChange: PropTypes.func,
+	value: PropTypes.any,
+	resetValue: PropTypes.func,
+	label: PropTypes.string,
+	reset: PropTypes.bool,
+};
