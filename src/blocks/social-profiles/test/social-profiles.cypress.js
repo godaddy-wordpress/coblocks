@@ -237,8 +237,10 @@ describe( 'Test CoBlocks Social Profiles Block', function() {
 	/**
 	 * Test the coblocks social profiles colors.
 	 * Go traditional style default color: rgb(200, 106, 25)
+	 * Skipped this test because it is Go specific, so would not work with Twenty Twenty-Two, for example
 	 */
-	it( 'Test the social profiles colors.', function() {
+	// eslint-disable-next-line jest/no-disabled-tests
+	it.skip( 'Test the social profiles colors.', function() {
 		helpers.addBlockToPost( 'coblocks/social-profiles', true );
 
 		cy.get( '.wp-block-coblocks-social-profiles button[aria-label="Add Facebook profile"]' ).first().click();

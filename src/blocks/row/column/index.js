@@ -6,12 +6,12 @@ import { ColumnIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 /**
  * Internal dependencies
  */
+import { BackgroundAttributes } from '../../../components/background';
 import deprecated from './deprecated';
 import DimensionsAttributes from '../../../components/dimensions-control/attributes';
 import edit from './edit';
 import metadata from './block.json';
 import save from './save';
-import { BackgroundAttributes } from '../../../components/background';
 
 /**
  * WordPress dependencies

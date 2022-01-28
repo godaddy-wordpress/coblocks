@@ -447,10 +447,11 @@ class CoBlocks_Block_Assets {
 
 		// Counter block.
 		if ( $this->is_page_gutenberg() || has_block( 'coblocks/counter' ) || has_block( 'core/block' ) ) {
+			$asset_file = $this->get_asset_file( 'dist/js/coblocks-counter' );
 			wp_enqueue_script(
 				'coblocks-counter-script',
 				$dir . '/coblocks-counter.js',
-				array(),
+				$asset_file['dependencies'],
 				COBLOCKS_VERSION,
 				true
 			);

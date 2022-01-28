@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.5
 Tested up to: 5.9
 Requires PHP: 5.6
-Stable tag: 2.21.0
+Stable tag: 2.21.3
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,7 +31,7 @@ CoBlocks is the last page builder you’ll ever need: you get a winning mix of a
 * Counter Block (New!)
 * Dynamic Separator Block
 * Events Block
-* FAQ Block (New!)
+* FAQ Block
 * Features Block
 * Food & Drinks Block
 * Form Block
@@ -112,6 +112,28 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+2.21.3 / 2022-01-28
+===================
+### Bug Fixes
+* Fix improperly enqueued dependency for Counter block [#2252](https://github.com/godaddy-wordpress/coblocks/pull/2252)
+* Fix React state errors in the browser console [#2245](https://github.com/godaddy-wordpress/coblocks/pull/2245)
+
+### Misc
+* Improve stability of CoBlocks Block icon color [#2249](https://github.com/godaddy-wordpress/coblocks/pull/2249)
+
+2.21.2 / 2022-01-27
+===================
+### Bug Fixes
+* Ensure SVGs are bundled with release [#2248](https://github.com/godaddy-wordpress/coblocks/pull/2248)
+
+2.21.1 / 2022-01-27
+===================
+### Enhancements
+* Improve visual styles for CoBlocks blocks [#2242](https://github.com/godaddy-wordpress/coblocks/pull/2242)
+
+### Bug Fixes
+* Fix occurrence of unregistered block [#2247](https://github.com/godaddy-wordpress/coblocks/pull/2247)
+
 2.21.0 / 2022-01-26
 ===================
 ### Enhancements
@@ -170,29 +192,3 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 * Setup phpunit to run inside wp-env [#2150](https://github.com/godaddy-wordpress/coblocks/pull/2150)
 * Create a link to a zip file of the plugin in PRs [#2154](https://github.com/godaddy-wordpress/coblocks/pull/2154)
 
-2.19.1 / 2021-11-15
-===================
-### Bug Fixes
-* Fix Row block deprecation bug [#2153](https://github.com/godaddy-wordpress/coblocks/pull/2153)
-
-2.19.0 / 2021-11-10
-===================
-### Enhancements
-* Introduce FAQ block [#2125](https://github.com/godaddy-wordpress/coblocks/pull/2125)
-* Enhance FAQ iconography [#2138](https://github.com/godaddy-wordpress/coblocks/pull/2138)
-* Enhance FAQ SEO schema [#2143](https://github.com/godaddy-wordpress/coblocks/pull/2143)
-* Enhance performance of DimensionsControl component [#2090](https://github.com/godaddy-wordpress/coblocks/pull/2090)
-* Enhance Share block by migrating to Core Social Links block [#2120](https://github.com/godaddy-wordpress/coblocks/pull/2120)
-
-### Bug Fixes
-* Fix typo in Events block [#2116](https://github.com/godaddy-wordpress/coblocks/pull/2116)
-* Fix Accordion block editing in WP 5.7.2 [#2121](https://github.com/godaddy-wordpress/coblocks/pull/2121)
-* Fix instances of unused classes applied to blocks [#2109](https://github.com/godaddy-wordpress/coblocks/pull/2109)
-* Fix deprecated Toolbars warnings [#2110](https://github.com/godaddy-wordpress/coblocks/pull/2110)
-* Fix keepPlaceholderOnFocus warnings [#2114](https://github.com/godaddy-wordpress/coblocks/pull/2114)
-* Fix animation on AMP by disabling completely
-
-### Misc
-* Update supported minimum WP version to 5.5 [#2142](https://github.com/godaddy-wordpress/coblocks/pull/2142)
-* Remove jQuery from Map block Recaptcha script [#2131](https://github.com/godaddy-wordpress/coblocks/pull/2131)
-* Remove jQuery from Map block Google script [#2130](https://github.com/godaddy-wordpress/coblocks/pull/2130)
