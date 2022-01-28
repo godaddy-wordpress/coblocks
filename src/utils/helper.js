@@ -100,11 +100,24 @@ export const registerBlock = ( block ) => {
 
 	const v2Settings = block?.metadata?.apiVersion === 2 ? block?.metadata : {};
 
+	const icon = {
+		foreground: getBlockIconColor(),
+		src: settings.icon,
+	};
+
 	registerBlockType( name, {
 		category,
 		...settings,
+		icon,
 
 		// V2 Block API Upgrades
 		...v2Settings,
 	} );
 };
+
+/**
+ * Returns the color used for Icon Color in the block editor.
+ */
+export function getBlockIconColor() {
+	return '#09757A';
+}
