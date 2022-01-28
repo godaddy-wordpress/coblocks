@@ -137,6 +137,12 @@ const EventsEdit = ( props ) => {
 					>
 						{ __( 'Use URL', 'coblocks' ) }
 					</Button>
+					<Button
+						onClick={ () => setShowExternalCalendarControls( false ) }
+						type="submit"
+					>
+						{ __( 'Cancel', 'coblocks' ) }
+					</Button>
 				</form>
 			</Placeholder>
 		);
