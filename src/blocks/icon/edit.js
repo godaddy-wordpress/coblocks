@@ -54,10 +54,14 @@ const Edit = ( props ) => {
 	const [ svgs, setSvgs ] = useState( null );
 
 	useEffect( () => {
+		let isMounted = true;
+
 		( async () => {
 			const importedSvgs = await import( './svgs' );
 
-			setSvgs( importedSvgs.default );
+			if ( isMounted ) {
+				setSvgs( importedSvgs.default );
+			}
 
 			if ( attributes.icon === '' ) {
 				// Randomize the default icon when first added.
@@ -69,6 +73,10 @@ const Edit = ( props ) => {
 				setAttributes( { icon: rand } );
 			}
 		} )();
+
+		return () => {
+			isMounted = false;
+		};
 	}, [] );
 
 	if ( ! svgs ) {

@@ -1238,10 +1238,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@godaddy-wordpress/coblocks-icons@2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/coblocks-icons/-/coblocks-icons-2.0.1.tgz#7ff9f6c3d8741377b2fc6a28a1dc7455291a082e"
-  integrity sha512-Pac7OLr2h6JzpIgY4BVaG1poLiLia3xO/U+i8DjC4ZBLM6UCpgiFnc6FUeBVCSeB8riQTzIrMTqn8HAiqMbpBQ==
+"@godaddy-wordpress/coblocks-icons@2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/coblocks-icons/-/coblocks-icons-2.0.3.tgz#faba19a750f3fa35b0e86b5ee30d7ea4d62d6750"
+  integrity sha512-CvgQ4CjGqymA3JnxSuImxIBRrYQRxt9oc5tww7I20U1aJVk5SO7bM2zmjcWjtaGmPSp8CdNdLZgHQk8snPJ56g==
   dependencies:
     "@wordpress/primitives" "^1.7.0"
 
@@ -5163,6 +5163,11 @@ cosmiconfig@^7.0.0, cosmiconfig@^7.0.1:
     parse-json "^5.0.0"
     path-type "^4.0.0"
     yaml "^1.10.0"
+
+counterup2@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/counterup2/-/counterup2-2.0.2.tgz#f7475f8b738599a081355fa67f6e20e0c70d50d8"
+  integrity sha512-+drmqOOcOa17KJG9o5+wGuEgLVh4wdb2pkpGlCu3MtQ2idB73V8yJEb8WyINZ1+Fjy7dLiWKa0wihvYzk/n32A==
 
 crc-32@^1.2.0:
   version "1.2.0"
@@ -10186,10 +10191,10 @@ mute-stream@0.0.8:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.8.tgz#1630c42b2251ff81e2a283de96a5497ea92e5e0d"
   integrity sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==
 
-nanoid@^3.1.30:
-  version "3.1.30"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.30.tgz#63f93cc548d2a113dc5dfbc63bfa09e2b9b64362"
-  integrity sha512-zJpuPDwOv8D2zq2WRoMe1HsfZthVewpel9CAvTfc/2mBD1uUT/agc5f7GHGWXlYkFvi1mVxe4IjvP2HNrop7nQ==
+nanoid@^3.1.30, nanoid@^3.1.31:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.2.0.tgz#62667522da6673971cca916a6d3eff3f415ff80c"
+  integrity sha512-fmsZYa9lpn69Ad5eDn7FMcnnSR+8R34W9qJEijxYhTbfOWzr22n1QxCMzXLK+ODyW2973V3Fux959iQoUxzUIA==
 
 nanomatch@^1.2.9:
   version "1.2.13"
@@ -10233,15 +10238,10 @@ nice-try@^1.0.4:
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
   integrity sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==
 
-node-fetch@2.6.1:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
-  integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
-
-node-fetch@^2.6.0:
-  version "2.6.6"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.6.tgz#1751a7c01834e8e1697758732e9efb6eeadfaf89"
-  integrity sha512-Z8/6vRlTUChSdIgMa51jxQ4lrw/Jy5SOW10ObaA47/RElsAN2c5Pn8bTgFGWn/ibwzXTE8qwr1Yzx28vsecXEA==
+node-fetch@2.6.1, node-fetch@^2.6.0, node-fetch@^2.6.7:
+  version "2.6.7"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
+  integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
   dependencies:
     whatwg-url "^5.0.0"
 

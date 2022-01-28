@@ -11,6 +11,9 @@ describe( 'Test CoBlocks Posts Block', function() {
 	it( 'Test posts block saves with empty values.', function() {
 		helpers.addBlockToPost( 'coblocks/posts', true );
 
+		// Make sure that controls who are lazy loaded finished loading
+		cy.contains( 'Posts settings' );
+
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/posts' );
