@@ -44,7 +44,7 @@ class CoBlocks_Settings {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_settings' ) );
-		add_action( 'init', array( $this, 'coblocks_settings_assets' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'coblocks_settings_assets' ), 11 );
 		add_action( 'wp_loaded', array( $this, 'coblocks_feature_propagation' ) );
 	}
 

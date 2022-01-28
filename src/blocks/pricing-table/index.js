@@ -6,12 +6,12 @@ import { PricingTableIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 /**
  * Internal dependencies
  */
+import deprecated from './deprecated';
 import edit from './edit';
 import example from './example';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
-import deprecated from './deprecated';
 
 /**
  * WordPress dependencies

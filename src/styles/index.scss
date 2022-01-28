@@ -1,4 +1,5 @@
-@import "../common";
+@import "./common";
+@import "editor/common";
 @import "editor/columns";
 @import "editor/columns-gutter";
 @import "editor/columns-responsive";
@@ -69,6 +70,9 @@
 @import "../blocks/social-profiles/styles/editor.scss";
 @import "../blocks/testimonials/styles/editor.scss";
 @import "../blocks/testimonials/testimonial/styles/editor.scss";
+
+// @import "../formats/**/style.scss";
+@import "../formats/uppercase/style.scss";
 
 // Legacy styling
 @import "legacy/margin-editor";

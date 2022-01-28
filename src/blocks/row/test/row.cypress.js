@@ -7,21 +7,13 @@ describe( 'Test CoBlocks Row Block', function() {
 	//setup row block data.
 	const rowData = {
 		backgroundColor: '#ff0000',
-		textColor: '#ffffff',
 		backgroundColorRGB: 'rgb(255, 0, 0)',
+		textColor: '#ffffff',
 		textColorRGB: 'rgb(255, 255, 255)',
 	};
 
-	/**
-	 * Conditionally run tests on Variation picker or Classic picker depending on availability.
-	 *
-	 */
-	let testAgainstVariationsPicker;
 	before( function() {
 		helpers.addBlockToPost( 'coblocks/row', true );
-		cy.get( 'div[data-type="coblocks/row"]' ).then( () => {
-			testAgainstVariationsPicker = Cypress.$( '.block-editor-block-variation-picker' ).length > 0;
-		} );
 	} );
 
 	/**
@@ -31,11 +23,7 @@ describe( 'Test CoBlocks Row Block', function() {
 	it( 'Test row block saves with one column.', function() {
 		helpers.addBlockToPost( 'coblocks/row', true );
 
-		if ( testAgainstVariationsPicker ) {
-			cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(1) button' ).click( { force: true } );
-		} else {
-			cy.get( 'div[aria-label="Select row columns"]' ).find( 'div:nth-child(1) button' ).click( { force: true } );
-		}
+		cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(1) button' ).click();
 
 		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 1 );
 
@@ -49,12 +37,7 @@ describe( 'Test CoBlocks Row Block', function() {
 	it( 'Test row block saves with two columns.', function() {
 		helpers.addBlockToPost( 'coblocks/row', true );
 
-		if ( testAgainstVariationsPicker ) {
-			cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(2) button' ).click( { force: true } );
-		} else {
-			cy.get( 'div[aria-label="Select row columns"]' ).find( 'div:nth-child(2) button' ).click( { force: true } );
-			cy.get( 'div[aria-label="Select row layout"]' ).find( 'div > button' ).first().click( { force: true } );
-		}
+		cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(2) button' ).click();
 
 		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 2 );
 
@@ -68,12 +51,7 @@ describe( 'Test CoBlocks Row Block', function() {
 	it( 'Test row block saves with three columns.', function() {
 		helpers.addBlockToPost( 'coblocks/row', true );
 
-		if ( testAgainstVariationsPicker ) {
-			cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(4) button' ).click( { force: true } );
-		} else {
-			cy.get( 'div[aria-label="Select row columns"]' ).find( 'div:nth-child(3) button' ).click( { force: true } );
-			cy.get( 'div[aria-label="Select row layout"]' ).find( 'div > button' ).first().click( { force: true } );
-		}
+		cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(4) button' ).click();
 
 		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 3 );
 
@@ -87,12 +65,7 @@ describe( 'Test CoBlocks Row Block', function() {
 	it( 'Test row block saves with four columns.', function() {
 		helpers.addBlockToPost( 'coblocks/row', true );
 
-		if ( testAgainstVariationsPicker ) {
-			cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(5) button' ).click( { force: true } );
-		} else {
-			cy.get( 'div[aria-label="Select row columns"]' ).find( 'div:nth-child(4) button' ).click( { force: true } );
-			cy.get( 'div[aria-label="Select row layout"]' ).find( 'div > button' ).first().click( { force: true } );
-		}
+		cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(5) button' ).click();
 
 		cy.get( 'div.wp-block-coblocks-column__inner' ).should( 'have.length', 4 );
 
@@ -107,11 +80,7 @@ describe( 'Test CoBlocks Row Block', function() {
 		const { backgroundColor, textColor } = rowData;
 		helpers.addBlockToPost( 'coblocks/row', true );
 
-		if ( testAgainstVariationsPicker ) {
-			cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(1) button' ).click( { force: true } );
-		} else {
-			cy.get( 'div[aria-label="Select row columns"]' ).find( 'div:nth-child(1) button' ).click( { force: true } );
-		}
+		cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(1) button' ).click();
 
 		cy.get( '.wp-block-coblocks-row' ).click( { force: true } );
 
@@ -127,11 +96,7 @@ describe( 'Test CoBlocks Row Block', function() {
 	it( 'Test the row block custom classes.', function() {
 		helpers.addBlockToPost( 'coblocks/row', true );
 
-		if ( testAgainstVariationsPicker ) {
-			cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(1) button' ).click( { force: true } );
-		} else {
-			cy.get( 'div[aria-label="Select row columns"]' ).find( 'div:nth-child(1) button' ).click( { force: true } );
-		}
+		cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(1) button' ).click();
 
 		cy.get( '.wp-block-coblocks-row' ).click( { force: true } );
 
@@ -151,11 +116,7 @@ describe( 'Test CoBlocks Row Block', function() {
 	it( 'Test the row block alignment controls.', function() {
 		helpers.addBlockToPost( 'coblocks/row', true );
 
-		if ( testAgainstVariationsPicker ) {
-			cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(1) button' ).click( { force: true } );
-		} else {
-			cy.get( 'div[aria-label="Select row columns"]' ).find( 'div:nth-child(1) button' ).click( { force: true } );
-		}
+		cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(1) button' ).click();
 
 		cy.get( '.wp-block-coblocks-row' ).click( { force: true } );
 

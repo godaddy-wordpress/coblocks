@@ -1,4 +1,5 @@
-@import "../common";
+@import "./common";
+@import "style/common";
 @import "style/background-classes";
 @import "style/background-overlay";
 @import "style/background-parallax";
@@ -40,6 +41,7 @@
 @import "../blocks/author/styles/style.scss";
 @import "../blocks/buttons/styles/style.scss";
 @import "../blocks/click-to-tweet/styles/style.scss";
+@import "../blocks/counter/styles/style.scss";
 @import "../blocks/dynamic-separator/styles/style.scss";
 @import "../blocks/events/event-item/styles/style.scss";
 @import "../blocks/events/styles/style.scss";

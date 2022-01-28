@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { FeatureIcon } from '@godaddy-wordpress/coblocks-icons';
+import { FeatureIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
@@ -34,7 +34,7 @@ const settings = {
 	title: __( 'Feature', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'A singular child column within a parent features block.', 'coblocks' ),
-	icon: <Icon icon={ FeatureIcon } />,
+	icon: <Icon icon={ icon } />,
 	parent: [ 'coblocks/features' ],
 	supports: {
 		inserter: false,
