@@ -100,10 +100,13 @@ export const registerBlock = ( block ) => {
 
 	const v2Settings = block?.metadata?.apiVersion === 2 ? block?.metadata : {};
 
-	const icon = {
-		foreground: getBlockIconColor(),
-		src: settings.icon,
-	};
+	let icon = '';
+	if ( !! settings?.icon ) {
+		icon = {
+			foreground: getBlockIconColor(),
+			src: settings.icon,
+		};
+	}
 
 	registerBlockType( name, {
 		category,
