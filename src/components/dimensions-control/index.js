@@ -8,16 +8,16 @@ import PropTypes from 'prop-types';
 /**
  * Internal dependencies
  */
-import { DesktopIcon, TabletIcon, MobileIcon, SyncIcon } from '@godaddy-wordpress/coblocks-icons';
 import DimensionsSelect from './dimensions-select';
+import { DesktopIcon, MobileIcon, SyncIcon, TabletIcon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies
  */
-import { __, sprintf } from '@wordpress/i18n';
-import { withInstanceId } from '@wordpress/compose';
 import { useDispatch } from '@wordpress/data';
-import { ButtonGroup, BaseControl, Button, Tooltip, TabPanel } from '@wordpress/components';
+import { withInstanceId } from '@wordpress/compose';
+import { __, sprintf } from '@wordpress/i18n';
+import { BaseControl, Button, ButtonGroup, TabPanel, Tooltip } from '@wordpress/components';
 
 const DIRECTIONS = [
 	'Top',
@@ -28,19 +28,20 @@ const DIRECTIONS = [
 
 const LABELS = {
 	margin: {
-		top: __( 'Margin top', 'coblocks' ),
-		right: __( 'Margin right', 'coblocks' ),
 		bottom: __( 'Margin bottom', 'coblocks' ),
 		left: __( 'Margin left', 'coblocks' ),
+		right: __( 'Margin right', 'coblocks' ),
+		top: __( 'Margin top', 'coblocks' ),
 	},
 	padding: {
-		top: __( 'Padding top', 'coblocks' ),
-		right: __( 'Padding right', 'coblocks' ),
 		bottom: __( 'Padding bottom', 'coblocks' ),
 		left: __( 'Padding left', 'coblocks' ),
+		right: __( 'Padding right', 'coblocks' ),
+		top: __( 'Padding top', 'coblocks' ),
 	},
 };
 
+/* eslint-disable react/destructuring-assignment */
 const DimensionsControl = ( props ) => {
 	const {
 		attributes,
@@ -83,32 +84,32 @@ const DimensionsControl = ( props ) => {
 			const paddingUnit = block.attributes.paddingUnit;
 			const marginUnit = block.attributes.marginUnit;
 			const padding = {
-				paddingTop: getAttributeValue( block.attributes.paddingTop, paddingUnit ),
-				paddingRight: getAttributeValue( block.attributes.paddingRight, paddingUnit ),
 				paddingBottom: getAttributeValue( block.attributes.paddingBottom, paddingUnit ),
-				paddingLeft: getAttributeValue( block.attributes.paddingLeft, paddingUnit ),
-				paddingTopTablet: getAttributeValue( block.attributes.paddingTopTablet, paddingUnit ),
-				paddingRightTablet: getAttributeValue( block.attributes.paddingRightTablet, paddingUnit ),
-				paddingBottomTablet: getAttributeValue( block.attributes.paddingBottomTablet, paddingUnit ),
-				paddingLeftTablet: getAttributeValue( block.attributes.paddingLeftTablet, paddingUnit ),
-				paddingTopMobile: getAttributeValue( block.attributes.paddingTopMobile, paddingUnit ),
-				paddingRightMobile: getAttributeValue( block.attributes.paddingRightMobile, paddingUnit ),
 				paddingBottomMobile: getAttributeValue( block.attributes.paddingBottomMobile, paddingUnit ),
+				paddingBottomTablet: getAttributeValue( block.attributes.paddingBottomTablet, paddingUnit ),
+				paddingLeft: getAttributeValue( block.attributes.paddingLeft, paddingUnit ),
 				paddingLeftMobile: getAttributeValue( block.attributes.paddingLeftMobile, paddingUnit ),
+				paddingLeftTablet: getAttributeValue( block.attributes.paddingLeftTablet, paddingUnit ),
+				paddingRight: getAttributeValue( block.attributes.paddingRight, paddingUnit ),
+				paddingRightMobile: getAttributeValue( block.attributes.paddingRightMobile, paddingUnit ),
+				paddingRightTablet: getAttributeValue( block.attributes.paddingRightTablet, paddingUnit ),
+				paddingTop: getAttributeValue( block.attributes.paddingTop, paddingUnit ),
+				paddingTopMobile: getAttributeValue( block.attributes.paddingTopMobile, paddingUnit ),
+				paddingTopTablet: getAttributeValue( block.attributes.paddingTopTablet, paddingUnit ),
 			};
 			const margin = {
-				marginTop: getAttributeValue( block.attributes.marginTop, marginUnit ),
-				marginRight: getAttributeValue( block.attributes.marginRight, marginUnit ),
 				marginBottom: getAttributeValue( block.attributes.marginBottom, marginUnit ),
-				marginLeft: getAttributeValue( block.attributes.marginLeft, marginUnit ),
-				marginTopTablet: getAttributeValue( block.attributes.marginTopTablet, marginUnit ),
-				marginRightTablet: getAttributeValue( block.attributes.marginRightTablet, marginUnit ),
-				marginBottomTablet: getAttributeValue( block.attributes.marginBottomTablet, marginUnit ),
-				marginLeftTablet: getAttributeValue( block.attributes.marginLeftTablet, marginUnit ),
-				marginTopMobile: getAttributeValue( block.attributes.marginTopMobile, marginUnit ),
-				marginRightMobile: getAttributeValue( block.attributes.marginRightMobile, marginUnit ),
 				marginBottomMobile: getAttributeValue( block.attributes.marginBottomMobile, marginUnit ),
+				marginBottomTablet: getAttributeValue( block.attributes.marginBottomTablet, marginUnit ),
+				marginLeft: getAttributeValue( block.attributes.marginLeft, marginUnit ),
 				marginLeftMobile: getAttributeValue( block.attributes.marginLeftMobile, marginUnit ),
+				marginLeftTablet: getAttributeValue( block.attributes.marginLeftTablet, marginUnit ),
+				marginRight: getAttributeValue( block.attributes.marginRight, marginUnit ),
+				marginRightMobile: getAttributeValue( block.attributes.marginRightMobile, marginUnit ),
+				marginRightTablet: getAttributeValue( block.attributes.marginRightTablet, marginUnit ),
+				marginTop: getAttributeValue( block.attributes.marginTop, marginUnit ),
+				marginTopMobile: getAttributeValue( block.attributes.marginTopMobile, marginUnit ),
+				marginTopTablet: getAttributeValue( block.attributes.marginTopTablet, marginUnit ),
 			};
 
 			if ( typeof meta === 'undefined' || typeof meta._coblocks_dimensions === 'undefined' || ( typeof meta._coblocks_dimensions !== 'undefined' && meta._coblocks_dimensions === '' ) ) {
@@ -345,27 +346,27 @@ const DimensionsControl = ( props ) => {
 				<div className="components-coblocks-dimensions-control__inputs">
 					{ DIRECTIONS.map( ( direction ) => (
 						<input
-							key={ `coblocks-dimensions-control-number-${ device }-${ direction }` }
-							className="components-coblocks-dimensions-control__number"
-							type="number"
-							onChange={ ( event ) => onChangeValue( event, direction ) }
-							aria-label={ LABELS[ type ][ direction.toLowerCase() ] }
 							aria-describedby={ !! help ? id + '__help' : undefined }
-							value={ props[ `value${ direction }${ device }` ] }
-							min={ type === 'padding' ? 0 : undefined }
+							aria-label={ LABELS[ type ][ direction.toLowerCase() ] }
+							className="components-coblocks-dimensions-control__number"
 							data-device-type={ device }
+							key={ `coblocks-dimensions-control-number-${ device }-${ direction }` }
+							min={ type === 'padding' ? 0 : undefined }
+							onChange={ ( event ) => onChangeValue( event, direction ) }
+							type="number"
+							value={ props[ `value${ direction }${ device }` ] }
 						/>
 					) ) }
 					<Tooltip text={ !! syncMode ? __( 'Unsync', 'coblocks' ) : __( 'Sync', 'coblocks' ) } >
 						<Button
-							className="components-coblocks-dimensions-control_sync"
 							aria-label={ __( 'Sync units', 'coblocks' ) }
+							aria-pressed={ !! syncMode }
+							className="components-coblocks-dimensions-control_sync"
+							data-device-type={ device }
 							isPrimary={ !! syncMode }
 							isSecondary={ ! syncMode }
-							aria-pressed={ !! syncMode }
-							onClick={ () => syncUnitsOverwrite( device ) }
-							data-device-type={ device }
 							isSmall
+							onClick={ () => syncUnitsOverwrite( device ) }
 						>
 							{ SyncIcon }
 						</Button>
@@ -383,7 +384,7 @@ const DimensionsControl = ( props ) => {
 						<div className="components-coblocks-dimensions-control__header">
 							{ label && <p className={ 'components-coblocks-dimensions-control__label' }>{ label }</p> }
 							<div className="components-coblocks-dimensions-control__actions">
-								<ButtonGroup className="components-coblocks-dimensions-control__units" aria-label={ __( 'Select Units', 'coblocks' ) }>
+								<ButtonGroup aria-label={ __( 'Select Units', 'coblocks' ) } className="components-coblocks-dimensions-control__units">
 									{ map( unitSizes, ( { unitValue, name } ) => (
 										<Tooltip
 											key={ `coblocks-dimensions-control-unit-tooltip-${ name }` }
@@ -393,17 +394,17 @@ const DimensionsControl = ( props ) => {
 												name
 											) }>
 											<Button
-												key={ unitValue }
-												className={ 'components-coblocks-dimensions-control__units--' + name }
-												isSmall
-												isPrimary={ unit === unitValue }
-												isSecondary={ unit !== unitValue }
-												aria-pressed={ unit === unitValue }
 												aria-label={ sprintf(
 													/* translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
 													__( '%s units', 'coblocks' ),
 													name
 												) }
+												aria-pressed={ unit === unitValue }
+												className={ 'components-coblocks-dimensions-control__units--' + name }
+												isPrimary={ unit === unitValue }
+												isSecondary={ unit !== unitValue }
+												isSmall
+												key={ unitValue }
 												onClick={ () => onChangeUnits( unitValue ) }
 											>
 												{ unitValue }
@@ -412,45 +413,45 @@ const DimensionsControl = ( props ) => {
 									) ) }
 								</ButtonGroup>
 								<Button
-									type="button"
-									onClick={ () => onChangeSize( 'no', -1 ) }
-									isSmall
-									isSecondary
 									aria-label={ sprintf(
 										/* translators: %s: a texual label  */
 										__( 'Turn off advanced %s settings', 'coblocks' ),
 										label.toLowerCase()
 									) }
+									isSecondary
+									isSmall
+									onClick={ () => onChangeSize( 'no', -1 ) }
+									type="button"
 								>
 									{ __( 'Reset', 'coblocks' ) }
 								</Button>
 							</div>
 						</div>
 						<TabPanel
-							className="components-coblocks-dimensions-control__mobile-controls"
 							activeClass="is-active"
+							className="components-coblocks-dimensions-control__mobile-controls"
 							initialTabName="default"
 							onSelect={ onSelect }
 							tabs={ [
 								{
+									className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--default components-coblocks-dimensions-control__mobile-controls-item-${ type }--default`,
 									name: 'default',
 									title: DesktopIcon,
-									className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--default components-coblocks-dimensions-control__mobile-controls-item-${ type }--default`,
 								},
 								{
+									className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--desktop components-coblocks-dimensions-control__mobile-controls-item-${ type }--desktop`,
 									name: 'desktop',
 									title: DesktopIcon,
-									className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--desktop components-coblocks-dimensions-control__mobile-controls-item-${ type }--desktop`,
 								},
 								{
+									className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--tablet components-coblocks-dimensions-control__mobile-controls-item-${ type }--tablet`,
 									name: 'tablet',
 									title: TabletIcon,
-									className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--tablet components-coblocks-dimensions-control__mobile-controls-item-${ type }--tablet`,
 								},
 								{
+									className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--mobile components-coblocks-dimensions-control__mobile-controls-item-${ type }--mobile`,
 									name: 'mobile',
 									title: MobileIcon,
-									className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ type } components-button is-button is-default is-secondary components-coblocks-dimensions-control__mobile-controls-item--mobile components-coblocks-dimensions-control__mobile-controls-item-${ type }--mobile`,
 								},
 							] }>
 							{
@@ -465,26 +466,26 @@ const DimensionsControl = ( props ) => {
 							<span className="components-coblocks-dimensions-control__number-label-blank" />
 						</div>
 					</>
-					: <BaseControl id="textarea-1" label={ label } help={ help }>
+					: <BaseControl help={ help } id="textarea-1" label={ label }>
 						<div className="components-font-size-picker__controls">
 							<DimensionsSelect
-								type={ type }
-								setAttributes={ setAttributes }
-								paddingSize={ paddingSize }
 								marginSize={ marginSize }
+								paddingSize={ paddingSize }
+								setAttributes={ setAttributes }
+								type={ type }
 							/>
 
 							<Button
-								type="button"
-								onClick={ () => onChangeSize( 'advanced', '' ) }
-								isSmall
-								isSecondary
 								aria-label={ sprintf(
 									/* translators: %s: a texual label */
 									__( 'Advanced %s settings', 'coblocks' ),
 									label.toLowerCase()
 								) }
 								isPrimary={ dimensionSize === 'advanced' }
+								isSecondary
+								isSmall
+								onClick={ () => onChangeSize( 'advanced', '' ) }
+								type="button"
 							>
 								{ __( 'Advanced', 'coblocks' ) }
 							</Button>
@@ -507,6 +508,6 @@ DimensionsControl.propTypes = {
 	setAttributes: PropTypes.func,
 	type: PropTypes.string,
 	unit: PropTypes.number,
-}
+};
 
 export default withInstanceId( DimensionsControl );

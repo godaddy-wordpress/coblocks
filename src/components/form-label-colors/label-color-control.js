@@ -1,12 +1,12 @@
 /**
  * WordPress dependencies
  */
-import { compose } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { hasBlockSupport } from '@wordpress/blocks';
 import { InspectorControls, PanelColorSettings, withColors } from '@wordpress/block-editor';
 import { withDispatch, withSelect } from '@wordpress/data';
-import { hasBlockSupport } from '@wordpress/blocks';
 
 /**
  * External dependencies
@@ -20,7 +20,7 @@ class LabelColorControl extends Component {
 	componentDidUpdate() {
 		const { updateInnerAttributes, attributes } = this.props;
 		const { textColor, customTextColor } = attributes;
-		updateInnerAttributes( { textColor, customTextColor } );
+		updateInnerAttributes( { customTextColor, textColor } );
 	}
 
 	render() {
@@ -30,9 +30,9 @@ class LabelColorControl extends Component {
 		} = this.props;
 
 		const colorSettings = [ {
-			value: textColor?.color || '',
-			onChange: setTextColor,
 			label: __( 'Label color', 'coblocks' ),
+			onChange: setTextColor,
+			value: textColor?.color || '',
 		} ];
 
 		return (

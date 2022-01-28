@@ -23,14 +23,18 @@ class ResponsiveTabsControl extends Component {
 	}
 
 	setGutterTo( value ) {
+		const { setAttributes } = this.props;
+
 		if ( 0 === value ) {
-			this.props.setAttributes( { radius: value } );
+			setAttributes( { radius: value } );
 		}
-		this.props.setAttributes( { gutter: value } );
+		setAttributes( { gutter: value } );
 	}
 
 	setGutterMobileTo( value ) {
-		this.props.setAttributes( { gutterMobile: value } );
+		const { setAttributes } = this.props;
+
+		setAttributes( { gutterMobile: value } );
 	}
 
 	render() {
@@ -52,14 +56,14 @@ class ResponsiveTabsControl extends Component {
 					initialTabName="desk"
 					tabs={ [
 						{
+							className: 'components-coblocks-responsive__tabs-item components-coblocks-responsive__tabs-item--desktop components-button is-button is-default',
 							name: 'desk',
 							title: icons.desktopChrome,
-							className: 'components-coblocks-responsive__tabs-item components-coblocks-responsive__tabs-item--desktop components-button is-button is-default',
 						},
 						{
+							className: 'components-coblocks-responsive__tabs-item components-coblocks-responsive__tabs-item--mobile components-button is-button is-default',
 							name: 'mobile',
 							title: icons.mobile,
-							className: 'components-coblocks-responsive__tabs-item components-coblocks-responsive__tabs-item--mobile components-button is-button is-default',
 						},
 					] }>
 					{

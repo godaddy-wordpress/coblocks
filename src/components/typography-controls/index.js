@@ -284,10 +284,10 @@ export default compose( [
 
 TypographyControls.propTypes = {
 	attributes: PropTypes.object,
-	setAttributes: PropTypes.func,
 	icon: PropTypes.any,
 	label: PropTypes.string.isRequired,
 	name: PropTypes.string,
+	setAttributes: PropTypes.func,
 };
 
 TypographyControls.defaultProps = {

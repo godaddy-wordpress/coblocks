@@ -9,9 +9,9 @@ import PropTypes from 'prop-types';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { compose, withInstanceId } from '@wordpress/compose';
-import { Component, Fragment } from '@wordpress/element';
 import { Button, ButtonGroup, ToggleControl, Tooltip } from '@wordpress/components';
+import { Component, Fragment } from '@wordpress/element';
+import { compose, withInstanceId } from '@wordpress/compose';
 import { withDispatch, withSelect } from '@wordpress/data';
 
 /**
@@ -56,68 +56,68 @@ class CSSGridControl extends Component {
 		 */
 		let layoutOptions = [
 			{
-				value: 'top-left',
 				/* translators: block layout */
 				label: __( 'Top left', 'coblocks' ),
+				value: 'top-left',
 			},
 			{
-				value: 'top-center',
 				/* translators: block layout */
 				label: __( 'Top center', 'coblocks' ),
+				value: 'top-center',
 			},
 			{
-				value: 'top-right',
 				/* translators: block layout */
 				label: __( 'Top right', 'coblocks' ),
+				value: 'top-right',
 			},
 			{
-				value: 'center-left',
 				/* translators: block layout */
 				label: __( 'Center left', 'coblocks' ),
+				value: 'center-left',
 			},
 			{
-				value: 'center-center',
 				/* translators: block layout */
 				label: __( 'Center center', 'coblocks' ),
+				value: 'center-center',
 			},
 			{
-				value: 'center-right',
 				/* translators: block layout */
 				label: __( 'Center right', 'coblocks' ),
+				value: 'center-right',
 			},
 			{
-				value: 'bottom-left',
 				/* translators: block layout */
 				label: __( 'Bottom left', 'coblocks' ),
+				value: 'bottom-left',
 			},
 			{
-				value: 'bottom-center',
 				/* translators: block layout */
 				label: __( 'Bottom center', 'coblocks' ),
+				value: 'bottom-center',
 			},
 			{
-				value: 'bottom-right',
 				/* translators: block layout */
 				label: __( 'Bottom right', 'coblocks' ),
+				value: 'bottom-right',
 			},
 		];
 
 		if ( ! fullscreen ) {
 			layoutOptions = [
 				{
-					value: 'center-left',
 					/* translators: block layout */
 					label: __( 'Center left', 'coblocks' ),
+					value: 'center-left',
 				},
 				{
-					value: 'center-center',
 					/* translators: block layout */
 					label: __( 'Center center', 'coblocks' ),
+					value: 'center-center',
 				},
 				{
-					value: 'center-right',
 					/* translators: block layout */
 					label: __( 'Center right', 'coblocks' ),
+					value: 'center-right',
 				},
 			];
 		}

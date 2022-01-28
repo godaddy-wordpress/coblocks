@@ -12,24 +12,24 @@ import googleFonts from './fonts';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { withInstanceId } from '@wordpress/compose';
 import { BaseControl } from '@wordpress/components';
+import { withInstanceId } from '@wordpress/compose';
 
 function FontFamilyPicker( { label, value, help, instanceId, onChange, className, ...props } ) {
 	const id = `inspector-coblocks-font-family-${ instanceId }`;
 	const systemFonts = [
-		{ value: '', label: __( 'Default', 'coblocks' ) },
-		{ value: 'Arial', label: 'Arial' },
-		{ value: 'Helvetica', label: 'Helvetica' },
-		{ value: 'Times New Roman', label: 'Times New Roman' },
-		{ value: 'Georgia', label: 'Georgia' },
+		{ label: __( 'Default', 'coblocks' ), value: '' },
+		{ label: 'Arial', value: 'Arial' },
+		{ label: 'Helvetica', value: 'Helvetica' },
+		{ label: 'Times New Roman', value: 'Times New Roman' },
+		{ label: 'Georgia', value: 'Georgia' },
 	];
 	let fonts = [];
 
 	// Add Google Fonts
 	Object.keys( googleFonts ).forEach( ( k ) => {
 		fonts.push(
-			{ value: k, label: k }
+			{ label: k, value: k }
 		);
 	} );
 

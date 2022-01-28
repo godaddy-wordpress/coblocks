@@ -12,10 +12,10 @@ import OptionSelectorControl from '../option-selector-control';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { compose } from '@wordpress/compose';
 import { Component } from '@wordpress/element';
-import { BaseControl, Button, PanelRow } from '@wordpress/components';
+import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
+import { BaseControl, Button, PanelRow } from '@wordpress/components';
 
 class SizeControl extends Component {
 	constructor() {
@@ -24,12 +24,13 @@ class SizeControl extends Component {
 	}
 
 	componentDidUpdate() {
-		const { align, columns } = this.props.attributes;
+		const { attributes, setAttributes } = this.props;
+		const { align, columns } = attributes;
 
 		// Prevent small and medium column grid sizes without wide or full alignments.
 		if ( align === undefined ) {
 			if ( columns === 'med' || columns === 'sml' ) {
-				this.props.setAttributes( {
+				setAttributes( {
 					gridSize: 'xlrg',
 				} );
 			}
@@ -37,66 +38,66 @@ class SizeControl extends Component {
 	}
 
 	getSizes() {
-		const { type, wideControlsEnabled } = this.props;
-		const { align } = this.props.attributes;
+		const { attributes, type, wideControlsEnabled } = this.props;
+		const { align } = attributes;
 
 		const defaultSizes = [
 			{
-				value: 'none',
 				label: __( 'None', 'coblocks' ),
 				tooltip: __( 'None', 'coblocks' ),
+				value: 'none',
 			},
 			{
-				value: 'sml',
 				/* translators: abbreviation for small size */
 				label: __( 'S', 'coblocks' ),
 				tooltip: __( 'Small', 'coblocks' ),
+				value: 'sml',
 
 			},
 			{
-				value: 'med',
 				/* translators: abbreviation for medium size */
 				label: __( 'M', 'coblocks' ),
 				tooltip: __( 'Medium', 'coblocks' ),
+				value: 'med',
 			},
 			{
-				value: 'lrg',
 				/* translators: abbreviation for large size */
 				label: __( 'L', 'coblocks' ),
 				tooltip: __( 'Large', 'coblocks' ),
+				value: 'lrg',
 			},
 		];
 
 		let standardSizes = [
 			{
-				value: 'lrg',
 				/* translators: abbreviation for large size */
 				label: __( 'L', 'coblocks' ),
 				tooltip: __( 'Large', 'coblocks' ),
+				value: 'lrg',
 			},
 			{
-				value: 'xlrg',
 				/* translators: abbreviation for extra large size */
 				label: __( 'XL', 'coblocks' ),
 				tooltip: __( 'Extra Large', 'coblocks' ),
+				value: 'xlrg',
 			},
 		];
 
 		let wideSizes = [
 			{
-				value: 'med',
 				/* translators: abbreviation for medium size */
 				label: __( 'M', 'coblocks' ),
 				tooltip: __( 'Medium', 'coblocks' ),
+				value: 'med',
 			},
 		];
 
 		let fullSizes = [
 			{
-				value: 'sml',
 				/* translators: abbreviation for small size */
 				label: __( 'S', 'coblocks' ),
 				tooltip: __( 'Small', 'coblocks' ),
+				value: 'sml',
 			},
 		];
 
@@ -104,28 +105,28 @@ class SizeControl extends Component {
 		if ( 'smlx' === type ) {
 			standardSizes = [
 				{
-					value: 'sml',
 					/* translators: abbreviation for small size */
 					label: __( 'S', 'coblocks' ),
 					tooltip: __( 'Small', 'coblocks' ),
+					value: 'sml',
 				},
 				{
-					value: 'med',
 					/* translators: abbreviation for medium size */
 					label: __( 'M', 'coblocks' ),
 					tooltip: __( 'Medium', 'coblocks' ),
+					value: 'med',
 				},
 				{
-					value: 'lrg',
 					/* translators: abbreviation for large size */
 					label: __( 'L', 'coblocks' ),
 					tooltip: __( 'Large', 'coblocks' ),
+					value: 'lrg',
 				},
 				{
-					value: 'xlrg',
 					/* translators: abbreviation for extra large size */
 					label: __( 'XL', 'coblocks' ),
 					tooltip: __( 'Extra Large', 'coblocks' ),
+					value: 'xlrg',
 				},
 			];
 
@@ -136,35 +137,35 @@ class SizeControl extends Component {
 		if ( 'reverse-grid' === type ) {
 			standardSizes = [
 				{
-					value: 'small',
 					/* translators: abbreviation for small size */
 					label: __( 'S', 'coblocks' ),
 					tooltip: __( 'Small', 'coblocks' ),
+					value: 'small',
 
 				},
 				{
-					value: 'medium',
 					/* translators: abbreviation for medium size */
 					label: __( 'M', 'coblocks' ),
 					tooltip: __( 'Medium', 'coblocks' ),
+					value: 'medium',
 				},
 			];
 
 			wideSizes = [
 				{
-					value: 'large',
 					/* translators: abbreviation for large size */
 					label: __( 'L', 'coblocks' ),
 					tooltip: __( 'Large', 'coblocks' ),
+					value: 'large',
 				},
 			];
 
 			fullSizes = [
 				{
-					value: 'huge',
 					/* translators: abbreviation for extra large size */
 					label: __( 'XL', 'coblocks' ),
 					tooltip: __( 'Extra Large', 'coblocks' ),
+					value: 'huge',
 				},
 			];
 
@@ -227,9 +228,9 @@ export default compose( [
 ] )( SizeControl );
 
 SizeControl.propTypes = {
-	onChange: PropTypes.func,
-	value: PropTypes.any,
-	resetValue: PropTypes.func,
 	label: PropTypes.string,
+	onChange: PropTypes.func,
 	reset: PropTypes.bool,
+	resetValue: PropTypes.func,
+	value: PropTypes.any,
 };

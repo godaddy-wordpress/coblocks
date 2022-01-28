@@ -113,8 +113,8 @@ GalleryLinkSettings.propTypes = {
 	attributes: PropTypes.shape( {
 		lightbox: PropTypes.bool,
 		linkTo: PropTypes.string,
-		target: PropTypes.string,
 		rel: PropTypes.string,
+		target: PropTypes.string,
 	} ),
 	setAttributes: PropTypes.func,
 };

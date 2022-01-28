@@ -1,14 +1,15 @@
 /**
  * External dependencies.
  */
-import { kebabCase } from 'lodash';
-import { SettingsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 import classnames from 'classnames';
+import { SettingsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { kebabCase } from 'lodash';
 import PropTypes from 'prop-types';
 
 /**
  * WordPress dependencies
  */
+import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
 import {
 	BaseControl,
@@ -19,48 +20,47 @@ import {
 	RangeControl,
 	Tooltip,
 } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
 
 /**
  * Constants
  */
 const DEFAULT_OPTIONS = [
 	{
-		value: 1,
 		/* translators: abbreviation for small size */
 		label: __( 'S', 'coblocks' ),
 		tooltip: __( 'Small', 'coblocks' ),
+		value: 1,
 	},
 	{
-		value: 2,
 		/* translators: abbreviation for medium size */
 		label: __( 'M', 'coblocks' ),
 		tooltip: __( 'Medium', 'coblocks' ),
+		value: 2,
 	},
 	{
-		value: 3,
 		/* translators: abbreviation for large size */
 		label: __( 'L', 'coblocks' ),
 		tooltip: __( 'Large', 'coblocks' ),
+		value: 3,
 	},
 	{
-		value: 4,
 		/* translators: abbreviation for extra large size */
 		label: __( 'XL', 'coblocks' ),
 		tooltip: __( 'Extra Large', 'coblocks' ),
+		value: 4,
 	},
 ];
 
 const NONE_OPTION = {
-	value: 0,
 	label: __( 'None', 'coblocks' ),
 	tooltip: __( 'None', 'coblocks' ),
+	value: 0,
 };
 
 const CUSTOM_OPTION = {
-	value: 'custom',
 	label: <Icon icon={ icon } />,
 	tooltip: __( 'Custom', 'coblocks' ),
+	value: 'custom',
 };
 
 export default class OptionSelectorControl extends Component {

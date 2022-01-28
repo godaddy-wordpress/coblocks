@@ -1,8 +1,8 @@
 /**
  * External dependencies
  */
-import { range } from 'lodash';
 import PropTypes from 'prop-types';
+import { range } from 'lodash';
 
 /**
  * Internal dependencies.

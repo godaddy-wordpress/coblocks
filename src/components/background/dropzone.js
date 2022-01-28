@@ -11,9 +11,9 @@ import { ALLOWED_BG_MEDIA_TYPES, BLOCKS_WITH_AUTOPADDING } from './';
 /**
  * WordPress dependencies
  */
-import { Component, Fragment } from '@wordpress/element';
-import { mediaUpload } from '@wordpress/editor';
 import { DropZone } from '@wordpress/components';
+import { mediaUpload } from '@wordpress/editor';
+import { Component, Fragment } from '@wordpress/element';
 
 class BackgroundDropZone extends Component {
 	constructor() {
@@ -31,6 +31,8 @@ class BackgroundDropZone extends Component {
 	}
 
 	onSelectFile( media ) {
+		const { setAttributes, attributes, name } = this.props;
+
 		if ( media && media.url ) {
 			let mediaType = 'image';
 
@@ -38,21 +40,22 @@ class BackgroundDropZone extends Component {
 				mediaType = 'video';
 			}
 
-			this.props.setAttributes( { backgroundImg: media.url, backgroundType: mediaType } );
+			setAttributes( { backgroundImg: media.url, backgroundType: mediaType } );
 			// Set padding when background image is added.
-			if ( BLOCKS_WITH_AUTOPADDING.includes( this.props.name ) ) {
-				if ( ! this.props.attributes.paddingSize || this.props.attributes.paddingSize === 'no' ) {
-					this.props.setAttributes( { paddingSize: 'medium' } );
+			if ( BLOCKS_WITH_AUTOPADDING.includes( name ) ) {
+				if ( ! attributes.paddingSize || attributes.paddingSize === 'no' ) {
+					setAttributes( { paddingSize: 'medium' } );
 				}
 			}
 		}
 	}
 
 	render() {
+		const { label } = this.props;
 		return (
 			<Fragment>
 				<DropZone
-					label={ this.props.label }
+					label={ label }
 					onFilesDrop={ this.addFile }
 				/>
 			</Fragment>
