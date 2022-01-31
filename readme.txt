@@ -112,7 +112,13 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-v2.21.4 / 2022-01-28
+2.21.5 / 2022-01-31
+===================
+### Bug fixes
+* Fix `.icon` class scoping from Swiper component [#2259](https://github.com/godaddy-wordpress/coblocks/pull/2259)
+* Fix Lightbox opening unexpectedly [#2258](https://github.com/godaddy-wordpress/coblocks/pull/2258)
+
+2.21.4 / 2022-01-28
 =====================
 ### Bug fixes
 * Fix console error related to blocks icons. [#2254](https://github.com/godaddy-wordpress/coblocks/pull/2254)
