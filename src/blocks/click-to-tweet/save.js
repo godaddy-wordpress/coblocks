@@ -19,7 +19,7 @@ const save = ( { attributes } ) => {
 		textAlign,
 		via,
 	} = attributes;
-
+	console.log( attributes );
 	const viaUrl = via ? `&via=${ via }` : '';
 
 	// See PHP filter render_block_coblocks/click-to-tweet for [post_permalink] token replacement.
