@@ -83,5 +83,6 @@ export default compose( [
 LabelColorControl.propTypes = {
 	attributes: PropTypes.object,
 	setTextColor: PropTypes.func,
+	textColor: PropTypes.object,
 	updateInnerAttributes: PropTypes.func,
 };

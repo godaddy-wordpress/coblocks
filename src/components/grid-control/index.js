@@ -284,6 +284,7 @@ export default withInstanceId( compose( [
 ] )( CSSGridControl ) );
 
 CSSGridControl.propTypes = {
+	attributes: PropTypes.object,
 	clientId: PropTypes.number,
 	innerBlocks: PropTypes.array,
 	setAttributes: PropTypes.func,
