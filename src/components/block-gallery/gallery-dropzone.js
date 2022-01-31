@@ -36,6 +36,7 @@ const GalleryDropZone = ( props ) => {
 
 GalleryDropZone.propTypes = {
 	label: PropTypes.string,
+	noticeOperations: PropTypes.object,
 	onSelect: PropTypes.func,
 };
 

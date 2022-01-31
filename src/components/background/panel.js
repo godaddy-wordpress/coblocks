@@ -309,6 +309,9 @@ class BackgroundPanel extends Component {
 
 BackgroundPanel.propTypes = {
 	attributes: PropTypes.object,
+	backgroundColor: PropTypes.object,
+	hasGalleryControls: PropTypes.bool,
+	hasOverlay: PropTypes.bool,
 	name: PropTypes.string,
 	setAttributes: PropTypes.func,
 };

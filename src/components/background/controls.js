@@ -79,8 +79,6 @@ function BackgroundControls( props ) {
 export default BackgroundControls;
 
 BackgroundControls.propTypes = {
-	attributes: PropTypes.shape( {
-		backgroundImg: PropTypes.string.isRequired,
-	} ),
+	attributes: PropTypes.object,
 	setAttributes: PropTypes.func.isRequired,
 };
