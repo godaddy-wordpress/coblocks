@@ -56,11 +56,11 @@ describe( 'Test CoBlocks Lightbox Controls extension', function() {
 
 			helpers.viewPage();
 
-			cy.get( `figure[class*="align${ alignment }"] img[src*="http"][class^="wp-image-"]` ).should( 'have.attr', 'src' ).should( 'include', imageBase );
+			cy.get( `figure[class*="align${ alignment }"] img[src*="http"][class^="wp-image-"], figure img[src*="http"][class^="wp-image-"]` ).should( 'have.attr', 'src' ).should( 'include', imageBase );
 
 			cy.get( '.coblocks-lightbox' ).should( 'be.hidden' );
 
-			cy.get( `figure[class*="align${ alignment }"] img[src*="http"][class^="wp-image-"]` ).click( { force: true } );
+			cy.get( `figure[class*="align${ alignment }"] img[src*="http"][class^="wp-image-"], figure img[src*="http"][class^="wp-image-"]` ).click( { force: true } );
 
 			cy.get( '.coblocks-lightbox' ).should( 'be.visible' );
 
@@ -120,11 +120,11 @@ describe( 'Test CoBlocks Lightbox Controls extension', function() {
 
 			helpers.viewPage();
 
-			cy.get( `figure[class*="align${ alignment }"] img[src*="http"][class^="wp-image-"]` ).should( 'have.attr', 'src' ).should( 'include', imageBase );
+			cy.get( `figure[class*="align${ alignment }"] img[src*="http"][class^="wp-image-"], figure img[src*="http"][class^="wp-image-"]` ).should( 'have.attr', 'src' ).should( 'include', imageBase );
 
 			cy.get( '.coblocks-lightbox' ).should( 'be.hidden' );
 
-			cy.get( `figure[class*="align${ alignment }"] img[src*="http"][class^="wp-image-"]` ).click( { force: true } );
+			cy.get( `figure[class*="align${ alignment }"] img[src*="http"][class^="wp-image-"], figure img[src*="http"][class^="wp-image-"]` ).click( { force: true } );
 
 			cy.get( '.coblocks-lightbox' ).should( 'be.visible' );
 

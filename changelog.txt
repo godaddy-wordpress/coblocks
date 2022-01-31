@@ -1,4 +1,18 @@
 
+v2.21.4 / 2022-01-28
+=====================
+### Bug fixes
+* Fix console error related to blocks icons. [#2254](https://github.com/godaddy-wordpress/coblocks/pull/2254)
+
+2.21.3 / 2022-01-28
+===================
+### Bug Fixes
+* Fix improperly enqueued dependency for Counter block [#2252](https://github.com/godaddy-wordpress/coblocks/pull/2252)
+* Fix React state errors in the browser console [#2245](https://github.com/godaddy-wordpress/coblocks/pull/2245)
+
+### Misc
+* Improve stability of CoBlocks Block icon color [#2249](https://github.com/godaddy-wordpress/coblocks/pull/2249)
+
 2.21.2 / 2022-01-27
 ===================
 ### Bug Fixes
