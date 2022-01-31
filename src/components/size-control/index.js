@@ -232,5 +232,7 @@ SizeControl.propTypes = {
 	onChange: PropTypes.func,
 	reset: PropTypes.bool,
 	resetValue: PropTypes.func,
+	type: PropTypes.string,
 	value: PropTypes.any,
+	wideControlsEnabled: PropTypes.bool,
 };

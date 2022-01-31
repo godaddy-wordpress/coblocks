@@ -111,6 +111,7 @@ ResponsiveTabsControl.propTypes = {
 	min: PropTypes.number.isRequired,
 	onChange: PropTypes.func,
 	onChangeMobile: PropTypes.func,
+	setAttributes: PropTypes.func,
 	step: PropTypes.number.isRequired,
 };
 
