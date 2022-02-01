@@ -113,49 +113,49 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 = 2.21.5 / 2022-01-31 =
-### Bug fixes
+##### Bug fixes
 * Fix `.icon` class scoping from Swiper component [#2259](https://github.com/godaddy-wordpress/coblocks/pull/2259)
 * Fix Lightbox opening unexpectedly [#2258](https://github.com/godaddy-wordpress/coblocks/pull/2258)
 
 = 2.21.4 / 2022-01-28 =
-### Bug fixes
+##### Bug fixes
 * Fix console error related to blocks icons. [#2254](https://github.com/godaddy-wordpress/coblocks/pull/2254)
 
 = 2.21.3 / 2022-01-28 =
-### Bug Fixes
+##### Bug Fixes
 * Fix improperly enqueued dependency for Counter block [#2252](https://github.com/godaddy-wordpress/coblocks/pull/2252)
 * Fix React state errors in the browser console [#2245](https://github.com/godaddy-wordpress/coblocks/pull/2245)
 
-### Misc
+##### Misc
 * Improve stability of CoBlocks Block icon color [#2249](https://github.com/godaddy-wordpress/coblocks/pull/2249)
 
 = 2.21.2 / 2022-01-27 =
-### Bug Fixes
+##### Bug Fixes
 * Ensure SVGs are bundled with release [#2248](https://github.com/godaddy-wordpress/coblocks/pull/2248)
 
 = 2.21.1 / 2022-01-27 =
-### Enhancements
+##### Enhancements
 * Improve visual styles for CoBlocks blocks [#2242](https://github.com/godaddy-wordpress/coblocks/pull/2242)
 
-### Bug Fixes
+##### Bug Fixes
 * Fix occurrence of unregistered block [#2247](https://github.com/godaddy-wordpress/coblocks/pull/2247)
 
 = 2.21.0 / 2022-01-26 =
-### Enhancements
+##### Enhancements
 * Introduce Counter Block [#2224](https://github.com/godaddy-wordpress/coblocks/pull/2224)
 
-### Bug Fixes
+##### Bug Fixes
 * Fix cases of improperly enqueued assets [#2243](https://github.com/godaddy-wordpress/coblocks/pull/2243)
 * Fix styles with Twenty Twenty-Two theme in 5.9 [#2237](https://github.com/godaddy-wordpress/coblocks/pull/2237)
 * Fix Lightbox for Gallery block in 5.9 [#2239](https://github.com/godaddy-wordpress/coblocks/pull/2239)
 * Fix Form block input styles in editor. [#2209](https://github.com/godaddy-wordpress/coblocks/pull/2209)
 
 = 2.20.1 / 2022-01-25 =
-### Bug Fixes
+##### Bug Fixes
 * Fix CSS issue with CoBlocks extensions [#2236](https://github.com/godaddy-wordpress/coblocks/pull/2236)
 
 = 2.20.0 / 2022-01-24 =
-### Enhancements
+##### Enhancements
 * Introduce Request a Quote variation to Form block [#2149](https://github.com/godaddy-wordpress/coblocks/pull/2149)
 * Add compatibility with WordPress 5.9 [#2232](https://github.com/godaddy-wordpress/coblocks/pull/2232)
 * Remove crop control from Masonry block [#2207](https://github.com/godaddy-wordpress/coblocks/pull/2207)
@@ -174,7 +174,7 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 * Enhance accessibility of some blocks [#2158](https://github.com/godaddy-wordpress/coblocks/pull/2158)
 * Enhance slider component [#2197](https://github.com/godaddy-wordpress/coblocks/pull/2197)
 
-### Bug Fixes
+##### Bug Fixes
 * Fix Gist file embed [#2219](https://github.com/godaddy-wordpress/coblocks/pull/2219)
 * Fix "jumping" Form block layout within editor. [#2208](https://github.com/godaddy-wordpress/coblocks/pull/2208)
 * Fix Fonts size picker for WP 5.9 [#2183](https://github.com/godaddy-wordpress/coblocks/pull/2183)
@@ -183,7 +183,7 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 * Fix FAQ block issues [#2200](https://github.com/godaddy-wordpress/coblocks/pull/2200) and [#2193](https://github.com/godaddy-wordpress/coblocks/pull/2193)
 * Fix Google Maps marker assets path, so that the marker shows [#2182](https://github.com/godaddy-wordpress/coblocks/pull/2182)
 
-### Misc
+##### Misc
 * Improve build pipeline for perf tests [#2228](https://github.com/godaddy-wordpress/coblocks/pull/2228)
 * Upgrade dependencies to fix security vulnerabilities [#2220](https://github.com/godaddy-wordpress/coblocks/pull/2220)
 * Project Structure change [#2221](https://github.com/godaddy-wordpress/coblocks/pull/2221)
