@@ -55,7 +55,6 @@ const PostCarousel = ( props ) => {
 
 	const {
 		displayPostContent,
-		displayPostDate,
 		displayPostLink,
 		externalRssUrl,
 		postFeedType,
@@ -104,7 +103,7 @@ const PostCarousel = ( props ) => {
 	}, [ displayPostLink, displayPostContent ] );
 
 	useEffect( () => {
-		if ( postFeedType === 'external' && ! editing ) {
+		if ( postFeedType === 'external' ) {
 			setTimeout( () => {
 				const postCarouselContainer = document.querySelector( `.wp-block-coblocks-post-carousel-external-container-${ carouselUuid }` );
 
@@ -177,6 +176,7 @@ const PostCarousel = ( props ) => {
 						navigation
 						navigationClass="wp-coblocks-post-carousel-nav-button"
 						slidesPerView={ columns }
+						spaceBetween={ 35 }
 					>
 						{ ( { index: i, item: post } ) => {
 							return (
@@ -187,7 +187,7 @@ const PostCarousel = ( props ) => {
 				</div>
 			</>
 		);
-	}, [ columns, displayPostContent, displayPostDate, displayPostLink, displayPosts ] );
+	}, [ columns, displayPosts ] );
 
 	if ( ! hasPosts && postFeedType === 'internal' ) {
 		return (

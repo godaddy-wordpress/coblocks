@@ -1,6 +1,7 @@
 /**
  * External dependencies
  */
+import classnames from 'classnames';
 import { v4 as generateUuid } from 'uuid';
 import TinySwiper from 'tiny-swiper';
 import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
@@ -42,6 +43,7 @@ const Swiper = ( props ) => {
 		freeScroll = false,
 		uuid = null,
 		slidesPerView = 1,
+		spaceBetween = 0,
 		navigationClass = null,
 	} = props;
 
@@ -97,6 +99,7 @@ const Swiper = ( props ) => {
 					TinySwiperPluginNavigation,
 				],
 				slidesPerView,
+				spaceBetween,
 				touchable: false,
 			} );
 
@@ -175,12 +178,24 @@ const Swiper = ( props ) => {
 	}, [ isDraggable ] );
 
 	const renderNavigation = useMemo( () => {
+		const prevButtonClasses = classnames( {
+			[ `${ navigationClass }__prev` ]: navigationClass,
+			'nav-button__prev': ! navigationClass,
+			'no-navigation': navigation === false,
+		} );
+
+		const nextButtonClasses = classnames( {
+			[ `${ navigationClass }__next` ]: navigationClass,
+			'nav-button__next': ! navigationClass,
+			'no-navigation': navigation === false,
+		} );
+
 		return (
 			<>
-				<button className={ navigationClass ? `${ navigationClass }__prev` : `nav-button__prev ${ navigation === false && 'no-navigation' }` } id={ `${ uuid }-prev` }>
+				<button className={ prevButtonClasses } id={ `${ uuid }-prev` }>
 					<svg className="icon" style={ { transform: 'rotate(180deg)' } } />
 				</button>
-				<button className={ navigationClass ? `${ navigationClass }__next` : `nav-button__next ${ navigation === false && 'no-navigation' }` } id={ `${ uuid }-next` }>
+				<button className={ nextButtonClasses } id={ `${ uuid }-next` }>
 					<svg className="icon" />
 				</button>
 			</>

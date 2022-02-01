@@ -35,6 +35,7 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 								TinySwiperPluginNavigation,
 							],
 							slidesPerView: swiperData.slidesToShow,
+							spaceBetween: 35,
 							touchable: false,
 						} );
 					}
