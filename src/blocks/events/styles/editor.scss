@@ -80,6 +80,20 @@
 	}
 }
 
+.coblocks-events-block-inner-blocks-container-edit .block-editor-inner-blocks .block-editor-block-list__layout {
+	[data-type="coblocks/event-item"]:not(:first-of-type) {
+		display: none;
+	}
+
+	[data-type="coblocks/event-item"] {
+		pointer-events: none;
+	}
+
+	.block-editor-button-block-appender {
+		display: none;
+	}
+}
+
 .coblocks-events-block-inner-blocks-container .block-editor-inner-blocks .block-editor-block-list__layout {
 	align-items: stretch;
 	display: flex;

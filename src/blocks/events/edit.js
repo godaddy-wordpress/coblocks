@@ -90,25 +90,43 @@ const EventsEdit = ( props ) => {
 		insertBlock( newEvent, innerBlocks.length, clientId, true );
 	};
 
-	const toolbarControls = showExternalCalendarControls ? [ {
+	// const toolbarControls = showExternalCalendarControls ? [ {
+	// 	icon: edit,
+	// 	onClick: () => {
+	// 		if ( !! externalCalendarUrl ) {
+	// 			setAttributes( { externalCalendarUrl: null } );
+	// 		}
+	// 	},
+	// 	title: __( 'Edit calendar URL', 'coblocks' ),
+	// } ] : [];
+
+	const toolbarControls = [ {
 		icon: edit,
-		onClick: () => {
+		onClick: showExternalCalendarControls ? () => {
 			if ( !! externalCalendarUrl ) {
 				setAttributes( { externalCalendarUrl: null } );
 			}
+		} : () => {
+			setIsEditing( ! isEditing );
 		},
-		title: __( 'Edit calendar URL', 'coblocks' ),
-	} ] : [];
+		title: showExternalCalendarControls ? __( 'Edit calendar URL', 'coblocks' ) : __( 'Edit events', 'coblocks' ),
+	} ];
 
 	const renderInnerBlocks = () => {
 		return (
-			<div className="coblocks-events-block-inner-blocks-container">
+			<div className={ isEditing ? 'coblocks-events-block-inner-blocks-container-edit' : 'coblocks-events-block-inner-blocks-container' }>
 				<InnerBlocks
 					allowedBlocks={ ALLOWED_BLOCKS }
 					renderAppender={ () => <CustomAppender onClick={ insertNewItem } /> }
 					template={ TEMPLATE }
 					templateInsertUpdatesSelection={ false }
 				/>
+				{ isEditing && (
+					<>
+						<button className="coblocks-events-nav-button__prev" disabled />
+						<button className="coblocks-events-nav-button__next" disabled />
+					</>
+				) }
 			</div>
 		);
 	};
