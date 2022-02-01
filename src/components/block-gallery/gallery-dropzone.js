@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import PropTypes from 'prop-types';
+
+/**
  * WordPress dependencies
  */
 import { DropZone } from '@wordpress/components';
@@ -27,6 +32,12 @@ const GalleryDropZone = ( props ) => {
 			onFilesDrop={ addFiles }
 		/>
 	);
+};
+
+GalleryDropZone.propTypes = {
+	label: PropTypes.string,
+	noticeOperations: PropTypes.object,
+	onSelect: PropTypes.func,
 };
 
 export default GalleryDropZone;

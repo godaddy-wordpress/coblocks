@@ -1,12 +1,17 @@
 /**
  * WordPress dependencies
  */
-import { compose } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
-import { InspectorControls, withColors, PanelColorSettings } from '@wordpress/block-editor';
-import { withDispatch, withSelect } from '@wordpress/data';
+import { compose } from '@wordpress/compose';
 import { hasBlockSupport } from '@wordpress/blocks';
+import { InspectorControls, PanelColorSettings, withColors } from '@wordpress/block-editor';
+import { withDispatch, withSelect } from '@wordpress/data';
+
+/**
+ * External dependencies
+ */
+import PropTypes from 'prop-types';
 
 /**
  * Color Settings
@@ -15,7 +20,7 @@ class LabelColorControl extends Component {
 	componentDidUpdate() {
 		const { updateInnerAttributes, attributes } = this.props;
 		const { textColor, customTextColor } = attributes;
-		updateInnerAttributes( { textColor, customTextColor } );
+		updateInnerAttributes( { customTextColor, textColor } );
 	}
 
 	render() {
@@ -25,17 +30,17 @@ class LabelColorControl extends Component {
 		} = this.props;
 
 		const colorSettings = [ {
-			value: textColor?.color || '',
-			onChange: setTextColor,
 			label: __( 'Label color', 'coblocks' ),
+			onChange: setTextColor,
+			value: textColor?.color || '',
 		} ];
 
 		return (
 			<InspectorControls>
 				<PanelColorSettings
-					title={ __( 'Color settings', 'coblocks' ) }
-					initialOpen={ false }
 					colorSettings={ colorSettings }
+					initialOpen={ false }
+					title={ __( 'Color settings', 'coblocks' ) }
 				>
 				</PanelColorSettings>
 			</InspectorControls>
@@ -74,3 +79,10 @@ export default compose( [
 		};
 	} ),
 ] )( LabelColorControl );
+
+LabelColorControl.propTypes = {
+	attributes: PropTypes.object,
+	setTextColor: PropTypes.func,
+	textColor: PropTypes.object,
+	updateInnerAttributes: PropTypes.func,
+};

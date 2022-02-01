@@ -1,65 +1,66 @@
 /**
  * External dependencies.
  */
-import { kebabCase } from 'lodash';
-import { SettingsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 import classnames from 'classnames';
+import { SettingsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { kebabCase } from 'lodash';
+import PropTypes from 'prop-types';
 
 /**
  * WordPress dependencies
  */
+import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
 import {
 	BaseControl,
 	Button,
 	ButtonGroup,
+	Icon,
 	PanelRow,
 	RangeControl,
 	Tooltip,
-	Icon,
 } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
 
 /**
  * Constants
  */
 const DEFAULT_OPTIONS = [
 	{
-		value: 1,
 		/* translators: abbreviation for small size */
 		label: __( 'S', 'coblocks' ),
 		tooltip: __( 'Small', 'coblocks' ),
+		value: 1,
 	},
 	{
-		value: 2,
 		/* translators: abbreviation for medium size */
 		label: __( 'M', 'coblocks' ),
 		tooltip: __( 'Medium', 'coblocks' ),
+		value: 2,
 	},
 	{
-		value: 3,
 		/* translators: abbreviation for large size */
 		label: __( 'L', 'coblocks' ),
 		tooltip: __( 'Large', 'coblocks' ),
+		value: 3,
 	},
 	{
-		value: 4,
 		/* translators: abbreviation for extra large size */
 		label: __( 'XL', 'coblocks' ),
 		tooltip: __( 'Extra Large', 'coblocks' ),
+		value: 4,
 	},
 ];
 
 const NONE_OPTION = {
-	value: 0,
 	label: __( 'None', 'coblocks' ),
 	tooltip: __( 'None', 'coblocks' ),
+	value: 0,
 };
 
 const CUSTOM_OPTION = {
-	value: 'custom',
 	label: <Icon icon={ icon } />,
 	tooltip: __( 'Custom', 'coblocks' ),
+	value: 'custom',
 };
 
 export default class OptionSelectorControl extends Component {
@@ -92,21 +93,21 @@ export default class OptionSelectorControl extends Component {
 			? (
 				<RangeControl
 					label={ label }
-					value={ currentOption }
-					onChange={ ( value ) => onChange( value ) }
-					min={ advancedMinValue }
 					max={ advancedMaxValue }
+					min={ advancedMinValue }
+					onChange={ ( value ) => onChange( value ) }
+					value={ currentOption }
 				/>
 			) : (
 				<BaseControl
-					id={ `coblocks-option-selector-${ kebabCase( label ) }` }
-					label={ label }
 					className={ classnames(
 						'coblocks-option-selector-control',
 						{
 							'is-custom': currentOption === 'custom',
 						}
-					) }>
+					) }
+					id={ `coblocks-option-selector-${ kebabCase( label ) }` }
+					label={ label }>
 					<PanelRow>
 						<ButtonGroup aria-label={ label }>
 
@@ -116,11 +117,11 @@ export default class OptionSelectorControl extends Component {
 									text={ option.tooltip }>
 
 									<Button
-										isSecondary={ currentOption !== option.value }
-										isPrimary={ currentOption === option.value }
+										aria-label={ option.tooltip }
 										aria-pressed={ currentOption === option.value }
-										onClick={ () => onChange( option.value ) }
-										aria-label={ option.tooltip }>
+										isPrimary={ currentOption === option.value }
+										isSecondary={ currentOption !== option.value }
+										onClick={ () => onChange( option.value ) }>
 
 										{ showIcons ? option.icon : option.label }
 
@@ -136,3 +137,19 @@ export default class OptionSelectorControl extends Component {
 		);
 	}
 }
+
+OptionSelectorControl.propTypes = {
+	advancedMaxValue: PropTypes.number,
+	advancedMinValue: PropTypes.number,
+	currentOption: PropTypes.oneOfType( [
+		PropTypes.string,
+		PropTypes.number,
+	] ),
+	label: PropTypes.string,
+	onChange: PropTypes.func,
+	options: PropTypes.array,
+	showAdvancedControls: PropTypes.bool,
+	showCustomOption: PropTypes.bool,
+	showIcons: PropTypes.bool,
+	showNoneOption: PropTypes.bool,
+};
