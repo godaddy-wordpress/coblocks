@@ -71,12 +71,37 @@
 	}
 
 	&__prev {
-		left: -5em;
+		left: -4em;
 		transform: rotate(180deg);
 	}
 
 	&__next {
-		right: -5em;
+		right: -4em;
+	}
+}
+
+.coblocks-events-swiper-container-external-calendar-edit div .wp-block-coblocks-events-front-container .wp-block-coblocks-front-events-swiper-container .wp-block-coblocks-events {
+
+	.wp-block-coblocks-event-item:not(:first-of-type) {
+		display: none !important;
+	}
+
+	.wp-block-coblocks-event-item {
+		pointer-events: none;
+	}
+}
+
+.coblocks-events-swiper-container-external-calendar-edit .coblocks-events-nav-button {
+	&__prev,
+	&__next {
+		top: 10%;
+	}
+}
+
+.coblocks-events-block-inner-blocks-container-edit .coblocks-events-nav-button {
+	&__prev,
+	&__next {
+		top: 10%;
 	}
 }
 
@@ -91,6 +116,13 @@
 
 	.block-editor-button-block-appender {
 		display: none;
+	}
+
+	.coblocks-events-nav-button {
+		&__prev,
+		&__next {
+			top: 10% !important;
+		}
 	}
 }
 

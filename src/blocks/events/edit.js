@@ -90,27 +90,36 @@ const EventsEdit = ( props ) => {
 		insertBlock( newEvent, innerBlocks.length, clientId, true );
 	};
 
-	// const toolbarControls = showExternalCalendarControls ? [ {
-	// 	icon: edit,
-	// 	onClick: () => {
-	// 		if ( !! externalCalendarUrl ) {
-	// 			setAttributes( { externalCalendarUrl: null } );
-	// 		}
-	// 	},
-	// 	title: __( 'Edit calendar URL', 'coblocks' ),
-	// } ] : [];
-
-	const toolbarControls = [ {
+	const toolbarControls = showExternalCalendarControls ? [ {
 		icon: edit,
-		onClick: showExternalCalendarControls ? () => {
+		onClick: () => {
 			if ( !! externalCalendarUrl ) {
 				setAttributes( { externalCalendarUrl: null } );
 			}
-		} : () => {
+		},
+		title: __( 'Edit calendar URL', 'coblocks' ),
+	}, {
+		icon: 'visibility',
+		onClick: () => {
 			setIsEditing( ! isEditing );
 		},
-		title: showExternalCalendarControls ? __( 'Edit calendar URL', 'coblocks' ) : __( 'Edit events', 'coblocks' ),
+		title: isEditing ? __( 'View carousel', 'coblocks' ) : __( 'Hide carousel', 'coblocks' ),
+	} ] : [ {
+		icon: edit,
+		onClick: () => {
+			setIsEditing( ! isEditing );
+		},
+		title: ! isEditing ? __( 'View carousel', 'coblocks' ) : __( 'Edit events', 'coblocks' ),
 	} ];
+
+	const renderCarouselButtons = () => {
+		return (
+			<>
+				<button className="coblocks-events-nav-button__prev" disabled />
+				<button className="coblocks-events-nav-button__next" disabled />
+			</>
+		);
+	};
 
 	const renderInnerBlocks = () => {
 		return (
@@ -122,12 +131,23 @@ const EventsEdit = ( props ) => {
 					templateInsertUpdatesSelection={ false }
 				/>
 				{ isEditing && (
-					<>
-						<button className="coblocks-events-nav-button__prev" disabled />
-						<button className="coblocks-events-nav-button__next" disabled />
-					</>
+					renderCarouselButtons()
 				) }
 			</div>
+		);
+	};
+
+	const renderExternalCalendar = () => {
+		return (
+			<span className={ isEditing ? 'coblocks-events-swiper-container-external-calendar-edit' : 'coblocks-events-swiper-container-external-calendar' }>
+				<ServerSideRender
+					attributes={ attributes }
+					block="coblocks/events"
+				/>
+				{ isEditing && (
+					renderCarouselButtons()
+				) }
+			</span>
 		);
 	};
 
@@ -199,12 +219,7 @@ const EventsEdit = ( props ) => {
 				tabIndex="0"
 			>
 				{ showExternalCalendarControls && !! externalCalendarUrl ? (
-					<span className="coblocks-events-swiper-container-external-calendar">
-						<ServerSideRender
-							attributes={ attributes }
-							block="coblocks/events"
-						/>
-					</span>
+					renderExternalCalendar()
 				) : (
 					renderInnerBlocks()
 				) }
