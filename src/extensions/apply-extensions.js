@@ -3,7 +3,6 @@
  */
 import { applyAttributes as formLabelColorsApplyAttributes } from '../components/form-label-colors';
 import { applyAttributes as gutterControlApplyAttributes } from '../components/gutter-control';
-import { useReplaceImage as replaceImage } from './replace-image';
 import {
 	useAdvancedControls as advancedControls,
 	applyAttributes as advancedControlsApplyAttributes,
@@ -267,7 +266,6 @@ const applyAllControls = createHigherOrderComponent( ( BlockEdit ) => {
 				{ imageFilter( props ) }
 				{ lightbox( props ) }
 				{ paddingControls( props ) }
-				{ replaceImage( props ) }
 				{ typography( props ) }
 			</>
 		);
