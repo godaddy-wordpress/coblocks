@@ -1,6 +1,7 @@
 /**
  * External dependencies
  */
+import PropTypes from 'prop-types';
 import { range } from 'lodash';
 
 /**
@@ -51,3 +52,15 @@ class HeadingToolbar extends Component {
 }
 
 export default HeadingToolbar;
+
+HeadingToolbar.propTypes = {
+	isCollapsed: PropTypes.bool.isRequired,
+	maxLevel: PropTypes.number,
+	minLevel: PropTypes.number,
+	onChange: PropTypes.func,
+	selectedLevel: PropTypes.number,
+};
+
+HeadingToolbar.defaultProps = {
+	isCollapsed: true,
+};

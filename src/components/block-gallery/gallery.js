@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 /**
  * WordPress dependencies
@@ -143,3 +144,19 @@ function RichTextVisibilityHelper( {
 }
 
 export default Gallery;
+
+Gallery.propTypes = {
+	attributes: PropTypes.object.isRequired,
+	blockProps: PropTypes.object,
+	insertBlocksAfter: PropTypes.func,
+	isSelected: PropTypes.bool.isRequired,
+	mediaPlaceholder: PropTypes.elementType,
+	setAttributes: PropTypes.func,
+	wrapperClass: PropTypes.string.isRequired,
+};
+
+Gallery.defaultProps = {
+	attributes: {},
+	isSelected: false,
+	wrapperClass: '',
+};
