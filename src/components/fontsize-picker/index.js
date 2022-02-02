@@ -5,6 +5,11 @@
 import { FontSizePicker } from '@wordpress/block-editor';
 
 /**
+ * External dependencies
+ */
+import PropTypes from 'prop-types';
+
+/**
  * CoBlocksFontSizePicker is a functional component to interface `withFontSizes` hoc to FontSizePicker controls.
  *
  * @param {Object} props Accepts block props provided by `withFontSizes`.
@@ -26,3 +31,11 @@ const CoBlocksFontSizePicker = ( props ) => {
 };
 
 export default CoBlocksFontSizePicker;
+
+CoBlocksFontSizePicker.propTypes = {
+	fallbackFontSize: PropTypes.number,
+	fontSize: PropTypes.shape( {
+		size: PropTypes.string,
+	} ),
+	setFontSize: PropTypes.func,
+};

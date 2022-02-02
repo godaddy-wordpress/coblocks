@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 /**
  * Internal dependencies
@@ -12,7 +13,7 @@ import CSSGridControl from './';
  * WordPress dependencies
  */
 import { DOWN } from '@wordpress/keycodes';
-import { ToolbarButton, Dropdown, NavigableMenu } from '@wordpress/components';
+import { Dropdown, NavigableMenu, ToolbarButton } from '@wordpress/components';
 
 function CSSGridToolbar( {
 	icon = 'menu',
@@ -25,6 +26,19 @@ function CSSGridToolbar( {
 		<Dropdown
 			className={ classnames( 'components-dropdown-menu', className ) }
 			contentClassName="components-dropdown-menu__popover"
+			renderContent={ () => {
+				return (
+					<NavigableMenu
+						aria-label={ menuLabel }
+						className="components-coblocks-grid-dropdown"
+						role="menu"
+					>
+						<CSSGridControl { ...props }
+							tooltip={ false }
+						/>
+					</NavigableMenu>
+				);
+			} }
 			renderToggle={ ( { isOpen, onToggle } ) => {
 				const openOnArrowDown = ( event ) => {
 					if ( ! isOpen && event.keyCode === DOWN ) {
@@ -35,27 +49,14 @@ function CSSGridToolbar( {
 				};
 				return (
 					<ToolbarButton
-						onClick={ onToggle }
-						aria-haspopup="true"
 						aria-expanded={ isOpen }
-						onKeyDown={ openOnArrowDown }
-						label={ label }
+						aria-haspopup="true"
 						icon={ icon }
+						label={ label }
+						onClick={ onToggle }
+						onKeyDown={ openOnArrowDown }
 						showTooltip
 					/>
-				);
-			} }
-			renderContent={ () => {
-				return (
-					<NavigableMenu
-						className="components-coblocks-grid-dropdown"
-						role="menu"
-						aria-label={ menuLabel }
-					>
-						<CSSGridControl { ...props }
-							tooltip={ false }
-						/>
-					</NavigableMenu>
 				);
 			} }
 		/>
@@ -63,3 +64,15 @@ function CSSGridToolbar( {
 }
 
 export default CSSGridToolbar;
+
+CSSGridToolbar.propTypes = {
+	className: PropTypes.string,
+	icon: PropTypes.string.isRequired,
+	label: PropTypes.string,
+	menuLabel: PropTypes.string,
+	props: PropTypes.object,
+};
+
+CSSGridToolbar.defaultProps = {
+	icon: 'menu',
+};

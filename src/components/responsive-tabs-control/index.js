@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import PropTypes from 'prop-types';
+
+/**
  * Internal dependencies
  */
 import icons from './icons';
@@ -18,14 +23,18 @@ class ResponsiveTabsControl extends Component {
 	}
 
 	setGutterTo( value ) {
+		const { setAttributes } = this.props;
+
 		if ( 0 === value ) {
-			this.props.setAttributes( { radius: value } );
+			setAttributes( { radius: value } );
 		}
-		this.props.setAttributes( { gutter: value } );
+		setAttributes( { gutter: value } );
 	}
 
 	setGutterMobileTo( value ) {
-		this.props.setAttributes( { gutterMobile: value } );
+		const { setAttributes } = this.props;
+
+		setAttributes( { gutterMobile: value } );
 	}
 
 	render() {
@@ -42,19 +51,19 @@ class ResponsiveTabsControl extends Component {
 		return (
 			<Fragment>
 				<TabPanel
-					className="components-base-control components-coblocks-responsive__tabs"
 					activeClass="is-primary"
+					className="components-base-control components-coblocks-responsive__tabs"
 					initialTabName="desk"
 					tabs={ [
 						{
+							className: 'components-coblocks-responsive__tabs-item components-coblocks-responsive__tabs-item--desktop components-button is-button is-default',
 							name: 'desk',
 							title: icons.desktopChrome,
-							className: 'components-coblocks-responsive__tabs-item components-coblocks-responsive__tabs-item--desktop components-button is-button is-default',
 						},
 						{
+							className: 'components-coblocks-responsive__tabs-item components-coblocks-responsive__tabs-item--mobile components-button is-button is-default',
 							name: 'mobile',
 							title: icons.mobile,
-							className: 'components-coblocks-responsive__tabs-item components-coblocks-responsive__tabs-item--mobile components-button is-button is-default',
 						},
 					] }>
 					{
@@ -67,22 +76,22 @@ class ResponsiveTabsControl extends Component {
 											__( 'Mobile %s', 'coblocks' ),
 											label
 										) }
-										value={ attributes.valueMobile ?? attributes.gutterMobile }
-										onChange={ ( valueMobile ) => onChangeMobile( valueMobile ) }
-										min={ min }
 										max={ max }
+										min={ min }
+										onChange={ ( valueMobile ) => onChangeMobile( valueMobile ) }
 										step={ step }
+										value={ attributes.valueMobile ?? attributes.gutterMobile }
 									/>
 								);
 							}
 							return (
 								<RangeControl
 									label={ label }
-									value={ attributes.value ?? attributes.gutter }
-									onChange={ ( value ) => onChange( value ) }
-									min={ min }
 									max={ max }
+									min={ min }
+									onChange={ ( value ) => onChange( value ) }
 									step={ step }
+									value={ attributes.value ?? attributes.gutter }
 								/>
 							);
 						}
@@ -94,3 +103,21 @@ class ResponsiveTabsControl extends Component {
 }
 
 export default ResponsiveTabsControl;
+
+ResponsiveTabsControl.propTypes = {
+	attributes: PropTypes.object,
+	label: PropTypes.string.isRequired,
+	max: PropTypes.number.isRequired,
+	min: PropTypes.number.isRequired,
+	onChange: PropTypes.func,
+	onChangeMobile: PropTypes.func,
+	setAttributes: PropTypes.func,
+	step: PropTypes.number.isRequired,
+};
+
+ResponsiveTabsControl.defaultProps = {
+	label: __( 'Gutter', 'coblocks' ),
+	max: 50,
+	min: 0,
+	step: 5,
+};
