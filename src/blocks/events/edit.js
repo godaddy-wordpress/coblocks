@@ -17,10 +17,11 @@ import classNames from 'classnames';
 import { createBlock } from '@wordpress/blocks';
 import { edit } from '@wordpress/icons';
 import ServerSideRender from '@wordpress/server-side-render';
+import { usePrevious } from '@wordpress/compose';
 import { BlockControls, InnerBlocks } from '@wordpress/block-editor';
 import { Button, Placeholder, TextControl, ToolbarGroup, Tooltip } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
-import { useMemo, useRef, useState } from '@wordpress/element';
+import { useEffect, useMemo, useRef, useState } from '@wordpress/element';
 
 const ALLOWED_BLOCKS = [ 'coblocks/event-item' ];
 
@@ -56,10 +57,18 @@ const EventsEdit = ( props ) => {
 	const [ showExternalCalendarControls, setShowExternalCalendarControls ] = useState( !! externalCalendarUrl || false );
 	const [ stateExternalCalendarUrl, setStateExternalCalendarUrl ] = useState( externalCalendarUrl );
 
+	const prevShowCarousel = usePrevious( attributes.showCarousel );
+
 	const innerBlocksRef = useRef( null );
 	const toolbarRef = useRef( null );
 
 	const carouselUuid = useMemo( () => generateUuid(), [] );
+
+	useEffect( () => {
+		if ( prevShowCarousel === true && attributes.showCarousel === false && isEditing === true ) {
+			setIsEditing( false );
+		}
+	}, [ attributes.showCarousel, isEditing, prevShowCarousel ] );
 
 	const handleSelectBlock = () => {
 		const innerBlockSelected = innerBlocks.some( ( innerBlock ) => innerBlock.clientId === selectedBlock.clientId );
@@ -90,7 +99,7 @@ const EventsEdit = ( props ) => {
 		insertBlock( newEvent, innerBlocks.length, clientId, true );
 	};
 
-	const toolbarControls = showExternalCalendarControls ? [ {
+	const externalCalendarControls = attributes.showCarousel ? [ {
 		icon: edit,
 		onClick: () => {
 			if ( !! externalCalendarUrl ) {
@@ -105,14 +114,28 @@ const EventsEdit = ( props ) => {
 			setIsEditing( ! isEditing );
 		},
 		title: isEditing ? __( 'View carousel', 'coblocks' ) : __( 'Hide carousel', 'coblocks' ),
-	} ] : [ {
+	} ] : [
+		{
+			icon: edit,
+			onClick: () => {
+				if ( !! externalCalendarUrl ) {
+					setAttributes( { externalCalendarUrl: null } );
+				}
+			},
+			title: __( 'Edit calendar URL', 'coblocks' ),
+		},
+	];
+
+	const manualControls = attributes.showCarousel && [ {
 		icon: edit,
-		isActive: isEditing,
+		isActive: ! isEditing,
 		onClick: () => {
 			setIsEditing( ! isEditing );
 		},
 		title: ! isEditing ? __( 'View carousel', 'coblocks' ) : __( 'Edit events', 'coblocks' ),
 	} ];
+
+	const toolbarControls = showExternalCalendarControls ? externalCalendarControls : manualControls;
 
 	const renderCarouselButtons = () => {
 		const carouselButtonTooltip = __( 'The carousel will only work within the front end.', 'coblocks' );
@@ -142,7 +165,7 @@ const EventsEdit = ( props ) => {
 					template={ TEMPLATE }
 					templateInsertUpdatesSelection={ false }
 				/>
-				{ isEditing && (
+				{ isEditing && attributes.showCarousel && (
 					renderCarouselButtons()
 				) }
 			</div>
@@ -156,7 +179,7 @@ const EventsEdit = ( props ) => {
 					attributes={ attributes }
 					block="coblocks/events"
 				/>
-				{ isEditing && (
+				{ isEditing && attributes.showCarousel && (
 					renderCarouselButtons()
 				) }
 			</span>
