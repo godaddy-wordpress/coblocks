@@ -35,6 +35,7 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 							plugins: [
 								TinySwiperPluginNavigation,
 							],
+							spaceBetween: 10,
 							touchable: false,
 						} );
 					}

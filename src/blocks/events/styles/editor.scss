@@ -54,6 +54,22 @@
 	border: 1px dashed rgba(123, 134, 162, 0.3);
 }
 
+.coblocks-events-carousel-button-container {
+	&__prev,
+	&__next {
+		position: absolute;
+		top: 50%;
+	}
+
+	&__prev {
+		left: -4em;
+	}
+
+	&__next {
+		right: -4em;
+	}
+}
+
 .coblocks-events-nav-button {
 	&__prev,
 	&__next {
@@ -66,21 +82,26 @@
 		margin: 0 1%;
 		padding: 15px;
 		position: absolute;
-		top: 50%;
+		// top: 50%;
 		width: 62px;
+
+		&.event-catcher {
+			display: none;
+		}
 	}
 
 	&__prev {
-		left: -4em;
+		left: -3rem;
 		transform: rotate(180deg);
 	}
 
 	&__next {
-		right: -4em;
+		right: -3em;
 	}
 }
 
 .coblocks-events-swiper-container-external-calendar-edit div .wp-block-coblocks-events-front-container .wp-block-coblocks-front-events-swiper-container .wp-block-coblocks-events {
+	pointer-events: none;
 
 	.wp-block-coblocks-event-item:not(:first-of-type) {
 		display: none !important;

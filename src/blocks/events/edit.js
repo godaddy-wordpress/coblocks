@@ -18,7 +18,7 @@ import { createBlock } from '@wordpress/blocks';
 import { edit } from '@wordpress/icons';
 import ServerSideRender from '@wordpress/server-side-render';
 import { BlockControls, InnerBlocks } from '@wordpress/block-editor';
-import { Button, Placeholder, TextControl, ToolbarGroup } from '@wordpress/components';
+import { Button, Placeholder, TextControl, ToolbarGroup, Tooltip } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { useMemo, useRef, useState } from '@wordpress/element';
 
@@ -100,12 +100,14 @@ const EventsEdit = ( props ) => {
 		title: __( 'Edit calendar URL', 'coblocks' ),
 	}, {
 		icon: 'visibility',
+		isActive: isEditing,
 		onClick: () => {
 			setIsEditing( ! isEditing );
 		},
 		title: isEditing ? __( 'View carousel', 'coblocks' ) : __( 'Hide carousel', 'coblocks' ),
 	} ] : [ {
 		icon: edit,
+		isActive: isEditing,
 		onClick: () => {
 			setIsEditing( ! isEditing );
 		},
@@ -113,10 +115,20 @@ const EventsEdit = ( props ) => {
 	} ];
 
 	const renderCarouselButtons = () => {
+		const carouselButtonTooltip = __( 'The carousel will only work within the front end.', 'coblocks' );
 		return (
 			<>
-				<button className="coblocks-events-nav-button__prev" disabled />
-				<button className="coblocks-events-nav-button__next" disabled />
+				<span className="coblocks-events-carousel-button-container__prev">
+					<Tooltip delay={ 0 } text={ carouselButtonTooltip } >
+						<span className="coblocks-events-nav-button__prev" disabled />
+					</Tooltip>
+				</span>
+
+				<span className="coblocks-events-carousel-button-container__next">
+					<Tooltip delay={ 0 } text={ carouselButtonTooltip } >
+						<span className="coblocks-events-nav-button__next" disabled />
+					</Tooltip>
+				</span>
 			</>
 		);
 	};
