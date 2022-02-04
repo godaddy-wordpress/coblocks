@@ -7,16 +7,16 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import applyWithColors from './colors';
-import Inspector from './inspector';
 import Controls from './controls';
+import Inspector from './inspector';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
-import { RichText, useBlockProps } from '@wordpress/block-editor';
 import { withSelect } from '@wordpress/data';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 /**
  * Block constants
@@ -48,23 +48,37 @@ const Edit = ( props ) => {
 
 	const blockquoteClasses = classnames( className, { [ `has-text-align-${ textAlign }` ]: textAlign } );
 
-	const blockProps = useBlockProps();
+	const blockProps = useBlockProps( { className: blockquoteClasses } );
+	/**
+	 * blockStylesToDescend is an Immediately Invoked Function Expression.
+	 *
+	 * The `blockProps` will indicate in the editor what is the block root
+	 * by applying block classnames and DOM attributes. By default `blockProps`
+	 * will contain the block styles set through block supports.
+	 *
+	 * We can descend those styles into sub components and thereby
+	 * eliminate superfluous style bleed.
+	 *
+	 * @function blockStylesToDescend IIFE
+	 * @return {Object} The block styles coming from blockProps.
+	 */
+	const blockStylesToDescend = ( () => {
+		const blockStyle = { ...blockProps?.style ?? {} };
+		delete blockProps.style;
+		return blockStyle;
+	} )();
 
 	return (
 		<>
 			{ isSelected && (
-				<Controls
-					{ ...props }
-				/>
+				<>
+					<Controls { ...props } />
+					<Inspector { ...props } />
+				</>
 			) }
-			{ isSelected && (
-				<Inspector
-					{ ...props }
-				/>
-			) }
-			<blockquote className={ blockquoteClasses } { ...{ ...blockProps } }>
+			<blockquote { ...blockProps }>
 				<RichText
-					allowedFormats={ [] }
+					allowedFormats={ [] } // Disable controls.
 					className={ classnames(
 						'wp-block-coblocks-click-to-tweet__text', {
 							'has-text-color': textColor.color,
@@ -80,16 +94,18 @@ const Edit = ( props ) => {
 						if ( ! forward && hasEmptyTweet ) {
 							onReplace( [] );
 						}
-					} } // disable controls
+					} }
+					/* translators: the text of the click to tweet element */
 					placeholder={ __( 'Add a quote to tweet…', 'coblocks' ) }
 					style={ {
 						color: textColor.color,
+						...blockStylesToDescend,
 					} }
 					tagName="p"
 					value={ content }
 				/>
 				<RichText
-					allowedFormats={ [] }
+					allowedFormats={ [] } // Disable controls.
 					className={ classnames(
 						'wp-block-coblocks-click-to-tweet__twitter-btn', {
 							'has-button-color': buttonColor.color,
@@ -98,7 +114,7 @@ const Edit = ( props ) => {
 					) }
 					multiline="false"
 					onChange={ ( nextButtonText ) => setAttributes( { buttonText: nextButtonText } ) }
-					placeholder={ __( 'Add button…', 'coblocks' ) } // disable controls
+					placeholder={ __( 'Add button…', 'coblocks' ) }
 					style={ {
 						backgroundColor: buttonColor.color,
 					} }

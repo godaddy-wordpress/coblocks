@@ -8,24 +8,7 @@ import applyWithColors from './colors';
  */
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
-import { ContrastChecker, InspectorControls, PanelColorSettings, withFontSizes } from '@wordpress/block-editor';
-import { PanelBody, withFallbackStyles } from '@wordpress/components';
-
-/**
- * Contrast checker
- */
-const { getComputedStyle } = window;
-
-const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { textColor, buttonColor, fontSize, customFontSize } = ownProps.attributes;
-	const editableNode = node.querySelector( '[contenteditable="true"]' );
-	//verify if editableNode is available, before using getComputedStyle.
-	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
-	return {
-		fallbackButtonColor: buttonColor || ! computedStyles ? undefined : computedStyles.buttonColor,
-		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
-	};
-} );
+import { ContrastChecker, InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
 
 const Inspector = ( props ) => {
 	const {
@@ -70,5 +53,4 @@ const Inspector = ( props ) => {
 
 export default compose( [
 	applyWithColors,
-	applyFallbackStyles,
 ] )( Inspector );

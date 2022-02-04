@@ -39,19 +39,19 @@ export function deprecateTypographyControls( attributes ) {
  * @return {Object} Block attributes filtered for deprecation .
  */
 export function deprecateCoBlocksFontSizeControls( attributes ) {
-	addFilter(
-		'blocks.registerBlockType',
-		'coblocks/inspector/attributes',
-		( settings ) => {
-			if ( deprecatedBlocks.includes( settings.name ) ) {
-				attributes = Object.assign( attributes, fontSizeAttributes );
-				delete settings.supports;
-				delete settings.apiVersion;
+	// addFilter(
+	// 	'blocks.registerBlockType',
+	// 	'coblocks/inspector/attributes',
+	// 	( settings ) => {
+	// 		if ( deprecatedBlocks.includes( settings.name ) ) {
+	// 			attributes = Object.assign( attributes, fontSizeAttributes );
+	// 			delete settings.supports;
+	// 			// delete settings.apiVersion;
 
-				console.log( settings );
-			}
-			return settings;
-		}
-	);
+	// 			console.log( settings );
+	// 		}
+	// 		return settings;
+	// 	}
+	// );
 	return attributes;
 }
