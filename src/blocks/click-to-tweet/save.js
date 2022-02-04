@@ -8,6 +8,11 @@ import classnames from 'classnames';
  */
 import { getColorClassName, RichText, useBlockProps } from '@wordpress/block-editor';
 
+/**
+ * Internal dependencies
+ */
+import { blockStylesToDescend } from '../../utils/helper.js';
+
 const save = ( { attributes } ) => {
 	const {
 		buttonColor,
@@ -33,16 +38,19 @@ const save = ( { attributes } ) => {
 	} );
 
 	const blockquoteClasses = classnames( { [ `has-text-align-${ textAlign }` ]: textAlign } );
+	const saveBlockProps = useBlockProps.save( { className: blockquoteClasses } );
+	const descendingBlockStyles = blockStylesToDescend( saveBlockProps );
 
 	const textStyles = {
 		color: textColorClass ? undefined : customTextColor,
+		...descendingBlockStyles,
 	};
 
 	const buttonColorClass = getColorClassName( 'background-color', buttonColor );
 
 	const buttonClasses = classnames( 'wp-block-coblocks-click-to-tweet__twitter-btn', {
-		'has-button-color': buttonColor || customButtonColor,
 		[ buttonColorClass ]: buttonColorClass,
+		'has-button-color': buttonColor || customButtonColor,
 	} );
 
 	const buttonStyles = {
@@ -51,16 +59,15 @@ const save = ( { attributes } ) => {
 
 	return (
 		! RichText.isEmpty( content ) && (
-			<blockquote className={ blockquoteClasses }>
+			<blockquote { ...saveBlockProps }>
 				<RichText.Content
-					{ ...useBlockProps.save( { className: textClasses } ) }
 					className={ textClasses }
 					style={ textStyles }
 					tagName="p"
 					value={ content }
 				/>
 				<RichText.Content
-					{ ...useBlockProps.save( { className: buttonClasses } ) }
+					className={ buttonClasses }
 					href={ tweetUrl }
 					rel="noopener noreferrer"
 					style={ buttonStyles }

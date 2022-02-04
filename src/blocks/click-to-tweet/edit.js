@@ -7,6 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import applyWithColors from './colors';
+import { blockStylesToDescend } from '../../utils/helper.js';
 import Controls from './controls';
 import Inspector from './inspector';
 
@@ -15,8 +16,10 @@ import Inspector from './inspector';
  */
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
-import { withSelect } from '@wordpress/data';
-import { RichText, useBlockProps } from '@wordpress/block-editor';
+import { createBlock } from '@wordpress/blocks';
+import { useEffect } from '@wordpress/element';
+import { store as blockEditorStore, RichText, useBlockProps } from '@wordpress/block-editor';
+import { useDispatch, withSelect } from '@wordpress/data';
 
 /**
  * Block constants
@@ -34,6 +37,7 @@ const Edit = ( props ) => {
 		attributes,
 		buttonColor,
 		className,
+		clientId,
 		isSelected,
 		setAttributes,
 		textColor,
@@ -49,24 +53,40 @@ const Edit = ( props ) => {
 	const blockquoteClasses = classnames( className, { [ `has-text-align-${ textAlign }` ]: textAlign } );
 
 	const blockProps = useBlockProps( { className: blockquoteClasses } );
-	/**
-	 * blockStylesToDescend is an Immediately Invoked Function Expression.
-	 *
-	 * The `blockProps` will indicate in the editor what is the block root
-	 * by applying block classnames and DOM attributes. By default `blockProps`
-	 * will contain the block styles set through block supports.
-	 *
-	 * We can descend those styles into sub components and thereby
-	 * eliminate superfluous style bleed.
-	 *
-	 * @function blockStylesToDescend IIFE
-	 * @return {Object} The block styles coming from blockProps.
-	 */
-	const blockStylesToDescend = ( () => {
-		const blockStyle = { ...blockProps?.style ?? {} };
-		delete blockProps.style;
-		return blockStyle;
-	} )();
+	const descendingBlockStyles = blockStylesToDescend( blockProps );
+
+	const { replaceBlocks } = useDispatch( blockEditorStore );
+
+	useEffect( () => {
+		/**
+		 * This logic should only fire in the case of block deprecations.
+		 * Deprecated markup come in with old attributes and the block
+		 * must be replaced for proper instantiation.
+		 */
+		// if ( !! attributes?.images?.length && ! images?.length ) {
+		// const newBlocks = attributes?.images.map( ( image ) => {
+		// 	return createBlock( 'coblocks/click-to-tweet', {
+		// 		alt: image.alt,
+		// 		caption: image.caption?.toString(),
+		// 		id: parseInt( image.id ),
+		// 		url: image.url,
+		// 	} );
+		// } );
+
+		const migratedAttributes = { ...attributes };
+		// delete migratedAttributes.images;
+		// delete migratedAttributes.gutter;
+		// delete migratedAttributes.gutterCustom;
+
+		const transformedBlock = createBlock( 'coblocks/click-to-tweet', { ...migratedAttributes }, [] );
+		console.log( migratedAttributes );
+		console.log( transformedBlock );
+		// replaceBlocks(
+		// 	[ clientId ],
+		// 	transformedBlock,
+		// );
+		// }
+	}, [] );
 
 	return (
 		<>
@@ -99,7 +119,7 @@ const Edit = ( props ) => {
 					placeholder={ __( 'Add a quote to tweet…', 'coblocks' ) }
 					style={ {
 						color: textColor.color,
-						...blockStylesToDescend,
+						...descendingBlockStyles,
 					} }
 					tagName="p"
 					value={ content }

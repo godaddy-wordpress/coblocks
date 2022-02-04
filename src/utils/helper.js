@@ -21,6 +21,24 @@ export function overlayToClass( ratio ) {
 		: 'has-background-overlay-' + ( 10 * Math.round( ratio / 10 ) );
 }
 
+/**
+ * The `blockProps` will indicate in the editor what is the block root
+ * by applying block classnames and DOM attributes. By default `blockProps`
+ * will contain the block styles set through block supports.
+ *
+ * We can descend those styles into sub components and thereby
+ * eliminate superfluous style bleed.
+ *
+ * @param {Object} blockProps Object from `useBlockProps`
+ * @function blockStylesToDescend
+ * @return {Object} The block styles coming from blockProps.
+ */
+export const blockStylesToDescend = ( ( blockProps ) => {
+	const blockStyle = { ...blockProps?.style ?? {} };
+	delete blockProps.style;
+	return blockStyle;
+} );
+
 // Pick image media attributes.
 export const pickRelevantMediaFiles = ( image, images ) => {
 	const imageProps = pick( image, [ 'alt', 'id', 'link', 'caption', 'imgLink' ] );
