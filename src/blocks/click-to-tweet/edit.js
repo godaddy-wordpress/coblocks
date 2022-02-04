@@ -58,34 +58,24 @@ const Edit = ( props ) => {
 	const { replaceBlocks } = useDispatch( blockEditorStore );
 
 	useEffect( () => {
-		/**
-		 * This logic should only fire in the case of block deprecations.
-		 * Deprecated markup come in with old attributes and the block
-		 * must be replaced for proper instantiation.
-		 */
-		// if ( !! attributes?.images?.length && ! images?.length ) {
-		// const newBlocks = attributes?.images.map( ( image ) => {
-		// 	return createBlock( 'coblocks/click-to-tweet', {
-		// 		alt: image.alt,
-		// 		caption: image.caption?.toString(),
-		// 		id: parseInt( image.id ),
-		// 		url: image.url,
-		// 	} );
-		// } );
-
-		const migratedAttributes = { ...attributes };
-		// delete migratedAttributes.images;
-		// delete migratedAttributes.gutter;
-		// delete migratedAttributes.gutterCustom;
-
-		const transformedBlock = createBlock( 'coblocks/click-to-tweet', { ...migratedAttributes }, [] );
-		console.log( migratedAttributes );
-		console.log( transformedBlock );
-		// replaceBlocks(
-		// 	[ clientId ],
-		// 	transformedBlock,
-		// );
-		// }
+	// 	/**
+	// 	 * This logic should only fire in the case of block deprecations.
+	// 	 * Deprecated markup come in with old attributes and the block
+	// 	 * must be replaced for proper instantiation.
+	// 	 */
+		if ( !! Number.isInteger( attributes?.customFontSize ) ) {
+			const migratedAttributes = { ...attributes, style: {
+				typography: {
+					fontSize: `${ attributes?.customFontSize }px`,
+				},
+			} };
+			delete migratedAttributes.customFontSize;
+			const transformedBlock = createBlock( 'coblocks/click-to-tweet', { ...migratedAttributes }, [] );
+			replaceBlocks(
+				[ clientId ],
+				transformedBlock,
+			);
+		}
 	}, [] );
 
 	return (

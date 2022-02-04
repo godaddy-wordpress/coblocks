@@ -236,7 +236,12 @@ const deprecated = [
 	// 	}
 	// },
 	{
-		attributes: deprecateCoBlocksFontSizeControls( currentBlock.attributes ),
+		attributes: {
+			...currentBlock.attributes,
+			customFontSize: { type: 'number' },
+			fontSize: { type: 'string' },
+		},
+		supports: {},
 		save: ( props ) => {
 			const { attributes: saveAttributes } = props;
 			const {
@@ -251,8 +256,6 @@ const deprecated = [
 				textAlign,
 				via,
 			} = saveAttributes;
-
-			console.log( saveAttributes );
 
 			const viaUrl = via ? `&via=${ via }` : '';
 

@@ -31,12 +31,6 @@
 		},
 		"customTextColor": {
 			"type": "string"
-		},
-		"fontSize": {
-			"type": "string"
-		},
-		"customFontSize": {
-			"type": "string"
 		}
 	},
 	"supports": {
