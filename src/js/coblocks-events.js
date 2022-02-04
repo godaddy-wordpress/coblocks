@@ -12,33 +12,35 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 			for ( let j = 0; j < frontEndContainers.length; j++ ) {
 				const frontEndContainer = frontEndContainers[ j ];
 
-				if ( frontEndContainer ) {
-					const swiperWrapper = frontEndContainer.querySelector( '.swiper-wrapper-loading' );
+				if ( ! frontEndContainer ) {
+					return;
+				}
 
-					const totalSlides = frontEndContainer.querySelectorAll( '.swiper-slide' );
+				const swiperWrapper = frontEndContainer.querySelector( '.swiper-wrapper-loading' );
 
-					const swiperBackButton = frontEndContainer.parentNode.querySelector( `#wp-coblocks-event-swiper-prev` );
-					const swiperNextButton = frontEndContainer.parentNode.querySelector( `#wp-coblocks-event-swiper-next` );
+				const totalSlides = frontEndContainer.querySelectorAll( '.swiper-slide' );
 
-					if ( totalSlides.length > 1 && swiperWrapper ) {
-						swiperWrapper.classList.remove( 'swiper-wrapper-loading' );
-						swiperWrapper.classList.add( 'swiper-wrapper' );
+				const swiperBackButton = frontEndContainer.parentNode.querySelector( `#wp-coblocks-event-swiper-prev` );
+				const swiperNextButton = frontEndContainer.parentNode.querySelector( `#wp-coblocks-event-swiper-next` );
 
-						swiperBackButton.style.visibility = 'visible';
-						swiperNextButton.style.visibility = 'visible';
+				if ( totalSlides.length > 1 && swiperWrapper ) {
+					swiperWrapper.classList.remove( 'swiper-wrapper-loading' );
+					swiperWrapper.classList.add( 'swiper-wrapper' );
 
-						new TinySwiper( frontEndContainer, {
-							navigation: {
-								nextEl: swiperNextButton,
-								prevEl: swiperBackButton,
-							},
-							plugins: [
-								TinySwiperPluginNavigation,
-							],
-							spaceBetween: 10,
-							touchable: false,
-						} );
-					}
+					swiperBackButton.style.visibility = 'visible';
+					swiperNextButton.style.visibility = 'visible';
+
+					new TinySwiper( frontEndContainer, {
+						navigation: {
+							nextEl: swiperNextButton,
+							prevEl: swiperBackButton,
+						},
+						plugins: [
+							TinySwiperPluginNavigation,
+						],
+						spaceBetween: 10,
+						touchable: false,
+					} );
 				}
 			}
 		}, 500 );
