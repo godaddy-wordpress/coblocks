@@ -2,6 +2,7 @@
  * External dependencies
  */
 import { v4 as generateUuid } from 'uuid';
+import PropTypes from 'prop-types';
 import TinySwiper from 'tiny-swiper';
 import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
 
@@ -214,6 +215,29 @@ const Swiper = ( props ) => {
 			{ renderPagination }
 		</div>
 	);
+};
+
+Swiper.propTypes = {
+	autoPlaySpeed: PropTypes.number.isRequired,
+	children: PropTypes.node,
+	freeScroll: PropTypes.bool.isRequired,
+	isDraggable: PropTypes.bool.isRequired,
+	list: PropTypes.array,
+	loop: PropTypes.bool.isRequired,
+	navigation: PropTypes.bool.isRequired,
+	onSwipe: PropTypes.func,
+	pauseHover: PropTypes.any,
+	slidesPerView: PropTypes.number.isRequired,
+	uuid: PropTypes.string,
+};
+
+Swiper.defaultProps = {
+	autoPlaySpeed: null,
+	freeScroll: false,
+	isDraggable: true,
+	loop: true,
+	navigation: false,
+	slidesPerView: 1,
 };
 
 export default SwiperWrapper;

@@ -2,6 +2,7 @@
  * External Dependencies
  */
 import { find } from 'lodash';
+import PropTypes from 'prop-types';
 
 /**
  * Internal dependencies
@@ -90,6 +91,16 @@ const GalleryPlaceholder = ( props ) => {
 			/>
 		</div>
 	);
+};
+
+GalleryPlaceholder.propTypes = {
+	attributes: PropTypes.object,
+	gutter: PropTypes.bool,
+	icon: PropTypes.string,
+	isSelected: PropTypes.string,
+	label: PropTypes.string,
+	setAttributes: PropTypes.func,
+	variationLabel: PropTypes.string,
 };
 
 export default GalleryPlaceholder;
