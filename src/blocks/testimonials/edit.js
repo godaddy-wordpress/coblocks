@@ -100,7 +100,7 @@ const Edit = ( props ) => {
 		} );
 	}, [ backgroundColor, customBackgroundColor, customTextColor, textColor, bubbleBackgroundColor, customBubbleBackgroundColor, customBubbleTextColor, bubbleTextColor ] );
 
-	const classes = classnames( className, {
+	const classes = classnames( 'wp-block-coblocks-testimonials', {
 		'has-columns': columns > 1,
 		'has-responsive-columns': columns > 1,
 		[ `has-${ columns }-columns` ]: columns > 1,

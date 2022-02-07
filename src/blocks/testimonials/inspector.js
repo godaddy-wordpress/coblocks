@@ -83,6 +83,38 @@ const Inspector = ( props ) => {
 		},
 	];
 
+	const colorSettings = () => {
+		const colorSettingsArray = [
+			{
+				label: __( 'Background color', 'coblocks' ),
+				onChange: setBackgroundColor,
+				value: backgroundColor.color,
+			},
+			{
+				label: __( 'Text color', 'coblocks' ),
+				onChange: setTextColor,
+				value: textColor.color,
+			},
+		];
+
+		if ( activeStyle === 'conversation' ) {
+			colorSettingsArray.push( ...[
+				{
+					label: __( 'Bubble background color', 'coblocks' ),
+					onChange: setBubbleBackgroundColor,
+					value: bubbleBackgroundColor.color,
+				},
+				{
+					label: __( 'Bubble text color', 'coblocks' ),
+					onChange: setBubbleTextColor,
+					value: bubbleTextColor.color,
+				},
+			] );
+		}
+
+		return colorSettingsArray;
+	};
+
 	return (
 		<InspectorControls>
 			<PanelBody
@@ -165,38 +197,10 @@ const Inspector = ( props ) => {
 			</PanelBody>
 
 			<PanelColorSettings
-				colorSettings={ [
-					{
-						label: __( 'Background color', 'coblocks' ),
-						onChange: setBackgroundColor,
-						value: backgroundColor.color,
-					},
-					{
-						label: __( 'Text color', 'coblocks' ),
-						onChange: setTextColor,
-						value: textColor.color,
-					},
-				] }
+				colorSettings={ colorSettings() }
 				initialOpen={ false }
 				title={ __( 'Color settings', 'coblocks' ) }
 			/>
-
-			{ activeStyle === 'conversation' && <PanelColorSettings
-				colorSettings={ [
-					{
-						label: __( 'Background color', 'coblocks' ),
-						onChange: setBubbleBackgroundColor,
-						value: bubbleBackgroundColor.color,
-					},
-					{
-						label: __( 'Text color', 'coblocks' ),
-						onChange: setBubbleTextColor,
-						value: bubbleTextColor.color,
-					},
-				] }
-				initialOpen={ false }
-				title={ __( 'Bubble color settings', 'coblocks' ) }
-			/> }
 		</InspectorControls>
 	);
 };

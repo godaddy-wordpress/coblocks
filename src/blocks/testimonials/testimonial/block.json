@@ -1,6 +1,13 @@
 {
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
 	"name": "coblocks/testimonial",
-	"category": "layout",
+	"parent": [ "coblocks/testimonials" ],
+	"title": "Testimonial",
+	"category": "widgets",
+	"description": "Utilize the CoBlocks Testimonial block to display customer feedback.",
+	"keywords": [ "feedback", "review" ],
+	"textdomain": "coblocks",
 	"attributes": {
 		"alt": {
 			"type": "string",
@@ -89,5 +96,6 @@
 		"customBubbleBackgroundColor": {
 			"type": "string"
 		}
-	}
+	},
+	"style": "wp-block-coblocks-testimonial"
 }

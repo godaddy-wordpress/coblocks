@@ -207,9 +207,9 @@ const Edit = ( props ) => {
 	};
 
 	const renderHeading = () => (
-		<div className={ `${ className }__heading` }>
+		<div className={ `wp-block-coblocks-testimonial__heading` }>
 			<RichText
-				className={ `${ className }__heading__name` }
+				className={ `wp-block-coblocks-testimonial__heading__name` }
 				onChange={ ( newName ) => setAttributes( { name: newName } ) }
 				placeholder={ __( 'Enter Name', 'coblocks' ) }
 				tagName={ `h${ headingLevel }` }
@@ -217,7 +217,7 @@ const Edit = ( props ) => {
 			/>
 			{ !! showRole && (
 				<RichText
-					className={ `${ className }__heading__role` }
+					className={ `wp-block-coblocks-testimonial__heading__role` }
 					onChange={ ( newRole ) => setAttributes( { role: newRole } ) }
 					placeholder={ __( 'Who are they?', 'coblocks' ) }
 					tagName="p"
@@ -230,7 +230,7 @@ const Edit = ( props ) => {
 	const renderText = () => (
 		<RichText
 			className={ classnames(
-				`${ className }__text`, {
+				`wp-block-coblocks-testimonial__text`, {
 					[ bubbleBackgroundClass ]: bubbleBackgroundClass && styleName === 'conversation',
 					[ bubbleTextClass ]: bubbleTextClass && styleName === 'conversation',
 				}
@@ -245,15 +245,15 @@ const Edit = ( props ) => {
 	);
 
 	const renderTextBubble = () => (
-		<div className={ `${ className }__text-bubble` }>
+		<div className={ `wp-block-coblocks-testimonial__text-bubble` }>
 			{ renderText() }
 			<span className={ classnames(
-				`${ className }__text-bubble__tip-back`, {
+				`wp-block-coblocks-testimonial__text-bubble__tip-back`, {
 					[ bubbleBackgroundClass ]: bubbleBackgroundClass,
 				}
 			) } style={ { backgroundColor: bubbleBackgroundClass ? undefined : customBubbleBackgroundColor } }></span>
 			<span className={ classnames(
-				`${ className }__text-bubble__tip-front`, {
+				`wp-block-coblocks-testimonial__text-bubble__tip-front`, {
 					[ backgroundClass ]: backgroundClass,
 				}
 			) } style={ { backgroundColor: backgroundClass ? undefined : customBackgroundColor } }></span>
@@ -283,7 +283,7 @@ const Edit = ( props ) => {
 				{ styleName === 'conversation' && (
 					<>
 						{ renderTextBubble() }
-						<div className={ `${ className }__content` }>
+						<div className={ `wp-block-coblocks-testimonial__content` }>
 							{ !! showImage && ( url ? renderImage() : renderPlaceholder() ) }
 							{ renderHeading() }
 						</div>
@@ -292,7 +292,7 @@ const Edit = ( props ) => {
 				{ styleName === 'horizontal' && (
 					<>
 						{ !! showImage && ( url ? renderImage() : renderPlaceholder() ) }
-						<div className={ `${ className }__content` }>
+						<div className={ `wp-block-coblocks-testimonial__content` }>
 							{ renderHeading() }
 							{ renderText() }
 						</div>
