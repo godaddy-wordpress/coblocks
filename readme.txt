@@ -1,6 +1,6 @@
 === Page Builder Gutenberg Blocks – CoBlocks ===
 Author URI: https://www.godaddy.com
-Contributors: godaddy, richtabor, eherman24, jonathanbardo, jrtashjian, paranoia1906, fjarrett
+Contributors: godaddy, richtabor, eherman24, jonathanbardo, jrtashjian, paranoia1906, fjarrett, olivierlafleur
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.6
 Tested up to: 5.9
@@ -9,7 +9,7 @@ Stable tag: 2.21.5
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-CoBlocks is a suite of page builder WordPress blocks for Gutenberg, with 10+ new blocks and a true page builder experience with rows and columns.
+CoBlocks is a suite of page builder WordPress blocks for Gutenberg, with 30+ new blocks and a true page builder experience with rows and columns.
 
 == Description ==
 
