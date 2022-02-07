@@ -25,7 +25,7 @@ const { name, category } = metadata;
 
 const settings = {
 	/* translators: block name */
-	title: __( 'Post Carousel', 'coblocks' ),
+	title: __( 'Post Carousel (CoBlocks)', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Display posts or an external blog feed as a carousel.', 'coblocks' ),
 	icon: <Icon icon={ icon } />,

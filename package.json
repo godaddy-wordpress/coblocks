@@ -2,8 +2,8 @@
 	"name": "coblocks",
 	"title": "CoBlocks",
 	"description": "CoBlocks is a suite of professional page building blocks for the WordPress Gutenberg block editor.",
-	"version": "2.19.1",
-	"tested_up_to": "5.8",
+	"version": "2.21.5",
+	"tested_up_to": "5.9",
 	"author": "GoDaddy",
 	"license": "GPL-2.0",
 	"repository": "godaddy-wordpress/coblocks",
@@ -42,7 +42,7 @@
 		"test:js:update": "yarn test:js -u",
 		"test:performance": "wp-scripts test-e2e --config .dev/performance/jest.performance.config.js",
 		"test:php": "wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/coblocks/phpunit.xml.dist --verbose'",
-		"update:icon": "node src/blocks/icon/svgs-generator.js && cp -R node_modules/@godaddy-wordpress/coblocks-icons/src/svg src/blocks/icon/svgs",
+		"update:icon": "node src/blocks/icon/svgs-generator.js && cp -R node_modules/@godaddy-wordpress/coblocks-icons/src/svg/ src/blocks/icon/svgs",
 		"version": "grunt version && grunt update-pot && git add -A ."
 	},
 	"locales": {
@@ -74,7 +74,7 @@
 		"zh_TW": "繁體中文"
 	},
 	"dependencies": {
-		"@godaddy-wordpress/coblocks-icons": "2.0.1"
+		"@godaddy-wordpress/coblocks-icons": "2.0.3"
 	},
 	"devDependencies": {
 		"@es-joy/jsdoccomment": "0.13.0",
@@ -122,6 +122,7 @@
 		"chalk": "^4.1.2",
 		"classnames": "^2.2.5",
 		"commander": "^8.3.0",
+		"counterup2": "^2.0.2",
 		"cypress": "^9.1.1",
 		"cypress-file-upload": "^5.0.8",
 		"cypress-log-to-output": "1.1.2",
@@ -165,6 +166,8 @@
 		"ansi-regex": "^5.0.1",
 		"follow-redirects": "^1.14.7",
 		"markdown-it": "^12.3.2",
+		"nanoid": "^3.1.31",
+		"node-fetch": "^2.6.7",
 		"nth-check": "^2.0.1",
 		"react-dom": "17.0.2",
 		"react": "17.0.2",

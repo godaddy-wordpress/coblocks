@@ -18,10 +18,11 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 -   Carousel Gallery Block
 -   Click to Tweet Block
 -   Collage Gallery Block
-	Countdown Timer Block (New!)
+-   Countdown Timer Block (New!)
+-   Counter Block (New!)
 -   Dynamic Separator Block
 -   Events Block
--   FAQ Block (New!)
+-   FAQ Block
 -   Features Block
 -   Food & Drinks Block
 -   Form Block

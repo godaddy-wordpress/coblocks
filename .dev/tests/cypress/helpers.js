@@ -244,13 +244,15 @@ export function setBlockStyle( style ) {
 /**
  * Select the block using the Block navigation component.
  * Input parameter is the name of the block to select.
+ * Allows chaining.
  *
  * @param {string}  name         The name of the block to select eg: highlight or click-to-tweet
  * @param {boolean} isChildBlock Optional selector for children blocks. Default will be top level blocks.
  */
 export function selectBlock( name, isChildBlock = false ) {
 	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle' ).click();
-	cy.get( '.block-editor-block-navigation-leaf,.block-editor-list-view-leaf' )
+	// Returning the cy.get function allows to to chain off of selectBlock
+	return cy.get( '.block-editor-block-navigation-leaf,.block-editor-list-view-leaf' )
 		.contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) )
 		.click()
 		.then( () => {

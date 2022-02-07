@@ -1,0 +1,49 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "coblocks/counter",
+	"title": "Counter",
+	"category": "widgets",
+	"description": "Utilize the CoBlocks Counter block to highlight your company statistics and milestones.",
+	"keywords": [ "numbers", "stats" ],
+	"textdomain": "coblocks",
+	"attributes": {
+		"align": {
+			"type": "string"
+		},
+		"counterDescription": {
+			"type": "string"
+		},
+        "counterSpeed": {
+            "type": "number",
+            "default": 1
+        },
+		"counterText": {
+			"type": "string"
+		},
+		"numberFormatting": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"anchor": true,
+		"html": false,
+		"color": {
+			"link": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		}
+	},
+	"editorStyle": "wp-block-coblocks-counter-editor",
+	"style": "wp-block-coblocks-counter"
+}

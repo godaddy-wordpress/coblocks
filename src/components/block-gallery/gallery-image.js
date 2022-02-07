@@ -7,6 +7,7 @@ import * as helper from '../../utils/helper';
  * External Dependencies
  */
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 /**
  * WordPress dependencies
@@ -286,6 +287,44 @@ class GalleryImage extends Component {
 		/* eslint-enable jsx-a11y/no-noninteractive-element-interactions */
 	}
 }
+
+GalleryImage.PropTypes = {
+	alt: PropTypes.string,
+	caption: PropTypes.string,
+	captions: PropTypes.bool,
+	fontSize: PropTypes.number,
+	gutter: PropTypes.number,
+	gutterMobile: PropTypes.number,
+	gutterUtility: PropTypes.bool,
+	id: PropTypes.number,
+	imageIndex: PropTypes.number,
+	imgLink: PropTypes.string,
+	isFirstItem: PropTypes.bool,
+	isLastItem: PropTypes.bool,
+	isSelected: PropTypes.bool,
+	linkTo: PropTypes.string,
+	marginBottom: PropTypes.number,
+	marginLeft: PropTypes.number,
+	marginRight: PropTypes.number,
+	marginTop: PropTypes.number,
+	newClass: PropTypes.string,
+	onMoveBackward: PropTypes.func,
+	onMoveForward: PropTypes.func,
+	onRemove: PropTypes.func,
+	onSelect: PropTypes.func,
+	replaceImage: PropTypes.func,
+	setAttributes: PropTypes.func,
+	shadow: PropTypes.string,
+	supportsCaption: PropTypes.bool,
+	supportsMoving: PropTypes.bool.isRequired,
+	url: PropTypes.string,
+	verticalMoving: PropTypes.bool.isRequired,
+};
+
+GalleryImage.defaultProps = {
+	supportsMoving: true,
+	verticalMoving: false,
+};
 
 export default compose( [
 	withSelect( ( select, ownProps ) => {

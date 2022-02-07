@@ -6,13 +6,13 @@ import { GalleryOffsetIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 /**
  * Internal dependencies
  */
-import edit from './edit';
 import deprecated from './deprecated';
-import save from './save';
-import transforms from './transforms';
-import metadata from './block.json';
+import edit from './edit';
 import { GalleryAttributes } from '../../components/block-gallery/shared';
 import { hasFormattingCategory } from '../../utils/block-helpers';
+import metadata from './block.json';
+import save from './save';
+import transforms from './transforms';
 
 /**
  * WordPress dependencies

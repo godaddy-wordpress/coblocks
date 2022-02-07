@@ -7,9 +7,9 @@ import { SocialProfilesIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * Internal dependencies
  */
 import edit from './edit';
+import { hasFormattingCategory } from '../../utils/block-helpers';
 import metadata from './block.json';
 import { transforms } from './transforms';
-import { hasFormattingCategory } from '../../utils/block-helpers';
 
 /**
  * WordPress dependencies

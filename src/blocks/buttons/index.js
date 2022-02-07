@@ -1,4 +1,9 @@
 /**
+ * THIS BLOCK IS DEPRECRATED. IT WILL NOT SHOW UP IN THE INSERTER ANYMORE.
+ * SEE /src/js/deprecations/deprecate-coblocks-buttons.js
+ */
+
+/**
  * Internal dependencies
  */
 import deprecated from './deprecated';

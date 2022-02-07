@@ -7,9 +7,9 @@ import { PricingTableItemIcon as icon } from '@godaddy-wordpress/coblocks-icons'
  * Internal dependencies
  */
 import edit from './edit';
-import transforms from './transforms';
-import save from './save';
 import metadata from './block.json';
+import save from './save';
+import transforms from './transforms';
 
 /**
  * WordPress dependencies

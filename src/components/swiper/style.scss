@@ -87,6 +87,13 @@
 
 		transform: translateY(-50%);
 		width: 62px;
+
+		.icon {
+			background-color: #fff;
+			height: 32px;
+			mask-image: url(/assets/lightbox/arrow-right.svg);
+			width: 32px;
+		}
 	}
 
 	&__prev {
@@ -120,10 +127,4 @@
 	pointer-events: none !important;
 	touch-action: none !important;
 	user-select: none !important;
-}
-
-.icon {
-	height: 32px;
-	mask-image: url(/assets/lightbox/arrow-right.svg);
-	width: 32px;
 }
