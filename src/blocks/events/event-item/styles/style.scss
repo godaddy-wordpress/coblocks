@@ -1,5 +1,4 @@
 .wp-block-coblocks-event-item {
-	flex: 1 100%;
 	justify-content: space-between;
 	line-height: 1;
 	margin-bottom: var(--coblocks-spacing--5, map-get($spacing, 5));
@@ -9,6 +8,10 @@
 		display: flex !important;
 		margin-bottom: var(--coblocks-spacing--3, map-get($spacing, 3));
 	}
+}
+
+[data-type="coblocks/event-item"] {
+	width: 100%;
 }
 
 .wp-block-coblocks-events__date {
