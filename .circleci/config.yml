@@ -400,6 +400,9 @@ commands:
           command: |
             touch cypress.env.json
             echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
+            npx grunt build && npx grunt compress
+            wp plugin deactivate coblocks
+            wp plugin activate ./build/*.zip
             ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>-wp-<< parameters.wpversion >>
 
   setup_perf_tests:
