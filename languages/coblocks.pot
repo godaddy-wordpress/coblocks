@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-02-08T21:07:09+00:00\n"
+"POT-Creation-Date: 2022-02-08T22:47:12+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -64,15 +64,15 @@ msgstr ""
 msgid "Pattern Category"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:468
+#: includes/class-coblocks-block-assets.php:461
 msgid "Close Gallery"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:469
+#: includes/class-coblocks-block-assets.php:462
 msgid "Previous"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:470
+#: includes/class-coblocks-block-assets.php:463
 msgid "Next"
 msgstr ""
 
@@ -293,7 +293,7 @@ msgstr ""
 msgid "An error has occurred, which probably means the feed is down. Try again later."
 msgstr ""
 
-#: src/blocks/post-carousel/index.php:193
+#: src/blocks/post-carousel/index.php:195
 #: src/blocks/posts/index.php:173
 msgctxt "placeholder when a post has no title"
 msgid "(no title)"
@@ -977,7 +977,7 @@ msgid "Enter URL here…"
 msgstr ""
 
 #: src/blocks/events/edit.js:211
-#: src/blocks/post-carousel/edit.js:218
+#: src/blocks/post-carousel/edit.js:252
 #: src/blocks/posts/edit.js:324
 msgid "Use URL"
 msgstr ""
@@ -8300,52 +8300,42 @@ msgstr ""
 msgid "Select language"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:115
+#: src/blocks/post-carousel/edit.js:147
 #: src/blocks/posts/edit.js:203
 msgid "Edit RSS URL"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:171
+#: src/blocks/post-carousel/edit.js:205
 msgid "Post Carousel"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:176
+#: src/blocks/post-carousel/edit.js:210
 #: src/blocks/posts/edit.js:275
 msgid "No posts found. Start publishing or add posts from an RSS feed."
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:179
+#: src/blocks/post-carousel/edit.js:217
 msgid "Retrieve an external feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:185
+#: src/blocks/post-carousel/edit.js:219
 #: src/blocks/posts/edit.js:284
 msgid "Use External Feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:207
-#: src/blocks/posts/edit.js:313
-msgid "RSS Feed"
-msgstr ""
-
-#: src/blocks/post-carousel/edit.js:208
+#: src/blocks/post-carousel/edit.js:241
 #: src/blocks/posts/edit.js:314
 msgid "RSS URLs are generally located at the /feed/ directory of a site."
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:212
+#: src/blocks/post-carousel/edit.js:242
+#: src/blocks/posts/edit.js:313
+msgid "RSS Feed"
+msgstr ""
+
+#: src/blocks/post-carousel/edit.js:248
 #: src/blocks/posts/edit.js:318
 msgid "https://example.com/feed…"
-msgstr ""
-
-#: src/blocks/post-carousel/edit.js:294
-#: src/blocks/posts/edit.js:423
-msgid "(no title)"
-msgstr ""
-
-#: src/blocks/post-carousel/edit.js:312
-#: src/blocks/posts/edit.js:449
-msgid "Read more"
 msgstr ""
 
 #. translators: block name
@@ -8464,6 +8454,16 @@ msgstr ""
 #: src/blocks/post-carousel/inspector.js:185
 #: src/blocks/posts/inspector.js:293
 msgid "Number of posts"
+msgstr ""
+
+#: src/blocks/post-carousel/post-item.js:72
+#: src/blocks/posts/edit.js:423
+msgid "(no title)"
+msgstr ""
+
+#: src/blocks/post-carousel/post-item.js:89
+#: src/blocks/posts/edit.js:449
+msgid "Read more"
 msgstr ""
 
 #. translators: block style
