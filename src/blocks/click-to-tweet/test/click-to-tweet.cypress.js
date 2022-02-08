@@ -50,7 +50,7 @@ describe( 'Test CoBlocks Click to Tweet Block', function() {
 	} );
 
 	/**
-	 * Test the text sizes change as expected - This
+	 * Test the text sizes change as expected
 	 */
 	it( 'Test the text sizes change as expected.', function() {
 		helpers.addBlockToPost( 'coblocks/click-to-tweet', true );

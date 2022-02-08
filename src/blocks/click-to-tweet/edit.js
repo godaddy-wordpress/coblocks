@@ -58,11 +58,11 @@ const Edit = ( props ) => {
 	const { replaceBlocks } = useDispatch( blockEditorStore );
 
 	useEffect( () => {
-	// 	/**
-	// 	 * This logic should only fire in the case of block deprecations.
-	// 	 * Deprecated markup come in with old attributes and the block
-	// 	 * must be replaced for proper instantiation.
-	// 	 */
+		/**
+		 * This logic should only fire in the case of block deprecations.
+		 * Deprecated markup come in with old attributes and the block
+		 * must be replaced for proper instantiation.
+		 */
 		if ( !! Number.isInteger( attributes?.customFontSize ) ) {
 			const migratedAttributes = { ...attributes, style: {
 				typography: {
