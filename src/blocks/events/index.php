@@ -48,6 +48,11 @@ function coblocks_render_events_block( $attributes, $content ) {
 		$custom_text_color = is_array( $attributes ) && isset( $attributes['customTextColor'] ) && isset( $attributes['hasColors'] ) && ( ! $attributes['hasColors'] && ! isset( $attributes['textColor'] ) ) ? "color: {$attributes['customTextColor']};" : '';
 
 		$class = 'wp-block-coblocks-events';
+
+		if ( true === $attributes['showCarousel'] ) {
+				$class .= ' swiper-wrapper-loading';
+		}
+
 		if ( isset( $attributes['className'] ) ) {
 			$class .= ' ' . $attributes['className'];
 		}
@@ -56,14 +61,16 @@ function coblocks_render_events_block( $attributes, $content ) {
 			$class .= ' align' . $attributes['align'];
 		}
 
-		$events_layout = sprintf(
-			'<div class="%1$s" data-per-page="%2$s">',
+		$events_layout = '<div class="wp-block-coblocks-events wp-block-coblocks-events-front-container">';
+
+		$events_layout .= sprintf(
+			'<div class="swiper-container-external wp-block-coblocks-front-events-swiper-container"><div class="%1$s" data-per-page="%2$s">',
 			esc_attr( $class ),
 			esc_attr( $attributes['eventsToShow'] )
 		);
 
 		foreach ( $events as $event ) {
-			$events_layout .= '<div class="wp-block-coblocks-event-item">';
+			$events_layout .= '<div class="wp-block-coblocks-event-item swiper-slide">';
 
 			$dtstart           = $ical->ical_date_to_date_time( $event->dtstart_array[3] );
 			$dtend             = $ical->ical_date_to_date_time( $event->dtend_array[3] );
@@ -112,6 +119,13 @@ function coblocks_render_events_block( $attributes, $content ) {
 
 			$events_layout .= '</div>';
 		}
+
+		$events_layout .= '</div>';
+
+		$events_layout .= '<button class="wp-coblocks-events-nav-button__prev" id="wp-coblocks-event-swiper-prev" style="visibility: hidden" />';
+		$events_layout .= '<button class="wp-coblocks-events-nav-button__next" id="wp-coblocks-event-swiper-next" style="visibility: hidden" />';
+
+		$events_layout .= '</div>';
 
 		$events_layout .= '</div>';
 

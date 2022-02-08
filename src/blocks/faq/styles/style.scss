@@ -6,4 +6,8 @@
 	&__heading {
 		margin: 1.25rem 0 0 !important;
 	}
+
+	summary::-webkit-details-marker {
+		display: none;
+	}
 }
