@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-02-08T19:48:44+00:00\n"
+"POT-Creation-Date: 2022-02-08T21:07:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: coblocks\n"
@@ -64,15 +64,15 @@ msgstr ""
 msgid "Pattern Category"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:484
+#: includes/class-coblocks-block-assets.php:468
 msgid "Close Gallery"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:485
+#: includes/class-coblocks-block-assets.php:469
 msgid "Previous"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:486
+#: includes/class-coblocks-block-assets.php:470
 msgid "Next"
 msgstr ""
 
@@ -273,7 +273,7 @@ msgstr ""
 msgid "Counter with multiple inline digits"
 msgstr ""
 
-#: src/blocks/events/index.php:122
+#: src/blocks/events/index.php:136
 msgid "An error has occurred, check for calendar privileges to make sure it is public or try again later."
 msgstr ""
 
@@ -942,63 +942,87 @@ msgstr ""
 msgid "Fetch all"
 msgstr ""
 
-#: src/blocks/events/edit.js:127
+#: src/blocks/events/edit.js:109
+#: src/blocks/events/edit.js:125
 msgid "Edit calendar URL"
 msgstr ""
 
-#: src/blocks/events/edit.js:151
+#: src/blocks/events/edit.js:116
+#: src/blocks/events/edit.js:135
+msgid "View carousel"
+msgstr ""
+
+#: src/blocks/events/edit.js:116
+msgid "Hide carousel"
+msgstr ""
+
+#: src/blocks/events/edit.js:135
+msgid "Edit events"
+msgstr ""
+
+#: src/blocks/events/edit.js:141
+msgid "The carousel will only work within the front end."
+msgstr ""
+
+#: src/blocks/events/edit.js:193
 msgid "Enter a URL that loads an iCal formatted calendar."
 msgstr ""
 
-#: src/blocks/events/edit.js:155
+#: src/blocks/events/edit.js:197
 msgid "Calendar URL"
 msgstr ""
 
-#: src/blocks/events/edit.js:161
+#: src/blocks/events/edit.js:203
 msgid "Enter URL here…"
 msgstr ""
 
-#: src/blocks/events/edit.js:169
+#: src/blocks/events/edit.js:211
 #: src/blocks/post-carousel/edit.js:218
 #: src/blocks/posts/edit.js:324
 msgid "Use URL"
 msgstr ""
 
-#: src/blocks/events/event-item/edit.js:68
+#: src/blocks/events/edit.js:217
+#: src/blocks/map/edit.js:197
+#: src/blocks/map/edit.js:199
+msgid "Cancel"
+msgstr ""
+
+#: src/blocks/events/event-item/edit.js:82
 msgid "Day…"
 msgstr ""
 
-#: src/blocks/events/event-item/edit.js:76
+#: src/blocks/events/event-item/edit.js:91
 msgid "Month…"
 msgstr ""
 
-#: src/blocks/events/event-item/edit.js:83
+#: src/blocks/events/event-item/edit.js:99
 msgid "Year…"
 msgstr ""
 
-#: src/blocks/events/event-item/edit.js:93
+#: src/blocks/events/event-item/edit.js:110
 msgid "Write event title…"
 msgstr ""
 
-#: src/blocks/events/event-item/edit.js:100
+#: src/blocks/events/event-item/edit.js:118
 msgid "Write event description…"
 msgstr ""
 
-#: src/blocks/events/event-item/edit.js:109
+#: src/blocks/events/event-item/edit.js:128
 msgid "Time…"
 msgstr ""
 
-#: src/blocks/events/event-item/edit.js:116
+#: src/blocks/events/event-item/edit.js:136
 msgid "Location…"
 msgstr ""
 
-#: src/blocks/events/event-item/index.js:25
-msgctxt "block name"
-msgid "Event Item"
+#: src/blocks/events/event-item/index.js:28
+msgid "An event within the events block."
 msgstr ""
 
-#: src/blocks/events/event-item/index.js:26
-msgid "An event within the events block."
+#: src/blocks/events/event-item/index.js:37
+msgctxt "block name"
+msgid "Event Item"
 msgstr ""
 
 #: src/blocks/events/example.js:16
@@ -1027,18 +1051,13 @@ msgstr ""
 msgid "3:30 PM"
 msgstr ""
 
-#: src/blocks/events/index.js:27
-msgctxt "block name"
-msgid "Events"
-msgstr ""
-
 #: src/blocks/events/index.js:28
 msgid "Add a list of events or display events from a public calendar."
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/events/index.js:33
+#: src/blocks/events/index.js:34
 #: src/blocks/form/fields/date/index.js:47
 #: src/blocks/icon/svgs-generated.js:909
 #: src/blocks/icon/svgs-generated.js:926
@@ -1047,7 +1066,7 @@ msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/events/index.js:35
+#: src/blocks/events/index.js:36
 #: src/blocks/icon/svgs-generated.js:321
 #: src/blocks/icon/svgs-generated.js:911
 #: src/blocks/icon/svgs-generated.js:928
@@ -1055,32 +1074,45 @@ msgstr ""
 msgid "date"
 msgstr ""
 
-#: src/blocks/events/inspector.js:25
-msgid "Events settings"
+#: src/blocks/events/index.js:43
+msgctxt "block name"
+msgid "Events"
 msgstr ""
 
 #: src/blocks/events/inspector.js:27
-msgid "Link a calendar"
+msgid "Events settings"
 msgstr ""
 
-#: src/blocks/events/inspector.js:30
+#: src/blocks/events/inspector.js:32
 msgid "Showing public calendar."
 msgstr ""
 
-#: src/blocks/events/inspector.js:31
+#: src/blocks/events/inspector.js:33
 msgid "Toggle to link a public calendar."
 msgstr ""
 
-#: src/blocks/events/inspector.js:38
+#: src/blocks/events/inspector.js:35
+msgid "Link a calendar"
+msgstr ""
+
+#: src/blocks/events/inspector.js:40
+msgid "Display events within a carousel."
+msgstr ""
+
+#: src/blocks/events/inspector.js:41
+msgid "Show Carousel"
+msgstr ""
+
+#: src/blocks/events/inspector.js:46
 msgid "Events per page"
 msgstr ""
 
-#: src/blocks/events/inspector.js:47
-msgid "Period"
+#: src/blocks/events/inspector.js:55
+msgid "Show events from the period (100 events max)."
 msgstr ""
 
-#: src/blocks/events/inspector.js:50
-msgid "Show events from the period (100 events max)."
+#: src/blocks/events/inspector.js:56
+msgid "Period"
 msgstr ""
 
 #: src/blocks/faq/appender.js:18
@@ -7962,11 +7994,6 @@ msgstr ""
 
 #: src/blocks/map/edit.js:185
 msgid "Search"
-msgstr ""
-
-#: src/blocks/map/edit.js:197
-#: src/blocks/map/edit.js:199
-msgid "Cancel"
 msgstr ""
 
 #. translators: block description
