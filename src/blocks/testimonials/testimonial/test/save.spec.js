@@ -101,16 +101,6 @@ describe( 'coblocks/testimonial', () => {
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
-	it( 'should render with custom background color', () => {
-		block.attributes.name = 'Some name';
-		block.attributes.customBackgroundColor = '#745151';
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '{"customBackgroundColor":"#745151"}' );
-		expect( serializedBlock ).toMatchSnapshot();
-	} );
-
 	it( 'should render with text color', () => {
 		block.attributes.name = 'Some name';
 		block.attributes.textColor = 'background';
@@ -118,60 +108,6 @@ describe( 'coblocks/testimonial', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '{"textColor":"background"}' );
-		expect( serializedBlock ).toMatchSnapshot();
-	} );
-
-	it( 'should render with custom text color', () => {
-		block.attributes.name = 'Some name';
-		block.attributes.customTextColor = '#ffda7c';
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '{"customTextColor":"#ffda7c"}' );
-		expect( serializedBlock ).toMatchSnapshot();
-	} );
-
-	it( 'should render with bubble background color', () => {
-		block.attributes.name = 'Some name';
-		block.attributes.bubbleBackgroundColor = 'primary';
-		block.attributes.styleName = 'conversation';
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'has-primary-background-color' );
-		expect( serializedBlock ).toMatchSnapshot();
-	} );
-
-	it( 'should render with custom bubble background color', () => {
-		block.attributes.name = 'Some name';
-		block.attributes.customBubbleBackgroundColor = '#745151';
-		block.attributes.styleName = 'conversation';
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '"customBubbleBackgroundColor":"#745151"' );
-		expect( serializedBlock ).toMatchSnapshot();
-	} );
-
-	it( 'should render with bubble text color', () => {
-		block.attributes.name = 'Some name';
-		block.attributes.bubbleTextColor = 'background';
-		block.attributes.styleName = 'conversation';
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '"bubbleTextColor":"background"' );
-		expect( serializedBlock ).toMatchSnapshot();
-	} );
-
-	it( 'should render with custom bubble text color', () => {
-		block.attributes.name = 'Some name';
-		block.attributes.customBubbleTextColor = '#ffda7c';
-		block.attributes.styleName = 'conversation';
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '"customBubbleTextColor":"#ffda7c"' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 } );

@@ -1,11 +1,4 @@
 /**
- * Internal dependencies.
- */
-import { computeFontSize } from '../../utils/helper';
-import Controls from './controls';
-import Inspector from './inspector';
-
-/**
  * External dependencies.
  */
 import classnames from 'classnames';
@@ -14,11 +7,16 @@ import classnames from 'classnames';
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { compose } from '@wordpress/compose';
 import { createBlock } from '@wordpress/blocks';
 import { useEffect } from '@wordpress/element';
-import { InnerBlocks, withColors, withFontSizes } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import { useDispatch, useSelect } from '@wordpress/data';
+
+/**
+ * Internal dependencies.
+ */
+import Controls from './controls';
+import Inspector from './inspector';
 
 const ALLOWED_BLOCKS = [ 'coblocks/testimonial' ];
 
@@ -44,19 +42,18 @@ const layoutOptions = [
 const Edit = ( props ) => {
 	const {
 		attributes,
-		backgroundColor,
-		bubbleBackgroundColor,
-		bubbleTextColor,
-		className,
 		clientId,
-		customBackgroundColor,
-		customBubbleBackgroundColor,
-		customBubbleTextColor,
-		customTextColor,
-		fontSize,
+		isSelected,
 		setAttributes,
-		textColor,
 	} = props;
+
+	const blockProps = useBlockProps();
+
+	const {
+		backgroundColor,
+		color,
+		fontSize,
+	} = blockProps.style;
 
 	const {
 		columns,
@@ -89,18 +86,18 @@ const Edit = ( props ) => {
 
 	useEffect( () => {
 		updateInnerAttributes( 'coblocks/testimonial', {
-			backgroundColor: backgroundColor?.slug,
-			bubbleBackgroundColor: bubbleBackgroundColor?.slug,
-			bubbleTextColor: bubbleTextColor?.slug,
-			customBackgroundColor: backgroundColor?.class ? undefined : backgroundColor.color,
-			customBubbleBackgroundColor: bubbleBackgroundColor?.class ? undefined : bubbleBackgroundColor.color,
-			customBubbleTextColor: bubbleTextColor?.class ? undefined : bubbleTextColor.color,
-			customTextColor: textColor?.class ? undefined : textColor.color,
-			textColor: textColor?.slug,
+			backgroundColor,
+			color,
 		} );
-	}, [ backgroundColor, customBackgroundColor, customTextColor, textColor, bubbleBackgroundColor, customBubbleBackgroundColor, customBubbleTextColor, bubbleTextColor ] );
+	}, [ backgroundColor, color ] );
 
-	const classes = classnames( 'wp-block-coblocks-testimonials', {
+	// Remove classes related to colors as we don't want to apply them on the main block.
+	const sanitizedClasses = ( receivedClasses ) => {
+		const classesArray = receivedClasses.split( ' ' );
+		return classesArray.filter( ( classe ) => ! classe.match( new RegExp( 'has-', 'g' ) ) || classe.match( new RegExp( 'font-size', 'g' ) ) );
+	};
+
+	const classes = classnames( sanitizedClasses( blockProps.className ), {
 		'has-columns': columns > 1,
 		'has-responsive-columns': columns > 1,
 		[ `has-${ columns }-columns` ]: columns > 1,
@@ -150,27 +147,34 @@ const Edit = ( props ) => {
 	};
 
 	const styles = {
-		fontSize: ( fontSize?.size || fontSize?.class ) ? computeFontSize( fontSize ) : null,
+		fontSize,
 	};
 
 	return (
 		<>
-			<Controls
-				{ ...props }
-				onChangeHeadingLevel={ onChangeHeadingLevel }
-			/>
-			<Inspector
-				{ ...props }
-				activeStyle={ styleName }
-				attributes={ attributes }
-				layoutOptions={ layoutOptions }
-				onSetColumns={ setColumns }
-				onSetGutter={ setGutter }
-				onToggleImages={ toggleImages }
-				onToggleRoles={ toggleRoles }
-				onUpdateStyleName={ setStyleName }
-			/>
-			<div className={ classes } style={ styles }>
+			{ isSelected && (
+				<>
+					<Controls
+						{ ...props }
+						onChangeHeadingLevel={ onChangeHeadingLevel }
+					/>
+					<Inspector
+						{ ...props }
+						activeStyle={ styleName }
+						attributes={ attributes }
+						layoutOptions={ layoutOptions }
+						onSetColumns={ setColumns }
+						onSetGutter={ setGutter }
+						onToggleImages={ toggleImages }
+						onToggleRoles={ toggleRoles }
+						onUpdateStyleName={ setStyleName }
+					/>
+				</>
+			) }
+			<div
+				{ ...blockProps }
+				className={ classes }
+				style={ styles }>
 				<InnerBlocks
 					__experimentalCaptureToolbars={ true }
 					allowedBlocks={ ALLOWED_BLOCKS }
@@ -181,12 +185,4 @@ const Edit = ( props ) => {
 	);
 };
 
-export default compose( [
-	withColors(
-		'backgroundColor',
-		'bubbleBackgroundColor',
-		{ bubbleTextColor: 'color' },
-		{ textColor: 'color' }
-	),
-	withFontSizes( 'fontSize' ),
-] )( Edit );
+export default Edit;

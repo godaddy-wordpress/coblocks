@@ -4,17 +4,17 @@
 import { TestimonialIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
+ * WordPress dependencies.
+ */
+import { __ } from '@wordpress/i18n';
+import { Icon } from '@wordpress/components';
+
+/**
  * Internal dependencies.
  */
 import edit from './edit';
 import metadata from './block.json';
 import save from './save';
-
-/**
- * WordPress dependencies.
- */
-import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
 
 /**
  * Block constants.

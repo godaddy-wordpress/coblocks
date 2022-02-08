@@ -4,49 +4,13 @@ exports[`coblocks/testimonial should render empty when Name is missing 1`] = `"<
 
 exports[`coblocks/testimonial should render with background color 1`] = `
 "<!-- wp:coblocks/testimonial {\\"styleName\\":\\"conversation\\",\\"backgroundColor\\":\\"primary\\"} -->
-<div class=\\"wp-block-coblocks-testimonial has-primary-background-color\\"><div class=\\"wp-block-coblocks-testimonial__text-bubble\\"><p class=\\"wp-block-coblocks-testimonial__text\\" itemprop=\\"description\\"></p><span class=\\"wp-block-coblocks-testimonial__text-bubble__tip-back\\"></span><span class=\\"wp-block-coblocks-testimonial__text-bubble__tip-front has-primary-background-color\\"></span></div><div class=\\"wp-block-coblocks-testimonial__content\\"><div class=\\"wp-block-coblocks-testimonial__heading\\"><h4 class=\\"wp-block-coblocks-testimonial__heading__name\\">Some name</h4></div></div></div>
-<!-- /wp:coblocks/testimonial -->"
-`;
-
-exports[`coblocks/testimonial should render with bubble background color 1`] = `
-"<!-- wp:coblocks/testimonial {\\"styleName\\":\\"conversation\\",\\"bubbleBackgroundColor\\":\\"primary\\"} -->
-<div class=\\"wp-block-coblocks-testimonial\\"><div class=\\"wp-block-coblocks-testimonial__text-bubble\\"><p class=\\"wp-block-coblocks-testimonial__text has-primary-background-color\\" itemprop=\\"description\\"></p><span class=\\"wp-block-coblocks-testimonial__text-bubble__tip-back has-primary-background-color\\"></span><span class=\\"wp-block-coblocks-testimonial__text-bubble__tip-front\\"></span></div><div class=\\"wp-block-coblocks-testimonial__content\\"><div class=\\"wp-block-coblocks-testimonial__heading\\"><h4 class=\\"wp-block-coblocks-testimonial__heading__name\\">Some name</h4></div></div></div>
-<!-- /wp:coblocks/testimonial -->"
-`;
-
-exports[`coblocks/testimonial should render with bubble text color 1`] = `
-"<!-- wp:coblocks/testimonial {\\"styleName\\":\\"conversation\\",\\"bubbleTextColor\\":\\"background\\"} -->
-<div class=\\"wp-block-coblocks-testimonial\\"><div class=\\"wp-block-coblocks-testimonial__text-bubble\\"><p class=\\"wp-block-coblocks-testimonial__text has-background-color\\" itemprop=\\"description\\"></p><span class=\\"wp-block-coblocks-testimonial__text-bubble__tip-back\\"></span><span class=\\"wp-block-coblocks-testimonial__text-bubble__tip-front\\"></span></div><div class=\\"wp-block-coblocks-testimonial__content\\"><div class=\\"wp-block-coblocks-testimonial__heading\\"><h4 class=\\"wp-block-coblocks-testimonial__heading__name\\">Some name</h4></div></div></div>
+<div class=\\"wp-block-coblocks-testimonial\\" style=\\"background-color:primary\\"><div class=\\"wp-block-coblocks-testimonial__text-bubble\\"><p class=\\"wp-block-coblocks-testimonial__text\\" itemprop=\\"description\\" style=\\"color:primary\\"></p><span class=\\"wp-block-coblocks-testimonial__text-bubble__tip-back\\"></span><span class=\\"wp-block-coblocks-testimonial__text-bubble__tip-front\\" style=\\"background-color:primary\\"></span></div><div class=\\"wp-block-coblocks-testimonial__content\\"><div class=\\"wp-block-coblocks-testimonial__heading\\"><h4 class=\\"wp-block-coblocks-testimonial__heading__name\\">Some name</h4></div></div></div>
 <!-- /wp:coblocks/testimonial -->"
 `;
 
 exports[`coblocks/testimonial should render with content 1`] = `
 "<!-- wp:coblocks/testimonial -->
 <div class=\\"wp-block-coblocks-testimonial\\"><div class=\\"wp-block-coblocks-testimonial__heading\\"><h4 class=\\"wp-block-coblocks-testimonial__heading__name\\">Some name</h4><p class=\\"wp-block-coblocks-testimonial__heading__role\\">Some role</p></div><p class=\\"wp-block-coblocks-testimonial__text\\" itemprop=\\"description\\">Some text</p></div>
-<!-- /wp:coblocks/testimonial -->"
-`;
-
-exports[`coblocks/testimonial should render with custom background color 1`] = `
-"<!-- wp:coblocks/testimonial {\\"customBackgroundColor\\":\\"#745151\\"} -->
-<div class=\\"wp-block-coblocks-testimonial\\" style=\\"background-color:#745151;background:#745151\\"><div class=\\"wp-block-coblocks-testimonial__heading\\"><h4 class=\\"wp-block-coblocks-testimonial__heading__name\\">Some name</h4></div><p class=\\"wp-block-coblocks-testimonial__text\\" itemprop=\\"description\\"></p></div>
-<!-- /wp:coblocks/testimonial -->"
-`;
-
-exports[`coblocks/testimonial should render with custom bubble background color 1`] = `
-"<!-- wp:coblocks/testimonial {\\"styleName\\":\\"conversation\\",\\"customBubbleBackgroundColor\\":\\"#745151\\"} -->
-<div class=\\"wp-block-coblocks-testimonial\\"><div class=\\"wp-block-coblocks-testimonial__text-bubble\\"><p class=\\"wp-block-coblocks-testimonial__text\\" itemprop=\\"description\\" style=\\"background-color:#745151\\"></p><span class=\\"wp-block-coblocks-testimonial__text-bubble__tip-back\\" style=\\"background-color:#745151\\"></span><span class=\\"wp-block-coblocks-testimonial__text-bubble__tip-front\\"></span></div><div class=\\"wp-block-coblocks-testimonial__content\\"><div class=\\"wp-block-coblocks-testimonial__heading\\"><h4 class=\\"wp-block-coblocks-testimonial__heading__name\\">Some name</h4></div></div></div>
-<!-- /wp:coblocks/testimonial -->"
-`;
-
-exports[`coblocks/testimonial should render with custom bubble text color 1`] = `
-"<!-- wp:coblocks/testimonial {\\"styleName\\":\\"conversation\\",\\"customBubbleTextColor\\":\\"#ffda7c\\"} -->
-<div class=\\"wp-block-coblocks-testimonial\\"><div class=\\"wp-block-coblocks-testimonial__text-bubble\\"><p class=\\"wp-block-coblocks-testimonial__text\\" itemprop=\\"description\\" style=\\"color:#ffda7c\\"></p><span class=\\"wp-block-coblocks-testimonial__text-bubble__tip-back\\"></span><span class=\\"wp-block-coblocks-testimonial__text-bubble__tip-front\\"></span></div><div class=\\"wp-block-coblocks-testimonial__content\\"><div class=\\"wp-block-coblocks-testimonial__heading\\"><h4 class=\\"wp-block-coblocks-testimonial__heading__name\\">Some name</h4></div></div></div>
-<!-- /wp:coblocks/testimonial -->"
-`;
-
-exports[`coblocks/testimonial should render with custom text color 1`] = `
-"<!-- wp:coblocks/testimonial {\\"customTextColor\\":\\"#ffda7c\\"} -->
-<div class=\\"wp-block-coblocks-testimonial\\" style=\\"color:#ffda7c\\"><div class=\\"wp-block-coblocks-testimonial__heading\\"><h4 class=\\"wp-block-coblocks-testimonial__heading__name\\">Some name</h4></div><p class=\\"wp-block-coblocks-testimonial__text\\" itemprop=\\"description\\"></p></div>
 <!-- /wp:coblocks/testimonial -->"
 `;
 

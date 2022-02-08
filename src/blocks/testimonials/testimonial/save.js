@@ -6,14 +6,13 @@ import classnames from 'classnames';
 /**
  * Internal dependencies.
  */
-import { BackgroundStyles } from '../../../components/background';
 import fromEntries from '../../../js/coblocks-fromEntries';
 import { hasEmptyAttributes } from '../../../utils/block-helpers';
 
 /**
  * WordPress dependencies.
  */
-import { getColorClassName, RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 const isEmpty = ( attributes ) => {
 	const attributesToCheck = [ 'name' ];
@@ -28,12 +27,7 @@ export default function save( { attributes } ) {
 	const {
 		alt,
 		backgroundColor,
-		bubbleBackgroundColor,
-		bubbleTextColor,
-		customBackgroundColor,
-		customBubbleBackgroundColor,
-		customBubbleTextColor,
-		customTextColor,
+		color,
 		focalPoint,
 		headingLevel,
 		imageHeight,
@@ -44,30 +38,23 @@ export default function save( { attributes } ) {
 		showRole,
 		styleName,
 		text,
-		textColor,
 		url,
 	} = attributes;
 
-	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
-	const textClass = getColorClassName( 'color', textColor );
+	const saveBlockProps = useBlockProps.save();
+
 	const styles = {
-		...BackgroundStyles( attributes ),
-		background: backgroundClass ? undefined : customBackgroundColor,
-		color: textClass ? undefined : customTextColor,
+		backgroundColor,
+		color,
 	};
 
-	const bubbleBackgroundClass = getColorClassName( 'background-color', bubbleBackgroundColor );
-	const bubbleTextClass = getColorClassName( 'color', bubbleTextColor );
 	const bubbleStyles = {
-		backgroundColor: bubbleBackgroundClass ? undefined : customBubbleBackgroundColor,
-		color: bubbleTextClass ? undefined : customBubbleTextColor,
+		backgroundColor: color,
+		color: backgroundColor,
 	};
 
 	const classes = classnames(
-		'wp-block-coblocks-testimonial', {
-			[ backgroundClass ]: backgroundClass,
-			[ textClass ]: textClass,
-		}
+		saveBlockProps.className
 	);
 
 	const renderImage = () => {
@@ -111,10 +98,7 @@ export default function save( { attributes } ) {
 	const renderText = () => (
 		<RichText.Content
 			className={ classnames(
-				'wp-block-coblocks-testimonial__text', {
-					[ bubbleBackgroundClass ]: bubbleBackgroundClass && styleName === 'conversation',
-					[ bubbleTextClass ]: bubbleTextClass && styleName === 'conversation',
-				}
+				'wp-block-coblocks-testimonial__text'
 			) }
 			itemprop="description"
 			style={ styleName === 'conversation' ? bubbleStyles : null }
@@ -127,15 +111,11 @@ export default function save( { attributes } ) {
 		<div className="wp-block-coblocks-testimonial__text-bubble">
 			{ renderText() }
 			<span className={ classnames(
-				'wp-block-coblocks-testimonial__text-bubble__tip-back', {
-					[ bubbleBackgroundClass ]: bubbleBackgroundClass,
-				}
-			) } style={ { backgroundColor: bubbleBackgroundClass ? undefined : customBubbleBackgroundColor } }></span>
+				'wp-block-coblocks-testimonial__text-bubble__tip-back'
+			) } style={ { backgroundColor: color ?? undefined } }></span>
 			<span className={ classnames(
-				'wp-block-coblocks-testimonial__text-bubble__tip-front', {
-					[ backgroundClass ]: backgroundClass,
-				}
-			) } style={ { backgroundColor: backgroundClass ? undefined : customBackgroundColor } }></span>
+				'wp-block-coblocks-testimonial__text-bubble__tip-front'
+			) } style={ { backgroundColor: backgroundColor ?? undefined } }></span>
 		</div>
 	);
 

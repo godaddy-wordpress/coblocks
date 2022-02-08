@@ -6,30 +6,15 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import CoBlocksFontSizePicker from '../../components/fontsize-picker';
 import OptionSelectorControl from '../../components/option-selector-control';
 
 /**
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { compose } from '@wordpress/compose';
 import { ENTER, SPACE } from '@wordpress/keycodes';
 import { InspectorControls, PanelColorSettings, withColors, withFontSizes } from '@wordpress/block-editor';
-import { PanelBody, RangeControl, ToggleControl, withFallbackStyles } from '@wordpress/components';
-
-const { getComputedStyle } = window;
-
-const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { backgroundColor, textColor } = ownProps.attributes;
-	const editableNode = node.querySelector( '[contenteditable="true"]' );
-	//verify if editableNode is available, before using getComputedStyle.
-	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
-	return {
-		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
-		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
-	};
-} );
+import { PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
 
 const Inspector = ( props ) => {
 	const {
@@ -189,29 +174,8 @@ const Inspector = ( props ) => {
 					onChange={ onToggleRoles }
 				/>
 			</PanelBody>
-
-			<PanelBody
-				initialOpen={ false }
-				title={ __( 'Typography', 'coblocks' ) }>
-				<CoBlocksFontSizePicker { ...props } />
-			</PanelBody>
-
-			<PanelColorSettings
-				colorSettings={ colorSettings() }
-				initialOpen={ false }
-				title={ __( 'Color settings', 'coblocks' ) }
-			/>
 		</InspectorControls>
 	);
 };
 
-export default compose( [
-	withColors(
-		'backgroundColor',
-		'bubbleBackgroundColor',
-		{ bubbleTextColor: 'color' },
-		{ textColor: 'color' }
-	),
-	withFontSizes( 'fontSize' ),
-	applyFallbackStyles,
-] )( Inspector );
+export default Inspector;

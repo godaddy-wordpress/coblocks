@@ -1,6 +1,7 @@
 .wp-block-coblocks-testimonials .wp-block-coblocks-testimonial {
 	background-color: #fff;
 	display: flex;
+	flex-grow: 1;
 	margin-bottom: 1rem;
 	padding: 2rem 1.5rem;
 
@@ -97,6 +98,7 @@
 	&__text {
 		background-color: #d6d6d6;
 		border-radius: 8px;
+		color: #999;
 		padding: 1em;
 		position: relative;
 		width: 100%;

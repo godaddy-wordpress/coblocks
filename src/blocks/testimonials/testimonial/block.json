@@ -75,27 +75,8 @@
 		"backgroundColor": {
 			"type": "string"
 		},
-		"textColor": {
-			"type": "string"
-		},
-		"customTextColor": {
-			"type": "string"
-		},
-		"customBackgroundColor": {
-			"type": "string"
-		},
-		"bubbleBackgroundColor": {
-			"type": "string"
-		},
-		"bubbleTextColor": {
-			"type": "string"
-		},
-		"customBubbleTextColor": {
-			"type": "string"
-		},
-		"customBubbleBackgroundColor": {
+		"color": {
 			"type": "string"
 		}
-	},
-	"style": "wp-block-coblocks-testimonial"
+	}
 }

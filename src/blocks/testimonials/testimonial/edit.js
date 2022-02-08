@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { isBlobURL } from '@wordpress/blob';
 import { mediaUpload } from '@wordpress/editor';
-import { BlockIcon, getColorClassName, MediaUpload, MediaUploadCheck, RichText } from '@wordpress/block-editor';
+import { BlockIcon, MediaUpload, MediaUploadCheck, RichText, useBlockProps } from '@wordpress/block-editor';
 import { Button, ButtonGroup, DropZone, Spinner } from '@wordpress/components';
 import { closeSmall, image } from '@wordpress/icons';
 import { useEffect, useState } from '@wordpress/element';
@@ -31,19 +31,13 @@ export { MIN_IMAGE_SIZE, MAX_IMAGE_SIZE };
 const Edit = ( props ) => {
 	const {
 		attributes,
-		className,
 		isSelected,
 		setAttributes,
 	} = props;
 
 	const {
-		customBackgroundColor,
-		customBubbleBackgroundColor,
-		customBubbleTextColor,
-		customTextColor,
 		backgroundColor,
-		bubbleBackgroundColor,
-		bubbleTextColor,
+		color,
 		headingLevel,
 		name,
 		role,
@@ -51,23 +45,18 @@ const Edit = ( props ) => {
 		showRole,
 		styleName,
 		text,
-		textColor,
 	} = attributes;
+
+	const blockProps = useBlockProps();
 
 	const [ url, setUrl ] = useState( attributes.url || '' );
 
 	useEffect( () => {
 		setAttributes( {
 			backgroundColor: backgroundColor ?? null,
-			bubbleBackgroundColor: bubbleBackgroundColor ?? null,
-			bubbleTextColor: bubbleTextColor ?? null,
-			customBackgroundColor: customBackgroundColor ?? null,
-			customBubbleBackgroundColor: customBubbleBackgroundColor ?? null,
-			customBubbleTextColor: customBubbleTextColor ?? null,
-			customTextColor: customTextColor ?? null,
-			textColor: textColor ?? null,
+			color: color ?? null,
 		} );
-	}, [ backgroundColor, bubbleBackgroundColor, bubbleTextColor, customBackgroundColor, customBubbleBackgroundColor, customBubbleTextColor, customTextColor, textColor ] );
+	}, [ backgroundColor, color ] );
 
 	useEffect( () => {
 		setAttributes( {
@@ -98,25 +87,18 @@ const Edit = ( props ) => {
 		} );
 	};
 
-	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
-	const textClass = getColorClassName( 'color', textColor );
 	const styles = {
-		backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-		color: textClass ? undefined : customTextColor,
+		backgroundColor,
+		color,
 	};
 
-	const bubbleBackgroundClass = getColorClassName( 'background-color', bubbleBackgroundColor );
-	const bubbleTextClass = getColorClassName( 'color', bubbleTextColor );
 	const bubbleStyles = {
-		backgroundColor: bubbleBackgroundClass ? undefined : customBubbleBackgroundColor,
-		color: bubbleTextClass ? undefined : customBubbleTextColor,
+		backgroundColor: color,
+		color: backgroundColor,
 	};
 
 	const classes = classnames(
-		'wp-block-coblocks-testimonial', {
-			[ backgroundClass ]: backgroundClass,
-			[ textClass ]: textClass,
-		}
+		blockProps.className
 	);
 
 	const renderPlaceholder = () => (
@@ -230,10 +212,7 @@ const Edit = ( props ) => {
 	const renderText = () => (
 		<RichText
 			className={ classnames(
-				`wp-block-coblocks-testimonial__text`, {
-					[ bubbleBackgroundClass ]: bubbleBackgroundClass && styleName === 'conversation',
-					[ bubbleTextClass ]: bubbleTextClass && styleName === 'conversation',
-				}
+				`wp-block-coblocks-testimonial__text`
 			) }
 			identifier="text"
 			onChange={ ( newText ) => setAttributes( { text: newText } ) }
@@ -248,15 +227,11 @@ const Edit = ( props ) => {
 		<div className={ `wp-block-coblocks-testimonial__text-bubble` }>
 			{ renderText() }
 			<span className={ classnames(
-				`wp-block-coblocks-testimonial__text-bubble__tip-back`, {
-					[ bubbleBackgroundClass ]: bubbleBackgroundClass,
-				}
-			) } style={ { backgroundColor: bubbleBackgroundClass ? undefined : customBubbleBackgroundColor } }></span>
+				`wp-block-coblocks-testimonial__text-bubble__tip-back`
+			) } style={ { backgroundColor: color ?? undefined } }></span>
 			<span className={ classnames(
-				`wp-block-coblocks-testimonial__text-bubble__tip-front`, {
-					[ backgroundClass ]: backgroundClass,
-				}
-			) } style={ { backgroundColor: backgroundClass ? undefined : customBackgroundColor } }></span>
+				`wp-block-coblocks-testimonial__text-bubble__tip-front`
+			) } style={ { backgroundColor: backgroundColor ?? undefined } }></span>
 		</div>
 	);
 
@@ -270,6 +245,7 @@ const Edit = ( props ) => {
 				{ ...props }
 			/>
 			<div
+				{ ...blockProps }
 				className={ classes }
 				style={ styles }
 			>

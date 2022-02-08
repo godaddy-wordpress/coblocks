@@ -6,21 +6,24 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies.
  */
-import { getFontSizeClass, InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
-export default function save( { attributes, className } ) {
+export default function save( { attributes } ) {
 	const {
 		columns,
-		customFontSize,
-		fontSize,
 		gutter,
 		styleName,
 	} = attributes;
 
-	const fontSizeClass = getFontSizeClass( fontSize );
+	const saveBlockProps = useBlockProps.save();
 
-	const classes = classnames( className, {
-		[ fontSizeClass ]: fontSizeClass,
+	// Remove classes related to colors as we don't want to apply them on the main block.
+	const sanitizedClasses = ( receivedClasses ) => {
+		const classesArray = receivedClasses.split( ' ' );
+		return classesArray.filter( ( classe ) => ! classe.match( new RegExp( 'has-', 'g' ) ) || classe.match( new RegExp( 'font-size', 'g' ) ) );
+	};
+
+	const classes = classnames( sanitizedClasses( saveBlockProps.className ), {
 		'has-columns': columns > 1,
 		'has-responsive-columns': columns > 1,
 		[ `has-${ columns }-columns` ]: columns > 1,
@@ -28,9 +31,7 @@ export default function save( { attributes, className } ) {
 		[ `is-style-${ styleName }` ]: styleName,
 	} );
 
-	const styles = {
-		fontSize: fontSizeClass ? undefined : customFontSize,
-	};
+	const styles = {};
 
 	return (
 		<div className={ classes } data-columns={ attributes.columns } style={ styles }>

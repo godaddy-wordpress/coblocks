@@ -32,30 +32,6 @@
 			"type": "string",
 			"default": "boxy"
 		},
-		"backgroundColor": {
-			"type": "string"
-		},
-		"customBackgroundColor": {
-			"type": "string"
-		},
-		"textColor": {
-			"type": "string"
-		},
-		"customTextColor": {
-			"type": "string"
-		},
-		"bubbleBackgroundColor": {
-			"type": "string"
-		},
-		"bubbleTextColor": {
-			"type": "string"
-		},
-		"customBubbleTextColor": {
-			"type": "string"
-		},
-		"customBubbleBackgroundColor": {
-			"type": "string"
-		},
 		"fontSize": {
 			"type": "string"
 		},
@@ -67,7 +43,7 @@
 		"anchor": true,
 		"html": false,
 		"color": {
-			"link": true
+			"link": false
 		},
 		"typography": {
 			"fontSize": true,
@@ -81,5 +57,6 @@
 			}
 		}
 	},
+	"editorStyle": "wp-block-coblocks-testimonials-editor",
 	"style": "wp-block-coblocks-testimonials"
 }
