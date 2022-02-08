@@ -111,6 +111,7 @@
 		} );
 
 		close.addEventListener( 'click', function() {
+			removeKeyboardListener();
 			wrapper.style.display = 'none';
 		} );
 
@@ -156,31 +157,37 @@
 			counter.textContent = `${ ( index + 1 ) } / ${ images.length }`;
 		}
 
-		function setKeyboardListener( ) {
-			document.onkeydown = function( e ) {
-				const lightboxDisplayValue = wrapper;
-				const lightboxIsOpen = ( typeof lightboxDisplayValue !== 'undefined' && lightboxDisplayValue !== 'none' );
-				if ( lightboxIsOpen ) {
-					e = e || window.event;
-					switch ( e.keyCode ) {
-						case 27 : // Esc key
-							close.click();
-							break;
-						case 37 : // Arrow left or 'A' key.
-							arrowLeftContainer.click();
-							break;
-						case 65 : // 'A' key.
-							arrowLeftContainer.click();
-							break;
-						case 39 : // Arrow right.
-							arrowRightContainer.click();
-							break;
-						case 68 : // 'D' key.
-							arrowRightContainer.click();
-							break;
-					}
+		const setKeyboardListener = () => document.addEventListener( 'keydown', keyPressEventListener );
+		const removeKeyboardListener = () => document.removeEventListener( 'keydown', keyPressEventListener );
+
+		const keyPressEventListener = ( event ) => {
+			if ( ! event || ! event?.code ) {
+				return;
+			}
+
+			const lightboxDisplayValue = wrapper;
+			const lightboxIsOpen = ( typeof lightboxDisplayValue !== 'undefined' && lightboxDisplayValue?.style?.display === 'flex' );
+
+			if ( lightboxIsOpen ) {
+				const code = event.code;
+				switch ( code ) {
+					case 'Escape' : // Esc key
+						close.click();
+						break;
+					case 'ArrowLeft' : // Arrow left.
+						arrowLeftContainer.click();
+						break;
+					case 'KeyA' : // 'A' key.
+						arrowLeftContainer.click();
+						break;
+					case 'ArrowRight' : // Arrow right.
+						arrowRightContainer.click();
+						break;
+					case 'KeyD' : // 'D' key.
+						arrowRightContainer.click();
+						break;
 				}
-			};
-		}
+			}
+		};
 	}
 }() );

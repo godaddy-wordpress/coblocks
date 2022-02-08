@@ -1,9 +1,14 @@
 /**
+ * External dependencies
+ */
+import PropTypes from 'prop-types';
+
+/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
 import { SelectControl } from '@wordpress/components';
+import { Component, Fragment } from '@wordpress/element';
 
 const utilitySizes = [
 	{
@@ -88,8 +93,8 @@ export default class DimensionsSelect extends Component {
 	getSelectOptions( optionsArray ) {
 		return [
 			...optionsArray.map( ( option ) => ( {
-				value: option.slug,
 				label: option.name,
+				value: option.slug,
 			} ) ),
 		];
 	}
@@ -100,13 +105,20 @@ export default class DimensionsSelect extends Component {
 			<Fragment>
 				<SelectControl
 					className={ 'components-font-size-picker__select' }
-					label={ `Choose ${ type } preset` }
 					hideLabelFromVision={ true }
-					value={ this.getCurrentSelectValue( type ) }
+					label={ `Choose ${ type } preset` }
 					onChange={ this.onChangeValue }
 					options={ this.getSelectOptions( utilitySizes ) }
+					value={ this.getCurrentSelectValue( type ) }
 				/>
 			</Fragment>
 		);
 	}
 }
+
+DimensionsSelect.propTypes = {
+	marginSize: PropTypes.number,
+	paddingSize: PropTypes.number,
+	setAttributes: PropTypes.func,
+	type: PropTypes.string,
+};
