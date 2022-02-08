@@ -1,6 +1,11 @@
 /* global coblocksBlockData */
 
 /**
+ * External dependencies
+ */
+import _ from 'lodash';
+
+/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
@@ -1832,15 +1837,16 @@ let icons = bundledIconsEnabled ? {
 } : {};
 
 if ( typeof coblocksBlockData !== 'undefined' && Object.keys( coblocksBlockData.customIcons ).length ) {
-	Object.keys( coblocksBlockData.customIcons ).forEach( function( key ) {
-		const customIcon = ( coblocksBlockData.customIcons[ key ].icon ).replace( '<svg', '<svg data-coblocks-custom-icon="true" role="img" aria-hidden="true" focusable="false"' );
-		coblocksBlockData.customIcons[ key ].icon = parse( customIcon );
-		if ( 'icon_outlined' in coblocksBlockData.customIcons[ key ] ) {
-			const outlinedIcon = ( coblocksBlockData.customIcons[ key ].icon_outlined ).replace( '<svg', '<svg data-coblocks-custom-icon="true" role="img" aria-hidden="true" focusable="false"' );
-			coblocksBlockData.customIcons[ key ].icon_outlined = parse( outlinedIcon );
+	const customIcons = _.cloneDeep( coblocksBlockData.customIcons );
+	Object.keys( customIcons ).forEach( function( key ) {
+		const customIcon = ( customIcons[ key ].icon ).replace( '<svg', '<svg data-coblocks-custom-icon="true" role="img" aria-hidden="true" focusable="false"' );
+		customIcons[ key ].icon = parse( customIcon );
+		if ( 'icon_outlined' in customIcons[ key ] ) {
+			const outlinedIcon = ( customIcons[ key ].icon_outlined ).replace( '<svg', '<svg data-coblocks-custom-icon="true" role="img" aria-hidden="true" focusable="false"' );
+			customIcons[ key ].icon_outlined = parse( outlinedIcon );
 		}
 	} );
-	icons = { ...icons, ...coblocksBlockData.customIcons };
+	icons = { ...icons, ...customIcons };
 }
 
 // Disable reason: Mutation within execution context - no return value.

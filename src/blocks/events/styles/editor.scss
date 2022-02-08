@@ -5,7 +5,6 @@
 	padding-bottom: 5px;
 
 	.block-list-appender {
-		bottom: -30px;
 		display: none;
 		// This is to override 5.8 style
 		margin: 0;
@@ -53,4 +52,114 @@
 .block-editor-block-list__block[data-type="coblocks/events"].has-child-selected
 [data-type="coblocks/event-item"]:not(.is-selected) > .block-editor-block-list__block-edit::before {
 	border: 1px dashed rgba(123, 134, 162, 0.3);
+}
+
+.coblocks-events-carousel-button-container {
+	&__prev,
+	&__next {
+		position: absolute;
+		top: 50%;
+	}
+
+	&__prev {
+		left: -4em;
+	}
+
+	&__next {
+		right: -4em;
+	}
+}
+
+.coblocks-events-nav-button {
+	&__prev,
+	&__next {
+		background-color: transparent;
+		background-image: url(/assets/lightbox/arrow-right.svg);
+		border: none;
+		border-radius: 100%;
+		cursor: pointer;
+		height: 62px;
+		margin: 0 1%;
+		padding: 15px;
+		position: absolute;
+		// top: 50%;
+		width: 62px;
+
+		&.event-catcher {
+			display: none;
+		}
+	}
+
+	&__prev {
+		left: -3rem;
+		transform: rotate(180deg);
+	}
+
+	&__next {
+		right: -3em;
+	}
+}
+
+.coblocks-events-swiper-container-external-calendar-edit div .wp-block-coblocks-events-front-container .wp-block-coblocks-front-events-swiper-container .wp-block-coblocks-events {
+	pointer-events: none;
+
+	.wp-block-coblocks-event-item:not(:first-of-type) {
+		display: none !important;
+	}
+
+	.wp-block-coblocks-event-item {
+		pointer-events: none;
+	}
+}
+
+.coblocks-events-swiper-container-external-calendar-edit .coblocks-events-nav-button {
+	&__prev,
+	&__next {
+		top: 10%;
+	}
+}
+
+.coblocks-events-block-inner-blocks-container-edit {
+	.coblocks-events-nav-button {
+		&__prev,
+		&__next {
+			top: 10%;
+		}
+	}
+
+	.block-editor-inner-blocks .block-editor-block-list__layout {
+		[data-type="coblocks/event-item"]:not(:first-of-type) {
+			display: none;
+		}
+
+		[data-type="coblocks/event-item"] {
+			pointer-events: none;
+		}
+
+		.block-editor-button-block-appender {
+			display: none;
+		}
+
+		.coblocks-events-nav-button {
+			&__prev,
+			&__next {
+				top: 10% !important;
+			}
+		}
+	}
+}
+
+.coblocks-events-block-inner-blocks-container .block-editor-inner-blocks .block-editor-block-list__layout {
+	align-items: stretch;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+
+	.block-list-appender {
+		position: relative;
+
+		& > .coblocks-block-appender {
+			margin-top: 0;
+		}
+	}
 }
