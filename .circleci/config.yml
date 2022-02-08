@@ -322,7 +322,8 @@ commands:
           name: Activate CoBlocks
           command: |
             ln -s $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
-            ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
+            npx grunt build && npx grunt compress
+            ./vendor/bin/wp plugin activate ./build/*.zip --path=/tmp/wordpress
 
   # Enable debug mode for use in E2E tests.
   enable_debug_mode_for_e2e:
@@ -400,9 +401,6 @@ commands:
           command: |
             touch cypress.env.json
             echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
-            npx grunt build && npx grunt compress
-            wp plugin deactivate coblocks
-            wp plugin activate ./build/*.zip
             ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>-wp-<< parameters.wpversion >>
 
   setup_perf_tests:
