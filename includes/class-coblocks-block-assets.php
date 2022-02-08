@@ -403,16 +403,9 @@ class CoBlocks_Block_Assets {
 		// Post Carousel block.
 		if ( $this->is_page_gutenberg() || has_block( 'coblocks/post-carousel' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
-				'coblocks-slick',
-				$vendors_dir . '/slick.js',
-				array( 'jquery' ),
-				COBLOCKS_VERSION,
-				true
-			);
-			wp_enqueue_script(
-				'coblocks-slick-initializer-front',
-				$dir . 'coblocks-slick-initializer-front.js',
-				array( 'jquery' ),
+				'coblocks-post-carousel',
+				$dir . 'coblocks-post-carousel.js',
+				array(),
 				COBLOCKS_VERSION,
 				true
 			);
