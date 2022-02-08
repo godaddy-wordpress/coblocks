@@ -4,13 +4,14 @@
 import { __ } from '@wordpress/i18n';
 import { TimerIcon } from '@godaddy-wordpress/coblocks-icons';
 import { useBlockProps } from '@wordpress/block-editor';
-import { Button, Icon, Placeholder } from '@wordpress/components';
-import { useState } from '@wordpress/element';
+import {
+	DateTimePicker,
+	Icon,
+	Placeholder,
+} from '@wordpress/components';
 
 const Edit = ( { attributes, setAttributes } ) => {
 	const blockProps = useBlockProps();
-
-	const [ value, setValue ] = useState( -1 );
 
 	return (
 		<div { ...blockProps }>
@@ -20,20 +21,16 @@ const Edit = ( { attributes, setAttributes } ) => {
 				key="placeholder"
 				label="Countdown Timer"
 			>
-				End date
-				<input type={ 'date' } />
-				End time
-				<input type={ 'time' } />
-				<div>TODO : Show Current Time Zone</div>
-				You can adjust the time zone under <a href={ '/wp-admin/options-general.php' }>Site Settings</a>
-				<input type={ 'number' } value={ attributes.eventTime } onChange={ ( nextAddress ) =>
-					setValue( parseInt( nextAddress.target.value ) )
-				} />
-				<Button variant="primary" onClick={ () => {
-					setAttributes( { eventTime: value } );
-				} }>
-					Create Timer
-				</Button>
+
+				<div>
+					<DateTimePicker
+						currentDate={ attributes.eventTime }
+						onChange={ ( date ) => setAttributes( { eventTime: Date.parse( date ) } ) }
+					/>
+				</div>
+
+				<div>You can adjust the time zone under <a href={ '/wp-admin/options-general.php' }>Site Settings</a></div>
+
 			</Placeholder>
 		</div>
 	);

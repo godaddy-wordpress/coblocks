@@ -2,6 +2,6 @@
 
 exports[`coblocks/countdown-timer should render with content 1`] = `
 "<!-- wp:coblocks/countdown-timer -->
-<div class=\\"wp-block-coblocks-countdown-timer\\">This is the save Countdown</div>
+<div class=\\"wp-block-coblocks-countdown-timer\\"></div>
 <!-- /wp:coblocks/countdown-timer -->"
 `;

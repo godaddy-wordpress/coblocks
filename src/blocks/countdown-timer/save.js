@@ -1,5 +1,9 @@
-export default function save() {
+import { useBlockProps } from '@wordpress/block-editor';
+
+export default function save( { attributes } ) {
+	const { eventTime } = attributes;
+
 	return (
-		<div>This is the save Countdown</div>
+		<div { ...useBlockProps.save() }></div>
 	);
 }
