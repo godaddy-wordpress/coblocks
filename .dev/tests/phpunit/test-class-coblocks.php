@@ -144,7 +144,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 	 */
 	public function test_js_asset_source() {
 
-		$this->assertRegexp( '/\/coblocks\/dist\/js\//', coblocks()->asset_source( 'js' ) );
+		$this->assertMatchesRegularExpression( '/\/coblocks\/dist\/js\//', coblocks()->asset_source( 'js' ) );
 
 	}
 
@@ -153,7 +153,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 	 */
 	public function test_css_asset_source() {
 
-		$this->assertRegexp( '/\/coblocks\/dist\/css\//', coblocks()->asset_source( 'css' ) );
+		$this->assertMatchesRegularExpression( '/\/coblocks\/dist\/css\//', coblocks()->asset_source( 'css' ) );
 
 	}
 
@@ -162,7 +162,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 	 */
 	public function test_custom_css_asset_source() {
 
-		$this->assertRegexp( '/\/coblocks\/dist\/css\/custom/', coblocks()->asset_source( 'css/custom' ) );
+		$this->assertMatchesRegularExpression( '/\/coblocks\/dist\/css\/custom/', coblocks()->asset_source( 'css/custom' ) );
 
 	}
 

@@ -201,7 +201,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 
 		$wp_scripts = wp_scripts();
 
-		$this->assertRegExp( '/"recaptchaSiteKey":"123"/', $wp_scripts->registered['coblocks-google-recaptcha']->extra['data'] );
+		$this->assertMatchesRegularExpression( '/"recaptchaSiteKey":"123"/', $wp_scripts->registered['coblocks-google-recaptcha']->extra['data'] );
 
 	}
 

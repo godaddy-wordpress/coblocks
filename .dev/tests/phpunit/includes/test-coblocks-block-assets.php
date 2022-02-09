@@ -109,7 +109,7 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 
 		$this->coblocks_block_assets->editor_assets();
 
-		$this->assertRegExp( '/admin@example.org/', $wp_scripts->registered['coblocks-editor']->extra['data'] );
+		$this->assertMatchesRegularExpression( '/admin@example.org/', $wp_scripts->registered['coblocks-editor']->extra['data'] );
 	}
 
 	public function test_block_assets_not_loaded_when_no_coblocks_block() {
