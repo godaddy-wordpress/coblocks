@@ -335,6 +335,7 @@ commands:
         type: string
         default: latest
     steps:
+      - browser-tools/install-browser-tools
       - checkout
       - setup_e2e_env_var
       - changed_files_with_extension:
