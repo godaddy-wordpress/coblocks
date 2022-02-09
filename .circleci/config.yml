@@ -6,7 +6,7 @@ orbs:
 executors:
   node_latest:
     docker:
-      - image: cimg/node:latest
+      - image: cimg/node:16.14
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -258,7 +258,6 @@ commands:
           name: Install WordPress
           command: |
             sudo apt-get update --allow-releaseinfo-change && sudo apt-get install -y subversion default-mysql-client
-            sudo -E docker-php-ext-install mysqli
             mkdir -p /tmp/wordpress
             ./vendor/bin/wp core download --version=$WPVERSION --path=/tmp/wordpress
             ./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass='' --path=/tmp/wordpress
@@ -381,7 +380,6 @@ commands:
             echo 127.0.0.1 localhost | sudo tee -a /etc/hosts
             sudo apt-get update --allow-releaseinfo-change && sudo apt-get install -y subversion default-mysql-client
             sudo mkdir /conf.d/
-            sudo -E docker-php-ext-install mysqli
 
   run_perf_tests:
     parameters:
