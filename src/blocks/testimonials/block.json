@@ -31,12 +31,6 @@
 		"styleName": {
 			"type": "string",
 			"default": "boxy"
-		},
-		"fontSize": {
-			"type": "string"
-		},
-		"customFontSize": {
-			"type": "number"
 		}
 	},
 	"supports": {
