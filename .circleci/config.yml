@@ -322,8 +322,9 @@ commands:
           name: Activate CoBlocks
           command: |
             ln -s $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
-            npx grunt build && npx grunt compress
-            ./vendor/bin/wp plugin activate ./build/*.zip --path=/tmp/wordpress
+            npx grunt build
+            mv ./build/coblocks /tmp/wordpress/wp-content/plugins/coblocks-testing
+            ./vendor/bin/wp plugin activate coblocks-testing --path=/tmp/wordpress
 
   # Enable debug mode for use in E2E tests.
   enable_debug_mode_for_e2e:
