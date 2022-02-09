@@ -638,7 +638,7 @@ jobs:
           reportCoverage: false # we are currently using an incompatible phpunit library for coverage reporting in PHP 8
 
   js:
-    executor: php_74_node
+    executor: node_latest
     steps:
       - checkout
       - changed_files_with_extension:
