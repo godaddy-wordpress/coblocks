@@ -124,10 +124,10 @@ class CoBlocks_Layout_Selector_Tests extends WP_UnitTestCase {
 		$layouts = coblocks_layout_selector_layouts();
 		$categories = coblocks_layout_selector_categories();
 
-		$this->assertContains( 'var coblocksLayoutSelector', $localized );
-		$this->assertContains( '"categories":' . json_encode( $categories ), $localized );
-		$this->assertContains( '"layouts":' . json_encode( $layouts ), $localized );
-		$this->assertContains( '"postTypeEnabled":"1"', $localized );
+		$this->assertStringContainsString( 'var coblocksLayoutSelector', $localized );
+		$this->assertStringContainsString( '"categories":' . json_encode( $categories ), $localized );
+		$this->assertStringContainsString( '"layouts":' . json_encode( $layouts ), $localized );
+		$this->assertStringContainsString( '"postTypeEnabled":"1"', $localized );
 	}
 
 	/**
@@ -146,7 +146,7 @@ class CoBlocks_Layout_Selector_Tests extends WP_UnitTestCase {
 		coblocks_localize_layout_selector();
 		$localized = $wp_scripts->get_data( 'coblocks-editor', 'data' );
 
-		$this->assertContains( 'var coblocksLayoutSelector', $localized );
-		$this->assertContains( '"postTypeEnabled":""', $localized );
+		$this->assertStringContainsString( 'var coblocksLayoutSelector', $localized );
+		$this->assertStringContainsString( '"postTypeEnabled":""', $localized );
 	}
 }
