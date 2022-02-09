@@ -655,14 +655,12 @@ jobs:
   unit_testing_php_80:
     executor: php_80_mysql
     steps:
-      - run_php_unit_tests:
-          reportCoverage: false # we are currently using an incompatible phpunit library for coverage reporting in PHP 8
+      - run_php_unit_tests
 
   unit_testing_php_81:
     executor: php_81_mysql
     steps:
-      - run_php_unit_tests:
-          reportCoverage: false # we are currently using an incompatible phpunit library for coverage reporting in PHP 8
+      - run_php_unit_tests
 
   js:
     executor: node_latest
