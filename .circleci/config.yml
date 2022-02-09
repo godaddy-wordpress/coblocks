@@ -527,7 +527,7 @@ commands:
       - when:
           condition: << parameters.newPhpUnit >>
           steps:
-            - run: composer config platform.php "8.1.0" && composer require phpunit/phpunit:^9.5 -W --dev
+            - run: composer config platform.php "8.1.0" && composer require phpunit/phpunit:^9.5 -W --dev && composer install
       - when:
           condition: << parameters.reportCoverage >>
           steps:
