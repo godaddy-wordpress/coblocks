@@ -6,6 +6,7 @@ import { EventItemIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 /**
  * Internal dependencies.
  */
+import deprecated from './deprecated';
 import edit from './edit';
 import metadata from './block.json';
 import save from './save';
@@ -13,8 +14,8 @@ import save from './save';
 /**
  * WordPress dependencies.
  */
-import { __, _x } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
+import { __, _x } from '@wordpress/i18n';
 
 /**
  * Block constants.
@@ -22,17 +23,18 @@ import { Icon } from '@wordpress/components';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Event Item', 'block name', 'coblocks' ),
-	description: __( 'An event within the events block.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
 	attributes,
-	supports: {
-		reusable: false,
-		html: false,
-	},
-	parent: [ 'coblocks/events' ],
+	deprecated,
+	description: __( 'An event within the events block.', 'coblocks' ),
 	edit,
+	icon: <Icon icon={ icon } />,
+	parent: [ 'coblocks/events' ],
 	save,
+	supports: {
+		html: false,
+		reusable: false,
+	},
+	title: _x( 'Event Item', 'block name', 'coblocks' ),
 };
 
 export { name, category, icon, metadata, settings };
