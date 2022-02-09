@@ -4,11 +4,11 @@
 	"type": "wordpress-plugin",
 	"license": "GPL-2.0-only",
 	"require": {
-		"php": ">=7.3"
+		"php": ">=7.4"
 	},
 	"config": {
 		"platform": {
-			"php": "7.3.33"
+			"php": "7.4.27"
 		},
 		"allow-plugins": {
 			"dealerdirect/phpcodesniffer-composer-installer": true
