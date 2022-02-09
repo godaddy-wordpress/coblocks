@@ -21,9 +21,30 @@ class CoBlocks_Plugin_Deactivation {
 	 * Constructor
 	 */
 	public function __construct() {
+		add_action( 'admin_footer-plugins.php', array( $this, 'admin_coblocks_deactivation_modal' ) );
 
 		add_filter( 'admin_enqueue_scripts', array( $this, 'equeue_scripts' ) );
 
+		add_action( 'admin_localize_scripts', array( $this, 'localize_scripts' ) );
+	}
+
+	/**
+	 * Loads the asset file for the given script or style.
+	 * Returns a default if the asset file is not found.
+	 *
+	 * @param string $filepath The name of the file without the extension.
+	 *
+	 * @return array The asset file contents.
+	 */
+	public function get_asset_file( $filepath ) {
+		$asset_path = COBLOCKS_PLUGIN_DIR . $filepath . '.asset.php';
+
+		return file_exists( $asset_path )
+			? include $asset_path
+			: array(
+				'dependencies' => array(),
+				'version'      => COBLOCKS_VERSION,
+			);
 	}
 
 	/**
@@ -43,15 +64,53 @@ class CoBlocks_Plugin_Deactivation {
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
 
-		// Enqueue modal script here
-		// wp_enqueue_script(
-		// 	'coblocks-plugin-deactivation',
-		// 	COBLOCKS_PLUGIN_URL . $filepath . '.js',
-		// 	$asset_file['dependencies'],
-		// 	$asset_file['version'],
-		// 	true
-		// );
+		// Enqueue modal script.
+		wp_enqueue_script(
+			'coblocks-plugin-deactivation',
+			COBLOCKS_PLUGIN_URL . $filepath . '.js',
+			$asset_file['dependencies'],
+			$asset_file['version'],
+			true
+		);
 
+		// Styles.
+		$name       = 'style-coblocks-plugin-deactivation';
+		$filepath   = 'dist/' . $name;
+		$asset_file = $this->get_asset_file( $filepath );
+		$rtl        = ! is_rtl() ? '' : '-rtl';
+
+		wp_enqueue_style(
+			'coblocks-plugin-deactivation',
+			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
+			array(),
+			$asset_file['version']
+		);
+	}
+
+	/**
+	 * Localize script.
+	 */
+	public function localize_scripts() {
+		wp_localize_script(
+			'coblocks-plugin-deactivation',
+			'coblocksPluginDeactivateData',
+			array(
+				'hostname' => 'testhostname',
+				'domain'   => 'testdomain',
+			)
+		);
+	}
+
+	/**
+	 *  Output React binding Div.
+	 */
+	public function admin_coblocks_deactivation_modal() {
+		// Add CoBlocks Deactivation Modal backdrop to the DOM.
+		?>
+
+		<div id="coblocks-plugin-deactivate-modal"></div>
+
+		<?php
 	}
 
 }
