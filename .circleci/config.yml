@@ -514,6 +514,9 @@ commands:
       reportCoverage:
         type: boolean
         default: true
+      newPhpUnit:
+        type: boolean
+        default: false
     steps:
       - checkout
       - attach_workspace:
@@ -521,6 +524,10 @@ commands:
       - restore_composer_cache
       - wait_for_mysql
       - install_wordpress_testing_suite
+      - when:
+          condition: << parameters.newPhpUnit >>
+          steps:
+            - run: composer require --ignore-platform-req=php phpunit/phpunit:9.5.13
       - when:
           condition: << parameters.reportCoverage >>
           steps:
@@ -684,7 +691,8 @@ jobs:
   unit_testing_php_81:
     executor: php_81_mysql
     steps:
-      - run_php_unit_tests
+      - run_php_unit_tests:
+          newPhpUnit: true
 
   js:
     executor: node_latest
