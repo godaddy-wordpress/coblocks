@@ -59,6 +59,18 @@ executors:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
+  php_81_mysql:
+    docker:
+      - image: cimg/php:8.1
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+        environment:
+          XDEBUG_MODE=coverage
+      - image: cimg/mysql:5.7
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
   php_74_node:
     docker:
       - image: cimg/php:7.4-node
@@ -109,6 +121,12 @@ workflows:
           requires:
             - php
       - unit_testing_php_80:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - php
+      - unit_testing_php_81:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -168,6 +186,7 @@ workflows:
           requires:
             - unit_testing_php_74
             - unit_testing_php_80
+            - unit_testing_php_81
             - js
       - i18n:
           filters:
@@ -176,12 +195,14 @@ workflows:
           requires:
             - unit_testing_php_74
             - unit_testing_php_80
+            - unit_testing_php_81
             - js
 
       - deploy:
           requires:
             - unit_testing_php_74
             - unit_testing_php_80
+            - unit_testing_php_81
             - js
           filters:
             tags:
@@ -633,6 +654,12 @@ jobs:
 
   unit_testing_php_80:
     executor: php_80_mysql
+    steps:
+      - run_php_unit_tests:
+          reportCoverage: false # we are currently using an incompatible phpunit library for coverage reporting in PHP 8
+
+  unit_testing_php_81:
+    executor: php_81_mysql
     steps:
       - run_php_unit_tests:
           reportCoverage: false # we are currently using an incompatible phpunit library for coverage reporting in PHP 8
