@@ -523,12 +523,11 @@ commands:
           at: ~/project
       - restore_composer_cache
       - wait_for_mysql
-      - install_wordpress_testing_suite
       - when:
           condition: << parameters.newPhpUnit >>
           steps:
             - run: composer config platform.php "7.4" && composer require phpunit/phpunit:^9.5 -W --dev
-            - run: composer require php ">= 7.4" && composer update
+      - install_wordpress_testing_suite
       - when:
           condition: << parameters.reportCoverage >>
           steps:
