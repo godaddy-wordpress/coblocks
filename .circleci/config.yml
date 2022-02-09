@@ -11,19 +11,9 @@ executors:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-  php_56_mysql:
-    docker:
-      - image: cimg/php:5.6
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-      - image: cimg/mysql:5.7
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
   php_74_mysql:
     docker:
-      - image: cimg/php:7.4-node
+      - image: cimg/php:7.4
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -33,7 +23,7 @@ executors:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-  php_74_node_browser_mysql:
+  php_74_browsers_mysql:
     docker:
       - image: cimg/php:7.4-browsers
         auth:
@@ -43,7 +33,7 @@ executors:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-  php_74_node_browser_mysql_mailhog:
+  php_74_browsers_mysql_mailhog:
     docker:
       - image: cimg/php:7.4-browsers
         auth:
@@ -59,7 +49,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_80_mysql:
     docker:
-      - image: cimg/php:8.0.13-node
+      - image: cimg/php:8.0
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -71,13 +61,13 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_74_node:
     docker:
-      - image: cimg/php:7.4.24-node
+      - image: cimg/php:7.4-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-  go_node_browser_legacy:
+  go_browsers:
     docker:
-      - image: cimg/golang:1.17-browsers
+      - image: cimg/go:1.17-browsers
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -150,12 +140,7 @@ workflows:
       #      tags:
       #        only: /^(?!canary).*$/
       #    requires:
-      #      - css
-      #      - unit_testing_php_56
-      #      - unit_testing_php_73
-      #      - unit_testing_php_74
-      #      - unit_testing_php_80
-      #      - js
+      #      - build
 
       # PERF TESTING
       - perf_tests_master:
@@ -519,7 +504,7 @@ jobs:
   # 3. Persist project folder to workspace for other jobs.
   build:
     docker:
-      - image: circleci/php:7.4-node
+      - image: cimg/php:7.4-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -582,7 +567,7 @@ jobs:
 
   pr_artifact_comment:
     docker:
-      - image: circleci/php:7.4-node
+      - image: cimg/php:7.4-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -694,21 +679,21 @@ jobs:
   # --------------------------------------------------
 
   e2e_chrome_wp_latest:
-    executor: php_74_node_browser_mysql_mailhog
+    executor: php_74_browsers_mysql_mailhog
     parallelism: 11
     steps:
       - run_e2e_tests:
           browser: chrome
 
   e2e_firefox_wp_latest:
-    executor: php_74_node_browser_mysql_mailhog
+    executor: php_74_browsers_mysql_mailhog
     parallelism: 11
     steps:
       - run_e2e_tests:
           browser: firefox
 
   e2e_chrome_wp_previous_major:
-    executor: php_74_node_browser_mysql_mailhog
+    executor: php_74_browsers_mysql_mailhog
     parallelism: 11
     steps:
       - run_e2e_tests:
@@ -716,7 +701,7 @@ jobs:
           wpversion: previous_major
 
   perf_tests_master:
-    executor: php_74_node_browser_mysql
+    executor: php_74_browsers_mysql
     steps:
       - checkout
       - setup_perf_tests
@@ -732,7 +717,7 @@ jobs:
             - ./*-median-results.json
 
   perf_tests_current:
-    executor: php_74_node_browser_mysql
+    executor: php_74_browsers_mysql
     steps:
       - checkout
       - setup_perf_tests
@@ -748,7 +733,7 @@ jobs:
             - ./*-median-results.json
 
   aggregate_perf_test_results:
-    executor: php_74_node_browser_mysql
+    executor: php_74_browsers_mysql
     steps:
       - run:
           name: Check branch
@@ -821,7 +806,7 @@ jobs:
             fi
 
   canary-release:
-    executor: go_node_browser_legacy
+    executor: go_browsers
     steps:
       - checkout
       - attach_workspace:
@@ -878,7 +863,7 @@ jobs:
   # Plugin Deployment to WordPress.org
   # --------------------------------------------------
   deploy:
-    executor: go_node_browser_legacy
+    executor: go_browsers
     steps:
       - checkout
       - attach_workspace:
