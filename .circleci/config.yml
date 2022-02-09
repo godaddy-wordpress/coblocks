@@ -527,7 +527,8 @@ commands:
       - when:
           condition: << parameters.newPhpUnit >>
           steps:
-            - run: composer config platform.php "7.4.27" && composer require phpunit/phpunit:^9.5.13 -W --dev
+            - run: composer config platform.php "7.4" && composer require phpunit/phpunit:^9.5 -W --dev
+            - run: composer require php ">= 7.4" && composer update
       - when:
           condition: << parameters.reportCoverage >>
           steps:
