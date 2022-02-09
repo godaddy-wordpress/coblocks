@@ -6,73 +6,49 @@ orbs:
 executors:
   node_latest:
     docker:
-      - image: circleci/node:latest
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-  php_73_node:
-    docker:
-      - image: circleci/php:7.3-node
+      - image: cimg/node:latest
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
   php_56_mysql:
     docker:
-      - image: circleci/php:5.6
+      - image: cimg/php:5.6
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7-ram
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-  php_73_mysql:
-    docker:
-      - image: circleci/php:7.3.31-apache-node
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-        environment:
-          XDEBUG_MODE=coverage
-      - image: circleci/mysql:5.7-ram
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-  php_73_node_browser_legacy:
-     docker:
-      - image: circleci/php:7.3-node-browsers-legacy
+      - image: cimg/mysql:5.7
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
   php_74_mysql:
     docker:
-      - image: circleci/php:7.4.24-apache-node
+      - image: cimg/php:7.4-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
         environment:
           XDEBUG_MODE=coverage
-      - image: circleci/mysql:5.7-ram
+      - image: cimg/mysql:5.7
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
   php_74_node_browser_mysql:
     docker:
-      - image: circleci/php:7.4.24-node-browsers
+      - image: cimg/php:7.4-browsers
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7-ram
+      - image: cimg/mysql:5.7
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
   php_74_node_browser_mysql_mailhog:
     docker:
-      - image: circleci/php:7.4.24-node-browsers
+      - image: cimg/php:7.4-browsers
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7-ram
+      - image: cimg/mysql:5.7
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -82,13 +58,13 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_80_mysql:
     docker:
-      - image: circleci/php:8.0.11-apache-node
+      - image: cimg/php:8.0.13-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
         environment:
           XDEBUG_MODE=coverage
-      - image: circleci/mysql:5.7-ram
+      - image: cimg/mysql:5.7
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -100,7 +76,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   go_node_browser_legacy:
     docker:
-      - image: circleci/golang:latest-node-browsers-legacy
+      - image: cimg/golang:1.17-browsers
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -135,18 +111,6 @@ workflows:
 
       # UNIT TESTING
       # Support PHP Versions: http://php.net/supported-versions.php
-      - unit_testing_php_56:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
-          requires:
-            - php
-      - unit_testing_php_73:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
-          requires:
-            - php
       - unit_testing_php_74:
           filters:
             tags:
@@ -216,8 +180,6 @@ workflows:
             branches:
               only: master
           requires:
-            - unit_testing_php_56
-            - unit_testing_php_73
             - unit_testing_php_74
             - unit_testing_php_80
             - js
@@ -226,21 +188,15 @@ workflows:
             branches:
               only: master
           requires:
-            - unit_testing_php_56
-            - unit_testing_php_73
             - unit_testing_php_74
             - unit_testing_php_80
             - js
 
       - deploy:
           requires:
-            - unit_testing_php_56
-            - unit_testing_php_73
             - unit_testing_php_74
             - unit_testing_php_80
             - js
-            # - e2e_firefox
-            # - e2e_chrome
           filters:
             tags:
               only: /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*)?(\+[0-9-]+(\.[0-9]+)*)?/ # Run on semantic version tags only
@@ -685,16 +641,6 @@ jobs:
   # Unit Testing
   # --------------------------------------------------
 
-  unit_testing_php_56:
-    executor: php_56_mysql
-    steps:
-      - run_php_unit_tests
-
-  unit_testing_php_73:
-    executor: php_73_mysql
-    steps:
-      - run_php_unit_tests
-
   unit_testing_php_74:
     executor: php_74_mysql
     steps:
@@ -841,7 +787,7 @@ jobs:
   # Internationalization Processes
   # --------------------------------------------------
   i18n:
-    executor: php_73_node_browser_legacy
+    executor: php_74_mysql
     steps:
       - add_ssh_keys:
           fingerprints:
