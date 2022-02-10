@@ -1,5 +1,8 @@
 /* global coblocksDeactivateData */
 
+/**
+ * WordPress dependencies
+ */
 import { useCallback, useEffect, useState } from '@wordpress/element';
 import {
 	Button,
@@ -29,8 +32,14 @@ const PluginDeactivateModal = () => {
 	} );
 
 	useEffect( () => {
+		const domain = coblocksDeactivateData.domain;
+
+		if ( ! coblocksDeactivateData || ! domain ) {
+			return;
+		}
+
 		fetch(
-			`${ API_BASE_URL }/feedback/coblocks-optout?domain=${ coblocksDeactivateData.domain }&random=1&language=${ language }`
+			`${ API_BASE_URL }/feedback/coblocks-optout?domain=${ domain }&random=1&language=${ language }`
 		)
 			.then( async ( response ) => {
 				const data = await response.json();
