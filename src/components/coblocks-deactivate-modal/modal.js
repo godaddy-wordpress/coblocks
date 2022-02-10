@@ -16,7 +16,7 @@ const PluginDeactivateModal = () => {
 	const [ isOpen, setOpen ] = useState( false );
 	const [ feedbackData, setFeedbackData ] = useState( null );
 	const [ formData, setFormData ] = useState( {} );
-	const language = document.documentElement.getAttribute( 'lang' );
+	const language = document.documentElement.getAttribute( 'lang' ) || 'en-US';
 
 	const clickHandler = useCallback( ( e ) => {
 		if ( e.target.id !== 'deactivate-coblocks' ) {
