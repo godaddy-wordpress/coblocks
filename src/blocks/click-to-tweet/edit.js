@@ -73,10 +73,7 @@ const Edit = ( props ) => {
 			} };
 			delete migratedAttributes.customFontSize;
 			const transformedBlock = createBlock( 'coblocks/click-to-tweet', { ...migratedAttributes }, [] );
-			replaceBlocks(
-				[ clientId ],
-				transformedBlock,
-			);
+			replaceBlocks( [ clientId ], transformedBlock );
 		}
 	}, [] );
 
