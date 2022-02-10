@@ -143,7 +143,6 @@
 		"jest-environment-puppeteer": "^6.0.2",
 		"jest-junit": "13.0.0",
 		"jest-snapshot": "^27.4.5",
-		"jquery": "^3.4.1",
 		"jsdom": "^16.7.0",
 		"lint-staged": "^12.1.1",
 		"lodash": "^4.17.21",
