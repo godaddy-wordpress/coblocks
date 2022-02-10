@@ -76,9 +76,6 @@ const settings = {
 			name: 'horizontal',
 		},
 	],
-	supports: {
-		align: [ 'wide' ],
-	},
 	/* translators: block name */
 	title: __( 'Testimonials', 'coblocks' ),
 };

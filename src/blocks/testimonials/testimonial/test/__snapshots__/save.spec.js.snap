@@ -2,12 +2,6 @@
 
 exports[`coblocks/testimonial should render empty when Name is missing 1`] = `"<!-- wp:coblocks/testimonial /-->"`;
 
-exports[`coblocks/testimonial should render with background color 1`] = `
-"<!-- wp:coblocks/testimonial {\\"styleName\\":\\"conversation\\",\\"backgroundColor\\":\\"primary\\"} -->
-<div class=\\"wp-block-coblocks-testimonial\\" style=\\"background-color:primary\\"><div class=\\"wp-block-coblocks-testimonial__text-bubble\\"><p class=\\"wp-block-coblocks-testimonial__text\\" itemprop=\\"description\\" style=\\"color:primary\\"></p><span class=\\"wp-block-coblocks-testimonial__text-bubble__tip-back\\"></span><span class=\\"wp-block-coblocks-testimonial__text-bubble__tip-front\\" style=\\"background-color:primary\\"></span></div><div class=\\"wp-block-coblocks-testimonial__content\\"><div class=\\"wp-block-coblocks-testimonial__heading\\"><h4 class=\\"wp-block-coblocks-testimonial__heading__name\\">Some name</h4></div></div></div>
-<!-- /wp:coblocks/testimonial -->"
-`;
-
 exports[`coblocks/testimonial should render with content 1`] = `
 "<!-- wp:coblocks/testimonial -->
 <div class=\\"wp-block-coblocks-testimonial\\"><div class=\\"wp-block-coblocks-testimonial__heading\\"><h4 class=\\"wp-block-coblocks-testimonial__heading__name\\">Some name</h4><p class=\\"wp-block-coblocks-testimonial__heading__role\\">Some role</p></div><p class=\\"wp-block-coblocks-testimonial__text\\" itemprop=\\"description\\">Some text</p></div>
@@ -16,19 +10,13 @@ exports[`coblocks/testimonial should render with content 1`] = `
 
 exports[`coblocks/testimonial should render with focal point on image 1`] = `
 "<!-- wp:coblocks/testimonial {\\"focalPoint\\":{\\"x\\":0.5,\\"y\\":1},\\"showImage\\":true} -->
-<div class=\\"wp-block-coblocks-testimonial\\" style=\\"background-position:50% 100%\\"><figure class=\\"wp-block-coblocks-testimonial__image\\" style=\\"height:100px;width:100px\\"><img alt=\\"\\" src=\\"http://some.url/someimage.jpg\\" style=\\"object-position:50% 100%\\"/></figure><div class=\\"wp-block-coblocks-testimonial__heading\\"><h4 class=\\"wp-block-coblocks-testimonial__heading__name\\">Some name</h4></div><p class=\\"wp-block-coblocks-testimonial__text\\" itemprop=\\"description\\"></p></div>
+<div class=\\"wp-block-coblocks-testimonial\\"><figure class=\\"wp-block-coblocks-testimonial__image\\" style=\\"height:100px;width:100px\\"><img alt=\\"\\" src=\\"http://some.url/someimage.jpg\\" style=\\"object-position:50% 100%\\"/></figure><div class=\\"wp-block-coblocks-testimonial__heading\\"><h4 class=\\"wp-block-coblocks-testimonial__heading__name\\">Some name</h4></div><p class=\\"wp-block-coblocks-testimonial__text\\" itemprop=\\"description\\"></p></div>
 <!-- /wp:coblocks/testimonial -->"
 `;
 
 exports[`coblocks/testimonial should render with image 1`] = `
 "<!-- wp:coblocks/testimonial {\\"showImage\\":true} -->
 <div class=\\"wp-block-coblocks-testimonial\\"><figure class=\\"wp-block-coblocks-testimonial__image\\" style=\\"height:100px;width:100px\\"><img alt=\\"\\" src=\\"http://some.url/someimage.jpg\\"/></figure><div class=\\"wp-block-coblocks-testimonial__heading\\"><h4 class=\\"wp-block-coblocks-testimonial__heading__name\\">Some name</h4></div><p class=\\"wp-block-coblocks-testimonial__text\\" itemprop=\\"description\\"></p></div>
-<!-- /wp:coblocks/testimonial -->"
-`;
-
-exports[`coblocks/testimonial should render with text color 1`] = `
-"<!-- wp:coblocks/testimonial {\\"textColor\\":\\"background\\"} -->
-<div class=\\"wp-block-coblocks-testimonial has-background-color\\"><div class=\\"wp-block-coblocks-testimonial__heading\\"><h4 class=\\"wp-block-coblocks-testimonial__heading__name\\">Some name</h4></div><p class=\\"wp-block-coblocks-testimonial__text\\" itemprop=\\"description\\"></p></div>
 <!-- /wp:coblocks/testimonial -->"
 `;
 

@@ -86,28 +86,7 @@ describe( 'coblocks/testimonial', () => {
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'background-position:50% 100%' );
-		expect( serializedBlock ).toMatchSnapshot();
-	} );
-
-	it( 'should render with background color', () => {
-		block.attributes.name = 'Some name';
-		block.attributes.backgroundColor = 'primary';
-		block.attributes.styleName = 'conversation';
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '"backgroundColor":"primary"' );
-		expect( serializedBlock ).toMatchSnapshot();
-	} );
-
-	it( 'should render with text color', () => {
-		block.attributes.name = 'Some name';
-		block.attributes.textColor = 'background';
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( '{"textColor":"background"}' );
+		expect( serializedBlock ).toContain( 'object-position:50% 100%' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 } );

@@ -7,7 +7,6 @@ const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
  * External dependencies
  */
 const RtlCssPlugin = require( 'rtlcss-webpack-plugin' );
-const CopyPlugin = require( 'copy-webpack-plugin' );
 const path = require( 'path' );
 const fs = require( 'fs' );
 
@@ -61,14 +60,6 @@ module.exports = {
 		...defaultConfig.plugins,
 		new RtlCssPlugin( {
 			filename: '[name]-rtl.css',
-		} ),
-		new CopyPlugin( {
-			patterns: [
-				{
-					from: path.resolve( process.cwd(), 'assets', 'testimonials' ),
-					to: '[path]/images/[name][ext]',
-				},
-			],
 		} ),
 	],
 };
