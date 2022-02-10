@@ -25,14 +25,14 @@ const Inspector = ( props ) => {
 			<PanelColorSettings
 				colorSettings={ [
 					{
-						value: textColor.color,
-						onChange: setTextColor,
 						label: __( 'Text color', 'coblocks' ),
+						onChange: setTextColor,
+						value: textColor.color,
 					},
 					{
-						value: buttonColor.color,
-						onChange: setButtonColor,
 						label: __( 'Button Color', 'coblocks' ),
+						onChange: setButtonColor,
+						value: buttonColor.color,
 					},
 				] }
 				initialOpen={ false }
@@ -40,10 +40,10 @@ const Inspector = ( props ) => {
 			>
 				<ContrastChecker
 					{ ...{
-						textColor: '#ffffff',
 						backgroundColor: buttonColor.color,
 						fallbackButtonColor,
 						fallbackTextColor,
+						textColor: '#ffffff',
 					} }
 				/>
 			</PanelColorSettings>

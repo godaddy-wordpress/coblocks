@@ -18,8 +18,10 @@ import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { createBlock } from '@wordpress/blocks';
 import { useEffect } from '@wordpress/element';
-import { store as blockEditorStore, RichText, useBlockProps } from '@wordpress/block-editor';
+import { RichText, store, useBlockProps } from '@wordpress/block-editor';
 import { useDispatch, withSelect } from '@wordpress/data';
+// Backward compatibility for 5.6
+const blockEditorStore = !! store ? store : 'core/block-editor';
 
 /**
  * Block constants
@@ -95,7 +97,6 @@ const Edit = ( props ) => {
 							[ textColor.class ]: textColor.class,
 						}
 					) }
-					/* translators: the text of the click to tweet element */
 					multiline="false"
 					onChange={ ( nextContent ) => setAttributes( { content: nextContent } ) }
 					onRemove={ ( forward ) => {
