@@ -1,0 +1,11 @@
+[data-type="coblocks/testimonial"] {
+	.wp-block-coblocks-testimonial__image-container {
+		position: relative;
+	}
+
+	.wp-block-coblocks-testimonial__image > .components-button {
+		height: 100%;
+		justify-content: center;
+		width: 100%;
+	}
+}

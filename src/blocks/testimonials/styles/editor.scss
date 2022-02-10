@@ -1,4 +1,4 @@
-[class="wp-block-coblocks-testimonials"] {
+[data-type="coblocks/testimonials"] {
 	.coblocks-block-appender {
 		flex: 1 100%;
 		margin-top: 28px;
@@ -8,5 +8,11 @@
 	// Hide this on Gutenberg 5.9+
 	.block-list-appender {
 		display: none !important;
+	}
+
+	.wp-block-coblocks-testimonial__image > .components-button {
+		height: 100%;
+		justify-content: center;
+		width: 100%;
 	}
 }
