@@ -189,7 +189,6 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 				'dist/js/coblocks-google-maps.js',
 				'dist/js/coblocks-google-recaptcha.js',
 				'dist/js/coblocks-lightbox.js',
-				'dist/js/vendors/slick.js',
 				'src/js/coblocks-accordion-polyfill.js',
 				'src/js/coblocks-checkbox-required.js',
 				'src/js/coblocks-fromEntries.js',
