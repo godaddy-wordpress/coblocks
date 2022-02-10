@@ -2,77 +2,54 @@ version: 2.1
 
 orbs:
   jq: circleci/jq@2.2.0
+  browser-tools: circleci/browser-tools@1.1
 
 executors:
   node_latest:
     docker:
-      - image: circleci/node:latest
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-  php_73_node:
-    docker:
-      - image: circleci/php:7.3-node
+      - image: cimg/node:16.14
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
   php_56_mysql:
     docker:
-      - image: circleci/php:5.6
+      - image: cimg/php:5.6
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
       - image: circleci/mysql:5.7-ram
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-  php_73_mysql:
-    docker:
-      - image: circleci/php:7.3.31-apache-node
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-        environment:
-          XDEBUG_MODE=coverage
-      - image: circleci/mysql:5.7-ram
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-  php_73_node_browser_legacy:
-     docker:
-      - image: circleci/php:7.3-node-browsers-legacy
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
   php_74_mysql:
     docker:
-      - image: circleci/php:7.4.24-apache-node
+      - image: cimg/php:7.4
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
         environment:
           XDEBUG_MODE=coverage
-      - image: circleci/mysql:5.7-ram
+      - image: cimg/mysql:5.7
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-  php_74_node_browser_mysql:
+  php_74_browsers_mysql:
     docker:
-      - image: circleci/php:7.4.24-node-browsers
+      - image: cimg/php:7.4-browsers
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7-ram
+      - image: cimg/mysql:5.7
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-  php_74_node_browser_mysql_mailhog:
+  php_74_browsers_mysql_mailhog:
     docker:
-      - image: circleci/php:7.4.24-node-browsers
+      - image: cimg/php:7.4-browsers
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-      - image: circleci/mysql:5.7-ram
+      - image: cimg/mysql:5.7
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -82,25 +59,37 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_80_mysql:
     docker:
-      - image: circleci/php:8.0.11-apache-node
+      - image: cimg/php:8.0
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
         environment:
           XDEBUG_MODE=coverage
-      - image: circleci/mysql:5.7-ram
+      - image: cimg/mysql:5.7
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  php_81_mysql:
+    docker:
+      - image: cimg/php:8.1
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+        environment:
+          XDEBUG_MODE=coverage
+      - image: cimg/mysql:5.7
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
   php_74_node:
     docker:
-      - image: cimg/php:7.4.24-node
+      - image: cimg/php:7.4-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-  go_node_browser_legacy:
+  go_browsers:
     docker:
-      - image: circleci/golang:latest-node-browsers-legacy
+      - image: cimg/go:1.17-browsers
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -136,17 +125,11 @@ workflows:
       # UNIT TESTING
       # Support PHP Versions: http://php.net/supported-versions.php
       - unit_testing_php_56:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
-          requires:
-            - php
-      - unit_testing_php_73:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
-          requires:
-            - php
+            filters:
+              tags:
+                only: /^(?!canary).*$/
+            requires:
+              - php
       - unit_testing_php_74:
           filters:
             tags:
@@ -154,6 +137,12 @@ workflows:
           requires:
             - php
       - unit_testing_php_80:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - php
+      - unit_testing_php_81:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -212,9 +201,9 @@ workflows:
               only: master
           requires:
             - unit_testing_php_56
-            - unit_testing_php_73
             - unit_testing_php_74
             - unit_testing_php_80
+            - unit_testing_php_81
             - js
       - i18n:
           filters:
@@ -222,20 +211,18 @@ workflows:
               only: master
           requires:
             - unit_testing_php_56
-            - unit_testing_php_73
             - unit_testing_php_74
             - unit_testing_php_80
+            - unit_testing_php_81
             - js
 
       - deploy:
           requires:
             - unit_testing_php_56
-            - unit_testing_php_73
             - unit_testing_php_74
             - unit_testing_php_80
+            - unit_testing_php_81
             - js
-            # - e2e_firefox
-            # - e2e_chrome
           filters:
             tags:
               only: /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*)?(\+[0-9-]+(\.[0-9]+)*)?/ # Run on semantic version tags only
@@ -297,7 +284,6 @@ commands:
           name: Install WordPress
           command: |
             sudo apt-get update --allow-releaseinfo-change && sudo apt-get install -y subversion default-mysql-client
-            sudo -E docker-php-ext-install mysqli
             mkdir -p /tmp/wordpress
             ./vendor/bin/wp core download --version=$WPVERSION --path=/tmp/wordpress
             ./vendor/bin/wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass='' --path=/tmp/wordpress
@@ -374,6 +360,7 @@ commands:
         type: string
         default: latest
     steps:
+      - browser-tools/install-browser-tools
       - checkout
       - setup_e2e_env_var
       - changed_files_with_extension:
@@ -420,7 +407,6 @@ commands:
             echo 127.0.0.1 localhost | sudo tee -a /etc/hosts
             sudo apt-get update --allow-releaseinfo-change && sudo apt-get install -y subversion default-mysql-client
             sudo mkdir /conf.d/
-            sudo -E docker-php-ext-install mysqli
 
   run_perf_tests:
     parameters:
@@ -528,12 +514,19 @@ commands:
       reportCoverage:
         type: boolean
         default: true
+      newPhpUnit:
+        type: boolean
+        default: false
     steps:
       - checkout
       - attach_workspace:
           at: ~/project
       - restore_composer_cache
       - wait_for_mysql
+      - when:
+          condition: << parameters.newPhpUnit >>
+          steps:
+            - run: composer config platform.php "7.4" && composer require phpunit/phpunit:^9.5 -W --dev
       - install_wordpress_testing_suite
       - when:
           condition: << parameters.reportCoverage >>
@@ -558,7 +551,7 @@ jobs:
   # 3. Persist project folder to workspace for other jobs.
   build:
     docker:
-      - image: circleci/php:7.4-node
+      - image: cimg/php:7.4-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -621,7 +614,7 @@ jobs:
 
   pr_artifact_comment:
     docker:
-      - image: circleci/php:7.4-node
+      - image: cimg/php:7.4-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -685,11 +678,6 @@ jobs:
     steps:
       - run_php_unit_tests
 
-  unit_testing_php_73:
-    executor: php_73_mysql
-    steps:
-      - run_php_unit_tests
-
   unit_testing_php_74:
     executor: php_74_mysql
     steps:
@@ -698,11 +686,17 @@ jobs:
   unit_testing_php_80:
     executor: php_80_mysql
     steps:
+      - run_php_unit_tests
+
+  unit_testing_php_81:
+    executor: php_81_mysql
+    steps:
       - run_php_unit_tests:
+          newPhpUnit: true
           reportCoverage: false # we are currently using an incompatible phpunit library for coverage reporting in PHP 8
 
   js:
-    executor: php_74_node
+    executor: node_latest
     steps:
       - checkout
       - changed_files_with_extension:
@@ -743,7 +737,7 @@ jobs:
   # --------------------------------------------------
 
   e2e_chrome_wp_nightly:
-    executor: php_74_node_browser_mysql_mailhog
+    executor: php_74_browsers_mysql_mailhog
     parallelism: 11
     steps:
       - run_e2e_tests:
@@ -751,7 +745,7 @@ jobs:
           wpversion: nightly
 
   e2e_firefox_wp_nightly:
-    executor: php_74_node_browser_mysql_mailhog
+    executor: php_74_browsers_mysql_mailhog
     parallelism: 11
     steps:
       - run_e2e_tests:
@@ -759,7 +753,7 @@ jobs:
           wpversion: nightly
 
   e2e_chrome_wp_previous_major:
-    executor: php_74_node_browser_mysql_mailhog
+    executor: php_74_browsers_mysql_mailhog
     parallelism: 11
     steps:
       - run_e2e_tests:
@@ -767,7 +761,7 @@ jobs:
           wpversion: previous_major
 
   perf_tests_master:
-    executor: php_74_node_browser_mysql
+    executor: php_74_browsers_mysql
     steps:
       - checkout
       - setup_perf_tests
@@ -783,7 +777,7 @@ jobs:
             - ./*-median-results.json
 
   perf_tests_current:
-    executor: php_74_node_browser_mysql
+    executor: php_74_browsers_mysql
     steps:
       - checkout
       - setup_perf_tests
@@ -799,7 +793,7 @@ jobs:
             - ./*-median-results.json
 
   aggregate_perf_test_results:
-    executor: php_74_node_browser_mysql
+    executor: php_74_browsers_mysql
     steps:
       - run:
           name: Check branch
@@ -838,7 +832,7 @@ jobs:
   # Internationalization Processes
   # --------------------------------------------------
   i18n:
-    executor: php_73_node_browser_legacy
+    executor: php_74_mysql
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -872,7 +866,7 @@ jobs:
             fi
 
   canary-release:
-    executor: go_node_browser_legacy
+    executor: go_browsers
     steps:
       - checkout
       - attach_workspace:
@@ -929,7 +923,7 @@ jobs:
   # Plugin Deployment to WordPress.org
   # --------------------------------------------------
   deploy:
-    executor: go_node_browser_legacy
+    executor: go_browsers
     steps:
       - checkout
       - attach_workspace:
