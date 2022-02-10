@@ -830,7 +830,7 @@ jobs:
   # Internationalization Processes
   # --------------------------------------------------
   i18n:
-    executor: php_74_mysql
+    executor: php_74_node
     steps:
       - add_ssh_keys:
           fingerprints:
