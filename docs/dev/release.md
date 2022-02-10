@@ -25,9 +25,9 @@ To assist with formatting and removal of superfluous characters you may use the 
 | Search for     | Replace with | Description
 | ----------- | ----------- | ----------- |
 | `\(#([0-9]+)\)` | `[#$1](https://github.com/godaddy-wordpress/coblocks/pull/$1)` | Generate PR Links
-| `^  \* \[skip ci\].*` | | Remove CI Automation Message |
-| `^  \* GoLF.*` | | Remove Translation Message |
-| `(^  )(\*.*$)(\n*)`| `$2\n` | Remove empty lines and preceeding spaces |
+| `^ {2}\* \[skip ci\].*` | | Remove CI Automation Message |
+| `^ {2}\* GoLF.*` | | Remove Translation Message |
+| `(^ {2})(\*.*$)(\n*)` | `$2\n` | Remove empty lines and preceeding spaces |
 
 
 Guidelines for proof-reading include:
