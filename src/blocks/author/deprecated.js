@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys */
 /**
  * Internal dependencies
  */
@@ -6,7 +7,7 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-import { RichText, InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, RichText } from '@wordpress/block-editor';
 
 const deprecated = [
 	{
@@ -36,31 +37,31 @@ const deprecated = [
 						{ imgUrl && (
 							<div className={ 'wp-block-coblocks-author__avatar' }>
 								<img
+									alt="avatar"
 									className="wp-block-coblocks-author__avatar-img"
 									src={ imgUrl }
-									alt="avatar"
 								/>
 							</div>
 						) }
 						<div className={ 'wp-block-coblocks-author__content' }>
 							{ ! RichText.isEmpty( heading ) && (
 								<RichText.Content
-									tagName="p"
 									className="wp-block-coblocks-author__heading"
+									tagName="p"
 									value={ heading }
 								/>
 							) }
 							{ ! RichText.isEmpty( name ) && (
 								<RichText.Content
-									tagName="span"
 									className="wp-block-coblocks-author__name"
+									tagName="span"
 									value={ name }
 								/>
 							) }
 							{ ! RichText.isEmpty( biography ) && (
 								<RichText.Content
-									tagName="p"
 									className="wp-block-coblocks-author__biography"
+									tagName="p"
 									value={ biography }
 								/>
 							) }

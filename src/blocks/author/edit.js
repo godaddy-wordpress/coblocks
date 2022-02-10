@@ -1,38 +1,43 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * Internal dependencies
  */
 import Controls from './controls';
-import Inspector from './inspector';
-import { computeFontSize } from '../../utils/helper';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { compose } from '@wordpress/compose';
-import { mediaUpload } from '@wordpress/editor';
-import { withSelect, select } from '@wordpress/data';
-import { Button, DropZone } from '@wordpress/components';
 import { image as icon } from '@wordpress/icons';
+import { mediaUpload } from '@wordpress/editor';
+import { useSelect } from '@wordpress/data';
 import {
-	RichText,
+	BlockIcon,
 	InnerBlocks,
 	MediaUpload,
 	MediaUploadCheck,
-	withColors,
-	withFontSizes,
-	BlockIcon,
+	RichText,
+	useBlockProps,
 } from '@wordpress/block-editor';
+import { Button, DropZone } from '@wordpress/components';
 
 const AuthorEdit = ( props ) => {
+	const {
+		attributes,
+		className,
+		clientId,
+		isSelected,
+		setAttributes,
+	} = props;
+
+	const {
+		biography,
+		imgUrl,
+		name,
+	} = attributes;
+
 	const onSelectImage = ( media ) => {
 		if ( media && media.url ) {
-			props.setAttributes( { imgUrl: media.url } );
+			setAttributes( { imgUrl: media.url } );
 		}
 	};
 
@@ -44,118 +49,87 @@ const AuthorEdit = ( props ) => {
 		} );
 	};
 
-	const {
-		attributes,
-		backgroundColor,
-		className,
-		clientId,
-		fontSize,
-		isSelected,
-		selectedParentClientId,
-		setAttributes,
-		textColor,
-	} = props;
-
-	const {
-		biography,
-		imgUrl,
-		name,
-	} = attributes;
-
 	const hasImage = !! imgUrl;
 
 	const dropZone = (
 		<DropZone
-			onFilesDrop={ addImage }
-			/* translators: image to represent the post author */
 			label={ __( 'Drop to upload as avatar', 'coblocks' ) }
+			/* translators: image to represent the post author */
+			onFilesDrop={ addImage }
 		/>
 	);
 
-	const classes = classnames(
-		className, {
-			'has-background': backgroundColor.color,
-			'has-text-color': textColor.color,
-			[ backgroundColor.class ]: backgroundColor.class,
-			[ textColor.class ]: textColor.class,
-		}
-	);
+	const blockProps = useBlockProps( { className } );
 
-	const styles = {
-		backgroundColor: backgroundColor.color,
-		color: textColor.color,
-		fontSize: computeFontSize( fontSize ),
-	};
+	const onUploadImage = ( media ) => setAttributes( { imgId: media.id, imgUrl: media.url } );
 
-	const onUploadImage = ( media ) => setAttributes( { imgUrl: media.url, imgId: media.id } );
+	const {
+		selectedClientId,
+		getBlockRootClientId,
+	} = useSelect( ( select ) => select( 'core/block-editor' ), [] );
+
+	const selectedParentClientId = getBlockRootClientId( selectedClientId );
 
 	return (
 		<>
 			{ isSelected && (
-				<Controls
-					{ ...props }
-				/>
+				<Controls { ...props } />
 			) }
-			{ isSelected && (
-				<Inspector
-					{ ...props }
-				/>
-			) }
-			<div className={ classes } style={ styles }>
+			<div { ...blockProps }>
 				{ dropZone }
 				{ ( !! isSelected || clientId === selectedParentClientId || hasImage )
 					? <figure className="wp-block-coblocks-author__avatar">
 						<MediaUploadCheck>
 							<MediaUpload
-								onSelect={ onUploadImage }
 								allowedTypes={ [ 'image' ] }
-								value={ imgUrl }
+								onSelect={ onUploadImage }
 								render={ ( { open } ) => (
 									<Button onClick={ open }>
 										{ ! imgUrl
 											? <BlockIcon icon={ icon } />
-											: <img className="wp-block-coblocks-author__avatar-img" src={ imgUrl } alt="avatar" />
+											: <img alt="avatar" className="wp-block-coblocks-author__avatar-img" src={ imgUrl } />
 										}
 									</Button>
 								) }
+								value={ imgUrl }
 							>
 							</MediaUpload>
 						</MediaUploadCheck>
 					</figure> : null }
 				<div className={ `${ className }__content` }>
 					<RichText
+						className="wp-block-coblocks-author__name"
 						identifier="name"
 						multiline={ false }
-						tagName="span"
-						className="wp-block-coblocks-author__name"
+						onChange={ ( nextName ) => {
+							setAttributes( { name: nextName } );
+						} }
 						placeholder={
 							/* translators: placeholder text used for the author name */
 							__( 'Write author name…', 'coblocks' )
 						}
+						tagName="span"
 						value={ name }
-						onChange={ ( nextName ) => {
-							setAttributes( { name: nextName } );
-						} }
 					/>
 					<RichText
+						className="wp-block-coblocks-author__biography"
 						identifier="biography"
 						multiline={ false }
-						tagName="p"
-						className="wp-block-coblocks-author__biography"
+						onChange={ ( nextBio ) => {
+							setAttributes( { biography: nextBio } );
+						} }
 						placeholder={
 							/* translators: placeholder text used for the biography */
 							__( 'Write a biography that distills objective credibility and authority to your readers…', 'coblocks' )
 						}
+						tagName="p"
 						value={ biography }
-						onChange={ ( nextBio ) => {
-							setAttributes( { biography: nextBio } );
-						} }
 					/>
 					<InnerBlocks
-						template={ [ [ 'core/button', { placeholder: /* translators: content placeholder */ __( 'Author link…', 'coblocks' ) } ] ] }
-						allowedBlocks={ [ 'core/button' ] }
-						templateInsertUpdatesSelection={ false }
 						__experimentalCaptureToolbars={ true }
+						allowedBlocks={ [ 'core/button' ] }
+						template={ [ [ 'core/button', { placeholder: /* translators: content placeholder */ __( 'Author link…', 'coblocks' ) } ] ] }
+						templateInsertUpdatesSelection={ false }
 					/>
 				</div>
 			</div>
@@ -163,19 +137,4 @@ const AuthorEdit = ( props ) => {
 	);
 };
 
-const applyWithSelect = withSelect( () => {
-	const selectedClientId = select( 'core/block-editor' ).getBlockSelectionStart();
-	const parentClientId = select( 'core/block-editor' ).getBlockRootClientId(
-		selectedClientId
-	);
-
-	return {
-		selectedParentClientId: parentClientId,
-	};
-} );
-
-export default compose( [
-	withColors( 'backgroundColor', { textColor: 'color' } ),
-	withFontSizes( 'fontSize' ),
-	applyWithSelect,
-] )( AuthorEdit );
+export default AuthorEdit;
