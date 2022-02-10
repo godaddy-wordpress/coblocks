@@ -55,8 +55,9 @@ const Edit = ( props ) => {
 		setAttributes( {
 			backgroundColor: backgroundColor ?? null,
 			color: color ?? null,
+			styleName,
 		} );
-	}, [ backgroundColor, color ] );
+	}, [ backgroundColor, color, styleName ] );
 
 	useEffect( () => {
 		setAttributes( {
@@ -249,7 +250,7 @@ const Edit = ( props ) => {
 				className={ classes }
 				style={ styles }
 			>
-				{ styleName === 'boxy' && (
+				{ styleName === 'tall' && (
 					<>
 						{ !! showImage && ( url ? renderImage() : renderPlaceholder() ) }
 						{ renderHeading() }

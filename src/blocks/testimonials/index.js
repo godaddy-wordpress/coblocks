@@ -58,6 +58,24 @@ const settings = {
 		__( 'testimonials', 'coblocks' ),
 	],
 	save,
+	styles: [
+		{
+			isDefault: true,
+			/* translators: block style */
+			label: __( 'Boxy', 'coblocks' ),
+			name: 'tall',
+		},
+		{
+			/* translators: block style */
+			label: __( 'Conversation', 'coblocks' ),
+			name: 'conversation',
+		},
+		{
+			/* translators: block style */
+			label: __( 'Horizontal', 'coblocks' ),
+			name: 'horizontal',
+		},
+	],
 	supports: {
 		align: [ 'wide' ],
 	},

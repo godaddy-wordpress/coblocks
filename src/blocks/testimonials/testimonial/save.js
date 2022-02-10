@@ -121,7 +121,7 @@ export default function save( { attributes } ) {
 
 	return isEmpty( attributes ) ? null : (
 		<div className={ classes } style={ styles }>
-			{ styleName === 'boxy' && (
+			{ styleName === 'tall' && (
 				<>
 					{ renderImage() }
 					{ renderHeading() }

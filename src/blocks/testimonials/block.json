@@ -27,10 +27,6 @@
 		"showImages": {
 			"type": "boolean",
 			"default": false
-		},
-		"styleName": {
-			"type": "string",
-			"default": "boxy"
 		}
 	},
 	"supports": {

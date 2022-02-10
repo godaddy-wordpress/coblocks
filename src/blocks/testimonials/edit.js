@@ -19,25 +19,7 @@ import Controls from './controls';
 import Inspector from './inspector';
 
 const ALLOWED_BLOCKS = [ 'coblocks/testimonial' ];
-
-const layoutOptions = [
-	{
-		isDefault: true,
-		/* translators: block style */
-		label: __( 'Boxy', 'coblocks' ),
-		name: 'boxy',
-	},
-	{
-		/* translators: block style */
-		label: __( 'Conversation', 'coblocks' ),
-		name: 'conversation',
-	},
-	{
-		/* translators: block style */
-		label: __( 'Horizontal', 'coblocks' ),
-		name: 'horizontal',
-	},
-];
+const AVAILABLE_STYLES = [ 'tall', 'conversation', 'horizontal' ];
 
 const Edit = ( props ) => {
 	const {
@@ -56,9 +38,9 @@ const Edit = ( props ) => {
 	} = blockProps.style;
 
 	const {
+		className,
 		columns,
 		gutter,
-		styleName,
 	} = attributes;
 
 	const { insertBlock, updateBlockAttributes } = useDispatch( 'core/block-editor' );
@@ -75,7 +57,7 @@ const Edit = ( props ) => {
 				createBlock( 'coblocks/testimonial', {
 					showImage: attributes.showImages,
 					showRole: attributes.showRoles,
-					styleName,
+					styleName: getStyleNameFromClassName(),
 				} ),
 				innerBlocks.length,
 				clientId,
@@ -88,8 +70,17 @@ const Edit = ( props ) => {
 		updateInnerAttributes( 'coblocks/testimonial', {
 			backgroundColor,
 			color,
+			styleName: getStyleNameFromClassName(),
 		} );
-	}, [ backgroundColor, color ] );
+	}, [ backgroundColor, color, className ] );
+
+	const getStyleNameFromClassName = () => {
+		const styleName = className?.substring( className?.lastIndexOf( '-' ) + 1 );
+
+		return AVAILABLE_STYLES.includes( styleName )
+			? styleName
+			: AVAILABLE_STYLES[ 0 ];
+	};
 
 	// Remove classes related to colors as we don't want to apply them on the main block.
 	const sanitizedClasses = ( receivedClasses ) => {
@@ -102,7 +93,6 @@ const Edit = ( props ) => {
 		'has-responsive-columns': columns > 1,
 		[ `has-${ columns }-columns` ]: columns > 1,
 		[ `has-${ gutter }-gutter` ]: gutter,
-		[ `is-style-${ styleName }` ]: styleName,
 	} );
 
 	const updateInnerAttributes = ( blockName, newAttributes ) => {
@@ -141,11 +131,6 @@ const Edit = ( props ) => {
 		setAttributes( { gutter: value } );
 	};
 
-	const setStyleName = ( value ) => {
-		setAttributes( { styleName: value.name } );
-		updateInnerAttributes( 'coblocks/testimonial', { styleName: value.name } );
-	};
-
 	const styles = {
 		fontSize,
 	};
@@ -160,14 +145,11 @@ const Edit = ( props ) => {
 					/>
 					<Inspector
 						{ ...props }
-						activeStyle={ styleName }
 						attributes={ attributes }
-						layoutOptions={ layoutOptions }
 						onSetColumns={ setColumns }
 						onSetGutter={ setGutter }
 						onToggleImages={ toggleImages }
 						onToggleRoles={ toggleRoles }
-						onUpdateStyleName={ setStyleName }
 					/>
 				</>
 			) }
