@@ -73,12 +73,6 @@ class CoBlocks_Plugin_Deactivation {
 
 		$wpnux_export_data = json_decode( get_option( 'wpnux_export_data', '[]' ), true );
 
-		if ( isset( $wpnux_export_data['_meta'] ) ) {
-
-			$persona = isset( $wpnux_export_data['_meta']['persona'] ) ? $wpnux_export_data['_meta']['persona'] : null;
-			$skill   = isset( $wpnux_export_data['_meta']['skill'] ) ? $wpnux_export_data['_meta']['skill'] : null;
-		}
-
 		// Pass data.
 		wp_localize_script(
 			'coblocks-plugin-deactivation',
@@ -89,8 +83,8 @@ class CoBlocks_Plugin_Deactivation {
 				'coblocksVersion' => COBLOCKS_VERSION,
 				'wpVersion'       => $GLOBALS['wp_version'],
 				'wpOptions'       => array(
-					'persona' => $persona,
-					'skill'   => $skill,
+					'persona' => isset( $wpnux_export_data['_meta']['persona'] ) ? $wpnux_export_data['_meta']['persona'] : null,
+					'skill'   => isset( $wpnux_export_data['_meta']['skill'] ) ? $wpnux_export_data['_meta']['skill'] : null,
 				),
 			)
 		);
