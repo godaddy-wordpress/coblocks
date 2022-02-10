@@ -24,8 +24,6 @@ class CoBlocks_Plugin_Deactivation {
 		add_action( 'admin_footer-plugins.php', array( $this, 'admin_coblocks_deactivation_modal' ) );
 
 		add_filter( 'admin_enqueue_scripts', array( $this, 'equeue_scripts' ) );
-
-		add_action( 'admin_localize_scripts', array( $this, 'localize_scripts' ) );
 	}
 
 	/**
@@ -73,6 +71,18 @@ class CoBlocks_Plugin_Deactivation {
 			true
 		);
 
+		// Pass data.
+		wp_localize_script(
+			'coblocks-plugin-deactivation',
+			'coblocksDeactivateData',
+			array(
+				'hostname'        => gethostname(),
+				'domain'          => site_url(),
+				'coblocksVersion' => COBLOCKS_VERSION,
+				'wpVersion'       => $GLOBALS['wp_version'],
+			)
+		);
+
 		// Styles.
 		$name       = 'style-coblocks-plugin-deactivation';
 		$filepath   = 'dist/' . $name;
@@ -84,20 +94,6 @@ class CoBlocks_Plugin_Deactivation {
 			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
 			array(),
 			$asset_file['version']
-		);
-	}
-
-	/**
-	 * Localize script.
-	 */
-	public function localize_scripts() {
-		wp_localize_script(
-			'coblocks-plugin-deactivation',
-			'coblocksPluginDeactivateData',
-			array(
-				'hostname' => 'testhostname',
-				'domain'   => 'testdomain',
-			)
 		);
 	}
 

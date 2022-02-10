@@ -18,7 +18,7 @@
 
 .coblocks-plugin-deactivate-modal {
 	.components-modal__content {
-		width: 550px;
+		width: 600px;
 	}
 
 	.components-modal__header .components-modal__header-heading {
@@ -45,33 +45,31 @@
 
 	.coblocks-plugin-deactivate-modal__checkbox .components-checkbox-control {
 		font-size: 14px;
-		height: 38px;
+		height: 40px;
 		line-height: 24px;
 	}
 
 	.components-button-group {
-		text-align: right;
 		width: 100%;
 
 		.coblocks-plugin-deactivate-modal__button {
 			font-size: 14px;
-			font-weight: 600;
 
 			&.is-link {
-				margin: 0 24px 0 0;
 				text-decoration: none;
 			}
 
 			&.is-primary {
 				border-radius: 6px;
 				box-shadow: none;
+				margin: 0 15px 0 0;
 			}
 		}
 	}
 
 	.coblocks-plugin-deactivate-modal__footer {
 		font-size: 12px;
-		line-height: 26px;
-		padding: 32px 0 8px 0;
+		line-height: 18px;
+		padding: 16px 0 0;
 	}
 }
