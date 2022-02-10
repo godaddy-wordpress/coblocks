@@ -9,7 +9,7 @@ import {
 	TextControl,
 } from '@wordpress/components';
 
-const API_BASE_URL = 'https://wpnux.dev-godaddy.com/v3/api';
+const API_BASE_URL = 'https://wpnux.godaddy.com/v3/api';
 
 const PluginDeactivateModal = () => {
 	const [ href, setHref ] = useState( null );
