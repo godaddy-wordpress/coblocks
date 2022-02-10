@@ -123,7 +123,7 @@
 		"classnames": "^2.2.5",
 		"commander": "^8.3.0",
 		"counterup2": "^2.0.2",
-		"cypress": "^9.1.1",
+		"cypress": "^9.4.1",
 		"cypress-file-upload": "^5.0.8",
 		"cypress-log-to-output": "1.1.2",
 		"email-validator": "^2.0.4",
