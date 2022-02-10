@@ -11,7 +11,6 @@ const path = require( 'path' );
 const fs = require( 'fs' );
 
 const scripts = [
-	'coblocks-accordion-carousel',
 	'coblocks-accordion-polyfill',
 	'coblocks-animation',
 	'coblocks-checkbox-required',
@@ -21,7 +20,6 @@ const scripts = [
 	'coblocks-google-maps',
 	'coblocks-google-recaptcha',
 	'coblocks-lightbox',
-	'coblocks-masonry',
 	'coblocks-post-carousel',
 	'coblocks-tinyswiper-initializer',
 ];
