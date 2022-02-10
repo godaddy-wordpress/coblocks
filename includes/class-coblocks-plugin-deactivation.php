@@ -71,6 +71,8 @@ class CoBlocks_Plugin_Deactivation {
 			true
 		);
 
+		$wpnux_export_data = json_decode( get_option( 'wpnux_export_data', '[]' ), true );
+
 		// Pass data.
 		wp_localize_script(
 			'coblocks-plugin-deactivation',
@@ -80,6 +82,10 @@ class CoBlocks_Plugin_Deactivation {
 				'domain'          => site_url(),
 				'coblocksVersion' => COBLOCKS_VERSION,
 				'wpVersion'       => $GLOBALS['wp_version'],
+				'wpOptions'       => array(
+					'persona' => $wpnux_export_data['_meta']['persona'],
+					'skill'   => $wpnux_export_data['_meta']['skill'],
+				),
 			)
 		);
 

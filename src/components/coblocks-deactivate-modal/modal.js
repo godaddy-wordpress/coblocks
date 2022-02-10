@@ -68,6 +68,8 @@ const PluginDeactivateModal = () => {
 			domain: coblocksDeactivateData.domain,
 			hostname: coblocksDeactivateData.hostname,
 			language,
+			persona: coblocksDeactivateData.wpOptions?.persona,
+			skill: coblocksDeactivateData.wpOptions?.skill,
 			wp_version: coblocksDeactivateData.wpVersion,
 			...textFields,
 		} );
