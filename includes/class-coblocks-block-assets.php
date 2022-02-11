@@ -535,7 +535,7 @@ class CoBlocks_Block_Assets {
 			return true;
 		}
 
-		if ( false !== strpos( $admin_page, 'post.php' ) ) {
+		if ( false !== strpos( $admin_page, 'post.php' ) && isset( $_GET['post'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$wp_post = get_post( $_GET['post'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			if ( isset( $wp_post ) && isset( $wp_post->post_type ) && $this->is_post_type_gutenberg( $wp_post->post_type ) ) {
 				return true;
