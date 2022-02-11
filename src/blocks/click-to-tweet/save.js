@@ -6,7 +6,12 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-import { RichText, getColorClassName, getFontSizeClass } from '@wordpress/block-editor';
+import { getColorClassName, RichText, useBlockProps } from '@wordpress/block-editor';
+
+/**
+ * Internal dependencies
+ */
+import { blockStylesToDescend } from '../../utils/helper.js';
 
 const save = ( { attributes } ) => {
 	const {
@@ -15,8 +20,6 @@ const save = ( { attributes } ) => {
 		customButtonColor,
 		customTextColor,
 		content,
-		customFontSize,
-		fontSize,
 		textColor,
 		textAlign,
 		via,
@@ -29,26 +32,25 @@ const save = ( { attributes } ) => {
 
 	const textColorClass = getColorClassName( 'color', textColor );
 
-	const fontSizeClass = getFontSizeClass( fontSize );
-
 	const textClasses = classnames( 'wp-block-coblocks-click-to-tweet__text', {
 		'has-text-color': textColor || customTextColor,
-		[ fontSizeClass ]: fontSizeClass,
 		[ textColorClass ]: textColorClass,
 	} );
 
 	const blockquoteClasses = classnames( { [ `has-text-align-${ textAlign }` ]: textAlign } );
+	const saveBlockProps = useBlockProps.save( { className: blockquoteClasses } );
+	const descendingBlockStyles = blockStylesToDescend( saveBlockProps );
 
 	const textStyles = {
-		fontSize: fontSizeClass ? undefined : customFontSize,
 		color: textColorClass ? undefined : customTextColor,
+		...descendingBlockStyles,
 	};
 
 	const buttonColorClass = getColorClassName( 'background-color', buttonColor );
 
 	const buttonClasses = classnames( 'wp-block-coblocks-click-to-tweet__twitter-btn', {
-		'has-button-color': buttonColor || customButtonColor,
 		[ buttonColorClass ]: buttonColorClass,
+		'has-button-color': buttonColor || customButtonColor,
 	} );
 
 	const buttonStyles = {
@@ -57,21 +59,21 @@ const save = ( { attributes } ) => {
 
 	return (
 		! RichText.isEmpty( content ) && (
-			<blockquote className={ blockquoteClasses }>
+			<blockquote { ...saveBlockProps }>
 				<RichText.Content
-					tagName="p"
 					className={ textClasses }
 					style={ textStyles }
+					tagName="p"
 					value={ content }
 				/>
 				<RichText.Content
-					tagName="a"
 					className={ buttonClasses }
-					style={ buttonStyles }
-					value={ buttonText }
 					href={ tweetUrl }
-					target="_blank"
 					rel="noopener noreferrer"
+					style={ buttonStyles }
+					tagName="a"
+					target="_blank"
+					value={ buttonText }
 				/>
 			</blockquote>
 		)
