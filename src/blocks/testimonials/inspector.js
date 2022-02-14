@@ -1,55 +1,28 @@
 /**
- * Internal dependencies
- */
-import OptionSelectorControl from '../../components/option-selector-control';
-
-/**
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
 
+/**
+ * Internal dependencies
+ */
+import GutterControl from './../../components/gutter-control/gutter-control';
+
 const Inspector = ( props ) => {
 	const {
 		attributes,
 		onSetColumns,
-		onSetGutter,
 		onToggleImages,
 		onToggleRoles,
 	} = props;
 
 	const {
+		columns,
 		showImages,
 		showRoles,
 	} = attributes;
-
-	const gutterOptions = [
-		{
-			/* translators: abbreviation for small size */
-			label: __( 'S', 'coblocks' ),
-			tooltip: __( 'Small', 'coblocks' ),
-			value: 'small',
-		},
-		{
-			/* translators: abbreviation for medium size */
-			label: __( 'M', 'coblocks' ),
-			tooltip: __( 'Medium', 'coblocks' ),
-			value: 'medium',
-		},
-		{
-			/* translators: abbreviation for large size */
-			label: __( 'L', 'coblocks' ),
-			tooltip: __( 'Large', 'coblocks' ),
-			value: 'large',
-		},
-		{
-			/* translators: abbreviation for largest size */
-			label: __( 'XL', 'coblocks' ),
-			tooltip: __( 'Huge', 'coblocks' ),
-			value: 'huge',
-		},
-	];
 
 	return (
 		<InspectorControls>
@@ -62,14 +35,9 @@ const Inspector = ( props ) => {
 						max={ 3 }
 						min={ 1 }
 						onChange={ ( newColumns ) => onSetColumns( newColumns ) }
-						value={ attributes.columns }
+						value={ columns }
 					/>
-					<OptionSelectorControl
-						currentOption={ attributes.gutter }
-						label={ __( 'Gutter', 'coblocks' ) }
-						onChange={ ( newGutter ) => onSetGutter( newGutter ) }
-						options={ gutterOptions }
-					/>
+					{ columns >= 2 && <GutterControl { ...props } /> }
 				</>
 				<ToggleControl
 					checked={ showImages }

@@ -8,10 +8,14 @@ import classnames from 'classnames';
  */
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
+/**
+ * Internal dependencies
+ */
+import GutterWrapper from './../../components/gutter-control/gutter-wrapper';
+
 export default function save( { attributes } ) {
 	const {
 		columns,
-		gutter,
 		styleName,
 	} = attributes;
 
@@ -27,15 +31,16 @@ export default function save( { attributes } ) {
 		'has-columns': columns > 1,
 		'has-responsive-columns': columns > 1,
 		[ `has-${ columns }-columns` ]: columns > 1,
-		[ `has-${ gutter }-gutter` ]: gutter,
 		[ `is-style-${ styleName }` ]: styleName,
 	} );
 
 	const styles = {};
 
 	return (
-		<div className={ classes } data-columns={ attributes.columns } style={ styles }>
-			<InnerBlocks.Content />
-		</div>
+		<GutterWrapper { ...attributes }>
+			<div className={ classes } data-columns={ attributes.columns } style={ styles }>
+				<InnerBlocks.Content />
+			</div>
+		</GutterWrapper>
 	);
 }

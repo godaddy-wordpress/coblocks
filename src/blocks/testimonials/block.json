@@ -12,10 +12,6 @@
 			"type": "number",
 			"default": 2
 		},
-		"gutter": {
-			"type": "string",
-			"default": "medium"
-		},
 		"headingLevel": {
 			"type": "integer",
 			"default": 4
@@ -32,6 +28,9 @@
 	"supports": {
 		"align": [ "wide", "full" ],
 		"anchor": true,
+		"gutter": {
+			"default": "medium"
+		},
 		"html": false,
 		"color": {
 			"link": false

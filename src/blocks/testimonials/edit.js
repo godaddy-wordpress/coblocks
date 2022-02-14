@@ -6,7 +6,6 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies.
  */
-import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 import { useEffect } from '@wordpress/element';
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
@@ -16,6 +15,7 @@ import { useDispatch, useSelect } from '@wordpress/data';
  * Internal dependencies.
  */
 import Controls from './controls';
+import GutterWrapper from './../../components/gutter-control/gutter-wrapper';
 import Inspector from './inspector';
 
 const ALLOWED_BLOCKS = [ 'coblocks/testimonial' ];
@@ -40,7 +40,6 @@ const Edit = ( props ) => {
 	const {
 		className,
 		columns,
-		gutter,
 	} = attributes;
 
 	const { insertBlock, updateBlockAttributes } = useDispatch( 'core/block-editor' );
@@ -92,7 +91,6 @@ const Edit = ( props ) => {
 		'has-columns': columns > 1,
 		'has-responsive-columns': columns > 1,
 		[ `has-${ columns }-columns` ]: columns > 1,
-		[ `has-${ gutter }-gutter` ]: gutter,
 	} );
 
 	const updateInnerAttributes = ( blockName, newAttributes ) => {
@@ -127,10 +125,6 @@ const Edit = ( props ) => {
 		setAttributes( { columns: parseInt( value ) } );
 	};
 
-	const setGutter = ( value ) => {
-		setAttributes( { gutter: value } );
-	};
-
 	const styles = {
 		fontSize,
 	};
@@ -147,22 +141,23 @@ const Edit = ( props ) => {
 						{ ...props }
 						attributes={ attributes }
 						onSetColumns={ setColumns }
-						onSetGutter={ setGutter }
 						onToggleImages={ toggleImages }
 						onToggleRoles={ toggleRoles }
 					/>
 				</>
 			) }
-			<div
-				{ ...blockProps }
-				className={ classes }
-				style={ styles }>
-				<InnerBlocks
-					__experimentalCaptureToolbars={ true }
-					allowedBlocks={ ALLOWED_BLOCKS }
-					templateInsertUpdatesSelection={ false }
-				/>
-			</div>
+			<GutterWrapper { ...attributes }>
+				<div
+					{ ...blockProps }
+					className={ classes }
+					style={ styles }>
+					<InnerBlocks
+						__experimentalCaptureToolbars={ true }
+						allowedBlocks={ ALLOWED_BLOCKS }
+						templateInsertUpdatesSelection={ false }
+					/>
+				</div>
+			</GutterWrapper>
 		</>
 	);
 };
