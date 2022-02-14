@@ -21,9 +21,11 @@ class CoBlocks_Plugin_Deactivation {
 	 * Constructor
 	 */
 	public function __construct() {
+
 		add_action( 'admin_footer-plugins.php', array( $this, 'admin_coblocks_deactivation_modal' ) );
 
 		add_filter( 'admin_enqueue_scripts', array( $this, 'equeue_scripts' ) );
+
 	}
 
 	/**
@@ -35,6 +37,7 @@ class CoBlocks_Plugin_Deactivation {
 	 * @return array The asset file contents.
 	 */
 	public function get_asset_file( $filepath ) {
+
 		$asset_path = COBLOCKS_PLUGIN_DIR . $filepath . '.asset.php';
 
 		return file_exists( $asset_path )
@@ -43,6 +46,7 @@ class CoBlocks_Plugin_Deactivation {
 				'dependencies' => array(),
 				'version'      => COBLOCKS_VERSION,
 			);
+
 	}
 
 	/**
@@ -101,18 +105,20 @@ class CoBlocks_Plugin_Deactivation {
 			array(),
 			$asset_file['version']
 		);
+
 	}
 
 	/**
-	 *  Output React binding Div.
+	 * Add CoBlocks Deactivation Modal backdrop to the DOM.
 	 */
 	public function admin_coblocks_deactivation_modal() {
-		// Add CoBlocks Deactivation Modal backdrop to the DOM.
+
 		?>
 
 		<div id="coblocks-plugin-deactivate-modal"></div>
 
 		<?php
+
 	}
 
 }
