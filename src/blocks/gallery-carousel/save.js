@@ -43,6 +43,7 @@ const save = ( props ) => {
 	}
 
 	const innerClasses = classnames(
+		'coblocks-gallery-carousel-swiper-container',
 		'is-cropped',
 		...GalleryClasses( attributes ),
 		{
