@@ -168,6 +168,12 @@ workflows:
               only: /^(?!canary).*$/
           requires:
             - build
+      - e2e_twentytwentytwo_chrome_latest:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - build
 
       - e2e_chrome_wp_previous_major:
           filters:
@@ -266,6 +272,9 @@ commands:
       wpversion:
         type: string
         default: latest
+      theme:
+        type: string
+        default: go
     steps:
       - run:
           name: Update hosts
@@ -291,9 +300,9 @@ commands:
             ./vendor/bin/wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email --path=/tmp/wordpress
             ./vendor/bin/wp post generate --count=5 --path=/tmp/wordpress
       - run:
-          name: Install Go theme
+          name: Install Theme
           command: |
-            ./vendor/bin/wp theme install go --activate --path=/tmp/wordpress
+            ./vendor/bin/wp theme install << parameters.theme >> --activate --path=/tmp/wordpress
       - run:
           name: Create custom icon
           command: |
@@ -361,6 +370,9 @@ commands:
       wpversion:
         type: string
         default: latest
+      theme:
+        type: string
+        default: go
     steps:
       - browser-tools/install-browser-tools
       - checkout
@@ -376,6 +388,7 @@ commands:
       - wait_for_mysql
       - install_wordpress_with_coblocks:
           wpversion: "<< parameters.wpversion >>"
+          theme: "<< parameters.theme >>"
       - enable_debug_mode_for_e2e
       - install_mailhog_plugin
       - start_wpcli_server
@@ -761,6 +774,14 @@ jobs:
       - run_e2e_tests:
           browser: chrome
           wpversion: previous_major
+
+  e2e_twentytwentytwo_chrome_latest:
+    executor: php_74_browsers_mysql_mailhog
+    parallelism: 11
+    steps:
+      - run_e2e_tests:
+          browser: chrome
+          theme: twentytwentytwo
 
   perf_tests_master:
     executor: php_74_browsers_mysql
