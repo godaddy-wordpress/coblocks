@@ -90,7 +90,27 @@ const deprecated = [
 		},
 	},
 	{
-		attributes: { ...metadata.attributes },
+		attributes: {
+			...metadata.attributes,
+			backgroundColor: {
+				type: 'string',
+			},
+			customBackgroundColor: {
+				type: 'string',
+			},
+			textColor: {
+				type: 'string',
+			},
+			customTextColor: {
+				type: 'string',
+			},
+			fontSize: {
+				type: 'string',
+			},
+			customFontSize: {
+				type: 'number',
+			},
+		},
 		save: ( { className, attributes } ) => {
 			const {
 				backgroundColor,
