@@ -1,11 +1,9 @@
 {
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
 	"name": "coblocks/gallery-stacked",
 	"category": "media",
 	"attributes": {
-		"align": {
-			"type": "string",
-			"default": "full"
-		},
 		"captionStyle": {
 			"type": "string"
 		},
@@ -21,5 +19,23 @@
 			"type": "number",
 			"default": 0
 		}
-	}
+	},
+	"supports": {
+		"align": true,
+		"anchor": true,
+		"html": false,
+		"color": {},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		}
+	},
+	"title": "Stacked"
 }
