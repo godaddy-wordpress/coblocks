@@ -11,7 +11,8 @@
 			"php": "5.6.20"
 		},
 		"allow-plugins": {
-			"dealerdirect/phpcodesniffer-composer-installer": true
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"cweagans/composer-patches": true
 		}
 	},
 	"require-dev": {
