@@ -9,14 +9,12 @@
 @import "~@wordpress/components/src/checkbox-control/style";
 @import "~@wordpress/components/src/text-control/style";
 
-:root {
+.coblocks-plugin-deactivate-modal {
 	--wp-admin-theme-color: #2271b1;
 	--wp-admin-theme-color-darker-10: #2271b1;
 	--wp-admin-theme-color-darker-20: #2271b1;
 	--wp-admin-border-width-focus: 0;
-}
 
-.coblocks-plugin-deactivate-modal {
 	.components-modal__content {
 		width: 600px;
 	}

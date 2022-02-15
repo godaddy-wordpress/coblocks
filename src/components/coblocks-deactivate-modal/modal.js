@@ -11,6 +11,7 @@ import {
 	Modal,
 	TextControl,
 } from '@wordpress/components';
+import { safeHTML } from '@wordpress/dom';
 
 const API_BASE_URL = 'https://wpnux.godaddy.com/v3/api';
 
@@ -173,7 +174,7 @@ const PluginDeactivateModal = () => {
 			<footer className="coblocks-plugin-deactivate-modal__footer">
 				<div
 					dangerouslySetInnerHTML={ {
-						__html: feedbackData.labels.privacy_disclaimer,
+						__html: safeHTML( feedbackData.labels.privacy_disclaimer ),
 					} }
 				/>
 			</footer>

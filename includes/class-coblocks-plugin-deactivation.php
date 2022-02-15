@@ -17,13 +17,15 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class CoBlocks_Plugin_Deactivation {
 
+	const CONTAINER_CLASS = 'coblocks-plugin-deactivate-modal';
+
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
 		add_action( 'admin_footer-plugins.php', array( $this, 'admin_coblocks_deactivation_modal' ) );
 
-		add_filter( 'admin_enqueue_scripts', array( $this, 'equeue_scripts' ) );
+		add_filter( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 	}
 
 	/**
@@ -47,12 +49,12 @@ class CoBlocks_Plugin_Deactivation {
 
 	/**
 	 * Register meta.
+	 *
+	 * @param string $hook_suffix The current admin page.
 	 */
-	public function equeue_scripts() {
+	public function enqueue_scripts( $hook_suffix ) {
 
-		global $pagenow;
-
-		if ( 'plugins.php' !== $pagenow ) {
+		if ( 'plugins.php' !== $hook_suffix ) {
 
 			return;
 
@@ -78,6 +80,7 @@ class CoBlocks_Plugin_Deactivation {
 			'coblocks-plugin-deactivation',
 			'coblocksDeactivateData',
 			array(
+				'containerClass'  => self::CONTAINER_CLASS,
 				'hostname'        => gethostname(),
 				'domain'          => site_url(),
 				'coblocksVersion' => COBLOCKS_VERSION,
@@ -90,10 +93,9 @@ class CoBlocks_Plugin_Deactivation {
 		);
 
 		// Styles.
-		$name       = 'style-coblocks-plugin-deactivation';
-		$filepath   = 'dist/' . $name;
-		$asset_file = $this->get_asset_file( $filepath );
-		$rtl        = ! is_rtl() ? '' : '-rtl';
+		$name     = 'style-coblocks-plugin-deactivation';
+		$filepath = 'dist/' . $name;
+		$rtl      = ! is_rtl() ? '' : '-rtl';
 
 		wp_enqueue_style(
 			'coblocks-plugin-deactivation',
@@ -110,7 +112,7 @@ class CoBlocks_Plugin_Deactivation {
 		// Add CoBlocks Deactivation Modal backdrop to the DOM.
 		?>
 
-		<div id="coblocks-plugin-deactivate-modal"></div>
+		<div id="<?php echo esc_html( self::CONTAINER_CLASS ); ?>"></div>
 
 		<?php
 	}

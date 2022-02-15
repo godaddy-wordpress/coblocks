@@ -1,3 +1,5 @@
+/* global coblocksDeactivateData */
+
 /**
  * WordPress Dependencies
  */
@@ -9,12 +11,10 @@ import PluginDeactivateModal from './modal';
 
 import './styles/style.scss';
 
-const COBLOCKS_DEACTIVATE_MODAL_ID = 'coblocks-plugin-deactivate-modal';
-
 function initializeCoBlocksDeactivateModal() {
 	render(
 		<PluginDeactivateModal />,
-		document.getElementById( COBLOCKS_DEACTIVATE_MODAL_ID )
+		document.getElementById( coblocksDeactivateData.containerClass )
 	);
 }
 
