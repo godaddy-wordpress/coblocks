@@ -201,7 +201,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 
 		$wp_scripts = wp_scripts();
 
-		$this->assertRegExp( '/"recaptchaSiteKey":"123"/', $wp_scripts->registered['coblocks-google-recaptcha']->extra['data'] );
+		$this->assertMatchesRegularExpression( '/"recaptchaSiteKey":"123"/', $wp_scripts->registered['coblocks-google-recaptcha']->extra['data'] );
 
 	}
 
@@ -615,7 +615,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 			<!-- wp:coblocks/field-textarea /-->
 			<!-- /wp:coblocks/form -->';
 
-		$this->assertContains(
+		$this->assertStringContainsString(
 			'<button type="submit" class="wp-block-button__link" style="">Submit</button>',
 			$this->coblocks_form->render_form( [], $form_missing_submit_button )
 		);
@@ -632,7 +632,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 			<!-- wp:coblocks/field-submit-button {"submitButtonText":"Contact Us"} /-->
 		<!-- /wp:coblocks/form -->';
 
-		$this->assertContains(
+		$this->assertStringContainsString(
 			'<button type="submit" class="wp-block-button__link" style="">Contact Us</button>',
 			$this->coblocks_form->render_form( [], $form_has_submit_button )
 		);

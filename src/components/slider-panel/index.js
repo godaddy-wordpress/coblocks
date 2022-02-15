@@ -1,5 +1,10 @@
 
 /**
+ * External dependencies
+ */
+import PropTypes from 'prop-types';
+
+/**
  * Internal dependencies
  */
 import autoPlayOptions from './autoplay-options';
@@ -137,3 +142,8 @@ const SliderPanel = ( props ) => {
 };
 
 export default SliderPanel;
+
+SliderPanel.propTypes = {
+	attributes: PropTypes.object,
+	setAttributes: PropTypes.func,
+};

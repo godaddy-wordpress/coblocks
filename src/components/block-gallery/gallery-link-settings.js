@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import PropTypes from 'prop-types';
+
+/**
  * Internal dependencies
  */
 import linkOptions from './options/link-options';
@@ -103,5 +108,10 @@ class GalleryLinkSettings extends Component {
 		);
 	}
 }
+
+GalleryLinkSettings.propTypes = {
+	attributes: PropTypes.object,
+	setAttributes: PropTypes.func,
+};
 
 export default GalleryLinkSettings;

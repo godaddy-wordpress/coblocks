@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import PropTypes from 'prop-types';
+
+/**
  * Internal dependencies
  */
 import OptionSelectorControl from '../option-selector-control';
@@ -68,3 +73,8 @@ const GutterControl = ( props ) => {
 };
 
 export default GutterControl;
+
+GutterControl.propTypes = {
+	attributes: PropTypes.object,
+	setAttributes: PropTypes.func,
+};

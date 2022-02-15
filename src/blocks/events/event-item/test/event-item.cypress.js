@@ -66,6 +66,7 @@ describe( 'Block: Event Item', () => {
 		const { date } = eventItemData;
 
 		cy.get( '.wp-block-coblocks-event-item' ).click();
+
 		cy.get( '.wp-block-coblocks-events__day' ).type( date.day );
 
 		helpers.setColorSetting( 'text color', textColor );

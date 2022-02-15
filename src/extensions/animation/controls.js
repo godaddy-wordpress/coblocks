@@ -76,7 +76,7 @@ class Controls extends Component {
 		this.setState( {
 			hoveredAnimation: animation,
 		} );
-	}
+	};
 
 	onAnimationClick = ( onClose, animationClass = null ) => {
 		const { setAttributes } = this.props;

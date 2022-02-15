@@ -1,7 +1,9 @@
 /**
  * External dependencies
  */
+import classnames from 'classnames';
 import { v4 as generateUuid } from 'uuid';
+import PropTypes from 'prop-types';
 import TinySwiper from 'tiny-swiper';
 import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
 
@@ -42,6 +44,8 @@ const Swiper = ( props ) => {
 		freeScroll = false,
 		uuid = null,
 		slidesPerView = 1,
+		spaceBetween = 0,
+		navigationClass = null,
 	} = props;
 
 	const [ swiper, setSwiper ] = useState( null );
@@ -96,6 +100,7 @@ const Swiper = ( props ) => {
 					TinySwiperPluginNavigation,
 				],
 				slidesPerView,
+				spaceBetween,
 				touchable: false,
 			} );
 
@@ -174,12 +179,24 @@ const Swiper = ( props ) => {
 	}, [ isDraggable ] );
 
 	const renderNavigation = useMemo( () => {
+		const prevButtonClasses = classnames( {
+			[ `${ navigationClass }__prev` ]: navigationClass,
+			'nav-button__prev': ! navigationClass,
+			'no-navigation': navigation === false,
+		} );
+
+		const nextButtonClasses = classnames( {
+			[ `${ navigationClass }__next` ]: navigationClass,
+			'nav-button__next': ! navigationClass,
+			'no-navigation': navigation === false,
+		} );
+
 		return (
 			<>
-				<button className={ `nav-button__prev ${ navigation === false && 'no-navigation' }` } id={ `${ uuid }-prev` }>
+				<button className={ prevButtonClasses } id={ `${ uuid }-prev` }>
 					<svg className="icon" style={ { transform: 'rotate(180deg)' } } />
 				</button>
-				<button className={ `nav-button__next ${ navigation === false && 'no-navigation' }` } id={ `${ uuid }-next` }>
+				<button className={ nextButtonClasses } id={ `${ uuid }-next` }>
 					<svg className="icon" />
 				</button>
 			</>
@@ -214,6 +231,29 @@ const Swiper = ( props ) => {
 			{ renderPagination }
 		</div>
 	);
+};
+
+Swiper.propTypes = {
+	autoPlaySpeed: PropTypes.number.isRequired,
+	children: PropTypes.node,
+	freeScroll: PropTypes.bool.isRequired,
+	isDraggable: PropTypes.bool.isRequired,
+	list: PropTypes.array,
+	loop: PropTypes.bool.isRequired,
+	navigation: PropTypes.bool.isRequired,
+	onSwipe: PropTypes.func,
+	pauseHover: PropTypes.any,
+	slidesPerView: PropTypes.number.isRequired,
+	uuid: PropTypes.string,
+};
+
+Swiper.defaultProps = {
+	autoPlaySpeed: null,
+	freeScroll: false,
+	isDraggable: true,
+	loop: true,
+	navigation: false,
+	slidesPerView: 1,
 };
 
 export default SwiperWrapper;

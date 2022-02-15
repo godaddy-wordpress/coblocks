@@ -7,17 +7,21 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import applyWithColors from './colors';
-import Inspector from './inspector';
+import { blockStylesToDescend } from '../../utils/helper.js';
 import Controls from './controls';
-import { computeFontSize } from '../../utils/helper';
+import Inspector from './inspector';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
-import { RichText, withFontSizes } from '@wordpress/block-editor';
-import { withSelect } from '@wordpress/data';
+import { createBlock } from '@wordpress/blocks';
+import { useEffect } from '@wordpress/element';
+import { RichText, store, useBlockProps } from '@wordpress/block-editor';
+import { useDispatch, withSelect } from '@wordpress/data';
+// Backward compatibility for 5.6
+const blockEditorStore = !! store ? store : 'core/block-editor';
 
 /**
  * Block constants
@@ -35,10 +39,10 @@ const Edit = ( props ) => {
 		attributes,
 		buttonColor,
 		className,
+		clientId,
 		isSelected,
 		setAttributes,
 		textColor,
-		fontSize,
 		onReplace,
 	} = props;
 
@@ -50,37 +54,47 @@ const Edit = ( props ) => {
 
 	const blockquoteClasses = classnames( className, { [ `has-text-align-${ textAlign }` ]: textAlign } );
 
+	const blockProps = useBlockProps( { className: blockquoteClasses } );
+	const descendingBlockStyles = blockStylesToDescend( blockProps );
+
+	const { replaceBlocks } = useDispatch( blockEditorStore );
+
+	useEffect( () => {
+		/**
+		 * This logic should only fire in the case of block deprecations.
+		 * Deprecated markup come in with old attributes and the block
+		 * must be replaced for proper instantiation.
+		 */
+		if ( !! Number.isInteger( attributes?.customFontSize ) ) {
+			const migratedAttributes = { ...attributes, style: {
+				typography: {
+					fontSize: `${ attributes?.customFontSize }px`,
+				},
+			} };
+			delete migratedAttributes.customFontSize;
+			const transformedBlock = createBlock( 'coblocks/click-to-tweet', { ...migratedAttributes }, [] );
+			replaceBlocks( [ clientId ], transformedBlock );
+		}
+	}, [] );
+
 	return (
 		<>
 			{ isSelected && (
-				<Controls
-					{ ...props }
-				/>
+				<>
+					<Controls { ...props } />
+					<Inspector { ...props } />
+				</>
 			) }
-			{ isSelected && (
-				<Inspector
-					{ ...props }
-				/>
-			) }
-			<blockquote className={ blockquoteClasses }>
+			<blockquote { ...blockProps }>
 				<RichText
-					tagName="p"
-					multiline="false"
-					/* translators: the text of the click to tweet element */
-					placeholder={ __( 'Add a quote to tweet…', 'coblocks' ) }
-					value={ content }
-					allowedFormats={ [] } // disable controls
+					allowedFormats={ [] } // Disable controls.
 					className={ classnames(
 						'wp-block-coblocks-click-to-tweet__text', {
 							'has-text-color': textColor.color,
 							[ textColor.class ]: textColor.class,
-							[ fontSize?.class ]: fontSize?.class,
 						}
 					) }
-					style={ {
-						color: textColor.color,
-						fontSize: computeFontSize( fontSize ),
-					} }
+					multiline="false"
 					onChange={ ( nextContent ) => setAttributes( { content: nextContent } ) }
 					onRemove={ ( forward ) => {
 						const hasEmptyTweet = content.length === 0 || content.length === 1;
@@ -89,23 +103,31 @@ const Edit = ( props ) => {
 							onReplace( [] );
 						}
 					} }
+					/* translators: the text of the click to tweet element */
+					placeholder={ __( 'Add a quote to tweet…', 'coblocks' ) }
+					style={ {
+						color: textColor.color,
+						...descendingBlockStyles,
+					} }
+					tagName="p"
+					value={ content }
 				/>
 				<RichText
-					tagName="span"
-					multiline="false"
-					placeholder={ __( 'Add button…', 'coblocks' ) }
-					value={ buttonText }
-					allowedFormats={ [] } // disable controls
+					allowedFormats={ [] } // Disable controls.
 					className={ classnames(
 						'wp-block-coblocks-click-to-tweet__twitter-btn', {
 							'has-button-color': buttonColor.color,
 							[ buttonColor.class ]: buttonColor.class,
 						}
 					) }
+					multiline="false"
+					onChange={ ( nextButtonText ) => setAttributes( { buttonText: nextButtonText } ) }
+					placeholder={ __( 'Add button…', 'coblocks' ) }
 					style={ {
 						backgroundColor: buttonColor.color,
 					} }
-					onChange={ ( nextButtonText ) => setAttributes( { buttonText: nextButtonText } ) }
+					tagName="span"
+					value={ buttonText }
 				/>
 			</blockquote>
 		</>
@@ -115,5 +137,4 @@ const Edit = ( props ) => {
 export default compose( [
 	applyWithSelect,
 	applyWithColors,
-	withFontSizes( 'fontSize' ),
 ] )( Edit );
