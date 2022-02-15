@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-02-15T18:24:06+00:00\n"
+"POT-Creation-Date: 2022-02-15T19:03:45+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: coblocks\n"
@@ -5161,6 +5161,7 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgs.js:1078
 #: src/blocks/icon/deprecated/svgsfocusable.js:1077
 #: src/blocks/icon/deprecated/svgsv1.js:1096
+#: src/blocks/icon/svgs-generated.js:2839
 #: src/blocks/icon/svgs-generated.js:2910
 msgid "speech"
 msgstr ""
@@ -7851,11 +7852,6 @@ msgstr ""
 #. translators: icon keyword
 #: src/blocks/icon/svgs-generated.js:2829
 msgid "conversation"
-msgstr ""
-
-#. translators: icon keyword
-#: src/blocks/icon/svgs-generated.js:2839
-msgid "speach"
 msgstr ""
 
 #. translators: icon label
