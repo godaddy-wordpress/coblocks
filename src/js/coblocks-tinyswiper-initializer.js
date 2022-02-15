@@ -1,44 +1,44 @@
 import TinySwiper from 'tiny-swiper';
 import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
 
-let swiper = null;
-let activeIndex = 0;
-let isHovering = false;
-
-const eventsSwiperContainers = document.querySelectorAll( '.coblocks-gallery-carousel-swiper-container' );
-
-const updateThumbnails = ( newIndex ) => {
-	const currentActiveThumbnail = document.getElementById( `wp-block-coblocks-gallery-carousel-thumbnail-${ activeIndex }` );
-
-	if ( currentActiveThumbnail ) {
-		currentActiveThumbnail.classList.remove( 'is-active' );
-
-		const nextActiveThumbnail = document.getElementById( `wp-block-coblocks-gallery-carousel-thumbnail-${ newIndex }` );
-
-		if ( nextActiveThumbnail ) {
-			nextActiveThumbnail.classList.add( 'is-active' );
-		}
-	}
-};
-
-const handleThumbnailClick = ( newIndex ) => {
-	swiper?.slideTo( newIndex );
-	updateThumbnails( newIndex );
-	activeIndex = newIndex;
-};
-
-const handleSwipe = ( newIndex ) => {
-	if ( newIndex !== activeIndex ) {
-		updateThumbnails( newIndex );
-		activeIndex = newIndex;
-	}
-};
-
 ( function() {
 	'use strict';
 
+	const eventsSwiperContainers = document.querySelectorAll( '.coblocks-gallery-carousel-swiper-container' );
+
 	for ( let j = 0; j < eventsSwiperContainers.length; j++ ) {
+		let swiper = null;
+		let activeIndex = 0;
+		let isHovering = false;
+
 		const currentEventsBlock = eventsSwiperContainers[ j ];
+
+		const updateThumbnails = ( newIndex ) => {
+			const currentActiveThumbnail = currentEventsBlock.querySelector( `.wp-block-coblocks-gallery-carousel-thumbnail-${ activeIndex }` );
+
+			if ( currentActiveThumbnail ) {
+				currentActiveThumbnail.classList.remove( 'is-active' );
+
+				const nextActiveThumbnail = currentEventsBlock.querySelector( `.wp-block-coblocks-gallery-carousel-thumbnail-${ newIndex }` );
+
+				if ( nextActiveThumbnail ) {
+					nextActiveThumbnail.classList.add( 'is-active' );
+				}
+			}
+		};
+
+		const handleThumbnailClick = ( newIndex ) => {
+			swiper?.slideTo( newIndex );
+			updateThumbnails( newIndex );
+			activeIndex = newIndex;
+		};
+
+		const handleSwipe = ( newIndex ) => {
+			if ( newIndex !== activeIndex ) {
+				updateThumbnails( newIndex );
+				activeIndex = newIndex;
+			}
+		};
 
 		const swiperContainer = currentEventsBlock.querySelector( '.swiper-container' );
 
@@ -97,9 +97,11 @@ const handleSwipe = ( newIndex ) => {
 						thumbnail.addEventListener( ( 'click' ), () => handleThumbnailClick( index ) );
 					}
 
-					const firstThumbnailImage = currentEventsBlock.querySelector( `#wp-block-coblocks-gallery-carousel-thumbnail-${ 0 }` );
+					const firstThumbnailImage = currentEventsBlock.querySelector( `.wp-block-coblocks-gallery-carousel-thumbnail-${ 0 }` );
 
-					firstThumbnailImage.classList.add( 'is-active' );
+					if ( firstThumbnailImage ) {
+						firstThumbnailImage.classList.add( 'is-active' );
+					}
 				}
 
 				if ( ! parsedSwiperOptions.thumbnails && parsedSwiperOptions.pageDots ) {
@@ -109,16 +111,16 @@ const handleSwipe = ( newIndex ) => {
 						thumbnail.addEventListener( ( 'click' ), () => handleThumbnailClick( index ) );
 					}
 
-					const firstThumbnailImage = currentEventsBlock.querySelector( `#wp-block-coblocks-gallery-carousel-page-dot--${ 0 }` );
+					const firstDot = currentEventsBlock.querySelector( `.wp-block-coblocks-gallery-carousel-page-dot--${ 0 }` );
 
-					if ( firstThumbnailImage ) {
-						firstThumbnailImage.classList.add( 'is-active' );
+					if ( firstDot ) {
+						firstDot.classList.add( 'is-active' );
 					}
 				}
 
 				// add draggable functionality
 				if ( parsedSwiperOptions.draggable !== true ) {
-					const swiperWrapper = currentEventsBlock.querySelector( '#swiper-wrapper' );
+					const swiperWrapper = currentEventsBlock.querySelector( '.swiper-wrapper' );
 
 					swiperWrapper?.addEventListener( ( 'mousedown' ), ( e ) => {
 						e.stopPropagation();
