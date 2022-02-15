@@ -542,7 +542,7 @@ class CoBlocks_Block_Assets {
 			}
 		}
 
-		if ( false !== strpos( $admin_page, 'revision.php' ) ) {
+		if ( false !== strpos( $admin_page, 'revision.php' ) && isset( $_GET['revision'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$wp_post     = get_post( $_GET['revision'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$post_parent = get_post( $wp_post->post_parent );
 			if ( isset( $post_parent ) && isset( $post_parent->post_type ) && $this->is_post_type_gutenberg( $post_parent->post_type ) ) {
