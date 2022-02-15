@@ -1410,12 +1410,12 @@
   dependencies:
     "@wordpress/eslint-plugin" "^9.2.0"
 
-"@godaddy-wordpress/stylelint-config@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/stylelint-config/-/stylelint-config-0.5.0.tgz#1cd14e0bc35e1b23f09841e048f3de4a1e5e9f07"
-  integrity sha512-P/Ha+KOuNL3t8LvDDWmXzZlbpc917IzoeM06eFPcJyynmiECOrtovPDHWeyagsT+/22eNXNJI5A207DVA2O+6Q==
+"@godaddy-wordpress/stylelint-config@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/stylelint-config/-/stylelint-config-0.6.0.tgz#ae9d7f72162f0f02fdac74db1c68f7fdc8f5b8db"
+  integrity sha512-JHKhqOBsbCuLfaE0SaRHyL6OeAQ5x51HK+CF7P4DNFGcRCe1a1ziUTO/NB1XYbwDC1+BFg4cEQ6qyr6CFxiL6Q==
   dependencies:
-    "@wordpress/stylelint-config" "^19.1.0"
+    "@wordpress/stylelint-config" "^20.0.1"
     stylelint-order "5.0.0"
 
 "@googlemaps/js-api-loader@1.12.8":
@@ -4155,19 +4155,18 @@
     lodash "^4.17.21"
     memize "^1.1.0"
 
-"@wordpress/stylelint-config@^19.1.0":
-  version "19.1.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/stylelint-config/-/stylelint-config-19.1.0.tgz#ec023dfd265e1f8ae20e5c760f67aee9ba85a1e5"
-  integrity sha512-K/wB9rhB+pH5WvDh3fV3DN5C3Bud+jPGXmnPY8fOXKMYI3twCFozK/j6sVuaJHqGp/0kKEF0hkkGh+HhD30KGQ==
-  dependencies:
-    stylelint-config-recommended "^3.0.0"
-    stylelint-config-recommended-scss "^4.2.0"
-    stylelint-scss "^3.17.2"
-
 "@wordpress/stylelint-config@^20.0.0":
   version "20.0.0"
   resolved "https://registry.yarnpkg.com/@wordpress/stylelint-config/-/stylelint-config-20.0.0.tgz#df8bffbd9a9d685625e47ed8ae9e9d8f17705b38"
   integrity sha512-GNKkj52Gc4Z4dqVQEGDGhJSNbINLWAJ2R88i6Y79sGay+Gc6d//tdqVFJEYcAEOxMKIw3OLaSq+ojVZPhvIHrg==
+  dependencies:
+    stylelint-config-recommended "^6.0.0"
+    stylelint-config-recommended-scss "^5.0.2"
+
+"@wordpress/stylelint-config@^20.0.1":
+  version "20.0.1"
+  resolved "https://registry.yarnpkg.com/@wordpress/stylelint-config/-/stylelint-config-20.0.1.tgz#ddeb1a99e0de5acb6e06364f28fab2813dc883b6"
+  integrity sha512-f+aydCTrfFcEvx0eOS4N1VRV8MSl/zZTIPJcPkh2oV1yLNq0pL4zQ5OYMlSg5vaj0yZJdRLyGVa+VSjy+D81Ag==
   dependencies:
     stylelint-config-recommended "^6.0.0"
     stylelint-config-recommended-scss "^5.0.2"
@@ -13823,13 +13822,6 @@ stylehacks@^5.0.1:
     browserslist "^4.16.0"
     postcss-selector-parser "^6.0.4"
 
-stylelint-config-recommended-scss@^4.2.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/stylelint-config-recommended-scss/-/stylelint-config-recommended-scss-4.3.0.tgz#717dc253b4cab246da654cee208e499c5c797ae4"
-  integrity sha512-/noGjXlO8pJTr/Z3qGMoaRFK8n1BFfOqmAbX1RjTIcl4Yalr+LUb1zb9iQ7pRx1GsEBXOAm4g2z5/jou/pfMPg==
-  dependencies:
-    stylelint-config-recommended "^5.0.0"
-
 stylelint-config-recommended-scss@^5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/stylelint-config-recommended-scss/-/stylelint-config-recommended-scss-5.0.2.tgz#193f483861c76a36ece24c52eb6baca4838f4a48"
@@ -13838,16 +13830,6 @@ stylelint-config-recommended-scss@^5.0.2:
     postcss-scss "^4.0.2"
     stylelint-config-recommended "^6.0.0"
     stylelint-scss "^4.0.0"
-
-stylelint-config-recommended@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/stylelint-config-recommended/-/stylelint-config-recommended-3.0.0.tgz#e0e547434016c5539fe2650afd58049a2fd1d657"
-  integrity sha512-F6yTRuc06xr1h5Qw/ykb2LuFynJ2IxkKfCMf+1xqPffkxh0S09Zc902XCffcsw/XMFq/OzQ1w54fLIDtmRNHnQ==
-
-stylelint-config-recommended@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/stylelint-config-recommended/-/stylelint-config-recommended-5.0.0.tgz#fb5653f495a60b4938f2ad3e77712d9e1039ae78"
-  integrity sha512-c8aubuARSu5A3vEHLBeOSJt1udOdS+1iue7BmJDTSXoCBmfEQmmWX+59vYIj3NQdJBY6a/QRv1ozVFpaB9jaqA==
 
 stylelint-config-recommended@^6.0.0:
   version "6.0.0"
@@ -13861,17 +13843,6 @@ stylelint-order@5.0.0:
   dependencies:
     postcss "^8.3.11"
     postcss-sorting "^7.0.1"
-
-stylelint-scss@^3.17.2:
-  version "3.21.0"
-  resolved "https://registry.yarnpkg.com/stylelint-scss/-/stylelint-scss-3.21.0.tgz#9f50898691b16b1c1ca3945837381d98c5b22331"
-  integrity sha512-CMI2wSHL+XVlNExpauy/+DbUcB/oUZLARDtMIXkpV/5yd8nthzylYd1cdHeDMJVBXeYHldsnebUX6MoV5zPW4A==
-  dependencies:
-    lodash "^4.17.15"
-    postcss-media-query-parser "^0.2.3"
-    postcss-resolve-nested-selector "^0.1.1"
-    postcss-selector-parser "^6.0.2"
-    postcss-value-parser "^4.1.0"
 
 stylelint-scss@^4.0.0:
   version "4.1.0"
