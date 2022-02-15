@@ -2836,7 +2836,7 @@ const svgs = {
 			/* translators: icon keyword */
 			__('person', 'coblocks'),
 			/* translators: icon keyword */
-			__('speach', 'coblocks'),
+			__('speech', 'coblocks'),
 			/* translators: icon keyword */
 			__('speak', 'coblocks'),
 			/* translators: icon keyword */
