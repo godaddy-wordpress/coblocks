@@ -257,7 +257,7 @@
 
 	&.is-style-tiled {
 
-		@mixin gutter($padding) {
+		@mixin gutter-tiled($padding) {
 
 			.wp-block-coblocks-gallery-collage__item:nth-child(2) {
 				padding-left: $padding;
@@ -273,7 +273,7 @@
 			}
 		}
 
-		@include gutter(calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) * 2));
+		@include gutter-tiled(calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) * 2));
 
 		@each $g, $padding in $gutters {
 
@@ -281,7 +281,7 @@
 
 				@include break-small() {
 
-					@include gutter(#{$padding});
+					@include gutter-tiled(#{$padding});
 				}
 			}
 		}
