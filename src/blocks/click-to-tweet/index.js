@@ -20,10 +20,16 @@ import { __ } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: block name */
-	title: __( 'Click to Tweet', 'coblocks' ),
+	attributes,
+	deprecated,
 	/* translators: block description */
 	description: __( 'Add a quote for readers to tweet via Twitter.', 'coblocks' ),
+	edit,
+	example: {
+		attributes: {
+			content: __( 'The easiest way to promote and advertise your blog, website, and business on Twitter.', 'coblocks' ),
+		},
+	},
 	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
@@ -32,16 +38,10 @@ const settings = {
 		/* translators: block keyword */
 		__( 'twitter', 'coblocks' ),
 	],
-	example: {
-		attributes: {
-			content: __( 'The easiest way to promote and advertise your blog, website, and business on Twitter.', 'coblocks' ),
-		},
-	},
-	attributes,
-	transforms,
-	edit,
 	save,
-	deprecated,
+	/* translators: block name */
+	title: __( 'Click to Tweet', 'coblocks' ),
+	transforms,
 };
 
 export { name, category, metadata, settings };

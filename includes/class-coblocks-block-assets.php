@@ -146,15 +146,6 @@ class CoBlocks_Block_Assets {
 		// Define where the vendor asset is loaded from.
 		$vendors_dir = CoBlocks()->asset_source( 'js/vendors' );
 
-		// Required by the events block.
-		wp_enqueue_script(
-			'coblocks-slick',
-			$vendors_dir . '/slick.js',
-			array( 'jquery' ),
-			COBLOCKS_VERSION,
-			true
-		);
-
 		// Styles.
 		$name       = 'coblocks-1';
 		$filepath   = 'dist/' . $name;
@@ -412,16 +403,9 @@ class CoBlocks_Block_Assets {
 		// Post Carousel block.
 		if ( $this->is_page_gutenberg() || has_block( 'coblocks/post-carousel' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
-				'coblocks-slick',
-				$vendors_dir . '/slick.js',
-				array( 'jquery' ),
-				COBLOCKS_VERSION,
-				true
-			);
-			wp_enqueue_script(
-				'coblocks-slick-initializer-front',
-				$dir . 'coblocks-slick-initializer-front.js',
-				array( 'jquery' ),
+				'coblocks-post-carousel',
+				$dir . 'coblocks-post-carousel.js',
+				array(),
 				COBLOCKS_VERSION,
 				true
 			);
@@ -430,16 +414,9 @@ class CoBlocks_Block_Assets {
 		// Events block.
 		if ( $this->is_page_gutenberg() || has_block( 'coblocks/events' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
-				'coblocks-slick',
-				$vendors_dir . '/slick.js',
-				array( 'jquery' ),
-				COBLOCKS_VERSION,
-				true
-			);
-			wp_enqueue_script(
 				'coblocks-events',
 				$dir . 'coblocks-events.js',
-				array( 'jquery' ),
+				array(),
 				COBLOCKS_VERSION,
 				true
 			);
@@ -558,14 +535,14 @@ class CoBlocks_Block_Assets {
 			return true;
 		}
 
-		if ( false !== strpos( $admin_page, 'post.php' ) ) {
+		if ( false !== strpos( $admin_page, 'post.php' ) && isset( $_GET['post'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$wp_post = get_post( $_GET['post'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			if ( isset( $wp_post ) && isset( $wp_post->post_type ) && $this->is_post_type_gutenberg( $wp_post->post_type ) ) {
 				return true;
 			}
 		}
 
-		if ( false !== strpos( $admin_page, 'revision.php' ) ) {
+		if ( false !== strpos( $admin_page, 'revision.php' ) && isset( $_GET['revision'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$wp_post     = get_post( $_GET['revision'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$post_parent = get_post( $wp_post->post_parent );
 			if ( isset( $post_parent ) && isset( $post_parent->post_type ) && $this->is_post_type_gutenberg( $post_parent->post_type ) ) {

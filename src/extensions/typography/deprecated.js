@@ -1,6 +1,6 @@
 import { addFilter } from '@wordpress/hooks';
-import { TypographyAttributes } from '../../components/typography-controls';
 import { deprecatedBlocks } from './constants';
+import { TypographyAttributes } from '../../components/typography-controls';
 
 /**
  * Compares against list of blocks with deprecated typography controls and prepares
