@@ -7,7 +7,7 @@ import { store } from '@wordpress/block-editor';
 // Backward compatibility.
 const blockEditorStore = !! store ? store : 'core/block-editor';
 
-const deprecatedFontSizeBlocks = [ 'coblocks/click-to-tweet', 'coblocks/author' ];
+const deprecatedFontSizeBlocks = [ 'coblocks/click-to-tweet', 'coblocks/author', 'coblocks/gallery-stacked' ];
 
 const deprecateCoBlocksFontSizeControls = ( blockProps ) => {
 	if ( ! deprecatedFontSizeBlocks.includes( blockProps?.name ) ) {

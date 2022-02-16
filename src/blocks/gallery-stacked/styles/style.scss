@@ -13,12 +13,35 @@
 
 	.coblocks-gallery {
 		margin-left: 0;
+		margin-top: 0;
 		padding-left: 0;
+
+		&.has-small-gutter li:not(:last-of-type) {
+			margin-bottom: calc(var(--coblocks-spacing--1, #{map-get($spacing, 1)}) * 2);
+		}
+
+		&.has-medium-gutter li:not(:last-of-type) {
+			margin-bottom: calc(var(--coblocks-spacing--2, #{map-get($spacing, 2)}) * 2);
+		}
+
+		&.has-large-gutter li:not(:last-of-type) {
+			margin-bottom: calc(var(--coblocks-spacing--3, #{map-get($spacing, 3)}) * 2);
+		}
+
+		&.has-custom-gutter li:not(:last-of-type) {
+			margin-bottom: calc(var(--coblocks-custom-gutter, 0) * 2);
+		}
 	}
 
 	.coblocks-gallery--item {
+		margin-bottom: 0;
 		margin-left: auto;
 		margin-right: auto;
+
+		.coblocks-gallery--figure {
+			margin-bottom: 0;
+			margin-top: 0;
+		}
 
 		&:last-child {
 			margin-bottom: 0;
@@ -33,14 +56,14 @@
 		}
 	}
 
+	&:not([style*="font-size"]) .coblocks-gallery--caption {
+		font-size: 13px;
+	}
+
 	.coblocks-gallery--caption {
 		padding-bottom: 1em;
 		padding-top: 1em;
 		text-align: center;
-
-		&:not([class*="font-size"]) {
-			font-size: 13px;
-		}
 
 		.is-selected &,
 		.is-typing & {

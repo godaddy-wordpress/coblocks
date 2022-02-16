@@ -133,6 +133,10 @@ export const registerBlock = ( block ) => {
 
 		// V2 Block API Upgrades
 		...v2Settings,
+		attributes: {
+			...settings.attributes,
+			...v2Settings.attributes,
+		},
 	} );
 };
 

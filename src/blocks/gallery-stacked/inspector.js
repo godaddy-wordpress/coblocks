@@ -1,18 +1,17 @@
 /**
  * Internal dependencies
  */
-import ResponsiveTabsControl from '../../components/responsive-tabs-control';
-import SizeControl from '../../components/size-control';
 import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
-import CoBlocksFontSizePicker from '../../components/fontsize-picker';
+import GutterControl from '../../components/gutter-control/gutter-control';
+import SizeControl from '../../components/size-control';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { compose } from '@wordpress/compose';
-import { withSelect } from '@wordpress/data';
-import { InspectorControls, withFontSizes } from '@wordpress/block-editor';
+import { InspectorControls } from '@wordpress/block-editor';
+import { useEffect } from '@wordpress/element';
+import { useSelect } from '@wordpress/data';
 import { PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
 
 /**
@@ -24,18 +23,31 @@ const Inspector = ( props ) => {
 	const {
 		attributes,
 		setAttributes,
-		wideControlsEnabled = false,
 	} = props;
 
 	const {
 		images,
 		gutter,
+		gutterCustom,
 		fullwidth,
 		radius,
 		shadow,
 		captions,
 		lightbox,
 	} = attributes;
+
+	const { wideControlsEnabled	} = useSelect( ( select ) => {
+		return { wideControlsEnabled: select( 'core/editor' ).getEditorSettings()?.alignWide ?? false };
+	} );
+
+	const allowRadiusControls = ( gutter !== 'custom' ) || ( gutter === 'custom' && Number.parseFloat( gutterCustom ) !== 0 );
+
+	useEffect( () => {
+		// Disable radius when the gutters are 0
+		if ( ! allowRadiusControls ) {
+			setAttributes( { radius: 0 } );
+		}
+	}, [ allowRadiusControls ] );
 
 	const setRadiusTo = ( value ) => {
 		setAttributes( { radius: value } );
@@ -73,53 +85,46 @@ const Inspector = ( props ) => {
 
 				{ wideControlsEnabled &&
 				<ToggleControl
-					label={ images.length > 1 ? __( 'Fullwidth images', 'coblocks' ) : __( 'Fullwidth image', 'coblocks' ) }
 					checked={ !! fullwidth }
 					help={ getFullwidthImagesHelp }
+					label={ images.length > 1 ? __( 'Fullwidth images', 'coblocks' ) : __( 'Fullwidth image', 'coblocks' ) }
 					onChange={ setFullwidthTo }
 				/>
 				}
 
-				{ images.length > 1 &&
-				<ResponsiveTabsControl { ...props }
-				/>
-				}
+				<GutterControl { ...props } />
 
-				{ gutter > 0 &&
+				{ allowRadiusControls &&
 				<RangeControl
 					label={ __( 'Rounded corners', 'coblocks' ) }
-					value={ radius }
-					onChange={ setRadiusTo }
-					min={ 0 }
 					max={ 20 }
+					min={ 0 }
+					onChange={ setRadiusTo }
 					step={ 1 }
+					value={ radius }
 				/>
 				}
 
 				<ToggleControl
-					label={ __( 'Lightbox', 'coblocks' ) }
 					checked={ !! lightbox }
-					onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
 					help={ getLightboxHelp }
+					label={ __( 'Lightbox', 'coblocks' ) }
+					onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
 				/>
 
 				<ToggleControl
-					label={ __( 'Captions', 'coblocks' ) }
 					checked={ !! captions }
-					onChange={ () => setAttributes( { captions: ! captions } ) }
 					help={ getCaptionsHelp }
+					label={ __( 'Captions', 'coblocks' ) }
+					onChange={ () => setAttributes( { captions: ! captions } ) }
 				/>
-
-				{ captions &&
-				<CoBlocksFontSizePicker { ...props } />
-				}
 
 				{ ! fullwidth &&
 				<SizeControl { ...props }
-					onChange={ setShadowTo }
-					value={ shadow }
 					label={ __( 'Shadow', 'coblocks' ) }
+					onChange={ setShadowTo }
 					reset={ false }
+					value={ shadow }
 				/>
 				}
 
@@ -129,9 +134,4 @@ const Inspector = ( props ) => {
 	);
 };
 
-export default compose( [
-	withSelect( ( select ) => ( {
-		wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
-	} ) ),
-	withFontSizes( 'fontSize' ),
-] )( Inspector );
+export default Inspector;

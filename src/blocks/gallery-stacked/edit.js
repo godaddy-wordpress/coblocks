@@ -8,27 +8,26 @@ import { GalleryStackedIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 /**
  * Internal dependencies
  */
-import Inspector from './inspector';
 import Controls from './controls';
+import { GalleryClasses } from '../../components/block-gallery/shared';
 import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
-import { GalleryClasses } from '../../components/block-gallery/shared';
+import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
+import Inspector from './inspector';
 
 /**
  * WordPress dependencies
  */
+import { useBlockProps } from '@wordpress/block-editor';
+import { View } from '@wordpress/primitives';
 import { __, sprintf } from '@wordpress/i18n';
-import { useEffect, useState } from '@wordpress/element';
 import { compose, usePrevious } from '@wordpress/compose';
-import { withSelect } from '@wordpress/data';
-import { withNotices, Icon } from '@wordpress/components';
-import { withFontSizes } from '@wordpress/block-editor';
+import { Icon, withNotices } from '@wordpress/components';
+import { useEffect, useState } from '@wordpress/element';
 
 const GalleryStackedEdit = ( props ) => {
 	const {
 		attributes,
-		className,
-		fontSize,
 		isSelected,
 		noticeUI,
 		setAttributes,
@@ -39,8 +38,6 @@ const GalleryStackedEdit = ( props ) => {
 		animation,
 		captions,
 		fullwidth,
-		gutter,
-		gutterMobile,
 		images,
 		shadow,
 		linkTo,
@@ -48,13 +45,6 @@ const GalleryStackedEdit = ( props ) => {
 	} = attributes;
 
 	const [ selectedImage, setSelectedImage ] = useState( null );
-
-	useEffect( () => {
-		// This block does not support caption style.
-		if ( typeof attributes.captionStyle !== 'undefined' ) {
-			setAttributes( { captionStyle: undefined } );
-		}
-	}, [] );
 
 	const prevSelected = usePrevious( isSelected );
 
@@ -141,36 +131,29 @@ const GalleryStackedEdit = ( props ) => {
 	};
 
 	const hasImages = !! images.length;
+	const blockProps = useBlockProps( { className: classnames( { 'has-lightbox': lightbox } ) } );
 
+	// The placeholder should use the block props when no images are present.
+	const placeHolderBlockProps = ! hasImages ? blockProps : null;
 	const stackedGalleryPlaceholder = (
-		<>
+		<View { ...placeHolderBlockProps }>
 			{ ! hasImages ? noticeUI : null }
 			<GalleryPlaceholder
 				{ ...props }
-				label={ __( 'Stacked', 'coblocks' ) }
 				icon={ <Icon icon={ icon } /> }
-				gutter={ gutter }
+				label={ __( 'Stacked', 'coblocks' ) }
 			/>
-		</> );
+		</View> );
 
 	if ( ! hasImages ) {
 		return stackedGalleryPlaceholder;
 	}
 
-	const classes = classnames(
-		className, {
-			'has-lightbox': lightbox,
-		}
-	);
-
 	const innerClasses = classnames(
 		...GalleryClasses( attributes ), {
 			'has-fullwidth-images': fullwidth,
 			[ `align${ align }` ]: align,
-			'has-margin': gutter > 0,
 			'has-lightbox': lightbox,
-			[ `has-margin-bottom-${ gutter }` ]: gutter > 0,
-			[ `has-margin-bottom-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 		}
 	);
 
@@ -183,72 +166,60 @@ const GalleryStackedEdit = ( props ) => {
 	return (
 		<>
 			{ isSelected &&
-			<Controls
-				{ ...props }
-			/>
-			}
-			{ isSelected &&
-			<Inspector
-				{ ...props }
-			/>
+			<>
+				<Controls { ...props } />
+				<Inspector { ...props } />
+			</>
 			}
 			{ noticeUI }
-			<div className={ classes }>
-				<ul className={ innerClasses }>
-					{ images.map( ( img, index ) => {
-						const ariaLabel = sprintf(
+			<div { ...blockProps }>
+				<GutterWrapper { ...attributes }>
+					<ul className={ innerClasses }>
+						{ images.map( ( img, index ) => {
+							const ariaLabel = sprintf(
 							/* translators: %1$d is the order number of the image, %2$d is the total number of images */
-							__( 'image %1$d of %2$d in gallery', 'coblocks' ),
-							( index + 1 ),
-							images.length
-						);
+								__( 'image %1$d of %2$d in gallery', 'coblocks' ),
+								( index + 1 ),
+								images.length
+							);
 
-						return (
-							<li className={ itemClasses } key={ img.id || img.url }>
-								<GalleryImage
-									url={ img.url }
-									alt={ img.alt }
-									id={ img.id }
-									imgLink={ img.imgLink }
-									linkTo={ linkTo }
-									gutter={ gutter }
-									gutterMobile={ gutterMobile }
-									marginBottom={ true }
-									shadow={ shadow }
-									isFirstItem={ index === 0 }
-									isLastItem={ ( index + 1 ) === images.length }
-									isSelected={ isSelected && selectedImage === index }
-									onMoveBackward={ onMoveBackward( index ) }
-									onMoveForward={ onMoveForward( index ) }
-									onRemove={ onRemoveImage( index ) }
-									onSelect={ onSelectImage( index ) }
-									setAttributes={ ( attrs ) => setImageAttributes( index, attrs ) }
-									caption={ img.caption }
-									aria-label={ ariaLabel }
-									captions={ captions }
-									supportsCaption={ true }
-									verticalMoving={ true }
-									fontSize={ fontSize.size }
-									imageIndex={ index }
-									replaceImage={ replaceImage }
-								/>
-							</li>
-						);
-					} ) }
-					{ stackedGalleryPlaceholder }
-				</ul>
+							return (
+								<li className={ itemClasses } key={ img.id || img.url }>
+									<GalleryImage
+										alt={ img.alt }
+										aria-label={ ariaLabel }
+										caption={ img.caption }
+										captions={ captions }
+										id={ img.id }
+										imageIndex={ index }
+										imgLink={ img.imgLink }
+										isFirstItem={ index === 0 }
+										isLastItem={ ( index + 1 ) === images.length }
+										isSelected={ isSelected && selectedImage === index }
+										linkTo={ linkTo }
+										marginBottom={ true }
+										onMoveBackward={ onMoveBackward( index ) }
+										onMoveForward={ onMoveForward( index ) }
+										onRemove={ onRemoveImage( index ) }
+										onSelect={ onSelectImage( index ) }
+										replaceImage={ replaceImage }
+										setAttributes={ ( attrs ) => setImageAttributes( index, attrs ) }
+										shadow={ shadow }
+										supportsCaption={ true }
+										url={ img.url }
+										verticalMoving={ true }
+									/>
+								</li>
+							);
+						} ) }
+						{ stackedGalleryPlaceholder }
+					</ul>
+				</GutterWrapper>
 			</div>
 		</>
 	);
 };
 
 export default compose( [
-	withSelect( ( select ) => ( {
-		editorSidebarOpened: select( 'core/edit-post' ).isEditorSidebarOpened(),
-		pluginSidebarOpened: select( 'core/edit-post' ).isPluginSidebarOpened(),
-		publishSidebarOpened: select( 'core/edit-post' ).isPublishSidebarOpened(),
-		wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
-	} ) ),
-	withFontSizes( 'fontSize' ),
 	withNotices,
 ] )( GalleryStackedEdit );
