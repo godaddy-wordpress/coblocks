@@ -27,6 +27,7 @@ class CoBlocks_Plugin_Deactivation {
 		add_action( 'admin_footer-plugins.php', array( $this, 'admin_coblocks_deactivation_modal' ) );
 
 		add_filter( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+
 	}
 
 	/**
@@ -116,7 +117,7 @@ class CoBlocks_Plugin_Deactivation {
 
 		?>
 
-		<div id="<?php echo esc_html( self::CONTAINER_CLASS ); ?>"></div>
+		<div id="<?php echo esc_attr( self::CONTAINER_CLASS ); ?>"></div>
 
 		<?php
 
