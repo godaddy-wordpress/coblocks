@@ -353,48 +353,4 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 
 		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
 	}
-
-	/**
-	 * Test the frontend scripts masonry are enqueued correctly
-	 */
-	public function test_frontend_scripts_masonry() {
-		global $post, $wp_scripts;
-
-		$post_id = wp_insert_post( [
-			'post_author'  => 1,
-			'post_content' => '<!-- wp:coblocks/gallery-masonry /-->',
-			'post_title'   => 'CoBlocks Masonry',
-			'post_status'  => 'publish',
-		] );
-
-		$this->go_to( "/?p={$post_id}" );
-		$post = get_post( $post_id );
-
-		$this->coblocks_block_assets->frontend_scripts();
-		do_action( 'wp_enqueue_scripts' );
-
-		$this->assertContains( 'coblocks-masonry', $wp_scripts->queue );
-	}
-
-	/**
-	 * Test the frontend scripts carousel are enqueued correctly
-	 */
-	public function test_frontend_scripts_carousel() {
-		global $post, $wp_scripts;
-
-		$post_id = wp_insert_post( [
-			'post_author'  => 1,
-			'post_content' => '<!-- wp:coblocks/gallery-carousel /-->',
-			'post_title'   => 'CoBlocks Carousel',
-			'post_status'  => 'publish',
-		] );
-
-		$this->go_to( "/?p={$post_id}" );
-		$post = get_post( $post_id );
-
-		$this->coblocks_block_assets->frontend_scripts();
-		do_action( 'wp_enqueue_scripts' );
-
-		$this->assertContains( 'coblocks-flickity', $wp_scripts->queue );
-	}
 }
