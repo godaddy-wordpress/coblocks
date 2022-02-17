@@ -15,6 +15,7 @@ import { Icon } from '@wordpress/components';
 import edit from './edit';
 import metadata from './block.json';
 import save from './save';
+import { blockStyles as styles } from './utils';
 
 /**
  * Block constants.
@@ -58,24 +59,7 @@ const settings = {
 		__( 'testimonials', 'coblocks' ),
 	],
 	save,
-	styles: [
-		{
-			isDefault: true,
-			/* translators: block style */
-			label: __( 'Boxy', 'coblocks' ),
-			name: 'tall',
-		},
-		{
-			/* translators: block style */
-			label: __( 'Conversation', 'coblocks' ),
-			name: 'conversation',
-		},
-		{
-			/* translators: block style */
-			label: __( 'Horizontal', 'coblocks' ),
-			name: 'horizontal',
-		},
-	],
+	styles,
 	/* translators: block name */
 	title: __( 'Testimonials', 'coblocks' ),
 };

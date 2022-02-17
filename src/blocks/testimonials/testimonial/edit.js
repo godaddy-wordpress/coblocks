@@ -47,7 +47,31 @@ const Edit = ( props ) => {
 		text,
 	} = attributes;
 
+	/**
+	 * Block styles in the Testimonial block are not set with blockSupports but instead
+	 * are set at the parent level and propagated down the the testimonial block.
+	 *
+	 * @constant {Object} blockProps The block props.
+	 */
 	const blockProps = useBlockProps();
+	/**
+	 * Block styles propagated from parent block.
+	 *
+	 * @constant {Object} styles The block styles from attributes `backgroundColor`, `color`.
+	 */
+	const styles = {
+		backgroundColor,
+		color,
+	};
+	/**
+	 * Block styles propagated from parent block. `bubbleStyles` constant has inverted colors.
+	 *
+	 * @constant {Object} bubbleStyles The block styles from attributes `backgroundColor`, `color`.
+	 */
+	const bubbleStyles = {
+		backgroundColor: color,
+		color: backgroundColor,
+	};
 
 	const [ url, setUrl ] = useState( attributes.url || '' );
 
@@ -87,20 +111,6 @@ const Edit = ( props ) => {
 			},
 		} );
 	};
-
-	const styles = {
-		backgroundColor,
-		color,
-	};
-
-	const bubbleStyles = {
-		backgroundColor: color,
-		color: backgroundColor,
-	};
-
-	const classes = classnames(
-		blockProps.className
-	);
 
 	const renderPlaceholder = () => (
 		<figure className="wp-block-coblocks-testimonial__image wp-block-coblocks-testimonial__image--placeholder">
@@ -236,23 +246,15 @@ const Edit = ( props ) => {
 		</div>
 	);
 
+	const conditionalRenderImage = !! showImage && ( url ? renderImage() : renderPlaceholder() );
 	return (
 		<>
-			<Controls
-				{ ...props }
-				onChangeHeadingLevel={ onChangeHeadingLevel }
-			/>
-			<Inspector
-				{ ...props }
-			/>
-			<div
-				{ ...blockProps }
-				className={ classes }
-				style={ styles }
-			>
+			<Controls { ...props } onChangeHeadingLevel={ onChangeHeadingLevel } />
+			<Inspector { ...props } />
+			<div { ...blockProps } style={ styles }>
 				{ styleName === 'tall' && (
 					<>
-						{ !! showImage && ( url ? renderImage() : renderPlaceholder() ) }
+						{ conditionalRenderImage }
 						{ renderHeading() }
 						{ renderText() }
 					</>
@@ -261,14 +263,14 @@ const Edit = ( props ) => {
 					<>
 						{ renderTextBubble() }
 						<div className={ `wp-block-coblocks-testimonial__content` }>
-							{ !! showImage && ( url ? renderImage() : renderPlaceholder() ) }
+							{ conditionalRenderImage }
 							{ renderHeading() }
 						</div>
 					</>
 				) }
 				{ styleName === 'horizontal' && (
 					<>
-						{ !! showImage && ( url ? renderImage() : renderPlaceholder() ) }
+						{ conditionalRenderImage }
 						<div className={ `wp-block-coblocks-testimonial__content` }>
 							{ renderHeading() }
 							{ renderText() }

@@ -34,11 +34,9 @@ export default function save( { attributes } ) {
 		[ `is-style-${ styleName }` ]: styleName,
 	} );
 
-	const styles = {};
-
 	return (
 		<GutterWrapper { ...attributes }>
-			<div className={ classes } data-columns={ attributes.columns } style={ styles }>
+			<div { ...saveBlockProps } className={ classes } data-columns={ attributes.columns }>
 				<InnerBlocks.Content />
 			</div>
 		</GutterWrapper>

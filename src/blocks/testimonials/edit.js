@@ -17,9 +17,7 @@ import { useDispatch, useSelect } from '@wordpress/data';
 import Controls from './controls';
 import GutterWrapper from './../../components/gutter-control/gutter-wrapper';
 import Inspector from './inspector';
-
-const ALLOWED_BLOCKS = [ 'coblocks/testimonial' ];
-const AVAILABLE_STYLES = [ 'tall', 'conversation', 'horizontal' ];
+import { blockStyles, getActiveStyle } from './utils';
 
 const Edit = ( props ) => {
 	const {
@@ -29,18 +27,22 @@ const Edit = ( props ) => {
 		setAttributes,
 	} = props;
 
-	const blockProps = useBlockProps();
+	const { columns } = attributes;
+
+	const blockProps = useBlockProps( { className: classnames( {
+		'has-columns': columns > 1,
+		'has-responsive-columns': columns > 1,
+		[ `has-${ columns }-columns` ]: columns > 1,
+	} ) } );
 
 	const {
 		backgroundColor,
 		color,
-		fontSize,
 	} = blockProps.style;
 
-	const {
-		className,
-		columns,
-	} = attributes;
+	// We descend these specific styles to testimonial and keep all others.
+	delete blockProps.style.color;
+	delete blockProps.style.backgroundColor;
 
 	const { insertBlock, updateBlockAttributes } = useDispatch( 'core/block-editor' );
 
@@ -54,9 +56,11 @@ const Edit = ( props ) => {
 		if ( testimonialBlocksCount < columns ) {
 			insertBlock(
 				createBlock( 'coblocks/testimonial', {
+					backgroundColor,
+					color,
 					showImage: attributes.showImages,
 					showRole: attributes.showRoles,
-					styleName: getStyleNameFromClassName(),
+					styleName: getActiveStyle( blockStyles, blockProps.className ),
 				} ),
 				innerBlocks.length,
 				clientId,
@@ -66,20 +70,16 @@ const Edit = ( props ) => {
 	}, [ columns, innerBlocks ] );
 
 	useEffect( () => {
-		updateInnerAttributes( 'coblocks/testimonial', {
-			backgroundColor,
-			color,
-			styleName: getStyleNameFromClassName(),
-		} );
-	}, [ backgroundColor, color, className ] );
+		updateInnerAttributes( 'coblocks/testimonial', { color } );
+	}, [ color ] );
 
-	const getStyleNameFromClassName = () => {
-		const styleName = className?.substring( className?.lastIndexOf( '-' ) + 1 );
+	useEffect( () => {
+		updateInnerAttributes( 'coblocks/testimonial', { backgroundColor } );
+	}, [ backgroundColor ] );
 
-		return AVAILABLE_STYLES.includes( styleName )
-			? styleName
-			: AVAILABLE_STYLES[ 0 ];
-	};
+	useEffect( () => {
+		updateInnerAttributes( 'coblocks/testimonial', { styleName: getActiveStyle( blockStyles, blockProps.className ) } );
+	}, [ blockProps.className ] );
 
 	// Remove classes related to colors as we don't want to apply them on the main block.
 	const sanitizedClasses = ( receivedClasses ) => {
@@ -125,10 +125,6 @@ const Edit = ( props ) => {
 		setAttributes( { columns: parseInt( value ) } );
 	};
 
-	const styles = {
-		fontSize,
-	};
-
 	return (
 		<>
 			{ isSelected && (
@@ -147,13 +143,10 @@ const Edit = ( props ) => {
 				</>
 			) }
 			<GutterWrapper { ...attributes }>
-				<div
-					{ ...blockProps }
-					className={ classes }
-					style={ styles }>
+				<div { ...blockProps } className={ classes } >
 					<InnerBlocks
 						__experimentalCaptureToolbars={ true }
-						allowedBlocks={ ALLOWED_BLOCKS }
+						allowedBlocks={ [ 'coblocks/testimonial' ] }
 						templateInsertUpdatesSelection={ false }
 					/>
 				</div>

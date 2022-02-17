@@ -47,8 +47,9 @@
 
 // Style-specific
 
-// -> Boxy
-.is-style-tall .wp-block-coblocks-testimonial {
+// -> Boxy / unset style.
+.wp-block-coblocks-testimonials.is-style-tall .wp-block-coblocks-testimonial,
+.wp-block-coblocks-testimonials:not([class*="is-style-"]) .wp-block-coblocks-testimonial {
 	align-items: center;
 	flex-direction: column;
 	text-align: center;

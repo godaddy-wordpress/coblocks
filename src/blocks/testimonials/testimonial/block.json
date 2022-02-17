@@ -78,5 +78,8 @@
 		"color": {
 			"type": "string"
 		}
+	},
+	"supports": {
+		"html": false
 	}
 }
