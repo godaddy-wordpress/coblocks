@@ -1,16 +1,18 @@
 /**
  * External dependencies
  */
-import { mount } from 'enzyme';
+import { mount, configure } from 'enzyme';
 import '@testing-library/jest-dom/extend-expect';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 /**
  * Internal dependencies.
  */
 import Modal from '../modal';
 import React from "react";
-import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
+
+configure({ adapter: new Adapter() });
 
 global.coblocksDeactivateData = {
 	domain: 'foo.com',
@@ -28,7 +30,7 @@ global.fetch = jest.fn(() => Promise.resolve({
 }));
 
 describe( 'coblocks-deactivate-modal', () => {
-	let container, wrapper;
+	let wrapper;
 
 	const setup = () => {
 		return mount(
@@ -49,25 +51,12 @@ describe( 'coblocks-deactivate-modal', () => {
 		return fetchMock;
 	};
 
-	beforeEach(() => {
-		wrapper = setup();
-		// setup a DOM element as a render target
-		container = document.createElement("div");
-		document.body.appendChild(container);
-	});
-
-	afterEach(() => {
-		// cleanup on exiting
-		unmountComponentAtNode(container);
-		container.remove();
-		container = null;
-	});
-
 	afterAll(() => {
 		global.fetch.mockClear();
 	});
 
 	test('should not show Modal initially', () => {
+		wrapper = setup();
 		expect( wrapper.find( '.coblocks-plugin-deactivate-modal' ) ).toHaveLength( 0 );
 		expect( wrapper.find( '#deactivate-coblocks' ) ).toHaveLength( 1 );
 	});
@@ -84,22 +73,13 @@ describe( 'coblocks-deactivate-modal', () => {
 	});
 
 	test('should show modal if can_submit_feedback is true', async () => {
-		jest.spyOn(global, "fetch").mockImplementation(() =>
-			Promise.resolve({
-				json: () => Promise.resolve({ can_submit_feedback: true })
-			})
-		);
+		mockFetch({ can_submit_feedback: true });
 
-		await act(async () => {
-			render(<div>
-				<button id='deactivate-coblocks'>Deactivate</button>
-				<Modal />
-			</div>, container);
+		act(() => {
+			wrapper = setup();
+			wrapper.find( '#deactivate-coblocks' ).simulate('click');
 		});
 
-		wrapper.find( '#deactivate-coblocks' ).simulate('click');
-		expect( wrapper.find( '.coblocks-plugin-deactivate-modal' ) ).toBeTruthy();
-		expect(wrapper.find('.coblocks-plugin-deactivate-modal__button')).toBeTruthy();
-		global.fetch.mockRestore();
+		expect(wrapper.find( '.coblocks-plugin-deactivate-modal' )).toBeTruthy();
 	});
 } );
