@@ -14,7 +14,7 @@ describe( 'Component: CoBlocks Deactivate Modal', () => {
 	it( 'open modal and submit feedback', function() {
 		cy.intercept(
 			'GET',
-			'https://wpnux.godaddy.com/v3/api/feedback/coblocks-optout?domain=http://localhost:8889&random=1&language=en-US',
+			'https://wpnux.godaddy.com/v3/api/feedback/coblocks-optout?*',
 			{ fixture: '../.dev/tests/cypress/fixtures/network/coblocks_optout.json' }
 		);
 
@@ -44,7 +44,7 @@ describe( 'Component: CoBlocks Deactivate Modal', () => {
 	it( 'open modal and skip feedback', function() {
 		cy.intercept(
 			'GET',
-			'https://wpnux.godaddy.com/v3/api/feedback/coblocks-optout?domain=http://localhost:8889&random=1&language=en-US',
+			'https://wpnux.godaddy.com/v3/api/feedback/coblocks-optout?*',
 			{ fixture: '../.dev/tests/cypress/fixtures/network/coblocks_optout.json' }
 		);
 
