@@ -23,7 +23,6 @@ import { Button, DropZone } from '@wordpress/components';
 const AuthorEdit = ( props ) => {
 	const {
 		attributes,
-		className,
 		clientId,
 		isSelected,
 		setAttributes,
@@ -59,7 +58,7 @@ const AuthorEdit = ( props ) => {
 		/>
 	);
 
-	const blockProps = useBlockProps( { className } );
+	const blockProps = useBlockProps();
 
 	const onUploadImage = ( media ) => setAttributes( { imgId: media.id, imgUrl: media.url } );
 
@@ -96,7 +95,7 @@ const AuthorEdit = ( props ) => {
 							</MediaUpload>
 						</MediaUploadCheck>
 					</figure> : null }
-				<div className={ `${ className }__content` }>
+				<div className="wp-block-coblocks-author__content">
 					<RichText
 						className="wp-block-coblocks-author__name"
 						identifier="name"
