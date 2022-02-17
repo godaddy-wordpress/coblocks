@@ -1,9 +1,8 @@
 /**
  * External dependencies
  */
-import { mount, configure } from 'enzyme';
+import { mount } from 'enzyme';
 import '@testing-library/jest-dom/extend-expect';
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 /**
  * Internal dependencies.
@@ -11,8 +10,6 @@ import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import Modal from '../modal';
 import React from "react";
 import { act } from "react-dom/test-utils";
-
-configure({ adapter: new Adapter() });
 
 global.coblocksDeactivateData = {
 	domain: 'foo.com',
