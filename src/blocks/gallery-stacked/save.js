@@ -13,10 +13,9 @@ import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
 import { RichText, useBlockProps } from '@wordpress/block-editor';
 
-const save = ( { attributes, className } ) => {
+const save = ( { attributes } ) => {
 	const {
 		animation,
 		captions,
@@ -27,9 +26,9 @@ const save = ( { attributes, className } ) => {
 		shadow,
 	} = attributes;
 
-	const saveBlockProps = useBlockProps.save( { className: classnames( className, { 'has-lightbox': lightbox } ) } );
+	const saveBlockProps = useBlockProps.save( { className: classnames( { 'has-lightbox': lightbox } ) } );
 
-	// Body color class and styles.
+	// Classes for align, radius, captionStyle, and filter.
 	const innerClasses = classnames(
 		...GalleryClasses( attributes ), {
 			'has-fullwidth-images': fullwidth,
@@ -43,15 +42,11 @@ const save = ( { attributes, className } ) => {
 	);
 
 	const figureClasses = classnames( 'coblocks-gallery--figure' );
-
 	const captionClasses = classnames( 'coblocks-gallery--caption' );
-
 	const descendingBlockStyles = blockStylesToDescend( saveBlockProps );
 
 	return (
-		<div
-			aria-label={ __( `Stacked Gallery`, 'coblocks' ) }
-			{ ...saveBlockProps }>
+		<div { ...saveBlockProps }>
 			<GutterWrapper { ...attributes }>
 				<ul className={ innerClasses }>
 					{ images.map( ( image ) => {

@@ -93,5 +93,6 @@
 			"__experimentalTextTransform": true
 		}
 	},
+	"textdomain": "coblocks",
 	"title": "Stacked Gallery"
 }
