@@ -352,17 +352,6 @@ class CoBlocks_Block_Assets {
 			true
 		);
 
-		// Masonry block.
-		if ( $this->is_page_gutenberg() || has_block( 'coblocks/gallery-masonry' ) || has_block( 'core/block' ) ) {
-			wp_enqueue_script(
-				'coblocks-masonry',
-				$dir . 'coblocks-masonry.js',
-				array( 'jquery', 'masonry', 'imagesloaded' ),
-				COBLOCKS_VERSION,
-				true
-			);
-		}
-
 		// Carousel block.
 		if ( $this->is_page_gutenberg() || has_block( 'coblocks/gallery-carousel' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
@@ -380,24 +369,6 @@ class CoBlocks_Block_Assets {
 				COBLOCKS_VERSION,
 				true
 			);
-
-			wp_enqueue_script(
-				'coblocks-flickity',
-				$vendors_dir . '/flickity.js',
-				array( 'jquery' ),
-				COBLOCKS_VERSION,
-				true
-			);
-
-			if ( $this->is_page_gutenberg() || has_block( 'coblocks/accordion' ) || has_block( 'core/block' ) ) {
-				wp_enqueue_script(
-					'coblocks-accordion-carousel',
-					$dir . 'coblocks-accordion-carousel.js',
-					array( 'coblocks-flickity' ),
-					COBLOCKS_VERSION,
-					true
-				);
-			}
 		}
 
 		// Post Carousel block.
