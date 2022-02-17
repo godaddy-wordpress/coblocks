@@ -4,7 +4,7 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 ( function() {
 	'use strict';
 
-	const eventsSwiperContainers = document.querySelectorAll( '.coblocks-gallery-carousel-swiper-container' );
+	const eventsSwiperContainers = document.querySelectorAll( '.wp-block-coblocks-gallery-carousel' );
 
 	for ( let j = 0; j < eventsSwiperContainers.length; j++ ) {
 		let swiper = null;
