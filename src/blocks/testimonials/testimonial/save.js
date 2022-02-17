@@ -53,10 +53,6 @@ export default function save( { attributes } ) {
 		color: backgroundColor,
 	};
 
-	const classes = classnames(
-		saveBlockProps.className
-	);
-
 	const renderImage = () => {
 		const imageStyles = {
 			height: imageHeight,
@@ -120,7 +116,7 @@ export default function save( { attributes } ) {
 	);
 
 	return isEmpty( attributes ) ? null : (
-		<div className={ classes } style={ styles }>
+		<div { ...saveBlockProps } style={ styles }>
 			{ styleName === 'tall' && (
 				<>
 					{ renderImage() }
