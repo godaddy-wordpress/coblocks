@@ -104,7 +104,7 @@ class CoBlocks_Plugin_Deactivation {
 		wp_enqueue_style(
 			'coblocks-plugin-deactivation',
 			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
-			array(),
+			array( 'wp-components' ),
 			$asset_file['version']
 		);
 
