@@ -18,19 +18,19 @@ const isEmpty = ( attributes ) => {
 	return hasEmptyAttributes( fromEntries( newAttributes ) );
 };
 
-const save = ( { className, attributes } ) => {
+const save = ( { attributes } ) => {
 	const {
 		biography,
 		imgUrl,
 		name,
 	} = attributes;
 
-	const saveBlockProps = useBlockProps.save( { className } );
+	const saveBlockProps = useBlockProps.save( );
 
 	return isEmpty( attributes ) ? null : (
 		<div { ...saveBlockProps } >
 			{ imgUrl && (
-				<figure className={ 'wp-block-coblocks-author__avatar' }>
+				<figure className="wp-block-coblocks-author__avatar">
 					<img alt={ name } className="wp-block-coblocks-author__avatar-img" src={ imgUrl } />
 				</figure>
 			) }
