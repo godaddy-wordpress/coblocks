@@ -352,17 +352,6 @@ class CoBlocks_Block_Assets {
 			true
 		);
 
-		// Masonry block.
-		if ( $this->is_page_gutenberg() || has_block( 'coblocks/gallery-masonry' ) || has_block( 'core/block' ) ) {
-			wp_enqueue_script(
-				'coblocks-masonry',
-				$dir . 'coblocks-masonry.js',
-				array( 'jquery', 'masonry', 'imagesloaded' ),
-				COBLOCKS_VERSION,
-				true
-			);
-		}
-
 		// Carousel block.
 		if ( $this->is_page_gutenberg() || has_block( 'coblocks/gallery-carousel' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
@@ -380,24 +369,6 @@ class CoBlocks_Block_Assets {
 				COBLOCKS_VERSION,
 				true
 			);
-
-			wp_enqueue_script(
-				'coblocks-flickity',
-				$vendors_dir . '/flickity.js',
-				array( 'jquery' ),
-				COBLOCKS_VERSION,
-				true
-			);
-
-			if ( $this->is_page_gutenberg() || has_block( 'coblocks/accordion' ) || has_block( 'core/block' ) ) {
-				wp_enqueue_script(
-					'coblocks-accordion-carousel',
-					$dir . 'coblocks-accordion-carousel.js',
-					array( 'coblocks-flickity' ),
-					COBLOCKS_VERSION,
-					true
-				);
-			}
 		}
 
 		// Post Carousel block.
@@ -535,14 +506,14 @@ class CoBlocks_Block_Assets {
 			return true;
 		}
 
-		if ( false !== strpos( $admin_page, 'post.php' ) ) {
+		if ( false !== strpos( $admin_page, 'post.php' ) && isset( $_GET['post'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$wp_post = get_post( $_GET['post'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			if ( isset( $wp_post ) && isset( $wp_post->post_type ) && $this->is_post_type_gutenberg( $wp_post->post_type ) ) {
 				return true;
 			}
 		}
 
-		if ( false !== strpos( $admin_page, 'revision.php' ) ) {
+		if ( false !== strpos( $admin_page, 'revision.php' ) && isset( $_GET['revision'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$wp_post     = get_post( $_GET['revision'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$post_parent = get_post( $wp_post->post_parent );
 			if ( isset( $post_parent ) && isset( $post_parent->post_type ) && $this->is_post_type_gutenberg( $post_parent->post_type ) ) {

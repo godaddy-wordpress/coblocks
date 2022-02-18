@@ -104,7 +104,7 @@ class CoBlocksBlockPatternsModal extends Component {
 			.catch( () => {
 				createErrorNotice( __( 'Failed to save new pattern.', 'coblocks' ) );
 			} );
-	}
+	};
 
 	render() {
 		const {
