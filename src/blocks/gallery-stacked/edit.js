@@ -166,10 +166,10 @@ const GalleryStackedEdit = ( props ) => {
 	return (
 		<>
 			{ isSelected &&
-			<>
-				<Controls { ...props } />
-				<Inspector { ...props } />
-			</>
+				<>
+					<Controls { ...props } />
+					<Inspector { ...props } />
+				</>
 			}
 			{ noticeUI }
 			<div { ...blockProps }>
@@ -177,7 +177,7 @@ const GalleryStackedEdit = ( props ) => {
 					<ul className={ innerClasses }>
 						{ images.map( ( img, index ) => {
 							const ariaLabel = sprintf(
-							/* translators: %1$d is the order number of the image, %2$d is the total number of images */
+								/* translators: %1$d is the order number of the image, %2$d is the total number of images */
 								__( 'image %1$d of %2$d in gallery', 'coblocks' ),
 								( index + 1 ),
 								images.length

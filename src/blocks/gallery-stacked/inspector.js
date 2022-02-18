@@ -36,7 +36,7 @@ const Inspector = ( props ) => {
 		lightbox,
 	} = attributes;
 
-	const { wideControlsEnabled	} = useSelect( ( select ) => {
+	const { wideControlsEnabled } = useSelect( ( select ) => {
 		return { wideControlsEnabled: select( 'core/editor' ).getEditorSettings()?.alignWide ?? false };
 	} );
 
@@ -49,17 +49,11 @@ const Inspector = ( props ) => {
 		}
 	}, [ allowRadiusControls ] );
 
-	const setRadiusTo = ( value ) => {
-		setAttributes( { radius: value } );
-	};
+	const setRadiusTo = ( value ) => setAttributes( { radius: value } );
 
-	const setShadowTo = ( value ) => {
-		setAttributes( { shadow: value } );
-	};
+	const setShadowTo = ( value ) => setAttributes( { shadow: value } );
 
-	const setFullwidthTo = () => {
-		setAttributes( { fullwidth: ! fullwidth, shadow: 'none' } );
-	};
+	const setFullwidthTo = () => setAttributes( { fullwidth: ! fullwidth, shadow: 'none' } );
 
 	const getFullwidthImagesHelp = ( checked ) => {
 		return checked
@@ -84,25 +78,25 @@ const Inspector = ( props ) => {
 			<PanelBody title={ __( 'Stacked settings', 'coblocks' ) }>
 
 				{ wideControlsEnabled &&
-				<ToggleControl
-					checked={ !! fullwidth }
-					help={ getFullwidthImagesHelp }
-					label={ images.length > 1 ? __( 'Fullwidth images', 'coblocks' ) : __( 'Fullwidth image', 'coblocks' ) }
-					onChange={ setFullwidthTo }
-				/>
+					<ToggleControl
+						checked={ !! fullwidth }
+						help={ getFullwidthImagesHelp }
+						label={ images.length > 1 ? __( 'Fullwidth images', 'coblocks' ) : __( 'Fullwidth image', 'coblocks' ) }
+						onChange={ setFullwidthTo }
+					/>
 				}
 
 				<GutterControl { ...props } />
 
 				{ allowRadiusControls &&
-				<RangeControl
-					label={ __( 'Rounded corners', 'coblocks' ) }
-					max={ 20 }
-					min={ 0 }
-					onChange={ setRadiusTo }
-					step={ 1 }
-					value={ radius }
-				/>
+					<RangeControl
+						label={ __( 'Rounded corners', 'coblocks' ) }
+						max={ 20 }
+						min={ 0 }
+						onChange={ setRadiusTo }
+						step={ 1 }
+						value={ radius }
+					/>
 				}
 
 				<ToggleControl
@@ -120,12 +114,12 @@ const Inspector = ( props ) => {
 				/>
 
 				{ ! fullwidth &&
-				<SizeControl { ...props }
-					label={ __( 'Shadow', 'coblocks' ) }
-					onChange={ setShadowTo }
-					reset={ false }
-					value={ shadow }
-				/>
+					<SizeControl { ...props }
+						label={ __( 'Shadow', 'coblocks' ) }
+						onChange={ setShadowTo }
+						reset={ false }
+						value={ shadow }
+					/>
 				}
 
 			</PanelBody>

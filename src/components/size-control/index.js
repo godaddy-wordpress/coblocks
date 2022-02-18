@@ -37,7 +37,7 @@ const SizeControl = ( props ) => {
 		}
 	}, [ align, columns ] );
 
-	const { wideControlsEnabled	} = useSelect( ( select ) => {
+	const { wideControlsEnabled } = useSelect( ( select ) => {
 		return { wideControlsEnabled: select( 'core/editor' ).getEditorSettings()?.alignWide ?? false };
 	} );
 
@@ -201,13 +201,13 @@ const SizeControl = ( props ) => {
 					onChange={ ( size ) => onChange( size ) }
 					options={ getSizes() } />
 				{ reset &&
-				<Button
-					isSecondary
-					isSmall
-					onClick={ () => onChange( resetValue ) }
-				>
-					{ __( 'Reset', 'coblocks' ) }
-				</Button>
+					<Button
+						isSecondary
+						isSmall
+						onClick={ () => onChange( resetValue ) }
+					>
+						{ __( 'Reset', 'coblocks' ) }
+					</Button>
 				}
 			</PanelRow>
 		</BaseControl>
