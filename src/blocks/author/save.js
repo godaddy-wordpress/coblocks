@@ -1,18 +1,13 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * Internal dependencies
  */
-import { hasEmptyAttributes } from '../../utils/block-helpers';
 import fromEntries from '../../js/coblocks-fromEntries';
+import { hasEmptyAttributes } from '../../utils/block-helpers';
 
 /**
  * WordPress dependencies
  */
-import { RichText, InnerBlocks, getColorClassName, getFontSizeClass } from '@wordpress/block-editor';
+import { InnerBlocks, RichText, useBlockProps } from '@wordpress/block-editor';
 
 const isEmpty = ( attributes ) => {
 	const attributesToCheck = [ 'name', 'imgUrl', 'biography' ];
@@ -23,56 +18,34 @@ const isEmpty = ( attributes ) => {
 	return hasEmptyAttributes( fromEntries( newAttributes ) );
 };
 
-const save = ( { className, attributes } ) => {
+const save = ( { attributes } ) => {
 	const {
-		backgroundColor,
 		biography,
-		customBackgroundColor,
-		customTextColor,
 		imgUrl,
 		name,
-		textColor,
-		fontSize,
-		customFontSize,
 	} = attributes;
 
-	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
-	const textClass = getColorClassName( 'color', textColor );
-	const fontSizeClass = getFontSizeClass( fontSize );
-
-	const classes = classnames( className, {
-		'has-text-color': textColor || customTextColor,
-		'has-background': backgroundColor || customBackgroundColor,
-		[ textClass ]: textClass,
-		[ backgroundClass ]: backgroundClass,
-		[ fontSizeClass ]: fontSizeClass,
-	} );
-
-	const styles = {
-		backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-		color: textClass ? undefined : customTextColor,
-		fontSize: fontSizeClass ? undefined : customFontSize,
-	};
+	const saveBlockProps = useBlockProps.save( );
 
 	return isEmpty( attributes ) ? null : (
-		<div className={ classes } style={ styles }>
+		<div { ...saveBlockProps } >
 			{ imgUrl && (
-				<figure className={ 'wp-block-coblocks-author__avatar' }>
-					<img className="wp-block-coblocks-author__avatar-img" src={ imgUrl } alt={ name } />
+				<figure className="wp-block-coblocks-author__avatar">
+					<img alt={ name } className="wp-block-coblocks-author__avatar-img" src={ imgUrl } />
 				</figure>
 			) }
 			<div className={ 'wp-block-coblocks-author__content' }>
 				{ ! RichText.isEmpty( name ) && (
 					<RichText.Content
-						tagName="span"
 						className="wp-block-coblocks-author__name"
+						tagName="span"
 						value={ name }
 					/>
 				) }
 				{ ! RichText.isEmpty( biography ) && (
 					<RichText.Content
-						tagName="p"
 						className="wp-block-coblocks-author__biography"
+						tagName="p"
 						value={ biography }
 					/>
 				) }

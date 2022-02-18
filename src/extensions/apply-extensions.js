@@ -1,6 +1,7 @@
 /**
  * Extension and components.
  */
+import { deprecateAll as deprecateAllFeatures } from './force-deprecate';
 import { applyAttributes as formLabelColorsApplyAttributes } from '../components/form-label-colors';
 import { applyAttributes as gutterControlApplyAttributes } from '../components/gutter-control';
 import {
@@ -67,6 +68,7 @@ import classnames from 'classnames';
  * WordPress Dependencies
  */
 import { addFilter } from '@wordpress/hooks';
+import { useEffect } from '@wordpress/element';
 import { withSelect } from '@wordpress/data';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
@@ -80,6 +82,7 @@ const enhance = compose(
 	 */
 	withSelect( ( select ) => {
 		return {
+			getBlocks: select( 'core/block-editor' ).getBlocks,
 			select,
 			selected: select( 'core/block-editor' ).getSelectedBlock(),
 		};
@@ -95,6 +98,20 @@ const enhance = compose(
  */
 const addAllEditorProps = createHigherOrderComponent( ( BlockListBlock ) => {
 	return enhance( ( { select, ...props } ) => {
+		/**
+		 * Block deprecation logic belongs here.
+		 *
+		 * By keeping this logic as an extension it allows us to remove a great deal of superfluous code.
+		 * These deprecations would otherwise need to be applied on each respective block in the edit.js function.
+		 */
+		useEffect( () => {
+			/**
+			 * Block deprecations should run in a useEffect so as to
+			 * respect the react component lifecycle and avoid errors.
+			 */
+			deprecateAllFeatures( props );
+		}, [] );
+
 		/**
 		 * Some controls must use the parent blocks like for
 		 * galleries but others will use children like buttonControls
@@ -252,9 +269,7 @@ function applyAllSaveProps( extraProps, blockType, attributes ) {
  */
 const applyAllControls = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( blockProps ) => {
-		const props = {
-			...coblocksAttributes( blockProps ),
-		};
+		const props = { ...coblocksAttributes( blockProps ) };
 		return (
 			<>
 				<BlockEdit { ...props } />

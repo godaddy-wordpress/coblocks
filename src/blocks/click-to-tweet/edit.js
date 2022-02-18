@@ -16,12 +16,8 @@ import Inspector from './inspector';
  */
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
-import { createBlock } from '@wordpress/blocks';
-import { useEffect } from '@wordpress/element';
-import { RichText, store, useBlockProps } from '@wordpress/block-editor';
-import { useDispatch, withSelect } from '@wordpress/data';
-// Backward compatibility for 5.6
-const blockEditorStore = !! store ? store : 'core/block-editor';
+import { withSelect } from '@wordpress/data';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 /**
  * Block constants
@@ -39,7 +35,6 @@ const Edit = ( props ) => {
 		attributes,
 		buttonColor,
 		className,
-		clientId,
 		isSelected,
 		setAttributes,
 		textColor,
@@ -56,26 +51,6 @@ const Edit = ( props ) => {
 
 	const blockProps = useBlockProps( { className: blockquoteClasses } );
 	const descendingBlockStyles = blockStylesToDescend( blockProps );
-
-	const { replaceBlocks } = useDispatch( blockEditorStore );
-
-	useEffect( () => {
-		/**
-		 * This logic should only fire in the case of block deprecations.
-		 * Deprecated markup come in with old attributes and the block
-		 * must be replaced for proper instantiation.
-		 */
-		if ( !! Number.isInteger( attributes?.customFontSize ) ) {
-			const migratedAttributes = { ...attributes, style: {
-				typography: {
-					fontSize: `${ attributes?.customFontSize }px`,
-				},
-			} };
-			delete migratedAttributes.customFontSize;
-			const transformedBlock = createBlock( 'coblocks/click-to-tweet', { ...migratedAttributes }, [] );
-			replaceBlocks( [ clientId ], transformedBlock );
-		}
-	}, [] );
 
 	return (
 		<>
@@ -136,5 +111,6 @@ const Edit = ( props ) => {
 
 export default compose( [
 	applyWithSelect,
+	// Colors have not yet been deprecated here because we use a custom color key `buttonColor`.
 	applyWithColors,
 ] )( Edit );
