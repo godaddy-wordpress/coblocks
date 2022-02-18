@@ -311,7 +311,6 @@ commands:
       - run:
           name: Activate CoBlocks
           command: |
-            ln -s $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
             npx grunt build
             mv ./build/coblocks /tmp/wordpress/wp-content/plugins/coblocks-testing
             ./vendor/bin/wp plugin activate coblocks-testing --path=/tmp/wordpress
