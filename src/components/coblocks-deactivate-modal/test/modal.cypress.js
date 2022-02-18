@@ -39,8 +39,6 @@ describe( 'Component: CoBlocks Deactivate Modal', () => {
 		} );
 
 		cy.get( '.components-button-group .is-primary' ).click();
-
-		cy.get( '#activate-coblocks' ).should( 'exist' );
 	} );
 
 	it( 'open modal and skip feedback', function() {
