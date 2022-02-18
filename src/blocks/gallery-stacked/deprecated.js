@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-sort-props */
 /**
  * External dependencies
  */
@@ -6,7 +7,6 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import metadata from './block.json';
 import { BackgroundAttributes, BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
 import { GalleryAttributes, GalleryClasses, GalleryStyles } from '../../components/block-gallery/shared';
 
@@ -16,12 +16,34 @@ import { GalleryAttributes, GalleryClasses, GalleryStyles } from '../../componen
 import { __ } from '@wordpress/i18n';
 import { getColorClassName, getFontSizeClass, RichText } from '@wordpress/block-editor';
 
+const originalDeprecatedAttributes = {
+	align: {
+		default: 'full',
+		type: 'string',
+	},
+	captionStyle: {
+		type: 'string',
+	},
+	fullwidth: {
+		default: true,
+		type: 'boolean',
+	},
+	gutter: {
+		default: 0,
+		type: 'number',
+	},
+	gutterMobile: {
+		default: 0,
+		type: 'number',
+	},
+};
+
 const deprecated =
 [ {
 	attributes: {
 		...GalleryAttributes,
 		...BackgroundAttributes,
-		...metadata.attributes,
+		...originalDeprecatedAttributes,
 	},
 	save( { attributes, className } ) {
 		const {
@@ -124,14 +146,14 @@ const deprecated =
 								[ `has-shadow-${ shadow }` ]: shadow !== 'none' || shadow !== undefined,
 							} );
 
-						const img = <img alt={ image.alt } className={ imgClasses } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } src={ image.url } />;
+						const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ imgClasses } />;
 
 						return (
-							<li className="coblocks-gallery--item" key={ image.id || image.url }>
+							<li key={ image.id || image.url } className="coblocks-gallery--item">
 								<figure className={ figureClasses }>
-									{ href ? <a href={ href } rel={ rel } target={ target }>{ img }</a> : img }
+									{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
 									{ captions && image.caption && image.caption.length > 0 && (
-										<RichText.Content className={ captionClasses } styles={ captionStyles } tagName="figcaption" value={ image.caption } />
+										<RichText.Content tagName="figcaption" className={ captionClasses } value={ image.caption } styles={ captionStyles } />
 									) }
 								</figure>
 							</li>
@@ -146,7 +168,7 @@ const deprecated =
 	attributes: {
 		...GalleryAttributes,
 		...BackgroundAttributes,
-		...metadata.attributes,
+		...originalDeprecatedAttributes,
 	},
 	save( { attributes, className } ) {
 		const {
@@ -226,14 +248,14 @@ const deprecated =
 								[ `has-shadow-${ shadow }` ]: shadow !== 'none' || shadow !== undefined,
 							} );
 
-						const img = <img alt={ image.alt } className={ imgClasses } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } src={ image.url } />;
+						const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ imgClasses } />;
 
 						return (
-							<li className="coblocks-gallery--item" key={ image.id || image.url }>
+							<li key={ image.id || image.url } className="coblocks-gallery--item">
 								<figure className={ figureClasses }>
-									{ href ? <a href={ href } rel={ rel } target={ target }>{ img }</a> : img }
+									{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
 									{ captions && image.caption && image.caption.length > 0 && (
-										<RichText.Content className={ captionClasses } styles={ captionStyles } tagName="figcaption" value={ image.caption } />
+										<RichText.Content tagName="figcaption" className={ captionClasses } value={ image.caption } styles={ captionStyles } />
 									) }
 								</figure>
 							</li>
@@ -248,7 +270,7 @@ const deprecated =
 	attributes: {
 		...GalleryAttributes,
 		...BackgroundAttributes,
-		...metadata.attributes,
+		...originalDeprecatedAttributes,
 	},
 	save: ( { attributes, className } ) => {
 		const {
@@ -330,12 +352,12 @@ const deprecated =
 								[ `has-shadow-${ shadow }` ]: shadow !== 'none' || shadow !== undefined,
 							} );
 
-						const img = <img alt={ image.alt } className={ imgClasses } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } src={ image.url } />;
+						const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ imgClasses } />;
 
 						return (
 							<li className={ itemClasses } data-coblocks-animation={ animation } key={ image.id || image.url }>
 								<figure className={ figureClasses }>
-									{ href ? <a href={ href } rel={ rel } target={ target }>{ img }</a> : img }
+									{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
 									{ captions && image.caption && image.caption.length > 0 && (
 										<RichText.Content className={ captionClasses } style={ captionStyles } tagName="figcaption" value={ image.caption } />
 									) }
@@ -350,22 +372,8 @@ const deprecated =
 },
 {
 	attributes: {
-		...metadata.attributes,
 		...GalleryAttributes,
-		customFontSize: {
-			type: 'number',
-		},
-		fontSize: {
-			type: 'string',
-		},
-		gutter: {
-			default: 0,
-			type: 'number',
-		},
-		gutterMobile: {
-			default: 0,
-			type: 'number',
-		},
+		...originalDeprecatedAttributes,
 	},
 	save: ( { attributes, className } ) => {
 		const {
