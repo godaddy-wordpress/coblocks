@@ -1,0 +1,52 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "coblocks/testimonials",
+	"title": "Testimonials",
+	"category": "layout",
+	"description": "Utilize the CoBlocks Testimonials block to display customer feedbacks.",
+	"keywords": [ "feedback", "review" ],
+	"textdomain": "coblocks",
+	"attributes": {
+		"columns": {
+			"type": "number",
+			"default": 2
+		},
+		"headingLevel": {
+			"type": "integer",
+			"default": 4
+		},
+		"showRoles": {
+			"type": "boolean",
+			"default": true
+		},
+		"showImages": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"anchor": true,
+		"gutter": {
+			"default": "medium"
+		},
+		"html": false,
+		"color": {
+			"link": false
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		}
+	},
+	"editorStyle": "wp-block-coblocks-testimonials-editor",
+	"style": "wp-block-coblocks-testimonials"
+}
