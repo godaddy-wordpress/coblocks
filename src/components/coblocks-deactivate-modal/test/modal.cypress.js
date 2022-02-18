@@ -1,16 +1,12 @@
 describe( 'Component: CoBlocks Deactivate Modal', () => {
-	async function initIntercepts() {
+	beforeEach( () => {
 		cy.intercept(
 			'GET',
 			'https://wpnux.godaddy.com/v3/api/feedback/coblocks-optout*',
 			{ fixture: '../.dev/tests/cypress/fixtures/network/coblocks_optout.json' }
 		);
-	}
 
-	beforeEach( () => {
-		initIntercepts().then( () => {
-			cy.visit( Cypress.env( 'testURL' ) + '/wp-admin/plugins.php' );
-		} );
+		cy.visit( Cypress.env( 'testURL' ) + '/wp-admin/plugins.php' );
 
 		cy.get( 'body' ).then( ( $body ) => {
 			if ( $body.find( '#deactivate-coblocks' ).length === 0 ) {
@@ -28,7 +24,7 @@ describe( 'Component: CoBlocks Deactivate Modal', () => {
 	} );
 
 	it( 'open modal and submit feedback', function() {
-		cy.wait( 2000 );
+		cy.wait( 3000 );
 
 		cy.get( '#deactivate-coblocks' ).click();
 
@@ -46,7 +42,7 @@ describe( 'Component: CoBlocks Deactivate Modal', () => {
 	} );
 
 	it( 'open modal and skip feedback', function() {
-		cy.wait( 2000 );
+		cy.wait( 3000 );
 
 		cy.get( '#deactivate-coblocks' ).click();
 
