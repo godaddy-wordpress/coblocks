@@ -51,10 +51,6 @@ const settings = {
 		__( 'lightbox', 'coblocks' ),
 	],
 	save,
-	supports: {
-		align: [ 'wide', 'center', 'left', 'right', 'full' ],
-		coblocksSpacing: true,
-	},
 	/* translators: block name */
 	title: __( 'Stacked', 'coblocks' ),
 	transforms,
