@@ -175,12 +175,12 @@ workflows:
           requires:
             - build
 
-      - e2e_chrome_wp_previous_major:
-          filters:
-            tags:
-              only: /^(?!canary).*$/
-          requires:
-            - build
+      # - e2e_chrome_wp_previous_major:
+      #    filters:
+      #      tags:
+      #        only: /^(?!canary).*$/
+      #    requires:
+      #      - build
 
       # PERF TESTING
       - perf_tests_master:
@@ -757,7 +757,7 @@ jobs:
     steps:
       - run_e2e_tests:
           browser: chrome
-          wpversion: nightly
+          wpversion: 5.9.1-RC1
 
   e2e_firefox_wp_nightly:
     executor: php_74_browsers_mysql_mailhog
@@ -765,7 +765,7 @@ jobs:
     steps:
       - run_e2e_tests:
           browser: firefox
-          wpversion: nightly
+          wpversion: 5.9.1-RC1
 
   e2e_chrome_wp_previous_major:
     executor: php_74_browsers_mysql_mailhog
@@ -782,6 +782,7 @@ jobs:
       - run_e2e_tests:
           browser: chrome
           theme: twentytwentytwo
+          wpversion: 5.9.1-RC1
 
   perf_tests_master:
     executor: php_74_browsers_mysql
