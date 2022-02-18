@@ -2,6 +2,12 @@ describe( 'Component: CoBlocks Deactivate Modal', () => {
 	beforeEach( () => {
 		cy.visit( Cypress.env( 'testURL' ) + '/wp-admin/plugins.php' );
 
+		cy.get( 'body' ).then( ( $body ) => {
+			if ( $body.find( '#deactivate-coblocks' ).length === 0 ) {
+				cy.get( '#activate-coblocks' ).click();
+			}
+		} );
+
 		cy.get( '#deactivate-coblocks' ).should( 'exist' );
 	} );
 
@@ -14,9 +20,11 @@ describe( 'Component: CoBlocks Deactivate Modal', () => {
 	it( 'open modal and submit feedback', function() {
 		cy.intercept(
 			'GET',
-			'https://wpnux.godaddy.com/v3/api/feedback/coblocks-optout?domain=http://localhost:8889&random=1&language=en-US',
+			'https://wpnux.godaddy.com/v3/api/feedback/coblocks-optout*',
 			{ fixture: '../.dev/tests/cypress/fixtures/network/coblocks_optout.json' }
 		);
+
+		cy.wait( 2000 );
 
 		cy.get( '#deactivate-coblocks' ).click();
 
@@ -26,15 +34,11 @@ describe( 'Component: CoBlocks Deactivate Modal', () => {
 
 		cy.get( '.components-text-control__input' ).eq( 0 ).type( 'need more widgets' );
 
-		cy.get( '.components-button-group .is-primary' ).click();
+		cy.intercept( 'POST', 'https://wpnux.godaddy.com/v3/api/feedback/coblocks-optout', {
+			statusCode: 201,
+		} );
 
-		cy.intercept(
-			'POST',
-			'https://wpnux.godaddy.com/v3/api/feedback/coblocks-optout',
-			{
-				statusCode: 201,
-			}
-		);
+		cy.get( '.components-button-group .is-primary' ).click();
 
 		cy.get( '#activate-coblocks' ).should( 'exist' );
 	} );
@@ -42,9 +46,11 @@ describe( 'Component: CoBlocks Deactivate Modal', () => {
 	it( 'open modal and skip feedback', function() {
 		cy.intercept(
 			'GET',
-			'https://wpnux.godaddy.com/v3/api/feedback/coblocks-optout?domain=http://localhost:8889&random=1&language=en-US',
+			'https://wpnux.godaddy.com/v3/api/feedback/coblocks-optout*',
 			{ fixture: '../.dev/tests/cypress/fixtures/network/coblocks_optout.json' }
 		);
+
+		cy.wait( 2000 );
 
 		cy.get( '#deactivate-coblocks' ).click();
 
