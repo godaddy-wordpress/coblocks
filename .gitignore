@@ -23,3 +23,5 @@ languages/*-coblocks-editor.json
 languages/*.mo
 languages/*.po
 cypress.env.json
+.wp-env.json
+.wp-env.override.json

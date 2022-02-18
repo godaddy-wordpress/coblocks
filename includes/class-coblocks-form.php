@@ -119,7 +119,7 @@ class CoBlocks_Form {
 			wp_enqueue_script(
 				'google-recaptcha',
 				'https://www.google.com/recaptcha/api.js?render=' . esc_attr( $recaptcha_site_key ),
-				array( 'jquery' ),
+				array(),
 				'3.0.0',
 				true
 			);
@@ -127,7 +127,7 @@ class CoBlocks_Form {
 			wp_enqueue_script(
 				'coblocks-google-recaptcha',
 				CoBlocks()->asset_source( 'js' ) . 'coblocks-google-recaptcha.js',
-				array( 'jquery', 'google-recaptcha' ),
+				array( 'google-recaptcha' ),
 				COBLOCKS_VERSION,
 				true
 			);

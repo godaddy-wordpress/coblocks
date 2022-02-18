@@ -21,7 +21,7 @@ class CoBlocksCounter {
 				}, 200 );
 			}
 		} );
-	}
+	};
 
 	init = () => {
 		const els = document.querySelectorAll( '.wp-block-coblocks-counter' );
@@ -45,7 +45,7 @@ class CoBlocksCounter {
 		els.forEach( ( el ) => {
 			this.io.observe( el );
 		} );
-	}
+	};
 }
 
 window.coblocksCounter = new CoBlocksCounter();

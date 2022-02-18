@@ -144,7 +144,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 	 */
 	public function test_js_asset_source() {
 
-		$this->assertRegexp( '/\/coblocks\/dist\/js\//', coblocks()->asset_source( 'js' ) );
+		$this->assertMatchesRegularExpression( '/\/coblocks\/dist\/js\//', coblocks()->asset_source( 'js' ) );
 
 	}
 
@@ -153,7 +153,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 	 */
 	public function test_css_asset_source() {
 
-		$this->assertRegexp( '/\/coblocks\/dist\/css\//', coblocks()->asset_source( 'css' ) );
+		$this->assertMatchesRegularExpression( '/\/coblocks\/dist\/css\//', coblocks()->asset_source( 'css' ) );
 
 	}
 
@@ -162,7 +162,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 	 */
 	public function test_custom_css_asset_source() {
 
-		$this->assertRegexp( '/\/coblocks\/dist\/css\/custom/', coblocks()->asset_source( 'css/custom' ) );
+		$this->assertMatchesRegularExpression( '/\/coblocks\/dist\/css\/custom/', coblocks()->asset_source( 'css/custom' ) );
 
 	}
 
@@ -189,16 +189,12 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 				'dist/js/coblocks-google-maps.js',
 				'dist/js/coblocks-google-recaptcha.js',
 				'dist/js/coblocks-lightbox.js',
-				'dist/js/coblocks-masonry.js',
-				'dist/js/vendors/flickity.js',
-				'dist/js/vendors/slick.js',
 				'src/js/coblocks-accordion-polyfill.js',
 				'src/js/coblocks-checkbox-required.js',
 				'src/js/coblocks-fromEntries.js',
 				'src/js/coblocks-google-maps.js',
 				'src/js/coblocks-google-recaptcha.js',
 				'src/js/coblocks-lightbox.js',
-				'src/js/coblocks-masonry.js',
 			],
 			'css' => [
 				'dist/coblocks-1.css',

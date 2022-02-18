@@ -62,10 +62,11 @@ function coblocks_render_icon_block( $attrs ) {
 	$inner_styles    = implode( ' ', array_filter( $inner_styles ) );
 
 	// Icon fetch.
-	$icon_style = '-outlined';
-	$icon_name  = _wp_to_kebab_case( $attrs['icon'] );
-	$icon_path  = COBLOCKS_PLUGIN_DIR . "src/blocks/icon/svgs/$icon_name";
-	$icon       = '';
+	$icon_style       = '-outlined';
+	$icon_name        = _wp_to_kebab_case( $attrs['icon'] );
+	$icon_path        = COBLOCKS_PLUGIN_DIR . "src/blocks/icon/svgs/$icon_name";
+	$custom_icon_path = get_stylesheet_directory() . "/coblocks/icons/$icon_name";
+	$icon             = '';
 
 	if ( isset( $attrs['className'] ) && false !== strpos( $attrs['className'], 'is-style-filled' ) ) {
 		// Filled doesn't have an extension. Only outlined does. Legacy behavior.
@@ -73,9 +74,13 @@ function coblocks_render_icon_block( $attrs ) {
 		$icon_name  = $attrs['icon'];
 	}
 
-	$icon_path = is_readable( "$icon_path$icon_style.svg" ) ? "$icon_path$icon_style.svg" : $icon_path . '.svg';
+	$custom_icon_path = is_readable( "$custom_icon_path$icon_style.svg" ) ? "$custom_icon_path$icon_style.svg" : $custom_icon_path . '.svg';
+	$icon_path        = is_readable( "$icon_path$icon_style.svg" ) ? "$icon_path$icon_style.svg" : $icon_path . '.svg';
 
-	if ( is_readable( $icon_path ) ) {
+	if ( is_readable( $custom_icon_path ) ) {
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+		$icon = file_get_contents( $custom_icon_path );
+	} elseif ( is_readable( $icon_path ) ) {
 		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 		$icon = file_get_contents( $icon_path );
 	}
