@@ -127,8 +127,10 @@ export const deprecateAll = ( props ) => {
 		delete attributesDeprecated[ key ];
 	} );
 
-	const { clientId, name, selected: {	innerBlocks = [] } } = props;
+	const { clientId, name, getBlocks } = props;
 	const { replaceBlocks } = dispatch( blockEditorStore );
+	// Preserve innerBlocks with transformedBlock.
+	const innerBlocks = getBlocks( clientId );
 	const transformedBlock = createBlock( name, { ...attributesDeprecated }, innerBlocks );
 	replaceBlocks( [ clientId ], transformedBlock );
 };
