@@ -14,13 +14,51 @@ import {
 import { safeHTML } from '@wordpress/dom';
 
 const API_BASE_URL = 'https://wpnux.godaddy.com/v3/api';
+const language = document.documentElement.getAttribute( 'lang' ) || 'en-US';
+
+const fetchData = async ( domain ) => {
+	try {
+		const response = await fetch(
+			`${ API_BASE_URL }/feedback/coblocks-optout?domain=${ domain }&random=1&language=${ language }`
+		);
+		if ( ! response.ok ) {
+			return null;
+		}
+
+		return await response.json();
+	} catch ( e ) {
+		return null;
+	}
+};
 
 const PluginDeactivateModal = () => {
 	const [ href, setHref ] = useState( null );
 	const [ isOpen, setOpen ] = useState( false );
 	const [ feedbackData, setFeedbackData ] = useState( null );
 	const [ formData, setFormData ] = useState( {} );
-	const language = document.documentElement.getAttribute( 'lang' ) || 'en-US';
+
+	useEffect( () => {
+		const domain = coblocksDeactivateData.domain;
+
+		if ( ! coblocksDeactivateData || ! domain ) {
+			return;
+		}
+
+		const getData = async () => {
+			const data = await fetchData( domain );
+
+			if ( data && data.can_submit_feedback ) {
+				window.addEventListener( 'click', clickHandler );
+				setInitialData( data );
+			}
+		};
+
+		getData();
+
+		return () => {
+			window.removeEventListener( 'click', clickHandler );
+		};
+	}, [] );
 
 	const clickHandler = useCallback( ( e ) => {
 		if ( e.target.id !== 'deactivate-coblocks' ) {
@@ -31,37 +69,6 @@ const PluginDeactivateModal = () => {
 		setOpen( true );
 		setHref( e.target.href );
 	} );
-
-	useEffect( () => {
-		const domain = coblocksDeactivateData.domain;
-
-		if ( ! coblocksDeactivateData || ! domain ) {
-			return;
-		}
-
-		fetch(
-			`${ API_BASE_URL }/feedback/coblocks-optout?domain=${ domain }&random=1&language=${ language }`
-		)
-			.then( async ( response ) => {
-				const data = await response.json();
-
-				if ( ! response.ok ) {
-					const error = ( data && data.message ) || response.status;
-					return Promise.reject( error );
-				}
-
-				if ( !! data.can_submit_feedback ) {
-					window.addEventListener( 'click', clickHandler );
-				}
-
-				setInitialData( data );
-			} )
-			.catch( () => {} );
-
-		return () => {
-			window.removeEventListener( 'click', clickHandler );
-		};
-	}, [] );
 
 	const setInitialData = ( data ) => {
 		setFeedbackData( data );
@@ -182,4 +189,7 @@ const PluginDeactivateModal = () => {
 	);
 };
 
-export default PluginDeactivateModal;
+export {
+	PluginDeactivateModal as default,
+	fetchData,
+};
