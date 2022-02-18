@@ -3,7 +3,7 @@
  */
 import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
 import GutterControl from '../../components/gutter-control/gutter-control';
-import SizeControl from '../../components/size-control';
+import OptionSelectorControl from '../../components/option-selector-control';
 
 /**
  * WordPress dependencies
@@ -13,6 +13,36 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { useEffect } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
 import { PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
+
+/**
+ * Shadow constant.
+ */
+const shadowOptions = [
+	{
+		label: __( 'None', 'coblocks' ),
+		tooltip: __( 'None', 'coblocks' ),
+		value: 'none',
+	},
+	{
+		/* translators: abbreviation for small size */
+		label: __( 'S', 'coblocks' ),
+		tooltip: __( 'Small', 'coblocks' ),
+		value: 'sml',
+
+	},
+	{
+		/* translators: abbreviation for medium size */
+		label: __( 'M', 'coblocks' ),
+		tooltip: __( 'Medium', 'coblocks' ),
+		value: 'med',
+	},
+	{
+		/* translators: abbreviation for large size */
+		label: __( 'L', 'coblocks' ),
+		tooltip: __( 'Large', 'coblocks' ),
+		value: 'lrg',
+	},
+];
 
 /**
  * Inspector controls
@@ -55,23 +85,17 @@ const Inspector = ( props ) => {
 
 	const setFullwidthTo = () => setAttributes( { fullwidth: ! fullwidth, shadow: 'none' } );
 
-	const getFullwidthImagesHelp = ( checked ) => {
-		return checked
-			? __( 'Fullwidth images are enabled.', 'coblocks' )
-			: __( 'Toggle to fill the available gallery area with completely fullwidth images.', 'coblocks' );
-	};
+	const getFullwidthImagesHelp = ( checked ) => checked
+		? __( 'Fullwidth images are enabled.', 'coblocks' )
+		: __( 'Toggle to fill the available gallery area with completely fullwidth images.', 'coblocks' );
 
-	const getCaptionsHelp = ( checked ) => {
-		return checked
-			? __( 'Showing captions for each media item.', 'coblocks' )
-			: __( 'Toggle to show media captions.', 'coblocks' );
-	};
+	const getCaptionsHelp = ( checked ) => checked
+		? __( 'Showing captions for each media item.', 'coblocks' )
+		: __( 'Toggle to show media captions.', 'coblocks' );
 
-	const getLightboxHelp = ( checked ) => {
-		return checked
-			? __( 'Image lightbox is enabled.', 'coblocks' )
-			: __( 'Toggle to enable the image lightbox.', 'coblocks' );
-	};
+	const getLightboxHelp = ( checked ) => checked
+		? __( 'Image lightbox is enabled.', 'coblocks' )
+		: __( 'Toggle to enable the image lightbox.', 'coblocks' );
 
 	return (
 		<InspectorControls>
@@ -114,11 +138,11 @@ const Inspector = ( props ) => {
 				/>
 
 				{ ! fullwidth &&
-					<SizeControl { ...props }
+					<OptionSelectorControl
+						currentOption={ shadow }
 						label={ __( 'Shadow', 'coblocks' ) }
 						onChange={ setShadowTo }
-						reset={ false }
-						value={ shadow }
+						options={ shadowOptions }
 					/>
 				}
 

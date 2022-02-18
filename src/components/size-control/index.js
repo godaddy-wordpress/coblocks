@@ -12,37 +12,34 @@ import OptionSelectorControl from '../option-selector-control';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { useEffect } from '@wordpress/element';
-import { useSelect } from '@wordpress/data';
+import { Component } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
 import { BaseControl, Button, PanelRow } from '@wordpress/components';
 
-const SizeControl = ( props ) => {
-	const {
-		attributes,
-		onChange,
-		value,
-		resetValue = undefined,
-		label,
-		reset = true,
-		setAttributes,
-	} = props;
-	const { align, columns } = attributes;
+class SizeControl extends Component {
+	constructor() {
+		super( ...arguments );
+		this.getSizes = this.getSizes.bind( this );
+	}
 
-	useEffect( () => {
+	componentDidUpdate() {
+		const { attributes, setAttributes } = this.props;
+		const { align, columns } = attributes;
+
 		// Prevent small and medium column grid sizes without wide or full alignments.
 		if ( align === undefined ) {
 			if ( columns === 'med' || columns === 'sml' ) {
-				setAttributes( { gridSize: 'xlrg' } );
+				setAttributes( {
+					gridSize: 'xlrg',
+				} );
 			}
 		}
-	}, [ align, columns ] );
+	}
 
-	const { wideControlsEnabled } = useSelect( ( select ) => {
-		return { wideControlsEnabled: select( 'core/editor' ).getEditorSettings()?.alignWide ?? false };
-	} );
-
-	const getSizes = () => {
-		const { type } = props;
+	getSizes() {
+		const { attributes, type, wideControlsEnabled } = this.props;
+		const { align } = attributes;
 
 		const defaultSizes = [
 			{
@@ -191,30 +188,44 @@ const SizeControl = ( props ) => {
 			return fullSizes.concat( wideSizes ).concat( standardSizes );
 		}
 		return standardSizes;
-	};
+	}
 
-	return (
-		<BaseControl id="coblocks-select-size" label={ label }>
-			<PanelRow>
-				<OptionSelectorControl
-					currentOption={ value }
-					onChange={ ( size ) => onChange( size ) }
-					options={ getSizes() } />
-				{ reset &&
-					<Button
-						isSecondary
-						isSmall
-						onClick={ () => onChange( resetValue ) }
-					>
-						{ __( 'Reset', 'coblocks' ) }
-					</Button>
-				}
-			</PanelRow>
-		</BaseControl>
-	);
-};
+	render() {
+		const {
+			onChange,
+			value,
+			resetValue = undefined,
+			label,
+			reset = true,
+		} = this.props;
 
-export default SizeControl;
+		return (
+			<BaseControl id="coblocks-select-size" label={ label }>
+				<PanelRow>
+					<OptionSelectorControl
+						currentOption={ value }
+						onChange={ ( size ) => onChange( size ) }
+						options={ this.getSizes() } />
+					{ reset &&
+						<Button
+							isSecondary
+							isSmall
+							onClick={ () => onChange( resetValue ) }
+						>
+							{ __( 'Reset', 'coblocks' ) }
+						</Button>
+					}
+				</PanelRow>
+			</BaseControl>
+		);
+	}
+}
+
+export default compose( [
+	withSelect( ( select ) => ( {
+		wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
+	} ) ),
+] )( SizeControl );
 
 SizeControl.propTypes = {
 	label: PropTypes.string,
@@ -223,4 +234,5 @@ SizeControl.propTypes = {
 	resetValue: PropTypes.func,
 	type: PropTypes.string,
 	value: PropTypes.any,
+	wideControlsEnabled: PropTypes.bool,
 };

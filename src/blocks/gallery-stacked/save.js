@@ -14,6 +14,7 @@ import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
  * WordPress dependencies
  */
 import { RichText, useBlockProps } from '@wordpress/block-editor';
+import { View } from '@wordpress/primitives';
 
 const save = ( { attributes } ) => {
 	const {
@@ -46,7 +47,7 @@ const save = ( { attributes } ) => {
 	const descendingBlockStyles = blockStylesToDescend( saveBlockProps );
 
 	return (
-		<div { ...saveBlockProps }>
+		<View { ...saveBlockProps }>
 			<GutterWrapper { ...attributes }>
 				<ul className={ innerClasses }>
 					{ images.map( ( image ) => {
@@ -86,7 +87,7 @@ const save = ( { attributes } ) => {
 					} ) }
 				</ul>
 			</GutterWrapper>
-		</div>
+		</View>
 	);
 };
 

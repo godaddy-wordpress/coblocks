@@ -172,7 +172,7 @@ const GalleryStackedEdit = ( props ) => {
 				</>
 			}
 			{ noticeUI }
-			<div { ...blockProps }>
+			<View { ...blockProps }>
 				<GutterWrapper { ...attributes }>
 					<ul className={ innerClasses }>
 						{ images.map( ( img, index ) => {
@@ -215,7 +215,7 @@ const GalleryStackedEdit = ( props ) => {
 						{ stackedGalleryPlaceholder }
 					</ul>
 				</GutterWrapper>
-			</div>
+			</View>
 		</>
 	);
 };
