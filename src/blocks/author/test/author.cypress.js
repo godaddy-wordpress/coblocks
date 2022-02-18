@@ -115,4 +115,27 @@ describe( 'Test CoBlocks Author Block', function() {
 
 		helpers.editPage();
 	} );
+
+	/**
+	 * Test the text sizes change as expected
+	 */
+	it( 'Test the text sizes change as expected.', function() {
+		helpers.addBlockToPost( 'coblocks/author', true );
+
+		helpers.selectBlock( 'author' );
+
+		cy.get( '.wp-block-coblocks-author__name' ).focus().type( 'Randall Lewis' );
+
+		cy.get( '.components-toggle-group-control-option' ).then( ( elems ) => {
+			let dataValue = Cypress.$( '.wp-block-coblocks-author__name' ).css( 'font-size' );
+			Array.from( elems ).forEach( ( elem ) => {
+				cy.get( elem ).focus().click().then( () => {
+					// We do not test the value due to theme setting specified font sizes.
+					// Instead we test that the value has changed from previous value.
+					cy.get( '.wp-block-coblocks-author__name' ).should( 'not.to.have.css', 'font-size', dataValue );
+					dataValue = Cypress.$( '.wp-block-coblocks-author__name' ).css( 'font-size' );
+				} );
+			} );
+		} );
+	} );
 } );

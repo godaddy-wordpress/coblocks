@@ -74,7 +74,7 @@
 		"zh_TW": "繁體中文"
 	},
 	"dependencies": {
-		"@godaddy-wordpress/coblocks-icons": "2.0.3"
+		"@godaddy-wordpress/coblocks-icons": "2.0.4"
 	},
 	"devDependencies": {
 		"@es-joy/jsdoccomment": "0.13.0",
@@ -122,6 +122,7 @@
 		"chalk": "^4.1.2",
 		"classnames": "^2.2.5",
 		"commander": "^8.3.0",
+		"copy-webpack-plugin": "^10.2.0",
 		"counterup2": "^2.0.2",
 		"cypress": "^9.4.1",
 		"cypress-file-upload": "^5.0.8",

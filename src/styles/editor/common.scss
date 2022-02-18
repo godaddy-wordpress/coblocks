@@ -1,4 +1,4 @@
-[class*="wp-block-coblocks-"] .wp-block {
+[class*="wp-block-coblocks-"] .wp-block:not(.block-list-appender) {
 	margin-left: auto; // Revert what was removed in twentytwentytwo
 	margin-right: auto; // Revert what was removed in twentytwentytwo
 }
