@@ -375,6 +375,12 @@ const deprecated =
 		...GalleryAttributes,
 		...originalDeprecatedAttributes,
 	},
+	migrate( attributes ) {
+		return {
+			...attributes,
+			gutter: 'custom',
+		};
+	},
 	save: ( { attributes, className } ) => {
 		const {
 			animation,
