@@ -339,7 +339,7 @@ export const upload = {
 	imageToBlock: ( blockName ) => {
 		const { fileName, pathToFixtures } = upload.spec;
 		cy.fixture( pathToFixtures + fileName, { encoding: null } ).then( ( fileContent ) => {
-			cy.get( `[data-type="${ blockName }"] input[type="file"]` )
+			cy.get( `[data-type="${ blockName }"] input[type="file"]` ).first()
 				.selectFile( { contents: fileContent, fileName: pathToFixtures + fileName, mimeType: 'image/png' }, { force: true } );
 
 			// Now validate upload is complete and is not a blob.
