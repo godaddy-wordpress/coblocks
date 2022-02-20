@@ -125,7 +125,6 @@
 		"copy-webpack-plugin": "^10.2.0",
 		"counterup2": "^2.0.2",
 		"cypress": "^9.4.1",
-		"cypress-file-upload": "^5.0.8",
 		"cypress-log-to-output": "1.1.2",
 		"email-validator": "^2.0.4",
 		"eslint-plugin-cypress": "^2.10.3",
