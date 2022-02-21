@@ -2,7 +2,7 @@ describe( 'Component: CoBlocks Deactivate Modal', () => {
 	beforeEach( () => {
 		cy.intercept(
 			'GET',
-			'https://wpnux.godaddy.com/v3/api/feedback/coblocks-optout*',
+			new RegExp( 'https://wpnux.godaddy.com/v3/api/feedback/coblocks-optout*' ),
 			{ fixture: '../.dev/tests/cypress/fixtures/network/coblocks_optout.json' }
 		);
 
