@@ -117,6 +117,9 @@ export const registerBlock = ( block ) => {
 	}
 
 	const v2Settings = block?.metadata?.apiVersion === 2 ? block?.metadata : {};
+	if ( !! settings.attributes ) {
+		v2Settings.attributes = { ...v2Settings.attributes, ...settings?.attributes };
+	}
 
 	let icon = '';
 	if ( !! settings?.icon ) {
@@ -133,10 +136,6 @@ export const registerBlock = ( block ) => {
 
 		// V2 Block API Upgrades
 		...v2Settings,
-		attributes: {
-			...settings.attributes,
-			...v2Settings.attributes,
-		},
 	} );
 };
 
