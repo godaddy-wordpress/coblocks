@@ -6,29 +6,22 @@
  * External dependencies
  */
 import React from "react";
-import { mount } from 'enzyme';
+import { mount, configure } from 'enzyme';
 import '@testing-library/jest-dom/extend-expect';
 import { act } from "react-dom/test-utils";
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 /**
  * Internal dependencies.
  */
-import Modal, { fetchData } from '../modal';
+import Modal, { fetchData } from '../index';
 import mockData from '../../../../.dev/tests/cypress/fixtures/network/coblocks_optout.json';
 
 import { enableFetchMocks } from 'jest-fetch-mock';
 enableFetchMocks();
 
-global.coblocksDeactivateData = {
-	domain: 'foo.com',
-	coblocksVersion: '1.0.0',
-	hostname: 'test.server.net',
-	wpOptions: {
-		persona: 'persona',
-		skill: 'skill',
-	},
-	wpVersion: '5.9',
-}
+configure({ adapter: new Adapter() });
+
 
 const defaultEvent = {
 	preventDefault: jest.fn(),
@@ -38,15 +31,33 @@ const defaultEvent = {
 	},
 };
 
-describe( 'coblocks-deactivate-modal', () => {
-	let wrapper;
+describe( 'common-deactivate-modal', () => {
+	let wrapper, props;
 	let events = {};
+
+	props = {
+		apiUrl: 'https://wpnux.godaddy.com/v3/api/feedback/coblocks-optout',
+		getParams: {
+			domain: 'foo.com'
+		},
+		isEvent: () => true,
+		pageData: {
+			domain: 'foo.com',
+			coblocksVersion: '1.0.0',
+			hostname: 'test.server.net',
+			wpOptions: {
+				persona: 'persona',
+				skill: 'skill',
+			},
+			wpVersion: '5.9',
+		}
+	}
 
 	const setup = () => {
 		return mount(
 			<div>
 				<button id='deactivate-coblocks'>Deactivate</button>
-				<Modal />
+				<Modal { ...props } />
 			</div>
 			);
 	};
@@ -90,7 +101,7 @@ describe( 'coblocks-deactivate-modal', () => {
 		});
 
 		test('should not display modal by default', () => {
-			expect( wrapper.find( '.coblocks-plugin-deactivate-modal' ) ).toHaveLength( 0 );
+			expect( wrapper.find( '.common-deactivate-modal' ) ).toHaveLength( 0 );
 		});
 
 		it( 'should not be displayed when opening condition is not met', async() => {
@@ -102,7 +113,7 @@ describe( 'coblocks-deactivate-modal', () => {
 				},
 			} );
 
-			expect( wrapper.find( '.coblocks-plugin-deactivate-modal' ) ).toHaveLength( 0 );
+			expect( wrapper.find( '.common-deactivate-modal' ) ).toHaveLength( 0 );
 		} );
 	});
 
@@ -116,7 +127,7 @@ describe( 'coblocks-deactivate-modal', () => {
 		});
 
 		it( 'should show modal on click', () => {
-			expect( wrapper.find( '.coblocks-plugin-deactivate-modal' ) ).toHaveLength( 2 );
+			expect( wrapper.find( '.common-deactivate-modal' ) ).toHaveLength( 2 );
 		} );
 
 		it( 'should call deactivate link on modal submit', () => {
@@ -126,8 +137,8 @@ describe( 'coblocks-deactivate-modal', () => {
 				},
 			} );
 
-			const activateButton = wrapper.find( '.coblocks-plugin-deactivate-modal__button' ).first();
-			activateButton.invoke( 'onClick' )();
+			const actionButton = wrapper.find( '.common-deactivate-modal__button' ).first();
+			actionButton.invoke( 'onClick' )();
 			expect( window.location.href ).toEqual( defaultEvent.target.href );
 		} );
 	});

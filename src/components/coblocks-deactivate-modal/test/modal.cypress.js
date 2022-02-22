@@ -34,7 +34,7 @@ describe( 'Component: CoBlocks Deactivate Modal', () => {
 
 		cy.get( '.components-text-control__input' ).eq( 0 ).type( 'need more widgets' );
 
-		cy.intercept( 'POST', 'https://wpnux.godaddy.com/v3/api/feedback/coblocks-optout', {
+		cy.intercept( 'POST', new RegExp( 'https://wpnux.godaddy.com/v3/api/feedback/coblocks-optout' ), {
 			statusCode: 201,
 		} );
 

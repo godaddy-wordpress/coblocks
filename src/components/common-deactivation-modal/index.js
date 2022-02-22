@@ -1,26 +1,21 @@
-/* global coblocksDeactivateData */
-
-/**
- * WordPress dependencies
- */
-import { useCallback, useEffect, useState } from '@wordpress/element';
-import {
-	Button,
-	ButtonGroup,
-	CheckboxControl,
-	Modal,
-	TextControl,
-} from '@wordpress/components';
+import { Button, ButtonGroup, CheckboxControl, Modal, TextControl } from '@wordpress/components';
 import { safeHTML } from '@wordpress/dom';
+import { useCallback, useEffect, useState } from '@wordpress/element';
+import PropTypes from 'prop-types';
 
-const API_BASE_URL = 'https://wpnux.godaddy.com/v3/api';
 const language = document.documentElement.getAttribute( 'lang' ) || 'en-US';
 
-const fetchData = async ( domain ) => {
+const fetchData = async ( apiUrl, getParams = null ) => {
+	const params = {
+		...getParams,
+		random: 1,
+		language,
+	};
+	let paramString = '';
+	Object.keys( params ).forEach( ( key ) => paramString += `${ key }=${ params[ key ] }&` );
+
 	try {
-		const response = await fetch(
-			`${ API_BASE_URL }/feedback/coblocks-optout?domain=${ domain }&random=1&language=${ language }`
-		);
+		const response = await fetch( `${ apiUrl }?${ paramString.slice( 0, -1 ) }` );
 		if ( ! response.ok ) {
 			return null;
 		}
@@ -31,21 +26,15 @@ const fetchData = async ( domain ) => {
 	}
 };
 
-const PluginDeactivateModal = () => {
+const DeactivateModal = ( { apiUrl, getParams, isEvent, pageData } ) => {
 	const [ href, setHref ] = useState( null );
 	const [ isOpen, setOpen ] = useState( false );
 	const [ feedbackData, setFeedbackData ] = useState( null );
 	const [ formData, setFormData ] = useState( {} );
 
 	useEffect( () => {
-		const domain = coblocksDeactivateData.domain;
-
-		if ( ! coblocksDeactivateData || ! domain ) {
-			return;
-		}
-
 		const getData = async () => {
-			const data = await fetchData( domain );
+			const data = await fetchData( apiUrl, getParams );
 
 			if ( data && data.can_submit_feedback ) {
 				window.addEventListener( 'click', clickHandler );
@@ -60,16 +49,6 @@ const PluginDeactivateModal = () => {
 		};
 	}, [] );
 
-	const clickHandler = useCallback( ( e ) => {
-		if ( e.target.id !== 'deactivate-coblocks' ) {
-			return;
-		}
-
-		e.preventDefault();
-		setOpen( true );
-		setHref( e.target.href );
-	} );
-
 	const setInitialData = ( data ) => {
 		setFeedbackData( data );
 
@@ -79,32 +58,29 @@ const PluginDeactivateModal = () => {
 				textFields[ choice.text_field ] = '';
 			}
 		} );
+
 		setFormData( {
 			choices: [],
-			coblocks_version: coblocksDeactivateData.coblocksVersion,
-			domain: coblocksDeactivateData.domain,
-			hostname: coblocksDeactivateData.hostname,
+			coblocks_version: pageData.coblocksVersion,
+			domain: pageData.domain,
+			hostname: pageData.hostname,
 			language,
-			persona: coblocksDeactivateData.wpOptions?.persona,
-			skill: coblocksDeactivateData.wpOptions?.skill,
-			wp_version: coblocksDeactivateData.wpVersion,
+			persona: pageData.wpOptions?.persona,
+			skill: pageData.wpOptions?.skill,
+			wp_version: pageData.wpVersion,
 			...textFields,
 		} );
 	};
 
-	const onDeactivate = async ( submit = false ) => {
-		if ( submit && formData.choices.length >= feedbackData.choices_min ) {
-			await fetch( `${ API_BASE_URL }/feedback/coblocks-optout`, {
-				method: 'POST',
-				body: JSON.stringify( formData ),
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			} );
+	const clickHandler = useCallback( ( e ) => {
+		if ( ! isEvent( e ) ) {
+			return;
 		}
-		setOpen( false );
-		window.location.href = href;
-	};
+
+		e.preventDefault();
+		setOpen( true );
+		setHref( e.target.href );
+	} );
 
 	const onCheckboxChange = ( isChecked, slug ) => {
 		setFormData( ( prevFormData ) => {
@@ -128,17 +104,32 @@ const PluginDeactivateModal = () => {
 		} ) );
 	};
 
+	const onAction = async ( submit = false ) => {
+		if ( submit && formData.choices.length >= feedbackData.choices_min ) {
+			await fetch( apiUrl, {
+				method: 'POST',
+				body: JSON.stringify( formData ),
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			} );
+		}
+
+		setOpen( false );
+		window.location.href = href;
+	};
+
 	if ( ! isOpen || ! feedbackData ) {
 		return null;
 	}
 
 	return (
 		<Modal
-			className="coblocks-plugin-deactivate-modal"
+			className="common-deactivate-modal"
 			onRequestClose={ () => setOpen( false ) }
 			title={ feedbackData.labels.title }
 		>
-			<div className="coblocks-plugin-deactivate-modal__checkbox">
+			<div className="common-deactivate-modal__checkbox">
 				{ feedbackData.choices.map( ( choice ) => {
 					const isChecked = formData.choices.indexOf( choice.slug ) >= 0;
 					return (
@@ -150,7 +141,7 @@ const PluginDeactivateModal = () => {
 							/>
 							{ !! choice.text_field && (
 								<TextControl
-									className={ `coblocks-plugin-deactivate-modal__text ${
+									className={ `common-deactivate-modal__text ${
 										isChecked ? 'show' : ''
 									}` }
 									onChange={ ( value ) => onTextChange( choice.text_field, value ) }
@@ -163,22 +154,22 @@ const PluginDeactivateModal = () => {
 			</div>
 			<ButtonGroup>
 				<Button
-					className="coblocks-plugin-deactivate-modal__button"
-					onClick={ () => onDeactivate( true ) }
+					className="common-deactivate-modal__button"
+					onClick={ () => onAction( true ) }
 					variant="primary"
 				>
 					{ feedbackData.labels.submit_deactivate }
 				</Button>
 				<Button
-					className="coblocks-plugin-deactivate-modal__button"
-					onClick={ () => onDeactivate( false ) }
+					className="common-deactivate-modal__button"
+					onClick={ () => onAction( false ) }
 					variant="link"
 				>
 					{ feedbackData.labels.skip_deactivate }
 				</Button>
 			</ButtonGroup>
 
-			<footer className="coblocks-plugin-deactivate-modal__footer">
+			<footer className="common-deactivate-modal__footer">
 				<div
 					dangerouslySetInnerHTML={ {
 						__html: safeHTML( feedbackData.labels.privacy_disclaimer ),
@@ -189,7 +180,14 @@ const PluginDeactivateModal = () => {
 	);
 };
 
+DeactivateModal.propTypes = {
+	apiUrl: PropTypes.string.isRequired,
+	getParams: PropTypes.object,
+	isEvent: PropTypes.func.isRequired,
+	pageData: PropTypes.object.isRequired,
+};
+
 export {
-	PluginDeactivateModal as default,
+	DeactivateModal as default,
 	fetchData,
 };
