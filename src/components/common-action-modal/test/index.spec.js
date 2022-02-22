@@ -6,10 +6,9 @@
  * External dependencies
  */
 import React from "react";
-import { mount, configure } from 'enzyme';
+import { mount } from 'enzyme';
 import '@testing-library/jest-dom/extend-expect';
 import { act } from "react-dom/test-utils";
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 /**
  * Internal dependencies.
@@ -19,8 +18,6 @@ import mockData from '../../../../.dev/tests/cypress/fixtures/network/coblocks_o
 
 import { enableFetchMocks } from 'jest-fetch-mock';
 enableFetchMocks();
-
-configure({ adapter: new Adapter() });
 
 
 const defaultEvent = {

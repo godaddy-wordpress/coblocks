@@ -10,7 +10,7 @@ import domReady from '@wordpress/dom-ready';
  * Internal Dependencies
  */
 import './styles/style.scss';
-import DeactivateModal from '../common-deactivation-modal';
+import DeactivateModal from '../common-action-modal';
 
 const API_BASE_URL = 'https://wpnux.godaddy.com/v3/api';
 
