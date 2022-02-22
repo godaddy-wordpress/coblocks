@@ -12,7 +12,7 @@ import domReady from '@wordpress/dom-ready';
 import './styles/style.scss';
 import DeactivateModal from '../common-action-modal';
 
-const API_BASE_URL = 'https://wpnux.dev-godaddy.com/v3/api';
+const API_BASE_URL = 'https://wpnux.godaddy.com/v3/api';
 
 const GoDeactivateModal = () => {
 	const apiUrl = `${ API_BASE_URL }/feedback/go-theme-optout`;
