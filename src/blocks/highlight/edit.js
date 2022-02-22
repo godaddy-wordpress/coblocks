@@ -6,6 +6,16 @@ import Controls from './controls';
 import { createBlock } from '@wordpress/blocks';
 import { RichText, useBlockProps } from '@wordpress/block-editor';
 
+/**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
+ * Internal dependencies
+ */
+import { getColorClassnames, getColorStyles } from '../../utils/helper.js';
+
 const Edit = ( props ) => {
 	/**
 	 * Split handler for RichText value, namely when content is pasted or the
@@ -63,17 +73,24 @@ const Edit = ( props ) => {
 	const blockProps = useBlockProps();
 	blockProps.style.textAlign = align;
 
+	/**
+	 * In the Highlight block we descend only the `color` and `backgroundColor` styles and classnames but keep all others on the parent.
+	 */
+	const highlightClasses = getColorClassnames( blockProps );
+	const highlightStyles = getColorStyles( blockProps );
+
 	return (
 		<>
 			<Controls { ...props } />
 			<p { ...blockProps } >
 				<RichText
-					className="wp-block-coblocks-highlight__content"
+					className={ classnames( highlightClasses, 'wp-block-coblocks-highlight__content' ) }
 					onChange={ ( value ) => setAttributes( { content: value } ) }
 					onMerge={ mergeBlocks }
 					onRemove={ () => onReplace( [] ) }
 					onSplit={ splitBlock }
 					placeholder={ __( 'Add highlighted text…', 'coblocks' ) }
+					style={ highlightStyles }
 					tagName="mark"
 					value={ content }
 				/>

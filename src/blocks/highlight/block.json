@@ -10,8 +10,7 @@
 			"selector": "mark"
 		},
 		"align": {
-			"type": "string",
-			"default": "left"
+			"type": "string"
 		}
 	},
 	"supports": {
@@ -32,5 +31,5 @@
 		}
 	},
 	"textdomain": "coblocks",
-	"title": "highlight"
+	"title": "Highlight"
 }

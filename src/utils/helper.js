@@ -13,6 +13,7 @@ import { supportsCollections } from './block-helpers';
  */
 import { isBlobURL } from '@wordpress/blob';
 import { registerBlockType } from '@wordpress/blocks';
+import TokenList from '@wordpress/token-list';
 
 // Set dim ratio.
 export function overlayToClass( ratio ) {
@@ -142,3 +143,49 @@ export const registerBlock = ( block ) => {
 export function getBlockIconColor() {
 	return '#09757A';
 }
+
+/**
+ * Parse V2 `blockProps.className` and return color related classes. Keep all others within `blockProps`.
+ *
+ * This function will overwrite `blockProps.classNames` to remove color related properties.
+ *
+ * @param {Object} blockProps The V2 blockProps.
+ * @return {Object?} The active style.name.
+ */
+export const getColorClassnames = ( blockProps ) => {
+	const descendingClasses = new TokenList();
+	const originalClasses = new TokenList( blockProps.className );
+
+	for ( const classToken of originalClasses.values() ) {
+		if ( classToken.indexOf( '-color' ) === -1 && classToken.indexOf( '-background' ) === -1 ) {
+			continue;
+		}
+		originalClasses.remove( classToken );
+		descendingClasses.add( classToken );
+	}
+	blockProps.className = originalClasses.toString();
+	return descendingClasses.toString();
+};
+
+/**
+ * Parse V2 `blockProps.style` and return color related styles. Keep all others within `blockProps`.
+ *
+ * This function will overwrite `blockProps.style` to remove color related properties.
+ *
+ * @param {Object} blockProps The V2 blockProps.
+ * @return {Object?} The active style.name.
+ */
+export const getColorStyles = ( blockProps ) => {
+	const { backgroundColor, color } = blockProps.style;
+	const originalStyles = { ...blockProps.style };
+
+	const descendingStyles = { backgroundColor, color };
+
+	[ 'backgroundColor', 'color' ].forEach( ( key ) => {
+		delete originalStyles[ key ];
+	} );
+
+	blockProps.style = originalStyles;
+	return descendingStyles;
+};
+
