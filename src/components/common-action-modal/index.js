@@ -61,7 +61,8 @@ const DeactivateModal = ( { apiUrl, getParams, isEvent, pageData } ) => {
 
 		setFormData( {
 			choices: [],
-			coblocks_version: pageData.coblocksVersion,
+			...( pageData.coblocksVersion && { coblocks_version: pageData.coblocksVersion } ),
+			...( pageData.goThemeVersion && { go_theme_version: pageData.goThemeVersion } ),
 			domain: pageData.domain,
 			hostname: pageData.hostname,
 			language,
