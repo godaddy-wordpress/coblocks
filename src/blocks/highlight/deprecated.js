@@ -9,7 +9,7 @@ import classnames from 'classnames';
  */
 import { getColorClassName, getFontSizeClass, RichText } from '@wordpress/block-editor';
 
-export const deprecated = [
+const deprecated = [
 	{
 		attributes: {
 			content: {
@@ -88,3 +88,5 @@ export const deprecated = [
 
 	},
 ];
+
+export default deprecated;
