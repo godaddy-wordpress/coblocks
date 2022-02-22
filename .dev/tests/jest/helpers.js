@@ -14,43 +14,56 @@ import '../../../src/extensions/image-crop';
 import '../../../src/extensions/typography';
 
 // Imports used for registerGalleryBlocks().
-import { name as stackedName, settings as stackedSettings } from '../../../src/blocks/gallery-stacked';
-import { name as collageName, settings as collageSettings } from '../../../src/blocks/gallery-collage/';
-import { name as carouselName, settings as carouselSettings } from '../../../src/blocks/gallery-carousel';
-import { name as offsetName, settings as offsetSettings } from '../../../src/blocks/gallery-offset';
-import { name as masonryName, settings as masonrySettings } from '../../../src/blocks/gallery-masonry';
+import { metadata as carouselMeta, name as carouselName, settings as carouselSettings } from '../../../src/blocks/gallery-carousel';
+import { metadata as collageMeta, name as collageName, settings as collageSettings } from '../../../src/blocks/gallery-collage/';
+import { metadata as masonryMeta, name as masonryName, settings as masonrySettings } from '../../../src/blocks/gallery-masonry';
+import { metadata as offsetMeta, name as offsetName, settings as offsetSettings } from '../../../src/blocks/gallery-offset';
+import { metadata as stackedMeta, name as stackedName, settings as stackedSettings } from '../../../src/blocks/gallery-stacked';
 
-// Imports used for registerGalleryBlocks().
+// Imports used for registerFormBlocks().
 // Form, Name, Date, Textarea, Phone, Text, Website, Hidden
 import { name as formBlockName, settings as formBlockSettings } from '../../../src/blocks/form';
-import { name as formNameBlockName, settings as formNameBlockSettings } from '../../../src/blocks/form/fields/name';
+import { name as formCheckboxBlockName, settings as formCheckboxBlockSettings } from '../../../src/blocks/form/fields/checkbox';
 import { name as formDateBlockName, settings as formDateBlockSettings } from '../../../src/blocks/form/fields/date';
-import { name as formTextareaBlockName, settings as formTextareaBlockSettings } from '../../../src/blocks/form/fields/textarea';
+import { name as formHiddenBlockName, settings as formHiddenBlockSettings } from '../../../src/blocks/form/fields/hidden';
+import { name as formNameBlockName, settings as formNameBlockSettings } from '../../../src/blocks/form/fields/name';
 import { name as formPhoneBlockName, settings as formPhoneBlockSettings } from '../../../src/blocks/form/fields/phone';
+import { name as formRadioBlockName, settings as formRadioBlockSettings } from '../../../src/blocks/form/fields/radio';
+import { name as formSelectBlockName, settings as formSelectBlockSettings } from '../../../src/blocks/form/fields/select';
+import { name as formTextareaBlockName, settings as formTextareaBlockSettings } from '../../../src/blocks/form/fields/textarea';
 import { name as formTextBlockName, settings as formTextBlockSettings } from '../../../src/blocks/form/fields/text';
 import { name as formWebsiteBlockName, settings as formWebsiteBlockSettings } from '../../../src/blocks/form/fields/website';
-import { name as formHiddenBlockName, settings as formHiddenBlockSettings } from '../../../src/blocks/form/fields/hidden';
-
-import { name as formSelectBlockName, settings as formSelectBlockSettings } from '../../../src/blocks/form/fields/select';
-import { name as formCheckboxBlockName, settings as formCheckboxBlockSettings } from '../../../src/blocks/form/fields/checkbox';
-import { name as formRadioBlockName, settings as formRadioBlockSettings } from '../../../src/blocks/form/fields/radio';
 
 /**
  * WordPress dependencies
  */
-import { registerBlockType, unregisterBlockType, createBlock, getBlockTransforms, serialize, parse } from '@wordpress/blocks';
 import { removeFilter } from '@wordpress/hooks';
+import { createBlock, getBlockTransforms, parse, registerBlockType, serialize, unregisterBlockType } from '@wordpress/blocks';
 
 /**
  * Register all gallery blocks to be used for transforms testing.
  *
  */
 export const registerGalleryBlocks = () => {
-	registerBlockType( stackedName, { category: 'common', ...stackedSettings } ); // Register stacked block
-	registerBlockType( collageName, { category: 'common', ...collageSettings } ); // Register collage block
-	registerBlockType( carouselName, { category: 'common', ...carouselSettings } ); // Register carousel block
-	registerBlockType( offsetName, { category: 'common', ...offsetSettings } ); // Register offset block
-	registerBlockType( masonryName, { category: 'common', ...masonrySettings } ); // Register masonry block
+	const getV2Settings = ( blockMeta, blockSettings ) => {
+		const metaClone = { ...blockMeta };
+		if ( !! blockSettings?.attributes ) {
+			metaClone.attributes = { ...metaClone.attributes, ...blockSettings?.attributes };
+		}
+		return metaClone;
+	};
+
+	const v2Carousel = stackedMeta?.apiVersion === 2 ? getV2Settings( carouselMeta, carouselSettings ) : {};
+	const v2Collage = stackedMeta?.apiVersion === 2 ? getV2Settings( collageMeta, collageSettings ) : {};
+	const v2Masonry = stackedMeta?.apiVersion === 2 ? getV2Settings( masonryMeta, masonrySettings ) : {};
+	const v2Offset = stackedMeta?.apiVersion === 2 ? getV2Settings( offsetMeta, offsetSettings ) : {};
+	const v2Stacked = stackedMeta?.apiVersion === 2 ? getV2Settings( stackedMeta, stackedSettings ) : {};
+
+	registerBlockType( carouselName, { category: 'common', ...carouselSettings, ...v2Carousel } ); // Register carousel block
+	registerBlockType( collageName, { category: 'common', ...collageSettings, ...v2Collage } ); // Register collage block
+	registerBlockType( masonryName, { category: 'common', ...masonrySettings, ...v2Masonry } ); // Register masonry block
+	registerBlockType( offsetName, { category: 'common', ...offsetSettings, ...v2Offset } ); // Register offset block
+	registerBlockType( stackedName, { category: 'common', ...stackedSettings, ...v2Stacked } ); // Register stacked block
 };
 
 export const registerFormBlocks = () => {
@@ -206,5 +219,5 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 export const filterBlockObjectResult = ( blockObject ) => {
 	const { name, attributes, isValid } = blockObject;
 	const validationIssues = blockObject.validationIssues.map( ( issue ) => issue.args );
-	return { name, attributes, isValid, validationIssues };
+	return { attributes, isValid, name, validationIssues };
 };

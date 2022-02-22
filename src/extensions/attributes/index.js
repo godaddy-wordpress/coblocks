@@ -24,8 +24,8 @@ function applyAttributes( settings ) {
 /**
  * Add custom CoBlocks attributes to selected blocks
  *
- * @param {Object} props Selected block props
- * @return {string} Wrapped component.
+ * @param {Object} props Block props
+ * @return {string} Block props extended with CoBlocks attributes.
  */
 const useAttributes = ( props ) => {
 	const { name: blockName } = props;

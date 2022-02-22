@@ -83,9 +83,12 @@ const transforms = {
 						}
 					);
 
+					const { gutter, gutterCustom, caption, lightbox } = validAttributes;
 					return createBlock( metadata.name, {
-						caption: validAttributes?.caption,
-						lightbox: validAttributes?.lightbox,
+						caption,
+						gutter,
+						gutterCustom,
+						lightbox,
 					}, innerImageBlocks );
 				}
 

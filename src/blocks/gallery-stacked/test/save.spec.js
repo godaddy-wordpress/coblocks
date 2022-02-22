@@ -64,48 +64,6 @@ describe( name, () => {
 		expect( serializedBlock ).toContain( 'has-fullwidth-images' );
 	} );
 
-	it( 'should have className \'has-margin\' with Gutter set.', () => {
-		block.attributes = { ...block.attributes, gutter: 0 };
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).not.toContain( 'has-margin' );
-
-		block.attributes = { ...block.attributes, gutter: 20 };
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'has-margin' );
-	} );
-
-	it( 'should have className \'has-margin-bottom-30\' with Gutter set to 30.', () => {
-		block.attributes = { ...block.attributes, gutter: 0 };
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).not.toContain( 'has-margin-bottom-30' );
-
-		block.attributes = { ...block.attributes, gutter: 30 };
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'has-margin-bottom-30' );
-	} );
-
-	it( 'should have className \'has-margin-bottom-mobile-30\' with mobile Gutter set to 30.', () => {
-		block.attributes = { ...block.attributes, gutterMobile: 0 };
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).not.toContain( 'has-margin-bottom-mobile-30' );
-
-		block.attributes = { ...block.attributes, gutterMobile: 30 };
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'has-margin-bottom-mobile-30' );
-	} );
-
 	it( 'should have figcaption element with captions enabled and caption text.', () => {
 		block.attributes = {
 			...block.attributes,
@@ -126,42 +84,6 @@ describe( name, () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '<figcaption class="coblocks-gallery--caption">' );
-	} );
-
-	[ 'small', 'medium', 'large', 'huge' ].forEach( ( fontSize ) => {
-		it( `should have className \'has-${ fontSize }-font-size\' with preset size set.`, () => {
-			block.attributes = {
-					...block.attributes,
-					images: [
-						...block.attributes.images,
-						{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg', id: 3, caption: 'test caption' },
-					],
-					captions: true,
-					fontSize,
-				};
-
-			serializedBlock = serialize( block );
-
-			expect( serializedBlock ).toBeDefined();
-			expect( serializedBlock ).toContain( `has-${ fontSize }-font-size` );
-		} );
-	} );
-
-	it( `should have style \'font-size: \'48px\'\' with custom font size set to \'48\'.`, () => {
-		block.attributes = {
-				...block.attributes,
-				images: [
-					...block.attributes.images,
-					{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg', id: 3, caption: 'test caption' },
-				],
-				captions: true,
-				customFontSize: 48,
-			};
-
-		serializedBlock = serialize( block );
-
-		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( `font-size:48px` );
 	} );
 
 	[ 'none', 'sml', 'med', 'lrg' ].forEach( ( shadow ) => {

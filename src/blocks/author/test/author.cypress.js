@@ -59,11 +59,9 @@ describe( 'Test CoBlocks Author Block', function() {
 		helpers.selectBlock( 'author' );
 
 		// Upload the Author avatar
-		// Disable reason: cy.fixture should not return a value.
-		// eslint-disable-next-line jest/valid-expect-in-promise
-		cy.fixture( pathToFixtures + fileName ).then( ( fileContent ) => {
+		cy.fixture( pathToFixtures + fileName, { encoding: null } ).then( ( fileContent ) => {
 			cy.get( 'div[data-type="coblocks/author"] .wp-block-coblocks-author__avatar' ).click();
-			cy.get( '[class^="moxie"] [type="file"]' ).attachFile( { fileContent, filePath: pathToFixtures + fileName, mimeType: 'image/png', subjectType: 'drag-n-drop' }, { force: true } );
+			cy.get( '[class^="moxie"] [type="file"]' ).selectFile( { action: 'drag-drop', contents: fileContent, fileName: pathToFixtures + fileName, mimeType: 'image/png' }, { force: true } );
 
 			cy.get( '.attachment.selected.save-ready' );
 
@@ -114,5 +112,28 @@ describe( 'Test CoBlocks Author Block', function() {
 			.and( 'have.attr', 'href', 'https://www.google.com' );
 
 		helpers.editPage();
+	} );
+
+	/**
+	 * Test the text sizes change as expected
+	 */
+	it( 'Test the text sizes change as expected.', function() {
+		helpers.addBlockToPost( 'coblocks/author', true );
+
+		helpers.selectBlock( 'author' );
+
+		cy.get( '.wp-block-coblocks-author__name' ).focus().type( 'Randall Lewis' );
+
+		cy.get( '.components-toggle-group-control-option' ).then( ( elems ) => {
+			let dataValue = Cypress.$( '.wp-block-coblocks-author__name' ).css( 'font-size' );
+			Array.from( elems ).forEach( ( elem ) => {
+				cy.get( elem ).focus().click().then( () => {
+					// We do not test the value due to theme setting specified font sizes.
+					// Instead we test that the value has changed from previous value.
+					cy.get( '.wp-block-coblocks-author__name' ).should( 'not.to.have.css', 'font-size', dataValue );
+					dataValue = Cypress.$( '.wp-block-coblocks-author__name' ).css( 'font-size' );
+				} );
+			} );
+		} );
 	} );
 } );

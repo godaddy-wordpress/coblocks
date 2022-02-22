@@ -1,0 +1,85 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "coblocks/testimonial",
+	"parent": [ "coblocks/testimonials" ],
+	"title": "Testimonial",
+	"category": "widgets",
+	"description": "Utilize the CoBlocks Testimonial block to display customer feedback.",
+	"keywords": [ "feedback", "review" ],
+	"textdomain": "coblocks",
+	"attributes": {
+		"alt": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "alt",
+			"default": ""
+		},
+		"focalPoint": {
+			"type": "object"
+		},
+		"headingLevel": {
+			"type": "integer",
+			"default": 4
+		},
+		"name": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-coblocks-testimonial__heading__name",
+			"default": ""
+		},
+		"role": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-coblocks-testimonial__heading__role",
+			"default": ""
+		},
+		"showImage": {
+			"type": "boolean",
+			"default": false
+		},
+		"imageSize": {
+			"type": "string",
+			"default": "medium"
+		},
+		"imageHeight": {
+			"type": "number",
+			"default": 100
+		},
+		"imageWidth": {
+			"type": "number",
+			"default": 100
+		},
+		"showRole": {
+			"type": "boolean",
+			"default": true
+		},
+		"text": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-coblocks-testimonial__text",
+			"default": ""
+		},
+		"url": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "src",
+			"default": ""
+		},
+		"styleName": {
+			"type": "string",
+			"default": "tall"
+		},
+		"backgroundColor": {
+			"type": "string"
+		},
+		"color": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"html": false
+	}
+}

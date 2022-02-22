@@ -47,7 +47,6 @@ const GalleryPlaceholder = ( props ) => {
 
 	const {
 		attributes,
-		gutter,
 		isSelected,
 		variationLabel,
 		label,
@@ -60,10 +59,6 @@ const GalleryPlaceholder = ( props ) => {
 
 	const hasImages = !! images.length;
 
-	const styles = {
-		marginTop: gutter + 'px',
-	};
-
 	const title = ! hasImages && ( variationLabel || sprintf(
 		/* translators: %s: Type of gallery */
 		__( '%s Gallery', 'coblocks' ),
@@ -71,7 +66,7 @@ const GalleryPlaceholder = ( props ) => {
 	) );
 
 	return (
-		<div style={ styles }>
+		<div>
 			<MediaPlaceholder
 				accept="image/*"
 				addToGallery={ hasImages }
@@ -95,9 +90,8 @@ const GalleryPlaceholder = ( props ) => {
 
 GalleryPlaceholder.propTypes = {
 	attributes: PropTypes.object,
-	gutter: PropTypes.bool,
-	icon: PropTypes.string,
-	isSelected: PropTypes.string,
+	icon: PropTypes.object,
+	isSelected: PropTypes.bool,
 	label: PropTypes.string,
 	setAttributes: PropTypes.func,
 	variationLabel: PropTypes.string,
