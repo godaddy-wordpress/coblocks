@@ -116,7 +116,6 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-google-map-block.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-accordion-ie-support.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-settings.php';
-			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-plugin-deactivation.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/ical-parser/class-coblocks-event.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/ical-parser/class-coblocks-ical.php';
@@ -128,6 +127,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			if ( is_admin() ) {
 				require_once COBLOCKS_PLUGIN_DIR . 'src/extensions/layout-selector/index.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-go-theme-deactivation.php';
+				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-plugin-deactivation.php';
 			}
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
