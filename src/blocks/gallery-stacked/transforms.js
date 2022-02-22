@@ -23,16 +23,19 @@ const transforms = {
 				'coblocks/gallery-carousel',
 				'core/gallery',
 			],
-			transform: ( attributes ) => (
-				createBlock( metadata.name, {
+			transform: ( attributes ) => {
+				const { gutter, gutterCustom } = attributes;
+				return createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
-				} )
-			),
+					gutter, gutterCustom,
+				} );
+			},
 			type: 'block',
 		},
 		{
 			blocks: [ 'coblocks/gallery-masonry' ],
 			transform: ( attributes, innerBlocks ) => {
+				const { gutter, gutterCustom } = attributes;
 				const validImages = innerBlocks.map( ( block, index ) => {
 					const imageBlockAttributes = block.attributes;
 					return {
@@ -43,7 +46,7 @@ const transforms = {
 						url: imageBlockAttributes?.url,
 					};
 				} );
-				return createBlock( metadata.name, { images: validImages }, [] );
+				return createBlock( metadata.name, { gutter, gutterCustom, images: validImages }, [] );
 			},
 			type: 'block',
 		},

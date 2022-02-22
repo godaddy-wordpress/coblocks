@@ -109,14 +109,11 @@ export const registerBlock = ( block ) => {
 	}
 
 	let { category } = block;
-
 	const { name, settings } = block;
 
 	if ( ! supportsCollections() && ! name.includes( 'gallery' ) ) {
 		category = 'coblocks';
 	}
-
-	const v2Settings = block?.metadata?.apiVersion === 2 ? block?.metadata : {};
 
 	let icon = '';
 	if ( !! settings?.icon ) {
@@ -124,6 +121,12 @@ export const registerBlock = ( block ) => {
 			foreground: getBlockIconColor(),
 			src: settings.icon,
 		};
+	}
+
+	const isV2 = block?.metadata?.apiVersion === 2;
+	const v2Settings = isV2 ? block?.metadata : {};
+	if ( !! settings?.attributes && isV2 ) {
+		v2Settings.attributes = { ...v2Settings.attributes, ...settings?.attributes };
 	}
 
 	registerBlockType( name, {

@@ -24,11 +24,14 @@ const transforms = {
 				'coblocks/gallery-carousel',
 				'core/gallery',
 			],
-			transform: ( attributes ) => (
-				createBlock( metadata.name, {
+			transform: ( attributes ) => {
+				const { gutter, gutterCustom } = attributes;
+				return createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
-				} )
-			),
+					gutter,
+					gutterCustom,
+				} );
+			},
 			type: 'block',
 		},
 		{

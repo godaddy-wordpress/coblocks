@@ -1,5 +1,7 @@
 /**
- * Set global attributes that every block uses.
+ * Deprecated.
+ *
+ * These block attributes should no longer be globally assigned in favor of block.json defined attributes.
  *
  * @type {Object}
  */
