@@ -16,6 +16,9 @@
 	},
 	"supports": {
 		"anchor": true,
+		"color": {
+			"link": false
+		},
 		"typography": {
 			"fontSize": true,
 			"lineHeight": true,

@@ -19,8 +19,8 @@ const blockEditorStore = !! store ? store : 'core/block-editor';
  */
 const deprecated = {
 	blocks: {
-		colorControlBlocks: [ 'coblocks/author' ],
-		fontSizeBlocks: [ 'coblocks/click-to-tweet', 'coblocks/author' ],
+		colorControlBlocks: [ 'coblocks/author', 'coblocks/highlight' ],
+		fontSizeBlocks: [ 'coblocks/click-to-tweet', 'coblocks/author', 'coblocks/highlight' ],
 	},
 	keys: [ 'customBackgroundColor', 'customTextColor', 'customFontSize' ],
 };
