@@ -2,6 +2,24 @@
 
 exports[`coblocks/highlight should render with content 1`] = `
 "<!-- wp:coblocks/highlight -->
-<p class=\\"wp-block-coblocks-highlight\\"><mark class=\\"wp-block-coblocks-highlight__content\\">highlighted content</mark></p>
+<p class=\\"wp-block-coblocks-highlight\\" style=\\"text-align:left\\"><mark class=\\"wp-block-coblocks-highlight__content\\">highlighted content</mark></p>
+<!-- /wp:coblocks/highlight -->"
+`;
+
+exports[`coblocks/highlight should render with text align 1`] = `
+"<!-- wp:coblocks/highlight -->
+<p class=\\"wp-block-coblocks-highlight\\" style=\\"text-align:left\\"><mark class=\\"wp-block-coblocks-highlight__content\\">highlighted content</mark></p>
+<!-- /wp:coblocks/highlight -->"
+`;
+
+exports[`coblocks/highlight should render with text align 2`] = `
+"<!-- wp:coblocks/highlight {\\"align\\":\\"center\\"} -->
+<p class=\\"wp-block-coblocks-highlight\\" style=\\"text-align:center\\"><mark class=\\"wp-block-coblocks-highlight__content\\">highlighted content</mark></p>
+<!-- /wp:coblocks/highlight -->"
+`;
+
+exports[`coblocks/highlight should render with text align 3`] = `
+"<!-- wp:coblocks/highlight {\\"align\\":\\"right\\"} -->
+<p class=\\"wp-block-coblocks-highlight\\" style=\\"text-align:right\\"><mark class=\\"wp-block-coblocks-highlight__content\\">highlighted content</mark></p>
 <!-- /wp:coblocks/highlight -->"
 `;

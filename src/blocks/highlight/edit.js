@@ -1,22 +1,10 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
- * Internal dependencies
- */
-import applyWithColors from './colors';
-import Controls from './controls';
-import Inspector from './inspector';
-
-/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { compose } from '@wordpress/compose';
-import { RichText, withFontSizes } from '@wordpress/block-editor';
+import Controls from './controls';
 import { createBlock } from '@wordpress/blocks';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 const Edit = ( props ) => {
 	/**
@@ -65,60 +53,33 @@ const Edit = ( props ) => {
 
 	const {
 		attributes,
-		backgroundColor,
-		className,
 		mergeBlocks,
 		onReplace,
 		setAttributes,
-		textColor,
-		fontSize,
 	} = props;
 
-	const {
-		content,
-		align,
-	} = attributes;
+	const { content, align } = attributes;
 
-	const classes = classnames( 'wp-block-coblocks-highlight__content',
-		backgroundColor && {
-			'has-background': backgroundColor.color,
-			[ backgroundColor.class ]: backgroundColor.class,
-		},
-		textColor && {
-			'has-text-color': textColor.color,
-			[ textColor.class ]: textColor.class,
-		},
-		fontSize?.class && {
-			[ fontSize?.class ]: fontSize?.class,
-		}
-	);
+	const blockProps = useBlockProps();
+	blockProps.style.textAlign = align;
 
 	return (
 		<>
 			<Controls { ...props } />
-			<Inspector { ...props } />
-			<p className={ className } style={ { textAlign: align, fontSize: fontSize.size ?? undefined } }>
+			<p { ...blockProps } >
 				<RichText
-					tagName="mark"
-					placeholder={ __( 'Add highlighted text…', 'coblocks' ) }
-					value={ content }
+					className="wp-block-coblocks-highlight__content"
 					onChange={ ( value ) => setAttributes( { content: value } ) }
 					onMerge={ mergeBlocks }
-					onSplit={ splitBlock }
 					onRemove={ () => onReplace( [] ) }
-					className={ classes }
-					style={ {
-						backgroundColor: backgroundColor?.color,
-						color: textColor?.color,
-						fontSize: fontSize.size ?? undefined,
-					} }
+					onSplit={ splitBlock }
+					placeholder={ __( 'Add highlighted text…', 'coblocks' ) }
+					tagName="mark"
+					value={ content }
 				/>
 			</p>
 		</>
 	);
 };
 
-export default compose( [
-	applyWithColors,
-	withFontSizes( 'fontSize' ),
-] )( Edit );
+export default Edit;
