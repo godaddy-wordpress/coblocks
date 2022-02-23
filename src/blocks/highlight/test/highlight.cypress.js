@@ -4,16 +4,6 @@
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Block: Highlight', function() {
-	/**
-	 * Setup accordion data to be used
-	 */
-	const highlightData = {
-		backgroundColor: '#ff0000',
-		backgroundColorRGB: 'rgb(255, 0, 0)',
-		textColor: '#ffffff',
-		textColorRGB: 'rgb(255, 255, 255)',
-	};
-
 	beforeEach( () => {
 		helpers.addBlockToPost( 'coblocks/highlight', true );
 	} );
@@ -37,66 +27,6 @@ describe( 'Block: Highlight', function() {
 	} );
 
 	/**
-	 * Test the accordion block content font settings
-	 */
-	it( 'Test highlight block font size setting.', function() {
-		cy.get( 'p.wp-block-coblocks-highlight' ).find( 'mark' )
-			.type( 'highlighted text' );
-
-		cy.get( '.edit-post-sidebar' )
-			.contains( RegExp( 'Highlight settings', 'i' ) )
-			.then( ( $settingSection ) => {
-				// >= WP 5.9
-				if ( Cypress.$( '[aria-label="Set custom size"]' ).length > 0 ) {
-					cy.get( '[aria-label="Set custom size"]' )
-						.click();
-					cy.get( '.components-input-control__input' ).focus().type( '30' );
-				// < WP 5.9
-				} else if ( Cypress.$( '.components-select-control__input' ).length > 0 ) {
-					cy.get( Cypress.$( $settingSection ).closest( '.components-panel__body' ) )
-						.find( '.components-select-control__input' )
-						.select( 'large' );
-				} else {
-					cy.get( Cypress.$( $settingSection ).closest( '.components-panel__body' ) )
-						.find( 'input[type="number"]' ).focus().type( '30' );
-				}
-			} );
-
-		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content[style*="font-size: 30px;"]' );
-
-		helpers.savePage();
-
-		helpers.checkForBlockErrors( 'coblocks/highlight' );
-
-		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content[style*="font-size: 30px;"]' );
-	} );
-
-	/**
-	 * Test the highlight block color settings
-	 */
-	it( 'Test highlight block color settings.', function() {
-		cy.get( 'p.wp-block-coblocks-highlight' ).find( 'mark' )
-			.type( 'highlighted text' );
-
-		helpers.setColorSetting( 'background', highlightData.backgroundColor );
-		helpers.setColorSetting( 'text', highlightData.textColor );
-
-		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
-			.should( 'have.class', 'has-background' );
-
-		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
-			.should( 'have.css', 'background-color', highlightData.backgroundColorRGB );
-
-		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
-			.should( 'have.class', 'has-text-color' );
-
-		cy.get( 'p.wp-block-coblocks-highlight mark.wp-block-coblocks-highlight__content' )
-			.should( 'have.css', 'color', highlightData.textColorRGB );
-
-		helpers.checkForBlockErrors( 'coblocks/highlight' );
-	} );
-
-	/**
 	 * Test the highlight block custom classes
 	 */
 	it( 'Test the highlight block custom classes.', function() {
@@ -107,5 +37,22 @@ describe( 'Block: Highlight', function() {
 		cy.get( '.wp-block-coblocks-highlight' ).should( 'have.class', 'my-custom-class' );
 
 		helpers.checkForBlockErrors( 'coblocks/highlight' );
+	} );
+
+	/**
+	 * Test the highlight block custom classes
+	 */
+	it( 'Test the Font size changes as expected.', function() {
+		cy.get( '.components-toggle-group-control-option' ).then( ( elems ) => {
+			let dataValue = Cypress.$( '.wp-block-coblocks-highlight' ).css( 'font-size' );
+			Array.from( elems ).forEach( ( elem ) => {
+				cy.get( elem ).focus().click().then( () => {
+					// We do not test the value due to theme setting specified font sizes.
+					// Instead we test that the value has changed from previous value.
+					cy.get( '.wp-block-coblocks-highlight' ).should( 'not.to.have.css', 'font-size', dataValue );
+					dataValue = Cypress.$( '.wp-block-coblocks-highlight' ).css( 'font-size' );
+				} );
+			} );
+		} );
 	} );
 } );

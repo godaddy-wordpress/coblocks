@@ -6,6 +6,7 @@ import { HighlightIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 /**
  * Internal dependencies
  */
+import deprecated from './deprecated';
 import edit from './edit';
 import metadata from './block.json';
 import save from './save';
@@ -23,10 +24,16 @@ import { Icon } from '@wordpress/components';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: block name */
-	title: __( 'Highlight', 'coblocks' ),
+	attributes,
+	deprecated,
 	/* translators: block description */
 	description: __( 'Draw attention and emphasize important narrative.', 'coblocks' ),
+	edit,
+	example: {
+		attributes: {
+			content: __( 'Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative.', 'coblocks' ),
+		},
+	},
 	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
@@ -35,15 +42,10 @@ const settings = {
 		/* translators: block keyword */
 		__( 'paragraph', 'coblocks' ),
 	],
-	example: {
-		attributes: {
-			content: __( 'Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative.', 'coblocks' ),
-		},
-	},
-	attributes,
-	transforms,
-	edit,
 	save,
+	/* translators: block name */
+	title: __( 'Highlight', 'coblocks' ),
+	transforms,
 };
 
 export { name, category, metadata, settings };
