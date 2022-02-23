@@ -320,12 +320,10 @@ export const upload = {
 		// Replace the image.
 		const newImageBase = 'R150x150';
 		const newFilePath = `../.dev/tests/cypress/fixtures/images/${ newImageBase }.png`;
-		/* eslint-disable */
-		cy.fixture( newFilePath ).then( ( fileContent ) => {
-			cy.get( '[class^="moxie"] [type="file"]' )
-			.attachFile( { fileContent, filePath: newFilePath, mimeType: 'image/png' }, { force: true } );
+
+		cy.fixture( newFilePath, { encoding: null } ).then( ( fileContent ) => {
+			cy.get( '[class^="moxie"] [type="file"]' ).selectFile( { contents: fileContent, fileName: newFilePath, mimeType: 'image/png' }, { force: true } );
 		} );
-		/* eslint-enable */
 
 		cy.get( '.attachment.selected.save-ready' );
 		cy.get( '.media-modal .media-button-select' ).click();
@@ -340,9 +338,9 @@ export const upload = {
 	 */
 	imageToBlock: ( blockName ) => {
 		const { fileName, pathToFixtures } = upload.spec;
-		cy.fixture( pathToFixtures + fileName ).then( ( fileContent ) => {
-			cy.get( `[data-type="${ blockName }"] input[type="file"]` )
-				.attachFile( { fileContent, filePath: pathToFixtures + fileName, mimeType: 'image/png' }, { force: true } );
+		cy.fixture( pathToFixtures + fileName, { encoding: null } ).then( ( fileContent ) => {
+			cy.get( `[data-type="${ blockName }"] input[type="file"]` ).first()
+				.selectFile( { contents: fileContent, fileName: pathToFixtures + fileName, mimeType: 'image/png' }, { force: true } );
 
 			// Now validate upload is complete and is not a blob.
 			cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"] [src^="http"]` );

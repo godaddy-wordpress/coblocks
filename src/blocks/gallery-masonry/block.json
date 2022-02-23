@@ -5,7 +5,10 @@
 	"title": "Masonry Gallery",
 	"category": "media",
 	"description": "Display multiple images in a masonry style gallery.",
-	"keywords": [ "images", "photos" ],
+	"keywords": [
+		"images",
+		"photos"
+	],
 	"textdomain": "coblocks",
 	"attributes": {
 		"images": {
@@ -81,8 +84,14 @@
 	},
 	"supports": {
 		"anchor": true,
-		"gutter": {	"default": "medium", "customDefault": 0.2	},
-		"align": [ "wide", "full" ],
+		"gutter": {
+			"default": "medium",
+			"customDefault": 0.2
+		},
+		"align": [
+			"wide",
+			"full"
+		],
 		"coBlocksSpacing": true,
 		"html": false
 	},

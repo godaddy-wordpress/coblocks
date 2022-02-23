@@ -2,7 +2,6 @@
  * Include our constants
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
-import 'cypress-file-upload';
 
 describe( 'Test CoBlocks Gallery Collage Block', function() {
 	/**

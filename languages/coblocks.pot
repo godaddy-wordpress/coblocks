@@ -1,14 +1,14 @@
 # Copyright (c) 2022 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 2.21.6\n"
+"Project-Id-Version: CoBlocks 2.22.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-02-19T01:11:38+00:00\n"
+"POT-Creation-Date: 2022-02-22T22:12:38+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: coblocks\n"
@@ -1353,7 +1353,7 @@ msgstr ""
 #: src/blocks/gallery-collage/edit.js:168
 #: src/blocks/services/service/edit.js:145
 #: src/blocks/testimonials/testimonial/edit.js:190
-#: src/components/block-gallery/gallery-image.js:229
+#: src/components/block-gallery/gallery-image.js:224
 msgid "Remove image"
 msgstr ""
 
@@ -1491,6 +1491,7 @@ msgstr ""
 #. translators: abbreviation for small size
 #: src/blocks/food-and-drinks/inspector.js:40
 #: src/blocks/gallery-collage/inspector.js:71
+#: src/blocks/gallery-stacked/inspector.js:28
 #: src/blocks/posts/inspector.js:64
 #: src/components/gutter-control/gutter-control.js:21
 #: src/components/option-selector-control/index.js:30
@@ -1505,6 +1506,7 @@ msgstr ""
 #. translators: label for small size option
 #: src/blocks/food-and-drinks/inspector.js:41
 #: src/blocks/gallery-collage/inspector.js:72
+#: src/blocks/gallery-stacked/inspector.js:29
 #: src/blocks/icon/icon-size-select.js:19
 #: src/blocks/posts/inspector.js:65
 #: src/blocks/social-profiles/inspector.js:78
@@ -1523,6 +1525,7 @@ msgstr ""
 #. translators: abbreviation for medium size
 #: src/blocks/food-and-drinks/inspector.js:46
 #: src/blocks/gallery-collage/inspector.js:77
+#: src/blocks/gallery-stacked/inspector.js:35
 #: src/blocks/posts/inspector.js:69
 #: src/components/gutter-control/gutter-control.js:27
 #: src/components/option-selector-control/index.js:36
@@ -1537,6 +1540,7 @@ msgstr ""
 #. translators: label for medium size option
 #: src/blocks/food-and-drinks/inspector.js:47
 #: src/blocks/gallery-collage/inspector.js:78
+#: src/blocks/gallery-stacked/inspector.js:36
 #: src/blocks/icon/icon-size-select.js:24
 #: src/blocks/posts/inspector.js:70
 #: src/blocks/social-profiles/inspector.js:79
@@ -1555,6 +1559,7 @@ msgstr ""
 #. translators: abbreviation for large size
 #: src/blocks/food-and-drinks/inspector.js:52
 #: src/blocks/gallery-collage/inspector.js:83
+#: src/blocks/gallery-stacked/inspector.js:41
 #: src/blocks/posts/inspector.js:74
 #: src/components/gutter-control/gutter-control.js:33
 #: src/components/option-selector-control/index.js:42
@@ -1569,6 +1574,7 @@ msgstr ""
 #. translators: label for large size option
 #: src/blocks/food-and-drinks/inspector.js:53
 #: src/blocks/gallery-collage/inspector.js:84
+#: src/blocks/gallery-stacked/inspector.js:42
 #: src/blocks/icon/icon-size-select.js:29
 #: src/blocks/posts/inspector.js:75
 #: src/blocks/social-profiles/inspector.js:80
@@ -1795,7 +1801,7 @@ msgstr ""
 
 #: src/blocks/form/edit.js:402
 #: src/blocks/gallery-collage/edit.js:183
-#: src/components/block-gallery/gallery-image.js:266
+#: src/components/block-gallery/gallery-image.js:261
 msgid "Saving"
 msgstr ""
 
@@ -2144,7 +2150,7 @@ msgstr ""
 #. translators: block style
 #: src/blocks/form/fields/submit-button/index.js:70
 #: src/blocks/gallery-collage/inspector.js:93
-#: src/blocks/gallery-stacked/inspector.js:121
+#: src/blocks/gallery-stacked/inspector.js:143
 #: src/extensions/button-styles/index.js:25
 msgid "Shadow"
 msgstr ""
@@ -2273,7 +2279,7 @@ msgstr ""
 #: src/blocks/gallery-carousel/edit.js:197
 #: src/blocks/gallery-masonry/v1/edit.js:217
 #: src/blocks/gallery-offset/edit.js:218
-#: src/blocks/gallery-stacked/edit.js:201
+#: src/blocks/gallery-stacked/edit.js:181
 msgid "image %1$d of %2$d in gallery"
 msgstr ""
 
@@ -2304,7 +2310,7 @@ msgstr ""
 #: src/blocks/gallery-masonry/index.js:76
 #: src/blocks/gallery-masonry/v1/index.js:46
 #: src/blocks/gallery-offset/index.js:47
-#: src/blocks/gallery-stacked/index.js:43
+#: src/blocks/gallery-stacked/index.js:47
 msgid "gallery"
 msgstr ""
 
@@ -2315,7 +2321,7 @@ msgstr ""
 #: src/blocks/gallery-masonry/index.js:78
 #: src/blocks/gallery-masonry/v1/index.js:48
 #: src/blocks/gallery-offset/index.js:49
-#: src/blocks/gallery-stacked/index.js:45
+#: src/blocks/gallery-stacked/index.js:49
 #: src/blocks/icon/deprecated/svgs.js:204
 #: src/blocks/icon/deprecated/svgsfocusable.js:203
 #: src/blocks/icon/deprecated/svgsv1.js:188
@@ -2344,7 +2350,7 @@ msgstr ""
 #: src/blocks/gallery-masonry/inspector.js:168
 #: src/blocks/gallery-masonry/v1/inspector.js:68
 #: src/blocks/gallery-offset/inspector.js:71
-#: src/blocks/gallery-stacked/inspector.js:66
+#: src/blocks/gallery-stacked/inspector.js:97
 #: src/extensions/lightbox-controls/index.js:47
 msgid "Image lightbox is enabled."
 msgstr ""
@@ -2354,7 +2360,7 @@ msgstr ""
 #: src/blocks/gallery-masonry/inspector.js:169
 #: src/blocks/gallery-masonry/v1/inspector.js:69
 #: src/blocks/gallery-offset/inspector.js:72
-#: src/blocks/gallery-stacked/inspector.js:67
+#: src/blocks/gallery-stacked/inspector.js:98
 #: src/extensions/lightbox-controls/index.js:48
 msgid "Toggle to enable the image lightbox."
 msgstr ""
@@ -2377,7 +2383,7 @@ msgstr ""
 #: src/blocks/gallery-masonry/inspector.js:186
 #: src/blocks/gallery-masonry/v1/inspector.js:89
 #: src/blocks/gallery-offset/inspector.js:87
-#: src/blocks/gallery-stacked/inspector.js:90
+#: src/blocks/gallery-stacked/inspector.js:117
 #: src/blocks/social-profiles/inspector.js:126
 #: src/components/background/panel.js:226
 msgid "Rounded corners"
@@ -2389,7 +2395,7 @@ msgstr ""
 #: src/blocks/gallery-masonry/inspector.js:218
 #: src/blocks/gallery-masonry/v1/inspector.js:101
 #: src/blocks/gallery-offset/inspector.js:95
-#: src/blocks/gallery-stacked/inspector.js:100
+#: src/blocks/gallery-stacked/inspector.js:129
 #: src/extensions/lightbox-controls/index.js:57
 msgid "Lightbox"
 msgstr ""
@@ -2422,25 +2428,25 @@ msgstr ""
 
 #: src/blocks/gallery-collage/edit.js:156
 #: src/blocks/services/service/edit.js:151
-#: src/components/block-gallery/gallery-image.js:214
+#: src/components/block-gallery/gallery-image.js:209
 msgid "Replace Image"
 msgstr ""
 
 #: src/blocks/gallery-collage/edit.js:158
 #: src/blocks/services/service/edit.js:153
-#: src/components/block-gallery/gallery-image.js:217
+#: src/components/block-gallery/gallery-image.js:212
 msgid "Replace"
 msgstr ""
 
 #: src/blocks/gallery-collage/edit.js:183
 #: src/blocks/social-profiles/edit.js:251
-#: src/components/block-gallery/gallery-image.js:266
+#: src/components/block-gallery/gallery-image.js:261
 msgid "Apply"
 msgstr ""
 
 #: src/blocks/gallery-collage/edit.js:192
 #: src/blocks/gif/edit.js:218
-#: src/components/block-gallery/gallery-image.js:278
+#: src/components/block-gallery/gallery-image.js:273
 msgid "Write caption…"
 msgstr ""
 
@@ -2481,14 +2487,14 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:32
 #: src/blocks/gallery-masonry/v1/inspector.js:62
 #: src/blocks/gallery-offset/inspector.js:65
-#: src/blocks/gallery-stacked/inspector.js:60
+#: src/blocks/gallery-stacked/inspector.js:93
 msgid "Showing captions for each media item."
 msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:32
 #: src/blocks/gallery-masonry/v1/inspector.js:63
 #: src/blocks/gallery-offset/inspector.js:66
-#: src/blocks/gallery-stacked/inspector.js:61
+#: src/blocks/gallery-stacked/inspector.js:94
 msgid "Toggle to show media captions."
 msgstr ""
 
@@ -2499,7 +2505,7 @@ msgstr ""
 #: src/blocks/gallery-collage/inspector.js:106
 #: src/blocks/gallery-masonry/v1/inspector.js:108
 #: src/blocks/gallery-offset/inspector.js:101
-#: src/blocks/gallery-stacked/inspector.js:107
+#: src/blocks/gallery-stacked/inspector.js:136
 msgid "Captions"
 msgstr ""
 
@@ -2520,7 +2526,7 @@ msgstr ""
 
 #: src/blocks/gallery-masonry/edit.js:37
 #: src/blocks/logos/edit.js:53
-#: src/components/block-gallery/gallery-placeholder.js:84
+#: src/components/block-gallery/gallery-placeholder.js:79
 msgid "Drag images, upload new ones or select files from your library."
 msgstr ""
 
@@ -2537,7 +2543,7 @@ msgstr ""
 #. translators: block keyword
 #: src/blocks/gallery-masonry/index.js:80
 #: src/blocks/gallery-masonry/v1/index.js:50
-#: src/blocks/gallery-stacked/index.js:47
+#: src/blocks/gallery-stacked/index.js:51
 msgid "lightbox"
 msgstr ""
 
@@ -2626,41 +2632,58 @@ msgstr ""
 msgid "Offset Gallery"
 msgstr ""
 
+#: src/blocks/gallery-stacked/deprecated.js:441
+msgid "Stacked Gallery"
+msgstr ""
+
 #. translators: block name
 #. translators: block style
-#: src/blocks/gallery-stacked/edit.js:150
-#: src/blocks/gallery-stacked/index.js:35
+#: src/blocks/gallery-stacked/edit.js:144
+#: src/blocks/gallery-stacked/index.js:55
 #: src/blocks/posts/edit.js:56
 msgid "Stacked"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/gallery-stacked/index.js:37
+#: src/blocks/gallery-stacked/index.js:32
 msgid "Display multiple images in a single column stacked gallery."
 msgstr ""
 
-#: src/blocks/gallery-stacked/inspector.js:54
+#. translators: visual style option
+#. translators: block style
+#: src/blocks/gallery-stacked/inspector.js:22
+#: src/blocks/gallery-stacked/inspector.js:23
+#: src/components/block-gallery/options/caption-options.js:22
+#: src/components/block-gallery/options/link-options.js:10
+#: src/components/dimensions-control/dimensions-select.js:15
+#: src/components/option-selector-control/index.js:55
+#: src/components/option-selector-control/index.js:56
+#: src/components/size-control/index.js:46
+#: src/components/size-control/index.js:47
+#: src/extensions/list-styles/index.js:18
+#: src/extensions/padding-controls/index.js:23
+#: src/extensions/padding-controls/index.js:24
+msgid "None"
+msgstr ""
+
+#: src/blocks/gallery-stacked/inspector.js:89
 msgid "Fullwidth images are enabled."
 msgstr ""
 
-#: src/blocks/gallery-stacked/inspector.js:55
+#: src/blocks/gallery-stacked/inspector.js:90
 msgid "Toggle to fill the available gallery area with completely fullwidth images."
 msgstr ""
 
-#: src/blocks/gallery-stacked/inspector.js:72
+#: src/blocks/gallery-stacked/inspector.js:102
 msgid "Stacked settings"
 msgstr ""
 
-#: src/blocks/gallery-stacked/inspector.js:76
+#: src/blocks/gallery-stacked/inspector.js:108
 msgid "Fullwidth images"
 msgstr ""
 
-#: src/blocks/gallery-stacked/inspector.js:76
+#: src/blocks/gallery-stacked/inspector.js:108
 msgid "Fullwidth image"
-msgstr ""
-
-#: src/blocks/gallery-stacked/save.js:74
-msgid "Stacked Gallery"
 msgstr ""
 
 #: src/blocks/gif/controls.js:38
@@ -9381,16 +9404,16 @@ msgstr ""
 msgid "Clear Media"
 msgstr ""
 
-#: src/components/block-gallery/gallery-image.js:244
+#: src/components/block-gallery/gallery-image.js:239
 msgid "Move image backward"
 msgstr ""
 
-#: src/components/block-gallery/gallery-image.js:252
+#: src/components/block-gallery/gallery-image.js:247
 msgid "Move image forward"
 msgstr ""
 
 #. translators: %s: Type of gallery
-#: src/components/block-gallery/gallery-placeholder.js:69
+#: src/components/block-gallery/gallery-placeholder.js:64
 msgid "%s Gallery"
 msgstr ""
 
@@ -9401,21 +9424,6 @@ msgstr ""
 #. translators: visual style option
 #: src/components/block-gallery/options/caption-options.js:17
 msgid "Light"
-msgstr ""
-
-#. translators: visual style option
-#. translators: block style
-#: src/components/block-gallery/options/caption-options.js:22
-#: src/components/block-gallery/options/link-options.js:10
-#: src/components/dimensions-control/dimensions-select.js:15
-#: src/components/option-selector-control/index.js:55
-#: src/components/option-selector-control/index.js:56
-#: src/components/size-control/index.js:46
-#: src/components/size-control/index.js:47
-#: src/extensions/list-styles/index.js:18
-#: src/extensions/padding-controls/index.js:23
-#: src/extensions/padding-controls/index.js:24
-msgid "None"
 msgstr ""
 
 #: src/components/block-gallery/options/link-options.js:11
@@ -10171,6 +10179,11 @@ msgstr ""
 #: src/blocks/gallery-masonry/block.json
 msgctxt "block keyword"
 msgid "photos"
+msgstr ""
+
+#: src/blocks/gallery-stacked/block.json
+msgctxt "block title"
+msgid "Stacked"
 msgstr ""
 
 #: src/blocks/testimonials/block.json

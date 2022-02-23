@@ -59,11 +59,9 @@ describe( 'Test CoBlocks Author Block', function() {
 		helpers.selectBlock( 'author' );
 
 		// Upload the Author avatar
-		// Disable reason: cy.fixture should not return a value.
-		// eslint-disable-next-line jest/valid-expect-in-promise
-		cy.fixture( pathToFixtures + fileName ).then( ( fileContent ) => {
+		cy.fixture( pathToFixtures + fileName, { encoding: null } ).then( ( fileContent ) => {
 			cy.get( 'div[data-type="coblocks/author"] .wp-block-coblocks-author__avatar' ).click();
-			cy.get( '[class^="moxie"] [type="file"]' ).attachFile( { fileContent, filePath: pathToFixtures + fileName, mimeType: 'image/png', subjectType: 'drag-n-drop' }, { force: true } );
+			cy.get( '[class^="moxie"] [type="file"]' ).selectFile( { action: 'drag-drop', contents: fileContent, fileName: pathToFixtures + fileName, mimeType: 'image/png' }, { force: true } );
 
 			cy.get( '.attachment.selected.save-ready' );
 

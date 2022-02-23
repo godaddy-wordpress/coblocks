@@ -1,25 +1,95 @@
 {
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
 	"name": "coblocks/gallery-stacked",
 	"category": "media",
 	"attributes": {
-		"align": {
-			"type": "string",
-			"default": "full"
+		"captions": {
+			"default": false,
+			"type": "boolean"
 		},
-		"captionStyle": {
+		"filter": {
+			"default": "none",
+			"type": "string"
+		},
+		"images": {
+			"default": [],
+			"query": {
+				"alt": {
+					"attribute": "alt",
+					"default": "",
+					"selector": "img",
+					"source": "attribute"
+				},
+				"caption": {
+					"selector": "figcaption",
+					"source": "children",
+					"type": "array"
+				},
+				"id": {
+					"attribute": "data-id",
+					"selector": "img",
+					"source": "attribute"
+				},
+				"imgLink": {
+					"attribute": "data-imglink",
+					"selector": "img",
+					"source": "attribute"
+				},
+				"link": {
+					"attribute": "data-link",
+					"selector": "img",
+					"source": "attribute"
+				},
+				"url": {
+					"attribute": "src",
+					"selector": "img",
+					"source": "attribute"
+				}
+			},
+			"selector": ".coblocks-gallery--item",
+			"source": "query",
+			"type": "array"
+		},
+		"lightbox": {
+			"default": false,
+			"type": "boolean"
+		},
+		"linkTo": {
+			"default": "none",
+			"type": "string"
+		},
+		"radius": {
+			"default": 0,
+			"type": "number"
+		},
+		"shadow": {
+			"default": "none",
 			"type": "string"
 		},
 		"fullwidth": {
 			"type": "boolean",
 			"default": true
-		},
-		"gutter": {
-			"type": "number",
-			"default": 0
-		},
-		"gutterMobile": {
-			"type": "number",
-			"default": 0
 		}
-	}
+	},
+	"supports": {
+		"align": true,
+		"anchor": true,
+		"html": false,
+		"coBlocksSpacing": true,
+		"gutter": {
+			"default": "custom",
+			"customDefault": 0
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true
+		}
+	},
+	"textdomain": "coblocks",
+	"title": "Stacked"
 }
