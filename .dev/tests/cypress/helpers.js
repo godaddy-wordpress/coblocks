@@ -370,9 +370,7 @@ export function setColorSetting( settingName, hexColor ) {
 	cy.get( '.components-color-palette__custom-color' );
 	cy.get( '.components-color-palette__custom-color' ).click();
 	cy.get( '[aria-label="Show detailed inputs"]' ).click();
-	cy.get( '.components-input-control__input' ).click().clear().type( formattedHex );
-
-	cy.get( '.block-editor-writing-flow' ).click();
+	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
 }
 
 /**
