@@ -352,6 +352,17 @@ class CoBlocks_Block_Assets {
 			true
 		);
 
+		// Masonry block.
+		if ( $this->is_page_gutenberg() || has_block( 'coblocks/gallery-masonry' ) || has_block( 'core/block' ) ) {
+			wp_enqueue_script(
+				'coblocks-masonry',
+				$dir . 'coblocks-masonry.js',
+				array( 'jquery', 'masonry', 'imagesloaded' ),
+				COBLOCKS_VERSION,
+				true
+			);
+		}
+
 		// Carousel block.
 		if ( $this->is_page_gutenberg() || has_block( 'coblocks/gallery-carousel' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
