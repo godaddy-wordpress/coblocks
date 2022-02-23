@@ -24,12 +24,15 @@ const transforms = {
 				'coblocks/gallery-offset',
 				'core/gallery',
 			],
-			transform: ( attributes ) => (
-				createBlock( metadata.name, {
+			transform: ( attributes ) => {
+				const { gutter, gutterCustom } = attributes;
+				return createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
 					gridSize: 'lrg',
-				} )
-			),
+					gutter,
+					gutterCustom,
+				} );
+			},
 			type: 'block',
 		},
 		{

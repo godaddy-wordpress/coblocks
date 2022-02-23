@@ -143,7 +143,7 @@ const addAllEditorProps = createHigherOrderComponent( ( BlockListBlock ) => {
 		);
 
 		/**
-		 * @function renderFeature Merge props from all extensions.
+		 * @function mergeProps Merge props from all extensions.
 		 * @return {Object} The merged props from all extensions
 		 */
 		const mergeProps = () => {

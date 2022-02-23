@@ -19,14 +19,14 @@ const blockEditorStore = !! store ? store : 'core/block-editor';
  */
 const deprecated = {
 	blocks: {
-		colorControlBlocks: [ 'coblocks/author' ],
-		fontSizeBlocks: [ 'coblocks/click-to-tweet', 'coblocks/author' ],
+		colorControlBlocks: [ 'coblocks/author', 'coblocks/highlight' ],
+		fontSizeBlocks: [ 'coblocks/click-to-tweet', 'coblocks/author', 'coblocks/highlight', 'coblocks/gallery-stacked' ],
 	},
 	keys: [ 'customBackgroundColor', 'customTextColor', 'customFontSize' ],
 };
 
 /**
- * This logic should only apply to blocks within `deprecatedFontSizeBlocks` constant.
+ * This logic should only apply to blocks within `deprecated.blocks.fontSizeBlocks` property.
  * Deprecated CoBlocks fontSizeControls in favor of block supports.
  *
  * @param {Object} blockProps The blockProps to deprecate.
@@ -55,7 +55,7 @@ const deprecateCoBlocksFontSizeControls = ( blockProps ) => {
 };
 
 /**
- * This logic should only apply to blocks within `deprecatedColorControlBlocks` constant.
+ * This logic should only apply to blocks within `deprecated.blocks.colorControlBlocks` property.
  * Deprecate CoBlocks colorControls in favor of blockSupports.
  *
  * @param {Object} blockProps The blockProps to deprecate.

@@ -1,19 +1,48 @@
 /**
  * Internal dependencies
  */
-import ResponsiveTabsControl from '../../components/responsive-tabs-control';
-import SizeControl from '../../components/size-control';
 import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
-import CoBlocksFontSizePicker from '../../components/fontsize-picker';
+import GutterControl from '../../components/gutter-control/gutter-control';
+import OptionSelectorControl from '../../components/option-selector-control';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { compose } from '@wordpress/compose';
-import { withSelect } from '@wordpress/data';
-import { InspectorControls, withFontSizes } from '@wordpress/block-editor';
+import { InspectorControls } from '@wordpress/block-editor';
+import { useEffect } from '@wordpress/element';
+import { useSelect } from '@wordpress/data';
 import { PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
+
+/**
+ * Shadow constant.
+ */
+const shadowOptions = [
+	{
+		label: __( 'None', 'coblocks' ),
+		tooltip: __( 'None', 'coblocks' ),
+		value: 'none',
+	},
+	{
+		/* translators: abbreviation for small size */
+		label: __( 'S', 'coblocks' ),
+		tooltip: __( 'Small', 'coblocks' ),
+		value: 'sml',
+
+	},
+	{
+		/* translators: abbreviation for medium size */
+		label: __( 'M', 'coblocks' ),
+		tooltip: __( 'Medium', 'coblocks' ),
+		value: 'med',
+	},
+	{
+		/* translators: abbreviation for large size */
+		label: __( 'L', 'coblocks' ),
+		tooltip: __( 'Large', 'coblocks' ),
+		value: 'lrg',
+	},
+];
 
 /**
  * Inspector controls
@@ -24,12 +53,12 @@ const Inspector = ( props ) => {
 	const {
 		attributes,
 		setAttributes,
-		wideControlsEnabled = false,
 	} = props;
 
 	const {
 		images,
 		gutter,
+		gutterCustom,
 		fullwidth,
 		radius,
 		shadow,
@@ -37,90 +66,84 @@ const Inspector = ( props ) => {
 		lightbox,
 	} = attributes;
 
-	const setRadiusTo = ( value ) => {
-		setAttributes( { radius: value } );
-	};
+	const { wideControlsEnabled } = useSelect( ( select ) => {
+		return { wideControlsEnabled: select( 'core/editor' ).getEditorSettings()?.alignWide ?? false };
+	} );
 
-	const setShadowTo = ( value ) => {
-		setAttributes( { shadow: value } );
-	};
+	const allowRadiusControls = ( gutter !== 'custom' ) || ( gutter === 'custom' && Number.parseFloat( gutterCustom ) !== 0 );
 
-	const setFullwidthTo = () => {
-		setAttributes( { fullwidth: ! fullwidth, shadow: 'none' } );
-	};
+	useEffect( () => {
+		// Disable radius when the gutters are 0
+		if ( ! allowRadiusControls ) {
+			setAttributes( { radius: 0 } );
+		}
+	}, [ allowRadiusControls ] );
 
-	const getFullwidthImagesHelp = ( checked ) => {
-		return checked
-			? __( 'Fullwidth images are enabled.', 'coblocks' )
-			: __( 'Toggle to fill the available gallery area with completely fullwidth images.', 'coblocks' );
-	};
+	const setRadiusTo = ( value ) => setAttributes( { radius: value } );
 
-	const getCaptionsHelp = ( checked ) => {
-		return checked
-			? __( 'Showing captions for each media item.', 'coblocks' )
-			: __( 'Toggle to show media captions.', 'coblocks' );
-	};
+	const setShadowTo = ( value ) => setAttributes( { shadow: value } );
 
-	const getLightboxHelp = ( checked ) => {
-		return checked
-			? __( 'Image lightbox is enabled.', 'coblocks' )
-			: __( 'Toggle to enable the image lightbox.', 'coblocks' );
-	};
+	const setFullwidthTo = () => setAttributes( { fullwidth: ! fullwidth, shadow: 'none' } );
+
+	const getFullwidthImagesHelp = ( checked ) => checked
+		? __( 'Fullwidth images are enabled.', 'coblocks' )
+		: __( 'Toggle to fill the available gallery area with completely fullwidth images.', 'coblocks' );
+
+	const getCaptionsHelp = ( checked ) => checked
+		? __( 'Showing captions for each media item.', 'coblocks' )
+		: __( 'Toggle to show media captions.', 'coblocks' );
+
+	const getLightboxHelp = ( checked ) => checked
+		? __( 'Image lightbox is enabled.', 'coblocks' )
+		: __( 'Toggle to enable the image lightbox.', 'coblocks' );
 
 	return (
 		<InspectorControls>
 			<PanelBody title={ __( 'Stacked settings', 'coblocks' ) }>
 
 				{ wideControlsEnabled &&
-				<ToggleControl
-					label={ images.length > 1 ? __( 'Fullwidth images', 'coblocks' ) : __( 'Fullwidth image', 'coblocks' ) }
-					checked={ !! fullwidth }
-					help={ getFullwidthImagesHelp }
-					onChange={ setFullwidthTo }
-				/>
+					<ToggleControl
+						checked={ !! fullwidth }
+						help={ getFullwidthImagesHelp }
+						label={ images.length > 1 ? __( 'Fullwidth images', 'coblocks' ) : __( 'Fullwidth image', 'coblocks' ) }
+						onChange={ setFullwidthTo }
+					/>
 				}
 
-				{ images.length > 1 &&
-				<ResponsiveTabsControl { ...props }
-				/>
-				}
+				<GutterControl { ...props } />
 
-				{ gutter > 0 &&
-				<RangeControl
-					label={ __( 'Rounded corners', 'coblocks' ) }
-					value={ radius }
-					onChange={ setRadiusTo }
-					min={ 0 }
-					max={ 20 }
-					step={ 1 }
-				/>
+				{ allowRadiusControls &&
+					<RangeControl
+						label={ __( 'Rounded corners', 'coblocks' ) }
+						max={ 20 }
+						min={ 0 }
+						onChange={ setRadiusTo }
+						step={ 1 }
+						value={ radius }
+					/>
 				}
 
 				<ToggleControl
-					label={ __( 'Lightbox', 'coblocks' ) }
 					checked={ !! lightbox }
-					onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
 					help={ getLightboxHelp }
+					label={ __( 'Lightbox', 'coblocks' ) }
+					onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
 				/>
 
 				<ToggleControl
-					label={ __( 'Captions', 'coblocks' ) }
 					checked={ !! captions }
-					onChange={ () => setAttributes( { captions: ! captions } ) }
 					help={ getCaptionsHelp }
+					label={ __( 'Captions', 'coblocks' ) }
+					onChange={ () => setAttributes( { captions: ! captions } ) }
 				/>
-
-				{ captions &&
-				<CoBlocksFontSizePicker { ...props } />
-				}
 
 				{ ! fullwidth &&
-				<SizeControl { ...props }
-					onChange={ setShadowTo }
-					value={ shadow }
-					label={ __( 'Shadow', 'coblocks' ) }
-					reset={ false }
-				/>
+					<OptionSelectorControl
+						currentOption={ shadow }
+						label={ __( 'Shadow', 'coblocks' ) }
+						onChange={ setShadowTo }
+						options={ shadowOptions }
+					/>
 				}
 
 			</PanelBody>
@@ -129,9 +152,4 @@ const Inspector = ( props ) => {
 	);
 };
 
-export default compose( [
-	withSelect( ( select ) => ( {
-		wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
-	} ) ),
-	withFontSizes( 'fontSize' ),
-] )( Inspector );
+export default Inspector;

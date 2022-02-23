@@ -7,8 +7,8 @@ describe( 'Test CoBlocks Hero Block', function() {
 	// Setup Hero data.
 	const heroData = {
 		backgroundColor: '#ff0000',
-		textColor: '#ffffff',
 		backgroundColorRGB: 'rgb(255, 0, 0)',
+		textColor: '#ffffff',
 		textColorRGB: 'rgb(255, 255, 255)',
 	};
 
@@ -99,10 +99,8 @@ describe( 'Test CoBlocks Hero Block', function() {
 
 		const { pathToFixtures, fileName } = helpers.upload.spec;
 
-		// Disable reason: cy.fixture should not return a value.
-		// eslint-disable-next-line jest/valid-expect-in-promise
-		cy.fixture( pathToFixtures + fileName, 'base64' ).then( ( fileContent ) => {
-			cy.get( '[class^="moxie"] [type="file"]' ).attachFile( { fileContent, filePath: pathToFixtures + fileName, mimeType: 'image/png', subjectType: 'drag-n-drop' }, { force: true } );
+		cy.fixture( pathToFixtures + fileName, { encoding: null } ).then( ( fileContent ) => {
+			cy.get( '[class^="moxie"] [type="file"]' ).selectFile( { action: 'drag-drop', contents: fileContent, fileName: pathToFixtures + fileName, mimeType: 'image/png' }, { force: true } );
 		} );
 
 		cy.get( '.attachment.selected.save-ready' );

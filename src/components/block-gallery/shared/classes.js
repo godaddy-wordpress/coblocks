@@ -1,5 +1,5 @@
 /**
- * CSS classes.
+ * CSS classes. Classes for `align`, `radius`, `captionStyle`, and `filter` as well as `coblocks-gallery` class.
  *
  * @param {Object} attributes The passed attributes.
  * @return {Array} The gallery classes.
