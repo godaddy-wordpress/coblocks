@@ -61,7 +61,7 @@ const transforms = {
 					return createBlock( metadata.name, {
 						captions: hasCaption,
 						ids: validImages.map( ( { id } ) => id ),
-						images: validImages.map( ( { id, url, alt, caption }, index ) => ( { index, id, url, alt: alt || '', caption: caption || '' } ) ),
+						images: validImages.map( ( { id, url, alt, caption }, index ) => ( { alt: alt || '', caption: caption || '', id, index, url } ) ),
 					} );
 				}
 				return createBlock( metadata.name );

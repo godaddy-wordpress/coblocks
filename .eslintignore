@@ -8,6 +8,7 @@ wordpress*
 #  allow lint for tests
 *.spec.js.snap
 !**.spec.js
+!save.spec.js
 !*.cypress.js
 
 # lint top level dot files

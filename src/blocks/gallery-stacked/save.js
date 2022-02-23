@@ -13,8 +13,8 @@ import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
 /**
  * WordPress dependencies
  */
-import { RichText, useBlockProps } from '@wordpress/block-editor';
 import { View } from '@wordpress/primitives';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 const save = ( { attributes } ) => {
 	const {

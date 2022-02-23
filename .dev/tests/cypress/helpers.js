@@ -361,37 +361,16 @@ export const upload = {
  */
 export function setColorSetting( settingName, hexColor ) {
 	openSettingsPanel( /color settings|color/i );
-	cy.get( '.components-base-control__field' )
-		.contains( RegExp( settingName, 'i' ) )
-		.then( ( $subColorPanel ) => {
-			// < WP 5.9
-			if ( Cypress.$( '.components-color-palette__custom-color' ).length === 0 ) {
-				cy.get( Cypress.$( $subColorPanel ).closest( '.components-base-control' ) )
-					.contains( /custom color/i )
-					.click();
-				cy.get( '.components-color-picker__inputs-field input[type="text"]' )
-					.clear()
-					.type( hexColor );
-				cy.get( Cypress.$( $subColorPanel ).closest( '.components-base-control' ) )
-					.contains( /custom color/i )
-					.click();
-			// WP 5.9
-			} else {
-				cy.get( Cypress.$( $subColorPanel ).closest( '.components-flex' ) )
-					.find( '.components-color-palette__custom-color' )
-					.click( { force: true } );
-				cy.get( '.components-color-picker' )
-					.find( '.components-button' )
-					.click( { force: true } );
-				cy.get( '.components-color-picker' )
-					.find( '.components-input-control' )
-					.clear()
-					.type( hexColor.substring( 1 ) ); // remove the #
-				cy.get( Cypress.$( $subColorPanel ).closest( '.components-flex' ) )
-					.find( '.components-color-palette__custom-color' )
-					.click( { force: true } );
-			}
-		} );
+
+	const formattedHex = hexColor.split( '#' )[ 1 ];
+
+	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
+	cy.get( '.components-color-palette__custom-color' ).click();
+
+	cy.get( '[aria-label="Show detailed inputs"]' ).click();
+	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
+
+	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
 }
 
 /**

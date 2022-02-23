@@ -1,4 +1,4 @@
-import { loginToSite, disableGutenbergFeatures } from '../helpers';
+import { disableGutenbergFeatures, loginToSite } from '../helpers';
 
 before( function() {
 	loginToSite();
