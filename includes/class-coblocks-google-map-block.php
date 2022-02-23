@@ -83,7 +83,7 @@ class CoBlocks_Google_Map_Block {
 			wp_enqueue_script(
 				$this->slug . '-google-maps',
 				$dir . $this->slug . '-google-maps.js',
-				array( 'jquery' ),
+				array(),
 				COBLOCKS_VERSION,
 				true
 			);

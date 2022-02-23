@@ -320,12 +320,10 @@ export const upload = {
 		// Replace the image.
 		const newImageBase = 'R150x150';
 		const newFilePath = `../.dev/tests/cypress/fixtures/images/${ newImageBase }.png`;
-		/* eslint-disable */
-		cy.fixture( newFilePath ).then( ( fileContent ) => {
-			cy.get( '[class^="moxie"] [type="file"]' )
-			.attachFile( { fileContent, filePath: newFilePath, mimeType: 'image/png' }, { force: true } );
+
+		cy.fixture( newFilePath, { encoding: null } ).then( ( fileContent ) => {
+			cy.get( '[class^="moxie"] [type="file"]' ).selectFile( { contents: fileContent, fileName: newFilePath, mimeType: 'image/png' }, { force: true } );
 		} );
-		/* eslint-enable */
 
 		cy.get( '.attachment.selected.save-ready' );
 		cy.get( '.media-modal .media-button-select' ).click();
@@ -340,9 +338,9 @@ export const upload = {
 	 */
 	imageToBlock: ( blockName ) => {
 		const { fileName, pathToFixtures } = upload.spec;
-		cy.fixture( pathToFixtures + fileName ).then( ( fileContent ) => {
-			cy.get( `[data-type="${ blockName }"] input[type="file"]` )
-				.attachFile( { fileContent, filePath: pathToFixtures + fileName, mimeType: 'image/png' }, { force: true } );
+		cy.fixture( pathToFixtures + fileName, { encoding: null } ).then( ( fileContent ) => {
+			cy.get( `[data-type="${ blockName }"] input[type="file"]` ).first()
+				.selectFile( { contents: fileContent, fileName: pathToFixtures + fileName, mimeType: 'image/png' }, { force: true } );
 
 			// Now validate upload is complete and is not a blob.
 			cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"] [src^="http"]` );
@@ -363,37 +361,16 @@ export const upload = {
  */
 export function setColorSetting( settingName, hexColor ) {
 	openSettingsPanel( /color settings|color/i );
-	cy.get( '.components-base-control__field' )
-		.contains( RegExp( settingName, 'i' ) )
-		.then( ( $subColorPanel ) => {
-			// < WP 5.9
-			if ( Cypress.$( '.components-color-palette__custom-color' ).length === 0 ) {
-				cy.get( Cypress.$( $subColorPanel ).closest( '.components-base-control' ) )
-					.contains( /custom color/i )
-					.click();
-				cy.get( '.components-color-picker__inputs-field input[type="text"]' )
-					.clear()
-					.type( hexColor );
-				cy.get( Cypress.$( $subColorPanel ).closest( '.components-base-control' ) )
-					.contains( /custom color/i )
-					.click();
-			// WP 5.9
-			} else {
-				cy.get( Cypress.$( $subColorPanel ).closest( '.components-flex' ) )
-					.find( '.components-color-palette__custom-color' )
-					.click( { force: true } );
-				cy.get( '.components-color-picker' )
-					.find( '.components-button' )
-					.click( { force: true } );
-				cy.get( '.components-color-picker' )
-					.find( '.components-input-control' )
-					.clear()
-					.type( hexColor.substring( 1 ) ); // remove the #
-				cy.get( Cypress.$( $subColorPanel ).closest( '.components-flex' ) )
-					.find( '.components-color-palette__custom-color' )
-					.click( { force: true } );
-			}
-		} );
+
+	const formattedHex = hexColor.split( '#' )[ 1 ];
+
+	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
+	cy.get( '.components-color-palette__custom-color' ).click();
+
+	cy.get( '[aria-label="Show detailed inputs"]' ).click();
+	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
+
+	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
 }
 
 /**

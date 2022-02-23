@@ -13,6 +13,7 @@ import { supportsCollections } from './block-helpers';
  */
 import { isBlobURL } from '@wordpress/blob';
 import { registerBlockType } from '@wordpress/blocks';
+import TokenList from '@wordpress/token-list';
 
 // Set dim ratio.
 export function overlayToClass( ratio ) {
@@ -20,6 +21,24 @@ export function overlayToClass( ratio ) {
 		? null
 		: 'has-background-overlay-' + ( 10 * Math.round( ratio / 10 ) );
 }
+
+/**
+ * The `blockProps` will indicate in the editor what is the block root
+ * by applying block classnames and DOM attributes. By default `blockProps`
+ * will contain the block styles set through block supports.
+ *
+ * We can descend those styles into sub components and thereby
+ * eliminate superfluous style bleed.
+ *
+ * @param {Object} blockProps Object from `useBlockProps`
+ * @function blockStylesToDescend
+ * @return {Object} The block styles coming from blockProps.
+ */
+export const blockStylesToDescend = ( ( blockProps ) => {
+	const blockStyle = { ...blockProps?.style ?? {} };
+	delete blockProps.style;
+	return blockStyle;
+} );
 
 // Pick image media attributes.
 export const pickRelevantMediaFiles = ( image, images ) => {
@@ -91,14 +110,11 @@ export const registerBlock = ( block ) => {
 	}
 
 	let { category } = block;
-
 	const { name, settings } = block;
 
 	if ( ! supportsCollections() && ! name.includes( 'gallery' ) ) {
 		category = 'coblocks';
 	}
-
-	const v2Settings = block?.metadata?.apiVersion === 2 ? block?.metadata : {};
 
 	let icon = '';
 	if ( !! settings?.icon ) {
@@ -106,6 +122,12 @@ export const registerBlock = ( block ) => {
 			foreground: getBlockIconColor(),
 			src: settings.icon,
 		};
+	}
+
+	const isV2 = block?.metadata?.apiVersion === 2;
+	const v2Settings = isV2 ? block?.metadata : {};
+	if ( !! settings?.attributes && isV2 ) {
+		v2Settings.attributes = { ...v2Settings.attributes, ...settings?.attributes };
 	}
 
 	registerBlockType( name, {
@@ -124,3 +146,49 @@ export const registerBlock = ( block ) => {
 export function getBlockIconColor() {
 	return '#09757A';
 }
+
+/**
+ * Parse V2 `blockProps.className` and return color related classes. Keep all others within `blockProps`.
+ *
+ * This function will overwrite `blockProps.classNames` to remove color related properties.
+ *
+ * @param {Object} blockProps The V2 blockProps.
+ * @return {Object?} The active style.name.
+ */
+export const getColorClassnames = ( blockProps ) => {
+	const descendingClasses = new TokenList();
+	const originalClasses = new TokenList( blockProps.className );
+
+	for ( const classToken of originalClasses.values() ) {
+		if ( classToken.indexOf( '-color' ) === -1 && classToken.indexOf( '-background' ) === -1 ) {
+			continue;
+		}
+		originalClasses.remove( classToken );
+		descendingClasses.add( classToken );
+	}
+	blockProps.className = originalClasses.toString();
+	return descendingClasses.toString();
+};
+
+/**
+ * Parse V2 `blockProps.style` and return color related styles. Keep all others within `blockProps`.
+ *
+ * This function will overwrite `blockProps.style` to remove color related properties.
+ *
+ * @param {Object} blockProps The V2 blockProps.
+ * @return {Object?} The active style.name.
+ */
+export const getColorStyles = ( blockProps ) => {
+	const { backgroundColor, color } = blockProps.style;
+	const originalStyles = { ...blockProps.style };
+
+	const descendingStyles = { backgroundColor, color };
+
+	[ 'backgroundColor', 'color' ].forEach( ( key ) => {
+		delete originalStyles[ key ];
+	} );
+
+	blockProps.style = originalStyles;
+	return descendingStyles;
+};
+

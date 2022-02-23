@@ -67,7 +67,7 @@ class CoBlocks_Post_Carousel_Index_Tests extends WP_UnitTestCase {
 
 
 		$this->assertEquals(
-			'<div class="wp-block-coblocks-post-carousel test-class-name"><div class="coblocks-slick pb-8" data-slick="{&quot;slidesToScroll&quot;:1,&quot;arrow&quot;:true,&quot;slidesToShow&quot;:2,&quot;infinite&quot;:true,&quot;adaptiveHeight&quot;:false,&quot;draggable&quot;:true,&quot;rtl&quot;:false,&quot;responsive&quot;:[{&quot;breakpoint&quot;:1024,&quot;settings&quot;:{&quot;slidesToShow&quot;:3}},{&quot;breakpoint&quot;:600,&quot;settings&quot;:{&quot;slidesToShow&quot;:2}},{&quot;breakpoint&quot;:480,&quot;settings&quot;:{&quot;slidesToShow&quot;:1}}]}"></div></div>',
+			'<div class="wp-block-coblocks-post-carousel external test-class-name"><div class="coblocks-swiper swiper-container pb-8" data-swiper="{&quot;slidesToScroll&quot;:1,&quot;arrow&quot;:true,&quot;slidesToShow&quot;:2,&quot;infinite&quot;:true,&quot;adaptiveHeight&quot;:false,&quot;draggable&quot;:true,&quot;rtl&quot;:false,&quot;responsive&quot;:[{&quot;breakpoint&quot;:1024,&quot;settings&quot;:{&quot;slidesToShow&quot;:3}},{&quot;breakpoint&quot;:600,&quot;settings&quot;:{&quot;slidesToShow&quot;:2}},{&quot;breakpoint&quot;:480,&quot;settings&quot;:{&quot;slidesToShow&quot;:1}}]}"><div class="swiper-wrapper" ></div></div><button class="wp-coblocks-post-carousel-nav-button__prev" id="wp-coblocks-post-carousel-swiper-prev" style="visibility:hidden" /><button class="wp-coblocks-post-carousel-nav-button__next" id="wp-coblocks-post-carousel-swiper-next" style="visibility:hidden" /></div>',
 			coblocks_render_post_carousel_block( $attributes )
 		);
 	}

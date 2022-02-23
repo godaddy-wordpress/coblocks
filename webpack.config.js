@@ -11,7 +11,6 @@ const path = require( 'path' );
 const fs = require( 'fs' );
 
 const scripts = [
-	'coblocks-accordion-carousel',
 	'coblocks-accordion-polyfill',
 	'coblocks-animation',
 	'coblocks-checkbox-required',
@@ -21,9 +20,7 @@ const scripts = [
 	'coblocks-google-maps',
 	'coblocks-google-recaptcha',
 	'coblocks-lightbox',
-	'coblocks-masonry',
-	'coblocks-slick-initializer-front',
-	'coblocks-slick-initializer',
+	'coblocks-post-carousel',
 	'coblocks-tinyswiper-initializer',
 ];
 
@@ -46,8 +43,6 @@ module.exports = {
 		}, {} ),
 
 		// Vendors
-		'js/vendors/flickity': path.resolve( process.cwd(), 'node_modules/flickity/dist/flickity.pkgd.js' ),
-		'js/vendors/slick': path.resolve( process.cwd(), 'node_modules/slick-carousel/slick/slick.js' ),
 		'js/vendors/tiny-swiper': path.resolve( process.cwd(), 'node_modules/tiny-swiper/lib/index.js' ),
 	},
 

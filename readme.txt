@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.5
 Tested up to: 5.9
 Requires PHP: 5.6
-Stable tag: 2.21.5
+Stable tag: 2.22.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -112,6 +112,35 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+= 2.22.0 / 2022-02-22 (that's a lot of 2s ;) ) =
+##### Enhancements
+* Enhance Gallery Stacked block to v2 [#2281](https://github.com/godaddy-wordpress/coblocks/pull/2281)
+* Enhance Author block to v2 [#2274](https://github.com/godaddy-wordpress/coblocks/pull/2274)
+* Remove jQuery from CoBlocks [#2276](https://github.com/godaddy-wordpress/coblocks/pull/2276)
+* Enhance Click to Tweet block to v2 [#2268](https://github.com/godaddy-wordpress/coblocks/pull/2268)
+* Enhance Post carousel to remove JQuery [#2235](https://github.com/godaddy-wordpress/coblocks/pull/2235)
+* Enhance Events block to remove JQuery [#2222](https://github.com/godaddy-wordpress/coblocks/pull/2222)
+
+##### Bug fixes
+* Fix rendering of custom icons [#2282](https://github.com/godaddy-wordpress/coblocks/pull/2282)
+* Fix speech typo [#2283](https://github.com/godaddy-wordpress/coblocks/pull/2283)
+* Fix white page flicker on admin dashboard [#2275](https://github.com/godaddy-wordpress/coblocks/pull/2275)
+
+##### Misc
+* Replace `cypress-file-upload` with Cypress built-in upload [#2285](https://github.com/godaddy-wordpress/coblocks/pull/2285)
+* Remove security vulnerability [#2255](https://github.com/godaddy-wordpress/coblocks/pull/2255)
+* Add e2e tests on Twenty Twenty-Two in the build pipeline [#2246](https://github.com/godaddy-wordpress/coblocks/pull/2246)
+* Run e2e tests on final build [#2271](https://github.com/godaddy-wordpress/coblocks/pull/2271)
+* Add unit tests on PHP 8.1 [#2272](https://github.com/godaddy-wordpress/coblocks/pull/2272)
+
+= 2.21.6 / 2022-02-08 =
+##### Enhancements
+* Delete Remove Image extension [#2262](https://github.com/godaddy-wordpress/coblocks/pull/2262)
+
+##### Bug fixes
+* Add styling to hide Safari default marker on FAQ items [#2267](https://github.com/godaddy-wordpress/coblocks/pull/2267)
+* Fix custom icons not loading [#2256](https://github.com/godaddy-wordpress/coblocks/pull/2256)
+
 = 2.21.5 / 2022-01-31 =
 ##### Bug fixes
 * Fix `.icon` class scoping from Swiper component [#2259](https://github.com/godaddy-wordpress/coblocks/pull/2259)
@@ -149,49 +178,3 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 * Fix styles with Twenty Twenty-Two theme in 5.9 [#2237](https://github.com/godaddy-wordpress/coblocks/pull/2237)
 * Fix Lightbox for Gallery block in 5.9 [#2239](https://github.com/godaddy-wordpress/coblocks/pull/2239)
 * Fix Form block input styles in editor. [#2209](https://github.com/godaddy-wordpress/coblocks/pull/2209)
-
-= 2.20.1 / 2022-01-25 =
-##### Bug Fixes
-* Fix CSS issue with CoBlocks extensions [#2236](https://github.com/godaddy-wordpress/coblocks/pull/2236)
-
-= 2.20.0 / 2022-01-24 =
-##### Enhancements
-* Introduce Request a Quote variation to Form block [#2149](https://github.com/godaddy-wordpress/coblocks/pull/2149)
-* Add compatibility with WordPress 5.9 [#2232](https://github.com/godaddy-wordpress/coblocks/pull/2232)
-* Remove crop control from Masonry block [#2207](https://github.com/godaddy-wordpress/coblocks/pull/2207)
-* Enhance custom appenders for 5.9 compatibility [#2225](https://github.com/godaddy-wordpress/coblocks/pull/2225)
-* Enhance the Map Block to hooks and modern libraries [#2186](https://github.com/godaddy-wordpress/coblocks/pull/2186)
-* Enhance use of filters across custom extensions and components [#2189](https://github.com/godaddy-wordpress/coblocks/pull/2189)
-* Enhance typography controls [#2210](https://github.com/godaddy-wordpress/coblocks/pull/2210)
-* Enhance load of bigger blocks by lazy loading [#2206](https://github.com/godaddy-wordpress/coblocks/pull/2206)
-* Enhance performance by splitting JS into chunks [#2162](https://github.com/godaddy-wordpress/coblocks/pull/2162)
-* Enhance Form Block by removing jQuery [#2180](https://github.com/godaddy-wordpress/coblocks/pull/2180)
-* Enhance previews of blocks [#2157](https://github.com/godaddy-wordpress/coblocks/pull/2157)
-* Enhance Gallery Carousel to use tiny-swiper instead of flickity [#2147](https://github.com/godaddy-wordpress/coblocks/pull/2147)
-* Enhance Form block by removint the From header [#2191](https://github.com/godaddy-wordpress/coblocks/pull/2191)
-* Enhance icons by using coblocks-icons v2 [#2190](https://github.com/godaddy-wordpress/coblocks/pull/2190)
-* Enhance Masonry block to use inner core/image blocks [#2117](https://github.com/godaddy-wordpress/coblocks/pull/2117)
-* Enhance accessibility of some blocks [#2158](https://github.com/godaddy-wordpress/coblocks/pull/2158)
-* Enhance slider component [#2197](https://github.com/godaddy-wordpress/coblocks/pull/2197)
-
-##### Bug Fixes
-* Fix Gist file embed [#2219](https://github.com/godaddy-wordpress/coblocks/pull/2219)
-* Fix "jumping" Form block layout within editor. [#2208](https://github.com/godaddy-wordpress/coblocks/pull/2208)
-* Fix Fonts size picker for WP 5.9 [#2183](https://github.com/godaddy-wordpress/coblocks/pull/2183)
-* Fix missing textdomains for i18n across CoBlocks [#2202](https://github.com/godaddy-wordpress/coblocks/pull/2202)
-* Fix OpenTable block API call [#2204](https://github.com/godaddy-wordpress/coblocks/pull/2204)
-* Fix FAQ block issues [#2200](https://github.com/godaddy-wordpress/coblocks/pull/2200) and [#2193](https://github.com/godaddy-wordpress/coblocks/pull/2193)
-* Fix Google Maps marker assets path, so that the marker shows [#2182](https://github.com/godaddy-wordpress/coblocks/pull/2182)
-
-##### Misc
-* Improve build pipeline for perf tests [#2228](https://github.com/godaddy-wordpress/coblocks/pull/2228)
-* Upgrade dependencies to fix security vulnerabilities [#2220](https://github.com/godaddy-wordpress/coblocks/pull/2220)
-* Project Structure change [#2221](https://github.com/godaddy-wordpress/coblocks/pull/2221)
-* Reduce cache usage by being less specific on key [#2214](https://github.com/godaddy-wordpress/coblocks/pull/2214)
-* Update CircleCI builds to comment performance test results on a PR [#2192](https://github.com/godaddy-wordpress/coblocks/pull/2192)
-* Add yarn test:e2e:headed [#2203](https://github.com/godaddy-wordpress/coblocks/pull/2203)
-* Parallelize performance tests [#2161](https://github.com/godaddy-wordpress/coblocks/pull/2161)
-* Upgrade to Cypress 9 [#2155](https://github.com/godaddy-wordpress/coblocks/pull/2155)
-* Setup phpunit to run inside wp-env [#2150](https://github.com/godaddy-wordpress/coblocks/pull/2150)
-* Create a link to a zip file of the plugin in PRs [#2154](https://github.com/godaddy-wordpress/coblocks/pull/2154)
-

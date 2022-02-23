@@ -13,8 +13,9 @@ import InspectorControls from './inspector';
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { RichText } from '@wordpress/block-editor';
 import { compose } from '@wordpress/compose';
+import { RichText } from '@wordpress/block-editor';
+import { useDispatch } from '@wordpress/data';
 import { useEffect } from '@wordpress/element';
 
 const EventItemEdit = ( props ) => {
@@ -24,7 +25,11 @@ const EventItemEdit = ( props ) => {
 		setAttributes,
 		setTextColor,
 		textColor,
+		clientId,
+		isSelected,
 	} = props;
+
+	const { selectBlock } = useDispatch( 'core/block-editor' );
 
 	const {
 		description,
@@ -47,6 +52,12 @@ const EventItemEdit = ( props ) => {
 		}
 	}, [ attributes ] );
 
+	const handleSelectBlock = () => {
+		if ( ! isSelected ) {
+			selectBlock( clientId );
+		}
+	};
+
 	return (
 		<>
 			<InspectorControls { ...props }
@@ -58,63 +69,74 @@ const EventItemEdit = ( props ) => {
 						[ textColor.class ]: textColor.class,
 					}
 				) }
+				onClick={ handleSelectBlock }
+				onKeyDown={ handleSelectBlock }
+				role="button"
 				style={ textStyles }
+				tabIndex="0"
 			>
 				<div className="wp-block-coblocks-events__date">
 					<RichText
-						value={ eventDay }
-						tagName="span"
 						className="wp-block-coblocks-events__day"
-						placeholder={ __( 'Day…', 'coblocks' ) }
 						onChange={ ( newEventDay ) => setAttributes( { eventDay: newEventDay } ) }
+						placeholder={ __( 'Day…', 'coblocks' ) }
+						tabIndex="0"
+						tagName="span"
+						value={ eventDay }
 					/>
 					<div>
 						<RichText
-							value={ eventMonth }
-							tagName="span"
 							className="wp-block-coblocks-events__month"
-							placeholder={ __( 'Month…', 'coblocks' ) }
 							onChange={ ( newEventMonth ) => setAttributes( { eventMonth: newEventMonth } ) }
+							placeholder={ __( 'Month…', 'coblocks' ) }
+							tabIndex="0"
+							tagName="span"
+							value={ eventMonth }
 						/>
 						<RichText
-							value={ eventYear }
-							tagName="span"
 							className="wp-block-coblocks-events__year"
-							placeholder={ __( 'Year…', 'coblocks' ) }
 							onChange={ ( newEventYear ) => setAttributes( { eventYear: newEventYear } ) }
+							placeholder={ __( 'Year…', 'coblocks' ) }
+							tabIndex="0"
+							tagName="span"
+							value={ eventYear }
 						/>
 					</div>
 				</div>
 				<div className="wp-block-coblocks-events__content">
 					<RichText
-						value={ title }
-						tagName="span"
 						className="wp-block-coblocks-events__title"
-						placeholder={ __( 'Write event title…', 'coblocks' ) }
 						onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
+						placeholder={ __( 'Write event title…', 'coblocks' ) }
+						tabIndex="0"
+						tagName="span"
+						value={ title }
 					/>
 					<RichText
-						value={ description }
-						tagName="span"
 						className="wp-block-coblocks-events__description"
-						placeholder={ __( 'Write event description…', 'coblocks' ) }
 						onChange={ ( newDescription ) => setAttributes( { description: newDescription } ) }
+						placeholder={ __( 'Write event description…', 'coblocks' ) }
+						tabIndex="0"
+						tagName="span"
+						value={ description }
 					/>
 				</div>
 				<div className="wp-block-coblocks-events__details">
 					<RichText
-						value={ eventTime }
-						tagName="span"
 						className="wp-block-coblocks-events__time"
-						placeholder={ __( 'Time…', 'coblocks' ) }
 						onChange={ ( newEventTime ) => setAttributes( { eventTime: newEventTime } ) }
+						placeholder={ __( 'Time…', 'coblocks' ) }
+						tabIndex="0"
+						tagName="span"
+						value={ eventTime }
 					/>
 					<RichText
-						value={ eventLocation }
-						tagName="span"
 						className="wp-block-coblocks-events__location"
-						placeholder={ __( 'Location…', 'coblocks' ) }
 						onChange={ ( newEventLocation ) => setAttributes( { eventLocation: newEventLocation } ) }
+						placeholder={ __( 'Location…', 'coblocks' ) }
+						tabIndex="0"
+						tagName="span"
+						value={ eventLocation }
 					/>
 				</div>
 			</div>

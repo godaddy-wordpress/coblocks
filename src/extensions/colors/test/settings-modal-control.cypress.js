@@ -53,8 +53,6 @@ describe( 'Settings Modal: Colors feature', () => {
 
 	it( 'can turn off all color settings', () => {
 		cy.get( '.components-panel__body-title' ).contains( /Overlay/i ).should( 'exist' );
-		cy.get( '.components-circular-option-picker__dropdown-link-action, .components-color-palette__custom-color' ).should( 'exist' );
-		cy.get( '.block-editor-color-gradient-control__button-tabs button, .components-toggle-group-control' ).should( 'exist' );
 
 		cy.get( '.coblocks-settings-modal' ).contains( 'Color settings' ).click();
 
@@ -67,8 +65,6 @@ describe( 'Settings Modal: Colors feature', () => {
 
 	it( 'can turn off custom color settings', () => {
 		cy.get( '.components-panel__body-title' ).contains( /Overlay/i ).should( 'exist' );
-		cy.get( '.components-circular-option-picker__dropdown-link-action, .components-color-palette__custom-color' ).should( 'exist' );
-		cy.get( '.block-editor-color-gradient-control__button-tabs button, .components-toggle-group-control' ).should( 'exist' );
 
 		cy.get( '.coblocks-settings-modal' ).contains( 'Custom color pickers' ).click();
 
@@ -80,7 +76,6 @@ describe( 'Settings Modal: Colors feature', () => {
 
 	it( 'can turn off gradient settings', () => {
 		cy.get( '.components-panel__body-title' ).contains( /Overlay/i ).should( 'exist' );
-		cy.get( '.block-editor-color-gradient-control__button-tabs button, .components-toggle-group-control' ).should( 'exist' );
 
 		cy.get( '.coblocks-settings-modal' ).contains( 'Gradient styles' ).click();
 

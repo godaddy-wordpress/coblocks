@@ -1,0 +1,134 @@
+.wp-block-coblocks-testimonials .wp-block-coblocks-testimonial {
+	background-color: #fff;
+	display: flex;
+	flex-grow: 1;
+	margin-bottom: 1rem;
+	padding: 2rem 1.5rem;
+
+	&__image {
+		border: 1px solid #000;
+		border-radius: 100%;
+		flex-grow: 0;
+		flex-shrink: 0;
+		height: 100px;
+		overflow: hidden;
+		position: relative;
+		width: 100px;
+
+		img {
+			height: 100%;
+			object-fit: cover;
+			width: 100%;
+		}
+	}
+
+	&__heading {
+		margin-bottom: 1.5em;
+
+		&__name {
+			color: inherit;
+			line-height: 1;
+			margin: 0;
+		}
+
+		&__role {
+			font-size: 1.2em;
+			line-height: 1.2;
+			margin: 0.25em 0 0;
+		}
+	}
+
+	&__text {
+		font-size: 1em;
+		line-height: 1.5;
+		margin: 0;
+	}
+}
+
+// Style-specific
+
+// -> Boxy / unset style.
+.wp-block-coblocks-testimonials.is-style-tall .wp-block-coblocks-testimonial,
+.wp-block-coblocks-testimonials:not([class*="is-style-"]) .wp-block-coblocks-testimonial {
+	align-items: center;
+	flex-direction: column;
+	text-align: center;
+
+	&__image {
+		margin: 0 0 1em;
+	}
+}
+
+// -> Conversation
+.is-style-conversation .wp-block-coblocks-testimonial {
+	flex-direction: column;
+
+	&__heading {
+		margin-bottom: 0;
+	}
+
+	&__text-bubble {
+		margin-bottom: 1.5rem;
+		position: relative;
+
+		&__tip-back {
+			background-color: #d6d6d6;
+			bottom: -18px;
+			display: block;
+			height: 40px;
+			left: 22px;
+			position: absolute;
+			transform: rotate(-40deg);
+			width: 30px;
+			z-index: 1;
+		}
+
+		&__tip-front {
+			background-color: #fff;
+			bottom: -32px;
+			display: block;
+			height: 40px;
+			left: 38px;
+			position: absolute;
+			transform: rotate(15deg);
+			width: 30px;
+			z-index: 2;
+		}
+	}
+
+	&__text {
+		background-color: #d6d6d6;
+		border-radius: 8px;
+		color: #999;
+		padding: 1em;
+		position: relative;
+		width: 100%;
+		z-index: 3;
+	}
+
+	&__image {
+		margin: 0 1em 0 1rem;
+	}
+
+	&__content {
+		align-items: center;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		z-index: 2;
+	}
+}
+
+// -> Horizontal
+.is-style-horizontal .wp-block-coblocks-testimonial {
+	&__image {
+		margin: 0 1.25em 0 0;
+	}
+
+	&__content {
+		align-items: flex-start;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+	}
+}

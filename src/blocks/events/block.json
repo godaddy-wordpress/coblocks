@@ -22,6 +22,10 @@
 		},
 		"customTextColor": {
 			"type": "string"
+		},
+		"showCarousel": {
+			"type": "boolean",
+			"default": true
 		}
 	}
 }

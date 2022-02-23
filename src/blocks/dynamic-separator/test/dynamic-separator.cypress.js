@@ -69,13 +69,13 @@ describe( 'Test CoBlocks Dynamic Seperator Block', function() {
 	it( 'Test dynamic separator colors.', function() {
 		helpers.addBlockToPost( 'coblocks/dynamic-separator', true );
 
-		helpers.setColorSetting( 'color', '#55e7ff' );
+		helpers.setColorSetting( 'background', '#55e7ff' );
 
 		cy.get( '.wp-block-coblocks-dynamic-separator' )
 			.should( 'have.css', 'color' )
 			.and( 'equal', helpers.hexToRGB( '#55e7ff' ) );
 
-		helpers.setColorSetting( 'color', '#f70479' );
+		helpers.setColorSetting( 'background', '#f70479' );
 
 		cy.get( '.wp-block-coblocks-dynamic-separator' )
 			.should( 'have.css', 'color' )

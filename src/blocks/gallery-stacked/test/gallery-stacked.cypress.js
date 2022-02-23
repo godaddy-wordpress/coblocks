@@ -37,7 +37,7 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 		const { imageBase } = helpers.upload.spec;
 		helpers.addBlockToPost( 'coblocks/gallery-stacked', true );
 
-		cy.get( '[data-type="coblocks/gallery-stacked"]' ).click();
+		helpers.selectBlock( 'stacked' );
 
 		helpers.upload.imageToBlock( 'coblocks/gallery-stacked' );
 
@@ -169,5 +169,55 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/gallery-stacked' );
+	} );
+
+	/**
+	 * Test the text sizes change as expected
+	 */
+	it( 'Test the text sizes change as expected.', function() {
+		helpers.addBlockToPost( 'coblocks/gallery-stacked', true );
+
+		const { caption } = galleryData;
+		helpers.addBlockToPost( 'coblocks/gallery-stacked', true );
+
+		cy.get( '[data-type="coblocks/gallery-stacked"]' )
+			.click()
+			.contains( /media library/i )
+			.click();
+
+		cy.get( '.media-modal-content' ).contains( /media library/i ).click();
+
+		cy.get( '.media-modal-content' ).find( 'li.attachment' )
+			.first( 'li' )
+			.click();
+
+		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
+			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			} else { // pre wp 5.4
+				cy.get( 'button' ).contains( /create a new gallery/i ).click();
+				cy.get( 'button' ).contains( /insert gallery/i ).click();
+			}
+		} );
+
+		helpers.toggleSettingCheckbox( /captions/i );
+
+		cy.get( '.coblocks-gallery--item' ).first().click()
+			.find( 'figcaption' ).focus().type( caption );
+
+		cy.get( '[data-wp-component="ToolsPanelHeader"] button' ).click();
+		cy.get( 'button' ).contains( 'Font size' ).click();
+
+		cy.get( '.components-toggle-group-control-option' ).then( ( elems ) => {
+			let dataValue = Cypress.$( 'figcaption.coblocks-gallery--caption' ).css( 'font-size' );
+			Array.from( elems ).forEach( ( elem ) => {
+				cy.get( elem ).focus().click().then( () => {
+					// We do not test the value due to theme setting specified font sizes.
+					// Instead we test that the value has changed from previous value.
+					cy.get( 'figcaption.coblocks-gallery--caption' ).should( 'not.to.have.css', 'font-size', dataValue );
+					dataValue = Cypress.$( 'figcaption.coblocks-gallery--caption' ).css( 'font-size' );
+				} );
+			} );
+		} );
 	} );
 } );

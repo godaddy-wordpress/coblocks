@@ -128,12 +128,10 @@ class GalleryImage extends Component {
 			marginBottom,
 			marginLeft,
 			marginRight,
-			marginTop,
 			onMoveBackward,
 			onMoveForward,
 			onRemove,
 			setAttributes,
-			gutterUtility,
 			shadow,
 			supportsCaption,
 			supportsMoving = true,
@@ -180,9 +178,6 @@ class GalleryImage extends Component {
 		const className = classnames( properClass, {
 			'is-selected': isSelected,
 			'is-transient': url && 0 === url.indexOf( 'blob:' ),
-			[ `${ gutterUtility }` ]: gutterUtility,
-			[ `has-margin-top-${ gutter }` ]: marginTop && gutter > 0,
-			[ `has-margin-top-mobile-${ gutterMobile }` ]: marginTop && gutterMobile > 0,
 			[ `has-margin-right-${ gutter }` ]: marginRight && gutter > 0,
 			[ `has-margin-right-mobile-${ gutterMobile }` ]: marginRight && gutterMobile > 0,
 			[ `has-margin-bottom-${ gutter }` ]: marginBottom && gutter > 0,
@@ -288,25 +283,30 @@ class GalleryImage extends Component {
 	}
 }
 
-GalleryImage.PropTypes = {
+GalleryImage.propTypes = {
 	alt: PropTypes.string,
-	caption: PropTypes.string,
+	caption: PropTypes.oneOfType( [
+		PropTypes.string,
+		PropTypes.array,
+	] ),
 	captions: PropTypes.bool,
 	fontSize: PropTypes.number,
 	gutter: PropTypes.number,
 	gutterMobile: PropTypes.number,
 	gutterUtility: PropTypes.bool,
-	id: PropTypes.number,
+	id: PropTypes.oneOfType( [
+		PropTypes.string,
+		PropTypes.number,
+	] ),
 	imageIndex: PropTypes.number,
 	imgLink: PropTypes.string,
 	isFirstItem: PropTypes.bool,
 	isLastItem: PropTypes.bool,
 	isSelected: PropTypes.bool,
 	linkTo: PropTypes.string,
-	marginBottom: PropTypes.number,
+	marginBottom: PropTypes.bool,
 	marginLeft: PropTypes.number,
 	marginRight: PropTypes.number,
-	marginTop: PropTypes.number,
 	newClass: PropTypes.string,
 	onMoveBackward: PropTypes.func,
 	onMoveForward: PropTypes.func,

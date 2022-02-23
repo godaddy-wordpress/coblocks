@@ -84,7 +84,7 @@
 	}
 
 	//Make sure block is on the top z-index.
-	.wp-block {
+	[class*="wp-block-coblocks-"] {
 
 		&.is-selected {
 
