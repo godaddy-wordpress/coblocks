@@ -31,7 +31,8 @@
 		}
 	}
 
-	.has-small-images img {
+	.has-small-images img,
+	.has-sml-images img {
 		@include break-small() {
 			max-height: 22vw;
 		}
@@ -40,7 +41,8 @@
 		}
 	}
 
-	.has-medium-images img {
+	.has-medium-images img,
+	.has-med-images img {
 		@include break-small() {
 			max-height: 28vw;
 		}
@@ -49,7 +51,8 @@
 		}
 	}
 
-	.has-large-images img {
+	.has-large-images img,
+	.has-lrg-images img {
 		@include break-small() {
 			max-height: 40vw;
 		}
@@ -58,7 +61,8 @@
 		}
 	}
 
-	.has-huge-images img {
+	.has-huge-images img,
+	.has-xlrg-images img {
 		@include break-small() {
 			max-height: 40vw;
 		}
