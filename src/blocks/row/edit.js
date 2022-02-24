@@ -82,9 +82,12 @@ const Edit = ( props ) => {
 
 	const [ layoutSelection, setLayoutSelection ] = useState( true );
 
+	const { __unstableMarkNextChangeAsNotPersistent } = useDispatch( 'core/block-editor' );
+
 	useEffect( () => {
 		// Store the selected innerBlocks layout in state so that undo and redo functions work properly.
 		if ( prevHasInnerBlocks && ! hasInnerBlocks ) {
+			__unstableMarkNextChangeAsNotPersistent();
 			setLayoutSelection( true );
 			setAttributes( { layout: null, columns: null } );
 		}
@@ -142,10 +145,8 @@ const Edit = ( props ) => {
 					</>
 				) }
 				<Placeholder
-					key="placeholder"
 					className="components-coblocks-row-placeholder"
 					icon={ <Icon icon={ icon } /> }
-					label={ columns ? __( 'Row layout', 'coblocks' ) : __( 'Row', 'coblocks' ) }
 					instructions={ columns
 						? sprintf(
 							/* translators: %s: 'one' 'two' 'three' and 'four' */
@@ -154,6 +155,8 @@ const Edit = ( props ) => {
 						)
 						: __( 'Select the number of columns for this row.', 'coblocks' )
 					}
+					key="placeholder"
+					label={ columns ? __( 'Row layout', 'coblocks' ) : __( 'Row', 'coblocks' ) }
 				>
 					{ ! columns
 						? <ButtonGroup aria-label={ __( 'Select row columns', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
@@ -164,6 +167,7 @@ const Edit = ( props ) => {
 											className="components-coblocks-row-placeholder__button block-editor-inner-blocks__template-picker-option block-editor-block-pattern-picker__pattern"
 											isSecondary
 											onClick={ () => {
+												__unstableMarkNextChangeAsNotPersistent();
 												setAttributes( {
 													columns: option.columns,
 													layout: option.columns === 1 ? option.key : null,
@@ -183,24 +187,26 @@ const Edit = ( props ) => {
 						: <>
 							<ButtonGroup aria-label={ __( 'Select row layout', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
 								<Button
-									icon="exit"
 									className="components-coblocks-row-placeholder__back"
+									icon="exit"
+									label={ __( 'Back to columns', 'coblocks' ) }
 									onClick={ () => {
+										__unstableMarkNextChangeAsNotPersistent();
 										setAttributes( {
 											columns: null,
 										} );
 										setLayoutSelection( true );
 									} }
-									label={ __( 'Back to columns', 'coblocks' ) }
 								/>
 								{ map( layoutOptions[ selectedRows ], ( option ) => (
 									<Tooltip text={ option.name }>
 										<div className="components-coblocks-row-placeholder__button-wrapper">
 											<Button
-												key={ option.key }
 												className="components-coblocks-row-placeholder__button block-editor-inner-blocks__template-picker-option block-editor-block-pattern-picker__pattern"
 												isSecondary
+												key={ option.key }
 												onClick={ () => {
+													__unstableMarkNextChangeAsNotPersistent();
 													setAttributes( {
 														layout: option.key,
 													} );
@@ -261,19 +267,19 @@ const Edit = ( props ) => {
 	if ( hasInnerBlocks || !! layout ) {
 		const deprecatedInnerBlocks = () => (
 			<InnerBlocks
-				template={ template[ layout ] }
-				templateLock="all"
 				allowedBlocks={ allowedBlocks }
-				templateInsertUpdatesSelection={ columns === 1 }
 				renderAppender={ () => ( null ) }
+				template={ template[ layout ] }
+				templateInsertUpdatesSelection={ columns === 1 }
+				templateLock="all"
 			/>
 		);
 
 		const variationInnerBlocks = () => (
 			<InnerBlocks
 				allowedBlocks={ allowedBlocks }
-				templateInsertUpdatesSelection={ columns === 1 }
 				renderAppender={ () => ( null ) }
+				templateInsertUpdatesSelection={ columns === 1 }
 				templateLock="all" />
 		);
 
@@ -304,6 +310,8 @@ const Edit = ( props ) => {
 	}
 
 	const blockVariationPickerOnSelect = ( nextVariation = defaultVariation ) => {
+		__unstableMarkNextChangeAsNotPersistent();
+
 		if ( nextVariation.attributes ) {
 			setAttributes( nextVariation.attributes );
 		}
@@ -319,12 +327,12 @@ const Edit = ( props ) => {
 	return (
 		<>
 			<__experimentalBlockVariationPicker
-				icon={ get( blockType, [ 'icon', 'src' ] ) }
-				label={ get( blockType, [ 'title' ] ) }
-				instructions={ __( 'Select a variation to start with.', 'coblocks' ) }
-				variations={ variations }
 				allowSkip
+				icon={ get( blockType, [ 'icon', 'src' ] ) }
+				instructions={ __( 'Select a variation to start with.', 'coblocks' ) }
+				label={ get( blockType, [ 'title' ] ) }
 				onSelect={ ( nextVariation ) => blockVariationPickerOnSelect( nextVariation ) }
+				variations={ variations }
 			/>
 		</>
 	);
