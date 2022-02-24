@@ -264,7 +264,7 @@ const Edit = ( props ) => {
 		marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
 	};
 
-	if ( hasInnerBlocks || !! layout ) {
+	if ( hasInnerBlocks && !! layout ) {
 		const deprecatedInnerBlocks = () => (
 			<InnerBlocks
 				allowedBlocks={ allowedBlocks }
