@@ -126,6 +126,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 
 			if ( is_admin() ) {
 				require_once COBLOCKS_PLUGIN_DIR . 'src/extensions/layout-selector/index.php';
+				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-plugin-deactivation.php';
 			}
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
