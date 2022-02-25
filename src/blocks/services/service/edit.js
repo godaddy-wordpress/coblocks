@@ -32,25 +32,30 @@ import { Button, ButtonGroup, DropZone, Spinner } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 
 const Edit = ( props ) => {
-	const {	attributes, clientId, setAttributes } = props;
+	const {
+		attributes,
+		clientId,
+		isSelected,
+		setAttributes,
+	} = props;
 
 	const innerItems = useSelect( ( select ) => select( 'core/block-editor' ).getBlocks( clientId ), [] );
 	const image = useSelect( ( select ) => select( 'core' ).getMedia( attributes.imageId ), [] );
 
 	/**
 	 * This functional components `props.isSelected` value does not detect when nested children blocks are selected.
-	 * Here we re-declare isSelected as a local variable with improved logic to detect when nested children have been selected.
+	 * Here we declare isBlockSelected as a local variable with improved logic to detect when nested children have been selected.
 	 *
 	 * @type {boolean} Whether or not this Service block or one of its nested children are selected.
 	 */
-	const isSelected = useSelect( ( select ) => {
+	const isBlockSelected = useSelect( ( select ) => {
 		const {	getBlockHierarchyRootClientId, getSelectedBlockClientId } = select( 'core/block-editor' );
 
 		// Get clientID of the parent block.
 		const rootClientId = getBlockHierarchyRootClientId( clientId );
 		const selectedRootClientId = getBlockHierarchyRootClientId( getSelectedBlockClientId() );
 
-		return props.isSelected || rootClientId === selectedRootClientId;
+		return isSelected || rootClientId === selectedRootClientId;
 	} );
 
 	const { updateBlockAttributes, insertBlock, removeBlocks } = useDispatch( 'core/block-editor' );
@@ -115,7 +120,7 @@ const Edit = ( props ) => {
 
 	const renderImage = () => {
 		const classes = classnames( 'wp-block-coblocks-service__figure', {
-			'is-selected': isSelected,
+			'is-selected': isBlockSelected,
 			'is-transient': isBlobURL( attributes.imageUrl ),
 		} );
 
@@ -129,7 +134,7 @@ const Edit = ( props ) => {
 		return (
 			<>
 				<figure className={ classes }>
-					{ isSelected && (
+					{ isBlockSelected && (
 						<ButtonGroup className="block-library-gallery-item__inline-menu is-right is-visible">
 							<MediaUploadCheck>
 								<MediaUpload
@@ -139,7 +144,7 @@ const Edit = ( props ) => {
 										<>
 											<Button
 												className="coblocks-gallery-item__button"
-												disabled={ ! isSelected }
+												disabled={ ! isBlockSelected }
 												icon={ closeSmall }
 												label={ __( 'Remove image', 'coblocks' ) }
 												onClick={ () => setAttributes( { imageAlt: '', imageId: null, imageUrl: '' } ) }
