@@ -339,21 +339,18 @@ commands:
       - restore_cache:
           keys:
             - composer-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "composer.lock" }}
-            - composer-deps-{{ .Environment.CACHE_VERSION }}
 
   restore_yarn_cache:
     steps:
       - restore_cache:
           keys:
             - yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
-            - yarn-deps-{{ .Environment.CACHE_VERSION }}
 
   restore_update_cypress_cache:
     steps:
       - restore_cache:
           keys:
             - cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
-            - cypress-deps-{{ .Environment.CACHE_VERSION }}
       - run:
           name: Install CyPress Binaries
           command: ./node_modules/.bin/cypress install
