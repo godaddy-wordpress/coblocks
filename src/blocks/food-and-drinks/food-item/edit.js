@@ -16,10 +16,10 @@ import classnames from 'classnames';
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { useState, useEffect } from '@wordpress/element';
-import { Button, DropZone, Spinner, ButtonGroup } from '@wordpress/components';
-import { withSelect, withDispatch } from '@wordpress/data';
-import { RichText, MediaPlaceholder } from '@wordpress/block-editor';
+import { useEffect, useState } from '@wordpress/element';
+import { Button, ButtonGroup, DropZone, Spinner } from '@wordpress/components';
+import { withDispatch, withSelect } from '@wordpress/data';
+import { MediaPlaceholder, RichText } from '@wordpress/block-editor';
 import { mediaUpload } from '@wordpress/editor';
 import { isBlobURL } from '@wordpress/blob';
 import { createBlock } from '@wordpress/blocks';
@@ -178,8 +178,8 @@ const FoodItem = ( props ) => {
 
 		const dropZone = (
 			<DropZone
-				onFilesDrop={ replaceImage }
 				label={ __( 'Drop image to replace', 'coblocks' ) }
+				onFilesDrop={ replaceImage }
 			/>
 		);
 
@@ -189,22 +189,22 @@ const FoodItem = ( props ) => {
 					{ isSelected && (
 						<ButtonGroup className="block-library-gallery-item__inline-menu is-right is-visible">
 							<Button
+								className="coblocks-gallery-item__button"
+								disabled={ ! isSelected }
 								icon={ closeSmall }
+								label={ __( 'Remove image', 'coblocks' ) }
 								onClick={ () => {
 									setAttributes( { url: '' } );
 									setUrl( '' );
 								} }
-								className="coblocks-gallery-item__button"
-								label={ __( 'Remove image', 'coblocks' ) }
-								disabled={ ! isSelected }
 							/>
 						</ButtonGroup>
 					) }
 					{ dropZone }
 					{ isBlobURL( attributeUrl ) && <Spinner /> }
 					<img
-						src={ attributeUrl }
 						alt={ alt }
+						src={ attributeUrl }
 						style={ {
 							objectPosition: focalPoint
 								? `${ focalPoint.x * 100 }% ${ focalPoint.y *
@@ -221,12 +221,13 @@ const FoodItem = ( props ) => {
 		return (
 			<div className="wp-block-coblocks-food-item__figure">
 				<MediaPlaceholder
+					accept={ 'image/*' }
 					allowedTypes={ [ 'image' ] }
-					multiple={ false }
 					icon="format-image"
 					labels={ {
 						title: ' ',
 					} }
+					multiple={ false }
 					onSelect={ ( imageEntity ) => {
 						if ( isBlobURL( imageEntity?.url ) ) {
 							return;
@@ -253,8 +254,8 @@ const FoodItem = ( props ) => {
 			/>
 			<Inspector
 				{ ...props }
-				setSpicyTo={ setSpicyTo }
 				setHotTo={ setHotTo }
+				setSpicyTo={ setSpicyTo }
 			/>
 			<div
 				className={ classnames( className, {
@@ -266,21 +267,21 @@ const FoodItem = ( props ) => {
 				<div className="wp-block-coblocks-food-item__content">
 					<div className="wp-block-coblocks-food-item__heading-wrapper">
 						<RichText
-							value={ title }
-							tagName={ `h${ headingLevel }` }
-							wrapperClassName="wp-block-coblocks-food-item__heading"
-							placeholder={ __( 'Add title…', 'coblocks' ) }
 							onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
+							placeholder={ __( 'Add title…', 'coblocks' ) }
+							tagName={ `h${ headingLevel }` }
+							value={ title }
+							wrapperClassName="wp-block-coblocks-food-item__heading"
 							{ ...richTextAttributes }
 						/>
 						<div className="wp-block-coblocks-food-item__attributes">
 							{ ( ( isSelected && title ) || ( !! popular ) ) && (
 								<Button
-									icon={ icons.popular }
-									label={ __( 'Popular', 'coblocks' ) }
 									className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--popular', {
 										'is-toggled': popular,
 									} ) }
+									icon={ icons.popular }
+									label={ __( 'Popular', 'coblocks' ) }
 									onClick={ () =>
 										setAttributes( { popular: ! popular } )
 									}
@@ -288,107 +289,107 @@ const FoodItem = ( props ) => {
 							) }
 							{ ( ( isSelected && title ) || ( !! spicy ) ) && (
 								<Button
-									icon={ icons.spicy }
-									label={ __( 'Spicy', 'coblocks' ) }
 									className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--spicy', {
 										'is-toggled': spicy,
 									} ) }
-									onClick={ setSpicyTo }
+									icon={ icons.spicy }
 									isToggled={ spicy }
+									label={ __( 'Spicy', 'coblocks' ) }
+									onClick={ setSpicyTo }
 								/>
 							) }
 							{ ( ( isSelected && title && !! spicy ) || ( !! spicier ) ) && (
 								<Button
-									icon={ icons.spicy }
-									label={ __( 'Hot', 'coblocks' ) }
 									className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--spicier', {
 										'is-toggled': spicier,
 									} ) }
+									icon={ icons.spicy }
+									isToggled={ spicier }
+									label={ __( 'Hot', 'coblocks' ) }
 									onClick={ () =>
 										setAttributes( { spicier: ! spicier } )
 									}
-									isToggled={ spicier }
 								/>
 							) }
 							{ ( ( isSelected && title ) || ( !! vegetarian ) ) && (
 								<Button
-									icon={ icons.vegetarian }
 									className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--vegetarian', {
 										'is-toggled': vegetarian,
 									} ) }
+									icon={ icons.vegetarian }
+									isToggled={ vegetarian }
 									label={ __( 'Vegetarian', 'coblocks' ) }
 									onClick={ () =>
 										setAttributes( {
 											vegetarian: ! vegetarian,
 										} )
 									}
-									isToggled={ vegetarian }
 								/>
 							) }
 							{ ( ( isSelected && !! glutenFree ) || ( !! glutenFree ) ) && (
 								// Only renders if the option is checked within the Settings sidebar.
 								<Button
-									icon={ icons.glutenFree }
 									className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--gluten-free', {
 										'is-toggled': glutenFree,
 									} ) }
+									icon={ icons.glutenFree }
+									isToggled={ glutenFree }
+									label={ __( 'Gluten free', 'coblocks' ) }
 									onClick={ () =>
 										setAttributes( {
 											glutenFree: ! glutenFree,
 										} ) }
-									label={ __( 'Gluten free', 'coblocks' ) }
-									isToggled={ glutenFree }
 								/>
 							) }
 							{ ( ( isSelected && !! pescatarian ) || ( !! pescatarian ) ) && (
 								// Only renders if the option is checked within the Settings sidebar.
 								<Button
-									icon={ icons.pescatarian }
-									label={ __( 'Pescatarian', 'coblocks' ) }
 									className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--pescatarian', {
 										'is-toggled': pescatarian,
 									} ) }
+									icon={ icons.pescatarian }
+									isToggled={ pescatarian }
+									label={ __( 'Pescatarian', 'coblocks' ) }
 									onClick={ () =>
 										setAttributes( {
 											pescatarian: ! pescatarian,
 										} )
 									}
-									isToggled={ pescatarian }
 								/>
 							) }
 							{ ( ( isSelected && !! vegan ) || ( !! vegan ) ) && (
 								// Only renders if the option is checked within the Settings sidebar.
 								<Button
-									icon={ icons.vegan }
 									className={ classnames( 'wp-block-coblocks-food-item__attribute', 'wp-block-coblocks-food-item__attribute--vegan', {
 										'is-toggled': vegan,
 									} ) }
+									icon={ icons.vegan }
+									isToggled={ vegan }
 									onClick={ () =>
 										setAttributes( { vegan: ! vegan } )
 									}
-									isToggled={ vegan }
 								/>
 							) }
 						</div>
 					</div>
 					<RichText
-						value={ description }
-						tagName="p"
-						wrapperClassName="wp-block-coblocks-food-item__description"
-						placeholder={ __( 'Add description…', 'coblocks' ) }
 						onChange={ ( newDescription ) => setAttributes( { description: newDescription } ) }
+						placeholder={ __( 'Add description…', 'coblocks' ) }
+						tagName="p"
+						value={ description }
+						wrapperClassName="wp-block-coblocks-food-item__description"
 						{ ...richTextAttributes }
 					/>
 					{ !! showPrice && ( price || isSelected ) && (
 						<RichText
-							value={ price }
-							tagName="p"
-							wrapperClassName="wp-block-coblocks-food-item__price"
-							placeholder={ __( '$0.00', 'coblocks' ) }
 							onChange={ ( newPrice ) => {
 								setPrice( newPrice );
 								setAttributes( { price: newPrice } );
 							} }
+							placeholder={ __( '$0.00', 'coblocks' ) }
+							tagName="p"
+							value={ price }
+							wrapperClassName="wp-block-coblocks-food-item__price"
 							{ ...richTextAttributes }
 						/>
 					) }
