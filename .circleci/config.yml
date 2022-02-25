@@ -83,7 +83,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_81_browsers_mysql_mailhog:
     docker:
-      - image: cimg/php:8.1-browsers
+      - image: cimg/php:8.0-browsers
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
