@@ -1,11 +1,11 @@
 /**
  * Internal dependencies.
  */
-import { hasEmptyAttributes } from '../../../utils/block-helpers';
-import Inspector from './inspector';
 import Controls from '../controls';
 import fromEntries from '../../../js/coblocks-fromEntries';
+import { hasEmptyAttributes } from '../../../utils/block-helpers';
 import icons from './icons';
+import Inspector from './inspector';
 
 /**
  * External dependencies.
@@ -16,15 +16,15 @@ import classnames from 'classnames';
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { useEffect, useState } from '@wordpress/element';
-import { Button, ButtonGroup, DropZone, Spinner } from '@wordpress/components';
-import { withDispatch, withSelect } from '@wordpress/data';
-import { MediaPlaceholder, RichText } from '@wordpress/block-editor';
-import { mediaUpload } from '@wordpress/editor';
-import { isBlobURL } from '@wordpress/blob';
-import { createBlock } from '@wordpress/blocks';
-import { compose, usePrevious } from '@wordpress/compose';
 import { closeSmall } from '@wordpress/icons';
+import { createBlock } from '@wordpress/blocks';
+import { isBlobURL } from '@wordpress/blob';
+import { mediaUpload } from '@wordpress/editor';
+import { Button, ButtonGroup, DropZone, Spinner } from '@wordpress/components';
+import { compose, usePrevious } from '@wordpress/compose';
+import { MediaPlaceholder, RichText } from '@wordpress/block-editor';
+import { useEffect, useState } from '@wordpress/element';
+import { withDispatch, withSelect } from '@wordpress/data';
 
 const isEmpty = ( attributes ) => {
 	const attributesToCheck = [ 'url', 'title', 'description', 'price' ];
@@ -143,7 +143,7 @@ const FoodItem = ( props ) => {
 			filesList: files,
 			onFileChange: ( [ media ] ) => {
 				setUrl( media.url );
-				setAttributes( { url: media.url, alt: media.alt } );
+				setAttributes( { alt: media.alt, url: media.url } );
 			},
 		} );
 	};
@@ -172,8 +172,8 @@ const FoodItem = ( props ) => {
 		} = attributes;
 
 		const classes = classnames( 'wp-block-coblocks-food-item__figure', {
-			'is-transient': isBlobURL( attributeUrl ),
 			'is-selected': isSelected,
+			'is-transient': isBlobURL( attributeUrl ),
 		} );
 
 		const dropZone = (
@@ -411,11 +411,11 @@ const applyWithSelect = withSelect( ( select, props ) => {
 	const innerItems = getBlocksByClientId( props.clientId )[ 0 ].innerBlocks;
 
 	return {
-		selectedParentClientId: parentClientId,
-		innerItems,
 		getBlockRootClientId,
 		getBlockSelectionStart,
 		getBlocksByClientId,
+		innerItems,
+		selectedParentClientId: parentClientId,
 	};
 } );
 
