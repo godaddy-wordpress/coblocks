@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * CoBlocks_Plugin_Deactivation Class
  *
- * @since NEXT
+ * @since 2.22.1
  */
 class CoBlocks_Plugin_Deactivation {
 
