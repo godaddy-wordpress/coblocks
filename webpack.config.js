@@ -20,6 +20,7 @@ const scripts = [
 	'coblocks-google-maps',
 	'coblocks-google-recaptcha',
 	'coblocks-lightbox',
+	'coblocks-masonry',
 	'coblocks-post-carousel',
 	'coblocks-tinyswiper-initializer',
 ];
