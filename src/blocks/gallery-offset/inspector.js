@@ -69,33 +69,36 @@ const Inspector = ( props ) => {
 	const sizeOptions = () => {
 		const defaultOptions = [
 			{
-				/* translators: abbreviation for large size */
-				label: __( 'L', 'coblocks' ),
-				tooltip: __( 'Large', 'coblocks' ),
-				value: 'large',
-			},
-			{
-				/* translators: abbreviation for large size */
-				label: __( 'XL', 'coblocks' ),
-				tooltip: __( 'Extra Large', 'coblocks' ),
-				value: 'huge',
-			},
-		];
-
-		if ( !! align && align !== 'none' ) {
-			defaultOptions.unshift( {
-				/* translators: abbreviation for medium size */
-				label: __( 'M', 'coblocks' ),
-				tooltip: __( 'Medium', 'coblocks' ),
-				value: 'medium',
-			} );
-		}
-		if ( align === 'full' ) {
-			defaultOptions.unshift( {
 				/* translators: abbreviation for small size */
 				label: __( 'S', 'coblocks' ),
 				tooltip: __( 'Small', 'coblocks' ),
 				value: 'small',
+
+			},
+			{
+				/* translators: abbreviation for medium size */
+				label: __( 'M', 'coblocks' ),
+				tooltip: __( 'Medium', 'coblocks' ),
+				value: 'medium',
+
+			},
+		];
+
+		if ( !! align && align !== 'none' ) {
+			defaultOptions.push( {
+				/* translators: abbreviation for large size */
+				label: __( 'L', 'coblocks' ),
+				tooltip: __( 'Large', 'coblocks' ),
+				value: 'large',
+
+			} );
+		}
+		if ( align === 'full' ) {
+			defaultOptions.push( {
+				/* translators: abbreviation for large size */
+				label: __( 'XL', 'coblocks' ),
+				tooltip: __( 'Extra Large', 'coblocks' ),
+				value: 'huge',
 			} );
 		}
 		return defaultOptions;
