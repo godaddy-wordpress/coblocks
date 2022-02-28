@@ -167,7 +167,6 @@ const Edit = ( props ) => {
 											className="components-coblocks-row-placeholder__button block-editor-inner-blocks__template-picker-option block-editor-block-pattern-picker__pattern"
 											isSecondary
 											onClick={ () => {
-												__unstableMarkNextChangeAsNotPersistent();
 												setAttributes( {
 													columns: option.columns,
 													layout: option.columns === 1 ? option.key : null,
@@ -191,7 +190,6 @@ const Edit = ( props ) => {
 									icon="exit"
 									label={ __( 'Back to columns', 'coblocks' ) }
 									onClick={ () => {
-										__unstableMarkNextChangeAsNotPersistent();
 										setAttributes( {
 											columns: null,
 										} );
@@ -206,7 +204,6 @@ const Edit = ( props ) => {
 												isSecondary
 												key={ option.key }
 												onClick={ () => {
-													__unstableMarkNextChangeAsNotPersistent();
 													setAttributes( {
 														layout: option.key,
 													} );
@@ -310,8 +307,6 @@ const Edit = ( props ) => {
 	}
 
 	const blockVariationPickerOnSelect = ( nextVariation = defaultVariation ) => {
-		__unstableMarkNextChangeAsNotPersistent();
-
 		if ( nextVariation.attributes ) {
 			setAttributes( nextVariation.attributes );
 		}
