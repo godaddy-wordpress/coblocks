@@ -72,13 +72,13 @@ const Inspector = ( props ) => {
 				/* translators: abbreviation for large size */
 				label: __( 'L', 'coblocks' ),
 				tooltip: __( 'Large', 'coblocks' ),
-				value: 'lrg',
+				value: 'large',
 			},
 			{
 				/* translators: abbreviation for large size */
 				label: __( 'XL', 'coblocks' ),
 				tooltip: __( 'Extra Large', 'coblocks' ),
-				value: 'xlrg',
+				value: 'huge',
 			},
 		];
 
@@ -87,7 +87,7 @@ const Inspector = ( props ) => {
 				/* translators: abbreviation for medium size */
 				label: __( 'M', 'coblocks' ),
 				tooltip: __( 'Medium', 'coblocks' ),
-				value: 'med',
+				value: 'medium',
 			} );
 		}
 		if ( align === 'full' ) {
@@ -95,7 +95,7 @@ const Inspector = ( props ) => {
 				/* translators: abbreviation for small size */
 				label: __( 'S', 'coblocks' ),
 				tooltip: __( 'Small', 'coblocks' ),
-				value: 'sml',
+				value: 'small',
 			} );
 		}
 		return defaultOptions;
