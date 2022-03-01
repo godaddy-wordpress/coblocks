@@ -15,7 +15,7 @@
 ### How has this been tested?
 <!-- Please describe in detail how you tested your changes. -->
 
-### Acceptance Criteria
+### Acceptance criteria
 <!-- Does this PR have a clearly defined acceptance criteria? -->
 <!-- If there is a clear criteria it should be included within this PR. -->
 <!-- If no criteria explain reason for PR -->
