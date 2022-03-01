@@ -1,5 +1,7 @@
 ### Description
 <!-- Please describe what you have changed or added -->
+<!-- Search for original issue and link below -->
+
 
 ### Screenshots
 <!-- if applicable -->
@@ -12,6 +14,12 @@
 
 ### How has this been tested?
 <!-- Please describe in detail how you tested your changes. -->
+
+### Acceptance Criteria
+<!-- Does this PR have a clearly defined acceptance criteria? -->
+<!-- If there is a clear criteria it should be included within this PR. -->
+<!-- If no criteria explain reason for PR -->
+
 
 ### Checklist:
 - [ ] My code is tested
