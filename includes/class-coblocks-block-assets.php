@@ -367,7 +367,7 @@ class CoBlocks_Block_Assets {
 		if ( $this->is_page_gutenberg() || has_block( 'coblocks/gallery-carousel' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
 				'coblocks-tiny-swiper',
-				$vendors_dir . '/tiny-swiper.js',
+				$vendors_dir . 'tiny-swiper.js',
 				array(),
 				COBLOCKS_VERSION,
 				true
