@@ -1,8 +1,8 @@
 /**
  * Internal dependencies
  */
-import InspectorControls from './inspector';
 import { SERVICE_ALLOWED_BLOCKS as ALLOWED_BLOCKS } from '../utilities';
+import InspectorControls from './inspector';
 
 /**
  * External dependencies.
@@ -13,44 +13,49 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { closeSmall } from '@wordpress/icons';
+import { createBlock } from '@wordpress/blocks';
+import { isBlobURL } from '@wordpress/blob';
 import { useEffect } from '@wordpress/element';
 import {
+	BlockControls,
 	// Disable reason: We choose to use unsafe APIs in our codebase.
 	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalImageURLInputUI as ImageURLInputUI,
-	BlockControls,
 	InnerBlocks,
 	MediaPlaceholder,
+	MediaReplaceFlow,
 	MediaUpload,
 	MediaUploadCheck,
-	MediaReplaceFlow,
 } from '@wordpress/block-editor';
-import { DropZone, Button, Spinner, ButtonGroup } from '@wordpress/components';
-import { useSelect, useDispatch } from '@wordpress/data';
-import { isBlobURL } from '@wordpress/blob';
-import { closeSmall } from '@wordpress/icons';
-import { createBlock } from '@wordpress/blocks';
+import { Button, ButtonGroup, DropZone, Spinner } from '@wordpress/components';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 const Edit = ( props ) => {
-	const {	attributes, clientId, setAttributes } = props;
+	const {
+		attributes,
+		clientId,
+		isSelected,
+		setAttributes,
+	} = props;
 
 	const innerItems = useSelect( ( select ) => select( 'core/block-editor' ).getBlocks( clientId ), [] );
 	const image = useSelect( ( select ) => select( 'core' ).getMedia( attributes.imageId ), [] );
 
 	/**
 	 * This functional components `props.isSelected` value does not detect when nested children blocks are selected.
-	 * Here we re-declare isSelected as a local variable with improved logic to detect when nested children have been selected.
+	 * Here we declare isBlockSelected as a local variable with improved logic to detect when nested children have been selected.
 	 *
 	 * @type {boolean} Whether or not this Service block or one of its nested children are selected.
 	 */
-	const isSelected = useSelect( ( select ) => {
+	const isBlockSelected = useSelect( ( select ) => {
 		const {	getBlockHierarchyRootClientId, getSelectedBlockClientId } = select( 'core/block-editor' );
 
 		// Get clientID of the parent block.
 		const rootClientId = getBlockHierarchyRootClientId( clientId );
 		const selectedRootClientId = getBlockHierarchyRootClientId( getSelectedBlockClientId() );
 
-		return props.isSelected || rootClientId === selectedRootClientId;
+		return isSelected || rootClientId === selectedRootClientId;
 	} );
 
 	const { updateBlockAttributes, insertBlock, removeBlocks } = useDispatch( 'core/block-editor' );
@@ -110,50 +115,50 @@ const Edit = ( props ) => {
 	};
 
 	const replaceImage = ( file ) => {
-		setAttributes( { imageUrl: file.url, imageAlt: file.alt, imageId: file.id } );
+		setAttributes( { imageAlt: file.alt, imageId: file.id, imageUrl: file.url } );
 	};
 
 	const renderImage = () => {
 		const classes = classnames( 'wp-block-coblocks-service__figure', {
+			'is-selected': isBlockSelected,
 			'is-transient': isBlobURL( attributes.imageUrl ),
-			'is-selected': isSelected,
 		} );
 
 		const dropZone = (
 			<DropZone
-				onFilesDrop={ replaceImage }
 				label={ __( 'Drop image to replace', 'coblocks' ) }
+				onFilesDrop={ replaceImage }
 			/>
 		);
 
 		return (
 			<>
 				<figure className={ classes }>
-					{ isSelected && (
+					{ isBlockSelected && (
 						<ButtonGroup className="block-library-gallery-item__inline-menu is-right is-visible">
 							<MediaUploadCheck>
 								<MediaUpload
 									allowedTypes={ [ 'image' ] }
 									onSelect={ ( img ) => replaceImage( img ) }
-									value={ image?.url }
 									render={ ( { open } ) => (
 										<>
 											<Button
-												icon={ closeSmall }
-												onClick={ () => setAttributes( { imageUrl: '', imageAlt: '', imageId: null } ) }
 												className="coblocks-gallery-item__button"
+												disabled={ ! isBlockSelected }
+												icon={ closeSmall }
 												label={ __( 'Remove image', 'coblocks' ) }
-												disabled={ ! isSelected }
+												onClick={ () => setAttributes( { imageAlt: '', imageId: null, imageUrl: '' } ) }
 											/>
 											<Button
 												className="coblocks-gallery-item__button-replace"
-												onClick={ open }
 												label={ __( 'Replace Image', 'coblocks' ) }
+												onClick={ open }
 											>
 												{ __( 'Replace', 'coblocks' ) }
 											</Button>
 										</>
 									) }
+									value={ image?.url }
 								>
 								</MediaUpload>
 							</MediaUploadCheck>
@@ -161,7 +166,7 @@ const Edit = ( props ) => {
 					) }
 					{ dropZone }
 					{ isBlobURL( attributes.imageUrl ) && <Spinner /> }
-					<img src={ attributes.imageUrl } alt={ attributes.imageAlt } style={ { objectPosition: attributes.focalPoint ? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y * 100 }%` : undefined } } />
+					<img alt={ attributes.imageAlt } src={ attributes.imageUrl } style={ { objectPosition: attributes.focalPoint ? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y * 100 }%` : undefined } } />
 				</figure>
 			</>
 		);
@@ -170,14 +175,15 @@ const Edit = ( props ) => {
 	const renderPlaceholder = () => {
 		return (
 			<MediaPlaceholder
-				className="wp-block-coblocks-service__figure"
+				accept={ 'image/*' }
 				allowedTypes={ [ 'image' ] }
-				multiple={ false }
+				className="wp-block-coblocks-service__figure"
 				icon="format-image"
 				labels={ {
 					title: ' ',
 				} }
-				onSelect={ ( el ) => setAttributes( { imageUrl: el.url, imageAlt: el.alt, imageId: el.id } ) }
+				multiple={ false }
+				onSelect={ ( el ) => setAttributes( { imageAlt: el.alt, imageId: el.id, imageUrl: el.url } ) }
 			/>
 		);
 	};
@@ -209,17 +215,17 @@ const Edit = ( props ) => {
 		[
 			'core/heading',
 			{
-				placeholder: /* translators: placeholder text for input box */ __( 'Write title…', 'coblocks' ),
 				level: headingLevel,
+				placeholder: /* translators: placeholder text for input box */ __( 'Write title…', 'coblocks' ),
 				textAlign: alignment,
 			},
 		],
 		[
 			'core/paragraph',
 			{
+				align: alignment,
 				/* translators: content placeholder */
 				placeholder: __( 'Write description…', 'coblocks' ),
-				align: alignment,
 			},
 		],
 	];
@@ -236,21 +242,21 @@ const Edit = ( props ) => {
 				/>
 				{ imageUrl && (
 					<ImageURLInputUI
-						url={ href || '' }
-						onChangeUrl={ onSetHref }
-						linkDestination={ linkDestination }
-						mediaUrl={ imageUrl }
-						mediaLink={ image && image.link }
-						linkTarget={ linkTarget }
 						linkClass={ linkClass }
+						linkDestination={ linkDestination }
+						linkTarget={ linkTarget }
+						mediaLink={ image && image.link }
+						mediaUrl={ imageUrl }
+						onChangeUrl={ onSetHref }
 						rel={ rel }
+						url={ href || '' }
 					/>
 				) }
 			</BlockControls>
 			<InspectorControls
 				attributes={ attributes }
-				setAttributes={ setAttributes }
 				onToggleCta={ toggleCta }
+				setAttributes={ setAttributes }
 			/>
 			<div className={ className }>
 				{ imageUrl ? renderImage() : renderPlaceholder() }
@@ -258,8 +264,8 @@ const Edit = ( props ) => {
 					<InnerBlocks
 						allowedBlocks={ ALLOWED_BLOCKS }
 						template={ TEMPLATE }
-						templateLock={ false }
 						templateInsertUpdatesSelection={ false }
+						templateLock={ false }
 					/>
 				</div>
 			</div>
