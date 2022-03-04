@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-03-01T22:01:37+00:00\n"
+"POT-Creation-Date: 2022-03-04T18:53:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: coblocks\n"
@@ -1809,7 +1809,7 @@ msgid "Remove"
 msgstr ""
 
 #: src/blocks/form/edit.js:451
-#: src/blocks/row/edit.js:324
+#: src/blocks/row/edit.js:329
 msgid "Select a variation to start with."
 msgstr ""
 
@@ -2749,7 +2749,7 @@ msgid "Change layout"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/hero/edit.js:40
+#: src/blocks/hero/edit.js:41
 msgid "Add hero heading…"
 msgstr ""
 
@@ -2764,11 +2764,11 @@ msgid "Primary button…"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/hero/edit.js:70
+#: src/blocks/hero/edit.js:71
 msgid "Secondary button…"
 msgstr ""
 
-#: src/blocks/hero/edit.js:184
+#: src/blocks/hero/edit.js:188
 msgid "Add background to hero"
 msgstr ""
 
@@ -7811,7 +7811,7 @@ msgstr ""
 #. translators: icon label
 #. translators: block name
 #: src/blocks/icon/svgs-generated.js:2446
-#: src/blocks/row/edit.js:148
+#: src/blocks/row/edit.js:159
 #: src/blocks/row/index.js:39
 msgid "Row"
 msgstr ""
@@ -8712,64 +8712,64 @@ msgstr ""
 msgid "Change row block layout"
 msgstr ""
 
-#: src/blocks/row/edit.js:95
+#: src/blocks/row/edit.js:98
 msgid "one"
 msgstr ""
 
-#: src/blocks/row/edit.js:97
+#: src/blocks/row/edit.js:100
 msgid "two"
 msgstr ""
 
-#: src/blocks/row/edit.js:99
+#: src/blocks/row/edit.js:102
 msgid "three"
 msgstr ""
 
-#: src/blocks/row/edit.js:101
+#: src/blocks/row/edit.js:104
 msgid "four"
 msgstr ""
 
-#: src/blocks/row/edit.js:116
+#: src/blocks/row/edit.js:119
 msgid "Add background to row"
 msgstr ""
 
-#: src/blocks/row/edit.js:121
+#: src/blocks/row/edit.js:124
 msgid "One column"
 msgstr ""
 
-#: src/blocks/row/edit.js:122
+#: src/blocks/row/edit.js:125
 msgid "Two columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:123
+#: src/blocks/row/edit.js:126
 msgid "Three columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:124
+#: src/blocks/row/edit.js:127
 msgid "Four columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:148
-msgid "Row layout"
-msgstr ""
-
 #. translators: %s: 'one' 'two' 'three' and 'four'
-#: src/blocks/row/edit.js:152
+#: src/blocks/row/edit.js:153
 msgid "Select a layout for this %s column row."
 msgstr ""
 
-#: src/blocks/row/edit.js:155
+#: src/blocks/row/edit.js:156
 msgid "Select the number of columns for this row."
 msgstr ""
 
 #: src/blocks/row/edit.js:159
+msgid "Row layout"
+msgstr ""
+
+#: src/blocks/row/edit.js:162
 msgid "Select row columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:184
+#: src/blocks/row/edit.js:187
 msgid "Select row layout"
 msgstr ""
 
-#: src/blocks/row/edit.js:194
+#: src/blocks/row/edit.js:191
 msgid "Back to columns"
 msgstr ""
 
