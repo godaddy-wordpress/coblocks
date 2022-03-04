@@ -89,7 +89,7 @@ const Edit = ( props ) => {
 		if ( prevHasInnerBlocks && ! hasInnerBlocks ) {
 			__unstableMarkNextChangeAsNotPersistent();
 			setLayoutSelection( true );
-			setAttributes( { layout: null, columns: null } );
+			setAttributes( { columns: null, layout: null } );
 		}
 	}, [ hasInnerBlocks, prevHasInnerBlocks ] );
 
@@ -121,10 +121,10 @@ const Edit = ( props ) => {
 	);
 
 	const columnOptions = [
-		{ columns: 1, name: __( 'One column', 'coblocks' ), icon: rowIcons.colOne, key: '100' },
-		{ columns: 2, name: __( 'Two columns', 'coblocks' ), icon: rowIcons.colTwo },
-		{ columns: 3, name: __( 'Three columns', 'coblocks' ), icon: rowIcons.colThree },
-		{ columns: 4, name: __( 'Four columns', 'coblocks' ), icon: rowIcons.colFour },
+		{ columns: 1, icon: rowIcons.colOne, key: '100', name: __( 'One column', 'coblocks' ) },
+		{ columns: 2, icon: rowIcons.colTwo, name: __( 'Two columns', 'coblocks' ) },
+		{ columns: 3, icon: rowIcons.colThree, name: __( 'Three columns', 'coblocks' ) },
+		{ columns: 4, icon: rowIcons.colFour, name: __( 'Four columns', 'coblocks' ) },
 	];
 
 	let selectedRows = 1;
@@ -237,8 +237,10 @@ const Edit = ( props ) => {
 		'wp-block-coblocks-row__inner',
 		...BackgroundClasses( attributes ), {
 			'has-text-color': textColor.color,
+			// eslint-disable-next-line sort-keys
 			'has-padding': paddingSize && paddingSize !== 'no',
 			[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
+			// eslint-disable-next-line sort-keys
 			'has-margin': marginSize && marginSize !== 'no',
 			[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'advanced',
 			'is-stacked-on-mobile': isStackedOnMobile,
@@ -251,14 +253,14 @@ const Edit = ( props ) => {
 		backgroundImage: backgroundImg && backgroundType === 'image' ? `url(${ backgroundImg })` : undefined,
 		backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 		color: textColor.color,
-		paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
-		paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
-		paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
-		paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
-		marginTop: marginSize === 'advanced' && marginTop ? marginTop + marginUnit : undefined,
-		marginRight: marginSize === 'advanced' && marginRight ? marginRight + marginUnit : undefined,
 		marginBottom: marginSize === 'advanced' && marginBottom ? marginBottom + marginUnit : undefined,
 		marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
+		marginRight: marginSize === 'advanced' && marginRight ? marginRight + marginUnit : undefined,
+		marginTop: marginSize === 'advanced' && marginTop ? marginTop + marginUnit : undefined,
+		paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
+		paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
+		paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
+		paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 	};
 
 	if ( hasInnerBlocks && !! layout ) {
@@ -348,16 +350,16 @@ const applyWithSelect = withSelect( ( select, props ) => {
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 
 	return {
-		// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
-		innerBlocks,
-		hasInnerBlocks: select( 'core/block-editor' ).getBlocks( props.clientId ).length > 0,
-
 		blockType: getBlockType( props.name ),
 		defaultVariation: typeof getDefaultBlockVariation === 'undefined' ? null : getDefaultBlockVariation( props.name ),
-		variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( props.name ),
-		replaceInnerBlocks,
-
 		getBlocksByClientId, // passed to controls & inspector
+		hasInnerBlocks: select( 'core/block-editor' ).getBlocks( props.clientId ).length > 0,
+
+		// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
+		innerBlocks,
+
+		replaceInnerBlocks,
+		variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( props.name ),
 	};
 } );
 
