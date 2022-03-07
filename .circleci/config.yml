@@ -403,11 +403,11 @@ commands:
       - setup_e2e_env_var
       - changed_files_with_extension:
           ext: ".js"
-      - setup_spec_files_diff_tree
       - disable_xdebug_php_extension
       - attach_workspace:
           at: ~/project
       - restore_yarn_cache
+      - setup_spec_files_diff_tree
       - wait_for_mysql
       - run:
           name: Install Composer dependencies
@@ -480,7 +480,7 @@ commands:
           name: Setup spec files to run based on git diff-tree
           command: |
             if [[ "$CIRCLE_BRANCH" != "master" && "$CIRCLE_BRANCH" != "develop" && "$CIRCLE_BRANCH" != *"run-all-tests"* ]]; then
-              bash .dev/bin/setup-test-specs.sh $FILES
+              node ./node_modules/@godaddy-wordpress/scripts/setup-test-specs.js $FILES
             fi
 
   pre_check_files:
@@ -517,7 +517,7 @@ commands:
       - run:
           name: "Install WordPress Testing Suite"
           command: |
-            bash .dev/bin/install-dependencies.sh
+            node ./node_modules/@godaddy-wordpress/scripts/install-dependencies.js
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
 
   run_php_unit_tests:
@@ -638,7 +638,7 @@ jobs:
           at: ~/project
       - run:
           name: Send Comment
-          command: bash .dev/bin/comment-on-pr.sh
+          command: node ./node_modules/@godaddy-wordpress/scripts/comment-on-pr.js
 
   # --------------------------------------------------
   # Code Quality Checks
@@ -834,19 +834,19 @@ jobs:
             fi
       - changed_files_with_extension:
           ext: ".js"
-      - setup_spec_files_diff_tree
       - restore_yarn_cache
       - run:
           name: Install Node dependencies
           command: |
             PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
             yarn install --frozen-lockfile
+      - setup_spec_files_diff_tree
       - run:
           name: Aggregate performance test results
           command: .dev/performance/cli-results.js get-test-results "${CIRCLE_BRANCH}"
       - run:
           name: Comment Performance Test Results on PR
-          command: bash .dev/bin/comment-perf-results-on-pr.sh
+          command: node ./node_modules/@godaddy-wordpress/scripts/comment-perf-results-on-pr.js
 
   # --------------------------------------------------
   # Internationalization Processes
@@ -977,6 +977,6 @@ jobs:
             mv build/*.zip /tmp/artifacts
       - deploy:
           name: Deploy the plugin
-          command: bash .dev/bin/deploy-plugin.sh
+          command: node ./node_modules/@godaddy-wordpress/scripts/deploy-plugin.js
       - store_artifacts:
           path: /tmp/artifacts
