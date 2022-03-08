@@ -167,7 +167,7 @@ const save = ( props ) => {
 					<div className={ thumbnailContainerClasses }>
 						{ images.map( ( item, index ) => {
 							return (
-								<div className={ thumbnailClasses } id={ `wp-block-coblocks-gallery-carousel-thumbnail-${ index }` } key={ index } style={ { height: '80px', width: '100px' } } >
+								<button className={ thumbnailClasses } id={ `wp-block-coblocks-gallery-carousel-thumbnail-${ index }` } key={ index } style={ { height: '80px', width: '100px' } } tabIndex="0" >
 									<img
 										alt={ item.alt }
 										data-id={ item.id }
@@ -175,7 +175,7 @@ const save = ( props ) => {
 										src={ item.url }
 										style={ { height: '100%', width: '100%' } }
 									/>
-								</div>
+								</button>
 							);
 						} ) }
 					</div>
