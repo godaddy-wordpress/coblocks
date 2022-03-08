@@ -649,60 +649,41 @@ const deprecated =
 			...BackgroundAttributes,
 			...metadata.attributes,
 		},
-		save: ( { attributes, className } ) => {
+		save( { attributes } ) {
 			const {
 				autoPlay,
 				autoPlaySpeed,
 				draggable,
-				freeScroll,
-				gridSize,
 				gutter,
-				gutterMobile,
-				height,
 				images,
-				pageDots,
 				pauseHover,
+				freeScroll,
 				prevNextButtons,
-				primaryCaption,
-				alignCells,
 				thumbnails,
 				responsiveHeight,
 				lightbox,
+				loop,
+				pageDots,
+				gutterMobile,
+				height,
+				alignCells,
+				gridSize,
 				navForClass,
 			} = attributes;
 
-			// Return early if there are no images.
 			if ( images.length <= 0 ) {
-				return;
+				return null;
 			}
-
-			const classes = classnames(
-				className, {
-					'has-responsive-height': responsiveHeight,
-				}
-			);
 
 			const innerClasses = classnames(
 				'is-cropped',
-				...GalleryClasses( attributes ), {
+				...GalleryClasses( attributes ),
+				{
 					'has-horizontal-gutter': gutter > 0,
 					'has-lightbox': lightbox,
+					'has-no-thumbnails': ! thumbnails,
 				}
 			);
-
-			const flickityClasses = classnames(
-				'has-carousel',
-				`has-carousel-${ gridSize }`, {
-					'has-aligned-cells': alignCells,
-					[ `has-margin-bottom-${ gutter }` ]: thumbnails && gutter > 0,
-					[ `has-margin-bottom-mobile-${ gutterMobile }` ]: thumbnails && gutterMobile > 0,
-					[ navForClass ]: thumbnails,
-				}
-			);
-
-			const flickityStyles = {
-				height: height ? height + 'px' : undefined,
-			};
 
 			const figureClasses = classnames(
 				'coblocks-gallery--figure', {
@@ -713,43 +694,9 @@ const deprecated =
 				}
 			);
 
-			const flickityOptions = {
-				autoPlay: autoPlay && autoPlaySpeed ? parseFloat( autoPlaySpeed ) : false,
-				draggable,
-				pageDots,
-				prevNextButtons,
-				wrapAround: true,
-				cellAlign: alignCells ? 'left' : 'center',
-				pauseAutoPlayOnHover: pauseHover,
-				freeScroll,
-				arrowShape: {
-					x0: 10,
-					x1: 60, y1: 50,
-					x2: 65, y2: 45,
-					x3: 20,
-				},
-				thumbnails,
-				responsiveHeight,
-			};
-
-			const captionClasses = classnames(
-				'coblocks-gallery--caption',
-				'coblocks-gallery--primary-caption', {}
-			);
-
-			const navClasses = classnames(
-				'carousel-nav', {
-					[ `has-margin-top-${ gutter }` ]: gutter > 0,
-					[ `has-margin-top-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-					[ `has-negative-margin-left-${ gutter }` ]: gutter > 0,
-					[ `has-negative-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-					[ `has-negative-margin-right-${ gutter }` ]: gutter > 0,
-					[ `has-negative-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-				}
-			);
-
-			const navFigureClasses = classnames(
-				'coblocks--figure', {
+			const thumbnailClasses = classnames(
+				'wp-block-coblocks-gallery-carousel-thumbnail',
+				{
 					[ `has-margin-left-${ gutter }` ]: gutter > 0,
 					[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 					[ `has-margin-right-${ gutter }` ]: gutter > 0,
@@ -757,59 +704,116 @@ const deprecated =
 				}
 			);
 
-			const navOptions = {
-				asNavFor: `.${ navForClass }`,
-				autoPlay: false,
-				contain: true,
-				cellAlign: 'left',
-				pageDots: false,
-				thumbnails: false,
+			const thumbnailContainerClasses = classnames(
+				'wp-block-coblocks-gallery-carousel-thumbnail-pagination',
+				{
+					[ `has-margin-top-${ gutter }` ]: gutter > 0,
+					[ `has-margin-top-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+				}
+			);
+
+			const captionClasses = classnames(
+				'coblocks-gallery--caption',
+				'coblocks-gallery--primary-caption', {}
+			);
+
+			const swiperClasses = classnames(
+				'has-carousel',
+				`has-carousel-${ gridSize }`,
+				'swiper-container',
+				{
+					'has-aligned-cells': alignCells,
+					'has-responsive-height': responsiveHeight,
+					[ navForClass ]: thumbnails,
+				}
+			);
+
+			const swiperStyles = {
+				height: height ? `${ height }px` : undefined,
+			};
+
+			const uuid = '12345';
+
+			const swiperSizing = {
+				lrg: 2,
+				med: 4,
+				sml: 5,
+				xlrg: 1,
+			};
+
+			const swiperOptions = {
+				alignCells,
+				autoPlay,
+				autoPlaySpeed,
 				draggable,
-				prevNextButtons: false,
-				wrapAround: false,
+				freeScroll,
+				loop,
+				navigation: prevNextButtons,
+				pageDots,
+				pauseHover,
+				responsiveHeight,
+				slidesPerView: swiperSizing[ gridSize ],
+				thumbnails,
+				uuid,
 			};
 
 			return (
-				<div aria-label={ __( `Carousel Gallery`, 'coblocks' ) }
-					className={ classes }>
+				<div aria-label={ __( `Carousel Gallery`, 'coblocks' ) } >
 					<div className={ innerClasses }>
-						<div
-							className={ flickityClasses }
-							style={ responsiveHeight ? undefined : flickityStyles }
-							data-flickity={ JSON.stringify( flickityOptions ) }
-						>
-							{ images.map( ( image ) => {
-								const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
-
-								return (
-									<div key={ image.id || image.url } className="coblocks-gallery--item">
-										<figure className={ figureClasses }>
-											{ img }
-										</figure>
-									</div>
-								);
-							} ) }
-						</div>
-						{ thumbnails
-							? (
-								<div
-									className={ navClasses }
-									data-flickity={ JSON.stringify( navOptions ) }
-								>
-									{ images.map( ( image ) => {
-										const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } />;
-										return (
-											<div key={ image.id || image.url } className="coblocks--item-thumbnail">
-												<figure className={ navFigureClasses }>
-													{ img }
+						<div className={ swiperClasses } data-swiper={ JSON.stringify( swiperOptions ) } id={ uuid } style={ responsiveHeight ? undefined : swiperStyles } >
+							<div className="swiper-wrapper" id="swiper-wrapper">
+								{ images.map( ( image, index ) => {
+									return (
+										<div className="swiper-slide" key={ index }>
+											<div
+												className="coblocks-gallery--item"
+												role="button"
+												tabIndex={ index }
+											>
+												<figure className={ figureClasses }>
+													<img
+														alt={ image.alt }
+														className={ image.id ? `wp-image-${ image.id }` : null }
+														data-id={ image.id }
+														data-link={ image.link }
+														src={ image.url }
+													/>
 												</figure>
+												<RichText.Content className={ captionClasses } tagName="figcaption" value={ image.caption } />
 											</div>
-										);
-									} ) }
-								</div> ) : null
-						}
+										</div>
+									);
+								} ) }
+							</div>
+							{ prevNextButtons && (
+								<>
+									<button className={ `nav-button__prev` } id={ `${ uuid }-prev` } >
+										<svg className="icon" style={ { transform: 'rotate(180deg)' } } />
+									</button>
+									<button className={ `nav-button__next` } id={ `${ uuid }-next` } >
+										<svg className="icon" />
+									</button>
+								</>
+							) }
+						</div>
+						{ thumbnails && (
+							<div className={ thumbnailContainerClasses }>
+								{ images.map( ( item, index ) => {
+									return (
+										<div className={ thumbnailClasses } id={ `wp-block-coblocks-gallery-carousel-thumbnail-${ index }` } key={ index } style={ { height: '80px', width: '100px' } } >
+											<img
+												alt={ item.alt }
+												data-id={ item.id }
+												data-link={ item.link }
+												src={ item.url }
+												style={ { height: '100%', width: '100%' } }
+											/>
+										</div>
+									);
+								} ) }
+							</div>
+						) }
 					</div>
-					{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } /> }
 				</div>
 			);
 		},
