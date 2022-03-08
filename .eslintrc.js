@@ -41,6 +41,11 @@ module.exports = {
 		'react/jsx-sort-props': [ 'warn', { ignoreCase: true } ],
 		'react/no-deprecated': [ 'warn' ],
 		'react/sort-prop-types': [ 'warn', { ignoreCase: true } ],
+
+		// Deactivation - we should decide if we want them or not
+		'jest/no-conditional-expect': 0,
+		'jest/valid-title': 0,
+		quotes: 0,
 	},
 	overrides: [
 		{

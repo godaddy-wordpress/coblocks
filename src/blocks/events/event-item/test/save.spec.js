@@ -2,7 +2,7 @@
  * External dependencies
  */
 import '@testing-library/jest-dom/extend-expect';
-import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
+import { createBlock, registerBlockType, serialize } from '@wordpress/blocks';
 
 /**
  * Internal dependencies.
@@ -14,14 +14,14 @@ let block;
 let serializedBlock;
 
 const DEFAULT_ATTRIBUTES = {
-	title: "Some title",
 	description: "Some description",
 	eventDay: "25",
-	eventMonth: "Nov",
-	eventYear: "2099",
-	eventTime: "5:25",
 	eventLocation: "Somewhere",
-}
+	eventMonth: "Nov",
+	eventTime: "5:25",
+	eventYear: "2099",
+	title: "Some title",
+};
 
 describe( name, () => {
 	beforeAll( () => {
@@ -50,7 +50,7 @@ describe( name, () => {
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		Object.entries( DEFAULT_ATTRIBUTES ).forEach( ( [key, value] ) => expect( serializedBlock ).toContain( value ) );
+		Object.entries( DEFAULT_ATTRIBUTES ).forEach( ( [ key, value ] ) => expect( serializedBlock ).toContain( value ) );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
