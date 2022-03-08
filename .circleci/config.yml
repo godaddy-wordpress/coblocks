@@ -21,6 +21,10 @@ executors:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
+      - image: cimg/node:16.14
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
   php_74_mysql:
     docker:
       - image: cimg/php:7.4
@@ -30,6 +34,10 @@ executors:
         environment:
           XDEBUG_MODE=coverage
       - image: cimg/mysql:5.7
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+      - image: cimg/node:16.14
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -69,6 +77,10 @@ executors:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
+      - image: cimg/node:16.14
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
   php_81_mysql:
     docker:
       - image: cimg/php:8.1
@@ -78,6 +90,10 @@ executors:
         environment:
           XDEBUG_MODE=coverage
       - image: cimg/mysql:5.7
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+      - image: cimg/node:16.14
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -517,7 +533,8 @@ commands:
       - run:
           name: "Install WordPress Testing Suite"
           command: |
-            node ./node_modules/@godaddy-wordpress/scripts/install-dependencies.js
+            sudo apt-get update && sudo apt-get install -y subversion default-mysql-client
+            node ./node_modules/@godaddy-wordpress/scripts/install-wp-tests.js wordpress_test root '' 127.0.0.1 latest
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
 
   run_php_unit_tests:
@@ -536,6 +553,7 @@ commands:
       - attach_workspace:
           at: ~/project
       - restore_composer_cache
+      - restore_yarn_cache
       - wait_for_mysql
       - when:
           condition: << parameters.newPhpUnit >>
