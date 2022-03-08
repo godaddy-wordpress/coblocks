@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.5
 Tested up to: 5.9
 Requires PHP: 5.6
-Stable tag: 2.22.0
+Stable tag: 2.22.1
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -111,6 +111,14 @@ Any properly developed WordPress theme will work with CoBlocks, though if you're
 Developers can also apply minor style touch-ups to their themes if necessary. If you're a developer and you need help, don't hesitate to [reach out](https://wordpress.org/support/plugin/coblocks/).
 
 == Changelog ==
+
+= 2.22.1 / 2022-02-25 =
+##### Enhancements
+* Introduce plugin deactivation feedback modal [#2266](https://github.com/godaddy-wordpress/coblocks/pull/2266)
+
+##### Bug fixes
+* Fix Masonry V1 markup on published pages [#2290](https://github.com/godaddy-wordpress/coblocks/pull/2290)
+* Fix color controls on Highlight block [#2287](https://github.com/godaddy-wordpress/coblocks/pull/2287)
 
 = 2.22.0 / 2022-02-22 (that's a lot of 2s ;) ) =
 ##### Enhancements

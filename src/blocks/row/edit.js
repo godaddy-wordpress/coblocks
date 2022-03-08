@@ -82,11 +82,14 @@ const Edit = ( props ) => {
 
 	const [ layoutSelection, setLayoutSelection ] = useState( true );
 
+	const { __unstableMarkNextChangeAsNotPersistent } = useDispatch( 'core/block-editor' );
+
 	useEffect( () => {
 		// Store the selected innerBlocks layout in state so that undo and redo functions work properly.
 		if ( prevHasInnerBlocks && ! hasInnerBlocks ) {
+			__unstableMarkNextChangeAsNotPersistent();
 			setLayoutSelection( true );
-			setAttributes( { layout: null, columns: null } );
+			setAttributes( { columns: null, layout: null } );
 		}
 	}, [ hasInnerBlocks, prevHasInnerBlocks ] );
 
@@ -118,10 +121,10 @@ const Edit = ( props ) => {
 	);
 
 	const columnOptions = [
-		{ columns: 1, name: __( 'One column', 'coblocks' ), icon: rowIcons.colOne, key: '100' },
-		{ columns: 2, name: __( 'Two columns', 'coblocks' ), icon: rowIcons.colTwo },
-		{ columns: 3, name: __( 'Three columns', 'coblocks' ), icon: rowIcons.colThree },
-		{ columns: 4, name: __( 'Four columns', 'coblocks' ), icon: rowIcons.colFour },
+		{ columns: 1, icon: rowIcons.colOne, key: '100', name: __( 'One column', 'coblocks' ) },
+		{ columns: 2, icon: rowIcons.colTwo, name: __( 'Two columns', 'coblocks' ) },
+		{ columns: 3, icon: rowIcons.colThree, name: __( 'Three columns', 'coblocks' ) },
+		{ columns: 4, icon: rowIcons.colFour, name: __( 'Four columns', 'coblocks' ) },
 	];
 
 	let selectedRows = 1;
@@ -142,10 +145,8 @@ const Edit = ( props ) => {
 					</>
 				) }
 				<Placeholder
-					key="placeholder"
 					className="components-coblocks-row-placeholder"
 					icon={ <Icon icon={ icon } /> }
-					label={ columns ? __( 'Row layout', 'coblocks' ) : __( 'Row', 'coblocks' ) }
 					instructions={ columns
 						? sprintf(
 							/* translators: %s: 'one' 'two' 'three' and 'four' */
@@ -154,6 +155,8 @@ const Edit = ( props ) => {
 						)
 						: __( 'Select the number of columns for this row.', 'coblocks' )
 					}
+					key="placeholder"
+					label={ columns ? __( 'Row layout', 'coblocks' ) : __( 'Row', 'coblocks' ) }
 				>
 					{ ! columns
 						? <ButtonGroup aria-label={ __( 'Select row columns', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
@@ -183,23 +186,23 @@ const Edit = ( props ) => {
 						: <>
 							<ButtonGroup aria-label={ __( 'Select row layout', 'coblocks' ) } className="block-editor-inner-blocks__template-picker-options block-editor-block-pattern-picker__patterns">
 								<Button
-									icon="exit"
 									className="components-coblocks-row-placeholder__back"
+									icon="exit"
+									label={ __( 'Back to columns', 'coblocks' ) }
 									onClick={ () => {
 										setAttributes( {
 											columns: null,
 										} );
 										setLayoutSelection( true );
 									} }
-									label={ __( 'Back to columns', 'coblocks' ) }
 								/>
 								{ map( layoutOptions[ selectedRows ], ( option ) => (
 									<Tooltip text={ option.name }>
 										<div className="components-coblocks-row-placeholder__button-wrapper">
 											<Button
-												key={ option.key }
 												className="components-coblocks-row-placeholder__button block-editor-inner-blocks__template-picker-option block-editor-block-pattern-picker__pattern"
 												isSecondary
+												key={ option.key }
 												onClick={ () => {
 													setAttributes( {
 														layout: option.key,
@@ -234,8 +237,10 @@ const Edit = ( props ) => {
 		'wp-block-coblocks-row__inner',
 		...BackgroundClasses( attributes ), {
 			'has-text-color': textColor.color,
+			// eslint-disable-next-line sort-keys
 			'has-padding': paddingSize && paddingSize !== 'no',
 			[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
+			// eslint-disable-next-line sort-keys
 			'has-margin': marginSize && marginSize !== 'no',
 			[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'advanced',
 			'is-stacked-on-mobile': isStackedOnMobile,
@@ -248,32 +253,32 @@ const Edit = ( props ) => {
 		backgroundImage: backgroundImg && backgroundType === 'image' ? `url(${ backgroundImg })` : undefined,
 		backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 		color: textColor.color,
-		paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
-		paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
-		paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
-		paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
-		marginTop: marginSize === 'advanced' && marginTop ? marginTop + marginUnit : undefined,
-		marginRight: marginSize === 'advanced' && marginRight ? marginRight + marginUnit : undefined,
 		marginBottom: marginSize === 'advanced' && marginBottom ? marginBottom + marginUnit : undefined,
 		marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
+		marginRight: marginSize === 'advanced' && marginRight ? marginRight + marginUnit : undefined,
+		marginTop: marginSize === 'advanced' && marginTop ? marginTop + marginUnit : undefined,
+		paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
+		paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
+		paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
+		paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 	};
 
-	if ( hasInnerBlocks || !! layout ) {
+	if ( hasInnerBlocks && !! layout ) {
 		const deprecatedInnerBlocks = () => (
 			<InnerBlocks
-				template={ template[ layout ] }
-				templateLock="all"
 				allowedBlocks={ allowedBlocks }
-				templateInsertUpdatesSelection={ columns === 1 }
 				renderAppender={ () => ( null ) }
+				template={ template[ layout ] }
+				templateInsertUpdatesSelection={ columns === 1 }
+				templateLock="all"
 			/>
 		);
 
 		const variationInnerBlocks = () => (
 			<InnerBlocks
 				allowedBlocks={ allowedBlocks }
-				templateInsertUpdatesSelection={ columns === 1 }
 				renderAppender={ () => ( null ) }
+				templateInsertUpdatesSelection={ columns === 1 }
 				templateLock="all" />
 		);
 
@@ -319,12 +324,12 @@ const Edit = ( props ) => {
 	return (
 		<>
 			<__experimentalBlockVariationPicker
-				icon={ get( blockType, [ 'icon', 'src' ] ) }
-				label={ get( blockType, [ 'title' ] ) }
-				instructions={ __( 'Select a variation to start with.', 'coblocks' ) }
-				variations={ variations }
 				allowSkip
+				icon={ get( blockType, [ 'icon', 'src' ] ) }
+				instructions={ __( 'Select a variation to start with.', 'coblocks' ) }
+				label={ get( blockType, [ 'title' ] ) }
 				onSelect={ ( nextVariation ) => blockVariationPickerOnSelect( nextVariation ) }
+				variations={ variations }
 			/>
 		</>
 	);
@@ -345,16 +350,16 @@ const applyWithSelect = withSelect( ( select, props ) => {
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 
 	return {
-		// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
-		innerBlocks,
-		hasInnerBlocks: select( 'core/block-editor' ).getBlocks( props.clientId ).length > 0,
-
 		blockType: getBlockType( props.name ),
 		defaultVariation: typeof getDefaultBlockVariation === 'undefined' ? null : getDefaultBlockVariation( props.name ),
-		variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( props.name ),
-		replaceInnerBlocks,
-
 		getBlocksByClientId, // passed to controls & inspector
+		hasInnerBlocks: select( 'core/block-editor' ).getBlocks( props.clientId ).length > 0,
+
+		// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
+		innerBlocks,
+
+		replaceInnerBlocks,
+		variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( props.name ),
 	};
 } );
 

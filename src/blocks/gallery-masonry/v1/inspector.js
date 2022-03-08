@@ -6,7 +6,7 @@
  */
 import ResponsiveTabsControl from '../../../components/responsive-tabs-control';
 import captionOptions from '../../../components/block-gallery/options/caption-options';
-import SizeControl from '../../../components/size-control';
+import OptionSelectorControl from '../../../components/option-selector-control';
 import GalleryLinkSettings from '../../../components/block-gallery/gallery-link-settings';
 
 /**
@@ -29,6 +29,7 @@ const Inspector = ( props ) => {
 	} = props;
 
 	const {
+		align,
 		captions,
 		captionStyle,
 		gridSize,
@@ -49,7 +50,7 @@ const Inspector = ( props ) => {
 		setAttributes( { radius: value } );
 	};
 
-	const setSizeControl = ( value ) => {
+	const setSize = ( value ) => {
 		setAttributes( { gridSize: value } );
 	};
 
@@ -69,16 +70,53 @@ const Inspector = ( props ) => {
 			: __( 'Toggle to enable the image lightbox.', 'coblocks' );
 	};
 
+	/**
+	 * Size constant.
+	 */
+	const sizeOptions = () => {
+		const defaultOptions = [
+			{
+				/* translators: abbreviation for large size */
+				label: __( 'L', 'coblocks' ),
+				tooltip: __( 'Large', 'coblocks' ),
+				value: 'lrg',
+			},
+			{
+				/* translators: abbreviation for large size */
+				label: __( 'XL', 'coblocks' ),
+				tooltip: __( 'Extra Large', 'coblocks' ),
+				value: 'xlrg',
+			},
+		];
+
+		if ( !! align && align !== 'none' ) {
+			defaultOptions.unshift( {
+				/* translators: abbreviation for medium size */
+				label: __( 'M', 'coblocks' ),
+				tooltip: __( 'Medium', 'coblocks' ),
+				value: 'med',
+			} );
+		}
+		if ( align === 'full' ) {
+			defaultOptions.unshift( {
+				/* translators: abbreviation for small size */
+				label: __( 'S', 'coblocks' ),
+				tooltip: __( 'Small', 'coblocks' ),
+				value: 'sml',
+			} );
+		}
+		return defaultOptions;
+	};
+
 	return (
 		<InspectorControls>
 			<PanelBody title={ __( 'Masonry settings', 'coblocks' ) }>
 
-				<SizeControl { ...props }
+				<OptionSelectorControl
+					currentOption={ gridSize }
 					label={ __( 'Size', 'coblocks' ) }
-					onChange={ setSizeControl }
-					resetValue={ 'xlrg' }
-					type={ 'grid' }
-					value={ gridSize }
+					onChange={ setSize }
+					options={ sizeOptions() }
 				/>
 
 				<ResponsiveTabsControl { ...props } />

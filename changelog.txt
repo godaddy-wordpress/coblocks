@@ -1,4 +1,14 @@
 
+2.22.1 / 2022-02-25
+===================
+### Enhancements
+* Introduce plugin deactivation feedback modal [#2266](https://github.com/godaddy-wordpress/coblocks/pull/2266)
+
+### Bug fixes
+* Fix Masonry V1 markup on published pages [#2290](https://github.com/godaddy-wordpress/coblocks/pull/2290)
+* Fix color controls on Highlight block [#2287](https://github.com/godaddy-wordpress/coblocks/pull/2287)
+
+
 2.22.0 / 2022-02-22 (that's a lot of 2s ;) )
 ============================================
 ### Enhancements
