@@ -155,7 +155,7 @@
 		"react-masonry-component": "^6.2.1",
 		"rtlcss-webpack-plugin": "^4.0.6",
 		"simple-git": "^2.48.0",
-		"tiny-swiper": "^2.1.2",
+		"tiny-swiper": "^2.2.0",
 		"uuid": "^8.3.2"
 	},
 	"resolutions": {

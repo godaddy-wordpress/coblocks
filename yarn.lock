@@ -14077,10 +14077,10 @@ tiny-emitter@^2.0.0:
   resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-2.1.0.tgz#1d1a56edfc51c43e863cbb5382a72330e3555423"
   integrity sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==
 
-tiny-swiper@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/tiny-swiper/-/tiny-swiper-2.1.2.tgz#2b759300733579611f0955620026a025693bd810"
-  integrity sha512-omzIg0tZdkemoDpXwBQwlGg7UfAhGi49oxsdCQtjFwDdhDc3dvUlvGIoABhNoNuLjkQdKS/fK6l0CVhnx5bk6A==
+tiny-swiper@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/tiny-swiper/-/tiny-swiper-2.2.0.tgz#f59998fd380208bc8c2bc651e00d82e5526fa1d0"
+  integrity sha512-RG+TtFogipC1yMLa52ICIpE3x0UKxPi24AaZ0n++tuHBkjKLLWk7+D1EDAO1QUWbbm1cvvAspL92/dwQQRnYoA==
   dependencies:
     typescript "^4.1.3"
 
