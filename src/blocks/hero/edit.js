@@ -6,21 +6,21 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import Inspector from './inspector';
-import Controls from './controls';
 import applyWithColors from './colors';
-import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZone } from '../../components/background';
+import Controls from './controls';
+import Inspector from './inspector';
+import { BackgroundClasses, BackgroundDropZone, BackgroundStyles, BackgroundVideo } from '../../components/background';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
-import { useState, useEffect } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
-import { ResizableBox, Spinner } from '@wordpress/components';
-import { withDispatch, withSelect } from '@wordpress/data';
 import { isBlobURL } from '@wordpress/blob';
+import { ResizableBox, Spinner } from '@wordpress/components';
+import { useDispatch, withDispatch, withSelect } from '@wordpress/data';
+import { useEffect, useState } from '@wordpress/element';
 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
@@ -36,9 +36,9 @@ const TEMPLATE = [
 	[
 		'core/heading',
 		{
+			level: 2,
 			/* translators: content placeholder */
 			placeholder: __( 'Add hero heading…', 'coblocks' ),
-			level: 2,
 		},
 	],
 	[
@@ -52,8 +52,8 @@ const TEMPLATE = [
 		'core/buttons',
 		{
 			contentAlign: 'left',
-			items: 2,
 			gutter: 'medium',
+			items: 2,
 		},
 		[
 			[
@@ -66,9 +66,9 @@ const TEMPLATE = [
 			[
 				'core/button',
 				{
+					className: 'is-style-outline',
 					/* translators: content placeholder */
 					placeholder: __( 'Secondary button…', 'coblocks' ),
-					className: 'is-style-outline',
 				},
 			],
 		],
@@ -117,6 +117,8 @@ const Edit = ( props ) => {
 	const [ resizing, setResizing ] = useState( false );
 	const [ innerWidth, setInnerWidth ] = useState( null );
 
+	const { __unstableMarkAutomaticChange } = useDispatch( 'core/block-editor' );
+
 	useEffect( () => {
 		const currentBlock = document.getElementById( 'block-' + clientId );
 		if ( currentBlock ) {
@@ -128,6 +130,8 @@ const Edit = ( props ) => {
 
 		getBrowserWidth();
 		win.addEventListener( 'resize', getBrowserWidth );
+
+		__unstableMarkAutomaticChange();
 
 		return () => {
 			win.removeEventListener( 'resize', getBrowserWidth );
@@ -150,8 +154,8 @@ const Edit = ( props ) => {
 			const id = name.split( '/' ).join( '-' ) + '-' + attributes.coblocks.id;
 			const newHeight = {
 				height: block[ type ],
-				heightTablet: block[ type + 'Tablet' ],
 				heightMobile: block[ type + 'Mobile' ],
+				heightTablet: block[ type + 'Tablet' ],
 			};
 
 			if ( typeof meta._coblocks_responsive_height === 'undefined' || ( typeof meta._coblocks_responsive_height !== 'undefined' && meta._coblocks_responsive_height === '' ) ) {
@@ -214,22 +218,22 @@ const Edit = ( props ) => {
 	const innerStyles = {
 		...BackgroundStyles( attributes, backgroundColor ),
 		color: textColor && textColor.color,
-		paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
-		paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
+		minHeight: fullscreen ? undefined : height,
 		paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
 		paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
-		minHeight: fullscreen ? undefined : height,
+		paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
+		paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 	};
 
 	const enablePositions = {
-		top: false,
-		right: true,
 		bottom: false,
-		left: true,
-		topRight: false,
-		bottomRight: false,
 		bottomLeft: false,
+		bottomRight: false,
+		left: true,
+		right: true,
+		top: false,
 		topLeft: false,
+		topRight: false,
 	};
 
 	let heightResizer = {
@@ -278,10 +282,9 @@ const Edit = ( props ) => {
 											'is-resizing': resizing,
 										}
 									) }
-									size={ { width: maxWidth } }
-									minWidth="400"
-									maxWidth="1000"
 									enable={ enablePositions }
+									maxWidth="1000"
+									minWidth="400"
 									onResizeStart={ () => {
 										setResizing( true );
 										const currentBlock = document.getElementById( 'block-' + clientId );
@@ -298,13 +301,14 @@ const Edit = ( props ) => {
 										currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.maxWidth = parseInt( maxWidth + delta.width, 10 ) + 'px';
 									} }
 									showHandle={ isSelected }
+									size={ { width: maxWidth } }
 								>
 									<InnerBlocks
-										template={ TEMPLATE }
-										allowedBlocks={ ALLOWED_BLOCKS }
-										templateLock={ false }
-										templateInsertUpdatesSelection={ false }
 										__experimentalCaptureToolbars={ true }
+										allowedBlocks={ ALLOWED_BLOCKS }
+										template={ TEMPLATE }
+										templateInsertUpdatesSelection={ false }
+										templateLock={ false }
 									/>
 								</ResizableBox>
 							</div>
@@ -313,21 +317,17 @@ const Edit = ( props ) => {
 					: (
 						<ResizableBox
 							className={ innerClasses }
-							style={ innerStyles }
-							size={ {
-								height: heightResizer.value,
+							enable={ {
+								bottom: true,
+								bottomLeft: false,
+								bottomRight: false,
+								left: false,
+								right: false,
+								top: false,
+								topLeft: false,
+								topRight: false,
 							} }
 							minHeight="500"
-							enable={ {
-								top: false,
-								right: false,
-								bottom: true,
-								left: false,
-								topRight: false,
-								bottomRight: false,
-								bottomLeft: false,
-								topLeft: false,
-							} }
 							onResizeStop={ ( _event, _direction, _elt, delta ) => {
 								switch ( heightResizer.target ) {
 									case 'heightTablet':
@@ -353,6 +353,10 @@ const Edit = ( props ) => {
 								saveMeta( 'height' );
 							} }
 							showHandle={ isSelected }
+							size={ {
+								height: heightResizer.value,
+							} }
+							style={ innerStyles }
 						>
 							{ isBlobURL( backgroundImg ) && <Spinner /> }
 							{ BackgroundVideo( attributes ) }
@@ -365,10 +369,9 @@ const Edit = ( props ) => {
 												'is-resizing': resizing,
 											}
 										) }
-										size={ { width: maxWidth } }
-										minWidth="400"
-										maxWidth="1000"
 										enable={ enablePositions }
+										maxWidth="1000"
+										minWidth="400"
 										onResizeStart={ () => {
 											setResizing( true );
 											const currentBlock = document.getElementById( 'block-' + clientId );
@@ -385,12 +388,13 @@ const Edit = ( props ) => {
 											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.maxWidth = parseInt( maxWidth + delta.width, 10 ) + 'px';
 										} }
 										showHandle={ isSelected }
+										size={ { width: maxWidth } }
 									>
 										<InnerBlocks
-											template={ TEMPLATE }
 											allowedBlocks={ ALLOWED_BLOCKS }
-											templateLock={ false }
+											template={ TEMPLATE }
 											templateInsertUpdatesSelection={ false }
+											templateLock={ false }
 										/>
 									</ResizableBox>
 								</div>
@@ -410,8 +414,8 @@ export default compose( [
 		const { editPost } = dispatch( 'core/editor' );
 
 		return {
-			updateBlockAttributes,
 			editPost,
+			updateBlockAttributes,
 		};
 	} ),
 
@@ -420,8 +424,8 @@ export default compose( [
 		const { getBlockAttributes } = select( 'core/block-editor' );
 
 		return {
-			getEditedPostAttribute,
 			getBlockAttributes,
+			getEditedPostAttribute,
 		};
 	} ),
 ] )( Edit );
