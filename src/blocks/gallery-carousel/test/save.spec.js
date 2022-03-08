@@ -3,7 +3,7 @@
  */
 import { JSDOM } from 'jsdom';
 import '@testing-library/jest-dom/extend-expect';
-import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
+import { createBlock, registerBlockType, serialize } from '@wordpress/blocks';
 
 /**
  * Internal dependencies.
@@ -45,8 +45,8 @@ describe( name, () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( baseAttributes.images[ 0 ].url );
-		expect( serializedBlock ).toContain( `data-id="${baseAttributes.images[ 0 ].id}"` );
-		expect( serializedBlock ).toContain( `wp-image-${baseAttributes.images[ 0 ].id}` );
+		expect( serializedBlock ).toContain( `data-id="${ baseAttributes.images[ 0 ].id }"` );
+		expect( serializedBlock ).toContain( `wp-image-${ baseAttributes.images[ 0 ].id }` );
 	} );
 
 	it( 'should have className \'has-lightbox\' with lightbox enabled.', () => {
@@ -63,7 +63,7 @@ describe( name, () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'wp-block-coblocks-gallery-carousel-thumbnail-pagination' );
-	})
+	} );
 
 	it( 'should have navigation swiper setting of \'\.${ attributes.navigation }\' with arrow navigation buttons enabled', () => {
 		block.attributes = { ...block.attributes, prevNextButtons: true };
@@ -71,7 +71,7 @@ describe( name, () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'nav-button__prev' );
-	});
+	} );
 
 	it( 'should have className \'has-responsive-height\' with responsiveHeight enabled.', () => {
 		block.attributes = { ...block.attributes, responsiveHeight: true };
@@ -82,7 +82,7 @@ describe( name, () => {
 	} );
 
 	[ 'large', 'xlarge' ].forEach( ( gridSize ) => {
-		it( `should have className 'has-carousel-${gridSize}' with gridSize set to '${gridSize}'.`, () => {
+		it( `should have className 'has-carousel-${ gridSize }' with gridSize set to '${ gridSize }'.`, () => {
 			block.attributes = { ...block.attributes, gridSize };
 
 			serializedBlock = serialize( block );
@@ -93,7 +93,7 @@ describe( name, () => {
 	} );
 
 	[ 'grayscale', 'sepia', 'saturation', 'dim', 'vintage' ].forEach( ( filter ) => {
-		it( `should have className \'has-filter-${filter}\' with filter set to '${filter}'.`, () => {
+		it( `should have className \'has-filter-${ filter }\' with filter set to '${ filter }'.`, () => {
 			block.attributes = { ...block.attributes, filter };
 			serializedBlock = serialize( block );
 
@@ -111,14 +111,14 @@ describe( name, () => {
 		let swiperData = {};
 
 		blockDOM = new JSDOM( serializedBlock );
-		swiperData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel')[ 0 ].dataset.swiper);
+		swiperData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.swiper );
 		expect( swiperData.autoPlay ).toBe( false );
 
 		block.attributes = { ...block.attributes, autoPlay: true };
 		serializedBlock = serialize( block );
 
 		blockDOM = new JSDOM( serializedBlock );
-		swiperData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel')[ 0 ].dataset.swiper);
+		swiperData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.swiper );
 		expect( swiperData.autoPlay ).toBe( true );
 	} );
 

@@ -50,6 +50,8 @@ describe( name, () => {
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
+		// Disable reason : value must be the second parameter
+		// eslint-disable-next-line no-unused-vars
 		Object.entries( DEFAULT_ATTRIBUTES ).forEach( ( [ key, value ] ) => expect( serializedBlock ).toContain( value ) );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );

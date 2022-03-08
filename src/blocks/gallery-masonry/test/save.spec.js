@@ -1,8 +1,8 @@
 /**
  * WordPress dependencies
  */
- import { registerCoreBlocks } from '@wordpress/block-library';
- import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
+import { registerCoreBlocks } from '@wordpress/block-library';
+import { createBlock, registerBlockType, serialize } from '@wordpress/blocks';
 
 registerCoreBlocks();
 
@@ -25,17 +25,17 @@ const baseAttributes = {
 };
 
 const baseInnerBlocks = [
-	createBlock( 'core/image', { 
-		url: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', 
-		id: 1, 
-		link: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', 
+	createBlock( 'core/image', {
+		url: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg',
+		id: 1,
+		link: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg',
 	} ),
-	createBlock( 'core/image', { 
-		url: 'https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg', 
-		id: 2, 
-		link: 'https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg', 
+	createBlock( 'core/image', {
+		url: 'https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg',
+		id: 2,
+		link: 'https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg',
 	} ),
-]
+];
 
 describe( name, () => {
 	beforeAll( () => {
@@ -63,7 +63,6 @@ describe( name, () => {
 		expect( serializedBlock ).toContain( 'wp:image' );
 	} );
 
-
 	it( 'should have className \'has-lightbox\' with lightbox enabled.', () => {
 		block.attributes = { ...block.attributes, lightbox: true };
 		serializedBlock = serialize( block );
@@ -75,13 +74,13 @@ describe( name, () => {
 	it( 'should have caption with `core/image` and caption with `coblocks/masonry`.', () => {
 		block.innerBlocks = [
 			...block.innerBlocks,
-			createBlock( 'core/image', { 
-				url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg', 
-				id: 3, 
+			createBlock( 'core/image', {
+				url: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg',
+				id: 3,
 				link: 'https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg',
-				caption: 'Test Caption', 
+				caption: 'Test Caption',
 			} ),
-		]
+		];
 
 		serializedBlock = serialize( block );
 
@@ -112,7 +111,7 @@ describe( name, () => {
 	} );
 
 	[ 'small', 'medium', 'large' ].forEach( ( gutter ) => {
-		it( `should have className 'has-${gutter}-gutter' with gutter set to '${gutter}'.`, () => {
+		it( `should have className 'has-${ gutter }-gutter' with gutter set to '${ gutter }'.`, () => {
 			block.attributes = { ...block.attributes, gutter };
 
 			serializedBlock = serialize( block );
@@ -123,7 +122,7 @@ describe( name, () => {
 	} );
 
 	[ 'grayscale', 'sepia', 'saturation', 'dim', 'vintage' ].forEach( ( filter ) => {
-		it( `should have className \'has-filter-${filter}\' with filter set to '${filter}'.`, () => {
+		it( `should have className \'has-filter-${ filter }\' with filter set to '${ filter }'.`, () => {
 			block.attributes = { ...block.attributes, filter };
 			serializedBlock = serialize( block );
 
