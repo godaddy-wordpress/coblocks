@@ -367,7 +367,7 @@ class CoBlocks_Block_Assets {
 		if ( $this->is_page_gutenberg() || has_block( 'coblocks/gallery-carousel' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
 				'coblocks-tiny-swiper',
-				$vendors_dir . '/tiny-swiper.js',
+				$vendors_dir . 'tiny-swiper.js',
 				array(),
 				COBLOCKS_VERSION,
 				true
@@ -409,7 +409,7 @@ class CoBlocks_Block_Assets {
 			$asset_file = $this->get_asset_file( 'dist/js/coblocks-counter' );
 			wp_enqueue_script(
 				'coblocks-counter-script',
-				$dir . '/coblocks-counter.js',
+				$dir . 'coblocks-counter.js',
 				$asset_file['dependencies'],
 				COBLOCKS_VERSION,
 				true
