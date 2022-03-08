@@ -636,6 +636,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/project
+      - restore_yarn_cache
       - run:
           name: Send Comment
           command: node ./node_modules/@godaddy-wordpress/scripts/comment-on-pr.js
