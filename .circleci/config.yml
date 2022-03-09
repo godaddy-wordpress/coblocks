@@ -345,6 +345,19 @@ commands:
       - restore_cache:
           keys:
             - yarn-deps-{{ .Environment.CACHE_VERSION }}
+      - run:
+          name: Install dependencies missing from cache
+          command: |
+            PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+            yarn install --frozen-lockfile
+  update_yarn_cache:
+    steps:
+      - save_cache:
+          keys:
+            - yarn-deps-{{ .Environment.CACHE_VERSION }}
+          paths:
+            - ~/project/node_modules
+            - ~/.cache/yarn
 
   restore_update_cypress_cache:
     steps:
@@ -576,16 +589,7 @@ jobs:
           name: Store the build number
           command: |
             echo ${CIRCLE_BUILD_NUM} > build-num.txt
-      - run:
-          name: Install Node dependencies
-          command: |
-            PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-            yarn install --frozen-lockfile
-      - save_cache:
-          key: yarn-deps-{{ .Environment.CACHE_VERSION }}
-          paths:
-            - ~/project/node_modules
-            - ~/.cache/yarn
+      - update_yarn_cache
       - restore_composer_cache
       - run:
           name: Install Composer dependencies
