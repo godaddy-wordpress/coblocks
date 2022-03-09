@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   jq: circleci/jq@2.2.0
   browser-tools: circleci/browser-tools@1.1
+  node: circleci/node@5.0.0
 
 executors:
   node_latest:
@@ -13,7 +14,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_56_mysql:
     docker:
-      - image: cimg/php:5.6-node
+      - image: cimg/php:5.6
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -23,7 +24,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_74_mysql:
     docker:
-      - image: cimg/php:7.4-node
+      - image: cimg/php:7.4
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -59,7 +60,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_80_mysql:
     docker:
-      - image: cimg/php:8.0-node
+      - image: cimg/php:8.0
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -71,7 +72,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_81_mysql:
     docker:
-      - image: cimg/php:8.1-node
+      - image: cimg/php:8.1
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -690,21 +691,33 @@ jobs:
   unit_testing_php_56:
     executor: php_56_mysql
     steps:
+      - node/install:
+        install-yarn: true
+        node-version: '14.17.5'
       - run_php_unit_tests
 
   unit_testing_php_74:
     executor: php_74_mysql
     steps:
+      - node/install:
+        install-yarn: true
+        node-version: '14.17.5'
       - run_php_unit_tests
 
   unit_testing_php_80:
     executor: php_80_mysql
     steps:
+      - node/install:
+        install-yarn: true
+        node-version: '14.17.5'
       - run_php_unit_tests
 
   unit_testing_php_81:
     executor: php_81_mysql
     steps:
+      - node/install:
+        install-yarn: true
+        node-version: '14.17.5'
       - run_php_unit_tests:
           newPhpUnit: true
           reportCoverage: false # we are currently using an incompatible phpunit library for coverage reporting in PHP 8
