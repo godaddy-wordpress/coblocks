@@ -3,7 +3,6 @@ version: 2.1
 orbs:
   jq: circleci/jq@2.2.0
   browser-tools: circleci/browser-tools@1.1
-  node: circleci/node@5.0.0
 
 executors:
   node_latest:
@@ -14,6 +13,10 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_56_mysql:
     docker:
+      - image: cimg/node:16.14
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
       - image: cimg/php:5.6
         auth:
           username: $DOCKERHUB_USERNAME
@@ -24,6 +27,10 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_74_mysql:
     docker:
+      - image: cimg/node:16.14
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
       - image: cimg/php:7.4
         auth:
           username: $DOCKERHUB_USERNAME
@@ -60,6 +67,10 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_80_mysql:
     docker:
+      - image: cimg/node:16.14
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
       - image: cimg/php:8.0
         auth:
           username: $DOCKERHUB_USERNAME
@@ -72,6 +83,10 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_81_mysql:
     docker:
+      - image: cimg/node:16.14
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
       - image: cimg/php:8.1
         auth:
           username: $DOCKERHUB_USERNAME
@@ -537,9 +552,6 @@ commands:
         default: false
     steps:
       - checkout
-      - node/install:
-        install-yarn: true
-        node-version: '14.17.5'
       - attach_workspace:
           at: ~/project
       - restore_composer_cache
