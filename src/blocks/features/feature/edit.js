@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import Controls from './controls';
-import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZone } from '../../../components/background';
+import { BackgroundClasses, BackgroundDropZone, BackgroundStyles, BackgroundVideo } from '../../../components/background';
 import applyWithColors from './colors';
 import Inspector from './inspector';
 
@@ -25,7 +25,7 @@ import { useDispatch, useSelect } from '@wordpress/data';
 /**
  * Constants
  */
-const ALLOWED_BLOCKS = [ 'core/button', 'core/paragraph', 'core/heading', 'core/image', 'coblocks/highlight' ];
+const ALLOWED_BLOCKS = [ 'core/button', 'core/paragraph', 'core/heading', 'core/image', 'coblocks/highlight', 'core/spacer' ];
 
 const TEMPLATE = [
 	[
@@ -167,12 +167,12 @@ const Edit = ( props ) => {
 					{ isBlobURL( backgroundImg ) && <Spinner /> }
 					{ BackgroundVideo( attributes ) }
 					<InnerBlocks
-						allowedBlocks={ ALLOWED_BLOCKS }
-						template={ TEMPLATE }
-						templateLock={ false }
-						templateInsertUpdatesSelection={ false }
-						renderAppender={ () => ( null ) }
 						__experimentalCaptureToolbars={ true }
+						allowedBlocks={ ALLOWED_BLOCKS }
+						renderAppender={ () => ( null ) }
+						template={ TEMPLATE }
+						templateInsertUpdatesSelection={ false }
+						templateLock={ false }
 					/>
 				</div>
 			</div>
