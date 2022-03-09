@@ -350,14 +350,6 @@ commands:
           command: |
             PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
             yarn install --frozen-lockfile
-  update_yarn_cache:
-    steps:
-      - save_cache:
-          keys:
-            - yarn-deps-{{ .Environment.CACHE_VERSION }}
-          paths:
-            - ~/project/node_modules
-            - ~/.cache/yarn
 
   restore_update_cypress_cache:
     steps:
@@ -589,7 +581,12 @@ jobs:
           name: Store the build number
           command: |
             echo ${CIRCLE_BUILD_NUM} > build-num.txt
-      - update_yarn_cache
+      - save_cache:
+          keys:
+            - yarn-deps-{{ .Environment.CACHE_VERSION }}
+          paths:
+            - ~/project/node_modules
+            - ~/.cache/yarn
       - restore_composer_cache
       - run:
           name: Install Composer dependencies
