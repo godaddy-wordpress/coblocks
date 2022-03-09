@@ -118,6 +118,7 @@ class GalleryImage extends Component {
 			captions,
 			fontSize,
 			gutter,
+			gutterCustom,
 			gutterMobile,
 			id,
 			isFirstItem,
@@ -192,7 +193,7 @@ class GalleryImage extends Component {
 		// Disable reason: Each block can be selected by clicking on it and we should keep the same saved markup
 		/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 		return (
-			<figure className={ className } onKeyDown={ this.onKeyDown } ref={ this.container } tabIndex="-1">
+			<figure className={ className } onKeyDown={ this.onKeyDown } ref={ this.container } style={ { margin: gutter === 'custom' && gutterCustom === '0' ? 0 : null } } tabIndex="-1">
 				{ isSelected && (
 					<>
 						<ButtonGroup className="block-library-gallery-item__inline-menu is-right is-visible">
