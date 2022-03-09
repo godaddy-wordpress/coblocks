@@ -354,27 +354,24 @@ commands:
     steps:
       - restore_cache:
           keys:
-            - composer-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "composer.lock" }}
             - composer-deps-{{ .Environment.CACHE_VERSION }}
 
   restore_yarn_cache:
     steps:
       - restore_cache:
           keys:
-            - yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
             - yarn-deps-{{ .Environment.CACHE_VERSION }}
 
   restore_update_cypress_cache:
     steps:
       - restore_cache:
           keys:
-            - cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
             - cypress-deps-{{ .Environment.CACHE_VERSION }}
       - run:
           name: Install CyPress Binaries
           command: ./node_modules/.bin/cypress install
       - save_cache:
-          key: cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
+          key: cypress-deps-{{ .Environment.CACHE_VERSION }}
           paths:
             - ~/.cache/Cypress
 
@@ -601,7 +598,7 @@ jobs:
             PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
             yarn install --frozen-lockfile
       - save_cache:
-          key: yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
+          key: yarn-deps-{{ .Environment.CACHE_VERSION }}
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
@@ -613,7 +610,7 @@ jobs:
             composer validate --strict
             composer install
       - save_cache:
-          key: composer-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "composer.lock" }}
+          key: composer-deps-{{ .Environment.CACHE_VERSION }}
           paths:
             - ~/project/vendor
       - run:

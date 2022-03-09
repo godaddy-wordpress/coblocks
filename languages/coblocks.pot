@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-03-04T18:53:14+00:00\n"
+"POT-Creation-Date: 2022-03-09T17:10:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: coblocks\n"
@@ -1001,31 +1001,35 @@ msgstr ""
 msgid "Location…"
 msgstr ""
 
-#: src/blocks/events/event-item/index.js:28
-msgid "An event within the events block."
-msgstr ""
-
-#: src/blocks/events/event-item/index.js:37
-msgctxt "block name"
-msgid "Event Item"
-msgstr ""
-
+#: src/blocks/events/event-item/example.js:6
 #: src/blocks/events/example.js:16
 msgid "Soccer Practice"
 msgstr ""
 
+#: src/blocks/events/event-item/example.js:9
 #: src/blocks/events/example.js:19
 #: src/blocks/events/example.js:31
 msgid "April"
 msgstr ""
 
+#: src/blocks/events/event-item/example.js:11
 #: src/blocks/events/example.js:21
 msgid "10:30 AM"
 msgstr ""
 
+#: src/blocks/events/event-item/example.js:12
 #: src/blocks/events/example.js:22
 #: src/blocks/events/example.js:34
 msgid "Middle School"
+msgstr ""
+
+#: src/blocks/events/event-item/index.js:29
+msgid "An event within the events block."
+msgstr ""
+
+#: src/blocks/events/event-item/index.js:39
+msgctxt "block name"
+msgid "Event Item"
 msgstr ""
 
 #: src/blocks/events/example.js:28
@@ -1036,13 +1040,13 @@ msgstr ""
 msgid "3:30 PM"
 msgstr ""
 
-#: src/blocks/events/index.js:28
+#: src/blocks/events/index.js:29
 msgid "Add a list of events or display events from a public calendar."
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/events/index.js:34
+#: src/blocks/events/index.js:36
 #: src/blocks/form/fields/date/index.js:47
 #: src/blocks/icon/svgs-generated.js:934
 #: src/blocks/icon/svgs-generated.js:951
@@ -1051,7 +1055,7 @@ msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/events/index.js:36
+#: src/blocks/events/index.js:38
 #: src/blocks/icon/svgs-generated.js:346
 #: src/blocks/icon/svgs-generated.js:936
 #: src/blocks/icon/svgs-generated.js:953
@@ -1059,7 +1063,7 @@ msgstr ""
 msgid "date"
 msgstr ""
 
-#: src/blocks/events/index.js:43
+#: src/blocks/events/index.js:44
 msgctxt "block name"
 msgid "Events"
 msgstr ""
@@ -2262,8 +2266,8 @@ msgstr ""
 msgid "Request a Quote"
 msgstr ""
 
-#: src/blocks/gallery-carousel/deprecated.js:773
-#: src/blocks/gallery-carousel/save.js:128
+#: src/blocks/gallery-carousel/deprecated.js:761
+#: src/blocks/gallery-carousel/save.js:132
 msgid "Carousel Gallery"
 msgstr ""
 
