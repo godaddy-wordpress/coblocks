@@ -47,7 +47,10 @@ const GutterWrapper = ( { children, gutter, gutterCustom, className, condition =
 		className: classnames(
 			className,
 			children.props.className,
-			{ [ `has-${ gutter }-gutter` ]: gutter && !! condition }
+			{
+				[ `has-${ gutter }-gutter` ]: gutter && !! condition,
+				[ `has-no-gutter` ]: gutter === 'custom' && gutterCustom === '0',
+			}
 		),
 	};
 

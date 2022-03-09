@@ -78,3 +78,13 @@
 		display: none;
 	}
 }
+
+.wp-block-coblocks-gallery-offset .has-no-gutter {
+	.coblocks-gallery--item {
+		margin: 0;
+	}
+
+	figure {
+		margin: 0;
+	}
+}

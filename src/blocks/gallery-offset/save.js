@@ -25,8 +25,6 @@ const save = ( { attributes, className } ) => {
 		linkTo,
 		rel,
 		target,
-		gutter,
-		gutterCustom,
 	} = attributes;
 
 	const wrapperClasses = classnames(
@@ -75,11 +73,9 @@ const save = ( { attributes, className } ) => {
 
 						const img = <img alt={ image.alt } className={ imgClasses } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } src={ image.url } />;
 
-						const noGutterSpacing = gutter === 'custom' && gutterCustom === '0' ? { margin: 0 } : {};
-
 						return (
-							<li className={ itemClasses } data-coblocks-animation={ animation } key={ image.id || image.url } style={ noGutterSpacing } >
-								<figure className="wp-block-coblocks-gallery-offset__figure" style={ noGutterSpacing } >
+							<li className={ itemClasses } data-coblocks-animation={ animation } key={ image.id || image.url } >
+								<figure className="wp-block-coblocks-gallery-offset__figure" >
 									{ href ? <a href={ href } rel={ rel } target={ target }>{ img }</a> : img }
 									{ captions && image.caption && image.caption.length > 0 && (
 										<RichText.Content className="coblocks-gallery--caption" tagName="figcaption" value={ image.caption } />

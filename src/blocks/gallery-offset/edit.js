@@ -45,7 +45,6 @@ const Edit = ( props ) => {
 		linkTo,
 		lightbox,
 		gridSize,
-		gutterCustom,
 	} = attributes;
 
 	const [ selectedImage, setSelectedImage ] = useState( null );
@@ -228,7 +227,6 @@ const Edit = ( props ) => {
 										aria-label={ ariaLabel }
 										caption={ img.caption }
 										captions={ captions }
-										gutterCustom={ gutterCustom }
 										id={ img.id }
 										imageIndex={ index }
 										imgLink={ img.imgLink }
