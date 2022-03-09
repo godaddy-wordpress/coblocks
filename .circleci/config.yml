@@ -538,6 +538,7 @@ commands:
     steps:
       - checkout
       - node/install:
+        install-yarn: true
         node-version: '14.17.5'
       - attach_workspace:
           at: ~/project
