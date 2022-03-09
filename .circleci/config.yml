@@ -582,8 +582,7 @@ jobs:
           command: |
             echo ${CIRCLE_BUILD_NUM} > build-num.txt
       - save_cache:
-          keys:
-            - yarn-deps-{{ .Environment.CACHE_VERSION }}
+          key: yarn-deps-{{ .Environment.CACHE_VERSION }}
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
