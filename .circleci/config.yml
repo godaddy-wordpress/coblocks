@@ -537,6 +537,8 @@ commands:
         default: false
     steps:
       - checkout
+      - node/install:
+        node-version: '14.17.5'
       - attach_workspace:
           at: ~/project
       - restore_composer_cache
@@ -691,33 +693,21 @@ jobs:
   unit_testing_php_56:
     executor: php_56_mysql
     steps:
-      - node/install:
-        install-yarn: true
-        node-version: '14.17.5'
       - run_php_unit_tests
 
   unit_testing_php_74:
     executor: php_74_mysql
     steps:
-      - node/install:
-        install-yarn: true
-        node-version: '14.17.5'
       - run_php_unit_tests
 
   unit_testing_php_80:
     executor: php_80_mysql
     steps:
-      - node/install:
-        install-yarn: true
-        node-version: '14.17.5'
       - run_php_unit_tests
 
   unit_testing_php_81:
     executor: php_81_mysql
     steps:
-      - node/install:
-        install-yarn: true
-        node-version: '14.17.5'
       - run_php_unit_tests:
           newPhpUnit: true
           reportCoverage: false # we are currently using an incompatible phpunit library for coverage reporting in PHP 8
