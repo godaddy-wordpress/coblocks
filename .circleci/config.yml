@@ -13,7 +13,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_56_mysql:
     docker:
-      - image: cimg/php:5.6-8.0-node
+      - image: cimg/php:5.6-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -23,7 +23,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_74_mysql:
     docker:
-      - image: cimg/php:7.4-8.0-node
+      - image: cimg/php:7.4-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -59,7 +59,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_80_mysql:
     docker:
-      - image: cimg/php:8.0-8.0-node
+      - image: cimg/php:8.0-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -71,7 +71,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_81_mysql:
     docker:
-      - image: cimg/php:8.1-8.0-node
+      - image: cimg/php:8.1-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
