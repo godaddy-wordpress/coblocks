@@ -12,7 +12,6 @@
 	<exclude-pattern>node_modules/*</exclude-pattern>
 	<exclude-pattern type="relative">wordpress/*</exclude-pattern>
 	<exclude-pattern>\.dev\/.*</exclude-pattern>
-	<exclude-pattern>includes/ical-parser/class-coblocks-ical.php</exclude-pattern>
 
 	<arg name="colors"/>
 	<arg value="sp"/>
