@@ -521,7 +521,7 @@ commands:
           name: "Install WordPress Testing Suite"
           command: |
             sudo apt-get update && sudo apt-get install -y subversion default-mysql-client
-            node ./node_modules/@godaddy-wordpress/scripts/install-wp-tests.js wordpress_test root '' 127.0.0.1 latest
+            sudo node ./node_modules/@godaddy-wordpress/scripts/install-wp-tests.js wordpress_test root '' 127.0.0.1 latest
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
 
   run_php_unit_tests:
@@ -543,7 +543,6 @@ commands:
           at: ~/project
       - restore_yarn_cache
       - restore_composer_cache
-      - restore_yarn_cache
       - wait_for_mysql
       - when:
           condition: << parameters.newPhpUnit >>
@@ -631,7 +630,7 @@ jobs:
 
   pr_artifact_comment:
     docker:
-      - image: cimg/php:7.4
+      - image: cimg/php:7.4-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
