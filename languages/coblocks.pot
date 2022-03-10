@@ -1,14 +1,14 @@
 # Copyright (c) 2022 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 2.22.1\n"
+"Project-Id-Version: CoBlocks 2.22.3\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-03-09T17:10:32+00:00\n"
+"POT-Creation-Date: 2022-03-10T17:04:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: coblocks\n"
@@ -1911,13 +1911,13 @@ msgstr ""
 msgid "mail"
 msgstr ""
 
-#: src/blocks/form/fields/field-label.js:34
+#: src/blocks/form/fields/field-label.js:38
 #: src/blocks/form/fields/name/edit.js:58
 #: src/blocks/form/fields/name/edit.js:77
 msgid "Add label…"
 msgstr ""
 
-#: src/blocks/form/fields/field-label.js:45
+#: src/blocks/form/fields/field-label.js:49
 msgid "Required"
 msgstr ""
 
@@ -2251,7 +2251,7 @@ msgstr ""
 
 #. translators: %1$s: opening anchor link. %2$s: closing anchor link
 #: src/blocks/form/variations.js:115
-msgid "By submitting this form, you agree to our %1$sterms and conditions%2$s and %1$sprivacy policy%2$s"
+msgid "By submitting this form, you agree to our %1$sterms and conditions%2$s and %1$sprivacy policy%2$s."
 msgstr ""
 
 #: src/blocks/form/variations.js:120

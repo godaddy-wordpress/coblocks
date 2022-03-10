@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   jq: circleci/jq@2.2.0
   browser-tools: circleci/browser-tools@1.1
+  node: circleci/node@5.0.0
 
 executors:
   node_latest:
@@ -13,11 +14,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_56_mysql:
     docker:
-      - image: cimg/node:16.14
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-      - image: cimg/php:5.6
+      - image: cimg/php:5.6-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -27,11 +24,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_74_mysql:
     docker:
-      - image: cimg/node:16.14
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-      - image: cimg/php:7.4
+      - image: cimg/php:7.4-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -67,11 +60,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_80_mysql:
     docker:
-      - image: cimg/node:16.14
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-      - image: cimg/php:8.0
+      - image: cimg/php:8.0-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -83,11 +72,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_81_mysql:
     docker:
-      - image: cimg/node:16.14
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-      - image: cimg/php:8.1
+      - image: cimg/php:8.1-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -552,8 +537,11 @@ commands:
         default: false
     steps:
       - checkout
+      - node/install:
+          node-version: '16.14'
       - attach_workspace:
           at: ~/project
+      - restore_yarn_cache
       - restore_composer_cache
       - restore_yarn_cache
       - wait_for_mysql

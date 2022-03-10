@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.5
 Tested up to: 5.9
 Requires PHP: 5.6
-Stable tag: 2.22.1
+Stable tag: 2.22.3
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -111,6 +111,23 @@ Any properly developed WordPress theme will work with CoBlocks, though if you're
 Developers can also apply minor style touch-ups to their themes if necessary. If you're a developer and you need help, don't hesitate to [reach out](https://wordpress.org/support/plugin/coblocks/).
 
 == Changelog ==
+
+= 2.22.3 / 2022-03-10 =
+##### Bug fixes
+* Fix situation where nonce is unverified [#2316](https://github.com/godaddy-wordpress/coblocks/pull/2316)
+
+= 2.22.2 / 2022-03-09 =
+##### Enhancements
+* Enhance Feature blocks to allow spacer block [#2299](https://github.com/godaddy-wordpress/coblocks/pull/2299)
+* Enhance Form block style consistency [#2309](https://github.com/godaddy-wordpress/coblocks/pull/2309)
+* Enhance Event block with examples [#2297](https://github.com/godaddy-wordpress/coblocks/pull/2297)
+
+##### Bug fixes
+* Fix bug with multiple carousel galleries [#2278](https://github.com/godaddy-wordpress/coblocks/pull/2278)
+* Fix Undo and Redo events with certain blocks [#2292](https://github.com/godaddy-wordpress/coblocks/pull/2292)
+* Fix superfluous slash with enqueued scripts [#2298](https://github.com/godaddy-wordpress/coblocks/pull/2298)
+* Fix bug allowing invalid file type upload with certain blocks [#2294](https://github.com/godaddy-wordpress/coblocks/pull/2294)
+* Improve consistency with image size controls across blocks [#2293](https://github.com/godaddy-wordpress/coblocks/pull/2293)
 
 = 2.22.1 / 2022-02-25 =
 ##### Enhancements
