@@ -1478,9 +1478,9 @@
     "@wordpress/eslint-plugin" "^9.2.0"
 
 "@godaddy-wordpress/scripts@^0.2.1":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/scripts/-/scripts-0.2.3.tgz#4d314a9185f9fb44aa175f3454de9558e1b7ed4e"
-  integrity sha512-nVDWEGz4aWW1uoq47Rc5N2fUtmz6IHirfnaowVnRK/pNLs4BgQcqbjXbNgYH18XkFCJeq0vmOVUA0oQd+1qRkw==
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/scripts/-/scripts-0.2.4.tgz#f84462e7a6cd0240f5549728ce8d7da70e7454b1"
+  integrity sha512-0TU7VNOn8+VD9dq1XM2V15EFNt7M6tHAEewCwh1L9+7SRQDAGv58gjmkBRpxtj6WgDKrHa1Q016M56TZJ55EOg==
   dependencies:
     "@octokit/core" "^3.5.1"
     "@wordpress/eslint-plugin" "^10.0.2"
@@ -2655,9 +2655,9 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^17.0.37":
-  version "17.0.39"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.39.tgz#d0f4cde092502a6db00a1cded6e6bf2abb7633ce"
-  integrity sha512-UVavlfAxDd/AgAacMa60Azl7ygyQNRwC/DsHZmKgNvPmRR5p70AJ5Q9EAmL2NWOJmeV+vVUI4IAP7GZrN8h8Ug==
+  version "17.0.40"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.40.tgz#dc010cee6254d5239a138083f3799a16638e6bad"
+  integrity sha512-UrXhD/JyLH+W70nNSufXqMZNuUD2cXHu6UjCllC6pmOQgBX4SGXOH8fjRka0O0Ee0HrFxapDD8Bwn81Kmiz6jQ==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -4914,9 +4914,9 @@ axios@^0.21.1:
     follow-redirects "^1.14.0"
 
 axios@^0.26.0:
-  version "0.26.0"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.26.0.tgz#9a318f1c69ec108f8cd5f3c3d390366635e13928"
-  integrity sha512-lKoGLMYtHvFrPVt3r+RBMp9nh34N0M8zEfCWqdWZx6phynIEhQqAdydpyBAAG211zlhX9Rgu08cOamy6XjE5Og==
+  version "0.26.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.26.1.tgz#1ede41c51fcf51bbbd6fd43669caaa4f0495aaa9"
+  integrity sha512-fPwcX4EvnSHuInCMItEhAGnaSEXRBjtzh9fOtsE6E1G6p7vl7edEeZe11QHf18+6+9gR5PbKV/sGKNaD8YaMeA==
   dependencies:
     follow-redirects "^1.14.8"
 
@@ -6775,10 +6775,15 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
-electron-to-chromium@^1.3.896, electron-to-chromium@^1.4.76:
+electron-to-chromium@^1.3.896:
   version "1.4.77"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.77.tgz#c26e454cb8721d4ebdae3e276c57cd32e51c32ed"
   integrity sha512-fiDxw8mO9Ph1Z0bjX2sFTPpi0J0QkOiwOJF+5Q0J0baNc/F9lLePAvDPlnoxvbUYYMizqrKPeotRRkJ9LtxAew==
+
+electron-to-chromium@^1.4.76:
+  version "1.4.81"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.81.tgz#a9ce8997232fb9fb0ec53de8931a85b18c0a7383"
+  integrity sha512-Gs7xVpIZ7tYYSDA+WgpzwpPvfGwUk3KSIjJ0akuj5XQHFdyQnsUoM76EA4CIHXNLPiVwTwOFay9RMb0ChG3OBw==
 
 element-resize-detector@^1.1.9:
   version "1.2.3"
