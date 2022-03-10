@@ -112,6 +112,10 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+= 2.22.3 / 2022-03-10 =
+##### Bug fixes
+* Fix situation where nonce is unverified [#2316](https://github.com/godaddy-wordpress/coblocks/pull/2316)
+
 = 2.22.2 / 2022-03-09 =
 ##### Enhancements
 * Enhance Feature blocks to allow spacer block [#2299](https://github.com/godaddy-wordpress/coblocks/pull/2299)

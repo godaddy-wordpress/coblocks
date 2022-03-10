@@ -1,4 +1,9 @@
 
+2.22.3 / 2022-03-10
+===================
+### Bug fixes
+* Fix situation where nonce is unverified [#2316](https://github.com/godaddy-wordpress/coblocks/pull/2316)
+
 2.22.2 / 2022-03-09
 ===================
 ### Enhancements
