@@ -76,8 +76,7 @@ function coblocks_block_gist_handler( $matches ) {
 	}
 
 	return sprintf(
-		// phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript
-		'<script src="https://gist.github.com/%1$s"></script><noscript><a href="%2$s">%3$s</a></noscript>', 
+		'<script src="https://gist.github.com/%1$s"></script><noscript><a href="%2$s">%3$s</a></noscript>',
 		esc_attr( $script_src ),
 		esc_url( $gist_url ),
 		esc_html( __( 'View this gist on GitHub', 'coblocks' ) )

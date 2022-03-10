@@ -225,14 +225,14 @@ class CoBlocks_Form {
 			?>
 
 			<form action="<?php echo esc_url( sprintf( '%1$s#%2$s', set_url_scheme( get_the_permalink() ), $this->form_hash ) ); ?>" method="post">
-				<?php echo do_blocks( $content ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				<?php echo do_blocks( $content ); ?>
 				<input class="coblocks-field verify" type="email" name="coblocks-verify-email" autocomplete="off" placeholder="<?php esc_attr_e( 'Email', 'coblocks' ); ?>" tabindex="-1">
 				<input type="hidden" name="form-hash" value="<?php echo esc_attr( $this->form_hash ); ?>">
 
 				<?php
 				// Output a submit button if it's not found in the block content.
 				if ( false === strpos( $content, 'coblocks-form__submit' ) ) :
-					echo $this->render_field_submit_button( $atts ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo $this->render_field_submit_button( $atts );
 				endif;
 				?>
 			</form>
