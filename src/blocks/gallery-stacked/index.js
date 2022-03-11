@@ -6,18 +6,13 @@ import { GalleryStackedIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 /**
  * Internal dependencies
  */
-import deprecated from './deprecated';
-import edit from './edit';
-import { hasFormattingCategory } from '../../utils/block-helpers';
 import metadata from './block.json';
-import save from './save';
-import transforms from './transforms';
 
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
+import { dispatch } from '@wordpress/data';
+import { createBlock, switchToBlockType } from '@wordpress/blocks';
 
 /**
  * Block constants
@@ -25,35 +20,34 @@ import { Icon } from '@wordpress/components';
 const { name, category } = metadata;
 
 const settings = {
-	attributes: metadata.attributes,
-	category: hasFormattingCategory ? 'coblocks-galleries' : 'media',
-	deprecated,
-	/* translators: block description */
-	description: __( 'Display multiple images in a single column stacked gallery.', 'coblocks' ),
-	edit,
-	example: {
-		attributes: {
-			fullwidth: false,
-			images: [
-				{ index: 0, url: 'https://s.w.org/images/core/5.3/Windbuchencom.jpg' },
-				{ index: 1, url: 'https://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg' },
-			],
-		},
+	attributes: {
+		columns: { type: 'number' },
+		ids: { type: 'array' },
+		images: { type: 'array' },
+		linkTo: { type: 'string' },
+		sizeSlug: { type: 'string' },
 	},
-	icon: <Icon icon={ icon } />,
-	keywords: [
-		'coblocks',
-		/* translators: block keyword */
-		__( 'gallery', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'photos', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'lightbox', 'coblocks' ),
-	],
-	save,
-	/* translators: block name */
-	title: __( 'Stacked', 'coblocks' ),
-	transforms,
+	edit: ( props ) => {
+		const { replaceBlocks } = dispatch( 'core/block-editor' );
+		replaceBlocks(
+			[ props.clientId ],
+			switchToBlockType( props, 'core/gallery' )
+		);
+		return null;
+	},
+	parent: [],
+	save: () => null,
+	transforms: {
+		to: [
+			{
+				blocks: [ 'core/gallery' ],
+				transform: ( props ) => {
+					return createBlock( 'core/gallery', props );
+				},
+				type: 'block',
+			},
+		],
+	},
 };
 
 export { name, category, icon, metadata, settings };
