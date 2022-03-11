@@ -77,12 +77,13 @@ function coblocks_render_icon_block( $attrs ) {
 	$custom_icon_path = is_readable( "$custom_icon_path$icon_style.svg" ) ? "$custom_icon_path$icon_style.svg" : $custom_icon_path . '.svg';
 	$icon_path        = is_readable( "$icon_path$icon_style.svg" ) ? "$icon_path$icon_style.svg" : $icon_path . '.svg';
 
+	// Needed for the call to $wp_filesystem->get_contents(...) .
+	WP_Filesystem();
+
 	if ( is_readable( $custom_icon_path ) ) {
-		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-		$icon = file_get_contents( $custom_icon_path );
+		$icon = $wp_filesystem->get_contents( $custom_icon_path );
 	} elseif ( is_readable( $icon_path ) ) {
-		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-		$icon = file_get_contents( $icon_path );
+		$icon = $wp_filesystem->get_contents( $icon_path );
 	}
 
 	if ( ! empty( $attrs['href'] ) ) {
