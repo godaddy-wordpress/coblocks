@@ -78,6 +78,7 @@ function coblocks_render_icon_block( $attrs ) {
 	$icon_path        = is_readable( "$icon_path$icon_style.svg" ) ? "$icon_path$icon_style.svg" : $icon_path . '.svg';
 
 	// Needed for the call to $wp_filesystem->get_contents(...) .
+	global $wp_filesystem;
 	WP_Filesystem();
 
 	if ( is_readable( $custom_icon_path ) ) {
