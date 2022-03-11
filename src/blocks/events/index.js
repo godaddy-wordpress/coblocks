@@ -8,6 +8,7 @@ import { EventsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  */
 import deprecated from './deprecated';
 import edit from './edit';
+import example from './example';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
@@ -27,6 +28,7 @@ const settings = {
 	deprecated,
 	description: __( 'Add a list of events or display events from a public calendar.', 'coblocks' ),
 	edit,
+	example,
 	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
@@ -39,7 +41,6 @@ const settings = {
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
-	// example,
 	title: _x( 'Events', 'block name', 'coblocks' ),
 	transforms,
 };
