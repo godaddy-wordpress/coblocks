@@ -78,7 +78,10 @@ function coblocks_render_icon_block( $attrs ) {
 	$icon_path        = is_readable( "$icon_path$icon_style.svg" ) ? "$icon_path$icon_style.svg" : $icon_path . '.svg';
 
 	// Needed for the call to $wp_filesystem->get_contents(...) .
-	require_once ABSPATH . 'wp-admin/includes/file.php';
+	if ( ! class_exists( 'WP_Filesystem' ) ) {
+		require_once ABSPATH . 'wp-admin/includes/file.php';
+	}
+
 	global $wp_filesystem;
 	WP_Filesystem();
 
