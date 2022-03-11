@@ -81,7 +81,7 @@ executors:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-  php_81_browsers_mysql_mailhog:
+  php_80_browsers_mysql_mailhog:
     docker:
       - image: cimg/php:8.0-browsers
         auth:
@@ -189,7 +189,7 @@ workflows:
           requires:
             - build
 
-      - e2e_chrome_wp_php81:
+      - e2e_chrome_wp_php80:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -770,7 +770,7 @@ jobs:
     steps:
       - run_e2e_tests:
           browser: chrome
-          wpversion: nightly
+          wpversion: 5.9.2
 
   e2e_firefox_wp_nightly:
     executor: php_74_browsers_mysql_mailhog
@@ -778,15 +778,15 @@ jobs:
     steps:
       - run_e2e_tests:
           browser: firefox
-          wpversion: nightly
+          wpversion: 5.9.2
 
-  e2e_chrome_wp_php81:
-    executor: php_81_browsers_mysql_mailhog
+  e2e_chrome_wp_php80:
+    executor: php_80_browsers_mysql_mailhog
     parallelism: 11
     steps:
       - run_e2e_tests:
           browser: chrome
-          wpversion: nightly
+          wpversion: 5.9.2
 
   e2e_twentytwentytwo_chrome_latest:
     executor: php_74_browsers_mysql_mailhog
