@@ -954,7 +954,7 @@ class CoBlocks_Form {
 		 */
 		$subject = (string) apply_filters(
 			'coblocks_form_email_subject',
-			$this->setup_email_subject( $atts, $email_field_id, $name_field_id, $raw_name_field_value, $raw_email_field_value ),
+			$this->setup_email_subject( $atts, $raw_name_field_value, $raw_email_field_value ),
 			$_POST
 		);
 
@@ -1017,13 +1017,11 @@ class CoBlocks_Form {
 	 *       [name] will be replaced with the value of field-name etc.
 	 *
 	 * @param  array  $atts           Block attributes array.
-	 * @param  string $email_field_id Email field ID.
-	 * @param  string $name_field_id  Name field ID.
 	 * @param  string $raw_name_field_value Raw name field value.
 	 * @param  string $raw_email_field_value Raw email field value.
 	 * @return string Email subject.
 	 */
-	private function setup_email_subject( $atts, $email_field_id, $name_field_id, $raw_name_field_value, $raw_email_field_value ) {
+	private function setup_email_subject( $atts, $raw_name_field_value, $raw_email_field_value ) {
 
 		$subject = isset( $atts['subject'] ) ? sanitize_text_field( $atts['subject'] ) : self::default_subject();
 
@@ -1033,7 +1031,7 @@ class CoBlocks_Form {
 
 			array_walk(
 				$matches[1],
-				function( $match, $key ) use ( $matches, &$subject, &$email_field_id, &$name_field_id, &$raw_name_field_value, &$raw_email_field_value ) {
+				function( $match, $key ) use ( $matches, &$subject, &$raw_name_field_value, &$raw_email_field_value ) {
 					$slug_match = strtolower( str_replace( ' ', '', $match ) );
 
 					if ( __( 'name', 'coblocks' ) === $slug_match ) {
