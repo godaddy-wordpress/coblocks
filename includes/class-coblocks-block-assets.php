@@ -171,6 +171,30 @@ class CoBlocks_Block_Assets {
 			true
 		);
 
+		$name       = 'coblocks-variations';
+		$filepath   = 'dist/' . $name;
+		$asset_file = $this->get_asset_file( $filepath );
+
+		wp_enqueue_script(
+			'coblocks-variations',
+			COBLOCKS_PLUGIN_URL . $filepath . '.js',
+			array_merge( $asset_file['dependencies'], array( 'wp-api' ) ),
+			$asset_file['version'],
+			true
+		);
+
+		$name       = 'coblocks-styles';
+		$filepath   = 'dist/' . $name;
+		$asset_file = $this->get_asset_file( $filepath );
+
+		wp_enqueue_script(
+			'coblocks-styles',
+			COBLOCKS_PLUGIN_URL . $filepath . '.js',
+			array_merge( $asset_file['dependencies'], array( 'wp-api' ) ),
+			$asset_file['version'],
+			true
+		);
+
 		foreach ( glob( COBLOCKS_PLUGIN_DIR . 'dist/coblocks-*.js' ) as $file ) {
 			$name = str_replace( '.js', '', basename( $file ) ); // coblocks-1.
 
