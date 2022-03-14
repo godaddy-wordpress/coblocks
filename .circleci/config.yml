@@ -650,13 +650,10 @@ jobs:
   # Code Quality Checks
   # --------------------------------------------------
 
-  # Run phpcs on changed php files only.
   php:
     executor: php_74_node
     steps:
       - checkout
-      - changed_files_with_extension:
-          ext: ".php"
       - pre_check_files
       - attach_workspace:
           at: ~/project
@@ -668,26 +665,23 @@ jobs:
           key: phpcs-coblocks-cache
       - run:
           name: "Linting PHP"
-          command: composer run lint $FILES
+          command: composer run lint
       - save_cache:
           key: phpcs-coblocks-cache
           paths:
             - /tmp/phpcs-coblocks-cache
 
-  # Run stylelint on changed stylesheet files only.
   css:
     executor: node_latest
     steps:
       - checkout
-      - changed_files_with_extension:
-          ext: ".scss"
       - pre_check_files
       - attach_workspace:
           at: ~/project
       - restore_yarn_cache
       - run:
           name: "Linting CSS"
-          command: yarn lint:css $FILES
+          command: yarn lint:css
 
   # --------------------------------------------------
   # Unit Testing
@@ -719,19 +713,13 @@ jobs:
     executor: node_latest
     steps:
       - checkout
-      - changed_files_with_extension:
-          ext: ".js"
       - attach_workspace:
           at: ~/project
       - restore_yarn_cache
       - run:
           name: "Linting JS"
           command: |
-            if [[ "$CIRCLE_BRANCH" == "master" || -z "$FILES" ]]; then
-              exit 0
-            else
-              yarn lint:js $FILES
-            fi
+            yarn lint:js
       - run:
           name: "Test JS and Collect Coverage"
           command: |
