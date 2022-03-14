@@ -46,9 +46,6 @@ module.exports = {
 		'react/no-deprecated': [ 'warn' ],
 		'react/sort-prop-types': [ 'warn', { ignoreCase: true } ],
 		'template-curly-spacing': [ 'warn' ],
-
-		// Deactivation - we should decide if we want them or not
-		'jest/valid-title': 0,
 	},
 	overrides: [
 		{

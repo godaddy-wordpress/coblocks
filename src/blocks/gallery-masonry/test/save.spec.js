@@ -37,7 +37,7 @@ const baseInnerBlocks = [
 	} ),
 ];
 
-describe( name, () => {
+describe( 'coblocks/gallery-masonry', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );

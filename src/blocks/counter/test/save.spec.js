@@ -28,7 +28,7 @@ const baseAttributes = {
 // Counter block uses no innerBlocks.
 const baseInnerBlocks = [ ];
 
-describe( name, () => {
+describe( 'coblocks/counter', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );

@@ -21,7 +21,7 @@ const baseAttributes = {
 	],
 };
 
-describe( name, () => {
+describe( 'coblocks/gallery-offset', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );

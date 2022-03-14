@@ -22,7 +22,7 @@ const baseAttributes = {
 	],
 };
 
-describe( name, () => {
+describe( 'coblocks/gallery-carousel', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );

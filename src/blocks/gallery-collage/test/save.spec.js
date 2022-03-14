@@ -20,7 +20,7 @@ const baseAttributes = {
 	],
 };
 
-describe( name, () => {
+describe( 'coblocks/gallery-collage', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );

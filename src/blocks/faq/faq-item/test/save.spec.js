@@ -12,7 +12,7 @@ import { name, settings } from '../index';
 // Make variables accessible for all tests.
 let block;
 
-describe( name, () => {
+describe( 'coblocks/faq-item', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );

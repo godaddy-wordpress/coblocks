@@ -15,7 +15,7 @@ let block;
 let blockDOM;
 let serializedBlock;
 
-describe( name, () => {
+describe( 'coblocks/alert', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );

@@ -23,7 +23,7 @@ const DEFAULT_ATTRIBUTES = {
 	title: 'Some title',
 };
 
-describe( name, () => {
+describe( 'coblocks/event-item', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );
