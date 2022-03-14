@@ -944,13 +944,19 @@ class CoBlocks_Form {
 		 */
 		$to = (string) apply_filters( 'coblocks_form_email_to', $to, $_POST, $post_id );
 
+		$raw_name_field_value  = $_POST[ $name_field_id ]['value'];
+		$raw_email_field_value = $_POST[ $email_field_id ]['value'];
 		/**
 		 * Filter the email subject
 		 *
 		 * @param string $subject Email subject.
 		 * @param array  $_POST   Submitted form data.
 		 */
-		$subject = (string) apply_filters( 'coblocks_form_email_subject', $this->setup_email_subject( $atts, $email_field_id, $name_field_id ), $_POST );
+		$subject = (string) apply_filters(
+			'coblocks_form_email_subject',
+			$this->setup_email_subject( $atts, $email_field_id, $name_field_id, $raw_name_field_value, $raw_email_field_value ),
+			$_POST
+		);
 
 		/**
 		 * Filter the form email content.
@@ -1012,10 +1018,12 @@ class CoBlocks_Form {
 	 *
 	 * @param  array  $atts           Block attributes array.
 	 * @param  string $email_field_id Email field ID.
-	 * @param  string $name_field_id  Nane field ID.
+	 * @param  string $name_field_id  Name field ID.
+	 * @param  string $raw_name_field_value Raw name field value.
+	 * @param  string $raw_email_field_value Raw email field value.
 	 * @return string Email subject.
 	 */
-	private function setup_email_subject( $atts, $email_field_id, $name_field_id ) {
+	private function setup_email_subject( $atts, $email_field_id, $name_field_id, $raw_name_field_value, $raw_email_field_value ) {
 
 		$subject = isset( $atts['subject'] ) ? sanitize_text_field( $atts['subject'] ) : self::default_subject();
 
@@ -1030,9 +1038,9 @@ class CoBlocks_Form {
 
 					if ( __( 'name', 'coblocks' ) === $slug_match ) {
 
-						if ( isset( $_POST[ $name_field_id ]['value'] ) ) {
+						if ( isset( $raw_name_field_value ) ) {
 
-							$name_field_value = is_array( $_POST[ $name_field_id ]['value'] ) ? sanitize_text_field( implode( ' ', $_POST[ $name_field_id ]['value'] ) ) : sanitize_text_field( $_POST[ $name_field_id ]['value'] );
+							$name_field_value = is_array( $raw_name_field_value ) ? sanitize_text_field( implode( ' ', $raw_name_field_value ) ) : sanitize_text_field( $raw_name_field_value );
 							$value            = empty( $name_field_value ) ? $matches[0][ $key ] : $name_field_value;
 
 						} else {
@@ -1042,7 +1050,7 @@ class CoBlocks_Form {
 						}
 					} elseif ( __( 'email', 'coblocks' ) === $slug_match ) {
 
-						$value = isset( $_POST[ $email_field_id ]['value'] ) ? sanitize_text_field( $_POST[ $email_field_id ]['value'] ) : $matches[0][ $key ];
+						$value = isset( $raw_email_field_value ) ? sanitize_text_field( $raw_email_field_value ) : $matches[0][ $key ];
 
 					}
 
