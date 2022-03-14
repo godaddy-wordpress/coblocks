@@ -2,7 +2,7 @@
  * External dependencies
  */
 import '@testing-library/jest-dom/extend-expect';
-import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
+import { createBlock, registerBlockType, serialize } from '@wordpress/blocks';
 
 /**
  * Internal dependencies.
@@ -13,7 +13,7 @@ import { name, settings } from '../index';
 let block;
 let serializedBlock;
 
-describe( name, () => {
+describe( 'coblocks/field-text', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );

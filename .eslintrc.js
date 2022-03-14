@@ -27,11 +27,15 @@ module.exports = {
 		} ],
 
 		// Temp override to slowly change everything
+		'arrow-parens': [ 'warn' ],
+		indent: [ 'warn' ],
 		'sort-imports': [ 'warn', {
 			allowSeparatedGroups: true,
 			ignoreCase: true,
 			memberSyntaxSortOrder: [ 'all', 'single', 'multiple', 'none' ],
 		} ],
+		'jest/no-conditional-expect': [ 'warn' ],
+		'jest/no-standalone-expect': [ 'warn' ],
 		'sort-keys': [ 'warn', 'asc', { natural: true } ],
 		'sort-vars': [ 'warn', { ignoreCase: true } ],
 		'react/destructuring-assignment': [ 'warn', 'always' ],
@@ -41,6 +45,7 @@ module.exports = {
 		'react/jsx-sort-props': [ 'warn', { ignoreCase: true } ],
 		'react/no-deprecated': [ 'warn' ],
 		'react/sort-prop-types': [ 'warn', { ignoreCase: true } ],
+		'template-curly-spacing': [ 'warn' ],
 	},
 	overrides: [
 		{

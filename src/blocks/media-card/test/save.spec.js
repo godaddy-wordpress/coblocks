@@ -1,8 +1,8 @@
 /**
  * External dependencies
  */
+import { createBlock, registerBlockType, serialize } from '@wordpress/blocks';
 import '@testing-library/jest-dom/extend-expect';
-import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
 
 /**
  * Internal dependencies.
@@ -14,16 +14,16 @@ let block;
 
 const DEFAULT_IMAGE_ATTRIBUTES = {
 	backgroundImg: '150x150.png',
-	mediaUrl: '150x150.png',
-	mediaPosition: 'right',
-	mediaType: 'image',
 	backgroundOverlay: 50,
 	backgroundRepeat: 'no-repeat',
 	backgroundSize: 'contain',
 	backgroundType: 'image',
-	hasImgShadow: true,
 	focalPoint: { x: 0.6352941176470588, y: 0.3729411405675552 },
-}
+	hasImgShadow: true,
+	mediaPosition: 'right',
+	mediaType: 'image',
+	mediaUrl: '150x150.png',
+};
 
 describe( 'coblocks/media-card', () => {
 	beforeAll( () => {

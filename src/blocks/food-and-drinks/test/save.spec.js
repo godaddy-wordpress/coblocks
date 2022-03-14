@@ -2,7 +2,7 @@
  * External dependencies
  */
 import '@testing-library/jest-dom/extend-expect';
-import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
+import { createBlock, registerBlockType, serialize } from '@wordpress/blocks';
 
 /**
  * Internal dependencies.
@@ -13,7 +13,7 @@ import { name, settings } from '../index';
 let block;
 let serializedBlock;
 
-describe( name, () => {
+describe( 'coblocks/food-and-drinks', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );
@@ -35,7 +35,7 @@ describe( name, () => {
 	} );
 
 	it( 'should render images', () => {
-		[ 0, 1 ].forEach( renderImageBool => {
+		[ 0, 1 ].forEach( ( renderImageBool ) => {
 			block.attributes.showImages = renderImageBool;
 			serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();
@@ -45,7 +45,7 @@ describe( name, () => {
 	} );
 
 	it( 'should render prices', () => {
-		[ 0, 1 ].forEach( showPricesBool => {
+		[ 0, 1 ].forEach( ( showPricesBool ) => {
 			block.attributes.showPrices = showPricesBool;
 			serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();
@@ -55,7 +55,7 @@ describe( name, () => {
 	} );
 
 	it( 'should render column classes', () => {
-		[ 1, 2, 3, 4 ].forEach( columnSize => {
+		[ 1, 2, 3, 4 ].forEach( ( columnSize ) => {
 			block.attributes.columns = columnSize;
 			serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();
