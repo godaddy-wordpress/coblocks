@@ -9,15 +9,17 @@ import { GalleryStackedIcon } from '@godaddy-wordpress/coblocks-icons';
 import { __ } from '@wordpress/i18n';
 import { registerBlockVariation } from '@wordpress/blocks';
 
-[
-	{
-		attributes: {
-			className: 'is-style-stacked',
-			columns: 1,
-		},
-		description: __( 'stacked gallery', 'coblocks' ),
-		icon: GalleryStackedIcon,
-		name: 'stacked',
-		title: __( 'Stacked (CoBlocks)', 'coblocks' ),
+export const BLOCK_VARIATION_GALLERY_STACKED = {
+	attributes: {
+		className: 'is-style-compact',
+		columns: 1,
 	},
+	description: __( 'stacked gallery', 'coblocks' ),
+	icon: GalleryStackedIcon,
+	name: 'stacked',
+	title: __( 'Stacked (CoBlocks)', 'coblocks' ),
+};
+
+[
+	BLOCK_VARIATION_GALLERY_STACKED,
 ].forEach( ( variation ) => registerBlockVariation( 'core/gallery', variation ) );

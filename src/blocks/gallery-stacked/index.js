@@ -6,6 +6,7 @@ import { GalleryStackedIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 /**
  * Internal dependencies
  */
+import { BLOCK_VARIATION_GALLERY_STACKED } from '../../block-variations/core/gallery';
 import metadata from './block.json';
 
 /**
@@ -21,11 +22,10 @@ const { name, category } = metadata;
 
 const settings = {
 	attributes: {
-		columns: { type: 'number' },
 		ids: { type: 'array' },
 		images: { type: 'array' },
-		linkTo: { type: 'string' },
-		sizeSlug: { type: 'string' },
+		// linkTo: { type: 'string' },
+		// sizeSlug: { type: 'string' },
 	},
 	edit: ( props ) => {
 		const { replaceBlocks } = dispatch( 'core/block-editor' );
@@ -41,8 +41,11 @@ const settings = {
 		to: [
 			{
 				blocks: [ 'core/gallery' ],
-				transform: ( props ) => {
-					return createBlock( 'core/gallery', props );
+				transform: ( attributes ) => {
+					return createBlock(
+						'core/gallery',
+						Object.assign( {}, attributes, BLOCK_VARIATION_GALLERY_STACKED.attributes )
+					);
 				},
 				type: 'block',
 			},
