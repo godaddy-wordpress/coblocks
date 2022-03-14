@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-03-11T19:32:48+00:00\n"
+"POT-Creation-Date: 2022-03-14T15:14:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: coblocks\n"
@@ -277,7 +277,7 @@ msgstr ""
 msgid "An error has occurred, check for calendar privileges to make sure it is public or try again later."
 msgstr ""
 
-#: src/blocks/gist/index.php:83
+#: src/blocks/gist/index.php:82
 #: src/blocks/gist/deprecated.js:37
 #: src/blocks/gist/deprecated.js:73
 msgid "View this gist on GitHub"
