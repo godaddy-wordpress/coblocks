@@ -1023,7 +1023,7 @@ class CoBlocks_Form {
 	 * @param  string $raw_email_field_value Raw email field value.
 	 * @return string Email subject.
 	 */
-	private function setup_email_subject( $atts, $email_field_id, $name_field_id, $raw_name_field_value, $raw_email_field_value ) {
+	private function setup_email_subject( $atts, $email_field_id, $name_field_id, &$raw_name_field_value, &$raw_email_field_value ) {
 
 		$subject = isset( $atts['subject'] ) ? sanitize_text_field( $atts['subject'] ) : self::default_subject();
 
