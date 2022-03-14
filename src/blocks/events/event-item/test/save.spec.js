@@ -14,13 +14,13 @@ let block;
 let serializedBlock;
 
 const DEFAULT_ATTRIBUTES = {
-	description: "Some description",
-	eventDay: "25",
-	eventLocation: "Somewhere",
-	eventMonth: "Nov",
-	eventTime: "5:25",
-	eventYear: "2099",
-	title: "Some title",
+	description: 'Some description',
+	eventDay: '25',
+	eventLocation: 'Somewhere',
+	eventMonth: 'Nov',
+	eventTime: '5:25',
+	eventYear: '2099',
+	title: 'Some title',
 };
 
 describe( name, () => {

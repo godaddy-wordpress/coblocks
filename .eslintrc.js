@@ -49,7 +49,6 @@ module.exports = {
 
 		// Deactivation - we should decide if we want them or not
 		'jest/valid-title': 0,
-		quotes: 0,
 	},
 	overrides: [
 		{
