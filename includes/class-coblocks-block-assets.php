@@ -528,23 +528,23 @@ class CoBlocks_Block_Assets {
 			return false;
 		}
 
-		if ( false !== strpos( $admin_page, 'post-new.php' ) && empty( $_GET['post_type'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( false !== strpos( $admin_page, 'post-new.php' ) && empty( $_GET['post_type'] ) ) {
 			return true;
 		}
 
-		if ( false !== strpos( $admin_page, 'post-new.php' ) && isset( $_GET['post_type'] ) && $this->is_post_type_gutenberg( filter_input( INPUT_GET, wp_unslash( $_GET['post_type'] ), FILTER_SANITIZE_STRING ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( false !== strpos( $admin_page, 'post-new.php' ) && isset( $_GET['post_type'] ) && $this->is_post_type_gutenberg( filter_input( INPUT_GET, wp_unslash( $_GET['post_type'] ), FILTER_SANITIZE_STRING ) ) ) {
 			return true;
 		}
 
-		if ( false !== strpos( $admin_page, 'post.php' ) && isset( $_GET['post'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$wp_post = get_post( filter_input( INPUT_GET, wp_unslash( $_GET['post'] ), FILTER_SANITIZE_STRING ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( false !== strpos( $admin_page, 'post.php' ) && isset( $_GET['post'] ) ) {
+			$wp_post = get_post( filter_input( INPUT_GET, wp_unslash( $_GET['post'] ), FILTER_SANITIZE_STRING ) );
 			if ( isset( $wp_post ) && isset( $wp_post->post_type ) && $this->is_post_type_gutenberg( $wp_post->post_type ) ) {
 				return true;
 			}
 		}
 
-		if ( false !== strpos( $admin_page, 'revision.php' ) && isset( $_GET['revision'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$wp_post     = get_post( filter_input( INPUT_GET, wp_unslash( $_GET['revision'] ), FILTER_SANITIZE_STRING ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( false !== strpos( $admin_page, 'revision.php' ) && isset( $_GET['revision'] ) ) {
+			$wp_post     = get_post( filter_input( INPUT_GET, wp_unslash( $_GET['revision'] ), FILTER_SANITIZE_STRING ) );
 			$post_parent = get_post( $wp_post->post_parent );
 			if ( isset( $post_parent ) && isset( $post_parent->post_type ) && $this->is_post_type_gutenberg( $post_parent->post_type ) ) {
 				return true;
