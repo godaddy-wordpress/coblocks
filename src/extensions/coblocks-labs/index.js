@@ -1,4 +1,3 @@
-/*global coblocksSettings*/
 /**
  * External dependencies
  */
@@ -6,15 +5,17 @@ import { __ } from '@wordpress/i18n';
 import { Modal } from '@wordpress/components';
 import { useDispatch } from '@wordpress/data';
 import { useState } from '@wordpress/element';
-import { getPlugin, registerPlugin, unregisterPlugin } from '@wordpress/plugins';
+import { getPlugin, registerPlugin } from '@wordpress/plugins';
 
 /**
  * Internal dependencies
  */
-import CoBlocksMenuItem from '../../components/plugin-menu-item';
-import CoBlocksSettingsModalControl from './coblocks-settings-slot';
+import CoBlocksLabsModalControl from './coblocks-labs-slot';
 
-export default function CoBlocksSettings() {
+import { category as categoryIcon } from '@wordpress/icons';
+import CoBlocksMenuItem from '../../components/plugin-menu-item';
+
+export function CoBlocksLabs() {
 	const [ isOpen, setOpen ] = useState( false );
 
 	// Detect and save settings when closing the modal (make the API POST request).
@@ -29,47 +30,47 @@ export default function CoBlocksSettings() {
 
 	return (
 		<>
-			<CoBlocksMenuItem onClick={ openModal }>
-				{ __( 'Editor settings', 'coblocks' ) }
+			<CoBlocksMenuItem icon={ categoryIcon } onClick={ openModal }>
+				{ __( 'CoBlocks Labs', 'coblocks' ) }
 			</CoBlocksMenuItem>
 
 			{ isOpen && (
 				<Modal
-					className="coblocks-settings-modal"
+					className="coblocks-labs-modal"
 					closeLabel={ __( 'Close', 'coblocks' ) }
 					onRequestClose={ closeModal }
 					shouldCloseOnClickOutside={ false }
-					title={ __( 'Editor settings', 'coblocks' ) }
+					title={ __( 'CoBlocks Labs', 'coblocks' ) }
 				>
 					<section className="edit-post-preferences-modal__section">
 						<h2 className="edit-post-preferences-modal__section-title">
 							{ __( 'General', 'coblocks' ) }
 						</h2>
 
-						<CoBlocksSettingsModalControl.Slot>
+						<CoBlocksLabsModalControl.Slot>
 							{
 								/**
 								 * Override with your implementation:
 								 *
 								 * import { registerPlugin } from '@wordpress/plugins';
-								 * import { CoBlocksSettingsModalControl } from './coblocks-settings-slot';
-								 * import { CoBlocksSettingsToggleControl } from './coblocks-settings-toggle-control';
+								 * import { CoBlocksLabsModalControl } from './coblocks-labs-slot';
+								 * import { CoBlocksLabsToggleControl } from './coblocks-labs-toggle-control';
 								 *
-								 * registerPlugin( 'your-settings-modal-control', {
+								 * registerPlugin( 'your-labs-modal-control', {
 								 *     render: () => (
-								 *         <CoBlocksSettingsModalControl>
-								 *             <CoBlocksSettingsToggleControl
+								 *         <CoBlocksLabsModalControl>
+								 *             <CoBlocksLabsToggleControl
 								 *                 settingsKey="name_of_wordpress_setting"
 								 *                 label={ __( 'The toggle control label', 'coblocks' ) }
 								 *                 help={ __( 'The toggle control help text', 'coblocks' ) }
 								 *             />
-								 *         </CoBlocksSettingsModalControl>
+								 *         </CoBlocksLabsModalControl>
 								 *     ),
 								 * } );
 								 */
 							}
-							<div>CoBlocksSettingsModalControl</div>
-						</CoBlocksSettingsModalControl.Slot>
+							<div>{ CoBlocksLabsModalControl }</div>
+						</CoBlocksLabsModalControl.Slot>
 					</section>
 				</Modal>
 			) }
@@ -77,11 +78,9 @@ export default function CoBlocksSettings() {
 	);
 }
 
-if ( typeof coblocksSettings !== 'undefined' && !! parseInt( coblocksSettings.coblocksSettingsEnabled ) ) {
-	registerPlugin( 'coblocks-settings', {
+if ( ! getPlugin( 'coblocks-labs' ) ) {
+	registerPlugin( 'coblocks-labs', {
 		icon: '',
-		render: CoBlocksSettings,
+		render: CoBlocksLabs,
 	} );
-} else if ( getPlugin( 'coblocks-settings' ) ) {
-	unregisterPlugin( 'coblocks-settings' );
 }

@@ -107,6 +107,7 @@
 		"@wordpress/hooks": "^3.2.1",
 		"@wordpress/i18n": "^4.2.3",
 		"@wordpress/icons": "^6.0.1",
+		"@wordpress/interface": "^4.3.1",
 		"@wordpress/jest-console": "^4.1.0",
 		"@wordpress/jest-preset-default": "^8.0.1",
 		"@wordpress/jest-puppeteer-axe": "^3.1.0",
