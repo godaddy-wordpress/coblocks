@@ -46,6 +46,7 @@ const Swiper = ( props ) => {
 		slidesPerView = 1,
 		spaceBetween = 0,
 		navigationClass = null,
+		transitionSpeed = 1,
 	} = props;
 
 	const [ swiper, setSwiper ] = useState( null );
@@ -213,6 +214,11 @@ const Swiper = ( props ) => {
 		}
 	}, [ Pagination, swiper ] );
 
+	const swiperWrapperClasses = classnames(
+		'swiper-wrapper',
+		`swiper-wrapper__duration-${ transitionSpeed * 10 }`
+	);
+
 	return (
 		<div
 			className={ `coblocks-swiper-container` }
@@ -223,7 +229,7 @@ const Swiper = ( props ) => {
 				className="swiper-container"
 				id={ uuid }
 			>
-				<div className="swiper-wrapper" id="swiper-wrapper" ref={ swiperWrapperRef } >
+				<div className={ swiperWrapperClasses } id="swiper-wrapper" ref={ swiperWrapperRef }>
 					{ renderList }
 				</div>
 				{ renderNavigation }

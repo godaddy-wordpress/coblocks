@@ -64,3 +64,54 @@
 		@content;
 	}
 }
+
+// swiper mixin
+@mixin make_swiper_transition_speed {
+	.swiper-wrapper__duration {
+		transition-timing-function: ease-in-out !important;
+
+		&-10 {
+			transition-duration: 1s !important;
+		}
+
+		&-9 {
+			transition-duration: 0.9s !important;
+		}
+
+		&-8 {
+			transition-duration: 0.8s !important;
+		}
+
+		&-7 {
+			transition-duration: 0.7s !important;
+		}
+
+		&-6 {
+			transition-duration: 0.6s !important;
+		}
+
+		&-5 {
+			transition-duration: 0.5s !important;
+		}
+
+		&-4 {
+			transition-duration: 0.4s !important;
+		}
+
+		&-3 {
+			transition-duration: 0.3s !important;
+		}
+
+		&-2 {
+			transition-duration: 0.2s !important;
+		}
+
+		&-1 {
+			transition-duration: 0.1s !important;
+		}
+
+		&-0 {
+			transition-duration: 0s !important;
+		}
+	}
+}

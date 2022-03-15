@@ -13,7 +13,7 @@ import autoPlayOptions from './autoplay-options';
  * WordPress dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import { PanelBody, SelectControl, ToggleControl } from '@wordpress/components';
+import { PanelBody, RangeControl, SelectControl, ToggleControl } from '@wordpress/components';
 
 const SliderPanel = ( props ) => {
 	const getLoopHelp = ( checked ) => {
@@ -73,6 +73,7 @@ const SliderPanel = ( props ) => {
 		prevNextButtons,
 		alignCells,
 		pauseHover,
+		transitionSpeed,
 		thumbnails,
 	} = attributes;
 
@@ -136,6 +137,15 @@ const SliderPanel = ( props ) => {
 				help={ getAlignCellsHelp }
 				label={ __( 'Align cells', 'coblocks' ) }
 				onChange={ () => setAttributes( { alignCells: ! alignCells } ) }
+			/>
+			<RangeControl
+				initialValue={ transitionSpeed }
+				label={ __( 'Transition Speed', 'coblocks' ) }
+				max={ 1 }
+				min={ 0 }
+				onChange={ ( newSpeed ) => setAttributes( { transitionSpeed: newSpeed } ) }
+				step={ 0.1 }
+				value={ transitionSpeed }
 			/>
 		</PanelBody>
 	);

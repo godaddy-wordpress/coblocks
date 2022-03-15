@@ -56,6 +56,7 @@ const GalleryCarouselEdit = ( props ) => {
 		pauseHover,
 		gridSize,
 		alignCells,
+		transitionSpeed,
 	} = attributes;
 
 	const { selectedImage, setSelectedImage } = useContext( GalleryCarouselContext );
@@ -188,6 +189,7 @@ const GalleryCarouselEdit = ( props ) => {
 				Pagination={ renderPagination }
 				pauseHover={ autoPlay ? pauseHover : null }
 				slidesPerView={ swiperSizing[ gridSize ] }
+				transitionSpeed={ transitionSpeed }
 			>
 				{ ( {
 					index,
@@ -227,6 +229,7 @@ const GalleryCarouselEdit = ( props ) => {
 		pauseHover,
 		prevNextButtons,
 		thumbnails,
+		transitionSpeed,
 	] );
 
 	const renderGalleryPlaceholder = () => {

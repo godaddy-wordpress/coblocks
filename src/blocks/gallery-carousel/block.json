@@ -109,6 +109,10 @@
 					"selector": "figcaption"
 				}
 			}
+		},
+		"transitionSpeed": {
+			"type": "number",
+			"default": 1
 		}
 	}
 }
