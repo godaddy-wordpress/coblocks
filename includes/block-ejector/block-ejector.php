@@ -31,7 +31,7 @@ add_action( 'the_post', function( &$post ) {
 				array(
 					'attrs' => $block_migration->attributes(),
 					'innerHTML' => '',
-					'innerContent' => '',
+					'innerContent' => array(),
 					'innerBlocks' => array(),
 				)
 			);
@@ -43,6 +43,8 @@ add_action( 'the_post', function( &$post ) {
 } );
 
 add_action( 'init', function() {
+	if ( ! is_admin() ) return;
+
 	register_block_type( 'coblocks/gallery-stacked', array(
 		'render_callback' => function() {
 			return;
