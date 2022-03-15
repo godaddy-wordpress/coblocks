@@ -1,47 +1,51 @@
 <?php
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-ejector/class-coblocks-gallery-stacked-migrate.php';
 
-if( is_admin() ) :
-	add_action( 'the_post', function( &$post ) {
-		$parsed_blocks = parse_blocks( $post->post_content );
+add_action( 'the_post', function( &$post ) {
+	if ( ! is_admin() || ! get_current_screen()->is_block_editor ) return;
 
-		$block_targets = array(
-			'coblocks/gallery-stacked' => CoBlocks_Gallery_Stacked_Migrate::class,
-		);
+	$parsed_blocks = parse_blocks( $post->post_content );
 
-		$parsed_blocks = array_map(
-			function( $parsed_block ) use( $block_targets ) {
-				if ( ! in_array( $parsed_block['blockName'], array_keys( $block_targets ) ) ) {
-					return $parsed_block;
-				}
+	$block_targets = array(
+		'coblocks/gallery-stacked' => CoBlocks_Gallery_Stacked_Migrate::class,
+	);
 
-				$dom_parser = new DOMDocument();
-				$dom_parser->loadHTML( $parsed_block['innerHTML'] );
+	$parsed_blocks = array_map(
+		function( $parsed_block ) use( $block_targets ) {
+			if ( ! in_array( $parsed_block['blockName'], array_keys( $block_targets ) ) ) {
+				return $parsed_block;
+			}
 
-				$block_migration = new $block_targets[ $parsed_block['blockName'] ]( $dom_parser );
+			// libxml can't parse HTML5 elements still so disable warnings for it.
+			libxml_use_internal_errors( true );
 
-				return array_merge(
-					$parsed_block,
-					array(
-						'attrs' => $block_migration->attributes(),
-						'innerHTML' => '',
-						'innerContent' => '',
-						'innerBlocks' => array(),
-					)
-				);
-			},
-			$parsed_blocks
-		);
+			$dom_parser = new DOMDocument();
+			$dom_parser->loadHTML( $parsed_block['innerHTML'] );
 
-		$post->post_content = serialize_blocks( $parsed_blocks );
-	} );
+			libxml_clear_errors();
 
-	add_action( 'init', function() {
-		register_block_type( 'coblocks/gallery-stacked', array(
-			'render_callback' => function() {
-				return;
-			},
-		) );
-	} );
+			$block_migration = new $block_targets[ $parsed_block['blockName'] ]( $dom_parser );
 
-endif;
+			return array_merge(
+				$parsed_block,
+				array(
+					'attrs' => $block_migration->attributes(),
+					'innerHTML' => '',
+					'innerContent' => '',
+					'innerBlocks' => array(),
+				)
+			);
+		},
+		$parsed_blocks
+	);
+
+	$post->post_content = serialize_blocks( $parsed_blocks );
+} );
+
+add_action( 'init', function() {
+	register_block_type( 'coblocks/gallery-stacked', array(
+		'render_callback' => function() {
+			return;
+		},
+	) );
+} );
