@@ -897,8 +897,8 @@ class CoBlocks_Form {
 
 		$post_id        = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
 		$post_title     = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
-		$email_field_id = isset( $_POST['email-field-id'] ) ? esc_html( $_POST['email-field-id'] ) : 'field-email';
-		$name_field_id  = isset( $_POST['name-field-id'] ) ? esc_html( $_POST['name-field-id'] ) : 'field-name';
+		$email_field_id = isset( $_POST['email-field-id'] ) ? sanitize_text_field( $_POST['email-field-id'] ) : 'field-email';
+		$name_field_id  = isset( $_POST['name-field-id'] ) ? sanitize_text_field( $_POST['name-field-id'] ) : 'field-name';
 
 		$to = isset( $atts['to'] ) ? sanitize_email( $atts['to'] ) : get_option( 'admin_email' );
 
@@ -907,7 +907,7 @@ class CoBlocks_Form {
 		$recaptcha_site_key   = get_option( 'coblocks_google_recaptcha_site_key' );
 		$recaptcha_secret_key = get_option( 'coblocks_google_recaptcha_secret_key' );
 		if ( $recaptcha_site_key && $recaptcha_secret_key ) {
-			if ( ! isset( $_POST['g-recaptcha-token'] ) || ! $this->verify_recaptcha( $_POST['g-recaptcha-token'] ) ) {
+			if ( ! isset( $_POST['g-recaptcha-token'] ) || ! $this->verify_recaptcha( sanitize_text_field( $_POST['g-recaptcha-token'] ) ) ) {
 
 				$this->remove_url_form_hash();
 
@@ -967,8 +967,8 @@ class CoBlocks_Form {
 		 */
 		$email_content = (string) apply_filters( 'coblocks_form_email_content', $this->email_content, $_POST, $post_id );
 
-		$sender_email = isset( $_POST[ $email_field_id ]['value'] ) ? esc_html( $_POST[ $email_field_id ]['value'] ) : '';
-		$sender_name  = isset( $_POST[ $name_field_id ]['value'] ) ? esc_html( $_POST[ $name_field_id ]['value'] ) : '';
+		$sender_email = isset( $_POST[ $email_field_id ]['value'] ) ? sanitize_text_field( $_POST[ $email_field_id ]['value'] ) : '';
+		$sender_name  = isset( $_POST[ $name_field_id ]['value'] ) ? sanitize_text_field( $_POST[ $name_field_id ]['value'] ) : '';
 
 		$headers = array();
 
