@@ -112,6 +112,18 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+= 2.22.4 / 2022-03-15 =
+##### Bug fixes
+* Fix Form block where nonce is unverified and some sanitization [#2329](https://github.com/godaddy-wordpress/coblocks/pull/2329)
+* Fix Gist block to make sure there is no PHPCS error [#2323](https://github.com/godaddy-wordpress/coblocks/pull/2323)
+* Fix Events block timezone problem [#2319](https://github.com/godaddy-wordpress/coblocks/pull/2319)
+
+##### Misc
+* Lint everything on CI [#2311](https://github.com/godaddy-wordpress/coblocks/pull/2311)
+* Update block-assets syntax [#2322](https://github.com/godaddy-wordpress/coblocks/pull/2322)
+* Update some dependencies [#2313](https://github.com/godaddy-wordpress/coblocks/pull/2313)
+* Enhance restore cache to also install missing deps on build pipeline [#2317](https://github.com/godaddy-wordpress/coblocks/pull/2317)
+
 = 2.22.3 / 2022-03-10 =
 ##### Bug fixes
 * Fix situation where nonce is unverified [#2316](https://github.com/godaddy-wordpress/coblocks/pull/2316)
