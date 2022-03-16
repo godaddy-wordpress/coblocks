@@ -1,5 +1,16 @@
 <?php
+/**
+ * CoBlocks_Block_Migration
+ *
+ * @package CoBlocks
+ */
 
+/**
+ * CoBlocks_Block_Migration class.
+ *
+ * An abstract class providing common functionality to make block
+ * migrations to a "dynamic block" with relative attributes easier.
+ */
 abstract class CoBlocks_Block_Migration {
 	/**
 	 * The DOMDocument instance.
@@ -29,6 +40,13 @@ abstract class CoBlocks_Block_Migration {
 		$this->document = new DOMDocument();
 	}
 
+	/**
+	 * Migrate the parsed block into a "dynamic block" or "server rendered" block.
+	 *
+	 * @param string $parsed_block_html the HTML parsed from the block.
+	 *
+	 * @return array new block attributes.
+	 */
 	public function migrate( string $parsed_block_html ) {
 		// libxml can't parse HTML5 elements still so disable warnings for it.
 		libxml_use_internal_errors( true );
