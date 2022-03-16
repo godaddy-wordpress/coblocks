@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import { GalleryStackedIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Internal dependencies
  */
 import { BLOCK_VARIATION_GALLERY_STACKED } from '../../block-variations/core/gallery';
@@ -18,15 +13,9 @@ import { createBlock, switchToBlockType } from '@wordpress/blocks';
 /**
  * Block constants
  */
-const { name, category } = metadata;
+const { name } = metadata;
 
 const settings = {
-	attributes: {
-		ids: { type: 'array' },
-		images: { type: 'array' },
-		// linkTo: { type: 'string' },
-		// sizeSlug: { type: 'string' },
-	},
 	edit: ( props ) => {
 		const { replaceBlocks } = dispatch( 'core/block-editor' );
 		replaceBlocks(
@@ -42,9 +31,17 @@ const settings = {
 			{
 				blocks: [ 'core/gallery' ],
 				transform: ( attributes ) => {
+					const galleryAttributes = Object.fromEntries(
+						Object.entries( attributes ).filter(
+							( attribute ) => 'images' !== attribute[ 0 ]
+						)
+					);
 					return createBlock(
 						'core/gallery',
-						Object.assign( {}, attributes, BLOCK_VARIATION_GALLERY_STACKED.attributes )
+						Object.assign( {}, BLOCK_VARIATION_GALLERY_STACKED.attributes, galleryAttributes ),
+						attributes.images.map( ( image ) => {
+							return createBlock( 'core/image', image );
+						} ),
 					);
 				},
 				type: 'block',
@@ -53,4 +50,4 @@ const settings = {
 	},
 };
 
-export { name, category, icon, metadata, settings };
+export { name, metadata, settings };
