@@ -1,6 +1,6 @@
 <?php
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-block-migration.php';
-require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-stacked-migrate.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-stacked-migration.php';
 
 add_action( 'the_post', function( WP_Post &$post ) {
 	if ( ! is_admin() || ! get_current_screen()->is_block_editor ) return;
@@ -8,7 +8,7 @@ add_action( 'the_post', function( WP_Post &$post ) {
 	$parsed_blocks = parse_blocks( $post->post_content );
 
 	$block_targets = array(
-		'coblocks/gallery-stacked' => CoBlocks_Gallery_Stacked_Migrate::class,
+		'coblocks/gallery-stacked' => CoBlocks_Gallery_Stacked_Migration::class,
 	);
 
 	$parsed_blocks = array_map(

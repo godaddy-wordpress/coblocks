@@ -1,6 +1,6 @@
 <?php
 
-class CoBlocks_Gallery_Stacked_Migrate extends CoBlocks_Block_Migration {
+class CoBlocks_Gallery_Stacked_Migration extends CoBlocks_Block_Migration {
 	/**
 	 * @inheritDoc
 	 */
