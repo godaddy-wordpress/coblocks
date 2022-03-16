@@ -1,8 +1,6 @@
 <?php
 
 class CoBlocks_Gallery_Stacked_Migrate extends CoBlocks_Block_Migration {
-	private $has_border_radius = false;
-
 	/**
 	 * @inheritDoc
 	 */
@@ -29,10 +27,10 @@ class CoBlocks_Gallery_Stacked_Migrate extends CoBlocks_Block_Migration {
 		$gallery_wrapper = $this->query_selector( '//ul[contains(@class,"coblocks-gallery")]' );
 		if ( ! $gallery_wrapper ) return array();
 
-		$this->has_border_radius = $this->get_attribute_from_classname( 'has-border-radius-', $this->block_wrapper() );
-
 		return array(
-			'className' => $this->has_border_radius ? 'is-style-default' : 'is-style-compact',
+			'className' => $this->get_attribute_from_classname( 'has-border-radius-', $this->block_wrapper() )
+				? 'is-style-default'
+				: 'is-style-compact',
 			'filter' => $this->get_attribute_from_classname( 'has-filter-', $gallery_wrapper ),
 			'align' => $this->get_attribute_from_classname( 'align', $this->block_wrapper() ),
 			'lightbox' => $this->get_attribute_from_classname( 'has-lightbox', $this->block_wrapper() ),
@@ -63,16 +61,14 @@ class CoBlocks_Gallery_Stacked_Migrate extends CoBlocks_Block_Migration {
 				'url' => $this->get_value_from_element_attribute( $img_element, 'src' ),
 			);
 
-			$border_radius_attr = array();
-			if ( $this->has_border_radius ) {
-				$border_radius_attr = array(
-					'style' => array(
-						'border' => array(
-							'radius' => $this->has_border_radius . 'px',
-						),
+			$border_radius = $this->get_attribute_from_classname( 'has-border-radius-', $this->block_wrapper() );
+			$border_radius_attr = empty( $border_radius ) ? array() : array(
+				'style' => array(
+					'border' => array(
+						'radius' => $border_radius . 'px',
 					),
-				);
-			}
+				),
+			);
 
 			array_push(
 				$gallery_images,
