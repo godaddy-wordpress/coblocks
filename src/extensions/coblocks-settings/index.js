@@ -3,15 +3,16 @@
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Modal } from '@wordpress/components';
+import { PluginMoreMenuItem } from '@wordpress/edit-post';
 import { useDispatch } from '@wordpress/data';
 import { useState } from '@wordpress/element';
+import { MenuItem, Modal } from '@wordpress/components';
+
 import { getPlugin, registerPlugin, unregisterPlugin } from '@wordpress/plugins';
 
 /**
  * Internal dependencies
  */
-import CoBlocksMenuItem from '../../components/plugin-menu-item';
 import CoBlocksSettingsModalControl from './coblocks-settings-slot';
 
 export default function CoBlocksSettings() {
@@ -29,9 +30,9 @@ export default function CoBlocksSettings() {
 
 	return (
 		<>
-			<CoBlocksMenuItem onClick={ openModal }>
+			<PluginMoreMenuItem as={ MenuItem } onClick={ openModal }>
 				{ __( 'Editor settings', 'coblocks' ) }
-			</CoBlocksMenuItem>
+			</PluginMoreMenuItem>
 
 			{ isOpen && (
 				<Modal

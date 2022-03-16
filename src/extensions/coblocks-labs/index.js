@@ -2,10 +2,11 @@
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Modal } from '@wordpress/components';
+import { PluginMoreMenuItem } from '@wordpress/edit-post';
 import { useDispatch } from '@wordpress/data';
 import { useState } from '@wordpress/element';
 import { getPlugin, registerPlugin } from '@wordpress/plugins';
+import { MenuItem, Modal } from '@wordpress/components';
 
 /**
  * Internal dependencies
@@ -13,7 +14,6 @@ import { getPlugin, registerPlugin } from '@wordpress/plugins';
 import CoBlocksLabsModalControl from './coblocks-labs-slot';
 
 import { category as categoryIcon } from '@wordpress/icons';
-import CoBlocksMenuItem from '../../components/plugin-menu-item';
 
 export function CoBlocksLabs() {
 	const [ isOpen, setOpen ] = useState( false );
@@ -30,10 +30,9 @@ export function CoBlocksLabs() {
 
 	return (
 		<>
-			<CoBlocksMenuItem icon={ categoryIcon } onClick={ openModal }>
+			<PluginMoreMenuItem as={ MenuItem } icon={ categoryIcon } onClick={ openModal }>
 				{ __( 'CoBlocks Labs', 'coblocks' ) }
-			</CoBlocksMenuItem>
-
+			</PluginMoreMenuItem>
 			{ isOpen && (
 				<Modal
 					className="coblocks-labs-modal"
