@@ -1,7 +1,8 @@
 <?php
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-block-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-stacked-migrate.php';
 
-add_action( 'the_post', function( &$post ) {
+add_action( 'the_post', function( WP_Post &$post ) {
 	if ( ! is_admin() || ! get_current_screen()->is_block_editor ) return;
 
 	$parsed_blocks = parse_blocks( $post->post_content );
@@ -16,21 +17,15 @@ add_action( 'the_post', function( &$post ) {
 				return $parsed_block;
 			}
 
-			// libxml can't parse HTML5 elements still so disable warnings for it.
-			libxml_use_internal_errors( true );
-
-			$dom_parser = new DOMDocument();
-			$dom_parser->loadHTML( $parsed_block['innerHTML'] );
-
-			libxml_clear_errors();
-
-			$block_migration = new $block_targets[ $parsed_block['blockName'] ]( $dom_parser );
+			$block_migration = new $block_targets[ $parsed_block['blockName'] ];
+			$block_attributes = $block_migration->migrate( $parsed_block['innerHTML'] );
 
 			return array_merge(
 				$parsed_block,
 				array(
-					'attrs' => $block_migration->attributes(),
-					'innerHTML' => '',
+					'attrs' => $block_attributes,
+					// Since we are forcing this into a "dynamic block" which is only defined with block comment delimiters,
+					// we want to make sure an inner content is removed before serialization.
 					'innerContent' => array(),
 					'innerBlocks' => array(),
 				)

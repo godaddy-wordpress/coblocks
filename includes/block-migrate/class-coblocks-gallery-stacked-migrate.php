@@ -1,28 +1,16 @@
 <?php
 
-class CoBlocks_Gallery_Stacked_Migrate {
-	private $dom;
-	private $xpath;
-
+class CoBlocks_Gallery_Stacked_Migrate extends CoBlocks_Block_Migration {
 	private $has_border_radius = false;
 
-	public function __construct( DOMDocument $dom ) {
-		$this->dom = $dom;
-		$this->xpath = new DOMXPath( $this->dom );
-	}
-
 	/**
-	 * Produce new attributes from the parsed HTML.
-	 *
-	 * @return array the new block attributes.
+	 * @inheritDoc
 	 */
-	public function attributes() {
-		$output = array_filter( array_merge(
+	protected function migrate_attributes() {
+		return array_merge(
 			$this->calculate_group_attributes(),
 			$this->calculate_image_attributes(),
-		) );
-
-		return $output;
+		);
 	}
 
 	/**
@@ -31,45 +19,20 @@ class CoBlocks_Gallery_Stacked_Migrate {
 	 * @return array attributes found and their values.
 	 */
 	private function calculate_group_attributes() {
-		$block_wrapper_query = $this->xpath->query( '//div[contains(@class,"wp-block-coblocks-gallery-stacked")]' );
-		if ( ! $block_wrapper_query->count() ) return array();
+		$block_wrapper = $this->query_selector( '//div[contains(@class,"wp-block-coblocks-gallery-stacked")]' );
+		if ( ! $block_wrapper ) return array();
 
-		$gallery_wrapper_query = $this->xpath->query( '//ul[contains(@class,"coblocks-gallery")]' );
-		if ( ! $gallery_wrapper_query->count() ) return array();
+		$gallery_wrapper = $this->query_selector( '//ul[contains(@class,"coblocks-gallery")]' );
+		if ( ! $gallery_wrapper ) return array();
 
-		$block_wrapper = $block_wrapper_query->item( 0 );
-		$block_wrapper_classes = explode( ' ', $block_wrapper->attributes->getNamedItem( 'class' )->value );
-
-		$gallery_wrapper = $gallery_wrapper_query->item( 0 );
-		$gallery_wrapper_classes = explode( ' ', $gallery_wrapper->attributes->getNamedItem( 'class' )->value );
-
-		$this->has_border_radius = $this->get_attribute_from_classname( 'has-border-radius-', $gallery_wrapper_classes );
+		$this->has_border_radius = $this->get_attribute_from_classname( 'has-border-radius-', $block_wrapper );
 
 		return array(
 			'className' => $this->has_border_radius ? 'is-style-default' : 'is-style-compact',
-			'filter' => $this->get_attribute_from_classname( 'has-filter-', $gallery_wrapper_classes ),
-			'align' => $this->get_attribute_from_classname( 'align', $block_wrapper_classes ),
-			'lightbox' => in_array( 'has-lightbox', $block_wrapper_classes ),
+			'filter' => $this->get_attribute_from_classname( 'has-filter-', $gallery_wrapper ),
+			'align' => $this->get_attribute_from_classname( 'align', $block_wrapper ),
+			'lightbox' => $this->get_attribute_from_classname( 'has-lightbox', $block_wrapper ),
 		);
-	}
-
-	/**
-	 * Find the attribute value from the prefixed classname.
-	 *
-	 * @param string $classname_prefix prefix to search for value.
-	 * @param array $classnames classnames to search.
-	 *
-	 * @return string attribute value.
-	 */
-	private function get_attribute_from_classname( string $classname_prefix, array $classnames ) {
-		$filter_classname = array_filter(
-			$classnames,
-			function( $class ) use( $classname_prefix ) {
-				return false !== strpos( $class, $classname_prefix );
-			}
-		);
-
-		return empty( $filter_classname ) ? '' : str_replace( $classname_prefix, '', array_pop( $filter_classname ) );
 	}
 
 	/**
@@ -78,10 +41,10 @@ class CoBlocks_Gallery_Stacked_Migrate {
 	 * @return array attributes found and their values.
 	 */
 	private function calculate_image_attributes() {
-		$gallery_items = array();
-		$gallery_item_query = $this->xpath->query( '//li[contains(@class,"coblocks-gallery--item")]' );
+		$gallery_images = array();
+		$gallery_items = $this->query_selector_all( '//li[contains(@class,"coblocks-gallery--item")]' );
 
-		foreach ( $gallery_item_query as $gallery_item ) {
+		foreach ( $gallery_items as $gallery_item ) {
 			$wrapper_attrs = $this->get_data_from_attrs(
 				$gallery_item,
 				array(
@@ -130,7 +93,7 @@ class CoBlocks_Gallery_Stacked_Migrate {
 			}
 
 			array_push(
-				$gallery_items,
+				$gallery_images,
 				array_filter( array_merge(
 					$wrapper_attrs,
 					$img_attrs,
@@ -141,24 +104,6 @@ class CoBlocks_Gallery_Stacked_Migrate {
 			);
 		}
 
-		return array( 'images' => $gallery_items );
-	}
-
-	/**
-	 * Get values from attributes of an element.
-	 *
-	 * @param DOMElement $element element to pull attribute values from.
-	 * @param array $attribute_map mapping of new attributes and what element attribute to pull the value from.
-	 *
-	 * @return array new attributes and their values.
-	 */
-	private function get_data_from_attrs( DOMElement $element, array $attribute_map ) {
-		return array_map(
-			function( $attr_src ) use ( $element ) {
-				$attr = $element->attributes->getNamedItem( $attr_src );
-				return empty( $attr ) ? '' : $attr->nodeValue;
-			},
-			$attribute_map,
-		);
+		return array( 'images' => $gallery_images );
 	}
 }
