@@ -45,41 +45,19 @@ class CoBlocks_Gallery_Stacked_Migrate extends CoBlocks_Block_Migration {
 		$gallery_items = $this->query_selector_all( '//li[contains(@class,"coblocks-gallery--item")]' );
 
 		foreach ( $gallery_items as $gallery_item ) {
-			$wrapper_attrs = $this->get_data_from_attrs(
-				$gallery_item,
-				array(
-					'animation' => 'data-coblocks-animation',
-				)
+			$img_element = $gallery_item->getElementsByTagName( 'img' )->item( 0 );
+			$figcaption_element = $gallery_item->getElementsByTagName( 'figcaption' )->item( 0 );
+			$anchor_element = $gallery_item->getElementsByTagName( 'a' )->item( 0 );
+
+			$image_attributes = array(
+				'alt' => $this->get_value_from_element_attribute( $img_element, 'alt' ),
+				'animation' => $this->get_value_from_element_attribute( $gallery_item, 'data-coblocks-animation' ),
+				'caption' => $this->get_value_from_element_attribute( $figcaption_element, 'textContent' ),
+				'href' => $this->get_value_from_element_attribute( $anchor_element, 'href' ),
+				'imgLink' => $this->get_value_from_element_attribute( $img_element, 'data-imgLink' ),
+				'link' => $this->get_value_from_element_attribute( $img_element, 'data-link' ),
+				'url' => $this->get_value_from_element_attribute( $img_element, 'src' ),
 			);
-
-			$img_attrs = $this->get_data_from_attrs(
-				$gallery_item->getElementsByTagName( 'img' )->item( 0 ),
-				array(
-					'alt' => 'alt',
-					'imgLink' => 'data-imglink',
-					'link' => 'data-link',
-					'url' => 'src',
-				)
-			);
-
-			$img_caption = array();
-			$figcaption_element = $gallery_item->getElementsByTagName( 'figcaption' );
-			if ( $figcaption_element->count() ) {
-				$img_caption = array(
-					'caption' => $figcaption_element->item(0)->textContent,
-				);
-			}
-
-			$anchor_attrs = array();
-			$anchor_element = $gallery_item->getElementsByTagName( 'a' );
-			if ( $anchor_element->count() ) {
-				$anchor_attrs = $this->get_data_from_attrs(
-					$anchor_element->item( 0 ),
-					array(
-						'href' => 'href',
-					)
-				);
-			}
 
 			$border_radius_attr = array();
 			if ( $this->has_border_radius ) {
@@ -95,10 +73,7 @@ class CoBlocks_Gallery_Stacked_Migrate extends CoBlocks_Block_Migration {
 			array_push(
 				$gallery_images,
 				array_filter( array_merge(
-					$wrapper_attrs,
-					$img_attrs,
-					$img_caption,
-					$anchor_attrs,
+					$image_attributes,
 					$border_radius_attr,
 				) )
 			);
