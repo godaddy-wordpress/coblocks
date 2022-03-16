@@ -2,71 +2,163 @@
 
 class CoBlocks_Gallery_Stacked_Migrate {
 	private $dom;
+	private $xpath;
 
-	private $images = array();
+	private $has_border_radius = false;
 
 	public function __construct( DOMDocument $dom ) {
 		$this->dom = $dom;
+		$this->xpath = new DOMXPath( $this->dom );
 	}
 
+	/**
+	 * Produce new attributes from the parsed HTML.
+	 *
+	 * @return array the new block attributes.
+	 */
 	public function attributes() {
-		$this->get_figures();
+		$output = array_filter( array_merge(
+			$this->calculate_group_attributes(),
+			$this->calculate_image_attributes(),
+		) );
+
+		return $output;
+	}
+
+	/**
+	 * Calculate attributes applied to the gallery.
+	 *
+	 * @return array attributes found and their values.
+	 */
+	private function calculate_group_attributes() {
+		$block_wrapper_query = $this->xpath->query( '//div[contains(@class,"wp-block-coblocks-gallery-stacked")]' );
+		if ( ! $block_wrapper_query->count() ) return array();
+
+		$gallery_wrapper_query = $this->xpath->query( '//ul[contains(@class,"coblocks-gallery")]' );
+		if ( ! $gallery_wrapper_query->count() ) return array();
+
+		$block_wrapper = $block_wrapper_query->item( 0 );
+		$block_wrapper_classes = explode( ' ', $block_wrapper->attributes->getNamedItem( 'class' )->value );
+
+		$gallery_wrapper = $gallery_wrapper_query->item( 0 );
+		$gallery_wrapper_classes = explode( ' ', $gallery_wrapper->attributes->getNamedItem( 'class' )->value );
+
+		$this->has_border_radius = $this->get_attribute_from_classname( 'has-border-radius-', $gallery_wrapper_classes );
+
 		return array(
-			'images' => $this->images,
-			'ids' => $this->get_image_ids(),
+			'className' => $this->has_border_radius ? 'is-style-default' : 'is-style-compact',
+			'filter' => $this->get_attribute_from_classname( 'has-filter-', $gallery_wrapper_classes ),
+			'align' => $this->get_attribute_from_classname( 'align', $block_wrapper_classes ),
+			'lightbox' => in_array( 'has-lightbox', $block_wrapper_classes ),
 		);
 	}
 
-	private function get_figures() {
-		$figures = $this->dom->getElementsByTagName( 'figure' );
+	/**
+	 * Find the attribute value from the prefixed classname.
+	 *
+	 * @param string $classname_prefix prefix to search for value.
+	 * @param array $classnames classnames to search.
+	 *
+	 * @return string attribute value.
+	 */
+	private function get_attribute_from_classname( string $classname_prefix, array $classnames ) {
+		$filter_classname = array_filter(
+			$classnames,
+			function( $class ) use( $classname_prefix ) {
+				return false !== strpos( $class, $classname_prefix );
+			}
+		);
 
-		foreach( $figures as $figure ) {
-			$image = $this->get_image_data( $figure );
-			$figcaption = $this->get_caption_data( $figure );
+		return empty( $filter_classname ) ? '' : str_replace( $classname_prefix, '', array_pop( $filter_classname ) );
+	}
+
+	/**
+	 * Calculate attributes applied to the gallery items.
+	 *
+	 * @return array attributes found and their values.
+	 */
+	private function calculate_image_attributes() {
+		$gallery_items = array();
+		$gallery_item_query = $this->xpath->query( '//li[contains(@class,"coblocks-gallery--item")]' );
+
+		foreach ( $gallery_item_query as $gallery_item ) {
+			$wrapper_attrs = $this->get_data_from_attrs(
+				$gallery_item,
+				array(
+					'animation' => 'data-coblocks-animation',
+				)
+			);
+
+			$img_attrs = $this->get_data_from_attrs(
+				$gallery_item->getElementsByTagName( 'img' )->item( 0 ),
+				array(
+					'alt' => 'alt',
+					'imgLink' => 'data-imglink',
+					'link' => 'data-link',
+					'url' => 'src',
+				)
+			);
+
+			$img_caption = array();
+			$figcaption_element = $gallery_item->getElementsByTagName( 'figcaption' );
+			if ( $figcaption_element->count() ) {
+				$img_caption = array(
+					'caption' => $figcaption_element->item(0)->textContent,
+				);
+			}
+
+			$anchor_attrs = array();
+			$anchor_element = $gallery_item->getElementsByTagName( 'a' );
+			if ( $anchor_element->count() ) {
+				$anchor_attrs = $this->get_data_from_attrs(
+					$anchor_element->item( 0 ),
+					array(
+						'href' => 'href',
+					)
+				);
+			}
+
+			$border_radius_attr = array();
+			if ( $this->has_border_radius ) {
+				$border_radius_attr = array(
+					'style' => array(
+						'border' => array(
+							'radius' => $this->has_border_radius . 'px',
+						),
+					),
+				);
+			}
+
 			array_push(
-				$this->images,
-				array_merge( $image, $figcaption )
+				$gallery_items,
+				array_filter( array_merge(
+					$wrapper_attrs,
+					$img_attrs,
+					$img_caption,
+					$anchor_attrs,
+					$border_radius_attr,
+				) )
 			);
 		}
+
+		return array( 'images' => $gallery_items );
 	}
 
-	private function get_image_data( DOMElement $figure ) {
-		$img_element = $figure->getElementsByTagName( 'img' );
-
-		if ( ! $img_element->count() ) return array();
-
-		$attribute_map = array(
-			'id' => 'data-id',
-			'url' => 'src',
-			'fullUrl' => 'data-full-url',
-			'link' => 'data-link',
-			'alt' => 'alt',
-		);
-
+	/**
+	 * Get values from attributes of an element.
+	 *
+	 * @param DOMElement $element element to pull attribute values from.
+	 * @param array $attribute_map mapping of new attributes and what element attribute to pull the value from.
+	 *
+	 * @return array new attributes and their values.
+	 */
+	private function get_data_from_attrs( DOMElement $element, array $attribute_map ) {
 		return array_map(
-			function( $attr_src ) use ( $img_element ) {
-				return $img_element->item( 0 )->attributes->getNamedItem( $attr_src )->nodeValue;
+			function( $attr_src ) use ( $element ) {
+				$attr = $element->attributes->getNamedItem( $attr_src );
+				return empty( $attr ) ? '' : $attr->nodeValue;
 			},
 			$attribute_map,
-		);
-	}
-
-	private function get_image_ids() {
-		return array_map(
-			function( $image ) {
-				return $image['id'];
-			},
-			$this->images
-		);
-	}
-
-	private function get_caption_data( DOMElement $figure ) {
-		$figcaption_element = $figure->getElementsByTagName( 'figcaption' );
-
-		if ( ! $figcaption_element->count() ) return array();
-
-		return array(
-			'caption' => $figcaption_element->item( 0 )->textContent,
 		);
 	}
 }
