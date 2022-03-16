@@ -6,6 +6,13 @@ class CoBlocks_Gallery_Stacked_Migrate extends CoBlocks_Block_Migration {
 	/**
 	 * @inheritDoc
 	 */
+	protected function block_name() {
+		return 'coblocks/gallery-stacked';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	protected function migrate_attributes() {
 		return array_merge(
 			$this->calculate_group_attributes(),
@@ -19,19 +26,16 @@ class CoBlocks_Gallery_Stacked_Migrate extends CoBlocks_Block_Migration {
 	 * @return array attributes found and their values.
 	 */
 	private function calculate_group_attributes() {
-		$block_wrapper = $this->query_selector( '//div[contains(@class,"wp-block-coblocks-gallery-stacked")]' );
-		if ( ! $block_wrapper ) return array();
-
 		$gallery_wrapper = $this->query_selector( '//ul[contains(@class,"coblocks-gallery")]' );
 		if ( ! $gallery_wrapper ) return array();
 
-		$this->has_border_radius = $this->get_attribute_from_classname( 'has-border-radius-', $block_wrapper );
+		$this->has_border_radius = $this->get_attribute_from_classname( 'has-border-radius-', $this->block_wrapper() );
 
 		return array(
 			'className' => $this->has_border_radius ? 'is-style-default' : 'is-style-compact',
 			'filter' => $this->get_attribute_from_classname( 'has-filter-', $gallery_wrapper ),
-			'align' => $this->get_attribute_from_classname( 'align', $block_wrapper ),
-			'lightbox' => $this->get_attribute_from_classname( 'has-lightbox', $block_wrapper ),
+			'align' => $this->get_attribute_from_classname( 'align', $this->block_wrapper() ),
+			'lightbox' => $this->get_attribute_from_classname( 'has-lightbox', $this->block_wrapper() ),
 		);
 	}
 

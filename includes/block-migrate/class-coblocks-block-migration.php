@@ -1,9 +1,30 @@
 <?php
 
 abstract class CoBlocks_Block_Migration {
+	/**
+	 * The DOMDocument instance.
+	 *
+	 * @var DOMDocument
+	 */
 	protected $document;
+
+	/**
+	 * The DOMXPath instance.
+	 *
+	 * @var DOMXPath
+	 */
 	protected $xpath;
 
+	/**
+	 * The DOMNode for the block wrapper element.
+	 *
+	 * @var DOMNode
+	 */
+	private $block_wrapper;
+
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
 		$this->document = new DOMDocument();
 	}
@@ -17,8 +38,20 @@ abstract class CoBlocks_Block_Migration {
 
 		libxml_clear_errors();
 
+		// If we can't find the block_wrapper, don't attempt to migrate anything.
+		if ( empty( $this->block_wrapper() ) ) {
+			return array();
+		}
+
 		return array_filter( $this->migrate_attributes() );
 	}
+
+	/**
+	 * Returns the name of the block.
+	 *
+	 * @return string the block name.
+	 */
+	abstract protected function block_name();
 
 	/**
 	 * Produce new attributes from the migrated block.
@@ -26,6 +59,23 @@ abstract class CoBlocks_Block_Migration {
 	 * @return array the new block attributes.
 	 */
 	abstract protected function migrate_attributes();
+
+	/**
+	 * Returns the DOMNode for the block wrapper element.
+	 *
+	 * @return DOMNode|array The block wrapper DOMNode or an empty array.
+	 */
+	protected function block_wrapper() {
+		// If we already have it just return it.
+		if ( ! empty( $this->block_wrapper ) ) {
+			return $this->block_wrapper;
+		}
+
+		$block_wrapper_classname = 'wp-block-' . str_replace('/', '-', $this->block_name() );
+		$this->block_wrapper = $this->query_selector( '//div[contains(@class,"' . $block_wrapper_classname . '")]' );
+
+		return $this->block_wrapper ?? array();
+	}
 
 	/**
 	 * Find the attribute value from the prefixed classname.
