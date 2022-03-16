@@ -124,8 +124,8 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			require_once COBLOCKS_PLUGIN_DIR . 'src/components/gutter-control/gutter-wrapper.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'src/components/form-label-colors/label-color-wrapper.php';
 
-			// Block Ejection Processor.
-			require_once COBLOCKS_PLUGIN_DIR . 'includes/block-ejector/block-ejector.php';
+			// Forced Block Migration Processor.
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/loader.php';
 
 			if ( is_admin() ) {
 				require_once COBLOCKS_PLUGIN_DIR . 'src/extensions/layout-selector/index.php';

@@ -1,5 +1,5 @@
 <?php
-require_once COBLOCKS_PLUGIN_DIR . 'includes/block-ejector/class-coblocks-gallery-stacked-migrate.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-stacked-migrate.php';
 
 add_action( 'the_post', function( &$post ) {
 	if ( ! is_admin() || ! get_current_screen()->is_block_editor ) return;
