@@ -112,6 +112,10 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+= 2.22.6 / 2022-03-17 =
+##### Bug fixes
+* Resolve style bleed issue with Offset gallery [#2331](https://github.com/godaddy-wordpress/coblocks/pull/2331)
+
 = 2.22.5 / 2022-03-17 =
 ##### Bug fixes
 * Sanitize email in Form block and properly escape URI [#2330](https://github.com/godaddy-wordpress/coblocks/pull/2330)

@@ -1,4 +1,9 @@
 
+2.22.6 / 2022-03-17
+===================
+### Bug fixes
+* Resolve style bleed issue with Offset gallery [#2331](https://github.com/godaddy-wordpress/coblocks/pull/2331)
+
 2.22.5 / 2022-03-17
 ===================
 ### Bug fixes
