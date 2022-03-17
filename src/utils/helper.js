@@ -14,6 +14,7 @@ import { supportsCollections } from './block-helpers';
 import { isBlobURL } from '@wordpress/blob';
 import { registerBlockType } from '@wordpress/blocks';
 import TokenList from '@wordpress/token-list';
+import { __, sprintf } from '@wordpress/i18n';
 
 // Set dim ratio.
 export function overlayToClass( ratio ) {
@@ -131,12 +132,19 @@ export const registerBlock = ( block ) => {
 	}
 
 	registerBlockType( name, {
-		category,
 		...settings,
+		category,
 		icon,
 
 		// V2 Block API Upgrades
 		...v2Settings,
+
+		// Title prop must be translated to appear in WP.org details page.
+		title: sprintf(
+			/* translators: %s: placeholder for a block title*/
+			__( '%s block', 'coblocks' ),
+			settings.title
+		),
 	} );
 };
 
