@@ -2,6 +2,7 @@
  * External dependencies
  */
 import {
+	GalleryCollageIcon,
 	GalleryMasonryIcon,
 	GalleryStackedIcon,
 } from '@godaddy-wordpress/coblocks-icons';
@@ -34,7 +35,19 @@ export const BLOCK_VARIATION_GALLERY_MASONRY = {
 	title: __( 'Masonry (CoBlocks)', 'coblocks' ),
 };
 
+export const BLOCK_VARIATION_GALLERY_COLLAGE = {
+	attributes: {
+		className: 'is-style-collage',
+		columns: 3,
+	},
+	description: __( 'collage gallery', 'coblocks' ),
+	icon: GalleryCollageIcon,
+	name: 'collage',
+	title: __( 'Collage (CoBlocks)', 'coblocks' ),
+};
+
 [
 	BLOCK_VARIATION_GALLERY_STACKED,
 	BLOCK_VARIATION_GALLERY_MASONRY,
+	BLOCK_VARIATION_GALLERY_COLLAGE,
 ].forEach( ( variation ) => registerBlockVariation( 'core/gallery', variation ) );
