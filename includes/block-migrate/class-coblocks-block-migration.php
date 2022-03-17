@@ -90,7 +90,7 @@ abstract class CoBlocks_Block_Migration {
 		}
 
 		$block_wrapper_classname = 'wp-block-' . str_replace('/', '-', $this->block_name() );
-		$this->block_wrapper = $this->query_selector( '//div[contains(@class,"' . $block_wrapper_classname . '")]' );
+		$this->block_wrapper = $this->query_selector( '//*[contains(@class,"' . $block_wrapper_classname . '")]' );
 
 		return $this->block_wrapper ?? array();
 	}
