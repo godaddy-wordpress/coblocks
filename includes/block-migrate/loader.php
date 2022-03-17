@@ -1,6 +1,7 @@
 <?php
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-block-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-stacked-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-masonry-migration.php';
 
 add_action( 'the_post', function( WP_Post &$post ) {
 	if ( ! is_admin() || ! get_current_screen()->is_block_editor ) return;
@@ -9,6 +10,7 @@ add_action( 'the_post', function( WP_Post &$post ) {
 
 	$block_targets = array(
 		'coblocks/gallery-stacked' => CoBlocks_Gallery_Stacked_Migration::class,
+		'coblocks/gallery-masonry' => CoBlocks_Gallery_Masonry_Migration::class,
 	);
 
 	$parsed_blocks = array_map(
@@ -25,9 +27,8 @@ add_action( 'the_post', function( WP_Post &$post ) {
 				array(
 					'attrs' => $block_attributes,
 					// Since we are forcing this into a "dynamic block" which is only defined with block comment delimiters,
-					// we want to make sure an inner content is removed before serialization.
-					'innerContent' => array(),
-					'innerBlocks' => array(),
+					// we want to make sure an inner content contains only the inner blocks before serialization.
+					'innerContent' => $parsed_block['innerBlocks'],
 				)
 			);
 		},
