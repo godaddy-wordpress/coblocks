@@ -41,8 +41,10 @@ add_action( 'init', function() {
 	if ( ! is_admin() ) return;
 
 	register_block_type( 'coblocks/gallery-stacked', array(
-		'render_callback' => function() {
-			return;
-		},
+		'render_callback' => function() {},
+	) );
+
+	register_block_type( 'coblocks/gallery-masonry', array(
+		'render_callback' => function() {},
 	) );
 } );
