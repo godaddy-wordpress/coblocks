@@ -942,7 +942,7 @@ class CoBlocks_Form {
 		 * @param array   $_POST   Submitted form data.
 		 * @param integer $post_id Current post ID.
 		 */
-		$to = (string) apply_filters( 'coblocks_form_email_to', $to, $_POST, $post_id );
+		$to = sanitize_email( apply_filters( 'coblocks_form_email_to', $to, $_POST, $post_id ) );
 
 		$name_field_value  = sanitize_text_field( $_POST[ $name_field_id ]['value'] );
 		$email_field_value = sanitize_text_field( $_POST[ $email_field_id ]['value'] );
