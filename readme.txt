@@ -112,6 +112,10 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+= 2.22.5 / 2022-03-17 =
+##### Bug fixes
+* Sanitize email in Form block and properly escape URI [#2330](https://github.com/godaddy-wordpress/coblocks/pull/2330)
+
 = 2.22.4 / 2022-03-15 =
 ##### Bug fixes
 * Fix Form block where nonce is unverified and some sanitization [#2329](https://github.com/godaddy-wordpress/coblocks/pull/2329)
