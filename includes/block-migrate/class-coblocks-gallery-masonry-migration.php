@@ -37,7 +37,6 @@ class CoBlocks_Gallery_Masonry_Migration extends CoBlocks_Block_Migration {
 	 */
 	private function calculate_group_attributes() {
 		return array(
-			'className' => 'is-style-default',
 			'filter' => $this->get_attribute_from_classname( 'has-filter-', $this->block_wrapper() ),
 			'align' => $this->get_attribute_from_classname( 'align', $this->block_wrapper() ),
 			'lightbox' => $this->get_attribute_from_classname( 'has-lightbox', $this->block_wrapper() ),
