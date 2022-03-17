@@ -11,4 +11,8 @@ import './style.scss';
 		label: __( 'Compact', 'coblocks' ),
 		name: 'compact',
 	},
+	{
+		label: __( 'Masonry', 'coblocks' ),
+		name: 'masonry',
+	},
 ].forEach( ( variation ) => registerBlockStyle( 'core/gallery', variation ) );

@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-// import { BLOCK_VARIATION_GALLERY_STACKED } from '../../block-variations/core/gallery';
+import { BLOCK_VARIATION_GALLERY_MASONRY } from '../../block-variations/core/gallery';
 import metadata from './block.json';
 
 /**
@@ -42,7 +42,12 @@ const settings = {
 							( attribute ) => 'images' !== attribute[ 0 ]
 						)
 					);
-					return createBlock( 'core/gallery', galleryAttributes, innerBlocks );
+
+					return createBlock(
+						'core/gallery',
+						Object.assign( {}, BLOCK_VARIATION_GALLERY_MASONRY.attributes, galleryAttributes ),
+						innerBlocks
+					);
 				},
 				type: 'block',
 			},

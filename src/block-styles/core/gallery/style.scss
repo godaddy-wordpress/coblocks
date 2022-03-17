@@ -1,2 +1,28 @@
+@import "node_modules/@wordpress/base-styles/variables";
+
 .wp-block-gallery.is-style-compact figure.wp-block-image,
 .wp-block-gallery.is-style-compact figure.wp-block-image img { margin: 0 !important; }
+
+.wp-block-gallery.is-style-masonry {
+	column-fill: initial;
+	column-gap: var(--gallery-block--gutter-size, #{$grid-unit-20});
+	transition: all 0.5s ease-in-out;
+
+	&.has-nested-images {
+		display: block;
+	}
+
+	@for $i from 1 through 4 {
+		&.columns-#{ $i } {
+			column-count: #{ $i };
+
+			figure.wp-block-image {
+				width: 100% !important;
+			}
+		}
+	}
+
+	.blocks-gallery-media-placeholder-wrapper {
+		column-span: all;
+	}
+}
