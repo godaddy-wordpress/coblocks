@@ -1,5 +1,15 @@
 <?php
+/**
+ * CoBlocks_Gallery_Stacked_Migration
+ *
+ * @package CoBlocks
+ */
 
+/**
+ * CoBlocks_Gallery_Stacked_Migration
+ *
+ * Define how a coblocks/gallery-stacked block should migrate into a core/gallery block.
+ */
 class CoBlocks_Gallery_Stacked_Migration extends CoBlocks_Block_Migration {
 	/**
 	 * @inheritDoc
