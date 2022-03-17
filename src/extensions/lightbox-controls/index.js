@@ -30,7 +30,7 @@ const useLightbox = ( props ) => {
 	const hasParentGallery = select( 'core/block-editor' ).
 		getBlockParentsByBlockName(
 			props.clientId,
-			[ 'core/gallery', 'coblocks/gallery-masonry' ]
+			[ 'core/gallery' ]
 		)?.length === 0;
 
 	let hasInnerImageBlocks = false;
@@ -76,7 +76,7 @@ const useEditorProps = ( props, wrapperProps ) => {
 	const hasParentGallery = select( 'core/block-editor' ).
 		getBlockParentsByBlockName(
 			props.clientId,
-			[ 'core/gallery', 'coblocks/gallery-masonry' ]
+			[ 'core/gallery' ]
 		)?.length === 0;
 
 	let supportsLightbox = false;

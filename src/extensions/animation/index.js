@@ -19,9 +19,7 @@ import { useEffect, useRef, useState } from '@wordpress/element';
 const allowedBlocks = [
 	{ animateChildren: false, blockType: 'coblocks/gallery-carousel' },
 	{ animateChildren: true, blockType: 'coblocks/gallery-collage' },
-	{ animateChildren: false, blockType: 'coblocks/gallery-masonry' },
 	{ animateChildren: true, blockType: 'coblocks/gallery-offset' },
-	{ animateChildren: true, blockType: 'coblocks/gallery-stacked' },
 	{ animateChildren: false, blockType: 'core/columns' },
 	{ animateChildren: false, blockType: 'core/cover' },
 	{ animateChildren: false, blockType: 'core/gallery' },
