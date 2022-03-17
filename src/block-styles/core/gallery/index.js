@@ -19,4 +19,8 @@ import './style.scss';
 		label: __( 'Collage', 'coblocks' ),
 		name: 'collage',
 	},
+	{
+		label: __( 'Tiled', 'coblocks' ),
+		name: 'tiled',
+	},
 ].forEach( ( variation ) => registerBlockStyle( 'core/gallery', variation ) );
