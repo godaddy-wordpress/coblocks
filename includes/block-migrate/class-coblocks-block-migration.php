@@ -115,9 +115,9 @@ abstract class CoBlocks_Block_Migration {
 		);
 		if ( empty( $filter_classname ) ) return null;
 
-		// If the classname_prefix is the entire classname, a boolean value is expected.
+		// If the classname_prefix is the entire classname, a boolean true value is expected.
 		$value = str_replace( $classname_prefix, '', array_pop( $filter_classname ) );
-		return empty( $value ) ?? $value;
+		return empty( $value ) ? true : $value;
 	}
 
 	/**
