@@ -2,6 +2,7 @@
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-block-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-stacked-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-masonry-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-collage-migration.php';
 
 add_action( 'the_post', function( WP_Post &$post ) {
 	if ( ! is_admin() || ! get_current_screen()->is_block_editor ) return;
@@ -11,6 +12,7 @@ add_action( 'the_post', function( WP_Post &$post ) {
 	$block_targets = array(
 		'coblocks/gallery-stacked' => CoBlocks_Gallery_Stacked_Migration::class,
 		'coblocks/gallery-masonry' => CoBlocks_Gallery_Masonry_Migration::class,
+		'coblocks/gallery-collage' => CoBlocks_Gallery_Collage_Migration::class,
 	);
 
 	$parsed_blocks = array_map(
@@ -46,6 +48,10 @@ add_action( 'init', function() {
 	) );
 
 	register_block_type( 'coblocks/gallery-masonry', array(
+		'render_callback' => function() {},
+	) );
+
+	register_block_type( 'coblocks/gallery-collage', array(
 		'render_callback' => function() {},
 	) );
 } );
