@@ -39,7 +39,8 @@
 	}
 }
 
-.wp-block-gallery.has-nested-images.is-style-collage {
+.wp-block-gallery.has-nested-images.is-style-collage,
+.wp-block-gallery.has-nested-images.is-style-tiled {
 	gap: var(--gallery-block--gutter-size, #{$grid-unit-20});
 
 	figure.wp-block-image:not(#individual-image) {
@@ -63,7 +64,9 @@
 			@include collage-image-force-aspect('&', 1, 1, $i);
 		}
 	}
+}
 
+.wp-block-gallery.has-nested-images.is-style-collage {
 	&.columns-2 {
 		figure.wp-block-image:not(#individual-image) {
 
@@ -113,33 +116,13 @@
 	}
 }
 
-.wp-block-gallery.is-style-tiled {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: flex-end;
-	gap: var(--gallery-block--gutter-size, #{$grid-unit-20});
+.wp-block-gallery.has-nested-images.is-style-tiled {
+	&.columns-3 {
+		figure.wp-block-image:not(#individual-image) {
+			align-self: flex-end;
 
-	figure.wp-block-image {
-		display: block !important;
-		margin: unset !important;
-		width: unset;
-		flex-grow: unset !important;
-
-		img {
-			position: absolute;
-			top: 0;
-		}
-
-		&:nth-child(4n+1),
-		&:nth-child(4n+4) {
-			width: calc( 70% - var(--gallery-block--gutter-size, #{$grid-unit-20}) ) !important;
-			padding-top: 50% !important;
-		}
-
-		&:nth-child(4n+2),
-		&:nth-child(4n+3) {
-			width: 30% !important;
-			padding-top: 30% !important;
+			@include collage-image-force-aspect('&:nth-child(4n+1)', 2, 2, 3);
+			@include collage-image-force-aspect('&:nth-child(4n+4)', 2, 2, 3);
 		}
 	}
 }
