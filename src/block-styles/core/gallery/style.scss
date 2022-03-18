@@ -131,6 +131,8 @@
 			align-self: flex-end;
 
 			@include collage-image-force-aspect('&:nth-child(4n+1)', 2, 2, 3);
+			@include collage-image-force-aspect('&:nth-child(4n+2)', 1, 1.3, 3);
+			@include collage-image-force-aspect('&:nth-child(4n+3)', 1, 1.3, 3);
 			@include collage-image-force-aspect('&:nth-child(4n+4)', 2, 2, 3);
 		}
 	}
