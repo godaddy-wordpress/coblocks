@@ -13,7 +13,7 @@
 		display: block;
 	}
 
-	@for $i from 1 through 4 {
+	@for $i from 1 through 8 {
 		&.columns-#{ $i } {
 			column-count: #{ $i };
 
@@ -117,6 +117,15 @@
 }
 
 .wp-block-gallery.has-nested-images.is-style-tiled {
+	&.columns-2 {
+		figure.wp-block-image:not(#individual-image) {
+			align-self: flex-end;
+
+			@include collage-image-force-aspect('&:nth-child(4n+2)', 1, 2, 2);
+			@include collage-image-force-aspect('&:nth-child(4n+3)', 1, 2, 2);
+		}
+	}
+
 	&.columns-3 {
 		figure.wp-block-image:not(#individual-image) {
 			align-self: flex-end;
