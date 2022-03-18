@@ -112,6 +112,13 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+= 2.22.7 / 2022-03-18 =
+##### Bug fixes
+* Fix superfluous focus issue with Accordion block [#2310](https://github.com/godaddy-wordpress/coblocks/pull/2310)
+
+##### Misc
+* Translate titles when registering blocks [#2332](https://github.com/godaddy-wordpress/coblocks/pull/2332)
+
 = 2.22.6 / 2022-03-17 =
 ##### Bug fixes
 * Resolve style bleed issue with Offset gallery [#2331](https://github.com/godaddy-wordpress/coblocks/pull/2331)

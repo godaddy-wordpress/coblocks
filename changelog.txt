@@ -1,4 +1,12 @@
 
+2.22.7 / 2022-03-18
+===================
+### Bug fixes
+* Fix superfluous focus issue with Accordion block [#2310](https://github.com/godaddy-wordpress/coblocks/pull/2310)
+
+### Misc
+* Translate titles when registering blocks [#2332](https://github.com/godaddy-wordpress/coblocks/pull/2332)
+
 2.22.6 / 2022-03-17
 ===================
 ### Bug fixes
