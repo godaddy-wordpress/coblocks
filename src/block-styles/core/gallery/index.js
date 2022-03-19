@@ -23,4 +23,8 @@ import './style.scss';
 		label: __( 'Tiled', 'coblocks' ),
 		name: 'tiled',
 	},
+	{
+		label: __( 'Layered', 'coblocks' ),
+		name: 'layered',
+	},
 ].forEach( ( variation ) => registerBlockStyle( 'core/gallery', variation ) );
