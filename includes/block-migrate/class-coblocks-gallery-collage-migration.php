@@ -59,13 +59,13 @@ class CoBlocks_Gallery_Collage_Migration extends CoBlocks_Block_Migration {
 			$anchor_element = $gallery_item->getElementsByTagName( 'a' )->item( 0 );
 
 			$image_attributes = array(
-				'alt' => $this->get_value_from_element_attribute( $img_element, 'alt' ),
-				'animation' => $this->get_value_from_element_attribute( $gallery_item, 'data-coblocks-animation' ),
-				'caption' => $this->get_value_from_element_attribute( $figcaption_element, 'textContent' ),
-				'href' => $this->get_value_from_element_attribute( $anchor_element, 'href' ),
-				'imgLink' => $this->get_value_from_element_attribute( $img_element, 'data-imgLink' ),
-				'link' => $this->get_value_from_element_attribute( $img_element, 'data-link' ),
-				'url' => $this->get_value_from_element_attribute( $img_element, 'src' ),
+				'alt' => $this->get_element_attribute( $img_element, 'alt' ),
+				'animation' => $this->get_element_attribute( $gallery_item, 'data-coblocks-animation' ),
+				'caption' => $this->get_element_attribute( $figcaption_element, 'textContent' ),
+				'href' => $this->get_element_attribute( $anchor_element, 'href' ),
+				'imgLink' => $this->get_element_attribute( $img_element, 'data-imgLink' ),
+				'link' => $this->get_element_attribute( $img_element, 'data-link' ),
+				'url' => $this->get_element_attribute( $img_element, 'src' ),
 			);
 
 			array_push(

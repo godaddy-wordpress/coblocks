@@ -123,12 +123,12 @@ abstract class CoBlocks_Block_Migration {
 	/**
 	 * Get a value from the attribute of an DOMElement.
 	 *
-	 * @param DOMElement|null $element elemtn to search for attribute.
+	 * @param DOMElement|null $element element to search for attribute.
 	 * @param string $attribute attribute name to find.
 	 *
 	 * @return string|null retrieved value.
 	 */
-	protected function get_value_from_element_attribute( $element, $attribute ) {
+	protected function get_element_attribute( $element, string $attribute ) {
 		if ( null === $element ) return null;
 
 		if ( 'textContent' === $attribute ) {
@@ -137,6 +137,23 @@ abstract class CoBlocks_Block_Migration {
 
 		$attr = $element->attributes->getNamedItem( $attribute );
 		return empty( $attr ) ? null : $attr->nodeValue;
+	}
+
+	/**
+	 * Get a new attribute array from the provided mapping.
+	 *
+	 * @param DOMElement|null $element element to search for attributes.
+	 * @param array $attribute_mapping define which element attributes to map.
+	 *
+	 * @return array the new values mapped to their attribute.
+	 */
+	protected function get_element_attributes( $element, array $attribute_mapping ) {
+		return array_filter( array_map(
+			function( $attribute ) use ( $element ) {
+				return $this->get_element_attribute( $element, $attribute );
+			},
+			$attribute_mapping
+		) );
 	}
 
 	/**
