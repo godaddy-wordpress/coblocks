@@ -22,12 +22,10 @@ class CoBlocks_Gallery_Collage_Migration extends CoBlocks_Block_Migration {
 	 * @inheritDoc
 	 */
 	protected function migrate_attributes() {
-		$output = array_merge(
-			$this->calculate_group_attributes(),
-			$this->calculate_image_attributes(),
-		);
-
-		return $output;
+		return array_filter( array_merge(
+			$this->gallery_attributes(),
+			array( 'images' => $this->images() ),
+		) );
 	}
 
 	/**
@@ -35,7 +33,7 @@ class CoBlocks_Gallery_Collage_Migration extends CoBlocks_Block_Migration {
 	 *
 	 * @return array attributes found and their values.
 	 */
-	private function calculate_group_attributes() {
+	private function gallery_attributes() {
 		return array(
 			'className' => 'is-style-collage',
 			'filter' => $this->get_attribute_from_classname( 'has-filter-', $this->block_wrapper() ),
@@ -49,7 +47,7 @@ class CoBlocks_Gallery_Collage_Migration extends CoBlocks_Block_Migration {
 	 *
 	 * @return array attributes found and their values.
 	 */
-	private function calculate_image_attributes() {
+	private function images() {
 		$gallery_images = array();
 		$gallery_items = $this->query_selector_all( '//li[contains(@class,"wp-block-coblocks-gallery-collage__item")]' );
 
@@ -58,24 +56,24 @@ class CoBlocks_Gallery_Collage_Migration extends CoBlocks_Block_Migration {
 			$figcaption_element = $gallery_item->getElementsByTagName( 'figcaption' )->item( 0 );
 			$anchor_element = $gallery_item->getElementsByTagName( 'a' )->item( 0 );
 
-			$image_attributes = array(
-				'alt' => $this->get_element_attribute( $img_element, 'alt' ),
-				'animation' => $this->get_element_attribute( $gallery_item, 'data-coblocks-animation' ),
-				'caption' => $this->get_element_attribute( $figcaption_element, 'textContent' ),
-				'href' => $this->get_element_attribute( $anchor_element, 'href' ),
-				'imgLink' => $this->get_element_attribute( $img_element, 'data-imgLink' ),
-				'link' => $this->get_element_attribute( $img_element, 'data-link' ),
-				'url' => $this->get_element_attribute( $img_element, 'src' ),
-			);
-
 			array_push(
 				$gallery_images,
 				array_filter( array_merge(
-					$image_attributes,
+					$this->get_element_attributes( $img_element, array(
+						'alt' => 'alt',
+						'imgLink' => 'data-imgLink',
+						'link' => 'data-link',
+						'url' => 'src',
+					) ),
+					array(
+						'animation' => $this->get_element_attribute( $gallery_item, 'data-coblocks-animation' ),
+						'caption' => $this->get_element_attribute( $figcaption_element, 'textContent' ),
+						'href' => $this->get_element_attribute( $anchor_element, 'href' ),
+					),
 				) )
 			);
 		}
 
-		return array( 'images' => $gallery_images );
+		return $gallery_images;
 	}
 }

@@ -1,4 +1,10 @@
 <?php
+/**
+ * Facilitates force migration of certain blocks into core blocks.
+ *
+ * @package CoBlocks
+ */
+
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-block-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-stacked-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-masonry-migration.php';

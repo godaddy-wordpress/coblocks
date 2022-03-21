@@ -29,10 +29,13 @@ class CoBlocks_Gallery_Stacked_Migration extends CoBlocks_Block_Migration {
 	 * @inheritDoc
 	 */
 	protected function migrate_attributes() {
-		return array_merge(
-			$this->calculate_group_attributes(),
-			$this->calculate_image_attributes(),
-		);
+		$this->gallery_wrapper = $this->query_selector( '//ul[contains(@class,"coblocks-gallery")]' );
+		if ( ! $this->gallery_wrapper ) return array();
+
+		return array_filter( array_merge(
+			$this->gallery_attributes(),
+			array( 'images' => $this->images() ),
+		) );
 	}
 
 	/**
@@ -40,10 +43,7 @@ class CoBlocks_Gallery_Stacked_Migration extends CoBlocks_Block_Migration {
 	 *
 	 * @return array attributes found and their values.
 	 */
-	private function calculate_group_attributes() {
-		$this->gallery_wrapper = $this->query_selector( '//ul[contains(@class,"coblocks-gallery")]' );
-		if ( ! $this->gallery_wrapper ) return array();
-
+	private function gallery_attributes() {
 		return array(
 			'className' => $this->get_attribute_from_classname( 'has-border-radius-', $this->gallery_wrapper )
 				? 'is-style-default'
@@ -59,7 +59,7 @@ class CoBlocks_Gallery_Stacked_Migration extends CoBlocks_Block_Migration {
 	 *
 	 * @return array attributes found and their values.
 	 */
-	private function calculate_image_attributes() {
+	private function images() {
 		$gallery_images = array();
 		$gallery_items = $this->query_selector_all( '//li[contains(@class,"coblocks-gallery--item")]' );
 
@@ -96,6 +96,6 @@ class CoBlocks_Gallery_Stacked_Migration extends CoBlocks_Block_Migration {
 			);
 		}
 
-		return array( 'images' => $gallery_images );
+		return $gallery_images;
 	}
 }
