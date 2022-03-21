@@ -19,8 +19,6 @@ const transforms = {
 	from: [
 		{
 			blocks: [
-				'coblocks/gallery-collage',
-				'coblocks/gallery-stacked',
 				'coblocks/gallery-offset',
 				'core/gallery',
 			],
@@ -32,23 +30,6 @@ const transforms = {
 					gutter,
 					gutterCustom,
 				} );
-			},
-			type: 'block',
-		},
-		{
-			blocks: [ 'coblocks/gallery-masonry' ],
-			transform: ( attributes, innerBlocks ) => {
-				const validImages = innerBlocks.map( ( block, index ) => {
-					const imageBlockAttributes = block.attributes;
-					return {
-						alt: imageBlockAttributes?.alt,
-						caption: imageBlockAttributes?.caption,
-						id: imageBlockAttributes?.id,
-						index,
-						url: imageBlockAttributes?.url,
-					};
-				} );
-				return createBlock( metadata.name, { images: validImages }, [] );
 			},
 			type: 'block',
 		},
