@@ -173,44 +173,9 @@ const addAllEditorProps = createHigherOrderComponent( ( BlockListBlock ) => {
 		const wrapperProps = {
 			...mergeProps(),
 		};
-
-		/**
-		 * Extra features are JSX conditionals and should be rendered outside of the
-		 * wrapper thus should be stripped from `wrapperProps` applied to the DOM.
-		 */
-		const extraFeatures = wrapperProps.extraFeatures || {};
 		delete wrapperProps.extraFeatures;
 
-		/**
-		 * @function renderFeature Used when iterating attached features to apply a conditional JSX to the DOM.
-		 * @param {Object} featureObject Represents an attached feature.
-		 *                               Example = { [key]: { conditional: {Boolean}, jsx: {Function} } }
-		 */
-		const renderFeature = ( featureObject ) => {
-			const key = featureObject?.[ 0 ];
-			const feature = featureObject?.[ 1 ];
-
-			if ( ! key || ! feature ) {
-				return null;
-			}
-
-			const { conditional, jsx } = feature;
-			return conditional && jsx;
-		};
-
-		/**
-		 * Array of JSX conditionals processed by the `renderFeature` function.
-		 */
-		const featureMap = Object.entries( extraFeatures ).map( ( feature ) => renderFeature( feature ) );
-
-		return (
-			<>
-				<BlockListBlock { ...{ ...props, className: mergeClasses } } wrapperProps={ wrapperProps } />
-				{ featureMap.map( ( feature, index ) => {
-					return <span key={ index }>{ feature }</span> || null;
-				} ) }
-			</>
-		);
+		return <BlockListBlock { ...{ ...props, className: mergeClasses } } wrapperProps={ wrapperProps } />;
 	} );
 }, 'addEditorBlockAttributes' );
 
