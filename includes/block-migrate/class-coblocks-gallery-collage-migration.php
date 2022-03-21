@@ -12,6 +12,8 @@
  */
 class CoBlocks_Gallery_Collage_Migration extends CoBlocks_Block_Migration {
 	/**
+	 * Returns the name of the block.
+	 *
 	 * @inheritDoc
 	 */
 	protected function block_name() {
@@ -19,13 +21,15 @@ class CoBlocks_Gallery_Collage_Migration extends CoBlocks_Block_Migration {
 	}
 
 	/**
+	 * Produce new attributes from the migrated block.
+	 *
 	 * @inheritDoc
 	 */
 	protected function migrate_attributes() {
 		return array_filter(
 			array_merge(
 				$this->gallery_attributes(),
-				array( 'images' => $this->images() ),
+				array( 'images' => $this->images() )
 			)
 		);
 	}
@@ -75,7 +79,7 @@ class CoBlocks_Gallery_Collage_Migration extends CoBlocks_Block_Migration {
 							'animation' => $this->get_element_attribute( $gallery_item, 'data-coblocks-animation' ),
 							'caption'   => $this->get_element_attribute( $figcaption_element, 'textContent' ),
 							'href'      => $this->get_element_attribute( $anchor_element, 'href' ),
-						),
+						)
 					)
 				)
 			);

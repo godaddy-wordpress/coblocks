@@ -5,11 +5,21 @@
  * @package CoBlocks
  */
 
+/**
+ * Require needed classes.
+ */
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-block-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-stacked-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-masonry-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-collage-migration.php';
 
+/**
+ * Hook into the post object before it's returned to the editor.
+ *
+ * This allows us to "force migrate" our blocks by removing and parsing the
+ * previous output for attributes and re-serializing the block to
+ * only include its comment delimiters.
+ */
 add_action(
 	'the_post',
 	function( WP_Post &$post ) {
@@ -17,8 +27,10 @@ add_action(
 			return;
 		}
 
+		// Parse the blocks so we can search them in a standard way.
 		$parsed_blocks = parse_blocks( $post->post_content );
 
+		// Load our available migrations.
 		$block_targets = array(
 			'coblocks/gallery-stacked' => CoBlocks_Gallery_Stacked_Migration::class,
 			'coblocks/gallery-masonry' => CoBlocks_Gallery_Masonry_Migration::class,
@@ -27,13 +39,15 @@ add_action(
 
 		$parsed_blocks = array_map(
 			function( $parsed_block ) use ( $block_targets ) {
-				if ( ! in_array( $parsed_block['blockName'], array_keys( $block_targets ) ) ) {
+				if ( ! in_array( $parsed_block['blockName'], array_keys( $block_targets ), true ) ) {
 					return $parsed_block;
 				}
 
+				// Perform the migration if we have one.
 				$block_migration  = new $block_targets[ $parsed_block['blockName'] ]();
 				$block_attributes = $block_migration->migrate( $parsed_block['innerHTML'] );
 
+				// Override certain keys of the originally parsed block.
 				return array_merge(
 					$parsed_block,
 					array(
@@ -47,6 +61,7 @@ add_action(
 			$parsed_blocks
 		);
 
+		// re-serialize the blocks so WordPress can continue processing as usual.
 		$post->post_content = serialize_blocks( $parsed_blocks );
 	}
 );

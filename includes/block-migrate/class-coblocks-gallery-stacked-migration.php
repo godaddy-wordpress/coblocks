@@ -19,6 +19,8 @@ class CoBlocks_Gallery_Stacked_Migration extends CoBlocks_Block_Migration {
 	private $gallery_wrapper;
 
 	/**
+	 * Returns the name of the block.
+	 *
 	 * @inheritDoc
 	 */
 	protected function block_name() {
@@ -26,6 +28,8 @@ class CoBlocks_Gallery_Stacked_Migration extends CoBlocks_Block_Migration {
 	}
 
 	/**
+	 * Produce new attributes from the migrated block.
+	 *
 	 * @inheritDoc
 	 */
 	protected function migrate_attributes() {
@@ -37,7 +41,7 @@ class CoBlocks_Gallery_Stacked_Migration extends CoBlocks_Block_Migration {
 		return array_filter(
 			array_merge(
 				$this->gallery_attributes(),
-				array( 'images' => $this->images() ),
+				array( 'images' => $this->images() )
 			)
 		);
 	}
@@ -99,7 +103,7 @@ class CoBlocks_Gallery_Stacked_Migration extends CoBlocks_Block_Migration {
 							'caption'   => $this->get_element_attribute( $figcaption_element, 'textContent' ),
 							'href'      => $this->get_element_attribute( $anchor_element, 'href' ),
 						),
-						$border_radius_attr,
+						$border_radius_attr
 					)
 				)
 			);

@@ -138,11 +138,11 @@ abstract class CoBlocks_Block_Migration {
 		}
 
 		if ( 'textContent' === $attribute ) {
-			return $element->textContent;
+			return $element->textContent; // @phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		}
 
 		$attr = $element->attributes->getNamedItem( $attribute );
-		return empty( $attr ) ? null : $attr->nodeValue;
+		return empty( $attr ) ? null : $attr->nodeValue; // @phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 	}
 
 	/**
