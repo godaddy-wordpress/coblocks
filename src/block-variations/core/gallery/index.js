@@ -38,7 +38,7 @@ export const BLOCK_VARIATION_GALLERY_MASONRY = {
 export const BLOCK_VARIATION_GALLERY_COLLAGE = {
 	attributes: {
 		className: 'is-style-collage',
-		columns: 3,
+		columns: 4,
 	},
 	description: __( 'collage gallery', 'coblocks' ),
 	icon: GalleryCollageIcon,
