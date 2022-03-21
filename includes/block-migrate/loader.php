@@ -39,19 +39,3 @@ add_action( 'the_post', function( WP_Post &$post ) {
 
 	$post->post_content = serialize_blocks( $parsed_blocks );
 } );
-
-add_action( 'init', function() {
-	if ( ! is_admin() ) return;
-
-	register_block_type( 'coblocks/gallery-stacked', array(
-		'render_callback' => function() {},
-	) );
-
-	register_block_type( 'coblocks/gallery-masonry', array(
-		'render_callback' => function() {},
-	) );
-
-	register_block_type( 'coblocks/gallery-collage', array(
-		'render_callback' => function() {},
-	) );
-} );
