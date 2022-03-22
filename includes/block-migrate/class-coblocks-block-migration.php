@@ -47,7 +47,7 @@ abstract class CoBlocks_Block_Migration {
 	 *
 	 * @return array new block attributes.
 	 */
-	public function migrate( string $parsed_block_html ) {
+	public function migrate( $parsed_block_html ) {
 		// libxml can't parse HTML5 elements still so disable warnings for it.
 		libxml_use_internal_errors( true );
 
@@ -92,18 +92,18 @@ abstract class CoBlocks_Block_Migration {
 		$block_wrapper_classname = 'wp-block-' . str_replace( '/', '-', $this->block_name() );
 		$this->block_wrapper     = $this->query_selector( '//*[contains(@class,"' . $block_wrapper_classname . '")]' );
 
-		return $this->block_wrapper ?? array();
+		return empty( $this->block_wrapper ) ? array() : $this->block_wrapper;
 	}
 
 	/**
 	 * Find the attribute value from the prefixed classname.
 	 *
 	 * @param string     $classname_prefix prefix to search for value.
-	 * @param DOMElement $element the DOMElement to search
+	 * @param DOMElement $element the DOMElement to search.
 	 *
 	 * @return string attribute value.
 	 */
-	protected function get_attribute_from_classname( string $classname_prefix, DOMElement $element ) {
+	protected function get_attribute_from_classname( $classname_prefix, DOMElement $element ) {
 		$class_attribute = $element->attributes->getNamedItem( 'class' );
 		if ( empty( $class_attribute ) ) {
 			return '';
@@ -132,7 +132,7 @@ abstract class CoBlocks_Block_Migration {
 	 *
 	 * @return string|null retrieved value.
 	 */
-	protected function get_element_attribute( $element, string $attribute ) {
+	protected function get_element_attribute( $element, $attribute ) {
 		if ( null === $element ) {
 			return null;
 		}
@@ -172,7 +172,7 @@ abstract class CoBlocks_Block_Migration {
 	 *
 	 * @return DOMNodeList|false all nodes matching the given XPath expression.
 	 */
-	protected function query_selector_all( string $expression, DOMNode $context_node = null ) {
+	protected function query_selector_all( $expression, DOMNode $context_node = null ) {
 		return $this->xpath->query( $expression, $context_node );
 	}
 
@@ -184,7 +184,7 @@ abstract class CoBlocks_Block_Migration {
 	 *
 	 * @return DOMNode|null The node at the first position in the DOMNodeList, or null if that is not a valid index.
 	 */
-	protected function query_selector( string $expression, DOMNode $context_node = null ) {
+	protected function query_selector( $expression, DOMNode $context_node = null ) {
 		return $this->query_selector_all( $expression, $context_node )->item( 0 );
 	}
 }
