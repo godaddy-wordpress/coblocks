@@ -57,6 +57,7 @@ abstract class CoBlocks_Block_Migration {
 		libxml_clear_errors();
 
 		// If we can't find the block_wrapper, don't attempt to migrate anything.
+		$this->block_wrapper = null;
 		if ( empty( $this->block_wrapper() ) ) {
 			return array();
 		}
