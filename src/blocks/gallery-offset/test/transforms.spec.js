@@ -61,7 +61,7 @@ describe( 'coblocks/gallery-offset transforms', () => {
 	} );
 
 	it( 'should transform from core/image block only if match', () => {
-		expect( transforms.from[ 2 ].isMatch( [ { id: 1234, url: 'someUrl' }, { id: "1234", url: 'someUrl' } ] ) ).toHaveLength( 1 );
+		expect( transforms.from[ 1 ].isMatch( [ { id: 1234, url: 'someUrl' }, { id: "1234", url: 'someUrl' } ] ) ).toHaveLength( 1 );
 	} );
 
 	it( 'should transform to coblocks/gallery-carousel block', () => {
