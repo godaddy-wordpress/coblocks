@@ -49,7 +49,6 @@ This list is manually curated to include valuable contributions by volunteers th
 | @WunderBart       |                        |
 | @sirreal          | @jonsurrell            |
 | @kishanjasani     | @kishanjasani          |
-| @olafleur         |                        |
 | @ehamwey          |                        |
 | @amenk            |                        |
 | @frozzare         |                        |
