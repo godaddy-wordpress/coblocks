@@ -122,6 +122,10 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+= 2.22.8 / 2022-03-23 =
+##### Misc
+* Implement editorScript property in block.json for proper registration [#2337](https://github.com/godaddy-wordpress/coblocks/pull/2337)
+
 = 2.22.7 / 2022-03-18 =
 ##### Bug fixes
 * Fix superfluous focus issue with Accordion block [#2310](https://github.com/godaddy-wordpress/coblocks/pull/2310)
