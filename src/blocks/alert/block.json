@@ -40,5 +40,8 @@
 		"textAlign": {
 			"type": "string"
 		}
-	}
+	},
+	"title": "Alert",
+	"textdomain": "coblocks",
+	"editorScript": "file:./../../blocks-1.js"
 }

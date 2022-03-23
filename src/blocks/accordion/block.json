@@ -10,5 +10,8 @@
 			"type": "boolean",
 			"default": false
 		}
-	}
+	},
+	"title": "Accordion",
+	"textdomain": "coblocks",
+	"editorScript": "file:./src/blocks-1.js"
 }

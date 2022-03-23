@@ -25,5 +25,8 @@
 		"borderColor": {
 			"type": "string"
 		}
-	}
+	},
+	"title": "Accordion Item",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-1"
 }
