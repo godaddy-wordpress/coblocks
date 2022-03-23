@@ -10,5 +10,7 @@
 			"type": "boolean",
 			"default": false
 		}
-	}
+	},
+	"title": "Accordion",
+	"editorScript": "file:./src/blocks-1.js"
 }

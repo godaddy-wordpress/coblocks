@@ -40,5 +40,7 @@
 		"textAlign": {
 			"type": "string"
 		}
-	}
+	},
+	"title": "Alert",
+	"editorScript": "file:../../blocks-1.js"
 }

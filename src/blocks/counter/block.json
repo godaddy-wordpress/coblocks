@@ -45,5 +45,6 @@
 		}
 	},
 	"editorStyle": "wp-block-coblocks-counter-editor",
+	"editorScript": "coblocks-editor",
 	"style": "wp-block-coblocks-counter"
 }
