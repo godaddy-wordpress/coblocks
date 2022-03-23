@@ -1,3 +1,5 @@
+/* eslint-disable sort-keys */
+/* eslint-disable react/jsx-sort-props */
 /**
  * External dependencies
  */
@@ -775,14 +777,14 @@ const deprecated =
 					<div className={ innerClasses }>
 						<div
 							className={ flickityClasses }
-							data-flickity={ JSON.stringify( flickityOptions ) }
 							style={ responsiveHeight ? undefined : flickityStyles }
+							data-flickity={ JSON.stringify( flickityOptions ) }
 						>
 							{ images.map( ( image ) => {
-								const img = <img alt={ image.alt } className={ image.id ? `wp-image-${ image.id }` : null } data-id={ image.id } data-link={ image.link } src={ image.url } />;
+								const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
 
 								return (
-									<div className="coblocks-gallery--item" key={ image.id || image.url }>
+									<div key={ image.id || image.url } className="coblocks-gallery--item">
 										<figure className={ figureClasses }>
 											{ img }
 										</figure>
@@ -797,9 +799,9 @@ const deprecated =
 									data-flickity={ JSON.stringify( navOptions ) }
 								>
 									{ images.map( ( image ) => {
-										const img = <img alt={ image.alt } data-id={ image.id } data-link={ image.link } src={ image.url } />;
+										const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } />;
 										return (
-											<div className="coblocks--item-thumbnail" key={ image.id || image.url }>
+											<div key={ image.id || image.url } className="coblocks--item-thumbnail">
 												<figure className={ navFigureClasses }>
 													{ img }
 												</figure>
@@ -809,7 +811,7 @@ const deprecated =
 								</div> ) : null
 						}
 					</div>
-					{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content className={ captionClasses } tagName="figcaption" value={ primaryCaption } /> }
+					{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } /> }
 				</div>
 			);
 		},
