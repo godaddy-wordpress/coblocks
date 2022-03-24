@@ -8,6 +8,7 @@
  * @author  Jonathan Goode <https://github.com/u01jmg3>
  * @license https://opensource.org/licenses/mit-license.php MIT License
  * @version 2.1.12
+ * @package CoBlocks
  */
 
 // Exit if accessed directly.
@@ -15,6 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * CoBlocks iCal class.
+ */
 class CoBlocks_ICal {
 
 	const DATE_TIME_FORMAT        = 'Ymd\THis';
@@ -502,8 +506,9 @@ class CoBlocks_ICal {
 	/**
 	 * Creates the ICal object
 	 *
-	 * @param  mixed $files
-	 * @param  array $options
+	 * @param  mixed $files   Files.
+	 * @param  array $options Options array.
+	 *
 	 * @return void
 	 */
 	public function __construct( $files = false, array $options = array() ) {
@@ -519,7 +524,7 @@ class CoBlocks_ICal {
 		);
 
 		// Used only for strtotime(), i18n not needed.
-		$this->weekdays  = array(
+		$this->weekdays = array(
 			'SU'      => 'Sunday of',
 			'MO'      => 'Monday of',
 			'TU'      => 'Tuesday of',
@@ -561,7 +566,7 @@ class CoBlocks_ICal {
 			}
 		}
 
-		// Fallback to use the system default time zone
+		// Fallback to use the system default time zone.
 		if ( ! isset( $this->default_time_zone ) || ! $this->is_valid_timezone_id( $this->default_time_zone ) ) {
 			$this->default_time_zone = date_default_timezone_get();
 		}
@@ -589,7 +594,8 @@ class CoBlocks_ICal {
 	/**
 	 * Initialises lines from a string
 	 *
-	 * @param  string $string
+	 * @param  string $string String value.
+	 *
 	 * @return ICal
 	 */
 	public function init_string( $string ) {
@@ -597,8 +603,6 @@ class CoBlocks_ICal {
 			$lines = explode( PHP_EOL, $string );
 
 			$this->init_lines( $lines );
-		} else {
-			trigger_error( 'ICal::init_string: Calendar already initialised in constructor', E_USER_NOTICE );
 		}
 
 		return $this;
@@ -607,7 +611,8 @@ class CoBlocks_ICal {
 	/**
 	 * Initialises lines from a file
 	 *
-	 * @param  string $file
+	 * @param  string $file File string.
+	 *
 	 * @return ICal
 	 */
 	public function init_file( $file ) {
@@ -615,8 +620,6 @@ class CoBlocks_ICal {
 			$lines = $this->file_or_url( $file );
 
 			$this->init_lines( $lines );
-		} else {
-			trigger_error( 'ICal::init_file: Calendar already initialised in constructor', E_USER_NOTICE );
 		}
 
 		return $this;
@@ -625,10 +628,11 @@ class CoBlocks_ICal {
 	/**
 	 * Initialises lines from a URL
 	 *
-	 * @param  string $url
-	 * @param  string $username
-	 * @param  string $password
-	 * @param  string $user_agent
+	 * @param  string $url        URL.
+	 * @param  string $username   Username.
+	 * @param  string $password   Password.
+	 * @param  string $user_agent User agent.
+	 *
 	 * @return ICal
 	 */
 	public function init_url( $url, $username = null, $password = null, $user_agent = null ) {
@@ -650,7 +654,8 @@ class CoBlocks_ICal {
 	 * Initialises the parser using an array
 	 * containing each line of iCal content
 	 *
-	 * @param  array $lines
+	 * @param  array $lines Lines array.
+	 *
 	 * @return void
 	 */
 	protected function init_lines( array $lines ) {
@@ -659,7 +664,7 @@ class CoBlocks_ICal {
 		if ( stristr( $lines[0], 'BEGIN:VCALENDAR' ) !== false ) {
 			$component = '';
 			foreach ( $lines as $line ) {
-				$line = rtrim( $line ); // Trim trailing whitespace
+				$line = rtrim( $line ); // Trim trailing whitespace.
 				$line = $this->remove_unprintable_chars( $line );
 
 				if ( ! $this->disable_character_replacement ) {
@@ -669,26 +674,26 @@ class CoBlocks_ICal {
 				$add = $this->key_value_from_string( $line );
 
 				$keyword = $add[0];
-				$values  = $add[1]; // May be an array containing multiple values
+				$values  = $add[1]; // May be an array containing multiple values.
 
 				if ( ! is_array( $values ) ) {
 					if ( ! empty( $values ) ) {
-						$values      = array( $values ); // Make an array as not already
-						$blank_array = array(); // Empty placeholder array
+						$values      = array( $values ); // Make an array as not already.
+						$blank_array = array(); // Empty placeholder array.
 						array_push( $values, $blank_array );
 					} else {
-						$values = array(); // Use blank array to ignore this line
+						$values = array(); // Use blank array to ignore this line.
 					}
 				} elseif ( empty( $values[0] ) ) {
-					$values = array(); // Use blank array to ignore this line
+					$values = array(); // Use blank array to ignore this line.
 				}
 
-				// Reverse so that our array of properties is processed first
+				// Reverse so that our array of properties is processed first.
 				$values = array_reverse( $values );
 
 				foreach ( $values as $value ) {
 					switch ( $line ) {
-						// https://www.kanzaki.com/docs/ical/vtodo.html
+						/* https://www.kanzaki.com/docs/ical/vtodo.html */
 						case 'BEGIN:VTODO':
 							if ( ! is_array( $value ) ) {
 								$this->todo_count++;
@@ -697,7 +702,7 @@ class CoBlocks_ICal {
 							$component = 'VTODO';
 							break;
 
-						// https://www.kanzaki.com/docs/ical/vevent.html
+						/* https://www.kanzaki.com/docs/ical/vevent.html */
 						case 'BEGIN:VEVENT':
 							if ( ! is_array( $value ) ) {
 								$this->event_count++;
@@ -706,7 +711,7 @@ class CoBlocks_ICal {
 							$component = 'VEVENT';
 							break;
 
-						// https://www.kanzaki.com/docs/ical/vfreebusy.html
+						/* https://www.kanzaki.com/docs/ical/vfreebusy.html */
 						case 'BEGIN:VFREEBUSY':
 							if ( ! is_array( $value ) ) {
 								$this->free_busy_index++;
@@ -763,7 +768,7 @@ class CoBlocks_ICal {
 			if ( ! $this->skip_recurrence ) {
 				$this->process_recurrences();
 
-				// Apply changes to altered recurrence instances
+				// Apply changes to altered recurrence instances.
 				if ( ! empty( $this->altered_recurrence_instances ) ) {
 					$events = $this->cal['VEVENT'];
 
@@ -797,7 +802,7 @@ class CoBlocks_ICal {
 		$events = $this->cal['VEVENT'];
 
 		if ( ! empty( $events ) ) {
-			$last_index = sizeof( $events ) - 1;
+			$last_index = count( $events ) - 1;
 			$last_event = $events[ $last_index ];
 
 			if ( ( ! isset( $last_event['RRULE'] ) || '' === $last_event['RRULE'] ) && $this->does_event_start_outside_window( $last_event ) ) {
@@ -842,7 +847,8 @@ class CoBlocks_ICal {
 	 * Determines whether the event start date is outside `$window_min_timestamp` / `$window_max_timestamp`.
 	 * Returns `true` for invalid dates.
 	 *
-	 * @param  array $event
+	 * @param  array $event Event data.
+	 *
 	 * @return boolean
 	 */
 	protected function does_event_start_outside_window( array $event ) {
@@ -852,9 +858,10 @@ class CoBlocks_ICal {
 	/**
 	 * Determines whether a valid iCalendar date is within a given range
 	 *
-	 * @param  string  $calendar_date
-	 * @param  integer $min_timestamp
-	 * @param  integer $max_timestamp
+	 * @param  string  $calendar_date Calendar date.
+	 * @param  integer $min_timestamp Minimum timestamp value.
+	 * @param  integer $max_timestamp Maximum timestamp value.
+	 *
 	 * @return boolean
 	 */
 	protected function is_out_of_range( $calendar_date, $min_timestamp, $max_timestamp ) {
@@ -867,7 +874,8 @@ class CoBlocks_ICal {
 	 * Unfolds an iCal file in preparation for parsing
 	 * (https://icalendar.org/iCalendar-RFC-5545/3-1-content-lines.html)
 	 *
-	 * @param  array $lines
+	 * @param  array $lines iCal data.
+	 *
 	 * @return array
 	 */
 	protected function unfold( array $lines ) {
@@ -881,9 +889,10 @@ class CoBlocks_ICal {
 	/**
 	 * Add one key and value pair to the `$this->cal` array
 	 *
-	 * @param  string         $component
-	 * @param  string|boolean $keyword
-	 * @param  string         $value
+	 * @param  string         $component Component name.
+	 * @param  string|boolean $keyword   Keyword value.
+	 * @param  string         $value     Value.
+	 *
 	 * @return void
 	 */
 	protected function add_calendar_component_with_key_and_value( $component, $keyword, $value ) {
@@ -902,7 +911,7 @@ class CoBlocks_ICal {
 				}
 
 				if ( is_array( $value ) ) {
-					// Add array of properties to the end
+					// Add array of properties to the end.
 					array_push( $this->cal[ $key1 ][ $key2 ][ $key3 ][ "{$keyword}_array" ], $value );
 				} else {
 					if ( ! isset( $this->cal[ $key1 ][ $key2 ][ $key3 ][ $keyword ] ) ) {
@@ -924,7 +933,7 @@ class CoBlocks_ICal {
 				}
 
 				if ( is_array( $value ) ) {
-					// Add array of properties to the end
+					// Add array of properties to the end.
 					array_push( $this->cal[ $key1 ][ $key2 ][ "{$keyword}_array" ], $value );
 				} else {
 					if ( ! isset( $this->cal[ $key1 ][ $key2 ][ $keyword ] ) ) {
@@ -991,7 +1000,8 @@ class CoBlocks_ICal {
 	/**
 	 * Gets the key value pair from an iCal string
 	 *
-	 * @param  string $text
+	 * @param  string $text Text value.
+	 *
 	 * @return array|boolean
 	 */
 	protected function key_value_from_string( $text ) {
@@ -1034,66 +1044,68 @@ class CoBlocks_ICal {
 		}
 
 		if ( preg_match( '/^([A-Z-]+)([;][\w\W]*)?$/', $matches[1] ) ) {
-			$matches = array_splice( $matches, 1, 2 ); // Remove first match and re-align ordering
+			$matches = array_splice( $matches, 1, 2 ); // Remove first match and re-align ordering.
 
-			// Process properties
+			// Process properties.
 			if ( preg_match( '/([A-Z-]+)[;]([\w\W]*)/', $matches[0], $properties ) ) {
-				// Remove first match
+				// Remove first match.
 				array_shift( $properties );
-				// Fix to ignore everything in keyword after a ; (e.g. Language, TZID, etc.)
+				// Fix to ignore everything in keyword after a ; (e.g. Language, TZID, etc.).
 				$matches[0] = $properties[0];
-				array_shift( $properties ); // Repeat removing first match
+				array_shift( $properties ); // Repeat removing first match.
 
 				$formatted = array();
 				foreach ( $properties as $property ) {
-					// Match semicolon separator outside of quoted substrings
+					// Match semicolon separator outside of quoted substrings.
 					preg_match_all( '~[^' . PHP_EOL . '";]+(?:"[^"\\\]*(?:\\\.[^"\\\]*)*"[^' . PHP_EOL . '";]*)*~', $property, $attributes );
-					// Remove multi-dimensional array and use the first key
-					$attributes = ( sizeof( $attributes ) === 0 ) ? array( $property ) : reset( $attributes );
+					// Remove multi-dimensional array and use the first key.
+					$attributes = ( count( $attributes ) === 0 ) ? array( $property ) : reset( $attributes );
 
 					if ( is_array( $attributes ) ) {
 						foreach ( $attributes as $attribute ) {
-							// Match equals sign separator outside of quoted substrings
+							// Match equals sign separator outside of quoted substrings.
 							preg_match_all(
 								'~[^' . PHP_EOL . '"=]+(?:"[^"\\\]*(?:\\\.[^"\\\]*)*"[^' . PHP_EOL . '"=]*)*~',
 								$attribute,
 								$values
 							);
-							// Remove multi-dimensional array and use the first key
-							$value = ( sizeof( $values ) === 0 ) ? null : reset( $values );
+							// Remove multi-dimensional array and use the first key.
+							$value = ( count( $values ) === 0 ) ? null : reset( $values );
 
 							if ( is_array( $value ) && isset( $value[1] ) ) {
-								// Remove double quotes from beginning and end only
+								// Remove double quotes from beginning and end only.
 								$formatted[ $value[0] ] = trim( $value[1], '"' );
 							}
 						}
 					}
 				}
 
-				// Assign the keyword property information
+				// Assign the keyword property information.
 				$properties[0] = $formatted;
 
-				// Add match to beginning of array
+				// Add match to beginning of array.
 				array_unshift( $properties, $matches[1] );
 				$matches[1] = $properties;
 			}
 
 			return $matches;
 		} else {
-			return false; // Ignore this match
+			return false; // Ignore this match.
 		}
 	}
 
 	/**
 	 * Returns a `DateTime` object from an iCal date time format
 	 *
-	 * @param  string $ical_date
+	 * @param  string $ical_date iCal date format.
+	 *
 	 * @return \DateTime
-	 * @throws \Exception
+	 *
+	 * @throws \Exception Exception thrown on error.
 	 */
 	public function ical_date_to_date_time( $ical_date ) {
 		/**
-		 * iCal times may be in 3 formats, (https://www.kanzaki.com/docs/ical/dateTime.html)
+		 * The iCal times may be in 3 formats, (https://www.kanzaki.com/docs/ical/dateTime.html).
 		 *
 		 * UTC:      Has a trailing 'Z'
 		 * Floating: No time zone reference specified, no trailing 'Z', use local time
@@ -1102,12 +1114,12 @@ class CoBlocks_ICal {
 		 * Use DateTime class objects to get around limitations with `mktime` and `gmmktime`.
 		 * Must have a local time zone set to process floating times.
 		 */
-		$pattern  = '/^(?:TZID=)?([^:]*|".*")'; // [1]: Time zone
-		$pattern .= ':?';                       //      Time zone delimiter
-		$pattern .= '([0-9]{8})';               // [2]: YYYYMMDD
-		$pattern .= 'T?';                       //      Time delimiter
-		$pattern .= '(?(?<=T)([0-9]{6}))';      // [3]: HHMMSS (filled if delimiter present)
-		$pattern .= '(Z?)/';                    // [4]: UTC flag
+		$pattern  = '/^(?:TZID=)?([^:]*|".*")'; // 1: Time zone
+		$pattern .= ':?';                       // Time zone delimiter.
+		$pattern .= '([0-9]{8})';               // 2: YYYYMMDD
+		$pattern .= 'T?';                       // Time delimiter.
+		$pattern .= '(?(?<=T)([0-9]{6}))';      // 3: HHMMSS (filled if delimiter present)
+		$pattern .= '(Z?)/';                    // 4: UTC flag
 
 		preg_match( $pattern, $ical_date, $date );
 
@@ -1142,7 +1154,8 @@ class CoBlocks_ICal {
 	/**
 	 * Returns a Unix timestamp from an iCal date time format
 	 *
-	 * @param  string $ical_date
+	 * @param  string $ical_date iCal date value.
+	 *
 	 * @return integer
 	 */
 	public function ical_date_to_unix_timestamp( $ical_date ) {
@@ -1152,9 +1165,10 @@ class CoBlocks_ICal {
 	/**
 	 * Returns a date adapted to the calendar time zone depending on the event `TZID`
 	 *
-	 * @param  array  $event
-	 * @param  string $key
-	 * @param  string $format
+	 * @param  array  $event  Event array.
+	 * @param  string $key    Array key.
+	 * @param  string $format Date format.
+	 *
 	 * @return string|boolean
 	 */
 	public function ical_date_with_timezone( array $event, $key, $format = self::DATE_TIME_FORMAT ) {
@@ -1172,7 +1186,7 @@ class CoBlocks_ICal {
 			$date_time->setTimezone( new \DateTimeZone( $this->calendar_timezone() ) );
 		}
 
-		// Force time zone
+		// Force time zone.
 		if ( isset( $date_array[0]['TZID'] ) ) {
 			$date_time->setTimezone( $this->timezone_string_to_date_timezone( $date_array[0]['TZID'] ) );
 		}
@@ -1277,7 +1291,7 @@ class CoBlocks_ICal {
 		if ( ! empty( $events ) ) {
 			foreach ( $events as $an_event ) {
 				if ( isset( $an_event['RRULE'] ) && '' !== $an_event['RRULE'] ) {
-					// Tag as generated by a recurrence rule
+					// Tag as generated by a recurrence rule.
 					$an_event['RRULE_array'][2] = self::RECURRENCE_EVENT;
 
 					$count_nb = 0;
@@ -1292,7 +1306,7 @@ class CoBlocks_ICal {
 						$initial_end_timezone_name = $initial_start_timezone_name;
 					}
 
-					// Recurring event, parse RRULE and add appropriate duplicate events
+					// Recurring event, parse RRULE and add appropriate duplicate events.
 					$rrules        = array();
 					$rrule_strings = explode( ';', $an_event['RRULE'] );
 
@@ -1301,9 +1315,9 @@ class CoBlocks_ICal {
 						$rrules[ $k ] = $v;
 					}
 
-					// Get frequency
+					// Get frequency.
 					$frequency = $rrules['FREQ'];
-					// Get Start timestamp
+					// Get Start timestamp.
 					$start_timestamp = $initial_start->getTimestamp();
 
 					if ( isset( $an_event['DTEND'] ) ) {
@@ -1316,20 +1330,20 @@ class CoBlocks_ICal {
 					}
 
 					$event_timestamp_offset = $end_timestamp - $start_timestamp;
-					// Get Interval
+					// Get Interval.
 					$interval = ( isset( $rrules['INTERVAL'] ) && '' !== $rrules['INTERVAL'] ) ? $rrules['INTERVAL'] : 1;
 
 					$day_number = null;
 					$weekday    = null;
 
 					if ( in_array( $frequency, array( 'MONTHLY', 'YEARLY' ), true ) && isset( $rrules['BYDAY'] ) && '' !== $rrules['BYDAY'] ) {
-						// Deal with BYDAY
+						// Deal with BYDAY.
 						$by_day     = $rrules['BYDAY'];
 						$day_number = intval( $by_day );
 
-						if ( empty( $day_number ) ) { // Returns 0 when no number defined in BYDAY
+						if ( empty( $day_number ) ) { // Returns 0 when no number defined in BYDAY.
 							if ( ! isset( $rrules['BYSETPOS'] ) ) {
-								$day_number = 1; // Set first as default
+								$day_number = 1; // Set first as default.
 							} elseif ( is_numeric( $rrules['BYSETPOS'] ) ) {
 								$day_number = $rrules['BYSETPOS'];
 
@@ -1351,18 +1365,16 @@ class CoBlocks_ICal {
 					if ( is_int( $this->default_span ) ) {
 						$until_default = date_create( 'now' );
 						$until_default->modify( $this->default_span . ' year' );
-						$until_default->setTime( 23, 59, 59 ); // End of the day
-					} else {
-						trigger_error( 'ICal::default_span: User defined value is not an integer', E_USER_NOTICE );
+						$until_default->setTime( 23, 59, 59 ); // End of the day.
 					}
 
-					// Compute EXDATEs
+					// Compute EXDATEs.
 					$exdates = $this->parse_ex_dates( $an_event );
 
 					$count_orig = null;
 
 					if ( isset( $rrules['UNTIL'] ) ) {
-						// Get Until
+						// Get Until.
 						$until = strtotime( $rrules['UNTIL'] );
 						if ( $until > strtotime( '+' . $this->default_span . ' years' ) ) {
 							$until = strtotime( '+' . $this->default_span . ' years' );
@@ -1370,10 +1382,10 @@ class CoBlocks_ICal {
 					} elseif ( isset( $rrules['COUNT'] ) ) {
 						$count_orig = ( is_numeric( $rrules['COUNT'] ) && $rrules['COUNT'] > 1 ) ? $rrules['COUNT'] : 0;
 
-						// Increment count by the number of excluded dates
-						$count_orig += sizeof( $exdates );
+						// Increment count by the number of excluded dates.
+						$count_orig += count( $exdates );
 
-						// Remove one to exclude the occurrence that initialises the rule
+						// Remove one to exclude the occurrence that initialises the rule.
 						$count = ( $count_orig - 1 );
 
 						if ( $interval >= 2 ) {
@@ -1400,10 +1412,10 @@ class CoBlocks_ICal {
 								$dtstart->modify( $offset );
 							}
 
-							// Jumping X months forwards doesn't mean
-							// the end date will fall on the same day defined in BYDAY
-							// Use the largest of these to ensure we are going far enough
-							// in the future to capture our final end day
+							// Jumping X months forwards doesn't mean.
+							// the end date will fall on the same day defined in BYDAY.
+							// Use the largest of these to ensure we are going far enough.
+							// in the future to capture our final end day.
 							$until = max( $until, $dtstart->format( self::UNIX_FORMAT ) );
 						}
 
@@ -1414,17 +1426,17 @@ class CoBlocks_ICal {
 
 					$until = intval( $until );
 
-					// Decide how often to add events and do so
+					// Decide how often to add events and do so.
 					switch ( $frequency ) {
 						case 'DAILY':
-							// Simply add a new event each interval of days until UNTIL is reached
+							// Simply add a new event each interval of days until UNTIL is reached.
 							$offset              = "+{$interval} day";
 							$recurring_timestamp = strtotime( $offset, $start_timestamp );
 
 							while ( $recurring_timestamp <= $until ) {
 								$dayrecurring_timestamp = $recurring_timestamp;
 
-								// Adjust time zone from initial event
+								// Adjust time zone from initial event.
 								$dayrecurring_offset = 0;
 								if ( $this->use_timezone_with_r_rules ) {
 									$recurring_timezone = \DateTime::createFromFormat( self::UNIX_FORMAT, $dayrecurring_timestamp );
@@ -1433,20 +1445,20 @@ class CoBlocks_ICal {
 									$dayrecurring_timestamp += $dayrecurring_offset;
 								}
 
-								// Add event
-								$an_event['DTSTART']          = date( self::DATE_TIME_FORMAT, $dayrecurring_timestamp ) . ( ( 'Z' === $initial_start_timezone_name ) ? 'Z' : '' );
+								// Add event.
+								$an_event['DTSTART']          = gmdate( self::DATE_TIME_FORMAT, $dayrecurring_timestamp ) . ( ( 'Z' === $initial_start_timezone_name ) ? 'Z' : '' );
 								$an_event['DTSTART_array'][1] = $an_event['DTSTART'];
 								$an_event['DTSTART_array'][2] = $dayrecurring_timestamp;
 								$an_event['DTEND_array']      = $an_event['DTSTART_array'];
 								$an_event['DTEND_array'][2]  += $event_timestamp_offset;
-								$an_event['DTEND']            = date(
+								$an_event['DTEND']            = gmdate(
 									self::DATE_TIME_FORMAT,
 									$an_event['DTEND_array'][2]
 								) . ( ( 'Z' === $initial_end_timezone_name ) ? 'Z' : '' );
 
 								$an_event['DTEND_array'][1] = $an_event['DTEND'];
 
-								// Exclusions
+								// Exclusions.
 								$is_excluded = array_filter(
 									$exdates,
 									function ( $exdate ) use ( $an_event, $dayrecurring_offset ) {
@@ -1474,7 +1486,7 @@ class CoBlocks_ICal {
 									$recurrence_events[] = $an_event;
 									$this->event_count++;
 
-									// If RRULE[COUNT] is reached then break
+									// If RRULE[COUNT] is reached then break.
 									if ( isset( $rrules['COUNT'] ) ) {
 										$count_nb++;
 
@@ -1484,17 +1496,17 @@ class CoBlocks_ICal {
 									}
 								}
 
-								// Move forwards
+								// Move forwards.
 								$recurring_timestamp = strtotime( $offset, $recurring_timestamp );
 							}
 
 							$recurrence_events     = $this->trim_to_recurrence_count( $rrules, $recurrence_events );
 							$all_recurrence_events = array_merge( $all_recurrence_events, $recurrence_events );
-							$recurrence_events     = array(); // Reset
+							$recurrence_events     = array(); // Reset.
 							break;
 
 						case 'WEEKLY':
-							// Create offset
+							// Create offset.
 							$offset = "+{$interval} week";
 
 							$wkst   = ( isset( $rrules['WKST'] ) && in_array( $rrules['WKST'], array( 'SA', 'SU', 'MO' ), true ) ) ? $rrules['WKST'] : $this->default_week_start;
@@ -1505,26 +1517,26 @@ class CoBlocks_ICal {
 								'MO' => 'Monday',
 							);
 
-							// Build list of days of week to add events
+							// Build list of days of week to add events.
 							$weekdays = $a_week;
 
 							if ( isset( $rrules['BYDAY'] ) && '' !== $rrules['BYDAY'] ) {
 								$by_days = explode( ',', $rrules['BYDAY'] );
 							} else {
-								// A textual representation of a day, two letters (e.g. SU)
+								// A textual representation of a day, two letters (e.g. SU).
 								$by_days = array( mb_substr( strtoupper( $initial_start->format( 'D' ) ), 0, 2 ) );
 							}
 
-							// Get timestamp of first day of start week
+							// Get timestamp of first day of start week.
 							$weekrecurring_timestamp = ( strcasecmp( $initial_start->format( 'l' ), explode( ' ', $this->weekdays[ $wkst ] )[0] ) === 0 )
 								? $start_timestamp
 								: strtotime( "last {$days[$wkst]} " . $initial_start->format( 'H:i:s' ), $start_timestamp );
 
-							// Step through weeks
+							// Step through weeks.
 							while ( $weekrecurring_timestamp <= $until ) {
 								$dayrecurring_timestamp = $weekrecurring_timestamp;
 
-								// Adjust time zone from initial event
+								// Adjust time zone from initial event.
 								$dayrecurring_offset = 0;
 								if ( $this->use_timezone_with_r_rules ) {
 									$day_recurring_timezone = \DateTime::createFromFormat( self::UNIX_FORMAT, $dayrecurring_timestamp );
@@ -1534,24 +1546,24 @@ class CoBlocks_ICal {
 								}
 
 								foreach ( $weekdays as $day ) {
-									// Check if day should be added
+									// Check if day should be added.
 									if ( in_array( $day, $by_days, true ) && $dayrecurring_timestamp > $start_timestamp
 										&& $dayrecurring_timestamp <= $until
 									) {
-										// Add event
-										$an_event['DTSTART']          = date( self::DATE_TIME_FORMAT, $dayrecurring_timestamp ) . ( ( 'Z' === $initial_start_timezone_name ) ? 'Z' : '' );
+										// Add event.
+										$an_event['DTSTART']          = gmdate( self::DATE_TIME_FORMAT, $dayrecurring_timestamp ) . ( ( 'Z' === $initial_start_timezone_name ) ? 'Z' : '' );
 										$an_event['DTSTART_array'][1] = $an_event['DTSTART'];
 										$an_event['DTSTART_array'][2] = $dayrecurring_timestamp;
 										$an_event['DTEND_array']      = $an_event['DTSTART_array'];
 										$an_event['DTEND_array'][2]  += $event_timestamp_offset;
-										$an_event['DTEND']            = date(
+										$an_event['DTEND']            = gmdate(
 											self::DATE_TIME_FORMAT,
 											$an_event['DTEND_array'][2]
 										) . ( ( 'Z' === $initial_end_timezone_name ) ? 'Z' : '' );
 
 										$an_event['DTEND_array'][1] = $an_event['DTEND'];
 
-										// Exclusions
+										// Exclusions.
 										$is_excluded = array_filter(
 											$exdates,
 											function ( $exdate ) use ( $an_event, $dayrecurring_offset ) {
@@ -1579,7 +1591,7 @@ class CoBlocks_ICal {
 											$recurrence_events[] = $an_event;
 											$this->event_count++;
 
-											// If RRULE[COUNT] is reached then break
+											// If RRULE[COUNT] is reached then break.
 											if ( isset( $rrules['COUNT'] ) ) {
 												$count_nb++;
 
@@ -1590,26 +1602,26 @@ class CoBlocks_ICal {
 										}
 									}
 
-									// Move forwards a day
+									// Move forwards a day.
 									$dayrecurring_timestamp = strtotime( '+1 day', $dayrecurring_timestamp );
 								}
 
-								// Move forwards $interval weeks
+								// Move forwards $interval weeks.
 								$weekrecurring_timestamp = strtotime( $offset, $weekrecurring_timestamp );
 							}
 
 							$recurrence_events     = $this->trim_to_recurrence_count( $rrules, $recurrence_events );
 							$all_recurrence_events = array_merge( $all_recurrence_events, $recurrence_events );
-							$recurrence_events     = array(); // Reset
+							$recurrence_events     = array(); // Reset.
 							break;
 
 						case 'MONTHLY':
-							// Create offset
+							// Create offset.
 							$recurring_timestamp = $start_timestamp;
 							$offset              = "+{$interval} month";
 
 							if ( isset( $rrules['BYMONTHDAY'] ) && '' !== $rrules['BYMONTHDAY'] ) {
-								// Deal with BYMONTHDAY
+								// Deal with BYMONTHDAY.
 								$monthdays = explode( ',', $rrules['BYMONTHDAY'] );
 
 								while ( $recurring_timestamp <= $until ) {
@@ -1617,7 +1629,7 @@ class CoBlocks_ICal {
 										$month_recurring_timestamp = null;
 
 										if ( 0 === $key ) {
-											// Ensure original event conforms to monthday rule
+											// Ensure original event conforms to monthday rule.
 											$an_event['DTSTART'] = gmdate(
 												'Ym' . sprintf( '%02d', $monthday ) . '\T' . self::TIME_FORMAT,
 												strtotime( $an_event['DTSTART'] )
@@ -1635,7 +1647,7 @@ class CoBlocks_ICal {
 											$an_event['DTEND_array'][1]   = $an_event['DTEND'];
 											$an_event['DTEND_array'][2]   = $this->ical_date_to_unix_timestamp( $an_event['DTEND'] );
 
-											// Ensure recurring timestamp confirms to BYMONTHDAY rule
+											// Ensure recurring timestamp confirms to BYMONTHDAY rule.
 											$month_recurring_date_time = new \DateTime( '@' . $recurring_timestamp );
 											$month_recurring_date_time->setDate(
 												$month_recurring_date_time->format( 'Y' ),
@@ -1645,7 +1657,7 @@ class CoBlocks_ICal {
 											$month_recurring_timestamp = $month_recurring_date_time->getTimestamp();
 										}
 
-										// Adjust time zone from initial event
+										// Adjust time zone from initial event.
 										$monthrecurring_offset = 0;
 										if ( $this->use_timezone_with_r_rules ) {
 											$recurring_timezone = \DateTime::createFromFormat( self::UNIX_FORMAT, $month_recurring_timestamp );
@@ -1655,8 +1667,8 @@ class CoBlocks_ICal {
 										}
 
 										if ( ( $month_recurring_timestamp > $start_timestamp ) && ( $month_recurring_timestamp <= $until ) ) {
-											// Add event
-											$an_event['DTSTART']          = date(
+											// Add event.
+											$an_event['DTSTART']          = gmdate(
 												'Ym' . sprintf( '%02d', $monthday ) . '\T' . self::TIME_FORMAT,
 												$month_recurring_timestamp
 											) . ( ( 'Z' === $initial_start_timezone_name ) ? 'Z' : '' );
@@ -1664,13 +1676,13 @@ class CoBlocks_ICal {
 											$an_event['DTSTART_array'][2] = $month_recurring_timestamp;
 											$an_event['DTEND_array']      = $an_event['DTSTART_array'];
 											$an_event['DTEND_array'][2]  += $event_timestamp_offset;
-											$an_event['DTEND']            = date(
+											$an_event['DTEND']            = gmdate(
 												self::DATE_TIME_FORMAT,
 												$an_event['DTEND_array'][2]
 											) . ( ( 'Z' === $initial_end_timezone_name ) ? 'Z' : '' );
 											$an_event['DTEND_array'][1]   = $an_event['DTEND'];
 
-											// Exclusions
+											// Exclusions.
 											$is_excluded = array_filter(
 												$exdates,
 												function ( $exdate ) use ( $an_event, $monthrecurring_offset ) {
@@ -1698,7 +1710,7 @@ class CoBlocks_ICal {
 												$recurrence_events[] = $an_event;
 												$this->event_count++;
 
-												// If RRULE[COUNT] is reached then break
+												// If RRULE[COUNT] is reached then break.
 												if ( isset( $rrules['COUNT'] ) ) {
 													$count_nb++;
 
@@ -1710,14 +1722,14 @@ class CoBlocks_ICal {
 										}
 									}
 
-									// Move forwards
+									// Move forwards.
 									$recurring_timestamp = strtotime( $offset, $recurring_timestamp );
 								}
 							} elseif ( isset( $rrules['BYDAY'] ) && '' !== $rrules['BYDAY'] ) {
 								while ( $recurring_timestamp <= $until ) {
 									$month_recurring_timestamp = $recurring_timestamp;
 
-									// Adjust time zone from initial event
+									// Adjust time zone from initial event.
 									$monthrecurring_offset = 0;
 
 									if ( $this->use_timezone_with_r_rules ) {
@@ -1728,25 +1740,25 @@ class CoBlocks_ICal {
 									}
 
 									$event_start_desc      = "{$this->convert_day_ordinal_to_positive($day_number, $weekday, $month_recurring_timestamp)} {$this->weekdays[$weekday]} "
-										. date( self::DATE_TIME_FORMAT_PRETTY, $month_recurring_timestamp );
+										. gmdate( self::DATE_TIME_FORMAT_PRETTY, $month_recurring_timestamp );
 									$event_start_timestamp = strtotime( $event_start_desc );
 
 									if ( intval( $rrules['BYDAY'] ) === 0 ) {
 										$last_day_desc = "last {$this->weekdays[$weekday]} "
-											. date( self::DATE_TIME_FORMAT_PRETTY, $month_recurring_timestamp );
+											. gmdate( self::DATE_TIME_FORMAT_PRETTY, $month_recurring_timestamp );
 									} else {
 										$last_day_desc = "{$this->convert_day_ordinal_to_positive($day_number, $weekday, $month_recurring_timestamp)} {$this->weekdays[$weekday]} "
-											. date( self::DATE_TIME_FORMAT_PRETTY, $month_recurring_timestamp );
+											. gmdate( self::DATE_TIME_FORMAT_PRETTY, $month_recurring_timestamp );
 									}
 
 									$last_day_time_stamp = strtotime( $last_day_desc );
 
 									do {
-										// Prevent 5th day of a month from showing up on the next month
-										// If BYDAY and the event falls outside the current month, skip the event
+										// Prevent 5th day of a month from showing up on the next month.
+										// If BYDAY and the event falls outside the current month, skip the event.
 
-										$compare_current_month = date( 'F', $month_recurring_timestamp );
-										$compare_event_month   = date( 'F', $event_start_timestamp );
+										$compare_current_month = gmdate( 'F', $month_recurring_timestamp );
+										$compare_event_month   = gmdate( 'F', $event_start_timestamp );
 
 										if ( $compare_current_month !== $compare_event_month ) {
 											$month_recurring_timestamp = strtotime( $offset, $month_recurring_timestamp );
@@ -1754,18 +1766,18 @@ class CoBlocks_ICal {
 										}
 
 										if ( $event_start_timestamp > $start_timestamp && $event_start_timestamp <= $until ) {
-											$an_event['DTSTART']          = date( self::DATE_TIME_FORMAT, $event_start_timestamp ) . ( ( 'Z' === $initial_start_timezone_name ) ? 'Z' : '' );
+											$an_event['DTSTART']          = gmdate( self::DATE_TIME_FORMAT, $event_start_timestamp ) . ( ( 'Z' === $initial_start_timezone_name ) ? 'Z' : '' );
 											$an_event['DTSTART_array'][1] = $an_event['DTSTART'];
 											$an_event['DTSTART_array'][2] = $event_start_timestamp;
 											$an_event['DTEND_array']      = $an_event['DTSTART_array'];
 											$an_event['DTEND_array'][2]  += $event_timestamp_offset;
-											$an_event['DTEND']            = date(
+											$an_event['DTEND']            = gmdate(
 												self::DATE_TIME_FORMAT,
 												$an_event['DTEND_array'][2]
 											) . ( ( 'Z' === $initial_end_timezone_name ) ? 'Z' : '' );
 											$an_event['DTEND_array'][1]   = $an_event['DTEND'];
 
-											// Exclusions
+											// Exclusions.
 											$is_excluded = array_filter(
 												$exdates,
 												function ( $exdate ) use ( $an_event, $monthrecurring_offset ) {
@@ -1793,7 +1805,7 @@ class CoBlocks_ICal {
 												$recurrence_events[] = $an_event;
 												$this->event_count++;
 
-												// If RRULE[COUNT] is reached then break
+												// If RRULE[COUNT] is reached then break.
 												if ( isset( $rrules['COUNT'] ) ) {
 													$count_nb++;
 
@@ -1805,8 +1817,8 @@ class CoBlocks_ICal {
 										}
 
 										if ( isset( $rrules['BYSETPOS'] ) ) {
-											// BYSETPOS is defined so skip
-											// looping through each week
+											// BYSETPOS is defined so skip.
+											// looping through each week.
 											$last_day_time_stamp = $event_start_timestamp;
 										}
 
@@ -1818,27 +1830,27 @@ class CoBlocks_ICal {
 
 							$recurrence_events     = $this->trim_to_recurrence_count( $rrules, $recurrence_events );
 							$all_recurrence_events = array_merge( $all_recurrence_events, $recurrence_events );
-							$recurrence_events     = array(); // Reset
+							$recurrence_events     = array(); // Reset.
 							break;
 
 						case 'YEARLY':
-							// Create offset
+							// Create offset.
 							$recurring_timestamp = $start_timestamp;
 							$offset              = "+{$interval} year";
 
-							// Deal with BYMONTH
+							// Deal with BYMONTH.
 							if ( isset( $rrules['BYMONTH'] ) && '' !== $rrules['BYMONTH'] ) {
 								$bymonths = explode( ',', $rrules['BYMONTH'] );
 							} else {
 								$bymonths = array();
 							}
 
-							// Check if BYDAY rule exists
+							// Check if BYDAY rule exists.
 							if ( isset( $rrules['BYDAY'] ) && '' !== $rrules['BYDAY'] ) {
 								while ( $recurring_timestamp <= $until ) {
 									$yearrecurring_timestamp = $recurring_timestamp;
 
-									// Adjust time zone from initial event
+									// Adjust time zone from initial event.
 									$yearrecurring_offset = 0;
 
 									if ( $this->use_timezone_with_r_rules ) {
@@ -1868,19 +1880,19 @@ class CoBlocks_ICal {
 
 										do {
 											if ( $event_start_timestamp > $start_timestamp && $event_start_timestamp <= $until ) {
-												$an_event['DTSTART']          = date( self::DATE_TIME_FORMAT, $event_start_timestamp ) . ( ( 'Z' === $initial_start_timezone_name ) ? 'Z' : '' );
+												$an_event['DTSTART']          = gmdate( self::DATE_TIME_FORMAT, $event_start_timestamp ) . ( ( 'Z' === $initial_start_timezone_name ) ? 'Z' : '' );
 												$an_event['DTSTART_array'][1] = $an_event['DTSTART'];
 												$an_event['DTSTART_array'][2] = $event_start_timestamp;
 												$an_event['DTEND_array']      = $an_event['DTSTART_array'];
 												$an_event['DTEND_array'][2]  += $event_timestamp_offset;
-												$an_event['DTEND']            = date(
+												$an_event['DTEND']            = gmdate(
 													self::DATE_TIME_FORMAT,
 													$an_event['DTEND_array'][2]
 												) . ( ( 'Z' === $initial_end_timezone_name ) ? 'Z' : '' );
 
 												$an_event['DTEND_array'][1] = $an_event['DTEND'];
 
-												// Exclusions
+												// Exclusions.
 												$is_excluded = array_filter(
 													$exdates,
 													function ( $exdate ) use ( $an_event, $yearrecurring_offset ) {
@@ -1908,7 +1920,7 @@ class CoBlocks_ICal {
 													$recurrence_events[] = $an_event;
 													$this->event_count++;
 
-													// If RRULE[COUNT] is reached then break
+													// If RRULE[COUNT] is reached then break.
 													if ( isset( $rrules['COUNT'] ) ) {
 														$count_nb++;
 
@@ -1923,17 +1935,17 @@ class CoBlocks_ICal {
 										} while ( $event_start_timestamp <= $last_day_time_stamp );
 									}
 
-									// Move forwards
+									// Move forwards.
 									$recurring_timestamp = strtotime( $offset, $recurring_timestamp );
 								}
 							} else {
 								$day = $initial_start->format( 'd' );
 
-								// Step through years
+								// Step through years.
 								while ( $recurring_timestamp <= $until ) {
 									$yearrecurring_timestamp = $recurring_timestamp;
 
-									// Adjust time zone from initial event
+									// Adjust time zone from initial event.
 									$yearrecurring_offset = 0;
 									if ( $this->use_timezone_with_r_rules ) {
 										$recurring_timezone = \DateTime::createFromFormat( self::UNIX_FORMAT, $yearrecurring_timestamp );
@@ -1955,18 +1967,18 @@ class CoBlocks_ICal {
 										$event_start_timestamp = strtotime( $event_start_desc );
 
 										if ( $event_start_timestamp > $start_timestamp && $until >= $event_start_timestamp ) {
-											$an_event['DTSTART']          = date( self::DATE_TIME_FORMAT, $event_start_timestamp ) . ( ( 'Z' === $initial_start_timezone_name ) ? 'Z' : '' );
+											$an_event['DTSTART']          = gmdate( self::DATE_TIME_FORMAT, $event_start_timestamp ) . ( ( 'Z' === $initial_start_timezone_name ) ? 'Z' : '' );
 											$an_event['DTSTART_array'][1] = $an_event['DTSTART'];
 											$an_event['DTSTART_array'][2] = $event_start_timestamp;
 											$an_event['DTEND_array']      = $an_event['DTSTART_array'];
 											$an_event['DTEND_array'][2]  += $event_timestamp_offset;
-											$an_event['DTEND']            = date(
+											$an_event['DTEND']            = gmdate(
 												self::DATE_TIME_FORMAT,
 												$an_event['DTEND_array'][2]
 											) . ( ( 'Z' === $initial_end_timezone_name ) ? 'Z' : '' );
 											$an_event['DTEND_array'][1]   = $an_event['DTEND'];
 
-											// Exclusions
+											// Exclusions.
 											$is_excluded = array_filter(
 												$exdates,
 												function ( $exdate ) use ( $an_event, $yearrecurring_offset ) {
@@ -1994,7 +2006,7 @@ class CoBlocks_ICal {
 												$recurrence_events[] = $an_event;
 												$this->event_count++;
 
-												// If RRULE[COUNT] is reached then break
+												// If RRULE[COUNT] is reached then break.
 												if ( isset( $rrules['COUNT'] ) ) {
 													$count_nb++;
 
@@ -2006,14 +2018,14 @@ class CoBlocks_ICal {
 										}
 									}
 
-									// Move forwards
+									// Move forwards.
 									$recurring_timestamp = strtotime( $offset, $recurring_timestamp );
 								}
 							}
 
 							$recurrence_events     = $this->trim_to_recurrence_count( $rrules, $recurrence_events );
 							$all_recurrence_events = array_merge( $all_recurrence_events, $recurrence_events );
-							$recurrence_events     = array(); // Reset
+							$recurrence_events     = array(); // Reset.
 							break;
 					}
 				}
@@ -2071,8 +2083,9 @@ class CoBlocks_ICal {
 	 * array to include an iCal date time for each event
 	 * (`TZID=Timezone:YYYYMMDD[T]HHMMSS`)
 	 *
-	 * @param  array   $event
-	 * @param  integer $index
+	 * @param  array   $event Event array.
+	 * @param  integer $index Index value.
+	 *
 	 * @return array
 	 */
 	protected function process_event_ical_datetime( array $event, $index = 3 ) {
@@ -2092,8 +2105,7 @@ class CoBlocks_ICal {
 
 	/**
 	 * Returns an array of Events.
-	 * Every event is a class with the event
-	 * details being properties within it.
+	 * Every event is a class with the event details being properties within it.
 	 *
 	 * @return array
 	 */
@@ -2132,7 +2144,8 @@ class CoBlocks_ICal {
 	/**
 	 * Returns the calendar time zone
 	 *
-	 * @param  boolean $ignore_utc
+	 * @param  boolean $ignore_utc Whether or not to ignore UTC.
+	 *
 	 * @return string
 	 */
 	public function calendar_timezone( $ignore_utc = false ) {
@@ -2164,17 +2177,16 @@ class CoBlocks_ICal {
 	public function free_busy_events() {
 		$array = $this->cal;
 
-		return isset( $array['VFREEBUSY'] ) ? $array['VFREEBUSY'] : [];
+		return isset( $array['VFREEBUSY'] ) ? $array['VFREEBUSY'] : array();
 	}
 
 	/**
-	 * Returns a boolean value whether the
-	 * current calendar has events or not
+	 * Returns a boolean value whether the current calendar has events or not
 	 *
 	 * @return boolean
 	 */
 	public function has_events() {
-		return ( count( $this->events() ) > 0 ) ?: false;
+		return ( count( $this->events() ) > 0 ) ? true : false;
 	}
 
 	/**
@@ -2195,13 +2207,15 @@ class CoBlocks_ICal {
 	 * problem for events on, during, or after 29 Jan 2038.
 	 * See https://en.wikipedia.org/wiki/Unix_time#Representing_the_number
 	 *
-	 * @param  string|null $range_start
-	 * @param  string|null $range_end
+	 * @param  string|null $range_start Date range start.
+	 * @param  string|null $range_end   Date range end.
+	 *
 	 * @return array
-	 * @throws \Exception
+	 *
+	 * @throws \Exception Exception thrown on error.
 	 */
 	public function events_from_range( $range_start = null, $range_end = null ) {
-		// Sort events before processing range
+		// Sort events before processing range.
 		$events = $this->sort_events_with_order( $this->events(), SORT_ASC );
 
 		if ( empty( $events ) ) {
@@ -2214,7 +2228,6 @@ class CoBlocks_ICal {
 			try {
 				$range_start = new \DateTime( $range_start, new \DateTimeZone( $this->default_time_zone ) );
 			} catch ( \Exception $e ) {
-				error_log( "ICal::events_from_range: Invalid date passed ({$range_start})" );
 				$range_start = false;
 			}
 		} else {
@@ -2225,7 +2238,6 @@ class CoBlocks_ICal {
 			try {
 				$range_end = new \DateTime( $range_end, new \DateTimeZone( $this->default_time_zone ) );
 			} catch ( \Exception $e ) {
-				error_log( "ICal::events_from_range: Invalid date passed ({$range_end})" );
 				$range_end = false;
 			}
 		} else {
@@ -2245,11 +2257,11 @@ class CoBlocks_ICal {
 			$event_start = $an_event->dtstart_array[2];
 			$event_end   = ( isset( $an_event->dtend_array[2] ) ) ? $an_event->dtend_array[2] : null;
 
-			if ( ( $event_start >= $range_start && $event_start < $range_end )         // Event start date contained in the range
+			if ( ( $event_start >= $range_start && $event_start < $range_end ) // Event start date contained in the range.
 				|| ( null !== $event_end
 					&& (
-						( $event_end > $range_start && $event_end <= $range_end )     // Event end date contained in the range
-						|| ( $event_start < $range_start && $event_end > $range_end ) // Event starts before and finishes after range
+						( $event_end > $range_start && $event_end <= $range_end ) // Event end date contained in the range.
+						|| ( $event_start < $range_start && $event_end > $range_end ) // Event starts before and finishes after range.
 					)
 				)
 			) {
@@ -2268,7 +2280,8 @@ class CoBlocks_ICal {
 	 * Returns a sorted array of the events following a given string,
 	 * or `false` if no events exist in the range.
 	 *
-	 * @param  string $interval
+	 * @param  string $interval A date with relative parts.
+	 *
 	 * @return array
 	 */
 	public function events_from_interval( $interval ) {
@@ -2284,8 +2297,9 @@ class CoBlocks_ICal {
 	/**
 	 * Sorts events based on a given sort order
 	 *
-	 * @param  array   $events
-	 * @param  integer $sort_order Either SORT_ASC, SORT_DESC, SORT_REGULAR, SORT_NUMERIC, SORT_STRING
+	 * @param  array   $events     Events array.
+	 * @param  integer $sort_order Either SORT_ASC, SORT_DESC, SORT_REGULAR, SORT_NUMERIC, SORT_STRING.
+	 *
 	 * @return array
 	 */
 	public function sort_events_with_order( array $events, $sort_order = SORT_ASC ) {
@@ -2305,7 +2319,8 @@ class CoBlocks_ICal {
 	/**
 	 * Checks if a time zone is valid (IANA, CLDR, or Windows)
 	 *
-	 * @param  string $timezone
+	 * @param  string $timezone Timezone value.
+	 *
 	 * @return boolean
 	 */
 	protected function is_valid_timezone_id( $timezone ) {
@@ -2317,7 +2332,8 @@ class CoBlocks_ICal {
 	/**
 	 * Checks if a time zone is a valid IANA time zone
 	 *
-	 * @param  string $timezone
+	 * @param  string $timezone Timezone value.
+	 *
 	 * @return boolean
 	 */
 	protected function is_valid_iana_timezone_id( $timezone ) {
@@ -2348,7 +2364,7 @@ class CoBlocks_ICal {
 	/**
 	 * Checks if a time zone is a valid CLDR time zone
 	 *
-	 * @param  string $timezone
+	 * @param  string $timezone Timezone value.
 	 * @return boolean
 	 */
 	public function is_valid_cldr_timezone_id( $timezone ) {
@@ -2358,7 +2374,7 @@ class CoBlocks_ICal {
 	/**
 	 * Checks if a time zone is a recognised Windows (non-CLDR) time zone
 	 *
-	 * @param  string $timezone
+	 * @param  string $timezone Timezone value.
 	 * @return boolean
 	 */
 	public function is_valid_windows_timezone_id( $timezone ) {
@@ -2368,9 +2384,10 @@ class CoBlocks_ICal {
 	/**
 	 * Parses a duration and applies it to a date
 	 *
-	 * @param  string $date
-	 * @param  object $duration
-	 * @param  string $format
+	 * @param  string $date     Date string.
+	 * @param  object $duration Duration value.
+	 * @param  string $format   Format.
+	 *
 	 * @return integer|\DateTime
 	 */
 	protected function parse_duration( $date, $duration, $format = self::UNIX_FORMAT ) {
@@ -2398,13 +2415,14 @@ class CoBlocks_ICal {
 	/**
 	 * Gets the number of days between a start and end date
 	 *
-	 * @param  integer $days
-	 * @param  integer $start
-	 * @param  integer $end
+	 * @param  integer $days  Number of days.
+	 * @param  integer $start Start value.
+	 * @param  integer $end   End value.
+	 *
 	 * @return integer
 	 */
 	protected function number_of_days( $days, $start, $end ) {
-		$w    = array( date( 'w', $start ), date( 'w', $end ) );
+		$w    = array( gmdate( 'w', $start ), gmdate( 'w', $end ) );
 		$base = floor( ( $end - $start ) / self::SECONDS_IN_A_WEEK );
 		$sum  = 0;
 
@@ -2421,13 +2439,14 @@ class CoBlocks_ICal {
 	 * Converts a negative day ordinal to
 	 * its equivalent positive form
 	 *
-	 * @param  integer           $day_number
-	 * @param  integer           $weekday
-	 * @param  integer|\DateTime $timestamp
+	 * @param  integer           $day_number Day number.
+	 * @param  integer           $weekday    Weekday value.
+	 * @param  integer|\DateTime $timestamp  Timestamp.
+	 *
 	 * @return string
 	 */
 	protected function convert_day_ordinal_to_positive( $day_number, $weekday, $timestamp ) {
-		// 0 when no number is defined for BYDAY
+		// 0 when no number is defined for BYDAY.
 		$day_number = empty( $day_number ) ? 1 : intval( $day_number );
 
 		$day_ordinals = $this->day_ordinals;
@@ -2446,15 +2465,15 @@ class CoBlocks_ICal {
 		$start     = strtotime( 'first day of ' . $timestamp->format( self::DATE_TIME_FORMAT_PRETTY ) );
 		$end       = strtotime( 'last day of ' . $timestamp->format( self::DATE_TIME_FORMAT_PRETTY ) );
 
-		// Used with pow(2, X) so pow(2, 4) is THURSDAY
+		// Used with pow(2, X) so pow(2, 4) is THURSDAY.
 		$weekdays = array_flip( array_keys( $this->weekdays ) );
 
 		$number_of_days = $this->number_of_days( pow( 2, $weekdays[ $weekday ] ), $start, $end );
 
-		// Create subset
+		// Create subset.
 		$day_ordinals = array_slice( $day_ordinals, 0, $number_of_days, true );
 
-		// Reverse only the values
+		// Reverse only the values.
 		$day_ordinals = array_combine( array_keys( $day_ordinals ), array_reverse( array_values( $day_ordinals ) ) );
 
 		return $day_ordinals[ $day_number * -1 ];
@@ -2463,7 +2482,8 @@ class CoBlocks_ICal {
 	/**
 	 * Removes unprintable ASCII and UTF-8 characters
 	 *
-	 * @param  string $data
+	 * @param  string $data Data to remove characters from.
+	 *
 	 * @return string
 	 */
 	protected function remove_unprintable_chars( $data ) {
@@ -2474,13 +2494,14 @@ class CoBlocks_ICal {
 	 * Provides a polyfill for PHP 7.2's `mb_chr()`, which is a multibyte safe version of `chr()`.
 	 * Multibyte safe.
 	 *
-	 * @param  integer $code
+	 * @param  integer $code Value used to determine encoding.
+	 *
 	 * @return string
 	 */
 	protected function mb_chr( $code ) {
 		$code %= 0x200000;
 		if ( function_exists( 'mb_chr' ) ) {
-			return mb_chr( $code );
+			return mb_chr( $code ); // phpcs:ignore
 		} else {
 			if ( 0x80 > $code ) {
 				$s = chr( $code );
@@ -2500,23 +2521,24 @@ class CoBlocks_ICal {
 	 * Replace all occurrences of the search string with the replacement string.
 	 * Multibyte safe.
 	 *
-	 * @param  string|array $search
-	 * @param  string|array $replace
-	 * @param  string|array $subject
-	 * @param  string       $encoding
-	 * @param  integer      $count
+	 * @param  string|array $search   Needle to search for.
+	 * @param  string|array $replace  Replace value.
+	 * @param  string|array $subject  Subject text.
+	 * @param  string       $encoding Encoding value.
+	 * @param  integer      $count    Index value in the iteration.
+	 *
 	 * @return array|string
 	 */
 	protected static function mb_str_replace( $search, $replace, $subject, $encoding = null, &$count = 0 ) {
 		if ( is_array( $subject ) ) {
-			// Call `mb_str_replace()` for each subject in the array, recursively
+			// Call `mb_str_replace()` for each subject in the array, recursively.
 			foreach ( $subject as $key => $value ) {
 				$subject[ $key ] = self::mb_str_replace( $search, $replace, $value, $encoding, $count );
 			}
 		} else {
-			// Normalize $search and $replace so they are both arrays of the same length
-			$searches     = is_array( $search ) ? array_values( $search ) : [ $search ];
-			$replacements = is_array( $replace ) ? array_values( $replace ) : [ $replace ];
+			// Normalize $search and $replace so they are both arrays of the same length.
+			$searches     = is_array( $search ) ? array_values( $search ) : array( $search );
+			$replacements = is_array( $replace ) ? array_values( $replace ) : array( $replace );
 			$replacements = array_pad( $replacements, count( $searches ), '' );
 
 			foreach ( $searches as $key => $search ) {
@@ -2528,7 +2550,7 @@ class CoBlocks_ICal {
 				$search_len = mb_strlen( $search, $encoding );
 				$offset     = mb_strpos( $subject, $search, 0, $encoding );
 
-				$sb = [];
+				$sb = array();
 				while ( false !== $offset ) {
 					$sb[]    = mb_substr( $subject, 0, $offset, $encoding );
 					$subject = mb_substr( $subject, $offset + $search_len, null, $encoding );
@@ -2547,7 +2569,7 @@ class CoBlocks_ICal {
 	 * Places double-quotes around texts that have characters not permitted
 	 * in parameter-texts, but are permitted in quoted-texts.
 	 *
-	 * @param  string $candidate_text
+	 * @param  string $candidate_text Candidate text string.
 	 * @return string
 	 */
 	protected function escape_param_text( $candidate_text ) {
@@ -2562,7 +2584,8 @@ class CoBlocks_ICal {
 	 * Replaces curly quotes and other special characters
 	 * with their standard equivalents
 	 *
-	 * @param  string $data
+	 * @param  string $data Data string.
+	 *
 	 * @return string
 	 */
 	protected function clean_data( $data ) {
@@ -2580,26 +2603,27 @@ class CoBlocks_ICal {
 			"\xe2\x80\xa6" => '...', // …
 			"\xc2\xa0"     => ' ',
 		);
-		// Replace UTF-8 characters
+		// Replace UTF-8 characters.
 		$cleaned_data = strtr( $data, $replacement_chars );
 
-		// Replace Windows-1252 equivalents
+		// Replace Windows-1252 equivalents.
 		$chars_to_replace = array_map(
 			function ( $code ) {
 				return $this->mb_chr( $code );
 			},
 			array( 133, 145, 146, 147, 148, 150, 151, 194 )
 		);
-		$cleaned_data     = $this->mb_str_replace( $chars_to_replace, $replacement_chars, $cleaned_data );
+
+		$cleaned_data = $this->mb_str_replace( $chars_to_replace, $replacement_chars, $cleaned_data );
 
 		return $cleaned_data;
 	}
 
 	/**
-	 * Parses a list of excluded dates
-	 * to be applied to an Event
+	 * Parses a list of excluded dates to be applied to an Event
 	 *
-	 * @param  array $event
+	 * @param  array $event Event array.
+	 *
 	 * @return array
 	 */
 	public function parse_ex_dates( array $event ) {
@@ -2629,7 +2653,7 @@ class CoBlocks_ICal {
 					$output[] = new \DateTime( $ical_date, new \DateTimeZone( $current_time_zone ) );
 
 					if ( $key === $final_key ) {
-						// Reset to default
+						// Reset to default.
 						$current_time_zone = $this->default_time_zone;
 					}
 				}
@@ -2642,9 +2666,11 @@ class CoBlocks_ICal {
 	/**
 	 * Checks if a date string is a valid date
 	 *
-	 * @param  string $value
+	 * @param  string $value Date value.
+	 *
 	 * @return boolean
-	 * @throws \Exception
+	 *
+	 * @throws \Exception Exception thrown on error.
 	 */
 	public function is_valid_date( $value ) {
 		if ( ! $value ) {
@@ -2663,21 +2689,26 @@ class CoBlocks_ICal {
 	/**
 	 * Checks if a filename exists as a file or URL
 	 *
-	 * @param  string $filename
+	 * @param  string $filename Filename or URL.
+	 *
 	 * @return boolean
 	 */
 	protected function is_file_or_url( $filename ) {
 
-		return ( file_exists( $filename ) || filter_var( $filename, FILTER_VALIDATE_URL ) ) ?: false;
+		$file_or_url = ( file_exists( $filename ) || filter_var( $filename, FILTER_VALIDATE_URL ) );
+
+		return $file_or_url ? $file_or_url : false;
 
 	}
 
 	/**
 	 * Reads an entire file or URL into an array
 	 *
-	 * @param  string $filename
+	 * @param  string $filename The file name.
+	 *
 	 * @return array
-	 * @throws \Exception
+	 *
+	 * @throws \Exception Exception thrown on error.
 	 */
 	protected function file_or_url( $filename ) {
 		$options = array();
@@ -2686,9 +2717,10 @@ class CoBlocks_ICal {
 			$options['http']['header'] = array();
 
 			if ( ! empty( $this->http_basic_auth ) ) {
-				$username   = $this->http_basic_auth['username'];
-				$password   = $this->http_basic_auth['password'];
-				$basic_auth = base64_encode( "{$username}:{$password}" );
+				$username = $this->http_basic_auth['username'];
+				$password = $this->http_basic_auth['password'];
+				// base64_encode() used to encode auth credentials.
+				$basic_auth = base64_encode( "{$username}:{$password}" ); // phpcs:ignore
 
 				array_push( $options['http']['header'], "Authorization: Basic {$basic_auth}" );
 			}
@@ -2715,7 +2747,8 @@ class CoBlocks_ICal {
 	 *
 	 * Falls back to the default time zone if string passed not a recognised time zone.
 	 *
-	 * @param  string $timezone_string
+	 * @param  string $timezone_string Timezone string.
+	 *
 	 * @return \date_timezone
 	 */
 	public function timezone_string_to_date_timezone( $timezone_string ) {
@@ -2743,14 +2776,15 @@ class CoBlocks_ICal {
 	/**
 	 * Ensures the recurrence count is enforced against generated recurrence events.
 	 *
-	 * @param  array $rrules
-	 * @param  array $recurrence_events
+	 * @param  array $rrules            Recurring rules.
+	 * @param  array $recurrence_events Recurring events array.
+	 *
 	 * @return array
 	 */
 	protected function trim_to_recurrence_count( array $rrules, array $recurrence_events ) {
 		if ( isset( $rrules['COUNT'] ) ) {
 			$recurrence_count = ( intval( $rrules['COUNT'] ) - 1 );
-			$surplus_count    = ( sizeof( $recurrence_events ) - $recurrence_count );
+			$surplus_count    = ( count( $recurrence_events ) - $recurrence_count );
 
 			if ( $surplus_count > 0 ) {
 				$recurrence_events  = array_slice( $recurrence_events, 0, $recurrence_count );
@@ -2764,25 +2798,26 @@ class CoBlocks_ICal {
 	/**
 	 * Checks if an excluded date matches a given date by reconciling time zones.
 	 *
-	 * @param  DateTime  $exdate
-	 * @param  array   $an_event
-	 * @param  integer $recurring_offset
+	 * @param  DateTime $exdate           Excluded date class.
+	 * @param  array    $an_event         Event array.
+	 * @param  integer  $recurring_offset A date with relative parts.
+	 *
 	 * @return boolean
 	 */
 	protected function is_ex_date_match( $exdate, array $an_event, $recurring_offset ) {
 		$search_date = $an_event['DTSTART'];
 
 		if ( substr( $search_date, -1 ) === 'Z' ) {
-			$timezone = new \DateTimeZone(self::TIME_ZONE_UTC);
+			$timezone = new \DateTimeZone( self::TIME_ZONE_UTC );
 		} elseif ( isset( $an_event['DTSTART_array'][0]['TZID'] ) ) {
 			$timezone = $this->timezone_string_to_date_timezone( $an_event['DTSTART_array'][0]['TZID'] );
 		} else {
-			$timezone = new \DateTimeZone($this->default_time_zone);
+			$timezone = new \DateTimeZone( $this->default_time_zone );
 		}
 
 		$a = new \DateTime( $search_date, $timezone );
 		$b = $exdate->add( \DateInterval::createFromDateString( $recurring_offset . ' seconds' ) );
 
-		return $a == $b;
+		return $a === $b;
 	}
 }

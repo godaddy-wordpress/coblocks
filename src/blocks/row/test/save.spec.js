@@ -1,19 +1,19 @@
 /**
  * External dependencies
  */
+import { createBlock, registerBlockType, serialize } from '@wordpress/blocks';
 import '@testing-library/jest-dom/extend-expect';
-import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
 
 /**
  * Internal dependencies.
  */
-import { name, settings } from '../index';
 import { layoutOptions } from '../utilities';
+import { name, settings } from '../index';
 
 // Make variables accessible for all tests.
 let block;
 
-describe( name, () => {
+describe( 'coblocks/row', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );
@@ -25,7 +25,7 @@ describe( name, () => {
 	} );
 
 	it( 'should render column counts', () => {
-		[ 1, 2, 3, 4 ].forEach( columnCount => {
+		[ 1, 2, 3, 4 ].forEach( ( columnCount ) => {
 			block.attributes.columns = columnCount;
 			const serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();
@@ -35,7 +35,6 @@ describe( name, () => {
 	} );
 
 	it( 'should render column and layout data', () => {
-
 		// Single column, 100% layout
 		block.attributes.columns = 1;
 		block.attributes.layout = '100';
@@ -46,13 +45,11 @@ describe( name, () => {
 		expect( serializedBlock ).toMatchSnapshot();
 
 		// Looping through the layoutOptions to match each column + template
-		for( var key in layoutOptions ) {
+		for ( const key in layoutOptions ) {
 			if ( layoutOptions.hasOwnProperty( key ) ) {
-
 				block.attributes.columns = key;
 
-				for( var ky in layoutOptions[ key ] ) {
-
+				for ( const ky in layoutOptions[ key ] ) {
 					block.attributes.layout = layoutOptions[ key ][ ky ].key;
 
 					serializedBlock = serialize( block );

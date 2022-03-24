@@ -58,5 +58,9 @@
 		"hasError": {
 			"type": "string"
 		}
-	}
+	},
+	"title": "Map",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-12",
+	"description": "Add an address or location to drop a pin on a Google map."
 }

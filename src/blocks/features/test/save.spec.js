@@ -2,7 +2,7 @@
  * External dependencies
  */
 import '@testing-library/jest-dom/extend-expect';
-import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
+import { createBlock, registerBlockType, serialize } from '@wordpress/blocks';
 
 /**
  * Internal dependencies.
@@ -12,7 +12,7 @@ import { name, settings } from '../index';
 // Make variables accessible for all tests.
 let block;
 
-describe( name, () => {
+describe( 'coblocks/features', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );
@@ -40,7 +40,7 @@ describe( name, () => {
 	} );
 
 	it( 'should render heading levels', () => {
-		[ 1, 2, 3, 4, 5, 6 ].forEach( headingLevel => {
+		[ 1, 2, 3, 4, 5, 6 ].forEach( ( headingLevel ) => {
 			block.attributes.headingLevel = headingLevel;
 			const serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();
@@ -54,7 +54,7 @@ describe( name, () => {
 	} );
 
 	it( 'should render gutter classes', () => {
-		[ 'small', 'medium', 'large' ].forEach( gutterSize => {
+		[ 'small', 'medium', 'large' ].forEach( ( gutterSize ) => {
 			block.attributes.gutter = gutterSize;
 			const serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();
@@ -64,7 +64,7 @@ describe( name, () => {
 	} );
 
 	it( 'should render column classes', () => {
-		[ 1, 2, 3, 4 ].forEach( columnSize => {
+		[ 1, 2, 3, 4 ].forEach( ( columnSize ) => {
 			block.attributes.columns = columnSize;
 			const serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();
@@ -74,7 +74,7 @@ describe( name, () => {
 	} );
 
 	it( 'should render padding classes', () => {
-		[ 'small', 'medium', 'large' ].forEach( paddingSize => {
+		[ 'small', 'medium', 'large' ].forEach( ( paddingSize ) => {
 			block.attributes.paddingSize = paddingSize;
 			const serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();
@@ -84,7 +84,7 @@ describe( name, () => {
 	} );
 
 	it( 'should render margin classes', () => {
-		[ 'small', 'medium', 'large' ].forEach( marginSize => {
+		[ 'small', 'medium', 'large' ].forEach( ( marginSize ) => {
 			block.attributes.marginSize = marginSize;
 			const serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();
@@ -94,7 +94,7 @@ describe( name, () => {
 	} );
 
 	it( 'should render content align classes', () => {
-		[ 'left', 'center', 'right' ].forEach( alignment => {
+		[ 'left', 'center', 'right' ].forEach( ( alignment ) => {
 			block.attributes.contentAlign = alignment;
 			const serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();

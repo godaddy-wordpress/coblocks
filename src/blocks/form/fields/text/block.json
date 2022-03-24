@@ -1,0 +1,21 @@
+{
+	"name": "coblocks/field-text",
+	"category": "layout",
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "Text"
+		},
+		"required": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"title": "Text",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-3",
+	"description": "A text box for custom responses.",
+	"parent": [
+		"coblocks/form"
+	]
+}

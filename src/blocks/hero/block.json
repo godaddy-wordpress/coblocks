@@ -54,5 +54,9 @@
 			"type": "number",
 			"default": 500
 		}
-	}
+	},
+	"title": "Hero",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-9",
+	"description": "An introductory area of a page accompanied by a small amount of text and a call to action."
 }

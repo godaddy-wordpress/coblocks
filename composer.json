@@ -29,7 +29,7 @@
 		"yoast/phpunit-polyfills": "^1.0.1"
 	},
 	"scripts": {
-		"lint": "@php ./vendor/bin/phpcs",
+		"lint": "@php ./vendor/bin/phpcs --runtime-set ignore_warnings_on_exit 1",
 		"lint:fix": "@php ./vendor/bin/phpcbf",
 		"test": "@php ./vendor/bin/phpunit"
 	}

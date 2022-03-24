@@ -1,0 +1,29 @@
+{
+	"name": "coblocks/field-radio",
+	"category": "layout",
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "Choose one"
+		},
+		"required": {
+			"type": "boolean",
+			"default": false
+		},
+		"options": {
+			"type": "array",
+			"default": []
+		},
+		"isInline": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"title": "Radio",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-3",
+	"description": "A field with multiple options where only one choice can be made.",
+	"parent": [
+		"coblocks/form"
+	]
+}

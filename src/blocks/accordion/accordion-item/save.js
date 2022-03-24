@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-import { RichText, InnerBlocks, getColorClassName } from '@wordpress/block-editor';
+import { getColorClassName, InnerBlocks, RichText } from '@wordpress/block-editor';
 
 const save = ( { attributes } ) => {
 	const {
@@ -44,12 +44,12 @@ const save = ( { attributes } ) => {
 			{ ! RichText.isEmpty( title ) &&
 			<details open={ open }>
 				<RichText.Content
-					tagName="summary"
 					className={ titleClasses }
-					value={ title }
 					style={ titleStyles }
+					tagName="summary"
+					value={ title }
 				/>
-				<div className="wp-block-coblocks-accordion-item__content" style={ borderStyle } tabIndex="0">
+				<div className="wp-block-coblocks-accordion-item__content" style={ borderStyle }>
 					<InnerBlocks.Content />
 				</div>
 			</details>
