@@ -15,9 +15,11 @@
 			"default": []
 		}
 	},
-    "title": "Select",
+	"title": "Select",
 	"textdomain": "coblocks",
 	"editorScript": "blocks-3",
 	"description": "A dropdown field with multiple options where only one choice can be made.",
-	"parent": [ "coblocks/form" ]
+	"parent": [
+		"coblocks/form"
+	]
 }

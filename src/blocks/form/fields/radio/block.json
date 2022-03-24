@@ -4,7 +4,7 @@
 	"attributes": {
 		"label": {
 			"type": "string",
-			"default":  "Choose one"
+			"default": "Choose one"
 		},
 		"required": {
 			"type": "boolean",
@@ -19,9 +19,11 @@
 			"default": false
 		}
 	},
-    "title": "Radio",
+	"title": "Radio",
 	"textdomain": "coblocks",
 	"editorScript": "blocks-3",
 	"description": "A field with multiple options where only one choice can be made.",
-	"parent": [ "coblocks/form" ]
+	"parent": [
+		"coblocks/form"
+	]
 }

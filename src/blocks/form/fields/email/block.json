@@ -1,5 +1,5 @@
 {
-    "name": "coblocks/field-email",
+	"name": "coblocks/field-email",
 	"category": "layout",
 	"attributes": {
 		"label": {
@@ -11,9 +11,11 @@
 			"default": false
 		}
 	},
-    "title": "Email",
+	"title": "Email",
 	"textdomain": "coblocks",
 	"editorScript": "blocks-3",
 	"description": "A field for collecting a validated email address.",
-	"parent": [ "coblocks/form" ]
+	"parent": [
+		"coblocks/form"
+	]
 }

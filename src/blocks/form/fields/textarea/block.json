@@ -11,9 +11,11 @@
 			"default": false
 		}
 	},
-    "title": "Textarea",
+	"title": "Textarea",
 	"textdomain": "coblocks",
 	"editorScript": "blocks-3",
 	"description": "A text box for longer responses.",
-	"parent": [ "coblocks/form" ]
+	"parent": [
+		"coblocks/form"
+	]
 }

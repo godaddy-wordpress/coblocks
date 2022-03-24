@@ -1,5 +1,5 @@
 {
-    "attributes": {
+	"attributes": {
 		"subject": {
 			"default": null,
 			"type": "string"
@@ -15,7 +15,7 @@
 	},
 	"category": "layout",
 	"name": "coblocks/form",
-    "title": "Form",
+	"title": "Form",
 	"textdomain": "coblocks",
 	"editorScript": "blocks-4",
 	"description": "Add a contact form to your page."

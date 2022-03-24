@@ -11,9 +11,11 @@
 			"default": false
 		}
 	},
-    "title": "Date",
+	"title": "Date",
 	"textdomain": "coblocks",
 	"editorScript": "blocks-3",
 	"description": "A field for requesting date selections with a date picker.",
-	"parent": [ "coblocks/form" ]
+	"parent": [
+		"coblocks/form"
+	]
 }

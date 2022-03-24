@@ -24,9 +24,11 @@
 			"type": "string"
 		}
 	},
-    "title": "Submit",
+	"title": "Submit",
 	"textdomain": "coblocks",
 	"editorScript": "blocks-3",
 	"description": "A button for submitting form data.",
-	"parent": [ "coblocks/form" ]
+	"parent": [
+		"coblocks/form"
+	]
 }

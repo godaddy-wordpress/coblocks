@@ -1,5 +1,5 @@
 {
-    "name": "coblocks/field-checkbox",
+	"name": "coblocks/field-checkbox",
 	"attributes": {
 		"label": {
 			"type": "string",
@@ -19,9 +19,11 @@
 		}
 	},
 	"category": "layout",
-    "title": "Checkbox",
+	"title": "Checkbox",
 	"textdomain": "coblocks",
 	"editorScript": "blocks-3",
 	"description": "A checkbox field with multiple options where multiple choices can be made.",
-	"parent": [ "coblocks/form" ]
+	"parent": [
+		"coblocks/form"
+	]
 }
