@@ -40,5 +40,7 @@
 	"textdomain": "coblocks",
 	"editorScript": "blocks-6",
 	"description": "A pricing table to help visitors compare products and plans.",
-	"parent": [	"coblocks/pricing-table" ]
+	"parent": [
+		"coblocks/pricing-table"
+	]
 }

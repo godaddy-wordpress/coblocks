@@ -22,5 +22,7 @@
 	"textdomain": "coblocks",
 	"editorScript": "blocks-2",
 	"description": "An immediate child of a row.",
-	"parent": [	"coblocks/row" ]
+	"parent": [
+		"coblocks/row"
+	]
 }

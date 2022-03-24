@@ -69,5 +69,7 @@
 	"textdomain": "coblocks",
 	"editorScript": "blocks-6",
 	"description": "A single service item within a services block.",
-	"parent": [	"coblocks/services" ]
+	"parent": [
+		"coblocks/services"
+	]
 }
