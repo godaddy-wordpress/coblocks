@@ -20,12 +20,22 @@ import { Icon } from '@wordpress/components';
 import { InnerBlocks } from '@wordpress/block-editor';
 
 const { name, category, attributes } = metadata;
-
 let conditionalBlockAttributes = { ...attributes };
 if ( typeof coblocksBlockData !== 'undefined' ) {
 	conditionalBlockAttributes = {
 		...conditionalBlockAttributes,
-		successText: coblocksBlockData.form.successText,
+		subject: {
+			default: coblocksBlockData.form.emailSubject,
+			type: 'string',
+		},
+		successText: {
+			default: coblocksBlockData.form.successText,
+			type: 'string',
+		},
+		to: {
+			default: coblocksBlockData.form.adminEmail,
+			type: 'string',
+		},
 	};
 }
 
