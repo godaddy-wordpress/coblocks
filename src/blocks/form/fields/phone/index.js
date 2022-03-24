@@ -7,6 +7,7 @@ import { FormPhoneIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * Internal dependencies
  */
 import edit from './edit';
+import metadata from './block.json';
 import transforms from './transforms';
 
 /**
@@ -15,31 +16,13 @@ import transforms from './transforms';
 import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 
-/**
- * Block constants
- */
-const metadata = {
-	name: 'coblocks/field-phone',
-	category: 'layout',
-	attributes: {
-		label: {
-			type: 'string',
-			default: __( 'Phone', 'coblocks' ),
-		},
-		required: {
-			type: 'boolean',
-			default: false,
-		},
-	},
-};
-
 const { name, category, attributes } = metadata;
 
 const settings = {
 	/* translators: block name */
 	title: __( 'Phone', 'coblocks' ),
 	/* translators: block description */
-	description: __( 'A phone number to allow visitors to give you a phone number.', 'coblocks' ),
+	description: __( 'A text field for collecting a phone number.', 'coblocks' ),
 	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',

@@ -7,30 +7,13 @@ import { FormEmailIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * Internal dependencies
  */
 import edit from './edit';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
-
-/**
- * Block constants
- */
-const metadata = {
-	name: 'coblocks/field-email',
-	category: 'layout',
-	attributes: {
-		label: {
-			type: 'string',
-			default: __( 'Email', 'coblocks' ),
-		},
-		required: {
-			type: 'boolean',
-			default: false,
-		},
-	},
-};
 
 const { name, category, attributes } = metadata;
 

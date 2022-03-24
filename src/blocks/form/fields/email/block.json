@@ -1,0 +1,21 @@
+{
+	"name": "coblocks/field-email",
+	"category": "layout",
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "Email"
+		},
+		"required": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"title": "Email",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-3",
+	"description": "A field for collecting a validated email address.",
+	"parent": [
+		"coblocks/form"
+	]
+}

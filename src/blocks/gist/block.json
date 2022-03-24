@@ -15,5 +15,9 @@
 		"caption": {
 			"type": "string"
 		}
-	}
+	},
+	"title": "Gist",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-9",
+	"description": "Embed a GitHub Gist."
 }

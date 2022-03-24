@@ -43,5 +43,6 @@
 	},
 	"title": "Alert",
 	"textdomain": "coblocks",
-	"editorScript": "file:./../../blocks-1.js"
+	"editorScript": "blocks-1",
+	"description": "Provide contextual feedback messages or notices."
 }

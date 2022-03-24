@@ -7,6 +7,7 @@ import { FormSelectIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * Internal dependencies
  */
 import { editMultiField } from '../helpers';
+import metadata from './block.json';
 import transforms from './transforms';
 
 /**
@@ -14,28 +15,6 @@ import transforms from './transforms';
  */
 import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
-
-/**
- * Block constants
- */
-const metadata = {
-	name: 'coblocks/field-select',
-	category: 'layout',
-	attributes: {
-		label: {
-			type: 'string',
-			default: __( 'Select', 'coblocks' ),
-		},
-		required: {
-			type: 'boolean',
-			default: false,
-		},
-		options: {
-			type: 'array',
-			default: [],
-		},
-	},
-};
 
 const { name, category, attributes } = metadata;
 
