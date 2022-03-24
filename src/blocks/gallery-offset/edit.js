@@ -19,10 +19,10 @@ import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
  * WordPress dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import { useState, useEffect } from '@wordpress/element';
+import { useEffect, useState } from '@wordpress/element';
 import { compose, usePrevious } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
-import { withNotices, Icon } from '@wordpress/components';
+import { Icon, withNotices } from '@wordpress/components';
 
 /**
  * Block edit function
@@ -57,7 +57,7 @@ const Edit = ( props ) => {
 			setSelectedImage( null );
 		}
 
-		if ( wideControlsEnabled === true && typeof attributes.align === undefined ) {
+		if ( wideControlsEnabled === true && typeof attributes.align === 'undefined' ) {
 			setAttributes( { align: 'wide' } );
 		}
 	}, [ wideControlsEnabled, isSelected, prevIsSelected, attributes.align ] );
@@ -174,8 +174,8 @@ const Edit = ( props ) => {
 			{ ! hasImages ? noticeUI : null }
 			<GalleryPlaceholder
 				{ ...props }
-				label={ __( 'Offset', 'coblocks' ) }
 				icon={ <Icon icon={ icon } /> }
+				label={ __( 'Offset', 'coblocks' ) }
 			/>
 		</>
 	);
@@ -223,26 +223,26 @@ const Edit = ( props ) => {
 							return (
 								<li className={ itemClasses } key={ img.id || img.url }>
 									<GalleryImage
-										url={ img.url }
 										alt={ img.alt }
-										id={ img.id }
-										isSelected={ isSelected && selectedImage === index }
-										onRemove={ onRemoveImage( index ) }
-										onSelect={ onSelectImage( index ) }
-										setAttributes={ ( attrs ) => setImageAttributes( index, attrs ) }
-										caption={ img.caption }
 										aria-label={ ariaLabel }
+										caption={ img.caption }
 										captions={ captions }
-										supportsCaption={ true }
+										id={ img.id }
+										imageIndex={ index }
 										imgLink={ img.imgLink }
-										linkTo={ linkTo }
 										isFirstItem={ index === 0 }
 										isLastItem={ ( index + 1 ) === attributes.images.length }
+										isSelected={ isSelected && selectedImage === index }
+										linkTo={ linkTo }
+										newClass="wp-block-coblocks-gallery-offset__figure"
 										onMoveBackward={ onMoveBackward( index ) }
 										onMoveForward={ onMoveForward( index ) }
-										newClass="wp-block-coblocks-gallery-offset__figure"
-										imageIndex={ index }
+										onRemove={ onRemoveImage( index ) }
+										onSelect={ onSelectImage( index ) }
 										replaceImage={ replaceImage }
+										setAttributes={ ( attrs ) => setImageAttributes( index, attrs ) }
+										supportsCaption={ true }
+										url={ img.url }
 									/>
 								</li>
 							);
