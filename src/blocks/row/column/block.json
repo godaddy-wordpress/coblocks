@@ -17,5 +17,10 @@
 		"verticalAlignment": {
 			"type": "string"
 		}
-	}
+	},
+	"title": "Column",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-2",
+	"description": "An immediate child of a row.",
+	"parent": [	"coblocks/row" ]
 }
