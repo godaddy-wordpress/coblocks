@@ -1256,10 +1256,10 @@
   dependencies:
     "@wordpress/eslint-plugin" "^9.2.0"
 
-"@godaddy-wordpress/scripts@^0.2.1":
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/scripts/-/scripts-0.2.5.tgz#dcaf115bb52f93134834db9f7f2627a75dd19e2b"
-  integrity sha512-jngqfx784XVoN2Zy2PMPG9Zr5hMiQBdo37pI+MH50AlomQJFaeRl7FGizc6Q9+h8EDMO7RfB8PbnLZ3lVZ5j6A==
+"@godaddy-wordpress/scripts@^0.2.6":
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/scripts/-/scripts-0.2.6.tgz#311b2395bf5527551ca7318717b9aa6f78f46e4a"
+  integrity sha512-Z5/F6cHQfa3CJV4dGGsHQoRYOFVYemdiCe8uCQ0uS/VVb4Eh4Y0I2+ccSjdeB9b6m/M1WqcK02NW9J8bTMo1/A==
   dependencies:
     "@octokit/core" "^3.5.1"
     "@wordpress/eslint-plugin" "^10.0.2"
