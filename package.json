@@ -79,7 +79,7 @@
 	"devDependencies": {
 		"@es-joy/jsdoccomment": "0.13.0",
 		"@godaddy-wordpress/eslint-config": "^0.5.0",
-		"@godaddy-wordpress/scripts": "^0.3.0",
+		"@godaddy-wordpress/scripts": "^0.3.3",
 		"@godaddy-wordpress/stylelint-config": "^0.6.0",
 		"@jest/core": "^27.4.5",
 		"@react-google-maps/api": "^2.7.0",
