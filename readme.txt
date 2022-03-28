@@ -122,6 +122,10 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+= 2.22.9 / 2022-03-28 =
+##### Bug fixes
+* Fix block list on WordPress.org plugin page for CoBlocks [#2341](https://github.com/godaddy-wordpress/coblocks/pull/2341)
+
 = 2.22.8 / 2022-03-23 =
 ##### Misc
 * Implement editorScript property in block.json for proper registration [#2337](https://github.com/godaddy-wordpress/coblocks/pull/2337)
