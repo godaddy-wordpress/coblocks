@@ -522,7 +522,7 @@ commands:
           command: |
             sudo apt-get update && sudo apt-get install -y subversion default-mysql-client
             sudo node ./node_modules/@godaddy-wordpress/scripts/install-wp-tests.js wordpress_test root '' 127.0.0.1 latest
-            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
+            sudo cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
 
   run_php_unit_tests:
     parameters:
