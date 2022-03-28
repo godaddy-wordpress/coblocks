@@ -7,24 +7,28 @@ import LabelColorWrapper from '../../../components/form-label-colors/label-color
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { ToggleControl } from '@wordpress/components';
+import classnames from 'classnames';
 import { RichText } from '@wordpress/block-editor';
+import { ToggleControl } from '@wordpress/components';
 
 const CoBlocksFieldLabel = ( { setAttributes, label, resetFocus, isSelected, required, name, textColor, customTextColor, showRequiredToggle = true } ) => {
+	const labelClassnames = classnames(
+		'coblocks-label',
+		'coblocks-field-label__input', {
+			required,
+		} );
 	return (
 		<div className="coblocks-field-label">
 			<div className="coblocks-field-label__input-wrapper">
 				{ label && (
 					<LabelColorWrapper
-						label={ label }
-						textColor={ textColor }
 						customTextColor={ customTextColor }
+						label={ label }
 						name={ name }
+						textColor={ textColor }
 					>
 						<RichText
-							tagName="label"
-							className="coblocks-label coblocks-field-label__input"
-							value={ label }
+							className={ labelClassnames }
 							onChange={ ( value ) => {
 								if ( resetFocus ) {
 									resetFocus();
@@ -32,19 +36,17 @@ const CoBlocksFieldLabel = ( { setAttributes, label, resetFocus, isSelected, req
 								setAttributes( { label: value } );
 							} }
 							placeholder={ __( 'Add label…', 'coblocks' ) }
+							tagName="label"
+							value={ label }
 						/>
 					</LabelColorWrapper>
-				) }
-
-				{ required && (
-					<span className="required">*</span>
 				) }
 			</div>
 			{ isSelected && showRequiredToggle && (
 				<ToggleControl
-					label={ __( 'Required', 'coblocks' ) }
-					className="coblocks-field-label__required"
 					checked={ required }
+					className="coblocks-field-label__required"
+					label={ __( 'Required', 'coblocks' ) }
 					onChange={ ( value ) => setAttributes( { required: value } ) }
 				/>
 			) }

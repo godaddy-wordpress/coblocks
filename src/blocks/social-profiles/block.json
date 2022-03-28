@@ -90,5 +90,9 @@
 			"type": "string",
 			"default": ""
 		}
-	}
+	},
+	"title": "Social Profiles",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-10",
+	"description": "Grow your audience with links to social media profiles."
 }

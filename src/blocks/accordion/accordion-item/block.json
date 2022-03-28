@@ -25,5 +25,10 @@
 		"borderColor": {
 			"type": "string"
 		}
-	}
+	},
+	"title": "Accordion Item",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-1",
+	"description": "Add collapsable accordion items to accordions.",
+	"parent": [ "coblocks/accordion" ]
 }

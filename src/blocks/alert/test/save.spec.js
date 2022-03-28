@@ -3,7 +3,7 @@
  */
 import { JSDOM } from 'jsdom';
 import '@testing-library/jest-dom/extend-expect';
-import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
+import { createBlock, registerBlockType, serialize } from '@wordpress/blocks';
 
 /**
  * Internal dependencies.
@@ -15,7 +15,7 @@ let block;
 let blockDOM;
 let serializedBlock;
 
-describe( name, () => {
+describe( 'coblocks/alert', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );
@@ -136,5 +136,4 @@ describe( name, () => {
 			).toHaveClass( `${ className }` );
 		} );
 	} );
-
 } );

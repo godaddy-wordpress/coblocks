@@ -2,7 +2,7 @@
  * External dependencies
  */
 import '@testing-library/jest-dom/extend-expect';
-import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
+import { createBlock, registerBlockType, serialize } from '@wordpress/blocks';
 
 /**
  * Internal dependencies.
@@ -14,16 +14,16 @@ let block;
 let serializedBlock;
 
 const DEFAULT_ATTRIBUTES = {
-	title: "Some title",
-	description: "Some description",
-	eventDay: "25",
-	eventMonth: "Nov",
-	eventYear: "2099",
-	eventTime: "5:25",
-	eventLocation: "Somewhere",
-}
+	description: 'Some description',
+	eventDay: '25',
+	eventLocation: 'Somewhere',
+	eventMonth: 'Nov',
+	eventTime: '5:25',
+	eventYear: '2099',
+	title: 'Some title',
+};
 
-describe( name, () => {
+describe( 'coblocks/event-item', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );
@@ -50,7 +50,9 @@ describe( name, () => {
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		Object.entries( DEFAULT_ATTRIBUTES ).forEach( ( [key, value] ) => expect( serializedBlock ).toContain( value ) );
+		// Disable reason : value must be the second parameter
+		// eslint-disable-next-line no-unused-vars
+		Object.entries( DEFAULT_ATTRIBUTES ).forEach( ( [ key, value ] ) => expect( serializedBlock ).toContain( value ) );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 

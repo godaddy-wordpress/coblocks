@@ -8,6 +8,7 @@ import { EventItemIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  */
 import deprecated from './deprecated';
 import edit from './edit';
+import example from './example';
 import metadata from './block.json';
 import save from './save';
 
@@ -27,6 +28,7 @@ const settings = {
 	deprecated,
 	description: __( 'An event within the events block.', 'coblocks' ),
 	edit,
+	example,
 	icon: <Icon icon={ icon } />,
 	parent: [ 'coblocks/events' ],
 	save,

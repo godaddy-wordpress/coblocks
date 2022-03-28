@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   jq: circleci/jq@2.2.0
   browser-tools: circleci/browser-tools@1.1
+  node: circleci/node@5.0.0
 
 executors:
   node_latest:
@@ -13,7 +14,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_56_mysql:
     docker:
-      - image: cimg/php:5.6
+      - image: cimg/php:5.6-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -23,7 +24,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_74_mysql:
     docker:
-      - image: cimg/php:7.4
+      - image: cimg/php:7.4-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -59,7 +60,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_80_mysql:
     docker:
-      - image: cimg/php:8.0
+      - image: cimg/php:8.0-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -71,7 +72,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   php_81_mysql:
     docker:
-      - image: cimg/php:8.1
+      - image: cimg/php:8.1-node
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -338,27 +339,29 @@ commands:
     steps:
       - restore_cache:
           keys:
-            - composer-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "composer.lock" }}
             - composer-deps-{{ .Environment.CACHE_VERSION }}
 
   restore_yarn_cache:
     steps:
       - restore_cache:
           keys:
-            - yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
             - yarn-deps-{{ .Environment.CACHE_VERSION }}
+      - run:
+          name: Install dependencies missing from cache
+          command: |
+            PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+            yarn install --frozen-lockfile
 
   restore_update_cypress_cache:
     steps:
       - restore_cache:
           keys:
-            - cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
             - cypress-deps-{{ .Environment.CACHE_VERSION }}
       - run:
           name: Install CyPress Binaries
           command: ./node_modules/.bin/cypress install
       - save_cache:
-          key: cypress-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
+          key: cypress-deps-{{ .Environment.CACHE_VERSION }}
           paths:
             - ~/.cache/Cypress
 
@@ -533,8 +536,11 @@ commands:
         default: false
     steps:
       - checkout
+      - node/install:
+          node-version: '16.14'
       - attach_workspace:
           at: ~/project
+      - restore_yarn_cache
       - restore_composer_cache
       - wait_for_mysql
       - when:
@@ -583,7 +589,7 @@ jobs:
             PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
             yarn install --frozen-lockfile
       - save_cache:
-          key: yarn-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
+          key: yarn-deps-{{ .Environment.CACHE_VERSION }}
           paths:
             - ~/project/node_modules
             - ~/.cache/yarn
@@ -595,7 +601,7 @@ jobs:
             composer validate --strict
             composer install
       - save_cache:
-          key: composer-deps-{{ .Environment.CACHE_VERSION }}-{{ checksum "composer.lock" }}
+          key: composer-deps-{{ .Environment.CACHE_VERSION }}
           paths:
             - ~/project/vendor
       - run:
@@ -644,13 +650,10 @@ jobs:
   # Code Quality Checks
   # --------------------------------------------------
 
-  # Run phpcs on changed php files only.
   php:
     executor: php_74_node
     steps:
       - checkout
-      - changed_files_with_extension:
-          ext: ".php"
       - pre_check_files
       - attach_workspace:
           at: ~/project
@@ -662,26 +665,23 @@ jobs:
           key: phpcs-coblocks-cache
       - run:
           name: "Linting PHP"
-          command: composer run lint $FILES
+          command: composer run lint
       - save_cache:
           key: phpcs-coblocks-cache
           paths:
             - /tmp/phpcs-coblocks-cache
 
-  # Run stylelint on changed stylesheet files only.
   css:
     executor: node_latest
     steps:
       - checkout
-      - changed_files_with_extension:
-          ext: ".scss"
       - pre_check_files
       - attach_workspace:
           at: ~/project
       - restore_yarn_cache
       - run:
           name: "Linting CSS"
-          command: yarn lint:css $FILES
+          command: yarn lint:css
 
   # --------------------------------------------------
   # Unit Testing
@@ -713,19 +713,13 @@ jobs:
     executor: node_latest
     steps:
       - checkout
-      - changed_files_with_extension:
-          ext: ".js"
       - attach_workspace:
           at: ~/project
       - restore_yarn_cache
       - run:
           name: "Linting JS"
           command: |
-            if [[ "$CIRCLE_BRANCH" == "master" || -z "$FILES" ]]; then
-              exit 0
-            else
-              yarn lint:js $FILES
-            fi
+            yarn lint:js
       - run:
           name: "Test JS and Collect Coverage"
           command: |
