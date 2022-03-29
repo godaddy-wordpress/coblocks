@@ -18,7 +18,6 @@ import { useEffect, useRef, useState } from '@wordpress/element';
 
 const allowedBlocks = [
 	{ animateChildren: false, blockType: 'coblocks/gallery-carousel' },
-	{ animateChildren: true, blockType: 'coblocks/gallery-collage' },
 	{ animateChildren: true, blockType: 'coblocks/gallery-offset' },
 	{ animateChildren: false, blockType: 'core/columns' },
 	{ animateChildren: false, blockType: 'core/cover' },
