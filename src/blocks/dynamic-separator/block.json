@@ -12,5 +12,9 @@
 		"customColor": {
 			"type": "string"
 		}
-	}
+	},
+	"title": "Dynamic HR",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-2",
+	"description": "Add a resizable spacer between other blocks."
 }

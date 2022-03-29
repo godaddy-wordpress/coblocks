@@ -10,5 +10,9 @@
 			"type": "string",
 			"default": ""
 		}
-	}
+	},
+	"title": "Opentable",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-7",
+	"description": "Embed an OpenTable Reservations Widget."
 }

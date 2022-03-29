@@ -40,5 +40,9 @@
 		"textAlign": {
 			"type": "string"
 		}
-	}
+	},
+	"title": "Alert",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-1",
+	"description": "Provide contextual feedback messages or notices."
 }

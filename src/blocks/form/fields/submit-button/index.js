@@ -7,43 +7,13 @@ import { FormSubmitIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * Internal dependencies
  */
 import edit from './edit';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
-
-/**
- * Block constants
- */
-const metadata = {
-	name: 'coblocks/field-submit-button',
-	category: 'layout',
-	attributes: {
-		label: {
-			type: 'string',
-			default: __( 'Submit', 'coblocks' ),
-		},
-		required: {
-			type: 'boolean',
-			default: true,
-		},
-		submitButtonText: {
-			type: 'string',
-			default: __( 'Submit', 'coblocks' ),
-		},
-		customBackgroundButtonColor: {
-			type: 'string',
-		},
-		customTextButtonColor: {
-			type: 'string',
-		},
-		submitButtonClasses: {
-			type: 'string',
-		},
-	},
-};
 
 const { name, category, attributes } = metadata;
 

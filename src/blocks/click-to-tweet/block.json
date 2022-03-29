@@ -47,5 +47,9 @@
 				"fontSize": true
 			}
 		}
-	}
+	},
+	"title": "Click to Tweet",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-3",
+	"description": "Add a quote for readers to tweet via Twitter."
 }

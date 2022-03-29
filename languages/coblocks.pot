@@ -1,14 +1,14 @@
 # Copyright (c) 2022 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 2.22.3\n"
+"Project-Id-Version: CoBlocks 2.22.9\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-03-14T15:14:49+00:00\n"
+"POT-Creation-Date: 2022-03-28T23:35:05+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: coblocks\n"
@@ -85,10 +85,10 @@ msgstr ""
 #. translators: block keyword
 #. translators: icon keyword
 #: includes/class-coblocks-form.php:51
-#: includes/class-coblocks-form.php:1044
+#: includes/class-coblocks-form.php:1046
 #: src/blocks/form/edit.js:288
-#: src/blocks/form/fields/name/index.js:59
-#: src/blocks/form/index.js:62
+#: src/blocks/form/fields/name/index.js:30
+#: src/blocks/form/index.js:56
 #: src/blocks/icon/deprecated/svgs.js:691
 #: src/blocks/icon/deprecated/svgs.js:709
 #: src/blocks/icon/deprecated/svgs.js:728
@@ -109,7 +109,6 @@ msgstr ""
 
 #: includes/class-coblocks-form.php:63
 #: src/blocks/form/edit.js:301
-#: src/blocks/form/index.js:22
 msgid "Your message was sent:"
 msgstr ""
 
@@ -125,8 +124,7 @@ msgstr ""
 #. translators: icon label
 #: includes/class-coblocks-form.php:229
 #: includes/class-coblocks-form.php:321
-#: src/blocks/form/fields/email/index.js:26
-#: src/blocks/form/fields/email/index.js:39
+#: src/blocks/form/fields/email/index.js:22
 #: src/blocks/icon/deprecated/svgs.js:688
 #: src/blocks/icon/deprecated/svgs.js:706
 #: src/blocks/icon/deprecated/svgsfocusable.js:687
@@ -138,25 +136,21 @@ msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:258
-#: src/blocks/form/fields/name/index.js:27
-#: src/blocks/form/fields/name/index.js:52
+#: src/blocks/form/fields/name/index.js:23
 #: src/blocks/form/fields/name/transforms.js:14
 #: src/extensions/block-patterns/modal.js:141
 msgid "Name"
 msgstr ""
 
 #: includes/class-coblocks-form.php:262
-#: src/blocks/form/fields/name/index.js:39
 msgid "First"
 msgstr ""
 
 #: includes/class-coblocks-form.php:263
-#: src/blocks/form/fields/name/index.js:43
 msgid "Last"
 msgstr ""
 
 #: includes/class-coblocks-form.php:351
-#: src/blocks/form/fields/textarea/index.js:27
 #: src/blocks/form/fields/textarea/transforms.js:14
 msgid "Message"
 msgstr ""
@@ -164,8 +158,7 @@ msgstr ""
 #. translators: block name
 #. translators: block style
 #: includes/class-coblocks-form.php:382
-#: src/blocks/form/fields/text/index.js:27
-#: src/blocks/form/fields/text/index.js:40
+#: src/blocks/form/fields/text/index.js:23
 #: src/blocks/form/fields/text/transforms.js:14
 #: src/blocks/share/index.js:44
 #: src/blocks/social-profiles/index.js:56
@@ -174,22 +167,19 @@ msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:413
-#: src/blocks/form/fields/date/index.js:27
-#: src/blocks/form/fields/date/index.js:40
+#: src/blocks/form/fields/date/index.js:23
 #: src/blocks/form/fields/date/transforms.js:14
 msgid "Date"
 msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:444
-#: src/blocks/form/fields/phone/index.js:27
-#: src/blocks/form/fields/phone/index.js:40
+#: src/blocks/form/fields/phone/index.js:23
 #: src/blocks/form/fields/phone/transforms.js:14
 msgid "Phone"
 msgstr ""
 
 #: includes/class-coblocks-form.php:483
-#: src/blocks/form/fields/radio/index.js:27
 #: src/blocks/form/fields/radio/transforms.js:14
 msgid "Choose one"
 msgstr ""
@@ -197,8 +187,7 @@ msgstr ""
 #. translators: block name
 #: includes/class-coblocks-form.php:547
 #: includes/class-coblocks-form.php:596
-#: src/blocks/form/fields/select/index.js:27
-#: src/blocks/form/fields/select/index.js:44
+#: src/blocks/form/fields/select/index.js:23
 #: src/blocks/form/fields/select/transforms.js:14
 msgid "Select"
 msgstr ""
@@ -209,16 +198,14 @@ msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:678
-#: src/blocks/form/fields/website/index.js:27
-#: src/blocks/form/fields/website/index.js:40
+#: src/blocks/form/fields/website/index.js:23
 #: src/blocks/form/fields/website/transforms.js:14
 msgid "Website"
 msgstr ""
 
 #. translators: block name
 #: includes/class-coblocks-form.php:712
-#: src/blocks/form/fields/hidden/index.js:27
-#: src/blocks/form/fields/hidden/index.js:40
+#: src/blocks/form/fields/hidden/index.js:23
 #: src/blocks/form/fields/hidden/transforms.js:14
 msgid "Hidden"
 msgstr ""
@@ -226,13 +213,11 @@ msgstr ""
 #. translators: block name
 #: includes/class-coblocks-form.php:793
 #: src/blocks/form/edit.js:131
-#: src/blocks/form/fields/submit-button/index.js:26
-#: src/blocks/form/fields/submit-button/index.js:34
-#: src/blocks/form/fields/submit-button/index.js:79
+#: src/blocks/form/fields/submit-button/index.js:49
 msgid "Submit"
 msgstr ""
 
-#: includes/class-coblocks-form.php:1032
+#: includes/class-coblocks-form.php:1037
 #: src/blocks/form/edit.js:294
 msgid "name"
 msgstr ""
@@ -710,7 +695,7 @@ msgstr ""
 
 #. translators: block keyword
 #: src/blocks/buttons/index.js:35
-#: src/blocks/form/fields/website/index.js:47
+#: src/blocks/form/fields/website/index.js:30
 msgid "link"
 msgstr ""
 
@@ -1047,7 +1032,7 @@ msgstr ""
 #. translators: block keyword
 #. translators: icon keyword
 #: src/blocks/events/index.js:36
-#: src/blocks/form/fields/date/index.js:47
+#: src/blocks/form/fields/date/index.js:30
 #: src/blocks/icon/svgs-generated.js:934
 #: src/blocks/icon/svgs-generated.js:951
 msgid "calendar"
@@ -1819,23 +1804,22 @@ msgstr ""
 
 #. translators: block name
 #. translators: block style
-#: src/blocks/form/fields/checkbox/index.js:27
-#: src/blocks/form/fields/checkbox/index.js:48
+#: src/blocks/form/fields/checkbox/index.js:23
 #: src/blocks/form/fields/checkbox/transforms.js:14
 #: src/extensions/list-styles/index.js:25
 msgid "Checkbox"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/checkbox/index.js:50
+#: src/blocks/form/fields/checkbox/index.js:25
 msgid "A checkbox field with multiple options where multiple choices can be made."
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/form/fields/checkbox/index.js:55
-#: src/blocks/form/fields/radio/index.js:59
-#: src/blocks/form/fields/select/index.js:53
+#: src/blocks/form/fields/checkbox/index.js:30
+#: src/blocks/form/fields/radio/index.js:34
+#: src/blocks/form/fields/select/index.js:32
 #: src/blocks/icon/svgs-generated.js:1446
 msgid "option"
 msgstr ""
@@ -1849,13 +1833,13 @@ msgid "Remove Option"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/date/index.js:42
+#: src/blocks/form/fields/date/index.js:25
 msgid "A field for requesting date selections with a date picker."
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/form/fields/date/index.js:49
+#: src/blocks/form/fields/date/index.js:32
 #: src/blocks/icon/svgs-generated.js:348
 #: src/blocks/icon/svgs-generated.js:938
 #: src/blocks/icon/svgs-generated.js:955
@@ -1865,7 +1849,7 @@ msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/form/fields/date/index.js:51
+#: src/blocks/form/fields/date/index.js:34
 #: src/blocks/icon/svgs-generated.js:350
 #: src/blocks/icon/svgs-generated.js:940
 #: src/blocks/icon/svgs-generated.js:957
@@ -1874,23 +1858,23 @@ msgid "month"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/date/index.js:53
+#: src/blocks/form/fields/date/index.js:36
 msgid "year"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/email/index.js:41
+#: src/blocks/form/fields/email/index.js:24
 msgid "A field for collecting a validated email address."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/email/index.js:46
+#: src/blocks/form/fields/email/index.js:29
 msgid "e-mail"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/form/fields/email/index.js:48
+#: src/blocks/form/fields/email/index.js:31
 #: src/blocks/icon/deprecated/svgs.js:695
 #: src/blocks/icon/deprecated/svgs.js:713
 #: src/blocks/icon/deprecated/svgs.js:730
@@ -1949,14 +1933,14 @@ msgid "Field value"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/hidden/index.js:42
+#: src/blocks/form/fields/hidden/index.js:25
 msgid "A hidden text field for collecting additional data."
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/form/fields/hidden/index.js:47
-#: src/blocks/form/fields/text/index.js:51
+#: src/blocks/form/fields/hidden/index.js:30
+#: src/blocks/form/fields/text/index.js:34
 #: src/blocks/icon/svgs-generated.js:1455
 #: src/blocks/icon/svgs-generated.js:1464
 msgid "input"
@@ -1964,8 +1948,8 @@ msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/form/fields/hidden/index.js:49
-#: src/blocks/form/fields/textarea/index.js:47
+#: src/blocks/form/fields/hidden/index.js:32
+#: src/blocks/form/fields/textarea/index.js:30
 #: src/blocks/highlight/index.js:41
 #: src/blocks/icon/deprecated/svgs.js:500
 #: src/blocks/icon/deprecated/svgsfocusable.js:499
@@ -2012,82 +1996,82 @@ msgid "Toggle to add a last name field."
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/name/index.js:54
+#: src/blocks/form/fields/name/index.js:25
 msgid "A text field for collecting the first and last names."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/name/index.js:61
+#: src/blocks/form/fields/name/index.js:32
 msgid "first name"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/name/index.js:63
+#: src/blocks/form/fields/name/index.js:34
 msgid "last name"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/phone/index.js:42
-msgid "A phone number to allow visitors to give you a phone number."
+#: src/blocks/form/fields/phone/index.js:25
+msgid "A text field for collecting a phone number."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/phone/index.js:47
+#: src/blocks/form/fields/phone/index.js:30
 msgid "telephone"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/phone/index.js:49
+#: src/blocks/form/fields/phone/index.js:32
 msgid "cellular"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/phone/index.js:51
+#: src/blocks/form/fields/phone/index.js:34
 msgid "cell"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/form/fields/phone/index.js:53
+#: src/blocks/form/fields/phone/index.js:36
 #: src/blocks/icon/svgs-generated.js:1416
 msgid "mobile"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/phone/index.js:55
+#: src/blocks/form/fields/phone/index.js:38
 msgid "fax"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/form/fields/radio/index.js:48
+#: src/blocks/form/fields/radio/index.js:23
 msgid "Radio"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/radio/index.js:50
+#: src/blocks/form/fields/radio/index.js:25
 msgid "A field with multiple options where only one choice can be made."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/radio/index.js:55
+#: src/blocks/form/fields/radio/index.js:30
 msgid "choose"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/form/fields/radio/index.js:57
+#: src/blocks/form/fields/radio/index.js:32
 #: src/blocks/icon/svgs-generated.js:1433
 msgid "select"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/select/index.js:46
+#: src/blocks/form/fields/select/index.js:25
 msgid "A dropdown field with multiple options where only one choice can be made."
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/form/fields/select/index.js:51
+#: src/blocks/form/fields/select/index.js:30
 #: src/blocks/icon/svgs-generated.js:1444
 msgid "dropdown"
 msgstr ""
@@ -2104,33 +2088,33 @@ msgstr ""
 msgid "Button text color"
 msgstr ""
 
-#: src/blocks/form/fields/submit-button/index.js:52
+#: src/blocks/form/fields/submit-button/index.js:22
 msgid "A button for submitting form data."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/submit-button/index.js:59
+#: src/blocks/form/fields/submit-button/index.js:29
 msgid "submit"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/submit-button/index.js:61
+#: src/blocks/form/fields/submit-button/index.js:31
 #: src/blocks/hero/index.js:92
 msgid "button"
 msgstr ""
 
-#: src/blocks/form/fields/submit-button/index.js:66
+#: src/blocks/form/fields/submit-button/index.js:36
 msgid "Fill"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/form/fields/submit-button/index.js:67
+#: src/blocks/form/fields/submit-button/index.js:37
 #: src/extensions/media-text-styles/index.js:31
 msgid "Outline"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/form/fields/submit-button/index.js:68
+#: src/blocks/form/fields/submit-button/index.js:38
 #: src/blocks/share/index.js:54
 #: src/blocks/social-profiles/index.js:66
 #: src/extensions/button-styles/index.js:11
@@ -2138,13 +2122,13 @@ msgid "Circular"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/form/fields/submit-button/index.js:69
+#: src/blocks/form/fields/submit-button/index.js:39
 #: src/extensions/button-styles/index.js:18
 msgid "3D"
 msgstr ""
 
 #. translators: block style
-#: src/blocks/form/fields/submit-button/index.js:70
+#: src/blocks/form/fields/submit-button/index.js:40
 #: src/blocks/gallery-collage/inspector.js:93
 #: src/blocks/gallery-stacked/inspector.js:143
 #: src/extensions/button-styles/index.js:25
@@ -2152,83 +2136,83 @@ msgid "Shadow"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/text/index.js:42
+#: src/blocks/form/fields/text/index.js:25
 msgid "A text box for custom responses."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/text/index.js:47
+#: src/blocks/form/fields/text/index.js:30
 msgid "text control"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/form/fields/text/index.js:49
+#: src/blocks/form/fields/text/index.js:32
 #: src/blocks/icon/deprecated/svgsv1.js:1831
 #: src/blocks/icon/svgs-generated.js:1520
 msgid "text box"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/form/fields/textarea/index.js:40
+#: src/blocks/form/fields/textarea/index.js:23
 msgid "Textarea"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/textarea/index.js:42
+#: src/blocks/form/fields/textarea/index.js:25
 msgid "A text box for longer responses."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/textarea/index.js:49
+#: src/blocks/form/fields/textarea/index.js:32
 msgid "message text"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/textarea/index.js:51
+#: src/blocks/form/fields/textarea/index.js:34
 msgid "multiline text"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/fields/website/index.js:42
+#: src/blocks/form/fields/website/index.js:25
 msgid "A text field for collecting a URL."
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/website/index.js:49
+#: src/blocks/form/fields/website/index.js:32
 msgid "hyperlink"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/fields/website/index.js:51
+#: src/blocks/form/fields/website/index.js:34
 msgid "url"
 msgstr ""
 
 #. translators: block description
-#: src/blocks/form/index.js:51
+#: src/blocks/form/index.js:45
 msgid "Add a contact form to your page."
 msgstr ""
 
-#: src/blocks/form/index.js:55
+#: src/blocks/form/index.js:49
 msgid "Subject example"
 msgstr ""
 
 #. translators: block keyword
 #. translators: icon keyword
-#: src/blocks/form/index.js:64
+#: src/blocks/form/index.js:58
 #: src/blocks/icon/deprecated/svgs.js:796
 #: src/blocks/icon/deprecated/svgsfocusable.js:795
 msgid "about"
 msgstr ""
 
 #. translators: block keyword
-#: src/blocks/form/index.js:66
+#: src/blocks/form/index.js:60
 msgid "contact"
 msgstr ""
 
 #. translators: block name
 #. translators: icon label
-#: src/blocks/form/index.js:76
+#: src/blocks/form/index.js:70
 #: src/blocks/icon/svgs-generated.js:1496
 msgid "Form"
 msgstr ""
@@ -10125,9 +10109,64 @@ msgstr ""
 msgid "Galleries"
 msgstr ""
 
+#: src/blocks/accordion/accordion-item/block.json
+msgctxt "block title"
+msgid "Accordion Item"
+msgstr ""
+
+#: src/blocks/accordion/accordion-item/block.json
+msgctxt "block description"
+msgid "Add collapsable accordion items to accordions."
+msgstr ""
+
+#: src/blocks/accordion/block.json
+msgctxt "block title"
+msgid "Accordion"
+msgstr ""
+
+#: src/blocks/accordion/block.json
+msgctxt "block description"
+msgid "Organize content within collapsable accordion items."
+msgstr ""
+
+#: src/blocks/alert/block.json
+msgctxt "block title"
+msgid "Alert"
+msgstr ""
+
+#: src/blocks/alert/block.json
+msgctxt "block description"
+msgid "Provide contextual feedback messages or notices."
+msgstr ""
+
 #: src/blocks/author/block.json
 msgctxt "block title"
 msgid "Author"
+msgstr ""
+
+#: src/blocks/author/block.json
+msgctxt "block description"
+msgid "Add an author biography to build credibility and authority."
+msgstr ""
+
+#: src/blocks/buttons/block.json
+msgctxt "block title"
+msgid "Buttons (Deprecated)"
+msgstr ""
+
+#: src/blocks/buttons/block.json
+msgctxt "block description"
+msgid "This block is replaced by core Buttons block."
+msgstr ""
+
+#: src/blocks/click-to-tweet/block.json
+msgctxt "block title"
+msgid "Click to Tweet"
+msgstr ""
+
+#: src/blocks/click-to-tweet/block.json
+msgctxt "block description"
+msgid "Add a quote for readers to tweet via Twitter."
 msgstr ""
 
 #: src/blocks/counter/block.json
@@ -10150,6 +10189,246 @@ msgctxt "block keyword"
 msgid "stats"
 msgstr ""
 
+#: src/blocks/dynamic-separator/block.json
+msgctxt "block title"
+msgid "Dynamic HR"
+msgstr ""
+
+#: src/blocks/dynamic-separator/block.json
+msgctxt "block description"
+msgid "Add a resizable spacer between other blocks."
+msgstr ""
+
+#: src/blocks/events/block.json
+msgctxt "block title"
+msgid "Events"
+msgstr ""
+
+#: src/blocks/events/block.json
+msgctxt "block description"
+msgid "Add a list of events or display events from a public calendar."
+msgstr ""
+
+#: src/blocks/events/event-item/block.json
+msgctxt "block title"
+msgid "Event Item"
+msgstr ""
+
+#: src/blocks/events/event-item/block.json
+msgctxt "block description"
+msgid "An event within the events block."
+msgstr ""
+
+#: src/blocks/faq/block.json
+msgctxt "block title"
+msgid "FAQ"
+msgstr ""
+
+#: src/blocks/faq/block.json
+msgctxt "block description"
+msgid "Add a list of questions and answers."
+msgstr ""
+
+#: src/blocks/faq/faq-item/block.json
+msgctxt "block title"
+msgid "FAQ Item"
+msgstr ""
+
+#: src/blocks/faq/faq-item/block.json
+msgctxt "block description"
+msgid "A question/answer within the FAQ block."
+msgstr ""
+
+#: src/blocks/features/block.json
+msgctxt "block title"
+msgid "Features"
+msgstr ""
+
+#: src/blocks/features/block.json
+msgctxt "block description"
+msgid "Add up to four columns of small notes for your product or service."
+msgstr ""
+
+#: src/blocks/features/feature/block.json
+msgctxt "block title"
+msgid "Feature"
+msgstr ""
+
+#: src/blocks/features/feature/block.json
+msgctxt "block description"
+msgid "A singular child column within a parent features block."
+msgstr ""
+
+#: src/blocks/food-and-drinks/block.json
+msgctxt "block title"
+msgid "Food & Drink"
+msgstr ""
+
+#: src/blocks/food-and-drinks/block.json
+msgctxt "block description"
+msgid "Display a menu or price list."
+msgstr ""
+
+#: src/blocks/food-and-drinks/food-item/block.json
+msgctxt "block title"
+msgid "Food Item"
+msgstr ""
+
+#: src/blocks/food-and-drinks/food-item/block.json
+msgctxt "block description"
+msgid "A food and drink item within the Food & Drinks block."
+msgstr ""
+
+#: src/blocks/form/block.json
+msgctxt "block title"
+msgid "Form"
+msgstr ""
+
+#: src/blocks/form/block.json
+msgctxt "block description"
+msgid "Add a contact form to your page."
+msgstr ""
+
+#: src/blocks/form/fields/checkbox/block.json
+msgctxt "block title"
+msgid "Checkbox"
+msgstr ""
+
+#: src/blocks/form/fields/checkbox/block.json
+msgctxt "block description"
+msgid "A checkbox field with multiple options where multiple choices can be made."
+msgstr ""
+
+#: src/blocks/form/fields/date/block.json
+msgctxt "block title"
+msgid "Date"
+msgstr ""
+
+#: src/blocks/form/fields/date/block.json
+msgctxt "block description"
+msgid "A field for requesting date selections with a date picker."
+msgstr ""
+
+#: src/blocks/form/fields/email/block.json
+msgctxt "block title"
+msgid "Email"
+msgstr ""
+
+#: src/blocks/form/fields/email/block.json
+msgctxt "block description"
+msgid "A field for collecting a validated email address."
+msgstr ""
+
+#: src/blocks/form/fields/hidden/block.json
+msgctxt "block title"
+msgid "Hidden"
+msgstr ""
+
+#: src/blocks/form/fields/hidden/block.json
+msgctxt "block description"
+msgid "A hidden text field for collecting additional data."
+msgstr ""
+
+#: src/blocks/form/fields/name/block.json
+msgctxt "block title"
+msgid "Name"
+msgstr ""
+
+#: src/blocks/form/fields/name/block.json
+msgctxt "block description"
+msgid "A text field for collecting the first and last names."
+msgstr ""
+
+#: src/blocks/form/fields/phone/block.json
+msgctxt "block title"
+msgid "Phone"
+msgstr ""
+
+#: src/blocks/form/fields/phone/block.json
+msgctxt "block description"
+msgid "A text field for collecting a phone number."
+msgstr ""
+
+#: src/blocks/form/fields/radio/block.json
+msgctxt "block title"
+msgid "Radio"
+msgstr ""
+
+#: src/blocks/form/fields/radio/block.json
+msgctxt "block description"
+msgid "A field with multiple options where only one choice can be made."
+msgstr ""
+
+#: src/blocks/form/fields/select/block.json
+msgctxt "block title"
+msgid "Select"
+msgstr ""
+
+#: src/blocks/form/fields/select/block.json
+msgctxt "block description"
+msgid "A dropdown field with multiple options where only one choice can be made."
+msgstr ""
+
+#: src/blocks/form/fields/submit-button/block.json
+msgctxt "block title"
+msgid "Submit"
+msgstr ""
+
+#: src/blocks/form/fields/submit-button/block.json
+msgctxt "block description"
+msgid "A button for submitting form data."
+msgstr ""
+
+#: src/blocks/form/fields/text/block.json
+msgctxt "block title"
+msgid "Text"
+msgstr ""
+
+#: src/blocks/form/fields/text/block.json
+msgctxt "block description"
+msgid "A text box for custom responses."
+msgstr ""
+
+#: src/blocks/form/fields/textarea/block.json
+msgctxt "block title"
+msgid "Textarea"
+msgstr ""
+
+#: src/blocks/form/fields/textarea/block.json
+msgctxt "block description"
+msgid "A text box for longer responses."
+msgstr ""
+
+#: src/blocks/form/fields/website/block.json
+msgctxt "block title"
+msgid "Website"
+msgstr ""
+
+#: src/blocks/form/fields/website/block.json
+msgctxt "block description"
+msgid "A text field for collecting a URL."
+msgstr ""
+
+#: src/blocks/gallery-carousel/block.json
+msgctxt "block title"
+msgid "Carousel"
+msgstr ""
+
+#: src/blocks/gallery-carousel/block.json
+msgctxt "block description"
+msgid "Display multiple images in a beautiful carousel gallery."
+msgstr ""
+
+#: src/blocks/gallery-collage/block.json
+msgctxt "block title"
+msgid "Collage"
+msgstr ""
+
+#: src/blocks/gallery-collage/block.json
+msgctxt "block description"
+msgid "Assemble images into a beautiful collage gallery."
+msgstr ""
+
 #: src/blocks/gallery-masonry/block.json
 msgctxt "block title"
 msgid "Masonry Gallery"
@@ -10170,14 +10449,224 @@ msgctxt "block keyword"
 msgid "photos"
 msgstr ""
 
+#: src/blocks/gallery-offset/block.json
+msgctxt "block title"
+msgid "Offset"
+msgstr ""
+
+#: src/blocks/gallery-offset/block.json
+msgctxt "block description"
+msgid "Display images in an offset brick pattern gallery."
+msgstr ""
+
 #: src/blocks/gallery-stacked/block.json
 msgctxt "block title"
 msgid "Stacked"
 msgstr ""
 
+#: src/blocks/gallery-stacked/block.json
+msgctxt "block description"
+msgid "Display multiple images in a single column stacked gallery."
+msgstr ""
+
+#: src/blocks/gif/block.json
+msgctxt "block title"
+msgid "Gif"
+msgstr ""
+
+#: src/blocks/gif/block.json
+msgctxt "block description"
+msgid "Pick a gif, any gif."
+msgstr ""
+
+#: src/blocks/gist/block.json
+msgctxt "block title"
+msgid "Gist"
+msgstr ""
+
+#: src/blocks/gist/block.json
+msgctxt "block description"
+msgid "Embed a GitHub Gist."
+msgstr ""
+
+#: src/blocks/hero/block.json
+msgctxt "block title"
+msgid "Hero"
+msgstr ""
+
+#: src/blocks/hero/block.json
+msgctxt "block description"
+msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
+msgstr ""
+
 #: src/blocks/highlight/block.json
 msgctxt "block title"
 msgid "Highlight"
+msgstr ""
+
+#: src/blocks/highlight/block.json
+msgctxt "block description"
+msgid "Draw attention and emphasize important narrative."
+msgstr ""
+
+#: src/blocks/icon/block.json
+msgctxt "block title"
+msgid "Icon"
+msgstr ""
+
+#: src/blocks/icon/block.json
+msgctxt "block description"
+msgid "Add a stylized graphic symbol to communicate something more."
+msgstr ""
+
+#: src/blocks/logos/block.json
+msgctxt "block title"
+msgid "Logos"
+msgstr ""
+
+#: src/blocks/logos/block.json
+msgctxt "block description"
+msgid "Add logos, badges, or certifications to build credibility."
+msgstr ""
+
+#: src/blocks/map/block.json
+msgctxt "block title"
+msgid "Map"
+msgstr ""
+
+#: src/blocks/map/block.json
+msgctxt "block description"
+msgid "Add an address or location to drop a pin on a Google map."
+msgstr ""
+
+#: src/blocks/media-card/block.json
+msgctxt "block title"
+msgid "Media Card"
+msgstr ""
+
+#: src/blocks/media-card/block.json
+msgctxt "block description"
+msgid "Add an image or video with an offset card side-by-side."
+msgstr ""
+
+#: src/blocks/opentable/block.json
+msgctxt "block title"
+msgid "Opentable"
+msgstr ""
+
+#: src/blocks/opentable/block.json
+msgctxt "block description"
+msgid "Embed an OpenTable Reservations Widget."
+msgstr ""
+
+#: src/blocks/post-carousel/block.json
+msgctxt "block title"
+msgid "Post Carousel (CoBlocks)"
+msgstr ""
+
+#: src/blocks/post-carousel/block.json
+msgctxt "block description"
+msgid "Display posts or an external blog feed as a carousel."
+msgstr ""
+
+#: src/blocks/posts/block.json
+msgctxt "block title"
+msgid "Posts"
+msgstr ""
+
+#: src/blocks/posts/block.json
+msgctxt "block description"
+msgid "Display posts or an RSS feed as stacked or horizontal cards."
+msgstr ""
+
+#: src/blocks/pricing-table/block.json
+msgctxt "block title"
+msgid "Pricing Table"
+msgstr ""
+
+#: src/blocks/pricing-table/block.json
+msgctxt "block description"
+msgid "Add pricing tables to help visitors compare products and plans."
+msgstr ""
+
+#: src/blocks/pricing-table/pricing-table-item/block.json
+msgctxt "block title"
+msgid "Pricing Table Item"
+msgstr ""
+
+#: src/blocks/pricing-table/pricing-table-item/block.json
+msgctxt "block description"
+msgid "A pricing table to help visitors compare products and plans."
+msgstr ""
+
+#: src/blocks/row/block.json
+msgctxt "block title"
+msgid "Row"
+msgstr ""
+
+#: src/blocks/row/block.json
+msgctxt "block description"
+msgid "Add a structured wrapper for column blocks, then add content blocks you’d like to the columns."
+msgstr ""
+
+#: src/blocks/row/column/block.json
+msgctxt "block title"
+msgid "Column"
+msgstr ""
+
+#: src/blocks/row/column/block.json
+msgctxt "block description"
+msgid "An immediate child of a row."
+msgstr ""
+
+#: src/blocks/services/block.json
+msgctxt "block title"
+msgid "Services"
+msgstr ""
+
+#: src/blocks/services/block.json
+msgctxt "block description"
+msgid "Add up to four columns of services to display."
+msgstr ""
+
+#: src/blocks/services/service/block.json
+msgctxt "block title"
+msgid "Service"
+msgstr ""
+
+#: src/blocks/services/service/block.json
+msgctxt "block description"
+msgid "A single service item within a services block."
+msgstr ""
+
+#: src/blocks/shape-divider/block.json
+msgctxt "block title"
+msgid "Shape Divider"
+msgstr ""
+
+#: src/blocks/shape-divider/block.json
+msgctxt "block description"
+msgid "Add a shape divider to visually distinquish page sections."
+msgstr ""
+
+#: src/blocks/share/block.json
+msgctxt "block title"
+msgid "Share"
+msgstr ""
+
+#: src/blocks/share/block.json
+msgctxt "block description"
+msgid "Add social sharing links to help you get likes and shares."
+msgstr ""
+
+#: src/blocks/social-profiles/block.json
+msgctxt "block title"
+msgid "Social Profiles"
+msgstr ""
+
+#: src/blocks/social-profiles/block.json
+msgctxt "block description"
+msgid "Grow your audience with links to social media profiles."
 msgstr ""
 
 #: src/blocks/testimonials/block.json

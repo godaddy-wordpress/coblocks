@@ -34,5 +34,9 @@
 				}
 			}
 		}
-	}
+	},
+	"title": "Logos",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-5",
+	"description": "Add logos, badges, or certifications to build credibility."
 }
