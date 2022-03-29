@@ -136,13 +136,13 @@ class CoBlocks_Block_Assets {
 			$asset_file['version']
 		);
 
-		$name       = 'style-coblocks-styles';
+		$name       = 'style-coblocks-extensions';
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
 		$rtl        = ! is_rtl() ? '' : '-rtl';
 
 		wp_enqueue_style(
-			'coblocks-styles',
+			'coblocks-extensions',
 			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
 			array(),
 			$asset_file['version']
@@ -177,30 +177,6 @@ class CoBlocks_Block_Assets {
 
 		wp_enqueue_script(
 			'coblocks-editor',
-			COBLOCKS_PLUGIN_URL . $filepath . '.js',
-			array_merge( $asset_file['dependencies'], array( 'wp-api' ) ),
-			$asset_file['version'],
-			true
-		);
-
-		$name       = 'coblocks-variations';
-		$filepath   = 'dist/' . $name;
-		$asset_file = $this->get_asset_file( $filepath );
-
-		wp_enqueue_script(
-			'coblocks-variations',
-			COBLOCKS_PLUGIN_URL . $filepath . '.js',
-			array_merge( $asset_file['dependencies'], array( 'wp-api' ) ),
-			$asset_file['version'],
-			true
-		);
-
-		$name       = 'coblocks-styles';
-		$filepath   = 'dist/' . $name;
-		$asset_file = $this->get_asset_file( $filepath );
-
-		wp_enqueue_script(
-			'coblocks-styles',
 			COBLOCKS_PLUGIN_URL . $filepath . '.js',
 			array_merge( $asset_file['dependencies'], array( 'wp-api' ) ),
 			$asset_file['version'],
