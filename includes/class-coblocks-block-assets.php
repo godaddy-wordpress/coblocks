@@ -522,7 +522,7 @@ class CoBlocks_Block_Assets {
 			return false;
 		}
 
-		$admin_page = isset( $_SERVER['REQUEST_URI'] ) ? wp_basename( esc_url( filter_var( wp_unslash( $_SERVER['REQUEST_URI'] ), FILTER_SANITIZE_URL ) ) ) : false;
+		$admin_page = isset( $_SERVER['REQUEST_URI'] ) ? wp_basename( esc_url_raw( filter_var( wp_unslash( $_SERVER['REQUEST_URI'] ), FILTER_SANITIZE_URL ) ) ) : false;
 
 		if ( ! $admin_page ) {
 			return false;

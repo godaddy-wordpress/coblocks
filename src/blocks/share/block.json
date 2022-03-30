@@ -82,5 +82,9 @@
 			"type": "boolean",
 			"default": false
 		}
-	}
+	},
+	"title": "Share",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-10",
+	"description": "Add social sharing links to help you get likes and shares."
 }

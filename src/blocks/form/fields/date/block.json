@@ -1,0 +1,21 @@
+{
+	"name": "coblocks/field-date",
+	"category": "layout",
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "Date"
+		},
+		"required": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"title": "Date",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-3",
+	"description": "A field for requesting date selections with a date picker.",
+	"parent": [
+		"coblocks/form"
+	]
+}

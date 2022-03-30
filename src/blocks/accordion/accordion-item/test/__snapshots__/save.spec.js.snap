@@ -14,13 +14,13 @@ exports[`coblocks/accordion-item should render with border color 1`] = `
 
 exports[`coblocks/accordion-item should render with content 1`] = `
 "<!-- wp:coblocks/accordion-item {\\"title\\":\\"Accordion title\\"} -->
-<div class=\\"wp-block-coblocks-accordion-item\\"><details><summary class=\\"wp-block-coblocks-accordion-item__title\\">Accordion title</summary><div class=\\"wp-block-coblocks-accordion-item__content\\" tabindex=\\"0\\"></div></details></div>
+<div class=\\"wp-block-coblocks-accordion-item\\"><details><summary class=\\"wp-block-coblocks-accordion-item__title\\">Accordion title</summary><div class=\\"wp-block-coblocks-accordion-item__content\\"></div></details></div>
 <!-- /wp:coblocks/accordion-item -->"
 `;
 
 exports[`coblocks/accordion-item should render with custom background color 1`] = `
 "<!-- wp:coblocks/accordion-item {\\"title\\":\\"Accordion Item title\\",\\"customBackgroundColor\\":\\"#111111\\"} -->
-<div class=\\"wp-block-coblocks-accordion-item\\"><details><summary class=\\"wp-block-coblocks-accordion-item__title has-background\\" style=\\"background-color:#111111\\">Accordion Item title</summary><div class=\\"wp-block-coblocks-accordion-item__content\\" style=\\"border-color:#111111\\" tabindex=\\"0\\"></div></details></div>
+<div class=\\"wp-block-coblocks-accordion-item\\"><details><summary class=\\"wp-block-coblocks-accordion-item__title has-background\\" style=\\"background-color:#111111\\">Accordion Item title</summary><div class=\\"wp-block-coblocks-accordion-item__content\\" style=\\"border-color:#111111\\"></div></details></div>
 <!-- /wp:coblocks/accordion-item -->"
 `;
 

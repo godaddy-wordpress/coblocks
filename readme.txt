@@ -1,11 +1,11 @@
 === Page Builder Gutenberg Blocks – CoBlocks ===
 Author URI: https://www.godaddy.com
-Contributors: godaddy, richtabor, eherman24, jonathanbardo, jrtashjian, paranoia1906, fjarrett
+Contributors: godaddy, richtabor, eherman24, jonathanbardo, jrtashjian, paranoia1906, fjarrett, olivierlafleur, jasonlemay, snovosel
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.5
 Tested up to: 5.9
 Requires PHP: 5.6
-Stable tag: 2.22.4
+Stable tag: 2.22.9
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,9 @@ The vision for CoBlocks is to create a suite of Gutenberg blocks to help folks m
 ## Built With Developers in Mind
 Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're interested to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks on GitHub](https://github.com/godaddy-wordpress/coblocks) and join the party. 🎉
 
+## Register Custom Block Patterns
+Create your own Block Pattern (Appearance > Block Patterns). Seelect the top-most block, Block Toolbar Options, Add Design Pattern to register your Block Pattern and specify which category to assign it to. 
+
 
 == Screenshots ==
 
@@ -105,12 +108,42 @@ To get the full experience of the next-generation WordPress block editor, it hel
 = How do I use my first CoBlocks Gutenberg blocks? =
 CoBlocks adds its Gutenberg blocks to the new WordPress editor, so you can use them exactly how you would any other WordPress blocks. Once the plugin is installed, create or edit a WordPress page or post, add a new block using the plus icon, and you'll find all of CoBlocks' WordPress blocks available.
 
+= How do I create a custom Block Pattern? =
+CoBlocks enables you to create your own Block Patterns. 
+1. Select all blocks that belong together for your pattern
+2. Under the kebab (3 dots) menu, select Add Design Pattern
+3. Name your block and select a category
+4. Save Pattern
+
 = What WordPress themes work with CoBlocks? =
 Any properly developed WordPress theme will work with CoBlocks, though if you're looking for an exceptional free theme, check out [Go](https://wordpress.org/themes/go/).
 
 Developers can also apply minor style touch-ups to their themes if necessary. If you're a developer and you need help, don't hesitate to [reach out](https://wordpress.org/support/plugin/coblocks/).
 
 == Changelog ==
+
+= 2.22.9 / 2022-03-28 =
+##### Bug fixes
+* Fix block list on WordPress.org plugin page for CoBlocks [#2341](https://github.com/godaddy-wordpress/coblocks/pull/2341)
+
+= 2.22.8 / 2022-03-23 =
+##### Misc
+* Implement editorScript property in block.json for proper registration [#2337](https://github.com/godaddy-wordpress/coblocks/pull/2337)
+
+= 2.22.7 / 2022-03-18 =
+##### Bug fixes
+* Fix superfluous focus issue with Accordion block [#2310](https://github.com/godaddy-wordpress/coblocks/pull/2310)
+
+##### Misc
+* Translate titles when registering blocks [#2332](https://github.com/godaddy-wordpress/coblocks/pull/2332)
+
+= 2.22.6 / 2022-03-17 =
+##### Bug fixes
+* Resolve style bleed issue with Offset gallery [#2331](https://github.com/godaddy-wordpress/coblocks/pull/2331)
+
+= 2.22.5 / 2022-03-17 =
+##### Bug fixes
+* Sanitize email in Form block and properly escape URI [#2330](https://github.com/godaddy-wordpress/coblocks/pull/2330)
 
 = 2.22.4 / 2022-03-15 =
 ##### Bug fixes
