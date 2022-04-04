@@ -120,6 +120,9 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/ical-parser/class-coblocks-event.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/ical-parser/class-coblocks-ical.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-site-design.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-site-content.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-rest-api.php';
 
 			// Require CoBlocks custom filters.
 			require_once COBLOCKS_PLUGIN_DIR . 'src/components/gutter-control/gutter-wrapper.php';

@@ -15,6 +15,8 @@ import './extensions/image-styles';
 import './extensions/layout-selector';
 import './extensions/list-styles';
 import './extensions/media-text-styles';
+import './extensions/site-content';
+import './extensions/site-design';
 
 // Formats
 import './formats';

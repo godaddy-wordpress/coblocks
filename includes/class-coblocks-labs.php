@@ -2,10 +2,7 @@
 /**
  * Register CoBlocks Labs
  *
- * @package   @@pkg.title
- * @author    @@pkg.author
- * @link      @@pkg.author_uri
- * @license   @@pkg.license
+ * @package CoBlocks
  */
 
 // Exit if accessed directly.
@@ -43,6 +40,7 @@ class CoBlocks_Labs {
 	 * The Constructor.
 	 */
 	public function __construct() {
+
 		add_action( 'init', array( $this, 'is_go_theme_active' ) );
 		add_action( 'init', array( $this, 'is_go_theme_installed' ) );
 		add_action( 'init', array( $this, 'get_themes_php_uri' ) );
@@ -115,7 +113,6 @@ class CoBlocks_Labs {
 	public function get_site_export_status() {
 		return get_option( 'wpnux_export_data' ) === false ? false : true;
 	}
-
 
 }
 
