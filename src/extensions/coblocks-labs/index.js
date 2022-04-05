@@ -41,11 +41,7 @@ export function CoBlocksLabs() {
 					shouldCloseOnClickOutside={ false }
 					title={ __( 'CoBlocks Labs', 'coblocks' ) }
 				>
-					<section className="edit-post-preferences-modal__section">
-						<h2 className="edit-post-preferences-modal__section-title">
-							{ __( 'General', 'coblocks' ) }
-						</h2>
-
+					<section className="coblocks-labs-modal-controls">
 						<CoBlocksLabsModalControl.Slot>
 							{
 								/**

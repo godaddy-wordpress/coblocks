@@ -24,7 +24,8 @@ import { LayoutSelectorResults } from './layout-selector-results';
 import useCategories from './hooks/useCategories';
 import useComputedLayouts from './hooks/useComputedLayouts';
 import CoBlocksLayoutSelectorFill, { Slot } from './layout-selector-slot';
-import './settings-modal-control';
+import './settings-modal-control'; // CoBlocks Settings
+import './layout-selector-control'; // CoBlocks Labs
 import './store';
 
 const SidebarItem = ( { slug, title, isSelected, onClick } ) => {

@@ -24,6 +24,7 @@ import useFonts from './hooks/useFonts';
 import useFontSize from './hooks/useFontSize';
 import useTypeRatio from './hooks/useTypeRatio';
 import './data/store';
+import './site-design-control';
 
 import { PLUGIN_NAME, SIDEBAR_NAME } from './constant';
 
