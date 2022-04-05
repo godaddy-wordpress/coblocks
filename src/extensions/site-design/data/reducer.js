@@ -26,7 +26,7 @@ import {
 } from './action-types';
 
 const getDefaultState = () => {
-	if ( typeof coblocksBlockData?.siteDesign === 'undefined' ) {
+	if ( typeof coblocksBlockData === 'undefined' ) {
 		return {};
 	}
 

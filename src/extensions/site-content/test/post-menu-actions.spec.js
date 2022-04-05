@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 
-import PostMenuActions from './post-menu-actions';
+import PostMenuActions from '../post-menu-actions';
 
 const defaultProps = {
 	postType: 'page',

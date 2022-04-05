@@ -1,10 +1,10 @@
 import { shallow } from 'enzyme';
 
-import './data/store';
-import { SiteDesignControls } from './index';
-import DesignPreviews from './design-preview';
-import ColorPalettePreviews from './color-palette-preview';
-import FontPreviews from './font-preview';
+import '../data/store';
+import { SiteDesignControls } from '../index';
+import DesignPreviews from '../design-preview';
+import ColorPalettePreviews from '../color-palette-preview';
+import FontPreviews from '../font-preview';
 
 const setup = ( props = {} ) => {
 	return shallow( <SiteDesignControls { ...props } /> );

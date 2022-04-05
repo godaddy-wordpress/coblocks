@@ -1,9 +1,9 @@
 import { mount } from 'enzyme';
 import { select } from '@wordpress/data';
 
-import './data/store';
-import STORE_KEY from './data/constants';
-import DesignPreviews from './design-preview';
+import '../data/store';
+import STORE_KEY from '../data/constants';
+import DesignPreviews from '../design-preview';
 
 // Setup API globals.
 global.ajaxurl = '';

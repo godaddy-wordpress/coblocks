@@ -1,4 +1,4 @@
-import { actions, reducer, selectors } from './store';
+import { actions, reducer, selectors } from '../store';
 
 describe( '#action', () => {
 	it( 'should return SET_RENAME_MODE action', () => {

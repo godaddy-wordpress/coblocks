@@ -21,7 +21,7 @@ import { CoBlocksMenuIcon } from '../../components/common';
 import PostTypePanel from './post-type-panel';
 import { PLUGIN_NAME, SIDEBAR_NAME } from './constant';
 
-const CoBlocksSiteContent = ( props ) => {
+export const CoBlocksSiteContent = ( props ) => {
 	useEffect( () => {
 		const { currentPageMeta, editPost } = props;
 

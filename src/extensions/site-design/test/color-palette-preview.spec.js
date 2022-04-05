@@ -26,12 +26,12 @@ const stylesElement = global.document.createElement( 'style' );
 stylesElement.setAttribute( 'class', 'editor-styles-wrapper' );
 document.getElementsByTagName( 'head' )[ 0 ].appendChild( stylesElement );
 
-import './data/store';
-import STORE_KEY from './data/constants';
+import '../data/store';
+import STORE_KEY from '../data/constants';
 import {
 	ColorPalettePreviews,
 	getColorValue,
-} from './color-palette-preview';
+} from '../color-palette-preview';
 
 describe( 'color-palette-preview', () => {
 	describe( 'ColorPalettePreviews', () => {

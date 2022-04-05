@@ -1,6 +1,6 @@
 import {
 	hexToRGB,
-} from '../../../.dev/tests/cypress/helpers.js';
+} from '../../../../.dev/tests/cypress/helpers.js';
 
 describe( 'Test CoBlocks Site Design Component', () => {
 	let dataDesignStyles;

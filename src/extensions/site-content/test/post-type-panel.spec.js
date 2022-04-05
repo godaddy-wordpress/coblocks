@@ -1,8 +1,8 @@
 import { shallow } from 'enzyme';
 import apiFetch from '@wordpress/api-fetch';
-import { PostTypePanel } from './post-type-panel';
-import PostMenuActions from './post-menu-actions';
-import { propsMockData, propsPostTypeMockData } from './tests/mock-data';
+import { PostTypePanel } from '../post-type-panel';
+import PostMenuActions from '../post-menu-actions';
+import { propsMockData, propsPostTypeMockData } from './mock-data';
 
 const defaultProps = {
 	...propsMockData, // postType, currentPostId, entities, postTypes

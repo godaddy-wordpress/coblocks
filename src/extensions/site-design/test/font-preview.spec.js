@@ -22,12 +22,12 @@ const stylesElement = global.document.createElement( 'style' );
 stylesElement.setAttribute( 'class', 'editor-styles-wrapper' );
 document.getElementsByTagName( 'head' )[ 0 ].appendChild( stylesElement );
 
-import './data/store';
-import STORE_KEY from './data/constants';
+import '../data/store';
+import STORE_KEY from '../data/constants';
 import {
 	FontPreviews,
 	FontPreview,
-} from './font-preview';
+} from '../font-preview';
 
 describe( 'font-preview', () => {
 	describe( 'FontPreviews', () => {
