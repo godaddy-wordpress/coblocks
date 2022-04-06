@@ -62,10 +62,5 @@ registerPlugin( PLUGIN_NAME, {
 			};
 		} ),
 
-		withDispatch( ( dispatch ) => {
-			const {	editPost } = dispatch( 'core/editor' );
-			return { editPost };
-		} ),
-
 	] )( CoBlocksSiteContent ),
 } );
