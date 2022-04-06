@@ -2,7 +2,6 @@
  * External dependencies
  */
 import { ContentIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-import { sortBy } from 'lodash';
 
 /**
  * WordPress dependencies
