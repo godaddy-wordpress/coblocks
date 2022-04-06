@@ -25,7 +25,6 @@ import { withDispatch, withSelect } from '@wordpress/data';
  */
 import * as ICONS from './icons';
 import PostMenuActions from './post-menu-actions';
-import './store';
 
 export class PostTypePanel extends Component {
 	constructor() {
