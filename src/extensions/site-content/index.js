@@ -20,16 +20,6 @@ import { CoBlocksMenuIcon } from '../../components/common';
 import { PLUGIN_NAME, SIDEBAR_NAME } from './constant';
 
 export const CoBlocksSiteContent = ( props ) => {
-	useEffect( () => {
-		const { currentPageMeta, editPost } = props;
-	}, [] );
-
-	const loadPostIntoEditor = ( postType, postId ) => {
-		window.location.href = `/wp-admin/post.php?post=${ postId }&action=edit`;
-	};
-
-	const { postTypes } = props;
-
 	return null;
 };
 
