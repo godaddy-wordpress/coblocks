@@ -24,7 +24,6 @@ import { withDispatch, withSelect } from '@wordpress/data';
  * Local dependencies
  */
 import * as ICONS from './icons';
-import PostMenuActions from './post-menu-actions';
 
 export class PostTypePanel extends Component {
 	constructor() {
@@ -342,17 +341,6 @@ export class PostTypePanel extends Component {
 						</span>
 					</>
 				</Button>
-
-				<PostMenuActions
-					isSticky={ post.sticky }
-					onDeletePost={ () => this.onDelete( post ) }
-					onDuplicatePost={ () => this.onDuplicate( post ) }
-					onPinPost={ () => this.onPin( post ) }
-					onRenamePost={ () => this.onActivateRename( post, index ) }
-					onSetAsHomePost={ () => this.onSetAsHome( post ) }
-					postType={ post.type }
-					shouldDiplayPinAction={ post.type === 'post' && post.status === 'publish' }
-					shouldDisplayHomepageAction={ homepageType === 'page' && post.type === 'page' && post.status === 'publish' && post.id !== homepageId } />
 
 				{ isRenaming && (
 					<div className="content-management__panel__rename-actions">
