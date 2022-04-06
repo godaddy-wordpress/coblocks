@@ -41,26 +41,5 @@ registerPlugin( PLUGIN_NAME, {
 	icon,
 	render: compose( [
 
-		withSelect( ( select ) => {
-			const {
-				getCurrentPostId,
-				getEditedPostAttribute,
-			} = select( 'core/editor' );
-
-			const { getPostTypes } = select( 'core' );
-
-			const thePostTypes = ( getPostTypes() || [] )
-				.filter( ( postType ) =>
-					postType.viewable === true &&
-					[ 'post', 'page' ].includes( postType.slug )
-				);
-
-			return {
-				currentPageMeta: getEditedPostAttribute( 'meta' ),
-				currentPostId: getCurrentPostId(),
-				postTypes: sortBy( thePostTypes, [ 'name' ] ),
-			};
-		} ),
-
 	] )( CoBlocksSiteContent ),
 } );
