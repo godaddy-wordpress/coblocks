@@ -18,7 +18,6 @@ import { useEffect } from '@wordpress/element';
  */
 import { CoBlocksMenuIcon } from '../../components/common';
 import { PLUGIN_NAME, SIDEBAR_NAME } from './constant';
-import './site-content-control';
 
 export const CoBlocksSiteContent = ( props ) => {
 	useEffect( () => {
