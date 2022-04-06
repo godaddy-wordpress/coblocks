@@ -25,17 +25,6 @@ import './site-content-control';
 export const CoBlocksSiteContent = ( props ) => {
 	useEffect( () => {
 		const { currentPageMeta, editPost } = props;
-
-		if ( currentPageMeta && currentPageMeta.hide_page_title === 'enabled' ) {
-			wp.domReady( () => {
-				const titleNode = document.getElementsByClassName( 'edit-post-visual-editor__post-title-wrapper' )[ 0 ];
-
-				if ( titleNode ) {
-					document.getElementsByClassName( 'edit-post-visual-editor__post-title-wrapper' )[ 0 ].style.display = 'none';
-					editPost( { meta: { hide_page_title: 'enabled' } } );
-				}
-			} );
-		}
 	}, [] );
 
 	const loadPostIntoEditor = ( postType, postId ) => {
