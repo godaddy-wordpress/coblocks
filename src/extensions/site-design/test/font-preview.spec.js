@@ -1,12 +1,12 @@
 import { mount } from 'enzyme';
 
 import {
-	registerStore,
+	register,
 	select,
 } from '@wordpress/data';
 
 // Mock `core/block-editor` store.
-registerStore( 'core/block-editor', {
+register( 'core/block-editor', {
 	reducer: ( state = {}, action ) => ( 'UPDATE_ACTIONS' === action.type ) && { ...state },
 	actions: {
 		updateSettings: () => ( { type: 'UPDATE_SETTINGS' } ),

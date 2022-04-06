@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { registerStore } from '@wordpress/data';
+import { register } from '@wordpress/data';
 
 const DEFAULT_STATE = {
 	isInRenameMode: null,
@@ -34,7 +34,7 @@ export const selectors = {
 	isInRenameMode: ( state ) => state.isInRenameMode,
 };
 
-const store = registerStore( 'coblocks/site-content', {
+const store = register( 'coblocks/site-content', {
 	reducer,
 	actions,
 	selectors,

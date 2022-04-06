@@ -8,7 +8,7 @@ import { kebabCase } from 'lodash';
  * WordPress dependencies
  */
 import memoize from 'memize';
-import { registerStore } from '@wordpress/data';
+import { register } from '@wordpress/data';
 import { controls, select } from '@wordpress/data-controls';
 
 const DEFAULT_STATE = {
@@ -55,7 +55,7 @@ const actions = {
 	incrementLayoutUsage: ( layout ) => ( { type: 'INCREMENT_LAYOUT_USAGE', layout, time: Date.now() } ),
 };
 
-const store = registerStore( 'coblocks/template-selector', {
+const store = register( 'coblocks/template-selector', {
 	reducer( state = DEFAULT_STATE, action ) {
 		switch ( action.type ) {
 			case 'OPEN_TEMPLATE_SELECTOR':

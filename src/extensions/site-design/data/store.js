@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 import { controls } from '@wordpress/data-controls';
-import { registerStore } from '@wordpress/data';
+import { register } from '@wordpress/data';
 
 /**
  * Internal dependencies
@@ -13,7 +13,7 @@ import * as actions from './actions';
 import * as selectors from './selectors';
 import * as resolvers from './resolvers';
 
-registerStore(
+register(
 	STORE_KEY,
 	{
 		reducer,
