@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-03-31T15:09:23+00:00\n"
+"POT-Creation-Date: 2022-04-01T20:08:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: coblocks\n"
@@ -10551,7 +10551,7 @@ msgstr ""
 
 #: src/blocks/opentable/block.json
 msgctxt "block title"
-msgid "Opentable"
+msgid "OpenTable"
 msgstr ""
 
 #: src/blocks/opentable/block.json
