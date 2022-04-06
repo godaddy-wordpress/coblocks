@@ -39,7 +39,5 @@ export const CoBlocksSiteContent = ( props ) => {
 /* istanbul ignore next */
 registerPlugin( PLUGIN_NAME, {
 	icon,
-	render: compose( [
-
-	] )( CoBlocksSiteContent ),
+	render: null,
 } );
