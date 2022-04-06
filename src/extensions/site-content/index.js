@@ -11,7 +11,6 @@ import { __ } from '@wordpress/i18n';
 import { ComplementaryArea } from '@wordpress/interface';
 import { compose } from '@wordpress/compose';
 import { registerPlugin } from '@wordpress/plugins';
-import { useEffect } from '@wordpress/element';
 
 /**
  * Local dependencies
