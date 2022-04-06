@@ -17,7 +17,6 @@ import './extensions/media-text-styles';
 
 // The following three imports are intentionally ordered for CoBlocks Labs controls.
 import './extensions/site-content';
-import './extensions/site-design';
 import './extensions/layout-selector';
 
 // Formats
