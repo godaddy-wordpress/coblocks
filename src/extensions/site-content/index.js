@@ -12,7 +12,6 @@ import { ComplementaryArea } from '@wordpress/interface';
 import { compose } from '@wordpress/compose';
 import { registerPlugin } from '@wordpress/plugins';
 import { useEffect } from '@wordpress/element';
-import { withDispatch, withSelect } from '@wordpress/data';
 
 /**
  * Local dependencies
