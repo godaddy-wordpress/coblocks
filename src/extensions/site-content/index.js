@@ -44,31 +44,7 @@ export const CoBlocksSiteContent = ( props ) => {
 
 	const { postTypes } = props;
 
-	return (
-		<>
-			<ComplementaryArea
-				className="content-management"
-				icon={
-					<CoBlocksMenuIcon
-						icon={ icon }
-						label={ __( 'Site', 'coblocks' ) }
-						slug="site-content" />
-				}
-				identifier={ `${ PLUGIN_NAME }/${ SIDEBAR_NAME }` }
-				scope="core/edit-post"
-				smallScreenTitle={ __( 'Site contents', 'coblocks' ) }
-				title={ __( 'Site contents', 'coblocks' ) }>
-
-				{ postTypes.map( ( postType ) => (
-					<PostTypePanel
-						data-test="post-type-panel"
-						key={ postType.slug }
-						loadPostIntoEditor={ loadPostIntoEditor }
-						postType={ postType } />
-				) ) }
-			</ComplementaryArea>
-		</>
-	);
+	return null;
 };
 
 /* istanbul ignore next */
