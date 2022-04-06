@@ -7,7 +7,6 @@ import { ContentIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { ComplementaryArea } from '@wordpress/interface';
 import { compose } from '@wordpress/compose';
 import { registerPlugin } from '@wordpress/plugins';
 
