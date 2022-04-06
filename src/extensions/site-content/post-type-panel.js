@@ -63,9 +63,9 @@ export class PostTypePanel extends Component {
 						{
 							label: __( 'Undo', 'coblocks' ),
 							onClick: () => this.onUnDelete( post ),
+							type: 'snackbar',
 						},
 					],
-					type: 'snackbar',
 				}
 			);
 		} ).catch( () => {
