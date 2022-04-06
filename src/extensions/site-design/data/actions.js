@@ -1,4 +1,4 @@
-/* global coblocksBlockData */
+/* global coblocksBlockData, siteDesign */
 
 /**
  * External dependencies
@@ -55,7 +55,7 @@ export function* updateDesign( {
 		fonts = cloneDeep( fonts );
 		// Compatible format is Php "uniquename" => [ weight1, weight2 ]
 		// This is to make sure that if a user uses the same typo twice we keep having unique keys assoc array in Php
-		if ( coblocksBlockData.siteDesign.isAdvancedFontsEnabled ) {
+		if ( siteDesign.isAdvancedFontsEnabled ) {
 			fonts[ 0 ][ 0 ] = `${ fonts[ 0 ][ 0 ] }_heading`;
 			fonts[ 1 ][ 0 ] = `${ fonts[ 1 ][ 0 ] }_body`;
 		}
@@ -91,7 +91,7 @@ export function* updateDesign( {
 		apiData = yield apiFetch( {
 			body,
 			method: 'POST',
-			path: `${ coblocksBlockData.baseApiUrl }/${ coblocksBlockData.siteDesign.apiRoute }`,
+			path: `${ coblocksBlockData.baseApiUrl }/${ siteDesign.apiRoute }`,
 		} );
 	} catch ( e ) {
 		// @TODO display a fetch problem to the user.

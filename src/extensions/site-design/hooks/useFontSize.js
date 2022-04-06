@@ -1,5 +1,4 @@
-/* global coblocksBlockData */
-
+/* global siteDesign */
 import STORE_KEY from '../data/constants';
 import { useEffect } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
@@ -17,7 +16,7 @@ function useFontSize() {
 		if ( ! baseFontSize ) {
 			return;
 		}
-		document.getElementsByClassName( coblocksBlockData.siteDesign.editorClass )[ 0 ].style.setProperty( '--go--font-size', `${ baseFontSize }rem` );
+		document.getElementsByClassName( siteDesign.editorClass )[ 0 ].style.setProperty( '--go--font-size', `${ baseFontSize }rem` );
 	}, [ baseFontSize ] );
 
 	return [ baseFontSize, designFontSize ];

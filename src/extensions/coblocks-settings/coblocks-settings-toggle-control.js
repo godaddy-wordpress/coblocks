@@ -9,15 +9,16 @@ import { useEntityProp } from '@wordpress/core-data';
  */
 import CoBlocksSettingsModalControl from './coblocks-settings-slot';
 
-function CoBlocksSettingsToggleControl( { label, help, settingsKey } ) {
+function CoBlocksSettingsToggleControl( { label, help, settingsKey, shouldDisable = false } ) {
 	const [ setting, saveSetting ] = useEntityProp( 'root', 'site', settingsKey );
 
 	return (
 		<CoBlocksSettingsModalControl>
 			<CheckboxControl
-				label={ label }
-				help={ help }
 				checked={ !! setting }
+				disabled={ shouldDisable ? true : false }
+				help={ help }
+				label={ label }
 				onChange={ saveSetting }
 			/>
 		</CoBlocksSettingsModalControl>

@@ -74,6 +74,12 @@ class CoBlocks_Site_Design {
 	 * Class constructor
 	 */
 	public function __construct() {
+		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_assets' ) );
+
+		// short-circuit.
+		if ( self::short_circuit_check() ) {
+			return array();
+		}
 
 		add_action( 'wp_ajax_site_design_update_design_style', array( $this, 'update_design_style' ) );
 		add_action( 'rest_api_init', array( $this, 'design_endpoint' ) );
@@ -103,6 +109,16 @@ class CoBlocks_Site_Design {
 	}
 
 	/**
+	 * Check if we should short-circuit function calls.
+	 *
+	 * @return boolean
+	 */
+	public static function short_circuit_check() {
+		$active_theme = wp_get_theme();
+		return 'Go' !== $active_theme->get( 'Name' );
+	}
+
+	/**
 	 * Enqueue the scripts and styles.
 	 */
 	public static function get_coblocks_site_design_data() {
@@ -119,8 +135,7 @@ class CoBlocks_Site_Design {
 		);
 
 		// short-circuit.
-		$active_theme = wp_get_theme();
-		if ( 'Go' !== $active_theme->get( 'Name' ) ) {
+		if ( self::short_circuit_check() ) {
 			return array();
 		}
 
@@ -196,6 +211,11 @@ class CoBlocks_Site_Design {
 	 * @return array
 	 */
 	private static function get_go_fonts() {
+		// short-circuit.
+		if ( self::short_circuit_check() ) {
+			return array();
+		}
+
 		$design_styles = \Go\Core\get_available_design_styles();
 
 		$fonts = array_values(
@@ -291,9 +311,13 @@ class CoBlocks_Site_Design {
 	}
 
 	/**
-	 * Retreive the selected design style styles and return them for injection into the DOM
+	 * Retrieve the selected design style styles and return them for injection into the DOM
 	 */
 	public function update_design_style() {
+		// short-circuit.
+		if ( self::short_circuit_check() ) {
+			return array();
+		}
 
 		$request_params = $this->get_request_params();
 
@@ -403,5 +427,19 @@ class CoBlocks_Site_Design {
 		);
 
 	}
+
+	/**
+	 * Enqueue block assets for use within Gutenberg.
+	 *
+	 * @access public
+	 */
+	public function editor_assets() {
+		wp_localize_script(
+			'coblocks-editor',
+			'siteDesign',
+			self::get_coblocks_site_design_data()
+		);
+	}
+
 }
 new CoBlocks_Site_Design();

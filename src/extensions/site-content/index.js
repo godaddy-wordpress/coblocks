@@ -9,9 +9,10 @@ import { sortBy } from 'lodash';
  */
 import { __ } from '@wordpress/i18n';
 import { ComplementaryArea } from '@wordpress/interface';
-import { compose } from '@wordpress/compose';
 import { registerPlugin } from '@wordpress/plugins';
 import { useEffect } from '@wordpress/element';
+import { useEntityProp } from '@wordpress/core-data';
+import { compose, ifCondition } from '@wordpress/compose';
 import { withDispatch, withSelect } from '@wordpress/data';
 
 /**
@@ -19,7 +20,7 @@ import { withDispatch, withSelect } from '@wordpress/data';
  */
 import { CoBlocksMenuIcon } from '../../components/common';
 import PostTypePanel from './post-type-panel';
-import { PLUGIN_NAME, SIDEBAR_NAME } from './constant';
+import { PLUGIN_NAME, SIDEBAR_NAME, SITE_CONTENT_FEATURE_ENABLED_KEY } from './constant';
 import './site-content-control';
 
 export const CoBlocksSiteContent = ( props ) => {
@@ -75,7 +76,11 @@ export const CoBlocksSiteContent = ( props ) => {
 registerPlugin( PLUGIN_NAME, {
 	icon,
 	render: compose( [
+		ifCondition( () => {
+			const [ siteContentEnabled ] = useEntityProp( 'root', 'site', SITE_CONTENT_FEATURE_ENABLED_KEY );
 
+			return siteContentEnabled;
+		} ),
 		withSelect( ( select ) => {
 			const {
 				getCurrentPostId,

@@ -1,5 +1,4 @@
-/* global coblocksBlockData */
-
+/* global siteDesign */
 /**
  * External dependencies
  */
@@ -46,7 +45,7 @@ export function ColorPalettePreviews() {
 		updateColors();
 
 		Object.entries( currentColors ).forEach( ( [ name, color ] ) => {
-			document.getElementsByClassName( coblocksBlockData.siteDesign.editorClass )[ 0 ].style.setProperty( `--go--color--${ name }`, color );
+			document.getElementsByClassName( siteDesign.editorClass )[ 0 ].style.setProperty( `--go--color--${ name }`, color );
 		} );
 	}, [ currentColors ] );
 

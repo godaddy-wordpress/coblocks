@@ -1,4 +1,4 @@
-/* global coblocksBlockData */
+/* global siteDesign */
 
 /**
  * External dependencies
@@ -66,7 +66,7 @@ export function FontAdvancedWrapper( { selected } ) {
 		}
 	}, [ selected ] );
 
-	if ( ! coblocksBlockData.siteDesign.isAdvancedFontsEnabled ) {
+	if ( ! siteDesign.isAdvancedFontsEnabled ) {
 		return null;
 	}
 

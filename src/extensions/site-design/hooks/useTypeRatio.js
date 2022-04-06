@@ -1,5 +1,4 @@
-/* global coblocksBlockData */
-
+/* global siteDesign */
 import STORE_KEY from '../data/constants';
 import { useEffect } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
@@ -15,7 +14,7 @@ function useTypeRatio() {
 		if ( ! typeRatio ) {
 			return;
 		}
-		document.getElementsByClassName( coblocksBlockData.siteDesign.editorClass )[ 0 ].style.setProperty( '--go--type-ratio', typeRatio );
+		document.getElementsByClassName( siteDesign.editorClass )[ 0 ].style.setProperty( '--go--type-ratio', typeRatio );
 	}, [ typeRatio ] );
 
 	return [ typeRatio, designTypeRatio ];

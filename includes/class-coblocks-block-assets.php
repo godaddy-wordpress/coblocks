@@ -244,8 +244,7 @@ class CoBlocks_Block_Assets {
 				'typographyControlsEnabled'      => $typography_controls_enabled,
 				'animationControlsEnabled'       => $animation_controls_enabled,
 				'localeCode'                     => get_locale(),
-				'siteDesign'                     => CoBlocks_Site_Design::get_coblocks_site_design_data(),
-				'baseApiUrl'                     => CoBlocks_REST_API::API_NAMESPACE['v1'],
+				'baseApiUrl'                     => COBLOCKS_API_NAMESPACE,
 			)
 		);
 

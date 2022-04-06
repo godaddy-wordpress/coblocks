@@ -1,5 +1,4 @@
-/* global coblocksBlockData */
-
+/* global siteDesign */
 import STORE_KEY from '../data/constants';
 import { useEffect } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
@@ -16,7 +15,7 @@ function useFonts() {
 		const [ fontHeadingName, fontHeadingWeights ] = currentFonts[ 0 ];
 		const [ fontBodyName, fontBodyWeights ] = currentFonts[ 1 ];
 
-		const editor = document.getElementsByClassName( coblocksBlockData.siteDesign.editorClass )[ 0 ];
+		const editor = document.getElementsByClassName( siteDesign.editorClass )[ 0 ];
 
 		if ( ! editor ) {
 			return;

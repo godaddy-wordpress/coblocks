@@ -13,15 +13,6 @@ defined( 'ABSPATH' ) || exit;
  * @package GoDaddy\WordPress\Plugins\Coblocks
  */
 class CoBlocks_REST_API {
-
-	/**
-	 * Array of REST API namespaces.
-	 *
-	 * @var array
-	 */
-	const API_NAMESPACE = array(
-		'v1' => COBLOCKS_API_NAMESPACE,
-	);
 	const USER_CAP      = 'edit_theme_options';
 
 	/**

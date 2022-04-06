@@ -11,6 +11,7 @@ import { ComplementaryArea } from '@wordpress/interface';
 import { registerPlugin } from '@wordpress/plugins';
 import { useEffect } from '@wordpress/element';
 import { useEntityProp } from '@wordpress/core-data';
+import { compose, ifCondition } from '@wordpress/compose';
 import { useDispatch, useSelect } from '@wordpress/data';
 
 /**
@@ -26,7 +27,7 @@ import useTypeRatio from './hooks/useTypeRatio';
 import './data/store';
 import './site-design-control';
 
-import { PLUGIN_NAME, SIDEBAR_NAME } from './constant';
+import { PLUGIN_NAME, SIDEBAR_NAME, SITE_DESIGN_FEATURE_ENABLED_KEY } from './constant';
 
 let fontStylesCache = false;
 let saveBtn = false;
@@ -150,19 +151,28 @@ export function SiteDesignStyles() {
 /* istanbul ignore next */
 registerPlugin( PLUGIN_NAME, {
 	icon,
-	render: () => {
-		const componentTitle = __( 'Site design', 'coblocks' );
-		return (
-			<>
-				<ComplementaryArea
-					identifier={ `${ PLUGIN_NAME }/${ SIDEBAR_NAME }` }
-					scope="core/edit-post"
-					smallScreenTitle={ componentTitle }
-					title={ componentTitle }>
-					<SiteDesignControls />
-				</ComplementaryArea>
-				<SiteDesignStyles />
-			</>
-		);
-	},
+	render: compose( [
+		ifCondition( () => {
+			const [ siteDesignEnabled ] = useEntityProp( 'root', 'site', SITE_DESIGN_FEATURE_ENABLED_KEY );
+
+			return siteDesignEnabled;
+		} ),
+	] )(
+		() => {
+			const componentTitle = __( 'Site design', 'coblocks' );
+			return (
+				<>
+					<ComplementaryArea
+						identifier={ `${ PLUGIN_NAME }/${ SIDEBAR_NAME }` }
+						scope="core/edit-post"
+						smallScreenTitle={ componentTitle }
+						title={ componentTitle }>
+						<SiteDesignControls />
+					</ComplementaryArea>
+					<SiteDesignStyles />
+				</>
+			);
+		}
+	),
 } );
+

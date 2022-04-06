@@ -1,5 +1,4 @@
-/* global coblocksBlockData */
-
+/* global siteDesign */
 /**
  * External dependencies
  */
@@ -26,7 +25,7 @@ import {
 } from './action-types';
 
 const getDefaultState = () => {
-	if ( typeof coblocksBlockData === 'undefined' ) {
+	if ( typeof siteDesign === 'undefined' || isEmpty( siteDesign ) ) {
 		return {};
 	}
 
@@ -36,10 +35,10 @@ const getDefaultState = () => {
 		return font;
 	} );
 
-	const fonts = coblocksBlockData.siteDesign?.fonts?.map( ( fontPack ) => normalizeFont( fontPack ) );
+	const fonts = siteDesign?.fonts?.map( ( fontPack ) => normalizeFont( fontPack ) );
 
 	const getInitialFontsState = () => {
-		const currentFontPack = coblocksBlockData.siteDesign?.currentFonts;
+		const currentFontPack = siteDesign?.currentFonts;
 
 		if ( ! currentFontPack ) {
 			return null;
@@ -48,7 +47,7 @@ const getDefaultState = () => {
 		return normalizeFont( currentFontPack );
 	};
 
-	const designStyles = Object.entries( coblocksBlockData.siteDesign.availableDesignStyles ).map( ( [ , style ] ) => {
+	const designStyles = Object.entries( siteDesign?.availableDesignStyles ).map( ( [ , style ] ) => {
 		return {
 			...style,
 			palettes: Object.entries( style.color_schemes ).map(
@@ -65,19 +64,19 @@ const getDefaultState = () => {
 	} );
 
 	const STATE = {
-		colorPalette: coblocksBlockData.siteDesign.currentColorScheme,
+		colorPalette: siteDesign.currentColorScheme,
 		colorsPanelOpen: true,
-		currentColors: Object.fromEntries( Object.entries( coblocksBlockData.siteDesign.currentColors ).filter( ( color ) => color[ 1 ] ) ),
-		designStyle: coblocksBlockData.siteDesign.currentDesignStyle,
+		currentColors: Object.fromEntries( Object.entries( siteDesign.currentColors ).filter( ( color ) => color[ 1 ] ) ),
+		designStyle: siteDesign.currentDesignStyle,
 		designStyles,
 		designsPanelOpen: true,
-		fontSize: coblocksBlockData.siteDesign?.fontSize,
+		fontSize: siteDesign?.fontSize,
 		fonts,
 		fontsPanelOpen: true,
 		isUpdating: false,
 		selectedFonts: getInitialFontsState(),
 		showSaveBtn: false,
-		typeRatio: coblocksBlockData.siteDesign?.typeRatio,
+		typeRatio: siteDesign?.typeRatio,
 	};
 
 	// Keep reference to initial state for shallow comparison to display save button
