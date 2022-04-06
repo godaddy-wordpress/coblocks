@@ -55,9 +55,12 @@
 
 
 .wp-block-coblocks-events__day {
-	display: block;
+	align-items: center;
+	display: flex;
+	flex-direction: row;
 	font-size: 1.75em;
 	font-weight: 700;
+	justify-content: space-between;
 	margin-bottom: 5px;
 }
 

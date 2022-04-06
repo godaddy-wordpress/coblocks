@@ -78,44 +78,94 @@ function coblocks_render_events_block( $attributes, $content ) {
 			$end_date_string   = strtotime( $dtend->format( 'YmdHis' ) );
 			$year              = gmdate( 'Y', $start_date_string );
 			$month             = gmdate( 'F', $start_date_string );
-			$day_of_month      = gmdate( 'd', $start_date_string );
-			$start_time        = gmdate( 'g:ia', $start_date_string );
-			$end_time          = gmdate( 'g:ia', $end_date_string );
+			$start_date        = gmdate( 'd', $start_date_string );
+			$end_date          = gmdate( 'd', $end_date_string );
+			$start_time        = gmdate( 'c', $start_date_string );
+			$end_time          = gmdate( 'c', $end_date_string );
 			$time_string       = $start_time . ' - ' . $end_time;
 			$title             = $event->summary;
-			$desctiption       = $event->description;
+			$description       = $event->description;
 			$location          = $event->location;
-			$events_layout    .= sprintf(
-				'
-				<div class="wp-block-coblocks-events__date">
-					<span class="wp-block-coblocks-events__day">%1$s</span>
-					<div>
-						<span class="wp-block-coblocks-events__month">%2$s</span>
-						<span class="wp-block-coblocks-events__year">%3$s</span>
-					</div>
-				</div>',
-				$day_of_month,
-				$month,
-				$year
-			);
 
-			$events_layout .= sprintf(
-				'<div class="wp-block-coblocks-events__content">
-					<span class="wp-block-coblocks-events__title">%1$s</span>
-					<span class="wp-block-coblocks-events__description">%2$s</span>
-				</div>',
-				$title,
-				$desctiption
-			);
+			$event_duration = $end_date_string - $start_date_string;
+			$is_timed_event = str_contains( $event->dtstart, 'Z' );
+			$one_day = 86400;
 
-			$events_layout .= sprintf(
-				'<div class="wp-block-coblocks-events__details">
-					<span class="wp-block-coblocks-events__time">%1$s</span>
-					<span class="wp-block-coblocks-events__location">%2$s</span>
-				</div>',
-				$time_string,
-				$location
-			);
+			if ( $event_duration == $one_day && ! $is_timed_event ) { // single all day event
+
+				$event_time_string = sprintf(
+					'<span class="wp-block-coblocks-events__time">%1$s - %2$s</span>',
+					gmdate( 'g:ia', $start_date_string ),
+					gmdate( 'g:ia', $end_date_string )
+				);
+
+				$events_layout .= render_single_day_event_item(
+					$start_date,
+					$month,
+					$year,
+					$title,
+					$description,
+					$event_time_string,
+					$location
+				);
+
+			} else if ( $event_duration > $one_day && ! $is_timed_event  ) { // multi day all day event
+
+				$event_time_string = sprintf(
+					'<span class="wp-block-coblocks-events__time">%1$s - %2$s</span>',
+					gmdate( 'g:ia', $start_date_string ),
+					gmdate( 'g:ia', $end_date_string )
+				);
+
+				$events_layout .= render_multi_day_event_item(
+					$start_date,
+					$end_date - 1,
+					$month,
+					$year,
+					$title,
+					$description,
+					$event_time_string,
+					$location
+				);
+
+			} else if ( $event_duration < $one_day  && $is_timed_event ) { // single day timed event
+
+				$event_time_string = sprintf(
+					'<span data-start-time=%1$s data-end-time=%2$s class="wp-block-coblocks-events__time wp-block-coblocks-events__time-formatted"></span>',
+					gmdate( 'c', $start_date_string ),
+					gmdate( 'c', $end_date_string )
+				);
+
+				$events_layout .= render_single_day_event_item(
+					$start_date,
+					$month,
+					$year,
+					$title,
+					$description,
+					$event_time_string,
+					$location
+				);
+
+			} else if ( $event_duration > $one_day || $event_duration == $one_day && $is_timed_event ) { // multi day timed event
+
+				$event_time_string = sprintf(
+					'<span data-start-time=%1$s data-end-time=%2$s class="wp-block-coblocks-events__time wp-block-coblocks-events__time-formatted"></span>',
+					gmdate( 'c', $start_date_string ),
+					gmdate( 'c', $end_date_string )
+				);
+
+				$events_layout .= render_multi_day_event_item(
+					$start_date,
+					$end_date,
+					$month,
+					$year,
+					$title,
+					$description,
+					$event_time_string,
+					$location
+				);
+
+			}
 
 			$events_layout .= '</div>';
 		}
@@ -136,6 +186,77 @@ function coblocks_render_events_block( $attributes, $content ) {
 		return '<div class="components-placeholder"><div class="notice notice-error">' . __( 'An error has occurred, check for calendar privileges to make sure it is public or try again later.', 'coblocks' ) . '</div></div>';
 
 	}
+}
+
+/**
+ * Formats a generic event item into HTML
+ */
+function render_event_item(
+	$date_range,
+	$month,
+	$year,
+	$title,
+	$description,
+	$time_string,
+	$location
+) {
+
+	$event_layout = sprintf(
+		'
+		<div class="wp-block-coblocks-events__date">
+			<span class="wp-block-coblocks-events__day">%1s</span>
+			<div>
+				<span class="wp-block-coblocks-events__month">%2$s</span>
+				<span class="wp-block-coblocks-events__year">%3$s</span>
+			</div>
+		</div>',
+		$date_range,
+		$month,
+		$year,
+	);
+
+	$event_layout .= sprintf(
+		'<div class="wp-block-coblocks-events__content">
+			<span class="wp-block-coblocks-events__title">%1$s</span>
+			<span class="wp-block-coblocks-events__description">%2$s</span>
+		</div>',
+		$title,
+		$description
+	);
+
+	$event_layout .= sprintf(
+		'<div class="wp-block-coblocks-events__details">
+			%1$s
+			<span class="wp-block-coblocks-events__location">%2$s</span>
+		</div>',
+		$time_string,
+		$location,
+	);
+
+	return $event_layout;
+}
+
+/**
+ * Formats a multi-day event into HTML
+ */
+function render_multi_day_event_item( $start_date, $end_date, $month, $year, $title, $description, $time_string, $location ) {
+	$date_range = '<p>';
+	$date_range .= $start_date;
+	$date_range .= '</p>';
+	$date_range .= ' - ';
+	$date_range .= '<p>';
+	$date_range .= $end_date;
+	$date_range .= '</p>';
+
+	return render_event_item( $date_range, $month, $year, $title, $description, $time_string, $location );
+}
+
+/**
+ * Formats a single-day event into HTML
+ */
+function render_single_day_event_item( $start_date, $month, $year, $title, $description, $time_string, $location ) {
+
+	return render_event_item( $start_date, $month, $year, $title, $description, $time_string, $location );
 }
 
 /**
