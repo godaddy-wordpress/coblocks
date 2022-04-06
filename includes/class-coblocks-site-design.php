@@ -270,7 +270,7 @@ class CoBlocks_Site_Design {
 	 */
 	private function get_editor_styles( $design_style = null ) {
 		if ( ! $design_style ) {
-			$design_style = \Go\Core\get_design_style();
+			//$design_style = \Go\Core\get_design_style();
 		}
 
 		// @codingStandardsIgnoreStart
