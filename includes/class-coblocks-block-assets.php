@@ -163,6 +163,20 @@ class CoBlocks_Block_Assets {
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
 
+		global $pagenow;
+
+		// Prevent wp-edit-post and coblocks settings/patterns plugins from loading on the widgets.php page.
+		if ( 'widgets.php' === $pagenow ) {
+			$script_key = array_search( 'wp-edit-post', $asset_file['dependencies'], true );
+
+			if ( false !== $script_key ) {
+				unset( $asset_file['dependencies'][ $script_key ] );
+			}
+
+			add_filter( 'coblocks_show_settings_panel', '__return_false' );
+			add_filter( 'coblocks_patterns_show_settings_panel', '__return_false' );
+		}
+
 		wp_enqueue_script(
 			'coblocks-editor',
 			COBLOCKS_PLUGIN_URL . $filepath . '.js',
@@ -180,6 +194,15 @@ class CoBlocks_Block_Assets {
 
 			$filepath   = 'dist/' . $name;
 			$asset_file = $this->get_asset_file( $filepath );
+
+			// Prevent wp-editor from loading on the widgets.php page.
+			if ( 'widgets.php' === $pagenow ) {
+				$script_key = array_search( 'wp-editor', $asset_file['dependencies'], true );
+
+				if ( false !== $script_key ) {
+					unset( $asset_file['dependencies'][ $script_key ] );
+				}
+			}
 
 			wp_enqueue_script(
 				$name,
