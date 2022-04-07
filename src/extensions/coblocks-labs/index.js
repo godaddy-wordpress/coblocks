@@ -2,9 +2,11 @@
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { applyFilters } from '@wordpress/hooks';
 import { PluginMoreMenuItem } from '@wordpress/edit-post';
 import { useDispatch } from '@wordpress/data';
 import { useState } from '@wordpress/element';
+import { compose, ifCondition } from '@wordpress/compose';
 import { getPlugin, registerPlugin } from '@wordpress/plugins';
 import { MenuItem, Modal } from '@wordpress/components';
 
@@ -76,6 +78,12 @@ export function CoBlocksLabs() {
 if ( ! getPlugin( 'coblocks-labs' ) ) {
 	registerPlugin( 'coblocks-labs', {
 		icon: '',
-		render: CoBlocksLabs,
+		render: compose( [
+			ifCondition( () => {
+				const isLabsEnabled = applyFilters( 'coblocks-labs-controls-enabled', false );
+
+				return isLabsEnabled;
+			} ),
+		] )( CoBlocksLabs ),
 	} );
 }

@@ -18,10 +18,10 @@ registerPlugin( 'coblocks-layout-selector-control', {
 			help={ __( 'Allow layout selection on new pages', 'coblocks' ) }
 			label={ __( 'Layout selector', 'coblocks' ) }
 			settingsKey={ LAYOUT_SELECTOR_FEATURE_ENABLED_KEY }
-			shouldDisable={ () => {
+			shouldDisable={ ( () => {
 				const safeCoBlocksLabs = typeof coblocksLabs !== 'undefined' ? coblocksLabs : {};
 				return ! safeCoBlocksLabs.isGoThemeActive || ! safeCoBlocksLabs.isGoThemeInstalled;
-			} }
+			} )() }
 		/>
 	),
 } );
