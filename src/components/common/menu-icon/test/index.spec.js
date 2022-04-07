@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 /**
  * Internal dependencies
  */
-import CoBlocksMenuIcon from './index';
+import CoBlocksMenuIcon from '../index';
 
 describe( 'coblocks-menu-icon', () => {
 	let wrapper;

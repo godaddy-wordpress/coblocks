@@ -7,7 +7,7 @@ import { shallow } from 'enzyme';
 /**
  * Internal dependencies
  */
-import { Trail } from './index';
+import { Trail } from '../index';
 
 const defaultProps = {
 	children: [
