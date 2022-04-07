@@ -80,7 +80,7 @@ class CoBlocks_Block_Assets {
 		$vendors_dir = CoBlocks()->asset_source( 'js/vendors' );
 
 		// Gist block.
-		// only want this loading in front end
+		// only want this loading in front end.
 		if ( has_block( 'coblocks/gist' ) || has_block( 'core/embed' ) ) {
 			wp_enqueue_script(
 				'coblocks-gist',

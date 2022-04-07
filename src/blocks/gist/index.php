@@ -75,11 +75,12 @@ function coblocks_block_gist_handler( $matches ) {
 
 	}
 
-	$gist_html = '<span className="coblocks-gist__container" style="pointer-events: none" class="coblocks-gist__container">';
+	$gist_html = "<span class='coblocks-gist__container' style='pointer-events: none'>";
+
+	$gist_html .= wp_get_inline_script_tag( null, array( 'src' => esc_url( 'https://gist.github.com/' . $script_src ) ) );
 
 	$gist_html .= sprintf(
-		'%1$s<noscript><a class="gist-block__container" href="%2$s">%3$s</a></noscript>',
-		wp_get_inline_script_tag( null, array( 'src' => esc_url( 'https://gist.github.com/' . $script_src ) ) ),
+		'<noscript><a class="gist-block__container" href="%1$s">%2$s</a></noscript>',
 		esc_url( $gist_url ),
 		esc_html( __( 'View this gist on GitHub', 'coblocks' ) )
 	);
