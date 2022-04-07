@@ -31,59 +31,6 @@ global.coblocksLayoutSelector = {
 /* eslint-disable sort-keys */
 global.siteDesign = {
 	availableDesignStyles: {
-		modern: {
-			label: 'Modern',
-			url: 'http://localhost:8888/wp-content/themes/go/dist/css/design-styles/style-modern.css',
-			editor_style: 'dist/css/design-styles/style-modern-editor.css',
-			color_schemes: {
-				one: {
-					label: 'Shade',
-					primary: '#000000',
-					secondary: '#455a64',
-					tertiary: '#eceff1',
-					background: '#ffffff',
-				},
-				two: {
-					label: 'Blush',
-					primary: '#c2185b',
-					secondary: '#ec407a',
-					tertiary: '#fce4ec',
-					background: '#ffffff',
-				},
-				three: {
-					label: 'Indigo',
-					primary: '#303f9f',
-					secondary: '#5c6bc0',
-					tertiary: '#e8eaf6',
-					background: '#ffffff',
-				},
-				four: {
-					label: 'Pacific',
-					primary: '#00796b',
-					secondary: '#26a69a',
-					tertiary: '#e0f2f1',
-					background: '#ffffff',
-				},
-			},
-			fonts: {
-				Heebo: [
-					'800',
-					'400',
-				],
-				'Fira Code': [
-					'400',
-					'400i',
-					'700',
-				],
-				Montserrat: [
-					'400',
-					'700',
-				],
-			},
-			font_size: '0.85rem',
-			type_ratio: '1.3',
-			viewport_basis: '950',
-		},
 		traditional: {
 			slug: 'traditional',
 			label: 'Traditional',
@@ -136,6 +83,60 @@ global.siteDesign = {
 			font_size: '1.05rem',
 			type_ratio: '1.275',
 			viewport_basis: '900',
+		},
+		modern: {
+			slug: 'modern',
+			label: 'Modern',
+			url: 'http://localhost:8888/wp-content/themes/go/dist/css/design-styles/style-modern.css',
+			editor_style: 'dist/css/design-styles/style-modern-editor.css',
+			color_schemes: {
+				one: {
+					label: 'Shade',
+					primary: '#000000',
+					secondary: '#455a64',
+					tertiary: '#eceff1',
+					background: '#ffffff',
+				},
+				two: {
+					label: 'Blush',
+					primary: '#c2185b',
+					secondary: '#ec407a',
+					tertiary: '#fce4ec',
+					background: '#ffffff',
+				},
+				three: {
+					label: 'Indigo',
+					primary: '#303f9f',
+					secondary: '#5c6bc0',
+					tertiary: '#e8eaf6',
+					background: '#ffffff',
+				},
+				four: {
+					label: 'Pacific',
+					primary: '#00796b',
+					secondary: '#26a69a',
+					tertiary: '#e0f2f1',
+					background: '#ffffff',
+				},
+			},
+			fonts: {
+				Heebo: [
+					'800',
+					'400',
+				],
+				'Fira Code': [
+					'400',
+					'400i',
+					'700',
+				],
+				Montserrat: [
+					'400',
+					'700',
+				],
+			},
+			font_size: '0.85rem',
+			type_ratio: '1.3',
+			viewport_basis: '950',
 		},
 	},
 	currentColorScheme: 'one',
