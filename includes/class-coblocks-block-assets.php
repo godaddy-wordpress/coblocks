@@ -47,6 +47,7 @@ class CoBlocks_Block_Assets {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'frontend_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
 		add_action( 'save_post_wp_template_part', array( $this, 'clear_template_transients' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_only_scripts' ) );
 	}
 
 	/**
@@ -66,6 +67,29 @@ class CoBlocks_Block_Assets {
 				'dependencies' => array(),
 				'version'      => COBLOCKS_VERSION,
 			);
+	}
+
+	/**
+	 * Enqueue scripts that should only be available on the front end
+	 */
+	public function frontend_only_scripts() {
+		// Define where the asset is loaded from.
+		$dir = CoBlocks()->asset_source( 'js' );
+
+		// Define where the vendor asset is loaded from.
+		$vendors_dir = CoBlocks()->asset_source( 'js/vendors' );
+
+		// Gist block.
+		// only want this loading in front end.
+		if ( has_block( 'coblocks/gist' ) || has_block( 'core/embed' ) ) {
+			wp_enqueue_script(
+				'coblocks-gist',
+				$dir . 'coblocks-gist.js',
+				array(),
+				COBLOCKS_VERSION,
+				true
+			);
+		}
 	}
 
 	/**
@@ -163,6 +187,20 @@ class CoBlocks_Block_Assets {
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
 
+		global $pagenow;
+
+		// Prevent wp-edit-post and coblocks settings/patterns plugins from loading on the widgets.php page.
+		if ( 'widgets.php' === $pagenow ) {
+			$script_key = array_search( 'wp-edit-post', $asset_file['dependencies'], true );
+
+			if ( false !== $script_key ) {
+				unset( $asset_file['dependencies'][ $script_key ] );
+			}
+
+			add_filter( 'coblocks_show_settings_panel', '__return_false' );
+			add_filter( 'coblocks_patterns_show_settings_panel', '__return_false' );
+		}
+
 		wp_enqueue_script(
 			'coblocks-editor',
 			COBLOCKS_PLUGIN_URL . $filepath . '.js',
@@ -180,6 +218,15 @@ class CoBlocks_Block_Assets {
 
 			$filepath   = 'dist/' . $name;
 			$asset_file = $this->get_asset_file( $filepath );
+
+			// Prevent wp-editor from loading on the widgets.php page.
+			if ( 'widgets.php' === $pagenow ) {
+				$script_key = array_search( 'wp-editor', $asset_file['dependencies'], true );
+
+				if ( false !== $script_key ) {
+					unset( $asset_file['dependencies'][ $script_key ] );
+				}
+			}
 
 			wp_enqueue_script(
 				$name,

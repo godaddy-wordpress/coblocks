@@ -23,6 +23,7 @@ const scripts = [
 	'coblocks-masonry',
 	'coblocks-post-carousel',
 	'coblocks-tinyswiper-initializer',
+	'coblocks-gist',
 ];
 
 const coblocksEntries = fs.readdirSync( path.resolve( process.cwd(), 'src' ) ).filter( ( file ) => file.startsWith( 'blocks-' ) );
