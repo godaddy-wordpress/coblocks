@@ -15,9 +15,6 @@ import './extensions/image-styles';
 import './extensions/list-styles';
 import './extensions/media-text-styles';
 
-// TODO: Remove this filter once CoBlocks labs is released.
-import { addFilter } from '@wordpress/hooks';
-addFilter( 'coblocks-labs-controls-enabled', 'coblocks', () => true, 10 );
 // The following three imports are intentionally ordered for CoBlocks Labs controls.
 import './extensions/site-content';
 import './extensions/site-design';
