@@ -45,7 +45,7 @@ class CoBlocks_Gist_Index_Tests extends WP_UnitTestCase {
 
 		$this->assertEquals(
 			coblocks_block_gist_handler( array( $gist_url, $gist_path ) ),
-			"<span class='coblocks-gist__container' style='pointer-events: none'><script src=\"https://gist.github.com/${gist_path}.js\">\n\n</script>\n<noscript><a class=\"gist-block__container\" href=\"${gist_url}\">View this gist on GitHub</a></noscript></span>"
+			"<span class='coblocks-gist__container' style='pointer-events: none'><script src=\"https://gist.github.com/${gist_path}.js\">\n\n</script>\n<a class=\"gist-block__container\" href=\"${gist_url}\" target=\"_blank\">View this gist on GitHub</a></span>"
 		);
 	}
 
