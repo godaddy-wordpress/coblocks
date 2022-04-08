@@ -47,6 +47,7 @@ class CoBlocks_Block_Assets {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'frontend_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
 		add_action( 'save_post_wp_template_part', array( $this, 'clear_template_transients' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_only_scripts' ) );
 	}
 
 	/**
@@ -66,6 +67,29 @@ class CoBlocks_Block_Assets {
 				'dependencies' => array(),
 				'version'      => COBLOCKS_VERSION,
 			);
+	}
+
+	/**
+	 * Enqueue scripts that should only be available on the front end
+	 */
+	public function frontend_only_scripts() {
+		// Define where the asset is loaded from.
+		$dir = CoBlocks()->asset_source( 'js' );
+
+		// Define where the vendor asset is loaded from.
+		$vendors_dir = CoBlocks()->asset_source( 'js/vendors' );
+
+		// Gist block.
+		// only want this loading in front end.
+		if ( has_block( 'coblocks/gist' ) || has_block( 'core/embed' ) ) {
+			wp_enqueue_script(
+				'coblocks-gist',
+				$dir . 'coblocks-gist.js',
+				array(),
+				COBLOCKS_VERSION,
+				true
+			);
+		}
 	}
 
 	/**
