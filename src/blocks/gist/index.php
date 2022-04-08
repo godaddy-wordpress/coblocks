@@ -80,7 +80,7 @@ function coblocks_block_gist_handler( $matches ) {
 	$gist_html .= wp_get_inline_script_tag( null, array( 'src' => esc_url( 'https://gist.github.com/' . $script_src ) ) );
 
 	$gist_html .= sprintf(
-		'<noscript><a class="gist-block__container" href="%1$s">%2$s</a></noscript>',
+		'<a class="gist-block__container" href="%1$s" target="_blank">%2$s</a>',
 		esc_url( $gist_url ),
 		esc_html( __( 'View this gist on GitHub', 'coblocks' ) )
 	);
