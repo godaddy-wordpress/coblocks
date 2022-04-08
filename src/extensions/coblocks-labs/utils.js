@@ -34,16 +34,16 @@ export const conditionalHelpMessage = ( ) => {
 	}
 
 	if ( isGoThemeInstalled ) {
-		return ( <>
-			{ __( 'This feature requires the Go Theme - ', 'coblocks' ) }
-			<a href={ goThemeDetailsUri } rel="noopener noreferrer" target="_blank">
-				{ __( 'Activate', 'coblocks' ) }
-			</a>
-		</> );
+		return (
+			<> { __( 'This feature requires the Go Theme - ', 'coblocks' ) }
+				<a href={ goThemeDetailsUri } rel="noopener noreferrer" target="_blank">
+					{ __( 'Activate', 'coblocks' ) }
+				</a>
+			</> );
 	}
 
 	return (
-		<>{ __( 'This feature requires the Go Theme - ', 'coblocks' ) }
+		<> { __( 'This feature requires the Go Theme - ', 'coblocks' ) }
 			<a href={ goThemeInstallUri } rel="noopener noreferrer" target="_blank">
 				{ __( 'Install now', 'coblocks' ) }
 			</a>

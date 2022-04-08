@@ -16,6 +16,7 @@ function CoBlocksSettingsToggleControl( { label, help, settingsKey, shouldDisabl
 		<CoBlocksSettingsModalControl>
 			<CheckboxControl
 				checked={ !! setting }
+				// With the introduction of CoBlocks labs we now disable the Layout Selector when Go theme is not active.
 				disabled={ shouldDisable ? true : false }
 				help={ help }
 				label={ label }

@@ -6,9 +6,8 @@ import { __ } from '@wordpress/i18n';
 import { PluginMoreMenuItem } from '@wordpress/edit-post';
 import { useDispatch } from '@wordpress/data';
 import { useState } from '@wordpress/element';
-import { MenuItem, Modal } from '@wordpress/components';
-
 import { getPlugin, registerPlugin, unregisterPlugin } from '@wordpress/plugins';
+import { MenuItem, Modal } from '@wordpress/components';
 
 /**
  * Internal dependencies
