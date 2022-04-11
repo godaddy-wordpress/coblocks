@@ -134,6 +134,12 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-install.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-crop-settings.php';
 			}
+
+			// StylesLoader.
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/Dependencies/GoDaddy/Styles/StylesLoader.php';
+			GoDaddy\WordPress\Plugins\CoBlocks\Dependencies\GoDaddy\Styles\StylesLoader::getInstance()->setBasePath( COBLOCKS_PLUGIN_DIR . 'includes/Dependencies/GoDaddy/Styles/' );
+			GoDaddy\WordPress\Plugins\CoBlocks\Dependencies\GoDaddy\Styles\StylesLoader::getInstance()->setBaseUrl( COBLOCKS_PLUGIN_URL . 'includes/Dependencies/GoDaddy/Styles/' );
+			add_action( 'plugins_loaded', array( GoDaddy\WordPress\Plugins\CoBlocks\Dependencies\GoDaddy\Styles\StylesLoader::getInstance(), 'boot' ) );
 		}
 
 		/**
