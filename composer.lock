@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8c00c31263298d1064362dac81c23647",
+    "content-hash": "5c4a77592a00b01f4d1d938fd36f2adc",
     "packages": [
         {
             "name": "godaddy-wordpress/styles",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/godaddy-wordpress/styles.git",
-                "reference": "d5a98b3406b41fe85394827acec56d3d83cfeb6e"
+                "reference": "d486773791150d42cb3a1b9f2fd4f1d6c4cfaddc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/godaddy-wordpress/styles/zipball/d5a98b3406b41fe85394827acec56d3d83cfeb6e",
-                "reference": "d5a98b3406b41fe85394827acec56d3d83cfeb6e",
+                "url": "https://api.github.com/repos/godaddy-wordpress/styles/zipball/d486773791150d42cb3a1b9f2fd4f1d6c4cfaddc",
+                "reference": "d486773791150d42cb3a1b9f2fd4f1d6c4cfaddc",
                 "shasum": ""
             },
             "require": {
@@ -73,7 +73,7 @@
                 "source": "https://github.com/godaddy-wordpress/styles/tree/add-wp-env",
                 "issues": "https://github.com/godaddy-wordpress/styles/issues"
             },
-            "time": "2022-04-11T15:38:07+00:00"
+            "time": "2022-04-11T20:39:42+00:00"
         }
     ],
     "packages-dev": [
