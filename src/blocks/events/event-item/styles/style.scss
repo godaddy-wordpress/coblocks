@@ -18,7 +18,7 @@
 	margin-bottom: var(--coblocks-spacing--3, map-get($spacing, 3));
 
 	@include break-medium() {
-		flex-basis: 15%;
+		flex-basis: 25%;
 		margin-bottom: 0;
 	}
 }

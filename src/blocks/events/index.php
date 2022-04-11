@@ -251,13 +251,9 @@ function coblocks_render_event_item(
  * @param mixed  ...$event_data list of event data arguments.
  */
 function coblocks_render_multi_day_event_item( $start_date, $end_date, ...$event_data ) {
-	$date_range  = '<p>';
-	$date_range .= $start_date;
-	$date_range .= '</p>';
+	$date_range  = $start_date;
 	$date_range .= ' - ';
-	$date_range .= '<p>';
 	$date_range .= $end_date;
-	$date_range .= '</p>';
 
 	return coblocks_render_event_item( $date_range, ...$event_data );
 }
