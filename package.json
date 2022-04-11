@@ -102,7 +102,7 @@
 		"@wordpress/edit-post": "^5.0.17",
 		"@wordpress/editor": "^12.0.14",
 		"@wordpress/element": "^4.0.3",
-		"@wordpress/env": "^4.1.2",
+		"@wordpress/env": "^4.5.0",
 		"@wordpress/eslint-plugin": "^10.0.1",
 		"@wordpress/hooks": "^3.2.1",
 		"@wordpress/i18n": "^4.2.3",
@@ -163,8 +163,7 @@
 		"moment": "^2.29.2",
 		"react-dom": "17.0.2",
 		"react": "17.0.2",
-		"rtlcss": "^3.5.0",
-		"simple-git": "^3.3.0"
+		"rtlcss": "^3.5.0"
 	},
 	"lint-staged": {
 		"*.scss": [

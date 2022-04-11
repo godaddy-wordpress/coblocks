@@ -4301,10 +4301,10 @@
     react "^17.0.2"
     react-dom "^17.0.2"
 
-"@wordpress/env@^4.1.2":
-  version "4.1.3"
-  resolved "https://registry.yarnpkg.com/@wordpress/env/-/env-4.1.3.tgz#9119b65be589189573015e479614cf361cf20b15"
-  integrity sha512-mU+MayYal+GghtbV5yGvBZPpVqm1L9ozcWqqiC9sLyMGrYKWWTMf0TRTaKBSo5DoJ4DNVCVbJkRS3MzGuCfSbQ==
+"@wordpress/env@^4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@wordpress/env/-/env-4.5.0.tgz#55592a2b12a5a857c31d47c21d26ea146186b50d"
+  integrity sha512-1YTYSSrmkfiNIp+dhUnOm9tRg7gs48K3lkaXi053zlS0DMEioP9zJtegrYQfvY31U9Ad+29R7Ck5kYuB3tVY4g==
   dependencies:
     chalk "^4.0.0"
     copy-dir "^1.3.0"
@@ -4315,9 +4315,9 @@
     js-yaml "^3.13.1"
     ora "^4.0.2"
     rimraf "^3.0.2"
-    simple-git "^2.35.0"
+    simple-git "^3.5.0"
     terminal-link "^2.0.0"
-    yargs "^14.0.0"
+    yargs "^17.3.0"
 
 "@wordpress/escape-html@^1.12.2":
   version "1.12.2"
@@ -11686,7 +11686,7 @@ node-fetch@2.6.7, node-fetch@^2.6.0:
   dependencies:
     whatwg-url "^5.0.0"
 
-node-forge@^1.2.0, node-forge@^1.3.0:
+node-forge@^1.2.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/node-forge/-/node-forge-1.3.0.tgz#37a874ea723855f37db091e6c186e5b67a01d4b2"
   integrity sha512-08ARB91bUi6zNKzVmaj3QO7cr397uiDT2nJ63cHjyNtCTWIgvS47j3eT0WfzUwS9+6Z5YshRaoasFkXCKrIYbA==
@@ -11828,7 +11828,7 @@ npm-run-path@^4.0.0, npm-run-path@^4.0.1:
   dependencies:
     path-key "^3.0.0"
 
-nth-check@^2.0.0, nth-check@^2.0.1:
+nth-check@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/nth-check/-/nth-check-2.0.1.tgz#2efe162f5c3da06a28959fbd3db75dbeea9f0fc2"
   integrity sha512-it1vE95zF6dTT9lBsYbxvqh0Soy4SPowchj0UBGj/V6cTPnXXtQOPUbhZ6CmGzAD/rW22LQK6E96pcdJXk4A4w==
@@ -13891,10 +13891,19 @@ signal-exit@^3.0.2, signal-exit@^3.0.3, signal-exit@^3.0.6:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.6.tgz#24e630c4b0f03fea446a2bd299e62b4a6ca8d0af"
   integrity sha512-sDl4qMFpijcGw22U5w63KmD3cZJfBuFlVNbVMKje2keoKML7X2UzWbc4XrmEbDwg0NXJc3yv4/ox7b+JWb57kQ==
 
-simple-git@^2.35.0, simple-git@^3.3.0:
+simple-git@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/simple-git/-/simple-git-3.3.0.tgz#91692d576f851be691124781b79872b246d2f92c"
   integrity sha512-K9qcbbZwPHhk7MLi0k0ekvSFXJIrRoXgHhqMXAFM75qS68vdHTcuzmul1ilKI02F/4lXshVgBoDll2t++JK0PQ==
+  dependencies:
+    "@kwsites/file-exists" "^1.1.1"
+    "@kwsites/promise-deferred" "^1.1.1"
+    debug "^4.3.3"
+
+simple-git@^3.5.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/simple-git/-/simple-git-3.6.0.tgz#28a9ebb7ca55495bb4e6cc5d367b4543e2d857a4"
+  integrity sha512-2e+4QhOVO59GeLsHgwSMKNrSKCnuACeA/gMNrLCYR8ID9qwm4hViVt4WsODcUGjx//KDv6GMLC6Hs/MeosgXxg==
   dependencies:
     "@kwsites/file-exists" "^1.1.1"
     "@kwsites/promise-deferred" "^1.1.1"
@@ -15543,7 +15552,12 @@ yargs-parser@^20.2.2, yargs-parser@^20.2.3:
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-20.2.9.tgz#2eb7dc3b0289718fc295f362753845c41a0c94ee"
   integrity sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==
 
-yargs@^14.0.0, yargs@^14.2:
+yargs-parser@^21.0.0:
+  version "21.0.1"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-21.0.1.tgz#0267f286c877a4f0f728fceb6f8a3e4cb95c6e35"
+  integrity sha512-9BK1jFpLzJROCI5TzwZL/TU4gqjK5xiHV/RfWLOahrjAko/e4DJkRDZQXfvqAsiZzzYhgAzbgz6lg48jcm4GLg==
+
+yargs@^14.2:
   version "14.2.3"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-14.2.3.tgz#1a1c3edced1afb2a2fea33604bc6d1d8d688a414"
   integrity sha512-ZbotRWhF+lkjijC/VhmOT9wSgyBQ7+zr13+YLkhfsSiTriYsMzkTUFP18pFhWwBeMa5gUc1MzbhrO6/VB7c9Xg==
@@ -15572,6 +15586,19 @@ yargs@^16.2.0:
     string-width "^4.2.0"
     y18n "^5.0.5"
     yargs-parser "^20.2.2"
+
+yargs@^17.3.0:
+  version "17.4.1"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.4.1.tgz#ebe23284207bb75cee7c408c33e722bfb27b5284"
+  integrity sha512-WSZD9jgobAg3ZKuCQZSa3g9QOJeCCqLoLAykiWgmXnDo9EPnn4RPf5qVTtzgOx66o6/oqhcA5tHtJXpG8pMt3g==
+  dependencies:
+    cliui "^7.0.2"
+    escalade "^3.1.1"
+    get-caller-file "^2.0.5"
+    require-directory "^2.1.1"
+    string-width "^4.2.3"
+    y18n "^5.0.5"
+    yargs-parser "^21.0.0"
 
 yauzl@^2.10.0:
   version "2.10.0"
