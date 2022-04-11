@@ -97,7 +97,7 @@ class StylesLoader {
 			static::HANDLE,
 			$this->base_url . 'build/' . $path_partial . '.css',
 			$asset_file['dependencies'],
-			$asset_file['version'],
+			$asset_file['version']
 		);
 	}
 

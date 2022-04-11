@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/godaddy-wordpress/styles.git",
-                "reference": "d486773791150d42cb3a1b9f2fd4f1d6c4cfaddc"
+                "reference": "209ea30b1393f595fd22afbb13dfda7c0d2ff9b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/godaddy-wordpress/styles/zipball/d486773791150d42cb3a1b9f2fd4f1d6c4cfaddc",
-                "reference": "d486773791150d42cb3a1b9f2fd4f1d6c4cfaddc",
+                "url": "https://api.github.com/repos/godaddy-wordpress/styles/zipball/209ea30b1393f595fd22afbb13dfda7c0d2ff9b6",
+                "reference": "209ea30b1393f595fd22afbb13dfda7c0d2ff9b6",
                 "shasum": ""
             },
             "require": {
@@ -73,7 +73,7 @@
                 "source": "https://github.com/godaddy-wordpress/styles/tree/add-wp-env",
                 "issues": "https://github.com/godaddy-wordpress/styles/issues"
             },
-            "time": "2022-04-11T20:39:42+00:00"
+            "time": "2022-04-11T20:49:00+00:00"
         }
     ],
     "packages-dev": [
