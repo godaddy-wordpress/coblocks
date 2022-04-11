@@ -194,8 +194,6 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 	}
 endif;
 
-// require_once dirname( __FILE__ ) . '/vendor/autoload.php';
-
 /**
  * The main function for that returns CoBlocks
  *
