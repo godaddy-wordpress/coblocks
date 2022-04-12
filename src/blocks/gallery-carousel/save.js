@@ -43,6 +43,7 @@ const save = ( props ) => {
 	}
 
 	const innerClasses = classnames(
+		'coblocks-gallery-carousel-swiper-container',
 		'is-cropped',
 		...GalleryClasses( attributes ),
 		{
@@ -61,14 +62,17 @@ const save = ( props ) => {
 		}
 	);
 
-	const thumbnailClasses = classnames(
-		'wp-block-coblocks-gallery-carousel-thumbnail',
-		{
-			[ `has-margin-left-${ gutter }` ]: gutter > 0,
-			[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-			[ `has-margin-right-${ gutter }` ]: gutter > 0,
-			[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-		}
+	const thumbnailClasses = ( index ) => (
+		classnames(
+			'wp-block-coblocks-gallery-carousel-thumbnail',
+			`wp-block-coblocks-gallery-carousel-thumbnail-${ index }`,
+			{
+				[ `has-margin-left-${ gutter }` ]: gutter > 0,
+				[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+				[ `has-margin-right-${ gutter }` ]: gutter > 0,
+				[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+			}
+		)
 	);
 
 	const thumbnailContainerClasses = classnames(
@@ -128,7 +132,7 @@ const save = ( props ) => {
 		<div aria-label={ __( `Carousel Gallery`, 'coblocks' ) } >
 			<div className={ innerClasses }>
 				<div className={ swiperClasses } data-swiper={ JSON.stringify( swiperOptions ) } id={ uuid } style={ responsiveHeight ? undefined : swiperStyles } >
-					<div className="swiper-wrapper" id="swiper-wrapper">
+					<div className="swiper-wrapper">
 						{ images.map( ( image, index ) => {
 							return (
 								<div className="swiper-slide" key={ index }>
@@ -167,7 +171,7 @@ const save = ( props ) => {
 					<div className={ thumbnailContainerClasses }>
 						{ images.map( ( item, index ) => {
 							return (
-								<button className={ thumbnailClasses } id={ `wp-block-coblocks-gallery-carousel-thumbnail-${ index }` } key={ index } style={ { height: '80px', width: '100px' } } tabIndex="0" >
+								<button className={ thumbnailClasses( index ) } key={ index } style={ { height: '80px', width: '100px' } } tabIndex="0" >
 									<img
 										alt={ item.alt }
 										data-id={ item.id }
