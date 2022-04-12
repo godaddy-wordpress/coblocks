@@ -1,3 +1,4 @@
+/* global coblocksLabs */
 /**
  * External dependencies
  */
@@ -8,7 +9,6 @@ import { sortBy } from 'lodash';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { applyFilters } from '@wordpress/hooks';
 import { ComplementaryArea } from '@wordpress/interface';
 import { registerPlugin } from '@wordpress/plugins';
 import { useEffect } from '@wordpress/element';
@@ -79,8 +79,7 @@ registerPlugin( PLUGIN_NAME, {
 	render: compose( [
 		ifCondition( () => {
 			const [ siteContentEnabled ] = useEntityProp( 'root', 'site', SITE_CONTENT_FEATURE_ENABLED_KEY );
-			const isLabsEnabled = applyFilters( 'coblocks-labs-controls-enabled', false );
-
+			const isLabsEnabled = !! coblocksLabs?.isLabsEnabled;
 			return siteContentEnabled && isLabsEnabled;
 		} ),
 		withSelect( ( select ) => {

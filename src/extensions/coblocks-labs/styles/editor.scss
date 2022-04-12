@@ -15,7 +15,7 @@
 	&__section {
 		display: flex;
 		justify-content: space-between;
-		max-width: 1000px;
+		max-width: 900px;
 
 		&__vertical-group {
 			display: flex;
@@ -26,6 +26,10 @@
 			.components-base-control {
 				align-items: flex-end;
 				display: flex;
+
+				&__field {
+					margin: 0;
+				}
 			}
 		}
 
@@ -35,6 +39,7 @@
 
 		&__description {
 			color: #5e5e5e;
+			margin-top: 0;
 		}
 	}
 }

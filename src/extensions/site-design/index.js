@@ -1,3 +1,4 @@
+/* global coblocksLabs */
 /**
  * External dependencies
  */
@@ -7,7 +8,6 @@ import { ColorPaletteIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { applyFilters } from '@wordpress/hooks';
 import { ComplementaryArea } from '@wordpress/interface';
 import { registerPlugin } from '@wordpress/plugins';
 import { useEffect } from '@wordpress/element';
@@ -155,8 +155,7 @@ registerPlugin( PLUGIN_NAME, {
 	render: compose( [
 		ifCondition( () => {
 			const [ siteDesignEnabled ] = useEntityProp( 'root', 'site', SITE_DESIGN_FEATURE_ENABLED_KEY );
-			const isLabsEnabled = applyFilters( 'coblocks-labs-controls-enabled', false );
-
+			const isLabsEnabled = !! coblocksLabs?.isLabsEnabled;
 			return siteDesignEnabled && isLabsEnabled;
 		} ),
 	] )(

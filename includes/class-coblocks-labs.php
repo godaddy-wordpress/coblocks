@@ -128,6 +128,7 @@ class CoBlocks_Labs {
 			'goThemeInstallUri'   => self::get_themes_install_php_go_uri(),
 			'goThemeDetailsUri'   => self::get_go_theme_details_uri(),
 			'launchGuideEligible' => self::get_site_export_status(),
+			'isLabsEnabled'       => apply_filters( 'coblocks_labs_controls_enabled', false ),
 		);
 	}
 

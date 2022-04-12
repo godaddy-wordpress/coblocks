@@ -1,8 +1,8 @@
+/* global coblocksLabs */
 /**
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { applyFilters } from '@wordpress/hooks';
 import { PluginMoreMenuItem } from '@wordpress/edit-post';
 import { useDispatch } from '@wordpress/data';
 import { useState } from '@wordpress/element';
@@ -37,7 +37,7 @@ export function CoBlocksLabs() {
 			</PluginMoreMenuItem>
 			{ isOpen && (
 				<Modal
-					className="coblocks-labs-modal"
+					className="coblocks-labs-modal godaddy-styles"
 					closeLabel={ __( 'Close', 'coblocks' ) }
 					onRequestClose={ closeModal }
 					shouldCloseOnClickOutside={ false }
@@ -80,8 +80,7 @@ if ( ! getPlugin( 'coblocks-labs' ) ) {
 		icon: '',
 		render: compose( [
 			ifCondition( () => {
-				const isLabsEnabled = applyFilters( 'coblocks-labs-controls-enabled', false );
-
+				const isLabsEnabled = !! coblocksLabs?.isLabsEnabled;
 				return isLabsEnabled;
 			} ),
 		] )( CoBlocksLabs ),
