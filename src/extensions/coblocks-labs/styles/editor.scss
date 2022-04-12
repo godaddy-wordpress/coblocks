@@ -1,40 +1,40 @@
 .coblocks-labs-modal {
-    &-controls {
-        hr {
-            margin: 30px 0;
-            &:last-of-type {
-                display: none;
-            }
-        }
+	&-controls {
+		hr {
+			margin: 30px 0;
+			&:last-of-type {
+				display: none;
+			}
+		}
 
-        figure {
-            margin: 0;
-        }
-    }
+		figure {
+			margin: 0;
+		}
+	}
 
-    &__section {
-        max-width: 1000px;
-        display: flex;
-        justify-content: space-between;
+	&__section {
+		display: flex;
+		justify-content: space-between;
+		max-width: 1000px;
 
-        &__vertical-group {
-            display: flex;
-            flex-direction: column;
-            width: 50%;
-            justify-content: center;
+		&__vertical-group {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			width: 50%;
 
-            .components-base-control {
-                display: flex;
-                align-items: flex-end;
-            }
-        }
+			.components-base-control {
+				align-items: flex-end;
+				display: flex;
+			}
+		}
 
-        &__heading {
-            margin-top: 0;
-        }
+		&__heading {
+			margin-top: 0;
+		}
 
-        &__description {
-            color: #5e5e5e;
-        }
-    }
+		&__description {
+			color: #5e5e5e;
+		}
+	}
 }
