@@ -10,5 +10,9 @@
 			"type": "string",
 			"default": "center"
 		}
-	}
+	},
+	"title": "Pricing Table",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-6",
+	"description": "Add pricing tables to help visitors compare products and plans."
 }

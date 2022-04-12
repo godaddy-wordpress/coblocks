@@ -79,5 +79,9 @@
 		"gutter": {
 			"default": "medium"
 		}
-	}
+	},
+	"title": "Posts",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-11",
+	"description": "Display posts or an RSS feed as stacked or horizontal cards."
 }

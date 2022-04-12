@@ -18,6 +18,7 @@
 				<directory suffix=".php">./build</directory>
 				<directory suffix=".php">./node_modules</directory>
 				<directory suffix=".php">./vendor</directory>
+				<directory suffix=".php">./includes/Dependencies</directory>
 			</exclude>
 		</whitelist>
 	</filter>

@@ -43,5 +43,8 @@
 			}
 		}
 	},
-	"title": "Author"
+	"title": "Author",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-1",
+	"description": "Add an author biography to build credibility and authority."
 }

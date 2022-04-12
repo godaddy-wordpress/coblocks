@@ -14,8 +14,8 @@ import transforms from './transforms';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { InnerBlocks } from '@wordpress/block-editor';
 import { Icon } from '@wordpress/components';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Block constants
@@ -23,10 +23,15 @@ import { Icon } from '@wordpress/components';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: block name */
-	title: __( 'Accordion', 'coblocks' ),
+	attributes,
 	/* translators: block description */
 	description: __( 'Organize content within collapsable accordion items.', 'coblocks' ),
+	edit,
+	example: {
+		attributes: {
+			count: 2,
+		},
+	},
 	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
@@ -35,18 +40,6 @@ const settings = {
 		/* translators: block keyword (abbreviation for "frequently asked questions") */
 		__( 'faq', 'coblocks' ),
 	],
-	supports: {
-		align: [ 'wide', 'full' ],
-		html: false,
-	},
-	attributes,
-	example: {
-		attributes: {
-			count: 2,
-		},
-	},
-	transforms,
-	edit,
 	save() {
 		return (
 			<div>
@@ -54,6 +47,13 @@ const settings = {
 			</div>
 		);
 	},
+	supports: {
+		align: [ 'wide', 'full' ],
+		html: false,
+	},
+	/* translators: block name */
+	title: __( 'Accordion', 'coblocks' ),
+	transforms,
 };
 
 export { name, category, metadata, settings };
