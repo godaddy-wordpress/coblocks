@@ -9,7 +9,7 @@
  * Registers the Gist oembed handler.
  */
 function coblocks_register_gist_oembed() {
-	wp_embed_register_handler( 'gist', '/https?:\/\/gist\.github\.com\/([a-zA-Z0-9\/]+)(?:\#file\-([a-zA-Z0-9\_\-]+))?/', 'coblocks_block_gist_handler' );
+	wp_embed_register_handler( 'gist', '/https?:\/\/gist\.github\.com\/([a-zA-Z0-9\/\_\-]+)(?:\#file\-([a-zA-Z0-9\_\-]+))?/', 'coblocks_block_gist_handler' );
 }
 add_action( 'init', 'coblocks_register_gist_oembed' );
 
@@ -75,10 +75,17 @@ function coblocks_block_gist_handler( $matches ) {
 
 	}
 
-	return sprintf(
-		'%1$s<noscript><a href="%2$s">%3$s</a></noscript>',
-		wp_get_inline_script_tag( null, array( 'src' => esc_url( 'https://gist.github.com/' . $script_src ) ) ),
+	$gist_html = "<span class='coblocks-gist__container' style='pointer-events: none'>";
+
+	$gist_html .= wp_get_inline_script_tag( null, array( 'src' => esc_url( 'https://gist.github.com/' . $script_src ) ) );
+
+	$gist_html .= sprintf(
+		'<a class="gist-block__container" href="%1$s" target="_blank">%2$s</a>',
 		esc_url( $gist_url ),
 		esc_html( __( 'View this gist on GitHub', 'coblocks' ) )
 	);
+
+	$gist_html .= '</span>';
+
+	return $gist_html;
 }

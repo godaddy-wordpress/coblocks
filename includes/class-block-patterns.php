@@ -119,7 +119,7 @@ class CoBlocks_Block_Patterns {
 			'coblocks-editor',
 			'coblocksBlockPatterns',
 			array(
-				'patternsEnabled' => is_wp_version_compatible( '5.5' ),
+				'patternsEnabled' => (bool) apply_filters( 'coblocks_patterns_show_settings_panel', is_wp_version_compatible( '5.5' ) ),
 			)
 		);
 	}

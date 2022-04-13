@@ -1,14 +1,14 @@
 # Copyright (c) 2022 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 2.22.8\n"
+"Project-Id-Version: CoBlocks 2.22.10\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-03-25T01:13:52+00:00\n"
+"POT-Creation-Date: 2022-04-13T02:01:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: coblocks\n"
@@ -64,15 +64,15 @@ msgstr ""
 msgid "Pattern Category"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:443
+#: includes/class-coblocks-block-assets.php:490
 msgid "Close Gallery"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:444
+#: includes/class-coblocks-block-assets.php:491
 msgid "Previous"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:445
+#: includes/class-coblocks-block-assets.php:492
 msgid "Next"
 msgstr ""
 
@@ -258,11 +258,11 @@ msgstr ""
 msgid "Counter with multiple inline digits"
 msgstr ""
 
-#: src/blocks/events/index.php:136
+#: src/blocks/events/index.php:185
 msgid "An error has occurred, check for calendar privileges to make sure it is public or try again later."
 msgstr ""
 
-#: src/blocks/gist/index.php:82
+#: src/blocks/gist/index.php:85
 #: src/blocks/gist/deprecated.js:37
 #: src/blocks/gist/deprecated.js:73
 msgid "View this gist on GitHub"
@@ -424,13 +424,13 @@ msgstr ""
 
 #. translators: block keyword
 #: src/blocks/accordion/accordion-item/index.js:34
-#: src/blocks/accordion/index.js:34
+#: src/blocks/accordion/index.js:39
 msgid "tabs"
 msgstr ""
 
 #. translators: block keyword (abbreviation for "frequently asked questions")
 #: src/blocks/accordion/accordion-item/index.js:36
-#: src/blocks/accordion/index.js:36
+#: src/blocks/accordion/index.js:41
 msgid "faq"
 msgstr ""
 
@@ -508,16 +508,16 @@ msgstr ""
 msgid "Add accordion item"
 msgstr ""
 
-#. translators: block name
-#. translators: icon label
-#: src/blocks/accordion/index.js:27
-#: src/blocks/icon/svgs-generated.js:42
-msgid "Accordion"
+#. translators: block description
+#: src/blocks/accordion/index.js:28
+msgid "Organize content within collapsable accordion items."
 msgstr ""
 
-#. translators: block description
-#: src/blocks/accordion/index.js:29
-msgid "Organize content within collapsable accordion items."
+#. translators: block name
+#. translators: icon label
+#: src/blocks/accordion/index.js:55
+#: src/blocks/icon/svgs-generated.js:42
+msgid "Accordion"
 msgstr ""
 
 #: src/blocks/accordion/inspector.js:27
@@ -10551,7 +10551,7 @@ msgstr ""
 
 #: src/blocks/opentable/block.json
 msgctxt "block title"
-msgid "Opentable"
+msgid "OpenTable"
 msgstr ""
 
 #: src/blocks/opentable/block.json
