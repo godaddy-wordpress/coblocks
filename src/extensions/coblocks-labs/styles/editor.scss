@@ -1,10 +1,11 @@
 .coblocks-labs-modal {
+	hr {
+		margin: 30px 0;
+	}
+
 	&-controls {
-		hr {
-			margin: 30px 0;
-			&:last-of-type {
-				display: none;
-			}
+		hr:last-of-type {
+			display: none;
 		}
 
 		figure {
@@ -22,15 +23,6 @@
 			flex-direction: column;
 			justify-content: center;
 			width: 50%;
-
-			.components-base-control {
-				align-items: flex-end;
-				display: flex;
-
-				&__field {
-					margin: 0;
-				}
-			}
 		}
 
 		&__heading {

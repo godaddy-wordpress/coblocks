@@ -43,6 +43,7 @@ export function CoBlocksLabs() {
 					shouldCloseOnClickOutside={ false }
 					title={ __( 'CoBlocks Labs', 'coblocks' ) }
 				>
+					<hr />
 					<section className="coblocks-labs-modal-controls">
 						<CoBlocksLabsModalControl.Slot>
 							{
