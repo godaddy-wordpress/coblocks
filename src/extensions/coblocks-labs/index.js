@@ -57,11 +57,17 @@ export function CoBlocksLabs() {
 								 * registerPlugin( 'your-labs-modal-control', {
 								 *     render: () => (
 								 *         <CoBlocksLabsModalControl>
-								 *             <CoBlocksLabsToggleControl
-								 *                 settingsKey="name_of_wordpress_setting"
-								 *                 label={ __( 'The toggle control label', 'coblocks' ) }
-								 *                 help={ __( 'The toggle control help text', 'coblocks' ) }
-								 *             />
+								 *           <CoBlocksLabsToggleControl
+								 *             // Should it depend on Go theme?
+								 *             conditionalDisable={ true }
+								 *             description={ __( 'Display block of text next to controls', 'coblocks' ) }
+								 *             imageAlt={ __( 'Feature Name example', 'coblocks' ) }
+								 *             imageSrc={ IMPORTED IMAGE }
+								 *             label={ __( 'The toggle control label', 'coblocks' ) }
+								 *             settingsKey="name_of_wordpress_setting"
+								 *             // Show help text relating to Go theme activation status.
+								 *             showGoHelp={ true }
+								 *           />
 								 *         </CoBlocksLabsModalControl>
 								 *     ),
 								 * } );
