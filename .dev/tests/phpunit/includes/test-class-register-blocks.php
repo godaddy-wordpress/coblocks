@@ -110,8 +110,6 @@ class CoBlocks_Register_Blocks_Tests extends WP_UnitTestCase {
 			'coblocks/gif',
 			'coblocks/highlight',
 			'coblocks/gallery-carousel',
-			'coblocks/gallery-masonry',
-			'coblocks/gallery-stacked',
 		];
 
 		$registered_blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();

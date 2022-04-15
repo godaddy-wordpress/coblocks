@@ -17,3 +17,9 @@ import './extensions/media-text-styles';
 
 // Formats
 import './formats';
+
+// Block Styles
+import './block-styles/core/gallery';
+
+// Block Variations
+import './block-variations/core/gallery';

@@ -2,100 +2,20 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
 	"name": "coblocks/gallery-masonry",
-	"title": "Masonry Gallery",
-	"category": "media",
-	"description": "Display multiple images in a masonry style gallery.",
-	"keywords": [
-		"images",
-		"photos"
-	],
-	"textdomain": "coblocks",
 	"attributes": {
 		"images": {
-			"type": "array",
-			"default": [],
-			"source": "query",
-			"selector": ".coblocks-gallery--item",
-			"query": {
-				"url": {
-					"source": "attribute",
-					"selector": "img",
-					"attribute": "src"
-				},
-				"link": {
-					"source": "attribute",
-					"selector": "img",
-					"attribute": "data-link"
-				},
-				"imgLink": {
-					"source": "attribute",
-					"selector": "img",
-					"attribute": "data-imglink"
-				},
-				"alt": {
-					"source": "attribute",
-					"selector": "img",
-					"attribute": "alt",
-					"default": ""
-				},
-				"id": {
-					"source": "attribute",
-					"selector": "img",
-					"attribute": "data-id"
-				},
-				"caption": {
-					"type": "array",
-					"source": "children",
-					"selector": "figcaption"
-				}
-			}
-		},
-		"caption": {
-			"type": "string",
-			"source": "html",
-			"selector": ".blocks-gallery-caption"
+			"type": "array"
 		},
 		"filter": {
-			"default": "none",
 			"type": "string"
 		},
-		"linkTarget": {
+		"align": {
 			"type": "string"
 		},
-		"linkTo": {
-			"type": "string"
-		},
-		"radius": {
-			"type": "number",
-			"default": 0
-		},
-		"sizeSlug": {
-			"type": "string",
-			"default": "large"
-		},
-		"allowResize": {
-			"type": "boolean",
-			"default": false
+		"lightbox": {
+			"type": "boolean"
 		}
 	},
-	"providesContext": {
-		"allowResize": "allowResize",
-		"imageCrop": "imageCrop"
-	},
-	"supports": {
-		"anchor": true,
-		"gutter": {
-			"default": "medium",
-			"customDefault": 0.2
-		},
-		"align": [
-			"wide",
-			"full"
-		],
-		"coBlocksSpacing": true,
-		"html": false
-	},
-	"editorStyle": "wp-block-coblocks-gallery-masonry-editor",
-	"style": "wp-block-coblocks-gallery-masonry",
-	"editorScript": "blocks-5"
+	"textdomain": "coblocks",
+	"title": "Masonry Gallery"
 }

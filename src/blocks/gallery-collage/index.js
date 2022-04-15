@@ -1,98 +1,61 @@
 /**
- * External dependencies
+ * Internal dependencies
  */
-import { GalleryCollageIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
- * WordPress dependencies.
- */
-import { __ } from '@wordpress/i18n';
-import { Icon, Spinner } from '@wordpress/components';
-import { lazy, Suspense } from '@wordpress/element';
-
-/**
- * Internal dependencies.
- */
-import deprecated from './deprecated';
-const Edit = lazy( () => import( './edit' ) );
-import { GalleryAttributes } from '../../components/block-gallery/shared';
-import { hasFormattingCategory } from '../../utils/block-helpers';
+import { BLOCK_VARIATION_GALLERY_COLLAGE } from '../../block-variations/core/gallery';
 import metadata from './block.json';
-import save from './save';
-import transforms from './transforms';
 
 /**
- * Block constants.
+ * WordPress dependencies
  */
-const { name, category } = metadata;
+import { InnerBlocks } from '@wordpress/block-editor';
+import { createBlock, switchToBlockType } from '@wordpress/blocks';
+import { useDispatch, useSelect } from '@wordpress/data';
 
-const attributes = {
-	...GalleryAttributes,
-	...metadata.attributes,
-	gutter: {
-		type: 'string',
-		default: 'small',
-	},
-};
+/**
+ * Block constants
+ */
+const { name } = metadata;
+
+function Edit( { clientId } ) {
+	const { replaceBlocks } = useDispatch( 'core/block-editor' );
+	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
+
+	replaceBlocks(
+		[ clientId ],
+		switchToBlockType( getBlock( clientId ), 'core/gallery' )
+	);
+
+	return null;
+}
 
 const settings = {
-	/* translators: block name */
-	title: __( 'Collage', 'coblocks' ),
-	/* translators: block description */
-	description: __( 'Assemble images into a beautiful collage gallery.', 'coblocks' ),
-	category: hasFormattingCategory ? 'coblocks-galleries' : 'media',
-	icon: <Icon icon={ icon } />,
-	keywords: [
-		'coblocks',
-		/* translators: block keyword */
-		__( 'gallery', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'photos', 'coblocks' ),
-	],
-	styles: [
-		{
-			name: 'default',
-			/* translators: block style */
-			label: __( 'Default', 'coblocks' ),
-			isDefault: true,
-		},
-		{
-			name: 'tiled',
-			/* translators: block style */
-			label: __( 'Tiled', 'coblocks' ),
-		},
-		{
-			name: 'layered',
-			/* translators: block style */
-			label: __( 'Layered', 'coblocks' ),
-		},
-	],
-	supports: {
-		align: [ 'wide', 'full' ],
-		gutter: {
-			default: 'small',
-		},
+	edit: Edit,
+	parent: [],
+	save: () => <InnerBlocks.Content />,
+	transforms: {
+		to: [
+			{
+				blocks: [ 'core/gallery' ],
+				transform: ( attributes ) => {
+					const galleryAttributes = Object.fromEntries(
+						Object.entries( attributes ).filter(
+							( attribute ) => 'images' !== attribute[ 0 ]
+						)
+					);
+
+					return createBlock(
+						'core/gallery',
+						Object.assign( {}, BLOCK_VARIATION_GALLERY_COLLAGE.attributes, galleryAttributes ),
+						attributes.images.map( ( image ) => {
+							return createBlock( 'core/image', image );
+						} ),
+					);
+				},
+				type: 'block',
+			},
+		],
 	},
-	example: {
-		attributes: {
-			images: [
-				{ index: 0, url: 'https://s.w.org/images/core/5.3/Sediment_off_the_Yucatan_Peninsula.jpg' },
-				{ index: 1, url: 'https://s.w.org/images/core/5.3/Windbuchencom.jpg' },
-				{ index: 2, url: 'https://s.w.org/images/core/5.3/Biologia_Centrali-Americana_-_Cantorchilus_semibadius_1902.jpg' },
-				{ index: 3, url: 'https://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg' },
-				{ index: 4, url: 'https://s.w.org/images/core/5.3/MtBlanc1.jpg' },
-			],
-		},
-	},
-	attributes,
-	transforms,
-	edit: ( props ) => (
-		<Suspense fallback={ <Spinner /> }>
-			<Edit { ...props } />
-		</Suspense>
-	),
-	save,
-	deprecated,
 };
 
-export { name, category, metadata, settings };
+export { name, metadata, settings };
+
