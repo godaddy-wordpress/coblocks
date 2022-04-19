@@ -91,7 +91,7 @@ export function* updateDesign( {
 		apiData = yield apiFetch( {
 			body,
 			method: 'POST',
-			path: `${ coblocksBlockData.baseApiUrl }/${ siteDesign.apiRoute }`,
+			path: `${ coblocksBlockData.baseApiNamespace }/${ siteDesign.apiRoute }`,
 		} );
 	} catch ( e ) {
 		// @TODO display a fetch problem to the user.

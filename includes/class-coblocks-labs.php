@@ -53,83 +53,8 @@ class CoBlocks_Labs {
 	 * @since 2.24.4
 	 * @return boolean
 	 */
-	public static function is_go_theme_active() {
-		$template_part      = explode( 'themes/', esc_attr( wp_get_theme( get_template() )->get_template() ) );
-		$active_template    = isset( $template_part ) && isset( $template_part[0] ) ? $template_part[0] : false;
-		$active_theme_is_go = 'go' === $active_template;
-		return $active_theme_is_go;
-	}
-
-	/**
-	 * Go theme is installed.
-	 *
-	 * @since 2.22.4
-	 * @return string
-	 */
-	public static function is_go_theme_installed() {
-		$go_theme_path   = get_theme_root() . '/go/index.php';
-		$is_go_installed = file_exists( $go_theme_path );
-		return $is_go_installed;
-	}
-
-	/**
-	 * Site themes.php page.
-	 *
-	 * @since 2.22.4
-	 * @return string
-	 */
-	public static function get_themes_php_uri() {
-		return admin_url( 'themes.php' );
-	}
-
-	/**
-	 * Go theme installation page.
-	 *
-	 * @since 2.22.4
-	 * @return string
-	 */
-	public static function get_themes_install_php_go_uri() {
-		return admin_url( 'theme-install.php?theme=go' );
-	}
-
-	/**
-	 * Go theme details page.
-	 *
-	 * @since 2.22.4
-	 * @return string
-	 */
-	public static function get_go_theme_details_uri() {
-		return self::get_themes_php_uri() . '?theme=go';
-	}
-
-	/**
-	 * Get `wpnux_export_data` option for Launch Guide eligibility.
-	 *
-	 * `get_option` returns boolean false if option does not exist. If option exists we have a good export.
-	 *
-	 * @since 2.22.4
-	 * @return string
-	 */
-	public static function get_site_export_status() {
-		return get_option( 'wpnux_export_data' ) === false ? false : true;
-	}
-
-	/**
-	 * Function get_coblocks_labs_data is used to set a global object
-	 * `coblocksLabs` with relevant data.
-	 *
-	 * @since 2.22.4
-	 * @return array Array of relevant CoBlocks labs data.
-	 */
-	public static function get_coblocks_labs_data() {
-		return array(
-			'isGoThemeActive'     => self::is_go_theme_active(),
-			'isGoThemeInstalled'  => self::is_go_theme_installed(),
-			'goThemeInstallUri'   => self::get_themes_install_php_go_uri(),
-			'goThemeDetailsUri'   => self::get_go_theme_details_uri(),
-			'launchGuideEligible' => self::get_site_export_status(),
-			'isLabsEnabled'       => apply_filters( 'coblocks_labs_controls_enabled', false ),
-		);
+	public static function is_go_active() {
+		return defined( 'GO_VERSION' ) && 'go' === get_option( 'stylesheet' );
 	}
 
 	/**
@@ -172,10 +97,9 @@ class CoBlocks_Labs {
 	 * @access public
 	 */
 	public function propagate_settings() {
-		$go_installed = self::is_go_theme_installed();
-		$go_active    = self::is_go_theme_active();
+		$go_active = self::is_go_active();
 
-		if ( ! $go_installed || ! $go_active ) {
+		if ( ! $go_active ) {
 			update_option( 'coblocks_site_design_controls_enabled', 0 );
 			update_option( 'coblocks_layout_selector_controls_enabled', 0 );
 		}
@@ -190,7 +114,13 @@ class CoBlocks_Labs {
 		wp_localize_script(
 			'coblocks-editor',
 			'coblocksLabs',
-			self::get_coblocks_labs_data()
+			array(
+				'isGoThemeActive'     => self::is_go_active(),
+				'goThemeInstallUri'   => admin_url( 'theme-install.php?theme=go' ),
+				'goThemeDetailsUri'   => admin_url( 'themes.php' ) . '?theme=go',
+				'launchGuideEligible' => ! empty( get_option( 'wpnux_export_data' ) ),
+				'isLabsEnabled'       => apply_filters( 'coblocks_labs_controls_enabled', false ),
+			)
 		);
 	}
 

@@ -291,7 +291,7 @@ class CoBlocks_Block_Assets {
 				'typographyControlsEnabled'      => $typography_controls_enabled,
 				'animationControlsEnabled'       => $animation_controls_enabled,
 				'localeCode'                     => get_locale(),
-				'baseApiUrl'                     => COBLOCKS_API_NAMESPACE,
+				'baseApiNamespace'               => COBLOCKS_API_NAMESPACE,
 			)
 		);
 
