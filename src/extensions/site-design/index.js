@@ -2,7 +2,8 @@
 /**
  * External dependencies
  */
-import { ColorPaletteIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { ColorPaletteStyles } from '@godaddy-wordpress/coblocks-icons';
+const icon = ColorPaletteStyles?.outlined;
 
 /**
  * WordPress dependencies
@@ -18,6 +19,7 @@ import { useDispatch, useSelect } from '@wordpress/data';
 /**
  * Internal dependencies
  */
+import { CoBlocksMenuIcon } from '../../components/common';
 import ColorPalettePreviews from './color-palette-preview';
 import DesignPreviews from './design-preview';
 import FontPreviews from './font-preview';
@@ -164,6 +166,12 @@ registerPlugin( PLUGIN_NAME, {
 			return (
 				<>
 					<ComplementaryArea
+						icon={
+							<CoBlocksMenuIcon
+								icon={ icon }
+								label={ __( 'Site design', 'coblocks' ) }
+								slug="site-design" />
+						}
 						identifier={ `${ PLUGIN_NAME }/${ SIDEBAR_NAME }` }
 						scope="core/edit-post"
 						smallScreenTitle={ componentTitle }

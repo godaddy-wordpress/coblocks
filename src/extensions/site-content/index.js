@@ -53,7 +53,7 @@ export const CoBlocksSiteContent = ( props ) => {
 				icon={
 					<CoBlocksMenuIcon
 						icon={ icon }
-						label={ __( 'Site', 'coblocks' ) }
+						label={ __( 'Site content', 'coblocks' ) }
 						slug="site-content" />
 				}
 				identifier={ `${ PLUGIN_NAME }/${ SIDEBAR_NAME }` }
