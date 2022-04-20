@@ -30,7 +30,7 @@
 		"postversion": "git push && git push --tags",
 		"pot2json": "./vendor/bin/pot2json languages/coblocks.pot languages/coblocks.json",
 		"prepare": "husky install .dev/husky",
-		"setup": "yarn install && yarn run build && wp-env start && yarn php:composer:install",
+		"setup": "npm i && yarn run build && wp-env start && yarn php:composer:install",
 		"start:debug": "DEBUG_MODE=on wp-scripts start --progress",
 		"start": "wp-scripts start --progress",
 		"test:e2e": "cypress run --config video=false --browser chrome",
@@ -163,6 +163,7 @@
 		"uuid": "^8.3.2"
 	},
 	"resolutions": {
+		"async": "^3.2.2",
 		"markdown-it": "^12.3.2",
 		"moment": "^2.29.2",
 		"react-dom": "17.0.2",
