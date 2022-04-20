@@ -7,18 +7,14 @@ import metadata from './block.json';
  * WordPress dependencies
  */
 import { dispatch } from '@wordpress/data';
-import { createBlock, switchToBlockType } from '@wordpress/blocks';
+import { switchToBlockType } from '@wordpress/blocks';
 
 /**
  * Block constants
  */
 const { name } = metadata;
 
-alert( name );
-console.log( metadata );
-
 const settings = {
-	title: 'Alert',
 	edit: ( props ) => {
 		const { replaceBlocks } = dispatch( 'core/block-editor' );
 		replaceBlocks(
@@ -28,7 +24,8 @@ const settings = {
 		return null;
 	},
 	parent: [],
-	save: () => null
+	save: () => null,
+	title: 'Alert',
 };
 
 export { name, metadata, settings };
