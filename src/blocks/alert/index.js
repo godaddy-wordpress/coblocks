@@ -27,7 +27,7 @@ function Edit( props ) {
 }
 
 const settings = {
-	title: "Alert",
+	title: metadata.title,
 	edit: Edit,
 	parent: [],
 	save: () => null,

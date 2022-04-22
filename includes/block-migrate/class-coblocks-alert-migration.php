@@ -8,7 +8,7 @@
 /**
  * CoBlocks_Gallery_Collage_Migration
  *
- * Define how a coblocks/gallery-collage block should migrate into a core/gallery block.
+ * Define how a coblocks/alert block should migrate into a core/paragraph block.
  */
 class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 	/**
