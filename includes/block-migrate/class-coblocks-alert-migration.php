@@ -28,23 +28,4 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 	protected function migrate_attributes() {
 		return array();
 	}
-
-	/**
-	 * Calculate attributes applied to the paragraph.
-	 *
-	 * @return array attributes found and their values.
-	 */
-	private function paragraph_attributes() {
-		return array(
-			'style' => array(
-				'color' => array(
-					'background' => $this->get_alert_background_color_from_classname( $this->block_wrapper() ),
-				)
-			)
-		);
-	}
-
-	private function get_alert_background_color_from_classname( DOMElement $element ) {
-		return '#d0eac4';
-	}
 }

@@ -18,8 +18,6 @@ function Edit( props ) {
 	const { replaceBlocks } = useDispatch( 'core/block-editor' );
 	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
 
-	console.log( props );
-
 	replaceBlocks(
 		[ props.clientId ],
 		switchToBlockType( getBlock( props.clientId ), 'core/paragraph' )
@@ -38,18 +36,8 @@ const settings = {
 			{
 				type: 'block',
 				blocks: [ 'core/paragraph' ],
-				transform: ( { value, title } ) => {
-					if ( title ) {
-						value = title + '<br />' + value;
-					}
-
-					if ( ! value || ! value.length ) {
-						return createBlock( 'core/paragraph' );
-					}
-					// transforming an alert element with content
-					return createBlock( 'core/paragraph', {
-						content: value,
-					} );
+				transform: ( attributes ) => {
+					return createBlock( 'core/paragraph', attributes );
 				},
 			},
 		],
