@@ -36,7 +36,7 @@ class CoBlocks_Gallery_Stacked_Migration_Test extends WP_UnitTestCase {
 			<!-- /wp:coblocks/gallery-stacked -->
 			BLOCKHTML
 		);
-		$block_attributes = $this->instance->migrate( $parsed_blocks[0]['innerHTML'] );
+		$block_attributes = $this->instance->migrate( $parsed_blocks[0]['attrs'], $parsed_blocks[0]['innerHTML'] );
 
 		$this->assertIsArray( $block_attributes );
 		$this->assertEqualSetsWithIndex(

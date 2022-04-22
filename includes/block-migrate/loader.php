@@ -45,7 +45,7 @@ add_action(
 
 				// Perform the migration if we have one.
 				$block_migration  = new $block_targets[ $parsed_block['blockName'] ]();
-				$block_attributes = $block_migration->migrate( $parsed_block['innerHTML'] );
+				$block_attributes = $block_migration->migrate( $parsed_block['attrs'], $parsed_block['innerHTML'] );
 
 				// Override certain keys of the originally parsed block.
 				return array_merge(
