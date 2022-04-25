@@ -49,8 +49,6 @@ class CoBlocks_Site_Content {
 		$post_types = get_post_types();
 		$white_list = array(
 			'page' => 'pages',
-			// 'post'    => 'posts', // @codingStandardsIgnoreLine
-			// 'product' => 'products', // @codingStandardsIgnoreLine
 		);
 
 		foreach ( $post_types as $post_type_slug ) {
