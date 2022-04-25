@@ -35,7 +35,7 @@ class CoBlocks_Gallery_Masonry_Migration_Test extends WP_UnitTestCase {
 			<!-- /wp:coblocks/gallery-masonry -->
 			BLOCKHTML
 		);
-		$block_attributes = $this->instance->migrate( $parsed_blocks[0]['innerHTML'] );
+		$block_attributes = $this->instance->migrate( $parsed_blocks[0]['attrs'], $parsed_blocks[0]['innerHTML'] );
 
 		$this->assertIsArray( $block_attributes );
 		$this->assertEqualSetsWithIndex(
