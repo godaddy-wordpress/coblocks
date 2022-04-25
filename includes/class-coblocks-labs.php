@@ -58,6 +58,18 @@ class CoBlocks_Labs {
 	}
 
 	/**
+	 * Go theme is installed.
+	 *
+	 * @since 2.22.4
+	 * @return string
+	 */
+	public static function is_go_installed() {
+		$go_theme_path   = get_theme_root() . '/go/index.php';
+		$is_go_installed = file_exists( $go_theme_path );
+		return $is_go_installed;
+	}
+
+	/**
 	 * Register CoBlocks labs settings for Site Design and Site Content.
 	 *
 	 * @access public
@@ -116,6 +128,7 @@ class CoBlocks_Labs {
 			'coblocksLabs',
 			array(
 				'isGoThemeActive'     => self::is_go_active(),
+				'isGoThemeInstalled'  => self::is_go_installed(),
 				'goThemeInstallUri'   => admin_url( 'theme-install.php?theme=go' ),
 				'goThemeDetailsUri'   => admin_url( 'themes.php' ) . '?theme=go',
 				'launchGuideEligible' => ! empty( get_option( 'wpnux_export_data' ) ),
