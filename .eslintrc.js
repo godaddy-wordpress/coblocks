@@ -27,7 +27,6 @@ module.exports = {
 		} ],
 
 		// Temp override to slowly change everything
-		'arrow-parens': [ 'warn' ],
 		indent: [ 'warn' ],
 		'sort-imports': [ 'warn', {
 			allowSeparatedGroups: true,

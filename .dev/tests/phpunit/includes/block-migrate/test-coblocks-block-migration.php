@@ -16,19 +16,6 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 
 		$this->instance->method( 'migrate_attributes' )
 			->willReturn( array() );
-
-		$parsed_block = parse_blocks(
-			<<<BLOCKHTML
-			<!-- coblocks:test-block -->
-			<div class="wp-block-coblocks-test-block this-feature-this-value has-feature">
-				<div class="child-element"></div>
-				<div class="child-element"></div>
-				some text content
-			</div>
-			<!-- /coblocks:test-block -->
-			BLOCKHTML
-		);
-		$this->instance->migrate( $parsed_block[0]['innerHTML'] );
 	}
 
 	public function tear_down() {
@@ -46,6 +33,20 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 	}
 
 	public function test_block_wrapper() {
+		$parsed_block = parse_blocks(
+			<<<BLOCKHTML
+			<!-- wp:coblocks/test-block {"attribute-one":"value-one","attribute-two":"value-one"} -->
+			<div class="wp-block-coblocks-test-block this-feature-this-value has-feature">
+				<div class="child-element"></div>
+				<div class="child-element"></div>
+				some text content
+			</div>
+			<!-- /wp:coblocks/test-block -->
+			BLOCKHTML
+		);
+
+		$this->instance->migrate( $parsed_block[0]['attrs'], $parsed_block[0]['innerHTML'] );
+
 		$block_wrapper = new ReflectionMethod( $this->instance, 'block_wrapper' );
 		$block_wrapper->setAccessible( true );
 
@@ -61,10 +62,13 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 
 		$parsed_block = parse_blocks(
 			<<<BLOCKHTML
-			<!-- coblocks:test-block /-->
+			<!-- wp:coblocks/test-block /-->
 			BLOCKHTML
 		);
-		$this->instance->migrate( $parsed_block[0]['innerHTML'] );
+		$this->instance->migrate( $parsed_block[0]['attrs'], $parsed_block[0]['innerHTML'] );
+
+		// var_dump( $block_wrapper->invoke( $this->instance ) );
+		// exit;
 
 		$this->assertIsArray( $block_wrapper->invoke( $this->instance ) );
 		$this->assertEmpty( $block_wrapper->invoke( $this->instance ) );
@@ -79,6 +83,17 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 	}
 
 	public function test_get_attribute_from_classname_with_value_appended() {
+		$parsed_block = parse_blocks(
+			<<<BLOCKHTML
+			<!-- wp:coblocks/test-block -->
+			<div class="wp-block-coblocks-test-block this-feature-this-value has-feature">
+			</div>
+			<!-- /wp:coblocks/test-block -->
+			BLOCKHTML
+		);
+
+		$this->instance->migrate( $parsed_block[0]['attrs'], $parsed_block[0]['innerHTML'] );
+
 		$block_wrapper = new ReflectionMethod( $this->instance, 'block_wrapper' );
 		$block_wrapper->setAccessible( true );
 
@@ -92,6 +107,17 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 	}
 
 	public function test_get_attribute_from_classname_with_boolean() {
+		$parsed_block = parse_blocks(
+			<<<BLOCKHTML
+			<!-- wp:coblocks/test-block -->
+			<div class="wp-block-coblocks-test-block this-feature-this-value has-feature">
+			</div>
+			<!-- /wp:coblocks/test-block -->
+			BLOCKHTML
+		);
+
+		$this->instance->migrate( $parsed_block[0]['attrs'], $parsed_block[0]['innerHTML'] );
+
 		$block_wrapper = new ReflectionMethod( $this->instance, 'block_wrapper' );
 		$block_wrapper->setAccessible( true );
 
@@ -104,6 +130,17 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 	}
 
 	public function test_get_element_attribute() {
+		$parsed_block = parse_blocks(
+			<<<BLOCKHTML
+			<!-- wp:coblocks/test-block -->
+			<div class="wp-block-coblocks-test-block this-feature-this-value has-feature">
+			</div>
+			<!-- /wp:coblocks/test-block -->
+			BLOCKHTML
+		);
+
+		$this->instance->migrate( $parsed_block[0]['attrs'], $parsed_block[0]['innerHTML'] );
+
 		$block_wrapper = new ReflectionMethod( $this->instance, 'block_wrapper' );
 		$block_wrapper->setAccessible( true );
 
@@ -117,6 +154,20 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 	}
 
 	public function test_get_element_attribute_text_content() {
+		$parsed_block = parse_blocks(
+			<<<BLOCKHTML
+			<!-- wp:coblocks/test-block {"attribute-one":"value-one","attribute-two":"value-one"} -->
+			<div class="wp-block-coblocks-test-block this-feature-this-value has-feature">
+				<div class="child-element"></div>
+				<div class="child-element"></div>
+				some text content
+			</div>
+			<!-- /wp:coblocks/test-block -->
+			BLOCKHTML
+		);
+
+		$this->instance->migrate( $parsed_block[0]['attrs'], $parsed_block[0]['innerHTML'] );
+
 		$block_wrapper = new ReflectionMethod( $this->instance, 'block_wrapper' );
 		$block_wrapper->setAccessible( true );
 
@@ -130,6 +181,20 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 	}
 
 	public function test_get_element_attributes_text_content() {
+		$parsed_block = parse_blocks(
+			<<<BLOCKHTML
+			<!-- wp:coblocks/test-block {"attribute-one":"value-one","attribute-two":"value-one"} -->
+			<div class="wp-block-coblocks-test-block this-feature-this-value has-feature">
+				<div class="child-element"></div>
+				<div class="child-element"></div>
+				some text content
+			</div>
+			<!-- /wp:coblocks/test-block -->
+			BLOCKHTML
+		);
+
+		$this->instance->migrate( $parsed_block[0]['attrs'], $parsed_block[0]['innerHTML'] );
+
 		$block_wrapper = new ReflectionMethod( $this->instance, 'block_wrapper' );
 		$block_wrapper->setAccessible( true );
 
@@ -148,6 +213,20 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 	}
 
 	public function test_query_selector_all() {
+		$parsed_block = parse_blocks(
+			<<<BLOCKHTML
+			<!-- wp:coblocks/test-block {"attribute-one":"value-one","attribute-two":"value-one"} -->
+			<div class="wp-block-coblocks-test-block this-feature-this-value has-feature">
+				<div class="child-element"></div>
+				<div class="child-element"></div>
+				some text content
+			</div>
+			<!-- /wp:coblocks/test-block -->
+			BLOCKHTML
+		);
+
+		$this->instance->migrate( $parsed_block[0]['attrs'], $parsed_block[0]['innerHTML'] );
+
 		$query_selector_all = new ReflectionMethod( $this->instance, 'query_selector_all' );
 		$query_selector_all->setAccessible( true );
 
@@ -160,6 +239,20 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 	}
 
 	public function test_query_selector() {
+		$parsed_block = parse_blocks(
+			<<<BLOCKHTML
+			<!-- wp:coblocks/test-block {"attribute-one":"value-one","attribute-two":"value-one"} -->
+			<div class="wp-block-coblocks-test-block this-feature-this-value has-feature">
+				<div class="child-element"></div>
+				<div class="child-element"></div>
+				some text content
+			</div>
+			<!-- /wp:coblocks/test-block -->
+			BLOCKHTML
+		);
+
+		$this->instance->migrate( $parsed_block[0]['attrs'], $parsed_block[0]['innerHTML'] );
+
 		$query_selector = new ReflectionMethod( $this->instance, 'query_selector' );
 		$query_selector->setAccessible( true );
 

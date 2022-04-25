@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.5
 Tested up to: 5.9
 Requires PHP: 5.6
-Stable tag: 2.22.8
+Stable tag: 2.22.10
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,7 +80,7 @@ The vision for CoBlocks is to create a suite of Gutenberg blocks to help folks m
 Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're interested to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks on GitHub](https://github.com/godaddy-wordpress/coblocks) and join the party. 🎉
 
 ## Register Custom Block Patterns
-Create your own Block Pattern (Appearance > Block Patterns). Seelect the top-most block, Block Toolbar Options, Add Design Pattern to register your Block Pattern and specify which category to assign it to. 
+Create your own Block Pattern (Appearance > Block Patterns). Seelect the top-most block, Block Toolbar Options, Add Design Pattern to register your Block Pattern and specify which category to assign it to.
 
 
 == Screenshots ==
@@ -109,7 +109,7 @@ To get the full experience of the next-generation WordPress block editor, it hel
 CoBlocks adds its Gutenberg blocks to the new WordPress editor, so you can use them exactly how you would any other WordPress blocks. Once the plugin is installed, create or edit a WordPress page or post, add a new block using the plus icon, and you'll find all of CoBlocks' WordPress blocks available.
 
 = How do I create a custom Block Pattern? =
-CoBlocks enables you to create your own Block Patterns. 
+CoBlocks enables you to create your own Block Patterns.
 1. Select all blocks that belong together for your pattern
 2. Under the kebab (3 dots) menu, select Add Design Pattern
 3. Name your block and select a category
@@ -121,6 +121,17 @@ Any properly developed WordPress theme will work with CoBlocks, though if you're
 Developers can also apply minor style touch-ups to their themes if necessary. If you're a developer and you need help, don't hesitate to [reach out](https://wordpress.org/support/plugin/coblocks/).
 
 == Changelog ==
+
+= 2.22.10 / 2022-04-08 =
+##### Bug fixes
+* Remove error message in Widget editor [#2352](https://github.com/godaddy-wordpress/coblocks/pull/2352)
+* Fix OpenTable typo [#2347](https://github.com/godaddy-wordpress/coblocks/pull/2347)
+* Fix gallery carousel padding and captions [#2346](https://github.com/godaddy-wordpress/coblocks/pull/2346)
+* Fix bug in Gist block with hyphen in links [#2345](https://github.com/godaddy-wordpress/coblocks/pull/2345)
+
+= 2.22.9 / 2022-03-28 =
+##### Bug fixes
+* Fix block list on WordPress.org plugin page for CoBlocks [#2341](https://github.com/godaddy-wordpress/coblocks/pull/2341)
 
 = 2.22.8 / 2022-03-23 =
 ##### Misc

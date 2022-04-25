@@ -34,6 +34,16 @@ abstract class CoBlocks_Block_Migration {
 	private $block_wrapper;
 
 	/**
+<<<<<<< HEAD
+=======
+	 * The block attributes array detected.
+	 *
+	 * @var array
+	 */
+	private $block_attributes;
+
+	/**
+>>>>>>> the-great-migration
 	 * Constructor.
 	 */
 	public function __construct() {
@@ -43,10 +53,15 @@ abstract class CoBlocks_Block_Migration {
 	/**
 	 * Migrate the parsed block into a "dynamic block" or "server rendered" block.
 	 *
+<<<<<<< HEAD
+=======
+	 * @param array $parsed_block_attributes the JSON attributes parsed from the block.
+>>>>>>> the-great-migration
 	 * @param string $parsed_block_html the HTML parsed from the block.
 	 *
 	 * @return array new block attributes.
 	 */
+<<<<<<< HEAD
 	public function migrate( $parsed_block_html ) {
 		// libxml can't parse HTML5 elements still so disable warnings for it.
 		libxml_use_internal_errors( true );
@@ -60,6 +75,20 @@ abstract class CoBlocks_Block_Migration {
 		$this->block_wrapper = null;
 		if ( empty( $this->block_wrapper() ) ) {
 			return array();
+=======
+	public function migrate( $parsed_block_attributes, $parsed_block_html ) {
+		$this->block_wrapper = null;
+		$this->block_attributes = $parsed_block_attributes;
+
+		if ( ! empty( $parsed_block_html ) ) {
+			// libxml can't parse HTML5 elements still so disable warnings for it.
+			libxml_use_internal_errors( true );
+
+			$this->document->loadHTML( $parsed_block_html );
+			$this->xpath = new DOMXPath( $this->document );
+
+			libxml_clear_errors();
+>>>>>>> the-great-migration
 		}
 
 		return array_filter( $this->migrate_attributes() );
@@ -174,7 +203,11 @@ abstract class CoBlocks_Block_Migration {
 	 * @return DOMNodeList|false all nodes matching the given XPath expression.
 	 */
 	protected function query_selector_all( $expression, DOMNode $context_node = null ) {
+<<<<<<< HEAD
 		return $this->xpath->query( $expression, $context_node );
+=======
+		return empty( $this->xpath ) ? new DOMNodeList : $this->xpath->query( $expression, $context_node );
+>>>>>>> the-great-migration
 	}
 
 	/**
