@@ -26,6 +26,6 @@ class CoBlocks_Highlight_Migration extends CoBlocks_Block_Migration {
 	 * @inheritDoc
 	 */
 	protected function migrate_attributes() {
-		return $this->block_attributes();
+		return $this->block_attributes;
 	}
 }
