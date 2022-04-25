@@ -26,6 +26,6 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 	 * @inheritDoc
 	 */
 	protected function migrate_attributes() {
-		return array();
+		return $this->block_attributes();
 	}
 }
