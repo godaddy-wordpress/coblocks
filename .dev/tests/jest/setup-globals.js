@@ -27,6 +27,7 @@ global.coblocksLayoutSelector = {
 };
 
 // Mock site design state for tests.
+const siteDesignURLBase = 'http://localhost:8889';
 // Disable reason: sorting keys for this object is superfluous.
 /* eslint-disable sort-keys */
 global.siteDesign = {
@@ -34,7 +35,7 @@ global.siteDesign = {
 		traditional: {
 			slug: 'traditional',
 			label: 'Traditional',
-			url: 'http://localhost:8888/wp-content/themes/go/dist/css/design-styles/style-traditional.css',
+			url: `${ siteDesignURLBase }/wp-content/themes/go/dist/css/design-styles/style-traditional.css`,
 			editor_style: 'dist/css/design-styles/style-traditional-editor.css',
 			color_schemes: {
 				one: {
@@ -87,7 +88,7 @@ global.siteDesign = {
 		modern: {
 			slug: 'modern',
 			label: 'Modern',
-			url: 'http://localhost:8888/wp-content/themes/go/dist/css/design-styles/style-modern.css',
+			url: `${ siteDesignURLBase }/wp-content/themes/go/dist/css/design-styles/style-modern.css`,
 			editor_style: 'dist/css/design-styles/style-modern-editor.css',
 			color_schemes: {
 				one: {
