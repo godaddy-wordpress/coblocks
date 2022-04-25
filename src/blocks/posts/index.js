@@ -7,59 +7,108 @@ import { PostsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Icon, Spinner } from '@wordpress/components';
-import { lazy, Suspense } from '@wordpress/element';
+import { useDispatch, useSelect } from '@wordpress/data';
+import { createBlock, switchToBlockType } from '@wordpress/blocks';
 
 /**
  * Internal dependencies
  */
-import deprecated from './deprecated';
-const Edit = lazy( () => import( './edit' ) );
 import metadata from './block.json';
-import transforms from './transforms';
 
 /**
  * Block constants
  */
 const { name, category } = metadata;
 
+const useEdit = ( { clientId } ) => {
+	const { replaceBlocks } = useDispatch( 'core/block-editor' );
+	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
+
+	replaceBlocks(
+		[ clientId ],
+		switchToBlockType( getBlock( clientId ), 'core/query' )
+	);
+
+	return null;
+};
+
 const settings = {
-	/* translators: block name */
 	title: __( 'Posts (CoBlocks)', 'coblocks' ),
-	/* translators: block description */
-	description: __( 'Display posts or an RSS feed as stacked or horizontal cards.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
-	keywords: [
-		'coblocks',
-		/* translators: block keyword */
-		__( 'posts', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'blog', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'latest', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'rss', 'coblocks' ),
-	],
-	supports: {
-		align: [ 'wide', 'full' ],
-		gutter: {
-			default: 'medium',
-		},
-		html: false,
-	},
-	transforms,
-	edit: ( props ) => (
-		<Suspense fallback={ <Spinner /> }>
-			<Edit { ...props } />
-		</Suspense>
-	),
-	example: {
-		attributes: {},
-	},
-	deprecated,
-	save() {
-		return null;
+	edit: useEdit,
+	save: () => null,
+	transforms: {
+		from: [
+			{
+				type: 'block',
+				blocks: [ 'core/latest-posts' ],
+				transform: ( { displayPostDate, displayPostContent, order, orderBy, categories, postsToShow, excerptLength, align } ) => (
+					createBlock( metadata.name, {
+						displayPostDate,
+						displayPostContent,
+						order,
+						orderBy,
+						categories,
+						postsToShow,
+						align,
+						excerptLength,
+					} )
+				),
+			},
+			{
+				type: 'block',
+				blocks: [ 'coblocks/post-carousel' ],
+				transform: ( { displayPostDate, displayPostContent, columns, order, orderBy, categories, postsToShow, externalRssUrl, postFeedType, excerptLength, align } ) => (
+					createBlock( metadata.name, {
+						displayPostDate,
+						displayPostContent,
+						columns,
+						order,
+						orderBy,
+						categories,
+						postsToShow,
+						externalRssUrl,
+						postFeedType,
+						align,
+						excerptLength,
+					} )
+				),
+			},
+			{
+				type: 'prefix',
+				prefix: ':posts',
+				transform: () => {
+					return createBlock( metadata.name );
+				},
+			},
+			...[ 2, 3, 4, 5, 6 ].map( ( postsToShow ) => ( {
+				type: 'prefix',
+				prefix: `:${ postsToShow }posts`,
+				transform: () => {
+					return createBlock( metadata.name, {
+						postsToShow,
+					} );
+				},
+			} ) ),
+		],
+		to: [
+			{
+				type: 'block',
+				blocks: [ 'core/latest-posts' ],
+				transform: ( { displayPostDate, displayPostContent, order, orderBy, categories, postsToShow, excerptLength, align } ) => (
+					createBlock( 'core/latest-posts', {
+						displayPostDate,
+						displayPostContent,
+						order,
+						orderBy,
+						categories,
+						postsToShow,
+						align,
+						excerptLength,
+					} )
+				),
+			},
+		],
 	},
 };
 
-export { name, category, settings };
+export { name, metadata, settings };

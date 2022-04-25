@@ -12,6 +12,7 @@ require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-block-
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-stacked-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-masonry-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-collage-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-posts-migration.php';
 
 /**
  * Hook into the post object before it's returned to the editor.
@@ -29,12 +30,13 @@ add_action(
 
 		// Parse the blocks so we can search them in a standard way.
 		$parsed_blocks = parse_blocks( $post->post_content );
-
+		// var_dump($parsed_blocks);
 		// Load our available migrations.
 		$block_targets = array(
 			'coblocks/gallery-stacked' => CoBlocks_Gallery_Stacked_Migration::class,
 			'coblocks/gallery-masonry' => CoBlocks_Gallery_Masonry_Migration::class,
 			'coblocks/gallery-collage' => CoBlocks_Gallery_Collage_Migration::class,
+			'coblocks/posts'           => CoBlocks_Posts_Migration::class,
 		);
 
 		$parsed_blocks = array_map(
@@ -42,10 +44,9 @@ add_action(
 				if ( ! in_array( $parsed_block['blockName'], array_keys( $block_targets ), true ) ) {
 					return $parsed_block;
 				}
-
 				// Perform the migration if we have one.
 				$block_migration  = new $block_targets[ $parsed_block['blockName'] ]();
-				$block_attributes = $block_migration->migrate( $parsed_block['innerHTML'] );
+				$block_attributes = $block_migration->migrate( $parsed_block['attrs'], $parsed_block['innerHTML'] );
 
 				// Override certain keys of the originally parsed block.
 				return array_merge(

@@ -47,10 +47,18 @@ abstract class CoBlocks_Block_Migration {
 	 *
 	 * @return array new block attributes.
 	 */
-	public function migrate( $parsed_block_html ) {
+	public function migrate( $parsed_block_attributes, $parsed_block_html ) {
+
+		if ( empty( $parsed_block_html ) ) {
+			var_dump( array_filter( $this->migrate_attributes() ) );
+			return array_filter( $this->migrate_attributes() );
+
+			// return $parsed_block_attributes;
+		}
+
 		// libxml can't parse HTML5 elements still so disable warnings for it.
 		libxml_use_internal_errors( true );
-
+		// var_dump($parsed_block_attributes, $parsed_block_html);
 		$this->document->loadHTML( $parsed_block_html );
 		$this->xpath = new DOMXPath( $this->document );
 
@@ -92,7 +100,6 @@ abstract class CoBlocks_Block_Migration {
 
 		$block_wrapper_classname = 'wp-block-' . str_replace( '/', '-', $this->block_name() );
 		$this->block_wrapper     = $this->query_selector( '//*[contains(@class,"' . $block_wrapper_classname . '")]' );
-
 		return empty( $this->block_wrapper ) ? array() : $this->block_wrapper;
 	}
 
