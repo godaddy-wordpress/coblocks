@@ -9,7 +9,7 @@ import { sortBy } from 'lodash';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { ComplementaryArea } from '@wordpress/interface';
+import { PluginSidebar } from '@wordpress/edit-post';
 import { registerPlugin } from '@wordpress/plugins';
 import { useEffect } from '@wordpress/element';
 import { useEntityProp } from '@wordpress/core-data';
@@ -21,7 +21,7 @@ import { withDispatch, withSelect } from '@wordpress/data';
  */
 import { CoBlocksMenuIcon } from '../../components/common';
 import PostTypePanel from './post-type-panel';
-import { PLUGIN_NAME, SIDEBAR_NAME, SITE_CONTENT_FEATURE_ENABLED_KEY } from './constant';
+import { PLUGIN_NAME, SITE_CONTENT_FEATURE_ENABLED_KEY } from './constant';
 import './site-content-control';
 
 export const CoBlocksSiteContent = ( props ) => {
@@ -48,7 +48,7 @@ export const CoBlocksSiteContent = ( props ) => {
 
 	return (
 		<>
-			<ComplementaryArea
+			<PluginSidebar
 				className="content-management"
 				icon={
 					<CoBlocksMenuIcon
@@ -56,11 +56,7 @@ export const CoBlocksSiteContent = ( props ) => {
 						label={ __( 'Site content', 'coblocks' ) }
 						slug="site-content" />
 				}
-				identifier={ `${ PLUGIN_NAME }/${ SIDEBAR_NAME }` }
-				scope="core/edit-post"
-				smallScreenTitle={ __( 'Site contents', 'coblocks' ) }
 				title={ __( 'Site contents', 'coblocks' ) }>
-
 				{ postTypes.map( ( postType ) => (
 					<PostTypePanel
 						data-test="post-type-panel"
@@ -68,7 +64,7 @@ export const CoBlocksSiteContent = ( props ) => {
 						loadPostIntoEditor={ loadPostIntoEditor }
 						postType={ postType } />
 				) ) }
-			</ComplementaryArea>
+			</PluginSidebar>
 		</>
 	);
 };

@@ -3,12 +3,12 @@
  */
 import { ColorPaletteStyles } from '@godaddy-wordpress/coblocks-icons';
 const icon = ColorPaletteStyles?.outlined;
+import { PluginSidebar } from '@wordpress/edit-post';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { ComplementaryArea } from '@wordpress/interface';
 import { useEffect } from '@wordpress/element';
 import { useEntityProp } from '@wordpress/core-data';
 import { useDispatch, useSelect } from '@wordpress/data';
@@ -27,8 +27,6 @@ import useTypeRatio from './hooks/useTypeRatio';
 import './data/store';
 import './site-design-control';
 
-import { PLUGIN_NAME, SIDEBAR_NAME } from './constant';
-
 let fontStylesCache = false;
 let saveBtn = false;
 const META_KEY = '_coblocks_non_existing_meta';
@@ -37,19 +35,16 @@ const componentTitle = __( 'Site design', 'coblocks' );
 
 const SiteDesignComponent = () => (
 	<>
-		<ComplementaryArea
+		<PluginSidebar
 			icon={
 				<CoBlocksMenuIcon
 					icon={ icon }
 					label={ __( 'Site design', 'coblocks' ) }
 					slug="site-design" />
 			}
-			identifier={ `${ PLUGIN_NAME }/${ SIDEBAR_NAME }` }
-			scope="core/edit-post"
-			smallScreenTitle={ componentTitle }
 			title={ componentTitle }>
 			<SiteDesignControls />
-		</ComplementaryArea>
+		</PluginSidebar>
 		<SiteDesignStyles />
 	</>
 );

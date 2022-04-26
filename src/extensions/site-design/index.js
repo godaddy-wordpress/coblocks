@@ -8,49 +8,24 @@ const icon = ColorPaletteStyles?.outlined;
 /**
   WordPress dependencies
  */
-import { useSelect } from '@wordpress/data';
-import { lazy, Suspense, useEffect } from '@wordpress/element';
-import { registerPlugin, unregisterPlugin } from '@wordpress/plugins';
+import { registerPlugin } from '@wordpress/plugins';
+import { useEntityProp } from '@wordpress/core-data';
+import { compose, ifCondition } from '@wordpress/compose';
 
 /**
   Internal dependencies
  */
-import { PLUGIN_NAME } from './constant';
-const SiteDesignComponent = lazy( () => import( './component' ) );
-
-const RenderSiteDesign = () => {
-	const {	isFeatureActive	} = useSelect( ( select ) => select( 'core/edit-post' ), [] );
-
-	useEffect( () => {
-		unregisterSiteDesign();
-		registerSiteDesign( isFeatureActive );
-	}, [ isFeatureActive ] );
-
-	registerSiteDesign();
-	return null;
-};
-
-const registerSiteDesign = ( isActive ) => {
-	registerPlugin( PLUGIN_NAME, {
-		icon,
-		render: () => {
-			if ( isActive ) {
-				return null;
-			}
-			return (
-				<Suspense fallback={ null }>
-					<SiteDesignComponent />
-				</Suspense>
-			);
-		} } );
-};
-
-const unregisterSiteDesign = () => {
-	unregisterPlugin( PLUGIN_NAME );
-};
+import SiteDesignComponent from './component';
+import { PLUGIN_NAME, SITE_DESIGN_FEATURE_ENABLED_KEY } from './constant';
 
 /* istanbul ignore next */
-const isLabsEnabled = !! coblocksLabs?.isLabsEnabled;
-if ( isLabsEnabled ) {
-	RenderSiteDesign();
-}
+registerPlugin( PLUGIN_NAME, {
+	icon,
+	render: compose( [
+		ifCondition( () => {
+			const [ siteDesignEnabled ] = useEntityProp( 'root', 'site', SITE_DESIGN_FEATURE_ENABLED_KEY );
+			const isLabsEnabled = !! coblocksLabs?.isLabsEnabled;
+			return siteDesignEnabled && isLabsEnabled;
+		} ),
+	] )( SiteDesignComponent ),
+} );

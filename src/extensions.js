@@ -16,7 +16,7 @@ import './extensions/list-styles';
 import './extensions/media-text-styles';
 
 // The following three imports are intentionally ordered for CoBlocks Labs controls.
-// import './extensions/site-content'; Disabled while welcomeGuide bug is being fixed.
+import './extensions/site-content';
 import './extensions/site-design';
 import './extensions/layout-selector';
 
