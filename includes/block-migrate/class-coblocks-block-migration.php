@@ -38,7 +38,7 @@ abstract class CoBlocks_Block_Migration {
 	 *
 	 * @var array
 	 */
-	private $block_attributes;
+	protected $block_attributes;
 
 	/**
 	 * Constructor.
