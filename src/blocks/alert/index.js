@@ -6,39 +6,39 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-import { useDispatch, useSelect } from '@wordpress/data';
 import { createBlock, switchToBlockType } from '@wordpress/blocks';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 /**
  * Block constants
  */
 const { name } = metadata;
 
-function Edit( props ) {
+function Edit( { clientId } ) {
 	const { replaceBlocks } = useDispatch( 'core/block-editor' );
 	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
 
 	replaceBlocks(
-		[ props.clientId ],
-		switchToBlockType( getBlock( props.clientId ), 'core/paragraph' )
+		[ clientId ],
+		switchToBlockType( getBlock( clientId ), 'core/paragraph' )
 	);
 
 	return null;
 }
 
 const settings = {
-	title: metadata.title,
 	edit: Edit,
 	parent: [],
 	save: () => null,
+	title: metadata.title,
 	transforms: {
 		to: [
 			{
-				type: 'block',
 				blocks: [ 'core/paragraph' ],
 				transform: ( attributes ) => {
 					return createBlock( 'core/paragraph', attributes );
 				},
+				type: 'block',
 			},
 		],
 	},
