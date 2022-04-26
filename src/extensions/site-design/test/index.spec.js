@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 
 import '../data/store';
-import { SiteDesignControls } from '../index';
+import { SiteDesignControls } from '../component';
 import DesignPreviews from '../design-preview';
 import ColorPalettePreviews from '../color-palette-preview';
 import FontPreviews from '../font-preview';

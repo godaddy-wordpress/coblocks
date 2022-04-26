@@ -267,3 +267,5 @@ global.siteDesign = {
 		},
 	],
 };
+
+global.coblocksLabs = true;
