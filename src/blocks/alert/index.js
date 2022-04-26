@@ -6,28 +6,23 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
+import { dispatch } from '@wordpress/data';
 import { createBlock, switchToBlockType } from '@wordpress/blocks';
-import { useDispatch, useSelect } from '@wordpress/data';
 
 /**
  * Block constants
  */
 const { name } = metadata;
 
-function Edit( { clientId } ) {
-	const { replaceBlocks } = useDispatch( 'core/block-editor' );
-	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
-
-	replaceBlocks(
-		[ clientId ],
-		switchToBlockType( getBlock( clientId ), 'core/paragraph' )
-	);
-
-	return null;
-}
-
 const settings = {
-	edit: Edit,
+	edit: ( props ) => {
+		const { replaceBlocks } = dispatch( 'core/block-editor' );
+		replaceBlocks(
+			[ props.clientId ],
+			switchToBlockType( props, 'core/paragraph' )
+		);
+		return null;
+	},
 	parent: [],
 	save: () => null,
 	title: metadata.title,
