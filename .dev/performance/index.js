@@ -134,7 +134,7 @@ async function setUpGitBranch( branch, environmentDirectory ) {
 
 	log( '        >> Building the ' + formats.success( branch ) + ' branch' );
 	await runShellScript(
-		'npm i && yarn build',
+		'yarn install --frozen-lockfile && yarn build',
 		environmentDirectory
 	);
 }
