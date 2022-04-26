@@ -27,7 +27,7 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 	 */
 	protected function migrate_attributes() {
 		$result = array(
-			'content' => implode( "\n", array_filter( array(
+			'content' => implode( "<br />", array_filter( array(
 				$this->query_selector( '//p[contains(@class,"wp-block-coblocks-alert__title")]' )->textContent,
 				$this->query_selector( '//p[contains(@class,"wp-block-coblocks-alert__text")]' )->textContent,
 			) ) ),
