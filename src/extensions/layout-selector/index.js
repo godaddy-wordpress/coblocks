@@ -180,13 +180,14 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 		render: compose( [
 			ifCondition( () => {
 				const [ layoutSelectorEnabled ] = useEntityProp( 'root', 'site', LAYOUT_SELECTOR_FEATURE_ENABLED_KEY );
-
+				// Prevent render if labs modal is open.
+				const labsIsPresent = !! document.getElementsByClassName( 'coblocks-labs-modal' )?.[ 0 ];
 				const {
 					hasLayouts,
 					hasCategories,
 				} = useSelect( ( select ) => select( 'coblocks/template-selector' ) );
 
-				return layoutSelectorEnabled && hasLayouts() && hasCategories();
+				return layoutSelectorEnabled && ! labsIsPresent && hasLayouts() && hasCategories();
 			} ),
 			withSelect( ( select ) => {
 				const {
