@@ -350,7 +350,7 @@ commands:
           name: Install dependencies missing from cache
           command: |
             PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-            yarn
+            yarn install --frozen-lockfile
 
   restore_update_cypress_cache:
     steps:
