@@ -2,7 +2,6 @@
  * Internal dependencies
  */
 import metadata from './block.json';
-import { GithubIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies
