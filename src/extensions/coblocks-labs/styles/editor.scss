@@ -18,6 +18,11 @@
 		justify-content: space-between;
 		max-width: 900px;
 
+		@media (max-width: 1200px) {
+			align-items: center;
+			flex-direction: column-reverse;
+		}
+
 		&__vertical-group {
 			display: flex;
 			flex-direction: column;
