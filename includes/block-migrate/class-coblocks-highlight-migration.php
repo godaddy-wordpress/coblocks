@@ -26,8 +26,40 @@ class CoBlocks_Highlight_Migration extends CoBlocks_Block_Migration {
 	 * @inheritDoc
 	 */
 	protected function migrate_attributes() {
+		$style_string = '';
+		$defaults = array(
+			'background-color' => '#fff8e5',
+			'color' => '',
+		);
+
+		$highlight_style = $this->document->getElementsByTagName( 'mark' )->item( 1 )->getAttribute( 'style' );
+
+		if ( $highlight_style ) {
+			$element_styles = array();
+			$style_array = explode( ';', $highlight_style );
+
+			foreach ( $style_array as $style ) {
+				$split = explode( ':', $style );
+				$element_styles[ $split[0] ] = $split[1];
+			}
+
+			// Override defaults with inline styles.
+			$defaults = wp_parse_args(
+				$element_styles,
+				$defaults
+			);
+		}
+
+		foreach ( array_filter( $defaults ) as $key => $value ) {
+			$style_string .= "${key}: $value; ";
+		}
+
 		return array(
-			'content' => $this->query_selector( '//p[contains(@class,"wp-block-coblocks-highlight")]' )->textContent,
+			'content' => sprintf(
+				'<span style="%1$s">%2$s</span>',
+				trim( $style_string ),
+				$this->query_selector( '//p[contains(@class,"wp-block-coblocks-highlight")]' )->textContent
+			),
 		);
 	}
 }
