@@ -7,11 +7,6 @@
 			"type": "string"
 		}
 	},
-	"supports": {
-		"color": {
-			"link": false
-		}
-	},
 	"textdomain": "coblocks",
 	"title": "Highlight"
 }

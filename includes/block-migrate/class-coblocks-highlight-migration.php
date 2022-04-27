@@ -26,10 +26,8 @@ class CoBlocks_Highlight_Migration extends CoBlocks_Block_Migration {
 	 * @inheritDoc
 	 */
 	protected function migrate_attributes() {
-		$result = array(
+		return array(
 			'content' => $this->query_selector( '//p[contains(@class,"wp-block-coblocks-highlight")]' )->textContent,
 		);
-
-		return array_merge( $this->block_attributes, $result );
 	}
 }

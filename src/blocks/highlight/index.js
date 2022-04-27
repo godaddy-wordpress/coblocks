@@ -17,6 +17,7 @@ const { name } = metadata;
 const settings = {
 	edit: ( props ) => {
 		const { replaceBlocks } = dispatch( 'core/block-editor' );
+		console.log( props );
 		replaceBlocks(
 			[ props.clientId ],
 			switchToBlockType( props, 'core/paragraph' )
