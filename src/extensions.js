@@ -14,6 +14,7 @@ import './extensions/image-styles';
 import './extensions/layout-selector';
 import './extensions/list-styles';
 import './extensions/media-text-styles';
+import './extensions/paragraph-styles';
 
 // Formats
 import './formats';
