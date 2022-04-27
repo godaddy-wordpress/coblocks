@@ -29,6 +29,7 @@ class CoBlocks_Highlight_Migration extends CoBlocks_Block_Migration {
 		$result = array(
 			'content' => $this->query_selector( '//p[contains(@class,"wp-block-coblocks-highlight")]' )->textContent,
 		);
+
 		return array_merge( $this->block_attributes, $result );
 	}
 }

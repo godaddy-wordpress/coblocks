@@ -6,7 +6,7 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-import { useDispatch, useSelect } from '@wordpress/data';
+import { dispatch } from '@wordpress/data';
 import { createBlock, switchToBlockType } from '@wordpress/blocks';
 
 /**
@@ -14,31 +14,26 @@ import { createBlock, switchToBlockType } from '@wordpress/blocks';
  */
 const { name } = metadata;
 
-function Edit( props ) {
-	const { replaceBlocks } = useDispatch( 'core/block-editor' );
-	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
-
-	replaceBlocks(
-		[ props.clientId ],
-		switchToBlockType( getBlock( props.clientId ), 'core/paragraph' )
-	);
-
-	return null;
-}
-
 const settings = {
-	title: metadata.title,
-	edit: Edit,
+	edit: ( props ) => {
+		const { replaceBlocks } = dispatch( 'core/block-editor' );
+		replaceBlocks(
+			[ props.clientId ],
+			switchToBlockType( props, 'core/paragraph' )
+		);
+		return null;
+	},
 	parent: [],
 	save: () => null,
+	title: metadata.title,
 	transforms: {
 		to: [
 			{
-				type: 'block',
 				blocks: [ 'core/paragraph' ],
 				transform: ( attributes ) => {
 					return createBlock( 'core/paragraph', attributes );
 				},
+				type: 'block',
 			},
 		],
 	},

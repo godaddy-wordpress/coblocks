@@ -4,7 +4,12 @@
 	"name": "coblocks/highlight",
 	"attributes": {
 		"content": {
-			"type": "string",
+			"type": "string"
+		}
+	},
+	"supports": {
+		"color": {
+			"link": false
 		}
 	},
 	"textdomain": "coblocks",
