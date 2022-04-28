@@ -9,6 +9,8 @@ describe( 'Settings Modal: Layout Selector feature', () => {
 		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
 		helpers.disableGutenbergFeatures();
 
+		cy.get( '.edit-post-visual-editor' );
+
 		// Reset settings.
 		helpers.getWindowObject().then( ( win ) => {
 			win.wp.data.dispatch( 'coblocks/template-selector' ).updateCategories(
@@ -28,7 +30,6 @@ describe( 'Settings Modal: Layout Selector feature', () => {
 	beforeEach( () => {
 		createNewPage();
 
-		// Reset settings.
 		helpers.getWindowObject().then( ( win ) => {
 			win.wp.data.dispatch( 'core' ).saveEntityRecord( 'root', 'site', {
 				[ LAYOUT_SELECTOR_FEATURE_ENABLED_KEY ]: true,
