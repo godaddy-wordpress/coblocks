@@ -132,7 +132,6 @@ class CoBlocks_Labs {
 				'goThemeInstallUri'   => admin_url( 'theme-install.php?theme=go' ),
 				'goThemeDetailsUri'   => admin_url( 'themes.php' ) . '?theme=go',
 				'launchGuideEligible' => ! empty( get_option( 'wpnux_export_data' ) ),
-				'isLabsEnabled'       => apply_filters( 'coblocks_labs_controls_enabled', false ),
 			)
 		);
 	}
