@@ -461,6 +461,17 @@ export function openEditorSettingsModal() {
 }
 
 /**
+ * Open the CoBlocks Labs modal.
+ */
+export function openCoBlocksLabsModal() {
+	// Open "more" menu.
+	cy.get( '.edit-post-more-menu button' ).click();
+	cy.get( '.components-menu-group' ).contains( 'CoBlocks Labs' ).click();
+
+	cy.get( '.components-modal__frame' ).contains( 'CoBlocks Labs' ).should( 'exist' );
+}
+
+/**
  * Helper method to convert a hex value to an RGB value
  *
  * @param {string} hex Hex string. eg: #55e7ff
