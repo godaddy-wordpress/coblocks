@@ -64,4 +64,8 @@ $color-alert-error-color: var(--coblocks-alert-error--color--text, $color-alert-
 $color-alert-success-bg: var(--coblocks-alert-default--color--background, $color-alert-success-bg);
 $color-alert-success-color: var(--coblocks-alert-error--color--text, $color-alert-success-color);
 
+$godaddy-everyday-blue-600: #09757a;
+$godaddy-everyday-blue-500: #00a4a6;
+$godaddy-everyday-blue-400: #1bdbdb;
+
 @import "./mixins";

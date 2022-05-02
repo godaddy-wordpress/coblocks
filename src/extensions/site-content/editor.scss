@@ -16,6 +16,10 @@
 	.content-management__panel {
 		position: relative;
 
+		& .components-panel__body-toggle:focus {
+			box-shadow: inset 0 0 0 var(--wp-admin-border-width-focus) $godaddy-everyday-blue-500;
+		}
+
 		&.is-opened {
 			padding: 0;
 
@@ -35,6 +39,14 @@
 			.content-management__panel__actions__button {
 				display: none !important;
 			}
+
+			& span[contenteditable="true"] {
+				color: $godaddy-everyday-blue-500;
+			}
+
+			.content-management__panel__rename-action button {
+				color: $godaddy-everyday-blue-500;
+			}
 		}
 
 		.content-management__panel__row {
@@ -44,19 +56,34 @@
 
 			&.current {
 				background-color: rgba(245, 245, 245, 0.5);
-				border-left-color: var(--wp-admin-theme-color);
+				border-left-color: $godaddy-everyday-blue-500;
 
 				.content-management__panel__actions__button {
 					opacity: 100;
 				}
 			}
 
+			& .content-management__panel__actions .components-button {
+
+				&:focus {
+					box-shadow: 0 0 0 var(--wp-admin-border-width-focus) $godaddy-everyday-blue-500;
+				}
+
+				&:hover {
+					color: $godaddy-everyday-blue-500 !important;
+				}
+
+				&[aria-expanded="true"] {
+					color: $godaddy-everyday-blue-500;
+				}
+			}
+
 			&.is-renaming {
 				background-color: #e8f7f7;
-				color: var(--wp-admin-theme-color);
+				color: $godaddy-everyday-blue-500;
 
-				.content-management__panel__button > input {
-					color: var(--wp-admin-theme-color);
+				.content-management__panel__button span[contenteditable="true"] {
+					color: $godaddy-everyday-blue-500;
 				}
 			}
 
@@ -147,6 +174,10 @@
 		.content-management__panel__rename-actions {
 			position: absolute;
 			right: 9px;
+
+			& button {
+				color: $godaddy-everyday-blue-500;
+			}
 		}
 
 		.content-management__panel__rename-action {
@@ -214,10 +245,6 @@
 	}
 }
 
-.components-popover__content .content-management-actions__item:focus {
-	color: var(--wp-admin-theme-color) !important;
-}
-
 .components-button.is-destructive:active:not(:disabled) {
 	background: unset;
 }
@@ -282,6 +309,11 @@
 		}
 
 		.content-management-actions__item {
+
+			&:hover {
+				color: $godaddy-everyday-blue-500;
+			}
+
 			padding: 12px 20px;
 
 			svg {
