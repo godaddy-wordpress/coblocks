@@ -28,7 +28,7 @@ class CoBlocks_Posts_Migration extends CoBlocks_Block_Migration {
 	protected function migrate_attributes() {
 		return array_filter(
 			array_merge(
-				$this->posts_attributes(),
+				$this->posts_attributes()
 			)
 		);
 	}
@@ -39,7 +39,6 @@ class CoBlocks_Posts_Migration extends CoBlocks_Block_Migration {
 	 * @return array attributes found and their values.
 	 */
 	private function posts_attributes() {
-		// var_dump($this->block_wrapper());
 		return array(
 			// 'postsToShow'   => $this->get_attribute_from_classname( 'has-filter-', $this->block_wrapper() ),
 			'postsToShow' => '2',
