@@ -38,7 +38,7 @@ abstract class CoBlocks_Block_Migration {
 	 *
 	 * @var array
 	 */
-	private $block_attributes;
+	protected $block_attributes;
 
 	/**
 	 * Constructor.
@@ -50,14 +50,14 @@ abstract class CoBlocks_Block_Migration {
 	/**
 	 * Migrate the parsed block into a "dynamic block" or "server rendered" block.
 	 *
-	 * @param array $parsed_block_attributes the JSON attributes parsed from the block.
+	 * @param array  $parsed_block_attributes the JSON attributes parsed from the block.
 	 * @param string $parsed_block_html the HTML parsed from the block.
 	 *
 	 * @return array new block attributes.
 	 */
 	public function migrate( $parsed_block_attributes, $parsed_block_html ) {
-		$this->block_wrapper = null;
-		$this->block_attributes = $parsed_block_attributes;
+		$this->block_wrapper    = null;
+		$this->block_attributes = empty( $parsed_block_attributes ) ? array() : $parsed_block_attributes;
 
 		if ( ! empty( $parsed_block_html ) ) {
 			// libxml can't parse HTML5 elements still so disable warnings for it.
@@ -180,7 +180,7 @@ abstract class CoBlocks_Block_Migration {
 	 * @return DOMNodeList|false all nodes matching the given XPath expression.
 	 */
 	protected function query_selector_all( $expression, DOMNode $context_node = null ) {
-		return empty( $this->xpath ) ? new DOMNodeList : $this->xpath->query( $expression, $context_node );
+		return empty( $this->xpath ) ? new DOMNodeList() : $this->xpath->query( $expression, $context_node );
 	}
 
 	/**
