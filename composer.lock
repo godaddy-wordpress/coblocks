@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5c4a77592a00b01f4d1d938fd36f2adc",
+    "content-hash": "a53264b3d6ff598fa260bdd788e5bb04",
     "packages": [
         {
             "name": "godaddy-wordpress/styles",
-            "version": "dev-add-wp-env",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/godaddy-wordpress/styles.git",
-                "reference": "209ea30b1393f595fd22afbb13dfda7c0d2ff9b6"
+                "reference": "6c2f41ed8792abd01479798ee4d1479e244bc96d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/godaddy-wordpress/styles/zipball/209ea30b1393f595fd22afbb13dfda7c0d2ff9b6",
-                "reference": "209ea30b1393f595fd22afbb13dfda7c0d2ff9b6",
+                "url": "https://api.github.com/repos/godaddy-wordpress/styles/zipball/6c2f41ed8792abd01479798ee4d1479e244bc96d",
+                "reference": "6c2f41ed8792abd01479798ee4d1479e244bc96d",
                 "shasum": ""
             },
             "require": {
@@ -34,6 +34,7 @@
                 "wp-phpunit/wp-phpunit": "^5.8",
                 "yoast/phpunit-polyfills": "^1.0.1"
             },
+            "default-branch": true,
             "type": "wordpress-plugin",
             "autoload": {
                 "psr-4": {
@@ -70,10 +71,10 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/godaddy-wordpress/styles/tree/add-wp-env",
+                "source": "https://github.com/godaddy-wordpress/styles/tree/master",
                 "issues": "https://github.com/godaddy-wordpress/styles/issues"
             },
-            "time": "2022-04-11T20:49:00+00:00"
+            "time": "2022-05-03T17:29:54+00:00"
         }
     ],
     "packages-dev": [
@@ -1299,16 +1300,16 @@
         },
         {
             "name": "mck89/peast",
-            "version": "v1.13.11",
+            "version": "v1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mck89/peast.git",
-                "reference": "78c57966f3da5f223636ea0417d71ac6ff61e47f"
+                "reference": "70a728d598017e237118652b2fa30fbaa9d4ef6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mck89/peast/zipball/78c57966f3da5f223636ea0417d71ac6ff61e47f",
-                "reference": "78c57966f3da5f223636ea0417d71ac6ff61e47f",
+                "url": "https://api.github.com/repos/mck89/peast/zipball/70a728d598017e237118652b2fa30fbaa9d4ef6d",
+                "reference": "70a728d598017e237118652b2fa30fbaa9d4ef6d",
                 "shasum": ""
             },
             "require": {
@@ -1321,7 +1322,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.13.11-dev"
+                    "dev-master": "1.14.0-dev"
                 }
             },
             "autoload": {
@@ -1343,9 +1344,9 @@
             "description": "Peast is PHP library that generates AST for JavaScript code",
             "support": {
                 "issues": "https://github.com/mck89/peast/issues",
-                "source": "https://github.com/mck89/peast/tree/v1.13.11"
+                "source": "https://github.com/mck89/peast/tree/v1.14.0"
             },
-            "time": "2022-01-11T17:58:18+00:00"
+            "time": "2022-05-01T15:09:54+00:00"
         },
         {
             "name": "mustache/mustache",
@@ -6114,5 +6115,5 @@
     "platform-overrides": {
         "php": "5.6.20"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.2.0"
 }
