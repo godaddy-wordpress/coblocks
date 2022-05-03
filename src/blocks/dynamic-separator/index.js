@@ -14,22 +14,40 @@ import { createBlock, switchToBlockType } from '@wordpress/blocks';
  */
 const { name } = metadata;
 
+const calculateLineHeight = ( style, height ) => {
+	switch ( style ) {
+		case 'is-style-line':
+			height = height - 2;
+			break;
+
+		case 'is-style-dots':
+			height = height - 32;
+			break;
+
+		case 'is-style-wide':
+			height = height - 1;
+			break;
+	}
+
+	return parseInt( height / 2 );
+};
+
 const settings = {
 	edit: ( props ) => {
 		const { replaceBlocks } = dispatch( 'core/block-editor' );
 
-		let height = parseInt( ( props.attributes.height ?? 50 ) / 2 );
+		const height = calculateLineHeight( props.attributes.className, props.attributes.height ?? 50 );
 
 		replaceBlocks(
 			[ props.clientId ],
 			[
 				createBlock( 'core/spacer', {
-					height: height,
+					height,
 				} ),
-				switchToBlockType( props, 'core/separator' )[0],
+				switchToBlockType( props, 'core/separator' )[ 0 ],
 				createBlock( 'core/spacer', {
-					height: height,
-				} )
+					height,
+				} ),
 			]
 		);
 
