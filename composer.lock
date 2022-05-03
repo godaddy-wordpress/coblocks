@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9a3a62e14d970f39b49bd09c9be7c0b0",
+    "content-hash": "3b5ebfa7766a038ba52cfc8edc552f4b",
     "packages": [
         {
             "name": "godaddy-wordpress/styles",
-            "version": "dev-a-branch",
+            "version": "dev-publish",
             "source": {
                 "type": "git",
                 "url": "https://github.com/godaddy-wordpress/styles.git",
