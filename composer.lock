@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a53264b3d6ff598fa260bdd788e5bb04",
+    "content-hash": "9a3a62e14d970f39b49bd09c9be7c0b0",
     "packages": [
         {
             "name": "godaddy-wordpress/styles",
-            "version": "dev-master",
+            "version": "dev-a-branch",
             "source": {
                 "type": "git",
                 "url": "https://github.com/godaddy-wordpress/styles.git",
@@ -34,7 +34,6 @@
                 "wp-phpunit/wp-phpunit": "^5.8",
                 "yoast/phpunit-polyfills": "^1.0.1"
             },
-            "default-branch": true,
             "type": "wordpress-plugin",
             "autoload": {
                 "psr-4": {
@@ -71,7 +70,7 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/godaddy-wordpress/styles/tree/master",
+                "source": "https://github.com/godaddy-wordpress/styles/tree/a-branch",
                 "issues": "https://github.com/godaddy-wordpress/styles/issues"
             },
             "time": "2022-05-03T17:29:54+00:00"
