@@ -127,7 +127,8 @@ class StylesLoader {
 	}
 
 	public function assetPathPartial() {
-		global $wp_version;
+		// global $wp_version;
+		$wp_version = "6.0";
 		$version_parts = explode( '.', $wp_version );
 
 		// Array containing version number target order.

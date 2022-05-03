@@ -175,6 +175,12 @@ workflows:
               only: /^(?!canary).*$/
           requires:
             - build
+      - e2e_chrome_wp_latest:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - build
 
       # - e2e_chrome_wp_previous_major:
       #    filters:
@@ -744,6 +750,13 @@ jobs:
   # End to End Testing
   # --------------------------------------------------
 
+  e2e_chrome_wp_beta:
+    executor: php_74_browsers_mysql_mailhog
+    parallelism: 11
+    steps:
+      - run_e2e_tests:
+          browser: chrome
+          wpversion: 6.0-beta3
   e2e_chrome_wp_latest:
     executor: php_74_browsers_mysql_mailhog
     parallelism: 11
