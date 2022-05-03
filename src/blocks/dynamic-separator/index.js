@@ -1,70 +1,54 @@
 /**
- * External dependencies
- */
-import { separator as icon } from '@wordpress/icons';
-
-/**
  * Internal dependencies
  */
-import deprecated from './deprecated';
-import edit from './edit';
 import metadata from './block.json';
-import save from './save';
-import transforms from './transforms';
 
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
+import { dispatch } from '@wordpress/data';
+import { createBlock, switchToBlockType } from '@wordpress/blocks';
 
 /**
  * Block constants
  */
-const { name, category, attributes } = metadata;
+const { name } = metadata;
 
 const settings = {
-	/* translators: block name */
-	title: __( 'Dynamic HR', 'coblocks' ),
-	/* translators: block description */
-	description: __( 'Add a resizable spacer between other blocks.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
-	keywords: [
-		'coblocks',
-		'hr',
-		/* translators: block keyword */
-		__( 'spacer', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'separator', 'coblocks' ),
-	],
-	styles: [
-		{
-			name: 'dots',
-			/* translators: block style */
-			label: __( 'Dot', 'coblocks' ),
-			isDefault: true,
-		},
-		{
-			name: 'line',
-			/* translators: block style */
-			label: __( 'Line', 'coblocks' ),
-		},
-		{
-			name: 'fullwidth',
-			/* translators: block style */
-			label: __( 'Fullwidth', 'coblocks' ),
-		},
-	],
-	example: {
-		attributes: {
-			height: 100,
-		},
+	edit: ( props ) => {
+		const { replaceBlocks } = dispatch( 'core/block-editor' );
+
+		let height = parseInt( ( props.attributes.height ?? 50 ) / 2 );
+
+		replaceBlocks(
+			[ props.clientId ],
+			[
+				createBlock( 'core/spacer', {
+					height: height,
+				} ),
+				switchToBlockType( props, 'core/separator' )[0],
+				createBlock( 'core/spacer', {
+					height: height,
+				} )
+			]
+		);
+
+		return null;
 	},
-	attributes,
-	transforms,
-	edit,
-	save,
-	deprecated,
+	parent: [],
+	save: () => null,
+	title: metadata.title,
+	transforms: {
+		to: [
+			{
+				blocks: [ 'core/separator' ],
+				transform: ( attributes ) => {
+					return createBlock( 'core/separator', attributes );
+				},
+				type: 'block',
+			},
+		],
+	},
 };
 
-export { name, category, metadata, settings };
+export { name, metadata, settings };
