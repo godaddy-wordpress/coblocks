@@ -1,9 +1,4 @@
 /**
- * Internal dependencies.
- */
-import coblocksLayoutSelector from '../../../src/extensions/layout-selector/test/cypress-layouts';
-
-/**
  * Close layout selector.
  */
 export function closeLayoutSelector() {
@@ -64,15 +59,7 @@ export function loginToSite() {
 export function goTo( path = '/wp-admin' ) {
 	cy.visit( Cypress.env( 'testURL' ) + path );
 
-	return getWindowObject().then( ( safeWin ) => {
-		// Only set global `safeWin.coblocksLayoutSelector` on new pages.
-		if ( safeWin.location.href.includes( 'post-new.php?post_type=page' ) ) {
-			safeWin.coblocksLayoutSelector = coblocksLayoutSelector;
-
-			safeWin.wp.data.dispatch( 'coblocks/template-selector' ).updateLayouts( coblocksLayoutSelector.layouts );
-			safeWin.wp.data.dispatch( 'coblocks/template-selector' ).updateCategories( coblocksLayoutSelector.categories );
-		}
-	} );
+	return getWindowObject();
 }
 
 /**
