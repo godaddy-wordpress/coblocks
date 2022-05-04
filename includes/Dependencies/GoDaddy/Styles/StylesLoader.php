@@ -16,7 +16,7 @@ class StylesLoader {
 	 *
 	 * @var string
 	 */
-	const VERSION = '0.3.1';
+	const VERSION = '0.4.0';
 
 	/**
 	 * The style handle.
@@ -133,12 +133,15 @@ class StylesLoader {
 		// Array containing version number target order.
 		$version_targets = array();
 
-		// Build and push minor version numbers to targets array.
-		for ( $minor_version = 0; $minor_version <= $version_parts[2]; $minor_version++ ) {
-			array_push(
-				$version_targets,
-				implode( '.', array( $version_parts[0], $version_parts[1], $minor_version ) )
-			);
+		// If the current version has a minor part (the betas and RCs don't have one)
+		if ( array_key_exists( 2, $version_parts )) {
+			// Build and push minor version numbers to targets array.
+			for ($minor_version = 0; $minor_version <= $version_parts[2]; $minor_version++) {
+				array_push(
+					$version_targets,
+					implode('.', array($version_parts[0], $version_parts[1], $minor_version))
+				);
+			}
 		}
 
 		// Sort in reverse order so the latest minor version is first.
