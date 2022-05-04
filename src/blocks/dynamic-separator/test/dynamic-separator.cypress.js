@@ -30,21 +30,21 @@ describe( 'Test CoBlocks Dynamic Seperator Block', function() {
 
 		helpers.openSettingsPanel( 'Styles' );
 
-		cy.get( '.block-editor-block-styles__item-label' )
+		cy.get( '.block-editor-block-styles__item-label, .block-editor-block-styles__item-text' )
 			.contains( 'Line' )
 			.click();
 
 		cy.get( '.wp-block-coblocks-dynamic-separator' )
 			.should( 'have.class', 'is-style-line' );
 
-		cy.get( '.block-editor-block-styles__item-label' )
+		cy.get( '.block-editor-block-styles__item-label, .block-editor-block-styles__item-text' )
 			.contains( 'Dot' )
 			.click();
 
 		cy.get( '.wp-block-coblocks-dynamic-separator' )
 			.should( 'have.class', 'is-style-dots' );
 
-		cy.get( '.block-editor-block-styles__item-label' )
+		cy.get( '.block-editor-block-styles__item-label, .block-editor-block-styles__item-text' )
 			.contains( 'Fullwidth' )
 			.click();
 
