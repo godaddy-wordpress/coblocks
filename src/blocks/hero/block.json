@@ -51,6 +51,12 @@
 		"customBackgroundColor": {
 			"type": "string"
 		},
+		"customOverlayColor": {
+			"type": "string"
+		},
+		"overlayColor": {
+			"type": "string"
+		},
 		"height": {
 			"type": "number",
 			"default": 500

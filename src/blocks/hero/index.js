@@ -24,8 +24,6 @@ const settings = {
 
 		cover[ 0 ].innerBlocks = parentBlock.innerBlocks;
 
-		console.log( cover );
-
 		replaceBlocks(
 			[ props.clientId ],
 			cover
