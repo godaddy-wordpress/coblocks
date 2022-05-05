@@ -14,13 +14,13 @@ import './extensions/image-styles';
 import './extensions/layout-selector';
 import './extensions/list-styles';
 import './extensions/media-text-styles';
-import './extensions/paragraph-styles';
 
 // Formats
 import './formats';
 
 // Block Styles
 import './block-styles/core/gallery';
+import './block-styles/core/paragraph';
 
 // Block Variations
 import './block-variations/core/gallery';
