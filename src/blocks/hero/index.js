@@ -18,9 +18,17 @@ const settings = {
 	edit: ( props ) => {
 		const { replaceBlocks } = dispatch( 'core/block-editor' );
 
+		const parentBlock = wp.data.select( 'core/editor' ).getBlocksByClientId( props.clientId )[ 0 ];
+
+		const cover = switchToBlockType( props, 'core/cover' );
+
+		cover[ 0 ].innerBlocks = parentBlock.innerBlocks;
+
+		console.log( cover );
+
 		replaceBlocks(
 			[ props.clientId ],
-			switchToBlockType( props, 'core/cover' )[ 0 ]
+			cover
 		);
 
 		return null;

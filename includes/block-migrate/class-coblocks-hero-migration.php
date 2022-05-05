@@ -26,6 +26,20 @@ class CoBlocks_Hero_Migration extends CoBlocks_Block_Migration {
 	 * @inheritDoc
 	 */
 	protected function migrate_attributes() {
+		if ( ! array_key_exists( 'backgroundColor', $this->block_attributes ) && ! array_key_exists( 'customBackgroundColor', $this->block_attributes ) ) {
+			$this->block_attributes['customOverlayColor'] = '#ffffff';
+		}
+
+		if ( array_key_exists( 'backgroundColor', $this->block_attributes ) ) {
+			$this->block_attributes['overlayColor'] = $this->block_attributes['backgroundColor'];
+		}
+
+		if ( array_key_exists( 'customBackgroundColor', $this->block_attributes ) ) {
+			$this->block_attributes['customOverlayColor'] = $this->block_attributes['customBackgroundColor'];
+		}
+
+		wp_die( print_r( $this->block_attributes ) );
+
 		return $this->block_attributes;
 	}
 }
