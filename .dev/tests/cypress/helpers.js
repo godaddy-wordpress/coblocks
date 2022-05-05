@@ -251,6 +251,9 @@ export function setBlockStyle( style ) {
  */
 export function selectBlock( name, isChildBlock = false ) {
 	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle' ).click();
+
+	cy.wait( 1000 );
+
 	// Returning the cy.get function allows to to chain off of selectBlock
 	return cy.get( '.block-editor-block-navigation-leaf,.block-editor-list-view-leaf' )
 		.contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) )
