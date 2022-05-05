@@ -38,8 +38,6 @@ class CoBlocks_Hero_Migration extends CoBlocks_Block_Migration {
 			$this->block_attributes['customOverlayColor'] = $this->block_attributes['customBackgroundColor'];
 		}
 
-		wp_die( print_r( $this->block_attributes ) );
-
 		return $this->block_attributes;
 	}
 }
