@@ -36,7 +36,7 @@
 	],
 	"require": {
 		"php": ">=5.6",
-		"godaddy-wordpress/styles": "dev-add-wp-env"
+		"godaddy-wordpress/styles": "dev-publish"
 	},
 	"require-dev": {
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
