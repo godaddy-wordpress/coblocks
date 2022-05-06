@@ -1,4 +1,3 @@
-/* global coblocksLabs */
 /**
  * External dependencies
  */
@@ -6,7 +5,6 @@ import { __ } from '@wordpress/i18n';
 import { PluginMoreMenuItem } from '@wordpress/edit-post';
 import { useDispatch } from '@wordpress/data';
 import { useState } from '@wordpress/element';
-import { compose, ifCondition } from '@wordpress/compose';
 import { getPlugin, registerPlugin } from '@wordpress/plugins';
 import { MenuItem, Modal } from '@wordpress/components';
 
@@ -85,11 +83,6 @@ export function CoBlocksLabs() {
 if ( ! getPlugin( 'coblocks-labs' ) ) {
 	registerPlugin( 'coblocks-labs', {
 		icon: '',
-		render: compose( [
-			ifCondition( () => {
-				const isLabsEnabled = !! coblocksLabs?.isLabsEnabled;
-				return isLabsEnabled;
-			} ),
-		] )( CoBlocksLabs ),
+		render: CoBlocksLabs,
 	} );
 }

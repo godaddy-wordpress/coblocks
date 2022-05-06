@@ -1,4 +1,3 @@
-/* global coblocksLabs */
 /**
   External dependencies
  */
@@ -24,8 +23,7 @@ registerPlugin( PLUGIN_NAME, {
 	render: compose( [
 		ifCondition( () => {
 			const [ siteDesignEnabled ] = useEntityProp( 'root', 'site', SITE_DESIGN_FEATURE_ENABLED_KEY );
-			const isLabsEnabled = !! coblocksLabs?.isLabsEnabled;
-			return siteDesignEnabled && isLabsEnabled;
+			return siteDesignEnabled;
 		} ),
 	] )( SiteDesignComponent ),
 } );
