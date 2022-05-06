@@ -794,6 +794,7 @@ jobs:
     steps:
       - run_e2e_tests:
           browser: chrome
+          theme: twentytwentytwo
 
   perf_tests_master:
     executor: php_74_browsers_mysql
