@@ -1,54 +1,51 @@
 /**
  * Internal dependencies
  */
-import { BackgroundAttributes } from '../../components/background';
-import DimensionsAttributes from '../../components/dimensions-control/attributes';
-import edit from './edit';
-import { MediaCardIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 import metadata from './block.json';
-import save from './save';
-import transforms from './transforms';
 
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
+import { dispatch } from '@wordpress/data';
+import { createBlock, switchToBlockType } from '@wordpress/blocks';
 
 /**
  * Block constants
  */
-const { name, category } = metadata;
-
-const attributes = {
-	...BackgroundAttributes,
-	...DimensionsAttributes,
-	...metadata.attributes,
-};
+const { name } = metadata;
 
 const settings = {
+	edit: ( props ) => {
+		const { replaceBlocks } = dispatch( 'core/block-editor' );
+
+		const parentBlock = wp.data.select( 'core/editor' ).getBlocksByClientId( props.clientId )[ 0 ];
+
+		const cover = switchToBlockType( props, 'core/media-text' );
+
+		cover[ 0 ].innerBlocks = parentBlock.innerBlocks;
+
+		replaceBlocks(
+			[ props.clientId ],
+			cover
+		);
+
+		return null;
+	},
+	parent: [],
+	save: () => null,
 	/* translators: block name */
-	title: __( 'Media Card', 'coblocks' ),
-	/* translators: block description */
-	description: __( 'Add an image or video with an offset card side-by-side.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
-	supports: {
-		align: [ 'wide', 'full' ],
-		stackedOnMobile: true,
-		coBlocksSpacing: true,
+	title: metadata.title,
+	transforms: {
+		to: [
+			{
+				blocks: [ 'core/media-text' ],
+				transform: ( attributes ) => {
+					return createBlock( 'core/media-text', attributes );
+				},
+				type: 'block',
+			},
+		],
 	},
-	example: {
-		attributes: {
-			align: 'wide',
-			mediaType: 'image',
-			mediaUrl: 'https://s.w.org/images/core/5.3/MtBlanc1.jpg',
-			mediaWidth: 45,
-		},
-	},
-	attributes,
-	transforms,
-	edit,
-	save,
 };
 
-export { name, category, metadata, settings };
+export { name, metadata, settings };
