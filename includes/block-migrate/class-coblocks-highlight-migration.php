@@ -32,7 +32,8 @@ class CoBlocks_Highlight_Migration extends CoBlocks_Block_Migration {
 			'color' => '',
 		);
 
-		$highlight_style = $this->document->getElementsByTagName( 'mark' )->item( 1 )->getAttribute( 'style' );
+		$mark_element = $this->document->getElementsByTagName( 'mark' )->item( 0 );
+		$highlight_style = $this->get_element_attribute( $mark_element, 'style' );
 
 		if ( $highlight_style ) {
 			$element_styles = array();
