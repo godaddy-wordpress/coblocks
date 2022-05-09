@@ -108,7 +108,7 @@ class CoBlocks_Settings {
 				'description'       => __( 'Setting use to disable or enable layout selector controls across the site.', 'coblocks' ),
 				'sanitize_callback' => null,
 				'show_in_rest'      => true,
-				'default'           => true,
+				'default'           => false,
 			)
 		);
 

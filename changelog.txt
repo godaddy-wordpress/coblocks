@@ -1,4 +1,15 @@
 
+2.22.11 / 2022-04-26
+====================
+### Bug fixes
+* Fix Events block to handle multi-day events [#2353](https://github.com/godaddy-wordpress/coblocks/pull/2353)
+* Fix links in Gist block [#2349](https://github.com/godaddy-wordpress/coblocks/pull/2349)
+
+### Misc
+* Update dependencies [#2363](https://github.com/godaddy-wordpress/coblocks/pull/2363), [#2359](https://github.com/godaddy-wordpress/coblocks/pull/2359),
+  [#2358](https://github.com/godaddy-wordpress/coblocks/pull/2358) and [#2356](https://github.com/godaddy-wordpress/coblocks/pull/2356)
+* Introduce GoDaddy global styles [#2357](https://github.com/godaddy-wordpress/coblocks/pull/2357)
+
 2.22.10 / 2022-04-08
 ====================
 ### Bug fixes
