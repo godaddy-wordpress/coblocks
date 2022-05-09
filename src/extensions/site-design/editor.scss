@@ -42,10 +42,30 @@
 	}
 }
 
+.site-design {
+	&--designs__panel {
+		.components-panel__body-toggle:focus {
+			box-shadow: inset 0 0 0 var(--wp-admin-border-width-focus) $godaddy-everyday-blue-500;
+		}
+	}
+
+	&--colors__panel {
+		.components-panel__body-toggle:focus {
+			box-shadow: inset 0 0 0 var(--wp-admin-border-width-focus) $godaddy-everyday-blue-500;
+		}
+	}
+
+	&--fonts__panel {
+		.components-panel__body-toggle:focus {
+			box-shadow: inset 0 0 0 var(--wp-admin-border-width-focus) $godaddy-everyday-blue-500;
+		}
+	}
+}
+
 .components-site-design {
 	&__custom {
 		background-color: $gray-100;
-		border: 1px solid var(--wp-admin-theme-color);
+		border: 1px solid $godaddy-everyday-blue-500;
 		border-radius: 4px;
 		color: $gray-900;
 		margin-bottom: 2em;
@@ -94,6 +114,40 @@
 				position: absolute;
 				white-space: nowrap;
 				width: 1px;
+			}
+		}
+
+		.components-button:focus {
+			box-shadow: 0 0 0 var(--wp-admin-border-width-focus) $godaddy-everyday-blue-500;
+		}
+	}
+
+	.components-font-size-picker__number:focus {
+		border-color: $godaddy-everyday-blue-500;
+		box-shadow: 0 0 0 1px $godaddy-everyday-blue-500;
+	}
+
+	.components-custom-select-control__button {
+		&[aria-expanded="true"] {
+			color: $godaddy-everyday-blue-500;
+		}
+
+		&:hover {
+			color: $godaddy-everyday-blue-500;
+		}
+
+		&:focus {
+			border-color: $godaddy-everyday-blue-500;
+			box-shadow: 0 0 0 1px $godaddy-everyday-blue-500;
+		}
+	}
+
+	.components-range-control__wrapper {
+		& > span {
+			color: $godaddy-everyday-blue-500;
+
+			& > span {
+				background-color: $godaddy-everyday-blue-500;
 			}
 		}
 	}
@@ -161,6 +215,10 @@
 			width: 24px;
 		}
 	}
+}
+
+.color-palettes__custom-button {
+	color: $godaddy-everyday-blue-500 !important;
 }
 
 .components-site-design-color-palettes {
@@ -333,7 +391,7 @@
 		&__custom {
 			background: none;
 			border: none;
-			color: var(--wp-admin-theme-color);
+			color: $godaddy-everyday-blue-500 !important;
 			float: right;
 			padding: 0;
 		}
@@ -415,7 +473,7 @@
 		&__edit {
 			background-color: #fff;
 			border: none;
-			color: var(--wp-admin-theme-color);
+			color: $godaddy-everyday-blue-500 !important;
 			display: inline-block;
 			font-size: 0.9rem;
 			margin-bottom: 0;
@@ -467,6 +525,14 @@
 			font-size: 1.4rem;
 		}
 	}
+}
+
+.components-site-design-fonts__option:hover:not(.is-selected) {
+	border-color: $godaddy-everyday-blue-500 !important;
+}
+
+.content-management__add-new-button svg {
+	fill: $godaddy-everyday-blue-500 !important;
 }
 
 body.rtl {
