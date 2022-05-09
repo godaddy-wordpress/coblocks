@@ -171,19 +171,19 @@ workflows:
             - build
 
       # END TO END TESTING
-      - e2e_chrome_wp_latest:
+      - e2e_chrome_wp_nightly:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
             - build
-      - e2e_firefox_wp_latest:
+      - e2e_firefox_wp_nightly:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
             - build
-      - e2e_twentytwentytwo_chrome_latest:
+      - e2e_twentytwentytwo_chrome_nightly:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -758,19 +758,21 @@ jobs:
   # End to End Testing
   # --------------------------------------------------
 
-  e2e_chrome_wp_latest:
+  e2e_chrome_wp_nightly:
     executor: php_74_browsers_mysql_mailhog
     parallelism: 11
     steps:
       - run_e2e_tests:
           browser: chrome
+          wpversion: 6.0-RC1
 
-  e2e_firefox_wp_latest:
+  e2e_firefox_wp_nightly:
     executor: php_74_browsers_mysql_mailhog
     parallelism: 11
     steps:
       - run_e2e_tests:
           browser: firefox
+          wpversion: 6.0-RC1
 
   e2e_chrome_wp_previous_major:
     executor: php_74_browsers_mysql_mailhog
@@ -780,13 +782,14 @@ jobs:
           browser: chrome
           wpversion: previous_major
 
-  e2e_twentytwentytwo_chrome_latest:
+  e2e_twentytwentytwo_chrome_nightly:
     executor: php_74_browsers_mysql_mailhog
     parallelism: 11
     steps:
       - run_e2e_tests:
           browser: chrome
           theme: twentytwentytwo
+          wpversion: 6.0-RC1
 
   e2e_chrome_wp_php80:
     executor: php_80_browsers_mysql_mailhog
@@ -795,6 +798,7 @@ jobs:
       - run_e2e_tests:
           browser: chrome
           theme: twentytwentytwo
+          wpversion: 6.0-RC1
 
   perf_tests_master:
     executor: php_74_browsers_mysql
