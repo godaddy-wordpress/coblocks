@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-05-09T16:36:34+00:00\n"
+"POT-Creation-Date: 2022-05-09T18:16:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: coblocks\n"
@@ -2266,7 +2266,8 @@ msgstr ""
 msgid "Request a Quote"
 msgstr ""
 
-#: src/blocks/gallery-carousel/deprecated.js:761
+#: src/blocks/gallery-carousel/deprecated.js:763
+#: src/blocks/gallery-carousel/deprecated.js:942
 #: src/blocks/gallery-carousel/save.js:132
 msgid "Carousel Gallery"
 msgstr ""
@@ -2412,6 +2413,10 @@ msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:174
 msgid "Responsive height"
+msgstr ""
+
+#: src/blocks/gallery-carousel/save.js:174
+msgid "gallery thumbnail"
 msgstr ""
 
 #: src/blocks/gallery-carousel/variations.js:108
