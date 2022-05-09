@@ -9,6 +9,7 @@ import { FormIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * Internal dependencies
  */
 import edit from './edit';
+import metadata from './block.json';
 import variations from './variations';
 
 /**
@@ -18,35 +19,28 @@ import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 import { InnerBlocks } from '@wordpress/block-editor';
 
-// Note: Check that coblocksBlockData is set. So jest tests will pass.
-const successTextDefault = typeof coblocksBlockData === 'undefined' ? __( 'Your message was sent:', 'coblocks' ) : coblocksBlockData.form.successText;
-
-/**
- * Block constants
- */
-const metadata = {
-	attributes: {
+const { name, category, attributes } = metadata;
+let conditionalBlockAttributes = { ...attributes };
+if ( typeof coblocksBlockData !== 'undefined' ) {
+	conditionalBlockAttributes = {
+		...conditionalBlockAttributes,
 		subject: {
-			default: null,
+			default: coblocksBlockData.form.emailSubject,
 			type: 'string',
 		},
 		successText: {
-			default: successTextDefault,
+			default: coblocksBlockData.form.successText,
 			type: 'string',
 		},
 		to: {
-			default: null,
+			default: coblocksBlockData.form.adminEmail,
 			type: 'string',
 		},
-	},
-	category: 'layout',
-	name: 'coblocks/form',
-};
-
-const { name, category, attributes } = metadata;
+	};
+}
 
 const settings = {
-	attributes,
+	attributes: conditionalBlockAttributes,
 	/* translators: block description */
 	description: __( 'Add a contact form to your page.', 'coblocks' ),
 	edit,

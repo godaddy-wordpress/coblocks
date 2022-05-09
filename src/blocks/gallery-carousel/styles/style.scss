@@ -1,4 +1,9 @@
 .wp-block-coblocks-gallery-carousel {
+	.coblocks-gallery--item {
+		height: 100%;
+		position: relative;
+		width: 100% !important;
+	}
 
 	&,
 	.coblocks-gallery {
@@ -11,9 +16,7 @@
 	}
 
 	@for $i from 2 through 20 {
-
 		.carousel-nav.has-border-radius-#{ $i } {
-
 			img {
 				border-radius: #{$i}px;
 			}
@@ -121,7 +124,6 @@
 
 .has-responsive-height.has-carousel {
 	height: auto !important;
-	padding-bottom: 56.25%;
 	position: relative;
 
 	.flickity-viewport {
@@ -133,13 +135,11 @@
 }
 
 body.rtl {
-
 	.flickity-viewport {
 		position: relative;
 	}
 
 	.flickity-prev-next-button {
-
 		&.next {
 			left: 0;
 		}

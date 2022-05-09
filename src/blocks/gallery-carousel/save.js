@@ -62,8 +62,8 @@ const save = ( props ) => {
 		}
 	);
 
-	const thumbnailClasses = ( index ) => (
-		classnames(
+	const thumbnailClasses = ( index ) => {
+		return classnames(
 			'wp-block-coblocks-gallery-carousel-thumbnail',
 			`wp-block-coblocks-gallery-carousel-thumbnail-${ index }`,
 			{
@@ -72,8 +72,8 @@ const save = ( props ) => {
 				[ `has-margin-right-${ gutter }` ]: gutter > 0,
 				[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
-		)
-	);
+		);
+	};
 
 	const thumbnailContainerClasses = classnames(
 		'wp-block-coblocks-gallery-carousel-thumbnail-pagination',
@@ -131,7 +131,7 @@ const save = ( props ) => {
 	return (
 		<div aria-label={ __( `Carousel Gallery`, 'coblocks' ) } >
 			<div className={ innerClasses }>
-				<div className={ swiperClasses } data-swiper={ JSON.stringify( swiperOptions ) } id={ uuid } style={ responsiveHeight ? undefined : swiperStyles } >
+				<div className={ swiperClasses } data-swiper={ JSON.stringify( swiperOptions ) } id={ uuid } style={ swiperStyles } >
 					<div className="swiper-wrapper">
 						{ images.map( ( image, index ) => {
 							return (

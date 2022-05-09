@@ -1,0 +1,33 @@
+{
+	"name": "coblocks/field-name",
+	"category": "layout",
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "Name"
+		},
+		"required": {
+			"type": "boolean",
+			"default": false
+		},
+		"hasLastName": {
+			"type": "boolean",
+			"default": false
+		},
+		"labelFirstName": {
+			"type": "string",
+			"default": "First"
+		},
+		"labelLastName": {
+			"type": "string",
+			"default": "Last"
+		}
+	},
+	"title": "Name",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-3",
+	"description": "A text field for collecting the first and last names.",
+	"parent": [
+		"coblocks/form"
+	]
+}

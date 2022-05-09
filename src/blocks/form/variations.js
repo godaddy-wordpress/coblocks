@@ -11,8 +11,8 @@ import {
 /**
  * WordPress dependencies
  */
-import { __, sprintf } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
+import { __, sprintf } from '@wordpress/i18n';
 
 /**
  * Template option choices for predefined form layouts.
@@ -112,7 +112,7 @@ const variations = [
 			[ 'coblocks/field-checkbox', {
 				label: sprintf(
 					/* translators: %1$s: opening anchor link. %2$s: closing anchor link */
-					__( 'By submitting this form, you agree to our %1$sterms and conditions%2$s and %1$sprivacy policy%2$s', 'coblocks' ),
+					__( 'By submitting this form, you agree to our %1$sterms and conditions%2$s and %1$sprivacy policy%2$s.', 'coblocks' ),
 					'<a href="#" target="_blank" rel="noreferrer noopener">',
 					'</a>'
 				),

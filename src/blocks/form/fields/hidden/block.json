@@ -1,0 +1,21 @@
+{
+	"name": "coblocks/field-hidden",
+	"category": "layout",
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "Hidden"
+		},
+		"value": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"title": "Hidden",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-3",
+	"description": "A hidden text field for collecting additional data.",
+	"parent": [
+		"coblocks/form"
+	]
+}

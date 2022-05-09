@@ -1,0 +1,21 @@
+{
+	"name": "coblocks/field-website",
+	"category": "layout",
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "Website"
+		},
+		"required": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"title": "Website",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-3",
+	"description": "A text field for collecting a URL.",
+	"parent": [
+		"coblocks/form"
+	]
+}
