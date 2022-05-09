@@ -9,15 +9,17 @@ import { useEntityProp } from '@wordpress/core-data';
  */
 import CoBlocksSettingsModalControl from './coblocks-settings-slot';
 
-function CoBlocksSettingsToggleControl( { label, help, settingsKey } ) {
+function CoBlocksSettingsToggleControl( { label, help, settingsKey, shouldDisable = false } ) {
 	const [ setting, saveSetting ] = useEntityProp( 'root', 'site', settingsKey );
 
 	return (
 		<CoBlocksSettingsModalControl>
 			<CheckboxControl
-				label={ label }
-				help={ help }
 				checked={ !! setting }
+				// With the introduction of CoBlocks labs we now disable the Layout Selector when Go theme is not active.
+				disabled={ shouldDisable }
+				help={ help }
+				label={ label }
 				onChange={ saveSetting }
 			/>
 		</CoBlocksSettingsModalControl>

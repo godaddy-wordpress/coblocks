@@ -18,4 +18,8 @@ module.exports = {
 		'<rootDir>/.dev/tests/jest/setup-globals.js',
 	],
 	testMatch: [ '**/test/*.spec.js' ],
+	transform: {
+		'\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+			'<rootDir>/.dev/tests/jest/assets-transformer.js',
+	},
 };
