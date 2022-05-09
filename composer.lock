@@ -4,21 +4,30 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5c4a77592a00b01f4d1d938fd36f2adc",
+    "content-hash": "3b5ebfa7766a038ba52cfc8edc552f4b",
     "packages": [
         {
             "name": "godaddy-wordpress/styles",
-            "version": "dev-add-wp-env",
+            "version": "dev-publish",
             "source": {
                 "type": "git",
                 "url": "https://github.com/godaddy-wordpress/styles.git",
-                "reference": "209ea30b1393f595fd22afbb13dfda7c0d2ff9b6"
+                "reference": "6c2f41ed8792abd01479798ee4d1479e244bc96d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/godaddy-wordpress/styles/zipball/209ea30b1393f595fd22afbb13dfda7c0d2ff9b6",
-                "reference": "209ea30b1393f595fd22afbb13dfda7c0d2ff9b6",
+                "url": "https://api.github.com/repos/godaddy-wordpress/styles/zipball/6c2f41ed8792abd01479798ee4d1479e244bc96d",
+                "reference": "6c2f41ed8792abd01479798ee4d1479e244bc96d",
                 "shasum": ""
+            },
+            "archive": {
+                "exclude": [
+                    "*.lock",
+                    "package*",
+                    "README.md",
+                    "godaddy-styles.php",
+                    "src"
+                ]
             },
             "require": {
                 "php": ">=5.6"
@@ -39,15 +48,6 @@
                 "psr-4": {
                     "GoDaddy\\Styles\\": ""
                 }
-            },
-            "archive": {
-                "exclude": [
-                    "*.lock",
-                    "package*",
-                    "README.md",
-                    "godaddy-styles.php",
-                    "src"
-                ]
             },
             "scripts": {
                 "lint": [
@@ -70,16 +70,16 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/godaddy-wordpress/styles/tree/add-wp-env",
+                "source": "https://github.com/godaddy-wordpress/styles/tree/a-branch",
                 "issues": "https://github.com/godaddy-wordpress/styles/issues"
             },
-            "time": "2022-04-11T20:49:00+00:00"
+            "time": "2022-05-03T17:29:54+00:00"
         }
     ],
     "packages-dev": [
         {
             "name": "coenjacobs/mozart",
-            "version": "0.3.0",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/coenjacobs/mozart.git",
@@ -182,11 +182,6 @@
                 "ssl",
                 "tls"
             ],
-            "support": {
-                "irc": "irc://irc.freenode.org/composer",
-                "issues": "https://github.com/composer/ca-bundle/issues",
-                "source": "https://github.com/composer/ca-bundle/tree/1.3.1"
-            },
             "funding": [
                 {
                     "url": "https://packagist.com",
@@ -351,10 +346,6 @@
                 "composer",
                 "compression"
             ],
-            "support": {
-                "issues": "https://github.com/composer/metadata-minifier/issues",
-                "source": "https://github.com/composer/metadata-minifier/tree/1.0.0"
-            },
             "funding": [
                 {
                     "url": "https://packagist.com",
@@ -920,11 +911,6 @@
                 "po",
                 "translation"
             ],
-            "support": {
-                "email": "oom@oscarotero.com",
-                "issues": "https://github.com/oscarotero/Gettext/issues",
-                "source": "https://github.com/php-gettext/Gettext/tree/v4.8.6"
-            },
             "funding": [
                 {
                     "url": "https://paypal.me/oscarotero",
@@ -999,10 +985,6 @@
                 "translations",
                 "unicode"
             ],
-            "support": {
-                "issues": "https://github.com/php-gettext/Languages/issues",
-                "source": "https://github.com/php-gettext/Languages/tree/2.9.0"
-            },
             "funding": [
                 {
                     "url": "https://paypal.me/mlocati",
@@ -1044,10 +1026,6 @@
                 }
             ],
             "description": "Package to convert JSON files to PO files",
-            "support": {
-                "issues": "https://github.com/godaddy-wordpress/json2po/issues",
-                "source": "https://github.com/godaddy-wordpress/json2po/tree/1.0.0"
-            },
             "time": "2020-08-27T20:48:42+00:00"
         },
         {
@@ -1079,10 +1057,6 @@
                 }
             ],
             "description": "Package to convert PO files to JSON",
-            "support": {
-                "issues": "https://github.com/godaddy-wordpress/pot2json/issues",
-                "source": "https://github.com/godaddy-wordpress/pot2json/tree/1.0.0"
-            },
             "time": "2020-08-27T20:07:07+00:00"
         },
         {
@@ -1299,16 +1273,16 @@
         },
         {
             "name": "mck89/peast",
-            "version": "v1.13.11",
+            "version": "v1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mck89/peast.git",
-                "reference": "78c57966f3da5f223636ea0417d71ac6ff61e47f"
+                "reference": "70a728d598017e237118652b2fa30fbaa9d4ef6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mck89/peast/zipball/78c57966f3da5f223636ea0417d71ac6ff61e47f",
-                "reference": "78c57966f3da5f223636ea0417d71ac6ff61e47f",
+                "url": "https://api.github.com/repos/mck89/peast/zipball/70a728d598017e237118652b2fa30fbaa9d4ef6d",
+                "reference": "70a728d598017e237118652b2fa30fbaa9d4ef6d",
                 "shasum": ""
             },
             "require": {
@@ -1321,7 +1295,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.13.11-dev"
+                    "dev-master": "1.14.0-dev"
                 }
             },
             "autoload": {
@@ -1343,9 +1317,9 @@
             "description": "Peast is PHP library that generates AST for JavaScript code",
             "support": {
                 "issues": "https://github.com/mck89/peast/issues",
-                "source": "https://github.com/mck89/peast/tree/v1.13.11"
+                "source": "https://github.com/mck89/peast/tree/v1.14.0"
             },
-            "time": "2022-01-11T17:58:18+00:00"
+            "time": "2022-05-01T15:09:54+00:00"
         },
         {
             "name": "mustache/mustache",
@@ -1421,12 +1395,12 @@
             },
             "type": "library",
             "autoload": {
-                "files": [
-                    "src/DeepCopy/deep_copy.php"
-                ],
                 "psr-4": {
                     "DeepCopy\\": "src/DeepCopy/"
-                }
+                },
+                "files": [
+                    "src/DeepCopy/deep_copy.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1485,10 +1459,6 @@
             "keywords": [
                 "xml"
             ],
-            "support": {
-                "issues": "https://github.com/nb/oxymel/issues",
-                "source": "https://github.com/nb/oxymel/tree/master"
-            },
             "time": "2013-02-24T15:01:54+00:00"
         },
         {
@@ -1547,10 +1517,6 @@
                 "phpcs",
                 "standards"
             ],
-            "support": {
-                "issues": "https://github.com/PHPCompatibility/PHPCompatibility/issues",
-                "source": "https://github.com/PHPCompatibility/PHPCompatibility"
-            },
             "time": "2019-12-27T09:44:58+00:00"
         },
         {
@@ -1603,10 +1569,6 @@
                 "polyfill",
                 "standards"
             ],
-            "support": {
-                "issues": "https://github.com/PHPCompatibility/PHPCompatibilityParagonie/issues",
-                "source": "https://github.com/PHPCompatibility/PHPCompatibilityParagonie"
-            },
             "time": "2021-02-15T10:24:51+00:00"
         },
         {
@@ -1882,10 +1844,6 @@
                 "spy",
                 "stub"
             ],
-            "support": {
-                "issues": "https://github.com/phpspec/prophecy/issues",
-                "source": "https://github.com/phpspec/prophecy/tree/v1.10.3"
-            },
             "time": "2020-03-05T15:02:03+00:00"
         },
         {
@@ -1949,11 +1907,6 @@
                 "testing",
                 "xunit"
             ],
-            "support": {
-                "irc": "irc://irc.freenode.net/phpunit",
-                "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/4.0"
-            },
             "time": "2017-04-02T07:44:40+00:00"
         },
         {
@@ -2001,11 +1954,6 @@
                 "filesystem",
                 "iterator"
             ],
-            "support": {
-                "irc": "irc://irc.freenode.net/phpunit",
-                "issues": "https://github.com/sebastianbergmann/php-file-iterator/issues",
-                "source": "https://github.com/sebastianbergmann/php-file-iterator/tree/1.4.5"
-            },
             "time": "2017-11-27T13:52:08+00:00"
         },
         {
@@ -2047,10 +1995,6 @@
             "keywords": [
                 "template"
             ],
-            "support": {
-                "issues": "https://github.com/sebastianbergmann/php-text-template/issues",
-                "source": "https://github.com/sebastianbergmann/php-text-template/tree/1.2.1"
-            },
             "time": "2015-06-21T13:50:34+00:00"
         },
         {
@@ -2100,10 +2044,6 @@
             "keywords": [
                 "timer"
             ],
-            "support": {
-                "issues": "https://github.com/sebastianbergmann/php-timer/issues",
-                "source": "https://github.com/sebastianbergmann/php-timer/tree/master"
-            },
             "time": "2017-02-26T11:10:40+00:00"
         },
         {
@@ -2240,10 +2180,6 @@
                 "testing",
                 "xunit"
             ],
-            "support": {
-                "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/5.7.27"
-            },
             "time": "2018-02-01T05:50:59+00:00"
         },
         {
@@ -2303,11 +2239,6 @@
                 "mock",
                 "xunit"
             ],
-            "support": {
-                "irc": "irc://irc.freenode.net/phpunit",
-                "issues": "https://github.com/sebastianbergmann/phpunit-mock-objects/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit-mock-objects/tree/3.4"
-            },
             "abandoned": true,
             "time": "2017-06-30T09:13:00+00:00"
         },
@@ -2356,9 +2287,6 @@
                 "psr",
                 "psr-3"
             ],
-            "support": {
-                "source": "https://github.com/php-fig/log/tree/1.1.4"
-            },
             "time": "2021-05-03T11:20:27+00:00"
         },
         {
@@ -2491,10 +2419,6 @@
                 "iri",
                 "sockets"
             ],
-            "support": {
-                "issues": "https://github.com/WordPress/Requests/issues",
-                "source": "https://github.com/WordPress/Requests/tree/v1.8.1"
-            },
             "time": "2021-06-04T09:56:25+00:00"
         },
         {
@@ -2540,10 +2464,6 @@
             ],
             "description": "Looks up which function or method a line of code belongs to",
             "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/",
-            "support": {
-                "issues": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/issues",
-                "source": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/tree/1.0.2"
-            },
             "funding": [
                 {
                     "url": "https://github.com/sebastianbergmann",
@@ -2614,10 +2534,6 @@
                 "compare",
                 "equality"
             ],
-            "support": {
-                "issues": "https://github.com/sebastianbergmann/comparator/issues",
-                "source": "https://github.com/sebastianbergmann/comparator/tree/1.2"
-            },
             "time": "2017-01-29T09:50:25+00:00"
         },
         {
@@ -2670,10 +2586,6 @@
             "keywords": [
                 "diff"
             ],
-            "support": {
-                "issues": "https://github.com/sebastianbergmann/diff/issues",
-                "source": "https://github.com/sebastianbergmann/diff/tree/1.4"
-            },
             "time": "2017-05-22T07:24:03+00:00"
         },
         {
@@ -2724,10 +2636,6 @@
                 "environment",
                 "hhvm"
             ],
-            "support": {
-                "issues": "https://github.com/sebastianbergmann/environment/issues",
-                "source": "https://github.com/sebastianbergmann/environment/tree/master"
-            },
             "time": "2016-11-26T07:53:53+00:00"
         },
         {
@@ -2795,10 +2703,6 @@
                 "export",
                 "exporter"
             ],
-            "support": {
-                "issues": "https://github.com/sebastianbergmann/exporter/issues",
-                "source": "https://github.com/sebastianbergmann/exporter/tree/master"
-            },
             "time": "2016-11-19T08:54:04+00:00"
         },
         {
@@ -2850,10 +2754,6 @@
             "keywords": [
                 "global state"
             ],
-            "support": {
-                "issues": "https://github.com/sebastianbergmann/global-state/issues",
-                "source": "https://github.com/sebastianbergmann/global-state/tree/1.1.1"
-            },
             "time": "2015-10-12T03:26:01+00:00"
         },
         {
@@ -2900,10 +2800,6 @@
             ],
             "description": "Traverses array structures and object graphs to enumerate all referenced objects",
             "homepage": "https://github.com/sebastianbergmann/object-enumerator/",
-            "support": {
-                "issues": "https://github.com/sebastianbergmann/object-enumerator/issues",
-                "source": "https://github.com/sebastianbergmann/object-enumerator/tree/master"
-            },
             "time": "2017-02-18T15:18:39+00:00"
         },
         {
@@ -2957,10 +2853,6 @@
             ],
             "description": "Provides functionality to recursively process PHP variables",
             "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
-            "support": {
-                "issues": "https://github.com/sebastianbergmann/recursion-context/issues",
-                "source": "https://github.com/sebastianbergmann/recursion-context/tree/master"
-            },
             "time": "2016-11-19T07:33:16+00:00"
         },
         {
@@ -3003,10 +2895,6 @@
             ],
             "description": "Provides a list of PHP built-in functions that operate on resources",
             "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
-            "support": {
-                "issues": "https://github.com/sebastianbergmann/resource-operations/issues",
-                "source": "https://github.com/sebastianbergmann/resource-operations/tree/master"
-            },
             "time": "2015-07-28T20:34:47+00:00"
         },
         {
@@ -3050,10 +2938,6 @@
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
-            "support": {
-                "issues": "https://github.com/sebastianbergmann/version/issues",
-                "source": "https://github.com/sebastianbergmann/version/tree/master"
-            },
             "time": "2016-10-03T07:35:21+00:00"
         },
         {
@@ -3530,12 +3414,12 @@
                 }
             },
             "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ],
                 "psr-4": {
                     "Symfony\\Polyfill\\Ctype\\": ""
-                }
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -3609,12 +3493,12 @@
                 }
             },
             "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ],
                 "psr-4": {
                     "Symfony\\Polyfill\\Mbstring\\": ""
-                }
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -3890,12 +3774,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "cache-command.php"
-                ],
                 "psr-4": {
                     "": "src/"
-                }
+                },
+                "files": [
+                    "cache-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -3949,12 +3833,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "checksum-command.php"
-                ],
                 "psr-4": {
                     "": "src/"
-                }
+                },
+                "files": [
+                    "checksum-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -4017,12 +3901,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "config-command.php"
-                ],
                 "psr-4": {
                     "": "src/"
-                }
+                },
+                "files": [
+                    "config-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -4093,12 +3977,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "core-command.php"
-                ],
                 "psr-4": {
                     "": "src/"
-                }
+                },
+                "files": [
+                    "core-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -4161,12 +4045,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "cron-command.php"
-                ],
                 "psr-4": {
                     "": "src/"
-                }
+                },
+                "files": [
+                    "cron-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -4235,12 +4119,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "db-command.php"
-                ],
                 "psr-4": {
                     "": "src/"
-                }
+                },
+                "files": [
+                    "db-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -4303,12 +4187,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "embed-command.php"
-                ],
                 "psr-4": {
                     "WP_CLI\\Embeds\\": "src/"
-                }
+                },
+                "files": [
+                    "embed-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -4512,13 +4396,13 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "entity-command.php"
-                ],
                 "psr-4": {
                     "": "src/",
                     "WP_CLI\\": "src/WP_CLI"
-                }
+                },
+                "files": [
+                    "entity-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -4571,12 +4455,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "eval-command.php"
-                ],
                 "psr-4": {
                     "": "src/"
-                }
+                },
+                "files": [
+                    "eval-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -4634,12 +4518,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "export-command.php"
-                ],
                 "psr-4": {
                     "": "src/"
-                }
+                },
+                "files": [
+                    "export-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -4726,12 +4610,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "extension-command.php"
-                ],
                 "psr-4": {
                     "": "src/"
-                }
+                },
+                "files": [
+                    "extension-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -4856,12 +4740,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "import-command.php"
-                ],
                 "psr-4": {
                     "": "src/"
-                }
+                },
+                "files": [
+                    "import-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -4935,12 +4819,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "language-command.php"
-                ],
                 "psr-4": {
                     "": "src/"
-                }
+                },
+                "files": [
+                    "language-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -4996,12 +4880,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "maintenance-mode-command.php"
-                ],
                 "psr-4": {
                     "WP_CLI\\MaintenanceMode\\": "src/"
-                }
+                },
+                "files": [
+                    "maintenance-mode-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5058,12 +4942,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "media-command.php"
-                ],
                 "psr-4": {
                     "": "src/"
-                }
+                },
+                "files": [
+                    "media-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5111,12 +4995,12 @@
                 }
             },
             "autoload": {
-                "files": [
-                    "includes/functions.php"
-                ],
                 "psr-4": {
                     "Mustangostang\\": "src/"
-                }
+                },
+                "files": [
+                    "includes/functions.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5130,9 +5014,6 @@
             ],
             "description": "A simple YAML loader/dumper class for PHP (WP-CLI fork)",
             "homepage": "https://github.com/mustangostang/spyc/",
-            "support": {
-                "source": "https://github.com/wp-cli/spyc/tree/autoload"
-            },
             "time": "2017-04-25T11:26:20+00:00"
         },
         {
@@ -5174,12 +5055,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "package-command.php"
-                ],
                 "psr-4": {
                     "": "src/"
-                }
+                },
+                "files": [
+                    "package-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5219,12 +5100,12 @@
             },
             "type": "library",
             "autoload": {
-                "files": [
-                    "lib/cli/cli.php"
-                ],
                 "psr-0": {
                     "cli": "lib/"
-                }
+                },
+                "files": [
+                    "lib/cli/cli.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5248,10 +5129,6 @@
                 "cli",
                 "console"
             ],
-            "support": {
-                "issues": "https://github.com/wp-cli/php-cli-tools/issues",
-                "source": "https://github.com/wp-cli/php-cli-tools/tree/v0.11.13"
-            },
             "time": "2021-07-01T15:08:16+00:00"
         },
         {
@@ -5289,12 +5166,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "rewrite-command.php"
-                ],
                 "psr-4": {
                     "": "src/"
-                }
+                },
+                "files": [
+                    "rewrite-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5355,12 +5232,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "role-command.php"
-                ],
                 "psr-4": {
                     "": "src/"
-                }
+                },
+                "files": [
+                    "role-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5421,12 +5298,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "scaffold-command.php"
-                ],
                 "psr-4": {
                     "": "src/"
-                }
+                },
+                "files": [
+                    "scaffold-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5481,12 +5358,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "search-replace-command.php"
-                ],
                 "psr-4": {
                     "": "src/"
-                }
+                },
+                "files": [
+                    "search-replace-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5538,12 +5415,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "server-command.php"
-                ],
                 "psr-4": {
                     "": "src/"
-                }
+                },
+                "files": [
+                    "server-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5595,13 +5472,13 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "shell-command.php"
-                ],
                 "psr-4": {
                     "": "src/",
                     "WP_CLI\\": "src/WP_CLI"
-                }
+                },
+                "files": [
+                    "shell-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5657,12 +5534,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "super-admin-command.php"
-                ],
                 "psr-4": {
                     "": "src/"
-                }
+                },
+                "files": [
+                    "super-admin-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5724,12 +5601,12 @@
                 ]
             },
             "autoload": {
-                "files": [
-                    "widget-command.php"
-                ],
                 "psr-4": {
                     "": "src/"
-                }
+                },
+                "files": [
+                    "widget-command.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5983,11 +5860,6 @@
                 "standards",
                 "wordpress"
             ],
-            "support": {
-                "issues": "https://github.com/WordPress/WordPress-Coding-Standards/issues",
-                "source": "https://github.com/WordPress/WordPress-Coding-Standards",
-                "wiki": "https://github.com/WordPress/WordPress-Coding-Standards/wiki"
-            },
             "time": "2020-05-13T23:57:56+00:00"
         },
         {
@@ -6093,10 +5965,6 @@
                 "polyfill",
                 "testing"
             ],
-            "support": {
-                "issues": "https://github.com/Yoast/PHPUnit-Polyfills/issues",
-                "source": "https://github.com/Yoast/PHPUnit-Polyfills"
-            },
             "time": "2021-11-23T01:37:03+00:00"
         }
     ],
@@ -6114,5 +5982,5 @@
     "platform-overrides": {
         "php": "5.6.20"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.2.0"
 }

@@ -93,7 +93,9 @@ describe( 'Test CoBlocks Logos Block', function() {
 			}
 		} );
 
-		helpers.setBlockStyle( /black & white/i );
+		// 'whit' instead of 'white' is intentional. Sometimes when rendering with smaller screens,
+		// it shows Black & Whit... instead of Black & White
+		helpers.setBlockStyle( /black & whit/i );
 
 		cy.get( '.wp-block-coblocks-logos' ).should( 'have.class', 'is-style-black-and-white' );
 
