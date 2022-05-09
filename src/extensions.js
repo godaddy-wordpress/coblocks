@@ -24,3 +24,4 @@ import './block-styles/core/paragraph';
 
 // Block Variations
 import './block-variations/core/gallery';
+import './block-variations/core/paragraph';

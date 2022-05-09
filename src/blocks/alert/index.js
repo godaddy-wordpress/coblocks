@@ -7,10 +7,7 @@ import metadata from './block.json';
  * WordPress dependencies
  */
 import { dispatch } from '@wordpress/data';
-import { createBlock, switchToBlockType, registerBlockVariation } from '@wordpress/blocks';
-import { Icon } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
-import { paragraph as paragraphIcon } from '@wordpress/icons';
+import { createBlock, switchToBlockType } from '@wordpress/blocks';
 
 /**
  * Block constants
@@ -43,67 +40,3 @@ const settings = {
 };
 
 export { name, metadata, settings };
-
-registerBlockVariation( 'core/paragraph', {
-	attributes: {
-		className: 'is-style-info',
-	},
-	/* translators: block description */
-	description: __( 'Informational paragraph.', 'coblocks' ),
-	icon: <Icon icon={ paragraphIcon } />,
-	keywords: [
-		'paragraph',
-		'info',
-	],
-	name: 'info-paragraph',
-	/* translators: block name */
-	title: __( 'Informational Paragraph', 'coblocks' ),
-} );
-
-registerBlockVariation( 'core/paragraph', {
-	attributes: {
-		className: 'is-style-warning',
-	},
-	/* translators: block description */
-	description: __( 'Warning paragraph.', 'coblocks' ),
-	icon: <Icon icon={ paragraphIcon } />,
-	keywords: [
-		'paragraph',
-		'warning',
-	],
-	name: 'warning-paragraph',
-	/* translators: block name */
-	title: __( 'Warning Paragraph', 'coblocks' ),
-} );
-
-registerBlockVariation( 'core/paragraph', {
-	attributes: {
-		className: 'is-style-error',
-	},
-	/* translators: block description */
-	description: __( 'Error paragraph.', 'coblocks' ),
-	icon: <Icon icon={ paragraphIcon } />,
-	keywords: [
-		'paragraph',
-		'error',
-	],
-	name: 'error-paragraph',
-	/* translators: block name */
-	title: __( 'Error Paragraph', 'coblocks' ),
-} );
-
-registerBlockVariation( 'core/paragraph', {
-	attributes: {
-		className: 'is-style-success',
-	},
-	/* translators: block description */
-	description: __( 'Success paragraph.', 'coblocks' ),
-	icon: <Icon icon={ paragraphIcon } />,
-	keywords: [
-		'paragraph',
-		'success',
-	],
-	name: 'success-paragraph',
-	/* translators: block name */
-	title: __( 'Success Paragraph', 'coblocks' ),
-} );
