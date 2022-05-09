@@ -23,7 +23,7 @@ const { name, category } = metadata;
 const useEdit = ( { clientId } ) => {
 	const { replaceBlocks } = useDispatch( 'core/block-editor' );
 	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
-
+	console.log( getBlock( clientId ) );
 	replaceBlocks(
 		[ clientId ],
 		switchToBlockType( getBlock( clientId ), 'core/query' )

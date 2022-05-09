@@ -39,19 +39,51 @@ class CoBlocks_Posts_Migration extends CoBlocks_Block_Migration {
 	 * @return array attributes found and their values.
 	 */
 	private function posts_attributes() {
-		return array(
-			// 'postsToShow'   => $this->get_attribute_from_classname( 'has-filter-', $this->block_wrapper() ),
-			'postsToShow' => '2',
+		// TODO: must try to work with categories.
+		// `core/query` block attributes.
+		// 	'posts_per_page'   => $attributes['postsToShow'],
+		// 	'post_status'      => 'publish',
+		// 	'order'            => $attributes['order'],
+		// 	'orderby'          => $attributes['orderBy'],
+		// 	'suppress_filters' => false,
+		// 	'post__not_in'     => array( $post->ID ),
 
-			// 'excerptLength'    => $this->get_attribute_from_classname( 'align', $this->block_wrapper() ),
-			// 'listPosition' => $this->get_attribute_from_classname( 'has-lightbox', $this->block_wrapper() ),
-			// 'columns' => $this->get_attribute_from_classname( 'has-lightbox', $this->block_wrapper() ),
-			// 'order' => $this->get_attribute_from_classname( 'has-lightbox', $this->block_wrapper() ),
-			// 'orderBy' => $this->get_attribute_from_classname( 'has-lightbox', $this->block_wrapper() ),
-			// 'categories' => $this->get_attribute_from_classname( 'has-lightbox', $this->block_wrapper() ),
-			// 'gutter' => $this->get_attribute_from_classname( 'has-lightbox', $this->block_wrapper() ),
-			// 'postFeedType' => $this->get_attribute_from_classname( 'has-lightbox', $this->block_wrapper() ),
-			// 'externalRssUrl' => $this->get_attribute_from_classname( 'has-lightbox', $this->block_wrapper() ),
-		);
+		// conditonally overwrite any of these attributes. 
+
+		$defaultAttributes =[
+		"className" => '',
+		// "align" =>
+		// 	"type": "string"
+		// },
+		"postFeedType" => "internal",
+		"externalRssUrl" => "",
+		"postsToShow" => 2,
+		"displayPostContent" => true,
+		"displayPostDate" => true,
+		"displayPostLink" => false,
+		"postLink" => "Read more",
+		"excerptLength" => 12,
+		"imageSize" => "medium",
+		"imageStyle" =>"square",
+		"listPosition" => "right",
+		"columns" => 2,
+		"order" => "desc",
+		"orderBy" => "date",
+		// "categories" =>
+		// 	"type": "array",
+		// 	"items" =>
+		// 		"type": "object"
+		// 	}
+		// },
+		// "categoryRelation" =>
+		// 	"type": "string",
+		// 	"default": "or"
+		];
+		
+		return [
+			"perPage" => $defaultAttributes['postsToShow'],
+			"order" => $defaultAttributes['order'],
+			"orderBy" => $defaultAttributes['orderBy'],
+		];
 	}
 }
