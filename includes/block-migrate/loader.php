@@ -13,6 +13,8 @@ require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-galler
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-masonry-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-collage-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-dynamic-separator-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-highlight-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-alert-migration.php';
 
 /**
  * Hook into the post object before it's returned to the editor.
@@ -37,6 +39,8 @@ add_action(
 			'coblocks/gallery-masonry' => CoBlocks_Gallery_Masonry_Migration::class,
 			'coblocks/gallery-collage' => CoBlocks_Gallery_Collage_Migration::class,
 			'coblocks/dynamic-separator' => CoBlocks_Dynamic_Separator_Migration::class,
+			'coblocks/highlight' => CoBlocks_Highlight_Migration::class,
+			'coblocks/alert' => CoBlocks_Alert_Migration::class,
 		);
 
 		$parsed_blocks = array_map(

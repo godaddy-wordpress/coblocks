@@ -2,36 +2,11 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
 	"name": "coblocks/highlight",
-	"category": "formatting",
 	"attributes": {
 		"content": {
-			"type": "string",
-			"source": "html",
-			"selector": "mark"
-		},
-		"align": {
 			"type": "string"
 		}
 	},
-	"supports": {
-		"anchor": true,
-		"color": {
-			"link": false
-		},
-		"typography": {
-			"fontSize": true,
-			"lineHeight": true,
-			"__experimentalFontStyle": true,
-			"__experimentalFontWeight": true,
-			"__experimentalLetterSpacing": true,
-			"__experimentalTextTransform": true,
-			"__experimentalDefaultControls": {
-				"fontSize": true
-			}
-		}
-	},
 	"textdomain": "coblocks",
-	"title": "Highlight",
-	"editorScript": "blocks-9",
-	"description": "Draw attention and emphasize important narrative."
+	"title": "Highlight"
 }
