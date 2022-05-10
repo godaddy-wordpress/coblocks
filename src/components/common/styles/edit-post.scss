@@ -1,0 +1,22 @@
+.edit-post-header__settings .edit-post-more-menu {
+	order: 4;
+}
+
+.edit-post-header__settings .editor-post-publish-button__button {
+	margin-left: 25px;
+	order: 3;
+}
+
+.interface-pinned-items {
+	display: flex;
+
+	// Settings cog
+	.components-button:first-child {
+		order: 1;
+	}
+
+	// Site design
+	.components-button:nth-child(3) {
+		order: -1;
+	}
+}

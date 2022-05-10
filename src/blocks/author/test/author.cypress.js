@@ -124,7 +124,7 @@ describe( 'Test CoBlocks Author Block', function() {
 
 		cy.get( '.wp-block-coblocks-author__name' ).focus().type( 'Randall Lewis' );
 
-		cy.get( '.components-toggle-group-control-option' ).then( ( elems ) => {
+		cy.get( '.components-toggle-group-control-option, .components-toggle-group-control-option-base' ).then( ( elems ) => {
 			let dataValue = Cypress.$( '.wp-block-coblocks-author__name' ).css( 'font-size' );
 			Array.from( elems ).forEach( ( elem ) => {
 				cy.get( elem ).focus().click().then( () => {

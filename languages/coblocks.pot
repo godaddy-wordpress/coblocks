@@ -1,14 +1,14 @@
 # Copyright (c) 2022 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 2.22.10\n"
+"Project-Id-Version: CoBlocks 2.22.11\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-04-20T17:10:34+00:00\n"
+"POT-Creation-Date: 2022-05-09T18:16:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: coblocks\n"
@@ -64,15 +64,15 @@ msgstr ""
 msgid "Pattern Category"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:490
+#: includes/class-coblocks-block-assets.php:491
 msgid "Close Gallery"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:491
+#: includes/class-coblocks-block-assets.php:492
 msgid "Previous"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:492
+#: includes/class-coblocks-block-assets.php:493
 msgid "Next"
 msgstr ""
 
@@ -226,16 +226,18 @@ msgstr ""
 msgid "Google Map API key for map rendering"
 msgstr ""
 
-#: includes/class-coblocks-settings.php:108
-msgid "Setting use to disable or enable layout selector controls across the site."
-msgstr ""
-
+#: includes/class-coblocks-labs.php:84
 #: includes/class-coblocks-settings.php:120
 msgid "Setting use to disable or enable typography controls across the site."
 msgstr ""
 
+#: includes/class-coblocks-labs.php:96
 #: includes/class-coblocks-settings.php:132
 msgid "Setting use to disable or enable custom color controls across the site."
+msgstr ""
+
+#: includes/class-coblocks-settings.php:108
+msgid "Setting use to disable or enable layout selector controls across the site."
 msgstr ""
 
 #: includes/class-coblocks-settings.php:144
@@ -248,6 +250,18 @@ msgstr ""
 
 #: includes/class-coblocks-settings.php:168
 msgid "Setting use to disable or enable animation controls across the site."
+msgstr ""
+
+#: includes/class-coblocks-site-design.php:327
+msgid "Error processing your request."
+msgstr ""
+
+#: includes/class-coblocks-site-design.php:351
+msgid "A design_style must be passed."
+msgstr ""
+
+#: includes/class-coblocks-site-design.php:363
+msgid "An available design_style must be passed."
 msgstr ""
 
 #: src/blocks/counter/index.php:17
@@ -1503,6 +1517,7 @@ msgstr ""
 #: src/components/gutter-control/gutter-control.js:22
 #: src/components/option-selector-control/index.js:31
 #: src/extensions/padding-controls/index.js:30
+#: src/extensions/site-design/font-size-picker.js:38
 msgid "Small"
 msgstr ""
 
@@ -1567,6 +1582,7 @@ msgstr ""
 #: src/components/gutter-control/gutter-control.js:34
 #: src/components/option-selector-control/index.js:43
 #: src/extensions/padding-controls/index.js:42
+#: src/extensions/site-design/font-size-picker.js:48
 msgid "Large"
 msgstr ""
 
@@ -2250,7 +2266,8 @@ msgstr ""
 msgid "Request a Quote"
 msgstr ""
 
-#: src/blocks/gallery-carousel/deprecated.js:761
+#: src/blocks/gallery-carousel/deprecated.js:763
+#: src/blocks/gallery-carousel/deprecated.js:942
 #: src/blocks/gallery-carousel/save.js:132
 msgid "Carousel Gallery"
 msgstr ""
@@ -2363,6 +2380,8 @@ msgstr ""
 #: src/blocks/icon/inspector.js:189
 #: src/blocks/testimonials/testimonial/inspector.js:87
 #: src/components/typography-controls/index.js:196
+#: src/extensions/site-design/font-advanced.js:86
+#: src/extensions/site-design/font-advanced.js:129
 msgid "Size"
 msgstr ""
 
@@ -2394,6 +2413,10 @@ msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:174
 msgid "Responsive height"
+msgstr ""
+
+#: src/blocks/gallery-carousel/save.js:174
+msgid "gallery thumbnail"
 msgstr ""
 
 #: src/blocks/gallery-carousel/variations.js:108
@@ -2601,7 +2624,7 @@ msgid "Masonry settings"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gallery-offset/edit.js:177
+#: src/blocks/gallery-offset/edit.js:178
 #: src/blocks/gallery-offset/index.js:39
 msgid "Offset"
 msgstr ""
@@ -3972,6 +3995,8 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgsv1.js:482
 #: src/blocks/icon/svgs-generated.js:1294
 #: src/components/typography-controls/index.js:166
+#: src/extensions/site-design/font-advanced.js:59
+#: src/extensions/site-design/font-advanced.js:101
 msgid "Font"
 msgstr ""
 
@@ -6918,6 +6943,8 @@ msgstr ""
 #: src/blocks/icon/inspector.js:219
 #: src/blocks/testimonials/testimonial/inspector.js:116
 #: src/components/option-selector-control/index.js:62
+#: src/extensions/site-design/color-palette-preview.js:102
+#: src/extensions/site-design/font-preview.js:85
 msgid "Custom"
 msgstr ""
 
@@ -7206,6 +7233,7 @@ msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/svgs-generated.js:885
+#: src/extensions/site-content/post-menu-actions.js:93
 msgid "Duplicate"
 msgstr ""
 
@@ -8488,6 +8516,8 @@ msgstr ""
 
 #: src/blocks/post-carousel/post-item.js:72
 #: src/blocks/posts/edit.js:423
+#: src/extensions/site-content/post-type-panel.js:310
+#: src/extensions/site-content/post-type-panel.js:315
 msgid "(no title)"
 msgstr ""
 
@@ -9812,6 +9842,7 @@ msgstr ""
 #. translators: typography style
 #: src/components/typography-controls/index.js:100
 #: src/components/typography-controls/index.js:133
+#: src/extensions/site-design/font-size-picker.js:43
 msgid "Normal"
 msgstr ""
 
@@ -9838,6 +9869,8 @@ msgid "Capitalize"
 msgstr ""
 
 #: src/components/typography-controls/index.js:174
+#: src/extensions/site-design/font-advanced.js:72
+#: src/extensions/site-design/font-advanced.js:115
 msgid "Weight"
 msgstr ""
 
@@ -9999,13 +10032,36 @@ msgstr ""
 msgid "Display fullwidth"
 msgstr ""
 
+#: src/extensions/coblocks-labs/index.js:34
+#: src/extensions/coblocks-labs/index.js:42
+msgid "CoBlocks Labs"
+msgstr ""
+
+#: src/extensions/coblocks-labs/index.js:39
+#: src/extensions/coblocks-settings/index.js:39
+msgid "Close"
+msgstr ""
+
+#: src/extensions/coblocks-labs/utils.js:33
+msgid "This feature requires the Go Theme."
+msgstr ""
+
+#: src/extensions/coblocks-labs/utils.js:38
+#: src/extensions/coblocks-labs/utils.js:46
+msgid "This feature requires the Go Theme - "
+msgstr ""
+
+#: src/extensions/coblocks-labs/utils.js:40
+msgid "Activate"
+msgstr ""
+
+#: src/extensions/coblocks-labs/utils.js:48
+msgid "Install now"
+msgstr ""
+
 #: src/extensions/coblocks-settings/index.js:33
 #: src/extensions/coblocks-settings/index.js:42
 msgid "Editor settings"
-msgstr ""
-
-#: src/extensions/coblocks-settings/index.js:39
-msgid "Close"
 msgstr ""
 
 #: src/extensions/coblocks-settings/index.js:46
@@ -10048,26 +10104,38 @@ msgstr ""
 msgid "Crop settings"
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:93
+#: src/extensions/layout-selector/index.js:94
 msgid "Add New Page"
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:94
+#: src/extensions/layout-selector/index.js:95
 msgid "Pick one of these layouts or start with a blank page."
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:107
+#: src/extensions/layout-selector/index.js:108
 msgid "Layouts"
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:131
-#: src/extensions/layout-selector/index.js:159
+#: src/extensions/layout-selector/index.js:132
+#: src/extensions/layout-selector/index.js:160
 msgid "Add blank page"
 msgstr ""
 
 #. translators: %s is the post title.
-#: src/extensions/layout-selector/index.js:240
+#: src/extensions/layout-selector/index.js:242
 msgid "\"%s\" layout has been added to the page."
+msgstr ""
+
+#: src/extensions/layout-selector/layout-selector-control.js:18
+msgid "Get access to high-quality, professionally designed layouts when creating new pages to make page creation easier."
+msgstr ""
+
+#: src/extensions/layout-selector/layout-selector-control.js:19
+msgid "Layout selector example"
+msgstr ""
+
+#: src/extensions/layout-selector/layout-selector-control.js:21
+msgid "Layout Selector"
 msgstr ""
 
 #: src/extensions/layout-selector/layout-selector-results.js:58
@@ -10075,11 +10143,11 @@ msgid "No layouts are available for this category."
 msgstr ""
 
 #: src/extensions/layout-selector/settings-modal-control.js:18
-msgid "Layout selector"
+msgid "Allow layout selection on new pages"
 msgstr ""
 
 #: src/extensions/layout-selector/settings-modal-control.js:19
-msgid "Allow layout selection on new pages"
+msgid "Layout selector"
 msgstr ""
 
 #. translators: block style
@@ -10095,6 +10163,184 @@ msgstr ""
 #. translators: %1$s is placeholder for block name such as Group, or Embed
 #: src/extensions/padding-controls/index.js:73
 msgid "%1$s settings"
+msgstr ""
+
+#: src/extensions/site-content/index.js:55
+msgid "Site content"
+msgstr ""
+
+#: src/extensions/site-content/index.js:58
+msgid "Site contents"
+msgstr ""
+
+#: src/extensions/site-content/post-menu-actions.js:48
+msgid "Select an action"
+msgstr ""
+
+#: src/extensions/site-content/post-menu-actions.js:54
+msgid "Rename"
+msgstr ""
+
+#: src/extensions/site-content/post-menu-actions.js:65
+msgid "Really set as homepage?"
+msgstr ""
+
+#: src/extensions/site-content/post-menu-actions.js:75
+msgid "Set as homepage"
+msgstr ""
+
+#: src/extensions/site-content/post-menu-actions.js:84
+msgid "Unpin post"
+msgstr ""
+
+#: src/extensions/site-content/post-menu-actions.js:84
+msgid "Pin post"
+msgstr ""
+
+#: src/extensions/site-content/post-menu-actions.js:103
+msgid "Really delete?"
+msgstr ""
+
+#: src/extensions/site-content/post-menu-actions.js:113
+msgid "Delete Page"
+msgstr ""
+
+#: src/extensions/site-content/post-menu-actions.js:113
+msgid "Delete Post"
+msgstr ""
+
+#. translators: %s is the post title.
+#: src/extensions/site-content/post-type-panel.js:60
+msgid "\"%s\" has been deleted."
+msgstr ""
+
+#: src/extensions/site-content/post-type-panel.js:66
+msgid "Undo"
+msgstr ""
+
+#: src/extensions/site-content/post-type-panel.js:74
+msgid "Trashing failed"
+msgstr ""
+
+#. translators: %s is the post title.
+#: src/extensions/site-content/post-type-panel.js:112
+msgid "\"%s\" has been duplicated."
+msgstr ""
+
+#: src/extensions/site-content/post-type-panel.js:119
+msgid "Duplication failed"
+msgstr ""
+
+#. translators: %s is the post type's name.
+#: src/extensions/site-content/post-type-panel.js:141
+msgid "A new %s has been created."
+msgstr ""
+
+#. translators: %s is the post type's name.
+#: src/extensions/site-content/post-type-panel.js:156
+msgid "Could not create a new %s."
+msgstr ""
+
+#. translators: %s is the page title.
+#: src/extensions/site-content/post-type-panel.js:229
+msgid "\"%s\" set as the homepage."
+msgstr ""
+
+#: src/extensions/site-content/post-type-panel.js:396
+msgid "Drafts"
+msgstr ""
+
+#: src/extensions/site-content/site-content-control.js:17
+msgid "Quickly and easily manage your websites pages and posts from inside the editor."
+msgstr ""
+
+#: src/extensions/site-content/site-content-control.js:18
+msgid "Site content example"
+msgstr ""
+
+#: src/extensions/site-content/site-content-control.js:20
+msgid "Site Content"
+msgstr ""
+
+#: src/extensions/site-design/color-palette-preview.js:88
+msgid "Colors"
+msgstr ""
+
+#: src/extensions/site-design/color-palette-preview.js:97
+msgid "Color Palettes"
+msgstr ""
+
+#: src/extensions/site-design/component.js:34
+#: src/extensions/site-design/component.js:42
+msgid "Site design"
+msgstr ""
+
+#: src/extensions/site-design/design-preview.js:61
+msgid "Design Styles"
+msgstr ""
+
+#: src/extensions/site-design/design-preview.js:62
+msgid "Easily explore curated design styles, then customize your colors and fonts to get the perfect fit."
+msgstr ""
+
+#: src/extensions/site-design/font-advanced.js:50
+msgid "Custom Font Options"
+msgstr ""
+
+#: src/extensions/site-design/font-advanced.js:57
+msgid "HEADING"
+msgstr ""
+
+#: src/extensions/site-design/font-advanced.js:98
+msgid "Heading font size"
+msgstr ""
+
+#: src/extensions/site-design/font-advanced.js:99
+msgid "BODY"
+msgstr ""
+
+#: src/extensions/site-design/font-preview.js:46
+msgid "Fonts"
+msgstr ""
+
+#: src/extensions/site-design/font-preview.js:49
+msgid "Font Pairings"
+msgstr ""
+
+#: src/extensions/site-design/font-preview.js:123
+msgid "The quick brown fox jumped over the lazy dog."
+msgstr ""
+
+#: src/extensions/site-design/font-preview.js:131
+msgid "Hide font sizes"
+msgstr ""
+
+#: src/extensions/site-design/font-preview.js:131
+msgid "Edit font sizes"
+msgstr ""
+
+#: src/extensions/site-design/font-size-picker.js:93
+msgid "Base size"
+msgstr ""
+
+#: src/extensions/site-design/font-size-picker.js:98
+msgid "Font size"
+msgstr ""
+
+#: src/extensions/site-design/font-size-picker.js:126
+msgid "Heading Scale"
+msgstr ""
+
+#: src/extensions/site-design/site-design-control.js:18
+msgid "Easily explore curated design styles, then customize your colors and fonts inside the editor to get the perfect fit."
+msgstr ""
+
+#: src/extensions/site-design/site-design-control.js:19
+msgid "Site design example"
+msgstr ""
+
+#: src/extensions/site-design/site-design-control.js:21
+msgid "Site Design"
 msgstr ""
 
 #: src/extensions/typography/settings-modal-control.js:18

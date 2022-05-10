@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.5
 Tested up to: 5.9
 Requires PHP: 5.6
-Stable tag: 2.22.10
+Stable tag: 2.22.11
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -121,6 +121,16 @@ Any properly developed WordPress theme will work with CoBlocks, though if you're
 Developers can also apply minor style touch-ups to their themes if necessary. If you're a developer and you need help, don't hesitate to [reach out](https://wordpress.org/support/plugin/coblocks/).
 
 == Changelog ==
+
+= 2.22.11 / 2022-04-26 =
+##### Bug fixes
+* Fix Events block to handle multi-day events [#2353](https://github.com/godaddy-wordpress/coblocks/pull/2353)
+* Fix links in Gist block [#2349](https://github.com/godaddy-wordpress/coblocks/pull/2349)
+
+##### Misc
+* Update dependencies [#2363](https://github.com/godaddy-wordpress/coblocks/pull/2363), [#2359](https://github.com/godaddy-wordpress/coblocks/pull/2359),
+  [#2358](https://github.com/godaddy-wordpress/coblocks/pull/2358) and [#2356](https://github.com/godaddy-wordpress/coblocks/pull/2356)
+* Introduce GoDaddy global styles [#2357](https://github.com/godaddy-wordpress/coblocks/pull/2357)
 
 = 2.22.10 / 2022-04-08 =
 ##### Bug fixes
