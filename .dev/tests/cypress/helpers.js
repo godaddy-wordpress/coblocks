@@ -468,7 +468,7 @@ export function openEditorSettingsModal() {
  */
 export function openCoBlocksLabsModal() {
 	// Open "more" menu.
-	cy.get( '.edit-post-more-menu button' ).click();
+	cy.get( '.edit-post-more-menu button, .interface-more-menu-dropdown button' ).click();
 	cy.get( '.components-menu-group' ).contains( 'CoBlocks Labs' ).click();
 
 	cy.get( '.components-modal__frame' ).contains( 'CoBlocks Labs' ).should( 'exist' );
