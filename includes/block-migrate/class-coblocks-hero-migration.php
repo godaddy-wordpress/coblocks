@@ -61,6 +61,6 @@ class CoBlocks_Hero_Migration extends CoBlocks_Block_Migration {
 			$this->block_attributes['customOverlayColor'] = $this->block_attributes['customBackgroundColor'];
 		}
 
-		return $this->block_attributes;
+		return array_filter( $this->block_attributes );
 	}
 }
