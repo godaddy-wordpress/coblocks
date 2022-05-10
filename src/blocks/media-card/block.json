@@ -19,7 +19,7 @@
 		"mediaUrl": {
 			"type": "string",
 			"source": "attribute",
-			"selector": "div div figure video, div div figure img",
+			"selector": "figure video,figure img",
 			"attribute": "src"
 		},
 		"mediaType": {
@@ -45,8 +45,19 @@
 			"default": false
 		}
 	},
-	"title": "Media Card",
+	"supports": {
+		"anchor": true,
+		"align": [ "wide", "full" ],
+		"html": false,
+		"color": {
+			"gradients": true,
+			"link": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
+		}
+	},
 	"textdomain": "coblocks",
-	"editorScript": "blocks-7",
-	"description": "Add an image or video with an offset card side-by-side."
+	"title": "Media Card"
 }

@@ -32,22 +32,6 @@ class CoBlocks_Media_Card_Migration extends CoBlocks_Block_Migration {
 			$this->block_attributes['className'] .= ' has-media-on-the-right';
 		}
 
-		if ( ! array_key_exists( 'backgroundColor', $this->block_attributes ) && ! array_key_exists( 'customBackgroundColor', $this->block_attributes ) ) {
-			$this->block_attributes['customOverlayColor'] = '#ffffff';
-		}
-
-		if ( array_key_exists( 'customBackgroundColor', $this->block_attributes ) ) {
-			$this->block_attributes['style']['color']['background'] = $this->block_attributes['customBackgroundColor'];
-		}
-
-		if ( array_key_exists( 'backgroundColor', $this->block_attributes ) ) {
-			$this->block_attributes['overlayColor'] = $this->block_attributes['backgroundColor'];
-		}
-
-		if ( array_key_exists( 'customBackgroundColor', $this->block_attributes ) ) {
-			$this->block_attributes['customOverlayColor'] = $this->block_attributes['customBackgroundColor'];
-		}
-
 		return array_filter( $this->block_attributes );
 	}
 }
