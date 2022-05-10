@@ -79,7 +79,7 @@ class CoBlocks_Posts_Migration extends CoBlocks_Block_Migration {
 		// 	"type": "string",
 		// 	"default": "or"
 		];
-		return $default_attributes;
+		// return $default_attributes;
 		return array(
 			"perPage" => $defaultAttributes['postsToShow'],
 			"order" => $defaultAttributes['order'],

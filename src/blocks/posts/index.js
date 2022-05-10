@@ -7,7 +7,7 @@ import { PostsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { dispatch, select } from '@wordpress/data';
+import { dispatch } from '@wordpress/data';
 import { createBlock, switchToBlockType } from '@wordpress/blocks';
 
 /**
@@ -22,11 +22,11 @@ const { name, category } = metadata;
 
 const settings = {
 	category,
+	icon,
 	edit: ( props ) => {
 		const { replaceBlocks } = dispatch( 'core/block-editor' );
-		const { getBlock } = select( 'core/block-editor' );
 		const { clientId } = props;
-		console.log( getBlock( clientId ) );
+
 		replaceBlocks(
 			[ clientId ],
 			switchToBlockType( props, 'core/query' )
@@ -93,18 +93,9 @@ const settings = {
 		to: [
 			{
 				type: 'block',
-				blocks: [ 'core/latest-posts' ],
-				transform: ( { displayPostDate, displayPostContent, order, orderBy, categories, postsToShow, excerptLength, align } ) => (
-					createBlock( 'core/latest-posts', {
-						displayPostDate,
-						displayPostContent,
-						order,
-						orderBy,
-						categories,
-						postsToShow,
-						align,
-						excerptLength,
-					} )
+				blocks: [ 'core/query' ],
+				transform: ( props ) => (
+					createBlock( 'core/query', props )
 				),
 			},
 		],
