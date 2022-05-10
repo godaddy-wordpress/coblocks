@@ -16,7 +16,7 @@ import transforms from './transforms';
 import { __ } from '@wordpress/i18n';
 import { dispatch } from '@wordpress/data';
 import { Icon } from '@wordpress/components';
-import { registerBlockVariation, switchToBlockType } from '@wordpress/blocks';
+import { registerBlockVariation, switchToBlockType } from '@wordpress/blocks'; 
 
 /**
  * Block constants
