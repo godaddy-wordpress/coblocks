@@ -362,7 +362,7 @@ export function setColorSettingsFoldableSetting( settingName, hexColor ) {
 
 export function setColorPanelSetting( settingName, hexColor ) {
 	// If WP 5.9, we may need to open the panel. Since WP 6.0, it is always open
-	if ( Cypress.$( '.version-5-9' ).length > 0 ) {
+	if ( Cypress.$( '.branch-5-9' ).length > 0 ) {
 		openSettingsPanel( /color settings|color/i );
 	}
 
