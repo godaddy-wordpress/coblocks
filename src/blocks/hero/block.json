@@ -60,8 +60,31 @@
 		"height": {
 			"type": "number",
 			"default": 500
+		},
+		"url": {
+			"type": "string"
+		},
+		"dimRatio": {
+			"type": "number",
+			"default": 100
 		}
 	},
-	"title": "Hero",
-	"description": "An introductory area of a page accompanied by a small amount of text and a call to action."
+	"supports": {
+		"anchor": true,
+		"align": true,
+		"html": false,
+		"spacing": {
+			"padding": true,
+			"__experimentalDefaultControls": {
+				"padding": true
+			}
+		},
+		"color": {
+			"__experimentalDuotone": "> .wp-block-cover__image-background, > .wp-block-cover__video-background",
+			"text": false,
+			"background": false
+		}
+	},
+	"textdomain": "coblocks",
+	"title": "Hero"
 }
