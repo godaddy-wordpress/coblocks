@@ -134,8 +134,8 @@ describe( 'Test CoBlocks Icon Block', function() {
 
 		helpers.openSettingsPanel( 'Color settings' );
 
-		helpers.setColorSetting( 'background', '#e60099' );
-		helpers.setColorSetting( 'icon color', '#55e7ff' );
+		helpers.setColorSettingsFoldableSetting( 'background', '#e60099' );
+		helpers.setColorSettingsFoldableSetting( 'icon color', '#55e7ff' );
 
 		helpers.savePage();
 

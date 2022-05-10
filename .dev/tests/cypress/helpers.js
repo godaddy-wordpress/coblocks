@@ -346,7 +346,7 @@ export const upload = {
  * @param {string} settingName The setting to update. background|text
  * @param {string} hexColor
  */
-export function setColorSetting( settingName, hexColor ) {
+export function setColorSettingsFoldableSetting( settingName, hexColor ) {
 	openSettingsPanel( /color settings|color/i );
 
 	const formattedHex = hexColor.split( '#' )[ 1 ];
@@ -360,11 +360,12 @@ export function setColorSetting( settingName, hexColor ) {
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
 }
 
-export function setNewColorSetting( settingName, hexColor ) {
+export function setColorPanelSetting( settingName, hexColor ) {
 	// If WP 5.9, we may need to open the panel. Since WP 6.0, it is always open
-	if ( Cypress.$( '.components-toggle-group-control-option-base' ).length === 0 ) {
+	if ( Cypress.$( '.version-5-9' ).length > 0 ) {
 		openSettingsPanel( /color settings|color/i );
 	}
+
 	const formattedHex = hexColor.split( '#' )[ 1 ];
 
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
