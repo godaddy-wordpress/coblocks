@@ -360,6 +360,22 @@ export function setColorSetting( settingName, hexColor ) {
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
 }
 
+export function setNewColorSetting( settingName, hexColor ) {
+	// If WP 5.9, we may need to open the panel. Since WP 6.0, it is always open
+	if ( Cypress.$( '.components-toggle-group-control-option-base' ).length === 0 ) {
+		openSettingsPanel( /color settings|color/i );
+	}
+	const formattedHex = hexColor.split( '#' )[ 1 ];
+
+	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
+	cy.get( '.components-color-palette__custom-color' ).click();
+
+	cy.get( '[aria-label="Show detailed inputs"]' ).click();
+	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
+
+	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
+}
+
 /**
  * Open a certain settings panel in the right hand sidebar of the editor
  *
