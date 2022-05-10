@@ -8,7 +8,6 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 import { applyFilters } from '@wordpress/hooks';
-
 import { registerPlugin } from '@wordpress/plugins';
 import { useEntityProp } from '@wordpress/core-data';
 import { __, sprintf } from '@wordpress/i18n';
@@ -20,11 +19,13 @@ import { useSelect, withDispatch, withSelect } from '@wordpress/data';
 /**
  * Internal dependencies
  */
+import { LAYOUT_SELECTOR_FEATURE_ENABLED_KEY } from './constants';
 import { LayoutSelectorResults } from './layout-selector-results';
 import useCategories from './hooks/useCategories';
 import useComputedLayouts from './hooks/useComputedLayouts';
 import CoBlocksLayoutSelectorFill, { Slot } from './layout-selector-slot';
-import './settings-modal-control';
+import './settings-modal-control'; // CoBlocks Settings
+import './layout-selector-control'; // CoBlocks Labs
 import './store';
 
 const SidebarItem = ( { slug, title, isSelected, onClick } ) => {
@@ -178,14 +179,15 @@ if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.pos
 	registerPlugin( 'coblocks-layout-selector', {
 		render: compose( [
 			ifCondition( () => {
-				const [ layoutSelectorEnabled ] = useEntityProp( 'root', 'site', 'coblocks_layout_selector_controls_enabled' );
-
+				const [ layoutSelectorEnabled ] = useEntityProp( 'root', 'site', LAYOUT_SELECTOR_FEATURE_ENABLED_KEY );
+				// Prevent render if labs modal is open.
+				const labsIsPresent = !! document.getElementsByClassName( 'coblocks-labs-modal' )?.[ 0 ];
 				const {
 					hasLayouts,
 					hasCategories,
 				} = useSelect( ( select ) => select( 'coblocks/template-selector' ) );
 
-				return layoutSelectorEnabled && hasLayouts() && hasCategories();
+				return layoutSelectorEnabled && ! labsIsPresent && hasLayouts() && hasCategories();
 			} ),
 			withSelect( ( select ) => {
 				const {

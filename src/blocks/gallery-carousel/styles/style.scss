@@ -111,9 +111,11 @@
 }
 
 .wp-block-coblocks-gallery-carousel-thumbnail {
+	border: none;
 	cursor: pointer;
 	min-width: 100px;
 	opacity: 0.4;
+	padding: 0;
 }
 
 .wp-block-coblocks-gallery-carousel-thumbnail.is-active {
