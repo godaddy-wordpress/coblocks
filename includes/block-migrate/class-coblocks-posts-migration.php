@@ -50,7 +50,7 @@ class CoBlocks_Posts_Migration extends CoBlocks_Block_Migration {
 
 		// conditonally overwrite any of these attributes. 
 
-		$defaultAttributes =[
+		$default_attributes =[
 		"className" => '',
 		// "align" =>
 		// 	"type": "string"
@@ -79,11 +79,11 @@ class CoBlocks_Posts_Migration extends CoBlocks_Block_Migration {
 		// 	"type": "string",
 		// 	"default": "or"
 		];
-		
-		return [
+		return $default_attributes;
+		return array(
 			"perPage" => $defaultAttributes['postsToShow'],
 			"order" => $defaultAttributes['order'],
 			"orderBy" => $defaultAttributes['orderBy'],
-		];
+		);
 	}
 }

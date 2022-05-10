@@ -7,7 +7,7 @@ import { PostsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { useDispatch, useSelect } from '@wordpress/data';
+import { dispatch, select } from '@wordpress/data';
 import { createBlock, switchToBlockType } from '@wordpress/blocks';
 
 /**
@@ -20,22 +20,22 @@ import metadata from './block.json';
  */
 const { name, category } = metadata;
 
-const useEdit = ( { clientId } ) => {
-	const { replaceBlocks } = useDispatch( 'core/block-editor' );
-	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
-	console.log( getBlock( clientId ) );
-	replaceBlocks(
-		[ clientId ],
-		switchToBlockType( getBlock( clientId ), 'core/query' )
-	);
-
-	return null;
-};
-
 const settings = {
-	title: __( 'Posts (CoBlocks)', 'coblocks' ),
-	edit: useEdit,
+	category,
+	edit: ( props ) => {
+		const { replaceBlocks } = dispatch( 'core/block-editor' );
+		const { getBlock } = select( 'core/block-editor' );
+		const { clientId } = props;
+		console.log( getBlock( clientId ) );
+		replaceBlocks(
+			[ clientId ],
+			switchToBlockType( props, 'core/query' )
+		);
+
+		return null;
+	},
 	save: () => null,
+	title: __( 'Posts (CoBlocks)', 'coblocks' ),
 	transforms: {
 		from: [
 			{

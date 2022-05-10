@@ -59,6 +59,7 @@ add_action(
 			},
 			$parsed_blocks
 		);
+		var_dump( serialize_blocks($parsed_blocks) );
 		// re-serialize the blocks so WordPress can continue processing as usual.
 		$post->post_content = serialize_blocks( $parsed_blocks );
 	}
