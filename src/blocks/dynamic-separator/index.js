@@ -1,70 +1,72 @@
 /**
- * External dependencies
- */
-import { separator as icon } from '@wordpress/icons';
-
-/**
  * Internal dependencies
  */
-import deprecated from './deprecated';
-import edit from './edit';
 import metadata from './block.json';
-import save from './save';
-import transforms from './transforms';
 
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
+import { dispatch } from '@wordpress/data';
+import { createBlock, switchToBlockType } from '@wordpress/blocks';
 
 /**
  * Block constants
  */
-const { name, category, attributes } = metadata;
+const { name } = metadata;
 
-const settings = {
-	/* translators: block name */
-	title: __( 'Dynamic HR', 'coblocks' ),
-	/* translators: block description */
-	description: __( 'Add a resizable spacer between other blocks.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
-	keywords: [
-		'coblocks',
-		'hr',
-		/* translators: block keyword */
-		__( 'spacer', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'separator', 'coblocks' ),
-	],
-	styles: [
-		{
-			name: 'dots',
-			/* translators: block style */
-			label: __( 'Dot', 'coblocks' ),
-			isDefault: true,
-		},
-		{
-			name: 'line',
-			/* translators: block style */
-			label: __( 'Line', 'coblocks' ),
-		},
-		{
-			name: 'fullwidth',
-			/* translators: block style */
-			label: __( 'Fullwidth', 'coblocks' ),
-		},
-	],
-	example: {
-		attributes: {
-			height: 100,
-		},
-	},
-	attributes,
-	transforms,
-	edit,
-	save,
-	deprecated,
+const calculateLineHeight = ( style, height ) => {
+	switch ( style ) {
+		case 'is-style-line':
+			height = height - 2;
+			break;
+
+		case 'is-style-dots':
+			height = height - 32;
+			break;
+
+		case 'is-style-wide':
+			height = height - 1;
+			break;
+	}
+
+	return parseInt( height / 2 );
 };
 
-export { name, category, metadata, settings };
+const settings = {
+	edit: ( props ) => {
+		const { replaceBlocks } = dispatch( 'core/block-editor' );
+
+		const height = calculateLineHeight( props.attributes.className, props.attributes.height ?? 50 );
+
+		replaceBlocks(
+			[ props.clientId ],
+			[
+				createBlock( 'core/spacer', {
+					height,
+				} ),
+				switchToBlockType( props, 'core/separator' )[ 0 ],
+				createBlock( 'core/spacer', {
+					height,
+				} ),
+			]
+		);
+
+		return null;
+	},
+	parent: [],
+	save: () => null,
+	title: metadata.title,
+	transforms: {
+		to: [
+			{
+				blocks: [ 'core/separator' ],
+				transform: ( attributes ) => {
+					return createBlock( 'core/separator', attributes );
+				},
+				type: 'block',
+			},
+		],
+	},
+};
+
+export { name, metadata, settings };
