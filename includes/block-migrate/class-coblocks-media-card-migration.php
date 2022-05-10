@@ -26,6 +26,12 @@ class CoBlocks_Media_Card_Migration extends CoBlocks_Block_Migration {
 	 * @inheritDoc
 	 */
 	protected function migrate_attributes() {
+		$this->block_attributes['className'] = 'is-style-card';
+
+		if ( array_key_exists( 'mediaPosition', $this->block_attributes ) && 'right' === $this->block_attributes['mediaPosition'] ) {
+			$this->block_attributes['className'] .= ' has-media-on-the-right';
+		}
+
 		if ( ! array_key_exists( 'backgroundColor', $this->block_attributes ) && ! array_key_exists( 'customBackgroundColor', $this->block_attributes ) ) {
 			$this->block_attributes['customOverlayColor'] = '#ffffff';
 		}
@@ -38,6 +44,6 @@ class CoBlocks_Media_Card_Migration extends CoBlocks_Block_Migration {
 			$this->block_attributes['customOverlayColor'] = $this->block_attributes['customBackgroundColor'];
 		}
 
-		return $this->block_attributes;
+		return array_filter( $this->block_attributes );
 	}
 }
