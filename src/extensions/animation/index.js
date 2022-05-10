@@ -138,15 +138,9 @@ const useEditorProps = ( block, blockName, props, wrapperProps ) => {
 			[ animateClass ]: willAnimate || isAnimating,
 			[ animation ]: willAnimate || isAnimating,
 		} ),
+		onAnimationEnd: () => setIsAnimating( false ),
+		onAnimationStart: () => setIsAnimating( willAnimate ),
 	};
-
-	if ( props.isSelected ) {
-		wrapperProps = {
-			...wrapperProps,
-			onAnimationEnd: () => setIsAnimating( false ),
-			onAnimationStart: () => setIsAnimating( willAnimate ),
-		};
-	}
 
 	wrapperProps.extraFeatures = {
 		...wrapperProps.extraFeatures,
