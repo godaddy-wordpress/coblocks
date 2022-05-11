@@ -2,7 +2,7 @@
  * External dependencies
  */
 import '@testing-library/jest-dom/extend-expect';
-import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
+import { createBlock, registerBlockType, serialize } from '@wordpress/blocks';
 import { replaceActiveStyle } from '@wordpress/block-editor/build/components/block-styles/utils';
 
 /**
@@ -45,7 +45,7 @@ describe( 'coblocks/logos', () => {
 	} );
 
 	it( 'should render content align classes', () => {
-		[ 'wide', 'full' ].forEach( alignment => {
+		[ 'wide', 'full' ].forEach( ( alignment ) => {
 			block.attributes.align = alignment;
 			block.attributes.images = [
 				{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', id: 1 },

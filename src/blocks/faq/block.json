@@ -8,5 +8,9 @@
 		"textColor": {
 			"type": "string"
 		}
-	}
+	},
+	"title": "FAQ",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-2",
+	"description": "Add a list of questions and answers."
 }

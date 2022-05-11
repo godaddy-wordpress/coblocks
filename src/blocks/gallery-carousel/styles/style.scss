@@ -1,6 +1,7 @@
 .wp-block-coblocks-gallery-carousel {
 	.coblocks-gallery--item {
 		height: 100%;
+		position: relative;
 		width: 100% !important;
 	}
 
@@ -110,9 +111,11 @@
 }
 
 .wp-block-coblocks-gallery-carousel-thumbnail {
+	border: none;
 	cursor: pointer;
 	min-width: 100px;
 	opacity: 0.4;
+	padding: 0;
 }
 
 .wp-block-coblocks-gallery-carousel-thumbnail.is-active {
@@ -121,7 +124,6 @@
 
 .has-responsive-height.has-carousel {
 	height: auto !important;
-	padding-bottom: 56.25%;
 	position: relative;
 
 	.flickity-viewport {

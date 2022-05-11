@@ -171,7 +171,7 @@ const save = ( props ) => {
 					<div className={ thumbnailContainerClasses }>
 						{ images.map( ( item, index ) => {
 							return (
-								<div className={ thumbnailClasses( index ) } key={ index } style={ { height: '80px', width: '100px' } } >
+								<button aria-label={ __( 'gallery thumbnail', 'coblocks' ) } className={ thumbnailClasses( index ) } key={ index } style={ { height: '80px', width: '100px' } } tabIndex="0" >
 									<img
 										alt={ item.alt }
 										data-id={ item.id }
@@ -179,7 +179,7 @@ const save = ( props ) => {
 										src={ item.url }
 										style={ { height: '100%', width: '100%' } }
 									/>
-								</div>
+								</button>
 							);
 						} ) }
 					</div>

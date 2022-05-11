@@ -20,5 +20,9 @@
 		"verticalAlignment": {
 			"type": "string"
 		}
-	}
+	},
+	"title": "Row",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-6",
+	"description": "Add a structured wrapper for column blocks, then add content blocks you’d like to the columns."
 }

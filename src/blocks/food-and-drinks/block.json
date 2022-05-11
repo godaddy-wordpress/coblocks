@@ -22,5 +22,9 @@
 			"type": "integer",
 			"default": 4
 		}
-	}
+	},
+	"title": "Food & Drink",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-4",
+	"description": "Display a menu or price list."
 }

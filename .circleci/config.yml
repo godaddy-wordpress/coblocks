@@ -82,6 +82,20 @@ executors:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
+  php_80_browsers_mysql_mailhog:
+    docker:
+      - image: cimg/php:8.0-browsers
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+      - image: cimg/mysql:5.7
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+      - image: mailhog/mailhog:v1.0.1
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
   php_74_node:
     docker:
       - image: cimg/php:7.4-node
@@ -176,12 +190,12 @@ workflows:
           requires:
             - build
 
-      # - e2e_chrome_wp_previous_major:
-      #    filters:
-      #      tags:
-      #        only: /^(?!canary).*$/
-      #    requires:
-      #      - build
+      - e2e_chrome_wp_php80:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
+          requires:
+            - build
 
       # PERF TESTING
       - perf_tests_master:
@@ -768,6 +782,14 @@ jobs:
 
   e2e_twentytwentytwo_chrome_latest:
     executor: php_74_browsers_mysql_mailhog
+    parallelism: 11
+    steps:
+      - run_e2e_tests:
+          browser: chrome
+          theme: twentytwentytwo
+
+  e2e_chrome_wp_php80:
+    executor: php_80_browsers_mysql_mailhog
     parallelism: 11
     steps:
       - run_e2e_tests:

@@ -1,0 +1,52 @@
+.coblocks-labs-modal {
+	hr {
+		margin: 30px 0;
+	}
+
+	&-controls {
+		hr:last-of-type {
+			display: none;
+		}
+
+		figure {
+			margin: 0;
+		}
+	}
+
+	&__section {
+		display: flex;
+		justify-content: space-between;
+		max-width: 900px;
+
+		@media (max-width: 1200px) {
+			align-items: center;
+			flex-direction: column-reverse;
+		}
+
+		&__vertical-group {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			width: 50%;
+		}
+
+		&__heading {
+			margin-top: 0;
+		}
+
+		&__description {
+			color: #5e5e5e;
+			margin-top: 0;
+		}
+	}
+
+	.components-button {
+		&:focus {
+			box-shadow: 0 0 0 var(--wp-admin-border-width-focus) $godaddy-everyday-blue-500;
+		}
+
+		&:hover {
+			color: $godaddy-everyday-blue-500;
+		}
+	}
+}

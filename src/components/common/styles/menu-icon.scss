@@ -1,0 +1,40 @@
+@import "~@wordpress/base-styles/mixins";
+@import "~@wordpress/base-styles/breakpoints";
+
+.coblocks-menu-icon {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	&--add {
+		margin-top: 3px;
+	}
+
+	&__icon {
+		height: 24px;
+		margin-bottom: 0;
+
+		@media (min-width: 400px) {
+			margin-bottom: 4px;
+		}
+
+		@include break-medium() {
+			margin-bottom: 0;
+		}
+	}
+
+	&__label {
+		display: none;
+
+		@media (min-width: 400px) {
+			display: block;
+			font-size: 12px;
+			font-weight: 400;
+		}
+
+		@include break-medium() {
+			display: none;
+		}
+	}
+}

@@ -31,5 +31,7 @@
 		}
 	},
 	"textdomain": "coblocks",
-	"title": "Highlight"
+	"title": "Highlight",
+	"editorScript": "blocks-9",
+	"description": "Draw attention and emphasize important narrative."
 }
