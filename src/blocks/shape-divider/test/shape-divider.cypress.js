@@ -70,8 +70,8 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 		helpers.addBlockToPost( 'coblocks/shape-divider', true );
 
 		cy.get( '.edit-post-visual-editor .wp-block-coblocks-shape-divider' ).click();
-		helpers.setColorSettingsFoldableSetting( 'shape color', shapeColor );
-		helpers.setColorSettingsFoldableSetting( 'background color', backgroundColor );
+		helpers.setColorPanelSetting( 'shape color', shapeColor );
+		helpers.setColorPanelSetting( 'background color', backgroundColor );
 		helpers.checkForBlockErrors( 'coblocks/shape-divider' );
 	} );
 

@@ -42,8 +42,8 @@ describe( 'Test CoBlocks Feature Block', function() {
 
 		cy.get( '.wp-block-coblocks-feature' ).first().click( { force: true } );
 
-		helpers.setColorSettingsFoldableSetting( 'background color', backgroundColor );
-		helpers.setColorSettingsFoldableSetting( 'text color', textColor );
+		helpers.setColorPanelSetting( 'background color', backgroundColor );
+		helpers.setColorPanelSetting( 'text color', textColor );
 
 		helpers.savePage();
 

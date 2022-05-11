@@ -28,8 +28,8 @@ describe( 'Test CoBlocks column Block', function() {
 
 		cy.get( '.wp-block-coblocks-column' ).last().click( { force: true } );
 
-		helpers.setColorSettingsFoldableSetting( 'background color', backgroundColor );
-		helpers.setColorSettingsFoldableSetting( 'text color', textColor );
+		helpers.setColorPanelSetting( 'background color', backgroundColor );
+		helpers.setColorPanelSetting( 'text color', textColor );
 
 		helpers.savePage();
 
