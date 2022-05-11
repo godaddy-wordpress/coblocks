@@ -38,23 +38,12 @@ describe( 'coblocks/media-card transforms', () => {
 		expect( transformed[ 0 ].attributes.id ).toBe( attributes.mediaId );
 		expect( transformed[ 0 ].attributes.alt ).toBe( attributes.mediaAlt );
 	} );
-	
+
 	it( 'should transform to core/image block only if match', () => {
 		expect( transforms.to[ 0 ].isMatch( { mediaType: 'image', mediaUrl: 'someUrl' } ) ).toBe( true );
 		expect( transforms.to[ 0 ].isMatch( { mediaType: 'notImage', mediaUrl: 'someUrl' } ) ).toBe( false );
 	} );
 
-	it( 'should transform to core/video block', () => {
-		const block = createBlock( name, attributes );
-		const transformed = switchToBlockType( block, 'core/video' );
-
-		expect( transformed[ 0 ].isValid ).toBe( true );
-		expect( transformed[ 0 ].name ).toBe( 'core/video' );
-
-		expect( transformed[ 0 ].attributes.src ).toBe( attributes.mediaUrl );
-		expect( transformed[ 0 ].attributes.id ).toBe( attributes.mediaId );
-	} );
-	
 	it( 'should transform to core/video block only if match', () => {
 		expect( transforms.to[ 1 ].isMatch( { mediaType: 'video', mediaUrl: 'someUrl' } ) ).toBe( true );
 		expect( transforms.to[ 1 ].isMatch( { mediaType: 'notVideo', mediaUrl: 'someUrl' } ) ).toBe( false );
