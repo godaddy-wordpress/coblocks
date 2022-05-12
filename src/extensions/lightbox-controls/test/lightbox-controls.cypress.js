@@ -80,6 +80,10 @@ describe( 'Test CoBlocks Lightbox Controls extension', function() {
 
 		cy.get( '.has-lightbox' ).should( 'not.exist' );
 
+		helpers.selectBlock( 'Gallery' );
+
+		cy.contains( 'Lightbox' );
+
 		helpers.toggleSettingCheckbox( /Lightbox/ );
 
 		cy.get( '.has-lightbox' ).should( 'exist' );
@@ -110,9 +114,17 @@ describe( 'Test CoBlocks Lightbox Controls extension', function() {
 
 			helpers.upload.imageToBlock( 'core/gallery' );
 
+			helpers.selectBlock( 'Gallery' );
+
+			cy.contains( 'Lightbox' );
+
 			cy.get( '[aria-label="Change alignment"], [aria-label="Align"]' ).click();
 
 			cy.get( '[aria-label="Change alignment"], [aria-label="Align"]' ).contains( new RegExp( alignment, 'i' ) ).click();
+
+			helpers.selectBlock( 'Gallery' );
+
+			cy.contains( 'Lightbox' );
 
 			helpers.toggleSettingCheckbox( /Lightbox/ );
 
