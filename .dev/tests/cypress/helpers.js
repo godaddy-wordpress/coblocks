@@ -88,6 +88,11 @@ export function getWindowObject() {
  */
 export function disableGutenbergFeatures() {
 	getWindowObject().then( ( safeWin ) => {
+		// Enable "Top Toolbar"
+		if ( ! safeWin.wp.data.select( 'core/edit-post' ).isFeatureActive( 'fixedToolbar' ) ) {
+			safeWin.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'fixedToolbar' );
+		}
+
 		if ( ! safeWin.wp.data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
 			return;
 		}
