@@ -69,7 +69,7 @@ describe( 'Block: Event Item', () => {
 
 		cy.get( '.wp-block-coblocks-events__day' ).type( date.day );
 
-		helpers.setColorPanelSetting( 'text color', textColor );
+		helpers.setColorSettingsFoldableSetting( 'text color', textColor );
 		cy.get( '.wp-block-coblocks-event-item' ).should( 'have.css', 'color', textColorRGB );
 
 		helpers.checkForBlockErrors( 'coblocks/event-item' );

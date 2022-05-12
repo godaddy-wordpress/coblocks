@@ -541,7 +541,7 @@ describe( 'Test CoBlocks Form Block', function() {
 
 		cy.get( '[data-type="coblocks/form"]' ).click( { force: true } );
 
-		helpers.setColorPanelSetting( 'label color', textColor );
+		helpers.setColorSettingsFoldableSetting( 'label color', textColor );
 
 		helpers.savePage();
 

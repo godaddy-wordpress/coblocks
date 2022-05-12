@@ -84,8 +84,8 @@ describe( 'Test CoBlocks Row Block', function() {
 
 		cy.get( '.wp-block-coblocks-row' ).click( { force: true } );
 
-		helpers.setColorPanelSetting( 'background color', backgroundColor );
-		helpers.setColorPanelSetting( 'text color', textColor );
+		helpers.setColorSettingsFoldableSetting( 'background color', backgroundColor );
+		helpers.setColorSettingsFoldableSetting( 'text color', textColor );
 
 		helpers.checkForBlockErrors( 'coblocks/row' );
 	} );
