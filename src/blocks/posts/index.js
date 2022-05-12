@@ -24,11 +24,11 @@ const settings = {
 	category,
 	edit: ( props ) => {
 		const { replaceBlocks } = dispatch( 'core/block-editor' );
-		const { clientId } = props;
+		const { clientId, attributes: { postFeedType } } = props;
 
 		replaceBlocks(
 			[ clientId ],
-			switchToBlockType( props, 'core/query' )
+			switchToBlockType( props, postFeedType === 'external' ? 'core/rss' : 'core/query' )
 		);
 
 		return null;
@@ -39,39 +39,22 @@ const settings = {
 	transforms: {
 		to: [
 			{
-				blocks: [ 'core/query' ],
+				blocks: [ 'core/query', 'core/rss' ],
 				transform: ( attributes ) => {
-					/**
-					 * Structure attributes into query block schema.
-					 * 		"query": {
-					 *  "type": "object",
-					 *  "default": {
-					 *  "perPage": null,
-					 *  "pages": 0,
-					 *  "offset": 0,
-					 *  "postType": "post",
-					 *  "order": "desc",
-					 *  "orderBy": "date",
-					 *  "author": "",
-					 *  "search": "",
-					 *  "exclude": [],
-					 *  "sticky": "",
-					 *  "inherit": true,
-					 *  "taxQuery": null
-					 *  }
-					 *  },
-					 *  "tagName": {
-					 *  "type": "string",
-					 *  "default": "div"
-					 *  },
-					 *  "displayLayout": {
-					 *  "type": "object",
-					 *  "default": {
-					 *  "type": "list"
-					 *  }
-					 *  }
-					 *
-					 */
+					if ( attributes.postFeedType === 'external' ) {
+						const rssBlock = createBlock( 'core/rss', {
+							align: attributes.align,
+							blockLayout: 'grid',
+							columns: attributes.columns,
+							displayDate: attributes.displayPostDate,
+							displayExcerpt: attributes.displayPostContent,
+							excerptLength: attributes.excerptLength,
+							feedURL: attributes.externalRssUrl,
+							itemsToShow: attributes.postsToShow,
+						} );
+						return rssBlock;
+					}
+
 					const newAttributes = {
 						...( attributes?.align && { align: attributes.align } ),
 						displayLayout: {
