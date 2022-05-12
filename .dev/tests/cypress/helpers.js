@@ -238,7 +238,12 @@ export function setBlockStyle( style ) {
  */
 export function selectBlock( name, isChildBlock = false ) {
 	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle' ).click();
-	// Returning the cy.get function allows to to chain off of selectBlock
+
+	if ( isChildBlock ) {
+		cy.get( '.block-editor-list-view__expander svg' ).click();
+	}
+
+	// Returning the cy.get function allows to chain off of selectBlock
 	return cy.get( '.block-editor-block-navigation-leaf,.block-editor-list-view-leaf' )
 		.contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) )
 		.click()
