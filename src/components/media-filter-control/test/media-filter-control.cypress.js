@@ -99,6 +99,11 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 			.should( 'exist' )
 			.click();
 
+		helpers.selectBlock( 'Gallery' );
+
+		cy.get( '.block-editor-block-toolbar__slot .components-coblocks-media-filter' )
+			.click();
+
 		let childIteration = 1;
 
 		// Check the menu contains the expected filters
