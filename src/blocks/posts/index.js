@@ -39,22 +39,8 @@ const settings = {
 	transforms: {
 		to: [
 			{
-				blocks: [ 'core/query', 'core/rss' ],
+				blocks: [ 'core/query' ],
 				transform: ( attributes ) => {
-					if ( attributes.postFeedType === 'external' ) {
-						const rssBlock = createBlock( 'core/rss', {
-							align: attributes.align,
-							blockLayout: 'grid',
-							columns: attributes.columns,
-							displayDate: attributes.displayPostDate,
-							displayExcerpt: attributes.displayPostContent,
-							excerptLength: attributes.excerptLength,
-							feedURL: attributes.externalRssUrl,
-							itemsToShow: attributes.postsToShow,
-						} );
-						return rssBlock;
-					}
-
 					const newAttributes = {
 						...( attributes?.align && { align: attributes.align } ),
 						displayLayout: {
@@ -73,6 +59,7 @@ const settings = {
 						},
 
 					};
+					// testing the inner blocks - endless spinner
 					// const postTitleBlock = createBlock( 'core/post-title', {}, [ ] );
 					// const postFeaturedImageBlock = createBlock( 'core/post-featured-image', {}, [ ] );
 					// const postPostExcerptBlock = createBlock( 'core/post-excerpt', {}, [ ] );
@@ -87,6 +74,24 @@ const settings = {
 					// ] );
 					const transformedQueryBlock = createBlock( 'core/query', newAttributes, [ postTemplate ] );
 					return transformedQueryBlock;
+				},
+				type: 'block',
+			},
+			{
+				blocks: [ 'core/rss' ],
+				transform: ( attributes ) => {
+					const rssBlock = createBlock( 'core/rss', {
+						align: attributes.align,
+						blockLayout: 'grid',
+						className: attributes.className,
+						columns: attributes.columns,
+						displayDate: attributes.displayPostDate,
+						displayExcerpt: attributes.displayPostContent,
+						excerptLength: attributes.excerptLength,
+						feedURL: attributes.externalRssUrl,
+						itemsToShow: attributes.postsToShow,
+					} );
+					return rssBlock;
 				},
 				type: 'block',
 			},
