@@ -61,7 +61,7 @@ describe( 'Block: FAQ', () => {
 		cy.get( '[data-type="coblocks/faq-item"] .wp-block-coblocks-faq-item__question__content' ).type( 'Question' );
 
 		// Title - Text color
-		helpers.setColorPanelSetting( 'text', '#FFFFFF' );
+		helpers.setColorSettingsFoldableSetting( 'text', '#FFFFFF' );
 		cy.get( '[data-type="coblocks/faq-item"] .wp-block-coblocks-faq-item__question__content' ).should( 'have.css', 'color', `rgb(255, 255, 255)` );
 
 		helpers.checkForBlockErrors( 'coblocks/faq' );

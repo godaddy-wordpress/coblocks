@@ -62,11 +62,11 @@ describe( 'Block: Accordion', () => {
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__title' ).type( 'Accordion title' );
 
 		// Title - Background color
-		helpers.setColorPanelSetting( 'background', '#000000' );
+		helpers.setColorSettingsFoldableSetting( 'background', '#000000' );
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__title' ).should( 'have.css', 'background-color', `rgb(0, 0, 0)` );
 
 		// Title - Text color
-		helpers.setColorPanelSetting( 'text', '#FFFFFF' );
+		helpers.setColorSettingsFoldableSetting( 'text', '#FFFFFF' );
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__title' ).should( 'have.css', 'color', `rgb(255, 255, 255)` );
 
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__content' ).click().type( 'Content' );
