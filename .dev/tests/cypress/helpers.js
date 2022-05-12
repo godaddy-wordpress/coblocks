@@ -239,7 +239,8 @@ export function setBlockStyle( style ) {
 export function selectBlock( name, isChildBlock = false ) {
 	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle' ).click();
 
-	if ( isChildBlock ) {
+	// >= WP 6.0
+	if ( isChildBlock && Cypress.$( '.branch-5-9' ).length === 0 ) {
 		cy.get( '.block-editor-list-view__expander svg' ).first().click();
 	}
 
