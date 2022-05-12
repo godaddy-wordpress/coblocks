@@ -240,7 +240,7 @@ export function selectBlock( name, isChildBlock = false ) {
 	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle' ).click();
 
 	if ( isChildBlock ) {
-		cy.get( '.block-editor-list-view__expander svg' ).click();
+		cy.get( '.block-editor-list-view__expander svg' ).click( { multiple: true } );
 	}
 
 	// Returning the cy.get function allows to chain off of selectBlock
