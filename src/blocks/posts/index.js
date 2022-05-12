@@ -22,7 +22,6 @@ const { name, category } = metadata;
 
 const settings = {
 	category,
-	icon,
 	edit: ( props ) => {
 		const { replaceBlocks } = dispatch( 'core/block-editor' );
 		const { clientId } = props;
@@ -34,69 +33,79 @@ const settings = {
 
 		return null;
 	},
+	icon,
 	save: () => null,
 	title: __( 'Posts (CoBlocks)', 'coblocks' ),
 	transforms: {
-		from: [
-			{
-				type: 'block',
-				blocks: [ 'core/latest-posts' ],
-				transform: ( { displayPostDate, displayPostContent, order, orderBy, categories, postsToShow, excerptLength, align } ) => (
-					createBlock( metadata.name, {
-						displayPostDate,
-						displayPostContent,
-						order,
-						orderBy,
-						categories,
-						postsToShow,
-						align,
-						excerptLength,
-					} )
-				),
-			},
-			{
-				type: 'block',
-				blocks: [ 'coblocks/post-carousel' ],
-				transform: ( { displayPostDate, displayPostContent, columns, order, orderBy, categories, postsToShow, externalRssUrl, postFeedType, excerptLength, align } ) => (
-					createBlock( metadata.name, {
-						displayPostDate,
-						displayPostContent,
-						columns,
-						order,
-						orderBy,
-						categories,
-						postsToShow,
-						externalRssUrl,
-						postFeedType,
-						align,
-						excerptLength,
-					} )
-				),
-			},
-			{
-				type: 'prefix',
-				prefix: ':posts',
-				transform: () => {
-					return createBlock( metadata.name );
-				},
-			},
-			...[ 2, 3, 4, 5, 6 ].map( ( postsToShow ) => ( {
-				type: 'prefix',
-				prefix: `:${ postsToShow }posts`,
-				transform: () => {
-					return createBlock( metadata.name, {
-						postsToShow,
-					} );
-				},
-			} ) ),
-		],
 		to: [
 			{
-				type: 'block',
 				blocks: [ 'core/query' ],
-				transform: ( props ) => (
-					createBlock( 'core/query', props )
-				),
+				transform: ( attributes ) => {
+					/**
+					 * Structure attributes into query block schema.
+					 * 		"query": {
+					 *  "type": "object",
+					 *  "default": {
+					 *  "perPage": null,
+					 *  "pages": 0,
+					 *  "offset": 0,
+					 *  "postType": "post",
+					 *  "order": "desc",
+					 *  "orderBy": "date",
+					 *  "author": "",
+					 *  "search": "",
+					 *  "exclude": [],
+					 *  "sticky": "",
+					 *  "inherit": true,
+					 *  "taxQuery": null
+					 *  }
+					 *  },
+					 *  "tagName": {
+					 *  "type": "string",
+					 *  "default": "div"
+					 *  },
+					 *  "displayLayout": {
+					 *  "type": "object",
+					 *  "default": {
+					 *  "type": "list"
+					 *  }
+					 *  }
+					 *
+					 */
+					const newAttributes = {
+						...( attributes?.align && { align: attributes.align } ),
+						displayLayout: {
+							columns: attributes.columns ? attributes.columns : 3,
+							type: 'flex',
+						},
+						layout: {
+							inherit: true,
+						},
+						query: {
+							...( attributes?.pages && { perPage: attributes.postsToShow.toString() } ),
+							...( attributes?.order && { order: attributes.order } ),
+							...( attributes?.orderBy && { orderBy: attributes.orderBy } ),
+							...( attributes?.categories && { taxQuery: attributes.categories.map( ( cat ) => cat.id ) } ),
+							inherit: true,
+						},
+
+					};
+					// const postTitleBlock = createBlock( 'core/post-title', {}, [ ] );
+					// const postFeaturedImageBlock = createBlock( 'core/post-featured-image', {}, [ ] );
+					// const postPostExcerptBlock = createBlock( 'core/post-excerpt', {}, [ ] );
+					// const coreSeparatorBlock = createBlock( 'core/separator', {}, [ ] );
+					// const postDateBlock = createBlock( 'core/post-date', {}, [ ] );
+					const postTemplate = createBlock( 'core/post-template', {}, [ ] );
+					// 	postTitleBlock,
+					// 	postFeaturedImageBlock,
+					// 	postPostExcerptBlock,
+					// 	coreSeparatorBlock,
+					// 	postDateBlock,
+					// ] );
+					const transformedQueryBlock = createBlock( 'core/query', newAttributes, [ postTemplate ] );
+					return transformedQueryBlock;
+				},
+				type: 'block',
 			},
 		],
 	},

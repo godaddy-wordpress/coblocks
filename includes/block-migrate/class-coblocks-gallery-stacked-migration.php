@@ -29,10 +29,10 @@ class CoBlocks_Gallery_Stacked_Migration extends CoBlocks_Block_Migration {
 
 	/**
 	 * Produce new attributes from the migrated block.
-	 *
+	 * @param array $parsed_block_attributes the JSON attributes parsed from the block.
 	 * @inheritDoc
 	 */
-	protected function migrate_attributes() {
+	protected function migrate_attributes( $parsed_block_attributes = array() ) {
 		$this->gallery_wrapper = $this->query_selector( '//ul[contains(@class,"coblocks-gallery")]' );
 		if ( ! $this->gallery_wrapper ) {
 			return array();

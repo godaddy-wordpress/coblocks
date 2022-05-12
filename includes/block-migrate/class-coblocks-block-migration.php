@@ -69,7 +69,7 @@ abstract class CoBlocks_Block_Migration {
 			libxml_clear_errors();
 		}
 
-		return array_filter( $this->migrate_attributes() );
+		return array_filter( $this->migrate_attributes( $parsed_block_attributes ) );
 	}
 
 	/**
@@ -82,9 +82,10 @@ abstract class CoBlocks_Block_Migration {
 	/**
 	 * Produce new attributes from the migrated block.
 	 *
+	 * @param array $parsed_block_attributes the block attributes.
 	 * @return array the new block attributes.
 	 */
-	abstract protected function migrate_attributes();
+	abstract protected function migrate_attributes( $parsed_block_attributes = array() );
 
 	/**
 	 * Returns the DOMNode for the block wrapper element.
