@@ -244,6 +244,9 @@ export function selectBlock( name, isChildBlock = false ) {
 		cy.get( '.block-editor-list-view__expander svg' ).first().click();
 	}
 
+	// A small wait seems needed to make sure that the list of blocks on the left is complete
+	cy.wait( 250 );
+
 	// Returning the cy.get function allows to chain off of selectBlock
 	return cy.get( '.block-editor-block-navigation-leaf,.block-editor-list-view-leaf' )
 		.contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) )
