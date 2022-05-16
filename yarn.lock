@@ -2704,7 +2704,7 @@
   resolved "https://registry.yarnpkg.com/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.1.2.tgz#71596ae30b390ddb23680147011a26dce11f88e1"
   integrity sha512-oMJnM3cJlu1hQMO4XmTFDhNPclj0cLRIeV5Y6uIF/9oNhhSfaMFu+ty0B4zBYodqwes/vbndwRg4j2q2bhG/Dg==
 
-"@wordpress/babel-preset-default@^6.10.0":
+"@wordpress/babel-preset-default@^6.10.0", "@wordpress/babel-preset-default@^6.5.1":
   version "6.10.0"
   resolved "https://registry.yarnpkg.com/@wordpress/babel-preset-default/-/babel-preset-default-6.10.0.tgz#eeb50140c2c2b30af066ecfb99d850499452f0c2"
   integrity sha512-L1zkeIi891SO761RzIve+C4aMbXPu8AC/i5d0rQZiqlaQ+kZ/t5HNfxNI+iJQP5lA0tZlO0+vF7CRhQ7+zSz6g==
@@ -3158,6 +3158,29 @@
   dependencies:
     "@babel/runtime" "^7.16.0"
 
+"@wordpress/eslint-plugin@^10.0.1":
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/@wordpress/eslint-plugin/-/eslint-plugin-10.0.2.tgz#ea9d4e9f66d1cb6d53dc02889318d15fffd04499"
+  integrity sha512-KL9bjxEXw46aMAC0UFkHXdQHy5ZrRQSSfOinv9rElM/k2SUS9piRnGC6vymAtVn+ZsO8HMF8AMy2NSV94Ls/iQ==
+  dependencies:
+    "@babel/eslint-parser" "^7.16.0"
+    "@typescript-eslint/eslint-plugin" "^5.3.0"
+    "@typescript-eslint/parser" "^5.3.0"
+    "@wordpress/babel-preset-default" "^6.5.1"
+    "@wordpress/prettier-config" "^1.1.2"
+    cosmiconfig "^7.0.0"
+    eslint-config-prettier "^8.3.0"
+    eslint-plugin-import "^2.25.2"
+    eslint-plugin-jest "^25.2.3"
+    eslint-plugin-jsdoc "^37.0.3"
+    eslint-plugin-jsx-a11y "^6.5.1"
+    eslint-plugin-prettier "^3.3.0"
+    eslint-plugin-react "^7.27.0"
+    eslint-plugin-react-hooks "^4.3.0"
+    globals "^13.12.0"
+    prettier "npm:wp-prettier@2.2.1-beta-1"
+    requireindex "^1.2.0"
+
 "@wordpress/eslint-plugin@^12.2.0":
   version "12.2.0"
   resolved "https://registry.yarnpkg.com/@wordpress/eslint-plugin/-/eslint-plugin-12.2.0.tgz#c605506ddf504fcbdc1e24b633e39afcf41d5c92"
@@ -3375,7 +3398,7 @@
     "@wordpress/icons" "^8.4.0"
     classnames "^2.3.1"
 
-"@wordpress/prettier-config@^1.1.1", "@wordpress/prettier-config@^1.2.0":
+"@wordpress/prettier-config@^1.1.1", "@wordpress/prettier-config@^1.1.2", "@wordpress/prettier-config@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@wordpress/prettier-config/-/prettier-config-1.2.0.tgz#be5c7e3d928a918908071aaba1888fa358d34727"
   integrity sha512-/hRr/p5rlSptjg82Mdy5rQ+mvW4GWCoKpe0FHC3oGy+E6SRcYfVGpnGCtmZa4TY69STD+eu59pCTl1J/EgUIUA==

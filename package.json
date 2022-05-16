@@ -104,7 +104,7 @@
 		"@wordpress/editor": "^12.7.0",
 		"@wordpress/element": "^4.6.0",
 		"@wordpress/env": "^4.6.0",
-		"@wordpress/eslint-plugin": "^12.2.0",
+		"@wordpress/eslint-plugin": "^10.0.1",
 		"@wordpress/hooks": "^3.8.0",
 		"@wordpress/i18n": "^4.8.0",
 		"@wordpress/icons": "^8.4.0",
