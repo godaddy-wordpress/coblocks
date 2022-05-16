@@ -21,7 +21,7 @@ describe( 'coblocks/gallery-masonry transforms', () => {
 		] };
 
 	const masonryAttributes = {};
-	const innerBlocks = [ 
+	const innerBlocks = [
 		createBlock( 'core/image', sharedAttributes.images[0], [] ),
 		createBlock( 'core/image', sharedAttributes.images[1], [] )
 	];
@@ -92,7 +92,7 @@ describe( 'coblocks/gallery-masonry transforms', () => {
 
 		expect( transformed.isValid ).toBe( true );
 		expect( transformed.innerBlocks.length ).toBeGreaterThan( 0 );
-		
+
 		expect( transformed.innerBlocks[0].attributes.id ).toBe( coreImage.attributes.id );
 		expect( transformed.innerBlocks[0].attributes.url ).toBe( coreImage.attributes.url );
 	} );
@@ -157,7 +157,7 @@ describe( 'coblocks/gallery-masonry transforms', () => {
 		} )
 	} );
 
-	it( 'should transform to core/gallery block', () => {
+	it.skip( 'should transform to core/gallery block', () => {
 		const block = createBlock( name, masonryAttributes, innerBlocks );
 		const transformed = switchToBlockType( block, 'core/gallery' );
 
