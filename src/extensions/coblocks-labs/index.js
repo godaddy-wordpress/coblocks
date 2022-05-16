@@ -9,7 +9,7 @@ import { MenuItem, Modal } from '@wordpress/components';
 
 // In the context of `widgets.php`, `editPostImport` is not available.
 import * as editPostImport from '@wordpress/edit-post';
-const PluginMoreMenuItem = () => !! editPostImport ? editPostImport.PluginMoreMenuItem : null;
+const PluginMoreMenuItem = !! editPostImport ? editPostImport.PluginMoreMenuItem : null;
 
 /**
  * Internal dependencies
@@ -83,7 +83,7 @@ export function CoBlocksLabs() {
 	);
 }
 
-if ( ! getPlugin( 'coblocks-labs' ) ) {
+if ( ! getPlugin( 'coblocks-labs' ) && !! PluginMoreMenuItem ) {
 	registerPlugin( 'coblocks-labs', {
 		icon: '',
 		render: CoBlocksLabs,
