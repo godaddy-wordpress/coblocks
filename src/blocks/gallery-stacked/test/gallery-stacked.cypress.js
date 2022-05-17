@@ -175,8 +175,6 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 	 * Test the text sizes change as expected
 	 */
 	it( 'Test the text sizes change as expected.', function() {
-		helpers.addBlockToPost( 'coblocks/gallery-stacked', true );
-
 		const { caption } = galleryData;
 		helpers.addBlockToPost( 'coblocks/gallery-stacked', true );
 
@@ -208,7 +206,7 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 		cy.get( '[data-wp-component="ToolsPanelHeader"] button' ).click();
 		cy.get( 'button' ).contains( 'Font size' ).click();
 
-		cy.get( '.components-toggle-group-control-option' ).then( ( elems ) => {
+		cy.get( '.components-toggle-group-control-option, .components-toggle-group-control-option-base' ).then( ( elems ) => {
 			let dataValue = Cypress.$( 'figcaption.coblocks-gallery--caption' ).css( 'font-size' );
 			Array.from( elems ).forEach( ( elem ) => {
 				cy.get( elem ).focus().click().then( () => {

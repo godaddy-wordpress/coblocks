@@ -49,8 +49,8 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 		firstTableItem().find( '.wp-block-button' ).find( 'div[role="textbox"]' ).focus().type( `{selectall}${ buttonText }` );
 
 		firstTableItem().click( 'topRight' );
-		helpers.setColorSetting( 'background color', backgroundColor );
-		helpers.setColorSetting( 'text color', textColor );
+		helpers.setColorSettingsFoldableSetting( 'background color', backgroundColor );
+		helpers.setColorSettingsFoldableSetting( 'text color', textColor );
 
 		helpers.checkForBlockErrors( 'coblocks/pricing-table' );
 

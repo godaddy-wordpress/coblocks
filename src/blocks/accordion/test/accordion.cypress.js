@@ -62,21 +62,21 @@ describe( 'Block: Accordion', () => {
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__title' ).type( 'Accordion title' );
 
 		// Title - Background color
-		helpers.setColorSetting( 'background', '#000000' );
+		helpers.setColorSettingsFoldableSetting( 'background', '#000000' );
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__title' ).should( 'have.css', 'background-color', `rgb(0, 0, 0)` );
 
 		// Title - Text color
-		helpers.setColorSetting( 'text', '#FFFFFF' );
+		helpers.setColorSettingsFoldableSetting( 'text', '#FFFFFF' );
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__title' ).should( 'have.css', 'color', `rgb(255, 255, 255)` );
 
-		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__content p' ).click().type( 'Content' );
+		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__content' ).click().type( 'Content' );
 
 		// Content - Background color
-		helpers.setColorSetting( 'background', '#000000' );
+		helpers.setColorPanelSetting( 'background', '#000000' );
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__content p' ).should( 'have.css', 'background-color', `rgb(0, 0, 0)` );
 
 		// Content - Text color
-		helpers.setColorSetting( 'text', '#FFFFFF' );
+		helpers.setColorPanelSetting( 'text', '#FFFFFF' );
 		cy.get( '[data-type="coblocks/accordion-item"] .wp-block-coblocks-accordion-item__content p' ).should( 'have.css', 'color', `rgb(255, 255, 255)` );
 
 		helpers.checkForBlockErrors( 'coblocks/accordion' );
