@@ -33,6 +33,9 @@ describe( 'Block: Event Item', () => {
 	 */
 	it( 'can be inserted without errors', () => {
 		cy.get( '.wp-block-coblocks-event-item' ).should( 'exist' );
+
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/event-item' );
 	} );
 

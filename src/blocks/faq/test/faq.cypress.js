@@ -14,6 +14,9 @@ describe( 'Block: FAQ', () => {
 	 */
 	it( 'can be inserted without errors', () => {
 		cy.get( '[data-type="coblocks/faq"]' ).should( 'exist' );
+
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/faq' );
 	} );
 
