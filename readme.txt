@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.5
 Tested up to: 5.9
 Requires PHP: 5.6
-Stable tag: 2.23.0
+Stable tag: 2.23.1
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -122,15 +122,8 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-### Enhancements
-* Introduce CoBlocks Labs [#2350](https://github.com/godaddy-wordpress/coblocks/pull/2350)
-
 ### Bug fixes
-* Add tab index to carousel thumbnails [#2312](https://github.com/godaddy-wordpress/coblocks/pull/2312)
+* Fix issue preventing the widgets page from showing [#2378](https://github.com/godaddy-wordpress/coblocks/pull/2378)
 
 ### Misc
-* Add e2e tests with PHP 8.0 [#2375](https://github.com/godaddy-wordpress/coblocks/pull/2375)
-* Fix more Cypress tests for WP 6.0 RC1 [#2373](https://github.com/godaddy-wordpress/coblocks/pull/2373)
-* Fix some Cypress tests in WP 6.0 RC1 [#2372](https://github.com/godaddy-wordpress/coblocks/pull/2372)
-* Add a validation for the presence of the minor part in the version [#2365](https://github.com/godaddy-wordpress/coblocks/pull/2365)
-* Bump grunt from 1.4.1 to 1.5.2 [#2366](https://github.com/godaddy-wordpress/coblocks/pull/2366)
+* Update WordPress dependencies [#2379](https://github.com/godaddy-wordpress/coblocks/pull/2379)

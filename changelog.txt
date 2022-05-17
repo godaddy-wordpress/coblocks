@@ -1,4 +1,12 @@
 
+2.23.1 / 2022-05-16
+===================
+### Bug fixes
+* Fix issue preventing the widgets page from showing [#2378](https://github.com/godaddy-wordpress/coblocks/pull/2378)
+
+### Misc
+* Update WordPress dependencies [#2379](https://github.com/godaddy-wordpress/coblocks/pull/2379)
+
 2.23.0 / 2022-05-10
 ===================
 ### Enhancements
