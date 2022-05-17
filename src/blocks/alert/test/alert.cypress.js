@@ -11,6 +11,10 @@ describe( 'Test CoBlocks Alert Block', function() {
 	it( 'Test alert block saves with empty values.', function() {
 		helpers.addBlockToPost( 'coblocks/alert', true );
 
+		cy.get( '.wp-block-coblocks-alert' ).should( 'exist' );
+
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/alert' );
 	} );
 

@@ -23,6 +23,11 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 	 */
 	it( 'Test shape-divider block saves with empty values.', function() {
 		helpers.addBlockToPost( 'coblocks/shape-divider', true );
+
+		cy.get( '.wp-block-coblocks-shape-divider' ).should( 'exist' );
+
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/shape-divider' );
 	} );
 

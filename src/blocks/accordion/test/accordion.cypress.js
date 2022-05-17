@@ -14,6 +14,9 @@ describe( 'Block: Accordion', () => {
 	 */
 	it( 'can be inserted without errors', () => {
 		cy.get( '[data-type="coblocks/accordion"]' ).should( 'exist' );
+
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/accordion' );
 	} );
 

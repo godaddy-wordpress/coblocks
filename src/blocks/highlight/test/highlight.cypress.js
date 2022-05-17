@@ -14,6 +14,9 @@ describe( 'Block: Highlight', function() {
 	 */
 	it( 'can be inserted without errors', function() {
 		cy.get( '.wp-block-coblocks-highlight' ).should( 'exist' );
+
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/highlight' );
 	} );
 
