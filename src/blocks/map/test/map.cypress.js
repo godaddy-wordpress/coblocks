@@ -18,8 +18,6 @@ describe( 'Test CoBlocks Map Block', function() {
 	it( 'can save without content values set.', function() {
 		helpers.addBlockToPost( 'coblocks/map', true );
 
-		cy.get( '.wp-block-coblocks-map' ).should( 'exist' );
-
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/map' );
