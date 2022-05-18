@@ -6,8 +6,8 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-import { dispatch } from '@wordpress/data';
 import { createBlock, switchToBlockType } from '@wordpress/blocks';
+import { dispatch, select } from '@wordpress/data';
 
 /**
  * Block constants
@@ -15,18 +15,13 @@ import { createBlock, switchToBlockType } from '@wordpress/blocks';
 const { name } = metadata;
 
 const settings = {
-	edit: ( props ) => {
+	edit: ( { clientId } ) => {
 		const { replaceBlocks } = dispatch( 'core/block-editor' );
-
-		const parentBlock = wp.data.select( 'core/editor' ).getBlocksByClientId( props.clientId )[ 0 ];
-
-		const cover = switchToBlockType( props, 'core/cover' );
-
-		cover[ 0 ].innerBlocks = parentBlock.innerBlocks;
+		const { getBlock } = select( 'core/block-editor' );
 
 		replaceBlocks(
-			[ props.clientId ],
-			cover
+			[ clientId ],
+			switchToBlockType( getBlock( clientId ), 'core/cover' )
 		);
 
 		return null;
@@ -39,8 +34,8 @@ const settings = {
 		to: [
 			{
 				blocks: [ 'core/cover' ],
-				transform: ( attributes ) => {
-					return createBlock( 'core/cover', attributes );
+				transform: ( attributes, innerBlocks ) => {
+					return createBlock( 'core/cover', attributes, innerBlocks );
 				},
 				type: 'block',
 			},
