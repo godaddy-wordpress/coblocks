@@ -14,6 +14,9 @@ describe( 'Block: Highlight', function() {
 	 */
 	it( 'can be inserted without errors', function() {
 		cy.get( '.wp-block-coblocks-highlight' ).should( 'exist' );
+
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/highlight' );
 	} );
 
@@ -35,6 +38,8 @@ describe( 'Block: Highlight', function() {
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'highlight' );
 		cy.get( '.wp-block-coblocks-highlight' ).should( 'have.class', 'my-custom-class' );
+
+		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/highlight' );
 	} );

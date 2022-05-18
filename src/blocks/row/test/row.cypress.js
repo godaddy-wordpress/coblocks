@@ -21,6 +21,10 @@ describe( 'Test CoBlocks Row Block', function() {
 	 * a single column and save content without errors.
 	 */
 	it( 'Test row block saves with one column.', function() {
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/row' );
+
 		helpers.addBlockToPost( 'coblocks/row', true );
 
 		cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(1) button' ).click();
