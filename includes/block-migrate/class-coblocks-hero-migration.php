@@ -31,7 +31,7 @@ class CoBlocks_Hero_Migration extends CoBlocks_Block_Migration {
 		}
 
 		$hero_wrapper = $this->query_selector( '//div[contains(@class,"wp-block-coblocks-hero__inner")]' );
-		$padding_size = $test = $this->get_attribute_from_classname( '-padding', $hero_wrapper );
+		$padding_size = $this->get_attribute_from_classname( '-padding', $hero_wrapper );
 
 		if ( $padding_size ) {
 			$this->block_attributes['className'] = "${padding_size}-padding";
