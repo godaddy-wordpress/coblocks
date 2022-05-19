@@ -10,15 +10,28 @@
 	<exclude-pattern>dist/*</exclude-pattern>
 	<exclude-pattern>vendor/*</exclude-pattern>
 	<exclude-pattern>node_modules/*</exclude-pattern>
+	<exclude-pattern>includes/Dependencies/*</exclude-pattern>
 	<exclude-pattern type="relative">wordpress/*</exclude-pattern>
 	<exclude-pattern>\.dev\/.*</exclude-pattern>
-	<exclude-pattern>includes/ical-parser/class-coblocks-ical.php</exclude-pattern>
 
 	<arg name="colors"/>
 	<arg value="sp"/>
 
 	<!-- Whenever possible, cache the scan results and re-use those for unchanged files on the next scan. -->
 	<arg name="cache" value="/tmp/phpcs-coblocks-cache"/>
+
+	<!-- (Subset of?) the rules from the Plugin Review Team -->
+	<rule ref="WordPress.Security.ValidatedSanitizedInput.InputNotSanitized">
+		<type>warning</type>
+	</rule>
+	<rule ref="WordPress.Security.NonceVerification.Recommended" />
+	<rule ref="WordPress.DateTime.RestrictedFunctions.date_date" />
+	<rule ref="WordPress.Security.EscapeOutput.OutputNotEscaped">
+		<type>warning</type>
+	</rule>
+	<rule ref="WordPress.Security.NonceVerification.Missing" />
+	<rule ref="WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents" />
+	<rule ref="WordPress.WP.EnqueuedResources.NonEnqueuedScript" />
 
 	<!-- Include the WordPress-Extra standard. -->
 	<rule ref="WordPress-Extra">

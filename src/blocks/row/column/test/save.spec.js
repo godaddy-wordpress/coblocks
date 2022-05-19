@@ -2,7 +2,7 @@
  * External dependencies
  */
 import '@testing-library/jest-dom/extend-expect';
-import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
+import { createBlock, registerBlockType, serialize } from '@wordpress/blocks';
 
 /**
  * Internal dependencies.
@@ -13,7 +13,7 @@ import { name, settings } from '../index';
 let block;
 let serializedBlock;
 
-describe( name, () => {
+describe( 'coblocks/column', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );
@@ -35,7 +35,7 @@ describe( name, () => {
 	} );
 
 	it( 'should render padding classes', () => {
-		[ 'none', 'small', 'medium', 'large', 'huge' ].forEach( paddingSize => {
+		[ 'none', 'small', 'medium', 'large', 'huge' ].forEach( ( paddingSize ) => {
 			block.attributes.paddingSize = paddingSize;
 			serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();
@@ -45,7 +45,7 @@ describe( name, () => {
 	} );
 
 	it( 'should render margin classes', () => {
-		[ 'none', 'small', 'medium', 'large', 'huge' ].forEach( marginSize => {
+		[ 'none', 'small', 'medium', 'large', 'huge' ].forEach( ( marginSize ) => {
 			block.attributes.marginSize = marginSize;
 			serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();
@@ -55,7 +55,7 @@ describe( name, () => {
 	} );
 
 	it( 'should render content align classes', () => {
-		[ 'left', 'center', 'right' ].forEach( alignment => {
+		[ 'left', 'center', 'right' ].forEach( ( alignment ) => {
 			block.attributes.contentAlign = alignment;
 			serializedBlock = serialize( block );
 			expect( serializedBlock ).toBeDefined();

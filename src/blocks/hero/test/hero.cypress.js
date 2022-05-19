@@ -47,8 +47,8 @@ describe( 'Test CoBlocks Hero Block', function() {
 
 		cy.get( '.wp-block-coblocks-hero' ).click( { force: true } );
 
-		helpers.setColorSetting( 'background color', backgroundColor );
-		helpers.setColorSetting( 'text color', textColor );
+		helpers.setColorSettingsFoldableSetting( 'background color', backgroundColor );
+		helpers.setColorSettingsFoldableSetting( 'text color', textColor );
 
 		helpers.savePage();
 
@@ -106,9 +106,8 @@ describe( 'Test CoBlocks Hero Block', function() {
 		cy.get( '.attachment.selected.save-ready' );
 		cy.get( '.media-toolbar-primary > .button' ).click();
 
-		//'.media-replace-flow button' was deprecated in 5.8.
-		// Media replace button should reside as the 5th button within the toolbar.
-		cy.get( '.block-editor-block-toolbar button:nth(4)' ).click();
+		// Media replace button should reside as the 6th button within the toolbar.
+		cy.get( '.block-editor-block-toolbar button:nth(5)' ).click();
 
 		cy.get( '.components-popover__content' ).should( 'be.visible' );
 

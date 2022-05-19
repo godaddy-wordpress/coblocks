@@ -110,5 +110,9 @@
 				}
 			}
 		}
-	}
+	},
+	"title": "Carousel",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-1",
+	"description": "Display multiple images in a beautiful carousel gallery."
 }

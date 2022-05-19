@@ -1,9 +1,4 @@
 /**
- * Internal dependencies.
- */
-import coblocksLayoutSelector from '../../../src/extensions/layout-selector/test/cypress-layouts';
-
-/**
  * Close layout selector.
  */
 export function closeLayoutSelector() {
@@ -64,15 +59,7 @@ export function loginToSite() {
 export function goTo( path = '/wp-admin' ) {
 	cy.visit( Cypress.env( 'testURL' ) + path );
 
-	return getWindowObject().then( ( safeWin ) => {
-		// Only set global `safeWin.coblocksLayoutSelector` on new pages.
-		if ( safeWin.location.href.includes( 'post-new.php?post_type=page' ) ) {
-			safeWin.coblocksLayoutSelector = coblocksLayoutSelector;
-
-			safeWin.wp.data.dispatch( 'coblocks/template-selector' ).updateLayouts( coblocksLayoutSelector.layouts );
-			safeWin.wp.data.dispatch( 'coblocks/template-selector' ).updateCategories( coblocksLayoutSelector.categories );
-		}
-	} );
+	return getWindowObject();
 }
 
 /**
@@ -251,7 +238,16 @@ export function setBlockStyle( style ) {
  */
 export function selectBlock( name, isChildBlock = false ) {
 	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle' ).click();
-	// Returning the cy.get function allows to to chain off of selectBlock
+
+	// >= WP 6.0
+	if ( isChildBlock && Cypress.$( '.branch-5-9' ).length === 0 ) {
+		cy.get( '.block-editor-list-view__expander svg' ).first().click();
+	}
+
+	// A small wait seems needed to make sure that the list of blocks on the left is complete
+	cy.wait( 250 );
+
+	// Returning the cy.get function allows to chain off of selectBlock
 	return cy.get( '.block-editor-block-navigation-leaf,.block-editor-list-view-leaf' )
 		.contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) )
 		.click()
@@ -359,8 +355,25 @@ export const upload = {
  * @param {string} settingName The setting to update. background|text
  * @param {string} hexColor
  */
-export function setColorSetting( settingName, hexColor ) {
+export function setColorSettingsFoldableSetting( settingName, hexColor ) {
 	openSettingsPanel( /color settings|color/i );
+
+	const formattedHex = hexColor.split( '#' )[ 1 ];
+
+	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
+	cy.get( '.components-color-palette__custom-color' ).click();
+
+	cy.get( '[aria-label="Show detailed inputs"]' ).click();
+	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
+
+	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
+}
+
+export function setColorPanelSetting( settingName, hexColor ) {
+	// If WP 5.9, we may need to open the panel. Since WP 6.0, it is always open
+	if ( Cypress.$( '.branch-5-9' ).length > 0 ) {
+		openSettingsPanel( /color settings|color/i );
+	}
 
 	const formattedHex = hexColor.split( '#' )[ 1 ];
 
@@ -458,6 +471,17 @@ export function openEditorSettingsModal() {
 
 	// Ensure settings have loaded.
 	cy.get( '.coblocks-settings-modal input[type="checkbox"]' ).should( 'have.length', 6 );
+}
+
+/**
+ * Open the CoBlocks Labs modal.
+ */
+export function openCoBlocksLabsModal() {
+	// Open "more" menu.
+	cy.get( '.edit-post-more-menu button, .interface-more-menu-dropdown button' ).click();
+	cy.get( '.components-menu-group' ).contains( 'CoBlocks Labs' ).click();
+
+	cy.get( '.components-modal__frame' ).contains( 'CoBlocks Labs' ).should( 'exist' );
 }
 
 /**

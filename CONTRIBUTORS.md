@@ -15,6 +15,9 @@ This list is manually curated to include valuable contributions by volunteers th
 | @gmays            |                        |
 | @jonathanbardo    | @jonathanbardo         |
 | @jrtashjian       | @jrtashjian            |
+| @olafleur         | @olivierlafleur        |
+| @jlemay-godaddy   | @jasonlemay            |
+| @snovosel         | @snovosel              |
 | @alexdenning      | @alexdenning           |
 | @andreilupu       | @euthelup              |
 | @brandonpayton    |                        |
@@ -46,7 +49,7 @@ This list is manually curated to include valuable contributions by volunteers th
 | @WunderBart       |                        |
 | @sirreal          | @jonsurrell            |
 | @kishanjasani     | @kishanjasani          |
-| @olafleur         |                        |
 | @ehamwey          |                        |
 | @amenk            |                        |
 | @frozzare         |                        |
+| @adamf59          | @afrankgodaddy         |

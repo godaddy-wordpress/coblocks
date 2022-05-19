@@ -1,11 +1,11 @@
 === Page Builder Gutenberg Blocks – CoBlocks ===
 Author URI: https://www.godaddy.com
-Contributors: godaddy, richtabor, eherman24, jonathanbardo, jrtashjian, paranoia1906, fjarrett
+Contributors: godaddy, richtabor, eherman24, jonathanbardo, jrtashjian, paranoia1906, fjarrett, olivierlafleur, jasonlemay, snovosel
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.5
 Tested up to: 5.9
 Requires PHP: 5.6
-Stable tag: 2.22.1
+Stable tag: 2.23.1
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,9 @@ The vision for CoBlocks is to create a suite of Gutenberg blocks to help folks m
 ## Built With Developers in Mind
 Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're interested to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks on GitHub](https://github.com/godaddy-wordpress/coblocks) and join the party. 🎉
 
+## Register Custom Block Patterns
+Create your own Block Pattern (Appearance > Block Patterns). Seelect the top-most block, Block Toolbar Options, Add Design Pattern to register your Block Pattern and specify which category to assign it to.
+
 
 == Screenshots ==
 
@@ -105,6 +108,13 @@ To get the full experience of the next-generation WordPress block editor, it hel
 = How do I use my first CoBlocks Gutenberg blocks? =
 CoBlocks adds its Gutenberg blocks to the new WordPress editor, so you can use them exactly how you would any other WordPress blocks. Once the plugin is installed, create or edit a WordPress page or post, add a new block using the plus icon, and you'll find all of CoBlocks' WordPress blocks available.
 
+= How do I create a custom Block Pattern? =
+CoBlocks enables you to create your own Block Patterns.
+1. Select all blocks that belong together for your pattern
+2. Under the kebab (3 dots) menu, select Add Design Pattern
+3. Name your block and select a category
+4. Save Pattern
+
 = What WordPress themes work with CoBlocks? =
 Any properly developed WordPress theme will work with CoBlocks, though if you're looking for an exceptional free theme, check out [Go](https://wordpress.org/themes/go/).
 
@@ -112,77 +122,8 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-= 2.22.1 / 2022-02-25 =
-##### Enhancements
-* Introduce plugin deactivation feedback modal [#2266](https://github.com/godaddy-wordpress/coblocks/pull/2266)
+### Bug fixes
+* Fix issue preventing the widgets page from showing [#2378](https://github.com/godaddy-wordpress/coblocks/pull/2378)
 
-##### Bug fixes
-* Fix Masonry V1 markup on published pages [#2290](https://github.com/godaddy-wordpress/coblocks/pull/2290)
-* Fix color controls on Highlight block [#2287](https://github.com/godaddy-wordpress/coblocks/pull/2287)
-
-= 2.22.0 / 2022-02-22 (that's a lot of 2s ;) ) =
-##### Enhancements
-* Enhance Gallery Stacked block to v2 [#2281](https://github.com/godaddy-wordpress/coblocks/pull/2281)
-* Enhance Author block to v2 [#2274](https://github.com/godaddy-wordpress/coblocks/pull/2274)
-* Remove jQuery from CoBlocks [#2276](https://github.com/godaddy-wordpress/coblocks/pull/2276)
-* Enhance Click to Tweet block to v2 [#2268](https://github.com/godaddy-wordpress/coblocks/pull/2268)
-* Enhance Post carousel to remove JQuery [#2235](https://github.com/godaddy-wordpress/coblocks/pull/2235)
-* Enhance Events block to remove JQuery [#2222](https://github.com/godaddy-wordpress/coblocks/pull/2222)
-
-##### Bug fixes
-* Fix rendering of custom icons [#2282](https://github.com/godaddy-wordpress/coblocks/pull/2282)
-* Fix speech typo [#2283](https://github.com/godaddy-wordpress/coblocks/pull/2283)
-* Fix white page flicker on admin dashboard [#2275](https://github.com/godaddy-wordpress/coblocks/pull/2275)
-
-##### Misc
-* Replace `cypress-file-upload` with Cypress built-in upload [#2285](https://github.com/godaddy-wordpress/coblocks/pull/2285)
-* Remove security vulnerability [#2255](https://github.com/godaddy-wordpress/coblocks/pull/2255)
-* Add e2e tests on Twenty Twenty-Two in the build pipeline [#2246](https://github.com/godaddy-wordpress/coblocks/pull/2246)
-* Run e2e tests on final build [#2271](https://github.com/godaddy-wordpress/coblocks/pull/2271)
-* Add unit tests on PHP 8.1 [#2272](https://github.com/godaddy-wordpress/coblocks/pull/2272)
-
-= 2.21.6 / 2022-02-08 =
-##### Enhancements
-* Delete Remove Image extension [#2262](https://github.com/godaddy-wordpress/coblocks/pull/2262)
-
-##### Bug fixes
-* Add styling to hide Safari default marker on FAQ items [#2267](https://github.com/godaddy-wordpress/coblocks/pull/2267)
-* Fix custom icons not loading [#2256](https://github.com/godaddy-wordpress/coblocks/pull/2256)
-
-= 2.21.5 / 2022-01-31 =
-##### Bug fixes
-* Fix `.icon` class scoping from Swiper component [#2259](https://github.com/godaddy-wordpress/coblocks/pull/2259)
-* Fix Lightbox opening unexpectedly [#2258](https://github.com/godaddy-wordpress/coblocks/pull/2258)
-
-= 2.21.4 / 2022-01-28 =
-##### Bug fixes
-* Fix console error related to blocks icons. [#2254](https://github.com/godaddy-wordpress/coblocks/pull/2254)
-
-= 2.21.3 / 2022-01-28 =
-##### Bug Fixes
-* Fix improperly enqueued dependency for Counter block [#2252](https://github.com/godaddy-wordpress/coblocks/pull/2252)
-* Fix React state errors in the browser console [#2245](https://github.com/godaddy-wordpress/coblocks/pull/2245)
-
-##### Misc
-* Improve stability of CoBlocks Block icon color [#2249](https://github.com/godaddy-wordpress/coblocks/pull/2249)
-
-= 2.21.2 / 2022-01-27 =
-##### Bug Fixes
-* Ensure SVGs are bundled with release [#2248](https://github.com/godaddy-wordpress/coblocks/pull/2248)
-
-= 2.21.1 / 2022-01-27 =
-##### Enhancements
-* Improve visual styles for CoBlocks blocks [#2242](https://github.com/godaddy-wordpress/coblocks/pull/2242)
-
-##### Bug Fixes
-* Fix occurrence of unregistered block [#2247](https://github.com/godaddy-wordpress/coblocks/pull/2247)
-
-= 2.21.0 / 2022-01-26 =
-##### Enhancements
-* Introduce Counter Block [#2224](https://github.com/godaddy-wordpress/coblocks/pull/2224)
-
-##### Bug Fixes
-* Fix cases of improperly enqueued assets [#2243](https://github.com/godaddy-wordpress/coblocks/pull/2243)
-* Fix styles with Twenty Twenty-Two theme in 5.9 [#2237](https://github.com/godaddy-wordpress/coblocks/pull/2237)
-* Fix Lightbox for Gallery block in 5.9 [#2239](https://github.com/godaddy-wordpress/coblocks/pull/2239)
-* Fix Form block input styles in editor. [#2209](https://github.com/godaddy-wordpress/coblocks/pull/2209)
+### Misc
+* Update WordPress dependencies [#2379](https://github.com/godaddy-wordpress/coblocks/pull/2379)

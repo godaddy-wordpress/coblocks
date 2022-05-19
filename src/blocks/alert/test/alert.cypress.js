@@ -11,6 +11,10 @@ describe( 'Test CoBlocks Alert Block', function() {
 	it( 'Test alert block saves with empty values.', function() {
 		helpers.addBlockToPost( 'coblocks/alert', true );
 
+		cy.get( '.wp-block-coblocks-alert' ).should( 'exist' );
+
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/alert' );
 	} );
 
@@ -53,28 +57,28 @@ describe( 'Test CoBlocks Alert Block', function() {
 
 		helpers.openSettingsPanel( 'Styles' );
 
-		cy.get( '.block-editor-block-styles__item-label' )
+		cy.get( '.block-editor-block-styles__item-label, .block-editor-block-styles__item-text' )
 			.contains( 'Info' )
 			.click();
 
 		cy.get( '.wp-block-coblocks-alert' )
 			.should( 'have.class', 'is-style-info' );
 
-		cy.get( '.block-editor-block-styles__item-label' )
+		cy.get( '.block-editor-block-styles__item-label, .block-editor-block-styles__item-text' )
 			.contains( 'Success' )
 			.click();
 
 		cy.get( '.wp-block-coblocks-alert' )
 			.should( 'have.class', 'is-style-success' );
 
-		cy.get( '.block-editor-block-styles__item-label' )
+		cy.get( '.block-editor-block-styles__item-label, .block-editor-block-styles__item-text' )
 			.contains( 'Warning' )
 			.click();
 
 		cy.get( '.wp-block-coblocks-alert' )
 			.should( 'have.class', 'is-style-warning' );
 
-		cy.get( '.block-editor-block-styles__item-label' )
+		cy.get( '.block-editor-block-styles__item-label, .block-editor-block-styles__item-text' )
 			.contains( 'Error' )
 			.click();
 

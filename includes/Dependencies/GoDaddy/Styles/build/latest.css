@@ -1,0 +1,114 @@
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/@wordpress/scripts/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/@wordpress/scripts/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/index.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+.godaddy-styles {
+  /*
+   * import { Button } from '@wordpress/components'
+   */
+  /*
+   * import { Modal } from '@wordpress/components'
+   */
+  /*
+   * import { ToggleControl } from '@wordpress/components'
+   */
+}
+.godaddy-styles * {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 13px;
+  line-height: 1.4em;
+}
+.godaddy-styles .components-button, .godaddy-styles.components-button {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transition: background-color, color, 0.2s ease-in-out;
+}
+.godaddy-styles .components-button:disabled, .godaddy-styles.components-button:disabled {
+  opacity: 0.5;
+}
+.godaddy-styles .components-button.is-primary, .godaddy-styles.components-button.is-primary {
+  background-color: #000;
+  box-shadow: none;
+  color: #fff;
+}
+.godaddy-styles .components-button.is-primary:hover:not([disabled]), .godaddy-styles.components-button.is-primary:hover:not([disabled]) {
+  background-color: #129d9e;
+}
+.godaddy-styles .components-button.is-secondary, .godaddy-styles.components-button.is-secondary {
+  box-shadow: none;
+  color: #129d9e;
+}
+.godaddy-styles .components-button.is-secondary:hover:not([disabled]), .godaddy-styles.components-button.is-secondary:hover:not([disabled]) {
+  border: 0;
+  box-shadow: none;
+  color: #000;
+}
+.godaddy-styles .components-button.is-link, .godaddy-styles.components-button.is-link {
+  box-shadow: none;
+  color: #129d9e;
+  text-decoration: none;
+}
+.godaddy-styles .components-button.is-link:hover:not([disabled]), .godaddy-styles.components-button.is-link:hover:not([disabled]) {
+  color: #222;
+}
+.godaddy-styles .components-button.has-icon:hover:not([disabled]), .godaddy-styles.components-button.has-icon:hover:not([disabled]) {
+  background-color: transparent;
+  color: #129d9e;
+}
+.godaddy-styles .components-modal__frame, .godaddy-styles.components-modal__frame {
+  border-radius: 1rem;
+}
+.godaddy-styles .components-modal__frame .components-modal__content, .godaddy-styles.components-modal__frame .components-modal__content {
+  margin-top: 0;
+  padding: 2.5rem;
+}
+.godaddy-styles .components-modal__frame .components-modal__content::before, .godaddy-styles.components-modal__frame .components-modal__content::before {
+  margin: 0;
+}
+.godaddy-styles .components-modal__frame .components-modal__content p:last-child, .godaddy-styles.components-modal__frame .components-modal__content p:last-child {
+  margin-bottom: 0;
+}
+.godaddy-styles .components-modal__frame .components-modal__content .components-modal__header, .godaddy-styles.components-modal__frame .components-modal__content .components-modal__header {
+  border-bottom: 0;
+  font-size: 2rem;
+  height: unset;
+  margin-bottom: 0.75em;
+  padding: 0;
+  position: relative;
+}
+.godaddy-styles .components-modal__frame .components-modal__content .components-modal__header .components-modal__icon-container, .godaddy-styles.components-modal__frame .components-modal__content .components-modal__header .components-modal__icon-container {
+  margin-right: 8px;
+}
+.godaddy-styles .components-modal__frame .components-modal__content .components-modal__header .components-modal__header-heading, .godaddy-styles.components-modal__frame .components-modal__content .components-modal__header .components-modal__header-heading {
+  font-size: 2rem;
+}
+.godaddy-styles .components-modal__frame .components-modal__content .components-modal__header .components-button.has-icon, .godaddy-styles.components-modal__frame .components-modal__content .components-modal__header .components-button.has-icon {
+  left: auto;
+  position: absolute;
+  right: -2em;
+  top: -2em;
+}
+.godaddy-styles .components-modal__frame .components-modal__content .components-text-control__input, .godaddy-styles.components-modal__frame .components-modal__content .components-text-control__input {
+  margin-bottom: 0.5em;
+}
+.godaddy-styles .components-toggle-control, .godaddy-styles.components-toggle-control {
+  align-items: flex-end;
+  display: flex;
+}
+.godaddy-styles .components-toggle-control__field, .godaddy-styles.components-toggle-control__field {
+  margin: 0;
+}
+.godaddy-styles .components-toggle-control .components-base-control__field, .godaddy-styles.components-toggle-control .components-base-control__field {
+  margin: 0;
+}
+.godaddy-styles .components-toggle-control .components-base-control__field .components-form-toggle__track, .godaddy-styles.components-toggle-control .components-base-control__field .components-form-toggle__track {
+  background-color: #f3f6f8;
+}
+.godaddy-styles .components-toggle-control .components-base-control__field .is-checked .components-form-toggle__track, .godaddy-styles.components-toggle-control .components-base-control__field .is-checked .components-form-toggle__track {
+  background-color: #129d9e;
+}
+.godaddy-styles .components-toggle-control .components-base-control__help, .godaddy-styles.components-toggle-control .components-base-control__help {
+  margin: 0;
+}
+
+/*# sourceMappingURL=latest.css.map*/

@@ -2,7 +2,7 @@
  * External dependencies
  */
 import '@testing-library/jest-dom/extend-expect';
-import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
+import { createBlock, registerBlockType, serialize } from '@wordpress/blocks';
 
 /**
  * Internal dependencies.
@@ -12,7 +12,7 @@ import { name, settings } from '../index';
 // Make variables accessible for all tests.
 let block;
 
-describe( name, () => {
+describe( 'coblocks/faq-item', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );
@@ -40,7 +40,7 @@ describe( name, () => {
 	} );
 
 	it( 'should render text color', () => {
-		block.attributes.question = 'Some question';;
+		block.attributes.question = 'Some question';
 		block.attributes.textColor = '#333333';
 		const serializedBlock = serialize( block );
 

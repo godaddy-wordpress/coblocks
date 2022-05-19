@@ -8,21 +8,21 @@ import { GalleryOffsetIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 /**
  * Internal dependencies
  */
-import GalleryImage from '../../components/block-gallery/gallery-image';
-import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
-import Inspector from './inspector';
 import Controls from './controls';
 import { GalleryClasses } from '../../components/block-gallery/shared';
+import GalleryImage from '../../components/block-gallery/gallery-image';
+import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import GutterWrapper from '../../components/gutter-control/gutter-wrapper';
+import Inspector from './inspector';
 
 /**
  * WordPress dependencies
  */
-import { __, sprintf } from '@wordpress/i18n';
-import { useEffect, useState } from '@wordpress/element';
-import { compose, usePrevious } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
+import { __, sprintf } from '@wordpress/i18n';
+import { compose, usePrevious } from '@wordpress/compose';
 import { Icon, withNotices } from '@wordpress/components';
+import { useEffect, useState } from '@wordpress/element';
 
 /**
  * Block edit function
@@ -57,7 +57,7 @@ const Edit = ( props ) => {
 			setSelectedImage( null );
 		}
 
-		if ( wideControlsEnabled === true && typeof attributes.align === undefined ) {
+		if ( wideControlsEnabled === true && typeof attributes.align === 'undefined' ) {
 			setAttributes( { align: 'wide' } );
 		}
 	}, [ wideControlsEnabled, isSelected, prevIsSelected, attributes.align ] );
@@ -243,7 +243,6 @@ const Edit = ( props ) => {
 										setAttributes={ ( attrs ) => setImageAttributes( index, attrs ) }
 										supportsCaption={ true }
 										url={ img.url }
-
 									/>
 								</li>
 							);

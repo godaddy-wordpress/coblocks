@@ -47,6 +47,7 @@ class CoBlocks_Block_Assets {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'frontend_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
 		add_action( 'save_post_wp_template_part', array( $this, 'clear_template_transients' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_only_scripts' ) );
 	}
 
 	/**
@@ -66,6 +67,29 @@ class CoBlocks_Block_Assets {
 				'dependencies' => array(),
 				'version'      => COBLOCKS_VERSION,
 			);
+	}
+
+	/**
+	 * Enqueue scripts that should only be available on the front end
+	 */
+	public function frontend_only_scripts() {
+		// Define where the asset is loaded from.
+		$dir = CoBlocks()->asset_source( 'js' );
+
+		// Define where the vendor asset is loaded from.
+		$vendors_dir = CoBlocks()->asset_source( 'js/vendors' );
+
+		// Gist block.
+		// only want this loading in front end.
+		if ( has_block( 'coblocks/gist' ) || has_block( 'core/embed' ) ) {
+			wp_enqueue_script(
+				'coblocks-gist',
+				$dir . 'coblocks-gist.js',
+				array(),
+				COBLOCKS_VERSION,
+				true
+			);
+		}
 	}
 
 	/**
@@ -163,6 +187,20 @@ class CoBlocks_Block_Assets {
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
 
+		global $pagenow;
+
+		// Prevent wp-edit-post and coblocks settings/patterns plugins from loading on the widgets.php page.
+		if ( 'widgets.php' === $pagenow ) {
+			$script_key = array_search( 'wp-edit-post', $asset_file['dependencies'], true );
+
+			if ( false !== $script_key ) {
+				unset( $asset_file['dependencies'][ $script_key ] );
+			}
+
+			add_filter( 'coblocks_show_settings_panel', '__return_false' );
+			add_filter( 'coblocks_patterns_show_settings_panel', '__return_false' );
+		}
+
 		wp_enqueue_script(
 			'coblocks-editor',
 			COBLOCKS_PLUGIN_URL . $filepath . '.js',
@@ -180,6 +218,15 @@ class CoBlocks_Block_Assets {
 
 			$filepath   = 'dist/' . $name;
 			$asset_file = $this->get_asset_file( $filepath );
+
+			// Prevent wp-editor from loading on the widgets.php page.
+			if ( 'widgets.php' === $pagenow ) {
+				$script_key = array_search( 'wp-editor', $asset_file['dependencies'], true );
+
+				if ( false !== $script_key ) {
+					unset( $asset_file['dependencies'][ $script_key ] );
+				}
+			}
 
 			wp_enqueue_script(
 				$name,
@@ -244,6 +291,7 @@ class CoBlocks_Block_Assets {
 				'typographyControlsEnabled'      => $typography_controls_enabled,
 				'animationControlsEnabled'       => $animation_controls_enabled,
 				'localeCode'                     => get_locale(),
+				'baseApiNamespace'               => COBLOCKS_API_NAMESPACE,
 			)
 		);
 
@@ -522,25 +570,29 @@ class CoBlocks_Block_Assets {
 			return false;
 		}
 
-		$admin_page = wp_basename( esc_url( $_SERVER['REQUEST_URI'] ) );
+		$admin_page = isset( $_SERVER['REQUEST_URI'] ) ? wp_basename( esc_url_raw( filter_var( wp_unslash( $_SERVER['REQUEST_URI'] ), FILTER_SANITIZE_URL ) ) ) : false;
 
-		if ( false !== strpos( $admin_page, 'post-new.php' ) && empty( $_GET['post_type'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( ! $admin_page ) {
+			return false;
+		}
+
+		if ( false !== strpos( $admin_page, 'post-new.php' ) && empty( $_GET['post_type'] ) ) {
 			return true;
 		}
 
-		if ( false !== strpos( $admin_page, 'post-new.php' ) && isset( $_GET['post_type'] ) && $this->is_post_type_gutenberg( $_GET['post_type'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( false !== strpos( $admin_page, 'post-new.php' ) && isset( $_GET['post_type'] ) && $this->is_post_type_gutenberg( filter_input( INPUT_GET, wp_unslash( $_GET['post_type'] ), FILTER_SANITIZE_STRING ) ) ) {
 			return true;
 		}
 
-		if ( false !== strpos( $admin_page, 'post.php' ) && isset( $_GET['post'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$wp_post = get_post( $_GET['post'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( false !== strpos( $admin_page, 'post.php' ) && isset( $_GET['post'] ) ) {
+			$wp_post = get_post( filter_input( INPUT_GET, wp_unslash( $_GET['post'] ), FILTER_SANITIZE_STRING ) );
 			if ( isset( $wp_post ) && isset( $wp_post->post_type ) && $this->is_post_type_gutenberg( $wp_post->post_type ) ) {
 				return true;
 			}
 		}
 
-		if ( false !== strpos( $admin_page, 'revision.php' ) && isset( $_GET['revision'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$wp_post     = get_post( $_GET['revision'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( false !== strpos( $admin_page, 'revision.php' ) && isset( $_GET['revision'] ) ) {
+			$wp_post     = get_post( filter_input( INPUT_GET, wp_unslash( $_GET['revision'] ), FILTER_SANITIZE_STRING ) );
 			$post_parent = get_post( $wp_post->post_parent );
 			if ( isset( $post_parent ) && isset( $post_parent->post_type ) && $this->is_post_type_gutenberg( $post_parent->post_type ) ) {
 				return true;

@@ -39,5 +39,9 @@
 			"type": "boolean",
 			"default": true
 		}
-	}
+	},
+	"title": "Shape Divider",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-10",
+	"description": "Add a shape divider to visually distinquish page sections."
 }

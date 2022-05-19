@@ -178,7 +178,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 			}
 		} );
 
-		helpers.selectBlock( 'image' );
+		helpers.selectBlock( 'image', true );
 
 		//'.media-replace-flow button' was deprecated in 5.8.
 		// Media replace button should reside as the 5th button within the toolbar.

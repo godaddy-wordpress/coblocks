@@ -131,8 +131,8 @@ export const registerBlock = ( block ) => {
 	}
 
 	registerBlockType( name, {
-		category,
 		...settings,
+		category,
 		icon,
 
 		// V2 Block API Upgrades
