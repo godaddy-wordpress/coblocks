@@ -21,8 +21,8 @@ describe( 'coblocks/gallery-stacked transforms', () => {
 		] };
 
 	const innerBlocks = [
-		createBlock( 'core/image', attributes.images[0], [] ),
-		createBlock( 'core/image', attributes.images[1], [] )
+		createBlock( 'core/image', attributes.images[ 0 ], [] ),
+		createBlock( 'core/image', attributes.images[ 1 ], [] ),
 	];
 
 	beforeAll( () => {
@@ -117,7 +117,7 @@ describe( 'coblocks/gallery-stacked transforms', () => {
 
 	it( 'should transform to coblocks/gallery-masonry block', () => {
 		const block = createBlock( name, attributes );
-		const transformed = switchToBlockType( block, 'coblocks/gallery-masonry' )[0];
+		const transformed = switchToBlockType( block, 'coblocks/gallery-masonry' )[ 0 ];
 
 		expect( transformed.isValid ).toBe( true );
 		transformed.innerBlocks.forEach( ( image, index ) => {
@@ -152,13 +152,9 @@ describe( 'coblocks/gallery-stacked transforms', () => {
 		const transformed = switchToBlockType( block, 'core/gallery' );
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
-		attributes.images.forEach( (image, index) => {
-
-			// expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
+		attributes.images.forEach( ( image, index ) => {
 			expect( transformed[ 0 ].innerBlocks[ index ].attributes.url ).toBe( image.url );
-
-		});
-
+		} );
 	} );
 
 	it( 'should transform when ":stacked" prefix is seen', () => {
@@ -173,7 +169,7 @@ describe( 'coblocks/gallery-stacked transforms', () => {
 			createBlock( 'core/image', { id: 0, url: 'http://local.domain/image.jpg' } ),
 			createBlock( 'core/image', { id: 1, url: 'http://local.domain/image.jpg' } ),
 		];
-		const transformed = switchToBlockType( coreImageBlocks, name )[0];
+		const transformed = switchToBlockType( coreImageBlocks, name )[ 0 ];
 
 		expect( transformed.isValid ).toBe( true );
 		expect( transformed.attributes.images.length ).toBeGreaterThan( 0 );
