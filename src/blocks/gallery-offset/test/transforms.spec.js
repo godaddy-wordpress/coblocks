@@ -144,15 +144,18 @@ describe( 'coblocks/gallery-offset transforms', () => {
 		}
 	} );
 
-	it.skip( 'should transform to core/gallery block', () => {
+	it( 'should transform to core/gallery block', () => {
 		const block = createBlock( name, attributes );
 		const transformed = switchToBlockType( block, 'core/gallery' );
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
-		for ( let i = 0; i < attributes.images.length; i++ ) {
-			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
-			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
-		}
+		attributes.images.forEach( (image, index) => {
+
+			// expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
+			expect( transformed[ 0 ].innerBlocks[ index ].attributes.url ).toBe( image.url );
+
+		});
+
 	} );
 
 	it( 'should transform when ":offset" prefix is seen', () => {

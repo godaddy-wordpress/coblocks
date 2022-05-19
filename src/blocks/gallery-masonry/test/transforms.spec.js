@@ -157,15 +157,18 @@ describe( 'coblocks/gallery-masonry transforms', () => {
 		} )
 	} );
 
-	it.skip( 'should transform to core/gallery block', () => {
+	it( 'should transform to core/gallery block', () => {
 		const block = createBlock( name, masonryAttributes, innerBlocks );
 		const transformed = switchToBlockType( block, 'core/gallery' );
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
 		sharedAttributes.images.forEach( ( image, index ) => {
-			expect( transformed[ 0 ].attributes.images[ index ].index ).toBe( index );
-			expect( transformed[ 0 ].attributes.images[ index ].url ).toBe( image.url );
+
+			// expect( transformed[ 0 ].attributes.images[ index ].index ).toBe( index );
+			expect( transformed[ 0 ].innerBlocks[ index ].attributes.url ).toBe( image.url );
+
 		} );
+
 	} );
 
 	it( 'should transform when ":masonry" prefix is seen', () => {
