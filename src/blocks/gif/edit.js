@@ -1,7 +1,6 @@
 /**
  * External dependencies
  */
-import classnames from 'classnames';
 import { debounce, map } from 'lodash';
 import { GifIcon } from '@godaddy-wordpress/coblocks-icons';
 
@@ -9,11 +8,10 @@ import { GifIcon } from '@godaddy-wordpress/coblocks-icons';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { useState, useEffect } from '@wordpress/element';
-import { compose, usePrevious } from '@wordpress/compose';
-import { Placeholder, Spinner, ResizableBox, Icon } from '@wordpress/components';
-import { withSelect } from '@wordpress/data';
-import { RichText } from '@wordpress/block-editor';
+import { compose } from '@wordpress/compose';
+import { Icon, Placeholder, Spinner } from '@wordpress/components';
+import { withDispatch, withSelect } from '@wordpress/data';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Internal dependencies
@@ -21,13 +19,11 @@ import { RichText } from '@wordpress/block-editor';
 import Controls from './controls';
 import icons from './icons.js';
 import Inspector from './inspector';
-import Size from './size';
 
 /**
  * Block constants
  */
 const GIPHY_URL = 'https://api.giphy.com/v1/gifs/search?api_key=w0o6fO8pv5gSM334gfqUlcdrVaaoiA81&limit=10&offset=0&rating=G&lang=en&q=';
-const MIN_SIZE = 20;
 
 const applyWithSelect = withSelect( ( select ) => {
 	const { getEditorSettings } = select( 'core/editor' );
@@ -52,47 +48,18 @@ const Edit = ( props ) => {
 		className,
 		isSelected,
 		setAttributes,
-		isLargeViewport,
-		isRTL,
-		maxWidth,
+		replaceInnerBlocks,
+		clientId,
 	} = props;
 
 	const {
-		align,
-		alt,
-		height,
 		url,
-		width,
-		caption,
 	} = attributes;
 
-	const [ captionFocused, setCaptionFocused ] = useState( false );
-
-	const prevIsSelected = usePrevious( isSelected );
-
-	useEffect( () => {
-		if ( ! isSelected && prevIsSelected && captionFocused ) {
-			setCaptionFocused( false );
-		}
-	}, [ prevIsSelected, captionFocused, isSelected ] );
-
-	const onFocusCaption = () => {
-		if ( ! captionFocused ) {
-			setCaptionFocused( true );
-		}
+	const handleClearGif = () => {
+		setAttributes( { height: '', url: '', width: '' } );
+		replaceInnerBlocks( clientId, [] );
 	};
-
-	const onImageClick = () => {
-		if ( captionFocused ) {
-			setCaptionFocused( false );
-		}
-	};
-
-	const isResizable = [ 'wide', 'full' ].indexOf( align ) === -1 && isLargeViewport;
-	const classes = classnames( className, 'wp-block-image', {
-		'is-resized': !! width,
-		'is-focused': isSelected,
-	} );
 
 	let results = [];
 
@@ -101,6 +68,7 @@ const Edit = ( props ) => {
 			<>
 				{ isSelected && (
 					<Controls
+						handleClearGif={ handleClearGif }
 						{ ...props }
 					/>
 				) }
@@ -109,121 +77,12 @@ const Edit = ( props ) => {
 						{ ...props }
 					/>
 				) }
-				<figure key="image" className={ classes }>
-					<Size src={ url } dirtynessTrigger={ align }>
-						{ ( sizes ) => {
-							const {
-								imageWidthWithinContainer,
-								imageHeightWithinContainer,
-								imageWidth,
-								imageHeight,
-							} = sizes;
-
-							let defaultedAlt;
-							if ( alt ) {
-								defaultedAlt = alt;
-							} else {
-								defaultedAlt = __( 'This gif has an empty alt attribute', 'coblocks' );
-							}
-
-							const img = (
-								<button onClick={ onImageClick }>
-									<img src={ url } alt={ defaultedAlt } />
-								</button> );
-
-							if ( ! isResizable || ! imageWidthWithinContainer ) {
-								return img;
-							}
-
-							const currentWidth = width || imageWidthWithinContainer;
-							const currentHeight = height || imageHeightWithinContainer;
-
-							const ratio = imageWidth / imageHeight;
-							const minWidth = imageWidth < imageHeight ? MIN_SIZE : MIN_SIZE * ratio;
-							const minHeight = imageHeight < imageWidth ? MIN_SIZE : MIN_SIZE / ratio;
-
-							// With the current implementation of ResizableBox, an image needs an explicit pixel value for the max-width.
-							// In absence of being able to set the content-width, this max-width is currently dictated by the vanilla editor style.
-							// The following variable adds a buffer to this vanilla style, so 3rd party themes have some wiggleroom.
-							// This does, in most cases, allow you to scale the image beyond the width of the main column, though not infinitely.
-							// @todo It would be good to revisit this once a content-width variable becomes available.
-							const maxWidthBuffer = maxWidth * 2.5;
-
-							let showRightHandle = false;
-							let showLeftHandle = false;
-
-							/* eslint-disable no-lonely-if */
-							// See https://github.com/WordPress/gutenberg/issues/7584.
-							if ( align === 'center' ) {
-								// When the image is centered, show both handles.
-								showRightHandle = true;
-								showLeftHandle = true;
-							} else if ( isRTL ) {
-								// In RTL mode the image is on the right by default.
-								// Show the right handle and hide the left handle only when it is aligned left.
-								// Otherwise always show the left handle.
-								if ( align === 'left' ) {
-									showRightHandle = true;
-								} else {
-									showLeftHandle = true;
-								}
-							} else {
-								// Show the left handle and hide the right handle only when the image is aligned right.
-								// Otherwise always show the right handle.
-								if ( align === 'right' ) {
-									showLeftHandle = true;
-								} else {
-									showRightHandle = true;
-								}
-							}
-							/* eslint-enable no-lonely-if */
-
-							return (
-								<>
-									<ResizableBox
-										size={
-											width && height ? {
-												width,
-												height,
-											} : undefined
-										}
-										minWidth={ minWidth }
-										maxWidth={ maxWidthBuffer }
-										minHeight={ minHeight }
-										maxHeight={ maxWidthBuffer / ratio }
-										lockAspectRatio
-										enable={ {
-											top: false,
-											right: showRightHandle,
-											bottom: true,
-											left: showLeftHandle,
-										} }
-										onResizeStop={ ( _event, _direction, _elt, delta ) => {
-											setAttributes( {
-												width: parseInt( currentWidth + delta.width, 10 ),
-												height: parseInt( currentHeight + delta.height, 10 ),
-											} );
-										} }
-										showHandle={ isSelected }
-									>
-										{ img }
-									</ResizableBox>
-								</>
-							);
-						} }
-					</Size>
-					{ ( ! RichText.isEmpty( caption ) || isSelected ) && (
-						<RichText
-							tagName="figcaption"
-							placeholder={ __( 'Write caption…', 'coblocks' ) }
-							value={ caption }
-							unstableOnFocus={ onFocusCaption }
-							onChange={ ( value ) => setAttributes( { caption: value } ) }
-							isSelected={ captionFocused }
-							inlineToolbar
-						/>
-					) }
-				</figure>
+				<InnerBlocks
+					allowedBlocks={ [ 'core/image' ] }
+					template={ [
+						[ 'core/image', { url } ],
+					] }
+				/>
 			</>
 		);
 	}
@@ -272,21 +131,21 @@ const Edit = ( props ) => {
 	return (
 		<>
 			<Placeholder
-				key="placeholder"
-				label="Gif"
+				className={ className }
 				icon={ <Icon icon={ GifIcon } /> }
 				instructions={ __( 'Search for that perfect gif on Giphy', 'coblocks' ) }
-				className={ className }>
+				key="placeholder"
+				label="Gif">
 				{ icons.giphy }
 				<input
 					key="search-field"
-					type="text"
-					placeholder={ __( 'Search for gifs', 'coblocks' ) }
 					onChange={ ( event ) => fetchGifs( event.target.value ) }
+					placeholder={ __( 'Search for gifs', 'coblocks' ) }
+					type="text"
 				/>
 				<ul
-					key="results"
 					className="wp-block-coblocks-gif__results"
+					key="results"
 				>
 					{ results }
 				</ul>
@@ -297,4 +156,10 @@ const Edit = ( props ) => {
 
 export default compose( [
 	applyWithSelect,
+	withDispatch( ( dispatch ) => {
+		const { replaceInnerBlocks } = dispatch( 'core/block-editor' );
+		return {
+			replaceInnerBlocks,
+		};
+	} ),
 ] )( Edit );

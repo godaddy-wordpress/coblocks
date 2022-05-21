@@ -9,6 +9,7 @@ const Controls = ( props ) => {
 	const {
 		setAttributes,
 		attributes,
+		handleClearGif,
 	} = props;
 
 	const {
@@ -36,7 +37,7 @@ const Controls = ( props ) => {
 							className="components-toolbar__control"
 							icon="trash"
 							label={ __( 'Remove gif', 'coblocks' ) }
-							onClick={ () => setAttributes( { height: '', url: '', width: '' } ) }
+							onClick={ handleClearGif }
 						/>
 					}
 				</ToolbarGroup>

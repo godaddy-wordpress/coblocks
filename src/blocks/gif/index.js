@@ -10,6 +10,7 @@ import edit from './edit';
 import { hasFormattingCategory } from '../../utils/block-helpers';
 import metadata from './block.json';
 import save from './save';
+import deprecated from './deprecated';
 
 /**
  * WordPress dependencies
@@ -25,6 +26,7 @@ const { name, category, attributes } = metadata;
 const settings = {
 	attributes,
 	category: hasFormattingCategory ? 'common' : 'media',
+	deprecated,
 	/* translators: block description */
 	description: __( 'Pick a gif, any gif.', 'coblocks' ),
 	edit,
