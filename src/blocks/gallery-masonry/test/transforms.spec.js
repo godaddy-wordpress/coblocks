@@ -21,9 +21,9 @@ describe( 'coblocks/gallery-masonry transforms', () => {
 		] };
 
 	const masonryAttributes = {};
-	const innerBlocks = [ 
-		createBlock( 'core/image', sharedAttributes.images[0], [] ),
-		createBlock( 'core/image', sharedAttributes.images[1], [] )
+	const innerBlocks = [
+		createBlock( 'core/image', sharedAttributes.images[ 0 ], [ ] ),
+		createBlock( 'core/image', sharedAttributes.images[ 1 ], [ ] ),
 	];
 
 	beforeAll( () => {
@@ -33,7 +33,7 @@ describe( 'coblocks/gallery-masonry transforms', () => {
 
 	it( 'should transform from coblocks/gallery-stacked block', () => {
 		const galleryStacked = createBlock( 'coblocks/gallery-stacked',	sharedAttributes );
-		const transformed = switchToBlockType( galleryStacked, name )[0];
+		const transformed = switchToBlockType( galleryStacked, name )[ 0 ];
 
 		expect( transformed.isValid ).toBe( true );
 		transformed.innerBlocks.forEach( ( image, index ) => {
@@ -44,7 +44,7 @@ describe( 'coblocks/gallery-masonry transforms', () => {
 
 	it( 'should transform from coblocks/gallery-collage block', () => {
 		const galleryCollage = createBlock( 'coblocks/gallery-collage', sharedAttributes );
-		const transformed = switchToBlockType( galleryCollage, name )[0];
+		const transformed = switchToBlockType( galleryCollage, name )[ 0 ];
 
 		expect( transformed.isValid ).toBe( true );
 		transformed.innerBlocks.forEach( ( image, index ) => {
@@ -55,7 +55,7 @@ describe( 'coblocks/gallery-masonry transforms', () => {
 
 	it( 'should transform from coblocks/gallery-offset block', () => {
 		const galleryOffset = createBlock( 'coblocks/gallery-offset', sharedAttributes );
-		const transformed = switchToBlockType( galleryOffset, name )[0];
+		const transformed = switchToBlockType( galleryOffset, name )[ 0 ];
 
 		expect( transformed.isValid ).toBe( true );
 		transformed.innerBlocks.forEach( ( image, index ) => {
@@ -66,7 +66,7 @@ describe( 'coblocks/gallery-masonry transforms', () => {
 
 	it( 'should transform from coblocks/gallery-carousel block', () => {
 		const galleryCarousel = createBlock( 'coblocks/gallery-carousel', sharedAttributes );
-		const transformed = switchToBlockType( galleryCarousel, name )[0];
+		const transformed = switchToBlockType( galleryCarousel, name )[ 0 ];
 
 		expect( transformed.isValid ).toBe( true );
 		transformed.innerBlocks.forEach( ( image, index ) => {
@@ -77,7 +77,7 @@ describe( 'coblocks/gallery-masonry transforms', () => {
 
 	it( 'should transform from core/gallery block', () => {
 		const coreGallery = createBlock( 'core/gallery', { images: sharedAttributes.images } );
-		const transformed = switchToBlockType( coreGallery, name )[0];
+		const transformed = switchToBlockType( coreGallery, name )[ 0 ];
 
 		expect( transformed.isValid ).toBe( true );
 		transformed.innerBlocks.forEach( ( image, index ) => {
@@ -87,14 +87,14 @@ describe( 'coblocks/gallery-masonry transforms', () => {
 	} );
 
 	it( 'should transform from core/image block', () => {
-		const coreImage = createBlock( 'core/image', { id:sharedAttributes.images[ 0 ].index, url:sharedAttributes.images[ 0 ].url } );
-		const transformed = switchToBlockType( coreImage, name )[0];
+		const coreImage = createBlock( 'core/image', { id: sharedAttributes.images[ 0 ].index, url: sharedAttributes.images[ 0 ].url } );
+		const transformed = switchToBlockType( coreImage, name )[ 0 ];
 
 		expect( transformed.isValid ).toBe( true );
 		expect( transformed.innerBlocks.length ).toBeGreaterThan( 0 );
-		
-		expect( transformed.innerBlocks[0].attributes.id ).toBe( coreImage.attributes.id );
-		expect( transformed.innerBlocks[0].attributes.url ).toBe( coreImage.attributes.url );
+
+		expect( transformed.innerBlocks[ 0 ].attributes.id ).toBe( coreImage.attributes.id );
+		expect( transformed.innerBlocks[ 0 ].attributes.url ).toBe( coreImage.attributes.url );
 	} );
 
 	it( 'should transform from multiple core/image blocks', () => {
@@ -102,7 +102,7 @@ describe( 'coblocks/gallery-masonry transforms', () => {
 			createBlock( 'core/image', { id: 0, url: 'http://local.domain/image.jpg' } ),
 			createBlock( 'core/image', { id: 1, url: 'http://local.domain/image.jpg' } ),
 		];
-		const transformed = switchToBlockType( coreImageBlocks, name )[0];
+		const transformed = switchToBlockType( coreImageBlocks, name )[ 0 ];
 
 		expect( transformed.isValid ).toBe( true );
 		expect( transformed.innerBlocks.length ).toBeGreaterThan( 0 );
@@ -121,7 +121,7 @@ describe( 'coblocks/gallery-masonry transforms', () => {
 		sharedAttributes.images.forEach( ( image, index ) => {
 			expect( transformed[ 0 ].attributes.images[ index ].index ).toBe( index );
 			expect( transformed[ 0 ].attributes.images[ index ].url ).toBe( image.url );
-		} )
+		} );
 	} );
 
 	it( 'should transform to coblocks/gallery-collage block', () => {
@@ -132,7 +132,7 @@ describe( 'coblocks/gallery-masonry transforms', () => {
 		sharedAttributes.images.forEach( ( image, index ) => {
 			expect( transformed[ 0 ].attributes.images[ index ].index ).toBe( index );
 			expect( transformed[ 0 ].attributes.images[ index ].url ).toBe( image.url );
-		} )
+		} );
 	} );
 
 	it( 'should transform to coblocks/gallery-offset block', () => {
@@ -143,7 +143,7 @@ describe( 'coblocks/gallery-masonry transforms', () => {
 		sharedAttributes.images.forEach( ( image, index ) => {
 			expect( transformed[ 0 ].attributes.images[ index ].index ).toBe( index );
 			expect( transformed[ 0 ].attributes.images[ index ].url ).toBe( image.url );
-		} )
+		} );
 	} );
 
 	it( 'should transform to coblocks/gallery-carousel block', () => {
@@ -154,7 +154,7 @@ describe( 'coblocks/gallery-masonry transforms', () => {
 		sharedAttributes.images.forEach( ( image, index ) => {
 			expect( transformed[ 0 ].attributes.images[ index ].index ).toBe( index );
 			expect( transformed[ 0 ].attributes.images[ index ].url ).toBe( image.url );
-		} )
+		} );
 	} );
 
 	it( 'should transform to core/gallery block', () => {
@@ -163,8 +163,7 @@ describe( 'coblocks/gallery-masonry transforms', () => {
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
 		sharedAttributes.images.forEach( ( image, index ) => {
-			expect( transformed[ 0 ].attributes.images[ index ].index ).toBe( index );
-			expect( transformed[ 0 ].attributes.images[ index ].url ).toBe( image.url );
+			expect( transformed[ 0 ].innerBlocks[ index ].attributes.url ).toBe( image.url );
 		} );
 	} );
 

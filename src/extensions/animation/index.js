@@ -16,20 +16,6 @@ import classnames from 'classnames';
 import { select } from '@wordpress/data';
 import { useEffect, useRef, useState } from '@wordpress/element';
 
-const allowedBlocks = [
-	{ animateChildren: false, blockType: 'coblocks/gallery-carousel' },
-	{ animateChildren: true, blockType: 'coblocks/gallery-collage' },
-	{ animateChildren: false, blockType: 'coblocks/gallery-masonry' },
-	{ animateChildren: true, blockType: 'coblocks/gallery-offset' },
-	{ animateChildren: true, blockType: 'coblocks/gallery-stacked' },
-	{ animateChildren: false, blockType: 'core/columns' },
-	{ animateChildren: false, blockType: 'core/cover' },
-	{ animateChildren: false, blockType: 'core/gallery' },
-	{ animateChildren: false, blockType: 'core/group' },
-	{ animateChildren: false, blockType: 'core/image' },
-	{ animateChildren: false, blockType: 'core/media-text' },
-];
-
 const animateClass = 'coblocks-animate';
 const dataAnimationHolder = 'data-coblocks-animation';
 
@@ -43,8 +29,7 @@ const dataAnimationHolder = 'data-coblocks-animation';
 const useAnimationControls = ( ( props ) => {
 	const block = select( 'core/block-editor' ).getBlock( props.clientId );
 
-	return props.isSelected && allowedBlocks.some( ( allowedBlock ) => allowedBlock.blockType === props.name )
-		? ( <Controls { ...{ ...props, selected: block } } /> ) : null;
+	return <Controls { ...{ ...props, selected: block } } />;
 } );
 
 /**
@@ -54,14 +39,12 @@ const useAnimationControls = ( ( props ) => {
  * @return {Object} Filtered block settings.
  */
 function applyAttributes( settings ) {
-	if ( allowedBlocks.some( ( block ) => block.blockType === settings.name ) ) {
-		settings.attributes = {
-			...settings.attributes,
-			animation: {
-				type: 'string',
-			},
-		};
-	}
+	settings.attributes = {
+		...settings.attributes,
+		animation: {
+			type: 'string',
+		},
+	};
 
 	return settings;
 }
@@ -75,10 +58,6 @@ function applyAttributes( settings ) {
  * @return {Object} Filtered props applied to save element.
  */
 function applySaveProps( extraProps, blockType, attributes ) {
-	if ( ! allowedBlocks.some( ( block ) => block.blockType === blockType.name && ! block.animateChildren ) ) {
-		return extraProps;
-	}
-
 	const { animation } = attributes;
 
 	if ( !! animation ) {
@@ -107,18 +86,11 @@ const useEditorProps = ( block, blockName, props, wrapperProps ) => {
 	// Hide the Block Toolbar while animations are playing.
 	const [ isAnimating, setIsAnimating ] = useState( false );
 
-	const blockIsAllowed = allowedBlocks.some( ( allowedBlock ) => allowedBlock.blockType === blockName && ! allowedBlock.animateChildren );
-
 	useEffect( () => {
-		if ( !! blockIsAllowed && !! animation ) {
+		if ( !! animation ) {
 			prevAnimation.current = animation;
 		}
 	}, [ animation ] );
-
-	// Block not supported return unmodified.
-	if ( ! blockIsAllowed ) {
-		return wrapperProps;
-	}
 
 	if ( ! animation ) {
 		// If animation is unset ensure that `coblocks-animate` class is unset.

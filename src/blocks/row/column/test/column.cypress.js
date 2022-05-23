@@ -22,14 +22,19 @@ describe( 'Test CoBlocks column Block', function() {
 	 */
 	it( 'Test column block saves with color values set.', function() {
 		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB } = columnData;
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/row' );
+
 		helpers.addBlockToPost( 'coblocks/row', true );
 
 		cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(1) button' ).click( { force: true } );
 
 		cy.get( '.wp-block-coblocks-column' ).last().click( { force: true } );
 
-		helpers.setColorSetting( 'background color', backgroundColor );
-		helpers.setColorSetting( 'text color', textColor );
+		helpers.setColorSettingsFoldableSetting( 'background color', backgroundColor );
+		helpers.setColorSettingsFoldableSetting( 'text color', textColor );
 
 		helpers.savePage();
 
