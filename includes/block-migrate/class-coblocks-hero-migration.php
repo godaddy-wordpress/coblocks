@@ -49,6 +49,11 @@ class CoBlocks_Hero_Migration extends CoBlocks_Block_Migration {
 			$this->block_attributes['dimRatio'] = $this->block_attributes['backgroundOverlay'];
 		}
 
+		if ( ! array_key_exists( 'backgroundOverlay', $this->block_attributes ) ) {
+			$this->block_attributes['dimRatio'] = 1; // Passing a 0 value doesn't work.
+			$this->block_attributes['isDark']   = false;
+		}
+
 		if ( array_key_exists( 'layout', $this->block_attributes ) ) {
 			$this->block_attributes['contentPosition'] = str_replace( '-', ' ', $this->block_attributes['layout'] );
 		}
