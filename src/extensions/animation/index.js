@@ -110,22 +110,8 @@ const useEditorProps = ( block, blockName, props, wrapperProps ) => {
 			[ animateClass ]: willAnimate || isAnimating,
 			[ animation ]: willAnimate || isAnimating,
 		} ),
-	};
-
-	if ( props.isSelected ) {
-		wrapperProps = {
-			...wrapperProps,
-			onAnimationEnd: () => setIsAnimating( false ),
-			onAnimationStart: () => setIsAnimating( willAnimate ),
-		};
-	}
-
-	wrapperProps.extraFeatures = {
-		...wrapperProps.extraFeatures,
-		animation: {
-			conditional: isAnimating,
-			jsx: ( <style dangerouslySetInnerHTML={ { __html: `.block-editor-block-contextual-toolbar, .block-editor-rich-text__inline-format-toolbar { display: none !important; }` } } /> ),
-		},
+		onAnimationEnd: () => setIsAnimating( false ),
+		onAnimationStart: () => setIsAnimating( willAnimate ),
 	};
 	return wrapperProps;
 };
