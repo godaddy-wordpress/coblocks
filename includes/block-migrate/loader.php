@@ -12,6 +12,7 @@ require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-block-
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-stacked-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-masonry-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-collage-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-hero-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-dynamic-separator-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-highlight-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-alert-migration.php';
@@ -38,6 +39,7 @@ add_action(
 			'coblocks/gallery-stacked' => CoBlocks_Gallery_Stacked_Migration::class,
 			'coblocks/gallery-masonry' => CoBlocks_Gallery_Masonry_Migration::class,
 			'coblocks/gallery-collage' => CoBlocks_Gallery_Collage_Migration::class,
+			'coblocks/hero' => CoBlocks_Hero_Migration::class,
 			'coblocks/dynamic-separator' => CoBlocks_Dynamic_Separator_Migration::class,
 			'coblocks/highlight' => CoBlocks_Highlight_Migration::class,
 			'coblocks/alert' => CoBlocks_Alert_Migration::class,
