@@ -28,15 +28,9 @@
 			"GoDaddy\\WordPress\\Plugins\\CoBlocks\\": "includes"
 		}
 	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "git@github.com:godaddy-wordpress/styles.git"
-		}
-	],
 	"require": {
 		"php": ">=5.6",
-		"godaddy-wordpress/styles": "dev-publish"
+		"godaddy-wordpress/styles": "^0.4.1"
 	},
 	"require-dev": {
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
