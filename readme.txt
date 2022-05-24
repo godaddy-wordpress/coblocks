@@ -122,8 +122,11 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-### Bug fixes
-* Fix issue preventing the widgets page from showing [#2378](https://github.com/godaddy-wordpress/coblocks/pull/2378)
+### Enhancements
+* Allow all blocks to use animations [#2335](https://github.com/godaddy-wordpress/coblocks/pull/2335)
 
 ### Misc
-* Update WordPress dependencies [#2379](https://github.com/godaddy-wordpress/coblocks/pull/2379)
+* Bump Tested up to version to 6.0 [#2383](https://github.com/godaddy-wordpress/coblocks/pull/2383)
+* Remove extraneous element from extensions HoC [#2334](https://github.com/godaddy-wordpress/coblocks/pull/2334)
+* Reintroduce transformation unit tests for CoBlocks Galleries to Core [#2382](https://github.com/godaddy-wordpress/coblocks/pull/2382)
+* Fix automated tests for WP 6.0 [#2381](https://github.com/godaddy-wordpress/coblocks/pull/2381), [#2376](https://github.com/godaddy-wordpress/coblocks/pull/2376), [#2380](https://github.com/godaddy-wordpress/coblocks/pull/2380)
