@@ -166,7 +166,7 @@ const GalleryCarouselEdit = ( props ) => {
 		}
 
 		return null;
-	}, [ gutter, gutterMobile, images, thumbnails ] );
+	}, [ gutter, gutterMobile, images, thumbnails, pageDots ] );
 
 	const renderSwiper = useMemo( () => {
 		const swiperSizing = {
