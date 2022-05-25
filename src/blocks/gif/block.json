@@ -7,27 +7,6 @@
 			"selector": "img",
 			"source": "attribute",
 			"type": "string"
-		},
-		"alt": {
-			"attribute": "alt",
-			"selector": "img",
-			"source": "attribute",
-			"type": "string",
-			"default": ""
-		},
-		"caption": {
-			"type": "string",
-			"source": "html",
-			"selector": "figcaption"
-		},
-		"align": {
-			"type": "string"
-		},
-		"width": {
-			"type": "number"
-		},
-		"height": {
-			"type": "number"
 		}
 	},
 	"title": "Gif",

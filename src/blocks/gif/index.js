@@ -1,57 +1,38 @@
 /**
- * External dependencies
- */
-import { GifIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Internal dependencies
  */
 import edit from './edit';
-import { hasFormattingCategory } from '../../utils/block-helpers';
 import metadata from './block.json';
-import save from './save';
 
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
+import { createBlock } from '@wordpress/blocks';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Block constants
  */
-const { name, category, attributes } = metadata;
+const { name } = metadata;
 
 const settings = {
-	attributes,
-	category: hasFormattingCategory ? 'common' : 'media',
-	/* translators: block description */
-	description: __( 'Pick a gif, any gif.', 'coblocks' ),
 	edit,
-	example: {
-		attributes: {
-			url: 'https://media4.giphy.com/media/rHR8qP1mC5V3G/giphy.gif',
-		},
+	save: () => <InnerBlocks.Content />,
+	transforms: {
+		to: [
+			{
+				blocks: [ 'core/image' ],
+				transform: ( attributes ) => {
+					return createBlock(
+						'core/image',
+						{ url: attributes.url }
+					);
+				},
+				type: 'block',
+			},
+		],
 	},
-	getEditWrapperProps( atts ) {
-		const { align, width } = atts;
-		if ( 'left' === align || 'center' === align || 'right' === align || 'wide' === align || 'full' === align ) {
-			return { 'data-align': align, 'data-resized': !! width };
-		}
-	},
-	icon: <Icon icon={ icon } />,
-	keywords: [
-		'coblocks',
-		/* translators: block keyword */
-		__( 'animated', 'coblocks' ),
-	],
-	save,
-	supports: {
-		customClassName: false,
-		html: false,
-	},
-	/* translators: block name */
-	title: __( 'Gif', 'coblocks' ),
+	title: 'Gif',
 };
 
-export { name, category, metadata, settings };
+export { name, metadata, settings };
