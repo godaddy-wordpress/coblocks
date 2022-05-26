@@ -50,7 +50,6 @@ const GalleryCarouselEdit = ( props ) => {
 		lightbox,
 		loop,
 		draggable,
-		freeScroll,
 		autoPlaySpeed,
 		autoPlay,
 		pauseHover,
@@ -179,7 +178,7 @@ const GalleryCarouselEdit = ( props ) => {
 		return (
 			<Swiper
 				autoPlaySpeed={ autoPlay ? autoPlaySpeed : null }
-				freeScroll={ freeScroll }
+				freeMode={ false } // Explicit false for UX concerns. This is by default false in tinyswiper.
 				isDraggable={ draggable }
 				list={ images }
 				loop={ loop }
@@ -217,7 +216,6 @@ const GalleryCarouselEdit = ( props ) => {
 		autoPlay,
 		autoPlaySpeed,
 		draggable,
-		freeScroll,
 		gridSize,
 		gutter,
 		gutterMobile,

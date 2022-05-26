@@ -53,13 +53,12 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 
 				const swiperConfig = {
 					centeredSlides: false,
-					freeMode: true,
+					freeMode: false, // Explicit false for UX concerns. This is by default false in tinyswiper.
 					longSwipesRatio: 0.8,
 					loop: false,
 					passiveListeners: true,
 					plugins: [],
 					slidesPerView: 1,
-					touchable: false,
 				};
 
 				if ( parsedSwiperOptions.loop === true ) {

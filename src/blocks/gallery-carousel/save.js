@@ -24,7 +24,6 @@ const save = ( props ) => {
 		gutter,
 		images,
 		pauseHover,
-		freeScroll,
 		prevNextButtons,
 		thumbnails,
 		responsiveHeight,
@@ -117,7 +116,7 @@ const save = ( props ) => {
 		autoPlay,
 		autoPlaySpeed,
 		draggable,
-		freeScroll,
+		freeMode: false, // Explicit false for UX concerns. This is by default false in tinyswiper.
 		loop,
 		navigation: prevNextButtons,
 		pageDots,
