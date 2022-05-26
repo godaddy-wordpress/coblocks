@@ -29,6 +29,7 @@ class CoBlocks_Gallery_Stacked_Migration extends CoBlocks_Block_Migration {
 
 	/**
 	 * Produce new attributes from the migrated block.
+	 *
 	 * @param array $parsed_block_attributes the JSON attributes parsed from the block.
 	 * @inheritDoc
 	 */

@@ -13,6 +13,10 @@ require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-galler
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-masonry-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-collage-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-posts-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-hero-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-dynamic-separator-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-highlight-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-alert-migration.php';
 
 /**
  * Hook into the post object before it's returned to the editor.
@@ -32,10 +36,14 @@ add_action(
 		$parsed_blocks = parse_blocks( $post->post_content );
 		// Load our available migrations.
 		$block_targets = array(
-			'coblocks/gallery-stacked' => CoBlocks_Gallery_Stacked_Migration::class,
-			'coblocks/gallery-masonry' => CoBlocks_Gallery_Masonry_Migration::class,
-			'coblocks/gallery-collage' => CoBlocks_Gallery_Collage_Migration::class,
-			'coblocks/posts'           => CoBlocks_Posts_Migration::class,
+			'coblocks/gallery-stacked'   => CoBlocks_Gallery_Stacked_Migration::class,
+			'coblocks/gallery-masonry'   => CoBlocks_Gallery_Masonry_Migration::class,
+			'coblocks/gallery-collage'   => CoBlocks_Gallery_Collage_Migration::class,
+			'coblocks/posts'             => CoBlocks_Posts_Migration::class,
+			'coblocks/hero'              => CoBlocks_Hero_Migration::class,
+			'coblocks/dynamic-separator' => CoBlocks_Dynamic_Separator_Migration::class,
+			'coblocks/highlight'         => CoBlocks_Highlight_Migration::class,
+			'coblocks/alert'             => CoBlocks_Alert_Migration::class,
 		);
 
 		$parsed_blocks = array_map(

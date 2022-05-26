@@ -1,6 +1,7 @@
 {
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
 	"name": "coblocks/hero",
-	"category": "layout",
 	"attributes": {
 		"align": {
 			"type": "string",
@@ -50,13 +51,40 @@
 		"customBackgroundColor": {
 			"type": "string"
 		},
+		"customOverlayColor": {
+			"type": "string"
+		},
+		"overlayColor": {
+			"type": "string"
+		},
 		"height": {
 			"type": "number",
 			"default": 500
+		},
+		"url": {
+			"type": "string"
+		},
+		"dimRatio": {
+			"type": "number",
+			"default": 100
 		}
 	},
-	"title": "Hero",
+	"supports": {
+		"anchor": true,
+		"align": true,
+		"html": false,
+		"spacing": {
+			"padding": true,
+			"__experimentalDefaultControls": {
+				"padding": true
+			}
+		},
+		"color": {
+			"__experimentalDuotone": "> .wp-block-cover__image-background, > .wp-block-cover__video-background",
+			"text": false,
+			"background": false
+		}
+	},
 	"textdomain": "coblocks",
-	"editorScript": "blocks-9",
-	"description": "An introductory area of a page accompanied by a small amount of text and a call to action."
+	"title": "Hero"
 }
