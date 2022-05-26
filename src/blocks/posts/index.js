@@ -55,23 +55,29 @@ const settings = {
 							...( attributes?.order && { order: attributes.order } ),
 							...( attributes?.orderBy && { orderBy: attributes.orderBy } ),
 							...( attributes?.categories && { taxQuery: attributes.categories.map( ( cat ) => cat.id ) } ),
-							inherit: true,
+							author: '',
+							exclude: [],
+							inherit: false,
+							offset: 0,
+							postType: 'post',
+							search: '',
+							sticky: '',
 						},
 
 					};
 					// testing the inner blocks - endless spinner
-					// const postTitleBlock = createBlock( 'core/post-title', {}, [ ] );
-					// const postFeaturedImageBlock = createBlock( 'core/post-featured-image', {}, [ ] );
-					// const postPostExcerptBlock = createBlock( 'core/post-excerpt', {}, [ ] );
-					// const coreSeparatorBlock = createBlock( 'core/separator', {}, [ ] );
-					// const postDateBlock = createBlock( 'core/post-date', {}, [ ] );
-					const postTemplate = createBlock( 'core/post-template', {}, [ ] );
-					// 	postTitleBlock,
-					// 	postFeaturedImageBlock,
-					// 	postPostExcerptBlock,
-					// 	coreSeparatorBlock,
-					// 	postDateBlock,
-					// ] );
+					const postTitleBlock = createBlock( 'core/post-title', { 'is-link': true }, [ ] );
+					const postFeaturedImageBlock = createBlock( 'core/post-featured-image', { 'is-link': true }, [ ] );
+					const postPostExcerptBlock = createBlock( 'core/post-excerpt', {}, [ ] );
+					const coreSeparatorBlock = createBlock( 'core/separator', {}, [ ] );
+					const postDateBlock = createBlock( 'core/post-date', {}, [ ] );
+					const postTemplate = createBlock( 'core/post-template', {}, [
+						postTitleBlock,
+						postFeaturedImageBlock,
+						postPostExcerptBlock,
+						coreSeparatorBlock,
+						postDateBlock,
+					] );
 					const transformedQueryBlock = createBlock( 'core/query', newAttributes, [ postTemplate ] );
 					return transformedQueryBlock;
 				},

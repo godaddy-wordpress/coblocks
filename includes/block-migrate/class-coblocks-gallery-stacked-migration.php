@@ -50,9 +50,10 @@ class CoBlocks_Gallery_Stacked_Migration extends CoBlocks_Block_Migration {
 	/**
 	 * Calculate attributes applied to the gallery.
 	 *
+	 * @param array $parsed_block_attributes the JSON attributes parsed from the block.
 	 * @return array attributes found and their values.
 	 */
-	private function gallery_attributes() {
+	private function gallery_attributes( $parsed_block_attributes = array() ) {
 		return array(
 			'className' => $this->get_attribute_from_classname( 'has-border-radius-', $this->gallery_wrapper )
 				? 'is-style-default'
