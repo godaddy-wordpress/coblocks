@@ -1,11 +1,9 @@
 {
+	"apiVersion": 2,
 	"name": "coblocks/gif",
 	"category": "media",
 	"attributes": {
 		"url": {
-			"attribute": "src",
-			"selector": "img",
-			"source": "attribute",
 			"type": "string"
 		}
 	},

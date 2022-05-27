@@ -26,6 +26,17 @@ class CoBlocks_Gif_Migration extends CoBlocks_Block_Migration {
 	 * @inheritDoc
 	 */
 	protected function migrate_attributes() {
+		$gif_image = $this->query_selector( '//*[contains(@class, "wp-block-coblocks-gif")]//img' );
+
+		$gif_image_url = $this->get_element_attribute(
+			$gif_image,
+			'src'
+		);
+
+		if ( !empty( $gif_image_url ) ) {
+			$this->block_attributes['url'] = $gif_image_url;
+		}
+
 		return $this->block_attributes;
 	}
 }
