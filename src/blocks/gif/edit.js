@@ -13,6 +13,7 @@ import { compose, usePrevious } from '@wordpress/compose';
 import { Icon, Placeholder, Spinner } from '@wordpress/components';
 import { useDispatch, useSelect, withSelect } from '@wordpress/data';
 import { switchToBlockType } from '@wordpress/blocks';
+import { useBlockProps } from '@wordpress/block-editor';
 
 /**
  * Internal dependencies
@@ -42,9 +43,10 @@ const applyWithSelect = withSelect( ( select ) => {
  * @param {Object} props
  */
 const Edit = ( props ) => {
+	const blockProps = useBlockProps();
+
 	const {
 		attributes,
-		className,
 		setAttributes,
 		clientId,
 	} = props;
@@ -114,11 +116,12 @@ const Edit = ( props ) => {
 	return (
 		<>
 			<Placeholder
-				className={ className }
 				icon={ <Icon icon={ GifIcon } /> }
 				instructions={ __( 'Search for that perfect gif on Giphy', 'coblocks' ) }
 				key="placeholder"
-				label="Gif">
+				label="Gif"
+				{ ...blockProps }
+			>
 				{ icons.giphy }
 				<input
 					key="search-field"

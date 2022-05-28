@@ -8,6 +8,7 @@ import metadata from './block.json';
  * WordPress dependencies
  */
 import { createBlock } from '@wordpress/blocks';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Block constants
@@ -16,8 +17,7 @@ const { name } = metadata;
 
 const settings = {
 	edit,
-	parent: [],
-	save: () => null,
+	save: () => <InnerBlocks.Content />,
 	title: 'Gif',
 	transforms: {
 		to: [
