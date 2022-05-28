@@ -8,6 +8,9 @@
 		},
 		"align": {
 			"type": "string"
+		},
+		"caption": {
+			"type": "string"
 		}
 	},
 	"title": "Gif",
