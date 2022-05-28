@@ -26,7 +26,7 @@ const settings = {
 				transform: ( attributes ) => {
 					return createBlock(
 						'core/image',
-						{ url: attributes.url }
+						{ ...attributes }
 					);
 				},
 				type: 'block',

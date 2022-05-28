@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
 import { useEffect } from '@wordpress/element';
 import { compose, usePrevious } from '@wordpress/compose';
 import { Icon, Placeholder, Spinner } from '@wordpress/components';
-import { useDispatch, useSelect, withSelect } from '@wordpress/data';
+import { useDispatch, withSelect } from '@wordpress/data';
 import { switchToBlockType } from '@wordpress/blocks';
 import { useBlockProps } from '@wordpress/block-editor';
 
@@ -58,13 +58,15 @@ const Edit = ( props ) => {
 	const prevUrl = usePrevious( url );
 
 	const { replaceBlocks } = useDispatch( 'core/block-editor' );
-	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
 
 	useEffect( () => {
 		if ( url && ! prevUrl ) {
 			replaceBlocks(
 				[ clientId ],
-				switchToBlockType( getBlock( clientId ), 'core/image' )
+				switchToBlockType(
+					props,
+					'core/image'
+				)
 			);
 		}
 	}, [ url ] );

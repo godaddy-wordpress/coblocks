@@ -5,6 +5,9 @@
 	"attributes": {
 		"url": {
 			"type": "string"
+		},
+		"align": {
+			"type": "string"
 		}
 	},
 	"title": "Gif",
