@@ -27,11 +27,37 @@
 			"enum": [ "all", "insert", false ]
 		}
 	},
+	"supports": {
+		"anchor": true,
+		"reusable": false,
+		"html": false,
+		"color": {
+			"gradients": true,
+			"link": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
+		},
+		"spacing": {
+			"blockGap": true,
+			"padding": true,
+			"__experimentalDefaultControls": {
+				"padding": true
+			}
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"style": true,
+			"width": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"style": true,
+				"width": true
+			}
+		},
+		"__experimentalLayout": true
+	},
 	"title": "Column",
-	"textdomain": "coblocks",
-	"editorScript": "blocks-2",
-	"description": "An immediate child of a row.",
-	"parent": [
-		"coblocks/row"
-	]
+	"editorScript": "blocks-2"
 }

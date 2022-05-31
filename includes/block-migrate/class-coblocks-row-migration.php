@@ -26,14 +26,6 @@ class CoBlocks_Row_Migration extends CoBlocks_Block_Migration {
 	 * @inheritDoc
 	 */
 	protected function migrate_attributes() {
-		// $columns = array(
-		// 	'100' => '100',
-		// 	'50-50' => '50-50',
-		// 	'thirds' => '33-33-33',
-		// 	'thirds' => '33-33-33',
-		// );
-
-		// wp_die( print_r( $this->block_attributes ) );
 		return array_filter( $this->block_attributes );
 	}
 }

@@ -20,7 +20,19 @@ const settings = {
 		const parentBlock = wp.data.select( 'core/editor' ).getBlocksByClientId( props.clientId )[ 0 ];
 		let columns = switchToBlockType( props, 'core/columns' );
 
-		columns[ 0 ].innerBlocks = parentBlock.innerBlocks;
+		let innerBlocks = [];
+
+		for ( let i = 0; i < parentBlock.innerBlocks.length; i++ ) {
+			if ( 'coblocks/column' === parentBlock.innerBlocks[ i ].name ) {
+				let columnBlock = createBlock( 'core/column', parentBlock.innerBlocks[ i ].attributes );
+				columnBlock.innerBlocks = parentBlock.innerBlocks[ i ].innerBlocks
+				innerBlocks.push( columnBlock );
+				continue;
+			}
+			innerBlocks.push( parentBlock.innerBlocks[ i ] );
+		}
+
+		columns[ 0 ].innerBlocks = innerBlocks;
 
 		replaceBlocks(
 			[ props.clientId ],

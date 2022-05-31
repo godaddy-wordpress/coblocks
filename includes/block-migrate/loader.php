@@ -17,7 +17,6 @@ require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-dynami
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-highlight-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-alert-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-row-migration.php';
-require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-column-migration.php';
 
 /**
  * Hook into the post object before it's returned to the editor.
@@ -46,7 +45,6 @@ add_action(
 			'coblocks/highlight' => CoBlocks_Highlight_Migration::class,
 			'coblocks/alert' => CoBlocks_Alert_Migration::class,
 			'coblocks/row' => CoBlocks_Row_Migration::class,
-			'coblocks/column' => CoBlocks_Column_Migration::class,
 		);
 
 		$parsed_blocks = array_map(
