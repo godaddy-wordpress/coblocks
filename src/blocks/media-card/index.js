@@ -19,10 +19,16 @@ const settings = {
 		const { replaceBlocks } = dispatch( 'core/block-editor' );
 
 		const parentBlock = wp.data.select( 'core/editor' ).getBlocksByClientId( props.clientId )[ 0 ];
+		const mediaCardInnerBlocks = parentBlock.innerBlocks[ 0 ].innerBlocks[ 0 ].innerBlocks;
+		const mediaInnerBlocks = [];
+
+		for ( let block of mediaCardInnerBlocks ) {
+			mediaInnerBlocks.push( createBlock( block.name, block.attributes ) )
+		}
 
 		const cover = switchToBlockType( props, 'core/media-text' );
 
-		cover[ 0 ].innerBlocks = parentBlock.innerBlocks;
+		cover[ 0 ].innerBlocks = mediaInnerBlocks;
 
 		replaceBlocks(
 			[ props.clientId ],
