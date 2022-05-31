@@ -1,57 +1,47 @@
 /**
- * External dependencies
- */
-import { ColumnIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Internal dependencies
  */
-import { BackgroundAttributes } from '../../../components/background';
-import deprecated from './deprecated';
-import DimensionsAttributes from '../../../components/dimensions-control/attributes';
-import edit from './edit';
 import metadata from './block.json';
-import save from './save';
 
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
+import { dispatch } from '@wordpress/data';
+import { createBlock, switchToBlockType } from '@wordpress/blocks';
 
 /**
  * Block constants
  */
-const { name, category } = metadata;
-
-const attributes = {
-	...DimensionsAttributes,
-	...BackgroundAttributes,
-	...metadata.attributes,
-};
+const { name } = metadata;
 
 const settings = {
-	/* translators: block name */
-	title: __( 'Column', 'coblocks' ),
-	/* translators: block description */
-	description: __( 'An immediate child of a row.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
-	parent: [ 'coblocks/row' ],
-	supports: {
-		inserter: false,
-	},
-	attributes,
-	edit,
-	getEditWrapperProps( blockAttributes ) {
-		const { paddingSize } = blockAttributes;
+	edit: ( props ) => {
+		const { replaceBlocks } = dispatch( 'core/block-editor' );
 
-		// If the column block has children, return the following.
-		if ( paddingSize !== 'advanced' && paddingSize === 'no' ) {
-			return { 'data-background-dropzone': false };
-		}
+		console.log( props );
+
+		replaceBlocks(
+			[ props.clientId ],
+			switchToBlockType( props, 'core/column' )
+		);
+
+		return null;
 	},
-	save,
-	deprecated,
+	parent: [],
+	save: () => null,
+	/* translators: block name */
+	title: metadata.title,
+	transforms: {
+		to: [
+			{
+				blocks: [ 'core/column' ],
+				transform: ( attributes ) => {
+					return createBlock( 'core/column', attributes );
+				},
+				type: 'block',
+			},
+		],
+	},
 };
 
-export { name, category, metadata, settings };
+export { name, metadata, settings };
