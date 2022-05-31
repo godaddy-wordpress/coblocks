@@ -25,12 +25,10 @@ const settings = {
 	edit: ( props ) => {
 		const { replaceBlocks } = dispatch( 'core/block-editor' );
 		const { clientId, attributes: { postFeedType } } = props;
-
 		replaceBlocks(
 			[ clientId ],
 			switchToBlockType( props, postFeedType === 'external' ? 'core/rss' : 'core/query' )
 		);
-
 		return null;
 	},
 	icon,
@@ -41,6 +39,8 @@ const settings = {
 			{
 				blocks: [ 'core/query' ],
 				transform: ( attributes ) => {
+					const hasImageHorizontal = attributes.className?.includes( 'horizontal' );
+					let innerBlocks = [];
 					const newAttributes = {
 						...( attributes?.align && { align: attributes.align } ),
 						displayLayout: {
@@ -65,13 +65,51 @@ const settings = {
 						},
 
 					};
-					// testing the inner blocks - endless spinner
+
+					/**
+					 * This collection represents horizontal style of the Posts block.
+					 */
+					if ( hasImageHorizontal ) {
+						const featuredImageRight = attributes.listPosition === 'right';
+						const isOneColumn = attributes.columns === 1;
+						const queryListOrFlex = {
+							displayLayout: {
+								columns: attributes.columns,
+								type: isOneColumn ? 'list' : 'flex',
+							},
+						};
+						const featuredImageColumn = createBlock( 'core/column', { width: '33.33%' }, [
+							createBlock( 'core/post-featured-image', { 'is-link': true }, [ ] ),
+						] );
+						const contentColumn = createBlock( 'core/column', { width: '66.66%' }, [
+							createBlock( 'core/post-title', { 'is-link': true }, [ ] ),
+							createBlock( 'core/post-date', {}, [ ] ),
+							createBlock( 'core/post-excerpt', {}, [ ] ),
+						] );
+
+						innerBlocks = [
+							createBlock( 'core/post-template', { ...( attributes.align ? { align: attributes.align } : {} ) }, [
+								createBlock( 'core/columns', {}, featuredImageRight
+									? [ contentColumn, featuredImageColumn ]
+									: [ featuredImageColumn, contentColumn ] ),
+							] ),
+
+						];
+						const transformedQueryBlock = createBlock( 'core/query',
+							{ ...newAttributes, ...queryListOrFlex }, innerBlocks );
+
+						return transformedQueryBlock;
+					}
+
+					/**
+					 * This collection represents stacked style of the Posts block.
+					 */
 					const postTitleBlock = createBlock( 'core/post-title', { 'is-link': true }, [ ] );
 					const postFeaturedImageBlock = createBlock( 'core/post-featured-image', { 'is-link': true }, [ ] );
 					const postPostExcerptBlock = createBlock( 'core/post-excerpt', {}, [ ] );
 					const coreSeparatorBlock = createBlock( 'core/separator', {}, [ ] );
 					const postDateBlock = createBlock( 'core/post-date', {}, [ ] );
-					const postTemplate = createBlock( 'core/post-template', {}, [
+					const postTemplate = createBlock( 'core/post-template', { ...( attributes.align ? { align: attributes.align } : {} ) }, [
 						postTitleBlock,
 						postFeaturedImageBlock,
 						postPostExcerptBlock,
@@ -86,16 +124,20 @@ const settings = {
 			{
 				blocks: [ 'core/rss' ],
 				transform: ( attributes ) => {
+					const isOneColumn = attributes.columns === 1;
+					const RSSListOrGrid = {
+						blockLayout: isOneColumn ? 'list' : 'grid',
+						columns: attributes.columns,
+					};
 					const rssBlock = createBlock( 'core/rss', {
 						align: attributes.align,
-						blockLayout: 'grid',
 						className: attributes.className,
-						columns: attributes.columns,
 						displayDate: attributes.displayPostDate,
 						displayExcerpt: attributes.displayPostContent,
 						excerptLength: attributes.excerptLength,
 						feedURL: attributes.externalRssUrl,
 						itemsToShow: attributes.postsToShow,
+						...RSSListOrGrid,
 					} );
 					return rssBlock;
 				},
