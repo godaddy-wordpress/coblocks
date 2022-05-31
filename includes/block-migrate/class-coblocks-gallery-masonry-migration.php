@@ -23,10 +23,9 @@ class CoBlocks_Gallery_Masonry_Migration extends CoBlocks_Block_Migration {
 	/**
 	 * Produce new attributes from the migrated block.
 	 *
-	 * @param array $parsed_block_attributes the JSON attributes parsed from the block.
 	 * @inheritDoc
 	 */
-	protected function migrate_attributes( $parsed_block_attributes = array() ) {
+	protected function migrate_attributes() {
 		return array_filter(
 			array_merge(
 				$this->gallery_attributes(),

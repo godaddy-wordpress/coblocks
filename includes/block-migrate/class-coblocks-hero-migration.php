@@ -23,10 +23,9 @@ class CoBlocks_Hero_Migration extends CoBlocks_Block_Migration {
 	/**
 	 * Produce new attributes from the migrated block.
 	 *
-	 * @param array $parsed_block_attributes the JSON attributes parsed from the block.
 	 * @inheritDoc
 	 */
-	protected function migrate_attributes( $parsed_block_attributes = array() ) {
+	protected function migrate_attributes() {
 		if ( ! array_key_exists( 'backgroundColor', $this->block_attributes ) && ! array_key_exists( 'customBackgroundColor', $this->block_attributes ) ) {
 			$this->block_attributes['customOverlayColor'] = '#ffffff';
 		}

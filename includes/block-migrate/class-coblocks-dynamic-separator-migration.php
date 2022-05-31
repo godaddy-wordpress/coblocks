@@ -23,10 +23,9 @@ class CoBlocks_Dynamic_Separator_Migration extends CoBlocks_Block_Migration {
 	/**
 	 * Produce new attributes from the migrated block.
 	 *
-	 * @param array $parsed_block_attributes the JSON attributes parsed from the block.
 	 * @inheritDoc
 	 */
-	protected function migrate_attributes( $parsed_block_attributes = array() ) {
+	protected function migrate_attributes() {
 		if ( ! array_key_exists( 'className', $this->block_attributes ) ) {
 			$this->block_attributes['className'] = 'is-style-dots';
 		}

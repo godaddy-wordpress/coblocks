@@ -23,10 +23,9 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 	/**
 	 * Produce new attributes from the migrated block.
 	 *
-	 * @param array $parsed_block_attributes the JSON attributes parsed from the block.
 	 * @inheritDoc
 	 */
-	protected function migrate_attributes( $parsed_block_attributes = array() ) {
+	protected function migrate_attributes() {
 		$alert_wrapper = $this->query_selector( '//div[contains(@class,"wp-block-coblocks-alert")]' );
 
 		$result = array(
