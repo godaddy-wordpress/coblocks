@@ -3,9 +3,9 @@ Author URI: https://www.godaddy.com
 Contributors: godaddy, richtabor, eherman24, jonathanbardo, jrtashjian, paranoia1906, fjarrett, olivierlafleur, jasonlemay, snovosel
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.5
-Tested up to: 5.9
+Tested up to: 6.0
 Requires PHP: 5.6
-Stable tag: 2.22.10
+Stable tag: 2.24.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -122,136 +122,11 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-= 2.22.10 / 2022-04-08 =
-##### Bug fixes
-* Remove error message in Widget editor [#2352](https://github.com/godaddy-wordpress/coblocks/pull/2352)
-* Fix OpenTable typo [#2347](https://github.com/godaddy-wordpress/coblocks/pull/2347)
-* Fix gallery carousel padding and captions [#2346](https://github.com/godaddy-wordpress/coblocks/pull/2346)
-* Fix bug in Gist block with hyphen in links [#2345](https://github.com/godaddy-wordpress/coblocks/pull/2345)
+### Enhancements
+* Allow all blocks to use animations [#2335](https://github.com/godaddy-wordpress/coblocks/pull/2335)
 
-= 2.22.9 / 2022-03-28 =
-##### Bug fixes
-* Fix block list on WordPress.org plugin page for CoBlocks [#2341](https://github.com/godaddy-wordpress/coblocks/pull/2341)
-
-= 2.22.8 / 2022-03-23 =
-##### Misc
-* Implement editorScript property in block.json for proper registration [#2337](https://github.com/godaddy-wordpress/coblocks/pull/2337)
-
-= 2.22.7 / 2022-03-18 =
-##### Bug fixes
-* Fix superfluous focus issue with Accordion block [#2310](https://github.com/godaddy-wordpress/coblocks/pull/2310)
-
-##### Misc
-* Translate titles when registering blocks [#2332](https://github.com/godaddy-wordpress/coblocks/pull/2332)
-
-= 2.22.6 / 2022-03-17 =
-##### Bug fixes
-* Resolve style bleed issue with Offset gallery [#2331](https://github.com/godaddy-wordpress/coblocks/pull/2331)
-
-= 2.22.5 / 2022-03-17 =
-##### Bug fixes
-* Sanitize email in Form block and properly escape URI [#2330](https://github.com/godaddy-wordpress/coblocks/pull/2330)
-
-= 2.22.4 / 2022-03-15 =
-##### Bug fixes
-* Fix Form block where nonce is unverified and some sanitization [#2329](https://github.com/godaddy-wordpress/coblocks/pull/2329)
-* Fix Gist block to make sure there is no PHPCS error [#2323](https://github.com/godaddy-wordpress/coblocks/pull/2323)
-* Fix Events block timezone problem [#2319](https://github.com/godaddy-wordpress/coblocks/pull/2319)
-
-##### Misc
-* Lint everything on CI [#2311](https://github.com/godaddy-wordpress/coblocks/pull/2311)
-* Update block-assets syntax [#2322](https://github.com/godaddy-wordpress/coblocks/pull/2322)
-* Update some dependencies [#2313](https://github.com/godaddy-wordpress/coblocks/pull/2313)
-* Enhance restore cache to also install missing deps on build pipeline [#2317](https://github.com/godaddy-wordpress/coblocks/pull/2317)
-
-= 2.22.3 / 2022-03-10 =
-##### Bug fixes
-* Fix situation where nonce is unverified [#2316](https://github.com/godaddy-wordpress/coblocks/pull/2316)
-
-= 2.22.2 / 2022-03-09 =
-##### Enhancements
-* Enhance Feature blocks to allow spacer block [#2299](https://github.com/godaddy-wordpress/coblocks/pull/2299)
-* Enhance Form block style consistency [#2309](https://github.com/godaddy-wordpress/coblocks/pull/2309)
-* Enhance Event block with examples [#2297](https://github.com/godaddy-wordpress/coblocks/pull/2297)
-
-##### Bug fixes
-* Fix bug with multiple carousel galleries [#2278](https://github.com/godaddy-wordpress/coblocks/pull/2278)
-* Fix Undo and Redo events with certain blocks [#2292](https://github.com/godaddy-wordpress/coblocks/pull/2292)
-* Fix superfluous slash with enqueued scripts [#2298](https://github.com/godaddy-wordpress/coblocks/pull/2298)
-* Fix bug allowing invalid file type upload with certain blocks [#2294](https://github.com/godaddy-wordpress/coblocks/pull/2294)
-* Improve consistency with image size controls across blocks [#2293](https://github.com/godaddy-wordpress/coblocks/pull/2293)
-
-= 2.22.1 / 2022-02-25 =
-##### Enhancements
-* Introduce plugin deactivation feedback modal [#2266](https://github.com/godaddy-wordpress/coblocks/pull/2266)
-
-##### Bug fixes
-* Fix Masonry V1 markup on published pages [#2290](https://github.com/godaddy-wordpress/coblocks/pull/2290)
-* Fix color controls on Highlight block [#2287](https://github.com/godaddy-wordpress/coblocks/pull/2287)
-
-= 2.22.0 / 2022-02-22 (that's a lot of 2s ;) ) =
-##### Enhancements
-* Enhance Gallery Stacked block to v2 [#2281](https://github.com/godaddy-wordpress/coblocks/pull/2281)
-* Enhance Author block to v2 [#2274](https://github.com/godaddy-wordpress/coblocks/pull/2274)
-* Remove jQuery from CoBlocks [#2276](https://github.com/godaddy-wordpress/coblocks/pull/2276)
-* Enhance Click to Tweet block to v2 [#2268](https://github.com/godaddy-wordpress/coblocks/pull/2268)
-* Enhance Post carousel to remove JQuery [#2235](https://github.com/godaddy-wordpress/coblocks/pull/2235)
-* Enhance Events block to remove JQuery [#2222](https://github.com/godaddy-wordpress/coblocks/pull/2222)
-
-##### Bug fixes
-* Fix rendering of custom icons [#2282](https://github.com/godaddy-wordpress/coblocks/pull/2282)
-* Fix speech typo [#2283](https://github.com/godaddy-wordpress/coblocks/pull/2283)
-* Fix white page flicker on admin dashboard [#2275](https://github.com/godaddy-wordpress/coblocks/pull/2275)
-
-##### Misc
-* Replace `cypress-file-upload` with Cypress built-in upload [#2285](https://github.com/godaddy-wordpress/coblocks/pull/2285)
-* Remove security vulnerability [#2255](https://github.com/godaddy-wordpress/coblocks/pull/2255)
-* Add e2e tests on Twenty Twenty-Two in the build pipeline [#2246](https://github.com/godaddy-wordpress/coblocks/pull/2246)
-* Run e2e tests on final build [#2271](https://github.com/godaddy-wordpress/coblocks/pull/2271)
-* Add unit tests on PHP 8.1 [#2272](https://github.com/godaddy-wordpress/coblocks/pull/2272)
-
-= 2.21.6 / 2022-02-08 =
-##### Enhancements
-* Delete Remove Image extension [#2262](https://github.com/godaddy-wordpress/coblocks/pull/2262)
-
-##### Bug fixes
-* Add styling to hide Safari default marker on FAQ items [#2267](https://github.com/godaddy-wordpress/coblocks/pull/2267)
-* Fix custom icons not loading [#2256](https://github.com/godaddy-wordpress/coblocks/pull/2256)
-
-= 2.21.5 / 2022-01-31 =
-##### Bug fixes
-* Fix `.icon` class scoping from Swiper component [#2259](https://github.com/godaddy-wordpress/coblocks/pull/2259)
-* Fix Lightbox opening unexpectedly [#2258](https://github.com/godaddy-wordpress/coblocks/pull/2258)
-
-= 2.21.4 / 2022-01-28 =
-##### Bug fixes
-* Fix console error related to blocks icons. [#2254](https://github.com/godaddy-wordpress/coblocks/pull/2254)
-
-= 2.21.3 / 2022-01-28 =
-##### Bug Fixes
-* Fix improperly enqueued dependency for Counter block [#2252](https://github.com/godaddy-wordpress/coblocks/pull/2252)
-* Fix React state errors in the browser console [#2245](https://github.com/godaddy-wordpress/coblocks/pull/2245)
-
-##### Misc
-* Improve stability of CoBlocks Block icon color [#2249](https://github.com/godaddy-wordpress/coblocks/pull/2249)
-
-= 2.21.2 / 2022-01-27 =
-##### Bug Fixes
-* Ensure SVGs are bundled with release [#2248](https://github.com/godaddy-wordpress/coblocks/pull/2248)
-
-= 2.21.1 / 2022-01-27 =
-##### Enhancements
-* Improve visual styles for CoBlocks blocks [#2242](https://github.com/godaddy-wordpress/coblocks/pull/2242)
-
-##### Bug Fixes
-* Fix occurrence of unregistered block [#2247](https://github.com/godaddy-wordpress/coblocks/pull/2247)
-
-= 2.21.0 / 2022-01-26 =
-##### Enhancements
-* Introduce Counter Block [#2224](https://github.com/godaddy-wordpress/coblocks/pull/2224)
-
-##### Bug Fixes
-* Fix cases of improperly enqueued assets [#2243](https://github.com/godaddy-wordpress/coblocks/pull/2243)
-* Fix styles with Twenty Twenty-Two theme in 5.9 [#2237](https://github.com/godaddy-wordpress/coblocks/pull/2237)
-* Fix Lightbox for Gallery block in 5.9 [#2239](https://github.com/godaddy-wordpress/coblocks/pull/2239)
-* Fix Form block input styles in editor. [#2209](https://github.com/godaddy-wordpress/coblocks/pull/2209)
+### Misc
+* Bump Tested up to version to 6.0 [#2383](https://github.com/godaddy-wordpress/coblocks/pull/2383)
+* Remove extraneous element from extensions HoC [#2334](https://github.com/godaddy-wordpress/coblocks/pull/2334)
+* Reintroduce transformation unit tests for CoBlocks Galleries to Core [#2382](https://github.com/godaddy-wordpress/coblocks/pull/2382)
+* Fix automated tests for WP 6.0 [#2381](https://github.com/godaddy-wordpress/coblocks/pull/2381), [#2376](https://github.com/godaddy-wordpress/coblocks/pull/2376), [#2380](https://github.com/godaddy-wordpress/coblocks/pull/2380)

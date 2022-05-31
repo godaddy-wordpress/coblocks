@@ -14,6 +14,9 @@ describe( 'Block: Highlight', function() {
 	 */
 	it( 'can be inserted without errors', function() {
 		cy.get( '.wp-block-coblocks-highlight' ).should( 'exist' );
+
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/highlight' );
 	} );
 
@@ -36,6 +39,8 @@ describe( 'Block: Highlight', function() {
 		helpers.addCustomBlockClass( 'my-custom-class', 'highlight' );
 		cy.get( '.wp-block-coblocks-highlight' ).should( 'have.class', 'my-custom-class' );
 
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/highlight' );
 	} );
 
@@ -43,7 +48,7 @@ describe( 'Block: Highlight', function() {
 	 * Test the highlight block custom classes
 	 */
 	it( 'Test the Font size changes as expected.', function() {
-		cy.get( '.components-toggle-group-control-option' ).then( ( elems ) => {
+		cy.get( '.components-toggle-group-control-option, .components-toggle-group-control-option-base' ).then( ( elems ) => {
 			let dataValue = Cypress.$( '.wp-block-coblocks-highlight' ).css( 'font-size' );
 			Array.from( elems ).forEach( ( elem ) => {
 				cy.get( elem ).focus().click().then( () => {

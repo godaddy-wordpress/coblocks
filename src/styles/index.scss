@@ -9,6 +9,7 @@
 // @import "../components/**/editor.scss";
 @import "../components/background/styles/editor.scss";
 @import "../components/block-gallery/styles/editor.scss";
+@import "../components/common/editor.scss";
 @import "../components/crop-settings/styles/editor.scss";
 @import "../components/dimensions-control/styles/editor.scss";
 @import "../components/grid-control/styles/editor.scss";
@@ -24,9 +25,12 @@
 @import "../extensions/advanced-controls/styles/editor.scss";
 @import "../extensions/animation/styles/editor.scss";
 @import "../extensions/button-controls/styles/editor.scss";
+@import "../extensions/coblocks-labs/styles/editor.scss";
 @import "../extensions/image-crop/styles/editor.scss";
 @import "../extensions/layout-selector/editor.scss";
 @import "../extensions/lightbox-controls/styles/editor.scss";
+@import "../extensions/site-content/editor.scss";
+@import "../extensions/site-design/editor.scss";
 @import "../extensions/typography/styles/editor.scss";
 
 // @import "../blocks/**/editor.scss";

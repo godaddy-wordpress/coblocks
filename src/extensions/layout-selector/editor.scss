@@ -174,7 +174,7 @@
 				&:focus,
 				&.is-selected {
 					box-shadow: none;
-					color: var(--wp-admin-theme-color, #007cba);
+					color: $godaddy-everyday-blue-500;
 					outline: none;
 				}
 			}
@@ -256,11 +256,11 @@
 		&:hover,
 		&:focus {
 			box-shadow: none;
-			color: var(--wp-admin-theme-color, #007cba) !important;
+			color: $godaddy-everyday-blue-500 !important;
 			outline: none;
 
 			> span {
-				background-color: var(--wp-admin-theme-color, #007cba);
+				background-color: $godaddy-everyday-blue-500;
 				color: $white;
 			}
 		}
@@ -361,7 +361,7 @@
 		}
 
 		&:hover {
-			box-shadow: 0 0 0 1px $white, 0 0 0 3px var(--wp-admin-theme-color, #007cba);
+			box-shadow: 0 0 0 1px $white, 0 0 0 3px $godaddy-everyday-blue-500;
 		}
 
 		&.is-placeholder {

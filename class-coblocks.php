@@ -4,10 +4,10 @@
  * Description: CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
  * Author: GoDaddy
  * Author URI: https://www.godaddy.com
- * Version: 2.22.10
+ * Version: 2.24.0
  * Text Domain: coblocks
  * Domain Path: /languages
- * Tested up to: 5.9
+ * Tested up to: 6.0
  *
  * CoBlocks is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'COBLOCKS_VERSION', '2.22.10' );
+define( 'COBLOCKS_VERSION', '2.24.0' );
 define( 'COBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'COBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'COBLOCKS_PLUGIN_FILE', __FILE__ );
@@ -116,9 +116,12 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-google-map-block.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-accordion-ie-support.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-settings.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-labs.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/ical-parser/class-coblocks-event.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/ical-parser/class-coblocks-ical.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-site-design.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-site-content.php';
 
 			// Require CoBlocks custom filters.
 			require_once COBLOCKS_PLUGIN_DIR . 'src/components/gutter-control/gutter-wrapper.php';
