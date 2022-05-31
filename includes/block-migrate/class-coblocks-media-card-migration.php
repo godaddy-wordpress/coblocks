@@ -32,6 +32,13 @@ class CoBlocks_Media_Card_Migration extends CoBlocks_Block_Migration {
 			$this->block_attributes['mediaPosition'] = 'right';
 		}
 
+		if ( array_key_exists( 'mediaId', $this->block_attributes ) ) {
+			$image_src = wp_get_attachment_image_src( $this->block_attributes['mediaId'] );
+			if ( false !== $image_src ) {
+				$this->block_attributes['mediaUrl'] = $image_src[0];
+			}
+		}
+
 		return array_filter( $this->block_attributes );
 	}
 }

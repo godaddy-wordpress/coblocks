@@ -1,4 +1,6 @@
 {
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
 	"name": "coblocks/media-card",
 	"category": "layout",
 	"attributes": {
@@ -17,10 +19,7 @@
 			"type": "number"
 		},
 		"mediaUrl": {
-			"type": "string",
-			"source": "attribute",
-			"selector": "figure video,figure img",
-			"attribute": "src"
+			"type": "string"
 		},
 		"mediaType": {
 			"type": "string"
