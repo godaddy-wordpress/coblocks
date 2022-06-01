@@ -21,18 +21,19 @@ const settings = {
 
 		const authorName = props.attributes.name;
 		const biography = props.attributes.biography;
-		const buttonUrl = parentBlock.innerBlocks[ 0 ].attributes.url;
-		const buttonText = parentBlock.innerBlocks[ 0 ].attributes.text;
+		// const buttonUrl = parentBlock.innerBlocks[ 0 ].attributes.url;
+		// const buttonText = parentBlock.innerBlocks[ 0 ].attributes.text;
 
-		console.log( props );
-
-		const authorNameBlock = createBlock( 'core/paragraph', { content: authorName } );
+		const authorNameBlock = createBlock( 'core/paragraph', { content: authorName, fontSize: 'medium' } );
 		const authorBioBlock = createBlock( 'core/paragraph', { content: biography } );
-		const buttonBlock = createBlock( 'core/buttons', {}, [ createBlock( 'core/button', { text: buttonText, url: buttonUrl } ) ] );
+		const buttonBlock = createBlock( 'core/buttons', {}, [ createBlock( 'core/button', parentBlock.innerBlocks[ 0 ].attributes ) ] );
 		const imageBlock = createBlock( 'core/image', { className: 'is-style-rounded', id: props.attributes.imgId, url: props.attributes.imgUrl } );
-		const columnsBlock = createBlock( 'core/columns', { style: { color: { background: '#F3F3F4' } } }, [ imageBlock, authorNameBlock, authorBioBlock, buttonBlock ] );
 
-		// createBlock( 'core/columns', attributes, innerBlocks )
+		const leftColumn = createBlock( 'core/column', { width: '33.33%' }, [ imageBlock ] );
+		const rightColumn = createBlock( 'core/column', { width: '66.66%' }, [ authorNameBlock, authorBioBlock, buttonBlock ] );;
+
+		const columnsBlock = createBlock( 'core/columns', { style: { color: { background: '#F3F3F4' } } }, [ leftColumn, rightColumn ] );
+
 		// core/columns, core/image, core/paragraph, and core/buttons
 
 		// author[ 0 ].innerBlocks = parentBlock.innerBlocks;
