@@ -1,55 +1,64 @@
 /**
- * External dependencies
- */
-import { AuthorIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Internal dependencies
  */
-import deprecated from './deprecated';
-import edit from './edit';
 import metadata from './block.json';
-import save from './save';
-import transforms from './transforms';
 
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
+import { dispatch } from '@wordpress/data';
+import { createBlock, switchToBlockType } from '@wordpress/blocks';
 
 /**
  * Block constants
  */
-const { name, category, attributes } = metadata;
+const { name } = metadata;
 
 const settings = {
-	attributes,
-	deprecated,
-	/* translators: block description */
-	description: __( 'Add an author biography to build credibility and authority.', 'coblocks' ),
-	edit,
-	example: {
-		attributes: {
-			/* translators: example biography */
-			biography: __( 'Born to express, not to impress. A maker making the world I want.', 'coblocks' ),
-			imgUrl: 'https://s.w.org/images/core/5.3/Windbuchencom.jpg',
-			/* translators: example female name */
-			name: __( 'Jane Doe', 'coblocks' ),
-		},
+	edit: ( props ) => {
+		const { replaceBlocks } = dispatch( 'core/block-editor' );
+		const parentBlock = wp.data.select( 'core/editor' ).getBlocksByClientId( props.clientId )[ 0 ];
+
+		const authorName = props.attributes.name;
+		const biography = props.attributes.biography;
+		const buttonUrl = parentBlock.innerBlocks[ 0 ].attributes.url;
+		const buttonText = parentBlock.innerBlocks[ 0 ].attributes.text;
+
+		console.log( props );
+
+		const authorNameBlock = createBlock( 'core/paragraph', { content: authorName } );
+		const authorBioBlock = createBlock( 'core/paragraph', { content: biography } );
+		const buttonBlock = createBlock( 'core/buttons', {}, [ createBlock( 'core/button', { text: buttonText, url: buttonUrl } ) ] );
+		const imageBlock = createBlock( 'core/image', { className: 'is-style-rounded', id: props.attributes.imgId, url: props.attributes.imgUrl } );
+		const columnsBlock = createBlock( 'core/columns', { style: { color: { background: '#F3F3F4' } } }, [ imageBlock, authorNameBlock, authorBioBlock, buttonBlock ] );
+
+		// createBlock( 'core/columns', attributes, innerBlocks )
+		// core/columns, core/image, core/paragraph, and core/buttons
+
+		// author[ 0 ].innerBlocks = parentBlock.innerBlocks;
+
+		replaceBlocks(
+			[ props.clientId ],
+			columnsBlock
+		);
+
+		return null;
 	},
-	icon: <Icon icon={ icon } />,
-	keywords: [
-		'coblocks',
-		/* translators: block keyword */
-		__( 'biography', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'profile', 'coblocks' ),
-	],
-	save,
+	parent: [],
+	save: () => null,
 	/* translators: block name */
-	title: __( 'Author', 'coblocks' ),
-	transforms,
+	title: metadata.title,
+	transforms: {
+		to: [
+			{
+				blocks: [ 'core/author' ],
+				transform: ( attributes ) => {
+					return createBlock( 'core/author', attributes );
+				},
+				type: 'block',
+			},
+		],
+	},
 };
 
-export { name, category, metadata, settings };
+export { name, metadata, settings };
