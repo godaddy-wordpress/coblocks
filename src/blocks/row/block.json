@@ -22,6 +22,50 @@
 			"type": "string"
 		}
 	},
+	"supports": {
+		"anchor": true,
+		"align": [ "wide", "full" ],
+		"html": false,
+		"color": {
+			"gradients": true,
+			"link": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
+		},
+		"spacing": {
+			"blockGap": {
+				"__experimentalDefault": "2em"
+			},
+			"margin": [ "top", "bottom" ],
+			"padding": true,
+			"__experimentalDefaultControls": {
+				"padding": true
+			}
+		},
+		"__experimentalLayout": {
+			"allowSwitching": false,
+			"allowInheriting": false,
+			"allowEditing": false,
+			"default": {
+				"type": "flex",
+				"flexWrap": "nowrap"
+			}
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"style": true,
+				"width": true
+			}
+		}
+	},
 	"title": "Row",
 	"editorScript": "blocks-6"
 }
