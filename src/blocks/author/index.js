@@ -34,10 +34,6 @@ const settings = {
 
 		const columnsBlock = createBlock( 'core/columns', { style: { color: { background: '#F3F3F4' } } }, [ leftColumn, rightColumn ] );
 
-		// core/columns, core/image, core/paragraph, and core/buttons
-
-		// author[ 0 ].innerBlocks = parentBlock.innerBlocks;
-
 		replaceBlocks(
 			[ props.clientId ],
 			columnsBlock
