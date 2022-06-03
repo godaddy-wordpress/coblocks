@@ -27,11 +27,25 @@ const settings = {
 		const leftColumn = createBlock( 'core/column', { width: '25%' }, [ imageBlock ] );
 		const rightColumn = createBlock( 'core/column', { width: '75%' }, [ authorNameBlock, authorBioBlock, buttonBlock ] );
 
+		const columnsStyleProps = {
+			"style": {
+				"spacing": {
+					"padding": {
+						"top": "2.5rem",
+						"right": "2.5rem",
+						"bottom": "2.5rem",
+						"left": "2.5rem"
+					}
+				}
+			},
+			...(props.attributes.hasOwnProperty('style') && { style: props.attributes.style }),
+		};
+
 		const columnsBlockProps = {
 			content: props.attributes.biography,
+			...columnsStyleProps,
 			...(props.attributes.hasOwnProperty('textColor') && { textColor: props.attributes.textColor }),
 			...(props.attributes.hasOwnProperty('backgroundColor') && { backgroundColor: props.attributes.backgroundColor }),
-			...(props.attributes.hasOwnProperty('style') && { style: props.attributes.style }),
 		};
 
 		const columnsBlock = createBlock( 'core/columns', columnsBlockProps, [ leftColumn, rightColumn ] );
