@@ -19,13 +19,18 @@ const settings = {
 		const { replaceBlocks } = dispatch( 'core/block-editor' );
 		const parentBlock = wp.data.select( 'core/editor' ).getBlocksByClientId( props.clientId )[ 0 ];
 
-		const authorNameBlock = createBlock( 'core/paragraph', { content: props.attributes.biography } );
-		const authorBioBlock = createBlock( 'core/paragraph', { content: props.attributes.name, fontSize: 'medium' } );
-		const buttonBlock = createBlock( 'core/buttons', {}, [ createBlock( 'core/button', parentBlock.innerBlocks[ 0 ].attributes ) ] );
+		const authorNameBlock = createBlock( 'core/paragraph', { content: props.attributes.name, fontSize: 'medium' } );
+		const authorBioBlock = createBlock( 'core/paragraph', { content: props.attributes.biography } );
+		const buttonBlock = parentBlock.innerBlocks;
 		const imageBlock = createBlock( 'core/image', { className: 'is-style-rounded', id: props.attributes.imgId, url: props.attributes.imgUrl } );
 
+		// Set buttons to align left.
+		buttonBlock.forEach( function( button, index ) {
+			buttonBlock[ index ].attributes.align = 'left';
+		} );
+
 		const leftColumn = createBlock( 'core/column', { width: '25%' }, [ imageBlock ] );
-		const rightColumn = createBlock( 'core/column', { width: '75%' }, [ authorNameBlock, authorBioBlock, buttonBlock ] );
+		const rightColumn = createBlock( 'core/column', { width: '75%' }, [ authorNameBlock, authorBioBlock, ...buttonBlock ] );
 
 		const columnsStyleProps = {
 			"style": {
