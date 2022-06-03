@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-05-24T19:48:35+00:00\n"
+"POT-Creation-Date: 2022-06-03T16:14:56+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: coblocks\n"
@@ -2268,12 +2268,18 @@ msgstr ""
 
 #: src/blocks/gallery-carousel/deprecated.js:763
 #: src/blocks/gallery-carousel/deprecated.js:942
-#: src/blocks/gallery-carousel/save.js:132
+#: src/blocks/gallery-carousel/deprecated.js:1124
+#: src/blocks/gallery-carousel/save.js:131
 msgid "Carousel Gallery"
 msgstr ""
 
+#: src/blocks/gallery-carousel/deprecated.js:1166
+#: src/blocks/gallery-carousel/save.js:173
+msgid "gallery thumbnail"
+msgstr ""
+
 #. translators: %1$d is the order number of the image, %2$d is the total number of images
-#: src/blocks/gallery-carousel/edit.js:197
+#: src/blocks/gallery-carousel/edit.js:196
 #: src/blocks/gallery-masonry/v1/edit.js:217
 #: src/blocks/gallery-offset/edit.js:218
 #: src/blocks/gallery-stacked/edit.js:181
@@ -2281,12 +2287,12 @@ msgid "image %1$d of %2$d in gallery"
 msgstr ""
 
 #. translators: %s: Type of gallery variation
-#: src/blocks/gallery-carousel/edit.js:236
+#: src/blocks/gallery-carousel/edit.js:234
 msgid "%s Carousel"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gallery-carousel/edit.js:247
+#: src/blocks/gallery-carousel/edit.js:245
 #: src/blocks/gallery-carousel/index.js:37
 msgid "Carousel"
 msgstr ""
@@ -2396,7 +2402,7 @@ msgid "Rounded corners"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:158
-#: src/blocks/gallery-carousel/variations.js:145
+#: src/blocks/gallery-carousel/variations.js:142
 #: src/blocks/gallery-collage/inspector.js:100
 #: src/blocks/gallery-masonry/inspector.js:218
 #: src/blocks/gallery-masonry/v1/inspector.js:139
@@ -2415,19 +2421,20 @@ msgstr ""
 msgid "Responsive height"
 msgstr ""
 
-#: src/blocks/gallery-carousel/save.js:174
-msgid "gallery thumbnail"
+#. translators: %1$d is the order number of the image, %2$d is the total number of images
+#: src/blocks/gallery-carousel/save.js:192
+msgid "view image %1$d of %2$d in carousel"
 msgstr ""
 
-#: src/blocks/gallery-carousel/variations.js:108
+#: src/blocks/gallery-carousel/variations.js:107
 msgid "Full Autoplay"
 msgstr ""
 
-#: src/blocks/gallery-carousel/variations.js:125
+#: src/blocks/gallery-carousel/variations.js:123
 msgid "Full Scroll"
 msgstr ""
 
-#: src/blocks/gallery-carousel/variations.js:180
+#: src/blocks/gallery-carousel/variations.js:176
 msgid "Select a carousel variation to start with."
 msgstr ""
 
@@ -9786,51 +9793,39 @@ msgstr ""
 msgid "Toggle to pause autoplay when hovered."
 msgstr ""
 
-#: src/components/slider-panel/index.js:58
-msgid "Scrolling without fixed slides enabled."
-msgstr ""
-
-#: src/components/slider-panel/index.js:58
-msgid "Toggle to scroll without fixed slides."
-msgstr ""
-
-#: src/components/slider-panel/index.js:80
+#: src/components/slider-panel/index.js:75
 msgid "Slider settings"
 msgstr ""
 
-#: src/components/slider-panel/index.js:84
+#: src/components/slider-panel/index.js:79
 msgid "Loop"
 msgstr ""
 
-#: src/components/slider-panel/index.js:90
+#: src/components/slider-panel/index.js:85
 msgid "Autoplay"
 msgstr ""
 
-#: src/components/slider-panel/index.js:96
+#: src/components/slider-panel/index.js:91
 msgid "Transition speed"
 msgstr ""
 
-#: src/components/slider-panel/index.js:104
+#: src/components/slider-panel/index.js:99
 msgid "Pause on hover"
 msgstr ""
 
-#: src/components/slider-panel/index.js:112
+#: src/components/slider-panel/index.js:107
 msgid "Draggable"
 msgstr ""
 
-#: src/components/slider-panel/index.js:118
-msgid "Free scroll"
-msgstr ""
-
-#: src/components/slider-panel/index.js:124
+#: src/components/slider-panel/index.js:113
 msgid "Arrow navigation"
 msgstr ""
 
-#: src/components/slider-panel/index.js:131
+#: src/components/slider-panel/index.js:120
 msgid "Dot navigation"
 msgstr ""
 
-#: src/components/slider-panel/index.js:137
+#: src/components/slider-panel/index.js:126
 msgid "Align cells"
 msgstr ""
 
