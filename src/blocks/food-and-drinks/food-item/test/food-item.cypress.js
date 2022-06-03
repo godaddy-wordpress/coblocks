@@ -10,6 +10,9 @@ describe( 'Block: Food Item', () => {
 
 	it( 'can be inserted without errors', () => {
 		cy.get( '.wp-block-coblocks-food-item' ).should( 'exist' );
+
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/food-item' );
 	} );
 

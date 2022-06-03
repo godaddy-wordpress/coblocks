@@ -18,6 +18,8 @@ describe( 'Test CoBlocks Map Block', function() {
 	it( 'can save without content values set.', function() {
 		helpers.addBlockToPost( 'coblocks/map', true );
 
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/map' );
 	} );
 

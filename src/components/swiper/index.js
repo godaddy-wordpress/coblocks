@@ -20,8 +20,8 @@ import {
 } from '@wordpress/element';
 
 const SwiperWrapper = ( props ) => {
-	const { list, freeScroll, slidesPerView, loop } = props;
-	const swiperUuid = useMemo( () => generateUuid(), [ list.length, freeScroll, slidesPerView, loop ] );
+	const { list, slidesPerView, loop } = props;
+	const swiperUuid = useMemo( () => generateUuid(), [ list.length, slidesPerView, loop ] );
 
 	return (
 		<span key={ swiperUuid }>
@@ -41,7 +41,6 @@ const Swiper = ( props ) => {
 		loop = true,
 		onSwipe = null,
 		Pagination = null,
-		freeScroll = false,
 		uuid = null,
 		slidesPerView = 1,
 		spaceBetween = 0,
@@ -88,7 +87,7 @@ const Swiper = ( props ) => {
 
 			const newSwiper = new TinySwiper( swiperContainer, {
 				centeredSlides: false,
-				freeMode: freeScroll,
+				freeMode: false, // Explicit false for UX concerns. This is by default false in tinyswiper.
 				longSwipesRatio: 0.8,
 				loop,
 				navigation: {
@@ -236,7 +235,6 @@ const Swiper = ( props ) => {
 Swiper.propTypes = {
 	autoPlaySpeed: PropTypes.number.isRequired,
 	children: PropTypes.node,
-	freeScroll: PropTypes.bool.isRequired,
 	isDraggable: PropTypes.bool.isRequired,
 	list: PropTypes.array,
 	loop: PropTypes.bool.isRequired,
@@ -249,7 +247,6 @@ Swiper.propTypes = {
 
 Swiper.defaultProps = {
 	autoPlaySpeed: null,
-	freeScroll: false,
 	isDraggable: true,
 	loop: true,
 	navigation: false,

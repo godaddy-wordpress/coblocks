@@ -3,9 +3,9 @@ Author URI: https://www.godaddy.com
 Contributors: godaddy, richtabor, eherman24, jonathanbardo, jrtashjian, paranoia1906, fjarrett, olivierlafleur, jasonlemay, snovosel
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.5
-Tested up to: 5.9
+Tested up to: 6.0
 Requires PHP: 5.6
-Stable tag: 2.23.0
+Stable tag: 2.24.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,14 +123,10 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Enhancements
-* Introduce CoBlocks Labs [#2350](https://github.com/godaddy-wordpress/coblocks/pull/2350)
-
-### Bug fixes
-* Add tab index to carousel thumbnails [#2312](https://github.com/godaddy-wordpress/coblocks/pull/2312)
+* Allow all blocks to use animations [#2335](https://github.com/godaddy-wordpress/coblocks/pull/2335)
 
 ### Misc
-* Add e2e tests with PHP 8.0 [#2375](https://github.com/godaddy-wordpress/coblocks/pull/2375)
-* Fix more Cypress tests for WP 6.0 RC1 [#2373](https://github.com/godaddy-wordpress/coblocks/pull/2373)
-* Fix some Cypress tests in WP 6.0 RC1 [#2372](https://github.com/godaddy-wordpress/coblocks/pull/2372)
-* Add a validation for the presence of the minor part in the version [#2365](https://github.com/godaddy-wordpress/coblocks/pull/2365)
-* Bump grunt from 1.4.1 to 1.5.2 [#2366](https://github.com/godaddy-wordpress/coblocks/pull/2366)
+* Bump Tested up to version to 6.0 [#2383](https://github.com/godaddy-wordpress/coblocks/pull/2383)
+* Remove extraneous element from extensions HoC [#2334](https://github.com/godaddy-wordpress/coblocks/pull/2334)
+* Reintroduce transformation unit tests for CoBlocks Galleries to Core [#2382](https://github.com/godaddy-wordpress/coblocks/pull/2382)
+* Fix automated tests for WP 6.0 [#2381](https://github.com/godaddy-wordpress/coblocks/pull/2381), [#2376](https://github.com/godaddy-wordpress/coblocks/pull/2376), [#2380](https://github.com/godaddy-wordpress/coblocks/pull/2380)

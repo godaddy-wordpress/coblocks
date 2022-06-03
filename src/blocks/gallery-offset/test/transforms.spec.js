@@ -19,8 +19,13 @@ describe( 'coblocks/gallery-offset transforms', () => {
 		images: [
 			{ index: 0, url: 'https://s.w.org/images/core/5.3/Windbuchencom.jpg' },
 			{ index: 1, url: 'https://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg' },
-		]
+		],
 	};
+
+	const innerBlocks = [
+		createBlock( 'core/image', attributes.images[ 0 ], [ ] ),
+		createBlock( 'core/image', attributes.images[ 1 ], [ ] ),
+	];
 
 	beforeAll( () => {
 		// Register all gallery blocks.
@@ -61,7 +66,28 @@ describe( 'coblocks/gallery-offset transforms', () => {
 	} );
 
 	it( 'should transform from core/image block only if match', () => {
-		expect( transforms.from[ 1 ].isMatch( [ { id: 1234, url: 'someUrl' }, { id: "1234", url: 'someUrl' } ] ) ).toHaveLength( 1 );
+		expect( transforms.from[ 2 ].isMatch( [ { id: 1234, url: 'someUrl' }, { id: '1234', url: 'someUrl' } ] ) ).toHaveLength( 1 );
+	} );
+
+	it( 'should transform to coblocks/gallery-stacked block', () => {
+		const block = createBlock( name, attributes );
+		const transformed = switchToBlockType( block, 'coblocks/gallery-stacked' );
+
+		expect( transformed[ 0 ].isValid ).toBe( true );
+		for ( let i = 0; i < attributes.images.length; i++ ) {
+			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
+			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
+		}
+	} );
+
+	it( 'should transform to coblocks/gallery-masonry block', () => {
+		const block = createBlock( name, attributes );
+		const transformed = switchToBlockType( block, 'coblocks/gallery-masonry' )[ 0 ];
+
+		expect( transformed.isValid ).toBe( true );
+		transformed.innerBlocks.forEach( ( image, index ) => {
+			expect( image.attributes.url ).toBe( attributes.images[ index ].url );
+		} );
 	} );
 
 	it( 'should transform to coblocks/gallery-carousel block', () => {
@@ -80,10 +106,9 @@ describe( 'coblocks/gallery-offset transforms', () => {
 		const transformed = switchToBlockType( block, 'core/gallery' );
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
-		for ( let i = 0; i < attributes.images.length; i++ ) {
-			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
-			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
-		}
+		attributes.images.forEach( ( image, index ) => {
+			expect( transformed[ 0 ].innerBlocks[ index ].attributes.url ).toBe( image.url );
+		} );
 	} );
 
 	it( 'should transform when ":offset" prefix is seen', () => {
@@ -98,7 +123,7 @@ describe( 'coblocks/gallery-offset transforms', () => {
 			createBlock( 'core/image', { id: 0, url: 'http://local.domain/image.jpg' } ),
 			createBlock( 'core/image', { id: 1, url: 'http://local.domain/image.jpg' } ),
 		];
-		const transformed = switchToBlockType( coreImageBlocks, name )[0];
+		const transformed = switchToBlockType( coreImageBlocks, name )[ 0 ];
 
 		expect( transformed.isValid ).toBe( true );
 		expect( transformed.attributes.images.length ).toBeGreaterThan( 0 );
