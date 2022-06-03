@@ -1,72 +1,95 @@
 /**
- * External dependencies
- */
-import { FeatureIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Internal dependencies
  */
-import deprecated from './deprecated';
-import edit from './edit';
 import metadata from './block.json';
-import save from './save';
-import transforms from './transforms';
-import DimensionsAttributes from '../../components/dimensions-control/attributes';
-import { BackgroundAttributes } from '../../components/background';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
+import { useDispatch, useSelect } from '@wordpress/data';
+import { createBlock, switchToBlockType } from '@wordpress/blocks';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Block constants
  */
 const { name, category } = metadata;
 
-const attributes = {
-	...DimensionsAttributes,
-	...BackgroundAttributes,
-	...metadata.attributes,
-};
+const FEATURE_TEMPLATE = [
+	[
+		'coblocks/icon',
+		{
+			hasContentAlign: false,
+		},
+	],
+	[
+		'core/heading',
+		{
+			/* translators: content placeholder */
+			placeholder: __( 'Add feature title…', 'coblocks' ),
+			/* translators: content placeholder */
+			content: __( 'Feature Title', 'coblocks' ),
+			level: 4,
+		},
+	],
+	[
+		'core/paragraph',
+		{
+			/* translators: content placeholder */
+			placeholder: __( 'Add feature content', 'coblocks' ),
+			/* translators: content placeholder */
+			content: __( 'This is a feature block that you can use to highlight features.', 'coblocks' ),
+		},
+	],
+];
+
+const templateContainer = [
+	FEATURE_TEMPLATE,
+	FEATURE_TEMPLATE,
+];
+
+function Edit( { clientId } ) {
+	const { replaceBlocks } = useDispatch( 'core/block-editor' );
+	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
+
+	replaceBlocks(
+		[ clientId ],
+		switchToBlockType( getBlock( clientId ), 'core/columns' )
+	);
+
+	return null;
+}
 
 const settings = {
-	/* translators: block name */
+	edit: Edit,
+	save: () => <InnerBlocks.Content />,
 	title: __( 'Features', 'coblocks' ),
-	/* translators: block description */
-	description: __( 'Add up to four columns of small notes for your product or service.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
-	keywords: [
-		'coblocks',
-	],
-	supports: {
-		align: [ 'wide', 'full' ],
-		coBlocksSpacing: true,
-		gutter: {
-			default: 'medium',
-		},
+	transforms: {
+		to: [
+			{
+				blocks: [ 'core/columns' ],
+				transform: ( attributes ) => {
+					return createBlock(
+						'core/columns',
+						{},
+						templateContainer.map( ( innerBlock ) => {
+							return createBlock(
+								'core/column',
+								{},
+								innerBlock.map( ( block ) => {
+									return createBlock(
+										...block
+									);
+								} )
+							);
+						} )
+					);
+				},
+				type: 'block',
+			},
+		],
 	},
-	example: {
-		attributes: {
-			align: 'wide',
-		},
-	},
-	attributes,
-	transforms,
-	edit,
-	getEditWrapperProps( wrapperAttributes ) {
-		const { id, layout, columns } = wrapperAttributes;
-
-		// If no layout is seleted, return the following.
-		if ( ! layout ) {
-			return { 'data-id': id, 'data-columns': columns };
-		}
-
-		return { 'data-id': id, 'data-columns': columns };
-	},
-	save,
-	deprecated,
 };
 
 export { name, category, metadata, settings };
