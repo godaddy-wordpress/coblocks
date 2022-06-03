@@ -11,6 +11,12 @@
 		},
 		"caption": {
 			"type": "string"
+		},
+		"height": {
+			"type": "number"
+		},
+		"width": {
+			"type": "number"
 		}
 	},
 	"title": "Gif",
