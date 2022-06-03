@@ -19,15 +19,22 @@ const settings = {
 		const { replaceBlocks } = dispatch( 'core/block-editor' );
 		const parentBlock = wp.data.select( 'core/editor' ).getBlocksByClientId( props.clientId )[ 0 ];
 
-		const authorNameBlock = createBlock( 'core/paragraph', { content: props.attributes.name, fontSize: 'medium' } );
-		const authorBioBlock = createBlock( 'core/paragraph', { content: props.attributes.biography } );
+		const authorNameBlock = createBlock( 'core/paragraph', { content: props.attributes.biography } );
+		const authorBioBlock = createBlock( 'core/paragraph', { content: props.attributes.name, fontSize: 'medium' } );
 		const buttonBlock = createBlock( 'core/buttons', {}, [ createBlock( 'core/button', parentBlock.innerBlocks[ 0 ].attributes ) ] );
 		const imageBlock = createBlock( 'core/image', { className: 'is-style-rounded', id: props.attributes.imgId, url: props.attributes.imgUrl } );
 
 		const leftColumn = createBlock( 'core/column', { width: '25%' }, [ imageBlock ] );
-		const rightColumn = createBlock( 'core/column', { width: '75%' }, [ authorNameBlock, authorBioBlock, buttonBlock ] );;
+		const rightColumn = createBlock( 'core/column', { width: '75%' }, [ authorNameBlock, authorBioBlock, buttonBlock ] );
 
-		const columnsBlock = createBlock( 'core/columns', { style: { color: { background: '#F3F3F4' } } }, [ leftColumn, rightColumn ] );
+		const columnsBlockProps = {
+			content: props.attributes.biography,
+			...(props.attributes.hasOwnProperty('textColor') && { textColor: props.attributes.textColor }),
+			...(props.attributes.hasOwnProperty('backgroundColor') && { backgroundColor: props.attributes.backgroundColor }),
+			...(props.attributes.hasOwnProperty('style') && { style: props.attributes.style }),
+		};
+
+		const columnsBlock = createBlock( 'core/columns', columnsBlockProps, [ leftColumn, rightColumn ] );
 
 		replaceBlocks(
 			[ props.clientId ],

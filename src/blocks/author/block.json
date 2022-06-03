@@ -20,7 +20,12 @@
 		"anchor": true,
 		"html": false,
 		"color": {
-			"link": false
+			"gradients": true,
+			"link": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
 		},
 		"typography": {
 			"fontSize": true,
