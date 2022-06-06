@@ -20,26 +20,28 @@ const FEATURE_TEMPLATE = [
 	[
 		'coblocks/icon',
 		{
-			hasContentAlign: false,
+			contentAlign: 'center',
 		},
 	],
 	[
 		'core/heading',
 		{
 			/* translators: content placeholder */
-			placeholder: __( 'Add feature title…', 'coblocks' ),
-			/* translators: content placeholder */
 			content: __( 'Feature Title', 'coblocks' ),
 			level: 4,
+			/* translators: content placeholder */
+			placeholder: __( 'Add feature title…', 'coblocks' ),
+			textAlign: 'center',
 		},
 	],
 	[
 		'core/paragraph',
 		{
-			/* translators: content placeholder */
-			placeholder: __( 'Add feature content', 'coblocks' ),
+			align: 'center',
 			/* translators: content placeholder */
 			content: __( 'This is a feature block that you can use to highlight features.', 'coblocks' ),
+			/* translators: content placeholder */
+			placeholder: __( 'Add feature content', 'coblocks' ),
 		},
 	],
 ];
