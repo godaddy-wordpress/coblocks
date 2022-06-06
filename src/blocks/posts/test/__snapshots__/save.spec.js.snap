@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`coblocks/posts should render 1`] = `"<!-- wp:coblocks/posts /-->"`;
