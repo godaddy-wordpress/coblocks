@@ -52,3 +52,4 @@ This list is manually curated to include valuable contributions by volunteers th
 | @ehamwey          |                        |
 | @amenk            |                        |
 | @frozzare         |                        |
+| @adamf59          | @afrankgodaddy         |

@@ -13,7 +13,7 @@ import * as helpers from '../../../../.dev/tests/jest/helpers';
 import { name } from '../index';
 import transforms from '../transforms';
 
-describe( 'coblocks/gallery-carousel transforms', () => {
+describe( 'coblocks/gallery-offset transforms', () => {
 	// Shared attributes
 	const attributes = {
 		images: [
@@ -27,9 +27,9 @@ describe( 'coblocks/gallery-carousel transforms', () => {
 		helpers.registerGalleryBlocks();
 	} );
 
-	it( 'should transform from coblocks/gallery-offset block', () => {
-		const galleryOffset = createBlock( 'coblocks/gallery-offset', attributes );
-		const transformed = switchToBlockType( galleryOffset, name );
+	it( 'should transform from coblocks/gallery-carousel block', () => {
+		const galleryCarousel = createBlock( 'coblocks/gallery-carousel', attributes );
+		const transformed = switchToBlockType( galleryCarousel, name );
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
 		for ( let i = 0; i < attributes.images.length; i++ ) {
@@ -64,6 +64,17 @@ describe( 'coblocks/gallery-carousel transforms', () => {
 		expect( transforms.from[ 1 ].isMatch( [ { id: 1234, url: 'someUrl' }, { id: "1234", url: 'someUrl' } ] ) ).toHaveLength( 1 );
 	} );
 
+	it( 'should transform to coblocks/gallery-carousel block', () => {
+		const block = createBlock( name, attributes );
+		const transformed = switchToBlockType( block, 'coblocks/gallery-carousel' );
+
+		expect( transformed[ 0 ].isValid ).toBe( true );
+		for ( let i = 0; i < attributes.images.length; i++ ) {
+			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
+			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
+		}
+	} );
+
 	it( 'should transform to core/gallery block', () => {
 		const block = createBlock( name, attributes );
 		const transformed = switchToBlockType( block, 'core/gallery' );
@@ -74,8 +85,8 @@ describe( 'coblocks/gallery-carousel transforms', () => {
 		} );
 	} );
 
-	it( 'should transform when ":carousel" prefix is seen', () => {
-		const prefix = ':carousel';
+	it( 'should transform when ":offset" prefix is seen', () => {
+		const prefix = ':offset';
 		const block = helpers.performPrefixTransformation( name, prefix, prefix );
 		expect( block.isValid ).toBe( true );
 		expect( block.name ).toBe( name );

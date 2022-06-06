@@ -11,6 +11,10 @@ describe( 'Test CoBlocks Pricing Table Block', function() {
 	it( 'Test pricing-table block saves with empty values.', function() {
 		helpers.addBlockToPost( 'coblocks/pricing-table', true );
 
+		cy.get( '.wp-block-coblocks-pricing-table' ).should( 'exist' );
+
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/pricing-table' );
 	} );
 
