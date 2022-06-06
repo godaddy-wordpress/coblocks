@@ -50,10 +50,6 @@
 			"type": "boolean",
 			"default": false
 		},
-		"freeScroll": {
-			"type": "boolean",
-			"default": false
-		},
 		"thumbnails": {
 			"type": "boolean",
 			"default": false

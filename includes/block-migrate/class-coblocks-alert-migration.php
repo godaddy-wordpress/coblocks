@@ -29,10 +29,15 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 		$alert_wrapper = $this->query_selector( '//div[contains(@class,"wp-block-coblocks-alert")]' );
 
 		$result = array(
-			'content' => implode( "<br />", array_filter( array(
-				$this->query_selector( '//p[contains(@class,"wp-block-coblocks-alert__title")]' )->textContent,
-				$this->query_selector( '//p[contains(@class,"wp-block-coblocks-alert__text")]' )->textContent,
-			) ) ),
+			'content' => implode(
+				'<br />',
+				array_filter(
+					array(
+						$this->query_selector( '//p[contains(@class,"wp-block-coblocks-alert__title")]' )->textContent,
+						$this->query_selector( '//p[contains(@class,"wp-block-coblocks-alert__text")]' )->textContent,
+					)
+				)
+			),
 		);
 
 		if ( ! $this->get_attribute_from_classname( 'is-style-', $alert_wrapper ) ) {
