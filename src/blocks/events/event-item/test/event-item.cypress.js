@@ -33,6 +33,9 @@ describe( 'Block: Event Item', () => {
 	 */
 	it( 'can be inserted without errors', () => {
 		cy.get( '.wp-block-coblocks-event-item' ).should( 'exist' );
+
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/event-item' );
 	} );
 
@@ -69,7 +72,7 @@ describe( 'Block: Event Item', () => {
 
 		cy.get( '.wp-block-coblocks-events__day' ).type( date.day );
 
-		helpers.setColorSetting( 'text color', textColor );
+		helpers.setColorSettingsFoldableSetting( 'text color', textColor );
 		cy.get( '.wp-block-coblocks-event-item' ).should( 'have.css', 'color', textColorRGB );
 
 		helpers.checkForBlockErrors( 'coblocks/event-item' );

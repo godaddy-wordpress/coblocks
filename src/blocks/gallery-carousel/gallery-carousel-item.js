@@ -72,6 +72,8 @@ const GalleryCarouselItem = ( {
 				<GalleryImage
 					alt={ item.alt }
 					aria-label={ ariaLabel }
+					gutter={ gutter }
+					gutterMobile={ gutterMobile }
 					id={ item.id }
 					imageIndex={ index }
 					isSelected={ isItemSelected }
@@ -87,8 +89,6 @@ const GalleryCarouselItem = ( {
 					supportsCaption={ false }
 					supportsMoving={ false }
 					url={ item.url }
-					gutter={ gutter }
-					gutterMobile={ gutterMobile }
 				/>
 			</span>
 		);
