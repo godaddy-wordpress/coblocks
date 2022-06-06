@@ -110,11 +110,7 @@ abstract class CoBlocks_Block_Migration {
 	 *
 	 * @return string attribute value.
 	 */
-	protected function get_attribute_from_classname( $classname_prefix, $element ) {
-		if ( empty( $element ) ) {
-			return '';
-		}
-
+	protected function get_attribute_from_classname( $classname_prefix, DOMElement $element ) {
 		$class_attribute = $element->attributes->getNamedItem( 'class' );
 		if ( empty( $class_attribute ) ) {
 			return '';

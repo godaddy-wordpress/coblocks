@@ -54,7 +54,11 @@ const settings = {
 							...( attributes?.pages && { perPage: attributes.postsToShow.toString() } ),
 							...( attributes?.order && { order: attributes.order } ),
 							...( attributes?.orderBy && { orderBy: attributes.orderBy } ),
-							...( attributes?.categories && { taxQuery: attributes.categories.map( ( cat ) => cat.id ) } ),
+							...( attributes?.categories &&
+								{
+									categoryIds: attributes.categories.map( ( cat ) => cat.id ),
+									taxQuery: attributes.categories.map( ( cat ) => cat.id ),
+								} ),
 							author: '',
 							exclude: [],
 							inherit: false,
