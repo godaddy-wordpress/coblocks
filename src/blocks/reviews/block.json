@@ -1,0 +1,14 @@
+{
+	"name": "coblocks/reviews",
+	"category": "layout",
+	"attributes": {
+        "reviews": {
+			"type": "array",
+			"default": []
+		}
+    },
+	"title": "Yelp Reviews",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-7",
+	"description": "Showcase Yelp reviews on your Wordpress site."
+}
