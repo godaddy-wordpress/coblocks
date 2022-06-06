@@ -55,9 +55,15 @@ function Edit( { clientId } ) {
 	const { replaceBlocks } = useDispatch( 'core/block-editor' );
 	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
 
+	const currentBlock = getBlock( clientId );
+
+	if ( ! currentBlock ) {
+		return null;
+	}
+
 	replaceBlocks(
 		[ clientId ],
-		switchToBlockType( getBlock( clientId ), 'core/columns' )
+		switchToBlockType( currentBlock, 'core/columns' )
 	);
 
 	return null;
