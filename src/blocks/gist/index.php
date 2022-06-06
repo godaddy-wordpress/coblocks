@@ -48,7 +48,7 @@ function coblocks_block_gist_handler( $matches ) {
 	$resp_body = wp_remote_retrieve_body( $api_resp );
 	$result = json_decode( $resp_body, true );
 	
-	if ( !is_array( $result ) || empty( $result['files'] ) || is_wp_error( $result ) {
+	if ( !is_array( $result ) || empty( $result['files'] ) || is_wp_error( $result ) ) {
 		return '';
 	} 
 
