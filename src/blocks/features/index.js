@@ -7,9 +7,9 @@ import metadata from './block.json';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { useDispatch, useSelect } from '@wordpress/data';
-import { createBlock, switchToBlockType } from '@wordpress/blocks';
 import { InnerBlocks } from '@wordpress/block-editor';
+import { createBlock, switchToBlockType } from '@wordpress/blocks';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 /**
  * Block constants
@@ -71,7 +71,7 @@ const settings = {
 		to: [
 			{
 				blocks: [ 'core/columns' ],
-				transform: ( attributes ) => {
+				transform: () => {
 					return createBlock(
 						'core/columns',
 						{},
