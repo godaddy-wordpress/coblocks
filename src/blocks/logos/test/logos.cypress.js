@@ -11,6 +11,10 @@ describe( 'Test CoBlocks Logos Block', function() {
 	it( 'Test logos block saves with empty values.', function() {
 		helpers.addBlockToPost( 'coblocks/logos', true );
 
+		cy.get( '.wp-block-coblocks-logos' ).should( 'exist' );
+
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/logos' );
 	} );
 

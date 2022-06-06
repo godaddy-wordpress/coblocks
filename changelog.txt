@@ -1,4 +1,23 @@
 
+2.24.0 / 2022-05-24
+===================
+### Enhancements
+* Allow all blocks to use animations [#2335](https://github.com/godaddy-wordpress/coblocks/pull/2335)
+
+### Misc
+* Bump Tested up to version to 6.0 [#2383](https://github.com/godaddy-wordpress/coblocks/pull/2383)
+* Remove extraneous element from extensions HoC [#2334](https://github.com/godaddy-wordpress/coblocks/pull/2334)
+* Reintroduce transformation unit tests for CoBlocks Galleries to Core [#2382](https://github.com/godaddy-wordpress/coblocks/pull/2382)
+* Fix automated tests for WP 6.0 [#2381](https://github.com/godaddy-wordpress/coblocks/pull/2381), [#2376](https://github.com/godaddy-wordpress/coblocks/pull/2376), [#2380](https://github.com/godaddy-wordpress/coblocks/pull/2380)
+  
+2.23.1 / 2022-05-16
+===================
+### Bug fixes
+* Fix issue preventing the widgets page from showing [#2378](https://github.com/godaddy-wordpress/coblocks/pull/2378)
+
+### Misc
+* Update WordPress dependencies [#2379](https://github.com/godaddy-wordpress/coblocks/pull/2379)
+
 2.23.0 / 2022-05-10
 ===================
 ### Enhancements

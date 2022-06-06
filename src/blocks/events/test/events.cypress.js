@@ -23,6 +23,9 @@ describe( 'Block: Events', function() {
 	 */
 	it( 'can be inserted without errors', function() {
 		cy.get( '.wp-block-coblocks-events' ).should( 'exist' );
+
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/events' );
 	} );
 
