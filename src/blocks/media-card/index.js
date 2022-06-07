@@ -23,12 +23,8 @@ const settings = {
 		const mediaInnerBlocks = [];
 
 		for ( let block of mediaCardInnerBlocks ) {
-			mediaInnerBlocks.push( createBlock( block.name, block.attributes ) )
+			mediaInnerBlocks.push( createBlock( block.name, block.attributes ) );
 		}
-
-		// props.attributes.mediaUrl = 'https://gutenberg.test/wp-content/uploads/2022/02/bird-bar.jpg';
-
-		console.log( props );
 
 		const cover = switchToBlockType( props, 'core/media-text' );
 
