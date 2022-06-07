@@ -34,11 +34,6 @@ describe( 'coblocks/gallery-offset', () => {
 		serializedBlock = '';
 	} );
 
-	afterEach( () => {
-		// Make a snapshot for each save function test to better detect deprecation needs.
-		expect( serializedBlock ).toMatchSnapshot();
-	} );
-
 	it( 'should render with images', () => {
 		serializedBlock = serialize( block );
 
@@ -46,6 +41,8 @@ describe( 'coblocks/gallery-offset', () => {
 		expect( serializedBlock ).toContain( baseAttributes.images[ 0 ].url );
 		expect( serializedBlock ).toContain( `data-id="${ baseAttributes.images[ 0 ].id }"` );
 		expect( serializedBlock ).toContain( `wp-image-${ baseAttributes.images[ 0 ].id }` );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	it( 'should have className \'has-lightbox\' with lightbox enabled.', () => {
@@ -54,6 +51,8 @@ describe( 'coblocks/gallery-offset', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'has-lightbox' );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	it( 'should have figcaption element with captions enabled and caption text.', () => {
@@ -76,6 +75,8 @@ describe( 'coblocks/gallery-offset', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '<figcaption class="coblocks-gallery--caption">' );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	[ 'light', 'dark' ].forEach( ( captionStyle ) => {
@@ -94,6 +95,8 @@ describe( 'coblocks/gallery-offset', () => {
 
 			expect( serializedBlock ).toBeDefined();
 			expect( serializedBlock ).toContain( `has-caption-style-${ captionStyle }` );
+
+			expect( serializedBlock ).toMatchSnapshot();
 		} );
 	} );
 
@@ -105,6 +108,8 @@ describe( 'coblocks/gallery-offset', () => {
 
 			expect( serializedBlock ).toBeDefined();
 			expect( serializedBlock ).toContain( `has-${ gridSize }-images` );
+
+			expect( serializedBlock ).toMatchSnapshot();
 		} );
 	} );
 
@@ -116,6 +121,8 @@ describe( 'coblocks/gallery-offset', () => {
 
 			expect( serializedBlock ).toBeDefined();
 			expect( serializedBlock ).toContain( `has-${ gutter }-gutter` );
+
+			expect( serializedBlock ).toMatchSnapshot();
 		} );
 	} );
 
@@ -133,6 +140,8 @@ describe( 'coblocks/gallery-offset', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'href="http://google.com"' );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	it( 'should have media link when linkTo is set to "media"', () => {
@@ -149,6 +158,8 @@ describe( 'coblocks/gallery-offset', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'href="https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg"' );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	it( 'should have attachment link when linkTo is set to "attachment"', () => {
@@ -165,6 +176,8 @@ describe( 'coblocks/gallery-offset', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'href="https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg"' );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	[ 'grayscale', 'sepia', 'saturation', 'dim', 'vintage' ].forEach( ( filter ) => {
@@ -174,6 +187,8 @@ describe( 'coblocks/gallery-offset', () => {
 
 			expect( serializedBlock ).toBeDefined();
 			expect( serializedBlock ).toContain( `has-filter-${ filter }` );
+
+			expect( serializedBlock ).toMatchSnapshot();
 		} );
 	} );
 
@@ -189,5 +204,7 @@ describe( 'coblocks/gallery-offset', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'has-border-radius-10' );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 } );
