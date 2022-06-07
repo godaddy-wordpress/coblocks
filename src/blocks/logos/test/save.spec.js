@@ -28,11 +28,6 @@ describe( 'coblocks/logos', () => {
 		serializedBlock = '';
 	} );
 
-	afterEach( () => {
-		// Make a snapshot for each save function test to better detect deprecation needs.
-		expect( serializedBlock ).toMatchSnapshot();
-	} );
-
 	it( 'should render with images attribute', () => {
 		block.attributes.images = [
 			{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg', id: 1 },
@@ -42,6 +37,8 @@ describe( 'coblocks/logos', () => {
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg' );
 		expect( serializedBlock ).toContain( 'data-id="1"' );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	it( 'should render content align classes', () => {
@@ -75,6 +72,8 @@ describe( 'coblocks/logos', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'is-style-black-and-white' );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	it( 'should render with style "Grayscale"', () => {
@@ -91,6 +90,8 @@ describe( 'coblocks/logos', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'is-style-grayscale' );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	it( 'should render with images.width attribute', () => {
@@ -103,6 +104,8 @@ describe( 'coblocks/logos', () => {
 		expect( serializedBlock ).toContain( 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg' );
 		expect( serializedBlock ).toContain( 'data-width="60.6897%"' );
 		expect( serializedBlock ).toContain( 'style="width:60.6897%"' );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	it( 'should render with className attribute', () => {
@@ -112,5 +115,7 @@ describe( 'coblocks/logos', () => {
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( '"className":"my-custom-class"' );
 		expect( serializedBlock ).toContain( 'my-custom-class' );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 } );

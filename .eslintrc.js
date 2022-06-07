@@ -33,17 +33,9 @@ module.exports = {
 			memberSyntaxSortOrder: [ 'all', 'single', 'multiple', 'none' ],
 		} ],
 		'jest/no-conditional-expect': [ 'warn' ],
-		'jest/no-standalone-expect': [ 'warn' ],
 		'sort-keys': [ 'warn', 'asc', { natural: true } ],
-		'sort-vars': [ 'warn', { ignoreCase: true } ],
 		'react/destructuring-assignment': [ 'warn', 'always' ],
-		'react/jsx-no-target-blank': [ 'warn' ],
-		'react/jsx-no-undef': [ 'warn' ],
-		'react/jsx-sort-default-props': [ 'warn', { ignoreCase: true } ],
 		'react/jsx-sort-props': [ 'warn', { ignoreCase: true } ],
-		'react/no-deprecated': [ 'warn' ],
-		'react/sort-prop-types': [ 'warn', { ignoreCase: true } ],
-		'template-curly-spacing': [ 'warn' ],
 	},
 	overrides: [
 		{

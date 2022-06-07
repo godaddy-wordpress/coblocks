@@ -50,17 +50,14 @@ describe( 'coblocks/gallery-masonry', () => {
 		serializedBlock = '';
 	} );
 
-	afterEach( () => {
-		// Make a snapshot for each save function test to better detect deprecation needs.
-		expect( serializedBlock ).toMatchSnapshot();
-	} );
-
 	it( 'should have `core/image` innerBlocks rendered', () => {
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'src="https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg"' );
 		expect( serializedBlock ).toContain( 'wp:image' );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	it( 'should have className \'has-lightbox\' with lightbox enabled.', () => {
@@ -69,6 +66,8 @@ describe( 'coblocks/gallery-masonry', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'has-lightbox' );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	it( 'should have caption with `core/image` and caption with `coblocks/masonry`.', () => {
@@ -94,6 +93,8 @@ describe( 'coblocks/gallery-masonry', () => {
 
 		expect( serializedBlock ).toContain( '<figcaption class="blocks-gallery-caption">' );
 		expect( serializedBlock ).toContain( 'Masonry Caption' );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	it( 'should have className \'has-border-radius-10\' with radius set to 10.', () => {
@@ -108,6 +109,8 @@ describe( 'coblocks/gallery-masonry', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'has-border-radius-10' );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	[ 'small', 'medium', 'large' ].forEach( ( gutter ) => {
@@ -118,6 +121,8 @@ describe( 'coblocks/gallery-masonry', () => {
 
 			expect( serializedBlock ).toBeDefined();
 			expect( serializedBlock ).toContain( `has-${ gutter }-gutter` );
+
+			expect( serializedBlock ).toMatchSnapshot();
 		} );
 	} );
 
@@ -128,6 +133,8 @@ describe( 'coblocks/gallery-masonry', () => {
 
 			expect( serializedBlock ).toBeDefined();
 			expect( serializedBlock ).toContain( `has-filter-${ filter }` );
+
+			expect( serializedBlock ).toMatchSnapshot();
 		} );
 	} );
 } );
