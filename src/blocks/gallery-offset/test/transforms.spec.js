@@ -19,13 +19,8 @@ describe( 'coblocks/gallery-offset transforms', () => {
 		images: [
 			{ index: 0, url: 'https://s.w.org/images/core/5.3/Windbuchencom.jpg' },
 			{ index: 1, url: 'https://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg' },
-		],
+		]
 	};
-
-	const innerBlocks = [
-		createBlock( 'core/image', attributes.images[ 0 ], [ ] ),
-		createBlock( 'core/image', attributes.images[ 1 ], [ ] ),
-	];
 
 	beforeAll( () => {
 		// Register all gallery blocks.

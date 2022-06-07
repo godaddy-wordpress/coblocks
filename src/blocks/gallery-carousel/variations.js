@@ -92,7 +92,6 @@ const variations = [
 			align: 'full',
 			autoPlay: false,
 			draggable: false,
-			freeScroll: false,
 			prevNextButtons: false,
 			gridSize: 'xlrg',
 			// The following attributes would default due to useEffect logic.
@@ -113,7 +112,6 @@ const variations = [
 			align: 'full',
 			autoPlay: true,
 			draggable: false,
-			freeScroll: false,
 			prevNextButtons: true,
 			gridSize: 'lrg',
 			autoPlaySpeed: 3000,
@@ -134,7 +132,6 @@ const variations = [
 			autoPlaySpeed: 3000,
 			responsiveHeight: true,
 			pageDots: true,
-			freeScroll: true,
 			draggable: true,
 			pauseHover: true,
 		},
@@ -154,7 +151,6 @@ const variations = [
 			autoPlaySpeed: 3000,
 			responsiveHeight: true,
 			pageDots: false,
-			freeScroll: true,
 			draggable: false,
 			pauseHover: true,
 			lightbox: true,
@@ -175,11 +171,10 @@ const CarouselGalleryVariationPicker = ( props ) => {
 	const registeredVariations = useSelect( ( select ) => select( 'core/blocks' ).getBlockVariations( name ) ?? null, [] );
 
 	return ( <__experimentalBlockVariationPicker
-		icon={ get( blockType, [ 'icon', 'src' ] ) }
-		label={ get( blockType, [ 'title' ] ) }
-		instructions={ __( 'Select a carousel variation to start with.', 'coblocks' ) }
-		variations={ registeredVariations }
 		allowSkip
+		icon={ get( blockType, [ 'icon', 'src' ] ) }
+		instructions={ __( 'Select a carousel variation to start with.', 'coblocks' ) }
+		label={ get( blockType, [ 'title' ] ) }
 		onSelect={ ( nextVariation = defaultVariation ) => {
 			if ( nextVariation?.attributes ) {
 				setAttributes( {
@@ -191,6 +186,7 @@ const CarouselGalleryVariationPicker = ( props ) => {
 				} );
 			}
 		} }
+		variations={ registeredVariations }
 	/>
 	);
 };
