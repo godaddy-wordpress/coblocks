@@ -14,6 +14,9 @@ describe( 'Block: FAQ', () => {
 	 */
 	it( 'can be inserted without errors', () => {
 		cy.get( '[data-type="coblocks/faq"]' ).should( 'exist' );
+
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/faq' );
 	} );
 
@@ -61,7 +64,7 @@ describe( 'Block: FAQ', () => {
 		cy.get( '[data-type="coblocks/faq-item"] .wp-block-coblocks-faq-item__question__content' ).type( 'Question' );
 
 		// Title - Text color
-		helpers.setColorSetting( 'text', '#FFFFFF' );
+		helpers.setColorSettingsFoldableSetting( 'text', '#FFFFFF' );
 		cy.get( '[data-type="coblocks/faq-item"] .wp-block-coblocks-faq-item__question__content' ).should( 'have.css', 'color', `rgb(255, 255, 255)` );
 
 		helpers.checkForBlockErrors( 'coblocks/faq' );

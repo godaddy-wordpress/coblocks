@@ -13,7 +13,7 @@ import { registerPlugin } from '@wordpress/plugins';
 import { useEffect } from '@wordpress/element';
 import { useEntityProp } from '@wordpress/core-data';
 import { compose, ifCondition } from '@wordpress/compose';
-import { withDispatch, withSelect } from '@wordpress/data';
+import { select as selectWithoutHooks, withDispatch, withSelect } from '@wordpress/data';
 
 /**
  * Local dependencies
@@ -74,7 +74,9 @@ registerPlugin( PLUGIN_NAME, {
 	render: compose( [
 		ifCondition( () => {
 			const [ siteContentEnabled ] = useEntityProp( 'root', 'site', SITE_CONTENT_FEATURE_ENABLED_KEY );
-			return siteContentEnabled;
+			// In the context of `widgets.php` site content is incompatible due to missing dependencies.
+			const isCompatible = !! selectWithoutHooks( 'core/editor' );
+			return siteContentEnabled && isCompatible;
 		} ),
 		withSelect( ( select ) => {
 			const {
