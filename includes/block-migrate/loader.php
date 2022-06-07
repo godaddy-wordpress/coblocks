@@ -18,6 +18,7 @@ require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-dynami
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-highlight-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-alert-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-offset-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gif-migration.php';
 
 /**
  * Hook into the post object before it's returned to the editor.
@@ -46,6 +47,7 @@ add_action(
 			'coblocks/highlight' => CoBlocks_Highlight_Migration::class,
 			'coblocks/alert' => CoBlocks_Alert_Migration::class,
 			'coblocks/gallery-offset' => CoBlocks_Gallery_Offset_Migration::class,
+			'coblocks/gif' => CoBlocks_Gif_Migration::class
 		);
 
 		$parsed_blocks = array_map(
