@@ -27,9 +27,42 @@ describe( 'coblocks/gallery-offset transforms', () => {
 		helpers.registerGalleryBlocks();
 	} );
 
+	it( 'should transform from coblocks/gallery-stacked block', () => {
+		const galleryStacked = createBlock( 'coblocks/gallery-stacked',	attributes );
+		const transformed = switchToBlockType( galleryStacked, name );
+
+		expect( transformed[ 0 ].isValid ).toBe( true );
+		for ( let i = 0; i < attributes.images.length; i++ ) {
+			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
+			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
+		}
+	} );
+
+	it( 'should transform from coblocks/gallery-masonry block', () => {
+		const galleryMasonry = createBlock( 'coblocks/gallery-masonry', {}, innerBlocks );
+		const transformed = switchToBlockType( galleryMasonry, name );
+
+		expect( transformed[ 0 ].isValid ).toBe( true );
+		for ( let i = 0; i < attributes.images.length; i++ ) {
+			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
+			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
+		}
+	} );
+
 	it( 'should transform from coblocks/gallery-carousel block', () => {
 		const galleryCarousel = createBlock( 'coblocks/gallery-carousel', attributes );
 		const transformed = switchToBlockType( galleryCarousel, name );
+
+		expect( transformed[ 0 ].isValid ).toBe( true );
+		for ( let i = 0; i < attributes.images.length; i++ ) {
+			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
+			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
+		}
+	} );
+
+	it( 'should transform from coblocks/gallery-collage block', () => {
+		const galleryCollage = createBlock( 'coblocks/gallery-collage', attributes );
+		const transformed = switchToBlockType( galleryCollage, name );
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
 		for ( let i = 0; i < attributes.images.length; i++ ) {
@@ -88,6 +121,17 @@ describe( 'coblocks/gallery-offset transforms', () => {
 	it( 'should transform to coblocks/gallery-carousel block', () => {
 		const block = createBlock( name, attributes );
 		const transformed = switchToBlockType( block, 'coblocks/gallery-carousel' );
+
+		expect( transformed[ 0 ].isValid ).toBe( true );
+		for ( let i = 0; i < attributes.images.length; i++ ) {
+			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
+			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
+		}
+	} );
+
+	it( 'should transform to coblocks/gallery-collage block', () => {
+		const block = createBlock( name, attributes );
+		const transformed = switchToBlockType( block, 'coblocks/gallery-collage' );
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
 		for ( let i = 0; i < attributes.images.length; i++ ) {
