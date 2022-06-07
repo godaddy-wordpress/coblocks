@@ -1,55 +1,82 @@
 /**
- * External dependencies
- */
-import { AuthorIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Internal dependencies
  */
-import deprecated from './deprecated';
-import edit from './edit';
 import metadata from './block.json';
-import save from './save';
-import transforms from './transforms';
 
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
+import { dispatch } from '@wordpress/data';
+import { createBlock, switchToBlockType } from '@wordpress/blocks';
 
 /**
  * Block constants
  */
-const { name, category, attributes } = metadata;
+const { name } = metadata;
 
 const settings = {
-	attributes,
-	deprecated,
-	/* translators: block description */
-	description: __( 'Add an author biography to build credibility and authority.', 'coblocks' ),
-	edit,
-	example: {
-		attributes: {
-			/* translators: example biography */
-			biography: __( 'Born to express, not to impress. A maker making the world I want.', 'coblocks' ),
-			imgUrl: 'https://s.w.org/images/core/5.3/Windbuchencom.jpg',
-			/* translators: example female name */
-			name: __( 'Jane Doe', 'coblocks' ),
-		},
+	edit: ( props ) => {
+		const { replaceBlocks } = dispatch( 'core/block-editor' );
+		const parentBlock = wp.data.select( 'core/editor' ).getBlocksByClientId( props.clientId )[ 0 ];
+
+		const authorNameBlock = createBlock( 'core/paragraph', { content: props.attributes.name, fontSize: 'medium' } );
+		const authorBioBlock = createBlock( 'core/paragraph', { content: props.attributes.biography } );
+		const buttonBlock = parentBlock.innerBlocks;
+		const imageBlock = createBlock( 'core/image', { className: 'is-style-rounded', id: props.attributes.imgId, url: props.attributes.imgUrl } );
+
+		// Set buttons to align left.
+		buttonBlock.forEach( function( button, index ) {
+			buttonBlock[ index ].attributes.align = 'left';
+		} );
+
+		const leftColumn = createBlock( 'core/column', { width: '25%' }, [ imageBlock ] );
+		const rightColumn = createBlock( 'core/column', { width: '75%' }, [ authorNameBlock, authorBioBlock, ...buttonBlock ] );
+
+		const columnsStyleProps = {
+			"style": {
+				"spacing": {
+					"padding": {
+						"top": "2.5rem",
+						"right": "2.5rem",
+						"bottom": "2.5rem",
+						"left": "2.5rem"
+					}
+				}
+			},
+			...(props.attributes.hasOwnProperty('style') && { style: props.attributes.style }),
+		};
+
+		const columnsBlockProps = {
+			content: props.attributes.biography,
+			...columnsStyleProps,
+			...(props.attributes.hasOwnProperty('textColor') && { textColor: props.attributes.textColor }),
+			...(props.attributes.hasOwnProperty('backgroundColor') && { backgroundColor: props.attributes.backgroundColor }),
+		};
+
+		const columnsBlock = createBlock( 'core/columns', columnsBlockProps, [ leftColumn, rightColumn ] );
+
+		replaceBlocks(
+			[ props.clientId ],
+			columnsBlock
+		);
+
+		return null;
 	},
-	icon: <Icon icon={ icon } />,
-	keywords: [
-		'coblocks',
-		/* translators: block keyword */
-		__( 'biography', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'profile', 'coblocks' ),
-	],
-	save,
+	parent: [],
+	save: () => null,
 	/* translators: block name */
-	title: __( 'Author', 'coblocks' ),
-	transforms,
+	title: metadata.title,
+	transforms: {
+		to: [
+			{
+				blocks: [ 'core/author' ],
+				transform: ( attributes ) => {
+					return createBlock( 'core/author', attributes );
+				},
+				type: 'block',
+			},
+		],
+	},
 };
 
-export { name, category, metadata, settings };
+export { name, metadata, settings };
