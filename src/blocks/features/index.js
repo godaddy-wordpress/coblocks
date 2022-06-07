@@ -69,6 +69,55 @@ function Edit( { clientId } ) {
 	return null;
 }
 
+const migrateExisting = ( parentAttributes, innerBlocks ) => {
+	return innerBlocks.map( ( innerBlock ) => {
+		return createBlock(
+			'core/column',
+			{
+				allowedBlocks: [ 'core/paragraph' ],
+			},
+			innerBlock.innerBlocks.map( ( block ) => {
+				const blockAttributes = {
+					...block.attributes,
+				};
+
+				if ( block.name === 'core/heading' ) {
+					blockAttributes.textAlign = parentAttributes.contentAlign;
+				}
+
+				if ( block.name === 'core/paragraph' ) {
+					blockAttributes.align = parentAttributes.contentAlign;
+				}
+
+				if ( block.name === 'coblocks/icon' ) {
+					blockAttributes.contentAlign = parentAttributes.contentAlign;
+				}
+
+				return createBlock(
+					block.name,
+					blockAttributes
+				);
+			} )
+		);
+	} );
+};
+
+const createNewMigration = () => {
+	return templateContainer.map( ( innerBlock ) => {
+		return createBlock(
+			'core/column',
+			{
+				allowedBlocks: [ 'core/paragraph', 'core/heading', 'coblocks/icon' ],
+			},
+			innerBlock.map( ( block ) => {
+				return createBlock(
+					...block,
+				);
+			} )
+		);
+	} );
+};
+
 const settings = {
 	edit: Edit,
 	save: () => <InnerBlocks.Content />,
@@ -77,21 +126,14 @@ const settings = {
 		to: [
 			{
 				blocks: [ 'core/columns' ],
-				transform: () => {
+				transform: ( attributes, innerBlocks ) => {
 					return createBlock(
 						'core/columns',
-						{},
-						templateContainer.map( ( innerBlock ) => {
-							return createBlock(
-								'core/column',
-								{},
-								innerBlock.map( ( block ) => {
-									return createBlock(
-										...block
-									);
-								} )
-							);
-						} )
+						{
+							template: [ FEATURE_TEMPLATE ],
+							templateLock: 'all',
+						},
+						innerBlocks.length > 0 ? migrateExisting( attributes, innerBlocks ) : createNewMigration()
 					);
 				},
 				type: 'block',
