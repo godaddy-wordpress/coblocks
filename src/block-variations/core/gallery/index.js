@@ -4,6 +4,7 @@
 import {
 	GalleryCollageIcon,
 	GalleryMasonryIcon,
+	GalleryOffsetIcon,
 	GalleryStackedIcon,
 } from '@godaddy-wordpress/coblocks-icons';
 
@@ -44,6 +45,17 @@ export const BLOCK_VARIATION_GALLERY_COLLAGE = {
 	icon: GalleryCollageIcon,
 	name: 'collage',
 	title: __( 'Collage (CoBlocks)', 'coblocks' ),
+};
+
+export const BLOCK_VARIATION_GALLERY_OFFSET = {
+	attributes: {
+		className: 'is-style-offset',
+		columns: 4,
+	},
+	description: __( 'offset gallery', 'coblocks' ),
+	icon: GalleryOffsetIcon,
+	name: 'offset',
+	title: __( 'Offset (CoBlocks)', 'coblocks' ),
 };
 
 [

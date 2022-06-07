@@ -64,17 +64,6 @@ describe( 'coblocks/gallery-carousel transforms', () => {
 		expect( transforms.from[ 1 ].isMatch( [ { id: 1234, url: 'someUrl' }, { id: "1234", url: 'someUrl' } ] ) ).toHaveLength( 1 );
 	} );
 
-	it( 'should transform to coblocks/gallery-offset block', () => {
-		const block = createBlock( name, attributes );
-		const transformed = switchToBlockType( block, 'coblocks/gallery-offset' );
-
-		expect( transformed[ 0 ].isValid ).toBe( true );
-		for ( let i = 0; i < attributes.images.length; i++ ) {
-			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
-			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
-		}
-	} );
-
 	it( 'should transform to core/gallery block', () => {
 		const block = createBlock( name, attributes );
 		const transformed = switchToBlockType( block, 'core/gallery' );
