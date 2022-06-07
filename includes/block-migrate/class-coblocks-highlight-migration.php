@@ -27,20 +27,20 @@ class CoBlocks_Highlight_Migration extends CoBlocks_Block_Migration {
 	 */
 	protected function migrate_attributes() {
 		$style_string = '';
-		$defaults = array(
+		$defaults     = array(
 			'background-color' => '#fff8e5',
-			'color' => '',
+			'color'            => '',
 		);
 
-		$mark_element = $this->document->getElementsByTagName( 'mark' )->item( 0 );
+		$mark_element    = $this->document->getElementsByTagName( 'mark' )->item( 0 );
 		$highlight_style = $this->get_element_attribute( $mark_element, 'style' );
 
 		if ( $highlight_style ) {
 			$element_styles = array();
-			$style_array = explode( ';', $highlight_style );
+			$style_array    = explode( ';', $highlight_style );
 
 			foreach ( $style_array as $style ) {
-				$split = explode( ':', $style );
+				$split                       = explode( ':', $style );
 				$element_styles[ $split[0] ] = $split[1];
 			}
 

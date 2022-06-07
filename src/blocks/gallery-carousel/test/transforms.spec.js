@@ -19,12 +19,8 @@ describe( 'coblocks/gallery-carousel transforms', () => {
 		images: [
 			{ index: 0, url: 'https://s.w.org/images/core/5.3/Windbuchencom.jpg' },
 			{ index: 1, url: 'https://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg' },
-		] };
-
-	const innerBlocks = [
-		createBlock( 'core/image', attributes.images[ 0 ], [ ] ),
-		createBlock( 'core/image', attributes.images[ 1 ], [ ] ),
-	];
+		]
+	};
 
 	beforeAll( () => {
 		// Register all gallery blocks.
@@ -87,17 +83,6 @@ describe( 'coblocks/gallery-carousel transforms', () => {
 		transformed.innerBlocks.forEach( ( image, index ) => {
 			expect( image.attributes.url ).toBe( attributes.images[ index ].url );
 		} );
-	} );
-
-	it( 'should transform to coblocks/gallery-offset block', () => {
-		const block = createBlock( name, attributes );
-		const transformed = switchToBlockType( block, 'coblocks/gallery-offset' );
-
-		expect( transformed[ 0 ].isValid ).toBe( true );
-		for ( let i = 0; i < attributes.images.length; i++ ) {
-			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
-			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
-		}
 	} );
 
 	it( 'should transform to core/gallery block', () => {
