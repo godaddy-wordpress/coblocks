@@ -2,11 +2,14 @@
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { PluginMoreMenuItem } from '@wordpress/edit-post';
 import { useDispatch } from '@wordpress/data';
 import { useState } from '@wordpress/element';
 import { getPlugin, registerPlugin } from '@wordpress/plugins';
 import { MenuItem, Modal } from '@wordpress/components';
+
+// In the context of `widgets.php`, `editPostImport` is not available.
+import * as editPostImport from '@wordpress/edit-post';
+const PluginMoreMenuItem = !! editPostImport ? editPostImport.PluginMoreMenuItem : null;
 
 /**
  * Internal dependencies
@@ -80,7 +83,7 @@ export function CoBlocksLabs() {
 	);
 }
 
-if ( ! getPlugin( 'coblocks-labs' ) ) {
+if ( ! getPlugin( 'coblocks-labs' ) && !! PluginMoreMenuItem ) {
 	registerPlugin( 'coblocks-labs', {
 		icon: '',
 		render: CoBlocksLabs,

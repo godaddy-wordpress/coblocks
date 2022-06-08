@@ -27,4 +27,8 @@ import './style.scss';
 		label: __( 'Layered', 'coblocks' ),
 		name: 'layered',
 	},
+	{
+		label: __( 'Offset', 'coblocks' ),
+		name: 'offset',
+	},
 ].forEach( ( variation ) => registerBlockStyle( 'core/gallery', variation ) );

@@ -12,7 +12,7 @@ import { GalleryClasses } from '../../components/block-gallery/shared';
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 
 const save = ( props ) => {
 	const { attributes } = props;
@@ -24,7 +24,6 @@ const save = ( props ) => {
 		gutter,
 		images,
 		pauseHover,
-		freeScroll,
 		prevNextButtons,
 		thumbnails,
 		responsiveHeight,
@@ -117,7 +116,7 @@ const save = ( props ) => {
 		autoPlay,
 		autoPlaySpeed,
 		draggable,
-		freeScroll,
+		freeMode: false, // Explicit false for UX concerns. This is by default false in tinyswiper.
 		loop,
 		navigation: prevNextButtons,
 		pageDots,
@@ -182,6 +181,24 @@ const save = ( props ) => {
 								</button>
 							);
 						} ) }
+					</div>
+				) }
+				{ pageDots && (
+					<div className="wp-block-coblocks-gallery-carousel-page-dot-pagination-container">
+						<div className="wp-block-coblocks-gallery-carousel-page-dot-wrapper">
+							{ images.map( ( item, index ) => {
+								const ariaLabel = sprintf(
+									/* translators: %1$d is the order number of the image, %2$d is the total number of images */
+									__( 'view image %1$d of %2$d in carousel', 'coblocks' ),
+									( index + 1 ),
+									images.length
+								);
+
+								return (
+									<button aria-label={ ariaLabel } className="wp-block-coblocks-gallery-carousel-page-dot-pagination" key={ index }></button>
+								);
+							} ) }
+						</div>
 					</div>
 				) }
 			</div>

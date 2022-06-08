@@ -2,6 +2,7 @@
  * Include our constants
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
+import { getWindowObject } from '../../../../.dev/tests/cypress/helpers';
 
 const filters = [
 	'Original',
@@ -91,12 +92,22 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 	 * and alter image using the Lightbox Controls extension
 	 */
 	it( 'Test core/gallery block extends with Media Filter Control component.', function() {
+		// Remove the fixed toolbar that sometime causes a detached element of the DOM
+		getWindowObject().then( ( safeWin ) => {
+			safeWin.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'fixedToolbar' );
+		} );
+
 		helpers.addBlockToPost( 'core/gallery', true );
 
 		helpers.upload.imageToBlock( 'core/gallery' );
 
 		cy.get( '.block-editor-block-toolbar__slot .components-coblocks-media-filter' )
 			.should( 'exist' )
+			.click();
+
+		helpers.selectBlock( 'Gallery' );
+
+		cy.get( '.block-editor-block-toolbar__slot .components-coblocks-media-filter' )
 			.click();
 
 		let childIteration = 1;

@@ -21,6 +21,10 @@ describe( 'Test CoBlocks Row Block', function() {
 	 * a single column and save content without errors.
 	 */
 	it( 'Test row block saves with one column.', function() {
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/row' );
+
 		helpers.addBlockToPost( 'coblocks/row', true );
 
 		cy.get( '.block-editor-block-variation-picker__variations' ).find( 'li:nth-child(1) button' ).click();
@@ -84,8 +88,8 @@ describe( 'Test CoBlocks Row Block', function() {
 
 		cy.get( '.wp-block-coblocks-row' ).click( { force: true } );
 
-		helpers.setColorSetting( 'background color', backgroundColor );
-		helpers.setColorSetting( 'text color', textColor );
+		helpers.setColorSettingsFoldableSetting( 'background color', backgroundColor );
+		helpers.setColorSettingsFoldableSetting( 'text color', textColor );
 
 		helpers.checkForBlockErrors( 'coblocks/row' );
 	} );

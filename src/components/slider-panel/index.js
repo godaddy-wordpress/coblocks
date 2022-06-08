@@ -54,10 +54,6 @@ const SliderPanel = ( props ) => {
 		return checked ? __( 'Pausing autoplay when hovering.', 'coblocks' ) : __( 'Toggle to pause autoplay when hovered.', 'coblocks' );
 	};
 
-	const getfreeScrollHelp = ( checked ) => {
-		return checked ? __( 'Scrolling without fixed slides enabled.', 'coblocks' ) : __( 'Toggle to scroll without fixed slides.', 'coblocks' );
-	};
-
 	const {
 		attributes,
 		setAttributes,
@@ -67,7 +63,6 @@ const SliderPanel = ( props ) => {
 		autoPlay,
 		autoPlaySpeed,
 		draggable,
-		freeScroll,
 		loop,
 		pageDots,
 		prevNextButtons,
@@ -112,12 +107,6 @@ const SliderPanel = ( props ) => {
 				label={ __( 'Draggable', 'coblocks' ) }
 				onChange={ () => setAttributes( { draggable: ! draggable } ) }
 			/>
-			{ draggable && <ToggleControl
-				checked={ !! freeScroll }
-				help={ getfreeScrollHelp }
-				label={ __( 'Free scroll', 'coblocks' ) }
-				onChange={ () => setAttributes( { freeScroll: ! freeScroll } ) }
-			/> }
 			<ToggleControl
 				checked={ !! prevNextButtons }
 				help={ getArrowNavigationHelp }
