@@ -500,16 +500,6 @@ commands:
               bash .dev/bin/setup-test-specs.sh $FILES
             fi
 
-  pre_check_files:
-    steps:
-      - run:
-          name: "Pre-Check files"
-          command: |
-            if [ -z $FILES ] && [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != "develop" ] && [[ "$CIRCLE_BRANCH" != *"run-all-tests"* ]]; then
-              echo "Changes do not require testing."
-              circleci-agent step halt
-            fi
-
   run_phpunit_singlesite_with_coverage_reports:
     steps:
       - run:
@@ -668,7 +658,6 @@ jobs:
     executor: php_74_node
     steps:
       - checkout
-      - pre_check_files
       - attach_workspace:
           at: ~/project
       - restore_composer_cache
@@ -689,7 +678,6 @@ jobs:
     executor: node_latest
     steps:
       - checkout
-      - pre_check_files
       - attach_workspace:
           at: ~/project
       - restore_yarn_cache
