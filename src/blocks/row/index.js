@@ -6,36 +6,42 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-import { dispatch } from '@wordpress/data';
+import { InnerBlocks } from '@wordpress/block-editor';
 import { createBlock, switchToBlockType } from '@wordpress/blocks';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 /**
  * Block constants
  */
 const { name } = metadata;
 
+function Edit( { clientId } ) {
+	const { replaceBlocks } = useDispatch( 'core/block-editor' );
+	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
+
+	replaceBlocks(
+		[ clientId ],
+		switchToBlockType( getBlock( clientId ), 'core/columns' )
+	);
+
+	return null;
+}
+
 const settings = {
-	edit: ( props ) => {
-		const { replaceBlocks } = dispatch( 'core/block-editor' );
-		const parentBlock = wp.data.select( 'core/editor' ).getBlocksByClientId( props.clientId )[ 0 ];
-
-		replaceBlocks(
-			[ props.clientId ],
-			createBlock( 'core/columns', props, parentBlock.innerBlocks ),
-		);
-
-		return null;
-	},
+	edit: Edit,
 	parent: [],
-	save: () => null,
+	save: () => <InnerBlocks.Content />,
 	/* translators: block name */
 	title: metadata.title,
 	transforms: {
 		to: [
 			{
 				blocks: [ 'core/columns' ],
-				transform: ( attributes ) => {
-					return createBlock( 'core/columns', attributes );
+				transform: ( attributes, innerBlocks ) => {
+					return createBlock(
+						'core/columns', attributes,
+						innerBlocks.map( ( innerBlock ) => switchToBlockType( innerBlock, 'core/column' ) ).flat()
+					);
 				},
 				type: 'block',
 			},
