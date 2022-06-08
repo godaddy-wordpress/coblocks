@@ -45,17 +45,21 @@ function coblocks_block_gist_handler( $matches ) {
 		)
 	);
 
-	// JSON decode the response body.
-	// Then grab files from JSON object.
-	$body  = json_decode( $api_resp['body'], true );
-	$files = empty( $body['files'] ) ? array() : $body['files'];
+	$resp_body = wp_remote_retrieve_body( $api_resp );
+	$result    = json_decode( $resp_body, true );
+
+	if ( ! is_array( $result ) || empty( $result['files'] ) || is_wp_error( $result ) ) {
+		return '';
+	}
 
 	// Map files object into filenames array.
-	$file_list = array_map(
-		function( $file ) {
-			return $file['filename'];
-		},
-		$files
+	$file_list = array_filter(
+		array_map(
+			function( $file ) {
+				return ! empty( $file['filename'] ) ? $file['filename'] : null;
+			},
+			$result['files']
+		)
 	);
 
 	$script_src = untrailingslashit( $gist_path );
