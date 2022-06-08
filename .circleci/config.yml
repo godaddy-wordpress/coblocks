@@ -104,7 +104,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   go_browsers:
     docker:
-      - image: cimg/go:1.17-browsers
+      - image: cimg/go:1.16-browsers
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
