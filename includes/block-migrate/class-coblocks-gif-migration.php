@@ -6,10 +6,10 @@
  */
 
  /**
- * CoBlocks_Gif_Migration
- *
- * Define how a coblocks/gif block should migrate into a core/image block.
- */
+  * CoBlocks_Gif_Migration
+  *
+  * Define how a coblocks/gif block should migrate into a core/image block.
+  */
 class CoBlocks_Gif_Migration extends CoBlocks_Block_Migration {
 	/**
 	 * Returns the name of the block.
@@ -33,7 +33,7 @@ class CoBlocks_Gif_Migration extends CoBlocks_Block_Migration {
 			'src'
 		);
 
-		if ( !empty( $gif_image_url ) ) {
+		if ( ! empty( $gif_image_url ) ) {
 			$this->block_attributes['url'] = $gif_image_url;
 		}
 
