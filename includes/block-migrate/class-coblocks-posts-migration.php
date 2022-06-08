@@ -16,7 +16,7 @@ class CoBlocks_Posts_Migration extends CoBlocks_Block_Migration {
 	 *
 	 * @inheritDoc
 	 */
-	protected function block_name() {
+	public static function block_name() {
 		return 'coblocks/posts';
 	}
 
