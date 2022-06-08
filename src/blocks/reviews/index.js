@@ -46,6 +46,7 @@ const settings = {
 	],
 	example: {
 		attributes: {
+			yelpBusinessId: 'amici-s-east-coast-pizzeria-at-cloudkitchens-soma-san-francisco',
 			reviews: [
 				{
 					uuid: '6f9c2293-d9a4-4268-9e13-d64cb1a38d91',
