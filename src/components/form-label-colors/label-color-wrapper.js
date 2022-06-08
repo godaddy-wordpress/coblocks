@@ -7,8 +7,8 @@ import PropTypes from 'prop-types';
 /**
  * WordPress dependencies
  */
-import { cloneElement, isValidElement } from '@wordpress/element';
 import { hasBlockSupport } from '@wordpress/blocks';
+import { cloneElement, isValidElement } from '@wordpress/element';
 
 /**
  * Return an element Wrapped with Label Color Properties.
@@ -56,8 +56,8 @@ function LabelColorWrapper( { children, name, textColor, customTextColor } ) {
 }
 
 LabelColorWrapper.propTypes = {
-	textColor: PropTypes.string,
 	customTextColor: PropTypes.string,
+	textColor: PropTypes.string,
 };
 
 export default LabelColorWrapper;

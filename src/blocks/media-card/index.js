@@ -22,7 +22,7 @@ const settings = {
 		const mediaCardInnerBlocks = parentBlock.innerBlocks[ 0 ].innerBlocks[ 0 ].innerBlocks;
 		const mediaInnerBlocks = [];
 
-		for ( let block of mediaCardInnerBlocks ) {
+		for ( const block of mediaCardInnerBlocks ) {
 			mediaInnerBlocks.push( createBlock( block.name, block.attributes ) );
 		}
 
