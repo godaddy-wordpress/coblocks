@@ -17,11 +17,34 @@ import save from './save';
  */
 import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
+import { InnerBlocks } from '@wordpress/block-editor';
+import { useDispatch, useSelect } from '@wordpress/data';
+import { createBlock, switchToBlockType } from '@wordpress/blocks';
 
 /**
  * Block constants.
  */
 const { name, category, attributes } = metadata;
+
+function Edit( { clientId } ) {
+	const { replaceBlocks } = useDispatch( 'core/block-editor' );
+	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
+
+	const currentBlock = getBlock( clientId );
+
+	if ( ! currentBlock ) {
+		return null;
+	}
+
+	console.log( 'currentBlock', currentBlock );
+
+	replaceBlocks(
+		[ clientId ],
+		switchToBlockType( currentBlock, 'core/columns' )
+	);
+
+	return null;
+}
 
 const settings = {
 	/* translators: block name */
@@ -34,20 +57,24 @@ const settings = {
 		/* translators: block keyword */
 		__( 'features', 'coblocks' ),
 	],
-	supports: {
-		align: [ 'wide', 'full' ],
-		gutter: {
-			default: 'medium',
-			customDefault: 1.6,
-		},
-		reusable: false,
-		html: false,
+	edit: Edit,
+	save: () => <InnerBlocks.Content />,
+
+	transforms: {
+		to: [
+			{
+				blocks: [ 'core/columns' ],
+				transform: ( attributes, innerBlocks ) => {
+					return createBlock(
+						'core/columns',
+						{},
+						[]
+					);
+				},
+				type: 'block',
+			},
+		],
 	},
-	example,
-	attributes,
-	edit,
-	save,
-	deprecated,
 };
 
 export { name, category, metadata, settings };
