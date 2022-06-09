@@ -77,7 +77,7 @@ abstract class CoBlocks_Block_Migration {
 	 *
 	 * @return string the block name.
 	 */
-	abstract public static function block_name();
+	abstract public function block_name();
 
 	/**
 	 * Produce new attributes from the migrated block.
