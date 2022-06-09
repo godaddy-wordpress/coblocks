@@ -17,8 +17,7 @@ class CoBlocks_Gallery_Masonry_Migration_Test extends WP_UnitTestCase {
 
 	public function test_migrate() {
 		$parsed_blocks = parse_blocks(
-			<<<BLOCKHTML
-			<!-- wp:coblocks/gallery-masonry {"linkTo":"none","gutter":"custom","gutterCustom":"0"} -->
+			'<!-- wp:coblocks/gallery-masonry {"linkTo":"none","gutter":"custom","gutterCustom":"0"} -->
 			<figure class="wp-block-coblocks-gallery-masonry masonry-grid has-custom-gutter" style="--coblocks-custom-gutter:0em">
 				<!-- wp:image {"id":74,"sizeSlug":"large"} -->
 				<figure class="wp-block-image size-large">
@@ -32,15 +31,14 @@ class CoBlocks_Gallery_Masonry_Migration_Test extends WP_UnitTestCase {
 				</figure>
 				<!-- /wp:image -->
 			</figure>
-			<!-- /wp:coblocks/gallery-masonry -->
-			BLOCKHTML
+			<!-- /wp:coblocks/gallery-masonry -->'
 		);
 		$block_attributes = $this->instance->migrate( $parsed_blocks[0]['attrs'], $parsed_blocks[0]['innerHTML'] );
 
 		$this->assertIsArray( $block_attributes );
 		$this->assertEqualSetsWithIndex(
 			array(),
-			$block_attributes,
+			$block_attributes
 		);
 	}
 }

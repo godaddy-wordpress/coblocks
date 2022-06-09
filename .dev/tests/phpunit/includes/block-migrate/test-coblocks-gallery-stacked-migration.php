@@ -17,8 +17,7 @@ class CoBlocks_Gallery_Stacked_Migration_Test extends WP_UnitTestCase {
 
 	public function test_migrate() {
 		$parsed_blocks = parse_blocks(
-			<<<BLOCKHTML
-			<!-- wp:coblocks/gallery-stacked -->
+			'<!-- wp:coblocks/gallery-stacked -->
 			<div class="wp-block-coblocks-gallery-stacked">
 				<ul class="coblocks-gallery has-no-alignment has-fullwidth-images has-custom-gutter" style="--coblocks-custom-gutter:0em">
 					<li class="coblocks-gallery--item">
@@ -33,8 +32,7 @@ class CoBlocks_Gallery_Stacked_Migration_Test extends WP_UnitTestCase {
 					</li>
 				</ul>
 			</div>
-			<!-- /wp:coblocks/gallery-stacked -->
-			BLOCKHTML
+			<!-- /wp:coblocks/gallery-stacked -->'
 		);
 		$block_attributes = $this->instance->migrate( $parsed_blocks[0]['attrs'], $parsed_blocks[0]['innerHTML'] );
 
@@ -53,7 +51,7 @@ class CoBlocks_Gallery_Stacked_Migration_Test extends WP_UnitTestCase {
 					)
 				),
 			),
-			$block_attributes,
+			$block_attributes
 		);
 	}
 }
