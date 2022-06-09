@@ -35,11 +35,6 @@ describe( 'coblocks/gallery-carousel', () => {
 		serializedBlock = '';
 	} );
 
-	afterEach( () => {
-		// Make a snapshot for each save function test to better detect deprecation needs.
-		expect( serializedBlock ).toMatchSnapshot();
-	} );
-
 	it( 'should render with images', () => {
 		serializedBlock = serialize( block );
 
@@ -47,6 +42,8 @@ describe( 'coblocks/gallery-carousel', () => {
 		expect( serializedBlock ).toContain( baseAttributes.images[ 0 ].url );
 		expect( serializedBlock ).toContain( `data-id="${ baseAttributes.images[ 0 ].id }"` );
 		expect( serializedBlock ).toContain( `wp-image-${ baseAttributes.images[ 0 ].id }` );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	it( 'should have className \'has-lightbox\' with lightbox enabled.', () => {
@@ -55,6 +52,8 @@ describe( 'coblocks/gallery-carousel', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'has-lightbox' );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	it( 'should have thumbnails on swiper if thumbnails enabled', () => {
@@ -63,6 +62,8 @@ describe( 'coblocks/gallery-carousel', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'wp-block-coblocks-gallery-carousel-thumbnail-pagination' );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	it( 'should have navigation swiper setting of \'\.${ attributes.navigation }\' with arrow navigation buttons enabled', () => {
@@ -71,6 +72,8 @@ describe( 'coblocks/gallery-carousel', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'nav-button__prev' );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	it( 'should have className \'has-responsive-height\' with responsiveHeight enabled.', () => {
@@ -79,6 +82,8 @@ describe( 'coblocks/gallery-carousel', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'has-responsive-height' );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	[ 'large', 'xlarge' ].forEach( ( gridSize ) => {
@@ -89,6 +94,8 @@ describe( 'coblocks/gallery-carousel', () => {
 
 			expect( serializedBlock ).toBeDefined();
 			expect( serializedBlock ).toContain( `has-carousel-${ gridSize }` );
+
+			expect( serializedBlock ).toMatchSnapshot();
 		} );
 	} );
 
@@ -99,6 +106,8 @@ describe( 'coblocks/gallery-carousel', () => {
 
 			expect( serializedBlock ).toBeDefined();
 			expect( serializedBlock ).toContain( `has-filter-${ filter }` );
+
+			expect( serializedBlock ).toMatchSnapshot();
 		} );
 	} );
 
@@ -120,6 +129,8 @@ describe( 'coblocks/gallery-carousel', () => {
 		blockDOM = new JSDOM( serializedBlock );
 		swiperData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.swiper );
 		expect( swiperData.autoPlay ).toBe( true );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	it( 'should have \'draggable\' property set in the data-swiper attribute when draggable enabled.', () => {
@@ -140,6 +151,8 @@ describe( 'coblocks/gallery-carousel', () => {
 		blockDOM = new JSDOM( serializedBlock );
 		swiperData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.swiper );
 		expect( swiperData.draggable ).toBe( false );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	it( 'should have \'pageDots\' property set in the data-flickity attribute when pageDots enabled.', () => {
@@ -160,6 +173,8 @@ describe( 'coblocks/gallery-carousel', () => {
 		blockDOM = new JSDOM( serializedBlock );
 		swiperData = JSON.parse( blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ].dataset.swiper );
 		expect( swiperData.pageDots ).toBe( true );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	it( 'should have className \'has-aligned-cells\' with alignCells enabled.', () => {
@@ -180,6 +195,8 @@ describe( 'coblocks/gallery-carousel', () => {
 		expect(
 			blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ]
 		).toHaveClass( 'has-aligned-cells' );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 
 	it( 'should have \'height\' property within the \'style\' attribute with the height attribute set.', () => {
@@ -192,5 +209,7 @@ describe( 'coblocks/gallery-carousel', () => {
 		expect(
 			blockDOM.window.document.getElementsByClassName( 'has-carousel' )[ 0 ]
 		).toHaveStyle( 'height: 500px' );
+
+		expect( serializedBlock ).toMatchSnapshot();
 	} );
 } );

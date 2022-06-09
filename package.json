@@ -77,8 +77,7 @@
 		"@godaddy-wordpress/coblocks-icons": "2.0.4"
 	},
 	"devDependencies": {
-		"@es-joy/jsdoccomment": "0.13.0",
-		"@godaddy-wordpress/eslint-config": "^0.5.0",
+		"@godaddy-wordpress/eslint-config": "^0.6.0",
 		"@godaddy-wordpress/stylelint-config": "^0.6.0",
 		"@jest/core": "^27.4.5",
 		"@react-google-maps/api": "^2.7.0",
@@ -162,12 +161,7 @@
 		"uuid": "^8.3.2"
 	},
 	"resolutions": {
-		"async": "^3.2.2",
-		"markdown-it": "^12.3.2",
-		"moment": "^2.29.2",
-		"react-dom": "17.0.2",
-		"react": "17.0.2",
-		"rtlcss": "^3.5.0"
+		"eslint-plugin-jsdoc": "^39.2.5"
 	},
 	"lint-staged": {
 		"*.scss": [
