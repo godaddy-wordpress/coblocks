@@ -16,7 +16,7 @@ class CoBlocks_Highlight_Migration extends CoBlocks_Block_Migration {
 	 *
 	 * @inheritDoc
 	 */
-	public static function block_name() {
+	public function block_name() {
 		return 'coblocks/highlight';
 	}
 

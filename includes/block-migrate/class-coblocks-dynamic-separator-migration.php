@@ -16,7 +16,7 @@ class CoBlocks_Dynamic_Separator_Migration extends CoBlocks_Block_Migration {
 	 *
 	 * @inheritDoc
 	 */
-	public static function block_name() {
+	public function block_name() {
 		return 'coblocks/dynamic-separator';
 	}
 

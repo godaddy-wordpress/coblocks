@@ -16,7 +16,7 @@ class CoBlocks_Gallery_Masonry_Migration extends CoBlocks_Block_Migration {
 	 *
 	 * @inheritDoc
 	 */
-	public static function block_name() {
+	public function block_name() {
 		return 'coblocks/gallery-masonry';
 	}
 
