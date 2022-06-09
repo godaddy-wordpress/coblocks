@@ -17,8 +17,7 @@ class CoBlocks_Gallery_Collage_Migration_Test extends WP_UnitTestCase {
 
 	public function test_migrate() {
 		$parsed_blocks = parse_blocks(
-			<<<BLOCKHTML
-			<!-- wp:coblocks/gallery-collage -->
+			'<!-- wp:coblocks/gallery-collage -->
 			<div aria-label="Collage Gallery" class="wp-block-coblocks-gallery-collage alignwide has-small-gutter">
 				<ul>
 					<li class="wp-block-coblocks-gallery-collage__item item-1">
@@ -33,8 +32,7 @@ class CoBlocks_Gallery_Collage_Migration_Test extends WP_UnitTestCase {
 					</li>
 				</ul>
 			</div>
-			<!-- /wp:coblocks/gallery-collage -->
-			BLOCKHTML
+			<!-- /wp:coblocks/gallery-collage -->'
 		);
 		$block_attributes = $this->instance->migrate( $parsed_blocks[0]['attrs'], $parsed_blocks[0]['innerHTML'] );
 
@@ -54,7 +52,7 @@ class CoBlocks_Gallery_Collage_Migration_Test extends WP_UnitTestCase {
 					)
 				),
 			),
-			$block_attributes,
+			$block_attributes
 		);
 	}
 }
