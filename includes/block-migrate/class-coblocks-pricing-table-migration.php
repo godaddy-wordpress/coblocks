@@ -8,7 +8,7 @@
 /**
  * CoBlocks_Pricing_Table_Migration
  *
- * Define how a coblocks/gallery-masonry block should migrate into a core/gallery block.
+ * Define how a coblocks/pricing-table block should migrate into a core blocks.
  */
 class CoBlocks_Pricing_Table_Migration extends CoBlocks_Block_Migration {
 	/**
@@ -16,7 +16,7 @@ class CoBlocks_Pricing_Table_Migration extends CoBlocks_Block_Migration {
 	 *
 	 * @inheritDoc
 	 */
-	protected function block_name() {
+	public static function block_name() {
 		return 'coblocks/pricing-table';
 	}
 

@@ -1,50 +1,44 @@
 /**
- * External dependencies
- */
-import { PricingTableItemIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Internal dependencies
  */
-import edit from './edit';
 import metadata from './block.json';
-import save from './save';
-import transforms from './transforms';
 
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
+import { createBlock } from '@wordpress/blocks';
 
 /**
  * Block constants
  */
-const { name, category, attributes } = metadata;
+const { name } = metadata;
 
 const settings = {
-	/* translators: block name */
-	title: __( 'Pricing Table Item', 'coblocks' ),
-	/* translators: block description */
-	description: __( 'A pricing table to help visitors compare products and plans.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
-	keywords: [
-		'coblocks',
-		/* translators: block keyword */
-		__( 'landing', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'comparison', 'coblocks' ),
-	],
-	parent: [ 'coblocks/pricing-table' ],
-	supports: {
-		html: false,
-		inserter: false,
-		reusable: false,
+	edit: () => null,
+	parent: [],
+	save: () => null,
+	title: metadata.title,
+	transforms: {
+		to: [
+			{
+				blocks: [ 'core/column' ],
+				transform: ( attributes, innerBlocks ) => {
+					console.log( attributes );
+
+					const heading  = createBlock( 'core/paragraph', { content: attributes.title, align: 'center', style: { 'typography': { fontStyle: 'normal', fontWeight: '700', fontSize: 'medium' } } } );
+					const price    = createBlock( 'core/paragraph', { content: '<sup>' + attributes.currency + '</sup>' + attributes.amount, align: 'center', style: { 'typography': { fontStyle: 'normal', fontSize: '5em' } } } );
+					const features = attributes.features.map( function( feature ) {
+						return createBlock( 'core/paragraph', { content: feature, align: 'center' } );
+					} );
+
+					const button = createBlock( 'core/buttons', { layout: { type: 'flex', justifyContent: 'center' } }, innerBlocks );
+
+					return createBlock( 'core/column', attributes, [ heading, price, ...features, button ] );
+				},
+				type: 'block',
+			},
+		],
 	},
-	attributes,
-	transforms,
-	edit,
-	save,
 };
 
-export { name, category, metadata, settings };
+export { name, metadata, settings };
