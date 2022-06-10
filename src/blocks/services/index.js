@@ -24,7 +24,40 @@ import { createBlock, switchToBlockType } from '@wordpress/blocks';
 /**
  * Block constants.
  */
-const { name, category, attributes } = metadata;
+const { name, category } = metadata;
+
+const SERVICE_TEMPLATE = [
+	[
+		'core/image',
+		{},
+	],
+	[
+		'core/heading',
+		{
+			/* translators: content placeholder */
+			content: __( '', 'coblocks' ),
+			level: 4,
+			/* translators: content placeholder */
+			placeholder: __( 'Write title…', 'coblocks' ),
+			textAlign: 'center',
+		},
+	],
+	[
+		'core/paragraph',
+		{
+			align: 'center',
+			/* translators: content placeholder */
+			content: __( '', 'coblocks' ),
+			/* translators: content placeholder */
+			placeholder: __( 'Write description…', 'coblocks' ),
+		},
+	],
+];
+
+const templateContainer = [
+	SERVICE_TEMPLATE,
+	SERVICE_TEMPLATE,
+];
 
 function Edit( { clientId } ) {
 	const { replaceBlocks } = useDispatch( 'core/block-editor' );
@@ -36,8 +69,6 @@ function Edit( { clientId } ) {
 		return null;
 	}
 
-	console.log( 'currentBlock', currentBlock );
-
 	replaceBlocks(
 		[ clientId ],
 		switchToBlockType( currentBlock, 'core/columns' )
@@ -45,6 +76,24 @@ function Edit( { clientId } ) {
 
 	return null;
 }
+
+const migrateCurrent = () => {
+
+};
+
+const migrateNew = () => {
+	return templateContainer.map( ( innerBlock ) => {
+		return createBlock(
+			'core/column',
+			{},
+			innerBlock.map( ( block ) => {
+				return createBlock(
+					...block,
+				);
+			} )
+		);
+	} );
+};
 
 const settings = {
 	/* translators: block name */
@@ -65,10 +114,11 @@ const settings = {
 			{
 				blocks: [ 'core/columns' ],
 				transform: ( attributes, innerBlocks ) => {
+					console.log( 'services innerBlocks', innerBlocks );
 					return createBlock(
 						'core/columns',
 						{},
-						[]
+						innerBlocks.length > 0 ? migrateCurrent() : migrateNew()
 					);
 				},
 				type: 'block',
