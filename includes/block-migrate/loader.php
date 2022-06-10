@@ -49,22 +49,25 @@ add_action(
 		// Load our available migrations.
 		$migration_runner = new CoBlocks_Block_Migration_Runner();
 
-		array_map( array( $migration_runner, 'register' ), array(
-			CoBlocks_Alert_Migration::class,
-			CoBlocks_Author_Migration::class,
-			CoBlocks_Column_Migration::class,
-			CoBlocks_Dynamic_Separator_Migration::class,
-			CoBlocks_Gallery_Collage_Migration::class,
-			CoBlocks_Gallery_Masonry_Migration::class,
-			CoBlocks_Gallery_Offset_Migration::class,
-			CoBlocks_Gallery_Stacked_Migration::class,
-			CoBlocks_Gif_Migration::class,
-			CoBlocks_Hero_Migration::class,
-			CoBlocks_Highlight_Migration::class,
-			CoBlocks_Media_Card_Migration::class,
-			CoBlocks_Posts_Migration::class,
-			CoBlocks_Row_Migration::class,
-		) );
+		array_map(
+			array( $migration_runner, 'register' ),
+			array(
+				CoBlocks_Alert_Migration::class,
+				CoBlocks_Author_Migration::class,
+        CoBlocks_Column_Migration::class,
+				CoBlocks_Dynamic_Separator_Migration::class,
+				CoBlocks_Gallery_Collage_Migration::class,
+				CoBlocks_Gallery_Masonry_Migration::class,
+				CoBlocks_Gallery_Offset_Migration::class,
+				CoBlocks_Gallery_Stacked_Migration::class,
+				CoBlocks_Gif_Migration::class,
+				CoBlocks_Hero_Migration::class,
+				CoBlocks_Highlight_Migration::class,
+				CoBlocks_Media_Card_Migration::class,
+				CoBlocks_Posts_Migration::class,
+        CoBlocks_Row_Migration::class,
+			)
+		);
 
 		$parsed_blocks = array_map( array( $migration_runner, 'migrate_block' ), $parsed_blocks );
 
