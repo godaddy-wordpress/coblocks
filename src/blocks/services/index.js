@@ -6,11 +6,7 @@ import { ServicesIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 /**
  * Internal dependencies.
  */
-import deprecated from './deprecated';
-import edit from './edit';
-import example from './example';
 import metadata from './block.json';
-import save from './save';
 
 /**
  * WordPress dependencies.
@@ -77,8 +73,37 @@ function Edit( { clientId } ) {
 	return null;
 }
 
-const migrateCurrent = () => {
+const migrateCurrent = ( attributes, innerBlocks ) => {
+	return innerBlocks.map( ( innerBlock ) => {
+		const formattedServiceTemplate = [ ...innerBlock.innerBlocks ];
 
+		if ( innerBlock.attributes.imageUrl ) {
+			const imageBlock = createBlock( 'core/image', { ...innerBlock.attributes } );
+			formattedServiceTemplate.unshift( imageBlock );
+		}
+
+		const innerBlockList = formattedServiceTemplate.map( ( block ) => {
+			const innerBlockAttributes = {
+				...block.attributes,
+			};
+
+			if ( block.name === 'core/image' ) {
+				innerBlockAttributes.url = innerBlock.attributes.imageUrl;
+			}
+
+			return createBlock(
+				block.name,
+				innerBlockAttributes,
+				block.innerBlocks,
+			);
+		} );
+
+		return createBlock(
+			'core/column',
+			{},
+			innerBlockList
+		);
+	} );
 };
 
 const migrateNew = () => {
@@ -114,11 +139,10 @@ const settings = {
 			{
 				blocks: [ 'core/columns' ],
 				transform: ( attributes, innerBlocks ) => {
-					console.log( 'services innerBlocks', innerBlocks );
 					return createBlock(
 						'core/columns',
 						{},
-						innerBlocks.length > 0 ? migrateCurrent() : migrateNew()
+						innerBlocks.length > 0 ? migrateCurrent( attributes, innerBlocks ) : migrateNew()
 					);
 				},
 				type: 'block',
