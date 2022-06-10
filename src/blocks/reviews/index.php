@@ -11,11 +11,18 @@
 class Coblocks_Yelp_Proxy {
 
 	/**
-	 * Base path for the Yelp API Proxy
+	 * Base path for the Yelp API Proxy for Business Searches
 	 *
 	 * @var string
 	 */
 	private $yelp_biz_search_proxy_path = '/yelp/biz_search';
+
+	/**
+	 * Base path for the Yelp API Proxy for Business Reviews
+	 *
+	 * @var string
+	 */
+	private $yelp_biz_reviews_proxy_path = '/yelp/biz_reviews';
 
 	/**
 	 * Function constructor
@@ -56,6 +63,26 @@ class Coblocks_Yelp_Proxy {
 					),
 				),
 				'callback'            => array( $this, 'yelp_biz_search_api_proxy' ),
+			)
+		);
+
+		register_rest_route(
+			COBLOCKS_API_NAMESPACE,
+			$this->yelp_biz_reviews_proxy_path,
+			array(
+				'methods'             => \WP_REST_Server::READABLE,
+				'permission_callback' => function() {
+					return current_user_can( 'edit_posts' );    // See https://wordpress.org/support/article/roles-and-capabilities/#edit_posts.
+				},
+				'show_in_index'       => false,
+				'args'                => array(
+					'biz_id' => array(
+						'description'       => 'The yelp business id of the business to get reviews for.',
+						'type'              => 'string',
+						'sanitize_callback' => 'sanitize_text_field',
+					),
+				),
+				'callback'            => array( $this, 'yelp_biz_reviews_api_proxy' ),
 			)
 		);
 
@@ -102,6 +129,46 @@ class Coblocks_Yelp_Proxy {
 	}
 
 	/**
+	 * Forwards requests to Yelp's reviews API and returns results.
+	 *
+	 * @param \WP_REST_Request $request Contains the rest request object.
+	 *
+	 * @return \WP_REST_Response
+	 */
+	public function yelp_biz_reviews_api_proxy( \WP_REST_Request $request ) {
+
+		$response = wp_remote_get(
+			'https://www.yelp.com/biz/' . $request->get_param( 'biz_id' ) . '/review_feed',
+			array(
+				// Without this user agent syntax the API doesn't respond at all...
+				'user-agent' => 'Mozilla/5.0 Chrome/96 Safari/537',
+				'headers'    => array(
+					'Accept' => 'application/json',
+				),
+			)
+		);
+
+		// Return early with server response if response is instanceof WP_Error.
+		if ( is_wp_error( $response ) ) {
+			return rest_ensure_response( $response );
+		}
+
+		try {
+			$body = json_decode( $response['body'], true );
+		} catch ( exception $e ) {
+			return new \WP_Error( 'parsing_error', 'Error reading body of response.', array( 'status' => 500 ) );
+		}
+
+		return rest_ensure_response(
+			new \WP_REST_Response(
+				$body,
+				$response['response']['code']
+			)
+		);
+
+	}
+
+	/**
 	 * Localize script to tell the API proxy path to JavaScript.
 	 *
 	 * @return void
@@ -113,6 +180,7 @@ class Coblocks_Yelp_Proxy {
 			'coblocksYelp',
 			array(
 				'bizSearchProxy' => COBLOCKS_API_NAMESPACE . $this->yelp_biz_search_proxy_path,
+				'bizReviewsProxy' => COBLOCKS_API_NAMESPACE . $this->yelp_biz_reviews_proxy_path,
 			)
 		);
 

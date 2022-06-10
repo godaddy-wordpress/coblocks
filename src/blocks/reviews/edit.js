@@ -15,7 +15,7 @@ import { MountainsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 import { compose } from '@wordpress/compose';
-import { useState } from '@wordpress/element';
+import { useEffect, useState } from '@wordpress/element';
 import {
 	Button,
 	Icon,
@@ -26,76 +26,190 @@ import {
 } from '@wordpress/components';
 
 const Edit = ( props ) => {
-	// Destructure props
-	const { className, noticeOperations } = props;
+	/**
+	 * Edit steps for configuring this Yelp block.
+	 */
+	const BLOCK_SETUP_STEP = {
+		BUSINESS_SEARCH: 'business_search',
+		SELECT_REVIEWS: 'select_reviews',
+		SAVED_PREVIEW: 'saved_preview',
+	};
 
-	// State
-	const [ businessName, setBusinessName ] = useState( '' );
-	const [ businessLocation, setBusinessLocation ] = useState( '' );
-	const [ matchingBusinessesTEMP, setMatchingBusinessesTEMP ] = useState( [] );
-	const [ dataFetchInProgress, setDataFetchInProgress ] = useState( false );
+	// Destructure props.
+	const { attributes, className, noticeOperations, setAttributes } = props;
 
-	// Functions
+	// --- State ---
 
 	/**
-	 * Determines whether the 'search yelp' button (for discovering the business id) is disabled. Returns boolean.
+	 * Initializer for `setupStep`'s state. Determines where the edit flow should start based on what data has been saved.
+	 */
+	const initSetupStep = () => {
+		// if the block doesn't have a configured businessId, then enter at the business search stage.
+		if ( attributes.yelpBusinessDetails.businessId.length === 0 ) {
+			return BLOCK_SETUP_STEP.BUSINESS_SEARCH;
+		}
+		// if block has bizId set and no reviews, then enter at review selection state.
+		// if block has bizId set and does have reviews, then enter at the saved previews state.
+		return attributes.reviews.length === 0 ? BLOCK_SETUP_STEP.SELECT_REVIEWS : BLOCK_SETUP_STEP.SAVED_PREVIEW;
+	};
+
+	// The current setup stage of the Yelp block, used to control the block's setup flow.
+	const [ setupStep, setSetupStep ] = useState( initSetupStep() );
+
+	// Text field states for business search.
+	const [ businessName, setBusinessName ] = useState( '' );
+	const [ businessLocation, setBusinessLocation ] = useState( '' );
+
+	// Business-type results returned for business search.
+	const [ businessSearchResults, setBusinessSearchResults ] = useState( [] );
+
+	// All reviews for the selected business. Can change based on pagination of review results.
+	const [ selectableBizReviews, setSelectableBizReviews ] = useState( [] );
+
+	// User's selected reviews from the list of all available reviews for the business
+	// const [ selectedBizReviews, setSelectedBizReviews ] = useState( attributes.reviews );
+
+	// Data fetch state, used to show a spinner when data loading is in progress.
+	const [ dataFetchInProgress, setDataFetchInProgress ] = useState( false );
+
+	// --- Functions ---
+
+	/**
+	 * Determines whether the "search yelp" button (for discovering the business id) is disabled. Returns boolean.
+	 *
+	 * @return {boolean} "Search Yelp" button disable state
 	 */
 	const shouldSearchBeDisabled = () => ( businessName.length === 0 ) || ( businessLocation.length === 0 );
 
 	/**
-	 * Performs API call to Yelp.com to fetch businesses matching the values of `businessName` and `businessLocation`
+	 * Extracts the business ID from a string of the form `/biz/[business_id]`.
+	 *
+	 * @param {string} url
+	 * @return {string} a yelp business id
+	 */
+	const extractBizIdFromURL = ( url ) => url.substring( 5 );
+
+	/**
+	 * Selects a business to select reviews for. Transitions the `setupStep` to `SELECT_REVIEWS`.
+	 *
+	 * @param {string} bizId the yelp businessID to select reviews for.
+	 */
+	const selectBusiness = ( bizId ) => {
+		// make proxied API call to get reviews for bizId
+		fetchAndSetBizReviews( bizId )
+			.then( () => {
+				// reviews finished loading, so transition the block state.
+				setSetupStep( BLOCK_SETUP_STEP.SELECT_REVIEWS );
+			} );
+	};
+
+	/**
+	 * Performs API call to Yelp.com to fetch businesses matching the values of `businessName` and `businessLocation`.
+	 * Sets the resulting reviews to `selectableBizReviews`.
+	 *
+	 * @param {string} bizId
+	 * @param {string} bizName
+	 */
+	const fetchAndSetBizReviews = async ( bizId, bizName ) => {
+		// Save the selected business we're pulling reviews for in the block attributes.
+		setAttributes( {
+			yelpBusinessDetails: {
+				businessId: bizId,
+				businessName: bizName,
+			},
+		} );
+		// Perform the API Fetch to our Yelp Proxy API
+		await apiFetch( { path: coblocksYelp.bizReviewsProxy + '?biz_id=' + encodeURIComponent( bizId ) } )
+			// When request finishes OK:
+			.then( ( json ) => {
+				// console.log(json.reviews);
+				setSelectableBizReviews( json.reviews );
+			} );
+	};
+
+	/**
+	 * Performs API call to Yelp.com to fetch businesses matching the values of `businessName` and `businessLocation`.
 	 */
 	const searchForYelpBiz = async () => {
+		/**
+		 * Iterates through yelp's search results and only returns items that are businesses.
+		 *
+		 * @param {*} suggestions from yelp.com API.
+		 * @return {Array} all **businesses** matching the search query.
+		 */
 		const getBusinessesFromSuggestions = ( suggestions ) => {
+			// create an array we'll use to store all the query's actual businesses.
 			const businesses = [];
 
+			// iterate through all the query suggestions, matching the ones that are businesses and adding them to our array.
 			suggestions.forEach( ( suggestion ) => {
 				if ( suggestion.type === 'business' ) {
 					businesses.push( suggestion );
 				}
 			} );
 
+			// return all the actual businesses
 			return businesses;
 		};
 
-		// Show the loader so the user isn't left hanging after submitting
+		// show the loader so the user isn't left hanging after submitting
 		setDataFetchInProgress( true );
-		// Perform the API Fetch to our Yelp Proxy API
+
+		// perform the API Fetch to our Yelp Proxy API.
 		apiFetch( { path: coblocksYelp.bizSearchProxy + '?biz_name=' + encodeURIComponent( businessName ) + '&biz_loc=' + encodeURIComponent( businessLocation ) } )
 			// When request finishes OK:
 			.then( ( json ) => {
-				// Get the results from Yelp's search suggestions that are businesses (not other suggestions like typeahead)
-				const matchingBusinesses = getBusinessesFromSuggestions( json.response[ 0 ].suggestions );
+				// get the results from Yelp's search suggestions that are businesses (not other suggestions like typeahead).
+				const businessSuggestions = getBusinessesFromSuggestions( json.response[ 0 ].suggestions );
 
-				// If no businesses found, show an error notice to the user
-				if ( matchingBusinesses.length === 0 ) {
+				// if no businesses found, show an error notice to the user.
+				if ( businessSuggestions.length === 0 ) {
 					noticeOperations.createErrorNotice( __( 'No matching businesses found on Yelp! Try being more specific in your search.', 'coblocks' ) );
 					return;
 				}
-				setMatchingBusinessesTEMP( matchingBusinesses );
+
+				// set the search results to the API's response.
+				setBusinessSearchResults( businessSuggestions );
 			} )
 			.finally( () => {
-				// After all fetching/processing is done, regardless of error state, stop showing the spinner to the user.
+				// after all fetching/processing is done, regardless of error state, stop showing the spinner to the user.
 				setDataFetchInProgress( false );
 			} );
 	};
+
+	// --- UseEffects ---
+
+	useEffect( () => {
+		// console.log( 'YELP BLOCK:', attributes );
+	}, [] );
+
+	// --- Memoized Subcomponents ---
+
+	// const bizReviewsSelectorRenderer = () => (
+	// 	<div>
+	// 		<p>here&apos;s your reviews!</p>
+	// 	</div>
+	// );
+	// const BizReviewSelector = useMemo( bizReviewsSelectorRenderer, [ selectableBizReviews ] );
 
 	return (
 		<>
 			{ /* Block Body (edit state) */ }
 			<div className={ className }>
 
-				<Placeholder
-					icon={ <Icon icon={ icon } /> }
-					instructions={ __(
-						'Before you can select reviews to show, we need to find your business on Yelp:',
-						'coblocks'
-					) }
-					isColumnLayout={ true }
-					label={ __( 'Yelp', 'coblocks' ) }
-				>
-					<div className="components-placeholder__flex-fields">
-						<div className="components-placeholder__flex-fields-vertical-group">
+				{ /* Block Setup Stage Conditional Renderers */ }
+				{ setupStep === BLOCK_SETUP_STEP.BUSINESS_SEARCH &&
+					<div>
+						<Placeholder
+							icon={ <Icon icon={ icon } /> }
+							instructions={ __(
+								'Please enter your business name and where it\'s located:',
+								'coblocks'
+							) }
+							isColumnLayout={ true }
+							label={ __( 'Let\'s find your business!', 'coblocks' ) }
+						>
+
 							<TextControl
 								label="Business Name"
 								onChange={ ( newBizName ) => {
@@ -117,22 +231,67 @@ const Edit = ( props ) => {
 								isPrimary
 								onClick={ searchForYelpBiz }
 							>
+
 								{ __( 'Search Yelp', 'coblocks' ) }
+								{ dataFetchInProgress && <Spinner /> }
+
 							</Button>
-							{ dataFetchInProgress && <Spinner /> }
-							<ul>
-								{ matchingBusinessesTEMP.length > 0 && <p>Businesses matching query:</p> }
-								{ matchingBusinessesTEMP.map( ( biz, index ) => (
-									<li key={ index }>
-										<img src={ biz.thumbnail.key } height={ 32 } alt="temporary thumbnail" />
-										<span style={ { fontWeight: 800, paddingLeft: 8 } }>{ biz.title } - </span>
-										<span>{ biz.subtitle }</span>
-									</li>
-								) ) }
-							</ul>
-						</div>
+
+							{ businessSearchResults.length > 0 &&
+							<div>
+								<p>We found these businesses:</p>
+								<ul>
+
+									{ businessSearchResults.map( ( biz, index ) => (
+										<li key={ index }>
+											<img alt="temporary thumbnail" height={ 32 } src={ biz.thumbnail.key } />
+											<span style={ { fontWeight: 800, paddingLeft: 8 } }>{ biz.title } - </span>
+											<span>{ biz.subtitle }</span>
+
+											<Button style={ { color: 'red', paddingLeft: 10 } } onClick={ () => ( selectBusiness( extractBizIdFromURL( biz.redirect_url ) ) ) }>select</Button>
+										</li>
+									) ) }
+
+								</ul>
+
+							</div>
+							}
+
+						</Placeholder>
+
 					</div>
-				</Placeholder>
+				}
+				{ setupStep === BLOCK_SETUP_STEP.SELECT_REVIEWS &&
+					<div>
+						<Placeholder
+							icon={ <Icon icon={ icon } /> }
+							instructions={ __(
+								'You can select up to <unlimited>.',
+								'coblocks'
+							) }
+							isColumnLayout={ true }
+							label={ __( 'Select reviews you\'d like to show:', 'coblocks' ) }
+						>
+							{ selectableBizReviews.map( ( review, index ) => (
+								<div key={ index } style={ { border: '1px solid black', padding: 5 } }>
+									{ /* { console.log( review ) } */ }
+									<p><span style={ { fontWeight: 700 } }>Author: </span>{ review.user.markupDisplayName }</p>
+									<p><span style={ { fontWeight: 700 } }>On: </span>{ review.localizedDate }</p>
+									<p><span style={ { fontWeight: 700 } }>Rating: </span>{ review.rating }/5</p>
+									<p><span style={ { fontWeight: 700 } }>Comment: </span><span dangerouslySetInnerHTML={ { __html: review.comment.text } }></span></p>
+									<a href={ 'https://www.yelp.com/biz/' + review.business.alias + '?hrid=' + review.id }>See on Yelp.com</a>
+								</div>
+							) ) }
+
+						</Placeholder>
+					</div>
+				}
+				{ setupStep === BLOCK_SETUP_STEP.SAVED_PREVIEW &&
+					<div>
+
+					</div>
+				}
+
 			</div>
 		</>
 	);

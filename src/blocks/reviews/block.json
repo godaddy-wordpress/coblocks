@@ -2,9 +2,12 @@
 	"name": "coblocks/reviews",
 	"category": "layout",
 	"attributes": {
-		"yelpBusinessId": {
-			"type": "string",
-			"default": ""
+		"yelpBusinessDetails": {
+			"type": "object",
+			"default": {
+				"businessName": "",
+				"businessId": ""
+			}
 		},
         "reviews": {
 			"type": "array",
