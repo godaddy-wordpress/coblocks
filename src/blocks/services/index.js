@@ -79,40 +79,7 @@ function Edit( { clientId } ) {
 }
 
 const migrateCurrent = ( attributes, innerBlocks ) => {
-	return innerBlocks.map( ( innerBlock ) => {
-		const formattedServiceTemplate = [ ...innerBlock.innerBlocks ];
-
-		if ( innerBlock.attributes.imageUrl !== undefined ) {
-			const imageBlock = createBlock( 'core/image', { ...innerBlock.attributes } );
-			formattedServiceTemplate.unshift( imageBlock );
-		}
-
-		const innerBlockList = formattedServiceTemplate.map( ( block ) => {
-			const innerBlockAttributes = {
-				...block.attributes,
-			};
-
-			if ( block.name === 'core/image' ) {
-				innerBlockAttributes.url = innerBlock.attributes.imageUrl;
-				innerBlockAttributes.className = 'is-style-service';
-				innerBlockAttributes.align = 'full';
-				innerBlockAttributes.alt = '';
-				innerBlockAttributes.allowResize = false;
-			}
-
-			return createBlock(
-				block.name,
-				innerBlockAttributes,
-				block.innerBlocks,
-			);
-		} );
-
-		return createBlock(
-			'core/column',
-			{},
-			innerBlockList
-		);
-	} );
+	return innerBlocks.map( ( innerBlock ) => switchToBlockType( innerBlock, 'core/column' ) ).flat();
 };
 
 const migrateNew = () => {

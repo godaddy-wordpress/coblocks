@@ -1,16 +1,22 @@
 .wp-block-image.is-style-service {
 	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	margin: 0 0 1.5rem;
-	padding: 75% 0 0;
 	position: relative;
 	width: 100%;
 
 	img, .block-editor-media-placeholder {
-		position: absolute;
 		height: 100%;
 		width: 100%;
 		object-fit: cover;
 		top: 0;
+	}
+
+	figcaption: {
+		position: absolute;
+		bottom: 0;
 	}
 }
 

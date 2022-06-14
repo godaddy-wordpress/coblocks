@@ -26,13 +26,13 @@ class CoBlocks_Service_Migration extends CoBlocks_Block_Migration {
 	 * @inheritDoc
 	 */
 	protected function migrate_attributes() {
-		// $service_block = $this->query_selector( '//figure[contains(@class,"wp-block-coblocks-service")]/img' );
+		$service_block = $this->query_selector( '//figure[contains(@class,"wp-block-coblocks-service")]/img' );
 
-		// $service_image_src = $this->get_element_attribute( $service_block, 'src' );
+		$service_image_src = $this->get_element_attribute( $service_block, 'src' );
 
-		// if ( $service_image_src ) {
-		// 	$his->block_attributes['imageSrc'] = $service_image_src;
-		// }
+		if ( $service_image_src ) {
+			$this->block_attributes['imageUrl'] = $service_image_src;
+		}
 
 		return $this->block_attributes;
 	}

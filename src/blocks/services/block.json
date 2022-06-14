@@ -1,24 +1,8 @@
 {
+	"apiVersion": 2,
 	"name": "coblocks/services",
 	"category": "layout",
-	"attributes": {
-		"columns": {
-			"type": "integer",
-			"default": 2
-		},
-		"alignment": {
-			"type": "string",
-			"default": "none"
-		},
-		"headingLevel": {
-			"type": "integer",
-			"default": 3
-		},
-		"buttons": {
-			"type": "boolean",
-			"default": false
-		}
-	},
+	"attributes": {},
 	"title": "Services",
 	"textdomain": "coblocks",
 	"editorScript": "blocks-6",

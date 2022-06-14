@@ -2,10 +2,10 @@ import { createBlock } from '@wordpress/blocks';
 
 import metadata from './block.json';
 
-const { name, category, attributes } = metadata;
+const { name, category, attributes: serviceAttributes } = metadata;
 
 const settings = {
-	attributes,
+	attributes: serviceAttributes,
 	edit: () => null,
 	parent: [],
 	save: () => null,
@@ -15,11 +15,14 @@ const settings = {
 			{
 				blocks: [ 'core/column' ],
 				transform: ( attributes, innerBlocks ) => {
-					console.log( 'creating inner blocks here', {
-						attributes,
-						innerBlocks,
-					} );
-					return createBlock( 'core/column', attributes, innerBlocks );
+					const formattedInnerBlocks = [ ...innerBlocks ];
+
+					if ( attributes.imageUrl ) {
+						const imageBlock = createBlock( 'core/image', { url: attributes.imageUrl, align: 'full', className: 'is-style-service' } );
+						formattedInnerBlocks.unshift( imageBlock );
+					}
+
+					return createBlock( 'core/column', attributes, formattedInnerBlocks );
 				},
 				type: 'block',
 			},
