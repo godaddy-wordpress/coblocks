@@ -31,4 +31,3 @@ import './block-styles/core/image';
 // Block Variations
 import './block-variations/core/gallery';
 import './block-variations/core/paragraph';
-import './block-variations/core/image';
