@@ -4,6 +4,7 @@
 	justify-content: center;
 	align-items: center;
 	margin: 0 0 1.5rem;
+	padding: 75% 0 0;
 	position: relative;
 	width: 100%;
 
@@ -12,11 +13,14 @@
 		width: 100%;
 		object-fit: cover;
 		top: 0;
+		left: 0;
+		position: absolute;
 	}
 
-	figcaption: {
+	figcaption {
 		position: absolute;
 		bottom: 0;
+		z-index: 9999;
 	}
 }
 
