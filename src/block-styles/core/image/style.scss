@@ -1,9 +1,17 @@
 .wp-block-image.is-style-service {
-	display: flex !important;
-	margin: 0 0 1.5rem !important;
-	padding: 75% 0 0 !important;
-	position: relative !important;
-	width: 100% !important;
+	display: flex;
+	margin: 0 0 1.5rem;
+	padding: 75% 0 0;
+	position: relative;
+	width: 100%;
+
+	img {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+		top: 0;
+	}
 }
 
 

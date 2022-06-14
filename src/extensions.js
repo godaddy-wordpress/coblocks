@@ -26,7 +26,9 @@ import './formats';
 // Block Styles
 import './block-styles/core/gallery';
 import './block-styles/core/paragraph';
+import './block-styles/core/image';
 
 // Block Variations
 import './block-variations/core/gallery';
 import './block-variations/core/paragraph';
+import './block-variations/core/image';

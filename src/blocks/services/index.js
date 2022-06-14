@@ -56,8 +56,8 @@ const templateContainer = [
 ];
 
 function Edit( { clientId } ) {
-	const { replaceBlocks } = useDispatch( 'core/block-editor' );
-	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
+	const { replaceBlocks, ...restDispatch } = useDispatch( 'core/block-editor' );
+	const { getBlock, getBlockParents, ...restSelect } = useSelect( ( select ) => select( 'core/block-editor' ) );
 
 	const currentBlock = getBlock( clientId );
 
@@ -89,6 +89,9 @@ const migrateCurrent = ( attributes, innerBlocks ) => {
 
 			if ( block.name === 'core/image' ) {
 				innerBlockAttributes.url = innerBlock.attributes.imageUrl;
+				innerBlockAttributes.className = 'is-style-service';
+				innerBlockAttributes.align = 'full';
+				innerBlockAttributes.allowResize = false;
 			}
 
 			return createBlock(
@@ -139,6 +142,7 @@ const settings = {
 			{
 				blocks: [ 'core/columns' ],
 				transform: ( attributes, innerBlocks ) => {
+					console.log( 'innerBlocks for columns', innerBlocks );
 					return createBlock(
 						'core/columns',
 						{},
