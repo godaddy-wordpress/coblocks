@@ -25,7 +25,12 @@ const { name, category } = metadata;
 const SERVICE_TEMPLATE = [
 	[
 		'core/image',
-		{},
+		{
+			align: 'full',
+			allowResize: false,
+			alt: '',
+			className: 'is-style-service',
+		},
 	],
 	[
 		'core/heading',
@@ -143,6 +148,14 @@ const settings = {
 			{
 				blocks: [ 'core/columns' ],
 				transform: ( attributes, innerBlocks ) => {
+					if ( innerBlocks.length === 0 ) {
+						return createBlock(
+							'core/columns',
+							{},
+							migrateNew()
+						);
+					}
+
 					const formattedColumns = innerBlocks.reduce( ( acc, curr, index ) => {
 						if ( index % 2 === 0 ) {
 							return [
@@ -172,7 +185,6 @@ const settings = {
 					}, [] );
 
 					return formattedColumns.map( ( cols ) => {
-						console.log( 'cols', cols );
 						return createBlock(
 							'core/columns',
 							{},
