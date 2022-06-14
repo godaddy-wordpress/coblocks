@@ -88,7 +88,6 @@ const migrateCurrent = ( attributes, innerBlocks ) => {
 			};
 
 			if ( block.name === 'core/image' ) {
-				console.log( 'innerBlock.attributes.imageUrl', innerBlock.attributes.imageUrl );
 				innerBlockAttributes.url = innerBlock.attributes.imageUrl;
 				innerBlockAttributes.className = 'is-style-service';
 				innerBlockAttributes.align = 'full';
