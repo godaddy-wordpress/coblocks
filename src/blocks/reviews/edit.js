@@ -15,7 +15,7 @@ import { MountainsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 import { compose } from '@wordpress/compose';
-import { useEffect, useState } from '@wordpress/element';
+import { useState } from '@wordpress/element';
 import {
 	Button,
 	Icon,
@@ -67,7 +67,7 @@ const Edit = ( props ) => {
 	const [ selectableBizReviews, setSelectableBizReviews ] = useState( [] );
 
 	// User's selected reviews from the list of all available reviews for the business
-	// const [ selectedBizReviews, setSelectedBizReviews ] = useState( attributes.reviews );
+	const [ selectedBizReviews, setSelectedBizReviews ] = useState( attributes.reviews );
 
 	// Data fetch state, used to show a spinner when data loading is in progress.
 	const [ dataFetchInProgress, setDataFetchInProgress ] = useState( false );
@@ -177,20 +177,87 @@ const Edit = ( props ) => {
 			} );
 	};
 
+	const addReviewToBlock = ( review ) => {
+		// Add the review to the selectedBizReviews object
+		selectedBizReviews[ review.id ] = {
+			id: review.id,
+			author: review.user.markupDisplayName,
+			localizedDate: review.localizedDate,
+			rating: review.rating,
+			comment: review.comment.text,
+		};
+		// Set the state with the added review
+		setSelectedBizReviews( selectedBizReviews );
+		// Save the updated reviews to the block
+		setAttributes( {
+			reviews: { ...selectedBizReviews },
+		} );
+	};
+
+	const onReviewSelectChange = ( review, event ) => {
+		if ( event.target.checked ) {
+			addReviewToBlock( review );
+		} else {
+			// Delete the review from the reviews dict
+			delete selectedBizReviews[ review.id ];
+			// Save the altered state
+			setSelectedBizReviews( selectedBizReviews );
+			// Save the altered reviews to the block
+			setAttributes( {
+				reviews: { ...selectedBizReviews },
+			} );
+		}
+	};
+
 	// --- UseEffects ---
 
-	useEffect( () => {
-		// console.log( 'YELP BLOCK:', attributes );
-	}, [] );
+	// --- Subcomponents ---
 
-	// --- Memoized Subcomponents ---
+	const BizReviewSelector = () => (
+		<div>
+			<Placeholder
+				icon={ <Icon icon={ icon } /> }
+				instructions={ __(
+					'You can select up to <unlimited>.',
+					'coblocks'
+				) }
+				isColumnLayout={ true }
+				label={ __( 'Select reviews you\'d like to show:', 'coblocks' ) }
+			>
+				{ selectableBizReviews.map( ( review, index ) => (
+					<div key={ index } style={ { border: '1px solid black', padding: 5 } }>
+						<p><span style={ { fontWeight: 700 } }>Author: </span>{ review.user.markupDisplayName }</p>
+						<p><span style={ { fontWeight: 700 } }>On: </span>{ review.localizedDate }</p>
+						<p><span style={ { fontWeight: 700 } }>Rating: </span>{ review.rating }/5</p>
+						<p><span style={ { fontWeight: 700 } }>Comment: </span><span dangerouslySetInnerHTML={ { __html: review.comment.text } }></span></p>
+						<p><a href={ 'https://www.yelp.com/biz/' + review.business.alias + '?hrid=' + review.id }>See on Yelp.com</a></p>
+						<p><input checked={ review.id in selectedBizReviews } onChange={ ( event ) => onReviewSelectChange( review, event ) } type="checkbox" /> Show review?</p>
+					</div>
+				) ) }
 
-	// const bizReviewsSelectorRenderer = () => (
-	// 	<div>
-	// 		<p>here&apos;s your reviews!</p>
-	// 	</div>
-	// );
-	// const BizReviewSelector = useMemo( bizReviewsSelectorRenderer, [ selectableBizReviews ] );
+			</Placeholder>
+		</div>
+	);
+
+	const BizReviewSaveRenderer = () => (
+		<div>
+			<p>Saved Reviews:</p>
+			<Button onClick={ () => selectBusiness( attributes.yelpBusinessDetails.businessId ) }>Back to Reviews</Button>
+			{ Object.keys( selectedBizReviews ).map( ( key ) => {
+				const review = selectedBizReviews[ key ];
+				return (
+					<div key={ 'review_' + key } style={ { border: '1px solid black', padding: 5 } }>
+						<p><span style={ { fontWeight: 700 } }>Author: </span>{ review.author }</p>
+						<p><span style={ { fontWeight: 700 } }>On: </span>{ review.localizedDate }</p>
+						<p><span style={ { fontWeight: 700 } }>Rating: </span>{ review.rating }/5</p>
+						<p><span style={ { fontWeight: 700 } }>Comment: </span><span dangerouslySetInnerHTML={ { __html: review.comment } }></span></p>
+						<p><a href={ 'https://www.yelp.com/biz/' + attributes.yelpBusinessDetails.businessId + '?hrid=' + review.id }>See on Yelp.com</a></p>
+					</div>
+				);
+			} ) }
+
+		</div>
+	);
 
 	return (
 		<>
@@ -248,7 +315,7 @@ const Edit = ( props ) => {
 											<span style={ { fontWeight: 800, paddingLeft: 8 } }>{ biz.title } - </span>
 											<span>{ biz.subtitle }</span>
 
-											<Button style={ { color: 'red', paddingLeft: 10 } } onClick={ () => ( selectBusiness( extractBizIdFromURL( biz.redirect_url ) ) ) }>select</Button>
+											<Button onClick={ () => ( selectBusiness( extractBizIdFromURL( biz.redirect_url ) ) ) } style={ { color: 'red', paddingLeft: 10 } }>select</Button>
 										</li>
 									) ) }
 
@@ -262,34 +329,10 @@ const Edit = ( props ) => {
 					</div>
 				}
 				{ setupStep === BLOCK_SETUP_STEP.SELECT_REVIEWS &&
-					<div>
-						<Placeholder
-							icon={ <Icon icon={ icon } /> }
-							instructions={ __(
-								'You can select up to <unlimited>.',
-								'coblocks'
-							) }
-							isColumnLayout={ true }
-							label={ __( 'Select reviews you\'d like to show:', 'coblocks' ) }
-						>
-							{ selectableBizReviews.map( ( review, index ) => (
-								<div key={ index } style={ { border: '1px solid black', padding: 5 } }>
-									{ /* { console.log( review ) } */ }
-									<p><span style={ { fontWeight: 700 } }>Author: </span>{ review.user.markupDisplayName }</p>
-									<p><span style={ { fontWeight: 700 } }>On: </span>{ review.localizedDate }</p>
-									<p><span style={ { fontWeight: 700 } }>Rating: </span>{ review.rating }/5</p>
-									<p><span style={ { fontWeight: 700 } }>Comment: </span><span dangerouslySetInnerHTML={ { __html: review.comment.text } }></span></p>
-									<a href={ 'https://www.yelp.com/biz/' + review.business.alias + '?hrid=' + review.id }>See on Yelp.com</a>
-								</div>
-							) ) }
-
-						</Placeholder>
-					</div>
+					<BizReviewSelector />
 				}
 				{ setupStep === BLOCK_SETUP_STEP.SAVED_PREVIEW &&
-					<div>
-
-					</div>
+					<BizReviewSaveRenderer />
 				}
 
 			</div>

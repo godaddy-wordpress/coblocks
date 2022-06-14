@@ -10,8 +10,8 @@
 			}
 		},
         "reviews": {
-			"type": "array",
-			"default": []
+			"type": "object",
+			"default": {}
 		}
     },
 	"title": "Yelp Reviews",
