@@ -54,7 +54,7 @@ add_action(
 			array(
 				CoBlocks_Alert_Migration::class,
 				CoBlocks_Author_Migration::class,
-        CoBlocks_Column_Migration::class,
+				CoBlocks_Column_Migration::class,
 				CoBlocks_Dynamic_Separator_Migration::class,
 				CoBlocks_Gallery_Collage_Migration::class,
 				CoBlocks_Gallery_Masonry_Migration::class,
@@ -65,7 +65,7 @@ add_action(
 				CoBlocks_Highlight_Migration::class,
 				CoBlocks_Media_Card_Migration::class,
 				CoBlocks_Posts_Migration::class,
-        CoBlocks_Row_Migration::class,
+				CoBlocks_Row_Migration::class,
 			)
 		);
 
