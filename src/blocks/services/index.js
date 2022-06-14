@@ -56,8 +56,8 @@ const templateContainer = [
 ];
 
 function Edit( { clientId } ) {
-	const { replaceBlocks, ...restDispatch } = useDispatch( 'core/block-editor' );
-	const { getBlock, getBlockParents, ...restSelect } = useSelect( ( select ) => select( 'core/block-editor' ) );
+	const { replaceBlocks } = useDispatch( 'core/block-editor' );
+	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
 
 	const currentBlock = getBlock( clientId );
 
@@ -77,7 +77,7 @@ const migrateCurrent = ( attributes, innerBlocks ) => {
 	return innerBlocks.map( ( innerBlock ) => {
 		const formattedServiceTemplate = [ ...innerBlock.innerBlocks ];
 
-		if ( innerBlock.attributes.imageUrl ) {
+		if ( innerBlock.attributes.imageUrl !== undefined ) {
 			const imageBlock = createBlock( 'core/image', { ...innerBlock.attributes } );
 			formattedServiceTemplate.unshift( imageBlock );
 		}
@@ -88,9 +88,11 @@ const migrateCurrent = ( attributes, innerBlocks ) => {
 			};
 
 			if ( block.name === 'core/image' ) {
+				console.log( 'innerBlock.attributes.imageUrl', innerBlock.attributes.imageUrl );
 				innerBlockAttributes.url = innerBlock.attributes.imageUrl;
 				innerBlockAttributes.className = 'is-style-service';
 				innerBlockAttributes.align = 'full';
+				innerBlockAttributes.alt = '';
 				innerBlockAttributes.allowResize = false;
 			}
 
@@ -142,12 +144,42 @@ const settings = {
 			{
 				blocks: [ 'core/columns' ],
 				transform: ( attributes, innerBlocks ) => {
-					console.log( 'innerBlocks for columns', innerBlocks );
-					return createBlock(
-						'core/columns',
-						{},
-						innerBlocks.length > 0 ? migrateCurrent( attributes, innerBlocks ) : migrateNew()
-					);
+					const formattedColumns = innerBlocks.reduce( ( acc, curr, index ) => {
+						if ( index % 2 === 0 ) {
+							return [
+								...acc,
+								[
+									curr,
+								],
+							];
+						}
+
+						const newColumns = [ ...acc ];
+						const newColumnIndex = ( index - 1 ) / 2;
+						const currentColumnsArr = newColumns[ newColumnIndex ];
+
+						if ( ! currentColumnsArr ) {
+							newColumns[ newColumnIndex ] = [
+								curr,
+							];
+						} else {
+							newColumns[ newColumnIndex ] = [
+								...currentColumnsArr,
+								curr,
+							];
+						}
+
+						return newColumns;
+					}, [] );
+
+					return formattedColumns.map( ( cols ) => {
+						console.log( 'cols', cols );
+						return createBlock(
+							'core/columns',
+							{},
+							migrateCurrent( attributes, cols )
+						);
+					} );
 				},
 				type: 'block',
 			},

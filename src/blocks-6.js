@@ -4,7 +4,6 @@ import { registerBlock } from './utils/helper';
 import * as pricingTable from './blocks/pricing-table';
 import * as pricingTableItem from './blocks/pricing-table/pricing-table-item';
 import * as row from './blocks/row';
-import * as service from './blocks/services/service';
 import * as services from './blocks/services';
 
 /**
@@ -14,6 +13,5 @@ import * as services from './blocks/services';
 	pricingTable,
 	pricingTableItem,
 	row,
-	service,
 	services,
 ].forEach( registerBlock );

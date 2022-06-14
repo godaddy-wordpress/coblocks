@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`coblocks/services should render 1`] = `
-"<!-- wp:coblocks/services {\\"columns\\":3,\\"alignment\\":\\"center\\",\\"headingLevel\\":2,\\"buttons\\":true} -->
-<div class=\\"wp-block-coblocks-services\\"><div class=\\"has-columns has-3-columns has-responsive-columns has-huge-gutter\\"></div></div>
-<!-- /wp:coblocks/services -->"
-`;
