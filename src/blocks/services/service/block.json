@@ -1,0 +1,75 @@
+{
+	"name": "coblocks/service",
+	"category": "layout",
+	"attributes": {
+		"headingLevel": {
+			"type": "integer",
+			"default": 3
+		},
+		"showCta": {
+			"type": "boolean",
+			"default": false
+		},
+		"imageUrl": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "src",
+			"default": ""
+		},
+		"imageAlt": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "alt",
+			"default": ""
+		},
+		"imageId": {
+			"type": "number"
+		},
+		"focalPoint": {
+			"type": "object"
+		},
+		"alignment": {
+			"type": "string",
+			"default": "none"
+		},
+		"href": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "figure > a",
+			"attribute": "href"
+		},
+		"rel": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "figure > a",
+			"attribute": "rel"
+		},
+		"linkClass": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "figure > a",
+			"attribute": "class"
+		},
+		"linkDestination": {
+			"type": "string"
+		},
+		"linkTarget": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "figure > a",
+			"attribute": "target"
+		}
+	},
+	"supports": {
+		"anchor": true
+	},
+	"title": "Service",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-6",
+	"description": "A single service item within a services block.",
+	"parent": [
+		"coblocks/services"
+	]
+}
