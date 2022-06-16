@@ -1,78 +1,58 @@
 /**
- * External dependencies
+ * Internal dependencies
  */
-import { RowIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
-import { Icon, Spinner } from '@wordpress/components';
-import { lazy, Suspense } from '@wordpress/element';
-
-/**
- * Internal dependencies
- */
-import { BackgroundAttributes } from '../../components/background';
-import deprecated from './deprecated';
-import DimensionsAttributes from '../../components/dimensions-control/attributes';
-const Edit = lazy( () => import( './edit' ) );
-import { getEditWrapperProps } from './utilities';
-import metadata from './block.json';
-import save from './save';
-import transforms from './transforms';
-import variations from './variations';
+import { InnerBlocks } from '@wordpress/block-editor';
+import { createBlock, switchToBlockType } from '@wordpress/blocks';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 /**
  * Block constants
  */
-const { name, category } = metadata;
+const { name } = metadata;
 
-const attributes = {
-	...DimensionsAttributes,
-	...BackgroundAttributes,
-	...metadata.attributes,
-};
+function Edit( props ) {
+	const { clientId } = props;
+	const { replaceBlocks } = useDispatch( 'core/block-editor' );
+	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
+
+	const theBlock = getBlock( clientId );
+	if ( ! theBlock ) {
+		return null;
+	}
+
+	replaceBlocks(
+		[ clientId ],
+		switchToBlockType( theBlock, 'core/columns' )
+	);
+
+	return null;
+}
 
 const settings = {
+	edit: Edit,
+	parent: [],
+	save: () => <InnerBlocks.Content />,
 	/* translators: block name */
-	title: __( 'Row', 'coblocks' ),
-	/* translators: block description */
-	description: __( 'Add a structured wrapper for column blocks, then add content blocks you’d like to the columns.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
-	keywords: [
-		'coblocks',
-		/* translators: block keyword */
-		__( 'rows', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'columns', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'layouts', 'coblocks' ),
-	],
-	supports: {
-		align: [ 'wide', 'full' ],
-		anchor: true,
-		gutter: {
-			default: 'medium',
-			customDefault: 0.8,
-		},
-		stackedOnMobile: true,
-		coBlocksSpacing: true,
+	title: metadata.title,
+	transforms: {
+		to: [
+			{
+				blocks: [ 'core/columns' ],
+				transform: ( attributes, innerBlocks ) => {
+					return createBlock(
+						'core/columns', attributes,
+						innerBlocks.map( ( innerBlock ) => switchToBlockType( innerBlock, 'core/column' ) ).flat()
+					);
+				},
+				type: 'block',
+			},
+		],
 	},
-	attributes,
-	variations,
-	transforms,
-	edit: ( props ) => (
-		<Suspense fallback={ <Spinner /> }>
-			<Edit { ...props } />
-		</Suspense>
-	),
-	example: {
-		attributes: {},
-	},
-	getEditWrapperProps,
-	save,
-	deprecated,
 };
 
-export { name, category, metadata, settings };
+export { name, metadata, settings };
