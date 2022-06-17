@@ -8,6 +8,7 @@ export default function save( { attributes } ) {
 				const review = attributes.reviews[ key ];
 				return (
 					<div key={ 'review_' + key } style={ { border: '1px solid black', padding: 5 } }>
+						<img src={ review.authorAvatarSrc } alt="user avatar" />
 						<p><span style={ { fontWeight: 700 } }>Author: </span>{ review.author }</p>
 						<p><span style={ { fontWeight: 700 } }>On: </span>{ review.localizedDate }</p>
 						<p><span style={ { fontWeight: 700 } }>Rating: </span>{ review.rating }/5</p>

@@ -182,6 +182,7 @@ const Edit = ( props ) => {
 		selectedBizReviews[ review.id ] = {
 			id: review.id,
 			author: review.user.markupDisplayName,
+			authorAvatarSrc: review.user.src,
 			localizedDate: review.localizedDate,
 			rating: review.rating,
 			comment: review.comment.text,
@@ -226,6 +227,7 @@ const Edit = ( props ) => {
 			>
 				{ selectableBizReviews.map( ( review, index ) => (
 					<div key={ index } style={ { border: '1px solid black', padding: 5 } }>
+						<img src={ review.user.src } alt="user avatar" />
 						<p><span style={ { fontWeight: 700 } }>Author: </span>{ review.user.markupDisplayName }</p>
 						<p><span style={ { fontWeight: 700 } }>On: </span>{ review.localizedDate }</p>
 						<p><span style={ { fontWeight: 700 } }>Rating: </span>{ review.rating }/5</p>
@@ -247,6 +249,7 @@ const Edit = ( props ) => {
 				const review = selectedBizReviews[ key ];
 				return (
 					<div key={ 'review_' + key } style={ { border: '1px solid black', padding: 5 } }>
+						<img src={ review.authorAvatarSrc } alt="user avatar" />
 						<p><span style={ { fontWeight: 700 } }>Author: </span>{ review.author }</p>
 						<p><span style={ { fontWeight: 700 } }>On: </span>{ review.localizedDate }</p>
 						<p><span style={ { fontWeight: 700 } }>Rating: </span>{ review.rating }/5</p>
