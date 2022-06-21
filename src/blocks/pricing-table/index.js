@@ -18,10 +18,13 @@ const { name } = metadata;
 function Edit( { clientId } ) {
 	const { replaceBlocks } = useDispatch( 'core/block-editor' );
 	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
-
+	const theBlock = getBlock( clientId );
+	if ( ! theBlock ) {
+		return null;
+	}
 	replaceBlocks(
 		[ clientId ],
-		switchToBlockType( getBlock( clientId ), 'core/columns' )
+		switchToBlockType( theBlock, 'core/columns' )
 	);
 
 	return null;
