@@ -25,6 +25,16 @@
 
 }
 
+.wp-coblocks-services {
+	[data-type="core/column"] {
+		padding: 0 !important;
+
+		:first-child {
+			margin-bottom: 0 !important;
+		}
+	}
+}
+
 .wp-block-coblocks-services {
 
 	.block-editor-media-placeholder {

@@ -19,7 +19,6 @@ const settings = {
 
 					const imageBlockAttributes = {
 						align: 'full',
-						className: 'is-style-service',
 					};
 
 					if ( attributes.imageUrl ) {

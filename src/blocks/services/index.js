@@ -116,7 +116,9 @@ const settings = {
 				transform: ( attributes, innerBlocks ) => {
 					return createBlock(
 						'core/columns',
-						{},
+						{
+							className: 'wp-coblocks-services',
+						},
 						innerBlocks.length === 0 ? migrateNew() : migrateCurrent( attributes, innerBlocks )
 					);
 				},
