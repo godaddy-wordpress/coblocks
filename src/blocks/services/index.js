@@ -14,8 +14,8 @@ import metadata from './block.json';
 import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 import { InnerBlocks } from '@wordpress/block-editor';
-import { useDispatch, useSelect } from '@wordpress/data';
 import { createBlock, switchToBlockType } from '@wordpress/blocks';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 /**
  * Block constants.
@@ -97,67 +97,28 @@ const migrateNew = () => {
 };
 
 const settings = {
-	/* translators: block name */
-	title: __( 'Services', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add up to four columns of services to display.', 'coblocks' ),
+	edit: Edit,
 	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */
 		__( 'features', 'coblocks' ),
 	],
-	edit: Edit,
 	save: () => <InnerBlocks.Content />,
-
+	/* translators: block name */
+	title: __( 'Services', 'coblocks' ),
 	transforms: {
 		to: [
 			{
 				blocks: [ 'core/columns' ],
 				transform: ( attributes, innerBlocks ) => {
-					if ( innerBlocks.length === 0 ) {
-						return createBlock(
-							'core/columns',
-							{},
-							migrateNew()
-						);
-					}
-
-					const formattedColumns = innerBlocks.reduce( ( acc, curr, index ) => {
-						if ( index % 2 === 0 ) {
-							return [
-								...acc,
-								[
-									curr,
-								],
-							];
-						}
-
-						const newColumns = [ ...acc ];
-						const newColumnIndex = ( index - 1 ) / 2;
-						const currentColumnsArr = newColumns[ newColumnIndex ];
-
-						if ( ! currentColumnsArr ) {
-							newColumns[ newColumnIndex ] = [
-								curr,
-							];
-						} else {
-							newColumns[ newColumnIndex ] = [
-								...currentColumnsArr,
-								curr,
-							];
-						}
-
-						return newColumns;
-					}, [] );
-
-					return formattedColumns.map( ( cols ) => {
-						return createBlock(
-							'core/columns',
-							{},
-							migrateCurrent( attributes, cols )
-						);
-					} );
+					return createBlock(
+						'core/columns',
+						{},
+						innerBlocks.length === 0 ? migrateNew() : migrateCurrent( attributes, innerBlocks )
+					);
 				},
 				type: 'block',
 			},

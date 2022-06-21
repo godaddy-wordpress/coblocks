@@ -17,8 +17,16 @@ const settings = {
 				transform: ( attributes, innerBlocks ) => {
 					const formattedInnerBlocks = [ ...innerBlocks ];
 
+					const imageBlockAttributes = {
+						align: 'full',
+						className: 'is-style-service',
+					};
+
 					if ( attributes.imageUrl ) {
-						const imageBlock = createBlock( 'core/image', { url: attributes.imageUrl, align: 'full', className: 'is-style-service' } );
+						const imageBlock = createBlock( 'core/image', { url: attributes.imageUrl, ...imageBlockAttributes } );
+						formattedInnerBlocks.unshift( imageBlock );
+					} else {
+						const imageBlock = createBlock( 'core/image', { url: '', ...imageBlockAttributes } );
 						formattedInnerBlocks.unshift( imageBlock );
 					}
 
