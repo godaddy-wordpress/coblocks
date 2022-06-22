@@ -1,13 +1,48 @@
-// Import legacy styles for older versions of CoBlocks
-@import "legacy";
-
 .wp-block-coblocks-services {
-	.has-1-columns {
-		justify-content: center;
+	.wp-block-column {
+		padding: 0 !important;
+
+		figure {
+			margin-bottom: 1.5rem;
+			display: flex;
+			margin: 0 0 1.5em;
+			padding: 75% 0 0;
+			position: relative;
+			width: 100%;
+
+			img {
+				height: 100%;
+				object-fit: cover;
+				position: absolute;
+				top: 0;
+				vertical-align: middle;
+				width: 100%;
+			}
+
+			img[src=""] {
+				display: none;
+		 }
+		}
 	}
 }
 
-// TwentyTwenty compatibility
-.is-twentytwenty .wp-block-coblocks-services .has-1-columns .wp-block-coblocks-service-column {
-	max-width: 58rem;
+.wp-block-coblocks-services.is-style-circle {
+	figure {
+		border-radius: 100%;
+		padding: 0 !important;
+		padding-top: 100% !important;
+	}
+}
+
+.wp-block-coblocks-services.is-style-square {
+	figure {
+		padding: 0 !important;
+		padding-top: 100% !important;
+	}
+}
+
+.wp-block-coblocks-services.is-style-sixbynine {
+	figure {
+		padding-top: 56.25% !important;
+	}
 }

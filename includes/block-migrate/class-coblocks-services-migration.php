@@ -26,6 +26,14 @@ class CoBlocks_Services_Migration extends CoBlocks_Block_Migration {
 	 * @inheritDoc
 	 */
 	protected function migrate_attributes() {
+		$services_block = $this->query_selector( '//div[contains(@class,"wp-block-coblocks-services")]' );
+
+		$services_class = $this->get_element_attribute( $services_block, 'class' );
+
+		if ( $services_class ) {
+			$this->block_attributes['className'] = $services_class;
+		}
+
 		return $this->block_attributes;
 	}
 }

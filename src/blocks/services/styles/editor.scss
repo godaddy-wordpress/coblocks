@@ -1,94 +1,66 @@
-[data-type="coblocks/services"] {
-	width: 100%;
-
-	&.block-editor-block-list__block:focus::after {
-		box-shadow: 0 0 0 $border-width-focus transparent !important;
-	}
-
-	&:focus::after {
-		box-shadow: 0 0 0 $border-width-focus transparent !important;
-	}
-
-
-	[data-type="coblocks/service"] [data-type="core/buttons"] .wp-block {
-		margin-bottom: 0;
-		margin-top: 0;
-
-		[data-type="core/button"] {
-			margin-top: 0;
-		}
-	}
-
-	.has-1-columns .block-editor-block-list__layout {
-		justify-content: center;
-	}
-
-}
-
-.wp-coblocks-services {
-	[data-type="core/column"] {
+.wp-block-coblocks-services {
+	.wp-block-column {
 		padding: 0 !important;
 
-		:first-child {
+		.wp-block {
 			margin-bottom: 0 !important;
+
+			& > figure {
+				margin-bottom: 1.5rem;
+				display: flex;
+    		margin: 0 0 1.5em;
+    		padding: 75% 0 0;
+    		position: relative;
+    		width: 100%;
+
+				img {
+					height: 100%;
+    			object-fit: cover;
+    			position: absolute;
+    			top: 0;
+    			vertical-align: middle;
+    			width: 100%;
+				}
+
+				.block-editor-media-placeholder {
+					height: 100%;
+    			object-fit: cover;
+    			position: absolute;
+    			top: 0;
+    			vertical-align: middle;
+    			width: 100%;
+					min-height: auto;
+
+					.components-button {
+						margin-bottom: 0;
+					}
+				}
+
+				.components-form-file-upload button {
+					margin-bottom: 0;
+				}
+			}
 		}
 	}
 }
 
-.wp-block-coblocks-services {
-
-	.block-editor-media-placeholder {
-		padding-bottom: 0;
-		padding-left: 0;
-		padding-right: 0;
-	}
-
-	.block-list-appender {
-		display: none !important;
-	}
-
-	.is-selected .wp-block-coblocks-service .wp-block-coblocks-service__figure:not(figure) {
-		border-radius: $radius-block-ui;
-		box-shadow: 0 0 0 $border-width $white, 0 0 0 3px var(--wp-admin-theme-color, #007cba) !important;
+.wp-block-coblocks-services.is-style-circle {
+	figure {
+		border-radius: 100%;
+		padding: 0 !important;
+		padding-top: 100% !important;
 	}
 }
 
-// CoBlocks style previewer
-.coblocks-editor-block-styles {
-
-	.align-center {
-
-		.service-svg-moving-path {
-			transform: translateX(4px);
-		}
-	}
-
-	.align-left {
-
-		.service-svg-moving-path {
-			transform: translateX(0);
-		}
-	}
-
-	.align-right {
-
-		.service-svg-moving-path {
-			transform: translateX(8px);
-		}
-	}
-
-	.block-editor-block-styles__item-preview {
-		height: 82px;
-		padding: 0;
+.wp-block-coblocks-services.is-style-square {
+	figure {
+		padding: 0 !important;
+		padding-top: 100% !important;
 	}
 }
 
-// Tweak inspector panel
-.components-toggle-control--services-action-button {
-	margin-top: 30;
-}
-
-// TwentyTwentyOne compatibility
-.is-twentytwentyone .wp-block-coblocks-service img {
-	height: 100%;
+.wp-block-coblocks-services.is-style-sixbynine {
+	figure {
+		padding-top: 56.25% !important;
+	}
 }
