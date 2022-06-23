@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.5
 Tested up to: 6.0
 Requires PHP: 5.6
-Stable tag: 2.24.0
+Stable tag: 2.24.1
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,10 +123,12 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Enhancements
-* Allow all blocks to use animations [#2335](https://github.com/godaddy-wordpress/coblocks/pull/2335)
+* Gallery Carousel Behavior and Rendering Enhancements [#2389](https://github.com/godaddy-wordpress/coblocks/pull/2389)
+
+### Bug fixes
+* Fix canary build and PHP linting errors [#2397](https://github.com/godaddy-wordpress/coblocks/pull/2397)
+* Check for WP_Error in wp_remote_get; fixes [#2386](https://github.com/godaddy-wordpress/coblocks/pull/2386) [#2387](https://github.com/godaddy-wordpress/coblocks/pull/2387)
 
 ### Misc
-* Bump Tested up to version to 6.0 [#2383](https://github.com/godaddy-wordpress/coblocks/pull/2383)
-* Remove extraneous element from extensions HoC [#2334](https://github.com/godaddy-wordpress/coblocks/pull/2334)
-* Reintroduce transformation unit tests for CoBlocks Galleries to Core [#2382](https://github.com/godaddy-wordpress/coblocks/pull/2382)
-* Fix automated tests for WP 6.0 [#2381](https://github.com/godaddy-wordpress/coblocks/pull/2381), [#2376](https://github.com/godaddy-wordpress/coblocks/pull/2376), [#2380](https://github.com/godaddy-wordpress/coblocks/pull/2380)
+* Update dependencies to fix canary build [#2396](https://github.com/godaddy-wordpress/coblocks/pull/2396)
+* Remove code owners file [#2395](https://github.com/godaddy-wordpress/coblocks/pull/2395)
