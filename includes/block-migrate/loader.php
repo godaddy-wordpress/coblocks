@@ -16,6 +16,7 @@ require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-block-
  */
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-alert-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-author-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-column-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-dynamic-separator-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-collage-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-masonry-migration.php';
@@ -28,6 +29,7 @@ require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-media-
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-posts-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-pricing-table-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-pricing-table-item-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-row-migration.php';
 
 /**
  * Hook into the post object before it's returned to the editor.
@@ -49,22 +51,27 @@ add_action(
 		// Load our available migrations.
 		$migration_runner = new CoBlocks_Block_Migration_Runner();
 
-		array_map( array( $migration_runner, 'register' ), array(
-			CoBlocks_Alert_Migration::class,
-			CoBlocks_Author_Migration::class,
-			CoBlocks_Dynamic_Separator_Migration::class,
-			CoBlocks_Gallery_Collage_Migration::class,
-			CoBlocks_Gallery_Masonry_Migration::class,
-			CoBlocks_Gallery_Offset_Migration::class,
-			CoBlocks_Gallery_Stacked_Migration::class,
-			CoBlocks_Gif_Migration::class,
-			CoBlocks_Hero_Migration::class,
-			CoBlocks_Highlight_Migration::class,
-			CoBlocks_Media_Card_Migration::class,
-			CoBlocks_Posts_Migration::class,
-			CoBlocks_Pricing_Table_Migration::class,
-			CoBlocks_Pricing_Table_Item_Migration::class,
-		) );
+		array_map(
+			array( $migration_runner, 'register' ),
+			array(
+				CoBlocks_Alert_Migration::class,
+				CoBlocks_Author_Migration::class,
+				CoBlocks_Column_Migration::class,
+				CoBlocks_Dynamic_Separator_Migration::class,
+				CoBlocks_Gallery_Collage_Migration::class,
+				CoBlocks_Gallery_Masonry_Migration::class,
+				CoBlocks_Gallery_Offset_Migration::class,
+				CoBlocks_Gallery_Stacked_Migration::class,
+				CoBlocks_Gif_Migration::class,
+				CoBlocks_Hero_Migration::class,
+				CoBlocks_Highlight_Migration::class,
+				CoBlocks_Media_Card_Migration::class,
+				CoBlocks_Posts_Migration::class,
+				CoBlocks_Pricing_Table_Migration::class,
+				CoBlocks_Pricing_Table_Item_Migration::class,
+				CoBlocks_Row_Migration::class,
+			)
+		);
 
 		$parsed_blocks = array_map( array( $migration_runner, 'migrate_block' ), $parsed_blocks );
 
