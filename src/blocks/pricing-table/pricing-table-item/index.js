@@ -23,10 +23,8 @@ const settings = {
 			{
 				blocks: [ 'core/column' ],
 				transform: ( attributes, innerBlocks ) => {
-					console.log( attributes );
-
-					const heading  = createBlock( 'core/paragraph', { content: attributes.title, align: 'center', style: { 'typography': { fontStyle: 'normal', fontWeight: '700', fontSize: 'medium' } } } );
-					const price    = createBlock( 'core/paragraph', { content: '<sup>' + attributes.currency + '</sup>' + attributes.amount, align: 'center', style: { 'typography': { fontStyle: 'normal', fontSize: '5em' } } } );
+					const heading  = createBlock( 'core/paragraph', { content: attributes.title ?? '', align: 'center', style: { 'typography': { fontStyle: 'normal', fontWeight: '700', fontSize: 'medium' } } } );
+					const price    = createBlock( 'core/paragraph', { content: '<sup>' + ( attributes.currency ?? '' ) + '</sup>' + attributes.amount ?? '', align: 'center', style: { 'typography': { fontStyle: 'normal', fontSize: '5em' } } } );
 					const features = attributes.features.map( function( feature ) {
 						return createBlock( 'core/paragraph', { content: feature, align: 'center' } );
 					} );
