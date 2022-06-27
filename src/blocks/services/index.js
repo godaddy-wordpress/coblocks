@@ -96,6 +96,25 @@ const migrateNew = () => {
 	} );
 };
 
+const formatColumns = ( innerBlocks, colAmount ) => {
+	const formattedInnerBlocks = [ ...innerBlocks ];
+	const formattedServiceBlocks = [];
+
+	let serviceRow = [];
+
+	while ( formattedInnerBlocks.length > 0 ) {
+		serviceRow = formattedInnerBlocks.splice( 0, colAmount );
+
+		formattedServiceBlocks.push( serviceRow );
+	}
+
+	const allRowsMatchLength = formattedServiceBlocks.some( ( col ) => col.length < colAmount );
+
+	console.log( 'allRowsMatchLength', allRowsMatchLength );
+
+	return formattedServiceBlocks;
+};
+
 const settings = {
 	/* translators: block description */
 	description: __( 'Add up to four columns of services to display.', 'coblocks' ),
@@ -125,18 +144,9 @@ const settings = {
 						);
 					}
 
-					const formattedInnerBlocks = [ ...innerBlocks ];
-					const formattedServiceBlocks = [];
+					const formattedColumns = formatColumns( innerBlocks, attributes.columns );
 
-					let serviceRow = [];
-
-					while ( formattedInnerBlocks.length > 0 ) {
-						serviceRow = formattedInnerBlocks.splice( 0, attributes.columns );
-
-						formattedServiceBlocks.push( serviceRow );
-					}
-
-					return formattedServiceBlocks.map( ( columns ) => {
+					return formattedColumns.map( ( columns ) => {
 						return createBlock(
 							'core/columns',
 							{
