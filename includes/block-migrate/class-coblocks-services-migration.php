@@ -40,6 +40,15 @@ class CoBlocks_Services_Migration extends CoBlocks_Block_Migration {
 			}
 		}
 
+		$columns_container = $this->query_selector( '//div[contains(@class,"has-columns")]' );
+		$columns_class = $this->get_element_attribute( $columns_container, 'class' );
+
+		if ( $columns_class ) {
+			$col_amount = preg_match( '/(?<=has-)([0-4])(?=-columns)/', $columns_class, $matches  );
+
+			$this->block_attributes['columns'] = $matches[0];
+		}
+
 		return $this->block_attributes;
 	}
 }

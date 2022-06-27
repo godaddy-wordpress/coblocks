@@ -114,14 +114,38 @@ const settings = {
 			{
 				blocks: [ 'core/columns' ],
 				transform: ( attributes, innerBlocks ) => {
-					return createBlock(
-						'core/columns',
-						{
-							className: attributes.className,
-							align: attributes.align,
-						},
-						innerBlocks.length === 0 ? migrateNew() : migrateCurrent( attributes, innerBlocks )
-					);
+					if ( innerBlocks.length === 0 ) {
+						return createBlock(
+							'core/columns',
+							{
+								align: attributes.align,
+								className: attributes.className,
+							},
+							migrateNew()
+						);
+					}
+
+					const formattedInnerBlocks = [ ...innerBlocks ];
+					const formattedServiceBlocks = [];
+
+					let serviceRow = [];
+
+					while ( formattedInnerBlocks.length > 0 ) {
+						serviceRow = formattedInnerBlocks.splice( 0, attributes.columns );
+
+						formattedServiceBlocks.push( serviceRow );
+					}
+
+					return formattedServiceBlocks.map( ( columns ) => {
+						return createBlock(
+							'core/columns',
+							{
+								align: attributes.align,
+								className: attributes.className,
+							},
+							migrateCurrent( attributes, columns )
+						);
+					} );
 				},
 				type: 'block',
 			},

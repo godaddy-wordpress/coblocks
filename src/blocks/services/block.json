@@ -5,6 +5,10 @@
 	"attributes": {
 		"align": {
 			"type": "string"
+		},
+		"columns": {
+			"type": "string",
+			"default": "4"
 		}
 	},
 	"title": "Services",
