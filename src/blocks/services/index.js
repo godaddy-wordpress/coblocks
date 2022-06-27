@@ -118,6 +118,7 @@ const settings = {
 						'core/columns',
 						{
 							className: attributes.className,
+							align: attributes.align,
 						},
 						innerBlocks.length === 0 ? migrateNew() : migrateCurrent( attributes, innerBlocks )
 					);

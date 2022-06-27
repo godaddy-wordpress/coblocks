@@ -32,6 +32,12 @@ class CoBlocks_Services_Migration extends CoBlocks_Block_Migration {
 
 		if ( $services_class ) {
 			$this->block_attributes['className'] = $services_class;
+
+			if ( str_contains( $services_class, 'align' ) ) {
+				$alignemnt = explode( ' ', explode( 'align', $services_class )[1] )[0];
+
+				$this->block_attributes['align'] = $alignemnt;
+			}
 		}
 
 		return $this->block_attributes;

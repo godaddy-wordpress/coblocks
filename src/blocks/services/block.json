@@ -2,7 +2,11 @@
 	"apiVersion": 2,
 	"name": "coblocks/services",
 	"category": "layout",
-	"attributes": {},
+	"attributes": {
+		"align": {
+			"type": "string"
+		}
+	},
 	"title": "Services",
 	"textdomain": "coblocks",
 	"editorScript": "blocks-6",
