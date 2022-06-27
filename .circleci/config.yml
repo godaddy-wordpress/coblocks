@@ -496,9 +496,7 @@ commands:
     steps:
       - run:
           name: "Install and activate Gutenberg Nightly"
-          command: |
-            ./vendor/bin/wp plugin install https://gutenbergtimes.com/wp-content/uploads/2020/11/gutenberg.zip --path=/tmp/wordpress
-            ./vendor/bin/wp plugin activate gutenberg --path=/tmp/wordpress
+          command: ./vendor/bin/wp plugin install https://gutenbergtimes.com/wp-content/uploads/2020/11/gutenberg.zip --activate --path=/tmp/wordpress
 
   setup_spec_files_diff_tree:
     steps:
