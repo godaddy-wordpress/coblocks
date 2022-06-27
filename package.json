@@ -115,7 +115,7 @@
 		"@wordpress/plugins": "^4.6.0",
 		"@wordpress/primitives": "^3.6.0",
 		"@wordpress/rich-text": "^5.6.0",
-		"@wordpress/scripts": "^23.0.0",
+		"@wordpress/scripts": "^23.3.0",
 		"@wordpress/server-side-render": "^3.6.0",
 		"@wordpress/token-list": "^2.8.0",
 		"@wordpress/url": "^3.9.0",
@@ -161,7 +161,8 @@
 		"uuid": "^8.3.2"
 	},
 	"resolutions": {
-		"eslint-plugin-jsdoc": "^39.2.5"
+		"eslint-plugin-jsdoc": "^39.2.5",
+		"got": "^11.8.5"
 	},
 	"lint-staged": {
 		"*.scss": [
