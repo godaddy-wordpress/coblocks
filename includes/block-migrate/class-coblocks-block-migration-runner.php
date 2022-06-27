@@ -16,15 +16,15 @@ class CoBlocks_Block_Migration_Runner {
 	 *
 	 * @var array
 	 */
-	protected $migrations = [];
+	protected $migrations = array();
 
 	/**
 	 * Register a block migration.
 	 *
-	 * @param Object $block_migration
+	 * @param Object $block_migration The block migration to register.
 	 */
 	public function register( $block_migration ) {
-		$block_name = call_user_func( array( $block_migration, 'block_name' ) );
+		$block_name                      = call_user_func( array( $block_migration, 'block_name' ) );
 		$this->migrations[ $block_name ] = $block_migration;
 	}
 
