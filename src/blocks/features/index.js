@@ -130,6 +130,7 @@ const settings = {
 					return createBlock(
 						'core/columns',
 						{
+							className: attributes.className,
 							template: [ FEATURE_TEMPLATE ],
 							templateLock: 'all',
 						},
