@@ -29,6 +29,12 @@ class CoBlocks_Features_Migration extends CoBlocks_Block_Migration {
 			$features_block = $this->query_selector( '//div[".wp-block-coblocks-features"]' );
 			$features_class = $this->get_element_attribute( $features_block, 'class' );
 
+			if ( str_contains( $features_class, 'align') ) {
+				$alignemnt = explode( ' ', explode( 'align', $features_class )[1] )[0];
+
+				$this->block_attributes['align'] = $alignemnt;
+			}
+
 			$this->block_attributes['className'] = $features_class;
 
 			return $this->block_attributes;
