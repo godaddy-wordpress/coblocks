@@ -26,14 +26,10 @@ class CoBlocks_Features_Migration extends CoBlocks_Block_Migration {
 	 * @inheritDoc
 	 */
 	protected function migrate_attributes() {
-			$features_block = $this->query_selector( '//div[@data-type=""coblocks/features"]' );
+			$features_block = $this->query_selector( '//div[".wp-block-coblocks-features"]' );
+			$features_class = $this->get_element_attribute( $features_block, 'class' );
 
-			$features_align = $this->get_element_attribute( $features_block, 'data-align' );
-			wp_die( $features_align );
-			if ( $features_align ) {
-
-				$this->block_attributes['className'] = $features_class;
-			}
+			$this->block_attributes['className'] = $features_class;
 
 			return $this->block_attributes;
 	}
