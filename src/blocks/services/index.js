@@ -113,23 +113,25 @@ const formatColumns = ( innerBlocks, colAmount ) => {
 	if ( ! allRowsMatchLength ) {
 		const arrayToIncrease = formattedServiceBlocks.findIndex( ( row ) => row.length < colAmount );
 
-		const lenCurrRow = formattedServiceBlocks[ arrayToIncrease ].length;
+		if ( arrayToIncrease !== -1 ) {
+			const lenCurrRow = formattedServiceBlocks[ arrayToIncrease ].length;
 
-		for ( let j = lenCurrRow; j < colAmount; j++ ) {
-			formattedServiceBlocks[ arrayToIncrease ].push(
-				createBlock(
-					'coblocks/service',
-					{},
-					[
-						createBlock( 'core/heading', {
-							placeholder: __( 'Write title…', 'coblocks' ),
-						} ),
-						createBlock( 'core/paragraph', {
-							placeholder: __( 'Write description…', 'coblocks' ),
-						} ),
-					]
-				)
-			);
+			for ( let j = lenCurrRow; j < colAmount; j++ ) {
+				formattedServiceBlocks[ arrayToIncrease ].push(
+					createBlock(
+						'coblocks/service',
+						{},
+						[
+							createBlock( 'core/heading', {
+								placeholder: __( 'Write title…', 'coblocks' ),
+							} ),
+							createBlock( 'core/paragraph', {
+								placeholder: __( 'Write description…', 'coblocks' ),
+							} ),
+						]
+					)
+				);
+			}
 		}
 	}
 
