@@ -29,6 +29,9 @@ class CoBlocks_Features_Migration extends CoBlocks_Block_Migration {
 			$features_block = $this->query_selector( '//div[".wp-block-coblocks-features"]' );
 			$features_class = $this->get_element_attribute( $features_block, 'class' );
 
+			$features_inner_element = $this->query_selector( '//div[".wp-block-coblocks-features"]//div[".wp-block-coblocks-features__inner"]' );
+			$features_inner_class = $this->get_element_attribute( $features_inner_element, 'class' );
+
 			if ( str_contains( $features_class, 'align') ) {
 				$alignemnt = explode( ' ', explode( 'align', $features_class )[1] )[0];
 
@@ -36,6 +39,8 @@ class CoBlocks_Features_Migration extends CoBlocks_Block_Migration {
 			}
 
 			$this->block_attributes['className'] = $features_class;
+			$this->block_attributes['className'] .= ' ';
+			$this->block_attributes['className'] .= $features_inner_class;
 
 			return $this->block_attributes;
 	}
