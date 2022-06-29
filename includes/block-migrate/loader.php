@@ -16,6 +16,7 @@ require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-block-
  */
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-alert-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-author-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-column-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-dynamic-separator-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-collage-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-masonry-migration.php';
@@ -28,6 +29,7 @@ require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-media-
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-posts-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-services-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-service-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-row-migration.php';
 
 /**
  * Hook into the post object before it's returned to the editor.
@@ -54,6 +56,7 @@ add_action(
 			array(
 				CoBlocks_Alert_Migration::class,
 				CoBlocks_Author_Migration::class,
+				CoBlocks_Column_Migration::class,
 				CoBlocks_Dynamic_Separator_Migration::class,
 				CoBlocks_Gallery_Collage_Migration::class,
 				CoBlocks_Gallery_Masonry_Migration::class,
@@ -66,6 +69,7 @@ add_action(
 				CoBlocks_Posts_Migration::class,
 				CoBlocks_Services_Migration::class,
 				CoBLocks_Service_Migration::class
+				CoBlocks_Row_Migration::class,
 			)
 		);
 

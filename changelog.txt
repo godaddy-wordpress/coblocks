@@ -1,4 +1,18 @@
 
+2.24.1 / 2022-06-15
+===================
+
+### Enhancements
+* Gallery Carousel Behavior and Rendering Enhancements [#2389](https://github.com/godaddy-wordpress/coblocks/pull/2389)
+
+### Bug fixes
+* Fix canary build and PHP linting errors [#2397](https://github.com/godaddy-wordpress/coblocks/pull/2397)
+* Check for WP_Error in wp_remote_get; fixes [#2386](https://github.com/godaddy-wordpress/coblocks/pull/2386) [#2387](https://github.com/godaddy-wordpress/coblocks/pull/2387)
+
+### Misc
+* Update dependencies to fix canary build [#2396](https://github.com/godaddy-wordpress/coblocks/pull/2396)
+* Remove code owners file [#2395](https://github.com/godaddy-wordpress/coblocks/pull/2395)
+
 2.24.0 / 2022-05-24
 ===================
 ### Enhancements
