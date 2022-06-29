@@ -26,6 +26,7 @@ require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-hero-m
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-highlight-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-media-card-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-posts-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-food-and-drink-migration.php';
 
 /**
  * Hook into the post object before it's returned to the editor.
@@ -62,6 +63,7 @@ add_action(
 				CoBlocks_Highlight_Migration::class,
 				CoBlocks_Media_Card_Migration::class,
 				CoBlocks_Posts_Migration::class,
+				CoBlocks_Food_And_Drink_Migration::class,
 			)
 		);
 
