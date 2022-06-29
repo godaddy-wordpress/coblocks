@@ -78,46 +78,32 @@ function Edit( { clientId } ) {
 	return null;
 }
 
-const migrateCurrent = ( attributes, innerBlocks ) => {
-	return innerBlocks.map( ( innerBlock ) => switchToBlockType( innerBlock, 'core/column' ) ).flat();
-};
-
-const migrateNew = () => {
-	return templateContainer.map( ( innerBlock ) => {
-		return createBlock(
-			'core/column',
-			{},
-			innerBlock.map( ( block ) => {
-				return createBlock(
-					...block,
-				);
-			} )
-		);
-	} );
-};
-
-const formatColumns = ( innerBlocks, colAmount ) => {
+const formatColumns = ( innerBlocks, columnAmount ) => {
 	const formattedInnerBlocks = [ ...innerBlocks ];
 	const formattedServiceBlocks = [];
+	const parsedColumnAmount = parseInt( columnAmount );
 
+	// format the total list of inner blocks to match the total column amount for each row
+	// if one row has less than the column amount, add empty Service block patterns to match
+	// the previous columns blocks.
 	let serviceRow = [];
 
 	while ( formattedInnerBlocks.length > 0 ) {
-		serviceRow = formattedInnerBlocks.splice( 0, colAmount );
+		serviceRow = formattedInnerBlocks.splice( 0, parsedColumnAmount );
 
 		formattedServiceBlocks.push( serviceRow );
 	}
 
-	const allRowsMatchLength = formattedServiceBlocks.every( ( col ) => col.length === colAmount );
+	const allRowsMatchLength = formattedServiceBlocks.every( ( col ) => col.length === parsedColumnAmount );
 
 	if ( ! allRowsMatchLength ) {
-		const arrayToIncrease = formattedServiceBlocks.findIndex( ( row ) => row.length < colAmount );
+		const arrayIndexToAlter = formattedServiceBlocks.findIndex( ( row ) => row.length < parsedColumnAmount );
 
-		if ( arrayToIncrease !== -1 ) {
-			const lenCurrRow = formattedServiceBlocks[ arrayToIncrease ].length;
+		if ( arrayIndexToAlter !== -1 ) {
+			const lenCurrRow = formattedServiceBlocks[ arrayIndexToAlter ].length;
 
-			for ( let j = lenCurrRow; j < colAmount; j++ ) {
-				formattedServiceBlocks[ arrayToIncrease ].push(
+			for ( let j = lenCurrRow; j < parsedColumnAmount; j++ ) {
+				formattedServiceBlocks[ arrayIndexToAlter ].push(
 					createBlock(
 						'coblocks/service',
 						{},
@@ -163,7 +149,17 @@ const settings = {
 								align: attributes.align,
 								className: attributes.className,
 							},
-							migrateNew()
+							templateContainer.map( ( innerBlock ) => (
+								createBlock(
+									'core/column',
+									{},
+									innerBlock.map( ( block ) => (
+										createBlock(
+											...block,
+										)
+									) )
+								)
+							) )
 						);
 					}
 
@@ -176,7 +172,7 @@ const settings = {
 								align: attributes.align,
 								className: attributes.className,
 							},
-							migrateCurrent( attributes, columns )
+							columns.map( ( innerBlock ) => switchToBlockType( innerBlock, 'core/column' ) ).flat()
 						);
 					} );
 				},
