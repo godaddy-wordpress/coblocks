@@ -6,72 +6,57 @@ import { FoodDrinkIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 /**
  * Internal dependencies.
  */
-import deprecated from './deprecated';
-import edit from './edit';
 import metadata from './block.json';
-import save from './save';
-
 /**
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
+import { InnerBlocks } from '@wordpress/block-editor';
+import { createBlock, switchToBlockType } from '@wordpress/blocks';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 /**
  * Block constants.
  */
 const { name, category, attributes } = metadata;
 
+function Edit( { clientId } ) {
+	const { replaceBlocks } = useDispatch( 'core/block-editor' );
+	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
+
+	const currentBlock = getBlock( clientId );
+
+	if ( ! currentBlock ) {
+		return null;
+	}
+
+	replaceBlocks(
+		[ clientId ],
+		switchToBlockType( currentBlock, 'core/columns' )
+	);
+
+	return null;
+}
+
 const settings = {
-	attributes,
-	deprecated,
-	/* translators: block description */
 	description: __( 'Display a menu or price list.', 'coblocks' ),
-	edit,
-	example: {
-		innerBlocks: [
+	edit: Edit,
+	save: () => <InnerBlocks.Content />,
+	title: __( 'Food & Drink', 'coblocks' ),
+	transforms: {
+		to: [
 			{
-				attributes: {
-					content: 'Appetizers',
+				blocks: [ 'core/columns' ],
+				transform: ( attributes, innerBlocks ) => {
+					return createBlock(
+						'core/columns',
+						{}
+					);
 				},
-				name: 'core/heading',
-			},
-			{
-				attributes: {
-					description: 'Corn chips topped w/ black beans, melted cheese, salsa & fresh guacamole',
-					price: '$10.90',
-					title: 'Vegetarian Nachos',
-				},
-				name: 'coblocks/food-item',
-			},
-			{
-				attributes: {
-					description: 'Breaded white meat chicken tossed in Mild or Hot sauce and served with Ranch or Bleu Cheese dressing',
-					price: '$10.90',
-					spicy: true,
-					title: 'Buffalo Wings',
-				},
-				name: 'coblocks/food-item',
+				type: 'block',
 			},
 		],
 	},
-	getEditWrapperProps( atts ) {
-		return { 'data-columns': atts.columns };
-	},
-	icon: <Icon icon={ icon } />,
-	keywords: [
-		'coblocks',
-		/* translators: block keyword */
-		__( 'restaurant', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'menu', 'coblocks' ),
-	],
-	save,
-	supports: {
-		align: [ 'wide' ],
-	},
-	/* translators: block name */
-	title: __( 'Food & Drink', 'coblocks' ),
 };
 
 export { name, category, metadata, settings };
