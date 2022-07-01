@@ -6,6 +6,7 @@ import metadata from './block.json';
 /**
  * WordPress dependencies.
  */
+import { __ } from '@wordpress/i18n/build-types';
 import { createBlock } from '@wordpress/blocks';
 
 /**
@@ -27,7 +28,19 @@ const settings = {
 						attributes,
 						innerBlocks,
 					} );
-					return createBlock( 'core/column', {}, [] );
+
+					const paragraphBlock = createBlock(
+						'core/paragraph',
+						{
+							content: attributes.title,
+							placeholder: __( 'Add title…', 'coblocks' ),
+						},
+						[]
+					);
+
+					return createBlock( 'core/column', {}, [
+						paragraphBlock,
+					] );
 				},
 				type: 'block',
 			},
