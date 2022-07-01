@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import { FoodItemIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Internal dependencies.
  */
 import metadata from './block.json';
@@ -11,14 +6,12 @@ import metadata from './block.json';
 /**
  * WordPress dependencies.
  */
-import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
 import { createBlock } from '@wordpress/blocks';
 
 /**
  * Block constants.
  */
-const { name, category, attributes } = metadata;
+const { name, category } = metadata;
 
 const settings = {
 	edit: () => null,

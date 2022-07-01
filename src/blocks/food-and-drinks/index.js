@@ -18,22 +18,42 @@ import { useDispatch, useSelect } from '@wordpress/data';
 /**
  * Block constants.
  */
-const { name, category, attributes } = metadata;
+const { name, category } = metadata;
 
 function Edit( { clientId } ) {
 	const { replaceBlocks } = useDispatch( 'core/block-editor' );
 	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
 
 	const currentBlock = getBlock( clientId );
-
 	if ( ! currentBlock ) {
 		return null;
 	}
 
-	replaceBlocks(
-		[ clientId ],
-		switchToBlockType( currentBlock, 'core/columns' )
-	);
+	const innerBlocksClone = [ ...currentBlock.innerBlocks ];
+
+	// first inner block of Food and Drinks block is the header
+	// each subsequent block is a food item block
+	const headerBlock = innerBlocksClone[ 0 ];
+
+	innerBlocksClone.shift();
+
+	try {
+		const formattedColumnBlocks = innerBlocksClone.map( ( foodItem ) => switchToBlockType( foodItem, 'core/column' ) ).flat();
+
+		replaceBlocks(
+			[ clientId ],
+			[
+				headerBlock,
+				createBlock(
+					'core/columns',
+					{},
+					formattedColumnBlocks,
+				),
+			]
+		);
+	} catch ( error ) {
+		console.log( 'error edit food item', error );
+	}
 
 	return null;
 }
@@ -47,12 +67,13 @@ const settings = {
 		to: [
 			{
 				blocks: [ 'core/columns' ],
-				transform: ( attributes, innerBlocks ) => {
-					return createBlock(
+				transform: ( attributes, innerBlocks ) => (
+					createBlock(
 						'core/columns',
-						{}
-					);
-				},
+						{},
+						innerBlocks
+					)
+				),
 				type: 'block',
 			},
 		],

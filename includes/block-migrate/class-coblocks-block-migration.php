@@ -57,6 +57,7 @@ abstract class CoBlocks_Block_Migration {
 	 */
 	public function migrate( $parsed_block_attributes, $parsed_block_html ) {
 		$this->block_wrapper    = null;
+		$this->block_html       = $parsed_block_html;
 		$this->block_attributes = empty( $parsed_block_attributes ) ? array() : $parsed_block_attributes;
 
 		if ( ! empty( $parsed_block_html ) ) {

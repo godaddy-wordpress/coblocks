@@ -1,11 +1,10 @@
 {
+	"apiVersion": 2,
 	"name": "coblocks/food-item",
 	"category": "layout",
 	"attributes": {
 		"title": {
 			"type": "string",
-			"source": "html",
-			"selector": ".wp-block-coblocks-food-item__heading",
 			"default": ""
 		},
 		"description": {
