@@ -29,7 +29,7 @@ const settings = {
 						innerBlocks,
 					} );
 
-					const paragraphBlock = createBlock(
+					const titleBlock = createBlock(
 						'core/paragraph',
 						{
 							content: attributes.title,
@@ -38,8 +38,28 @@ const settings = {
 						[]
 					);
 
+					const priceBlock = createBlock(
+						'core/paragraph',
+						{
+							content: attributes.price,
+							placeholder: __( '$0.99', 'coblocks' ),
+						},
+						[]
+					);
+
+					const descriptionBlock = createBlock(
+						'core/paragraph',
+						{
+							content: attributes.description,
+							placeholder: __( 'Add a description…', 'coblocks' ),
+						},
+						[]
+					);
+
 					return createBlock( 'core/column', {}, [
-						paragraphBlock,
+						titleBlock,
+						priceBlock,
+						descriptionBlock,
 					] );
 				},
 				type: 'block',

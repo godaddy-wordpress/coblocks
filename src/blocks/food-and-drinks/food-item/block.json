@@ -9,14 +9,10 @@
 		},
 		"description": {
 			"type": "string",
-			"source": "html",
-			"selector": ".wp-block-coblocks-food-item__description",
 			"default": ""
 		},
 		"price": {
 			"type": "string",
-			"source": "html",
-			"selector": ".wp-block-coblocks-food-item__price span",
 			"default": ""
 		},
 		"url": {
