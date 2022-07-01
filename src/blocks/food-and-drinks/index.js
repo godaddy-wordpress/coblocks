@@ -25,9 +25,12 @@ function Edit( { clientId } ) {
 	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
 
 	const currentBlock = getBlock( clientId );
+
 	if ( ! currentBlock ) {
 		return null;
 	}
+
+	console.log( 'currentBlock', currentBlock );
 
 	const innerBlocksClone = [ ...currentBlock.innerBlocks ];
 
@@ -37,23 +40,19 @@ function Edit( { clientId } ) {
 
 	innerBlocksClone.shift();
 
-	try {
-		const formattedColumnBlocks = innerBlocksClone.map( ( foodItem ) => switchToBlockType( foodItem, 'core/column' ) ).flat();
+	const formattedColumnBlocks = innerBlocksClone.map( ( foodItem ) => switchToBlockType( foodItem, 'core/column' ) ).flat();
 
-		replaceBlocks(
-			[ clientId ],
-			[
-				headerBlock,
-				createBlock(
-					'core/columns',
-					{},
-					formattedColumnBlocks,
-				),
-			]
-		);
-	} catch ( error ) {
-		console.log( 'error edit food item', error );
-	}
+	replaceBlocks(
+		[ clientId ],
+		[
+			headerBlock,
+			createBlock(
+				'core/columns',
+				{},
+				formattedColumnBlocks,
+			),
+		]
+	);
 
 	return null;
 }
