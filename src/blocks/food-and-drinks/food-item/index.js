@@ -6,7 +6,7 @@ import metadata from './block.json';
 /**
  * WordPress dependencies.
  */
-import { __ } from '@wordpress/i18n/build-types';
+import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 
 /**

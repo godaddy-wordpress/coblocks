@@ -34,6 +34,8 @@ class CoBlocks_Food_Item_Migration extends CoBlocks_Block_Migration {
 			$this->block_attributes["title"] = $food_item_header->textContent;
 		}
 
+		$food_item_price = $this->query_selector('//div[contains(@class, "wp-block-coblocks-food-item__content")]//div[contains(@class, "wp-block-coblocks-food-item__price")]');
+
 		return $this->block_attributes;
 	}
 

@@ -20,11 +20,55 @@ import { useDispatch, useSelect } from '@wordpress/data';
  */
 const { name, category } = metadata;
 
+const makeEachRowEqualLength = ( totalArray, columnLength ) => {
+	const clonedTotalArray = [ ...totalArray ];
+	const formattedRows = [];
+	const parsedColumnAmount = parseInt( columnLength );
+
+	let currentRow = [];
+
+	while ( clonedTotalArray.length > 0 ) {
+		currentRow = clonedTotalArray.splice( 0, parsedColumnAmount );
+
+		formattedRows.push( currentRow );
+	}
+
+	const allRowsMatchLength = formattedRows.every( ( col ) => col.length === parsedColumnAmount );
+
+	if ( ! allRowsMatchLength ) {
+		const arrayIndexToAlter = formattedRows.findIndex( ( row ) => row.length < parsedColumnAmount );
+
+		if ( arrayIndexToAlter === -1 ) {
+			// all rows have the same number of columns
+			return;
+		}
+
+		const lenCurrRow = formattedRows[ arrayIndexToAlter ].length;
+
+		for ( let j = lenCurrRow; j < parsedColumnAmount; j++ ) {
+			formattedRows[ arrayIndexToAlter ].push(
+				createBlock(
+					'core/column',
+					{},
+					[
+						createBlock( 'core/paragraph', { content: '', placeholder: __( 'Add Title…', 'coblocks' ) }, [] ),
+						createBlock( 'core/paragraph', { content: '', placeholder: __( '$0.00', 'coblocks' ) }, [] ),
+						createBlock( 'core/paragraph', { content: '', placeholder: __( 'Add description…', 'coblocks' ) }, [] ),
+					]
+				)
+			);
+		}
+	}
+
+	return formattedRows;
+};
+
 function Edit( { clientId } ) {
 	const { replaceBlocks } = useDispatch( 'core/block-editor' );
 	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
 
 	const currentBlock = getBlock( clientId );
+
 	if ( ! currentBlock ) {
 		return null;
 	}
@@ -37,23 +81,24 @@ function Edit( { clientId } ) {
 
 	innerBlocksClone.shift();
 
-	try {
-		const formattedColumnBlocks = innerBlocksClone.map( ( foodItem ) => switchToBlockType( foodItem, 'core/column' ) ).flat();
+	const formattedColumnBlocks = 	makeEachRowEqualLength(
+		innerBlocksClone.map( ( foodItem ) => switchToBlockType( foodItem, 'core/column' ) ).flat(),
+		currentBlock.attributes.columns
+	);
 
-		replaceBlocks(
-			[ clientId ],
-			[
-				headerBlock,
+	replaceBlocks(
+		[ clientId ],
+		[
+			headerBlock,
+			...( formattedColumnBlocks.map( ( fullColumn ) => (
 				createBlock(
 					'core/columns',
 					{},
-					formattedColumnBlocks,
-				),
-			]
-		);
-	} catch ( error ) {
-		console.log( 'error edit food item', error );
-	}
+					fullColumn
+				)
+			) ) ),
+		]
+	);
 
 	return null;
 }
