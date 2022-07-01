@@ -1,0 +1,110 @@
+// Container
+.wp-block-coblocks-carousel {
+	// border: 1px solid #f00;
+	box-shadow: inset 0 0 1px #f00;
+	height: 450px;
+	overflow: hidden;
+}
+
+// Wrapper
+.wp-block-coblocks-carousel > .block-editor-block-list__layout,
+.wp-block-coblocks-carousel .wp-block-post-template {
+	// border: 1px solid #0f0;
+	box-shadow: inset 0 0 1px #0f0;
+	display: flex;
+	height: 100%;
+	width: 100%;
+}
+
+// Slide
+.wp-block-coblocks-carousel > .block-editor-block-list__layout > .block-editor-block-list__block,
+.wp-block-coblocks-carousel .wp-block-post-template > .wp-block-post {
+	// border: 1px solid #00f;
+	box-shadow: inset 0 0 1px #00f;
+	cursor: grab;
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	width: 100%;
+}
+
+// .wp-block-coblocks-carousel > .block-editor-block-list__block > .block-list-appender {
+// 	align-items: center;
+// 	display: flex;
+// 	justify-content: center;
+
+// }
+
+// .wp-block-coblocks-carousel > .block-editor-block-list__block > .block-list-appender .block-editor-default-block-appender {
+// 	height: auto !important;
+// }
+
+// .wp-block-coblocks-carousel > .block-editor-block-list__block > .block-list-appender .block-editor-inserter {
+// 	position: relative;
+// }
+
+// .block-editor-block-list__block .block-list-appender .block-editor-default-block-appender
+
+// .wp-block-coblocks-carousel .block-editor-block-list__block .block-list-appender {
+// 	align-items: center;
+// 	display: flex;
+// 	height: 100%;
+// 	justify-content: center;
+// 	width: 100%;
+
+// 	.block-editor-inserter button.block-editor-inserter__toggle {
+// 		height: 100%;
+// 		width: 100%;
+// 	}
+// }
+
+.swiper-plugin-pagination {
+	display: block;
+	position: absolute;
+	right: 2.2rem;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 0.5rem;
+}
+
+.swiper-plugin-pagination__item {
+	background: #aaa;
+	border: none;
+	border-radius: 50% !important;
+	cursor: pointer;
+	display: block;
+	height: 24px;
+	// margin: 100% 0;
+	// padding-top: 100%;
+	transition: background ease 0.2s;
+	width: 24px;
+}
+
+.swiper-plugin-pagination__item.is-active {
+	background: #333;
+}
+
+// Image Block
+.wp-block-coblocks-carousel > .block-editor-block-list__layout > .wp-block-image {
+	overflow: hidden;
+
+	.components-resizable-box__container {
+		height: 100% !important;
+		width: 100% !important;
+	}
+
+	// Disable resizable box handles
+	.components-resizable-box__handle {
+		display: none;
+	}
+
+	img {
+		height: 100%;
+		object-fit: cover;
+		width: 100%;
+	}
+}
