@@ -29,7 +29,6 @@ class CoBlocks_Food_Item_Migration extends CoBlocks_Block_Migration {
 		$food_item_content_container = $this->query_selector( '//div[contains(@class, "wp-block-coblocks-food-item__content")]' );
 		$food_item_header = $this->query_selector( '//div[contains(@class, "wp-block-coblocks-food-item__content")]//div[contains(@class, "wp-block-coblocks-food-item__heading")]//h4' );
 
-
 		if ( $food_item_header ) {
 			$this->block_attributes["title"] = $food_item_header->textContent;
 		}
@@ -45,6 +44,14 @@ class CoBlocks_Food_Item_Migration extends CoBlocks_Block_Migration {
 		if ( $food_item_description ) {
 			$this->block_attributes["description"] = $food_item_description->textContent;
 		}
+
+		$food_item_attributes = $this->query_selector('//div[contains(@class, "wp-block-coblocks-food-item__attributes")]');
+
+		wp_die(
+			print_r(
+				$food_item_attributes
+			)
+			);
 
 		return $this->block_attributes;
 	}

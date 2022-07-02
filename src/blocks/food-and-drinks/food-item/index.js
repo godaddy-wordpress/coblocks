@@ -30,12 +30,18 @@ const settings = {
 					} );
 
 					const titleBlock = createBlock(
-						'core/paragraph',
-						{
-							content: attributes.title,
-							placeholder: __( 'Add title…', 'coblocks' ),
-						},
-						[]
+						'core/group',
+						{},
+						[
+							createBlock(
+								'core/paragraph',
+								{
+									content: attributes.title,
+									placeholder: __( 'Add title…', 'coblocks' ),
+								},
+								[]
+							),
+						]
 					);
 
 					const priceBlock = createBlock(
