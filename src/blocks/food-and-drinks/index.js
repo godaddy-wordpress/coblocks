@@ -51,9 +51,9 @@ const makeEachRowEqualLength = ( totalArray, columnLength ) => {
 					'core/column',
 					{},
 					[
-						createBlock( 'core/paragraph', { content: '', placeholder: __( 'Add Title…', 'coblocks' ) }, [] ),
-						createBlock( 'core/paragraph', { content: '', placeholder: __( '$0.00', 'coblocks' ) }, [] ),
-						createBlock( 'core/paragraph', { content: '', placeholder: __( 'Add description…', 'coblocks' ) }, [] ),
+						createBlock( 'core/paragraph', { align: 'center', content: '', placeholder: __( 'Add Title…', 'coblocks' ) }, [] ),
+						createBlock( 'core/paragraph', { align: 'center', content: '', placeholder: __( '$0.00', 'coblocks' ) }, [] ),
+						createBlock( 'core/paragraph', { align: 'center', content: '', placeholder: __( 'Add description…', 'coblocks' ) }, [] ),
 					]
 				)
 			);
@@ -86,6 +86,8 @@ function Edit( { clientId } ) {
 		currentBlock.attributes.columns
 	);
 
+	console.log( 'does it include or no', currentBlock.attributes.className );
+
 	replaceBlocks(
 		[ clientId ],
 		[
@@ -94,6 +96,7 @@ function Edit( { clientId } ) {
 				createBlock(
 					'core/columns',
 					{
+						align: currentBlock.attributes.className.includes( 'alignwide' ) ? 'wide' : null,
 						className: currentBlock.attributes.className,
 					},
 					fullColumn
