@@ -2705,6 +2705,24 @@ const svgs = {
 		icon: <Icon icon={CoblocksIcons['SpaStyles']['default']} />,
 		icon_outlined: <Icon icon={CoblocksIcons['SpaStyles']['outlined']} />,
 	},
+	spicy: {
+		/* translators: icon label */
+		label: __('Spicy', 'coblocks'),
+		keywords: [
+			/* translators: icon keyword */
+			__('flavor', 'coblocks'),
+			/* translators: icon keyword */
+			__('hot', 'coblocks'),
+			/* translators: icon keyword */
+			__('spicy', 'coblocks'),
+			/* translators: icon keyword */
+			__('spice', 'coblocks'),
+			/* translators: icon keyword */
+			__('heat', 'coblocks'),
+		],
+		icon: <Icon icon={CoblocksIcons['SpicyStyles']['default']} />,
+		icon_outlined: <Icon icon={CoblocksIcons['SpicyStyles']['outlined']} />,
+	},
 	star: {
 		/* translators: icon label */
 		label: __('Star', 'coblocks'),

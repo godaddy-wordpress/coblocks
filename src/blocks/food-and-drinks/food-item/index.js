@@ -23,12 +23,7 @@ const settings = {
 		to: [
 			{
 				blocks: [ 'core/column' ],
-				transform: ( attributes, innerBlocks ) => {
-					console.log( 'food and drink inner item', {
-						attributes,
-						innerBlocks,
-					} );
-
+				transform: ( attributes ) => {
 					const titleBlock = createBlock(
 						'core/group',
 						{},
@@ -40,6 +35,13 @@ const settings = {
 									placeholder: __( 'Add title…', 'coblocks' ),
 								},
 								[]
+							),
+							createBlock(
+								'coblocks/icon',
+								{
+									className: 'is-style-filled',
+									icon: 'spicy',
+								}
 							),
 						]
 					);

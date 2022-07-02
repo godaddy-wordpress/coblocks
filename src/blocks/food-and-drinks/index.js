@@ -93,7 +93,9 @@ function Edit( { clientId } ) {
 			...( formattedColumnBlocks.map( ( fullColumn ) => (
 				createBlock(
 					'core/columns',
-					{},
+					{
+						className: currentBlock.attributes.className,
+					},
 					fullColumn
 				)
 			) ) ),
@@ -112,13 +114,16 @@ const settings = {
 		to: [
 			{
 				blocks: [ 'core/columns' ],
-				transform: ( attributes, innerBlocks ) => (
-					createBlock(
+				transform: ( attributes, innerBlocks ) => {
+					console.log( 'first level attributes', attributes );
+					return createBlock(
 						'core/columns',
-						{},
+						{
+							className: attributes.className,
+						},
 						innerBlocks
-					)
-				),
+					);
+				},
 				type: 'block',
 			},
 		],

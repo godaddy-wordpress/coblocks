@@ -29,11 +29,16 @@ class CoBlocks_Food_And_Drink_Migration extends CoBlocks_Block_Migration {
 		$food_and_drink_block = $this->query_selector( '//div[contains(@class, "wp-block-coblocks-food-and-drinks")]' );
 		$food_and_drink_class = $this->get_element_attribute( $food_and_drink_block, 'class' );
 
+		if ( $food_and_drink_class ) {
+
+			$this->block_attributes[ 'className' ] = $food_and_drink_class;
+		}
+
 		$food_and_drink_cols = $this->get_element_attribute( $food_and_drink_block, 'data-columns' );
 
 		if ( $food_and_drink_cols ) {
 
-			$this->block_attributes['columns'] = $food_and_drink_cols;
+			$this->block_attributes[ 'columns' ] = $food_and_drink_cols;
 		}
 
 		return $this->block_attributes;

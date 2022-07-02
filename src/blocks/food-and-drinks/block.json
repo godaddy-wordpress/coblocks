@@ -22,6 +22,9 @@
 		"headingLevel": {
 			"type": "integer",
 			"default": 4
+		},
+		"className": {
+			"type": "string"
 		}
 	},
 	"title": "Food & Drink",
