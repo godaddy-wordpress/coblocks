@@ -407,7 +407,6 @@ commands:
           theme: "<< parameters.theme >>"
       - enable_debug_mode_for_e2e
       - install_mailhog_plugin
-      - install_gutenberg_plugin
       - start_wpcli_server
       - run:
           name: Run end to end tests (Cypress.io) - << parameters.browser >>
@@ -491,12 +490,6 @@ commands:
           command: |
             mkdir /tmp/wordpress/wp-content/mu-plugins
             cp /home/circleci/project/.dev/mailhog.php /tmp/wordpress/wp-content/mu-plugins/mailhog.php
-
-  install_gutenberg_plugin:
-    steps:
-      - run:
-          name: "Install and activate Gutenberg Nightly"
-          command: ./vendor/bin/wp plugin install https://gutenbergtimes.com/wp-content/uploads/2020/11/gutenberg.zip --activate --path=/tmp/wordpress
 
   setup_spec_files_diff_tree:
     steps:
