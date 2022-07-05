@@ -31,7 +31,7 @@ const settings = {
 							createBlock(
 								'core/column',
 								{
-									width: '70%',
+									width: '50%',
 								},
 								[
 									createBlock(
@@ -50,13 +50,14 @@ const settings = {
 								'core/column',
 								{
 									verticalAlignment: 'center',
-									width: '30%',
+									width: '50%',
 								},
 								[
 									createBlock(
 										'core/group',
 										{
 											layout: {
+												flexWrap: 'nowrap',
 												inherit: false,
 												type: 'flex',
 											},
