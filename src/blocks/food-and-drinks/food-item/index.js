@@ -39,21 +39,6 @@ const settings = {
 								[]
 							),
 							...(
-								// replace this with the correct icons
-								attributes.spicy ? (
-									[ createBlock(
-										'coblocks/icon',
-										{
-											className: 'is-style-filled',
-											contentAlign: 'center',
-											height: '14px',
-											width: '14px',
-										}
-									) ]
-								) : []
-							),
-							...(
-								// replace this with the correct icons
 								attributes.popular ? (
 									[ createBlock(
 										'coblocks/icon',
@@ -61,13 +46,27 @@ const settings = {
 											className: 'is-style-filled',
 											contentAlign: 'center',
 											height: '14px',
+											icon: 'star',
 											width: '14px',
 										}
 									) ]
 								) : []
 							),
 							...(
-								// replace this with the correct icons
+								attributes.spicy ? (
+									[ createBlock(
+										'coblocks/icon',
+										{
+											className: 'is-style-filled',
+											contentAlign: 'center',
+											height: '14px',
+											icon: 'spicy',
+											width: '14px',
+										}
+									) ]
+								) : []
+							),
+							...(
 								attributes.spicier ? (
 									[ createBlock(
 										'coblocks/icon',
@@ -75,13 +74,13 @@ const settings = {
 											className: 'is-style-filled',
 											contentAlign: 'center',
 											height: '14px',
+											icon: 'spicy',
 											width: '14px',
 										}
 									) ]
 								) : []
 							),
 							...(
-								// replace this with the correct icons
 								attributes.vegetarian ? (
 									[ createBlock(
 										'coblocks/icon',
@@ -89,13 +88,13 @@ const settings = {
 											className: 'is-style-filled',
 											contentAlign: 'center',
 											height: '14px',
+											icon: 'vegetarian',
 											width: '14px',
 										}
 									) ]
 								) : []
 							),
 							...(
-								// replace this with the correct icons
 								attributes.vegan ? (
 									[ createBlock(
 										'coblocks/icon',
@@ -103,6 +102,49 @@ const settings = {
 											className: 'is-style-filled',
 											contentAlign: 'center',
 											height: '14px',
+											icon: 'vegan',
+											width: '14px',
+										}
+									) ]
+								) : []
+							),
+							...(
+								attributes.glutenFree ? (
+									[ createBlock(
+										'coblocks/icon',
+										{
+											className: 'is-style-filled',
+											contentAlign: 'center',
+											height: '14px',
+											icon: 'gluten_free',
+											width: '14px',
+										}
+									) ]
+								) : []
+							),
+							...(
+								attributes.pescatarian ? (
+									[ createBlock(
+										'coblocks/icon',
+										{
+											className: 'is-style-filled',
+											contentAlign: 'center',
+											height: '14px',
+											icon: 'fish',
+											width: '14px',
+										}
+									) ]
+								) : []
+							),
+							...(
+								attributes.vegan ? (
+									[ createBlock(
+										'coblocks/icon',
+										{
+											className: 'is-style-filled',
+											contentAlign: 'center',
+											height: '14px',
+											icon: 'vegan',
 											width: '14px',
 										}
 									) ]

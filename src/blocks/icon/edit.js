@@ -24,7 +24,7 @@ const Inspector = lazy( () => import( './inspector' ) );
 /**
  * Set and export block values.
  */
-const MIN_ICON_SIZE = 32;
+const MIN_ICON_SIZE = 20;
 const MAX_ICON_SIZE = 400;
 
 export { MIN_ICON_SIZE, MAX_ICON_SIZE };
