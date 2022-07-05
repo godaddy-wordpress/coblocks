@@ -31,7 +31,7 @@ const settings = {
 							createBlock(
 								'core/column',
 								{
-									width: '50%',
+									width: '80%',
 								},
 								[
 									createBlock(
@@ -50,7 +50,7 @@ const settings = {
 								'core/column',
 								{
 									verticalAlignment: 'center',
-									width: '50%',
+									width: '20%',
 								},
 								[
 									createBlock(
@@ -70,6 +70,7 @@ const settings = {
 														{
 															className: 'is-style-filled',
 															contentAlign: 'center',
+															customIconColor: 'inherit',
 															height: '14px',
 															icon: 'star',
 															width: '14px',
@@ -84,6 +85,7 @@ const settings = {
 														{
 															className: 'is-style-filled',
 															contentAlign: 'center',
+															customIconColor: 'inherit',
 															height: '14px',
 															icon: 'spicy',
 															width: '14px',
@@ -98,6 +100,7 @@ const settings = {
 														{
 															className: 'is-style-filled',
 															contentAlign: 'center',
+															customIconColor: 'inherit',
 															height: '14px',
 															icon: 'spicy',
 															width: '14px',
@@ -112,6 +115,7 @@ const settings = {
 														{
 															className: 'is-style-filled',
 															contentAlign: 'center',
+															customIconColor: 'inherit',
 															height: '14px',
 															icon: 'vegetarian',
 															width: '14px',
@@ -126,6 +130,7 @@ const settings = {
 														{
 															className: 'is-style-filled',
 															contentAlign: 'center',
+															customIconColor: 'inherit',
 															height: '14px',
 															icon: 'vegan',
 															width: '14px',
@@ -140,6 +145,7 @@ const settings = {
 														{
 															className: 'is-style-filled',
 															contentAlign: 'center',
+															customIconColor: 'inherit',
 															height: '14px',
 															icon: 'gluten_free',
 															width: '14px',
@@ -154,6 +160,7 @@ const settings = {
 														{
 															className: 'is-style-filled',
 															contentAlign: 'center',
+															customIconColor: 'inherit',
 															height: '14px',
 															icon: 'fish',
 															width: '14px',
@@ -168,6 +175,7 @@ const settings = {
 														{
 															className: 'is-style-filled',
 															contentAlign: 'center',
+															customIconColor: 'inherit',
 															height: '14px',
 															icon: 'vegan',
 															width: '14px',
