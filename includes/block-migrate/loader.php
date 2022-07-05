@@ -28,6 +28,8 @@ require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-highli
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-features-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-media-card-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-posts-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-pricing-table-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-pricing-table-item-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-row-migration.php';
 
 /**
@@ -66,6 +68,8 @@ add_action(
 				CoBlocks_Highlight_Migration::class,
 				CoBlocks_Media_Card_Migration::class,
 				CoBlocks_Posts_Migration::class,
+				CoBlocks_Pricing_Table_Migration::class,
+				CoBlocks_Pricing_Table_Item_Migration::class,
 				CoBlocks_Row_Migration::class,
 				CoBlocks_Features_Migration::class,
 			)
