@@ -120,6 +120,7 @@ const createNewMigration = () => {
 
 const settings = {
 	edit: Edit,
+	parent: [],
 	save: () => <InnerBlocks.Content />,
 	title: __( 'Features', 'coblocks' ),
 	transforms: {
