@@ -86,8 +86,6 @@ function Edit( { clientId } ) {
 		currentBlock.attributes.columns
 	);
 
-	console.log( 'does it include or no', currentBlock.attributes.className );
-
 	replaceBlocks(
 		[ clientId ],
 		[
@@ -118,7 +116,6 @@ const settings = {
 			{
 				blocks: [ 'core/columns' ],
 				transform: ( attributes, innerBlocks ) => {
-					console.log( 'first level attributes', attributes );
 					return createBlock(
 						'core/columns',
 						{
