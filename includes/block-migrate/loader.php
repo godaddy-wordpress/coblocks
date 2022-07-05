@@ -25,6 +25,7 @@ require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-galler
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gif-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-hero-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-highlight-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-features-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-media-card-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-posts-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-row-migration.php';
@@ -66,6 +67,7 @@ add_action(
 				CoBlocks_Media_Card_Migration::class,
 				CoBlocks_Posts_Migration::class,
 				CoBlocks_Row_Migration::class,
+				CoBlocks_Features_Migration::class,
 			)
 		);
 
