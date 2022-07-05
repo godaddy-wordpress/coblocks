@@ -68,7 +68,7 @@ add_action(
 				CoBlocks_Media_Card_Migration::class,
 				CoBlocks_Posts_Migration::class,
 				CoBlocks_Services_Migration::class,
-				CoBLocks_Service_Migration::class
+				CoBLocks_Service_Migration::class,
 				CoBlocks_Row_Migration::class,
 			)
 		);
