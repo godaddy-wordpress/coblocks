@@ -28,6 +28,14 @@ const settings = {
 						'core/columns',
 						{},
 						[
+							...(
+								attributes.showImage ? (
+									[ createBlock(
+										'core/photo',
+										{}
+									) ]
+								) : []
+							),
 							createBlock(
 								'core/column',
 								{
