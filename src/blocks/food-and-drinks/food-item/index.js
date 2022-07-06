@@ -8,6 +8,7 @@ import metadata from './block.json';
  */
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Block constants.
@@ -17,13 +18,21 @@ const { name, category } = metadata;
 const settings = {
 	edit: () => null,
 	parent: [ 'coblocks/food-and-drinks' ],
-	save: () => null,
+	save: () => <InnerBlocks.Content />,
 	title: metadata.title,
 	transforms: {
 		to: [
 			{
 				blocks: [ 'core/column' ],
 				transform: ( attributes ) => {
+					const iconAttributes = {
+						className: 'is-style-filled',
+						contentAlign: 'center',
+						customIconColor: 'inherit',
+						height: 14,
+						width: 14,
+					};
+
 					const titleBlock = createBlock(
 						'core/columns',
 						{},
@@ -68,12 +77,8 @@ const settings = {
 													[ createBlock(
 														'coblocks/icon',
 														{
-															className: 'is-style-filled',
-															contentAlign: 'center',
-															customIconColor: 'inherit',
-															height: '14px',
 															icon: 'star',
-															width: '14px',
+															...iconAttributes,
 														}
 													) ]
 												) : []
@@ -83,12 +88,8 @@ const settings = {
 													[ createBlock(
 														'coblocks/icon',
 														{
-															className: 'is-style-filled',
-															contentAlign: 'center',
-															customIconColor: 'inherit',
-															height: '14px',
 															icon: 'spicy',
-															width: '14px',
+															...iconAttributes,
 														}
 													) ]
 												) : []
@@ -98,12 +99,8 @@ const settings = {
 													[ createBlock(
 														'coblocks/icon',
 														{
-															className: 'is-style-filled',
-															contentAlign: 'center',
-															customIconColor: 'inherit',
-															height: '14px',
 															icon: 'spicy',
-															width: '14px',
+															...iconAttributes,
 														}
 													) ]
 												) : []
@@ -113,12 +110,8 @@ const settings = {
 													[ createBlock(
 														'coblocks/icon',
 														{
-															className: 'is-style-filled',
-															contentAlign: 'center',
-															customIconColor: 'inherit',
-															height: '14px',
 															icon: 'vegetarian',
-															width: '14px',
+															...iconAttributes,
 														}
 													) ]
 												) : []
@@ -128,12 +121,8 @@ const settings = {
 													[ createBlock(
 														'coblocks/icon',
 														{
-															className: 'is-style-filled',
-															contentAlign: 'center',
-															customIconColor: 'inherit',
-															height: '14px',
 															icon: 'vegan',
-															width: '14px',
+															...iconAttributes,
 														}
 													) ]
 												) : []
@@ -143,12 +132,8 @@ const settings = {
 													[ createBlock(
 														'coblocks/icon',
 														{
-															className: 'is-style-filled',
-															contentAlign: 'center',
-															customIconColor: 'inherit',
-															height: '14px',
 															icon: 'gluten_free',
-															width: '14px',
+															...iconAttributes,
 														}
 													) ]
 												) : []
@@ -158,12 +143,8 @@ const settings = {
 													[ createBlock(
 														'coblocks/icon',
 														{
-															className: 'is-style-filled',
-															contentAlign: 'center',
-															customIconColor: 'inherit',
-															height: '14px',
 															icon: 'fish',
-															width: '14px',
+															...iconAttributes,
 														}
 													) ]
 												) : []
@@ -173,12 +154,8 @@ const settings = {
 													[ createBlock(
 														'coblocks/icon',
 														{
-															className: 'is-style-filled',
-															contentAlign: 'center',
-															customIconColor: 'inherit',
-															height: '14px',
 															icon: 'vegan',
-															width: '14px',
+															...iconAttributes,
 														}
 													) ]
 												) : []
