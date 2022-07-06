@@ -193,7 +193,7 @@ const settings = {
 					const priceBlock = createBlock(
 						'core/paragraph',
 						{
-							align: attributes.showImage ? 'left' : 'center',
+							align: 'center',
 							content: attributes.price,
 							placeholder: __( '$0.99', 'coblocks' ),
 						},
@@ -203,7 +203,7 @@ const settings = {
 					const descriptionBlock = createBlock(
 						'core/paragraph',
 						{
-							align: attributes.showImage ? 'left' : 'center',
+							align: 'center',
 							content: attributes.description,
 							placeholder: __( 'Add a description…', 'coblocks' ),
 						},
