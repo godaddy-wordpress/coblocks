@@ -83,9 +83,6 @@ const formatColumns = ( innerBlocks, columnAmount ) => {
 	const formattedServiceBlocks = [];
 	const parsedColumnAmount = parseInt( columnAmount );
 
-	// format the total list of inner blocks to match the total column amount for each row
-	// if one row has less than the column amount, add empty Service block patterns to match
-	// the previous columns blocks.
 	let serviceRow = [];
 
 	while ( formattedInnerBlocks.length > 0 ) {
@@ -107,14 +104,7 @@ const formatColumns = ( innerBlocks, columnAmount ) => {
 					createBlock(
 						'coblocks/service',
 						{},
-						[
-							createBlock( 'core/heading', {
-								placeholder: __( 'Write title…', 'coblocks' ),
-							} ),
-							createBlock( 'core/paragraph', {
-								placeholder: __( 'Write description…', 'coblocks' ),
-							} ),
-						]
+						[]
 					)
 				);
 			}
@@ -134,6 +124,7 @@ const settings = {
 		/* translators: block keyword */
 		__( 'features', 'coblocks' ),
 	],
+	parent: [],
 	save: () => <InnerBlocks.Content />,
 	/* translators: block name */
 	title: __( 'Services', 'coblocks' ),

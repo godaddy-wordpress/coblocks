@@ -24,9 +24,6 @@ const settings = {
 					if ( attributes.imageUrl ) {
 						const imageBlock = createBlock( 'core/image', { url: attributes.imageUrl, ...imageBlockAttributes } );
 						formattedInnerBlocks.unshift( imageBlock );
-					} else {
-						const imageBlock = createBlock( 'core/image', { url: '', ...imageBlockAttributes } );
-						formattedInnerBlocks.unshift( imageBlock );
 					}
 
 					return createBlock( 'core/column', attributes, formattedInnerBlocks );
