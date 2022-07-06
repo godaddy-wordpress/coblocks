@@ -28,14 +28,6 @@ const settings = {
 						'core/columns',
 						{},
 						[
-							...(
-								attributes.showImage ? (
-									[ createBlock(
-										'core/photo',
-										{}
-									) ]
-								) : []
-							),
 							createBlock(
 								'core/column',
 								{
@@ -219,6 +211,14 @@ const settings = {
 					);
 
 					return createBlock( 'core/column', {}, [
+						...(
+							attributes.showImage ? (
+								[ createBlock(
+									'core/image',
+									{}
+								) ]
+							) : []
+						),
 						titleBlock,
 						priceBlock,
 						descriptionBlock,
