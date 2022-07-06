@@ -1,4 +1,5 @@
 {
+	"apiVersion": 2,
 	"name": "coblocks/features",
 	"category": "layout",
 	"attributes": {
@@ -13,6 +14,9 @@
 		"contentAlign": {
 			"type": "string",
 			"default": "center"
+		},
+		"align": {
+			"type": "string"
 		}
 	},
 	"title": "Features",
