@@ -117,6 +117,7 @@ function Edit( { clientId } ) {
 const settings = {
 	description: __( 'Display a menu or price list.', 'coblocks' ),
 	edit: Edit,
+	parent: [],
 	save: () => <InnerBlocks.Content />,
 	title: __( 'Food & Drink', 'coblocks' ),
 };
