@@ -82,24 +82,32 @@ function Edit( { clientId } ) {
 	innerBlocksClone.shift();
 
 	const formattedColumnBlocks = 	makeEachRowEqualLength(
-		innerBlocksClone.map( ( foodItem ) => switchToBlockType( foodItem, 'core/column' ) ).flat(),
-		currentBlock.attributes.columns
+		innerBlocksClone.map( ( foodItem ) => (
+			switchToBlockType( {
+				...foodItem,
+				attributes: {
+					...foodItem.attributes,
+					list: currentBlock.attributes.list,
+				},
+			}, 'core/column' )
+		) ).flat(),
+		currentBlock.attributes.list === true ? 1 : currentBlock.attributes.columns
 	);
 
 	replaceBlocks(
 		[ clientId ],
 		[
 			headerBlock,
-			...( formattedColumnBlocks.map( ( fullColumn ) => (
-				createBlock(
+			...( formattedColumnBlocks.map( ( fullColumn ) => {
+				return createBlock(
 					'core/columns',
 					{
 						align: currentBlock.attributes.className.includes( 'alignwide' ) ? 'wide' : null,
 						className: currentBlock.attributes.className,
 					},
 					fullColumn
-				)
-			) ) ),
+				);
+			} ) ),
 		]
 	);
 
@@ -111,24 +119,6 @@ const settings = {
 	edit: Edit,
 	save: () => <InnerBlocks.Content />,
 	title: __( 'Food & Drink', 'coblocks' ),
-	transforms: {
-		to: [
-			{
-				blocks: [ 'core/columns' ],
-				transform: ( attributes, innerBlocks ) => {
-					console.log( 'attributes upper level', attributes );
-					return createBlock(
-						'core/columns',
-						{
-							className: attributes.className,
-						},
-						innerBlocks
-					);
-				},
-				type: 'block',
-			},
-		],
-	},
 };
 
 export { name, category, metadata, settings };

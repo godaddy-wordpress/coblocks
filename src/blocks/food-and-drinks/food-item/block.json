@@ -56,6 +56,10 @@
 		"headingLevel": {
 			"type": "integer",
 			"default": 4
+		},
+		"list": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"title": "Food Item",

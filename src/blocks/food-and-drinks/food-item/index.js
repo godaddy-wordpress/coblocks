@@ -16,7 +16,7 @@ const { name, category } = metadata;
 
 const settings = {
 	edit: () => null,
-	parent: [],
+	parent: [ 'coblocks/food-and-drinks' ],
 	save: () => null,
 	title: metadata.title,
 	transforms: {
@@ -40,7 +40,7 @@ const settings = {
 											content: attributes.title,
 											level: attributes.headingLevel,
 											placeholder: __( 'Add title…', 'coblocks' ),
-											textAlign: 'center',
+											textAlign: attributes.showImage ? 'left' : 'center',
 										},
 										[]
 									),
@@ -193,7 +193,7 @@ const settings = {
 					const priceBlock = createBlock(
 						'core/paragraph',
 						{
-							align: 'center',
+							align: attributes.showImage ? 'left' : 'center',
 							content: attributes.price,
 							placeholder: __( '$0.99', 'coblocks' ),
 						},
@@ -203,12 +203,60 @@ const settings = {
 					const descriptionBlock = createBlock(
 						'core/paragraph',
 						{
-							align: 'center',
+							align: attributes.showImage ? 'left' : 'center',
 							content: attributes.description,
 							placeholder: __( 'Add a description…', 'coblocks' ),
 						},
 						[]
 					);
+
+					if ( attributes.list === true ) {
+						return createBlock(
+							'core/column',
+							{},
+							[
+								createBlock( 'core/columns', {}, [
+									...(
+										attributes.showImage ? (
+											[
+												createBlock(
+													'core/column',
+													{
+														width: '20%',
+													},
+													[
+														createBlock(
+															'core/image',
+															{
+																url: attributes.url,
+															}
+														),
+													]
+												),
+											]
+										) : []
+									),
+									createBlock(
+										'core/column',
+										{
+											width: attributes.showImage ? '80%' : '100%',
+										},
+										[
+											createBlock(
+												'core/group',
+												{},
+												[
+													titleBlock,
+													priceBlock,
+												]
+											),
+											descriptionBlock,
+										]
+									),
+								] ),
+							]
+						);
+					}
 
 					return createBlock( 'core/column', {}, [
 						...(
