@@ -29,8 +29,8 @@ const settings = {
 						className: 'is-style-filled',
 						contentAlign: 'center',
 						customIconColor: 'inherit',
-						height: 14,
-						width: 14,
+						height: 20,
+						width: 20,
 					};
 
 					const titleBlock = createBlock(
