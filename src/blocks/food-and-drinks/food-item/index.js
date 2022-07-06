@@ -215,7 +215,9 @@ const settings = {
 							attributes.showImage ? (
 								[ createBlock(
 									'core/image',
-									{}
+									{
+										url: attributes.url,
+									}
 								) ]
 							) : []
 						),

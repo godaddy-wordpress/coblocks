@@ -45,6 +45,14 @@ class CoBlocks_Food_Item_Migration extends CoBlocks_Block_Migration {
 			$this->block_attributes["description"] = $food_item_description->textContent;
 		}
 
+		$food_item_image_container = $this->query_selector( '//div[contains(@class, "wp-block-coblocks-food-item")]//img' );
+
+		if ( $food_item_image_container ) {
+			$food_item_image_src = $this->get_element_attribute( $food_item_image_container, 'src' );
+
+			$this->block_attributes['url'] = $food_item_image_src;
+		}
+
 		return $this->block_attributes;
 	}
 
