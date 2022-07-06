@@ -32,6 +32,10 @@ class CoBlocks_Food_And_Drink_Migration extends CoBlocks_Block_Migration {
 		if ( $food_and_drink_class ) {
 
 			$this->block_attributes[ 'className' ] = $food_and_drink_class;
+
+			if ( str_contains( $food_and_drink_class, 'is-style-list' ) ) {
+				$this->block_attributes['list'] = true;
+			}
 		}
 
 		$food_and_drink_cols = $this->get_element_attribute( $food_and_drink_block, 'data-columns' );

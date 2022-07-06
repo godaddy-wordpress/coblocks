@@ -25,6 +25,10 @@
 		},
 		"className": {
 			"type": "string"
+		},
+		"list": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"title": "Food & Drink",

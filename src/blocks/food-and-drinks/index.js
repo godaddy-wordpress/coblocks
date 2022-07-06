@@ -116,6 +116,7 @@ const settings = {
 			{
 				blocks: [ 'core/columns' ],
 				transform: ( attributes, innerBlocks ) => {
+					console.log( 'attributes upper level', attributes );
 					return createBlock(
 						'core/columns',
 						{
