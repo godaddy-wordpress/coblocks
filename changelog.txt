@@ -1,4 +1,11 @@
 
+2.24.2 / 2022-07-13
+===================
+
+### Misc
+* Update dependencies and translations [#2401](https://github.com/godaddy-wordpress/coblocks/pull/2401) and [#2407](https://github.com/godaddy-wordpress/coblocks/pull/2407)
+* Stabilize the e2e tests by not running them headless [#2405](https://github.com/godaddy-wordpress/coblocks/pull/2405)
+
 2.24.1 / 2022-06-15
 ===================
 
@@ -23,7 +30,7 @@
 * Remove extraneous element from extensions HoC [#2334](https://github.com/godaddy-wordpress/coblocks/pull/2334)
 * Reintroduce transformation unit tests for CoBlocks Galleries to Core [#2382](https://github.com/godaddy-wordpress/coblocks/pull/2382)
 * Fix automated tests for WP 6.0 [#2381](https://github.com/godaddy-wordpress/coblocks/pull/2381), [#2376](https://github.com/godaddy-wordpress/coblocks/pull/2376), [#2380](https://github.com/godaddy-wordpress/coblocks/pull/2380)
-  
+
 2.23.1 / 2022-05-16
 ===================
 ### Bug fixes
