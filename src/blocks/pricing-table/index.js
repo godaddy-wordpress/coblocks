@@ -1,56 +1,54 @@
 /**
- * External dependencies
- */
-import { PricingTableIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Internal dependencies
  */
-import deprecated from './deprecated';
-import edit from './edit';
-import example from './example';
 import metadata from './block.json';
-import save from './save';
-import transforms from './transforms';
 
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
+import { InnerBlocks } from '@wordpress/block-editor';
+import { createBlock, switchToBlockType } from '@wordpress/blocks';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 /**
  * Block constants
  */
-const { name, category, attributes } = metadata;
+const { name } = metadata;
+
+function Edit( { clientId } ) {
+	const { replaceBlocks } = useDispatch( 'core/block-editor' );
+	const { getBlock } = useSelect( ( select ) => select( 'core/block-editor' ) );
+	const theBlock = getBlock( clientId );
+	if ( ! theBlock ) {
+		return null;
+	}
+	replaceBlocks(
+		[ clientId ],
+		switchToBlockType( theBlock, 'core/columns' )
+	);
+
+	return null;
+}
 
 const settings = {
-	/* translators: block name */
-	title: __( 'Pricing Table', 'coblocks' ),
-	/* translators: block description */
-	description: __( 'Add pricing tables to help visitors compare products and plans.', 'coblocks' ),
-	icon: <Icon icon={ icon } />,
-	keywords: [
-		'coblocks',
-		/* translators: block keyword */
-		__( 'landing', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'comparison', 'coblocks' ),
-	],
-	supports: {
-		align: [ 'wide', 'full' ],
-		html: false,
-		gutter: {
-			default: 'medium',
-			customDefault: 3,
-		},
+	edit: Edit,
+	parent: [],
+	save: () => <InnerBlocks.Content />,
+	title: metadata.title,
+	transforms: {
+		to: [
+			{
+				blocks: [ 'core/columns' ],
+				transform: ( attributes, innerBlocks ) => {
+					return createBlock(
+						'core/columns', attributes,
+						innerBlocks.map( ( innerBlock ) => switchToBlockType( innerBlock, 'core/column' ) ).flat()
+					);
+				},
+				type: 'block',
+			},
+		],
 	},
-	example,
-	attributes,
-	transforms,
-	edit,
-	save,
-	deprecated,
 };
 
-export { name, category, metadata, settings };
+export { name, metadata, settings };
