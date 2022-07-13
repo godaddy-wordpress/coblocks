@@ -12,9 +12,6 @@
 		},
 		"imageUrl": {
 			"type": "string",
-			"source": "attribute",
-			"selector": "img",
-			"attribute": "src",
 			"default": ""
 		},
 		"imageAlt": {
