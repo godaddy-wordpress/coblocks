@@ -155,6 +155,7 @@
 		"puppeteer": "^13.5.2",
 		"react-masonry-component": "^6.2.1",
 		"react-spring": "^9.4.4",
+		"resize-observer-polyfill": "^1.5.1",
 		"rtlcss-webpack-plugin": "^4.0.6",
 		"simple-git": "^3.5.0",
 		"tiny-swiper": "^2.2.0",
