@@ -28,16 +28,19 @@ class CoBlocks_Pricing_Table_Item_Migration extends CoBlocks_Block_Migration {
 	protected function migrate_attributes() {
 		$title_obj = $this->query_selector( '//span[contains(@class,"wp-block-coblocks-pricing-table-item__title")]' );
 		if ( null !== $title_obj && property_exists( $title_obj, 'textContent' ) ) {
+			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 			$this->block_attributes['title'] = $title_obj->textContent;
 		}
 
 		$currency_obj = $this->query_selector( '//span[contains(@class,"wp-block-coblocks-pricing-table-item__currency")]' );
 		if ( null !== $currency_obj && property_exists( $currency_obj, 'textContent' ) ) {
+			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 			$this->block_attributes['currency'] = $currency_obj->textContent;
 		}
 
 		$amount_obj = $this->query_selector( '//span[contains(@class,"wp-block-coblocks-pricing-table-item__amount")]' );
 		if ( null !== $amount_obj && property_exists( $amount_obj, 'textContent' ) ) {
+			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 			$this->block_attributes['amount'] = $amount_obj->textContent;
 		}
 
@@ -45,10 +48,10 @@ class CoBlocks_Pricing_Table_Item_Migration extends CoBlocks_Block_Migration {
 
 		$features = $this->query_selector_all( '//ul[contains(@class,"wp-block-coblocks-pricing-table-item__features")]/li' );
 
-		if ( $features->length > 0) {
+		if ( $features->length > 0 ) {
 
 			foreach ( $features as $feature ) {
-
+				// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 				$this->block_attributes['features'][] = $feature->textContent;
 
 			}
