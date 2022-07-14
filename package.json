@@ -2,7 +2,7 @@
 	"name": "coblocks",
 	"title": "CoBlocks",
 	"description": "CoBlocks is a suite of professional page building blocks for the WordPress Gutenberg block editor.",
-	"version": "2.24.1",
+	"version": "2.24.2",
 	"tested_up_to": "6.0",
 	"author": "GoDaddy",
 	"license": "GPL-2.0",
@@ -115,7 +115,7 @@
 		"@wordpress/plugins": "^4.6.0",
 		"@wordpress/primitives": "^3.6.0",
 		"@wordpress/rich-text": "^5.6.0",
-		"@wordpress/scripts": "^23.0.0",
+		"@wordpress/scripts": "^23.3.0",
 		"@wordpress/server-side-render": "^3.6.0",
 		"@wordpress/token-list": "^2.8.0",
 		"@wordpress/url": "^3.9.0",
@@ -161,7 +161,9 @@
 		"uuid": "^8.3.2"
 	},
 	"resolutions": {
-		"eslint-plugin-jsdoc": "^39.2.5"
+		"eslint-plugin-jsdoc": "^39.2.5",
+		"got": "^11.8.5",
+		"moment": "^2.29.4"
 	},
 	"lint-staged": {
 		"*.scss": [
