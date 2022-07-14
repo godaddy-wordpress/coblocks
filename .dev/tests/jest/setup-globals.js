@@ -269,3 +269,12 @@ global.siteDesign = {
 };
 
 global.coblocksLabs = true;
+
+global.ResizeObserver = require( 'resize-observer-polyfill' );
+
+jest.mock( '@wordpress/compose', () => {
+	return {
+		...jest.requireActual( '@wordpress/compose' ),
+		useViewportMatch: jest.fn(),
+	};
+} );
