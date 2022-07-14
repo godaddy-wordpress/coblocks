@@ -533,10 +533,10 @@ commands:
                 destination: phpunit-coverage
             - store_test_results:
                 path: /tmp/artifacts/code-coverage/
-            - unless:
-                condition: << parameters.reportCoverage >>
-                steps:
-                  - run_phpunit
+      - unless:
+          condition: << parameters.reportCoverage >>
+          steps:
+            - run_phpunit
       - run_phpunit:
           multisite: 1
 
