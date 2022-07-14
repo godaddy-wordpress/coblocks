@@ -510,6 +510,10 @@ commands:
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
 
   run_php_unit_tests:
+    parameters:
+      reportCoverage:
+        type: boolean
+        default: true
     steps:
       - checkout
       - node/install:
@@ -520,12 +524,19 @@ commands:
       - restore_composer_cache
       - wait_for_mysql
       - install_wordpress_testing_suite
-      - run_phpunit_singlesite_with_coverage_reports
-      - store_artifacts:
-          path: /tmp/artifacts/code-coverage/
-          destination: phpunit-coverage
-      - store_test_results:
-          path: /tmp/artifacts/code-coverage/
+      - when:
+          condition: << parameters.reportCoverage >>
+          steps:
+            - run_phpunit_singlesite_with_coverage_reports
+            - store_artifacts:
+                path: /tmp/artifacts/code-coverage/
+                destination: phpunit-coverage
+            - store_test_results:
+                path: /tmp/artifacts/code-coverage/
+            - unless:
+                condition: << parameters.reportCoverage >>
+                steps:
+                  - run_phpunit
       - run_phpunit:
           multisite: 1
 
@@ -663,7 +674,8 @@ jobs:
   unit_testing_php_81:
     executor: php_81_mysql
     steps:
-      - run_php_unit_tests
+      - run_php_unit_tests:
+          reportCoverage: false # we are currently using an incompatible phpunit library for coverage reporting in PHP 8
 
   js:
     executor: node_latest
