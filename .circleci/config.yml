@@ -411,7 +411,7 @@ commands:
       - run:
           name: Install Composer dependencies
           command: |
-            sudo composer self-update --1
+            sudo composer self-update
             composer validate --strict
             composer install
       - run:
@@ -562,7 +562,7 @@ jobs:
       - run:
           name: Install Composer dependencies
           command: |
-            sudo composer self-update --1
+            sudo composer self-update
             composer validate --strict
             composer install
       - save_cache:
@@ -623,8 +623,8 @@ jobs:
           at: ~/project
       - restore_composer_cache
       - run:
-          name: Install Composer v1
-          command: sudo composer self-update --1
+          name: Install Composer
+          command: sudo composer self-update
       - restore_cache:
           key: phpcs-coblocks-cache
       - run:
