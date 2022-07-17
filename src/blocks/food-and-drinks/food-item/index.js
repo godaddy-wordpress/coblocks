@@ -34,186 +34,192 @@ const settings = {
 						width: 20,
 					};
 
-					const titleBlock = createBlock(
-						'core/group',
-						{
-							layout: {
-								flexWrap: 'nowrap',
-								justifyContent: 'center',
-								type: 'flex',
-							},
-							style: {
-								spacing: {
-									blockGap: '10px',
+					const createTitleBlock = ( { titleTextAlign = 'center' } ) => {
+						return createBlock(
+							'core/group',
+							{
+								layout: {
+									flexWrap: 'nowrap',
+									justifyContent: 'center',
+									type: 'flex',
+								},
+								style: {
+									spacing: {
+										blockGap: '10px',
+									},
 								},
 							},
-						},
-						[
-							createBlock(
-								'core/heading',
-								{
-									content: attributes.title,
-									level: attributes.headingLevel,
-									placeholder: __( 'Add title…', 'coblocks' ),
-									textAlign: attributes.showImage ? 'left' : 'center',
-								},
-								[]
-							),
-							...(
-								attributes.popular ? (
-									[ createBlock(
-										'coblocks/icon',
-										{
-											icon: 'star',
-											...iconAttributes,
-										}
-									) ]
-								) : []
-							),
-							...(
-								attributes.spicy ? (
-									[ createBlock(
-										'coblocks/icon',
-										{
-											icon: 'spicy',
-											...iconAttributes,
-										}
-									) ]
-								) : []
-							),
-							...(
-								attributes.spicier ? (
-									[ createBlock(
-										'coblocks/icon',
-										{
-											icon: 'spicy',
-											...iconAttributes,
-										}
-									) ]
-								) : []
-							),
-							...(
-								attributes.vegetarian ? (
-									[ createBlock(
-										'coblocks/icon',
-										{
-											icon: 'vegetarian',
-											...iconAttributes,
-										}
-									) ]
-								) : []
-							),
-							...(
-								attributes.vegan ? (
-									[ createBlock(
-										'coblocks/icon',
-										{
-											icon: 'vegan',
-											...iconAttributes,
-										}
-									) ]
-								) : []
-							),
-							...(
-								attributes.glutenFree ? (
-									[ createBlock(
-										'coblocks/icon',
-										{
-											icon: 'gluten_free',
-											...iconAttributes,
-										}
-									) ]
-								) : []
-							),
-							...(
-								attributes.pescatarian ? (
-									[ createBlock(
-										'coblocks/icon',
-										{
-											icon: 'fish',
-											...iconAttributes,
-										}
-									) ]
-								) : []
-							),
-							...(
-								attributes.vegan ? (
-									[ createBlock(
-										'coblocks/icon',
-										{
-											icon: 'vegan',
-											...iconAttributes,
-										}
-									) ]
-								) : []
-							),
-						]
-					);
-
-					const priceBlock = createBlock(
-						'core/paragraph',
-						{
-							align: 'center',
-							content: attributes.price,
-							placeholder: __( '$0.99', 'coblocks' ),
-						},
-						[]
-					);
-
-					const descriptionBlock = createBlock(
-						'core/paragraph',
-						{
-							align: 'center',
-							content: attributes.description,
-							placeholder: __( 'Add a description…', 'coblocks' ),
-						},
-						[]
-					);
+							[
+								createBlock(
+									'core/heading',
+									{
+										content: attributes.title,
+										level: attributes.headingLevel,
+										placeholder: __( 'Add title…', 'coblocks' ),
+										textAlign: titleTextAlign,
+									},
+									[]
+								),
+								...(
+									attributes.popular ? (
+										[ createBlock(
+											'coblocks/icon',
+											{
+												icon: 'star',
+												...iconAttributes,
+											}
+										) ]
+									) : []
+								),
+								...(
+									attributes.spicy ? (
+										[ createBlock(
+											'coblocks/icon',
+											{
+												icon: 'spicy',
+												...iconAttributes,
+											}
+										) ]
+									) : []
+								),
+								...(
+									attributes.spicier ? (
+										[ createBlock(
+											'coblocks/icon',
+											{
+												icon: 'spicy',
+												...iconAttributes,
+											}
+										) ]
+									) : []
+								),
+								...(
+									attributes.vegetarian ? (
+										[ createBlock(
+											'coblocks/icon',
+											{
+												icon: 'vegetarian',
+												...iconAttributes,
+											}
+										) ]
+									) : []
+								),
+								...(
+									attributes.vegan ? (
+										[ createBlock(
+											'coblocks/icon',
+											{
+												icon: 'vegan',
+												...iconAttributes,
+											}
+										) ]
+									) : []
+								),
+								...(
+									attributes.glutenFree ? (
+										[ createBlock(
+											'coblocks/icon',
+											{
+												icon: 'gluten_free',
+												...iconAttributes,
+											}
+										) ]
+									) : []
+								),
+								...(
+									attributes.pescatarian ? (
+										[ createBlock(
+											'coblocks/icon',
+											{
+												icon: 'fish',
+												...iconAttributes,
+											}
+										) ]
+									) : []
+								),
+								...(
+									attributes.vegan ? (
+										[ createBlock(
+											'coblocks/icon',
+											{
+												icon: 'vegan',
+												...iconAttributes,
+											}
+										) ]
+									) : []
+								),
+							]
+						);
+					};
 
 					if ( attributes.list === true ) {
 						return createBlock(
 							'core/column',
 							{},
 							[
-								createBlock( 'core/columns', {}, [
-									...(
-										attributes.showImage ? (
+								createBlock(
+									'core/group',
+									{
+										layout: {
+											flexWrap: 'nowrap',
+											justifyContent: 'center',
+											type: 'flex',
+										},
+									},
+									[
+										...(
+											attributes.showImage ? (
+												[
+													createBlock(
+														'core/image',
+														{
+															url: attributes.url,
+														}
+													),
+												]
+											) : []
+										),
+										createBlock(
+											'core/group',
+											{},
 											[
 												createBlock(
-													'core/column',
+													'core/group',
 													{
-														width: '20%',
+														layout: {
+															flexWrap: 'nowrap',
+															justifyContent: 'center',
+															type: 'flex',
+														},
 													},
 													[
+														createTitleBlock( {
+															titleTextAlign: 'left',
+														} ),
 														createBlock(
-															'core/image',
+															'core/paragraph',
 															{
-																url: attributes.url,
-															}
+																align: 'center',
+																content: attributes.price,
+																placeholder: __( '$0.99', 'coblocks' ),
+															},
+															[]
 														),
 													]
 												),
+												createBlock(
+													'core/paragraph',
+													{
+														align: 'left',
+														content: attributes.description,
+														placeholder: __( 'Add a description…', 'coblocks' ),
+													},
+													[]
+												),
 											]
-										) : []
-									),
-									createBlock(
-										'core/column',
-										{
-											width: attributes.showImage ? '80%' : '100%',
-										},
-										[
-											createBlock(
-												'core/group',
-												{},
-												[
-													titleBlock,
-													priceBlock,
-												]
-											),
-											descriptionBlock,
-										]
-									),
-								] ),
+										),
+									],
+								),
 							]
 						);
 					}
@@ -229,9 +235,27 @@ const settings = {
 								) ]
 							) : []
 						),
-						titleBlock,
-						priceBlock,
-						descriptionBlock,
+						createTitleBlock( {
+							titleTextAlign: attributes.showImage ? 'left' : 'center',
+						} ),
+						createBlock(
+							'core/paragraph',
+							{
+								align: 'center',
+								content: attributes.price,
+								placeholder: __( '$0.99', 'coblocks' ),
+							},
+							[]
+						),
+						createBlock(
+							'core/paragraph',
+							{
+								align: 'center',
+								content: attributes.description,
+								placeholder: __( 'Add a description…', 'coblocks' ),
+							},
+							[]
+						),
 					] );
 				},
 				type: 'block',
