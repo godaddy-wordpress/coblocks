@@ -30,12 +30,24 @@ const settings = {
 						contentAlign: 'center',
 						customIconColor: 'inherit',
 						height: 20,
+						iconSize: 'advanced',
 						width: 20,
 					};
 
 					const titleBlock = createBlock(
-						'core/row',
-						{},
+						'core/group',
+						{
+							layout: {
+								flexWrap: 'nowrap',
+								justifyContent: 'center',
+								type: 'flex',
+							},
+							style: {
+								spacing: {
+									blockGap: '10px',
+								},
+							},
+						},
 						[
 							createBlock(
 								'core/heading',
@@ -137,140 +149,6 @@ const settings = {
 							),
 						]
 					);
-
-					// const titleBlock = createBlock(
-					// 	'core/columns',
-					// 	{},
-					// 	[
-					// 		createBlock(
-					// 			'core/column',
-					// 			{
-					// 				width: '80%',
-					// 			},
-					// 			[
-					// 				createBlock(
-					// 					'core/heading',
-					// 					{
-					// 						content: attributes.title,
-					// 						level: attributes.headingLevel,
-					// 						placeholder: __( 'Add title…', 'coblocks' ),
-					// 						textAlign: attributes.showImage ? 'left' : 'center',
-					// 					},
-					// 					[]
-					// 				),
-					// 			]
-					// 		),
-					// 		createBlock(
-					// 			'core/column',
-					// 			{
-					// 				verticalAlignment: 'center',
-					// 				width: '20%',
-					// 			},
-					// 			[
-					// 				createBlock(
-					// 					'core/group',
-					// 					{
-					// 						layout: {
-					// 							flexWrap: 'nowrap',
-					// 							inherit: false,
-					// 							type: 'flex',
-					// 						},
-					// 					},
-					// 					[
-					// 						...(
-					// 							attributes.popular ? (
-					// 								[ createBlock(
-					// 									'coblocks/icon',
-					// 									{
-					// 										icon: 'star',
-					// 										...iconAttributes,
-					// 									}
-					// 								) ]
-					// 							) : []
-					// 						),
-					// 						...(
-					// 							attributes.spicy ? (
-					// 								[ createBlock(
-					// 									'coblocks/icon',
-					// 									{
-					// 										icon: 'spicy',
-					// 										...iconAttributes,
-					// 									}
-					// 								) ]
-					// 							) : []
-					// 						),
-					// 						...(
-					// 							attributes.spicier ? (
-					// 								[ createBlock(
-					// 									'coblocks/icon',
-					// 									{
-					// 										icon: 'spicy',
-					// 										...iconAttributes,
-					// 									}
-					// 								) ]
-					// 							) : []
-					// 						),
-					// 						...(
-					// 							attributes.vegetarian ? (
-					// 								[ createBlock(
-					// 									'coblocks/icon',
-					// 									{
-					// 										icon: 'vegetarian',
-					// 										...iconAttributes,
-					// 									}
-					// 								) ]
-					// 							) : []
-					// 						),
-					// 						...(
-					// 							attributes.vegan ? (
-					// 								[ createBlock(
-					// 									'coblocks/icon',
-					// 									{
-					// 										icon: 'vegan',
-					// 										...iconAttributes,
-					// 									}
-					// 								) ]
-					// 							) : []
-					// 						),
-					// 						...(
-					// 							attributes.glutenFree ? (
-					// 								[ createBlock(
-					// 									'coblocks/icon',
-					// 									{
-					// 										icon: 'gluten_free',
-					// 										...iconAttributes,
-					// 									}
-					// 								) ]
-					// 							) : []
-					// 						),
-					// 						...(
-					// 							attributes.pescatarian ? (
-					// 								[ createBlock(
-					// 									'coblocks/icon',
-					// 									{
-					// 										icon: 'fish',
-					// 										...iconAttributes,
-					// 									}
-					// 								) ]
-					// 							) : []
-					// 						),
-					// 						...(
-					// 							attributes.vegan ? (
-					// 								[ createBlock(
-					// 									'coblocks/icon',
-					// 									{
-					// 										icon: 'vegan',
-					// 										...iconAttributes,
-					// 									}
-					// 								) ]
-					// 							) : []
-					// 						),
-					// 					]
-					// 				),
-					// 			]
-					// 		),
-					// 	]
-					// );
 
 					const priceBlock = createBlock(
 						'core/paragraph',
