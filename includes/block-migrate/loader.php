@@ -18,6 +18,7 @@ require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-alert-
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-author-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-column-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-dynamic-separator-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-features-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-collage-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-masonry-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gallery-offset-migration.php';
@@ -25,14 +26,15 @@ require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-galler
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-gif-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-hero-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-highlight-migration.php';
-require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-features-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-media-card-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-posts-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-food-and-drink-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-food-item-migration.php';
-require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-pricing-table-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-pricing-table-item-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-pricing-table-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-row-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-service-migration.php';
+require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-services-migration.php';
 
 /**
  * Hook into the post object before it's returned to the editor.
@@ -61,6 +63,7 @@ add_action(
 				CoBlocks_Author_Migration::class,
 				CoBlocks_Column_Migration::class,
 				CoBlocks_Dynamic_Separator_Migration::class,
+				CoBlocks_Features_Migration::class,
 				CoBlocks_Gallery_Collage_Migration::class,
 				CoBlocks_Gallery_Masonry_Migration::class,
 				CoBlocks_Gallery_Offset_Migration::class,
@@ -70,12 +73,11 @@ add_action(
 				CoBlocks_Highlight_Migration::class,
 				CoBlocks_Media_Card_Migration::class,
 				CoBlocks_Posts_Migration::class,
-				CoBlocks_Food_And_Drink_Migration::class,
-				CoBlocks_Food_Item_Migration::class,
-				CoBlocks_Pricing_Table_Migration::class,
 				CoBlocks_Pricing_Table_Item_Migration::class,
+				CoBlocks_Pricing_Table_Migration::class,
 				CoBlocks_Row_Migration::class,
-				CoBlocks_Features_Migration::class,
+				CoBLocks_Service_Migration::class,
+				CoBlocks_Services_Migration::class,
 			)
 		);
 
