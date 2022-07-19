@@ -1250,10 +1250,10 @@
     "@floating-ui/dom" "^0.4.5"
     use-isomorphic-layout-effect "^1.1.1"
 
-"@godaddy-wordpress/coblocks-icons@2.0.4":
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/coblocks-icons/-/coblocks-icons-2.0.4.tgz#fd842114c01954b8d9c390132634be960e76ad8a"
-  integrity sha512-ukRhAsHjRscC3RGfi7EFOiK+K1qKJRRcb2LMi6wmJPSUgRBQy5gmoqKYpSL/lmRKq/gPfX5JWzUa19Y1H/gcHg==
+"@godaddy-wordpress/coblocks-icons@2.0.5":
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/@godaddy-wordpress/coblocks-icons/-/coblocks-icons-2.0.5.tgz#49f5db789e44dc450d3b3e5685ec4231144c5334"
+  integrity sha512-hh5G8mM778wVwQuvR7v6lLUDTO+aMFxnPslOQ5/SRAn5RJZaIdwNpZ0c/XUB27UQnXGDigxxjByAyDXhRpkuWQ==
   dependencies:
     "@wordpress/primitives" "^1.7.0"
 
