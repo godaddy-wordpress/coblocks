@@ -137,8 +137,6 @@ const save = ( props ) => {
 								<div className="swiper-slide" key={ index }>
 									<div
 										className="coblocks-gallery--item"
-										role="button"
-										tabIndex={ index }
 									>
 										<figure className={ figureClasses }>
 											<img
@@ -158,10 +156,10 @@ const save = ( props ) => {
 					{ prevNextButtons && (
 						<>
 							<button className={ `nav-button__prev` } id={ `${ uuid }-prev` } >
-								<svg className="icon" style={ { transform: 'rotate(180deg)' } } />
+								<div className="icon" style={ { transform: 'rotate(180deg)' } }></div>
 							</button>
-							<button className={ `nav-button__next` } id={ `${ uuid }-next` } >
-								<svg className="icon" />
+							<button className={ `nav-button__next` } id={ `${ uuid }-next` }>
+								<div className="icon"></div>
 							</button>
 						</>
 					) }
