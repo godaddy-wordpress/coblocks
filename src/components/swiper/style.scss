@@ -98,6 +98,10 @@
 
 	&__prev {
 		left: 0;
+
+		& .icon {
+			transform: rotate(180deg);
+		}
 	}
 
 	&__next {

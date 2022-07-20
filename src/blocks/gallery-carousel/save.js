@@ -156,7 +156,7 @@ const save = ( props ) => {
 					{ prevNextButtons && (
 						<>
 							<button className={ `nav-button__prev` } id={ `${ uuid }-prev` } >
-								<div className="icon" style={ { transform: 'rotate(180deg)' } }></div>
+								<div className="icon"></div>
 							</button>
 							<button className={ `nav-button__next` } id={ `${ uuid }-next` }>
 								<div className="icon"></div>
