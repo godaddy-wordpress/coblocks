@@ -137,32 +137,50 @@ class Coblocks_Yelp_Proxy {
 	 */
 	public function yelp_biz_reviews_api_proxy( \WP_REST_Request $request ) {
 
-		$response = wp_remote_get(
-			'https://www.yelp.com/biz/' . $request->get_param( 'biz_id' ) . '/review_feed',
-			array(
-				// Without this user agent syntax the API doesn't respond at all...
-				'user-agent' => 'Mozilla/5.0 Chrome/96 Safari/537',
-				'headers'    => array(
-					'Accept' => 'application/json',
-				),
-			)
-		);
+		// For storing transients name.
+		$transients_name = 'cb_reviews_' . $request->get_param( 'biz_id' ) . '_' . $request->get_param( 'paginateStart' );
 
-		// Return early with server response if response is instanceof WP_Error.
-		if ( is_wp_error( $response ) ) {
-			return rest_ensure_response( $response );
+		// Check if the request data was cached.
+		$res_body = get_transient( $transients_name );
+
+		if ( ! $res_body ) {
+			// request not cached. make the API call and cache the response using transients.
+			$response = wp_remote_get(
+				'https://www.yelp.com/biz/' . $request->get_param( 'biz_id' ) . '/review_feed?start=' . $request->get_param( 'paginateStart' ),
+				array(
+					// Without this user agent syntax the API doesn't respond at all...
+					'user-agent' => 'Mozilla/5.0 Chrome/96 Safari/537',
+					'headers'    => array(
+						'Accept' => 'application/json',
+					),
+				)
+			);
+
+			// return early with server response if response is instanceof WP_Error. errors are not cached.
+			if ( is_wp_error( $response ) ) {
+				return rest_ensure_response( $response );
+			}
+
+			// get the response body.
+			try {
+				$res_body = json_decode( $response['body'], true );
+			} catch ( exception $e ) {
+				return new \WP_Error( 'parsing_error', 'Error reading body of response.', array( 'status' => 500 ) );
+			}
+
+			// cache the body of the response for 10 min for future identical requests to use.
+			// ignoring the return value here, as there isn't much we can do if storing the response fails.
+			set_transient( $transients_name, $res_body, 600 );
+			$res_body['cached'] = false;
+		} else {
+			$res_body['cached'] = true;
 		}
 
-		try {
-			$body = json_decode( $response['body'], true );
-		} catch ( exception $e ) {
-			return new \WP_Error( 'parsing_error', 'Error reading body of response.', array( 'status' => 500 ) );
-		}
-
+		// return the response body (from cache or from api response).
 		return rest_ensure_response(
 			new \WP_REST_Response(
-				$body,
-				$response['response']['code']
+				$res_body,
+				200
 			)
 		);
 

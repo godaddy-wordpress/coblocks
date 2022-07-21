@@ -1,0 +1,28 @@
+
+
+{
+	"name": "coblocks/review-item",
+	"category": "layout",
+	"attributes": {
+		"comment": {
+			"type": "string"
+		},
+        "author": {
+			"type": "string"
+		},
+        "authorAvatarURL": {
+			"type": "string"
+		},
+        "localizedDate": {
+			"type": "string"
+		},
+        "rating": {
+			"type": "string"
+		}
+	},
+	"title": "Review Item",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-7",
+	"description": "A review within the reviews block.",
+	"parent": [ "coblocks/reviews" ]
+}
