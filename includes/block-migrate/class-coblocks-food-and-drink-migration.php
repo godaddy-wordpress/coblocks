@@ -6,10 +6,10 @@
  */
 
  /**
- * CoBlocks_Food_And_Drink_Migration
- *
- * Define how a coblocks/food-and-drinks block should migrate into a block pattern.
- */
+  * CoBlocks_Food_And_Drink_Migration
+  *
+  * Define how a coblocks/food-and-drinks block should migrate into a block pattern.
+  */
 class CoBlocks_Food_And_Drink_Migration extends CoBlocks_Block_Migration {
 	/**
 	 * Returns the name of the block.
@@ -31,7 +31,7 @@ class CoBlocks_Food_And_Drink_Migration extends CoBlocks_Block_Migration {
 
 		if ( $food_and_drink_class ) {
 
-			$this->block_attributes[ 'className' ] = $food_and_drink_class;
+			$this->block_attributes['className'] = $food_and_drink_class;
 
 			if ( str_contains( $food_and_drink_class, 'is-style-list' ) ) {
 				$this->block_attributes['list'] = true;
@@ -42,7 +42,7 @@ class CoBlocks_Food_And_Drink_Migration extends CoBlocks_Block_Migration {
 
 		if ( $food_and_drink_cols ) {
 
-			$this->block_attributes[ 'columns' ] = $food_and_drink_cols;
+			$this->block_attributes['columns'] = $food_and_drink_cols;
 		}
 
 		return $this->block_attributes;

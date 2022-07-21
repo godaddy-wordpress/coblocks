@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import { FoodDrinkIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Internal dependencies.
  */
 import metadata from './block.json';
