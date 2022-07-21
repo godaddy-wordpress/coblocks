@@ -139,6 +139,12 @@ workflows:
 
       # UNIT TESTING
       # Support PHP Versions: http://php.net/supported-versions.php
+      - unit_testing_php_56:
+            filters:
+              tags:
+                only: /^(?!canary).*$/
+            requires:
+              - php
       - unit_testing_php_74:
           filters:
             tags:
@@ -215,6 +221,7 @@ workflows:
             branches:
               only: master
           requires:
+            - unit_testing_php_56
             - unit_testing_php_74
             - unit_testing_php_80
             - unit_testing_php_81
@@ -224,6 +231,7 @@ workflows:
             branches:
               only: master
           requires:
+            - unit_testing_php_56
             - unit_testing_php_74
             - unit_testing_php_80
             - unit_testing_php_81
@@ -231,6 +239,7 @@ workflows:
 
       - deploy:
           requires:
+            - unit_testing_php_56
             - unit_testing_php_74
             - unit_testing_php_80
             - unit_testing_php_81
@@ -680,6 +689,11 @@ jobs:
   # --------------------------------------------------
   # Unit Testing
   # --------------------------------------------------
+
+  unit_testing_php_56:
+    executor: php_56_mysql
+    steps:
+      - run_php_unit_tests
 
   unit_testing_php_74:
     executor: php_74_mysql
