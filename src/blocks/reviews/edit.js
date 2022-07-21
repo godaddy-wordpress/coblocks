@@ -221,8 +221,8 @@ const Edit = ( props ) => {
 		);
 	};
 
-	// Reviews for the selected business. Can change based on pagination of review results.
-	const [ paginatedBusinessReviews, setPaginatedBusinessReviews ] = useState( [] );
+	// Paginated reviews, where each key `paginatedBusinessReviews[i]` is an array of reviews for page `i`
+	const [ paginatedBusinessReviews, setPaginatedBusinessReviews ] = useState( {} );
 	// Current pagination page for buisniess reviews
 	const [ paginatePageNumber, setPaginatePageNumber ] = useState( 0 );
 	// Reviews selected on the SELECT_REVIEWS step. Does not change based on pagination.
@@ -230,10 +230,13 @@ const Edit = ( props ) => {
 
 	/**
 	 * Loads reviews into `paginatedBusinessReviews` based on the current `paginatePageNumber`. Uses the business ID in the block's attributes.
+	 *
+	 * @param {number} pageNumber page to load
 	 */
-	const loadReviewsForSavedBusiness = async () => {
-		const json = await apiFetch( { path: coblocksYelp.bizReviewsProxy + '?biz_id=' + encodeURIComponent( attributes.yelpBusinessId ) + '&paginateStart=' + paginatePageNumber } );
-		setPaginatedBusinessReviews( json.reviews );
+	const loadReviewsForSavedBusiness = async ( pageNumber ) => {
+		const json = await apiFetch( { path: coblocksYelp.bizReviewsProxy + '?biz_id=' + encodeURIComponent( attributes.yelpBusinessId ) + '&paginateStart=' + pageNumber } );
+		paginatedBusinessReviews[ pageNumber ] = json.reviews;
+		setPaginatedBusinessReviews( paginatedBusinessReviews );
 	};
 
 	const saveSelectedReviews = () => {
@@ -244,7 +247,14 @@ const Edit = ( props ) => {
 	// auto-load reviews on select reviews block-setup-step state update
 	useEffect( () => {
 		if ( setupStep === BLOCK_SETUP_STEP.SELECT_REVIEWS ) {
-			loadReviewsForSavedBusiness();
+			// load current page if not available (only happens when step is changed to select_reviews)
+			if ( ! ( paginatePageNumber in paginatedBusinessReviews ) ) {
+				loadReviewsForSavedBusiness( paginatePageNumber );
+			}
+			// preload next page if not already fetched
+			if ( ! ( paginatePageNumber + 1 in paginatedBusinessReviews ) ) {
+				loadReviewsForSavedBusiness( paginatePageNumber + 1 );
+			}
 		}
 	}, [ paginatePageNumber, setupStep ] );
 
@@ -276,7 +286,7 @@ const Edit = ( props ) => {
 		};
 
 		const paginateForward = () => {
-			if ( paginatedBusinessReviews.length > 0 ) {
+			if ( paginatedBusinessReviews[ paginatePageNumber ].length > 0 ) {
 				setPaginatePageNumber( paginatePageNumber + 1 );
 			}
 		};
@@ -293,8 +303,10 @@ const Edit = ( props ) => {
 					label={ __( 'Select Reviews', 'coblocks' ) }
 				>
 
+					{ paginatedBusinessReviews[ paginatePageNumber ] === undefined ? 'undef' : 'good' }
+
 					{
-						paginatedBusinessReviews.map( ( review, index ) => {
+						paginatedBusinessReviews[ paginatePageNumber ] !== undefined && paginatedBusinessReviews[ paginatePageNumber ].map( ( review, index ) => {
 							return (
 								<div key={ index } style={ { border: '1px solid black', padding: 5 } }>
 									<img alt="user avatar" src={ review.user.src } />
