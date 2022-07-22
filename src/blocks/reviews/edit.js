@@ -221,117 +221,8 @@ const Edit = ( props ) => {
 		);
 	};
 
-	// Paginated reviews, where each key `paginatedBusinessReviews[i]` is an array of reviews for page `i`
-	const [ paginatedBusinessReviews, setPaginatedBusinessReviews ] = useState( {} );
-	// Current pagination page for buisniess reviews
-	const [ paginatePageNumber, setPaginatePageNumber ] = useState( 0 );
 	// Reviews selected on the SELECT_REVIEWS step. Does not change based on pagination.
 	const [ selectedReviews, setSelectedReviews ] = useState( {} );
-
-	/**
-	 * Loads reviews into `paginatedBusinessReviews` based on the current `paginatePageNumber`. Uses the business ID in the block's attributes.
-	 *
-	 * @param {number} pageNumber page to load
-	 */
-	const loadReviewsForSavedBusiness = async ( pageNumber ) => {
-		const json = await apiFetch( { path: coblocksYelp.bizReviewsProxy + '?biz_id=' + encodeURIComponent( attributes.yelpBusinessId ) + '&paginateStart=' + pageNumber } );
-		paginatedBusinessReviews[ pageNumber ] = json.reviews;
-		setPaginatedBusinessReviews( paginatedBusinessReviews );
-	};
-
-	const saveSelectedReviews = () => {
-		// transition the block to saved preview mode
-		setSetupStep( BLOCK_SETUP_STEP.SAVED_PREVIEW );
-	};
-
-	// auto-load reviews on select reviews block-setup-step state update
-	useEffect( () => {
-		if ( setupStep === BLOCK_SETUP_STEP.SELECT_REVIEWS ) {
-			// load current page if not available (only happens when step is changed to select_reviews)
-			if ( ! ( paginatePageNumber in paginatedBusinessReviews ) ) {
-				loadReviewsForSavedBusiness( paginatePageNumber );
-			}
-			// preload next page if not already fetched
-			if ( ! ( paginatePageNumber + 1 in paginatedBusinessReviews ) ) {
-				loadReviewsForSavedBusiness( paginatePageNumber + 1 );
-			}
-		}
-	}, [ paginatePageNumber, setupStep ] );
-
-	const SelectReviews = () => {
-		const onReviewSelectChange = ( review, isSelected ) => {
-			if ( isSelected ) {
-				// insert the new review
-				selectedReviews[ review.id ] = {
-					id: review.id,
-					author: review.user.markupDisplayName,
-					authorAvatarSrc: review.user.src,
-					localizedDate: review.localizedDate,
-					rating: review.rating,
-					comment: review.comment.text,
-				};
-			} else {
-				// delete the selected review
-				delete selectedReviews[ review.id ];
-			}
-
-			// update state
-			setSelectedReviews( selectedReviews );
-		};
-
-		const paginateBackward = () => {
-			if ( paginatePageNumber > 0 ) {
-				setPaginatePageNumber( paginatePageNumber - 1 );
-			}
-		};
-
-		const paginateForward = () => {
-			if ( paginatedBusinessReviews[ paginatePageNumber ].length > 0 ) {
-				setPaginatePageNumber( paginatePageNumber + 1 );
-			}
-		};
-
-		return (
-			<div>
-				<Placeholder
-					icon={ <Icon icon={ icon } /> }
-					instructions={ __(
-						'Choose which reviews you want to show. You can modify and custom reviews in the next step.',
-						'coblocks'
-					) }
-					isColumnLayout={ true }
-					label={ __( 'Select Reviews', 'coblocks' ) }
-				>
-
-					{ paginatedBusinessReviews[ paginatePageNumber ] === undefined ? 'undef' : 'good' }
-
-					{
-						paginatedBusinessReviews[ paginatePageNumber ] !== undefined && paginatedBusinessReviews[ paginatePageNumber ].map( ( review, index ) => {
-							return (
-								<div key={ index } style={ { border: '1px solid black', padding: 5 } }>
-									<img alt="user avatar" src={ review.user.src } />
-									<p><span style={ { fontWeight: 700 } }>Author: </span>{ review.user.markupDisplayName }</p>
-									<p><span style={ { fontWeight: 700 } }>On: </span>{ review.localizedDate }</p>
-									<p><span style={ { fontWeight: 700 } }>Rating: </span>{ review.rating }/5</p>
-									<p><span style={ { fontWeight: 700 } }>Comment: </span><span dangerouslySetInnerHTML={ { __html: review.comment.text } }></span></p>
-									<p><a href={ 'https://www.yelp.com/biz/' + review.business.alias + '?hrid=' + review.id }>See on Yelp.com</a></p>
-									<p><input checked={ review.id in selectedReviews } onChange={ ( event ) => onReviewSelectChange( review, event.target.checked ) } type="checkbox" />Show</p>
-								</div>
-							);
-						} )
-					}
-
-					<ButtonGroup>
-						<Button disabled={ paginatePageNumber === 0 } isPrimary onClick={ paginateBackward }>Pag Back</Button>
-						<Button disabled={ paginatedBusinessReviews.length === 0 } isPrimary onClick={ paginateForward }>Pag Next</Button>
-					</ButtonGroup>
-
-					<Button isPrimary onClick={ saveSelectedReviews }>Save Reviews</Button>
-				</Placeholder>
-
-			</div>
-		);
-	};
 
 	const saveSelectedReviewsAsInnerBlocks = () => {
 		for ( const reviewId in selectedReviews ) {
@@ -383,12 +274,123 @@ const Edit = ( props ) => {
 			}
 
 			{ setupStep === BLOCK_SETUP_STEP.SELECT_REVIEWS &&
-			<SelectReviews />
+			<SelectReviews
+				attributes={ attributes }
+				saveSelectedReviews={ () => setSetupStep( BLOCK_SETUP_STEP.SAVED_PREVIEW ) }
+				selectedReviews={ selectedReviews }
+				setSelectedReviews={ setSelectedReviews }
+			/>
 			}
 
 			{ setupStep === BLOCK_SETUP_STEP.SAVED_PREVIEW &&
 			<SavedPreview />
 			}
+
+		</div>
+	);
+};
+
+const SelectReviews = ( props ) => {
+	const { setSelectedReviews, selectedReviews, attributes, saveSelectedReviews } = props;
+	// Paginated reviews, where each key `paginatedBusinessReviews[i]` is an array of reviews for page `i`
+	const [ paginatedBusinessReviews, setPaginatedBusinessReviews ] = useState( {} );
+	// Current pagination page for buisniess reviews
+	const [ paginatePageNumber, setPaginatePageNumber ] = useState( 0 );
+
+	// auto-load reviews on select reviews block-setup-step state update
+	useEffect( () => {
+		loadReviewsForSavedBusiness( 0 );
+	}, [] );
+
+	useEffect( () => {
+		if ( ! ( ( paginatePageNumber + 1 ) in paginatedBusinessReviews ) ) {
+			loadReviewsForSavedBusiness( paginatePageNumber + 1 );
+		}
+	}, [ paginatePageNumber, paginatedBusinessReviews ] );
+
+	/**
+	 * Loads reviews into `paginatedBusinessReviews` based on the current `paginatePageNumber`. Uses the business ID in the block's attributes.
+	 *
+	 * @param {number} pageNumber page to load
+	 */
+	const loadReviewsForSavedBusiness = async ( pageNumber ) => {
+		const page = await apiFetch( { path: coblocksYelp.bizReviewsProxy + '?biz_id=' + encodeURIComponent( attributes.yelpBusinessId ) + '&paginateStart=' + pageNumber } );
+		const copy = { ...paginatedBusinessReviews };
+		copy[ pageNumber ] = page.reviews;
+		setPaginatedBusinessReviews( copy );
+	};
+
+	const onReviewSelectChange = ( review ) => {
+		const copy = { ...selectedReviews };
+
+		if ( review.id in selectedReviews ) {
+			// delete the selected review
+			delete copy[ review.id ];
+		} else {
+			// insert the new review
+			copy[ review.id ] = {
+				id: review.id,
+				author: review.user.markupDisplayName,
+				authorAvatarSrc: review.user.src,
+				localizedDate: review.localizedDate,
+				rating: review.rating,
+				comment: review.comment.text,
+			};
+		}
+
+		// update state
+		setSelectedReviews( copy );
+	};
+
+	const paginateBackward = () => {
+		if ( paginatePageNumber > 0 ) {
+			setPaginatePageNumber( paginatePageNumber - 1 );
+		}
+	};
+
+	const paginateForward = () => {
+		if ( paginatedBusinessReviews[ paginatePageNumber ].length > 0 ) {
+			setPaginatePageNumber( paginatePageNumber + 1 );
+		}
+	};
+
+	return (
+		<div>
+			<Placeholder
+				icon={ <Icon icon={ icon } /> }
+				instructions={ __(
+					'Choose which reviews you want to show. You can modify and custom reviews in the next step.',
+					'coblocks'
+				) }
+				isColumnLayout={ true }
+				label={ __( 'Select Reviews', 'coblocks' ) }
+			>
+
+				{ paginatedBusinessReviews[ paginatePageNumber ] === undefined ? 'undef' : 'good' }
+
+				{
+					paginatedBusinessReviews[ paginatePageNumber ] !== undefined && paginatedBusinessReviews[ paginatePageNumber ].map( ( review, index ) => {
+						return (
+							<div key={ index } style={ { border: '1px solid black', padding: 5 } }>
+								<img alt="user avatar" src={ review.user.src } />
+								<p><span style={ { fontWeight: 700 } }>Author: </span>{ review.user.markupDisplayName }</p>
+								<p><span style={ { fontWeight: 700 } }>On: </span>{ review.localizedDate }</p>
+								<p><span style={ { fontWeight: 700 } }>Rating: </span>{ review.rating }/5</p>
+								<p><span style={ { fontWeight: 700 } }>Comment: </span><span dangerouslySetInnerHTML={ { __html: review.comment.text } }></span></p>
+								<p><a href={ 'https://www.yelp.com/biz/' + review.business.alias + '?hrid=' + review.id }>See on Yelp.com</a></p>
+								<p><input checked={ review.id in selectedReviews } onChange={ () => onReviewSelectChange( review ) } type="checkbox" />Show</p>
+							</div>
+						);
+					} )
+				}
+
+				<ButtonGroup>
+					<Button disabled={ paginatePageNumber === 0 } isPrimary onClick={ paginateBackward }>Pag Back</Button>
+					<Button disabled={ paginatedBusinessReviews.length === 0 } isPrimary onClick={ paginateForward }>Pag Next</Button>
+				</ButtonGroup>
+
+				<Button isPrimary onClick={ saveSelectedReviews }>Save Reviews</Button>
+			</Placeholder>
 
 		</div>
 	);
