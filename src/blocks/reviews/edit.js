@@ -33,7 +33,7 @@ import { useEffect, useState } from '@wordpress/element';
 
 const Edit = ( props ) => {
 	// Destructure props
-	const { attributes, className, noticeOperations, setAttributes, clientId } = props;
+	const { attributes, className, setAttributes, clientId } = props;
 
 	/**
 	 * Edit steps for configuring this Yelp block.
@@ -44,15 +44,8 @@ const Edit = ( props ) => {
 		SAVED_PREVIEW: 'saved_preview',
 	};
 
-	/* INNER BLOCKS */
-
-	const ALLOWED_BLOCKS = [ 'coblocks/review-item' ];
-
 	const { insertBlock } = useDispatch( 'core/block-editor' );
-
 	const { innerBlocks } = useSelect( ( select ) => ( { innerBlocks: select( 'core/block-editor' ).getBlocks( clientId ) } ) );
-
-	/* LOCAL STATE */
 
 	/**
 	 * Initializer for `setupStep`'s state. Determines where the edit flow should start based on what data has been saved.
@@ -69,186 +62,39 @@ const Edit = ( props ) => {
 	// The current setup stage of the Yelp block, used to control the block's setup flow.
 	const [ setupStep, setSetupStep ] = useState( initSetupStep() );
 
-	const BusinessSearch = () => {
-		// Text field states for business search.
-		const [ businessName, setBusinessName ] = useState( '' );
-		const [ businessLocation, setBusinessLocation ] = useState( '' );
-
-		// Business-type results returned for business search.
-		const [ businessSearchResults, setBusinessSearchResults ] = useState( [] );
-
-		// Data fetch state, used to show a spinner when data loading is in progress.
-		const [ dataFetchInProgress, setDataFetchInProgress ] = useState( false );
-
-		/**
-		 * Performs API call to Yelp.com to fetch businesses matching the values of `businessName` and `businessLocation`.
-		 */
-		const searchForYelpBiz = async () => {
-		/**
-		 * Iterates through yelp's search results and only returns items that are businesses.
-		 *
-		 * @param {*} suggestions from yelp.com API.
-		 * @return {Array} all **businesses** matching the search query.
-		 */
-			const getBusinessesFromSuggestions = ( suggestions ) => {
-			// create an array we'll use to store all the query's actual businesses.
-				const businesses = [];
-
-				// iterate through all the query suggestions, matching the ones that are businesses and adding them to our array.
-				suggestions.forEach( ( suggestion ) => {
-					if ( suggestion.type === 'business' ) {
-						businesses.push( suggestion );
-					}
-				} );
-
-				// return all the actual businesses
-				return businesses;
-			};
-
-			// show the loader so the user isn't left hanging after submitting
-			setDataFetchInProgress( true );
-
-			// perform the API Fetch to our Yelp Proxy API.
-			apiFetch( { path: coblocksYelp.bizSearchProxy + '?biz_name=' + encodeURIComponent( businessName ) + '&biz_loc=' + encodeURIComponent( businessLocation ) } )
-			// When request finishes OK:
-				.then( ( json ) => {
-					// get the results from Yelp's search suggestions that are businesses (not other suggestions like typeahead).
-					const businessSuggestions = getBusinessesFromSuggestions( json.response[ 0 ].suggestions );
-					// if no businesses found, show an error notice to the user.
-					if ( businessSuggestions.length === 0 ) {
-						noticeOperations.createErrorNotice( __( 'No matching businesses found on Yelp! Try being more specific in your search.', 'coblocks' ) );
-						return;
-					}
-
-					// set the search results to the API's response.
-
-					setBusinessSearchResults( businessSuggestions );
-				} )
-				.catch( () => {
-					noticeOperations.createErrorNotice( __( 'Sorry, that search didn\'t work! Please try again.', 'coblocks' ) );
-				} )
-				.finally( () => {
-					// after all fetching/processing is done, regardless of error state, stop showing the spinner to the user.
-					setDataFetchInProgress( false );
-				} );
-		};
-
-		/**
-		 * Determines whether the "search yelp" button (for discovering the business id) is disabled. Returns boolean.
-		 *
-		 * @return {boolean} "Search Yelp" button disable state
-		 */
-		const shouldSearchBeDisabled = () => ( businessName.length === 0 ) || ( businessLocation.length === 0 );
-
-		/**
-		 * Extracts the business ID from a string of the form `/biz/[business_id]`.
-		 *
-		 * @param {string} url
-		 * @return {string} a yelp business id
-		 */
-		const extractBizIdFromURL = ( url ) => url.substring( 5 );
-
-		/**
-		 * Sets this Reviews Block's yelpBusinessId to  `bizId`. Advances the block to the select reviews step.
-		 *
-		 * @param {string} bizId The business ID to save to the block's attributes.
-		 */
-		const selectBusiness = ( bizId ) => {
-			setAttributes( { yelpBusinessId: bizId } );
-			setSetupStep( BLOCK_SETUP_STEP.SELECT_REVIEWS );
-		};
-
-		return (
-			<div>
-				<Placeholder
-					icon={ <Icon icon={ icon } /> }
-					instructions={ __(
-						'Please enter your business name and where it\'s located:',
-						'coblocks'
-					) }
-					isColumnLayout={ true }
-					label={ __( 'Let\'s find your business!', 'coblocks' ) }
-				>
-
-					<TextControl
-						label="Business Name"
-						onChange={ ( newBizName ) => setBusinessName( newBizName ) }
-						value={ businessName }
-					/>
-
-					<TextControl
-						label="Business Location"
-						onChange={ ( newBizLoc ) => setBusinessLocation( newBizLoc ) }
-						value={ businessLocation }
-					/>
-
-					<Button
-						disabled={ shouldSearchBeDisabled() }
-						isPrimary
-						onClick={ searchForYelpBiz }
-					>
-
-						{ __( 'Search Yelp', 'coblocks' ) }
-						{ dataFetchInProgress && <Spinner /> }
-
-					</Button>
-
-					{ businessSearchResults.length > 0 &&
-					<div>
-						<p>We found these businesses:</p>
-						<ul>
-
-							{ businessSearchResults.map( ( biz, index ) => (
-								<li key={ index }>
-									<img alt="temporary thumbnail" height={ 32 } src={ biz.thumbnail.key } />
-									<span style={ { fontWeight: 800, paddingLeft: 8 } }>{ biz.title } - </span>
-									<span>{ biz.subtitle }</span>
-
-									<Button onClick={ () => {
-										selectBusiness( extractBizIdFromURL( biz.redirect_url ) );
-									} } style={ { color: 'red', paddingLeft: 10 } }>SELECT BUSINESS</Button>
-								</li>
-							) ) }
-
-						</ul>
-
-					</div>
-					}
-
-				</Placeholder>
-
-			</div>
-		);
-	};
-
-	// Reviews selected on the SELECT_REVIEWS step. Does not change based on pagination.
+	// Reviews selected on the SELECT_REVIEWS step. These will be converted to inner blocks when the block move into the save state
 	const [ selectedReviews, setSelectedReviews ] = useState( {} );
 
-	const saveSelectedReviewsAsInnerBlocks = () => {
-		for ( const reviewId in selectedReviews ) {
-			const review = selectedReviews[ reviewId ];
-
-			const newReviewItem = createBlock( 'coblocks/review-item', {
-				author: review.author,
-				authorAvatarURL: review.authorAvatarSrc,
-				comment: review.comment,
-				localizedDate: review.localizedDate,
-				rating: review.rating + ' / 5',
-			} );
-			// insert the created block
-			insertBlock( newReviewItem, innerBlocks.length, clientId, true );
-		}
-
-		setAttributes( { saved: true } );
-	};
-
-	useEffect( () => {
-		if ( setupStep === BLOCK_SETUP_STEP.SAVED_PREVIEW ) {
-			saveSelectedReviewsAsInnerBlocks();
-		}
-	}, [ setupStep, selectedReviews ] );
-
 	const SavedPreview = () => {
+		const ALLOWED_BLOCKS = [ 'coblocks/review-item' ];
+
+		useEffect( () => {
+			if ( ! attributes.saved ) {
+				saveSelectedReviewsAsInnerBlocks();
+			}
+		}, [ selectedReviews, attributes.saved ] );
+
+		/**
+		 * Convert selectedReviews to blocks underneath the parent Yelp reviews block
+		 */
+		const saveSelectedReviewsAsInnerBlocks = () => {
+			for ( const reviewId in selectedReviews ) {
+				const review = selectedReviews[ reviewId ];
+
+				const newReviewItem = createBlock( 'coblocks/review-item', {
+					author: review.author,
+					authorAvatarURL: review.authorAvatarSrc,
+					comment: review.comment,
+					localizedDate: review.localizedDate,
+					rating: review.rating + ' / 5',
+				} );
+				// insert the created block
+				insertBlock( newReviewItem, innerBlocks.length, clientId, true );
+			}
+
+			setAttributes( { saved: true } );
+		};
+
 		const insertCustomReview = () => {
 			const customReview = createBlock( 'coblocks/review-item' );
 			insertBlock( customReview, innerBlocks.length, clientId, true );
@@ -270,28 +116,188 @@ const Edit = ( props ) => {
 		<div className={ className }>
 
 			{ setupStep === BLOCK_SETUP_STEP.BUSINESS_SEARCH &&
-			<BusinessSearch />
+			<BusinessSearch
+				setYelpBusinessId={ ( bizId ) => setAttributes( { yelpBusinessId: bizId } ) }
+				transitionStep={ () => setSetupStep( BLOCK_SETUP_STEP.SELECT_REVIEWS ) }
+			/>
 			}
 
 			{ setupStep === BLOCK_SETUP_STEP.SELECT_REVIEWS &&
 			<SelectReviews
 				attributes={ attributes }
-				saveSelectedReviews={ () => setSetupStep( BLOCK_SETUP_STEP.SAVED_PREVIEW ) }
 				selectedReviews={ selectedReviews }
 				setSelectedReviews={ setSelectedReviews }
+				transitionStep={ () => setSetupStep( BLOCK_SETUP_STEP.SAVED_PREVIEW ) }
 			/>
 			}
 
 			{ setupStep === BLOCK_SETUP_STEP.SAVED_PREVIEW &&
-			<SavedPreview />
+			<SavedPreview
+				insertBlock={ insertBlock }
+				parentClientId={ () => clientId }
+				parentInnerBlocks={ innerBlocks }
+				savedAttribute={ attributes.saved }
+				selectedReviews={ selectedReviews }
+				setSavedAttribute={ () => setAttributes( { saved: true } ) }
+			/>
 			}
 
 		</div>
 	);
 };
 
+const BusinessSearch = ( props ) => {
+	const { transitionStep, setYelpBusinessId } = props;
+	// Text field states for business search.
+	const [ businessName, setBusinessName ] = useState( '' );
+	const [ businessLocation, setBusinessLocation ] = useState( '' );
+
+	// Business-type results returned for business search.
+	const [ businessSearchResults, setBusinessSearchResults ] = useState( [] );
+
+	// Data fetch state, used to show a spinner when data loading is in progress.
+	const [ dataFetchInProgress, setDataFetchInProgress ] = useState( false );
+
+	/**
+	 * Performs API call to Yelp.com to fetch businesses matching the values of `businessName` and `businessLocation`.
+	 */
+	const searchForYelpBiz = async () => {
+		/**
+		 * Iterates through yelp's search results and only returns items that are businesses.
+		 *
+		 * @param {*} suggestions from yelp.com API.
+		 * @return {Array} all **businesses** matching the search query.
+		 */
+		const getBusinessesFromSuggestions = ( suggestions ) => {
+			// create an array we'll use to store all the query's actual businesses.
+			const businesses = [];
+
+			// iterate through all the query suggestions, matching the ones that are businesses and adding them to our array.
+			suggestions.forEach( ( suggestion ) => {
+				if ( suggestion.type === 'business' ) {
+					businesses.push( suggestion );
+				}
+			} );
+
+			// return all the actual businesses
+			return businesses;
+		};
+
+		// show the loader so the user isn't left hanging after submitting
+		setDataFetchInProgress( true );
+
+		// perform the API Fetch to our Yelp Proxy API.
+		apiFetch( { path: coblocksYelp.bizSearchProxy + '?biz_name=' + encodeURIComponent( businessName ) + '&biz_loc=' + encodeURIComponent( businessLocation ) } )
+		// When request finishes OK:
+			.then( ( json ) => {
+				// get the results from Yelp's search suggestions that are businesses (not other suggestions like typeahead).
+				const businessSuggestions = getBusinessesFromSuggestions( json.response[ 0 ].suggestions );
+				// if no businesses found, show an error notice to the user.
+				if ( businessSuggestions.length === 0 ) {
+					//noticeOperations.createErrorNotice( __( 'No matching businesses found on Yelp! Try being more specific in your search.', 'coblocks' ) );
+					return;
+				}
+
+				// set the search results to the API's response.
+
+				setBusinessSearchResults( businessSuggestions );
+			} )
+			.catch( () => {
+				//noticeOperations.createErrorNotice( __( 'Sorry, that search didn\'t work! Please try again.', 'coblocks' ) );
+			} )
+			.finally( () => {
+				// after all fetching/processing is done, regardless of error state, stop showing the spinner to the user.
+				setDataFetchInProgress( false );
+			} );
+	};
+
+	/**
+	 * Determines whether the "search yelp" button (for discovering the business id) is disabled. Returns boolean.
+	 *
+	 * @return {boolean} "Search Yelp" button disable state
+	 */
+	const shouldSearchBeDisabled = () => ( businessName.length === 0 ) || ( businessLocation.length === 0 );
+
+	/**
+	 * Extracts the business ID from a string of the form `/biz/[business_id]`.
+	 *
+	 * @param {string} url
+	 * @return {string} a yelp business id
+	 */
+	const extractBizIdFromURL = ( url ) => url.substring( 5 );
+
+	/**
+	 * Sets this Reviews Block's yelpBusinessId to  `bizId`. Advances the block to the select reviews step.
+	 *
+	 * @param {string} bizId The business ID to save to the block's attributes.
+	 */
+	const selectBusiness = ( bizId ) => {
+		setYelpBusinessId( bizId );
+		transitionStep();
+	};
+
+	return (
+		<Placeholder
+			icon={ <Icon icon={ icon } /> }
+			instructions={ __(
+				'Please enter your business name and where it\'s located:',
+				'coblocks'
+			) }
+			isColumnLayout={ true }
+			label={ __( 'Let\'s find your business!', 'coblocks' ) }
+		>
+
+			<TextControl
+				label="Business Name"
+				onChange={ ( newBizName ) => setBusinessName( newBizName ) }
+				value={ businessName }
+			/>
+
+			<TextControl
+				label="Business Location"
+				onChange={ ( newBizLoc ) => setBusinessLocation( newBizLoc ) }
+				value={ businessLocation }
+			/>
+
+			<Button
+				disabled={ shouldSearchBeDisabled() }
+				isPrimary
+				onClick={ searchForYelpBiz }
+			>
+
+				{ __( 'Search Yelp', 'coblocks' ) }
+				{ dataFetchInProgress && <Spinner /> }
+
+			</Button>
+
+			{ businessSearchResults.length > 0 &&
+				<div>
+					<p>We found these businesses:</p>
+					<ul>
+
+						{ businessSearchResults.map( ( biz, index ) => (
+							<li key={ index }>
+								<img alt="temporary thumbnail" height={ 32 } src={ biz.thumbnail.key } />
+								<span style={ { fontWeight: 800, paddingLeft: 8 } }>{ biz.title } - </span>
+								<span>{ biz.subtitle }</span>
+
+								<Button onClick={ () => {
+									selectBusiness( extractBizIdFromURL( biz.redirect_url ) );
+								} } style={ { color: 'red', paddingLeft: 10 } }>SELECT BUSINESS</Button>
+							</li>
+						) ) }
+
+					</ul>
+
+				</div>
+			}
+
+		</Placeholder>
+	);
+};
+
 const SelectReviews = ( props ) => {
-	const { setSelectedReviews, selectedReviews, attributes, saveSelectedReviews } = props;
+	const { setSelectedReviews, selectedReviews, attributes, transitionStep } = props;
 	// Paginated reviews, where each key `paginatedBusinessReviews[i]` is an array of reviews for page `i`
 	const [ paginatedBusinessReviews, setPaginatedBusinessReviews ] = useState( {} );
 	// Current pagination page for buisniess reviews
@@ -389,7 +395,7 @@ const SelectReviews = ( props ) => {
 					<Button disabled={ paginatedBusinessReviews.length === 0 } isPrimary onClick={ paginateForward }>Pag Next</Button>
 				</ButtonGroup>
 
-				<Button isPrimary onClick={ saveSelectedReviews }>Save Reviews</Button>
+				<Button isPrimary onClick={ transitionStep }>Save Reviews</Button>
 			</Placeholder>
 
 		</div>
