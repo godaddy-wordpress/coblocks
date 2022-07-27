@@ -25,6 +25,13 @@ class Coblocks_Yelp_Proxy {
 	private $yelp_biz_reviews_proxy_path = '/yelp/biz_reviews';
 
 	/**
+	 * Base path for the review avatar upload handler
+	 *
+	 * @var string
+	 */
+	private $yelp_add_avatar_to_media_lib = '/yelp/media_lib_push_avatar';
+
+	/**
 	 * Function constructor
 	 */
 	public function __construct() {
@@ -83,6 +90,26 @@ class Coblocks_Yelp_Proxy {
 					),
 				),
 				'callback'            => array( $this, 'yelp_biz_reviews_api_proxy' ),
+			)
+		);
+
+		register_rest_route(
+			COBLOCKS_API_NAMESPACE,
+			$this->yelp_add_avatar_to_media_lib,
+			array(
+				'methods'             => \WP_REST_Server::READABLE,
+				'permission_callback' => function() {
+					return current_user_can( 'edit_posts' );    // See https://wordpress.org/support/article/roles-and-capabilities/#edit_posts.
+				},
+				'show_in_index'       => false,
+				'args'                => array(
+					'src' => array(
+						'description'       => 'A valid URL pointing to an image that will be saved to the media library.',
+						'type'              => 'string',
+						'sanitize_callback' => 'sanitize_text_field',
+					),
+				),
+				'callback'            => array( $this, 'yelp_add_avatar_to_media_lib' ),
 			)
 		);
 
@@ -187,6 +214,32 @@ class Coblocks_Yelp_Proxy {
 	}
 
 	/**
+	 * Accepts a URL to an image and uploads it to the site's WP Media Library. Returns a URL to the image on this WordPress site.
+	 *
+	 * @param \WP_REST_Request $request Contains the rest request object.
+	 *
+	 * @return \WP_REST_Response
+	 */
+	public function yelp_add_avatar_to_media_lib( \WP_REST_Request $request ) {
+
+		$image_url = $request->get_param( 'src' );
+
+		$image_file = file_get_contents( $image_url );
+
+		// TODO properly get the image extension.
+		$upload = wp_upload_bits( uniqid() . '.jpg', null, $image_file );
+
+		// print_r( $upload );.
+
+		return rest_ensure_response(
+			new \WP_REST_Response(
+				array( 'url' => $upload['url'] ),
+				200
+			)
+		);
+	}
+
+	/**
 	 * Localize script to tell the API proxy path to JavaScript.
 	 *
 	 * @return void
@@ -199,6 +252,7 @@ class Coblocks_Yelp_Proxy {
 			array(
 				'bizSearchProxy' => COBLOCKS_API_NAMESPACE . $this->yelp_biz_search_proxy_path,
 				'bizReviewsProxy' => COBLOCKS_API_NAMESPACE . $this->yelp_biz_reviews_proxy_path,
+				'addAvatarToMediaLib' => COBLOCKS_API_NAMESPACE . $this->yelp_add_avatar_to_media_lib,
 			)
 		);
 

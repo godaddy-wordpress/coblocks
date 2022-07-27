@@ -39,6 +39,8 @@ const Edit = ( props ) => {
 				value={ attributes.rating }
 			/>
 
+			<img alt={ 'author avatar' } src={ attributes.authorAvatarURL } />
+
 		</div>
 	);
 };

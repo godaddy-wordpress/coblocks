@@ -82,15 +82,20 @@ const Edit = ( props ) => {
 			for ( const reviewId in selectedReviews ) {
 				const review = selectedReviews[ reviewId ];
 
-				const newReviewItem = createBlock( 'coblocks/review-item', {
-					author: review.author,
-					authorAvatarURL: review.authorAvatarSrc,
-					comment: review.comment,
-					localizedDate: review.localizedDate,
-					rating: review.rating + ' / 5',
-				} );
-				// insert the created block
-				insertBlock( newReviewItem, innerBlocks.length, clientId, true );
+				apiFetch( { path: addQueryArgs( coblocksYelp.addAvatarToMediaLib, {
+					src: review.authorAvatarSrc,
+				} ) } )
+					.then( ( json ) => {
+						const newReviewItem = createBlock( 'coblocks/review-item', {
+							author: review.author,
+							authorAvatarURL: json.url,
+							comment: review.comment,
+							localizedDate: review.localizedDate,
+							rating: review.rating + ' / 5',
+						} );
+						// insert the created block
+						insertBlock( newReviewItem, innerBlocks.length, clientId, true );
+					} );
 			}
 
 			setAttributes( { saved: true } );
