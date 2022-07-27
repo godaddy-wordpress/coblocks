@@ -19,6 +19,7 @@ import apiFetch from '@wordpress/api-fetch';
 import { compose } from '@wordpress/compose';
 import { createBlock } from '@wordpress/blocks';
 import { InnerBlocks } from '@wordpress/block-editor';
+import { addQueryArgs } from '@wordpress/url';
 import {
 	Button,
 	ButtonGroup,
@@ -187,7 +188,10 @@ const BusinessSearch = ( props ) => {
 		setDataFetchInProgress( true );
 
 		// perform the API Fetch to our Yelp Proxy API.
-		apiFetch( { path: coblocksYelp.bizSearchProxy + '?biz_name=' + encodeURIComponent( businessName ) + '&biz_loc=' + encodeURIComponent( businessLocation ) } )
+		apiFetch( { path: addQueryArgs( coblocksYelp.bizSearchProxy, {
+			biz_name: businessName,
+			biz_loc: businessLocation,
+		} ) } )
 		// When request finishes OK:
 			.then( ( json ) => {
 				// get the results from Yelp's search suggestions that are businesses (not other suggestions like typeahead).
@@ -320,13 +324,17 @@ const SelectReviews = ( props ) => {
 	 * @param {number} pageNumber page to load
 	 */
 	const loadReviewsForSavedBusiness = async ( pageNumber ) => {
-		const page = await apiFetch( { path: coblocksYelp.bizReviewsProxy + '?biz_id=' + encodeURIComponent( attributes.yelpBusinessId ) + '&paginateStart=' + pageNumber } );
-		const copy = { ...paginatedBusinessReviews };
-		copy[ pageNumber ] = page.reviews;
-		setPaginatedBusinessReviews( copy );
+		const page = await apiFetch( { path: addQueryArgs( coblocksYelp.bizReviewsProxy, {
+			biz_id: attributes.yelpBusinessId,
+			paginateStart: pageNumber,
+		} ) } );
+		setPaginatedBusinessReviews( {
+			...paginatedBusinessReviews,
+			[ pageNumber ]: page.reviews,
+		} );
 	};
 
-	const onReviewSelectChange = ( review ) => {
+	const onReviewToggle = ( review ) => {
 		const copy = { ...selectedReviews };
 
 		if ( review.id in selectedReviews ) {
@@ -372,7 +380,7 @@ const SelectReviews = ( props ) => {
 				label={ __( 'Select Reviews', 'coblocks' ) }
 			>
 
-				{ paginatedBusinessReviews[ paginatePageNumber ] === undefined ? 'undef' : 'good' }
+				{ paginatedBusinessReviews[ paginatePageNumber ] === undefined && <Spinner /> }
 
 				{
 					paginatedBusinessReviews[ paginatePageNumber ] !== undefined && paginatedBusinessReviews[ paginatePageNumber ].map( ( review, index ) => {
@@ -384,7 +392,7 @@ const SelectReviews = ( props ) => {
 								<p><span style={ { fontWeight: 700 } }>Rating: </span>{ review.rating }/5</p>
 								<p><span style={ { fontWeight: 700 } }>Comment: </span><span dangerouslySetInnerHTML={ { __html: review.comment.text } }></span></p>
 								<p><a href={ 'https://www.yelp.com/biz/' + review.business.alias + '?hrid=' + review.id }>See on Yelp.com</a></p>
-								<p><input checked={ review.id in selectedReviews } onChange={ () => onReviewSelectChange( review ) } type="checkbox" />Show</p>
+								<p><input checked={ review.id in selectedReviews } onChange={ () => onReviewToggle( review ) } type="checkbox" />Show</p>
 							</div>
 						);
 					} )
