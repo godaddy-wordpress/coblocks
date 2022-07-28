@@ -5,6 +5,11 @@
  * @package coblocks
  */
 
+// Import requirements for media_sideload_image (https://developer.wordpress.org/reference/functions/media_sideload_image/#more-information).
+require_once( ABSPATH . 'wp-admin/includes/media.php' );
+require_once( ABSPATH . 'wp-admin/includes/file.php' );
+require_once( ABSPATH . 'wp-admin/includes/image.php' );
+
 /**
  * Base class for proxying Yelp Block requests
  */
@@ -224,16 +229,11 @@ class Coblocks_Yelp_Proxy {
 
 		$image_url = $request->get_param( 'src' );
 
-		$image_file = file_get_contents( $image_url );
-
-		// TODO properly get the image extension.
-		$upload = wp_upload_bits( uniqid() . '.jpg', null, $image_file );
-
-		// print_r( $upload );.
+		$upload_url = media_sideload_image( $image_url, 0, null, 'src' );
 
 		return rest_ensure_response(
 			new \WP_REST_Response(
-				array( 'url' => $upload['url'] ),
+				array( 'url' => $upload_url ),
 				200
 			)
 		);
