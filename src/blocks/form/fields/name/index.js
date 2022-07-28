@@ -19,10 +19,10 @@ import { Icon } from '@wordpress/components';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: block name */
-	title: __( 'Name', 'coblocks' ),
+	attributes,
 	/* translators: block description */
 	description: __( 'A text field for collecting the first and last names.', 'coblocks' ),
+	edit,
 	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
@@ -34,16 +34,16 @@ const settings = {
 		__( 'last name', 'coblocks' ),
 	],
 	parent: [ 'coblocks/form' ],
-	supports: {
-		reusable: false,
-		html: false,
-		customClassName: false,
-		labelColor: true,
-	},
-	attributes,
-	transforms,
-	edit,
 	save: () => null,
+	supports: {
+		customClassName: false,
+		html: false,
+		labelColor: true,
+		reusable: false,
+	},
+	/* translators: block name */
+	title: __( 'Name', 'coblocks' ),
+	transforms,
 };
 
 export { name, category, metadata, settings };
