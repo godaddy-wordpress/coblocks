@@ -30,51 +30,51 @@ function CoBlocksFieldName( props ) {
 				) }
 			>
 				<CoBlocksFieldLabel
-					required={ required }
-					label={ label }
-					setAttributes={ setAttributes }
-					isSelected={ isSelected }
-					textColor={ textColor }
 					customTextColor={ customTextColor }
+					isSelected={ isSelected }
+					label={ label }
 					name={ name }
+					required={ required }
+					setAttributes={ setAttributes }
+					textColor={ textColor }
 				/>
 				{ hasLastName
 					? <div className="coblocks-form__inline-fields">
 						<div className="coblocks-form__inline-field">
 							<TextControl className="coblocks-field" />
 							<LabelColorWrapper
-								label={ label }
-								textColor={ textColor }
 								customTextColor={ customTextColor }
+								label={ label }
 								name={ name }
+								textColor={ textColor }
 							>
 								<RichText
-									tagName="small"
 									className="coblocks-form__subtext"
-									value={ labelFirstName }
 									onChange={ ( value ) => {
 										setAttributes( { labelFirstName: value } );
 									} }
 									placeholder={ __( 'Add label…', 'coblocks' ) }
+									tagName="small"
+									value={ labelFirstName }
 								/>
 							</LabelColorWrapper>
 						</div>
 						<div className="coblocks-form__inline-field">
 							<TextControl className="coblocks-field" />
 							<LabelColorWrapper
-								label={ label }
-								textColor={ textColor }
 								customTextColor={ customTextColor }
+								label={ label }
 								name={ name }
+								textColor={ textColor }
 							>
 								<RichText
-									tagName="small"
 									className="coblocks-form__subtext"
-									value={ labelLastName }
 									onChange={ ( value ) => {
 										setAttributes( { labelLastName: value } );
 									} }
 									placeholder={ __( 'Add label…', 'coblocks' ) }
+									tagName="small"
+									value={ labelLastName }
 								/>
 							</LabelColorWrapper>
 						</div>
@@ -85,11 +85,11 @@ function CoBlocksFieldName( props ) {
 			<InspectorControls>
 				<PanelBody title={ __( 'Name Field settings', 'coblocks' ) }>
 					<ToggleControl
-						label={ __( 'Last name', 'coblocks' ) }
-						className="coblocks-field-label__required"
 						checked={ hasLastName }
-						onChange={ ( value ) => setAttributes( { hasLastName: value } ) }
+						className="coblocks-field-label__required"
 						help={ !! hasLastName ? __( 'Showing both first and last name fields.', 'coblocks' ) : __( 'Toggle to add a last name field.', 'coblocks' ) }
+						label={ __( 'Last name', 'coblocks' ) }
+						onChange={ ( value ) => setAttributes( { hasLastName: value } ) }
 					/>
 				</PanelBody>
 			</InspectorControls>
