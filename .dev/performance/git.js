@@ -7,7 +7,7 @@ const SimpleGit = require( 'simple-git' );
 /**
  * Internal dependencies
  */
-const { getRandomTemporaryPath } = require( './utils' );
+const { getRandomTemporaryPath } = require( '../../src/utils/utils' );
 
 /**
  * Clones a Github repository.
@@ -170,16 +170,16 @@ async function replaceContentFromRemoteBranch(
 }
 
 module.exports = {
+	checkoutRemoteBranch,
+	cherrypickCommitIntoBranch,
 	clone,
 	commit,
-	checkoutRemoteBranch,
 	createLocalBranch,
 	createLocalTag,
+	discardLocalChanges,
 	fetch,
 	pushBranchToOrigin,
 	pushTagsToOrigin,
-	discardLocalChanges,
-	resetLocalBranchAgainstOrigin,
-	cherrypickCommitIntoBranch,
 	replaceContentFromRemoteBranch,
+	resetLocalBranchAgainstOrigin,
 };

@@ -15,7 +15,7 @@ const {
 	readJSONFile,
 	askForConfirmation,
 	getRandomTemporaryPath,
-} = require( './utils' );
+} = require( '../../src/utils/utils' );
 const git = require( './git' );
 const config = require( './config' );
 
