@@ -15,11 +15,12 @@ import CustomAppender from './appender';
  */
 
 import { __ } from '@wordpress/i18n';
+import { addQueryArgs } from '@wordpress/url';
 import apiFetch from '@wordpress/api-fetch';
 import { compose } from '@wordpress/compose';
 import { createBlock } from '@wordpress/blocks';
 import { InnerBlocks } from '@wordpress/block-editor';
-import { addQueryArgs } from '@wordpress/url';
+
 import {
 	Button,
 	ButtonGroup,
@@ -88,7 +89,7 @@ const Edit = ( props ) => {
 					.then( ( json ) => {
 						const newReviewItem = createBlock( 'coblocks/review-item', {
 							author: review.author,
-							authorAvatarURL: json.url,
+							avatarUrl: json.url,
 							comment: review.comment,
 							localizedDate: review.localizedDate,
 							rating: review.rating + ' / 5',
@@ -194,8 +195,8 @@ const BusinessSearch = ( props ) => {
 
 		// perform the API Fetch to our Yelp Proxy API.
 		apiFetch( { path: addQueryArgs( coblocksYelp.bizSearchProxy, {
-			biz_name: businessName,
 			biz_loc: businessLocation,
+			biz_name: businessName,
 		} ) } )
 		// When request finishes OK:
 			.then( ( json ) => {
@@ -351,9 +352,9 @@ const SelectReviews = ( props ) => {
 				id: review.id,
 				author: review.user.markupDisplayName,
 				authorAvatarSrc: review.user.src,
+				comment: review.comment.text,
 				localizedDate: review.localizedDate,
 				rating: review.rating,
-				comment: review.comment.text,
 			};
 		}
 

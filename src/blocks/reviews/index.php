@@ -231,6 +231,11 @@ class Coblocks_Yelp_Proxy {
 
 		$upload_url = media_sideload_image( $image_url, 0, null, 'src' );
 
+		// check for upload error.
+		if ( is_wp_error( $upload_url ) ) {
+			return new \WP_Error( 'upload_error', 'Error saving the provided image to media library.', array( 'status' => 500 ) );
+		}
+
 		return rest_ensure_response(
 			new \WP_REST_Response(
 				array( 'url' => $upload_url ),

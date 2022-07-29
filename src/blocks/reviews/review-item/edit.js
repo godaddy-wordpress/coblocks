@@ -1,47 +1,24 @@
 /**
  * WordPress dependencies.
  */
-import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
-import { RichText } from '@wordpress/block-editor';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 const Edit = ( props ) => {
 	const {
-		className,
 		attributes,
-		setAttributes,
 	} = props;
 
+	const REVIEW_TEMPLATE = [
+		[ 'core/image', { url: attributes.avatarUrl } ],
+		[ 'core/heading', { placeholder: 'Author Name', content: attributes.author, level: 5 } ],
+		[ 'core/heading', { placeholder: 'Review Date', content: attributes.localizedDate, level: 5 } ],
+		[ 'core/heading', { placeholder: 'Rating', content: attributes.rating, level: 5 } ],
+		[ 'core/heading', { placeholder: 'Comments...', content: attributes.comment, level: 6 } ],
+	];
+
 	return (
-		<div className={ className }>
-
-			<RichText
-				onChange={ ( updatedComment ) => setAttributes( { comment: updatedComment } ) }
-				placeholder={ __( 'COMMENT', 'coblocks' ) }
-				value={ attributes.comment }
-			/>
-
-			<RichText
-				onChange={ ( updatedAuthor ) => setAttributes( { author: updatedAuthor } ) }
-				placeholder={ __( 'AUTHOR', 'coblocks' ) }
-				value={ attributes.author }
-			/>
-
-			<RichText
-				onChange={ ( updatedLocalizedDate ) => setAttributes( { localizedDate: updatedLocalizedDate } ) }
-				placeholder={ __( 'DATE', 'coblocks' ) }
-				value={ attributes.localizedDate }
-			/>
-
-			<RichText
-				onChange={ ( updatedRating ) => setAttributes( { rating: updatedRating } ) }
-				placeholder={ __( 'RATING', 'coblocks' ) }
-				value={ attributes.rating }
-			/>
-
-			<img alt={ 'author avatar' } src={ attributes.authorAvatarURL } />
-
-		</div>
+		<InnerBlocks template={ REVIEW_TEMPLATE } />
 	);
 };
 

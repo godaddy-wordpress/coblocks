@@ -10,15 +10,15 @@
         "author": {
 			"type": "string"
 		},
-        "authorAvatarURL": {
-			"type": "string"
-		},
         "localizedDate": {
 			"type": "string"
 		},
         "rating": {
 			"type": "string"
-		}
+		},
+        "avatarUrl": {
+            "type": "string"
+        }
 	},
 	"title": "Review Item",
 	"textdomain": "coblocks",
