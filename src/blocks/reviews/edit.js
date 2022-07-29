@@ -42,6 +42,7 @@ const Edit = ( props ) => {
 	 */
 	const BLOCK_SETUP_STEP = {
 		BUSINESS_SEARCH: 'business_search',
+		SELECT_BUSINESS: 'select_business',
 		SELECT_REVIEWS: 'select_reviews',
 		SAVED_PREVIEW: 'saved_preview',
 	};
@@ -64,8 +65,12 @@ const Edit = ( props ) => {
 	// The current setup stage of the Yelp block, used to control the block's setup flow.
 	const [ setupStep, setSetupStep ] = useState( initSetupStep() );
 
-	// Reviews selected on the SELECT_REVIEWS step. These will be converted to inner blocks when the block move into the save state
+	// Reviews selected on the SELECT_REVIEWS step. These will be converted to inner blocks when the block move into the save state.
 	const [ selectedReviews, setSelectedReviews ] = useState( {} );
+
+	// Text field states for business search.
+	const [ businessName, setBusinessName ] = useState( '' );
+	const [ businessLocation, setBusinessLocation ] = useState( '' );
 
 	const SavedPreview = () => {
 		const ALLOWED_BLOCKS = [ 'coblocks/review-item' ];
@@ -124,8 +129,21 @@ const Edit = ( props ) => {
 
 			{ setupStep === BLOCK_SETUP_STEP.BUSINESS_SEARCH &&
 			<BusinessSearch
+				businessLocation={ businessLocation }
+				businessName={ businessName }
+				setBusinessLocation={ setBusinessLocation }
+				setBusinessName={ setBusinessName }
+				transitionStepNext={ () => setSetupStep( BLOCK_SETUP_STEP.SELECT_BUSINESS ) }
+			/>
+			}
+
+			{ setupStep === BLOCK_SETUP_STEP.SELECT_BUSINESS &&
+			<SelectBusiness
+				businessLocation={ businessLocation }
+				businessName={ businessName }
 				setYelpBusinessId={ ( bizId ) => setAttributes( { yelpBusinessId: bizId } ) }
-				transitionStep={ () => setSetupStep( BLOCK_SETUP_STEP.SELECT_REVIEWS ) }
+				transitionStepBack={ () => setSetupStep( BLOCK_SETUP_STEP.BUSINESS_SEARCH ) }
+				transitionStepNext={ () => setSetupStep( BLOCK_SETUP_STEP.SELECT_REVIEWS ) }
 			/>
 			}
 
@@ -154,21 +172,73 @@ const Edit = ( props ) => {
 };
 
 const BusinessSearch = ( props ) => {
-	const { transitionStep, setYelpBusinessId } = props;
-	// Text field states for business search.
-	const [ businessName, setBusinessName ] = useState( '' );
-	const [ businessLocation, setBusinessLocation ] = useState( '' );
+	const { transitionStepNext, businessName, businessLocation, setBusinessName, setBusinessLocation } = props;
+
+	/**
+	 * Determines whether the "search yelp" button (for discovering the business id) is disabled. Returns boolean.
+	 *
+	 * @return {boolean} "Search Yelp" button disable state
+	 */
+	const shouldSearchBeDisabled = () => ( businessName.length === 0 ) || ( businessLocation.length === 0 );
+
+	return (
+		<Placeholder
+			icon={ <Icon icon={ icon } /> }
+			instructions={ __(
+				'Please enter your business name and location.',
+				'coblocks'
+			) }
+			isColumnLayout={ true }
+			label={ __( 'Find your business on Yelp', 'coblocks' ) }
+		>
+
+			<TextControl
+				label="Business Name"
+				onChange={ ( newBizName ) => setBusinessName( newBizName ) }
+				value={ businessName }
+			/>
+
+			<TextControl
+				label="Business Location"
+				onChange={ ( newBizLoc ) => setBusinessLocation( newBizLoc ) }
+				value={ businessLocation }
+			/>
+
+			<Button
+				disabled={ shouldSearchBeDisabled() }
+				isPrimary
+				onClick={ transitionStepNext }
+			>
+
+				{ __( 'Search Yelp', 'coblocks' ) }
+
+			</Button>
+
+		</Placeholder>
+	);
+};
+
+const SelectBusiness = ( props ) => {
+	const { transitionStepNext, transitionStepBack, setYelpBusinessId, businessName, businessLocation } = props;
+
+	// Data fetch state, used to show a spinner when data loading is in progress.
+	const [ isFetchingBusinesses, setIsFetchingBusinesses ] = useState( false );
 
 	// Business-type results returned for business search.
 	const [ businessSearchResults, setBusinessSearchResults ] = useState( [] );
 
-	// Data fetch state, used to show a spinner when data loading is in progress.
-	const [ dataFetchInProgress, setDataFetchInProgress ] = useState( false );
+	/**
+	 * Extracts the business ID from a string of the form `/biz/[business_id]`.
+	 *
+	 * @param {string} url
+	 * @return {string} a yelp business id
+	 */
+	const extractBizIdFromURL = ( url ) => url.substring( 5 );
 
 	/**
 	 * Performs API call to Yelp.com to fetch businesses matching the values of `businessName` and `businessLocation`.
 	 */
-	const searchForYelpBiz = async () => {
+	const fetchBusinessesMatchingQuery = async () => {
 		/**
 		 * Iterates through yelp's search results and only returns items that are businesses.
 		 *
@@ -191,7 +261,7 @@ const BusinessSearch = ( props ) => {
 		};
 
 		// show the loader so the user isn't left hanging after submitting
-		setDataFetchInProgress( true );
+		setIsFetchingBusinesses( true );
 
 		// perform the API Fetch to our Yelp Proxy API.
 		apiFetch( { path: addQueryArgs( coblocksYelp.bizSearchProxy, {
@@ -217,24 +287,9 @@ const BusinessSearch = ( props ) => {
 			} )
 			.finally( () => {
 				// after all fetching/processing is done, regardless of error state, stop showing the spinner to the user.
-				setDataFetchInProgress( false );
+				setIsFetchingBusinesses( false );
 			} );
 	};
-
-	/**
-	 * Determines whether the "search yelp" button (for discovering the business id) is disabled. Returns boolean.
-	 *
-	 * @return {boolean} "Search Yelp" button disable state
-	 */
-	const shouldSearchBeDisabled = () => ( businessName.length === 0 ) || ( businessLocation.length === 0 );
-
-	/**
-	 * Extracts the business ID from a string of the form `/biz/[business_id]`.
-	 *
-	 * @param {string} url
-	 * @return {string} a yelp business id
-	 */
-	const extractBizIdFromURL = ( url ) => url.substring( 5 );
 
 	/**
 	 * Sets this Reviews Block's yelpBusinessId to  `bizId`. Advances the block to the select reviews step.
@@ -243,63 +298,41 @@ const BusinessSearch = ( props ) => {
 	 */
 	const selectBusiness = ( bizId ) => {
 		setYelpBusinessId( bizId );
-		transitionStep();
+		transitionStepNext();
 	};
+
+	// Load businesses for the query passed into this component on render.
+	useEffect( () => fetchBusinessesMatchingQuery(), [ businessName, businessLocation ] );
 
 	return (
 		<Placeholder
 			icon={ <Icon icon={ icon } /> }
-			instructions={ __(
-				'Please enter your business name and where it\'s located:',
-				'coblocks'
-			) }
 			isColumnLayout={ true }
-			label={ __( 'Let\'s find your business!', 'coblocks' ) }
+			label={ __( 'Find your business on Yelp', 'coblocks' ) }
 		>
-
-			<TextControl
-				label="Business Name"
-				onChange={ ( newBizName ) => setBusinessName( newBizName ) }
-				value={ businessName }
-			/>
-
-			<TextControl
-				label="Business Location"
-				onChange={ ( newBizLoc ) => setBusinessLocation( newBizLoc ) }
-				value={ businessLocation }
-			/>
-
-			<Button
-				disabled={ shouldSearchBeDisabled() }
-				isPrimary
-				onClick={ searchForYelpBiz }
-			>
-
-				{ __( 'Search Yelp', 'coblocks' ) }
-				{ dataFetchInProgress && <Spinner /> }
-
-			</Button>
+			<p>{ isFetchingBusinesses ? 'Loading' : businessSearchResults.length } result{ businessSearchResults.length !== 1 && 's' } for <span style={ { fontWeight: 600 } }>{ businessName }, { businessLocation }</span></p>
+			<Button onClick={ transitionStepBack }>Edit Search</Button>
+			{ isFetchingBusinesses && <Spinner /> }
 
 			{ businessSearchResults.length > 0 &&
-				<div>
-					<p>We found these businesses:</p>
-					<ul>
+			<div>
+				<ul>
 
-						{ businessSearchResults.map( ( biz, index ) => (
-							<li key={ index }>
-								<img alt="temporary thumbnail" height={ 32 } src={ biz.thumbnail.key } />
-								<span style={ { fontWeight: 800, paddingLeft: 8 } }>{ biz.title } - </span>
-								<span>{ biz.subtitle }</span>
+					{ businessSearchResults.map( ( biz, index ) => (
+						<li key={ index }>
+							<img alt="temporary thumbnail" height={ 32 } src={ biz.thumbnail.key } />
+							<span style={ { fontWeight: 800, paddingLeft: 8 } }>{ biz.title } - </span>
+							<span>{ biz.subtitle }</span>
 
-								<Button onClick={ () => {
-									selectBusiness( extractBizIdFromURL( biz.redirect_url ) );
-								} } style={ { color: 'red', paddingLeft: 10 } }>SELECT BUSINESS</Button>
-							</li>
-						) ) }
+							<Button onClick={ () => {
+								selectBusiness( extractBizIdFromURL( biz.redirect_url ) );
+							} } style={ { color: 'red', paddingLeft: 10 } }>SELECT BUSINESS</Button>
+						</li>
+					) ) }
 
-					</ul>
+				</ul>
 
-				</div>
+			</div>
 			}
 
 		</Placeholder>
