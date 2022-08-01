@@ -82,7 +82,8 @@ const removeExcessPosts = async ( ids ) => {
  * @param {string} blockName Block name.
  */
 const runE2EPrepareScript = async ( blockName ) => {
-	const npxPrepare = spawn( 'npx', [ 'wp-env', 'run', 'cli', 'post', 'list', `--post_type="${ blockName }_test"`, '--format=ids' ] );
+	const blockNameWithoutCoblocks = blockName.replace( 'coblocks/', '' );
+	const npxPrepare = spawn( 'npx', [ 'wp-env', 'run', 'cli', 'post', 'list', `--post_type="${ blockNameWithoutCoblocks }_test"`, '--format=ids' ] );
 
 	let data = '';
 	for await ( const chunk of npxPrepare.stdout ) {
@@ -111,7 +112,7 @@ const runE2EPrepareScript = async ( blockName ) => {
 const createNewTestPost = async ( blockName ) => {
 	const blockNameWithoutCoblocks = blockName.replace( 'coblocks/', '' );
 	const npxCreate = spawn( `cat ./src/blocks/${ blockNameWithoutCoblocks }/test/${ blockNameWithoutCoblocks }.html | npx`,
-		[ 'wp-env', 'run', 'cli', 'post', 'create', `--post_type="${ blockName }_test"`, '--format=ids', '--post_title="${}"', '-' ],
+		[ 'wp-env', 'run', 'cli', 'post', 'create', `--post_type="${ blockNameWithoutCoblocks }_test"`, '--format=ids', `--post_title="${ blockName }"`, '-' ],
 		{ shell: true } );
 
 	let data = '';
@@ -143,7 +144,7 @@ const updatePostWithContent = async ( postId, blockName ) => {
 	const blockNameWithoutCoblocks = blockName.replace( 'coblocks/', '' );
 	const npxUpdate = spawn(
 		`cat ./src/blocks/${ blockNameWithoutCoblocks }/test/${ blockNameWithoutCoblocks }.html | npx`,
-		[ 'wp-env', 'run', 'cli', 'post', 'update', `${ postId }`, `--post_type="${ blockName }_test"`, `--post_title="${ blockName }"`, '-' ],
+		[ 'wp-env', 'run', 'cli', 'post', 'update', `${ postId }`, `--post_type="${ blockNameWithoutCoblocks }_test"`, `--post_title="${ blockName }"`, '-' ],
 		{ shell: true }	);
 
 	let data = '';
