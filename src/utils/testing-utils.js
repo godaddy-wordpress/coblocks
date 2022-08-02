@@ -73,7 +73,7 @@ const prepareChainFunction = async ( postData, blockName ) => {
 			return;
 		}
 	}
-	// Check for multiple posts with matching custom post type found and just use the first one.
+	// Check for multiple posts with matching cat id found and just use the first one.
 	if ( postId.split( ' ' ).length > 1 ) {
 		const postIdArray = postId.split( ' ' );
 		postId = postIdArray.shift();
@@ -140,7 +140,7 @@ const runE2EPrepareScript = async ( blockName ) => {
 	if ( exitCode ) {
 		throw new Error( `subprocess error exit ${ exitCode }, ${ error }` );
 	}
-	return { postId: data ?? '', taxId: taxonomyId };
+	return { postId: ( ! data ? '' : data ), taxId: taxonomyId };
 };
 
 /**
