@@ -11,7 +11,7 @@ const os = require( 'os' );
 /**
  * Internal dependencies
  */
-const { log, formats } = require( '../../.dev/performance/logger' );
+const { log, formats } = require( './logger' );
 
 /**
  * Utility to run a child script
@@ -34,7 +34,7 @@ function runShellScript( script, cwd, env = {} ) {
 					...env,
 				},
 			},
-			function( error, stdout, stderr ) {
+			function( error, _, stderr ) {
 				if ( error ) {
 					// eslint-disable-next-line no-console
 					console.log( stderr );
@@ -43,7 +43,6 @@ function runShellScript( script, cwd, env = {} ) {
 					resolve( true );
 				}
 			}
-
 		);
 	} );
 }

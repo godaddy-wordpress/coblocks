@@ -7,7 +7,7 @@ const SimpleGit = require( 'simple-git' );
 /**
  * Internal dependencies
  */
-const { getRandomTemporaryPath } = require( '../../src/utils/utils' );
+const { getRandomTemporaryPath } = require( './utils' );
 
 /**
  * Clones a Github repository.
