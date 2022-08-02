@@ -74,7 +74,7 @@ const prepareChainFunction = async ( postData, blockName ) => {
 		}
 	}
 	// Check for multiple posts with matching cat id found and just use the first one.
-	if ( postId.split( ' ' ).length > 1 ) {
+	if ( new String( postId ).split( ' ' ).length > 1 ) {
 		const postIdArray = postId.split( ' ' );
 		postId = postIdArray.shift();
 		// Keep first post ID in array and remove all others.
