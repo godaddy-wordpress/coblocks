@@ -7,6 +7,8 @@ const { spawn } = require( 'child_process' );
  * Internal dependencies
  */
 const { log } = require( '../../.dev/performance/logger' );
+// wpPath is relevant for CICD testing.
+const wpPath = process.env.WPPATH ?? '';
 
 /**
  * Utility used as a primary function for preparation of e2e migration tests.
@@ -91,7 +93,7 @@ const prepareChainFunction = async ( postData, blockName ) => {
  * @param {Array} ids Array of post IDs - should be flattened into string for command.
  */
 const removeExcessPosts = async ( ids ) => {
-	const wpPostRemove = spawn( './vendor/bin/wp', [ 'post', 'delete', ids.join( ' ' ), '--force', process.env.PATH ?? '' ] );
+	const wpPostRemove = spawn( './vendor/bin/wp', [ 'post', 'delete', ids.join( ' ' ), '--force', wpPath ] );
 
 	let data = '';
 	for await ( const chunk of wpPostRemove.stdout ) {
@@ -121,7 +123,7 @@ const runE2EPrepareScript = async ( blockName ) => {
 	const blockNameWithoutCoblocks = blockName.replace( 'coblocks/', '' );
 	const taxonomyId = await handleTaxonomy( blockNameWithoutCoblocks );
 
-	const wpPostList = spawn( './vendor/bin/wp', [ 'post', 'list', '--fields=ID', `--category__in=${ taxonomyId }`, '--format=ids', process.env.PATH ?? '' ] );
+	const wpPostList = spawn( './vendor/bin/wp', [ 'post', 'list', '--fields=ID', `--category__in=${ taxonomyId }`, '--format=ids', wpPath ] );
 
 	let data = '';
 	for await ( const chunk of wpPostList.stdout ) {
@@ -149,7 +151,7 @@ const runE2EPrepareScript = async ( blockName ) => {
  */
 const getTaxonomiesByName = async ( tax ) => {
 	const wpTermGet = spawn( './vendor/bin/wp',
-		[ 'term', 'get', 'category', tax, '--by=slug', `--format=json`, process.env.PATH ?? '' ] );
+		[ 'term', 'get', 'category', tax, '--by=slug', `--format=json`, wpPath ] );
 
 	let data = '';
 	for await ( const chunk of wpTermGet.stdout ) {
@@ -174,7 +176,7 @@ const getTaxonomiesByName = async ( tax ) => {
  */
 const createNewCategory = async ( tax ) => {
 	const wpTermCreate = spawn( './vendor/bin/wp',
-		[ 'term', 'create', 'category', tax, '--porcelain', process.env.PATH ?? '' ] );
+		[ 'term', 'create', 'category', tax, '--porcelain', wpPath ] );
 
 	let data = '';
 	for await ( const chunk of wpTermCreate.stdout ) {
@@ -228,7 +230,7 @@ const handleTaxonomy = async ( blockSlug ) => {
  */
 const createNewTestPost = async ( blockName, taxId ) => {
 	const wpPostCreate = spawn( './vendor/bin/wp',
-		[ 'post', 'create', `--post_category=${ taxId }`, `--post_title="${ blockName }"`, '--porcelain', process.env.PATH ?? '', '-' ],
+		[ 'post', 'create', `--post_category=${ taxId }`, `--post_title="${ blockName }"`, '--porcelain', wpPath, '-' ],
 		{ shell: true } );
 
 	let data = '';
@@ -262,7 +264,7 @@ const updatePostWithContent = async ( postId, blockName, taxId ) => {
 	const blockNameWithoutCoblocks = blockName.replace( 'coblocks/', '' );
 	const wpPostUpdate = spawn(
 		`cat ./src/blocks/${ blockNameWithoutCoblocks }/test/${ blockNameWithoutCoblocks }.html | ./vendor/bin/wp`,
-		[ 'post', 'update', `${ postId }`, `--post_category=${ taxId }`, `--post_title="${ blockName }"`, process.env.PATH ?? '', '-' ],
+		[ 'post', 'update', `${ postId }`, `--post_category=${ taxId }`, `--post_title="${ blockName }"`, wpPath, '-' ],
 		{ shell: true }	);
 
 	let data = '';
