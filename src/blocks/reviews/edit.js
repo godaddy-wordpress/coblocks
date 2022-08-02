@@ -115,6 +115,8 @@ const Edit = ( props ) => {
 		return (
 			<div>
 
+				{ innerBlocks.length === 0 && <span><Spinner /> Loading your reviews...</span> }
+
 				<InnerBlocks
 					allowedBlocks={ ALLOWED_BLOCKS }
 					renderAppender={ () => <CustomAppender onClick={ insertCustomReview } /> }
@@ -204,15 +206,17 @@ const BusinessSearch = ( props ) => {
 				value={ businessLocation }
 			/>
 
-			<Button
-				disabled={ shouldSearchBeDisabled() }
-				isPrimary
-				onClick={ transitionStepNext }
-			>
+			<div className="search_button">
+				<Button
+					disabled={ shouldSearchBeDisabled() }
+					isPrimary
+					onClick={ transitionStepNext }
+				>
 
-				{ __( 'Search Yelp', 'coblocks' ) }
+					{ __( 'Search Yelp', 'coblocks' ) }
 
-			</Button>
+				</Button>
+			</div>
 
 		</Placeholder>
 	);
@@ -310,28 +314,32 @@ const SelectBusiness = ( props ) => {
 			isColumnLayout={ true }
 			label={ __( 'Find your business on Yelp', 'coblocks' ) }
 		>
-			<p>{ isFetchingBusinesses ? 'Loading' : businessSearchResults.length } result{ businessSearchResults.length !== 1 && 's' } for <span style={ { fontWeight: 600 } }>{ businessName }, { businessLocation }</span></p>
-			<Button onClick={ transitionStepBack }>Edit Search</Button>
+			<p>{ isFetchingBusinesses ? 'Loading' : businessSearchResults.length } result{ businessSearchResults.length !== 1 && 's' } for <span style={ { fontWeight: 600 } }>{ businessName }, { businessLocation }</span> <Button className="edit_search_button" onClick={ transitionStepBack }>Edit Search</Button></p>
+
 			{ isFetchingBusinesses && <Spinner /> }
 
 			{ businessSearchResults.length > 0 &&
-			<div>
-				<ul>
+			<div className="components-business-selector__container">
+				{ businessSearchResults.map( ( biz, index ) => (
+					<div key={ index }>
 
-					{ businessSearchResults.map( ( biz, index ) => (
-						<li key={ index }>
-							<img alt="temporary thumbnail" height={ 32 } src={ biz.thumbnail.key } />
-							<span style={ { fontWeight: 800, paddingLeft: 8 } }>{ biz.title } - </span>
-							<span>{ biz.subtitle }</span>
+						<div className="components-business-selector__business_item">
+							<div className="thumbnail_image">
+								<img alt="business thumbnail" height={ 32 } src={ biz.thumbnail.key } />
+							</div>
+							<div className="information_box">
+								<p className="business_title">{ biz.title }</p>
+								<p className="business_location">{ biz.subtitle }</p>
+								<Button isSecondary onClick={ () => {
+									selectBusiness( extractBizIdFromURL( biz.redirect_url ) );
+								} }>Select</Button>
 
-							<Button onClick={ () => {
-								selectBusiness( extractBizIdFromURL( biz.redirect_url ) );
-							} } style={ { color: 'red', paddingLeft: 10 } }>SELECT BUSINESS</Button>
-						</li>
-					) ) }
+								<hr />
+							</div>
 
-				</ul>
-
+						</div>
+					</div>
+				) ) }
 			</div>
 			}
 
@@ -438,8 +446,8 @@ const SelectReviews = ( props ) => {
 				}
 
 				<ButtonGroup>
-					<Button disabled={ paginatePageNumber === 0 } isPrimary onClick={ paginateBackward }>Pag Back</Button>
-					<Button disabled={ paginatedBusinessReviews.length === 0 } isPrimary onClick={ paginateForward }>Pag Next</Button>
+					<Button disabled={ paginatePageNumber === 0 } isPrimary onClick={ paginateBackward }>Back</Button>
+					<Button disabled={ paginatedBusinessReviews.length === 0 } isPrimary onClick={ paginateForward }>Next</Button>
 				</ButtonGroup>
 
 				<Button isPrimary onClick={ transitionStep }>Save Reviews</Button>

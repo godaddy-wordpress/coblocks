@@ -229,12 +229,15 @@ class Coblocks_Yelp_Proxy {
 
 		$image_url = $request->get_param( 'src' );
 
-		$upload_url = media_sideload_image( $image_url, 0, null, 'src' );
+		$upload_id = media_sideload_image( $image_url, 0, null, 'id' );
 
 		// check for upload error.
-		if ( is_wp_error( $upload_url ) ) {
+		if ( is_wp_error( $upload_id ) ) {
 			return new \WP_Error( 'upload_error', 'Error saving the provided image to media library.', array( 'status' => 500 ) );
 		}
+
+		// get file url by attachment id.
+		$upload_url = wp_get_attachment_url( $upload_id );
 
 		return rest_ensure_response(
 			new \WP_REST_Response(

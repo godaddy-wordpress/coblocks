@@ -13,6 +13,7 @@ import metadata from './block.json';
  * WordPress dependencies.
  */
 import { Icon } from '@wordpress/components';
+import { InnerBlocks } from '@wordpress/block-editor';
 import { __, _x } from '@wordpress/i18n';
 
 /**
@@ -26,7 +27,7 @@ const settings = {
 	edit,
 	icon: <Icon icon={ icon } />,
 	parent: [ 'coblocks/reviews' ],
-	save: () => <p>not yet implemented :p</p>,
+	save: () => <InnerBlocks.Content />,
 	supports: {
 		html: false,
 		reusable: false,
