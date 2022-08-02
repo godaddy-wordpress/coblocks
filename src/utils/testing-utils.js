@@ -91,7 +91,7 @@ const prepareChainFunction = async ( postData, blockName ) => {
  * @param {Array} ids Array of post IDs - should be flattened into string for command.
  */
 const removeExcessPosts = async ( ids ) => {
-	const wpPostRemove = spawn( './vendor/bin/wp', [ 'post', 'delete', ids.join( ' ' ), '--force' ] );
+	const wpPostRemove = spawn( './vendor/bin/wp', [ 'post', 'delete', ids.join( ' ' ), '--force', process.env.PATH ?? '' ] );
 
 	let data = '';
 	for await ( const chunk of wpPostRemove.stdout ) {
@@ -121,7 +121,7 @@ const runE2EPrepareScript = async ( blockName ) => {
 	const blockNameWithoutCoblocks = blockName.replace( 'coblocks/', '' );
 	const taxonomyId = await handleTaxonomy( blockNameWithoutCoblocks );
 
-	const wpPostList = spawn( './vendor/bin/wp', [ 'post', 'list', '--fields=ID', `--category__in=${ taxonomyId }`, '--format=ids' ] );
+	const wpPostList = spawn( './vendor/bin/wp', [ 'post', 'list', '--fields=ID', `--category__in=${ taxonomyId }`, '--format=ids', process.env.PATH ?? '' ] );
 
 	let data = '';
 	for await ( const chunk of wpPostList.stdout ) {
@@ -149,7 +149,7 @@ const runE2EPrepareScript = async ( blockName ) => {
  */
 const getTaxonomiesByName = async ( tax ) => {
 	const wpTermGet = spawn( './vendor/bin/wp',
-		[ 'term', 'get', 'category', tax, '--by=slug', `--format=json` ] );
+		[ 'term', 'get', 'category', tax, '--by=slug', `--format=json`, process.env.PATH ?? '' ] );
 
 	let data = '';
 	for await ( const chunk of wpTermGet.stdout ) {
@@ -174,7 +174,7 @@ const getTaxonomiesByName = async ( tax ) => {
  */
 const createNewCategory = async ( tax ) => {
 	const wpTermCreate = spawn( './vendor/bin/wp',
-		[ 'term', 'create', 'category', tax, '--porcelain' ] );
+		[ 'term', 'create', 'category', tax, '--porcelain', process.env.PATH ?? '' ] );
 
 	let data = '';
 	for await ( const chunk of wpTermCreate.stdout ) {
@@ -228,7 +228,7 @@ const handleTaxonomy = async ( blockSlug ) => {
  */
 const createNewTestPost = async ( blockName, taxId ) => {
 	const wpPostCreate = spawn( './vendor/bin/wp',
-		[ 'post', 'create', `--post_category=${ taxId }`, `--post_title="${ blockName }"`, '--porcelain', '-' ],
+		[ 'post', 'create', `--post_category=${ taxId }`, `--post_title="${ blockName }"`, '--porcelain', process.env.PATH ?? '', '-' ],
 		{ shell: true } );
 
 	let data = '';
@@ -262,7 +262,7 @@ const updatePostWithContent = async ( postId, blockName, taxId ) => {
 	const blockNameWithoutCoblocks = blockName.replace( 'coblocks/', '' );
 	const wpPostUpdate = spawn(
 		`cat ./src/blocks/${ blockNameWithoutCoblocks }/test/${ blockNameWithoutCoblocks }.html | ./vendor/bin/wp`,
-		[ 'post', 'update', `${ postId }`, `--post_category=${ taxId }`, `--post_title="${ blockName }"`, '-' ],
+		[ 'post', 'update', `${ postId }`, `--post_category=${ taxId }`, `--post_title="${ blockName }"`, process.env.PATH ?? '', '-' ],
 		{ shell: true }	);
 
 	let data = '';
