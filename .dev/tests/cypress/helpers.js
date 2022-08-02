@@ -229,6 +229,13 @@ export function setBlockStyle( style ) {
 }
 
 /**
+ * Open the block navigator.
+ */
+export function openBlockNavigator( ) {
+	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle' ).click();
+}
+
+/**
  * Select the block using the Block navigation component.
  * Input parameter is the name of the block to select.
  * Allows chaining.
