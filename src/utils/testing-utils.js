@@ -91,18 +91,18 @@ const prepareChainFunction = async ( postData, blockName ) => {
  * @param {Array} ids Array of post IDs - should be flattened into string for command.
  */
 const removeExcessPosts = async ( ids ) => {
-	const npxRemove = spawn( 'npx', [ 'wp-env', 'run', 'cli', 'post', 'delete', ids.join( ' ' ), '--force' ] );
+	const wpPostRemove = spawn( './vendor/bin/wp', [ 'post', 'delete', ids.join( ' ' ), '--force' ] );
 
 	let data = '';
-	for await ( const chunk of npxRemove.stdout ) {
+	for await ( const chunk of wpPostRemove.stdout ) {
 		data += chunk;
 	}
 	let error = '';
-	for await ( const chunk of npxRemove.stderr ) {
+	for await ( const chunk of wpPostRemove.stderr ) {
 		error += chunk;
 	}
 	const exitCode = await new Promise( ( resolve ) => {
-		npxRemove.on( 'close', resolve );
+		wpPostRemove.on( 'close', resolve );
 	} );
 
 	if ( exitCode ) {
@@ -121,18 +121,18 @@ const runE2EPrepareScript = async ( blockName ) => {
 	const blockNameWithoutCoblocks = blockName.replace( 'coblocks/', '' );
 	const taxonomyId = await handleTaxonomy( blockNameWithoutCoblocks );
 
-	const npxPrepare = spawn( 'npx', [ 'wp-env', 'run', 'cli', 'post', 'list', '--fields=ID', `--category__in=${ taxonomyId }`, '--format=ids' ] );
+	const wpPostList = spawn( './vendor/bin/wp', [ 'post', 'list', '--fields=ID', `--category__in=${ taxonomyId }`, '--format=ids' ] );
 
 	let data = '';
-	for await ( const chunk of npxPrepare.stdout ) {
+	for await ( const chunk of wpPostList.stdout ) {
 		data += chunk;
 	}
 	let error = '';
-	for await ( const chunk of npxPrepare.stderr ) {
+	for await ( const chunk of wpPostList.stderr ) {
 		error += chunk;
 	}
 	const exitCode = await new Promise( ( resolve ) => {
-		npxPrepare.on( 'close', resolve );
+		wpPostList.on( 'close', resolve );
 	} );
 
 	if ( exitCode ) {
@@ -148,16 +148,16 @@ const runE2EPrepareScript = async ( blockName ) => {
  * @param {string} tax Matching string for block relevant category.
  */
 const getTaxonomiesByName = async ( tax ) => {
-	const npxTermGet = spawn( 'npx',
-		[ 'wp-env', 'run', 'cli', 'term', 'get', 'category', tax, '--by=slug', `--format=json` ] );
+	const wpTermGet = spawn( './vendor/bin/wp',
+		[ 'term', 'get', 'category', tax, '--by=slug', `--format=json` ] );
 
 	let data = '';
-	for await ( const chunk of npxTermGet.stdout ) {
+	for await ( const chunk of wpTermGet.stdout ) {
 		data += chunk;
 	}
 
 	const exitCode = await new Promise( ( resolve ) => {
-		npxTermGet.on( 'close', resolve );
+		wpTermGet.on( 'close', resolve );
 	} );
 
 	if ( exitCode ) {
@@ -173,19 +173,19 @@ const getTaxonomiesByName = async ( tax ) => {
  * @param {string} tax Matching string for block relevant category.
  */
 const createNewCategory = async ( tax ) => {
-	const npxTermGet = spawn( 'npx',
-		[ 'wp-env', 'run', 'cli', 'term', 'create', 'category', tax, '--porcelain' ] );
+	const wpTermCreate = spawn( './vendor/bin/wp',
+		[ 'term', 'create', 'category', tax, '--porcelain' ] );
 
 	let data = '';
-	for await ( const chunk of npxTermGet.stdout ) {
+	for await ( const chunk of wpTermCreate.stdout ) {
 		data += chunk;
 	}
 	let error = '';
-	for await ( const chunk of npxTermGet.stderr ) {
+	for await ( const chunk of wpTermCreate.stderr ) {
 		error += chunk;
 	}
 	const exitCode = await new Promise( ( resolve ) => {
-		npxTermGet.on( 'close', resolve );
+		wpTermCreate.on( 'close', resolve );
 	} );
 
 	if ( exitCode ) {
@@ -227,20 +227,20 @@ const handleTaxonomy = async ( blockSlug ) => {
  * @param {string} taxId     Taxonomy ID.
  */
 const createNewTestPost = async ( blockName, taxId ) => {
-	const npxCreate = spawn( 'npx',
-		[ 'wp-env', 'run', 'cli', 'post', 'create', `--post_category=${ taxId }`, `--post_title="${ blockName }"`, '--porcelain', '-' ],
+	const wpPostCreate = spawn( './vendor/bin/wp',
+		[ 'post', 'create', `--post_category=${ taxId }`, `--post_title="${ blockName }"`, '--porcelain', '-' ],
 		{ shell: true } );
 
 	let data = '';
-	for await ( const chunk of npxCreate.stdout ) {
+	for await ( const chunk of wpPostCreate.stdout ) {
 		data += chunk;
 	}
 	let error = '';
-	for await ( const chunk of npxCreate.stderr ) {
+	for await ( const chunk of wpPostCreate.stderr ) {
 		error += chunk;
 	}
 	const exitCode = await new Promise( ( resolve ) => {
-		npxCreate.on( 'close', resolve );
+		wpPostCreate.on( 'close', resolve );
 	} );
 
 	if ( exitCode ) {
@@ -260,21 +260,21 @@ const createNewTestPost = async ( blockName, taxId ) => {
  */
 const updatePostWithContent = async ( postId, blockName, taxId ) => {
 	const blockNameWithoutCoblocks = blockName.replace( 'coblocks/', '' );
-	const npxUpdate = spawn(
-		`cat ./src/blocks/${ blockNameWithoutCoblocks }/test/${ blockNameWithoutCoblocks }.html | npx`,
-		[ 'wp-env', 'run', 'cli', 'post', 'update', `${ postId }`, `--post_category=${ taxId }`, `--post_title="${ blockName }"`, '-' ],
+	const wpPostUpdate = spawn(
+		`cat ./src/blocks/${ blockNameWithoutCoblocks }/test/${ blockNameWithoutCoblocks }.html | ./vendor/bin/wp`,
+		[ 'post', 'update', `${ postId }`, `--post_category=${ taxId }`, `--post_title="${ blockName }"`, '-' ],
 		{ shell: true }	);
 
 	let data = '';
-	for await ( const chunk of npxUpdate.stdout ) {
+	for await ( const chunk of wpPostUpdate.stdout ) {
 		data += chunk;
 	}
 	let error = '';
-	for await ( const chunk of npxUpdate.stderr ) {
+	for await ( const chunk of wpPostUpdate.stderr ) {
 		error += chunk;
 	}
 	const exitCode = await new Promise( ( resolve ) => {
-		npxUpdate.on( 'close', resolve );
+		wpPostUpdate.on( 'close', resolve );
 	} );
 
 	if ( exitCode ) {
