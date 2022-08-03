@@ -8,14 +8,7 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 	private $instance;
 
 	public function set_up() {
-		/** @var \CoBlocks_Block_Migration&&\PHPUnit_Framework_MockObject_MockObject */
-		$this->instance = $this->getMockForAbstractClass( CoBlocks_Block_Migration::class );
-
-		$this->instance->method( 'block_name' )
-			->willReturn( 'coblocks/test-block' );
-
-		$this->instance->method( 'migrate_attributes' )
-			->willReturn( array() );
+		$this->instance = new Block_Migration_Mock;
 	}
 
 	public function tear_down() {
@@ -261,5 +254,18 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 		) );
 
 		$this->assertInstanceOf( DOMElement::class, $result );
+	}
+}
+
+class Block_Migration_Mock extends CoBlocks_Block_Migration {
+
+	public static function block_name()
+	{
+		return 'coblocks/test-block';
+	}
+
+	protected function migrate_attributes()
+	{
+		return array();
 	}
 }
