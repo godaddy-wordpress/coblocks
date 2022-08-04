@@ -426,24 +426,48 @@ const SelectReviews = ( props ) => {
 				isColumnLayout={ true }
 				label={ __( 'Select Reviews', 'coblocks' ) }
 			>
+				{ paginatedBusinessReviews[ paginatePageNumber ] === undefined && <div className="component-is-loading-reviews">
+					<p className="loader-status-text" >Loading Reviews</p>
+					<Spinner />
+				</div> }
 
-				{ paginatedBusinessReviews[ paginatePageNumber ] === undefined && <Spinner /> }
+				<div className="component-loaded-reviews">
+					{
+						paginatedBusinessReviews[ paginatePageNumber ] !== undefined && paginatedBusinessReviews[ paginatePageNumber ].map( ( review, index ) => {
+							return (
+								<div key={ index }>
 
-				{
-					paginatedBusinessReviews[ paginatePageNumber ] !== undefined && paginatedBusinessReviews[ paginatePageNumber ].map( ( review, index ) => {
-						return (
-							<div key={ index } style={ { border: '1px solid black', padding: 5 } }>
-								<img alt="user avatar" src={ review.user.src } />
-								<p><span style={ { fontWeight: 700 } }>Author: </span>{ review.user.markupDisplayName }</p>
-								<p><span style={ { fontWeight: 700 } }>On: </span>{ review.localizedDate }</p>
-								<p><span style={ { fontWeight: 700 } }>Rating: </span>{ review.rating }/5</p>
-								<p><span style={ { fontWeight: 700 } }>Comment: </span><span dangerouslySetInnerHTML={ { __html: review.comment.text } }></span></p>
-								<p><a href={ 'https://www.yelp.com/biz/' + review.business.alias + '?hrid=' + review.id }>See on Yelp.com</a></p>
-								<p><input checked={ review.id in selectedReviews } onChange={ () => onReviewToggle( review ) } type="checkbox" />Show</p>
-							</div>
-						);
-					} )
-				}
+									<div className="review">
+										<div className="left-panel">
+											<input checked={ review.id in selectedReviews } onChange={ () => onReviewToggle( review ) } type="checkbox" />
+											<img alt="user avatar" src={ review.user.src } />
+										</div>
+
+										<div className="content">
+											<p className="comment" dangerouslySetInnerHTML={ { __html: review.comment.text } }></p>
+											<div className="meta">
+												<div className="meta-group">
+													<p>{ review.user.markupDisplayName }</p>
+													<p>{ review.localizedDate }</p>
+												</div>
+												<div className="meta-group">
+													<p>{ review.rating } / 5</p>
+													<p><a href={ 'https://www.yelp.com/biz/' + review.business.alias + '?hrid=' + review.id }>See on Yelp.com</a></p>
+												</div>
+
+											</div>
+										</div>
+
+									</div>
+
+									<hr />
+
+								</div>
+
+							);
+						} )
+					}
+				</div>
 
 				<ButtonGroup>
 					<Button disabled={ paginatePageNumber === 0 } isPrimary onClick={ paginateBackward }>Back</Button>

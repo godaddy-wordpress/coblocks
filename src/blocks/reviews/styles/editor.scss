@@ -34,4 +34,55 @@
 		}
 	}
 
+	.component-is-loading-reviews {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		padding: 24px;
+
+		.loader-status-text {
+			font-size: 18;
+			font-weight: 600;
+			margin: 0;
+		}
+	}
+
+	.component-loaded-reviews {
+		.review {
+			background-color: #dcdcdc;
+			column-gap: 24px;
+			display: flex;
+			flex-direction: row;
+			padding: 8px;
+
+			.left-panel {
+				align-items: center;
+				display: flex;
+				flex-direction: row;
+
+				img {
+					height: 128px;
+					max-width: 128px;
+				}
+
+			}
+
+			.content {
+				.comment {
+					font-size: 14px;
+					max-width: 200ch;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+				.meta {
+					.meta-group {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+
 }
