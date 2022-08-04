@@ -26,7 +26,7 @@ const wpPath = process.env.WPPATH ?? '';
  * }
  * ```
  *
- * Within the cypress.config.js file we need to modify setupNodeEvents anonyomus function expression to include the block name helper.
+ * Within the cypress.config.js file we need to modify setupNodeEvents anonymous function expression to include the block name helper.
  *
  * Example of cypress.config.js file modification:
  * ```

@@ -5,7 +5,7 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Posts Block', function() {
 	/**
-	 * Test that we can add an Posts block that migrates into the core/query block or core/rss block respectively.
+	 * Test that we can add a Posts block that migrates into the core/query block or core/rss block respectively.
 	 */
 	it( 'Test posts block saves with empty values.', function() {
 		const config = Cypress.config();
