@@ -1,0 +1,295 @@
+/**
+ * External dependencies
+ */
+const { spawn } = require( 'child_process' );
+
+/**
+ * Internal dependencies
+ */
+const { log } = require( '../../.dev/performance/logger' );
+// wpPath is relevant for CICD testing.
+const wpPath = process.env.WPPATH ?? '';
+
+/**
+ * Utility used as a primary function for preparation of e2e migration tests.
+ * This function should be used in conjunction with the Block name to properly setup helpers.
+ *
+ * Example helper configuration for posts block:
+ * ```
+ * const { setupPostsForE2E } = require( '../../../utils/testing-utils' );
+ * const { name } = require('../block.json');
+ *
+ * const postsPrepare = () => ( async () => await setupPostsForE2E( name ) )();
+ *
+ * module.exports = {
+ *     postsPrepare
+ * }
+ * ```
+ *
+ * Within the cypress.config.js file we need to modify setupNodeEvents anonymous function expression to include the block name helper.
+ *
+ * Example of cypress.config.js file modification:
+ * ```
+ * 		setupNodeEvents( on, config ) {
+ * 			...
+ * 			return ( async () => {
+ * 				config.migrationPostList = {
+ * 					posts: await postsPrepare(),
+ * 				};
+ * 				return config;
+ * 			} )();
+ * 		},
+ * ```
+ *
+ * @function setupPostsForE2E Primary helper to setup e2e tests for migrations.
+ * @typedef {NodeJS.ProcessEnv} Env
+ * @param {string} blockName Block name.
+ */
+const setupPostsForE2E = async ( blockName ) => {
+	return await runE2EPrepareScript( blockName ).then(
+		async ( data ) => await prepareChainFunction( data, blockName ),
+		( err ) => log( 'async error:\n' + err ),
+	);
+};
+
+/**
+ * Utility used as a followup to runE2EPrepareScript where we can upload the fixtures to the post.
+ *
+ * @typedef {NodeJS.ProcessEnv} Env
+ * @param {Object} postData  object containing post ID and taxonomy ID.
+ * @param {string} blockName Block name.
+ */
+const prepareChainFunction = async ( postData, blockName ) => {
+	let { postId, taxId } = postData;
+	if ( postId.trim() === '' ) {
+		// Wait for new post ID.
+		postId = await createNewTestPost( blockName, taxId );
+		// Then parse the integer.
+		postId = Number.parseInt( postId ) ?? false;
+
+		// No post ID found so bail.
+		if ( ! postId ) {
+			log( 'unable to create new site by cli' );
+			return;
+		}
+	}
+	// Check for multiple posts with matching cat id found and just use the first one.
+	if ( new String( postId ).split( ' ' ).length > 1 ) {
+		const postIdArray = postId.split( ' ' );
+		postId = postIdArray.shift();
+		// Keep first post ID in array and remove all others.
+		await removeExcessPosts( postIdArray, blockName );
+	}
+
+	// Post exists - update it.
+	await updatePostWithContent( postId, blockName, taxId );
+	return postId;
+};
+
+/**
+ * Utility used to remove excess posts.
+ *
+ * @typedef {NodeJS.ProcessEnv} Env
+ * @param {Array} ids Array of post IDs - should be flattened into string for command.
+ */
+const removeExcessPosts = async ( ids ) => {
+	const wpPostRemove = spawn( './vendor/bin/wp', [ 'post', 'delete', ids.join( ' ' ), '--force', wpPath ] );
+
+	let data = '';
+	for await ( const chunk of wpPostRemove.stdout ) {
+		data += chunk;
+	}
+	let error = '';
+	for await ( const chunk of wpPostRemove.stderr ) {
+		error += chunk;
+	}
+	const exitCode = await new Promise( ( resolve ) => {
+		wpPostRemove.on( 'close', resolve );
+	} );
+
+	if ( exitCode ) {
+		throw new Error( `subprocess error exit ${ exitCode }, ${ error }` );
+	}
+	return data;
+};
+
+/**
+ * Utility used to prepare e2e tests for migrations.
+ *
+ * @typedef {NodeJS.ProcessEnv} Env
+ * @param {string} blockName Block name.
+ */
+const runE2EPrepareScript = async ( blockName ) => {
+	const blockNameWithoutCoblocks = blockName.replace( 'coblocks/', '' );
+	const taxonomyId = await handleTaxonomy( blockNameWithoutCoblocks );
+
+	const wpPostList = spawn( './vendor/bin/wp', [ 'post', 'list', '--fields=ID', `--category__in=${ taxonomyId }`, '--format=ids', wpPath ] );
+
+	let data = '';
+	for await ( const chunk of wpPostList.stdout ) {
+		data += chunk;
+	}
+	let error = '';
+	for await ( const chunk of wpPostList.stderr ) {
+		error += chunk;
+	}
+	const exitCode = await new Promise( ( resolve ) => {
+		wpPostList.on( 'close', resolve );
+	} );
+
+	if ( exitCode ) {
+		throw new Error( `subprocess error exit ${ exitCode }, ${ error }` );
+	}
+	return { postId: ( ! data ? '' : data ), taxId: taxonomyId };
+};
+
+/**
+ * Utility used to fetch existing category taxonomies for e2e testing.
+ *
+ * @typedef {NodeJS.ProcessEnv} Env
+ * @param {string} tax Matching string for block relevant category.
+ */
+const getTaxonomiesByName = async ( tax ) => {
+	const wpTermGet = spawn( './vendor/bin/wp',
+		[ 'term', 'get', 'category', tax, '--by=slug', `--format=json`, wpPath ] );
+
+	let data = '';
+	for await ( const chunk of wpTermGet.stdout ) {
+		data += chunk;
+	}
+
+	const exitCode = await new Promise( ( resolve ) => {
+		wpTermGet.on( 'close', resolve );
+	} );
+
+	if ( exitCode ) {
+		return false;
+	}
+	return data;
+};
+
+/**
+ * Utility used to create new category taxonomies for e2e testing.
+ *
+ * @typedef {NodeJS.ProcessEnv} Env
+ * @param {string} tax Matching string for block relevant category.
+ */
+const createNewCategory = async ( tax ) => {
+	const wpTermCreate = spawn( './vendor/bin/wp',
+		[ 'term', 'create', 'category', tax, '--porcelain', wpPath ] );
+
+	let data = '';
+	for await ( const chunk of wpTermCreate.stdout ) {
+		data += chunk;
+	}
+	let error = '';
+	for await ( const chunk of wpTermCreate.stderr ) {
+		error += chunk;
+	}
+	const exitCode = await new Promise( ( resolve ) => {
+		wpTermCreate.on( 'close', resolve );
+	} );
+
+	if ( exitCode ) {
+		throw new Error( `subprocess error exit ${ exitCode }, ${ error }` );
+	}
+	return data;
+};
+
+/**
+ * Utility used to setup category taxonomies for e2e testing.
+ *
+ * @typedef {NodeJS.ProcessEnv} Env
+ * @param {string} blockSlug Block name with plugin name removed.
+ */
+const handleTaxonomy = async ( blockSlug ) => {
+	// Is there an existing matching category taxonomy?
+	const matchingTaxonomy = `${ blockSlug }_test`;
+
+	let taxId = await getTaxonomiesByName( matchingTaxonomy );
+	if ( ! taxId ) {
+		// Taxonomy does not exist - lets create it before we create posts.
+		taxId = Number.parseInt( await createNewCategory( matchingTaxonomy ) );
+	}
+
+	if ( ! Number.isInteger( taxId ) ) {
+		// Existing taxonomies come in with JSON response.
+		taxId = JSON.parse( taxId ).term_id;
+	}
+
+	// Return valid taxonomy ID equivalent to matchingTaxonomy.
+	return taxId;
+};
+
+/**
+ * Utility used to create new posts for  e2e.
+ *
+ * @typedef {NodeJS.ProcessEnv} Env
+ * @param {string} blockName Block name.
+ * @param {string} taxId     Taxonomy ID.
+ */
+const createNewTestPost = async ( blockName, taxId ) => {
+	const wpPostCreate = spawn( './vendor/bin/wp',
+		[ 'post', 'create', `--post_category=${ taxId }`, `--post_title="${ blockName }"`, '--porcelain', wpPath, '-' ],
+		{ shell: true } );
+
+	let data = '';
+	for await ( const chunk of wpPostCreate.stdout ) {
+		data += chunk;
+	}
+	let error = '';
+	for await ( const chunk of wpPostCreate.stderr ) {
+		error += chunk;
+	}
+	const exitCode = await new Promise( ( resolve ) => {
+		wpPostCreate.on( 'close', resolve );
+	} );
+
+	if ( exitCode ) {
+		throw new Error( `subprocess error exit ${ exitCode }, ${ error }` );
+	}
+	return data;
+};
+
+/**
+ * Utility used to populate e2e test posts with fixtures.
+ *
+ * @typedef {NodeJS.ProcessEnv} Env
+ * @param {string} postId    The post ID.
+ * @param {string} blockName Block name.
+ * @param {string} taxId     Taxonomy ID.
+ *
+ */
+const updatePostWithContent = async ( postId, blockName, taxId ) => {
+	const blockNameWithoutCoblocks = blockName.replace( 'coblocks/', '' );
+	const wpPostUpdate = spawn(
+		`cat ./src/blocks/${ blockNameWithoutCoblocks }/test/${ blockNameWithoutCoblocks }.html | ./vendor/bin/wp`,
+		[ 'post', 'update', `${ postId }`, `--post_category=${ taxId }`, `--post_title="${ blockName }"`, wpPath, '-' ],
+		{ shell: true }	);
+
+	let data = '';
+	for await ( const chunk of wpPostUpdate.stdout ) {
+		data += chunk;
+	}
+	let error = '';
+	for await ( const chunk of wpPostUpdate.stderr ) {
+		error += chunk;
+	}
+	const exitCode = await new Promise( ( resolve ) => {
+		wpPostUpdate.on( 'close', resolve );
+	} );
+
+	if ( exitCode ) {
+		throw new Error( `subprocess error exit ${ exitCode }, ${ error }` );
+	}
+	return data;
+};
+
+module.exports = {
+	createNewTestPost,
+	prepareChainFunction,
+	removeExcessPosts,
+	runE2EPrepareScript,
+	setupPostsForE2E,
+	updatePostWithContent,
+};

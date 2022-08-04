@@ -405,7 +405,7 @@ commands:
             touch cypress.env.json
             echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
             ./node_modules/.bin/cypress verify
-            ./node_modules/.bin/cypress run --config integrationFolder=./ --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>-wp-<< parameters.wpversion >> --headed
+            ./node_modules/.bin/cypress run --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>-wp-<< parameters.wpversion >> --headed
 
   setup_perf_tests:
     steps:

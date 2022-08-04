@@ -124,7 +124,7 @@
 		"commander": "^8.3.0",
 		"copy-webpack-plugin": "^10.2.0",
 		"counterup2": "^2.0.2",
-		"cypress": "^9.5.1",
+		"cypress": "10.3.1",
 		"cypress-log-to-output": "1.1.2",
 		"email-validator": "^2.0.4",
 		"enzyme": "^3.11.0",
