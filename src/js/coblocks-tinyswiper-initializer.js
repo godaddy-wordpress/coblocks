@@ -25,6 +25,18 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 					nextActiveThumbnail.classList.add( 'is-active' );
 				}
 			}
+
+			const currentActiveImage = currentEventsBlock.querySelector( `.swiper-slide[data-slider="${ activeIndex }"] .coblocks-gallery--item` );
+
+			if ( currentActiveImage ) {
+				currentActiveImage.classList.remove( 'is-selected' );
+
+				const nextActiveImage = currentEventsBlock.querySelector( `.swiper-slide[data-slider="${ newIndex }"] .coblocks-gallery--item` );
+
+				if ( nextActiveImage ) {
+					nextActiveImage.classList.add( 'is-selected' );
+				}
+			}
 		};
 
 		const handleThumbnailClick = ( newIndex ) => {
@@ -146,6 +158,12 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 
 						swiper?.slideTo( swiper.state.index + 1 );
 					}, parsedSwiperOptions.autoPlaySpeed );
+				}
+
+				let firstImage = currentEventsBlock.querySelector( `.swiper-slide[data-slider="0"] .coblocks-gallery--item` );
+
+				if ( firstImage ) {
+					firstImage.classList.add( 'is-selected' );
 				}
 
 				// register the swipe callback
