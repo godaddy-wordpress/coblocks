@@ -439,7 +439,7 @@ const SelectReviews = ( props ) => {
 
 									<div className="review">
 										<div className="left-panel">
-											<input checked={ review.id in selectedReviews } onChange={ () => onReviewToggle( review ) } type="checkbox" />
+											<input className="review-selector-checkbox" checked={ review.id in selectedReviews } onChange={ () => onReviewToggle( review ) } type="checkbox" />
 											<img alt="user avatar" src={ review.user.src } />
 										</div>
 
@@ -474,7 +474,7 @@ const SelectReviews = ( props ) => {
 					<Button disabled={ paginatedBusinessReviews.length === 0 } isPrimary onClick={ paginateForward }>Next</Button>
 				</ButtonGroup>
 
-				<Button isPrimary onClick={ transitionStep }>Save Reviews</Button>
+				<Button className="save-reviews-action" isPrimary onClick={ transitionStep }>Save Reviews</Button>
 			</Placeholder>
 
 		</div>
