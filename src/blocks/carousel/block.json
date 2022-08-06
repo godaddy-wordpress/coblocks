@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "coblocks/carousel",
+	"attributes": {
+		"align": {
+			"type": "string"
+		}
+	},
+	"textdomain": "coblocks",
+	"title": "Carousel",
+	"supports": {
+		"align": [ "wide", "full" ],
+		"alignWide": true
+	}
+}

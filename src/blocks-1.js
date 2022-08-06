@@ -16,7 +16,8 @@ import * as accordionItem from './blocks/accordion/accordion-item';
 import * as alert from './blocks/alert';
 import * as author from './blocks/author';
 import * as buttons from './blocks/buttons';
-import * as carousel from './blocks/gallery-carousel';
+import * as carousel from './blocks/carousel';
+import * as galleryCarousel from './blocks/gallery-carousel';
 
 /**
  * Function to register blocks provided by CoBlocks.
@@ -27,5 +28,6 @@ import * as carousel from './blocks/gallery-carousel';
 	alert,
 	author,
 	buttons,
+	galleryCarousel,
 	carousel,
 ].forEach( registerBlock );
