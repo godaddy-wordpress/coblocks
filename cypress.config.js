@@ -1,6 +1,6 @@
 const { defineConfig } = require( 'cypress' );
 const { postsPrepare } = require( './src/blocks/posts/test/posts-prepare' );
-const { highlightPrepare } = require( './src/blocks/posts/test/posts-prepare' );
+const { highlightPrepare } = require( './src/blocks/highlight/test/highlight-prepare' );
 
 module.exports = defineConfig( {
 	e2e: {
