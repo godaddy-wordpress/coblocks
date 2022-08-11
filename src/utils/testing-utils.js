@@ -9,6 +9,7 @@ const { spawn } = require( 'child_process' );
 const { log } = require( '../../.dev/performance/logger' );
 // wpPath is relevant for CICD testing.
 const wpPath = process.env.WPPATH ?? '';
+const cliBinary = !! wpPath ? './vendor/bin/wp' : 'npx wp-env run cli';
 
 /**
  * Utility used as a primary function for preparation of e2e migration tests.
@@ -93,7 +94,7 @@ const prepareChainFunction = async ( postData, blockName ) => {
  * @param {Array} ids Array of post IDs - should be flattened into string for command.
  */
 const removeExcessPosts = async ( ids ) => {
-	const wpPostRemove = spawn( './vendor/bin/wp', [ 'post', 'delete', ids.join( ' ' ), '--force', wpPath ] );
+	const wpPostRemove = spawn( cliBinary, [ 'post', 'delete', ids.join( ' ' ), '--force', wpPath ] );
 
 	let data = '';
 	for await ( const chunk of wpPostRemove.stdout ) {
@@ -123,7 +124,7 @@ const runE2EPrepareScript = async ( blockName ) => {
 	const blockNameWithoutCoblocks = blockName.replace( 'coblocks/', '' );
 	const taxonomyId = await handleTaxonomy( blockNameWithoutCoblocks );
 
-	const wpPostList = spawn( './vendor/bin/wp', [ 'post', 'list', '--fields=ID', `--category__in=${ taxonomyId }`, '--format=ids', wpPath ] );
+	const wpPostList = spawn( cliBinary, [ 'post', 'list', '--fields=ID', `--category__in=${ taxonomyId }`, '--format=ids', wpPath ] );
 
 	let data = '';
 	for await ( const chunk of wpPostList.stdout ) {
@@ -150,7 +151,7 @@ const runE2EPrepareScript = async ( blockName ) => {
  * @param {string} tax Matching string for block relevant category.
  */
 const getTaxonomiesByName = async ( tax ) => {
-	const wpTermGet = spawn( './vendor/bin/wp',
+	const wpTermGet = spawn( cliBinary,
 		[ 'term', 'get', 'category', tax, '--by=slug', `--format=json`, wpPath ] );
 
 	let data = '';
@@ -175,7 +176,7 @@ const getTaxonomiesByName = async ( tax ) => {
  * @param {string} tax Matching string for block relevant category.
  */
 const createNewCategory = async ( tax ) => {
-	const wpTermCreate = spawn( './vendor/bin/wp',
+	const wpTermCreate = spawn( cliBinary,
 		[ 'term', 'create', 'category', tax, '--porcelain', wpPath ] );
 
 	let data = '';
@@ -229,7 +230,7 @@ const handleTaxonomy = async ( blockSlug ) => {
  * @param {string} taxId     Taxonomy ID.
  */
 const createNewTestPost = async ( blockName, taxId ) => {
-	const wpPostCreate = spawn( './vendor/bin/wp',
+	const wpPostCreate = spawn( cliBinary,
 		[ 'post', 'create', `--post_category=${ taxId }`, `--post_title="${ blockName }"`, '--porcelain', wpPath, '-' ],
 		{ shell: true } );
 
