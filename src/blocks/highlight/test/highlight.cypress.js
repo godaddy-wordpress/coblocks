@@ -9,8 +9,7 @@ describe( 'Test CoBlocks Highlight Block', function() {
 	 */
 	it( 'renders a paragraph block', function() {
 		const config = Cypress.config();
-		helpers.goTo( `/wp-admin/post.php?post=${ config.migrationPostList.highlight() }&action=edit` );
-		cy.visit( Cypress.env( 'testURL' ) + `/wp-admin/post.php?post=${ config.migrationPostList.highlight }&action=edit` );
+		helpers.goTo( `/wp-admin/post.php?post=${ config.migrationPostList.highlight }&action=edit` );
 
 		helpers.openBlockNavigator();
 
