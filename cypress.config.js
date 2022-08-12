@@ -1,5 +1,6 @@
 const { defineConfig } = require( 'cypress' );
 const { postsPrepare } = require( './src/blocks/posts/test/posts-prepare' );
+const { gifPrepare } = require( './src/blocks/gif/test/gif-prepare' );
 
 module.exports = defineConfig( {
 	e2e: {
@@ -26,6 +27,7 @@ module.exports = defineConfig( {
 			require( 'cypress-log-to-output' ).install( on, ( type, event ) => event.level === 'error' || event.type === 'error' );
 			return ( async () => {
 				config.migrationPostList = {
+					gifPrepare: await gifPrepare(),
 					posts: await postsPrepare(),
 				};
 				return config;
