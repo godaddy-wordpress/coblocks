@@ -16,4 +16,13 @@ describe( 'Test CoBlocks Highlight Block', function() {
 		cy.get( '[data-type="core/paragraph"]' ).should( 'have.length', 2 );
 		cy.get( '[data-type="core/paragraph"]' ).should( 'contain', 'test highlight 1' );
 	} );
+
+	it( 'should carry over pre selected colors', function() {
+		const config = Cypress.config();
+		helpers.goTo( `/wp-admin/post.php?post=${ config.migrationPostList.highlight }&action=edit` );
+
+		helpers.openBlockNavigator();
+
+		cy.get( '[data-type="core/paragraph"]' ).contains( 'test highlight 2' ).should( 'have.attr', 'style', 'color:#19b8c3' );
+	} );
 } );
