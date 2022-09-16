@@ -128,4 +128,4 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 ### Misc
 * Upgrade to Cypress 10 [#2424](https://github.com/godaddy-wordpress/coblocks/pull/2424)
 * Update various dependencies [#2422](https://github.com/godaddy-wordpress/coblocks/pull/2422) and [#2412](https://github.com/godaddy-wordpress/coblocks/pull/2412)
-
+* Update Go commands to fix deploy and canary [#2425](https://github.com/godaddy-wordpress/coblocks/pull/2425) and [#2426](https://github.com/godaddy-wordpress/coblocks/pull/2426)

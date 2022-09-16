@@ -1,4 +1,10 @@
 
+2.24.4 / 2022-09-16
+===================
+
+### Misc
+  * Update Go commands to fix deploy and canary [#2425](https://github.com/godaddy-wordpress/coblocks/pull/2425) and [#2426](https://github.com/godaddy-wordpress/coblocks/pull/2426)
+
 2.24.3 / 2022-09-16
 ===================
 
