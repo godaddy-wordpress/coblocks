@@ -915,7 +915,7 @@ jobs:
       - run:
           name: Install ghr
           command: |
-            go get -u github.com/tcnksm/ghr
+            go install github.com/tcnksm/ghr@latest
       - run:
           name: Build the plugin
           command: |
@@ -972,7 +972,7 @@ jobs:
       - run:
           name: Install ghr
           command: |
-            go get -u github.com/tcnksm/ghr
+            go install github.com/tcnksm/ghr@latest
       - run:
           name: Build the plugin
           command: |
