@@ -1,4 +1,14 @@
 
+2.24.3 / 2022-09-16
+===================
+
+### Bug fixes
+* Fix button order in editor header [#2423](https://github.com/godaddy-wordpress/coblocks/pull/2423)
+
+### Misc
+* Upgrade to Cypress 10 [#2424](https://github.com/godaddy-wordpress/coblocks/pull/2424)
+* Update various dependencies [#2422](https://github.com/godaddy-wordpress/coblocks/pull/2422) and [#2412](https://github.com/godaddy-wordpress/coblocks/pull/2412)
+
 2.24.2 / 2022-07-13
 ===================
 
