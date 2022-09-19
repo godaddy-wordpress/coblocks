@@ -4,7 +4,7 @@
 
 const pa11y = require( 'pa11y' );
 const chalk = require( 'chalk' );
-const packageJson = require( '../../../../package.json' );
+const packageJson = require( '../../../package.json' );
 const testingUrls = packageJson.testing.urls;
 
 // Initialize variables
