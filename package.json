@@ -23,6 +23,7 @@
 		"accessibility": {
 			"compliance": "WCAG2A"
 		}
+	},
 	"scripts": {
 		"build": "wp-scripts build",
 		"clean": "wp-env stop && rm -rf build dist/* node_modules vendor wordpress",
