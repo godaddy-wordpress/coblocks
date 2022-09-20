@@ -440,6 +440,12 @@ commands:
       - wait_for_mysql
       - install_wordpress_with_coblocks:
           theme: "<< parameters.theme >>"
+      - run:
+          name: Setup pa11y Test Database
+          command: |
+            ./vendor/bin/wp db reset --yes --path=/tmp/wordpress
+            ./vendor/bin/wp db import .dev/tests/a11y/coblocks_pa11y.sql --path=/tmp/wordpress
+            ./vendor/bin/wp search-replace https://coblocks-pa11y.test http://coblocks.test --path=/tmp/wordpress
       - start_wpcli_server
       - run:
           name: Run a11y tests
