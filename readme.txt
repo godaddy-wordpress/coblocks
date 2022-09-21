@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.5
 Tested up to: 6.0
 Requires PHP: 5.6
-Stable tag: 2.24.2
+Stable tag: 2.24.4
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -122,6 +122,10 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+### Bug fixes
+* Fix button order in editor header [#2423](https://github.com/godaddy-wordpress/coblocks/pull/2423)
+
 ### Misc
-* Update dependencies and translations [#2401](https://github.com/godaddy-wordpress/coblocks/pull/2401) and [#2407](https://github.com/godaddy-wordpress/coblocks/pull/2407)
-* Stabilize the e2e tests by not running them headless [#2405](https://github.com/godaddy-wordpress/coblocks/pull/2405)
+* Upgrade to Cypress 10 [#2424](https://github.com/godaddy-wordpress/coblocks/pull/2424)
+* Update various dependencies [#2422](https://github.com/godaddy-wordpress/coblocks/pull/2422) and [#2412](https://github.com/godaddy-wordpress/coblocks/pull/2412)
+* Update Go commands to fix deploy and canary [#2425](https://github.com/godaddy-wordpress/coblocks/pull/2425) and [#2426](https://github.com/godaddy-wordpress/coblocks/pull/2426)

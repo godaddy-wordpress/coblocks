@@ -104,7 +104,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   go_browsers:
     docker:
-      - image: cimg/go:1.16-browsers
+      - image: cimg/go:1.19-browsers
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -919,7 +919,7 @@ jobs:
       - run:
           name: Install ghr
           command: |
-            go get -u github.com/tcnksm/ghr
+            go install github.com/tcnksm/ghr@latest
       - run:
           name: Build the plugin
           command: |
@@ -976,7 +976,7 @@ jobs:
       - run:
           name: Install ghr
           command: |
-            go get -u github.com/tcnksm/ghr
+            go install github.com/tcnksm/ghr@latest
       - run:
           name: Build the plugin
           command: |
