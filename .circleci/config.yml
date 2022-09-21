@@ -183,7 +183,7 @@ workflows:
               only: /^(?!canary).*$/
           requires:
             - build
-      - e2e_twentytwentythree_chrome_nightly:
+      - e2e_twentytwentytwo_chrome_nightly:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -771,13 +771,13 @@ jobs:
           browser: chrome
           wpversion: previous_major
 
-  e2e_twentytwentythree_chrome_nightly:
+  e2e_twentytwentytwo_chrome_nightly:
     executor: php_74_browsers_mysql_mailhog
     parallelism: 11
     steps:
       - run_e2e_tests:
           browser: chrome
-          theme: twentytwentythree
+          theme: twentytwentytwo
           wpversion: 6.1-beta1
 
   e2e_chrome_wp_php80:
@@ -786,7 +786,7 @@ jobs:
     steps:
       - run_e2e_tests:
           browser: chrome
-          theme: twentytwentythree
+          theme: twentytwentytwo
           wpversion: 6.1-beta1
 
   perf_tests_master:
