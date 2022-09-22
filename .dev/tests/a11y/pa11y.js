@@ -1,5 +1,4 @@
-/* global require, process */
-
+/* eslint no-console: 0 */
 'use strict';
 
 const pa11y = require( 'pa11y' );
@@ -12,34 +11,22 @@ let url;
 let key;
 
 // Loop through all the URLs and set the test destination
-if ( process.argv[2] ) {
-
+if ( process.argv[ 2 ] ) {
 	for ( key in testingUrls ) {
-
-		if ( key === process.argv[2] ) {
-
+		if ( key === process.argv[ 2 ] ) {
 			// Set the testing URL
-			if ( packageJson.testing.urls[key] !== '' ) {
-
-				url = packageJson.testing.urls[key];
-
+			if ( packageJson.testing.urls[ key ] !== '' ) {
+				url = packageJson.testing.urls[ key ];
 			} else {
-
 				// If the URL object exists, but is empty
 				console.log( chalk.red.bold( '✘ Error: Please add a URL for ' + key ) );
 				console.log( '' );
 				process.exit( 1 );
-
 			}
-
 		}
-
 	} // for()
-
 } else {
-
 	url = packageJson.testing.urls.local;
-
 }
 
 // Set up the pa11y config options
@@ -53,40 +40,33 @@ const config = {
 	userAgent: 'pa11y',
 	width: 1280,
 	ignore: [
-		'notice'
+		'notice',
 	],
 	log: {
 		debug: console.log.bind( console ),
 		error: console.error.bind( console ),
-		info: console.log.bind( console )
+		info: console.log.bind( console ),
 	},
 	chromeLaunchConfig: {
 		ignoreHTTPSErrors: true,
-		executablePath: '/usr/bin/google-chrome'
-	}
+		executablePath: '/usr/bin/google-chrome',
+	},
 };
 
 /**
  * Run Accessibility Test
+ *
  * @param {string} url test URL
- * @param {object} config test configuration option
+ * @param {Object} config test configuration option
  * @param {Function} [cb] Callback
- * @returns {object} test results
+ * @return {Object} test results
  */
 pa11y( url, config, ( error, results ) => {
-
-	if( error ) {
-
+	if ( error ) {
 		return console.error( error );
-
 	} else if ( results.issues.length ) {
-
 		console.log( results );
-
 	} else {
-
 		console.log( chalk.green.bold( '✔ All accessibility tests have passed.' ) );
-
 	}
-
 } );

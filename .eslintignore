@@ -10,7 +10,6 @@ wordpress*
 !**.spec.js
 !save.spec.js
 !*.cypress.js
-!.dev/tests/a11y/pa11y.js
 
 # lint top level dot files
 !.*
