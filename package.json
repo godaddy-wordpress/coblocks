@@ -16,7 +16,7 @@
 	],
 	"testing": {
 		"urls": {
-			"local": "https://mwp-old.test",
+			"local": "https//coblocks.test",
 			"staging": "",
 			"production": ""
 		},
