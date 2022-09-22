@@ -202,8 +202,6 @@ workflows:
           filters:
             tags:
               only: /^(?!canary).*$/
-          requires:
-            - build
 
       # PERF TESTING
       - perf_tests_master:
@@ -433,8 +431,6 @@ commands:
       - browser-tools/install-browser-tools
       - checkout
       - disable_xdebug_php_extension
-      - attach_workspace:
-          at: ~/project
       - restore_yarn_cache
       - restore_composer_cache
       - wait_for_mysql
