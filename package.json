@@ -16,7 +16,7 @@
 	],
 	"testing": {
 		"urls": {
-			"local": "http://coblocks.test",
+			"local": "https://mwp-old.test",
 			"staging": "",
 			"production": ""
 		},
@@ -43,6 +43,7 @@
 		"setup": "yarn install && yarn run build && wp-env start && yarn php:composer:install",
 		"start:debug": "DEBUG_MODE=on wp-scripts start --progress",
 		"start": "wp-scripts start --progress",
+		"test:a11y": "node .dev/tests/a11y/pa11y.js",
 		"test:e2e": "cypress run --config video=false --browser chrome",
 		"test:e2e:debug": "npx cypress open",
 		"test:e2e:headed": "yarn test:e2e --headed",
@@ -50,7 +51,6 @@
 		"test:js": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js",
 		"test:js:coverage": "yarn test:js --coverage",
 		"test:js:update": "yarn test:js -u",
-		"test:a11y": "node .dev/tests/a11y/pa11y.js",
 		"test:performance": "wp-scripts test-e2e --config .dev/performance/jest.performance.config.js",
 		"test:php": "wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/coblocks/phpunit.xml.dist --verbose'",
 		"update:icon": "node src/blocks/icon/svgs-generator.js && cp -R node_modules/@godaddy-wordpress/coblocks-icons/src/svg/ src/blocks/icon/svgs",
