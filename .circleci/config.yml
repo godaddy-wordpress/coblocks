@@ -197,6 +197,12 @@ workflows:
           requires:
             - build
 
+      # A11Y TESTING
+      # - a11y:
+      #     filters:
+      #       tags:
+      #         only: /^(?!canary).*$/
+
       # PERF TESTING
       - perf_tests_master:
          filters:
@@ -415,6 +421,36 @@ commands:
             echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > cypress.env.json
             ./node_modules/.bin/cypress verify
             ./node_modules/.bin/cypress run --browser << parameters.browser >> --record --parallel --group e2e-<< parameters.browser >>-wp-<< parameters.wpversion >> --headed
+
+  run_a11y_tests:
+    parameters:
+      theme:
+        type: string
+        default: twentytwentytwo
+    steps:
+      - browser-tools/install-browser-tools
+      - checkout
+      - disable_xdebug_php_extension
+      - restore_yarn_cache
+      - restore_composer_cache
+      - wait_for_mysql
+      - install_wordpress_with_coblocks:
+          theme: "<< parameters.theme >>"
+      - run:
+          name: Setup pa11y Test Database
+          command: |
+            ./vendor/bin/wp db reset --yes --path=/tmp/wordpress
+            ./vendor/bin/wp db import .dev/tests/a11y/coblocks_pa11y.sql --path=/tmp/wordpress
+            ./vendor/bin/wp search-replace https://coblocks-pa11y.test http://coblocks.test --path=/tmp/wordpress
+      - start_wpcli_server
+      - run:
+          name: Run a11y tests
+          command: |
+            RESULTS=$(yarn test:a11y)
+            echo "$RESULTS"
+            if [[ $RESULTS != *"All accessibility tests have passed"* ]]; then
+              exit 1
+            fi
 
   setup_perf_tests:
     steps:
@@ -783,6 +819,12 @@ jobs:
     steps:
       - run_e2e_tests:
           browser: chrome
+          theme: twentytwentytwo
+
+  a11y:
+    executor: php_74_browsers_mysql_mailhog
+    steps:
+      - run_a11y_tests:
           theme: twentytwentytwo
 
   perf_tests_master:
