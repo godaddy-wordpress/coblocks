@@ -21,7 +21,7 @@ const ALLOWED_BLOCKS = [
 const TEMPLATE = [
 	[ 'core/heading', {
 		className: 'wp-block-coblocks-faq__title',
-		level: 3,
+		level: 2,
 		placeholder: __( 'FAQ title', 'coblocks' ),
 	} ],
 	[ 'coblocks/faq-item' ],
