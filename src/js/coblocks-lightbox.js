@@ -142,15 +142,23 @@
 								( images[ imgIndex ] && images[ imgIndex ].nextElementSibling )
 									? getImageCaption( images[ imgIndex ] ) : '';
 					} );
-					setKeyboardListener();
 				}
 			},
 		};
 
+		function openLightbox() {
+			const isClosed = wrapper.style.display === 'none';
+			
+			if ( isClosed ) {
+				wrapper.style.display = 'flex';
+				setKeyboardListener()	
+			}
+		}
+
 		function changeImage( imageIndex ) {
 			imagePreloader.setPreloadImages();
 			index = imageIndex;
-			wrapper.style.display = 'flex';
+			openLightbox();
 			wrapperBackground.style.backgroundImage = `url(${ imagePreloader[ `img-${ index }` ].src })`;
 			image.src = imagePreloader[ `img-${ index }` ].src;
 			caption.innerHTML = imagePreloader[ `img-${ index }` ][ 'data-caption' ];
@@ -165,8 +173,7 @@
 				return;
 			}
 
-			const lightboxDisplayValue = wrapper;
-			const lightboxIsOpen = ( typeof lightboxDisplayValue !== 'undefined' && lightboxDisplayValue?.style?.display === 'flex' );
+			const lightboxIsOpen = wrapper.style.display === 'flex';
 
 			if ( lightboxIsOpen ) {
 				const code = event.code;
