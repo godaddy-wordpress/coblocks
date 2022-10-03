@@ -147,11 +147,11 @@
 		};
 
 		function openLightbox() {
-			const isClosed = wrapper.style.display === 'none';
-			
+			// Initial display value of wrapper is ''. If display !== 'flex' should simplify the logic here.
+			const isClosed = wrapper.style.display !== 'flex';
 			if ( isClosed ) {
 				wrapper.style.display = 'flex';
-				setKeyboardListener()	
+				setKeyboardListener();
 			}
 		}
 
