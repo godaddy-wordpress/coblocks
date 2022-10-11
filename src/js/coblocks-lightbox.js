@@ -31,6 +31,7 @@
 		imageContainer.setAttribute( 'class', 'coblocks-lightbox__image' );
 
 		const image = document.createElement( 'img' );
+		image.setAttribute( 'alt', 'Placeholder' );
 
 		const caption = document.createElement( 'figcaption' );
 		caption.setAttribute( 'class', 'coblocks-lightbox__caption' );

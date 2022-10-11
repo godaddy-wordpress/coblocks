@@ -495,6 +495,18 @@ class CoBlocks_Block_Assets {
 			);
 		}
 
+		// Services block.
+		if ( $this->is_page_gutenberg() || has_block( 'coblocks/services' ) ) {
+			$asset_file = $this->get_asset_file( 'dist/js/coblocks-services' );
+			wp_enqueue_script(
+				'coblocks-services-script',
+				$dir . 'coblocks-services.js',
+				$asset_file['dependencies'],
+				COBLOCKS_VERSION,
+				true
+			);
+		}
+
 		// Lightbox.
 		if (
 			has_block( 'coblocks/gallery-masonry' ) ||

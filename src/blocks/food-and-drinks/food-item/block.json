@@ -68,7 +68,7 @@
 		},
 		"headingLevel": {
 			"type": "integer",
-			"default": 3
+			"default": 4
 		}
 	},
 	"title": "Food Item",
