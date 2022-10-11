@@ -42,6 +42,7 @@ const config = {
 	ignore: [
 		'notice',
 	],
+	hideElements: '#gist5332801 > div > div:nth-child(2)',
 	log: {
 		debug: console.log.bind( console ),
 		error: console.error.bind( console ),
