@@ -198,10 +198,10 @@ workflows:
             - build
 
       # A11Y TESTING
-      # - a11y:
-      #     filters:
-      #       tags:
-      #         only: /^(?!canary).*$/
+      - a11y:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
 
       # PERF TESTING
       - perf_tests_master:
