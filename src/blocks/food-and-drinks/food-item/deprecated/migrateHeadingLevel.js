@@ -1,8 +1,8 @@
 /**
- * Internal dependencies.
+ * Internal dependencies
  */
-import { hasEmptyAttributes } from '../../../utils/block-helpers';
-import fromEntries from '../../../js/coblocks-fromEntries';
+import { hasEmptyAttributes } from '../../../../utils/block-helpers';
+import fromEntries from '../../../../js/coblocks-fromEntries';
 
 /**
  * External dependencies.
@@ -21,43 +21,30 @@ const isEmpty = ( attributes ) => {
 		attributesToCheck.includes( key )
 	);
 
-	return hasEmptyAttributes( fromEntries( newAttributes ) );
+	if ( ! Object.fromEntries ) {
+		return hasEmptyAttributes( fromEntries( newAttributes ) );
+	}
+
+	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
 };
 
-export default function save( { attributes, className } ) {
-	const {
-		alt,
-		description,
-		glutenFree,
-		pescatarian,
-		popular,
-		price,
-		showImage,
-		showPrice,
-		spicier,
-		spicy,
-		title,
-		url,
-		vegan,
-		vegetarian,
-		focalPoint,
-	} = attributes;
-
+export default function migrateHeadingLevel( { attributes } ) {
 	return isEmpty( attributes ) ? null : (
 		<div
-			className={ className }
+			className={ attributes.className }
 			itemScope
 			itemType="http://schema.org/MenuItem"
 		>
-			{ !! showImage && url && (
+			{ !! attributes.showImage && attributes.url && (
 				<figure className="wp-block-coblocks-food-item__figure">
 					<img
-						src={ url }
-						alt={ alt }
+						src={ attributes.url }
+						alt={ attributes.alt }
 						itemProp="image"
 						style={ {
-							objectPosition: focalPoint
-								? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%`
+							objectPosition: attributes.focalPoint
+								? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y *
+                                    100 }%`
 								: undefined,
 						} }
 					/>
@@ -68,113 +55,103 @@ export default function save( { attributes, className } ) {
 					<RichText.Content
 						tagName={ `h${attributes.headingLevel}` }
 						className="wp-block-coblocks-food-item__heading"
-						value={ title }
+						value={ attributes.title }
 						itemprop="name"
 					/>
-					{ ( !! spicy ||
-						!! vegetarian ||
-						!! glutenFree ||
-						!! pescatarian ||
-						!! popular ||
-						!! vegan ) && (
+					{ (
+						!! attributes.spicy ||
+						!! attributes.vegetarian ||
+						!! attributes.glutenFree ||
+						!! attributes.pescatarian ||
+						!! attributes.popular ||
+						!! attributes.vegan
+					) && (
 						<div className="wp-block-coblocks-food-item__attributes">
-							{ !! popular && (
+							{ !! attributes.popular && (
 								<span
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
 										'wp-block-coblocks-food-item__attribute--popular',
-										'hint--top' ) }
+										'hint--top',
+									) }
 									aria-label={ __( 'Popular', 'coblocks' ) }
-									role="img"
 								>
-									<span
-										className="wp-block-coblocks-food-item__icon"
-									/>
+									<span className="wp-block-coblocks-food-item__icon" />
 								</span>
 							) }
-							{ !! spicy && (
+							{ !! attributes.spicy && (
 								<span
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
 										'wp-block-coblocks-food-item__attribute--spicy',
-										'hint--top' ) }
+										'hint--top',
+									) }
 									aria-label={ __( 'Spicy', 'coblocks' ) }
-									role="img"
 								>
-									<span
-										className="wp-block-coblocks-food-item__icon"
-									/>
+									<span className="wp-block-coblocks-food-item__icon" />
 								</span>
 							) }
-							{ !! spicier && !! spicy && (
+							{ !! attributes.spicier && !! attributes.spicy && (
 								<span
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
 										'wp-block-coblocks-food-item__attribute--spicy',
 										'wp-block-coblocks-food-item__attribute--spicier',
-										'hint--top' ) }
+										'hint--top',
+									) }
 									aria-label={ __( 'Spicier', 'coblocks' ) }
-									role="img"
 								>
-									<span
-										className="wp-block-coblocks-food-item__icon"
-									/>
+									<span className="wp-block-coblocks-food-item__icon" />
 								</span>
 							) }
-							{ !! vegetarian && (
+							{ !! attributes.vegetarian && (
 								<span
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
 										'wp-block-coblocks-food-item__attribute--vegetarian',
-										'hint--top' ) }
+										'hint--top'
+									) }
 									aria-label={ __( 'Vegetarian', 'coblocks' ) }
-									role="img"
 								>
-									<span
-										className="wp-block-coblocks-food-item__icon"
-									/>
+									<span className="wp-block-coblocks-food-item__icon" />
 								</span>
 							) }
-							{ !! glutenFree && (
+							{ !! attributes.glutenFree && (
 								<span
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
 										'wp-block-coblocks-food-item__attribute--gluten-free',
 										'hint--top' ) }
 									aria-label={ __( 'Gluten free', 'coblocks' ) }
-									role="img"
+
 								>
-									<span
-										className="wp-block-coblocks-food-item__icon"
-									/>
+									<span className="wp-block-coblocks-food-item__icon" />
 								</span>
 							) }
-							{ !! pescatarian && (
+							{ !! attributes.pescatarian && (
 								<span
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
 										'wp-block-coblocks-food-item__attribute--pescatarian',
-										'hint--top' ) }
+										'hint--top'
+									) }
 									aria-label={ __( 'Pescatarian', 'coblocks' ) }
-									role="img"
+
 								>
-									<span
-										className="wp-block-coblocks-food-item__icon"
-									/>
+									<span className="wp-block-coblocks-food-item__icon" />
 								</span>
 							) }
-							{ !! vegan && (
+							{ !! attributes.vegan && (
 								<span
 									className={ classnames(
 										'wp-block-coblocks-food-item__attribute',
 										'wp-block-coblocks-food-item__attribute--vegan',
-										'hint--top' ) }
+										'hint--top'
+									) }
 									aria-label={ __( 'Vegan', 'coblocks' ) }
-									role="img"
+
 								>
-									<span
-										className="wp-block-coblocks-food-item__icon"
-									/>
+									<span className="wp-block-coblocks-food-item__icon" />
 								</span>
 							) }
 						</div>
@@ -183,10 +160,10 @@ export default function save( { attributes, className } ) {
 				<RichText.Content
 					tagName="p"
 					className="wp-block-coblocks-food-item__description"
-					value={ description }
+					value={ attributes.description }
 					itemprop="description"
 				/>
-				{ !! showPrice && price && (
+				{ !! attributes.showPrice && attributes.price && (
 					<p
 						className="wp-block-coblocks-food-item__price"
 						itemProp="offers"
@@ -195,7 +172,7 @@ export default function save( { attributes, className } ) {
 					>
 						<RichText.Content
 							tagName="span"
-							value={ price }
+							value={ attributes.price }
 							itemprop="price"
 						/>
 					</p>

@@ -226,7 +226,7 @@ class CoBlocks_Form {
 
 			<form action="<?php echo esc_url( sprintf( '%1$s#%2$s', set_url_scheme( get_the_permalink() ), $this->form_hash ) ); ?>" method="post">
 				<?php echo do_blocks( $content ); ?>
-				<input class="coblocks-field verify" type="email" name="coblocks-verify-email" autocomplete="off" placeholder="<?php esc_attr_e( 'Email', 'coblocks' ); ?>" tabindex="-1">
+				<input class="coblocks-field verify" aria-label="<?php esc_attr_e( 'Email Verify', 'coblocks' ); ?>" type="email" name="coblocks-verify-email" autocomplete="off" placeholder="<?php esc_attr_e( 'Email', 'coblocks' ); ?>" tabindex="-1">
 				<input type="hidden" name="form-hash" value="<?php echo esc_attr( $this->form_hash ); ?>">
 
 				<?php
@@ -279,12 +279,12 @@ class CoBlocks_Form {
 			?>
 			<div class="coblocks-form__inline-fields">
 				<div class="coblocks-form__inline-field">
-					<input type="text" id="<?php echo esc_attr( $label_slug ); ?>-firstname" name="field-<?php echo esc_attr( $label_slug ); ?>[value][first-name]" class="coblocks-field coblocks-field--name first" <?php echo esc_attr( $required_attr ); ?> />
+					<input type="text" id="<?php echo esc_attr( $label_slug ); ?>-firstname" aria-label="<?php esc_attr_e( 'Plus One First Name', 'coblocks' ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value][first-name]" class="coblocks-field coblocks-field--name first" <?php echo esc_attr( $required_attr ); ?> />
 					<small class="<?php echo esc_attr( $classes ); ?>"<?php echo wp_kses_post( $styles ); ?>><?php echo esc_html( $label_first_name ); ?></small>
 				</div>
 
 				<div class="coblocks-form__inline-field">
-					<input type="text" id="<?php echo esc_attr( $label_slug ); ?>-lastname" name="field-<?php echo esc_attr( $label_slug ); ?>[value][last-name]" class="coblocks-field coblocks-field--name last" <?php echo esc_attr( $required_attr ); ?> />
+					<input type="text" id="<?php echo esc_attr( $label_slug ); ?>-lastname" aria-label="<?php esc_attr_e( 'Plus One Last Name', 'coblocks' ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value][last-name]" class="coblocks-field coblocks-field--name last" <?php echo esc_attr( $required_attr ); ?> />
 					<small class="<?php echo esc_attr( $classes ); ?>"<?php echo wp_kses_post( $styles ); ?>><?php echo esc_html( $label_last_name ); ?></small>
 				</div>
 			</div>
@@ -329,7 +329,7 @@ class CoBlocks_Form {
 		?>
 
 		<input type="hidden" id="email-field-id" name="email-field-id" class="coblocks-email-field-id" value="field-<?php echo esc_attr( $label_slug ); ?>" />
-		<input type="email" id="<?php echo esc_attr( $label_slug ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--email" <?php echo esc_attr( $required_attr ); ?> />
+		<input type="email" id="<?php echo esc_attr( $label_slug ); ?>" aria-label="<?php echo esc_attr( $label_slug ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--email" <?php echo esc_attr( $required_attr ); ?> />
 
 		<?php
 
@@ -358,7 +358,7 @@ class CoBlocks_Form {
 
 		?>
 
-		<textarea name="field-<?php echo esc_attr( $label_slug ); ?>[value]" id="<?php echo esc_attr( $label_slug ); ?>" class="coblocks-field coblocks-textarea" rows="20" <?php echo esc_attr( $required_attr ); ?>></textarea>
+		<textarea name="field-<?php echo esc_attr( $label_slug ); ?>[value]" aria-label="<?php echo esc_attr( $label ); ?>" id="<?php echo esc_attr( $label_slug ); ?>" class="coblocks-field coblocks-textarea" rows="20" <?php echo esc_attr( $required_attr ); ?>></textarea>
 
 		<?php
 
@@ -487,9 +487,11 @@ class CoBlocks_Form {
 
 		ob_start();
 
-		print( '<div class="coblocks-field">' );
+		print( '<div class="coblocks-field"><fieldset>' );
 
-		$this->render_field_label( $atts, $label, $radio_count );
+		print( '<legend>' . $label . '</legend>' );
+
+		// $this->render_field_label( $atts, $label, $radio_count );
 
 		if ( isset( $atts['isInline'] ) ) {
 
@@ -517,7 +519,7 @@ class CoBlocks_Form {
 
 		}
 
-		print( '</div>' );
+		print( '</fieldset></div>' );
 
 		$radio_count++;
 
@@ -764,8 +766,7 @@ class CoBlocks_Form {
 
 		if ( ! isset( $atts['hidden'] ) ) {
 			printf(
-				'<label for="%1$s" class="%2$s"%3$s>%4$s%5$s</label>',
-				esc_attr( $label_slug ),
+				'<label class="%1$s"%2$s>%3$s%4$s</label>',
 				esc_attr( $classes ),
 				empty( $styles ) ? '' : wp_kses_post( " style='$styles'" ),
 				wp_kses_post( $label ),
