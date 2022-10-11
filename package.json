@@ -16,7 +16,7 @@
 	],
 	"testing": {
 		"urls": {
-			"local": "http://coblocks.test",
+			"local": "https://coblocks-pa11y.test/",
 			"staging": "",
 			"production": ""
 		},
