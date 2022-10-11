@@ -308,7 +308,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	 */
 	public function test_render_field_email() {
 
-		$this->expectOutputRegex( '/<input type="email" id="email" name="field-email\[value\]" class="coblocks-field coblocks-field--email"  \/>/' );
+		$this->expectOutputRegex( '/<input type="email" id="email" aria-label="email" name="field-email\[value\]" class="coblocks-field coblocks-field--email"  \/>/' );
 
 		echo $this->coblocks_form->render_field_email( [], '' );
 
@@ -319,7 +319,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	 */
 	public function test_render_field_textarea() {
 
-		$this->expectOutputRegex( '/<textarea name="field-message-2\[value\]" id="message-2" class="coblocks-field coblocks-textarea" rows="20" ><\/textarea>/' );
+		$this->expectOutputRegex( '/<textarea name="field-message-2\[value\]" aria-label="Message" id="message-2" class="coblocks-field coblocks-textarea" rows="20" ><\/textarea>/' );
 
 		echo $this->coblocks_form->render_field_textarea( [], '' );
 
@@ -565,7 +565,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	 */
 	public function test_render_field_label() {
 
-		$this->expectOutputRegex( '/<label for="field-label" class="coblocks-label">Field Label <span class="required">&#042;<\/span><\/label>/' );
+		$this->expectOutputRegex( '/<label class="coblocks-label">Field Label <span class="required">&#042;<\/span><\/label>/' );
 
 		$atts = [
 			'label'    => 'Field Label',
