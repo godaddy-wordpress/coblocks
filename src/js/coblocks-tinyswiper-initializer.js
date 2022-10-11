@@ -51,6 +51,22 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 				const swiperBackButton = currentEventsBlock.querySelector( `.nav-button__prev` );
 				const swiperNextButton = currentEventsBlock.querySelector( `.nav-button__next` );
 
+				if ( swiperBackButton ) {
+					swiperBackButton.setAttribute( 'aria-label', coblocksTinyswiper.carouselPrevButtonAriaLabel );
+				}
+
+				if ( swiperNextButton ) {
+					swiperNextButton.setAttribute( 'aria-label', coblocksTinyswiper.carouselNextButtonAriaLabel );
+				}
+
+				const images = currentEventsBlock.querySelectorAll( `img` );
+
+				for (let i = 0; i < images.length; ++i) {
+					if ( ! images[i].alt ) {
+						images[i].alt = coblocksTinyswiper.sliderImageAriaLabel;
+					}
+				}
+
 				const swiperConfig = {
 					centeredSlides: false,
 					freeMode: false, // Explicit false for UX concerns. This is by default false in tinyswiper.

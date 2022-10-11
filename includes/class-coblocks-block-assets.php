@@ -391,6 +391,9 @@ class CoBlocks_Block_Assets {
 		// Define where the vendor asset is loaded from.
 		$vendors_dir = CoBlocks()->asset_source( 'js/vendors' );
 
+		$previous_aria_label = __( 'Previous', 'coblocks' );
+		$next_aria_label     = __( 'Next', 'coblocks' );
+
 		// Enqueue for coblocks animations.
 		wp_enqueue_script(
 			'coblocks-animation',
@@ -428,6 +431,16 @@ class CoBlocks_Block_Assets {
 				COBLOCKS_VERSION,
 				true
 			);
+
+			wp_localize_script(
+				'coblocks-tinyswiper-initializer',
+				'coblocksTinyswiper',
+				array(
+					'carouselPrevButtonAriaLabel' => $previous_aria_label,
+					'carouselNextButtonAriaLabel' => $next_aria_label,
+					'sliderImageAriaLabel'        => __( 'Image', 'coblocks' ),
+				)
+			);
 		}
 
 		// Post Carousel block.
@@ -444,8 +457,8 @@ class CoBlocks_Block_Assets {
 				'coblocks-post-carousel',
 				'coblocksPostCarousel',
 				array(
-					'carouselPrevButtonAriaLabel' => __( 'Previous', 'coblocks' ),
-					'carouselNextButtonAriaLabel' => __( 'Next', 'coblocks' ),
+					'carouselPrevButtonAriaLabel' => $previous_aria_label,
+					'carouselNextButtonAriaLabel' => $next_aria_label,
 				)
 			);
 		}
@@ -464,8 +477,8 @@ class CoBlocks_Block_Assets {
 				'coblocks-events',
 				'coblocksEvents',
 				array(
-					'carouselPrevButtonAriaLabel' => __( 'Previous', 'coblocks' ),
-					'carouselNextButtonAriaLabel' => __( 'Next', 'coblocks' ),
+					'carouselPrevButtonAriaLabel' => $previous_aria_label,
+					'carouselNextButtonAriaLabel' => $next_aria_label,
 				)
 			);
 		}
