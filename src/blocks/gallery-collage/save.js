@@ -69,7 +69,7 @@ const save = ( { attributes } ) => {
 								}
 							);
 							const imgClasses = classnames( image.id && [ `wp-image-${ image.id }` ] );
-							const img = typeof image.url === 'undefined' ? null : ( <img alt={ image.alt } className={ imgClasses } data-id={ image.id } data-imglink={ image.imgLink } data-index={ image.index } data-link={ image.link } src={ image.url } /> );
+							const img = typeof image.url === 'undefined' ? null : ( <img alt="Gallery Image" className={ imgClasses } data-id={ image.id } data-imglink={ image.imgLink } data-index={ image.index } data-link={ image.link } src={ image.url } /> );
 
 							return (
 								<li

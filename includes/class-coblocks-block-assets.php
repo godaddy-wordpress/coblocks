@@ -439,6 +439,15 @@ class CoBlocks_Block_Assets {
 				COBLOCKS_VERSION,
 				true
 			);
+
+			wp_localize_script(
+				'coblocks-post-carousel',
+				'coblocksPostCarousel',
+				array(
+					'carouselPrevButtonAriaLabel' => __( 'Previous', 'coblocks' ),
+					'carouselNextButtonAriaLabel' => __( 'Next', 'coblocks' ),
+				)
+			);
 		}
 
 		// Events block.
@@ -449,6 +458,15 @@ class CoBlocks_Block_Assets {
 				array(),
 				COBLOCKS_VERSION,
 				true
+			);
+
+			wp_localize_script(
+				'coblocks-events',
+				'coblocksEvents',
+				array(
+					'carouselPrevButtonAriaLabel' => __( 'Previous', 'coblocks' ),
+					'carouselNextButtonAriaLabel' => __( 'Next', 'coblocks' ),
+				)
 			);
 		}
 

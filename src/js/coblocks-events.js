@@ -19,6 +19,9 @@ const loadEventCarousel = () => {
 		const swiperBackButton = frontEndContainer.parentNode.querySelector( `#wp-coblocks-event-swiper-prev` );
 		const swiperNextButton = frontEndContainer.parentNode.querySelector( `#wp-coblocks-event-swiper-next` );
 
+		swiperBackButton.setAttribute( 'aria-label', coblocksEvents.carouselPrevButtonAriaLabel );
+		swiperNextButton.setAttribute( 'aria-label', coblocksEvents.carouselNextButtonAriaLabel );
+
 		if ( totalSlides.length > 1 && swiperWrapper ) {
 			swiperWrapper.classList.remove( 'swiper-wrapper-loading' );
 			swiperWrapper.classList.add( 'swiper-wrapper' );
