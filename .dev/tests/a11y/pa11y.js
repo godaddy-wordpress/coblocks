@@ -38,6 +38,7 @@ const config = {
 	threshold: 2,
 	timeout: 20000,
 	userAgent: 'pa11y',
+	wait: 2000,
 	width: 1280,
 	ignore: [
 		'notice',
