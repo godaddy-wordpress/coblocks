@@ -14,6 +14,16 @@
 	"browserslist": [
 		"extends @wordpress/browserslist-config"
 	],
+	"testing": {
+		"urls": {
+			"local": "http://coblocks.test",
+			"staging": "",
+			"production": ""
+		},
+		"accessibility": {
+			"compliance": "WCAG2A"
+		}
+	},
 	"scripts": {
 		"build": "wp-scripts build",
 		"clean": "wp-env stop && rm -rf build dist/* node_modules vendor wordpress",
@@ -33,6 +43,7 @@
 		"setup": "yarn install && yarn run build && wp-env start && yarn php:composer:install",
 		"start:debug": "DEBUG_MODE=on wp-scripts start --progress",
 		"start": "wp-scripts start --progress",
+		"test:a11y": "node .dev/tests/a11y/pa11y.js",
 		"test:e2e": "cypress run --config video=false --browser chrome",
 		"test:e2e:debug": "npx cypress open",
 		"test:e2e:headed": "yarn test:e2e --headed",
@@ -149,6 +160,7 @@
 		"lodash": "^4.17.21",
 		"matchdep": "^2.0.0",
 		"memize": "^1.0.5",
+		"pa11y": "^6.2.3",
 		"po2json": "^1.0.0-alpha",
 		"prettier": "^2.5.1",
 		"prop-types": "^15.8.1",
