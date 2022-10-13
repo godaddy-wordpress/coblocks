@@ -363,7 +363,10 @@ export function setColorSettingsFoldableSetting( settingName, hexColor ) {
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
 	cy.get( '.components-color-palette__custom-color' ).click();
 
-	cy.get( '[aria-label="Show detailed inputs"]' ).click();
+	if ( Cypress.$( '.branch-6-0' ).length > 0 ) {
+		cy.get( '[aria-label="Show detailed inputs"]' ).click();
+	}
+
 	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
 
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
@@ -380,7 +383,10 @@ export function setColorPanelSetting( settingName, hexColor ) {
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
 	cy.get( '.components-color-palette__custom-color' ).click();
 
-	cy.get( '[aria-label="Show detailed inputs"]' ).click();
+	if ( Cypress.$( '.branch-6-0' ).length > 0 ) {
+		cy.get( '[aria-label="Show detailed inputs"]' ).click();
+	}
+
 	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
 
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
@@ -392,7 +398,7 @@ export function setColorPanelSetting( settingName, hexColor ) {
  * @param {RegExp} panelText The panel label text to open. eg: Color Settings
  */
 export function openSettingsPanel( panelText ) {
-	cy.get( '.components-panel__body' )
+	cy.get( '.components-tools-panel, .components-panel__body' )
 		.contains( panelText )
 		.then( ( $panelTop ) => {
 			const $parentPanel = Cypress.$( $panelTop ).closest( 'div.components-panel__body' );
@@ -424,7 +430,7 @@ export function openHeadingToolbarAndSelect( headingLevel ) {
 export function toggleSettingCheckbox( checkboxLabelText ) {
 	cy.get( '.components-toggle-control__label' )
 		.contains( checkboxLabelText )
-		.parent( '.components-base-control__field' )
+		.closest( '.components-base-control__field' )
 		.find( '.components-form-toggle__input' )
 		.click();
 }
@@ -508,15 +514,4 @@ export function hexToRGB( hex ) {
 	}
 
 	return 'rgb(' + +r + ', ' + +g + ', ' + +b + ')';
-}
-
-function getIframeDocument( containerClass ) {
-	return cy.get( containerClass + ' iframe' ).its( '0.contentDocument' ).should( 'exist' );
-}
-
-export function getIframeBody( containerClass ) {
-	return getIframeDocument( containerClass ).its( 'body' ).should( 'not.be.undefined' )
-		// wraps "body" DOM element to allow
-		// chaining more Cypress commands, like ".find(...)"
-		.then( cy.wrap );
 }
