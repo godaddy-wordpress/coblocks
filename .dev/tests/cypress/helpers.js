@@ -240,7 +240,7 @@ export function selectBlock( name, isChildBlock = false ) {
 	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle' ).click();
 
 	// >= WP 6.0
-	if ( isChildBlock && Cypress.$( '.branch-5-9' ).length === 0 ) {
+	if ( isChildBlock ) {
 		cy.get( '.block-editor-list-view__expander svg' ).first().click();
 	}
 
@@ -356,13 +356,17 @@ export const upload = {
  * @param {string} hexColor
  */
 export function setColorSettingsFoldableSetting( settingName, hexColor ) {
-	openSettingsPanel( /color settings|color/i );
+	// Not needed in WP 6.1 anymore
+	if ( Cypress.$( '.branch-6-0' ).length > 0 ) {
+		openSettingsPanel( /color settings|color/i );
+	}
 
 	const formattedHex = hexColor.split( '#' )[ 1 ];
 
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
 	cy.get( '.components-color-palette__custom-color' ).click();
 
+	// Not needed in WP 6.1 anymore
 	if ( Cypress.$( '.branch-6-0' ).length > 0 ) {
 		cy.get( '[aria-label="Show detailed inputs"]' ).click();
 	}
@@ -373,16 +377,12 @@ export function setColorSettingsFoldableSetting( settingName, hexColor ) {
 }
 
 export function setColorPanelSetting( settingName, hexColor ) {
-	// If WP 5.9, we may need to open the panel. Since WP 6.0, it is always open
-	if ( Cypress.$( '.branch-5-9' ).length > 0 ) {
-		openSettingsPanel( /color settings|color/i );
-	}
-
 	const formattedHex = hexColor.split( '#' )[ 1 ];
 
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
 	cy.get( '.components-color-palette__custom-color' ).click();
 
+	// Not needed in WP 6.1 anymore
 	if ( Cypress.$( '.branch-6-0' ).length > 0 ) {
 		cy.get( '[aria-label="Show detailed inputs"]' ).click();
 	}
@@ -398,7 +398,7 @@ export function setColorPanelSetting( settingName, hexColor ) {
  * @param {RegExp} panelText The panel label text to open. eg: Color Settings
  */
 export function openSettingsPanel( panelText ) {
-	cy.get( '.components-tools-panel, .components-panel__body' )
+	cy.get( '.components-panel__body' )
 		.contains( panelText )
 		.then( ( $panelTop ) => {
 			const $parentPanel = Cypress.$( $panelTop ).closest( 'div.components-panel__body' );
