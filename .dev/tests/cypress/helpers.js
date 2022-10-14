@@ -178,12 +178,22 @@ export function viewPage() {
 
 	cy.get( 'button[data-label="Post"]' );
 
-	openSettingsPanel( /permalink/i );
+	// WP 6.1
+	if ( Cypress.$( '.branch-6-1' ).length > 0 ) {
+		cy.get( '.edit-post-post-url__dropdown button' ).click();
 
-	cy.get( '.edit-post-post-link__link' ).then( ( pageLink ) => {
-		const linkAddress = Cypress.$( pageLink ).attr( 'href' );
-		cy.visit( linkAddress );
-	} );
+		cy.get( '.editor-post-url__link' ).then( ( pageLink ) => {
+			const linkAddress = Cypress.$( pageLink ).attr( 'href' );
+			cy.visit( linkAddress );
+		} );
+	} else { // <= WP 6.0
+		openSettingsPanel( /permalink/i );
+
+		cy.get( '.edit-post-post-link__link' ).then( ( pageLink ) => {
+			const linkAddress = Cypress.$( pageLink ).attr( 'href' );
+			cy.visit( linkAddress );
+		} );
+	}
 }
 
 /**
