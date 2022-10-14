@@ -239,7 +239,6 @@ export function setBlockStyle( style ) {
 export function selectBlock( name, isChildBlock = false ) {
 	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle' ).click();
 
-	// >= WP 6.0
 	if ( isChildBlock ) {
 		cy.get( '.block-editor-list-view__expander svg' ).first().click();
 	}
@@ -357,7 +356,7 @@ export const upload = {
  */
 export function setColorSettingsFoldableSetting( settingName, hexColor ) {
 	// Not needed in WP 6.1 anymore
-	if ( Cypress.$( '.branch-6-0' ).length > 0 ) {
+	if ( Cypress.$( '.branch-6-1' ).length === 0 ) {
 		openSettingsPanel( /color settings|color/i );
 	}
 
@@ -367,7 +366,7 @@ export function setColorSettingsFoldableSetting( settingName, hexColor ) {
 	cy.get( '.components-color-palette__custom-color' ).click();
 
 	// Not needed in WP 6.1 anymore
-	if ( Cypress.$( '.branch-6-0' ).length > 0 ) {
+	if ( Cypress.$( '.branch-6-1' ).length === 0 ) {
 		cy.get( '[aria-label="Show detailed inputs"]' ).click();
 	}
 
@@ -383,7 +382,7 @@ export function setColorPanelSetting( settingName, hexColor ) {
 	cy.get( '.components-color-palette__custom-color' ).click();
 
 	// Not needed in WP 6.1 anymore
-	if ( Cypress.$( '.branch-6-0' ).length > 0 ) {
+	if ( Cypress.$( '.branch-6-1' ).length === 0 ) {
 		cy.get( '[aria-label="Show detailed inputs"]' ).click();
 	}
 
