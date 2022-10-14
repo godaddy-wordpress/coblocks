@@ -137,6 +137,25 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	} );
 }
 
+export function addNewGroupToPost() {
+	clearBlocks();
+
+	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click();
+	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search, .components-search-control__input' ).click().type( 'group' );
+
+	// The different structure of classes is here
+	cy.get( '.block-editor-block-types-list__item' ).first().click();
+
+	// Make sure the block was added to our page
+	cy.get( `[class*="-visual-editor"] [data-type='core/group']` ).should( 'exist' ).then( () => {
+		// Then close the block inserter if still open.
+		const inserterButton = Cypress.$( 'button[class*="__inserter-toggle"].is-pressed' );
+		if ( !! inserterButton.length ) {
+			cy.get( 'button[class*="__inserter-toggle"].is-pressed' ).click();
+		}
+	} );
+}
+
 /**
  * From inside the WordPress editor open the CoBlocks Gutenberg editor panel
  */
