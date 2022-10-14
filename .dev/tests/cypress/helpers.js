@@ -543,3 +543,7 @@ export function hexToRGB( hex ) {
 
 	return 'rgb(' + +r + ', ' + +g + ', ' + +b + ')';
 }
+
+export function testsNotExecutedInLocal() {
+	return Cypress.env( 'testURL' ) !== 'http://localhost:8889';
+}

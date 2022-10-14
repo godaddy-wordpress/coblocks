@@ -355,17 +355,19 @@ describe( 'Test CoBlocks Form Block', function() {
 		cy.get( '.coblocks-form__submit button' )
 			.click();
 
-		cy.get( '.coblocks-form__submitted' ).contains( 'Your message was sent:' );
+		if ( helpers.testsNotExecutedInLocal() ) {
+			cy.get( '.coblocks-form__submitted' ).contains( 'Your message was sent:' );
 
-		cy.get( '.coblocks-form__submitted ul li:first-child' ).contains( 'Name: Name' );
-		cy.get( '.coblocks-form__submitted ul li:nth-child(2)' ).contains( 'Email: email@example.com' );
-		cy.get( '.coblocks-form__submitted ul li:last-child' ).contains( 'Message: My message for you.' );
+			cy.get( '.coblocks-form__submitted ul li:first-child' ).contains( 'Name: Name' );
+			cy.get( '.coblocks-form__submitted ul li:nth-child(2)' ).contains( 'Email: email@example.com' );
+			cy.get( '.coblocks-form__submitted ul li:last-child' ).contains( 'Message: My message for you.' );
 
-		cy.exec( 'curl http://127.0.0.1:8025/api/v2/messages' )
-			.its( 'stdout' )
-			.should( 'contain', 'Name: Name' )
-			.should( 'contain', 'Email: email@example.com' )
-			.should( 'contain', 'Message: My message for you.' );
+			cy.exec( 'curl http://127.0.0.1:8025/api/v2/messages' )
+				.its( 'stdout' )
+				.should( 'contain', 'Name: Name' )
+				.should( 'contain', 'Email: email@example.com' )
+				.should( 'contain', 'Message: My message for you.' );
+		}
 
 		helpers.editPage();
 	} );
@@ -436,11 +438,13 @@ describe( 'Test CoBlocks Form Block', function() {
 		cy.get( '.coblocks-form__submit button' )
 			.click();
 
-		cy.get( '.coblocks-form__submitted' ).contains( 'Your message was sent:' );
+		if ( helpers.testsNotExecutedInLocal() ) {
+			cy.get( '.coblocks-form__submitted' ).contains( 'Your message was sent:' );
 
-		cy.exec( 'curl http://127.0.0.1:8025/api/v2/messages' )
-			.its( 'stdout' )
-			.should( 'contain', 'Custom Subject Line: Email From email@example.com - Name' );
+			cy.exec( 'curl http://127.0.0.1:8025/api/v2/messages' )
+				.its( 'stdout' )
+				.should( 'contain', 'Custom Subject Line: Email From email@example.com - Name' );
+		}
 
 		helpers.editPage();
 	} );
@@ -497,7 +501,9 @@ describe( 'Test CoBlocks Form Block', function() {
 		cy.get( '.coblocks-form__submit button' )
 			.click();
 
-		cy.get( '.coblocks-form__submitted' ).contains( 'Thank you for submitting this form!' );
+		if ( helpers.testsNotExecutedInLocal() ) {
+			cy.get( '.coblocks-form__submitted' ).contains( 'Thank you for submitting this form!' );
+		}
 
 		helpers.editPage();
 	} );
