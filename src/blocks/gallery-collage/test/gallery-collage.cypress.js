@@ -117,10 +117,14 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 
 		helpers.toggleSettingCheckbox( /captions/i );
 
-		cy.get( '.wp-block-coblocks-gallery-collage__item' ).first().click()
-			.find( 'figcaption' ).focus();
+		// Focus the image
+		cy.get( '.wp-block-coblocks-gallery-collage__item' ).first().click();
 
-		cy.get( '[data-type="coblocks/gallery-collage"]' ).find( 'figcaption' ).focus();
+		// Locate the caption and type in it
+		cy.get( '.wp-block-coblocks-gallery-collage__item' )
+			.find( 'figcaption' )
+			.first()
+			.type( 'a caption', { force: true } );
 
 		cy.get( '.block-editor-format-toolbar, .block-editor-rich-text__inline-format-toolbar-group' );
 
