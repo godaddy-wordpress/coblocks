@@ -4,16 +4,14 @@
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Block: Food and Drinks', function() {
-	beforeEach( () => {
-		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
-		helpers.selectBlock( 'food & drink' );
-	} );
-
 	/**
 	 * Test that we can add a food-and-drinks block to the content, not alter
 	 * any settings, and are able to successfully save the block without errors.
 	 */
 	it( 'can be inserted without errors', function() {
+		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
+		helpers.selectBlock( 'food & drink' );
+
 		cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'exist' );
 		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
 	} );
@@ -22,6 +20,9 @@ describe( 'Block: Food and Drinks', function() {
 	 * Test the food-and-drinks block saves with custom classes
 	 */
 	it( 'can set custom classes', () => {
+		helpers.addBlockToPost( 'coblocks/food-and-drinks', false ); // Was failing when true here
+		helpers.selectBlock( 'food & drink' );
+
 		helpers.addCustomBlockClass( 'my-custom-class', 'food-and-drinks' );
 		cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'have.class', 'my-custom-class' );
 
@@ -29,6 +30,9 @@ describe( 'Block: Food and Drinks', function() {
 	} );
 
 	it( 'can set the number of columns between 2 and 4', () => {
+		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
+		helpers.selectBlock( 'food & drink' );
+
 		helpers.setBlockStyle( 'grid' );
 
 		helpers.openSettingsPanel( /food & drinks settings/i );
@@ -44,6 +48,9 @@ describe( 'Block: Food and Drinks', function() {
 	} );
 
 	it( 'can set the gutter to small, medium, large, and huge', () => {
+		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
+		helpers.selectBlock( 'food & drink' );
+
 		helpers.setBlockStyle( 'grid' );
 
 		helpers.openSettingsPanel( /food & drinks settings/i );
@@ -57,6 +64,9 @@ describe( 'Block: Food and Drinks', function() {
 	} );
 
 	it( 'can toggle images for inner food-item blocks', () => {
+		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
+		helpers.selectBlock( 'food & drink' );
+
 		cy.get( '[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
 			cy.get( '[data-type="coblocks/food-item"]' ).first().click( 'left' );
 			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'not.exist' );
@@ -76,9 +86,18 @@ describe( 'Block: Food and Drinks', function() {
 	} );
 
 	it( 'can toggle prices for inner food-item blocks', () => {
+		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
+		helpers.selectBlock( 'food & drink' );
+
+		let priceSelector = '.wp-block-coblocks-food-item__price';
+
+		if ( Cypress.$( '.branch-6-1' ).length > 0 ) {
+			priceSelector = '[aria-label="$0.00"]';
+		}
+
 		cy.get( '[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
 			cy.get( '[data-type="coblocks/food-item"]' ).first().click( 'left' );
-			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'exist' );
+			cy.get( '[data-type="coblocks/food-item"]' ).first().find( priceSelector ).should( 'exist' );
 		} );
 
 		helpers.selectBlock( 'Food & Drink' );
@@ -88,7 +107,7 @@ describe( 'Block: Food and Drinks', function() {
 
 		cy.get( '[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
 			cy.get( '[data-type="coblocks/food-item"]' ).first().click( 'left' );
-			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'not.exist' );
+			cy.get( '[data-type="coblocks/food-item"]' ).first().find( priceSelector ).should( 'not.exist' );
 		} );
 
 		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
@@ -98,6 +117,9 @@ describe( 'Block: Food and Drinks', function() {
 	 * Test the food-and-drinks block saves with custom classes
 	 */
 	it( 'Test the food-and-drinks block custom classes.', function() {
+		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
+		helpers.selectBlock( 'food & drink' );
+
 		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
 
 		helpers.selectBlock( 'food & drink' );
@@ -114,6 +136,15 @@ describe( 'Block: Food and Drinks', function() {
 	} );
 
 	it( 'can insert menu section with the same attributes', () => {
+		let priceSelector = '.wp-block-coblocks-food-item__price';
+
+		if ( Cypress.$( '.branch-6-1' ).length > 0 ) {
+			priceSelector = '[aria-label="$0.00"]';
+		}
+
+		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
+		helpers.selectBlock( 'food & drink' );
+
 		helpers.openSettingsPanel( /food & drinks settings/i );
 
 		// Set a couple attributes.
@@ -128,7 +159,7 @@ describe( 'Block: Food and Drinks', function() {
 		cy.get( '[data-type="coblocks/food-and-drinks"]' ).last().within( () => {
 			cy.get( '[data-type="coblocks/food-item"]' ).first().click( 'left' );
 			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'exist' );
-			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.wp-block-coblocks-food-item__price' ).should( 'exist' );
+			cy.get( '[data-type="coblocks/food-item"]' ).first().find( priceSelector ).should( 'exist' );
 
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'have.class', 'my-custom-class' );
 		} );
@@ -141,6 +172,7 @@ describe( 'Block: Food and Drinks', function() {
 	 */
 	it( 'Updates the inner blocks when the "Heading Level" control is changed.', function() {
 		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
+		helpers.selectBlock( 'food & drink' );
 
 		// Assert headings levels are set to default (h4)
 		cy.get( '[data-type="coblocks/food-and-drinks"] [data-type="coblocks/food-item"] h4' ).should( 'have.length', 2 );
