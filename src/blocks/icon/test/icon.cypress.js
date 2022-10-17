@@ -132,7 +132,10 @@ describe( 'Test CoBlocks Icon Block', function() {
 		// Make sure that controls who are lazy loaded finished loading
 		cy.contains( 'Color settings' );
 
-		helpers.openSettingsPanel( 'Color settings' );
+		// Not needed in WP 6.1 anymore
+		if ( Cypress.$( '.branch-6-1' ).length === 0 ) {
+			helpers.openSettingsPanel( 'Color settings' );
+		}
 
 		helpers.setColorSettingsFoldableSetting( 'background', '#e60099' );
 		helpers.setColorSettingsFoldableSetting( 'icon color', '#55e7ff' );

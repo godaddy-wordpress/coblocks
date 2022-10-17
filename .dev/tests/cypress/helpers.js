@@ -401,7 +401,9 @@ export function setColorSettingsFoldableSetting( settingName, hexColor ) {
 
 	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
 
-	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
+	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' )
+		.contains( settingName, { matchCase: false } )
+		.click( { force: true } );
 }
 
 export function setColorPanelSetting( settingName, hexColor ) {
