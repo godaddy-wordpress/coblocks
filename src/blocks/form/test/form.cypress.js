@@ -355,7 +355,7 @@ describe( 'Test CoBlocks Form Block', function() {
 		cy.get( '.coblocks-form__submit button' )
 			.click();
 
-		if ( helpers.testsNotExecutedInLocal() ) {
+		if ( helpers.MailServerSetupped() ) {
 			cy.get( '.coblocks-form__submitted' ).contains( 'Your message was sent:' );
 
 			cy.get( '.coblocks-form__submitted ul li:first-child' ).contains( 'Name: Name' );
@@ -438,7 +438,7 @@ describe( 'Test CoBlocks Form Block', function() {
 		cy.get( '.coblocks-form__submit button' )
 			.click();
 
-		if ( helpers.testsNotExecutedInLocal() ) {
+		if ( helpers.MailServerSetupped() ) {
 			cy.get( '.coblocks-form__submitted' ).contains( 'Your message was sent:' );
 
 			cy.exec( 'curl http://127.0.0.1:8025/api/v2/messages' )
@@ -501,7 +501,7 @@ describe( 'Test CoBlocks Form Block', function() {
 		cy.get( '.coblocks-form__submit button' )
 			.click();
 
-		if ( helpers.testsNotExecutedInLocal() ) {
+		if ( helpers.MailServerSetupped() ) {
 			cy.get( '.coblocks-form__submitted' ).contains( 'Thank you for submitting this form!' );
 		}
 

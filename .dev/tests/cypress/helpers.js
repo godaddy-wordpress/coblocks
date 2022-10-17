@@ -27,7 +27,7 @@ export function addFormChild( name ) {
 	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click( { force: true } );
 	cy.get( '.block-editor-inserter__search' ).click().type( name );
 
-	cy.get( '.block-editor-inserter__content .editor-block-list-item-coblocks-field-' + name ).first().click( { force: true } );
+	cy.get( '.editor-block-list-item-coblocks-field-' + name ).first().click( { force: true } );
 	cy.get( `[data-type="coblocks/field-${ name }"]` ).should( 'exist' ).click( { force: true } );
 }
 
@@ -544,6 +544,7 @@ export function hexToRGB( hex ) {
 	return 'rgb(' + +r + ', ' + +g + ', ' + +b + ')';
 }
 
-export function testsNotExecutedInLocal() {
+// Mailserver is usually setupped on CI
+export function MailServerSetupped() {
 	return Cypress.env( 'testURL' ) !== 'http://localhost:8889';
 }
