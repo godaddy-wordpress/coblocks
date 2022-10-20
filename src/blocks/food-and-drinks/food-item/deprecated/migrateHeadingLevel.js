@@ -29,10 +29,6 @@ const isEmpty = ( attributes ) => {
 };
 
 export default function migrateHeadingLevel( { attributes } ) {
-	alert( 'test?' );
-	return (
-		<p>Testing:)</p>
-	);
 	return isEmpty( attributes ) ? null : (
 		<div
 			className={ attributes.className }
