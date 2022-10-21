@@ -11,6 +11,6 @@ module.exports = {
 		"http://coblocks.test"
 	],
 	actions: [
-		'wait for element img[alt="Image"] to be visible'
+		'wait for element button[aria-label="Previous"] to be visible'
 	]
 };
