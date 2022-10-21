@@ -556,5 +556,8 @@ describe( 'Test CoBlocks Form Block', function() {
 			cy.get( `label[for="${ field }"]` )
 				.should( 'have.css', 'color', textColorRGB );
 		} );
+
+		cy.get( '.coblocks-field legend' )
+			.should( 'have.css', 'color', textColorRGB );
 	} );
 } );
