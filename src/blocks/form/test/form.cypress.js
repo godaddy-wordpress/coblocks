@@ -547,14 +547,8 @@ describe( 'Test CoBlocks Form Block', function() {
 		cy.get( '.coblocks-form' )
 			.should( 'exist' );
 
-		/**
-		 * Checkbox === select
-		 * Select   === select
-		 * Textarea === message.
-		 */
-		[ 'text', 'email', 'website', 'select', 'phone', 'message', 'name' ].forEach( ( field ) => {
-			cy.get( `label[for="${ field }"]` )
-				.should( 'have.css', 'color', textColorRGB );
+		cy.get( '.coblocks-label' ).each( ( $el ) => {
+			cy.wrap( $el ).should( 'have.css', 'color', textColorRGB );
 		} );
 
 		cy.get( '.coblocks-field legend' )
