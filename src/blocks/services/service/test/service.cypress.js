@@ -37,12 +37,12 @@ describe( 'Test CoBlocks Service Block', function() {
 
 		helpers.checkForBlockErrors( 'coblocks/service' );
 
-		cy.get( '.wp-block-coblocks-service' )
+		cy.get( '.wp-block-coblocks-services' )
 			.should( 'have.class', 'my-custom-class' );
 
 		helpers.viewPage();
 
-		cy.get( '.wp-block-coblocks-service' )
+		cy.get( '.wp-block-coblocks-services' )
 			.should( 'have.class', 'my-custom-class' );
 
 		helpers.editPage();
