@@ -481,7 +481,7 @@ commands:
             sudo mkdir /conf.d/
       - run:
           name: Install Go Theme
-          command: ./vendor/bin/wp theme install go --activate
+          command: ./vendor/bin/wp theme install go --activate --path=/tmp/wordpress
 
   run_perf_tests:
     parameters:
