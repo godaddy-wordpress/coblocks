@@ -452,7 +452,7 @@ commands:
               exit 1
             fi
       - store_artifacts:
-          path: ~/projects/.dev/tests/a11y/pa11y-homepage.png
+          path: ~/project/.dev/tests/a11y/pa11y-homepage.png
 
   setup_perf_tests:
     steps:
