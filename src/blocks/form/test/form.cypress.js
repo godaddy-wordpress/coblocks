@@ -529,9 +529,6 @@ describe( 'Test CoBlocks Form Block', function() {
 
 		helpers.addFormChild( 'phone' );
 
-		helpers.addFormChild( 'checkbox' );
-		cy.get( '.coblocks-option__input' ).type( 'text', { force: true } );
-
 		helpers.addFormChild( 'select' );
 		cy.get( '.coblocks-option__input' ).type( 'text', { force: true } );
 
@@ -553,10 +550,9 @@ describe( 'Test CoBlocks Form Block', function() {
 		/**
 		 * Checkbox === select
 		 * Select   === select
-		 * Radio    === choose-one
 		 * Textarea === message.
 		 */
-		[ 'text', 'email', 'website', 'select', 'phone', 'choose-one', 'message', 'name' ].forEach( ( field ) => {
+		[ 'text', 'email', 'website', 'select', 'phone', 'message', 'name' ].forEach( ( field ) => {
 			cy.get( `label[for="${ field }"]` )
 				.should( 'have.css', 'color', textColorRGB );
 		} );
