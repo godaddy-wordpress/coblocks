@@ -1,6 +1,6 @@
 module.exports = {
 	defaults: {
-		timeout: 5000,
+		timeout: 35000,
 		viewport: {
 			width: 1280,
 			height: 720,
