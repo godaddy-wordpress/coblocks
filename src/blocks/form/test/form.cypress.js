@@ -504,7 +504,7 @@ describe( 'Test CoBlocks Form Block', function() {
 	 * and are able to successfully save the block without errors.
 	 */
 	it( 'Test that color values are able to set and save.', function() {
-		const { textColor, textColorRGB } = formData;
+		const { textColor } = formData;
 		helpers.addBlockToPost( 'coblocks/form', true );
 
 		cy.get( '[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
