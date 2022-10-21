@@ -442,6 +442,7 @@ commands:
             ./vendor/bin/wp db reset --yes --path=/tmp/wordpress
             ./vendor/bin/wp db import .dev/tests/a11y/coblocks_pa11y.sql --path=/tmp/wordpress
             ./vendor/bin/wp search-replace https://coblocks-pa11y.test http://coblocks.test --path=/tmp/wordpress
+            mv .dev/tests/a11y/media/2022 /tmp/wordpress/wp-content/uploads/2022
       - start_wpcli_server
       - run:
           name: Run a11y tests
