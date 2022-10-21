@@ -133,7 +133,7 @@ describe( 'Test CoBlocks Icon Block', function() {
 		cy.contains( 'Color settings' );
 
 		// Not needed in WP 6.1 anymore
-		if ( Cypress.$( '.branch-6-1' ).length === 0 ) {
+		if ( ! helpers.isWP61AtLeast() ) {
 			helpers.openSettingsPanel( 'Color settings' );
 		}
 

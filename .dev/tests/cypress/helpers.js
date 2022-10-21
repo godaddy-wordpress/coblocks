@@ -198,7 +198,7 @@ export function viewPage() {
 	cy.get( 'button[data-label="Post"]' );
 
 	// WP 6.1
-	if ( Cypress.$( '.branch-6-1' ).length > 0 ) {
+	if ( isWP61AtLeast() ) {
 		cy.get( '.edit-post-post-url__dropdown button' ).click();
 
 		cy.get( '.editor-post-url__link' ).then( ( pageLink ) => {
@@ -385,7 +385,7 @@ export const upload = {
  */
 export function setColorSettingsFoldableSetting( settingName, hexColor ) {
 	// Not needed in WP 6.1 anymore
-	if ( Cypress.$( '.branch-6-1' ).length === 0 ) {
+	if ( ! isWP61AtLeast() ) {
 		openSettingsPanel( /color settings|color/i );
 	}
 
@@ -395,7 +395,7 @@ export function setColorSettingsFoldableSetting( settingName, hexColor ) {
 	cy.get( '.components-color-palette__custom-color' ).click();
 
 	// Not needed in WP 6.1 anymore
-	if ( Cypress.$( '.branch-6-1' ).length === 0 ) {
+	if ( ! isWP61AtLeast() ) {
 		cy.get( '[aria-label="Show detailed inputs"]' ).click();
 	}
 
@@ -413,7 +413,7 @@ export function setColorPanelSetting( settingName, hexColor ) {
 	cy.get( '.components-color-palette__custom-color' ).click();
 
 	// Not needed in WP 6.1 anymore
-	if ( Cypress.$( '.branch-6-1' ).length === 0 ) {
+	if ( ! isWP61AtLeast() ) {
 		cy.get( '[aria-label="Show detailed inputs"]' ).click();
 	}
 
@@ -546,7 +546,13 @@ export function hexToRGB( hex ) {
 	return 'rgb(' + +r + ', ' + +g + ', ' + +b + ')';
 }
 
-// Mailserver is usually setupped on CI
-export function MailServerSetupped() {
+export function isNotWPLocalEnv() {
 	return Cypress.env( 'testURL' ) !== 'http://localhost:8889';
+}
+
+// A condition to determine if we are testing on WordPress 6.1+
+export function isWP61AtLeast() {
+	// WP 6.0 uses the branch-6 class, and version 6.1+ uses branch-6-x (ex : branch-6-1 for WP 6.1)
+	// So we are looking for a class that starts with branch-6-
+	return Cypress.$( "[class^='branch-6-']" ).length > 0;
 }

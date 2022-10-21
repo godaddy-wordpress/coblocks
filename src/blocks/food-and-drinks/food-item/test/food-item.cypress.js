@@ -21,7 +21,7 @@ describe( 'Block: Food Item', () => {
 		let priceEditableSelector = '.wp-block-coblocks-food-item__price .block-editor-rich-text__editable';
 		let descriptionEditableSelector = '.wp-block-coblocks-food-item__description .block-editor-rich-text__editable';
 
-		if ( Cypress.$( '.branch-6-1' ).length > 0 ) {
+		if ( helpers.isWP61AtLeast() ) {
 			headingClass += '-wrapper';
 			priceEditableSelector = '[aria-label="$0.00"]';
 			descriptionEditableSelector = '[aria-label="Add description…"]';
@@ -63,7 +63,7 @@ describe( 'Block: Food Item', () => {
 	it( 'can toggle price', () => {
 		let priceSelector = '.wp-block-coblocks-food-item__price';
 
-		if ( Cypress.$( '.branch-6-1' ).length > 0 ) {
+		if ( helpers.isWP61AtLeast() ) {
 			priceSelector = '[aria-label="$0.00"]';
 		}
 

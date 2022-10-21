@@ -91,7 +91,7 @@ describe( 'Block: Food and Drinks', function() {
 
 		let priceSelector = '.wp-block-coblocks-food-item__price';
 
-		if ( Cypress.$( '.branch-6-1' ).length > 0 ) {
+		if ( helpers.isWP61AtLeast() ) {
 			priceSelector = '[aria-label="$0.00"]';
 		}
 
@@ -138,7 +138,7 @@ describe( 'Block: Food and Drinks', function() {
 	it( 'can insert menu section with the same attributes', () => {
 		let priceSelector = '.wp-block-coblocks-food-item__price';
 
-		if ( Cypress.$( '.branch-6-1' ).length > 0 ) {
+		if ( helpers.isWP61AtLeast() ) {
 			priceSelector = '[aria-label="$0.00"]';
 		}
 

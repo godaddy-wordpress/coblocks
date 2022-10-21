@@ -70,7 +70,7 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__amount' ).should( 'have.html', amount );
 
 		// There is a slight spacing difference in WP 6.1
-		if ( Cypress.$( '.branch-6-1' ).length > 0 ) {
+		if ( helpers.isWP61AtLeast() ) {
 			featuresText = ' ' + featuresText;
 		}
 
