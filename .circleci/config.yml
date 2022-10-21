@@ -451,6 +451,8 @@ commands:
             if [[ $RESULTS != *"All accessibility tests have passed"* ]]; then
               exit 1
             fi
+      - store_artifacts:
+          path: ~/projects/.dev/tests/a11y/pa11y-homepage.png
 
   setup_perf_tests:
     steps:

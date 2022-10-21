@@ -6,6 +6,7 @@ module.exports = {
 			height: 720,
 		},
 		actions: [
+			'screen capture ./dev/tests/a11y/pa11y-homepage.png',
 			'wait for element button[aria-label="Previous"] to be visible'
 		]
 	},
