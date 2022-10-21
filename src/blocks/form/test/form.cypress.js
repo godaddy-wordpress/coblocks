@@ -548,10 +548,10 @@ describe( 'Test CoBlocks Form Block', function() {
 			.should( 'exist' );
 
 		cy.get( '.coblocks-label' ).each( ( $el ) => {
-			cy.wrap( $el ).should( 'have.css', 'color', textColorRGB );
+			cy.wrap( $el ).should( 'have.class', 'has-background-color' );
 		} );
 
 		cy.get( '.coblocks-field legend' )
-			.should( 'have.css', 'color', textColorRGB );
+			.should( 'have.class', 'has-background-color' );
 	} );
 } );
