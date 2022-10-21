@@ -555,7 +555,7 @@ describe( 'Test CoBlocks Form Block', function() {
 			.should( 'exist' );
 
 		cy.get( '.coblocks-label' ).each( ( $el ) => {
-			cy.wrap( $el ).should( 'have.class', 'has-quaternary-color' );
+			cy.wrap( $el ).should( 'have.class', 'has-text-color' );
 		} );
 	} );
 } );
