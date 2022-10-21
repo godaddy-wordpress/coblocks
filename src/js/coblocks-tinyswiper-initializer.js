@@ -1,3 +1,4 @@
+/*global coblocksTinyswiper*/
 import TinySwiper from 'tiny-swiper';
 import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
 
@@ -61,9 +62,9 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 
 				const images = currentEventsBlock.querySelectorAll( `img` );
 
-				for (let i = 0; i < images.length; ++i) {
-					if ( ! images[i].alt ) {
-						images[i].alt = coblocksTinyswiper.sliderImageAriaLabel;
+				for ( let i = 0; i < images.length; ++i ) {
+					if ( ! images[ i ].alt ) {
+						images[ i ].alt = coblocksTinyswiper.sliderImageAriaLabel;
 					}
 				}
 

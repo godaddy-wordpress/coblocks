@@ -53,7 +53,7 @@ export default function migrateHeadingLevel( { attributes } ) {
 			<div className="wp-block-coblocks-food-item__content">
 				<div className="wp-block-coblocks-food-item__heading-wrapper">
 					<RichText.Content
-						tagName={ `h${attributes.headingLevel}` }
+						tagName={ `h${ attributes.headingLevel }` }
 						className="wp-block-coblocks-food-item__heading"
 						value={ attributes.title }
 						itemprop="name"
