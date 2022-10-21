@@ -10,7 +10,6 @@ describe( 'Test CoBlocks Form Block', function() {
 	//setup From block color data.
 	const formData = {
 		textColor: '#ffffff',
-		textColorRGB: 'rgb(255, 255, 255)',
 	};
 
 	/**
