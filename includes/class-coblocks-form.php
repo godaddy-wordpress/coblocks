@@ -484,12 +484,17 @@ class CoBlocks_Form {
 		$label_desc    = sanitize_title( $label ) !== 'choose-one' ? sanitize_title( $label ) : 'choose-one';
 		$label_slug    = $radio_count > 1 ? sanitize_title( $label_desc . '-' . $radio_count ) : sanitize_title( $label_desc );
 		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? ' required' : '';
+		$styles        = implode( ' ', (array) apply_filters( 'coblocks_render_label_color_wrapper_styles', array(), $atts ) );
 
 		ob_start();
 
 		print( '<div class="coblocks-field"><fieldset>' );
 
-		print( '<legend>' . $label . '</legend>' );
+		printf(
+			'<legend%1$s>%2$s</legend>',
+			empty( $styles ) ? '' : wp_kses_post( " style='$styles'" ),
+			esc_html( $label )
+		);
 
 		// $this->render_field_label( $atts, $label, $radio_count );
 
