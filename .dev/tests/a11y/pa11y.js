@@ -43,6 +43,10 @@ const config = {
 	ignore: [
 		'notice',
 	],
+	actions: [
+		'screen capture ./.dev/tests/a11y/pa11y-homepage.png',
+		'wait for element button[aria-label="Previous"] to be visible'
+	],
 	hideElements: '#gist5332801 > div > div:nth-child(2)',
 	log: {
 		debug: console.log.bind( console ),
