@@ -479,6 +479,9 @@ commands:
             echo 127.0.0.1 localhost | sudo tee -a /etc/hosts
             sudo apt-get update --allow-releaseinfo-change && sudo apt-get install -y subversion default-mysql-client
             sudo mkdir /conf.d/
+      - run:
+          name: Install Go Theme
+          command: ./vendor/bin/wp theme install go --activate
 
   run_perf_tests:
     parameters:
