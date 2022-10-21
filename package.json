@@ -44,7 +44,7 @@
 		"start:debug": "DEBUG_MODE=on wp-scripts start --progress",
 		"start": "wp-scripts start --progress",
 		"test:a11y": "node .dev/tests/a11y/pa11y.js",
-		"test:a11y-ci": "npx pa11y-ci --config .dev/tests/a11y/pa11y.js",
+		"test:a11y-ci": "npx pa11y-ci --config .dev/tests/a11y/pa11y-ci.js",
 		"test:e2e": "cypress run --config video=false --browser chrome",
 		"test:e2e:debug": "npx cypress open",
 		"test:e2e:headed": "yarn test:e2e --headed",

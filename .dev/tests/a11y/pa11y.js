@@ -31,7 +31,6 @@ if ( process.argv[ 2 ] ) {
 
 // Set up the pa11y config options
 const config = {
-	concurrency: 1,
 	standard: packageJson.testing.accessibility.compliance,
 	hideElements: '#wpadminbar',
 	includeWarnings: true,
