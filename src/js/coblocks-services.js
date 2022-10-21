@@ -3,8 +3,6 @@
 	document.addEventListener( 'DOMContentLoaded', function() {
 		const servicesBlocks = document.querySelectorAll( '.wp-block-coblocks-service' );
 
-		console.log( servicesBlocks );
-
 		for ( let i = 0; i < servicesBlocks.length; i++ ) {
 			const currentServiceBlock = servicesBlocks[ i ];
 			const hasImage = currentServiceBlock.getElementsByTagName( 'figure' ).length;
