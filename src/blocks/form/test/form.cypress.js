@@ -140,6 +140,10 @@ describe( 'Test CoBlocks Form Block', function() {
 					break;
 
 				case 3:
+					cy.get( $element ).contains( 'Will you be attending?' );
+					break;
+
+				case 4:
 					cy.get( $element ).contains( 'Notes?' );
 					break;
 			}
@@ -245,6 +249,10 @@ describe( 'Test CoBlocks Form Block', function() {
 					break;
 
 				case 4:
+					cy.get( $element ).contains( 'Time' );
+					break;
+
+				case 5:
 					cy.get( $element ).contains( 'Special notes' );
 					break;
 			}
@@ -315,7 +323,7 @@ describe( 'Test CoBlocks Form Block', function() {
 	} );
 
 	/**
-	 * Test the coblock contact template.
+	 * Test the coblock form block sends and recieves properly.
 	 */
 	it( 'Test the form block email is sent and received.', function() {
 		helpers.addBlockToPost( 'coblocks/form', true );
