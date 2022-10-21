@@ -246,14 +246,13 @@ describe( 'Test CoBlocks Form Block', function() {
 					break;
 
 				case 4:
-					cy.get( $element ).contains( 'Time' );
-					break;
-
-				case 5:
 					cy.get( $element ).contains( 'Special notes' );
 					break;
 			}
 		} );
+
+		cy.get( '.coblocks-field legend' )
+			.contains( 'Time' );
 
 		cy.get( 'input[name="field-name[value][first-name]"]' )
 			.should( 'exist' );
