@@ -33,7 +33,7 @@ describe( 'Test CoBlocks Service Block', function() {
 		helpers.upload.imageToBlock( 'coblocks/service' );
 
 		cy.get( '.block-editor-block-inspector__advanced' ).scrollIntoView().find( 'button' ).then( ( $btn ) => {
-			var isOpen = $btn.attr( 'aria-expanded' );
+			const isOpen = $btn.attr( 'aria-expanded' );
 			if ( 'false' === isOpen ) {
 				cy.wrap( $btn ).click();
 			}
@@ -43,9 +43,7 @@ describe( 'Test CoBlocks Service Block', function() {
 			.contains( /Additional CSS/i )
 			.next( 'input' )
 			.then( ( $inputElem ) => {
-				cy.get( $inputElem ).invoke( 'val' ).then( ( val ) => {
-					cy.get( $inputElem ).type( 'my-custom-class-1' );
-				} );
+				cy.get( $inputElem ).type( 'my-custom-class-1' );
 			} );
 
 		cy.get( '.wp-block-coblocks-services [data-type="coblocks/service"]:last-child' ).click( { force: true } );
@@ -53,7 +51,7 @@ describe( 'Test CoBlocks Service Block', function() {
 		helpers.upload.imageToBlock( 'coblocks/service' );
 
 		cy.get( '.block-editor-block-inspector__advanced' ).scrollIntoView().find( 'button' ).then( ( $btn ) => {
-			var isOpen = $btn.attr( 'aria-expanded' );
+			const isOpen = $btn.attr( 'aria-expanded' );
 			if ( 'false' === isOpen ) {
 				cy.wrap( $btn ).click();
 			}
@@ -63,9 +61,7 @@ describe( 'Test CoBlocks Service Block', function() {
 			.contains( /Additional CSS/i )
 			.next( 'input' )
 			.then( ( $inputElem ) => {
-				cy.get( $inputElem ).invoke( 'val' ).then( ( val ) => {
-					cy.get( $inputElem ).type( 'my-custom-class-2' );
-				} );
+				cy.get( $inputElem ).type( 'my-custom-class-2' );
 			} );
 
 		helpers.savePage();

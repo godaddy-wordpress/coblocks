@@ -444,7 +444,7 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 	cy.get( '[class*="-visual-editor"] .wp-block[data-type="coblocks/' + blockID + '"]' ).last().click( { force: true } );
 
 	cy.get( '.block-editor-block-inspector__advanced' ).scrollIntoView().find( 'button' ).then( ( $btn ) => {
-		var isOpen = $btn.attr( 'aria-expanded' );
+		const isOpen = $btn.attr( 'aria-expanded' );
 		if ( 'false' === isOpen ) {
 			cy.wrap( $btn ).click();
 		}
