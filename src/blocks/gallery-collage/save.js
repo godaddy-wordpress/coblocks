@@ -80,7 +80,7 @@ const save = ( { attributes } ) => {
 									{ img &&
 									<figure className={ classes }>
 										{ href ? <a href={ href } rel={ rel } target={ target }>{ img }</a> : img }
-										{ captions && image.caption && (
+										{ captions && image.caption && !! image.caption.length && (
 											<RichText.Content className="wp-block-coblocks-gallery-collage__caption" tagName="figcaption" value={ image.caption } />
 										) }
 									</figure>
