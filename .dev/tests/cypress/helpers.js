@@ -554,5 +554,6 @@ export function isNotWPLocalEnv() {
 export function isWP61AtLeast() {
 	// WP 6.0 uses the branch-6 class, and version 6.1+ uses branch-6-x (ex : branch-6-1 for WP 6.1)
 	// So we are looking for a class that starts with branch-6-
-	return Cypress.$( "[class^='branch-6-']" ).length > 0;
+
+	return Cypress.$( "[class*='branch-6-']" ).length > 0;
 }
