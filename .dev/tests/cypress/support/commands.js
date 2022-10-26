@@ -1,8 +1,9 @@
 import { disableGutenbergFeatures, loginToSite } from '../helpers';
 
 before( function() {
-	loginToSite();
-	disableGutenbergFeatures();
+	loginToSite().then( () => {
+		disableGutenbergFeatures();
+	} );
 } );
 
 // Maintain WordPress logged in state

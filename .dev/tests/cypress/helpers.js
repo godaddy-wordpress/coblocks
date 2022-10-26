@@ -48,7 +48,7 @@ export function loginToSite() {
 			}
 		} );
 
-	cy.get( '.block-editor-page' ).should( 'exist' );
+	return cy.get( '.block-editor-page' ).should( 'exist' );
 }
 
 /**
