@@ -190,6 +190,8 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 
 		cy.get( '.block-editor-block-toolbar div:nth-of-type(4) button' ).contains( 'Replace' ).click();
 
+		cy.get( '[data-type="coblocks/gallery-masonry"]' ).click();
+
 		cy.get( '.components-popover__content' ).should( 'not.exist' );
 
 		helpers.savePage();
