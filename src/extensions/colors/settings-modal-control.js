@@ -1,20 +1,21 @@
+/* global coblocksSettings */
 /**
  * WordPress Dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { CheckboxControl } from '@wordpress/components';
-import { useSelect, useDispatch } from '@wordpress/data';
-import { useEntityProp } from '@wordpress/core-data';
-import { useEffect } from '@wordpress/element';
 import { registerPlugin } from '@wordpress/plugins';
+import { useEffect } from '@wordpress/element';
+import { useEntityProp } from '@wordpress/core-data';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 /**
  * Internal Dependencies
  */
 import CoBlocksSettingsModalControl from '../coblocks-settings/coblocks-settings-slot';
 import {
-	COLORS_FEATURE_ENABLED_KEY,
 	COLORS_CUSTOM_FEATURE_ENABLED_KEY,
+	COLORS_FEATURE_ENABLED_KEY,
 	COLORS_GRADIENT_FEATURE_ENABLED_KEY,
 } from './constants';
 
@@ -89,6 +90,10 @@ function CoBlocksEditorSettingsControls() {
 	const disableEditorSetting = ( key ) => setEditorSetting( key, false );
 
 	useEffect( () => {
+		if ( coblocksSettings.deprecateWith61 ) {
+			return;
+		}
+
 		// Skip if the settings have not loaded yet.
 		const hasSettings = [ colorPanelEnabled, customColorsEnabled, gradientPresetsEnabled ].every( ( value ) => value !== undefined );
 		if ( ! hasSettings ) {
@@ -102,6 +107,7 @@ function CoBlocksEditorSettingsControls() {
 			gradients: gradientPresetsEnabled ? enableEditorSetting( 'gradients' ) : disableEditorSetting( 'gradients' ),
 
 			// Handle experimental features for WP 5.8
+			/* eslint-disable sort-keys */
 			__experimentalFeatures: {
 				...settings?.__experimentalFeatures,
 				color: {
@@ -114,15 +120,21 @@ function CoBlocksEditorSettingsControls() {
 						: disableEditorSetting( '__experimentalFeatures.color.gradients' ),
 				},
 			},
+			/* eslint-enable sort-keys */
 		} );
 	}, [ colorPanelEnabled, customColorsEnabled, gradientPresetsEnabled ] );
+
+	const settingsEnabled = ! coblocksSettings?.deprecateWith61;
+	if ( ! settingsEnabled ) {
+		return null;
+	}
 
 	return (
 		<CoBlocksSettingsModalControl>
 			<CheckboxControl
-				label={ __( 'Color settings', 'coblocks' ) }
-				help={ __( 'Allow color settings throughout the editor.', 'coblocks' ) }
 				checked={ !! colorPanelEnabled }
+				help={ __( 'Allow color settings throughout the editor.', 'coblocks' ) }
+				label={ __( 'Color settings', 'coblocks' ) }
 				onChange={ ( isEnabled ) => {
 					setColorPanelEnabled( isEnabled );
 					setCustomColorsEnabled( isEnabled );
@@ -132,9 +144,9 @@ function CoBlocksEditorSettingsControls() {
 
 			{ colorPanelEnabled && (
 				<CheckboxControl
-					label={ __( 'Custom color pickers', 'coblocks' ) }
-					help={ __( 'Allow styling with custom colors.', 'coblocks' ) }
 					checked={ !! customColorsEnabled }
+					help={ __( 'Allow styling with custom colors.', 'coblocks' ) }
+					label={ __( 'Custom color pickers', 'coblocks' ) }
 					onChange={ ( isEnabled ) => {
 						setCustomColorsEnabled( isEnabled );
 						setGradientPresetsEnabled( isEnabled );
@@ -144,9 +156,9 @@ function CoBlocksEditorSettingsControls() {
 
 			{ customColorsEnabled && (
 				<CheckboxControl
-					label={ __( 'Gradient styles', 'coblocks' ) }
-					help={ __( 'Allow styling with gradient fills.', 'coblocks' ) }
 					checked={ !! gradientPresetsEnabled }
+					help={ __( 'Allow styling with gradient fills.', 'coblocks' ) }
+					label={ __( 'Gradient styles', 'coblocks' ) }
 					onChange={ ( isEnabled ) => {
 						setGradientPresetsEnabled( isEnabled );
 					} }
