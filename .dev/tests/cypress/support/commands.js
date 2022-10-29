@@ -2,7 +2,7 @@ import { disableGutenbergFeatures, loginToSite } from '../helpers';
 
 before( function() {
 	loginToSite().then( () => {
-		cy.wait( 20000 );
+		cy.wait( 2000 );
 		disableGutenbergFeatures();
 	} );
 } );
