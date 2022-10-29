@@ -48,7 +48,7 @@ export function loginToSite() {
 			}
 		} );
 
-	return cy.get( '.block-editor-page' ).should( 'exist' );
+	return cy.get( '.wp-block-post-title' ).should( 'exist' );
 }
 
 /**
