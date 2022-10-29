@@ -35,7 +35,7 @@ export function addFormChild( name ) {
  * Login to our test WordPress site
  */
 export function loginToSite() {
-	goTo( '/wp-admin/post-new.php?post_type=post' )
+	return goTo( '/wp-admin/post-new.php?post_type=post' )
 		.then( ( window ) => {
 			if ( window.location.pathname === '/wp-login.php' ) {
 			// WordPress has a wp_attempt_focus() function that fires 200ms after the wp-login.php page loads.
@@ -46,9 +46,8 @@ export function loginToSite() {
 				cy.get( '#user_pass' ).type( Cypress.env( 'wpPassword' ) );
 				cy.get( '#wp-submit' ).click();
 			}
-		} );
-
-	return cy.get( '.wp-block-post-title' ).should( 'exist' );
+		} )
+		.get( '.wp-block-post-title' ).should( 'exist' );
 }
 
 /**
@@ -57,9 +56,9 @@ export function loginToSite() {
  * @param {string} path The URI path to go to.
  */
 export function goTo( path = '/wp-admin' ) {
-	cy.visit( Cypress.env( 'testURL' ) + path );
-
-	return getWindowObject();
+	return cy.visit( Cypress.env( 'testURL' ) + path ).then( () => {
+		return getWindowObject();
+	} );
 }
 
 /**
@@ -94,7 +93,10 @@ export function disableGutenbergFeatures() {
 		}
 
 		if ( safeWin.wp.data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
+			cy.log( 'était activé - toggle' );
 			safeWin.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
+		} else {
+			cy.log( 'pas activé' );
 		}
 
 		safeWin.wp.data.dispatch( 'core/editor' ).disablePublishSidebar();
