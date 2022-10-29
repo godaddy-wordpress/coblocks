@@ -12,16 +12,6 @@ executors:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-  php_56_mysql:
-    docker:
-      - image: cimg/php:5.6-node
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-      - image: cimg/mysql:5.7
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
   php_74_mysql:
     docker:
       - image: cimg/php:7.4-node
@@ -139,12 +129,6 @@ workflows:
 
       # UNIT TESTING
       # Support PHP Versions: http://php.net/supported-versions.php
-      - unit_testing_php_56:
-            filters:
-              tags:
-                only: /^(?!canary).*$/
-            requires:
-              - php
       - unit_testing_php_74:
           filters:
             tags:
@@ -227,7 +211,6 @@ workflows:
             branches:
               only: master
           requires:
-            - unit_testing_php_56
             - unit_testing_php_74
             - unit_testing_php_80
             - unit_testing_php_81
@@ -237,7 +220,6 @@ workflows:
             branches:
               only: master
           requires:
-            - unit_testing_php_56
             - unit_testing_php_74
             - unit_testing_php_80
             - unit_testing_php_81
@@ -245,7 +227,6 @@ workflows:
 
       - deploy:
           requires:
-            - unit_testing_php_56
             - unit_testing_php_74
             - unit_testing_php_80
             - unit_testing_php_81
@@ -566,9 +547,6 @@ commands:
 
   run_php_unit_tests:
     parameters:
-      useComposerV1:
-        type: boolean
-        default: false
       reportCoverage:
         type: boolean
         default: true
@@ -725,11 +703,6 @@ jobs:
   # --------------------------------------------------
   # Unit Testing
   # --------------------------------------------------
-
-  unit_testing_php_56:
-    executor: php_56_mysql
-    steps:
-      - run_php_unit_tests
 
   unit_testing_php_74:
     executor: php_74_mysql
